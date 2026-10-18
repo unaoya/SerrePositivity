@@ -438,6 +438,16 @@ arrow 圏の filtered colimit が horn の右持ち上げ性を保つことか�
 厳密な引き戻しの場合だけを単体集合の持ち上げで示す補助であり、homotopy-cartesian な
 span からこの状況へ移す論証は別途必要である。
 
+### 縦射の関手的な Kan 分解への還元
+
+確認する文言：span の射の各縦射を関手的に anodyne–Kan 分解すれば、中間対象も span をなし、
+元の射は anodyne な三成分の単位と、Kan fibration の三成分の射の合成になる。
+証明方針：図式の射を arrow 圏の図式にし、既存の関手的分解の中間対象・単位・射影を合成する。
+二重写像円筒の既証の恒等・合成則を span の関手へまとめ、単位が誘導する円筒の射を
+既証の模型の不変性で局所化同型とする。四つの頂点の置換の不変性で各四角形を比較する。
+Mather 1976 Lemma 21 の fibration への還元に対応するが、元のホモトピー引き戻しを
+厳密な引き戻しへ置換する論証まで完了したことは意味しない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -558,7 +568,11 @@ Ex∞ が四角形のホモトピー引き戻し性を保存・反映するこ�
 厳密な引き戻しの pushout の覆いでの Kan fibration の局所性と、積・余積の Kan fibration 保存を証明した。
 厳密な引き戻しの span の三縦射が Kan fibration なら、二重写像円筒の比較も Kan fibration と証明した。
 ホモトピー引き戻し性の脚の交換の不変性と、三頂点のホモトピー引き戻し性の厳密な場合を証明した。
-一般の homotopy-cartesian な二面からこの厳密な状況への移行は未証明。
+図式の射の関手的な成分ごとの anodyne–Kan 分解と、その自然性・因子化を構成した。
+二重写像円筒を span の関手とし、左・右・中央の頂点の写像を自然変換にまとめた。
+Kan 分解は span の二面と、円筒への三頂点の四角形のホモトピー引き戻し性を保存・反映すると証明した。
+一般の homotopy-cartesian な二面から、縦射が Kan fibration の場合への還元は証明済み。
+そこから両面を厳密な引き戻しへ移す論証は未証明。
 Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -566,8 +580,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 675 宣言の型と公理を確認した。
-さらに名前空間全体の 1272 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 693 宣言の型と公理を確認した。
+さらに名前空間全体の 1304 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -699,6 +713,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `tensorRight_rlp`、`coproductMap_rlp`、`doubleMappingCylinderMap_rlp` | 実装済み | 厳密な引き戻しの span の円筒の比較の Kan 条件 |
 | `isHomotopyPullback_flip_iff`、`isHomotopyPullback_of_left_fibration` | 実装済み | 脚の交換と左脚が Kan fibration の場合の判定 |
 | `doubleMappingCylinder_homotopyPullbacks_of_strict` | 実装済み | 厳密な引き戻し・縦射が Kan fibration の場合の三頂点 |
+| `diagramKanMiddle`、`diagramKanUnit`、`diagramKanProjection`、`diagramKan_fac` | 実装済み | 関手的な図式の成分ごとの anodyne–Kan 分解 |
+| `spanCylinderFunctor`、`spanCylinderVertex` | 実装済み | span の円筒の関手と三頂点の自然性 |
+| `diagramKan_arrowSquare_iff`、`spanCylinderKan_vertexSquare_iff` | 実装済み | 縦射が Kan fibration の場合への還元 |
 | Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

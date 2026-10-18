@@ -76,6 +76,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -407,6 +408,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc
 #print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc
+
+
+-- DiagramKanReplacement.lean
+
+#check @SerrePositivity.KST.Comparison.diagramKanMiddle
+#print axioms SerrePositivity.KST.Comparison.diagramKanMiddle
+
+#check @SerrePositivity.KST.Comparison.diagramKanUnit
+#print axioms SerrePositivity.KST.Comparison.diagramKanUnit
+
+#check @SerrePositivity.KST.Comparison.diagramKanProjection
+#print axioms SerrePositivity.KST.Comparison.diagramKanProjection
+
+#check @SerrePositivity.KST.Comparison.diagramKan_fac
+#print axioms SerrePositivity.KST.Comparison.diagramKan_fac
+
+#check @SerrePositivity.KST.Comparison.diagramKanUnit_anodyne
+#print axioms SerrePositivity.KST.Comparison.diagramKanUnit_anodyne
+
+#check @SerrePositivity.KST.Comparison.diagramKanProjection_rlp
+#print axioms SerrePositivity.KST.Comparison.diagramKanProjection_rlp
 
 
 -- DoldKanGL.lean
@@ -1621,6 +1643,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.pullback_localized_isIso_of_kan_base
 
 
+-- KanReplacementSquares.lean
+
+#check @SerrePositivity.KST.Comparison.naturalitySquare
+#print axioms SerrePositivity.KST.Comparison.naturalitySquare
+
+#check @SerrePositivity.KST.Comparison.naturalitySquare_factorization_iff
+#print axioms SerrePositivity.KST.Comparison.naturalitySquare_factorization_iff
+
+#check @SerrePositivity.KST.Comparison.diagramArrow
+#print axioms SerrePositivity.KST.Comparison.diagramArrow
+
+#check @SerrePositivity.KST.Comparison.diagramKan_arrowSquare_iff
+#print axioms SerrePositivity.KST.Comparison.diagramKan_arrowSquare_iff
+
+#check @SerrePositivity.KST.Comparison.spanCylinderKanUnit_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.spanCylinderKanUnit_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.spanCylinderKan_vertexSquare_iff
+#print axioms SerrePositivity.KST.Comparison.spanCylinderKan_vertexSquare_iff
+
+
 -- LocalizedCoproductMaps.lean
 
 #check @SerrePositivity.KST.Comparison.coprodMap_left_localized_isIso
@@ -2165,6 +2208,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.sliceFiberPushoutIso
 #print axioms SerrePositivity.KST.Comparison.sliceFiberPushoutIso
+
+
+-- SpanCylinderFunctor.lean
+
+#check @SerrePositivity.KST.Comparison.spanCylinderFunctor
+#print axioms SerrePositivity.KST.Comparison.spanCylinderFunctor
+
+#check @SerrePositivity.KST.Comparison.spanCylinderLeft
+#print axioms SerrePositivity.KST.Comparison.spanCylinderLeft
+
+#check @SerrePositivity.KST.Comparison.spanCylinderRight
+#print axioms SerrePositivity.KST.Comparison.spanCylinderRight
+
+#check @SerrePositivity.KST.Comparison.spanCylinderCenter
+#print axioms SerrePositivity.KST.Comparison.spanCylinderCenter
+
+#check @SerrePositivity.KST.Comparison.spanCylinderVertex
+#print axioms SerrePositivity.KST.Comparison.spanCylinderVertex
+
+#check @SerrePositivity.KST.Comparison.spanCylinderFunctor_map_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.spanCylinderFunctor_map_localized_isIso
 
 
 -- StrictCylinderFibration.lean
