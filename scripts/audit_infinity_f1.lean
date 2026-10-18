@@ -1452,3 +1452,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteTotal_one_isPullback
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteTotalOneFiberIso
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteTotalOneFiberIso_hom_ι
+#check @SerrePositivity.InfinityCategories.simplicialReplacementAssembly_const
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteFirstEdge_prism_zero
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCylinderComparison_endpoint_zero
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCylinderAttachingMap_baseMap
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCylinderComparison_endpoint_one

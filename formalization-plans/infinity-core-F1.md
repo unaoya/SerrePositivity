@@ -6567,5 +6567,36 @@ lemma scaffoldFiniteTotalOneFiberIso_hom_ι (n : ℕ) {E : SSet.{u}}
       vertexFiberι (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
         pullback.fst p (nerveMap (scaffoldFiniteTail n))
 
+lemma simplicialReplacementAssembly_const
+    {C : Type u} [Category.{u} C] {K : SSet.{u}} {F : C ⥤ SSet.{u}}
+    (η : (CategoryTheory.Functor.const C).obj K ⟶ F) (c : C) :
+    lift (SSet.const (nerveVertex c)) (𝟙 K) ≫ simplicialReplacementAssembly η =
+      η.app c ≫ simplicialReplacementConstantLift F c
+
+lemma scaffoldFiniteFirstEdge_prism_zero (n : ℕ) (K : SSet.{u}) :
+    prismEndpoint 0 K ≫
+      (((stdSimplex.isoNerve 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n)) ▷ K) =
+        lift (SSet.const (nerveVertex (ULift.up (0 : Fin (n + 2))))) (𝟙 K)
+
+lemma scaffoldFiniteCylinderComparison_endpoint_zero (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    prismEndpoint 0 (F.obj (ULift.up 0)) ≫
+      pushout.inl (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F) ≫
+      scaffoldFiniteCylinderComparison n F = simplicialReplacementConstantLift F (ULift.up 0)
+
+lemma scaffoldFiniteCylinderAttachingMap_baseMap (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    scaffoldFiniteCylinderAttachingMap n F ≫ simplicialReplacementBaseMap (scaffoldFiniteTail n) F =
+      (simplicialReplacementInitialCoefficient F (scaffoldFiniteInitial (n + 1))).app
+        ((scaffoldFiniteTail n).obj (ULift.up 0)) ≫
+          simplicialReplacementConstantLift F ((scaffoldFiniteTail n).obj (ULift.up 0))
+
+lemma scaffoldFiniteCylinderComparison_endpoint_one (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    prismEndpoint 1 (F.obj (ULift.up 0)) ≫
+      pushout.inl (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F) ≫
+      scaffoldFiniteCylinderComparison n F =
+        scaffoldFiniteCylinderAttachingMap n F ≫ simplicialReplacementBaseMap (scaffoldFiniteTail n) F
+
 end SerrePositivity.InfinityCategories
 ```
