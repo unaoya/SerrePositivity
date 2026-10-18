@@ -49,6 +49,14 @@ def qcatHomFunctor (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] :
   obj F := SSet.HomotopyCategory.mk (functorVertex F.hom)
   map α := CatEnrichedOrdinary.Hom.base α
 
+/-- 概要：Hom 圏の表示は二胞体の等式を反映する。
+方針：豊穣二胞体の外側の包みは底の射で決まる。
+規約：対象の同一視ではなく、各 Hom 上の忠実性。
+使われ方：h Fun の三角恒等式から随伴を構成する。 -/
+instance qcatHomFunctor_faithful (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] :
+    (qcatHomFunctor X Y).Faithful where
+  map_injective h := CatEnrichedOrdinary.Hom.ext _ _ h
+
 /-- 概要：h Fun の射と双圏の二胞体は同じデータ。
 方針：豊穣 Hom の包みを外す。規約：ホモトピー圏間の自然変換への忘却ではない。
 使われ方：Kerodon Remark 6.2.1.4 の二胞体の同定。 -/
@@ -88,6 +96,85 @@ noncomputable def qcatCellOfHomotopy {X Y : SSet.{u}} [Quasicategory X] [Quasica
     (H : X ⊗ Δ[1] ⟶ Y) : qcatMap (SSet.ι₀ ≫ H) ⟶ qcatMap (SSet.ι₁ ≫ H) :=
   (qcatCellEquiv _ _).symm (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfHomotopy H))
 
+/-- 概要：h Fun の二胞体をホモトピー圏間の自然変換へ送る。
+方針：A3a の評価関手で写し、対象の表示を両端で揃える。
+規約：二胞体の可逆性は仮定しない。
+使われ方：Kerodon Remark 6.2.1.4、Cor 6.2.1.15 の評価。 -/
+def functorCellToNatTrans {X Y : SSet.{u}} {F G : X ⟶ Y}
+    (α : (SSet.HomotopyCategory.mk (functorVertex F) : hoFunctor.obj ((ihom X).obj Y)) ⟶
+      SSet.HomotopyCategory.mk (functorVertex G)) :
+    (hoFunctor.map F).toFunctor ⟶ (hoFunctor.map G).toFunctor :=
+  eqToHom (functorHomotopyEvaluation_obj F).symm ≫
+    (functorHomotopyEvaluation X Y).map α ≫ eqToHom (functorHomotopyEvaluation_obj G)
+
+/-- 概要：ホモトピーを h Fun の二胞体として評価すると A1c の自然変換になる。
+方針：両辺を頂点で比較し、curry の評価と区間の恒等一次単体を計算する。
+規約：quasicategory 性は不要。区間の向きも A1c と一致する。
+使われ方：Kerodon Remark 6.2.1.4、A1c と随伴の単位・余単位の接続。 -/
+lemma functorCellToNatTrans_homotopy {X Y : SSet.{u}} (H : X ⊗ Δ[1] ⟶ Y) :
+    functorCellToNatTrans
+      (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfHomotopy H)) = homotopyNatTrans H := by
+  unfold functorCellToNatTrans
+  ext x
+  obtain ⟨x, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective x
+  simp only [NatTrans.comp_app, eqToHom_app, eqToHom_refl, Category.id_comp,
+    Category.comp_id]
+  change SSet.Truncated.HomotopyCategory.homMk
+      (((functorEdgeOfHomotopy H).tensor (SSet.Truncated.Edge.id x)).map
+        ((truncation 2).map ((β_ ((ihom X).obj Y) X).hom ≫ (ihom.ev X).app Y))) =
+    SSet.Truncated.HomotopyCategory.homMk
+      (((SSet.Truncated.Edge.id x).tensor homotopyIntervalEdge).map ((truncation 2).map H))
+  congr 1
+  apply SSet.Truncated.Edge.ext
+  change ((ihom.ev X).app Y).app (Opposite.op ⦋1⦌)
+      ((SSet.Truncated.Edge.id x).edge, SSet.yonedaEquiv (curry H)) =
+    H.app (Opposite.op ⦋1⦌) ((SSet.Truncated.Edge.id x).edge, homotopyIntervalEdge.edge)
+  have h := congrArg
+    (fun k : X ⊗ Δ[1] ⟶ Y => k.app (Opposite.op ⦋1⦌)
+      ((SSet.Truncated.Edge.id x).edge, homotopyIntervalEdge.edge)) (uncurry_curry H)
+  rw [uncurry_eq] at h
+  change ((ihom.ev X).app Y).app (Opposite.op ⦋1⦌)
+      ((SSet.Truncated.Edge.id x).edge, (curry H).app _ homotopyIntervalEdge.edge) = _ at h
+  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = homotopyIntervalEdge.edge := by
+    apply stdSimplex.ext
+    intro j
+    fin_cases j <;> rfl
+  have hc : (curry H).app (Opposite.op ⦋1⦌) homotopyIntervalEdge.edge =
+      SSet.yonedaEquiv (curry H) := by
+    rw [← hi, ← SSet.yonedaEquiv_comp, Category.id_comp]
+  rw [hc] at h
+  exact h
+
+/-- 概要：二胞体の評価は恒等射を保つ。
+方針：評価関手の恒等射保存と両端の輸送の相殺。
+規約：F は任意の単体集合の射。
+使われ方：Kerodon Cor 6.2.1.15 の準備。 -/
+@[simp] lemma functorCellToNatTrans_id {X Y : SSet.{u}} (F : X ⟶ Y) :
+    functorCellToNatTrans (𝟙 (SSet.HomotopyCategory.mk (functorVertex F))) =
+      𝟙 (hoFunctor.map F).toFunctor := by
+  simp [functorCellToNatTrans]
+
+/-- 概要：二胞体の評価は縦合成を保つ。
+方針：評価関手の合成保存と中間の輸送の相殺。
+規約：二胞体は h Fun の射。
+使われ方：Kerodon Cor 6.2.1.15 の準備。 -/
+@[simp] lemma functorCellToNatTrans_comp {X Y : SSet.{u}} {F G H : X ⟶ Y}
+    (α : (SSet.HomotopyCategory.mk (functorVertex F) : hoFunctor.obj ((ihom X).obj Y)) ⟶
+      SSet.HomotopyCategory.mk (functorVertex G))
+    (β : (SSet.HomotopyCategory.mk (functorVertex G) : hoFunctor.obj ((ihom X).obj Y)) ⟶
+      SSet.HomotopyCategory.mk (functorVertex H)) :
+    functorCellToNatTrans (α ≫ β) = functorCellToNatTrans α ≫ functorCellToNatTrans β := by
+  simp [functorCellToNatTrans]
+
+/-- 概要：ホモトピーから得た双圏の二胞体の評価は A1c と一致する。
+方針：二胞体の包みを外し、h Fun の評価比較を適用する。
+規約：quasicategory 性は二胞体を定義するためだけに必要。
+使われ方：Kerodon Remark 6.2.1.4、単位・余単位の通常の自然変換への表示。 -/
+lemma qcatCellOfHomotopy_toNatTrans {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (H : X ⊗ Δ[1] ⟶ Y) :
+    functorCellToNatTrans (qcatCellEquiv _ _ (qcatCellOfHomotopy H)) = homotopyNatTrans H :=
+  functorCellToNatTrans_homotopy H
+
 /-- 概要：双圏の可逆二胞体を既存の FunctorIso にする。
 方針：Hom 圏の表示関手で同型を写す。規約：底の関手は変えない。
 使われ方：Kerodon §6.1.3、A3a の同型 API。 -/
@@ -96,6 +183,27 @@ def qcatIsoToFunctorIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   (qcatHomFunctor X Y).mapIso e
 
 namespace QCatAdjunction
+
+/-- 概要：h Fun に表示した三角恒等式から随伴を組み立てる。
+方針：二つの表示関手の忠実性により双圏の三角恒等式に戻す。
+規約：単位・余単位の入力は二胞体で、三角条件だけを h Fun の等式で受け取る。
+使われ方：Kerodon Def 6.2.1.1 と Remark 6.2.1.4 の定義の同値。 -/
+def mkOfHomTriangles {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : 𝟙 (qcatOf X) ⟶ qcatMap F ≫ qcatMap G)
+    (ε : qcatMap G ≫ qcatMap F ⟶ 𝟙 (qcatOf Y))
+    (h₁ : (qcatHomFunctor X Y).map (Bicategory.leftZigzag η ε) =
+      (qcatHomFunctor X Y).map
+        ((Bicategory.leftUnitor (qcatMap F)).hom ≫ (Bicategory.rightUnitor (qcatMap F)).inv))
+    (h₂ : (qcatHomFunctor Y X).map (Bicategory.rightZigzag η ε) =
+      (qcatHomFunctor Y X).map
+        ((Bicategory.rightUnitor (qcatMap G)).hom ≫ (Bicategory.leftUnitor (qcatMap G)).inv)) :
+    QCatAdjunction F G where
+  unit := η
+  counit := ε
+  left_triangle := (qcatHomFunctor X Y).map_injective h₁
+  right_triangle := (qcatHomFunctor Y X).map_injective h₂
+
 
 /-- 概要：恒等関手の自己随伴。
 方針：双圏の恒等随伴。規約：指定された同じ対象を使う。

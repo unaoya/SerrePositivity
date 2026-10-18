@@ -1,3 +1,5 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Adjunction
+public import SerrePositivity.InfinityCategories.F1B.AdjunctNaturality
+public import SerrePositivity.InfinityCategories.F1B.MappingParameters

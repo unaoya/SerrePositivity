@@ -28,6 +28,9 @@ sorry・追加公理・文献入力は使わない。実施の経緯はコミッ
   A1c の `homotopyNatTrans`、A3a の `FunctorIso` との接続を公開する。
 - 写像空間の特徴づけでは `pinchedHom` の自然なホモトピー同値を扱う。
   π₀ の全単射だけ、または各点で任意に選んだ同値の族だけでは B1 完了としない。
+  中間模型には既存の `F1.IntervalMappingSpace` を使う。この小さいモジュールへの
+  推移的 import は straightening を含まない。端点の補助計算は F1B 内に置き、
+  `F1.IntervalFatDiagram` の広い集約への依存は作らない。
 - 局所化の普遍性は、W を可逆辺へ送る関手の充満部分 ∞ 圏への前合成同値。
   一般の C[W⁻¹] の存在は F2 に委ね、ここでは反射的な場合を構成する。
 - right cofinal は colimit を計算する向き。始対象による limit 計算は双対の
@@ -40,12 +43,15 @@ sorry・追加公理・文献入力は使わない。実施の経緯はコミッ
 
 ## 3. 現在地
 
-B1 の基礎部分を実装中。単位・余単位、三角恒等式、恒等随伴、合成、左右随伴の
-h Fun での一意性、およびパラメータ付きの二胞体の adjunct 対応を実装した。
-これは B1 全体の完了ではない。写像空間の特徴づけは順向き Prop 6.2.1.17、
-逆向き Cor 6.2.6.5 に分け、自然性を含めて証明する。A1c の自然変換と
-`qcatCellOfHomotopy` の評価が一致する比較も未完了。B2〜B5 は未完了。
-対象ビルド（1577 jobs）・公理監査（27 宣言、標準三公理のみ）は成功。
+B1 を実装中。単位・余単位、三角恒等式、恒等随伴、合成、左右随伴の
+h Fun での一意性、パラメータ付き adjunct 対応とその二変数の自然性を実装した。
+A1c の `homotopyNatTrans` と `qcatCellOfHomotopy` の評価の一致も証明した。
+区間模型への族 A→Map(x,y) と Fun(A,X) の定値関手間の辺は厳密に全単射で、
+この族から h Fun の定値関手間の Hom への写像は全射である。
+これは B1 全体の完了ではない。次はこの表示のホモトピー類への降下・単射性、
+パラメータに関する自然性を示し、実際の写像空間のホモトピー同値へ進む。
+特徴づけは順向き Prop 6.2.1.17、逆向き Cor 6.2.6.5 に分けて証明する。
+B2〜B5 は未完了。対象ビルド（1635 jobs）・公理監査（73 宣言、標準三公理のみ）は成功。
 
 ## 4. 主要宣言
 
@@ -66,5 +72,16 @@ h Fun での一意性、およびパラメータ付きの二胞体の adjunct �
 | `QCatAdjunction.rightAdjointIso`・`leftAdjointIso` | 共通の随伴を持つ一胞体間の同型 | 実装済み |
 | `QCatAdjunction.rightAdjointFunctorIso`・`leftAdjointFunctorIso` | 同じ一意性を既存の FunctorIso 型で公開 | 実装済み |
 | `QCatAdjunction.homEquiv a U V` | h Fun(Z,Y)(U≫F,V) ≃ h Fun(Z,X)(U,V≫G) | 実装済み |
+| `qcatHomFunctor_faithful` | h Fun の表示の忠実性 | 実装済み |
+| `functorCellToNatTrans`・`functorCellToNatTrans_id`・`functorCellToNatTrans_comp` | 二胞体の通常の自然変換への評価と関手性 | 実装済み |
+| `functorCellToNatTrans_homotopy`・`qcatCellOfHomotopy_toNatTrans` | A1c の自然変換との一致 | 実装済み |
+| `QCatAdjunction.mkOfHomTriangles` | h Fun に表示した二つの三角恒等式から随伴を構成 | 実装済み |
+| `bicategoryAdjunct_naturality_right`・`bicategoryAdjunct_naturality_left` | adjunct 対応の二変数の自然性（任意の双圏） | 実装済み |
+| `QCatAdjunction.homEquiv_naturality_right`・`homEquiv_naturality_left` | h Fun に表示した同じ自然性 | 実装済み |
+| `intervalFamily_boundary`・`intervalFamily_zero`・`intervalFamily_one` | 区間模型の固定端点の式 | 実装済み |
+| `intervalFamilyCurry`・`intervalFamilyUncurry_curry` | 端点を指定した区間の族の普遍性 | 実装済み |
+| `intervalFamilyHomotopy`・`intervalFamilyEdge`・`intervalFamilyOfEdge` | 区間模型の族と定値関手間の辺を相互変換 | 実装済み |
+| `intervalFamilyOfEdge_edge`・`intervalFamilyEdge_ofEdge`・`intervalFamilyEdgeEquiv` | 商を取る前の二つの変換の両逆・全単射 | 実装済み |
+| `intervalFamilyHom`・`intervalFamilyHom_surjective` | 区間模型の族 → h Fun の Hom と全射性（X が quasicategory） | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |

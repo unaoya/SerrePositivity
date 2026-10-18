@@ -34,3 +34,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.QCatAdjunction.leftAdjointFunctorIso
 
 #check @SerrePositivity.InfinityCategories.QCatAdjunction.homEquiv
+
+#check @SerrePositivity.InfinityCategories.qcatHomFunctor_faithful
+
+#check @SerrePositivity.InfinityCategories.functorCellToNatTrans_homotopy
+
+#check @SerrePositivity.InfinityCategories.qcatCellOfHomotopy_toNatTrans
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.mkOfHomTriangles
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.homEquiv_naturality_right
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.homEquiv_naturality_left
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyEdgeEquiv
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHom_surjective
