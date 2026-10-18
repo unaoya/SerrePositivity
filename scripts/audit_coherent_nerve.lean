@@ -96,6 +96,10 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_cell
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_common_cell
 #check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_common_cell
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_zero_overlap_general
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_zero_overlap_general
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_zero_overlap_general
+#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_zero_overlap_general
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace
 #check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_heq
@@ -136,6 +140,12 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_ulift_image
 #print axioms SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
 #check @SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_overlap
+#check @SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_overlap
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_composition_overlap
+#check @SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_composition_overlap
 #print axioms SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_congr
 #check @SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_congr
 #print axioms SerrePositivity.InfinityCategories.Coherent.thickeningFunctor_comp_map
@@ -144,6 +154,22 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_comp
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_simplex_eq
 #check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_simplex_eq
+#print axioms SerrePositivity.InfinityCategories.Coherent.mem_pathThrough_iff_first
+#check @SerrePositivity.InfinityCategories.Coherent.mem_pathThrough_iff_first
+#print axioms SerrePositivity.InfinityCategories.Coherent.mem_pathAvoids_iff_last
+#check @SerrePositivity.InfinityCategories.Coherent.mem_pathAvoids_iff_last
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowFace
+#check @SerrePositivity.InfinityCategories.Coherent.pathHollowFace
+#print axioms SerrePositivity.InfinityCategories.Coherent.iSup_pathHollowFace
+#check @SerrePositivity.InfinityCategories.Coherent.iSup_pathHollowFace
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowCover
+#check @SerrePositivity.InfinityCategories.Coherent.pathHollowCover
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowFace_le
+#check @SerrePositivity.InfinityCategories.Coherent.pathHollowFace_le
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowGlue
+#check @SerrePositivity.InfinityCategories.Coherent.pathHollowGlue
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowGlue_on_face
+#check @SerrePositivity.InfinityCategories.Coherent.pathHollowGlue_on_face
 #print axioms SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
 #check @SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
 #print axioms SerrePositivity.InfinityCategories.Coherent.cubeBoundary
@@ -218,6 +244,18 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_map_heq
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_id
 #check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_id
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowPoint
+#check @SerrePositivity.InfinityCategories.Coherent.hornHollowPoint
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowFaceHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornHollowFaceHom
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowFaceHom_compatible
+#check @SerrePositivity.InfinityCategories.Coherent.hornHollowFaceHom_compatible
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornHollowHom
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowHom_on_face
+#check @SerrePositivity.InfinityCategories.Coherent.hornHollowHom_on_face
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowHom_extension
+#check @SerrePositivity.InfinityCategories.Coherent.hornHollowHom_extension
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace_independent
 #check @SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace_independent
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_independent

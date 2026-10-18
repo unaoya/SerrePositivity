@@ -1203,8 +1203,15 @@ native な合成面への同型 `pathThroughIso` と、零座標面・他の合�
 `homOfLE inf_le_left ≫ hornInnerCompositionHom b =
  homOfLE inf_le_right ≫ hornInnerCompositionHom c` を与える。
 前提は元の内部ホーン、0<i<last、0<b,c<last のみで、Kan 性や全区間の Hom の存在は不要。
-明示的な公開 196 宣言を公理監査済み。
-残工程：全区間の零座標面と合成面の添字をそろえ、
-空洞部分への貼合せ、延長からの
-豊穣関手の復元、ホーンへの制限、`Quasicategory` を証明する。γ1 全体は未完了。
+全区間の零座標面・合成面の添字を統一し、`iSup_pathHollowFace` により面族の和が
+`pathHollow` と厳密に等しいことを証明した。部分単体集合の多重余等化子を使い、
+`hornHollowFaceHom_compatible` の全ての交わりでの一致から、追加の整合性仮定なしに
+`hornHollowHom` を構成した。`hornHollowHom_on_face` は各面への制限を回収する。
+`hornHollowHom_extension` の型は、内部ホーン σ、0<i<last と端点 Hom の Kan 性から、
+`∃ g : nerve (Path (ULift.up 0) (ULift.up last)) ⟶ sHom (hornObj σ 0) (hornObj σ last),
+ ∀ j, (pathHollowFace (hornHollowPoint i h0 hn) j).ι ≫ g = hornHollowFaceHom σ h0 hn j`。
+他の Hom の Kan 性や全区間の Hom 写像の存在は前提にしていない。
+明示的な公開 215 宣言を公理監査済み。
+残工程：延長と真部分区間の回収から豊穣関手を復元し、単位・合成、ホーンへの制限、
+`Quasicategory` を証明する。γ1 全体は未完了。
 各段の実施記録はコミットメッセージへ置き、計画本文には現在地と残工程を短く残す。
