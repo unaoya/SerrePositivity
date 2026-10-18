@@ -109,3 +109,4 @@ public import SerrePositivity.KST.ProExcision.ShufflePath
 public import SerrePositivity.KST.ProExcision.ShuffleSurjective
 public import SerrePositivity.KST.ProExcision.ShuffleSwap
 public import SerrePositivity.KST.ProExcision.ShuffleSwapSign
+public import SerrePositivity.KST.ProExcision.ShuffleInsert
