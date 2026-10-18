@@ -39,6 +39,7 @@ run_cmd do
   Lean.logInfo m!"K-L2 namespace audit: {count} declarations; standard three axioms only"
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -70,6 +71,33 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.regularActionCoordinate_whisker
 #print axioms SerrePositivity.KST.Comparison.regularActionCoordinate_whisker
+
+
+-- ActionBarSquares.lean
+
+#check @SerrePositivity.KST.Comparison.actionBarBase
+#print axioms SerrePositivity.KST.Comparison.actionBarBase
+
+#check @SerrePositivity.KST.Comparison.actionBarTotal
+#print axioms SerrePositivity.KST.Comparison.actionBarTotal
+
+#check @SerrePositivity.KST.Comparison.actionBarProjection
+#print axioms SerrePositivity.KST.Comparison.actionBarProjection
+
+#check @SerrePositivity.KST.Comparison.regularBarRowIso_fst
+#print axioms SerrePositivity.KST.Comparison.regularBarRowIso_fst
+
+#check @SerrePositivity.KST.Comparison.actionBarPrefix
+#print axioms SerrePositivity.KST.Comparison.actionBarPrefix
+
+#check @SerrePositivity.KST.Comparison.actionBarCoordinate_naturality
+#print axioms SerrePositivity.KST.Comparison.actionBarCoordinate_naturality
+
+#check @SerrePositivity.KST.Comparison.actionBarSquare
+#print axioms SerrePositivity.KST.Comparison.actionBarSquare
+
+#check @SerrePositivity.KST.Comparison.actionBarSquare_isHomotopyPullback
+#print axioms SerrePositivity.KST.Comparison.actionBarSquare_isHomotopyPullback
 
 
 -- AlternativePullback.lean
@@ -667,6 +695,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.SimplicialRing.simplexToComponents_natural
 #print axioms SerrePositivity.KST.Comparison.SimplicialRing.simplexToComponents_natural
+
+
+-- ProductHomotopyPullback.lean
+
+#check @SerrePositivity.KST.Comparison.productPullbackSquare
+#print axioms SerrePositivity.KST.Comparison.productPullbackSquare
+
+#check @SerrePositivity.KST.Comparison.productProjection_rlp
+#print axioms SerrePositivity.KST.Comparison.productProjection_rlp
+
+#check @SerrePositivity.KST.Comparison.kanReplacement_kan
+#print axioms SerrePositivity.KST.Comparison.kanReplacement_kan
+
+#check @SerrePositivity.KST.Comparison.productPullback_isHomotopyPullback
+#print axioms SerrePositivity.KST.Comparison.productPullback_isHomotopyPullback
 
 
 -- RegularBar.lean
