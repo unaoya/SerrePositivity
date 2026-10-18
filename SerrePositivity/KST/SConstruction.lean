@@ -87,4 +87,9 @@ public import SerrePositivity.KST.SConstruction.KStageHomotopyFunctor
 
 public import SerrePositivity.KST.SConstruction.MultiStageConnected
 
+public import SerrePositivity.KST.SConstruction.SimplicialPath
+public import SerrePositivity.KST.SConstruction.SimplicialPathContraction
+public import SerrePositivity.KST.SConstruction.SPathRealization
+public import SerrePositivity.KST.SConstruction.SPathBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -4072,3 +4072,143 @@ instance monicKKanSequence_positive_isConnected (X : StableModel.{u}) (r : ℕ) 
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3009 jobs）、公理監査成功（1089 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.34 単体的経路構成の実際の収縮と S の経路実現の弱可縮性
+
+先頭頂点を追加する既存の SimplexPrefix 関手で前合成し、任意の値の圏 C の単体的対象 X から
+第 n 段が X_(n+1) となる経路構成を作った。先頭頂点への制限で元の零段への augmentation を作り、
+全次数の σ₀ により追加退化を構成した。全ての追加退化恒等式を既存の単体恒等式で証明した。
+値の圏の対象の宇宙と射の宇宙は独立で、極限・充填性の仮定は不要。
+
+値が単体集合の場合、経路構成の対角から元の零段への射影と定数経路の切断を構成した。
+切断と射影の合成は元の零段で厳密に恒等となる。
+経路実現上では、先頭頂点を固定し、区間の単体に従って各後続頂点を先頭へ移す
+単調自己写像 simplicialPathCut を明示し、全単体作用素との自然性と両端点を計算した。
+これにより、射影と切断の合成から恒等射への実際の区間ホモトピー
+simplicialPathDiagonalContraction を構成した。対角の Kan 性は仮定していない。
+
+経路の対角の射影は全 anodyne 反転関手で可逆であり、元の零段が可縮 Kan なら
+経路の対角から一点への射も全 anodyne 反転関手で可逆となる。
+この一般定理を単体的 core S に適用し、sPathRealization C の弱可縮性を証明した。
+入力は零対象を持つ quasicategory で足り、安定性は追加仮定として不要。
+
+追加した先頭頂点を忘れる面 δ₀ の全単体作用素に関する自然性を証明し、
+経路構成から元の単体的対象への自然変換、および対角の境界射を構成した。
+S の場合の実際の境界射は sPathRealizationBoundary C である。
+この境界射の homotopy fiber の計算、反復 S への適用後の fiber と loop の比較、
+既存の suspension 構造射との照合は引き続き未証明。
+経路全空間の弱可縮性のみから Ω 条件を結論してはいない。
+Core・Stable・F1・HA・Spectra・CategoryTheory の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u v w`、
+`open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下の正確な型。
+
+```lean
+def simplicialPathVertex (d : SimplexCategory) :
+    ⦋0⦌ ⟶ SimplexPrefix.functor.obj d
+
+lemma simplicialPathVertex_zero : simplicialPathVertex ⦋0⦌ =
+    SimplexCategory.δ (1 : Fin 2)
+
+lemma simplicialPathVertex_naturality {d e : SimplexCategory} (f : d ⟶ e) :
+    simplicialPathVertex d ≫ SimplexPrefix.functor.map f = simplicialPathVertex e
+
+def simplicialPath {C : Type u} [Category.{v} C] (X : SimplicialObject C) :
+    SimplicialObject C
+
+def simplicialPathAugmentation {C : Type u} [Category.{v} C] (X : SimplicialObject C) :
+    simplicialPath X ⟶ (Functor.const SimplexCategoryᵒᵖ).obj (X.obj (Opposite.op ⦋0⦌))
+
+def augmentedSimplicialPath {C : Type u} [Category.{v} C] (X : SimplicialObject C) :
+    SimplicialObject.Augmented C
+
+def simplicialPathExtraDegeneracy {C : Type u} [Category.{v} C] (X : SimplicialObject C) :
+    SimplicialObject.Augmented.ExtraDegeneracy (augmentedSimplicialPath X)
+
+def simplicialPathCut (d : SimplexCategory) (t : (Δ[1] : SSet.{u}).obj (Opposite.op d)) :
+    SimplexPrefix.functor.obj d ⟶ SimplexPrefix.functor.obj d
+
+lemma simplicialPathCut_naturality {d e : SimplexCategory} (f : d ⟶ e)
+    (t : (Δ[1] : SSet.{u}).obj (Opposite.op e)) :
+    SimplexPrefix.functor.map f ≫ simplicialPathCut e t =
+      simplicialPathCut d ((Δ[1] : SSet.{u}).map f.op t) ≫ SimplexPrefix.functor.map f
+
+lemma simplicialPathCut_zero (d : SimplexCategory) :
+    simplicialPathCut d (SimplexPrefix.endpoint.{u} d 0) =
+      SimplexCategory.isTerminalZero.from (SimplexPrefix.functor.obj d) ≫
+        simplicialPathVertex d
+
+lemma simplicialPathCut_one (d : SimplexCategory) :
+    simplicialPathCut d (SimplexPrefix.endpoint.{u} d 1) = 𝟙 (SimplexPrefix.functor.obj d)
+
+def simplicialPathSection (X : SimplicialObject SSet.{u}) :
+    (Functor.const SimplexCategoryᵒᵖ).obj (X.obj (Opposite.op ⦋0⦌)) ⟶ simplicialPath X
+
+def simplicialPathDiagonalProjection (X : SimplicialObject SSet.{u}) :
+    simplicialDiagonalFunctor.obj (simplicialPath X) ⟶ X.obj (Opposite.op ⦋0⦌)
+
+def simplicialPathDiagonalSection (X : SimplicialObject SSet.{u}) :
+    X.obj (Opposite.op ⦋0⦌) ⟶ simplicialDiagonalFunctor.obj (simplicialPath X)
+
+def simplicialPathDiagonalCylinder (X : SimplicialObject SSet.{u}) :
+    simplicialDiagonalFunctor.obj (simplicialPath X) ⊗ (Δ[1] : SSet.{u}) ⟶
+      simplicialDiagonalFunctor.obj (simplicialPath X)
+
+lemma simplicialPathDiagonalSection_projection (X : SimplicialObject SSet.{u}) :
+    simplicialPathDiagonalSection X ≫ simplicialPathDiagonalProjection X = 𝟙 _
+
+lemma simplicialPathDiagonalCylinder_zero (X : SimplicialObject SSet.{u}) :
+    SSet.ι₀ ≫ simplicialPathDiagonalCylinder X =
+      simplicialPathDiagonalProjection X ≫ simplicialPathDiagonalSection X
+
+lemma simplicialPathDiagonalCylinder_one (X : SimplicialObject SSet.{u}) :
+    SSet.ι₁ ≫ simplicialPathDiagonalCylinder X = 𝟙 _
+
+def simplicialPathDiagonalContraction (X : SimplicialObject SSet.{u}) :
+    SSet.Homotopy (simplicialPathDiagonalProjection X ≫ simplicialPathDiagonalSection X)
+      (𝟙 (simplicialDiagonalFunctor.obj (simplicialPath X)))
+
+lemma simplicialPathDiagonalProjection_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    (X : SimplicialObject SSet.{u}) : IsIso (L.map (simplicialPathDiagonalProjection X))
+
+lemma simplicialPathDiagonal_toPoint_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    (X : SimplicialObject SSet.{u}) (hX : IsContractibleKan (X.obj (Opposite.op ⦋0⦌))) :
+    IsIso (L.map (toUnit (simplicialDiagonalFunctor.obj (simplicialPath X))))
+
+def sPathRealization (C : SSet.{u}) : SSet.{u}
+
+def sPathRealizationProjection (C : SSet.{u}) : sPathRealization C ⟶ coreSConstruction 0 C
+
+lemma sPathRealization_toPoint_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    IsIso (L.map (toUnit (sPathRealization C)))
+
+def simplicialPathTail (d : SimplexCategory) : d ⟶ SimplexPrefix.functor.obj d
+
+lemma simplicialPathTail_naturality {d e : SimplexCategory} (f : d ⟶ e) :
+    simplicialPathTail d ≫ SimplexPrefix.functor.map f = f ≫ simplicialPathTail e
+
+def simplicialPathBoundary {C : Type u} [Category.{v} C] (X : SimplicialObject C) :
+    simplicialPath X ⟶ X
+
+def simplicialPathDiagonalBoundary (X : SimplicialObject SSet.{u}) :
+    simplicialDiagonalFunctor.obj (simplicialPath X) ⟶ simplicialDiagonalFunctor.obj X
+
+def sPathRealizationBoundary (C : SSet.{u}) : sPathRealization C ⟶ diagonalCoreSConstruction C
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。前節までの候補列・各段の成分での関手法則・
+全正次数の段の連結性に加え、単体的経路構成・実際の対角の変形収縮・S の経路実現の弱可縮性と
+境界射まで証明済み。
+経路の homotopy fiber 比較と既存の構造射との照合、正の段の Ω 条件・delooping、
+高い次数と負次数の消滅を含む BF 連結スペクトル、スペクトル関手の構成は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3069 jobs）、公理監査成功（1118 宣言、標準三公理のみ）。追加公理・sorry なし。

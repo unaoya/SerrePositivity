@@ -3034,3 +3034,63 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.kKanSequence_positive_isConnected
 #check @SerrePositivity.KST.SConstruction.monicKKanSequence_positive_isConnected
 #print axioms SerrePositivity.KST.SConstruction.monicKKanSequence_positive_isConnected
+
+-- 単体的経路構成・実際の収縮・S の経路実現の弱可縮性
+#check @SerrePositivity.KST.SConstruction.simplicialPathVertex
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathVertex
+#check @SerrePositivity.KST.SConstruction.simplicialPathVertex_zero
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathVertex_zero
+#check @SerrePositivity.KST.SConstruction.simplicialPathVertex_naturality
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathVertex_naturality
+#check @SerrePositivity.KST.SConstruction.simplicialPath
+#print axioms SerrePositivity.KST.SConstruction.simplicialPath
+#check @SerrePositivity.KST.SConstruction.simplicialPathAugmentation
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathAugmentation
+#check @SerrePositivity.KST.SConstruction.augmentedSimplicialPath
+#print axioms SerrePositivity.KST.SConstruction.augmentedSimplicialPath
+#check @SerrePositivity.KST.SConstruction.simplicialPathExtraDegeneracy
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathExtraDegeneracy
+#check @SerrePositivity.KST.SConstruction.simplicialPathCut
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathCut
+#check @SerrePositivity.KST.SConstruction.simplicialPathCut_naturality
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathCut_naturality
+#check @SerrePositivity.KST.SConstruction.simplicialPathCut_zero
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathCut_zero
+#check @SerrePositivity.KST.SConstruction.simplicialPathCut_one
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathCut_one
+#check @SerrePositivity.KST.SConstruction.simplicialPathSection
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathSection
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalProjection
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalProjection
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection_projection
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection_projection
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_zero
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_zero
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_one
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_one
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalContraction
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalContraction
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalProjection_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalProjection_image_isIso
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonal_toPoint_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonal_toPoint_image_isIso
+#check @SerrePositivity.KST.SConstruction.sPathRealization
+#print axioms SerrePositivity.KST.SConstruction.sPathRealization
+#check @SerrePositivity.KST.SConstruction.sPathRealizationProjection
+#print axioms SerrePositivity.KST.SConstruction.sPathRealizationProjection
+#check @SerrePositivity.KST.SConstruction.sPathRealization_toPoint_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.sPathRealization_toPoint_image_isIso
+#check @SerrePositivity.KST.SConstruction.simplicialPathTail
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathTail
+#check @SerrePositivity.KST.SConstruction.simplicialPathTail_naturality
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathTail_naturality
+#check @SerrePositivity.KST.SConstruction.simplicialPathBoundary
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathBoundary
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalBoundary
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalBoundary
+#check @SerrePositivity.KST.SConstruction.sPathRealizationBoundary
+#print axioms SerrePositivity.KST.SConstruction.sPathRealizationBoundary
