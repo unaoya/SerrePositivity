@@ -2045,7 +2045,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 担当は N。正本は `formalization-plans/e-infinity-algebras.md` §3 と
 `formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
-現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射まで実装。
+現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射、
+strict な図式・錐の coherent nerve での表示まで実装。
 離散図式の比較と 𝒮 の空積は実装済み。一般の coherent な錐との比較、end の一般の Kan 性・
 同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
@@ -2190,7 +2191,46 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開83宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開107宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+
+### strict な図式・錐の coherent 表示
+
+`StrictNerveMaps.lean` は、Hom の宇宙 u と対象の宇宙 v が異なる場合も、
+図式の始域を `SSet.uliftFunctor.{v,u}.obj (nerve I)` に統一する。
+対象と射を持ち上げた圏 `AsSmall.{v} I` の nerve との **SSet の同型** `nerveAsSmallIso I` を構成し、
+元の図式を後合成して F1 の既存の `nerveToCoherent C` に渡す。
+圏同値だけを持ち上げた nerve の同型として扱う構成ではない。
+
+```lean
+strictCoherentDiagram (F : I ⥤ C) :
+  (SSet.uliftFunctor.{v,u}).obj (nerve I) ⟶ SimplicialNerve C
+
+strictCoherentCone (c : Cone F) : JoinCone (strictCoherentDiagram F)
+
+strictCoherentCone_vertex (c : Cone F) :
+  (strictCoherentCone c).vertex = coherentNerveVertex c.pt
+```
+
+前提は `I : Type u`、`[SmallCategory I]`、`C : Type v`、`[Category.{u} C]`、
+`[SimplicialCategory C]` のみ。局所 Kan 性や錐の極限性は構成に不要。
+`StrictCones.lean` は `WithInitial (AsSmall.{v} I)` から C への実際の通常の関手を作り、
+その始対象の nerve の錐を元の添字圏上へ制限する。
+`strictCoherentConeMap_inr` は元の図式上での厳密な固定条件、
+`strictCoherentConeMap_inl` は左頂点の厳密な表示である。
+
+`StrictConeLegs.lean` の `strictCoherentConeLeg c i` は、右因子の頂点 i で制限した後、
+`pointJoinStdSimplexIso 0` の逆射で Δ[1] からの射に正規化した脚。
+`strictCoherentConeLeg_eq` は次の **実際の辺の等式** を証明する。
+
+```lean
+strictCoherentConeLeg c i = SSet.yonedaEquiv.symm
+  ((nerveToCoherent C).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ (c.π.app i)))
+```
+
+`strictCoherentDiagram_precomp G F` は通常の添字圏の関手による図式の制限への自然性。
+これは strict な錐の表示とその成分を確定したものであり、一般の coherent な錐を strict に
+直せることや `IsLimitCone (strictCoherentCone c)` を示したものではない。
+γ3b ではこの具体的な λ̂ を、既存の q_x と全ての coherent な錐の写像空間の比較へ接続する。
 
 ### 離散図式の比較と三つの strict 極限の Kan 性
 

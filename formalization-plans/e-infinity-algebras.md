@@ -216,14 +216,14 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | 検出・導来 fiber・重み付き end・q_x と θκ 分解、離散図式の比較は実装。一般の coherent な錐との比較は未完了 |
+| γ3b | 検出・導来 fiber・q_x と θκ 分解・離散比較・strict な図式と錐の coherent 表示を実装。一般の錐の写像空間の比較は未完了 |
 | γ3c | 𝒮 の空積は IsLimitCone として実装。SSet の積・fibration 引き戻し・塔の Kan 性を実装。𝒮 の残りと Sp は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
 γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開83宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+公開107宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
 `representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
 `representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
 重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
@@ -234,3 +234,8 @@ coherent な錐から end の点への対応と pinched Hom の fiber 比較が�
 `towerLimit_kanComplex` は零段の Kan 性と隣接遷移の Fibration 性、
 `towerLimitπ_zero_fibration` は隣接遷移の Fibration 性のみを前提とする。
 Sp の接続先は `KST/Spectra/CoherentNerve.lean` の L9 の Ω スペクトルの coherent nerve。
+
+`strictCoherentDiagram F` と `strictCoherentCone c` は実際の SSet の図式と JoinCone。
+対象・Hom の宇宙を区別し、始域は明示的な ULift N(I)。
+`strictCoherentCone_vertex` と `strictCoherentConeLeg_eq` は頂点と各脚を元の strict な錐と同定する。
+局所 Kan 性・極限性・一般の coherent な錐の strict 化をこの構成の前提にしない。

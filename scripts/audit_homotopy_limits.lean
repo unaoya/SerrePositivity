@@ -171,3 +171,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms spaceEmptyProductCone
 #check @spaceEmptyProductCone_isLimitCone
 #print axioms spaceEmptyProductCone_isLimitCone
+#check @nerveAsSmallUp
+#print axioms nerveAsSmallUp
+#check @nerveAsSmallDown
+#print axioms nerveAsSmallDown
+#check @nerveAsSmallIso
+#print axioms nerveAsSmallIso
+#check @nerveAsSmallIso_vertex
+#print axioms nerveAsSmallIso_vertex
+#check @resizedNerveMap
+#print axioms resizedNerveMap
+#check @resizedNerveMap_precomp
+#print axioms resizedNerveMap_precomp
+#check @resizedNerveMap_vertex
+#print axioms resizedNerveMap_vertex
+#check @resizedNerveMap_edge
+#print axioms resizedNerveMap_edge
+#check @strictCoherentDiagram
+#print axioms strictCoherentDiagram
+#check @strictCoherentDiagram_vertex
+#print axioms strictCoherentDiagram_vertex
+#check @strictCoherentDiagram_precomp
+#print axioms strictCoherentDiagram_precomp
+#check @strictConeFunctor
+#print axioms strictConeFunctor
+#check @strictConeFunctor_restriction
+#print axioms strictConeFunctor_restriction
+#check @strictConeFunctor_star
+#print axioms strictConeFunctor_star
+#check @nerveInitialCone_left
+#print axioms nerveInitialCone_left
+#check @strictCoherentConeMap
+#print axioms strictCoherentConeMap
+#check @strictCoherentConeMap_inr
+#print axioms strictCoherentConeMap_inr
+#check @strictCoherentCone
+#print axioms strictCoherentCone
+#check @strictCoherentConeMap_inl
+#print axioms strictCoherentConeMap_inl
+#check @strictCoherentCone_vertex
+#print axioms strictCoherentCone_vertex
+#check @nerveInitialCone_vertexLeg
+#print axioms nerveInitialCone_vertexLeg
+#check @strictConeFunctor_leg
+#print axioms strictConeFunctor_leg
+#check @strictCoherentConeLeg
+#print axioms strictCoherentConeLeg
+#check @strictCoherentConeLeg_eq
+#print axioms strictCoherentConeLeg_eq

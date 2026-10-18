@@ -14,3 +14,6 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentablePro
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTerminal
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EmptyCone
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
+public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
+public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCones
+public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeLegs
