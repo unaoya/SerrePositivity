@@ -909,3 +909,672 @@ SerrePositivity.InfinityCategories.isQCatEquivalence_fatJoinComparison_fixedLeft
       (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
       (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1} K A) ⋯ p)
 ```
+
+## S3 の準備：coslice と余錐の関手圏の比較同値
+
+S3 全体は未完了。直接定義の coslice と太い coslice、その後の固定図式上の余錐の族への
+比較は同値となり、余極限性を余錐の族の始対象性で判定できる。相対境界充填への接続、
+ΣΩ の関手性・自然な選択比較・自己同値と S4〜S7 は残る。
+対象・集約ビルド（1913 jobs）、全 406 宣言／24 モジュールの標準三公理監査に成功。
+公開型（前提は各型のとおり）：
+
+```lean
+SerrePositivity.InfinityCategories.stableFatJoinRightCylinderShuffle.{u_1} : (A B P : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} A
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        B)
+      P)
+    (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} A
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} B P))
+SerrePositivity.InfinityCategories.stableFatJoinTensorRight.{u_1} : (A B P : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fatJoin.{u_1} A B) P)
+    (SerrePositivity.InfinityCategories.fatJoin.{u_1} A
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} B P))
+SerrePositivity.InfinityCategories.stableFatJoinTensorRight_inl.{u_1} : ∀ (A B P : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} A B) P)
+      (SerrePositivity.InfinityCategories.stableFatJoinTensorRight.{u_1} A B P))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} A P)
+      (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} A
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} B P)))
+SerrePositivity.InfinityCategories.stableFatJoinTensorRight_inr.{u_1} : ∀ (A B P : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoinInr.{u_1} A B) P)
+      (SerrePositivity.InfinityCategories.stableFatJoinTensorRight.{u_1} A B P))
+    (SerrePositivity.InfinityCategories.fatJoinInr.{u_1} A
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} B P))
+SerrePositivity.InfinityCategories.stableFatJoinTensorRight_cylinder.{u_1} : ∀ (A B P : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoinCylinder.{u_1} A B) P)
+      (SerrePositivity.InfinityCategories.stableFatJoinTensorRight.{u_1} A B P))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.stableFatJoinRightCylinderShuffle.{u_1} A B P)
+      (SerrePositivity.InfinityCategories.fatJoinCylinder.{u_1} A
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} B P)))
+@SerrePositivity.InfinityCategories.stableFatJoinTensorRight_naturality.{u_1} : ∀ {P Q : SSet.{u_1}}
+  (f : Quiver.Hom.{u_1, u_1 + 1} P Q) (A B : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoin.{u_1} A B) f)
+      (SerrePositivity.InfinityCategories.stableFatJoinTensorRight.{u_1} A B Q))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.stableFatJoinTensorRight.{u_1} A B P)
+      (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} A)
+        (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1} B f)))
+SerrePositivity.InfinityCategories.stableFatJoinTensorRight_projection.{u_1} : ∀ (A B P : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.stableFatJoinTensorRight.{u_1} A B P)
+      (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} A)
+        (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} B P)))
+    (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fatJoin.{u_1} A B) P)
+@SerrePositivity.InfinityCategories.laxCoslice.{u_1} : {K X : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} K X → SSet.{u_1}
+@SerrePositivity.InfinityCategories.laxCoslice_quasicategory.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X), SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)
+@SerrePositivity.InfinityCategories.coconeFamilyLaxCosliceMap.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.coconeFamily.{u_1} p)
+      (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)
+@SerrePositivity.InfinityCategories.isQCatEquivalence_coconeFamilyLaxCosliceMap.{u_1} : ∀ {K X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}
+    (SerrePositivity.InfinityCategories.coconeFamilyLaxCosliceMap.{u_1} p)
+@SerrePositivity.InfinityCategories.laxCosliceCurryFamily.{u_1} : {A K X : SSet.{u_1}} →
+  Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A) X →
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoin.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        A)
+      X
+@SerrePositivity.InfinityCategories.laxCosliceCurryFamily_fixed.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A) X),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A) F)
+      p →
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+          A)
+        (SerrePositivity.InfinityCategories.laxCosliceCurryFamily.{u_1} F))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} K A) p)
+@SerrePositivity.InfinityCategories.laxCosliceCurry.{u_1} : {A K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A) X) →
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
+            F)
+          p →
+        Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)
+SerrePositivity.InfinityCategories.laxCosliceRightInput.{u_1} : (A K : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1} A
+    (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fatJoin.{u_1} K
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      A)
+SerrePositivity.InfinityCategories.laxCosliceCylinderInput.{u_1} : (A K : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} K
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      A)
+    (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fatJoin.{u_1} K
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      A)
+SerrePositivity.InfinityCategories.laxCosliceCylinderInput_zero.{u_1} : ∀ (A K : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1} SSet.ι₀.{u_1} A)
+      (SerrePositivity.InfinityCategories.laxCosliceCylinderInput.{u_1} A K))
+    (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      A)
+SerrePositivity.InfinityCategories.laxCosliceCylinderInput_one.{u_1} : ∀ (A K : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1} SSet.ι₁.{u_1} A)
+      (SerrePositivity.InfinityCategories.laxCosliceCylinderInput.{u_1} A K))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1} K A)
+      (SerrePositivity.InfinityCategories.laxCosliceRightInput.{u_1} A K))
+@SerrePositivity.InfinityCategories.laxCosliceFamily_fixed.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        A)
+      (CategoryTheory.MonoidalClosed.uncurry.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+              X)
+            (SerrePositivity.InfinityCategories.functorVertex.{u_1} p)))))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} K A) p)
+@SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1} : {A K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p) →
+      Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A) X
+@SerrePositivity.InfinityCategories.laxCosliceUncurry_fixed.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
+      (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1} f))
+    p
+@SerrePositivity.InfinityCategories.laxCosliceUncurry_inr.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInr.{u_1} K A)
+      (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1} f))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.laxCosliceRightInput.{u_1} A K)
+      (CategoryTheory.MonoidalClosed.uncurry.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+              X)
+            (SerrePositivity.InfinityCategories.functorVertex.{u_1} p)))))
+@SerrePositivity.InfinityCategories.laxCosliceUncurry_cylinder.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinCylinder.{u_1} K A)
+      (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1} f))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.laxCosliceCylinderInput.{u_1} A K)
+      (CategoryTheory.MonoidalClosed.uncurry.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+              X)
+            (SerrePositivity.InfinityCategories.functorVertex.{u_1} p)))))
+@SerrePositivity.InfinityCategories.laxCosliceRightInput_curryFamily.{u_1} : ∀ {A K X : SSet.{u_1}}
+  (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A) X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.laxCosliceRightInput.{u_1} A K)
+      (SerrePositivity.InfinityCategories.laxCosliceCurryFamily.{u_1} F))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInr.{u_1} K A) F)
+@SerrePositivity.InfinityCategories.laxCosliceCylinderInput_curryFamily.{u_1} : ∀ {A K X : SSet.{u_1}}
+  (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A) X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.laxCosliceCylinderInput.{u_1} A K)
+      (SerrePositivity.InfinityCategories.laxCosliceCurryFamily.{u_1} F))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinCylinder.{u_1} K A) F)
+@SerrePositivity.InfinityCategories.laxCosliceUncurry_curry.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A) X)
+  (hF :
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A) F)
+      p),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1}
+      (SerrePositivity.InfinityCategories.laxCosliceCurry.{u_1} F hF))
+    F
+@SerrePositivity.InfinityCategories.laxCosliceCurryFamily_uncurry.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.laxCosliceCurryFamily.{u_1}
+      (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1} f))
+    (CategoryTheory.MonoidalClosed.uncurry.{u_1, u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+        (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+          (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+            (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+            X)
+          (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))))
+@SerrePositivity.InfinityCategories.laxCosliceCurry_uncurry.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.laxCosliceCurry.{u_1}
+      (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1} f) ⋯)
+    f
+@SerrePositivity.InfinityCategories.laxCosliceHomEquiv.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    (A : SSet.{u_1}) →
+      Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p))
+        (Subtype.{u_1 + 1} fun F =>
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
+              F)
+            p)
+@SerrePositivity.InfinityCategories.laxCosliceCurryFamily_precomp.{u_1} : ∀ {A B K X : SSet.{u_1}}
+  (a : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K B) X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoin.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        a)
+      (SerrePositivity.InfinityCategories.laxCosliceCurryFamily.{u_1} F))
+    (SerrePositivity.InfinityCategories.laxCosliceCurryFamily.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) a) F))
+@SerrePositivity.InfinityCategories.laxCosliceCurry_precomp.{u_1} : ∀ {A B K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (a : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K B) X)
+  (hF :
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K B) F)
+      p),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.laxCosliceCurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) a) F)
+      ⋯)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+      (SerrePositivity.InfinityCategories.laxCosliceCurry.{u_1} F hF))
+@SerrePositivity.InfinityCategories.laxCosliceUncurry_precomp.{u_1} : ∀ {A B K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (a : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (f : Quiver.Hom.{u_1, u_1 + 1} B (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a f))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) a)
+      (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1} f))
+@SerrePositivity.InfinityCategories.laxCosliceUncurry_injective.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X},
+  Function.Injective.{u_1 + 1, u_1 + 1} SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1}
+SerrePositivity.InfinityCategories.join_right_coproduct_isPushout.{u_1} : ∀ (A B K : SSet.{u_1}),
+  CategoryTheory.IsPushout.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K A)
+    (SerrePositivity.InfinityCategories.joinInl.{u_1} K B)
+    (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      CategoryTheory.Limits.coprod.inl.{u_1, u_1 + 1})
+    (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      CategoryTheory.Limits.coprod.inr.{u_1, u_1 + 1})
+SerrePositivity.InfinityCategories.fatJoin_right_coproduct_isPushout.{u_1} : ∀ (A B K : SSet.{u_1}),
+  CategoryTheory.IsPushout.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
+    (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K B)
+    (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      CategoryTheory.Limits.coprod.inl.{u_1, u_1 + 1})
+    (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      CategoryTheory.Limits.coprod.inr.{u_1, u_1 + 1})
+SerrePositivity.InfinityCategories.exists_joinRightCylinder_extension_of_relative_homotopy.{u_1} : ∀
+  (A K X : SSet.{u_1}) [SSet.Quasicategory.{u_1} X]
+  (f g : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.join.{u_1} K A) X),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K A) f)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K A) g) →
+    ∀ (H : SSet.Homotopy.{u_1} f g),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.joinInl.{u_1} K A)
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            (SSet.RelativeMorphism.Homotopy.h.{u_1} H))
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} K
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K A)
+              f)) →
+        (∀
+            (x :
+              CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.join.{u_1} K A)
+                (Opposite.op.{1} { len := 0 })),
+            SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}
+              (SSet.Edge.toTruncated.{u_1}
+                (SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge.{u_1} H x))) →
+          ∃ F,
+            Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                  (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+                    (SerrePositivity.InfinityCategories.equivalenceCylinderEndpoint.{u_1} A false))
+                  F)
+                f ∧
+              Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                  (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+                    (SerrePositivity.InfinityCategories.equivalenceCylinderEndpoint.{u_1} A true))
+                  F)
+                g
+SerrePositivity.InfinityCategories.exists_fatJoinRightCylinder_extension_of_relative_homotopy.{u_1} : ∀
+  (A K X : SSet.{u_1}) [SSet.Quasicategory.{u_1} X]
+  (f g : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A) X),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A) f)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A) g) →
+    ∀ (H : SSet.Homotopy.{u_1} f g),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            (SSet.RelativeMorphism.Homotopy.h.{u_1} H))
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} K
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
+              f)) →
+        (∀
+            (x :
+              CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoin.{u_1} K A)
+                (Opposite.op.{1} { len := 0 })),
+            SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}
+              (SSet.Edge.toTruncated.{u_1}
+                (SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge.{u_1} H x))) →
+          ∃ F,
+            Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                  (SerrePositivity.InfinityCategories.fatJoinMap.{u_1}
+                    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+                    (SerrePositivity.InfinityCategories.equivalenceCylinderEndpoint.{u_1} A false))
+                  F)
+                f ∧
+              Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                  (SerrePositivity.InfinityCategories.fatJoinMap.{u_1}
+                    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+                    (SerrePositivity.InfinityCategories.equivalenceCylinderEndpoint.{u_1} A true))
+                  F)
+                g
+SerrePositivity.InfinityCategories.isPrecompositionEquivalence_joinRightCylinderProjection.{u_1} : ∀ (A K : SSet.{u_1}),
+  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}
+    (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} A
+        SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))
+SerrePositivity.InfinityCategories.joinRightCylinderProjection_epi.{u_1} : ∀ (A K : SSet.{u_1}),
+  CategoryTheory.Epi.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} A
+        SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))
+SerrePositivity.InfinityCategories.nonempty_fixedDiagramVertexIso_of_joinRightCylinder.{u_1} : ∀ (A K X : SSet.{u_1})
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X)
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.join.{u_1} K
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} A
+          SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))
+      X)
+  (hF :
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.joinInl.{u_1} K
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} A
+            SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))
+        F)
+      p),
+  Nonempty.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.VertexIso.{u_1}
+      (SerrePositivity.InfinityCategories.fixedDiagramVertex.{u_1}
+        (SerrePositivity.InfinityCategories.joinInl.{u_1} K A) p
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+            (SerrePositivity.InfinityCategories.equivalenceCylinderEndpoint.{u_1} A false))
+          F)
+        ⋯)
+      (SerrePositivity.InfinityCategories.fixedDiagramVertex.{u_1}
+        (SerrePositivity.InfinityCategories.joinInl.{u_1} K A) p
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+            (SerrePositivity.InfinityCategories.equivalenceCylinderEndpoint.{u_1} A true))
+          F)
+        ⋯))
+SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinRightCylinderProjection.{u_1} : ∀
+  (A K : SSet.{u_1}),
+  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}
+    (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} A
+        SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))
+SerrePositivity.InfinityCategories.fatJoinRightCylinderProjection_epi.{u_1} : ∀ (A K : SSet.{u_1}),
+  CategoryTheory.Epi.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} A
+        SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))
+SerrePositivity.InfinityCategories.nonempty_fixedDiagramVertexIso_of_fatJoinRightCylinder.{u_1} : ∀ (A K X : SSet.{u_1})
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X)
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fatJoin.{u_1} K
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} A
+          SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))
+      X)
+  (hF :
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} A
+            SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))
+        F)
+      p),
+  Nonempty.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.VertexIso.{u_1}
+      (SerrePositivity.InfinityCategories.fixedDiagramVertex.{u_1}
+        (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A) p
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+            (SerrePositivity.InfinityCategories.equivalenceCylinderEndpoint.{u_1} A false))
+          F)
+        ⋯)
+      (SerrePositivity.InfinityCategories.fixedDiagramVertex.{u_1}
+        (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A) p
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.fatJoinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+            (SerrePositivity.InfinityCategories.equivalenceCylinderEndpoint.{u_1} A true))
+          F)
+        ⋯))
+@SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex.{u_1} : {A K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p) →
+      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+        (SerrePositivity.InfinityCategories.vertexFiber.{u_1}
+          (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+            (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K A)) X)
+          (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))
+        (Opposite.op.{1} { len := 0 })
+@SerrePositivity.InfinityCategories.nonempty_functorIso_of_sliceUnderFixedDiagramVertexIso.{u_1} : ∀
+  {A K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+  (e :
+    SerrePositivity.InfinityCategories.VertexIso.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex.{u_1} f)
+      (SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex.{u_1} g)),
+  Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g)
+@SerrePositivity.InfinityCategories.nonempty_sliceUnderFixedDiagramVertexIso_of_functorIso.{u_1} : ∀
+  {A K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  {f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)}
+  (e : SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g),
+  Nonempty.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.VertexIso.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex.{u_1} f)
+      (SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex.{u_1} g))
+@SerrePositivity.InfinityCategories.nonempty_functorIso_iff_sliceUnderFixedDiagramVertexIso.{u_1} : ∀
+  {A K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)),
+  Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g) ↔
+    Nonempty.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.VertexIso.{u_1}
+        (SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex.{u_1} f)
+        (SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex.{u_1} g))
+@SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex.{u_1} : {A K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p) →
+      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+        (SerrePositivity.InfinityCategories.vertexFiber.{u_1}
+          (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+            (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A))
+            X)
+          (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))
+        (Opposite.op.{1} { len := 0 })
+@SerrePositivity.InfinityCategories.nonempty_functorIso_of_laxCosliceFixedDiagramVertexIso.{u_1} : ∀
+  {A K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p))
+  (e :
+    SerrePositivity.InfinityCategories.VertexIso.{u_1}
+      (SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex.{u_1} f)
+      (SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex.{u_1} g)),
+  Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g)
+@SerrePositivity.InfinityCategories.nonempty_laxCosliceFixedDiagramVertexIso_of_functorIso.{u_1} : ∀
+  {A K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  {f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)}
+  (e : SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g),
+  Nonempty.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.VertexIso.{u_1}
+      (SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex.{u_1} f)
+      (SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex.{u_1} g))
+@SerrePositivity.InfinityCategories.nonempty_functorIso_iff_laxCosliceFixedDiagramVertexIso.{u_1} : ∀
+  {A K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g) ↔
+    Nonempty.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.VertexIso.{u_1}
+        (SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex.{u_1} f)
+        (SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex.{u_1} g))
+@SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertexEquiv.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    (A : SSet.{u_1}) →
+      Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.vertexFiber.{u_1}
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K A))
+              X)
+            (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))
+          (Opposite.op.{1} { len := 0 }))
+@SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertexEquiv.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    (A : SSet.{u_1}) →
+      Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p))
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.vertexFiber.{u_1}
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A))
+              X)
+            (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))
+          (Opposite.op.{1} { len := 0 }))
+@SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+      (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)
+@SerrePositivity.InfinityCategories.laxCosliceUncurry_comp_cosliceLaxMap.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.laxCosliceUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f (SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} p)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1} K A)
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1} f))
+@SerrePositivity.InfinityCategories.cosliceLaxMap_fixedDiagramVertex.{u_1} : ∀ {A K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.fixedDiagramPre.{u_1}
+            (SerrePositivity.InfinityCategories.joinInl.{u_1} K A)
+            (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
+            (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1} K A) ⋯ p)
+          (Opposite.op.{1} { len := 0 })))
+      (SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex.{u_1} f))
+    (SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f (SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} p)))
+@SerrePositivity.InfinityCategories.nonempty_functorIso_of_cosliceLaxMap.{u_1} : ∀ {A K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+  (e :
+    SerrePositivity.InfinityCategories.FunctorIso.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f (SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} p))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g (SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} p))),
+  Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g)
+@SerrePositivity.InfinityCategories.exists_functorIso_comp_cosliceLaxMap.{u_1} : ∀ {K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X) (A : SSet.{u_1})
+  (a : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.laxCoslice.{u_1} p)),
+  ∃ f,
+    Nonempty.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.FunctorIso.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f (SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} p))
+        a)
+@SerrePositivity.InfinityCategories.isQCatEquivalence_cosliceLaxMap.{u_1} : ∀ {K X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} (SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} p)
+SerrePositivity.InfinityCategories.stableFatJoinTensorRight_comparison.{u_1} : ∀ (A B P : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.stableFatJoinTensorRight.{u_1} A B P)
+      (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1} A
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} B P)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1} A B) P)
+      (SerrePositivity.InfinityCategories.joinTensorRight.{u_1} A B P))
+@SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap_comp_coconeFamilyLaxCosliceMap.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap.{u_1} p)
+      (SerrePositivity.InfinityCategories.coconeFamilyLaxCosliceMap.{u_1} p))
+    (SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} p)
+@SerrePositivity.InfinityCategories.isQCatEquivalence_cosliceCoconeFamilyMap.{u_1} : ∀ {K X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}
+    (SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap.{u_1} p)
+@SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex.{u_1} : ∀ {X Y : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]
+  (e : SerrePositivity.InfinityCategories.QCatEquivalence.{u_1} X Y)
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},
+  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} x →
+    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (SerrePositivity.InfinityCategories.QCatEquivalence.hom.{u_1} e) (Opposite.op.{1} { len := 0 })))
+        x)
+@SerrePositivity.InfinityCategories.QCatEquivalence.isInitialVertex_iff.{u_1} : ∀ {X Y : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]
+  (e : SerrePositivity.InfinityCategories.QCatEquivalence.{u_1} X Y)
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} x ↔
+    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (SerrePositivity.InfinityCategories.QCatEquivalence.hom.{u_1} e) (Opposite.op.{1} { len := 0 })))
+        x)
+@SerrePositivity.InfinityCategories.isColimitCone_iff_isInitialVertex_coconeFamily.{u_1} : ∀ {K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c ↔
+    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}
+      ((SerrePositivity.InfinityCategories.coconeFamilyVertexEquiv.{u_1} p) c)
+```

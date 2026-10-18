@@ -145,6 +145,72 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.stable_fatJoinInl_mono
 #print axioms SerrePositivity.InfinityCategories.isQCatEquivalence_fatJoinComparison_fixedLeftDiagram
 
+#print axioms SerrePositivity.InfinityCategories.stableFatJoinRightCylinderShuffle
+#print axioms SerrePositivity.InfinityCategories.stableFatJoinTensorRight
+#print axioms SerrePositivity.InfinityCategories.stableFatJoinTensorRight_inl
+#print axioms SerrePositivity.InfinityCategories.stableFatJoinTensorRight_inr
+#print axioms SerrePositivity.InfinityCategories.stableFatJoinTensorRight_cylinder
+#print axioms SerrePositivity.InfinityCategories.stableFatJoinTensorRight_naturality
+#print axioms SerrePositivity.InfinityCategories.stableFatJoinTensorRight_projection
+#print axioms SerrePositivity.InfinityCategories.laxCoslice
+#print axioms SerrePositivity.InfinityCategories.laxCoslice_quasicategory
+#print axioms SerrePositivity.InfinityCategories.coconeFamilyLaxCosliceMap
+#print axioms SerrePositivity.InfinityCategories.isQCatEquivalence_coconeFamilyLaxCosliceMap
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCurryFamily
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCurryFamily_fixed
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCurry
+#print axioms SerrePositivity.InfinityCategories.laxCosliceRightInput
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCylinderInput
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCylinderInput_zero
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCylinderInput_one
+#print axioms SerrePositivity.InfinityCategories.laxCosliceFamily_fixed
+#print axioms SerrePositivity.InfinityCategories.laxCosliceUncurry
+#print axioms SerrePositivity.InfinityCategories.laxCosliceUncurry_fixed
+#print axioms SerrePositivity.InfinityCategories.laxCosliceUncurry_inr
+#print axioms SerrePositivity.InfinityCategories.laxCosliceUncurry_cylinder
+#print axioms SerrePositivity.InfinityCategories.laxCosliceRightInput_curryFamily
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCylinderInput_curryFamily
+#print axioms SerrePositivity.InfinityCategories.laxCosliceUncurry_curry
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCurryFamily_uncurry
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCurry_uncurry
+#print axioms SerrePositivity.InfinityCategories.laxCosliceHomEquiv
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCurryFamily_precomp
+#print axioms SerrePositivity.InfinityCategories.laxCosliceCurry_precomp
+#print axioms SerrePositivity.InfinityCategories.laxCosliceUncurry_precomp
+#print axioms SerrePositivity.InfinityCategories.laxCosliceUncurry_injective
+#print axioms SerrePositivity.InfinityCategories.join_right_coproduct_isPushout
+#print axioms SerrePositivity.InfinityCategories.fatJoin_right_coproduct_isPushout
+#print axioms SerrePositivity.InfinityCategories.exists_joinRightCylinder_extension_of_relative_homotopy
+#print axioms SerrePositivity.InfinityCategories.exists_fatJoinRightCylinder_extension_of_relative_homotopy
+#print axioms SerrePositivity.InfinityCategories.isPrecompositionEquivalence_joinRightCylinderProjection
+#print axioms SerrePositivity.InfinityCategories.joinRightCylinderProjection_epi
+#print axioms SerrePositivity.InfinityCategories.nonempty_fixedDiagramVertexIso_of_joinRightCylinder
+#print axioms SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinRightCylinderProjection
+#print axioms SerrePositivity.InfinityCategories.fatJoinRightCylinderProjection_epi
+#print axioms SerrePositivity.InfinityCategories.nonempty_fixedDiagramVertexIso_of_fatJoinRightCylinder
+#print axioms SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertex
+#print axioms SerrePositivity.InfinityCategories.nonempty_functorIso_of_sliceUnderFixedDiagramVertexIso
+#print axioms SerrePositivity.InfinityCategories.nonempty_sliceUnderFixedDiagramVertexIso_of_functorIso
+#print axioms SerrePositivity.InfinityCategories.nonempty_functorIso_iff_sliceUnderFixedDiagramVertexIso
+#print axioms SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertex
+#print axioms SerrePositivity.InfinityCategories.nonempty_functorIso_of_laxCosliceFixedDiagramVertexIso
+#print axioms SerrePositivity.InfinityCategories.nonempty_laxCosliceFixedDiagramVertexIso_of_functorIso
+#print axioms SerrePositivity.InfinityCategories.nonempty_functorIso_iff_laxCosliceFixedDiagramVertexIso
+#print axioms SerrePositivity.InfinityCategories.sliceUnderFixedDiagramVertexEquiv
+#print axioms SerrePositivity.InfinityCategories.laxCosliceFixedDiagramVertexEquiv
+#print axioms SerrePositivity.InfinityCategories.cosliceLaxMap
+#print axioms SerrePositivity.InfinityCategories.laxCosliceUncurry_comp_cosliceLaxMap
+#print axioms SerrePositivity.InfinityCategories.cosliceLaxMap_fixedDiagramVertex
+#print axioms SerrePositivity.InfinityCategories.nonempty_functorIso_of_cosliceLaxMap
+#print axioms SerrePositivity.InfinityCategories.exists_functorIso_comp_cosliceLaxMap
+#print axioms SerrePositivity.InfinityCategories.isQCatEquivalence_cosliceLaxMap
+#print axioms SerrePositivity.InfinityCategories.stableFatJoinTensorRight_comparison
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap_comp_coconeFamilyLaxCosliceMap
+#print axioms SerrePositivity.InfinityCategories.isQCatEquivalence_cosliceCoconeFamilyMap
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.isInitialVertex_iff
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_isInitialVertex_coconeFamily
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -159,7 +225,20 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SuspensionSquare,
     `SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams,
     `SerrePositivity.InfinityCategories.Stable.CoconeFamily,
-    `SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison]
+    `SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison,
+    `SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor,
+    `SerrePositivity.InfinityCategories.Stable.LaxCoslice,
+    `SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry,
+    `SerrePositivity.InfinityCategories.Stable.LaxCosliceUniversal,
+    `SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality,
+    `SerrePositivity.InfinityCategories.Stable.RightJoinCoproduct,
+    `SerrePositivity.InfinityCategories.Stable.CosliceCylinderExtension,
+    `SerrePositivity.InfinityCategories.Stable.CosliceCylinderFixedDiagram,
+    `SerrePositivity.InfinityCategories.Stable.CosliceFixedDiagramIso,
+    `SerrePositivity.InfinityCategories.Stable.CosliceLaxEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.FatJoinRightTensorComparison,
+    `SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
