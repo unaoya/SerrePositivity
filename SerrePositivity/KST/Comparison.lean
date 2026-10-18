@@ -125,6 +125,8 @@ public import SerrePositivity.KST.Comparison.BarFundamentalMultiplication
 
 public import SerrePositivity.KST.Comparison.HatGLPositiveHomotopy
 
+public import SerrePositivity.KST.Comparison.HatGLCoefficientHomotopy
+
 /-!
 # K-L2：比較定理の入口
 

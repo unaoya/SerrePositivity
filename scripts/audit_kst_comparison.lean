@@ -104,6 +104,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2306,6 +2307,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
 
 
+-- HatGLCoefficientHomotopy.lean
+
+#check @SerrePositivity.KST.Comparison.hatGLCoefficientHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.hatGLCoefficientHomotopyMulEquiv
+
+
 -- HatGLComponentIso.lean
 
 #check @SerrePositivity.KST.Comparison.matrixCoefficientEdge
@@ -2919,6 +2926,36 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.mappingCylinderToDouble_isPushout
 #print axioms SerrePositivity.KST.Comparison.mappingCylinderToDouble_isPushout
+
+
+-- MatrixHomotopyProduct.lean
+
+#check @SerrePositivity.KST.Comparison.matrixHomotopyEntryHom
+#print axioms SerrePositivity.KST.Comparison.matrixHomotopyEntryHom
+
+#check @SerrePositivity.KST.Comparison.matrixHomotopyEntryHom_bijective
+#print axioms SerrePositivity.KST.Comparison.matrixHomotopyEntryHom_bijective
+
+#check @SerrePositivity.KST.Comparison.matrixPositiveHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.matrixPositiveHomotopyMulEquiv
+
+
+-- MatrixPointedSimplex.lean
+
+#check @SerrePositivity.KST.Comparison.matrixMap_ext
+#print axioms SerrePositivity.KST.Comparison.matrixMap_ext
+
+#check @SerrePositivity.KST.Comparison.matrixMapOfEntries_entry
+#print axioms SerrePositivity.KST.Comparison.matrixMapOfEntries_entry
+
+#check @SerrePositivity.KST.Comparison.matrixPtSimplex
+#print axioms SerrePositivity.KST.Comparison.matrixPtSimplex
+
+#check @SerrePositivity.KST.Comparison.matrixPtSimplex_entry
+#print axioms SerrePositivity.KST.Comparison.matrixPtSimplex_entry
+
+#check @SerrePositivity.KST.Comparison.matrixRelStruct
+#print axioms SerrePositivity.KST.Comparison.matrixRelStruct
 
 
 -- MatrixSpace.lean
@@ -3564,6 +3601,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.replacementComparison_pullback_isIso
 #print axioms SerrePositivity.KST.Comparison.replacementComparison_pullback_isIso
+
+
+-- RingBasepointTranslation.lean
+
+#check @SerrePositivity.KST.Comparison.ringDegenerateVertex
+#print axioms SerrePositivity.KST.Comparison.ringDegenerateVertex
+
+#check @SerrePositivity.KST.Comparison.ringDegenerateVertex_natural
+#print axioms SerrePositivity.KST.Comparison.ringDegenerateVertex_natural
+
+#check @SerrePositivity.KST.Comparison.ringDegenerateVertex_zero
+#print axioms SerrePositivity.KST.Comparison.ringDegenerateVertex_zero
+
+#check @SerrePositivity.KST.Comparison.ringTranslationIso
+#print axioms SerrePositivity.KST.Comparison.ringTranslationIso
+
+#check @SerrePositivity.KST.Comparison.ringTranslationIso_basepoint
+#print axioms SerrePositivity.KST.Comparison.ringTranslationIso_basepoint
+
+#check @SerrePositivity.KST.Comparison.ringPositiveHomotopyBasepointEquiv
+#print axioms SerrePositivity.KST.Comparison.ringPositiveHomotopyBasepointEquiv
 
 
 -- SegalRealizationComparison.lean
