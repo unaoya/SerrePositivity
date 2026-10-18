@@ -1337,5 +1337,67 @@ lemma cosliceFiberSimplex_naturality {X : SSet.{u}} {x y : X _⦋0⦌}
         X.map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)).op
           (cosliceFiberSimplex n s)
 
+lemma pinchedFront_rev (n : ℕ) :
+    SimplexCategory.rev.map (PinchedHom.front n) = SimplexCategory.δ 0
+
+lemma pinchedLastVertex_rev (n : ℕ) :
+    SimplexCategory.rev.map (PinchedHom.lastVertex n) =
+      SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0
+
+lemma pinchedExtend_rev {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    SimplexCategory.rev.map (PinchedHom.extend (SimplexCategory.rev.map α)) =
+      SimplexCategory.mkHom (prependOrderHom α.toOrderHom)
+
+lemma pinchedConstant_opObjEquiv {X : SSet.{u}} (x : X _⦋0⦌) (n : ℕ) :
+    SSet.opObjEquiv (PinchedHom.constant (X := X.op) (SSet.opObjEquiv.symm x) n) =
+      PinchedHom.constant x n
+
+def pinchedLeftSimplexVal {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (s : (pinchedHomLeft x y) _⦋n⦌) : X _⦋n + 1⦌
+
+lemma pinchedLeftSimplexVal_source {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (s : (pinchedHomLeft x y) _⦋n⦌) :
+    X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op (pinchedLeftSimplexVal n s) = x
+
+lemma pinchedLeftSimplexVal_target {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (s : (pinchedHomLeft x y) _⦋n⦌) :
+    X.δ 0 (pinchedLeftSimplexVal n s) = PinchedHom.constant y n
+
+def pinchedLeftSimplexInverse {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (t : {s : X _⦋n + 1⦌ //
+      X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op s = x ∧
+        X.δ 0 s = PinchedHom.constant y n}) : (pinchedHomLeft x y) _⦋n⦌
+
+lemma pinchedLeftSimplexVal_injective {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ) :
+    Function.Injective (pinchedLeftSimplexVal (x := x) (y := y) n)
+
+def pinchedLeftSimplexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) (n : ℕ) :
+    (pinchedHomLeft x y) _⦋n⦌ ≃
+      {s : X _⦋n + 1⦌ // X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op s = x ∧
+        X.δ 0 s = PinchedHom.constant y n}
+
+lemma pinchedLeftSimplexVal_naturality {X : SSet.{u}} {x y : X _⦋0⦌}
+    {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (s : (pinchedHomLeft x y) _⦋n⦌) :
+    pinchedLeftSimplexVal m ((pinchedHomLeft x y).map α.op s) =
+      X.map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)).op
+        (pinchedLeftSimplexVal n s)
+
+lemma cosliceFiberSimplex_equiv_symm {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (t : {s : X _⦋n + 1⦌ //
+      X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op s = x ∧
+        X.δ 0 s = PinchedHom.constant y n}) :
+    cosliceFiberSimplex n ((cosliceFiberSimplexEquiv x y n).symm t) = t.val
+
+def pinchedLeftCosliceFiberIso {X : SSet.{u}} (x y : X _⦋0⦌) :
+    pinchedHomLeft x y ≅ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y
+
+noncomputable def pointedSpaceFiberPinchedIso (s : SpaceInfinity.{u} _⦋0⦌) :
+    vertexFiber pointedSpaceProjection s ≅ pinchedHomLeft pointSpaceVertex s
+
+noncomputable def leftUnstraighteningFiberPinchedIso {C : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
+    vertexFiber (leftUnstraighteningProjection F) c ≅
+      pinchedHomLeft pointSpaceVertex (F.app (Opposite.op ⦋0⦌) c)
+
 end SerrePositivity.InfinityCategories
 ```
