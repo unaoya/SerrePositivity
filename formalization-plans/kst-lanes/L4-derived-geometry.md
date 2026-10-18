@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,544宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,571宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -965,6 +965,11 @@
 - 集約ビルド（3,860 jobs）と1,544宣言の監査に成功。標準3公理のみ、KTheory import なし。
 - 次の作業：局所収縮を層化後の完全性へ移し、自由層の Čech 鎖複体の完全性と injective への Hom による非輪状性を証明する。実際の Dqc のアフィン導来同値はまだ未完了。
 
+- `sheafification_exactAt_of_locally_exactAt` により、各点の十分小さい開上の完全性から層化後の完全性を任意の複体形状で証明済み。
+- `representableOpenCechExtraDegeneracy` と `representableFreeCech_exactAt` により、被覆元に含まれる開での表現可能関手と自由加群による Čech の局所収縮を構成済み。
+- `formalCoproductCechFunctorIso` と `formalCoproductEvalCovariantIso` は、局所収縮を元の自由前層の Čech へ戻す比較の入力。
+- 追加後の集約ビルド（3,868 jobs）と1,571宣言の監査に成功。標準3公理のみ、KTheory import なし。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1140,6 +1145,9 @@
 | `rightDerivedSectionsPresheafIso`・`affineRightDerivedSections_finiteBasicOpenVanishing` | DerivedGeometry/RightDerivedSectionsPresheaf | 実装・対象ビルド済み |
 | `freeModuleSheafOnOpenHomEquiv`・`freeModuleSheafOnOpen_map_mono` | DerivedGeometry/FreeSheafOnOpen | 実装・対象ビルド済み |
 | `injectiveModuleSheaf_restriction_surjective` | DerivedGeometry/FreeSheafOnOpen | 実装・対象ビルド済み |
+| `sheafification_isZero_of_locallyZero`・`sheafification_exactAt_of_locally_exactAt` | DerivedGeometry/LocallyZeroSheafification・SheafificationLocalExact | 実装・対象ビルド済み |
+| `formalCoproductCechFunctorIso`・`formalCoproductEvalCovariantIso` | DerivedGeometry/FormalCoproductCechFunctor・FormalCoproductEvalCovariant | 実装・対象ビルド済み |
+| `representableOpenCechExtraDegeneracy`・`representableFreeCech_exactAt` | DerivedGeometry/RepresentableOpenCechContraction・RepresentableFreeCechContraction | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
