@@ -313,3 +313,4 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderMono
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderExtension
 public import SerrePositivity.InfinityCategories.F1.StdSimplexFunctorRigidity
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderIntervalExtension
+public import SerrePositivity.InfinityCategories.F1.JoinEndpointPullbacks

@@ -1503,3 +1503,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinder_extension_intervalProjection
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinder_extension_over_interval_exists
 #check @SerrePositivity.InfinityCategories.relativeJoin_extension_of_prism_over_interval
+#check @SerrePositivity.InfinityCategories.isPullback_joinInl_naturality
+#check @SerrePositivity.InfinityCategories.isPullback_joinInr_naturality

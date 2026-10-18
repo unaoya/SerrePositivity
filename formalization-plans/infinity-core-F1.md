@@ -6829,5 +6829,11 @@ lemma relativeJoin_extension_of_prism_over_interval {X Y E : SSet.{u}}
       relativeJoinPrism f ≫ G = H ∧ relativeJoinInr f (𝟙 Y) ≫ G = g ∧
         G ≫ p = relativeJoinProjection f (𝟙 Y)
 
+lemma isPullback_joinInl_naturality {A B K L : SSet.{u}} (f : A ⟶ B) (g : K ⟶ L) :
+    IsPullback (joinInl A K) f (joinMap f g) (joinInl B L)
+
+lemma isPullback_joinInr_naturality {A B K L : SSet.{u}} (f : A ⟶ B) (g : K ⟶ L) :
+    IsPullback (joinInr A K) g (joinMap f g) (joinInr B L)
+
 end SerrePositivity.InfinityCategories
 ```
