@@ -27,3 +27,6 @@ public import SerrePositivity.InfinityCategories.F1.TransportIdentity
 public import SerrePositivity.InfinityCategories.F1.InitialHornJoin
 public import SerrePositivity.InfinityCategories.F1.CocartesianCoslice
 public import SerrePositivity.InfinityCategories.F1.CocartesianCosliceConverse
+public import SerrePositivity.InfinityCategories.F1.CosliceRightAnodyne
+public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
+public import SerrePositivity.InfinityCategories.F1.SquareComparison

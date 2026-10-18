@@ -560,5 +560,53 @@ lemma isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration {X Y : SSet.{
     IsCocartesianEdge q (SSet.yonedaEquiv e) ↔
       TrivialKanFibration (relativeCosliceMap e q (horn 1 0))
 
+
+lemma relativeCosliceMap_lift_of_rightAnodyne {A K X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) [InnerFibration q]
+    (A₀ : A.Subcomplex) (K₀ : K.Subcomplex) (hK : rightAnodyneExtensions K₀.ι) :
+    HasLiftingProperty A₀.ι (relativeCosliceMap p q K₀)
+
+lemma relativeCosliceMap_trivialKanFibration_of_rightAnodyne {K X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) [InnerFibration q]
+    (K₀ : K.Subcomplex) (hK : rightAnodyneExtensions K₀.ι) :
+    TrivialKanFibration (relativeCosliceMap p q K₀)
+
+lemma endpointInclusion_rightAnodyne :
+    rightAnodyneExtensions (stdSimplex.δ (0 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1])
+
+lemma triangleLongEdge_rightAnodyne :
+    rightAnodyneExtensions (stdSimplex.δ (1 : Fin 3) : (Δ[1] : SSet.{u}) ⟶ Δ[2])
+
+lemma triangleLongFace_rightAnodyne :
+    rightAnodyneExtensions (stdSimplex.face (n
+
+noncomputable def squareComparison {E F B C : SSet.{u}} {f : E ⟶ F} {p : E ⟶ B}
+    {q : F ⟶ C} {g : B ⟶ C} (sq : CommSq f p q g) : E ⟶ pullback q g
+
+lemma squareComparison_exists_lift {E F B C A D : SSet.{u}} {f : E ⟶ F} {p : E ⟶ B}
+    {q : F ⟶ C} {g : B ⟶ C} (sq : CommSq f p q g)
+    [TrivialKanFibration (squareComparison sq)] (i : A ⟶ D) [Mono i]
+    (a : A ⟶ E) (b : D ⟶ F) (c : D ⟶ B)
+    (hab : a ≫ f = i ≫ b) (hac : a ≫ p = i ≫ c) (hbc : b ≫ q = c ≫ g) :
+    ∃ l : D ⟶ E, i ≫ l = a ∧ l ≫ f = b ∧ l ≫ p = c
+
+lemma squareComparison_trivialKanFibration_horiz_comp
+    {E₂ E₁ E₀ B₂ B₁ B₀ : SSet.{u}}
+    {f : E₂ ⟶ E₁} {g : E₁ ⟶ E₀} {p₂ : E₂ ⟶ B₂} {p₁ : E₁ ⟶ B₁}
+    {p₀ : E₀ ⟶ B₀} {b : B₂ ⟶ B₁} {c : B₁ ⟶ B₀}
+    (sq₂ : CommSq f p₂ p₁ b) (sq₁ : CommSq g p₁ p₀ c)
+    [TrivialKanFibration (squareComparison sq₂)]
+    [TrivialKanFibration (squareComparison sq₁)] :
+    TrivialKanFibration (squareComparison (sq₂.horiz_comp sq₁))
+
+lemma squareComparison_trivialKanFibration_cancel_left
+    {E₂ E₁ E₀ B₂ B₁ B₀ : SSet.{u}}
+    {f : E₂ ⟶ E₁} {g : E₁ ⟶ E₀} {p₂ : E₂ ⟶ B₂} {p₁ : E₁ ⟶ B₁}
+    {p₀ : E₀ ⟶ B₀} {b : B₂ ⟶ B₁} {c : B₁ ⟶ B₀}
+    (sq₂ : CommSq f p₂ p₁ b) (sq₁ : CommSq g p₁ p₀ c)
+    [TrivialKanFibration b] [TrivialKanFibration (squareComparison sq₂)]
+    [TrivialKanFibration (squareComparison (sq₂.horiz_comp sq₁))] :
+    TrivialKanFibration (squareComparison sq₁)
+
 end SerrePositivity.InfinityCategories
 ```
