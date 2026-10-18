@@ -61,6 +61,8 @@ run_cmd do
 
 
 
+
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -457,6 +459,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
 
 
+-- ExInfinityGrouplike.lean
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_componentsMulEquiv
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_componentsMulEquiv
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_isGrouplike
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_isGrouplike
+
+
 -- ExInfinityKan.lean
 
 #check @SerrePositivity.KST.Comparison.exInfinity_hornFilling
@@ -464,6 +475,69 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exInfinity_kanComplex
 #print axioms SerrePositivity.KST.Comparison.exInfinity_kanComplex
+
+
+-- ExInfinityLocalization.lean
+
+#check @SerrePositivity.KST.Comparison.exInfinity_preservesMonomorphisms
+#print axioms SerrePositivity.KST.Comparison.exInfinity_preservesMonomorphisms
+
+#check @SerrePositivity.KST.Comparison.exInfinityUnit_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.exInfinityUnit_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.exInfinityLocalizedUnitIso
+#print axioms SerrePositivity.KST.Comparison.exInfinityLocalizedUnitIso
+
+#check @SerrePositivity.KST.Comparison.exInfinity_map_localized_isIso_iff
+#print axioms SerrePositivity.KST.Comparison.exInfinity_map_localized_isIso_iff
+
+
+-- ExInfinityMonoidal.lean
+
+#check @SerrePositivity.KST.Comparison.exInfinity_monoidal
+#print axioms SerrePositivity.KST.Comparison.exInfinity_monoidal
+
+#check @SerrePositivity.KST.Comparison.exInfinityUnit_isMonoidal
+#print axioms SerrePositivity.KST.Comparison.exInfinityUnit_isMonoidal
+
+#check @SerrePositivity.KST.Comparison.exInfinityMonoidFunctor
+#print axioms SerrePositivity.KST.Comparison.exInfinityMonoidFunctor
+
+#check @SerrePositivity.KST.Comparison.exInfinityMonoidUnit
+#print axioms SerrePositivity.KST.Comparison.exInfinityMonoidUnit
+
+#check @SerrePositivity.KST.Comparison.exInfinityMonoid_kanComplex
+#print axioms SerrePositivity.KST.Comparison.exInfinityMonoid_kanComplex
+
+#check @SerrePositivity.KST.Comparison.exInfinityMonoidUnit_hom
+#print axioms SerrePositivity.KST.Comparison.exInfinityMonoidUnit_hom
+
+#check @SerrePositivity.KST.Comparison.exInfinityMonoidUnit_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.exInfinityMonoidUnit_localized_isIso
+
+
+-- ExInfinitySimplicialMonoid.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialMonoidInternalUnit
+#print axioms SerrePositivity.KST.Comparison.simplicialMonoidInternalUnit
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoidFunctor
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoidFunctor
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoidUnit
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoidUnit
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_space
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_space
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_kanComplex
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_kanComplex
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoidUnit_space
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoidUnit_space
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoidUnit_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoidUnit_localized_isIso
 
 
 -- ExInfinityStages.lean
@@ -1204,6 +1278,18 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.loopFamilyMap_evaluation
 
 
+-- MonoidComponentMaps.lean
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMap
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMap
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.isGrouplike_of_components_surjective
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.isGrouplike_of_components_surjective
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMulEquiv
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMulEquiv
+
+
 -- MonoidComponents.lean
 
 #check @SerrePositivity.KST.Comparison.monoidSpace
@@ -1562,6 +1648,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.simplexMapContraction
 #print axioms SerrePositivity.KST.Comparison.simplexMapContraction
+
+
+-- SimplicialMonoidInternal.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialMonoidToInternal
+#print axioms SerrePositivity.KST.Comparison.simplicialMonoidToInternal
+
+#check @SerrePositivity.KST.Comparison.internalMonoidToSimplicial
+#print axioms SerrePositivity.KST.Comparison.internalMonoidToSimplicial
+
+#check @SerrePositivity.KST.Comparison.simplicialMonoidToInternal_space
+#print axioms SerrePositivity.KST.Comparison.simplicialMonoidToInternal_space
+
+#check @SerrePositivity.KST.Comparison.internalMonoidToSimplicial_space
+#print axioms SerrePositivity.KST.Comparison.internalMonoidToSimplicial_space
 
 
 -- SliceAdjunction.lean

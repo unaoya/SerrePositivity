@@ -476,6 +476,11 @@ doubleSubdivisionHornMap_boundary で二重細分の候補の horn 上の境界�
 有限単体集合から Ex∞ への写像の有限段階への因子化と遷移との整合を証明した。
 exInfinity_kanComplex により Ex∞ の Kan 性（Moss Proposition 21）を証明した。
 有限極限保存・anodyne な単位・Kan 性が揃い、Ex∞ は実際の Kan 置換となった。
+Ex∞ の単射保存と局所化可逆な射の保存・反映を証明した。
+Ex∞ の monoidal 構造と、内部モノイドの置換・単位を構成した。
+既存の SimplicialObject MonCat と内部モノイドの移送を構成し、基礎単体集合の一致を証明した。
+単体的モノイドの Ex∞ 置換と単位を構成し、基礎対象の Kan 性と単位の局所化可逆性を証明した。
+π₀ のモノイド射の関手性、置換が π₀ のモノイド同型を誘導し群状性を保つことを証明した。
 fibration 保存は未証明。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -483,8 +488,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 509 宣言の型と公理を確認した。
-さらに名前空間全体の 1016 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 536 宣言の型と公理を確認した。
+さらに名前空間全体の 1070 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -584,6 +589,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `doubleSubdivisionHornMap_boundary`、`exDoubleHornFiller_boundary` | 実装済み | 二重細分の境界条件と二回の Ex の後の horn の充填 |
 | `exInfinity_finite_factorization`、`exInfinityStage_succ` | 実装済み | 有限段階への因子化と反復列の遷移 |
 | `exInfinity_hornFilling`、`exInfinity_kanComplex` | 実装済み | Moss 2020 Proposition 21 の Kan 性 |
+| `exInfinity_map_localized_isIso_iff`、`exInfinity_preservesMonomorphisms` | 実装済み | 局所化可逆な射の保存・反映と単射保存 |
+| `exInfinitySimplicialMonoidFunctor`、`exInfinitySimplicialMonoidUnit` | 実装済み | モノイド構造を保つ実際の Kan 置換 |
+| `exInfinitySimplicialMonoid_componentsMulEquiv`、`exInfinitySimplicialMonoid_isGrouplike` | 実装済み | π₀ モノイドと群状性を保つ置換 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
