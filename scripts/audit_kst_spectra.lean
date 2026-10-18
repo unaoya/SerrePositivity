@@ -50,7 +50,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.PathContractionBody,
     `SerrePositivity.KST.Spectra.PathContraction,
     `SerrePositivity.KST.Spectra.HomotopyConstant,
-    `SerrePositivity.KST.Spectra.PathContractibility]
+    `SerrePositivity.KST.Spectra.PathContractibility,
+    `SerrePositivity.KST.Spectra.IntervalBoundary,
+    `SerrePositivity.KST.Spectra.EndpointCircle,
+    `SerrePositivity.KST.Spectra.PointedCofiber,
+    `SerrePositivity.KST.Spectra.CofiberMappingPullback,
+    `SerrePositivity.KST.Spectra.LoopPathFiber]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

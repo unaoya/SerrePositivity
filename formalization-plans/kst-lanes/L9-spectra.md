@@ -24,7 +24,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・38 モジュール 943 宣言の公理監査成功。
+対象ビルド・43 モジュール 1023 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -701,3 +701,35 @@ path の区間変数を収縮する再パラメータ付けと評価を合成し
 私有宣言を含む 38 モジュール 943 宣言で標準三公理のみ。
 未完了：終点 fiber と loopSpace の同定、次数移動の同型、整数次数群と段の独立性。
 次は終点 fiber を円からの点つき Hom に同定する。
+
+## 28. L9c の loop と path 終点 fiber の同定
+
+区間の境界を、終点と始点の余積と全単体次数で同定した。
+二端点を潰した cofiber と標準の単体的円の点つき同型を構成した。
+一般の点つき射の基礎 cofiber が点つき pushout になることを証明した。
+内部 Hom の反変関手の極限保存と基点忘却の右随伴性から、Hom の pullback を得た。
+零対象からの Hom の終対象性と、単位からの Hom の同型を使って path の終点 fiber に移した。
+円からの点つき Hom とこの fiber は実際の単体集合として同型である。
+L9b の fiberPoint を用いる形への基点の移送も行い、定数 loop の基点保存を証明した。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `intervalBoundaryMap` | 二端点の余積から境界への自然な射 |
+| `intervalBoundaryMap_isIso` | 全次数の単射・全射性による同型性 |
+| `endpointCircleIso` | 二端点の商と標準の円の点つき同型 |
+| `pointedCofiberProjection` / `.pointedCofiberDesc` | 点つき商と降下 |
+| `pointedCofiber_isPushout` | 点つき cofiber の pushout 表示 |
+| `cofiberMappingFunctor_preservesLimitsOfShape` | 反変 Hom の極限保存 |
+| `cofiberMapping_isPullback` | cofiber からの Hom の pullback 表示 |
+| `homPointIsTerminal` | 零対象からの点つき Hom の終対象性 |
+| `endpointCircleMapping_isPullback` | path の終点評価の基点上の pullback |
+| `loopPathFiberIso` | loop と基点上の path fiber の同型 |
+| `fiberIsoOfEq` | fiber の基点の等式による移送 |
+| `loopBasedPathFiberIso` | L9b の fiber と一致する形の同型 |
+| `loopBasedPathFiberIso_basepoint` | 定数 loop と fiberPoint の基点の一致 |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.5、HTT A.3.3。
+保存単位の対象ビルド 1648 jobs 成功。
+私有宣言を含む 43 モジュール 1023 宣言で標準三公理のみ。
+次は構成済みの path fiber 列と収縮から連結射の全単射性と loop の次数移動を導く。
+整数次数群・段の選択独立性・置換とスペクトルの fiber 列は未完了。

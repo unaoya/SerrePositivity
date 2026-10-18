@@ -20,3 +20,4 @@ public import SerrePositivity.KST.Spectra.EnrichedMappingLaws
 public import SerrePositivity.KST.Spectra.CoherentNerve
 public import SerrePositivity.KST.Spectra.PathSpace
 public import SerrePositivity.KST.Spectra.PathContractibility
+public import SerrePositivity.KST.Spectra.LoopPathFiber
