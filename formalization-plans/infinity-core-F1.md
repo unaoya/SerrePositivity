@@ -9127,5 +9127,133 @@ lemma leftStraighteningCandidateComparison_isQCatEquivalence
     (p : E ⟶ nerve C) [LeftFibration p] :
     IsQCatEquivalence (leftStraighteningCandidateComparison p)
 
+noncomputable def leftUnstraighteningTransformationSource
+    {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) :
+    leftUnstraightening F ⟶ relativeEdgeSourceTarget pointedSpaceProjection
+
+noncomputable def leftUnstraighteningTransformationChoiceSpace
+    {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) : SSet.{u + 1}
+
+lemma leftUnstraighteningTransformationChoiceSpace_isContractibleKan
+    {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) :
+    IsContractibleKan (leftUnstraighteningTransformationChoiceSpace F H h₀)
+
+lemma exists_leftUnstraighteningTransformation
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G) :
+    ∃ (f : leftUnstraightening F ⟶ leftUnstraightening G)
+      (W : (Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u}),
+      f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F ∧
+      prismEndpoint 0 _ ≫ W = pullback.fst pointedSpaceProjection F ∧
+      prismEndpoint 1 _ ≫ W = f ≫ pullback.fst pointedSpaceProjection G ∧
+      W ≫ pointedSpaceProjection = (Δ[1] ◁ leftUnstraighteningProjection F) ≫ H
+
+lemma relativeFunctorUncurry_naturality {A T U E B : SSet.{u}}
+    {p : E ⟶ B} {a : A ⟶ B} (f : U ⟶ relativeFunctorSpace p a) (k : T ⟶ U) :
+    relativeFunctorUncurry (k ≫ f) = (A ◁ k) ≫ relativeFunctorUncurry f
+
+noncomputable def relativeFunctorBaseChangeForward {A E B D : SSet.{u}}
+    (p : E ⟶ B) (f : D ⟶ B) (a : A ⟶ D) :
+    relativeFunctorSpace (pullback.snd p f) a ⟶ relativeFunctorSpace p (a ≫ f)
+
+noncomputable def relativeFunctorBaseChangeBackward {A E B D : SSet.{u}}
+    (p : E ⟶ B) (f : D ⟶ B) (a : A ⟶ D) :
+    relativeFunctorSpace p (a ≫ f) ⟶ relativeFunctorSpace (pullback.snd p f) a
+
+lemma relativeFunctorBaseChangeForward_uncurry {A E B D T : SSet.{u}}
+    (p : E ⟶ B) (f : D ⟶ B) (a : A ⟶ D)
+    (k : T ⟶ relativeFunctorSpace (pullback.snd p f) a) :
+    relativeFunctorUncurry (k ≫ relativeFunctorBaseChangeForward p f a) =
+      relativeFunctorUncurry k ≫ pullback.fst p f
+
+lemma relativeFunctorBaseChangeBackward_uncurry {A E B D T : SSet.{u}}
+    (p : E ⟶ B) (f : D ⟶ B) (a : A ⟶ D)
+    (k : T ⟶ relativeFunctorSpace p (a ≫ f)) :
+    relativeFunctorUncurry (k ≫ relativeFunctorBaseChangeBackward p f a) =
+      pullback.lift (relativeFunctorUncurry k) (fst A T ≫ a) (by
+        rw [relativeFunctorUncurry_projection, Category.assoc])
+
+noncomputable def relativeFunctorBaseChangeIso {A E B D : SSet.{u}}
+    (p : E ⟶ B) (f : D ⟶ B) (a : A ⟶ D) :
+    relativeFunctorSpace (pullback.snd p f) a ≅ relativeFunctorSpace p (a ≫ f)
+
+lemma relativeEdgeEndpoint_comp {X B : SSet.{u}} (p : X ⟶ B) :
+    evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ p =
+      relativeEdgeSource p ≫ pullback.snd p
+        (evaluateFunctorAt (Y := B) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
+          evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+noncomputable def relativeEdgeLiftSpaceEndpoint {A X B : SSet.{u}} (p : X ⟶ B)
+    (c : A ⟶ relativeEdgeSourceTarget p) :
+    relativeEdgeLiftSpace p c ⟶ relativeFunctorSpace p
+      (c ≫ pullback.snd p
+        (evaluateFunctorAt (Y := B) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
+          evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+
+lemma leftUnstraighteningTransformationSource_endpoint
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G) :
+    leftUnstraighteningTransformationSource F H h₀ ≫
+      pullback.snd pointedSpaceProjection
+        (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
+          evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      leftUnstraighteningProjection F ≫ G
+
+noncomputable def leftUnstraighteningTransformationEndpoint
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G) :
+    leftUnstraighteningTransformationChoiceSpace F H h₀ ⟶
+      relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+
+noncomputable def leftUnstraighteningTransformationEndpointIso
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G)
+    (x y : (leftUnstraighteningTransformationChoiceSpace F H h₀) _⦋0⦌) :
+    VertexIso ((leftUnstraighteningTransformationEndpoint F G H h₀ h₁).app _ x)
+      ((leftUnstraighteningTransformationEndpoint F G H h₀ h₁).app _ y)
+
+noncomputable def leftUnstraighteningTransformationChoice
+    {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) :
+    (leftUnstraighteningTransformationChoiceSpace F H h₀) _⦋0⦌
+
+noncomputable def leftUnstraighteningTransformationMap
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G) :
+    {f : leftUnstraightening F ⟶ leftUnstraightening G //
+      f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F}
+
+lemma leftUnstraighteningTransformationMap_vertex
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G) :
+    relativeFunctorVertex (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+      (leftUnstraighteningTransformationMap F G H h₀ h₁).val
+      (leftUnstraighteningTransformationMap F G H h₀ h₁).property =
+    (leftUnstraighteningTransformationEndpoint F G H h₀ h₁).app _
+      (leftUnstraighteningTransformationChoice F H h₀)
+
+noncomputable def leftUnstraighteningTransformationMapChoiceIso
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G)
+    (x : (leftUnstraighteningTransformationChoiceSpace F H h₀) _⦋0⦌) :
+    VertexIso (relativeFunctorVertex (leftUnstraighteningProjection G)
+      (leftUnstraighteningProjection F) (leftUnstraighteningTransformationMap F G H h₀ h₁).val
+        (leftUnstraighteningTransformationMap F G H h₀ h₁).property)
+      ((leftUnstraighteningTransformationEndpoint F G H h₀ h₁).app _ x)
+
 end SerrePositivity.InfinityCategories
 ```
