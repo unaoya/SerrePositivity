@@ -8463,5 +8463,39 @@ lemma edgewiseSimplexEquiv_naturality {X Y : SSet.{u}} (f : X ⟶ Y) (n : ℕ)
     edgewiseSimplexEquiv Y n ((edgewiseSubdivisionMap f).app (Opposite.op ⦋n⦌) s) =
       f.app (Opposite.op ⦋n + n + 1⦌) (edgewiseSimplexEquiv X n s)
 
+lemma edgewiseSubdivision_yoneda_restriction {X : SSet.{u}}
+    {m n : SimplexCategory} (α : m ⟶ n) (f : stdSimplex.obj n ⟶ edgewiseSubdivision X) :
+    SSet.yonedaEquiv (stdSimplex.map α ≫ f) =
+      edgewiseWeight.map α ≫ SSet.yonedaEquiv f
+
+lemma edgewiseSubdivision_boundary_extension {X : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 1) : SSet.{u}) ⟶ edgewiseSubdivision X)
+    (F : edgewiseWeight.obj ⦋n + 1⦌ ⟶ X)
+    (hF : ∀ i : Fin (n + 2), edgewiseWeight.map (SimplexCategory.δ i) ≫ F =
+      SSet.yonedaEquiv (boundary.ι i ≫ a)) :
+    (boundary (n + 1)).ι ≫ SSet.yonedaEquiv.symm F = a
+
+lemma edgewiseRight_boundary_hasLift_iff {X : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 1) : SSet.{u}) ⟶ edgewiseSubdivision X)
+    (b : (Δ[n + 1] : SSet.{u}) ⟶ X)
+    (sq : CommSq a (boundary (n + 1)).ι (edgewiseRight X) b) :
+    sq.HasLift ↔ ∃ F : edgewiseWeight.obj ⦋n + 1⦌ ⟶ X,
+      (∀ i : Fin (n + 2), edgewiseWeight.map (SimplexCategory.δ i) ≫ F =
+        SSet.yonedaEquiv (boundary.ι i ≫ a)) ∧
+      joinInr (Δ[n + 1] : SSet.{u}).op Δ[n + 1] ≫ F = b
+
+lemma edgewiseRight_boundary_zero_lifting (X : SSet.{u}) :
+    HasLiftingProperty (boundary.{u} 0).ι (edgewiseRight X)
+
+lemma edgewiseRight_trivialKanFibration_of_extensions (X : SSet.{u})
+    (h : ∀ (n : ℕ) (a : (boundary (n + 1) : SSet.{u}) ⟶ edgewiseSubdivision X)
+      (b : (Δ[n + 1] : SSet.{u}) ⟶ X)
+      (_ : CommSq a (boundary (n + 1)).ι (edgewiseRight X) b),
+      ∃ F : edgewiseWeight.obj ⦋n + 1⦌ ⟶ X,
+        (∀ i : Fin (n + 2), edgewiseWeight.map (SimplexCategory.δ i) ≫ F =
+          SSet.yonedaEquiv (boundary.ι i ≫ a)) ∧
+        joinInr (Δ[n + 1] : SSet.{u}).op Δ[n + 1] ≫ F = b) :
+    TrivialKanFibration (edgewiseRight X)
+
 end SerrePositivity.InfinityCategories
 ```

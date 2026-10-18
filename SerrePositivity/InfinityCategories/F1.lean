@@ -429,3 +429,4 @@ public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostHomOrdina
 public import SerrePositivity.InfinityCategories.F1.EdgewiseSubdivision
 public import SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints
 public import SerrePositivity.InfinityCategories.F1.EdgewiseStandardSimplex
+public import SerrePositivity.InfinityCategories.F1.EdgewiseBoundaryLifting

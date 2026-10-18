@@ -1816,3 +1816,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.edgewiseWeightIso
 #check @SerrePositivity.InfinityCategories.edgewiseSimplexEquiv
 #check @SerrePositivity.InfinityCategories.edgewiseSimplexEquiv_naturality
+#check @SerrePositivity.InfinityCategories.edgewiseSubdivision_yoneda_restriction
+#check @SerrePositivity.InfinityCategories.edgewiseSubdivision_boundary_extension
+#check @SerrePositivity.InfinityCategories.edgewiseRight_boundary_hasLift_iff
+#check @SerrePositivity.InfinityCategories.edgewiseRight_boundary_zero_lifting
+#check @SerrePositivity.InfinityCategories.edgewiseRight_trivialKanFibration_of_extensions
