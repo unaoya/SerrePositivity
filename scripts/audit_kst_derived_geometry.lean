@@ -14,6 +14,21 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.rightShift_postcompose,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingShiftMap_naturality,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingShiftMap_zero,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingShiftMap_add,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.complexYoneda_commShift,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.complexYoneda_commShiftIso_hom_app,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.complexYoneda_preservesHomotopy,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.nativeHomotopyYoneda,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.nativeHomotopyYonedaFacIso_commShift,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingConeComparison_inr,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingConeComparison_connecting,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableStandardConeIso_hom_eval,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.nativeHomotopyYoneda_square,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.nativeDerivedYoneda_full,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.nativeDerivedYoneda_faithful,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.complexYoneda,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.complexYoneda_additive,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.finiteCell_representable,

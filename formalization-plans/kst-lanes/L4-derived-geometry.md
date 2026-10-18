@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の path 商と元の指定 Verdier 商の tria 比較を実装済み。層の DerivedDG・DqcDGModel も平坦分解後の商へ移行済み。商自体の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
+- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の path 商と元の指定 Verdier 商の比較を実装済み。層の DerivedDG・DqcDGModel も平坦分解後の商へ移行済み。有限 cell の代表可能性を証明し、商自体の H⁰ と tria・元の指定 Verdier 商との圏同値を構成済み。三角構造と Mathlib 導来圏の最終同定、Perf、アフィン係数加群圏の同値、導来降下は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の836宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の876宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -694,6 +694,20 @@
 - 対象ビルドと836宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - 残るのは元の複体での shift・標準 cone triangle の比較、それを用いた acyclic 局所化と Mathlib 導来圏の同定。商の H⁰ の代表可能性の未実装は解消した。
 
+## 32. 三角構造の具体的な比較の現在地
+
+- `mappingShiftMap_naturality`：元の chain map の後合成に関する右 shift の自然性を証明済み。
+- `mappingShiftMap_zero`・`mappingShiftMap_add`：零・加法 shift と写像複体の比較の整合性を証明済み。次数の輸送を `mappingComplex_cast_v` で明示する。
+- `complexYoneda_commShift`：実際の代表加群関手の `CommShift ℤ` を構成済み。
+- `complexYoneda_preservesHomotopy`：元の chain homotopy は dg Yoneda の境界保存により全 dg 自然な加群ホモトピーへ送られる。
+- `nativeHomotopyYoneda` と `nativeHomotopyYonedaFacIso_commShift`：Mathlib ホモトピー圏からの実際の関手と、shift に整合する比較正方形を構成済み。
+- `mappingConeComparison_inr`・`mappingConeComparison_connecting`：標準包含と負号を含む connecting map の両立を証明済み。
+- `representableStandardConeIso_hom_eval`：既存の標準 cone 同型の評価を、入力射の等式による輸送込みで計算済み。
+- `nativeHomotopyYoneda_square`・`nativeDerivedYoneda_square`：元の H⁰ と Mathlib ホモトピー圏の比較を通して、実際の dg Yoneda と同じ関手になることを証明済み。
+- `nativeDerivedYoneda_full`・`nativeDerivedYoneda_faithful`：元の Mathlib ホモトピー圏から実際の導来 dg 加群圏への完全忠実性を証明済み。
+- 対象ビルドと876宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 標準 moduleCone 三角形の同型の組立て、distinguished triangle の保存、元のホモトピー圏と tria の三角同値は検証中。未検証のファイルはこの保存単位に含めない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -795,6 +809,12 @@
 | `DGResolution.yonedaToTria_essSurj_of_quasiEquivalence` | DGResolution/RepresentabilityTransport | 実装・対象ビルド済み |
 | `DGResolution.quotientHomotopyTriaEquivalence` | DGResolution/QuotientRepresentability | 実装・対象ビルド済み |
 | `derivedDGHomotopyTriaEquivalence`・`derivedDGHomotopyVerdierEquivalence` | DerivedGeometry/SheafPretriangulation | 実装・対象ビルド済み |
+| `LinearComplex.mappingShiftMap_zero`・`mappingShiftMap_add` | DerivedGeometry/LinearShiftNaturality | 実装・対象ビルド済み |
+| `LinearComplex.complexYoneda_commShift` | DerivedGeometry/LinearYonedaShift | 実装・対象ビルド済み |
+| `LinearComplex.nativeHomotopyYoneda`・`nativeHomotopyYonedaFacIso_commShift` | DerivedGeometry/LinearYonedaHomotopy | 実装・対象ビルド済み |
+| `LinearComplex.mappingConeComparison_inr`・`mappingConeComparison_connecting` | DerivedGeometry/LinearConeTriangles | 実装・対象ビルド済み |
+| `LinearComplex.representableStandardConeIso_hom_eval` | DerivedGeometry/LinearRepresentableConeEvaluation | 実装・対象ビルド済み |
+| `LinearComplex.nativeDerivedYoneda_full`・`nativeDerivedYoneda_faithful` | DerivedGeometry/LinearNativeComparison | 実装・対象ビルド済み |
 | `DGResolution.augmentation_triaImage_iff`・`augmentation_trW_eq` | DGResolution/SupportTransport・VerdierTransport | 実装・対象ビルド済み |
 | `DGResolution.verdierSquare`・`quotientToOriginalVerdierIsTriangulated` | DGResolution/VerdierTransport | 実装・対象ビルド済み |
 | `ResolvedComplexes`・`resolvedAcyclicComplexes`・`resolvedAugmentation_quasiEquivalence` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
