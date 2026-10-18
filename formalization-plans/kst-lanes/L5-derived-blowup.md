@@ -51,7 +51,9 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 各有限重なりへの実際の加群評価・導来評価、擬同型保存、局所化の因子分解、
 underlying 複体が当該添字での値に一致することを証明済み。
 導来評価による局所 perfect 性、その同型不変性と射影的 dg 充満部分圏を定義済み。
-canonical な cartesian 比較射と cartesian 条件は未実装。
+全次数自然変換の前後合成、図式の標準単位矢と左右作用の自然性を構成済み。
+局所埋め込みから遷移後の局所埋め込みへの指定の単位パラメータ `GradedNatTrans` を構成済み。
+その加群への作用、canonical な導来係数拡大の比較射と cartesian 条件は未実装。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -274,6 +276,9 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `FiniteOverlapVertexObject`・`finiteOverlapVertexDGFunctor`・Hom の可逆性 | FiniteOverlapVertex | 各有限重なりの局所模型の全図式係数圏への dg 埋め込み |
 | `finiteOverlapModuleEvaluation`・擬同型保存・`finiteOverlapDerivedModuleEvaluation`・因子分解・評価値の一致 | FiniteOverlapModuleEvaluation | 各有限重なりへの実際の加群・導来評価と underlying 複体の計算 |
 | `diagramLocallyPerfect`・同型不変性・`LocallyPerfectDerivedDiagramModules`・`LocallyPerfectProjectiveDiagramModules` | DiagramLocallyPerfect | 実際の導来評価による局所 perfect 条件。cartesian 条件はまだ課さない |
+| `dgGradedWhiskerRight`・`dgGradedWhiskerLeft` | GradedNaturalWhiskering | パラメータ複体に関する全次数自然性を保つ dg 関手による前後合成 |
+| `diagramModuleTransitionUnit`・左右作用公式・`diagramModuleTransitionUnit_natural` | DiagramModuleTransitionUnit | 包含に対する指定の単位矢と全 Hom 作用との自然性 |
+| `finiteOverlapTransitionGradedNatTrans` | FiniteOverlapTransitionTransformation | 局所埋め込みから遷移後の埋め込みへの指定の全次数自然変換 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -341,9 +346,10 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全1636定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1689定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は遷移に伴う canonical な導来係数拡大の比較射と cartesian 条件。
+次の実装単位は指定の全次数自然変換の図式加群への作用と、canonical な導来係数拡大の比較射。
+この指定射を使って cartesian 条件を定める。
 局所評価・局所 perfect 条件をその比較に接続する。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。

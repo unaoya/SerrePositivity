@@ -149,3 +149,6 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramModuleProjectiveEnhanceme
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapVertex
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapModuleEvaluation
 public import SerrePositivity.KST.DerivedBlowup.DiagramLocallyPerfect
+public import SerrePositivity.KST.DerivedBlowup.GradedNaturalWhiskering
+public import SerrePositivity.KST.DerivedBlowup.DiagramModuleTransitionUnit
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTransitionTransformation
