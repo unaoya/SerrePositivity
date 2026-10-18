@@ -213,3 +213,9 @@ public import SerrePositivity.InfinityCategories.Core.IntervalEndpointPullback
 public import SerrePositivity.InfinityCategories.Core.FatJoinLeftMono
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonGluing
+
+public import SerrePositivity.InfinityCategories.Core.PushoutDisjointPullback
+
+public import SerrePositivity.InfinityCategories.Core.TensorExchangePullback
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinRightMono

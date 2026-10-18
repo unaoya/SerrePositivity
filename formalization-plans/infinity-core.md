@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左因子の比較の貼り合わせも整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせも整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -7314,6 +7314,77 @@ lemma isPrecompositionEquivalence_fatJoinComparison_of_pushout_left
     (hB : IsPrecompositionEquivalence (fatJoinComparison B K))
     (hC : IsPrecompositionEquivalence (fatJoinComparison C K)) :
     IsPrecompositionEquivalence (fatJoinComparison D K)
+```
+
+### A6 続き（2026-10-18）：右因子の単射保存と比較の貼り合わせ
+
+新規11宣言。貼り合わせ部分と交わらない部分の逆像を次数ごとの分離関数で計算した。これにより `fatJoinStageEnd_right_isPullback` は右因子の任意の射に対して成立し、`fatJoinMap_right_mono` は任意の固定左因子 K に対して右因子の単射を保つ。`isPrecompositionEquivalence_fatJoinComparison_of_pushout_right` により、比較の同値条件を満たす右因子は単射を含む pushout で閉じる。
+
+検証：Core ビルド成功（1832 jobs）、続けて監査成功（累計1200宣言、標準3公理のみ）。既存の公開名・型は維持。左右両方の pushout による閉包は完成したが、セルの族と無限の骨格の余極限への接続は未完了。任意の因子の fat join 比較・slice 比較・A6 主定理・A4・A5 は未完了。
+
+以下は namespace `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、`open scoped Simplicial` の下での正確な型。
+
+```lean
+lemma types_eq_of_pushout_inl_eq_of_disjoint {A B C D T : Type u}
+    {i : A ⟶ B} {g : A ⟶ C} {r : B ⟶ D} {s : C ⟶ D}
+    (h : IsPushout i g r s) (j : T → B) (hd : ∀ a t, i a ≠ j t)
+    (x : B) (t : T) (he : r x = r (j t)) : x = j t
+
+lemma types_isPullback_pushout_inl_comp_of_disjoint
+    {A B C D A' B' C' D' T T' : Type u}
+    {i : A ⟶ B} {g : A ⟶ C} {r : B ⟶ D} {s : C ⟶ D}
+    {i' : A' ⟶ B'} {g' : A' ⟶ C'} {r' : B' ⟶ D'} {s' : C' ⟶ D'}
+    (h : IsPushout i g r s) (h' : IsPushout i' g' r' s') [Mono i']
+    (b : B ⟶ B') (c : C ⟶ C') (d : D ⟶ D')
+    (hr : r ≫ d = b ≫ r') (hs : s ≫ d = c ≫ s')
+    (j : T ⟶ B) (j' : T' ⟶ B') [Mono j'] (z : T ⟶ T')
+    (hJ : IsPullback j z b j')
+    (hd : ∀ a t, i a ≠ j t) (hd' : ∀ a t, i' a ≠ j' t) :
+    IsPullback (j ≫ r) z d (j' ≫ r')
+
+lemma isPullback_pushout_inl_comp_of_disjoint
+    {A B C D A' B' C' D' T T' : SSet.{u}}
+    {i : A ⟶ B} {g : A ⟶ C} {r : B ⟶ D} {s : C ⟶ D}
+    {i' : A' ⟶ B'} {g' : A' ⟶ C'} {r' : B' ⟶ D'} {s' : C' ⟶ D'}
+    (h : IsPushout i g r s) (h' : IsPushout i' g' r' s') [Mono i']
+    (b : B ⟶ B') (c : C ⟶ C') (d : D ⟶ D')
+    (hr : r ≫ d = b ≫ r') (hs : s ≫ d = c ≫ s')
+    (j : T ⟶ B) (j' : T' ⟶ B') [Mono j'] (z : T ⟶ T')
+    (hJ : IsPullback j z b j')
+    (hd : ∀ n a t, i.app n a ≠ j.app n t) (hd' : ∀ n a t, i'.app n a ≠ j'.app n t) :
+    IsPullback (j ≫ r) z d (j' ≫ r')
+
+lemma isPullback_whisker_exchange {A B C D : SSet.{u}} (i : A ⟶ B) (j : C ⟶ D) :
+    IsPullback (i ▷ C) (A ◁ j) (B ◁ j) (i ▷ D)
+
+noncomputable def fatJoinStageMapRight {A B : SSet.{u}} (K : SSet.{u}) (f : A ⟶ B) :
+    fatJoinStage K A ⟶ fatJoinStage K B
+
+lemma fatJoinStageMapRight_inl {A B : SSet.{u}} (K : SSet.{u}) (f : A ⟶ B) :
+    pushout.inl (SSet.ι₀ (X := K) ▷ A) (fst K A) ≫ fatJoinStageMapRight K f =
+      fatJoinCylinderMap (𝟙 K) f ≫ pushout.inl _ _
+
+lemma fatJoinStageMapRight_inr {A B : SSet.{u}} (K : SSet.{u}) (f : A ⟶ B) :
+    pushout.inr (SSet.ι₀ (X := K) ▷ A) (fst K A) ≫ fatJoinStageMapRight K f =
+      pushout.inr _ _
+
+instance fatJoinStageMapRight_mono {A B : SSet.{u}} (K : SSet.{u}) (f : A ⟶ B) [Mono f] :
+    Mono (fatJoinStageMapRight K f)
+
+lemma fatJoinStageEnd_right_isPullback {A B : SSet.{u}} (K : SSet.{u}) (f : A ⟶ B) :
+    IsPullback (fatJoinStageEnd K A) (K ◁ f) (fatJoinStageMapRight K f)
+      (fatJoinStageEnd K B)
+
+instance fatJoinMap_right_mono {A B : SSet.{u}} (K : SSet.{u}) (f : A ⟶ B) [Mono f] :
+    Mono (fatJoinMap (𝟙 K) f)
+
+lemma isPrecompositionEquivalence_fatJoinComparison_of_pushout_right
+    {A B C D : SSet.{u}} {f : A ⟶ B} [Mono f] {g : A ⟶ C}
+    {r : B ⟶ D} {t : C ⟶ D} (h : IsPushout f g r t) (K : SSet.{u})
+    (hA : IsPrecompositionEquivalence (fatJoinComparison K A))
+    (hB : IsPrecompositionEquivalence (fatJoinComparison K B))
+    (hC : IsPrecompositionEquivalence (fatJoinComparison K C)) :
+    IsPrecompositionEquivalence (fatJoinComparison K D)
 ```
 
 ## 7. A3 の工程（2026-10-18 追加）

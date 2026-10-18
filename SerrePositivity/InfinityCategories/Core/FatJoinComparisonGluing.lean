@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.JoinPushout
 public import SerrePositivity.InfinityCategories.Core.FatJoinPushout
-public import SerrePositivity.InfinityCategories.Core.FatJoinLeftMono
+public import SerrePositivity.InfinityCategories.Core.FatJoinRightMono
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
 public import SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing
 
@@ -36,5 +36,23 @@ lemma isPrecompositionEquivalence_fatJoinComparison_of_pushout_left
     (fatJoinComparison D K) (fatJoinComparison_naturality f (𝟙 K))
     (fatJoinComparison_naturality g (𝟙 K)) (fatJoinComparison_naturality r (𝟙 K))
     (fatJoinComparison_naturality t (𝟙 K)) hA hB hC
+
+/-- 概要：三つの右因子で fat join 比較が同値条件を満たせば、単射の pushout でも満たす。
+方針：両方の join の pushout 保存と比較の自然性を使う。
+規約：f のみが単射。固定因子 K と他の貼り合わせ射は任意。
+使われ方：Kerodon Lemma 4.6.2.10 の右因子のセル分解。 -/
+lemma isPrecompositionEquivalence_fatJoinComparison_of_pushout_right
+    {A B C D : SSet.{u}} {f : A ⟶ B} [Mono f] {g : A ⟶ C}
+    {r : B ⟶ D} {t : C ⟶ D} (h : IsPushout f g r t) (K : SSet.{u})
+    (hA : IsPrecompositionEquivalence (fatJoinComparison K A))
+    (hB : IsPrecompositionEquivalence (fatJoinComparison K B))
+    (hC : IsPrecompositionEquivalence (fatJoinComparison K C)) :
+    IsPrecompositionEquivalence (fatJoinComparison K D) := by
+  exact isPrecompositionEquivalence_of_pushout_gluing
+    (fatJoin_right_isPushout h K) (join_right_isPushout h K)
+    (fatJoinComparison K A) (fatJoinComparison K B) (fatJoinComparison K C)
+    (fatJoinComparison K D) (fatJoinComparison_naturality (𝟙 K) f)
+    (fatJoinComparison_naturality (𝟙 K) g) (fatJoinComparison_naturality (𝟙 K) r)
+    (fatJoinComparison_naturality (𝟙 K) t) hA hB hC
 
 end SerrePositivity.InfinityCategories
