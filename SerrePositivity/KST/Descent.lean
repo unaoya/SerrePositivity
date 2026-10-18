@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.KST.Descent.BottomSimplex
 public import SerrePositivity.KST.Descent.CechReindexLocalization
 public import SerrePositivity.KST.Descent.CechAdjointReindex
 public import SerrePositivity.KST.Descent.CechDescentRetract
