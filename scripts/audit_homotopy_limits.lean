@@ -2749,3 +2749,84 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @fibrationFiberMapBase_piZero_surjective
 #print axioms fibrationFiberMapBase_piZero_surjective
+
+#check @pullbackFiberToOriginal
+#print axioms pullbackFiberToOriginal
+
+#check @originalFiberToPullback
+#print axioms originalFiberToPullback
+
+#check @pullbackFiberToOriginal_ι
+#print axioms pullbackFiberToOriginal_ι
+
+#check @originalFiberToPullback_ι
+#print axioms originalFiberToPullback_ι
+
+#check @pullbackFiberIso
+#print axioms pullbackFiberIso
+
+#check @pullbackFiberIso_naturality
+#print axioms pullbackFiberIso_naturality
+
+#check @kanPiIsomorphism_of_iso_square
+#print axioms kanPiIsomorphism_of_iso_square
+
+#check @piZero_surjective_of_iso_square
+#print axioms piZero_surjective_of_iso_square
+
+#check @fiberBaseIso
+#print axioms fiberBaseIso
+
+#check @fiberBaseIso_hom_ι
+#print axioms fiberBaseIso_hom_ι
+
+#check @fibrationFiberMapBase_to_fiberMap
+#print axioms fibrationFiberMapBase_to_fiberMap
+
+#check @fibrationTotal_piIsomorphism_of_base
+#print axioms fibrationTotal_piIsomorphism_of_base
+
+#check @pullbackSecond_fibration
+#print axioms pullbackSecond_fibration
+
+#check @pullbackComparison_piIsomorphism
+#print axioms pullbackComparison_piIsomorphism
+
+#check @pullbackAdjointMap_piIsomorphism
+#print axioms pullbackAdjointMap_piIsomorphism
+
+#check @pullbackSequence_omega
+#print axioms pullbackSequence_omega
+
+#check @spectrumPullback
+#print axioms spectrumPullback
+
+#check @spectrumPullbackFst
+#print axioms spectrumPullbackFst
+
+#check @spectrumPullbackSnd
+#print axioms spectrumPullbackSnd
+
+#check @spectrumPullback_condition
+#print axioms spectrumPullback_condition
+
+#check @spectrumPullbackDiagram
+#print axioms spectrumPullbackDiagram
+
+#check @spectrumPullbackOrdinaryCone
+#print axioms spectrumPullbackOrdinaryCone
+
+#check @spectrumPullbackCone
+#print axioms spectrumPullbackCone
+
+#check @spectrumPullbackOrdinaryCone_level_isLimit
+#print axioms spectrumPullbackOrdinaryCone_level_isLimit
+
+#check @spectrumPullbackCone_level_isLimit
+#print axioms spectrumPullbackCone_level_isLimit
+
+#check @spectrumPullbackCone_hom_isLimit
+#print axioms spectrumPullbackCone_hom_isLimit
+
+#check @spectrumPullbackInfinityCone
+#print axioms spectrumPullbackInfinityCone

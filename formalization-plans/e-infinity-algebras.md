@@ -1372,3 +1372,39 @@ Sp の塔、非反転の比較、余極限側、E2a 完了後の E2b 適用も�
 他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-fibration-total-comparison-aggregate.log` と
 `/tmp/gamma3-fibration-total-comparison-audit.log`。
+
+
+### γ3c：Sp の実際の引き戻し対象の Ω 条件と豊穣 Hom の普遍性
+
+任意の引き戻し正方形で第二射影の fiber と元の第一脚の fiber の標準同型を、
+底の頂点の等号を明示して構成した。Kan 性・非空性は不要で、比較に対する自然性も証明。
+同型による表示の変更の下で π_* 同型と π₀ 全射を移す補題、および fiber の底の移送を整えた。
+`pullbackComparison_piIsomorphism` は、三つの比較射が全基点 π_* 同型のとき、
+一脚が Kan fibration の引き戻し間の実際の射も全基点 π_* 同型であることを与える。
+零次数の検査には元の全空間の頂点を渡し、空の fiber の全射性を省略しない。
+
+これを実際の `pullbackAdjointMap` に適用し、`pullbackAdjointMap_piIsomorphism` と
+`pullbackSequence_omega` を証明した。元の三列の Ω 条件と f の段ごとの fibration 性だけを使う。
+前回の構造射の単射性と合わせて実際の対象を構成した。
+
+```lean
+spectrumPullback {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] : OmegaSpectrum.{u}
+```
+
+各段は点つき通常引き戻しそのもので、置換は行わない。
+二本の厳密な射影・合成の一致・小さい cospan の図式・実際の錐を構成した。
+各段の極限性から `spectrumPullbackCone_hom_isLimit` で全ての実際の豊穣 Hom の普遍性も得た。
+coherent nerve の錐 `spectrumPullbackInfinityCone` はあるが、Hom の左脚の fibration 性は未証明。
+したがって Sp の引き戻しを `IsLimitCone` として公開する工程全体は未完了。
+
+新規27宣言の正確な型・全前提は InfinityCategories/README.md の同名節へ記録し、監査へ追加。
+原典は Goerss–Jardine I §§7–8、Kerodon 3.2.5–3.2.6、BF 1978 §2、HA §1.4.2、
+HTT 4.2.4.1 の双対。Sp の塔、非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了。
+γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4633 jobs）、公開1223宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規6ファイルの警告・sorry・追加公理はない。
+他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-pullback-objects-aggregate.log` と
+`/tmp/gamma3-spectrum-pullback-objects-audit.log`。

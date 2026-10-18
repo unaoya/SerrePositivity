@@ -6605,3 +6605,234 @@ lemma fibrationFiberMapBase_piZero_surjective {E B E' B' : SSet.{u}}
 他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-fibration-total-comparison-aggregate.log` と
 `/tmp/gamma3-fibration-total-comparison-audit.log`。
+
+
+### γ3c：Sp の実際の引き戻し対象の Ω 条件と全豊穣 Hom の普遍性
+
+`PullbackFiberIso` は、任意の単体集合の引き戻し正方形
+`P → E, P → X, E → B, X → B` について、第二射影の x 上の fiber と
+元の第一脚の b 上の fiber の標準同型 `pullbackFiberIso` を構成した。
+q(x)=b の等号を明示し、二つの引き戻しの普遍性だけで順射と逆射を検証した。
+Kan 性・fibration 性・非空性は不要で、空の fiber も同じ同型で扱う。
+`PullbackFiberNaturality` は二つの引き戻しの比較に対する同型の自然性を包含後で証明し、
+同型による可換な表示の変更の下で π_* 同型性と π₀ 全射性を移す補題を公開した。
+零次数の全射性の移送には Kan 性や非空性を仮定しない。
+
+`FiberBaseComparison` は等しい底の頂点上の fiber の同型 `fiberBaseIso` を与え、
+任意の底上の `fibrationFiberMapBase` を L9 の参照頂点の像上の `fiberMap` に同定した。
+これを前回の全空間比較へ渡す `fibrationTotal_piIsomorphism_of_base` を証明した。
+`PullbackPiComparison` の `pullbackComparison_piIsomorphism` は、
+二つの一脚 Kan fibration の引き戻しを比較する三つの射が全基点 π_* 同型なら、
+引き戻し間の実際の射も全基点 π_* 同型であることを証明する。
+零次数の全射性の検査に元の全空間 E の頂点 e₀ を明示し、空の fiber を省略しない。
+各引き戻しの第一射影の可換条件、第二射影の可換条件、元の二脚の可換条件を全て要求する。
+
+`SpectrumPullbackOmega` はこの比較定理を実際の `pullbackAdjointMap f g n` に適用した。
+三つの Kan 列 E、X、B が Ω 条件を満たし、f が各段で Kan fibration であれば、
+`pullbackAdjointMap_piIsomorphism` はその射の全基点・零次数を含む π_* 同型性を与える。
+元の点つき各段の基点を比較定理の e₀ として渡す。
+`pullbackSequence_omega` は前回の厳密な随伴比較により、L9 の元の段ごとの引き戻し列が
+実際に Ω 条件を満たすことを証明した。
+元の二つの構造射が単射なら引き戻し構造射も単射である前回の結果と合わせ、
+
+```lean
+def spectrumPullback {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] : OmegaSpectrum.{u}
+```
+
+を構成した。各段は元の点つき通常引き戻しそのもので、単射置換や別の Sp の模型を使わない。
+二つの厳密なスペクトルの射影と底への合成の一致も公開した。
+
+`SpectrumPullbackCones` は持ち上げた cospan の実際の図式・錐を構成した。
+各段の点つき引き戻しの普遍性と添字の圏同値から、
+`spectrumPullbackCone_level_isLimit` で全ての段の極限性を証明した。
+L9 の実際の写像空間の族の普遍性を適用して、
+`spectrumPullbackCone_hom_isLimit` は全ての豊穣 Hom の極限性を与える。
+coherent nerve の実際の錐 `spectrumPullbackInfinityCone` も構成した。
+ただし Hom の左脚の fibration 性はまだ未証明なので、
+この錐を `IsLimitCone` とする Sp の ∞ 引き戻しの工程全体は未完了。
+原典上の位置は Goerss–Jardine I §§7–8、Kerodon 3.2.5–3.2.6、BF 1978 §2、
+HA §1.4.2、HTT 4.2.4.1 の双対。
+
+新規27宣言の正確な型・全前提は以下。namespace は
+`SerrePositivity.InfinityCategories.HomotopyLimits`、宇宙は u。
+`SpectrumPullbackCones` の最後の二宣言では L9 の `OmegaSpectrum.simplicialCategory` を
+固有名を持つ局所 instance として使う。公理依存の正本は `scripts/audit_homotopy_limits.lean`。
+
+`PullbackFiberIso`：
+
+```lean
+def pullbackFiberToOriginal
+    {P E X B : SSet.{u}} {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X ⟶ B}
+    (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
+    (hxb : q.app _ x = b) : KanFiber j x ⟶ KanFiber p b
+
+def originalFiberToPullback
+    {P E X B : SSet.{u}} {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X ⟶ B}
+    (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
+    (hxb : q.app _ x = b) : KanFiber p b ⟶ KanFiber j x
+
+lemma pullbackFiberToOriginal_ι
+    {P E X B : SSet.{u}} {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X ⟶ B}
+    (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
+    (hxb : q.app _ x = b) :
+    pullbackFiberToOriginal hP x b hxb ≫ fiberι p b = fiberι j x ≫ i
+
+lemma originalFiberToPullback_ι
+    {P E X B : SSet.{u}} {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X ⟶ B}
+    (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
+    (hxb : q.app _ x = b) :
+    originalFiberToPullback hP x b hxb ≫ fiberι j x =
+      hP.lift (fiberι p b) (SSet.const x) (by rw [fiberι_comp, const_comp, hxb])
+
+def pullbackFiberIso
+    {P E X B : SSet.{u}} {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X ⟶ B}
+    (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
+    (hxb : q.app _ x = b) : KanFiber j x ≅ KanFiber p b
+```
+
+`PullbackFiberNaturality`：
+
+```lean
+lemma pullbackFiberIso_naturality
+    {P E X B P' E' X' B' : SSet.{u}}
+    {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X ⟶ B}
+    {i' : P' ⟶ E'} {j' : P' ⟶ X'} {p' : E' ⟶ B'} {q' : X' ⟶ B'}
+    (hP : IsPullback i j p q) (hP' : IsPullback i' j' p' q')
+    (aP : P ⟶ P') (aE : E ⟶ E') (aX : X ⟶ X') (aB : B ⟶ B')
+    (hi : i ≫ aE = aP ≫ i') (hj : j ≫ aX = aP ≫ j')
+    (hp : p ≫ aB = aE ≫ p') (x : X _⦋0⦌) (b : B _⦋0⦌)
+    (hxb : q.app _ x = b) (hxb' : q'.app _ (aX.app _ x) = aB.app _ b) :
+    fibrationFiberMapBase j j' aP aX hj x ≫
+        (pullbackFiberIso hP' (aX.app _ x) (aB.app _ b) hxb').hom =
+      (pullbackFiberIso hP x b hxb).hom ≫ fibrationFiberMapBase p p' aE aB hp b
+
+lemma kanPiIsomorphism_of_iso_square {A B C D : SSet.{u}}
+    [KanComplex A] [KanComplex B] [KanComplex C] [KanComplex D]
+    (e : A ≅ B) (e' : C ≅ D) (f : A ⟶ C) (g : B ⟶ D)
+    (h : f ≫ e'.hom = e.hom ≫ g) (hg : KanPiIsomorphism g) : KanPiIsomorphism f
+
+lemma piZero_surjective_of_iso_square {A B C D : SSet.{u}}
+    (e : A ≅ B) (e' : C ≅ D) (f : A ⟶ C) (g : B ⟶ D)
+    (h : f ≫ e'.hom = e.hom ≫ g) (hg : Function.Surjective (mapπ₀ g)) :
+    Function.Surjective (mapπ₀ f)
+```
+
+`FiberBaseComparison`：
+
+```lean
+def fiberBaseIso {E B : SSet.{u}} (p : E ⟶ B) (b b' : B _⦋0⦌) (h : b = b') :
+    KanFiber p b ≅ KanFiber p b'
+
+lemma fiberBaseIso_hom_ι {E B : SSet.{u}} (p : E ⟶ B) (b b' : B _⦋0⦌) (h : b = b') :
+    (fiberBaseIso p b b' h).hom ≫ fiberι p b' = fiberι p b
+
+lemma fibrationFiberMapBase_to_fiberMap {E B E' B' : SSet.{u}}
+    (p : E ⟶ B) (p' : E' ⟶ B') (f : E ⟶ E') (g : B ⟶ B')
+    (comm : p ≫ g = f ≫ p') (e : E _⦋0⦌) :
+    fibrationFiberMapBase p p' f g comm (p.app _ e) ≫
+        (fiberBaseIso p' _ _ (base_eq p p' f g comm e)).hom = fiberMap p p' f g comm e
+
+lemma fibrationTotal_piIsomorphism_of_base {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hg : KanPiIsomorphism g)
+    (hF : ∀ b, KanPiIsomorphism (fibrationFiberMapBase p p' f g comm b))
+    (hF₀ : ∀ b, Function.Surjective (mapπ₀ (fibrationFiberMapBase p p' f g comm b))) :
+    KanPiIsomorphism f
+```
+
+`PullbackPiComparison`：
+
+```lean
+lemma pullbackSecond_fibration {P E X B : SSet.{u}}
+    {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X ⟶ B}
+    (hP : IsPullback i j p q) [Fibration p] : Fibration j
+
+lemma pullbackComparison_piIsomorphism
+    {P E X B P' E' X' B' : SSet.{u}}
+    [KanComplex P] [KanComplex E] [KanComplex X] [KanComplex B]
+    [KanComplex P'] [KanComplex E'] [KanComplex X'] [KanComplex B']
+    {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X ⟶ B}
+    {i' : P' ⟶ E'} {j' : P' ⟶ X'} {p' : E' ⟶ B'} {q' : X' ⟶ B'}
+    (hP : IsPullback i j p q) (hP' : IsPullback i' j' p' q') [Fibration p] [Fibration p']
+    (aP : P ⟶ P') (aE : E ⟶ E') (aX : X ⟶ X') (aB : B ⟶ B')
+    (hi : i ≫ aE = aP ≫ i') (hj : j ≫ aX = aP ≫ j')
+    (hp : p ≫ aB = aE ≫ p') (hq : q ≫ aB = aX ≫ q')
+    (hE : KanPiIsomorphism aE) (hX : KanPiIsomorphism aX) (hB : KanPiIsomorphism aB)
+    (e₀ : E _⦋0⦌) : KanPiIsomorphism aP
+```
+
+`SpectrumPullbackOmega`：
+
+```lean
+lemma pullbackAdjointMap_piIsomorphism {E X B : KanSequence.{u}}
+    (f : KanSequence.Hom E B) (g : KanSequence.Hom X B)
+    [∀ n, Fibration (f.app n).right]
+    (hE : E.OmegaCondition) (hX : X.OmegaCondition) (hB : B.OmegaCondition) (n : ℕ) :
+    KanPiIsomorphism (pullbackAdjointMap f g n).right
+
+lemma pullbackSequence_omega {E X B : KanSequence.{u}}
+    (f : KanSequence.Hom E B) (g : KanSequence.Hom X B)
+    [∀ n, Fibration (f.app n).right]
+    (hE : E.OmegaCondition) (hX : X.OmegaCondition) (hB : B.OmegaCondition) :
+    (KanSequence.pullbackSequence f g).OmegaCondition
+
+def spectrumPullback {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] : OmegaSpectrum.{u}
+
+def spectrumPullbackFst {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] : spectrumPullback f g ⟶ E
+
+def spectrumPullbackSnd {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] : spectrumPullback f g ⟶ X
+
+lemma spectrumPullback_condition {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] :
+    spectrumPullbackFst f g ≫ f = spectrumPullbackSnd f g ≫ g
+```
+
+`SpectrumPullbackCones`：
+
+```lean
+def spectrumPullbackDiagram
+    {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B) : AsSmall.{u} WalkingCospan ⥤ OmegaSpectrum.{u}
+
+def spectrumPullbackOrdinaryCone
+    {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] : PullbackCone f g
+
+def spectrumPullbackCone
+    {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] : Cone (spectrumPullbackDiagram f g)
+
+def spectrumPullbackOrdinaryCone_level_isLimit
+    {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] (n : ℕ) :
+    IsLimit ((spectrumLevelFunctor n).mapCone (spectrumPullbackOrdinaryCone f g))
+
+def spectrumPullbackCone_level_isLimit
+    {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] (n : ℕ) :
+    IsLimit (spectrumLevelCone (spectrumPullbackCone f g) n)
+
+def spectrumPullbackCone_hom_isLimit
+    {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] (Z : OmegaSpectrum.{u}) :
+    IsLimit (simplicialHomCone (spectrumPullbackCone f g) Z)
+
+def spectrumPullbackInfinityCone
+    {E X B : OmegaSpectrum.{u}} (f : E ⟶ B) (g : X ⟶ B)
+    [∀ n, Fibration (f.app n).right] : JoinCone (strictCoherentDiagram (spectrumPullbackDiagram f g))
+```
+
+残る引き戻しの工程は、左脚が各段で fibration のスペクトル射の実際の豊穣 Hom 写像の
+fibration 性を検証し、上記の錐を Sp の `IsLimitCone` として公開すること。
+Sp の塔、非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4633 jobs）、公開1223宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規6ファイルの警告・sorry・追加公理はない。
+他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-pullback-objects-aggregate.log` と
+`/tmp/gamma3-spectrum-pullback-objects-audit.log`。
