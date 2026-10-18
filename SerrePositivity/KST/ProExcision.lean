@@ -34,3 +34,5 @@ public import SerrePositivity.KST.ProExcision.SupportedRestriction
 public import SerrePositivity.KST.ProExcision.KoszulCoefficientRow
 public import SerrePositivity.KST.ProExcision.KoszulCoefficientSwap
 public import SerrePositivity.KST.ProExcision.SpectralObjectMaps
+public import SerrePositivity.KST.ProExcision.FilteredSpectralMaps
+public import SerrePositivity.KST.ProExcision.FilteredTowers

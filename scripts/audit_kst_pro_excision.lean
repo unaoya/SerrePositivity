@@ -674,3 +674,36 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_comp
 #print axioms SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_comp
+
+#check @SerrePositivity.KST.ProExcision.spectralPrecompMap
+#print axioms SerrePositivity.KST.ProExcision.spectralPrecompMap
+
+#check @SerrePositivity.KST.ProExcision.spectralPrecompMap_id
+#print axioms SerrePositivity.KST.ProExcision.spectralPrecompMap_id
+
+#check @SerrePositivity.KST.ProExcision.spectralPrecompMap_comp
+#print axioms SerrePositivity.KST.ProExcision.spectralPrecompMap_comp
+
+#check @SerrePositivity.KST.ProExcision.spectralPrecompFunctor
+#print axioms SerrePositivity.KST.ProExcision.spectralPrecompFunctor
+
+#check @SerrePositivity.KST.ProExcision.filteredHomologySpectralFunctor
+#print axioms SerrePositivity.KST.ProExcision.filteredHomologySpectralFunctor
+
+#check @SerrePositivity.KST.ProExcision.finiteTensorFiltrationFunctor
+#print axioms SerrePositivity.KST.ProExcision.finiteTensorFiltrationFunctor
+
+#check @SerrePositivity.KST.ProExcision.finiteTensorSpectralFunctor
+#print axioms SerrePositivity.KST.ProExcision.finiteTensorSpectralFunctor
+
+#check @SerrePositivity.KST.ProExcision.koszulSpectralTower
+#print axioms SerrePositivity.KST.ProExcision.koszulSpectralTower
+
+#check @SerrePositivity.KST.ProExcision.koszulSpectralTower_obj
+#print axioms SerrePositivity.KST.ProExcision.koszulSpectralTower_obj
+
+#check @SerrePositivity.KST.ProExcision.koszulPageETower
+#print axioms SerrePositivity.KST.ProExcision.koszulPageETower
+
+#check @SerrePositivity.KST.ProExcision.koszulPageTowerLevelIso
+#print axioms SerrePositivity.KST.ProExcision.koszulPageTowerLevelIso

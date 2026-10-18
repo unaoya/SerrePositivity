@@ -98,7 +98,11 @@
 - スペクトル対象の射に対する三連結写像短複体と、そのホモロジー E の関手を構成済み。
 - 中央区間の射が零なら頁の射も零になることを証明済み。
 - 関手間の自然変換を合成可能図式へ持ち上げ、恒等・合成の保存を証明済み。
-- 次は濾過間の自然変換をスペクトル対象の射へ持ち上げ、E₂ 同型の冪遷移・係数射についての自然性、塔・有限収束と edge 比較を進める。
+- 濾過間の自然変換をスペクトル対象の射へ持ち上げ、δ との可換性と恒等・合成保存を証明済み。
+- 複体の濾過からホモロジースペクトル対象への実際の関手を構成済み。
+- Koszul 冪の塔を有限テンソル濾過とホモロジースペクトル対象へ関手的に持ち上げ済み。
+- 各頁の項の E 模型の塔を実際の冪遷移から構成し、既存の頁の項との段ごとの同型を構成済み。
+- 次はスペクトル対象の射と頁の微分の可換性、E₂ 比較の冪遷移自然性、有限収束と edge 比較を進める。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -208,6 +212,13 @@
 | spectralPageFunctor | SpectralObjectMaps.lean | 検証済み | 三区間の頁を与える関手 |
 | spectralPageFunctor_map_zero | SpectralObjectMaps.lean | 検証済み | 中央区間の零射から頁の零射 |
 | composableArrowsMapNatTrans | SpectralObjectMaps.lean | 検証済み | 自然変換の合成可能図式への持ち上げ |
+| spectralPrecompMap | FilteredSpectralMaps.lean | 検証済み | 引き戻しの自然変換から δ と可換なスペクトル対象の射 |
+| spectralPrecompFunctor | FilteredSpectralMaps.lean | 検証済み | スペクトル対象の引き戻し関手 |
+| filteredHomologySpectralFunctor | FilteredSpectralMaps.lean | 検証済み | 実際の複体濾過のホモロジースペクトル対象関手 |
+| finiteTensorFiltrationFunctor | FilteredTowers.lean | 検証済み | 有限テンソル濾過の関手 |
+| koszulSpectralTower | FilteredTowers.lean | 検証済み | 実際の冪遷移によるスペクトル対象の塔 |
+| koszulPageETower | FilteredTowers.lean | 検証済み | 各頁の E 模型の項の塔 |
+| koszulPageTowerLevelIso | FilteredTowers.lean | 検証済み | 塔の各段と既存の頁の項の同型 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
