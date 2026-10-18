@@ -12117,5 +12117,101 @@ lemma kanDiagramRealization_evaluate
     kanDiagramRealization C ≫ evaluateFunctorAt (ULift.up (nerveVertex c)) =
       kanDiagramNerveEvaluation c
 
+noncomputable def coherentResolutionArrowDiagram (X : KanObject.{u}) :
+    ULift.{u} (Fin 2) ⥤ KanObject.{u}
+
+noncomputable def coherentResolutionArrowMappingSimplex (X Y : KanObject.{u})
+    {n : SimplexCategoryᵒᵖ} (η : ((ihom X.obj).obj Y.obj).obj n) :
+    strictDiagramMappingSimplex (coherentResolutionArrowDiagram X ⋙ kanObjectForget)
+      (coherentResolutionArrowDiagram Y ⋙ kanObjectForget) n
+
+noncomputable def coherentResolutionArrowMappingSpaceMap (X Y : KanObject.{u}) :
+    (ihom X.obj).obj Y.obj ⟶ strictDiagramMappingSpace
+      (coherentResolutionArrowDiagram X ⋙ kanObjectForget)
+      (coherentResolutionArrowDiagram Y ⋙ kanObjectForget)
+
+noncomputable def coherentResolutionArrowEnriched :
+    EnrichedFunctor SSet.{u} KanObject.{u} (KanDiagramObject (ULift.{u} (Fin 2)))
+
+lemma coherentResolutionArrowEnriched_zero :
+    coherentResolutionArrowEnriched.comp SSet
+      (kanDiagramEvaluationEnriched (ULift.up (0 : Fin 2))) =
+        EnrichedFunctor.id SSet.{u} KanObject.{u}
+
+lemma coherentResolutionArrowEnriched_one :
+    coherentResolutionArrowEnriched.comp SSet
+      (kanDiagramEvaluationEnriched (ULift.up (1 : Fin 2))) =
+        coherentResolutionKanEnriched.{u}
+
+noncomputable def coherentResolutionInfinityMap : SpaceInfinity.{u} ⟶ SpaceInfinity.{u}
+
+noncomputable def coherentResolutionComparisonFamily :
+    SpaceInfinity.{u} ⟶ SpaceInfinityFunctor
+      ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin 2))))
+
+lemma coherentResolutionComparisonFamily_zero :
+    coherentResolutionComparisonFamily.{u} ≫
+      evaluateFunctorAt (ULift.up (nerveVertex (ULift.up (0 : Fin 2)))) =
+        𝟙 SpaceInfinity.{u}
+
+lemma coherentResolutionComparisonFamily_one :
+    coherentResolutionComparisonFamily.{u} ≫
+      evaluateFunctorAt (ULift.up (nerveVertex (ULift.up (1 : Fin 2)))) =
+        coherentResolutionInfinityMap.{u}
+
+lemma strictDiagramMixedHom_identity {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {c d : C} (f : c ⟶ d) :
+    strictDiagramMappingIdentity F ≫ strictDiagramMixedHom f F F = curry' (F.map f)
+
+lemma diagonalKanDiagramEvaluation_constant
+    {C J : Type u} [Category.{u} C] [LinearOrder J] (A : J ⥤ C) (F : KanDiagramObject C) :
+    diagonalKanDiagramEvaluation A (enrichedConstantOrderDiagram J F) =
+      enrichedFunctorOfOrderDiagram (A ⋙ F.val)
+
+lemma kanDiagramDiagonalSimplex_constant {C : Type u} [Category.{u} C]
+    (F : KanDiagramObject C) {n : ℕ} (σ : (nerve C) _⦋n⦌) :
+    kanDiagramDiagonalSimplex σ (PinchedHom.constant (coherentNerveVertex F) n) =
+      (kanDiagramCoherentNerve F.val).app (Opposite.op ⦋n⦌) (ULift.up σ)
+
+def transposeFunctorFamily {A I X : SSet.{u}} (F : A ⟶ (ihom I).obj X) :
+    I ⟶ (ihom A).obj X
+
+lemma transposeFunctorFamily_vertex {A I X : SSet.{u}} (F : A ⟶ (ihom I).obj X)
+    (i : I _⦋0⦌) :
+    (transposeFunctorFamily F).app (Opposite.op ⦋0⦌) i =
+      functorVertex (F ≫ evaluateFunctorAt i)
+
+lemma transposeFunctorFamily_edgeAt {A I X : SSet.{u}} (F : A ⟶ (ihom I).obj X)
+    {i j : I _⦋0⦌} (e : SSet.Edge i j) (a : A _⦋0⦌) :
+    ((e.map (transposeFunctorFamily F)).map (evaluateFunctorAt a)).edge =
+      ((F.app (Opposite.op ⦋1⦌) (PinchedHom.constant a 1)).app (Opposite.op ⦋1⦌)
+        (𝟙 (Opposite.op ⦋1⦌))) e.edge
+
+def coherentResolutionComparisonIndexEdge :
+    SSet.Edge (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin 2))))
+      (ULift.up (nerveVertex (ULift.up (0 : Fin 2))))
+      (ULift.up (nerveVertex (ULift.up (1 : Fin 2))))
+
+noncomputable def coherentResolutionComparisonEdge :
+    SSet.Edge (X := (ihom SpaceInfinity.{u}).obj SpaceInfinity.{u})
+      (functorVertex (𝟙 SpaceInfinity.{u})) (functorVertex coherentResolutionInfinityMap.{u})
+
+lemma coherentResolutionComparisonEdge_at (K : KanObject.{u}) :
+    (functorEdgeAt coherentResolutionComparisonEdge (coherentNerveVertex K)).edge =
+      (coherentNerveEdge
+        (show K ⟶ coherentResolutionKanEnriched.obj K from coherentResolutionComparison K.obj)).edge
+
+lemma coherentResolutionComparisonEdge_isInvertible :
+    IsInvertibleEdge coherentResolutionComparisonEdge.{u}
+
+noncomputable def coherentResolutionInfinityComparisonIso :
+    FunctorIso (𝟙 SpaceInfinity.{u}) coherentResolutionInfinityMap.{u}
+
+noncomputable def coherentResolutionInfinityEquivalence :
+    QCatEquivalence SpaceInfinity.{u} SpaceInfinity.{u}
+
+noncomputable def coherentResolutionDiagramComparisonIso {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) : FunctorIso F (F ≫ coherentResolutionInfinityMap)
+
 end SerrePositivity.InfinityCategories
 ```
