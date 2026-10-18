@@ -270,3 +270,5 @@ public import SerrePositivity.KST.SchemeLemmas.RelativePureFreeNeighborhoodsAlgE
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodsTensorCancel
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodCenterOver
 public import SerrePositivity.KST.SchemeLemmas.GlobalGenericFreeCenterOver
+public import SerrePositivity.KST.SchemeLemmas.ExactAffineAdmissibleComposition
+public import SerrePositivity.KST.SchemeLemmas.GlobalGenericFreeCenterDomination
