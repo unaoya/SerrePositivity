@@ -72,7 +72,7 @@ lemma LeftKanRelativeJoinRealization.Strictification.right_eq {K C D : SSet.{u}}
 
 /-- 概要：厳密化した相対 join 上の図式は元の二図式の間の自然変換を与える。
 方針：標準 prism を図式で写し、両端の厳密な等式を使う。
-規約：入力 β と同じ両端を持つ。β との h での一致は後続の証明義務。
+規約：入力 β と同じ両端を持つ。β との h での一致は後続の TransformationClass で証明する。
 使われ方：元の指定自然変換と厳密化後の自然変換のクラスの比較。 -/
 def LeftKanRelativeJoinRealization.Strictification.transformation {K C D : SSet.{u}}
     [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
@@ -97,7 +97,7 @@ def LeftKanRelativeJoinRealization.Strictification.transformation {K C D : SSet.
 /-- 概要：任意の左指定自然変換には両端を厳密化した相対 join 表示の証明データが存在する。
 方針：円柱図式の表示とその同じ比較の両端での補正を順に取る。
 規約：この定理だけで補正後の prism の類が β と等しいとは主張しない。
-使われ方：保持した比較ホモトピーから指定自然変換の h での一致を導く次の工程。 -/
+使われ方：保持した比較ホモトピーから指定自然変換の h での一致を導く。 -/
 lemma leftKanRelativeJoinStrictification_exists {K C D : SSet.{u}} [Quasicategory D]
     (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : SSet.Homotopy F₀ (δ ≫ F)) :
     ∃ s : LeftKanRelativeJoinRealization δ F₀ F β, Nonempty s.Strictification := by

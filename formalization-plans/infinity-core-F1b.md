@@ -20,7 +20,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示と両端の厳密化） |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、両端の厳密化と指定変換の類の保存） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定
@@ -404,7 +404,7 @@ h Fun(C,D) の同型を作り、両方向の指定自然変換との両立と比
 `KanRelativeJoinStrictification` は同じ両端比較を一度に補正する。
 `Strictification.left_eq/right_eq` は両端が元の F₀・F に厳密に等しいことを示す。
 `Strictification.transformation` は補正後の prism から同じ両端を持つ自然変換を取り出す。
-**この変換と元の β の h での類の一致は未完了**。
+`Strictification.transformation_hom_eq` はこの変換と元の β の h での類の一致を証明する。
 円柱比較の代表の制限と、`endpointsIso` の選んだ代表は raw な射として同じとは限らない。
 比較すべきなのは h Fun の類であり、前合成の作用と代表の類の計算を使う。
 
@@ -414,7 +414,15 @@ h Fun(C,D) の同型を作り、両方向の指定自然変換との両立と比
 `KanRelativeJoinCorrectionSquares` は元の相対 join 図式の prism を共通の下辺とし、
 円柱比較による元の β と、厳密化後の変換を上辺に持つ二つの正方形を構成した。
 左右の辺の raw な表示も計算済み。一方は円柱比較の代表の制限、もう一方は
-両端同型の選んだ代表の制限であり、両者の類の一致と左辺の可逆性の接続は未完了。
+両端同型の選んだ代表の制限である。
+`KanFunctorHomotopyClasses` は端点の等式による同型の輸送を Arrow で比較し、
+選んだ代表の類を同型の射へ戻す一般補題と、Arrow の等式の前合成による保存を与える。
+`endpointsHomotopy_hom_arrow` は両端同型の代表と円柱比較の代表の制限の類の一致を示す。
+`KanRelativeJoinTransformationClass` はこの等式を左右へ制限して側辺の類を同定し、
+左辺の可逆性から `transformation_hom_eq` を導いた。
+`Strictification.isLeftKanExtension_iff` は既存の h 不変性との合成で、元の左 Kan 条件を保存する。
+`leftKanRelativeJoin_realization_preserving_class` により、任意の δ と指定変換を
+厳密な両端と同じ h Fun の類を持つ相対 join 表示へ移せる。
 
 **B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
 極限からの点ごとの存在と大域的組み立てが残る。
@@ -422,7 +430,7 @@ h Fun(C,D) の同型を作り、両方向の指定自然変換との両立と比
 
 ### 次の工程
 
-厳密化後の prism の類が指定した β と一致することを証明し、全部分 ∞ 圏からの相対 Kan 拡張の
+指定変換の類を保存する相対 join 表示を用い、全部分 ∞ 圏からの相対 Kan 拡張の
 写像空間の制限定理（Kerodon Prop 7.3.6.7・Cor 7.3.6.9）を整える。
 点ごとの Kan 条件から h Fun 全体の普遍写像性（Kerodon Prop 7.3.6.1 の左右版）を導き、
 Remark 7.3.6.6 の大域的一意性へ接続する。
@@ -434,8 +442,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2379 jobs、公理監査2439宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内708モジュールに straightening 依存なし。
+対象ビルド2381 jobs、公理監査2450宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内710モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -595,18 +603,25 @@ B5 の古典 nerve に戻る検査も未完了。
 
 | `rightKanHomMap/leftKanHomMap`・`RightKanHomUniversal/LeftKanHomUniversal` | 指定自然変換による大域的 Hom 比較と全単射性の明示的条件 | 型・定義済、点ごとの Kan 条件からの導出は未完了 |
 | `rightKanHomUniversalIso/leftKanHomUniversalIso`・`..._hom_fac/..._inv_fac/..._hom_unique` | 普遍写像性を仮定した h Fun の同型、両立と一意性 | 条件つき一般部分は済、Kan 条件のみからの大域的一意性は未完了 |
-| `leftKanCylinderDiagram`・`LeftKanRelativeJoinRealization`・`leftKanRelativeJoinRealization_nonempty` | 任意の δ の左指定自然変換の相対 join 表示と円柱全体の比較同型 | 済・端点の厳密化は下記で済、prism の類の一致は未完了 |
+| `leftKanCylinderDiagram`・`LeftKanRelativeJoinRealization`・`leftKanRelativeJoinRealization_nonempty` | 任意の δ の左指定自然変換の相対 join 表示と円柱全体の比較同型 | 済・端点の厳密化と prism の類の一致も下記で済 |
 | `LeftKanRelativeJoinRealization.prismIso/leftIso/rightIso` | 一つの円柱比較から得る指定 prism と両端の同型 | 済 |
 
 | `kanJoinEndpointDesc_comp`・`kanRelativeJoinEndpointInclusion/fst/mono` | 任意の δ の相対 join の両端包含とその単射性 | 済 |
 | `kanCylinderEndpointInclusion/comparison/leftKanCylinderDiagram`・`LeftKanRelativeJoinRealization.endpointsIso` | 円柱全体の比較から得る両端の同時の比較 | 済 |
 | `KanFunctorIsoExtension`・`kanFunctorIsoExtension_nonempty`・`globalIso` | 単射上の同型の延長、厳密な制限と指定代表の可逆ホモトピーの保持 | 済 |
 | `LeftKanRelativeJoinRealization.Strictification`・`strictification_nonempty`・`leftKanRelativeJoinStrictification_exists` | 任意の δ での両端の同時の厳密化の証明データ | 済 |
-| `Strictification.left_eq/right_eq/transformation` | F₀・F への厳密な端点制限と補正後の指定自然変換 | 端点は済・元の β の類との一致は未完了 |
+| `Strictification.left_eq/right_eq/transformation` | F₀・F への厳密な端点制限と補正後の指定自然変換 | 済・元の β の類との一致も下記で済 |
 
 | `KanFunctorHomSquare/hom_relation`・`kanFunctorHomSquare_top_hom_eq/of_boundary_classes` | 指定四辺の可換性と可逆な左辺による上辺の類の比較 | 済 |
 | `kanPrismSquareReorder/kanPrismSquare`・`kanPrismSquare_zero/one/endpoint` | prism の二時間の転置と四辺の計算 | 済 |
 | `kanPrismHomotopyLeft/Right/Square` | prism ホモトピーから指定四辺の関手正方形への構成 | 済 |
 | `LeftKanRelativeJoinRealization.prismTransformation/comparisonPrismHomotopy/comparisonSquare` | 元の相対 join 図式の prism と円柱比較の正方形 | 済 |
 | `Strictification.correctionPrismHomotopy/correctionSquare` | 同じ下辺を持ち、厳密化後の変換を上辺とする正方形 | 済 |
-| `comparisonSquare_left_h/right_h`・`Strictification.correctionSquare_left_h/right_h` | 両正方形の側辺を各比較同型の代表の制限として表示 | raw な表示は済・側辺の類の一致は未完了 |
+| `comparisonSquare_left_h/right_h`・`Strictification.correctionSquare_left_h/right_h` | 両正方形の側辺を各比較同型の代表の制限として表示 | raw な表示と側辺の類の一致ともに済 |
+
+| `kanFunctorIsoTransport/hom_arrow`・`kanFunctorIso_simplicialHomotopy_hom` | 端点の輸送による Arrow の保存と選んだ同型の代表の類 | 済 |
+| `kanFunctorHomotopy_hom_arrow_of_h_eq/precomp_hom_arrow` | raw な射の一致から Arrow の類の等式と、その前合成による保存 | 済 |
+| `LeftKanRelativeJoinRealization.endpointsIso_hom_arrow/endpointsHomotopy_hom_arrow` | 両端同型と円柱比較の制限の同じ Arrow の類 | 済 |
+| `Strictification.leftBoundary_hom_eq/rightBoundary_hom_eq/leftBoundary_invertible` | 両補正正方形の側辺の類の一致と可逆性 | 済 |
+| `Strictification.transformation_hom_eq/isLeftKanExtension_iff` | 厳密化による指定変換の類と左 Kan 条件の保存 | 済 |
+| `leftKanRelativeJoin_realization_preserving_class` | 任意の δ と指定変換の、厳密な両端と同じ類を持つ相対 join 表示の存在 | 済 |

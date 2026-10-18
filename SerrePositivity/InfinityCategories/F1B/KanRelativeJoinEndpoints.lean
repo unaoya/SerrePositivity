@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRealization
 public import SerrePositivity.InfinityCategories.F1.JoinEndpointMaps
+public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
 
 /-!
 概要：相対 join の両端を同時に指定する単射と写像円柱上の対応する射。
@@ -99,9 +100,35 @@ def LeftKanRelativeJoinRealization.endpointsIso {K C D : SSet.{u}}
     {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)}
     (s : LeftKanRelativeJoinRealization δ F₀ F β) :
     FunctorIso (kanRelativeJoinEndpointInclusion δ ≫ s.diagram) (joinEndpointDesc F₀ F) := by
-  have e := s.comparison.precomp (kanCylinderEndpointInclusion δ)
-  rw [← Category.assoc, kanCylinderEndpointInclusion_comparison,
-    kanCylinderEndpointInclusion_leftKanCylinderDiagram] at e
-  exact e
+  exact kanFunctorIsoTransport (s.comparison.precomp (kanCylinderEndpointInclusion δ))
+    (by rw [← Category.assoc, kanCylinderEndpointInclusion_comparison])
+    (kanCylinderEndpointInclusion_leftKanCylinderDiagram δ F₀ F β)
+
+/-- 概要：両端同型の射は円柱比較の前合成の射を端点だけ書き換えたもの。
+方針：一般の同型の輸送の Arrow 比較を適用する。
+規約：選んだ代表の raw な一致は使わない。
+使われ方：補正正方形の左右の辺の類の一致。 -/
+lemma LeftKanRelativeJoinRealization.endpointsIso_hom_arrow {K C D : SSet.{u}}
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)}
+    (s : LeftKanRelativeJoinRealization δ F₀ F β) :
+    Arrow.mk s.endpointsIso.hom =
+      Arrow.mk (s.comparison.precomp (kanCylinderEndpointInclusion δ)).hom :=
+  kanFunctorIsoTransport_hom_arrow _ _ _
+
+/-- 概要：両端同型の代表と円柱比較の代表の制限は同じ h Fun の射を表す。
+方針：それぞれの代表の類を同型の射に戻し、端点の輸送を吸収する。
+規約：端点の型付き表示が異なるため Arrow で述べる。
+使われ方：二つの補正正方形の側辺の比較。 -/
+lemma LeftKanRelativeJoinRealization.endpointsHomotopy_hom_arrow {K C D : SSet.{u}}
+    [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {β : SSet.Homotopy F₀ (δ ≫ F)} (s : LeftKanRelativeJoinRealization δ F₀ F β) :
+    Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
+      (functorEdgeOfSimplicialHomotopy s.endpointsIso.simplicialHomotopy)) =
+      Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp
+          s.comparison.simplicialHomotopy (kanCylinderEndpointInclusion δ)))) := by
+  rw [kanFunctorIso_simplicialHomotopy_hom, functorHomotopyPrecomp_hom,
+    kanFunctorIso_simplicialHomotopy_hom]
+  exact s.endpointsIso_hom_arrow
 
 end SerrePositivity.InfinityCategories
