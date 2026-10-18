@@ -468,3 +468,5 @@ A6 続き：`joinTensorLeft` と自然性・左右包含・一点の計算、joi
 A6 続き：円柱の両端を潰す二つの pushout で fat join を構成し、普遍性・包含・円柱上の計算と、通常の join への比較射 `fatJoinComparison` を実装した。比較射の categorical equivalence 性は未完了。内部 Hom の前後合成を表す単体集合の射から `FunctorIso.map_pre`・`map_post` と、`QCatEquivalence.precompose`・`postcompose`、`IsQCatEquivalence` の対応を得た。前合成では新しい標的の quasicategory 性を仮定する。公開40宣言の全型・前提は計画 §6。Core ビルド1658 jobs、累計918宣言の標準3公理監査成功。A6 の任意図式の主定理、A4・A5 は未完了。既存の公開名・型は変更していない。
 
 A6 続き：`isInvertibleEdge_iff_evaluateFunctorAt` は任意のパラメーター K と quasicategory X に対し、関手単体集合の指定された辺の可逆性を全ての頂点での評価で判定する。可逆 path の普遍ホモトピーの辺を定値 path に制限すると恒等となり、前合成の同値によって元の辺の可逆性を反映した。`functorIsoOfPointwiseInvertibleHomotopy` はそのホモトピー自身の辺の類から同型を作る。公開8宣言の全型・前提は計画 §6。Core ビルド1659 jobs・累計926宣言の標準3公理監査成功。fat join 比較・slice 比較の同値性と A6 の主定理は未完了。A4・A5 は未着手。既存の公開名・型は変更していない。
+
+A6 続き：`IsPrecompositionEquivalence f` は任意の quasicategory への前合成が同値となる補助条件。元の単体集合は quasicategory でなくてもよい。合成・二対三則・inner anodyne 射・点ごとに可逆なホモトピー逆を扱い、quasicategory 間では既存の同値条件との同値を証明した。既存の公開名・型は維持。新規15宣言の全型・前提は計画 §6。Core ビルド1661 jobs・累計941宣言の標準3公理監査成功。fat join と slice の比較射の同値性、A6 の主定理は未完了。A4・A5 は未着手。

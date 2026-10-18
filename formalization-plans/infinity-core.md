@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6128,6 +6128,81 @@ noncomputable def functorIsoOfPointwiseInvertibleHomotopy {K X : SSet.{u}}
     [Quasicategory X] {f g : K ⟶ X} (H : SSet.Homotopy f g)
     (hH : ∀ k : K _⦋0⦌,
       IsInvertibleEdge (simplicialHomotopyVertexEdge H k).toTruncated) : FunctorIso f g
+
+end SerrePositivity.InfinityCategories
+```
+
+### A6 続き：前合成による普遍的な同値条件（2026-10-18）
+
+任意の単体集合間の射 f に対して、全ての quasicategory X への前合成が既存の同値となる条件 `IsPrecompositionEquivalence f` を追加した。既存の同値の定義・公開名・型は変更していない。恒等射・合成・二対三則・inner anodyne 射・点ごとに可逆なホモトピー逆からこの条件を導き、両端が quasicategory の場合は既存の `IsQCatEquivalence` と同値とした。前合成の評価の厳密な計算も追加した。
+
+Core ビルド1661 jobs、累計941宣言の標準3公理監査成功。fat join 比較と slice 比較の同値性、A6 の任意図式の主定理は未完了。A4・A5 は未着手。新規15宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma evaluateFunctorAt_unitHomEquiv {D E : SSet.{u}} (v : 𝟙_ SSet ⟶ D) :
+    evaluateFunctorAt (Y := E) (SSet.unitHomEquiv D v) =
+      (λ_ ((ihom D).obj E)).inv ≫ (v ▷ ((ihom D).obj E)) ≫ (ihom.ev D).app E
+
+lemma curry_evaluateFunctorAt_unitHomEquiv {D A X : SSet.{u}}
+    (H : D ⊗ A ⟶ X) (v : 𝟙_ SSet ⟶ D) :
+    curry H ≫ evaluateFunctorAt (Y := X) (SSet.unitHomEquiv D v) =
+      (λ_ A).inv ≫ (v ▷ A) ≫ H
+
+lemma functorPrecompositionMap_evaluate {A B Z : SSet.{u}} (u : B ⟶ Z) :
+    functorPrecompositionMap A B Z ≫ evaluateFunctorAt (functorVertex u) = (ihom A).map u
+
+noncomputable def functorIsoPrecompositionOfHomotopy {A B : SSet.{u}}
+    {f g : A ⟶ B} (H : SSet.Homotopy f g)
+    (hH : ∀ a : A _⦋0⦌,
+      IsInvertibleEdge (simplicialHomotopyVertexEdge H a).toTruncated)
+    (Z : SSet.{u}) [Quasicategory Z] : FunctorIso ((pre f).app Z) ((pre g).app Z)
+
+def IsPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop
+
+lemma isPrecompositionEquivalence_id (A : SSet.{u}) : IsPrecompositionEquivalence (𝟙 A)
+
+lemma IsPrecompositionEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C}
+    (hf : IsPrecompositionEquivalence f) (hg : IsPrecompositionEquivalence g) :
+    IsPrecompositionEquivalence (f ≫ g)
+
+lemma IsQCatEquivalence.isPrecompositionEquivalence {A B : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] {f : A ⟶ B} (hf : IsQCatEquivalence f) :
+    IsPrecompositionEquivalence f
+
+lemma isPrecompositionEquivalence_of_homotopyInverse {A B : SSet.{u}}
+    (f : A ⟶ B) (g : B ⟶ A) (H₀ : SSet.Homotopy (f ≫ g) (𝟙 A))
+    (H₁ : SSet.Homotopy (g ≫ f) (𝟙 B))
+    (h₀ : ∀ a : A _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H₀ a).toTruncated)
+    (h₁ : ∀ b : B _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H₁ b).toTruncated) :
+    IsPrecompositionEquivalence f
+
+lemma IsPrecompositionEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C}
+    (hf : IsPrecompositionEquivalence f) (hfg : IsPrecompositionEquivalence (f ≫ g)) :
+    IsPrecompositionEquivalence g
+
+lemma IsPrecompositionEquivalence.cancel_right {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C}
+    (hg : IsPrecompositionEquivalence g) (hfg : IsPrecompositionEquivalence (f ≫ g)) :
+    IsPrecompositionEquivalence f
+
+lemma isPrecompositionEquivalence_of_innerAnodyne {A B : SSet.{u}} (f : A ⟶ B)
+    (hf : innerAnodyneExtensions f) : IsPrecompositionEquivalence f
+
+noncomputable def IsFullyFaithful.preimageVertexIso {A B : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] {f : A ⟶ B} (hf : IsFullyFaithful f)
+    {x y : A _⦋0⦌} (e : VertexIso (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)) :
+    VertexIso x y
+
+lemma IsPrecompositionEquivalence.isQCatEquivalence {A B : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] {f : A ⟶ B} (hf : IsPrecompositionEquivalence f) :
+    IsQCatEquivalence f
+
+lemma isPrecompositionEquivalence_iff_isQCatEquivalence {A B : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] (f : A ⟶ B) :
+    IsPrecompositionEquivalence f ↔ IsQCatEquivalence f
 
 end SerrePositivity.InfinityCategories
 ```

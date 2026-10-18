@@ -109,3 +109,7 @@ public import SerrePositivity.InfinityCategories.Core.FatJoinComparison
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+
+public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
