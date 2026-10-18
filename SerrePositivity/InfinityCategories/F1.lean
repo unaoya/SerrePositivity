@@ -109,3 +109,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRightQuasi
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRightKan
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionCylinder
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRetraction
+public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy

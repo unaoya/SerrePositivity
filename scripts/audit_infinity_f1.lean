@@ -648,3 +648,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentResolutionComparison_exists_retraction
 #check @SerrePositivity.InfinityCategories.coherentResolutionComparison_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.coherentResolutionComparison_isSimplicialHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.uliftSimplicialHomotopy
+#check @SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.ulift
+#check @SerrePositivity.InfinityCategories.IsQCatEquivalence.ulift_of_kan

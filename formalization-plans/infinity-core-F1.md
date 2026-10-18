@@ -2828,5 +2828,16 @@ lemma coherentResolutionComparison_isSimplicialHomotopyEquivalence
     (Z : SSet.{u}) [KanComplex Z] :
     IsSimplicialHomotopyEquivalence (coherentResolutionComparison Z)
 
+def uliftSimplicialHomotopy {X Y : SSet.{u}} {f g : X ⟶ Y} (H : SSet.Homotopy f g) :
+    SSet.Homotopy ((SSet.uliftFunctor.{v, u}).map f) ((SSet.uliftFunctor.{v, u}).map g)
+
+lemma IsSimplicialHomotopyEquivalence.ulift {X Y : SSet.{u}} {f : X ⟶ Y}
+    (hf : IsSimplicialHomotopyEquivalence f) :
+    IsSimplicialHomotopyEquivalence ((SSet.uliftFunctor.{v, u}).map f)
+
+lemma IsQCatEquivalence.ulift_of_kan {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
+    {f : X ⟶ Y} (hf : IsQCatEquivalence f) :
+    IsQCatEquivalence ((SSet.uliftFunctor.{v, u}).map f)
+
 end SerrePositivity.InfinityCategories
 ```
