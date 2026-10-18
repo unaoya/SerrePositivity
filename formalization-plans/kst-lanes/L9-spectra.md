@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・132 モジュール 2102 宣言の公理監査成功。
+対象ビルド・136 モジュール 2125 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1445,3 +1445,36 @@ HT-KQ の引用も新しい弱同値公理も用いない。
 保存単位の対象ビルド 2331 jobs 成功。
 私有宣言を含む 132 モジュール 2102 宣言で標準三公理のみ。
 L9d は進行中。任意の Kan 射の π_* 同型からの逆射の実現と乗法 telescope は引き続き未完了。
+
+
+## 50. L9d の一般の Kan Whitehead と内部 Hom の π_* 保存
+
+基点を固定しない指数 path 対象を構成し、端点評価が全単射 RLP を持つことを証明した。
+ホモトピーをこの対象へ転置すると、両端点で元の二つの射を得る。
+端点の全基点 π_* 同型を打ち消すことで、一般の区間ホモトピーによる同型性の不変性を得た。
+ここでは異なる終点基点の類の写像が同じだとは主張しない。
+
+点つき Kan 射の mapping path は、源への射影と二つの端点評価で比較できる。
+元の射が全基点 π_* 同型なら、mapping path の終点射もそうである。
+相対 Whitehead により終点射が全単射 RLP を持ち、点つき切断を選べる。
+二つの RLP 射の下で等しい射の間の相対ホモトピーを構成した。
+これらから元の射の点つき逆射と、両方向で基点を固定する実際の区間ホモトピーを得た。
+
+点つき内部 Hom の標的変数についても全基点 π_* 同型の保存を証明した。
+mapping path の源射影と終点射の RLP を内部 Hom へ移し、切断と源射影の厳密な合成を打ち消す。
+源となる点つき対象に有限性や Kan 性は不要である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `KanPath.evaluation_rlp` / `.evaluation_piIsomorphism` | 基点を固定しない path の端点の比較 |
+| `KanPath.transpose` / `.transpose_zero` / `.transpose_one` | 一般のホモトピーの転置と端点の計算 |
+| `kanPiIsomorphism_iff_of_homotopy` | 基点を固定しないホモトピーによる π_* 同型性の保存 |
+| `mappingPathProjection_piIsomorphism` / `.mappingPathProjection_rlp_of_piIsomorphism` | Kan 射の fibration 置換の全単射 RLP |
+| `exists_pointedHomotopy_of_comp_eq` | RLP 射の下で等しい点つき射間の相対ホモトピー |
+| `exists_pointedHomotopyInverse` | 点つき Kan Whitehead の実際の逆射と両方向の基点固定ホモトピー |
+| `PointedMapping.post_piIsomorphism` | 点つき内部 Hom の標的変数の π_* 同型の保存 |
+
+参照：Goerss–Jardine I §§7–8、Kerodon §§3.2.1・3.2.6、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2335 jobs 成功。
+私有宣言を含む 136 モジュール 2125 宣言で標準三公理のみ。
+L9d は進行中。次は二つの内部 Hom の交換と Kan 列の Ω 条件を整合させる。
