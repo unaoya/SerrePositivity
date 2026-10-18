@@ -11047,5 +11047,60 @@ lemma directKanUnstraighteningTransport_isQCatEquivalence_iff
         (uliftTruncatedEdge.{u, u + 1} (nerve.edgeMk f))) ↔
       IsQCatEquivalence (F.map f)
 
+instance leftFibration_pullback_snd {E B C : SSet.{u}} (p : E ⟶ B) (k : C ⟶ B)
+    [LeftFibration p] : LeftFibration (pullback.snd p k)
+
+lemma vertexFiberPullbackIso_inv_ι_fst {E B C : SSet.{u}}
+    (p : E ⟶ B) (k : C ⟶ B) (a : C _⦋0⦌) :
+    (vertexFiberPullbackIso p k a).inv ≫ vertexFiberι (pullback.snd p k) a ≫
+      pullback.fst p k = vertexFiberι p (k.app (Opposite.op ⦋0⦌) a)
+
+lemma IsEdgeTransport.pullback {E B C : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : C ⟶ B)
+    {a b : C _⦋0⦌} (e : SSet.Edge a b)
+    {T : vertexFiber (pullback.snd p k) a ⟶ vertexFiber (pullback.snd p k) b}
+    (hT : IsEdgeTransport (pullback.snd p k) e T) :
+    IsEdgeTransport p (e.map k)
+      ((vertexFiberPullbackIso p k a).inv ≫ T ≫ (vertexFiberPullbackIso p k b).hom)
+
+noncomputable def edgeTransport_pullbackIso {E B C : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : C ⟶ B)
+    {a b : C _⦋0⦌} (e : SSet.Edge a b) :
+    FunctorIso
+      ((vertexFiberPullbackIso p k a).inv ≫ edgeTransport (pullback.snd p k) e ≫
+        (vertexFiberPullbackIso p k b).hom)
+      (edgeTransport p (e.map k))
+
+lemma edgeTransport_pullback_isQCatEquivalence_iff {E B C : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : C ⟶ B)
+    {a b : C _⦋0⦌} (e : SSet.Edge a b) :
+    IsQCatEquivalence (edgeTransport (pullback.snd p k) e) ↔
+      IsQCatEquivalence (edgeTransport p (e.map k))
+
+noncomputable def kanDiagramUniversalFiberComparison
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (F.obj c).obj ⟶
+      vertexFiber pointedSpaceProjection
+        ((kanDiagramCoherentNerve F).app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex c)))
+
+lemma kanDiagramUniversalFiberComparison_isQCatEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    IsQCatEquivalence (kanDiagramUniversalFiberComparison F c)
+
+noncomputable def kanDiagramUniversalFiberComparison_transportIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) {c d : C} (f : c ⟶ d) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u + 1, u}).map (F.map f) ≫ kanDiagramUniversalFiberComparison F d)
+      (kanDiagramUniversalFiberComparison F c ≫ edgeTransport pointedSpaceProjection
+        (SSet.Edge.map (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve C))
+          (uliftTruncatedEdge.{u, u + 1} (nerve.edgeMk f)) (kanDiagramCoherentNerve F)))
+
+lemma kanDiagramUniversalTransport_isQCatEquivalence_iff
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) {c d : C} (f : c ⟶ d) :
+    IsQCatEquivalence (edgeTransport pointedSpaceProjection
+      (SSet.Edge.map (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve C))
+          (uliftTruncatedEdge.{u, u + 1} (nerve.edgeMk f)) (kanDiagramCoherentNerve F))) ↔
+      IsQCatEquivalence (F.map f)
+
 end SerrePositivity.InfinityCategories
 ```
