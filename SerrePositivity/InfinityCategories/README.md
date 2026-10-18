@@ -2204,7 +2204,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開776宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開779宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2832,7 +2832,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開776宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開779宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -4048,6 +4048,52 @@ coherentOppositeInverseSimplex
 これで二つの射の座標を比較できる形になったが、coherent simplex 全体の一致と
 実際の fiber 射の同値性はまだ未証明である。元の q_x と切断空間への接続、
 𝒮・Sp の残りの適用も未完了であり、この座標の照合だけで γ3b の完成とはしない。
+
+### 一定の底の fiber 射と標準左 Hom 比較の厳密な一致（実装済み）
+
+`WeightedConstantSimplex` は `I : Type u`、`[SmallCategory I]`、`C : Type v`、
+`[Category.{u} C]`、`[SimplicialCategory C]`、`F : I ⥤ C`、`x : C`、`i : I` に対して、
+一定の底で作った coherent simplex 全体を反対圏の右 Hom の標準 simplex と比較する。
+
+```lean
+weightedConstantConeSimplex_eq F x i {n : ℕ}
+    (s : (SimplicialCategory.sHom x (F.obj i)).op _⦋n⦌) :
+  weightedConeSimplex F x
+    (weightedNerveConstantDiagram (simplicialHomDiagram F x ⋙ SSet.opFunctor) i s) =
+  coherentOppositeInverseSimplex
+    (coherentHomComparisonSimplex (X := Opposite.op (F.obj i)) (Y := Opposite.op x)
+      (SSet.opObjEquiv s))
+```
+
+頂点は Fin.rev の初点・正頂点での場合分けにより対応する。
+Hom では反転後の二端点を標準の端点へ移送してから、既存の右 Hom の移送の式を使う。
+非定値 Hom は最小点と反転 path の最大点の射の等式、
+同じ対象間は豊穣恒等、正頂点から初点への Hom は空であることに帰着する。
+反転 thickening の Hom の端点を移送しても path の部分集合は変わらないことを明示する。
+
+coslice の座標の単射性を使い、実際の射として
+
+```lean
+weightedConstantCosliceFiberMap_eq F x i :
+  weightedConstantCosliceFiberMap F x i = coherentCosliceFiberComparison x (F.obj i)
+```
+
+を証明した。二つの構成の射そのものの厳密な一致で、Hom の逆射を選び直さない。
+したがって局所 Kan 性だけで
+
+```lean
+weightedConstantCosliceFiberMap_homotopyEquivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)] (F : I ⥤ C) (x : C) (i : I) :
+  IsSimplicialHomotopyEquivalence (weightedConstantCosliceFiberMap F x i)
+```
+
+を得る。追加の比較同値の仮定はない。原典は Kerodon §4.6.7、HTT 4.2.4.1。
+
+残るのは、この一定の底での射を weighted nerve の持ち上げた fiber と
+coherent cone の引き戻しの fiber の標準同型に沿って移し、
+`weightedCoherentConeComparison` が誘導する各 fiber の射に同定する工程である。
+その後の切断空間の移送、元の q_x との一致、𝒮・Sp の残りの適用は未完了。
+γ3b・γ3c の完成とはまだ数えない。
 
 ### 𝒮 の空積（実装済み）
 

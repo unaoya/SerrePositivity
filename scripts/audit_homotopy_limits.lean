@@ -1557,3 +1557,9 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedConstantConeHom_zero_succ
 #check @coherentLeftHomComparison_simplex
 #print axioms coherentLeftHomComparison_simplex
+#check @weightedConstantConeSimplex_eq
+#print axioms weightedConstantConeSimplex_eq
+#check @weightedConstantCosliceFiberMap_eq
+#print axioms weightedConstantCosliceFiberMap_eq
+#check @weightedConstantCosliceFiberMap_homotopyEquivalence
+#print axioms weightedConstantCosliceFiberMap_homotopyEquivalence

@@ -148,3 +148,4 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSimp
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedCosliceComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedPathCoordinates
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConstantFiber
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConstantSimplex
