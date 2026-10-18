@@ -428,6 +428,16 @@ Ex の Kan fibration 保存を示す。Ex∞ の保存は、horn と標準単体
 arrow 圏の filtered colimit が horn の右持ち上げ性を保つことから導く。
 この経路で strong anodyne な pairing の保存そのものは主張しない。
 
+### 厳密な引き戻しの覆いに沿う Kan 条件の局所性
+
+確認する文言：p:E→B と覆い U_j→B に対し、全ての標準単体 Δ[n]→B が一片へ因子化し、
+その片への厳密な引き戻しが Kan fibration なら、p も Kan fibration である。
+証明方針：horn の持ち上げ問題の底の標準単体を一片へ移し、引き戻しの普遍性で上の horn も
+その片へ移す。そこで充填し、全空間へ合成する。pushout では次数ごとの共同全射性が因子化を与える。
+これは Mather 1976 §4 Theorem 18 と Lemmas 19–23 の WCHP の証明を引用するものではない。
+厳密な引き戻しの場合だけを単体集合の持ち上げで示す補助であり、homotopy-cartesian な
+span からこの状況へ移す論証は別途必要である。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -545,6 +555,10 @@ horn と標準単体の有限表示可能性による arrow の順序余極限�
 基底も動く Kan fibration の cospan の比較と、ホモトピー引き戻し模型の三入力の不変性を証明した。
 標準比較射の自然性、四つの頂点の局所化同型によるホモトピー引き戻し性の保存・反映を証明した。
 Ex∞ が四角形のホモトピー引き戻し性を保存・反映することを証明した。
+厳密な引き戻しの pushout の覆いでの Kan fibration の局所性と、積・余積の Kan fibration 保存を証明した。
+厳密な引き戻しの span の三縦射が Kan fibration なら、二重写像円筒の比較も Kan fibration と証明した。
+ホモトピー引き戻し性の脚の交換の不変性と、三頂点のホモトピー引き戻し性の厳密な場合を証明した。
+一般の homotopy-cartesian な二面からこの厳密な状況への移行は未証明。
 Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -552,8 +566,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 666 宣言の型と公理を確認した。
-さらに名前空間全体の 1263 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 675 宣言の型と公理を確認した。
+さらに名前空間全体の 1272 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -681,6 +695,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `fibrantCospanMap_localized_isIso`、`homotopyPullbackMap_localized_isIso` | 実装済み | 基底も動かす三入力の比較 |
 | `homotopyPullbackComparison_naturality`、`isHomotopyPullback_iff_of_localized_isIso` | 実装済み | 標準比較射の自然性と四つの頂点の置換 |
 | `isHomotopyPullback_exInfinity_iff` | 実装済み | Ex∞ によるホモトピー引き戻しの保存・反映 |
+| `lifting_of_pullbackFactorizations`、`kanFibration_of_pushoutCover` | 実装済み | 単体ごとの厳密な引き戻しの覆いによる Kan 条件の局所性 |
+| `tensorRight_rlp`、`coproductMap_rlp`、`doubleMappingCylinderMap_rlp` | 実装済み | 厳密な引き戻しの span の円筒の比較の Kan 条件 |
+| `isHomotopyPullback_flip_iff`、`isHomotopyPullback_of_left_fibration` | 実装済み | 脚の交換と左脚が Kan fibration の場合の判定 |
+| `doubleMappingCylinder_homotopyPullbacks_of_strict` | 実装済み | 厳密な引き戻し・縦射が Kan fibration の場合の三頂点 |
 | Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

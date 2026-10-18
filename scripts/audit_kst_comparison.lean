@@ -75,6 +75,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -984,6 +985,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.localizedMono_lifting_fibrantTarget
 
 
+-- FibrationLocality.lean
+
+#check @SerrePositivity.KST.Comparison.lifting_of_pullbackFactorizations
+#print axioms SerrePositivity.KST.Comparison.lifting_of_pullbackFactorizations
+
+#check @SerrePositivity.KST.Comparison.kanFibration_of_pushoutCover
+#print axioms SerrePositivity.KST.Comparison.kanFibration_of_pushoutCover
+
+
 -- FiniteChainGreatest.lean
 
 #check @SerrePositivity.KST.Comparison.finiteChain_exists_greatest
@@ -1042,6 +1052,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion
 #print axioms SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion
+
+
+-- FiniteOperationsFibrations.lean
+
+#check @SerrePositivity.KST.Comparison.tensorRight_fst_isPullback
+#print axioms SerrePositivity.KST.Comparison.tensorRight_fst_isPullback
+
+#check @SerrePositivity.KST.Comparison.tensorRight_rlp
+#print axioms SerrePositivity.KST.Comparison.tensorRight_rlp
+
+#check @SerrePositivity.KST.Comparison.coproductMap_rlp
+#print axioms SerrePositivity.KST.Comparison.coproductMap_rlp
 
 
 -- GLComponents.lean
@@ -1261,6 +1283,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
 #print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
+
+
+-- HomotopyPullbackSymmetry.lean
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_flip_iff
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_flip_iff
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_of_left_fibration
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_of_left_fibration
 
 
 -- HomotopyPullbackThreeInputs.lean
@@ -2134,6 +2165,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.sliceFiberPushoutIso
 #print axioms SerrePositivity.KST.Comparison.sliceFiberPushoutIso
+
+
+-- StrictCylinderFibration.lean
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinderMap_rlp
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinderMap_rlp
+
+
+-- StrictCylinderHomotopyPullbacks.lean
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_homotopyPullbacks_of_strict
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_homotopyPullbacks_of_strict
 
 
 -- StrictCylinderPullbacks.lean
