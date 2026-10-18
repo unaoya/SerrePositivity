@@ -3349,5 +3349,122 @@ lemma pinchedHomToIntervalMappingSpace_isQCatEquivalence {X : SSet.{u}}
     [Quasicategory X] (x y : X _⦋0⦌) :
     IsQCatEquivalence (pinchedHomToIntervalMappingSpace x y)
 
+lemma joinSimplex_exists_inr_of_cut {A K : SSet.{u}} {n : ℕ}
+    (s : (join K A) _⦋n⦌) (h : s.1.val = 0) :
+    ∃ a : A _⦋n⦌, (joinInr K A).app (Opposite.op ⦋n⦌) a = s
+
+noncomputable def joinRightBoundaryObject {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
+    SSet.{u}
+
+noncomputable def joinRightBoundaryMap {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
+    joinRightBoundaryObject i K ⟶ join K B
+
+lemma joinRightBoundaryMap_join {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
+    pushout.inl (joinInr K A) i ≫ joinRightBoundaryMap i K = joinMap (𝟙 K) i
+
+lemma joinRightBoundaryMap_right {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
+    pushout.inr (joinInr K A) i ≫ joinRightBoundaryMap i K = joinInr K B
+
+instance joinRightBoundaryMap_mono {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (K : SSet.{u}) :
+    Mono (joinRightBoundaryMap i K)
+
+lemma exists_joinDiagramFamily_extension_of_rightBoundary_of_hasLiftingProperty
+    {E F A B X : SSet.{u}} (e : E ⟶ F) (i : A ⟶ B) (K : SSet.{u})
+    [HasLiftingProperty e ((pre (joinRightBoundaryMap i K)).app X)]
+    (u : E ⟶ (ihom (join K B)).obj X)
+    (v : F ⟶ (ihom (join K A)).obj X) (w : F ⟶ (ihom B).obj X)
+    (hv : e ≫ v = u ≫ (pre (joinMap (𝟙 K) i)).app X)
+    (hw : e ≫ w = u ≫ (pre (joinInr K B)).app X)
+    (hvw : v ≫ (pre (joinInr K A)).app X = w ≫ (pre i).app X) :
+    ∃ U : F ⟶ (ihom (join K B)).obj X,
+      e ≫ U = u ∧ U ≫ (pre (joinMap (𝟙 K) i)).app X = v ∧
+        U ≫ (pre (joinInr K B)).app X = w
+
+lemma exists_joinDiagramFamily_extension_of_rightBoundary
+    {E F A B X : SSet.{u}} [Quasicategory X]
+    (e : E ⟶ F) [Mono e] (he : IsPrecompositionEquivalence e)
+    (i : A ⟶ B) [Mono i] (K : SSet.{u})
+    (u : E ⟶ (ihom (join K B)).obj X)
+    (v : F ⟶ (ihom (join K A)).obj X) (w : F ⟶ (ihom B).obj X)
+    (hv : e ≫ v = u ≫ (pre (joinMap (𝟙 K) i)).app X)
+    (hw : e ≫ w = u ≫ (pre (joinInr K B)).app X)
+    (hvw : v ≫ (pre (joinInr K A)).app X = w ≫ (pre i).app X) :
+    ∃ U : F ⟶ (ihom (join K B)).obj X,
+      e ≫ U = u ∧ U ≫ (pre (joinMap (𝟙 K) i)).app X = v ∧
+        U ≫ (pre (joinInr K B)).app X = w
+
+lemma exists_pre_fatJoinComparison_right_relative_retraction
+    {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (K X : SSet.{u}) [Quasicategory X] :
+    ∃ rA : (ihom (fatJoin K A)).obj X ⟶ (ihom (join K A)).obj X,
+    ∃ rB : (ihom (fatJoin K B)).obj X ⟶ (ihom (join K B)).obj X,
+      (pre (fatJoinComparison K A)).app X ≫ rA = 𝟙 _ ∧
+      (pre (fatJoinComparison K B)).app X ≫ rB = 𝟙 _ ∧
+      rB ≫ (pre (joinMap (𝟙 K) i)).app X = (pre (fatJoinMap (𝟙 K) i)).app X ≫ rA ∧
+      rB ≫ (pre (joinInr K B)).app X = (pre (fatJoinInr K B)).app X ∧
+      rB ≫ (pre (joinInl K B)).app X = (pre (fatJoinInl K B)).app X
+
+lemma exists_joinDiagram_right_relative_extension {A B K X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ B) [Mono i] (F : fatJoin K B ⟶ X) (G : join K A ⟶ X)
+    (hFG : fatJoinMap (𝟙 K) i ≫ F = fatJoinComparison K A ≫ G) :
+    ∃ H : join K B ⟶ X,
+      joinMap (𝟙 K) i ≫ H = G ∧
+      joinInr K B ≫ H = fatJoinInr K B ≫ F ∧
+      joinInl K B ≫ H = fatJoinInl K B ≫ F
+
+def leftIntervalCylinderProjection (A : SSet.{u}) :
+    ((Δ[0] : SSet.{u}) ⊗ Δ[1]) ⊗ A ⟶ Δ[1] ⊗ A
+
+def leftIntervalCylinderSection (A : SSet.{u}) :
+    Δ[1] ⊗ A ⟶ ((Δ[0] : SSet.{u}) ⊗ Δ[1]) ⊗ A
+
+lemma leftIntervalCylinderSection_projection (A : SSet.{u}) :
+    leftIntervalCylinderSection A ≫ leftIntervalCylinderProjection A = 𝟙 _
+
+lemma leftIntervalCylinderProjection_section (A : SSet.{u}) :
+    leftIntervalCylinderProjection A ≫ leftIntervalCylinderSection A = 𝟙 _
+
+lemma leftIntervalCylinderProjection_zero (A : SSet.{u}) :
+    (SSet.ι₀ (X := (Δ[0] : SSet.{u})) ▷ A) ≫ leftIntervalCylinderProjection A =
+      snd (Δ[0] : SSet.{u}) A ≫ prismEndpoint 0 A
+
+lemma leftIntervalCylinderProjection_one (A : SSet.{u}) :
+    (SSet.ι₁ (X := (Δ[0] : SSet.{u})) ▷ A) ≫ leftIntervalCylinderProjection A =
+      snd (Δ[0] : SSet.{u}) A ≫ prismEndpoint 1 A
+
+noncomputable def leftIntervalFatDiagram {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) : fatJoin (Δ[0] : SSet.{u}) A ⟶ X
+
+lemma leftIntervalFatDiagram_inl {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    fatJoinInl Δ[0] A ≫ leftIntervalFatDiagram f = SSet.yonedaEquiv.symm x
+
+lemma leftIntervalFatDiagram_inr {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    fatJoinInr Δ[0] A ≫ leftIntervalFatDiagram f = SSet.const y
+
+lemma leftIntervalFatDiagram_cylinder {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    fatJoinCylinder Δ[0] A ≫ leftIntervalFatDiagram f =
+      leftIntervalCylinderProjection A ≫ intervalMappingUncurry f
+
+lemma leftIntervalFatDiagram_recover {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    leftIntervalCylinderSection A ≫ fatJoinCylinder Δ[0] A ≫ leftIntervalFatDiagram f =
+      intervalMappingUncurry f
+
+lemma leftIntervalCylinderProjection_naturality {A B : SSet.{u}} (i : A ⟶ B) :
+    fatJoinCylinderMap (𝟙 (Δ[0] : SSet.{u})) i ≫ leftIntervalCylinderProjection B =
+      leftIntervalCylinderProjection A ≫ (Δ[1] ◁ i)
+
+lemma leftIntervalFatDiagram_precomp {A B X : SSet.{u}} {x y : X _⦋0⦌}
+    (i : A ⟶ B) (f : B ⟶ intervalMappingSpace x y) :
+    fatJoinMap (𝟙 (Δ[0] : SSet.{u})) i ≫ leftIntervalFatDiagram f =
+      leftIntervalFatDiagram (i ≫ f)
+
+lemma leftIntervalFatDiagram_comparison {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) :
+    leftIntervalFatDiagram (f ≫ cosliceFiberToIntervalMappingSpace x y) =
+      fatJoinComparison Δ[0] A ≫ cosliceFiberUncurry f
+
 end SerrePositivity.InfinityCategories
 ```
