@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.SchemeLemmas.BaseChangeCharts
+public import SerrePositivity.KST.SchemeLemmas.BlowupFunctor
 public import SerrePositivity.KST.SchemeLemmas.ChartGluing
 public import Mathlib.AlgebraicGeometry.Morphisms.OpenImmersion
 
@@ -154,5 +155,32 @@ def affineBlowupLocalizationIso : affineBlowup (I.map (algebraMap R S)) ≅
   have := affineBlowupBaseMap_isOpenImmersion (S := S) I r
   exact IsOpenImmersion.isoOfRangeEq_hom_fac _ _
     ((affineBlowupBaseMap_range (S := S) I r).trans (Scheme.Opens.range_ι _).symm)
+
+set_option backward.isDefEq.respectTransparency false in
+/--
+概要：局所化後の中心を別表示で同定しても blowup の中心比較射は開埋め込み。
+方針：中心の等式で像中心の場合へ移送する。
+規約：KST §5、係数写像は r における局所化。
+使われ方：イデアル層のアフィン基本開集合への制限。
+-/
+theorem affineBlowupCenterMap_isOpenImmersion (J : Ideal S)
+    (hJ : I.map (algebraMap R S) = J) :
+    IsOpenImmersion (affineBlowupCenterMap I J (algebraMap R S) hJ) := by
+  subst J
+  exact affineBlowupBaseMap_isOpenImmersion I r
+
+set_option backward.isDefEq.respectTransparency false in
+/--
+概要：局所化後の中心を同定した比較射の像も、基底の基本開集合の逆像。
+方針：中心の等式で自然な基底比較射の像の計算へ帰着する。
+規約：KST §5、像は点集合として述べる。
+使われ方：局所 blowup モデル間の開包含の像を同定する。
+-/
+theorem affineBlowupCenterMap_range (J : Ideal S)
+    (hJ : I.map (algebraMap R S) = J) :
+    Set.range (affineBlowupCenterMap I J (algebraMap R S) hJ) =
+      (affineBlowupπ I ⁻¹ᵁ PrimeSpectrum.basicOpen r).carrier := by
+  subst J
+  exact affineBlowupBaseMap_range I r
 
 end SerrePositivity.KST.SchemeLemmas
