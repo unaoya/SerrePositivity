@@ -63,6 +63,8 @@ run_cmd do
 
 
 
+
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -165,6 +167,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.monoidBarLoopFamily
 
 
+-- BarLocalizedEquivalence.lean
+
+#check @SerrePositivity.KST.Comparison.monoidBarRowsMap
+#print axioms SerrePositivity.KST.Comparison.monoidBarRowsMap
+
+#check @SerrePositivity.KST.Comparison.monoidBarRowIso_naturality
+#print axioms SerrePositivity.KST.Comparison.monoidBarRowIso_naturality
+
+#check @SerrePositivity.KST.Comparison.monoidBarRowsMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.monoidBarRowsMap_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.monoidBarDiagonalFlipIso
+#print axioms SerrePositivity.KST.Comparison.monoidBarDiagonalFlipIso
+
+#check @SerrePositivity.KST.Comparison.monoidBarDiagonalFlipIso_naturality
+#print axioms SerrePositivity.KST.Comparison.monoidBarDiagonalFlipIso_naturality
+
+#check @SerrePositivity.KST.Comparison.monoidBarMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.monoidBarMap_localized_isIso
+
+
 -- BarSegal.lean
 
 #check @SerrePositivity.KST.Comparison.monoidSingleObj_eqToHom
@@ -193,6 +216,36 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidBarRowIso
 #print axioms SerrePositivity.KST.Comparison.monoidBarRowIso
+
+
+-- BarTupleKan.lean
+
+#check @SerrePositivity.KST.Comparison.monoidTupleProjection
+#print axioms SerrePositivity.KST.Comparison.monoidTupleProjection
+
+#check @SerrePositivity.KST.Comparison.monoidTupleLift
+#print axioms SerrePositivity.KST.Comparison.monoidTupleLift
+
+#check @SerrePositivity.KST.Comparison.monoidTupleSpace_kanComplex
+#print axioms SerrePositivity.KST.Comparison.monoidTupleSpace_kanComplex
+
+
+-- BarTupleMaps.lean
+
+#check @SerrePositivity.KST.Comparison.monoidTupleMap
+#print axioms SerrePositivity.KST.Comparison.monoidTupleMap
+
+#check @SerrePositivity.KST.Comparison.monoidTupleSuccIso
+#print axioms SerrePositivity.KST.Comparison.monoidTupleSuccIso
+
+#check @SerrePositivity.KST.Comparison.monoidTupleSuccIso_naturality
+#print axioms SerrePositivity.KST.Comparison.monoidTupleSuccIso_naturality
+
+#check @SerrePositivity.KST.Comparison.monoidTupleMap_zero_isIso
+#print axioms SerrePositivity.KST.Comparison.monoidTupleMap_zero_isIso
+
+#check @SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
 
 
 -- ComponentSubcomplex.lean
@@ -457,6 +510,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
 #print axioms SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
+
+
+-- ExInfinityBar.lean
+
+#check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_bar_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_bar_localized_isIso
 
 
 -- ExInfinityGrouplike.lean
@@ -1231,6 +1290,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.pullback_anodyne_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.pullback_anodyne_localized_isIso
+
+
+-- KanBarRows.lean
+
+#check @SerrePositivity.KST.Comparison.monoidBarRow_kanComplex
+#print axioms SerrePositivity.KST.Comparison.monoidBarRow_kanComplex
+
+#check @SerrePositivity.KST.Comparison.actionBarProjection_row_rlp
+#print axioms SerrePositivity.KST.Comparison.actionBarProjection_row_rlp
+
+#check @SerrePositivity.KST.Comparison.regularBarRow_kanComplex
+#print axioms SerrePositivity.KST.Comparison.regularBarRow_kanComplex
 
 
 -- KanBasePullback.lean

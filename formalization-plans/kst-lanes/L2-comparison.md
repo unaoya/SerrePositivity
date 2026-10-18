@@ -481,6 +481,11 @@ Ex∞ の monoidal 構造と、内部モノイドの置換・単位を構成し�
 既存の SimplicialObject MonCat と内部モノイドの移送を構成し、基礎単体集合の一致を証明した。
 単体的モノイドの Ex∞ 置換と単位を構成し、基礎対象の Kan 性と単位の局所化可逆性を証明した。
 π₀ のモノイド射の関手性、置換が π₀ のモノイド同型を誘導し群状性を保つことを証明した。
+有限積座標の射の局所化可逆性と、bar の各行の Segal 座標の自然性を証明した。
+既存の行ごとの局所化可逆性の対角化定理で、bar の模型の局所化不変性を証明した。
+Ex∞ のモノイド置換への bar の比較射が局所化可逆であることを証明した。
+Kan モノイドの有限積座標・bar の基底と全空間の各行の Kan 性を証明した。
+正則 bar の各行の射影が Kan fibration であることを証明した。
 fibration 保存は未証明。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -488,8 +493,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 536 宣言の型と公理を確認した。
-さらに名前空間全体の 1070 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 554 宣言の型と公理を確認した。
+さらに名前空間全体の 1096 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -592,6 +597,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `exInfinity_map_localized_isIso_iff`、`exInfinity_preservesMonomorphisms` | 実装済み | 局所化可逆な射の保存・反映と単射保存 |
 | `exInfinitySimplicialMonoidFunctor`、`exInfinitySimplicialMonoidUnit` | 実装済み | モノイド構造を保つ実際の Kan 置換 |
 | `exInfinitySimplicialMonoid_componentsMulEquiv`、`exInfinitySimplicialMonoid_isGrouplike` | 実装済み | π₀ モノイドと群状性を保つ置換 |
+| `monoidTupleMap_localized_isIso`、`monoidBarMap_localized_isIso` | 実装済み | 有限積座標と bar の局所化不変性 |
+| `exInfinitySimplicialMonoid_bar_localized_isIso` | 実装済み | Kan モノイドへの置換が誘導する bar の可逆性 |
+| `monoidBarRow_kanComplex`、`regularBarRow_kanComplex`、`actionBarProjection_row_rlp` | 実装済み | Kan モノイドの各行と射影の Kan 条件 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
