@@ -9359,5 +9359,82 @@ noncomputable def leftUnstraighteningTransformationMap_identityIso
       (relativeFunctorVertex (leftUnstraighteningProjection F) (leftUnstraighteningProjection F)
         (𝟙 _) (Category.id_comp _))
 
+lemma exists_leftUnstraighteningTransformationWitness
+    {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F)
+    (x : (leftUnstraighteningTransformationChoiceSpace F H h₀) _⦋0⦌) :
+    ∃ (W : (Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u})
+      (hW₀ : prismEndpoint 0 _ ≫ W = pullback.fst pointedSpaceProjection F)
+      (hWp : W ≫ pointedSpaceProjection = (Δ[1] ◁ leftUnstraighteningProjection F) ≫ H),
+      leftUnstraighteningTransformationWitness F H h₀ W hW₀ hWp = x
+
+lemma exists_leftUnstraighteningTransformationMap_lift
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G) :
+    ∃ W : (Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u},
+      prismEndpoint 0 _ ≫ W = pullback.fst pointedSpaceProjection F ∧
+      prismEndpoint 1 _ ≫ W = (leftUnstraighteningTransformationMap F G H h₀ h₁).val ≫
+        pullback.fst pointedSpaceProjection G ∧
+      W ≫ pointedSpaceProjection = (Δ[1] ◁ leftUnstraighteningProjection F) ≫ H
+
+lemma trianglePrism_restrict_baseChange {A B X : SSet.{u}}
+    (p : A ⟶ B) (T : (Δ[2] : SSet.{u}) ⊗ B ⟶ X) (i : Fin 3) :
+    (stdSimplex.δ i ▷ A) ≫ ((Δ[2] ◁ p) ≫ T) =
+      (Δ[1] ◁ p) ≫ ((stdSimplex.δ i ▷ B) ≫ T)
+
+lemma exists_leftUnstraighteningTransformationComposite_lift
+    {B : SSet.{u + 1}} (F G J : B ⟶ SpaceInfinity.{u})
+    (α β γ : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (hα₀ : prismEndpoint 0 B ≫ α = F) (hα₁ : prismEndpoint 1 B ≫ α = G)
+    (hβ₀ : prismEndpoint 0 B ≫ β = G) (hβ₁ : prismEndpoint 1 B ≫ β = J)
+    (T : (Δ[2] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (hTα : (stdSimplex.δ (2 : Fin 3) ▷ B) ≫ T = α)
+    (hTβ : (stdSimplex.δ (0 : Fin 3) ▷ B) ≫ T = β)
+    (hTγ : (stdSimplex.δ (1 : Fin 3) ▷ B) ≫ T = γ) :
+    ∃ W : (Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u},
+      prismEndpoint 0 _ ≫ W = pullback.fst pointedSpaceProjection F ∧
+      prismEndpoint 1 _ ≫ W =
+        ((leftUnstraighteningTransformationMap F G α hα₀ hα₁).val ≫
+          (leftUnstraighteningTransformationMap G J β hβ₀ hβ₁).val) ≫
+            pullback.fst pointedSpaceProjection J ∧
+      W ≫ pointedSpaceProjection = (Δ[1] ◁ leftUnstraighteningProjection F) ≫ γ
+
+noncomputable def leftUnstraighteningTransformationMap_witnessIso
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G)
+    (W : (Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u})
+    (hW₀ : prismEndpoint 0 _ ≫ W = pullback.fst pointedSpaceProjection F)
+    (hWp : W ≫ pointedSpaceProjection = (Δ[1] ◁ leftUnstraighteningProjection F) ≫ H)
+    (g : leftUnstraightening F ⟶ leftUnstraightening G)
+    (hg : g ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F)
+    (hW₁ : prismEndpoint 1 _ ≫ W = g ≫ pullback.fst pointedSpaceProjection G) :
+    VertexIso (relativeFunctorVertex (leftUnstraighteningProjection G)
+      (leftUnstraighteningProjection F) (leftUnstraighteningTransformationMap F G H h₀ h₁).val
+        (leftUnstraighteningTransformationMap F G H h₀ h₁).property)
+      (relativeFunctorVertex (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+        g hg)
+
+noncomputable def leftUnstraighteningTransformationMap_compositionIso
+    {B : SSet.{u + 1}} (F G J : B ⟶ SpaceInfinity.{u})
+    (α β γ : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (hα₀ : prismEndpoint 0 B ≫ α = F) (hα₁ : prismEndpoint 1 B ≫ α = G)
+    (hβ₀ : prismEndpoint 0 B ≫ β = G) (hβ₁ : prismEndpoint 1 B ≫ β = J)
+    (hγ₀ : prismEndpoint 0 B ≫ γ = F) (hγ₁ : prismEndpoint 1 B ≫ γ = J)
+    (T : (Δ[2] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (hTα : (stdSimplex.δ (2 : Fin 3) ▷ B) ≫ T = α)
+    (hTβ : (stdSimplex.δ (0 : Fin 3) ▷ B) ≫ T = β)
+    (hTγ : (stdSimplex.δ (1 : Fin 3) ▷ B) ≫ T = γ) :
+    VertexIso (relativeFunctorVertex (leftUnstraighteningProjection J)
+      (leftUnstraighteningProjection F) (leftUnstraighteningTransformationMap F J γ hγ₀ hγ₁).val
+        (leftUnstraighteningTransformationMap F J γ hγ₀ hγ₁).property)
+      (relativeFunctorVertex (leftUnstraighteningProjection J) (leftUnstraighteningProjection F)
+        ((leftUnstraighteningTransformationMap F G α hα₀ hα₁).val ≫
+          (leftUnstraighteningTransformationMap G J β hβ₀ hβ₁).val) (by
+            rw [Category.assoc, (leftUnstraighteningTransformationMap G J β hβ₀ hβ₁).property,
+              (leftUnstraighteningTransformationMap F G α hα₀ hα₁).property]))
+
 end SerrePositivity.InfinityCategories
 ```
