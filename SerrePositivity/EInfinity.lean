@@ -31,3 +31,4 @@ public import SerrePositivity.EInfinity.Operad.CompositionLastSwap
 public import SerrePositivity.EInfinity.Operad.CompositionLastSwapEquivariance
 public import SerrePositivity.EInfinity.Operad.TensorFamilyFirstSwapSplitLast
 public import SerrePositivity.EInfinity.Operad.TensorFamilyAdjacentSplitLast
+public import SerrePositivity.EInfinity.Operad.PrefixInsertionEquivariance
