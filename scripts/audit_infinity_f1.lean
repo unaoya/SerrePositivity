@@ -312,3 +312,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pointedSpaceFiberVertexEquiv
 #check @SerrePositivity.InfinityCategories.pointedSpaceFiberVertexEquivAt
 #check @SerrePositivity.InfinityCategories.leftUnstraighteningFiberVertexEquiv
+#check @SerrePositivity.InfinityCategories.kanComplex_of_leftHornFillers
+#check @SerrePositivity.InfinityCategories.vertexFiber_kanComplex_of_leftFibration
+#check @SerrePositivity.InfinityCategories.pointedSpaceFiber_kanComplex
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningFiber_kanComplex

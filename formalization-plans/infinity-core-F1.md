@@ -1268,5 +1268,20 @@ noncomputable def leftUnstraighteningFiberVertexEquiv {C : SSet.{u + 1}}
     (vertexFiber (leftUnstraighteningProjection F) c) _⦋0⦌ ≃
       (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) c)).obj _⦋0⦌
 
+lemma kanComplex_of_leftHornFillers (X : SSet.{u})
+    (hf : ∀ (n : ℕ) (i : Fin (n + 2)), i < n + 1 →
+      ∀ σ : (horn (n + 1) i : SSet.{u}) ⟶ X,
+        ∃ F : (Δ[n + 1] : SSet.{u}) ⟶ X, (horn (n + 1) i).ι ≫ F = σ) : KanComplex X
+
+lemma vertexFiber_kanComplex_of_leftFibration {E B : SSet.{u}} (p : E ⟶ B)
+    [LeftFibration p] (b : B _⦋0⦌) : KanComplex (vertexFiber p b)
+
+instance pointedSpaceFiber_kanComplex (s : SpaceInfinity.{u} _⦋0⦌) :
+    KanComplex (vertexFiber pointedSpaceProjection s)
+
+instance leftUnstraighteningFiber_kanComplex {C : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
+    KanComplex (vertexFiber (leftUnstraighteningProjection F) c)
+
 end SerrePositivity.InfinityCategories
 ```

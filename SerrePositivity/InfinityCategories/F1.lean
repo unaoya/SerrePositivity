@@ -61,3 +61,4 @@ public import SerrePositivity.InfinityCategories.F1.CosliceFiberVertices
 public import SerrePositivity.InfinityCategories.F1.CoherentArrowData
 public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
 public import SerrePositivity.InfinityCategories.F1.PointedSpaceFiberVertices
+public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
