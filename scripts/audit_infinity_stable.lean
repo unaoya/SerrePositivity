@@ -1,6 +1,13 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.exists_zeroReturnTriangle
+#print axioms SerrePositivity.InfinityCategories.exists_pushoutRectangle_of_returnTriangle
+#print axioms SerrePositivity.InfinityCategories.pastingTop_isSplitEpi_of_outer_column
+#print axioms SerrePositivity.InfinityCategories.exists_splitCofiberRectangle
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberSequence_of_zeroSourcePushout
+#print axioms SerrePositivity.InfinityCategories.cofiberConnecting_eq_zero_of_epi
+#print axioms SerrePositivity.InfinityCategories.exists_splitCofiber_of_zeroSourcePushout
 #print axioms SerrePositivity.InfinityCategories.isPushoutSquare_iff_transpose
 #print axioms SerrePositivity.InfinityCategories.dualSquare
 #print axioms SerrePositivity.InfinityCategories.isPushoutSquare_iff_dualSquare
@@ -968,7 +975,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.StableOpposite,
     `SerrePositivity.InfinityCategories.Stable.BinaryProductSquare,
     `SerrePositivity.InfinityCategories.Stable.HomotopyOpposite,
-    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryProduct]
+    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryProduct,
+    `SerrePositivity.InfinityCategories.Stable.ZeroReturnTriangle,
+    `SerrePositivity.InfinityCategories.Stable.ZeroReturnPasting,
+    `SerrePositivity.InfinityCategories.Stable.PastingSplitProjection,
+    `SerrePositivity.InfinityCategories.Stable.SplitCofiberRectangle,
+    `SerrePositivity.InfinityCategories.Stable.SplitCofiberConnecting]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

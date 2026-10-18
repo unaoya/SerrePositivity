@@ -79,6 +79,12 @@ public import SerrePositivity.InfinityCategories.Stable.BinaryProductSquare
 public import SerrePositivity.InfinityCategories.Stable.HomotopyOpposite
 public import SerrePositivity.InfinityCategories.Stable.HomotopyBinaryProduct
 
+public import SerrePositivity.InfinityCategories.Stable.ZeroReturnTriangle
+public import SerrePositivity.InfinityCategories.Stable.ZeroReturnPasting
+public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
+public import SerrePositivity.InfinityCategories.Stable.SplitCofiberRectangle
+public import SerrePositivity.InfinityCategories.Stable.SplitCofiberConnecting
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

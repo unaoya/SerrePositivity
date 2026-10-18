@@ -9425,3 +9425,190 @@ HomotopyOpposite ビルド 1546 jobs、HomotopyBinaryProduct ビルド 2067 jobs
 自分の新規ファイルは警告なし。`git diff --check` 成功。引用・追加公理・sorry は導入していない。
 双積性・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
 TR1・TR3 は完成のまま。次は積と余積の比較を進め、前加法構造を構成する。
+
+
+## 零始点の押し出しの包含を持つ分裂 cofiber/fiber 列
+
+`ZeroReturnTriangle.lean` は零頂点から出る辺 f:z→x に戻り辺 x→z を選び、
+長辺を実際の恒等辺に指定した合成二単体を与える。零対象からの Hom の一意性を
+`compStruct_nonempty_of_homMk_fac` によって持ち上げる（Quasicategory、安定性は不要）。
+`ZeroReturnPasting.lean` は外側標準 span の第一枝と底辺二単体の長辺の一致、
+および外側 span への余錐の制限の厳密な式を証明する。
+戻り二単体の長辺が始点の定値辺なら、外側 span は元の左辺を二列に並べた列四角形の
+span と一致する。その列四角形の普遍余錐を outerBase と五頂点図式へ延長し、
+元の左押し出し・底辺二単体・外側列四角形を厳密に保つ長方形を構成した。
+右四角形も押し出し。これらの長方形の構成は値域の Quasicategory 性のみを使う。
+
+`PastingSplitProjection.lean` は外側が列四角形となる任意の長方形について、
+上側の合成二単体の長辺を恒等辺と照合し、右上辺のホモトピー類が IsSplitEpi となることを示す。
+値域の Quasicategory 性・安定性・普遍性の仮定は不要。
+`SplitCofiberRectangle.lean` は零始点の押し出しにこれを適用する。
+右下の零角を持つ右四角形を転置し、安定性で引き戻し性を得る。
+`exists_cofiberSequence_of_zeroSourcePushout` はその転置を ZeroTriangle として取り出す。
+元の第一包含の実際の射を保持し、三対象は元の右下・右上・左上の頂点に等しい。
+cofiber 列かつ fiber 列であり、第二射は IsSplitEpi。左図式・対象を厳密に固定している。
+
+`SplitCofiberConnecting.lean` は第二射が Epi の cofiber 列の接続射と三角形の第三射が零であることを、
+既存の合成零の消去で証明する。分裂性や前加法構造を追加仮定にしない。
+`exists_splitCofiber_of_zeroSourcePushout` は指定包含・三対象・cofiber/fiber 性・
+第二射の切断・接続射の消滅をまとめて与える。
+この分裂列の構成だけで積と余積の標準比較の同型性・双積性・前加法構造の完成とは数えない。
+
+Lean で抽出した全公開宣言の正確な型：
+
+```lean
+@exists_zeroReturnTriangle.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {z x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},
+  IsZeroVertex.{u_1} z →
+    ∀ (f : SSet.Truncated.Edge.{u_1} z x),
+      ∃ τ,
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ)
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) ∧
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) τ)
+            (SSet.const.{u_1} z)
+pastingOuterStandardSpan_bottomEdge.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Iso.hom.{u_1, u_1 + 1} pastingOuterSpanIso.{u_1})
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SSet.Subcomplex.ι.{u_1} pastingOuterSpan.{u_1})
+        pastingOuterBaseToCorner.{u_1})))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) pastingCornerBottomInclusion.{u_1})
+@pastingOuterCocone_restrict_standardSpan_val.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    ↑(JoinCocone.restrict.{u_1} (pastingOuterCocone.{u_1} F)
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.Iso.hom.{u_1, u_1 + 1} pastingOuterSpanIso.{u_1})
+          (SSet.Subcomplex.ι.{u_1} pastingOuterSpan.{u_1})))
+    ↑(pushoutCocone.{u_1} (pastingSquare.{u_1} F 1))
+@exists_pushoutRectangle_of_returnTriangle.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} L →
+    ∀
+      (τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X),
+      Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} L)
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ) →
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) τ)
+            (SSet.const.{u_1} (squareVertex.{u_1} L 0 0)) →
+          ∃ F,
+            Eq.{u_1 + 1} (pastingSquare.{u_1} F 2) L ∧
+              Eq.{u_1 + 1} (pastingBottomTriangle.{u_1} F) τ ∧
+                IsPushoutSquare.{u_1} (pastingSquare.{u_1} F 0) ∧
+                  Eq.{u_1 + 1} (pastingSquare.{u_1} F 1)
+                    (squareColumnDiagram.{u_1}
+                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareLeftEdge.{u_1} L))
+@squareTopArrow_edge.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1} (SSet.Truncated.Edge.edge.{u_1} (squareTopArrow.{u_1} F))
+    (SSet.yonedaEquiv.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareTopEdge.{u_1} F))
+@pastingTop_isSplitEpi_of_outer_column.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (g :
+    Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X),
+  Eq.{u_1 + 1} (pastingSquare.{u_1} F 1) (squareColumnDiagram.{u_1} g) →
+    CategoryTheory.IsSplitEpi.{u_1, u_1} (squareHoTop.{u_1} (pastingSquare.{u_1} F 0))
+@exists_splitCofiberRectangle.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} L →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} L 0 0) →
+      ∃ F,
+        Eq.{u_1 + 1} (pastingSquare.{u_1} F 2) L ∧
+          Eq.{u_1 + 1} (pastingSquare.{u_1} F 1)
+              (squareColumnDiagram.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareLeftEdge.{u_1} L)) ∧
+            Eq.{u_1 + 1} (squareVertex.{u_1} (pastingSquare.{u_1} F 0) 1 0) (squareVertex.{u_1} L 0 0) ∧
+              IsPushoutSquare.{u_1} (pastingSquare.{u_1} F 0) ∧
+                IsPullbackSquare.{u_1} (pastingSquare.{u_1} F 0) ∧
+                  CategoryTheory.IsSplitEpi.{u_1, u_1} (squareHoTop.{u_1} (pastingSquare.{u_1} F 0))
+@exists_cofiberSequence_of_zeroSourcePushout.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} L →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} L 0 0) →
+      ∃ t,
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} (ZeroTriangle.square.{u_1} t))
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareRightEdge.{u_1} L) ∧
+          Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) (squareVertex.{u_1} L 1 0) ∧
+            Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) (squareVertex.{u_1} L 1 1) ∧
+              Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) (squareVertex.{u_1} L 0 1) ∧
+                IsCofiberSequence.{u_1} t ∧
+                  IsFiberSequence.{u_1} t ∧
+                    CategoryTheory.IsSplitEpi.{u_1, u_1} (squareHoRight.{u_1} (ZeroTriangle.square.{u_1} t))
+@cofiberConnecting_eq_zero_of_epi.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X) (ht : IsCofiberSequence.{u_1} t)
+  [CategoryTheory.Epi.{u_1, u_1} (CategoryTheory.ShortComplex.g.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))],
+  Eq.{u_1 + 1} (cofiberConnecting.{u_1} t ht) 0
+@cofiberTriangle_mor₃_eq_zero_of_epi.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X) (ht : IsCofiberSequence.{u_1} t)
+  [CategoryTheory.Epi.{u_1, u_1} (CategoryTheory.ShortComplex.g.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))],
+  Eq.{u_1 + 1} (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1} (cofiberTriangle.{u_1} t ht)) 0
+@exists_splitCofiber_of_zeroSourcePushout.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} L →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} L 0 0) →
+      ∃ t,
+        ∃ (ht : IsCofiberSequence.{u_1} t),
+          Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} (ZeroTriangle.square.{u_1} t))
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareRightEdge.{u_1} L) ∧
+            Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) (squareVertex.{u_1} L 1 0) ∧
+              Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) (squareVertex.{u_1} L 1 1) ∧
+                Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) (squareVertex.{u_1} L 0 1) ∧
+                  IsFiberSequence.{u_1} t ∧
+                    CategoryTheory.IsSplitEpi.{u_1, u_1} (squareHoRight.{u_1} (ZeroTriangle.square.{u_1} t)) ∧
+                      Eq.{u_1 + 1} (cofiberConnecting.{u_1} t ht) 0
+```
+
+対象 ZeroReturnTriangle ビルド 1607 jobs、ZeroReturnPasting ビルド 2059 jobs、
+PastingSplitProjection ビルド 2060 jobs、SplitCofiberRectangle ビルド 2078 jobs、
+SplitCofiberConnecting ビルド 2161 jobs、対象・Stable 集約ビルド 2199 jobs、
+公開型抽出、公理監査はすべて終了コード 0。監査は 205 モジュール・1604 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。自分の新規ファイルは警告なし。
+`git diff --check` 成功。引用・追加公理・sorry は導入していない。
+双積性・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
+TR1・TR3 と二項積・二項余積の instance は完成のまま。

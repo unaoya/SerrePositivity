@@ -354,6 +354,21 @@ HasBinaryCoproducts (hoFunctor.obj X)` により h C の二項余積 instance �
 `hasBinaryProducts_ho {X : SSet} [Quasicategory X] [IsStable X] :
 HasBinaryProducts (hoFunctor.obj X)` はその同値で反対側の二項余積を輸送する。
 h C の二項積・二項余積は完成。双積性・前加法構造は未完了。
+その比較のため、零始点の押し出しの包含を、分裂する cofiber/fiber 列へ延長した。
+`exists_zeroReturnTriangle` は零対象から出る辺に、長辺が実際の恒等辺となる戻り二単体を与える
+（Quasicategory、安定性は不要）。`pastingOuterStandardSpan_bottomEdge` と
+`pastingOuterCocone_restrict_standardSpan_val` は長方形の形状の厳密な式。
+`exists_pushoutRectangle_of_returnTriangle` は戻り二単体と列四角形の普遍余錐を保持し、
+指定左押し出しを外側が指定列四角形で右も押し出しとなる長方形へ延長する（Quasicategory）。
+`pastingTop_isSplitEpi_of_outer_column` は上側二単体から右上辺の切断を与える（値域に仮定なし）。
+`exists_splitCofiberRectangle` は安定性を転置した右零角へ適用し、右側の引き戻し性も得る。
+`exists_cofiberSequence_of_zeroSourcePushout` はその右側を転置し、元の第一包含を厳密に保つ
+cofiber/fiber 列を作る。三対象は元の右下・右上・左上の指定頂点で、第二射は IsSplitEpi。
+`cofiberConnecting_eq_zero_of_epi` と `cofiberTriangle_mor₃_eq_zero_of_epi` は第二射の全射性だけで
+接続射・三角形の第三射が零となることを示す。
+`exists_splitCofiber_of_zeroSourcePushout` は指定した包含・三対象・cofiber/fiber 性・
+第二射の切断・接続射の消滅をまとめる（Quasicategory、IsStable）。
+この構成だけで双積性や前加法構造の完成とは数えない。次に積・余積の標準比較を進める。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -495,6 +510,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 二項余積の Hom の存在部分 | `JoinCocone.leg`、`legCompStruct`、`leg_comp_projection`、`binaryCoconeOfEdges` と脚・頂点の式（値域に仮定なし）、`exists_coconeVertexFactorization`、`exists_binaryColimit_desc`（Quasicategory、余極限性） | 指定された共通終域への二本の射の因子分解の存在まで完成。一意性・HasBinaryCoproducts instance も下記で完成 |
 | 二項余積の Hom の一意性と instance | `coconeLegTriangle` と制限の式、`exists_binaryCoconeTriangleFamily`、`exists_binaryCoconeEdgeLift`（値域に仮定なし）、`exists_binaryCoconeEdgeLift_of_comm`、`exists_binaryCoconeHomLift`、`binaryColimit_hom_ext_to_cocone`、`binaryColimit_hom_ext`、`binaryColimit_isColimit`、`hasBinaryCoproduct_of_binaryColimit`（Quasicategory、後四者は余極限性）、`hasBinaryCoproducts_ho`（Quasicategory、IsStable） | 完成。双積・前加法構造は未完了 |
 | 安定性の自己双対性と二項積 | `spanSwapIso`、`isPushoutSquare_iff_transpose`、`sliceUnderPostcomp_isIso`、`isPushoutSquare_iff_postcomp_isIso`、`isPullbackSquare_iff_postcomp_isIso`、`dualSquare` と二つの普遍性判定（値域に仮定なし）、`isStable_op`、`exists_zeroTargetPullbackSquare`（Quasicategory、IsStable）、`homotopyOppositeEquivalence`（Quasicategory）、`hasBinaryProducts_ho`（Quasicategory、IsStable） | 完成。双積性・前加法構造は未完了 |
+| 零始点の押し出しの包含の分裂列 | `exists_zeroReturnTriangle`、`exists_pushoutRectangle_of_returnTriangle`（Quasicategory）、`pastingTop_isSplitEpi_of_outer_column`（値域に仮定なし）、`exists_splitCofiberRectangle`、`exists_cofiberSequence_of_zeroSourcePushout`、`cofiberConnecting_eq_zero_of_epi`、`cofiberTriangle_mor₃_eq_zero_of_epi`、`exists_splitCofiber_of_zeroSourcePushout`（Quasicategory、IsStable） | 指定した包含・三対象の cofiber/fiber 列、第二射の切断、接続射の消滅まで完成。双積性・前加法構造は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
