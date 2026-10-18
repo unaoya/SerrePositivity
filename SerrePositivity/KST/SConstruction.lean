@@ -46,6 +46,6 @@ public import SerrePositivity.KST.SConstruction.MultiRealization
 
 public import SerrePositivity.KST.SConstruction.ReducedKComparison
 
-public import SerrePositivity.KST.SConstruction.BoundaryReduction
+public import SerrePositivity.KST.SConstruction.BoundaryKComparison
 
 /-! # ∞-S• 構成と連結 K 理論 -/

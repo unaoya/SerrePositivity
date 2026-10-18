@@ -96,7 +96,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 
 ## 6. 現在地・主要宣言
 
-**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性、全多単体構造・入力についての自然性と対角実現の関手性、自然な基点を持つ K 空間の関手と旧模型との全基点 π_* 比較、全零方向の境界の自然な商と局所化比較まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
+**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性、全多単体構造・入力についての自然性と対角実現の関手性、自然な基点を持つ K 空間の関手と旧模型との全基点 π_* 比較、全零方向の境界の自然な商と局所化・全基点 π_* 比較まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
 L1b は元の全 gapped 図式の制限写像そのものについて、全次数・全境界の RLP を証明した。
 追加の存在仮定や出力の gapped 性の仮定は残っていない。
 
@@ -2223,3 +2223,97 @@ lemma cofiberQuotient_image_isIso_of_localized_toPoint {D : Type v} [Category.{w
 任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2950 jobs）、公理監査成功（788 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.17 全零境界商への点つき比較と K 空間の関手
+
+零次数では添字自己射が恒等となるため、反復実現の全頂点が各零方向の像に属する。
+したがって正の反復の任意の頂点を基点とした実現から、全境界商への点つき比較射が作れる。
+この射は Kan 置換後に L9 の `KanPiIsomorphism` を満たし、L9 の Ω 後にも同じ性質を持つ。
+元の実現や境界の Kan 性を要求せず、追加の補完データも仮定しない。
+
+`boundaryKSpaceFunctor` は全境界を潰す一重 S 実現の Kan 置換の Ω。
+全 `StableModel` 射について自然であり、選んだ零対象の保存を要求しない。
+従来の `kSpace` からの `kSpaceBoundaryComparison` は全基点・全次数の π_* 同型。
+旧 API の後合成と比較する自然性の定理だけは、その API が要求する
+`PreservesSConstructionData` と `PreservesChosenZero` を明記する。
+既存の `kSpace`、同時零段の商やその比較の名前・型は変更しない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。
+`StableModel` の構造的前提と `universe u`、`open scoped Simplicial` は §6.16 と同じ。
+
+**BoundaryPointedComparison.lean**
+
+```lean
+lemma zeroDirectionsIndexEndomorphism_zero {r : ℕ} (s : Finset (Fin r)) :
+    zeroDirectionsIndexEndomorphism s (fun _ => Opposite.op ⦋0⦌) = 𝟙 _
+
+lemma vertex_mem_zeroDirectionsRange {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u})
+    (x : (multiDiagonalCoreSConstruction r X) _⦋0⦌) :
+    x ∈ (zeroDirectionsRange s X).obj (Opposite.op ⦋0⦌)
+
+lemma vertex_mem_zeroDirectionsFatBoundary (r : ℕ) (X : StableModel.{u})
+    (x : (multiDiagonalCoreSConstruction (r + 1) X) _⦋0⦌) :
+    x ∈ (zeroDirectionsFatBoundary (r + 1) X).obj (Opposite.op ⦋0⦌)
+
+def cofiberPointedProjection {A B : SSet.{u}} (i : A ⟶ B) (a : A _⦋0⦌) :
+    PointedSimplicialSet.ofVertex B (i.app (Opposite.op ⦋0⦌) a) ⟶ PointedObject.cofiber i
+
+def boundaryReductionPointedMap (r : ℕ) (X : StableModel.{u})
+    (x : (multiDiagonalCoreSConstruction (r + 1) X) _⦋0⦌) :
+    PointedSimplicialSet.ofVertex (multiDiagonalCoreSConstruction (r + 1) X) x ⟶
+      boundaryReducedRealization r X
+
+lemma boundaryReductionPointedMap_kan_piIsomorphism (r : ℕ) (X : StableModel.{u})
+    (x : (multiDiagonalCoreSConstruction (r + 1) X) _⦋0⦌) :
+    Spectra.KanPiIsomorphism
+      (Spectra.PointedKanReplacement.map (boundaryReductionPointedMap r X x)).right
+
+def boundaryReductionLoopMap (r : ℕ) (X : StableModel.{u})
+    (x : (multiDiagonalCoreSConstruction (r + 1) X) _⦋0⦌) :
+    Spectra.loopSpace (Spectra.PointedKanReplacement.obj
+      (PointedSimplicialSet.ofVertex (multiDiagonalCoreSConstruction (r + 1) X) x)) ⟶
+      Spectra.loopSpace ((boundaryKanRealizationFunctor r).obj X)
+
+lemma boundaryReductionLoopMap_piIsomorphism (r : ℕ) (X : StableModel.{u})
+    (x : (multiDiagonalCoreSConstruction (r + 1) X) _⦋0⦌) :
+    Spectra.KanPiIsomorphism (boundaryReductionLoopMap r X x).right
+```
+
+**BoundaryKComparison.lean**
+
+```lean
+def boundaryKSpaceFunctor : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+instance boundaryKSpaceFunctor_kanComplex (X : StableModel.{u}) :
+    KanComplex ((boundaryKSpaceFunctor.obj X).right)
+
+def boundarySRealizationComparison (X : StableModel.{u}) :
+    pointedSRealization X.carrier ⟶ (boundaryReducedRealizationFunctor 0).obj X
+
+lemma boundarySRealizationComparison_kan_piIsomorphism (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism (Spectra.PointedKanReplacement.map (boundarySRealizationComparison X)).right
+
+def kSpaceBoundaryComparison (X : StableModel.{u}) :
+    kSpace X.carrier ⟶ boundaryKSpaceFunctor.obj X
+
+lemma kSpaceBoundaryComparison_piIsomorphism (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism (kSpaceBoundaryComparison X).right
+
+lemma boundarySRealizationComparison_naturality {X Y : StableModel.{u}}
+    (f : X.carrier ⟶ Y.carrier) (hf : PreservesSConstructionData f) (hz : PreservesChosenZero f) :
+    pointedSPostcomp f hf hz ≫ boundarySRealizationComparison Y =
+      boundarySRealizationComparison X ≫ (boundaryReducedRealizationFunctor 0).map
+        (⟨f, PreservesSConstructionData.toCofiberData hf⟩ : X ⟶ Y)
+
+lemma kSpaceBoundaryComparison_naturality {X Y : StableModel.{u}}
+    (f : X.carrier ⟶ Y.carrier) (hf : PreservesSConstructionData f) (hz : PreservesChosenZero f) :
+    kSpacePostcomp f hf hz ≫ kSpaceBoundaryComparison Y =
+      kSpaceBoundaryComparison X ≫ boundaryKSpaceFunctor.map
+        (⟨f, PreservesSConstructionData.toCofiberData hf⟩ : X ⟶ Y)
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。全零境界商の自然な K 空間関手と従来模型との実際の π_* 比較まで証明済み。
+反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2952 jobs）、公理監査成功（804 宣言、標準三公理のみ）。追加公理・sorry なし。

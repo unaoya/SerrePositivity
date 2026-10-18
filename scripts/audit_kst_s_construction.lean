@@ -2190,3 +2190,51 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.cofiberQuotient_image_isIso_of_localized_toPoint
 #print axioms SerrePositivity.KST.SConstruction.cofiberQuotient_image_isIso_of_localized_toPoint
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsIndexEndomorphism_zero
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsIndexEndomorphism_zero
+
+#check @SerrePositivity.KST.SConstruction.vertex_mem_zeroDirectionsRange
+#print axioms SerrePositivity.KST.SConstruction.vertex_mem_zeroDirectionsRange
+
+#check @SerrePositivity.KST.SConstruction.vertex_mem_zeroDirectionsFatBoundary
+#print axioms SerrePositivity.KST.SConstruction.vertex_mem_zeroDirectionsFatBoundary
+
+#check @SerrePositivity.KST.SConstruction.cofiberPointedProjection
+#print axioms SerrePositivity.KST.SConstruction.cofiberPointedProjection
+
+#check @SerrePositivity.KST.SConstruction.boundaryReductionPointedMap
+#print axioms SerrePositivity.KST.SConstruction.boundaryReductionPointedMap
+
+#check @SerrePositivity.KST.SConstruction.boundaryReductionPointedMap_kan_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.boundaryReductionPointedMap_kan_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.boundaryReductionLoopMap
+#print axioms SerrePositivity.KST.SConstruction.boundaryReductionLoopMap
+
+#check @SerrePositivity.KST.SConstruction.boundaryReductionLoopMap_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.boundaryReductionLoopMap_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.boundaryKSpaceFunctor
+#print axioms SerrePositivity.KST.SConstruction.boundaryKSpaceFunctor
+
+#check @SerrePositivity.KST.SConstruction.boundaryKSpaceFunctor_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.boundaryKSpaceFunctor_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.boundarySRealizationComparison
+#print axioms SerrePositivity.KST.SConstruction.boundarySRealizationComparison
+
+#check @SerrePositivity.KST.SConstruction.boundarySRealizationComparison_kan_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.boundarySRealizationComparison_kan_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.kSpaceBoundaryComparison
+#print axioms SerrePositivity.KST.SConstruction.kSpaceBoundaryComparison
+
+#check @SerrePositivity.KST.SConstruction.kSpaceBoundaryComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.kSpaceBoundaryComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.boundarySRealizationComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.boundarySRealizationComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.kSpaceBoundaryComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.kSpaceBoundaryComparison_naturality
