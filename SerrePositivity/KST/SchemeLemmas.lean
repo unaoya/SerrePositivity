@@ -153,3 +153,7 @@ public import SerrePositivity.KST.SchemeLemmas.NoetherianFiniteModuleFlattening
 public import SerrePositivity.KST.SchemeLemmas.FlatPureTransformBaseChangeOfBound
 public import SerrePositivity.KST.SchemeLemmas.BoundaryTorsionFiniteAlgebra
 public import SerrePositivity.KST.SchemeLemmas.FiniteAlgebraPureTransformBaseChange
+public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraModule
+public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraModuleFinite
+public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraBoundaryTorsion
+public import SerrePositivity.KST.SchemeLemmas.FiniteTypeTensorPureTransformBaseChange

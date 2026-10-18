@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1173 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1194 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -107,6 +107,8 @@
 - この有限 A 加群の場合の存在定理は完成。有限型 A 代数 B 上有限な加群の場合の中心の存在は引き続き未証明で、L7b 全体の完了とは扱わない。
 - 一様な境界ねじれの消滅だけを仮定する追加基底変更の実比較同型と平坦性保存を分離済み。
 - Noether 代数上有限な加群、特に Noether 基礎環の有限型代数上有限な加群について、基礎環上の有限性を使わずに一様な境界ねじれの消滅と平坦な純変換の追加基底変更の安定性を証明済み。
+- C ⊗_A M の C ⊗_A B 上の作用を明示的データとして構成し、純テンソルの公式・C とのスカラー塔・同代数上の有限生成性を証明済み。大域インスタンスには登録していない。
+- Noether な中間環 C 上で、基底変更した有限型加群の境界ねじれの一様消滅、および元の加群の二段の基底変更を照合した平坦性の保存を証明済み。
 - 正則な境界を持つ全アフィン試験対象への純変換の引き戻し平坦性を定義し、Noether アフィンモデルでの証明・任意の前合成での保存・開被覆の局所性を証明済み。
 - チャート環を基礎環とした性質を元の基礎環へ戻す定理、通常 blowup のチャート平坦性との両方向の接続を証明済み。
 - 有限アフィン被覆上の admissible 中心と局所の引き戻し平坦性から、中心の補開集合が U に等しい大域中心と同じ性質を構成・証明済み。
@@ -598,6 +600,10 @@ A が Noether、B が A 上有限型、C が Noether なら C ⊗_A B も Noethe
 | `flatPureTransformBaseChangeEquivOfBound` | FlatPureTransformBaseChangeOfBound | 検証済み | 一様消滅の条件による比較同型 |
 | `exists_pow_annihilates_boundaryTorsion_of_finiteType` | BoundaryTorsionFiniteAlgebra | 検証済み | 有限型代数上有限な加群の一様な境界ねじれ |
 | `finiteTypeFlatPureTransform_baseChange` | FiniteAlgebraPureTransformBaseChange | 検証済み | 基礎環上有限でない場合の追加基底変更の安定性 |
+| `tensorAlgebraModule` | TensorAlgebraModule | 検証済み | 基底変更代数の明示的な作用 |
+| `tensorAlgebraModule_finite` | TensorAlgebraModuleFinite | 検証済み | 基底変更代数上の有限性 |
+| `tensorAlgebraModule_boundaryTorsion_bounded` | TensorAlgebraBoundaryTorsion | 検証済み | Noether チャート上の一様な境界ねじれ |
+| `finiteType_tensorPureTransform_flat_baseChange` | FiniteTypeTensorPureTransformBaseChange | 検証済み | 一般有限型加群のチャート平坦性の保存 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |
