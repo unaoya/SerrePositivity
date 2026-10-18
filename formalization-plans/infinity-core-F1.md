@@ -9970,5 +9970,119 @@ lemma leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence_iff {B : SSet.
     IsQCatEquivalence (leftUnstraighteningPinchedMappingSpaceMap F G) ↔
       IsQCatEquivalence (leftUnstraighteningMappingSpaceMap F G)
 
+def relativeFunctorCurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) :
+    relativeFunctorSpace p (fst A L ≫ a) ⟶ (ihom L).obj (relativeFunctorSpace p a)
+
+lemma relativeFunctorCurryHom_vertex {A E B L : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (H : A ⊗ L ⟶ E) (hH : H ≫ p = fst A L ≫ a) :
+    (relativeFunctorCurryHom p a L).app _ (relativeFunctorVertex p (fst A L ≫ a) H hH) =
+      functorVertex (relativeFunctorCurry H hH)
+
+noncomputable def relativeFunctorCurryIso {A E B L : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (H H' : A ⊗ L ⟶ E)
+    (hH : H ≫ p = fst A L ≫ a) (hH' : H' ≫ p = fst A L ≫ a)
+    (η : VertexIso (relativeFunctorVertex p (fst A L ≫ a) H hH)
+      (relativeFunctorVertex p (fst A L ≫ a) H' hH')) :
+    FunctorIso (relativeFunctorCurry H hH) (relativeFunctorCurry H' hH')
+
+lemma relativeFunctorPre_vertex {A C E B : SSet.{u}} (p : E ⟶ B) (b : A ⟶ B)
+    (j : C ⟶ A) (W : A ⟶ E) (hW : W ≫ p = b) :
+    (relativeFunctorPre p b j).app _ (relativeFunctorVertex p b W hW) =
+      relativeFunctorVertex p (j ≫ b) (j ≫ W) (by rw [Category.assoc, hW])
+
+noncomputable def relativeFunctorExtensionEndpoint {A D C E F B : SSet.{u}}
+    (p : E ⟶ B) (b : A ⟶ B) (i : D ⟶ A) (v : D ⟶ E) (hv : v ≫ p = i ≫ b)
+    (j : C ⟶ A) (q : F ⟶ B) (a : C ⟶ F) (hj : j ≫ b = a ≫ q) :
+    relativeFunctorExtensionSpace p b i v hv ⟶ relativeFunctorSpace (pullback.snd p q) a
+
+lemma relativeFunctorExtensionEndpoint_vertex {A D C E F B : SSet.{u}}
+    (p : E ⟶ B) (b : A ⟶ B) (i : D ⟶ A) (v : D ⟶ E) (hv : v ≫ p = i ≫ b)
+    (j : C ⟶ A) (q : F ⟶ B) (a : C ⟶ F) (hj : j ≫ b = a ≫ q)
+    (W : A ⟶ E) (hW : W ≫ p = b) (hWi : i ≫ W = v)
+    (g : C ⟶ pullback p q) (hg : g ≫ pullback.snd p q = a)
+    (hWj : j ≫ W = g ≫ pullback.fst p q) :
+    (relativeFunctorExtensionEndpoint p b i v hv j q a hj).app _
+      (relativeFunctorExtensionSpaceVertexEquiv p b i v hv ⟨W, hW, hWi⟩) =
+      relativeFunctorVertex (pullback.snd p q) a g hg
+
+noncomputable def relativeFunctorExtensionEndpoint_witnessIso {A D C E F B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (b : A ⟶ B) (i : D ⟶ A) (hi : leftAnodyneExtensions i)
+    (v : D ⟶ E) (hv : v ≫ p = i ≫ b)
+    (j : C ⟶ A) (q : F ⟶ B) (a : C ⟶ F) (hj : j ≫ b = a ≫ q)
+    (W W' : A ⟶ E) (hW : W ≫ p = b) (hW' : W' ≫ p = b)
+    (hWi : i ≫ W = v) (hWi' : i ≫ W' = v)
+    (g g' : C ⟶ pullback p q) (hg : g ≫ pullback.snd p q = a) (hg' : g' ≫ pullback.snd p q = a)
+    (hWj : j ≫ W = g ≫ pullback.fst p q) (hWj' : j ≫ W' = g' ≫ pullback.fst p q) :
+    VertexIso (relativeFunctorVertex (pullback.snd p q) a g hg)
+      (relativeFunctorVertex (pullback.snd p q) a g' hg')
+
+lemma leftUnstraighteningMappingChoice_endpoint_base {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    (simplexPrismVertex 1 1 (leftUnstraightening F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+      (((Δ[1] ◁ leftUnstraighteningProjection F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningTransformationFamily F G) =
+      (fst (leftUnstraightening F) (leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningProjection F) ≫ G
+
+noncomputable def leftUnstraighteningMappingFamilyOfLift {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (W : ((Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗
+      leftUnstraighteningTransformationSpace F G ⟶ PointedSpaceInfinity.{u})
+    (hWp : W ≫ pointedSpaceProjection =
+      ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningTransformationFamily F G) :
+    {g : leftUnstraightening F ⊗ leftUnstraighteningTransformationSpace F G ⟶ leftUnstraightening G //
+      g ≫ leftUnstraighteningProjection G =
+        fst (leftUnstraightening F) (leftUnstraighteningTransformationSpace F G) ≫
+          leftUnstraighteningProjection F}
+
+noncomputable def leftUnstraighteningMappingSpaceMapOfLift {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (W : ((Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗
+      leftUnstraighteningTransformationSpace F G ⟶ PointedSpaceInfinity.{u})
+    (hWp : W ≫ pointedSpaceProjection =
+      ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningTransformationFamily F G) :
+    leftUnstraighteningTransformationSpace F G ⟶
+      relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+
+noncomputable def leftUnstraighteningMappingSpaceMapOfLift_iso {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (W W' : ((Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗
+      leftUnstraighteningTransformationSpace F G ⟶ PointedSpaceInfinity.{u})
+    (hWp : W ≫ pointedSpaceProjection =
+      ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningTransformationFamily F G)
+    (hWp' : W' ≫ pointedSpaceProjection =
+      ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningTransformationFamily F G)
+    (hW₀ : ((scaffoldFirstVertex 1 ▷ leftUnstraightening F) ▷
+      leftUnstraighteningTransformationSpace F G) ≫ W =
+        leftUnstraighteningParameterizedSimplexStart F (leftUnstraighteningTransformationSpace F G))
+    (hW₀' : ((scaffoldFirstVertex 1 ▷ leftUnstraightening F) ▷
+      leftUnstraighteningTransformationSpace F G) ≫ W' =
+        leftUnstraighteningParameterizedSimplexStart F (leftUnstraighteningTransformationSpace F G)) :
+    FunctorIso (leftUnstraighteningMappingSpaceMapOfLift F G W hWp)
+      (leftUnstraighteningMappingSpaceMapOfLift F G W' hWp')
+
+lemma leftUnstraighteningMappingSpaceMap_eq_ofLift {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    leftUnstraighteningMappingSpaceMap F G =
+      leftUnstraighteningMappingSpaceMapOfLift F G (leftUnstraighteningTransformationFamilyLift F G)
+        (leftUnstraighteningTransformationFamilyLift_projection F G)
+
+noncomputable def leftUnstraighteningMappingSpaceMap_iso_ofLift {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (W : ((Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗
+      leftUnstraighteningTransformationSpace F G ⟶ PointedSpaceInfinity.{u})
+    (hWp : W ≫ pointedSpaceProjection =
+      ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningTransformationFamily F G)
+    (hW₀ : ((scaffoldFirstVertex 1 ▷ leftUnstraightening F) ▷
+      leftUnstraighteningTransformationSpace F G) ≫ W =
+        leftUnstraighteningParameterizedSimplexStart F (leftUnstraighteningTransformationSpace F G)) :
+    FunctorIso (leftUnstraighteningMappingSpaceMap F G)
+      (leftUnstraighteningMappingSpaceMapOfLift F G W hWp)
+
 end SerrePositivity.InfinityCategories
 ```
