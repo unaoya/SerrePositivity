@@ -8053,5 +8053,55 @@ lemma nonempty_leftCoherentTransportRelativeEquivalence
       (relativeFunctorSpace q ((SSet.uliftFunctor.{u + 1, u}).map p))
       (relativeFunctorSpace q (leftUnstraighteningProjection (leftCoherentTransport p))))
 
+def relativeFunctorVertex {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B)
+    (f : A ⟶ E) (hf : f ≫ p = a) : (relativeFunctorSpace p a) _⦋0⦌
+
+lemma exists_relativeFunctorVertex {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B)
+    (v : (relativeFunctorSpace p a) _⦋0⦌) :
+    ∃ (f : A ⟶ E) (hf : f ≫ p = a), relativeFunctorVertex p a f hf = v
+
+lemma relativeFunctorOverPre_vertex {E B : SSet.{u}} (p : E ⟶ B)
+    {a b : Over B} (f : a ⟶ b) (g : b.left ⟶ E) (hg : g ≫ p = b.hom) :
+    (relativeFunctorOverPre p f).app (Opposite.op ⦋0⦌) (relativeFunctorVertex p b.hom g hg) =
+      relativeFunctorVertex p a.hom (f.left ≫ g)
+        (by rw [Category.assoc, hg, f.w])
+
+lemma exists_leftFibration_comparison_of_span
+    {E F Z B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration q] (r : Z ⟶ B)
+    (a : Z ⟶ E) (b : Z ⟶ F) (ha : a ≫ p = r) (hb : b ≫ q = r)
+    (ea : IsPrecompositionEquivalence a) (eb : IsPrecompositionEquivalence b) :
+    ∃ f : E ⟶ F, f ≫ q = p ∧ IsPrecompositionEquivalence f
+
+lemma exists_leftCoherentTransport_directComparison
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    ∃ f : (SSet.uliftFunctor.{u + 1, u}).obj E ⟶
+        leftUnstraightening (leftCoherentTransport p),
+      f ≫ leftUnstraighteningProjection (leftCoherentTransport p) =
+        (SSet.uliftFunctor.{u + 1, u}).map p ∧ IsPrecompositionEquivalence f
+
+noncomputable def leftCoherentTransportDirectComparison
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    (SSet.uliftFunctor.{u + 1, u}).obj E ⟶ leftUnstraightening (leftCoherentTransport p)
+
+lemma leftCoherentTransportDirectComparison_projection
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    leftCoherentTransportDirectComparison p ≫
+      leftUnstraighteningProjection (leftCoherentTransport p) =
+      (SSet.uliftFunctor.{u + 1, u}).map p
+
+lemma leftCoherentTransportDirectComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    IsPrecompositionEquivalence (leftCoherentTransportDirectComparison p)
+
+lemma leftCoherentTransportDirectComparison_isQCatEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    IsQCatEquivalence (leftCoherentTransportDirectComparison p)
+
 end SerrePositivity.InfinityCategories
 ```

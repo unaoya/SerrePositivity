@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationSpanStrictification
+public import SerrePositivity.InfinityCategories.F1.LeftCoherentTransportDirectComparison
+
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSpanComparison
 
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationTrivialComparison
