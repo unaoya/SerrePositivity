@@ -400,6 +400,8 @@ Mathlib の sd–Ex 随伴から、自然な最終頂点写像と各単体での
 Ex の反復と Ex∞ の実際の余極限関手、標準単位、有限極限保存を証明した。
 Moss Definition 23 の作用素と合成則・冪等性・両端の式、Notation 24 の固定点フィルター、その零段階と単位の像の同定を証明した。
 単体ごとの最小の複雑度と、その閾値の最小性を証明した。
+Moss Definition 25 の r_n^k と、Lemma 26 (1) の指定した面との合成が恒等となる式を証明した。
+Lemma 26 (2)–(9)、pairing の全単射・非退化性・正則性は未証明。
 Ex∞ の Kan 性・単位の anodyne 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -407,8 +409,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 335 宣言の型と公理を確認した。
-さらに名前空間全体の 755 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 342 宣言の型と公理を確認した。
+さらに名前空間全体の 769 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -478,6 +480,7 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `subdivisionCutAt_comp`、`subdivisionCutAt_zero`、`subdivisionCutAt_last` | 実装済み | Moss Definition 23 の作用素の合成と両端の式 |
 | `exComplexity_zero`、`exComplexity_last` | 実装済み | Moss Notation 24 のフィルターと単位の像・全単体の同定 |
 | `exComplexityLevel_le_iff`、`exComplexityLevel_zero_iff` | 実装済み | 最小の複雑度とその零条件 |
+| `subdivisionDegeneracyAt`、`subdivisionDegeneracyAt_face` | 実装済み | Moss Definition 25 と Lemma 26 (1) の拡張退化と指定面 |
 | Ex∞ の Kan 性と単位の anodyne 性 | 未証明 | Moss 2020 Proposition 21、Theorem 22、Corollary 30 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

@@ -46,6 +46,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1157,6 +1158,30 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionCutAt_lastVertex
 #print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_lastVertex
+
+
+-- SubdivisionDegeneracy.lean
+
+#check @SerrePositivity.KST.Comparison.liftedDegeneracy
+#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy
+
+#check @SerrePositivity.KST.Comparison.liftedFace
+#print axioms SerrePositivity.KST.Comparison.liftedFace
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy
+
+#check @SerrePositivity.KST.Comparison.liftedFace_image_not_mem
+#print axioms SerrePositivity.KST.Comparison.liftedFace_image_not_mem
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_face
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_face
+
+#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt
+#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt
+
+#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face
+#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face
 
 
 -- SubdivisionLastVertex.lean
