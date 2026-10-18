@@ -98,3 +98,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaces
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceProjection
 public import SerrePositivity.InfinityCategories.F1.SubcomplexRestriction
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceUnion
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFiniteGluing
