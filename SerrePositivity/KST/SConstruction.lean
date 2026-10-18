@@ -82,4 +82,7 @@ public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturality
 public import SerrePositivity.KST.SConstruction.KSequenceMaps
 public import SerrePositivity.KST.SConstruction.MonicKSequenceMaps
 
+public import SerrePositivity.KST.SConstruction.KSequenceMapLaws
+public import SerrePositivity.KST.SConstruction.KStageHomotopyFunctor
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -3946,3 +3946,73 @@ lemma monicKKanSequenceMap_projection_component {X Y : StableModel.{u}} (f : X �
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3006 jobs）、公理監査成功（1071 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.32 列の射の成分での関手法則と段ごとのホモトピー集合の自然同型
+
+単射な K の候補列に構成した射が、恒等・合成を各段の点つき写像空間の成分で保つことを証明した。
+元の各段の写像には厳密な関手法則があり、置換後の射との射影の後での成分の等式を計算する。
+射影は Kan 複体間の全基点 π_* 同型なので、ホモトピー逆で後合成して射影を打ち消せる。
+この打ち消しの一般定理は、射の源が Kan でなくても適用できる。
+
+各段 r、全自然数次数 n に対して kStageHomotopyFunctor r n : StableModel ⥤ Type u を構成した。
+その写像は実際の厳密な列の射 monicKKanSequenceMap f が誘導する写像であり、
+成分での恒等・合成法則と基点固定ホモトピー不変性から、集合の関手としての法則を厳密に満たす。
+零次数も含む。未置換の候補列の各段のホモトピー集合の関手も構成した。
+置換射影の誘導写像は自然変換で、各入力において π_* 比較による実際の同値と一致する。
+この自然変換を kStageHomotopyIso r n として自然同型に束ねた。追加の Ω 条件は不要。
+
+ここで証明した列の射の法則は各段の点つきホモトピー成分での法則である。
+列の射そのものの厳密等号や、スペクトルの高次の coherence はまだ結論していない。
+段ごとのホモトピー集合への関手を、要求された ∞ 圏の K スペクトル関手の完成とは数えない。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory SSet`、`open Spectra.PointedMapping` の下の正確な型。
+
+```lean
+lemma pointedComponent_cancel_right_of_piIsomorphism {A E B : PointedSimplicialSet.{u}}
+    [KanComplex E.right] [KanComplex B.right] (p : E ⟶ B)
+    (hp : Spectra.KanPiIsomorphism p.right) (a b : A ⟶ E)
+    (h : componentOf (a ≫ p) = componentOf (b ≫ p)) : componentOf a = componentOf b
+
+lemma kKanSequenceLevelMap_id (X : StableModel.{u}) (r : ℕ) :
+    kKanSequenceLevelMap (𝟙 X) r = 𝟙 _
+
+lemma kKanSequenceLevelMap_comp {X Y Z : StableModel.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) (r : ℕ) :
+    kKanSequenceLevelMap (f ≫ g) r = kKanSequenceLevelMap f r ≫ kKanSequenceLevelMap g r
+
+lemma monicKKanSequenceMap_id_component (X : StableModel.{u}) (r : ℕ) :
+    componentOf ((monicKKanSequenceMap (𝟙 X)).app r) =
+      componentOf (𝟙 (((monicKKanSequence X).level r).space))
+
+lemma monicKKanSequenceMap_comp_component {X Y Z : StableModel.{u}}
+    (f : X ⟶ Y) (g : Y ⟶ Z) (r : ℕ) :
+    componentOf ((monicKKanSequenceMap (f ≫ g)).app r) =
+      componentOf ((monicKKanSequenceMap f).app r ≫ (monicKKanSequenceMap g).app r)
+
+lemma pointedHomotopyMap_eq_of_component {A B : PointedSimplicialSet.{u}}
+    [KanComplex A.right] [KanComplex B.right] {f g : A ⟶ B}
+    (h : componentOf f = componentOf g) (n : ℕ) :
+    Spectra.pointedHomotopyMap n f = Spectra.pointedHomotopyMap n g
+
+def kStageHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u
+
+def rawKStageHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u
+
+def kStageHomotopyProjection (r n : ℕ) :
+    kStageHomotopyFunctor r n ⟶ rawKStageHomotopyFunctor r n
+
+instance kStageHomotopyProjection_app_isIso (r n : ℕ) (X : StableModel.{u}) :
+    IsIso ((kStageHomotopyProjection r n).app X)
+
+def kStageHomotopyIso (r n : ℕ) : kStageHomotopyFunctor r n ≅ rawKStageHomotopyFunctor r n
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。構成した厳密な列の射は各段の成分で恒等・合成を保ち、
+段ごとの全次数のホモトピー集合の関手と、元の候補列への自然同型まで証明済み。
+正の段の Ω 条件・delooping、連結性を含む BF 連結スペクトル、スペクトル関手の構成は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3008 jobs）、公理監査成功（1082 宣言、標準三公理のみ）。追加公理・sorry なし。

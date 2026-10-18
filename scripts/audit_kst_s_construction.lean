@@ -2994,3 +2994,27 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceMap_projection
 #check @SerrePositivity.KST.SConstruction.monicKKanSequenceMap_projection_component
 #print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceMap_projection_component
+
+-- 候補列の射の成分での関手法則と段ごとの π の自然同型
+#check @SerrePositivity.KST.SConstruction.pointedComponent_cancel_right_of_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.pointedComponent_cancel_right_of_piIsomorphism
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevelMap_id
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevelMap_id
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevelMap_comp
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevelMap_comp
+#check @SerrePositivity.KST.SConstruction.monicKKanSequenceMap_id_component
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceMap_id_component
+#check @SerrePositivity.KST.SConstruction.monicKKanSequenceMap_comp_component
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceMap_comp_component
+#check @SerrePositivity.KST.SConstruction.pointedHomotopyMap_eq_of_component
+#print axioms SerrePositivity.KST.SConstruction.pointedHomotopyMap_eq_of_component
+#check @SerrePositivity.KST.SConstruction.kStageHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.kStageHomotopyFunctor
+#check @SerrePositivity.KST.SConstruction.rawKStageHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.rawKStageHomotopyFunctor
+#check @SerrePositivity.KST.SConstruction.kStageHomotopyProjection
+#print axioms SerrePositivity.KST.SConstruction.kStageHomotopyProjection
+#check @SerrePositivity.KST.SConstruction.kStageHomotopyProjection_app_isIso
+#print axioms SerrePositivity.KST.SConstruction.kStageHomotopyProjection_app_isIso
+#check @SerrePositivity.KST.SConstruction.kStageHomotopyIso
+#print axioms SerrePositivity.KST.SConstruction.kStageHomotopyIso
