@@ -97,6 +97,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -302,6 +303,30 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
+
+
+-- BarZeroEvaluation.lean
+
+#check @SerrePositivity.KST.Comparison.regularBarZeroRow_evaluation
+#print axioms SerrePositivity.KST.Comparison.regularBarZeroRow_evaluation
+
+#check @SerrePositivity.KST.Comparison.monoidBarZeroRow_evaluation
+#print axioms SerrePositivity.KST.Comparison.monoidBarZeroRow_evaluation
+
+
+-- BarZeroRows.lean
+
+#check @SerrePositivity.KST.Comparison.regularBarZeroRowIso
+#print axioms SerrePositivity.KST.Comparison.regularBarZeroRowIso
+
+#check @SerrePositivity.KST.Comparison.monoidBarZeroRowMap
+#print axioms SerrePositivity.KST.Comparison.monoidBarZeroRowMap
+
+#check @SerrePositivity.KST.Comparison.monoidBarZeroRowIsTerminal
+#print axioms SerrePositivity.KST.Comparison.monoidBarZeroRowIsTerminal
+
+#check @SerrePositivity.KST.Comparison.monoidBarZeroRowIso
+#print axioms SerrePositivity.KST.Comparison.monoidBarZeroRowIso
 
 
 -- BoundaryFaceRepresentation.lean
@@ -3047,6 +3072,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.regularBarFiber_isPullback
 #print axioms SerrePositivity.KST.Comparison.regularBarFiber_isPullback
+
+
+-- RegularBarHomotopyFiber.lean
+
+#check @SerrePositivity.KST.Comparison.actionBarProjection_diagonal
+#print axioms SerrePositivity.KST.Comparison.actionBarProjection_diagonal
+
+#check @SerrePositivity.KST.Comparison.regularBarFiber_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.regularBarFiber_homotopyPullback
 
 
 -- RegularBarLoop.lean

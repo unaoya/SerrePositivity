@@ -663,6 +663,20 @@ D の余極限・単射保存を独立に示し、CellularNaturalComparison に�
 全射の形による評価関手の直和表示から余極限保存を証明し、一般の単体集合への移送も完了した。
 各列の自由な退化の対角との実際の同型で、fat realization から対角への自然比較の可逆性を証明した。
 
+### 正則 bar の収縮から標準ループ写像への接続
+
+確認する文言：群状単体的モノイド M の既存の標準群完備化写像
+M→ΩR(BM) は anodyne 局所化同型である。
+証明方針：第零行の同型と評価の式で、Proposition 1.6 から正則 bar 束の
+標準ファイバーの四角形のホモトピー引き戻し性を得る。
+正則 bar の収縮を R(BM) へ射影して K-L9 の基点始点 path space へ curry し、
+全空間から path space への射を作る。終点評価との可換性は収縮の終点の式から得る。
+両方の全空間は実際の収縮により局所化後一点なので、この射は局所化同型となる。
+K-L9 の loop と path 終点の厳密ファイバーの同型を使い、ファイバー間の比較を局所化同型にする。
+最後に既存の regularBarContraction_projection と loop の評価の一意性で、
+このファイバー比較が既存の monoidGroupCompletionMap と一致すると証明する。
+π_n の同型を仮定して局所化可逆性を逆算せず、実際の写像と収縮で証明する。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -845,14 +859,16 @@ D の余極限保存と任意の単体集合への augmentation の局所化可�
 各列の自由な退化の対角と fat realization との同型と、元の自然な比較射との一致を証明した。
 対角への比較の局所化可逆性を四頂点の不変性へ適用し、Segal Proposition 1.6 の対角版を証明した。
 Proposition 1.6 の対角化の貼り合わせは証明済み。
-対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
+第零行と元のモノイド・一点の同型、および評価射と標準ファイバー・基点の一致を証明した。
+Proposition 1.6 を正則 bar へ適用し、群状モノイドの標準ファイバーの四角形のホモトピー引き戻し性を証明した。
+標準の群完備化写像の局所化可逆性の Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 1046 宣言の型と公理を確認した。
-さらに名前空間全体の 1912 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 1054 宣言の型と公理を確認した。
+さらに名前空間全体の 1926 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -1075,6 +1091,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `fatFreeColumnsIso`、`fatFreeColumnsIso_augmentation` | 実装済み | 列の自由な退化の対角との同型と元の比較との一致 |
 | `fatRealizationToDiagonal_localized_isIso` | 実装済み | fat realization から対角への自然比較の局所化可逆性 |
 | `segalRealization_homotopyPullback` | 実装済み | Segal Proposition 1.6 の対角版の各行の比較 |
+| `regularBarZeroRowIso`、`monoidBarZeroRowIso` | 実装済み | 第零行と元のモノイド・一点の同型 |
+| `regularBarZeroRow_evaluation`、`monoidBarZeroRow_evaluation` | 実装済み | 第零行の評価と標準ファイバー・基点の一致 |
+| `regularBarFiber_homotopyPullback` | 実装済み | 群状モノイドの正則 bar 束のホモトピーファイバー |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
