@@ -1,6 +1,6 @@
 # K-L4：導来圏と幾何の基盤
 
-作成日：2026-10-18。状態：着手。
+作成日：2026-10-18。状態：L4a 途中・降下模型の設計変更提案。
 
 ## 0. 目的と所有範囲
 
@@ -37,7 +37,7 @@
 - Bondal–van den Bergh, Generators and representability of functors in commutative and noncommutative geometry, Thm 3.1.1。
 - 同 Thm 3.1.1 の compact = perfect と単一 compact 生成元を分けて証明する。
 - Neeman 1992, The connection between the K-theory localisation theorem of Thomason, Trobaugh and Yao and the smashing subcategories of Bousfield and Ravenel, Thm 2.1。
-- 同 Cor 3.2.3：compact の商と冪等完備化に関する箇所を照合する。
+- 原典番号の訂正：Cor 3.2.3 は Bondal–van den Bergh の番号。Neeman 1992 は Thm 2.1。Toën §3.2（p.34）もこの区別で参照している。
 - Thomason–Trobaugh, Higher algebraic K-theory of schemes and of derived categories, §3。
 - 同 3.19：開部分の補集合に台を持つ perfect 複体の切除に対応する。
 - 同 §8・8.1：Zariski Mayer–Vietoris の圏的入力を切り出す。
@@ -49,8 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の係数環層・D_qc の型を実装。降下模型との比較は未証明で、L4a は未完了。
+- 現在地：L4a の係数環層・D_qc・有限アフィン被覆・忘却の忠実性と同型反映性を実装。降下模型の設計変更を提案中。L4a は未完了。
 - L4b、L4c、L4d、L4e は未着手。
+- 最新の対象ビルドは成功。所有 namespace の58宣言の監査は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -74,7 +75,7 @@
 - 選択された導来圏の Hom 宇宙は HasDerivedCategory で明記する。
 - 標準局所化は必要な宇宙で実在する構成を使う。
 - D_qc は準連接なコホモロジーを条件とする充満部分圏で定義する。
-- 各項が準連接な複体の導来圏との同値は別定理として扱う。
+- 各項が準連接な複体の導来圏との同値は一般の qcqs では成立しない。BvdB Thm 3.1.3 直後の注意を参照。
 - 特に非有界の場合にこの同値を定義的等式として扱わない。
 
 ## 5. 接続点：Mathlib の準連接層
@@ -90,7 +91,7 @@
 - これらはまずアーベル圏・層の定理であり導来圏の同値そのものではない。
 - アフィン上の導来同値には切断の非有界導来計算との接続が必要である。
 - 有限アフィン被覆のデータは実際の開集合と被覆の証明を保持する。
-- 被覆の添字型には Fin n を用い、空スキームと空被覆も別途扱う。
+- 被覆の添字はアフィン開の Finset の要素とする。Fin n への再添字は必要時に行い、空被覆も許す。
 
 ## 6. 接続点：既存 dg 基盤
 
@@ -178,13 +179,13 @@
 - 大域 compact 対象の開制限が compact である条件を確認する。
 - 局所 perfect から大域 compact への方向は二開 MV の帰納を用いる。
 - Rj_* の余積保存には準コンパクトかつ準分離な開埋め込みを使う。
-- Neeman Cor 3.2.3 の使用前に必要な生成条件を証明する。
+- Bondal–van den Bergh Cor 3.2.3 の使用前に必要な生成条件を証明する。
 - H の A 上平坦性をこの段階の仮定に追加しない。
 - 完了時に Perf の二つの模型と dg 増強の対応を表に記載する。
 
 ## 12. L4c T2：局所化
 
-- 原典対応は Neeman 1992 Thm 2.1・Cor 3.2.3。
+- 原典対応は Neeman 1992 Thm 2.1 と Bondal–van den Bergh Cor 3.2.3。
 - U ⊂ X は準コンパクト開、Z はその閉補集合とする。
 - D_Z は U への導来制限が零となる対象の充満部分圏とする。
 - 局所化の核とコホモロジー層の台条件の一致を証明する。
@@ -242,6 +243,45 @@
 - 設計変更が必要な場合は根拠を明示して提案する。
 - 完了・設計変更提案・import 閉包の破損以外で自主的に作業を打ち切らない。
 
+## 設計変更提案：§10-7 の厳密降下と導来降下の区別
+
+- 根拠：[Bondal–van den Bergh 原典](https://arxiv.org/pdf/math/0204218)、pp.8–9（論文頁）。
+- Thm 3.1.1 は D_qc(X) について compact = perfect と生成を述べる。
+- Thm 3.1.3 は準コンパクトかつ分離の仮定で D(QCoh(X)) → D_qc(X) の同値を述べる。
+- 直後に、分離を準分離へ弱めると有界の場合にも偽となることを明記している。
+- したがって、各アフィン上の環の加群複体を鎖同型で厳密に貼り合わせる模型は慎重に扱う。
+- 各項の環加群を tilde で層に直し厳密に貼り合わせると、各項が準連接な大域複体になる。
+- この圏を通常の準同型で局所化するだけでは一般に D_qc(X) を復元できない。
+- H = A の場合に既に問題があるため、H の平坦性を加えても解決しない。
+- 初期方針の「層・複体を貼り合わせて局所化する」は、任意の加群層の複体なら利用できる。
+- しかし、その各チャートを環の加群複体に置き換える操作との交換は別の実質的な定理である。
+- 任意の加群層の複体ではアフィン上でも各項を環の加群と同一視できない。
+- 比較すべき対象は各項の準連接性ではなくコホモロジーの準連接性である。
+- 現在実装した CoefficientSheaf.Dqc はこのコホモロジー条件を採っており変更不要。
+- CoefficientSheaf は一般の環層と構造層射を扱う基礎型であり、H_X の構成は未実装。
+- 一般の CoefficientSheaf について無条件の compact 生成を主張していない。
+- D4 の「有限アフィン被覆上の加群の降下」を厳密降下と読んだ実装には進まない。
+- 推奨する明確化：降下模型をアフィン導来 dg 加群圏のホモトピー降下とする。
+- 対象の遷移は導来同値、射の計算には写像複体とその高次の両立性を保持する。
+- 通常の三角圏の同型と cocycle だけを持つ pullback は使わない。
+- dg 模型で Čech のホモトピー極限を構成し、実際の D_qc への比較を証明する。
+- 局所 perfect な対象をこの比較の両側で対応させ、Perf(X;H) の dg 増強を得る。
+- この変更は K 理論への依存・引用・公理・sorry を追加しない。
+- この変更は分離性を追加しないので KST の非分離 qcqs の範囲を維持する。
+- 代替：任意の係数加群層の複体を厳密に降下し、局所化してコホモロジー条件へ制限する。
+- 代替でも、アフィン環の dg 加群との比較を導来化後に証明する必要がある。
+- [Toën 原典](https://www.math.univ-toulouse.fr/~btoen/dgazumaya.pdf) §3.2、pp.32–35 に対応を確認した。
+- Toën Prop 3.9 は compact local generator の Zariski 貼り合わせを述べる。
+- 同 p.34 の局所計算はアフィン開にわたる dg 圏の Holim を明示している。
+- 同 p.35 の帰納段階は二開被覆の homotopy cartesian square を用いる。
+- 交わり W の被覆枚数に対する帰納はせず、アフィン側から W への compact の持ち上げを使う。
+- 持ち上げには Neeman Thm 2.1 と BvdB Cor 3.2.3 の E ⊕ E[1] を使う。
+- そのため、有限被覆の枚数が単調に減らないという初期の注意にも整合する。
+- 次の実装は、この模型の明確化を受けて層の比較と dg の写像複体のどちらから始めるかを固定する。
+- 停止理由はユーザー指定の「設計変更の提案」。import 閉包の破損による停止ではない。
+- L4a は未完了、T1・T1′・T2・T3・RHom 比較も未完了とする。
+- 今回の補助補題の検証を上記主定理の証明と数えない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -249,7 +289,10 @@
 | `CoefficientSheaf`・`Modules`・`forget` | DerivedGeometry/CoefficientSheaf | 実装・対象ビルド済み |
 | `underlyingCohomology`・`hasQuasicoherentCohomology`・`Dqc` | DerivedGeometry/CoefficientSheaf | 実装・対象ビルド済み |
 | `hasQuasicoherentCohomology_closedUnderIso`・`dqcInclusion` | DerivedGeometry/CoefficientSheaf | 実装・対象ビルド済み |
-| 有限アフィン被覆・層の降下 | DerivedGeometry/ | 未実装 |
+| `FiniteAffineCoverOf`・`finiteAffineCover` | DerivedGeometry/FiniteAffineCover | 実装・対象ビルド済み |
+| `affineIntersectionCover` | DerivedGeometry/FiniteAffineCover | 実装・対象ビルド済み |
+| `forget_faithful`・`forget_reflectsIsomorphisms` | DerivedGeometry/CoefficientForget | 実装・対象ビルド済み |
+| 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
 | T2 | DerivedGeometry/ | 未実装 |

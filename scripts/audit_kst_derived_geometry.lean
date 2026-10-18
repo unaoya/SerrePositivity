@@ -18,7 +18,10 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.underlyingCohomology,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.hasQuasicoherentCohomology,
-    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcInclusion]
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcInclusion,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget_reflectsIsomorphisms,
+    `SerrePositivity.KST.DerivedGeometry.FiniteAffineCoverOf,
+    `SerrePositivity.KST.DerivedGeometry.affineIntersectionCover]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do

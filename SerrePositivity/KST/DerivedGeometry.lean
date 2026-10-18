@@ -1,3 +1,5 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.CoefficientSheaf
+public import SerrePositivity.KST.DerivedGeometry.CoefficientForget
+public import SerrePositivity.KST.DerivedGeometry.FiniteAffineCover
