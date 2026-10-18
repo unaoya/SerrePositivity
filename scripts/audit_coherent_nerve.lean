@@ -23,6 +23,7 @@ set_option pp.explicit true
 
 
 
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough
 #check @SerrePositivity.InfinityCategories.Coherent.pathThrough
 
@@ -67,6 +68,18 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathCompMap_of_ge
 #check @SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathCompMap_of_ge
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_on_product
+#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_on_product
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_eq_proper
+#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_eq_proper
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerCompositionHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornInnerCompositionHom
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.cube
 #check @SerrePositivity.InfinityCategories.Coherent.cube
@@ -151,6 +164,18 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
 #check @SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_congr
+#check @SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_congr
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.thickeningFunctor_comp_map
+#check @SerrePositivity.InfinityCategories.Coherent.thickeningFunctor_comp_map
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_comp
+#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_comp
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_simplex_eq
+#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_simplex_eq
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
 #check @SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
@@ -262,6 +287,51 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_id
 #check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_id
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace_independent
+#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace_independent
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_independent
+#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_independent
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor_eq_viaFace
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor_eq_viaFace
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_eq_interval
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_eq_interval
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_eq_viaFace
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_eq_viaFace
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_subinterval
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_subinterval
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_id
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_id
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_comp
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_comp
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClamp
+#check @SerrePositivity.InfinityCategories.Coherent.intervalClamp
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClamp_mem
+#check @SerrePositivity.InfinityCategories.Coherent.intervalClamp_mem
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClamp_fixed
+#check @SerrePositivity.InfinityCategories.Coherent.intervalClamp_fixed
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClamp_comp_inclusion
+#check @SerrePositivity.InfinityCategories.Coherent.intervalClamp_comp_inclusion
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex
+#check @SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex_avoids
+#check @SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex_avoids
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex_ulift_inclusion
+#check @SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex_ulift_inclusion
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace
 #check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace
