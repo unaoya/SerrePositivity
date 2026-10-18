@@ -458,6 +458,34 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.stablePullCut_rightMap
 #print axioms SerrePositivity.InfinityCategories.stablePullCut_middle
 
+#print axioms SerrePositivity.InfinityCategories.stableAugReassociation_cut
+#print axioms SerrePositivity.InfinityCategories.stableAugReassociation_decode
+#print axioms SerrePositivity.InfinityCategories.stableAugJoin_hext
+#print axioms SerrePositivity.InfinityCategories.stableAugJoin_left_heq
+#print axioms SerrePositivity.InfinityCategories.stableAugJoin_right_heq
+#print axioms SerrePositivity.InfinityCategories.stableAugJoin_hext_total
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinEquiv_heq
+#print axioms SerrePositivity.InfinityCategories.stableAugMap_heq
+#print axioms SerrePositivity.InfinityCategories.stableAugReassociation_right_decode
+#print axioms SerrePositivity.InfinityCategories.stableAugReassociation_naturality
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinAssociatorEquiv_naturality
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociatorHom
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociatorHom_isIso
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinHom
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinEquiv_hom
+#print axioms SerrePositivity.InfinityCategories.stableAugHom_heq
+#print axioms SerrePositivity.InfinityCategories.stableAugReassociation_hom
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinAssociatorEquiv_hom
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_naturality
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinInl
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinInr
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinEquiv_inl
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinEquiv_inr
+#print axioms SerrePositivity.InfinityCategories.stableAugReassociation_inl
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_inl
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_inr
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -536,7 +564,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PastingOuterCocone,
     `SerrePositivity.InfinityCategories.Stable.JoinAugmented,
     `SerrePositivity.InfinityCategories.Stable.JoinReassociation,
-    `SerrePositivity.InfinityCategories.Stable.JoinCutCalculus]
+    `SerrePositivity.InfinityCategories.Stable.JoinCutCalculus,
+    `SerrePositivity.InfinityCategories.Stable.JoinReassociationNaturality,
+    `SerrePositivity.InfinityCategories.Stable.JoinAssociator,
+    `SerrePositivity.InfinityCategories.Stable.JoinAssociatorFactors,
+    `SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -9,6 +9,7 @@ public import SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso
 public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
 public import SerrePositivity.InfinityCategories.Stable.PastingOuterCocone
 public import SerrePositivity.InfinityCategories.Stable.JoinCutCalculus
+public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary
 public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges
 public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
