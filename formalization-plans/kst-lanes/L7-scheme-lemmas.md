@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 929 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 967 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -91,6 +91,7 @@
 - 有限生成の境界ねじれは一様な冪で消えることを証明済み。純変換の平坦化中心の存在は未証明。
 - 純変換の局所化と元の加群の局所化の実際の線形同型・生成元からの交換式を構成済み。
 - 純変換での単射・全射の保存、右端で境界元が正則に作用する場合の完全性を証明済み。
+- 正則な境界元 f の冪を含むイデアル I について、Bl_I の各チャート上の純変換を係数環と線形同型にし、平坦性を証明済み。中心が D(f) を避けることも証明済み。
 - 有限アフィン被覆上で実際の admissible 支配射が与えられれば、一つの大域 blowup からの支配射を構成できることを証明済み。零核の中心外開集合による重なりの一致を使う。
 - 次は一般の開埋め込みの blowup 比較射を構成し、一般 Noether 基底上の二段合成へアフィン結果を接続する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在はなお未証明。L7b 完了とはしない。
@@ -324,6 +325,18 @@ Noether 条件下では純変換の有限表示性は有限 B 加群性から導
 A 上の平坦性の存在証明は依然として必要である。
 最初の Cartier 化と有限アフィン被覆の共通細分、二段合成の支配は既証明部分を使う。
 
+#### イデアル加群の場合の先行する具体例
+
+A のイデアル I と非零因子 f について fᴺ ∈ I を仮定する。
+Bl_I の各標準チャート C 上で C ⊗_A I の f に沿う純変換を構成し、
+C との実際の線形同型を作ることを次の中間目標とする。
+乗法写像 C ⊗_A I → C の像は拡大イデアルで、その核はチャート元 a の像で消える。
+fᴺ の像は a の像の倍なので、核は f の冪で消える。
+チャート環で f が非零因子であることは A[1/a] への既存の埋め込みから導く。
+従って純変換は拡大イデアルと同型であり、既証明の正則単項生成から自由になる。
+この例は一般の有限 B 加群について平坦化中心を与える定理を置換しない。
+原典は Stacks 0815 の純変換と KST §5 の通常 blowup の可逆イデアルの計算。
+
 ### 7.2 証明の分解
 
 1. 閉補集合を定義する有限型イデアル層を選ぶ。
@@ -423,6 +436,11 @@ A 上の平坦性の存在証明は依然として必要である。
 | `modulePureTransform_finitePresentation` | PureTransformModule | 検証済み | Noether 環上の有限表示性 |
 | `modulePureTransformLocalizationEquiv` | PureTransformLocalization | 検証済み | 境界外の実比較同型 |
 | `modulePureTransformMap_exact_of_isSMulRegular` | PureTransformExact | 検証済み | 正則な右端の下で完全性 |
+| `idealTensorMap` / `idealTensorMap_range` | IdealTensorMap | 検証済み | 基底変更イデアルの乗法写像と像 |
+| `modulePureTransformEquivImage` | PureTransformImage | 検証済み | 消滅する核による純変換の同定 |
+| `idealPureTransformEquiv` | IdealPureTransform | 検証済み | 純変換と拡大イデアルの同型 |
+| `chartBaseMap_nonZeroDivisors` | ChartBoundaryRegular | 検証済み | 基礎環の正則元のチャートでの正則性 |
+| `chartIdealPureTransformEquiv` / `chartIdealPureTransform_flat` | IdealFlattening | 検証済み | イデアル加群の実際の自由化と平坦化 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |

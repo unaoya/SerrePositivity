@@ -101,3 +101,8 @@ public import SerrePositivity.KST.SchemeLemmas.SchemeCompositionDomination
 public import SerrePositivity.KST.SchemeLemmas.PureTransformModule
 public import SerrePositivity.KST.SchemeLemmas.PureTransformLocalization
 public import SerrePositivity.KST.SchemeLemmas.PureTransformExact
+public import SerrePositivity.KST.SchemeLemmas.IdealTensorMap
+public import SerrePositivity.KST.SchemeLemmas.PureTransformImage
+public import SerrePositivity.KST.SchemeLemmas.IdealPureTransform
+public import SerrePositivity.KST.SchemeLemmas.ChartBoundaryRegular
+public import SerrePositivity.KST.SchemeLemmas.IdealFlattening
