@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Spectra.PointedHomotopyGroupDiagram
+public import SerrePositivity.KST.Spectra.GroupCochainHomotopyDiagram
+public import SerrePositivity.KST.Spectra.FreePointedFunctionHomotopy
+public import SerrePositivity.KST.Spectra.PointedActionHomotopy
+public import SerrePositivity.KST.Spectra.GroupCoefficientCochains
+public import SerrePositivity.KST.Spectra.GroupCochainHomotopyFunctions
+
 public import SerrePositivity.KST.Spectra.FreeActionFunctionPre
 public import SerrePositivity.KST.Spectra.FreeActionFunctionIso
 public import SerrePositivity.KST.Spectra.FreeUniversalCover

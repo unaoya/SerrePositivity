@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・388 モジュール 3939 宣言の公理監査成功。
+対象ビルド・394 モジュール 3971 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2991,3 +2991,37 @@ EG の各次数を連続する座標の比の自由軌道へ移し、顔・退�
 保存単位の対象ビルド 3832 jobs 成功。
 私有宣言を含む 388 モジュール 3939 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 99. L9e の cochain の π_* の余単体群の図式の同定
+
+任意の点つき Kan 図式に正次数のホモトピー群を適用する一般的な界面を追加した。
+添字圏の filtered 性を要求せず、その対象と射の宇宙も係数から独立にした。
+図式の自然変換と同型も群の図式の自然変換と同型へ送る。
+これを点つき群 cochain と非斉次関数図式の同型へ適用した。
+
+自由軌道の前合成の評価との可換式を境界定数単体上で計算し、π_* の各関数座標に対する作用の具体式を証明した。
+軌道代表の像の群成分が係数のホモトピー群へ誘導する作用と、添字の変更になる。
+点つき Kan 係数の正次数 π_* の作用を一対象群圏の図式への π_* の適用で構成した。
+
+一般の群の圏の作用を係数に取り、非斉次関数群の前合成を準同型として定義した。
+離散的な単体集合の関数の式から恒等・合成法則を移し、余単体群の図式にした。
+関数複体の座標ごとの π_* の同型を、前合成の座標式の自然性で束ねた。
+従って群 cochain の正次数 π_* の余単体群は、係数の π_* の作用の非斉次 cochain の図式と自然に同型である。
+これは各次数の同型に加えて全ての顔・退化を保持する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `KanHomotopyGroup.diagram` / `diagramMap` / `diagramIso` | 任意の点つき Kan 図式への正次数 π_* の適用 |
+| `PointedActionCochains.homotopyDiagramIso` | cochain の非斉次比較を π_* の余単体群へ送る同型 |
+| `SimplicialFunctionComplex.pointedHomotopyEquiv` | 基点を固定した関数複体の π_* の同型 |
+| `FreeActionFamily.pointedFunctionPre_homotopy_coordinate` | 自由軌道の前合成の π_* の座標式 |
+| `PointedActionCochains.homotopyAction` / `homotopyAction_ρ_apply` | 係数の正次数 π_* の群作用 |
+| `GroupCoefficientCochains.pre` / `obj` | 群作用を持つ係数の非斉次関数群の余単体図式 |
+| `GroupActionCochains.functionHomotopyNatIso` | 関数複体の π_* と群の非斉次 cochain の自然同型 |
+| `PointedActionCochains.homotopyFunctionNatIso` | 元の群 cochain の正次数 π_* の余単体群全体の非斉次比較 |
+
+参照：Goerss–Jardine I §7、VIII §2。
+保存単位の対象ビルド 3838 jobs 成功。
+私有宣言を含む 394 モジュール 3971 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、線形 cochain の cohomology との比較、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
