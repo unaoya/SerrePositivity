@@ -2142,5 +2142,61 @@ lemma pathResolutionMap_comp {n : ℕ} (i j : Fin (n + 1)) (d : SimplexCategory�
         ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩).app d (P, Q)) =
           (pathResolutionMap j).app d Q
 
+noncomputable def coherentFlagHom {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) (i j : Fin (n + 2)) :
+    SimplicialCategory.sHom
+      (⟨ULift.up i⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2)))) ⟨ULift.up j⟩ ⟶
+      SimplicialCategory.sHom (coherentHomComparisonObj X Y i)
+        (coherentHomComparisonObj X Y j)
+
+noncomputable def coherentFlagSimplex {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) : (SimplicialNerve C) _⦋n + 1⦌
+
+lemma coherentFlagHom_cast_cast {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) (i j : Fin (n + 1)) :
+    coherentFlagHom φ i.castSucc j.castSucc ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentHomComparisonObj_cast X Y i) (coherentHomComparisonObj_cast X Y j)) =
+      toUnit _ ≫ eId SSet X
+
+lemma coherentFlagSimplex_source {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) :
+    (SimplicialNerve C).map (PinchedHom.front n).op (coherentFlagSimplex φ) =
+      PinchedHom.constant (coherentNerveVertex X) n
+
+lemma coherentFlagSimplex_target {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) :
+    (SimplicialNerve C).map (PinchedHom.lastVertex n).op (coherentFlagSimplex φ) =
+      coherentNerveVertex Y
+
+noncomputable def coherentFlagPinchedSimplex {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) :
+    PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n
+
+lemma coherentFlagHom_cast_last {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) (i : Fin (n + 1)) :
+    coherentFlagHom φ i.castSucc (Fin.last (n + 1)) ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentHomComparisonObj_cast X Y i) (coherentHomComparisonObj_last X Y n)) =
+      pathResolutionMap i ≫ φ
+
+lemma coherentPinchedHom_flag {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y)
+    (i : Fin (n + 1)) :
+    coherentPinchedHom (coherentFlagPinchedSimplex φ) i = pathResolutionMap i ≫ φ
+
+lemma coherentPinchedFlagMap_flag {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n : ℕ}
+    (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) :
+    coherentPinchedFlagMap (coherentFlagPinchedSimplex φ) = φ
+
 end SerrePositivity.InfinityCategories
 ```

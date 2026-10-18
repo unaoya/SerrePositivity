@@ -498,3 +498,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pathResolutionMap_projection
 #check @SerrePositivity.InfinityCategories.pathFlagResolution_comp
 #check @SerrePositivity.InfinityCategories.pathResolutionMap_comp
+#check @SerrePositivity.InfinityCategories.coherentFlagHom
+#check @SerrePositivity.InfinityCategories.coherentFlagSimplex
+#check @SerrePositivity.InfinityCategories.coherentFlagHom_cast_cast
+#check @SerrePositivity.InfinityCategories.coherentFlagSimplex_source
+#check @SerrePositivity.InfinityCategories.coherentFlagSimplex_target
+#check @SerrePositivity.InfinityCategories.coherentFlagPinchedSimplex
+#check @SerrePositivity.InfinityCategories.coherentFlagHom_cast_last
+#check @SerrePositivity.InfinityCategories.coherentPinchedHom_flag
+#check @SerrePositivity.InfinityCategories.coherentPinchedFlagMap_flag
