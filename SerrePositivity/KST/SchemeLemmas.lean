@@ -33,3 +33,9 @@ public import SerrePositivity.KST.SchemeLemmas.SchemeBlowup
 public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupAffine
 public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupProper
 public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupAway
+public import SerrePositivity.KST.SchemeLemmas.PullbackComparison
+public import SerrePositivity.KST.SchemeLemmas.SubschemeAffinePullback
+public import SerrePositivity.KST.SchemeLemmas.SchemeExceptional
+public import SerrePositivity.KST.SchemeLemmas.BaseComparisonExt
+public import SerrePositivity.KST.SchemeLemmas.PowerNaturality
+public import SerrePositivity.KST.SchemeLemmas.SchemePowerBlowup

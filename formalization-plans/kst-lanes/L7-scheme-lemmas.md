@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 429 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 500 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -45,10 +45,17 @@
 - 各アフィン開集合上の実際の Rees Proj との同型と構造射の交換式を構成済み。
 - 一般の blowup の分離性、アフィン局所有限生成中心での固有性、局所 Noether 基底での固有性を証明済み。
 - 中心支持の補開集合を定義し、一般の blowup の中心外同型と構造射との交換式を構成済み。
-- 次は例外因子と冪不変性の一般スキームへの大域化。
+- 一般の例外閉部分スキーム、中心への射、可換正方形、標準チャートの実際の商モデルと包含射を構成済み。
+- 一般の例外閉部分スキームの有効 Cartier 性（正則な一元による局所商の条件）を証明済み。
+- 冪比較の係数写像に対する自然性を証明し、一般の `blowupPowerIso : Bl(Iⁿ) ≅ Bl(I)` と基底上の交換式を構成済み。
+- L7a の主要求（構成・例外因子・冪不変性・固有性・中心外同型）は一般スキーム上で実装済み。
+- 工程区切りの全体ビルドは他レーン `InfinityCategories/F1/CoherentHomComparison.lean:167` の simp エラーで失敗。L7 の import 閉包と対象ビルドは正常。
+- 次は L7b の Noether 特殊形の文言を再確認して平坦化の基盤を実装する。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
-- L7a は未完了。L7b・L7c の本体は未着手。
+- L7a の主要求は実装済み。層としての O(±1) の記号は導入しておらず、その符号照合は将来その記号を導入する際の補助項目。
+- 例外イデアルの階数一自由化は各実チャート環の線形同型として構成済み。
+- L7b・L7c の本体は未着手。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
 - Rees 代数は多項式環の部分代数として既にある。
@@ -426,6 +433,14 @@ f の有限型性は固有性から導く。
 | `centerComplement` / `fromSpec_preimage_centerComplement` | SchemeBlowupAway | 検証済み | 中心補集合とアフィン切断中心の補集合との比較 |
 | `blowupπ_restrict_complement_isIso` | SchemeBlowupAway | 検証済み | 一般の blowup の中心外同型性 |
 | `blowupAwayIso` / `blowupAwayIso_hom_ι` | SchemeBlowupAway | 検証済み | 中心外の実際のスキーム同型と構造射の交換式 |
+| `subschemeAffinePullbackIso` / `subschemeChartPullbackIso` | SubschemeAffinePullback | 検証済み | 中心の逆像の実際の商の Spec のモデルと射影保存 |
+| `exceptional` / `exceptionalι` / `exceptionalToCenter` / `exceptional_square` | SchemeExceptional | 検証済み | 一般の例外閉部分スキームと古典的 blowup 正方形 |
+| `exceptionalChartIso` / `exceptionalChartIso_inv_snd` | SchemeExceptional | 検証済み | 例外因子の標準チャートの商モデルと包含射 |
+| `exceptional_isEffectiveCartier` | SchemeExceptional | 検証済み | 一般の例外因子の正則な局所方程式 |
+| `affineBlowupCenter_hom_ext` | BaseComparisonExt | 検証済み | 係数環を変えた中心比較射の一意性 |
+| `affineBlowupPowerIso_naturality` | PowerNaturality | 検証済み | 任意の係数環写像に対する冪比較の自然性 |
+| `affineBlowupPowerNatIso` | SchemePowerBlowup | 検証済み | アフィン局所モデル図式の冪比較自然同型 |
+| `blowupPowerIso` / `blowupPowerIso_hom_base` | SchemePowerBlowup | 検証済み | 一般スキーム上の正の冪不変性と基底両立性 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
@@ -526,11 +541,11 @@ Lemma 5.6 の証明で blowup の指数 m を追加し、各固定 m に Lemma 5
 この K/pro の再構成と Lean 実装は K-L6 の担当とし、L7 は古典的幾何の入力を提供する。
 本節の記録と設計上の問題はチャットに報告済み。
 
-### 14.5 L7a に残る作業
+### 14.5 L7a の現在地と補助項目
 
-- アフィン例外因子の局所正則モデルと局所自由なイデアルの同定は証明済み。一般スキームへの貼り合わせで保存する。
+- 一般の例外因子の正則な局所商モデルを証明済み。各チャートの拡大イデアルの線形自明化を使う。
 - 中心の補開集合上の同型は一般スキーム上でも構成済み。アフィン局所モデルとの比較を介して証明した。
-- 正の冪のチャート比較と基底上のアフィン blowup の同型は構成済み。一般スキームへの貼り合わせとの両立を証明する。
-- 一元局所化に対するアフィン blowup の比較同型は構成済み。比較の合成則と一般スキームへの貼り合わせを証明する。
-- L7a 完了時には対象ビルド・公理監査と全体ビルドを行う。
+- 正の冪の比較は一般のイデアル層について自然同型と余極限で大域化済み。
+- 一元局所化との比較、全アフィン開集合の図式、一般スキームへの開貼り合わせは構成済み。
+- 対象ビルドと公理監査（500 宣言）は成功。全体ビルドは他レーンの CoherentHomComparison:167 で失敗し報告済み。
 - 共有ルートに追加した一行の import は、他レーンの差分から分離できるまで未コミット。
