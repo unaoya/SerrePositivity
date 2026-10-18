@@ -60,6 +60,9 @@ public import SerrePositivity.KST.Descent.FiniteTypeUniversal
 public import SerrePositivity.KST.Descent.ExceptionalCopies
 public import SerrePositivity.KST.Descent.ExceptionalCopiesAction
 public import SerrePositivity.KST.Descent.OrbitDescentStep
+public import SerrePositivity.KST.Descent.NoetherianThickening
+public import SerrePositivity.KST.Descent.ThickeningDescent
+public import SerrePositivity.KST.Descent.ReducedSourceDescent
 
 /-!
 # K-L8：論文 §3 の降下
@@ -88,6 +91,9 @@ Noether 基底上の「一般 → 被約」の全次数降下比較の還元も�
 コピーの有限積保存と中心上の降下からの実際の中項比較も公開する。
 例外部分の実際の同変コピー分解を用い、二つの非交和の積保存と中心上の降下から
 実際の軌道段階の全次数 PiDescent を導く。
+Noether な終域への全射閉埋め込みの冪零性と、冪零な基底変更の前後での
+全次数 PiDescent の同値も公開する。
+基底を固定した始域だけの被約化と、被約化した中心からの軌道段階も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

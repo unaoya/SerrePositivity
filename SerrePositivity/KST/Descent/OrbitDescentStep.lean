@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Descent.ExceptionalCopiesAction
 public import SerrePositivity.KST.Descent.OrbitProductComparison
+public import SerrePositivity.KST.Descent.ReducedSourceDescent
 
 /-!
 # 実際の軌道正方形の帰納段階
@@ -83,5 +84,34 @@ theorem orbit_piDescent_of_center (data : NaturalBlowupSequences L)
     action over_base equivariant center_descent
     (data.orbitExceptionalComparison_bijective p sections section_identity covering
       action over_base equivariant)
+
+/-- 概要：被約化した中心上の降下から実際の軌道降下（論文 補題 3.3・定理 3.1）。
+方針：中心の始域だけを被約化した比較を公理 (3) で移し、軌道段階に入力する。
+規約：中心の基底 Z は固定する。帰納仮定そのものの証明は別に必要。
+使われ方：被約な有限型対象に対する次元帰納と、非被約な軌道中心の接続。 -/
+theorem orbit_piDescent_of_reduced_center (data : NaturalBlowupSequences L)
+    [IsNoetherian S] [Nilinvariant S L]
+    [∀ H n, PreservesLimit (Discrete.functor (fun _ : I ↦ op B)) (L H n)]
+    [IsReduced V.obj.left] {G : Type*} [Group G] [Finite G] [MulAction G I]
+    [MulAction.IsPretransitive G I] [Nonempty I]
+    (p : V ⟶ B) [IsSeparated p.hom.left] [IsSeparated V.obj.hom]
+    (sections : I → (B ⟶ V)) (section_identity : ∀ i, sections i ≫ p = 𝟙 B)
+    (covering : ⋃ i, Set.range (sections i).hom.left = Set.univ)
+    [∀ H n, PreservesLimit (Discrete.functor (fun _ : I ↦ op
+      (reducedClosedAsFiniteType B (coincidenceClosedSet (fun i ↦ (sections i).hom))))) (L H n)]
+    (action : G →* Aut V) (over_base : ∀ g, (action g).asIso.hom ≫ p = p)
+    (equivariant : ∀ g i, sections (g • i) = sections i ≫ (action g).asIso.hom)
+    (center_descent : L.PiDescent
+      (finiteTypeReductionInclusion
+          (closedCenterPullback p (coincidenceClosedSet (fun i ↦ (sections i).hom))) ≫
+        closedCenterPullbackSecond p (coincidenceClosedSet (fun i ↦ (sections i).hom)))
+      (finiteTypeReductionAction (orbitCenterAction p sections action over_base))
+      (reducedSourceAction_over_base _ _
+        (orbitCenterProjection_invariant p sections action over_base))) :
+    L.PiDescent p action over_base := by
+  apply data.orbit_piDescent_of_center p sections section_identity covering
+    action over_base equivariant
+  exact (Nilinvariant.piDescent_iff_reducedSource L _ _
+    (orbitCenterProjection_invariant p sections action over_base)).mpr center_descent
 
 end SerrePositivity.KST.Descent.NaturalBlowupSequences

@@ -36,10 +36,14 @@
 例外部分を Z のコピーの非交和として有限型の圏内で構成し、既存の作用が添字を置換することを証明した。
 自然な blowup 列とコピーの有限積保存のもとで、中心上の降下だけから
 実際の軌道段階の全次数 PiDescent を得る定理を証明した。
+Noether な終域への全射閉埋め込みの冪零性と、Noether な対象への底変換後の冪零性を証明した。
+公理 (3) から、冪零な基底変更の前後の全次数降下の同値を証明した。
+基底を固定した始域だけの被約化の比較も証明し、被約化した中心上の降下を
+実際の非被約な中心の軌道段階へ移した。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 60 モジュール・788 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 63 モジュール・799 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 全体ビルドは未実施。L8a の工程全体が未完であるため、対象ビルドで検証。
 L8a 全体の完成とは区別する。
@@ -410,6 +414,11 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `GradedPresheaf.invariantPullback_bijective` | 全単射な同変引き戻しの不変部分への制限 | 対象ビルド済み |
 | `GradedPresheaf.piDescent_iff_of_bijective_square` | 同変正方形による指定降下比較の移行 | 対象ビルド済み |
 | `Nilinvariant.piDescent_iff_reduction` | Noether 基底上の「一般 → 被約」の全次数還元 | 対象ビルド済み、公理 (3) を仮定 |
+| `isNilpotentThickening_of_surjective_of_noetherian` | Noether な終域への点全射閉埋め込みの核の冪零性 | 対象ビルド済み |
+| `nilpotentThickening_pullback_fst` | Noether な対象への底変換後の冪零性 | 対象ビルド済み |
+| `Nilinvariant.piDescent_iff_thickening_baseChange` | 冪零な基底変更の前後の全次数比較 | 対象ビルド済み、公理 (3) を仮定 |
+| `Nilinvariant.piDescent_iff_reducedSource` | 基底を固定した始域だけの被約化 | 対象ビルド済み、公理 (3) を仮定 |
+| `NaturalBlowupSequences.orbit_piDescent_of_reduced_center` | 被約化した中心上の降下から実際の軌道段階へ | 対象ビルド済み、次元帰納そのものは未完 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -698,3 +707,22 @@ E → Z は不変で、各コピー上では恒等射となる。
 `Theorem31.lean` もこの実際の軌道段階を公開する。
 実降下からの自然な列と有限積保存の構成、幾何的推移性から切断の被覆を得ること、
 有限忠実平坦の Čech 還元と真閉中心上への次元帰納は引き続き未完。
+
+## 26. 閉中心の冪零不変性と被約な始域への移行
+
+Noether な終域への点全射な閉埋め込みの核は、台の判定から nilradical に含まれる。
+大域的な nilradical の冪零指数を核へ移し、この射が冪零 thickening であることを証明した。
+閉埋め込みと点全射性の底変換安定性を使い、Noether な対象への底変換の第一射影も
+冪零 thickening となる。終域の Noether 性のない一般の底変換安定性は主張していない。
+
+有限型の圏内で実際の閉埋め込みの引き戻しを用い、公理 (3) を第一射影と基底の包含へ適用した。
+基底と閉部分の自明作用から引き戻し作用を構成し、指定された PiDescent が
+冪零な基底変更の前後で同値であることを、任意の係数と整数次数について証明した。
+この比較には群の有限性は不要である。
+
+中心の帰納では基底 Z を固定する必要があるため、別に始域だけの被約化の比較を構成した。
+始域の Noether 性から被約化の包含に公理 (3) を適用し、基底の恒等射との同変正方形で比較する。
+`orbit_piDescent_of_reduced_center` はこの比較を実際の中心 V ×_B Z → Z に適用する。
+被約化した始域から同じ Z への降下があれば、構成済みの軌道段階へ入力できる。
+正方形そのものの中心を被約化して Cartesian 性を壊す操作はしていない。
+被約化した中心の射に対する帰納仮定を、幾何的推移性と次元低下から供給する責務は残る。
