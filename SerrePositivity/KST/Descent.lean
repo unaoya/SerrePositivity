@@ -64,6 +64,10 @@ public import SerrePositivity.KST.Descent.NoetherianThickening
 public import SerrePositivity.KST.Descent.ThickeningDescent
 public import SerrePositivity.KST.Descent.ReducedSourceDescent
 public import SerrePositivity.KST.Descent.TranslatedSections
+public import SerrePositivity.KST.Descent.CommonGeometricPoints
+public import SerrePositivity.KST.Descent.GeometricFiberTransitivity
+public import SerrePositivity.KST.Descent.SpecAction
+public import SerrePositivity.KST.Descent.AffineOrbitCovering
 
 /-!
 # K-L8：論文 §3 の降下
@@ -97,6 +101,8 @@ Noether な終域への全射閉埋め込みの冪零性と、冪零な基底変
 基底を固定した始域だけの被約化と、被約化した中心からの軌道段階も公開する。
 重複を除いた移動切断の有限推移的な添字、点のファイバーの推移性からの被覆、
 この族の一致中心での次元低下も公開する。
+既存の環論的な幾何的推移性から Spec の点のファイバーの推移性を導き、
+切断を持つ有限型アフィン対象について、移動切断の実際の像の被覆へ接続する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

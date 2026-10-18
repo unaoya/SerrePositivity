@@ -91,7 +91,11 @@ run_cmd do
       `SerrePositivity.KST.Descent.NoetherianThickening,
       `SerrePositivity.KST.Descent.ThickeningDescent,
       `SerrePositivity.KST.Descent.ReducedSourceDescent,
-      `SerrePositivity.KST.Descent.TranslatedSections] do
+      `SerrePositivity.KST.Descent.TranslatedSections,
+      `SerrePositivity.KST.Descent.CommonGeometricPoints,
+      `SerrePositivity.KST.Descent.GeometricFiberTransitivity,
+      `SerrePositivity.KST.Descent.SpecAction,
+      `SerrePositivity.KST.Descent.AffineOrbitCovering] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."
