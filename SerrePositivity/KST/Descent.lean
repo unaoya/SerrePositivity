@@ -199,6 +199,8 @@ public import SerrePositivity.KST.Descent.CechWeightAugmentationFubini
 
 public import SerrePositivity.KST.Descent.AugmentedDerivedCechFubini
 
+public import SerrePositivity.KST.Descent.AugmentedCechRows
+
 /-!
 # K-L8：論文 §3 の降下
 
@@ -338,6 +340,8 @@ cofibrant な可縮重みの変更で不変であることも実際の模型の�
 指定重みつき Fubini が反復した指定比較と図式全体で可換することを証明する。
 指定置換との自然性を追跡して実際の導来 Fubini 全体が指定増強を保つことを証明し、
 積添字と直接構成した反復指定比較の弱同値による降下条件を同値にする。
+各行の指定比較を外側へ自然に束ね、反復した実際の指定比較が各行の比較の後の
+外側の指定比較に一致することと、それに対応する降下条件の同値を証明する。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
