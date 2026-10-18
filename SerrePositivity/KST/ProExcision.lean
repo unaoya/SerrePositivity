@@ -155,3 +155,5 @@ public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluation
 public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluationNaturality
 public import SerrePositivity.KST.ProExcision.ChainIntervalEdgeAdditivity
 public import SerrePositivity.KST.ProExcision.ChainIntervalHomotopySigns
+public import SerrePositivity.KST.ProExcision.ChainIntervalTensorDifferential
+public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluationChainMap

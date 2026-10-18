@@ -2700,3 +2700,30 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.chainIntervalHomotopySign_succ
 #print axioms SerrePositivity.KST.ProExcision.chainIntervalHomotopySign_succ
+
+#check @SerrePositivity.KST.ProExcision.chainInterval_ι_D₁_succ
+#print axioms SerrePositivity.KST.ProExcision.chainInterval_ι_D₁_succ
+
+#check @SerrePositivity.KST.ProExcision.chainInterval_ι_D₁_zero
+#print axioms SerrePositivity.KST.ProExcision.chainInterval_ι_D₁_zero
+
+#check @SerrePositivity.KST.ProExcision.chainInterval_ι_D₂_succ
+#print axioms SerrePositivity.KST.ProExcision.chainInterval_ι_D₂_succ
+
+#check @SerrePositivity.KST.ProExcision.chainInterval_ι_D₂_zero
+#print axioms SerrePositivity.KST.ProExcision.chainInterval_ι_D₂_zero
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyInterval_comm_vertex
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyInterval_comm_vertex
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyInterval_comm_edge_zero
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyInterval_comm_edge_zero
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyInterval_comm_edge_succ
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyInterval_comm_edge_succ
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyInterval_comm
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyInterval_comm
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyInterval
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyInterval
