@@ -9641,5 +9641,61 @@ noncomputable def leftUnstraighteningSimplexEndpointIso {B : SSet.{u + 1}}
     VertexIso ((leftUnstraighteningSimplexEndpoint F G n T h₀ i hi).app _ x)
       ((leftUnstraighteningSimplexEndpoint F G n T h₀ i hi).app _ y)
 
+lemma leftFibration_lift_relative_parameters {D A K L X Y : SSet.{u}}
+    (p : X ⟶ Y) [LeftFibration p] (i : D ⟶ A) (hi : leftAnodyneExtensions i)
+    (j : K ⟶ L) [Mono j]
+    (u : A ⊗ K ⟶ X) (v : D ⊗ L ⟶ X) (b : A ⊗ L ⟶ Y)
+    (hw : (i ▷ K) ≫ u = (D ◁ j) ≫ v)
+    (hu : u ≫ p = (A ◁ j) ≫ b) (hv : v ≫ p = (i ▷ L) ≫ b) :
+    ∃ W : A ⊗ L ⟶ X,
+      (A ◁ j) ≫ W = u ∧ (i ▷ L) ≫ W = v ∧ W ≫ p = b
+
+lemma leftFibration_extend_simplexLift_parameters {A K L X Y : SSet.{u}}
+    (p : X ⟶ Y) [LeftFibration p] (n : ℕ) (j : K ⟶ L) [Mono j]
+    (u : ((Δ[n] : SSet.{u}) ⊗ A) ⊗ K ⟶ X)
+    (v : ((Δ[0] : SSet.{u}) ⊗ A) ⊗ L ⟶ X)
+    (b : ((Δ[n] : SSet.{u}) ⊗ A) ⊗ L ⟶ Y)
+    (hw : ((scaffoldFirstVertex n ▷ A) ▷ K) ≫ u = ((Δ[0] ⊗ A) ◁ j) ≫ v)
+    (hu : u ≫ p = ((Δ[n] ⊗ A) ◁ j) ≫ b)
+    (hv : v ≫ p = ((scaffoldFirstVertex n ▷ A) ▷ L) ≫ b) :
+    ∃ W : ((Δ[n] : SSet.{u}) ⊗ A) ⊗ L ⟶ X,
+      ((Δ[n] ⊗ A) ◁ j) ≫ W = u ∧
+      ((scaffoldFirstVertex n ▷ A) ▷ L) ≫ W = v ∧ W ≫ p = b
+
+lemma simplexPrism_parameterizedStart {A B L X : SSet.{u}}
+    (p : A ⟶ B) (F : B ⟶ X) (n : ℕ)
+    (T : ((Δ[n] : SSet.{u}) ⊗ B) ⊗ L ⟶ X)
+    (h₀ : (simplexPrismVertex n 0 B ▷ L) ≫ T = fst B L ≫ F) :
+    (((scaffoldFirstVertex n ▷ A) ▷ L) ≫ ((Δ[n] ◁ p) ▷ L)) ≫ T =
+      fst (Δ[0] ⊗ A) L ≫ snd (Δ[0] : SSet.{u}) A ≫ p ≫ F
+
+noncomputable def leftUnstraighteningParameterizedSimplexStart {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (L : SSet.{u + 1}) :
+    ((Δ[0] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗ L ⟶ PointedSpaceInfinity.{u}
+
+lemma leftUnstraighteningParameterizedSimplexStart_projection {B L : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : ((Δ[n] : SSet.{u + 1}) ⊗ B) ⊗ L ⟶ SpaceInfinity.{u})
+    (h₀ : (simplexPrismVertex n 0 B ▷ L) ≫ T = fst B L ≫ F) :
+    leftUnstraighteningParameterizedSimplexStart F L ≫ pointedSpaceProjection =
+      ((scaffoldFirstVertex n ▷ leftUnstraightening F) ▷ L) ≫
+        (((Δ[n] ◁ leftUnstraighteningProjection F) ▷ L) ≫ T)
+
+lemma exists_leftUnstraighteningSimplexLift_relative_parameters
+    {B K L : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (j : K ⟶ L) [Mono j]
+    (T : ((Δ[n] : SSet.{u + 1}) ⊗ B) ⊗ L ⟶ SpaceInfinity.{u})
+    (h₀ : (simplexPrismVertex n 0 B ▷ L) ≫ T = fst B L ≫ F)
+    (u : ((Δ[n] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗ K ⟶ PointedSpaceInfinity.{u})
+    (hu₀ : ((scaffoldFirstVertex n ▷ leftUnstraightening F) ▷ K) ≫ u =
+      ((Δ[0] ⊗ leftUnstraightening F) ◁ j) ≫ leftUnstraighteningParameterizedSimplexStart F L)
+    (hup : u ≫ pointedSpaceProjection = ((Δ[n] ⊗ leftUnstraightening F) ◁ j) ≫
+      (((Δ[n] ◁ leftUnstraighteningProjection F) ▷ L) ≫ T)) :
+    ∃ W : ((Δ[n] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗ L ⟶ PointedSpaceInfinity.{u},
+      ((Δ[n] ⊗ leftUnstraightening F) ◁ j) ≫ W = u ∧
+      ((scaffoldFirstVertex n ▷ leftUnstraightening F) ▷ L) ≫ W =
+        leftUnstraighteningParameterizedSimplexStart F L ∧
+      W ≫ pointedSpaceProjection = ((Δ[n] ◁ leftUnstraighteningProjection F) ▷ L) ≫ T
+
 end SerrePositivity.InfinityCategories
 ```
