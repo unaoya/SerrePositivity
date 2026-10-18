@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・408 モジュール 4069 宣言の公理監査成功。
+対象ビルド・410 モジュール 4092 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3091,4 +3091,28 @@ L9e は進行中。有理 Shapiro、π_* の加法的 cochain と線形複体の
 
 参照：Goerss–Jardine I §7、VIII §2。
 対象ビルド 3854 jobs 成功。私有宣言を含む 408 モジュール 4069 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 102. L9e の実際の有理化スペクトルへの係数構造
+
+有理化対象の全整数次数の安定群のテンソル積表示を対称同型で ℚ が左因子の表示へ移した。
+この加法同型から ℚ 加群構造を移し、実際の有理化対象の π_* が有理係数を持つことを構成した。
+任意段表示を安定次数 q+2-k に適用し、各段の実際のホモトピー次数 q+2 の群にもこの構造を移した。
+従って各段の自明群 cochain の高次 π_* の複体について、係数構造を追加で仮定せずにコホモロジーを計算できる。
+群の宇宙に合わせた ULift ℚ の作用を使い、大きい群の場合にも同じ宣言を適用する。
+有限群なら正次数が消滅し、零次数は元の各段の係数となる。
+Tot の π_* へ移すための塔の解析と収束の証明はまだ含まない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `OmegaSpectrum.rationalizationAddEquiv` / `rationalizationLinearEquiv` | 有理化の群の ℚ が左因子のテンソル積表示 |
+| `OmegaSpectrum.rationalizationHomotopyModule` | 有理化の全整数次数の群の ℚ 加群構造 |
+| `OmegaSpectrum.positiveLevelStableEquiv` | 段 k の次数 q+2 の群と安定次数 q+2-k の群の比較 |
+| `OmegaSpectrum.rationalizationLevelModule` | 有理化の各段の高次群の ℚ 加群構造 |
+| `RationalLevelCochains.zeroCohomologyIso` | 有理化各段の自明 cochain の零次数の計算 |
+| `RationalLevelCochains.positive_cohomology_isZero` | 有限群に対する正次数の消滅、係数構造の追加仮定なし |
+
+参照：BF 1978 §2、HA §1.4.2、Goerss–Jardine VIII §2。
+対象ビルド 3857 jobs 成功。私有宣言を含む 410 モジュール 4092 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。

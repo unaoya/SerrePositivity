@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.KST.Spectra.RationalHomotopyModules
+public import SerrePositivity.KST.Spectra.RationalLevelCochains
+
 public import SerrePositivity.KST.Spectra.AdditiveFunctionEquiv
 public import SerrePositivity.KST.Spectra.GroupCoefficientCochainFunctor
 public import SerrePositivity.KST.Spectra.TrivialHomotopyAction
