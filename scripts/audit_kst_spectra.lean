@@ -59,7 +59,16 @@ run_cmd do
     `SerrePositivity.KST.Spectra.HomotopyIso,
     `SerrePositivity.KST.Spectra.ContractibleTotalSequence,
     `SerrePositivity.KST.Spectra.LoopHomotopyGroups,
-    `SerrePositivity.KST.Spectra.OmegaSpectrumTransitions]
+    `SerrePositivity.KST.Spectra.OmegaSpectrumTransitions,
+    `SerrePositivity.KST.Spectra.PointedIntervalAnodyne,
+    `SerrePositivity.KST.Spectra.AnodyneMappingLifts,
+    `SerrePositivity.KST.Spectra.BoundaryFaces,
+    `SerrePositivity.KST.Spectra.BoundaryFilling,
+    `SerrePositivity.KST.Spectra.ZeroConnectingInjectivity,
+    `SerrePositivity.KST.Spectra.LoopZeroHomotopy,
+    `SerrePositivity.KST.Spectra.OmegaSpectrumZeroGroups,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyGroups,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyFunctor]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

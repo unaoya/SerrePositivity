@@ -69,4 +69,34 @@ noncomputable def KanHomotopyGroup.equivOfPiIsomorphism (n : ℕ) (f : X ⟶ Y)
   subst y
   exact MulEquiv.ofBijective (map f rfl) (hf x (n + 1))
 
+/-- 概要：全基点 π_* 同型の射は全自然数次数の類の同値を誘導する。
+方針：指定基点への誘導写像の全単射性を同値へ束ねる。
+規約：零次数を含む。
+使われ方：BF 1978 §2、HA §1.4.2。Ω スペクトルの零段の比較。 -/
+noncomputable def KanHomotopy.equivOfPiIsomorphism (n : ℕ) (f : X ⟶ Y)
+    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
+    KanHomotopy X n x ≃ KanHomotopy Y n y := by
+  subst y
+  exact Equiv.ofBijective (map n f rfl) (hf x n)
+
+/-- 概要：単体集合の同型によるホモトピー類の同値は基点を保つ。
+方針：誘導写像の基点保存を適用する。
+規約：零次数を含む。
+使われ方：Goerss–Jardine I §7。loop の連結成分の単位の照合。 -/
+@[simp]
+theorem KanHomotopy.equivOfIso_point (n : ℕ) (e : X ≅ Y)
+    {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : e.hom.app _ x = y) :
+    equivOfIso n e h (point n) = point n := map_point n e.hom h
+
+/-- 概要：全基点 π_* 同型による類の同値は基点を保つ。
+方針：基点の像で場合分けして誘導写像の基点保存を使う。
+規約：零次数を含む。
+使われ方：BF 1978 §2。Ω スペクトルの零次数の単位。 -/
+@[simp]
+theorem KanHomotopy.equivOfPiIsomorphism_point (n : ℕ) (f : X ⟶ Y)
+    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
+    equivOfPiIsomorphism n f hf h (point n) = point n := by
+  subst y
+  exact map_point n f rfl
+
 end SerrePositivity.KST.Spectra

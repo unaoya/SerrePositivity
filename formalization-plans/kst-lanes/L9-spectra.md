@@ -24,7 +24,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・47 モジュール 1050 宣言の公理監査成功。
+対象ビルド・56 モジュール 1166 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -760,3 +760,39 @@ L9b の fiberPoint を用いる形への基点の移送も行い、定数 loop �
 私有宣言を含む 47 モジュール 1050 宣言で標準三公理のみ。
 零次数の loop 比較はまだ未完了。正次数の核と像だけから零次数の全単射性を推論しない。
 次は path space の全境界充填から零次数の連結写像の単射性も幾何的に証明する。
+
+## 30. L9c の零次数・整数次数と群への関手
+
+区間の始点の包含が anodyne であることをホーンから証明した。
+pushout product の持ち上げ対応により、path space の終対象への射は全単射に対して RLP を持つ。
+全境界を面の余等化子として貼り合わせ、指定された全ての面を持つ単体を構成した。
+零次数の連結写像の像が等しい場合、二つの境界持ち上げと fiber の道を三角形の全境界に貼る。
+その充填から基底の一次の類の等しさを得て、零次数の連結写像の単射性を証明した。
+長完全列の全射性と合わせ、π₀(ΩY) ≃ π₁(Y) を得た。
+定数 loop は単位へ移ることも証明した。
+Ω 条件と合成し、スペクトルの各段の零次数にも可換群構造を移した。
+隣接段の比較はこれで全自然数次数で群同型となった。
+整数次数 j の標準段を |j|+1 とし、隣接比較の反復で任意の k≥−j の表示との群同型を構成した。
+標準段の正次数の誘導準同型から、整数次数ごとに可換群への関手を構成した。
+段の比較の合成整合性と射に関する自然性は引き続き証明する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `pointedInterval_basepoint_anodyne` | 区間の始点の anodyne 包含 |
+| `basedHom_terminal_rlp_monomorphisms` | anodyne 源の点つき Hom の全境界充填 |
+| `BoundaryFaces.isColimit` / `.desc` | 全境界の面の貼り合わせ |
+| `BoundaryFaces.exists_filler` | 全境界 RLP による指定面の充填 |
+| `connecting_zero_injective` | 零次数の連結写像の単射性 |
+| `loopZeroHomotopyEquiv` | π₀(ΩY) ≃ π₁(Y) |
+| `loopHomotopyEquiv` | 全自然数次数の loop 比較 |
+| `OmegaSpectrum.zeroTransition` | 零次数から次段の一次への群同型 |
+| `OmegaSpectrum.levelNaturalCommGroup` | 各段の零次数を含む可換群構造 |
+| `OmegaSpectrum.transition` | 全次数の隣接段の群同型 |
+| `OmegaSpectrum.iterateTransition` / `.compareLevels` | 隣接比較の反復と共通段での比較 |
+| `OmegaSpectrum.homotopyGroup` / `.homotopyGroupEquivAt` | 整数次数の群と任意の許される段での計算 |
+| `OmegaSpectrum.homotopyFunctor` | Ω スペクトルから可換群への関手 |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.5、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 1665 jobs 成功。
+私有宣言を含む 56 モジュール 1166 宣言で標準三公理のみ。
+L9c は未完了。置換、スペクトルの fiber 列と長完全列が残る。
