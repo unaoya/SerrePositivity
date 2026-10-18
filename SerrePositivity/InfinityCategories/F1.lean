@@ -345,3 +345,4 @@ public import SerrePositivity.InfinityCategories.F1.IntervalFullyFaithfulCriteri
 public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber
 public import SerrePositivity.InfinityCategories.F1.IntervalCosliceRigidity
 public import SerrePositivity.InfinityCategories.F1.IntervalCosliceSource
+public import SerrePositivity.InfinityCategories.F1.CosliceFiberPostcomposition

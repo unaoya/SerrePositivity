@@ -1605,3 +1605,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.sliceUnderProjection_stdSimplex_mono
 #check @SerrePositivity.InfinityCategories.sliceUnderPostcomp_projection
 #check @SerrePositivity.InfinityCategories.cosliceTriangleSource_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.coslicePostcompFiberMap
+#check @SerrePositivity.InfinityCategories.coslicePostcompFiberMap_ι
+#check @SerrePositivity.InfinityCategories.coslicePostcompFiberMap_restrict
+#check @SerrePositivity.InfinityCategories.coslicePostcompFiberMap_source_equivalence_of_target

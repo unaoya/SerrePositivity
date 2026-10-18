@@ -7362,5 +7362,30 @@ lemma cosliceTriangleSource_trivialKanFibration {E : SSet.{u}}
     (y : E _⦋0⦌) (hy : p.app (Opposite.op ⦋0⦌) y = stdSimplex.obj₀Equiv.symm (1 : Fin 2)) :
     TrivialKanFibration (cosliceRestrictionFiberMap e (stdSimplex.δ (1 : Fin 2)) y)
 
+def coslicePostcompFiberMap {K E F : SSet.{u}} (e : K ⟶ E) (f : E ⟶ F) (y : E _⦋0⦌) :
+    vertexFiber (sliceUnderProjection e) y ⟶
+      vertexFiber (sliceUnderProjection (e ≫ f)) (f.app (Opposite.op ⦋0⦌) y)
+
+lemma coslicePostcompFiberMap_ι {K E F : SSet.{u}} (e : K ⟶ E) (f : E ⟶ F) (y : E _⦋0⦌) :
+    coslicePostcompFiberMap e f y ≫
+      vertexFiberι (sliceUnderProjection (e ≫ f)) (f.app (Opposite.op ⦋0⦌) y) =
+        vertexFiberι (sliceUnderProjection e) y ≫ sliceUnderPostcomp e f
+
+lemma coslicePostcompFiberMap_restrict {K L E F : SSet.{u}}
+    (e : K ⟶ E) (i : L ⟶ K) (f : E ⟶ F) (y : E _⦋0⦌) :
+    cosliceRestrictionFiberMap e i y ≫ coslicePostcompFiberMap (i ≫ e) f y =
+      coslicePostcompFiberMap e f y ≫
+        cosliceRestrictionFiberMap (e ≫ f) i (f.app (Opposite.op ⦋0⦌) y)
+
+lemma coslicePostcompFiberMap_source_equivalence_of_target
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F]
+    (p : E ⟶ (Δ[1] : SSet.{u})) (q : F ⟶ Δ[1]) (f : E ⟶ F) (hf : f ≫ q = p)
+    (e : (Δ[1] : SSet.{u}) ⟶ E) (hp : e ≫ p = 𝟙 Δ[1])
+    (he : IsCocartesianEdge p (SSet.yonedaEquiv e))
+    (hef : IsCocartesianEdge q (SSet.yonedaEquiv (e ≫ f)))
+    (y : E _⦋0⦌) (hy : p.app (Opposite.op ⦋0⦌) y = stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+    (ht : IsQCatEquivalence (coslicePostcompFiberMap (stdSimplex.δ (0 : Fin 2) ≫ e) f y)) :
+    IsQCatEquivalence (coslicePostcompFiberMap (stdSimplex.δ (1 : Fin 2) ≫ e) f y)
+
 end SerrePositivity.InfinityCategories
 ```
