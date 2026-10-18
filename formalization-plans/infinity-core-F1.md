@@ -5787,5 +5787,23 @@ noncomputable def relativeJoinConeIso {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ
     join (relativeJoin f (𝟙 Δ[n])) Δ[0] ≅
       relativeJoin (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1])
 
+lemma relativeJoinConeMap_inl {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    joinInl (relativeJoin f (𝟙 Δ[n])) Δ[0] ≫ relativeJoinConeMap f =
+      relativeJoinBaseMap f (stdSimplex.δ (Fin.last (n + 1)))
+
+lemma relativeJoinConeMap_inr {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    joinInr (relativeJoin f (𝟙 Δ[n])) Δ[0] ≫ relativeJoinConeMap f =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1))) ≫
+        relativeJoinInr (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1])
+
+lemma relativeJoinBaseMap_inr {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Y ⟶ Z) :
+    relativeJoinInr f (𝟙 Y) ≫ relativeJoinBaseMap f h =
+      h ≫ relativeJoinInr (f ≫ h) (𝟙 Z)
+
+lemma relativeJoinConeMap_right {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    joinMap (relativeJoinInr f (𝟙 Δ[n])) (𝟙 Δ[0]) ≫ relativeJoinConeMap f =
+      (joinStdSimplexIso n 0).hom ≫
+        relativeJoinInr (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1])
+
 end SerrePositivity.InfinityCategories
 ```

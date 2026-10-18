@@ -262,3 +262,4 @@ public import SerrePositivity.InfinityCategories.F1.RightConeJoin
 public import SerrePositivity.InfinityCategories.F1.PrismRightConeBoundary
 public import SerrePositivity.InfinityCategories.F1.PrismRightConePullback
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinConeIso
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinConeBoundary

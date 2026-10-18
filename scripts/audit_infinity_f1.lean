@@ -1282,3 +1282,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinCone_isPullback
 #check @SerrePositivity.InfinityCategories.relativeJoinConeMap_isIso
 #check @SerrePositivity.InfinityCategories.relativeJoinConeIso
+#check @SerrePositivity.InfinityCategories.relativeJoinConeMap_inl
+#check @SerrePositivity.InfinityCategories.relativeJoinConeMap_inr
+#check @SerrePositivity.InfinityCategories.relativeJoinBaseMap_inr
+#check @SerrePositivity.InfinityCategories.relativeJoinConeMap_right
