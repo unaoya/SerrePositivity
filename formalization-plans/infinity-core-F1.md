@@ -1033,5 +1033,49 @@ instance pointedSpaceProjection_leftFibration : LeftFibration pointedSpaceProjec
 
 instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u}
 
+noncomputable def leftUnstraightening {C : SSet.{u + 1}} (F : C ⟶ SpaceInfinity.{u}) :
+    SSet.{u + 1}
+
+noncomputable def leftUnstraighteningProjection {C : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) : leftUnstraightening F ⟶ C
+
+instance leftUnstraighteningProjection_leftFibration {C : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) : LeftFibration (leftUnstraighteningProjection F)
+
+instance leftUnstraightening_quasicategory {C : SSet.{u + 1}} [Quasicategory C]
+    (F : C ⟶ SpaceInfinity.{u}) : Quasicategory (leftUnstraightening F)
+
+noncomputable def leftUnstraighteningMap {C D : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (G : D ⟶ SpaceInfinity.{u})
+    (α : C ⟶ D) (h : α ≫ G = F) : leftUnstraightening F ⟶ leftUnstraightening G
+
+lemma leftUnstraighteningMap_pointed {C D : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (G : D ⟶ SpaceInfinity.{u})
+    (α : C ⟶ D) (h : α ≫ G = F) :
+    leftUnstraighteningMap F G α h ≫ pullback.fst pointedSpaceProjection G =
+      pullback.fst pointedSpaceProjection F
+
+lemma leftUnstraighteningMap_projection {C D : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (G : D ⟶ SpaceInfinity.{u})
+    (α : C ⟶ D) (h : α ≫ G = F) :
+    leftUnstraighteningMap F G α h ≫ leftUnstraighteningProjection G =
+      leftUnstraighteningProjection F ≫ α
+
+lemma leftUnstraighteningMap_id {C : SSet.{u + 1}} (F : C ⟶ SpaceInfinity.{u}) :
+    leftUnstraighteningMap F F (𝟙 C) (Category.id_comp F) = 𝟙 (leftUnstraightening F)
+
+lemma leftUnstraighteningMap_comp {C D E : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (G : D ⟶ SpaceInfinity.{u})
+    (H : E ⟶ SpaceInfinity.{u}) (α : C ⟶ D) (β : D ⟶ E)
+    (hα : α ≫ G = F) (hβ : β ≫ H = G) :
+    leftUnstraighteningMap F H (α ≫ β) (by rw [Category.assoc, hβ, hα]) =
+      leftUnstraighteningMap F G α hα ≫ leftUnstraighteningMap G H β hβ
+
+lemma leftUnstraighteningMap_isPullback {C D : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (G : D ⟶ SpaceInfinity.{u})
+    (α : C ⟶ D) (h : α ≫ G = F) :
+    IsPullback (leftUnstraighteningMap F G α h) (leftUnstraighteningProjection F)
+      (leftUnstraighteningProjection G) α
+
 end SerrePositivity.InfinityCategories
 ```

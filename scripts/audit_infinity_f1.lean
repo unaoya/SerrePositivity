@@ -252,3 +252,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pointedSpaceProjection
 #check @SerrePositivity.InfinityCategories.pointedSpaceProjection_leftFibration
 #check @SerrePositivity.InfinityCategories.pointedSpaceInfinity_quasicategory
+#check @SerrePositivity.InfinityCategories.leftUnstraightening
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningProjection
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.leftUnstraightening_quasicategory
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningMap
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningMap_pointed
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningMap_projection
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningMap_id
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningMap_comp
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningMap_isPullback
