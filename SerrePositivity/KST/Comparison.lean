@@ -17,6 +17,7 @@ public import SerrePositivity.KST.Comparison.GroupCompletionSpace
 public import SerrePositivity.KST.Comparison.ActionBarCoordinates
 public import SerrePositivity.KST.Comparison.HomotopyPullback
 public import SerrePositivity.KST.Comparison.FibrantPullbackComparison
+public import SerrePositivity.KST.Comparison.ParametrizedTranslations
 
 /-!
 # K-L2：比較定理の入口

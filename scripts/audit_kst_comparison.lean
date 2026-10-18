@@ -20,6 +20,7 @@ set_option pp.explicit true
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -545,6 +546,30 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslationIso
 
 
+-- ParametrizedTranslations.lean
+
+#check @SerrePositivity.KST.Comparison.monoidActionFamily
+#print axioms SerrePositivity.KST.Comparison.monoidActionFamily
+
+#check @SerrePositivity.KST.Comparison.monoidActionFamily_naturality
+#print axioms SerrePositivity.KST.Comparison.monoidActionFamily_naturality
+
+#check @SerrePositivity.KST.Comparison.monoidActionFamily_const
+#print axioms SerrePositivity.KST.Comparison.monoidActionFamily_const
+
+#check @SerrePositivity.KST.Comparison.monoidActionHomotopyMap
+#print axioms SerrePositivity.KST.Comparison.monoidActionHomotopyMap
+
+#check @SerrePositivity.KST.Comparison.monoidActionFamilyHomotopy
+#print axioms SerrePositivity.KST.Comparison.monoidActionFamilyHomotopy
+
+#check @SerrePositivity.KST.Comparison.monoidActionFamily_const_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.monoidActionFamily_const_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.monoidActionFamily_simplex_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.monoidActionFamily_simplex_localized_isIso
+
+
 -- PiZeroRing.lean
 
 #check @SerrePositivity.KST.Comparison.ringSpace
@@ -741,3 +766,18 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.simplexClass_zero
 #print axioms SerrePositivity.KST.Comparison.simplexClass_zero
+
+
+-- SimplexContraction.lean
+
+#check @SerrePositivity.KST.Comparison.simplexContractionAt
+#print axioms SerrePositivity.KST.Comparison.simplexContractionAt
+
+#check @SerrePositivity.KST.Comparison.simplexContractionMap
+#print axioms SerrePositivity.KST.Comparison.simplexContractionMap
+
+#check @SerrePositivity.KST.Comparison.simplexContraction
+#print axioms SerrePositivity.KST.Comparison.simplexContraction
+
+#check @SerrePositivity.KST.Comparison.simplexMapContraction
+#print axioms SerrePositivity.KST.Comparison.simplexMapContraction
