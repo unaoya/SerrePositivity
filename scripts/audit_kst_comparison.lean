@@ -19,6 +19,7 @@ set_option pp.explicit true
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -197,6 +198,45 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.hatGLMonoidObject
 #print axioms SerrePositivity.KST.Comparison.hatGLMonoidObject
+
+
+-- FiberwiseAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.pointTensorIso_fst
+#print axioms SerrePositivity.KST.Comparison.pointTensorIso_fst
+
+#check @SerrePositivity.KST.Comparison.anodyne_fiberwise_homotopy
+#print axioms SerrePositivity.KST.Comparison.anodyne_fiberwise_homotopy
+
+#check @SerrePositivity.KST.Comparison.anodyne_fibration_retraction
+#print axioms SerrePositivity.KST.Comparison.anodyne_fibration_retraction
+
+
+-- FiberwisePullback.lean
+
+#check @SerrePositivity.KST.Comparison.pullbackMapOver
+#print axioms SerrePositivity.KST.Comparison.pullbackMapOver
+
+#check @SerrePositivity.KST.Comparison.pullbackMapOver_fst
+#print axioms SerrePositivity.KST.Comparison.pullbackMapOver_fst
+
+#check @SerrePositivity.KST.Comparison.pullbackMapOver_snd
+#print axioms SerrePositivity.KST.Comparison.pullbackMapOver_snd
+
+#check @SerrePositivity.KST.Comparison.pullbackMapOver_id
+#print axioms SerrePositivity.KST.Comparison.pullbackMapOver_id
+
+#check @SerrePositivity.KST.Comparison.pullbackHomotopyOver
+#print axioms SerrePositivity.KST.Comparison.pullbackHomotopyOver
+
+
+-- FibrantPullbackComparison.lean
+
+#check @SerrePositivity.KST.Comparison.fibrantPullbackComparison_isIso
+#print axioms SerrePositivity.KST.Comparison.fibrantPullbackComparison_isIso
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_of_fibration
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_of_fibration
 
 
 -- GLComponents.lean
@@ -401,6 +441,30 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.IsHomotopyPullback
 #print axioms SerrePositivity.KST.Comparison.IsHomotopyPullback
+
+
+-- IntervalBoundaryFamily.lean
+
+#check @SerrePositivity.KST.Comparison.intervalBoundaryTensorIsColimit
+#print axioms SerrePositivity.KST.Comparison.intervalBoundaryTensorIsColimit
+
+#check @SerrePositivity.KST.Comparison.intervalBoundaryMap
+#print axioms SerrePositivity.KST.Comparison.intervalBoundaryMap
+
+#check @SerrePositivity.KST.Comparison.intervalBoundaryMap_zero
+#print axioms SerrePositivity.KST.Comparison.intervalBoundaryMap_zero
+
+#check @SerrePositivity.KST.Comparison.intervalBoundaryMap_one
+#print axioms SerrePositivity.KST.Comparison.intervalBoundaryMap_one
+
+#check @SerrePositivity.KST.Comparison.intervalBoundaryMap_precomp
+#print axioms SerrePositivity.KST.Comparison.intervalBoundaryMap_precomp
+
+#check @SerrePositivity.KST.Comparison.intervalBoundaryMap_postcomp
+#print axioms SerrePositivity.KST.Comparison.intervalBoundaryMap_postcomp
+
+#check @SerrePositivity.KST.Comparison.intervalBoundaryMap_self
+#print axioms SerrePositivity.KST.Comparison.intervalBoundaryMap_self
 
 
 -- LoopFamily.lean

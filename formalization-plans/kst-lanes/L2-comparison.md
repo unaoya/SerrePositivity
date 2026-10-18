@@ -329,13 +329,15 @@ K-L9 の単体的円からの点付き内部 Hom を借り、Kan 置換した BM
 正則 bar の各行の基底×M 座標と、任意の面・退化による始点の左平行移動の式を証明した。
 右射を関手的な Kan fibration へ置換するホモトピー引き戻し模型と標準比較射を構成した。
 模型の射影の fibration 性、左の対象が Kan の場合の模型の Kan 性、基底の可換な比較の射を証明した。
+anodyne 包含と基底を固定する実ホモトピーを pushout-product の持ち上げから構成した。
+基底上の収縮を任意の引き戻しへ移し、元の右射が Kan fibration なら厳密引き戻しの標準比較射が局所化同型となることを証明した。
 bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-全ての公開 193 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
+全ての公開 210 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -374,6 +376,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `regularBarRowIso`、`regularActionCoordinate_whisker` | 実装済み | 各行の積座標と任意の単体作用の移送式 |
 | `homotopyPullbackObject`、`homotopyPullbackComparison` | 実装済み | 右射の Kan 分解による比較模型と標準射 |
 | `homotopyPullbackObject_kan`、`homotopyPullbackMap` | 実装済み | Kan 性と基底付き比較 |
+| `anodyne_fiberwise_homotopy`、`anodyne_fibration_retraction` | 実装済み | 包含と基底を固定する実収縮 |
+| `pullbackHomotopyOver` | 実装済み | 基底上のホモトピーの引き戻し |
+| `isHomotopyPullback_of_fibration` | 実装済み | 右射が Kan fibration の厳密引き戻しの比較 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
