@@ -5459,5 +5459,104 @@ lemma relativeJoinPrism_lastCell_stdSimplex_val {m n d : ℕ}
             (Opposite.op ⦋d⦌) a))) i).val =
       if (a i).val ≤ m then (a i).val else m + 1 + n
 
+noncomputable def relativeJoinLastCellLiftSimplex {m n d : ℕ}
+    (s : Join.Simplex (Δ[m] : SSet.{u}) Δ[n] d) : (Δ[m + 1] : SSet.{u}) _⦋d⦌
+
+lemma relativeJoinLastCellLiftSimplex_fst {m n d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) = Fin.last n)
+    (s : Join.Simplex (Δ[m] : SSet.{u}) Δ[n] d)
+    (hs : ∀ j : Fin (d + 1 - s.1.val), Join.stdAugEquiv n _ s.2.2 j = Fin.last n) :
+    (pullback.fst (joinMap f (𝟙 Δ[n])) (joinDiagonal Δ[n])).app (Opposite.op ⦋d⦌)
+      ((relativeJoinPrism f).app (Opposite.op ⦋d⦌)
+        ((SSet.yonedaEquiv.symm (relativeJoinPrismShuffle m (Fin.last m))).app
+          (Opposite.op ⦋d⦌) (relativeJoinLastCellLiftSimplex s))) = s
+
+lemma relativeJoin_stdSimplex_boundary_or_prism {m n d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) = Fin.last n)
+    (z : (relativeJoin f (𝟙 Δ[n])) _⦋d⦌) :
+    z ∈ Set.range ((relativeJoinLeftMap (𝟙 Δ[n]) (f := (boundary m).ι ≫ f) (f' := f)
+        (boundary m).ι rfl).app (Opposite.op ⦋d⦌)) ∨
+      z ∈ Set.range ((relativeJoinPrism f).app (Opposite.op ⦋d⦌))
+
+lemma relativeJoin_stdSimplex_prism_isPushout {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) = Fin.last n) :
+    IsPushout (relativeJoinPrismPenultimateBoundaryLift f) (relativeJoinPrismPenultimate m).ι
+      (relativeJoinLeftMap (𝟙 Δ[n]) (f := (boundary m).ι ≫ f) (f' := f) (boundary m).ι rfl)
+      (relativeJoinPrism f)
+
+noncomputable def relativeJoinPrismInitialBoundary (m : ℕ) :
+    (Δ[1] : SSet.{u}) ⊗ (boundary m : SSet.{u}) ⟶ relativeJoinPrismInitial m
+
+noncomputable def relativeJoinPrismInitialEndpoint (m : ℕ) :
+    (Δ[m] : SSet.{u}) ⟶ relativeJoinPrismInitial m
+
+lemma relativeJoinPrismInitial_isPushout (m : ℕ) :
+    IsPushout (prismEndpoint 1 (boundary m : SSet.{u})) (boundary m).ι
+      (relativeJoinPrismInitialBoundary m) (relativeJoinPrismInitialEndpoint m)
+
+noncomputable def relativeJoinBoundaryCylinderMap {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    pushout (prismEndpoint 1 (boundary m : SSet.{u})) ((boundary m).ι ≫ f) ⟶
+      pushout (prismEndpoint 1 (Δ[m] : SSet.{u})) f
+
+lemma relativeJoinBoundaryCylinderMap_inl {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    pushout.inl (prismEndpoint 1 (boundary m : SSet.{u})) ((boundary m).ι ≫ f) ≫
+        relativeJoinBoundaryCylinderMap f =
+      ((Δ[1] : SSet.{u}) ◁ (boundary m).ι) ≫ pushout.inl (prismEndpoint 1 Δ[m]) f
+
+lemma relativeJoinBoundaryCylinderMap_inr {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    pushout.inr (prismEndpoint 1 (boundary m : SSet.{u})) ((boundary m).ι ≫ f) ≫
+        relativeJoinBoundaryCylinderMap f = pushout.inr (prismEndpoint 1 Δ[m]) f
+
+noncomputable def relativeJoinPrismInitialCylinderMap {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    (relativeJoinPrismInitial m : SSet.{u}) ⟶
+      pushout (prismEndpoint 1 (boundary m : SSet.{u})) ((boundary m).ι ≫ f)
+
+lemma relativeJoinPrismInitialCylinderMap_boundary {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    relativeJoinPrismInitialBoundary m ≫ relativeJoinPrismInitialCylinderMap f =
+      pushout.inl (prismEndpoint 1 (boundary m : SSet.{u})) ((boundary m).ι ≫ f)
+
+lemma relativeJoinPrismInitialCylinderMap_endpoint {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    relativeJoinPrismInitialEndpoint m ≫ relativeJoinPrismInitialCylinderMap f =
+      f ≫ pushout.inr (prismEndpoint 1 (boundary m : SSet.{u})) ((boundary m).ι ≫ f)
+
+lemma relativeJoinPrismInitialCylinderMap_square {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    relativeJoinPrismInitialCylinderMap f ≫ relativeJoinBoundaryCylinderMap f =
+      (relativeJoinPrismInitial m).ι ≫ pushout.inl (prismEndpoint 1 Δ[m]) f
+
+lemma relativeJoinCylinder_front_isPushout {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    IsPushout (relativeJoinPrismInitialCylinderMap f) (relativeJoinPrismInitial m).ι
+      (relativeJoinBoundaryCylinderMap f)
+      (pushout.inl (prismEndpoint 1 Δ[m]) f)
+
+lemma relativeJoinBoundaryCylinderComparison_naturality {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    relativeJoinCylinderComparison ((boundary m).ι ≫ f) ≫
+        relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f) (boundary m).ι rfl =
+      relativeJoinBoundaryCylinderMap f ≫ relativeJoinCylinderComparison f
+
+lemma relativeJoinCylinder_boundary_cube {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    relativeJoinPrismInitialCylinderMap f ≫ relativeJoinCylinderComparison ((boundary m).ι ≫ f) =
+      Subcomplex.homOfLE (relativeJoinPrismInitial_le_penultimate m) ≫
+        relativeJoinPrismPenultimateBoundaryLift f
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_lastVertex_of_boundary
+    {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) = Fin.last n)
+    (hboundary : IsPrecompositionEquivalence
+      (relativeJoinCylinderComparison ((boundary m).ι ≫ f))) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
 end SerrePositivity.InfinityCategories
 ```
