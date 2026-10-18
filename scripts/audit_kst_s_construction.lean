@@ -1278,3 +1278,96 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kSpace_kanComplex
 #print axioms SerrePositivity.KST.SConstruction.kSpace_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroColumn
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroColumn
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroColumn_zero
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroColumn_zero
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroColumn_piZero_surjective
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroColumn_piZero_surjective
+
+#check @SerrePositivity.KST.SConstruction.diagonal_preconnected_of_zero
+#print axioms SerrePositivity.KST.SConstruction.diagonal_preconnected_of_zero
+
+#check @SerrePositivity.KST.SConstruction.diagonal_connected_of_zero
+#print axioms SerrePositivity.KST.SConstruction.diagonal_connected_of_zero
+
+#check @SerrePositivity.KST.SConstruction.diagonalCoreSConstruction_isConnected
+#print axioms SerrePositivity.KST.SConstruction.diagonalCoreSConstruction_isConnected
+
+#check @SerrePositivity.KST.SConstruction.mapPiZero_bijective_of_anodyne
+#print axioms SerrePositivity.KST.SConstruction.mapPiZero_bijective_of_anodyne
+
+#check @SerrePositivity.KST.SConstruction.isConnected_of_anodyne
+#print axioms SerrePositivity.KST.SConstruction.isConnected_of_anodyne
+
+#check @SerrePositivity.KST.SConstruction.sRealizationToKan_piZero_bijective
+#print axioms SerrePositivity.KST.SConstruction.sRealizationToKan_piZero_bijective
+
+#check @SerrePositivity.KST.SConstruction.kanSRealization_isConnected
+#print axioms SerrePositivity.KST.SConstruction.kanSRealization_isConnected
+
+#check @SerrePositivity.KST.SConstruction.pointedOfVertex_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.pointedOfVertex_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.pathEvaluation_eq_evaluateFunctorAt
+#print axioms SerrePositivity.KST.SConstruction.pathEvaluation_eq_evaluateFunctorAt
+
+#check @SerrePositivity.KST.SConstruction.pointedPathAt
+#print axioms SerrePositivity.KST.SConstruction.pointedPathAt
+
+#check @SerrePositivity.KST.SConstruction.pointedPathEndpoint
+#print axioms SerrePositivity.KST.SConstruction.pointedPathEndpoint
+
+#check @SerrePositivity.KST.SConstruction.pointedPathAt_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.pointedPathAt_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.pointedPathEndpoint_rlp
+#print axioms SerrePositivity.KST.SConstruction.pointedPathEndpoint_rlp
+
+#check @SerrePositivity.KST.SConstruction.loopPathEndpoint
+#print axioms SerrePositivity.KST.SConstruction.loopPathEndpoint
+
+#check @SerrePositivity.KST.SConstruction.loopPathEndpoint_rlp
+#print axioms SerrePositivity.KST.SConstruction.loopPathEndpoint_rlp
+
+#check @SerrePositivity.KST.SConstruction.loopPathEndpoint_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.loopPathEndpoint_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.exists_loopBasepointComparison
+#print axioms SerrePositivity.KST.SConstruction.exists_loopBasepointComparison
+
+#check @SerrePositivity.KST.SConstruction.kanComparison_congr_left
+#print axioms SerrePositivity.KST.SConstruction.kanComparison_congr_left
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroVertexEdge
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroVertexEdge
+
+#check @SerrePositivity.KST.SConstruction.realizationZeroPoint
+#print axioms SerrePositivity.KST.SConstruction.realizationZeroPoint
+
+#check @SerrePositivity.KST.SConstruction.realizationZeroEdge
+#print axioms SerrePositivity.KST.SConstruction.realizationZeroEdge
+
+#check @SerrePositivity.KST.SConstruction.kSpaceAtZero
+#print axioms SerrePositivity.KST.SConstruction.kSpaceAtZero
+
+#check @SerrePositivity.KST.SConstruction.kSpaceAtZero_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.kSpaceAtZero_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.kSpaceAtZero_comparison
+#print axioms SerrePositivity.KST.SConstruction.kSpaceAtZero_comparison
+
+#check @SerrePositivity.KST.SConstruction.ofVertex_basepoint_eq
+#print axioms SerrePositivity.KST.SConstruction.ofVertex_basepoint_eq
+
+#check @SerrePositivity.KST.SConstruction.realizationZeroPoint_chosen
+#print axioms SerrePositivity.KST.SConstruction.realizationZeroPoint_chosen
+
+#check @SerrePositivity.KST.SConstruction.kSpaceAtZero_chosen
+#print axioms SerrePositivity.KST.SConstruction.kSpaceAtZero_chosen
+
+#check @SerrePositivity.KST.SConstruction.kSpace_zeroChoice_comparison
+#print axioms SerrePositivity.KST.SConstruction.kSpace_zeroChoice_comparison

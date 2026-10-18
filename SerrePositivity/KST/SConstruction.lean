@@ -21,4 +21,6 @@ public import SerrePositivity.KST.SConstruction.FirstRowFibration
 
 public import SerrePositivity.KST.SConstruction.KSpace
 
+public import SerrePositivity.KST.SConstruction.ZeroChoiceComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

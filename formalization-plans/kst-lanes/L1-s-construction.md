@@ -96,7 +96,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 
 ## 6. 現在地・主要宣言
 
-**L1a・L1b 完了。L1c 進行中（core・対角・Kan 置換・K 空間を実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
+**L1a・L1b 完了。L1c 進行中（core・対角・Kan 置換・連結性・K 空間の零対象比較を実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
 L1b は元の全 gapped 図式の制限写像そのものについて、全次数・全境界の RLP を証明した。
 追加の存在仮定や出力の gapped 性の仮定は残っていない。
 
@@ -467,7 +467,8 @@ lemma firstRowRestriction_vertexFiber_isContractibleKan (n : ℕ) (C : SSet.{u})
 その結果は以下に記す。
 
 L1c は各 S_n の core、単体的 Kan 複体、点つき対角実現、Kan 置換と L9 の Ω による空間模型まで実装済み。
-次は実現の連結性、零対象の選択独立性、反復 S• の構造写像、delooping と Ω 条件、BF 模型への接続。
+実現の連結性と零対象の選択による K 空間の π_* 同型比較も証明済み。
+次は反復 S• の構造写像、delooping と Ω 条件、BF 模型への接続および比較の高次整合性。
 L9 の未着 API を使う箇所だけ明示的な入力として扱い、K 理論の主張を仮定で置き換えない。
 L1d の加法性、L1e の π₀、L1f の dg 関手性と Morita 不変性はその後の工程。
 L1g は別途指示待ち。
@@ -588,8 +589,8 @@ instance kSpace_kanComplex (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
 ```
 
 **未完了の範囲**：L1c 全体は未完了。対角の Kan 性は主張せず、構成済みの Kan 置換を通している。
-実現の連結性、零対象の選択独立性、反復 S• による delooping、スペクトルの構造射と Ω 条件、
-連結スペクトルとしての検証はまだ証明が必要。
+実現の連結性と零対象による基点の変更の空間レベルの π_* 同型比較は §6.6 で証明済み。
+反復 S• による delooping、スペクトルの構造射と Ω 条件、比較の高次整合性、連結スペクトルとしての検証は未完了。
 L9 の `PointedSequence.kanReplacement` と `KanSequence.cofibrantOmegaSpectrum` は既に存在するため、
 自分で証明すべき Ω 条件を未着 API という名の入力にしない。
 L1d–f は未完了、L1g は別途指示待ち。
@@ -597,3 +598,167 @@ L1d–f は未完了、L1g は別途指示待ち。
 この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2234 jobs）、
 `lake env lean scripts/audit_kst_s_construction.lean` 成功（484 宣言、標準三公理のみ）。
 L1c の途中成果なので全体ビルドは繰り返さず、工程全体の完成時に実施する。
+
+### 6.6 L1c：実現の連結性と零対象の選択の比較
+
+`diagonalZeroColumn X` は零段 `X₀` から二重単体集合の対角への写像で、零単体では恒等。
+連結成分で全射なので、零段が連結なら対角も連結になる。
+`coreSConstruction 0 C` の可縮性を適用して対角の連結性を証明した。
+既存の `PiZeroLocalization.inverts_anodyne` を実際の π₀ の全単射として使い、
+Kan 置換した実現 `kanSRealization C` の連結性も証明した。安定性はこの段階では不要。
+
+基点の変更は、可縮な零段の core で二つの零図式を辺で結び、対角と Kan 置換へ送って構成する。
+その辺を自由 path 空間の基点に取り、両端への評価を loop へ送る。
+両方の評価は全ての単射に RLP を持つため、L9 の `KanPiIsomorphism` を満たす。
+この条件は全基点と、π₀ を含む全自然数次数を量化する。
+
+`kSpaceAtZero C z hz` は同じ Kan 実現で基点だけを零図式 z の像に変えた loop 空間。
+既定の零対象では公開 `kSpace C` と厳密に等しい。
+`kSpace_zeroChoice_comparison` は任意の零対象に対し、公開 K 空間とその K 空間への
+二つの π_* 同型を持つ共通の点つき Kan 複体を構成する。
+これは空間レベルの選択の比較であり、反復 S• の構造射との自然性・高次整合性を完成扱いしない。
+
+以下は §6.3 と同じ namespace・universe の公開ヘッダー（本文を除く）。
+
+**DiagonalConnected.lean**
+
+```text
+def diagonalZeroColumn (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    X.obj (Opposite.op ⦋0⦌) ⟶ Functor.diag SimplexCategoryᵒᵖ ⋙ Functor.uncurry.obj X
+
+lemma diagonalZeroColumn_zero (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
+    (x : (X.obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
+    (diagonalZeroColumn X).app (Opposite.op ⦋0⦌) x = x
+
+lemma diagonalZeroColumn_piZero_surjective (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    Function.Surjective (SSet.mapπ₀ (diagonalZeroColumn X))
+
+lemma diagonal_preconnected_of_zero (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
+    [SSet.IsPreconnected (X.obj (Opposite.op ⦋0⦌))] :
+    SSet.IsPreconnected (Functor.diag SimplexCategoryᵒᵖ ⋙ Functor.uncurry.obj X)
+
+lemma diagonal_connected_of_zero (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
+    [SSet.IsConnected (X.obj (Opposite.op ⦋0⦌))] :
+    SSet.IsConnected (Functor.diag SimplexCategoryᵒᵖ ⋙ Functor.uncurry.obj X)
+
+instance diagonalCoreSConstruction_isConnected (C : SSet.{u}) [Quasicategory C]
+    [HasZeroVertex C] : SSet.IsConnected (diagonalCoreSConstruction C)
+```
+
+**RealizationConnected.lean**
+
+```text
+lemma mapPiZero_bijective_of_anodyne {A B : SSet.{u}} (f : A ⟶ B)
+    (hf : anodyneExtensions f) : Function.Bijective (SSet.mapπ₀ f)
+
+lemma isConnected_of_anodyne {A B : SSet.{u}} [SSet.IsConnected A]
+    (f : A ⟶ B) (hf : anodyneExtensions f) : SSet.IsConnected B
+
+lemma sRealizationToKan_piZero_bijective (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    Function.Bijective (SSet.mapπ₀ (sRealizationToKan C).right)
+
+instance kanSRealization_isConnected (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    SSet.IsConnected (kanSRealization C).right
+```
+
+**PointedPathComparison.lean**
+
+```text
+instance pointedOfVertex_kanComplex (X : SSet.{u}) [KanComplex X] (x : X _⦋0⦌) :
+    KanComplex (PointedSimplicialSet.ofVertex X x).right
+
+lemma pathEvaluation_eq_evaluateFunctorAt (X : SSet.{u}) (t : Fin 2) :
+    Spectra.KanPath.evaluation X t =
+      evaluateFunctorAt (Y
+
+def pointedPathAt {X : SSet.{u}} (p : (Δ[1] : SSet.{u}) ⟶ X) : PointedSimplicialSet.{u}
+
+def pointedPathEndpoint {X : SSet.{u}} (p : (Δ[1] : SSet.{u}) ⟶ X) (t : Fin 2) :
+    pointedPathAt p ⟶ PointedSimplicialSet.ofVertex X
+      (p.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm t))
+
+instance pointedPathAt_kanComplex {X : SSet.{u}} [KanComplex X] (p : (Δ[1] : SSet.{u}) ⟶ X) :
+    KanComplex (pointedPathAt p).right
+
+lemma pointedPathEndpoint_rlp {X : SSet.{u}} [KanComplex X]
+    (p : (Δ[1] : SSet.{u}) ⟶ X) (t : Fin 2) :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (pointedPathEndpoint p t).right
+
+def loopPathEndpoint {X : SSet.{u}} (p : (Δ[1] : SSet.{u}) ⟶ X) (t : Fin 2) :
+    Spectra.loopSpace (pointedPathAt p) ⟶
+      Spectra.loopSpace (PointedSimplicialSet.ofVertex X
+        (p.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm t)))
+
+lemma loopPathEndpoint_rlp {X : SSet.{u}} [KanComplex X]
+    (p : (Δ[1] : SSet.{u}) ⟶ X) (t : Fin 2) :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (loopPathEndpoint p t).right
+
+lemma loopPathEndpoint_piIsomorphism {X : SSet.{u}} [KanComplex X]
+    (p : (Δ[1] : SSet.{u}) ⟶ X) (t : Fin 2) :
+    Spectra.KanPiIsomorphism (loopPathEndpoint p t).right
+
+lemma exists_loopBasepointComparison {X : SSet.{u}} [KanComplex X]
+    {x y : X _⦋0⦌} (e : SSet.Edge x y) :
+    ∃ P : Spectra.PointedKanComplex.{u},
+      ∃ (f : P.space ⟶ Spectra.loopSpace (PointedSimplicialSet.ofVertex X x))
+        (g : P.space ⟶ Spectra.loopSpace (PointedSimplicialSet.ofVertex X y)),
+        Spectra.KanPiIsomorphism f.right ∧ Spectra.KanPiIsomorphism g.right
+
+lemma kanComparison_congr_left {A A' B : PointedSimplicialSet.{u}}
+    [KanComplex A.right] [KanComplex A'.right] [KanComplex B.right] (h : A = A')
+    (hc : ∃ P : Spectra.PointedKanComplex.{u}, ∃ (f : P.space ⟶ A) (g : P.space ⟶ B),
+      Spectra.KanPiIsomorphism f.right ∧ Spectra.KanPiIsomorphism g.right) :
+    ∃ P : Spectra.PointedKanComplex.{u}, ∃ (f : P.space ⟶ A') (g : P.space ⟶ B),
+      Spectra.KanPiIsomorphism f.right ∧ Spectra.KanPiIsomorphism g.right
+```
+
+**ZeroChoiceComparison.lean**
+
+```text
+def diagonalZeroVertexEdge (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
+    (z z' : C _⦋0⦌) (hz : IsZeroVertex z) (hz' : IsZeroVertex z') :
+    SSet.Edge (X
+
+def realizationZeroPoint (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
+    (z : C _⦋0⦌) (hz : IsZeroVertex z) : (kanSRealization C).right _⦋0⦌
+
+def realizationZeroEdge (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
+    (z z' : C _⦋0⦌) (hz : IsZeroVertex z) (hz' : IsZeroVertex z') :
+    SSet.Edge (realizationZeroPoint C z hz) (realizationZeroPoint C z' hz')
+
+def kSpaceAtZero (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
+    (z : C _⦋0⦌) (hz : IsZeroVertex z) : PointedSimplicialSet.{u}
+
+instance kSpaceAtZero_kanComplex (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
+    (z : C _⦋0⦌) (hz : IsZeroVertex z) : KanComplex (kSpaceAtZero C z hz).right
+
+lemma kSpaceAtZero_comparison (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
+    (z z' : C _⦋0⦌) (hz : IsZeroVertex z) (hz' : IsZeroVertex z') :
+    ∃ P : Spectra.PointedKanComplex.{u},
+      ∃ (f : P.space ⟶ kSpaceAtZero C z hz) (g : P.space ⟶ kSpaceAtZero C z' hz'),
+        Spectra.KanPiIsomorphism f.right ∧ Spectra.KanPiIsomorphism g.right
+
+lemma ofVertex_basepoint_eq (X : PointedSimplicialSet.{u}) :
+    PointedSimplicialSet.ofVertex X.right (PointedSimplicialSet.basepoint X) = X
+
+lemma realizationZeroPoint_chosen (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    realizationZeroPoint C (chosenZeroVertex C).vertex (chosenZeroVertex C).isZero =
+      PointedSimplicialSet.basepoint (kanSRealization C)
+
+lemma kSpaceAtZero_chosen (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    kSpaceAtZero C (chosenZeroVertex C).vertex (chosenZeroVertex C).isZero = kSpace C
+
+lemma kSpace_zeroChoice_comparison (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
+    (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    ∃ P : Spectra.PointedKanComplex.{u},
+      ∃ (f : P.space ⟶ kSpace C) (g : P.space ⟶ kSpaceAtZero C z hz),
+        Spectra.KanPiIsomorphism f.right ∧ Spectra.KanPiIsomorphism g.right
+```
+
+**現在地・未完了**：L1a・L1b は完了。L1c は連結 Kan 実現と K 空間、その空間レベルの基点変更の比較まで証明済み。
+反復 S• の構造写像、delooping、Ω 条件、BF の連結スペクトル、構造射との比較の自然性・高次整合性は未完了。
+L1d–f は未完了、L1g は別途指示待ち。
+
+この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2254 jobs）、
+`lake env lean scripts/audit_kst_s_construction.lean` 成功（515 宣言、標準三公理のみ）。
+追加公理・sorry なし。L1c 全体は未完了なので、全体ビルドは工程完了時に行う。
