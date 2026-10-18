@@ -7820,3 +7820,55 @@ SerrePositivity.InfinityCategories.complete_cofiberDistinguishedTriangle_morphis
 三角形の射への延長（TR3）まで完了。
 前加法構造、シフトの加法性、恒等射の三角形の所属、回転、八面体、
 Pretriangulated instance、S5〜S7 は未完了。
+
+
+## 一点の恒等余錐と区間の終点余錐
+
+`IdentityCocone.lean` は、一点の恒等余錐の始対象性を外側ホーンの充填により証明する。
+最初の辺が恒等なので可逆であり、既存の外側ホーンの充填定理が適用できる。
+`isColimitCone_of_point_constant` は図式の表示の輸送を補助する。
+`EdgeTerminalCocone.lean` は終点を重複する退化二単体から余錐を構成し、
+right anodyne な終点包含への制限と一点の結果で余極限性を証明する。
+値域 Quasicategory のみを仮定し、安定性・零対象は不要。
+
+Lean で抽出した公開宣言の正確な型：
+
+```lean
+@cosliceIdentityCone_isInitialVertex.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  IsInitialVertex.{u_1} (cosliceIdentityCone.{u_1} x)
+@cosliceIdentityCone_isColimit.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  IsColimitCone.{u_1}
+    (have this := cosliceIdentityCone.{u_1} x;
+    this)
+@isColimitCone_of_point_constant.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) X}
+  (c : JoinCocone.{u_1} p) (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1} (↑c) (SSet.const.{u_1} x) → IsColimitCone.{u_1} c
+@edgeTerminalCocone.{u_1} : {X : SSet.{u_1}} →
+  (g :
+      Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        X) →
+    JoinCocone.{u_1} g
+@edgeTerminalCocone_restrict_val.{u_1} : ∀ {X : SSet.{u_1}}
+  (g :
+    Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X),
+  Eq.{u_1 + 1}
+    (↑(JoinCocone.restrict.{u_1} (edgeTerminalCocone.{u_1} g)
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0)))
+    (SSet.const.{u_1}
+      (SSet.yonedaEquiv.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) g)))
+@edgeTerminalCocone_isColimit.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (g :
+    Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X),
+  IsColimitCone.{u_1} (edgeTerminalCocone.{u_1} g)
+```
+
+対象 EdgeTerminalCocone・Stable 集約ビルド 2159 jobs、公開型抽出、公理監査は
+すべて終了コード 0。監査は 166 モジュール・1377 宣言（生成・非公開宣言を含む）
+について標準三公理のみ。`git diff --check` 成功。
+恒等射の cofiber を零対象で実現する退化四角形の押し出し性、恒等射の三角形の所属、
+前加法構造・シフトの加法性、回転・八面体、Pretriangulated instance、S5〜S7 は未完了。

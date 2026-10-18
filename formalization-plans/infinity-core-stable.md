@@ -261,6 +261,12 @@ S4 の三角構造は未完了。前加法構造・シフトの加法性、恒�
 `complete_cofiberDistinguishedTriangle_morphism` は第三成分と残る二つの可換式を返す。
 これら三角形上の定理には Quasicategory と IsStable を仮定する。定義済みの集合に対する TR3 は完成。
 前加法構造・シフトの加法性、恒等射の三角形、回転、八面体、Pretriangulated instance、
+恒等射の三角形に向けた準備として、一点の恒等余錐の余極限性
+`cosliceIdentityCone_isColimit` と、定値写像で表した版
+`isColimitCone_of_point_constant` を証明した。さらに区間の終点を重複する退化二単体の
+余錐 `edgeTerminalCocone` を構成し、`edgeTerminalCocone_isColimit` を証明した。
+これらの余極限性には値域の Quasicategory のみを仮定する。
+恒等射の cofiber を零対象で実現する退化四角形の押し出し性への適用は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
@@ -390,6 +396,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | distinguished 集合と TR1 の存在部分 | `cofiberDistinguishedTriangles` と同型不変性、`exists_cofiberDistinguishedTriangle`（Quasicategory、IsStable、任意の h C の射） | 集合の定義・同型不変性・厳密に指定した射を含む三角形の存在は完了。TR3 も下記で完成。恒等射の三角形・回転・八面体・Pretriangulated は未完了 |
 | 可換正方形の図式への延長 | `exists_stableSquare_of_homMk_comm`、`exists_terminalArrowHomotopy_of_sourcePath`、`exists_cofiberSquareHomotopy_of_comm`（Quasicategory、最後は両端が cofiber 列） | 完了。入力の二つの辺の一次単体を保持 |
 | TR3 | `exists_cofiberTriangleMorphism_of_comm`、`exists_cofiberDistinguishedTriangleMorphism`、`complete_cofiberDistinguishedTriangle_morphism`（Quasicategory、IsStable、指定した最初の二成分の可換正方形） | 定義済み distinguished 集合の全ての三角形について完成。Pretriangulated instance は未完了 |
+| 一点・区間の終点余極限 | `cosliceIdentityCone_isInitialVertex`、`cosliceIdentityCone_isColimit`、`isColimitCone_of_point_constant`、`edgeTerminalCocone_isColimit`（Quasicategory のみ） | 完了。恒等射の cofiber 四角形への適用は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

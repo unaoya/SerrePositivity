@@ -1,6 +1,10 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.cosliceIdentityCone_isInitialVertex
+#print axioms SerrePositivity.InfinityCategories.cosliceIdentityCone_isColimit
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_of_point_constant
+#print axioms SerrePositivity.InfinityCategories.edgeTerminalCocone_isColimit
 #print axioms SerrePositivity.InfinityCategories.exists_cofiberSquareHomotopy_of_comm
 #print axioms SerrePositivity.InfinityCategories.exists_cofiberTriangleMorphism_of_comm
 #print axioms SerrePositivity.InfinityCategories.exists_cofiberDistinguishedTriangleMorphism
@@ -884,7 +888,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing,
     `SerrePositivity.InfinityCategories.Stable.PushoutSquareHomotopyLift,
     `SerrePositivity.InfinityCategories.Stable.CofiberSquareHomotopy,
-    `SerrePositivity.InfinityCategories.Stable.TriangleMorphismExtension]
+    `SerrePositivity.InfinityCategories.Stable.TriangleMorphismExtension,
+    `SerrePositivity.InfinityCategories.Stable.IdentityCocone,
+    `SerrePositivity.InfinityCategories.Stable.EdgeTerminalCocone]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
