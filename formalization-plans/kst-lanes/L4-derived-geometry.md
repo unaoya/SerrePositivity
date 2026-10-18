@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,199宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,245宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -800,6 +800,24 @@
 - 集約ビルド（3,723 jobs）と1,199宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - 全加群層内の Dqc との非有界比較と T1 は未完了。
 
+## 38. 係数加群層の開制限と導来制限（着手前記録）
+
+- 文言：実際の H_X 加群層の開部分への制限は完全で小さい余極限を保つ。係数の平坦性を要求しない。
+- 構成：開包含の開集合関手に沿う SheafOfModules.pushforward を、恒等の係数環層射とともに使う。対象の係数環層は既存の `CoefficientSheaf.restrict` そのもの。
+- 証明：有限極限は加群層の右随伴性から得る。余極限は基礎加法群の層への忘却で判定し、開包含の開集合関手と逆像関手の随伴が誘導する層の随伴を使う。
+- 忘却後の制限を通常の O 加群層の開制限と比較し、完全関手の導来化で非有界導来制限へ進む。Dqc の制限には準連接性の局所性とコホモロジー比較を使う。
+- 原典との位置：TT §3・3.19、§8・8.1、Toën §3.2 の T2・T3 の入力。局所化同値や導来降下をこの制限関手の構成だけで完了とはしない。
+
+### 現在地
+
+- `openRestriction`・`openRestriction_preservesFiniteLimits`・`openRestriction_preservesColimits`：実際の係数加群層の開制限、有限極限・小さい余極限の保存を証明済み。係数の平坦性は不要。
+- `openRestrictionToSheafIso`・`openRestrictionForgetIso`：基礎加法群の層の開制限、通常の O 加群層の開制限との自然同型を構成済み。
+- `derivedRestriction`・`derivedRestrictionHomologyIso`：非有界導来制限、整数シフト可換性・三角性、全次数の係数コホモロジーとの比較を証明済み。
+- `derivedRestrictionUnderlyingHomologyIso`・`dqcRestriction`：忘却後のコホモロジーの比較から、実際の Dqc の開制限を構成済み。
+- `supportedOnComplement`・`DqcSupported`・`supportedOnComplement_eq_kernel`：全コホモロジーの開制限が零という台の条件と、実際の導来制限の核との一致を証明済み。
+- 集約ビルド（3,729 jobs）と1,245宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- T2 の本質的全射性・局所化同値、台つき compact 生成、T3 の切除・MV・導来降下は引き続き未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -934,6 +952,12 @@
 | `affineQcoh_abelian`・`affineQcohΓ_preservesFiniteLimits`・`affineQcohΓ_preservesFiniteColimits` | DerivedGeometry/AffineCoefficientAbelian | 実装・対象ビルド済み |
 | `exactEquivalence_quasiIso_eq`・`exactDerivedEquivalence`・`exactDerivedEquivalence_isTriangulated` | DerivedGeometry/ExactDerivedEquivalence | 実装・対象ビルド済み |
 | `affineQcohDerivedEquivalence`・`affineQcohDerivedSquare` | DerivedGeometry/AffineQcohDerived | 実装・対象ビルド済み |
+| `openRestriction`・`openRestriction_preservesFiniteLimits` | DerivedGeometry/CoefficientModuleRestriction | 実装・対象ビルド済み |
+| `openRestriction_preservesColimits`・`openRestrictionToSheafIso` | DerivedGeometry/OpenRestrictionExact | 実装・対象ビルド済み |
+| `openRestrictionForgetIso` | DerivedGeometry/OpenRestrictionForget | 実装・対象ビルド済み |
+| `derivedRestriction`・`derivedRestrictionHomologyIso` | DerivedGeometry/DerivedRestriction | 実装・対象ビルド済み |
+| `derivedRestrictionUnderlyingHomologyIso`・`dqcRestriction` | DerivedGeometry/DqcRestriction | 実装・対象ビルド済み |
+| `supportedOnComplement`・`DqcSupported`・`supportedOnComplement_eq_kernel` | DerivedGeometry/DerivedSupport | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
