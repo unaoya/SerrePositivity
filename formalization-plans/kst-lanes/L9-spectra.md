@@ -31,7 +31,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・280 モジュール 3194 宣言の公理監査成功。
+対象ビルド・283 モジュール 3230 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2386,4 +2386,41 @@ L9e は進行中。次は内部 Hom と end の交換を構成し、hG・Tot を
 保存単位の対象ビルド 3638 jobs 成功。
 私有宣言を含む 280 モジュール 3194 宣言で標準三公理のみ。
 L9e は進行中。次は点つき end の係数への作用と π_* 同型保存を整え、Ω 条件を証明して BF 対象へ束ねる。
+有理 Shapiro と通常の Tot との比較は引き続き未完了。
+
+## 82. L9e の hG・homotopy Tot の Kan Ω 列と実際の BF 対象
+
+点つき enriched end の係数への作用を各射影の後合成から実際に構成した。
+underlying Kan end との比較同型の射影式と自然性を示し、全基点 π_* 同型の保存を点つき模型へ移した。
+
+Kan 列の図式の各段で点つき Bousfield–Kan end を取り、元の随伴構造射の自然変換を end に送った。
+loop と end の交換同型の逆を合成して随伴構造射を作り、uncurry して実際の Kan 列の構造射を定義した。
+各対象の Ω 条件は end の全基点 π_* 同型保存で移り、交換同型との合成も同型である。
+したがって各段の end は Kan Ω 列になり、単射置換を最後に一度施して BF 対象へ束ねられる。
+置換の標準比較は各段で零次数を含む全基点の π_* 同型である。
+
+実際の群作用図式へ適用して homotopy fixed points の BF 対象を構成した。
+同様に余単体 BF 図式から homotopy totalization の BF 対象を構成した。
+BF 対象の構成に群の有限性は不要である。
+通常の Reedy Tot との比較、有理自明作用の実際の標準射と π_* 同型性はまだ主張しない。
+
+補助の enriched インスタンスには全て固有名を付け、同じ namespace の複数モジュールを一緒に import しても名前が衝突しないようにした。
+この修正は自レーン内の補助宣言だけであり、借用先を編集していない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedWeightedEnd.map` / `map_π` | 係数の自然変換が誘導する実際の点つき end 射 |
+| `PointedWeightedEnd.underlyingIso_π` / `underlyingIso_natural` | underlying Kan end との射影式と自然性 |
+| `PointedWeightedEnd.map_piIsomorphism` | 点つき enriched end による全基点 π_* 同型保存 |
+| `KanSequence.homotopyLimitAdjoint` / `homotopyLimit` / `homotopyLimit_omegaCondition` | 段ごとの end の実際の Kan Ω 列 |
+| `KanSequence.homotopyLimitSpectrum` / `homotopyLimitProjection_levelwise` | BF 置換と各段の同型比較 |
+| `OmegaSpectrum.homotopyLimit` | BF 図式から段ごとの Kan end によって得る実際の BF 対象 |
+| `homotopyFixedPointsKan` / `homotopyFixedPoints` | 群作用の hG の Kan 列と BF 対象 |
+| `homotopyFixedPointsProjection` / `homotopyFixedPointsProjection_levelwise` | hG の置換前の列への実際の比較と各段の同型性 |
+| `homotopyTotalization` | 余単体 BF 図式の homotopy Tot の実際の BF 対象 |
+
+参照：HA §1.4.2、BF 1978 §2、HTT A.3.3、Kerodon 7.5.4.6。
+保存単位の対象ビルド 3641 jobs 成功。
+私有宣言を含む 283 モジュール 3230 宣言で標準三公理のみ。
+L9e は進行中。次は厳密な錐から end への比較を構成し、自明作用から hG への標準射を BF 射にする。
 有理 Shapiro と通常の Tot との比較は引き続き未完了。

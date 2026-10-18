@@ -28,10 +28,11 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-local instance : EnrichedOrdinaryCategory SSet.{u} SSet.{u} :=
+local instance weightedEndSelfEnrichment : EnrichedOrdinaryCategory SSet.{u} SSet.{u} :=
   enrichedOrdinaryCategorySelf SSet.{u}
 
-local instance : EnrichedOrdinaryCategory PointedSimplicialSet.{u} PointedSimplicialSet.{u} :=
+local instance weightedEndPointedSelfEnrichment :
+    EnrichedOrdinaryCategory PointedSimplicialSet.{u} PointedSimplicialSet.{u} :=
   enrichedOrdinaryCategorySelf PointedSimplicialSet.{u}
 
 variable {I : Type u} [SmallCategory I]
