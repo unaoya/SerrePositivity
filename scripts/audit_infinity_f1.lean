@@ -1418,3 +1418,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteNervePoint_isoNerve
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteFirstEdge_isoNerve
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteNerveBridge_inl
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteExtension
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteExtensionMap
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteExtensionMap_isPushout
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteExtensionMap_innerAnodyne

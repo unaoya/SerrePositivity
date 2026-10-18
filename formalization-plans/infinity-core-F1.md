@@ -6405,5 +6405,27 @@ lemma scaffoldFiniteNerveBridge_inl (n : ℕ) :
       scaffoldFiniteNerveBridge n =
         (stdSimplex.isoNerve 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n)
 
+noncomputable def scaffoldFiniteExtension (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) : SSet.{u}
+
+noncomputable def scaffoldFiniteExtensionMap (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    scaffoldFiniteExtension n F ⟶ simplicialReplacement F
+
+lemma scaffoldFiniteExtensionMap_isPushout (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    IsPushout (scaffoldFiniteNerveBridge n ▷ F.obj (ULift.up 0))
+      (pushout.inl
+        (pushout.inr (stdSimplex.δ (0 : Fin 2))
+          (nervePoint (ULift.up (0 : Fin (n + 1)) : ULift.{u} _)) ▷ F.obj (ULift.up 0))
+        (simplicialReplacementAssembly (CategoryTheory.Functor.whiskerLeft (scaffoldFiniteTail n)
+          (simplicialReplacementInitialCoefficient F (scaffoldFiniteInitial (n + 1))))))
+      (simplicialReplacementInitialAssembly F (scaffoldFiniteInitial (n + 1)))
+      (scaffoldFiniteExtensionMap n F)
+
+lemma scaffoldFiniteExtensionMap_innerAnodyne (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    innerAnodyneExtensions (scaffoldFiniteExtensionMap n F)
+
 end SerrePositivity.InfinityCategories
 ```
