@@ -8351,7 +8351,8 @@ lemma coneSectionDerivedFiberMap_homotopyEquivalence {K X : SSet.{u}} [Quasicate
 
 def conePinchedHom_sectionComparisonDerivedFiberEquivalence {K X : SSet.{u}}
     [Quasicategory X] {p : K ⟶ X} (d c : JoinCone p) :
-    QCatEquivalence (pinchedHom (X
+    QCatEquivalence (pinchedHom (X := sliceOver p) d c)
+      (comparisonFiber (coneSectionHomComparison c d.vertex) (coneSectionDerivedFiberPoint d))
 ```
 
 検証：対象集約 `HomotopyLimits` のビルド成功（4679 jobs）、公開1396宣言の `#check @` と
@@ -8423,7 +8424,8 @@ lemma coneSliceDerivedFiberMap_homotopyEquivalence {K X : SSet.{u}} [Quasicatego
 
 def conePinchedHom_sliceRestrictionDerivedFiberEquivalence {K X : SSet.{u}}
     [Quasicategory X] {p : K ⟶ X} (d c : JoinCone p) :
-    QCatEquivalence (pinchedHom (X
+    QCatEquivalence (pinchedHom (X := sliceOver p) d c)
+      (comparisonFiber (coneSliceRestrictionFiberMap c d.vertex) (coneVertexFiberPoint d))
 
 lemma sectionConeUncurry_sectionPoint {K X : SSet.{u}} {p : K ⟶ X} (d : JoinCone p) :
     sectionConeUncurry (SSet.yonedaEquiv.symm (coherentConeSectionPoint d)) =
@@ -8501,7 +8503,8 @@ lemma coneSectionEndpointDerivedFiberMap_homotopyEquivalence {K X : SSet.{u}}
 
 def conePinchedHom_sectionRestrictionDerivedFiberEquivalence {K X : SSet.{u}}
     [Quasicategory X] {p : K ⟶ X} (d c : JoinCone p) :
-    QCatEquivalence (pinchedHom (X
+    QCatEquivalence (pinchedHom (X := sliceOver p) d c)
+      (comparisonFiber (coneSectionRestriction c d.vertex) (coherentConeSectionPoint d))
 ```
 
 検証：対象集約 `HomotopyLimits` のビルド成功（4683 jobs）、公開1415宣言の `#check @` と
@@ -8575,7 +8578,9 @@ def strictConePinched_reflectedDerivedFiberEquivalence
     [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
     {F : I ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
     QCatEquivalence
-      (pinchedHom (X
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      (comparisonFiber (reflectedStrictConeSectionsComparison c (coherentNerveObject d.vertex))
+        (strictConeDerivedFiberPoint d))
 
 instance kanEquivalencePathMap_fibration {E B : SSet.{u}} [KanComplex E] [KanComplex B]
     (p : E ⟶ B) [Fibration p] : Fibration (equivalencePathMap p)
@@ -8622,25 +8627,43 @@ def strictConePinched_reflectedEndDerivedFiberEquivalence
     (hκ : IsSimplicialHomotopyEquivalence
       (reflectedHomHolimConeComparison F (coherentNerveObject d.vertex))) :
     QCatEquivalence
-      (pinchedHom (X
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      (comparisonFiber ((SSet.uliftFunctor.{v, u}).map
+        (reflectedRepresentableComparison c (coherentNerveObject d.vertex)))
+        (strictConeReflectedEndPoint d hκ))
 
 def strictConePinched_reflectedEnd_discrete_equivalence {J : Type u}
     [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
     {F : (Discrete J) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
     QCatEquivalence
-      (pinchedHom (X
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      (comparisonFiber ((SSet.uliftFunctor.{v, u}).map
+        (reflectedRepresentableComparison c (coherentNerveObject d.vertex)))
+        (strictConeReflectedEndPoint d
+          (reflectedHomHolimConeComparison_discrete_homotopyEquivalence F
+            (coherentNerveObject d.vertex))))
 
 def strictConePinched_reflectedEnd_cospan_equivalence
     [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
     {F : (AsSmall.{u} WalkingCospan) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
     QCatEquivalence
-      (pinchedHom (X
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      (comparisonFiber ((SSet.uliftFunctor.{v, u}).map
+        (reflectedRepresentableComparison c (coherentNerveObject d.vertex)))
+        (strictConeReflectedEndPoint d
+          (reflectedHomHolimConeComparison_cospan_homotopyEquivalence F
+            (coherentNerveObject d.vertex))))
 
 def strictConePinched_reflectedEnd_tower_equivalence
     [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
     {F : (AsSmall.{u} ℕᵒᵖ) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
     QCatEquivalence
-      (pinchedHom (X
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      (comparisonFiber ((SSet.uliftFunctor.{v, u}).map
+        (reflectedRepresentableComparison c (coherentNerveObject d.vertex)))
+        (strictConeReflectedEndPoint d
+          (reflectedHomHolimConeComparison_tower_homotopyEquivalence F
+            (coherentNerveObject d.vertex))))
 ```
 
 検証：対象集約 `HomotopyLimits` のビルド成功（4688 jobs）、公開1430宣言の `#check @` と

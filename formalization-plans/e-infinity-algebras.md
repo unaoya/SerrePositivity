@@ -1943,3 +1943,7 @@ g⁻¹≫g から恒等射へのホモトピーを b で評価した辺による
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-reflected-end-derived-aggregate.log`、
 `/tmp/gamma3-reflected-end-derived-audit.log`。
+
+型一覧の記録の修正：直近三節の46宣言を括弧の深さを考慮して再抽出し、名前付き引数
+`(X := ...)` で途中終了していた8宣言の型の末尾を README に復元した。
+Lean ソースと監査は変更なし。4688 jobs・1430宣言の検証結果を保持し、文書の diff 検査も成功。
