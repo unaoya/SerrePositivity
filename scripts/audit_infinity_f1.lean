@@ -543,3 +543,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.preimage
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.preimage_pushforward
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.mem_range_pushforward_iff
+#check @SerrePositivity.InfinityCategories.coherentResolutionBoundary
+#check @SerrePositivity.InfinityCategories.coherentResolutionBoundary_zero
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.mem_range_face_iff
+#check @SerrePositivity.InfinityCategories.mem_range_coherentResolutionFace_iff
+#check @SerrePositivity.InfinityCategories.coherentResolutionBoundary_eq_iSup_faces

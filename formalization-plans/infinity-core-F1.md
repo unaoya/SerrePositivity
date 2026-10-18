@@ -2389,5 +2389,24 @@ lemma CoherentResolutionFlag.mem_range_pushforward_iff {n m d : ℕ}
     F ∈ Set.range (fun G : CoherentResolutionFlag n d ↦ G.pushforward β) ↔
       ∀ k ∈ F.support, k ∈ Set.range β
 
+def coherentResolutionBoundary (n : ℕ) : (coherentResolutionSimplex.{u} n).Subcomplex
+
+lemma coherentResolutionBoundary_zero : coherentResolutionBoundary.{u} 0 = ⊥
+
+lemma CoherentResolutionFlag.mem_range_face_iff {n d : ℕ}
+    (j : Fin (n + 2)) (F : CoherentResolutionFlag (n + 1) d) :
+    F ∈ Set.range (fun G : CoherentResolutionFlag n d ↦
+      G.pushforward (SimplexCategory.δ j).toOrderHom) ↔ j ∉ F.support
+
+lemma mem_range_coherentResolutionFace_iff {n d : ℕ} (j : Fin (n + 2))
+    (F : (coherentResolutionSimplex.{u} (n + 1)) _⦋d⦌) :
+    F ∈ (Subcomplex.range (coherentResolutionMap (SimplexCategory.δ j).toOrderHom)).obj
+      (Opposite.op ⦋d⦌) ↔ j ∉ F.down.support
+
+lemma coherentResolutionBoundary_eq_iSup_faces (n : ℕ) :
+    coherentResolutionBoundary.{u} (n + 1) =
+      ⨆ j : Fin (n + 2),
+        Subcomplex.range (coherentResolutionMap (SimplexCategory.δ j).toOrderHom)
+
 end SerrePositivity.InfinityCategories
 ```
