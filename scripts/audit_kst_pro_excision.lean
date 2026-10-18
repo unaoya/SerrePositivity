@@ -886,3 +886,111 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.simplicialActionProductTwist_localized_isIso
 #print axioms SerrePositivity.KST.ProExcision.simplicialActionProductTwist_localized_isIso
+
+#check @SerrePositivity.KST.ProExcision.ActionObject
+#print axioms SerrePositivity.KST.ProExcision.ActionObject
+
+#check @SerrePositivity.KST.ProExcision.actionObjectCategory
+#print axioms SerrePositivity.KST.ProExcision.actionObjectCategory
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionHom
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionHom
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductMap
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductMap
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductSection_map
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductSection_map
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionHom.trivial
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionHom.trivial
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductMap_trivial
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductMap_trivial
+
+#check @SerrePositivity.KST.ProExcision.relativeModule
+#print axioms SerrePositivity.KST.ProExcision.relativeModule
+
+#check @SerrePositivity.KST.ProExcision.relativeModuleMap
+#print axioms SerrePositivity.KST.ProExcision.relativeModuleMap
+
+#check @SerrePositivity.KST.ProExcision.relativeModuleMap_zero_of_factor
+#print axioms SerrePositivity.KST.ProExcision.relativeModuleMap_zero_of_factor
+
+#check @SerrePositivity.KST.ProExcision.relativeModuleMap_eq_of_right_eq
+#print axioms SerrePositivity.KST.ProExcision.relativeModuleMap_eq_of_right_eq
+
+#check @SerrePositivity.KST.ProExcision.relativeModuleMap_comp
+#print axioms SerrePositivity.KST.ProExcision.relativeModuleMap_comp
+
+#check @SerrePositivity.KST.ProExcision.relativeBarModule
+#print axioms SerrePositivity.KST.ProExcision.relativeBarModule
+
+#check @SerrePositivity.KST.ProExcision.relativeBarSection_projection
+#print axioms SerrePositivity.KST.ProExcision.relativeBarSection_projection
+
+#check @SerrePositivity.KST.ProExcision.relativeBarSection_injective
+#print axioms SerrePositivity.KST.ProExcision.relativeBarSection_injective
+
+#check @SerrePositivity.KST.ProExcision.relativeBarMap_square
+#print axioms SerrePositivity.KST.ProExcision.relativeBarMap_square
+
+#check @SerrePositivity.KST.ProExcision.relativeBarMap
+#print axioms SerrePositivity.KST.ProExcision.relativeBarMap
+
+#check @SerrePositivity.KST.ProExcision.relativeBarMap_trivial_zero
+#print axioms SerrePositivity.KST.ProExcision.relativeBarMap_trivial_zero
+
+#check @SerrePositivity.KST.ProExcision.relativeBarMap_zero_of_absolute_eq_trivial
+#print axioms SerrePositivity.KST.ProExcision.relativeBarMap_zero_of_absolute_eq_trivial
+
+#check @SerrePositivity.KST.ProExcision.actionCategoryProjection
+#print axioms SerrePositivity.KST.ProExcision.actionCategoryProjection
+
+#check @SerrePositivity.KST.ProExcision.actionCategoryMap
+#print axioms SerrePositivity.KST.ProExcision.actionCategoryMap
+
+#check @SerrePositivity.KST.ProExcision.actionCategoryMap_comp
+#print axioms SerrePositivity.KST.ProExcision.actionCategoryMap_comp
+
+#check @SerrePositivity.KST.ProExcision.regularActionObjectContraction
+#print axioms SerrePositivity.KST.ProExcision.regularActionObjectContraction
+
+#check @SerrePositivity.KST.ProExcision.regularActionObjectNerveContraction
+#print axioms SerrePositivity.KST.ProExcision.regularActionObjectNerveContraction
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionCategory
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionCategory
+
+#check @SerrePositivity.KST.ProExcision.bisimplicialActionBar
+#print axioms SerrePositivity.KST.ProExcision.bisimplicialActionBar
+
+#check @SerrePositivity.KST.ProExcision.actionBar
+#print axioms SerrePositivity.KST.ProExcision.actionBar
+
+#check @SerrePositivity.KST.ProExcision.inverseConjugation
+#print axioms SerrePositivity.KST.ProExcision.inverseConjugation
+
+#check @SerrePositivity.KST.ProExcision.conjugationFunctor
+#print axioms SerrePositivity.KST.ProExcision.conjugationFunctor
+
+#check @SerrePositivity.KST.ProExcision.conjugationNaturalTransformation
+#print axioms SerrePositivity.KST.ProExcision.conjugationNaturalTransformation
+
+#check @SerrePositivity.KST.ProExcision.conjugationNerveHomotopy
+#print axioms SerrePositivity.KST.ProExcision.conjugationNerveHomotopy
+
+#check @SerrePositivity.KST.ProExcision.inverseConjugation_naturality
+#print axioms SerrePositivity.KST.ProExcision.inverseConjugation_naturality
+
+#check @SerrePositivity.KST.ProExcision.conjugationNaturalTransformation_naturality
+#print axioms SerrePositivity.KST.ProExcision.conjugationNaturalTransformation_naturality
+
+#check @SerrePositivity.KST.ProExcision.conjugationChainHomotopy
+#print axioms SerrePositivity.KST.ProExcision.conjugationChainHomotopy
+
+#check @SerrePositivity.KST.ProExcision.augmentationTestChains
+#print axioms SerrePositivity.KST.ProExcision.augmentationTestChains
+
+#check @SerrePositivity.KST.ProExcision.no_homotopy_identity_doubleIdentity
+#print axioms SerrePositivity.KST.ProExcision.no_homotopy_identity_doubleIdentity

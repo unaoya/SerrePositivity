@@ -44,3 +44,10 @@ public import SerrePositivity.KST.ProExcision.ActionTranslations
 public import SerrePositivity.KST.ProExcision.ParametrizedAction
 public import SerrePositivity.KST.ProExcision.ActionDescent
 public import SerrePositivity.KST.ProExcision.ActionTwist
+public import SerrePositivity.KST.ProExcision.ActionMorphisms
+public import SerrePositivity.KST.ProExcision.RelativeModule
+public import SerrePositivity.KST.ProExcision.RelativeBar
+public import SerrePositivity.KST.ProExcision.ActionCategory
+public import SerrePositivity.KST.ProExcision.ActionBar
+public import SerrePositivity.KST.ProExcision.Conjugation
+public import SerrePositivity.KST.ProExcision.AugmentationObstruction

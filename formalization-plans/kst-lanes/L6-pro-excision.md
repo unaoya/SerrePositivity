@@ -49,9 +49,13 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと293宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと329宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
-- L6c の Prop A.1、Lemma A.4、Construction A.5・A.6 は未完了。
+- Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
+- Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。
+- Construction A.6：成分 u⁻¹ の自然変換、nerve の実ホモトピー、係数付き自由鎖複体への実鎖ホモトピーを構成。
+- **設計変更の提案で停止：Construction A.5 の非被約な通常和の零次障害。** 下記の設計確認欄を参照。
+- L6c の Prop A.1、Lemma A.4 の m-ホモトピーからの比較、A.5 は未完了。A.6 の C(H) の界面への移送も残る。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -150,6 +154,17 @@
 | actionFamily_simplex_localized_isIso | ParametrizedAction.lean | 検証済み | 単体上の族の作用を頂点の作用へ収縮 |
 | actionFamily_localized_isIso | ActionDescent.lean | 検証済み | 一般の族の作用のセル降下 |
 | simplicialActionProductTwist_localized_isIso | ActionTwist.lean | 検証済み | KST Lemma A.2 の局所化模型 |
+| simplicialActionProductMap_trivial | ActionMorphisms.lean | 検証済み | 自明射の半直積は基底の射影と包含の合成 |
+| relativeModuleMap_zero_of_factor | RelativeModule.lean | 検証済み | 基準像を経由する写像は相対余核で零 |
+| relativeBarSection_injective | RelativeBar.lean | 検証済み | 借用する F の下での基底 bar の包含の単射性 |
+| relativeBarMap_trivial_zero | RelativeBar.lean | 検証済み | 自明な同変射は相対 bar 項で零 |
+| relativeBarMap_zero_of_absolute_eq_trivial | RelativeBar.lean | 検証済み | 絶対項の比較から相対項の零化 |
+| actionCategoryMap | ActionCategory.lean | 検証済み | 一般の作用の圏の同変写像による関手性 |
+| regularActionObjectNerveContraction | ActionCategory.lean | 検証済み | 正則作用の nerve の実ホモトピー |
+| bisimplicialActionBar | ActionBar.lean | 検証済み | モノイド値の作用先に対する二重作用 nerve |
+| conjugationNerveHomotopy | Conjugation.lean | 検証済み | KST A.6 の u⁻¹hu と恒等の実 nerve ホモトピー |
+| conjugationChainHomotopy | Conjugation.lean | 検証済み | 係数付き自由鎖複体へ移す実鎖ホモトピー |
+| no_homotopy_identity_doubleIdentity | AugmentationObstruction.lean | 検証済み | A.5 の非被約な通常和の零次障害の検証 |
 | koszul_comparison | KoszulComparison.lean | 検証済み | 通常の生成イデアル冪商から実 Koszul ホモロジーへのレベル射 |
 | koszul_comparison_isProIso | KoszulComparison.lean | 検証済み | KST Lemma 4.10 の複体模型 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
@@ -423,3 +438,21 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
     (data.i₃ r pq) (data.i₃ r' pq) rfl rfl rfl rfl rfl rfl
     (data.deg pq - 1) (data.deg pq) (data.deg pq + 1) rfl (by omega) rfl).left⟩
 ```
+
+## 設計確認：Construction A.5 の augmentation 補正
+
+- 原典の再確認：[KST v4 PDF](https://arxiv.org/pdf/1611.08466v4)、印刷 p.45–46（PDF 0-based 44–45）。HTML 変換だけでなく PDF 抽出でも同じ式を確認。
+- 原典の C(H)=ℤBH は非被約。Definition A.3 の m-ホモトピーは次数 ≤m の両端を指定し、零次も含む。
+- A.5 の右辺 C(φ)+C(φ′) を非被約鎖複体の通常の加法として読むと、零次 augmentation が一致しない。
+- 検証例：T=H={1}、φ=φ′=e=id、m=m′=0。入力のホモトピーは恒等同士。
+- 要求される出力の左辺は H₀=ℤ 上で id、右辺は 2·id。次数 ≤1 のホモトピーがあれば H₀ 上で一致するため矛盾する。
+- 自明群の正規化された零次の一項模型 ℤ[0] について、`no_homotopy_identity_doubleIdentity` が同じ障害を Lean で確認する。
+- 独立 probe：`/tmp/kst-l6-augmentation-probe.lean`、出力 `/tmp/kst-l6-augmentation-probe.log`。
+- 原典の記号が被約写像の和を省略して表している可能性はあるが、その規約は Lean の通常の加法とは区別する必要がある。
+- 推奨する実装文言：非被約 C(H) を保ち、A.5 の右辺を **C(φ)+C(φ′)−C(e)** とする。
+- テンソル側の対応する文言は f⊗g と f⊗e+e⊗g−e⊗e の比較。
+- 証明方針：正規化で (f−e)⊗(g−e) を考え、二つの低次数消滅の和の範囲で零化。AW・shuffle の標準ホモトピーを合成する。
+- Lemma 4.16 では C(ψ)≃C(ψ)+C(φ)−C(e) から差を取り、必要な C(φ)≃C(e) が得られる。
+- 別案：被約複体 ker(ε:C(H)→ℤ) に全体を移し、そこで通常の和を使う。その場合は H_*・相対項との界面の追加同定が必要。
+- 補正した A.5 の実装はまだ行わない。これは元の式の形式化に必要な設計判断であり、ユーザー指定の「設計変更の提案」の停止条件に該当する。
+- 他レーンの計画・ソースは変更していない。依存側の修復や追加公理は導入しない。
