@@ -553,3 +553,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentResolutionImageProjection_toRange
 #check @SerrePositivity.InfinityCategories.coherentResolutionImageProjection_ι
 #check @SerrePositivity.InfinityCategories.coherentResolutionImageProjection_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.coherentResolutionFace
+#check @SerrePositivity.InfinityCategories.coherentResolutionFace_mono
+#check @SerrePositivity.InfinityCategories.coherentResolutionFace_inter
+#check @SerrePositivity.InfinityCategories.coherentResolutionFace_empty
+#check @SerrePositivity.InfinityCategories.coherentResolutionFace_univ
+#check @SerrePositivity.InfinityCategories.range_coherentResolutionMap
+#check @SerrePositivity.InfinityCategories.range_coherentResolutionMap_of_orderIso
+#check @SerrePositivity.InfinityCategories.coherentResolutionFaceIso

@@ -2433,5 +2433,35 @@ lemma coherentResolutionImageProjection_isPrecompositionEquivalence {n m : ℕ}
     (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
     IsPrecompositionEquivalence (coherentResolutionImageProjection.{u} β hβ)
 
+def coherentResolutionFace {n : ℕ} (T : Finset (Fin (n + 1))) :
+    (coherentResolutionSimplex.{u} n).Subcomplex
+
+lemma coherentResolutionFace_mono {n : ℕ} {T U : Finset (Fin (n + 1))} (h : T ⊆ U) :
+    coherentResolutionFace.{u} T ≤ coherentResolutionFace U
+
+lemma coherentResolutionFace_inter {n : ℕ} (T U : Finset (Fin (n + 1))) :
+    coherentResolutionFace.{u} (T ∩ U) = coherentResolutionFace T ⊓ coherentResolutionFace U
+
+lemma coherentResolutionFace_empty (n : ℕ) :
+    coherentResolutionFace.{u} (∅ : Finset (Fin (n + 1))) = ⊥
+
+lemma coherentResolutionFace_univ (n : ℕ) :
+    coherentResolutionFace.{u} (Finset.univ : Finset (Fin (n + 1))) = ⊤
+
+lemma range_coherentResolutionMap {n m : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
+    Subcomplex.range (coherentResolutionMap.{u} β) =
+      coherentResolutionFace (Finset.univ.image β)
+
+lemma range_coherentResolutionMap_of_orderIso {n m : ℕ} (T : Finset (Fin (n + 1)))
+    (e : Fin (m + 1) ≃o T) :
+    Subcomplex.range (coherentResolutionMap.{u}
+      ((OrderHom.Subtype.val (· ∈ T)).comp e.toOrderEmbedding.toOrderHom)) =
+        coherentResolutionFace T
+
+noncomputable def coherentResolutionFaceIso {n m : ℕ} (T : Finset (Fin (n + 1)))
+    (e : Fin (m + 1) ≃o T) :
+    coherentResolutionSimplex.{u} m ≅ (coherentResolutionFace T).toSSet
+
 end SerrePositivity.InfinityCategories
 ```
