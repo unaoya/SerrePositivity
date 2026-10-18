@@ -1881,8 +1881,37 @@ resolutionInsertHomotopy {n : ℕ} (i : Fin (n + 1)) :
 零端点は既存の旗の正規化の回収、一端点は追加・切断後の集合とこの頂点写像の直接像の一致から得る。
 `resolutionInsertVertex_no_new_vertices` は変形後の各集合の元が元の元か i に限られることを示す。
 従って i 以外の欠落頂点を補わず、区間全体を追加する変形とは異なる相対的な構成に使える。
-この段階ではホーンの部分複体への制限、縮約の完成、一般の解像の比較の同値性は未証明。
+ホーンの部分複体への制限は以下の通り。縮約の完成と一般の解像の比較の同値性は未証明。
 これは補助解像上のホモトピーであり、比較射の反対側の合成のホモトピーそのものではない。
+
+`resolutionHorn i` は `∃ j, j ≠ i ∧ j ∉ F.support` を満たす旗の部分複体。
+旗の引き戻しは台を増やさないため、同じ欠落頂点を証人として面・退化を保つ。
+この定義は Λ[n,i] に対応する台による明示模型であり、左 Kan 拡張をホーンに適用した値との
+同定はまだ含まない。`resolutionInsertVertex_mem_horn` は i 以外の欠落頂点が追加されないことを
+使って変形中の全単体の所属を保つ。全体の変形を持ち上げ、次を構成した。
+
+```lean
+resolutionHornInsertHomotopy {n : ℕ} (i : Fin (n + 1)) :
+  SSet.Homotopy (𝟙 (resolutionHorn.{u} i).toSSet) (resolutionHornUpperMap i)
+```
+
+`resolutionHornUpperMap_ι` と `resolutionHornInsertHomotopyMap_ι` は、制限した射とホモトピーが
+包含後に全体の構成と厳密に一致することを示す。両端の計算も同じホーン内で行っている。
+
+i ≠ 0 なら `resolutionPositiveFace n := coherentResolutionFace (Finset.univ.erase 0)` は
+欠落頂点0を証人として `resolutionHorn i` に含まれる。
+最大値の直接像の点は i 以上なので、`resolutionHornUpperMap i` の値もこの面に入る。
+`resolutionHornToPositiveFace i hi` がこの持ち上げであり、射の因子分解を得る。
+
+```lean
+resolutionHornUpperMap_factor_positiveFace {n : ℕ} (i : Fin (n + 1)) (hi : i ≠ 0) :
+  resolutionHornToPositiveFace.{u} i hi ≫
+      SSet.Subcomplex.homOfLE (resolutionPositiveFace_le_horn i hi) =
+    resolutionHornUpperMap i
+```
+
+これはホーン内の恒等射を面を通る射まで変形した段階であり、面からの縮約や i = 0 の場合の
+縮約、一般の解像の射影の同値性を証明したとは数えない。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

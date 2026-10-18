@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHornPositiveFace
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionInsertHomotopy
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.PinchedLowDimension
