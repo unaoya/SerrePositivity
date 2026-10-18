@@ -2063,6 +2063,8 @@ Hom が fibration の塔では、実際の coherent nerve の錐が ∞ 極限�
 反転比較との照合、ULift の同値検出、A3d に基づく native な切断判定を介して証明する。
 反転・ULift 後の切断比較の導来 fiber から native な制限の導来 fiber への実際の比較射も、
 任意の添字圏と通常の錐で構成し、局所 Kan 性の下で同値性を証明している。
+任意の coherent な錐の pinched Hom から、選んだ切断比較の実際の導来 fiber への同値も
+構成済み。固定点は選んだ頂点 fiber・切断模型の同値による像である。
 
 γ3c の指定三形状は 𝒮・Sp の双方で実際の対象と ∞ 極限錐を公開済み。
 𝒮 は小さな積、一脚 Kan fibration の引き戻し、Kan fibration の可算塔の極限。
@@ -8241,3 +8243,117 @@ lemma comparisonFiberPost_homotopyEquivalence {E B D : SSet.{u}}
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-comparison-fiber-post-aggregate.log`、
 `/tmp/gamma3-comparison-fiber-post-audit.log`。
+
+### γ3b：任意の coherent な錐の pinched Hom と選んだ切断比較の導来 fiber
+
+
+`rightFibrationHomDerivedFiberMap r c x d` は、選んだ表現可能な比較
+`rightFibrationHomComparison r c x` の導来 fiber から、比較 span の始点評価
+`rightFibrationMappingEvaluation r c x` の同じ頂点 d 上の導来 fiber への実際の射である。
+span の切断による源成分の作用と、底の可逆 path が保持されることを厳密な等式で記録した。
+底 B が quasicategory なら、この実際の射はホモトピー同値である。
+r 自体の Kan fibration 性、比較射の同値性、fiber の可縮性・非空性は要求しない。
+
+既存の始点評価の fiber と全空間の pinched Hom の同値と合わせ、
+`rightFibrationPinchedHomComparisonDerivedFiberEquivalence r c x d` を得た。
+これは `pinchedHom d.val c` と選んだ比較の実際の導来 fiber の圏同値である。
+E・B の quasicategory 性と r の right fibration 性を前提とする。
+
+さらに錐の slice 射影へ適用し、頂点 fiber と切断空間の既存の同値で標的を移す。
+`coneSectionDerivedFiberMap d c` はこの後合成による実際の fiber の射であり、
+源成分を保持し、path は選んだ同値で後合成する。この射もホモトピー同値となる。
+最終的に `conePinchedHom_sectionComparisonDerivedFiberEquivalence d c` は
+
+```lean
+QCatEquivalence (pinchedHom (X := sliceOver p) d c)
+  (comparisonFiber (coneSectionHomComparison c d.vertex) (coneSectionDerivedFiberPoint d))
+```
+
+を与える。K、p、d、c は任意で、X の quasicategory 性だけを要求する。
+strict な通常の錐、極限錐、可縮な fiber に制限しない。
+`coneSectionDerivedFiberPoint d` は d の頂点 fiber の点を
+`coneVertexFiberSectionEquivalence p d.vertex` の順射で写した点である。
+この同値の逆には選択があるため、標準の切断制限の点との厳密な一致は主張しない。
+
+未完了は、選んだ比較と標準の切断制限の fiber の照合、元の非反転 q_x の fiber への
+直接比較、一般形状の end の直接比較、余極限側、E2a 完了後の E2b 適用。
+既存の三形状の可縮性判定と、この任意の錐の fiber 比較は区別して保持し、γ3 は継続中。
+原典：HTT 4.2.4.1、Kerodon 7.4.1.6・7.5.4.6。
+
+公開12宣言の正確な型と前提（namespace `HomotopyLimits`）：
+
+```lean
+lemma rightFibrationMappingSection_homotopyEquivalence {E B : SSet.{u}}
+    [Quasicategory B] (r : E ⟶ B) [RightFibration r]
+    (c : E _⦋0⦌) (x : B _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (rightFibrationMappingSection r c x)
+
+def rightFibrationHomDerivedFiberMap {E B : SSet.{u}} (r : E ⟶ B) [RightFibration r]
+    (c : E _⦋0⦌) (x : B _⦋0⦌) (d : (vertexFiber r x) _⦋0⦌) :
+    comparisonFiber (rightFibrationHomComparison r c x) d ⟶
+      comparisonFiber (rightFibrationMappingEvaluation r c x) d
+
+lemma rightFibrationHomDerivedFiberMap_source {E B : SSet.{u}}
+    (r : E ⟶ B) [RightFibration r] (c : E _⦋0⦌) (x : B _⦋0⦌)
+    (d : (vertexFiber r x) _⦋0⦌) :
+    rightFibrationHomDerivedFiberMap r c x d ≫
+        comparisonFiberSource (rightFibrationMappingEvaluation r c x) d =
+      comparisonFiberSource (rightFibrationHomComparison r c x) d ≫
+        rightFibrationMappingSection r c x
+
+lemma rightFibrationHomDerivedFiberMap_path {E B : SSet.{u}}
+    (r : E ⟶ B) [RightFibration r] (c : E _⦋0⦌) (x : B _⦋0⦌)
+    (d : (vertexFiber r x) _⦋0⦌) :
+    rightFibrationHomDerivedFiberMap r c x d ≫
+        comparisonFiberPath (rightFibrationMappingEvaluation r c x) d =
+      comparisonFiberPath (rightFibrationHomComparison r c x) d
+
+lemma rightFibrationHomDerivedFiberMap_homotopyEquivalence {E B : SSet.{u}}
+    [Quasicategory B] (r : E ⟶ B) [RightFibration r]
+    (c : E _⦋0⦌) (x : B _⦋0⦌) (d : (vertexFiber r x) _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (rightFibrationHomDerivedFiberMap r c x d)
+
+def rightFibrationPinchedHomComparisonDerivedFiberEquivalence {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (r : E ⟶ B) [RightFibration r]
+    (c : E _⦋0⦌) (x : B _⦋0⦌) (d : (vertexFiber r x) _⦋0⦌) :
+    QCatEquivalence (pinchedHom d.val c)
+      (comparisonFiber (rightFibrationHomComparison r c x) d)
+
+def coneSectionDerivedFiberPoint {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (d : JoinCone p) : (coherentConeSectionSpace p d.vertex) _⦋0⦌
+
+def coneSectionDerivedFiberMap {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (d c : JoinCone p) :
+    comparisonFiber (rightFibrationHomComparison (sliceOverProjection p) c d.vertex)
+        (coneVertexFiberPoint d) ⟶
+      comparisonFiber (coneSectionHomComparison c d.vertex) (coneSectionDerivedFiberPoint d)
+
+lemma coneSectionDerivedFiberMap_source {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (d c : JoinCone p) :
+    coneSectionDerivedFiberMap d c ≫ comparisonFiberSource (coneSectionHomComparison c d.vertex)
+        (coneSectionDerivedFiberPoint d) =
+      comparisonFiberSource (rightFibrationHomComparison (sliceOverProjection p) c d.vertex)
+        (coneVertexFiberPoint d)
+
+lemma coneSectionDerivedFiberMap_path {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (d c : JoinCone p) :
+    coneSectionDerivedFiberMap d c ≫ comparisonFiberPath (coneSectionHomComparison c d.vertex)
+        (coneSectionDerivedFiberPoint d) =
+      comparisonFiberPath (rightFibrationHomComparison (sliceOverProjection p) c d.vertex)
+        (coneVertexFiberPoint d) ≫
+          equivalencePathMap (coneVertexFiberSectionEquivalence p d.vertex).hom
+
+lemma coneSectionDerivedFiberMap_homotopyEquivalence {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (d c : JoinCone p) :
+    IsSimplicialHomotopyEquivalence (coneSectionDerivedFiberMap d c)
+
+def conePinchedHom_sectionComparisonDerivedFiberEquivalence {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (d c : JoinCone p) :
+    QCatEquivalence (pinchedHom (X
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4679 jobs）、公開1396宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-cone-section-derived-aggregate.log`、
+`/tmp/gamma3-cone-section-derived-audit.log`。

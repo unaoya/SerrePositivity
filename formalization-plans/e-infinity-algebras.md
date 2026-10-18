@@ -1792,3 +1792,48 @@ README の同名節と `scripts/audit_homotopy_limits.lean` の `#check @` を�
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-comparison-fiber-post-aggregate.log`、
 `/tmp/gamma3-comparison-fiber-post-audit.log`。
+
+### γ3b：任意の coherent な錐の pinched Hom と選んだ切断比較の導来 fiber
+
+
+`rightFibrationHomDerivedFiberMap r c x d` は、選んだ表現可能な比較
+`rightFibrationHomComparison r c x` の導来 fiber から、比較 span の始点評価
+`rightFibrationMappingEvaluation r c x` の同じ頂点 d 上の導来 fiber への実際の射である。
+span の切断による源成分の作用と、底の可逆 path が保持されることを厳密な等式で記録した。
+底 B が quasicategory なら、この実際の射はホモトピー同値である。
+r 自体の Kan fibration 性、比較射の同値性、fiber の可縮性・非空性は要求しない。
+
+既存の始点評価の fiber と全空間の pinched Hom の同値と合わせ、
+`rightFibrationPinchedHomComparisonDerivedFiberEquivalence r c x d` を得た。
+これは `pinchedHom d.val c` と選んだ比較の実際の導来 fiber の圏同値である。
+E・B の quasicategory 性と r の right fibration 性を前提とする。
+
+さらに錐の slice 射影へ適用し、頂点 fiber と切断空間の既存の同値で標的を移す。
+`coneSectionDerivedFiberMap d c` はこの後合成による実際の fiber の射であり、
+源成分を保持し、path は選んだ同値で後合成する。この射もホモトピー同値となる。
+最終的に `conePinchedHom_sectionComparisonDerivedFiberEquivalence d c` は
+
+```lean
+QCatEquivalence (pinchedHom (X := sliceOver p) d c)
+  (comparisonFiber (coneSectionHomComparison c d.vertex) (coneSectionDerivedFiberPoint d))
+```
+
+を与える。K、p、d、c は任意で、X の quasicategory 性だけを要求する。
+strict な通常の錐、極限錐、可縮な fiber に制限しない。
+`coneSectionDerivedFiberPoint d` は d の頂点 fiber の点を
+`coneVertexFiberSectionEquivalence p d.vertex` の順射で写した点である。
+この同値の逆には選択があるため、標準の切断制限の点との厳密な一致は主張しない。
+
+未完了は、選んだ比較と標準の切断制限の fiber の照合、元の非反転 q_x の fiber への
+直接比較、一般形状の end の直接比較、余極限側、E2a 完了後の E2b 適用。
+既存の三形状の可縮性判定と、この任意の錐の fiber 比較は区別して保持し、γ3 は継続中。
+原典：HTT 4.2.4.1、Kerodon 7.4.1.6・7.5.4.6。
+
+新規2ファイル・12宣言を集約と専用監査へ追加した。README の γ3 冒頭の現在地も更新した。
+正確な型・全前提は README の同名節と `scripts/audit_homotopy_limits.lean` の `#check @` に記録。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4679 jobs）、公開1396宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-cone-section-derived-aggregate.log`、
+`/tmp/gamma3-cone-section-derived-audit.log`。
