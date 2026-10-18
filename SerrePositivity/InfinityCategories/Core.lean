@@ -299,3 +299,15 @@ public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinderJointEn
 public import SerrePositivity.InfinityCategories.Core.JoinCoproductPushout
 
 public import SerrePositivity.InfinityCategories.Core.JoinCylinderExtension
+
+public import SerrePositivity.InfinityCategories.Core.FixedDiagramHomotopy
+
+public import SerrePositivity.InfinityCategories.Core.SliceFixedDiagramIso
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceRetractions
+
+public import SerrePositivity.InfinityCategories.Core.FixedDiagramPrecomposition
+
+public import SerrePositivity.InfinityCategories.Core.FixedDiagramCylinderIso
+
+public import SerrePositivity.InfinityCategories.Core.JoinCylinderFixedDiagram

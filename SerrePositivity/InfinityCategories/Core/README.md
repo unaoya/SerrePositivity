@@ -508,3 +508,7 @@ A6 続き：右因子の図式 p を厳密に固定した関手圏でも `isQCat
 A6 続き：可逆円柱による関手の同型の判定と、共通図式を固定した可逆ホモトピーの pushout 上の貼り合わせ・円柱への延長を追加。`exists_joinCylinder_extension_of_relative_homotopy` は join の右因子を全時刻で固定する可逆ホモトピーから、左因子の可逆円柱上の族を作る。新規18宣言の全型・前提は計画 §6。既存 API は維持。slice 比較・A6 主定理は未完了、A4・A5 は未着手。
 
 上記保存単位の検証：Core ビルド1877 jobs成功、累計1352宣言の公理監査は標準3公理のみ。
+
+A6 続き：`nonempty_functorIso_iff_sliceOverFixedDiagramVertexIso` により Kerodon Lemma 4.6.4.25 の同型判定が両方向で完成。任意の A と K、quasicategory X、p : K ⟶ X と f g : A ⟶ sliceOver p に対し、関手の同型の存在と固定図式上の join の関手の同型の存在が同値。新規17宣言の全型・前提は計画 §6。既存 API は維持。fat join の普遍性との接続、slice 比較射の同値性・A6 主定理は未完了、A4・A5 は未着手。
+
+上記保存単位の検証：Core ビルド1883 jobs成功、累計1369宣言の公理監査は標準3公理のみ。
