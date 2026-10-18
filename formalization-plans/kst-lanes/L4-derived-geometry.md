@@ -1159,7 +1159,7 @@
 - 最初の構成部品は任意のアーベル圏 C の十分な injective の選択だけから作る。複体 M の各項について i_n : M_n → I_n を選び、J_n := I_n ⊕ I_(n+1)、微分 (x,y) ↦ (y,0) の contractible 複体を作る。M_n → J_n は (i_n, d_n ≫ i_(n+1))。各項の単射性・injectivity、鎖写像の式、縮約を証明する。
 - 次の構成部品はこの鎖写像 u の余核 Q と v : J → Q の mapping cocone を用いる。M → cocone(v) が各項単射かつ準同型で、各成分が injective 対象を経由することを、短完全列と cone のコホモロジーから証明する。まず対象ごとの存在として実装し、関手的な injective 選択がない段階で関手性は主張しない。
 - 準同型拡大の実装では、余核 Q への contractible な各項分裂全射 E → Q を明示し、J → Q に沿う pullback N を使う。短完全列 M → N → E を核の普遍性から構成して M → N の準同型性を直接証明する。mapping cocone との同型を未証明のまま使用しない。各項の分裂で J_n が N_n の部分対象になることを証明する。
-- acyclic な小複体の射を零ホモトピーにする工程では identity cone への単射の coproduct と pushout を構成する。準同型性には AB4、極限順序数での colimit には AB5 を使う。
+- acyclic な小複体の射を零ホモトピーにする工程では、最初に単一射を扱う。identity cone の代わりに既証の各項 injective な contractible 埋め込み J(A) を使い、その単射を押し出す。A が acyclic なら余核も acyclic なので押し出しの遷移も単射準同型であり、J(A) の縮約を押し出しへ合成して指定した射の零ホモトピーを得る。その後固定した対象族の coproduct と pushout で全射を同時に扱う。準同型性には AB4、極限順序数での colimit には AB5 を使う。
 - 最終的な超限反復には小複体による K-injective 判定と regular cardinal による因子化が必要。この部分を各項 injective という条件で代用しない。また切断の逆極限の収束を未証明のまま使用しない。
 
 ### §55 の実装の現在地
@@ -1170,7 +1170,36 @@
 - `adjacentBiproductContraction`：縮約を成分で構成し、`adjacentBiproductComplex_acyclic` と K-injectivity を証明した。後者の根拠は縮約であり、各項の injectivity ではない。
 - `injectiveFactorExpansionι`：余核への contractible な各項分裂全射の pullback から、任意の非有界複体の単射準同型な拡大を構成した。短完全列と余核の非輪状性で準同型性を証明した。
 - `injectiveFactorExpansion_component_factor`：各成分が、実際の injective 対象を中間に持ち、拡大先への単射を持つ因子化を証明した。右逆は次数ごとのもので、鎖写像とは主張しない。
-- 拡大先自体の各項 injectivity や K-injectivity は未主張。acyclic な小複体の射を殺す工程、小複体の判定、超限工程は未完了。
+- `acyclicMapAttachmentNullHomotopy`：指定した acyclic 始域からの射を単射準同型な拡大で零ホモトピーにする一工程を構成した。
+- `acyclic_colimit_of_exactColimits`：完全な余極限が任意の複体形状の非輪状性を保つことを証明した。
+- `exists_mono_quasiIso_killing_tests`：Grothendieck アーベル圏で、固定した acyclic 試験複体の小さい集合からの全射を、構成した一つの単射準同型な拡大で同時に零ホモトピーへ送ることを証明した。
+- `isKInjective_of_rlp_mono_quasiIso`：全ての単射準同型に対する右持ち上げから非有界 K-injectivity を証明した。
+- 固定した試験集合で全 acyclic 複体を判定する部分と、全非有界複体の K-injective 分解の存在は未完了。
+
+## 56. 小さい単射族の small object argument（実装前記録）
+
+- acyclic な試験複体の選ばれた集合に対する付加を超限構成へつなぐ一般補題として、Grothendieck アーベル圏の任意の小さい単射族が small object argument を許すことを証明する。
+- 族 i_s : A_s → B_s に対し、Σ_s Subobject(A_s) の濃度より大きな regular cardinal κ を選ぶ。単射の coproduct・pushout・超限合成は単射なので、各 A_s の coyoneda の単射図式の κ-filtered colimit 保存を Mathlib の `IsGrothendieckAbelian.preservesColimit_coyoneda_obj_of_mono` から得る。
+- Mathlib `GrothendieckCategory/EnoughInjectives` の `generatingMonomorphisms` の証明を、始域が一つの生成対象の部分対象の場合から、任意の固定された小さい対象族へ一般化する。κ と保存性を未証明フィールドとして渡さず実際に構成する。
+- これだけでは全 acyclic 複体を判定する試験集合は得られない。その判定と濃度による acyclic 部分複体の構成は残件として区別する。原典の接続は Stacks 19.12.3・19.12.6、TT §3・§8、Toën §3.2。
+
+### §56 の実装の現在地
+
+- `smallMonoFamily_hasSmallObjectArgument`：任意の小さい単射族について、regular cardinal と単射図式における保存性を実際に構成した。
+- `smallMonoFamily_exists_factorization` で任意の小さい単射族について実際の単射・右持ち上げ因子分解を構成した。
+- `quasiIso_colimMap_of_exactColimits` と余核比較により、単射準同型の coproduct・押し出し・filtered colimit・超限合成・retract での保存を証明した。
+- `smallMonoQuasiIsoFamily_exists_factorization`：族の成分が単射準同型なら、small object factorization の左射の単射準同型性を実際に証明した。
+- `exists_mono_quasiIso_test_homotopy_orthogonal`：固定した acyclic 試験複体の小さい集合に対し、最終対象自身への全試験射が零ホモトピーを持つ対象への単射準同型を構成した。
+- 各項 injectivity を強制する小さい試験族と、全 acyclic 複体を判定する試験集合の構成は残件。この段階を全 K-injective 分解の存在と同一視しない。
+- 保存検証：集約対象ビルド 4064 jobs 成功、公理監査 2238 宣言。標準3公理のみ、KTheory import なし。
+
+## 57. 各項 injectivity を強制する小さい試験族（実装前記録）
+
+- C の生成対象 G の部分対象 S と整数 n に対し、n と n+1 に S を置き恒等微分を持つ二項複体 D(S,n) を用いる。これは contractible なので、試験の埋め込み D(S,n) → J(D(S,n)) は単射準同型である。
+- 右持ち上げ性から、任意の S → I_n が J(D(S,n))_n の injective 対象を経由することを、二項複体の評価の corepresentability で証明する。
+- その因子の始域 S → J_n は J_n の injectivity により G へ延長できる。よって生成対象の部分対象の全単射に対する右持ち上げが得られ、Mathlib `generatingMonomorphisms_rlp` と `injective_iff_rlp_monomorphisms_zero` から I_n の injectivity を証明する。
+- 試験族の添字は整数と生成対象の部分対象の小さい縮小を使う。既存の任意の acyclic 試験族との和に small object factorization を適用して、単射準同型・各項 injectivity・指定した試験族へのホモトピー直交を同時に得る。
+- 全 K-injective 性には別途 Stacks 19.12.3 の小さい acyclic 試験集合の判定を証明する。ここで各項 injective だけから K-injective としない。原典の接続は TT §3・§8、BvdB Thm 3.1.1、Toën §3.2。
 
 ## 主要宣言の表
 
@@ -1395,6 +1424,10 @@
 | `termInjectiveEnvelopeι_mono`・`termInjectiveEnvelope_injective` | DerivedGeometry/ContractibleInjectiveEnvelope | 実装・対象ビルド済み |
 | `adjacentBiproductContraction`・`adjacentBiproductComplex_acyclic` | DerivedGeometry/AdjacentBiproductContraction | 実装・対象ビルド済み |
 | `injectiveFactorExpansionι_quasiIso`・`injectiveFactorExpansion_component_factor` | DerivedGeometry/InjectiveFactorExpansion・InjectiveFactorExpansionComponents | 実装・対象ビルド済み |
+| `exists_mono_quasiIso_killing_tests`・`acyclic_colimit_of_exactColimits` | DerivedGeometry/GrothendieckAcyclicTests・ExactColimitAcyclic | 実装・対象ビルド済み |
+| `smallMonoFamily_hasSmallObjectArgument`・`isKInjective_of_rlp_mono_quasiIso` | DerivedGeometry/SmallMonoFamilyArgument・KInjectiveLiftingCriterion | 実装・対象ビルド済み |
+| `monicQuasiIsomorphisms_transfinite`・`smallMonoQuasiIsoFamily_exists_factorization` | DerivedGeometry/MonoQuasiIsoCellClosure・SmallMonoQuasiIsoFactorization | 実装・対象ビルド済み |
+| `exists_mono_quasiIso_test_homotopy_orthogonal` | DerivedGeometry/GrothendieckTestQuasiIso | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
