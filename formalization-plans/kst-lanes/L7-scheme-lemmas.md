@@ -11,10 +11,11 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1539 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1547 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
+- 実分裂・境界外の平坦性・一定一般階数から、全チャートで各基礎素点上に共通階数の自由な基本開近傍を持つ有限生成中心を構成済み。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -909,6 +910,16 @@ G の Q での局所化の比較とテンソルの取消同型により、
 Noether D 上有限な G は有限表示なので自由 locus は開。
 拡大素点の縮約は元の C の素点だから、この開自由 locus の Spec(C) への像は全体となる。
 `PureTransformStalkEquiv.lean` と `GenericBoundaryFreeLocus.lean` で証明済み。
+さらに各拡大素点の近傍を具体的な基本開集合 D(g) で選ぶ。
+局所化同型に沿って有限階数も保存されることを照合し、
+有限表示加群の自由基底の降下により g が拡大素イデアルに属さず、
+純変換の g 局所化が共通階数の自由加群となることを得る。
+これは Stacks 0810 の基本開近傍による結論の、実分裂を入力する Noether 特殊形とする。
+`GenericBoundaryFreeNeighborhood.lean` で自由化元と共通階数を接続済み。
+`BoundaryFreeNeighborhoods.lean` の結論述語を使い、
+`ConstantGenericRankFreeNeighborhoods.lean` で有限表示行列を入力しない実際の中心の存在へまとめた。
+共通階数は選んだ表示から計算した自然数を返す。
+一般の有限型加群の平坦化や、実分裂の存在そのものを結論としてはいない。
 
 #### 境界外の開閉部分の分離
 
@@ -1090,6 +1101,12 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 
 | 宣言 | 内容 | 状態 |
 | --- | --- | --- |
+| `exists_away_free_finrank_of_mem_freeLocus` | 自由な素点での自由基底と階数を基本開へ降ろす | 証明済み |
+| `genericPrime_rankAtStalk_of_genericBoundaryPureFree` | 純変換の共通自由階数と実際の局所階数の一致 | 証明済み |
+| `exists_away_free_finrank_of_genericBoundaryPureFree` | 全拡大素点を含む同じ階数の自由化基本開 | 証明済み |
+| `BoundaryPureFreeNeighborhoods` | 基礎環を覆う共通階数の自由化基本開の条件 | 定義済み |
+| `boundaryPureFreeNeighborhoods_of_genericBoundaryPureFree` | 一般点自由性から自由化元を得る | 証明済み |
+| `exists_fg_center_freeNeighborhoods_of_constant_boundary_rank` | 一定境界外一般階数の下で自由化基本開を持つ実際の中心 | 証明済み |
 | `geometricallyIntegralGenericPrime_baseChange_comap` | 任意の基底変更後の拡大素点の縮約 | 証明済み |
 | `rankAtStalk_baseChange_of_mem_freeLocus` | 自由な素点での階数の任意の基底変更による保存 | 証明済み |
 | `generic_rankAtStalk_baseChange` | 相対平坦加群の一般局所階数の基底変更 | 証明済み |

@@ -232,3 +232,6 @@ public import SerrePositivity.KST.SchemeLemmas.BoundaryClopenSeparation
 public import SerrePositivity.KST.SchemeLemmas.FreeStalkRankBaseChange
 public import SerrePositivity.KST.SchemeLemmas.GenericPrimeBaseChange
 public import SerrePositivity.KST.SchemeLemmas.GenericRankBaseChange
+public import SerrePositivity.KST.SchemeLemmas.GenericBoundaryFreeNeighborhood
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoods
+public import SerrePositivity.KST.SchemeLemmas.ConstantGenericRankFreeNeighborhoods
