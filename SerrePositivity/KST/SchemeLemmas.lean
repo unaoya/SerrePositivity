@@ -235,3 +235,9 @@ public import SerrePositivity.KST.SchemeLemmas.GenericRankBaseChange
 public import SerrePositivity.KST.SchemeLemmas.GenericBoundaryFreeNeighborhood
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoods
 public import SerrePositivity.KST.SchemeLemmas.ConstantGenericRankFreeNeighborhoods
+public import SerrePositivity.KST.SchemeLemmas.FiniteBoundaryNumerators
+public import SerrePositivity.KST.SchemeLemmas.FiniteOrthogonalCenter
+public import SerrePositivity.KST.SchemeLemmas.FiniteClopenIdempotents
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFiniteClopenSeparation
+public import SerrePositivity.KST.SchemeLemmas.BoundaryLocallyConstantCharts
+public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankCharts
