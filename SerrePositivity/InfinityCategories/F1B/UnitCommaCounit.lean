@@ -6,7 +6,8 @@ public import SerrePositivity.InfinityCategories.F1B.RelativeInitialHomotopy
 /-!
 概要：単位切断の相対始点境界充填から自然な余単位候補を構成する。
 方針：comma 内で G に沿った単位切断を恒等矢印の族へ結び、標的へ射影する。
-規約：fiber の始対象性から相対境界充填への輸送の橋は後続であり、ここでは仮定に明示する。
+規約：相対充填を直接受け取る構成に加え、輸送を明示した中間版を残す。
+追加の輸送仮定を使わない各点の条件からの公開定理は UnitCounitExistence に置く。
 使われ方：B1 の指定単位の点ごとの普遍性から随伴を作る経路。
 -/
 

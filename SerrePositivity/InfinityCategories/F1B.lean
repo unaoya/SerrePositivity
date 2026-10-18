@@ -122,3 +122,9 @@ public import SerrePositivity.InfinityCategories.F1B.FunctorRelativeInitial
 public import SerrePositivity.InfinityCategories.F1B.RelativeInitialHomotopy
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaRelativeInitial
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaCounit
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaArrowEndpoints
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaCartesianEdge
+public import SerrePositivity.InfinityCategories.F1B.CommaTransportFold
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaTransport
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSourceOppositeFibration
+public import SerrePositivity.InfinityCategories.F1B.UnitCounitExistence

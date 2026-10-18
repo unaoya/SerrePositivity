@@ -1,13 +1,14 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.UniversalUnitComma
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSourceOppositeFibration
 public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
 
 /-!
-概要：comma の fiber の始対象性から、輸送を仮定して相対始点境界充填を得る。
+概要：comma の fiber の始対象性から相対始点境界充填を得る。
 方針：反転した始域射影の cocartesian 輸送を相対始対象の一般定理へ渡す。
-規約：始域射影の輸送の構成を隠さず型クラス仮定として明示する。
-使われ方：B1 の点ごとの単位比較から自然な余単位への残る橋を分離する。
+規約：始域射影の輸送は証明済みの instance を用いる。
+使われ方：B1 の点ごとの単位比較から自然な余単位への橋。
 -/
 
 @[expose] public section
@@ -32,5 +33,17 @@ lemma UnitCommaInitialCondition.initialBoundaryLifting_of_op_transport
     ((unitCommaSource G).app (Opposite.op ⦋0⦌)
       ((unitCommaSection η).app (Opposite.op ⦋0⦌) x))
     (unitCommaVertexInFiber G ((unitCommaSection η).app (Opposite.op ⦋0⦌) x)) (hη x)
+
+/-- 概要：単位の comma 始対象条件から相対始点境界充填が従う。
+方針：構成済みの始域射影の反転した輸送を使う。
+規約：追加の輸送仮定は不要。
+使われ方：各点の単位比較条件を任意の族へ移す。 -/
+lemma UnitCommaInitialCondition.initialBoundaryLifting
+    {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {F : X ⟶ Y} {G : Y ⟶ X} {η : FunctorHom (𝟙 X) (F ≫ G)}
+    (hη : UnitCommaInitialCondition η) (x : X _⦋0⦌) :
+    InitialBoundaryLifting (unitCommaSource G)
+      ((unitCommaSection η).app (Opposite.op ⦋0⦌) x) :=
+  hη.initialBoundaryLifting_of_op_transport x
 
 end SerrePositivity.InfinityCategories
