@@ -506,6 +506,9 @@ Kan モノイドの有限積座標・bar の基底と全空間の各行の Kan �
 円筒の端点の余積を C⊗∂Δ[1] と同定し、貼り付けの脚の単射性を証明した。
 局所化可逆な二項余積の射、単射な脚を持つ pushout の比較の可逆性を証明した。
 span の各成分の局所化可逆な比較が二重写像円筒で可逆となることを証明した。
+円筒の端点の自然性の四角形と、二つの引き戻しの二項余積の引き戻し性を証明した。
+adhesive 性による立方体の貼り合わせから、span の厳密な引き戻しについて、
+二重写像円筒の中央の円筒・左右の頂点・中央の頂点の各四角形の引き戻し性を証明した。
 Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
 Ex∞ の fibration 保存は未証明。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
@@ -514,8 +517,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 586 宣言の型と公理を確認した。
-さらに名前空間全体の 1156 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 600 宣言の型と公理を確認した。
+さらに名前空間全体の 1172 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -624,6 +627,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `doubleMappingCylinder`、`doubleMappingCylinderMap`、`doubleMappingCylinderMap_comp` | 実装済み | 実際の二重写像円筒と比較の関手性 |
 | `sliceFiberPushoutIso`、`cylinderEndpoints_mono` | 実装済み | 厳密なファイバーと pushout の交換、貼り付けの単射性 |
 | `pushoutMap_localized_isIso`、`doubleMappingCylinderMap_localized_isIso` | 実装済み | pushout と二重写像円筒の模型の局所化不変性 |
+| `cylinderEndpoints_isPullback`、`coproductSquare_isPullback` | 実装済み | 円筒の境界と二項余積の厳密な引き戻し |
+| `strictPushoutCube`、`doubleMappingCylinderMap_isPullback` | 実装済み | van Kampen 性による厳密な貼り合わせ |
+| `doubleMappingCylinder_left_isPullback`、`doubleMappingCylinder_right_isPullback`、`doubleMappingCylinder_center_isPullback` | 実装済み | 三つの頂点の厳密な引き戻し |
 | Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

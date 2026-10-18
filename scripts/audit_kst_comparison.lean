@@ -68,6 +68,8 @@ run_cmd do
 
 
 
+
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -251,6 +253,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
 
 
+-- CartesianTensorSquare.lean
+
+#check @SerrePositivity.KST.Comparison.cartesianTensorSquare_isPullback
+#print axioms SerrePositivity.KST.Comparison.cartesianTensorSquare_isPullback
+
+
 -- ComponentSubcomplex.lean
 
 #check @SerrePositivity.KST.Comparison.componentSubcomplex
@@ -282,6 +290,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
 #print axioms SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
+
+
+-- CoproductPullbacks.lean
+
+#check @SerrePositivity.KST.Comparison.coproductInclusions_isPullback
+#print axioms SerrePositivity.KST.Comparison.coproductInclusions_isPullback
+
+#check @SerrePositivity.KST.Comparison.binaryCoproductPullback
+#print axioms SerrePositivity.KST.Comparison.binaryCoproductPullback
+
+#check @SerrePositivity.KST.Comparison.coproductSquare_isPullback
+#print axioms SerrePositivity.KST.Comparison.coproductSquare_isPullback
 
 
 -- CutDegeneracy.lean
@@ -321,6 +341,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.cylinderEndpoints_mono
 #print axioms SerrePositivity.KST.Comparison.cylinderEndpoints_mono
+
+
+-- CylinderBoundaryPullback.lean
+
+#check @SerrePositivity.KST.Comparison.simplexZeroTensorIso_inv_naturality
+#print axioms SerrePositivity.KST.Comparison.simplexZeroTensorIso_inv_naturality
+
+#check @SerrePositivity.KST.Comparison.cylinderBoundaryIso_naturality
+#print axioms SerrePositivity.KST.Comparison.cylinderBoundaryIso_naturality
+
+#check @SerrePositivity.KST.Comparison.cylinderEndpoints_isPullback
+#print axioms SerrePositivity.KST.Comparison.cylinderEndpoints_isPullback
 
 
 -- DGAlgebra.lean
@@ -1878,6 +1910,33 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.sliceFiberPushoutIso
 #print axioms SerrePositivity.KST.Comparison.sliceFiberPushoutIso
+
+
+-- StrictCylinderPullbacks.lean
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinderMap_isPullback
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinderMap_isPullback
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_left_isPullback
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_left_isPullback
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_right_isPullback
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_right_isPullback
+
+#check @SerrePositivity.KST.Comparison.cylinderZero_isPullback
+#print axioms SerrePositivity.KST.Comparison.cylinderZero_isPullback
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_center_isPullback
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_center_isPullback
+
+
+-- StrictPushoutCube.lean
+
+#check @SerrePositivity.KST.Comparison.strictPushoutCube
+#print axioms SerrePositivity.KST.Comparison.strictPushoutCube
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinderMap_strictCube
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinderMap_strictCube
 
 
 -- SubcomplexContraction.lean

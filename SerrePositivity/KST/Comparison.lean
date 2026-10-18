@@ -55,6 +55,8 @@ public import SerrePositivity.KST.Comparison.DoubleMappingCylinderMap
 public import SerrePositivity.KST.Comparison.SliceFiberPushouts
 public import SerrePositivity.KST.Comparison.CylinderBoundary
 public import SerrePositivity.KST.Comparison.DoubleMappingCylinderEquivalence
+public import SerrePositivity.KST.Comparison.StrictPushoutCube
+public import SerrePositivity.KST.Comparison.StrictCylinderPullbacks
 
 /-!
 # K-L2：比較定理の入口
