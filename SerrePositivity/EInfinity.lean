@@ -17,3 +17,4 @@ public import SerrePositivity.EInfinity.Operad.SchurActionUnit
 public import SerrePositivity.EInfinity.Operad.TensorFamilyAdjacentTail
 public import SerrePositivity.EInfinity.Operad.BinaryEquivariance
 public import SerrePositivity.EInfinity.Operad.TensorPowerBlockSwap
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerHeads
