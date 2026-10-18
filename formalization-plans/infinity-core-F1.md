@@ -6529,5 +6529,43 @@ lemma scaffoldFiniteCollapse_one_isPullback (n : ℕ) :
       (stdSimplex.isTerminalObj₀.from (nerve (ULift.{u} (Fin (n + 1)))))
       (scaffoldFiniteCollapse n) (stdSimplex.δ (0 : Fin 2))
 
+lemma vertexFiber_isPullback {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    IsPullback (vertexFiberι p b) (stdSimplex.isTerminalObj₀.from (vertexFiber p b)) p
+      (SSet.const b : (Δ[0] : SSet.{u}) ⟶ B)
+
+lemma scaffoldFiniteTotal_zero_isPullback (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) :
+    IsPullback (vertexFiberι p (nerveVertex (ULift.up (0 : Fin (n + 2)))))
+      (stdSimplex.isTerminalObj₀.from _) (p ≫ scaffoldFiniteCollapse n)
+      (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+
+noncomputable def scaffoldFiniteTotalZeroFiberIso (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) :
+    vertexFiber p (nerveVertex (ULift.up (0 : Fin (n + 2)))) ≅
+      vertexFiber (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
+lemma scaffoldFiniteTotalZeroFiberIso_hom_ι (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) :
+    (scaffoldFiniteTotalZeroFiberIso n p).hom ≫
+      vertexFiberι (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+        vertexFiberι p (nerveVertex (ULift.up (0 : Fin (n + 2))))
+
+lemma scaffoldFiniteTotal_one_isPullback (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) :
+    IsPullback (pullback.fst p (nerveMap (scaffoldFiniteTail n)))
+      (stdSimplex.isTerminalObj₀.from _) (p ≫ scaffoldFiniteCollapse n)
+      (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+
+noncomputable def scaffoldFiniteTotalOneFiberIso (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) :
+    pullback p (nerveMap (scaffoldFiniteTail n)) ≅
+      vertexFiber (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma scaffoldFiniteTotalOneFiberIso_hom_ι (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) :
+    (scaffoldFiniteTotalOneFiberIso n p).hom ≫
+      vertexFiberι (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+        pullback.fst p (nerveMap (scaffoldFiniteTail n))
+
 end SerrePositivity.InfinityCategories
 ```

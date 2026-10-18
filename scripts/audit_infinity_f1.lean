@@ -1445,3 +1445,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_one_obj
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_zero_isPullback
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_one_isPullback
+#check @SerrePositivity.InfinityCategories.vertexFiber_isPullback
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteTotal_zero_isPullback
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteTotalZeroFiberIso
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteTotalZeroFiberIso_hom_ι
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteTotal_one_isPullback
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteTotalOneFiberIso
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteTotalOneFiberIso_hom_ι

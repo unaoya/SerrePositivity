@@ -302,3 +302,4 @@ public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteExtension
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCylinder
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCollapse
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCollapseFibers
+public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTotalFibers
