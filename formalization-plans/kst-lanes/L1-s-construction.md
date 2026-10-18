@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2044 jobs、累計239宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2064 jobs、累計250宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -158,7 +158,7 @@ L1b 進行中。第一行制限と零対角の補完段階を実装済み。対�
 第一行の二表示を同型で接続し、元の制限を厳密に因子分解した。
 原典 [BGT v4 p.44](https://arxiv.org/pdf/1001.2282v4#page=44) Definition 7.1 の原始条件は三つ組の cofiber 四角形である。
 本実装の全四つ組の押し出し条件から原典の三つ組を取り出す向きは `gappedCofiberTriangle_isCofiber` で証明済み。
-逆向きの全四つ組への押し出し貼り合わせは、cofiber 補完段階の未完了範囲に含む。
+逆向きの全四つ組への押し出し貼り合わせは、後掲の `isGapped_iff_triples` で証明済み。
 
 零対角の射影の trivial Kan fibration は無条件の相対境界証明であり、quasicategory 性・安定性を仮定しない。
 cofiber 一段の補完について次を実装した。
@@ -303,9 +303,33 @@ Ar[n] 全体への適用をつなぐ自然な cofiber 抽出を実装した。
 従来の第一行の等号を含まない充填補題より強く、任意の単射 i が全頂点を含む場合に
 指定した第一行と境界の両方を厳密に保つ。
 
-**未完了**：零次元で新しく作る図式の gapped 条件と、全四つ組の押し出しへの貼り合わせ。
+三つ組から全四つ組への還元と、任意の第一行に対する零対角 Ar[n] 図式の構成を証明した。
+α-S の押し出し貼り合わせ `isPushoutSquare_pasting_cancel_left` を読み取り専用で使用した。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `intervalTriple` | `(a b c : Fin (n+1)) → (a ≤ b) → (b ≤ c) → (Fin 3 →o Fin (n+1))` |
+| `arCofiberRectangleOrder` | `(i j k l : Fin (n+1)) → (i ≤ j) → (j ≤ k) → (k ≤ l) → (ULift.{u} (Fin 3 × Fin 2) →o Ar.{u} n)` |
+| `arCofiberRectangle` | `(i j k l : Fin (n+1)) → (i ≤ j) → (j ≤ k) → (k ≤ l) → ((Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ arNerve n)` |
+| `arCofiberRectangle_left` | `(i j k l : Fin (n+1)) → (hij : i ≤ j) → (hjk : j ≤ k) → (hkl : k ≤ l) → pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 2 = arSquare i j j k hij le_rfl hjk` |
+| `arCofiberRectangle_outer` | 同じ i,j,k,l,hij,hjk,hkl について `pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 1 = arSquare i j j l hij le_rfl (hjk.trans hkl)` |
+| `arCofiberRectangle_right` | 同じ i,j,k,l,hij,hjk,hkl について `pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 0 = arSquare i j k l hij hjk hkl` |
+| `arSquares_isPushout_of_triples` | `[Quasicategory C] → (F : arNerve n ⟶ C) → (∀ (i j k : Fin (n+1)) (hij : i ≤ j) (hjk : j ≤ k), IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F)) → ∀ (i j k l : Fin (n+1)) (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l), IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F)` |
+| `isGapped_iff_triples` | `[Quasicategory C] → (F : arNerve n ⟶ C) → (IsGapped F ↔ (∀ j : Fin (n+1), IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj j j le_rfl)))) ∧ (∀ (i j k : Fin (n+1)) (hij : i ≤ j) (hjk : j ≤ k), IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F)))` |
+| `ArCofiberCompletion.diagram_zero_diagonal` | `[Quasicategory C] → (c : ArCofiberCompletion n i a b) → (c.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) = b ≫ zeroFrameCofiberFamiliesMap n C) → (v : B _⦋0⦌) → (j : Fin (n+1)) → IsZeroVertex (((functorVertexEquiv (arNerve n) C).symm (c.diagram.app (Opposite.op ⦋0⦌) v)).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj j j le_rfl)))` |
+| `FirstRowCofiberData.diagram_firstRow` | `[Quasicategory C] → (c : FirstRowCofiberData n i a d) → (c.cofibers.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) = c.frame ≫ zeroFrameCofiberFamiliesMap n C) → c.diagram ≫ (pre (firstRowInclusion n)).app C = d` |
+| `exists_firstRowDiagramWithZeroDiagonal` | `(n : ℕ) → (C : SSet.{u}) → [Quasicategory C] → [IsStable C] → (p : firstRowNerve n ⟶ C) → ∃ F : arNerve n ⟶ C, firstRowInclusion n ≫ F = p ∧ ∀ j : Fin (n+1), IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj j j le_rfl)))` |
+
+三つ組の正方形を左側 `(i,j,j,k)` と外側 `(i,j,j,l)` に置く長方形を実際の
+`Δ[2] ⊗ Δ[1] ⟶ arNerve n` として構成し、右側の `(i,j,k,l)` に相殺を適用した。
+この還元に安定性や零対角の仮定は不要で、`isGapped_iff_triples` では零対角を別に保持する。
+また空の指定境界に枠を保つ補完を適用し、任意の第一行から実際の Ar[n] 図式を構成した。
+この存在定理の結論に三つ組の押し出し性は含まれておらず、L1b 完成とは数えない。
+
+**未完了**：零次元で作った実際の図式 F について、全三つ組の正方形
+`arSquare i j j k hij le_rfl hjk ≫ F` が押し出しとなること。
+零対角と第一行の厳密な回収、および三つ組から全四つ組への含意は証明済み。
+cofiber 族の各区間の正方形が押し出しであることだけを、この F の三つ組の条件の代用にしない。
 正次元の境界 RLP は証明済みだが、`boundary 0` の場合を含めていないため、
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
-α-S の `Stable/Pasting.lean` の押し出し貼り合わせ API が到着していることを確認した。
-これを読み取り専用で用い、cofiber 族から零次元の gapped 条件を証明する段階に進む。
 L1c–f は未着手。L1g は別途指示待ち。

@@ -543,3 +543,36 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.firstRowRestriction_hasLiftingProperty_boundary
 #print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_hasLiftingProperty_boundary
+
+#check @SerrePositivity.KST.SConstruction.intervalTriple
+#print axioms SerrePositivity.KST.SConstruction.intervalTriple
+
+#check @SerrePositivity.KST.SConstruction.arCofiberRectangleOrder
+#print axioms SerrePositivity.KST.SConstruction.arCofiberRectangleOrder
+
+#check @SerrePositivity.KST.SConstruction.arCofiberRectangle
+#print axioms SerrePositivity.KST.SConstruction.arCofiberRectangle
+
+#check @SerrePositivity.KST.SConstruction.arCofiberRectangle_left
+#print axioms SerrePositivity.KST.SConstruction.arCofiberRectangle_left
+
+#check @SerrePositivity.KST.SConstruction.arCofiberRectangle_outer
+#print axioms SerrePositivity.KST.SConstruction.arCofiberRectangle_outer
+
+#check @SerrePositivity.KST.SConstruction.arCofiberRectangle_right
+#print axioms SerrePositivity.KST.SConstruction.arCofiberRectangle_right
+
+#check @SerrePositivity.KST.SConstruction.arSquares_isPushout_of_triples
+#print axioms SerrePositivity.KST.SConstruction.arSquares_isPushout_of_triples
+
+#check @SerrePositivity.KST.SConstruction.isGapped_iff_triples
+#print axioms SerrePositivity.KST.SConstruction.isGapped_iff_triples
+
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.diagram_zero_diagonal
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.diagram_zero_diagonal
+
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.diagram_firstRow
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.diagram_firstRow
+
+#check @SerrePositivity.KST.SConstruction.exists_firstRowDiagramWithZeroDiagonal
+#print axioms SerrePositivity.KST.SConstruction.exists_firstRowDiagramWithZeroDiagonal

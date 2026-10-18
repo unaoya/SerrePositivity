@@ -12,7 +12,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
@@ -30,6 +30,33 @@ lemma exists_firstRowCofiberData_preserving_frame {A B C : SSet.{u}}
   let c := firstRowCofiberData n i a d h
   obtain ⟨f, hf⟩ := exists_arCofiberCompletion_preserving_frame n i a c.frame c.frame_boundary.symm
   exact ⟨{ c with cofibers := f }, hf⟩
+
+/-- 概要：枠を保つ補完の図式は、頂点の新旧によらず指定した第一行を厳密に保つ。
+方針：枠への制限の等号を第一行でさらに制限する。
+規約：gapped 性や境界の頂点全射性を要求しない。
+使われ方：零次元で作る図式の第一行の回収。 -/
+lemma FirstRowCofiberData.diagram_firstRow {A B C : SSet.{u}} [Quasicategory C]
+    {n : ℕ} {i : A ⟶ B} {a : A ⟶ sConstruction n C}
+    {d : B ⟶ (ihom (firstRowNerve n)).obj C} (c : FirstRowCofiberData n i a d)
+    (hc : c.cofibers.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) =
+      c.frame ≫ zeroFrameCofiberFamiliesMap n C) :
+    c.diagram ≫ (pre (firstRowInclusion n)).app C = d := by
+  have hh := congrArg (fun f => f ≫ (pre (framePositiveRow n).ι).app C ≫
+    (pre (frameFirstRowIso n).hom).app C) (c.cofibers.diagram_frame hc)
+  have he : (pre (frameInclusion n)).app C ≫ (pre (framePositiveRow n).ι).app C ≫
+      (pre (frameFirstRowIso n).hom).app C = (pre (firstRowInclusion n)).app C := by
+    rw [← NatTrans.comp_app, ← pre_map, ← NatTrans.comp_app, ← pre_map]
+    have hi : ((frameFirstRowIso n).hom ≫ (framePositiveRow n).ι) ≫ frameInclusion n =
+        firstRowInclusion n := by
+      rw [Category.assoc]
+      exact firstRowFrameMap_inclusion n
+    rw [hi]
+  simp only [Category.assoc] at hh
+  rw [he] at hh
+  have hrow := c.firstRow
+  dsimp only [frameRowRestriction, zeroFrameProjection] at hrow
+  simp only [Category.assoc] at hrow
+  exact hh.trans hrow
 
 /-- 概要：全頂点を含む相対補完は S_n に持ち上げた後も枠全体を保つ。
 方針：枠の全部分複体への包含後で cofiber 族の右上角の回収を使う。
@@ -81,5 +108,34 @@ lemma firstRowRestriction_hasLiftingProperty_boundary (n r : ℕ) (C : SSet.{u})
     [Quasicategory C] [IsStable C] :
     HasLiftingProperty (boundary (r + 1)).ι (firstRowRestriction n C) :=
   firstRowRestriction_hasLiftingProperty_of_vertexSurjective n _ (boundary_vertex_surjective r)
+
+/-- 概要：任意の第一行は、全対角が零である Ar[n] 図式へ厳密に延ばせる。
+方針：空の指定境界から枠を保つ cofiber 補完を構成し、頂点で評価する。
+規約：三つ組の押し出し性はこの結論には含めない。
+使われ方：零次元の境界 RLP のうち構成・第一行・零対角の部分。 -/
+lemma exists_firstRowDiagramWithZeroDiagonal (n : ℕ) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] (p : firstRowNerve n ⟶ C) :
+    ∃ F : arNerve n ⟶ C, firstRowInclusion n ≫ F = p ∧
+      ∀ j : Fin (n + 1), IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ (arObj j j le_rfl))) := by
+  let i : (⊥_ SSet.{u}) ⟶ (Δ[0] : SSet.{u}) := initial.to _
+  let a : (⊥_ SSet.{u}) ⟶ sConstruction n C := initial.to _
+  let d : (Δ[0] : SSet.{u}) ⟶ (ihom (firstRowNerve n)).obj C :=
+    SSet.yonedaEquiv.symm (functorVertex p)
+  have h : a ≫ firstRowRestriction n C = i ≫ d := initial.hom_ext _ _
+  obtain ⟨c, hc⟩ := exists_firstRowCofiberData_preserving_frame n i a d h
+  let v : (Δ[0] : SSet.{u}) _⦋0⦌ := SSet.yonedaEquiv (𝟙 _)
+  let F := (functorVertexEquiv (arNerve n) C).symm (c.diagram.app (Opposite.op ⦋0⦌) v)
+  have hF : functorVertex F = c.diagram.app (Opposite.op ⦋0⦌) v :=
+    (functorVertexEquiv _ C).apply_symm_apply _
+  refine ⟨F, ?_, fun j => c.cofibers.diagram_zero_diagonal hc v j⟩
+  have hr := ConcreteCategory.congr_hom
+    (NatTrans.congr_app (c.diagram_firstRow hc) (Opposite.op ⦋0⦌)) v
+  change ((pre (firstRowInclusion n)).app C).app (Opposite.op ⦋0⦌)
+    (c.diagram.app (Opposite.op ⦋0⦌) v) = d.app (Opposite.op ⦋0⦌) v at hr
+  have hd : d.app (Opposite.op ⦋0⦌) v = functorVertex p :=
+    SSet.yonedaEquiv_symm_app_id _
+  rw [← hF, hd] at hr
+  exact functorVertex_injective hr
 
 end SerrePositivity.KST.SConstruction

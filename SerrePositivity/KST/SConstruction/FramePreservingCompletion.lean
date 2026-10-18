@@ -86,4 +86,32 @@ lemma ArCofiberCompletion.diagram_frame {A B C : SSet.{u}} [Quasicategory C]
   rw [ArCofiberCompletion.diagram, Category.assoc, (pre (frameInclusion n)).naturality,
     ← Category.assoc, hc, Category.assoc, zeroFrameCofiberFamiliesMap_apex]
 
+/-- 概要：枠を保つ cofiber 補完の右上角の図式は、全ての対角で零対象となる。
+方針：枠への制限の厳密な等号を頂点で評価し、元の枠の零対角条件を使う。
+規約：境界が全頂点を含むことや安定性は要求しない。
+使われ方：零次元で新しく作る図式の gapped 条件の対角部分。 -/
+lemma ArCofiberCompletion.diagram_zero_diagonal {A B C : SSet.{u}} [Quasicategory C]
+    {n : ℕ} {i : A ⟶ B} {a : A ⟶ sConstruction n C} {b : B ⟶ zeroFrameDiagrams n C}
+    (c : ArCofiberCompletion n i a b)
+    (hc : c.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) =
+      b ≫ zeroFrameCofiberFamiliesMap n C) (v : B _⦋0⦌) (j : Fin (n + 1)) :
+    IsZeroVertex (((functorVertexEquiv (arNerve n) C).symm
+      (c.diagram.app (Opposite.op ⦋0⦌) v)).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ (arObj j j le_rfl))) := by
+  let F := (functorVertexEquiv (arNerve n) C).symm (c.diagram.app (Opposite.op ⦋0⦌) v)
+  have hF : functorVertex F = c.diagram.app (Opposite.op ⦋0⦌) v :=
+    (functorVertexEquiv _ C).apply_symm_apply _
+  have he := ConcreteCategory.congr_hom
+    (NatTrans.congr_app (c.diagram_frame hc) (Opposite.op ⦋0⦌)) v
+  change ((pre (frameInclusion n)).app C).app (Opposite.op ⦋0⦌)
+    (c.diagram.app (Opposite.op ⦋0⦌) v) = (b.app (Opposite.op ⦋0⦌) v).val at he
+  rw [← hF] at he
+  change functorVertex (frameInclusion n ≫ F) = (b.app (Opposite.op ⦋0⦌) v).val at he
+  have hz : IsZeroFrameVertex (functorVertex (frameInclusion n ≫ F)) := by
+    rw [he]
+    exact fullSubcomplexOnVertices_vertex (b.app (Opposite.op ⦋0⦌) v)
+  have h := hz (ComposableArrows.mk₀ (⟨arObj j j le_rfl, Or.inr rfl⟩ : FrameAr n)) rfl
+  rw [evaluateFunctorAt_functorVertex] at h
+  exact h
+
 end SerrePositivity.KST.SConstruction
