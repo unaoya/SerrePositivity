@@ -1231,3 +1231,110 @@ simplicialNerve_quasicategory (C : Type u)
 対象と集約のビルド、公理監査は終了コード 0。N7 と計画分割の完了も再検証した。
 γ2・γ3 と N7f の任意の双対は今回の範囲外。
 各段の実施記録はコミットメッセージへ置き、計画本文には現在地と残工程を短く残す。
+
+## γ1.5：Dold–Kan 豊穣化と dg nerve の比較
+
+γ1.5a（紙の設計）は完了。以下の構成の Lean 実装は γ1.5b 以降で行う。
+原典は [HA 1.3.1.12–1.3.1.17](https://www.math.ias.edu/~lurie/papers/HA.pdf)、
+[Kerodon 2.5.7](https://kerodon.net/tag/00RF)、
+[2.5.8](https://kerodon.net/tag/00S0)、[2.5.9](https://kerodon.net/tag/00SC)。
+配置は `InfinityCategories/DoldKanComparison/`。既存の dg 層と Core は編集しない。
+
+### 複体と単体的 Hom の模型
+
+可換環 R、`D : Type v`、`[DGCategory R D]` とし、H=Hom^•(x,y) と書く。
+HA の homological 次数を反転し、非負 chain 複体 L(H) を
+`L(H)₀=Z⁰H`、`L(H)ₖ=H^(−k)`（k>0）、微分は δ とする。
+次数1から0へは δ を閉元へ因子分解する。これは τ^{≤0}H の反転であり、
+次数0を H⁰ の項そのものにする切断ではない。H⁰ のコホモロジーへの商も取らない。
+
+DK(L(H)) の具体的模型には、標準単体の正規化 chain 複体から L(H) への chain map を使う。
+その成分は、非空 J={j₀<…<jₖ}⊆[n] ごとの `t_J∈H^(−k)` で、
+`δt_J=Σ_{r=0}^k (−1)^r t_{J\{j_r}}` を満たす（k=0 では閉元）。
+単調写像で単射な J は像の成分へ送り、潰れる正次数成分は零とする。
+Mathlib の `Abelian.DoldKan.Γ` と同一の定義だとは仮定せず、正規化・逆関手との
+自然同型は別途構成する。既存 DK の同値は `AlgebraicTopology/DoldKan/Equivalence.lean` にある。
+
+N4 の `LinearSimplex` の成分 f_J は、k=|J|−1 として
+`δf_J=(−1)^(k+1) Σ_r (−1)^r f_{J\{j_r}}` を満たす。
+したがって `ε_k=(−1)^(k(k−1)/2)`、`t_J=ε_k f_J` が上の DK 方程式へ移す。
+実際 `ε_k (−1)^(k+1)=ε_{k−1}`、`ε_k²=1`。k=0,1 では ε=1、k=2,3 では ε=−1。
+濃度を保つ像では同じ ε が現れ、非単射成分は零なので、変換は全ての面・退化と可換である。
+Hom の実装にはこの線形模型を再利用し、標準 chain map 模型との比較を明示する。
+`LinearSimplex` は係数環の宇宙 u に収まり、ClosedCategory の Hom の宇宙と一致する。
+coherent nerve と dg nerve の単体集合はともに `SSet.{max u v}` となる。
+
+### C_Δ の合成と局所 Kan 性
+
+対象は D の対象、通常の圏には `ClosedCategory R D`（閉次数零射の圏）を使う。
+単体的 Hom は DK(L(H))。次数0の単体と閉次数零射の同値を豊穣と通常の圏の比較に使う。
+`DGCategory` に任意の通常の `Category D` が既に付いているとは仮定しない。
+
+原典の lax monoidal 構造は Alexander–Whitney の対角写像による。
+後の射を g、前の射を f と書くと、成分での合成は
+
+```
+(g ⋆ f)_{j₀…jₖ} = Σ_{r=0}^k compose g_{j₀…jᵣ} f_{jᵣ…jₖ}.
+```
+
+AW の最初の因子が後の射、二番目が前の射である点を固定する。
+N4 の f 座標では各項に `(−1)^(r(k−r))` が付く。
+リポジトリの `eComp : Hom(x,y)⊗Hom(y,z) → Hom(x,z)` と通常順 compose の間の
+Koszul 交換も追跡し、AW の因子を符号なしに入れ替えない。
+chain map 性は Leibniz 則と隣接する切れ目の相殺、結合律は二つの切れ目での和の交換、
+単位則は正次数の単位成分が零であることによる。
+shuffle は正規化から積の正規化への逆向きの写像であり、AW と混同しない。
+AW∘shuffle=id と chain homotopy は比較に使うが、新しい引用・公理にはしない。
+
+N4 の線形模型との単体的な同型により、全ホーンの直接の線形充填を移して局所 Kan 性を得る。
+一般の「単体的アーベル群は Kan」を未証明の仮定としては使わない。
+その後 γ1 の instance を適用して `SimplicialNerve C_Δ` の quasicategory 性を得る。
+
+### 比較写像の向きと符号
+
+比較は HA Construction 1.3.1.16 と同じ向き
+`Θ : SimplicialNerve C_Δ ⟶ dgNerve R D` とする。
+逆向きの厳密な単体的射や全次数の同型は先に要求しない。
+Mathlib の Path は包含方向で、内部座標1は点を含む合成面、座標0は点を欠く削除面である。
+内部点の順序は降順に取る。I の内部点が m 個なら、その順序に対する立方体の基本 chain は
+全 m! 個の最大増大列を置換符号で足したものである。
+Θ の I 成分は、豊穣関手の Hom 写像でこの基本 chain を送った値とする。
+N4 座標を直接評価する実装では各 m 単体の評価に ε_m を掛ける。
+
+内部点 j より大きい内部点の個数を q とすると、基本 chain の境界の j 項は
+`(−1)^q (合成面 − 削除面)`。I の j より大きい点は末尾を含めて q+1 個なので、
+N0 の `(−1)^{#{k∈I:k>j}} (f_{I\{j}} − compose …)` と厳密に一致する。
+合成面の基本 chain は右区間、左区間の順の shuffle で表し、AW の因子の順と合わせる。
+退化では最大列の正規化 chain が潰れることを使って単体的自然性を示す。
+
+頂点では対象を保ち、辺では同じ閉零射を取る。2単体では唯一の一次元 Path Hom の像 h が
+`δh=compose f₁₂ f₀₁−f₀₂` を満たし、N1 の三角形のデータに一致する。
+ε₁=1 なのでここに追加の符号はない。高次では一般に全単体の同型にはならない。
+
+### 写像空間の比較と A3e への接続
+
+標的の右 pinched Hom は N4 により上の DK(L(H)) と同型になる。
+始域の右 pinched Hom については、coherent nerve の余単体的立方体模型 Q^• を使う。
+`Q^• → Δ^•` が誘導する `ψ : DK(L(H)) → Sing_Q DK(L(H))` と Θ の写像空間への作用を比較し、
+その合成を上の符号変換による同型に同定する。ψ が Kan 複体上でホモトピー同値となることを
+局所的に証明し、Θ の写像空間への作用のホモトピー同値を得る。
+始域の pinched Hom が単体的 Hom そのものと同型だとは仮定しない。
+
+Core の現行 `IsFullyFaithful` は各 pinched Hom の射に実際の単体的ホモトピー逆を要求する。
+弱同値や π₀ の全単射だけでこれを満たしたとは数えず、ホモトピー逆まで作って接続する。
+Θ は頂点上で恒等なので本質的全射性が得られる。
+A3e の主定理が届いた後、充満忠実性と本質的全射性から `QCatEquivalence` を構成する。
+それまでは写像空間の比較を成果の区切りとし、∞ 圏の同値を条件なしに主張しない。
+
+現在地：γ1.5a の設計記録を完了し、γ1.5b の小さい Hom の模型と Kan 性まで実装した。
+namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{u} R)` と
+`homSpace x y : SSet.{u}` は N4 の線形解を全ての単調写像に関してまとめたもの。
+`homSpaceLiftIso x y` は `SSet.uliftFunctor.{v,u}.obj (homSpace x y)` と
+`DGNerve.pinchedHom R D x y` の自然同型であり、次数ごとの同値だけではない。
+`homSpaceKan x y : SSet.KanComplex (homSpace x y)` は N4 の直接の線形充填から従う。
+宇宙の持ち上げが Kan 性を反映する一般補題 `kanComplex_of_ulift` も証明した。
+対象・集約ビルドは3473件で成功し、公開9宣言の型と公理監査は標準三公理のみ。
+
+γ1.5b 全体は未完了。残りは標準 chain map 模型・Mathlib Γ との自然同型、AW 豊穣合成と
+通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。
+この Hom の模型だけで C_Δ の構成や coherent nerve との同値を完成とは数えない。
