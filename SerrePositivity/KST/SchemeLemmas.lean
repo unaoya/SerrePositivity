@@ -139,3 +139,11 @@ public import SerrePositivity.KST.SchemeLemmas.PureTransformCongr
 public import SerrePositivity.KST.SchemeLemmas.TensorPureTransformBaseChange
 public import SerrePositivity.KST.SchemeLemmas.ChartLocalFlattening
 public import SerrePositivity.KST.SchemeLemmas.FiniteFlatLocalCenters
+public import SerrePositivity.KST.SchemeLemmas.PureTransformPullbacks
+public import SerrePositivity.KST.SchemeLemmas.PureTransformFlatSpec
+public import SerrePositivity.KST.SchemeLemmas.BasicOpenCoverLifts
+public import SerrePositivity.KST.SchemeLemmas.PureTransformOpenLocality
+public import SerrePositivity.KST.SchemeLemmas.BlowupPureTransformPullbacks
+public import SerrePositivity.KST.SchemeLemmas.PureTransformRestrictBase
+public import SerrePositivity.KST.SchemeLemmas.LocalFlatPureRefinement
+public import SerrePositivity.KST.SchemeLemmas.AffineBlowupNoetherian

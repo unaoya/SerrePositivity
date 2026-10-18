@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1141 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1160 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -103,7 +103,10 @@
 - 境界外の自由な有限被覆の分子中心・有限生成性・境界冪の所属・admissible 性と生成元チャートの被覆を構成・証明済み。
 - 分子チャートの境界外から自由化基本開への実際の環準同型を構成し、元の加群の基底変更が同チャートの境界外で自由になることを証明済み。
 - 線形同型・境界の等式による純変換の同型、二段のテンソル積の打ち消しによる純変換の同型と平坦性の移送を証明済み。
-- Noether 環上有限で境界外が平坦な加群に、最初の分子中心と有限生成元チャートごとの実際の局所平坦化中心が存在することを証明済み。これらを一つの大域中心にまとめる段階は残る。
+- Noether 環上有限で境界外が平坦な加群に、最初の分子中心と有限生成元チャートごとの実際の局所平坦化中心が存在することを証明済み。これらを一つの大域中心にまとめる具体的な適用は接続中。
+- 正則な境界を持つ全アフィン試験対象への純変換の引き戻し平坦性を定義し、Noether アフィンモデルでの証明・任意の前合成での保存・開被覆の局所性を証明済み。
+- チャート環を基礎環とした性質を元の基礎環へ戻す定理、通常 blowup のチャート平坦性との両方向の接続を証明済み。
+- 有限アフィン被覆上の admissible 中心と局所の引き戻し平坦性から、中心の補開集合が U に等しい大域中心と同じ性質を構成・証明済み。
 - 有限アフィン被覆上で実際の admissible 支配射が与えられれば、一つの大域 blowup からの支配射を構成できることを証明済み。零核の中心外開集合による重なりの一致を使う。
 - 次は一般の開埋め込みの blowup 比較射を構成し、一般 Noether 基底上の二段合成へアフィン結果を接続する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在はなお未証明。L7b 完了とはしない。
@@ -553,6 +556,14 @@ M は有限 A 加群とし、Noether なアフィンモデルで既に純変換�
 | `tensorPureTransform_flat_baseChange` | TensorPureTransformBaseChange | 検証済み | 元の加群の形での追加基底変更の安定性 |
 | `exists_chart_flattening_center` | ChartLocalFlattening | 検証済み | 自由な境界外を持つチャートの局所中心 |
 | `exists_noetherian_finite_local_flattening_centers` | FiniteFlatLocalCenters | 検証済み | 最初の中心と有限チャート族の実際の局所中心 |
+| `HasFlatPurePullbacks` | PureTransformPullbacks | 検証済み | 正則なアフィン試験対象での実際の平坦性 |
+| `hasFlatPurePullbacks_spec` | PureTransformFlatSpec | 検証済み | Noether アフィンモデルからの接続 |
+| `exists_basicOpen_cover_lifts` | BasicOpenCoverLifts | 検証済み | 開被覆に従属する基本開上の実際の射 |
+| `hasFlatPurePullbacks_of_openCover` | PureTransformOpenLocality | 検証済み | 開被覆に関する局所性 |
+| `HasFlatPurePullbacks.restrictBase` | PureTransformRestrictBase | 検証済み | 元の基礎環への表示変更 |
+| `hasFlatPurePullbacks_affineBlowup` / `HasFlatPurePullbacks.affineBlowup_charts` | BlowupPureTransformPullbacks | 検証済み | 通常 blowup のチャート平坦性との接続 |
+| `exists_admissible_flatPure_refinement` | LocalFlatPureRefinement | 検証済み | 局所中心の延長と有限共通細分 |
+| `affineBlowup_isNoetherian` | AffineBlowupNoetherian | 検証済み | アフィン blowup の Noether 性 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |
