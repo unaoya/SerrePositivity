@@ -1399,5 +1399,64 @@ noncomputable def leftUnstraighteningFiberPinchedIso {C : SSet.{u + 1}}
     vertexFiber (leftUnstraighteningProjection F) c ≅
       pinchedHomLeft pointSpaceVertex (F.app (Opposite.op ⦋0⦌) c)
 
+noncomputable def pathBeforeLast {n : ℕ} {i : Fin (n + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) : Finset (Fin (n + 1))
+
+lemma pathBeforeLast_nonempty {n : ℕ} {i : Fin (n + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) : (pathBeforeLast P).Nonempty
+
+noncomputable def pathLastMaximum {n : ℕ} {i : Fin (n + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) : Fin (n + 1)
+
+lemma pathLastMaximum_mem {n : ℕ} {i : Fin (n + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) : ULift.up (pathLastMaximum P).castSucc ∈ P.I
+
+lemma le_pathLastMaximum {n : ℕ} {i : Fin (n + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) (j : Fin (n + 1))
+    (hj : ULift.up j.castSucc ∈ P.I) : j ≤ pathLastMaximum P
+
+lemma pathLastMaximum_mono {n : ℕ} {i : Fin (n + 1)}
+    {P Q : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))} (h : P.I ⊆ Q.I) :
+    pathLastMaximum P ≤ pathLastMaximum Q
+
+lemma pathLastMaximum_comp {n : ℕ} {i j : Fin (n + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2))) (ULift.up j.castSucc))
+    (Q : Path (ULift.up j.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) :
+    pathLastMaximum (@CategoryStruct.comp (SimplicialThickening (ULift.{u} (Fin (n + 2))))
+      _ ⟨ULift.up i.castSucc⟩ ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ P Q) =
+        pathLastMaximum Q
+
+noncomputable def pathLastMaximumFunctor {n : ℕ} (i : Fin (n + 1)) :
+    Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1))) ⥤ ULift.{u} (Fin (n + 1))
+
+noncomputable def pathLastMaximumMap {n : ℕ} (i : Fin (n + 1)) :
+    nerve (Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) ⟶ (Δ[n] : SSet.{u})
+
+def pathLastReindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) {i : Fin (m + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (m + 2)))
+      (ULift.up (Fin.last (m + 1)))) :
+    Path (ULift.up (α.toOrderHom i).castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))
+
+lemma pathLastMaximum_reindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) {i : Fin (m + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (m + 2)))
+      (ULift.up (Fin.last (m + 1)))) :
+    pathLastMaximum (pathLastReindex α P) = α.toOrderHom (pathLastMaximum P)
+
+lemma pathLastMaximumMap_apply {n : ℕ} (i : Fin (n + 1))
+    {d : SimplexCategoryᵒᵖ}
+    (F : (nerve (Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1))))).obj d) (k : Fin (d.unop.len + 1)) :
+    ((pathLastMaximumMap i).app d F).down.toOrderHom k = pathLastMaximum (F.obj k)
+
 end SerrePositivity.InfinityCategories
 ```

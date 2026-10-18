@@ -65,3 +65,4 @@ public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
 public import SerrePositivity.InfinityCategories.F1.CosliceFiberCoordinates
 public import SerrePositivity.InfinityCategories.F1.PinchedLeftCoordinates
 public import SerrePositivity.InfinityCategories.F1.CoslicePinchedLeft
+public import SerrePositivity.InfinityCategories.F1.CoherentPathMaximum

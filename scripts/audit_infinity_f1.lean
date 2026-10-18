@@ -343,3 +343,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pinchedLeftCosliceFiberIso
 #check @SerrePositivity.InfinityCategories.pointedSpaceFiberPinchedIso
 #check @SerrePositivity.InfinityCategories.leftUnstraighteningFiberPinchedIso
+#check @SerrePositivity.InfinityCategories.pathBeforeLast
+#check @SerrePositivity.InfinityCategories.pathBeforeLast_nonempty
+#check @SerrePositivity.InfinityCategories.pathLastMaximum
+#check @SerrePositivity.InfinityCategories.pathLastMaximum_mem
+#check @SerrePositivity.InfinityCategories.le_pathLastMaximum
+#check @SerrePositivity.InfinityCategories.pathLastMaximum_mono
+#check @SerrePositivity.InfinityCategories.pathLastMaximum_comp
+#check @SerrePositivity.InfinityCategories.pathLastMaximumFunctor
+#check @SerrePositivity.InfinityCategories.pathLastMaximumMap
+#check @SerrePositivity.InfinityCategories.pathLastReindex
+#check @SerrePositivity.InfinityCategories.pathLastMaximum_reindex
+#check @SerrePositivity.InfinityCategories.pathLastMaximumMap_apply
