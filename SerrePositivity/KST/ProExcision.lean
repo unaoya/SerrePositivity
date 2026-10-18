@@ -89,3 +89,5 @@ public import SerrePositivity.KST.ProExcision.EquivariantStrictification
 public import SerrePositivity.KST.ProExcision.NormalizedStrictification
 public import SerrePositivity.KST.ProExcision.GroupProductData
 public import SerrePositivity.KST.ProExcision.ConjugationEquivariance
+public import SerrePositivity.KST.ProExcision.IntegerTensorBifunctor
+public import SerrePositivity.KST.ProExcision.ChainTensorVanishing

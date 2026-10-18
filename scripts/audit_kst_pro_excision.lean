@@ -1464,3 +1464,57 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.conjugationEquivariantCylinderMap
 #print axioms SerrePositivity.KST.ProExcision.conjugationEquivariantCylinderMap
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_comp
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_comp
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_id
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_id
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_add_left
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_add_left
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_add_right
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_add_right
+
+#check @SerrePositivity.KST.ProExcision.integerTensorRight
+#print axioms SerrePositivity.KST.ProExcision.integerTensorRight
+
+#check @SerrePositivity.KST.ProExcision.integerTensorRight_additive
+#print axioms SerrePositivity.KST.ProExcision.integerTensorRight_additive
+
+#check @SerrePositivity.KST.ProExcision.integerTensorBifunctor
+#print axioms SerrePositivity.KST.ProExcision.integerTensorBifunctor
+
+#check @SerrePositivity.KST.ProExcision.integerTensorBifunctor_additive
+#print axioms SerrePositivity.KST.ProExcision.integerTensorBifunctor_additive
+
+#check @SerrePositivity.KST.ProExcision.integerTensorBifunctor_obj_additive
+#print axioms SerrePositivity.KST.ProExcision.integerTensorBifunctor_obj_additive
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensor_hasTotal
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensor_hasTotal
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensor
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensor
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMap
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMap
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMap_eq_zero_low
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMap_eq_zero_low
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMap_sub_left
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMap_sub_left
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMap_sub_right
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMap_sub_right
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMap_augmentation_expansion
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMap_augmentation_expansion
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMap_augmentation_eq_low
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMap_augmentation_eq_low
+
+#check @SerrePositivity.KST.ProExcision.normalizedStrictifiedTensor_eq_low
+#print axioms SerrePositivity.KST.ProExcision.normalizedStrictifiedTensor_eq_low

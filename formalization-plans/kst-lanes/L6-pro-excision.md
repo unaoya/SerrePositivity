@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと539宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと557宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -70,6 +70,7 @@
 - 正規化：`normalizedMap_component_eq` で低次数の一致を Moore 複体へ移送。`normalizedStrictificationHomotopy` は包含と PInfty 射影による実鎖ホモトピー。正規化した二つの差の低次数消滅まで検証。
 - μ 版の入力：`GroupProductData`、`EquivariantGroupProductData`、`ConstructionA5Input` は採用済みの因子内入力と全データの外部作用を明示。φ、φ′、φ·φ′ を実群準同型として構成し、両因子の像の可換性と G 同変性を証明。入力の厳密化との接続も検証。A.5 の結論のホモトピーは入力に含めない。
 - Construction A.6 の外部作用：`conjugationLinearizedHomotopy_equivariant` は u を固定する作用について実区間写像の同変性を証明。`conjugationEquivariantCylinderMap` は作用 bar の持ち上げへ直接渡せる界面。
+- 正規化の全テンソル：`integerTensorBifunctor` を任意の加群宇宙で構成。`chainIntegerTensorMap_eq_zero_low` と `normalizedStrictifiedTensor_eq_low` により、実際の ℕ 次数の正規化全テンソルで m+m′+1 以下の差の消滅と補正和の一致を検証。既存の整数次数 cochain での評価だけに依存しない。
 - L6c の残作業：採用済み μ 版 A.5 の同変性、正規化、AW・shuffle 比較。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
@@ -111,6 +112,9 @@
 | ConstructionA5Input | GroupProductData.lean | 検証済み | μ と因子内ホモトピーの採用済み入力の型、結論の仮定を含まない |
 | GroupProductData.product_apply | GroupProductData.lean | 検証済み | μ(α,β) と φ·φ′ の同定 |
 | conjugationEquivariantCylinderMap | ConjugationEquivariance.lean | 検証済み | 固定元の共役ホモトピーの実同変界面 |
+| integerTensorBifunctor | IntegerTensorBifunctor.lean | 検証済み | 加群の任意の宇宙での加法的整数テンソル双関手 |
+| chainIntegerTensorMap_eq_zero_low | ChainTensorVanishing.lean | 検証済み | ℕ 次数の全テンソルでの m+m′+1 以下の消滅 |
+| normalizedStrictifiedTensor_eq_low | ChainTensorVanishing.lean | 検証済み | 正規化した因子内の厳密化から得る実補正式 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
 | obstructionHalfTurnBoundingChain_boundary | CommutingImageObstruction.lean | 検証済み | [r²]−[1] の明示的な一次の境界 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |
