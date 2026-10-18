@@ -54,4 +54,6 @@ public import SerrePositivity.KST.SConstruction.SOneComparison
 
 public import SerrePositivity.KST.SConstruction.MultiSOneComparison
 
+public import SerrePositivity.KST.SConstruction.MultiIntervalNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -2594,3 +2594,132 @@ lemma oneDirectionRealizationComparisonNat_app (r : ℕ) (X : StableModel.{u}) :
 任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2957 jobs）、公理監査成功（850 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.21 反復の一次方向の区間と全零境界商への降下
+
+外側を一次に固定した r+1 重反復の実現 A_r(X) に対し、
+`multiDiagonalAssembly r X : Δ[1] ⊗ A_r(X) → diag(core S^(r+1) X)` を構成した。
+n 単体 (α,x) を、先頭に αᵒᵖ、残りに恒等射を配置した多単体添字の射で写す。
+添字の可換式から単体写像であることを証明し、入力についての厳密な自然性も得た。
+一般の多単体図式 M に対する `coordinateDiagonalAssembly` で証明してから反復 core S を代入する。
+
+区間の定値単体の像は第零方向を零に固定する自己射で固定されるため、第零方向の零境界に属する。
+区間境界の任意の高次単体が定値である既存の計算と合わせ、
+区間両端の全体 `∂Δ[1] ⊗ A_r(X)` の像が全零境界に入ることを示した。
+その境界への持ち上げと cofiber の関係式から、区間両端を一つの基点に潰した商の点つき射
+`multiIntervalBoundaryComparison` を全零境界商へ構成し、入力について自然変換にまとめた。
+
+源はまだ未点化 A_r(X) の両端商である。残りの r 方向の零境界の円筒全体を潰す工程、
+L9 の円の smash との同一視、前節の一次方向を消す比較を点つき商へ移す工程が残る。
+反復間の完成した suspension 構造写像や delooping としては数えない。
+Core・Stable・F1・HA・Spectra の所有ファイルや公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u`、
+`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下で記す。`StableModel` の構造以外の追加前提はない。
+
+**MultiDiagonalAssembly.lean**
+
+```lean
+def oneDirectionAssemblyIndex (r : ℕ) (d : SimplexCategoryᵒᵖ) (α : d.unop ⟶ ⦋1⦌) :
+    (oneDirectionIndex r).obj ((multiIndexDiagonal r).obj d) ⟶
+      (multiIndexDiagonal (r + 1)).obj d
+
+lemma oneDirectionAssemblyIndex_naturality (r : ℕ) {d e : SimplexCategoryᵒᵖ}
+    (f : d ⟶ e) (α : d.unop ⟶ ⦋1⦌) :
+    oneDirectionAssemblyIndex r d α ≫ (multiIndexDiagonal (r + 1)).map f =
+      (oneDirectionIndex r).map ((multiIndexDiagonal r).map f) ≫
+        oneDirectionAssemblyIndex r e (f.unop ≫ α)
+
+def coordinateDiagonalAssembly (r : ℕ)
+    (M : (Fin (r + 1) → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    (Δ[1] : SSet.{u}) ⊗
+      simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ oneDirectionIndex r ⋙ M) ⟶
+      simplicialDiagonalFunctor.obj (multiIndexDiagonal (r + 1) ⋙ M)
+
+def multiDiagonalAssembly (r : ℕ) (X : StableModel.{u}) :
+    (Δ[1] : SSet.{u}) ⊗ (oneDirectionRealizationFunctor r).obj X ⟶
+      multiDiagonalCoreSConstruction (r + 1) X
+
+lemma coordinateDiagonalAssembly_naturality (r : ℕ)
+    {M N : (Fin (r + 1) → SimplexCategoryᵒᵖ) ⥤ SSet.{u}} (f : M ⟶ N) :
+    ((Δ[1] : SSet.{u}) ◁ simplicialDiagonalFunctor.map
+      (Functor.whiskerLeft (multiIndexDiagonal r) (Functor.whiskerLeft (oneDirectionIndex r) f))) ≫
+        coordinateDiagonalAssembly r N =
+      coordinateDiagonalAssembly r M ≫ simplicialDiagonalFunctor.map
+        (Functor.whiskerLeft (multiIndexDiagonal (r + 1)) f)
+
+lemma multiDiagonalAssembly_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    ((Δ[1] : SSet.{u}) ◁ (oneDirectionRealizationFunctor r).map f) ≫
+        multiDiagonalAssembly r Y =
+      multiDiagonalAssembly r X ≫ (multiRealizationFunctor (r + 1)).map f
+
+lemma oneDirectionAssemblyIndex_constant_fixed (r : ℕ) (d : SimplexCategoryᵒᵖ) (i : Fin 2) :
+    oneDirectionAssemblyIndex r d (SimplexCategory.const d.unop ⦋1⦌ i) ≫
+        zeroDirectionsIndexEndomorphism {(0 : Fin (r + 1))} (fun _ => d) =
+      oneDirectionAssemblyIndex r d (SimplexCategory.const d.unop ⦋1⦌ i)
+```
+
+**MultiAssemblyBoundary.lean**
+
+```lean
+lemma multiDiagonalAssembly_constant_mem (r : ℕ) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (i : Fin 2)
+    (x : ((oneDirectionRealizationFunctor r).obj X).obj d) :
+    ((multiCoreSConstruction (r + 1) X).map
+      (oneDirectionAssemblyIndex r d (SimplexCategory.const d.unop ⦋1⦌ i))).app d x ∈
+        (zeroDirectionsRange {(0 : Fin (r + 1))} X).obj d
+
+lemma multiDiagonalAssembly_boundary_mem (r : ℕ) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ)
+    (z : ((boundary 1).toSSet ⊗ (oneDirectionRealizationFunctor r).obj X).obj d) :
+    (multiDiagonalAssembly r X).app d
+      (((boundary 1).ι ▷ (oneDirectionRealizationFunctor r).obj X).app d z) ∈
+        (zeroDirectionsFatBoundary (r + 1) X).obj d
+
+def multiAssemblyBoundaryLift (r : ℕ) (X : StableModel.{u}) :
+    (boundary 1).toSSet ⊗ (oneDirectionRealizationFunctor r).obj X ⟶
+      (zeroDirectionsFatBoundary (r + 1) X : SSet.{u})
+
+lemma multiAssemblyBoundaryLift_ι (r : ℕ) (X : StableModel.{u}) :
+    multiAssemblyBoundaryLift r X ≫ (zeroDirectionsFatBoundary (r + 1) X).ι =
+      ((boundary 1).ι ▷ (oneDirectionRealizationFunctor r).obj X) ≫
+        multiDiagonalAssembly r X
+
+lemma multiDiagonalAssembly_boundary_condition (r : ℕ) (X : StableModel.{u}) :
+    ((boundary 1).ι ▷ (oneDirectionRealizationFunctor r).obj X) ≫
+        multiDiagonalAssembly r X ≫ boundaryReductionQuotient r X =
+      toUnit ((boundary 1).toSSet ⊗ (oneDirectionRealizationFunctor r).obj X) ≫
+        (boundaryReducedRealization r X).hom
+
+def multiIntervalBoundaryComparison (r : ℕ) (X : StableModel.{u}) :
+    PointedObject.cofiber ((boundary 1).ι ▷ (oneDirectionRealizationFunctor r).obj X) ⟶
+      boundaryReducedRealization r X
+
+lemma multiIntervalBoundaryComparison_quotient (r : ℕ) (X : StableModel.{u}) :
+    PointedObject.cofiberQuotient ((boundary 1).ι ▷ (oneDirectionRealizationFunctor r).obj X) ≫
+      (multiIntervalBoundaryComparison r X).right =
+        multiDiagonalAssembly r X ≫ boundaryReductionQuotient r X
+```
+
+**MultiIntervalNaturality.lean**
+
+```lean
+def intervalBoundaryQuotientFunctor : SSet.{u} ⥤ PointedSimplicialSet.{u}
+
+def multiIntervalBoundaryFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+lemma multiIntervalBoundaryComparison_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    (multiIntervalBoundaryFunctor r).map f ≫ multiIntervalBoundaryComparison r Y =
+      multiIntervalBoundaryComparison r X ≫ (boundaryReducedRealizationFunctor r).map f
+
+def multiIntervalBoundaryComparisonNat (r : ℕ) :
+    multiIntervalBoundaryFunctor r ⟶ boundaryReducedRealizationFunctor r
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。一次方向の区間から全反復の対角への自然な写像と、両端商から全零境界商への自然な点つき比較は証明済み。
+残りの零方向の境界の処理、反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2960 jobs）、公理監査成功（868 宣言、標準三公理のみ）。追加公理・sorry なし。

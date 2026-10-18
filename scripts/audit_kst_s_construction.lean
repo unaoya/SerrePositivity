@@ -2376,3 +2376,57 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.oneDirectionRealizationComparisonNat_app
 #print axioms SerrePositivity.KST.SConstruction.oneDirectionRealizationComparisonNat_app
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyIndex
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyIndex
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyIndex_naturality
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyIndex_naturality
+
+#check @SerrePositivity.KST.SConstruction.coordinateDiagonalAssembly
+#print axioms SerrePositivity.KST.SConstruction.coordinateDiagonalAssembly
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalAssembly
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalAssembly
+
+#check @SerrePositivity.KST.SConstruction.coordinateDiagonalAssembly_naturality
+#print axioms SerrePositivity.KST.SConstruction.coordinateDiagonalAssembly_naturality
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalAssembly_naturality
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalAssembly_naturality
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyIndex_constant_fixed
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyIndex_constant_fixed
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalAssembly_constant_mem
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalAssembly_constant_mem
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalAssembly_boundary_mem
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalAssembly_boundary_mem
+
+#check @SerrePositivity.KST.SConstruction.multiAssemblyBoundaryLift
+#print axioms SerrePositivity.KST.SConstruction.multiAssemblyBoundaryLift
+
+#check @SerrePositivity.KST.SConstruction.multiAssemblyBoundaryLift_ι
+#print axioms SerrePositivity.KST.SConstruction.multiAssemblyBoundaryLift_ι
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalAssembly_boundary_condition
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalAssembly_boundary_condition
+
+#check @SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparison
+#print axioms SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparison
+
+#check @SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparison_quotient
+#print axioms SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparison_quotient
+
+#check @SerrePositivity.KST.SConstruction.intervalBoundaryQuotientFunctor
+#print axioms SerrePositivity.KST.SConstruction.intervalBoundaryQuotientFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiIntervalBoundaryFunctor
+#print axioms SerrePositivity.KST.SConstruction.multiIntervalBoundaryFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparisonNat
