@@ -35,8 +35,9 @@ variable {A : Type u} [CommRing A]
 規約：残りのブロックの総和は右括弧に含める。
 使われ方：二つの先頭ブロックの連結の終域を比較する。 -/
 lemma tensorFamily_sum_two (n : ℕ) (s : Fin (n + 2) → ℕ) :
-    (∑ i, s i) = s 0 + (s (0 : Fin (n + 1)).succ + ∑ i : Fin n, s i.succ.succ) := by
+    (∑ i, s i) = s 0 + (s 1 + ∑ i : Fin n, s i.succ.succ) := by
   rw [Fin.sum_univ_succ, Fin.sum_univ_succ]
+  rfl
 
 /-- 概要：二つの先頭ブロックの連結を展開する（Berger–Moerdijk §1）。
 方針：有限族の連結を二回展開し、総和の移送を連結の自然性で整理する。
@@ -46,16 +47,17 @@ lemma tensorFamily_sum_two (n : ℕ) (s : Fin (n + 2) → ℕ) :
 lemma tensorPowerFamilyIso_two (K : Complex A) (n : ℕ) (s : Fin (n + 2) → ℕ) :
     (tensorPowerFamilyIso K (n + 2) s).hom ≫
         eqToHom (congrArg (power K) (tensorFamily_sum_two n s)) =
-      (power K (s 0) ◁ (power K (s (0 : Fin (n + 1)).succ) ◁
+      (power K (s 0) ◁ (power K (s 1) ◁
         (tensorPowerFamilyIso K n (fun i => s i.succ.succ)).hom)) ≫
         (power K (s 0) ◁
-          (appendIso K (s (0 : Fin (n + 1)).succ) (∑ i : Fin n, s i.succ.succ)).hom) ≫
-        (appendIso K (s 0) (s (0 : Fin (n + 1)).succ + ∑ i : Fin n, s i.succ.succ)).hom := by
+          (appendIso K (s 1) (∑ i : Fin n, s i.succ.succ)).hom) ≫
+        (appendIso K (s 0) (s 1 + ∑ i : Fin n, s i.succ.succ)).hom := by
   simp only [tensorPowerFamilyIso, Iso.trans_hom, whiskerLeftIso_hom, eqToIso.hom,
     whiskerLeft_comp, Category.assoc]
   rw [appendIso_index_right_assoc K (s 0)
     (Fin.sum_univ_succ (fun i : Fin (n + 1) => s i.succ)).symm]
   simp only [eqToHom_trans, eqToHom_refl, Category.comp_id]
+  rfl
 
 /-- 概要：先頭交換後の総和を交換した二つと残りに分ける（Berger–Moerdijk §1）。
 方針：総和の先頭二つの分離と隣接交換の入力位置の計算を使う。
@@ -65,9 +67,6 @@ lemma tensorFamily_sum_firstSwap (n : ℕ) (s : Fin (n + 2) → ℕ) :
     (∑ i, s (adjacentTransposition (0 : Fin (n + 1)) i)) =
       s 1 + (s 0 + ∑ i : Fin n, s i.succ.succ) := by
   rw [tensorFamily_sum_two]
-  change s (adjacentTransposition (0 : Fin (n + 1)) 0) +
-    (s (adjacentTransposition (0 : Fin (n + 1)) 1) +
-      ∑ i : Fin n, s (adjacentTransposition (0 : Fin (n + 1)) i.succ.succ)) = _
   simp only [adjacentFirst_zero, adjacentFirst_one, adjacentFirst_tail]
 
 /-- 概要：等しい添字族の連結は同じ対象への移送後に一致する（Berger–Moerdijk §1）。

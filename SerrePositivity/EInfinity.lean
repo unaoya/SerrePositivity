@@ -18,3 +18,4 @@ public import SerrePositivity.EInfinity.Operad.TensorFamilyAdjacentTail
 public import SerrePositivity.EInfinity.Operad.BinaryEquivariance
 public import SerrePositivity.EInfinity.Operad.TensorPowerBlockSwap
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerHeads
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerAdjacent
