@@ -4409,3 +4409,399 @@ SerrePositivity.InfinityCategories.pastingLeftAttachmentCone_ι.{u_1} : Eq.{u_1 
       SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
         (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 0)
 ```
+
+
+## S4：join・slice・極限錐の反転
+
+対象 `ConeOpposite` と集約 `Stable` のビルドは成功（2044 jobs）。
+全宣言監査は 100 モジュール・1056 宣言で標準三公理のみ。
+join の反転同型、空次数を含む自然性、因子の射と左右の包含との両立を構成した。
+slice の反転は反転した図式の coslice に単体集合として同型であり、頂点射影とも厳密に可換。
+任意の錐 c に反転した余錐 reverseCocone を作り、
+IsLimitCone c iff IsColimitCone c.reverseCocone を値域の追加仮定なしに証明した。
+反転した余錐の頂点は opObjEquiv による元の頂点の反転に一致する。
+標準四角形の span／cospan の反転の照合と、長方形の面の反転への接続は未完了。
+従って引き戻しの貼り合わせ、三角構造・S5〜S7 は未完了。
+
+```lean
+@SerrePositivity.InfinityCategories.stableReverseOrderHom : {m n : ℕ} →
+  OrderHom.{0, 0} (Fin m) (Fin n) → OrderHom.{0, 0} (Fin m) (Fin n)
+SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} : (K : SSet.{u_1}) →
+  (r : ℕ) →
+    Equiv.{u_1 + 1, u_1 + 1} (SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SSet.op.{u_1} K) r)
+      (SerrePositivity.InfinityCategories.Join.augObj.{u_1} K r)
+SerrePositivity.InfinityCategories.stableAugOpEquiv_naturality.{u_1} : ∀ (K : SSet.{u_1}) {m n : ℕ}
+  (α : OrderHom.{0, 0} (Fin m) (Fin n)) (x : SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SSet.op.{u_1} K) n),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} K m)
+      (SerrePositivity.InfinityCategories.Join.augMap.{u_1} (SSet.op.{u_1} K) α x))
+    (SerrePositivity.InfinityCategories.Join.augMap.{u_1} K (SerrePositivity.InfinityCategories.stableReverseOrderHom α)
+      ((SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} K n) x))
+@SerrePositivity.InfinityCategories.stablePullCut_reverse : ∀ {m n : ℕ} (α : OrderHom.{0, 0} (Fin m) (Fin n)) (a : ℕ),
+  LE.le.{0} a n →
+    Eq.{1}
+      (SerrePositivity.InfinityCategories.Join.pullCut (SerrePositivity.InfinityCategories.stableReverseOrderHom α) a)
+      (HSub.hSub.{0, 0, 0} m (SerrePositivity.InfinityCategories.Join.pullCut α (HSub.hSub.{0, 0, 0} n a)))
+SerrePositivity.InfinityCategories.stableComplementCutEquiv : (r : ℕ) →
+  Equiv.{1, 1} (Fin (HAdd.hAdd.{0, 0, 0} r 1)) (Fin (HAdd.hAdd.{0, 0, 0} r 1))
+SerrePositivity.InfinityCategories.stableAugJoinReverseFiberEquiv.{u_1} : (K L : SSet.{u_1}) →
+  (r : ℕ) →
+    (a : Fin (HAdd.hAdd.{0, 0, 0} r 1)) →
+      Equiv.{u_1 + 1, u_1 + 1}
+        (Prod.{u_1, u_1} (SerrePositivity.InfinityCategories.Join.augObj.{u_1} K ↑a)
+          (SerrePositivity.InfinityCategories.Join.augObj.{u_1} L (HSub.hSub.{0, 0, 0} r ↑a)))
+        (Prod.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SSet.op.{u_1} L)
+            ↑((SerrePositivity.InfinityCategories.stableComplementCutEquiv r) a))
+          (SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SSet.op.{u_1} K)
+            (HSub.hSub.{0, 0, 0} r ↑((SerrePositivity.InfinityCategories.stableComplementCutEquiv r) a))))
+SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv.{u_1} : (K L : SSet.{u_1}) →
+  (r : ℕ) →
+    Equiv.{u_1 + 1, u_1 + 1} (SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L r)
+      (SerrePositivity.InfinityCategories.StableAugJoin.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K) r)
+SerrePositivity.InfinityCategories.stableAugJoinReversePair_cut.{u_1} : ∀ (K L : SSet.{u_1}) (r : ℕ)
+  (s : SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L r),
+  Eq.{1} (↑(Sigma.fst.{0, u_1} ((SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv.{u_1} K L r) s)))
+    (HSub.hSub.{0, 0, 0} r ↑(Sigma.fst.{0, u_1} s))
+SerrePositivity.InfinityCategories.stableAugJoinReversePair_left.{u_1} : ∀ (K L : SSet.{u_1}) (r : ℕ)
+  (s : SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L r),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} L (HSub.hSub.{0, 0, 0} r ↑(Sigma.fst.{0, u_1} s)))
+      (Sigma.snd.{0, u_1} ((SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv.{u_1} K L r) s)).1)
+    (Sigma.snd.{0, u_1} s).2
+SerrePositivity.InfinityCategories.stableAugJoinReversePair_right.{u_1} : ∀ (K L : SSet.{u_1}) (r : ℕ)
+  (s : SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L r),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} K
+        (HSub.hSub.{0, 0, 0} r (HSub.hSub.{0, 0, 0} r ↑(Sigma.fst.{0, u_1} s))))
+      (Sigma.snd.{0, u_1} ((SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv.{u_1} K L r) s)).2)
+    (cast.{u_1 + 1} ⋯ (Sigma.snd.{0, u_1} s).1)
+SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv.{u_1} : (K L : SSet.{u_1}) →
+  (r : ℕ) →
+    Equiv.{u_1 + 1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+        (SSet.op.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L)) r)
+      (SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+        (SerrePositivity.InfinityCategories.join.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K)) r)
+@SerrePositivity.InfinityCategories.stableReverseRightMap_val : ∀ {m n : ℕ} (α : OrderHom.{0, 0} (Fin m) (Fin n))
+  (a : ℕ),
+  LE.le.{0} a n →
+    ∀
+      (i :
+        Fin
+          (HSub.hSub.{0, 0, 0} m
+            (SerrePositivity.InfinityCategories.Join.pullCut
+              (SerrePositivity.InfinityCategories.stableReverseOrderHom α) a)))
+      (j : Fin (SerrePositivity.InfinityCategories.Join.pullCut α (HSub.hSub.{0, 0, 0} n a))),
+      Eq.{1} ↑i ↑j →
+        Eq.{1}
+          ↑((SerrePositivity.InfinityCategories.Join.rightMap
+                (SerrePositivity.InfinityCategories.stableReverseOrderHom α) a)
+              i)
+          ↑((SerrePositivity.InfinityCategories.stableReverseOrderHom
+                (SerrePositivity.InfinityCategories.Join.leftMap α (HSub.hSub.{0, 0, 0} n a)))
+              j)
+@SerrePositivity.InfinityCategories.stableReverseLeftMap_val : ∀ {m n : ℕ} (α : OrderHom.{0, 0} (Fin m) (Fin n))
+  (a : ℕ),
+  LE.le.{0} a n →
+    ∀
+      (i :
+        Fin
+          (SerrePositivity.InfinityCategories.Join.pullCut (SerrePositivity.InfinityCategories.stableReverseOrderHom α)
+            a))
+      (j : Fin (HSub.hSub.{0, 0, 0} m (SerrePositivity.InfinityCategories.Join.pullCut α (HSub.hSub.{0, 0, 0} n a)))),
+      Eq.{1} ↑i ↑j →
+        Eq.{1}
+          ↑((SerrePositivity.InfinityCategories.Join.leftMap
+                (SerrePositivity.InfinityCategories.stableReverseOrderHom α) a)
+              i)
+          ↑((SerrePositivity.InfinityCategories.stableReverseOrderHom
+                (SerrePositivity.InfinityCategories.Join.rightMap α (HSub.hSub.{0, 0, 0} n a)))
+              j)
+SerrePositivity.InfinityCategories.stableAugOpEquiv_heq.{u_1} : ∀ (K : SSet.{u_1}) {r r' : ℕ},
+  Eq.{1} r r' →
+    ∀ (x : SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SSet.op.{u_1} K) r)
+      (y : SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SSet.op.{u_1} K) r'),
+      HEq.{u_1 + 1} ((SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} K r) x)
+          ((SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} K r') y) →
+        HEq.{u_1 + 1} x y
+SerrePositivity.InfinityCategories.stableAugJoinReversePair_naturality.{u_1} : ∀ (K L : SSet.{u_1}) {m n : ℕ}
+  (α : OrderHom.{0, 0} (Fin m) (Fin n)) (s : SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L n),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv.{u_1} K L m)
+      (SerrePositivity.InfinityCategories.stableAugJoinMap.{u_1} K L
+        (SerrePositivity.InfinityCategories.stableReverseOrderHom α) s))
+    (SerrePositivity.InfinityCategories.stableAugJoinMap.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K) α
+      ((SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv.{u_1} K L n) s))
+SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv_naturality.{u_1} : ∀ (K L : SSet.{u_1}) {m n : ℕ}
+  (α : OrderHom.{0, 0} (Fin m) (Fin n))
+  (s :
+    SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+      (SSet.op.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L)) n),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv.{u_1} K L m)
+      (SerrePositivity.InfinityCategories.Join.augMap.{u_1}
+        (SSet.op.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L)) α s))
+    (SerrePositivity.InfinityCategories.Join.augMap.{u_1}
+      (SerrePositivity.InfinityCategories.join.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K)) α
+      ((SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv.{u_1} K L n) s))
+SerrePositivity.InfinityCategories.stableJoinReverseHom.{u_1} : (K L : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1} (SSet.op.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L))
+    (SerrePositivity.InfinityCategories.join.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K))
+SerrePositivity.InfinityCategories.stableJoinReverseHom_isIso.{u_1} : ∀ (K L : SSet.{u_1}),
+  CategoryTheory.IsIso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseHom.{u_1} K L)
+SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} : (K L : SSet.{u_1}) →
+  CategoryTheory.Iso.{u_1, u_1 + 1} (SSet.op.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L))
+    (SerrePositivity.InfinityCategories.join.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K))
+@SerrePositivity.InfinityCategories.stableAugOpEquiv_hom.{u_1} : ∀ {K L : SSet.{u_1}}
+  (f : Quiver.Hom.{u_1, u_1 + 1} K L) (r : ℕ)
+  (x : SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SSet.op.{u_1} K) r),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} L r)
+      (SerrePositivity.InfinityCategories.Join.augHom.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} f) r x))
+    (SerrePositivity.InfinityCategories.Join.augHom.{u_1} f r
+      ((SerrePositivity.InfinityCategories.stableAugOpEquiv.{u_1} K r) x))
+@SerrePositivity.InfinityCategories.stableAugJoinReversePair_hom.{u_1} : ∀ {K K' L L' : SSet.{u_1}}
+  (f : Quiver.Hom.{u_1, u_1 + 1} K K') (g : Quiver.Hom.{u_1, u_1 + 1} L L') (r : ℕ)
+  (s : SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L r),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv.{u_1} K' L' r)
+      (SerrePositivity.InfinityCategories.stableAugJoinHom.{u_1} f g r s))
+    (SerrePositivity.InfinityCategories.stableAugJoinHom.{u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} g)
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} f) r
+      ((SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv.{u_1} K L r) s))
+@SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv_hom.{u_1} : ∀ {K K' L L' : SSet.{u_1}}
+  (f : Quiver.Hom.{u_1, u_1 + 1} K K') (g : Quiver.Hom.{u_1, u_1 + 1} L L') (r : ℕ)
+  (s :
+    SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+      (SSet.op.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L)) r),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv.{u_1} K' L' r)
+      (SerrePositivity.InfinityCategories.Join.augHom.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+          (SerrePositivity.InfinityCategories.joinMap.{u_1} f g))
+        r s))
+    (SerrePositivity.InfinityCategories.Join.augHom.{u_1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} g)
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} f))
+      r ((SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv.{u_1} K L r) s))
+@SerrePositivity.InfinityCategories.stableJoinReverse_naturality.{u_1} : ∀ {K K' L L' : SSet.{u_1}}
+  (f : Quiver.Hom.{u_1, u_1 + 1} K K') (g : Quiver.Hom.{u_1, u_1 + 1} L L'),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+        (SerrePositivity.InfinityCategories.joinMap.{u_1} f g))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} K' L')))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} K L))
+      (SerrePositivity.InfinityCategories.joinMap.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} g)
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} f)))
+SerrePositivity.InfinityCategories.stableJoinReverse_inl.{u_1} : ∀ (K L : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+        (SerrePositivity.InfinityCategories.joinInl.{u_1} K L))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} K L)))
+    (SerrePositivity.InfinityCategories.joinInr.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K))
+SerrePositivity.InfinityCategories.stableJoinReverse_inr.{u_1} : ∀ (K L : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+        (SerrePositivity.InfinityCategories.joinInr.{u_1} K L))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} K L)))
+    (SerrePositivity.InfinityCategories.joinInl.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K))
+SerrePositivity.InfinityCategories.stableJoinReverse_inr_inv.{u_1} : ∀ (K L : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinInr.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K))
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} K L)))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+      (SerrePositivity.InfinityCategories.joinInl.{u_1} K L))
+SerrePositivity.InfinityCategories.stableJoinReverse_inl_inv.{u_1} : ∀ (K L : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinInl.{u_1} (SSet.op.{u_1} L) (SSet.op.{u_1} K))
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} K L)))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+      (SerrePositivity.InfinityCategories.joinInr.{u_1} K L))
+SerrePositivity.InfinityCategories.coneDiagramReverseHomEquiv.{u_1} : (A K X : SSet.{u_1}) →
+  Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.join.{u_1} A K) X)
+    (Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.join.{u_1} (SSet.op.{u_1} K) (SSet.op.{u_1} A))
+      (SSet.op.{u_1} X))
+SerrePositivity.InfinityCategories.coneDiagramReverseHomEquiv_apply.{u_1} : ∀ (A K X : SSet.{u_1})
+  (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.join.{u_1} A K) X),
+  Eq.{u_1 + 1} ((SerrePositivity.InfinityCategories.coneDiagramReverseHomEquiv.{u_1} A K X) F)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} A K))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} F))
+@SerrePositivity.InfinityCategories.coneDiagramReverse_fixed_iff.{u_1} : ∀ {A K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X)
+  (F : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.join.{u_1} A K) X),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInr.{u_1} A K) F) p ↔
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.joinInl.{u_1} (SSet.op.{u_1} K) (SSet.op.{u_1} A))
+        ((SerrePositivity.InfinityCategories.coneDiagramReverseHomEquiv.{u_1} A K X) F))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} p)
+@SerrePositivity.InfinityCategories.coneDiagramReverseEquiv.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    (A : SSet.{u_1}) →
+      Equiv.{u_1 + 1, u_1 + 1}
+        (Subtype.{u_1 + 1} fun F =>
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInr.{u_1} A K) F)
+            p)
+        (Subtype.{u_1 + 1} fun G =>
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.joinInl.{u_1} (SSet.op.{u_1} K) (SSet.op.{u_1} A)) G)
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} p))
+@SerrePositivity.InfinityCategories.stableJoinReverse_inv_naturality.{u_1} : ∀ {K K' L L' : SSet.{u_1}}
+  (f : Quiver.Hom.{u_1, u_1 + 1} K K') (g : Quiver.Hom.{u_1, u_1 + 1} L L'),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} g)
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} f))
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} K' L')))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1} K L))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+        (SerrePositivity.InfinityCategories.joinMap.{u_1} f g)))
+@SerrePositivity.InfinityCategories.coneDiagramReverseEquiv_naturality.{u_1} : ∀ {A B K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (F :
+    Subtype.{u_1 + 1} fun F =>
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInr.{u_1} B K) F) p),
+  Eq.{u_1 + 1}
+    (↑((SerrePositivity.InfinityCategories.coneDiagramReverseEquiv.{u_1} p A)
+        (Subtype.mk.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.joinMap.{u_1} f (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)) ↑F)
+          ⋯)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SSet.op.{u_1} K))
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} f))
+      ↑((SerrePositivity.InfinityCategories.coneDiagramReverseEquiv.{u_1} p B) F))
+@SerrePositivity.InfinityCategories.stableStdSimplex_opIso_inv_naturality.{u_1} : ∀ {a b : SimplexCategory}
+  (α : Quiver.Hom.{0, 0} a b),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SSet.stdSimplex.opIso.{u_1} a))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+        (CategoryTheory.Functor.map.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1}
+          (CategoryTheory.Functor.map.{0, 0, 0, 0} SimplexCategory.rev α))))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.map.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} α)
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SSet.stdSimplex.opIso.{u_1} b)))
+@SerrePositivity.InfinityCategories.cosliceDiagramReparamEquiv.{u_1} : {K X A B : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    CategoryTheory.Iso.{u_1, u_1 + 1} A B →
+      Equiv.{u_1 + 1, u_1 + 1}
+        (Subtype.{u_1 + 1} fun F =>
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K A) F)
+            p)
+        (Subtype.{u_1 + 1} fun G =>
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K B) G)
+            p)
+@SerrePositivity.InfinityCategories.sliceOverOpObjEquiv.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    (n : SimplexCategory) →
+      Equiv.{u_1 + 1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+          (SSet.op.{u_1} (SerrePositivity.InfinityCategories.sliceOver.{u_1} p)) (Opposite.op.{1} n))
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.sliceUnder.{u_1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} p))
+          (Opposite.op.{1} n))
+@SerrePositivity.InfinityCategories.sliceOverOpObjEquiv_val.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (n : SimplexCategory)
+  (s :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SSet.op.{u_1} (SerrePositivity.InfinityCategories.sliceOver.{u_1} p)) (Opposite.op.{1} n)),
+  Eq.{u_1 + 1} (↑((SerrePositivity.InfinityCategories.sliceOverOpObjEquiv.{u_1} p n) s))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SSet.op.{u_1} K))
+        (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SSet.stdSimplex.opIso.{u_1} n)))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.inv.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u_1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} n) K))
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} ↑(SSet.opObjEquiv.{u_1} s))))
+@SerrePositivity.InfinityCategories.sliceOverOpMap.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.op.{u_1} (SerrePositivity.InfinityCategories.sliceOver.{u_1} p))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} p))
+@SerrePositivity.InfinityCategories.sliceOverOpMap_isIso.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  CategoryTheory.IsIso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceOverOpMap.{u_1} p)
+@SerrePositivity.InfinityCategories.sliceOverOpIso.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    CategoryTheory.Iso.{u_1, u_1 + 1} (SSet.op.{u_1} (SerrePositivity.InfinityCategories.sliceOver.{u_1} p))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} p))
+@SerrePositivity.InfinityCategories.stableReverseSimplex_yoneda.{u_1} : ∀ {X : SSet.{u_1}} (n : SimplexCategory)
+  (F : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} n) X),
+  Eq.{u_1 + 1}
+    (SSet.yonedaEquiv.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SSet.stdSimplex.opIso.{u_1} n))
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} F)))
+    ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.opObjEquiv.{u_1}) (SSet.yonedaEquiv.{u_1} F))
+@SerrePositivity.InfinityCategories.sliceOverOpIso_projection.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceOverOpIso.{u_1} p))
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} p)))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+      (SerrePositivity.InfinityCategories.sliceOverProjection.{u_1} p))
+@SerrePositivity.InfinityCategories.IsInitialVertex.map_of_isIso.{u_1} : ∀ {X Y : SSet.{u_1}}
+  (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [CategoryTheory.IsIso.{u_1, u_1 + 1} q]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},
+  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} x →
+    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))
+        x)
+@SerrePositivity.InfinityCategories.isInitialVertex_iff_of_isIso.{u_1} : ∀ {X Y : SSet.{u_1}}
+  (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [CategoryTheory.IsIso.{u_1, u_1 + 1} q]
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} x ↔
+    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))
+        x)
+@SerrePositivity.InfinityCategories.isTerminalVertex_iff_isInitialVertex_op.{u_1} : ∀ {X : SSet.{u_1}}
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.IsTerminalVertex.{u_1} x ↔
+    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.opObjEquiv.{u_1}) x)
+@SerrePositivity.InfinityCategories.JoinCone.reverseCocone.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    SerrePositivity.InfinityCategories.JoinCone.{u_1} p →
+      SerrePositivity.InfinityCategories.JoinCocone.{u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1} p)
+@SerrePositivity.InfinityCategories.isLimitCone_iff_reverseCocone.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCone.{u_1} p),
+  SerrePositivity.InfinityCategories.IsLimitCone.{u_1} c ↔
+    SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+      (SerrePositivity.InfinityCategories.JoinCone.reverseCocone.{u_1} c)
+@SerrePositivity.InfinityCategories.JoinCone.reverseCocone_vertex.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCone.{u_1} p),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1}
+      (SerrePositivity.InfinityCategories.JoinCone.reverseCocone.{u_1} c))
+    ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.opObjEquiv.{u_1}) (SerrePositivity.InfinityCategories.JoinCone.vertex.{u_1} c))
+```

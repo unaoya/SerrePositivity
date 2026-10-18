@@ -540,6 +540,55 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.isPushoutSquare_pasting
 #print axioms SerrePositivity.InfinityCategories.isPushoutSquare_pasting_cancel_left
 
+#print axioms SerrePositivity.InfinityCategories.stableReverseOrderHom
+#print axioms SerrePositivity.InfinityCategories.stableAugOpEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugOpEquiv_naturality
+#print axioms SerrePositivity.InfinityCategories.stablePullCut_reverse
+#print axioms SerrePositivity.InfinityCategories.stableComplementCutEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReverseFiberEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReversePairEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReversePair_cut
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReversePair_left
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReversePair_right
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv
+#print axioms SerrePositivity.InfinityCategories.stableReverseRightMap_val
+#print axioms SerrePositivity.InfinityCategories.stableReverseLeftMap_val
+#print axioms SerrePositivity.InfinityCategories.stableAugOpEquiv_heq
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReversePair_naturality
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv_naturality
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverseHom
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverseHom_isIso
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverseIso
+#print axioms SerrePositivity.InfinityCategories.stableAugOpEquiv_hom
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReversePair_hom
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinReverseEquiv_hom
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_naturality
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_inl
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_inr
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_inr_inv
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_inl_inv
+#print axioms SerrePositivity.InfinityCategories.coneDiagramReverseHomEquiv
+#print axioms SerrePositivity.InfinityCategories.coneDiagramReverseHomEquiv_apply
+#print axioms SerrePositivity.InfinityCategories.coneDiagramReverse_fixed_iff
+#print axioms SerrePositivity.InfinityCategories.coneDiagramReverseEquiv
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_inv_naturality
+#print axioms SerrePositivity.InfinityCategories.coneDiagramReverseEquiv_naturality
+#print axioms SerrePositivity.InfinityCategories.stableStdSimplex_opIso_inv_naturality
+#print axioms SerrePositivity.InfinityCategories.cosliceDiagramReparamEquiv
+#print axioms SerrePositivity.InfinityCategories.sliceOverOpObjEquiv
+#print axioms SerrePositivity.InfinityCategories.sliceOverOpObjEquiv_val
+#print axioms SerrePositivity.InfinityCategories.sliceOverOpMap
+#print axioms SerrePositivity.InfinityCategories.sliceOverOpMap_isIso
+#print axioms SerrePositivity.InfinityCategories.sliceOverOpIso
+#print axioms SerrePositivity.InfinityCategories.stableReverseSimplex_yoneda
+#print axioms SerrePositivity.InfinityCategories.sliceOverOpIso_projection
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.map_of_isIso
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_iff_of_isIso
+#print axioms SerrePositivity.InfinityCategories.isTerminalVertex_iff_isInitialVertex_op
+#print axioms SerrePositivity.InfinityCategories.JoinCone.reverseCocone
+#print axioms SerrePositivity.InfinityCategories.isLimitCone_iff_reverseCocone
+#print axioms SerrePositivity.InfinityCategories.JoinCone.reverseCocone_vertex
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -633,7 +682,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PastingLeftSquareIso,
     `SerrePositivity.InfinityCategories.Stable.PastingLeftSpanIso,
     `SerrePositivity.InfinityCategories.Stable.PastingLeftAttachment,
-    `SerrePositivity.InfinityCategories.Stable.Pasting]
+    `SerrePositivity.InfinityCategories.Stable.Pasting,
+    `SerrePositivity.InfinityCategories.Stable.JoinReverseCuts,
+    `SerrePositivity.InfinityCategories.Stable.JoinReverseEquiv,
+    `SerrePositivity.InfinityCategories.Stable.JoinReverseIntervals,
+    `SerrePositivity.InfinityCategories.Stable.JoinReverseNaturality,
+    `SerrePositivity.InfinityCategories.Stable.JoinReverse,
+    `SerrePositivity.InfinityCategories.Stable.JoinReverseFactors,
+    `SerrePositivity.InfinityCategories.Stable.JoinReverseBoundary,
+    `SerrePositivity.InfinityCategories.Stable.ConeDiagramReverse,
+    `SerrePositivity.InfinityCategories.Stable.SliceOpposite,
+    `SerrePositivity.InfinityCategories.Stable.ConeOpposite]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

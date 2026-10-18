@@ -93,7 +93,17 @@ pushout で付け加えた場合、残りの図式への coslice 制限が trivi
 長方形について、左四角形が押し出しなら右が押し出し iff 外側が押し出しとなる。
 二つの押し出しの合成と、左・外側から右を判定する系も公開した。
 HTT Lemma 4.4.2.1 の押し出し側は完了。A6 を待つ箇所は生じていない。
-引き戻しへの双対化と三角構造も未完了。Mathlib の三角構造の構成には h C の
+引き戻しへの双対化の準備として、`stableJoinReverseIso K L : (K⋆L).op ≅ L.op⋆K.op`
+を構成した。空次数を含む自然性、二つの因子の射との両立、左右包含の交換も証明済み。
+錐の図式の反転を固定条件へ制限し、`sliceOverOpIso p : (sliceOver p).op ≅
+sliceUnder (opFunctor.map p)` を構成した。標準単体のパラメーターの反転との
+両立と、値域への頂点射影の可換性も厳密に証明した。
+`JoinCone.reverseCocone c` は反転した図式への余錐で、
+`isLimitCone_iff_reverseCocone` により `IsLimitCone c ↔ IsColimitCone c.reverseCocone`。
+これらは値域の quasicategory 性を仮定しない。反転した余錐の頂点も opObjEquiv による
+元の頂点の反転に一致する。標準四角形の反転と span／cospan の形状の一致、
+および長方形の面の反転に接続して引き戻しの貼り合わせを導く段階は未完了。
+三角構造も未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -189,6 +199,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 余極限頂点の pushout での付加 | `cosliceRestriction_lift_of_colimit_attachment`、`cosliceRestriction_trivialKanFibration_of_colimit_attachment`、`isColimitCone_iff_restrict_of_colimit_attachment`（前二者は任意の値域、最後は Quasicategory） | 完了 |
 | 左四角形の余極限頂点の付加 | `pastingLeftAttachment_isPushout`、`pastingCornerRestrict_outerBase_trivialKanFibration`、`pastingCocone_isColimitCone_iff_outerCocone`（最後は値域 Quasicategory、後二者は左が押し出し） | 完了 |
 | 押し出しの貼り合わせ | `isPushoutSquare_pasting_iff`、`isPushoutSquare_pasting`、`isPushoutSquare_pasting_cancel_left`（値域 Quasicategory、左が押し出し） | 完了（引き戻しへの双対化は未完了） |
+| join の反転 | `stableJoinReverseIso`、`stableJoinReverse_naturality`、`stableJoinReverse_inl`、`stableJoinReverse_inr`（任意の二因子とその射） | 完了 |
+| slice の反転 | `coneDiagramReverseEquiv`、`sliceOverOpIso`、`sliceOverOpIso_projection`（任意の図式、追加仮定なし） | 完了 |
+| 極限錐の反転 | `JoinCone.reverseCocone`、`isLimitCone_iff_reverseCocone`、`JoinCone.reverseCocone_vertex`（任意の錐、追加仮定なし） | 完了。標準四角形の照合と引き戻し貼り合わせは未完了 |
 | S4〜S7 | 引き戻しの貼り合わせ・三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

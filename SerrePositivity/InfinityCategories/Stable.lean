@@ -12,6 +12,7 @@ public import SerrePositivity.InfinityCategories.Stable.JoinCutCalculus
 public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary
 public import SerrePositivity.InfinityCategories.Stable.ColimitCosliceRestriction
 public import SerrePositivity.InfinityCategories.Stable.Pasting
+public import SerrePositivity.InfinityCategories.Stable.ConeOpposite
 public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges
 public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
