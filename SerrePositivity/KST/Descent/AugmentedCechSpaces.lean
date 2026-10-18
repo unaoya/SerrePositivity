@@ -48,23 +48,29 @@ abbrev cechAugmentedSource : AugmentedCechDiagram K ⥤ SSet.{u} := Comma.fst _ 
 規約：図式の全ての射を保持する。使われ方：降下比較の終域関手。 -/
 abbrev cechAugmentedDiagram : AugmentedCechDiagram K ⥤ (K ⥤ SSet.{u}) := Comma.snd _ _
 
+/-- 概要：定数への指定比較を持つ随伴から増強つき図式の比較を自然に構成（補題 3.2）。
+方針：指定テンソルの増強と元の増強を合成し、随伴対応を適用する。
+規約：増強元と図式の両方に自然。使われ方：単一重み・反復重みの指定比較の共通構成。 -/
+def cechAdjunctionAugmentation {T : SSet.{u} ⥤ (K ⥤ SSet.{u})}
+    {R : (K ⥤ SSet.{u}) ⥤ SSet.{u}} (adj : T ⊣ R)
+    (t : T ⟶ Functor.const K) :
+    cechAugmentedSource K ⟶ cechAugmentedDiagram K ⋙ R where
+  app A := adj.homEquiv A.left A.right (t.app A.left ≫ A.hom)
+  naturality {A B} f := by
+    apply adj.homEquiv_naturality_left_square
+    have hf : (Functor.const K).map f.left ≫ B.hom = A.hom ≫ f.right := f.w
+    change T.map f.left ≫ (t.app B.left ≫ B.hom) = (t.app A.left ≫ A.hom) ≫ f.right
+    rw [← Category.assoc, t.naturality f.left, Category.assoc, hf, ← Category.assoc]
+
 /-- 概要：指定増強を指定重みの実際の錐空間へ送る自然変換（補題 3.2）。
 方針：重み増強と元の増強を合成し、実際の随伴対応を適用する。
 規約：増強元と図式を同時に変える全ての射に自然。
 使われ方：実際のホモトピー極限への指定 Čech 比較。 -/
 def weightedCechAugmentation (W : K ⥤ SSet.{u})
     (q : W ⟶ (Functor.const K).obj (𝟙_ SSet.{u})) :
-    cechAugmentedSource K ⟶ cechAugmentedDiagram K ⋙ WeightedCones.coneSpace K W where
-  app A := (WeightedCones.adjunction K W).homEquiv A.left A.right
-    ((WeightComparison.tensorComparison K q).app A.left ≫ A.hom)
-  naturality {A B} f := by
-    apply (WeightedCones.adjunction K W).homEquiv_naturality_left_square
-    have hf : (Functor.const K).map f.left ≫ B.hom = A.hom ≫ f.right := f.w
-    change (WeightedCones.tensorDiagram K W).map f.left ≫
-        ((WeightComparison.tensorComparison K q).app B.left ≫ B.hom) =
-      ((WeightComparison.tensorComparison K q).app A.left ≫ A.hom) ≫ f.right
-    rw [← Category.assoc, (WeightComparison.tensorComparison K q).naturality f.left,
-      Category.assoc, hf, ← Category.assoc]
+    cechAugmentedSource K ⟶ cechAugmentedDiagram K ⋙ WeightedCones.coneSpace K W :=
+  cechAdjunctionAugmentation K (WeightedCones.adjunction K W)
+    (WeightComparison.tensorComparison K q)
 
 variable [ModelCategory SSet.{u}] (I J : MorphismProperty SSet.{u})
   [ModelGeneration.CofibrantlyGenerated.{u} I J]
