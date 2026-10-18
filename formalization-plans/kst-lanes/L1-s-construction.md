@@ -6314,3 +6314,167 @@ core S の各行との同型、元の `objectToCoreSRealization` の弱同値、
 負次数消滅を含む BF 連結スペクトルとスペクトル関手も未完了。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3193 jobs）、公理監査成功（1490 宣言、propext・Classical.choice・Quot.sound のみ）。追加公理・sorry なし。
+
+### 6.53 D(m,w) の object S と core S の交換した行の同型
+
+零対象と全押し出しの保存を関手同型で移す補題、評価と定数関手の完全性、
+D(m,w) の包含の完全性、関手圏と全同値図式の gapped 条件の判定を証明した。
+Ar[n] と Δ[m] の内部 Hom の交換によって、gapped 全同値図式の対象と
+Δ[m] から core(S_n C) への実際の族の間に厳密な同値を構成した。
+Ar の制限との自然性と Yoneda 同値を用いて、m を固定した行の単体集合の同型
+`objectCoreRowIso m C` に束ねた。単なる頂点の全単射でなく、全ての面・退化と可換する。
+
+主要公開宣言（namespace `SerrePositivity.KST.SConstruction`、宇宙 `u`）：
+
+```lean
+lemma PreservesSConstructionData.of_functorIso {A B : SSet.{u}} [Quasicategory B]
+    {f g : A ⟶ B} (hf : PreservesSConstructionData f) (e : FunctorIso f g) :
+    PreservesSConstructionData g
+
+lemma evaluateFunctorAt_preservesSConstructionData {K C : SSet.{u}}
+    [Quasicategory C] [IsStable C] (k : K _⦋0⦌) :
+    PreservesSConstructionData (evaluateFunctorAt (Y
+
+lemma constantFunctor_evaluation {K C : SSet.{u}} (k : K _⦋0⦌) :
+    curry (snd K C) ≫ evaluateFunctorAt k = 𝟙 C
+
+lemma constantFunctor_preservesSConstructionData (K C : SSet.{u})
+    [Quasicategory C] [IsStable C] : PreservesSConstructionData (curry (snd K C))
+
+lemma equivalenceDiagramι_preservesSConstructionData (m : ℕ) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] :
+    PreservesSConstructionData (equivalenceDiagramι (Δ[m] : SSet.{u}) C)
+
+lemma isGapped_functor_iff_pointwise {n : ℕ} {K C : SSet.{u}}
+    [Quasicategory C] [IsStable C] (F : arNerve n ⟶ (ihom K).obj C) :
+    IsGapped F ↔ ∀ k : K _⦋0⦌, IsGapped (F ≫ evaluateFunctorAt k)
+
+lemma isGapped_equivalenceDiagramι_iff {n m : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C]
+    (F : arNerve n ⟶ equivalenceDiagrams (Δ[m] : SSet.{u}) C) :
+    IsGapped F ↔ IsGapped (F ≫ equivalenceDiagramι Δ[m] C)
+
+instance diagramSpace_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] :
+    Quasicategory (diagramSpace n C)
+
+def gappedFamilyLift {n : ℕ} {K C : SSet.{u}} (F : K ⟶ diagramSpace n C)
+    (hF : ∀ k : K _⦋0⦌,
+      IsGapped ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k))) :
+    K ⟶ sConstruction n C
+
+lemma gappedFamilyLift_ι {n : ℕ} {K C : SSet.{u}} (F : K ⟶ diagramSpace n C)
+    (hF : ∀ k : K _⦋0⦌,
+      IsGapped ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k))) :
+    gappedFamilyLift F hF ≫ (gappedSubcomplex n C).ι = F
+
+def coreGappedFamilyLift {n : ℕ} {K C : SSet.{u}} [Quasicategory C]
+    (F : K ⟶ diagramSpace n C)
+    (hF : ∀ k : K _⦋0⦌,
+      IsGapped ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k)))
+    (he : ∀ s : K _⦋1⦌,
+      IsInvertibleEdge (edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s))) :
+    K ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u})
+
+lemma coreGappedFamilyLift_ι {n : ℕ} {K C : SSet.{u}} [Quasicategory C]
+    (F : K ⟶ diagramSpace n C)
+    (hF : ∀ k : K _⦋0⦌,
+      IsGapped ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k)))
+    (he : ∀ s : K _⦋1⦌,
+      IsInvertibleEdge (edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s))) :
+    coreGappedFamilyLift F hF he ≫ (quasicategoryCore (sConstruction n C)).ι ≫
+      (gappedSubcomplex n C).ι = F
+
+lemma flipFamily_vertex {A B C : SSet.{u}} (F : A ⟶ (ihom B).obj C) (b : B _⦋0⦌) :
+    (functorVertexEquiv A C).symm
+      ((internalHomFlipHomEquiv A B C F).app (Opposite.op ⦋0⦌) b) =
+      F ≫ evaluateFunctorAt b
+
+lemma isInvertibleFunctorEdge_iff_pointwise {K C : SSet.{u}} [Quasicategory C]
+    {x y : ((ihom K).obj C) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+
+lemma flipEquivalenceDiagram_edge {A K C : SSet.{u}} [Quasicategory C]
+    (F : A ⟶ equivalenceDiagrams K C) (s : K _⦋1⦌) :
+    IsInvertibleEdge (edgeOfSimplex
+      ((internalHomFlipHomEquiv A K C (F ≫ equivalenceDiagramι K C)).app
+        (Opposite.op ⦋1⦌) s))
+
+lemma flipGappedEquivalenceDiagram_vertex {n m : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C]
+    (F : arNerve n ⟶ equivalenceDiagrams (Δ[m] : SSet.{u}) C) (hF : IsGapped F)
+    (k : (Δ[m] : SSet.{u}) _⦋0⦌) :
+    IsGapped ((functorVertexEquiv (arNerve n) C).symm
+      ((internalHomFlipHomEquiv (arNerve n) (Δ[m] : SSet.{u}) C
+        (F ≫ equivalenceDiagramι Δ[m] C)).app (Opposite.op ⦋0⦌) k))
+
+def gappedEquivalenceDiagramCoreMap {n m : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C]
+    (v : (sConstruction n (equivalenceDiagrams (Δ[m] : SSet.{u}) C)) _⦋0⦌) :
+    (Δ[m] : SSet.{u}) ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u})
+
+lemma gappedEquivalenceDiagramCoreMap_ι {n m : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C]
+    (v : (sConstruction n (equivalenceDiagrams (Δ[m] : SSet.{u}) C)) _⦋0⦌) :
+    gappedEquivalenceDiagramCoreMap v ≫ (quasicategoryCore (sConstruction n C)).ι ≫
+      (gappedSubcomplex n C).ι =
+      internalHomFlipHomEquiv (arNerve n) (Δ[m] : SSet.{u}) C
+        (gappedDiagram v ≫ equivalenceDiagramι Δ[m] C)
+
+lemma flipCoreGappedFamily_vertex {n : ℕ} {K C : SSet.{u}}
+    (F : K ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u}))
+    (a : (arNerve n) _⦋0⦌) :
+    IsEquivalenceDiagramVertex
+      ((internalHomFlipHomEquiv K (arNerve n) C
+        (F ≫ (quasicategoryCore (sConstruction n C)).ι ≫ (gappedSubcomplex n C).ι)).app
+          (Opposite.op ⦋0⦌) a)
+
+def coreGappedEquivalenceDiagram {n : ℕ} {K C : SSet.{u}}
+    (F : K ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u})) :
+    arNerve n ⟶ equivalenceDiagrams K C
+
+lemma coreGappedEquivalenceDiagram_ι {n : ℕ} {K C : SSet.{u}}
+    (F : K ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u})) :
+    coreGappedEquivalenceDiagram F ≫ equivalenceDiagramι K C =
+      internalHomFlipHomEquiv K (arNerve n) C
+        (F ≫ (quasicategoryCore (sConstruction n C)).ι ≫ (gappedSubcomplex n C).ι)
+
+lemma coreGappedEquivalenceDiagram_isGapped {n m : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C]
+    (F : (Δ[m] : SSet.{u}) ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u})) :
+    IsGapped (coreGappedEquivalenceDiagram F)
+
+def coreGappedEquivalenceDiagramVertex {n m : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C]
+    (F : (Δ[m] : SSet.{u}) ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u})) :
+    (sConstruction n (equivalenceDiagrams (Δ[m] : SSet.{u}) C)) _⦋0⦌
+
+def gappedEquivalenceDiagramVerticesEquiv (n m : ℕ) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] :
+    (sConstruction n (equivalenceDiagrams (Δ[m] : SSet.{u}) C)) _⦋0⦌ ≃
+      ((Δ[m] : SSet.{u}) ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u}))
+
+lemma gappedEquivalenceDiagramCoreMap_sMap {l n m : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C] (θ : Fin (l + 1) →o Fin (n + 1))
+    (v : (sConstruction n (equivalenceDiagrams (Δ[m] : SSet.{u}) C)) _⦋0⦌) :
+    gappedEquivalenceDiagramCoreMap
+        ((sMap (equivalenceDiagrams (Δ[m] : SSet.{u}) C) θ).app (Opposite.op ⦋0⦌) v) =
+      gappedEquivalenceDiagramCoreMap v ≫ quasicategoryCoreMap (sMap C θ)
+
+def objectCoreRowIso (m : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    objectSConstruction (equivalenceDiagrams (Δ[m] : SSet.{u}) C) ≅
+      simplicialCoreSConstruction C ⋙
+        (evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋m⦌)
+```
+
+前提：行の同型と全同値図式の gapped 判定は `[Quasicategory C] [IsStable C]`。
+一般の gapped/core 族の持ち上げには、型に記した頂点条件と辺の可逆性を要求する。
+これらの条件は元の gapped 全同値図式から証明しており、行の同型に追加仮定はない。
+
+現在地：L1a・L1b 完了、L1c 継続中。D(m,w) の object S と core S の各行の同型まで証明済み。
+定数包含との照合、元の `objectToCoreSRealization` の弱同値、McCarthy の具体的な単体ホモトピー、
+単体積 Quillen A、加法性、面のホモトピー引き戻し条件は未完了。
+反復 S 実現と §6.43 の homotopy fiber の比較、構造射との照合、正の段の Ω 条件・delooping、
+負次数消滅を含む BF 連結スペクトルとスペクトル関手も未完了。L1d–f 未完了、L1g は別途指示待ち。
+Core と他レーンの公開名・型は変更していない。
+
+検証：対象ビルド成功（3198 jobs）、公理監査成功（1516 宣言、標準三公理のみ）。追加公理・sorry なし。

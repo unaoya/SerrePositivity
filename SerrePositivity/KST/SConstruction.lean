@@ -172,4 +172,10 @@ public import SerrePositivity.KST.SConstruction.RestrictedPrecompositionIso
 public import SerrePositivity.KST.SConstruction.EquivalenceDiagramEvaluation
 public import SerrePositivity.KST.SConstruction.EquivalenceDiagramStableModel
 
+public import SerrePositivity.KST.SConstruction.EquivalenceDiagramExactness
+public import SerrePositivity.KST.SConstruction.CoreGappedFamilies
+public import SerrePositivity.KST.SConstruction.GappedEquivalenceDiagramSwap
+public import SerrePositivity.KST.SConstruction.CoreGappedEquivalenceDiagram
+public import SerrePositivity.KST.SConstruction.ObjectCoreRowIso
+
 /-! # ∞-S• 構成と連結 K 理論 -/

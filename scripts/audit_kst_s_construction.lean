@@ -3865,3 +3865,55 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramStableEvaluation_objectS_localized_isIso
 #check @SerrePositivity.KST.SConstruction.equivalenceDiagramStableConstant_objectS_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramStableConstant_objectS_localized_isIso
+#check @SerrePositivity.KST.SConstruction.PreservesSConstructionData.of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.PreservesSConstructionData.of_functorIso
+#check @SerrePositivity.KST.SConstruction.evaluateFunctorAt_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.evaluateFunctorAt_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.constantFunctor_evaluation
+#print axioms SerrePositivity.KST.SConstruction.constantFunctor_evaluation
+#check @SerrePositivity.KST.SConstruction.constantFunctor_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.constantFunctor_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramι_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramι_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.isGapped_functor_iff_pointwise
+#print axioms SerrePositivity.KST.SConstruction.isGapped_functor_iff_pointwise
+#check @SerrePositivity.KST.SConstruction.isGapped_equivalenceDiagramι_iff
+#print axioms SerrePositivity.KST.SConstruction.isGapped_equivalenceDiagramι_iff
+#check @SerrePositivity.KST.SConstruction.diagramSpace_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.diagramSpace_quasicategory
+#check @SerrePositivity.KST.SConstruction.gappedFamilyLift
+#print axioms SerrePositivity.KST.SConstruction.gappedFamilyLift
+#check @SerrePositivity.KST.SConstruction.gappedFamilyLift_ι
+#print axioms SerrePositivity.KST.SConstruction.gappedFamilyLift_ι
+#check @SerrePositivity.KST.SConstruction.coreGappedFamilyLift
+#print axioms SerrePositivity.KST.SConstruction.coreGappedFamilyLift
+#check @SerrePositivity.KST.SConstruction.coreGappedFamilyLift_ι
+#print axioms SerrePositivity.KST.SConstruction.coreGappedFamilyLift_ι
+#check @SerrePositivity.KST.SConstruction.flipFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.flipFamily_vertex
+#check @SerrePositivity.KST.SConstruction.isInvertibleFunctorEdge_iff_pointwise
+#print axioms SerrePositivity.KST.SConstruction.isInvertibleFunctorEdge_iff_pointwise
+#check @SerrePositivity.KST.SConstruction.flipEquivalenceDiagram_edge
+#print axioms SerrePositivity.KST.SConstruction.flipEquivalenceDiagram_edge
+#check @SerrePositivity.KST.SConstruction.flipGappedEquivalenceDiagram_vertex
+#print axioms SerrePositivity.KST.SConstruction.flipGappedEquivalenceDiagram_vertex
+#check @SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap
+#print axioms SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap
+#check @SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap_ι
+#print axioms SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap_ι
+#check @SerrePositivity.KST.SConstruction.flipCoreGappedFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.flipCoreGappedFamily_vertex
+#check @SerrePositivity.KST.SConstruction.coreGappedEquivalenceDiagram
+#print axioms SerrePositivity.KST.SConstruction.coreGappedEquivalenceDiagram
+#check @SerrePositivity.KST.SConstruction.coreGappedEquivalenceDiagram_ι
+#print axioms SerrePositivity.KST.SConstruction.coreGappedEquivalenceDiagram_ι
+#check @SerrePositivity.KST.SConstruction.coreGappedEquivalenceDiagram_isGapped
+#print axioms SerrePositivity.KST.SConstruction.coreGappedEquivalenceDiagram_isGapped
+#check @SerrePositivity.KST.SConstruction.coreGappedEquivalenceDiagramVertex
+#print axioms SerrePositivity.KST.SConstruction.coreGappedEquivalenceDiagramVertex
+#check @SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramVerticesEquiv
+#print axioms SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramVerticesEquiv
+#check @SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap_sMap
+#print axioms SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap_sMap
+#check @SerrePositivity.KST.SConstruction.objectCoreRowIso
+#print axioms SerrePositivity.KST.SConstruction.objectCoreRowIso
