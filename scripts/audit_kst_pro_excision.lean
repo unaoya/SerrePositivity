@@ -173,3 +173,60 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.koszul_flatTensor_homology_proZero
 #print axioms SerrePositivity.KST.ProExcision.koszul_flatTensor_homology_proZero
 
+#check @SerrePositivity.KST.ProExcision.Tower.mapNatTrans
+#print axioms SerrePositivity.KST.ProExcision.Tower.mapNatTrans
+
+#check @SerrePositivity.KST.ProExcision.homologyMap_zero_of_component_zero
+#print axioms SerrePositivity.KST.ProExcision.homologyMap_zero_of_component_zero
+
+#check @SerrePositivity.KST.ProExcision.homology_proZero_of_component
+#print axioms SerrePositivity.KST.ProExcision.homology_proZero_of_component
+
+#check @SerrePositivity.KST.ProExcision.spectral_successor_proZero
+#print axioms SerrePositivity.KST.ProExcision.spectral_successor_proZero
+
+#check @SerrePositivity.KST.ProExcision.proZero_of_exact
+#print axioms SerrePositivity.KST.ProExcision.proZero_of_exact
+
+#check @SerrePositivity.KST.ProExcision.proIso_of_injective_exact_proZero
+#print axioms SerrePositivity.KST.ProExcision.proIso_of_injective_exact_proZero
+
+#check @SerrePositivity.KST.ProExcision.spectral_page_proZero
+#print axioms SerrePositivity.KST.ProExcision.spectral_page_proZero
+
+#check @SerrePositivity.KST.ProExcision.proZero_finite_extension
+#print axioms SerrePositivity.KST.ProExcision.proZero_finite_extension
+
+#check @SerrePositivity.KST.ProExcision.truncationInclusion
+#print axioms SerrePositivity.KST.ProExcision.truncationInclusion
+
+#check @SerrePositivity.KST.ProExcision.truncationInclusion_comp_inclusion
+#print axioms SerrePositivity.KST.ProExcision.truncationInclusion_comp_inclusion
+
+#check @SerrePositivity.KST.ProExcision.truncationFiltration
+#print axioms SerrePositivity.KST.ProExcision.truncationFiltration
+
+#check @SerrePositivity.KST.ProExcision.koszulTensorFiltration
+#print axioms SerrePositivity.KST.ProExcision.koszulTensorFiltration
+
+#check @SerrePositivity.KST.ProExcision.koszulFiltrationIndex
+#print axioms SerrePositivity.KST.ProExcision.koszulFiltrationIndex
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulTensorFiltration
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulTensorFiltration
+
+#check @SerrePositivity.KST.ProExcision.koszulFilteredSpectralObject
+#print axioms SerrePositivity.KST.ProExcision.koszulFilteredSpectralObject
+
+#check @SerrePositivity.KST.ProExcision.koszulFilteredSpectralSequence
+#print axioms SerrePositivity.KST.ProExcision.koszulFilteredSpectralSequence
+
+#check @SerrePositivity.KST.ProExcision.koszulTruncation_initial_isZero
+#print axioms SerrePositivity.KST.ProExcision.koszulTruncation_initial_isZero
+
+#check @SerrePositivity.KST.ProExcision.koszulTruncation_terminal_isIso
+#print axioms SerrePositivity.KST.ProExcision.koszulTruncation_terminal_isIso
+
+#check @SerrePositivity.KST.ProExcision.koszulTensorFiltration_initial_isZero
+#print axioms SerrePositivity.KST.ProExcision.koszulTensorFiltration_initial_isZero
+

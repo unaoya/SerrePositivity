@@ -37,7 +37,12 @@
 - L3：任意の関手での保存を証明したので、加法関手にも適用可能。具体的な有理化関手は K-L9 から借用。
 - L6b：進行中。Lemma 4.9 の有限生成加群係数版を検証済み。
 - 平坦底変換の自然なホモロジー比較・イデアル倍の像・pro-零性保存まで検証済み。
-- Lemma 4.10：Koszul SS の構成・次数ごとの有限収束と edge 比較は残件。
+- Lemma 4.10：実際の Mathlib SpectralSequence の頁の pro-零性保存と有限拡張を検証済み。
+- Koszul SS 自体の構成・E₂ 同定・次数ごとの有限収束と edge 比較は残件。
+- 有限な Koszul 方向の項による濾過をテンソル複体上に構成済み。
+- そこから実際の mapping cone スペクトル対象と有限行補助スペクトル系列を構成済み。
+- 初端の零性と終端の全 Koszul 複体への包含が同型であることを証明済み。
+- Mathlib の補助頁番号と KST の E₂ 頁の対応は未検証。初頁・微分・次頁の同定を次に行う。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
 - Lemma 4.9 は原典の列長帰納法と異なり、Artin–Rees と実際の冪遷移の深度を用いた。
 - L6a 区切りの全体ビルドは別レーンの RationalFixedPoints・CoefficientForget で失敗。
@@ -76,6 +81,13 @@
 | flatTensorHomologyIso | FlatBaseChange.lean | 検証済み | 平坦テンソルとホモロジーの自然同型 |
 | ideal_smul_tensor_range | FlatBaseChange.lean | 検証済み | a(n)M のテンソル像 |
 | koszul_flatTensor_homology_proZero | FlatBaseChange.lean | 検証済み | 有限生成性を係数変更前にのみ要求 |
+| spectral_page_proZero | SpectralPro.lean | 検証済み | 実際のスペクトル系列の全後続頁へ零性を移す |
+| proZero_finite_extension | SpectralPro.lean | 検証済み | 有限拡張の pro-零性 |
+| proIso_of_injective_exact_proZero | SpectralPro.lean | 検証済み | edge 比較に使う pro 同型判定 |
+| koszulFilteredSpectralObject | KoszulFiltration.lean | 検証済み | 有限な実際の濾過から構成 |
+| koszulFilteredSpectralSequence | KoszulFiltration.lean | 検証済み | Mathlib の有限行補助スペクトル系列 |
+| koszulTruncation_initial_isZero | KoszulFiltration.lean | 検証済み | 濾過の初端 |
+| koszulTruncation_terminal_isIso | KoszulFiltration.lean | 検証済み | 濾過の終端 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
