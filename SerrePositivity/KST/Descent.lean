@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.KST.Descent.TerminalCechDescent
+public import SerrePositivity.KST.Descent.EmptyZariskiDescent
+public import SerrePositivity.KST.Descent.ConstantCechDescent
 public import SerrePositivity.KST.Descent.FiniteFamilyCech
 public import SerrePositivity.KST.Descent.FiniteFamilyCechFunctor
 public import SerrePositivity.KST.Descent.ZariskiCechLaw
