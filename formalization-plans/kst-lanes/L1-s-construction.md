@@ -1498,3 +1498,120 @@ S_n の包含による cofiber の保存・反映への接続、構造射の押�
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2287 jobs）、公理監査成功（635 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.13 S_n の包含と構造射の cofiber 保存
+
+全部分複体の包含による余極限の反映を、内部 Hom の境界持ち上げ性から証明。
+点ごとの余極限が存在する S_n の span の普遍余錐を周囲で構成して gapped 閉性で持ち上げ、
+S_n 内の任意の普遍余錐と同型に比較して包含後の点ごとの普遍性を得た。
+零角つきの正方形では、必要な点ごとの存在を安定性から供給した。
+したがって S_n の包含は cofiber の普遍性を追加仮定なしに保ち反映し、Ar の全点で判定できる。
+面・退化写像と既存の後合成写像の cofiber 保存も証明した。
+任意の押し出しの保存とは区別し、Core/・Stable/ の公開定義は変更していない。
+
+**FullSubcomplexColimits.lean**
+
+```text
+lemma ihom_fullSubcomplex_hasLiftingProperty_of_vertexSurjective {A B X : SSet.{u}}
+    (K : SSet.{u}) (P : X _⦋0⦌ → Prop) (i : A ⟶ B)
+    (hi : Function.Surjective (i.app (Opposite.op ⦋0⦌))) :
+    HasLiftingProperty i ((ihom K).map (fullSubcomplexOnVertices X P).ι)
+
+lemma initialBoundaryLifting_reflect_of_boundary_lifting {E B E' B' : SSet.{u}}
+    (p : E ⟶ B) (q : E' ⟶ B') (i : E ⟶ E') (j : B ⟶ B') [Mono j]
+    (h : i ≫ q = p ≫ j)
+    (hi : ∀ n : ℕ, HasLiftingProperty (boundary (n + 1)).ι i)
+    {x : E _⦋0⦌} (hx : InitialBoundaryLifting q (i.app (Opposite.op ⦋0⦌) x)) :
+    InitialBoundaryLifting p x
+
+lemma isColimitCone_fullSubcomplex_of_ambient {K X : SSet.{u}} [Quasicategory X]
+    (P : X _⦋0⦌ → Prop) {p : K ⟶ (fullSubcomplexOnVertices X P : SSet.{u})}
+    (c : JoinCocone p)
+    (hc : IsColimitCone (mapJoinCocone (fullSubcomplexOnVertices X P).ι c)) :
+    IsColimitCone c
+
+```
+
+**GappedColimitCocones.lean**
+
+```text
+lemma exists_gapped_pointwiseColimitCocone {n : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C] (p : (horn 2 0 : SSet.{u}) ⟶ sConstruction n C)
+    (hp : HasPointwiseColimits (p ≫ (gappedSubcomplex n C).ι)) :
+    ∃ c : JoinCocone p, IsPointwiseColimitCone (mapJoinCocone (gappedSubcomplex n C).ι c)
+
+lemma isColimitCone_gapped_of_pointwise {n : ℕ} {C : SSet.{u}} [Quasicategory C]
+    {p : (horn 2 0 : SSet.{u}) ⟶ sConstruction n C} (c : JoinCocone p)
+    (hc : IsPointwiseColimitCone (mapJoinCocone (gappedSubcomplex n C).ι c)) :
+    IsColimitCone c
+
+lemma isPointwiseColimitCone_gappedInclusion_of_hasPointwiseColimits {n : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C] {p : (horn 2 0 : SSet.{u}) ⟶ sConstruction n C}
+    (hp : HasPointwiseColimits (p ≫ (gappedSubcomplex n C).ι))
+    (c : JoinCocone p) (hc : IsColimitCone c) :
+    IsPointwiseColimitCone (mapJoinCocone (gappedSubcomplex n C).ι c)
+
+lemma isColimitCone_gappedInclusion_iff_of_hasPointwiseColimits {n : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C] {p : (horn 2 0 : SSet.{u}) ⟶ sConstruction n C}
+    (hp : HasPointwiseColimits (p ≫ (gappedSubcomplex n C).ι)) (c : JoinCocone p) :
+    IsColimitCone c ↔ IsColimitCone (mapJoinCocone (gappedSubcomplex n C).ι c)
+
+```
+
+**GappedCofibers.lean**
+
+```text
+def gappedInclusionZeroTriangle {n : ℕ} {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    (t : ZeroTriangle (sConstruction n C)) : ZeroTriangle ((ihom (arNerve n)).obj C)
+
+lemma gappedInclusion_zeroSpan_hasPointwiseColimits {n : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C] (t : ZeroTriangle (sConstruction n C)) :
+    HasPointwiseColimits (pushoutSpan t.square ≫ (gappedSubcomplex n C).ι)
+
+lemma gappedInclusion_cofiber_iff {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (t : ZeroTriangle (sConstruction n C)) :
+    IsCofiberSequence t ↔ IsPushoutSquare (t.square ≫ (gappedSubcomplex n C).ι)
+
+lemma gappedInclusion_cofiber_iff_pointwise {n : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C] (t : ZeroTriangle (sConstruction n C)) :
+    IsCofiberSequence t ↔ ∀ a : (arNerve n) _⦋0⦌,
+      IsPushoutSquare (t.square ≫ (gappedSubcomplex n C).ι ≫ evaluateFunctorAt a)
+
+```
+
+**StructureMapCofibers.lean**
+
+```text
+lemma sMap_gapped_evaluate {m n : ℕ} (C : SSet.{u})
+    (θ : Fin (m + 1) →o Fin (n + 1)) (a : (arNerve m) _⦋0⦌) :
+    sMap C θ ≫ (gappedSubcomplex m C).ι ≫ evaluateFunctorAt a =
+      (gappedSubcomplex n C).ι ≫ evaluateFunctorAt ((arNerveMap θ).app (Opposite.op ⦋0⦌) a)
+
+lemma sPostcomp_gapped_evaluate (n : ℕ) {C D : SSet.{u}}
+    (f : C ⟶ D) (hf : PreservesSConstructionData f) (a : (arNerve n) _⦋0⦌) :
+    sPostcomp n f hf ≫ (gappedSubcomplex n D).ι ≫ evaluateFunctorAt a =
+      (gappedSubcomplex n C).ι ≫ evaluateFunctorAt a ≫ f
+
+def sMapZeroTriangle {m n : ℕ} {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    (θ : Fin (m + 1) →o Fin (n + 1)) (t : ZeroTriangle (sConstruction n C)) :
+    ZeroTriangle (sConstruction m C)
+
+def sPostcompZeroTriangle {n : ℕ} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    [HasZeroVertex C] (f : C ⟶ D) (hf : PreservesSConstructionData f)
+    (t : ZeroTriangle (sConstruction n C)) : ZeroTriangle (sConstruction n D)
+
+lemma sMap_preserves_cofiber {m n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (θ : Fin (m + 1) →o Fin (n + 1)) (t : ZeroTriangle (sConstruction n C))
+    (ht : IsCofiberSequence t) : IsCofiberSequence (sMapZeroTriangle θ t)
+
+lemma sPostcomp_preserves_cofiber {n : ℕ} {C D : SSet.{u}}
+    [Quasicategory C] [IsStable C] [Quasicategory D] [IsStable D]
+    (f : C ⟶ D) (hf : PreservesSConstructionData f) (t : ZeroTriangle (sConstruction n C))
+    (ht : IsCofiberSequence t) : IsCofiberSequence (sPostcompZeroTriangle f hf t)
+
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。S_n の包含の cofiber 保存・反映と構造射の cofiber 保存は証明済み。
+任意の押し出しに対する構造射の保存、多単体的反復の全構造射、境界の coherent な潰し、delooping・Ω 条件・BF スペクトルは未完了。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2291 jobs）、公理監査成功（652 宣言、標準三公理のみ）。追加公理・sorry なし。

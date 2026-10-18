@@ -1731,3 +1731,54 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.gapped_pointwiseColimit
 #print axioms SerrePositivity.KST.SConstruction.gapped_pointwiseColimit
+
+#check @SerrePositivity.KST.SConstruction.ihom_fullSubcomplex_hasLiftingProperty_of_vertexSurjective
+#print axioms SerrePositivity.KST.SConstruction.ihom_fullSubcomplex_hasLiftingProperty_of_vertexSurjective
+
+#check @SerrePositivity.KST.SConstruction.initialBoundaryLifting_reflect_of_boundary_lifting
+#print axioms SerrePositivity.KST.SConstruction.initialBoundaryLifting_reflect_of_boundary_lifting
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_fullSubcomplex_of_ambient
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_fullSubcomplex_of_ambient
+
+#check @SerrePositivity.KST.SConstruction.exists_gapped_pointwiseColimitCocone
+#print axioms SerrePositivity.KST.SConstruction.exists_gapped_pointwiseColimitCocone
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_gapped_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_gapped_of_pointwise
+
+#check @SerrePositivity.KST.SConstruction.isPointwiseColimitCone_gappedInclusion_of_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.isPointwiseColimitCone_gappedInclusion_of_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_gappedInclusion_iff_of_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_gappedInclusion_iff_of_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.gappedInclusionZeroTriangle
+#print axioms SerrePositivity.KST.SConstruction.gappedInclusionZeroTriangle
+
+#check @SerrePositivity.KST.SConstruction.gappedInclusion_zeroSpan_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.gappedInclusion_zeroSpan_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.gappedInclusion_cofiber_iff
+#print axioms SerrePositivity.KST.SConstruction.gappedInclusion_cofiber_iff
+
+#check @SerrePositivity.KST.SConstruction.gappedInclusion_cofiber_iff_pointwise
+#print axioms SerrePositivity.KST.SConstruction.gappedInclusion_cofiber_iff_pointwise
+
+#check @SerrePositivity.KST.SConstruction.sMap_gapped_evaluate
+#print axioms SerrePositivity.KST.SConstruction.sMap_gapped_evaluate
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp_gapped_evaluate
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp_gapped_evaluate
+
+#check @SerrePositivity.KST.SConstruction.sMapZeroTriangle
+#print axioms SerrePositivity.KST.SConstruction.sMapZeroTriangle
+
+#check @SerrePositivity.KST.SConstruction.sPostcompZeroTriangle
+#print axioms SerrePositivity.KST.SConstruction.sPostcompZeroTriangle
+
+#check @SerrePositivity.KST.SConstruction.sMap_preserves_cofiber
+#print axioms SerrePositivity.KST.SConstruction.sMap_preserves_cofiber
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp_preserves_cofiber
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp_preserves_cofiber
