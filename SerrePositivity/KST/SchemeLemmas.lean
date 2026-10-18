@@ -110,3 +110,10 @@ public import SerrePositivity.KST.SchemeLemmas.LocalizationIsogeny
 public import SerrePositivity.KST.SchemeLemmas.LinearMapTensorImage
 public import SerrePositivity.KST.SchemeLemmas.RankOneIsogeny
 public import SerrePositivity.KST.SchemeLemmas.RankOneFlattening
+public import SerrePositivity.KST.SchemeLemmas.ChartCramer
+public import SerrePositivity.KST.SchemeLemmas.DeterminantalCenter
+public import SerrePositivity.KST.SchemeLemmas.DeterminantalChartColumns
+public import SerrePositivity.KST.SchemeLemmas.LinearMapTensorToPi
+public import SerrePositivity.KST.SchemeLemmas.DeterminantalChartImage
+public import SerrePositivity.KST.SchemeLemmas.FiniteRankIsogeny
+public import SerrePositivity.KST.SchemeLemmas.FiniteRankFlattening

@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 996 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1040 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -94,6 +94,8 @@
 - 正則な境界元 f の冪を含むイデアル I について、Bl_I の各チャート上の純変換を係数環と線形同型にし、平坦性を証明済み。中心が D(f) を避けることも証明済み。
 - 局所化で同型な有限表示加群について、実際の両射と両合成が同じ分母倍の恒等となる関係式を構成済み。
 - 境界外で階数一自由な有限表示 A 加群について、実際の有限生成 admissible 中心と全標準チャート上の純変換の平坦性を証明済み。一般有限 B 加群の場合は未完了。
+- Noether 環上の有限 A 加群が境界外で有限階数自由な場合、実際の行列式中心と admissible 性、および生成元チャートの全体被覆上での純変換の自由化・平坦性を証明済み。
+- 一般チャート上の平坦性への移送には純変換と係数局所化の可換性を次に証明する。
 - 有限アフィン被覆上で実際の admissible 支配射が与えられれば、一つの大域 blowup からの支配射を構成できることを証明済み。零核の中心外開集合による重なりの一致を使う。
 - 次は一般の開埋め込みの blowup 比較射を構成し、一般 Noether 基底上の二段合成へアフィン結果を接続する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在はなお未証明。L7b 完了とはしない。
@@ -350,6 +352,22 @@ N = A の場合、g の像をイデアル I とすると fⁿ ∈ I で、核も
 これは境界外で階数一自由な有限 A 加群の特殊形であり、一般有限 B 加群の平坦化は別に残る。
 原典の位置付けは Stacks 0815 の Noether 特殊形に向けた有限加群の分母消去。
 
+#### 有限階数自由な場合の行列式による中心
+
+次の中間目標は M[1/f] が A[1/f] 上階数 r 自由な有限表示 A 加群の場合。
+分母倍同型 g : M → Aʳ、h : Aʳ → M を作り、
+全 r 個組 m の像 g(m) を列に持つ行列の行列式が生成するイデアル J を取る。
+gh = fᴺ id より f^(N r) ∈ J となり、中心は D(f) を避ける。
+J の行列式生成元 d のチャートでは、列を一つ置換した行列式も J に入るので、
+その d による比を使って Cramer の公式から像の各ベクトルを選んだ r 列で表せる。
+d の正則性からこの r 列は線形独立で、像加群が自由になる。
+元の加群から像への写像の核は分母倍の合成式で f の冪により消えるので、
+純変換も同じ自由加群に同定する。
+まず行列式生成元のチャートについて示し、一般チャート上の平坦性は開被覆と局所化で移す。
+Noether 条件は中心の有限生成性にも使える。
+これは有限 A 加群の特殊形であり、有限型 B 上有限な M の一般平坦化とは同一視しない。
+原典の位置付けは Stacks 0815 の平坦化に向けた有限加群の行列式計算。
+
 ### 7.2 証明の分解
 
 1. 閉補集合を定義する有限型イデアル層を選ぶ。
@@ -459,6 +477,13 @@ N = A の場合、g の像をイデアル I とすると fⁿ ∈ I で、核も
 | `exists_rankOne_isogeny` | RankOneIsogeny | 検証済み | 環との冪倍同型 |
 | `chartRankOnePureTransformEquiv` | RankOneFlattening | 検証済み | 像中心のチャート上の自由化 |
 | `exists_rankOne_flattening_center` | RankOneFlattening | 検証済み | 階数一の場合の実際の平坦化中心 |
+| `chartCramerCoefficients_solution` | ChartCramer | 検証済み | 置換列の行列式比による解 |
+| `determinantalCenter` / `iSup_determinantalCenter_charts` | DeterminantalCenter | 検証済み | 行列式中心と全体被覆 |
+| `determinantalChartColumns_injective` | DeterminantalChartColumns | 検証済み | 選んだ列の独立性 |
+| `linearMapTensorToPi` | LinearMapTensorToPi | 検証済み | 自由加群への基底変更写像 |
+| `determinantalChartPureTransformEquiv` | DeterminantalChartImage | 検証済み | 行列式生成元チャート上の自由化 |
+| `exists_finiteRank_isogeny` | FiniteRankIsogeny | 検証済み | 有限自由加群との冪倍同型 |
+| `exists_finiteRank_determinantal_flattening` | FiniteRankFlattening | 検証済み | 実中心と被覆チャート上の平坦性 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |
