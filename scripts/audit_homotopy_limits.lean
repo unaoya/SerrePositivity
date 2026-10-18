@@ -739,3 +739,33 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms simplicialSections_kanComplex
 #check @bousfieldKanHolim_kanComplex
 #print axioms bousfieldKanHolim_kanComplex
+#check @simplicialSectionsMap
+#print axioms simplicialSectionsMap
+#check @simplicialSectionsMap_evaluation
+#print axioms simplicialSectionsMap_evaluation
+#check @simplicialSectionsMap_id
+#print axioms simplicialSectionsMap_id
+#check @simplicialSectionsMap_comp
+#print axioms simplicialSectionsMap_comp
+#check @simplicialSectionsFunctor
+#print axioms simplicialSectionsFunctor
+#check @weightedSectionsUncurry_postcomp
+#print axioms weightedSectionsUncurry_postcomp
+#check @weightedNerveCoefficients_postcomp
+#print axioms weightedNerveCoefficients_postcomp
+#check @weightedNerveSectionFromTransform_postcomp
+#print axioms weightedNerveSectionFromTransform_postcomp
+#check @bousfieldKanSectionHomEquiv_postcomp
+#print axioms bousfieldKanSectionHomEquiv_postcomp
+#check @bousfieldKanWeightedNerveEvaluation_naturality
+#print axioms bousfieldKanWeightedNerveEvaluation_naturality
+#check @bousfieldKanSectionsMap_naturality
+#print axioms bousfieldKanSectionsMap_naturality
+#check @bousfieldKanSectionsNatIso
+#print axioms bousfieldKanSectionsNatIso
+#check @simplicialSectionsMap_hasLiftingProperty
+#print axioms simplicialSectionsMap_hasLiftingProperty
+#check @simplicialSectionsMap_fibration
+#print axioms simplicialSectionsMap_fibration
+#check @simplicialSectionsMap_trivialKanFibration
+#print axioms simplicialSectionsMap_trivialKanFibration

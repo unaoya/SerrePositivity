@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開367宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開382宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,7 +2820,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開367宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開382宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -2951,6 +2951,51 @@ F1 の `weightedNerveProjection_leftFibration` と相対関手空間の Kan 性�
 底や全空間の quasicategory 性は要求しない。
 これは比較先の一般の Kan 性であり、strict 極限の比較が任意の Kan 図式で同値になるとは主張しない。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
+
+### 切断模型の図式自然性と相対持ち上げ（実装済み）
+
+`SectionsFunctor.lean` は底 K を保つ写像に関する切断空間の関手性を提供する。
+
+```lean
+simplicialSectionsMap {p : E ⟶ K} {q : E' ⟶ K}
+    (f : E ⟶ E') (hf : f ≫ q = p) : simplicialSections p ⟶ simplicialSections q
+simplicialSectionsFunctor (K : SSet.{u}) : Over K ⥤ SSet.{u}
+```
+
+普遍的な族の後合成を切断空間へ持ち上げて定義し、評価の公式と恒等・合成の法則を証明した。
+`SectionsDiagramNaturality.lean` は `weightedSectionsUncurry_postcomp`、係数と切断の族の
+後合成の式を使い、Bousfield–Kan の普遍的な切断の図式自然性を証明する。
+
+```lean
+bousfieldKanSectionsMap_naturality {H H' : I ⥤ SSet.{u}} (η : H ⟶ H') :
+    bousfieldKanSectionsMap H ≫
+        simplicialSectionsMap (weightedNerveMap η) (weightedNerveMap_projection η) =
+      weightedSectionsMap (bousfieldKanWeight I) η ≫ bousfieldKanSectionsMap H'
+bousfieldKanSectionsNatIso (I : Type u) [SmallCategory I] :
+    bousfieldKanHolimFunctor I ≅ weightedNerveFunctor I ⋙ simplicialSectionsFunctor (nerve I)
+```
+
+同型が各図式で存在するだけでなく、F1 の実際の `weightedNerveMap η` と可換な自然同型となる。
+この自然性は図式や写像の Kan 性・同値性を要求しない。
+
+`SectionsLifting.lean` は全空間の写像の相対持ち上げ性を切断空間の写像へ移す。
+K、E、E'、A、B は全て SSet.{u}。
+
+```lean
+simplicialSectionsMap_hasLiftingProperty {p : E ⟶ K} {q : E' ⟶ K}
+    (f : E ⟶ E') (hf : f ≫ q = p) (i : A ⟶ B) [HasLiftingProperty (K ◁ i) f] :
+    HasLiftingProperty i (simplicialSectionsMap f hf)
+simplicialSectionsMap_fibration {p : E ⟶ K} {q : E' ⟶ K}
+    (f : E ⟶ E') (hf : f ≫ q = p) [Fibration f] : Fibration (simplicialSectionsMap f hf)
+simplicialSectionsMap_trivialKanFibration {p : E ⟶ K} {q : E' ⟶ K}
+    (f : E ⟶ E') (hf : f ≫ q = p) [TrivialKanFibration f] :
+    TrivialKanFibration (simplicialSectionsMap f hf)
+```
+
+ホーンでは底との直積の anodyne 性、境界では直積の単射性を使う。
+前提は全空間間の写像 f の性質であり、p と q が left fibration であることだけでは代用しない。
+coherent な錐の切断模型との比較射の構成とその同値性、pinched Hom と導来ファイバーの主比較、
+𝒮・Sp の残りの ∞ 極限への適用は引き続き未完了である。
 
 ### 𝒮 の空積（実装済み）
 
