@@ -13138,5 +13138,44 @@ lemma pointedSpaceLeftCoherentComparison_eq_resolution (K : KanObject.{u}) :
 lemma pointedSpaceLeftCoherentComparison_isQCatEquivalence (K : KanObject.{u}) :
     IsQCatEquivalence (pointedSpaceLeftCoherentComparison K)
 
+def pinchedHomLeftMap {X Y : SSet.{u}} (f : X ⟶ Y) (x y : X _⦋0⦌) :
+    pinchedHomLeft x y ⟶
+      pinchedHomLeft (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)
+
+lemma pinchedHomLeft_eqToHom_app_val {X : SSet.{u}} {x y x' y' : X _⦋0⦌}
+    (hx : x = x') (hy : y = y') {n : ℕ} (s : (pinchedHomLeft x y) _⦋n⦌) :
+    pinchedLeftSimplexVal n
+      ((eqToHom (congrArg₂ (fun a b ↦ pinchedHomLeft a b) hx hy)).app (Opposite.op ⦋n⦌) s) =
+    pinchedLeftSimplexVal n s
+
+lemma pinchedHomLeftMap_app_val {X Y : SSet.{u}} (f : X ⟶ Y)
+    {x y : X _⦋0⦌} {n : ℕ} (s : (pinchedHomLeft x y) _⦋n⦌) :
+    pinchedLeftSimplexVal n ((pinchedHomLeftMap f x y).app (Opposite.op ⦋n⦌) s) =
+      f.app (Opposite.op ⦋n + 1⦌) (pinchedLeftSimplexVal n s)
+
+noncomputable def coherentLeftPinchedHomMap
+    {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) (x y : C) :
+    pinchedHomLeft (coherentNerveVertex x) (coherentNerveVertex y) ⟶
+      pinchedHomLeft (coherentNerveVertex (F.obj x)) (coherentNerveVertex (F.obj y))
+
+lemma coherentOppositeInverseSimplex_postcomp
+    {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) {n : ℕ}
+    (σ : (SimplicialNerve Cᵒᵖ) _⦋n⦌) :
+    (HomotopyLimits.coherentOppositeInverseSimplex σ).comp SSet F =
+      HomotopyLimits.coherentOppositeInverseSimplex
+        (σ.comp SSet (HomotopyLimits.coherentEnrichedFunctorOp F))
+
+lemma coherentLeftHomComparison_enriched_naturality
+    {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) (x y : C) :
+    HomotopyLimits.coherentLeftHomComparison x y ≫ coherentLeftPinchedHomMap F x y =
+      (SSet.uliftFunctor.{v, u}).map (SSet.opFunctor.map (F.map x y)) ≫
+        HomotopyLimits.coherentLeftHomComparison (F.obj x) (F.obj y)
+
 end SerrePositivity.InfinityCategories
 ```

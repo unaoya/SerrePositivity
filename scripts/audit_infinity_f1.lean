@@ -2702,3 +2702,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pointedSpaceLeftCoherentComparison_resolution
 #check @SerrePositivity.InfinityCategories.pointedSpaceLeftCoherentComparison_eq_resolution
 #check @SerrePositivity.InfinityCategories.pointedSpaceLeftCoherentComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.pinchedHomLeftMap
+#check @SerrePositivity.InfinityCategories.pinchedHomLeft_eqToHom_app_val
+#check @SerrePositivity.InfinityCategories.pinchedHomLeftMap_app_val
+#check @SerrePositivity.InfinityCategories.coherentLeftPinchedHomMap
+#check @SerrePositivity.InfinityCategories.coherentOppositeInverseSimplex_postcomp
+#check @SerrePositivity.InfinityCategories.coherentLeftHomComparison_enriched_naturality
