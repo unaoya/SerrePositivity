@@ -194,7 +194,15 @@ Map(F(x),y) 全体で、元の単位の代表、G による普遍標的辺、標
 族ごとに独立に三角形を選び直さず、図式は基準図式への前合成そのものとなる。
 `exists_functorDiagramPath_lift_relative` は単射に沿う図式制限の可逆 path を、既定の部分族と
 始点の図式を保って持ち上げる。制限後の path 自体を厳密に保持する。
-残る接続は、導来 fiber の path を三角形の境界全体の path へ組み込み、この相対持ち上げから
+三角形の境界を合成ホーンと対角辺の pushout として表示し、重なり上の一致を二端点だけで
+判定できる `triangleBoundaryDiagram` を構成した。三面の制限は全て厳密に回収する。
+`intervalFamilyPath` は区間族のホモトピーを、関手正方形の交換と curry によって矢印を動かす
+可逆 path の図式へ移す。始域・標的の頂点での縦 path は定値で、時間の始点・終点も
+それぞれ元の族の矢印表示に一致する。この変換には X の quasicategory 性も不要。
+`unitCompositionBoundaryPath` は標準単位比較の像から指定族へのホモトピーを、基準合成三角形の
+境界全体の可逆 path に組み込む。二つの合成辺を固定し、対角辺で与えられた path 自体を厳密に
+回収する。境界 path の始点は基準三角形の境界に厳密に一致する。
+残る接続は、境界 path を関手単体集合内の path へ移し、相対持ち上げを適用して三角形を運び、
 逆向きの比較と両合成のホモトピーを構成する部分である。合成の Hom の等式から三角形を
 族ごとに選ぶだけでは、与えられた path の情報を保つ保証はない。
 **比較射の逆射・両合成のホモトピーと同値性は未証明。** 順方向の射と終域の可縮性だけでは
@@ -207,8 +215,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2018 jobs）・公理監査（742 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 350 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2023 jobs）・公理監査（800 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 355 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -361,3 +369,8 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `FunctorCompositionTriangle.precomp` | 基準三角形のパラメータ制限、三辺の raw な前合成を保持 | 実装済み |
 | `unitIntervalCompositionTriangle`・`unitIntervalCompositionTriangle_family` と図式の公式 | 標準単位比較の基準合成三角形と任意の族への制限 | 実装済み |
 | `exists_functorDiagramPath_lift_relative` | 単射に沿う図式の可逆 path の相対持ち上げ、部分族・始点・制限後の path を保持 | 実装済み |
+| `triangleBoundary_bicartSq`・`triangleBoundary_isPushout`・`triangleDiagonalEndpoints_hom_ext` | 合成ホーンと対角辺による境界の pushout、重なりの二端点による判定 | 実装済み |
+| `triangleBoundaryDiagram` と三面の制限公式 | 指定された二辺と対角辺の図式を厳密に貼り合わせる | 実装済み |
+| `triangleBoundaryPath`・`triangleBoundaryPath_start` | 固定した二辺と動く対角辺の境界の path、始点の境界を回収 | 実装済み |
+| `intervalFamilyPath` と始点・終点・頂点の公式 | 区間族のホモトピーから矢印を動かす可逆 path の図式への変換 | 実装済み |
+| `unitCompositionBoundaryPath`・`unitCompositionBoundaryPath_diagonal/start` | 単位比較の像を動かすホモトピーを合成三角形の境界へ組み込む、実際の path と始点を保持 | 実装済み |

@@ -67,3 +67,8 @@ public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberComparison
 public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
 public import SerrePositivity.InfinityCategories.F1B.UnitCompositionTriangle
 public import SerrePositivity.InfinityCategories.F1B.FunctorDiagramPathLifting
+public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryDecomposition
+public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryGluing
+public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryPath
+public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyPath
+public import SerrePositivity.InfinityCategories.F1B.UnitCompositionBoundaryPath

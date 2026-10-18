@@ -456,3 +456,25 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitIntervalCompositionTriangle_family_diagram
 
 #check @SerrePositivity.InfinityCategories.exists_functorDiagramPath_lift_relative
+
+#check @SerrePositivity.InfinityCategories.triangleBoundary_isPushout
+
+#check @SerrePositivity.InfinityCategories.triangleBoundaryDiagram
+
+#check @SerrePositivity.InfinityCategories.triangleBoundaryDiagram_face_one
+
+#check @SerrePositivity.InfinityCategories.triangleBoundaryPath
+
+#check @SerrePositivity.InfinityCategories.triangleBoundaryPath_start
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyPath
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyPath_source
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyPath_start
+
+#check @SerrePositivity.InfinityCategories.unitCompositionBoundaryPath
+
+#check @SerrePositivity.InfinityCategories.unitCompositionBoundaryPath_diagonal
+
+#check @SerrePositivity.InfinityCategories.unitCompositionBoundaryPath_start

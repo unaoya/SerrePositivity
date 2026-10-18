@@ -81,4 +81,32 @@ noncomputable def FunctorCompositionTriangle.precomp {A B X : SSet.{u}}
     rw [uncurry_pre_app, uncurry_curry, uncurry_curry]
     exact hl.symm
 
+/-- 概要：合成三角形の最初の頂点は前辺の始点。
+方針：第 2 面の式と前辺のホモトピーの始点を使う。
+規約：零単体への射としての厳密な等式。
+使われ方：対角辺の path と固定二辺の始点の貼り合わせ。 -/
+lemma FunctorCompositionTriangle.vertex_zero {A X : SSet.{u}} {U V W : A ⟶ X}
+    {l : SSet.Homotopy U V} {r : SSet.Homotopy V W} {d : SSet.Homotopy U W}
+    (T : FunctorCompositionTriangle l r d) :
+    stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3) ≫ T.diagram =
+      SSet.const (functorVertex U) := by
+  rw [T.face_two]
+  apply SSet.yonedaEquiv.injective
+  change ((ihom A).obj X).δ 1 (SSet.yonedaEquiv (curry l.h)) = functorVertex U
+  exact (functorEdgeOfSimplicialHomotopy l).src_eq
+
+/-- 概要：合成三角形の最後の頂点は後辺の終点。
+方針：第 0 面の式と後辺のホモトピーの終点を使う。
+規約：零単体への射としての厳密な等式。
+使われ方：対角辺の path と固定二辺の終点の貼り合わせ。 -/
+lemma FunctorCompositionTriangle.vertex_two {A X : SSet.{u}} {U V W : A ⟶ X}
+    {l : SSet.Homotopy U V} {r : SSet.Homotopy V W} {d : SSet.Homotopy U W}
+    (T : FunctorCompositionTriangle l r d) :
+    stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (0 : Fin 3) ≫ T.diagram =
+      SSet.const (functorVertex W) := by
+  rw [T.face_zero]
+  apply SSet.yonedaEquiv.injective
+  change ((ihom A).obj X).δ 0 (SSet.yonedaEquiv (curry r.h)) = functorVertex W
+  exact (functorEdgeOfSimplicialHomotopy r).tgt_eq
+
 end SerrePositivity.InfinityCategories
