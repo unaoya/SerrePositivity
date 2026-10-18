@@ -6046,5 +6046,97 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_standardTarget 
     ∀ {X : SSet.{u}} (f : X ⟶ Δ[n]),
       IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
 
+lemma isPrecompositionEquivalence_over_natComponent_of_pushout
+    {S : SSet.{u}} {F G : Over S ⥤ SSet.{u}} (τ : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape WalkingSpan F] [PreservesColimitsOfShape WalkingSpan G]
+    {A B C D : Over S} {i : A ⟶ B} [Mono i] {g : A ⟶ C} {r : B ⟶ D} {s : C ⟶ D}
+    (hp : IsPushout i g r s) (hA : IsPrecompositionEquivalence (τ.app A))
+    (hB : IsPrecompositionEquivalence (τ.app B)) (hC : IsPrecompositionEquivalence (τ.app C)) :
+    IsPrecompositionEquivalence (τ.app D)
+
+lemma isPrecompositionEquivalence_over_natComponent_skeleton_succ
+    {S : SSet.{u}} {F G : Over S ⥤ SSet.{u}} (τ : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape WalkingSpan F] [PreservesColimitsOfShape WalkingSpan G]
+    [∀ J : Type u, PreservesColimitsOfShape (WidePushoutShape J) F]
+    [∀ J : Type u, PreservesColimitsOfShape (WidePushoutShape J) G]
+    (h0 : IsPrecompositionEquivalence (τ.app (⊥_ (Over S))))
+    {A X : SSet.{u}} (i : A ⟶ X) [Mono i] (f : X ⟶ S) (d : ℕ)
+    (hprev : IsPrecompositionEquivalence
+      (τ.app (Over.mk ((skeletonOfMono i d).ι ≫ f))))
+    (hboundary : ∀ c : Cell i d, IsPrecompositionEquivalence
+      (τ.app (Over.mk ((boundary d).ι ≫ c.map ≫ f))))
+    (hcell : ∀ c : Cell i d, IsPrecompositionEquivalence (τ.app (Over.mk (c.map ≫ f)))) :
+    IsPrecompositionEquivalence (τ.app (Over.mk ((skeletonOfMono i (d + 1)).ι ≫ f)))
+
+lemma isPrecompositionEquivalence_over_natComponent_of_stdSimplex
+    {S : SSet.{u}} {F G : Over S ⥤ SSet.{u}} (τ : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape WalkingSpan F] [PreservesColimitsOfShape WalkingSpan G]
+    [PreservesColimitsOfShape ℕ F] [PreservesColimitsOfShape ℕ G]
+    [∀ J : Type u, PreservesColimitsOfShape (WidePushoutShape J) F]
+    [∀ J : Type u, PreservesColimitsOfShape (WidePushoutShape J) G]
+    (h0 : IsPrecompositionEquivalence (τ.app (⊥_ (Over S))))
+    (hstd : ∀ (d : ℕ) (p : (Δ[d] : SSet.{u}) ⟶ S),
+      IsPrecompositionEquivalence (τ.app (Over.mk p)))
+    (X : SSet.{u}) (f : X ⟶ S) : IsPrecompositionEquivalence (τ.app (Over.mk f))
+
+noncomputable def overPullbackUnderlying {M S : SSet.{u}} (p : M ⟶ S) : Over S ⥤ SSet.{u}
+
+lemma overPullbackUnderlying_map_fst {M S : SSet.{u}} (p : M ⟶ S)
+    {a b : Over S} (u : a ⟶ b) :
+    (overPullbackUnderlying p).map u ≫ pullback.fst b.hom p = pullback.fst a.hom p ≫ u.left
+
+lemma overPullbackUnderlying_map_snd {M S : SSet.{u}} (p : M ⟶ S)
+    {a b : Over S} (u : a ⟶ b) :
+    (overPullbackUnderlying p).map u ≫ pullback.snd b.hom p = pullback.snd a.hom p
+
+noncomputable def overPullbackProjection {M S : SSet.{u}} (p : M ⟶ S) :
+    overPullbackUnderlying p ⟶ Over.forget S
+
+lemma overPullbackProjection_isPullback {M S : SSet.{u}} (p : M ⟶ S)
+    {a b : Over S} (u : a ⟶ b) :
+    IsPullback ((overPullbackUnderlying p).map u) (pullback.fst a.hom p)
+      (pullback.fst b.hom p) u.left
+
+instance overPullbackUnderlying_preservesMonomorphisms {M S : SSet.{u}} (p : M ⟶ S) :
+    (overPullbackUnderlying p).PreservesMonomorphisms
+
+noncomputable def overPullbackUnderlying_isColimit {M S : SSet.{u}} (p : M ⟶ S)
+    {J : Type v} [Category.{w} J] [Small.{u} J] {D : J ⥤ Over S}
+    (c : Cocone D) (hc : IsColimit c) : IsColimit ((overPullbackUnderlying p).mapCocone c)
+
+instance overPullbackUnderlying_preservesColimitsOfShape {M S : SSet.{u}} (p : M ⟶ S)
+    (J : Type v) [Category.{w} J] [Small.{u} J] :
+    PreservesColimitsOfShape J (overPullbackUnderlying p)
+
+noncomputable def overPullbackMap {S : SSet.{u}} {a b : Over S} (u : a ⟶ b) (z : Over S) :
+    (overPullbackUnderlying a.hom).obj z ⟶ (overPullbackUnderlying b.hom).obj z
+
+lemma overPullbackMap_fst {S : SSet.{u}} {a b : Over S} (u : a ⟶ b) (z : Over S) :
+    overPullbackMap u z ≫ pullback.fst z.hom b.hom = pullback.fst z.hom a.hom
+
+lemma overPullbackMap_snd {S : SSet.{u}} {a b : Over S} (u : a ⟶ b) (z : Over S) :
+    overPullbackMap u z ≫ pullback.snd z.hom b.hom = pullback.snd z.hom a.hom ≫ u.left
+
+lemma overPullbackMap_naturality {S : SSet.{u}} {a b z w : Over S}
+    (u : a ⟶ b) (v : z ⟶ w) :
+    (overPullbackUnderlying a.hom).map v ≫ overPullbackMap u w =
+      overPullbackMap u z ≫ (overPullbackUnderlying b.hom).map v
+
+noncomputable def overPullbackMapNat {S : SSet.{u}} {a b : Over S} (u : a ⟶ b) :
+    overPullbackUnderlying a.hom ⟶ overPullbackUnderlying b.hom
+
+lemma isPrecompositionEquivalence_overPullbackMap_initial
+    {S : SSet.{u}} {a b : Over S} (u : a ⟶ b) :
+    IsPrecompositionEquivalence (overPullbackMap u (⊥_ (Over S)))
+
+lemma isPrecompositionEquivalence_of_pullback_stdSimplex
+    {S : SSet.{u}} {a b : Over S} (u : a ⟶ b)
+    (hstd : ∀ (n : ℕ) (p : (Δ[n] : SSet.{u}) ⟶ S),
+      IsPrecompositionEquivalence (overPullbackMap u (Over.mk p))) :
+    IsPrecompositionEquivalence u.left
+
 end SerrePositivity.InfinityCategories
 ```
