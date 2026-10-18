@@ -44,3 +44,7 @@ public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluation
 public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
 public import SerrePositivity.InfinityCategories.F1B.ConstantUnitFormula
 public import SerrePositivity.InfinityCategories.F1B.PointwiseUnitComparison
+public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.InnerProductProjection
+public import SerrePositivity.InfinityCategories.F1B.UnitComma
+public import SerrePositivity.InfinityCategories.F1B.UniversalUnitComma

@@ -15,7 +15,7 @@ sorry・追加公理・文献入力は使わない。実施の経緯はコミッ
 
 | 工程 | 成果 | 原典 |
 | --- | --- | --- |
-| B1 | 単位・余単位と h Fun の三角恒等式、写像空間との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 |
+| B1 | 単位・余単位と h Fun の三角恒等式、写像空間との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 |
 | B2 | 充満部分単体集合への反射、局所対象、冪等性、反射的局所化の普遍性 | Kerodon §6.2.2–6.2.4、[§6.3.1](https://kerodon.net/tag/01ME)・§6.3.3 / HTT §5.2.7 |
 | B3 | right cofinal の定義、Quillen A、A2h の始対象による極限計算との整合 | Kerodon Def 7.2.1.1、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 |
 | B4 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在 | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 |
@@ -137,14 +137,30 @@ pinched 模型へ移した `unitPinchedMap` は、**pinchedHomMap G の後に単
 述べる型であり、全パラメータ A の条件を定義に追加しない。区間模型の標準比較による
 条件との同値も証明した。随伴からこの条件への順方向（Cor 6.2.6.5 の (1)⇒(2)）は実装済み。
 
+局所存在のための comma の図式を構成した。`unitComma G` は区間の境界制限を
+`X×Y → Fun(∂Δ[1],X)` に引き戻した単体集合で、矢印 x→G(y) の coherent な族を保持する。
+端点の組と始域への射影は inner fibration、X,Y が quasicategory なら全体と固定始域の
+fiber も quasicategory である。ここで用いる直積の第一射影の inner fibration 性も F1B 内で証明した。
+`functorHomHomotopy` は非可逆な二胞体の実際のホモトピー代表を選び、元の二胞体と各点の
+評価を回収する。この代表によって `unitCommaSection η` を構成し、始域への厳密な切断であり、
+標的関手が指定された F であることを証明した。
+`universalUnitComma G` は、自身の始域の fiber 内で始対象である頂点が張る全部分単体集合。
+`UnitCommaInitialCondition η` は単位の成分がその頂点条件を満たすことを述べ、指定した x 上の
+`unitCommaSectionVertex η x` の始対象性との同値も証明した。この中間条件の下で単位の切断を
+普遍矢印へ制限し、始域射影の inner fibration 性・頂点上の全射性と標的関手 F の回収を得た。
+**これだけから射影の同値性を主張しない。** 充満忠実性または外側ホーンを含む相対充填が残る。
+原典 Prop 6.2.6.1 の証明は relative join の cartesian fibration を使う。現在の境界引き戻しの
+区間 comma 模型について、その cartesian な輸送や原典模型との比較はまだ実装していない。
+
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
 `∃ a : QCatAdjunction F G, a.unitHom = η` を構成する逆方向である。
-既存の全パラメータ版を使う経路では、各点の同値性を全ての A と非定値 U,V の比較へ
-拡張する局所存在・関手の族の構成が必要。全パラメータ版の十分条件で原典の各点の条件を
-置き換えて B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（1966 jobs）・公理監査（494 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 298 モジュールに straightening 依存がないことも確認した。
+comma の経路では、各点の比較の同値性から `UnitCommaInitialCondition η` を導き、普遍矢印の
+射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
+既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
+B1 完了とはしない。B2〜B5 も未完了。
+対象ビルド（1971 jobs）・公理監査（545 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 303 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -257,5 +273,16 @@ B1 の逆方向全体は未完了。残るのは、自然な各点の pinched �
 | `unitPinchedMap`・`unitPinchedMap_formula`・`QCatAdjunction.unitPinchedMapIso` | pinched 模型の標準単位比較、原典の合成の公式、既存の adjunct との同型 | 実装済み |
 | `UnitMappingSpaceCondition`・`unitMappingSpaceCondition_iff_interval` | 全 x,y のみの標準比較の同値条件、模型独立性 | 実装済み |
 | `QCatAdjunction.unitMappingSpaceCondition` | 随伴の単位は各点の標準比較の同値条件を満たす（Cor 6.2.6.5 (1)⇒(2)） | 実装済み |
+| `functorHomHomotopy`・`functorHomHomotopy_hom`・`functorHomHomotopy_component` | 任意の二胞体の実際の代表と、類・各点の評価の回収 | 実装済み |
+| `innerFibration_productFst` | 第二因子が quasicategory である直積の第一射影は inner fibration | 実装済み |
+| `unitCommaBoundary`・`unitComma`・`unitCommaArrow/Pair/Source/Target` | x→G(y) の区間 comma とその射影 | 実装済み |
+| `unitCommaPair_innerFibration`・`unitCommaSource_innerFibration`・`unitComma_quasicategory` | 端点の組・始域の射影の充填性と全体の quasicategory 性 | 実装済み |
+| `unitCommaLift` と矢印・端点・始域・標的の公式 | a→G∘b のホモトピーから comma 値の図式を構成 | 実装済み |
+| `unitCommaSection`・`unitCommaSection_source/target` | 指定単位による厳密な切断、標的 F の回収 | 実装済み |
+| `unitCommaFiber`・`unitCommaFiber_quasicategory`・`unitCommaSectionVertex` | 固定始域の fiber と単位の成分の頂点 | 実装済み |
+| `IsUniversalUnitCommaVertex`・`universalUnitComma`・`UnitCommaInitialCondition` | fiber 内の始対象条件とその頂点が張る全部分単体集合 | 実装済み |
+| `unitCommaInitialCondition_iff` | 始対象条件を指定した x 上の単位の頂点で表示 | 実装済み |
+| `universalUnitCommaProjection_innerFibration`・`universalUnitCommaSection` と射影・標的の公式 | 中間始対象条件の下での普遍矢印への切断と inner fibration 性 | 実装済み |
+| `universalUnitCommaProjection_surjective` | 同じ条件の下での始域射影の頂点上全射性（同値性は未証明） | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |

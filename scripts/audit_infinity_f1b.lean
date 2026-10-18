@@ -324,3 +324,59 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitMappingSpaceCondition_iff_interval
 
 #check @SerrePositivity.InfinityCategories.QCatAdjunction.unitMappingSpaceCondition
+
+#check @SerrePositivity.InfinityCategories.functorHomHomotopy
+
+#check @SerrePositivity.InfinityCategories.functorHomHomotopy_hom
+
+#check @SerrePositivity.InfinityCategories.simplicialHomotopyOfFunctorEdge_of_homotopy
+
+#check @SerrePositivity.InfinityCategories.functorHomEvaluate_homotopy
+
+#check @SerrePositivity.InfinityCategories.functorHomHomotopy_component
+
+#check @SerrePositivity.InfinityCategories.innerFibration_productFst
+
+#check @SerrePositivity.InfinityCategories.unitCommaBoundary
+
+#check @SerrePositivity.InfinityCategories.unitComma
+
+#check @SerrePositivity.InfinityCategories.unitCommaPair_innerFibration
+
+#check @SerrePositivity.InfinityCategories.unitCommaSource_innerFibration
+
+#check @SerrePositivity.InfinityCategories.unitComma_quasicategory
+
+#check @SerrePositivity.InfinityCategories.unitCommaLift
+
+#check @SerrePositivity.InfinityCategories.unitCommaLift_arrow
+
+#check @SerrePositivity.InfinityCategories.unitCommaSection
+
+#check @SerrePositivity.InfinityCategories.unitCommaSection_source
+
+#check @SerrePositivity.InfinityCategories.unitCommaSection_target
+
+#check @SerrePositivity.InfinityCategories.unitCommaFiber
+
+#check @SerrePositivity.InfinityCategories.unitCommaFiber_quasicategory
+
+#check @SerrePositivity.InfinityCategories.unitCommaSectionVertex
+
+#check @SerrePositivity.InfinityCategories.IsUniversalUnitCommaVertex
+
+#check @SerrePositivity.InfinityCategories.universalUnitComma
+
+#check @SerrePositivity.InfinityCategories.universalUnitCommaProjection_innerFibration
+
+#check @SerrePositivity.InfinityCategories.UnitCommaInitialCondition
+
+#check @SerrePositivity.InfinityCategories.unitCommaInitialCondition_iff
+
+#check @SerrePositivity.InfinityCategories.universalUnitCommaSection
+
+#check @SerrePositivity.InfinityCategories.universalUnitCommaSection_projection
+
+#check @SerrePositivity.InfinityCategories.universalUnitCommaSection_target
+
+#check @SerrePositivity.InfinityCategories.universalUnitCommaProjection_surjective
