@@ -2559,3 +2559,48 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.normalizedEZHomotopy_square
 #print axioms SerrePositivity.KST.ProExcision.normalizedEZHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalX
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalX
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalVertex
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalVertex
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalEdge
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalEdge
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalBoundary
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalBoundary
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalBoundary_edge
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalBoundary_edge
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalD
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalD
+
+#check @SerrePositivity.KST.ProExcision.integerChainInterval
+#print axioms SerrePositivity.KST.ProExcision.integerChainInterval
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalWeight
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalWeight
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalWeight_vertices
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalWeight_vertices
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalWeight_triangle
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalWeight_triangle
+
+#check @SerrePositivity.KST.ProExcision.normalizedMapReconstruct
+#print axioms SerrePositivity.KST.ProExcision.normalizedMapReconstruct
+
+#check @SerrePositivity.KST.ProExcision.normalizedMapReconstruct_map
+#print axioms SerrePositivity.KST.ProExcision.normalizedMapReconstruct_map
+
+#check @SerrePositivity.KST.ProExcision.normalizedMap_eq_of_map_eq
+#print axioms SerrePositivity.KST.ProExcision.normalizedMap_eq_of_map_eq
+
+#check @SerrePositivity.KST.ProExcision.normalizedMapReconstruct_of_map
+#print axioms SerrePositivity.KST.ProExcision.normalizedMapReconstruct_of_map
+
+#check @SerrePositivity.KST.ProExcision.normalizedMapReconstruct_comp
+#print axioms SerrePositivity.KST.ProExcision.normalizedMapReconstruct_comp

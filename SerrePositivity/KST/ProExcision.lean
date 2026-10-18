@@ -145,3 +145,6 @@ public import SerrePositivity.KST.ProExcision.TensorHomotopyNaturality
 public import SerrePositivity.KST.ProExcision.MooreTensorHomotopyNaturality
 public import SerrePositivity.KST.ProExcision.ChainHomotopySquare
 public import SerrePositivity.KST.ProExcision.NormalizedEZHomotopyNaturality
+public import SerrePositivity.KST.ProExcision.IntegerChainInterval
+public import SerrePositivity.KST.ProExcision.IntegerIntervalWeights
+public import SerrePositivity.KST.ProExcision.NormalizedMapReconstruction

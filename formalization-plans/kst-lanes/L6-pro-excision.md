@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと904宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと919宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -192,6 +192,9 @@
 | chainIntegerTensorMooreRetraction_naturality | MooreTensorHomotopyNaturality.lean | 検証済み | Moore 収縮の全テンソルの両入力に関する自然性 |
 | ChainHomotopySquare / ChainHomotopySquare.compLeft / ChainHomotopySquare.compRight | ChainHomotopySquare.lean | 検証済み | 構成済みホモトピーの自然性の合成則 |
 | normalizedEZHomotopy_square | NormalizedEZHomotopyNaturality.lean | 検証済み | 正規化 EZ ホモトピー全体の両入力に関する自然性 |
+| integerChainInterval / integerIntervalBoundary_edge | IntegerChainInterval.lean | 検証済み | 二頂点と一辺の実整数鎖区間 |
+| integerIntervalWeight_vertices / integerIntervalWeight_triangle | IntegerIntervalWeights.lean | 検証済み | 頂点の差の境界と三頂点の望遠鏡相殺 |
+| normalizedMapReconstruct / normalizedMapReconstruct_comp | NormalizedMapReconstruction.lean | 検証済み | Dold–Kan の実同値からの単体的射の復元と合成則 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
@@ -704,3 +707,22 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 
 - `normalizedEZHomotopy_square` は両入力の任意の射に関する正規化比較ホモトピーの成分の自然性。外部群の作用の各射へ適用することで、採用済み A.5 に必要な比較の同変性を導く。
 - L6c の次の主工程は正規化した低次補正式と単体的区間の間の復元。Dold–Kan の充満忠実性を使い、区間の正規化から鎖ホモトピーを実際の単体的区間写像へ戻す。A.5 の完成と表示するのは μ と T の対角への移送・両端・同変性が揃ってから。
+
+
+## 単体的区間への復元の具体的な工程
+
+- Dold–Kan の充満忠実性に渡す前に、実鎖写像 N(C(X)⊗ℤΔ¹)→N(D) を構成する。
+- 中間の整数鎖区間 I は I₀=ℤ{v₀,v₁}、I₁=ℤ{e}、Iₙ=0 (n≥2)、d(e)=v₁−v₀。
+- 単体的 Δ¹ の交代面複体から I への比較は、零次で頂点を同定し、一次の単体 f:[1]→[1] を (f(1)−f(0))e に送り、高次数を零にする。
+- 二次の微分との可換性は (f(2)−f(1))−(f(2)−f(0))+(f(1)−f(0))=0 の望遠鏡相殺。一次では四通りの頂点の値から終点−始点の公式を検証する。
+- 鎖ホモトピー H:f≃g に対し、N(C(X))⊗I から N(D) への評価は v₀ で f、v₁ で g、第一因子の次数 p と辺 e の成分で (−1)^(p+1)H_p とする。
+- この符号で、水平微分の符号と d(e)=v₁−v₀ が H の式 f−g=dH+Hd に一致することを紙で確認した。
+- 実 AW により K(C(X)⊗ℤΔ¹)→K(C(X))⊗K(ℤΔ¹) とし、第一因子の Moore 射影と区間の比較を合成する。始域には N からの包含を置く。
+- 区間の両端では、AW のうち区間次数0の項だけが残るため、第一因子の包含・射影の分裂を使って f と g に一致する。
+- 最後に N の充満性で実単体的な区間射へ戻し、忠実性で両端と入力射に関する自然性を検証する。
+- 低次数での正規化した射の一致を単体的各次数の一致へ戻す補題も必要。退化分解が次数 n 以下の正規化成分だけを使うことを明示的に証明する。
+- この復元はこれから実装する工程であり、最終 A.5 の完成とはまだ表示しない。
+
+- 復元の基礎部：`integerChainInterval` の実二項複体、辺の境界、重みの一次・二次の公式を実装済み。
+- `normalizedMapReconstruct` は Mathlib の Dold–Kan の実同値の充満性から鎖写像を実単体的射へ戻す。`normalizedMapReconstruct_map`、`normalizedMap_eq_of_map_eq`、`normalizedMapReconstruct_comp` も証明済み。
+- ただし ℤΔ¹ からこの鎖区間への実鎖写像、ホモトピーによる全テンソルの評価、両端の公式は未完であり、A.5 の区間復元完了とは表示しない。
