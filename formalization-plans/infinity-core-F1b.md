@@ -256,8 +256,15 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 入力の右辺の図式そのものを回収する。`unitCommaSquareComparisonHomotopy` はこの構成の適用であり、
 `unitCommaMappingComparisonHomotopy` と導来 fiber への順方向射は現在こちらを使う。
 `unitCommaMappingComparisonHomotopy_square` は普遍族上でも右辺の図式との厳密な一致を保証する。
-**正方形全体と順方向比較の境界 path の一致は接続済み。復元側の指定境界輸送との比較と
-両合成のホモトピーは未完了。** 独立な二経路の合成との同一視は用いず、path の選択も混同しない。
+`pointwiseHomotopyPath` は点ごとに可逆なホモトピーを、raw なホモトピーを回収できる可逆 path
+にする。`relativeHomotopy_pointwise_isInvertible` と `squareThreeEdges_vertex_surjective` により、
+三辺固定の正方形全体の比較に適用できる。`ThreeEdgeSquareComparison.path` は始点・終点を
+厳密に保持し、三辺上では path 全体が定値となる（`path_restriction`）。
+`path_right`・`unitCommaSquareComparisonPath_right`・`unitCommaMappingComparisonHomotopy_path` は
+その右辺が順方向比較の `intervalFamilyPath` 自体に一致することを、普遍族上でも保証する。
+**正方形全体の可逆 path と順方向比較の境界 path の一致は接続済み。復元側の指定境界輸送との
+比較と両合成のホモトピーは未完了。** 次の接続は、同じ始点・境界 path を持つ二つの輸送を
+相対 path 写像の可縮 fiber で比較すること。独立な二経路の合成との同一視や path の混同は用いない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -266,8 +273,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2047 jobs）・公理監査（1118 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 379 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2050 jobs）・公理監査（1141 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 382 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -459,3 +466,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `ThreeEdgeSquareComparison.bottom/left/top`・`rightSquare` と四辺の公式 | 三辺固定の全体比較から右辺を取り出し、四辺の代表と両端固定を確認 | 実装済み |
 | `ThreeEdgeSquareComparison.familyHomotopy`・`familyHomotopy_square` | 右辺を写像空間の族の経路へ戻し、元の図式を厳密に回収 | 実装済み |
 | `unitCommaSquareComparisonHomotopy`・`_square`・`unitCommaMappingComparisonHomotopy_square` | 現行順方向比較の path と普遍正方形の全体比較の右辺の厳密な一致 | 実装済み（復元側との比較は未証明） |
+| `pointwiseHomotopyPath` と包含・端点・raw なホモトピーの回収・相対制限の公式 | 指定ホモトピーから実際の可逆 path へ移し、元の図式と固定部分図式を保持 | 実装済み |
+| `relativeHomotopy_vertex_edge_eq_id`・`relativeHomotopy_pointwise_isInvertible`・`squareThreeEdges_vertex_surjective` | 全頂点を含む部分図式を固定した変形の垂直辺の可逆性、正方形への適用 | 実装済み |
+| `ThreeEdgeSquareComparison.path` と始点・終点・三辺の固定・右辺の公式 | 全体図式の可逆 path、順方向比較の境界 path 自体との一致 | 実装済み |
+| `unitCommaSquareComparisonPath` と端点・右辺の公式・`unitCommaMappingComparisonHomotopy_path` | 元の comma 正方形へ進む全体可逆 path、普遍族の順方向比較との厳密な整合 | 実装済み（輸送の一意性への適用と逆関係は未証明） |

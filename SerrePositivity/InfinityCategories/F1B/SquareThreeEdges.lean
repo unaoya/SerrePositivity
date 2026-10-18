@@ -47,6 +47,22 @@ noncomputable def squareThreeEdgesLeft : (Δ[1] : SSet.{u}) ⟶ squareThreeEdges
 noncomputable def squareThreeEdgesTop : (Δ[1] : SSet.{u}) ⟶ squareThreeEdges :=
   Subcomplex.lift SSet.ι₁ le_sup_right
 
+/-- 概要：固定する三辺は正方形の全頂点を含む。
+方針：縦座標が零なら下辺、一なら上辺から持ち上げる。
+規約：高次単体での全射性は主張しない。
+使われ方：三辺固定の全体ホモトピーの点ごとの可逆性。 -/
+lemma squareThreeEdges_vertex_surjective :
+    Function.Surjective (squareThreeEdges.{u}.ι.app (Opposite.op ⦋0⦌)) := by
+  rintro ⟨s, t⟩
+  obtain ⟨j, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective t
+  refine ⟨⟨(s, stdSimplex.obj₀Equiv.symm j), ?_⟩, rfl⟩
+  change ((∃ e, (SSet.ι₀ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]).app _ e = _) ∨
+    (∃ e, (prismEndpoint 0 (Δ[1] : SSet.{u})).app _ e = _)) ∨
+      (∃ e, (SSet.ι₁ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]).app _ e = _)
+  fin_cases j
+  · exact Or.inl (Or.inl ⟨s, rfl⟩)
+  · exact Or.inr ⟨s, rfl⟩
+
 /-- 概要：三つの辺で一致する正方形の図式は三辺の部分図式で一致する。
 方針：和の各単体をいずれかの辺からの像として表す。
 規約：値域に quasicategory 性は不要。

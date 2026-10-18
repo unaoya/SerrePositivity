@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareDeformation
 public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquareBoundary
+public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquarePath
 
 /-!
 概要：正方形全体の三辺固定比較から単位比較の経路を取り出す。
@@ -43,5 +44,56 @@ lemma unitCommaSquareComparisonHomotopy_square {A X Y : SSet.{u}}
     intervalFamilySquare (unitCommaSquareComparisonHomotopy η x w s) =
       (unitCommaSquareComparison η x w s).rightSquare :=
   ThreeEdgeSquareComparison.familyHomotopy_square _ _ _ _ _
+
+/-- 概要：単位の基準正方形から元の comma 正方形への実際の可逆 path。
+方針：三辺固定の全体比較を、同じ raw なホモトピーを保って持ち上げる。
+規約：境界の経路とは独立な代表を選ばない。
+使われ方：復元側の指定境界輸送との比較。 -/
+noncomputable def unitCommaSquareComparisonPath {A X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌)
+    (w : (unitCommaFiber G x) _⦋0⦌)
+    (s : UnitCommaFiberSquare G x (unitCommaSectionVertex η x) w A) :
+    (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ equivalencePath ((ihom A).obj X) :=
+  (unitCommaSquareComparison η x w s).path
+
+/-- 概要：単位の全体 path の始点は基準三角形から補完した正方形。
+方針：全体比較の path の始点の公式を使う。
+規約：始点の厳密な等式。
+使われ方：同じ始点からの境界輸送の一意性。 -/
+lemma unitCommaSquareComparisonPath_zero {A X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌)
+    (w : (unitCommaFiber G x) _⦋0⦌)
+    (s : UnitCommaFiberSquare G x (unitCommaSectionVertex η x) w A) :
+    unitCommaSquareComparisonPath η x w s ≫ equivalencePathEndpoint _ 0 =
+      (functorSquareOfCompositionTriangle (unitIntervalCompositionTriangle_family η x
+        (unitCommaFiberTargetVertex G x w) (unitCommaSquareTargetFamily η x w s))).diagram :=
+  ThreeEdgeSquareComparison.path_zero _
+
+/-- 概要：単位の全体 path の終点は元の comma の関手正方形。
+方針：全体比較の path の終点の公式を使う。
+規約：終点の厳密な等式。
+使われ方：元の正方形の回収。 -/
+lemma unitCommaSquareComparisonPath_one {A X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌)
+    (w : (unitCommaFiber G x) _⦋0⦌)
+    (s : UnitCommaFiberSquare G x (unitCommaSectionVertex η x) w A) :
+    unitCommaSquareComparisonPath η x w s ≫ equivalencePathEndpoint _ 1 = s.functorSquare :=
+  ThreeEdgeSquareComparison.path_one _
+
+/-- 概要：単位の全体 path の右辺は順方向比較に使う経路の path そのもの。
+方針：全体 path の右辺と、族に移した経路の厳密な回収公式を使う。
+規約：実際の可逆 path の等式で、経路の類だけを比較しない。
+使われ方：復元側の指定境界輸送と同じ path での全体図式の比較。 -/
+lemma unitCommaSquareComparisonPath_right {A X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌)
+    (w : (unitCommaFiber G x) _⦋0⦌)
+    (s : UnitCommaFiberSquare G x (unitCommaSectionVertex η x) w A) :
+    prismEndpoint 1 (Δ[1] : SSet.{u}) ≫ unitCommaSquareComparisonPath η x w s =
+      intervalFamilyPath (unitCommaSquareComparisonHomotopy η x w s) :=
+  ThreeEdgeSquareComparison.path_right _ _ _ _ _
 
 end SerrePositivity.InfinityCategories

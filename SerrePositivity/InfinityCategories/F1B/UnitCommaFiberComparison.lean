@@ -49,6 +49,18 @@ lemma unitCommaMappingComparisonHomotopy_square {X Y : SSet.{u}}
         (𝟙 (intervalMappingSpace (unitCommaSectionVertex η x) w)))).rightSquare :=
   unitCommaSquareComparisonHomotopy_square _ _ _ _
 
+/-- 概要：順方向比較の可逆 path は普遍正方形の全体 path の右辺そのもの。
+方針：終点の定値化が raw なホモトピーを変えないことと、右辺の path の公式を使う。
+規約：実際の可逆 path の厳密な一致。
+使われ方：復元側の指定境界輸送との比較の普遍族上の式。 -/
+lemma unitCommaMappingComparisonHomotopy_path {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (w : (unitCommaFiber G x) _⦋0⦌) :
+    prismEndpoint 1 (Δ[1] : SSet.{u}) ≫ unitCommaSquareComparisonPath η x w
+      (unitCommaFiberMappingSquare (𝟙 (intervalMappingSpace (unitCommaSectionVertex η x) w))) =
+        intervalFamilyPath (unitCommaMappingComparisonHomotopy η x w) :=
+  unitCommaSquareComparisonPath_right _ _ _ _
+
 /-- 概要：comma の区間写像空間から標準単位比較の導来 fiber への実際の射。
 方針：普遍正方形の標的とホモトピーで path 置換へ写し、右辺の固定頂点の fiber に入れる。
 規約：比較射が同値であるという追加仮定を置かず、ここでは同値性を結論しない。

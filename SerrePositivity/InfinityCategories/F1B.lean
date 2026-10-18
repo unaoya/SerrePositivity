@@ -96,3 +96,6 @@ public import SerrePositivity.InfinityCategories.F1B.SquareThreeEdges
 public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquareComparison
 public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquareBoundary
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareComparisonPath
+public import SerrePositivity.InfinityCategories.F1B.PointwiseHomotopyPath
+public import SerrePositivity.InfinityCategories.F1B.RelativeHomotopyInvertible
+public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquarePath
