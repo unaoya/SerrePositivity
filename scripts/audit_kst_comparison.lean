@@ -82,6 +82,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1022,6 +1023,66 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
 #print axioms SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
+
+
+-- FatRealization.lean
+
+#check @SerrePositivity.KST.Comparison.SimplexFace
+#print axioms SerrePositivity.KST.Comparison.SimplexFace
+
+#check @SerrePositivity.KST.Comparison.fatRowObject
+#print axioms SerrePositivity.KST.Comparison.fatRowObject
+
+#check @SerrePositivity.KST.Comparison.fatRelationObject
+#print axioms SerrePositivity.KST.Comparison.fatRelationObject
+
+#check @SerrePositivity.KST.Comparison.fatRelationLeft
+#print axioms SerrePositivity.KST.Comparison.fatRelationLeft
+
+#check @SerrePositivity.KST.Comparison.fatRelationRight
+#print axioms SerrePositivity.KST.Comparison.fatRelationRight
+
+#check @SerrePositivity.KST.Comparison.fatRealization
+#print axioms SerrePositivity.KST.Comparison.fatRealization
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_face
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_face
+
+
+-- FatRealizationDesc.lean
+
+#check @SerrePositivity.KST.Comparison.fatRealizationDesc
+#print axioms SerrePositivity.KST.Comparison.fatRealizationDesc
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_desc
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_desc
+
+#check @SerrePositivity.KST.Comparison.fatRealization_hom_ext
+#print axioms SerrePositivity.KST.Comparison.fatRealization_hom_ext
+
+#check @SerrePositivity.KST.Comparison.fatRealizationToDiagonal
+#print axioms SerrePositivity.KST.Comparison.fatRealizationToDiagonal
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_toDiagonal
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_toDiagonal
+
+
+-- FatRealizationFunctor.lean
+
+#check @SerrePositivity.KST.Comparison.fatRealizationMap
+#print axioms SerrePositivity.KST.Comparison.fatRealizationMap
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_map
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_map
+
+#check @SerrePositivity.KST.Comparison.fatRealizationFunctor
+#print axioms SerrePositivity.KST.Comparison.fatRealizationFunctor
+
+#check @SerrePositivity.KST.Comparison.fatRealizationToDiagonalNatTrans
+#print axioms SerrePositivity.KST.Comparison.fatRealizationToDiagonalNatTrans
 
 
 -- FiberwiseAnodyne.lean

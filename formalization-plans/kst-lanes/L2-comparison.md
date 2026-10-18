@@ -505,6 +505,15 @@ K の Kan 性や可縮性は使わず、標準単体とその境界の両方へ�
 この段階では比較写像の局所化可逆性や有限骨格のホモトピー引き戻し性を仮定しない。
 骨格の付着の普遍性と、その後の比較の可逆性は独立の証明項目として残す。
 
+### fat realization の各次数の標準形
+
+確認する文言：各次数 d の元は、全射 σ:[d]→[k] と Xₖ の d 単体の組で一意に表せる。
+証明方針：任意の t:[d]→[n] を Mathlib の epi–mono 分解 e≫i に分け、
+行の元 x を X(i)(x) へ制限する。面との合成では image(t≫θ)=image(t) を示し、
+image.ι と factorThruImage の輸送を照合して、余等化子の二射で標準形が等しいことを示す。
+全射のときの像は終域であることを使い、全射の標準形から各行への包含が逆写像になることを証明する。
+この標準形自体や比較の可逆性を、新しい仮定として導入しない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -643,6 +652,10 @@ Kan 分解は span の二面と、円筒への三頂点の四角形のホモト�
 任意の固定単体集合との直積がホモトピー引き戻しを保つことを証明した。
 各行と標準単体の積から対角模型への評価、自然性、dinatural な関係式、恒等単体の計算を証明した。
 dinatural な射の族を対角からの射へまとめる desc と、各行の復元・一意性を証明した。
+単射の面の関係式の余等化子として fat realization の実対象を構成した。
+各行の包含、面の関係式、desc の計算則と射の一意性、関手性を証明した。
+対角への実際の比較を自然変換とし、各行の評価との一致を証明した。
+fat realization の標準形、比較の局所化可逆性、有限骨格の帰納は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -650,8 +663,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 792 宣言の型と公理を確認した。
-さらに名前空間全体の 1456 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 809 宣言の型と公理を確認した。
+さらに名前空間全体の 1504 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -808,6 +821,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `tensorRight_isPullback`、`isHomotopyPullback_tensorRight` | 実装済み | 任意の固定単体集合との積の引き戻しの保存 |
 | `diagonalRowEvaluation`、`diagonalRowEvaluation_dinaturality` | 実装済み | 各行と標準単体の積から実際の対角への整合する射 |
 | `diagonalRowDesc`、`diagonalRowEvaluation_desc`、`diagonalRowDesc_unique` | 実装済み | 対角模型の行の余極限表示の普遍性 |
+| `SimplexFace`、`fatRelationLeft`、`fatRelationRight`、`fatRealization` | 実装済み | 単射の面の関係式による余等化子の実対象 |
+| `fatRealizationInclusion_face`、`fatRealizationDesc`、`fatRealization_hom_ext` | 実装済み | 面の関係式と余積・余等化子の普遍性 |
+| `fatRealizationFunctor`、`fatRealizationToDiagonalNatTrans` | 実装済み | 実際の関手と対角への自然な比較（可逆性は未証明） |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
