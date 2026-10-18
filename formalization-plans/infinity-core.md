@@ -4668,6 +4668,88 @@ lemma isQCatEquivalence_iff_equivalencePathReplacementMap {X Y : SSet.{u}}
 
 ```
 
+
+### A3e 続き：path 置換の inner fibration 性と頂点全射性（2026-10-18）
+
+区間の二端点の図式と、内ホーン上の prism の両端を固定した延長を実装。両端が quasicategory の関手の path による置換の終点評価は inner fibration となる。元の関手が本質的全射なら終点評価は頂点上で全射。Core 対象ビルド成功（1619 jobs）、累計725宣言の公理監査は標準3公理のみ。未完了：充満忠実性から全境界の持ち上げ性への移行、主定理の明示的な逆射、一般の同値による極限錐の保存・反映。§4 の変更なし。
+
+以下は新規15公開宣言の正確な型と全前提。共通の namespace は `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet`、`open scoped Simplicial`。
+
+IntervalBoundary：
+
+```lean
+lemma boundaryOne_simplex_constant {n : ℕ} (s : (boundary 1 : SSet.{u}) _⦋n⦌)
+    (j : Fin (n + 1)) : s.val j = s.val 0
+
+def intervalBoundaryDiagram {A Y : SSet.{u}} (f g : A ⟶ Y) :
+    (boundary 1 : SSet.{u}) ⊗ A ⟶ Y
+
+noncomputable def intervalBoundaryEndpoint (i : Fin 2) (A : SSet.{u}) :
+    A ⟶ (boundary 1 : SSet.{u}) ⊗ A
+
+lemma intervalBoundaryEndpoint_ι (i : Fin 2) (A : SSet.{u}) :
+    intervalBoundaryEndpoint i A ≫ ((boundary 1).ι ▷ A) = prismEndpoint i A
+
+lemma intervalBoundaryDiagram_zero {A Y : SSet.{u}} (f g : A ⟶ Y) :
+    intervalBoundaryEndpoint 0 A ≫ intervalBoundaryDiagram f g = f
+
+lemma intervalBoundaryDiagram_one {A Y : SSet.{u}} (f g : A ⟶ Y) :
+    intervalBoundaryEndpoint 1 A ≫ intervalBoundaryDiagram f g = g
+
+lemma intervalBoundaryDiagram_naturality {A B Y : SSet.{u}} (i : A ⟶ B) (f g : B ⟶ Y) :
+    ((boundary 1 : SSet.{u}) ◁ i) ≫ intervalBoundaryDiagram f g =
+      intervalBoundaryDiagram (i ≫ f) (i ≫ g)
+
+lemma intervalBoundaryDiagram_restrict {A Y : SSet.{u}}
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y) :
+    ((boundary 1).ι ▷ A) ≫ H =
+      intervalBoundaryDiagram (prismEndpoint 0 A ≫ H) (prismEndpoint 1 A ≫ H)
+
+```
+
+EquivalencePathInnerFibration：
+
+```lean
+lemma vertex_mem_horn (n : ℕ) (i : Fin (n + 3)) (v : (Δ[n + 2] : SSet.{u}) _⦋0⦌) :
+    v ∈ (horn (n + 2) i).obj (Opposite.op ⦋0⦌)
+
+lemma prism_extend_innerHorn_with_endpoints {Y : SSet.{u}} [Quasicategory Y]
+    {n : ℕ} (i : Fin (n + 1)) (h0 : 0 < i) (hn : i < Fin.last n)
+    (H : (Δ[1] : SSet.{u}) ⊗ (horn n i : SSet.{u}) ⟶ Y)
+    (f g : (Δ[n] : SSet.{u}) ⟶ Y)
+    (hf : prismEndpoint 0 (horn n i : SSet.{u}) ≫ H = (horn n i).ι ≫ f)
+    (hg : prismEndpoint 1 (horn n i : SSet.{u}) ≫ H = (horn n i).ι ≫ g) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Y,
+      (Δ[1] ◁ (horn n i).ι) ≫ F = H ∧
+      prismEndpoint 0 Δ[n] ≫ F = f ∧ prismEndpoint 1 Δ[n] ≫ F = g
+
+instance equivalencePathReplacementMap_innerFibration {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) :
+    InnerFibration (equivalencePathReplacementMap f)
+
+```
+
+EquivalencePathVertices：
+
+```lean
+def equivalencePathVertex {Y : SSet.{u}} {x y : Y _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj Y) x y)
+    (he : IsInvertibleEdge e) : (equivalencePath Y) _⦋0⦌
+
+lemma equivalencePathVertex_zero {Y : SSet.{u}} {x y : Y _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj Y) x y) (he : IsInvertibleEdge e) :
+    (equivalencePathEndpoint Y 0).app (Opposite.op ⦋0⦌) (equivalencePathVertex e he) = x
+
+lemma equivalencePathVertex_one {Y : SSet.{u}} {x y : Y _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj Y) x y) (he : IsInvertibleEdge e) :
+    (equivalencePathEndpoint Y 1).app (Opposite.op ⦋0⦌) (equivalencePathVertex e he) = y
+
+lemma IsEssentiallySurjective.equivalencePathReplacementMap_surjective {X Y : SSet.{u}}
+    [Quasicategory Y] {f : X ⟶ Y} (hf : IsEssentiallySurjective f) :
+    Function.Surjective ((equivalencePathReplacementMap f).app (Opposite.op ⦋0⦌))
+
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

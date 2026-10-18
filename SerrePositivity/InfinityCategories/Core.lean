@@ -37,3 +37,9 @@ public import SerrePositivity.InfinityCategories.Core.EquivalencePathLifting
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
 
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathReplacement
+
+public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
+
+public import SerrePositivity.InfinityCategories.Core.EquivalencePathInnerFibration
+
+public import SerrePositivity.InfinityCategories.Core.EquivalencePathVertices
