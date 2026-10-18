@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3840件で成功し、公開476宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3900件で成功し、公開496宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1654,9 +1654,46 @@ coherentPinchedStandardComparison (x y : D) :
 `coherentPinchedStandardComparison_comp` はこの射を `standardHomPinchedIso.hom` で戻すと
 元の `coherentPinchedComparison` に等しいという、実際の単体集合の射の等式である。
 
-残りは余単体的立方体模型 Q^• との比較、標準座標での射の実際の単体的ホモトピー逆、
+逆向きの射は F1 の確定済みの最大頂点の構成を再利用する。
+`standardHomToCoherentPinched x y` は、閉零射の圏の対象 x,y に対して
+持ち上げた `standardHomSpace x y` から `coherentPinchedHom x y` への実際の単体集合の射。
+台の単体は F1 の `coherentHomComparisonSimplex` そのものであり、
+`coherentNerveVertex_eq_vertex` で端点を同定する。
+`coherentHomComparisonSimplex_naturality` を使い、全ての面・退化との可換性も持つ。
+この射の定義だけではホモトピー逆であることを主張しない。
+
+```lean
+standardHomToCoherentPinched (x y : ClosedCategory R D) :
+  SSet.uliftFunctor.{v,u}.obj (standardHomSpace (R := R) (D := D) x y) ⟶
+    coherentPinchedHom (R := R) (D := D) x y
+```
+
+`maximumFlagOrder a S e` は、a から追加した最終点への Path の旗の各頂点から、
+最終点以外の最大の頂点を取る単調写像。`pathLastMaximumMap_cubeFlag` は F1 の実際の
+`pathLastMaximumMap` の値をこの添字写像に同定する。
+`maximumFlagOrder_le_iff` は最大値の上界を始点と既知の全内部点の上界で特徴づける。
+後から加える点が先行する点以下なら最大頂点は繰り返し、
+`cubeFlagEvaluation_maximum_zero_of_inversion` により最上位評価は零になる。
+昇順で加える場合は、最大頂点が始点、各内部点を順に通り、厳密単調となる。
+
+`cubeEvaluation_maximum` は全ての座標数 m、降順の番号付け `e : Fin m ≃ S`、
+標準 n 単体 σ に対して、次の等式を証明する。前提は `[CommRing R] [DGCategory R D]` のみ。
+
+```text
+cubeEvaluation e (pathCubeMap ≫ pathLastMaximumMap a ≫ yonedaEquiv.symm σ)
+  = degreeSign m • standardTopEval m
+      (standardPullback (maximumFlagOrder a S (Fin.revPerm.trans e)) σ).
+```
+
+昇順でない全ての旗が零となり、唯一の昇順の旗だけが残る。
+`revPerm_sign m` は反転の整数の置換符号が `degreeSign m = (−1)^(m choose 2)` に等しいことを
+二要素の組の個数から証明する。零次元も同じ式に含み、二の可逆性は使わない。
+この一般式を実際の比較射との合成に移すため、端点の型の移送と、昇順の旗の像が
+選んだ頂点集合に等しいことをまだ示す必要がある。
+
+残りはこの合成の同定、余単体的立方体模型 Q^• との比較と反対側の合成の単体的ホモトピー、
 Core の `pinchedHomMap coherentComparison` への移送と全頂点での充満忠実性、A3e の適用。
-比較射と成分表示の構成を、写像空間のホモトピー同値の証明としては数えない。
+逆向きの射と旗の評価の構成を、写像空間のホモトピー同値の証明としては数えない。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

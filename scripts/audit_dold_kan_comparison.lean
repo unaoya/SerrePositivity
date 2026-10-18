@@ -395,6 +395,18 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentNerveVertex_eq_vertex
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentNerveVertex_eq_vertex
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardCoherentPinchedSimplex
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardCoherentPinchedSimplex
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardHomToCoherentPinched
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardHomToCoherentPinched
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardHomToCoherentPinched_val
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardHomToCoherentPinched_val
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_coherentImage_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_coherentImage_zero
 
@@ -998,6 +1010,48 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum_zero_of_not_strictMono
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum_zero_of_not_strictMono
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_maximum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_maximum
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathSourceCoordinate
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathSourceCoordinate
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathSourceCoordinate_castSucc
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathSourceCoordinate_castSucc
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_le_iff
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_le_iff
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathLastMaximumMap_cubeFlag
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathLastMaximumMap_cubeFlag
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathSourceCoordinate_strictMono
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathSourceCoordinate_strictMono
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_succ_of_strictMono
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_succ_of_strictMono
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_strictMono
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_strictMono
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_repeat
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_repeat
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum_zero_of_inversion
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum_zero_of_inversion
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedModuleSubmodule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedModuleSubmodule
 
@@ -1267,6 +1321,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathSplitEnumeration_eq_descending
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.pathSplitEnumeration_eq_descending
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.finPairsLT_card
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.finPairsLT_card
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.revPerm_sign
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.revPerm_sign
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign

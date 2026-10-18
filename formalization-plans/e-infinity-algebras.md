@@ -168,6 +168,9 @@ coherentComparison_essentiallySurjective : IsEssentiallySurjective
 coherentPinchedStandardComparison (x y : D) :
   coherentPinchedHom (R := R) x y ⟶
     SSet.uliftFunctor.{v,u}.obj (standardHomSpace (R := R) x y)
+standardHomToCoherentPinched (x y : ClosedCategory R D) :
+  SSet.uliftFunctor.{v,u}.obj (standardHomSpace (R := R) (D := D) x y) ⟶
+    coherentPinchedHom (R := R) (D := D) x y
 ```
 
 Hom を実際の Mathlib Γ と自然同型で同定し、AW の全豊穣則と方程式の保存を証明済み。
@@ -180,10 +183,13 @@ Hom を実際の Mathlib Γ と自然同型で同定し、AW の全豊穣則と�
 γ1.5d では全頂点を対象から再構成する `coherentVertexEquiv` を構成し、本質的全射性を証明済み。
 `coherentPinchedComparison` は実際の pinched Hom の射、標準座標での各成分は N4 回収成分に
 `degreeSign (J.card−1)` を掛けた値。全ての面・退化と可換である。
-残りは Q^• との比較、各 pinched Hom の実際の単体的ホモトピー逆、全頂点での充満忠実性と ∞ 圏の同値。
+`standardHomToCoherentPinched` は F1 の確定済みの最大頂点の構成と自然性から得る逆向きの射。
+`cubeEvaluation_maximum` は降順立方体の評価が唯一の昇順旗の評価に `degreeSign m` を掛けた値と証明する。
+残りは実際の二射の合成の同定、Q^• との比較と反対側の合成の単体的ホモトピー、
+全頂点での充満忠実性と ∞ 圏の同値。逆向きの射の定義だけではホモトピー逆と数えない。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開476宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開496宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。
