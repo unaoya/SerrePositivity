@@ -230,6 +230,13 @@ public import SerrePositivity.InfinityCategories.Stable.CofiberTriangleIso
 public import SerrePositivity.InfinityCategories.Stable.DistinguishedRotation
 public import SerrePositivity.InfinityCategories.Stable.PretriangulatedInstance
 
+public import SerrePositivity.InfinityCategories.Stable.PastingComparisonMiddle
+public import SerrePositivity.InfinityCategories.Stable.CofiberCompositionRectangle
+public import SerrePositivity.InfinityCategories.Stable.CofiberCompositionComponents
+public import SerrePositivity.InfinityCategories.Stable.CofiberTriangleNaturality
+public import SerrePositivity.InfinityCategories.Stable.PushoutCofiberRectangle
+public import SerrePositivity.InfinityCategories.Stable.CofiberOctahedronDiagram
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

@@ -1101,6 +1101,57 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.pretriangulated_ho
 #print axioms SerrePositivity.InfinityCategories.distinguishedTriangles_ho_eq
 
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape_middle
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterHomotopy_middle
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.mk
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.left_eq
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.bottom_eq
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.right_isPushout
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outer_isPushout
+#print axioms SerrePositivity.InfinityCategories.nonempty_cofiberCompositionRectangle
+#print axioms SerrePositivity.InfinityCategories.chosenCofiberCompositionRectangle
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outerZeroTriangle
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outer_isCofiber
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.comparisonHomotopy
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.comparisonHomotopy_source
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism_source_arrow
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism_middle_arrow
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism_target_arrow
+#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.connecting_comm
+#print axioms SerrePositivity.InfinityCategories.cofiberTriangle_mor₃_naturality
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.mk
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.diagram
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.left_eq
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.zero_end
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.right_isPushout
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outer_isPushout
+#print axioms SerrePositivity.InfinityCategories.nonempty_pushoutCofiberRectangle
+#print axioms SerrePositivity.InfinityCategories.chosenPushoutCofiberRectangle
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outer_isCofiber
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.right_isCofiber
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHomotopy
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHom
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.sourceHom
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHom_source_arrow
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHom_target
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.connecting_comp
+#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.triangle_connecting_comp
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.mk
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.first
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second
+#print axioms SerrePositivity.InfinityCategories.nonempty_cofiberOctahedronDiagram
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.last_firstEdge
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.next_firstEdge
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.last_source_arrow
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.lastTriangle_mem
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -1430,7 +1481,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CofiberPredecessor,
     `SerrePositivity.InfinityCategories.Stable.CofiberTriangleIso,
     `SerrePositivity.InfinityCategories.Stable.DistinguishedRotation,
-    `SerrePositivity.InfinityCategories.Stable.PretriangulatedInstance]
+    `SerrePositivity.InfinityCategories.Stable.PretriangulatedInstance,
+    `SerrePositivity.InfinityCategories.Stable.PastingComparisonMiddle,
+    `SerrePositivity.InfinityCategories.Stable.CofiberCompositionRectangle,
+    `SerrePositivity.InfinityCategories.Stable.CofiberCompositionComponents,
+    `SerrePositivity.InfinityCategories.Stable.CofiberTriangleNaturality,
+    `SerrePositivity.InfinityCategories.Stable.PushoutCofiberRectangle,
+    `SerrePositivity.InfinityCategories.Stable.CofiberOctahedronDiagram]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

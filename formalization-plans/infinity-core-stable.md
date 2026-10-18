@@ -738,6 +738,33 @@ Pretriangulated instance。TR1・TR2・TR3 を既存の cofiberDistinguishedTria
 定義的に一致することを公開する。Quasicategory と IsStable のみを仮定する。
 対象ビルド2791 jobs・集約ビルド2807 jobs、326モジュール・2360宣言の公理監査が成功した。
 **Pretriangulated instance は完成**。八面体・TR4 は未完了であり、S4 全体の完了とは数えない。
+
+TR4 の幾何学的構成を進めた。
+`CofiberCompositionRectangle` と存在定理は、元の cofiber 列と合成する二射の二単体を保持し、
+外側に合成射の cofiber 列を持つ押し出し長方形を構成する。
+`triangleMorphism` の第一成分は恒等射、第二成分は右面の下辺、第三成分は右面の上辺となる。
+これらは端点の表示を含む Arrow の等号で照合し、`connecting_comm` で接続射の可換式を得る。
+`PushoutCofiberRectangle` は任意の押し出し四角形へ零終点を付加し、
+外側と右面を転置した二つの cofiber 列を同時に構成する。
+実際の比較ホモトピーの始点成分 `sourceHom` は左面の下辺、終点成分は恒等射である。
+`connecting_comp` と `triangle_connecting_comp` は右面の接続射・第三射を、
+外側の接続射・第三射と始点成分の懸垂・一回シフトとの合成として計算する。
+一回シフトへの輸送は一般補題 `cofiberTriangle_mor₃_naturality` に分離した。
+`CofiberOctahedronDiagram` は最初の右面の転置を第二の左面として二つの長方形を束ねる。
+その存在、二つ目の元の射と最後の列の第一辺、最後の始点成分と元の第二射との Arrow の等号を証明した。
+`lastTriangle_mem` は、最後の cofiber 三角形の第三射を外側の第三射と元の第二射のシフトの
+合成として表示した三角形の distinguished 性である。始点の表示変更は sourceHom に保持する。
+存在定理の仮定は Quasicategory、IsStable、入力 cofiber 列、第一辺と合成二単体の一致のみ。
+外側の余極限・比較の選択の整合は追加入力しない。
+
+対象ビルド2178 jobs・対象と集約ビルド2813 jobs、332モジュール・2458宣言の監査と
+構成子・射影を含む公開50項目の型抽出が成功した（標準三公理のみ）。
+具体的なシフト式のカーネル検査には、その定理だけ maxHeartbeats=1000000 を設定した。
+**TR4 は未完了**。残るのは合成射の cofiber から二つ目の元の射の cofiber への比較、
+Mathlib の Octahedron の四可換式を同じ三対象の表示で組み立てること、
+任意に指定された distinguished 三角形の三つ組への同型輸送と IsTriangulated instance。
+最後の三角形の所属までの今回の成果を八面体公理全体の完成とは数えない。
+
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
@@ -903,6 +930,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 回転第三接続射の符号 | `pastingOuterToRightHomotopy` と二成分（値域の仮定なし）、`CofiberRotationRectangle.suspensionComparison` と二成分（Quasicategory、終点は零射構造）、`SuspensionSquare.ambientHom_target`・`transpose_objIso_inv`、`CofiberRotationRectangle.connecting_eq_neg_suspension`（Quasicategory、IsStable） | 対象比較と始点の等号輸送を含め、回転後の接続射が -Σf となる式まで完成。Triangle の回転所属・逆方向・TR2 も下記で完成 |
 | 三角形の回転 TR2 | `CofiberRotationRectangle.triangleIsoRotate`、`exists_cofiberPredecessor`、`cofiberTriangleIsoOfFunctorIso`、`nonempty_cofiberTriangleIso_of_bottom_eq`、`rotate_mem_cofiberDistinguishedTriangles`、`invRotate_mem_cofiberDistinguishedTriangles`、`cofiberDistinguishedTriangles_rotate_iff`（Quasicategory、IsStable） | 第三射の符号を含む順回転同型、前の列、逆回転の所属、回転による所属の同値まで完成 |
 | 前三角構造の公開 | `pretriangulated_ho`、`distinguishedTriangles_ho_eq`（Quasicategory、IsStable） | Mathlib の Pretriangulated instance と cofiber の像の集合との定義的一致まで完成。TR4 は未完了 |
+| 八面体の二長方形と最後の三角形 | `CofiberCompositionRectangle` と存在・三成分・`connecting_comm`、`PushoutCofiberRectangle` と存在・`connecting_comp`・`triangle_connecting_comp`、`CofiberOctahedronDiagram` と存在・辺の式・`lastTriangle_mem`（存在と三角形の主張は Quasicategory、IsStable） | 二長方形と第一の三角形比較、最後の第三射の合成表示と distinguished 性まで完成。Mathlib の Octahedron 全体・TR4 は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

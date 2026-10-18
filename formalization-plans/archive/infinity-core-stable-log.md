@@ -17193,3 +17193,720 @@ lemma distinguishedTriangles_ho_eq {X : SSet.{u}} [Quasicategory X] [IsStable X]
 Pretriangulated instance の公開は完成。ただし Mathlib のこの class は TR1〜TR3 のみを要求する。
 八面体・TR4 は依然未完了であり、S4 全体、HA 1.1.2.14 全体の完成とは数えない。
 ∞ 圏の全有限極限・余極限の存在、S5〜S7 も未完了。目標全体は継続中。
+
+
+## 2026-10-19：八面体の二長方形・最後の三角形の所属
+
+合成射の cofiber を表す `CofiberCompositionRectangle` を構成した。
+存在定理は入力 cofiber 列と指定合成二単体の第一辺の一致だけを追加条件とする。
+左面と底辺二単体を厳密に保持し、右面と外側の押し出し性を証明する。
+比較の三成分は、始点の恒等射、右面の下辺、右面の上辺である（Arrow の等号）。
+接続射の自然性を含む三角形の射を構成した。
+
+`PushoutCofiberRectangle` は任意の押し出し四角形の右に零対象を付加する。
+外側と右面を転置した二つの列は cofiber 列である。
+比較の始点 `sourceHom` は左面の下辺、終点は恒等射である。
+右面の接続射は外側の接続射と sourceHom の懸垂との合成、
+三角形の第三射は外側の第三射と sourceHom の一回シフトとの合成となる。
+一回シフトへの輸送は `cofiberTriangle_mor₃_naturality` という一般補題にもした。
+比較は実際の転置したホモトピーの関手辺から定義し、既存の前合成との整合を使う。
+
+`CofiberOctahedronDiagram` は最初の右面の転置を第二の左面とする二長方形を束ねる。
+存在定理、二つ目の元の射と最後の列の第一辺の厳密な式、
+最後の比較の始点と元の列の第二射の Arrow の等号を証明した。
+`lastTriangle_mem` は最後の三角形の第三射を外側の第三射と sourceHom のシフトの
+合成として表示し、その distinguished 性を証明する。
+sourceHom には始点の表示の輸送を含み、その Arrow は元の列の第二射と等しい。
+
+主要な合成式の正確な型（namespace SerrePositivity.InfinityCategories）：
+
+```lean
+lemma PushoutCofiberRectangle.triangle_connecting_comp {X : SSet.{u}}
+    [Quasicategory X] [IsStable X]
+    {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) :
+    (cofiberTriangle r.rightZeroTriangle r.right_isCofiber).mor₃ =
+      (cofiberTriangle r.outerZeroTriangle r.outer_isCofiber).mor₃ ≫
+        (shiftFunctor (hoFunctor.obj X) (1 : ℤ)).map r.sourceHom
+```
+
+全ての公開宣言、構造体の構成子と射影を含む50項目の `#check @...` による universe 付き型：
+
+```text
+SerrePositivity.InfinityCategories.pastingLeftToOuterShape_middle.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0)
+        SerrePositivity.InfinityCategories.squareBottomEdge.{u_1})
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+    SerrePositivity.InfinityCategories.pastingLeftToOuterShape.{u_1})
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0)
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))))
+@SerrePositivity.InfinityCategories.pastingLeftToOuterHomotopy_middle.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0)
+          SerrePositivity.InfinityCategories.squareBottomEdge.{u_1})
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      (SSet.RelativeMorphism.Homotopy.h.{u_1} (SerrePositivity.InfinityCategories.pastingLeftToOuterHomotopy.{u_1} F)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+        (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 0)))
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} : {X : SSet.{u_1}} →
+  SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X →
+    Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X →
+      Type u_1
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.mk.{u_1} : {X : SSet.{u_1}} →
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X} →
+    {τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X} →
+      (diagram :
+          Quiver.Hom.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            X) →
+        Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.pastingSquare.{u_1} diagram 2)
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t) →
+          Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.pastingBottomTriangle.{u_1} diagram) τ →
+            SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+                (SerrePositivity.InfinityCategories.pastingSquare.{u_1} diagram 0) →
+              SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+                  (SerrePositivity.InfinityCategories.pastingSquare.{u_1} diagram 1) →
+                SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1} : {X : SSet.{u_1}} →
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X} →
+    {τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X} →
+      SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ →
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          X
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.left_eq.{u_1} : ∀ {X : SSet.{u_1}}
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (self : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+      (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1} self) 2)
+    (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t)
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.bottom_eq.{u_1} : ∀ {X : SSet.{u_1}}
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (self : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.pastingBottomTriangle.{u_1}
+      (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1} self))
+    τ
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.right_isPushout.{u_1} : ∀ {X : SSet.{u_1}}
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (self : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+    (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+      (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1} self) 0)
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outer_isPushout.{u_1} : ∀ {X : SSet.{u_1}}
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (self : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+    (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+      (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1} self) 1)
+@SerrePositivity.InfinityCategories.nonempty_cofiberCompositionRectangle.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X),
+  SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t →
+    ∀
+      (τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t))
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ) →
+        Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ)
+@SerrePositivity.InfinityCategories.chosenCofiberCompositionRectangle.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X) →
+        SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t →
+          (τ :
+              Quiver.Hom.{u_1, u_1 + 1}
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X) →
+            Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                  SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+                  (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t))
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                  (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ) →
+              SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outerZeroTriangle.{u_1} : {X : SSet.{u_1}} →
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X} →
+    {τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X} →
+      SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ →
+        SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outer_isCofiber.{u_1} : ∀ {X : SSet.{u_1}}
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (r : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1}
+    (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outerZeroTriangle.{u_1} r)
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.comparisonHomotopy.{u_1} : {X : SSet.{u_1}} →
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X} →
+    {τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X} →
+      (r : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ) →
+        SSet.Homotopy.{u_1} (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t)
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+            (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outerZeroTriangle.{u_1} r))
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.comparisonHomotopy_source.{u_1} : ∀ {X : SSet.{u_1}}
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (r : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+          SerrePositivity.InfinityCategories.squareBottomEdge.{u_1})
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      (SSet.RelativeMorphism.Homotopy.h.{u_1}
+        (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.comparisonHomotopy.{u_1} r)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      (SSet.const.{u_1}
+        (SerrePositivity.InfinityCategories.squareVertex.{u_1}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t) 0 0)))
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X} →
+        (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t) →
+          {τ :
+              Quiver.Hom.{u_1, u_1 + 1}
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X} →
+            (r : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ) →
+              Quiver.Hom.{u_1, u_1} (SerrePositivity.InfinityCategories.cofiberTriangle.{u_1} t ht)
+                (SerrePositivity.InfinityCategories.cofiberTriangle.{u_1}
+                  (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outerZeroTriangle.{u_1} r) ⋯)
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism_source_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t)
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (r : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Pretriangulated.TriangleMorphism.hom₁.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism.{u_1} ht r)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+        (CategoryTheory.ShortComplex.X₁.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1} t))))
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism_middle_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t)
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (r : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Pretriangulated.TriangleMorphism.hom₂.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism.{u_1} ht r)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (SerrePositivity.InfinityCategories.squareHoBottom.{u_1}
+        (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+          (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1} r) 0)))
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism_target_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t)
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (r : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Pretriangulated.TriangleMorphism.hom₃.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism.{u_1} ht r)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (SerrePositivity.InfinityCategories.squareHoTop.{u_1}
+        (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+          (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1} r) 0)))
+@SerrePositivity.InfinityCategories.CofiberCompositionRectangle.connecting_comm.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t)
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (r : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Pretriangulated.TriangleMorphism.hom₃.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism.{u_1} ht r))
+      (SerrePositivity.InfinityCategories.cofiberConnecting.{u_1}
+        (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.outerZeroTriangle.{u_1} r) ⋯))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (SerrePositivity.InfinityCategories.cofiberConnecting.{u_1} t ht)
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (SerrePositivity.InfinityCategories.suspensionFunctor.{u_1} X)
+        (CategoryTheory.Pretriangulated.TriangleMorphism.hom₁.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.triangleMorphism.{u_1} ht r))))
+@SerrePositivity.InfinityCategories.cofiberTriangle_mor₃_naturality.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (t d : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t)
+  (hd : SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} d)
+  (a :
+    Quiver.Hom.{u_1, u_1}
+      (CategoryTheory.ShortComplex.X₁.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1} t))
+      (CategoryTheory.ShortComplex.X₁.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1} d)))
+  (c :
+    Quiver.Hom.{u_1, u_1}
+      (CategoryTheory.ShortComplex.X₃.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1} t))
+      (CategoryTheory.ShortComplex.X₃.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1} d))),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1} c
+        (SerrePositivity.InfinityCategories.cofiberConnecting.{u_1} d hd))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (SerrePositivity.InfinityCategories.cofiberConnecting.{u_1} t ht)
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (SerrePositivity.InfinityCategories.suspensionFunctor.{u_1} X)
+          a)) →
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1} c
+        (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.cofiberTriangle.{u_1} d hd)))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+        (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.cofiberTriangle.{u_1} t ht))
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+            (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) 1)
+          a))
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} : {X : SSet.{u_1}} →
+  Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X →
+    Type u_1
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.mk.{u_1} : {X : SSet.{u_1}} →
+  {L :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X} →
+    (diagram :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          X) →
+      Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.pastingSquare.{u_1} diagram 2) L →
+        SerrePositivity.InfinityCategories.IsZeroVertex.{u_1}
+            (SerrePositivity.InfinityCategories.squareVertex.{u_1}
+              (SerrePositivity.InfinityCategories.pastingSquare.{u_1} diagram 0) 1 0) →
+          SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+              (SerrePositivity.InfinityCategories.pastingSquare.{u_1} diagram 0) →
+            SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+                (SerrePositivity.InfinityCategories.pastingSquare.{u_1} diagram 1) →
+              SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.diagram.{u_1} : {X : SSet.{u_1}} →
+  {L :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X} →
+    SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L →
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.left_eq.{u_1} : ∀ {X : SSet.{u_1}}
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (self : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+      (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.diagram.{u_1} self) 2)
+    L
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.zero_end.{u_1} : ∀ {X : SSet.{u_1}}
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (self : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  SerrePositivity.InfinityCategories.IsZeroVertex.{u_1}
+    (SerrePositivity.InfinityCategories.squareVertex.{u_1}
+      (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+        (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.diagram.{u_1} self) 0)
+      1 0)
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.right_isPushout.{u_1} : ∀ {X : SSet.{u_1}}
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (self : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+    (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+      (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.diagram.{u_1} self) 0)
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outer_isPushout.{u_1} : ∀ {X : SSet.{u_1}}
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (self : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+    (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+      (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.diagram.{u_1} self) 1)
+@SerrePositivity.InfinityCategories.nonempty_pushoutCofiberRectangle.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} L →
+    Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L)
+@SerrePositivity.InfinityCategories.chosenPushoutCofiberRectangle.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (L :
+          Quiver.Hom.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            X) →
+        SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} L →
+          SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1} : {X : SSet.{u_1}} →
+  {L :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X} →
+    SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L →
+      SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1} : {X : SSet.{u_1}} →
+  {L :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X} →
+    SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L →
+      SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outer_isCofiber.{u_1} : ∀ {X : SSet.{u_1}}
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1}
+    (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1} r)
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.right_isCofiber.{u_1} : ∀ {X : SSet.{u_1}}
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1}
+    (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1} r)
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHomotopy.{u_1} : {X : SSet.{u_1}} →
+  {L :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X} →
+    (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L) →
+      SSet.Homotopy.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1} r))
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1} r))
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHom.{u_1} : {X : SSet.{u_1}} →
+  {L :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X} →
+    (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L) →
+      Quiver.Hom.{u_1, u_1}
+        (SSet.HomotopyCategory.mk.{u_1}
+          (SerrePositivity.InfinityCategories.functorVertex.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1} r))))
+        (SSet.HomotopyCategory.mk.{u_1}
+          (SerrePositivity.InfinityCategories.functorVertex.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1} r))))
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.sourceHom.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {L :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          X} →
+      (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L) →
+        Quiver.Hom.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.squareHoVertex.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1} r))
+            0 0)
+          (SerrePositivity.InfinityCategories.squareHoVertex.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1} r))
+            0 0)
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHom_source_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1} (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.sourceHom.{u_1} r))
+    (CategoryTheory.Arrow.mk.{u_1, u_1} (SerrePositivity.InfinityCategories.squareHoBottom.{u_1} L))
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHom_target.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (SerrePositivity.InfinityCategories.squareDiagramHoEvaluation.{u_1} X 1 1)
+      (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.comparisonHom.{u_1} r))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+      (SerrePositivity.InfinityCategories.squareHoVertex.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1} r))
+        1 1))
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.connecting_comp.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.cofiberConnecting.{u_1}
+      (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1} r) ⋯)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (SerrePositivity.InfinityCategories.cofiberConnecting.{u_1}
+        (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1} r) ⋯)
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (SerrePositivity.InfinityCategories.suspensionFunctor.{u_1} X)
+        (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.sourceHom.{u_1} r)))
+@SerrePositivity.InfinityCategories.PushoutCofiberRectangle.triangle_connecting_comp.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X}
+  (r : SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1} L),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1}
+      (SerrePositivity.InfinityCategories.cofiberTriangle.{u_1}
+        (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1} r) ⋯))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.cofiberTriangle.{u_1}
+          (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1} r) ⋯))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) 1)
+        (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.sourceHom.{u_1} r)))
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} : {X : SSet.{u_1}} →
+  SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X →
+    Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X →
+      Type u_1
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.mk.{u_1} : {X : SSet.{u_1}} →
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X} →
+    {τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X} →
+      (first : SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ) →
+        SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+                (CategoryTheory.BraidedCategory.braiding.{u_1, u_1 + 1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+              (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+                (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1} first) 0)) →
+          SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.first.{u_1} : {X : SSet.{u_1}} →
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X} →
+    {τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X} →
+      SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ →
+        SerrePositivity.InfinityCategories.CofiberCompositionRectangle.{u_1} t τ
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} : {X : SSet.{u_1}} →
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X} →
+    {τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X} →
+      (self : SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ) →
+        SerrePositivity.InfinityCategories.PushoutCofiberRectangle.{u_1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+              (CategoryTheory.BraidedCategory.braiding.{u_1, u_1 + 1}
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+            (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+              (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1}
+                (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.first.{u_1} self))
+              0))
+@SerrePositivity.InfinityCategories.nonempty_cofiberOctahedronDiagram.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X),
+  SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t →
+    ∀
+      (τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t))
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ) →
+        Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ)
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.last_firstEdge.{u_1} : ∀ {X : SSet.{u_1}}
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (d : SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+        (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1}
+          (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} d))))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareTopEdge.{u_1}
+      (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+        (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1}
+          (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.first.{u_1} d))
+        0))
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.next_firstEdge.{u_1} : ∀ {X : SSet.{u_1}}
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (d : SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+        (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1}
+          (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} d))))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+      (SerrePositivity.InfinityCategories.pastingSquare.{u_1}
+        (SerrePositivity.InfinityCategories.CofiberCompositionRectangle.diagram.{u_1}
+          (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.first.{u_1} d))
+        0))
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.last_source_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (d : SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.sourceHom.{u_1}
+        (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} d)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.ShortComplex.g.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1} t)))
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.lastTriangle_mem.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X}
+  {τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X}
+  (d : SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ),
+  Membership.mem.{u_1, u_1} (SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u_1} X)
+    (CategoryTheory.Pretriangulated.Triangle.mk.{u_1, u_1}
+      (CategoryTheory.ShortComplex.f.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1}
+          (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} d))))
+      (CategoryTheory.ShortComplex.g.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1}
+          (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.rightZeroTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} d))))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+        (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.cofiberTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1}
+              (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} d))
+            ⋯))
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+            (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) 1)
+          (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.sourceHom.{u_1}
+            (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} d)))))
+```
+
+対象 CofiberOctahedronDiagram ビルド2178 jobs、対象・Stable 集約ビルド2813 jobsで終了コード0。
+新規六モジュールの警告なし。型抽出・全宣言監査も終了コード0。
+監査は332モジュール・2458宣言（生成・非公開宣言を含む）、標準三公理
+propext・Classical.choice・Quot.sound のみ。
+具体的なシフト合成式のカーネル検査は既定の計算上限に達したため、
+その定理の maxHeartbeats だけ1000000へ増やした。証明検査は省略していない。
+担当範囲のステージ済み差分の git diff --check 成功。引用・追加公理・sorry は導入していない。
+他レーンのファイルは変更・保存しない。
+
+TR4 は未完了。合成射の cofiber から二つ目の元の射の cofiber への比較、
+Mathlib の Octahedron の四可換式の共通の三対象上での組み立て、
+任意の三つの distinguished 三角形への同型輸送と IsTriangulated instance が残る。
+二長方形と最後の三角形の所属だけを八面体公理の完成とは数えない。
+∞ 圏の全有限極限・余極限の存在、S5〜S7 も未完了。目標全体は継続中。
