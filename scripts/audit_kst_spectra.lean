@@ -192,7 +192,16 @@ run_cmd do
     `SerrePositivity.KST.Spectra.PointedVertexComparison,
     `SerrePositivity.KST.Spectra.PointedHomotopyClasses,
     `SerrePositivity.KST.Spectra.SequenceHomotopyRectification,
-    `SerrePositivity.KST.Spectra.SpectrumHomotopyRectification]
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyRectification,
+    `SerrePositivity.KST.Spectra.AnodyneCofiberSource,
+    `SerrePositivity.KST.Spectra.BoundaryFaceCollapse,
+    `SerrePositivity.KST.Spectra.HornBoundaryDecomposition,
+    `SerrePositivity.KST.Spectra.HornFaceBoundary,
+    `SerrePositivity.KST.Spectra.RelativeTriangleContraction,
+    `SerrePositivity.KST.Spectra.SquareTriangles,
+    `SerrePositivity.KST.Spectra.TriangleDiskBoundary,
+    `SerrePositivity.KST.Spectra.TriangleDiskCell,
+    `SerrePositivity.KST.Spectra.TriangleDiskCellIso]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
