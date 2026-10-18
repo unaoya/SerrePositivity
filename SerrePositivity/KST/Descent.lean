@@ -109,6 +109,7 @@ public import SerrePositivity.KST.Descent.AffineFiniteFlatPresentation
 public import SerrePositivity.KST.Descent.FiniteFlatFreeCharts
 public import SerrePositivity.KST.Descent.FiniteFlatFiniteFreeCover
 public import SerrePositivity.KST.Descent.FiniteTypeFreeCharts
+public import SerrePositivity.KST.Descent.FreeChartBaseChange
 public import SerrePositivity.KST.Descent.ComponentSplit
 public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
@@ -247,6 +248,8 @@ Noether 整域上の有限加群を非零元の局所化で自由にし、実際
 同じ添字の基底を任意の係数底変換へ移す。
 一般の基底でも各点を実際の有限自由アフィンチャートで覆い、準コンパクト性で有限被覆を得る。
 全チャートの四辺を元の有限型の圏に持ち上げ、指定引き戻しとの同型が二射影を保つことも証明する。
+自由チャートの任意のアフィン底変換でも指定 Cartesian 性と同じ rank を保持し、
+選んだ基底が係数写像に自然で反復底変換にも整合することを証明する。
 transfer の射影公式からの rank 公式の導出は残す。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
