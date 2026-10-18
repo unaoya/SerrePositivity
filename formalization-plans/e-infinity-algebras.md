@@ -2065,3 +2065,58 @@ E2a 完了後の E2b 適用は引き続き未完了。指定三形状の既存�
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-original-end-fiber-aggregate.log`、
 `/tmp/gamma3-original-end-fiber-audit.log`。
+
+### γ3b：Kan な fiber の反転の除去と元の非反転 q_x の反転なしの直接比較
+
+
+`kanOppositeComparison K : K.op ⟶ K` とそのホモトピー同値性を、任意の Kan 複体 K に対して
+構成した。空の Kan 複体も含み、非空性・可縮性は要求しない。
+まず局所 Kan な単体的圏で、反転した豊穣 Hom の ULift を左 pinched Hom へ移し、
+左右の pinched 模型の同値を経由して右 pinched Hom へ移し、coherent Hom 比較の逆で
+元の豊穣 Hom の ULift に戻す。この実際の射 `coherentHomOppositeComparison x y` は同値。
+
+次に C を KanObject、一点空間から K への Hom として任意の K を実現する。
+`pointKanObjectHomIso` の同型で左右を挟み、ULift の充満性で元の宇宙の射 K.op ⟶ K を取る。
+ULift 後に逆を持つことをホモトピーの降下で元へ戻し、構成済みの実際の射の同値性を得た。
+`kanOppositeEquivalence K` と、任意の宇宙の持ち上げに対する
+`uliftKanOppositeEquivalence K` も公開した。
+これらは既存の左右の比較の選んだ逆を含む。射についての厳密な自然性や二重反転の厳密な
+往復則をこの構成の結論には含めない。
+
+これを元の q_x の導来 fiber に適用し、fiber 全体の反転を外した。
+三形状の公開定理は `strictConePinched_originalFiber_discrete_equivalence`、
+`strictConePinched_originalFiber_cospan_equivalence`、
+`strictConePinched_originalFiber_tower_equivalence`。x = `coherentNerveObject d.vertex` とすると、
+型は
+
+```lean
+QCatEquivalence (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+  ((SSet.uliftFunctor.{v, u}).obj
+    (comparisonFiber (representableHomotopyLimitComparison c x)
+      (strictConeOriginalEndPoint d hκ hL')))
+```
+
+であり、比較射・fiber のどちらにも反転を残さない。ULift は対象と Hom の宇宙を揃えるため
+fiber 全体の外に置く。点 b_d は前工程と同じ `strictConeOriginalEndPoint` であり、元の coherent
+な錐 d の標準切断点から、比較同値の逆・極限保存同型で回収した点を保持する。
+
+離散図式は局所 Kan 性だけを要求し、有限性は不要。cospan は x に対する Hom 図式の左脚の
+fibration 性、塔は同じ x に対する全隣接遷移の fibration 性を要求する。
+通常の錐 c と coherent な錐 d は任意であり、c の厳密極限性・∞ 極限性を前提にしない。
+一般形 `strictConePinched_originalFiberEquivalence` の追加の比較入力は三形状で検証している。
+
+これで指定三形状の γ3b の元の q_x と pinched Hom の反転なしの直接比較まで実装済み。
+既存の全 x・全 end の頂点 b に対する可縮性の両向きの判定と、𝒮・Sp の指定三形状の適用も
+保持する。一般形状の end の直接比較、余極限側、E2a 完了後の E2b 適用は引き続き未完了で、
+γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 4.6.5–4.6.7・7.4.1.6・7.5.4.6。
+
+新規2ファイル・10宣言を集約と専用監査へ追加。README の γ3 冒頭の現在地も更新した。
+全宣言の正確な型・全前提は README の同名節と専用監査の `#check @` に記録。
+型一覧は括弧の深さを考慮して抽出し、名前付き引数を含む全署名をソースから復元した。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4701 jobs）、公開1489宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-direct-original-fiber-aggregate.log`、
+`/tmp/gamma3-direct-original-fiber-audit.log`。

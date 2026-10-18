@@ -2054,7 +2054,7 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 E2b が再利用できる形で公開する。余極限側は後続工程とし、極限側の部分成果で完了とはしない。
 E2b の具体的適用は E2a の完了後に行う。
 
-現在は γ3a の限定形の記録と、γ3b の指定三形状での両向きの可縮性判定まで実装済み。
+現在は γ3a の限定形の記録と、γ3b の指定三形状での両向きの可縮性判定・直接比較まで実装済み。
 局所 Kan な単体的圏の通常の錐について、離散図式、Hom の一脚が fibration の cospan、
 Hom が fibration の塔では、実際の coherent nerve の錐が ∞ 極限錐であることは、
 全ての x と元の Bousfield–Kan end の全頂点 b で
@@ -2068,16 +2068,16 @@ Hom が fibration の塔では、実際の coherent nerve の錐が ∞ 極限�
 さらに三形状では、反転豊穣比較 q′ の ULift 後の導来 fiber までの同値を公開済み。
 標準切断点は end の比較同値の逆で回収し、その像とのずれは底の path で移送する。
 導来 fiber と ULift の厳密な交換同型により、三形状の比較は元の宇宙の q′ の fiber 全体を
-持ち上げた模型まで移送済み。さらに三形状では、元の非反転 q_x の fiber 全体の反転を
-持ち上げた模型との直接の同値まで公開した。fiber 全体の反転を外す段階は区別して残す。
+持ち上げた模型まで移送済み。三形状では、元の非反転 q_x の fiber と pinched Hom の
+反転なしの直接の同値まで公開した。Kan な fiber の反転を実際の同値で外している。
 
 γ3c の指定三形状は 𝒮・Sp の双方で実際の対象と ∞ 極限錐を公開済み。
 𝒮 は小さな積、一脚 Kan fibration の引き戻し、Kan fibration の可算塔の極限。
 Sp は空積を含む有限積、一脚が全段で fibration の引き戻し、全隣接遷移が全段で fibration の塔。
 Sp の極限対象の段は置換せず、Kan 性・構造射の単射性・全基点全次数の Ω 条件を証明している。
 
-元の q_x の fiber 全体の反転を外す実際の比較、一般形状の end の直接比較、
-余極限側は引き続き後続工程。E2b の具体的適用は E2a 完了後。
+一般形状の end の直接比較、余極限側は引き続き後続工程。
+E2b の具体的適用は E2a 完了後。
 指定三形状の可縮性判定を、これらの未完了工程を含む γ3 全体の完成とは数えない。
 以下に限定形と工程ごとの型・検証の記録を置く。
 
@@ -9122,3 +9122,142 @@ def strictConePinched_originalEnd_tower_equivalence
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-original-end-fiber-aggregate.log`、
 `/tmp/gamma3-original-end-fiber-audit.log`。
+
+### γ3b：Kan な fiber の反転の除去と元の非反転 q_x の反転なしの直接比較
+
+
+`kanOppositeComparison K : K.op ⟶ K` とそのホモトピー同値性を、任意の Kan 複体 K に対して
+構成した。空の Kan 複体も含み、非空性・可縮性は要求しない。
+まず局所 Kan な単体的圏で、反転した豊穣 Hom の ULift を左 pinched Hom へ移し、
+左右の pinched 模型の同値を経由して右 pinched Hom へ移し、coherent Hom 比較の逆で
+元の豊穣 Hom の ULift に戻す。この実際の射 `coherentHomOppositeComparison x y` は同値。
+
+次に C を KanObject、一点空間から K への Hom として任意の K を実現する。
+`pointKanObjectHomIso` の同型で左右を挟み、ULift の充満性で元の宇宙の射 K.op ⟶ K を取る。
+ULift 後に逆を持つことをホモトピーの降下で元へ戻し、構成済みの実際の射の同値性を得た。
+`kanOppositeEquivalence K` と、任意の宇宙の持ち上げに対する
+`uliftKanOppositeEquivalence K` も公開した。
+これらは既存の左右の比較の選んだ逆を含む。射についての厳密な自然性や二重反転の厳密な
+往復則をこの構成の結論には含めない。
+
+これを元の q_x の導来 fiber に適用し、fiber 全体の反転を外した。
+三形状の公開定理は `strictConePinched_originalFiber_discrete_equivalence`、
+`strictConePinched_originalFiber_cospan_equivalence`、
+`strictConePinched_originalFiber_tower_equivalence`。x = `coherentNerveObject d.vertex` とすると、
+型は
+
+```lean
+QCatEquivalence (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+  ((SSet.uliftFunctor.{v, u}).obj
+    (comparisonFiber (representableHomotopyLimitComparison c x)
+      (strictConeOriginalEndPoint d hκ hL')))
+```
+
+であり、比較射・fiber のどちらにも反転を残さない。ULift は対象と Hom の宇宙を揃えるため
+fiber 全体の外に置く。点 b_d は前工程と同じ `strictConeOriginalEndPoint` であり、元の coherent
+な錐 d の標準切断点から、比較同値の逆・極限保存同型で回収した点を保持する。
+
+離散図式は局所 Kan 性だけを要求し、有限性は不要。cospan は x に対する Hom 図式の左脚の
+fibration 性、塔は同じ x に対する全隣接遷移の fibration 性を要求する。
+通常の錐 c と coherent な錐 d は任意であり、c の厳密極限性・∞ 極限性を前提にしない。
+一般形 `strictConePinched_originalFiberEquivalence` の追加の比較入力は三形状で検証している。
+
+これで指定三形状の γ3b の元の q_x と pinched Hom の反転なしの直接比較まで実装済み。
+既存の全 x・全 end の頂点 b に対する可縮性の両向きの判定と、𝒮・Sp の指定三形状の適用も
+保持する。一般形状の end の直接比較、余極限側、E2a 完了後の E2b 適用は引き続き未完了で、
+γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 4.6.5–4.6.7・7.4.1.6・7.5.4.6。
+
+公開10宣言の正確な型と前提（namespace `HomotopyLimits`、この節の追加分）：
+
+```lean
+universe u v
+variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
+  [SimplicialCategory C]
+
+def coherentHomOppositeComparison {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)] (x y : C) :
+    (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x y).op ⟶
+      (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x y)
+
+lemma coherentHomOppositeComparison_homotopyEquivalence
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)] (x y : C) :
+    IsSimplicialHomotopyEquivalence (coherentHomOppositeComparison x y)
+
+def kanOppositeComparison (K : SSet.{u}) [KanComplex K] : K.op ⟶ K
+
+lemma kanOppositeComparison_homotopyEquivalence (K : SSet.{u}) [KanComplex K] :
+    IsSimplicialHomotopyEquivalence (kanOppositeComparison K)
+
+def kanOppositeEquivalence (K : SSet.{u}) [KanComplex K] : QCatEquivalence K.op K
+
+def uliftKanOppositeEquivalence (K : SSet.{u}) [KanComplex K] :
+    QCatEquivalence ((SSet.uliftFunctor.{v, u}).obj K.op)
+      ((SSet.uliftFunctor.{v, u}).obj K)
+
+def strictConePinched_originalFiberEquivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : I ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F))
+    [KanComplex (limit (simplicialHomDiagram F (coherentNerveObject d.vertex)))]
+    (hκ : IsSimplicialHomotopyEquivalence
+      (reflectedHomHolimConeComparison F (coherentNerveObject d.vertex)))
+    (hL : IsSimplicialHomotopyEquivalence (bousfieldKanLimitComparison
+      (simplicialHomDiagram F (coherentNerveObject d.vertex))))
+    (hL' : IsSimplicialHomotopyEquivalence (bousfieldKanLimitComparison
+      (simplicialHomDiagram F (coherentNerveObject d.vertex) ⋙ SSet.opFunctor))) :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (representableHomotopyLimitComparison c (coherentNerveObject d.vertex))
+          (strictConeOriginalEndPoint d hκ hL')))
+
+def strictConePinched_originalFiber_discrete_equivalence {J : Type u}
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : (Discrete J) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (representableHomotopyLimitComparison c (coherentNerveObject d.vertex))
+          (strictConeOriginalEndPoint d
+            (reflectedHomHolimConeComparison_discrete_homotopyEquivalence F
+            (coherentNerveObject d.vertex))
+            (bousfieldKanLimitComparison_discrete_homotopyEquivalence
+            (simplicialHomDiagram F (coherentNerveObject d.vertex) ⋙ SSet.opFunctor)))))
+
+def strictConePinched_originalFiber_cospan_equivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : (AsSmall.{u} WalkingCospan) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F))
+    [Fibration ((simplicialHomDiagram F (coherentNerveObject d.vertex)).map
+      (AsSmall.up.map WalkingCospan.Hom.inl))] :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (representableHomotopyLimitComparison c (coherentNerveObject d.vertex))
+          (strictConeOriginalEndPoint d (reflectedHomHolimConeComparison_cospan_homotopyEquivalence
+            F
+            (coherentNerveObject d.vertex))
+            (bousfieldKanConeComparison_cospan_leftFibration_homotopyEquivalence
+            (simplicialHomDiagram F (coherentNerveObject d.vertex) ⋙ SSet.opFunctor) (limit.cone _)
+              (limit.isLimit _)))))
+
+def strictConePinched_originalFiber_tower_equivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : (AsSmall.{u} ℕᵒᵖ) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F))
+    [∀ n : ℕ, Fibration ((simplicialHomDiagram F (coherentNerveObject d.vertex)).map
+      (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (representableHomotopyLimitComparison c (coherentNerveObject d.vertex))
+          (strictConeOriginalEndPoint d (reflectedHomHolimConeComparison_tower_homotopyEquivalence F
+            (coherentNerveObject d.vertex))
+            (bousfieldKanLimitComparison_tower_homotopyEquivalence
+            (simplicialHomDiagram F (coherentNerveObject d.vertex) ⋙ SSet.opFunctor)))))
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4701 jobs）、公開1489宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-direct-original-fiber-aggregate.log`、
+`/tmp/gamma3-direct-original-fiber-audit.log`。
