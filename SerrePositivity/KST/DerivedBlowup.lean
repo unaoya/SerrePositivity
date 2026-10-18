@@ -130,3 +130,6 @@ public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGCoherenceData
 public import SerrePositivity.KST.DerivedBlowup.RestrictionRingHomTransport
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGComposition
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGIdentity
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapRestrictionComparison
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGAssociativity
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGUnitCoherence

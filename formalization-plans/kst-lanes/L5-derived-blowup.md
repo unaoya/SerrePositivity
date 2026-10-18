@@ -35,7 +35,9 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 環射と pivot 変更をまとめた半線形チャート dg 遷移と、その合成則を証明済み。
 全有限重なりの実際の環射に沿う dg 遷移を構成し、
 環射の等式移送・係数制限の標準比較を含む恒等律と合成律を証明済み。
-比較の結合・単位の高次整合性の全有限図式への適用と、coherent な降下模型の組立ては未完了。
+任意 dg 圏で使える有限重なりの制限合成比較を構成し、
+チャート模型上で三段階の結合整合性と左右の単位整合性を証明済み。
+共通基底環上の dg 代数関手への組立てと、coherent な降下模型の組立ては未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -238,6 +240,9 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `restrictionRingHomTransportDGFunctor`・対象公式・外積 Hom の成分公式 | RestrictionRingHomTransport | 環射の等式による dg 制限の移送 |
 | `finiteOverlapDGCompositionComparison`・`finiteOverlapDGTransition_comp` | FiniteOverlapDGComposition | 標準制限比較後の全有限重なり dg 遷移の合成律 |
 | `finiteOverlapDGIdentityComparison`・`finiteOverlapDGTransition_id` | FiniteOverlapDGIdentity | 標準恒等制限比較後の全有限重なり dg 遷移の恒等律 |
+| `finiteOverlapRestrictionCompositionComparison`・対象・制限外積上の成分公式・既存チャート比較との一致 | FiniteOverlapRestrictionComparison | 任意 dg 圏で使える有限重なりの標準制限合成比較 |
+| `finiteOverlapDGCompositionComparison_assoc` | FiniteOverlapDGAssociativity | 三段階の有限重なり制限比較の二経路の一致 |
+| `finiteOverlapDGLeftIdentityComparison`・成分公式・`finiteOverlapDGCompositionComparison_left_unit`・`finiteOverlapDGCompositionComparison_right_unit` | FiniteOverlapDGUnitCoherence | 有限重なりの制限合成比較の左右の単位整合性 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -296,12 +301,14 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その二段の合成は直接遷移に一致し、合成単元の公式も証明済み。
 全有限重なりの実際の環射にこの構成を適用して dg 遷移を構成済み。
 環射の合成等式による行先の移送を含む標準制限比較後の合成律と、恒等制限比較後の恒等律を証明済み。
-比較の結合・単位の高次整合性の全有限図式への適用と、coherent な降下模型の組立ては未完了。
+任意 dg 圏に使える有限重なりの標準制限合成比較を構成済み。
+チャート外積模型上での三段階の制限比較の結合整合性と、左右の恒等制限との整合性を証明済み。
+共通基底環上の dg 代数関手への組立てと、coherent な降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全1353定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1398定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は全有限重なりの制限比較の結合・単位整合性と dg 図式データの組立て。
+次の実装単位は共通基底環への係数制限を通した全有限重なりの dg 代数関手の組立て。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
