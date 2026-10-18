@@ -960,14 +960,16 @@ KST Lemma 2.13 の i=1 の具体的な群の同定は完了。
 係数ごとの境界定数単体と同じ添字の RelStruct を行列へ束ね、行列の正次数の群の積分解を証明した。
 全次数の退化を引く実際の単体的同型で、単位行列の基点を零行列へ移す群同型を構成した。
 係数環の台集合が Kan という明示的仮定の下で、有限 rank の ĜL の正次数の群を零基点の係数群の行列と同定した。
-高次公式の rank の安定化、および係数環の Kan 性の供給は残る。
+面と退化の恒等式で補正の一段と既存面の保存を証明し、互換な面の低い側・高い側の有限帰納でホーン充填を構成した。
+一次元のホーンの完全退化も処理し、任意の単体的環の台集合の Kan 性を追加仮定なしに証明した。
+有限 rank の ĜL の高次の係数表示は Kan 性の追加入力なしに適用できる。高次公式の rank の安定化が残る。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 1194 宣言の型と公理を確認した。
-さらに名前空間全体の 2176 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 1211 宣言の型と公理を確認した。
+さらに名前空間全体の 2211 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -1248,3 +1250,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `matrixPositiveHomotopyMulEquiv` | 実装済み | 行列の正次数の群の係数ごとの積分解 |
 | `ringTranslationIso`、`ringPositiveHomotopyBasepointEquiv` | 実装済み | 加法的平行移動による零基点への群同型 |
 | `hatGLCoefficientHomotopyMulEquiv` | 実装済み | 係数環が Kan のときの有限 rank の零基点の係数群の行列表示 |
+
+| `ringAddDegeneracy_correct_lower`、`ringAddDegeneracy_correct_upper` | 実装済み | 退化を加える一段の面の補正 |
+| `RingHornFaces.error_face_low`、`error_face_high` | 実装済み | 互換性から誤差の面が零であること |
+| `RingHornFaces.exists_lower_prefix`、`exists_filler` | 実装済み | 二方向の有限帰納による全ての面の充填 |
+| `ringSpace_kanComplex` | 実装済み | 任意の単体的環の台集合の Kan 性 |
+| `simplicialRingHatGLCoefficientHomotopyMulEquiv` | 実装済み | 追加仮定のない有限 rank の高次の係数表示 |

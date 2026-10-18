@@ -105,6 +105,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2313,6 +2314,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.hatGLCoefficientHomotopyMulEquiv
 
 
+-- HatGLCoefficientKan.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialRingHatGLCoefficientHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.simplicialRingHatGLCoefficientHomotopyMulEquiv
+
+
 -- HatGLComponentIso.lean
 
 #check @SerrePositivity.KST.Comparison.matrixCoefficientEdge
@@ -3624,6 +3631,63 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.ringPositiveHomotopyBasepointEquiv
 
 
+-- RingHornCorrection.lean
+
+#check @SerrePositivity.KST.Comparison.ringAddDegeneracy
+#print axioms SerrePositivity.KST.Comparison.ringAddDegeneracy
+
+#check @SerrePositivity.KST.Comparison.ringAddDegeneracy_face_self
+#print axioms SerrePositivity.KST.Comparison.ringAddDegeneracy_face_self
+
+#check @SerrePositivity.KST.Comparison.ringAddDegeneracy_face_succ
+#print axioms SerrePositivity.KST.Comparison.ringAddDegeneracy_face_succ
+
+#check @SerrePositivity.KST.Comparison.ringAddDegeneracy_preserves_low
+#print axioms SerrePositivity.KST.Comparison.ringAddDegeneracy_preserves_low
+
+#check @SerrePositivity.KST.Comparison.ringAddDegeneracy_preserves_high
+#print axioms SerrePositivity.KST.Comparison.ringAddDegeneracy_preserves_high
+
+#check @SerrePositivity.KST.Comparison.ringAddDegeneracy_correct_lower
+#print axioms SerrePositivity.KST.Comparison.ringAddDegeneracy_correct_lower
+
+#check @SerrePositivity.KST.Comparison.ringAddDegeneracy_correct_upper
+#print axioms SerrePositivity.KST.Comparison.ringAddDegeneracy_correct_upper
+
+
+-- RingHornFaces.lean
+
+#check @SerrePositivity.KST.Comparison.RingHornFaces
+#print axioms SerrePositivity.KST.Comparison.RingHornFaces
+
+#check @SerrePositivity.KST.Comparison.RingHornFaces.ofCompatible
+#print axioms SerrePositivity.KST.Comparison.RingHornFaces.ofCompatible
+
+#check @SerrePositivity.KST.Comparison.RingHornFaces.error_face_low
+#print axioms SerrePositivity.KST.Comparison.RingHornFaces.error_face_low
+
+#check @SerrePositivity.KST.Comparison.RingHornFaces.error_face_high
+#print axioms SerrePositivity.KST.Comparison.RingHornFaces.error_face_high
+
+
+-- RingHornLower.lean
+
+#check @SerrePositivity.KST.Comparison.RingHornFaces.correct_lower_step
+#print axioms SerrePositivity.KST.Comparison.RingHornFaces.correct_lower_step
+
+#check @SerrePositivity.KST.Comparison.RingHornFaces.exists_lower_prefix
+#print axioms SerrePositivity.KST.Comparison.RingHornFaces.exists_lower_prefix
+
+
+-- RingHornUpper.lean
+
+#check @SerrePositivity.KST.Comparison.RingHornFaces.correct_upper_step
+#print axioms SerrePositivity.KST.Comparison.RingHornFaces.correct_upper_step
+
+#check @SerrePositivity.KST.Comparison.RingHornFaces.exists_filler
+#print axioms SerrePositivity.KST.Comparison.RingHornFaces.exists_filler
+
+
 -- SegalRealizationComparison.lean
 
 #check @SerrePositivity.KST.Comparison.segalRealization_homotopyPullback
@@ -3805,6 +3869,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.internalMonoidToSimplicial_space
 #print axioms SerrePositivity.KST.Comparison.internalMonoidToSimplicial_space
+
+
+-- SimplicialRingKan.lean
+
+#check @SerrePositivity.KST.Comparison.ringSpace_kanComplex
+#print axioms SerrePositivity.KST.Comparison.ringSpace_kanComplex
 
 
 -- SimplicialSum.lean
