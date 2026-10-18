@@ -5081,3 +5081,177 @@ homotopy fiber と loop の比較、実際の fiber と反復 S の実現の比�
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3094 jobs）、公理監査成功（1264 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.43 反復経路境界の path homotopy fiber と loop の自然な比較
+
+`FiberOverContractibleBase.lean`、`PointedPullbackFiber.lean`、`LoopHomotopyFiber.lean`、
+`PathHomotopyFiberNaturality.lean`、`PathHomotopyFiberFunctor.lean`、`IteratedPathHomotopyFiber.lean`。
+
+一般の Kan fibration の底が可縮 Kan なら、その基点上の fiber の包含が全基点 π_* 同型であることを証明した。
+証明は全空間の恒等射と底から終対象への射による四角形に、L9 の既存の fiber 比較定理を適用する。
+点つき引き戻しの第二射影の基点 fiber と元の射の基点 fiber との厳密な同型も証明した。
+
+点つき射 `f : E ⟶ B` に対して、L9 の `pathEndpoint B : basedPathSpace B ⟶ B` を f に沿って
+引き戻した `pathHomotopyFiber f` を定義した。path は時刻零に B の基点から出て、時刻一に f(e) へ至る。
+これはこの path による homotopy fiber 模型であり、L9 の mapping path の別の表示との厳密な一致は主張しない。
+元の射 f 自体の fibration 性は要求しない。E と B が Kan ならこの引き戻しも Kan である。
+L9 の `loopBasedPathFiberIso` の基点保存により点つき同型を作り、引き戻しの基点 fiber を経由して
+`loopToPathHomotopyFiber f : loopSpace B ⟶ pathHomotopyFiber f` を構成した。
+E が可縮 Kan なら、この実際の写像は全基点・全自然数次数の π_* 同型となる。
+この写像は収縮や nullhomotopy の選択を含まず、点つき射の可換正方形について厳密に自然。
+可換正方形の恒等・合成法則も証明し、一般の自然変換の fiber と loop 比較を厳密な関手・自然変換へ束ねた。
+
+既存の `pointedFullIteratedPathKanBoundary r X` に適用し、安定な入力についての関手
+`iteratedPathHomotopyFiberFunctor r` と自然な `iteratedPathLoopComparisonNat r` を構成した。
+経路全空間の既証明の可縮 Kan 性により、その全成分は追加仮定なしで全基点 π_* 同型である。
+ここで `B_r X := (boundaryKanRealizationFunctor r).obj X` と書くと、この比較の型は
+`Ω B_r X ⟶ iteratedPathHomotopyFiber r X`。
+正の段の Ω 条件 `B_r X ⟶ Ω B_(r+1) X` には、さらに
+`B_r X` と `iteratedPathHomotopyFiber (r+1) X` との比較と、既存の suspension の随伴との照合が必要である。
+零回の反復について `core X ≃ Ω B_0 X` とは主張しない。
+
+前提：一般の fiber 包含の定理は Kan な E・B、Kan fibration p、底の可縮 Kan 性を明記する。
+一般の loop 比較は Kan な E・B と E の可縮 Kan 性のみ。反復経路への適用には
+`X : StableModel.{u}` 以外の追加仮定はない。自然変換の関手化では入力の圏を
+`C : Type v`、`Category.{w} C` として対象と Hom の宇宙を分ける。
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u v w`、
+`open CategoryTheory Limits HomotopicalAlgebra SSet`、`open Spectra`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open SSet.modelCategoryQuillen`、`open scoped Simplicial` の下での正確な公開型。
+
+```lean
+lemma fiberTerminalInclusion_isIso (E : SSet.{u}) (e : E _⦋0⦌) :
+    IsIso (fiberι (terminal.from E) ((terminal.from E).app _ e))
+
+lemma fiberInclusion_piIsomorphism_of_contractible_base {E B : SSet.{u}}
+    [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
+    (hB : IsContractibleKan B) (e : E _⦋0⦌) :
+    KanPiIsomorphism (fiberι p (p.app _ e))
+
+def pointedPullbackFiberTo {E A B : PointedSimplicialSet.{u}} (p : E ⟶ B) (g : A ⟶ B) :
+    pointedFiber (pullback.snd p g) ⟶ pointedFiber p
+
+lemma pointedPullbackFiberTo_ι {E A B : PointedSimplicialSet.{u}} (p : E ⟶ B) (g : A ⟶ B) :
+    pointedPullbackFiberTo p g ≫ pointedFiberι p =
+      pointedFiberι (pullback.snd p g) ≫ pullback.fst p g
+
+def pointedPullbackFiberFrom {E A B : PointedSimplicialSet.{u}} (p : E ⟶ B) (g : A ⟶ B) :
+    pointedFiber p ⟶ pointedFiber (pullback.snd p g)
+
+lemma pointedPullbackFiberFrom_ι {E A B : PointedSimplicialSet.{u}} (p : E ⟶ B) (g : A ⟶ B) :
+    pointedPullbackFiberFrom p g ≫ pointedFiberι (pullback.snd p g) =
+      pullback.lift (pointedFiberι p) 0 (by simp)
+
+def pointedPullbackFiberIso {E A B : PointedSimplicialSet.{u}} (p : E ⟶ B) (g : A ⟶ B) :
+    pointedFiber (pullback.snd p g) ≅ pointedFiber p where
+  hom
+
+def pathHomotopyFiber {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
+    PointedSimplicialSet.{u}
+
+def pathHomotopyFiberProjection {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
+    pathHomotopyFiber f ⟶ E
+
+instance pathHomotopyFiberProjection_fibration {E B : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) [KanComplex B.right] : Fibration (pathHomotopyFiberProjection f).right
+
+instance pathHomotopyFiber_kanComplex {E B : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) [KanComplex E.right] [KanComplex B.right] :
+    KanComplex (pathHomotopyFiber f).right
+
+def loopPointedPathFiberIso (B : PointedSimplicialSet.{u}) :
+    loopSpace B ≅ pointedFiber (pathEndpoint B)
+
+def loopToPathHomotopyFiber {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
+    loopSpace B ⟶ pathHomotopyFiber f
+
+lemma loopToPathHomotopyFiber_projection {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
+    loopToPathHomotopyFiber f ≫ pathHomotopyFiberProjection f = 0
+
+lemma loopToPathHomotopyFiber_piIsomorphism {E B : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) [KanComplex E.right] [KanComplex B.right] (hE : IsContractibleKan E.right) :
+    KanPiIsomorphism (loopToPathHomotopyFiber f).right
+
+lemma loopPointedPathFiberIso_hom_ι (B : PointedSimplicialSet.{u}) :
+    (loopPointedPathFiberIso B).hom ≫ pointedFiberι (pathEndpoint B) =
+      (loopToEndpointHomIso B).hom ≫
+        PointedMapping.prePointed (pointedCofiberProjection intervalEndpoint.{u}) B
+
+lemma loopToPathHomotopyFiber_path {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
+    loopToPathHomotopyFiber f ≫ pullback.fst (pathEndpoint B) f =
+      (loopToEndpointHomIso B).hom ≫
+        PointedMapping.prePointed (pointedCofiberProjection intervalEndpoint.{u}) B
+
+def pathHomotopyFiberMap {E B E' B' : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (f' : E' ⟶ B') (a : E ⟶ E') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    pathHomotopyFiber f ⟶ pathHomotopyFiber f'
+
+lemma pathHomotopyFiberMap_path {E B E' B' : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (f' : E' ⟶ B') (a : E ⟶ E') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    pathHomotopyFiberMap f f' a b h ≫ pullback.fst (pathEndpoint B') f' =
+      pullback.fst (pathEndpoint B) f ≫ basedPathMap b
+
+lemma pathHomotopyFiberMap_projection {E B E' B' : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (f' : E' ⟶ B') (a : E ⟶ E') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    pathHomotopyFiberMap f f' a b h ≫ pathHomotopyFiberProjection f' =
+      pathHomotopyFiberProjection f ≫ a
+
+lemma loopToPathHomotopyFiber_naturality {E B E' B' : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (f' : E' ⟶ B') (a : E ⟶ E') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    loopToPathHomotopyFiber f ≫ pathHomotopyFiberMap f f' a b h =
+      PointedObject.basedHomMap PointedSimplicialSet.circle.{u} b ≫ loopToPathHomotopyFiber f'
+
+lemma pathHomotopyFiberMap_id {E B : PointedSimplicialSet.{u}} (f : E ⟶ B)
+    (h : f ≫ 𝟙 B = 𝟙 E ≫ f) :
+    pathHomotopyFiberMap f f (𝟙 E) (𝟙 B) h = 𝟙 (pathHomotopyFiber f)
+
+lemma pathHomotopyFiberMap_comp {E B E' B' E'' B'' : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (f' : E' ⟶ B') (f'' : E'' ⟶ B'')
+    (a : E ⟶ E') (b : B ⟶ B') (h : f ≫ b = a ≫ f')
+    (a' : E' ⟶ E'') (b' : B' ⟶ B'') (h' : f' ≫ b' = a' ≫ f'')
+    (h'' : f ≫ (b ≫ b') = (a ≫ a') ≫ f'') :
+    pathHomotopyFiberMap f f' a b h ≫ pathHomotopyFiberMap f' f'' a' b' h' =
+      pathHomotopyFiberMap f f'' (a ≫ a') (b ≫ b') h''
+
+def pathHomotopyFiberFunctorOfNat {C : Type v} [Category.{w} C]
+    {F G : C ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) : C ⥤ PointedSimplicialSet.{u} where
+  obj X
+
+def loopToPathHomotopyFiberNat {C : Type v} [Category.{w} C]
+    {F G : C ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) :
+    G ⋙ PointedObject.basedHomFunctor PointedSimplicialSet.circle ⟶
+      pathHomotopyFiberFunctorOfNat α where
+  app X
+
+def iteratedPathHomotopyFiber (r : ℕ) (X : StableModel.{u}) : PointedSimplicialSet.{u}
+
+instance iteratedPathHomotopyFiber_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (iteratedPathHomotopyFiber r X).right
+
+def iteratedPathHomotopyFiberMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    iteratedPathHomotopyFiber r X ⟶ iteratedPathHomotopyFiber r Y
+
+def iteratedPathHomotopyFiberFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+def iteratedPathLoopComparison (r : ℕ) (X : StableModel.{u}) :
+    loopSpace ((boundaryKanRealizationFunctor r).obj X) ⟶ iteratedPathHomotopyFiber r X
+
+lemma iteratedPathLoopComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
+    KanPiIsomorphism (iteratedPathLoopComparison r X).right
+
+def iteratedPathLoopComparisonNat (r : ℕ) :
+    boundaryKanRealizationFunctor.{u} r ⋙
+      PointedObject.basedHomFunctor PointedSimplicialSet.circle ⟶
+      iteratedPathHomotopyFiberFunctor r
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+可縮 Kan な反復経路境界の path homotopy fiber、標的の loop からの自然な比較、
+その全基点・全自然数次数の π_* 同型まで証明済み。
+反復 S の実現と実際の homotopy fiber との比較、既存の suspension 構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L9 の mapping path による fiber 模型との比較は未証明。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3109 jobs）、公理監査成功（1296 宣言、標準三公理のみ）。追加公理・sorry なし。

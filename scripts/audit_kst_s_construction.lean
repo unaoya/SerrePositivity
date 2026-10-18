@@ -3402,3 +3402,69 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.pointedFullIteratedPathKanBoundary
 #check @SerrePositivity.KST.SConstruction.pointedFullIteratedPathKanBoundary_quotient
 #print axioms SerrePositivity.KST.SConstruction.pointedFullIteratedPathKanBoundary_quotient
+
+-- 反復経路境界の path homotopy fiber と loop の自然な比較
+#check @SerrePositivity.KST.SConstruction.fiberTerminalInclusion_isIso
+#print axioms SerrePositivity.KST.SConstruction.fiberTerminalInclusion_isIso
+#check @SerrePositivity.KST.SConstruction.fiberInclusion_piIsomorphism_of_contractible_base
+#print axioms SerrePositivity.KST.SConstruction.fiberInclusion_piIsomorphism_of_contractible_base
+#check @SerrePositivity.KST.SConstruction.pointedPullbackFiberTo
+#print axioms SerrePositivity.KST.SConstruction.pointedPullbackFiberTo
+#check @SerrePositivity.KST.SConstruction.pointedPullbackFiberTo_ι
+#print axioms SerrePositivity.KST.SConstruction.pointedPullbackFiberTo_ι
+#check @SerrePositivity.KST.SConstruction.pointedPullbackFiberFrom
+#print axioms SerrePositivity.KST.SConstruction.pointedPullbackFiberFrom
+#check @SerrePositivity.KST.SConstruction.pointedPullbackFiberFrom_ι
+#print axioms SerrePositivity.KST.SConstruction.pointedPullbackFiberFrom_ι
+#check @SerrePositivity.KST.SConstruction.pointedPullbackFiberIso
+#print axioms SerrePositivity.KST.SConstruction.pointedPullbackFiberIso
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiber
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiber
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiberProjection
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiberProjection
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiberProjection_fibration
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiberProjection_fibration
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiber_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiber_kanComplex
+#check @SerrePositivity.KST.SConstruction.loopPointedPathFiberIso
+#print axioms SerrePositivity.KST.SConstruction.loopPointedPathFiberIso
+#check @SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber
+#print axioms SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber
+#check @SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber_projection
+#print axioms SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber_projection
+#check @SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber_piIsomorphism
+#check @SerrePositivity.KST.SConstruction.loopPointedPathFiberIso_hom_ι
+#print axioms SerrePositivity.KST.SConstruction.loopPointedPathFiberIso_hom_ι
+#check @SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber_path
+#print axioms SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber_path
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiberMap
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiberMap
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiberMap_path
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiberMap_path
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiberMap_projection
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiberMap_projection
+#check @SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber_naturality
+#print axioms SerrePositivity.KST.SConstruction.loopToPathHomotopyFiber_naturality
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiberMap_id
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiberMap_id
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiberMap_comp
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiberMap_comp
+#check @SerrePositivity.KST.SConstruction.pathHomotopyFiberFunctorOfNat
+#print axioms SerrePositivity.KST.SConstruction.pathHomotopyFiberFunctorOfNat
+#check @SerrePositivity.KST.SConstruction.loopToPathHomotopyFiberNat
+#print axioms SerrePositivity.KST.SConstruction.loopToPathHomotopyFiberNat
+#check @SerrePositivity.KST.SConstruction.iteratedPathHomotopyFiber
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathHomotopyFiber
+#check @SerrePositivity.KST.SConstruction.iteratedPathHomotopyFiber_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathHomotopyFiber_kanComplex
+#check @SerrePositivity.KST.SConstruction.iteratedPathHomotopyFiberMap
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathHomotopyFiberMap
+#check @SerrePositivity.KST.SConstruction.iteratedPathHomotopyFiberFunctor
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathHomotopyFiberFunctor
+#check @SerrePositivity.KST.SConstruction.iteratedPathLoopComparison
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathLoopComparison
+#check @SerrePositivity.KST.SConstruction.iteratedPathLoopComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathLoopComparison_piIsomorphism
+#check @SerrePositivity.KST.SConstruction.iteratedPathLoopComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathLoopComparisonNat
