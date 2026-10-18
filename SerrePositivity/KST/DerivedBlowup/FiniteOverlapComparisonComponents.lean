@@ -57,4 +57,22 @@ theorem finiteOverlapModuleComparison_eval (a : I → R)
   rw [transitionModuleMorphism_eval, diagramModuleUnderlyingDiagram_map]
   rfl
 
+/-- 概要：任意の局所対象での指定加群比較の評価は指定包含写像。
+方針：局所 dg 模型の一対象性で標準点での評価公式へ戻す。
+規約：KST §3.1。使われ方：遷移後の対象を正規化せず三重比較を計算する。 -/
+theorem finiteOverlapModuleComparison_eval_any (a : I → R)
+    {T U : FiniteOverlapIndex I} (h : T ≤ U)
+    (M : AllDiagramModules (finiteOverlapDGAlgebraDiagram R a))
+    (x : (FiniteOverlapVertexObject R a T)ᵒᵖ) :
+    (moduleEvaluation R (FiniteOverlapVertexObject R a T)ᵒᵖ x).map
+      (finiteOverlapModuleComparison R a h M) =
+      (diagramModuleUnderlyingDiagram (finiteOverlapDGAlgebraDiagram R a)
+        (ForgetEnrichment.to (Complex R) M)).map (homOfLE h) := by
+  have hx : x = op .point := by
+    apply Opposite.unop_injective
+    cases x.unop
+    rfl
+  subst x
+  exact finiteOverlapModuleComparison_eval R a h M
+
 end SerrePositivity.KST.DerivedBlowup

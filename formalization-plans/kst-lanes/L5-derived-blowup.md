@@ -64,7 +64,11 @@ underlying 複体が当該添字での値に一致することを証明済み。
 局所加群比較の評価成分がその指定包含写像に一致することを証明済み。
 一般の dg 遷移の等式に沿う加群制限の標準単位・合成同型と対象移送の評価を構成済み。
 局所チャートへの適用と、指定加群比較の恒等包含に沿う単位条件を証明済み。
-局所合成同型の具体的な評価と三重加群比較はカーネル検証を含め未完了。
+局所合成同型の対象移送を含む評価、図式加群上での恒等成分、および制限後の指定比較の評価を証明済み。
+入力加群の射を自然変換へ送る underlying 複体図式関手と、各頂点による擬同型判定を証明済み。
+一般 dg 遷移の等式に沿う導来制限の標準単位・合成自然同型を構成し、
+局所化前の順逆成分との一致を証明済み。
+三重加群比較の全体と、その随伴導来係数拡大への移送はカーネル検証を含め未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -305,6 +309,9 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `transitionRestrictionIdIso`・`transitionRestrictionCompIso`・対象移送の評価 | TransitionRestrictionCoherence | 一般 dg 関手の等式を消去して得る標準制限比較 |
 | 局所 dg 遷移の恒等・合成律、`finiteOverlapLocalModuleRestrictionIdIso`・`finiteOverlapLocalModuleRestrictionCompIso`・単位比較の評価 | FiniteOverlapModuleRestrictionCoherence | 局所 dg 遷移の等式と加群制限の標準比較の接続 |
 | `finiteOverlapModuleComparison_id` | FiniteOverlapModuleComparisonIdentity | 指定加群比較と標準制限同型による恒等包含の単位条件 |
+| `diagramModuleUnderlyingMap`・`diagramModuleUnderlyingFunctor`・擬同型判定 | DiagramModuleUnderlyingFunctor | 加群射を複体図式の自然変換へ送り、全図式の弱同値を各頂点で検出 |
+| 合成同型の対象移送付き評価・恒等成分・制限した指定比較の評価 | FiniteOverlapModuleRestrictionCompositionEvaluation | 三重比較に現れる個別の成分計算。一般補題の型の継承で係数構造の再展開を避ける |
+| `moduleDerivedIsoExtension`・順逆成分、`transitionDerivedRestrictionIdIso`・`transitionDerivedRestrictionCompIso` | TransitionDerivedRestrictionCoherence | 主局所化上への指定単位・合成自然同型の延長 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -372,13 +379,14 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全1913定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1947定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
 射影的候補模型の H⁰ 比較をこの条件へ制限した完全忠実・本質的全射な関手と同値も構成済み。
 指定単位矢とその加群作用の underlying 恒等・合成律は証明済み。
 標準制限同型を含む加群比較の単位条件も証明済み。
+標準局所合成同型の具体的評価と、一般の導来制限の標準単位・合成自然同型も構成済み。
 次の実装単位は制限合成同型を含む加群比較の三重整合性と随伴導来比較の単位・三重整合性、
 および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
