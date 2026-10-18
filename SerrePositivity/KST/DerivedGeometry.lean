@@ -85,3 +85,5 @@ public import SerrePositivity.KST.DerivedGeometry.AffineGammaAcyclic
 
 public import SerrePositivity.KST.DerivedGeometry.AffineTildeAdjunctionExact
 public import SerrePositivity.KST.DerivedGeometry.ExactDerivedPlus
+
+public import SerrePositivity.KST.DerivedGeometry.AffineDerivedPlusAdjunction

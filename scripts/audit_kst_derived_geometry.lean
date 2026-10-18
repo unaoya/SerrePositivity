@@ -14,6 +14,13 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.exactDerivedFunctorPlusFactors,
+    `SerrePositivity.KST.DerivedGeometry.adjunctionComplexPlus,
+    `SerrePositivity.KST.DerivedGeometry.rightDerivedPlus_postcomp_isRightDerivedFunctor,
+    `SerrePositivity.KST.DerivedGeometry.derivedPlusAdjunction,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedTildePlus,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedΓPlus,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedPlusAdjunction,
     `SerrePositivity.KST.DerivedGeometry.adjunction_rightHom_bijective_of_counitIso,
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientHomEquiv_of_sourceQC,
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientTildeAdjunction,

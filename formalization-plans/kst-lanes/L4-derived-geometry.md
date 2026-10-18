@@ -1095,6 +1095,23 @@
 - 一般の完全関手の非有界導来化がコホモロジーの下限を保存することと bounded below 導来圏への三角関手としての制限を構成した。bounded below 導来随伴・同値と非有界 Dqc 同値はまだ未完了。
 - §51 の区切りの全体ビルドは、import 閉包外の `InfinityCategories.F1B.RelativeFunctorHomotopyComposition` と `InfinityCategories.F1.RelativeFunctorVertices` 間の `relativeFunctorVertex` 重複宣言で失敗した。K-L4 の対象ビルドは成功している。
 
+### §52 の bounded below 導来随伴
+
+- 保存検証：集約対象ビルド 4003 jobs 成功、公理監査 1930 宣言。標準3公理のみ、KTheory import なし。
+
+- 加法的随伴を任意の複体形状の鎖写像の同値に持ち上げ、bounded below 複体の圏の実際の随伴を構成した。
+- 完全関手の bounded below 導来化と複体局所化の自然同型を構成し、その左導来性と任意の後合成での左導来性を証明した。
+- injective 模型による判定から、bounded below 右導来関手が任意の後合成でも右導来関手であることを証明した。
+- これらの普遍性と Mathlib の導来随伴構成により、一般の完全左随伴から bounded below 導来随伴を構成し、実際のアフィン係数 tilde と右導来大域切断へ適用した。
+- `affineDerivedTildePlus` と `affineDerivedΓPlus` は元の全係数層導来圏から作る三角関手であり、`affineDerivedPlusAdjunction` がその随伴である。単位の全対象での同型性・Dqc への本質的全射性・非有界への延長は未完了。
+
+## 53. bounded below 比較のコホモロジー制御（実装前記録）
+
+- まず任意の加法的関手の bounded below 右導来関手が標準 t 構造の下限を保存することを証明する。下限 n を持つ対象を、同じ下限 n を持つ injective 複体のモデルに置き換え、モデルで右導来の比較が同型であることを使う。
+- 単一対象について、実際の injective 分解を整数添字へ零で拡張した複体で右導来大域切断を計算する比較を構成する。正次数のコホモロジーは既証の通常の右導来大域切断の消滅を使い、零次数は左完全性を用いて元の大域切断と比較する。
+- bounded below の自然な単位・余単位の同型性は、単一対象と有限コホモロジー区間への帰納、および下限保存と上側切断の三角を用いて各固定次数へ拡張する。非有界対象へ同じ議論を無条件に適用しない。
+- 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1303,6 +1320,8 @@
 | `affineCoefficientTildeAdjunction`・`affineCoefficientTildeAdjunction_unit_isIso` | DerivedGeometry/AffineTildeAdjunction・AffineTildeAdjunctionExact | 実装・対象ビルド済み |
 | `affineCoefficientΓ_preservesInjectiveObjects` | DerivedGeometry/AffineTildeAdjunctionExact | 実装・対象ビルド済み |
 | `exactDerivedFunctorPlus`・`exactDerivedFunctorPlusSquare` | DerivedGeometry/ExactDerivedPlus | 実装・対象ビルド済み |
+| `derivedPlusAdjunction`・`adjunctionComplexPlus` | DerivedGeometry/DerivedPlusAdjunction・ComplexAdjunction | 実装・対象ビルド済み |
+| `affineDerivedTildePlus`・`affineDerivedΓPlus`・`affineDerivedPlusAdjunction` | DerivedGeometry/AffineDerivedPlus・AffineDerivedPlusAdjunction | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
