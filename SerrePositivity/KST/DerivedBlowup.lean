@@ -211,3 +211,10 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraDerivedExtensionUn
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraWithBottom
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraBottomInclusion
 public import SerrePositivity.KST.DerivedBlowup.DiagramStructureModule
+public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnitAction
+public import SerrePositivity.KST.DerivedBlowup.RepresentableUnitMap
+public import SerrePositivity.KST.DerivedBlowup.RawRestrictionCoherence
+public import SerrePositivity.KST.DerivedBlowup.DiagramRepresentableLocalRegular
+public import SerrePositivity.KST.DerivedBlowup.DiagramRepresentableLocalPerfect
+public import SerrePositivity.KST.DerivedBlowup.DiagramStructureLocalComparison
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapStructureModule

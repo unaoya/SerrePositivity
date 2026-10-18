@@ -99,7 +99,12 @@ underlying 複体が当該添字での値に一致することを証明済み。
 補助最小頂点に単位 dg 代数を置く係数図式と元の係数圏からの dg 包含を構成済み。
 その補助頂点の共変 representable の制限として、全次数の作用を持つ実際の構造図式加群を構成済み。
 各頂点の複体が指定局所代数に等しいこと、通常加群圏と主導来局所化での対象を構成済み。
-構造図式加群の局所 regular 加群との比較、cartesian perfect 性、捻りの大域実現は未完了。
+指定包含単位からの閉零 Yoneda 拡張を構成し、その成分が加群作用で計算されることを証明済み。
+共変 representable の包含先への局所制限と regular 代表加群を指定擬同型で比較し、局所 perfect 性を証明済み。
+元の係数圏と補助係数圏の局所埋め込みの整合性、raw 加群の反復制限同型を構成済み。
+構造図式加群の局所 regular 導来同型と全頂点の局所 perfect 性、
+有限重なりの元の Koszul 模型での構造加群の局所 perfect 性を証明済み。
+構造加群の cartesian 性と捻りの大域実現は未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -384,6 +389,13 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramAlgebraWithBottom`・対象と射の定義 | DiagramAlgebraWithBottom | 元の係数図式に単位 dg 代数を持つ補助最小頂点を加える |
 | `diagramAlgebraWithBottom_hom`・`diagramAlgebraBottomInclusion` | DiagramAlgebraBottomInclusion | 元の係数 dg 圏の Hom を保つ補助係数圏への dg 包含 |
 | `diagramStructureRawModule`・各頂点の値・`diagramStructureModule`・`derivedDiagramStructureModule` | DiagramStructureModule | 補助頂点の共変 representable の制限による実際の構造図式加群 |
+| `diagramModuleTransitionUnit_action`・`diagramModuleTransitionUnit_forward` | DiagramModuleUnitAction | 指定包含単位の局所自己 Hom への作用は標準 Hom 同定 |
+| `representableUnitMap`・評価公式・斉次作用公式 | RepresentableUnitMap | 全次数自然性を保持する指定閉零 Yoneda 拡張 |
+| `rawModuleRestrictionCompIso`・`rawTransitionRestrictionCompIso` | RawRestrictionCoherence | 局所源にのみ small 仮定を要求する raw 加群の制限合成同型 |
+| `diagramRepresentableLocalRaw`・`diagramRepresentableLocalRegularMap`・成分計算 | DiagramRepresentableLocalRegular | 共変 representable の包含先への局所制限と regular 代表加群の指定比較 |
+| 指定局所 regular 比較の擬同型性・導来同型・局所 perfect 性 | DiagramRepresentableLocalPerfect | 局所代表生成元との比較から導く perfect 性 |
+| `diagramStructureLocalComparisonIso`・`diagramStructureLocalRegularDerivedIso`・局所 perfect 性 | DiagramStructureLocalComparison | 実際の構造図式加群の局所評価と局所 regular 加群との指定導来比較 |
+| `blowupStructureModule`・`derivedBlowupStructureModule`・局所 perfect 性 | FiniteOverlapStructureModule | 元の Koszul 有限重なり模型への構造図式加群の適用 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -451,7 +463,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2370定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2451定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -469,7 +481,8 @@ dg 準同値な一対象正規表示での指定加群比較の単位・三重�
 標準導来制限同型自体の四頂点の結合・左右単位条件も自然変換の等式として証明済み。
 標準導来係数拡大同型自体の四頂点の結合・左右単位条件も証明済み。
 構造図式加群は実際の全次数 dg 加群と主導来対象として構成済み。
-次の実装単位は局所 regular 加群との比較と構造加群の cartesian perfect 性、捻りの大域実現、
+構造図式加群の局所 regular 加群との指定導来同型と局所 perfect 性を証明済み。
+次の実装単位は構造加群の canonical な係数拡大比較の可逆性による cartesian 性、捻りの大域実現、
 および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
