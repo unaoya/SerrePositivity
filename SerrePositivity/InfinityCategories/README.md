@@ -7114,3 +7114,228 @@ Sp の塔の実際の対象の Ω 条件・構造射の単射性・錐とその 
 他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-tower-relative-lifting-aggregate.log` と
 `/tmp/gamma3-tower-relative-lifting-audit.log`。
+
+
+### γ3c：mapping path の塔の因子分解と源側の全ての単射への RLP
+
+`MappingPathNaturality` は任意の点つき射の可換正方形について、
+自由 path の端点評価と定数 path の自然性を、閉構造の pre と単位の自然同型から証明した。
+`mappingPathMap f f' a b h` は path の後合成と元の源の射を引き戻しに貼り合わせた射。
+path 成分、源射影、標的の終点射、定数 path の比較射の四つとの厳密な可換式を得た。
+ここには Kan 性や fibration 性の仮定はない。
+
+`MappingPathTowers` はこれを隣接する段の正方形に適用し、
+`mappingPathTowerStep` を遷移とする実際の中間の塔を構成した。
+源・標的への射影と定数 path の比較を L9 の整合族の極限へ束ね、
+`mappingPathTowerLimitSource`、`mappingPathTowerLimitTarget`、`mappingPathTowerLimitUnit` を与える。
+Unit と Source の合成が元の源の極限の恒等射であること、Unit と Target の合成が
+元の `towerMap` に等しいことを、全ての段の射影の後で証明した。
+極限の射としての等式を保持し、ホモトピー可換な因子分解に止めていない。
+
+`RelativeFreePathLifting` の `relativeFreePath_lift` は、p が Kan fibration であるとき、
+自由 path の単射パラメータ上の族を、指定した端点の値と底の path を保って拡張する。
+端点の包含の anodyne 性を前回の点つき Hom の相対充填へ渡し、
+単位からの内部 Hom の同型で端点を表示した。端点は零・一のどちらも選べる。
+
+`MappingPathSourceLifting` の `mappingPathSourceMatchingMap` は、
+mapping path の源射影について、次の源成分と前段の mapping path 成分を同時指定する
+基礎単体集合の引き戻しへの実際の比較射。
+`mappingPathSourceMatchingMap_rlp` は、標的側の縦射 b が Kan fibration なら、
+この相対比較が全ての単射への RLP を持つことを証明する。
+指定端点を保つ自由 path の相対充填を使い、二つの引き戻しの普遍性で対角射を構成した。
+源側の縦射 a の fibration 性と横射 f の π_* 同型性は、この RLP の証明には不要。
+
+`mappingPathTowerLimitSource_rlp` は、標的の各段が Kan で、標的の全遷移が fibration のとき、
+中間の塔の極限から源の塔の極限への射が全ての単射への RLP を持つことを与える。
+初段は既存の mapping path の源射影の RLP、次段は上の相対比較の RLP を使う。
+さらに両方の縦射が fibration なら `mappingPathMap_fibration` により中間の遷移も fibration。
+両方の各段が Kan なら `mappingPathTowerLimit_kanComplex` により中間の極限は Kan となる。
+
+これらを合わせ、両方の塔が各段で Kan・全遷移が fibration のとき、
+`mappingPathTowerLimitSource_piIsomorphism` と `mappingPathTowerLimitUnit_piIsomorphism` は
+源側の極限の射と定数 path の比較射の全基点・全自然数次数の π_* 同型性を与える。
+元の各段の射 f の π_* 同型性にはまだ依存しない。
+元の f が各段で π_* 同型である場合の標的側の相対比較と Target の極限の射の RLP は未証明。
+原典上の位置は Goerss–Jardine I §7、HTT A.3.3、BF 1978 §2、HTT 4.2.4.1。
+
+新規24宣言の正確な型・全前提は以下。namespace は
+`SerrePositivity.InfinityCategories.HomotopyLimits`、宇宙は u。
+最後の二つの π_* 比較の型では、中間の極限の Kan 性を上の公開補題から局所 instance として使う。
+公理依存の正本は `scripts/audit_homotopy_limits.lean`。
+
+`MappingPathNaturality`：
+
+```lean
+lemma freePathEndpoint_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z) (k : Fin 2) :
+    PointedObject.basedHomMap freeInterval.{u} f ≫ freePathEndpoint Z k =
+      freePathEndpoint Y k ≫ f
+
+lemma freeConstantPath_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z) :
+    freeConstantPath Y ≫ PointedObject.basedHomMap freeInterval.{u} f =
+      f ≫ freeConstantPath Z
+
+def mappingPathMap {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
+    (h : f ≫ b = a ≫ f') : mappingPath f ⟶ mappingPath f'
+
+lemma mappingPathMap_path {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
+    mappingPathMap f f' a b h ≫ pullback.fst (freePathEndpoint Y' 1) f' =
+      pullback.fst (freePathEndpoint Y 1) f ≫ PointedObject.basedHomMap freeInterval.{u} b
+
+lemma mappingPathMap_source {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
+    mappingPathMap f f' a b h ≫ mappingPathRetraction f' = mappingPathRetraction f ≫ a
+
+lemma mappingPathMap_target {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
+    mappingPathMap f f' a b h ≫ mappingPathProjection f' = mappingPathProjection f ≫ b
+
+lemma mappingPathMap_unit {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
+    mappingPathUnit f ≫ mappingPathMap f f' a b h = a ≫ mappingPathUnit f'
+```
+
+`MappingPathTowers`：
+
+```lean
+def mappingPathTowerStep
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) (n : ℕ) : mappingPath (f (n + 1)) ⟶ mappingPath (f n)
+
+lemma mappingPathTower_source_comm
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) (n : ℕ) :
+    mappingPathTowerStep X Y dX dY f hf n ≫ mappingPathRetraction (f n) =
+      mappingPathRetraction (f (n + 1)) ≫ dX n
+
+lemma mappingPathTower_target_comm
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) (n : ℕ) :
+    mappingPathTowerStep X Y dX dY f hf n ≫ mappingPathProjection (f n) =
+      mappingPathProjection (f (n + 1)) ≫ dY n
+
+lemma mappingPathTower_unit_comm
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) (n : ℕ) :
+    dX n ≫ mappingPathUnit (f n) =
+      mappingPathUnit (f (n + 1)) ≫ mappingPathTowerStep X Y dX dY f hf n
+
+def mappingPathTowerLimitSource
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) :
+    FibrationTower.limit (fun n ↦ (mappingPath (f n)).right)
+        (fun n ↦ (mappingPathTowerStep X Y dX dY f hf n).right) ⟶
+      FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right)
+
+def mappingPathTowerLimitTarget
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) :
+    FibrationTower.limit (fun n ↦ (mappingPath (f n)).right)
+        (fun n ↦ (mappingPathTowerStep X Y dX dY f hf n).right) ⟶
+      FibrationTower.limit (fun n ↦ (Y n).right) (fun n ↦ (dY n).right)
+
+def mappingPathTowerLimitUnit
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) :
+    FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right) ⟶
+      FibrationTower.limit (fun n ↦ (mappingPath (f n)).right)
+        (fun n ↦ (mappingPathTowerStep X Y dX dY f hf n).right)
+
+lemma mappingPathTowerLimitUnit_source
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) :
+    mappingPathTowerLimitUnit X Y dX dY f hf ≫ mappingPathTowerLimitSource X Y dX dY f hf =
+      𝟙 (FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right))
+
+lemma mappingPathTowerLimitUnit_target
+    (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) :
+    mappingPathTowerLimitUnit X Y dX dY f hf ≫ mappingPathTowerLimitTarget X Y dX dY f hf =
+      towerMap (fun n ↦ (f n).right) (by
+        intro n
+        simpa only [Under.comp_right] using congrArg Under.Hom.right (hf n))
+```
+
+`RelativeFreePathLifting`：
+
+```lean
+lemma relativeFreePath_lift {Y Z : PointedSimplicialSet.{u}}
+    (p : Y ⟶ Z) [Fibration p.right] (k : Fin 2)
+    {T U : SSet.{u}} (j : T ⟶ U) [Mono j]
+    (a : T ⟶ (freePathSpace Y).right) (b : U ⟶ Y.right)
+    (c : U ⟶ (freePathSpace Z).right)
+    (hc : j ≫ b = a ≫ (freePathEndpoint Y k).right)
+    (he : a ≫ (PointedObject.basedHomMap freeInterval.{u} p).right = j ≫ c)
+    (ha : b ≫ p.right = c ≫ (freePathEndpoint Z k).right) :
+    ∃ l : U ⟶ (freePathSpace Y).right, j ≫ l = a ∧
+      l ≫ (freePathEndpoint Y k).right = b ∧
+      l ≫ (PointedObject.basedHomMap freeInterval.{u} p).right = c
+```
+
+`MappingPathSourceLifting`：
+
+```lean
+def mappingPathSourceMatchingMap {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
+    (h : f ≫ b = a ≫ f') :
+    (mappingPath f).right ⟶ pullback a.right (mappingPathRetraction f').right
+
+lemma mappingPathSourceMatchingMap_rlp {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
+    (h : f ≫ b = a ≫ f') [Fibration b.right] :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (mappingPathSourceMatchingMap f f' a b h)
+
+lemma mappingPathTowerLimitSource_rlp (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    [∀ n, KanComplex (Y n).right] [∀ n, Fibration (dY n).right] :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (mappingPathTowerLimitSource X Y dX dY f hf)
+
+lemma mappingPathMap_fibration {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
+    (h : f ≫ b = a ≫ f') [Fibration a.right] [Fibration b.right] :
+    Fibration (mappingPathMap f f' a b h).right
+
+lemma mappingPathTowerLimit_kanComplex (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
+    [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right] :
+    KanComplex (FibrationTower.limit (fun n ↦ (mappingPath (f n)).right)
+      (fun n ↦ (mappingPathTowerStep X Y dX dY f hf n).right))
+
+lemma mappingPathTowerLimitSource_piIsomorphism (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
+    [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right] :
+    KanPiIsomorphism (mappingPathTowerLimitSource X Y dX dY f hf)
+
+lemma mappingPathTowerLimitUnit_piIsomorphism (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
+    [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right] :
+    KanPiIsomorphism (mappingPathTowerLimitUnit X Y dX dY f hf)
+```
+
+残る工程は、標的側の相対比較の fibration 性と、元の各段の π_* 同型性からの全ての単射への RLP、
+Target の極限の射の比較、および元の塔の極限の射の π_* 同型性を導くこと。
+その後、Sp の塔の対象の構造射の単射性・Ω 条件と実際の錐の ∞ 極限性を検証する。
+非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 全体は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4648 jobs）、公開1265宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルの警告・sorry・追加公理はない。
+他担当の依存844ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-mapping-path-tower-source-aggregate.log` と
+`/tmp/gamma3-mapping-path-tower-source-audit.log`。

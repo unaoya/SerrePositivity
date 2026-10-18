@@ -1475,3 +1475,35 @@ fibration 性から必要な全単射 RLP を構成する。Sp の塔の対象�
 他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-tower-relative-lifting-aggregate.log` と
 `/tmp/gamma3-tower-relative-lifting-audit.log`。
+
+
+### γ3c：mapping path の塔の因子分解と源側の RLP・π_* 比較
+
+`MappingPathNaturality` で自由 path の端点・定数 path と mapping path の可換正方形に対する
+自然性を証明した。path、源、標的、定数 path の比較を厳密に保持する。
+`MappingPathTowers` で中間の塔の遷移と、元の源・標的の極限への射および Unit を構成した。
+Unit と Source の合成は恒等射、Unit と Target の合成は元の towerMap に厳密に等しい。
+
+`RelativeFreePathLifting` は指定端点と底の path を保つ単射パラメータ上の相対充填を証明。
+`MappingPathSourceLifting` は、標的側の縦射が Kan fibration なら mapping path の源射影の
+相対比較が全ての単射への RLP を持つことを、二つの引き戻しの普遍性で証明した。
+標的の各段が Kan、遷移が fibration のとき、極限の源射影も全ての単射への RLP を持つ。
+源側の縦射と各段の比較射の π_* 同型性はこの RLP の前提には置かない。
+
+両縦射が fibration なら mapping path 間の射も fibration となる。
+両塔の各段が Kan、全遷移が fibration のとき中間の塔の極限の Kan 性を検証し、
+`mappingPathTowerLimitSource_piIsomorphism` と `mappingPathTowerLimitUnit_piIsomorphism` で
+源射影と定数 path の極限の比較が全基点・全自然数次数の π_* 同型であることを得た。
+
+元の各段の比較が π_* 同型の場合の標的側の相対比較の RLP は未証明。
+次に Target の極限の比較を検証し、元の塔の極限の射の π_* 同型性へ戻す。
+Sp の塔の実際の対象と ∞ 極限錐はまだ未完了であり、今回の源側だけを塔全体の完成と数えない。
+新規24宣言の正確な型・全前提は README の同名節へ記録し、監査へ追加した。
+原典は Goerss–Jardine I §7、HTT A.3.3、BF 1978 §2、HTT 4.2.4.1。
+非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4648 jobs）、公開1265宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルの警告・sorry・追加公理はない。
+他担当の依存844ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-mapping-path-tower-source-aggregate.log` と
+`/tmp/gamma3-mapping-path-tower-source-audit.log`。

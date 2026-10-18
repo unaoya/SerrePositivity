@@ -2884,3 +2884,75 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @relativePointedHom_anodyneLift
 #print axioms relativePointedHom_anodyneLift
+
+#check @freePathEndpoint_naturality
+#print axioms freePathEndpoint_naturality
+
+#check @freeConstantPath_naturality
+#print axioms freeConstantPath_naturality
+
+#check @mappingPathMap
+#print axioms mappingPathMap
+
+#check @mappingPathMap_path
+#print axioms mappingPathMap_path
+
+#check @mappingPathMap_source
+#print axioms mappingPathMap_source
+
+#check @mappingPathMap_target
+#print axioms mappingPathMap_target
+
+#check @mappingPathMap_unit
+#print axioms mappingPathMap_unit
+
+#check @mappingPathTowerStep
+#print axioms mappingPathTowerStep
+
+#check @mappingPathTower_source_comm
+#print axioms mappingPathTower_source_comm
+
+#check @mappingPathTower_target_comm
+#print axioms mappingPathTower_target_comm
+
+#check @mappingPathTower_unit_comm
+#print axioms mappingPathTower_unit_comm
+
+#check @mappingPathTowerLimitSource
+#print axioms mappingPathTowerLimitSource
+
+#check @mappingPathTowerLimitTarget
+#print axioms mappingPathTowerLimitTarget
+
+#check @mappingPathTowerLimitUnit
+#print axioms mappingPathTowerLimitUnit
+
+#check @mappingPathTowerLimitUnit_source
+#print axioms mappingPathTowerLimitUnit_source
+
+#check @mappingPathTowerLimitUnit_target
+#print axioms mappingPathTowerLimitUnit_target
+
+#check @relativeFreePath_lift
+#print axioms relativeFreePath_lift
+
+#check @mappingPathSourceMatchingMap
+#print axioms mappingPathSourceMatchingMap
+
+#check @mappingPathSourceMatchingMap_rlp
+#print axioms mappingPathSourceMatchingMap_rlp
+
+#check @mappingPathTowerLimitSource_rlp
+#print axioms mappingPathTowerLimitSource_rlp
+
+#check @mappingPathMap_fibration
+#print axioms mappingPathMap_fibration
+
+#check @mappingPathTowerLimit_kanComplex
+#print axioms mappingPathTowerLimit_kanComplex
+
+#check @mappingPathTowerLimitSource_piIsomorphism
+#print axioms mappingPathTowerLimitSource_piIsomorphism
+
+#check @mappingPathTowerLimitUnit_piIsomorphism
+#print axioms mappingPathTowerLimitUnit_piIsomorphism
