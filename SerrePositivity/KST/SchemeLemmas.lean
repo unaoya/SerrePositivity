@@ -8,3 +8,6 @@ public import SerrePositivity.KST.SchemeLemmas.BlowupAway
 public import SerrePositivity.KST.SchemeLemmas.QuotientPullback
 public import SerrePositivity.KST.SchemeLemmas.Exceptional
 public import SerrePositivity.KST.SchemeLemmas.Cartier
+public import SerrePositivity.KST.SchemeLemmas.ChartEmbedding
+public import SerrePositivity.KST.SchemeLemmas.PowerCharts
+public import SerrePositivity.KST.SchemeLemmas.PowerChartCover

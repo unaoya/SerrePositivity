@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 145 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 190 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -22,14 +22,15 @@
 - 例外閉部分スキームのチャートへの逆像を、拡大イデアルの商の Spec と包含射まで同定済み。
 - Stacks 01WQ Lemma 31.14.2 のアフィン局所モデルを有効 Cartier 条件の定義とし、アフィン例外因子について証明済み。
 - 各チャートの拡大イデアルは、チャート環との実際の線形同型により階数一自由加群として自明化済み。
-- 次は正の冪の比較と、局所化・一般スキームへの貼り合わせ。
+- 正の冪の対応チャート環の同型と係数保存、純冪チャートによる被覆性は証明済み。
+- 次は冪チャート同型の重なり上の両立と大域化、局所化・一般スキームへの貼り合わせ。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
 - L7a は未完了。L7b・L7c の本体は未着手。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
 - Rees 代数は多項式環の部分代数として既にある。
-- この部分代数に対する `GradedRing` を接続する必要がある。
+- この部分代数に対する `GradedRing` は単項式射影から構成済み。
 - 一般スキームでの blowup はアフィン構成の貼り合わせで与える。
 - 相対 Proj を仮定する構造体は導入しない。
 - L7b は下記の Noether スキームに限った主張を対象とする。
@@ -341,6 +342,14 @@ f の有限型性は固有性から導く。
 | `IsEffectiveCartierImmersion` | Cartier | 実装済み | 閉埋め込みの局所正則方程式による定義 |
 | `affineExceptional_isEffectiveCartier` | Cartier | 検証済み | アフィン例外因子の有効 Cartier 性 |
 | `regularPrincipalIdealEquiv` / `chartExceptionalIdealEquiv` | Cartier | 検証済み | 正則単項イデアル・例外イデアルの局所自由化 |
+| `chart_clear_denominator_mem` | ChartLocalization | 検証済み | I^m に属する分子を保つ分母消去 |
+| `chartToBaseLocalization` / `chartToBaseLocalization_injective` | ChartEmbedding | 検証済み | 標準チャートの R[1/a] への単射 |
+| `mem_chartToBaseLocalization_range_iff` | ChartEmbedding | 検証済み | 分子 I^m、分母 a^m による像の判定 |
+| `awayPowEquiv` | PowerCharts | 検証済み | R[1/a^n] と R[1/a] の基底上の同型 |
+| `powerChart_range_eq` | PowerCharts | 検証済み | 対応する冪チャートの共通局所化内の像の一致 |
+| `powerChartEquiv` / `powerChartEquiv_base` | PowerCharts | 検証済み | 対応する冪チャート環の係数を保つ同型 |
+| `prime_contains_degreeOne_of_contains_powers` | PowerChartCover | 検証済み | 純冪から積生成元への素イデアル判定 |
+| `iSup_affineBlowup_powerCharts` | PowerChartCover | 検証済み | 純冪チャートによる冪中心の blowup の被覆 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |

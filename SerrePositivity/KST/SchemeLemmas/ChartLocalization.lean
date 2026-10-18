@@ -30,15 +30,15 @@ variable {R : Type u} [CommRing R] (I : Ideal R)
   simp [reesDegreeOne, reesMonomial, monomial_pow]
 
 /--
-概要：標準チャートの任意の元は a の冪で分母を払うと基礎環の像になる。
-方針：斉次分数を p/(a t)^n と表示し、斉次な p を単項式に書く。
-規約：KST §5、消去する指数は元に依存してよい。
-使われ方：中心の補集合上の構造準同型が局所化であることを示す。
+概要：標準チャートの斉次分数の分母を指定した a の冪で払う。
+方針：斉次な分子 p を単項式に書き、同じ分母の局所化で比較する。
+規約：KST §5、分子の次数 n と分母の指数を明示する。
+使われ方：分子の係数が I^n に属することを保ったチャート環の記述。
 -/
-theorem chart_clear_denominator (a : I) (z : BlowupChartRing I a) :
-    ∃ (n : ℕ) (r : R), z * chartBaseMap I a a.1 ^ n = chartBaseMap I a r := by
-  obtain ⟨n, p, hp, rfl⟩ := Away.mk_surjective (reesGrade I) (reesDegreeOne_mem I a) z
-  refine ⟨n, p.1.coeff n, ?_⟩
+lemma chart_mk_clear_denominator (a : I) (n : ℕ) (p : reesAlgebra I)
+    (hp : p ∈ reesGrade I n) :
+    Away.mk (reesGrade I) (reesDegreeOne_mem I a) n p (by simpa using hp) *
+      chartBaseMap I a a.1 ^ n = chartBaseMap I a (p.1.coeff n) := by
   apply HomogeneousLocalization.val_injective
   rw [val_mul, val_pow, chartBaseMap_val, chartBaseMap_val]
   simp only [Away.val_mk, Localization.mk_eq_mk', ← map_pow]
@@ -53,6 +53,29 @@ theorem chart_clear_denominator (a : I) (z : BlowupChartRing I a) :
   rw [one_mul, reesDegreeOne_pow_val,
     (mem_reesGrade_iff I n p).mp (by simpa using hp)]
   simp only [coeff_monomial_same, C_mul_monomial, monomial_mul_C]
+
+/--
+概要：標準チャートの元は、I^n に属する分子の係数と a^n で表示できる。
+方針：斉次分数表示を取り、指定次数での分母消去を適用する。
+規約：KST §5、分子係数の I^n への所属を結論に含める。
+使われ方：イデアルの冪を変えた blowup のチャートの像を比較する。
+-/
+theorem chart_clear_denominator_mem (a : I) (z : BlowupChartRing I a) :
+    ∃ (n : ℕ) (r : R), r ∈ I ^ n ∧
+      z * chartBaseMap I a a.1 ^ n = chartBaseMap I a r := by
+  obtain ⟨n, p, hp, rfl⟩ := Away.mk_surjective (reesGrade I) (reesDegreeOne_mem I a) z
+  exact ⟨n, p.1.coeff n, p.2 n, chart_mk_clear_denominator I a n p (by simpa using hp)⟩
+
+/--
+概要：標準チャートの任意の元は a の冪で分母を払うと基礎環の像になる。
+方針：分子の所属を保つ分母消去から係数の所属条件を忘れる。
+規約：KST §5、消去する指数は元に依存してよい。
+使われ方：中心の補集合上の構造準同型が局所化であることを示す。
+-/
+theorem chart_clear_denominator (a : I) (z : BlowupChartRing I a) :
+    ∃ (n : ℕ) (r : R), z * chartBaseMap I a a.1 ^ n = chartBaseMap I a r := by
+  obtain ⟨n, r, _, h⟩ := chart_clear_denominator_mem I a z
+  exact ⟨n, r, h⟩
 
 /--
 概要：チャートの係数写像で等しい二元は a のある冪を掛けると基礎環で等しい。
