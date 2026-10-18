@@ -223,7 +223,7 @@ Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、�
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
 γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開217宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+公開233宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
 `representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
 `representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
 重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
@@ -262,14 +262,14 @@ right anodyne 性から証明した。その end の制限は trivial Kan fibrat
 塔について実際の κ の単体的ホモトピー同値性を証明する。
 `representableHomotopyLimitComparison_tower_homotopyEquivalence c x hc` は同じ Hom 図式の
 条件と `IsLimit (simplicialHomCone c x)` の下で実際の q_x の同値性を証明する。
-正確な型・全前提は README と公開217宣言の監査に記録。
+正確な型・全前提は README と公開233宣言の監査に記録。
 一般の coherent な錐の写像空間との比較は未完了なので、γ3b の完成とは数えない。
 
 両脚が fibration の cospan では、中央の Kan 性から成分ごとの anodyne な自然変換を延長する。
 その具体的な延長により、重み付き end の Kan 性と anodyne な制限の trivial Kan fibration 性、
 `bousfieldKanLimitComparison_cospan_homotopyEquivalence` および
 `representableHomotopyLimitComparison_cospan_homotopyEquivalence` を証明する。
-後者には Hom 図式の極限性も必要。正確な型・全前提は README と公開217宣言の監査が正本。
+後者には Hom 図式の極限性も必要。正確な型・全前提は README と公開233宣言の監査が正本。
 一般の延長性を入力とする `WeightedExtensions` と `BousfieldKanComparison` を使うが、
 cospan の結論ではその入力を実際の三成分の持ち上げから構成している。
 
@@ -288,7 +288,7 @@ coherent な錐の写像空間の比較と 𝒮・Sp の ∞ 引き戻しへの�
 前提は中央・右端の Kan 性と左脚の Fibration 性で、一般の重み W では右脚の Mono 性も要求する。
 `cospanRightCorner_tensor_anodyne` と持ち上げ版は、中央の相対境界を pushout-product と同定する。
 `bousfieldKanWeight_map_mono` は添字の単射から重みの遷移の単射性を証明するので、
-Bousfield–Kan 重みに追加の未証明条件はない。正確な型は README と公開217宣言の監査に記録。
+Bousfield–Kan 重みに追加の未証明条件はない。正確な型は README と公開233宣言の監査に記録。
 元の重みから補助重みへの包含の相対境界の anodyne 性の検証、一脚だけの fibration 性での κ の同値性、
 coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了。
 
@@ -299,7 +299,7 @@ pushout-product の相対境界が anodyne であることを証明する。
 これにより `weightedSectionsPre_cospan_leftFibration_trivialKanFibration` は中央と右端が Kan、
 左脚が Fibration の cospan に対して、成分と元の中央の相対境界が anodyne な重みの制限を扱う。
 `weightedSectionsPre_cospan_leftFibration_homotopyEquivalence` では両重みの右脚の Mono 性も要求する。
-正確な型・全前提は README と公開217宣言の監査に記録。
+正確な型・全前提は README と公開233宣言の監査に記録。
 具体的な元の重みから補助重みへの包含の相対境界の anodyne 性、一脚での κ の同値性、
 coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了。
 
@@ -311,6 +311,16 @@ coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了
 `bousfieldKanConeWeightComparison_cospan_leftFibration_homotopyEquivalence H c hc` は
 同じ前提と `IsLimit c` の下で strict 極限から補助 end への比較射の同値性を証明する。
 頂点の Kan 性は導出し、追加の境界条件や右脚の fibration 性は要求しない。
-正確な型・全前提は README と公開217宣言の監査に記録。
+正確な型・全前提は README と公開233宣言の監査に記録。
 元の重み W → V の相対境界とその制限、一脚の場合の κ 全体、
 coherent な錐の写像空間との比較と 𝒮・Sp の適用は未完了。
+
+元の重みの右脚の遷移は `bousfieldKanWeight_cospan_inr_anodyne` で anodyne と証明済み。
+右端の over 圏の恒等射の始対象性と、中央の over 圏の恒等射の終対象性を使い、
+終対象を付加する中間圏で left と right の anodyne な単射に分解する。
+`joinUnion_pointBoundary_anodyne` は anodyne な部分複体の包含から作る相対的な点の錐を扱い、
+`bousfieldKanWeight_cospan_inr_relativeCone_anodyne` は実際の遷移の像に適用した定理。
+外側の最後のホーンも含む相対 coslice の Kan fibration 性から証明する。
+正確な型・全前提は README と公開233宣言の監査に記録。
+この相対錐と WithInitial で定義した元の重み W → V の相対境界との同型による同定、
+一脚の場合の κ 全体、coherent な錐の写像空間との比較と 𝒮・Sp の適用は未完了。

@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開217宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開233宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2604,6 +2604,46 @@ c.pt の Kan 性は一点重みの end との同型から導く。
 図式の右脚の fibration 性と、未証明の重みの比較仮定は要求しない。
 元の重み W から V への包含の相対境界の anodyne 性と、その end の制限の同値性は未完了。
 従って一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の適用は継続中。
+
+### 元の重みの右脚と相対錐の anodyne 性（接続は未完了）
+
+`NerveTerminalExtension.lean` は対象上で単射な忠実関手 F : C → D について、
+C に始対象、D に終対象 t があり、t が F の対象の像にないとき、nerveMap F の anodyne 性を証明する。
+C に新しい終対象を付加すると、元の包含は始対象を保ち、D への拡張は終対象を保つ。
+両方の nerve の単射性を確認し、left と right の anodyne 性を合成する。
+この証明はモデル構造や弱同値の判定を新しい引用として要求しない。
+
+`CospanOverRight.lean` では、walking cospan の右端に入る射が可逆であることを確認する。
+一般に全ての構造射が可逆な over 圏では恒等射の対象は始対象になる。
+非可逆な単射 f への後合成は、終域の恒等射の対象を像に含まないので上の分解が使える。
+AsSmall への持ち上げと右脚の単射性・非可逆性を確認して、実際の重みの遷移に適用する。
+
+```lean
+bousfieldKanWeight_cospan_inr_anodyne :
+  anodyneExtensions ((bousfieldKanWeight (AsSmall.{u} WalkingCospan)).map
+    (AsSmall.up.map WalkingCospan.Hom.inr))
+```
+
+`RelativeConeAnodyne.lean` は点の境界と全ての正次元ホーンの pushout-join を、
+標準単体の join の同型で一つ高いホーンに移す。最後の外側ホーンも許す。
+`relativePointSliceUnderMap_fibration` は元の射の Kan fibration 性から相対 coslice の
+Kan fibration 性を得る。始域・終域の Kan 性は要求しない。
+これを anodyne な部分複体の包含に適用し、相対的な錐の anodyne 性を証明する。
+
+```lean
+joinUnion_pointBoundary_anodyne {B : SSet.{u}} (B₀ : B.Subcomplex)
+    (hB : anodyneExtensions B₀.ι) :
+    anodyneExtensions (joinUnion (boundary.{u} 0) B₀).ι
+bousfieldKanWeight_cospan_inr_relativeCone_anodyne :
+  anodyneExtensions (joinUnion (boundary.{u} 0)
+    (Subcomplex.range ((bousfieldKanWeight (AsSmall.{u} WalkingCospan)).map
+      (AsSmall.up.map WalkingCospan.Hom.inr)))).ι
+```
+
+後者は実際の重みの遷移を像の包含と始域の同型で同定した結果である。
+この相対錐の単体集合と `cospanRightCornerMap` で作った元の重み W → V の相対境界との
+始域・終域・境界射の同型による同定は未完了。
+したがって一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
 ### 𝒮 の空積（実装済み）
 

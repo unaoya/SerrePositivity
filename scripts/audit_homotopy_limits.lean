@@ -439,3 +439,35 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms bousfieldKanConeWeightPoint_cospan_leftFibration_trivialKanFibration
 #check @bousfieldKanConeWeightComparison_cospan_leftFibration_homotopyEquivalence
 #print axioms bousfieldKanConeWeightComparison_cospan_leftFibration_homotopyEquivalence
+#check @withTerminal_initial
+#print axioms withTerminal_initial
+#check @withTerminalNerveInclusion_mono
+#print axioms withTerminalNerveInclusion_mono
+#check @nerveLiftToTerminal_mono
+#print axioms nerveLiftToTerminal_mono
+#check @nerveMap_anodyne_of_initial_terminal
+#print axioms nerveMap_anodyne_of_initial_terminal
+#check @joinUnion_pointBoundary_horn_anodyne
+#print axioms joinUnion_pointBoundary_horn_anodyne
+#check @relativePointSliceUnderMap_fibration
+#print axioms relativePointSliceUnderMap_fibration
+#check @joinUnion_pointBoundary_anodyne
+#print axioms joinUnion_pointBoundary_anodyne
+#check @joinUnion_pointBoundary_range_anodyne
+#print axioms joinUnion_pointBoundary_range_anodyne
+#check @overId_initial_of_all_isIso
+#print axioms overId_initial_of_all_isIso
+#check @overMap_misses_id
+#print axioms overMap_misses_id
+#check @nerveOverMap_anodyne
+#print axioms nerveOverMap_anodyne
+#check @cospan_into_right_isIso
+#print axioms cospan_into_right_isIso
+#check @resized_cospan_into_right_isIso
+#print axioms resized_cospan_into_right_isIso
+#check @resized_cospan_inr_not_isIso
+#print axioms resized_cospan_inr_not_isIso
+#check @bousfieldKanWeight_cospan_inr_anodyne
+#print axioms bousfieldKanWeight_cospan_inr_anodyne
+#check @bousfieldKanWeight_cospan_inr_relativeCone_anodyne
+#print axioms bousfieldKanWeight_cospan_inr_relativeCone_anodyne
