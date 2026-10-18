@@ -8357,5 +8357,46 @@ noncomputable def leftStraighteningCoherentMap (C : Type u) [Category.{u} C] :
 lemma leftStraighteningCoherentMap_uncurry (C : Type u) [Category.{u} C] :
     uncurry (leftStraighteningCoherentMap C) = strictTransportJointEvaluation C
 
+lemma relativeFunctorMixedHom_unit {B : SSet.{u}} {a b : Over B} (f : a ⟶ b) (p : Over B) :
+    relativeFunctorIdentity p ≫ relativeFunctorMixedHom f p p =
+      curry' (relativeFunctorOverPre p.hom f)
+
+noncomputable def enrichedConstantOrderDiagram (J : Type u) [LinearOrder J]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (c : C) :
+    EnrichedFunctor SSet.{u} (SimplicialThickening J) C
+
+lemma coherentNerveVertex_constant {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (c : C) (n : ℕ) :
+    PinchedHom.constant (coherentNerveVertex c) n =
+      enrichedConstantOrderDiagram (ULift.{u} (Fin (n + 1))) c
+
+def relativeFunctorKanDiagram {B : SSet.{u}} {J : Type u} [Category.{u} J]
+    (A : Jᵒᵖ ⥤ Over B) (p : LeftFibrationObject B) : J ⥤ KanObject.{u}
+
+lemma diagonalRelativeEvaluation_constant {B : SSet.{u}} {J : Type u} [LinearOrder J]
+    (A : Jᵒᵖ ⥤ Over B) (p : LeftFibrationObject B) :
+    diagonalRelativeEvaluation A (enrichedConstantOrderDiagram J p) =
+      enrichedFunctorOfOrderDiagram (relativeFunctorKanDiagram A p)
+
+lemma strictTransportSimplex_relativeFunctorKanDiagram
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] {n : ℕ} (σ : (nerve C) _⦋n⦌) :
+    relativeFunctorKanDiagram (strictTransportSimplexUnderDiagram σ) (leftFibrationObjectOf p) =
+      (⟨ULift.down, fun _ _ h ↦ h⟩ :
+        ULift.{u} (Fin (n + 1)) →o Fin (n + 1)).toFunctor ⋙ σ ⋙ leftStrictTransportFunctor p
+
+lemma strictTransportDiagonalSimplex_constant
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] {n : ℕ} (σ : (nerve C) _⦋n⦌) :
+    strictTransportDiagonalSimplex σ (PinchedHom.constant (leftFibrationInfinityVertex p) n) =
+      (kanDiagramCoherentNerve (leftStrictTransportFunctor p)).app
+        (Opposite.op ⦋n⦌) (ULift.up σ)
+
+lemma leftStraighteningCoherentMap_vertex
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    (leftStraighteningCoherentMap C).app (Opposite.op ⦋0⦌) (leftFibrationInfinityVertex p) =
+      functorVertex (leftStraighteningCandidate p)
+
 end SerrePositivity.InfinityCategories
 ```

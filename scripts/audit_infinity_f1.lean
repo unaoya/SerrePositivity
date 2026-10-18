@@ -1790,3 +1790,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.strictTransportJointEvaluation
 #check @SerrePositivity.InfinityCategories.leftStraighteningCoherentMap
 #check @SerrePositivity.InfinityCategories.leftStraighteningCoherentMap_uncurry
+#check @SerrePositivity.InfinityCategories.relativeFunctorMixedHom_unit
+#check @SerrePositivity.InfinityCategories.enrichedConstantOrderDiagram
+#check @SerrePositivity.InfinityCategories.coherentNerveVertex_constant
+#check @SerrePositivity.InfinityCategories.relativeFunctorKanDiagram
+#check @SerrePositivity.InfinityCategories.diagonalRelativeEvaluation_constant
+#check @SerrePositivity.InfinityCategories.strictTransportSimplex_relativeFunctorKanDiagram
+#check @SerrePositivity.InfinityCategories.strictTransportDiagonalSimplex_constant
+#check @SerrePositivity.InfinityCategories.leftStraighteningCoherentMap_vertex

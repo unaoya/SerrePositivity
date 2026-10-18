@@ -419,3 +419,7 @@ public import SerrePositivity.InfinityCategories.F1.InnerAnodyneVertices
 public import SerrePositivity.InfinityCategories.F1.InnerAnodynePrismExtension
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderComparison
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderGeneralComparison
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorMixedUnit
+public import SerrePositivity.InfinityCategories.F1.CoherentConstantOrderDiagram
+public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeConstant
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningVertices
