@@ -42,7 +42,13 @@ run_cmd do
       `SerrePositivity.KST.Descent.ClosedDimension,
       `SerrePositivity.KST.Descent.BlowupGeometry,
       `SerrePositivity.KST.Descent.MayerVietoris,
-      `SerrePositivity.KST.Descent.SquareSequence] do
+      `SerrePositivity.KST.Descent.SquareSequence,
+      `SerrePositivity.KST.Descent.CoincidenceLocus,
+      `SerrePositivity.KST.Descent.EquivariantMayerVietoris,
+      `SerrePositivity.KST.Descent.PermutationRepresentation,
+      `SerrePositivity.KST.Descent.InvariantProducts,
+      `SerrePositivity.KST.Descent.SplitMayerVietoris,
+      `SerrePositivity.KST.Descent.Theorem31] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."
