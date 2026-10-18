@@ -3148,5 +3148,23 @@ lemma exists_joinDiagram_of_fatJoinDiagram {A B X : SSet.{u}} [Quasicategory X]
           fst (joinEndpointDiagram A B) Δ[1] ≫ p ∧
         ∀ v, IsInvertibleEdge (simplicialHomotopyVertexEdge H v).toTruncated
 
+noncomputable def intervalMappingHomotopyOfSquare {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f g : A ⟶ intervalMappingSpace x y) (K : Δ[1] ⊗ (A ⊗ Δ[1]) ⟶ X)
+    (hx : prismEndpoint 0 (A ⊗ Δ[1]) ≫ K = SSet.const x)
+    (hy : prismEndpoint 1 (A ⊗ Δ[1]) ≫ K = SSet.const y)
+    (h₀ : (Δ[1] ◁ (SSet.ι₀ : A ⟶ A ⊗ Δ[1])) ≫ K = intervalMappingUncurry f)
+    (h₁ : (Δ[1] ◁ (SSet.ι₁ : A ⟶ A ⊗ Δ[1])) ≫ K = intervalMappingUncurry g) :
+    SSet.Homotopy f g
+
+noncomputable def intervalMappingHomotopyOfFatJoin {A X : SSet.{u}} {x y : X _⦋0⦌}
+    {F G : fatJoin A (Δ[0] : SSet.{u}) ⟶ X} (H : SSet.Homotopy F G)
+    (f g : A ⟶ intervalMappingSpace x y)
+    (hF : rightIntervalCylinderSection A ≫ fatJoinCylinder A Δ[0] ≫ F = intervalMappingUncurry f)
+    (hG : rightIntervalCylinderSection A ≫ fatJoinCylinder A Δ[0] ≫ G = intervalMappingUncurry g)
+    (hx : (fatJoinInl A Δ[0] ▷ (Δ[1] : SSet.{u})) ≫ H.h =
+      fst A Δ[1] ≫ SSet.const x)
+    (hy : (fatJoinInr A Δ[0] ▷ (Δ[1] : SSet.{u})) ≫ H.h =
+      fst (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm y) : SSet.Homotopy f g
+
 end SerrePositivity.InfinityCategories
 ```
