@@ -5978,3 +5978,224 @@ L9 の `OmegaSpectrum` として束縛する構造射の単射性の検証、Sp 
 他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-binary-product-sequence-aggregate.log` と
 `/tmp/gamma3-spectrum-binary-product-sequence-audit.log`。
+
+
+### γ3c：smash の単体表示と Sp の実際の二項積
+
+`SmashSimplex` は各次数の smash を「両成分が非基点の組、または基点」として表す
+集合の計算を与える。組を潰す標準写像の全射性・核の等式と、二つの射影による
+`A ∧ (B × C) → (A ∧ B) × (A ∧ C)` の単射性を証明した。
+`SmashSimplexModel` は面・退化作用を入れ、両軸の零化と pushout の普遍性から
+既存の smash との標準同型 `smashSimplexModelIso` を構成した。
+既存の smash や L9 の対象の定義は変更していない。
+
+`SmashProductMono` はこの同型から既存の標準射の各次数の全射性を得て、
+二つの射影を使う標準比較 `smashProductComparison` の基礎単体写像のモノ射性を証明した。
+ここには Kan 性の仮定はない。`binaryProductSigma_factor` で積の構造射を
+この比較と二構造射の積に分解し、元の二構造射がモノ射なら積の構造射もモノ射とした。
+
+`SpectrumBinaryProduct` は前回の Kan Ω 列の積の全基点の Ω 条件とこの単射性を合わせ、
+L9 の実際の `OmegaSpectrum` の対象 `spectrumBinaryProduct X Y` を構成した。
+各段は点つき通常積、構造射は `binaryProductSigma`。
+二つの厳密な射影、持ち上げた離散二対象の図式、その錐、各段の極限性を公開した。
+既存の `spectrumHomCone_isLimit_of_levelwise` を適用して全ての実際の豊穣 Hom の
+極限性を得て、離散図式の比較定理から coherent nerve の実際の極限錐性を得る。
+主定理は `spectrumBinaryProductInfinityCone_isLimit (X Y : OmegaSpectrum.{u})`。
+追加の条件付き入力はなく、L9 の OmegaSpectrum の定義に含まれる Kan 性・単射な構造射・
+全基点の Ω 条件だけを使う。Sp の二項積については実際の対象と ∞ 極限錐まで完成した。
+原典上の位置は BF 1978 §2、HA §1.4.2、HTT 4.2.4.1 の双対、Kerodon 7.5.4.6。
+
+新規44宣言の正確な型・全前提は以下。namespace は
+`SerrePositivity.InfinityCategories.HomotopyLimits`、宇宙は u。
+`SpectrumBinaryProduct` の最後の三宣言では L9 の
+`OmegaSpectrum.simplicialCategory` を局所 instance として使う。
+公開宣言の公理依存の正本は `scripts/audit_homotopy_limits.lean`。
+
+`SmashSimplex`：
+
+```lean
+abbrev SmashSimplex {A B : Type u} (a₀ : A) (b₀ : B)
+
+def smashSimplexPack {A B : Type u} (a₀ : A) (b₀ : B) (a : A) (b : B) :
+    SmashSimplex a₀ b₀
+
+lemma smashSimplexPack_eq_none {A B : Type u} (a₀ : A) (b₀ : B) (a : A) (b : B) :
+    smashSimplexPack a₀ b₀ a b = none ↔ a = a₀ ∨ b = b₀
+
+lemma smashSimplexPack_surjective {A B : Type u} (a₀ : A) (b₀ : B) :
+    ∀ s : SmashSimplex a₀ b₀, ∃ a b, smashSimplexPack a₀ b₀ a b = s
+
+lemma smashSimplexPack_eq_iff {A B : Type u} (a₀ : A) (b₀ : B)
+    (a a' : A) (b b' : B) :
+    smashSimplexPack a₀ b₀ a b = smashSimplexPack a₀ b₀ a' b' ↔
+      (a = a' ∧ b = b') ∨ ((a = a₀ ∨ b = b₀) ∧ (a' = a₀ ∨ b' = b₀))
+
+def smashSimplexMap {A B C D : Type u} {a₀ : A} {b₀ : B} (c₀ : C) (d₀ : D)
+    (f : A → C) (g : B → D) : SmashSimplex a₀ b₀ → SmashSimplex c₀ d₀
+
+lemma smashSimplexMap_pack {A B C D : Type u} {a₀ : A} {b₀ : B} {c₀ : C} {d₀ : D}
+    (f : A → C) (g : B → D) (hf : f a₀ = c₀) (hg : g b₀ = d₀) (a : A) (b : B) :
+    smashSimplexMap c₀ d₀ f g (smashSimplexPack a₀ b₀ a b) =
+      smashSimplexPack c₀ d₀ (f a) (g b)
+
+def smashSimplexProductComparison {A B C : Type u} (a₀ : A) (b₀ : B) (c₀ : C) :
+    SmashSimplex a₀ (b₀, c₀) → SmashSimplex a₀ b₀ × SmashSimplex a₀ c₀
+
+lemma smashSimplexProductComparison_pack {A B C : Type u}
+    (a₀ : A) (b₀ : B) (c₀ : C) (a : A) (b : B) (c : C) :
+    smashSimplexProductComparison a₀ b₀ c₀ (smashSimplexPack a₀ (b₀, c₀) a (b, c)) =
+      (smashSimplexPack a₀ b₀ a b, smashSimplexPack a₀ c₀ a c)
+
+lemma smashSimplexProductComparison_injective {A B C : Type u} (a₀ : A) (b₀ : B) (c₀ : C) :
+    Function.Injective (smashSimplexProductComparison a₀ b₀ c₀)
+```
+
+`SmashSimplexModel`：
+
+```lean
+def smashSimplexModelSSet (A B : PointedSimplicialSet.{u}) : SSet.{u}
+
+def smashSimplexModel (A B : PointedSimplicialSet.{u}) : PointedSimplicialSet.{u}
+
+lemma smashSimplexModel_basepoint (A B : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) :
+    PointedSimplicialSet.basepointAt (smashSimplexModel A B) d = none
+
+def smashSimplexModelQuotient (A B : PointedSimplicialSet.{u}) :
+    PointedObject.prod A B ⟶ smashSimplexModel A B
+
+lemma pointedZero_app (A B : PointedSimplicialSet.{u}) (d : SimplexCategoryᵒᵖ)
+    (a : A.right.obj d) : (0 : A ⟶ B).right.app d a =
+      PointedSimplicialSet.basepointAt B d
+
+lemma smashSimplexModelQuotient_axisLeft (A B : PointedSimplicialSet.{u}) :
+    PointedObject.axisLeft A B ≫ smashSimplexModelQuotient A B = 0
+
+lemma smashSimplexModelQuotient_axisRight (A B : PointedSimplicialSet.{u}) :
+    PointedObject.axisRight A B ≫ smashSimplexModelQuotient A B = 0
+
+def smashToSimplexModel (A B : PointedSimplicialSet.{u}) :
+    PointedObject.smash A B ⟶ smashSimplexModel A B
+
+lemma smashToSimplexModel_quotient (A B : PointedSimplicialSet.{u}) :
+    PointedObject.smashQuotient A B ≫ smashToSimplexModel A B =
+      smashSimplexModelQuotient A B
+
+lemma smashQuotient_axisLeft_app (A B : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) (a : A.right.obj d) :
+    (PointedObject.smashQuotient A B).right.app d
+        (a, PointedSimplicialSet.basepointAt B d) =
+      PointedSimplicialSet.basepointAt (PointedObject.smash A B) d
+
+lemma smashQuotient_axisRight_app (A B : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) (b : B.right.obj d) :
+    (PointedObject.smashQuotient A B).right.app d
+        (PointedSimplicialSet.basepointAt A d, b) =
+      PointedSimplicialSet.basepointAt (PointedObject.smash A B) d
+
+def simplexModelToSmashApp (A B : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) : (smashSimplexModelSSet A B).obj d →
+      (PointedObject.smash A B).right.obj d
+
+lemma simplexModelToSmashApp_pack (A B : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) (a : A.right.obj d) (b : B.right.obj d) :
+    simplexModelToSmashApp A B d
+        (smashSimplexPack (PointedSimplicialSet.basepointAt A d)
+          (PointedSimplicialSet.basepointAt B d) a b) =
+      (PointedObject.smashQuotient A B).right.app d (a, b)
+
+def simplexModelToSmash (A B : PointedSimplicialSet.{u}) :
+    smashSimplexModel A B ⟶ PointedObject.smash A B
+
+lemma simplexModelToSmash_quotient (A B : PointedSimplicialSet.{u}) :
+    smashSimplexModelQuotient A B ≫ simplexModelToSmash A B =
+      PointedObject.smashQuotient A B
+
+def smashSimplexModelIso (A B : PointedSimplicialSet.{u}) :
+    PointedObject.smash A B ≅ smashSimplexModel A B
+```
+
+`SmashProductMono`：
+
+```lean
+lemma pointedProduct_basepointAt (B C : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) :
+    PointedSimplicialSet.basepointAt (PointedObject.prod B C) d =
+      (PointedSimplicialSet.basepointAt B d, PointedSimplicialSet.basepointAt C d)
+
+lemma smashQuotient_app_surjective (A B : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) :
+    Function.Surjective ((PointedObject.smashQuotient A B).right.app d)
+
+lemma smashToSimplexModel_quotient_app (A B : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) (a : A.right.obj d) (b : B.right.obj d) :
+    (smashToSimplexModel A B).right.app d
+        ((PointedObject.smashQuotient A B).right.app d (a, b)) =
+      smashSimplexPack (PointedSimplicialSet.basepointAt A d)
+        (PointedSimplicialSet.basepointAt B d) a b
+
+lemma smashMap_quotient_app {A B A' B' : PointedSimplicialSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (d : SimplexCategoryᵒᵖ)
+    (a : A.right.obj d) (b : B.right.obj d) :
+    (PointedObject.smashMap f g).right.app d
+        ((PointedObject.smashQuotient A B).right.app d (a, b)) =
+      (PointedObject.smashQuotient A' B').right.app d (f.right.app d a, g.right.app d b)
+
+def smashProductComparison (A B C : PointedSimplicialSet.{u}) :
+    PointedObject.smash A (PointedObject.prod B C) ⟶
+      PointedObject.prod (PointedObject.smash A B) (PointedObject.smash A C)
+
+lemma smashProductComparison_app_injective (A B C : PointedSimplicialSet.{u})
+    (d : SimplexCategoryᵒᵖ) :
+    Function.Injective ((smashProductComparison A B C).right.app d)
+
+instance smashProductComparison_mono (A B C : PointedSimplicialSet.{u}) :
+    Mono (smashProductComparison A B C).right
+```
+
+`SpectrumBinaryProduct`：
+
+```lean
+lemma binaryProductSigma_factor {A B A' B' : PointedSimplicialSet.{u}}
+    (s : suspension A ⟶ A') (t : suspension B ⟶ B') :
+    binaryProductSigma s t =
+      smashProductComparison PointedSimplicialSet.circle.{u} A B ≫ PointedObject.prodMap s t
+
+instance binaryProductSigma_mono {A B A' B' : PointedSimplicialSet.{u}}
+    (s : suspension A ⟶ A') (t : suspension B ⟶ B') [Mono s.right] [Mono t.right] :
+    Mono (binaryProductSigma s t).right
+
+def spectrumBinaryProduct (X Y : OmegaSpectrum.{u}) : OmegaSpectrum.{u}
+
+def spectrumBinaryProductFst (X Y : OmegaSpectrum.{u}) : spectrumBinaryProduct X Y ⟶ X
+
+def spectrumBinaryProductSnd (X Y : OmegaSpectrum.{u}) : spectrumBinaryProduct X Y ⟶ Y
+
+def spectrumBinaryProductDiagram (X Y : OmegaSpectrum.{u}) :
+    Discrete (ULift.{u} WalkingPair) ⥤ OmegaSpectrum.{u}
+
+def spectrumBinaryProductCone (X Y : OmegaSpectrum.{u}) :
+    Cone (spectrumBinaryProductDiagram X Y)
+
+def spectrumBinaryProductCone_level_isLimit (X Y : OmegaSpectrum.{u}) (n : ℕ) :
+    IsLimit (spectrumLevelCone (spectrumBinaryProductCone X Y) n)
+
+def spectrumBinaryProductCone_hom_isLimit (X Y Z : OmegaSpectrum.{u}) :
+    IsLimit (simplicialHomCone (spectrumBinaryProductCone X Y) Z)
+
+def spectrumBinaryProductInfinityCone (X Y : OmegaSpectrum.{u}) :
+    JoinCone (strictCoherentDiagram (spectrumBinaryProductDiagram X Y))
+
+lemma spectrumBinaryProductInfinityCone_isLimit (X Y : OmegaSpectrum.{u}) :
+    IsLimitCone (spectrumBinaryProductInfinityCone X Y)
+```
+
+Sp の空積と一般の有限積への束ね直し、一脚 fibration の引き戻し、fibration の塔は未完了。
+元の非反転の end・q_x と反転係数の直接比較、余極限側、E2a 完了後の E2b 適用も未完了。
+二項積だけを γ3 全体の完了とは数えず、作業を継続する。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4591 jobs）、公開1151宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-binary-product-aggregate.log` と
+`/tmp/gamma3-spectrum-binary-product-audit.log`。

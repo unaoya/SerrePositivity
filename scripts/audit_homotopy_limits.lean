@@ -2482,3 +2482,135 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @binaryProductKanSequence_omega
 #print axioms binaryProductKanSequence_omega
+
+#check @SmashSimplex
+#print axioms SmashSimplex
+
+#check @smashSimplexPack
+#print axioms smashSimplexPack
+
+#check @smashSimplexPack_eq_none
+#print axioms smashSimplexPack_eq_none
+
+#check @smashSimplexPack_surjective
+#print axioms smashSimplexPack_surjective
+
+#check @smashSimplexPack_eq_iff
+#print axioms smashSimplexPack_eq_iff
+
+#check @smashSimplexMap
+#print axioms smashSimplexMap
+
+#check @smashSimplexMap_pack
+#print axioms smashSimplexMap_pack
+
+#check @smashSimplexProductComparison
+#print axioms smashSimplexProductComparison
+
+#check @smashSimplexProductComparison_pack
+#print axioms smashSimplexProductComparison_pack
+
+#check @smashSimplexProductComparison_injective
+#print axioms smashSimplexProductComparison_injective
+
+#check @smashSimplexModelSSet
+#print axioms smashSimplexModelSSet
+
+#check @smashSimplexModel
+#print axioms smashSimplexModel
+
+#check @smashSimplexModel_basepoint
+#print axioms smashSimplexModel_basepoint
+
+#check @smashSimplexModelQuotient
+#print axioms smashSimplexModelQuotient
+
+#check @pointedZero_app
+#print axioms pointedZero_app
+
+#check @smashSimplexModelQuotient_axisLeft
+#print axioms smashSimplexModelQuotient_axisLeft
+
+#check @smashSimplexModelQuotient_axisRight
+#print axioms smashSimplexModelQuotient_axisRight
+
+#check @smashToSimplexModel
+#print axioms smashToSimplexModel
+
+#check @smashToSimplexModel_quotient
+#print axioms smashToSimplexModel_quotient
+
+#check @smashQuotient_axisLeft_app
+#print axioms smashQuotient_axisLeft_app
+
+#check @smashQuotient_axisRight_app
+#print axioms smashQuotient_axisRight_app
+
+#check @simplexModelToSmashApp
+#print axioms simplexModelToSmashApp
+
+#check @simplexModelToSmashApp_pack
+#print axioms simplexModelToSmashApp_pack
+
+#check @simplexModelToSmash
+#print axioms simplexModelToSmash
+
+#check @simplexModelToSmash_quotient
+#print axioms simplexModelToSmash_quotient
+
+#check @smashSimplexModelIso
+#print axioms smashSimplexModelIso
+
+#check @pointedProduct_basepointAt
+#print axioms pointedProduct_basepointAt
+
+#check @smashQuotient_app_surjective
+#print axioms smashQuotient_app_surjective
+
+#check @smashToSimplexModel_quotient_app
+#print axioms smashToSimplexModel_quotient_app
+
+#check @smashMap_quotient_app
+#print axioms smashMap_quotient_app
+
+#check @smashProductComparison
+#print axioms smashProductComparison
+
+#check @smashProductComparison_app_injective
+#print axioms smashProductComparison_app_injective
+
+#check @smashProductComparison_mono
+#print axioms smashProductComparison_mono
+
+#check @binaryProductSigma_factor
+#print axioms binaryProductSigma_factor
+
+#check @binaryProductSigma_mono
+#print axioms binaryProductSigma_mono
+
+#check @spectrumBinaryProduct
+#print axioms spectrumBinaryProduct
+
+#check @spectrumBinaryProductFst
+#print axioms spectrumBinaryProductFst
+
+#check @spectrumBinaryProductSnd
+#print axioms spectrumBinaryProductSnd
+
+#check @spectrumBinaryProductDiagram
+#print axioms spectrumBinaryProductDiagram
+
+#check @spectrumBinaryProductCone
+#print axioms spectrumBinaryProductCone
+
+#check @spectrumBinaryProductCone_level_isLimit
+#print axioms spectrumBinaryProductCone_level_isLimit
+
+#check @spectrumBinaryProductCone_hom_isLimit
+#print axioms spectrumBinaryProductCone_hom_isLimit
+
+#check @spectrumBinaryProductInfinityCone
+#print axioms spectrumBinaryProductInfinityCone
+
+#check @spectrumBinaryProductInfinityCone_isLimit
+#print axioms spectrumBinaryProductInfinityCone_isLimit

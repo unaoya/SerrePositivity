@@ -1156,3 +1156,38 @@ Sp の実際の極限対象の Ω 条件と構造射の単射性、必要な Hom
 他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-binary-product-sequence-aggregate.log` と
 `/tmp/gamma3-spectrum-binary-product-sequence-audit.log`。
+
+
+### γ3c：smash の各次数の単射性と Sp の実際の二項積
+
+新規4モジュールで、非基点の組による smash の表示、既存の pushout による smash との
+標準同型 `smashSimplexModelIso`、二項積との標準比較 `smashProductComparison` の
+基礎単体写像のモノ射性を証明した。比較の単射性には Kan 性の仮定を置かない。
+`binaryProductSigma_factor` と `binaryProductSigma_mono` により、二つの単射な
+懸垂構造射の積の構造射も単射とした。
+
+前回の Kan Ω 列の積の全基点・全自然数次数の Ω 条件を合わせ、L9 の実際の対象
+`spectrumBinaryProduct (X Y : OmegaSpectrum.{u}) : OmegaSpectrum.{u}` を構成した。
+各段は点つき通常積、二つの厳密な射影と離散二対象の図式・錐を持つ。
+各段の極限性から全ての実際の豊穣 Hom の極限性を得て、
+
+```lean
+spectrumBinaryProductInfinityCone_isLimit (X Y : OmegaSpectrum.{u}) :
+  IsLimitCone (spectrumBinaryProductInfinityCone X Y)
+```
+
+を証明した。追加の条件付き入力はない。底は `Discrete (ULift WalkingPair)` の nerve、
+標的は L9 の `Sp` と同じ coherent nerve。主張を Kan 列の中間対象で止めていない。
+原典は BF 1978 §2、HA §1.4.2、HTT 4.2.4.1 の双対、Kerodon 7.5.4.6。
+新規44宣言の正確な型・全前提は InfinityCategories/README.md の同名節へ記録し、
+監査へ追加した。
+
+Sp の空積・一般の有限積への束ね直し、引き戻し、塔は未完了。
+元の非反転の end・q_x と反転係数の直接比較、余極限側、E2a 完了後の E2b 適用も未完了。
+γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4591 jobs）、公開1151宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-binary-product-aggregate.log` と
+`/tmp/gamma3-spectrum-binary-product-audit.log`。
