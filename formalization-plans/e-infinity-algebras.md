@@ -199,12 +199,15 @@ Hom を実際の Mathlib Γ と自然同型で同定し、AW の全豊穣則と�
 F1 の補助解像の旗を native Path に送り、最大元と末尾への正規化した引き戻しを同定した。
 `resolutionHomValue s F : StandardSimplex R x y d` は各旗での実際の Hom 写像の値。
 `resolutionHomValue_standard` は標準 Hom からの射の値を最大元での引き戻しに同定する。
-残りは任意の s でのこの評価の全自然性、解像の比較と反対側の合成の単体的ホモトピー、
-判定の右辺の証明と ∞ 圏の同値。各旗での値を定義しただけでは単体的写像と数えない。
+`resolutionHomValue_pullback` は固定した任意の s について旗の全ての引き戻しとの可換性を証明する。
+`resolutionHomMap s : coherentResolutionSimplex n ⟶ standardHomSpace x y` は実際の単体集合の射。
+`resolutionHomMap_standard` は標準単体から来る場合に最大元の射影を通る射へ同定する。
+残りは s の次数を変える写像との整合、解像上の射からの逆構成、解像の比較と
+反対側の合成の単体的ホモトピー、判定の右辺の証明と ∞ 圏の同値。
 判定への移送や片側の逆の性質だけでは、充満忠実性やホモトピー同値を証明したとは数えない。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開524宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開534宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。

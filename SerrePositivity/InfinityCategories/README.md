@@ -1750,9 +1750,26 @@ resolutionHomValue_standard (σ : StandardSimplex R (D := D) x y n)
 
 前提は `[CommRing R] [DGCategory R D]` のみ。
 最後の式は全次数・全旗での等式であり、標準 Hom からの射が補助解像の最大元への射影を
-通じた値を取ることを示す。任意の pinched 単体について `resolutionHomValue` の全ての
-自然性はまだ証明していないため、解像から標準 Hom への単体集合の射にはまだまとめていない。
-残りはこの自然性と解像の比較の完成、反対側の合成の単体的ホモトピー、
+通じた値を取ることを示す。`resolutionHomValue_pullback` は任意の pinched 単体 s を固定し、
+旗の次数を変える全ての単調写像 α について
+`standardPullback α (resolutionHomValue s F) = resolutionHomValue s (F.pullback α)` を証明する。
+α が先頭頂点を変える場合も、Path を先頭部分と末尾に分解し、pinched 条件によって
+先頭部分の値を単位に同定する。豊穣関手の合成保存と AW の右単位則で先頭部分を消す。
+これにより、固定した s に対して実際の単体集合の射が得られる。
+
+```lean
+resolutionHomMap {x y : ClosedCategory R D} {n : ℕ}
+    (s : coherentPinchedHom (R := R) (D := D) x y _⦋n⦌) :
+  coherentResolutionSimplex.{u} n ⟶ standardHomSpace (R := R) (D := D) x y
+
+resolutionHomMap_standard (σ : StandardSimplex R (D := D) x y n) :
+  resolutionHomMap (standardCoherentPinchedSimplex σ) =
+    coherentResolutionProjection n ≫ SSet.yonedaEquiv.symm σ
+```
+
+ここでも前提は `[CommRing R] [DGCategory R D]` のみ。最後の式は単体集合の射の等式である。
+残りは pinched 単体 s 自身の次数 n を変える写像との整合、解像上の射からの逆構成、
+解像の比較の完成、反対側の合成の単体的ホモトピー、
 上の判定による充満忠実性の証明、A3e による ∞ 圏の同値の構成。
 
 

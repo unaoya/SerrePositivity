@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomNaturality
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomValue
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentStandardFullyFaithful

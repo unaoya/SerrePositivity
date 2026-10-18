@@ -1169,6 +1169,9 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEval_injective
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEval_injective
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedHomValue_comp
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedHomValue_comp
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.singleComponent
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.singleComponent
 
@@ -1373,6 +1376,21 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pinchedEndpointIso_postcomp_iff
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.pinchedEndpointIso_postcomp_iff
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_front_hom
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_front_hom
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_front_value
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_front_value
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomValue_pullback
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomValue_pullback
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_standard
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_standard
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_source_obj
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_source_obj
 
@@ -1399,6 +1417,18 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_maximum
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_maximum
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagFrontPath
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagFrontPath
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagFrontFunctor
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagFrontFunctor
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagFrontPath_image
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagFrontPath_image
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_decomposition
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_decomposition
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_cut_mem
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_cut_mem
