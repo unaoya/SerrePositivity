@@ -59,6 +59,20 @@ lemma tensorLastPairExtraction_naturality (R L Z T : C₀) {S S' : C₀} (a : S 
       simp only [comp_whiskerRight, whiskerLeft_comp, Category.assoc]
       monoidal
 
+/-- 概要：前半の評価射を最後の係数の取り出しの前へ移せる（Berger–Moerdijk §1）。
+方針：係数の取り出しの自然性と独立なテンソル射の交換則を使う。
+規約：最後の入力と末尾の射 b は前半の射 a と独立に適用する。
+使われ方：反復合成の評価の帰納仮定の後で、前半の作用を部分合成の入力へ移す。 -/
+@[reassoc]
+lemma tensorLastPairExtraction_map_prefix {R D V L Z T R' T' W : C₀}
+    (a : D ⟶ V) (f : R ⊗ L ⟶ R') (b : Z ⊗ T ⟶ T') (c : V ⊗ T' ⟶ W) :
+    tensorLastPairExtraction R D L Z T ≫ (f ⊗ₘ (D ◁ b)) ≫
+      (R' ◁ ((a ⊗ₘ 𝟙 T') ≫ c)) =
+    (R ◁ ((a ▷ (L ⊗ Z)) ▷ T)) ≫ tensorLastPairExtraction R V L Z T ≫
+      (f ⊗ₘ ((V ◁ b) ≫ c)) := by
+  rw [tensorHom_id, tensorHom_comp_whiskerLeft, whisker_exchange_assoc,
+    tensorLastPairExtraction_naturality_assoc, whiskerLeft_comp_tensorHom]
+
 /-- 概要：取り出した係数を同じ前半の後へ戻して作用させると二つの交換は相殺する（Berger–Moerdijk §1）。
 方針：結合子とその逆射を除き、対称性による反対向きの交換を相殺する。
 規約：入力 Z と末尾 T の順序を変えない。

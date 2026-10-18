@@ -112,3 +112,7 @@ public import SerrePositivity.EInfinity.Operad.IteratedOperationSplitLast
 public import SerrePositivity.EInfinity.Operad.IteratedOperationRecursion
 public import SerrePositivity.EInfinity.Operad.TensorFamilyGeneratorSplitLast
 public import SerrePositivity.EInfinity.Operad.AlgebraLastInputEvaluation
+public import SerrePositivity.EInfinity.Operad.TensorPowerLastInput
+public import SerrePositivity.EInfinity.Operad.TensorFamilyGeneratorTailSplitLast
+public import SerrePositivity.EInfinity.Operad.AlgebraEvaluationAll
+public import SerrePositivity.EInfinity.Operad.AlgebraLift
