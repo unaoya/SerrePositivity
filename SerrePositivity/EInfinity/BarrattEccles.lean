@@ -58,3 +58,6 @@ public import SerrePositivity.EInfinity.BarrattEccles.NormalizedDegreeTransport
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleDirectionalTransport
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleEndpointTransport
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeibnizPositive
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleZeroDirections
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeibnizZero
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeibnizChains
