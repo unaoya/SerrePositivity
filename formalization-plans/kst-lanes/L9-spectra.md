@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・437 モジュール 4294 宣言の公理監査成功。
+対象ビルド・445 モジュール 4369 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3223,4 +3223,39 @@ Mathlib の相対セル分解の二つの段を通常の骨格と同定し、境
 
 参照：Goerss–Jardine I §7、VIII §1。
 対象ビルド 3886 jobs 成功。私有宣言を含む 437 モジュール 4294 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 106. L9e のセルの Hom の関数複体への分解
+
+点つき cofiber の零合成による降下と商写像での一意性を界面にした。
+可換正方形とその同型を cofiber へ送る構成を与えた。
+各 cofiber から射の余積の cofiber への包含と cofan の普遍性を実証し、cofiber が任意の小さい余積を保つ同型を構成した。
+自由基点追加の余積保存の比較が射の族に自然であることを各包含で照合した。
+この正方形を cofiber へ送って、自由基点を加えた境界包含の余積の cofiber を個々の cofiber の余積に移した。
+
+関数複体が定値な族の通常の積であることを座標評価と持ち上げで実証した。
+反変の内部 Hom が余積を積へ送る比較を関数複体へ合成し、各座標は各余積包含での制限であることを示した。
+その座標式で基点を照合し、点つき余積の Hom と Hom の関数複体の点つき同型を得た。
+
+単体の境界を潰した厳密な cofiber の模型 SimplexCell.sphere を定義した。
+骨格のセルの cofiber をこの球面の余積に移し、塔の各 fiber が球面の Hom のセルごとの関数複体となる同型を得た。
+関数複体の正次数群の既存の同型を適用し、fiber の正次数群を球面の Hom の正次数群の関数へ移した。
+セルの添字は cellEquiv で非退化単体へ移せる。
+この保存単位では、球面の Hom の群を元の係数の高い次数へ移す群同型と、塔の微分の計算はまだ含まない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `pointedCofiberDescOfZero` / `pointedCofiber_hom_ext` | 零合成による降下と商による一意性 |
+| `PointedCofiberComparison.map` / `iso` | 可換正方形からの cofiber の射と同型 |
+| `PointedCofiberCoproduct.isColimit` / `iso` | 射の余積の cofiber と個々の cofiber の余積の同型 |
+| `adjoinCofiberCoproductIso` | 自由基点を加える前の余積との比較 |
+| `SimplicialFunctionComplex.fanIsLimit` / `productIso` | 関数複体と定値な族の積の同型 |
+| `pointedCoproductHomIso` / `pointedCoproductHomUnderlyingIso_eval` | 点つき余積の Hom の関数複体と座標式 |
+| `SimplexCell.sphere` / `SkeletalCellAttachment.cellCoproductIso` | 個々のセルの球面の模型と余積表示 |
+| `SkeletalCellAttachment.stageFiberFunctionIso` | 塔の fiber の球面の Hom の関数複体による表示 |
+| `SkeletalCellAttachment.stageFiberFunctionHomotopyEquiv` | fiber の正次数群のセルごとの関数表示 |
+
+参照：Goerss–Jardine I §7、VIII §1。
+対象ビルド 3895 jobs 成功。私有宣言を含む 445 モジュール 4369 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
