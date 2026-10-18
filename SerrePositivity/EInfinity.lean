@@ -55,3 +55,5 @@ public import SerrePositivity.EInfinity.Operad.CompositionHeadFactor
 public import SerrePositivity.EInfinity.Operad.TensorSubstitutionFirstNested
 public import SerrePositivity.EInfinity.Operad.CompositionAheadBlockFactor
 public import SerrePositivity.EInfinity.Operad.CompositionFirstBlock
+public import SerrePositivity.EInfinity.Operad.FirstBlockArities
+public import SerrePositivity.EInfinity.Operad.CompositionFirstBlockFull
