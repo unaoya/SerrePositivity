@@ -1141,3 +1141,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.RightKanConeTransport.coneFamily_iso
 #check @SerrePositivity.InfinityCategories.RightKanConeTransport.isLimitCone_iff
 #check @SerrePositivity.InfinityCategories.isRightKanExtension_iff_forall_transport
+
+#check @SerrePositivity.InfinityCategories.LeftKanCoconeTransport.edge
+#check @SerrePositivity.InfinityCategories.LeftKanCoconeTransport.edge_cartesian
+#check @SerrePositivity.InfinityCategories.LeftKanCoconeTransport.edge_op_cocartesian
+#check @SerrePositivity.InfinityCategories.LeftKanCoconeTransport.coconeFamily_opIso
+#check @SerrePositivity.InfinityCategories.LeftKanCoconeTransport.isColimitCone_iff
+#check @SerrePositivity.InfinityCategories.isLeftKanExtension_iff_forall_transport
