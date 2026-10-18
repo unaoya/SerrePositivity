@@ -1114,13 +1114,20 @@
 
 ### §53 の実装の現在地
 
+- 次の保存検証：bounded below 完全忠実性まで集約対象ビルド 4021 jobs 成功、公理監査 2016 宣言。標準3公理のみ、KTheory import なし。
+
 - 保存検証：集約対象ビルド 4011 jobs 成功、公理監査 1990 宣言。標準3公理のみ、KTheory import なし。
 
 - `rightDerivedPlus_isGE`：同じ下限の injective 模型から全整数の下限保存を証明した。
 - 元の injective 分解を実際の injective 対象の複体へ持ち上げ、`rightDerivedPlusSingleIso` を構成した。
 - 正次数の短複体の比較と最下次数の核の保存から、単一対象の正次数消滅と零次数の `rightDerivedPlusSingleZeroIso` を証明した。
 - `affineDerivedΓPlus_single_isLE` により準連接係数層の像は次数零に集中する。H の平坦性・可換性は不要。
-- 導来単位・余単位の同型性と非有界の Dqc 同値は未完了。
+- `rightDerivedPlusUnit_single_isIso`：通常の非輪状性から実際の右導来比較の同型性を証明した。
+- `derivedPlusAdjunction_unit_fac` により通常の単位と右導来比較の因子化を証明し、`affineDerivedPlus_unit_single_isIso` で次数零単一加群上の導来単位の同型性を得た。
+- 随伴から右随伴の整合するシフト構造を実際に構成し、単位の同型性のシフト・三角拡張での閉性を証明した。関手と単位は変更しない。
+- 任意の一次数、有限コホモロジー区間、全 bounded below 対象の順に導来単位の同型性を証明した。最後の段階は、各固定次数より高い上側切断と残りの下限の保存を使う。
+- `affineDerivedTildePlusFullyFaithful`：元の全係数層の bounded below 導来圏への tilde の完全忠実性を証明した。
+- 準連接コホモロジーの対象での余単位の同型性・本質的全射性と、非有界の Dqc 同値は未完了。
 
 ## 主要宣言の表
 
@@ -1334,6 +1341,10 @@
 | `affineDerivedTildePlus`・`affineDerivedΓPlus`・`affineDerivedPlusAdjunction` | DerivedGeometry/AffineDerivedPlus・AffineDerivedPlusAdjunction | 実装・対象ビルド済み |
 | `rightDerivedPlus_isGE`・`rightDerivedPlusSingleIso` | DerivedGeometry/RightDerivedPlusBounds・RightDerivedPlusSingle | 実装・対象ビルド済み |
 | `affineDerivedΓPlus_single_isLE`・`rightDerivedPlusSingleZeroIso` | DerivedGeometry/AffineDerivedSingleBounds・RightDerivedPlusSingleZero | 実装・対象ビルド済み |
+| `rightDerivedPlusUnit_single_isIso`・`derivedPlusAdjunction_unit_fac` | DerivedGeometry/RightDerivedPlusSingleComparison・DerivedPlusUnit | 実装・対象ビルド済み |
+| `affineDerivedPlus_unit_single_isIso` | DerivedGeometry/AffineDerivedSingleUnit | 実装・対象ビルド済み |
+| `adjunction_unit_triangle_isIso₂`・`plusTriangle_homology_mor₁_isIso` | DerivedGeometry/TriangulatedUnitLocus・PlusTriangleHomology | 実装・対象ビルド済み |
+| `affineDerivedPlus_unit_isIso`・`affineDerivedTildePlusFullyFaithful` | DerivedGeometry/AffineDerivedPlusUnit・AffineDerivedPlusFullyFaithful | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

@@ -14,6 +14,18 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.adjunction_unit_isIso_iff_shift,
+    `SerrePositivity.KST.DerivedGeometry.adjunction_unit_triangle_isIso₂,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedPlus_unit_pure_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedPlus_unit_amplitude_isIso,
+    `SerrePositivity.KST.DerivedGeometry.plusTriangle_homology_mor₁_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedPlus_unit_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedTildePlusFullyFaithful,
+    `SerrePositivity.KST.DerivedGeometry.leftExact_map_quasiIsoAt_zero,
+    `SerrePositivity.KST.DerivedGeometry.rightDerivedPlusUnit_single_isIso,
+    `SerrePositivity.KST.DerivedGeometry.derivedPlusAdjunction_unit_fac,
+    `SerrePositivity.KST.DerivedGeometry.derivedPlusAdjunction_unit_isIso_Q,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedPlus_unit_single_isIso,
     `SerrePositivity.KST.DerivedGeometry.rightDerivedPlus_isGE,
     `SerrePositivity.KST.DerivedGeometry.rightDerivedPlus_leftTExact,
     `SerrePositivity.KST.DerivedGeometry.injectiveResolutionLift,
