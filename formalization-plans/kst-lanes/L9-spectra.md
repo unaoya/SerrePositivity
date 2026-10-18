@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・136 モジュール 2125 宣言の公理監査成功。
+対象ビルド・141 モジュール 2183 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1478,3 +1478,40 @@ mapping path の源射影と終点射の RLP を内部 Hom へ移し、切断と
 保存単位の対象ビルド 2335 jobs 成功。
 私有宣言を含む 136 モジュール 2125 宣言で標準三公理のみ。
 L9d は進行中。次は二つの内部 Hom の交換と Kan 列の Ω 条件を整合させる。
+
+
+## 51. L9d の cotensor の BF 対象と loop の整数次数群
+
+閉 braided 圏の二つの内部 Hom を、二重 curry と源の braiding により同型で交換した。
+二重評価での計算式を証明し、テンソル交換による列の構造射の随伴が、元の随伴構造射の Hom と交換同型の合成に一致すると示した。
+標的変数の π_* 同型保存をこの式へ適用し、任意の点つき源 A からの内部 Hom の Kan 列の Ω 条件を得た。
+構造射は境界 cell 分解で単射に置換し、本レーンの BF 対象を実際に構成した。
+
+源の射による制限を、cofibrant な BF 対象から比較射へ持ち上げた。
+各段で実際の内部 Hom の制限と可換する。
+源の射が anodyne なら、この射は各段および全整数次数で π_* 同型である。
+この結果には源の Kan 性や有限性を要求しない。
+
+任意の許容正次数の段で cotensor の整数次数群を実際の内部 Hom の群へ表示した。
+円を源とする場合、loop の群の同型を用いて π_j(cotensor(S¹,X))≃π_{j+1}(X) と計算した。
+零段を落とす通常の厳密な関手 tail も構成し、π_j(tail X)≃π_{j-1}(X) と示した。
+この二つの操作を合成した対象は元と同じ整数次数群を持つ。
+群の同型から対象間の厳密な同型や射を推論しない。
+∞ 圏での cotensor や suspension の普遍性は γ3 後の比較へ留保する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `InternalHomExchange.iso` / `.uncurry_uncurry_hom` | 二つの内部 Hom の交換同型と二重評価式 |
+| `InternalHomExchange.curry_strength` | 構造射の随伴と交換同型の整合性 |
+| `KanSequence.mapping_adjoint` / `.mapping_omegaCondition` | 内部 Hom の Kan 列の随伴構造射と Ω 条件 |
+| `OmegaSpectrum.cotensor` / `.cotensorProjection` | cotensor の BF 対象と元の Kan 列への比較 |
+| `OmegaSpectrum.cotensorPre` / `.cotensorPre_comparison` | 源の射による厳密な比較射と段の計算 |
+| `OmegaSpectrum.cotensorPre_piIsomorphism_of_anodyne` | 源の anodyne 置換の全整数次数での保存 |
+| `OmegaSpectrum.cotensorStageEquiv` / `.cotensorLoopHomotopyEquiv` | 段表示と円による一次数移動 |
+| `OmegaSpectrum.tailFunctor` / `.tailHomotopyEquiv` | 零段を落とす関手と整数次数の計算 |
+| `OmegaSpectrum.tailCotensorLoopHomotopyEquiv` | 二つの操作の整数次数群の相殺 |
+
+参照：BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2341 jobs 成功。
+私有宣言を含む 141 モジュール 2183 宣言で標準三公理のみ。
+L9d は進行中。次は円の Kan 置換上の実際の自己射と、その写像空間の群への作用を進める。
