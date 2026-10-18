@@ -14,3 +14,4 @@ public import SerrePositivity.EInfinity.Operad.SchurCompositionEquivariance
 public import SerrePositivity.EInfinity.Operad.TensorColimitMorphisms
 public import SerrePositivity.EInfinity.Operad.SchurActionNaturality
 public import SerrePositivity.EInfinity.Operad.SchurActionUnit
+public import SerrePositivity.EInfinity.Operad.TensorFamilyAdjacentTail
