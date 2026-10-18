@@ -219,8 +219,20 @@ suspension の頂点を S3 の同型で Σ に送ると `cofiberConnecting` に�
 この段階で任意の h の可換正方形から cofiber 四角形の比較を構成したとは主張しない。
 その延長と三角形の射の存在（TR3）は未完了。
 `cofiberConnecting` の前提は Quasicategory と IsStable のみで、列は零角の四角形と
-IsCofiberSequence の証明で与える。S3 の対象比較との整合と図式の比較に対する自然性は完成。Σf の後との零合成、
-回転・八面体を含む三角圏の公理は未完了。
+IsCofiberSequence の証明で与える。S3 の対象比較との整合と図式の比較に対する自然性は完成。
+`homotopyEvaluation_arrow_of_vertexPath` はホモトピーを頂点上の指定した道で評価した類を計算する。
+`SquareHorizontalHomotopies` の最大値・最小値による変形は、四角形を右の列へ動かし、
+左の列から四角形へ戻す。前者の始点成分は下辺、後者は恒等射である。
+`exists_squareRightToSuspensionLeft` は右の列から同じ始点の suspension の左の列への
+始点固定の比較を構成し、横に一定な四角形へ引き戻しても始点成分は恒等射である。
+この三つを h で合成した `exists_squareToSuspension_zero_target` は、任意の四角形 F から
+右下の頂点の suspension へ、始点成分が下辺、最後の成分が零射となる比較を与える。
+元の四角形の押し出し性は不要で、Quasicategory と任意の HasZeroMorphisms のみを要求する。
+この比較を suspension への射の始点成分による一意性で標準比較の合成と同定し、
+S3 の対象比較の自然性で Σ に移した。
+`cofiberConnecting_comp_suspension_map_eq_zero` により δ ≫ Σf = 0 が成り立つ
+（Quasicategory、IsStable、IsCofiberSequence）。f ≫ g = 0、g ≫ δ = 0 と合わせ、
+cofiber 列の三つの隣接零合成は完成。回転・八面体を含む三角圏の公理は未完了。
 S4 の三角構造は未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -344,6 +356,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 図式の比較に対する接続射の可換性 | `cofiberSuspensionComparisonHom_naturality`（Quasicategory、両端が押し出し）、`cofiberConnectingToSuspension_naturality`（さらに HasZeroMorphisms）；suspension 間の射と始点での可換式を入力 | この形では完了。Σ に値を持つ接続射の自然性も下記で完成 |
 | S3 の対象比較と S4 の標準比較の一致 | `sourceDiagramObjIso` と始点・終点の式、`comparisonIso_eq_suspensionFunctorObjIso`、`cofiberConnectingToSuspension_comp_objIso_inv`（Quasicategory、IsStable） | 完了。S3 の定義は変更していない |
 | Σ に値を持つ接続射の自然性 | `liftSourceHom` と始点の式、`suspensionFunctorObjIso_naturality`・逆方向版、`cofiberConnecting_naturality`、`cofiberConnecting_naturality_of_homotopy`（Quasicategory、IsStable、後二者は二つの cofiber 列） | 図式の関手圏の h の任意の射／実際のホモトピーに対して完成。任意の h の可換正方形の延長（TR3）は未完了 |
+| ホモトピーの道と水平変形 | `homotopyEvaluation_arrow_of_vertexPath`、`squareHorizontalRightHomotopy`・`squareHorizontalLeftHomotopy` と始点成分の式（追加仮定なし） | 完了 |
+| 最後の成分が零となる suspension への比較 | `exists_squareRightToSuspensionLeft`（Quasicategory）、`exists_squareToSuspension_zero_target`（さらに任意の HasZeroMorphisms、任意の四角形と右下の頂点の指定 suspension） | 完了。元の四角形の普遍性は不要 |
+| 接続射の後の零合成 | `cofiberConnecting_comp_suspension_map_eq_zero`（Quasicategory、IsStable、cofiber 列） | 完了。三つの隣接零合成が揃った。三角構造は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

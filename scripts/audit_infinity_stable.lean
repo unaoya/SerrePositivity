@@ -1,6 +1,8 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.exists_squareToSuspension_zero_target
+#print axioms SerrePositivity.InfinityCategories.cofiberConnecting_comp_suspension_map_eq_zero
 #print axioms SerrePositivity.InfinityCategories.SuspensionSquare.comparisonIso_eq_suspensionFunctorObjIso
 #print axioms SerrePositivity.InfinityCategories.cofiberConnectingToSuspension_comp_objIso_inv
 #print axioms SerrePositivity.InfinityCategories.cofiberConnecting_naturality
@@ -852,7 +854,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SuspensionObjectDiagramIso,
     `SerrePositivity.InfinityCategories.Stable.SuspensionObjectComparison,
     `SerrePositivity.InfinityCategories.Stable.SuspensionSourceHom,
-    `SerrePositivity.InfinityCategories.Stable.CofiberConnectingNaturality]
+    `SerrePositivity.InfinityCategories.Stable.CofiberConnectingNaturality,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationPath,
+    `SerrePositivity.InfinityCategories.Stable.SquareHorizontalHomotopies,
+    `SerrePositivity.InfinityCategories.Stable.SquareHorizontalComponents,
+    `SerrePositivity.InfinityCategories.Stable.SquareColumnComparison,
+    `SerrePositivity.InfinityCategories.Stable.ZeroTargetSquareComparison,
+    `SerrePositivity.InfinityCategories.Stable.CofiberConnectingVanishing]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

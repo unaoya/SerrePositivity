@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.CofiberConnectingVanishing
 public import SerrePositivity.InfinityCategories.Stable.CofiberConnectingNaturality
 public import SerrePositivity.InfinityCategories.Stable.SuspensionComparisonIso
 public import SerrePositivity.InfinityCategories.Stable.CofiberConnectingIndependence
