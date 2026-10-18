@@ -1045,3 +1045,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange_projection
 #check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange_fiber
 #check @SerrePositivity.InfinityCategories.IsLeftScaffold.baseChange
+#check @SerrePositivity.InfinityCategories.vertexFiberι_isIso_of_nervePoint
+#check @SerrePositivity.InfinityCategories.simplicialReplacementPoint_kanComplex
+#check @SerrePositivity.InfinityCategories.IsLeftScaffold.isPrecompositionEquivalence_of_point

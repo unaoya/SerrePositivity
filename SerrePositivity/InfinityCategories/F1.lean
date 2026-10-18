@@ -204,3 +204,4 @@ public import SerrePositivity.InfinityCategories.F1.ScaffoldIntervalPushout
 public import SerrePositivity.InfinityCategories.F1.LeftScaffold
 public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
 public import SerrePositivity.InfinityCategories.F1.LeftScaffoldBaseChange
+public import SerrePositivity.InfinityCategories.F1.LeftScaffoldPoint

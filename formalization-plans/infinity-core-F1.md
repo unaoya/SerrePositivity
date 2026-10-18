@@ -4709,5 +4709,21 @@ lemma IsLeftScaffold.baseChange
         (fun d ↦ inferInstanceAs (KanComplex (F.obj (H.obj d))))
         (leftScaffoldBaseChange p F l h H)
 
+lemma vertexFiberι_isIso_of_nervePoint
+    {C : Type u} [Category.{u} C] [Subsingleton C] [Quiver.IsThin C]
+    {E : SSet.{u}} (p : E ⟶ nerve C) (c : C) : IsIso (vertexFiberι p (nerveVertex c))
+
+lemma simplicialReplacementPoint_kanComplex
+    {C : Type u} [Category.{u} C] [Subsingleton C] [Quiver.IsThin C]
+    (F : C ⥤ SSet.{u}) (c : C) [KanComplex (F.obj c)] :
+    KanComplex (simplicialReplacement F)
+
+lemma IsLeftScaffold.isPrecompositionEquivalence_of_point
+    {C : Type u} [Category.{u} C] [Subsingleton C] [Quiver.IsThin C]
+    {E : SSet.{u}} {p : E ⟶ nerve C} [LeftFibration p]
+    {F : C ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)]
+    {l : simplicialReplacement F ⟶ E} (hs : IsLeftScaffold p F l) (c : C) :
+    IsPrecompositionEquivalence l
+
 end SerrePositivity.InfinityCategories
 ```
