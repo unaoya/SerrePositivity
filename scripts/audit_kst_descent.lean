@@ -138,6 +138,8 @@ run_cmd do
       `SerrePositivity.KST.Descent.FiniteFlatFiniteFreeCover,
       `SerrePositivity.KST.Descent.FiniteTypeFreeCharts,
       `SerrePositivity.KST.Descent.FreeChartBaseChange,
+      `SerrePositivity.KST.Descent.RationalLift,
+      `SerrePositivity.KST.Descent.IntegralComparison,
       `SerrePositivity.KST.Descent.ComponentSplit,
       `SerrePositivity.KST.Descent.ComponentRemainderCover,
       `SerrePositivity.KST.Descent.FiberTransitivityNaturality,
