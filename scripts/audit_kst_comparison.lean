@@ -103,6 +103,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -515,6 +516,48 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.commonTrivialFibrationRefinement
 #print axioms SerrePositivity.KST.Comparison.commonTrivialFibrationRefinement
+
+
+-- ComponentHomotopy.lean
+
+#check @SerrePositivity.KST.Comparison.componentRelStructLift
+#print axioms SerrePositivity.KST.Comparison.componentRelStructLift
+
+#check @SerrePositivity.KST.Comparison.componentHomotopyMap_bijective
+#print axioms SerrePositivity.KST.Comparison.componentHomotopyMap_bijective
+
+#check @SerrePositivity.KST.Comparison.componentPositiveHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.componentPositiveHomotopyMulEquiv
+
+
+-- ComponentKan.lean
+
+#check @SerrePositivity.KST.Comparison.componentSimplexLift
+#print axioms SerrePositivity.KST.Comparison.componentSimplexLift
+
+#check @SerrePositivity.KST.Comparison.componentSimplexLift_ι
+#print axioms SerrePositivity.KST.Comparison.componentSimplexLift_ι
+
+#check @SerrePositivity.KST.Comparison.simplex_in_component_of_face
+#print axioms SerrePositivity.KST.Comparison.simplex_in_component_of_face
+
+#check @SerrePositivity.KST.Comparison.componentSubcomplex_kanComplex
+#print axioms SerrePositivity.KST.Comparison.componentSubcomplex_kanComplex
+
+
+-- ComponentPointedSimplex.lean
+
+#check @SerrePositivity.KST.Comparison.simplexClass_yoneda_const
+#print axioms SerrePositivity.KST.Comparison.simplexClass_yoneda_const
+
+#check @SerrePositivity.KST.Comparison.pointedSimplex_class
+#print axioms SerrePositivity.KST.Comparison.pointedSimplex_class
+
+#check @SerrePositivity.KST.Comparison.componentPtSimplexLift
+#print axioms SerrePositivity.KST.Comparison.componentPtSimplexLift
+
+#check @SerrePositivity.KST.Comparison.componentPtSimplexLift_map
+#print axioms SerrePositivity.KST.Comparison.componentPtSimplexLift_map
 
 
 -- ComponentSubcomplex.lean
@@ -2263,6 +2306,21 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
 
 
+-- HatGLComponentIso.lean
+
+#check @SerrePositivity.KST.Comparison.matrixCoefficientEdge
+#print axioms SerrePositivity.KST.Comparison.matrixCoefficientEdge
+
+#check @SerrePositivity.KST.Comparison.matrixComponentMap
+#print axioms SerrePositivity.KST.Comparison.matrixComponentMap
+
+#check @SerrePositivity.KST.Comparison.matrixComponentMap_simplex
+#print axioms SerrePositivity.KST.Comparison.matrixComponentMap_simplex
+
+#check @SerrePositivity.KST.Comparison.hatGLComponentIso
+#print axioms SerrePositivity.KST.Comparison.hatGLComponentIso
+
+
 -- HatGLDelooping.lean
 
 #check @SerrePositivity.KST.Comparison.hatGLGroupCompletionMap_localized_isIso
@@ -2270,6 +2328,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.dgAlgebraHatGLGroupCompletionMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.dgAlgebraHatGLGroupCompletionMap_localized_isIso
+
+
+-- HatGLPositiveHomotopy.lean
+
+#check @SerrePositivity.KST.Comparison.hatGLMatrixInclusion
+#print axioms SerrePositivity.KST.Comparison.hatGLMatrixInclusion
+
+#check @SerrePositivity.KST.Comparison.hatGLSpace_kanComplex
+#print axioms SerrePositivity.KST.Comparison.hatGLSpace_kanComplex
+
+#check @SerrePositivity.KST.Comparison.hatGLPositiveHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.hatGLPositiveHomotopyMulEquiv
+
+#check @SerrePositivity.KST.Comparison.hatGLPositiveHomotopyMulEquiv_apply
+#print axioms SerrePositivity.KST.Comparison.hatGLPositiveHomotopyMulEquiv_apply
 
 
 -- HatGLStabilization.lean
@@ -2846,6 +2919,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.mappingCylinderToDouble_isPushout
 #print axioms SerrePositivity.KST.Comparison.mappingCylinderToDouble_isPushout
+
+
+-- MatrixSpace.lean
+
+#check @SerrePositivity.KST.Comparison.matrixRingObject
+#print axioms SerrePositivity.KST.Comparison.matrixRingObject
+
+#check @SerrePositivity.KST.Comparison.matrixSpace
+#print axioms SerrePositivity.KST.Comparison.matrixSpace
+
+#check @SerrePositivity.KST.Comparison.matrixEntryMap
+#print axioms SerrePositivity.KST.Comparison.matrixEntryMap
+
+#check @SerrePositivity.KST.Comparison.matrixMapOfEntries
+#print axioms SerrePositivity.KST.Comparison.matrixMapOfEntries
+
+#check @SerrePositivity.KST.Comparison.matrixSpace_kanComplex
+#print axioms SerrePositivity.KST.Comparison.matrixSpace_kanComplex
 
 
 -- MatrixStabilization.lean

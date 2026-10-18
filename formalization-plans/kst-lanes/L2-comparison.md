@@ -733,6 +733,17 @@ K-L9 の π₁ の積の MulStruct は二単体の δ₂ を第一因子、δ₀
 π_n の商と群演算には K-L9 の実際の定義を使い、成分選択の幾何だけを本レーンで証明する。
 行列の可逆成分の包含へ適用し、高次の行列公式の有限 rank の段階へ接続する。
 
+### 行列のホモトピー群の積分解と加法による基点移動
+
+確認する文言：台単体集合が Kan である単体的環の全行列の正次数のホモトピー群は、
+各係数の対応する基点でのホモトピー群の積と同型である。
+零次の行列の全次数への退化を引く単体的同型によって、単位行列の基点を零行列へ移せる。
+証明方針：係数評価が誘導する準同型を束ねる。全射性では係数ごとの境界定数単体の代表を選び、
+それらの行列を作る。単射性では同じ添字零の RelStruct を係数ごとに選び、行列の充填へまとめる。
+基点移動は零次の行列の退化を各次数で引く写像と足す写像を実際に構成する。
+単体的加法群の Kan 性は低い面からと高い面からの退化による補正で別途供給する。
+元のモノイドの次数ごとの乗法逆元は、この Kan 性の証明では用いない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -930,14 +941,18 @@ Kan 置換への厳密な延長と局所化可逆性から、K-L9 の全自然�
 安定 GL(π₀A) と BĜL の基本群の台集合の全単射を構成した。
 nerve の辺の反乗法性を二単体の MulStruct で証明し、標準群完備化写像の頂点との代表の一致を証明した。
 逆元を前合成して誘導成分群と基本群の乗法同値を構成し、安定 GL(π₀A) との群としての同定を証明した。
-KST Lemma 2.13 の i=1 の具体的な群の同定は完了。高次の行列公式の接続は残る。
+KST Lemma 2.13 の i=1 の具体的な群の同定は完了。
+成分全体の部分複体の Kan 性と正次数のホモトピー群の群同型を、代表と関係の実際の持ち上げで証明した。
+全行列の単体的環、係数の Kan 性から行列の Kan 性、ĜL と全行列の可逆成分の同型を構成した。
+全行列が Kan という仮定の下で ĜL の正次数の群を全行列の群と、実際の包含の誘導写像によって同定した。
+高次の行列公式の係数ごとの分解・安定化、および係数環の Kan 性の供給は残る。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 1155 宣言の型と公理を確認した。
-さらに名前空間全体の 2090 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 1179 宣言の型と公理を確認した。
+さらに名前空間全体の 2143 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -1206,3 +1221,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `monoidBarFundamentalClass_bijective`、`monoidBarFundamentalClass_mul` | 実装済み | 標準の成分比較の全単射性と反乗法性 |
 | `monoidBarFundamentalMulEquiv` | 実装済み | 群状モノイドの成分群と BM の基本群の乗法同値 |
 | `stableHatGLBarFundamentalMulEquiv` | 実装済み | KST Lemma 2.13 の i=1 の安定 GL との群同型 |
+
+| `componentSubcomplex_kanComplex` | 実装済み | Kan 複体の成分全体の部分複体の Kan 性 |
+| `componentPtSimplexLift`、`componentRelStructLift` | 実装済み | 正次数の代表単体と関係の充填の持ち上げ |
+| `componentPositiveHomotopyMulEquiv` | 実装済み | 成分全体の包含が誘導する正次数の群同型 |
+| `matrixRingObject`、`matrixSpace_kanComplex` | 実装済み | 全行列の単体的環と係数の Kan 性からの充填 |
+| `matrixComponentMap`、`hatGLComponentIso` | 実装済み | ĜL と全行列の可逆成分全体との同型 |
+| `hatGLPositiveHomotopyMulEquiv`、`hatGLPositiveHomotopyMulEquiv_apply` | 実装済み | 全行列が Kan のとき、包含による正次数の群同型 |
