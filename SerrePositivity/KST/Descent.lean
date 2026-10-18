@@ -26,6 +26,10 @@ public import SerrePositivity.KST.Descent.CoincidenceCenter
 public import SerrePositivity.KST.Descent.ClosedCenterSquare
 public import SerrePositivity.KST.Descent.AffineReduction
 public import SerrePositivity.KST.Descent.ReductionFunctor
+public import SerrePositivity.KST.Descent.NoetherianReduction
+public import SerrePositivity.KST.Descent.FiniteTypeReduction
+public import SerrePositivity.KST.Descent.DescentNaturality
+public import SerrePositivity.KST.Descent.ReductionDescent
 
 /-!
 # K-L8：論文 §3 の降下
@@ -43,6 +47,7 @@ public import SerrePositivity.KST.Descent.ReductionFunctor
 軌道正方形の全次数の代数的な貼り合わせを公開する。
 被約閉中心と実際の Cartesian 正方形、アフィン Noether の被約化の冪零性、
 一般の被約化の普遍性と関手性・群作用の移行を公開する。
+Noether 基底上の「一般 → 被約」の全次数降下比較の還元も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

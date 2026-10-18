@@ -53,7 +53,11 @@ run_cmd do
       `SerrePositivity.KST.Descent.CoincidenceCenter,
       `SerrePositivity.KST.Descent.ClosedCenterSquare,
       `SerrePositivity.KST.Descent.AffineReduction,
-      `SerrePositivity.KST.Descent.ReductionFunctor] do
+      `SerrePositivity.KST.Descent.ReductionFunctor,
+      `SerrePositivity.KST.Descent.NoetherianReduction,
+      `SerrePositivity.KST.Descent.FiniteTypeReduction,
+      `SerrePositivity.KST.Descent.DescentNaturality,
+      `SerrePositivity.KST.Descent.ReductionDescent] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."
