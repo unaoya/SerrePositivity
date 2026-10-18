@@ -198,7 +198,13 @@ StandardSimplex R x z n` が追加仮定なしの合成。
 `cubeEvaluation_AW_comp e f ψ φ :
 cubeEvaluation (cubeSumEnumeration e f) (cubeAWCompositionMap ψ φ) =
 compose R (cubeEvaluation e ψ) (cubeEvaluation f φ) _` は全最大旗の評価の合成公式。
-同じ前提・次数で零次元も含む。Path の左右の区間への座標と降順の向きの同定は残る。
-公開344宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
+同じ前提・次数で零次元も含む。
+`pathSplitCoordinateEquiv` は削除後の座標を後半・前半の区間の座標の和へ分け、
+`pathSplitEnumeration_eq_descending` は降順の向きの一致を示す。
+`coherentCube_split_face` は実際の合成面の Hom 写像と左右の AW 合成写像を同定する。
+`cubeEvaluation_coherent_face_one_comp` は `StrictAnti e` の下で、番号付き1面の評価と
+左右の標準成分の dg 合成を次数の濃度表示の違いを保った `HEq` で同定する。
+前提は実際の豊穣関手と同じ dg 圏・順序。次数をそろえた dg 単体の方程式への組立ては残る。
+公開369宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
 比較写像、低次の一致、写像空間の比較。A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済み。
 比較写像と各 pinched Hom の実際のホモトピー同値を完成させた後に適用する。

@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3720件で成功し、公開344宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3726件で成功し、公開369宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1502,8 +1502,24 @@ cubeEvaluation (cubeSumEnumeration e f) (cubeAWCompositionMap ψ φ)
 
 前提は同じく `[CommRing R] [DGCategory R D]`、次数は `−↑(p+q)`、零次元も含む。
 これで全最大旗の AW 評価の合成公式を得た。
-まだ dg nerve への単体集合の射は得ていない。Path の内部点の削除集合と切断点の左右の
-区間の座標集合をこの和の座標へ同定し、降順の向きを対応させる工程、dg 単体の方程式、
+
+`pathIntervalSet S c d` は元の有限内部点集合を新しい開区間へ制限した有限集合。
+`pathIntervalCoordinateIso` は区間内の元の座標とこの有限集合の順序同型である。
+`pathSplitCoordinateEquiv S j` は `S.erase j.val` を、後半の `pathIntervalSet S j.val.val b` と
+前半の `pathIntervalSet S a j.val.val` の和へ分ける。元の点の値を保ち、濃度も加法的になる。
+`pathSplitEnumeration_eq_descending` は左右の降順番号付けを後半、前半の順に連結した番号付けが
+削除後の標準の降順番号付けに等しいことを示す。
+
+`coherentCube_split_face` は、この座標同値を通して Path の実際の合成面の Hom 写像が
+左右の `coherentCubeHom` の `cubeAWCompositionMap` に等しいと示す。
+`cubeEvaluation_pathSplitFace` は任意の左右の番号付けで、合成面の評価が二つの評価の dg 合成に等しいと示す。
+`cubeEvaluation_coherent_face_one_comp` は `[LinearOrder J] [CommRing R] [DGCategory R D]` と
+実際の豊穣関手 s、`e : Fin (m+1) ≃ S`、`StrictAnti e`、座標 i の下で、
+番号付き1面の評価と、後半・前半の `coherentCubeComponent` の通常順合成を `HEq` で同定する。
+`S.erase (e i).val` の濃度と左右の内部点数の和を同定して向きを移すため、追加の符号はない。
+次数の濃度表示の違いはこの `HEq` に保持しており、まだ dg 単体の方程式そのものではない。
+
+まだ dg nerve への単体集合の射は得ていない。次数表示をそろえて dg 単体の方程式へまとめる工程、
 退化も含む自然性、および比較写像の頂点・辺・三角形での一致が残る。
 
 

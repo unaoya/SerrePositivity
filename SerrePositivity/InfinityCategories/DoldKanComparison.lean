@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.PathSplitComposition
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CubeAWComposition
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.AWCubeSum
