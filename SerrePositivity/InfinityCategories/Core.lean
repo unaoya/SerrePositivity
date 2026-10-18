@@ -53,3 +53,13 @@ public import SerrePositivity.InfinityCategories.Core.RelativeOuterHorn
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
 
 public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
+
+public import SerrePositivity.InfinityCategories.Core.FiberEdgeCorrection
+
+public import SerrePositivity.InfinityCategories.Core.FiberwiseHomotopy
+
+public import SerrePositivity.InfinityCategories.Core.KanPrismLifting
+
+public import SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
+
+public import SerrePositivity.InfinityCategories.Core.FullyFaithfulFibration

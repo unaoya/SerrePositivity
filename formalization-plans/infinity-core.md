@@ -4908,6 +4908,95 @@ lemma IsQCatEquivalence.functorIsoOfSection {E B : SSet.{u}}
 
 ```
 
+
+### A3e 続き：同値である Fibration の境界充填と写像空間の可縮な fiber（2026-10-18）
+
+quasicategory 間の Fibration が A3a の同値なら trivial Kan fibration となることを直接証明した。厳密な切断を選び、切断で戻した辺と元の辺の退化三角形を持ち上げ、射影が恒等辺である単位の辺を構成する。その実際の fiber 内のホモトピーと相対 prism の持ち上げで任意の境界を充填する。従って、充満忠実な inner fibration が右 pinched 写像空間上に誘導する射は trivial Kan fibration であり、各 fiber は可縮な Kan 複体。Core 対象ビルド成功（1629 jobs）、累計756宣言の標準3公理監査成功。未完了：写像空間の基底変換と標準単体上の境界の持ち上げ、一般の充満忠実＋本質的全射による同値判定、一般の同値による極限の保存・反映。§4 の設計変更なし。
+
+新規8公開宣言の正確な型・全前提を以下に記録する。共通の namespace は `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet HomotopicalAlgebra`、`open SSet.modelCategoryQuillen`、`open scoped Simplicial`。Fibration はホーンの rlp という既存の定義だけを使い、モデル構造・弱同値は使わない。
+
+FiberEdgeCorrection：
+
+```lean
+lemma leftFibration_correct_edge_over_identity {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+    (s : B ⟶ E) (hs : s ≫ p = 𝟙 B) {x y : E _⦋0⦌}
+    (h : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
+    (hx : s.app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) x) = x)
+    (hy : s.app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) y) = x)
+    (hxy : p.app (Opposite.op ⦋0⦌) x = p.app (Opposite.op ⦋0⦌) y) :
+    ∃ k : SSet.Truncated.Edge (X := (truncation 2).obj E) x y,
+      p.app (Opposite.op ⦋1⦌) k.edge =
+        (SSet.Truncated.Edge.id (X := (truncation 2).obj B)
+          (p.app (Opposite.op ⦋0⦌) y)).edge
+
+```
+
+FiberwiseHomotopy：
+
+```lean
+lemma fibration_exists_section_and_relativeFunctorEdge {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [Fibration p]
+    (he : IsQCatEquivalence p) :
+    ∃ s : B ⟶ E, s ≫ p = 𝟙 B ∧
+      ∃ k : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom E).obj E))
+        (functorVertex (p ≫ s)) (functorVertex (𝟙 E)),
+        ((ihom E).map p).app (Opposite.op ⦋1⦌) k.edge =
+          (SSet.Truncated.Edge.id (X := (truncation 2).obj ((ihom E).obj B))
+            (functorVertex p)).edge
+
+lemma simplicialHomotopyOfFunctorEdge_comp_eq_constant {A E B : SSet.{u}}
+    {f g : A ⟶ E} (p : E ⟶ B) (b : A ⟶ B)
+    (k : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom A).obj E))
+      (functorVertex f) (functorVertex g))
+    (hk : ((ihom A).map p).app (Opposite.op ⦋1⦌) k.edge =
+      (SSet.Truncated.Edge.id (X := (truncation 2).obj ((ihom A).obj B))
+        (functorVertex b)).edge) :
+    (simplicialHomotopyOfFunctorEdge k).h ≫ p = fst A (Δ[1] : SSet.{u}) ≫ b
+
+```
+
+KanPrismLifting：
+
+```lean
+lemma fibration_lift_prism {A E B : SSet.{u}} (q : E ⟶ B) [Fibration q]
+    (A₀ : A.Subcomplex) (H : (Δ[1] : SSet.{u}) ⊗ (A₀ : SSet.{u}) ⟶ E)
+    (F₀ : A ⟶ E) (b : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (hF₀ : A₀.ι ≫ F₀ = prismEndpoint 0 (A₀ : SSet.{u}) ≫ H)
+    (hH : H ≫ q = (Δ[1] ◁ A₀.ι) ≫ b)
+    (hb : F₀ ≫ q = prismEndpoint 0 A ≫ b) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ A ⟶ E,
+      (Δ[1] ◁ A₀.ι) ≫ F = H ∧ prismEndpoint 0 A ≫ F = F₀ ∧ F ≫ q = b
+
+```
+
+KanFibrationEquivalence：
+
+```lean
+lemma trivialKanFibration_of_fibration_of_isQCatEquivalence {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [Fibration p]
+    (he : IsQCatEquivalence p) : TrivialKanFibration p
+
+lemma trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence {E B : SSet.{u}}
+    [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
+    (he : IsSimplicialHomotopyEquivalence p) : TrivialKanFibration p
+
+```
+
+FullyFaithfulFibration：
+
+```lean
+lemma IsFullyFaithful.pinchedHomMap_trivialKanFibration {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {p : X ⟶ Y} [InnerFibration p]
+    (hp : IsFullyFaithful p) (x y : X _⦋0⦌) : TrivialKanFibration (pinchedHomMap p x y)
+
+lemma IsFullyFaithful.pinchedHomMap_vertexFiber_isContractibleKan {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {p : X ⟶ Y} [InnerFibration p]
+    (hp : IsFullyFaithful p) (x y : X _⦋0⦌)
+    (s : (pinchedHom (p.app (Opposite.op ⦋0⦌) x) (p.app (Opposite.op ⦋0⦌) y)) _⦋0⦌) :
+    IsContractibleKan (vertexFiber (pinchedHomMap p x y) s)
+
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。
