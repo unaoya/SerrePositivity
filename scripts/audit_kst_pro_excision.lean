@@ -1298,3 +1298,52 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.ProExcision.lemmaA4_absolute
 #check @SerrePositivity.KST.ProExcision.lemmaA4
 #print axioms SerrePositivity.KST.ProExcision.lemmaA4
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictifiedMap
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictifiedMap
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictifiedMap_eq_low
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictifiedMap_eq_low
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictifiedDifference_eq_zero
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictifiedDifference_eq_zero
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictificationHomotopy
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictificationHomotopy
+#check @SerrePositivity.KST.ProExcision.obstructionDihedral
+#print axioms SerrePositivity.KST.ProExcision.obstructionDihedral
+#check @SerrePositivity.KST.ProExcision.obstructionRotation
+#print axioms SerrePositivity.KST.ProExcision.obstructionRotation
+#check @SerrePositivity.KST.ProExcision.obstructionReflection
+#print axioms SerrePositivity.KST.ProExcision.obstructionReflection
+#check @SerrePositivity.KST.ProExcision.obstructionHalfTurn
+#print axioms SerrePositivity.KST.ProExcision.obstructionHalfTurn
+#check @SerrePositivity.KST.ProExcision.dihedralExponent
+#print axioms SerrePositivity.KST.ProExcision.dihedralExponent
+#check @SerrePositivity.KST.ProExcision.dihedralCarryCocycle
+#print axioms SerrePositivity.KST.ProExcision.dihedralCarryCocycle
+#check @SerrePositivity.KST.ProExcision.dihedralCarryCocycle_law
+#print axioms SerrePositivity.KST.ProExcision.dihedralCarryCocycle_law
+#check @SerrePositivity.KST.ProExcision.dihedralCarryCocycle_normalized
+#print axioms SerrePositivity.KST.ProExcision.dihedralCarryCocycle_normalized
+#check @SerrePositivity.KST.ProExcision.obstructionHalfTurn_commute
+#print axioms SerrePositivity.KST.ProExcision.obstructionHalfTurn_commute
+#check @SerrePositivity.KST.ProExcision.obstructionHalfTurn_commutator
+#print axioms SerrePositivity.KST.ProExcision.obstructionHalfTurn_commutator
+#check @SerrePositivity.KST.ProExcision.obstructionBarBoundary₂
+#print axioms SerrePositivity.KST.ProExcision.obstructionBarBoundary₂
+#check @SerrePositivity.KST.ProExcision.obstructionTorusCycle
+#print axioms SerrePositivity.KST.ProExcision.obstructionTorusCycle
+#check @SerrePositivity.KST.ProExcision.obstructionTorusCycle_boundary
+#print axioms SerrePositivity.KST.ProExcision.obstructionTorusCycle_boundary
+#check @SerrePositivity.KST.ProExcision.obstructionBarBoundary₃
+#print axioms SerrePositivity.KST.ProExcision.obstructionBarBoundary₃
+#check @SerrePositivity.KST.ProExcision.obstructionCocycleEvaluation
+#print axioms SerrePositivity.KST.ProExcision.obstructionCocycleEvaluation
+#check @SerrePositivity.KST.ProExcision.obstructionCocycleEvaluation_boundary
+#print axioms SerrePositivity.KST.ProExcision.obstructionCocycleEvaluation_boundary
+#check @SerrePositivity.KST.ProExcision.obstructionCocycleEvaluation_torus
+#print axioms SerrePositivity.KST.ProExcision.obstructionCocycleEvaluation_torus
+#check @SerrePositivity.KST.ProExcision.obstructionTorusCycle_not_boundary
+#print axioms SerrePositivity.KST.ProExcision.obstructionTorusCycle_not_boundary
+#check @SerrePositivity.KST.ProExcision.obstructionHalfTurnBoundingChain
+#print axioms SerrePositivity.KST.ProExcision.obstructionHalfTurnBoundingChain
+#check @SerrePositivity.KST.ProExcision.obstructionHalfTurnBoundingChain_boundary
+#print axioms SerrePositivity.KST.ProExcision.obstructionHalfTurnBoundingChain_boundary
