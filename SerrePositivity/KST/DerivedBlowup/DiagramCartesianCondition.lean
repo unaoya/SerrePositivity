@@ -6,7 +6,7 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramLocallyPerfect
 /-!
 概要：KST §3.1 の指定導来比較射による cartesian 条件と局所 perfect 条件の接続。
 方針：構成済みの canonical な導来係数拡大比較射の可逆性を全包含で要求する。
-規約：対象ごとの条件の定義。自然性・三重整合性・層の降下比較は別に残す。
+規約：対象ごとの条件の定義。自然性・同型不変性は別モジュールで検証する。
 使われ方：導来 blowup の coherent な Perf 候補の対象条件。
 -/
 
@@ -34,7 +34,7 @@ def diagramCartesian (a : I → R) :
 
 /-- 概要：指定比較に関して cartesian な導来図式加群の充満部分圏。
 方針：主導来局所化の対象を定義した条件で制限する。
-規約：KST §3.1、同型不変性と層の降下比較は後続で検証する。
+規約：KST §3.1、同型不変性は別モジュール、層の降下比較は未完了。
 使われ方：導来 blowup の大域加群模型の候補。 -/
 abbrev CartesianDerivedDiagramModules (a : I → R) := (diagramCartesian R a).FullSubcategory
 

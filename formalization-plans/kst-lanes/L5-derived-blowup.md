@@ -62,6 +62,9 @@ underlying 複体が当該添字での値に一致することを証明済み。
 係数圏の指定単位矢の恒等・合成律と、全包含鎖で使える閉零射関手を構成済み。
 各図式加群の underlying 複体図式と恒等・合成律を構成し、
 局所加群比較の評価成分がその指定包含写像に一致することを証明済み。
+一般の dg 遷移の等式に沿う加群制限の標準単位・合成同型と対象移送の評価を構成済み。
+局所チャートへの適用と、指定加群比較の恒等包含に沿う単位条件を証明済み。
+局所合成同型の具体的な評価と三重加群比較はカーネル検証を含め未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -299,6 +302,9 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | 指定単位矢の恒等・合成律・`diagramModuleUnitFunctor` | DiagramModuleUnitCoherence | 係数圏内の全包含鎖に対する指定閉零射関手 |
 | `diagramModuleUnderlyingDiagram`・値と射の計算・恒等・合成律 | DiagramModuleUnderlyingDiagram | 指定単位矢を加群で送った基底環上の複体図式 |
 | `finiteOverlapCompositeEvaluationIso_hom_eval`・`finiteOverlapModuleComparison_eval` | FiniteOverlapComparisonComponents | 局所加群比較と underlying 図式の指定包含写像との成分一致 |
+| `transitionRestrictionIdIso`・`transitionRestrictionCompIso`・対象移送の評価 | TransitionRestrictionCoherence | 一般 dg 関手の等式を消去して得る標準制限比較 |
+| 局所 dg 遷移の恒等・合成律、`finiteOverlapLocalModuleRestrictionIdIso`・`finiteOverlapLocalModuleRestrictionCompIso`・単位比較の評価 | FiniteOverlapModuleRestrictionCoherence | 局所 dg 遷移の等式と加群制限の標準比較の接続 |
+| `finiteOverlapModuleComparison_id` | FiniteOverlapModuleComparisonIdentity | 指定加群比較と標準制限同型による恒等包含の単位条件 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -366,13 +372,14 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全1890定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1913定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
 射影的候補模型の H⁰ 比較をこの条件へ制限した完全忠実・本質的全射な関手と同値も構成済み。
 指定単位矢とその加群作用の underlying 恒等・合成律は証明済み。
-次の実装単位は制限合成同型を含む加群比較・随伴導来比較の単位・三重整合性、
+標準制限同型を含む加群比較の単位条件も証明済み。
+次の実装単位は制限合成同型を含む加群比較の三重整合性と随伴導来比較の単位・三重整合性、
 および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
