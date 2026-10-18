@@ -223,6 +223,12 @@ comma の正方形へ戻す。標的族と三角形の輸送から得た関手�
 選ぶだけでは、与えられた path の情報を保つ保証はない。順方向の比較の path は h Fun の等式から
 選んでいるため、今回保持した導来 fiber の path との両合成の整合性も別に検証する必要がある。
 二方向の射の存在と終域の可縮性だけでは始域の可縮性は従わず、始対象性を結論してはならない。
+`exists_homotopy_relative_innerAnodyne` は inner anodyne な部分図式を固定して延長を比較する。
+`FunctorCompositionTriangle.relativeHomotopy` は同じ二辺を持つ三角形を内ホーン上で固定して結ぶ。
+`diagonalHomotopy` はその比較そのものを対角辺へ制限し、始点・終点の関手を時間方向にも
+固定する（`diagonalHomotopy_source/target`）。この構成は元の三角形を指定して比較できるため、
+h Fun の等式から任意の path を取り直す操作とは区別する。元の comma 正方形の上下の三角形へ
+適用して順方向の比較の coherence を検証する接続と、二つの合成のホモトピーは未完了。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -231,8 +237,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2031 jobs）・公理監査（927 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 363 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2033 jobs）・公理監査（945 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 365 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -401,3 +407,6 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `unitCommaSquareOfComparisonHomotopy`・`unitCommaMappingFamilyOfComparisonHomotopy` | 単位比較の像から終辺へのホモトピーから comma の正方形・族を復元 | 実装済み |
 | `unitComparisonFiberSource/Path/Homotopy`・`unitComparisonFiberHomotopy_path` | 元の導来 fiber の普遍族・path・ホモトピー、path 自体の厳密な回収 | 実装済み |
 | `unitComparisonFiberToCommaMapping` と正方形・射影の公式 | 導来 fiber から comma の写像空間へ戻る実際の射 | 実装済み（逆関係は未証明） |
+| `exists_homotopy_relative_innerAnodyne` | inner anodyne な部分図式を固定した延長の相対ホモトピー | 実装済み |
+| `FunctorCompositionTriangle.horn_eq`・`relativeHomotopy` とホーン・面の制限公式 | 同じ二辺を持つ三角形を、二辺を厳密に固定して比較 | 実装済み |
+| `FunctorCompositionTriangle.diagonalHomotopy` と `source/target` | 指定三角形の比較に由来する対角辺のホモトピー、両端を時間方向にも固定 | 実装済み |

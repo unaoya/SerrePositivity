@@ -80,3 +80,5 @@ public import SerrePositivity.InfinityCategories.F1B.CommaSquareUncurry
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareRecovery
 public import SerrePositivity.InfinityCategories.F1B.UnitComparisonFiberPath
 public import SerrePositivity.InfinityCategories.F1B.UnitComparisonFiberReturn
+public import SerrePositivity.InfinityCategories.F1B.RelativeDiagramHomotopy
+public import SerrePositivity.InfinityCategories.F1B.CompositionTriangleComparison

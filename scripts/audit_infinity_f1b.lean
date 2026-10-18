@@ -530,3 +530,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitComparisonFiberToCommaMapping_projection
 
 #check @SerrePositivity.InfinityCategories.unitComparisonFiberHomotopy_path
+
+#check @SerrePositivity.InfinityCategories.exists_homotopy_relative_innerAnodyne
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle.horn_eq
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle.relativeHomotopy
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle.relativeHomotopy_horn
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle.relativeHomotopy_face
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle.diagonalHomotopy
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle.diagonalHomotopy_source
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle.diagonalHomotopy_target
