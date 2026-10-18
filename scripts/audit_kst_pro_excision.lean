@@ -4053,3 +4053,51 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.mulOppositeElement
 #print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.mulOppositeElement
+
+#check @SerrePositivity.KST.ProExcision.neg_one_pow_fin_rev
+#print axioms SerrePositivity.KST.ProExcision.neg_one_pow_fin_rev
+
+#check @SerrePositivity.KST.ProExcision.reversalChainSign
+#print axioms SerrePositivity.KST.ProExcision.reversalChainSign
+
+#check @SerrePositivity.KST.ProExcision.reversalChainSign_mul_self
+#print axioms SerrePositivity.KST.ProExcision.reversalChainSign_mul_self
+
+#check @SerrePositivity.KST.ProExcision.alternatingReversalDifferential
+#print axioms SerrePositivity.KST.ProExcision.alternatingReversalDifferential
+
+#check @SerrePositivity.KST.ProExcision.reversalChainComponentIso
+#print axioms SerrePositivity.KST.ProExcision.reversalChainComponentIso
+
+#check @SerrePositivity.KST.ProExcision.alternatingReversalMap
+#print axioms SerrePositivity.KST.ProExcision.alternatingReversalMap
+
+#check @SerrePositivity.KST.ProExcision.alternatingReversalIso
+#print axioms SerrePositivity.KST.ProExcision.alternatingReversalIso
+
+#check @SerrePositivity.KST.ProExcision.alternatingReversalIso_natural
+#print axioms SerrePositivity.KST.ProExcision.alternatingReversalIso_natural
+
+#check @SerrePositivity.KST.ProExcision.linearizedReversalIso
+#print axioms SerrePositivity.KST.ProExcision.linearizedReversalIso
+
+#check @SerrePositivity.KST.ProExcision.linearizedReversalIso_natural
+#print axioms SerrePositivity.KST.ProExcision.linearizedReversalIso_natural
+
+#check @SerrePositivity.KST.ProExcision.linearizedReversalChainIso
+#print axioms SerrePositivity.KST.ProExcision.linearizedReversalChainIso
+
+#check @SerrePositivity.KST.ProExcision.linearizedReversalChainIso_natural
+#print axioms SerrePositivity.KST.ProExcision.linearizedReversalChainIso_natural
+
+#check @SerrePositivity.KST.ProExcision.linearizedChainFunctor
+#print axioms SerrePositivity.KST.ProExcision.linearizedChainFunctor
+
+#check @SerrePositivity.KST.ProExcision.linearizedReversalChainNatIso
+#print axioms SerrePositivity.KST.ProExcision.linearizedReversalChainNatIso
+
+#check @SerrePositivity.KST.ProExcision.SimplicialHomologyModel.toNatIso
+#print axioms SerrePositivity.KST.ProExcision.SimplicialHomologyModel.toNatIso
+
+#check @SerrePositivity.KST.ProExcision.SimplicialHomologyModel.reversalNatIso
+#print axioms SerrePositivity.KST.ProExcision.SimplicialHomologyModel.reversalNatIso

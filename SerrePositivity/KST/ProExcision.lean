@@ -403,3 +403,11 @@ public import SerrePositivity.KST.ProExcision.RelativeAffineRightMultiplication
 public import SerrePositivity.KST.ProExcision.IntegerUnitizationOpposite
 
 public import SerrePositivity.KST.ProExcision.NonUnitalSimplicialOpposite
+
+public import SerrePositivity.KST.ProExcision.AlternatingReversalSign
+
+public import SerrePositivity.KST.ProExcision.AlternatingReversalIso
+
+public import SerrePositivity.KST.ProExcision.LinearizedReversal
+
+public import SerrePositivity.KST.ProExcision.HomologyReversal
