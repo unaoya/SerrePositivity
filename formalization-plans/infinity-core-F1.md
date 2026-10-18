@@ -10517,5 +10517,137 @@ noncomputable def pointedSpaceFiberHomEquivalence (s t : SpaceInfinity.{u} _⦋0
       ((ihom (vertexFiber pointedSpaceProjection s)).obj
         (vertexFiber pointedSpaceProjection t))
 
+def functorEdgeAt {B X : SSet.{u}} {F G : B ⟶ X}
+    (e : SSet.Edge (X := (ihom B).obj X) (functorVertex F) (functorVertex G))
+    (b : B _⦋0⦌) : SSet.Edge (F.app _ b) (G.app _ b)
+
+lemma functorEdgePrism_const {B X A : SSet.{u}} {F G : B ⟶ X}
+    (e : SSet.Edge (X := (ihom B).obj X) (functorVertex F) (functorVertex G))
+    (b : B _⦋0⦌) :
+    (Δ[1] ◁ (SSet.const b : A ⟶ B)) ≫ functorEdgePrism e =
+      fst (Δ[1] : SSet.{u}) A ≫
+        SSet.yonedaEquiv.symm (e.map (evaluateFunctorAt b)).edge
+
+lemma functorParameterizedPrism_const {K B A L X : SSet.{u}}
+    (H : K ⊗ L ⟶ (ihom B).obj X) (b : B _⦋0⦌) :
+    ((K ◁ (SSet.const b : A ⟶ B)) ▷ L) ≫ functorParameterizedPrism H =
+      (fst K A ▷ L) ≫ H ≫ evaluateFunctorAt b
+
+lemma leftUnstraighteningFiberIso_hom_ι {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    (leftUnstraighteningFiberIso F b).hom ≫
+      vertexFiberι pointedSpaceProjection (F.app _ b) =
+    vertexFiberι (leftUnstraighteningProjection F) b ≫ pullback.fst pointedSpaceProjection F
+
+lemma leftUnstraighteningFiberIso_inv_ι_fst {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    (leftUnstraighteningFiberIso F b).inv ≫
+      vertexFiberι (leftUnstraighteningProjection F) b ≫ pullback.fst pointedSpaceProjection F =
+    vertexFiberι pointedSpaceProjection (F.app _ b)
+
+noncomputable def leftUnstraighteningPointedFiberMap {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (f : leftUnstraightening F ⟶ leftUnstraightening G)
+    (hf : f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F)
+    (b : B _⦋0⦌) :
+    vertexFiber pointedSpaceProjection (F.app _ b) ⟶
+      vertexFiber pointedSpaceProjection (G.app _ b)
+
+lemma leftUnstraighteningPointedFiberMap_ι {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (f : leftUnstraightening F ⟶ leftUnstraightening G)
+    (hf : f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F)
+    (b : B _⦋0⦌) :
+    leftUnstraighteningPointedFiberMap F G f hf b ≫
+      vertexFiberι pointedSpaceProjection (G.app _ b) =
+    (leftUnstraighteningFiberIso F b).inv ≫
+      vertexFiberι (leftUnstraighteningProjection F) b ≫ f ≫
+        pullback.fst pointedSpaceProjection G
+
+lemma leftUnstraighteningEdgeMap_pointedFiber_isTransport {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u})
+      (functorVertex F) (functorVertex G)) (b : B _⦋0⦌) :
+    IsEdgeTransport pointedSpaceProjection (functorEdgeAt e b)
+      (leftUnstraighteningPointedFiberMap F G (leftUnstraighteningEdgeMap F G e).val
+        (leftUnstraighteningEdgeMap F G e).property b)
+
+noncomputable def leftUnstraighteningEdgeMap_pointedFiberTransportIso {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u})
+      (functorVertex F) (functorVertex G)) (b : B _⦋0⦌) :
+    FunctorIso
+      (leftUnstraighteningPointedFiberMap F G (leftUnstraighteningEdgeMap F G e).val
+        (leftUnstraighteningEdgeMap F G e).property b)
+      (edgeTransport pointedSpaceProjection (functorEdgeAt e b))
+
+def relativeFunctorFiberEvaluation {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (b : B _⦋0⦌) :
+    vertexFiber p b ⊗ relativeFunctorSpace q p ⟶ vertexFiber q b
+
+def relativeFunctorFiberHom {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (b : B _⦋0⦌) :
+    relativeFunctorSpace q p ⟶ (ihom (vertexFiber p b)).obj (vertexFiber q b)
+
+lemma relativeFunctorFiberHom_vertex {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (b : B _⦋0⦌)
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    (relativeFunctorFiberHom p q b).app _ (relativeFunctorVertex q p f hf) =
+      functorVertex (vertexFiberMap p q f hf b)
+
+lemma relativeFunctorFiberHom_uncurry {E F B T : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (b : B _⦋0⦌)
+    (f : T ⟶ relativeFunctorSpace q p) :
+    uncurry (f ≫ relativeFunctorFiberHom p q b) ≫ vertexFiberι q b =
+      (vertexFiberι p b ▷ T) ≫ relativeFunctorUncurry f
+
+noncomputable def leftUnstraighteningMappingVertex_pointedFiberTransportIso
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (x : (leftUnstraighteningTransformationSpace F G) _⦋0⦌) (b : B _⦋0⦌) :
+    FunctorIso
+      (leftUnstraighteningPointedFiberMap F G (leftUnstraighteningMappingVertexMap F G x).val
+        (leftUnstraighteningMappingVertexMap F G x).property b)
+      (edgeTransport pointedSpaceProjection (functorEdgeAt (intervalMappingEdgeOfVertex x) b))
+
+noncomputable def leftUnstraighteningMappingFiberHom {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    leftUnstraighteningTransformationSpace F G ⟶
+      (ihom (vertexFiber pointedSpaceProjection (F.app _ b))).obj
+        (vertexFiber pointedSpaceProjection (G.app _ b))
+
+noncomputable def leftUnstraighteningFiberFamilyLift {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    ((Δ[1] : SSet.{u + 1}) ⊗ vertexFiber pointedSpaceProjection (F.app _ b)) ⊗
+      leftUnstraighteningTransformationSpace F G ⟶ PointedSpaceInfinity.{u}
+
+lemma leftUnstraighteningFiberFamilyLift_start {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    (simplexPrismVertex 1 0 (vertexFiber pointedSpaceProjection (F.app _ b)) ▷
+      leftUnstraighteningTransformationSpace F G) ≫ leftUnstraighteningFiberFamilyLift F G b =
+    fst _ _ ≫ vertexFiberι pointedSpaceProjection (F.app _ b)
+
+lemma leftUnstraighteningFiberFamilyLift_projection {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    leftUnstraighteningFiberFamilyLift F G b ≫ pointedSpaceProjection =
+    (fst (Δ[1] : SSet.{u + 1}) (vertexFiber pointedSpaceProjection (F.app _ b)) ▷
+      leftUnstraighteningTransformationSpace F G) ≫
+      intervalMappingUncurry (𝟙 (leftUnstraighteningTransformationSpace F G)) ≫
+        evaluateFunctorAt b
+
+lemma leftUnstraighteningMappingFiberHom_uncurry {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    uncurry (leftUnstraighteningMappingFiberHom F G b) ≫
+      vertexFiberι pointedSpaceProjection (G.app _ b) =
+    (((leftUnstraighteningFiberIso F b).inv ≫
+      vertexFiberι (leftUnstraighteningProjection F) b) ▷
+        leftUnstraighteningTransformationSpace F G) ≫
+      relativeFunctorUncurry (leftUnstraighteningMappingSpaceMap F G) ≫
+        pullback.fst pointedSpaceProjection G
+
+lemma leftUnstraighteningFiberFamilyLift_end {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    uncurry (leftUnstraighteningMappingFiberHom F G b) ≫
+      vertexFiberι pointedSpaceProjection (G.app _ b) =
+    (simplexPrismVertex 1 1 (vertexFiber pointedSpaceProjection (F.app _ b)) ▷
+      leftUnstraighteningTransformationSpace F G) ≫ leftUnstraighteningFiberFamilyLift F G b
+
 end SerrePositivity.InfinityCategories
 ```
