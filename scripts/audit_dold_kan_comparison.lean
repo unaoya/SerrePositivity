@@ -359,6 +359,18 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_coherent_face_one_at
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_coherent_face_one_at
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_heq_of_set_eq
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_heq_of_set_eq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponentAt_eq_of_set_eq
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponentAt_eq_of_set_eq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_eq_componentAt
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_eq_componentAt
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorSet
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorSet
 
@@ -386,6 +398,15 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_term_sign
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_term_sign
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertexPoint
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertexPoint
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertexEmbedding
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertexEmbedding
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertex_sum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertex_sum
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData
 
@@ -394,6 +415,57 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_equation
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_equation
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplex
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplex
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexInteriorTerm
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexInteriorTerm
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_term_eq_interior
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_term_eq_interior
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_card
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_card
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_erase
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_erase
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_isLeast
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_isLeast
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_isGreatest
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_isGreatest
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_card
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_card
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_erase
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_erase
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_sign_card
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_sign_card
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex

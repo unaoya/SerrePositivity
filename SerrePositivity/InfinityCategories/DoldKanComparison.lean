@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentSimplexEquation
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentSimplexData
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.PathSplitComposition

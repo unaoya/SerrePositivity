@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3731件で成功し、公開393宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3736件で成功し、公開417宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1542,9 +1542,19 @@ dg nerve の符号付きの削除−合成を上の符号付きの合成−削�
 は各 coherent 単体の頂点と全斉次成分を持つ実際の台データ。
 `coherentSimplexData_obj` は対象成分の一致、`coherentSimplexData_hom_heq` は各成分と
 内部点の標準立方体評価との一致を示す。前提は `[CommRing R] [DGCategory R D]`。
-まだ `DGNerve.Simplex.equation` の有限頂点集合の rhs への適用と単体的自然性は証明していないため、
-比較写像 `N^hc(C_Δ) ⟶ N_dg(C)` は未構成。既存 rhs への内部点表示の移送、退化も含む自然性、
-および比較写像の頂点・辺・三角形での一致が残る。
+`coherentVertexSet`・`coherentVertexInterior` は Fin の頂点集合を native な ULift の座標へ移し、
+削除・左右切断・符号の点数を保つ。`coherentInteriorVertex_sum` は内部座標の和を元の有限頂点番号の和にし、
+`coherentSimplexData_term_eq_interior` は既存 rhs の各項を内部点表示の微分項へ同定する。
+`coherentSimplexData_equation s I a b k hI ha hb hk` が全ての有限頂点集合について、
+既存の `DGNerve.Simplex.equation` と同じ微分方程式を証明する。追加の整合性・充填の仮定はない。
+
+```lean
+coherentSimplex {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.Simplex R D n
+```
+
+これにより各 coherent 単体から同次元の実際の dg 単体を得た。
+まだ面・退化での自然性を証明していないため、比較写像 `N^hc(C_Δ) ⟶ N_dg(C)` は未構成。
+単体的自然性、および比較写像の頂点・辺・三角形での一致が残る。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
