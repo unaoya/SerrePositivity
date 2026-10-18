@@ -1368,7 +1368,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3562件で成功し、公開156宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3572件で成功し、公開195宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1386,8 +1386,15 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 引き戻し成分が零となることを使う。ここに新しい標準方程式の仮定はない。
 
 γ1.5b 全体は未完了。Hom の Mathlib Γ との同定と Kan 性、成分族上の AW の双線形性と
-単位則・結合律・単体的自然性は証明済み。残りは AW の標準方程式の保存と
-通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。
+単位則・結合律・単体的自然性に加え、標準方程式の保存も証明済み。
+`differential_awData_eq_standardRhs` は標準単体の AW 成分の微分が標準境界に等しいことを示す。
+Leibniz 則から得る左右の削除和を `AWIndex.boundaryPairEquiv` で、削除後の切断と
+二種類の対角に分ける。非対角は削除後の AW 項に一致し、対角は
+`awDiagonal_sum_eq_zero` によって隣接切断どうしで符号を反転して相殺する。
+`awData_mem_standard` は閉性の証明、`standardAW g f : StandardSimplex R x z n` は
+追加仮定なしの標準単体の合成である。
+残りは C_Δ の豊穣圏 instance と通常の閉零射の圏との整合性、
+γ1.5c の比較写像、γ1.5d の coherent nerve の写像空間との比較。
 この Hom の模型だけで C_Δ の構成や coherent nerve との同値を完成とは数えない。
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

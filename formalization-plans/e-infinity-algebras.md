@@ -164,6 +164,9 @@ simplicialNerve_quasicategory (C : Type u)
 `standardUnitMap x : 𝟙_ SSet.{u} ⟶ standardHomSpace x x` は単体的単位写像。
 `awData_assoc h g f : awData h (awData g f) = awData (awData h g) f` は成分族上の結合律。
 `awData_pullback α g f` は任意の単調写像 α による引き戻しとの可換性で、退化も含む。
-前提は `[CommRing R] [DGCategory R D]`。公開156宣言の正確な型・前提・公理監査は
-`scripts/audit_dold_kan_comparison.lean`。残りは AW の標準方程式の保存、
+`awData_mem_standard g f` は標準方程式の保存を証明する。
+`standardAW (g : StandardSimplex R y z n) (f : StandardSimplex R x y n) :
+StandardSimplex R x z n` が追加仮定なしの合成。
+前提は `[CommRing R] [DGCategory R D]`。公開195宣言の正確な型・前提・公理監査は
+`scripts/audit_dold_kan_comparison.lean`。残りは C_Δ の豊穣圏 instance・通常の圏との整合性、
 比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。
