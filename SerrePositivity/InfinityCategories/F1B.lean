@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1B.CofinalComposition
+
+public import SerrePositivity.InfinityCategories.F1B.CofinalWeakEquivalence
+
 public import SerrePositivity.InfinityCategories.F1B.RightCofinalFunctor
 
 public import SerrePositivity.InfinityCategories.F1B.WeakMappingSpaces

@@ -19,7 +19,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | --- | --- | --- | --- |
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
-| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（定義・始対象・左右 anodyne の十分性・弱同値の写像空間判定が済、Quillen A は未完） |
+| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（定義・始対象・左右 anodyne の十分性・cofinal ⇒ 弱同値・合成則が済、Quillen A は未完） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 | 未着手 |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
@@ -152,17 +152,28 @@ pushout-product の right anodyne 性を得た。内部 Hom と相対内部 Hom 
 right fibration 性、相対関手空間の Kan 性、right anodyne な制限の
 trivial Kan fibration 性へ移し、`isRightCofinal_of_rightAnodyne` を証明した。
 これらも元の底上の射・元の制限写像についての定理である。
-Quillen A 本体、cofinality の合成・pullback の一般論、cofinal ⇒ 弱同値、
+`cofinalProductTestIso` は、Kan 標的 Z と底 B の積の射影への相対関手空間を
+通常の内部 Hom と厳密に同定し、`cofinalProductTestIso_pre` は元の制限写像と可換。
+この射影は左右の fibration なので、同じ構成から
+`IsLeftCofinal.isWeakHomotopyEquivalence`・`IsRightCofinal.isWeakHomotopyEquivalence`
+（[Prop 7.2.1.5(1)](https://kerodon.net/tag/02N5)）を得た。元の射の両端は任意の単体集合。
+
+`cofinalFunctorBaseChangeIso` は引き戻した fibration への相対関手空間と
+合成した底図式への相対関手空間との厳密な同型で、制限写像との可換性も持つ。
+これから cofinality を任意の底図式に適用する `restrictDiagram`、合成 `comp`、
+最初の因子と合成から後の因子を得る `cancel_left` を左右とも証明した。
+Quillen A 本体、cocartesian fibration に沿う cofinality の pullback 安定性、
+Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
 left/right cofinality の opposite による比較は未完了。
 
 ### 次の工程
 
-B3 の cofinal ⇒ 弱同値と pullback の補題を整え、Quillen A を証明する。
+B3 の cofinality の pullback 安定性と弱可縮な slice の補題を整え、Quillen A を証明する。
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2185 jobs、公理監査1812宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内516モジュールに straightening 依存なし。
+対象ビルド2191 jobs、公理監査1853宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内522モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -220,4 +231,10 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `cofinalIhom_map_rightFibration`・`cofinalRightFibration_pullbackObjObjπ` | 内部 Hom と相対内部 Hom の right fibration 性 | 済 |
 | `cofinalTrivialKanFibration_relativeHom_of_rightAnodyne`・`cofinalFunctorSpace_right_kanComplex`・`cofinalFunctorPre_trivialKanFibration_of_rightAnodyne` | right 側の相対関手空間の Kan 性と制限の全境界充填 | 済 |
 | `cofinalFunctorPre_isSimplicialHomotopyEquivalence_of_rightAnodyne`・`isRightCofinal_of_rightAnodyne` | right anodyne な射の right cofinality | 済 |
+| `cofinalProductProjection_hasLiftingProperty_horn`・`cofinalProductProjection_leftFibration/rightFibration` | Kan 複体との積の射影を左右の検査対象にする | 済 |
+| `cofinalProductTestIso/pre`・`cofinalProductTest_pre_isSimplicialHomotopyEquivalence` | 相対関手空間と通常の内部 Hom の厳密な同型・元の前合成との整合 | 済 |
+| `IsLeftCofinal.isWeakHomotopyEquivalence`・`IsRightCofinal.isWeakHomotopyEquivalence` | 任意の単体集合の cofinal な射の弱同値性 | 済 |
+| `cofinalFunctorCurry/Uncurry`・`cofinalFunctorUncurry_projection/curry/injective/naturality`・`cofinalFunctorPre_uncurry` | 相対関手空間への族と底上の図式の族の対応・制限との整合 | 済 |
+| `cofinalFunctorBaseChangeForward/Backward/Iso`・`cofinalFunctorBaseChangeIso_pre` | 引き戻した射への相対関手空間と合成図式への相対関手空間の同型・制限との整合 | 済 |
+| `IsLeftCofinal.restrictDiagram/comp/cancel_left`・`IsRightCofinal.restrictDiagram/comp/cancel_left` | 任意の底図式の検査・cofinality の合成と最初の因子の消去 | 済 |
 | B3 の Quillen A・B4〜B5 | §1 の残る工程 | 未完了 |
