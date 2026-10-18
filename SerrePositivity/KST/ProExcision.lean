@@ -164,3 +164,6 @@ public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluationChainNatura
 public import SerrePositivity.KST.ProExcision.CylinderAWEndpoints
 public import SerrePositivity.KST.ProExcision.NormalizedChainHomotopyReconstruction
 public import SerrePositivity.KST.ProExcision.ChainHomotopyCylinderNaturality
+public import SerrePositivity.KST.ProExcision.NormalizedLowDegreeReflection
+public import SerrePositivity.KST.ProExcision.LowChainComparisonReconstruction
+public import SerrePositivity.KST.ProExcision.NormalizedFunctorAdditivity

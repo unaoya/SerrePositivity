@@ -2808,3 +2808,24 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_naturality
 #print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_naturality
+
+#check @SerrePositivity.KST.ProExcision.normalizedMap_component_eq_projection
+#print axioms SerrePositivity.KST.ProExcision.normalizedMap_component_eq_projection
+
+#check @SerrePositivity.KST.ProExcision.simplicialMap_eq_complement_of_prev
+#print axioms SerrePositivity.KST.ProExcision.simplicialMap_eq_complement_of_prev
+
+#check @SerrePositivity.KST.ProExcision.normalizedMap_eq_low_reflect
+#print axioms SerrePositivity.KST.ProExcision.normalizedMap_eq_low_reflect
+
+#check @SerrePositivity.KST.ProExcision.chainComparisonDifferenceHomotopy
+#print axioms SerrePositivity.KST.ProExcision.chainComparisonDifferenceHomotopy
+
+#check @SerrePositivity.KST.ProExcision.normalizedComparisonCorrectedMap_eq_low
+#print axioms SerrePositivity.KST.ProExcision.normalizedComparisonCorrectedMap_eq_low
+
+#check @SerrePositivity.KST.ProExcision.linearizedMHomotopyOfChainComparisons
+#print axioms SerrePositivity.KST.ProExcision.linearizedMHomotopyOfChainComparisons
+
+#check @SerrePositivity.KST.ProExcision.normalizedMooreComplex_additive
+#print axioms SerrePositivity.KST.ProExcision.normalizedMooreComplex_additive

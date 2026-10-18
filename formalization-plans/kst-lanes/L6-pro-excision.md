@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと987宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと994宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -210,6 +210,9 @@
 | chainHomotopyCylinderCore_endpoint₀ / chainHomotopyCylinderCore_endpoint₁ | CylinderAWEndpoints.lean | 検証済み | 最後の AW 項と全和から正規化前の区間の両端を同定 |
 | LinearizedHomotopy.ofNormalizedChainHomotopy | NormalizedChainHomotopyReconstruction.lean | 検証済み | 正規化鎖ホモトピーから両端を備えた実単体的区間ホモトピーへの復元 |
 | chainHomotopyCylinderReconstruct_naturality | ChainHomotopyCylinderNaturality.lean | 検証済み | 端点と鎖ホモトピーの自然な正方形から実区間射の自然性を導く |
+| normalizedMap_eq_low_reflect | NormalizedLowDegreeReflection.lean | 検証済み | P と Q の退化分解による低次数の正規化の一致の反映 |
+| linearizedMHomotopyOfChainComparisons | LowChainComparisonReconstruction.lean | 検証済み | 比較先が低次で一致する二つの全鎖比較から実 m 次ホモトピーを構成 |
+| normalizedMooreComplex_additive | NormalizedFunctorAdditivity.lean | 検証済み | 包含・交代面複体・射影による正規化 Moore 関手の加法性 |
 | normalizedMapReconstruct / normalizedMapReconstruct_comp | NormalizedMapReconstruction.lean | 検証済み | Dold–Kan の実同値からの単体的射の復元と合成則 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
@@ -760,3 +763,7 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `chainHomotopyCylinderReconstruct_naturality` は端点の可換性と構成済み鎖ホモトピーの自然性から復元した射の自然性を証明する。外部群の各作用射へ適用できる。
 - 次は低次数の正規化の反映：PInfty と補射影 Q の退化分解から、正規化した射の次数≤m の一致を元の単体的射の同じ範囲の一致へ戻す。
 - その後、正規化した差のテンソルの補正式・比較ホモトピー・復元を合成し、最後に群準同型 μ と T の対角を適用して採用済み A.5 を完成させる。
+
+- `normalizedMap_eq_low_reflect` は P の正規化部分の一致と Q の退化分解を次数帰納法で合成し、正規化の低次数の一致を実射の低次数の一致へ反映する。
+- `linearizedMHomotopyOfChainComparisons` は N(f)≃R と N(g)≃S、R=S (次数≤m) から実 m 次ホモトピーを構成する。全ホモトピーの差を使い、補正終点 R−S+N(g) を復元するので、単なるホモロジー写像の一致を区間ホモトピーの存在として仮定していない。
+- 次は一般のテンソルの augmentation 補正式の実 m 次ホモトピーを、この復元と正規化 EZ 比較・厳密化の比較から合成する。
