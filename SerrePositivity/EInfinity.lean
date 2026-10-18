@@ -100,3 +100,7 @@ public import SerrePositivity.EInfinity.Operad.AlgebraActionTransport
 public import SerrePositivity.EInfinity.Operad.SchurOperationTensorOne
 public import SerrePositivity.EInfinity.Operad.AlgebraEvaluationOne
 public import SerrePositivity.EInfinity.Operad.AlgebraEvaluationCriterion
+public import SerrePositivity.EInfinity.Operad.InsertionCoreBlocks
+public import SerrePositivity.EInfinity.Operad.AlgebraInsertionBlocks
+public import SerrePositivity.EInfinity.Operad.IteratedOperationTensor
+public import SerrePositivity.EInfinity.Operad.AlgebraIteratedEvaluation
