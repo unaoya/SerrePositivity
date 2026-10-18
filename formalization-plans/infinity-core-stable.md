@@ -52,8 +52,11 @@ loop 側の双対的な適用も完了した。S4 に着手し、`Δ[2] × Δ[1]
 横座標を max(x,t) に写す固定部分つき収縮により後者の包含の right anodyne 性を
 証明した。任意の right anodyne な単射による coslice の制限が trivial Kan fibration
 であることと、その制限が余極限性を保ち反映することも証明し、この五頂点図式に適用した。
-貼り合わせの普遍性全体は未完了。右側の三頂点部分の標準 span との同定、
-全長方形の join 表示、および左四角形の押し出し性を使う外側図式への coslice の比較が残る。
+右側の三頂点部分は `pastingRightSpanIso` により標準 span `Λ[2,0]` と同定した。
+同型を長方形へ含めると右四角形の span の包含に厳密に一致する。これを用いて、
+五頂点図式の余錐の余極限性を右四角形の標準 span 上で判定する補題まで証明した。
+貼り合わせの普遍性全体は未完了。全長方形の join 表示、および左四角形の
+押し出し性を使う外側図式への coslice の比較が残る。
 引き戻しへの双対化と三角構造も未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -135,6 +138,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 貼り合わせの形状 | `pastingSquare`、`pastingBottomTriangle`、`pastingTopTriangle`、`pastingSquare_sharedEdge`、外側二辺・上下辺の一致（任意の `Δ[2] × Δ[1] → X`、X に追加の仮定なし） | 完了（普遍性の貼り合わせは未完了） |
 | right anodyne な制限 | `sliceUnderRestrict_trivialKanFibration`、`isColimitCone_iff_restrict_of_rightAnodyne`（値域 Quasicategory、right anodyne な単射） | 完了 |
 | 部分長方形の右への制限 | `pastingRightSpan_rightAnodyne`、`pastingCornerRestrict_trivialKanFibration`、`pastingCorner_isColimitCone_iff_rightSpan`（後二者は値域 Quasicategory） | 完了（貼り合わせ全体の主張は未完了） |
+| 右 span の標準形 | `pastingRightSpanIso : (horn 2 0 : SSet) ≅ pastingRightSpan`、`pastingRightSpanIso_hom_ι`（値域の図式を選ぶ前の単体集合の同型と辺の一致） | 完了 |
+| 標準 span 上の余極限判定 | `pastingCornerRestrict_standardSpan_trivialKanFibration`、`pastingCorner_isColimitCone_iff_standardSpan`（値域 Quasicategory、五頂点図式の任意の余錐） | 完了（全長方形の join 表示と外側比較は未完了） |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

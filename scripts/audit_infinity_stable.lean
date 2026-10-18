@@ -362,6 +362,25 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.pastingCornerRestrict_trivialKanFibration
 #print axioms SerrePositivity.InfinityCategories.pastingCorner_isColimitCone_iff_rightSpan
 
+#print axioms SerrePositivity.InfinityCategories.pastingSpanCode
+#print axioms SerrePositivity.InfinityCategories.pastingSpanCodeMap
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpan_code_mem_horn
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanToHorn
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanToHorn_mono
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanBottom
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanVertical
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanBottom_ι
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanVertical_ι
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanEdges_source
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanFromHorn
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanFromHorn_left
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanFromHorn_right
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanToHorn_ι
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanIso
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.pastingCornerRestrict_standardSpan_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pastingCorner_isColimitCone_iff_standardSpan
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -427,7 +446,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PrismRetraction,
     `SerrePositivity.InfinityCategories.Stable.PastingCorner,
     `SerrePositivity.InfinityCategories.Stable.ColimitRestriction,
-    `SerrePositivity.InfinityCategories.Stable.PastingCofinality]
+    `SerrePositivity.InfinityCategories.Stable.PastingCofinality,
+    `SerrePositivity.InfinityCategories.Stable.PastingRightSpanMap,
+    `SerrePositivity.InfinityCategories.Stable.PastingRightSpanIso,
+    `SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
