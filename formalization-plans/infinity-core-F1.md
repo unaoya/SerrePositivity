@@ -2288,5 +2288,44 @@ noncomputable def coherentPinchedFlagEquiv {C : Type v} [Category.{u} C]
     PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n ≃
       (coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y)
 
+lemma enrichedFunctor_map_transport {A : Type w} {C : Type v}
+    [EnrichedCategory SSet.{u} A] [Category.{u} C] [SimplicialCategory C]
+    (T : EnrichedFunctor SSet.{u} A C) {i j i' j' : A} (hi : i = i') (hj : j = j')
+    {X Y : C} (hX : T.obj i' = X) (hY : T.obj j' = Y) :
+    T.map i j ≫ eqToHom (congrArg₂ SimplicialCategory.sHom
+      ((congrArg T.obj hi).trans hX) ((congrArg T.obj hj).trans hY)) =
+      eqToHom (congrArg₂ (fun a b : A ↦ (a ⟶[SSet.{u}] b)) hi hj) ≫
+        T.map i' j' ≫ eqToHom (congrArg₂ SimplicialCategory.sHom hX hY)
+
+lemma coherentPinchedHom_pullback {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {m n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (α : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
+    coherentPinchedHom (τ.pullback α) i =
+      nerveMap (pathLastReindexFunctor α i) ≫ coherentPinchedHom τ (α.toOrderHom i)
+
+lemma CoherentResolutionFlag.toPath_reindex {m n d : ℕ}
+    (F : CoherentResolutionFlag m d) (α : ⦋m⦌ ⟶ ⦋n⦌) (k : Fin (d + 1)) :
+    pathLastReindex α (F.toPath.{u} k) = (F.pushforward α.toOrderHom).toPath k
+
+lemma CoherentResolutionFlag.pathFlag_reindex {m n d : ℕ}
+    (F : CoherentResolutionFlag m d) (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    F.pathFlag.{u} ⋙ pathLastReindexFunctor α F.start =
+      (F.pushforward α.toOrderHom).pathFlag
+
+lemma coherentPinchedEvaluate_reindex {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {m n d : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (α : ⦋m⦌ ⟶ ⦋n⦌) (F : CoherentResolutionFlag m d) :
+    coherentPinchedEvaluate (τ.pullback α) F =
+      coherentPinchedEvaluate τ (F.pushforward α.toOrderHom)
+
+lemma coherentPinchedFlagMap_reindex {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {m n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    coherentPinchedFlagMap (τ.pullback α) =
+      coherentResolutionMap α.toOrderHom ≫ coherentPinchedFlagMap τ
+
 end SerrePositivity.InfinityCategories
 ```

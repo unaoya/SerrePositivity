@@ -522,3 +522,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentFlagHom_last_last
 #check @SerrePositivity.InfinityCategories.coherentFlagPinchedSimplex_flagMap
 #check @SerrePositivity.InfinityCategories.coherentPinchedFlagEquiv
+#check @SerrePositivity.InfinityCategories.enrichedFunctor_map_transport
+#check @SerrePositivity.InfinityCategories.coherentPinchedHom_pullback
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.toPath_reindex
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pathFlag_reindex
+#check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate_reindex
+#check @SerrePositivity.InfinityCategories.coherentPinchedFlagMap_reindex
