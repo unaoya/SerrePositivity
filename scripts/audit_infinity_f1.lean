@@ -1541,3 +1541,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.joinIntervalProjection_inr
 #check @SerrePositivity.InfinityCategories.join_hom_exists_factor_inl_of_cut
 #check @SerrePositivity.InfinityCategories.join_hom_exists_factor_inr_of_cut
+#check @SerrePositivity.InfinityCategories.prism_eq_comp_endpoint_of_fst
+#check @SerrePositivity.InfinityCategories.joinDiagonal_hasLift_of_inl
+#check @SerrePositivity.InfinityCategories.joinDiagonal_hasLift_of_inr
+#check @SerrePositivity.InfinityCategories.joinDiagonal_innerFibration
+#check @SerrePositivity.InfinityCategories.relativeJoin_fst_innerFibration

@@ -7013,5 +7013,25 @@ lemma join_hom_exists_factor_inr_of_cut {X Y : SSet.{u}} {n : ℕ}
     (b : (Δ[n] : SSet.{u}) ⟶ join X Y) (hb : (SSet.yonedaEquiv b).1.val = 0) :
     ∃ c : (Δ[n] : SSet.{u}) ⟶ Y, c ≫ joinInr X Y = b
 
+lemma prism_eq_comp_endpoint_of_fst {A Y : SSet.{u}} (i : Fin 2)
+    (a : A ⟶ (Δ[1] : SSet.{u}) ⊗ Y)
+    (ha : a ≫ fst Δ[1] Y = SSet.const (stdSimplex.obj₀Equiv.symm i)) :
+    (a ≫ snd Δ[1] Y) ≫ prismEndpoint i Y = a
+
+lemma joinDiagonal_hasLift_of_inl {A B Y : SSet.{u}} (j : A ⟶ B)
+    (a : A ⟶ (Δ[1] : SSet.{u}) ⊗ Y) (b : B ⟶ join Y Y) (c : B ⟶ Y)
+    (hb : c ≫ joinInl Y Y = b) (sq : CommSq a j (joinDiagonal Y) b) : sq.HasLift
+
+lemma joinDiagonal_hasLift_of_inr {A B Y : SSet.{u}} (j : A ⟶ B)
+    (a : A ⟶ (Δ[1] : SSet.{u}) ⊗ Y) (b : B ⟶ join Y Y) (c : B ⟶ Y)
+    (hb : c ≫ joinInr Y Y = b) (sq : CommSq a j (joinDiagonal Y) b) : sq.HasLift
+
+instance joinDiagonal_innerFibration (Y : SSet.{u}) [Quasicategory Y] :
+    InnerFibration (joinDiagonal Y)
+
+instance relativeJoin_fst_innerFibration {X Y S : SSet.{u}} [Quasicategory S]
+    (f : X ⟶ S) (g : Y ⟶ S) :
+    InnerFibration (pullback.fst (joinMap f g) (joinDiagonal S))
+
 end SerrePositivity.InfinityCategories
 ```
