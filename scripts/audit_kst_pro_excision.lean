@@ -3873,3 +3873,45 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.claim415_factorized_relative_zero
 #print axioms SerrePositivity.KST.ProExcision.claim415_factorized_relative_zero
+
+#check @SerrePositivity.KST.ProExcision.columnBlockInclusion
+#print axioms SerrePositivity.KST.ProExcision.columnBlockInclusion
+
+#check @SerrePositivity.KST.ProExcision.columnBlockInclusion_left
+#print axioms SerrePositivity.KST.ProExcision.columnBlockInclusion_left
+
+#check @SerrePositivity.KST.ProExcision.columnBlockInclusion_right
+#print axioms SerrePositivity.KST.ProExcision.columnBlockInclusion_right
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_columnInclusion
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_columnInclusion
+
+#check @SerrePositivity.KST.ProExcision.matrixDropLast_one_add_lastColumn
+#print axioms SerrePositivity.KST.ProExcision.matrixDropLast_one_add_lastColumn
+
+#check @SerrePositivity.KST.ProExcision.matrixLastColumn_one_add_lastColumn
+#print axioms SerrePositivity.KST.ProExcision.matrixLastColumn_one_add_lastColumn
+
+#check @SerrePositivity.KST.ProExcision.columnBlockInclusion_coe
+#print axioms SerrePositivity.KST.ProExcision.columnBlockInclusion_coe
+
+#check @SerrePositivity.KST.ProExcision.idealColumnBlockInclusion_equivariant
+#print axioms SerrePositivity.KST.ProExcision.idealColumnBlockInclusion_equivariant
+
+#check @SerrePositivity.KST.ProExcision.lastRightColumn_dropLast
+#print axioms SerrePositivity.KST.ProExcision.lastRightColumn_dropLast
+
+#check @SerrePositivity.KST.ProExcision.lastRightColumn_lastColumn
+#print axioms SerrePositivity.KST.ProExcision.lastRightColumn_lastColumn
+
+#check @SerrePositivity.KST.ProExcision.claim415ColumnPairMap
+#print axioms SerrePositivity.KST.ProExcision.claim415ColumnPairMap
+
+#check @SerrePositivity.KST.ProExcision.claim415ColumnPairMap_base
+#print axioms SerrePositivity.KST.ProExcision.claim415ColumnPairMap_base
+
+#check @SerrePositivity.KST.ProExcision.claim415ColumnPairMap_fiber
+#print axioms SerrePositivity.KST.ProExcision.claim415ColumnPairMap_fiber
+
+#check @SerrePositivity.KST.ProExcision.claim415
+#print axioms SerrePositivity.KST.ProExcision.claim415

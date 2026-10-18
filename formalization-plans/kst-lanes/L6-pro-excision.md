@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1342宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1356宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -86,7 +86,7 @@
 - shuffle の全混合境界和：`MixedShuffleIndex.swap` は固定点のない対合で、`shuffleMixedWeight_cancel` は面の符号を含む各対の相殺。`shuffleMixed_sum_zero` は全有限和の消滅を実写像について証明。係数群の二倍の単射性を使わず、一般の加法群で成立する有限和の対合による。
 - shuffle の純粋境界添字の同値：`horizontalShuffleBoundaryEquiv` は小さい shuffle と第一因子の面から全純粋水平境界への実同値で、`horizontalShuffleBoundary_sum` が有限和を移す。`verticalShuffleBoundaryEquiv`・`verticalShuffleBoundary_sum` は補集合の同値と合成して第二因子の場合を実装。面番号・挿入位置・削除頂点の左右の復元を証明済み。実写像と符号も同定し、全境界の分類と鎖写像性へ接続済み。
 - L6c の完成界面：`constructionA5` は μ 版の実 (m+m′+1) 次ホモトピー、`constructionA5_equivariant` は外部 G 同変性、`constructionA5EquivariantCylinderMap` は作用 bar へ渡す束。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
-- L6d：単体的イデアル模型で Lemma 4.16 の実比較・全行列同変性・係数関手性と A.4 による相対零化を検証済み。一般の非単位図式の標準単位化、Claim 4.15 の一般線形モノイドへの因子化、Prop 4.14 の安定化を続行。L6e〜g は未着手。
+- L6d：一般の非単位単体環の標準単位化、Lemma 4.16 の実比較・全行列同変性・係数関手性、実 ĜL の群状性、Claim 4.15 の通常の有限 rank 写像の相対零化を検証済み。Prop 4.14 の安定化と SW92 Proposition 1.5 の再構成を続行。L6e〜g は未着手。
 
 ## 主要宣言の表
 
@@ -1035,3 +1035,25 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `claim415FactorizationMap_section` と `claim415PairMap` は実比較の相対対への降下。`claim415_factorized_relative_zero` は A.4 の実零写像をこの実対射へ後合成して低次零化を証明する。
 - `simplicialActionProductLift` は作用の交換則からの実準同型を単体的に束ねる一般補題。標準包含との可換性も証明する。
 - 対象ビルド・1342宣言の公理監査は標準三公理のみで成功。三角群を経る合成と通常の「右から a 倍して零で埋める」有限 rank の写像との成分同定は未完了。Prop 4.14 の安定化も未完了。
+
+
+### L6d の Claim 4.15 の通常の有限 rank 写像の同定（2026-10-19）
+
+- `columnBlockInclusion` は列の後半を零で埋める実加法準同型。前半・後半の成分と単位ブロック和の左行列作用との可換性を証明した。
+- `matrixDropLast_one_add_lastColumn` と `matrixLastColumn_one_add_lastColumn` は実最終列の二成分を通常のブロック包含で同定する。
+- `lastRightColumn_dropLast` と `lastRightColumn_lastColumn` は φ(v)=va を入れた実三角行列の基底が恒等行列、列が右乗法の零埋めであることを証明する。
+- `claim415ColumnPairMap` は実因子化による有限 rank の対射。`claim415ColumnPairMap_base` と `claim415ColumnPairMap_fiber` により、基底は単位ブロック和、列は v↦va の零埋めという原典の通常の写像であることを両成分で同定した。
+- `claim415` はこの通常の有限 rank の写像の次数 ≤m の相対零化。H_* の自然な複体模型だけを明示引数とし、実 ĜL の群状性や相対零化、因子化を追加仮定にしない。
+- 対象ビルド・1356宣言の公理監査は標準三公理のみで成功。L6d の残りは安定化と SW92 Proposition 1.5 の作用の議論の実再構成。L6e〜g は未着手。
+
+
+### L6d：SW92 Proposition 1.5 の実再構成の紙の確認（2026-10-19）
+
+原典：[SW92 Proposition 1.5・Lemma 1.4、pp. 56–57](https://math.berkeley.edu/~wodzicki/prace/Ann-2.pdf)、KST Proposition 4.14。
+
+- Claim 4.15 の有限 rank の零写像は、安定相対項の各元が有限 rank に由来することと、rank を十分増やした実零化から安定相対零化へ移す。H_* と filtered colimit の比較は H_* 所有レーンの模型界面として区別する。
+- SW92 の作用の議論には列・行の二つのアフィン比較がある。非可換環で行側を得る際、単なる転置を環準同型とはしない。反対環と転置、および反対モノイドの bar 鎖複体の順序反転の符号を明示する。
+- 先頭に単位座標を追加する安定自己埋め込みのホモロジー単射性は、有限 rank ごとの置換共役と filtered colimit による Lemma 1.4 の証明を再構成する。単射性を新しい公理や Prop 4.14 の構造体のフィールドにしない。
+- 相対零化から、射影を経由する二つの写像の像上の一致を証明し、実アフィン比較の共役正方形から整数 elementary 行列の作用の自明性を得る。全ホモロジーの自明性には拡張しない。
+- 整数一般線形群の作用へ移す最後の段階では、原典の生成系の議論を実証明するか、安定ブロック行列 diag(g,g⁻¹) の elementary 分解と有限支持を用いた同じ結論への再構成を行う。採用した経路は実装の docstring に明記する。
+- 以上は §10-1 の紙の確認の追加記録。Claim 4.15 は実装済みだが、上記の安定化・行側比較・整数作用への移送の完成はまだ主張しない。

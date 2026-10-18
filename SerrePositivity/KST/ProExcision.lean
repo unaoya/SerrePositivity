@@ -363,3 +363,13 @@ public import SerrePositivity.KST.ProExcision.RelativeBarPairs
 public import SerrePositivity.KST.ProExcision.SimplicialActionLift
 
 public import SerrePositivity.KST.ProExcision.Claim415Relative
+
+public import SerrePositivity.KST.ProExcision.ColumnBlockInclusion
+
+public import SerrePositivity.KST.ProExcision.LastColumnBlockInclusion
+
+public import SerrePositivity.KST.ProExcision.IdealColumnBlockInclusion
+
+public import SerrePositivity.KST.ProExcision.RightColumnBlockComponents
+
+public import SerrePositivity.KST.ProExcision.Claim415
