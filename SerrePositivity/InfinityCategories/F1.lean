@@ -95,3 +95,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionSupport
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionBoundary
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionImage
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaces
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceProjection

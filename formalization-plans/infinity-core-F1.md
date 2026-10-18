@@ -2463,5 +2463,44 @@ noncomputable def coherentResolutionFaceIso {n m : ℕ} (T : Finset (Fin (n + 1)
     (e : Fin (m + 1) ≃o T) :
     coherentResolutionSimplex.{u} m ≅ (coherentResolutionFace T).toSSet
 
+lemma subcomplex_eqToHom_ι {X : SSet.{u}} {A B : X.Subcomplex} (h : A = B) :
+    eqToHom (congrArg (fun K : X.Subcomplex ↦ K.toSSet) h) ≫ B.ι = A.ι
+
+lemma coherentResolutionFaceIso_hom_ι {n m : ℕ} (T : Finset (Fin (n + 1)))
+    (e : Fin (m + 1) ≃o T) :
+    (coherentResolutionFaceIso.{u} T e).hom ≫ (coherentResolutionFace T).ι =
+      coherentResolutionMap ((OrderHom.Subtype.val (· ∈ T)).comp e.toOrderEmbedding.toOrderHom)
+
+def coherentResolutionFaceProjection {n : ℕ} (T : Finset (Fin (n + 1))) :
+    (coherentResolutionFace.{u} T).toSSet ⟶ (stdSimplex.face T).toSSet
+
+lemma coherentResolutionFaceProjection_ι {n : ℕ} (T : Finset (Fin (n + 1))) :
+    coherentResolutionFaceProjection.{u} T ≫ (stdSimplex.face T).ι =
+      (coherentResolutionFace T).ι ≫ coherentResolutionProjection n
+
+lemma coherentResolutionFaceProjection_faceIso {n m : ℕ} (T : Finset (Fin (n + 1)))
+    (e : Fin (m + 1) ≃o T) :
+    (coherentResolutionFaceIso.{u} T e).hom ≫ coherentResolutionFaceProjection T =
+      coherentResolutionProjection m ≫
+        (stdSimplex.isoOfRepresentableBy (stdSimplex.faceRepresentableBy T m e)).hom
+
+lemma coherentResolutionFaceProjection_isPrecompositionEquivalence_of_orderIso {n m : ℕ}
+    (T : Finset (Fin (n + 1))) (e : Fin (m + 1) ≃o T) :
+    IsPrecompositionEquivalence (coherentResolutionFaceProjection.{u} T)
+
+lemma coherentResolutionFaceProjection_isPrecompositionEquivalence_of_nonempty {n : ℕ}
+    (T : Finset (Fin (n + 1))) (hT : T.Nonempty) :
+    IsPrecompositionEquivalence (coherentResolutionFaceProjection.{u} T)
+
+lemma coherentResolutionFaceProjection_isPrecompositionEquivalence {n : ℕ}
+    (T : Finset (Fin (n + 1))) :
+    IsPrecompositionEquivalence (coherentResolutionFaceProjection.{u} T)
+
+lemma coherentResolutionFaceProjection_naturality {n : ℕ}
+    {T U : Finset (Fin (n + 1))} (h : T ⊆ U) :
+    Subcomplex.homOfLE (coherentResolutionFace_mono.{u} h) ≫ coherentResolutionFaceProjection U =
+      coherentResolutionFaceProjection T ≫
+        Subcomplex.homOfLE ((stdSimplex.face_le_face_iff T U).mpr h)
+
 end SerrePositivity.InfinityCategories
 ```
