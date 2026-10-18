@@ -35,3 +35,10 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalFace
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLastFace
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleFirstPosition
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleFirstFace
+public import SerrePositivity.EInfinity.BarrattEccles.ShufflePermutationCharacterization
+public import SerrePositivity.EInfinity.BarrattEccles.PermutationDeletionBlocks
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleEnumerationRank
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalSign
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalBoundary
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalSign
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalBoundary
