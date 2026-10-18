@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaCompositionPaths
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareComparisonPath
 public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaLocalCriterion
 
@@ -19,7 +19,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- 概要：comma の普遍正方形の標的が標準単位比較で固定右辺へ移るホモトピー。
-方針：元の普遍正方形の上下の二単体を二辺固定で比較し、得た二経路を合成する。
+方針：元の普遍正方形全体への三辺固定の比較から右辺の経路を取り出す。
 規約：元の単位 η と右辺の頂点 w を固定する。
 使われ方：導来 fiber への比較射の可逆 path 成分。 -/
 noncomputable def unitCommaMappingComparisonHomotopy {X Y : SSet.{u}}
@@ -30,9 +30,24 @@ noncomputable def unitCommaMappingComparisonHomotopy {X Y : SSet.{u}}
         (𝟙 (intervalMappingSpace (unitCommaSectionVertex η x) w))) ≫
           unitIntervalMap η x (unitCommaFiberTargetVertex G x w))
       (SSet.const (unitCommaArrowVertex G x w)) := by
-  simpa only [unitCommaArrowFamily_eq_const] using
-    (unitCommaCoherentComparisonHomotopy η x w
-      (unitCommaFiberMappingSquare (𝟙 (intervalMappingSpace (unitCommaSectionVertex η x) w))))
+  let H := unitCommaSquareComparisonHomotopy η x w
+    (unitCommaFiberMappingSquare (𝟙 (intervalMappingSpace (unitCommaSectionVertex η x) w)))
+  exact { h := H.h
+          h₀ := H.h₀
+          h₁ := H.h₁.trans (unitCommaArrowFamily_eq_const G x w _)
+          rel := H.rel }
+
+/-- 概要：順方向比較の path の正方形表示は普遍正方形の全体比較の右辺そのもの。
+方針：終点を定値族と認識しても raw なホモトピーが変わらないことを使う。
+規約：実際の図式の厳密な一致。
+使われ方：順方向比較と復元側の境界輸送の照合。 -/
+lemma unitCommaMappingComparisonHomotopy_square {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (w : (unitCommaFiber G x) _⦋0⦌) :
+    intervalFamilySquare (unitCommaMappingComparisonHomotopy η x w) =
+      (unitCommaSquareComparison η x w (unitCommaFiberMappingSquare
+        (𝟙 (intervalMappingSpace (unitCommaSectionVertex η x) w)))).rightSquare :=
+  unitCommaSquareComparisonHomotopy_square _ _ _ _
 
 /-- 概要：comma の区間写像空間から標準単位比較の導来 fiber への実際の射。
 方針：普遍正方形の標的とホモトピーで path 置換へ写し、右辺の固定頂点の fiber に入れる。

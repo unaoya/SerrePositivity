@@ -94,3 +94,5 @@ public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareDeformation
 public import SerrePositivity.InfinityCategories.F1B.RelativeFunctorHomotopyComposition
 public import SerrePositivity.InfinityCategories.F1B.SquareThreeEdges
 public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquareComparison
+public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquareBoundary
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareComparisonPath

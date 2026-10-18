@@ -594,3 +594,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitCommaSquareComparison
 #check @SerrePositivity.InfinityCategories.relativeFunctorHomotopyCompositeTriangle_restriction
 #check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.triangle_restriction
+
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.bottom
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.left
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.top
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.rightSquare
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.rightSquare_zero
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.rightSquare_one
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.rightSquare_source
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.rightSquare_target
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.familyHomotopy
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.familyHomotopy_square
+#check @SerrePositivity.InfinityCategories.unitCommaSquareComparisonHomotopy
+#check @SerrePositivity.InfinityCategories.unitCommaSquareComparisonHomotopy_square
+#check @SerrePositivity.InfinityCategories.unitCommaMappingComparisonHomotopy_square

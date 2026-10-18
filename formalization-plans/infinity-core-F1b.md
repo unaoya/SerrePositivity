@@ -220,8 +220,8 @@ comma の正方形へ戻す。標的族と三角形の輸送から得た関手�
 これを復元に代入した `unitComparisonFiberToCommaMapping` は、導来 fiber から comma の区間写像空間へ
 戻る実際の射である。正方形表示と元の始域座標への射影を厳密に保持する。
 **両合成のホモトピーと比較射の同値性は未証明。** 合成の Hom の等式だけから選ぶ
-path では元の二単体の情報を保つ保証がないため、順方向比較の path は、元の正方形の上下の
-三角形を指定して比較する構成 `unitCommaCoherentComparisonHomotopy` に変更した。
+path では元の二単体の情報を保つ保証がないため、順方向比較の path は、三辺固定の正方形全体の
+比較から取り出す `unitCommaSquareComparisonHomotopy` を使う。
 この構成と、導来 fiber から復元する側の三角形の輸送との両合成の整合性は別に検証する必要がある。
 二方向の射の存在と終域の可縮性だけでは始域の可縮性は従わず、始対象性を結論してはならない。
 `exists_homotopy_relative_innerAnodyne` は inner anodyne な部分図式を固定して延長を比較する。
@@ -235,7 +235,7 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 `FunctorCompositionTriangle.familyHomotopy` で相対三角形比較を族に移し、
 `unitCommaCompositionUpperFamilyPath/LowerFamilyPath` は単位比較の像から共通対角を経て
 元の右辺に進む二経路となる。`unitCommaCoherentComparisonTriangle` はこの二つの指定経路と
-合成経路を持つ二単体であり、`unitCommaMappingComparisonHomotopy` はこの合成を使う。
+合成経路を持つ二単体である。この二経路の合成自体は独立な構成として保持する。
 元の正方形を入力にした順方向比較の構成は接続済みだが、二つの合成のホモトピーは未証明。
 `functorSquareOfCompositionTriangle_eq_fold` は正方形への補完を具体的な畳み込みとして表示する。
 `FunctorCompositionTriangle.squareRelativeHomotopy` は相対三角形比較を正方形全体へ移し、
@@ -251,9 +251,13 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 `squareThreeEdges` は下辺・左辺・上辺の像の和。
 `ThreeEdgeSquareComparison` と `threeEdgeSquareComparison` はこれら三辺の制限の fiber で
 二段階の変形を合成し、`unitCommaSquareComparison` は基準単位正方形と元の comma 正方形への適用。
-**三辺を固定する合成は実装済みだが、その右辺の path と既存の順方向比較の path の照合、
-復元側の輸送との比較と両合成のホモトピーは未完了。**
-二つの下側 path は同じ端点を持つだけでは同一視できず、この照合を省いて逆関係を主張しない。
+`ThreeEdgeSquareComparison.rightSquare` はこの全体比較の右辺の制限で、始点・終点の辺と
+その両端の定値性を厳密に回収する。`familyHomotopy` で族に戻し、`familyHomotopy_square` で
+入力の右辺の図式そのものを回収する。`unitCommaSquareComparisonHomotopy` はこの構成の適用であり、
+`unitCommaMappingComparisonHomotopy` と導来 fiber への順方向射は現在こちらを使う。
+`unitCommaMappingComparisonHomotopy_square` は普遍族上でも右辺の図式との厳密な一致を保証する。
+**正方形全体と順方向比較の境界 path の一致は接続済み。復元側の指定境界輸送との比較と
+両合成のホモトピーは未完了。** 独立な二経路の合成との同一視は用いず、path の選択も混同しない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -262,8 +266,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2045 jobs）・公理監査（1096 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 377 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2047 jobs）・公理監査（1118 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 379 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -441,7 +445,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `FunctorCompositionTriangle.familyHomotopy` | 二辺固定の三角形比較を写像空間の族へ転置 | 実装済み |
 | `functorHomotopyComposite`・`functorHomotopyCompositeTriangle` | 指定した二つのホモトピーの合成と同じ二辺を持つ二単体 | 実装済み |
 | `unitCommaCompositionSquare`・`unitCommaCompositionDiagonalFamily` と `_homotopy` | 元の comma 正方形の四辺の認識・共通対角の族 | 実装済み |
-| `unitCommaCompositionUpperFamilyPath/LowerFamilyPath`・`unitCommaCoherentComparisonHomotopy/Triangle` | 元の上下の二単体を二辺固定で比較した経路とその合成、既存順方向比較に使用 | 実装済み（逆関係は未証明） |
+| `unitCommaCompositionUpperFamilyPath/LowerFamilyPath`・`unitCommaCoherentComparisonHomotopy/Triangle` | 元の上下の二単体を二辺固定で比較した経路とその合成、独立な二経路の合成 | 実装済み（現行順方向比較は全体図式由来の経路を使用） |
 | `squareUpperFold` と二単体・四辺の制限公式 | 上側への具体的 retraction、下側は対角辺の恒等合成 | 実装済み |
 | `functorSquareOfCompositionTriangle_eq_fold` | 正方形への補完を畳み込みによる前合成と厳密に同一視 | 実装済み |
 | `FunctorCompositionSquare.normalizationHomotopy` と四辺の公式 | 補完した上側から元の正方形へ戻す変形、三辺固定・右辺は元の下側二単体由来 | 実装済み |
@@ -451,4 +455,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `exists_relativeFunctorHomotopyComposite`・`relativeFunctorHomotopyComposite` と固定条件・合成三角形・二単体の固定条件 | 指定部分図式を全時間で固定する合成、元の二経路の実際の二単体、二単体自体も部分図式上で定値 | 実装済み |
 | `squareThreeEdges`・三つの包含・`restriction_eq`・`homotopy_restriction` | 三辺の和の部分図式、三辺の固定を一つの相対条件へまとめる | 実装済み |
 | `ThreeEdgeSquareComparison`・`threeEdgeSquareComparison`・`restriction_precomp` | 三辺固定の正方形の合成ホモトピー、元の二段階の合成三角形 | 実装済み |
-| `unitCommaSquareComparison` | 単位の基準正方形から元の comma 正方形への三辺固定の合成 | 実装済み（既存 path・復元側との照合は未証明） |
+| `unitCommaSquareComparison` | 単位の基準正方形から元の comma 正方形への三辺固定の合成 | 実装済み（境界 path の取り出しも実装済み、復元側との比較は未証明） |
+| `ThreeEdgeSquareComparison.bottom/left/top`・`rightSquare` と四辺の公式 | 三辺固定の全体比較から右辺を取り出し、四辺の代表と両端固定を確認 | 実装済み |
+| `ThreeEdgeSquareComparison.familyHomotopy`・`familyHomotopy_square` | 右辺を写像空間の族の経路へ戻し、元の図式を厳密に回収 | 実装済み |
+| `unitCommaSquareComparisonHomotopy`・`_square`・`unitCommaMappingComparisonHomotopy_square` | 現行順方向比較の path と普遍正方形の全体比較の右辺の厳密な一致 | 実装済み（復元側との比較は未証明） |
