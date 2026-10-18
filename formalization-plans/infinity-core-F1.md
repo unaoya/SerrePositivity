@@ -7813,5 +7813,51 @@ lemma isQCatEquivalence_of_leftFibration_fibers
     (h : ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)) :
     IsQCatEquivalence f
 
+lemma kanDiagramCoherentNerve_eq_strictCoherentDiagram
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    kanDiagramCoherentNerve F = HomotopyLimits.strictCoherentDiagram F
+
+lemma weightedPointedKanComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    IsPrecompositionEquivalence
+      (HomotopyLimits.weightedCoherentConeComparison F pointKanObject)
+
+lemma coherentConeTotal_transport_projection {K X : SSet.{u}} {F G : K ⟶ X}
+    {x y : X _⦋0⦌} (hF : F = G) (hx : x = y)
+    (h : HomotopyLimits.coherentConeTotal F x = HomotopyLimits.coherentConeTotal G y) :
+    eqToHom h ≫ HomotopyLimits.coherentConeProjection G y =
+      HomotopyLimits.coherentConeProjection F x
+
+noncomputable def strictKanUnstraighteningIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    HomotopyLimits.coherentConeTotal (HomotopyLimits.strictCoherentDiagram F)
+      (coherentNerveVertex pointKanObject) ≅ leftUnstraightening (kanDiagramCoherentNerve F)
+
+lemma strictKanUnstraighteningIso_projection
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (strictKanUnstraighteningIso F).hom ≫
+      leftUnstraighteningProjection (kanDiagramCoherentNerve F) =
+    HomotopyLimits.coherentConeProjection (HomotopyLimits.strictCoherentDiagram F)
+      (coherentNerveVertex pointKanObject)
+
+noncomputable def strictKanUnstraighteningComparison
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj
+      (weightedNerve
+        (HomotopyLimits.simplicialHomDiagram F pointKanObject ⋙ SSet.opFunctor)) ⟶
+      leftUnstraightening (kanDiagramCoherentNerve F)
+
+lemma strictKanUnstraighteningComparison_projection
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    strictKanUnstraighteningComparison F ≫
+      leftUnstraighteningProjection (kanDiagramCoherentNerve F) =
+    (SSet.uliftFunctor.{u + 1, u}).map
+      (weightedNerveProjection
+        (HomotopyLimits.simplicialHomDiagram F pointKanObject ⋙ SSet.opFunctor))
+
+lemma strictKanUnstraighteningComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    IsPrecompositionEquivalence (strictKanUnstraighteningComparison F)
+
 end SerrePositivity.InfinityCategories
 ```
