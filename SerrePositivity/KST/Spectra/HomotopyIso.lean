@@ -81,6 +81,16 @@ noncomputable def KanHomotopyGroup.equivOfPiIsomorphism (n : ℕ) (f : X ⟶ Y)
   subst y
   exact MulEquiv.ofBijective (map f rfl) (hf x (n + 1))
 
+/-- 概要：全基点 π_* 同型の射の指定基点の正次数の誘導準同型は全単射。
+方針：像の基点の等式で帰納して元の全基点条件を使う。
+規約：添字 n は実際の次数 n+1。
+使われ方：Goerss–Jardine I §7。fiber 比較の五項補題。 -/
+theorem KanHomotopyGroup.map_bijective_of_piIsomorphism (n : ℕ) (f : X ⟶ Y)
+    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
+    Function.Bijective (map (n := n) f h) := by
+  subst y
+  exact hf x (n + 1)
+
 /-- 概要：全基点 π_* 同型の射は全自然数次数の類の同値を誘導する。
 方針：指定基点への誘導写像の全単射性を同値へ束ねる。
 規約：零次数を含む。

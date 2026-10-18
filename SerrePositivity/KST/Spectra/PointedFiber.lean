@@ -91,6 +91,52 @@ theorem pointedFiberLift_ι {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (f 
   apply Under.UnderMorphism.ext
   exact fiberLift_ι p.right _ f.right hf
 
+/-- 概要：fiber の包含と元の点つき射の合成は零射。
+方針：通常の fiber の定数性と元の射の基点保存を使う。
+規約：零射は点つき圏の零対象を経由する射。
+使われ方：Goerss–Jardine I §7、BF 1978 §2。fiber の構造射の定義域。 -/
+@[reassoc (attr := simp)]
+theorem pointedFiberι_comp {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) :
+    pointedFiberι p ≫ p = 0 := by
+  apply Under.UnderMorphism.ext
+  change (pointedFiberι p).right ≫ p.right = (0 : pointedFiber p ⟶ B).right
+  rw [PointedObject.zero_right]
+  exact (fiberι_comp p.right (p.right.app _ E.basepoint)).trans
+    ((congrArg (fun b ↦ SSet.const (X := (pointedFiber p).right) b)
+      (OmegaSpectrum.pointedMap_basepoint p)).trans (pointedConstant_eq_const B _).symm)
+
+/-- 概要：合成が零射となる点つき射を fiber へ持ち上げる。
+方針：零射の基礎表示を基点の定数射へ直して既存の持ち上げを使う。
+規約：点つき圏での厳密な零合成を条件とする。
+使われ方：Goerss–Jardine I §7、BF 1978 §2。fiber 列の構造射。 -/
+def pointedFiberLiftOfZero {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (f : A ⟶ E)
+    (hf : f ≫ p = 0) : A ⟶ pointedFiber p :=
+  pointedFiberLift p f (by
+    have h := congrArg Under.Hom.right hf
+    change f.right ≫ p.right = (0 : A ⟶ B).right at h
+    rw [PointedObject.zero_right, pointedConstant_eq_const] at h
+    exact h.trans (congrArg (fun b ↦ (SSet.const (X := A.right) b))
+      (OmegaSpectrum.pointedMap_basepoint p).symm))
+
+/-- 概要：零合成から作った fiber の持ち上げは包含後に元の射となる。
+方針：点つき fiberLift の計算を使う。
+規約：条件の証明の選択に依存しない。
+使われ方：Goerss–Jardine I §7、BF 1978 §2。構造射の可換性。 -/
+@[reassoc (attr := simp)]
+theorem pointedFiberLiftOfZero_ι {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (f : A ⟶ E)
+    (hf : f ≫ p = 0) : pointedFiberLiftOfZero p f hf ≫ pointedFiberι p = f :=
+  pointedFiberLift_ι p f _
+
+/-- 概要：点つき fiber への射は全空間への包含後の射で決まる。
+方針：通常の fiber の射の一意性を使う。
+規約：任意の点つき始域。
+使われ方：Goerss–Jardine I §7、BF 1978 §2。fiber 列の可換条件。 -/
+theorem pointedFiber_hom_ext {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
+    {f g : A ⟶ pointedFiber p} (h : f ≫ pointedFiberι p = g ≫ pointedFiberι p) : f = g := by
+  apply Under.UnderMorphism.ext
+  apply fiber_hom_ext p.right _
+  exact congrArg Under.Hom.right h
+
 end
 
 end SerrePositivity.KST.Spectra

@@ -30,3 +30,5 @@ public import SerrePositivity.KST.Spectra.PointedKanReplacement
 public import SerrePositivity.KST.Spectra.PointedFactorization
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 public import SerrePositivity.KST.Spectra.PointedFiber
+public import SerrePositivity.KST.Spectra.FiberKanSequence
+public import SerrePositivity.KST.Spectra.FibrationComparisonPositive

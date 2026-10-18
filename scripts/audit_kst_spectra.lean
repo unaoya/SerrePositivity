@@ -79,7 +79,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.CofibrantKanSequence,
     `SerrePositivity.KST.Spectra.PostMappingLifts,
     `SerrePositivity.KST.Spectra.CofibrantOmegaSequence,
-    `SerrePositivity.KST.Spectra.PointedFiber]
+    `SerrePositivity.KST.Spectra.PointedFiber,
+    `SerrePositivity.KST.Spectra.FiberKanSequence,
+    `SerrePositivity.KST.Spectra.GroupFiveLemma,
+    `SerrePositivity.KST.Spectra.HomotopySquares,
+    `SerrePositivity.KST.Spectra.FibrationComparisonPositive]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

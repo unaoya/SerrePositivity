@@ -27,7 +27,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・67 モジュール 1320 宣言の公理監査成功。
+対象ビルド・71 モジュール 1341 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -877,3 +877,31 @@ Kan でない列全体の fibrant 置換の構造射への接続も未完了。
 保存単位の対象ビルド 1840 jobs 成功。
 私有宣言を含む 67 モジュール 1320 宣言で標準三公理のみ。
 L9c は未完了。次は段ごとの fiber を列にして Ω 条件と長完全列へ接続する。
+
+## 33. L9c の fiber の Kan 列と正次数の比較
+
+点つき fiber の包含と元の射の合成が零射であることを証明した。
+零合成からの点つき持ち上げを用意し、suspension が零射を保つことを左随伴性から得た。
+各段が Kan fibration である列の射について、各段の fiber の suspension 構造射を構成した。
+各 fiber は Kan なので、単射性と Ω 条件をまだ要求しない Kan 列を得た。
+包含は列の厳密な射である。
+さらに、可換性を要求しない群の二つの完全な五項列について五項補題を証明した。
+全空間と底の全基点 π_* 同型を、L9b の自然な長完全列の五項へ適用した。
+その結果、fiber 間の誘導写像は全ての正次数で全単射であることを証明した。
+零次数の fiber の比較は未完了であり、正次数の五項補題からは推論しない。
+fiber の Ω 条件と整数次数長完全列もまだ完了扱いにしない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `pointedFiberι_comp` | fiber 包含と元の射の零合成 |
+| `pointedFiberLiftOfZero` | 零合成から点つき fiber への持ち上げ |
+| `KanSequence.Hom.fiberSigma` | fiber の suspension 構造射 |
+| `KanSequence.Hom.fiber` | 各段の fiber を束ねた Kan 列 |
+| `KanSequence.Hom.fiberInclusion` | 全空間の列への厳密な包含 |
+| `group_five_lemma` | 非可換群でも有効な五項補題 |
+| `KanHomotopyGroup.map_square` | 基点を明示した群の可換正方形 |
+| `FibrationSquare.fiberMap_positive_bijective` | 全空間・底の π_* 同型から fiber の正次数の全単射 |
+
+参照：Goerss–Jardine I §§7–8、Kerodon §3.2.6、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 1844 jobs 成功。
+私有宣言を含む 71 モジュール 1341 宣言で標準三公理のみ。
