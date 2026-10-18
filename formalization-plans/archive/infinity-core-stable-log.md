@@ -10738,3 +10738,84 @@ HomotopyBinaryBiproduct ビルド 2194 jobs、対象・Stable 集約ビルド 22
 引用・追加公理・sorry は導入していない。
 前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
 S4 全体の完成とは数えない。
+
+
+## h C の前加法構造・有限双積・整数シフトの加法性（2026-10-18）
+
+二項双積から Mathlib の Eckmann–Hilton 構成で Hom の可換モノイドを得た。
+零始点の押し出しの第一・第二射影を p・q とすると、p + q ≫ f は第一包含の左逆となる。
+前保存単位の任意の左逆による積性から、零と恒等射を持ち上げる j があり、
+j ≫ p + f = 0 となる。任意の二対象を指定二入力の押し出しに表示して全 Hom に移した。
+この逆元を選んで可換群とし、双積の加法と合成の左右の分配則で Preadditive instance を得た。
+モノイド・群の補助構造は大域 instance にせず、最終的な preadditive_ho のみを大域 instance とする。
+加法・零・既存の双積・Σ・Ω・HasShift ℤ の定義は保持している。
+
+零対象と二項積から h C の有限積、前加法性から有限双積も得た。
+これは ∞ 圏自体の全有限極限・余極限の存在とは異なり、その未証明の主張を代用しない。
+Σ・Ω・全整数シフトは自己同値の積・零射の保存から加法関手となる。
+設計変更なし。公開名・正確な型・全前提は以下の Lean の出力のとおり。
+
+```lean
+@SerrePositivity.InfinityCategories.stableHomAddCommMonoid.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (A B : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) →
+        AddCommMonoid.{u_1} (Quiver.Hom.{u_1, u_1} A B)
+@SerrePositivity.InfinityCategories.exists_additiveInverse_of_zeroSourcePushout.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R →
+    SerrePositivity.InfinityCategories.IsZeroVertex.{u_1}
+        (SerrePositivity.InfinityCategories.squareVertex.{u_1} R 0 0) →
+      ∀
+        (f :
+          Quiver.Hom.{u_1, u_1} (SerrePositivity.InfinityCategories.squareHoVertex.{u_1} R 0 1)
+            (SerrePositivity.InfinityCategories.squareHoVertex.{u_1} R 1 0)),
+        ∃ g, Eq.{u_1 + 1} (HAdd.hAdd.{u_1, u_1, u_1} g f) 0
+@SerrePositivity.InfinityCategories.exists_stableHom_additiveInverse.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {A B : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)}
+  (f : Quiver.Hom.{u_1, u_1} A B), ∃ g, Eq.{u_1 + 1} (HAdd.hAdd.{u_1, u_1, u_1} g f) 0
+@SerrePositivity.InfinityCategories.stableHomAddCommGroup.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (A B : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) →
+        AddCommGroup.{u_1} (Quiver.Hom.{u_1, u_1} A B)
+@SerrePositivity.InfinityCategories.preadditive_ho.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      CategoryTheory.Preadditive.{u_1, u_1}
+        ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+@SerrePositivity.InfinityCategories.hasFiniteProducts_ho.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  CategoryTheory.Limits.HasFiniteProducts.{u_1, u_1}
+    ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+@SerrePositivity.InfinityCategories.hasFiniteBiproducts_ho.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  CategoryTheory.Limits.HasFiniteBiproducts.{u_1, u_1}
+    ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+@SerrePositivity.InfinityCategories.suspensionFunctor_additive.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  CategoryTheory.Functor.Additive.{u_1, u_1, u_1, u_1} (SerrePositivity.InfinityCategories.suspensionFunctor.{u_1} X)
+@SerrePositivity.InfinityCategories.loopFunctor_additive.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  CategoryTheory.Functor.Additive.{u_1, u_1, u_1, u_1} (SerrePositivity.InfinityCategories.loopFunctor.{u_1} X)
+@SerrePositivity.InfinityCategories.shiftFunctor_additive_ho.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] (n : ℤ),
+  CategoryTheory.Functor.Additive.{u_1, u_1, u_1, u_1}
+    (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+      (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+```
+
+HomotopyAdditiveInverse 対象ビルド 2197 jobs、HomotopyPreadditive 対象ビルド 2199 jobs、
+ShiftAdditive 対象ビルド 2200 jobs、対象・Stable 集約ビルド 2229 jobs が成功。
+公開型抽出・公理監査も終了コード 0。監査は 232 モジュール・1744 宣言
+（生成・非公開宣言を含む）で標準三公理 propext・Classical.choice・Quot.sound のみ。
+自分の新規ファイルの警告なし。`git diff --check` 成功。
+引用・追加公理・sorry は導入していない。
+回転、八面体、Pretriangulated instance、S5〜S7 は未完了。S4 全体の完成とは数えない。

@@ -1,6 +1,16 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.stableHomAddCommMonoid
+#print axioms SerrePositivity.InfinityCategories.exists_additiveInverse_of_zeroSourcePushout
+#print axioms SerrePositivity.InfinityCategories.exists_stableHom_additiveInverse
+#print axioms SerrePositivity.InfinityCategories.stableHomAddCommGroup
+#print axioms SerrePositivity.InfinityCategories.preadditive_ho
+#print axioms SerrePositivity.InfinityCategories.hasFiniteProducts_ho
+#print axioms SerrePositivity.InfinityCategories.hasFiniteBiproducts_ho
+#print axioms SerrePositivity.InfinityCategories.suspensionFunctor_additive
+#print axioms SerrePositivity.InfinityCategories.loopFunctor_additive
+#print axioms SerrePositivity.InfinityCategories.shiftFunctor_additive_ho
 #print axioms SerrePositivity.InfinityCategories.exists_terminalCompositeTriangle
 #print axioms SerrePositivity.InfinityCategories.hasColimit_span_of_terminal_first
 #print axioms SerrePositivity.InfinityCategories.exists_pushoutRectangle_of_zeroEnd
@@ -1051,7 +1061,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ZeroEndPasting,
     `SerrePositivity.InfinityCategories.Stable.Bicartesian,
     `SerrePositivity.InfinityCategories.Stable.SplitCofiberProduct,
-    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryBiproduct]
+    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryBiproduct,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyAdditiveInverse,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyPreadditive,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyFiniteBiproduct,
+    `SerrePositivity.InfinityCategories.Stable.ShiftAdditive]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
