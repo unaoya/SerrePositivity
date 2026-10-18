@@ -53,6 +53,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -362,6 +363,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.exExpansion_rear_face
 
 
+-- ExExpansionSmallComplexity.lean
+
+#check @SerrePositivity.KST.Comparison.exExpansion_eq_degeneracy_of_complexity_lt
+#print axioms SerrePositivity.KST.Comparison.exExpansion_eq_degeneracy_of_complexity_lt
+
+#check @SerrePositivity.KST.Comparison.exExpansion_degenerate_of_complexity_lt
+#print axioms SerrePositivity.KST.Comparison.exExpansion_degenerate_of_complexity_lt
+
+
 -- ExInfinity.lean
 
 #check @SerrePositivity.KST.Comparison.exIterate
@@ -389,6 +399,18 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.exInfinityUnit
 
 
+-- ExPairingFaceUniqueness.lean
+
+#check @SerrePositivity.KST.Comparison.exExpansion_front_ne_source
+#print axioms SerrePositivity.KST.Comparison.exExpansion_front_ne_source
+
+#check @SerrePositivity.KST.Comparison.exExpansion_rear_ne_source
+#print axioms SerrePositivity.KST.Comparison.exExpansion_rear_ne_source
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_face_unique_succ
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_face_unique_succ
+
+
 -- ExPairingNondegenerate.lean
 
 #check @SerrePositivity.KST.Comparison.exExpansion_mem_degenerate
@@ -399,6 +421,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_source
 #print axioms SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_source
+
+
+-- ExPairingProperness.lean
+
+#check @SerrePositivity.KST.Comparison.exPairingImage
+#print axioms SerrePositivity.KST.Comparison.exPairingImage
+
+#check @SerrePositivity.KST.Comparison.exTypeTwo
+#print axioms SerrePositivity.KST.Comparison.exTypeTwo
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_face_unique
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_face_unique
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_target
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_target
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_isUniquelyCodimOneFace
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_isUniquelyCodimOneFace
 
 
 -- ExPairingStep.lean
@@ -1542,3 +1582,9 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidActionFamily_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.monoidActionFamily_localized_isIso
+
+
+-- UniqueFaceNondegenerate.lean
+
+#check @SerrePositivity.KST.Comparison.nonDegenerate_of_unique_face
+#print axioms SerrePositivity.KST.Comparison.nonDegenerate_of_unique_face
