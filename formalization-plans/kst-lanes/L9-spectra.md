@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・255 モジュール 3032 宣言の公理監査成功。
+対象ビルド・262 モジュール 3061 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2255,3 +2255,31 @@ filtered BF 比較を使い、既存の telescope から関手的な図式の te
 保存単位の対象ビルド 2456 jobs 成功。
 私有宣言を含む 255 モジュール 3032 宣言で標準三公理のみ。
 L9d は進行中。次は単位写像の段ごとのホモトピー可換性と誘導群準同型の自然性を示す。
+
+## 78. L9d の loop 模型と telescope 注入の自然性
+
+Kan 円への随伴構造射の持ち上げは、通常の円への制限を通して成分で自然になる。
+符号を変えた BF 模型への単位を置換前へ射影すると、その随伴構造射と同じ成分になることも示した。
+自己射の反復と可換する射の一般的な補題により、段ごとの符号の補正は後合成に対して厳密に自然になる。
+元の X から通常の loop 模型への実際の比較は、各段の成分で自然であり、全整数次数の群準同型でも自然である。
+
+telescope の零段注入を関手的な図式の段の Kan 余極限へ射影すると、cotensor の射影と標準の注入の合成になる。
+元の射の後合成と余極限の誘導射は厳密に整合するため、零段注入の各段の成分での自然性を得た。
+全基点 π_* 同型への後合成の打ち消しと、同じ成分の BF 射の全整数次数でのホモトピー不変性も一般補題にまとめた。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedMapping.componentOf_cancel_post_piIsomorphism` | 全基点 π_* 同型への後合成の成分での打ち消し |
+| `KanSequence.kanAdjoint_natural` | Kan 円への随伴構造射の成分での自然性 |
+| `signedLoopUnit_projection_component` | BF 単位の射影と随伴構造射の同じ成分 |
+| `homotopyMap_eq_of_levelComponent` | 各段で同じ成分の BF 射の整数次数の誘導準同型の等式 |
+| `KanSequence.iterateHom_natural` / `twistMap_natural_app` | 構造変更の比較の厳密な自然性 |
+| `cotensorPost` / `cotensorPost_comparison` | 標的変数の実際の BF 射と射影後の計算 |
+| `originalLoopModelMap_natural_component` / `originalLoopModelMap_natural` | 元の X から通常の loop 模型への実際の比較の自然性 |
+| `rationalLoopInjection_projection` | 零段注入の Kan 余極限への厳密な射影式 |
+| `rationalLoopInjection_natural_component` | telescope の零段注入の各段の成分での自然性 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2463 jobs 成功。
+私有宣言を含む 262 モジュール 3061 宣言で標準三公理のみ。
+L9d は進行中。次はこれらの自然性を実際の有理化の単位で結合し、テンソル表示の自然性を検証する。
