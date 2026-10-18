@@ -228,6 +228,7 @@ public import SerrePositivity.InfinityCategories.Stable.CofiberRotationTriangle
 public import SerrePositivity.InfinityCategories.Stable.CofiberPredecessor
 public import SerrePositivity.InfinityCategories.Stable.CofiberTriangleIso
 public import SerrePositivity.InfinityCategories.Stable.DistinguishedRotation
+public import SerrePositivity.InfinityCategories.Stable.PretriangulatedInstance
 
 /-! # 安定 ∞ 圏の基盤
 

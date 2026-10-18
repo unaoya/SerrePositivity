@@ -732,7 +732,12 @@ Hom 表示の後合成として読む。`LeftFibrationFiberTransport.piZero_incl
 現ソースで KanEquivalencePaths が FibrationDerivedFiberSpan を import しないことを確認した。
 新規四モジュールを統合し、対象・Stable 集約ビルド（2664 jobs）、全宣言監査
 （325 モジュール・2356 宣言、標準三公理のみ）、公開16宣言の正確な型抽出が成功した。
-八面体、Pretriangulated instance も未完了。
+`pretriangulated_ho` は構成済みの前加法構造と整数シフトに対する Mathlib の
+Pretriangulated instance。TR1・TR2・TR3 を既存の cofiberDistinguishedTriangles に対して束ねる。
+`distinguishedTriangles_ho_eq` はその distinguished 集合が既存の cofiber の像の集合同士で
+定義的に一致することを公開する。Quasicategory と IsStable のみを仮定する。
+対象ビルド2791 jobs・集約ビルド2807 jobs、326モジュール・2360宣言の公理監査が成功した。
+**Pretriangulated instance は完成**。八面体・TR4 は未完了であり、S4 全体の完了とは数えない。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
@@ -758,7 +763,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S1 | `Stable/Pointed.lean` | 零対象、coslice の始対象としての IsColimitCone、IsPushoutSquare、fiber/cofiber 四角形 | 完了 |
 | S2 | `Stable/Definition.lean` | HA 1.1.1.9 の安定性、HA 1.1.3.4 の必要な向き | 完了 |
 | S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 完了 |
-| S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 実装中（押し出し・引き戻しの貼り合わせは完了、三角構造は未完了） |
+| S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 実装中（貼り合わせ、TR1〜TR3、Pretriangulated instance は完了。八面体・TR4 は未完了） |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 未着手 |
 | S6 | `Stable/ExactFunctor.lean` | 完全関手、h の三角関手、完全関手間の自然変換 | 未着手 |
 | S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 未着手 |
@@ -861,7 +866,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | Mathlib の cofiber 三角形 | `cofiberTriangle`、三つの隣接零合成、`cofiberTriangleMapOfHomotopy`（Quasicategory、IsStable、cofiber 列） | 通常の Triangle とその射として完了 |
 | distinguished 集合と TR1 の存在部分 | `cofiberDistinguishedTriangles` と同型不変性、`exists_cofiberDistinguishedTriangle`（Quasicategory、IsStable、任意の h C の射） | 集合の定義・同型不変性・厳密に指定した射を含む三角形の存在は完了。TR3 も下記で完成。可縮三角形も下記で完成。回転・八面体・Pretriangulated は未完了 |
 | 可換正方形の図式への延長 | `exists_stableSquare_of_homMk_comm`、`exists_terminalArrowHomotopy_of_sourcePath`、`exists_cofiberSquareHomotopy_of_comm`（Quasicategory、最後は両端が cofiber 列） | 完了。入力の二つの辺の一次単体を保持 |
-| TR3 | `exists_cofiberTriangleMorphism_of_comm`、`exists_cofiberDistinguishedTriangleMorphism`、`complete_cofiberDistinguishedTriangle_morphism`（Quasicategory、IsStable、指定した最初の二成分の可換正方形） | 定義済み distinguished 集合の全ての三角形について完成。Pretriangulated instance は未完了 |
+| TR3 | `exists_cofiberTriangleMorphism_of_comm`、`exists_cofiberDistinguishedTriangleMorphism`、`complete_cofiberDistinguishedTriangle_morphism`（Quasicategory、IsStable、指定した最初の二成分の可換正方形） | 定義済み distinguished 集合の全ての三角形について完成。Pretriangulated instance も下記で完成 |
 | 一点・区間の終点余極限 | `cosliceIdentityCone_isInitialVertex`、`cosliceIdentityCone_isColimit`、`isColimitCone_of_point_constant`、`edgeTerminalCocone_isColimit`（Quasicategory のみ） | 完了。恒等射の cofiber 四角形への適用も下記で完成 |
 | 恒等射の cofiber と TR1 | `squareColumnDiagram_isPushout`（Quasicategory）、`columnZeroTriangle`、`columnZeroTriangle_isCofiber`、`columnZeroTriangle_f_eq_id`（Quasicategory、HasZeroVertex）、`columnCofiberTriangleIso`、`contractibleTriangle_mem_cofiberDistinguishedTriangles`（Quasicategory、IsStable） | 可縮三角形の所属まで完了。定義済み distinguished 集合の TR1 が揃った |
 | 余極限の存在の転送・貼り合わせによる長方形の構成 | `exists_colimitCocone_extension_of_trivialRestriction`、`hasColimit_iff_of_trivialRestriction`、right anodyne・余極限付加版、`exists_pastingExtension_of_outerColimit`（Quasicategory） | 指定した余錐・頂点と五頂点図式を厳密に保持して完成。零始点の押し出し四角形への適用も下記で完成。h C の二項余積は下記で完成。前加法構造も下記で完成 |
@@ -897,6 +902,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 基点独立性・Hom の加法・懸垂交換の負号 | `kanKernelPairPiZeroLoopEquiv_basepoint`・`kanKernelPairLoopProduct_basepoint`（Kan fibration、E 可縮な Kan、B Kan）、`symmetricCoconeHomProduct_naturality` と零単位・右逆元（Quasicategory、零終点、全体の余極限余錐。零単位・右逆元は零射構造）、`symmetricCoconeHomProduct_eq_add`・`fixedCoconeSwap_eq_neg_id`・`SuspensionSquare.swapIso_eq_neg_id`（Quasicategory、IsStable） | ループ積の基点独立性、Hom の後合成自然性・加法との一致、任意の懸垂交換と -id の一致まで完成。回転第三接続射の負号・TR2 も下記で完成 |
 | 回転第三接続射の符号 | `pastingOuterToRightHomotopy` と二成分（値域の仮定なし）、`CofiberRotationRectangle.suspensionComparison` と二成分（Quasicategory、終点は零射構造）、`SuspensionSquare.ambientHom_target`・`transpose_objIso_inv`、`CofiberRotationRectangle.connecting_eq_neg_suspension`（Quasicategory、IsStable） | 対象比較と始点の等号輸送を含め、回転後の接続射が -Σf となる式まで完成。Triangle の回転所属・逆方向・TR2 も下記で完成 |
 | 三角形の回転 TR2 | `CofiberRotationRectangle.triangleIsoRotate`、`exists_cofiberPredecessor`、`cofiberTriangleIsoOfFunctorIso`、`nonempty_cofiberTriangleIso_of_bottom_eq`、`rotate_mem_cofiberDistinguishedTriangles`、`invRotate_mem_cofiberDistinguishedTriangles`、`cofiberDistinguishedTriangles_rotate_iff`（Quasicategory、IsStable） | 第三射の符号を含む順回転同型、前の列、逆回転の所属、回転による所属の同値まで完成 |
+| 前三角構造の公開 | `pretriangulated_ho`、`distinguishedTriangles_ho_eq`（Quasicategory、IsStable） | Mathlib の Pretriangulated instance と cofiber の像の集合との定義的一致まで完成。TR4 は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

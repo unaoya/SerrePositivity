@@ -1098,6 +1098,9 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.invRotate_mem_cofiberDistinguishedTriangles
 #print axioms SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles_rotate_iff
 
+#print axioms SerrePositivity.InfinityCategories.pretriangulated_ho
+#print axioms SerrePositivity.InfinityCategories.distinguishedTriangles_ho_eq
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -1426,7 +1429,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CofiberRotationTriangle,
     `SerrePositivity.InfinityCategories.Stable.CofiberPredecessor,
     `SerrePositivity.InfinityCategories.Stable.CofiberTriangleIso,
-    `SerrePositivity.InfinityCategories.Stable.DistinguishedRotation]
+    `SerrePositivity.InfinityCategories.Stable.DistinguishedRotation,
+    `SerrePositivity.InfinityCategories.Stable.PretriangulatedInstance]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

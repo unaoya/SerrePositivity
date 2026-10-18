@@ -17149,3 +17149,47 @@ propext・Classical.choice・Quot.sound のみ。担当範囲の git diff --chec
 TR2 は完成。TR1・TR3 は既存の証明を維持している。
 Pretriangulated instance の組み立て、八面体・TR4、∞ 圏の全有限極限・余極限の存在、S5〜S7 は未完了。
 目標全体は継続中。
+
+
+## 2026-10-19：Mathlib の Pretriangulated instance
+
+`pretriangulated_ho` は同型閉性、可縮三角形、任意の射を含む三角形、回転の同値、
+三角形の射の延長を束ねる。仮定は Quasicategory X と IsStable X のみ。
+既存の preadditive_ho・hasShift_ho と全整数シフトの加法性を使用する。
+`distinguishedTriangles_ho_eq` は Mathlib の distinguishedTriangles が
+cofiberDistinguishedTriangles X に定義的に一致することを示す。
+
+正確な型（namespace SerrePositivity.InfinityCategories）：
+
+```lean
+instance pretriangulated_ho {X : SSet.{u}} [Quasicategory X] [IsStable X] :
+    CategoryTheory.Pretriangulated (hoFunctor.obj X)
+
+lemma distinguishedTriangles_ho_eq {X : SSet.{u}} [Quasicategory X] [IsStable X] :
+    (CategoryTheory.Pretriangulated.distinguishedTriangles :
+      Set (CategoryTheory.Pretriangulated.Triangle (hoFunctor.obj X))) =
+      cofiberDistinguishedTriangles X
+```
+
+`#check @...`、pp.universes=true の出力：
+
+```text
+@SerrePositivity.InfinityCategories.pretriangulated_ho.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      CategoryTheory.Pretriangulated.{u_1, u_1}
+        ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+@SerrePositivity.InfinityCategories.distinguishedTriangles_ho_eq.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  Eq.{u_1 + 1} CategoryTheory.Pretriangulated.distinguishedTriangles.{u_1, u_1}
+    (SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u_1} X)
+```
+
+対象ビルド2791 jobs、対象・Stable 集約ビルド2807 jobs、終了コード0。
+新規モジュールの警告なし。型抽出・全宣言監査も終了コード0。
+326モジュール・2360宣言（生成・非公開宣言含む）について標準三公理のみ。
+担当範囲の git diff --check 成功。引用・追加公理・sorry は導入していない。
+
+Pretriangulated instance の公開は完成。ただし Mathlib のこの class は TR1〜TR3 のみを要求する。
+八面体・TR4 は依然未完了であり、S4 全体、HA 1.1.2.14 全体の完成とは数えない。
+∞ 圏の全有限極限・余極限の存在、S5〜S7 も未完了。目標全体は継続中。
