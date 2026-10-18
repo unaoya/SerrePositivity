@@ -196,3 +196,4 @@ public import SerrePositivity.KST.SchemeLemmas.CoefficientIdealPrimeLocalization
 public import SerrePositivity.KST.SchemeLemmas.PureTransformBoundaryComparison
 public import SerrePositivity.KST.SchemeLemmas.AdjugateBoundaryGeneration
 public import SerrePositivity.KST.SchemeLemmas.GenericMinorCoefficientCenter
+public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralExtendedPrime
