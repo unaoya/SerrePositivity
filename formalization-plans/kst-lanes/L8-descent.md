@@ -97,10 +97,12 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 実際の構造射が平坦なら有限忠実平坦な細分を取り出した（§47）。
 この図式を同じ有限型の圏へ持ち上げ、底変換した元の被覆への Čech 細分比較と、
 実際の blowup の抽象 blowup 正方形を構成した（§48）。
+基底の生成点の持ち上げから全射な被約既約成分を選び、その成分の平坦化後の
+有限忠実平坦被覆を元の有限全射の底変換へ細分する射を構成した（§49）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 118 モジュール・1467 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 120 モジュール・1473 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -623,6 +625,11 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `finiteTypeStrictTransformToPullback`、`finiteTypeStrictTransformCechRefinement` | 実際の底変換被覆への細分射と Čech 比較 | 対象ビルド済み、全単体射と指定増強を保持 |
 | `finiteTypeStrictTransform_flatCover` | 平坦化後の指定射の有限性・平坦性・全射性・局所有限表示性 | 対象ビルド済み、平坦性は実際の構造射の入力 |
 | `finiteTypeBlowupSquare` | 実際の blowup の抽象 blowup 正方形 | 対象ビルド済み、被約閉中心と実際の引き戻しを使用 |
+| `surjective_of_proper_genericPoint_mem_range` | 生成点を像に含む固有射の全射性 | 対象ビルド済み、既約性と閉像性を使用 |
+| `integralComponentMap`、`integralComponentMap_isFinite` | 被約既約成分から元の基底への指定射と有限性 | 対象ビルド済み、同じ有限型の圏内 |
+| `exists_surjective_integralComponent` | 既約基底への固有全射から全射な整成分を選ぶ | 対象ビルド済み、Noether 性も成分の有限個性も不要 |
+| `exists_finite_surjective_integralComponent` | 整基底への有限全射から平坦化すべき整な有限全射成分を選ぶ | 対象ビルド済み、始域の被約性は不要 |
+| `exists_finiteFlat_cover_refining_blowup` | 支配する整成分の平坦化後の被覆から元の射の底変換への細分 | 対象ビルド済み、指定中心での実際の平坦性は入力 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1598,3 +1605,38 @@ Y の実際の blowup は固有であることから、同じ S 上有限型の�
 §48 の保存検証：集約対象ビルドと公理監査が成功。118 モジュール・1467 宣言、標準三公理のみ。
 §48 の幾何接続の区切りの全体ビルドも成功（10100 ジョブ）。
 `set -eo pipefail` で終了コード 0、ログは `/tmp/l8-strict-transform-refinement-full-build.log`。
+
+
+## 49. 整な基底を支配する成分の選択と元の有限全射への細分
+
+補題 3.3 の前段として、既約な基底への固有全射から、
+基底に全射な被約既約成分を実際に選ぶ部分を証明した。
+基底の生成点の持ち上げ x を取り、x を含む既約成分に既存の被約閉構造を入れる。
+この成分の像は固有性で閉じており、基底の生成点を含むので全ての特殊化を含む。
+したがってその指定射は全射である。
+この選択には Noether 性や既約成分の有限個性は不要である。
+始域が既に被約であるという仮定も置かない。
+
+指定射 `integralComponentMap` は元の有限型の圏内の実際の閉包含と元の射の合成である。
+元の射が有限ならこの射も有限なので、整基底への有限全射から
+平坦化する整な有限全射成分を選べる。
+成分の存在や支配性を未証明のフィールドとして新たに要求してはいない。
+
+この成分と中心 J を固定し、その実際の strict transform の構造射が平坦であるとする。
+§47–48 の有限性・全射性・局所有限表示性をその指定射に適用する。
+strict transform から成分への射に、成分の元の X への閉包含を合成すると、
+元の f と blowup の構造射の上で可換する。
+この可換式を、元の f の実際の引き戻しの普遍性に入れ、
+有限忠実平坦被覆から元の有限射の底変換への細分射を構成した。
+`exists_finiteFlat_cover_refining_blowup` は同じ有限型の圏内の被覆とこの細分射、
+その有限性・平坦性・全射性・局所有限表示性、および基底上の指定可換式を返す。
+
+これにより「支配する整成分の選択」と「その成分の平坦化後から元の被覆への細分」が接続した。
+適切な平坦化中心の存在は引き続き未証明であり、
+SchemeLemmas の有限加群のチャート平坦化を strict transform の平坦性と同一視してはいない。
+この実際の同定と、Čech 細分の実降下・中心上の帰納による有限全射降下への還元が残る。
+実際の Tot・hG、最小公理全体、自然な blowup 列・有限積保存の導出、(3.6)・K0・T2・E も未完である。
+
+§49 の保存検証：集約対象ビルドと公理監査が成功。120 モジュール・1473 宣言、標準三公理のみ。
+§49 の区切りの全体ビルドも成功（10118 ジョブ）。`set -eo pipefail` で終了コード 0。
+ログは `/tmp/l8-dominating-component-full-build.log`。
