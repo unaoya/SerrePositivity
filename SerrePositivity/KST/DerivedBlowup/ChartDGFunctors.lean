@@ -12,13 +12,13 @@ public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainFunctoriality
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false
 
-universe u
+universe u v
 
 namespace SerrePositivity.KST.DerivedBlowup
 
 open CategoryTheory
 
-variable {B I : Type u} [CommRing B] [DecidableEq I]
+variable {B : Type (max u v)} {I : Type v} [CommRing B] [DecidableEq I]
 
 /-- 概要：チャートの可逆 Koszul 基底変換による dg 関手。
 方針：線形基底変換の微分適合性を一般の Koszul dg 関手へ渡す。
