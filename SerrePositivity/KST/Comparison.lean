@@ -13,6 +13,8 @@ public import SerrePositivity.KST.Comparison.GrouplikeTranslations
 public import SerrePositivity.KST.Comparison.BarSegal
 public import SerrePositivity.KST.Comparison.RegularBarFiber
 public import SerrePositivity.KST.Comparison.RegularBarLoop
+public import SerrePositivity.KST.Comparison.GroupCompletionSpace
+public import SerrePositivity.KST.Comparison.ActionBarCoordinates
 
 /-!
 # K-L2：比較定理の入口

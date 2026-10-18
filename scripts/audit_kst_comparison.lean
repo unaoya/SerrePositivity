@@ -17,6 +17,40 @@ set_option pp.explicit true
 
 
 
+
+-- ActionBarCoordinates.lean
+
+#check @SerrePositivity.KST.Comparison.monoidPrefixLabel
+#print axioms SerrePositivity.KST.Comparison.monoidPrefixLabel
+
+#check @SerrePositivity.KST.Comparison.monoidPrefixLabel_zero
+#print axioms SerrePositivity.KST.Comparison.monoidPrefixLabel_zero
+
+#check @SerrePositivity.KST.Comparison.monoidPrefixLabel_map
+#print axioms SerrePositivity.KST.Comparison.monoidPrefixLabel_map
+
+#check @SerrePositivity.KST.Comparison.regularActionLift
+#print axioms SerrePositivity.KST.Comparison.regularActionLift
+
+#check @SerrePositivity.KST.Comparison.regularActionLift_initial
+#print axioms SerrePositivity.KST.Comparison.regularActionLift_initial
+
+#check @SerrePositivity.KST.Comparison.regularActionLift_projection
+#print axioms SerrePositivity.KST.Comparison.regularActionLift_projection
+
+#check @SerrePositivity.KST.Comparison.regularActionLift_reconstruct
+#print axioms SerrePositivity.KST.Comparison.regularActionLift_reconstruct
+
+#check @SerrePositivity.KST.Comparison.regularActionCoordinateEquiv
+#print axioms SerrePositivity.KST.Comparison.regularActionCoordinateEquiv
+
+#check @SerrePositivity.KST.Comparison.regularBarRowIso
+#print axioms SerrePositivity.KST.Comparison.regularBarRowIso
+
+#check @SerrePositivity.KST.Comparison.regularActionCoordinate_whisker
+#print axioms SerrePositivity.KST.Comparison.regularActionCoordinate_whisker
+
+
 -- BarEdge.lean
 
 #check @SerrePositivity.KST.Comparison.monoidEdgeSimplex
@@ -305,6 +339,30 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.Comparison.hatGLBar
 
 
+-- GroupCompletionSpace.lean
+
+#check @SerrePositivity.KST.Comparison.monoidBarKanPointed
+#print axioms SerrePositivity.KST.Comparison.monoidBarKanPointed
+
+#check @SerrePositivity.KST.Comparison.monoidBarKanPointed_kan
+#print axioms SerrePositivity.KST.Comparison.monoidBarKanPointed_kan
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionSpace
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionSpace
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionSpace_kan
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionSpace_kan
+
+#check @SerrePositivity.KST.Comparison.groupCompletionLoopFamily
+#print axioms SerrePositivity.KST.Comparison.groupCompletionLoopFamily
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap_evaluation
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_evaluation
+
+
 -- GrouplikeGL.lean
 
 #check @SerrePositivity.KST.Comparison.hatGL_isGrouplike
@@ -315,6 +373,36 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
+
+
+-- LoopFamily.lean
+
+#check @SerrePositivity.KST.Comparison.const_basepoint
+#print axioms SerrePositivity.KST.Comparison.const_basepoint
+
+#check @SerrePositivity.KST.Comparison.parameterMappingPointed
+#print axioms SerrePositivity.KST.Comparison.parameterMappingPointed
+
+#check @SerrePositivity.KST.Comparison.loopFamily_boundary_map
+#print axioms SerrePositivity.KST.Comparison.loopFamily_boundary_map
+
+#check @SerrePositivity.KST.Comparison.loopFamily_boundary
+#print axioms SerrePositivity.KST.Comparison.loopFamily_boundary
+
+#check @SerrePositivity.KST.Comparison.loopFamilyCircle
+#print axioms SerrePositivity.KST.Comparison.loopFamilyCircle
+
+#check @SerrePositivity.KST.Comparison.parameterMappingTranspose
+#print axioms SerrePositivity.KST.Comparison.parameterMappingTranspose
+
+#check @SerrePositivity.KST.Comparison.parameterMappingTranspose_ι
+#print axioms SerrePositivity.KST.Comparison.parameterMappingTranspose_ι
+
+#check @SerrePositivity.KST.Comparison.loopFamilyMap
+#print axioms SerrePositivity.KST.Comparison.loopFamilyMap
+
+#check @SerrePositivity.KST.Comparison.loopFamilyMap_evaluation
+#print axioms SerrePositivity.KST.Comparison.loopFamilyMap_evaluation
 
 
 -- MonoidComponents.lean

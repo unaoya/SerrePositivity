@@ -311,13 +311,16 @@ L2b：一般のモノイドの二重単体的 bar、対角による分類空間�
 bar の各行と M の有限積の自然な厳密同型を構成し、Segal 条件を供給した。
 正則 bar の基点上の厳密ファイバーと M の単体的同型、および標準四角形の引き戻し性を証明した。
 ファイバーへ制限した全空間の収縮を射影すると標準ループ族に一致することを証明した。
+K-L9 の単体的円からの点付き内部 Hom を借り、Kan 置換した BM のループ空間を構成した。
+標準ループ族を円の商の普遍性へ降ろし、実際の射 M→ΩR(BM) と評価による復元を証明した。
+正則 bar の各行の基底×M 座標と、任意の面・退化による始点の左平行移動の式を証明した。
 bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-全ての公開 159 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
+全ての公開 185 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -351,6 +354,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `monoidWordEquiv`、`monoidBarRowIso` | 実装済み | 射列の隣接ラベルによる Segal 同型 |
 | `regularBarFiberIso`、`regularBarFiber_isPullback` | 実装済み | 厳密ファイバーと標準引き戻し四角形 |
 | `regularBarContraction_projection` | 実装済み | 収縮が与える標準ループ族との一致 |
+| `monoidGroupCompletionSpace`、`monoidGroupCompletionSpace_kan` | 実装済み | K-L9 の ΩR(BM) とその Kan 性 |
+| `monoidGroupCompletionMap`、`monoidGroupCompletionMap_evaluation` | 実装済み | 実際の標準射と標準ループ族への評価則 |
+| `regularBarRowIso`、`regularActionCoordinate_whisker` | 実装済み | 各行の積座標と任意の単体作用の移送式 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
