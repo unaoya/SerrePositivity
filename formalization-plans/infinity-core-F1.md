@@ -2789,5 +2789,29 @@ lemma coherentResolutionRightAdjoint_horn_extension (Z : SSet.{u}) [KanComplex Z
 instance coherentResolutionRightAdjoint_kanComplex (Z : SSet.{u}) [KanComplex Z] :
     KanComplex (coherentResolutionRightAdjoint.obj Z)
 
+noncomputable def coherentResolutionCylinderComparison (K : SSet.{u}) :
+    coherentResolution.obj (K ⊗ Δ[1]) ⟶ coherentResolution.obj K ⊗ Δ[1]
+
+lemma coherentResolutionCylinderComparison_zero (K : SSet.{u}) :
+    coherentResolution.map (SSet.ι₀ : K ⟶ K ⊗ Δ[1]) ≫ coherentResolutionCylinderComparison K =
+      SSet.ι₀
+
+lemma coherentResolutionCylinderComparison_one (K : SSet.{u}) :
+    coherentResolution.map (SSet.ι₁ : K ⟶ K ⊗ Δ[1]) ≫ coherentResolutionCylinderComparison K =
+      SSet.ι₁
+
+noncomputable def coherentResolutionTransposeHomotopy {K Z : SSet.{u}}
+    {a b : coherentResolution.obj K ⟶ Z} (H : SSet.Homotopy a b) :
+    SSet.Homotopy (coherentResolutionAdjunction.homEquiv K Z a)
+      (coherentResolutionAdjunction.homEquiv K Z b)
+
+lemma coherentResolutionHomEquiv_projection_comp {K Z : SSet.{u}} (b : K ⟶ Z) :
+    coherentResolutionAdjunction.homEquiv K Z (coherentResolutionProjectionAll.app K ≫ b) =
+      b ≫ coherentResolutionComparison Z
+
+lemma coherentResolutionComparison_postcomp_essentiallySurjective {K Z : SSet.{u}} [KanComplex Z]
+    (a : K ⟶ coherentResolutionRightAdjoint.obj Z) :
+    ∃ b : K ⟶ Z, Nonempty (FunctorIso (b ≫ coherentResolutionComparison Z) a)
+
 end SerrePositivity.InfinityCategories
 ```
