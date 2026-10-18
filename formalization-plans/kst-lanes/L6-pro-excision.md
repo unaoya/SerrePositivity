@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと845宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと859宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -177,6 +177,9 @@
 | simplexPairExtraDegeneracy / simplexPairLinearExtraDegeneracy | SimplexPairModel.lean | 検証済み | 二つの単体射の対の普遍模型と実 extra degeneracy |
 | simplexPairEvaluation / simplexPairEvaluation_map_naturality | SimplexPairEvaluation.lean | 検証済み | 任意の二つの固定単体への単体的評価と入力射の自然性 |
 | simplexPairOperation / simplexPairOperation_naturality | SimplexPairOperation.lean | 検証済み | 普遍鎖の整数線形な実テンソル作用素への評価 |
+| simplexPairOperation_boundary / simplexPairOperation_modelMap | SimplexPairOperationNaturality.lean | 検証済み | 模型の移送・入力射・交代微分との可換性 |
+| simplexPairEvaluation_retraction / simplexPairOperation_injective | SimplexPairFaithfulEvaluation.lean | 検証済み | 普遍模型の評価の左逆と作用素による等式の検出 |
+| ezUniversalComposite / ezUniversalDifference | EZUniversalDifference.lean | 検証済み | 実 AW→shuffle 合成と恒等との差の普遍鎖表示 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |

@@ -2382,3 +2382,45 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.simplexPairOperation_naturality
 #print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_naturality
+
+#check @SerrePositivity.KST.ProExcision.integerTensor_pure_hom_ext
+#print axioms SerrePositivity.KST.ProExcision.integerTensor_pure_hom_ext
+
+#check @SerrePositivity.KST.ProExcision.simplexPairEvaluation_modelMap
+#print axioms SerrePositivity.KST.ProExcision.simplexPairEvaluation_modelMap
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_modelMap
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_modelMap
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_map_naturality
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_map_naturality
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_boundary
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_boundary
+
+#check @SerrePositivity.KST.ProExcision.simplexPairUniversalDiagonal
+#print axioms SerrePositivity.KST.ProExcision.simplexPairUniversalDiagonal
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_universalDiagonal
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_universalDiagonal
+
+#check @SerrePositivity.KST.ProExcision.simplexPairEvaluationRetraction
+#print axioms SerrePositivity.KST.ProExcision.simplexPairEvaluationRetraction
+
+#check @SerrePositivity.KST.ProExcision.simplexPairEvaluation_retraction
+#print axioms SerrePositivity.KST.ProExcision.simplexPairEvaluation_retraction
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_injective
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_injective
+
+#check @SerrePositivity.KST.ProExcision.ezUniversalComposite
+#print axioms SerrePositivity.KST.ProExcision.ezUniversalComposite
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_ezComposite
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_ezComposite
+
+#check @SerrePositivity.KST.ProExcision.ezUniversalDifference
+#print axioms SerrePositivity.KST.ProExcision.ezUniversalDifference
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_ezDifference
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_ezDifference
