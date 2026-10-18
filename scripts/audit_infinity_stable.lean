@@ -412,6 +412,34 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.pastingCocone
 #print axioms SerrePositivity.InfinityCategories.pastingCocone_isColimitCone_iff_right
 
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBase
+#print axioms SerrePositivity.InfinityCategories.pastingOuterSpan
+#print axioms SerrePositivity.InfinityCategories.pastingOuterRaiseOrderHom
+#print axioms SerrePositivity.InfinityCategories.pastingOuterRaiseSimplex
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBasePrism
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBasePrism_zero
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBaseRetraction
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBasePrism_one
+#print axioms SerrePositivity.InfinityCategories.pastingOuterSpan_retraction
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBasePrism_fixed
+#print axioms SerrePositivity.InfinityCategories.pastingOuterSpan_rightAnodyne
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBase_le_corner
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBaseToCorner
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBaseRestrict_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBase_isColimitCone_iff_outerSpan
+#print axioms SerrePositivity.InfinityCategories.pastingOuterLowerOrderHom
+#print axioms SerrePositivity.InfinityCategories.pastingOuterLowerSimplex
+#print axioms SerrePositivity.InfinityCategories.pastingOuterSpanToRight
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanToOuter
+#print axioms SerrePositivity.InfinityCategories.pastingOuterSpanRightIso
+#print axioms SerrePositivity.InfinityCategories.pastingOuterSpanIso
+#print axioms SerrePositivity.InfinityCategories.pastingOuterSpanIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBaseRestrict_standardSpan_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pastingOuterBase_isColimitCone_iff_standardSpan
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_outerSpan
+#print axioms SerrePositivity.InfinityCategories.pastingOuterCocone
+#print axioms SerrePositivity.InfinityCategories.pastingOuterCocone_isColimitCone_iff_outer
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -484,7 +512,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation,
     `SerrePositivity.InfinityCategories.Stable.PastingCornerCocone,
     `SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso,
-    `SerrePositivity.InfinityCategories.Stable.PastingRightCocone]
+    `SerrePositivity.InfinityCategories.Stable.PastingRightCocone,
+    `SerrePositivity.InfinityCategories.Stable.PastingOuterBase,
+    `SerrePositivity.InfinityCategories.Stable.PastingOuterSpanIso,
+    `SerrePositivity.InfinityCategories.Stable.PastingOuterCocone]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

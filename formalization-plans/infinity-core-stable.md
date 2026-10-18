@@ -61,7 +61,15 @@ loop 側の双対的な適用も完了した。S4 に着手し、`Δ[2] × Δ[1]
 右 span への制限は右四角形の余錐と厳密に一致することまで証明した。
 `pastingCocone_isColimitCone_iff_right` により、値域の quasicategory 性のみの下で、
 五頂点図式上の余極限性と右四角形の押し出し性が同値である。
-左四角形の押し出し性を使う外側図式への coslice の比較が残る。
+下側三角形と左辺からなる四頂点図式 `pastingOuterBase` を構成し、外側 span を
+固定する収縮により、その包含の right anodyne 性を証明した。外側 span は
+`pastingOuterSpanIso` で標準ホーンと同定し、その包含は外側四角形の span に一致する。
+`pastingOuterCocone_isColimitCone_iff_outer` により、四頂点図式へ制限した余錐の
+余極限性は外側四角形の押し出し性と同値である（値域 Quasicategory）。
+残る貼り合わせ本体の比較は、左四角形が押し出しなら
+`IsColimitCone (pastingCocone F) ↔ IsColimitCone (pastingOuterCocone F)`
+となることである。これは五頂点から四頂点へ左四角形の余極限頂点を忘れる
+coslice の比較であり、まだ証明していない。標準 span の形状の不一致は解消済み。
 引き戻しへの双対化と三角構造も未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -147,6 +155,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 標準 span 上の余極限判定 | `pastingCornerRestrict_standardSpan_trivialKanFibration`、`pastingCorner_isColimitCone_iff_standardSpan`（値域 Quasicategory、五頂点図式の任意の余錐） | 完了（外側比較は未完了） |
 | 全長方形の join 表示 | `pastingCornerCocone`、`pastingCornerCocone_inl`、`pastingCornerCocone_app_injective`、`pastingCornerCocone_app_surjective`、`pastingCornerJoinIso`（任意の宇宙、追加仮定なし） | 完了（外側比較は未完了） |
 | 右四角形の余錐の比較 | `pastingCornerCocone_rightSpan`、`pastingCocone`、`pastingCocone_isColimitCone_iff_right`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了（外側比較は未完了） |
+| 四頂点図式から外側 span | `pastingOuterSpan_rightAnodyne`、`pastingOuterBaseRestrict_standardSpan_trivialKanFibration`、`pastingOuterBase_isColimitCone_iff_standardSpan`（後二者は値域 Quasicategory） | 完了 |
+| 外側四角形の余錐の比較 | `pastingOuterSpanIso`、`pastingOuterSpanIso_hom_ι`、`pastingCornerCocone_outerSpan`、`pastingOuterCocone_isColimitCone_iff_outer`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了（左四角形の余極限頂点を忘れる比較は未完了） |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

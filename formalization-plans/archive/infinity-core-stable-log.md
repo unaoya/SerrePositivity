@@ -3449,3 +3449,184 @@ SerrePositivity.InfinityCategories.pastingCornerCocone_rightSpan.{u_1} : Eq.{u_1
     SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
       (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 0)
 ```
+
+
+## S4：四頂点図式、外側 span、外側四角形の余錐
+
+対象 `PastingOuterCocone` と集約 `Stable` のビルドは成功（2016 jobs）。
+全宣言監査は 72 モジュール・782 宣言で標準三公理のみ。
+外側 span への right anodyne な制限、標準ホーンとの同型、形状の厳密な一致、
+四頂点図式上の余極限性と外側四角形の押し出し性の同値を証明した。
+左四角形が押し出しの場合の五頂点余錐と四頂点余錐の余極限性の比較は未証明。
+従って貼り合わせ全体・双対化・三角構造・S5〜S7 は未完了。
+
+```lean
+SerrePositivity.InfinityCategories.pastingOuterBase.{u_1} : SSet.Subcomplex.{u_1}
+  (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1} : SSet.Subcomplex.{u_1}
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})
+SerrePositivity.InfinityCategories.pastingOuterRaiseOrderHom : OrderHom.{0, 0} (Prod.{0, 0} (Fin 2) (Fin 3)) (Fin 3)
+@SerrePositivity.InfinityCategories.pastingOuterRaiseSimplex.{u_1} : {n : Opposite.{1} SimplexCategory} →
+  CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) n →
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) n →
+      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) n
+SerrePositivity.InfinityCategories.pastingOuterBasePrism.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+    (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1}))
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})
+SerrePositivity.InfinityCategories.pastingOuterBasePrism_zero.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1}))
+    SerrePositivity.InfinityCategories.pastingOuterBasePrism.{u_1})
+  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+    (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1}))
+SerrePositivity.InfinityCategories.pastingOuterBaseRetraction.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+SerrePositivity.InfinityCategories.pastingOuterBasePrism_one.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1}))
+    SerrePositivity.InfinityCategories.pastingOuterBasePrism.{u_1})
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pastingOuterBaseRetraction.{u_1}
+    (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1}))
+SerrePositivity.InfinityCategories.pastingOuterSpan_retraction.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+    SerrePositivity.InfinityCategories.pastingOuterBaseRetraction.{u_1})
+  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+    (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1}))
+SerrePositivity.InfinityCategories.pastingOuterBasePrism_fixed.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+      (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1}))
+    SerrePositivity.InfinityCategories.pastingOuterBasePrism.{u_1})
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1}))
+    (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1}))
+SerrePositivity.InfinityCategories.pastingOuterSpan_rightAnodyne.{u_1} : SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1}
+  (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+SerrePositivity.InfinityCategories.pastingOuterBase_le_corner.{u_1} : LE.le.{u_1}
+  SerrePositivity.InfinityCategories.pastingOuterBase.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}
+SerrePositivity.InfinityCategories.pastingOuterBaseToCorner.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+@SerrePositivity.InfinityCategories.pastingOuterBaseRestrict_trivialKanFibration.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  (p :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})
+      X),
+  SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+    (SerrePositivity.InfinityCategories.sliceUnderRestrict.{u_1} p
+      (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1}))
+@SerrePositivity.InfinityCategories.pastingOuterBase_isColimitCone_iff_outerSpan.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})
+      X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c ↔
+    SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+      (SerrePositivity.InfinityCategories.JoinCocone.restrict.{u_1} c
+        (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1}))
+SerrePositivity.InfinityCategories.pastingOuterLowerOrderHom : OrderHom.{0, 0} (Fin 3) (Fin 3)
+@SerrePositivity.InfinityCategories.pastingOuterLowerSimplex.{u_1} : {n : Opposite.{1} SimplexCategory} →
+  CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) n →
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) n
+SerrePositivity.InfinityCategories.pastingOuterSpanToRight.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1})
+SerrePositivity.InfinityCategories.pastingRightSpanToOuter.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1})
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+SerrePositivity.InfinityCategories.pastingOuterSpanRightIso.{u_1} : CategoryTheory.Iso.{u_1, u_1 + 1}
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1})
+SerrePositivity.InfinityCategories.pastingOuterSpanIso.{u_1} : CategoryTheory.Iso.{u_1, u_1 + 1}
+  (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+SerrePositivity.InfinityCategories.pastingOuterSpanIso_hom_ι.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pastingOuterSpanIso.{u_1})
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+      (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanSquareBoundary.{u_1}
+    (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+@SerrePositivity.InfinityCategories.pastingOuterBaseRestrict_standardSpan_trivialKanFibration.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  (p :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})
+      X),
+  SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+    (SerrePositivity.InfinityCategories.sliceUnderRestrict.{u_1} p
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pastingOuterSpanIso.{u_1})
+        (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})))
+@SerrePositivity.InfinityCategories.pastingOuterBase_isColimitCone_iff_standardSpan.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingOuterBase.{u_1})
+      X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c ↔
+    SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+      (SerrePositivity.InfinityCategories.JoinCocone.restrict.{u_1} c
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pastingOuterSpanIso.{u_1})
+          (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})))
+SerrePositivity.InfinityCategories.pastingCornerCocone_outerSpan.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.joinMap.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pastingOuterSpanIso.{u_1})
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingOuterSpan.{u_1})
+          SerrePositivity.InfinityCategories.pastingOuterBaseToCorner.{u_1}))
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+    SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1})
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanCoconeSquareIso.{u_1})
+    (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+@SerrePositivity.InfinityCategories.pastingOuterCocone.{u_1} : {X : SSet.{u_1}} →
+  (F :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X) →
+    SerrePositivity.InfinityCategories.JoinCocone.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        SerrePositivity.InfinityCategories.pastingOuterBaseToCorner.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}) F))
+@SerrePositivity.InfinityCategories.pastingOuterCocone_isColimitCone_iff_outer.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+      (SerrePositivity.InfinityCategories.pastingOuterCocone.{u_1} F) ↔
+    SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+      (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 1)
+```
