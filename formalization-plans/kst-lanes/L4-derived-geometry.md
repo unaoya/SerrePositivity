@@ -1085,6 +1085,16 @@
 - まず実際の通常随伴と bounded below の導来比較を構成する。非有界 Dqc 全体の同値は bounded below の結果だけから結論しない。非有界への延長の存在・完全忠実性・本質的全射性は別工程で証明する。
 - 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
 
+### §52 の実装の現在地
+
+- 保存検証：集約対象ビルド 3953 jobs 成功、公理監査 1891 宣言。標準3公理のみ、KTheory import なし。
+
+- 始域だけで余単位が同型なら右随伴の射写像が任意の終域に対して全単射である一般補題を証明した。
+- 準連接な始域から任意の係数加群層への Hom と大域切断の Hom の同値を証明し、全係数加群層への実際の `affineCoefficientTildeFunctor H ⊣ affineCoefficientΓ H` を構成した。
+- 随伴の単位が係数同値の余単位の逆であり自然同型となること、大域切断が injective を保存することを証明した。左随伴の完全性は既証の結果を使用している。
+- 一般の完全関手の非有界導来化がコホモロジーの下限を保存することと bounded below 導来圏への三角関手としての制限を構成した。bounded below 導来随伴・同値と非有界 Dqc 同値はまだ未完了。
+- §51 の区切りの全体ビルドは、import 閉包外の `InfinityCategories.F1B.RelativeFunctorHomotopyComposition` と `InfinityCategories.F1.RelativeFunctorVertices` 間の `relativeFunctorVertex` 重複宣言で失敗した。K-L4 の対象ビルドは成功している。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1290,6 +1300,9 @@
 | `ringedAffineExt_subsingleton_of_cech` | DerivedGeometry/RingedAffineExtCartan | 実装・対象ビルド済み |
 | `affineCoefficient_rightDerivedSections_isZero` | DerivedGeometry/AffineCoefficientCohomology | 実装・対象ビルド済み |
 | `affineCoefficientΓ_rightDerived_isZero` | DerivedGeometry/AffineGammaAcyclic | 実装・対象ビルド済み |
+| `affineCoefficientTildeAdjunction`・`affineCoefficientTildeAdjunction_unit_isIso` | DerivedGeometry/AffineTildeAdjunction・AffineTildeAdjunctionExact | 実装・対象ビルド済み |
+| `affineCoefficientΓ_preservesInjectiveObjects` | DerivedGeometry/AffineTildeAdjunctionExact | 実装・対象ビルド済み |
+| `exactDerivedFunctorPlus`・`exactDerivedFunctorPlusSquare` | DerivedGeometry/ExactDerivedPlus | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

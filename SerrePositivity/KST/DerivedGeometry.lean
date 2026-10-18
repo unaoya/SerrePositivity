@@ -82,3 +82,6 @@ public import SerrePositivity.KST.DerivedGeometry.AffineQuasicoherentExt
 public import SerrePositivity.KST.DerivedGeometry.RingedFreeCechExact
 
 public import SerrePositivity.KST.DerivedGeometry.AffineGammaAcyclic
+
+public import SerrePositivity.KST.DerivedGeometry.AffineTildeAdjunctionExact
+public import SerrePositivity.KST.DerivedGeometry.ExactDerivedPlus
