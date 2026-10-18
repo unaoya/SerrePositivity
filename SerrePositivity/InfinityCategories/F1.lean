@@ -124,3 +124,4 @@ public import SerrePositivity.InfinityCategories.F1.IntervalFatDiagram
 public import SerrePositivity.InfinityCategories.F1.JoinEndpointLifting
 public import SerrePositivity.InfinityCategories.F1.IntervalFatHomotopy
 public import SerrePositivity.InfinityCategories.F1.RightIntervalHomotopySection
+public import SerrePositivity.InfinityCategories.F1.JoinLeftBoundaryCorner

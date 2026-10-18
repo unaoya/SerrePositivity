@@ -3180,5 +3180,24 @@ lemma pinchedHomToIntervalMappingSpace_exists_homotopy_section {X : SSet.{u}}
     ∃ r : intervalMappingSpace x y ⟶ pinchedHom x y,
       Nonempty (SSet.Homotopy (r ≫ pinchedHomToIntervalMappingSpace x y) (𝟙 _))
 
+lemma joinSimplex_exists_inl_of_cut {A K : SSet.{u}} {n : ℕ}
+    (s : (join A K) _⦋n⦌) (h : s.1.val = n + 1) :
+    ∃ a : A _⦋n⦌, (joinInl A K).app (Opposite.op ⦋n⦌) a = s
+
+noncomputable def joinLeftBoundaryObject {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
+    SSet.{u}
+
+noncomputable def joinLeftBoundaryMap {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
+    joinLeftBoundaryObject i K ⟶ join B K
+
+lemma joinLeftBoundaryMap_join {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
+    pushout.inl (joinInl A K) i ≫ joinLeftBoundaryMap i K = joinMap i (𝟙 K)
+
+lemma joinLeftBoundaryMap_left {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
+    pushout.inr (joinInl A K) i ≫ joinLeftBoundaryMap i K = joinInl B K
+
+instance joinLeftBoundaryMap_mono {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (K : SSet.{u}) :
+    Mono (joinLeftBoundaryMap i K)
+
 end SerrePositivity.InfinityCategories
 ```

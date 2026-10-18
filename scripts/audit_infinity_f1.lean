@@ -733,3 +733,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_exists_homotopy
 #check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_postcomp_essentiallySurjective
 #check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_exists_homotopy_section
+#check @SerrePositivity.InfinityCategories.joinSimplex_exists_inl_of_cut
+#check @SerrePositivity.InfinityCategories.joinLeftBoundaryObject
+#check @SerrePositivity.InfinityCategories.joinLeftBoundaryMap
+#check @SerrePositivity.InfinityCategories.joinLeftBoundaryMap_join
+#check @SerrePositivity.InfinityCategories.joinLeftBoundaryMap_left
+#check @SerrePositivity.InfinityCategories.joinLeftBoundaryMap_mono
