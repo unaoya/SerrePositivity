@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.CofiberShortComplex
 public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
 public import SerrePositivity.InfinityCategories.Stable.GridOpposite
 public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams

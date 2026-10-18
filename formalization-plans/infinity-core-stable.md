@@ -114,6 +114,18 @@ sliceUnder (opFunctor.map p)` を構成した。標準単体のパラメータ�
 長方形で、右が引き戻しなら左が引き戻し iff 外側が引き戻しとなる。
 二つの引き戻しの合成と、右・外側から左を判定する系も公開した。
 HTT Lemma 4.4.2.1 の両側は完了し、A6 を待つ箇所はない。
+S4 の三角構造へ向け、四辺を端点つきの辺と h C の射として取り出し、二つの合成
+三角形による `square_homMk_comm` を証明した（値域の quasicategory 性も不要）。
+零頂点があると h C の零射を零対象から構成でき、零角の四角形では下辺と右辺の合成が
+零になる。`ZeroTriangle.hoShortComplex` はこの二射を Mathlib の短複体にまとめる。
+一般の零角の四角形のこの構成には Quasicategory と任意の HasZeroMorphisms を仮定する。
+指定した cofiber/fiber 四角形について、短複体の第一／第二射の Arrow 表示が元の射の類と
+一致することも証明済み。四角形の h 上の図式間の自然変換から短複体の射
+`ZeroTriangle.hoShortComplexMap` を作り、恒等・合成との両立を証明した。
+実際の単体的ホモトピーからの構成も `hoShortComplexMapOfHomotopy` に公開する。
+`exists_cofiber_hoShortComplex` と `exists_fiber_hoShortComplex` により、安定な X の
+h C の全ての射が、cofiber 短複体の第一射／fiber 短複体の第二射として現れる。
+これは短複体の存在までであり、接続射 Z → ΣX、distinguished triangle、TR1〜TR4 は未証明。
 S4 の三角構造は未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -217,6 +229,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 基底の同型と余極限 | `isColimitCone_iff_restrict_of_isIso`、`isLimitCone_iff_reverseCocone_restrict`（基底の射は同型、値域への追加仮定なし） | 完了 |
 | 標準四角形の双対性 | `squareConeReverseShape_square`、`JoinCone.reverseCocone_val`、`isPullbackSquare_iff_reverseGrid`（値域への追加仮定なし） | 完了 |
 | 引き戻しの貼り合わせ | `isPullbackSquare_pasting_iff`、`isPullbackSquare_pasting`、`isPullbackSquare_pasting_cancel_right`（値域 Quasicategory、右が引き戻し） | 完了 |
+| h C の零射と短複体 | `hasZeroMorphisms_ho`（Quasicategory、HasZeroVertex）、`square_homMk_comm`（任意の X）、`ZeroTriangle.homMk_comp_eq_zero`、`ZeroTriangle.hoShortComplex`（Quasicategory、任意の HasZeroMorphisms） | 完了 |
+| 零角の短複体の射 | `ZeroTriangle.hoShortComplexMap`、恒等・合成則、`hoShortComplexMapOfHomotopy`（Quasicategory、任意の HasZeroMorphisms） | 完了。三角形の接続射との可換性は未着手 |
+| 任意の h C の射を含む列 | `exists_cofiber_hoShortComplex`、`exists_fiber_hoShortComplex`（Quasicategory、IsStable） | 短複体まで完了。接続射と TR1 は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

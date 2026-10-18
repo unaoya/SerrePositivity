@@ -4980,3 +4980,179 @@ SerrePositivity.InfinityCategories.isPullbackSquare_pasting_cancel_right.{u} {X 
 （生成・非公開宣言を含む）、依存公理は propext・Classical.choice・Quot.sound のみ。
 HTT Lemma 4.4.2.1 の押し出し・引き戻しの両側は完了。A6 を待つ箇所はない。
 S4 の前加法構造・整数シフト・三角構造（TR1〜TR4）、S5〜S7 は未完了。
+
+## S4：零角の列の短複体と任意の射を含む列
+
+四角形の可換性には値域の仮定なし。零角の短複体とその射には
+Quasicategory と任意の HasZeroMorphisms を仮定する。HasZeroVertex からの
+標準の零射構造も公開した。全ての h C の射を含む cofiber/fiber 短複体の
+存在には Quasicategory と IsStable を仮定する。正確な公開型：
+
+```lean
+SerrePositivity.InfinityCategories.hasZeroMorphisms_ho.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.HasZeroVertex.{u} X] :
+  HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)
+SerrePositivity.InfinityCategories.squareBottomArrow.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Truncated.Edge.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)
+    (SerrePositivity.InfinityCategories.squareVertex.{u} F 1 0)
+SerrePositivity.InfinityCategories.squareRightArrow.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Truncated.Edge.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 1 0)
+    (SerrePositivity.InfinityCategories.squareVertex.{u} F 1 1)
+SerrePositivity.InfinityCategories.squareLeftArrow.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Truncated.Edge.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)
+    (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 1)
+SerrePositivity.InfinityCategories.squareTopArrow.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Truncated.Edge.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 1)
+    (SerrePositivity.InfinityCategories.squareVertex.{u} F 1 1)
+SerrePositivity.InfinityCategories.square_homMk_comm.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u}
+      (Truncated.HomotopyCategory.homMk.{u} (SerrePositivity.InfinityCategories.squareBottomArrow.{u} F))
+      (Truncated.HomotopyCategory.homMk.{u} (SerrePositivity.InfinityCategories.squareRightArrow.{u} F)))
+    (CategoryStruct.comp.{u, u}
+      (Truncated.HomotopyCategory.homMk.{u} (SerrePositivity.InfinityCategories.squareLeftArrow.{u} F))
+      (Truncated.HomotopyCategory.homMk.{u} (SerrePositivity.InfinityCategories.squareTopArrow.{u} F)))
+SerrePositivity.InfinityCategories.squareHoVertex.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) (i j : Fin 2) :
+  ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)
+SerrePositivity.InfinityCategories.squareHoBottom.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Quiver.Hom.{u, u} (SerrePositivity.InfinityCategories.squareHoVertex.{u} F 0 0)
+    (SerrePositivity.InfinityCategories.squareHoVertex.{u} F 1 0)
+SerrePositivity.InfinityCategories.squareHoRight.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Quiver.Hom.{u, u} (SerrePositivity.InfinityCategories.squareHoVertex.{u} F 1 0)
+    (SerrePositivity.InfinityCategories.squareHoVertex.{u} F 1 1)
+SerrePositivity.InfinityCategories.squareHoLeft.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Quiver.Hom.{u, u} (SerrePositivity.InfinityCategories.squareHoVertex.{u} F 0 0)
+    (SerrePositivity.InfinityCategories.squareHoVertex.{u} F 0 1)
+SerrePositivity.InfinityCategories.squareHoTop.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Quiver.Hom.{u, u} (SerrePositivity.InfinityCategories.squareHoVertex.{u} F 0 1)
+    (SerrePositivity.InfinityCategories.squareHoVertex.{u} F 1 1)
+SerrePositivity.InfinityCategories.ZeroTriangle.homMk_comp_eq_zero.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u}
+      (SerrePositivity.InfinityCategories.squareHoBottom.{u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t))
+      (SerrePositivity.InfinityCategories.squareHoRight.{u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t)))
+    0
+SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X) :
+  ShortComplex.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)
+SerrePositivity.InfinityCategories.squareBottomArrow_edge.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Eq.{u + 1} (Truncated.Edge.edge.{u} (SerrePositivity.InfinityCategories.squareBottomArrow.{u} F))
+    (SSet.yonedaEquiv.{u} (CategoryStruct.comp.{u, u + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u} F))
+SerrePositivity.InfinityCategories.squareRightArrow_edge.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Eq.{u + 1} (Truncated.Edge.edge.{u} (SerrePositivity.InfinityCategories.squareRightArrow.{u} F))
+    (SSet.yonedaEquiv.{u} (CategoryStruct.comp.{u, u + 1} SerrePositivity.InfinityCategories.squareRightEdge.{u} F))
+SerrePositivity.InfinityCategories.CofiberSquare.hoShortComplex_f_arrow.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)] {x y : X _⦋0⦌}
+  {f : Truncated.Edge.{u} x y} (s : SerrePositivity.InfinityCategories.CofiberSquare.{u} f) :
+  Eq.{u + 1}
+    (Arrow.mk.{u, u}
+      (ShortComplex.f.{u, u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u}
+          (SerrePositivity.InfinityCategories.CofiberSquare.toZeroTriangle.{u} s))))
+    (Arrow.mk.{u, u} (Truncated.HomotopyCategory.homMk.{u} f))
+SerrePositivity.InfinityCategories.FiberSquare.hoShortComplex_g_arrow.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)] {x y : X _⦋0⦌}
+  {f : Truncated.Edge.{u} x y} (s : SerrePositivity.InfinityCategories.FiberSquare.{u} f) :
+  Eq.{u + 1}
+    (Arrow.mk.{u, u}
+      (ShortComplex.g.{u, u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u}
+          (SerrePositivity.InfinityCategories.FiberSquare.toZeroTriangle.{u} s))))
+    (Arrow.mk.{u, u} (Truncated.HomotopyCategory.homMk.{u} f))
+SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t d : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (α :
+    Quiver.Hom.{u, u}
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t)))
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} d)))) :
+  Quiver.Hom.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t)
+    (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} d)
+SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap_id.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X) :
+  Eq.{u + 1}
+    (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap.{u} t t
+      (CategoryStruct.id.{u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t)))))
+    (CategoryStruct.id.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t))
+SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap_comp.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t d e : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (α :
+    Quiver.Hom.{u, u}
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t)))
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} d))))
+  (β :
+    Quiver.Hom.{u, u}
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} d)))
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} e)))) :
+  Eq.{u + 1}
+    (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap.{u} t e (CategoryStruct.comp.{u, u} α β))
+    (CategoryStruct.comp.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap.{u} t d α)
+      (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap.{u} d e β))
+SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMapOfHomotopy.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t d : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (H : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) Δ[1]) X)
+  (h₀ :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} ι₀.{u} H) (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t))
+  (h₁ :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} ι₁.{u} H)
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} d)) :
+  Quiver.Hom.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t)
+    (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} d)
+SerrePositivity.InfinityCategories.exists_cofiber_hoShortComplex.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] {a b : ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)}
+  (f : Quiver.Hom.{u, u} a b) :
+  ∃ t,
+    SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t ∧
+      Eq.{u + 1}
+        (Arrow.mk.{u, u} (ShortComplex.f.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t)))
+        (Arrow.mk.{u, u} f)
+SerrePositivity.InfinityCategories.exists_fiber_hoShortComplex.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] {a b : ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)}
+  (f : Quiver.Hom.{u, u} a b) :
+  ∃ t,
+    SerrePositivity.InfinityCategories.IsFiberSequence.{u} t ∧
+      Eq.{u + 1}
+        (Arrow.mk.{u, u} (ShortComplex.g.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t)))
+        (Arrow.mk.{u, u} f)
+```
+
+対象 CofiberShortComplex ビルド 1608 jobs、Stable 集約ビルド 2054 jobs、
+公開型抽出、公理監査はすべて終了コード 0。監査は 109 モジュール・1106 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
+これらは短複体とその射まで。接続射 Z → ΣX、前加法構造、整数シフト、
+TR1〜TR4、Pretriangulated と S5〜S7 は未完了。

@@ -30,6 +30,29 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.isPullbackSquare_pasting_iff
 #print axioms SerrePositivity.InfinityCategories.isPullbackSquare_pasting
 #print axioms SerrePositivity.InfinityCategories.isPullbackSquare_pasting_cancel_right
+#print axioms SerrePositivity.InfinityCategories.hasZeroMorphisms_ho
+#print axioms SerrePositivity.InfinityCategories.squareBottomArrow
+#print axioms SerrePositivity.InfinityCategories.squareRightArrow
+#print axioms SerrePositivity.InfinityCategories.squareLeftArrow
+#print axioms SerrePositivity.InfinityCategories.squareTopArrow
+#print axioms SerrePositivity.InfinityCategories.square_homMk_comm
+#print axioms SerrePositivity.InfinityCategories.squareHoVertex
+#print axioms SerrePositivity.InfinityCategories.squareHoBottom
+#print axioms SerrePositivity.InfinityCategories.squareHoRight
+#print axioms SerrePositivity.InfinityCategories.squareHoLeft
+#print axioms SerrePositivity.InfinityCategories.squareHoTop
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.homMk_comp_eq_zero
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex
+#print axioms SerrePositivity.InfinityCategories.squareBottomArrow_edge
+#print axioms SerrePositivity.InfinityCategories.squareRightArrow_edge
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.hoShortComplex_f_arrow
+#print axioms SerrePositivity.InfinityCategories.FiberSquare.hoShortComplex_g_arrow
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap_id
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMap_comp
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMapOfHomotopy
+#print axioms SerrePositivity.InfinityCategories.exists_cofiber_hoShortComplex
+#print axioms SerrePositivity.InfinityCategories.exists_fiber_hoShortComplex
 #print axioms SerrePositivity.InfinityCategories.JoinCocone
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_eq
@@ -719,7 +742,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.StandardJoinOpposite,
     `SerrePositivity.InfinityCategories.Stable.SquareOppositeShapes,
     `SerrePositivity.InfinityCategories.Stable.SquareOpposite,
-    `SerrePositivity.InfinityCategories.Stable.PullbackPasting]
+    `SerrePositivity.InfinityCategories.Stable.PullbackPasting,
+    `SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory,
+    `SerrePositivity.InfinityCategories.Stable.ZeroTriangleHoMap,
+    `SerrePositivity.InfinityCategories.Stable.CofiberShortComplex]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
