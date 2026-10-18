@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・228 モジュール 2853 宣言の公理監査成功。
+対象ビルド・233 モジュール 2872 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2048,3 +2048,32 @@ L9d は進行中。次は二つの円の smash の写像と反復内部 Hom の�
 保存単位の対象ビルド 2429 jobs 成功。
 私有宣言を含む 228 モジュール 2853 宣言で標準三公理のみ。
 L9d は進行中。次は標的の loop の符号を源の loop 変数の符号へ移す。
+
+## 71. L9d の Ω 条件からの二つの Kan 円の交換の符号
+
+内部 Hom の交換を標的についての自然同型としてまとめ、その成分が既存の交換同型と一致することを証明した。
+これを使い、loop 値の類と写像空間の基本群の比較について標的の自然性を得た。
+標的自身の loop の整数次数射と、類を定める loop の整数次数射は同じ整数冪に作用する。
+したがって loop 値の二つの Kan 円の交換は内側の円の符号反転と成分で一致する。
+
+通常の円による loop への射を Kan 円による loop へ持ち上げる実際の点つき射を作った。
+円の anodyne な制限は全単射への RLP を持ち、持ち上げは元の射へ厳密に制限される。
+元の射が全基点 π_* 同型なら持ち上げも同型である。
+二重の内部 Hom の標的の π_* 同型による後合成は成分で単射なので、
+Kan loop へ同型で写る対象にも交換の符号の式を反映できる。
+特に承認済みの通常の円の Ω 条件を持つ対象で、交換は内側の Kan 円の符号反転として計算できる。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `InternalHomExchange.naturalIso` / `.naturalIso_app` / `.natural_post` | 交換の標的の自然性と既存の成分との一致 |
+| `LoopMappingClasses.classEquiv_post` | loop 値の類と基本群の比較の標的の自然性 |
+| `LoopMappingClasses.post_target_integer` / `.target_integer_eq_inner_integer` | 標的の loop の整数冪と内側の loop の整数冪の一致 |
+| `kanLoop_exchange_sign` | loop 値の二つの Kan 円の交換と内側の符号反転 |
+| `kanLoopLift` / `kanLoopLift_comparison` / `kanLoopLift_piIsomorphism` | Kan 円の loop への実際の持ち上げ、制限の可換式、同型性 |
+| `delooped_exchange_sign` / `omega_exchange_sign` | Kan loop への π_* 同型または通常の Ω 条件からの交換の符号 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2434 jobs 成功。
+私有宣言を含む 233 モジュール 2872 宣言で標準三公理のみ。
+L9d は進行中。次は任意の源のパラメータを反復内部 Hom の内側へ移す比較を実装する。
+ここまでの π₀ 上の自己射の等式だけから、任意の源の写像空間での等式は推論しない。

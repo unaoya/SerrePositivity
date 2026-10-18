@@ -13,6 +13,11 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.InternalHomExchangeTarget,
+    `SerrePositivity.KST.Spectra.LoopMappingTargetNaturality,
+    `SerrePositivity.KST.Spectra.KanLoopExchangeSign,
+    `SerrePositivity.KST.Spectra.KanLoopLift,
+    `SerrePositivity.KST.Spectra.DeloopedExchangeSign,
     `SerrePositivity.KST.Spectra.InternalHomTensor,
     `SerrePositivity.KST.Spectra.DoubleCircleRestriction,
     `SerrePositivity.KST.Spectra.InternalHomExchangeRestriction,
