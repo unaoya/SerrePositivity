@@ -1626,3 +1626,30 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.iteratedSConstruction_isStable
 #print axioms SerrePositivity.KST.SConstruction.iteratedSConstruction_isStable
+
+#check @SerrePositivity.KST.SConstruction.map_isZeroVertex_of_zero_image
+#print axioms SerrePositivity.KST.SConstruction.map_isZeroVertex_of_zero_image
+
+#check @SerrePositivity.KST.SConstruction.gappedInclusion_isZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.gappedInclusion_isZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.sMap_isZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sMap_isZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp_isZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp_isZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.ihom_postcomp_evaluate
+#print axioms SerrePositivity.KST.SConstruction.ihom_postcomp_evaluate
+
+#check @SerrePositivity.KST.SConstruction.functor_reindex_isZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.functor_reindex_isZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.functor_postcomp_isZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.functor_postcomp_isZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.functor_reindex_preserves_cofiber
+#print axioms SerrePositivity.KST.SConstruction.functor_reindex_preserves_cofiber
+
+#check @SerrePositivity.KST.SConstruction.functor_postcomp_preserves_cofiber
+#print axioms SerrePositivity.KST.SConstruction.functor_postcomp_preserves_cofiber

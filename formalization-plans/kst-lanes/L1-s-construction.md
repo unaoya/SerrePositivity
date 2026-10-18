@@ -1214,3 +1214,65 @@ S_n の reindexing・後合成の押し出し保存、多単体構造、境界�
 L1d–f は未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2271 jobs）、公理監査成功（600 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.10 構造射の零対象保存・関手圏の cofiber 保存
+
+S_n の包含・面・退化・後合成が全零対象を保つことを証明。
+関手圏の添字制限・後合成が零対象と cofiber 正方形を保つことも証明。
+任意の押し出しの保存や S_n の後合成の保存条件全体を証明済みとはしない。
+
+**ZeroPreservation.lean**
+
+```text
+lemma map_isZeroVertex_of_zero_image {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    (f : C ⟶ D) (z : C _⦋0⦌) (hz : IsZeroVertex z)
+    (hfz : IsZeroVertex (f.app (Opposite.op ⦋0⦌) z))
+    {w : C _⦋0⦌} (hw : IsZeroVertex w) : IsZeroVertex (f.app (Opposite.op ⦋0⦌) w)
+
+lemma gappedInclusion_isZeroVertex {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    (n : ℕ) {v : (sConstruction n C) _⦋0⦌} (hv : IsZeroVertex v) :
+    IsZeroVertex ((gappedSubcomplex n C).ι.app (Opposite.op ⦋0⦌) v)
+
+lemma sMap_isZeroVertex {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    {m n : ℕ} (θ : Fin (m + 1) →o Fin (n + 1))
+    {v : (sConstruction n C) _⦋0⦌} (hv : IsZeroVertex v) :
+    IsZeroVertex ((sMap C θ).app (Opposite.op ⦋0⦌) v)
+
+lemma sPostcomp_isZeroVertex {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    [HasZeroVertex C] (n : ℕ) (f : C ⟶ D) (hf : PreservesSConstructionData f)
+    {v : (sConstruction n C) _⦋0⦌} (hv : IsZeroVertex v) :
+    IsZeroVertex ((sPostcomp n f hf).app (Opposite.op ⦋0⦌) v)
+
+```
+
+**FunctorCofiberPreservation.lean**
+
+```text
+lemma ihom_postcomp_evaluate {A C D : SSet.{u}} (f : C ⟶ D) (a : A _⦋0⦌) :
+    (ihom A).map f ≫ evaluateFunctorAt a = evaluateFunctorAt a ≫ f
+
+lemma functor_reindex_isZeroVertex {A B C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    (i : A ⟶ B) {v : ((ihom B).obj C) _⦋0⦌} (hv : IsZeroVertex v) :
+    IsZeroVertex (((pre i).app C).app (Opposite.op ⦋0⦌) v)
+
+lemma functor_postcomp_isZeroVertex {A C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    [HasZeroVertex C] (f : C ⟶ D)
+    (hf : ∀ z, IsZeroVertex z → IsZeroVertex (f.app (Opposite.op ⦋0⦌) z))
+    {v : ((ihom A).obj C) _⦋0⦌} (hv : IsZeroVertex v) :
+    IsZeroVertex (((ihom A).map f).app (Opposite.op ⦋0⦌) v)
+
+lemma functor_reindex_preserves_cofiber {A B C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (i : A ⟶ B) (t : ZeroTriangle ((ihom B).obj C)) (ht : IsCofiberSequence t) :
+    IsPushoutSquare (t.square ≫ (pre i).app C)
+
+lemma functor_postcomp_preserves_cofiber {A C D : SSet.{u}}
+    [Quasicategory C] [IsStable C] [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesSConstructionData f)
+    (t : ZeroTriangle ((ihom A).obj C)) (ht : IsCofiberSequence t) :
+    IsPushoutSquare (t.square ≫ (ihom A).map f)
+
+```
+
+現在地：L1c 継続中。S_n の構造射の押し出し保存、多単体的反復の全構造射、境界の coherent な潰し、delooping・Ω 条件・BF スペクトルは未完了。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2273 jobs）、公理監査成功（609 宣言、標準三公理のみ）。追加公理・sorry なし。
