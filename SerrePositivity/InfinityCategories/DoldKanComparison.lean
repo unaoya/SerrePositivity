@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentStandardFullyFaithful
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentHomRetraction
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentHomSection

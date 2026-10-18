@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3904件で成功し、公開503宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3909件で成功し、公開513宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1707,8 +1707,28 @@ standardHomToCoherentPinched_comp (x y : ClosedCategory R D) :
 
 これは全次数・全成分の等式から得た単体集合の射の厳密な等式であり、π₀ の計算に限らない。
 片側の逆の性質は完了したが、これだけで二射をホモトピー同値とは数えない。
+`coherentPinchedComparison_eq_pinchedHomMap` は固定端点の比較射を、Core の
+`pinchedHomMap coherentComparison (coherentVertex x) (coherentVertex y)` の後に
+`coherentComparison_vertex` による端点の等式の同型を合成した射に同定する。
+`pinchedEndpointIso_hom_val` はこの移送が台の単体を変えないことを全次数で示す。
+従って、定義の異なる二つの射を単に同じ働きをする射として扱うのでなく、射の等式で接続している。
+
+`coherentComparison_fullyFaithful_iff` は任意の coherent 頂点を `coherentVertexEquiv` で戻し、
+全 dg 対象間の固定端点の比較射が実際のホモトピー逆を持つことと Core の充満忠実性を同値にする。
+さらに `standardHomPinchedIso` に沿う移送を使い、標準座標での判定を得る。
+具体的な判定の前提は `[CommRing R] [DGCategory R D]` のみで、必要な三つの写像空間の Kan 性は
+既存の局所 Kan 性と自然同型から導く。
+
+```lean
+coherentComparison_fullyFaithful_iff_standard :
+  IsFullyFaithful (coherentComparison (R := R) (D := D)) ↔
+    ∀ x y : D,
+      IsSimplicialHomotopyEquivalence (coherentPinchedStandardComparison (R := R) x y)
+```
+
+これは充満忠実性の判定への移送であり、右辺の実際のホモトピー逆はまだ証明していない。
 残りは余単体的立方体模型 Q^• との比較と反対側の合成の単体的ホモトピー、
-Core の `pinchedHomMap coherentComparison` への移送と全頂点での充満忠実性、A3e の適用。
+この判定による充満忠実性の証明、A3e による ∞ 圏の同値の構成。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

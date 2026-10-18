@@ -383,6 +383,15 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_coherent_face_one_at
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_coherent_face_one_at
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedComparison_eq_pinchedHomMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedComparison_eq_pinchedHomMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedComparison_homotopyEquivalence_iff
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedComparison_homotopyEquivalence_iff
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_fullyFaithful_iff
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_fullyFaithful_iff
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_heq_of_set_eq
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_heq_of_set_eq
 
@@ -574,6 +583,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_term_eq_interior
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_term_eq_interior
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedStandardComparison_homotopyEquivalence_iff
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedStandardComparison_homotopyEquivalence_iff
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_fullyFaithful_iff_standard
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_fullyFaithful_iff_standard
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet
@@ -1022,6 +1037,12 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.simplicialHomotopyEquivalence_iso_hom
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.simplicialHomotopyEquivalence_iso_hom
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.simplicialHomotopyEquivalence_postcomp_iso_iff
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.simplicialHomotopyEquivalence_postcomp_iso_iff
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_withLast_maximum
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_withLast_maximum
 
@@ -1342,6 +1363,15 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathSplitEnumeration_eq_descending
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.pathSplitEnumeration_eq_descending
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pinchedEndpointIso
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pinchedEndpointIso
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pinchedEndpointIso_hom_val
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pinchedEndpointIso_hom_val
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pinchedEndpointIso_postcomp_iff
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pinchedEndpointIso_postcomp_iff
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.finPairsLT_card
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.finPairsLT_card
