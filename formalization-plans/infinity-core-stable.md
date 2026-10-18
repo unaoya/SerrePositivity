@@ -466,8 +466,8 @@ cofiber 列の回転の幾何学的構成と最初の二射の照合が完成し
 `CofiberRotationRectangle.tailShortComplexIso` と `exists_cofiberTailShortComplex` は
 その二射列が cofiber 列の短複体の像と同型となることを、追加の条件なしに証明する
 （Quasicategory、IsStable）。
-**TR2 は未完了**。回転後の列の接続射が −Σf となる符号の同定、
-通常の Triangle の回転の所属とその逆方向が残る。最初の二射の照合を TR2 全体の完成とは数えない。
+回転後の列の接続射が −Σf となる符号の同定は下記で完成。
+**TR2 は未完了**。通常の Triangle の回転の所属とその逆方向が残る。
 suspension の二つの零枝の交換の幾何学と自然性を整備した。
 `SuspensionSquare.transpose` は二つの零角を交換し、始点・suspension 頂点を保つ。
 `transpose_transpose`・`transpose_vertex` は二回で元に戻ることと頂点の保持を示す
@@ -705,8 +705,19 @@ Hom 表示の後合成として読む。`LeftFibrationFiberTransport.piZero_incl
 `chosenSymmetricSuspensionSquare_swapIso_eq_neg_id` で対称な懸垂模型の swapIso に照合する。
 `SuspensionSquare.swapIso_eq_neg_id` は既存の選択変更の可換性により任意の懸垂四角形へ移す。
 **懸垂の二枝交換と負の恒等射の一致は完成**（Quasicategory、IsStable、追加の対称性の仮定なし）。
-回転した cofiber 列の第三接続射と -Σf との一致、Triangle の回転所属・逆方向、TR2 全体は未証明。
-表現可能な比較の完成を符号・TR2 全体の完成とは数えない。
+`pastingOuterToRightHomotopy` は回転長方形の外側から右面への変形を構成し、
+始点の道は左面の下辺、終点は固定される（値域への追加仮定なし）。
+`CofiberRotationRectangle.suspensionComparison` はこれに二回目の回転比較の転置を合成する。
+始点成分は元の第一射を等号で輸送した射、終点成分は回転後の接続射である。
+`SuspensionSquare.ambientHom_target` は四角形の関手圏の h の任意の射について、
+懸垂間の終点成分が指定始点の射を suspensionFunctor で送ったものになると示す
+（Quasicategory、IsStable、始点成分の式）。全部分圏からの持ち上げを追加入力しない。
+`SuspensionSquare.transpose_objIso_inv` は転置した懸垂の対象比較の逆射が元の逆射の負号となる式。
+`CofiberRotationRectangle.connecting_eq_neg_suspension` はこれらを合わせ、
+回転後の接続射を懸垂対象の比較と始点の等号輸送を通して -Σf に同定する。
+仮定は Quasicategory、IsStable と指定回転長方形であり、元の列の cofiber 性は長方形の存在に使う。
+**回転第三接続射の負号は完成**。Triangle の回転所属・逆方向、TR2 全体は未証明。
+第三射の等式の完成を TR2 全体の完成とは数えない。
 八面体、Pretriangulated instance も未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -856,7 +867,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 分裂 cofiber 列と二項双積 | `binaryFan_isLimit_of_edge_eq`（値域の仮定なし）、`ZeroTriangle.binaryProductOfRetraction`、`zeroSourcePushout_isBinaryProduct_of_retraction`・標準射影版、`zeroSourcePushoutBinaryBiproduct`、`hasBinaryBiproducts_ho`（Quasicategory、IsStable） | 二項双積 instance まで完成。前加法構造も下記で完成 |
 | h C の前加法構造 | `stableHomAddCommMonoid`、`exists_additiveInverse_of_zeroSourcePushout`、`exists_stableHom_additiveInverse`、`stableHomAddCommGroup`、`preadditive_ho`（Quasicategory、IsStable） | Hom の可換群・合成の双加法性・Preadditive instance まで完成 |
 | h C の有限双積とシフトの加法性 | `hasFiniteProducts_ho`、`hasFiniteBiproducts_ho`、`suspensionFunctor_additive`、`loopFunctor_additive`、`shiftFunctor_additive_ho`（Quasicategory、IsStable） | 全有限双積・Σ・Ω・全整数シフトの加法性まで完成。∞ 圏自体の全有限極限・余極限の存在は未証明 |
-| cofiber 列の回転の幾何学的構成と二射列 | `pastingLeftToOuterHomotopy`（値域の仮定なし）、`CofiberRotationRectangle` とその存在・選択（Quasicategory、IsStable）、`rotated_isCofiber`（データを入力すれば仮定なし）、`rotated_f_arrow`・`rotated_g_arrow_connecting`（Quasicategory、零射、後者は元の cofiber 性）、`tailShortComplexIso`・`exists_cofiberTailShortComplex`（Quasicategory、IsStable） | B → C → ΣA の cofiber 短複体表示まで完成。第三の接続射の負号・Triangle の回転所属・逆方向は未証明。TR2 全体は未完了 |
+| cofiber 列の回転の幾何学的構成と二射列 | `pastingLeftToOuterHomotopy`（値域の仮定なし）、`CofiberRotationRectangle` とその存在・選択（Quasicategory、IsStable）、`rotated_isCofiber`（データを入力すれば仮定なし）、`rotated_f_arrow`・`rotated_g_arrow_connecting`（Quasicategory、零射、後者は元の cofiber 性）、`tailShortComplexIso`・`exists_cofiberTailShortComplex`（Quasicategory、IsStable） | B → C → ΣA の cofiber 短複体表示まで完成。第三の接続射の負号も下記で完成。Triangle の回転所属・逆方向は未証明。TR2 全体は未完了 |
 | suspension の二枝交換 | `SuspensionSquare.transpose`・`transpose_transpose`・`transpose_vertex`（値域に仮定なし）、`swapIso`、`comparisonIso_hom_transpose`、`swapIso_hom_comp_self`、`diagramComparisonIso_transpose_naturality`・`swapIso_naturality`（Quasicategory） | 標準比較との両立・自然性・二乗が恒等まで完成。加法の負号との一致も下記で完成。TR2 は未完了 |
 | 終点固定余錐空間と二枝の引き戻し | `coconeMappingSpace`、`coconeMappingSpace_kanComplex`（Quasicategory）、`coconeMappingSpace_restrict_fibration`（Quasicategory、Mono）、`coconeMappingSpace_edge_isContractibleKan`（Quasicategory、枝の終点の始対象性）、`exists_coconeMappingSpace_glue`・`coconeMappingSpace_hom_ext_of_pushout`・`spanCoconeMapping_isPullback`・`coconeMappingSpace_spanSwap_left`・`right`（値域の仮定なし） | 空間・充填性・可縮な枝・引き戻し・交換の二成分まで完成。π₀ と Hom の比較は下記で完成。ループ模型と、零終点の対称 span に対する演算と加法の一致も下記で完成 |
 | 余錐空間と余極限頂点の Hom | `leftFibrationInitialFiberPiZeroEquiv`（底 Quasicategory、LeftFibration、始点の始対象性）、`coconeMappingSpacePiZeroEquiv`・`pushoutCoconeMappingSpacePiZeroEquiv`、`coconeMappingSpaceHomComparison_homotopyEquivalence`・`coconeMappingSpacePiZeroEquiv_eq_comparison`（Quasicategory、余極限性または押し出し性） | π₀ と Hom の同値・実際の比較射のホモトピー同値・二つの比較の一致まで完成。形状制限・再添字付け・二枝交換による制限余錐での Hom 表示との両立まで完成。同じ図式の余錐の変更に対する colimitVertexIso との両立も完成。選択済みの swapIso への接続とループ模型・加法との照合も下記で完成 |
@@ -870,6 +881,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 対称 span 全体の輸送とループ積 | `exists_symmetricCoconeEndpointTransport`（Quasicategory、選んだ共通始点の輸送）、`symmetricCoconeTransport_kernelPair`・`_piZero`（三つの輸送と可換性、充填性不要）、`symmetricCoconeLoopProduct`・`Unit` と左右単位・交換右逆元（Quasicategory、枝の終点の始対象性、枝の基点）、`symmetricCoconeLoopProduct_transport`・`Unit_transport`（整合する輸送、終域の基点は輸送の像） | 貼り合わせ条件の実際の検証と全体の輸送、自己引き戻しへの可換性、全体の積・単位とその輸送による保存まで完成。任意の基点変更の独立性・単位と零射の照合・加法への適用も下記で完成 |
 | ループ単位の零射との照合 | `leftFibrationInitialVertexHom_eq_zero_of_factor`・`leftFibrationInitialFiberPiZeroEquiv_map_eq_zero`（零像を通る因子分解、詳細は本文）、`spanFold`・`symmetricCoconeFold` と両枝・対角の式、`symmetricCoconeLoopUnit_eq_fold`（充填性不要）、`coconeMappingSpacePiZeroEquiv_fold_eq_zero`・`symmetricCoconeLoopUnit_hom_eq_zero`（Quasicategory、h X の零射、枝の零終点、全体の余極限余錐） | 単位が零射となることまで完成。積の基点独立性・Hom 上の後合成自然性の確定・加法への適用も下記で完成 |
 | 基点独立性・Hom の加法・懸垂交換の負号 | `kanKernelPairPiZeroLoopEquiv_basepoint`・`kanKernelPairLoopProduct_basepoint`（Kan fibration、E 可縮な Kan、B Kan）、`symmetricCoconeHomProduct_naturality` と零単位・右逆元（Quasicategory、零終点、全体の余極限余錐。零単位・右逆元は零射構造）、`symmetricCoconeHomProduct_eq_add`・`fixedCoconeSwap_eq_neg_id`・`SuspensionSquare.swapIso_eq_neg_id`（Quasicategory、IsStable） | ループ積の基点独立性、Hom の後合成自然性・加法との一致、任意の懸垂交換と -id の一致まで完成。回転第三接続射の負号・TR2 は未完了 |
+| 回転第三接続射の符号 | `pastingOuterToRightHomotopy` と二成分（値域の仮定なし）、`CofiberRotationRectangle.suspensionComparison` と二成分（Quasicategory、終点は零射構造）、`SuspensionSquare.ambientHom_target`・`transpose_objIso_inv`、`CofiberRotationRectangle.connecting_eq_neg_suspension`（Quasicategory、IsStable） | 対象比較と始点の等号輸送を含め、回転後の接続射が -Σf となる式まで完成。Triangle の回転所属・逆方向・TR2 は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

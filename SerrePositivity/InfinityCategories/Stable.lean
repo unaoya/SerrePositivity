@@ -219,6 +219,11 @@ public import SerrePositivity.InfinityCategories.Stable.RepresentableAdditionCov
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomAddition
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSwapSign
 
+public import SerrePositivity.InfinityCategories.Stable.PastingOuterToRightHomotopy
+public import SerrePositivity.InfinityCategories.Stable.CofiberRotationComparison
+public import SerrePositivity.InfinityCategories.Stable.SuspensionAmbientHom
+public import SerrePositivity.InfinityCategories.Stable.CofiberRotationSign
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

@@ -1062,6 +1062,26 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.JoinCone.reverseCocone_vertex
 
 open Lean in
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_one
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightHomotopy
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_source
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_target
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightHomotopy_source
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightHomotopy_target
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightHom
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightHom_source_arrow
+#print axioms SerrePositivity.InfinityCategories.pastingOuterToRightHom_target
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.comparisonHomotopy_source_map
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.suspensionComparison
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.suspensionComparison_target
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.suspensionComparison_source
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.ambientHom_target
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transpose_objIso_inv
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.connecting_eq_neg_suspension
+
+open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
@@ -1381,7 +1401,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomProductNaturality,
     `SerrePositivity.InfinityCategories.Stable.RepresentableAdditionCover,
     `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomAddition,
-    `SerrePositivity.InfinityCategories.Stable.SuspensionSwapSign]
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSwapSign,
+    `SerrePositivity.InfinityCategories.Stable.PastingOuterToRightHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationComparison,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionAmbientHom,
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationSign]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
