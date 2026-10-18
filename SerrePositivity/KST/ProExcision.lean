@@ -275,3 +275,23 @@ public import SerrePositivity.KST.ProExcision.MatrixActionInsertion
 public import SerrePositivity.KST.ProExcision.Lemma416EquivariantData
 
 public import SerrePositivity.KST.ProExcision.Lemma416Equivariance
+
+public import SerrePositivity.KST.ProExcision.StrictificationFunctoriality
+
+public import SerrePositivity.KST.ProExcision.TensorAugmentationFunctoriality
+
+public import SerrePositivity.KST.ProExcision.ConstructionA5Functoriality
+
+public import SerrePositivity.KST.ProExcision.IdealVectorMap
+
+public import SerrePositivity.KST.ProExcision.ColumnCoefficientMap
+
+public import SerrePositivity.KST.ProExcision.BlockCoefficientMap
+
+public import SerrePositivity.KST.ProExcision.GroupHomotopyFunctoriality
+
+public import SerrePositivity.KST.ProExcision.Lemma416CoefficientData
+
+public import SerrePositivity.KST.ProExcision.CylinderSquareOperations
+
+public import SerrePositivity.KST.ProExcision.Lemma416Functoriality

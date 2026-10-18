@@ -3411,3 +3411,93 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.lemma416Homotopy_equivariant
 #print axioms SerrePositivity.KST.ProExcision.lemma416Homotopy_equivariant
+
+#check @SerrePositivity.KST.ProExcision.linearizedCylinderProjection_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedCylinderProjection_naturality
+
+#check @SerrePositivity.KST.ProExcision.strictificationEndpoint₀_naturality
+#print axioms SerrePositivity.KST.ProExcision.strictificationEndpoint₀_naturality
+
+#check @SerrePositivity.KST.ProExcision.strictificationEndpoint₁_naturality
+#print axioms SerrePositivity.KST.ProExcision.strictificationEndpoint₁_naturality
+
+#check @SerrePositivity.KST.ProExcision.strictifiedMap_naturality
+#print axioms SerrePositivity.KST.ProExcision.strictifiedMap_naturality
+
+#check @SerrePositivity.KST.ProExcision.strictificationHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.strictificationHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainComparisonWhisker_square
+#print axioms SerrePositivity.KST.ProExcision.chainComparisonWhisker_square
+
+#check @SerrePositivity.KST.ProExcision.linearizedTensorAugmentationMHomotopy_functorial
+#print axioms SerrePositivity.KST.ProExcision.linearizedTensorAugmentationMHomotopy_functorial
+
+#check @SerrePositivity.KST.ProExcision.groupLinearizedMap_square
+#print axioms SerrePositivity.KST.ProExcision.groupLinearizedMap_square
+
+#check @SerrePositivity.KST.ProExcision.constructionA5_functorial
+#print axioms SerrePositivity.KST.ProExcision.constructionA5_functorial
+
+#check @SerrePositivity.KST.ProExcision.idealCoefficientAddHom
+#print axioms SerrePositivity.KST.ProExcision.idealCoefficientAddHom
+
+#check @SerrePositivity.KST.ProExcision.idealVectorMap
+#print axioms SerrePositivity.KST.ProExcision.idealVectorMap
+
+#check @SerrePositivity.KST.ProExcision.idealVectorRightHom_functorial
+#print axioms SerrePositivity.KST.ProExcision.idealVectorRightHom_functorial
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupMap_val
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupMap_val
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_coefficient_map
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_coefficient_map
+
+#check @SerrePositivity.KST.ProExcision.idealBlockColumnHom_functorial
+#print axioms SerrePositivity.KST.ProExcision.idealBlockColumnHom_functorial
+
+#check @SerrePositivity.KST.ProExcision.lastRightColumnHom_functorial
+#print axioms SerrePositivity.KST.ProExcision.lastRightColumnHom_functorial
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryBlockColumnHom_functorial
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryBlockColumnHom_functorial
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_coefficient_map
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_coefficient_map
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockInsertion_functorial
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockInsertion_functorial
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryBlockUnit_functorial
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryBlockUnit_functorial
+
+#check @SerrePositivity.KST.ProExcision.simplicialIntegerTensorInterval_square
+#print axioms SerrePositivity.KST.ProExcision.simplicialIntegerTensorInterval_square
+
+#check @SerrePositivity.KST.ProExcision.groupZeroMHomotopy_functorial
+#print axioms SerrePositivity.KST.ProExcision.groupZeroMHomotopy_functorial
+
+#check @SerrePositivity.KST.ProExcision.groupConjugationMHomotopy_functorial
+#print axioms SerrePositivity.KST.ProExcision.groupConjugationMHomotopy_functorial
+
+#check @SerrePositivity.KST.ProExcision.lemma416GroupData_mu_functorial
+#print axioms SerrePositivity.KST.ProExcision.lemma416GroupData_mu_functorial
+
+#check @SerrePositivity.KST.ProExcision.lemma416GroupData_product_functorial
+#print axioms SerrePositivity.KST.ProExcision.lemma416GroupData_product_functorial
+
+#check @SerrePositivity.KST.ProExcision.cylinderSquare_add
+#print axioms SerrePositivity.KST.ProExcision.cylinderSquare_add
+
+#check @SerrePositivity.KST.ProExcision.cylinderSquare_sub
+#print axioms SerrePositivity.KST.ProExcision.cylinderSquare_sub
+
+#check @SerrePositivity.KST.ProExcision.cylinderSquare_constant
+#print axioms SerrePositivity.KST.ProExcision.cylinderSquare_constant
+
+#check @SerrePositivity.KST.ProExcision.lemma416HomotopyStep_functorial
+#print axioms SerrePositivity.KST.ProExcision.lemma416HomotopyStep_functorial
+
+#check @SerrePositivity.KST.ProExcision.lemma416Homotopy_functorial
+#print axioms SerrePositivity.KST.ProExcision.lemma416Homotopy_functorial

@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1188宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1218宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -372,6 +372,10 @@
 
 | lemma416EquivariantGroupData | Lemma416EquivariantData.lean | 検証済み | 実 μ,α,β と全行列作用の同変な A.5 入力 |
 | lemma416Homotopy_equivariant | Lemma416Equivariance.lean | 離散版検証済み | 構成済みの全 m の実区間ホモトピーの全行列同変性 |
+
+| constructionA5_functorial | ConstructionA5Functoriality.lean | 検証済み | 異なる群データ間の μ 版 A.5 の実区間の自然性 |
+| auxiliaryBlockUnit_functorial / triangularBlockInsertion_functorial | BlockCoefficientMap.lean | 検証済み | u と実埋め込みの係数自然性 |
+| lemma416Homotopy_functorial | Lemma416Functoriality.lean | 離散版検証済み | 全 m の構成済み実帰納ホモトピーの (I,a) の射への自然性 |
 
 ## L6a：最小 pro 形式
 
@@ -948,3 +952,13 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `lemma416HomotopyStep_equivariant` は既に構成した実帰納段階の区間射自体の同変性を証明。A.5 と A.6 の区間射の同変性を同じ線形な連結・相殺に適用した。
 - `lemma416Homotopy_equivariant` は全 m の実帰納ホモトピーの行列同変性。結論を含む追加構造体・追加公理を導入していない。
 - 対象ビルド・1188宣言の公理監査は標準三公理のみで成功。離散環上の非可換な実比較と全行列同変性は検証済みだが、(I,a) の射への関手性、単体環への移送、相対零化・安定化は未完了。
+
+
+### L6d の実帰納ホモトピーの係数関手性（2026-10-19）
+
+- `strictifiedMap_naturality` と `strictificationHomotopy_naturality` は異なる因子内の入力を結ぶ射に対する厳密化の自然性。
+- `linearizedTensorAugmentationMHomotopy_functorial` と `constructionA5_functorial` は異なる群データ間での実区間射の自然性。自己射だけに制限しない。
+- `idealVectorMap`、実列・ブロック挿入・補助元の係数自然性、および μ とその積の係数自然性を証明。
+- `groupZeroMHomotopy_functorial` と `groupConjugationMHomotopy_functorial` は零次比較と A.6 の実区間の係数自然性。
+- `lemma416Homotopy_functorial` は指定元と係数イデアルを保つ全ての周囲環準同型に対する、全 m の構成済み実区間射の自然性。因子内の帰納仮定、A.5、A.6、連結・相殺を同じ構成で比較した。
+- 対象ビルド・1218宣言の公理監査は標準三公理のみで成功。次は次数ごとの群の nerve の実比較を対角へ制限する単体環への移送。相対零化・安定化はまだ未完了。
