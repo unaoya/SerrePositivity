@@ -980,6 +980,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 完全関手の定義と四角形の保存 | `PreservesZeroVertices`、`ZeroTriangle.map`、`IsExactFunctor`、恒等・合成の完全性、`IsExactFunctor.preservesFiber`、`isExactFunctor_of_preservesFiber`、`preservesPushoutSquare`・`preservesPullbackSquare`（後四者は始域・終域 Quasicategory、IsStable） | 完全性は零対象と cofiber 列の保存で定義。任意の四角形の保存を追加仮定せず導出済み。suspension 図式の後合成と懸垂比較自然同型も完成。整数シフトの CommShift も完成。接続射の両立と自然変換は未完了 |
 | 完全関手と懸垂 | `squareDiagram_postcomp`、`IsExactFunctor.preservesSuspensionDiagramVertex`、`exactFunctorSuspensionDiagrams` と全角の評価式、`SuspensionSquare.map`、`exactFunctorSuspensionFamilyIso`、`exactFunctorSuspensionIso` | 全単体に自然な図式の後合成と Σ ⋙ hF ≅ hF ⋙ Σ まで完成。後二者は始域・終域 Quasicategory、IsStable、IsExactFunctor F のみ |
 | 完全関手と整数シフト | `StableShiftCommutation` と群構造、`stableCommShiftOfOne`・`stableCommShiftOfOne_one`（任意の整数シフトを持つ二圏の関手と一回比較）、`exactFunctorShiftOneIso`、`exactFunctorCommShift`・`exactFunctorCommShift_one`（Quasicategory、IsStable、IsExactFunctor F） | 全整数の零・加法の整合条件を持つ CommShift ℤ と一回比較の厳密な復元まで完成。三角関手と自然変換は未完了 |
+| 完全関手と指定懸垂への cofiber 比較 | `squareDiagramHoEvaluation_postcomp`、`cofiberSuspensionComparisonHom_postcomp`、`cofiberConnectingToSuspension_postcomp`、`functorHomotopyEvaluation_map_app_arrow`・後合成の成分式、`functorIsoOfTrivialKanFibration_projection_arrow`・`_component_arrow`、`exactFunctorSuspensionFamilyIso_source_component_arrow` | 写した懸垂への接続射の保存と、選んだ図式比較の始点が恒等であることまで完成。Σ への接続射の両立・三角関手・自然変換は未完了 |
 | S7 | D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

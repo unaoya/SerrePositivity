@@ -260,6 +260,12 @@ public import SerrePositivity.InfinityCategories.Stable.ShiftCommutationGroup
 public import SerrePositivity.InfinityCategories.Stable.ShiftCommutationInteger
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorShift
 
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorCofiberComparison
+public import SerrePositivity.InfinityCategories.Stable.FunctorHoEvaluation
+public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationComparisonProjection
+
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspensionComponents
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

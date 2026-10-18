@@ -19359,3 +19359,184 @@ isExactFunctor_id.{u_1} : ∀ (X : SSet.{u_1}), IsExactFunctor.{u_1} (CategoryTh
       1)
     (exactFunctorShiftOneIso.{u_1} F)
 ```
+
+
+## S6：指定懸垂への接続射の保存と懸垂比較の始点成分（2026-10-19）
+
+完全関手が四角形の h の標準比較を保つことを始点成分による一意性から証明し、その終点評価として `cofiberConnectingToSuspension_postcomp` を公開。仮定は両値域 Quasicategory、IsExactFunctor F、指定 cofiber 列・suspension 四角形、両 h の任意の零射構造であり、IsStable はこの定理には不要。通常の自然変換の成分と内部 Hom の頂点評価、および後合成との可換性も証明した。trivial Kan fibration の標準比較の底への射影と各頂点での成分は恒等であり、`exactFunctorSuspensionFamilyIso_source_component_arrow` はこれを安定圏の懸垂比較に適用する。
+
+対象＋統合ビルド 3078 jobs 成功。Stable axiom audit passed: 2614 declarations in 354 modules. 標準 3 公理のみ。Σ に値を持つ接続射との両立・三角関手・自然変換・D7 は未完了。
+
+全 10 公開宣言の正確な型：
+
+```lean
+@squareDiagramHoEvaluation_postcomp.{u_1} : ∀ {X Y : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  {a b :
+    ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) ⟹
+          X))}
+  (f : Quiver.Hom.{u_1, u_1} a b) (i j : Fin 2),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (squareDiagramHoEvaluation.{u_1} Y i j)
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.ihom.{u_1, u_1 + 1}
+                (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+              F)))
+        f))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (squareDiagramHoEvaluation.{u_1} X i j) f))
+@cofiberSuspensionComparisonHom_postcomp.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : SSet.Quasicategory.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_2 : IsExactFunctor.{u_1} F]
+  (t : ZeroTriangle.{u_1} X) (ht : IsCofiberSequence.{u_1} t)
+  (s : SuspensionSquare.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1}
+            (CategoryTheory.ihom.{u_1, u_1 + 1}
+              (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+            F)))
+      (cofiberSuspensionComparisonHom.{u_1} (ZeroTriangle.square.{u_1} t) ht s))
+    (cofiberSuspensionComparisonHom.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (ZeroTriangle.square.{u_1} t) F) ⋯
+      (SuspensionSquare.map.{u_1} s F))
+@cofiberConnectingToSuspension_postcomp.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : SSet.Quasicategory.{u_1} Y]
+  [inst_2 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)]
+  [inst_3 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} Y)]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F] (t : ZeroTriangle.{u_1} X)
+  (ht : IsCofiberSequence.{u_1} t) (s : SuspensionSquare.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+      (cofiberConnectingToSuspension.{u_1} t ht s))
+    (cofiberConnectingToSuspension.{u_1} (ZeroTriangle.map.{u_1} t F ⋯) ⋯ (SuspensionSquare.map.{u_1} s F))
+@functorHomotopyEvaluation_map_app_arrow.{u_1} : ∀ {A Y : SSet.{u_1}} [SSet.Quasicategory.{u_1} Y]
+  {v w : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (A ⟹ Y) (Opposite.op.{1} { len := 0 })}
+  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} v) (SSet.HomotopyCategory.mk.{u_1} w))
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (functorHomotopyEvaluation.{u_1} A Y) f)
+        (SSet.HomotopyCategory.mk.{u_1} x)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} (evaluateFunctorAt.{u_1} x)))
+        f))
+@functorIso_toNatIso_hom_app_arrow.{u_1} : ∀ {A Y : SSet.{u_1}} [SSet.Quasicategory.{u_1} Y]
+  {f g : Quiver.Hom.{u_1, u_1 + 1} A Y} (e : FunctorIso.{u_1} f g)
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (FunctorIso.toNatIso.{u_1} e)) (SSet.HomotopyCategory.mk.{u_1} x)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} (evaluateFunctorAt.{u_1} x)))
+        (CategoryTheory.Iso.hom.{u_1, u_1} e)))
+@functorHomotopyEvaluation_postcomp_map_app.{u_1} : ∀ {A E B : SSet.{u_1}} [SSet.Quasicategory.{u_1} E]
+  (q : Quiver.Hom.{u_1, u_1 + 1} E B)
+  {v w : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (A ⟹ E) (Opposite.op.{1} { len := 0 })}
+  (a : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} v) (SSet.HomotopyCategory.mk.{u_1} w))
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (functorHomotopyEvaluation.{u_1} A B)
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+              (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.ihom.{u_1, u_1 + 1} A) q)))
+          a))
+      (SSet.HomotopyCategory.mk.{u_1} x))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} q))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (functorHomotopyEvaluation.{u_1} A E) a)
+        (SSet.HomotopyCategory.mk.{u_1} x)))
+@functorIso_toNatIso_postcomp_hom_app.{u_1} : ∀ {A E B : SSet.{u_1}} [SSet.Quasicategory.{u_1} E]
+  {f g : Quiver.Hom.{u_1, u_1 + 1} A E} (e : FunctorIso.{u_1} f g) (q : Quiver.Hom.{u_1, u_1 + 1} E B)
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1} (FunctorIso.toNatIso.{u_1} (FunctorIso.postcomp.{u_1} e q)))
+      (SSet.HomotopyCategory.mk.{u_1} x))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} q))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (FunctorIso.toNatIso.{u_1} e)) (SSet.HomotopyCategory.mk.{u_1} x)))
+@functorIsoOfTrivialKanFibration_projection_arrow.{u_1} : ∀ {A E B : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst : TrivialKanFibration.{u_1} p] (f g : Quiver.Hom.{u_1, u_1 + 1} A E)
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1} (FunctorIso.postcomp.{u_1} (functorIsoOfTrivialKanFibration.{u_1} p f g h) p)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+        (SSet.HomotopyCategory.mk.{u_1} (functorVertex.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p)))))
+@functorIsoOfTrivialKanFibration_projection_component_arrow.{u_1} : ∀ {A E B : SSet.{u_1}} [SSet.Quasicategory.{u_1} E]
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) [inst : TrivialKanFibration.{u_1} p] (f g : Quiver.Hom.{u_1, u_1 + 1} A E)
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p))
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} p))
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Iso.hom.{u_1, u_1}
+            (FunctorIso.toNatIso.{u_1} (functorIsoOfTrivialKanFibration.{u_1} p f g h)))
+          (SSet.HomotopyCategory.mk.{u_1} x))))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+        (SSet.HomotopyCategory.mk.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p)
+                (Opposite.op.{1} { len := 0 })))
+            x))))
+@exactFunctorSuspensionFamilyIso_source_component_arrow.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F]
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+            (suspensionDiagramEvaluation.{u_1} Y 0 0)))
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Iso.hom.{u_1, u_1} (FunctorIso.toNatIso.{u_1} (exactFunctorSuspensionFamilyIso.{u_1} F)))
+          (SSet.HomotopyCategory.mk.{u_1} x))))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+        (SSet.HomotopyCategory.mk.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} F (Opposite.op.{1} { len := 0 })))
+            x))))
+```

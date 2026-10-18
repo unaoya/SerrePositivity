@@ -1563,7 +1563,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ShiftCommutationInverse,
     `SerrePositivity.InfinityCategories.Stable.ShiftCommutationGroup,
     `SerrePositivity.InfinityCategories.Stable.ShiftCommutationInteger,
-    `SerrePositivity.InfinityCategories.Stable.ExactFunctorShift]
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorShift,
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorCofiberComparison,
+    `SerrePositivity.InfinityCategories.Stable.FunctorHoEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.TrivialFibrationComparisonProjection,
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspensionComponents]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
