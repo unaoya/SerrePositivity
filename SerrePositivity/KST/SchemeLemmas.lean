@@ -21,3 +21,5 @@ public import SerrePositivity.KST.SchemeLemmas.ReesLocalization
 public import SerrePositivity.KST.SchemeLemmas.ChartBaseChange
 public import SerrePositivity.KST.SchemeLemmas.LocalizationCommute
 public import SerrePositivity.KST.SchemeLemmas.BaseChangeChartCover
+public import SerrePositivity.KST.SchemeLemmas.BaseChangeCharts
+public import SerrePositivity.KST.SchemeLemmas.BlowupLocalization

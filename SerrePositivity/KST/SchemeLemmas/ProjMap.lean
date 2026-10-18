@@ -42,4 +42,26 @@ theorem proj_map_toSpecZero {A B σ τ : Type u}
   apply HomogeneousLocalization.val_injective
   simp [fromZeroRingHom, Away.map, HomogeneousLocalization.map_mk]
 
+set_option backward.isDefEq.respectTransparency false in
+/--
+概要：像の斉次分母と等しい別表示の分母でも Proj の局所比較公式が成立する。
+方針：分母の等式で標的側を移送して、Mathlib の局所公式を適用する。
+規約：KST §5、斉次次数は正、分母の所属証明と冪の包含を明示する。
+使われ方：Rees 中心元の像に対応する実際の標準チャートの交換式。
+-/
+@[reassoc] theorem proj_awayι_map_of_eq {A B σ τ : Type u}
+    [CommRing A] [SetLike σ A] [AddSubgroupClass σ A]
+    [CommRing B] [SetLike τ B] [AddSubgroupClass τ B]
+    {𝒜 : ℕ → σ} {ℬ : ℕ → τ} [GradedRing 𝒜] [GradedRing ℬ]
+    (f : 𝒜 →+*ᵍ ℬ)
+    (hf : HomogeneousIdeal.irrelevant ℬ ≤ (HomogeneousIdeal.irrelevant 𝒜).map f)
+    (n : ℕ) (hn : 0 < n) (a : A) (ha : a ∈ 𝒜 n)
+    (b : B) (hb : b ∈ ℬ n) (hab : f a = b)
+    (hle : Submonoid.powers a ≤ (Submonoid.powers b).comap f.toRingHom) :
+    Proj.awayι ℬ b hb hn ≫ Proj.map f hf =
+      Spec.map (CommRingCat.ofHom (HomogeneousLocalization.map f hle)) ≫
+        Proj.awayι 𝒜 a ha hn := by
+  subst b
+  exact Proj.awayι_comp_map f hf hn a ha
+
 end SerrePositivity.KST.SchemeLemmas
