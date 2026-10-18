@@ -4,21 +4,24 @@ public import SerrePositivity.KST.Descent.SplitMayerVietoris
 public import SerrePositivity.KST.Descent.EquivariantMayerVietoris
 public import SerrePositivity.KST.Descent.PermutationRepresentation
 public import SerrePositivity.KST.Descent.InvariantProducts
+public import SerrePositivity.KST.Descent.OrbitDescentStep
 
 /-!
 # 定理 3.1 の軌道正方形における全次数の貼り合わせ
 
 ## 概要
 (3.8) の置換不変部分と閉中心上の帰納仮定から、元の軌道比較の全次数同型を得る。
-現段階では実際の軌道正方形と Čech 降下への還元を入力する前の代数的な帰納段階。
+公開する `OrbitDescentStep` では、実際の同変軌道正方形とその二つのコピー分解を用い、
+中心上の降下から指定された全次数 PiDescent を導く。
+本ファイルの宣言は、これと併用する代数的な表現による貼り合わせを記述する。
 
 ## 方針
 比較元の恒等的な正方形の分裂長完全列と比較する。
 積の比較は対角写像と閉中心上の指定比較、交わりの比較は対角写像から構成する。
 
 ## 規約
-定理 3.1 全体の完成版ではない。実際の L の降下、G 同変な幾何正方形とその長完全列、
-コピーへの制限による分解、二つの制限の可換式を接続する責務が残る。
+定理 3.1 全体の完成版ではない。実際の L の降下から自然な長完全列と有限積保存を供給し、
+幾何的推移性から切断の被覆を得ること、Čech 還元と次元帰納を完成する責務が残る。
 主張の結論そのものを仮定していない。
 
 ## 使われ方

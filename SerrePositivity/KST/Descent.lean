@@ -56,6 +56,10 @@ public import SerrePositivity.KST.Descent.CopyEvaluationLimit
 public import SerrePositivity.KST.Descent.OrbitCoproduct
 public import SerrePositivity.KST.Descent.FixedPullbackComparison
 public import SerrePositivity.KST.Descent.OrbitProductComparison
+public import SerrePositivity.KST.Descent.FiniteTypeUniversal
+public import SerrePositivity.KST.Descent.ExceptionalCopies
+public import SerrePositivity.KST.Descent.ExceptionalCopiesAction
+public import SerrePositivity.KST.Descent.OrbitDescentStep
 
 /-!
 # K-L8：論文 §3 の降下
@@ -82,6 +86,8 @@ Noether 基底上の「一般 → 被約」の全次数降下比較の還元も�
 中項・例外部分の固定比較から指定された全次数 PiDescent を得る軌道判定も公開する。
 非交和の指定コピー評価と置換表現、有限型の圏内の軌道の非交和の普遍性、
 コピーの有限積保存と中心上の降下からの実際の中項比較も公開する。
+例外部分の実際の同変コピー分解を用い、二つの非交和の積保存と中心上の降下から
+実際の軌道段階の全次数 PiDescent を導く。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

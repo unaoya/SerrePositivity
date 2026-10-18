@@ -51,6 +51,14 @@ noncomputable def closedCenterPullbackFirst (f : Y ⟶ X) (Z : Closeds X.obj.lef
     closedCenterPullback f Z ⟶ Y :=
   ObjectProperty.homMk (Over.homMk (pullback.fst f.hom.left (reducedClosedInclusion Z)))
 
+/-- 概要：中心の引き戻しの第一射影は閉埋め込み（論文 定理 3.1）。
+方針：被約閉中心の包含の底変換として判定する。
+規約：引き戻し自体の被約性は要求しない。
+使われ方：軌道正方形の例外部分の構成と普遍性。 -/
+instance closedCenterPullbackFirst_isClosedImmersion (f : Y ⟶ X)
+    (Z : Closeds X.obj.left) : IsClosedImmersion (closedCenterPullbackFirst f Z).hom.left :=
+  inferInstanceAs (IsClosedImmersion (pullback.fst f.hom.left (reducedClosedInclusion Z)))
+
 /-- 概要：中心の引き戻しから被約閉中心への第二射影（論文 §3）。
 方針：引き戻しの可換式と f の基底との両立を使い、基底上の射であることを確認する。
 規約：中心の構造射との可換式を保持する。

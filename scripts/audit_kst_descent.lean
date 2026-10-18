@@ -83,7 +83,11 @@ run_cmd do
       `SerrePositivity.KST.Descent.CopyEvaluationLimit,
       `SerrePositivity.KST.Descent.OrbitCoproduct,
       `SerrePositivity.KST.Descent.FixedPullbackComparison,
-      `SerrePositivity.KST.Descent.OrbitProductComparison] do
+      `SerrePositivity.KST.Descent.OrbitProductComparison,
+      `SerrePositivity.KST.Descent.FiniteTypeUniversal,
+      `SerrePositivity.KST.Descent.ExceptionalCopies,
+      `SerrePositivity.KST.Descent.ExceptionalCopiesAction,
+      `SerrePositivity.KST.Descent.OrbitDescentStep] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."
