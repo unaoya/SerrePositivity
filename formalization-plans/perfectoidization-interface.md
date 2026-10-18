@@ -691,3 +691,16 @@ specifiedTarget_isInitial (S : CommRingCat.{u}) {C : Type u} [CommRing C]
     (η : S →+* C) (hC : IsPerfectoidization p η) : IsInitial (specifiedTarget p S η hC)
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 ```
+
+### Π2-6
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u
+exists_perfectoidization_of_integral
+    (R S : Type u) [CommRing R] [CommRing S] [Algebra R S] [Algebra.IsIntegral R S]
+    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    (F : PerfectoidizationInterfaceE3 R p hR) :
+    ∃ (C : Type u) (_ : CommRing C) (f : S →+* C), IsPerfectoidization p f
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
