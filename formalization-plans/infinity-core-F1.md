@@ -9748,5 +9748,21 @@ lemma relativeFunctorPost_isPrecompositionEquivalence_of_precompositionEquivalen
     (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) (a : A ⟶ B) :
     IsPrecompositionEquivalence (HomotopyLimits.relativeFunctorPost p q f hf a)
 
+noncomputable def relativeFunctorEquivalenceOfComparisons
+    {B : SSet.{u}} [Quasicategory B] (a b p q : Over B)
+    [LeftFibration p.hom] [LeftFibration q.hom]
+    (f : a ⟶ b) (g : p ⟶ q)
+    (ef : IsPrecompositionEquivalence f.left) (eg : IsPrecompositionEquivalence g.left) :
+    QCatEquivalence (relativeFunctorSpace p.hom a.hom) (relativeFunctorSpace q.hom b.hom)
+
+noncomputable def leftStraighteningCandidateRelativeEquivalence
+    {C : Type u} [Category.{u} C] {E F : SSet.{u}}
+    (p : E ⟶ nerve C) (q : F ⟶ nerve C) [LeftFibration p] [LeftFibration q] :
+    QCatEquivalence
+      (relativeFunctorSpace ((SSet.uliftFunctor.{u + 1, u}).map q)
+        ((SSet.uliftFunctor.{u + 1, u}).map p))
+      (relativeFunctorSpace (leftUnstraighteningProjection (leftStraighteningCandidate q))
+        (leftUnstraighteningProjection (leftStraighteningCandidate p)))
+
 end SerrePositivity.InfinityCategories
 ```

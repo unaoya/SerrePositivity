@@ -489,3 +489,5 @@ public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningRelativeS
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorInverse
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComparisonEquivalence
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningRelativeEquivalence
