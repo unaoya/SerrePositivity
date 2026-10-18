@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・153 モジュール 2346 宣言の公理監査成功。
+対象ビルド・160 モジュール 2406 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1604,3 +1604,37 @@ Kan 複体の同じ成分の二頂点を一つの辺で結び、成分の等式�
 保存単位の対象ビルド 2353 jobs 成功。
 私有宣言を含む 153 モジュール 2346 宣言で標準三公理のみ。
 L9d は進行中。次は loop を値とする写像の群演算と高次ホモトピー群の演算を比較する。
+
+
+## 55. L9d の実際の loop の積と次数射の全正次数での計算
+
+円の Kan 置換を値とする内部 Hom への点つき射のホモトピー類に群構造を与えた。
+パラメータ源の制限は群準同型となり、零射の類は単位元となる。
+第二の源の制限と内部 Hom の交換の自然性も証明し、円の次数 m の自己射が
+任意のパラメータを持つ loop の類に m 乗で作用することを実証した。
+
+二つの射影の類の積の代表を選び、loop の積を表す実際の単体的な射を構成した。
+その左右の軸への制限は恒等射と点つきホモトピックである。
+直積の RelStruct を成分ごとに組み合わせ、直積のホモトピー類を二つの射影で識別した。
+これにより直積への誘導像を二つの軸の積に分解した。
+積の射の誘導作用は、RelStruct・MulStruct から構成した通常の群の積に一致する。
+反復積の実際の自己射と円の次数射を点つきホモトピー類で比較し、
+円の Kan 置換の次数 m の自己射の前合成がすべての正次数の群に m 乗で作用すると証明した。
+これは特定の基本類だけの計算ではなく、通常の群のすべての元に対する計算である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `LoopMappingClasses.classEquiv` / `.groupEquiv` | loop 値の写像の類と基本群の同値と群構造 |
+| `LoopMappingClasses.preHom` / `.preHom_classOf` | パラメータ源の制限準同型と実際の射の前合成 |
+| `InternalHomExchange.natural_pre_right` | 第二の源の制限についての交換同型の自然性 |
+| `LoopMappingClasses.classOf_zero` / `.post_power` | 零射の類と任意のパラメータでの円の冪作用 |
+| `KanHomotopyGroup.prod_kanComplex` / `.prod_map_injective` | 直積の Kan 性と射影による類の識別 |
+| `pointedGroupMap_prodLift` | 直積への誘導像の二つの軸による分解 |
+| `LoopMappingClasses.multiplication` / `.classOf_pair_multiplication` | 類の積を表す実際の射 |
+| `LoopMappingClasses.groupMap_pair_multiplication` | 通常の正次数群での積の作用 |
+| `LoopMappingClasses.groupMap_pre_power` | 円の次数射の全正次数の群での冪作用 |
+
+参照：Goerss–Jardine I §7、Kerodon §§3.1・3.2.2、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2360 jobs 成功。
+私有宣言を含む 160 モジュール 2406 宣言で標準三公理のみ。
+L9d は進行中。次は BF cotensor へこの作用を移して整数次数の telescope を構成する。

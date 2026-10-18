@@ -165,7 +165,14 @@ run_cmd do
     `SerrePositivity.KST.Spectra.FreeInterval,
     `SerrePositivity.KST.Spectra.FreePathSpace,
     `SerrePositivity.KST.Spectra.CofibrantSequenceLifting,
-    `SerrePositivity.KST.Spectra.StageTransitionCoherence]
+    `SerrePositivity.KST.Spectra.StageTransitionCoherence,
+    `SerrePositivity.KST.Spectra.LoopMappingClasses,
+    `SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource,
+    `SerrePositivity.KST.Spectra.LoopMappingOperations,
+    `SerrePositivity.KST.Spectra.HomotopyProduct,
+    `SerrePositivity.KST.Spectra.LoopMultiplication,
+    `SerrePositivity.KST.Spectra.PointedGroupProduct,
+    `SerrePositivity.KST.Spectra.LoopPositivePower]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
