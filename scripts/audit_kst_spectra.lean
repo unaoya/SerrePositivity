@@ -1,0 +1,29 @@
+import SerrePositivity.KST.Spectra
+import Lean.Util.CollectAxioms
+
+/-!
+概要：K-L9 の全宣言の公理依存を監査する。
+方針：専用モジュールの私有宣言も列挙し、許可集合外の公理を拒否する。
+規約：標準三公理のみ。共有ルートは import しない。
+使われ方：Kerodon §3.2、HA §1.4 に沿う実構成の保存単位ごとの検証。
+-/
+
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let mut count : Nat := 0
+  let mut modules : Array Name := #[]
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless (`SerrePositivity.KST.Spectra).isPrefixOf mod do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "K-L9: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+    unless modules.contains mod do modules := modules.push mod
+  if count == 0 then throwError "K-L9: no declarations audited"
+  unless modules.contains `SerrePositivity.KST.Spectra.HomotopyGroups do
+    throwError "K-L9: HomotopyGroups module missing"
+  logInfo m!"K-L9: {count} declarations in {modules.size} modules audited; standard three axioms only."
