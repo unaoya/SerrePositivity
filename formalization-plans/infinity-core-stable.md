@@ -70,6 +70,13 @@ loop 側の双対的な適用も完了した。S4 に着手し、`Δ[2] × Δ[1]
 `IsColimitCone (pastingCocone F) ↔ IsColimitCone (pastingOuterCocone F)`
 となることである。これは五頂点から四頂点へ左四角形の余極限頂点を忘れる
 coslice の比較であり、まだ証明していない。標準 span の形状の不一致は解消済み。
+この比較に必要な二重 coslice の計算のため、空次数を含む join の統一した
+切断表示 `stableAugJoinEquiv` とその自然性を証明した。三因子の頂点数ごとの
+同値 `stableAugJoinAssociatorEquiv` は、二つの切断の再添字付けと直和・直積の
+同値で構成した。`stablePullCut_leftMap`・`stablePullCut_rightMap`・
+`stablePullCut_middle` により三因子の切断位置の引き戻しを計算できる。
+結合の組み替えの自然性全体、単体集合としての結合同型、二重 coslice への
+適用は未完了であり、各次数の同値だけを結合同型の完成とは数えない。
 引き戻しへの双対化と三角構造も未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -157,6 +164,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 右四角形の余錐の比較 | `pastingCornerCocone_rightSpan`、`pastingCocone`、`pastingCocone_isColimitCone_iff_right`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了（外側比較は未完了） |
 | 四頂点図式から外側 span | `pastingOuterSpan_rightAnodyne`、`pastingOuterBaseRestrict_standardSpan_trivialKanFibration`、`pastingOuterBase_isColimitCone_iff_standardSpan`（後二者は値域 Quasicategory） | 完了 |
 | 外側四角形の余錐の比較 | `pastingOuterSpanIso`、`pastingOuterSpanIso_hom_ι`、`pastingCornerCocone_outerSpan`、`pastingOuterCocone_isColimitCone_iff_outer`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了（左四角形の余極限頂点を忘れる比較は未完了） |
+| 空次数を含む join | `StableAugJoin`、`stableAugJoinEquiv`、`stableAugJoinEquiv_naturality`（任意の二因子、有限順序写像） | 完了 |
+| join の結合の各次数の同値 | `stableJoinCutEquiv`、`stableAugReassociationEquiv`、`stableAugJoinAssociatorEquiv`（任意の三因子、頂点数 r） | 各次数で完了。組み替えの自然性は未完了 |
+| 二段の切断の引き戻し | `stablePullCut_leftMap`（a≤b）、`stablePullCut_rightMap`、`stablePullCut_middle`（a≤b） | 完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

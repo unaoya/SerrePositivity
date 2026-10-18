@@ -3630,3 +3630,122 @@ SerrePositivity.InfinityCategories.pastingCornerCocone_outerSpan.{u_1} : Eq.{u_1
     SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
       (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 1)
 ```
+
+
+## S4：二重 coslice のための補った join と切断の組み替え
+
+対象 `JoinCutCalculus` と集約 `Stable` のビルドは成功（2019 jobs）。
+全宣言監査は 75 モジュール・831 宣言で標準三公理のみ。
+空次数を含む join の切断表示の自然性、三因子の各次数の同値、
+左右の区間および中間区間の切断の引き戻しの公式を証明した。
+三因子の組み替えの自然性全体・単体集合としての結合同型・二重 coslice への適用は未完了。
+左押し出しによる五頂点／四頂点余錐の比較、貼り合わせ本体、三角構造・S5〜S7 も未完了。
+
+```lean
+SerrePositivity.InfinityCategories.StableAugJoin.{u_1} : SSet.{u_1} → SSet.{u_1} → ℕ → Type u_1
+SerrePositivity.InfinityCategories.stableAugJoin_zero_subsingleton.{u_1} : ∀ (K L : SSet.{u_1}),
+  Subsingleton.{u_1 + 1} (SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L 0)
+SerrePositivity.InfinityCategories.stableAugJoinEquiv.{u_1} : (K L : SSet.{u_1}) →
+  (r : ℕ) →
+    Equiv.{u_1 + 1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L) r)
+      (SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L r)
+SerrePositivity.InfinityCategories.stableAugJoinMap.{u_1} : (K L : SSet.{u_1}) →
+  {r s : ℕ} →
+    OrderHom.{0, 0} (Fin r) (Fin s) →
+      SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L s →
+        SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L r
+SerrePositivity.InfinityCategories.stableAugJoinEquiv_naturality.{u_1} : ∀ (K L : SSet.{u_1}) {r s : ℕ}
+  (α : OrderHom.{0, 0} (Fin r) (Fin s))
+  (x : SerrePositivity.InfinityCategories.Join.augObj.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L) s),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugJoinEquiv.{u_1} K L r)
+      (SerrePositivity.InfinityCategories.Join.augMap.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L) α x))
+    (SerrePositivity.InfinityCategories.stableAugJoinMap.{u_1} K L α
+      ((SerrePositivity.InfinityCategories.stableAugJoinEquiv.{u_1} K L s) x))
+@SerrePositivity.InfinityCategories.stableAugJoin_ext.{u_1} : ∀ {K L : SSet.{u_1}} {r : ℕ}
+  (s t : SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K L r)
+  (hc : Eq.{1} (Sigma.fst.{0, u_1} s) (Sigma.fst.{0, u_1} t)),
+  Eq.{u_1 + 1} (cast.{u_1 + 1} ⋯ (Sigma.snd.{0, u_1} s).1) (Sigma.snd.{0, u_1} t).1 →
+    Eq.{u_1 + 1} (cast.{u_1 + 1} ⋯ (Sigma.snd.{0, u_1} s).2) (Sigma.snd.{0, u_1} t).2 → Eq.{u_1 + 1} s t
+SerrePositivity.InfinityCategories.stableJoinCutEquiv : (r : ℕ) →
+  Equiv.{1, 1} ((b : Fin (HAdd.hAdd.{0, 0, 0} r 1)) × Fin (HAdd.hAdd.{0, 0, 0} (↑b) 1))
+    ((a : Fin (HAdd.hAdd.{0, 0, 0} r 1)) × Fin (HAdd.hAdd.{0, 0, 0} (HSub.hSub.{0, 0, 0} r ↑a) 1))
+SerrePositivity.InfinityCategories.stableProdSigmaEquiv.{u_1, u_2,
+  u_3} : (A : Type u_1) →
+  (I : Type u_2) →
+    (B : I → Type u_3) →
+      Equiv.{max ((max u_3 u_2) + 1) (u_1 + 1), max ((max u_3 u_1) + 1) (u_2 + 1)}
+        (Prod.{u_1, max u_3 u_2} A ((i : I) × B i)) ((i : I) × Prod.{u_1, u_3} A (B i))
+SerrePositivity.InfinityCategories.stableAugJoinLeftTripleEquiv.{u_1} : (K L M : SSet.{u_1}) →
+  (r : ℕ) →
+    Equiv.{u_1 + 1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.StableAugJoin.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L) M r)
+      ((s : (b : Fin (HAdd.hAdd.{0, 0, 0} r 1)) × Fin (HAdd.hAdd.{0, 0, 0} (↑b) 1)) ×
+        Prod.{u_1, u_1}
+          (Prod.{u_1, u_1} (SerrePositivity.InfinityCategories.Join.augObj.{u_1} K ↑(Sigma.snd.{0, 0} s))
+            (SerrePositivity.InfinityCategories.Join.augObj.{u_1} L
+              (HSub.hSub.{0, 0, 0} ↑(Sigma.fst.{0, 0} s) ↑(Sigma.snd.{0, 0} s))))
+          (SerrePositivity.InfinityCategories.Join.augObj.{u_1} M (HSub.hSub.{0, 0, 0} r ↑(Sigma.fst.{0, 0} s))))
+SerrePositivity.InfinityCategories.stableAugJoinRightTripleEquiv.{u_1} : (K L M : SSet.{u_1}) →
+  (r : ℕ) →
+    Equiv.{u_1 + 1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K (SerrePositivity.InfinityCategories.join.{u_1} L M) r)
+      ((s : (a : Fin (HAdd.hAdd.{0, 0, 0} r 1)) × Fin (HAdd.hAdd.{0, 0, 0} (HSub.hSub.{0, 0, 0} r ↑a) 1)) ×
+        Prod.{u_1, u_1} (SerrePositivity.InfinityCategories.Join.augObj.{u_1} K ↑(Sigma.fst.{0, 0} s))
+          (Prod.{u_1, u_1} (SerrePositivity.InfinityCategories.Join.augObj.{u_1} L ↑(Sigma.snd.{0, 0} s))
+            (SerrePositivity.InfinityCategories.Join.augObj.{u_1} M
+              (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} r ↑(Sigma.fst.{0, 0} s)) ↑(Sigma.snd.{0, 0} s)))))
+SerrePositivity.InfinityCategories.stableJoinCutFiberEquiv.{u_1} : (K L M : SSet.{u_1}) →
+  (r : ℕ) →
+    (s : (b : Fin (HAdd.hAdd.{0, 0, 0} r 1)) × Fin (HAdd.hAdd.{0, 0, 0} (↑b) 1)) →
+      Equiv.{u_1 + 1, u_1 + 1}
+        (Prod.{u_1, u_1}
+          (Prod.{u_1, u_1} (SerrePositivity.InfinityCategories.Join.augObj.{u_1} K ↑(Sigma.snd.{0, 0} s))
+            (SerrePositivity.InfinityCategories.Join.augObj.{u_1} L
+              (HSub.hSub.{0, 0, 0} ↑(Sigma.fst.{0, 0} s) ↑(Sigma.snd.{0, 0} s))))
+          (SerrePositivity.InfinityCategories.Join.augObj.{u_1} M (HSub.hSub.{0, 0, 0} r ↑(Sigma.fst.{0, 0} s))))
+        (Prod.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.Join.augObj.{u_1} K
+            ↑(Sigma.fst.{0, 0} ((SerrePositivity.InfinityCategories.stableJoinCutEquiv r) s)))
+          (Prod.{u_1, u_1}
+            (SerrePositivity.InfinityCategories.Join.augObj.{u_1} L
+              ↑(Sigma.snd.{0, 0} ((SerrePositivity.InfinityCategories.stableJoinCutEquiv r) s)))
+            (SerrePositivity.InfinityCategories.Join.augObj.{u_1} M
+              (HSub.hSub.{0, 0, 0}
+                (HSub.hSub.{0, 0, 0} r
+                  ↑(Sigma.fst.{0, 0} ((SerrePositivity.InfinityCategories.stableJoinCutEquiv r) s)))
+                ↑(Sigma.snd.{0, 0} ((SerrePositivity.InfinityCategories.stableJoinCutEquiv r) s))))))
+SerrePositivity.InfinityCategories.stableAugReassociationEquiv.{u_1} : (K L M : SSet.{u_1}) →
+  (r : ℕ) →
+    Equiv.{u_1 + 1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.StableAugJoin.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L) M r)
+      (SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K (SerrePositivity.InfinityCategories.join.{u_1} L M) r)
+SerrePositivity.InfinityCategories.stableAugJoinAssociatorEquiv.{u_1} : (K L M : SSet.{u_1}) →
+  (r : ℕ) →
+    Equiv.{u_1 + 1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+        (SerrePositivity.InfinityCategories.join.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L) M) r)
+      (SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+        (SerrePositivity.InfinityCategories.join.{u_1} K (SerrePositivity.InfinityCategories.join.{u_1} L M)) r)
+@SerrePositivity.InfinityCategories.stablePullCut_mono : ∀ {m n : ℕ} (α : OrderHom.{0, 0} (Fin m) (Fin n)) {a b : ℕ},
+  LE.le.{0} a b →
+    LE.le.{0} (SerrePositivity.InfinityCategories.Join.pullCut α a)
+      (SerrePositivity.InfinityCategories.Join.pullCut α b)
+@SerrePositivity.InfinityCategories.stablePullCut_leftMap : ∀ {m n : ℕ} (α : OrderHom.{0, 0} (Fin m) (Fin n)) {a b : ℕ},
+  LE.le.{0} a b →
+    Eq.{1} (SerrePositivity.InfinityCategories.Join.pullCut (SerrePositivity.InfinityCategories.Join.leftMap α b) a)
+      (SerrePositivity.InfinityCategories.Join.pullCut α a)
+@SerrePositivity.InfinityCategories.stablePullCut_rightMap : ∀ {m n : ℕ} (α : OrderHom.{0, 0} (Fin m) (Fin n))
+  (a b : ℕ),
+  Eq.{1} (SerrePositivity.InfinityCategories.Join.pullCut (SerrePositivity.InfinityCategories.Join.rightMap α a) b)
+    (HSub.hSub.{0, 0, 0} (SerrePositivity.InfinityCategories.Join.pullCut α (HAdd.hAdd.{0, 0, 0} a b))
+      (SerrePositivity.InfinityCategories.Join.pullCut α a))
+@SerrePositivity.InfinityCategories.stablePullCut_middle : ∀ {m n : ℕ} (α : OrderHom.{0, 0} (Fin m) (Fin n)) {a b : ℕ},
+  LE.le.{0} a b →
+    Eq.{1}
+      (SerrePositivity.InfinityCategories.Join.pullCut (SerrePositivity.InfinityCategories.Join.rightMap α a)
+        (HSub.hSub.{0, 0, 0} b a))
+      (HSub.hSub.{0, 0, 0} (SerrePositivity.InfinityCategories.Join.pullCut α b)
+        (SerrePositivity.InfinityCategories.Join.pullCut α a))
+```

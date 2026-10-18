@@ -440,6 +440,24 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.pastingOuterCocone
 #print axioms SerrePositivity.InfinityCategories.pastingOuterCocone_isColimitCone_iff_outer
 
+#print axioms SerrePositivity.InfinityCategories.StableAugJoin
+#print axioms SerrePositivity.InfinityCategories.stableAugJoin_zero_subsingleton
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinMap
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinEquiv_naturality
+#print axioms SerrePositivity.InfinityCategories.stableAugJoin_ext
+#print axioms SerrePositivity.InfinityCategories.stableJoinCutEquiv
+#print axioms SerrePositivity.InfinityCategories.stableProdSigmaEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinLeftTripleEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinRightTripleEquiv
+#print axioms SerrePositivity.InfinityCategories.stableJoinCutFiberEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugReassociationEquiv
+#print axioms SerrePositivity.InfinityCategories.stableAugJoinAssociatorEquiv
+#print axioms SerrePositivity.InfinityCategories.stablePullCut_mono
+#print axioms SerrePositivity.InfinityCategories.stablePullCut_leftMap
+#print axioms SerrePositivity.InfinityCategories.stablePullCut_rightMap
+#print axioms SerrePositivity.InfinityCategories.stablePullCut_middle
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -515,7 +533,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PastingRightCocone,
     `SerrePositivity.InfinityCategories.Stable.PastingOuterBase,
     `SerrePositivity.InfinityCategories.Stable.PastingOuterSpanIso,
-    `SerrePositivity.InfinityCategories.Stable.PastingOuterCocone]
+    `SerrePositivity.InfinityCategories.Stable.PastingOuterCocone,
+    `SerrePositivity.InfinityCategories.Stable.JoinAugmented,
+    `SerrePositivity.InfinityCategories.Stable.JoinReassociation,
+    `SerrePositivity.InfinityCategories.Stable.JoinCutCalculus]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
