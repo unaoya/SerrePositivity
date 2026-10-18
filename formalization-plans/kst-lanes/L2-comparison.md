@@ -407,7 +407,8 @@ span の射の誘導写像、各端点の包含、円筒の写像の式を先に
 貼り合わせの代用にはしない。貼り合わせの本体はこの実際の pushout の比較について証明する。
 現在の Ex∞ の有限極限保存、単位の anodyne 性、Kan 性と、slice の閉構造を用いて、
 厳密な引き戻しの colimit との交換から homotopy 引き戻しの比較へ進める。
-この段階では Lemma 1.7 本体を仮定とする構造体は導入せず、証明済みと主張しない。
+Lemma 1.7 本体を仮定とする構造体は導入せず、実際の円筒の比較について証明した。
+Lemma 1.8 の telescope と Proposition 1.6 の対角化の貼り合わせは残工程である。
 
 ### 部分対象を保つ二段階の収縮と anodyne 性
 
@@ -473,7 +474,7 @@ G(q):G(Z)→G(A) を恒等切断の転置 1_B→G(A) に沿って引き戻す。
 両面が厳密な引き戻しとなる span と、元の span に成分ごとの局所化同型で結ばれる中間 span を作る。
 最後に円筒の関手の不変性と四頂点の置換で、証明済みの厳密な場合へ移す。
 これは Mather 1976 Lemmas 19–23 の WCHP・numerable covering を移植する経路とは異なる。
-上の共通模型・延長・中間 span の各構成は個別の証明項目であり、全体の完成はまだ主張しない。
+上の共通模型・延長・中間 span の各構成と還元を組み合わせ、Lemma 1.7 を証明した。
 
 ## 12. 現在地と主要宣言
 
@@ -602,16 +603,18 @@ Kan 分解は span の二面と、円筒への三頂点の四角形のホモト�
 二つの Kan なファイバー模型へ向かう局所化同型を、共通の trivial fibration の模型で比較することを証明した。
 部分切断の実際の対象と元の全空間からの包含を構成し、随伴表示による復元と一意性を証明した。
 単射に沿う trivial fibration の延長と、元の射が厳密な引き戻しであることを証明した。
-これらを span の模型の置換に組み合わせ、両面を厳密な引き戻しへ移す残りの論証は未証明。
-Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
+これらを span の模型の置換に組み合わせ、両面が厳密な引き戻しとなる span を構成した。
+単射な基底への置換、任意の基底に沿う right properness、Ex∞ と縦射の Kan 分解で
+追加の Kan 性・単射性の仮定を取り除き、Segal Lemma 1.7 の一般形を証明した。
+Lemma 1.8 の telescope と Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 722 宣言の型と公理を確認した。
-さらに名前空間全体の 1353 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 748 宣言の型と公理を確認した。
+さらに名前空間全体の 1385 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -750,7 +753,11 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `partialSectionObject`、`partialSectionObject_allMono_rlp` | 実装済み | 部分切断の実対象と全体の trivial fibration 性 |
 | `partialSectionAdjunct`、`partialSectionRestrictionLift_unique` | 実装済み | 随伴表示、復元、存在と一意性 |
 | `partialSectionInclusion_isPullback`、`trivialFibrationExtension` | 実装済み | 単射に沿う延長と制限の厳密な引き戻し |
-| Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
+| `spanStrictification_of_mono` | 実装済み | 共通の trivial fibration の延長による厳密な span への置換 |
+| `diagramPullback_arrowSquare_iff`、`diagramExInfinity_arrowSquare_iff` | 実装済み | 基底変換と Ex∞ による二面の比較 |
+| `spanCylinder_vertexSquare_map_iff` | 実装済み | 成分ごとの局所化同型による円筒の頂点の四角形の比較 |
+| `spanCylinder_vertex_homotopyPullback` | 実装済み | Segal Lemma 1.7、追加の Kan 性・単射性なし |
+| Segal Lemma 1.8・Proposition 1.6 | 未証明 | telescope と対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |

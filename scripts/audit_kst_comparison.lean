@@ -78,6 +78,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -415,6 +416,51 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc
 #print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc
+
+
+-- DiagramArrowFibers.lean
+
+#check @SerrePositivity.KST.Comparison.diagramArrowFiber
+#print axioms SerrePositivity.KST.Comparison.diagramArrowFiber
+
+#check @SerrePositivity.KST.Comparison.diagramArrowFiberComparison
+#print axioms SerrePositivity.KST.Comparison.diagramArrowFiberComparison
+
+#check @SerrePositivity.KST.Comparison.diagramArrowFiberComparison_isIso_iff
+#print axioms SerrePositivity.KST.Comparison.diagramArrowFiberComparison_isIso_iff
+
+#check @SerrePositivity.KST.Comparison.diagramArrowFiber_kanComplex
+#print axioms SerrePositivity.KST.Comparison.diagramArrowFiber_kanComplex
+
+
+-- DiagramBaseChange.lean
+
+#check @SerrePositivity.KST.Comparison.diagramPullback_app_isPullback
+#print axioms SerrePositivity.KST.Comparison.diagramPullback_app_isPullback
+
+#check @SerrePositivity.KST.Comparison.diagramPullback_fst_rlp
+#print axioms SerrePositivity.KST.Comparison.diagramPullback_fst_rlp
+
+#check @SerrePositivity.KST.Comparison.diagramPullback_snd_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.diagramPullback_snd_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.diagramPullback_arrowSquare_iff
+#print axioms SerrePositivity.KST.Comparison.diagramPullback_arrowSquare_iff
+
+
+-- DiagramExInfinity.lean
+
+#check @SerrePositivity.KST.Comparison.diagramExInfinityUnit
+#print axioms SerrePositivity.KST.Comparison.diagramExInfinityUnit
+
+#check @SerrePositivity.KST.Comparison.diagramExInfinityUnit_naturality
+#print axioms SerrePositivity.KST.Comparison.diagramExInfinityUnit_naturality
+
+#check @SerrePositivity.KST.Comparison.diagramExInfinityUnit_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.diagramExInfinityUnit_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.diagramExInfinity_arrowSquare_iff
+#print axioms SerrePositivity.KST.Comparison.diagramExInfinity_arrowSquare_iff
 
 
 -- DiagramKanReplacement.lean
@@ -1006,6 +1052,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_kan_base
 #print axioms SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_kan_base
+
+
+-- FibrantSquareCriterion.lean
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_iff_strict_of_left_fibration
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_iff_strict_of_left_fibration
 
 
 -- FibrantTargetLifting.lean
@@ -1650,6 +1702,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.pullback_localized_isIso_of_kan_base
 
 
+-- KanBaseSpanGluing.lean
+
+#check @SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback_of_kan_base
+#print axioms SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback_of_kan_base
+
+
 -- KanReplacementSquares.lean
 
 #check @SerrePositivity.KST.Comparison.naturalitySquare
@@ -1729,6 +1787,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoBasePullbackIso_inv_snd
 #print axioms SerrePositivity.KST.Comparison.monoBasePullbackIso_inv_snd
+
+
+-- MonoSpanGluing.lean
+
+#check @SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback_of_mono
+#print axioms SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback_of_mono
 
 
 -- MonoidComponentMaps.lean
@@ -2329,6 +2393,51 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.spanCylinderFunctor_map_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.spanCylinderFunctor_map_localized_isIso
+
+
+-- SpanCylinderInvariance.lean
+
+#check @SerrePositivity.KST.Comparison.naturalitySquare_map_iff
+#print axioms SerrePositivity.KST.Comparison.naturalitySquare_map_iff
+
+#check @SerrePositivity.KST.Comparison.spanCylinder_vertexSquare_map_iff
+#print axioms SerrePositivity.KST.Comparison.spanCylinder_vertexSquare_map_iff
+
+
+-- SpanGluing.lean
+
+#check @SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback_of_fibrations
+#print axioms SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback_of_fibrations
+
+#check @SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback
+
+
+-- SpanMonoBase.lean
+
+#check @SerrePositivity.KST.Comparison.spanMonoBase
+#print axioms SerrePositivity.KST.Comparison.spanMonoBase
+
+#check @SerrePositivity.KST.Comparison.spanMonoBaseProjection
+#print axioms SerrePositivity.KST.Comparison.spanMonoBaseProjection
+
+#check @SerrePositivity.KST.Comparison.spanMonoBase_fst_mono
+#print axioms SerrePositivity.KST.Comparison.spanMonoBase_fst_mono
+
+#check @SerrePositivity.KST.Comparison.spanMonoBase_snd_mono
+#print axioms SerrePositivity.KST.Comparison.spanMonoBase_snd_mono
+
+#check @SerrePositivity.KST.Comparison.spanMonoBase_zero_kanComplex
+#print axioms SerrePositivity.KST.Comparison.spanMonoBase_zero_kanComplex
+
+#check @SerrePositivity.KST.Comparison.spanMonoBaseProjection_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.spanMonoBaseProjection_localized_isIso
+
+
+-- SpanStrictification.lean
+
+#check @SerrePositivity.KST.Comparison.spanStrictification_of_mono
+#print axioms SerrePositivity.KST.Comparison.spanStrictification_of_mono
 
 
 -- StrictCylinderFibration.lean

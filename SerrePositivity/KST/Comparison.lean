@@ -66,6 +66,8 @@ public import SerrePositivity.KST.Comparison.KanReplacementSquares
 public import SerrePositivity.KST.Comparison.CommonTrivialRefinement
 public import SerrePositivity.KST.Comparison.TrivialFibrationExtension
 
+public import SerrePositivity.KST.Comparison.SpanGluing
+
 /-!
 # K-L2：比較定理の入口
 
