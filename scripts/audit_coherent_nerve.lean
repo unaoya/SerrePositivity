@@ -24,6 +24,7 @@ set_option pp.explicit true
 
 
 
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough
 #check @SerrePositivity.InfinityCategories.Coherent.pathThrough
 
@@ -131,6 +132,24 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face
 #check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_congr
+#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_congr
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_on_face
+#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_on_face
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_face_interval_eq
+#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_face_interval_eq
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.outsideInterval_ne_ends
+#check @SerrePositivity.InfinityCategories.Coherent.outsideInterval_ne_ends
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face_of_outside
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face_of_outside
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_face
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_face
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornZeroFaceHom
 #check @SerrePositivity.InfinityCategories.Coherent.hornZeroFaceHom
@@ -420,6 +439,9 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_id
 #check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_id
 
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_zero_overlap
+#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_zero_overlap
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.path_hom_iff
 #check @SerrePositivity.InfinityCategories.Coherent.path_hom_iff
 
@@ -506,6 +528,36 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathHollow_extension
 #check @SerrePositivity.InfinityCategories.Coherent.pathHollow_extension
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap
+#check @SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap_eq_native
+#check @SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap_eq_native
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathFaceMap
+#check @SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathFaceMap
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.range_pathFaceCompositionMap
+#check @SerrePositivity.InfinityCategories.Coherent.range_pathFaceCompositionMap
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap_mono
+#check @SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap_mono
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso
+#check @SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso_hom_ι
+#check @SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso_hom_ι
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso_hom_toThrough
+#check @SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso_hom_toThrough
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixed_self_eq_bot
+#check @SerrePositivity.InfinityCategories.Coherent.pathMixed_self_eq_bot
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixed_self_hom_ext
+#check @SerrePositivity.InfinityCategories.Coherent.pathMixed_self_hom_ext
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor
 #check @SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor
