@@ -2835,3 +2835,54 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.monicSuspensionComparison_piIsomorphism
 #print axioms SerrePositivity.KST.SConstruction.monicSuspensionComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionSpace
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionSpace
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionSpace_projection_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionSpace_projection_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionSpace_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionSpace_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionMap
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionMap
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionMap_fac
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionMap_fac
+
+#check @SerrePositivity.KST.SConstruction.exists_pointedExtension
+#print axioms SerrePositivity.KST.SConstruction.exists_pointedExtension
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionSpace_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionSpace_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.loopBoundaryKanFunctor
+#print axioms SerrePositivity.KST.SConstruction.loopBoundaryKanFunctor
+
+#check @SerrePositivity.KST.SConstruction.loopBoundaryKan_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.loopBoundaryKan_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.kanTargetAssemblyAdjointNat
+#print axioms SerrePositivity.KST.SConstruction.kanTargetAssemblyAdjointNat
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_fac
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_fac
+
+#check @SerrePositivity.KST.SConstruction.exists_kanAssemblyAdjoint
+#print axioms SerrePositivity.KST.SConstruction.exists_kanAssemblyAdjoint
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices_relative_lifting

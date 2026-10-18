@@ -69,4 +69,6 @@ public import SerrePositivity.KST.SConstruction.SuspensionAssemblyAdjoint
 public import SerrePositivity.KST.SConstruction.RefinedOneDirectionComparison
 public import SerrePositivity.KST.SConstruction.MonicSuspensionAssembly
 
+public import SerrePositivity.KST.SConstruction.KanAssemblyAdjoint
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -3519,3 +3519,104 @@ lemma monicSuspensionComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2980 jobs）、公理監査成功（1003 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.28 随伴射の Kan な源への延長と可縮な選択空間
+
+一般の点つき anodyne 射 i:A→B と Kan 標的 Z への点つき射 h:A→Z に対し、
+点つき写像空間の制限 `basedHom(B,Z) → basedHom(A,Z)` を h の頂点で引き戻した
+厳密な延長空間 `pointedExtensionSpace i h` を定義した。
+L9 の点つき制限の全単射 RLP とその基底変換により、その一点への射影は trivial Kan fibration。
+延長空間は可縮 Kan であり、頂点から実際の点つき延長 k:B→Z を取り出して i≫k=h を証明した。
+したがって延長は実際に存在し、任意の単射パラメータ族に沿う相対的な選択の延長も可能。
+
+反復 S の随伴射については、標的の境界商の Kan 置換の単位を loop で写して合成し、
+Kan な loop 標的への自然変換 `kanTargetAssemblyAdjointNat` を構成した。
+源の点つき Kan 置換の anodyne 単位に沿う延長空間 `kanAssemblyAdjointChoices r X` は可縮 Kan。
+その任意の頂点 v から実際の Kan 複体間の射
+`kanAssemblyAdjointAt r X v : oneDirectionKanRealizationFunctor r X → loopBoundaryKanFunctor (r+1) X` を得る。
+この射は元の標的 Kan 化した随伴射へ厳密に制限される。存在および全単射パラメータに沿う相対補完も証明済み。
+
+今回は延長の厳密な自然な選択や、その延長射の π_* 同型性は結論に含めない。
+可縮な選択空間と相対補完は証明したが、同じ Kan 列としての前後の段の接続はまだ束ねていない。
+Ω 条件を追加の仮定にせず、delooping の証明対象として残す。
+Core・Stable・F1・HA・Spectra の所有ファイルや公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u`、
+`open CategoryTheory Limits SSet`、`open SerrePositivity.InfinityCategories`、`open scoped Simplicial` の下で記す。
+KanAssemblyAdjoint ではさらに `MonoidalCategory` を開く。一般定理に記した anodyne 性・Kan 性は
+具体的な反復 S への適用では証明済みであり、`StableModel` 以外の追加前提は残さない。
+
+**PointedExtensionSpace.lean**
+
+```lean
+def pointedExtensionSpace {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z) : SSet.{u}
+
+lemma pointedExtensionSpace_projection_trivialKanFibration {A B Z : PointedSimplicialSet.{u}}
+    (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right] :
+    TrivialKanFibration (pullback.snd (Spectra.PointedMapping.prePointed i Z).right
+      (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h)))
+
+lemma pointedExtensionSpace_isContractibleKan {A B Z : PointedSimplicialSet.{u}}
+    (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right] :
+    IsContractibleKan (pointedExtensionSpace i h)
+
+def pointedExtensionMap {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
+    (v : (pointedExtensionSpace i h) _⦋0⦌) : B ⟶ Z
+
+lemma pointedExtensionMap_fac {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
+    (v : (pointedExtensionSpace i h) _⦋0⦌) : i ≫ pointedExtensionMap i h v = h
+
+lemma exists_pointedExtension {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B)
+    (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right] :
+    ∃ k : B ⟶ Z, i ≫ k = h
+
+lemma pointedExtensionSpace_relative_lifting {A B Z : PointedSimplicialSet.{u}}
+    (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right]
+    {S T : SSet.{u}} (j : S ⟶ T) [Mono j] (a : S ⟶ pointedExtensionSpace i h) :
+    ∃ b : T ⟶ pointedExtensionSpace i h, j ≫ b = a
+```
+
+**KanAssemblyAdjoint.lean**
+
+```lean
+def loopBoundaryKanFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+instance loopBoundaryKan_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (((loopBoundaryKanFunctor r).obj X).right)
+
+def kanTargetAssemblyAdjointNat (r : ℕ) :
+    oneDirectionReducedRealizationFunctor r ⟶ loopBoundaryKanFunctor (r + 1)
+
+def kanAssemblyAdjointChoices (r : ℕ) (X : StableModel.{u}) : SSet.{u}
+
+lemma kanAssemblyAdjointChoices_isContractibleKan (r : ℕ) (X : StableModel.{u}) :
+    IsContractibleKan (kanAssemblyAdjointChoices r X)
+
+def kanAssemblyAdjointAt (r : ℕ) (X : StableModel.{u})
+    (v : (kanAssemblyAdjointChoices r X) _⦋0⦌) :
+    (oneDirectionKanRealizationFunctor r).obj X ⟶ (loopBoundaryKanFunctor (r + 1)).obj X
+
+lemma kanAssemblyAdjointAt_fac (r : ℕ) (X : StableModel.{u})
+    (v : (kanAssemblyAdjointChoices r X) _⦋0⦌) :
+    Spectra.PointedKanReplacement.unit.app (oneDirectionReducedRealization r X) ≫
+        kanAssemblyAdjointAt r X v = (kanTargetAssemblyAdjointNat r).app X
+
+lemma exists_kanAssemblyAdjoint (r : ℕ) (X : StableModel.{u}) :
+    ∃ k : (oneDirectionKanRealizationFunctor r).obj X ⟶ (loopBoundaryKanFunctor (r + 1)).obj X,
+      Spectra.PointedKanReplacement.unit.app (oneDirectionReducedRealization r X) ≫ k =
+        (kanTargetAssemblyAdjointNat r).app X
+
+instance kanAssemblyAdjointChoices_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (kanAssemblyAdjointChoices r X)
+
+lemma kanAssemblyAdjointChoices_relative_lifting (r : ℕ) (X : StableModel.{u})
+    {S T : SSet.{u}} (j : S ⟶ T) [Mono j] (a : S ⟶ kanAssemblyAdjointChoices r X) :
+    ∃ b : T ⟶ kanAssemblyAdjointChoices r X, j ≫ b = a
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。随伴射は Kan な源と loop 標的の間の射へ延長でき、その選択空間の可縮性・全単射パラメータに沿う相対補完まで証明済み。
+延長の自然性・段の接続、delooping・Ω 条件・BF 連結スペクトルは未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2988 jobs）、公理監査成功（1020 宣言、標準三公理のみ）。追加公理・sorry なし。
