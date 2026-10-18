@@ -203,11 +203,23 @@ X の Quasicategory 性のみを要求し、X 全体の安定性や特定の零�
 `cofiberSuspensionComparisonHom_naturality` と `cofiberConnectingToSuspension_naturality` は、
 元の二つの押し出し四角形間の h の射と suspension 四角形間の h の射が、始点で
 source_eq の輸送を介して可換であれば、標準比較／接続射が可換となることを示す。
-二つの始点は異なってよい。これは suspension 間の射と始点での可換式を入力する定理であり、
-Σ に値を持つ接続射の自然性の完成とは数えない。
-今回の標準比較同型と S3 の既存 `suspensionFunctorObjIso` 二つの合成との一致は未証明。
+二つの始点は異なってよい。ここでは suspension 間の射と始点での可換式を入力する。
+これらの追加条件を除き Σ に移した自然性は下記で証明した。
+`sourceDiagramObjIso` は S3 と同じ fiber 内の比較を suspension 図式間の同型として取り出す。
+始点では恒等射となり、終点で評価すると既存の `suspensionFunctorObjIso` に厳密に一致する。
+`comparisonIso_eq_suspensionFunctorObjIso` により、標準比較同型は S3 の二つの対象比較同型の
+逆・順方向の合成に等しい。`cofiberConnectingToSuspension_comp_objIso_inv` は、任意の指定
+suspension の頂点を S3 の同型で Σ に送ると `cofiberConnecting` に一致することを保証する。
+始点評価の圏同値で任意の始点の射を持ち上げる `liftSourceHom` とその始点の式、
+対象比較同型の順・逆方向の自然性も証明した。
+`cofiberConnecting_naturality` は、二つの cofiber 四角形間の任意の h の射 a について
+「最後の成分 ≫ δ = δ ≫ Σ(始点の成分)」を証明する。追加の suspension 間の射や
+始点での可換式は不要。`cofiberConnecting_naturality_of_homotopy` は実際の四角形間の
+ホモトピーが与える短複体の比較の τ₁・τ₃ を用いて同じ可換式を述べる。
+この段階で任意の h の可換正方形から cofiber 四角形の比較を構成したとは主張しない。
+その延長と三角形の射の存在（TR3）は未完了。
 `cofiberConnecting` の前提は Quasicategory と IsStable のみで、列は零角の四角形と
-IsCofiberSequence の証明で与える。S3 の既存対象比較同型との整合、接続射の自然性、Σf の後との零合成、
+IsCofiberSequence の証明で与える。S3 の対象比較との整合と図式の比較に対する自然性は完成。Σf の後との零合成、
 回転・八面体を含む三角圏の公理は未完了。
 S4 の三角構造は未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
@@ -318,18 +330,20 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 部分族を保持した普遍余錐の延長 | `exists_colimitCoconeFamily_extension`（値域 Quasicategory、部分族の射は単射、全頂点の余極限の存在） | 完了 |
 | 普遍余錐間の辺 | `colimitCoconeVertex`、`colimitCoconeVertex_projection`、`exists_colimitCocone_edge`、`exists_colimitCoconeHomotopy`（値域 Quasicategory、両端が余極限） | 完了。接続射の構成に適用済み |
 | 始点固定の suspension との比較 | `exists_terminalArrowComparison`、`exists_terminalSpanComparison`、`exists_suspensionSpanComparison`（Quasicategory、指定終点が終対象）、`exists_cofiberSuspensionComparison`（さらに元の四角形は押し出し） | 完了 |
-| cofiber 列の接続射 | `cofiberConnectingToSuspension`（Quasicategory、HasZeroMorphisms、指定 suspension）、`cofiberConnecting`、`cofiberConnecting_comp_eq_zero`（Quasicategory、IsStable、IsCofiberSequence） | 構成・第二射の後の零合成・指定 suspension を固定した比較の選択独立性まで完了。標準比較同型による suspension の変更も下記で完成。S3 の対象比較同型との一致・自然性・三角構造は未完了 |
-| suspension 比較の最初の二成分 | `homotopyNatTrans_fixedVertex_arrow`（追加仮定なし）、`cofiberSuspensionShortComplexMap_τ₁_arrow`、`cofiberSuspensionShortComplexMap_τ₁_eqToHom`、`cofiberSuspensionShortComplexMap_τ₁_isIso`、`cofiberSuspensionShortComplexMap_τ₂_eq_zero`（Quasicategory、HasZeroMorphisms、cofiber 列と指定 suspension） | 完了。指定 suspension を固定した選択独立性も下記で完成。標準比較同型による変更は下記で完成。S3 の対象比較同型との一致・自然性は未完了 |
+| cofiber 列の接続射 | `cofiberConnectingToSuspension`（Quasicategory、HasZeroMorphisms、指定 suspension）、`cofiberConnecting`、`cofiberConnecting_comp_eq_zero`（Quasicategory、IsStable、IsCofiberSequence） | 構成・第二射の後の零合成・指定 suspension を固定した比較の選択独立性まで完了。標準比較同型による suspension の変更も下記で完成。S3 の対象比較同型との一致と図式の比較に対する自然性も下記で完成。三角構造は未完了 |
+| suspension 比較の最初の二成分 | `homotopyNatTrans_fixedVertex_arrow`（追加仮定なし）、`cofiberSuspensionShortComplexMap_τ₁_arrow`、`cofiberSuspensionShortComplexMap_τ₁_eqToHom`、`cofiberSuspensionShortComplexMap_τ₁_isIso`、`cofiberSuspensionShortComplexMap_τ₂_eq_zero`（Quasicategory、HasZeroMorphisms、cofiber 列と指定 suspension） | 完了。指定 suspension を固定した選択独立性も下記で完成。標準比較同型による変更は下記で完成。S3 の対象比較同型との一致と図式の比較に対する自然性も下記で完成 |
 | 正次元境界による充満忠実性 | `pinchedHomMap_boundary_of_boundary_succ`、`pinchedHomMap_trivialKanFibration_of_boundary_succ`（元・値域の仮定なし）、`isFullyFaithful_of_boundary_succ`（元・値域 Quasicategory） | 完了 |
 | 普遍余錐の射影と射の一意な持ち上げ | `relativeInitialProjection_isFullyFaithful`（元・基底 Quasicategory）、`colimitCoconeProjection_isFullyFaithful`、`colimitCoconeProjectionHoFullyFaithful`、`colimitCoconeLiftHom` と射影・一意性・恒等・合成則（X が Quasicategory） | 基底の h の射を固定した一意性まで完了。span 比較側の一意性と、指定 suspension への接続射への照合も下記で完成 |
 | 終対象への辺・span の相対境界充填 | `stable_prism_extend_terminal_last`、`terminalBoundaryLifting_arrowSource_of_terminalTarget`、`terminalBoundaryLifting_spanSource_of_terminalTargets`（指定終点の終対象性、Quasicategory は不要） | 完了 |
 | 相対終点と写像空間 | `TerminalBoundaryLifting.exists_joinBoundary_lift`、`pinchedHomMap_trivialKanFibration_of_terminalBoundaryLifting`（追加仮定なし）、`homotopyCategoryMap_bijective_of_terminalBoundaryLifting`（元・値域 Quasicategory） | 完了 |
 | 始点固定の span 比較の一意性 | `spanSourceEvaluation_homMap_bijective`、`suspensionSpan_hom_ext`、`suspensionSpanHomotopy_homMk_eq`（X が Quasicategory、指定 suspension への始点固定の比較） | 完了。指定 suspension への接続射への照合も下記で完成 |
 | 普遍余錐の実際のホモトピーの一意性 | `exists_fullSubcomplexEdgeLift`（追加仮定なし）、`colimitCoconeHomotopy_homMk_eq`（X が Quasicategory、両端が余極限、図式への制限の h の類が一致） | 完了 |
-| 指定 suspension への比較と接続射の選択独立性 | `stableHomotopyPrecomp` と関手辺・h の類との整合（追加仮定なし）、`cofiberSuspensionComparison_homMk_eq`（X が Quasicategory、元が押し出し、両比較は始点固定）、`cofiberComparison_τ₃_eq_of_source_fixed` と `cofiberComparison_τ₃_eq_connectingToSuspension`（さらに HasZeroMorphisms、cofiber 列） | 指定 suspension を固定した場合は完了。標準比較同型による変更は下記で完成。S3 の対象比較同型との一致・自然性は未完了 |
+| 指定 suspension への比較と接続射の選択独立性 | `stableHomotopyPrecomp` と関手辺・h の類との整合（追加仮定なし）、`cofiberSuspensionComparison_homMk_eq`（X が Quasicategory、元が押し出し、両比較は始点固定）、`cofiberComparison_τ₃_eq_of_source_fixed` と `cofiberComparison_τ₃_eq_connectingToSuspension`（さらに HasZeroMorphisms、cofiber 列） | 指定 suspension を固定した場合は完了。標準比較同型による変更は下記で完成。S3 の対象比較同型との一致と図式の比較に対する自然性も下記で完成 |
 | 任意の h の比較の判定 | `colimitCocone_hom_ext`（両端が余極限）、`pushoutSquare_hom_ext`（両端が押し出し）、`cofiberSuspensionComparison_hom_ext`（元は押し出し、先は指定 suspension）；いずれも X が Quasicategory | 完了。始点固定なホモトピーに限らない |
-| suspension の標準比較と接続射の整合 | `cofiberSuspensionComparisonHom_comp`、`SuspensionSquare.diagramComparisonIso`・`comparisonIso` と恒等・合成則（X が Quasicategory）、`cofiberConnectingToSuspension_comparisonIso`（さらに HasZeroMorphisms、cofiber 列）、`cofiberConnecting_eq_via_suspensionComparison`（Quasicategory、IsStable） | 標準比較同型による整合は完了。S3 の既存対象比較同型二つの合成との一致は未完了 |
-| 図式の比較に対する接続射の可換性 | `cofiberSuspensionComparisonHom_naturality`（Quasicategory、両端が押し出し）、`cofiberConnectingToSuspension_naturality`（さらに HasZeroMorphisms）；suspension 間の射と始点での可換式を入力 | この形では完了。Σ 関手との自然性は未完了 |
+| suspension の標準比較と接続射の整合 | `cofiberSuspensionComparisonHom_comp`、`SuspensionSquare.diagramComparisonIso`・`comparisonIso` と恒等・合成則（X が Quasicategory）、`cofiberConnectingToSuspension_comparisonIso`（さらに HasZeroMorphisms、cofiber 列）、`cofiberConnecting_eq_via_suspensionComparison`（Quasicategory、IsStable） | 標準比較同型による整合は完了。S3 の既存対象比較同型二つの合成との一致も下記で完成 |
+| 図式の比較に対する接続射の可換性 | `cofiberSuspensionComparisonHom_naturality`（Quasicategory、両端が押し出し）、`cofiberConnectingToSuspension_naturality`（さらに HasZeroMorphisms）；suspension 間の射と始点での可換式を入力 | この形では完了。Σ に値を持つ接続射の自然性も下記で完成 |
+| S3 の対象比較と S4 の標準比較の一致 | `sourceDiagramObjIso` と始点・終点の式、`comparisonIso_eq_suspensionFunctorObjIso`、`cofiberConnectingToSuspension_comp_objIso_inv`（Quasicategory、IsStable） | 完了。S3 の定義は変更していない |
+| Σ に値を持つ接続射の自然性 | `liftSourceHom` と始点の式、`suspensionFunctorObjIso_naturality`・逆方向版、`cofiberConnecting_naturality`、`cofiberConnecting_naturality_of_homotopy`（Quasicategory、IsStable、後二者は二つの cofiber 列） | 図式の関手圏の h の任意の射／実際のホモトピーに対して完成。任意の h の可換正方形の延長（TR3）は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
