@@ -8947,6 +8947,140 @@ lemma cosliceFiberProjection_terminalFiber_isContractibleKan {E B : SSet.{u}}
 
 検証：Core 対象ビルド1917 jobs成功、累計1482宣言の公理監査は標準3公理のみ。
 
+### A6 続き（2026-10-18）：cocartesian な prism と指定部分を固定した輸送
+
+標準単体の prism の正則 pairing を基底へ引き戻し、最初の外側ホーンを cocartesian 性で、内ホーンを inner fibration 性で充填した。これにより先頭と境界上の prism の相対延長を証明。cocartesian な辺を頂点とする path の全部分複体から始点と基底の path への射が trivial Kan fibration となることを境界テストで証明した。従って任意の単射上で既に指定した cocartesian な輸送を、始点と基底の prism を厳密に固定して延長できる。元・標的の quasicategory 性は不要。Kerodon §5.1.4・§7.1.5 の輸送の充填の実装。モデル構造や straightening は使わない。
+
+既存の公開名・型と §4 の設計は維持。以下 universe u、CategoryTheory・Limits・MonoidalCategory・MonoidalClosed・CartesianMonoidalCategory・SSet と scoped Simplicial を開く。型に列挙したもの以外の前提はない。private な補助宣言は公開 API に含めない。
+
+`Core/PrismBaseDetection.lean`：
+
+```lean
+lemma prodStdSimplex_hom_ext_vertices {A : SSet.{u}} {m n : ℕ}
+    {f g : A ⟶ (Δ[m] : SSet.{u}) ⊗ Δ[n]}
+    (h : f.app (Opposite.op ⦋0⦌) = g.app (Opposite.op ⦋0⦌)) : f = g
+
+lemma subcomplex_extension_over_prodStdSimplex {E : SSet.{u}} {m n : ℕ}
+    (A D : ((Δ[m] : SSet.{u}) ⊗ Δ[n]).Subcomplex) (hAD : A ≤ D)
+    (hA : ∀ v, v ∈ A.obj (Opposite.op ⦋0⦌))
+    (p : E ⟶ (Δ[m] : SSet.{u}) ⊗ Δ[n])
+    (a : (A : SSet.{u}) ⟶ E) (ha : a ≫ p = A.ι)
+    (g : (D : SSet.{u}) ⟶ E) (hg : Subcomplex.homOfLE hAD ≫ g = a) :
+    g ≫ p = D.ι
+```
+
+`Core/CocartesianPrismExtension.lean`：
+
+```lean
+lemma prism_exists_lift_of_cocartesian_firstEdge {E B : SSet.{u}}
+    (p : E ⟶ B) [InnerFibration p] (n : ℕ)
+    (a : (Subcomplex.unionProd (horn 1 0) (boundary (n + 1)) : SSet.{u}) ⟶ E)
+    (β : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ B)
+    (hw : a ≫ p = (Subcomplex.unionProd (horn 1 0) (boundary (n + 1))).ι ≫ β)
+    (ha : HasCocartesianHornLifting p (edgeOfSimplex (a.app (Opposite.op ⦋1⦌)
+      ⟨prismFirstVerticalEdge (n + 1), prismFirstVerticalEdge_mem n⟩))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ E,
+      (Subcomplex.unionProd (horn 1 0) (boundary (n + 1))).ι ≫ F = a ∧ F ≫ p = β
+```
+
+`Core/CocartesianPrismBoundary.lean`：
+
+```lean
+lemma prism_lift_boundary_with_endpoint {E B : SSet.{u}} (p : E ⟶ B) [InnerFibration p] (n : ℕ)
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary (n + 1) : SSet.{u}) ⟶ E)
+    (F₀ : (Δ[n + 1] : SSet.{u}) ⟶ E)
+    (β : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ B)
+    (hF₀ : (boundary (n + 1)).ι ≫ F₀ = prismEndpoint 0 (boundary (n + 1) : SSet.{u}) ≫ H)
+    (hHp : H ≫ p = (Δ[1] ◁ (boundary (n + 1)).ι) ≫ β)
+    (hF₀p : F₀ ≫ p = prismEndpoint 0 Δ[n + 1] ≫ β)
+    (hH : HasCocartesianHornLifting p (edgeOfSimplex (H.app (Opposite.op ⦋1⦌)
+      (prismBoundaryFirstVerticalEdge n)))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ E,
+      (Δ[1] ◁ (boundary (n + 1)).ι) ≫ F = H ∧
+        prismEndpoint 0 Δ[n + 1] ≫ F = F₀ ∧ F ≫ p = β
+```
+
+`Core/CocartesianPathSpace.lean`：
+
+```lean
+def intervalFunctorVertexTypedEdge {E : SSet.{u}} (v : ((ihom (Δ[1] : SSet.{u})).obj E) _⦋0⦌) :
+    SSet.Truncated.Edge (X := (truncation 2).obj E)
+      ((evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) v)
+      ((evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app (Opposite.op ⦋0⦌) v)
+
+def IsCocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B)
+    (v : ((ihom (Δ[1] : SSet.{u})).obj E) _⦋0⦌) : Prop
+
+def cocartesianPathSpace {E B : SSet.{u}} (p : E ⟶ B) : SSet.{u}
+
+def cocartesianPathSpaceι {E B : SSet.{u}} (p : E ⟶ B) :
+    cocartesianPathSpace p ⟶ (ihom (Δ[1] : SSet.{u})).obj E
+
+noncomputable def cocartesianPathSpaceSource {E B : SSet.{u}} (p : E ⟶ B) :
+    cocartesianPathSpace p ⟶
+      pullback p (evaluateFunctorAt (Y := B) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+
+lemma cocartesianPathSpaceSource_fst {E B : SSet.{u}} (p : E ⟶ B) :
+    cocartesianPathSpaceSource p ≫
+      pullback.fst p (evaluateFunctorAt (Y := B) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) =
+        cocartesianPathSpaceι p ≫
+          evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
+lemma cocartesianPathSpaceSource_snd {E B : SSet.{u}} (p : E ⟶ B) :
+    cocartesianPathSpaceSource p ≫
+      pullback.snd p (evaluateFunctorAt (Y := B) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) =
+        cocartesianPathSpaceι p ≫ (ihom (Δ[1] : SSet.{u})).map p
+```
+
+`Core/CocartesianPathVertices.lean`：
+
+```lean
+def cocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
+    (he : HasCocartesianHornLifting p e) : (cocartesianPathSpace p) _⦋0⦌
+
+lemma cocartesianPathVertex_zero {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
+    (he : HasCocartesianHornLifting p e) :
+    (cocartesianPathSpaceι p ≫ evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app
+      (Opposite.op ⦋0⦌) (cocartesianPathVertex p e he) = x
+
+lemma cocartesianPathSpaceSource_surjective {E B : SSet.{u}} (p : E ⟶ B)
+    [CocartesianHornFibration p] :
+    Function.Surjective ((cocartesianPathSpaceSource p).app (Opposite.op ⦋0⦌))
+```
+
+`Core/CocartesianPathLifting.lean`：
+
+```lean
+instance cocartesianPathSpaceSource_trivialKanFibration {E B : SSet.{u}}
+    (p : E ⟶ B) [CocartesianHornFibration p] :
+    TrivialKanFibration (cocartesianPathSpaceSource p)
+```
+
+`Core/CocartesianHomotopyExtension.lean`：
+
+```lean
+lemma cocartesianHomotopy_extend {A D E B : SSet.{u}} (p : E ⟶ B) [CocartesianHornFibration p]
+    (i : A ⟶ D) [Mono i] (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ E) (f : D ⟶ E)
+    (β : (Δ[1] : SSet.{u}) ⊗ D ⟶ B)
+    (h₀ : prismEndpoint 0 A ≫ H = i ≫ f)
+    (hf : f ≫ p = prismEndpoint 0 D ≫ β)
+    (hHp : H ≫ p = (Δ[1] ◁ i) ≫ β)
+    (hH : ∀ x : A _⦋0⦌, HasCocartesianHornLifting p (edgeOfSimplex
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ D ⟶ E,
+      (Δ[1] ◁ i) ≫ F = H ∧ prismEndpoint 0 D ≫ F = f ∧ F ≫ p = β ∧
+      ∀ x : D _⦋0⦌, HasCocartesianHornLifting p (edgeOfSimplex
+        (F.app (Opposite.op ⦋1⦌)
+          (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)))
+```
+
+未完了：fiber の終対象からの相対境界充填、錐の制限の cocartesian な輸送、点ごとの極限から自然な錐を構成する A6 主定理。A4・A5 は D チャット α-S の担当。本チャットは A6 完了・報告まで。
+
+検証：Core 対象ビルド1924 jobs成功、累計1498宣言の公理監査は標準3公理のみ。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

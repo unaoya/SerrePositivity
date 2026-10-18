@@ -3252,3 +3252,51 @@ end InitialCofinalityUniverses
 
 #check @SerrePositivity.InfinityCategories.cosliceFiberProjection_terminalFiber_isContractibleKan
 #print axioms SerrePositivity.InfinityCategories.cosliceFiberProjection_terminalFiber_isContractibleKan
+
+#check @SerrePositivity.InfinityCategories.prodStdSimplex_hom_ext_vertices
+#print axioms SerrePositivity.InfinityCategories.prodStdSimplex_hom_ext_vertices
+
+#check @SerrePositivity.InfinityCategories.subcomplex_extension_over_prodStdSimplex
+#print axioms SerrePositivity.InfinityCategories.subcomplex_extension_over_prodStdSimplex
+
+#check @SerrePositivity.InfinityCategories.prism_exists_lift_of_cocartesian_firstEdge
+#print axioms SerrePositivity.InfinityCategories.prism_exists_lift_of_cocartesian_firstEdge
+
+#check @SerrePositivity.InfinityCategories.prism_lift_boundary_with_endpoint
+#print axioms SerrePositivity.InfinityCategories.prism_lift_boundary_with_endpoint
+
+#check @SerrePositivity.InfinityCategories.intervalFunctorVertexTypedEdge
+#print axioms SerrePositivity.InfinityCategories.intervalFunctorVertexTypedEdge
+
+#check @SerrePositivity.InfinityCategories.IsCocartesianPathVertex
+#print axioms SerrePositivity.InfinityCategories.IsCocartesianPathVertex
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathSpace
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathSpace
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathSpaceι
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathSpaceι
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathSpaceSource
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathSpaceSource
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_fst
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_fst
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_snd
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_snd
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathVertex
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathVertex
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathVertex_zero
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathVertex_zero
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_surjective
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_surjective
+
+#check @SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianHomotopy_extend
+#print axioms SerrePositivity.InfinityCategories.cocartesianHomotopy_extend

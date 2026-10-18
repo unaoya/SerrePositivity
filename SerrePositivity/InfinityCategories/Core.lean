@@ -377,3 +377,17 @@ public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceFiber
 public import SerrePositivity.InfinityCategories.Core.LeftFibrationTerminalFiber
 
 public import SerrePositivity.InfinityCategories.Core.CosliceFiberProjection
+
+public import SerrePositivity.InfinityCategories.Core.PrismBaseDetection
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianPrismExtension
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianPrismBoundary
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianPathSpace
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianPathVertices
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianPathLifting
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianHomotopyExtension
