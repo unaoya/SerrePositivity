@@ -306,3 +306,4 @@ public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTotalFibers
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCylinderEndpoints
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteFiberComparison
 public import SerrePositivity.InfinityCategories.F1.ThinNerveInnerFibration
+public import SerrePositivity.InfinityCategories.F1.PreorderNerveHornExtension

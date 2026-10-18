@@ -6659,5 +6659,31 @@ instance thinNerve_innerFibration {C : Type u} [Category.{u} C] [Quiver.IsThin C
 instance stdSimplexTarget_innerFibration {X : SSet.{u}} [Quasicategory X]
     (n : ℕ) (p : X ⟶ (Δ[n] : SSet.{u})) : InnerFibration p
 
+def preorderNerveHornVertex {C : Type u} [Preorder C] {n : ℕ} {i : Fin (n + 3)}
+    (a : (horn (n + 2) i : SSet.{u}) ⟶ nerve C) (j : Fin (n + 3)) : C
+
+lemma preorderNerveHornVertex_apply {C : Type u} [Preorder C] {n : ℕ} {i : Fin (n + 3)}
+    (a : (horn (n + 2) i : SSet.{u}) ⟶ nerve C)
+    (v : (horn (n + 2) i : SSet.{u}) _⦋0⦌) :
+    preorderNerveHornVertex a (v.val 0) = (a.app _ v).obj 0
+
+lemma preorderNerveHorn_extend {C : Type u} [Preorder C] {n : ℕ} {i : Fin (n + 3)}
+    (a : (horn (n + 2) i : SSet.{u}) ⟶ nerve C)
+    (ha : Monotone (preorderNerveHornVertex a)) :
+    ∃ l : (Δ[n + 2] : SSet.{u}) ⟶ nerve C, (horn (n + 2) i).ι ≫ l = a
+
+lemma preorderNerveHornVertex_edge_objs {C : Type u} [Preorder C] {n : ℕ} {i : Fin (n + 3)}
+    (a : (horn (n + 2) i : SSet.{u}) ⟶ nerve C)
+    (j k : Fin (n + 3)) (hjk : j ≤ k) (hc : Finset.card {i, j, k} ≤ n + 2) :
+    (a.app (Opposite.op ⦋1⦌) (horn.edge (n + 2) i j k hjk hc)).obj 0 =
+        preorderNerveHornVertex a j ∧
+      (a.app (Opposite.op ⦋1⦌) (horn.edge (n + 2) i j k hjk hc)).obj 1 =
+        preorderNerveHornVertex a k
+
+lemma preorderNerveHornVertex_le {C : Type u} [Preorder C] {n : ℕ} {i : Fin (n + 3)}
+    (a : (horn (n + 2) i : SSet.{u}) ⟶ nerve C)
+    (j k : Fin (n + 3)) (hjk : j ≤ k) (hc : Finset.card {i, j, k} ≤ n + 2) :
+    preorderNerveHornVertex a j ≤ preorderNerveHornVertex a k
+
 end SerrePositivity.InfinityCategories
 ```

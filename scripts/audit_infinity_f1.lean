@@ -1467,3 +1467,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.thinNerve_hom_ext_horn
 #check @SerrePositivity.InfinityCategories.thinNerve_innerFibration
 #check @SerrePositivity.InfinityCategories.stdSimplexTarget_innerFibration
+#check @SerrePositivity.InfinityCategories.preorderNerveHornVertex
+#check @SerrePositivity.InfinityCategories.preorderNerveHornVertex_apply
+#check @SerrePositivity.InfinityCategories.preorderNerveHorn_extend
+#check @SerrePositivity.InfinityCategories.preorderNerveHornVertex_edge_objs
+#check @SerrePositivity.InfinityCategories.preorderNerveHornVertex_le
