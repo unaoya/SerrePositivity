@@ -5662,3 +5662,92 @@ object/core 比較と加法性比較の弱同値性、面のホモトピー引�
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3172 jobs）、公理監査成功（1371 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.47 同じ選択による図式圏の押し出しと添字制限の厳密な両立
+
+§6.46 の単一の正規化した選択を全ての図式圏に共通に使う構成を実装した。
+Fiore–Pieper Corollary 3.35（著者公開版 pp.43–44）の添字制限との両立に対応する。
+`normalizedPushoutSquareChoice C` を固定し、任意の族 `d : K → Fun(span,C)` に後合成した後、
+内部 Hom の二変数の交換で `square → Fun(K,C)` に移す。
+任意の `i : L → K` による添字制限との式を厳密な射の等号で証明したため、
+面写像と退化写像の両方に同じ選択を適用できる。
+図式圏ごとに新たな押し出し切断を選び、その間に同型を選ぶ方法ではない。
+
+得た四角形が実際に図式圏の押し出しであることは、評価後の四角形を選択の頂点へ戻し、
+§6.45 の点ごとの押し出し判定で証明した。入力 span の厳密な回収と、
+両向きの恒等 span 上での標準四角形の厳密な回収も証明した。
+`selectedFunctorPushout` は族へ交換する操作も含めた、図式圏の任意の指定 span に対する直接の API。
+任意の `K` と任意の span に対し、入力を保持する押し出しと添字制限の厳密な両立を与える。
+この段階だけで McCarthy ホモトピーの構成や加法性を完成したとは数えない。
+
+追加ファイル：`DiagramPushoutChoice.lean`。
+以下は namespace `SerrePositivity.KST.SConstruction` 内の公開宣言の正確な型。
+`flipFamily_evaluate` は全ての単体集合について成立し、他の宣言は標的 `C` の
+quasicategory 性と安定性を要求する。添字 `K,L` に有限性・Kan 性等は要求しない。
+
+```lean
+lemma flipFamily_evaluate {K A C : SSet.{u}} (F : K ⟶ (ihom A).obj C) (k : K _⦋0⦌) :
+    internalHomFlipHomEquiv K A C F ≫ evaluateFunctorAt k =
+      (functorVertexEquiv A C).symm (F.app (Opposite.op ⦋0⦌) k)
+
+def normalizedPushoutSquareChoice (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    (ihom (horn 2 0 : SSet.{u})).obj C ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C
+
+lemma normalizedPushoutSquareChoice_span (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    normalizedPushoutSquareChoice C ≫ (pre spanSquareBoundary).app C = 𝟙 _
+
+lemma normalizedPushoutSquareChoice_identity (b : Bool) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] :
+    identitySpanFamily b C ≫ normalizedPushoutSquareChoice C =
+      (pre (identityPushoutShape b)).app C
+
+def chosenPushoutFamily {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (d : K ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) :
+    K ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C
+
+def chosenDiagramPushout {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (d : K ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) :
+    (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ (ihom K).obj C
+
+lemma chosenDiagramPushout_span {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (d : K ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) :
+    spanSquareBoundary ≫ chosenDiagramPushout d = internalHomFlipHomEquiv K _ C d
+
+lemma chosenDiagramPushout_isPushout {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (d : K ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) : IsPushoutSquare (chosenDiagramPushout d)
+
+lemma chosenDiagramPushout_reindex {K L C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (i : L ⟶ K) (d : K ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) :
+    chosenDiagramPushout (i ≫ d) = chosenDiagramPushout d ≫ (pre i).app C
+
+lemma chosenDiagramPushout_identity {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (b : Bool) (g : K ⟶ (ihom (Δ[1] : SSet.{u})).obj C) :
+    chosenDiagramPushout (g ≫ identitySpanFamily b C) =
+      identityPushoutShape b ≫ internalHomFlipHomEquiv K _ C g
+
+def selectedFunctorPushout {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (p : (horn 2 0 : SSet.{u}) ⟶ (ihom K).obj C) :
+    (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ (ihom K).obj C
+
+lemma selectedFunctorPushout_span {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (p : (horn 2 0 : SSet.{u}) ⟶ (ihom K).obj C) :
+    pushoutSpan (selectedFunctorPushout p) = p
+
+lemma selectedFunctorPushout_isPushout {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (p : (horn 2 0 : SSet.{u}) ⟶ (ihom K).obj C) : IsPushoutSquare (selectedFunctorPushout p)
+
+lemma selectedFunctorPushout_reindex {K L C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (i : L ⟶ K) (p : (horn 2 0 : SSet.{u}) ⟶ (ihom K).obj C) :
+    selectedFunctorPushout (p ≫ (pre i).app C) = selectedFunctorPushout p ≫ (pre i).app C
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+McCarthy 法の一般 pushout の存在・保存・単体的選択・両向きの恒等 span の同時正規化に加え、
+図式圏への共通の選択の移送と、任意の添字制限との厳密な両立まで証明済み。
+McCarthy の具体的な単体ホモトピー、単体積 Quillen A、object/core 比較と加法性比較の弱同値性、
+面のホモトピー引き戻し条件は未完了。
+反復 S 実現と §6.43 の homotopy fiber の比較、既存の構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3173 jobs）、公理監査成功（1385 宣言、標準三公理のみ）。追加公理・sorry なし。

@@ -147,4 +147,6 @@ public import SerrePositivity.KST.SConstruction.IdentityPushoutOverlap
 public import SerrePositivity.KST.SConstruction.IdentityPushoutUnion
 public import SerrePositivity.KST.SConstruction.JointNormalizedPushoutSection
 
+public import SerrePositivity.KST.SConstruction.DiagramPushoutChoice
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -3622,3 +3622,32 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_identity
 #check @SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_comparison
 #print axioms SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_comparison
+
+#check @SerrePositivity.KST.SConstruction.flipFamily_evaluate
+#print axioms SerrePositivity.KST.SConstruction.flipFamily_evaluate
+#check @SerrePositivity.KST.SConstruction.normalizedPushoutSquareChoice
+#print axioms SerrePositivity.KST.SConstruction.normalizedPushoutSquareChoice
+#check @SerrePositivity.KST.SConstruction.normalizedPushoutSquareChoice_span
+#print axioms SerrePositivity.KST.SConstruction.normalizedPushoutSquareChoice_span
+#check @SerrePositivity.KST.SConstruction.normalizedPushoutSquareChoice_identity
+#print axioms SerrePositivity.KST.SConstruction.normalizedPushoutSquareChoice_identity
+#check @SerrePositivity.KST.SConstruction.chosenPushoutFamily
+#print axioms SerrePositivity.KST.SConstruction.chosenPushoutFamily
+#check @SerrePositivity.KST.SConstruction.chosenDiagramPushout
+#print axioms SerrePositivity.KST.SConstruction.chosenDiagramPushout
+#check @SerrePositivity.KST.SConstruction.chosenDiagramPushout_span
+#print axioms SerrePositivity.KST.SConstruction.chosenDiagramPushout_span
+#check @SerrePositivity.KST.SConstruction.chosenDiagramPushout_isPushout
+#print axioms SerrePositivity.KST.SConstruction.chosenDiagramPushout_isPushout
+#check @SerrePositivity.KST.SConstruction.chosenDiagramPushout_reindex
+#print axioms SerrePositivity.KST.SConstruction.chosenDiagramPushout_reindex
+#check @SerrePositivity.KST.SConstruction.chosenDiagramPushout_identity
+#print axioms SerrePositivity.KST.SConstruction.chosenDiagramPushout_identity
+#check @SerrePositivity.KST.SConstruction.selectedFunctorPushout
+#print axioms SerrePositivity.KST.SConstruction.selectedFunctorPushout
+#check @SerrePositivity.KST.SConstruction.selectedFunctorPushout_span
+#print axioms SerrePositivity.KST.SConstruction.selectedFunctorPushout_span
+#check @SerrePositivity.KST.SConstruction.selectedFunctorPushout_isPushout
+#print axioms SerrePositivity.KST.SConstruction.selectedFunctorPushout_isPushout
+#check @SerrePositivity.KST.SConstruction.selectedFunctorPushout_reindex
+#print axioms SerrePositivity.KST.SConstruction.selectedFunctorPushout_reindex
