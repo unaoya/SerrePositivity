@@ -349,3 +349,17 @@ public import SerrePositivity.KST.ProExcision.SimplicialTriangularSplit
 public import SerrePositivity.KST.ProExcision.NonUnitalHatGLBlock
 
 public import SerrePositivity.KST.ProExcision.TriangularGLProduct
+
+public import SerrePositivity.KST.ProExcision.FirstBlockLastColumn
+
+public import SerrePositivity.KST.ProExcision.TriangularSplitIntertwining
+
+public import SerrePositivity.KST.ProExcision.TriangularAffineHatGL
+
+public import SerrePositivity.KST.ProExcision.Claim415Factorization
+
+public import SerrePositivity.KST.ProExcision.RelativeBarPairs
+
+public import SerrePositivity.KST.ProExcision.SimplicialActionLift
+
+public import SerrePositivity.KST.ProExcision.Claim415Relative

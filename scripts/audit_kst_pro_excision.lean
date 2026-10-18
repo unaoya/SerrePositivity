@@ -3801,3 +3801,75 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularGLProductMap
 #print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularGLProductMap
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_entry
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_entry
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_lastRow
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_lastRow
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_lastColumn
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_lastColumn
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_dropLast
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_dropLast
+
+#check @SerrePositivity.KST.ProExcision.triangularAction_dropLast_intertwining
+#print axioms SerrePositivity.KST.ProExcision.triangularAction_dropLast_intertwining
+
+#check @SerrePositivity.KST.ProExcision.triangularAction_lastColumn
+#print axioms SerrePositivity.KST.ProExcision.triangularAction_lastColumn
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLColumnAction
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLColumnAction
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularAffineHatGLHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularAffineHatGLHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularAffineHatGLMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularAffineHatGLMap
+
+#check @SerrePositivity.KST.ProExcision.claim415FactorizationHom
+#print axioms SerrePositivity.KST.ProExcision.claim415FactorizationHom
+
+#check @SerrePositivity.KST.ProExcision.claim415FactorizationHom_base
+#print axioms SerrePositivity.KST.ProExcision.claim415FactorizationHom_base
+
+#check @SerrePositivity.KST.ProExcision.claim415FactorizationHom_fiber
+#print axioms SerrePositivity.KST.ProExcision.claim415FactorizationHom_fiber
+
+#check @SerrePositivity.KST.ProExcision.claim415FactorizationMap
+#print axioms SerrePositivity.KST.ProExcision.claim415FactorizationMap
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionPairMap
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionPairMap
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionPairMap.comp
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionPairMap.comp
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionHom.toPairMap
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionHom.toPairMap
+
+#check @SerrePositivity.KST.ProExcision.relativeBarPairMap
+#print axioms SerrePositivity.KST.ProExcision.relativeBarPairMap
+
+#check @SerrePositivity.KST.ProExcision.relativeBarPairMap_comp
+#print axioms SerrePositivity.KST.ProExcision.relativeBarPairMap_comp
+
+#check @SerrePositivity.KST.ProExcision.relativeBarPairMap_toPairMap
+#print axioms SerrePositivity.KST.ProExcision.relativeBarPairMap_toPairMap
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductLift
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductLift
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductLift_section
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductLift_section
+
+#check @SerrePositivity.KST.ProExcision.claim415FactorizationMap_section
+#print axioms SerrePositivity.KST.ProExcision.claim415FactorizationMap_section
+
+#check @SerrePositivity.KST.ProExcision.claim415PairMap
+#print axioms SerrePositivity.KST.ProExcision.claim415PairMap
+
+#check @SerrePositivity.KST.ProExcision.claim415_factorized_relative_zero
+#print axioms SerrePositivity.KST.ProExcision.claim415_factorized_relative_zero

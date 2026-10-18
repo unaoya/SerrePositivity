@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1318宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1342宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1024,3 +1024,14 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `triangularBlockMatrixAction_intertwining` は ρ_M(t)diag(M,1)=diag(M,1)t を右吸収の式から証明する。一般の非可逆行列にも成立する。
 - `triangularGLProductHom` と `triangularGLProductMap` は外部 ĜL と三角群の半直積から ĜL_{n+m} への実ブロック積。各次数の逆元は仮定せず、全単体射への自然性を証明した。
 - 対象ビルド・1318宣言の公理監査は標準三公理のみで成功。最終列を含む二つの実比較の接続、相対項の因子化、安定化は続行する。
+
+
+### L6d の Claim 4.15 の実因子化と相対零化（2026-10-19）
+
+- `firstBlockMatrix_dropLast`・`firstBlockMatrix_lastColumn`・`firstBlockMatrix_lastRow` を非可換な実成分から証明する。全行列の交換則を `triangularAction_dropLast_intertwining` と `triangularAction_lastColumn` に分けた。
+- `triangularAffineHatGLMap` は三角群を左上ブロックと最終列で ĜL と列群の実半直積へ送る。
+- `claim415FactorizationHom` と `claim415FactorizationMap` は外部 ĜL と三角群の半直積から ĜL_{n+m} と列群の半直積への実射。基底成分と列成分の実公式、全単体射への自然性を証明した。
+- `SimplicialActionPairMap` は基底射・全空間射・標準包含との可換性だけを持つ実対射。`relativeBarPairMap_comp` は実商の合成則を証明する。
+- `claim415FactorizationMap_section` と `claim415PairMap` は実比較の相対対への降下。`claim415_factorized_relative_zero` は A.4 の実零写像をこの実対射へ後合成して低次零化を証明する。
+- `simplicialActionProductLift` は作用の交換則からの実準同型を単体的に束ねる一般補題。標準包含との可換性も証明する。
+- 対象ビルド・1342宣言の公理監査は標準三公理のみで成功。三角群を経る合成と通常の「右から a 倍して零で埋める」有限 rank の写像との成分同定は未完了。Prop 4.14 の安定化も未完了。
