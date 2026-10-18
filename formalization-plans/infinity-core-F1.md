@@ -6598,5 +6598,52 @@ lemma scaffoldFiniteCylinderComparison_endpoint_one (n : ℕ)
       scaffoldFiniteCylinderComparison n F =
         scaffoldFiniteCylinderAttachingMap n F ≫ simplicialReplacementBaseMap (scaffoldFiniteTail n) F
 
+noncomputable def scaffoldFiniteZeroFiberComparison (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) :
+    F.obj (ULift.up 0) ⟶
+      vertexFiber (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
+lemma scaffoldFiniteZeroFiberComparison_ι (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) :
+    scaffoldFiniteZeroFiberComparison n p F l h ≫
+        vertexFiberι (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      prismEndpoint 0 (F.obj (ULift.up 0)) ≫
+        pushout.inl (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F) ≫
+          scaffoldFiniteCylinderComparison n F ≫ l
+
+noncomputable def scaffoldFiniteOneFiberComparison (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) :
+    simplicialReplacement (scaffoldFiniteTail n ⋙ F) ⟶
+      vertexFiber (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma scaffoldFiniteOneFiberComparison_ι (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) :
+    scaffoldFiniteOneFiberComparison n p F l h ≫
+        vertexFiberι (p ≫ scaffoldFiniteCollapse n) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      pushout.inr (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F) ≫
+        scaffoldFiniteCylinderComparison n F ≫ l
+
+lemma IsLeftScaffold.finiteZeroFiber_isPrecompositionEquivalence
+    (n : ℕ) {E : SSet.{u}} {p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))} [LeftFibration p]
+    {F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)]
+    {l : simplicialReplacement F ⟶ E} (hs : IsLeftScaffold p F l)
+    (h : l ≫ p = simplicialReplacementProjection F) :
+    IsPrecompositionEquivalence (scaffoldFiniteZeroFiberComparison n p F l h)
+
+lemma scaffoldFiniteOneFiberComparison_isPrecompositionEquivalence_iff
+    (n : ℕ) {E : SSet.{u}} (p : E ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) :
+    IsPrecompositionEquivalence (scaffoldFiniteOneFiberComparison n p F l h) ↔
+      IsPrecompositionEquivalence (leftScaffoldBaseChange p F l h (scaffoldFiniteTail n))
+
 end SerrePositivity.InfinityCategories
 ```
