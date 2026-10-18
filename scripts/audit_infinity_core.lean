@@ -3162,3 +3162,63 @@ end InitialCofinalityUniverses
 
 #check @SerrePositivity.InfinityCategories.CocartesianHornFibration.exists_lift
 #print axioms SerrePositivity.InfinityCategories.CocartesianHornFibration.exists_lift
+
+#check @SerrePositivity.InfinityCategories.initialPointHornJoin_preimage
+#print axioms SerrePositivity.InfinityCategories.initialPointHornJoin_preimage
+
+#check @SerrePositivity.InfinityCategories.initialPointHornJoinIso
+#print axioms SerrePositivity.InfinityCategories.initialPointHornJoinIso
+
+#check @SerrePositivity.InfinityCategories.initialPointHornJoinIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.initialPointHornJoinIso_hom_ι
+
+#check @SerrePositivity.InfinityCategories.initialPointHornJoinIso_edge
+#print axioms SerrePositivity.InfinityCategories.initialPointHornJoinIso_edge
+
+#check @SerrePositivity.InfinityCategories.pointCosliceVertexEdge
+#print axioms SerrePositivity.InfinityCategories.pointCosliceVertexEdge
+
+#check @SerrePositivity.InfinityCategories.pointCosliceVertexEdge_postcomp
+#print axioms SerrePositivity.InfinityCategories.pointCosliceVertexEdge_postcomp
+
+#check @SerrePositivity.InfinityCategories.pointCosliceVertexOfEdge
+#print axioms SerrePositivity.InfinityCategories.pointCosliceVertexOfEdge
+
+#check @SerrePositivity.InfinityCategories.pointCosliceVertexEdge_ofEdge
+#print axioms SerrePositivity.InfinityCategories.pointCosliceVertexEdge_ofEdge
+
+#check @SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_innerFibration
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_innerFibration
+
+#check @SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory
+
+#check @SerrePositivity.InfinityCategories.hasCocartesianHornLifting_congr
+#print axioms SerrePositivity.InfinityCategories.hasCocartesianHornLifting_congr
+
+#check @SerrePositivity.InfinityCategories.IsCocartesianCosliceVertex
+#print axioms SerrePositivity.InfinityCategories.IsCocartesianCosliceVertex
+
+#check @SerrePositivity.InfinityCategories.cocartesianCoslice
+#print axioms SerrePositivity.InfinityCategories.cocartesianCoslice
+
+#check @SerrePositivity.InfinityCategories.cocartesianCosliceι
+#print axioms SerrePositivity.InfinityCategories.cocartesianCosliceι
+
+#check @SerrePositivity.InfinityCategories.cocartesianCoslice_quasicategory
+#print axioms SerrePositivity.InfinityCategories.cocartesianCoslice_quasicategory
+
+#check @SerrePositivity.InfinityCategories.cocartesianCosliceProjection
+#print axioms SerrePositivity.InfinityCategories.cocartesianCosliceProjection
+
+#check @SerrePositivity.InfinityCategories.exists_coslice_boundary_lift_of_cocartesian_vertex
+#print axioms SerrePositivity.InfinityCategories.exists_coslice_boundary_lift_of_cocartesian_vertex
+
+#check @SerrePositivity.InfinityCategories.pointCosliceVertexEdge_injective
+#print axioms SerrePositivity.InfinityCategories.pointCosliceVertexEdge_injective
+
+#check @SerrePositivity.InfinityCategories.exists_cocartesianCosliceVertex_lift
+#print axioms SerrePositivity.InfinityCategories.exists_cocartesianCosliceVertex_lift
+
+#check @SerrePositivity.InfinityCategories.cocartesianCosliceProjection_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.cocartesianCosliceProjection_trivialKanFibration

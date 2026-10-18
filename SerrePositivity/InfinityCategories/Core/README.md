@@ -534,3 +534,7 @@ F1 の既存 IsCocartesianEdge と同時に import できるよう、Core の今
 担当更新（2026-10-18）：α は A6 の完了・報告まで。A4・A5 は D（α-S、InfinityCategories/Stable/）へ移管。Stable/ は他レーンのファイルとして編集しない。A6 後の工程は別途の指示を待つ。
 
 追加の互換性検証：Core 全体と F1.CartesianEdge の同時 import に成功。F1 の既存 IsCocartesianEdge と Core の HasCocartesianHornLifting は両立する。
+
+A6 続き：cocartesian な辺の coslice の射影の trivial Kan fibration 性を、点と境界の join の先頭ホーン表示と辺の持ち上げから証明。quasicategory 性は不要。新規20宣言の正確な型・前提は §6。A6 主定理は未完了。A4・A5 は D チャット α-S の担当。
+
+上記保存単位の検証：Core 対象ビルド1914 jobs成功、累計1472宣言の公理監査は標準3公理のみ。Core 全体と F1.CartesianEdge の同時 import も成功。

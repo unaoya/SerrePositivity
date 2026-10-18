@@ -8710,6 +8710,11 @@ lemma hasCocartesianHornLifting_iff_isInvertibleEdge_of_map {E B : SSet.{u}}
 
 ```lean
 class CocartesianHornFibration {E B : SSet.{u}} (p : E ⟶ B) : Prop extends InnerFibration p where
+  /-- 始点を指定した基底の辺の cocartesian な持ち上げ。 -/
+  exists_lift : ∀ (x : E _⦋0⦌) (b : B _⦋0⦌)
+    (a : SSet.Truncated.Edge (X := (truncation 2).obj B) (p.app (Opposite.op ⦋0⦌) x) b),
+    ∃ (y : E _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y),
+      p.app (Opposite.op ⦋1⦌) e.edge = a.edge ∧ HasCocartesianHornLifting p e
 
 lemma hasCocartesianHornLifting_id {E : SSet.{u}} {x y : E _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y) : HasCocartesianHornLifting (𝟙 E) e
@@ -8749,6 +8754,120 @@ instance cosliceEndpointMap_leftFibration {K E B : SSet.{u}}
 ```
 
 未完了：IsLimitCone と錐の制限の相対終対象の接続、点ごとの極限からの自然な錐の構成、任意図式に対する A6 主定理。A4・A5 は未着手。保存検証：Core 対象ビルド1909 jobs成功、累計1452宣言の公理監査は標準3公理のみ。
+
+### A6 続き（2026-10-18）：cocartesian な辺の coslice の射影の充填
+
+点と境界の join を先頭の外側ホーンで表し、正次元では最初の頂点の cocartesian な辺の性質、零次元では始点を指定した辺の持ち上げを使った。これにより cocartesian な辺の coslice の全部分複体から基底の点の coslice への射影が trivial Kan fibration になることを証明。元・標的が quasicategory という仮定は不要。全部分複体の inner fibration 性も追加した。Kerodon §5.1.1・§5.1.4 の輸送の選択の充填の実装であり、モデル構造や straightening は使わない。
+
+既存の公開名・型と §4 の設計は維持。以下 universe u、CategoryTheory・SSet・SSet.Truncated と scoped Simplicial を開く。型に記載したもの以外の前提はない。
+
+`Core/PointHornJoin.lean`：
+
+```lean
+lemma initialPointHornJoin_preimage (n : ℕ) :
+    (horn (n + 1) 0).preimage (pointJoinStdSimplexIso.{u} n).hom =
+      joinSubcomplexRight Δ[0] (boundary n)
+
+noncomputable def initialPointHornJoinIso (n : ℕ) :
+    join (Δ[0] : SSet.{u}) (boundary n) ≅ horn (n + 1) 0
+
+lemma initialPointHornJoinIso_hom_ι (n : ℕ) :
+    (initialPointHornJoinIso.{u} n).hom ≫ (horn (n + 1) 0).ι =
+      joinMap (𝟙 Δ[0]) (boundary n).ι ≫ (pointJoinStdSimplexIso n).hom
+
+lemma initialPointHornJoinIso_edge (n : ℕ) :
+    SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
+      joinMap (𝟙 Δ[0]) (boundaryVertex n 0) ≫
+        (initialPointHornJoinIso.{u} (n + 1)).hom) = initialHornEdge n
+```
+
+`Core/PointCosliceEdge.lean`：
+
+```lean
+def pointCosliceVertexEdge {E : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E)
+    (σ : (sliceUnder a) _⦋0⦌) :
+    Edge (X := (truncation 2).obj E) (SSet.yonedaEquiv a)
+      ((sliceUnderProjection a).app (Opposite.op ⦋0⦌) σ)
+
+lemma pointCosliceVertexEdge_postcomp {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E)
+    (p : E ⟶ B) (σ : (sliceUnder a) _⦋0⦌) :
+    (pointCosliceVertexEdge (a ≫ p) ((sliceUnderPostcomp a p).app (Opposite.op ⦋0⦌) σ)).edge =
+      p.app (Opposite.op ⦋1⦌) (pointCosliceVertexEdge a σ).edge
+
+def pointCosliceVertexOfEdge {E : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E)
+    {y : E _⦋0⦌} (e : Edge (X := (truncation 2).obj E) (SSet.yonedaEquiv a) y) :
+    (sliceUnder a) _⦋0⦌
+
+lemma pointCosliceVertexEdge_ofEdge {E : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E)
+    {y : E _⦋0⦌} (e : Edge (X := (truncation 2).obj E) (SSet.yonedaEquiv a) y) :
+    (pointCosliceVertexEdge a (pointCosliceVertexOfEdge a e)).edge = e.edge
+```
+
+`Core/FullSubcomplexFibration.lean`：
+
+```lean
+instance fullSubcomplexOnVertices_innerFibration (X : SSet.{u}) (P : X _⦋0⦌ → Prop) :
+    InnerFibration (fullSubcomplexOnVertices X P).ι
+
+instance fullSubcomplexOnVertices_quasicategory (X : SSet.{u}) [Quasicategory X]
+    (P : X _⦋0⦌ → Prop) : Quasicategory (fullSubcomplexOnVertices X P : SSet.{u})
+```
+
+`Core/CocartesianCoslice.lean`：
+
+```lean
+lemma hasCocartesianHornLifting_congr {E B : SSet.{u}} (p : E ⟶ B)
+    {x y x' y' : E _⦋0⦌}
+    {e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y}
+    {f : SSet.Truncated.Edge (X := (truncation 2).obj E) x' y'} (h : e.edge = f.edge) :
+    HasCocartesianHornLifting p e ↔ HasCocartesianHornLifting p f
+
+def IsCocartesianCosliceVertex {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E)
+    (p : E ⟶ B) (σ : (sliceUnder a) _⦋0⦌) : Prop
+
+def cocartesianCoslice {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) : SSet.{u}
+
+def cocartesianCosliceι {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) :
+    cocartesianCoslice a p ⟶ sliceUnder a
+
+instance cocartesianCoslice_quasicategory {E B : SSet.{u}} [Quasicategory E]
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) : Quasicategory (cocartesianCoslice a p)
+
+def cocartesianCosliceProjection {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) :
+    cocartesianCoslice a p ⟶ sliceUnder (a ≫ p)
+```
+
+`Core/CocartesianCosliceLifting.lean`：
+
+```lean
+lemma exists_coslice_boundary_lift_of_cocartesian_vertex {E B : SSet.{u}}
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) (n : ℕ)
+    (f : (boundary (n + 1) : SSet.{u}) ⟶ sliceUnder a)
+    (b : (Δ[n + 1] : SSet.{u}) ⟶ sliceUnder (a ≫ p))
+    (hw : f ≫ sliceUnderPostcomp a p = (boundary (n + 1)).ι ≫ b)
+    (he : IsCocartesianCosliceVertex a p
+      (SSet.yonedaEquiv (boundaryVertex n 0 ≫ f))) :
+    ∃ F : (Δ[n + 1] : SSet.{u}) ⟶ sliceUnder a,
+      (boundary (n + 1)).ι ≫ F = f ∧ F ≫ sliceUnderPostcomp a p = b
+
+lemma pointCosliceVertexEdge_injective {E : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E)
+    {s t : (sliceUnder a) _⦋0⦌}
+    (h : (pointCosliceVertexEdge a s).edge = (pointCosliceVertexEdge a t).edge) : s = t
+
+lemma exists_cocartesianCosliceVertex_lift {E B : SSet.{u}}
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) [CocartesianHornFibration p]
+    (s : (sliceUnder (a ≫ p)) _⦋0⦌) :
+    ∃ t : (sliceUnder a) _⦋0⦌, IsCocartesianCosliceVertex a p t ∧
+      (sliceUnderPostcomp a p).app (Opposite.op ⦋0⦌) t = s
+
+instance cocartesianCosliceProjection_trivialKanFibration {E B : SSet.{u}}
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) [CocartesianHornFibration p] :
+    TrivialKanFibration (cocartesianCosliceProjection a p)
+```
+
+未完了：錐の制限の cocartesian な輸送、fiber の終対象からの相対境界充填、点ごとの極限から自然な錐を構成する A6 主定理。A4・A5 は D チャット α-S の担当。本チャットは A6 完了・報告まで。
+
+検証：Core 対象ビルド1914 jobs成功、累計1472宣言の公理監査は標準3公理のみ。Core 全体と F1.CartesianEdge の同時 import も成功。
 
 ## 7. A3 の工程（2026-10-18 追加）
 

@@ -361,3 +361,13 @@ public import SerrePositivity.InfinityCategories.Core.CocartesianFibration
 public import SerrePositivity.InfinityCategories.Core.CocartesianEdgePullback
 
 public import SerrePositivity.InfinityCategories.Core.CosliceEndpointFibration
+
+public import SerrePositivity.InfinityCategories.Core.PointHornJoin
+
+public import SerrePositivity.InfinityCategories.Core.PointCosliceEdge
+
+public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianCoslice
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceLifting
