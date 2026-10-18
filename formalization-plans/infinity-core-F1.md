@@ -6794,5 +6794,40 @@ lemma IsPrecompositionEquivalence.stdSimplex_hom_ext {A B : SSet.{u}} {i : A ⟶
     (hi : IsPrecompositionEquivalence i) {n : ℕ} {f g : B ⟶ (Δ[n] : SSet.{u})}
     (h : i ≫ f = i ≫ g) : f = g
 
+noncomputable def mappingCylinderIntervalProjection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout (prismEndpoint 1 X) f ⟶ (Δ[1] : SSet.{u})
+
+lemma mappingCylinderIntervalProjection_inl {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout.inl (prismEndpoint 1 X) f ≫ mappingCylinderIntervalProjection f = fst Δ[1] X
+
+lemma mappingCylinderIntervalProjection_inr {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout.inr (prismEndpoint 1 X) f ≫ mappingCylinderIntervalProjection f =
+      SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma relativeJoinCylinderComparison_intervalProjection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    relativeJoinCylinderComparison f ≫ relativeJoinProjection f (𝟙 Y) =
+      mappingCylinderIntervalProjection f
+
+lemma relativeJoinCylinder_extension_intervalProjection {X Y E : SSet.{u}}
+    (f : X ⟶ Y) (p : E ⟶ (Δ[1] : SSet.{u}))
+    (u : pushout (prismEndpoint 1 X) f ⟶ E) (hu : u ≫ p = mappingCylinderIntervalProjection f)
+    (G : relativeJoin f (𝟙 Y) ⟶ E) (hG : relativeJoinCylinderComparison f ≫ G = u) :
+    G ≫ p = relativeJoinProjection f (𝟙 Y)
+
+lemma relativeJoinCylinder_extension_over_interval_exists {X Y E : SSet.{u}}
+    (f : X ⟶ Y) [Mono f] [Quasicategory E] (p : E ⟶ (Δ[1] : SSet.{u}))
+    (u : pushout (prismEndpoint 1 X) f ⟶ E) (hu : u ≫ p = mappingCylinderIntervalProjection f) :
+    ∃ G : relativeJoin f (𝟙 Y) ⟶ E,
+      relativeJoinCylinderComparison f ≫ G = u ∧ G ≫ p = relativeJoinProjection f (𝟙 Y)
+
+lemma relativeJoin_extension_of_prism_over_interval {X Y E : SSet.{u}}
+    (f : X ⟶ Y) [Mono f] [Quasicategory E] (p : E ⟶ (Δ[1] : SSet.{u}))
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (g : Y ⟶ E)
+    (w : prismEndpoint 1 X ≫ H = f ≫ g) (hH : H ≫ p = fst Δ[1] X)
+    (hg : g ≫ p = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :
+    ∃ G : relativeJoin f (𝟙 Y) ⟶ E,
+      relativeJoinPrism f ≫ G = H ∧ relativeJoinInr f (𝟙 Y) ≫ G = g ∧
+        G ≫ p = relativeJoinProjection f (𝟙 Y)
+
 end SerrePositivity.InfinityCategories
 ```
