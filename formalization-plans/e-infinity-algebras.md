@@ -1888,3 +1888,58 @@ E2a 完了後の E2b 適用は引き続き未完了。γ3 全体は継続中。
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-native-restriction-derived-aggregate.log`、
 `/tmp/gamma3-native-restriction-derived-audit.log`。
+
+### γ3b：底の path による固定点の移送と反転・ULift 後の豊穣比較の導来 fiber
+
+
+任意の添字圏 I と局所 Kan な単体的圏 C、通常の錐 c、同じ strict な図式上の任意の coherent
+な錐 d に対して、`strictConePinched_reflectedDerivedFiberEquivalence c d` を構成した。
+pinched Hom と `reflectedStrictConeSectionsComparison c (coherentNerveObject d.vertex)` の
+導来 fiber の同値であり、点は元の d の標準切断点を頂点の表示の等式で移送した
+`strictConeDerivedFiberPoint d` である。厳密極限性や Hom の fibration 性は要求しない。
+既存の native な制限の fiber の同値と weighted な錐の実際の fiber 比較を合成する。
+
+さらに end から切断への比較を除き、三形状では ULift 後の反転豊穣比較 q′ 自体の
+導来 fiber まで同定した。公開定理は
+`strictConePinched_reflectedEnd_discrete_equivalence`、
+`strictConePinched_reflectedEnd_cospan_equivalence`、
+`strictConePinched_reflectedEnd_tower_equivalence`。
+x = `coherentNerveObject d.vertex` とすると、いずれも pinched Hom と
+
+```lean
+comparisonFiber ((SSet.uliftFunctor.{v, u}).map (reflectedRepresentableComparison c x))
+  (strictConeReflectedEndPoint d hκ)
+```
+
+の圏同値を返す。hκ はこの形状の既存の end・切断比較の同値性の証明であり、
+利用者に追加の同値性の前提を要求しない。三定理の前提は局所 Kan 性だけで、
+離散図式の有限性、Hom の fibration 性、錐 c の厳密極限性は不要。
+一般の I で同じ結論を使う補助定理は
+`strictConePinched_reflectedEndDerivedFiberEquivalence c d hκ` であり、こちらは hκ を明示する。
+
+固定点を回収するため、底の path に沿う実際の fiber の比較を追加した。
+`kanFiberPathEndpointMap p e j` は、p の path の持ち上げ空間から端点 j 上の fiber への射。
+全空間と底が Kan、p が fibration なら、両端点の射は実際のホモトピー同値になる。
+これを元の射 p の path 置換へ適用した `comparisonFiberPathEquivalence p e` は、
+元の p に fibration 性を要求せず、底の指定した可逆 path の両端の導来 fiber を同値にする。
+Kan な底の辺から同じ移送を行う `comparisonFiberEdgeEquivalence p e` も公開した。
+
+`comparisonFiberPostInverseEquivalence p g hg b` は、標的の同値 g の任意の点 b に対し、
+選んだ逆による点 g⁻¹(b) 上の p の導来 fiber と、b 上の p≫g の導来 fiber の同値を返す。
+b が g の厳密な像であることを要求しない。後合成の実際の fiber 射と、
+g⁻¹≫g から恒等射へのホモトピーを b で評価した辺による移送を合成する。
+三形状の `strictConeReflectedEndPoint` はこの選んだ逆で標準切断点を回収した点である。
+等式による固定点の移送と path による移送を区別し、元の点のデータを保持する。
+
+未完了は ULift を外す移送、反転した係数の q′ と元の非反転 q_x の fiber の直接比較、
+一般形状の end の直接比較、余極限側、E2a 完了後の E2b 適用。γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 4.5.3.24・7.4.1.6・7.5.4.6。
+
+新規5ファイル・15宣言を集約と専用監査へ追加した。README の γ3 冒頭の現在地も更新した。
+正確な型と全前提は README の同名節と専用監査の `#check @` に記録。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4688 jobs）、公開1430宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規5ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-reflected-end-derived-aggregate.log`、
+`/tmp/gamma3-reflected-end-derived-audit.log`。
