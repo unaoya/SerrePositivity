@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.KST.SchemeLemmas.FlatPureTransformBaseChangeOfBound
 public import SerrePositivity.KST.SchemeLemmas.BoundaryPowerLift
 public import SerrePositivity.KST.SchemeLemmas.ScalarInverseBaseChange
 public import SerrePositivity.KST.SchemeLemmas.PureTransformImage
@@ -32,18 +33,7 @@ def flatPureTransformBaseChangeEquiv (hf : IsRegular (algebraMap R C f)) :
       C ⊗[R] modulePureTransform f M := by
   let n := Classical.choose (exists_pow_annihilates_boundaryTorsion_of_noetherian f M)
   have hn := Classical.choose_spec (exists_pow_annihilates_boundaryTorsion_of_noetherian f M)
-  let q := (boundaryTorsion f M).mkQ
-  let h := boundaryPowerLift f M n hn
-  have hh : h.comp q = f ^ n • LinearMap.id := boundaryPowerLift_comp_mkQ f M n hn
-  have hreg : IsSMulRegular (C ⊗[R] modulePureTransform f M) (algebraMap R C f) :=
-    Module.Flat.isSMulRegular_of_isRegular hf
-  let e := modulePureTransformEquivImage (algebraMap R C f) (q.baseChange C) hreg
-    (fun z hz => ⟨n, by
-      rw [← map_pow]
-      exact baseChange_ker_annihilated_of_scalar_leftInverse q h (f ^ n) hh z hz⟩)
-  have hsurj : Function.Surjective (q.baseChange C) :=
-    LinearMap.baseChange_surjective C (boundaryTorsion f M).mkQ_surjective
-  exact e.trans (LinearEquiv.ofTop _ (LinearMap.range_eq_top.mpr hsurj))
+  exact flatPureTransformBaseChangeEquivOfBound C f M n hn hf
 
 /--
 概要：平坦な純変換は正則な境界を保つ任意の追加基底変更後にも平坦。

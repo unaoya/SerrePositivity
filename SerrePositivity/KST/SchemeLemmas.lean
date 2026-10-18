@@ -150,3 +150,6 @@ public import SerrePositivity.KST.SchemeLemmas.AffineBlowupNoetherian
 public import SerrePositivity.KST.SchemeLemmas.AffineLocalFlatPureRefinement
 public import SerrePositivity.KST.SchemeLemmas.AffineFlatPureComposition
 public import SerrePositivity.KST.SchemeLemmas.NoetherianFiniteModuleFlattening
+public import SerrePositivity.KST.SchemeLemmas.FlatPureTransformBaseChangeOfBound
+public import SerrePositivity.KST.SchemeLemmas.BoundaryTorsionFiniteAlgebra
+public import SerrePositivity.KST.SchemeLemmas.FiniteAlgebraPureTransformBaseChange
