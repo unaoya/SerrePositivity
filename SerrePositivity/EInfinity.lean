@@ -12,3 +12,4 @@ public import SerrePositivity.EInfinity.Operad.SchurCompositionNaturality
 public import SerrePositivity.EInfinity.Operad.CompositionEquivariance
 public import SerrePositivity.EInfinity.Operad.SchurCompositionEquivariance
 public import SerrePositivity.EInfinity.Operad.TensorColimitMorphisms
+public import SerrePositivity.EInfinity.Operad.SchurActionNaturality
