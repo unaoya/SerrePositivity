@@ -194,3 +194,7 @@ public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldFiber
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementBaseChange
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFunctor
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementConstant
+public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementAssembly
+public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTail
+public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCover
+public import SerrePositivity.InfinityCategories.F1.ScaffoldFinitePushout

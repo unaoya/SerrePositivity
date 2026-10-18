@@ -4521,5 +4521,66 @@ lemma simplicialReplacementInitialAssembly_projection {C : Type u} [Category.{u}
     simplicialReplacementInitialAssembly F ht ≫ simplicialReplacementProjection F =
       fst (nerve C) (F.obj t)
 
+def simplicialReplacementAssembly {C : Type u} [Category.{u} C]
+    {K : SSet.{u}} {F : C ⥤ SSet.{u}}
+    (η : (CategoryTheory.Functor.const C).obj K ⟶ F) :
+    nerve C ⊗ K ⟶ simplicialReplacement F
+
+lemma simplicialReplacementAssembly_baseMap
+    {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) {K : SSet.{u}} {F : C ⥤ SSet.{u}}
+    (η : (CategoryTheory.Functor.const C).obj K ⟶ F) :
+    simplicialReplacementAssembly (CategoryTheory.Functor.whiskerLeft H η) ≫
+        simplicialReplacementBaseMap H F =
+      (nerveMap H ▷ K) ≫ simplicialReplacementAssembly η
+
+lemma simplicialReplacementAssembly_baseMap_isPullback
+    {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) {K : SSet.{u}} {F : C ⥤ SSet.{u}}
+    (η : (CategoryTheory.Functor.const C).obj K ⟶ F) :
+    IsPullback (simplicialReplacementAssembly (CategoryTheory.Functor.whiskerLeft H η))
+      (nerveMap H ▷ K) (simplicialReplacementBaseMap H F)
+      (simplicialReplacementAssembly η)
+
+def scaffoldFiniteTail (n : ℕ) :
+    ULift.{u} (Fin (n + 1)) ⥤ ULift.{u} (Fin (n + 2))
+
+def scaffoldFiniteInitial (n : ℕ) : IsInitial (ULift.up (0 : Fin (n + 1)) : ULift.{u} _)
+
+def scaffoldFiniteTailFactor {n m : ℕ}
+    (σ : ComposableArrows (ULift.{u} (Fin (n + 2))) m) :
+    ComposableArrows (ULift.{u} (Fin (n + 1))) m
+
+lemma scaffoldFiniteChain_positive {n m : ℕ}
+    (σ : ComposableArrows (ULift.{u} (Fin (n + 2))) m)
+    (h : (σ.obj 0).down ≠ 0) (i : Fin (m + 1)) : 0 < (σ.obj i).down.val
+
+lemma scaffoldFiniteTailFactor_comp {n m : ℕ}
+    (σ : ComposableArrows (ULift.{u} (Fin (n + 2))) m)
+    (h : (σ.obj 0).down ≠ 0) :
+    scaffoldFiniteTailFactor σ ⋙ scaffoldFiniteTail n = σ
+
+instance scaffoldFiniteTail_nerveMap_mono (n : ℕ) : Mono (nerveMap (scaffoldFiniteTail.{u} n))
+
+lemma scaffoldFiniteReplacement_cover (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (d : SimplexCategoryᵒᵖ) :
+    Set.range ((simplicialReplacementBaseMap (scaffoldFiniteTail n) F).app d) ⊔
+      Set.range ((simplicialReplacementInitialAssembly F (scaffoldFiniteInitial (n + 1))).app d) =
+        Set.univ
+
+lemma scaffoldFiniteTail_complement_zero (n : ℕ) (K : SSet.{u})
+    (d : SimplexCategoryᵒᵖ) (s : (nerve (ULift.{u} (Fin (n + 2))) ⊗ K).obj d)
+    (hs : s ∉ Set.range ((nerveMap (scaffoldFiniteTail n) ▷ K).app d)) :
+    (s.1.obj 0).down = 0
+
+lemma scaffoldFiniteReplacement_isPushout (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    IsPushout
+      (simplicialReplacementAssembly (CategoryTheory.Functor.whiskerLeft (scaffoldFiniteTail n)
+        (simplicialReplacementInitialCoefficient F (scaffoldFiniteInitial (n + 1)))))
+      (nerveMap (scaffoldFiniteTail n) ▷ F.obj (ULift.up 0))
+      (simplicialReplacementBaseMap (scaffoldFiniteTail n) F)
+      (simplicialReplacementInitialAssembly F (scaffoldFiniteInitial (n + 1)))
+
 end SerrePositivity.InfinityCategories
 ```
