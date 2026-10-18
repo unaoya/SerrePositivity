@@ -71,3 +71,57 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.IsProCartesian
 #print axioms SerrePositivity.KST.ProExcision.IsProCartesian
 
+#check @SerrePositivity.KST.ProExcision.Tower.transition_apply
+#print axioms SerrePositivity.KST.ProExcision.Tower.transition_apply
+
+#check @SerrePositivity.KST.ProExcision.LevelHom.naturality_apply
+#print axioms SerrePositivity.KST.ProExcision.LevelHom.naturality_apply
+
+#check @SerrePositivity.KST.ProExcision.IsProMono
+#print axioms SerrePositivity.KST.ProExcision.IsProMono
+
+#check @SerrePositivity.KST.ProExcision.IsProEpi
+#print axioms SerrePositivity.KST.ProExcision.IsProEpi
+
+#check @SerrePositivity.KST.ProExcision.IsProIso.isProMono
+#print axioms SerrePositivity.KST.ProExcision.IsProIso.isProMono
+
+#check @SerrePositivity.KST.ProExcision.IsProIso.isProEpi
+#print axioms SerrePositivity.KST.ProExcision.IsProIso.isProEpi
+
+#check @SerrePositivity.KST.ProExcision.descendRange
+#print axioms SerrePositivity.KST.ProExcision.descendRange
+
+#check @SerrePositivity.KST.ProExcision.descendRange_apply
+#print axioms SerrePositivity.KST.ProExcision.descendRange_apply
+
+#check @SerrePositivity.KST.ProExcision.isProIso_of_mono_epi
+#print axioms SerrePositivity.KST.ProExcision.isProIso_of_mono_epi
+
+#check @SerrePositivity.KST.ProExcision.FiveTerm
+#print axioms SerrePositivity.KST.ProExcision.FiveTerm
+
+#check @SerrePositivity.KST.ProExcision.FiveTermHom
+#print axioms SerrePositivity.KST.ProExcision.FiveTermHom
+
+#check @SerrePositivity.KST.ProExcision.FiveTermHom.isProMono
+#print axioms SerrePositivity.KST.ProExcision.FiveTermHom.isProMono
+
+#check @SerrePositivity.KST.ProExcision.FiveTermHom.isProEpi
+#print axioms SerrePositivity.KST.ProExcision.FiveTermHom.isProEpi
+
+#check @SerrePositivity.KST.ProExcision.FiveTermHom.isProIso
+#print axioms SerrePositivity.KST.ProExcision.FiveTermHom.isProIso
+
+#check @SerrePositivity.KST.ProExcision.LevelwiseExactSequence
+#print axioms SerrePositivity.KST.ProExcision.LevelwiseExactSequence
+
+#check @SerrePositivity.KST.ProExcision.ExactTowerSequence
+#print axioms SerrePositivity.KST.ProExcision.ExactTowerSequence
+
+#check @SerrePositivity.KST.ProExcision.LevelwiseExactSequence.toTower
+#print axioms SerrePositivity.KST.ProExcision.LevelwiseExactSequence.toTower
+
+#check @SerrePositivity.KST.ProExcision.ExactTowerSequence.fiveTerm
+#print axioms SerrePositivity.KST.ProExcision.ExactTowerSequence.fiveTerm
+

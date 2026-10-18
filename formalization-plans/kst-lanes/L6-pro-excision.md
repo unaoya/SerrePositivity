@@ -31,9 +31,11 @@
 
 ## 現在地
 
-- L6a：進行中。塔・レベル射・pro 同型判定・関手保存・再添字・pro-零性・対角共終性を検証済み。
-- L6a の残件：L1 の長完全列の塔への持ち上げ、L2 の pro 五項補題。
-- L6b：未着手。
+- L6a：最小形式の実装完了。塔・レベル射・pro 同型判定・関手保存・再添字・pro-零性・対角共終性を検証済み。
+- L1：具体的な自然なレベル完全列から塔への持ち上げを証明。fiber 長完全列自体は K-L9 の入力。
+- L2：加群の塔における pro 五項補題を証明。外側はレベル同型でなく pro 同型。
+- L3：任意の関手での保存を証明したので、加法関手にも適用可能。具体的な有理化関手は K-L9 から借用。
+- L6b：着手。Koszul の既存定義と遷移・Artin–Rees の依存を調査中。
 - L6c：未着手。
 - L6d：未着手。紙の検証を実装前に記録する。
 - L6e：未着手。simple 空間版の検証が必要。
@@ -58,7 +60,10 @@
 | IsProZero.map | Pro.lean | 検証済み | 零射保存関手による保存 |
 | IsProEquivalence | Pro.lean | 検証済み | 次数別の pro 同型判定 |
 | IsProCartesian | Pro.lean | 検証済み | 与えられた hofib 比較の pro 同値 |
-| pro_five_lemma | Pro.lean | 予定 | 完全列に対する pro 五項補題 |
+| FiveTermHom.isProIso | FiveLemma.lean | 検証済み | 外側四射が pro 同型なら中央も pro 同型 |
+| isProIso_of_mono_epi | ModulePro.lean | 検証済み | 核・余核の eventual 零化から逆射を構成 |
+| LevelwiseExactSequence.toTower | ExactSequence.lean | 検証済み | L1 の自然な族を塔に組み立てる |
+| ExactTowerSequence.fiveTerm | ExactSequence.lean | 検証済み | 五項部分の抽出 |
 | koszul_pro_zero | KoszulPro.lean | 予定 | KST Lemma 4.9 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
