@@ -5811,3 +5811,97 @@ McCarthy の具体的な単体ホモトピー、単体積 Quillen A、object/cor
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3174 jobs）、公理監査成功（1391 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.49 S₂ と全 cofiber 正方形の相対比較・完全性・反復 S 実現の比較
+
+McCarthy 法で実際の正方形を扱うため、S₂ の全 gapped Ar[2] 図式から、
+全 cofiber 正方形への中央制限 `sTwoCofiberRestriction` を構成した。
+この制限写像そのものが trivial Kan fibration であることを証明した。
+零次元では指定正方形に外側の零対角を補い、正次元では中央部分複体と
+パラメーター境界を同時に固定して延長した。新しい Ar[2] 単体には最初の零対角か
+最後の零対角が含まれるため、その始対象性・終対象性で相対充填できる。
+正次元の境界充填は C に quasicategory 性すら要求せず、
+零次元の gapped 性の構成を合わせる際に `Quasicategory C` を要求する。
+`IsStable C` はこの trivial Kan fibration の証明の前提ではない。
+
+cofiber 正方形全体の quasicategory 性、C が安定なときの安定性、
+制限写像の零対象・任意の押し出しの保存も証明した。
+単体的に選んだ切断は中央の正方形を厳密に回収し、
+切断自身も零対象と任意の押し出しを保存する。
+制限後に補完し直す合成と恒等関手の関手同型、および quasicategory の同値を構成した。
+切断の入力 C に関する自然性や、S₂ における厳密な両側逆は主張しない。
+
+`cofiberStableModel` と、安定な入力間の完全関手 `sTwoCofiberComparison`・
+`sTwoCofiberInverse` を構成した。
+`multiRealizationFunctor` による任意回数の反復 S•・core・対角実現でも、
+比較の像が anodyne 局所化で同型になることを既存の保存定理から証明した。
+これにより正方形表示で得る加法性を既存の core S 実現へ移す比較を用意した。
+object S の比較の弱同値性や、零対象を一つに固定した正方形部分模型への比較は未証明。
+
+追加ファイル：`STwoCofiberRestriction.lean`、`STwoCofiberLifting.lean`、`STwoCofiberModel.lean`。
+以下は namespace `SerrePositivity.KST.SConstruction` 内の公開宣言の正確な型。
+
+```lean
+lemma isGapped_two_middle {C : SSet.{u}} {F : arNerve 2 ⟶ C} (hF : IsGapped F) :
+    IsZeroVertex (squareVertex (arTwoMiddleSquare ≫ F) 0 1) ∧
+      IsPushoutSquare (arTwoMiddleSquare ≫ F)
+
+def sTwoCofiberRestriction (C : SSet.{u}) : sConstruction 2 C ⟶ cofiberDiagrams C
+
+lemma sTwoCofiberRestriction_ι (C : SSet.{u}) :
+    sTwoCofiberRestriction C ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
+      (gappedSubcomplex 2 C).ι ≫ (pre arTwoMiddleSquare).app C
+
+lemma sTwoCofiberRestriction_vertex_surjective (C : SSet.{u}) [Quasicategory C] :
+    Function.Surjective ((sTwoCofiberRestriction C).app (Opposite.op ⦋0⦌))
+
+lemma sTwoCofiberRestriction_hasLiftingProperty_boundary (n : ℕ) (C : SSet.{u}) :
+    HasLiftingProperty (boundary (n + 1)).ι (sTwoCofiberRestriction C)
+
+instance sTwoCofiberRestriction_trivialKanFibration (C : SSet.{u}) [Quasicategory C] :
+    TrivialKanFibration (sTwoCofiberRestriction C)
+
+instance cofiberDiagrams_quasicategory (C : SSet.{u}) [Quasicategory C] :
+    Quasicategory (cofiberDiagrams C)
+
+instance cofiberDiagrams_isStable (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    IsStable (cofiberDiagrams C)
+
+lemma sTwoCofiberRestriction_preservesSConstructionData (C : SSet.{u}) [Quasicategory C] :
+    PreservesSConstructionData (sTwoCofiberRestriction C)
+
+def cofiberStableModel (X : StableModel.{u}) : StableModel.{u}
+
+def sTwoCofiberComparison (X : StableModel.{u}) : sStableModel 2 X ⟶ cofiberStableModel X
+
+def sTwoCofiberSection (C : SSet.{u}) [Quasicategory C] : cofiberDiagrams C ⟶ sConstruction 2 C
+
+lemma sTwoCofiberSection_projection (C : SSet.{u}) [Quasicategory C] :
+    sTwoCofiberSection C ≫ sTwoCofiberRestriction C = 𝟙 _
+
+lemma sTwoCofiberSection_preservesSConstructionData (C : SSet.{u}) [Quasicategory C] :
+    PreservesSConstructionData (sTwoCofiberSection C)
+
+def sTwoCofiberInverse (X : StableModel.{u}) : cofiberStableModel X ⟶ sStableModel 2 X
+
+def sTwoCofiberSection_comparison (C : SSet.{u}) [Quasicategory C] :
+    FunctorIso (sTwoCofiberRestriction C ≫ sTwoCofiberSection C) (𝟙 (sConstruction 2 C))
+
+def sTwoCofiberEquivalence (C : SSet.{u}) [Quasicategory C] :
+    QCatEquivalence (sConstruction 2 C) (cofiberDiagrams C)
+
+lemma sTwoCofiberComparison_realization_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      ((multiRealizationFunctor r).map (sTwoCofiberComparison X)))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+§6.45–48 の pushout の選択・正規化・零射の自然変換に加え、
+全 cofiber 正方形表示との相対比較と反復 core S 実現での弱同値まで証明済み。
+McCarthy の具体的な単体ホモトピー、単体積 Quillen A、object/core 比較と加法性比較の弱同値性、
+面のホモトピー引き戻し条件は未完了。
+反復 S 実現と §6.43 の homotopy fiber の比較、既存の構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3177 jobs）、公理監査成功（1409 宣言、標準三公理のみ）。追加公理・sorry なし。

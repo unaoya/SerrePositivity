@@ -3664,3 +3664,40 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.zeroNaturalTransformation_fixed
 #check @SerrePositivity.KST.SConstruction.zeroNaturalTransformation_constant
 #print axioms SerrePositivity.KST.SConstruction.zeroNaturalTransformation_constant
+
+#check @SerrePositivity.KST.SConstruction.isGapped_two_middle
+#print axioms SerrePositivity.KST.SConstruction.isGapped_two_middle
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberRestriction
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberRestriction
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_ι
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_ι
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_vertex_surjective
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_vertex_surjective
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_hasLiftingProperty_boundary
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_hasLiftingProperty_boundary
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.cofiberDiagrams_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.cofiberDiagrams_quasicategory
+#check @SerrePositivity.KST.SConstruction.cofiberDiagrams_isStable
+#print axioms SerrePositivity.KST.SConstruction.cofiberDiagrams_isStable
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberRestriction_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.cofiberStableModel
+#print axioms SerrePositivity.KST.SConstruction.cofiberStableModel
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberComparison
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberComparison
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberSection
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberSection
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberSection_projection
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberSection_projection
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberSection_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberSection_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberInverse
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberInverse
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberSection_comparison
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberSection_comparison
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberEquivalence
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberEquivalence
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberComparison_realization_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberComparison_realization_localized_isIso

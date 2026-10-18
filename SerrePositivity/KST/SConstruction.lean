@@ -151,4 +151,8 @@ public import SerrePositivity.KST.SConstruction.DiagramPushoutChoice
 
 public import SerrePositivity.KST.SConstruction.ZeroNaturalTransformations
 
+public import SerrePositivity.KST.SConstruction.STwoCofiberRestriction
+public import SerrePositivity.KST.SConstruction.STwoCofiberLifting
+public import SerrePositivity.KST.SConstruction.STwoCofiberModel
+
 /-! # ∞-S• 構成と連結 K 理論 -/
