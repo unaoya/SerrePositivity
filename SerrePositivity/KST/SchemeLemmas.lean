@@ -160,3 +160,6 @@ public import SerrePositivity.KST.SchemeLemmas.FiniteTypeTensorPureTransformBase
 public import SerrePositivity.KST.SchemeLemmas.PureTransformScalarRestriction
 public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraPureTransform
 public import SerrePositivity.KST.SchemeLemmas.FiniteTypePureTransformFlatSpec
+public import SerrePositivity.KST.SchemeLemmas.CoefficientIdeal
+public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientIdeal
+public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientMembership

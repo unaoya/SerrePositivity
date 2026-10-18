@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1207 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1224 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -110,6 +110,7 @@
 - C ⊗_A M の C ⊗_A B 上の作用を明示的データとして構成し、純テンソルの公式・C とのスカラー塔・同代数上の有限生成性を証明済み。大域インスタンスには登録していない。
 - Noether な中間環 C 上で、基底変更した有限型加群の境界ねじれの一様消滅、および元の加群の二段の基底変更を照合した平坦性の保存を証明済み。
 - 基底変更代数上の純変換と係数環上の純変換の実比較同型、前者の有限表示性、および有限型代数上有限な加群の全アフィン引き戻し平坦性への接続を証明済み。
+- 自由な直和の明示的な直和因子となる代数について、係数イデアルの生成元への還元・有限生成性・拡大イデアルの所属判定・分裂表示からの独立性・境界元の冪の所属を証明済み。一般の平坦有限表示代数の直和因子表示の存在と Fitting イデアルによる自由化は未証明。
 - 正則な境界を持つ全アフィン試験対象への純変換の引き戻し平坦性を定義し、Noether アフィンモデルでの証明・任意の前合成での保存・開被覆の局所性を証明済み。
 - チャート環を基礎環とした性質を元の基礎環へ戻す定理、通常 blowup のチャート平坦性との両方向の接続を証明済み。
 - 有限アフィン被覆上の admissible 中心と局所の引き戻し平坦性から、中心の補開集合が U に等しい大域中心と同じ性質を構成・証明済み。
@@ -452,6 +453,20 @@ A が Noether、B が A 上有限型、C が Noether なら C ⊗_A B も Noethe
 追加基底変更先の境界ねじれの一様性へ接続できる。
 原典は Stacks 0815, Theorem 38.30.7 の純変換の有限型条件。
 
+#### 一般有限型加群に向けた係数イデアル
+
+原典：Stacks 0810, Lemma 38.30.2（0811, Lemma 38.30.3 の環論的段階）。
+有限 A 加群の行列式中心の構成だけでは、一般の有限 B 加群を扱えない。
+次は A 線形写像 e : B → A^(ι)、p : A^(ι) → B と p e = id を明示的に与えた場合、
+B のイデアル J の e による全係数が生成する A のイデアルを定義する。
+A^(ι) は有限台の直和であり、添字集合の有限性は仮定しない。
+任意の直和の線形自己写像は係数イデアルへの所属を保つことを有限台の展開で証明する。
+乗法写像 e ∘ (b·) ∘ p にこれを適用すると、J が有限個の g で生成されれば、
+係数イデアルはそれらの e(g) の有限個の非零係数で生成される。
+この段階では直和因子としての B の存在も Fitting イデアルの性質も仮定フィールドに隠さない。
+分裂写像を入力とする係数計算を先に証明し、直和因子の存在と自由化・次元帰納は別の実在定理として残す。
+この実装前の文言と方針はチャットで報告済み。
+
 ### 7.2 証明の分解
 
 1. 閉補集合を定義する有限型イデアル層を選ぶ。
@@ -608,6 +623,12 @@ A が Noether、B が A 上有限型、C が Noether なら C ⊗_A B も Noethe
 | `tensorAlgebraPureTransformEquiv` | TensorAlgebraPureTransform | 検証済み | 基底変更代数上と係数環上の純変換の比較 |
 | `tensorAlgebraPureTransform_finitePresentation` | TensorAlgebraPureTransform | 検証済み | 基底変更代数上の有限表示性 |
 | `hasFlatPurePullbacks_spec_of_finiteTypeModule` | FiniteTypePureTransformFlatSpec | 検証済み | 一般の有限型加群のアフィン引き戻し平坦性 |
+| `finsuppCoefficientIdeal_fg` | CoefficientIdeal | 検証済み | 有限個の直和ベクトルの係数イデアルの有限生成性 |
+| `splitAlgebraCoefficientIdeal_span` | SplitAlgebraCoefficientIdeal | 検証済み | 代数イデアルの生成元の係数への還元 |
+| `splitAlgebraCoefficientIdeal_fg` | SplitAlgebraCoefficientIdeal | 検証済み | 直和因子表示の下での係数中心の有限生成性 |
+| `splitAlgebra_mem_map_iff` | SplitAlgebraCoefficientMembership | 検証済み | 全係数と拡大イデアルへの所属の同値 |
+| `splitAlgebraCoefficientIdeal_eq` | SplitAlgebraCoefficientMembership | 検証済み | 分裂表示からの独立性 |
+| `exists_pow_mem_splitAlgebraCoefficientIdeal` | SplitAlgebraCoefficientMembership | 検証済み | 境界外の非消滅から境界冪の所属 |
 | `finiteType_tensorPureTransform_flat_baseChange` | FiniteTypeTensorPureTransformBaseChange | 検証済み | 一般有限型加群のチャート平坦性の保存 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
