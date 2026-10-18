@@ -8,8 +8,10 @@ Koszul 基底変換と cochain cocycle を対象ビルド済み。外積模型�
 E∩U_i と Ko(A;a)[S] の共通 dg 模型、D(n) の局所模型、各 localHomKFlat を構成済み。
 普遍チャートの関係式商と自由多項式表示の環・代数同型、および有限関係族の弱正則性と
 Koszul 解消性を証明済み。通常の普遍チャート環への underlying 複体の擬同型を構成済み。
-この比較射は既存の選択付き H⁰ 同型を使うため、標準の cdga 添加射とは同一視しない。
-標準添加射の積・単位保存と解消比較、および全有限重なり図式の組立ては未完了。
+既存の選択付き H⁰ 同型を使う複体比較とは別に、生成元を零へ送る標準添加射を構成済み。
+標準 H⁰=R/im d の計算、添加の成分ごとの積・単位保存、係数代数に関する自然性と
+普遍チャートへの標準添加射の擬同型性を証明済み。
+単一複体の dg 圏構造への束ね直しと全有限重なり図式の組立ては未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -163,6 +165,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `universalRelation_fin_isWeaklyRegular`・`universalRelation_fin_isKoszulResolution` | UniversalRegularSequence | 任意の異なる有限関係族の弱正則性と解消性 |
 | `universalChartSequence_isKoszulResolution`・`universalPresentationAlgEquiv` | UniversalKoszulResolution | 既存チャート列の解消性と係数代数同型 |
 | `universalChartH0Iso`・`universalChartComplexComparison`・擬同型性 | UniversalKoszulResolution | 選択付き H⁰ 同型を経由する underlying 複体の比較 |
+| `exteriorKoszulAugmentation`・次数成分・成分の積/単位保存 | ExteriorAugmentation | 生成元を零へ送る標準添加鎖写像 |
+| `exteriorBoundary_range`・`exteriorCochainAugmentationComponent_zero` | ExteriorAugmentationBoundary | 境界像と次数0添加の明示式 |
+| `exteriorHomologyZeroIso`・`exteriorOpcyclesZeroIso_projection` | ExteriorHomologyZero | H⁰=R/im d の標準同型と射影公式 |
+| `exteriorQuotientAugmentation_eq_toSingle`・`exteriorQuotientAugmentation_quasiIso` | ExteriorQuotientAugmentation | 商への標準射と H⁰ 比較の一致 |
+| `exteriorKoszulAugmentation_naturality`・`exteriorKoszulAugmentation_quasiIso_of_quotient` | ExteriorAugmentationNaturality | 係数代数の表示変更と擬同型移送 |
+| `universalCanonicalAugmentation`・`universalCanonicalAugmentation_quasiIso` | UniversalCanonicalAugmentation | 通常の普遍チャートへの標準添加射と擬同型性 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -194,13 +202,15 @@ O(m) の単元整数冪による推移射と cocycle、および可逆性は coc
 チャート・例外因子・D(n) は既存 `localHomKFlat` を満たす。
 普遍チャートの多項式商表示と有限正則関係族の Koszul 解消性は証明済み。
 変数再配置で各関係を負の独立モニック一次式へ移し、既存の一般モニック補題を利用する。
-既存 Koszul 解消定理の H⁰ 同型は選択を含むため、複体比較射の積・単位保存は未証明。
-標準 cdga 添加射との比較、および全重なり図式上での降下模型の組立ては未完了。
+既存 Koszul 解消定理の H⁰ 同型は選択を含むため、これを使う旧比較射の積・単位保存は主張しない。
+標準添加射を別途構成し、H⁰ と微分像の商の標準同型、成分ごとの積・単位保存、
+係数代数に関する自然性、普遍チャートの標準添加射の擬同型性を証明済み。
+単一複体の dg 圏構造への束ね直しと全重なり図式上での降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全785定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全847定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は標準の cdga 添加射の構成と、普遍 Koszul 解消との比較。
+次の実装単位は標準添加射の dg 関手への束ね直しと、重なり図式との整合性。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 

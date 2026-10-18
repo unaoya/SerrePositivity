@@ -82,3 +82,9 @@ public import SerrePositivity.KST.DerivedBlowup.UniversalPresentationEquiv
 public import SerrePositivity.KST.DerivedBlowup.UniversalSplitCoordinates
 public import SerrePositivity.KST.DerivedBlowup.UniversalRegularSequence
 public import SerrePositivity.KST.DerivedBlowup.UniversalKoszulResolution
+public import SerrePositivity.KST.DerivedBlowup.ExteriorAugmentation
+public import SerrePositivity.KST.DerivedBlowup.ExteriorAugmentationBoundary
+public import SerrePositivity.KST.DerivedBlowup.ExteriorHomologyZero
+public import SerrePositivity.KST.DerivedBlowup.ExteriorQuotientAugmentation
+public import SerrePositivity.KST.DerivedBlowup.ExteriorAugmentationNaturality
+public import SerrePositivity.KST.DerivedBlowup.UniversalCanonicalAugmentation
