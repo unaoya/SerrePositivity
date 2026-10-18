@@ -634,3 +634,6 @@ public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
 public import SerrePositivity.InfinityCategories.F1.CoherentSimplexStrictification
 public import SerrePositivity.InfinityCategories.F1.LocalKanDiagramStrictification
 public import SerrePositivity.InfinityCategories.F1.LocalUnstraighteningStrictification
+public import SerrePositivity.InfinityCategories.F1.EdgewiseEnrichedCategory
+public import SerrePositivity.InfinityCategories.F1.EdgewiseEnrichedComparison
+public import SerrePositivity.InfinityCategories.F1.EdgewiseKanEnriched

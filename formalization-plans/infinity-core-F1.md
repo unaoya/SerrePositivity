@@ -12765,5 +12765,81 @@ lemma exists_smallLocalUnstraighteningVertexIso {n : ℕ}
           (pullback.snd (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve A))
             (stdSimplex.isoNerve n).hom)))
 
+def EdgewiseEnrichedObject (C : Type v)
+
+def edgewiseEnrichedIdentity {C : Type v} [Category.{u} C] [SimplicialCategory C] (X : C) :
+    𝟙_ SSet.{u} ⟶ edgewiseSubdivision (SimplicialCategory.sHom X X)
+
+def edgewiseEnrichedComposition {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X Y Z : C) :
+    edgewiseSubdivision (SimplicialCategory.sHom X Y) ⊗
+      edgewiseSubdivision (SimplicialCategory.sHom Y Z) ⟶
+        edgewiseSubdivision (SimplicialCategory.sHom X Z)
+
+lemma edgewiseEnrichedIdentity_comp {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X Y : C) :
+    (λ_ (edgewiseSubdivision (SimplicialCategory.sHom X Y))).inv ≫
+      edgewiseEnrichedIdentity X ▷ _ ≫ edgewiseEnrichedComposition X X Y = 𝟙 _
+
+lemma edgewiseEnrichedComposition_id {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X Y : C) :
+    (ρ_ (edgewiseSubdivision (SimplicialCategory.sHom X Y))).inv ≫
+      _ ◁ edgewiseEnrichedIdentity Y ≫ edgewiseEnrichedComposition X Y Y = 𝟙 _
+
+lemma edgewiseEnrichedComposition_assoc {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (W X Y Z : C) :
+    (α_ (edgewiseSubdivision (SimplicialCategory.sHom W X))
+      (edgewiseSubdivision (SimplicialCategory.sHom X Y))
+      (edgewiseSubdivision (SimplicialCategory.sHom Y Z))).inv ≫
+      edgewiseEnrichedComposition W X Y ▷ _ ≫ edgewiseEnrichedComposition W Y Z =
+    _ ◁ edgewiseEnrichedComposition X Y Z ≫ edgewiseEnrichedComposition W X Z
+
+instance edgewiseEnrichedObject_enrichedCategory (C : Type v)
+    [Category.{u} C] [SimplicialCategory C] :
+    EnrichedCategory SSet.{u} (EdgewiseEnrichedObject C)
+
+instance edgewiseEnrichedObject_category (C : Type v) [Category.{u} C] [SimplicialCategory C] :
+    Category.{u} (EdgewiseEnrichedObject C)
+
+instance edgewiseEnrichedObject_simplicialCategory (C : Type v)
+    [Category.{u} C] [SimplicialCategory C] : SimplicialCategory (EdgewiseEnrichedObject C)
+
+instance edgewiseEnrichedObject_sHom_kanComplex {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : EdgewiseEnrichedObject C) :
+    KanComplex (SimplicialCategory.sHom X Y)
+
+def edgewiseEnrichedRight (C : Type v) [Category.{u} C] [SimplicialCategory C] :
+    EnrichedFunctor SSet.{u} (EdgewiseEnrichedObject C) C
+
+def edgewiseEnrichedInfinityMap (C : Type v) [Category.{u} C] [SimplicialCategory C] :
+    SimplicialNerve (EdgewiseEnrichedObject C) ⟶ SimplicialNerve C
+
+lemma edgewiseEnrichedInfinityMap_isFullyFaithful (C : Type v) [Category.{u} C]
+    [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] :
+    IsFullyFaithful (edgewiseEnrichedInfinityMap C)
+
+lemma edgewiseEnrichedInfinityMap_isEssentiallySurjective (C : Type v)
+    [Category.{u} C] [SimplicialCategory C] : IsEssentiallySurjective (edgewiseEnrichedInfinityMap C)
+
+lemma edgewiseEnrichedInfinityMap_isQCatEquivalence (C : Type v) [Category.{u} C]
+    [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] :
+    IsQCatEquivalence (edgewiseEnrichedInfinityMap C)
+
+noncomputable def edgewiseEnrichedInfinityEquivalence (C : Type v) [Category.{u} C]
+    [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] :
+    QCatEquivalence (SimplicialNerve (EdgewiseEnrichedObject C)) (SimplicialNerve C)
+
+def edgewiseInternalHomEvaluation (X Y : SSet.{u}) :
+    edgewiseSubdivision X ⊗ edgewiseSubdivision ((ihom X).obj Y) ⟶ edgewiseSubdivision Y
+
+def edgewiseKanEnrichedMap (X Y : SSet.{u}) :
+    edgewiseSubdivision ((ihom X).obj Y) ⟶ (ihom (edgewiseSubdivision X)).obj (edgewiseSubdivision Y)
+
+def edgewiseKanEnriched : EnrichedFunctor SSet.{u} (EdgewiseEnrichedObject KanObject.{u}) KanObject.{u}
+
+lemma edgewiseInternalHomEvaluation_right (X Y : SSet.{u}) :
+    edgewiseInternalHomEvaluation X Y ≫ edgewiseRight Y =
+      (edgewiseRight X ⊗ₘ edgewiseRight ((ihom X).obj Y)) ≫ (ihom.ev X).app Y
+
 end SerrePositivity.InfinityCategories
 ```
