@@ -5017,5 +5017,79 @@ lemma relativeJoin_left_isPushout {Y S : SSet.{u}} (g : Y ⟶ S)
     IsPushout ((relativeJoinLeftFunctor g).map u) ((relativeJoinLeftFunctor g).map v)
       ((relativeJoinLeftFunctor g).map r) ((relativeJoinLeftFunctor g).map s)
 
+noncomputable def mappingCylinderOverMap {S : SSet.{u}} {A B : Over S} (u : A ⟶ B) :
+    pushout (prismEndpoint 1 A.left) A.hom ⟶ pushout (prismEndpoint 1 B.left) B.hom
+
+lemma mappingCylinderOverMap_inl {S : SSet.{u}} {A B : Over S} (u : A ⟶ B) :
+    pushout.inl (prismEndpoint 1 A.left) A.hom ≫ mappingCylinderOverMap u =
+      ((Δ[1] : SSet.{u}) ◁ u.left) ≫ pushout.inl (prismEndpoint 1 B.left) B.hom
+
+lemma mappingCylinderOverMap_inr {S : SSet.{u}} {A B : Over S} (u : A ⟶ B) :
+    pushout.inr (prismEndpoint 1 A.left) A.hom ≫ mappingCylinderOverMap u =
+      pushout.inr (prismEndpoint 1 B.left) B.hom
+
+lemma mappingCylinderOverMap_id {S : SSet.{u}} (A : Over S) :
+    mappingCylinderOverMap (𝟙 A) = 𝟙 (pushout (prismEndpoint 1 A.left) A.hom)
+
+lemma mappingCylinderOverMap_comp {S : SSet.{u}} {A B C : Over S}
+    (u : A ⟶ B) (v : B ⟶ C) :
+    mappingCylinderOverMap (u ≫ v) = mappingCylinderOverMap u ≫ mappingCylinderOverMap v
+
+noncomputable def mappingCylinderOverFunctor (S : SSet.{u}) : Over S ⥤ SSet.{u}
+
+noncomputable def mappingCylinderEndpointNat (S : SSet.{u}) :
+    Over.forget S ⟶ Over.forget S ⋙ tensorLeft (Δ[1] : SSet.{u})
+
+def mappingCylinderStructureNat (S : SSet.{u}) :
+    Over.forget S ⟶ (CategoryTheory.Functor.const (Over S)).obj S
+
+noncomputable def mappingCylinderInlNat (S : SSet.{u}) :
+    Over.forget S ⋙ tensorLeft (Δ[1] : SSet.{u}) ⟶ mappingCylinderOverFunctor S
+
+noncomputable def mappingCylinderInrNat (S : SSet.{u}) :
+    (CategoryTheory.Functor.const (Over S)).obj S ⟶ mappingCylinderOverFunctor S
+
+instance mappingCylinderOverFunctor_preservesColimitsOfShape (S : SSet.{u})
+    (J : Type*) [Category* J] [IsConnected J] [HasColimitsOfShape J SSet.{u}] :
+    PreservesColimitsOfShape J (mappingCylinderOverFunctor S)
+
+lemma relativeJoinInr_leftMap {S : SSet.{u}} {A B : Over S} (u : A ⟶ B) :
+    relativeJoinInr A.hom (𝟙 S) ≫ relativeJoinLeftMap (𝟙 S) u.left u.w =
+      relativeJoinInr B.hom (𝟙 S)
+
+lemma relativeJoinPrism_naturality {S : SSet.{u}} {A B : Over S} (u : A ⟶ B) :
+    relativeJoinPrism A.hom ≫ relativeJoinLeftMap (𝟙 S) u.left u.w =
+      ((Δ[1] : SSet.{u}) ◁ u.left) ≫ relativeJoinPrism B.hom
+
+lemma relativeJoinCylinderComparison_naturality {S : SSet.{u}} {A B : Over S}
+    (u : A ⟶ B) :
+    mappingCylinderOverMap u ≫ relativeJoinCylinderComparison B.hom =
+      relativeJoinCylinderComparison A.hom ≫ relativeJoinLeftMap (𝟙 S) u.left u.w
+
+noncomputable def relativeJoinCylinderComparisonNat (S : SSet.{u}) :
+    mappingCylinderOverFunctor S ⟶ relativeJoinLeftFunctor (𝟙 S)
+
+lemma prismEndpoint_snd (i : Fin 2) (A : SSet.{u}) :
+    prismEndpoint i A ≫ snd (Δ[1] : SSet.{u}) A = 𝟙 A
+
+instance prismEndpoint_mono (i : Fin 2) (A : SSet.{u}) : Mono (prismEndpoint i A)
+
+lemma isPullback_prismEndpoint_naturality (i : Fin 2) {A B : SSet.{u}} (f : A ⟶ B) :
+    IsPullback (prismEndpoint i A) f ((Δ[1] : SSet.{u}) ◁ f) (prismEndpoint i B)
+
+instance mappingCylinderOverMap_mono {S : SSet.{u}} {A B : Over S}
+    (u : A ⟶ B) [Mono u.left] : Mono (mappingCylinderOverMap u)
+
+instance mappingCylinderOverFunctor_preservesMonomorphisms (S : SSet.{u}) :
+    (mappingCylinderOverFunctor S).PreservesMonomorphisms
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_of_pushout
+    {S : SSet.{u}} {A B C D : Over S} {i : A ⟶ B} {g : A ⟶ C}
+    {r : B ⟶ D} {s : C ⟶ D} [Mono i.left] (hp : IsPushout i g r s)
+    (hA : IsPrecompositionEquivalence (relativeJoinCylinderComparison A.hom))
+    (hB : IsPrecompositionEquivalence (relativeJoinCylinderComparison B.hom))
+    (hC : IsPrecompositionEquivalence (relativeJoinCylinderComparison C.hom)) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison D.hom)
+
 end SerrePositivity.InfinityCategories
 ```

@@ -220,3 +220,7 @@ public import SerrePositivity.InfinityCategories.F1.FatJoinPointCylinder
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPoint
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinLeftFunctor
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinLeftPushout
+public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverFunctor
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderNaturality
+public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderGluing
