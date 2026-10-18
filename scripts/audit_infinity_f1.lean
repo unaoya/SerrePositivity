@@ -355,3 +355,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pathLastReindex
 #check @SerrePositivity.InfinityCategories.pathLastMaximum_reindex
 #check @SerrePositivity.InfinityCategories.pathLastMaximumMap_apply
+#check @SerrePositivity.InfinityCategories.simplicialHom_id_comp_app
+#check @SerrePositivity.InfinityCategories.simplicialHom_comp_id_app
+#check @SerrePositivity.InfinityCategories.thickeningPath_end_eq_id
+#check @SerrePositivity.InfinityCategories.thickeningHom_comp_end_right
+#check @SerrePositivity.InfinityCategories.pathLastMaximumMap_comp
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonObj
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonObj_last
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonObj_cast
+#check @SerrePositivity.InfinityCategories.coherentHomEmptyMap
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonHom
+#check @SerrePositivity.InfinityCategories.simplicialHom_id_transport
+#check @SerrePositivity.InfinityCategories.simplicialHom_comp_transport
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex

@@ -1458,5 +1458,71 @@ lemma pathLastMaximumMap_apply {n : ℕ} (i : Fin (n + 1))
       (ULift.up (Fin.last (n + 1))))).obj d) (k : Fin (d.unop.len + 1)) :
     ((pathLastMaximumMap i).app d F).down.toOrderHom k = pathLastMaximum (F.obj k)
 
+lemma simplicialHom_id_comp_app {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X Y : C) (d : SimplexCategoryᵒᵖ) (a : (SimplicialCategory.sHom X Y).obj d) :
+    (eComp SSet X X Y).app d ((eId SSet X).app d PUnit.unit, a) = a
+
+lemma simplicialHom_comp_id_app {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X Y : C) (d : SimplexCategoryᵒᵖ) (a : (SimplicialCategory.sHom X Y).obj d) :
+    (eComp SSet X Y Y).app d (a, (eId SSet Y).app d PUnit.unit) = a
+
+lemma thickeningPath_end_eq_id {J : Type u} [LinearOrder J] (a : J) (P : Path a a) :
+    P = 𝟙 (⟨a⟩ : SimplicialThickening J)
+
+lemma thickeningHom_comp_end_right {J : Type u} [LinearOrder J]
+    (i j : SimplicialThickening J) (d : SimplexCategoryᵒᵖ)
+    (P : (SimplicialCategory.sHom i j).obj d) (Q : (SimplicialCategory.sHom j j).obj d) :
+    (eComp SSet i j j).app d (P, Q) = P
+
+lemma pathLastMaximumMap_comp {n : ℕ} (i j : Fin (n + 1)) (d : SimplexCategoryᵒᵖ)
+    (P : (nerve (Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up j.castSucc))).obj d)
+    (Q : (nerve (Path (ULift.up j.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1))))).obj d) :
+    (pathLastMaximumMap i).app d
+      ((eComp SSet (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
+        ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩).app d (P, Q)) =
+          (pathLastMaximumMap j).app d Q
+
+def coherentHomComparisonObj {C : Type v} (X Y : C) {n : ℕ} (i : Fin (n + 2)) : C
+
+lemma coherentHomComparisonObj_last {C : Type v} (X Y : C) (n : ℕ) :
+    coherentHomComparisonObj X Y (Fin.last (n + 1)) = Y
+
+lemma coherentHomComparisonObj_cast {C : Type v} (X Y : C) {n : ℕ} (i : Fin (n + 1)) :
+    coherentHomComparisonObj X Y i.castSucc = X
+
+def coherentHomEmptyMap {n : ℕ} (j : Fin (n + 1)) (Z : SSet.{u}) :
+    nerve (Path (ULift.up (Fin.last (n + 1)) : ULift.{u} (Fin (n + 2)))
+      (ULift.up j.castSucc)) ⟶ Z
+
+noncomputable def coherentHomComparisonHom {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) (i j : Fin (n + 2)) :
+    SimplicialCategory.sHom
+      (⟨ULift.up i⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2)))) ⟨ULift.up j⟩ ⟶
+      SimplicialCategory.sHom (coherentHomComparisonObj X Y i)
+        (coherentHomComparisonObj X Y j)
+
+lemma simplicialHom_id_transport {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {A X : C} (h : A = X) (d : SimplexCategoryᵒᵖ) :
+    (eId SSet A).app d PUnit.unit =
+      (eqToHom (congrArg₂ SimplicialCategory.sHom h h).symm).app d
+        ((eId SSet X).app d PUnit.unit)
+
+lemma simplicialHom_comp_transport {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {A B D X Y Z : C} (hA : A = X) (hB : B = Y) (hD : D = Z)
+    (d : SimplexCategoryᵒᵖ) (a : (SimplicialCategory.sHom X Y).obj d)
+    (b : (SimplicialCategory.sHom Y Z).obj d) :
+    (eComp SSet A B D).app d
+      ((eqToHom (congrArg₂ SimplicialCategory.sHom hA hB).symm).app d a,
+       (eqToHom (congrArg₂ SimplicialCategory.sHom hB hD).symm).app d b) =
+      (eqToHom (congrArg₂ SimplicialCategory.sHom hA hD).symm).app d
+        ((eComp SSet X Y Z).app d (a, b))
+
+noncomputable def coherentHomComparisonSimplex {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) : (SimplicialNerve C) _⦋n + 1⦌
+
 end SerrePositivity.InfinityCategories
 ```
