@@ -1408,3 +1408,37 @@ HTT 4.2.4.1 の双対。Sp の塔、非反転の比較、余極限側、E2a 完�
 他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-pullback-objects-aggregate.log` と
 `/tmp/gamma3-spectrum-pullback-objects-audit.log`。
+
+
+### γ3c：Sp の一脚 fibration の引き戻しの実際の ∞ 極限性
+
+`RelativePointedHomLifting` は、単射な源の制限と標的の Kan fibration に対して、
+点つき Hom の既存パラメータ上の族・指定部分・底への合成を同時に保つ相対ホーン充填を証明した。
+`SpectrumHomHornFamilies` は、源スペクトルの構造射の単射性を使ってその充填を段ごとに反復し、
+構造条件を満たす実際の族を構成した。
+`SpectrumHomFibrations` は族を L9 の全切断写像空間へ束ね、任意の X と各段が fibration の
+p : Y → Z に対する実際の豊穣 Hom の後合成写像の fibration 性を証明した。
+源の単射な構造射は既存の OmegaSpectrum の定義に含まれるものを使う。
+
+前回の錐の全豊穣 Hom の普遍性と合わせ、主定理を得た。
+
+```lean
+spectrumPullbackInfinityCone_isLimit {E X B : OmegaSpectrum.{u}}
+    (f : E ⟶ B) (g : X ⟶ B) [∀ n, Fibration (f.app n).right] :
+  IsLimitCone (spectrumPullbackInfinityCone f g)
+```
+
+左脚だけが各段で Kan fibration ならよく、右脚は任意。
+実際の対象、単射な構造射、全基点の Ω 条件、各段と豊穣 Hom の普遍性、Hom の左脚の
+fibration 性を全て検証した。Sp の指定された引き戻しの工程は ∞ 極限錐まで完成した。
+原典は BF 1978 §2、HTT A.3.3、HA §1.4.2、HTT 4.2.4.1 の双対、
+Kerodon 7.5.3.12・7.5.4.6。新規6宣言の正確な型・全前提は README の同名節へ記録し、監査へ追加。
+
+Sp の fibration の塔、非反転の比較、余極限側、E2a 完了後の E2b 適用は未完了。
+γ3 全体は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4636 jobs）、公開1229宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-pullback-infinity-aggregate.log` と
+`/tmp/gamma3-spectrum-pullback-infinity-audit.log`。

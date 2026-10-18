@@ -6836,3 +6836,124 @@ Sp の塔、非反転の比較、余極限側、E2a 完了後の E2b 適用も�
 他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-pullback-objects-aggregate.log` と
 `/tmp/gamma3-spectrum-pullback-objects-audit.log`。
+
+
+### γ3c：Sp の実際の一脚 fibration の引き戻しの ∞ 極限性
+
+`RelativePointedHomLifting` は、単射 i とパラメータのホーン j の pushout-product に沿う
+持ち上げを `relativeTensorLift` として構成した。
+`relativePointedHom_hornLift` はこれを点つき Hom の族へ適用し、
+既存パラメータ上の族、i に沿って指定された族、標的の fibration への合成を同時に保つ。
+uncurry して二つの部分を pushout へ貼り合わせ、充填した族の基点条件は
+指定部分の基点が源の基点に一致することから得る。
+源の単射性と標的の fibration 性だけを使い、パラメータや源の Kan 性は不要。
+
+`SpectrumHomHornFamilies` の `spectrumHom_hornFamily` は、L9 のスペクトル射
+p : Y → Z が各段で fibration のとき、Hom のホーンを各段で整合する族へ持ち上げる。
+零段は点つき Hom の後合成の fibration 性を使う。
+次段では源スペクトル X の構造射の単射性を用いて上の相対充填を適用する。
+ホーン上の既存の族との一致、底への合成、前段からの構造整合条件を全て保持して帰納する。
+境界比較の後合成に関する厳密な可換式 `spectrumMappingStep_post` を使って
+相対充填の基底との整合性を検証した。
+
+`SpectrumHomFibrations` の `spectrumHom_hornLift` はその整合族を、
+L9 の全切断写像空間の実際の `TruncatedMapping.familyLift` へ束ねる。
+各段の評価の普遍性からホーン上と底への二つの等式を確認した。
+`spectrumHomMap_fibration` は任意の X について
+
+```lean
+instance spectrumHomMap_fibration (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
+    (p : Y ⟶ Z) [∀ n, Fibration (p.app n).right] :
+    Fibration (((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map p)
+```
+
+を与える。対象・豊穣構造・写像空間は L9 の実際のものを使う。
+各段の fibration 性以外の安定 fibration 条件や Hom の比較同値を仮定しない。
+
+これを前回の引き戻し錐の全豊穣 Hom の極限性へ適用し、
+`spectrumPullbackInfinityCone_isLimit` を証明した。
+左脚 f が各段で Kan fibration であれば、右脚 g は任意でよい。
+各段が点つき通常引き戻しである実際の OmegaSpectrum、二つの厳密な射影、
+各段の普遍性、全豊穣 Hom の普遍性と左脚の fibration 性を全て検証した上で、
+coherent nerve の既存の `IsLimitCone` を結論する。
+Sp の指定された一脚 fibration の引き戻しの工程は、実際の対象と ∞ 極限錐まで完成した。
+原典上の位置は BF 1978 §2、HTT A.3.3、HA §1.4.2、HTT 4.2.4.1 の双対、
+Kerodon 7.5.3.12・7.5.4.6。
+
+新規6宣言の正確な型・全前提は以下。namespace は
+`SerrePositivity.InfinityCategories.HomotopyLimits`、宇宙は u。
+スペクトルの二モジュールでは L9 の `OmegaSpectrum.simplicialCategory` を固有名の局所 instance
+として使い、最後の定理では局所 Kan 性も元の写像空間の Kan 性から与える。
+公理依存の正本は `scripts/audit_homotopy_limits.lean`。
+
+`RelativePointedHomLifting`：
+
+```lean
+lemma relativeTensorLift {A X E B T U : SSet.{u}} (p : E ⟶ B) (i : A ⟶ X) (j : T ⟶ U)
+    (h : HasLiftingProperty (Functor.PushoutObjObj.ofHasPushout
+      (curriedTensor SSet.{u}) i j).ι p)
+    (earlier : X ⊗ T ⟶ E) (prescribed : A ⊗ U ⟶ E) (base : X ⊗ U ⟶ B)
+    (hc : i ▷ T ≫ earlier = A ◁ j ≫ prescribed)
+    (he : earlier ≫ p = X ◁ j ≫ base) (ha : prescribed ≫ p = i ▷ U ≫ base) :
+    ∃ l : X ⊗ U ⟶ E, X ◁ j ≫ l = earlier ∧ i ▷ U ≫ l = prescribed ∧ l ≫ p = base
+
+lemma relativePointedHom_hornLift {A X E B : PointedSimplicialSet.{u}}
+    (i : A ⟶ X) [Mono i.right] (p : E ⟶ B) [Fibration p.right]
+    {T U : SSet.{u}} (j : T ⟶ U) (hj : J j)
+    (a : T ⟶ (PointedObject.basedHom X E).right)
+    (b : U ⟶ (PointedObject.basedHom A E).right)
+    (c : U ⟶ (PointedObject.basedHom X B).right)
+    (hc : j ≫ b = a ≫ PointedMapping.pre i E)
+    (he : a ≫ (PointedObject.basedHomMap X p).right = j ≫ c)
+    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ PointedMapping.pre i B) :
+    ∃ l : U ⟶ (PointedObject.basedHom X E).right,
+      j ≫ l = a ∧ l ≫ PointedMapping.pre i E = b ∧
+        l ≫ (PointedObject.basedHomMap X p).right = c
+```
+
+`SpectrumHomHornFamilies`：
+
+```lean
+lemma spectrumHom_hornFamily (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
+    (p : Y ⟶ Z) [∀ n, Fibration (p.app n).right]
+    {T U : SSet.{u}} (j : T ⟶ U) (hj : J j)
+    (a : T ⟶ OmegaSpectrum.mappingSpace X Y) (b : U ⟶ OmegaSpectrum.mappingSpace X Z)
+    (h : a ≫ ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map p =
+      j ≫ b) :
+    ∃ l : ∀ n, U ⟶ (PointedObject.basedHom (X.level n).space (Y.level n).space).right,
+      (∀ n, j ≫ l n = a ≫ OmegaSpectrum.evaluation X Y n) ∧
+      (∀ n, l n ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right =
+        b ≫ OmegaSpectrum.evaluation X Z n) ∧
+      (∀ n, l (n + 1) ≫ PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+        l n ≫ OmegaSpectrum.mappingStep X Y n)
+```
+
+`SpectrumHomFibrations`：
+
+```lean
+lemma spectrumHom_hornLift (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
+    (p : Y ⟶ Z) [∀ n, Fibration (p.app n).right]
+    {T U : SSet.{u}} (j : T ⟶ U) (hj : J j)
+    (a : T ⟶ OmegaSpectrum.mappingSpace X Y) (b : U ⟶ OmegaSpectrum.mappingSpace X Z)
+    (h : a ≫ ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map p =
+      j ≫ b) :
+    ∃ l : U ⟶ OmegaSpectrum.mappingSpace X Y, j ≫ l = a ∧
+      l ≫ ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map p = b
+
+instance spectrumHomMap_fibration (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
+    (p : Y ⟶ Z) [∀ n, Fibration (p.app n).right] :
+    Fibration (((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map p)
+
+lemma spectrumPullbackInfinityCone_isLimit {E X B : OmegaSpectrum.{u}}
+    (f : E ⟶ B) (g : X ⟶ B) [∀ n, Fibration (f.app n).right] :
+    IsLimitCone (spectrumPullbackInfinityCone f g)
+```
+
+Sp の fibration の塔の実際の極限錐は未完了。
+非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 全体は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4636 jobs）、公開1229宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-pullback-infinity-aggregate.log` と
+`/tmp/gamma3-spectrum-pullback-infinity-audit.log`。

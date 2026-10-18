@@ -2830,3 +2830,21 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @spectrumPullbackInfinityCone
 #print axioms spectrumPullbackInfinityCone
+
+#check @relativeTensorLift
+#print axioms relativeTensorLift
+
+#check @relativePointedHom_hornLift
+#print axioms relativePointedHom_hornLift
+
+#check @spectrumHom_hornFamily
+#print axioms spectrumHom_hornFamily
+
+#check @spectrumHom_hornLift
+#print axioms spectrumHom_hornLift
+
+#check @spectrumHomMap_fibration
+#print axioms spectrumHomMap_fibration
+
+#check @spectrumPullbackInfinityCone_isLimit
+#print axioms spectrumPullbackInfinityCone_isLimit
