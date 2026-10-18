@@ -51,3 +51,4 @@ public import SerrePositivity.KST.DerivedGeometry.OpenCechContraction
 public import SerrePositivity.KST.DerivedGeometry.BasicOpenSectionComparisonIso
 
 public import SerrePositivity.KST.DerivedGeometry.AffineCechExact
+public import SerrePositivity.KST.DerivedGeometry.AffineQuasicoherentCech

@@ -14,6 +14,8 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.affineQuasicoherentCech_exactAt,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientCech_exactAt,
     `SerrePositivity.KST.DerivedGeometry.formalCoproductEvalComparison,
     `SerrePositivity.KST.DerivedGeometry.cechCosimplicialComparison,
     `SerrePositivity.KST.DerivedGeometry.alternatingCofaceCompMapIso,
