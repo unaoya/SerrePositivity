@@ -6717,5 +6717,34 @@ lemma scaffoldFiniteInitialEdge_comp_isCocartesian (n : ℕ) {E : SSet.{u}}
     (e : E _⦋1⦌) (he : p.app (Opposite.op ⦋1⦌) e = scaffoldFiniteInitialEdge n) :
     IsCocartesianEdge (p ≫ scaffoldFiniteCollapse n) e
 
+noncomputable def scaffoldFiniteScaffoldPrism (n : ℕ) {E : SSet.{u}}
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) :
+    (Δ[1] : SSet.{u}) ⊗ F.obj (ULift.up 0) ⟶ E
+
+lemma scaffoldFiniteScaffoldPrism_projection (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) :
+    scaffoldFiniteScaffoldPrism n F l ≫ p =
+      fst Δ[1] (F.obj (ULift.up 0)) ≫
+        (stdSimplex.isoNerve 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n)
+
+lemma scaffoldFiniteScaffoldPrism_interval_projection (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) :
+    scaffoldFiniteScaffoldPrism n F l ≫ (p ≫ scaffoldFiniteCollapse n) =
+      fst Δ[1] (F.obj (ULift.up 0))
+
+def prismVerticalSimplex {K E : SSet.{u}} (H : (Δ[1] : SSet.{u}) ⊗ K ⟶ E)
+    (x : K _⦋0⦌) : E _⦋1⦌
+
+lemma scaffoldFiniteScaffoldPrism_vertical_isCocartesian (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) [LeftFibration p]
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) (x : (F.obj (ULift.up 0)) _⦋0⦌) :
+    IsCocartesianEdge (p ≫ scaffoldFiniteCollapse n)
+      (prismVerticalSimplex (scaffoldFiniteScaffoldPrism n F l) x)
+
 end SerrePositivity.InfinityCategories
 ```

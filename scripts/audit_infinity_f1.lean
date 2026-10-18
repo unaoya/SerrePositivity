@@ -1479,3 +1479,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteInitialEdge_isCocartesian
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteInitialEdge_yoneda
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteInitialEdge_comp_isCocartesian
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_projection
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_interval_projection
+#check @SerrePositivity.InfinityCategories.prismVerticalSimplex
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_vertical_isCocartesian
