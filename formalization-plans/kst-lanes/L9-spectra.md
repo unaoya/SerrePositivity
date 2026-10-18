@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・201 モジュール 2718 宣言の公理監査成功。
+対象ビルド・206 モジュール 2769 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1894,3 +1894,30 @@ L9d は進行中。次は二つの相対三角形から貼る写像の四辺の�
 保存単位の対象ビルド 2401 jobs 成功。
 私有宣言を含む 201 モジュール 2718 宣言で標準三公理のみ。
 L9d は進行中。次は正方形から相対三角形へ制限する逆構成を証明する。
+
+## 65. L9d の円の smash 積の相対三角形による厳密な pushout
+
+四辺で定数な正方形の写像について、外側の四辺の定数性を三角形の面の条件へ移した。
+二つの三角形のホーンを潰し、相対三角形からの点つき射へ制限した。
+両制限は共通の対角辺で厳密に一致する。
+制限して貼る往復と、貼ってから両方へ制限する往復が厳密な等式であることを証明した。
+
+二変数の reduced map を正方形へ引き戻すと四辺で定数となることを実証した。
+円の smash 積の恒等写像の reduced 表示にこれを適用し、正方形の標準商射から両相対三角形の包含を作った。
+共通の対角辺の可換条件、任意の標的への貼り合わせの両脚での復元、一意性を合わせた。
+結果は点つき単体集合の圏での厳密な pushout であり、導来性や ∞ 普遍性の主張は含まない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `square_upper_horn_constant` / `square_lower_horn_constant` | 四辺の消滅から両ホーンの消滅 |
+| `squareUpperRestriction` / `squareLowerRestriction` / `squareRestrictions_diagonal` | 二つの相対三角形への制限と対角辺の一致 |
+| `trianglePairSquare_restrictions` / `squareUpperRestriction_pair` / `squareLowerRestriction_pair` | 制限と貼り合わせの厳密な往復 |
+| `reducedSquare_boundary_left` / `reducedSquare_boundary_right` | reduced map の正方形への引き戻しの境界条件 |
+| `circleSmashSquareQuotient` / `circleSmashUpper` / `circleSmashLower` | 正方形の商射と両相対三角形の包含 |
+| `circleSmashTriangles_hom_ext` / `circleSmashUpper_pair` / `circleSmashLower_pair` | 両脚での判定と任意の貼り合わせの復元 |
+| `circleSmashTriangles_isPushout` | 円の smash 積の二つの相対三角形による厳密な pushout |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.3、BF 1978 §2。
+保存単位の対象ビルド 2406 jobs 成功。
+私有宣言を含む 206 モジュール 2769 宣言で標準三公理のみ。
+L9d は進行中。次は写像空間の pullback 表示と、両三角形の交換の成分での逆元の比較を行う。
