@@ -1441,3 +1441,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_app
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_tail
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_zero
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_zero_obj
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_one_obj
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_zero_isPullback
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_one_isPullback

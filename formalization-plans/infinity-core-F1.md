@@ -6510,5 +6510,24 @@ lemma scaffoldFiniteCollapse_zero (n : ℕ) :
     nervePoint (ULift.up (0 : Fin (n + 2)) : ULift.{u} _) ≫ scaffoldFiniteCollapse n =
       stdSimplex.δ (1 : Fin 2)
 
+lemma scaffoldFiniteCollapse_zero_obj (n d : ℕ)
+    (σ : (nerve (ULift.{u} (Fin (n + 2)))) _⦋d⦌) (x : (Δ[0] : SSet.{u}) _⦋d⦌)
+    (h : (scaffoldFiniteCollapse n).app _ σ = (stdSimplex.δ (1 : Fin 2)).app _ x)
+    (i : Fin (d + 1)) : (σ.obj i).down = 0
+
+lemma scaffoldFiniteCollapse_one_obj (n d : ℕ)
+    (σ : (nerve (ULift.{u} (Fin (n + 2)))) _⦋d⦌) (x : (Δ[0] : SSet.{u}) _⦋d⦌)
+    (h : (scaffoldFiniteCollapse n).app _ σ = (stdSimplex.δ (0 : Fin 2)).app _ x)
+    (i : Fin (d + 1)) : (σ.obj i).down ≠ 0
+
+lemma scaffoldFiniteCollapse_zero_isPullback (n : ℕ) :
+    IsPullback (nervePoint (ULift.up (0 : Fin (n + 2)) : ULift.{u} _))
+      (𝟙 (Δ[0] : SSet.{u})) (scaffoldFiniteCollapse n) (stdSimplex.δ (1 : Fin 2))
+
+lemma scaffoldFiniteCollapse_one_isPullback (n : ℕ) :
+    IsPullback (nerveMap (scaffoldFiniteTail.{u} n))
+      (stdSimplex.isTerminalObj₀.from (nerve (ULift.{u} (Fin (n + 1)))))
+      (scaffoldFiniteCollapse n) (stdSimplex.δ (0 : Fin 2))
+
 end SerrePositivity.InfinityCategories
 ```
