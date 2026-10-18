@@ -98,4 +98,17 @@ theorem integral_properClosed_dimension_lt (X : Scheme.{u}) [IsIntegral X]
     topologicalKrullDim Z < topologicalKrullDim X :=
   topologicalKrullDim_properClosed_lt Z closed proper d dimension
 
+/-- 概要：有限次元上界を持つ既約な終域への真閉埋め込みでは次元が下がる（論文 §3）。
+方針：始域を閉像との同相で比較し、真閉部分の次元低下を適用する。
+規約：始域の被約性は不要で、実際の閉埋め込みを用いる。
+使われ方：既約成分と残りの閉和の実際の交わりへの次元帰納。 -/
+theorem closedImmersion_dimension_lt_bound {X Y : Scheme.{u}} [IrreducibleSpace Y]
+    (f : X ⟶ Y) [IsClosedImmersion f] (proper : Set.range f ≠ Set.univ)
+    (d : ℕ) (bound : topologicalKrullDim Y ≤ d) : topologicalKrullDim X < d := by
+  calc
+    topologicalKrullDim X = topologicalKrullDim (Set.range f) :=
+      IsHomeomorph.topologicalKrullDim_eq _ f.isClosedEmbedding.toHomeomorph.isHomeomorph
+    _ < d := topologicalKrullDim_properClosed_lt_bound (Set.range f)
+      f.isClosedEmbedding.isClosed_range proper d bound
+
 end SerrePositivity.KST.Descent

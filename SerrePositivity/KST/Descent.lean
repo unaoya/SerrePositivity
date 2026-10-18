@@ -76,6 +76,9 @@ public import SerrePositivity.KST.Descent.ClosedCoverGeometry
 public import SerrePositivity.KST.Descent.ClosedCoverPullback
 public import SerrePositivity.KST.Descent.ClosedCoverAction
 public import SerrePositivity.KST.Descent.ClosedCoverDescent
+public import SerrePositivity.KST.Descent.IrreducibleComponents
+public import SerrePositivity.KST.Descent.ComponentSplit
+public import SerrePositivity.KST.Descent.ComponentRemainderCover
 
 /-!
 # K-L8：論文 §3 の降下
@@ -116,6 +119,8 @@ Noether な終域への全射閉埋め込みの冪零性と、冪零な基底変
 二つの閉部分の被覆による実際の抽象 blowup 正方形も公開する。
 始域へ引き戻した閉被覆と元の被覆の同変な比較立方体を構成し、
 二つの閉部分と交わりの指定降下比較から元の射の全次数降下を導く。
+Noether な対象の整な成分による有限閉被覆、一成分と残りへの分解、
+実際の交わりの次元低下と、残りをより少ない元の整成分で覆う射も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

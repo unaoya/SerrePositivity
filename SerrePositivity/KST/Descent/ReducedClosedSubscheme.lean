@@ -147,4 +147,29 @@ instance reducedClosedAsFiniteTypeInclusion_isClosedImmersion {S : Scheme.{u}}
     IsClosedImmersion (reducedClosedAsFiniteTypeInclusion X Z).hom.left :=
   reducedClosedInclusion_isClosedImmersion Z
 
+/-- 概要：閉集合の包含が定める被約閉部分スキーム間の射（論文 補題 3.3）。
+方針：消滅イデアル層の反単調性から subscheme の包含を構成する。
+規約：有限型の圏内で同じ基底を保持する。
+使われ方：残りの閉和を各整成分で覆う実際の射。 -/
+noncomputable def reducedClosedMapOfLE {S : Scheme.{u}} (X : FiniteTypeSchemes S)
+    {Z W : Closeds X.obj.left} (h : Z ≤ W) :
+    reducedClosedAsFiniteType X Z ⟶ reducedClosedAsFiniteType X W :=
+  ObjectProperty.homMk (Over.homMk
+    (Scheme.IdealSheafData.inclusion (Scheme.IdealSheafData.vanishingIdeal_antimono h)) (by
+      change Scheme.IdealSheafData.inclusion _ ≫
+        (reducedClosedInclusion W ≫ X.obj.hom) = reducedClosedInclusion Z ≫ X.obj.hom
+      exact Scheme.IdealSheafData.inclusion_subschemeι_assoc _ _))
+
+/-- 概要：閉集合間の包含を元の包含と合成すると元の射（論文 補題 3.3）。
+方針：イデアル層の inclusion の合成公式を使う。
+規約：有限型の圏内の指定射の等式。
+使われ方：残りの閉和への因子分解と像の被覆の証明。 -/
+@[reassoc (attr := simp)] theorem reducedClosedMapOfLE_comp_inclusion {S : Scheme.{u}}
+    (X : FiniteTypeSchemes S) {Z W : Closeds X.obj.left} (h : Z ≤ W) :
+    reducedClosedMapOfLE X h ≫ reducedClosedAsFiniteTypeInclusion X W =
+      reducedClosedAsFiniteTypeInclusion X Z := by
+  apply ObjectProperty.hom_ext
+  apply (Over.forget S).map_injective
+  exact Scheme.IdealSheafData.inclusion_subschemeι _
+
 end SerrePositivity.KST.Descent

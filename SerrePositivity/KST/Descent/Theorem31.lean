@@ -6,6 +6,7 @@ public import SerrePositivity.KST.Descent.PermutationRepresentation
 public import SerrePositivity.KST.Descent.InvariantProducts
 public import SerrePositivity.KST.Descent.OrbitDescentStep
 public import SerrePositivity.KST.Descent.ClosedCoverDescent
+public import SerrePositivity.KST.Descent.ComponentRemainderCover
 
 /-!
 # 定理 3.1 の軌道正方形における全次数の貼り合わせ
@@ -15,6 +16,7 @@ public import SerrePositivity.KST.Descent.ClosedCoverDescent
 公開する `OrbitDescentStep` では、実際の同変軌道正方形とその二つのコピー分解を用い、
 中心上の降下から指定された全次数 PiDescent を導く。
 `ClosedCoverDescent` では、二つの閉部分と実際の交わりの指定降下から元の射の全次数降下を導く。
+`ComponentRemainderCover` では、整な成分の有限被覆と交わりの次元低下を構成する。
 本ファイルの宣言は、これと併用する代数的な表現による貼り合わせを記述する。
 
 ## 方針
