@@ -2671,3 +2671,45 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @spectrumFiniteProductInfinityCone_isLimit
 #print axioms spectrumFiniteProductInfinityCone_isLimit
+
+#check @smashSimplexMap_injective
+#print axioms smashSimplexMap_injective
+
+#check @smashMap_app_injective
+#print axioms smashMap_app_injective
+
+#check @smashMap_mono
+#print axioms smashMap_mono
+
+#check @pointedWhiskerLeft_mono
+#print axioms pointedWhiskerLeft_mono
+
+#check @pointedPullbackToProduct
+#print axioms pointedPullbackToProduct
+
+#check @pointedPullbackToProduct_mono
+#print axioms pointedPullbackToProduct_mono
+
+#check @pullbackSigma_product_factor
+#print axioms pullbackSigma_product_factor
+
+#check @pullbackSigma_mono
+#print axioms pullbackSigma_mono
+
+#check @loopPullbackIso
+#print axioms loopPullbackIso
+
+#check @loopPullbackIso_hom_fst
+#print axioms loopPullbackIso_hom_fst
+
+#check @loopPullbackIso_hom_snd
+#print axioms loopPullbackIso_hom_snd
+
+#check @pullbackAdjointMap
+#print axioms pullbackAdjointMap
+
+#check @pullbackSigma_adjoint
+#print axioms pullbackSigma_adjoint
+
+#check @pullbackSequence_omega_iff
+#print axioms pullbackSequence_omega_iff

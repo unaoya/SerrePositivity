@@ -1224,3 +1224,39 @@ E2a 完了後の E2b 適用は未完了。γ3 は継続中。
 他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-finite-products-aggregate.log` と
 `/tmp/gamma3-spectrum-finite-products-audit.log`。
+
+
+### γ3c：Sp の引き戻し構造射の単射性と随伴比較
+
+`SmashMonomorphisms` は、基点保存の二つの単射が smash の基礎単体写像でもモノ射を与えると
+各次数の具体的表示から証明した。任意の左因子の作用についても公開し、Kan 性は仮定しない。
+`SpectrumPullbackMonomorphisms` では点つき引き戻しから通常積への標準射の基礎モノ射性、
+引き戻し構造射と二項積の構造射の厳密な可換式を証明した。
+
+```lean
+pullbackSigma_mono {E X B : KanSequence.{u}}
+    (f : KanSequence.Hom E B) (g : KanSequence.Hom X B)
+    (hE : ∀ n, Mono (E.sigma n).right) (hX : ∀ n, Mono (X.sigma n).right) (n : ℕ) :
+  Mono (KanSequence.pullbackSigma f g n).right
+```
+
+元の二列の構造射の単射性だけを使い、底の列の構造射や f、g の fibration 性は不要。
+L9 の実際の OmegaSpectrum の cospan には元の sigma_mono から適用できる。
+
+`SpectrumPullbackAdjoints` は loop と引き戻しの厳密な標準同型と両射影の式を構成した。
+実際の比較射 `pullbackAdjointMap f g n` を定義し、引き戻し構造射の随伴が
+この同型の下で比較射に等しいことを `pullbackSigma_adjoint` で証明した。
+一脚 f が各段で fibration のときの `pullbackSequence_omega_iff` は、
+引き戻し列の Ω 条件をこの比較射の全基点・全自然数次数の π_* 同型性へ同値で帰着する。
+元の三列の Ω 条件から比較射の π_* 同型性を導く定理、実際のスペクトル錐の束ね直し、
+豊穣 Hom の fibration 条件と ∞ 極限性は未完了。この段階を引き戻し全体の完成と数えない。
+
+新規14宣言の正確な型・全前提は InfinityCategories/README.md の同名節へ記録し、監査へ追加。
+原典は BF 1978 §2、HA §1.4.2、Goerss–Jardine I §§7–8、HTT 4.2.4.1。
+Sp の塔、非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4605 jobs）、公開1184宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存821ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-pullback-structure-aggregate.log` と
+`/tmp/gamma3-spectrum-pullback-structure-audit.log`。

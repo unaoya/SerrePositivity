@@ -6309,3 +6309,129 @@ Sp の一脚 fibration の引き戻しと fibration の塔の実際の極限錐�
 他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-finite-products-aggregate.log` と
 `/tmp/gamma3-spectrum-finite-products-audit.log`。
+
+
+### γ3c：Sp の引き戻し構造射の単射性と実際の随伴比較
+
+`SmashMonomorphisms` は基点を保つ二つの単射について、各次数の smash の具体的表示への
+作用が単射であることを証明した。既存の smash の標準射の各次数の全射性と表示の同型を使い、
+`smashMap_app_injective`・`smashMap_mono` として基礎単体写像のモノ射性へ戻した。
+`pointedWhiskerLeft_mono` は任意の左因子との smash が基礎モノ射を保つことを与える。
+ここには Kan 性やモデル構造の仮定はない。
+
+`SpectrumPullbackMonomorphisms` は、点つき引き戻しの二つの射影を組にする
+`pointedPullbackToProduct` の基礎単体写像がモノ射であることを、既存の台の引き戻しの
+普遍性で証明した。L9 の既存の `KanSequence.pullbackSigma f g n` について、
+次段の積への包含との合成は、現在段の包含の懸垂と二項積の構造射の合成に一致する。
+この可換式 `pullbackSigma_product_factor` と前回の積の構造射の単射性を使い、
+`pullbackSigma_mono` を得た。要求するのは二つの全空間列 E、X の構造射の単射性だけで、
+底の列 B の構造射や二つの射 f、g の fibration 性は使わない。
+L9 の二つの OmegaSpectrum からの cospan に対しては、元の sigma_mono がこの前提を満たす。
+引き戻しの構造射を単射へ置換する工程は、この段ごとの構成には不要となった。
+
+`SpectrumPullbackAdjoints` は loop が右随伴であることから、通常の点つき引き戻しとの
+標準同型 `loopPullbackIso` を構成した。二つの射影との厳密な可換式も公開した。
+`pullbackAdjointMap f g n` は元の二つの随伴構造射を各射影と合成し、
+列の射の随伴可換式で貼り合わせた実際の引き戻し間の射。
+`pullbackSigma_adjoint` は引き戻し構造射の随伴を loop–引き戻し同型と合成すると
+この比較射へ厳密に一致することを証明した。これらの代数的な等式には fibration 性は不要。
+
+一脚 f が各段で Kan fibration のとき、`pullbackSequence_omega_iff` は
+L9 の実際の引き戻し Kan 列の Ω 条件と、全 n に対する
+`KanPiIsomorphism (pullbackAdjointMap f g n).right` の同値を与える。
+全基点・零次数を含む元の Ω 条件を保持し、指定基点の正次数だけへ弱めていない。
+ただし、元の三つの列の Ω 条件からこの比較射の π_* 同型性を導く保存定理は未証明。
+この同値だけを Sp の引き戻し対象の完成とは数えない。
+原典上の位置は BF 1978 §2、HA §1.4.2、Goerss–Jardine I §§7–8、HTT 4.2.4.1。
+
+新規14宣言の正確な型・全前提は以下。namespace は
+`SerrePositivity.InfinityCategories.HomotopyLimits`、宇宙は u。
+公理依存の正本は `scripts/audit_homotopy_limits.lean`。
+
+`SmashMonomorphisms`：
+
+```lean
+lemma smashSimplexMap_injective {A B C D : Type u} {a₀ : A} {b₀ : B} {c₀ : C} {d₀ : D}
+    (f : A → C) (g : B → D) (hf : f a₀ = c₀) (hg : g b₀ = d₀)
+    (hi : Function.Injective f) (hj : Function.Injective g) :
+    Function.Injective (smashSimplexMap (a₀
+
+lemma smashMap_app_injective {A B C D : PointedSimplicialSet.{u}}
+    (f : A ⟶ C) (g : B ⟶ D) [Mono f.right] [Mono g.right] (d : SimplexCategoryᵒᵖ) :
+    Function.Injective ((PointedObject.smashMap f g).right.app d)
+
+instance smashMap_mono {A B C D : PointedSimplicialSet.{u}}
+    (f : A ⟶ C) (g : B ⟶ D) [Mono f.right] [Mono g.right] :
+    Mono (PointedObject.smashMap f g).right
+
+instance pointedWhiskerLeft_mono (A : PointedSimplicialSet.{u})
+    {B C : PointedSimplicialSet.{u}} (f : B ⟶ C) [Mono f.right] : Mono (A ◁ f).right
+```
+
+`SpectrumPullbackMonomorphisms`：
+
+```lean
+def pointedPullbackToProduct {E X B : PointedSimplicialSet.{u}} (f : E ⟶ B) (g : X ⟶ B) :
+    pullback f g ⟶ PointedObject.prod E X
+
+instance pointedPullbackToProduct_mono {E X B : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (g : X ⟶ B) : Mono (pointedPullbackToProduct f g).right
+
+lemma pullbackSigma_product_factor {E X B : KanSequence.{u}}
+    (f : KanSequence.Hom E B) (g : KanSequence.Hom X B) (n : ℕ) :
+    KanSequence.pullbackSigma f g n ≫
+        pointedPullbackToProduct (f.app (n + 1)) (g.app (n + 1)) =
+      PointedSimplicialSet.circle.{u} ◁ pointedPullbackToProduct (f.app n) (g.app n) ≫
+        binaryProductSigma (E.sigma n) (X.sigma n)
+
+lemma pullbackSigma_mono {E X B : KanSequence.{u}}
+    (f : KanSequence.Hom E B) (g : KanSequence.Hom X B)
+    (hE : ∀ n, Mono (E.sigma n).right) (hX : ∀ n, Mono (X.sigma n).right) (n : ℕ) :
+    Mono (KanSequence.pullbackSigma f g n).right
+```
+
+`SpectrumPullbackAdjoints`：
+
+```lean
+def loopPullbackIso {E X B : PointedSimplicialSet.{u}} (f : E ⟶ B) (g : X ⟶ B) :
+    loopSpace (pullback f g) ≅
+      pullback (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} f)
+        (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} g)
+
+lemma loopPullbackIso_hom_fst {E X B : PointedSimplicialSet.{u}} (f : E ⟶ B) (g : X ⟶ B) :
+    (loopPullbackIso f g).hom ≫ pullback.fst _ _ =
+      PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pullback.fst f g)
+
+lemma loopPullbackIso_hom_snd {E X B : PointedSimplicialSet.{u}} (f : E ⟶ B) (g : X ⟶ B) :
+    (loopPullbackIso f g).hom ≫ pullback.snd _ _ =
+      PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pullback.snd f g)
+
+def pullbackAdjointMap {E X B : KanSequence.{u}}
+    (f : KanSequence.Hom E B) (g : KanSequence.Hom X B) (n : ℕ) :
+    pullback (f.app n) (g.app n) ⟶
+      pullback (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (n + 1)))
+        (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (g.app (n + 1)))
+
+lemma pullbackSigma_adjoint {E X B : KanSequence.{u}}
+    (f : KanSequence.Hom E B) (g : KanSequence.Hom X B) (n : ℕ) :
+    suspensionLoopEquiv _ _ (KanSequence.pullbackSigma f g n) ≫
+        (loopPullbackIso (f.app (n + 1)) (g.app (n + 1))).hom =
+      pullbackAdjointMap f g n
+
+lemma pullbackSequence_omega_iff {E X B : KanSequence.{u}}
+    (f : KanSequence.Hom E B) (g : KanSequence.Hom X B)
+    [∀ n, Fibration (f.app n).right] :
+    (KanSequence.pullbackSequence f g).OmegaCondition ↔
+      ∀ n, KanPiIsomorphism (pullbackAdjointMap f g n).right
+```
+
+Sp の引き戻しで残る工程は、元の Ω 条件から実際の比較射の全基点 π_* 同型性を証明すること、
+実際の Ω スペクトルの錐を束ねること、豊穣 Hom の fibration 条件を検証して ∞ 極限錐を公開すること。
+Sp の塔、元の非反転の end・q_x と反転係数の直接比較、余極限側、E2a 完了後の E2b 適用も未完了。
+γ3 全体は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4605 jobs）、公開1184宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存821ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-pullback-structure-aggregate.log` と
+`/tmp/gamma3-spectrum-pullback-structure-audit.log`。
