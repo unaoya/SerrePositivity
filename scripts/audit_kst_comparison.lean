@@ -18,6 +18,7 @@ set_option pp.explicit true
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -373,6 +374,33 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
+
+
+-- HomotopyPullback.lean
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackObject
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackObject
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackProjection_fibration
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackProjection_fibration
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackObject_kan
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackObject_kan
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackComparison
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackComparison
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackComparison_fst
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackComparison_fst
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackComparison_snd
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackComparison_snd
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackMap
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap
+
+#check @SerrePositivity.KST.Comparison.IsHomotopyPullback
+#print axioms SerrePositivity.KST.Comparison.IsHomotopyPullback
 
 
 -- LoopFamily.lean

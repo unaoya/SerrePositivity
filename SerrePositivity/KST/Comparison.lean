@@ -15,6 +15,7 @@ public import SerrePositivity.KST.Comparison.RegularBarFiber
 public import SerrePositivity.KST.Comparison.RegularBarLoop
 public import SerrePositivity.KST.Comparison.GroupCompletionSpace
 public import SerrePositivity.KST.Comparison.ActionBarCoordinates
+public import SerrePositivity.KST.Comparison.HomotopyPullback
 
 /-!
 # K-L2：比較定理の入口
