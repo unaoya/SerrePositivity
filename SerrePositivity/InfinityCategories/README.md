@@ -7339,3 +7339,95 @@ Target の極限の射の比較、および元の塔の極限の射の π_* 同�
 他担当の依存844ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-mapping-path-tower-source-aggregate.log` と
 `/tmp/gamma3-mapping-path-tower-source-audit.log`。
+
+
+### γ3c：mapping path の標的側の相対比較と塔の極限の π_* 同型
+
+`RelativeFreePathBoundary` の `relativeFreePath_boundaryHornLift` は、自由 path の
+両端点・底への合成・既存のホーン上の族を同時に保つ充填を構成する。
+前提は底の点つき射の fibration 性とパラメータがホーンであることだけであり、
+対象の Kan 性は要求しない。境界の Hom の積表示と相対 Hom 充填を用いる。
+
+`MappingPathTargetLifting` で、可換正方形の両縦射が fibration なら
+`mappingPathTargetMatchingMap` も fibration となることを証明した。
+さらに四対象が Kan で両横射が全基点 π_* 同型なら、この相対比較は全ての単射への RLP を持つ。
+前段の標的射影の RLP を引き戻し、次段の標的射影と二対三で比較し、
+源の基点を明示して相対 Whitehead を適用する。
+
+`TowerPiComparison` では、この相対比較の RLP を実際の極限の射
+`mappingPathTowerLimitTarget` へ移した。前回の定数 path の比較と合成して、
+`pointedTowerMap_piIsomorphism` を得た。正確な前提は、両塔の全段が点つき Kan 複体、
+全遷移が fibration、比較が厳密可換で、各段の比較が全基点・全自然数次数の π_* 同型であること。
+結論も実際の `FibrationTower.limit` 間の射の全基点・全次数の π_* 同型である。
+比較射自身の fibration 性や matching map の RLP を追加の前提には置かない。
+
+この定理は Sp の塔の Ω 条件を検証するための入力であり、
+Sp の塔の実際の対象・構造射の単射性・Ω 条件・∞ 極限錐への適用は引き続き未完了。
+非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+原典：Goerss–Jardine I §§7–8、BF 1978 §2、HTT A.3.3、HTT 4.2.4.1。
+
+新規7公開宣言の正確な型・全前提（名前空間
+`SerrePositivity.InfinityCategories.HomotopyLimits`）：
+
+```lean
+lemma relativeFreePath_boundaryHornLift {Y Z : PointedSimplicialSet.{u}}
+    (p : Y ⟶ Z) [Fibration p.right] {T U : SSet.{u}} (j : T ⟶ U) (hj : J j)
+    (a : T ⟶ (freePathSpace Y).right) (b₀ b₁ : U ⟶ Y.right)
+    (c : U ⟶ (freePathSpace Z).right)
+    (hc₀ : j ≫ b₀ = a ≫ (freePathEndpoint Y 0).right)
+    (hc₁ : j ≫ b₁ = a ≫ (freePathEndpoint Y 1).right)
+    (he : a ≫ (PointedObject.basedHomMap freeInterval.{u} p).right = j ≫ c)
+    (ha₀ : b₀ ≫ p.right = c ≫ (freePathEndpoint Z 0).right)
+    (ha₁ : b₁ ≫ p.right = c ≫ (freePathEndpoint Z 1).right) :
+    ∃ l : U ⟶ (freePathSpace Y).right,
+      j ≫ l = a ∧ l ≫ (freePathEndpoint Y 0).right = b₀ ∧
+        l ≫ (freePathEndpoint Y 1).right = b₁ ∧
+          l ≫ (PointedObject.basedHomMap freeInterval.{u} p).right = c
+
+def mappingPathTargetMatchingMap {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
+    (h : f ≫ b = a ≫ f') :
+    (mappingPath f).right ⟶ pullback b.right (mappingPathProjection f').right
+
+lemma mappingPathTargetMatchingMap_fibration {X Y X' Y' : PointedSimplicialSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
+    (h : f ≫ b = a ≫ f') [Fibration a.right] [Fibration b.right] :
+    Fibration (mappingPathTargetMatchingMap f f' a b h)
+
+lemma mappingPathTargetMatchingMap_rlp {X Y X' Y' : PointedSimplicialSet.{u}}
+    [KanComplex X.right] [KanComplex Y.right] [KanComplex X'.right] [KanComplex Y'.right]
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
+    (h : f ≫ b = a ≫ f') [Fibration a.right] [Fibration b.right]
+    (hf : KanPiIsomorphism f.right) (hf' : KanPiIsomorphism f'.right) :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (mappingPathTargetMatchingMap f f' a b h)
+
+lemma mappingPathTowerLimitTarget_rlp (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
+    [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right]
+    (hπ : ∀ n, KanPiIsomorphism (f n).right) :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (mappingPathTowerLimitTarget X Y dX dY f hf)
+
+lemma mappingPathTowerLimitTarget_piIsomorphism (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
+    [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right]
+    (hπ : ∀ n, KanPiIsomorphism (f n).right) :
+    KanPiIsomorphism (mappingPathTowerLimitTarget X Y dX dY f hf)
+
+lemma pointedTowerMap_piIsomorphism (X Y : ℕ → PointedSimplicialSet.{u})
+    (dX : ∀ n, X (n + 1) ⟶ X n) (dY : ∀ n, Y (n + 1) ⟶ Y n)
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
+    [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right]
+    (hπ : ∀ n, KanPiIsomorphism (f n).right) :
+    KanPiIsomorphism (towerMap (fun n ↦ (f n).right)
+      (fun n ↦ congrArg Under.Hom.right (hf n)))
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4653 jobs）、公開1272宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-tower-pi-aggregate.log` と `/tmp/gamma3-tower-pi-audit.log`。

@@ -1507,3 +1507,37 @@ Sp の塔の実際の対象と ∞ 極限錐はまだ未完了であり、今回
 他担当の依存844ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-mapping-path-tower-source-aggregate.log` と
 `/tmp/gamma3-mapping-path-tower-source-audit.log`。
+
+
+### γ3c：mapping path の標的側の相対比較と塔の極限の π_* 同型
+
+`RelativeFreePathBoundary` の `relativeFreePath_boundaryHornLift` は、自由 path の
+両端点・底への合成・既存のホーン上の族を同時に保つ充填を構成する。
+前提は底の点つき射の fibration 性とパラメータがホーンであることだけであり、
+対象の Kan 性は要求しない。境界の Hom の積表示と相対 Hom 充填を用いる。
+
+`MappingPathTargetLifting` で、可換正方形の両縦射が fibration なら
+`mappingPathTargetMatchingMap` も fibration となることを証明した。
+さらに四対象が Kan で両横射が全基点 π_* 同型なら、この相対比較は全ての単射への RLP を持つ。
+前段の標的射影の RLP を引き戻し、次段の標的射影と二対三で比較し、
+源の基点を明示して相対 Whitehead を適用する。
+
+`TowerPiComparison` では、この相対比較の RLP を実際の極限の射
+`mappingPathTowerLimitTarget` へ移した。前回の定数 path の比較と合成して、
+`pointedTowerMap_piIsomorphism` を得た。正確な前提は、両塔の全段が点つき Kan 複体、
+全遷移が fibration、比較が厳密可換で、各段の比較が全基点・全自然数次数の π_* 同型であること。
+結論も実際の `FibrationTower.limit` 間の射の全基点・全次数の π_* 同型である。
+比較射自身の fibration 性や matching map の RLP を追加の前提には置かない。
+
+この定理は Sp の塔の Ω 条件を検証するための入力であり、
+Sp の塔の実際の対象・構造射の単射性・Ω 条件・∞ 極限錐への適用は引き続き未完了。
+非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+原典：Goerss–Jardine I §§7–8、BF 1978 §2、HTT A.3.3、HTT 4.2.4.1。
+
+新規7宣言の正確な型と全前提は README の同名節へ記録し、全てを
+`scripts/audit_homotopy_limits.lean` の `#check @` と公理監査へ追加した。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4653 jobs）、公開1272宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-tower-pi-aggregate.log` と `/tmp/gamma3-tower-pi-audit.log`。
