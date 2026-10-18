@@ -147,6 +147,26 @@ def reesZeroEquiv : reesGrade I 0 ≃+* R where
   map_add' p q := by simp
 
 /--
+概要：Rees の零次成分を基礎環上の代数とする。
+方針：零次成分との環同型を通して定数を送る。
+規約：KST §5 の定数多項式による係数作用。
+使われ方：係数環を零次成分に変えても生成元を保つ。
+-/
+instance reesZeroAlgebra : Algebra R (reesGrade I 0) :=
+  Algebra.ofModule
+    (fun r p q => Subtype.ext (smul_mul_assoc r p.1 q.1))
+    (fun r p q => Subtype.ext (mul_smul_comm r p.1 q.1))
+
+/--
+概要：基礎環・Rees 零次成分・Rees 代数の作用は両立する。
+方針：代数写像の合成は定数多項式への写像に等しい。
+規約：KST §5。作用の塔は実際の環準同型から構成する。
+使われ方：次数一生成性を零次成分上に移す。
+-/
+instance reesZeroScalarTower : IsScalarTower R (reesGrade I 0) (reesAlgebra I) :=
+  ⟨fun r p q => smul_mul_assoc r p.1 q⟩
+
+/--
 概要：アフィン blowup の Spec R への構造射。
 方針：Proj の零次成分への射を零次成分の環同型で移す。
 規約：KST §5 の blowup は基礎スキーム上の対象として扱う。
@@ -193,5 +213,178 @@ theorem affineBlowupπ_isProper (hI : I.FG) : IsProper (affineBlowupπ I) := by
     inferInstance
   unfold affineBlowupπ
   infer_instance
+
+/--
+概要：アフィン中心 V(I) の Spec R への閉埋め込み。
+方針：商準同型に Spec を適用する。
+規約：KST §5 の中心は被約化せず I 自身で定義する。
+使われ方：例外閉部分スキームをファイバー積として作る。
+-/
+def affineCenterι : Spec (.of (R ⧸ I)) ⟶ Spec (.of R) :=
+  Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I))
+
+/--
+概要：アフィン中心の包含は閉埋め込み。
+方針：商準同型の全射性を使う。
+規約：KST §5。中心の有限生成性は不要。
+使われ方：基底変換後の例外閉部分スキームの閉性。
+-/
+instance affineCenterι_isClosedImmersion : IsClosedImmersion (affineCenterι I) :=
+  IsClosedImmersion.spec_of_surjective _ Ideal.Quotient.mk_surjective
+
+/--
+概要：アフィン blowup の例外閉部分スキーム。
+方針：中心 V(I) のスキーム論的逆像をファイバー積で定義する。
+規約：KST §5。有効 Cartier 因子としての性質は別の主張である。
+使われ方：古典的 blowup 正方形の右上隅を与える。
+-/
+def affineExceptional : Scheme :=
+  Limits.pullback (affineBlowupπ I) (affineCenterι I)
+
+/--
+概要：例外閉部分スキームの blowup への包含。
+方針：ファイバー積の第一射影を使う。
+規約：KST §5、スキーム論的逆像の包含である。
+使われ方：例外因子の理想層と閉埋め込みの基準射。
+-/
+def affineExceptionalι : affineExceptional I ⟶ affineBlowup I :=
+  Limits.pullback.fst _ _
+
+/--
+概要：例外閉部分スキームから中心への構造射。
+方針：ファイバー積の第二射影を使う。
+規約：KST §5 の blowup 正方形と同じ向き。
+使われ方：中心の厚みと例外閉部分スキームの厚みを比較する。
+-/
+def affineExceptionalToCenter : affineExceptional I ⟶ Spec (.of (R ⧸ I)) :=
+  Limits.pullback.snd _ _
+
+set_option backward.isDefEq.respectTransparency false in
+/--
+概要：例外閉部分スキームの包含は閉埋め込み。
+方針：中心の閉埋め込みを基底変換する。
+規約：KST §5、固有性とは独立に成立する。
+使われ方：抽象 blowup 正方形の閉埋め込みの辺。
+-/
+instance affineExceptionalι_isClosedImmersion : IsClosedImmersion (affineExceptionalι I) := by
+  unfold affineExceptionalι
+  infer_instance
+
+/--
+概要：アフィン blowup の中心と例外閉部分スキームの正方形は可換。
+方針：ファイバー積の射影の交換式を使う。
+規約：KST §5、基礎スキームは Spec R。
+使われ方：導来 blowup の古典的 truncation との比較。
+-/
+@[reassoc] theorem affineExceptional_square :
+    affineExceptionalι I ≫ affineBlowupπ I =
+      affineExceptionalToCenter I ≫ affineCenterι I :=
+  Limits.pullback.condition
+
+/--
+概要：次数 n の係数 a から Rees の斉次元を作る。
+方針：単項式 a t^n とその係数所属証明を組にする。
+規約：KST §5、a の所属は I^n。
+使われ方：標準チャートと Veronese 比較の生成元。
+-/
+def reesMonomial (n : ℕ) (a : ↥(I ^ n)) : reesAlgebra I :=
+  ⟨monomial n a.1, reesAlgebra.monomial_mem.mpr a.2⟩
+
+/--
+概要：Rees 単項式は指定した次数の成分に属する。
+方針：係数計算で射影の固定点条件を確認する。
+規約：KST §5、零係数も許す。
+使われ方：Proj の標準基本開集合の斉次性条件。
+-/
+lemma reesMonomial_mem (n : ℕ) (a : ↥(I ^ n)) :
+    reesMonomial I n a ∈ reesGrade I n :=
+  (mem_reesGrade_iff I n _).mpr (by simp [reesMonomial])
+
+/--
+概要：a ∈ I に対応する Rees 代数の次数一元。
+方針：I^1 = I を使い単項式 a t を作る。
+規約：KST §5 の標準 blowup チャートの生成元。
+使われ方：D₊(a t) 上のアフィン局所計算。
+-/
+def reesDegreeOne (a : I) : reesAlgebra I :=
+  reesMonomial I 1 ⟨a.1, by simp⟩
+
+/--
+概要：a t は Rees 代数の次数一成分に属する。
+方針：Rees 単項式の斉次性を適用する。
+規約：KST §5、a ∈ I。
+使われ方：blowup の標準チャートの Spec 同型。
+-/
+lemma reesDegreeOne_mem (a : I) : reesDegreeOne I a ∈ reesGrade I 1 :=
+  reesMonomial_mem I 1 _
+
+/--
+概要：アフィン blowup の標準開集合 D₊(a t)。
+方針：Rees 代数の次数一元に Proj の基本開集合を適用する。
+規約：KST §5、点集合だけでなく開部分スキームを指定する。
+使われ方：例外因子と中心の補開集合上の同型の局所計算。
+-/
+def affineBlowupChart (a : I) : (affineBlowup I).Opens :=
+  Proj.basicOpen (reesGrade I) (reesDegreeOne I a)
+
+/--
+概要：標準 blowup チャートは Rees の斉次局所化の零次環の Spec。
+方針：Mathlib の Proj の基本アフィン同型を適用する。
+規約：KST §5、次数一なので正次数の条件を満たす。
+使われ方：チャート環上のイデアルと非零因子の計算。
+-/
+def affineBlowupChartIso (a : I) : (affineBlowupChart I a).toScheme ≅
+    Spec (.of (HomogeneousLocalization.Away (reesGrade I) (reesDegreeOne I a))) :=
+  Proj.basicOpenIsoSpec (reesGrade I) _ (reesDegreeOne_mem I a) (by decide)
+
+/--
+概要：Rees 代数は基礎環上で次数一元に生成される。
+方針：多項式環への単射で adjoin を比較し、Mathlib の生成性を使う。
+規約：KST §5、中心の有限生成性は不要。
+使われ方：次数一の標準チャートが blowup を被覆することを示す。
+-/
+lemma rees_adjoin_degreeOne :
+    Algebra.adjoin R (Set.range (reesDegreeOne I)) = ⊤ := by
+  apply Subalgebra.map_injective (f := (reesAlgebra I).val) Subtype.val_injective
+  rw [AlgHom.map_adjoin, Algebra.map_top]
+  have himage : (reesAlgebra I).val '' Set.range (reesDegreeOne I) =
+      (Submodule.map (monomial 1 : R →ₗ[R] R[X]) I : Set R[X]) := by
+    ext p
+    simp only [Set.mem_image, Set.mem_range]
+    constructor
+    · rintro ⟨q, ⟨a, rfl⟩, rfl⟩
+      exact ⟨a.1, a.2, rfl⟩
+    · rintro ⟨a, ha, rfl⟩
+      exact ⟨reesDegreeOne I ⟨a, ha⟩, ⟨⟨a, ha⟩, rfl⟩, rfl⟩
+  rw [himage, adjoin_monomial_eq_reesAlgebra]
+  exact (reesAlgebra I).range_val.symm
+
+/--
+概要：Rees 代数は零次成分上でも次数一元に生成される。
+方針：基礎環上の生成性と係数環拡大を使う。
+規約：KST §5、零次成分の係数作用は定数多項式の作用。
+使われ方：Proj の標準アフィン被覆の生成性条件。
+-/
+lemma rees_adjoin_zero_degreeOne :
+    Algebra.adjoin (reesGrade I 0) (Set.range (reesDegreeOne I)) = ⊤ := by
+  apply top_unique
+  intro p _
+  have hp : p ∈ Algebra.adjoin R (Set.range (reesDegreeOne I)) := by
+    rw [rees_adjoin_degreeOne I]
+    trivial
+  exact (Algebra.adjoin_le (S := (Algebra.adjoin (reesGrade I 0)
+    (Set.range (reesDegreeOne I))).restrictScalars R) (fun a ha =>
+    (Algebra.subset_adjoin ha :
+      a ∈ Algebra.adjoin (reesGrade I 0) (Set.range (reesDegreeOne I))))) hp
+
+/--
+概要：次数一元の標準開集合がアフィン blowup 全体を被覆する。
+方針：零次成分上の次数一生成性から Proj の被覆定理を使う。
+規約：KST §5、添字は I の全元であり有限生成性を要求しない。
+使われ方：例外因子と補開集合の局所計算を大域化する。
+-/
+theorem iSup_affineBlowupChart : ⨆ a : I, affineBlowupChart I a = ⊤ :=
+  Proj.iSup_basicOpen_eq_top' (reesGrade I) (reesDegreeOne I)
+    (fun a => ⟨1, reesDegreeOne_mem I a⟩) (rees_adjoin_zero_degreeOne I)
 
 end SerrePositivity.KST.SchemeLemmas
