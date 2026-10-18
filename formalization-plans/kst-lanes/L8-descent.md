@@ -69,13 +69,20 @@ Noether な終域への全射閉埋め込みの冪零性と、Noether な対象�
 テンソル積の指定二射影の実際の Cartesian 性と、右射影の同変性を証明した。
 この二射影・作用・切断を同じ S 上の有限型の圏内にも構成し、
 その Cartesian 性と指定第一射影の全次数降下を証明した。
+Noether 基底上の有限型の圏に有限極限を構成し、実際の Čech nerve・各段での
+底変換の関手・二重 Čech 図式と元の前層による像を構成した。
+各非増強段の底変換に実際の切断と extra degeneracy を構成した。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 91 モジュール・1047 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 93 モジュール・1090 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
+今回の Čech 図式の区切りでの全体ビルドは、所有範囲外の
+`KST/ProExcision/LinearizedTensor.lean` の 110 行・104 行・140 行のエラーで失敗。
+ログは `/tmp/l8-finite-type-cech-full-build.log`、終了コード 1 を確認した。
+L8 の対象ビルドと監査は成功しており、import 閉包の破損ではない。
 L8a 全体の完成とは区別する。
 L8b の切断を持つ射について「整 → 被約 → 一般」の帰納を完了した。
 自然な列・有限積保存・冪零不変性を明示的に入力する条件付きの段階である。
@@ -513,6 +520,14 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `affineTensorSection`、`affineTensorSection_identity` | 指定環射から有限型の圏内の切断と分裂恒等式 | 対象ビルド済み |
 | `affineTensorAction_over_base`、`affineTensorSnd_equivariant` | 有限型の圏内の二射影の同変性 | 対象ビルド済み |
 | `NaturalBlowupSequences.affineTensorFst_piDescent` | 指定された実際の底変換の第一射影の全次数降下 | 対象ビルド済み、元の L を使用 |
+| `finiteTypeMorphism_locallyOfFiniteType` | 有限型対象間の射の局所有限型性 | 対象ビルド済み、Noether 性は不要 |
+| `finiteTypePullback_isPullback` | Noether 基底上の実際の引き戻しを有限型の圏内へ構成 | 対象ビルド済み |
+| `finiteTypeSchemes_hasFiniteLimits` | Noether 基底上の有限型の圏の有限極限 | 対象ビルド済み、幾何的な通常の極限 |
+| `finiteTypeAugmentedCech` | 元の前層の定義域内の増強 Čech nerve | 対象ビルド済み |
+| `finiteTypeCechBaseChange` | Čech 各段での底変換を束ねた Arrow の関手 | 対象ビルド済み、全単体射に対して定義 |
+| `finiteTypeDoubleCech`、`finiteTypeDoubleCechImage` | 実際の二重 Čech 図式と元の前層の像 | 対象ビルド済み |
+| `finiteTypeCechStageSplitEpi` | 各非増強段での底変換の実際の切断 | 対象ビルド済み、切断の外側自然性は主張しない |
+| `finiteTypeCechStageExtraDegeneracy`、`finiteTypeCechStageImageExtraDegeneracy` | 各行の全次数の分裂と同じ前層の像での分裂 | 対象ビルド済み、Tot の実降下は未完 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1110,3 +1125,34 @@ Over の忘却と充満部分圏の包含は極限を反映するので、
 有限な群、幾何的推移性、自然な blowup 列・有限積保存・冪零不変性が入力である。
 Čech 各段の関手的な比較、分裂余単体対象の実降下、Fubini・細分による
 元の切断を持たない射への還元は引き続き未完である。
+
+## 38. 有限型の圏内の実際の二重 Čech 図式
+
+有限型対象間の射は局所有限型である。これは基底への合成の局所有限型性から導き、
+Noether 性を必要としない。Noether 基底上では有限型対象の underlying scheme は Noether であり、
+その始域を持つ全てのスキームの射は準コンパクトとなる。
+従って任意の二射の実際の引き戻しも同じ基底上の有限型対象として構成できる。
+第一・第二射影を Over の射に持ち上げ、スキームへの忘却による極限の反映から
+有限型の圏内での引き戻しの普遍性を証明した。
+基底自身の恒等構造射はこの圏の終対象である。
+終対象と全ての引き戻しから `finiteTypeSchemes_hasFiniteLimits` を得る。
+
+この有限極限により、`finiteTypeAugmentedCech` は元の前層の定義域内の
+実際の増強 Čech nerve となる。各非増強段には零番目の射影から X への射がある。
+増強の成分で元の f を底変換し、この零番目の射影を持ち上げに使うと、
+`finiteTypeCechStageSplitEpi` の実際の切断を構成できる。
+この切断を使い、各行の Čech nerve の全次数の extra degeneracy を構成した。
+同じ反変前層を適用した像にも extra degeneracy と全ての分裂の恒等式が移る。
+
+`finiteTypeCechBaseChange` は各段の底変換の Arrow を、全ての単体射に対する
+引き戻しの map で束ねた実際の関手である。
+恒等射と合成の保存は二射影と元の Čech の関手性を用いて検査した。
+増強 Čech nerve 関手を合成して `finiteTypeDoubleCech` を構成し、
+さらに元の前層を適用して二重図式全体の像を構成した。
+零番目の射影を選ぶ切断の外側の単体射についての自然性は主張していない。
+二重図式の射の構成に切断の自然性は使っていない。
+
+ここで作った極限は幾何的な通常の極限であり、前層の値域の Tot の代用ではない。
+各段での作用・推移性・分離性・有限次元上界を既存の切断つき全次数降下へ渡す工程、
+実際の Tot の分裂降下・Fubini・細分による元の射への還元は残る。
+自然な blowup 列・有限積保存の導出と、最小公理全体・(3.6)・E の実現も残る。

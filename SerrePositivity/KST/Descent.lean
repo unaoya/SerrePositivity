@@ -91,6 +91,8 @@ public import SerrePositivity.KST.Descent.AffineSplitDescent
 public import SerrePositivity.KST.Descent.AffineBaseChangeDescent
 public import SerrePositivity.KST.Descent.AffineTensorSquare
 public import SerrePositivity.KST.Descent.FiniteTypeAffineTensorSquare
+public import SerrePositivity.KST.Descent.FiniteTypeLimits
+public import SerrePositivity.KST.Descent.FiniteTypeCech
 
 /-!
 # K-L8：論文 §3 の降下
@@ -144,6 +146,9 @@ Noether な対象の整な成分による有限閉被覆、一成分と残りへ
 テンソル積の二射影の実際の Cartesian 性と、右射影の群作用との同変性も公開する。
 同じ S 上の有限型の圏内にも二射影・作用・切断を構成し、Cartesian 性を反映する。
 この指定第一射影そのものについて、分裂から全次数降下を導く。
+Noether 基底上の有限型の圏の有限極限を構成し、その圏内に実際の Čech nerve と
+各段で底変換した射の関手、二重 Čech 図式、その元の前層による像を構成する。
+各非増強段での切断・extra degeneracy も実際の図式に対して構成する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。
