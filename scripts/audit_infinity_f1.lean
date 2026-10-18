@@ -2713,3 +2713,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.kanPointHomInfinityMap
 #check @SerrePositivity.InfinityCategories.kanPointHomInfinityComparisonIso
 #check @SerrePositivity.InfinityCategories.kanPointHomDiagramComparisonIso
+#check @SerrePositivity.InfinityCategories.kanPointHomParameterizedMap_comparison
+#check @SerrePositivity.InfinityCategories.leftPointHomParameterizedMap
+#check @SerrePositivity.InfinityCategories.leftPointHomParameterizedMap_comparison
+#check @SerrePositivity.InfinityCategories.leftPointHomKanEnriched
+#check @SerrePositivity.InfinityCategories.leftPointHomKanComparison
+#check @SerrePositivity.InfinityCategories.leftPointHomInfinityMap
+#check @SerrePositivity.InfinityCategories.leftPointHomInfinityComparisonIso
+#check @SerrePositivity.InfinityCategories.leftPointHomDiagramComparisonIso

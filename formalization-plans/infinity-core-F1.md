@@ -13192,5 +13192,35 @@ noncomputable def kanPointHomInfinityComparisonIso :
 noncomputable def kanPointHomDiagramComparisonIso {B : SSet.{u + 1}}
     (F : B ⟶ SpaceInfinity.{u}) : FunctorIso (F ≫ kanPointHomInfinityMap) F
 
+lemma kanPointHomParameterizedMap_comparison {X Y : KanObject.{u}} {T : SSet.{u}}
+    (f : X.obj ⊗ T ⟶ Y.obj) :
+    ((ihom pointKanObject.obj).obj X.obj ◁ curry f) ≫
+        MonoidalClosed.comp pointKanObject.obj X.obj Y.obj ≫ (pointKanObjectHomIso Y).hom =
+      ((pointKanObjectHomIso X).hom ▷ T) ≫ f
+
+noncomputable def leftPointHomParameterizedMap {X Y T : SSet.{u}} (f : X ⊗ T ⟶ Y) :
+    ((ihom pointKanObject.obj).obj X.op).op ⊗ T ⟶
+      ((ihom pointKanObject.obj).obj Y.op).op
+
+lemma leftPointHomParameterizedMap_comparison {X Y : KanObject.{u}} {T : SSet.{u}}
+    (f : X.obj ⊗ T ⟶ Y.obj) :
+    leftPointHomParameterizedMap f ≫ (pointedSpaceLeftCoefficientIso Y).inv =
+      ((pointedSpaceLeftCoefficientIso X).inv ▷ T) ≫ f
+
+noncomputable def leftPointHomKanEnriched :
+    EnrichedFunctor SSet.{u} KanObject.{u} KanObject.{u}
+
+noncomputable def leftPointHomKanComparison :
+    KanEnrichedComparison leftPointHomKanEnriched
+      (EnrichedFunctor.id SSet.{u} KanObject.{u})
+
+noncomputable def leftPointHomInfinityMap : SpaceInfinity.{u} ⟶ SpaceInfinity.{u}
+
+noncomputable def leftPointHomInfinityComparisonIso :
+    FunctorIso leftPointHomInfinityMap.{u} (𝟙 SpaceInfinity.{u})
+
+noncomputable def leftPointHomDiagramComparisonIso {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) : FunctorIso (F ≫ leftPointHomInfinityMap) F
+
 end SerrePositivity.InfinityCategories
 ```
