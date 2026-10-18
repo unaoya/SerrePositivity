@@ -412,6 +412,14 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramStructureRegularDerivedIso`・制限側と拡大側の指定可換式 | DiagramStructureDerivedRegularTransition | regular 比較と canonical な導来遷移の経路の一致 |
 | 指定係数拡大比較の可逆性・構造加群の cartesian perfect 性 | DiagramStructureCartesian | 実際に構成した大域構造図式加群の対象条件 |
 | `blowupStructureDGObject`・`blowupStructureDGObjectDerivedIso` | FiniteOverlapStructureEnhancement | 既存の大域 dg 候補内での指定構造対象とその H⁰ 比較 |
+| `finiteOverlapTwistUnit`・恒等・加法・逆・cocycle | FiniteOverlapTwistUnits | 共変 frame の向きで全整数の捻り単元 |
+| `DiagramHomGauge`・`diagramGaugeDGFunctor` | DiagramHomGauge・DiagramGaugeFunctor | 合成条件を証明した Hom 重み付けによる実際の係数 dg 自己関手 |
+| `restrictedScalarUnitIso`・`restrictedForward_eq`・`localForward_smul` | RestrictedScalarIso・RestrictedForwardScalar | 局所係数単元の自己同型と係数制限後の合成計算 |
+| `finiteOverlapBaseDGTransition_smul`・`finiteOverlapTwistScalar` | FiniteOverlapTransitionScalar・FiniteOverlapTwistScalar | 半線形な遷移と具体的捻り自己同型 |
+| `finiteOverlapTwistGauge`・`finiteOverlapTwistDGFunctor` | FiniteOverlapTwistGauge | 単元 cocycle による Hom 合成保存を証明した具体的自己関手 |
+| `finiteOverlapTwistRawModule`・`finiteOverlapTwistModule`・`derivedFiniteOverlapTwistModule` | FiniteOverlapTwistModule | 全次数作用を持つ実際の大域 O(m) と主導来対象 |
+| `diagramGaugeDGFunctor_vertex`・`diagramGaugeLocalIso` | DiagramGaugeLocal | 対角恒等性による局所埋め込みとの整合性と raw 制限同型 |
+| `finiteOverlapTwistLocalIso`・局所 regular 導来同型・局所 perfect 性 | FiniteOverlapTwistLocal | 正規表示と元の Koszul 表示での O(m) の局所 perfect 条件 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -479,7 +487,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2538定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2669定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -500,8 +508,13 @@ dg 準同値な一対象正規表示での指定加群比較の単位・三重�
 構造図式加群の局所 regular 加群との指定導来同型と局所 perfect 性を証明済み。
 構造加群の canonical な係数拡大比較の可逆性、元の Koszul 模型での cartesian perfect 性、
 既存の大域 dg 候補での指定構造対象とその H⁰ 比較まで構成済み。
-次の実装単位は既存の有限重なり推移単元の整数冪を使う捻りの大域実現、
-および coherent な降下との接続。
+有限重なり推移単元の整数冪、係数制限後の scalar 自己同型、
+半線形性と局所双線形性から合成保存を証明した係数 dg 自己関手を構成済み。
+この自己関手に沿う構造加群の制限として実際の大域 O(m) とその主導来対象を構成済み。
+局所埋め込みとの整合性、構造加群への指定局所同型、局所 regular 導来同型、
+正規表示と元の Koszul 表示での局所 perfect 性も証明済み。
+次の実装単位は O(m) の canonical な係数拡大比較の可逆性、
+捻りの加法・逆の大域整合性、および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
