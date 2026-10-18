@@ -6427,5 +6427,58 @@ lemma scaffoldFiniteExtensionMap_innerAnodyne (n : ℕ)
     (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
     innerAnodyneExtensions (scaffoldFiniteExtensionMap n F)
 
+lemma simplicialReplacementAssembly_nervePoint
+    {C : Type u} [Category.{u} C] {K : SSet.{u}} {F : C ⥤ SSet.{u}}
+    (η : (CategoryTheory.Functor.const C).obj K ⟶ F) (c : C) :
+    (nervePoint c ▷ K) ≫ simplicialReplacementAssembly η =
+      snd (Δ[0] : SSet.{u}) K ≫ η.app c ≫ simplicialReplacementConstantLift F c
+
+noncomputable def scaffoldFiniteCylinderAttachingMap (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    F.obj (ULift.up 0) ⟶ simplicialReplacement (scaffoldFiniteTail n ⋙ F)
+
+noncomputable def scaffoldFiniteCylinderPrism (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    (Δ[1] : SSet.{u}) ⊗ F.obj (ULift.up 0) ⟶ scaffoldFiniteExtension n F
+
+noncomputable def scaffoldFiniteCylinderTail (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    simplicialReplacement (scaffoldFiniteTail n ⋙ F) ⟶ scaffoldFiniteExtension n F
+
+lemma scaffoldFiniteCylinder_isPushout (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    IsPushout (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F)
+      (scaffoldFiniteCylinderPrism n F) (scaffoldFiniteCylinderTail n F)
+
+noncomputable def scaffoldFiniteCylinderIso (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    scaffoldFiniteExtension n F ≅
+      pushout (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F)
+
+noncomputable def scaffoldFiniteCylinderComparison (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    pushout (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F) ⟶
+      simplicialReplacement F
+
+lemma scaffoldFiniteCylinderComparison_innerAnodyne (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    innerAnodyneExtensions (scaffoldFiniteCylinderComparison n F)
+
+lemma scaffoldFiniteCylinderComparison_inl (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    pushout.inl (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F) ≫
+      scaffoldFiniteCylinderComparison n F =
+        (((stdSimplex.isoNerve 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n)) ▷ F.obj (ULift.up 0)) ≫
+          simplicialReplacementInitialAssembly F (scaffoldFiniteInitial (n + 1))
+
+lemma scaffoldFiniteCylinderComparison_inr (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    pushout.inr (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldFiniteCylinderAttachingMap n F) ≫
+      scaffoldFiniteCylinderComparison n F = simplicialReplacementBaseMap (scaffoldFiniteTail n) F
+
+lemma isPrecompositionEquivalence_scaffoldFiniteCylinderComparison (n : ℕ)
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
+    IsPrecompositionEquivalence (scaffoldFiniteCylinderComparison n F)
+
 end SerrePositivity.InfinityCategories
 ```
