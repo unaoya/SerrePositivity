@@ -345,3 +345,11 @@ public import SerrePositivity.InfinityCategories.Core.SliceLaxEquivalence
 public import SerrePositivity.InfinityCategories.Core.FatJoinTensorComparison
 
 public import SerrePositivity.InfinityCategories.Core.SliceConeFamilyEquivalence
+
+public import SerrePositivity.InfinityCategories.Core.LimitConeFamily
+
+public import SerrePositivity.InfinityCategories.Core.ConeTerminalBoundary
+
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryIso
+
+public import SerrePositivity.InfinityCategories.Core.FunctorConeTerminalBoundary

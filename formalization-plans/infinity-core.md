@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせを整備し、任意の二つの単体集合の fat join 比較の普遍的な前合成の同値性も完成したが、右因子の図式を固定した fat join 比較の同値性と、固定図式上の可逆ホモトピーの join の円柱への延長と、任意のパラメーターにおける slice と固定図式上の関手の同型判定も証明した。太い slice の任意のパラメーターに対する普遍性も証明した。slice 比較射 `isQCatEquivalence_sliceConeFamilyMap` の同値性も完成。相対終対象への接続と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせを整備し、任意の二つの単体集合の fat join 比較の普遍的な前合成の同値性も完成したが、右因子の図式を固定した fat join 比較の同値性と、固定図式上の可逆ホモトピーの join の円柱への延長と、任意のパラメーターにおける slice と固定図式上の関手の同型判定も証明した。太い slice の任意のパラメーターに対する普遍性も証明した。slice 比較射 `isQCatEquivalence_sliceConeFamilyMap` の同値性も完成。錐の fiber の終対象による極限判定と、相対境界充填を仮定した点ごとの条件からの極限性も証明した。点ごとの極限性から相対充填への方向と自然な錐の構成、任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -8623,6 +8623,58 @@ lemma isQCatEquivalence_sliceConeFamilyMap {K X : SSet.{u}} [Quasicategory X]
 ```
 
 未完了：IsLimitCone と錐の制限の相対終対象の接続、点ごとの極限からの自然な錐の構成、任意図式に対する A6 主定理。A4・A5 は未着手。保存検証：Core 対象ビルド1901 jobs成功、累計1430宣言の公理監査は標準3公理のみ。
+
+### A6 続き（2026-10-18）：錐の fiber の終対象と相対境界充填の接続
+
+極限錐と coneFamily の終対象を同値とし、錐の制限の相対終点境界充填から極限錐への方向を証明した。一般の射の相対終点境界充填は対応する fiber の終対象性を与え、可換な同型で移送できる。二重内部 Hom の交換と点ごとの相対充填の移送により、評価した全ての錐に相対境界充填を仮定すれば関手圏の錐が極限錐となる。最後の仮定は点ごとの極限性より強く、A6 主定理の完成には数えない。原典 Kerodon Proposition 7.1.6.13 の逆方向では錐の制限の cocartesian な輸送が使われ、一般の inner fibration の fiber の終対象性だけでは逆方向は成り立たない。必要な輸送・充填の構成が次の作業。
+
+既存の公開名・型は変更していない。以下では universe u、CategoryTheory・Limits・MonoidalCategory・MonoidalClosed・CartesianMonoidalCategory・SSet と scoped Simplicial を開く。各型に列挙したもの以外の仮定はない。
+
+`Core/LimitConeFamily.lean`：
+
+```lean
+lemma isLimitCone_iff_isTerminalVertex_coneFamily {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (c : JoinCone p) :
+    IsLimitCone c ↔ IsTerminalVertex (X := coneFamily p) (coneFamilyVertexEquiv p c)
+```
+
+`Core/ConeTerminalBoundary.lean`：
+
+```lean
+lemma TerminalBoundaryLifting.isTerminalVertex_fiber {E B : SSet.{u}}
+    (p : E ⟶ B) (b : B _⦋0⦌) (x : (vertexFiber p b) _⦋0⦌)
+    (hx : TerminalBoundaryLifting p x.val) : IsTerminalVertex x
+
+lemma isLimitCone_of_terminalBoundaryLifting_coneRestriction
+    {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCone p)
+    (hc : TerminalBoundaryLifting (coneRestriction K X) (functorVertex c.val)) : IsLimitCone c
+```
+
+`Core/TerminalBoundaryIso.lean`：
+
+```lean
+lemma TerminalBoundaryLifting.map_iso {E B E' B' : SSet.{u}}
+    {p : E ⟶ B} {q : E' ⟶ B'} (e : E ≅ E') (d : B ≅ B')
+    (h : e.hom ≫ q = p ≫ d.hom) {x : E _⦋0⦌} (hx : TerminalBoundaryLifting p x) :
+    TerminalBoundaryLifting q (e.hom.app (Opposite.op ⦋0⦌) x)
+```
+
+`Core/FunctorConeTerminalBoundary.lean`：
+
+```lean
+lemma terminalBoundaryLifting_coneRestriction_of_pointwise {J K X : SSet.{u}}
+    {p : J ⟶ (ihom K).obj X} (c : JoinCone p)
+    (hc : ∀ k : K _⦋0⦌, TerminalBoundaryLifting (coneRestriction J X)
+      (functorVertex (evaluateFunctorCone c k).val)) :
+    TerminalBoundaryLifting (coneRestriction J ((ihom K).obj X)) (functorVertex c.val)
+
+lemma isLimitCone_of_pointwise_terminalBoundaryLifting {J K X : SSet.{u}} [Quasicategory X]
+    {p : J ⟶ (ihom K).obj X} (c : JoinCone p)
+    (hc : ∀ k : K _⦋0⦌, TerminalBoundaryLifting (coneRestriction J X)
+      (functorVertex (evaluateFunctorCone c k).val)) : IsLimitCone c
+```
+
+未完了：IsLimitCone と錐の制限の相対終対象の接続、点ごとの極限からの自然な錐の構成、任意図式に対する A6 主定理。A4・A5 は未着手。保存検証：Core 対象ビルド1905 jobs成功、累計1436宣言の公理監査は標準3公理のみ。
 
 ## 7. A3 の工程（2026-10-18 追加）
 

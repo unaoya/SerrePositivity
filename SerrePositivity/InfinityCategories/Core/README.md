@@ -520,3 +520,7 @@ A6 続き：`laxSliceHomEquiv p A : (A ⟶ laxSlice p) ≃ {F : fatJoin A K ⟶ 
 A6 続き：**`isQCatEquivalence_sliceConeFamilyMap p` が任意の K、quasicategory X、p : K ⟶ X で完成。** 通常の slice と錐の関手単体集合の固定図式上の fiber は既存の比較射で同値。太い slice への `sliceLaxMap` の同値性を任意のパラメーターの関手の同型類の比較で証明し、二つの比較射の厳密な整合性と二対三則を適用した。原典は Kerodon Proposition 4.6.4.19、Example 4.6.6.8。新規27宣言の全型・前提は計画 §6。既存 API は維持。相対終対象への接続・自然な点ごとの極限錐の構成・A6 主定理は未完了、A4・A5 は未着手。
 
 上記保存単位の検証：Core ビルド1901 jobs成功、累計1430宣言の公理監査は標準3公理のみ。
+
+A6 続き：極限錐と `coneFamily` の終対象の同値、相対境界充填からの極限性、同型による相対充填の移送、評価した錐の相対充填を仮定した関手圏の極限性を追加。新規6宣言の全型・前提は計画 §6。最後の仮定は通常の点ごとの極限性より強く A6 完成には数えない。Kerodon Proposition 7.1.6.13 の逆方向には錐の制限の cocartesian な輸送が使われる。一般の inner fibration の fiber の終対象性だけでは相対充填を導けないため、輸送・充填を Core 内で構成する。既存 API・§4 の設計は維持。A6 主定理、A4・A5 は未完了。
+
+上記保存単位の検証：Core ビルド1905 jobs成功、累計1436宣言の公理監査は標準3公理のみ。
