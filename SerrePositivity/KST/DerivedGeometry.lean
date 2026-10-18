@@ -42,3 +42,5 @@ public import SerrePositivity.KST.DerivedGeometry.AffineQcohDerived
 public import SerrePositivity.KST.DerivedGeometry.DerivedSupport
 
 public import SerrePositivity.KST.DerivedGeometry.SupportedVerdier
+
+public import SerrePositivity.KST.DerivedGeometry.AffineDerivedTilde

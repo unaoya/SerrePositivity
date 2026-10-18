@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,262宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,303宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -834,6 +834,27 @@
 - 集約ビルド（3,731 jobs）と1,262宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - 半自由分解の残りとして要求された Hom の K-flat 性・準同値移送・商の H⁰ と Mathlib 導来圏の比較は完了。全 L4 工程は未完了であり、実際の Dqc のアフィン導来比較、T1・T1′・T2 の局所化同値、T3・Perf・RHom 比較を引き続き区別して管理する。
 
+## 40. 実際の Dqc のアフィン導来比較（2026-10-19、実装前の紙上確認）
+
+- 文言：X = Spec R、H を任意の R 代数とする。係数加群層全体の導来圏内で定義した Dqc(X;H) は D(H) と三角同値になる。H の可換性・平坦性は要求しない。
+- 最初の構成：通常の tilde の完全性を明示的に証明する。単射の加群準同型は各素点での局所化後も単射なので、局所分数で表した任意の開上の切断にも単射を誘導する。tilde の左随伴性による余極限保存と合わせて完全性を得る。
+- 係数版：証明済みのアフィン係数同値の逆関手を全係数加群層へ含めた関手を作る。その O 加群層への忘却を、H 加群の R への制限と通常の tilde の合成と自然に比較する。忘却の完全性・同型反映性を通して完全性を示す。
+- 導来比較の入口：この完全関手を実際の全加群層の非有界導来圏へ降ろし、全コホモロジーの比較から Dqc へ制限する。同じ複体の導来像との因子分解正方形を保持する。
+- 完全忠実性と本質的全射性には追加のアフィン計算が必要。局所化加群の Čech 複体の完全性から準連接層のアフィン高次コホモロジー消滅を証明し、非有界の場合の比較を検証する。上／下に有界な比較だけで非有界の同値を結論しない。
+- 元の H_X 加群層の導来圏・コホモロジーによる Dqc の定義と、§26 の分解後 acyclic dg 商は維持する。D(QCoh) の同値を実際の Dqc の同値として読み替えない。
+- 原典：Bondal–van den Bergh Thm 3.1.1 と同 §3 のアフィン計算、TT §3、Toën Derived Azumaya §3.2。§10-7 の実際の導来模型との比較に当たる確認事項である。
+- 順序：このアフィン導来比較を先に完成し、T1・T1′、T2 の局所化同値、T3、Perf、RHom 比較へ進む。形式的な移送補題や比較関手の構成だけで工程完了とはしない。
+
+### 現在地
+
+- `affineTilde_map_app_injective`・`affineTilde_preservesFiniteLimits`：素点での局所化の単射性から通常の tilde の完全性を証明済み。
+- `affineCoefficientTildeFunctor`・`affineCoefficientTildeForgetIso`：全係数加群層への関手と通常の tilde への自然比較を構成済み。
+- `affineCoefficientTildeFunctor_preservesFiniteLimits`・`affineCoefficientTildeFunctor_preservesColimits`：係数 tilde の完全性・小さい余極限保存・同型反映性を証明済み。H の平坦性・可換性は不要。
+- `exactFunctorDerivedHomologyIso`：一般の完全関手の非有界導来化の全コホモロジーの自然比較を証明済み。
+- `affineDerivedTilde`・`affineDerivedTildeToDqc`：実際の全加群層の非有界導来圏と Dqc への関手を構成済み。三角性、全コホモロジーの比較、同型反映性、同じ複体の導来像との正方形を証明済み。
+- 集約ビルド（3,737 jobs）と1,303宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- アフィン導来比較の完全忠実性・本質的全射性は未完了。基本開被覆の局所化と Čech 複体の計算を続ける。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -976,6 +997,11 @@
 | `supportedOnComplement`・`DqcSupported`・`supportedOnComplement_eq_kernel` | DerivedGeometry/DerivedSupport | 実装・対象ビルド済み |
 | `triangulatedKernel_isTriangulated` | DerivedGeometry/TriangulatedKernel | 実装・対象ビルド済み |
 | `supportedOnComplement_isTriangulated`・`supportedDerivedToOpen`・`supportedDerivedSquare` | DerivedGeometry/SupportedVerdier | 実装・対象ビルド済み |
+| `affineTilde_map_app_injective`・`affineTilde_preservesFiniteLimits` | DerivedGeometry/AffineTildeExact | 実装・対象ビルド済み |
+| `affineCoefficientTildeFunctor`・`affineCoefficientTildeForgetIso` | DerivedGeometry/AffineCoefficientTildeFunctor | 実装・対象ビルド済み |
+| `affineCoefficientTildeFunctor_preservesFiniteLimits`・`affineCoefficientTildeFunctor_preservesColimits` | DerivedGeometry/AffineCoefficientTildeExact | 実装・対象ビルド済み |
+| `exactFunctorDerivedHomologyIso`・`exactFunctorDerived_reflectsIsomorphisms` | DerivedGeometry/ExactDerivedHomology | 実装・対象ビルド済み |
+| `affineDerivedTilde`・`affineDerivedTildeToDqc`・`affineDerivedTildeSquare` | DerivedGeometry/AffineDerivedTilde | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
