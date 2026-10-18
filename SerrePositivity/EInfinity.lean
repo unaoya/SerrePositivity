@@ -21,3 +21,4 @@ public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerHeads
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerAdjacent
 public import SerrePositivity.EInfinity.Operad.TwoSlotComposition
 public import SerrePositivity.EInfinity.Operad.CompositionTwoLast
+public import SerrePositivity.EInfinity.Operad.CompositionTwoSlot
