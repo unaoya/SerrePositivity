@@ -1382,6 +1382,30 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_front_value
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_front_value
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionEndpointEquiv
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionEndpointEquiv
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPathFunctor_eq_pathFlag
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPathFunctor_eq_pathFlag
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_eq_flagMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_eq_flagMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_apply
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_apply
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_equiv_symm
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_equiv_symm
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_symm_map
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_symm_map
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_symm_reindex
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_symm_reindex
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomValue_pullback
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomValue_pullback
 
@@ -1390,6 +1414,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_standard
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_standard
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomValue_reindex
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomValue_reindex
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_reindex
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomMap_reindex
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_source_obj
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinched_source_obj
@@ -1435,6 +1465,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_pullback
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_pullback
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_pushforward
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPath_pushforward
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPathFunctor_pushforward
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionFlagPathFunctor_pushforward
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.finPairsLT_card
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.finPairsLT_card

@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomEquiv
+
+public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomReindex
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomNaturality
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomValue

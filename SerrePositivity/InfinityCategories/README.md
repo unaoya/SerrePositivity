@@ -1768,8 +1768,38 @@ resolutionHomMap_standard (σ : StandardSimplex R (D := D) x y n) :
 ```
 
 ここでも前提は `[CommRing R] [DGCategory R D]` のみ。最後の式は単体集合の射の等式である。
-残りは pinched 単体 s 自身の次数 n を変える写像との整合、解像上の射からの逆構成、
-解像の比較の完成、反対側の合成の単体的ホモトピー、
+`resolutionFlagPath_pushforward` は旗の押し出しが最終点固定延長による Path の像に等しいことを
+証明する。単射でない写像による頂点の重複も含む。`resolutionHomValue_reindex` は
+豊穣関手の前合成と端点の移送をこの一致へ接続し、pinched 単体の次数変更との整合を与える。
+
+```lean
+resolutionHomMap_reindex {x y : ClosedCategory R D} {m n : ℕ}
+    (s : coherentPinchedHom (R := R) (D := D) x y _⦋n⦌) (β : ⦋m⦌ ⟶ ⦋n⦌) :
+  resolutionHomMap ((coherentPinchedHom (R := R) (D := D) x y).map β.op s) =
+    coherentResolutionMap β.toOrderHom ≫ resolutionHomMap s
+```
+
+前提は同じく `[CommRing R] [DGCategory R D]` のみ。これで旗の次数と pinched 単体の次数の
+両方について自然性が揃った。
+
+`resolutionEndpointEquiv` は台の coherent 単体を変えず、F1 と本比較の端点の表示を合わせる。
+`resolutionFlagPathFunctor_eq_pathFlag` は native Path の二つの集合表示を等式で同定する。
+これらを使う `resolutionHomMap_eq_flagMap` により、実際の評価を F1 の確定済みの
+`coherentPinchedFlagMap` に厳密に同定する。F1 の両側の逆を持つ構成を適用すると、
+解像上の射からの逆構成が得られる。
+
+```lean
+resolutionHomEquiv (x y : ClosedCategory R D) (n : ℕ) :
+  coherentPinchedHom (R := R) (D := D) x y _⦋n⦌ ≃
+    (coherentResolutionSimplex.{u} n ⟶ standardHomSpace (R := R) (D := D) x y)
+```
+
+前提は `[CommRing R] [DGCategory R D]` のみ。
+`resolutionHomEquiv_apply` は順方向が `resolutionHomMap` そのものであることを示す。
+`resolutionHomMap_equiv_symm` と `resolutionHomEquiv_symm_map` は実際の評価の両側の回収則、
+`resolutionHomEquiv_symm_reindex` は逆構成の面・退化との整合である。
+この固定次数の同値と自然性だけでは、標準 Hom との比較射のホモトピー同値とは数えない。
+残りは解像の比較を通じた反対側の合成の単体的ホモトピー、
 上の判定による充満忠実性の証明、A3e による ∞ 圏の同値の構成。
 
 
