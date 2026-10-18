@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開427宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開442宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,7 +2820,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開427宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開442宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3106,6 +3106,36 @@ strict transport の Kan 値性と、各構造射の fibration 性は p の left
 これは切断空間と strict transport 図式の大域的な比較である。
 元の豊穣 Hom 図式 `simplicialHomDiagram F x` との自然な比較は別途必要であり未完了。
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限も継続中。
+
+### weighted nerve の strict transport への自然な単位比較（実装済み）
+
+`WeightedTransportCoefficients` は H(i) の単体を under 圏の各構造射で輸送する。
+`WeightedTransportUnit` はこの族を相対関手空間へ curry し、自然変換にまとめる。
+任意の `I : Type u`・`[SmallCategory I]` と `H : I ⥤ SSet.{u}` に対して、
+
+```lean
+weightedTransportUnit H : H ⟶ leftStrictTransportDiagram (weightedNerveProjection H)
+weightedTransportUnitComponent_evaluate H i :
+    weightedTransportUnitComponent H i ≫
+      leftStrictTransportEvaluate (weightedNerveProjection H) i = weightedNerveFiberMap H i
+```
+
+を構成した。前者の自然性は全ての構造射について厳密な等式であり、Kan 性は不要。
+後者は恒等射での評価との合成が weighted nerve の既存の fiber 同型に一致することを述べる。
+`WeightedTransportUnitEquivalence` は `[∀ i, KanComplex (H.obj i)]` の下で
+
+```lean
+weightedTransportUnitComponent_isQCatEquivalence H i :
+    IsQCatEquivalence (weightedTransportUnitComponent H i)
+weightedTransportUnitComponent_homotopyEquivalence H i :
+    IsSimplicialHomotopyEquivalence (weightedTransportUnitComponent H i)
+```
+
+を証明した。恒等射での評価は自明 Kan fibration なので、その同値性と合成の fiber 同型を使う。
+これは元の図式 H とその weighted nerve の strict transport の自然な比較である。
+成分のホモトピー逆の自然性や、Bousfield–Kan end 上の誘導射の同値性はまだ主張しない。
+coherent cone の射影の strict transport と元の sHom 図式との自然な比較、
+錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は未完了。
 
 ### 𝒮 の空積（実装済み）
 

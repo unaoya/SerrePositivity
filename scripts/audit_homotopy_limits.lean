@@ -859,3 +859,33 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms strictTransportSectionsComparison_tower_homotopyEquivalence
 #check @strictTransportSectionsComparison_discrete_isIso
 #print axioms strictTransportSectionsComparison_discrete_isIso
+#check @weightedTransportCoefficients
+#print axioms weightedTransportCoefficients
+#check @weightedTransportCoefficients_restriction
+#print axioms weightedTransportCoefficients_restriction
+#check @weightedTransportCoefficients_underMap
+#print axioms weightedTransportCoefficients_underMap
+#check @weightedTransportFamily
+#print axioms weightedTransportFamily
+#check @weightedTransportFamily_projection
+#print axioms weightedTransportFamily_projection
+#check @weightedTransportFamily_underMap
+#print axioms weightedTransportFamily_underMap
+#check @weightedTransportUnitComponent
+#print axioms weightedTransportUnitComponent
+#check @weightedTransportUnitComponent_evaluation
+#print axioms weightedTransportUnitComponent_evaluation
+#check @weightedTransportUnitComponent_naturality
+#print axioms weightedTransportUnitComponent_naturality
+#check @weightedTransportUnit
+#print axioms weightedTransportUnit
+#check @weightedTransportFamily_identity
+#print axioms weightedTransportFamily_identity
+#check @weightedTransportUnitComponent_evaluate_ι
+#print axioms weightedTransportUnitComponent_evaluate_ι
+#check @weightedTransportUnitComponent_evaluate
+#print axioms weightedTransportUnitComponent_evaluate
+#check @weightedTransportUnitComponent_isQCatEquivalence
+#print axioms weightedTransportUnitComponent_isQCatEquivalence
+#check @weightedTransportUnitComponent_homotopyEquivalence
+#print axioms weightedTransportUnitComponent_homotopyEquivalence
