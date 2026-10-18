@@ -484,3 +484,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.front_prefixSmallPath
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.front_prefixSmallFlag
 #check @SerrePositivity.InfinityCategories.coherentPinched_prefixFlag
+#check @SerrePositivity.InfinityCategories.enrichedFunctor_map_comp_normalized
+#check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate_pullback
+#check @SerrePositivity.InfinityCategories.coherentPinchedFlagMap
+#check @SerrePositivity.InfinityCategories.coherentPinchedFlagMap_comparison

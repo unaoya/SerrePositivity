@@ -2060,5 +2060,35 @@ lemma coherentPinched_prefixFlag {C : Type v} [Category.{u} C] [SimplicialCatego
         (coherentPinched_sourceObj τ (F.maxAt (α 0))))).app (Opposite.op ⦋e⦌)
       (F.prefixFlag α) = (eId SSet X).app (Opposite.op ⦋e⦌) PUnit.unit
 
+lemma enrichedFunctor_map_comp_normalized {A : Type w} {C : Type v}
+    [EnrichedCategory SSet.{u} A] [Category.{u} C] [SimplicialCategory C]
+    (T : EnrichedFunctor SSet.{u} A C) (i j k : A) {X Y Z : C}
+    (hi : T.obj i = X) (hj : T.obj j = Y) (hk : T.obj k = Z)
+    (d : SimplexCategoryᵒᵖ) (P : (i ⟶[SSet] j).obj d) (Q : (j ⟶[SSet] k).obj d) :
+    (T.map i k ≫ eqToHom (congrArg₂ SimplicialCategory.sHom hi hk)).app d
+      ((eComp SSet i j k).app d (P, Q)) =
+      (eComp SSet X Y Z).app d
+        ((T.map i j ≫ eqToHom (congrArg₂ SimplicialCategory.sHom hi hj)).app d P,
+         (T.map j k ≫ eqToHom (congrArg₂ SimplicialCategory.sHom hj hk)).app d Q)
+
+lemma coherentPinchedEvaluate_pullback {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n d e : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (F : CoherentResolutionFlag n d) (α : Fin (e + 1) →o Fin (d + 1)) :
+    coherentPinchedEvaluate τ (F.pullback α) =
+      (SimplicialCategory.sHom X Y).map (SimplexCategory.mkHom α).op
+        (coherentPinchedEvaluate τ F)
+
+noncomputable def coherentPinchedFlagMap {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n) :
+    coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y
+
+lemma coherentPinchedFlagMap_comparison {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
+    coherentPinchedFlagMap (coherentHomComparisonPinchedSimplex σ) =
+      coherentResolutionProjection n ≫ SSet.yonedaEquiv.symm σ
+
 end SerrePositivity.InfinityCategories
 ```
