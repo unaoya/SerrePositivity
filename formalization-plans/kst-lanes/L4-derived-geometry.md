@@ -1114,6 +1114,8 @@
 
 ### §53 の実装の現在地
 
+- 次の保存検証：bounded below Dqc の実際の同値まで集約対象ビルド 4029 jobs 成功、公理監査 2051 宣言。標準3公理のみ、KTheory import なし。
+
 - 次の保存検証：bounded below 完全忠実性まで集約対象ビルド 4021 jobs 成功、公理監査 2016 宣言。標準3公理のみ、KTheory import なし。
 
 - 保存検証：集約対象ビルド 4011 jobs 成功、公理監査 1990 宣言。標準3公理のみ、KTheory import なし。
@@ -1127,7 +1129,10 @@
 - 随伴から右随伴の整合するシフト構造を実際に構成し、単位の同型性のシフト・三角拡張での閉性を証明した。関手と単位は変更しない。
 - 任意の一次数、有限コホモロジー区間、全 bounded below 対象の順に導来単位の同型性を証明した。最後の段階は、各固定次数より高い上側切断と残りの下限の保存を使う。
 - `affineDerivedTildePlusFullyFaithful`：元の全係数層の bounded below 導来圏への tilde の完全忠実性を証明した。
-- 準連接コホモロジーの対象での余単位の同型性・本質的全射性と、非有界の Dqc 同値は未完了。
+- `affineDerivedSingleImageIso` で単一準連接層の実際の像を構成し、上下の切断での準連接コホモロジーの保存を証明した。
+- 同じ有限区間への帰納と上側切断による固定次数の比較で、全 bounded below Dqc 対象の余単位の同型性を証明した。
+- `affineDqcPlusEquivalence`：下に有界な H 加群の導来圏と、元の全係数層の導来圏の下に有界な準連接コホモロジー対象との実際の同値を構成した。冪等完備化は不要。
+- 非有界の Dqc 同値は未完了。bounded below の結果だけから非有界を主張しない。
 
 ## 主要宣言の表
 
@@ -1345,6 +1350,8 @@
 | `affineDerivedPlus_unit_single_isIso` | DerivedGeometry/AffineDerivedSingleUnit | 実装・対象ビルド済み |
 | `adjunction_unit_triangle_isIso₂`・`plusTriangle_homology_mor₁_isIso` | DerivedGeometry/TriangulatedUnitLocus・PlusTriangleHomology | 実装・対象ビルド済み |
 | `affineDerivedPlus_unit_isIso`・`affineDerivedTildePlusFullyFaithful` | DerivedGeometry/AffineDerivedPlusUnit・AffineDerivedPlusFullyFaithful | 実装・対象ビルド済み |
+| `affineDqcPlus_truncLE`・`affineDqcPlus_truncGT` | DerivedGeometry/AffineDqcPlusTruncation | 実装・対象ビルド済み |
+| `affineDerivedPlus_counit_isIso`・`affineDqcPlusEquivalence` | DerivedGeometry/AffineDerivedPlusCounit・AffineDqcPlusEquivalence | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

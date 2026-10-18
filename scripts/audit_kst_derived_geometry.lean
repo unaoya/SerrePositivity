@@ -14,6 +14,18 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.exactDerivedPlusSingleIso,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedSingleImageIso,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedPlus_counit_single_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficient_isQuasicoherent_of_isZero,
+    `SerrePositivity.KST.DerivedGeometry.affineDqcPlus_truncLE,
+    `SerrePositivity.KST.DerivedGeometry.affineDqcPlus_truncGT,
+    `SerrePositivity.KST.DerivedGeometry.adjunction_counit_triangle_isIso₂,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedPlus_counit_amplitude_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedPlus_counit_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedTildePlusToDqcFullyFaithful,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedTildePlusToDqc_essSurj,
+    `SerrePositivity.KST.DerivedGeometry.affineDqcPlusEquivalence,
     `SerrePositivity.KST.DerivedGeometry.adjunction_unit_isIso_iff_shift,
     `SerrePositivity.KST.DerivedGeometry.adjunction_unit_triangle_isIso₂,
     `SerrePositivity.KST.DerivedGeometry.affineDerivedPlus_unit_pure_isIso,
