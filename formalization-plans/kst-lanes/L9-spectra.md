@@ -24,7 +24,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・43 モジュール 1023 宣言の公理監査成功。
+対象ビルド・47 モジュール 1050 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -733,3 +733,30 @@ L9b の fiberPoint を用いる形への基点の移送も行い、定数 loop �
 私有宣言を含む 43 モジュール 1023 宣言で標準三公理のみ。
 次は構成済みの path fiber 列と収縮から連結射の全単射性と loop の次数移動を導く。
 整数次数群・段の選択独立性・置換とスペクトルの fiber 列は未完了。
+
+## 29. L9c の正次数の loop 同型と段の比較
+
+単体集合の同型と全基点 π_* 同型から、指定基点の群同型を作る界面を構成した。
+全空間の隣接二次数の群が自明な場合、長完全列から連結準同型の全単射性を導いた。
+これを path fibration に適用し、正次数の loop の次数移動を群同型として証明した。
+Ω 条件の随伴構造射の群同型と合成し、スペクトルの隣接段の正次数の比較を得た。
+次段の二以上の次数へ移すことで、各段の一次も含む全ての正次数の群の可換性を得た。
+元の群演算を保持し、可換群構造を付けた。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `KanHomotopy.equivOfIso` | 零次数を含む同型によるホモトピー類の同値 |
+| `KanHomotopyGroup.equivOfIso` | 指定基点の正次数の群同型 |
+| `KanHomotopyGroup.equivOfPiIsomorphism` | 全基点 π_* 同型からの群同型 |
+| `connectingHom_bijective_of_total_subsingleton` | 長完全列による連結準同型の全単射性 |
+| `connectingHomEquivOfTotalSubsingleton` | 連結準同型による群同型 |
+| `loopPositiveHomotopyEquiv` | π_(n+1)(ΩY) ≃ π_(n+2)(Y) |
+| `OmegaSpectrum.positiveTransition` | π_(n+1)(X_k) ≃ π_(n+2)(X_(k+1)) |
+| `OmegaSpectrum.levelHomotopy_mul_comm` | 各段の一次を含む正次数の可換性 |
+| `OmegaSpectrum.levelHomotopyCommGroup` | 元の演算による可換群構造 |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.5、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 1652 jobs 成功。
+私有宣言を含む 47 モジュール 1050 宣言で標準三公理のみ。
+零次数の loop 比較はまだ未完了。正次数の核と像だけから零次数の全単射性を推論しない。
+次は path space の全境界充填から零次数の連結写像の単射性も幾何的に証明する。

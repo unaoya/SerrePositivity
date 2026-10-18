@@ -55,7 +55,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.EndpointCircle,
     `SerrePositivity.KST.Spectra.PointedCofiber,
     `SerrePositivity.KST.Spectra.CofiberMappingPullback,
-    `SerrePositivity.KST.Spectra.LoopPathFiber]
+    `SerrePositivity.KST.Spectra.LoopPathFiber,
+    `SerrePositivity.KST.Spectra.HomotopyIso,
+    `SerrePositivity.KST.Spectra.ContractibleTotalSequence,
+    `SerrePositivity.KST.Spectra.LoopHomotopyGroups,
+    `SerrePositivity.KST.Spectra.OmegaSpectrumTransitions]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
