@@ -8,3 +8,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.Degrees
 public import SerrePositivity.EInfinity.BarrattEccles.Basis
 public import SerrePositivity.EInfinity.BarrattEccles.ExtraDegeneracy
 public import SerrePositivity.EInfinity.BarrattEccles.Contraction
+public import SerrePositivity.EInfinity.BarrattEccles.BasisAction
+public import SerrePositivity.EInfinity.BarrattEccles.EquivariantBasis
