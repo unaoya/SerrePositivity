@@ -1575,3 +1575,45 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.alexanderWhitneyApp_naturality
 #print axioms SerrePositivity.KST.ProExcision.alexanderWhitneyApp_naturality
+
+#check @SerrePositivity.KST.ProExcision.awInterval
+#print axioms SerrePositivity.KST.ProExcision.awInterval
+
+#check @SerrePositivity.KST.ProExcision.awInterval_apply
+#print axioms SerrePositivity.KST.ProExcision.awInterval_apply
+
+#check @SerrePositivity.KST.ProExcision.awFace_apply
+#print axioms SerrePositivity.KST.ProExcision.awFace_apply
+
+#check @SerrePositivity.KST.ProExcision.awInterval_face_before
+#print axioms SerrePositivity.KST.ProExcision.awInterval_face_before
+
+#check @SerrePositivity.KST.ProExcision.awInterval_face_after
+#print axioms SerrePositivity.KST.ProExcision.awInterval_face_after
+
+#check @SerrePositivity.KST.ProExcision.awInterval_face_inside
+#print axioms SerrePositivity.KST.ProExcision.awInterval_face_inside
+
+#check @SerrePositivity.KST.ProExcision.awFront_eq_interval
+#print axioms SerrePositivity.KST.ProExcision.awFront_eq_interval
+
+#check @SerrePositivity.KST.ProExcision.awBack_eq_interval
+#print axioms SerrePositivity.KST.ProExcision.awBack_eq_interval
+
+#check @SerrePositivity.KST.ProExcision.AWLeftIndex
+#print axioms SerrePositivity.KST.ProExcision.AWLeftIndex
+
+#check @SerrePositivity.KST.ProExcision.AWRightIndex
+#print axioms SerrePositivity.KST.ProExcision.AWRightIndex
+
+#check @SerrePositivity.KST.ProExcision.awBoundaryIndexForward
+#print axioms SerrePositivity.KST.ProExcision.awBoundaryIndexForward
+
+#check @SerrePositivity.KST.ProExcision.awBoundaryIndexInverse
+#print axioms SerrePositivity.KST.ProExcision.awBoundaryIndexInverse
+
+#check @SerrePositivity.KST.ProExcision.awBoundaryIndexEquiv
+#print axioms SerrePositivity.KST.ProExcision.awBoundaryIndexEquiv
+
+#check @SerrePositivity.KST.ProExcision.awBoundaryIndex_sum
+#print axioms SerrePositivity.KST.ProExcision.awBoundaryIndex_sum

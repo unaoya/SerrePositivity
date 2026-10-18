@@ -93,3 +93,5 @@ public import SerrePositivity.KST.ProExcision.IntegerTensorBifunctor
 public import SerrePositivity.KST.ProExcision.ChainTensorVanishing
 public import SerrePositivity.KST.ProExcision.LinearizedHomotopyOperations
 public import SerrePositivity.KST.ProExcision.AlexanderWhitney
+public import SerrePositivity.KST.ProExcision.AWFaces
+public import SerrePositivity.KST.ProExcision.AWBoundaryIndex
