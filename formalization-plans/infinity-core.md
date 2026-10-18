@@ -4750,6 +4750,65 @@ lemma IsEssentiallySurjective.equivalencePathReplacementMap_surjective {X Y : SS
 
 ```
 
+
+### A3e 続き：写像空間と coslice の相対的な持ち上げ（2026-10-18）
+
+inner fibration が右 pinched 写像空間上に誘導する射は右ファイブレーションであり、その各頂点上の fiber は Kan 複体となる。coslice の制限と後合成を引き戻しにまとめた相対制限は左ファイブレーションとなる。これらの持ち上げ定理には元の単体集合の quasicategory 性は不要。相対 coslice の標的の quasicategory 性には両端の quasicategory 性を仮定する。Core 対象ビルド成功（1621 jobs）、累計734宣言の標準3公理監査成功。未完了：相対外側ホーンの充填、充満忠実性から写像空間の fiber の可縮性への移行、主同値判定、一般の同値による極限の保存・反映。§4 の設計変更はない。
+
+以下は新規9公開宣言の正確な型と全前提。共通の namespace は `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits SSet`、`open scoped Simplicial`。
+
+MappingSpaceFibration：
+
+```lean
+lemma pinchedHomMap_rightHornFilling {X Y : SSet.{u}} (p : X ⟶ Y) [InnerFibration p]
+    (x y : X _⦋0⦌)
+    (n : ℕ) (i : Fin (n + 2)) (hi : 0 < i)
+    (f : ∀ (j : Fin (n + 2)) (_ : j ≠ i), (Δ[n] : SSet.{u}) ⟶ pinchedHom x y)
+    (hf : horn.IsCompatible f)
+    (b : (Δ[n + 1] : SSet.{u}) ⟶ pinchedHom
+      (p.app (Opposite.op ⦋0⦌) x) (p.app (Opposite.op ⦋0⦌) y))
+    (hb : ∀ (j : Fin (n + 2)) (hj : j ≠ i),
+      f j hj ≫ pinchedHomMap p x y = stdSimplex.δ j ≫ b) :
+    ∃ F : (Δ[n + 1] : SSet.{u}) ⟶ pinchedHom x y,
+      (∀ (j : Fin (n + 2)) (hj : j ≠ i), stdSimplex.δ j ≫ F = f j hj) ∧
+      F ≫ pinchedHomMap p x y = b
+
+instance pinchedHomMap_rightFibration {X Y : SSet.{u}} (p : X ⟶ Y) [InnerFibration p]
+    (x y : X _⦋0⦌) : RightFibration (pinchedHomMap p x y)
+
+lemma pinchedHomMap_vertexFiber_kanComplex {X Y : SSet.{u}} (p : X ⟶ Y) [InnerFibration p]
+    (x y : X _⦋0⦌) (s : (pinchedHom
+      (p.app (Opposite.op ⦋0⦌) x) (p.app (Opposite.op ⦋0⦌) y)) _⦋0⦌) :
+    KanComplex (vertexFiber (pinchedHomMap p x y) s)
+
+```
+
+RelativeCoslice：
+
+```lean
+noncomputable def relativeCosliceTarget {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y)
+    (K₀ : K.Subcomplex) : SSet.{u}
+
+noncomputable def relativeCosliceMap {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y)
+    (K₀ : K.Subcomplex) : sliceUnder p ⟶ relativeCosliceTarget p q K₀
+
+lemma relativeCosliceMap_hasLiftingProperty {A K X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) [InnerFibration q]
+    (A₀ : A.Subcomplex) (K₀ : K.Subcomplex) (hA : leftAnodyneExtensions A₀.ι) :
+    HasLiftingProperty A₀.ι (relativeCosliceMap p q K₀)
+
+instance relativeCosliceMap_leftFibration {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y)
+    [InnerFibration q] (K₀ : K.Subcomplex) : LeftFibration (relativeCosliceMap p q K₀)
+
+instance leftFibration_pullback_fst {E B A : SSet.{u}} (p : A ⟶ B) (q : E ⟶ B)
+    [LeftFibration q] : LeftFibration (pullback.fst p q)
+
+instance relativeCosliceTarget_quasicategory {K X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) :
+    Quasicategory (relativeCosliceTarget p q K₀)
+
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

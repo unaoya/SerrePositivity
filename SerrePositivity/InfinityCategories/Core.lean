@@ -43,3 +43,7 @@ public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathInnerFibration
 
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathVertices
+
+public import SerrePositivity.InfinityCategories.Core.MappingSpaceFibration
+
+public import SerrePositivity.InfinityCategories.Core.RelativeCoslice
