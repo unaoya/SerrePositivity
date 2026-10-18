@@ -10,6 +10,7 @@ public import SerrePositivity.KST.Comparison.RegularBar
 public import SerrePositivity.KST.Comparison.BarEdge
 public import SerrePositivity.KST.Comparison.RegularBarContraction
 public import SerrePositivity.KST.Comparison.GrouplikeTranslations
+public import SerrePositivity.KST.Comparison.BarSegal
 
 /-!
 # K-L2：比較定理の入口

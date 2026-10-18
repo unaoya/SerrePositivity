@@ -15,6 +15,7 @@ set_option pp.explicit true
 
 
 
+
 -- BarEdge.lean
 
 #check @SerrePositivity.KST.Comparison.monoidEdgeSimplex
@@ -40,6 +41,36 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.monoidBarLoopFamily
 #print axioms SerrePositivity.KST.Comparison.monoidBarLoopFamily
+
+
+-- BarSegal.lean
+
+#check @SerrePositivity.KST.Comparison.monoidSingleObj_eqToHom
+#print axioms SerrePositivity.KST.Comparison.monoidSingleObj_eqToHom
+
+#check @SerrePositivity.KST.Comparison.monoidWordSimplex
+#print axioms SerrePositivity.KST.Comparison.monoidWordSimplex
+
+#check @SerrePositivity.KST.Comparison.monoidWordLabels
+#print axioms SerrePositivity.KST.Comparison.monoidWordLabels
+
+#check @SerrePositivity.KST.Comparison.monoidWordLabels_simplex
+#print axioms SerrePositivity.KST.Comparison.monoidWordLabels_simplex
+
+#check @SerrePositivity.KST.Comparison.monoidWordSimplex_labels
+#print axioms SerrePositivity.KST.Comparison.monoidWordSimplex_labels
+
+#check @SerrePositivity.KST.Comparison.monoidWordEquiv
+#print axioms SerrePositivity.KST.Comparison.monoidWordEquiv
+
+#check @SerrePositivity.KST.Comparison.monoidWordLabels_map
+#print axioms SerrePositivity.KST.Comparison.monoidWordLabels_map
+
+#check @SerrePositivity.KST.Comparison.monoidTupleSpace
+#print axioms SerrePositivity.KST.Comparison.monoidTupleSpace
+
+#check @SerrePositivity.KST.Comparison.monoidBarRowIso
+#print axioms SerrePositivity.KST.Comparison.monoidBarRowIso
 
 
 -- ComponentSubcomplex.lean
