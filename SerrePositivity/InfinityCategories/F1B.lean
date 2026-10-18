@@ -51,3 +51,6 @@ public import SerrePositivity.InfinityCategories.F1B.UniversalUnitComma
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaFamilies
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberFamilies
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberExtension
+public import SerrePositivity.InfinityCategories.F1B.InitialMappingSpace
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquares
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaLocalCriterion

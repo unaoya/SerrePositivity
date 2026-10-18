@@ -159,6 +159,21 @@ b とホモトピーの同時延長へ厳密に移す。`unitCommaFiber_isInitia
 原典 Prop 6.2.6.1 の証明は relative join の cartesian fibration を使う。現在の境界引き戻しの
 区間 comma 模型について、その cartesian な輸送や原典模型との比較はまだ実装していない。
 
+始対象性について、`isInitialVertex_iff_pinchedHomLeft_isContractibleKan` を実装した。
+可縮性の反転不変性を境界充填から証明し、Core の終対象の右模型での判定と
+Stable の `InitialOpposite` の双対化を読み取り専用で利用する。依存は狭いモジュールに限定する。
+`UnitCommaFiberSquare` は Y の区間図式と X のホモトピーを持ち、両側辺を指定頂点の
+comma 矢印に固定する。`unitCommaFiberMappingSquareEquiv` は任意のパラメータ A について、
+comma fiber の**区間**写像空間の族と正方形との厳密な全単射を与える。
+標的図式は comma の標的射影による実際の写像空間の作用と整合する。
+
+`unitCommaInitialCondition_iff_mappingSpaces` は単位の comma 始対象条件を各 fiber の
+**左 pinched** 写像空間の可縮性に書き換える。一方 `unitIntervalComparisonFiber` は標準単位比較の
+可逆 path 置換の fiber であり、`UnitMappingSpaceCondition` から全ての指定点での可縮性を証明した。
+**元の比較射の strict fiber が可縮だとは主張しない。** 残る模型比較では、comma の左 pinched
+写像空間から区間の正方形へ移り、その正方形を単位比較の導来 fiber に同定またはホモトピー同値にする
+構成が必要である。これら二つの可縮性の命題を同じ模型と見なして始対象性を結論してはならない。
+
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
 `∃ a : QCatAdjunction F G, a.unitHom = η` を構成する逆方向である。
@@ -166,8 +181,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（1974 jobs）・公理監査（579 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 306 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2005 jobs）・公理監査（625 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 337 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -293,9 +308,15 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `universalUnitCommaProjection_surjective` | 同じ条件の下での始域射影の頂点上全射性（同値性は未証明） | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
-
 | `unitCommaUncurry`・`unitCommaHomotopy`・`unitCommaLift_homotopy` | comma の族の展開と厳密な回収 | 実装済み |
 | `unitCommaFiberCurry`・`unitCommaFiberFamilyEquiv` | 固定始域の族と標的図式・ホモトピーの組の厳密な全単射 | 実装済み |
 | `unitCommaFiberTarget_precomp`・`unitCommaFiberHomotopy_precomp`・`unitCommaFiber_hom_ext` | パラメータ自然性と二データによる外延性 | 実装済み |
 | `unitCommaFiber_exists_extension_iff` | 任意の射に沿う延長問題と図式・ホモトピーの同時延長の同値 | 実装済み |
 | `unitCommaFiber_isInitialVertex_iff` | 初頂点固定の境界延長による始対象性の判定 | 実装済み |
+| `isContractibleKan_of_op`・`IsContractibleKan.op`・`isContractibleKan_op_iff` | 境界充填による可縮性の反転不変性 | 実装済み |
+| `IsInitialVertex.pinchedHomLeft_isContractibleKan`・`isInitialVertex_iff_pinchedHomLeft_isContractibleKan` | 始対象性と全ての左 pinched 写像空間の可縮性の同値 | 実装済み |
+| `unitCommaFiber_precomp_eq_iff` | comma fiber の制限の等式を標的とホモトピーで判定 | 実装済み |
+| `UnitCommaFiberSquare`・`unitCommaFiberMappingSquareEquiv` | comma fiber の区間写像空間の族を側辺固定の正方形で表示 | 実装済み |
+| `unitCommaFiberMappingSquare_target` | 正方形の標的と標的射影の写像空間上の作用の整合性 | 実装済み |
+| `unitCommaInitialCondition_iff_mappingSpaces` | 単位の始対象条件の左写像空間での表示 | 実装済み |
+| `unitIntervalComparisonFiber`・`UnitMappingSpaceCondition.unitIntervalComparisonFiber_isContractibleKan` | 標準単位比較の導来 fiber と各点条件による可縮性 | 実装済み |

@@ -392,3 +392,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitCommaFiber_exists_extension_iff
 
 #check @SerrePositivity.InfinityCategories.unitCommaFiber_isInitialVertex_iff
+
+#check @SerrePositivity.InfinityCategories.isContractibleKan_op_iff
+
+#check @SerrePositivity.InfinityCategories.isInitialVertex_iff_pinchedHomLeft_isContractibleKan
+
+#check @SerrePositivity.InfinityCategories.unitCommaFiber_precomp_eq_iff
+
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare
+
+#check @SerrePositivity.InfinityCategories.unitCommaFiberMappingSquareEquiv
+
+#check @SerrePositivity.InfinityCategories.unitCommaInitialCondition_iff_mappingSpaces
+
+#check @SerrePositivity.InfinityCategories.unitIntervalComparisonFiber
+
+#check @SerrePositivity.InfinityCategories.UnitMappingSpaceCondition.unitIntervalComparisonFiber_isContractibleKan
