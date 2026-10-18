@@ -14,6 +14,17 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.awayLocalization_of_composite,
+    `SerrePositivity.KST.DerivedGeometry.tilde_basicOpenRestriction_isLocalized,
+    `SerrePositivity.KST.DerivedGeometry.moduleLocalizationR,
+    `SerrePositivity.KST.DerivedGeometry.moduleLocalizationR_preservesFiniteLimits,
+    `SerrePositivity.KST.DerivedGeometry.moduleLocalizationR_unit,
+    `SerrePositivity.KST.DerivedGeometry.moduleLocalizationR_lift,
+    `SerrePositivity.KST.DerivedGeometry.moduleLocalizationR_lift_isIso,
+    `SerrePositivity.KST.DerivedGeometry.moduleLocalizationR_lift_naturality,
+    `SerrePositivity.KST.DerivedGeometry.sectionLocalizationComparison,
+    `SerrePositivity.KST.DerivedGeometry.tilde_basicOpenIntersection_isLocalized,
+    `SerrePositivity.KST.DerivedGeometry.sectionLocalizationComparisonAt_basicOpen_isIso,
     `SerrePositivity.KST.DerivedGeometry.basicOpenCover_span,
     `SerrePositivity.KST.DerivedGeometry.basicOpenLocalized_isIso_iff,
     `SerrePositivity.KST.DerivedGeometry.basicOpenLocalized_exact_iff,

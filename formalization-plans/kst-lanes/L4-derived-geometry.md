@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,332宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,366宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -870,6 +870,16 @@
 - 基本開への適用：tilde M の D(b) と D(ab) の切断の比較へ適用し、D(b) から D(a)∩D(b) への制限が a の局所化であることを示す。有限交叉は基本開なので、有限被覆の Čech 複体の各項の局所化比較へ進む。
 - 原典との位置：TT §3、BvdB Thm 3.1.1、Toën §3.2 のアフィン計算。この補題の後も、層コホモロジーと非有界導来比較までを別途検証する。
 
+### 現在地
+
+- `awayLocalization_of_composite`：分母と核の元を明示的に消去する反復局所化の定理を証明済み。
+- `tilde_basicOpenRestriction_isLocalized`・`tilde_basicOpenIntersection_isLocalized`：実際の tilde 層の D(b)→D(ab)、D(b)→D(b)∩D(a) の制限写像の局所化性を証明済み。
+- `moduleLocalizationR`・`moduleLocalizationR_lift_naturality`：R 加群値の完全な局所化関手、その単位・普遍的延長・一意性・可換正方形との両立を証明済み。
+- `sectionLocalizationComparison`：任意の O 加群層の切断の局所化から基本開との交叉の切断への自然変換を構成済み。
+- `sectionLocalizationComparisonAt_basicOpen_isIso`：tilde 層では構成済みの比較自体が各基本開で同型になることを証明済み。
+- 集約ビルド（3,790 jobs）と1,366宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 継続する項目：有限積・Čech 微分との比較、一般の有限基本開被覆の Čech 完全性、層コホモロジー消滅、実際の Dqc のアフィン非有界導来比較。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1020,6 +1030,11 @@
 | `basicOpenLocalized_acyclic_iff`・`basicOpenLocalized_quasiIso_iff` | DerivedGeometry/BasicOpenLocalization | 実装・対象ビルド済み |
 | `openCechAugmented`・`splitOpenCechExtraDegeneracy` | DerivedGeometry/SplitOpenCech | 実装・対象ビルド済み |
 | `openCechCochainUnopIso`・`splitOpenCech_exactAt` | DerivedGeometry/OpenCechContraction | 実装・対象ビルド済み |
+| `awayLocalization_of_composite` | DerivedGeometry/IteratedAwayLocalization | 実装・対象ビルド済み |
+| `tilde_basicOpenRestriction_isLocalized` | DerivedGeometry/BasicOpenSectionLocalization | 実装・対象ビルド済み |
+| `moduleLocalizationR`・`moduleLocalizationR_lift_naturality` | DerivedGeometry/ModuleLocalizationR | 実装・対象ビルド済み |
+| `sectionLocalizationComparison` | DerivedGeometry/SectionLocalizationComparison | 実装・対象ビルド済み |
+| `sectionLocalizationComparisonAt_basicOpen_isIso` | DerivedGeometry/BasicOpenSectionComparisonIso | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
