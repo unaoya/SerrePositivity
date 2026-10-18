@@ -2764,5 +2764,15 @@ lemma coherentResolutionProjectionAll_initial_isPrecompositionEquivalence :
 lemma coherentResolutionProjectionAll_isPrecompositionEquivalence (X : SSet.{u}) :
     IsPrecompositionEquivalence (coherentResolutionProjectionAll.app X)
 
+lemma coherentResolution_map_isPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B)
+    (hf : IsPrecompositionEquivalence f) : IsPrecompositionEquivalence (coherentResolution.map f)
+
+lemma exists_extension_of_precompositionEquivalence {A B Z : SSet.{u}} [Quasicategory Z]
+    (i : A ⟶ B) [Mono i] (hi : IsPrecompositionEquivalence i) (a : A ⟶ Z) :
+    ∃ b : B ⟶ Z, i ≫ b = a
+
+instance coherentResolutionRightAdjoint_quasicategory (Z : SSet.{u}) [Quasicategory Z] :
+    Quasicategory (coherentResolutionRightAdjoint.obj Z)
+
 end SerrePositivity.InfinityCategories
 ```
