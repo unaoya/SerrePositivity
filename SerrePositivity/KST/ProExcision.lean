@@ -61,3 +61,9 @@ public import SerrePositivity.KST.ProExcision.MHomotopyHomology
 public import SerrePositivity.KST.ProExcision.SetActionBar
 public import SerrePositivity.KST.ProExcision.BarAction
 public import SerrePositivity.KST.ProExcision.BarTransport
+public import SerrePositivity.KST.ProExcision.ActionNerveCoordinates
+public import SerrePositivity.KST.ProExcision.ActionBarRow
+public import SerrePositivity.KST.ProExcision.SetActionMorphisms
+public import SerrePositivity.KST.ProExcision.ConstantActionBar
+public import SerrePositivity.KST.ProExcision.CoefficientBisimplicialBar
+public import SerrePositivity.KST.ProExcision.TupleAction

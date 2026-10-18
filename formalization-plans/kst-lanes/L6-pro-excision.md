@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと381宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと417宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -59,6 +59,8 @@
 - `LinearizedMHomotopy.cancel_augmentation`：C(ψ)≃C(ψ)+C(φ)−C(e) から C(φ)≃C(e) を区間写像の差で構成。作用の同変性は別条件として未接続。
 - `LinearizedMHomotopy.homologyMap_eq`：m 次ホモトピーから次数 ≤m の交代面写像複体のホモロジー写像の一致を証明。零次を含み、同変 bar への移送は未完。
 - `actionBarComparison`：実際の E_BH G から B(G⋉H) への単体的比較を構成。transport 関手の合成則と全ての単体射への自然性を検証。
+- `coefficientBisimplicialBarComparison`：bar 次数と係数次数を分けた二重単体的比較を構成。対角は元の比較と一致する。各行の始域は H^r×G^r と同型。
+- `tupleActionStep_localized_isIso`：同じ g_i を座標 j≥i へ作用させる一段の可逆性を、元の G の群状性だけから証明。有限合成と行の比較の同定は作業中。
 - L6c の Prop A.1 の同値性、Lemma A.4 の同変 bar を経由する比較、A.5 の AW・shuffle 比較は未完了。
 - L6d〜g：未着手。
 
@@ -77,6 +79,11 @@
 | coefficientActionBar | BarAction.lean | 検証済み | BH の作用による E_BH G |
 | barSetAction | BarAction.lean | 検証済み | 非可換な BH への集合の作用 |
 | actionBarComparison | BarTransport.lean | 検証済み | Prop A.1 の単体的比較射（同値性は未完） |
+| coefficientBisimplicialBarComparison | CoefficientBisimplicialBar.lean | 検証済み | Prop A.1 の二重単体的比較 |
+| coefficientBisimplicialBarComparison_diagonal | CoefficientBisimplicialBar.lean | 検証済み | 対角の比較射との一致 |
+| coefficientBisimplicialBarRowIso | CoefficientBisimplicialBar.lean | 検証済み | 第 r 行の H^r×G^r への同型 |
+| actionNerveEquiv | ActionNerveCoordinates.lean | 検証済み | 作用圏の射列は始点×ラベル列 |
+| tupleActionStep_localized_isIso | TupleAction.lean | 検証済み | 指定された座標への群状作用の可逆性 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |
 | LevelHom | Pro.lean | 検証済み | 同じ添字上の可換な射 |
 | IsProIso | Pro.lean | 検証済み | eventual inverse の二つの三角形 |
@@ -492,3 +499,13 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 合成の検証は z=g'•y と z(i→k)=z(j→k)·z(i→j) による。半直積の積は原典の (gg′,h·g(h′)) を維持する。
 - 本実装の nerve の射列は原典の語の座標の逆順であるため、作用する積は prefix g_i…g_0 と表示される。原典の逆順の語の添字へ戻すと右側の suffix の積になる。比較写像の docstring にこの規約差を明記する。
 - 実際の単体的比較の構成、原典の二重単体的な行の分解、各行の局所化同値、対角の局所化同値の順に確認する。最終の H_* の模型同定は所有レーンの界面。
+
+## Prop A.1 の各行の同値性の分解
+
+- 各行の比較を G^r×H^r 上で読むと、h_j に prefix g_j…g_0 を作用させる。
+- i=0,…,r−1 の順に、同じ g_i を座標 j≥i の H 成分だけへ作用させる写像を合成すれば、この prefix 比較になる。
+- `maskedTupleAction` は G が H^r の指定された座標だけに作用する通常の単体的モノイド作用。
+- 各段は `actionFamily_localized_isIso` を、パラメータ G^r とその第 i 座標への射影に適用したもの。
+- したがって G^r の群状性を別に仮定する必要はない。必要なのは元の G の群状性だけ。
+- 完全な行の比較との座標等式を証明し、有限合成の可逆性から行の局所化同値を得る。
+- 対角への移送には既存 `BisimplicialModel.localized_diagonal_map` を、二重単体的比較を flip して適用する。
