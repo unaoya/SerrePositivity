@@ -142,10 +142,12 @@ blowup 後の有限忠実平坦細分を構成した。アフィンの場合の�
 抽象 blowup の三つの非自明な頂点の分離性も基底の分離性から導いた（§67）。
 自己準同型の局所化比較から中心台を恒等射の冪ねじれ・有限生成イデアル冪で判定し、
 中心を逆にした後の閉台の空性と実際の可換係数の有限射影複体の零対象性も証明した（§68）。
+中心局所化の共通核を既存の scalarSupported の部分圏と同定し、
+元の圏への忘却と局所化に可換な係数変更への自然性を保つ加法的な線形圏同値を構成した（§69）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 171 モジュール・1999 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 173 モジュール・2021 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -446,6 +448,16 @@ Z 上の帰納仮定で残りの辺を同型とする。
 (3.6) により全次数の支持つき K の主張にする。
 
 ## 17. 主要宣言の表
+
+| 宣言（§69） | 内容 | 状態 |
+| --- | --- | --- |
+| `centralLocalizationKernel`、`centralLocalizationKernel_iff_scalarSupported`、`centralLocalizationKernel_eq_scalarSupported` | 中心局所化の共通核と既存の正指数の台条件の同定 | 対象ビルド済み、自己準同型の局所化比較は明示 |
+| `centralKernelScalarEquivalence` | 共通核と既存の台つき部分圏の圏同値 | 対象ビルド済み、対象・射は元の圏のまま |
+| `centralKernelScalarEquivalence_forget`、`centralKernelScalarEquivalence_inverse_forget` | 両方向とも元の圏への忘却と可換する自然同型 | 対象ビルド済み |
+| `centralKernelScalarEquivalence_functor_additive`、`functor_linear`、`inverse_additive`、`inverse_linear` | 両方向の加法性と中心線形性 | 対象ビルド済み |
+| `centralLocalizationKernel_map`、`centralKernelMap`、`centralScalarSupportMap` | 局所化と可換する指定係数変更の両部分圏への制限 | 対象ビルド済み、核保存を導出 |
+| `centralKernelScalarEquivalence_naturality` | 台の圏同値と指定係数変更の可換性 | 対象ビルド済み、全ての射への自然性を保持 |
+
 
 | 宣言（§68） | 内容 | 状態 |
 | --- | --- | --- |
@@ -2507,3 +2519,33 @@ K0・T2 からの自然な比較の供給、および二重 fiber の実際の�
 
 §68 の保存検証：集約対象ビルドと公理監査が成功。171 モジュール・1999 宣言、標準三公理のみ。
 この保存単位では対象ビルドと監査を実行。全体ビルドの所有範囲外の失敗は §66 の記録どおり。
+
+
+## 69. 中心局所化の共通核と台つき部分圏の自然な線形圏同値
+
+論文 (3.6) の compact kernel の台判定を、対象ごとの命題から充満部分圏の比較へ進めた。
+各中心局所化で零になる対象の共通核を定義し、§68 の自己準同型の局所化比較を
+全対象について入力する。共通指数を一つ増やすことで、既存の scalarSupported の
+正指数の規約へ合わせ、二つの対象条件の同値と等式を証明した。
+元の圏の恒等同値をこの二つの充満部分圏へ制限し、圏同値を構成した。
+両方向とも元の対象・射を保持し、忘却との可換性は各対象の恒等同型による自然同型で与えた。
+両方向の加法性と中心 R 線形性も検証した。
+
+係数変更 F と各局所化が自然同型を通じて可換する場合、局所化先の関手が
+零対象を保つことから F が共通核を保つと導いた。核保存を別の仮定にはしていない。
+この F を共通核と既存の scalarSupported の両部分圏へ制限し、
+上の圏同値を先に使う場合と後に使う場合の二つの経路を自然同型で結んだ。
+元の対象は両経路とも F.obj P であり、全ての射への自然性も保持する。
+これは Y = S, X の比較を定理 3.1 の指定引き戻しへ接続するための型である。
+
+局所化関手と係数変更の可換性、および自己準同型の局所化比較の存在は、
+K0・T2 から実際に供給すべき明示的な入力である。
+この圏同値を TT 局所化や非連結 K の fiber の同定そのものとは数えない。
+(3.6) 全体、自然な blowup 列の実現、Tot・hG・最小公理全体・E の実現は未完。
+
+§69 の保存検証：集約対象ビルドと公理監査が成功。173 モジュール・2021 宣言、標準三公理のみ。
+区切りの全体ビルドはルートの import 時に、§66 と同じ所有範囲外の
+`InfinityCategories.F1B.RelativeFunctorHomotopyComposition` と
+`InfinityCategories.F1.RelativeFunctorVertices` の `relativeFunctorVertex` 重複で失敗。
+`set -eo pipefail` で終了コード 1 を確認。ログは `/tmp/l8-central-kernel-full-build.log`。
+L8 の対象ビルド・監査は成功しており、所有範囲外の宣言は変更しない。
