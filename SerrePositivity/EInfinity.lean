@@ -104,3 +104,11 @@ public import SerrePositivity.EInfinity.Operad.InsertionCoreBlocks
 public import SerrePositivity.EInfinity.Operad.AlgebraInsertionBlocks
 public import SerrePositivity.EInfinity.Operad.IteratedOperationTensor
 public import SerrePositivity.EInfinity.Operad.AlgebraIteratedEvaluation
+public import SerrePositivity.EInfinity.Operad.TensorLastPairExtraction
+public import SerrePositivity.EInfinity.Operad.TensorLastPairSeparation
+public import SerrePositivity.EInfinity.Operad.TensorTailSeparationNaturality
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerTailSplitLast
+public import SerrePositivity.EInfinity.Operad.IteratedOperationSplitLast
+public import SerrePositivity.EInfinity.Operad.IteratedOperationRecursion
+public import SerrePositivity.EInfinity.Operad.TensorFamilyGeneratorSplitLast
+public import SerrePositivity.EInfinity.Operad.AlgebraLastInputEvaluation
