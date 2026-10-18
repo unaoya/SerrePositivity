@@ -18967,3 +18967,60 @@ lemma fiberContravariantHomSequence_exact {X : SSet.{u}} [Quasicategory X] [IsSt
 S5 の fiber 列への Hom 長完全列は両側・全整数次数で完成。
 S6 の完全関手と自然変換、S7・D7 は未完了。∞ 圏の全有限極限・余極限を導く逆向きの
 一般論も別の未完了項目として保持する。目標全体は未完了であり、次は S6。
+
+
+## S6：完全関手の定義と任意の普遍四角形の保存（2026-10-19）
+
+零頂点と cofiber 列の保存だけで `IsExactFunctor` を定義し、安定性から fiber 列を保存することを証明。零終点の長方形と引き戻し貼り合わせの消去により、零角のない任意の押し出し・引き戻しも保存する。対象ビルド 2177 jobs、対象＋統合 3068 jobs 成功。全 344 modules／2541 declarations の公理監査成功（標準 3 公理のみ）。S6 の h の三角関手・自然変換、S7 は未完了。
+
+`#check @...`（universes 表示）による全 12 公開宣言・構成子・射影の型：
+
+```lean
+@PreservesZeroVertices.{u_1} : {X Y : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} X Y → Prop
+@ZeroTriangle.map.{u_1} : {X Y : SSet.{u_1}} →
+  ZeroTriangle.{u_1} X → (F : Quiver.Hom.{u_1, u_1 + 1} X Y) → PreservesZeroVertices.{u_1} F → ZeroTriangle.{u_1} Y
+@IsExactFunctor.{u_1} : {X Y : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} X Y → Prop
+isExactFunctor_id.{u_1} : ∀ (X : SSet.{u_1}), IsExactFunctor.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)
+@isExactFunctor_comp.{u_1} : ∀ {X Y Z : SSet.{u_1}} (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  (G : Quiver.Hom.{u_1, u_1 + 1} Y Z) [IsExactFunctor.{u_1} F] [IsExactFunctor.{u_1} G],
+  IsExactFunctor.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F G)
+@IsExactFunctor.preservesFiber.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  [inst : SSet.Quasicategory.{u_1} Y] [IsStable.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  [inst : IsExactFunctor.{u_1} F] (t : ZeroTriangle.{u_1} X),
+  IsFiberSequence.{u_1} t → IsFiberSequence.{u_1} (ZeroTriangle.map.{u_1} t F ⋯)
+@isExactFunctor_of_preservesFiber.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  [inst : SSet.Quasicategory.{u_1} Y] [IsStable.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  (hF : PreservesZeroVertices.{u_1} F),
+  (∀ (t : ZeroTriangle.{u_1} X), IsFiberSequence.{u_1} t → IsFiberSequence.{u_1} (ZeroTriangle.map.{u_1} t F hF)) →
+    IsExactFunctor.{u_1} F
+@IsExactFunctor.preservesPushoutSquare.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] [inst : SSet.Quasicategory.{u_1} Y] [IsStable.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  [IsExactFunctor.{u_1} F]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} L → IsPushoutSquare.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L F)
+@IsExactFunctor.preservesPullbackSquare.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] [inst : SSet.Quasicategory.{u_1} Y] [IsStable.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  [IsExactFunctor.{u_1} F]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPullbackSquare.{u_1} L → IsPullbackSquare.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L F)
+@IsExactFunctor.mk.{u_1} : ∀ {X Y : SSet.{u_1}} {F : Quiver.Hom.{u_1, u_1 + 1} X Y}
+  (preservesZero : PreservesZeroVertices.{u_1} F),
+  (∀ (t : ZeroTriangle.{u_1} X),
+      IsCofiberSequence.{u_1} t → IsCofiberSequence.{u_1} (ZeroTriangle.map.{u_1} t F preservesZero)) →
+    IsExactFunctor.{u_1} F
+@IsExactFunctor.preservesZero.{u_1} : ∀ {X Y : SSet.{u_1}} {F : Quiver.Hom.{u_1, u_1 + 1} X Y}
+  [self : IsExactFunctor.{u_1} F], PreservesZeroVertices.{u_1} F
+@IsExactFunctor.preservesCofiber.{u_1} : ∀ {X Y : SSet.{u_1}} {F : Quiver.Hom.{u_1, u_1 + 1} X Y}
+  [self : IsExactFunctor.{u_1} F] (t : ZeroTriangle.{u_1} X),
+  IsCofiberSequence.{u_1} t → IsCofiberSequence.{u_1} (ZeroTriangle.map.{u_1} t F ⋯)
+```

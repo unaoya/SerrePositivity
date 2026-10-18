@@ -251,6 +251,8 @@ public import SerrePositivity.InfinityCategories.Stable.TriangulatedInstance
 
 public import SerrePositivity.InfinityCategories.Stable.LongExactSequence
 
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
