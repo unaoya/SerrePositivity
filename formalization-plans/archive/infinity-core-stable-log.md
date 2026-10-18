@@ -8050,3 +8050,136 @@ Lean で抽出した公開宣言の正確な型：
 自分の新規ファイルに警告なし。`git diff --check` 成功。
 TR1・TR3 は完成のまま。前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 は未完了。
+
+
+## 左四角形と底辺二単体から五頂点図式を貼る
+
+`PastingBottomTriangle.lean` は縦座標零の部分複体 `pastingBottomFace` と標準二単体の
+同型、左四角形との共通部分と標準区間の同型、和が五頂点図式になることを証明する。
+`PastingCornerGluing.lean` は格子の双カルテジアン四角形を標準形へ移し、
+`pastingCornerBottom_isPushout` と降下射 `pastingCornerGlue` を構成する。
+左四角形と底辺二単体は射の等号で保持する。これらには値域の仮定は不要。
+`exists_pushoutRectangle_of_left_and_bottom` は前回の余極限の厳密な延長に適用し、
+左押し出し四角形・底辺二単体・外側余錐を保つ右押し出し長方形を構成する（値域 Quasicategory）。
+直和へ適用するには外側基底の余極限を零射の cofiber から与える工程が残る。
+既存の cofiber の選択は左枝を指定しないため、指定した零枝を持つ span への余極限の輸送が次の作業。
+
+Lean で抽出した公開宣言の正確な型：
+
+```lean
+pastingBottomFace.{u_1} : SSet.Subcomplex.{u_1}
+  (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+pastingBottomFace_le_corner.{u_1} : LE.le.{u_1} pastingBottomFace.{u_1} pastingCorner.{u_1}
+pastingLeftSquare_sup_bottomFace.{u_1} : Eq.{u_1 + 1} (pastingLeftSquare.{u_1} ⊔ pastingBottomFace.{u_1})
+  pastingCorner.{u_1}
+pastingBottomFaceFromStandard.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+  (SSet.Subcomplex.toSSet.{u_1} pastingBottomFace.{u_1})
+pastingBottomFaceIso.{u_1} : CategoryTheory.Iso.{u_1, u_1 + 1}
+  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+  (SSet.Subcomplex.toSSet.{u_1} pastingBottomFace.{u_1})
+pastingBottomIntersectionIso.{u_1} : CategoryTheory.Iso.{u_1, u_1 + 1}
+  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+  (SSet.Subcomplex.toSSet.{u_1} (pastingLeftSquare.{u_1} ⊓ pastingBottomFace.{u_1}))
+pastingCornerLeftInclusion.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+  (SSet.Subcomplex.toSSet.{u_1} pastingCorner.{u_1})
+pastingCornerBottomInclusion.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+  (SSet.Subcomplex.toSSet.{u_1} pastingCorner.{u_1})
+pastingCornerBottom_isPushout.{u_1} : CategoryTheory.IsPushout.{u_1, u_1 + 1} squareBottomEdge.{u_1}
+  (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) pastingCornerLeftInclusion.{u_1}
+  pastingCornerBottomInclusion.{u_1}
+@pastingCornerGlue.{u_1} : {X : SSet.{u_1}} →
+  (L :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X) →
+    (τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X) →
+      Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} L)
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ) →
+        Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} pastingCorner.{u_1}) X
+@pastingCornerGlue_left.{u_1} : ∀ {X : SSet.{u_1}}
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} L)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} pastingCornerLeftInclusion.{u_1} (pastingCornerGlue.{u_1} L τ h))
+    L
+@pastingCornerGlue_bottom.{u_1} : ∀ {X : SSet.{u_1}}
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} L)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} pastingCornerBottomInclusion.{u_1}
+      (pastingCornerGlue.{u_1} L τ h))
+    τ
+@pastingCornerLeftDiagram_glue.{u_1} : ∀ {X : SSet.{u_1}}
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} L)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ)),
+  Eq.{u_1 + 1} (pastingCornerLeftDiagram.{u_1} (pastingCornerGlue.{u_1} L τ h)) L
+@exists_pushoutRectangle_of_left_and_bottom.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (τ : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} L)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ)),
+  IsPushoutSquare.{u_1} L →
+    ∀
+      (d :
+        JoinCocone.{u_1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} pastingOuterBaseToCorner.{u_1}
+            (pastingCornerGlue.{u_1} L τ h))),
+      IsColimitCone.{u_1} d →
+        ∃ F,
+          Eq.{u_1 + 1} (pastingSquare.{u_1} F 2) L ∧
+            Eq.{u_1 + 1} (pastingBottomTriangle.{u_1} F) τ ∧
+              IsPushoutSquare.{u_1} (pastingSquare.{u_1} F 0) ∧ Eq.{u_1 + 1} ↑(pastingOuterCocone.{u_1} F) ↑d
+```
+
+対象 PastingBottomTriangle ビルド 1936 jobs、PastingCornerGluing ビルド 1965 jobs、
+対象・Stable 集約ビルド 2165 jobs、公開型抽出、公理監査は全て終了コード 0。
+監査は 172 モジュール・1430 宣言（生成・非公開宣言を含む）について標準三公理のみ。
+自分の新規ファイルに警告なし。`git diff --check` 成功。
+有限直和と前加法構造は未完了。TR1・TR3 は完成のまま。
+シフトの加法性・回転・八面体・Pretriangulated instance・S5〜S7 も未完了。

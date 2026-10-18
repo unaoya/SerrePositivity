@@ -1,6 +1,9 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.pastingCornerBottom_isPushout
+#print axioms SerrePositivity.InfinityCategories.pastingCornerGlue
+#print axioms SerrePositivity.InfinityCategories.exists_pushoutRectangle_of_left_and_bottom
 #print axioms SerrePositivity.InfinityCategories.exists_colimitCocone_extension_of_trivialRestriction
 #print axioms SerrePositivity.InfinityCategories.hasColimit_iff_of_trivialRestriction
 #print axioms SerrePositivity.InfinityCategories.exists_colimitCocone_extension_of_colimit_attachment
@@ -901,7 +904,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ColumnPushout,
     `SerrePositivity.InfinityCategories.Stable.IdentityCofiber,
     `SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer,
-    `SerrePositivity.InfinityCategories.Stable.PastingExtension]
+    `SerrePositivity.InfinityCategories.Stable.PastingExtension,
+    `SerrePositivity.InfinityCategories.Stable.PastingBottomTriangle,
+    `SerrePositivity.InfinityCategories.Stable.PastingCornerGluing]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

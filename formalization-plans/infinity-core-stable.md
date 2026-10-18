@@ -278,8 +278,15 @@ S4 の三角構造は未完了。前加法構造・シフトの加法性、回�
 `exists_pastingExtension_of_outerColimit` は、左が押し出しである五頂点図式と
 四頂点の外側基底で選んだ余極限から、右も押し出しとなる長方形を構成する。
 元の五頂点上の図式と外側基底上の余錐の実際の射を厳密に保持する。
-これらは Quasicategory のみを仮定する。直和の存在への適用には、懸垂四角形と
-零射の合成二単体を五頂点図式へ貼る形状の補題が次に必要。
+これらは Quasicategory のみを仮定する。
+`pastingBottomFaceIso` と `pastingBottomIntersectionIso` は底辺三角形と共通辺の標準形を与える。
+`pastingCornerBottom_isPushout` は左四角形と底辺二単体が五頂点図式を作る形状の pushout。
+`pastingCornerGlue` とその二つの制限の式により、入力の四角形と合成二単体を厳密に保持できる。
+`exists_pushoutRectangle_of_left_and_bottom` はこの貼り合わせを余極限の延長に適用し、
+左四角形・底辺二単体・外側余錐を保つ右押し出し長方形を構成する。
+直和の存在へ適用するため、外側余錐を零射の cofiber から与える工程が残る。
+特に既存の cofiber の選択は左枝の零対象と辺を指定していないため、指定した零枝を持つ
+span の余極限の存在への輸送が次に必要。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -413,6 +420,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 一点・区間の終点余極限 | `cosliceIdentityCone_isInitialVertex`、`cosliceIdentityCone_isColimit`、`isColimitCone_of_point_constant`、`edgeTerminalCocone_isColimit`（Quasicategory のみ） | 完了。恒等射の cofiber 四角形への適用も下記で完成 |
 | 恒等射の cofiber と TR1 | `squareColumnDiagram_isPushout`（Quasicategory）、`columnZeroTriangle`、`columnZeroTriangle_isCofiber`、`columnZeroTriangle_f_eq_id`（Quasicategory、HasZeroVertex）、`columnCofiberTriangleIso`、`contractibleTriangle_mem_cofiberDistinguishedTriangles`（Quasicategory、IsStable） | 可縮三角形の所属まで完了。定義済み distinguished 集合の TR1 が揃った |
 | 余極限の存在の転送・貼り合わせによる長方形の構成 | `exists_colimitCocone_extension_of_trivialRestriction`、`hasColimit_iff_of_trivialRestriction`、right anodyne・余極限付加版、`exists_pastingExtension_of_outerColimit`（Quasicategory） | 指定した余錐・頂点と五頂点図式を厳密に保持して完成。有限直和への適用は未完了 |
+| 左四角形と底辺二単体の貼り合わせ | `pastingCornerBottom_isPushout`、`pastingCornerGlue` と制限の式（値域に仮定なし）、`exists_pushoutRectangle_of_left_and_bottom`（Quasicategory、指定した左押し出しと外側基底の余極限） | 指定した左四角形・底辺二単体・外側余錐を保持する構成まで完成。外側余錐を cofiber から与える工程は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
