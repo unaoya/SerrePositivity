@@ -6007,5 +6007,44 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_skeleton_succ
     IsPrecompositionEquivalence
       (relativeJoinCylinderComparison ((skeletonOfMono i (d + 1)).ι ≫ f))
 
+lemma isPrecompositionEquivalence_over_natComponent_of_iso
+    {S : SSet.{u}} {F G : Over S ⥤ SSet.{u}} (t : F ⟶ G) {A B : Over S} (e : A ≅ B)
+    (hB : IsPrecompositionEquivalence (t.app B)) : IsPrecompositionEquivalence (t.app A)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_sourceIso_iff
+    {X Y S : SSet.{u}} (e : X ≅ Y) (f : Y ⟶ S) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison (e.hom ≫ f)) ↔
+      IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
+instance relativeJoin_initialSkeleton_ι_isIso (X : SSet.{u}) (d : ℕ) [X.HasDimensionLT d] :
+    IsIso (skeletonOfMono (initial.to X) d).ι
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_isInitialSource
+    {X S : SSet.{u}} (f : X ⟶ S) (hX : IsInitial X) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
+noncomputable def relativeJoinSkeletonDiagram {A X S : SSet.{u}}
+    (i : A ⟶ X) [Mono i] (f : X ⟶ S) : ℕ ⥤ Over S
+
+noncomputable def relativeJoinSkeletonCocone {A X S : SSet.{u}}
+    (i : A ⟶ X) [Mono i] (f : X ⟶ S) : Cocone (relativeJoinSkeletonDiagram i f)
+
+noncomputable def relativeJoinSkeletonCocone_isColimit {A X S : SSet.{u}}
+    (i : A ⟶ X) [Mono i] (f : X ⟶ S) : IsColimit (relativeJoinSkeletonCocone i f)
+
+instance relativeJoinSkeletonDiagram_map_mono {A X S : SSet.{u}}
+    (i : A ⟶ X) [Mono i] (f : X ⟶ S) (n : ℕ) :
+    Mono ((relativeJoinSkeletonDiagram i f).map (homOfLE (Nat.le_succ n)))
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_of_skeletons
+    {A X S : SSet.{u}} (i : A ⟶ X) [Mono i] (f : X ⟶ S)
+    (h : ∀ n, IsPrecompositionEquivalence
+      (relativeJoinCylinderComparison ((skeletonOfMono i n).ι ≫ f))) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_standardTarget (n : ℕ) :
+    ∀ {X : SSet.{u}} (f : X ⟶ Δ[n]),
+      IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
 end SerrePositivity.InfinityCategories
 ```
