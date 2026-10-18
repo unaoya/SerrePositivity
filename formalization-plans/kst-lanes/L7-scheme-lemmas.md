@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1078 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1102 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -98,6 +98,8 @@
 - 純変換と係数局所化の可換性、実際の比較線形同型と平坦性の保存を証明済み。
 - 生成元チャートから任意の標準チャートへ純変換の平坦性を移す定理を証明済み。
 - Noether 環上有限で境界外が有限階数自由な場合、全標準チャート上で純変換を平坦にする実際の admissible 中心の存在を証明済み。境界外で平坦という一般化と有限型 B 上有限の場合は残る。
+- Noether 環上有限な加群の純変換が既に平坦なら、境界の像が正則である任意の追加基底変更後も平坦で、元の純変換の基底変更との実際の線形同型を構成済み。
+- 有限表示平坦加群は各素点の基本開近傍で自由となること、自由化の係数が単位イデアルを生成し有限部分族で足りることを証明済み。階数一定性は仮定しない。
 - 有限アフィン被覆上で実際の admissible 支配射が与えられれば、一つの大域 blowup からの支配射を構成できることを証明済み。零核の中心外開集合による重なりの一致を使う。
 - 次は一般の開埋め込みの blowup 比較射を構成し、一般 Noether 基底上の二段合成へアフィン結果を接続する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在はなお未証明。L7b 完了とはしない。
@@ -505,6 +507,10 @@ fᴺ id_M は Q から M への写像に降り、商写像との合成は fᴺ i
 | `span_chartRatio_generators_eq_top` | ChartRatioGeneratorCover | 検証済み | 各チャート上の比の被覆 |
 | `pureTransform_flat_of_generatorCharts` | GeneratorChartFlatness | 検証済み | 任意のチャートへの平坦性の移送 |
 | `exists_finiteRank_flattening_center` | FiniteModuleFreeLocusFlattening | 検証済み | 有限階数自由な境界外部分の平坦化中心 |
+| `boundaryPowerLift` | BoundaryPowerLift | 検証済み | 商写像に対する冪倍の戻し写像 |
+| `flatPureTransformBaseChangeEquiv` / `flatPureTransform_baseChange` | FlatPureTransformBaseChange | 検証済み | 任意の追加基底変更での同型と平坦性 |
+| `finite_flat_exists_away_free` | FiniteFlatFreeNeighborhood | 検証済み | 素点の自由な基本開近傍 |
+| `exists_finset_freeLocalizations` | FiniteFlatFreeNeighborhood | 検証済み | 自由な基本開の有限被覆 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |

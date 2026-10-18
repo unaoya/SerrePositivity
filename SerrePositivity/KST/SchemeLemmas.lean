@@ -125,3 +125,7 @@ public import SerrePositivity.KST.SchemeLemmas.FlatLocalizationFamily
 public import SerrePositivity.KST.SchemeLemmas.ChartOverlapPureTransform
 public import SerrePositivity.KST.SchemeLemmas.GeneratorChartFlatness
 public import SerrePositivity.KST.SchemeLemmas.FiniteModuleFreeLocusFlattening
+public import SerrePositivity.KST.SchemeLemmas.BoundaryPowerLift
+public import SerrePositivity.KST.SchemeLemmas.ScalarInverseBaseChange
+public import SerrePositivity.KST.SchemeLemmas.FlatPureTransformBaseChange
+public import SerrePositivity.KST.SchemeLemmas.FiniteFlatFreeNeighborhood
