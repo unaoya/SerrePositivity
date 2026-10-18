@@ -2061,6 +2061,8 @@ Hom が fibration の塔では、実際の coherent nerve の錐が ∞ 極限�
 `comparisonFiber (representableHomotopyLimitComparison c x) b` が可縮 Kan であることと同値。
 元の q_x の fibration 性や Hom 錐の厳密極限性は、この判定の前提に要求しない。
 反転比較との照合、ULift の同値検出、A3d に基づく native な切断判定を介して証明する。
+反転・ULift 後の切断比較の導来 fiber から native な制限の導来 fiber への実際の比較射も、
+任意の添字圏と通常の錐で構成し、局所 Kan 性の下で同値性を証明している。
 
 γ3c の指定三形状は 𝒮・Sp の双方で実際の対象と ∞ 極限錐を公開済み。
 𝒮 は小さな積、一脚 Kan fibration の引き戻し、Kan fibration の可算塔の極限。
@@ -7987,3 +7989,130 @@ lemma strictCoherentCone_isLimit_iff_tower_comparisonFiber {C : Type v} [Categor
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-representable-fiber-criterion-aggregate.log` と
 `/tmp/gamma3-representable-fiber-criterion-audit.log`。
+
+
+### γ3b：同じ底上の源の比較が誘導する導来 fiber の実際の射と weighted な錐への適用
+
+`ComparisonFiberSource` は、既存の `comparisonFiber p b` の path 成分と源成分を取り出し、
+整合する二成分からの持ち上げと外延性を構成した。標的 B が Kan のとき、
+`comparisonFiberSource p b : comparisonFiber p b ⟶ E` が Kan fibration であることを証明。
+元の p の fibration 性も、E の Kan 性もこの射影の fibration 性には要求しない。
+両端点を指定する区間の内部 Hom の充填を使い、源成分をそのまま保持する。
+
+`ComparisonFiberFunctor` の `comparisonFiberMap p q f hf b` は、同じ底上の可換図式
+`f ≫ q = p` が誘導する実際の射。path 成分と固定頂点 b を保持し、源成分にだけ f を適用する。
+その源射影との可換正方形は厳密な引き戻しであり、Kan 性なしで普遍性を構成した。
+E・D・B が Kan、f がホモトピー同値なら、この実際の fiber 比較射もホモトピー同値。
+導来 fiber の源射影の fibration 性に、可逆 path の相対持ち上げを使う既存の同値の
+引き戻し定理を適用した。元の p・q の fibration 性は要求しない。
+
+`WeightedConeDerivedFiberComparison` は主可換式
+`weightedStrictConeFamilyComparison c x ≫ coneSectionRestriction ... =
+  reflectedStrictConeSectionsComparison c x`
+へこの構成を適用する。
+`weightedStrictConeFamilyFiberComparison c x b` は、反転・ULift 後の切断比較の導来 fiber から、
+native な切断の制限の同じ頂点 b 上の導来 fiber への実際の射である。
+源成分で weighted な錐全体の比較と厳密に可換であることを記録した。
+局所 Kan 性の下で、この実際の射がホモトピー同値であることも証明した。
+添字圏 I と通常の錐 c は任意であり、Hom の fibration 性や厳密極限性は要求しない。
+
+この工程の fiber は `reflectedStrictConeSectionsComparison` の fiber である。
+元の非反転 q_x の fiber との直接比較、および native な制限の導来 fiber と錐の pinched Hom
+の直接比較をすべて閉じたわけではない。これらの残る比較 span、一般形状の end の直接比較、
+余極限側、E2a 完了後の E2b 適用は引き続き未完了で、γ3 は継続中。
+原典：HTT 4.2.4.1、Kerodon 4.5.3.24・7.4.1.6・7.5.4.6。
+
+新規17公開宣言の正確な型・全前提（名前空間
+`SerrePositivity.InfinityCategories.HomotopyLimits`、節変数を展開）：
+
+```lean
+def comparisonFiberPath {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    comparisonFiber p b ⟶ equivalencePath B
+
+def comparisonFiberSource {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    comparisonFiber p b ⟶ E
+
+lemma comparisonFiberPath_source {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    comparisonFiberPath p b ≫ equivalencePathEndpoint B 0 = comparisonFiberSource p b ≫ p
+
+lemma comparisonFiberPath_target {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    comparisonFiberPath p b ≫ equivalencePathEndpoint B 1 = SSet.const b
+
+def comparisonFiberLift {T E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
+    (a : T ⟶ equivalencePath B) (s : T ⟶ E)
+    (h₀ : a ≫ equivalencePathEndpoint B 0 = s ≫ p)
+    (h₁ : a ≫ equivalencePathEndpoint B 1 = SSet.const b) : T ⟶ comparisonFiber p b
+
+lemma comparisonFiberLift_path {T E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
+    (a : T ⟶ equivalencePath B) (s : T ⟶ E)
+    (h₀ : a ≫ equivalencePathEndpoint B 0 = s ≫ p)
+    (h₁ : a ≫ equivalencePathEndpoint B 1 = SSet.const b) :
+    comparisonFiberLift p b a s h₀ h₁ ≫ comparisonFiberPath p b = a
+
+lemma comparisonFiberLift_source {T E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
+    (a : T ⟶ equivalencePath B) (s : T ⟶ E)
+    (h₀ : a ≫ equivalencePathEndpoint B 0 = s ≫ p)
+    (h₁ : a ≫ equivalencePathEndpoint B 1 = SSet.const b) :
+    comparisonFiberLift p b a s h₀ h₁ ≫ comparisonFiberSource p b = s
+
+lemma comparisonFiber_hom_ext {T E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
+    {f g : T ⟶ comparisonFiber p b}
+    (hp : f ≫ comparisonFiberPath p b = g ≫ comparisonFiberPath p b)
+    (hs : f ≫ comparisonFiberSource p b = g ≫ comparisonFiberSource p b) : f = g
+
+instance comparisonFiberSource_fibration {E B : SSet.{u}} [KanComplex B]
+    (p : E ⟶ B) (b : B _⦋0⦌) : Fibration (comparisonFiberSource p b)
+
+def comparisonFiberMap {E D B : SSet.{u}} (p : E ⟶ B) (q : D ⟶ B)
+    (f : E ⟶ D) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    comparisonFiber p b ⟶ comparisonFiber q b
+
+lemma comparisonFiberMap_path {E D B : SSet.{u}} (p : E ⟶ B) (q : D ⟶ B)
+    (f : E ⟶ D) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    comparisonFiberMap p q f hf b ≫ comparisonFiberPath q b = comparisonFiberPath p b
+
+lemma comparisonFiberMap_source {E D B : SSet.{u}} (p : E ⟶ B) (q : D ⟶ B)
+    (f : E ⟶ D) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    comparisonFiberMap p q f hf b ≫ comparisonFiberSource q b = comparisonFiberSource p b ≫ f
+
+lemma comparisonFiberMap_isPullback {E D B : SSet.{u}} (p : E ⟶ B) (q : D ⟶ B)
+    (f : E ⟶ D) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    IsPullback (comparisonFiberMap p q f hf b) (comparisonFiberSource p b)
+      (comparisonFiberSource q b) f
+
+lemma comparisonFiberMap_homotopyEquivalence {E D B : SSet.{u}}
+    [KanComplex E] [KanComplex D] [KanComplex B]
+    (p : E ⟶ B) (q : D ⟶ B) (f : E ⟶ D) (hf : f ≫ q = p)
+    (he : IsSimplicialHomotopyEquivalence f) (b : B _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (comparisonFiberMap p q f hf b)
+
+noncomputable def weightedStrictConeFamilyFiberComparison {I : Type u} [SmallCategory I] {C : Type v}
+    [Category.{u} C] [SimplicialCategory C] {F : I ⥤ C}
+    (c : Cone F) (x : C)
+    (b : (coherentConeSectionSpace (strictCoherentDiagram F) (coherentNerveVertex x)) _⦋0⦌) :
+    comparisonFiber (reflectedStrictConeSectionsComparison c x) b ⟶
+      comparisonFiber (coneSectionRestriction (strictCoherentCone c) (coherentNerveVertex x)) b
+
+lemma weightedStrictConeFamilyFiberComparison_source {I : Type u} [SmallCategory I] {C : Type v}
+    [Category.{u} C] [SimplicialCategory C] {F : I ⥤ C}
+    (c : Cone F) (x : C)
+    (b : (coherentConeSectionSpace (strictCoherentDiagram F) (coherentNerveVertex x)) _⦋0⦌) :
+    weightedStrictConeFamilyFiberComparison c x b ≫
+        comparisonFiberSource
+          (coneSectionRestriction (strictCoherentCone c) (coherentNerveVertex x)) b =
+      comparisonFiberSource (reflectedStrictConeSectionsComparison c x) b ≫
+        weightedStrictConeFamilyComparison c x
+
+lemma weightedStrictConeFamilyFiberComparison_homotopyEquivalence {I : Type u} [SmallCategory I] {C : Type v}
+    [Category.{u} C] [SimplicialCategory C]
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : I ⥤ C} (c : Cone F) (x : C)
+    (b : (coherentConeSectionSpace (strictCoherentDiagram F) (coherentNerveVertex x)) _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (weightedStrictConeFamilyFiberComparison c x b)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4672 jobs）、公開1363宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-weighted-cone-derived-fiber-aggregate.log` と
+`/tmp/gamma3-weighted-cone-derived-fiber-audit.log`。

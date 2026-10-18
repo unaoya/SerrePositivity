@@ -1716,3 +1716,44 @@ E2a 完了後の E2b 適用は引き続き未完了で、γ3 全体は継続中�
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-representable-fiber-criterion-aggregate.log` と
 `/tmp/gamma3-representable-fiber-criterion-audit.log`。
+
+
+### γ3b：同じ底上の源の比較が誘導する導来 fiber の実際の射と weighted な錐への適用
+
+`ComparisonFiberSource` は、既存の `comparisonFiber p b` の path 成分と源成分を取り出し、
+整合する二成分からの持ち上げと外延性を構成した。標的 B が Kan のとき、
+`comparisonFiberSource p b : comparisonFiber p b ⟶ E` が Kan fibration であることを証明。
+元の p の fibration 性も、E の Kan 性もこの射影の fibration 性には要求しない。
+両端点を指定する区間の内部 Hom の充填を使い、源成分をそのまま保持する。
+
+`ComparisonFiberFunctor` の `comparisonFiberMap p q f hf b` は、同じ底上の可換図式
+`f ≫ q = p` が誘導する実際の射。path 成分と固定頂点 b を保持し、源成分にだけ f を適用する。
+その源射影との可換正方形は厳密な引き戻しであり、Kan 性なしで普遍性を構成した。
+E・D・B が Kan、f がホモトピー同値なら、この実際の fiber 比較射もホモトピー同値。
+導来 fiber の源射影の fibration 性に、可逆 path の相対持ち上げを使う既存の同値の
+引き戻し定理を適用した。元の p・q の fibration 性は要求しない。
+
+`WeightedConeDerivedFiberComparison` は主可換式
+`weightedStrictConeFamilyComparison c x ≫ coneSectionRestriction ... =
+  reflectedStrictConeSectionsComparison c x`
+へこの構成を適用する。
+`weightedStrictConeFamilyFiberComparison c x b` は、反転・ULift 後の切断比較の導来 fiber から、
+native な切断の制限の同じ頂点 b 上の導来 fiber への実際の射である。
+源成分で weighted な錐全体の比較と厳密に可換であることを記録した。
+局所 Kan 性の下で、この実際の射がホモトピー同値であることも証明した。
+添字圏 I と通常の錐 c は任意であり、Hom の fibration 性や厳密極限性は要求しない。
+
+この工程の fiber は `reflectedStrictConeSectionsComparison` の fiber である。
+元の非反転 q_x の fiber との直接比較、および native な制限の導来 fiber と錐の pinched Hom
+の直接比較をすべて閉じたわけではない。これらの残る比較 span、一般形状の end の直接比較、
+余極限側、E2a 完了後の E2b 適用は引き続き未完了で、γ3 は継続中。
+原典：HTT 4.2.4.1、Kerodon 4.5.3.24・7.4.1.6・7.5.4.6。
+
+新規17宣言の `#check @` と `#print axioms` を監査に追加し、正確な型・全前提を
+README の同名節に記録した。γ3 冒頭の現在地もこの実際の fiber 比較まで更新した。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4672 jobs）、公開1363宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-weighted-cone-derived-fiber-aggregate.log` と
+`/tmp/gamma3-weighted-cone-derived-fiber-audit.log`。
