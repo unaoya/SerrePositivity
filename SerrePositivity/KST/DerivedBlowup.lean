@@ -146,3 +146,6 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramModuleAssociativity
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleCoefficientCategory
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleProjectiveResolution
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleProjectiveEnhancement
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapVertex
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapModuleEvaluation
+public import SerrePositivity.KST.DerivedBlowup.DiagramLocallyPerfect
