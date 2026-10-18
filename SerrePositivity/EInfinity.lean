@@ -41,3 +41,6 @@ public import SerrePositivity.EInfinity.Operad.CompositionNestedBase
 public import SerrePositivity.EInfinity.Operad.CompositionNestedTransport
 public import SerrePositivity.EInfinity.Operad.CompositionNested
 public import SerrePositivity.EInfinity.Operad.TensorFamilySplitAtBoundary
+public import SerrePositivity.EInfinity.Operad.TensorFamilyBlockSum
+public import SerrePositivity.EInfinity.Operad.CompositionAfterInputs
+public import SerrePositivity.EInfinity.Operad.TensorSubstitutionEmptyTail
