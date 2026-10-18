@@ -212,10 +212,13 @@ F1 の補助解像の旗を native Path に送り、最大元と末尾への正�
 `coherentComparison_fullyFaithful_iff_resolution` は厳密な片側の逆と Kan 性を使い、
 充満忠実性を全ての標準 Hom に対する解像の標準比較射の実際のホモトピー同値性と同値にする。
 残りはこの右辺の証明と ∞ 圏の同値。一般の解像の境界の貼り合わせは未接続。
+低次の基底では `resolutionProjectionIsoOfLeOne` が `n ≤ 1` の解像の射影を厳密な同型にする。
+`standardCoherentPinchedEquivOfLeOne` は同じ次数での標準 Hom と coherent pinched 単体の同値。
+逆方向は実際の標準比較射で、反対側の合成も単体上で厳密に恒等となる。高次の同値性は未証明。
 判定への移送や片側の逆の性質だけでは、充満忠実性やホモトピー同値を証明したとは数えない。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開552宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開559宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。

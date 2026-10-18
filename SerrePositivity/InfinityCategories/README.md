@@ -1833,6 +1833,30 @@ coherentComparison_fullyFaithful_iff_resolution :
 標準単体ごとの解像の変形だけでは次数間の自然性を持つホモトピーとみなさない。
 一般の解像について境界の貼り合わせを扱う工程は、この判定では仮定として残っている。
 
+低次の基底は厳密な同型まで証明済み。
+`resolutionFlag_sets_eq_interval_of_le_one` は `n ≤ 1` のとき、任意次数の旗 F について
+`F.sets t = Finset.Icc F.start (F.maxAt t)` を示す。頂点が高々二つなので区間内の点は
+いずれかの端点であり、旗に必ず含まれる。
+`resolutionProjection_section_of_le_one` はこの式を使い、射影の後に区間の切断を取る合成が
+厳密に恒等となることを示す。従って次の同型を得る。
+
+```lean
+resolutionProjectionIsoOfLeOne {n : ℕ} (hn : n ≤ 1) :
+  coherentResolutionSimplex.{u} n ≅ (Δ[n] : SSet.{u})
+
+standardCoherentPinchedEquivOfLeOne (x y : ClosedCategory R D) {n : ℕ} (hn : n ≤ 1) :
+  StandardSimplex R (D := D) x y n ≃
+    coherentPinchedHom (R := R) (D := D) x y _⦋n⦌
+```
+
+二つ目の同値の順方向は `standardCoherentPinchedSimplex`、逆方向は
+`coherentPinchedStandardComparison` の実際の n 単体上の作用から ULift を戻したもの。
+前提は `[CommRing R] [DGCategory R D]` と `n ≤ 1` のみである。
+`coherentPinchedStandardComparison_section_of_le_one` は反対側の合成も n 単体上で恒等となる
+等式であり、π₀ の計算だけではない。一般次数での片側の回収則は
+`standardCoherentPinchedSimplex_comparison` で公開する。
+この低次の厳密な回収を高次のホモトピー逆の代用とはせず、上記の未証明範囲を保持する。
+
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
 
