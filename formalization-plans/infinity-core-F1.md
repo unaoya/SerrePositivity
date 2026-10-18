@@ -28,7 +28,9 @@ A3c〜A3e の写像空間・同値、`Coherent/` の coherent nerve。
 | F1h | twisted arrow ∞ 圏 Tw(C)、Hom 関手 C^op × C → 𝒮（F1d の left fibration 版で straighten）、前層 ∞ 圏 P(C) := Fun(C^op, 𝒮)、Yoneda 埋め込み、充満忠実性、表現可能関手と極限 | Kerodon 8.1–8.3 / HTT 5.1.3 |
 | F1i | 検査：通常の圏の nerve で F1d・F1h が古典（Grothendieck 構成、Yoneda）に戻ること | — |
 
-順序は F1a → F1b → F1c → F1d → F1e → F1f → F1g → F1h → F1i。F1d が最大の山で、
+**分割（2026-10-18 15:40）：** F1e・F1f・F1g は straightening に依存しないので、レーン α2b（Π2 チャット、
+計画は [infinity-core-F1b.md](infinity-core-F1b.md)、配置 `InfinityCategories/F1B/`）へ切り出した。
+α2 の順序は F1a → F1b → F1c → F1d → F1h → F1i。F1h は α2b の Kan 拡張を使ってよい。F1d が最大の山で、
 Kerodon 5.6 の証明（5.3 の「fibration の ∞ 圏」、5.4 の （∞,2）的道具を避ける経路）を
 着手前に照合し、文言と証明方針を `Core/README.md` ではなく `InfinityCategories/F1/README.md` に記録する。
 
@@ -3223,6 +3225,77 @@ lemma exists_joinDiagramFamily_extension_of_leftBoundary_of_hasLiftingProperty
     ∃ U : F ⟶ (ihom (join B K)).obj X,
       e ≫ U = u ∧ U ≫ (pre (joinMap i (𝟙 K))).app X = v ∧
         U ≫ (pre (joinInl B K)).app X = w
+
+lemma IsQCatEquivalence.exists_strict_retraction {A B : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] {f : A ⟶ B} [Mono f]
+    (hf : IsQCatEquivalence f) : ∃ r : B ⟶ A, f ≫ r = 𝟙 A
+
+lemma isQCatEquivalence_of_retraction_of_rightInverseIso {A B : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (r b : B ⟶ A)
+    (hr : f ≫ r = 𝟙 A) (hb : FunctorIso (b ≫ f) (𝟙 B)) :
+    IsQCatEquivalence f
+
+lemma fixedDiagramι_pre_factor {J K T X : SSet.{u}}
+    (j : J ⟶ T) (p : J ⟶ X) (t : K ⟶ J) :
+    vertexFiberι ((pre j).app X) (functorVertex p) ≫ (pre (t ≫ j)).app X =
+      SSet.const (functorVertex (t ≫ p))
+
+def fixedDiagramRestriction {J K T U X : SSet.{u}}
+    (j : J ⟶ T) (k : K ⟶ U) (q : U ⟶ T) (t : K ⟶ J)
+    (h : k ≫ q = t ≫ j) (p : J ⟶ X) :
+    vertexFiber ((pre j).app X) (functorVertex p) ⟶
+      vertexFiber ((pre k).app X) (functorVertex (t ≫ p))
+
+lemma fixedDiagramRestriction_ι {J K T U X : SSet.{u}}
+    (j : J ⟶ T) (k : K ⟶ U) (q : U ⟶ T) (t : K ⟶ J)
+    (h : k ≫ q = t ≫ j) (p : J ⟶ X) :
+    fixedDiagramRestriction j k q t h p ≫
+        vertexFiberι ((pre k).app X) (functorVertex (t ≫ p)) =
+      vertexFiberι ((pre j).app X) (functorVertex p) ≫ (pre q).app X
+
+lemma fixedDiagramRestriction_pre_naturality {J K T U T' U' X : SSet.{u}}
+    (j : J ⟶ T) (k : J ⟶ U) (q : U ⟶ T) (h : k ≫ q = j)
+    (j' : K ⟶ T') (k' : K ⟶ U') (q' : U' ⟶ T') (h' : k' ≫ q' = j')
+    (a : T' ⟶ T) (b : U' ⟶ U) (t : K ⟶ J)
+    (hj : j' ≫ a = t ≫ j) (hk : k' ≫ b = t ≫ k)
+    (hab : b ≫ q = q' ≫ a) (p : J ⟶ X) :
+    fixedDiagramPre j k q h p ≫ fixedDiagramRestriction k k' b t hk p =
+      fixedDiagramRestriction j j' a t hj p ≫
+        fixedDiagramPre j' k' q' h' (t ≫ p)
+
+def joinEndpointInl (A B : SSet.{u}) : A ⟶ joinEndpointDiagram A B
+
+def joinEndpointInr (A B : SSet.{u}) : B ⟶ joinEndpointDiagram A B
+
+lemma joinEndpointInl_inclusion (A B : SSet.{u}) :
+    joinEndpointInl A B ≫ joinEndpointInclusion A B = joinInl A B
+
+lemma joinEndpointInr_inclusion (A B : SSet.{u}) :
+    joinEndpointInr A B ≫ joinEndpointInclusion A B = joinInr A B
+
+lemma joinEndpointInl_fatInclusion (A B : SSet.{u}) :
+    joinEndpointInl A B ≫ fatJoinEndpointInclusion A B = fatJoinInl A B
+
+lemma joinEndpointInr_fatInclusion (A B : SSet.{u}) :
+    joinEndpointInr A B ≫ fatJoinEndpointInclusion A B = fatJoinInr A B
+
+def joinEndpointMap {A B C D : SSet.{u}} (f : A ⟶ C) (g : B ⟶ D) :
+    joinEndpointDiagram A B ⟶ joinEndpointDiagram C D
+
+def joinEndpointDesc {A B X : SSet.{u}} (f : A ⟶ X) (g : B ⟶ X) :
+    joinEndpointDiagram A B ⟶ X
+
+lemma joinEndpointInclusion_map {A B C D : SSet.{u}} (f : A ⟶ C) (g : B ⟶ D) :
+    joinEndpointInclusion A B ≫ joinMap f g =
+      joinEndpointMap f g ≫ joinEndpointInclusion C D
+
+lemma fatJoinEndpointInclusion_map {A B C D : SSet.{u}} (f : A ⟶ C) (g : B ⟶ D) :
+    fatJoinEndpointInclusion A B ≫ fatJoinMap f g =
+      joinEndpointMap f g ≫ fatJoinEndpointInclusion C D
+
+lemma joinEndpointMap_desc {A B C D X : SSet.{u}}
+    (f : A ⟶ C) (g : B ⟶ D) (p : C ⟶ X) (q : D ⟶ X) :
+    joinEndpointMap f g ≫ joinEndpointDesc p q = joinEndpointDesc (f ≫ p) (g ≫ q)
 
 end SerrePositivity.InfinityCategories
 ```

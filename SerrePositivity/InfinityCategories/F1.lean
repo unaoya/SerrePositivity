@@ -127,3 +127,6 @@ public import SerrePositivity.InfinityCategories.F1.RightIntervalHomotopySection
 public import SerrePositivity.InfinityCategories.F1.JoinLeftBoundaryCorner
 public import SerrePositivity.InfinityCategories.F1.JoinLeftBoundaryExtension
 public import SerrePositivity.InfinityCategories.F1.JoinLeftBoundaryLifting
+public import SerrePositivity.InfinityCategories.F1.EquivalenceRetraction
+public import SerrePositivity.InfinityCategories.F1.FixedDiagramRestriction
+public import SerrePositivity.InfinityCategories.F1.JoinEndpointMaps
