@@ -6925,5 +6925,25 @@ lemma relativeJoin_extension_oneFiber_isPrecompositionEquivalence_iff
       (vertexFiberMap (relativeJoinProjection f (𝟙 Y)) p G hG (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ↔
         IsPrecompositionEquivalence z
 
+def joinIntervalProjection (X Y : SSet.{u}) : join X Y ⟶ (Δ[1] : SSet.{u})
+
+lemma joinIntervalProjection_intervalJoin (X Y : SSet.{u}) :
+    joinIntervalProjection X Y ≫ (joinStdSimplexIso 0 0).inv =
+      joinMap (stdSimplex.isTerminalObj₀.from X) (stdSimplex.isTerminalObj₀.from Y)
+
+lemma joinIntervalProjection_app_cut (X Y : SSet.{u}) (n : ℕ) (s : (join X Y) _⦋n⦌) :
+    Join.pullCut (stdSimplex.objEquiv
+      ((joinIntervalProjection X Y).app (Opposite.op ⦋n⦌) s)).toOrderHom 1 = s.1.val
+
+lemma joinIntervalProjection_app_eq_zero_iff (X Y : SSet.{u}) (n : ℕ)
+    (s : (join X Y) _⦋n⦌) (j : Fin (n + 1)) :
+    (joinIntervalProjection X Y).app (Opposite.op ⦋n⦌) s j = 0 ↔ j.val < s.1.val
+
+lemma joinIntervalProjection_naturality {X Y X' Y' : SSet.{u}} (f : X ⟶ X') (g : Y ⟶ Y') :
+    joinMap f g ≫ joinIntervalProjection X' Y' = joinIntervalProjection X Y
+
+lemma joinDiagonal_joinIntervalProjection (K : SSet.{u}) :
+    joinDiagonal K ≫ joinIntervalProjection K K = fst (Δ[1] : SSet.{u}) K
+
 end SerrePositivity.InfinityCategories
 ```

@@ -317,3 +317,4 @@ public import SerrePositivity.InfinityCategories.F1.JoinEndpointPullbacks
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinEndpointPullbacks
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinEndpointFibers
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionFibers
+public import SerrePositivity.InfinityCategories.F1.JoinIntervalProjection
