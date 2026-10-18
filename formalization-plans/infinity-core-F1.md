@@ -3466,5 +3466,81 @@ lemma leftIntervalFatDiagram_comparison {A X : SSet.{u}} {x y : X _⦋0⦌}
     leftIntervalFatDiagram (f ≫ cosliceFiberToIntervalMappingSpace x y) =
       fatJoinComparison Δ[0] A ≫ cosliceFiberUncurry f
 
+noncomputable def intervalMappingHomotopyOfPrism {A D X : SSet.{u}} {x y : X _⦋0⦌}
+    {F G : D ⟶ X} (H : SSet.Homotopy F G) (P : Δ[1] ⊗ A ⟶ D)
+    (f g : A ⟶ intervalMappingSpace x y)
+    (hF : P ≫ F = intervalMappingUncurry f) (hG : P ≫ G = intervalMappingUncurry g)
+    (hx : ((prismEndpoint 0 A ≫ P) ▷ (Δ[1] : SSet.{u})) ≫ H.h = SSet.const x)
+    (hy : ((prismEndpoint 1 A ≫ P) ▷ (Δ[1] : SSet.{u})) ≫ H.h = SSet.const y) :
+    SSet.Homotopy f g
+
+noncomputable def leftIntervalFatPrism (A : SSet.{u}) :
+    Δ[1] ⊗ A ⟶ fatJoin (Δ[0] : SSet.{u}) A
+
+lemma leftIntervalFatPrism_zero (A : SSet.{u}) :
+    prismEndpoint 0 A ≫ leftIntervalFatPrism A =
+      SSet.const (stdSimplex.obj₀Equiv.symm 0) ≫ fatJoinInl Δ[0] A
+
+lemma leftIntervalFatPrism_one (A : SSet.{u}) :
+    prismEndpoint 1 A ≫ leftIntervalFatPrism A = fatJoinInr Δ[0] A
+
+lemma leftIntervalFatPrism_comparison (A : SSet.{u}) :
+    leftIntervalFatPrism A ≫ fatJoinComparison Δ[0] A = leftMappingSpacePrism A
+
+noncomputable def intervalMappingHomotopyOfLeftFatJoin {A X : SSet.{u}} {x y : X _⦋0⦌}
+    {F G : fatJoin (Δ[0] : SSet.{u}) A ⟶ X} (H : SSet.Homotopy F G)
+    (f g : A ⟶ intervalMappingSpace x y)
+    (hF : leftIntervalFatPrism A ≫ F = intervalMappingUncurry f)
+    (hG : leftIntervalFatPrism A ≫ G = intervalMappingUncurry g)
+    (hx : (fatJoinInl Δ[0] A ▷ (Δ[1] : SSet.{u})) ≫ H.h =
+      fst (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm x)
+    (hy : (fatJoinInr Δ[0] A ▷ (Δ[1] : SSet.{u})) ≫ H.h =
+      fst A Δ[1] ≫ SSet.const y) : SSet.Homotopy f g
+
+lemma cosliceFiberToIntervalMappingSpace_exists_homotopy {A X : SSet.{u}}
+    [Quasicategory X] {x y : X _⦋0⦌} (a : A ⟶ intervalMappingSpace x y) :
+    ∃ b : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y,
+      Nonempty (SSet.Homotopy (b ≫ cosliceFiberToIntervalMappingSpace x y) a)
+
+lemma cosliceFiberToIntervalMappingSpace_postcomp_essentiallySurjective {A X : SSet.{u}}
+    [Quasicategory X] {x y : X _⦋0⦌} (a : A ⟶ intervalMappingSpace x y) :
+    ∃ b : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y, Nonempty (FunctorIso (b ≫ cosliceFiberToIntervalMappingSpace x y) a)
+
+lemma cosliceFiberToIntervalMappingSpace_exists_homotopy_section {X : SSet.{u}}
+    [Quasicategory X] (x y : X _⦋0⦌) :
+    ∃ r : intervalMappingSpace x y ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y,
+      Nonempty (SSet.Homotopy (r ≫ cosliceFiberToIntervalMappingSpace x y) (𝟙 _))
+
+lemma cosliceFiberToIntervalMappingSpace_exists_retraction {X : SSet.{u}}
+    [Quasicategory X] (x y : X _⦋0⦌) :
+    ∃ r : intervalMappingSpace x y ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y,
+      cosliceFiberToIntervalMappingSpace x y ≫ r = 𝟙 _
+
+lemma cosliceFiberToIntervalMappingSpace_isQCatEquivalence {X : SSet.{u}}
+    [Quasicategory X] (x y : X _⦋0⦌) :
+    IsQCatEquivalence (cosliceFiberToIntervalMappingSpace x y)
+
+lemma pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence {X : SSet.{u}}
+    [Quasicategory X] (x y : X _⦋0⦌) :
+    IsQCatEquivalence (pinchedHomLeftToIntervalMappingSpace x y)
+
+noncomputable def pinchedHomLeftRightEquivalence {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) : QCatEquivalence (pinchedHomLeft x y) (pinchedHom x y)
+
+noncomputable def cosliceFiberRightMappingEquivalence {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) :
+    QCatEquivalence (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y)
+      (pinchedHom x y)
+
+noncomputable def pointedSpaceFiberValueEquivalence (s : SpaceInfinity.{u} _⦋0⦌) :
+    QCatEquivalence (vertexFiber pointedSpaceProjection s)
+      ((SSet.uliftFunctor.{u + 1, u}).obj (spaceInfinityObject s).obj)
+
+noncomputable def leftUnstraighteningFiberValueEquivalence {C : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
+    QCatEquivalence (vertexFiber (leftUnstraighteningProjection F) c)
+      ((SSet.uliftFunctor.{u + 1, u}).obj
+        (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) c)).obj)
+
 end SerrePositivity.InfinityCategories
 ```
