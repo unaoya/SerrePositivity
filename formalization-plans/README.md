@@ -23,10 +23,12 @@
 | --- | --- | --- |
 | [Bhatt–Scholze](bhatt-scholze.md) | BS の引用の現状、原典の依存関係、残る入力の正確な形、原典との経路の差 | B0〜B5・André・Prop 8.13 環版は完了。残りは Thm 1.17(1)・Cor 8.12 の 2 件（∞ 圏の界面へ）。2026-10-18 に全面改稿 |
 | [BS のリファクタリング](bhatt-scholze-refactoring.md) | 証明済みの BS を共通 API の上に載せ替える | Q10・Q1・Q8 が次の候補（§13） |
-| [K理論・スペクトル](k-theory.md) | 定理3.1と補題4.6を形式化し、二つの降下入力を解消する | 段階4（左 Bousfield 局所化と安定モデル）は指定分解版で完了（§397）。∞ 圏方針との整理を検討中 |
+| [K理論・スペクトル](k-theory.md) | 定理3.1と補題4.6を形式化し、二つの降下入力を解消する | 段階4（左 Bousfield 局所化と安定モデル）は指定分解版で完了（§397）。M4 以降の経路は下の KST 計画に移行 |
+| [K理論：KST 経路と現代的な K](k-theory-kst-route.md) | KST Thm A（係数つき）＋離散冪零不変性で cdh 降下を得て定理 3.1 を証明し、F5 で補題 4.6 を迂回する。K は安定 ∞ 圏の ∞-S• 構成（dg nerve 経由）、非連結化は dg 側 Schlichting、Sp は γ-B | 2026-10-18 採用。決定事項は §13。L11・L2・L4・L6・L7・L8・L9 を起動 |
 | [K理論：任意モデル源への一般化の棚卸し](k-theory-generalization-inventory.md) | 中断した一般化のモジュール索引（docstring からアンカーで参照） | 中断 |
 | [Stage 4 の依存監査](stage4-dependency-audit.md) | 指定分解版に限った段階4の依存の監査 | 2026-10-17 監査 |
-| [∞ 圏の基盤（α〜ε・Π）](infinity-categories.md) | BS §7–§8 と K 理論を quasicategory の基盤に載せる。一旦の目標 G1：perfectoid 化の定義と Cor 8.12 の証明だけを「界面」の存在として保留し、他をすべて証明する | 計画。レーン N は進行中、D2・A1・A2・V は着手可能（2026-10-17） |
+| [∞ 圏の基盤（α〜ε・Π）](infinity-categories.md) | BS §7–§8 と K 理論を quasicategory の基盤に載せる。一旦の目標 G1：perfectoid 化の定義と Cor 8.12 の証明だけを「界面」の存在として保留し、他をすべて証明する | 2026-10-18 決定：段階 1 は E3（界面を D(R) レベルで述べる）、ε の経路は E2（モデル圏）。N7・A3 進行中、D4・D5・Π1 が次 |
+| [E∞ 代数のモデル圏（レーン E2）](e-infinity-algebras.md) | Ch(R) 上の Barratt–Eccles オペラッドの代数のモデル圏（E2a）、その ∞ 圏化 γ（E2b）、BS の続きに要る Tot と単体的可換環（E2c） | 計画。E2a-0（Ch(A) の射影モデル構造）から着手可能（2026-10-18） |
 | [dg nerve（∞ 圏基盤 N）](dg-nerve.md) | 任意の dg 圏の dg nerve を定義し、quasicategory・H⁰ との比較・pinched 写像空間・関手性を証明する。D(S) := N_dg(Semifree(S)) の前段 | N0〜N6 完了（2026-10-18、571 宣言）。続けて N7（dg の錐が ∞ 極限であること、D4 の核） |
 | [D(S)（レーン D）](derived-infinity-category.md) | semifree 複体の dg nerve として D(S) を定義し、ホモトピー圏が Mathlib の導来圏と同値であることを証明する | D2・D2f・D1 の定義完了。D2h（cone の閉性、semibasis 表現）を実装中。D1 の quasicategory と D3 は N 完了により着手可能（2026-10-18） |
 | [quasicategory の一般論（レーン α）](infinity-core.md) | h の橋、join・slice・極限、写像空間と同値、安定 ∞ 圏、完全関手 | A1・A2 完了（2026-10-18）。続けて A3（同値・Joyal の定理・写像空間） |
