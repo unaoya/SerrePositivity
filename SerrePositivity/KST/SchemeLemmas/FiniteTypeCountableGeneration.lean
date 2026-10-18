@@ -117,4 +117,19 @@ theorem hasCountableGeneratingSet_of_finiteType_finite
   hasCountableGeneratingSet_restrictScalars_of_finite R B M
     (hasCountableGeneratingSet_of_finiteType R B)
 
+/--
+概要：可算生成集合を持つ加群には自然数で添字付けた生成元列がある。
+方針：生成集合に零を追加して非空にし、自然数による列挙を取る。
+規約：KST §5、Stacks 05DP・059X、零加群と空の元の生成集合も許す。
+使われ方：生成元を一つずつ追加する有限自由近似列の入力。
+-/
+theorem HasCountableGeneratingSet.exists_nat_spanning
+    {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
+    (hM : HasCountableGeneratingSet R M) :
+    ∃ g : ℕ → M, Submodule.span R (Set.range g) = ⊤ := by
+  obtain ⟨S, hSc, hS⟩ := hM
+  obtain ⟨g, hg⟩ := (hSc.insert 0).exists_eq_range (Set.insert_nonempty 0 S)
+  refine ⟨g, ?_⟩
+  rw [← hg, Submodule.span_insert_zero, hS]
+
 end SerrePositivity.KST.SchemeLemmas
