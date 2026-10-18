@@ -55,3 +55,5 @@ public import SerrePositivity.KST.DerivedGeometry.AffineQuasicoherentCech
 public import SerrePositivity.KST.DerivedGeometry.AffineCechResolution
 
 public import SerrePositivity.KST.DerivedGeometry.AffineLocalVanishing
+public import SerrePositivity.KST.DerivedGeometry.RightDerivedSectionsPresheaf
+public import SerrePositivity.KST.DerivedGeometry.FreeSheafOnOpen

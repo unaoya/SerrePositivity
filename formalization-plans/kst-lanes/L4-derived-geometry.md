@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,512宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,544宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -933,6 +933,38 @@
 - 集約ビルド（3,814 jobs）と1,512宣言の監査に成功。標準3公理のみ、KTheory import なし。
 - 残り：injective 分解での計算との接続、Čech と層コホモロジーの比較、非有界導来比較。局所消滅とアフィン大域消滅を混同しない。
 
+## 45. Injective 分解による右導来切断との比較（実装前記録）
+
+- 文言：固定係数環の加群層の圏は Grothendieck アーベル圏であり、十分な injective を持つ。Mathlib の `InjectiveResolution.of` をその具体的な存在証明に適用して、各層の非負次数の injective 分解を得る。
+- 比較：各開の切断関手の右導来関手は、この分解へ切断を適用した複体のコホモロジーと同型。Mathlib の `isoRightDerivedObj` を実際の分解に適用する。
+- 正次数の分解の完全性から §44 を適用し、計算されたコホモロジーの各類の局所消滅と、アフィン準コンパクト開での有限基本開消滅を得る。
+- 分解の存在・完全性・右導来比較を新しい構造体の未証明フィールドとして要求しない。Mathlib の証明済みの存在定理から構成する。
+- この比較は各層の右導来切断についてである。非有界な層複体全体の K-injective 分解や Dqc 比較の存在は別の未完了工程として保持する。
+- 原典：TT §3、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
+
+### 現在地
+
+- `moduleSheafInjectiveResolution` は Grothendieck 性による十分な injective と Mathlib の構成から得た実際の分解。
+- `moduleSheafRightDerivedSectionsIso` はその分解による右導来切断の計算。`rightDerivedSectionsPresheafIso` は全ての開制限との両立を含む自然同型。
+- `affineRightDerivedSections_finiteBasicOpenVanishing` は正次数の右導来切断の各類が有限基本開被覆上で零になること。単なるコチェインの零ではなく、右導来関手の制限による類の零を証明した。
+
+## 46. Injective の Čech 非輪状性への自由層の接続（実装前記録）
+
+- 文言：開 U を表す集合値前層の自由 R 加群を層化した自由層 L_U は、F(U) を Hom(L_U,F) として表す。開 V⊆U に対する L_V→L_U は mono。
+- 証明：表現可能前層・自由加群の随伴・層化の随伴を合成する。mono は開集合の薄い圏での表現可能前層の各成分の単射性、自由加群の単射保存、層化の左完全性から得る。
+- 帰結：injective 層 I の制限 I(U)→I(V) は全射。L_V→L_U に対する injectivity と Hom の上記表示を使う。
+- 次の Čech 入力：自由表現可能層の Čech 鎖複体を増大し、各点を含む被覆元の挿入による局所収縮から完全性を証明する。その後 injective への Hom を適用して Čech 余鎖複体の非輪状性を得る。
+- 収束上の制約：この段階は各層の非負次数の分解に対する比較であり、非有界複体の全複体化の可換性を無条件には主張しない。正本 §10-7 の有限 MV 帰納は別途必要。
+- 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2。
+
+### 現在地
+
+- `freeModuleSheafOnOpenHomEquiv` は自由表現可能前層の層化からの Hom と実際の切断の同値。
+- `freeModuleSheafOnOpen_map_mono` は開の包含に対する実際の自由層の射の mono。
+- `injectiveModuleSheaf_restriction_surjective` は上の Hom 表示と injectivity による制限の全射性。層の全射と切断の全射を混同していない。
+- 集約ビルド（3,860 jobs）と1,544宣言の監査に成功。標準3公理のみ、KTheory import なし。
+- 次の作業：局所収縮を層化後の完全性へ移し、自由層の Čech 鎖複体の完全性と injective への Hom による非輪状性を証明する。実際の Dqc のアフィン導来同値はまだ未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1104,6 +1136,10 @@
 | `leftExactCyclesIso` | DerivedGeometry/LeftExactCycles | 実装・対象ビルド済み |
 | `sectionHomologyPresheaf_locallyZero` | DerivedGeometry/SheafSectionCohomology | 実装・対象ビルド済み |
 | `affineSectionHomology_finiteBasicOpenVanishing` | DerivedGeometry/AffineLocalVanishing | 実装・対象ビルド済み |
+| `moduleSheafInjectiveResolution`・`moduleSheafRightDerivedSectionsIso` | DerivedGeometry/SheafInjectiveSections | 実装・対象ビルド済み |
+| `rightDerivedSectionsPresheafIso`・`affineRightDerivedSections_finiteBasicOpenVanishing` | DerivedGeometry/RightDerivedSectionsPresheaf | 実装・対象ビルド済み |
+| `freeModuleSheafOnOpenHomEquiv`・`freeModuleSheafOnOpen_map_mono` | DerivedGeometry/FreeSheafOnOpen | 実装・対象ビルド済み |
+| `injectiveModuleSheaf_restriction_surjective` | DerivedGeometry/FreeSheafOnOpen | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
