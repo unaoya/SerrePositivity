@@ -149,3 +149,10 @@ public import SerrePositivity.KST.DerivedGeometry.GeneratorInjectiveFactorCriter
 public import SerrePositivity.KST.DerivedGeometry.CochainDisk
 public import SerrePositivity.KST.DerivedGeometry.DiskEnvelopeInjectivity
 public import SerrePositivity.KST.DerivedGeometry.GrothendieckInjectiveTestFamily
+public import SerrePositivity.KST.DerivedGeometry.InjectiveHomotopyExtension
+public import SerrePositivity.KST.DerivedGeometry.InjectiveHomotopyShortExact
+public import SerrePositivity.KST.DerivedGeometry.CompatibleHomotopyExtension
+public import SerrePositivity.KST.DerivedGeometry.CompatibleHomotopyColimit
+public import SerrePositivity.KST.DerivedGeometry.NullHomotopyFunctor
+public import SerrePositivity.KST.DerivedGeometry.NullHomotopyWellOrder
+public import SerrePositivity.KST.DerivedGeometry.HomotopyOrthogonalTransfinite

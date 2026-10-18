@@ -1218,6 +1218,22 @@
 - 短完全列 A → B → Q において、A から I への零ホモトピーの各成分を I の各項 injectivity で B へ延長する。対応する零ホモトピーな鎖写像を引いた差は A で零なので Q を経由する。Q での零ホモトピーを戻し、B での零ホモトピーを構成する。
 - 極限段階では任意に選んだ零ホモトピーの極限を取らない。前段階での成分を保った延長と colimit の普遍性を用い、互換性を証明する。これと小さい試験集合の実際の構成を終えるまで全 K-injective 分解の存在とはしない。
 
+### §58 の実装の現在地
+
+- 保存検証：集約対象ビルド 4075 jobs 成功、公理監査 2279 宣言。標準3公理のみ、KTheory import なし。
+
+- `exists_compatible_homotopy_extension`：短完全列の商への直交性から、部分複体で指定した零ホモトピーを全成分で保持する延長を構成した。
+- `exists_colimit_compatible_homotopy`：互換な零ホモトピーを各次数の余極限の普遍性で貼り合わせ、脚での一致も証明した。
+- `nullHomotopyWellOrderData` と `homotopy_orthogonal_transfinite`：Mathlib の整列帰納を実際に構成して適用し、初項と全後続商への直交性から連続超限列の余極限への直交性を証明した。
+- 小さい非輪状商を逐次加えることによる任意の非輪状複体の分解、その商の小さい試験集合への所属は未完了。
+
+## 59. 小さい部分対象・非輪状部分複体の構成（実装前記録）
+
+- 原典は [Stacks 19.12.1 (079J)](https://stacks.math.columbia.edu/tag/079J) と [19.12.2 (079K)](https://stacks.math.columbia.edu/tag/079K)。全射 M → N に対し、N の部分対象の集合で添字付けた生成対象の直和の像として、N へ全射となる M の部分対象を構成する。
+- 実装の第一段階：各真部分対象 S ⊊ N に対して、その S を経由しない合成 G → M → N を選ぶ。この存在は pullback の単射と G の生成性、M → N の全射性から証明する。選んだ射の直和の像は N へ全射となる。
+- 非輪状複体では、G → Mⁿ の像とその微分の像から始め、下の次数を順に、既構成部分複体の核を覆う上の小さい部分対象として構成する。部分対象と直和の添字集合の上界を併せて記録し、全体で一つの小さい試験集合を得る。
+- 濃度の上界は未証明のフィールドとして渡さない。固定した対象の直和の商とその部分対象を使う小さい添字模型で上界を構成することも、同じ試験集合の実装方法として用いる。これは Dqc や dg 商の定義の変更ではない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1446,6 +1462,7 @@
 | `monicQuasiIsomorphisms_transfinite`・`smallMonoQuasiIsoFamily_exists_factorization` | DerivedGeometry/MonoQuasiIsoCellClosure・SmallMonoQuasiIsoFactorization | 実装・対象ビルド済み |
 | `exists_mono_quasiIso_test_homotopy_orthogonal` | DerivedGeometry/GrothendieckTestQuasiIso | 実装・対象ビルド済み |
 | `exists_mono_quasiIso_injective_test_orthogonal` | DerivedGeometry/GrothendieckInjectiveTestFamily | 実装・対象ビルド済み |
+| `homotopy_orthogonal_transfinite` | DerivedGeometry/HomotopyOrthogonalTransfinite | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
