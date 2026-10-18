@@ -138,6 +138,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `derivedChartExteriorIso` | KoszulConeComparison | チャート反復 cone と外積複体の比較 |
 | `exceptionalChartExteriorIso`・`exceptionalChartProductIso` | ExceptionalConeComparison | 例外因子の二つの反復 cone 表示の比較 |
 | `exceptionalChartBaseChangeIso` | ExceptionalConeComparison | E∩U_i の Ko(A;a)[S] 表示の複体比較 |
+| `chartBaseChangeExteriorIso` | ChartBaseChangeComparison | 任意のチャート環射に沿う複体の底変更比較 |
+| `overlapChartComplexIso` | OverlapComplexComparison | 実際の Away 局所化環での複体同型 |
+| `koszulComplex_kFlat`・`sequenceExteriorCochain_kFlat`・`derivedChartComplex_kFlat` | KoszulKFlat | 非有界試験複体に対する K-flat 性 |
+| `chartDerivedBaseChangeExteriorIso`・`overlapChartDerivedComplexIso` | ChartDerivedBaseChange | 基底可換環上の導来スカラー拡大比較 |
+| `chartExteriorCochainMap_cocycle` | ChartCochainCocycle | 座標等式による移送を明示した三重 cocycle |
+| `exteriorBaseChangeEquiv` | ExteriorBaseChange | 2の可逆性を仮定しない総外積の底変更同型 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -154,12 +160,15 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 Koszul 外積複体とスカラー作用の mappingCone の複体同型を構成済み。
 有限列の Fin(n+1) の自由生成加群を (Fin n→₀R)×R と比較する帰納法は証明済み。
 例外因子の反復 cone 複体を Ko(A;a)[S] の underlying 複体と同定済み。
-この比較を dg 代数の導来底変更および重なりの局所化に適合させる工程は未完了。
+チャート複体は K-flat と証明済みで、実際の重なり環への導来スカラー拡大後の
+underlying 複体の同型を構成済み。共通係数環上の cochain 遷移の三重 cocycle も証明済み。
+総外積代数の底変更同型は任意可換環上で構成済みだが、収縮微分・同次次数との適合性、
+および dg 圏のスカラー拡大比較への装備は未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全458定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全509定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位はチャート環から共通重なり環への底変更と Koszul 比較。
+次の実装単位は外積底変更同型の収縮微分・同次次数との適合性と dg 圏の底変更比較。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
