@@ -7321,5 +7321,34 @@ lemma cosliceTriangleTarget_trivialKanFibration {X : SSet.{u}} [Quasicategory X]
     (e : (Δ[1] : SSet.{u}) ⟶ X) (y : X _⦋0⦌) :
     TrivialKanFibration (cosliceRestrictionFiberMap e (stdSimplex.δ (0 : Fin 2)) y)
 
+lemma join_hom_ext_stdSimplex_factors {K L : SSet.{u}} {n : ℕ}
+    {f g : join K L ⟶ (Δ[n] : SSet.{u})}
+    (hl : joinInl K L ≫ f = joinInl K L ≫ g)
+    (hr : joinInr K L ≫ f = joinInr K L ≫ g) : f = g
+
+lemma interval_hom_eq_const_one_of_source_one (e : (Δ[1] : SSet.{u}) ⟶ Δ[1])
+    (he : stdSimplex.δ (1 : Fin 2) ≫ e = stdSimplex.δ (0 : Fin 2)) :
+    e = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma join_interval_cone_inr_eq_const_one {A : SSet.{u}}
+    (f : join (Δ[1] : SSet.{u}) A ⟶ Δ[1])
+    (hf : joinInl Δ[1] A ≫ f = 𝟙 Δ[1]) :
+    joinInr Δ[1] A ≫ f = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+instance intervalIdentityCoslice_subsingleton (m : ℕ) :
+    Subsingleton ((sliceUnder (𝟙 (Δ[1] : SSet.{u}))) _⦋m⦌)
+
+lemma intervalIdentityCoslice_projection : sliceUnderProjection (𝟙 (Δ[1] : SSet.{u})) =
+    SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+def intervalIdentityCosliceVertex : (sliceUnder (𝟙 (Δ[1] : SSet.{u}))) _⦋0⦌
+
+instance intervalIdentityCoslice_nonempty (m : ℕ) :
+    Nonempty ((sliceUnder (𝟙 (Δ[1] : SSet.{u}))) _⦋m⦌)
+
+instance stdSimplexCosliceFiber_subsingleton {K : SSet.{u}} {n : ℕ}
+    (e : K ⟶ (Δ[n] : SSet.{u})) (y : (Δ[n] : SSet.{u}) _⦋0⦌) (m : ℕ) :
+    Subsingleton ((vertexFiber (sliceUnderProjection e) y) _⦋m⦌)
+
 end SerrePositivity.InfinityCategories
 ```
