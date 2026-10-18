@@ -34,3 +34,5 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedExtensio
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanRightCorner
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightMapMono
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanTensorCorner

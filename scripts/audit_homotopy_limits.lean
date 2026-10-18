@@ -355,3 +355,17 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms exists_cospan_extension_of_rightCorner
 #check @exists_resized_cospan_extension_of_rightCorner
 #print axioms exists_resized_cospan_extension_of_rightCorner
+#check @nerveMap_mono_of_faithful
+#print axioms nerveMap_mono_of_faithful
+#check @overMap_obj_injective
+#print axioms overMap_obj_injective
+#check @bousfieldKanWeight_map_mono
+#print axioms bousfieldKanWeight_map_mono
+#check @cospanRightCorner_tensor_anodyne
+#print axioms cospanRightCorner_tensor_anodyne
+#check @resized_cospanRightCorner_tensor_anodyne
+#print axioms resized_cospanRightCorner_tensor_anodyne
+#check @weightedSections_cospan_leftFibration_kanComplex
+#print axioms weightedSections_cospan_leftFibration_kanComplex
+#check @bousfieldKanHolim_cospan_leftFibration_kanComplex
+#print axioms bousfieldKanHolim_cospan_leftFibration_kanComplex

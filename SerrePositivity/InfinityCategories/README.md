@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開175宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開182宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2475,9 +2475,44 @@ exists_resized_cospan_extension_of_rightCorner
 ```
 
 右脚の fibration 性は不要だが、中央の相対境界の anodyne 性 h₀ を入力に要求する。
-具体的な重みの相対境界での h₀ の検証、一脚だけの fibration 性での κ の同値性、
+ホーンの直積に対する h₀ は次の定理で検証する。重みの制限と境界を同時に固定する
+pushout-product に対する h₀、一脚だけの fibration 性での κ の同値性、
 coherent な錐の pinched Hom との比較と 𝒮・Sp の ∞ 引き戻しへの適用は未完了。
 両脚が fibration の比較だけで、要求された引き戻しの ∞ 普遍性を完成とは数えない。
+
+### 一脚だけが fibration の cospan の end の Kan 性（実装済み）
+
+`WeightMapMono.lean` は、対象上で単射な忠実関手の nerve の単射性を証明する。
+添字の射 f が Mono なら `Over.map f` は対象上で単射で、射の左成分を保つため忠実である。
+従って `bousfieldKanWeight_map_mono f` は重みの遷移の Mono 性を与える。
+
+`CospanTensorCorner.lean` は重み W の右脚が単射のとき、
+`cospanRightCornerMap (W ◁ const.map f)` を W の右脚と f の pushout-product と同定する。
+f が anodyne ならこの相対境界も anodyne であり、前節の一脚の相対延長が使える。
+この定理は通常の cospan と AsSmall による持ち上げの両方で公開する。
+
+```lean
+weightedSections_cospan_leftFibration_kanComplex
+    (W H : AsSmall.{u} WalkingCospan ⥤ SSet.{u})
+    [Mono (W.map (AsSmall.up.map WalkingCospan.Hom.inr))]
+    [KanComplex (H.obj (AsSmall.up.obj .one))]
+    [KanComplex (H.obj (AsSmall.up.obj .right))]
+    [Fibration (H.map (AsSmall.up.map WalkingCospan.Hom.inl))] :
+    KanComplex (weightedSections W H)
+bousfieldKanHolim_cospan_leftFibration_kanComplex
+    (H : AsSmall.{u} WalkingCospan ⥤ SSet.{u})
+    [KanComplex (H.obj (AsSmall.up.obj .one))]
+    [KanComplex (H.obj (AsSmall.up.obj .right))]
+    [Fibration (H.map (AsSmall.up.map WalkingCospan.Hom.inl))] :
+    KanComplex (bousfieldKanHolim H)
+```
+
+証明は W とホーン包含の直積に沿ってパラメーター付き自然変換を延長する。
+Bousfield–Kan 重みでは添字の右脚が単射なので、必要な重みの右脚の単射性も実際に証明済み。
+右脚の fibration 性や追加の比較仮定は不要。
+これは比較先の Kan 性であり、一脚の fibration 性の下での標準比較 κ の同値性ではない。
+κ には重みの制限とパラメーターの境界を同時に固定する相対境界の検証が残る。
+coherent な錐の写像空間との比較と 𝒮・Sp の ∞ 引き戻しへの適用も未完了。
 
 ### 𝒮 の空積（実装済み）
 
