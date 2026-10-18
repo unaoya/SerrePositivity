@@ -430,3 +430,7 @@ public import SerrePositivity.InfinityCategories.F1.EdgewiseSubdivision
 public import SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints
 public import SerrePositivity.InfinityCategories.F1.EdgewiseStandardSimplex
 public import SerrePositivity.InfinityCategories.F1.EdgewiseBoundaryLifting
+public import SerrePositivity.InfinityCategories.F1.EdgewiseExtensionDomain
+public import SerrePositivity.InfinityCategories.F1.EdgewiseSupportPairing
+public import SerrePositivity.InfinityCategories.F1.EdgewiseSupportRank
+public import SerrePositivity.InfinityCategories.F1.EdgewiseSupportEquivalence

@@ -8497,5 +8497,118 @@ lemma edgewiseRight_trivialKanFibration_of_extensions (X : SSet.{u})
         joinInr (Δ[n + 1] : SSet.{u}).op Δ[n + 1] ≫ F = b) :
     TrivialKanFibration (edgewiseRight X)
 
+def edgewiseLeftVertex (n : ℕ) (i : Fin (n + 1)) : Fin (n + n + 1 + 1)
+
+def edgewiseRightVertex (n : ℕ) (i : Fin (n + 1)) : Fin (n + n + 1 + 1)
+
+def edgewiseRightVertices (n : ℕ) : Finset (Fin (n + n + 1 + 1))
+
+def edgewiseRightExtensionDomain (n : ℕ) : (Δ[n + n + 1] : SSet.{u}).Subcomplex
+
+lemma mem_edgewiseRightExtensionDomain_iff {n d : ℕ}
+    (s : (Δ[n + n + 1] : SSet.{u}) _⦋d⦌) :
+    s ∈ (edgewiseRightExtensionDomain n).obj (Opposite.op ⦋d⦌) ↔
+      (∀ j : Fin (d + 1), n < (s j).val) ∨
+        ∃ i : Fin (n + 1), ∀ j : Fin (d + 1),
+          s j ≠ edgewiseLeftVertex n i ∧ s j ≠ edgewiseRightVertex n i
+
+lemma edgewiseLeftVertex_ne_right (n : ℕ) (i j : Fin (n + 1)) :
+    edgewiseLeftVertex n i ≠ edgewiseRightVertex n j
+
+def EdgewiseSupportInDomain (n : ℕ) (S : Finset (Fin (n + n + 1 + 1))) : Prop
+
+lemma mem_edgewiseRightExtensionDomain_iff_support {n d : ℕ}
+    (s : (Δ[n + n + 1] : SSet.{u}) _⦋d⦌) :
+    s ∈ (edgewiseRightExtensionDomain n).obj (Opposite.op ⦋d⦌) ↔
+      EdgewiseSupportInDomain n (Finset.univ.image s)
+
+lemma edgewiseRightVertex_injective (n : ℕ) : Function.Injective (edgewiseRightVertex n)
+
+lemma edgewiseSupportInDomain_insert_right_iff {n : ℕ}
+    (S : Finset (Fin (n + n + 1 + 1))) (i : Fin (n + 1))
+    (hi : edgewiseLeftVertex n i ∈ S) :
+    EdgewiseSupportInDomain n (insert (edgewiseRightVertex n i) S) ↔
+      EdgewiseSupportInDomain n S
+
+lemma edgewiseSupportInDomain_erase_right_iff {n : ℕ}
+    (S : Finset (Fin (n + n + 1 + 1))) (i : Fin (n + 1))
+    (hi : edgewiseLeftVertex n i ∈ S) :
+    EdgewiseSupportInDomain n (S.erase (edgewiseRightVertex n i)) ↔
+      EdgewiseSupportInDomain n S
+
+def edgewiseLeftSupport (n : ℕ) (S : Finset (Fin (n + n + 1 + 1))) : Finset (Fin (n + 1))
+
+lemma edgewiseLeftSupport_nonempty {n : ℕ}
+    (S : Finset (Fin (n + n + 1 + 1))) (h : ¬ EdgewiseSupportInDomain n S) :
+    (edgewiseLeftSupport n S).Nonempty
+
+def edgewiseSupportPivot {n : ℕ} (S : Finset (Fin (n + n + 1 + 1)))
+    (h : ¬ EdgewiseSupportInDomain n S) : Fin (n + 1)
+
+lemma edgewiseSupportPivot_mem {n : ℕ} (S : Finset (Fin (n + n + 1 + 1)))
+    (h : ¬ EdgewiseSupportInDomain n S) :
+    edgewiseLeftVertex n (edgewiseSupportPivot S h) ∈ S
+
+lemma edgewiseSupportPivot_le {n : ℕ} (S : Finset (Fin (n + n + 1 + 1)))
+    (h : ¬ EdgewiseSupportInDomain n S) (i : Fin (n + 1))
+    (hi : edgewiseLeftVertex n i ∈ S) : edgewiseSupportPivot S h ≤ i
+
+lemma edgewiseSupportPivot_le_of_subset_pair {n : ℕ}
+    (S T : Finset (Fin (n + n + 1 + 1)))
+    (hS : ¬ EdgewiseSupportInDomain n S) (hT : ¬ EdgewiseSupportInDomain n T)
+    (hST : S ⊆ insert (edgewiseRightVertex n (edgewiseSupportPivot T hT)) T) :
+    edgewiseSupportPivot T hT ≤ edgewiseSupportPivot S hS
+
+lemma edgewiseSupport_card_lt_of_pivot_eq {n : ℕ}
+    (S T : Finset (Fin (n + n + 1 + 1)))
+    (hS : ¬ EdgewiseSupportInDomain n S) (hT : ¬ EdgewiseSupportInDomain n T)
+    (hST : S ⊆ insert (edgewiseRightVertex n (edgewiseSupportPivot T hT)) T)
+    (hR : edgewiseRightVertex n (edgewiseSupportPivot S hS) ∉ S)
+    (hP : edgewiseSupportPivot S hS = edgewiseSupportPivot T hT) (hne : S ≠ T) :
+    S.card < T.card
+
+lemma edgewiseSupport_rank_lt {n : ℕ}
+    (S T : Finset (Fin (n + n + 1 + 1)))
+    (hS : ¬ EdgewiseSupportInDomain n S) (hT : ¬ EdgewiseSupportInDomain n T)
+    (hST : S ⊆ insert (edgewiseRightVertex n (edgewiseSupportPivot T hT)) T)
+    (hR : edgewiseRightVertex n (edgewiseSupportPivot S hS) ∉ S) (hne : S ≠ T) :
+    Prod.Lex (· < ·) (· < ·)
+      (n - (edgewiseSupportPivot S hS).val, S.card)
+      (n - (edgewiseSupportPivot T hT).val, T.card)
+
+lemma edgewiseLeftSupport_insert_right {n : ℕ}
+    (S : Finset (Fin (n + n + 1 + 1))) (i : Fin (n + 1)) :
+    edgewiseLeftSupport n (insert (edgewiseRightVertex n i) S) = edgewiseLeftSupport n S
+
+lemma edgewiseLeftSupport_erase_right {n : ℕ}
+    (S : Finset (Fin (n + n + 1 + 1))) (i : Fin (n + 1)) :
+    edgewiseLeftSupport n (S.erase (edgewiseRightVertex n i)) = edgewiseLeftSupport n S
+
+lemma edgewiseSupportPivot_eq_of_leftSupport_eq {n : ℕ}
+    (S T : Finset (Fin (n + n + 1 + 1)))
+    (hS : ¬ EdgewiseSupportInDomain n S) (hT : ¬ EdgewiseSupportInDomain n T)
+    (hST : edgewiseLeftSupport n S = edgewiseLeftSupport n T) :
+    edgewiseSupportPivot S hS = edgewiseSupportPivot T hT
+
+def EdgewiseOutsideSupport (n : ℕ)
+
+def EdgewiseLowerSupport (n : ℕ)
+
+def EdgewiseUpperSupport (n : ℕ)
+
+def edgewiseSupportRaise {n : ℕ} (S : EdgewiseLowerSupport n) : EdgewiseUpperSupport n
+
+def edgewiseSupportLower {n : ℕ} (S : EdgewiseUpperSupport n) : EdgewiseLowerSupport n
+
+lemma edgewiseSupportRaise_pivot {n : ℕ} (S : EdgewiseLowerSupport n) :
+    edgewiseSupportPivot (edgewiseSupportRaise S).val.val (edgewiseSupportRaise S).val.property =
+      edgewiseSupportPivot S.val.val S.val.property
+
+lemma edgewiseSupportLower_pivot {n : ℕ} (S : EdgewiseUpperSupport n) :
+    edgewiseSupportPivot (edgewiseSupportLower S).val.val (edgewiseSupportLower S).val.property =
+      edgewiseSupportPivot S.val.val S.val.property
+
+def edgewiseSupportPairEquiv (n : ℕ) : EdgewiseLowerSupport n ≃ EdgewiseUpperSupport n
+
 end SerrePositivity.InfinityCategories
 ```
