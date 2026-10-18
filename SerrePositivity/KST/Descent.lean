@@ -104,6 +104,10 @@ public import SerrePositivity.KST.Descent.SchemeActionTransport
 public import SerrePositivity.KST.Descent.AffineSchemeBaseChange
 public import SerrePositivity.KST.Descent.FiniteTypeAffineBaseChange
 public import SerrePositivity.KST.Descent.AffineCechDescent
+public import SerrePositivity.KST.Descent.CechPullback
+public import SerrePositivity.KST.Descent.CechBaseChange
+public import SerrePositivity.KST.Descent.DoubleCechGeometry
+public import SerrePositivity.KST.Descent.DoubleCechNaturality
 
 /-!
 # K-L8：論文 §3 の降下
@@ -170,6 +174,8 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 元の環の幾何的推移性から任意のアフィン基底変更の点の推移性を導き、
 実際の Čech 各段の指定作用へ移す。構成済みの切断・分離性・次元上界を用いて、
 実降下の帰結を明示した条件のもとで各段の全次数降下を証明する。
+増強 Čech の右随伴性から底変換比較を証明し、恒等射の Čech の定数図式との自然同型を構成する。
+実際の二重 Čech の各対象のファイバー積表示と、全単体射を保つ軸交換の自然同型を公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

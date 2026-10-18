@@ -82,10 +82,13 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 元の環論的な幾何的推移性から任意のアフィン基底変更の点の推移性を導き、
 元の有限型の圏内の指定作用と、実際の Čech 各段へ移した。
 切断・推移性・分離性・次元上界を全て供給し、実際の各段の全次数降下を証明した。
+増強 Čech nerve の右随伴性から実際の底変換比較を証明した。
+恒等射の Čech の定数図式との自然同型、および実際の二重 Čech 全体の
+軸交換の自然同型を構成した。値域の Tot の Fubini は引き続き未完である。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 104 モジュール・1157 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 108 モジュール・1208 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -99,6 +102,8 @@ L8 の対象ビルドと監査は成功しており、import 閉包の破損で�
 `InfinityCategories/Core/CocartesianPathVertices` と `cocartesianPathVertex._proof_1` を重複登録する。
 所有範囲外の衝突で、L8 の対象ビルドと監査は成功したままである。
 終了コード 1 を確認し、ログは `/tmp/l8-affine-cech-descent-full-build.log`。
+§42 の全体ビルドも同じ所有範囲外の宣言重複でルート集約に失敗（終了コード 1）。
+ログは `/tmp/l8-double-cech-comparison-full-build.log`。L8 の対象ビルド・監査は成功。
 L8a 全体の完成とは区別する。
 L8b の切断を持つ射について「整 → 被約 → 一般」の帰納を完了した。
 自然な列・有限積保存・冪零不変性を明示的に入力する条件付きの段階である。
@@ -566,6 +571,15 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `affineFiniteTypeBaseChange_transitive` | 有限型の圏の指定引き戻しの点の推移性 | 対象ビルド済み、忘却による Cartesian 比較を使用 |
 | `affineCechStage_transitive` | 実際のアフィン Čech 各段での底変換の推移性 | 対象ビルド済み、段ごとの推移性を仮定しない |
 | `NaturalBlowupSequences.affineCechStage_piDescent` | 実際の Čech 各非増強段での全次数降下 | 対象ビルド済み、局所 Noether 基底、段ごとの幾何条件と降下の仮定は残らない |
+| `arrow_isPullback_of_components` | Arrow の両端での Cartesian 性の検査 | 対象ビルド済み |
+| `augmentedCechNerve_preservesPullbacks` | 増強 Čech nerve の引き戻し保存 | 対象ビルド済み、既存の右随伴性を使用 |
+| `baseChangeAugmentedCech_isPullback` | 底変換した射の増強 Čech 図式の Cartesian 性 | 対象ビルド済み |
+| `identityCechIso` | 恒等射の Čech nerve と定数図式の自然同型 | 対象ビルド済み、指定増強が hom |
+| `baseChangeCechIso` | Čech の実際の底変換比較の全単体次数の同型 | 対象ビルド済み、図式全体の標準同型 |
+| `doubleCech_isPullback` | 実際の二重 Čech 各対象のファイバー積表示 | 対象ビルド済み、二射影を指定 |
+| `doubleCechSwapIso_involutive` | 二重 Čech の軸交換の二回の合成が恒等 | 対象ビルド済み |
+| `doubleCechSwapIso_inner_naturality`、`doubleCechSwapIso_outer_naturality` | 全ての単体射と軸交換の整合性 | 対象ビルド済み |
+| `doubleCechSwapNatIso` | 実際の二重 Čech 全体の軸交換の自然同型 | 対象ビルド済み、Tot の交換とは区別 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1308,3 +1322,36 @@ underlying scheme の指定引き戻しへの標準同型との同変性を検�
 元の射への Tot・Fubini・細分による還元、有限平坦 transfer の導来図式への接続、
 最小公理全体・(3.6)・K0・T2・E の接続は残る。
 各行の次数ごとの同型から Tot と π_* の交換を仮定してはいない。
+
+## 42. Čech の底変換と二重図式全体の軸交換
+
+L9 の現在の計画では L9e の Tot・hG は未着手であることを確認した。
+L8 側ではそれらの実構成を置き換えず、先行できる幾何的な Čech 比較を証明する。
+通常の極限を Tot と呼ぶ代用品は導入しない。
+
+Arrow の正方形が Cartesian であることは、その始域・終域の正方形で検査できる。
+Comma の二射影による極限の共同反映でこれを証明した。
+底変換の射 X ×_Y Z → Z は、Arrow 内で元の f と恒等射 𝟙 Z の引き戻しとなる。
+増強 Čech nerve は既存の右随伴であり、従ってこの引き戻しを保つ。
+これにより増強図式全体の実際の Cartesian 正方形を得た。
+
+恒等射の Čech nerve の各段は、恒等射の族の wide pullback である。
+普遍性から増強成分の逆射を構成し、全ての成分が同型であることを証明した。
+従って指定増強を hom とする `identityCechIso` は定数図式との自然同型となる。
+増強を忘れる関手の引き戻し保存も検査し、この同型で底変換の正方形の基底を移す。
+`baseChangeCechIso` は、底変換した射の実際の Čech nerve と、
+元の Čech nerve の定数図式による引き戻しとの図式全体の標準同型である。
+
+元の有限型の圏の二重 Čech に適用すると、各二重次数の対象は
+二つの元の Čech 段の増強のファイバー積となる。
+指定二射影を保持して交換同型を構成し、二回の合成が恒等となることを証明した。
+二射影の内側・外側の全ての単体射についての自然性も証明し、
+交換が両方向の単体射と可換することを検査した。
+積添字に uncurry した `doubleCechBifunctor` に対して、
+`doubleCechSwapNatIso` は二重図式全体と軸を交換した図式との自然同型となる。
+段ごとの同型の存在だけを図式全体の同型と呼んではいない。
+
+本節の結果は、Fubini・細分に使う幾何的な比較の入力である。
+値域の実際の Tot の Fubini、分裂降下、有限平坦 transfer の図式との接続、
+元の切断を持たない射への還元は残る。
+実降下からの自然な blowup 列と有限積保存、最小公理全体・(3.6)・K0・T2・E も未完である。

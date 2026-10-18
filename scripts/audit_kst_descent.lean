@@ -131,7 +131,11 @@ run_cmd do
       `SerrePositivity.KST.Descent.SchemeActionTransport,
       `SerrePositivity.KST.Descent.AffineSchemeBaseChange,
       `SerrePositivity.KST.Descent.FiniteTypeAffineBaseChange,
-      `SerrePositivity.KST.Descent.AffineCechDescent] do
+      `SerrePositivity.KST.Descent.AffineCechDescent,
+      `SerrePositivity.KST.Descent.CechPullback,
+      `SerrePositivity.KST.Descent.CechBaseChange,
+      `SerrePositivity.KST.Descent.DoubleCechGeometry,
+      `SerrePositivity.KST.Descent.DoubleCechNaturality] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."
