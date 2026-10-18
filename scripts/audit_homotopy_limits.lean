@@ -1341,3 +1341,45 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms isLimitCone_iff_coneTransportHomComparison_tower
 #check @isLimitCone_iff_coneTransportHomComparison_discrete
 #print axioms isLimitCone_iff_coneTransportHomComparison_discrete
+#check @coherentPathDual
+#print axioms coherentPathDual
+#check @coherentPathDual_dual
+#print axioms coherentPathDual_dual
+#check @coherentPathDualFunctor
+#print axioms coherentPathDualFunctor
+#check @coherentPathDual_id
+#print axioms coherentPathDual_id
+#check @coherentPathDual_comp
+#print axioms coherentPathDual_comp
+#check @coherentThickeningDual
+#print axioms coherentThickeningDual
+#check @coherentEnrichedFunctorOp
+#print axioms coherentEnrichedFunctorOp
+#check @coherentEnrichedFunctorOp_comp
+#print axioms coherentEnrichedFunctorOp_comp
+#check @coherentEnrichedFunctor_comp_assoc
+#print axioms coherentEnrichedFunctor_comp_assoc
+#check @coherentThickeningDual_naturality
+#print axioms coherentThickeningDual_naturality
+#check @coherentReverseOrder
+#print axioms coherentReverseOrder
+#check @coherentReverseOrder_naturality
+#print axioms coherentReverseOrder_naturality
+#check @coherentReverseThickening
+#print axioms coherentReverseThickening
+#check @coherentReverseThickening_naturality
+#print axioms coherentReverseThickening_naturality
+#check @coherentOppositeSimplex
+#print axioms coherentOppositeSimplex
+#check @coherentOppositeSimplex_naturality
+#print axioms coherentOppositeSimplex_naturality
+#check @coherentNerveOppositeMap
+#print axioms coherentNerveOppositeMap
+#check @coherentNerveOppositeMap_vertex
+#print axioms coherentNerveOppositeMap_vertex
+#check @coherentNervePost
+#print axioms coherentNervePost
+#check @coherentOppositeSimplex_post
+#print axioms coherentOppositeSimplex_post
+#check @coherentNerveOppositeMap_post
+#print axioms coherentNerveOppositeMap_post

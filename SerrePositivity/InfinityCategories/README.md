@@ -2194,7 +2194,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開668宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開689宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2822,7 +2822,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開668宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開689宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3627,6 +3627,51 @@ p の fibration 性、離散添字の有限性・非空性を要求しない。
 この end の係数は錐の left fibration の transport である。
 元の `simplicialHomDiagram F x` との自然な比較と、豊穣 Hom からの実際の q_x との整合性は未完了。
 したがって 𝒮・Sp の残りの適用を含む γ3b・γ3c はまだ完了と数えない。
+
+### 反対の coherent nerve への自然な標準射（構成済み）
+
+豊穣 Hom の右 pinched 比較を左 coslice の係数模型へ接続する準備として、
+path の包含方向と単体の頂点の反転を区別して形式化した。
+`CoherentPathDual` は線形順序 J の path の部分集合を変えずに二端点と上下界を交換する。
+恒等 path・二回の双対・逆順の合成との整合性を証明し、
+
+```lean
+coherentThickeningDual J : EnrichedFunctor SSet
+  (SimplicialThickening J) (SimplicialThickening Jᵒᵈ)ᵒᵖ
+```
+
+を構成した。J は任意の `Type u` と `[LinearOrder J]`。
+`CoherentEnrichedOpposite` は豊穣関手 F の反対 `coherentEnrichedFunctorOp F`、
+合成との可換性、thickening の双対の単調写像への自然性を証明する。
+豊穣圏の反対の構造は Mathlib の `Enriched.Opposite` を使う。
+
+`CoherentReverseThickening` は `ULift.{u} (Fin (n+1))` の頂点を `Fin.rev` で反転し、
+標準 thickening からその反対への豊穣関手を作る。
+`coherentReverseThickening_naturality α` は添字の反転 `SimplexCategory.rev.map α` と
+前合成が可換であることを全ての面・退化について証明する。
+
+`CoherentOppositeMap` は任意の `C : Type v`、`[Category.{u} C]`、`[SimplicialCategory C]` に対し、
+
+```lean
+coherentNerveOppositeMap C : (SimplicialNerve C).op ⟶ SimplicialNerve Cᵒᵖ
+coherentNerveOppositeMap_vertex x :
+  (coherentNerveOppositeMap C).app (Opposite.op ⦋0⦌)
+    (SSet.opObjEquiv.symm (coherentNerveVertex x)) = coherentNerveVertex (Opposite.op x)
+```
+
+を構成した。Kan 性・quasicategory 性は不要で、頂点の像は厳密な等式である。
+`CoherentNervePost` は対象の宇宙が共通の `C D : Type v` と豊穣関手 F に対し
+`coherentNervePost F : SimplicialNerve C ⟶ SimplicialNerve D` を後合成で定義し、
+
+```lean
+coherentNerveOppositeMap_post F :
+  SSet.opFunctor.map (coherentNervePost F) ≫ coherentNerveOppositeMap D =
+    coherentNerveOppositeMap C ≫ coherentNervePost (coherentEnrichedFunctorOp F)
+```
+
+を証明した。これは豊穣関手への実際の自然性であり、点ごとの同値の選択ではない。
+反対の標準射の逆射・往復則、左 coslice の係数図式への接続はまだ証明していない。
+元の豊穣 Hom の図式・q_x との比較、および 𝒮・Sp の残りの適用は引き続き未完了。
 
 ### 𝒮 の空積（実装済み）
 
