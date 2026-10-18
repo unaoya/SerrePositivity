@@ -1,5 +1,14 @@
 module
 
+public import SerrePositivity.KST.Spectra.CosimplicialHornFibration
+public import SerrePositivity.KST.Spectra.KanCompositeCancellation
+public import SerrePositivity.KST.Spectra.CosimplicialTwoProjections
+public import SerrePositivity.KST.Spectra.CosimplicialProjectionEquivalence
+public import SerrePositivity.KST.Spectra.TotalizationHomotopyInvariance
+public import SerrePositivity.KST.Spectra.CosimplicialKanMapEquivalence
+public import SerrePositivity.KST.Spectra.ReplacedTotalization
+public import SerrePositivity.KST.Spectra.TotalizationReplacementUnit
+
 public import SerrePositivity.KST.Spectra.BoundaryTensorMonomorphism
 public import SerrePositivity.KST.Spectra.TotalizationBoundaryLifting
 public import SerrePositivity.KST.Spectra.CosimplicialRelativeWhitehead

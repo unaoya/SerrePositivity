@@ -33,7 +33,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・309 モジュール 3461 宣言の公理監査成功。
+対象ビルド・317 モジュール 3513 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2599,4 +2599,43 @@ Kan fibration の相対 Whitehead で現在の次数の単射 RLP が従い、�
 参照：Goerss–Jardine VII §4、VIII §1。
 保存単位の対象ビルド 3750 jobs 成功。
 私有宣言を含む 309 モジュール 3461 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
+
+## 88. L9e の通常の Tot の一般のホモトピー不変性
+
+Reedy horn の右類を、相対 latching anodyne の RLP と同定した。
+これにより右類は合成で閉じ、Reedy Kan な対象との積からの射影も右類になる。
+選択された終対象と各段が終対象の一定図式との間では、終射の Reedy 条件は同値である。
+
+任意の余単体射 f のグラフ (f, id) を horn 因子分解した。
+中間図式への比較は各段で anodyne で、始域と終域への二つの射影を持つ。
+比較と始域への射影の合成は厳密に恒等射、終域への射影との合成は厳密に f である。
+元の両図式が Reedy Kan なら二射影は Reedy fibration で、中間図式も Reedy Kan である。
+各段の全基点 π_* 同型の前側の消去を、参照頂点と実際の Whitehead 逆によって証明した。
+これを使い、f が各段で同型なら二射影も各段で同型となる。
+
+二射影の Tot 上での相対 Whitehead と厳密な切断の式から、通常の Tot は一般の各段の同型を保つ。
+f 自体が Reedy fibration であるという §87 の条件は不要になった。
+始域の各段の頂点は引き続き明示し、点つき版では各基点を用いた。
+
+Reedy 置換関手も各段の π_* 同型を保つことを単位の自然性と前側の消去で示した。
+このため任意の点つき Kan 図式を Reedy 置換してから通常の Tot を取る関手は、各段の同型を保つ。
+元から Reedy Kan な図式では、通常の Tot から置換後の Tot への自然な標準射も π_* 同型である。
+これらは通常の Tot の実際の模型についての結果で、Bousfield–Kan end との比較はまだ結論していない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `CosimplicialHornFibration.right_eq_rlp` / `comp` / `prod_fst` / `prod_snd` | Reedy horn fibration の RLP 表示と閉性 |
+| `CosimplicialHornFibration.terminal_iff` | 二つの終図式での Reedy 条件の同値 |
+| `KanPiIsomorphism.cancel_left_atVertex` | 参照頂点を明示した全基点 π_* 同型の前側の消去 |
+| `CosimplicialTwoProjections.obj` / `inclusion` / `sourceProjection` / `targetProjection` | 実際のグラフの因子分解と二射影 |
+| `CosimplicialTwoProjections.sourceProjection_levelwise` / `targetProjection_levelwise` | 二射影の各段の全基点 π_* 同型 |
+| `CosimplicialTotalization.map_piIsomorphism` / `PointedTotalization.map_piIsomorphism` | 通常の Tot の一般のホモトピー不変性 |
+| `CosimplicialKanReplacement.map_piIsomorphism` | Reedy 置換の各段の同型保存 |
+| `PointedTotalization.replacementFunctor` / `replacementMap_piIsomorphism` | 任意の点つき Kan 図式の置換した通常の Tot と同型保存 |
+| `PointedTotalization.replacementUnit` / `replacementUnit_piIsomorphism` | Reedy Kan な入力での実際の標準比較の π_* 同型 |
+
+参照：Goerss–Jardine VII §4、VIII §1、Kerodon 4.8.4.1。
+保存単位の対象ビルド 3760 jobs 成功。
+私有宣言を含む 317 モジュール 3513 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
