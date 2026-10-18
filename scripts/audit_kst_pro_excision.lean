@@ -769,3 +769,75 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.powerScalarConeBiComparison_diagonal_isProIso_artinRees
 #print axioms SerrePositivity.KST.ProExcision.powerScalarConeBiComparison_diagonal_isProIso_artinRees
+
+#check @SerrePositivity.KST.ProExcision.ActionProduct
+#print axioms SerrePositivity.KST.ProExcision.ActionProduct
+
+#check @SerrePositivity.KST.ProExcision.actionProductMonoid
+#print axioms SerrePositivity.KST.ProExcision.actionProductMonoid
+
+#check @SerrePositivity.KST.ProExcision.SimplicialMonoidAction.actionStructure
+#print axioms SerrePositivity.KST.ProExcision.SimplicialMonoidAction.actionStructure
+
+#check @SerrePositivity.KST.ProExcision.actionProductProjection
+#print axioms SerrePositivity.KST.ProExcision.actionProductProjection
+
+#check @SerrePositivity.KST.ProExcision.actionProductSection
+#print axioms SerrePositivity.KST.ProExcision.actionProductSection
+
+#check @SerrePositivity.KST.ProExcision.actionProductFiber
+#print axioms SerrePositivity.KST.ProExcision.actionProductFiber
+
+#check @SerrePositivity.KST.ProExcision.actionProduct_decomposition
+#print axioms SerrePositivity.KST.ProExcision.actionProduct_decomposition
+
+#check @SerrePositivity.KST.ProExcision.actionProductTwist
+#print axioms SerrePositivity.KST.ProExcision.actionProductTwist
+
+#check @SerrePositivity.KST.ProExcision.actionProductMap
+#print axioms SerrePositivity.KST.ProExcision.actionProductMap
+
+#check @SerrePositivity.KST.ProExcision.actionProductMap_comp
+#print axioms SerrePositivity.KST.ProExcision.actionProductMap_comp
+
+#check @SerrePositivity.KST.ProExcision.actionProductTwist_natural
+#print axioms SerrePositivity.KST.ProExcision.actionProductTwist_natural
+
+#check @SerrePositivity.KST.ProExcision.SimplicialMonoidAction
+#print axioms SerrePositivity.KST.ProExcision.SimplicialMonoidAction
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProduct
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProduct
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductProjection
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductProjection
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductSection
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductSection
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductTwist
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductTwist
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionMap
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionMap
+
+#check @SerrePositivity.KST.ProExcision.actionTranslation
+#print axioms SerrePositivity.KST.ProExcision.actionTranslation
+
+#check @SerrePositivity.KST.ProExcision.actionTranslation_one
+#print axioms SerrePositivity.KST.ProExcision.actionTranslation_one
+
+#check @SerrePositivity.KST.ProExcision.actionTranslation_comp
+#print axioms SerrePositivity.KST.ProExcision.actionTranslation_comp
+
+#check @SerrePositivity.KST.ProExcision.actionTranslationHomotopy
+#print axioms SerrePositivity.KST.ProExcision.actionTranslationHomotopy
+
+#check @SerrePositivity.KST.ProExcision.actionTranslationClass
+#print axioms SerrePositivity.KST.ProExcision.actionTranslationClass
+
+#check @SerrePositivity.KST.ProExcision.actionTranslation_map_eq
+#print axioms SerrePositivity.KST.ProExcision.actionTranslation_map_eq
+
+#check @SerrePositivity.KST.ProExcision.grouplikeActionIso
+#print axioms SerrePositivity.KST.ProExcision.grouplikeActionIso

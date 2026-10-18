@@ -47,7 +47,10 @@
 - 単体環の π とこの複体模型との同定は K-L9 が供給する界面。π 自体の定理の完成は主張しない。
 - 平坦ホモロジー底変換、a(n)M の像のテンソル比較、pro-零性・pro 同型の保存は検証済み。
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
-- L6c：原典と K-L2 の群状単体モノイド・分類空間の界面を確認中。
+- L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
+- `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
+- 対象ビルドと278宣言の公理監査は成功し、標準三公理のみ。
+- L6c の Prop A.1、Lemma A.2 の同値性、Lemma A.4、Construction A.5・A.6 は未完了。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -134,6 +137,15 @@
 | koszulConeModuleHomologyTower_isProZero | KoszulConeVanishing.lean | 検証済み | KST Lemma 4.9 の cone 模型 |
 | iteratedPowerQuotientProjection_ker_ideal | ParameterQuotient.lean | 検証済み | 標準全射の核は生成イデアル倍 |
 | parameterQuotientComparison_isProIso | ParameterQuotient.lean | 検証済み | 通常の生成イデアル商と反復商の自然同型 |
+| ActionProduct | GroupHomology.lean | 検証済み | 可逆性を要求しないモノイド作用の半直積 |
+| actionProductMap | GroupHomology.lean | 検証済み | 同変準同型による半直積の誘導射 |
+| actionProductTwist_natural | GroupHomology.lean | 検証済み | Lemma A.2 の台の作用写像の自然性 |
+| SimplicialMonoidAction | SimplicialAction.lean | 検証済み | 次数ごとの自己準同型と単体射への自然性 |
+| simplicialActionProduct | SimplicialAction.lean | 検証済み | 実際の単体的半直積モノイド |
+| simplicialActionProductSection_projection | SimplicialAction.lean | 検証済み | 包含と射影の分裂 |
+| simplicialActionProductTwist | SimplicialAction.lean | 検証済み | Lemma A.2 の ψ の台単体写像 |
+| actionTranslationHomotopy | ActionTranslations.lean | 検証済み | 辺に沿う作用の実単体的ホモトピー |
+| grouplikeActionIso | ActionTranslations.lean | 検証済み | 群状性による各頂点の作用の可逆性 |
 | koszul_comparison | KoszulComparison.lean | 検証済み | 通常の生成イデアル冪商から実 Koszul ホモロジーへのレベル射 |
 | koszul_comparison_isProIso | KoszulComparison.lean | 検証済み | KST Lemma 4.10 の複体模型 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
@@ -221,6 +233,24 @@
 - 原典が arguing as in と書く箇所も具体的に証明する。
 - 未到着の界面を本レーンの結論で埋めない。
 - 完了時に対象ビルドと公理監査を行う。
+
+### L6c の実装する最小模型
+
+- 半直積は G ⋉ H の順とし、(g,h)(g′,h′)=(gg′,h·g(h′))。
+- G はモノイド、H は群。作用は群の準同型によるが、各作用が次数ごとに可逆とは仮定しない。
+- Mathlib の群同士の `SemidirectProduct`（自己同型への作用）をそのまま使うと仮定が強すぎる。
+- 本レーン内に一般のモノイド作用による半直積を構成し、分裂包含・射影・核側の包含を定義する。
+- それを次数ごとに適用し、単体的半直積とその自然な写像を作る。
+- Lemma A.2 の ψ(g,h)=(g,g(h)) は台単体集合の写像であり、モノイド準同型とは表示しない。
+- 群状性は K-L2 の `SimplicialMonoid.IsGrouplike`（π₀ が群）を使う。
+- Prop A.1 の φ は二重単体的作用 bar と半直積 bar の比較。各座標に右側の G の積を作用させる。
+- H_* 自体は K-L2 が所有する。未供給のモデル同定・ホモトピー不変性は明示入力にする。
+- Prop A.1・Lemma A.2・A.4 の結論を仮定する構造体は導入しない。
+- A.4 の相対項は分裂包含の余核。絶対項の零性とは区別する。
+- A.5 は m と m′ の和に1を加えた範囲、A.6 は u⁻¹hu の向きの共役を扱う。
+- Appendix A の原典番号と構成の自然性を各宣言に記す。
+- 全体ビルド（L6b 区切り）はレーン外の CoherentFlagIso のエラーと ReducedClosedSubscheme.olean 欠落で失敗。
+- L6b の対象 import 閉包のビルドと254宣言の公理監査は成功。これらレーン外の依存は修復しない。
 
 ## L6d：非可換再記述の紙の検証
 
