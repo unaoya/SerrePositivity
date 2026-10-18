@@ -252,6 +252,7 @@ public import SerrePositivity.InfinityCategories.Stable.TriangulatedInstance
 public import SerrePositivity.InfinityCategories.Stable.LongExactSequence
 
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspension
 
 /-! # 安定 ∞ 圏の基盤
 

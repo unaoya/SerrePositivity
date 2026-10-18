@@ -1557,7 +1557,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.OctahedronForMorphisms,
     `SerrePositivity.InfinityCategories.Stable.TriangulatedInstance,
     `SerrePositivity.InfinityCategories.Stable.LongExactSequence,
-    `SerrePositivity.InfinityCategories.Stable.ExactFunctor]
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctor,
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspension]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
