@@ -129,3 +129,11 @@ public import SerrePositivity.KST.SchemeLemmas.BoundaryPowerLift
 public import SerrePositivity.KST.SchemeLemmas.ScalarInverseBaseChange
 public import SerrePositivity.KST.SchemeLemmas.FlatPureTransformBaseChange
 public import SerrePositivity.KST.SchemeLemmas.FiniteFlatFreeNeighborhood
+public import SerrePositivity.KST.SchemeLemmas.FreeCoverNumeratorCenter
+public import SerrePositivity.KST.SchemeLemmas.ChartBoundaryLocalization
+public import SerrePositivity.KST.SchemeLemmas.FreeTensorBaseChange
+public import SerrePositivity.KST.SchemeLemmas.ChartFreeBoundary
+public import SerrePositivity.KST.SchemeLemmas.FreeBoundaryFlattening
+public import SerrePositivity.KST.SchemeLemmas.FreeCoverCharts
+public import SerrePositivity.KST.SchemeLemmas.PureTransformCongr
+public import SerrePositivity.KST.SchemeLemmas.TensorPureTransformBaseChange

@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1102 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1139 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -100,6 +100,9 @@
 - Noether 環上有限で境界外が有限階数自由な場合、全標準チャート上で純変換を平坦にする実際の admissible 中心の存在を証明済み。境界外で平坦という一般化と有限型 B 上有限の場合は残る。
 - Noether 環上有限な加群の純変換が既に平坦なら、境界の像が正則である任意の追加基底変更後も平坦で、元の純変換の基底変更との実際の線形同型を構成済み。
 - 有限表示平坦加群は各素点の基本開近傍で自由となること、自由化の係数が単位イデアルを生成し有限部分族で足りることを証明済み。階数一定性は仮定しない。
+- 境界外の自由な有限被覆の分子中心・有限生成性・境界冪の所属・admissible 性と生成元チャートの被覆を構成・証明済み。
+- 分子チャートの境界外から自由化基本開への実際の環準同型を構成し、元の加群の基底変更が同チャートの境界外で自由になることを証明済み。
+- 線形同型・境界の等式による純変換の同型、二段のテンソル積の打ち消しによる純変換の同型と平坦性の移送を証明済み。
 - 有限アフィン被覆上で実際の admissible 支配射が与えられれば、一つの大域 blowup からの支配射を構成できることを証明済み。零核の中心外開集合による重なりの一致を使う。
 - 次は一般の開埋め込みの blowup 比較射を構成し、一般 Noether 基底上の二段合成へアフィン結果を接続する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在はなお未証明。L7b 完了とはしない。
@@ -385,6 +388,21 @@ fᴺ id_M は Q から M への写像に降り、商写像との合成は fᴺ i
 この補題は、局所平坦化中心の共通細分・追加 blowup による平坦性の保存に使う。
 原典の位置付けは Stacks 0815 の純変換の平坦性と KST §5 の admissible blowup。
 
+#### 境界外で平坦な有限 A 加群への還元
+
+Noether 環 A 上有限な M と非零因子 f について M[1/f] が A[1/f] 上平坦と仮定する。
+既証明の自由な基本開の有限被覆を A[1/f] 上で選ぶ。
+各係数 sᵢ の分子 aᵢ ∈ A を取り、aᵢ で生成する中心 I を選ぶ。
+aᵢ の像は sᵢ と単元倍なので I[1/f] は単位イデアルとなり、ある fᴺ が I に入る。
+Bl_I の aᵢ チャートでは I の像が (aᵢ) なので、f を可逆化すると aᵢ も可逆になる。
+従って sᵢ も可逆となり、このチャートの境界外の加群は自由な部分からの基底変更になる。
+各チャート上で有限階数自由の場合の平坦化を適用する。
+その中心を延長して共通細分し、既証明の追加基底変更の安定性で平坦性を保つ。
+最後に二段の admissible blowup の支配を使って元の A 上の一つの中心へ戻す。
+まず有限被覆の係数の分子と中心、冪の所属を実際に構成する。
+これは有限 A 加群の段階であり、有限型 B 上有限の場合の一般定理とは区別する。
+原典の位置付けは Stacks 0815 の Noether 特殊形の準備。
+
 ### 7.2 証明の分解
 
 1. 閉補集合を定義する有限型イデアル層を選ぶ。
@@ -511,6 +529,13 @@ fᴺ id_M は Q から M への写像に降り、商写像との合成は fᴺ i
 | `flatPureTransformBaseChangeEquiv` / `flatPureTransform_baseChange` | FlatPureTransformBaseChange | 検証済み | 任意の追加基底変更での同型と平坦性 |
 | `finite_flat_exists_away_free` | FiniteFlatFreeNeighborhood | 検証済み | 素点の自由な基本開近傍 |
 | `exists_finset_freeLocalizations` | FiniteFlatFreeNeighborhood | 検証済み | 自由な基本開の有限被覆 |
+| `freeCoverNumeratorIdeal` / `exists_freeCoverNumeratorCenter` | FreeCoverNumeratorCenter | 検証済み | 自由化係数の分子中心 |
+| `chartBoundaryFreeOpenLift` | ChartBoundaryLocalization | 検証済み | 自由化開集合からの実係数写像 |
+| `chart_free_away_boundary_of_free_localization` | ChartFreeBoundary | 検証済み | 分子チャートの境界外の自由性 |
+| `exists_freeBoundary_flattening_center` | FreeBoundaryFlattening | 検証済み | 基底選択を入力しない自由境界の平坦化 |
+| `exists_initialFreeBoundary_center` | FreeCoverCharts | 検証済み | 最初の中心と自由な境界外の有限チャート |
+| `modulePureTransformCongr` | PureTransformCongr | 検証済み | 線形同型による純変換の同型 |
+| `tensorPureTransform_flat_baseChange` | TensorPureTransformBaseChange | 検証済み | 元の加群の形での追加基底変更の安定性 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |
