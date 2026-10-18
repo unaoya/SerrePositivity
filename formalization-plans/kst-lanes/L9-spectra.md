@@ -26,8 +26,9 @@
 ## 1. 正本と目的
 
 作成日：2026-10-18。
-状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・72 モジュール 1359 宣言の公理監査成功。
+状態：L9a・L9b 完了。L9c 進行中。
+Sp、整数次数群と自然な任意段表示、Kan Ω 列の単射置換まで検証済み。
+対象ビルド・78 モジュール 1425 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -930,3 +931,37 @@ fiber の Ω 条件と整数次数長完全列もまだ完了扱いにしない�
 私有宣言を含む 72 モジュール 1359 宣言で標準三公理のみ。
 L9c は未完了。loop と段の比較の自然性、零次数の fiber 比較、fiber の Ω 条件、
 Kan でない列の置換の構造射への接続、整数次数長完全列が残る。
+
+## 35. L9c の loop・隣接比較・任意段表示の自然性
+
+長完全列の自然性を、標的の指定基点の等式による移送を含む界面へ延ばした。
+path の終点評価と、loop の円の表示・fiber 表示が標的の射に関して自然であることを証明した。
+path の連結写像による同値を全自然数次数の集合の同値としてまとめた。
+連結同値、loop の fiber 同型、標的の基点への移送の三つの可換図式を合成した。
+これにより π_n(ΩY) ≃ π_(n+1)(Y) の自然性を零次数も含めて証明した。
+随伴構造射の可換式と合成し、Ω スペクトルの隣接段の全次数の比較の自然性を得た。
+零次数で移した群演算が、元の連結成分の誘導写像で保たれることをこの自然性から証明した。
+各段・各自然数次数の可換群への関手は、順写像として元の KanHomotopy.map を持つ。
+反復比較、添字の等式の移送、逆比較へ自然性を延ばした。
+整数次数群の任意の許される段による表示を、可換群への関手の自然同型として束ねた。
+その帰結として、整数次数の誘導写像の全単射性は任意の許される段の誘導写像で検証できる。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `FibrationSquare.fiberMapAt` / `.connecting_natural_at` | 指定基点の fiber 射と連結写像の自然性 |
+| `pathEndpoint_natural` / `pathFiberMap` | path fibration の自然な可換正方形 |
+| `loopBasedPathFiberIso_natural` | loop の fiber 表示の自然性 |
+| `pathConnectingEquiv` / `.pathConnectingEquiv_natural` | path の全次数の連結同値と自然性 |
+| `loopHomotopyEquiv_natural` | 零次数を含む loop の次数移動の自然性 |
+| `OmegaSpectrum.transition_formula` / `.transition_natural` | 隣接比較の計算式と自然性 |
+| `OmegaSpectrum.levelMap` / `.levelFunctor` | 零次数を含む各段の可換群への関手 |
+| `OmegaSpectrum.iterateTransition_natural` | 反復比較の自然性 |
+| `OmegaSpectrum.compareLevels_natural` | 任意の二段の比較の自然性 |
+| `OmegaSpectrum.homotopyFunctorIsoAt` | 整数次数群と任意段の群の関手の自然同型 |
+| `OmegaSpectrum.homotopyMap_bijective_iff_levelMap` | π_* 同型性の任意段での検証 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 1851 jobs 成功。
+私有宣言を含む 78 モジュール 1425 宣言で標準三公理のみ。
+L9c は未完了。零次数の fiber 比較、fiber の Ω 条件、Kan でない列の構造射を含む置換、
+整数次数長完全列、反復比較の隣接構造射との添字正規化が残る。

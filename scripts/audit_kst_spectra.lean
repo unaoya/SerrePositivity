@@ -84,7 +84,13 @@ run_cmd do
     `SerrePositivity.KST.Spectra.GroupFiveLemma,
     `SerrePositivity.KST.Spectra.HomotopySquares,
     `SerrePositivity.KST.Spectra.FibrationComparisonPositive,
-    `SerrePositivity.KST.Spectra.StageComparisonCoherence]
+    `SerrePositivity.KST.Spectra.StageComparisonCoherence,
+    `SerrePositivity.KST.Spectra.FibrationNaturalityAt,
+    `SerrePositivity.KST.Spectra.PathNaturality,
+    `SerrePositivity.KST.Spectra.LoopHomotopyNaturality,
+    `SerrePositivity.KST.Spectra.OmegaTransitionNaturality,
+    `SerrePositivity.KST.Spectra.SpectrumLevelFunctor,
+    `SerrePositivity.KST.Spectra.StageComparisonNaturality]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
