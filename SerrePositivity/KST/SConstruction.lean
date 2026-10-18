@@ -118,4 +118,11 @@ public import SerrePositivity.KST.SConstruction.InnerZeroDirectionCoordinates
 
 public import SerrePositivity.KST.SConstruction.InnerZeroDirectionComparison
 
+public import SerrePositivity.KST.SConstruction.DiagonalIterationComponents
+public import SerrePositivity.KST.SConstruction.InnerDiagonalComponents
+public import SerrePositivity.KST.SConstruction.InnerZeroColumn
+public import SerrePositivity.KST.SConstruction.InnerZeroBoundaryComparison
+public import SerrePositivity.KST.SConstruction.InnerZeroBoundaryNaturality
+public import SerrePositivity.KST.SConstruction.PointedFullPathBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -54,11 +54,16 @@ def diagonalSInnerComparisonNatIso (r : ℕ) :
     simplicialStableEndofunctor.{u} ⊗ diagonalSEndofunctor r ≅ diagonalSEndofunctor (r + 1) := by
   induction r with
   | zero =>
-    rw [diagonalSEndofunctor_succ, diagonalSEndofunctor_zero]
-    exact (ρ_ simplicialStableEndofunctor) ≪≫ (λ_ simplicialStableEndofunctor).symm
+    exact eqToIso (congrArg (fun F => simplicialStableEndofunctor ⊗ F)
+        diagonalSEndofunctor_zero) ≪≫
+      (ρ_ simplicialStableEndofunctor) ≪≫ (λ_ simplicialStableEndofunctor).symm ≪≫
+      (eqToIso ((diagonalSEndofunctor_succ 0).trans
+        (congrArg (fun F => F ⊗ simplicialStableEndofunctor)
+          diagonalSEndofunctor_zero))).symm
   | succ r ih =>
-    rw [diagonalSEndofunctor_succ (r + 1)]
-    conv_lhs => rw [diagonalSEndofunctor_succ r]
-    exact (α_ _ _ _).symm ≪≫ whiskerRightIso ih simplicialStableEndofunctor
+    exact eqToIso (congrArg (fun F => simplicialStableEndofunctor ⊗ F)
+        (diagonalSEndofunctor_succ r)) ≪≫
+      (α_ _ _ _).symm ≪≫ whiskerRightIso ih simplicialStableEndofunctor ≪≫
+      (eqToIso (diagonalSEndofunctor_succ (r + 1))).symm
 
 end SerrePositivity.KST.SConstruction

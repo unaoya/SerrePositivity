@@ -4925,3 +4925,159 @@ homotopy fiber と loop の比較、既存の suspension 構造射との照合�
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3088 jobs）、公理監査成功（1237 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.42 内側の零列から全零境界商への自然な点つき比較と経路境界
+
+`DiagonalIterationComponents.lean`、`InnerDiagonalComponents.lean`、`InnerZeroColumn.lean`、
+`InnerZeroBoundaryComparison.lean`、`InnerZeroBoundaryNaturality.lean`、`PointedFullPathBoundary.lean`。
+既存の `diagonalSInnerComparisonNatIso` と、零方向の包含の比較に使う `innerDiagonalComparisonIso` の
+各次数の射が厳密に一致することを証明した。双方を固定次数の結合子による同型へ比較する。
+このため `DiagonalIterationNaturality.lean` の既存の補助定義は、同じ結合子・単位子・添字の等号を
+`eqToIso` で明示的に合成する実装にした。公開名と型は不変であり、構成の設計変更ではない。
+
+内側の零列の各単体に最後の零方向での具体的な原像を構成し、既存の座標同型の像を厳密に回収した。
+その像が全零境界に含まれることから実際の単体的持ち上げを構成し、cofiber の普遍性で
+`innerZeroToFullBoundaryComparison` を定義した。この比較は全 anodyne 反転関手で可逆であり、
+Kan 置換後は全基点・全自然数次数の L9 の π_* 同型となる。
+座標同型と商への比較は安定な入力の射について厳密に自然である。
+
+点つき反復経路の既存の境界に比較を合成し、既存の全零境界商を標的とする自然な点つき境界、
+およびその Kan 置換を構成した。商射影に戻すと既存の `reducedIteratedPathBoundary`、
+商射影と Kan 置換の単位に戻すと `kanIteratedPathBoundary` そのものを厳密に回収する。
+Kan な境界の源は既証明の `pointedIteratedPathKan_isContractibleKan r X` により実際に可縮 Kan。
+この事実だけから既存の suspension の随伴が π_* 同型だとは結論しない。
+
+前提：`r n : ℕ`、`X Y : StableModel.{u}`、`f : X ⟶ Y`。
+入力には `StableModel` に格納された quasicategory 性・安定性のみを使い、追加仮定はない。
+一般の像の可逆性の定理は `L : SSet.{u} ⥤ D` と anodyne 反転性を明記する。
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u v w`、
+`open CategoryTheory`、`open scoped Simplicial` の下での正確な公開型。
+
+```lean
+lemma diagonalSInnerComparisonNatIso_zero_app (d : SimplexCategoryᵒᵖ) (X : StableModel.{u}) :
+    ((diagonalSInnerComparisonNatIso 0).hom.app d).app X =
+      𝟙 ((sEndofunctor d.unop.len).obj X)
+
+lemma diagonalSInnerComparisonNatIso_succ_app (r : ℕ) (d : SimplexCategoryᵒᵖ)
+    (X : StableModel.{u}) :
+    ((diagonalSInnerComparisonNatIso (r + 1)).hom.app d).app X =
+      (sEndofunctor d.unop.len).map
+        (((diagonalSInnerComparisonNatIso r).hom.app d).app X)
+
+lemma diagonalSInnerComparisonNatIso_app_eq (r n : ℕ) :
+    (diagonalSInnerComparisonNatIso.{u} r).hom.app (Opposite.op ⦋n⦌) =
+      (multiSEndofunctor_diagonal_inner_iso r n).hom
+
+lemma innerDiagonalTransport_succ (r n : ℕ) :
+    (multiSEndofunctor.{u} (r + 2)).map
+      (eqToHom (innerVariableIndex_obj_diagonal (r + 1) (Opposite.op ⦋n⦌))) =
+      Functor.whiskerRight
+        ((multiSEndofunctor (r + 1)).map
+          (eqToHom (innerVariableIndex_obj_diagonal r (Opposite.op ⦋n⦌))))
+        (sEndofunctor n)
+
+lemma innerDiagonalComparisonIso_zero_app (n : ℕ) (X : StableModel.{u}) :
+    (innerDiagonalComparisonIso 0 n).hom.app X = 𝟙 ((sEndofunctor n).obj X)
+
+lemma innerDiagonalComparisonIso_succ_app (r n : ℕ) (X : StableModel.{u}) :
+    (innerDiagonalComparisonIso (r + 1) n).hom.app X =
+      (sEndofunctor n).map ((innerDiagonalComparisonIso r n).hom.app X)
+
+lemma innerDiagonalComparisonIso_hom_eq (r n : ℕ) :
+    (innerDiagonalComparisonIso.{u} r n).hom =
+      (multiSEndofunctor_diagonal_inner_iso r n).hom
+
+lemma diagonalSInnerComparisonNatIso_app_eq_inner (r n : ℕ) :
+    (diagonalSInnerComparisonNatIso.{u} r).hom.app (Opposite.op ⦋n⦌) =
+      (innerDiagonalComparisonIso r n).hom
+
+def iteratedZeroColumnLastZeroPreimage (r : ℕ) (X : StableModel.{u}) (n : ℕ) :
+    ((iteratedSRealizationDiagram r X).obj (Opposite.op ⦋0⦌)).obj (Opposite.op ⦋n⦌) →
+      (simplicialDiagonalFunctor.obj (zeroDirectionsDiagram {Fin.last r} X)).obj
+        (Opposite.op ⦋n⦌)
+
+lemma iteratedZeroColumnLastZeroPreimage_fac (r : ℕ) (X : StableModel.{u}) (n : ℕ)
+    (x : ((iteratedSRealizationDiagram r X).obj (Opposite.op ⦋0⦌)).obj (Opposite.op ⦋n⦌)) :
+    ((zeroDirectionsInclusion {Fin.last r} X).app (Opposite.op ⦋n⦌))
+        (iteratedZeroColumnLastZeroPreimage r X n x) =
+      ((diagonalZeroColumn (iteratedSRealizationDiagram r X) ≫
+        (iteratedSRealizationCoordinateIso r X).hom).app (Opposite.op ⦋n⦌)) x
+
+lemma iteratedZeroColumn_range_le_fatBoundary (r : ℕ) (X : StableModel.{u}) :
+    Subcomplex.range (diagonalZeroColumn (iteratedSRealizationDiagram r X) ≫
+      (iteratedSRealizationCoordinateIso r X).hom) ≤ zeroDirectionsFatBoundary (r + 1) X
+
+def iteratedZeroColumnFatBoundaryLift (r : ℕ) (X : StableModel.{u}) :
+    (iteratedSRealizationDiagram r X).obj (Opposite.op ⦋0⦌) ⟶
+      (zeroDirectionsFatBoundary (r + 1) X : SSet.{u})
+
+lemma iteratedZeroColumnFatBoundaryLift_ι (r : ℕ) (X : StableModel.{u}) :
+    iteratedZeroColumnFatBoundaryLift r X ≫ (zeroDirectionsFatBoundary (r + 1) X).ι =
+      diagonalZeroColumn (iteratedSRealizationDiagram r X) ≫
+        (iteratedSRealizationCoordinateIso r X).hom
+
+def innerZeroToFullBoundaryComparison (r : ℕ) (X : StableModel.{u}) :
+    reducedDiagonal (iteratedSRealizationDiagram r X) ⟶ boundaryReducedRealization r X
+
+lemma innerZeroToFullBoundaryComparison_quotient (r : ℕ) (X : StableModel.{u}) :
+    diagonalReductionQuotient (iteratedSRealizationDiagram r X) ≫
+      (innerZeroToFullBoundaryComparison r X).right =
+        (iteratedSRealizationCoordinateIso r X).hom ≫ boundaryReductionQuotient r X
+
+lemma innerZeroToFullBoundaryComparison_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L) (r : ℕ) (X : StableModel.{u}) :
+    IsIso (L.map (innerZeroToFullBoundaryComparison r X).right)
+
+lemma iteratedSRealizationCoordinateIso_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    iteratedSRealizationMap r f ≫ (iteratedSRealizationCoordinateIso r Y).hom =
+      (iteratedSRealizationCoordinateIso r X).hom ≫ (multiRealizationFunctor (r + 1)).map f
+
+lemma innerZeroToFullBoundaryComparison_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    reducedDiagonalMap (iteratedSRealizationDiagramMap r f) ≫ innerZeroToFullBoundaryComparison r Y =
+      innerZeroToFullBoundaryComparison r X ≫ boundaryReducedRealizationMap r f
+
+def innerZeroToFullBoundaryComparisonNat (r : ℕ) :
+    iteratedSRealizationDiagramFunctor.{u} r ⋙ reducedDiagonalFunctor ⟶
+      boundaryReducedRealizationFunctor r where
+  app
+
+def innerZeroToFullBoundaryComparisonKanNat (r : ℕ) :
+    (iteratedSRealizationDiagramFunctor.{u} r ⋙ reducedDiagonalFunctor) ⋙
+        Spectra.PointedKanReplacement.functor ⟶ boundaryKanRealizationFunctor r
+
+lemma innerZeroToFullBoundaryComparisonKan_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism
+      (Spectra.PointedKanReplacement.map (innerZeroToFullBoundaryComparison r X)).right
+
+def pointedFullIteratedPathBoundaryNat (r : ℕ) :
+    pointedIteratedPathFunctor.{u} r ⟶ boundaryReducedRealizationFunctor r
+
+def pointedFullIteratedPathBoundary (r : ℕ) (X : StableModel.{u}) :
+    pointedIteratedPathRealization r X ⟶ boundaryReducedRealization r X
+
+lemma pointedFullIteratedPathBoundary_quotient (r : ℕ) (X : StableModel.{u}) :
+    pointedIteratedPathQuotient r X ≫ (pointedFullIteratedPathBoundary r X).right =
+      reducedIteratedPathBoundary r X
+
+def pointedFullIteratedPathKanBoundaryNat (r : ℕ) :
+    pointedIteratedPathKanFunctor.{u} r ⟶ boundaryKanRealizationFunctor r
+
+def pointedFullIteratedPathKanBoundary (r : ℕ) (X : StableModel.{u}) :
+    (pointedIteratedPathKanFunctor r).obj X ⟶ (boundaryKanRealizationFunctor r).obj X
+
+lemma pointedFullIteratedPathKanBoundary_quotient (r : ℕ) (X : StableModel.{u}) :
+    pointedIteratedPathQuotient r X ≫
+      (Spectra.PointedKanReplacement.unit.app (pointedIteratedPathRealization r X)).right ≫
+      (pointedFullIteratedPathKanBoundary r X).right = kanIteratedPathBoundary r X
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+既存の全単体的な座標同型との照合、内側の零列から全零境界商への自然な点つき比較とその弱同値性、
+可縮 Kan な反復経路から既存の Kan な全零境界商への自然な点つき境界と元の境界の回収まで証明済み。
+homotopy fiber と loop の比較、実際の fiber と反復 S の実現の比較、
+既存の suspension 構造射との照合、正の段の Ω 条件・delooping、
+負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3094 jobs）、公理監査成功（1264 宣言、標準三公理のみ）。追加公理・sorry なし。
