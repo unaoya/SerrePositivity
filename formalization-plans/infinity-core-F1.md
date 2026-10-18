@@ -11420,5 +11420,118 @@ noncomputable def leftStrictTransportMappingEquivalence
     QCatEquivalence (relativeFunctorSpace q p)
       (strictDiagramMappingSpace (leftStrictTransportDiagram p) (leftStrictTransportDiagram q))
 
+def strictDiagramMappingIdentity {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    𝟙_ SSet.{u} ⟶ strictDiagramMappingSpace F F
+
+def strictDiagramMappingComposition {C : Type u} [Category.{u} C]
+    (F G H : C ⥤ SSet.{u}) :
+    strictDiagramMappingSpace F G ⊗ strictDiagramMappingSpace G H ⟶
+      strictDiagramMappingSpace F H
+
+lemma strictDiagramMappingIdentity_comp {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    (λ_ (strictDiagramMappingSpace F G)).inv ≫ strictDiagramMappingIdentity F ▷ _ ≫
+      strictDiagramMappingComposition F F G = 𝟙 _
+
+lemma strictDiagramMappingComposition_id {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    (ρ_ (strictDiagramMappingSpace F G)).inv ≫ _ ◁ strictDiagramMappingIdentity G ≫
+      strictDiagramMappingComposition F G G = 𝟙 _
+
+lemma strictDiagramMappingComposition_assoc {C : Type u} [Category.{u} C]
+    (F G H I : C ⥤ SSet.{u}) :
+    (α_ (strictDiagramMappingSpace F G) (strictDiagramMappingSpace G H)
+      (strictDiagramMappingSpace H I)).inv ≫ strictDiagramMappingComposition F G H ▷ _ ≫
+        strictDiagramMappingComposition F H I =
+      _ ◁ strictDiagramMappingComposition G H I ≫ strictDiagramMappingComposition F G I
+
+lemma strictDiagramMappingHom_ext {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} {A : SSet.{u}} {f g : A ⟶ strictDiagramMappingSpace F G}
+    (h : ∀ c, f ≫ strictDiagramMappingComponent F G c =
+      g ≫ strictDiagramMappingComponent F G c) : f = g
+
+lemma strictDiagramMappingIdentity_component {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    strictDiagramMappingIdentity F ≫ strictDiagramMappingComponent F F c =
+      MonoidalClosed.id (F.obj c)
+
+lemma strictDiagramMappingComposition_component {C : Type u} [Category.{u} C]
+    (F G H : C ⥤ SSet.{u}) (c : C) :
+    strictDiagramMappingComposition F G H ≫ strictDiagramMappingComponent F H c =
+      (strictDiagramMappingComponent F G c ⊗ₘ strictDiagramMappingComponent G H c) ≫
+        MonoidalClosed.comp (F.obj c) (G.obj c) (H.obj c)
+
+def StrictTransportDiagramObject (C : Type u) [Category.{u} C]
+
+instance strictTransportDiagramObject_enrichedCategory (C : Type u) [Category.{u} C] :
+    EnrichedCategory SSet.{u} (StrictTransportDiagramObject C)
+
+instance strictTransportDiagramObject_category (C : Type u) [Category.{u} C] :
+    Category.{u} (StrictTransportDiagramObject C)
+
+instance strictTransportDiagramObject_simplicialCategory (C : Type u) [Category.{u} C] :
+    SimplicialCategory (StrictTransportDiagramObject C)
+
+instance strictTransportDiagramObject_sHom_kanComplex
+    {C : Type u} [Category.{u} C] (F G : StrictTransportDiagramObject C) :
+    KanComplex (SimplicialCategory.sHom F G)
+
+noncomputable def StrictTransportDiagramInfinity (C : Type u) [Category.{u} C] : SSet.{u + 1}
+
+instance strictTransportDiagramInfinity_quasicategory (C : Type u) [Category.{u} C] :
+    Quasicategory (StrictTransportDiagramInfinity C)
+
+def leftStrictTransportImageObject {C : Type u} [Category.{u} C]
+    (p : LeftFibrationObject (nerve C)) : StrictTransportDiagramObject C
+
+lemma leftStrictTransportMappingSpaceMap_component
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (c : C) :
+    leftStrictTransportMappingSpaceMap p q ≫ strictDiagramMappingComponent
+      (leftStrictTransportDiagram p) (leftStrictTransportDiagram q) c =
+      relativeFunctorPostHom (Over.mk (nerveMap (Under.forget c))) (Over.mk p) (Over.mk q)
+
+def leftStrictTransportEnriched {C : Type u} [Category.{u} C] :
+    EnrichedFunctor SSet.{u} (LeftFibrationObject (nerve C)) (StrictTransportDiagramObject C)
+
+noncomputable def leftStrictTransportInfinityMap (C : Type u) [Category.{u} C] :
+    LeftFibrationInfinity (nerve C) ⟶ StrictTransportDiagramInfinity C
+
+lemma leftStrictTransportInfinityMap_isFullyFaithful (C : Type u) [Category.{u} C] :
+    IsFullyFaithful (leftStrictTransportInfinityMap C)
+
+lemma leftStrictTransportInfinityMap_vertex {C : Type u} [Category.{u} C]
+    (p : LeftFibrationObject (nerve C)) :
+    (leftStrictTransportInfinityMap C).app (Opposite.op ⦋0⦌) (coherentNerveVertex p) =
+      coherentNerveVertex (leftStrictTransportImageObject p)
+
+lemma leftStrictTransportInfinityMap_isEssentiallySurjective (C : Type u) [Category.{u} C] :
+    IsEssentiallySurjective (leftStrictTransportInfinityMap C)
+
+lemma leftStrictTransportInfinityMap_isQCatEquivalence (C : Type u) [Category.{u} C] :
+    IsQCatEquivalence (leftStrictTransportInfinityMap C)
+
+noncomputable def leftStrictTransportInfinityEquivalence (C : Type u) [Category.{u} C] :
+    QCatEquivalence (LeftFibrationInfinity (nerve C)) (StrictTransportDiagramInfinity C)
+
+def strictTransportDiagramEvaluationEnriched {C : Type u} [Category.{u} C] (c : C) :
+    EnrichedFunctor SSet.{u} (StrictTransportDiagramObject C) KanObject.{u}
+
+noncomputable def strictTransportDiagramInfinityEvaluation {C : Type u} [Category.{u} C] (c : C) :
+    StrictTransportDiagramInfinity C ⟶ SpaceInfinity.{u}
+
+lemma leftStrictTransportEnriched_evaluate {C : Type u} [Category.{u} C] (c : C) :
+    (leftStrictTransportEnriched (C := C)).comp SSet (strictTransportDiagramEvaluationEnriched c) =
+      relativeFunctorEnrichedEvaluation (Over.mk (nerveMap (Under.forget c)))
+
+lemma leftStrictTransportInfinityMap_evaluate {C : Type u} [Category.{u} C] (c : C) :
+    leftStrictTransportInfinityMap C ≫ strictTransportDiagramInfinityEvaluation c =
+      leftStrictTransportCoherentEvaluation c
+
+lemma leftStrictTransportInfinityMap_evaluate_straightening
+    {C : Type u} [Category.{u} C] (c : C) :
+    leftStrictTransportInfinityMap C ≫ strictTransportDiagramInfinityEvaluation c =
+      leftStraighteningCoherentMap C ≫ evaluateFunctorAt (ULift.up (nerveVertex c))
+
 end SerrePositivity.InfinityCategories
 ```
