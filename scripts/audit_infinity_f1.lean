@@ -387,3 +387,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex_naturality
 #check @SerrePositivity.InfinityCategories.coherentHomComparison
 #check @SerrePositivity.InfinityCategories.coherentHomComparison_app_val
+#check @SerrePositivity.InfinityCategories.maximumFlagPath
+#check @SerrePositivity.InfinityCategories.pathLastMaximum_maximumFlagPath
+#check @SerrePositivity.InfinityCategories.maximumFlagFunctor
+#check @SerrePositivity.InfinityCategories.maximumFlagMap
+#check @SerrePositivity.InfinityCategories.maximumFlagMap_comp_pathLastMaximumMap
+#check @SerrePositivity.InfinityCategories.enrichedFunctor_map_heq
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex_injective
+#check @SerrePositivity.InfinityCategories.coherentHomComparison_mono

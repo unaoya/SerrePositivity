@@ -45,7 +45,7 @@ Kerodon 5.6 の証明（5.3 の「fibration の ∞ 圏」、5.4 の （∞,2）
 ## 3. 現在地と主要宣言
 
 ```lean
-universe u v
+universe u v w
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
@@ -1664,6 +1664,37 @@ lemma coherentHomComparison_app_val {C : Type v} [Category.{u} C]
     (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
     ((coherentHomComparison X Y).app (Opposite.op ⦋n⦌) (ULift.up σ)).val =
       coherentHomComparisonSimplex σ
+
+def maximumFlagPath {n : ℕ} (j : Fin (n + 1)) :
+    Path (ULift.up (0 : Fin (n + 1)).castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))
+
+lemma pathLastMaximum_maximumFlagPath {n : ℕ} (j : Fin (n + 1)) :
+    pathLastMaximum (maximumFlagPath.{u} j) = j
+
+def maximumFlagFunctor (n : ℕ) :
+    ULift.{u} (Fin (n + 1)) ⥤
+      Path (ULift.up (0 : Fin (n + 1)).castSucc : ULift.{u} (Fin (n + 2)))
+        (ULift.up (Fin.last (n + 1)))
+
+def maximumFlagMap (n : ℕ) : (Δ[n] : SSet.{u}) ⟶
+    nerve (Path (ULift.up (0 : Fin (n + 1)).castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1))))
+
+lemma maximumFlagMap_comp_pathLastMaximumMap (n : ℕ) :
+    maximumFlagMap.{u} n ≫ pathLastMaximumMap (0 : Fin (n + 1)) = 𝟙 Δ[n]
+
+lemma enrichedFunctor_map_heq {A : Type w} {C : Type v}
+    [EnrichedCategory SSet.{u} A] [EnrichedCategory SSet.{u} C]
+    {F G : EnrichedFunctor SSet.{u} A C} (h : F = G) (i j : A) :
+    HEq (F.map i j) (G.map i j)
+
+lemma coherentHomComparisonSimplex_injective {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} (n : ℕ) :
+    Function.Injective (coherentHomComparisonSimplex (X := X) (Y := Y) (n := n))
+
+instance coherentHomComparison_mono {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X Y : C) : Mono (coherentHomComparison X Y)
 
 end SerrePositivity.InfinityCategories
 ```
