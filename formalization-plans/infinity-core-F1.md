@@ -12000,5 +12000,33 @@ lemma smallLeftUnstraighteningMap_comp {B D E : SSet.{u}}
         (by rw [Functor.map_comp, Category.assoc, hβ, hα]) =
       smallLeftUnstraighteningMap F G α hα ≫ smallLeftUnstraighteningMap G H β hβ
 
+noncomputable def coherentResolutionParameterizedMap {X Y T : SSet.{u}} (f : X ⊗ T ⟶ Y) :
+    coherentResolutionRightAdjoint.obj X ⊗ T ⟶ coherentResolutionRightAdjoint.obj Y
+
+lemma coherentResolutionParameterizedMap_fst (X T : SSet.{u}) :
+    coherentResolutionParameterizedMap (fst X T) =
+      fst (coherentResolutionRightAdjoint.obj X) T
+
+noncomputable def coherentResolutionEnrichedMap (X Y : SSet.{u}) :
+    (ihom X).obj Y ⟶
+      (ihom (coherentResolutionRightAdjoint.obj X)).obj (coherentResolutionRightAdjoint.obj Y)
+
+noncomputable def coherentResolutionKanEnriched : EnrichedFunctor SSet.{u} KanObject.{u} KanObject.{u}
+
+lemma coherentResolutionParameterizedMap_comparison {X Y T : SSet.{u}} (f : X ⊗ T ⟶ Y) :
+    (coherentResolutionComparison X ▷ T) ≫ coherentResolutionParameterizedMap f =
+      f ≫ coherentResolutionComparison Y
+
+lemma coherentResolutionEnrichedMap_comparison (X Y : SSet.{u}) :
+    (coherentResolutionComparison X ▷ (ihom X).obj Y) ≫
+        uncurry (coherentResolutionEnrichedMap X Y) =
+      uncurry (𝟙 ((ihom X).obj Y)) ≫ coherentResolutionComparison Y
+
+lemma coherentResolutionEnrichedMap_app_comparison (X Y : SSet.{u})
+    {n k : SimplexCategoryᵒᵖ} (η : ((ihom X).obj Y).obj n) (α : n ⟶ k) (x : X.obj k) :
+    (((coherentResolutionEnrichedMap X Y).app n η).app k α)
+        ((coherentResolutionComparison X).app k x) =
+      (coherentResolutionComparison Y).app k (η.app k α x)
+
 end SerrePositivity.InfinityCategories
 ```
