@@ -84,3 +84,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionLeftUnit
 public import SerrePositivity.EInfinity.BarrattEccles.PermutationCompositionValues
 public import SerrePositivity.EInfinity.BarrattEccles.NestedPositions
 public import SerrePositivity.EInfinity.BarrattEccles.PermutationNested
+public import SerrePositivity.EInfinity.BarrattEccles.ParallelPositionValues
+public import SerrePositivity.EInfinity.BarrattEccles.ParallelPositions
+public import SerrePositivity.EInfinity.BarrattEccles.PermutationParallelValues
+public import SerrePositivity.EInfinity.BarrattEccles.PermutationParallel
