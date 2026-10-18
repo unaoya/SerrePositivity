@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceMap
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
+public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
 
 /-!
 概要：inner fibration が右 pinched 写像空間上に誘導する右ファイブレーション。
@@ -216,5 +217,15 @@ lemma pinchedHomMap_vertexFiber_kanComplex {X Y : SSet.{u}} (p : X ⟶ Y) [Inner
       (p.app (Opposite.op ⦋0⦌) x) (p.app (Opposite.op ⦋0⦌) y)) _⦋0⦌) :
     KanComplex (vertexFiber (pinchedHomMap p x y) s) :=
   vertexFiber_kanComplex _ _
+
+/-- 概要：quasicategory 間の inner fibration の右写像空間の射は全ホーンを持ち上げる。
+方針：右写像空間の Kan 性と射の右ファイブレーション性を組み合わせる。
+規約：全ホーンの lifting property を明示し、モデル構造を使わない。
+使われ方：HTT §2.2、Kerodon §4.8.4 の写像空間の相対充填。 -/
+lemma pinchedHomMap_hasLiftingProperty_horn {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [InnerFibration p]
+    (x y : X _⦋0⦌) (n : ℕ) (i : Fin (n + 2)) :
+    HasLiftingProperty (horn (n + 1) i).ι (pinchedHomMap p x y) :=
+  rightFibration_hasLiftingProperty_horn_of_kanComplex _ n i
 
 end SerrePositivity.InfinityCategories

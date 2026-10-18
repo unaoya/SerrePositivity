@@ -4809,6 +4809,105 @@ instance relativeCosliceTarget_quasicategory {K X Y : SSet.{u}}
 
 ```
 
+
+### A3e 続き：相対 Joyal 充填と全ホーンの持ち上げ（2026-10-18）
+
+inner fibration は始域・終域が quasicategory のとき、始域で指定辺が可逆な先頭・末尾の外側ホーンを、指定した標的の単体へ厳密に持ち上げる。Kan 複体間の右ファイブレーションは全てのホーンを持ち上げる。従って quasicategory 間の inner fibration が右 pinched 写像空間上に誘導する射も全ホーンの rlp を持つ。Mathlib の `HomotopicalAlgebra.Fibration` への接続はホーンの rlp という定義だけを使用し、Kan–Quillen モデル構造・弱同値・モデル圏による因子分解は使用しない。同値である Fibration は厳密な切断を持つことも構成した。Core 対象ビルド成功（1624 jobs）、累計748宣言の標準3公理監査成功。未完了：写像空間のホモトピー同値と全ホーンの rlp から fiber の可縮性への移行、充満忠実＋本質的全射による主同値判定、一般の同値による極限の保存・反映。§4 の設計変更はない。
+
+以下は新規14公開宣言の正確な型と全前提。namespace は `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet HomotopicalAlgebra`、`open scoped Simplicial`。最後の KanFibrationTools の型では、Mathlib がホーンの rlp と定義するクラスの scoped instance を有効にする `open SSet.modelCategoryQuillen` を用いる。
+
+RelativeOuterHorn：
+
+```lean
+lemma joinUnion_lift_of_invertible_rightEdge {K X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (q : X ⟶ Y) [InnerFibration q]
+    (K₀ : K.Subcomplex) (T : (joinUnion K₀ (horn 1 1) : SSet.{u}) ⟶ X)
+    (W : join K (Δ[1] : SSet.{u}) ⟶ Y)
+    (hTW : T ≫ q = (joinUnion K₀ (horn 1 1)).ι ≫ W)
+    (he : IsInvertibleEdge (edgeOfSimplex
+      (SSet.yonedaEquiv (joinInr (K₀ : SSet.{u}) Δ[1] ≫
+        joinUnionLeft K₀ (horn 1 1) ≫ T)))) :
+    ∃ L : join K (Δ[1] : SSet.{u}) ⟶ X, (joinUnion K₀ (horn 1 1)).ι ≫ L = T ∧ L ≫ q = W
+
+lemma innerFibration_lift_finalHorn {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (q : X ⟶ Y) [InnerFibration q] (n : ℕ)
+    (σ : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X)
+    (β : (Δ[n + 2] : SSet.{u}) ⟶ Y)
+    (hσq : σ ≫ q = (horn (n + 2) (Fin.last (n + 2))).ι ≫ β)
+    (he : IsInvertibleEdge (edgeOfSimplex
+      (σ.app (Opposite.op ⦋1⦌) (finalHornEdge n)))) :
+    ∃ F : (Δ[n + 2] : SSet.{u}) ⟶ X,
+      (horn (n + 2) (Fin.last (n + 2))).ι ≫ F = σ ∧ F ≫ q = β
+
+```
+
+RelativeOuterHornOp：
+
+```lean
+instance innerFibration_op {X Y : SSet.{u}} (q : X ⟶ Y) [InnerFibration q] :
+    InnerFibration (SSet.opFunctor.map q)
+
+lemma reverseSimplex_injective (X : SSet.{u}) (n : ℕ) :
+    Function.Injective (reverseSimplex (X := X) n)
+
+lemma innerFibration_lift_initialHorn {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (q : X ⟶ Y) [InnerFibration q] (n : ℕ)
+    (σ : (horn (n + 2) 0 : SSet.{u}) ⟶ X)
+    (β : (Δ[n + 2] : SSet.{u}) ⟶ Y)
+    (hσq : σ ≫ q = (horn (n + 2) 0).ι ≫ β)
+    (he : IsInvertibleEdge (edgeOfSimplex
+      (σ.app (Opposite.op ⦋1⦌) (initialHornEdge n)))) :
+    ∃ F : (Δ[n + 2] : SSet.{u}) ⟶ X,
+      (horn (n + 2) 0).ι ≫ F = σ ∧ F ≫ q = β
+
+instance rightFibration_op_leftFibration {X Y : SSet.{u}} (q : X ⟶ Y) [RightFibration q] :
+    LeftFibration (SSet.opFunctor.map q)
+
+lemma rightFibration_liftHorn_one_zero {X Y : SSet.{u}} [Quasicategory Y]
+    (q : X ⟶ Y) [RightFibration q] (a : (horn 1 0 : SSet.{u}) ⟶ X)
+    (b : (Δ[1] : SSet.{u}) ⟶ Y) (sq : CommSq a (horn 1 0).ι q b)
+    (hb : IsInvertibleEdge (edgeOfSimplex (SSet.yonedaEquiv b))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⟶ X, (horn 1 0).ι ≫ F = a ∧ F ≫ q = b
+
+lemma rightFibration_hasLiftingProperty_horn_of_kanComplex {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (q : X ⟶ Y) [RightFibration q]
+    (n : ℕ) (i : Fin (n + 2)) : HasLiftingProperty (horn (n + 1) i).ι q
+
+```
+
+MappingSpaceFibration：
+
+```lean
+lemma pinchedHomMap_hasLiftingProperty_horn {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [InnerFibration p]
+    (x y : X _⦋0⦌) (n : ℕ) (i : Fin (n + 2)) :
+    HasLiftingProperty (horn (n + 1) i).ι (pinchedHomMap p x y)
+
+```
+
+KanFibrationTools：
+
+```lean
+lemma fibration_of_hasLiftingProperty_horn {X Y : SSet.{u}} (q : X ⟶ Y)
+    (h : ∀ (n : ℕ) (i : Fin (n + 2)), HasLiftingProperty (horn (n + 1) i).ι q) :
+    Fibration q
+
+instance fibration_leftFibration {X Y : SSet.{u}} (q : X ⟶ Y) [Fibration q] :
+    LeftFibration q
+
+instance rightFibration_fibration_of_kanComplex {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (q : X ⟶ Y) [RightFibration q] : Fibration q
+
+lemma fibration_exists_section_of_isQCatEquivalence {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [Fibration p]
+    (he : IsQCatEquivalence p) : ∃ s : B ⟶ E, s ≫ p = 𝟙 B
+
+lemma IsQCatEquivalence.functorIsoOfSection {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] {p : E ⟶ B} (he : IsQCatEquivalence p)
+    (s : B ⟶ E) (hs : s ≫ p = 𝟙 B) : Nonempty (FunctorIso (p ≫ s) (𝟙 E))
+
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

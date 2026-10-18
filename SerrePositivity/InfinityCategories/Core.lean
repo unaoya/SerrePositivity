@@ -47,3 +47,9 @@ public import SerrePositivity.InfinityCategories.Core.EquivalencePathVertices
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceFibration
 
 public import SerrePositivity.InfinityCategories.Core.RelativeCoslice
+
+public import SerrePositivity.InfinityCategories.Core.RelativeOuterHorn
+
+public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
+
+public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
