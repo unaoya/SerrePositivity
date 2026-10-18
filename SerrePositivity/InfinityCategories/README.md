@@ -1944,8 +1944,28 @@ resolutionPositiveFace_inclusion_isKanPrecompositionEquivalence {n : ℕ}
 標準単体側にも `standardUpperVertexHomotopy i` を構成した。
 その台の射は解像の区間の切断、変形、最大元の射影の合成で、各単体の各頂点での値は
 `if t r = 0 then σ r else max i (σ r)`。
-標準ホーン・面への制限、この比較を両側の射影に沿って接続する工程、i = 0 の場合、
-ホーンの左 Kan 拡張との同定と一般の解像の比較の同値性は未証明である。
+`StandardUpperStable A i` は標準単体の部分複体 A が変形全体の像を含む条件である。
+`standardSubcomplexUpperHomotopy` はこの条件のもとで同じ部分複体内のホモトピーを与える。
+`standardHorn_upper_stable` は i 以外の欠落頂点の保存でホーンの安定性を証明し、
+`standardPositiveFace_upper_stable` は i ≠ 0 の場合の零頂点を除く面の安定性を証明する。
+両側の変形と面を通る因子分解により、標準ホーン側の面の包含も Kan 標的の比較を満たす。
+
+`resolutionHornProjection i` は旗の各段の最大元の列を取る射を標準ホーンへ制限したもの。
+旗の台で欠ける頂点は最大元の列でも欠けるので、全ての i で定義できる。
+`resolutionHornProjection_positiveFace_square` は零頂点を除く面の F1 の射影と
+ホーンの射影が両側の包含で可換するという厳密な射の等式である。
+確定済みの面の射影の同値性、標準側の面の包含の同値性を合成し、解像側の包含を消去すると次を得る。
+
+```lean
+resolutionHornProjection_isKanPrecompositionEquivalence_of_ne_zero {n : ℕ}
+    (i : Fin (n + 1)) (hi : i ≠ 0) :
+  IsKanPrecompositionEquivalence (resolutionHornProjection.{u} i)
+```
+
+これは任意の Kan 標的 K に対して、標準ホーンから K への内部 Hom から、旗で定義した
+ホーンの模型から K への内部 Hom への前合成が実際の単体的ホモトピー逆を持つことを意味する。
+標的 K の Kan 性と i ≠ 0 以外の充填・比較の仮定を追加していない。
+i = 0 の場合、ホーンの左 Kan 拡張との同定と一般の解像の比較の同値性は未証明である。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

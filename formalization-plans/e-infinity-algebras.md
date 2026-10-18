@@ -224,11 +224,14 @@ i ≠ 0 では終端の射が零頂点を除く面を通る厳密な因子分解
 Kan 標的の前合成の実際のホモトピー同値性を使い、向き付きホモトピー不変性と二対六則を証明した。
 `resolutionPositiveFace_inclusion_isKanPrecompositionEquivalence` は i ≠ 0 のホーンの旗の模型に
 零頂点を除く旗の面を含める射について、この条件を証明する。
-標準単体上の最大値へのホモトピーも構成済み。標準ホーン側の制限と比較の接続、i = 0 は未完了。
+標準ホーン側も同じ面の包含の比較を証明し、面の射影の可換正方形で解像側へ接続した。
+`resolutionHornProjection_isKanPrecompositionEquivalence_of_ne_zero` は i ≠ 0 のホーンの射影が
+任意の Kan 標的への写像空間で実際のホモトピー同値を与えることを証明する。
+i = 0、ホーンの左 Kan 拡張との同定、一般の解像の比較の同値性は未証明。
 判定への移送や片側の逆の性質だけでは、充満忠実性やホモトピー同値を証明したとは数えない。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開606宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開625宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。

@@ -112,4 +112,16 @@ lemma resolutionHornUpperMap_isKanPrecompositionEquivalence {n : ℕ} (i : Fin (
   (isKanPrecompositionEquivalence_iff_of_homotopy (resolutionHornInsertHomotopy i)).mp
     (isKanPrecompositionEquivalence_id _)
 
+/-- 概要：前の射と合成が Kan 標的の前合成の同値条件を満たせば後の射も満たす。
+方針：逆順の前合成に同値の右消去を適用する。
+規約：元の三つの単体集合に充填性を仮定しない。
+使われ方：Kerodon Proposition 4.6.7.23 の面を通じたホーンの射影の同値の検出。 -/
+lemma isKanPrecompositionEquivalence_cancel_left {A B C : SSet.{u}}
+    {f : A ⟶ B} {g : B ⟶ C} (hf : IsKanPrecompositionEquivalence f)
+    (hfg : IsKanPrecompositionEquivalence (f ≫ g)) : IsKanPrecompositionEquivalence g := by
+  intro K hK
+  have h := hfg K
+  rw [pre_map, NatTrans.comp_app] at h
+  exact ((hf K).isQCatEquivalence.cancel_right h.isQCatEquivalence).isSimplicialHomotopyEquivalence
+
 end SerrePositivity.InfinityCategories.DoldKanComparison
