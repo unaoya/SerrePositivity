@@ -36,3 +36,4 @@ public import SerrePositivity.KST.ProExcision.KoszulCoefficientSwap
 public import SerrePositivity.KST.ProExcision.SpectralObjectMaps
 public import SerrePositivity.KST.ProExcision.FilteredSpectralMaps
 public import SerrePositivity.KST.ProExcision.FilteredTowers
+public import SerrePositivity.KST.ProExcision.SpectralObjectCyclesMaps

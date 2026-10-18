@@ -707,3 +707,36 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.koszulPageTowerLevelIso
 #print axioms SerrePositivity.KST.ProExcision.koszulPageTowerLevelIso
+
+#check @SerrePositivity.KST.ProExcision.spectralCyclesMap
+#print axioms SerrePositivity.KST.ProExcision.spectralCyclesMap
+
+#check @SerrePositivity.KST.ProExcision.spectralCyclesMap_iCycles
+#print axioms SerrePositivity.KST.ProExcision.spectralCyclesMap_iCycles
+
+#check @SerrePositivity.KST.ProExcision.spectralOpcyclesMap
+#print axioms SerrePositivity.KST.ProExcision.spectralOpcyclesMap
+
+#check @SerrePositivity.KST.ProExcision.spectralOpcyclesMap_pOpcycles
+#print axioms SerrePositivity.KST.ProExcision.spectralOpcyclesMap_pOpcycles
+
+#check @SerrePositivity.KST.ProExcision.spectralCyclesMap_cyclesIso_inv
+#print axioms SerrePositivity.KST.ProExcision.spectralCyclesMap_cyclesIso_inv
+
+#check @SerrePositivity.KST.ProExcision.spectralPageMap_πE
+#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_πE
+
+#check @SerrePositivity.KST.ProExcision.spectralOpcyclesMap_opcyclesIso_hom
+#print axioms SerrePositivity.KST.ProExcision.spectralOpcyclesMap_opcyclesIso_hom
+
+#check @SerrePositivity.KST.ProExcision.spectralPageMap_ιE
+#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_ιE
+
+#check @SerrePositivity.KST.ProExcision.spectralCyclesMap_toCycles
+#print axioms SerrePositivity.KST.ProExcision.spectralCyclesMap_toCycles
+
+#check @SerrePositivity.KST.ProExcision.spectralΨMap_naturality
+#print axioms SerrePositivity.KST.ProExcision.spectralΨMap_naturality
+
+#check @SerrePositivity.KST.ProExcision.spectralPageMap_d
+#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_d
