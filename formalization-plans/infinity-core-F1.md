@@ -2090,5 +2090,57 @@ lemma coherentPinchedFlagMap_comparison {C : Type v} [Category.{u} C]
     coherentPinchedFlagMap (coherentHomComparisonPinchedSimplex σ) =
       coherentResolutionProjection n ≫ SSet.yonedaEquiv.symm σ
 
+lemma pathBeforeLast_mono {n : ℕ} {i : Fin (n + 1)}
+    {P Q : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))} (h : P.I ⊆ Q.I) :
+    pathBeforeLast P ⊆ pathBeforeLast Q
+
+noncomputable def pathFlagResolution {n d : ℕ} {i : Fin (n + 1)}
+    (P : Fin (d + 1) ⥤ Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) : CoherentResolutionFlag n d
+
+lemma pathFlagResolution_maxAt {n d : ℕ} {i : Fin (n + 1)}
+    (P : Fin (d + 1) ⥤ Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) (k : Fin (d + 1)) :
+    (pathFlagResolution P).maxAt k = pathLastMaximum (P.obj k)
+
+lemma pathFlagResolution_pullback {n d e : ℕ} {i : Fin (n + 1)}
+    (P : Fin (d + 1) ⥤ Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) (α : Fin (e + 1) →o Fin (d + 1)) :
+    (pathFlagResolution P).pullback α = pathFlagResolution (α.toFunctor ⋙ P)
+
+noncomputable def pathResolutionMap {n : ℕ} (i : Fin (n + 1)) :
+    nerve (Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) ⟶ coherentResolutionSimplex n
+
+lemma CoherentResolutionFlag.pathBeforeLast_toPath {n d : ℕ}
+    (F : CoherentResolutionFlag n d) (k : Fin (d + 1)) :
+    pathBeforeLast (F.toPath.{u} k) = F.sets k
+
+lemma CoherentResolutionFlag.pathFlagResolution_pathFlag {n d : ℕ}
+    (F : CoherentResolutionFlag n d) : pathFlagResolution F.pathFlag.{u} = F
+
+lemma pathResolutionMap_projection {n : ℕ} (i : Fin (n + 1)) :
+    pathResolutionMap.{u} i ≫ coherentResolutionProjection n = pathLastMaximumMap i
+
+lemma pathFlagResolution_comp {n d : ℕ} {i j : Fin (n + 1)}
+    (P : Fin (d + 1) ⥤ Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up j.castSucc))
+    (Q : Fin (d + 1) ⥤ Path (ULift.up j.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) :
+    pathFlagResolution (P.prod' Q ⋙ compFunctor
+      (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
+      ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩) = pathFlagResolution Q
+
+lemma pathResolutionMap_comp {n : ℕ} (i j : Fin (n + 1)) (d : SimplexCategoryᵒᵖ)
+    (P : (nerve (Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up j.castSucc))).obj d)
+    (Q : (nerve (Path (ULift.up j.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1))))).obj d) :
+    (pathResolutionMap i).app d
+      ((eComp SSet (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
+        ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩).app d (P, Q)) =
+          (pathResolutionMap j).app d Q
+
 end SerrePositivity.InfinityCategories
 ```

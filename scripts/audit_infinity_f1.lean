@@ -488,3 +488,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate_pullback
 #check @SerrePositivity.InfinityCategories.coherentPinchedFlagMap
 #check @SerrePositivity.InfinityCategories.coherentPinchedFlagMap_comparison
+#check @SerrePositivity.InfinityCategories.pathBeforeLast_mono
+#check @SerrePositivity.InfinityCategories.pathFlagResolution
+#check @SerrePositivity.InfinityCategories.pathFlagResolution_maxAt
+#check @SerrePositivity.InfinityCategories.pathFlagResolution_pullback
+#check @SerrePositivity.InfinityCategories.pathResolutionMap
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pathBeforeLast_toPath
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pathFlagResolution_pathFlag
+#check @SerrePositivity.InfinityCategories.pathResolutionMap_projection
+#check @SerrePositivity.InfinityCategories.pathFlagResolution_comp
+#check @SerrePositivity.InfinityCategories.pathResolutionMap_comp
