@@ -157,6 +157,8 @@ simplicialNerve_quasicategory (C : Type u)
 具体的な核の共通部分との同定と正次数の最上位評価の線形同値まで実装済み。
 `standardMoorePositiveIso x y n` は標準模型の Moore 正規化の次数 n+1 の項と
 `(homObject R D x y).X (-(n+1 : ℤ))` との同型（`[CommRing R] [DGCategory R D]`）。
-零次数と微分との両立は残る。公開81宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。
+`standardMooreZeroIso x y` は零項と `(connectiveHomComplex x y).X 0` との同型。
+全次数の各項の同型を得たが微分との両立は残る。公開87宣言の正確な型・前提・公理監査は
+`scripts/audit_dold_kan_comparison.lean`。
 残りは実際の chain map・Mathlib Γ との同定、C_Δ の AW 合成、
 比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。

@@ -1358,8 +1358,12 @@ namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{
 最上位評価は全射でもあり、`normalizedTopEquiv` は線形同値となる。
 `standardMoorePositiveIso x y n` は実際の Mathlib Moore 正規化の次数 n+1 の項と
 H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
-微分との両立・零次数の比較と Mathlib Γ 側への接続はまだ残る。
-対象・集約ビルドは3545件で成功し、公開81宣言の型と公理監査は標準三公理のみ。
+`standardZeroEquiv` は標準零単体と閉次数零の元の R 線形同値であり、
+`standardMooreZeroIso` は実際の Moore 正規化の零項と切断 Hom の零項との同型である。
+正次数の `standardMoorePositiveIso` と合わせて全次数の各項の同型を得た。
+微分との両立と Mathlib Γ 側への接続はまだ残る。
+対象・集約ビルドは3546件で成功し、公開87宣言の型と公理監査は標準三公理のみ。
+正確な型と前提は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 γ1.5b 全体は未完了。残りは標準成分模型と実際の chain map・Mathlib Γ との同定、AW 豊穣合成と
 通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。

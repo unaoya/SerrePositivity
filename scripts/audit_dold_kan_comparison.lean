@@ -143,6 +143,24 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalized_component_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalized_component_zero
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroEval
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroEval
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroEval_injective
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroEval_injective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroLift
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroLift
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroEval_surjective
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroEval_surjective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroEquiv
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardZeroEquiv
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreZeroIso
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreZeroIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign
 
