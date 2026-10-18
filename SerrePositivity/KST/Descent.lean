@@ -110,6 +110,7 @@ public import SerrePositivity.KST.Descent.AffineCechDescent
 public import SerrePositivity.KST.Descent.CechPullback
 public import SerrePositivity.KST.Descent.CechBaseChange
 public import SerrePositivity.KST.Descent.CechBaseChangeOver
+public import SerrePositivity.KST.Descent.ObservedTransfer
 public import SerrePositivity.KST.Descent.DoubleCechGeometry
 public import SerrePositivity.KST.Descent.DoubleCechNaturality
 public import SerrePositivity.KST.Descent.CechHomotopyIndex
@@ -191,6 +192,8 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 任意の図式関手での像と全次数観測の同型への移行も公開する。
 底変換後の係数図式と実際の底変換被覆の Čech 図式の自然同型を構成し、
 増強先を含む矢の圏の同型を経て、この実際の被覆からの transfer 還元を公開する。
+元の値域の線形性を使わず、実際の図式関手の像における観測後の rank 公式で
+全次数ごとに正規化する代替経路も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。
