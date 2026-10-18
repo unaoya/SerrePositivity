@@ -1230,5 +1230,32 @@ lemma coherentNerveArrowData_reconstruct {C : Type v} [Category.{u} C]
 noncomputable def coherentNerveArrowDataEquiv (C : Type v) [Category.{u} C]
     [SimplicialCategory C] : (SimplicialNerve C) _⦋1⦌ ≃ (Σ X Y : C, X ⟶ Y)
 
+lemma coherentNerveEdge_source {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} (e : (SimplicialNerve C).Edge (coherentNerveVertex X)
+      (coherentNerveVertex Y)) : (coherentNerveArrowData e.edge).1 = X
+
+lemma coherentNerveEdge_target {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} (e : (SimplicialNerve C).Edge (coherentNerveVertex X)
+      (coherentNerveVertex Y)) : (coherentNerveArrowData e.edge).2.1 = Y
+
+noncomputable def coherentNerveEdgeToHom {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C}
+    (e : (SimplicialNerve C).Edge (coherentNerveVertex X) (coherentNerveVertex Y)) : X ⟶ Y
+
+lemma coherentNerveEdgeToHom_edge {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} (f : X ⟶ Y) : coherentNerveEdgeToHom (coherentNerveEdge f) = f
+
+lemma arrowData_transport {C : Type v} [Category.{u} C] {X Y : C}
+    (a : Σ A B : C, A ⟶ B) (hX : a.1 = X) (hY : a.2.1 = Y) :
+    (⟨X, Y, eqToHom hX.symm ≫ a.2.2 ≫ eqToHom hY⟩ : Σ A B : C, A ⟶ B) = a
+
+lemma coherentNerveEdge_hom {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} (e : (SimplicialNerve C).Edge (coherentNerveVertex X)
+      (coherentNerveVertex Y)) : coherentNerveEdge (coherentNerveEdgeToHom e) = e
+
+noncomputable def coherentNerveEdgeEquiv {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] (X Y : C) :
+    (SimplicialNerve C).Edge (coherentNerveVertex X) (coherentNerveVertex Y) ≃ (X ⟶ Y)
+
 end SerrePositivity.InfinityCategories
 ```

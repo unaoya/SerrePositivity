@@ -59,3 +59,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
 public import SerrePositivity.InfinityCategories.F1.CoherentEdges
 public import SerrePositivity.InfinityCategories.F1.CosliceFiberVertices
 public import SerrePositivity.InfinityCategories.F1.CoherentArrowData
+public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv

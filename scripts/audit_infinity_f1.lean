@@ -302,3 +302,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentOneHom_map_constant
 #check @SerrePositivity.InfinityCategories.coherentNerveArrowData_reconstruct
 #check @SerrePositivity.InfinityCategories.coherentNerveArrowDataEquiv
+#check @SerrePositivity.InfinityCategories.coherentNerveEdge_source
+#check @SerrePositivity.InfinityCategories.coherentNerveEdge_target
+#check @SerrePositivity.InfinityCategories.coherentNerveEdgeToHom
+#check @SerrePositivity.InfinityCategories.coherentNerveEdgeToHom_edge
+#check @SerrePositivity.InfinityCategories.arrowData_transport
+#check @SerrePositivity.InfinityCategories.coherentNerveEdge_hom
+#check @SerrePositivity.InfinityCategories.coherentNerveEdgeEquiv
