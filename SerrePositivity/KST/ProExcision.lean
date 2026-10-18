@@ -161,3 +161,6 @@ public import SerrePositivity.KST.ProExcision.ChainHomotopyCylinder
 public import SerrePositivity.KST.ProExcision.IntervalComparisonConstants
 public import SerrePositivity.KST.ProExcision.CylinderAWTerms
 public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluationChainNaturality
+public import SerrePositivity.KST.ProExcision.CylinderAWEndpoints
+public import SerrePositivity.KST.ProExcision.NormalizedChainHomotopyReconstruction
+public import SerrePositivity.KST.ProExcision.ChainHomotopyCylinderNaturality

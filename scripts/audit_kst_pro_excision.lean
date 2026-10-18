@@ -2769,3 +2769,42 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.chainHomotopyInterval_naturality
 #print axioms SerrePositivity.KST.ProExcision.chainHomotopyInterval_naturality
+
+#check @SerrePositivity.KST.ProExcision.awFront_last
+#print axioms SerrePositivity.KST.ProExcision.awFront_last
+
+#check @SerrePositivity.KST.ProExcision.cylinderAWTerm_constant_last
+#print axioms SerrePositivity.KST.ProExcision.cylinderAWTerm_constant_last
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_constant
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_constant
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_endpoint₀
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_endpoint₀
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_endpoint₁
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_endpoint₁
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderMap_endpoint₀
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderMap_endpoint₀
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderMap_endpoint₁
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderMap_endpoint₁
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_endpoint₀
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_endpoint₀
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_endpoint₁
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_endpoint₁
+
+#check @SerrePositivity.KST.ProExcision.LinearizedHomotopy.ofNormalizedChainHomotopy
+#print axioms SerrePositivity.KST.ProExcision.LinearizedHomotopy.ofNormalizedChainHomotopy
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderMap_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderMap_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_naturality
