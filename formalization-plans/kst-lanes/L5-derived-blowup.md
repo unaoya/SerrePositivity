@@ -7,7 +7,10 @@ O(1) の単元 cocycle、Koszul 生成加群の可逆変換と cocycle を対象
 変換は外積代数全体へ延長し、収縮微分の平方零・変換との可換性を証明した。
 例外因子の列と全 a_j の列の可逆基底変換、外積への延長と微分適合も対象ビルド済み。
 U_i・E∩U_i・D(n)∩U_i の underlying Koszul 複体と U_i の次数境界を構成済み。
-整数次数付き dg 代数への装備、外積模型と既存反復 cone 模型の比較、有限列挙の順序交換、
+外積の次数低下・平方零から自然数 chain 複体と整数 cochain 複体を構成済み。
+微分に適合する生成元写像を複体の射・同型へ延長し、チャートと例外因子に特殊化済み。
+同次左因子に対する graded Leibniz 則も証明済み。
+整数次数付き複体の乗法を chain map として装備する工程、外積模型と既存反復 cone 模型の比較、有限列挙の順序交換、
 普遍チャートと L7 の古典 blowup の同定は未実装であり、L5b 全体は未完了。
 L5c〜L5f は未実装。完成は各工程の構成・比較・対象ビルドと全宣言公理監査が揃った時点。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -98,14 +101,24 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `thickeningChartSequence`・`thickeningChartComplex`・`derivedChartComplex_isZero_X_pos/lt` | ChartComplexes | 対象ビルド済み |
 | `exceptionalGeneratorEquiv`・`exceptionalGeneratorMap_differential` | ExceptionalBasis | 対象ビルド済み |
 | `exceptionalExteriorEquiv`・`exceptionalExteriorEquiv_differential` | ExceptionalBasis | 対象ビルド済み |
+| `exteriorContraction_zero_degree`・`exteriorContraction_mem_degree` | ExteriorGrading | 対象ビルド済み |
+| `exteriorDegreeDifferential`・`exteriorDegreeDifferential_sq` | ExteriorGrading | 対象ビルド済み |
+| `exteriorKoszulChain`・`exteriorKoszulCochain`・`exteriorKoszulCochainXIso` | ExteriorComplex | 対象ビルド済み |
+| `exteriorMap_mem_degree`・`exteriorDegreeMap`・`exteriorContraction_map` | ExteriorDegreeMap | 対象ビルド済み |
+| `exteriorKoszulChainMap`・`exteriorKoszulCochainMap`・`exteriorKoszulChainMap_comp` | ExteriorComplexMap | 対象ビルド済み |
+| `exteriorKoszulChainIso`・`exteriorKoszulCochainIso` | ExteriorComplexIso | 対象ビルド済み |
+| `chartExteriorCochainIso`・`exceptionalExteriorCochainIso` | ChartCochainMaps | 対象ビルド済み |
+| `exteriorContraction_mul` | ExteriorLeibniz | 対象ビルド済み |
 
-`ChartExterior` は総外積代数であり、整数次数の構造は未装備。
+`ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
+積を `cochainTensor` からの chain map として装備する工程は未完了。
 `derivedChartComplex` は既存の反復 cone 複体であり、両模型の比較同型はまだない。
 この二つを合わせて「導来チャート cdga の実装済み」とは扱わない。
-所有モジュールの全118定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全168定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は外積の次数分解と収縮の次数低下を証明し、cochain の次数−nに
-第n外積を置く複体を構成する。その後に既存反復 cone 模型との比較を行う。
+次の実装単位は各項から総外積への単射とその微分への適合性を構成し、
+同次積と Leibniz 則から `cochainTensor` 上の積を装備する。
+その後に既存反復 cone 模型との比較を行う。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
 ## 保存単位の検査
