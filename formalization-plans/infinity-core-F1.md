@@ -5133,5 +5133,85 @@ instance relativeJoin_fst_stdSimplex_mono {X Y : SSet.{u}} {n : ℕ}
     (f : X ⟶ (Δ[n] : SSet.{u})) (g : Y ⟶ (Δ[n] : SSet.{u})) :
     Mono (pullback.fst (joinMap f g) (joinDiagonal Δ[n]))
 
+lemma join_prefix_mem_boundary {Y : SSet.{u}} {m d : ℕ} (c : Fin (d + 2))
+    (a : (Δ[m] : SSet.{u}) _⦋d⦌) (b : Y _⦋d⦌)
+    (h : ∀ i : Fin (d + 1), i.val < c.val → a i ≠ Fin.last m) :
+    (⟨c, Join.augMap Δ[m] (Join.prefixIncl (d + 1) c.val
+          (Nat.le_of_lt_succ c.isLt)) a,
+        Join.augMap Y (Join.suffixIncl (d + 1) c.val
+          (Nat.le_of_lt_succ c.isLt)) b⟩ : Join.Simplex Δ[m] Y d) ∈
+      (joinSubcomplexLeft (boundary m) Y).obj (Opposite.op ⦋d⦌)
+
+lemma relativeJoinPrism_fst_app {X Y : SSet.{u}} (f : X ⟶ Y) (d : ℕ)
+    (t : (Δ[1] : SSet.{u}) _⦋d⦌) (a : X _⦋d⦌) :
+    (pullback.fst (joinMap f (𝟙 Y)) (joinDiagonal Y)).app (Opposite.op ⦋d⦌)
+        ((relativeJoinPrism f).app (Opposite.op ⦋d⦌) (t, a)) =
+      (joinCylinderMap X Y).app (Opposite.op ⦋d⦌) ((a, t), f.app _ a)
+
+lemma relativeJoinPrism_mem_boundary_of_no_last_zero {Y : SSet.{u}} {m d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) (t : (Δ[1] : SSet.{u}) _⦋d⦌)
+    (a : (Δ[m] : SSet.{u}) _⦋d⦌)
+    (h : ∀ i : Fin (d + 1), (t i).val = 0 → a i ≠ Fin.last m) :
+    (relativeJoinPrism f).app (Opposite.op ⦋d⦌) (t, a) ∈ Set.range
+      ((relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f)
+        (boundary m).ι rfl).app
+          (Opposite.op ⦋d⦌))
+
+noncomputable def relativeJoinPrismShuffle (m : ℕ) (k : Fin (m + 1)) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]) _⦋m + 1⦌
+
+lemma relativeJoinPrismShuffle_no_last_zero (m : ℕ) (k : Fin (m + 1))
+    (hk : k < Fin.last m) (i : Fin (m + 2))
+    (hi : ((relativeJoinPrismShuffle.{u} m k).1 i).val = 0) :
+    (relativeJoinPrismShuffle.{u} m k).2 i ≠ Fin.last m
+
+lemma relativeJoinPrismShuffle_mem_boundary {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) (k : Fin (m + 1)) (hk : k < Fin.last m) :
+    (relativeJoinPrism f).app (Opposite.op ⦋m + 1⦌) (relativeJoinPrismShuffle.{u} m k) ∈
+      Set.range ((relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f)
+        (boundary m).ι rfl).app (Opposite.op ⦋m + 1⦌))
+
+noncomputable def relativeJoinPrismShuffleBoundaryLift {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) (k : Fin (m + 1)) (hk : k < Fin.last m) :
+    (Δ[m + 1] : SSet.{u}) ⟶ relativeJoin ((boundary m).ι ≫ f) (𝟙 Y)
+
+lemma relativeJoinPrismShuffleBoundaryLift_comp {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) (k : Fin (m + 1)) (hk : k < Fin.last m) :
+    relativeJoinPrismShuffleBoundaryLift f k hk ≫
+        relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f) (boundary m).ι rfl =
+      SSet.yonedaEquiv.symm (relativeJoinPrismShuffle.{u} m k) ≫ relativeJoinPrism f
+
+noncomputable def relativeJoinPrismInitial (m : ℕ) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]).Subcomplex
+
+noncomputable def relativeJoinPrismPenultimate (m : ℕ) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]).Subcomplex
+
+lemma relativeJoinPrismInitial_le_penultimate (m : ℕ) :
+    relativeJoinPrismInitial.{u} m ≤ relativeJoinPrismPenultimate m
+
+lemma relativeJoinPrismPenultimate_le_boundary_preimage {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    relativeJoinPrismPenultimate m ≤
+      (Subcomplex.range (relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f)
+        (boundary m).ι rfl)).preimage (relativeJoinPrism f)
+
+lemma relativeJoinPrismPenultimate_range_le {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    Subcomplex.range ((relativeJoinPrismPenultimate m).ι ≫ relativeJoinPrism f) ≤
+      Subcomplex.range (relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f)
+        (boundary m).ι rfl)
+
+noncomputable def relativeJoinPrismPenultimateBoundaryLift {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    (relativeJoinPrismPenultimate m : SSet.{u}) ⟶
+      relativeJoin ((boundary m).ι ≫ f) (𝟙 Y)
+
+lemma relativeJoinPrismPenultimateBoundaryLift_comp {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    relativeJoinPrismPenultimateBoundaryLift f ≫
+        relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f) (boundary m).ι rfl =
+      (relativeJoinPrismPenultimate m).ι ≫ relativeJoinPrism f
+
 end SerrePositivity.InfinityCategories
 ```

@@ -227,3 +227,6 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderGluing
 public import SerrePositivity.InfinityCategories.F1.JoinDiagonalEndpoint
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinEmpty
 public import SerrePositivity.InfinityCategories.F1.JoinDiagonalStdSimplex
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismBoundary
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismShuffle
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismPenultimate
