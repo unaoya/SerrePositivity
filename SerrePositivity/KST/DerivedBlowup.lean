@@ -259,3 +259,5 @@ public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistActionComponen
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistActionCoherence
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDerivedTwistComponents
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDerivedTwistCoherence
+public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeDerivedEvaluation
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistEquivalence
