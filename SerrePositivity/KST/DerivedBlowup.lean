@@ -116,3 +116,10 @@ public import SerrePositivity.KST.DerivedBlowup.RestrictionIdentity
 public import SerrePositivity.KST.DerivedBlowup.FreeExteriorScalarMap
 public import SerrePositivity.KST.DerivedBlowup.FreeKoszulScalarDGFunctor
 public import SerrePositivity.KST.DerivedBlowup.FreeKoszulScalarComposition
+public import SerrePositivity.KST.DerivedBlowup.FreeExteriorScalarNaturality
+public import SerrePositivity.KST.DerivedBlowup.FreeKoszulScalarNaturality
+public import SerrePositivity.KST.DerivedBlowup.ChartBasisScalarNaturality
+public import SerrePositivity.KST.DerivedBlowup.ChartScalarDGFunctor
+public import SerrePositivity.KST.DerivedBlowup.ChartScalarNormalization
+public import SerrePositivity.KST.DerivedBlowup.ChartDGScalarNaturality
+public import SerrePositivity.KST.DerivedBlowup.ChartScalarComposition

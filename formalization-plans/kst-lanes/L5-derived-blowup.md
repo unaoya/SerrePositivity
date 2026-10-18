@@ -29,7 +29,10 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 係数制限の合成・恒等比較を dg 関手として構成し、三段階の結合整合性を証明済み。
 自由 Koszul 模型の環射に沿う dg 関手、その Hom と総外積の係数変更の一致、
 二段の合成律と恒等律を証明済み。
-これらとチャートの基底変換を結ぶ自然性、および coherent な降下模型の組立ては未完了。
+自由生成加群の変換と dg 係数変更の自然性を証明済み。
+チャート基底変換行列の係数自然性、座標と微分の移送を含むチャート dg 係数変更、
+その合成律・恒等律、チャート基底変換との dg 自然性を証明済み。
+全有限重なりの環射への適用と、coherent な降下模型の組立ては未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -218,6 +221,13 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `freeExteriorScalarMap`・生成元・係数公式・合成律・恒等律 | FreeExteriorScalarMap | 総外積上の係数変更の実際の射とその関手性 |
 | `freeKoszulScalarDGFunctor`・`freeKoszulScalarDGFunctor_inclusion` | FreeKoszulScalarDGFunctor | 環射に沿う自由 Koszul dg 関手と総外積への包含公式 |
 | `freeKoszulScalarDGFunctor_comp`・`freeKoszulScalarDGFunctor_id` | FreeKoszulScalarComposition | 係数制限の標準比較を明示した dg 係数変更の合成律・恒等律 |
+| `freeGeneratorScalarLinearMap`・`freeExteriorScalarMap_natural` | FreeExteriorScalarNaturality | 半線形係数変更と総外積上の生成元変換の自然性 |
+| `freeKoszulScalarDGFunctor_natural` | FreeKoszulScalarNaturality | 微分を保つ自由生成元変換の dg 係数自然性 |
+| `normalizeCoordinates_scalarMap`・`koszulGeneratorMap_scalarMap` | ChartBasisScalarNaturality | 規格化座標と可逆 Koszul 基底変換行列の係数自然性 |
+| `chartScalarDifferential_eq`・`chartScalarDGFunctor`・包含公式 | ChartScalarDGFunctor | 微分移送を含む実際のチャート模型間の dg 係数変更 |
+| `chartScalarNormalizedDGFunctor`・包含公式 | ChartScalarNormalization | 規格化と係数変更の順序を比較した dg 関手 |
+| `chartExteriorDGFunctor_scalar_natural` | ChartDGScalarNaturality | チャートの可逆基底変換と dg 係数変更の可換図式 |
+| `chartScalarDGFunctor_comp`・`chartScalarDGFunctor_id` | ChartScalarComposition | 実際のチャート dg 係数変更の合成律・恒等律 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -268,12 +278,16 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 三段階の係数制限比較の結合整合性を証明済み。
 自由 Koszul の係数変更 dg 関手は総外積上の係数変更と一致し、
 標準制限比較を挟んだ二段の合成律と恒等律を証明済み。
-チャートの可逆基底変換との自然性と、coherent な降下模型の組立ては未完了。
+自由生成元変換の係数変更との自然性を総外積・dg 関手の各段階で証明済み。
+チャートの具体的な可逆基底変換も係数変更と可換であり、規格化座標・微分の移送を
+明示した dg 自然性の可換四角形を構成済み。
+実際の座標表示のチャート dg 係数変更の合成律・恒等律も証明済み。
+全有限重なりの係数環射への適用と、coherent な降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全1226定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1266定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は自由 Koszul の係数変更とチャート遷移の基底変換の自然性。
+次の実装単位は全有限重なりの環射に沿う dg 遷移と、その恒等・合成の整合性。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
