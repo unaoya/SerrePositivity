@@ -293,3 +293,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cosliceFiberVertexToEdge
 #check @SerrePositivity.InfinityCategories.edgeToCosliceFiberVertex
 #check @SerrePositivity.InfinityCategories.cosliceFiberVertexEquiv
+#check @SerrePositivity.InfinityCategories.coherentOnePath
+#check @SerrePositivity.InfinityCategories.coherentNerveArrowData
+#check @SerrePositivity.InfinityCategories.coherentNerveArrowData_of_arrow
+#check @SerrePositivity.InfinityCategories.coherentOnePath_subsingleton
+#check @SerrePositivity.InfinityCategories.coherentOneHom_simplex_constant
+#check @SerrePositivity.InfinityCategories.coherentOne_eId_epi
+#check @SerrePositivity.InfinityCategories.coherentOneHom_map_constant
+#check @SerrePositivity.InfinityCategories.coherentNerveArrowData_reconstruct
+#check @SerrePositivity.InfinityCategories.coherentNerveArrowDataEquiv

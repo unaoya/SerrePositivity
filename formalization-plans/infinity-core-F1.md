@@ -1195,5 +1195,40 @@ def cosliceFiberVertexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) :
     (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋0⦌ ≃
       X.Edge x y
 
+def coherentOnePath : SimplicialThickening.Path
+    (ULift.up (0 : Fin 2) : ULift.{u} (Fin 2)) (ULift.up (1 : Fin 2))
+
+noncomputable def coherentNerveArrowData {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] (s : (SimplicialNerve C) _⦋1⦌) : Σ X Y : C, X ⟶ Y
+
+lemma coherentNerveArrowData_of_arrow {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} (f : X ⟶ Y) :
+    coherentNerveArrowData
+      ((nerveToCoherent C).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)) = ⟨X, Y, f⟩
+
+instance coherentOnePath_subsingleton (i j : ULift.{u} (Fin 2)) :
+    Subsingleton (SimplicialThickening.Path i j)
+
+lemma coherentOneHom_simplex_constant (i j : ULift.{u} (Fin 2)) (n : ℕ)
+    (P : (nerve (SimplicialThickening.Path i j)) _⦋n⦌) :
+    P = PinchedHom.constant (ComposableArrows.mk₀ (P.obj 0)) n
+
+lemma coherentOne_eId_epi (o : SimplicialThickening (ULift.{u} (Fin 2))) :
+    Epi (eId SSet o)
+
+lemma coherentOneHom_map_constant {X : SSet.{u}} (i j : ULift.{u} (Fin 2))
+    (f : nerve (SimplicialThickening.Path i j) ⟶ X) (n : ℕ)
+    (P : (nerve (SimplicialThickening.Path i j)) _⦋n⦌) :
+    f.app (Opposite.op ⦋n⦌) P =
+      PinchedHom.constant (f.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (P.obj 0))) n
+
+lemma coherentNerveArrowData_reconstruct {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] (s : (SimplicialNerve C) _⦋1⦌) :
+    (nerveToCoherent C).app (Opposite.op ⦋1⦌)
+      (ComposableArrows.mk₁ (coherentNerveArrowData s).2.2) = s
+
+noncomputable def coherentNerveArrowDataEquiv (C : Type v) [Category.{u} C]
+    [SimplicialCategory C] : (SimplicialNerve C) _⦋1⦌ ≃ (Σ X Y : C, X ⟶ Y)
+
 end SerrePositivity.InfinityCategories
 ```
