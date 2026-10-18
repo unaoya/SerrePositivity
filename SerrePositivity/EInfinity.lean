@@ -29,3 +29,4 @@ public import SerrePositivity.EInfinity.Operad.TensorFamilySplitTwoRecursion
 public import SerrePositivity.EInfinity.Operad.TensorFamilyLastSwapCompatibility
 public import SerrePositivity.EInfinity.Operad.CompositionLastSwap
 public import SerrePositivity.EInfinity.Operad.CompositionLastSwapEquivariance
+public import SerrePositivity.EInfinity.Operad.TensorFamilyFirstSwapSplitLast
