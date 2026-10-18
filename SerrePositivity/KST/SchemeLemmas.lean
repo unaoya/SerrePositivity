@@ -5,3 +5,6 @@ public import SerrePositivity.KST.SchemeLemmas.ChartAlgebra
 public import SerrePositivity.KST.SchemeLemmas.ChartLocalization
 public import SerrePositivity.KST.SchemeLemmas.ProjBase
 public import SerrePositivity.KST.SchemeLemmas.BlowupAway
+public import SerrePositivity.KST.SchemeLemmas.QuotientPullback
+public import SerrePositivity.KST.SchemeLemmas.Exceptional
+public import SerrePositivity.KST.SchemeLemmas.Cartier

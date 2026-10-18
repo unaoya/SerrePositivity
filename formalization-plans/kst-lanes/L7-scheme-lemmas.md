@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 105 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 145 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -19,8 +19,10 @@
 - チャートの a による分母消去・係数の等式判定・a を可逆化した環と R[1/a] の同型を証明済み。
 - 一般の Proj 構造射で、零次成分の素イデアルの所属と基本開集合の逆像を計算済み。
 - アフィン blowup が中心の補開集合全体で同型となることを証明し、構造射と両立するスキーム同型を構成済み。
-- 次は環論的局所計算と実際のイデアル層の制限を同定する。
-- Mathlib に Cartier 因子の API はなく、通常の局所正則生成条件を別途定義する必要がある。
+- 例外閉部分スキームのチャートへの逆像を、拡大イデアルの商の Spec と包含射まで同定済み。
+- Stacks 01WQ Lemma 31.14.2 のアフィン局所モデルを有効 Cartier 条件の定義とし、アフィン例外因子について証明済み。
+- 各チャートの拡大イデアルは、チャート環との実際の線形同型により階数一自由加群として自明化済み。
+- 次は正の冪の比較と、局所化・一般スキームへの貼り合わせ。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
 - L7a は未完了。L7b・L7c の本体は未着手。
@@ -75,6 +77,7 @@
 | KST §5.3、Lemma 5.5(ii)(iii) | 二重添字の消滅 | §10-9 の検証後に接続 |
 | KST Lemma 5.6 | 有限射と blowup の塔 | 古典的有限射を本レーンで証明 |
 | Stacks 081T | modification の blowup 支配 | Noether な特殊形から証明 |
+| Stacks 01WQ Lemma 31.14.2 | 有効 Cartier 条件のアフィン局所モデル | 実際の商の Spec と包含射で定義・検証 |
 | Temkin 2008 Lemma 2.1.5 | 同上の KST の引用元 | 番号を併記 |
 | Huneke–Swanson Prop 8.1.5 | reduction と Rees 代数 | 原文の仮定を確認して証明 |
 | Huneke–Swanson Thm 8.2.1 | 整依存と reduction | 有限射への適用を証明 |
@@ -333,6 +336,11 @@ f の有限型性は固有性から導く。
 | `affineCenterComplement` / `mem_affineCenterComplement` | BlowupAway | 検証済み | D(I) = Spec R ∖ V(I) |
 | `affineBlowupπ_restrict_complement_isIso` | BlowupAway | 検証済み | 中心の補集合上の同型性 |
 | `affineBlowupAwayIso` / `affineBlowupAwayIso_hom_ι` | BlowupAway | 検証済み | 実際の基底上のスキーム同型 |
+| `specQuotientPullbackIso` / `specQuotientPullbackIso_inv_fst` | QuotientPullback | 検証済み | 商の Spec の逆像とその包含 |
+| `affineExceptionalChartIso` / `affineExceptionalChartIso_inv_snd` | Exceptional | 検証済み | 例外閉部分スキームの実際のチャート同型 |
+| `IsEffectiveCartierImmersion` | Cartier | 実装済み | 閉埋め込みの局所正則方程式による定義 |
+| `affineExceptional_isEffectiveCartier` | Cartier | 検証済み | アフィン例外因子の有効 Cartier 性 |
+| `regularPrincipalIdealEquiv` / `chartExceptionalIdealEquiv` | Cartier | 検証済み | 正則単項イデアル・例外イデアルの局所自由化 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
@@ -435,8 +443,7 @@ Lemma 5.6 の証明で blowup の指数 m を追加し、各固定 m に Lemma 5
 
 ### 14.5 L7a に残る作業
 
-- 例外閉部分スキームのイデアル層とチャートの拡大イデアルを同定する。
-- Cartier 条件を実際のイデアル層上の局所正則生成性として定義し証明する。
+- アフィン例外因子の局所正則モデルと局所自由なイデアルの同定は証明済み。一般スキームへの貼り合わせで保存する。
 - 中心の補開集合上の同型はアフィン基底で構成済み。一般スキームへの貼り合わせとの両立を証明する。
 - 正の冪に関する Veronese 比較と基底上の同型を構成する。
 - 局所化との可換性と一般スキームへの貼り合わせを証明する。
