@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・346 モジュール 3670 宣言の公理監査成功。
+対象ビルド・357 モジュール 3770 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2804,3 +2804,41 @@ codiscrete nerve の単体を頂点列に移し、EG の完全な単体集合と
 保存単位の対象ビルド 3790 jobs 成功。
 私有宣言を含む 346 モジュール 3670 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
+
+
+## 94. L9e の通常の Tot と完全な重みの end の密度比較
+
+標準単体上の整合するパラメーター付きの族を恒等単体で評価し、単体集合の射へ貼り合わせた。
+逆に、射から重みの単体の制限で族を作り、両者が厳密な両逆であることを証明した。
+重み・係数・パラメーターへの自然性を示し、共通の添字圏上の図式に束ねた。
+
+各 cochain 次数で end を uncurry すると、この図式上の族を得る。
+逆に族を各次数で end へ持ち上げ、二つの添字の自然性を交換することで余単体自然変換を得た。
+両逆とパラメーターへの自然性から、Yoneda の完全忠実性によって通常の Tot と完全な重みの end の実際の同型を構成した。
+この比較には Kan 条件も Reedy 置換も不要である。
+
+点つき end の忘却の比較が重みの前合成に自然であることも証明し、点つき cochain の基礎図式を通常の cochain と比較した。
+これを密度の同型に合成し、点つき Tot と点つき end の基礎単体集合の同型を得た。
+EG に適用して群圏の BK 重みの同型を合成し、群 cochain の通常の Tot と hG の BK end の基礎単体集合を同定した。
+従って Kan 係数なら、Reedy 置換なしの通常の Tot 自体が Kan である。
+
+この保存単位では比較の基点保存と Ω 構造との整合性はまだ主張しない。
+有理 Shapiro の π_* 同型と、一般の余単体 BF 図式の通常の Tot との比較は引き続き未完了。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SimplexDensity.Family` / `diagonal` / `expand` / `familyEquiv` | 標準単体上の整合する族と射との厳密な両逆 |
+| `SimplexDensity.DiagramFamily` / `diagramFamilyEquiv` | 添字圏上の図式に対する密度の同値 |
+| `PointedWeightedEnd.underlyingIso_preMap` | 点つき end の忘却の重みへの自然性 |
+| `UnderlyingWeightedCochains.pointedUnderlyingIso` | 点つき cochain の忘却の余単体図式の同型 |
+| `SimplexDensity.fromCochains` / `toCochains` / `cochainFamilyEquiv` | 二添字の族と cochain への自然変換との同値 |
+| `SimplexDensity.totalizationEndHomEquiv` / `totalizationEndHomEquiv_pre` | Tot と完全な重みの end への Hom の自然な同値 |
+| `SimplexDensity.totalizationEndIso` | 通常の Tot と完全な重みの end の実際の同型 |
+| `SimplexDensity.pointedUnderlyingTotalizationEndIso` | 点つき Tot と end の基礎単体集合の同型 |
+| `GroupActionCochains.underlyingTotalizationEndIso` | 群 cochain の通常の Tot と群圏の BK end の基礎の同型 |
+| `GroupActionCochains.totalization_kanComplex` | Kan 係数での群 cochain の通常の Tot の Kan 性 |
+
+参照：Goerss–Jardine VIII §1、式 (1.1)、VIII §2、HA §1.4.2。
+保存単位の対象ビルド 3801 jobs 成功。
+私有宣言を含む 357 モジュール 3770 宣言で標準三公理のみ。
+L9e は進行中。Sp の ∞ 極限性は γ3 の後に扱い、ここでは追加主張しない。

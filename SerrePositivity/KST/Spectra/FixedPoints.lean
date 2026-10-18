@@ -1,5 +1,17 @@
 module
 
+public import SerrePositivity.KST.Spectra.SimplexDensityFamilies
+public import SerrePositivity.KST.Spectra.SimplexDensityEquiv
+public import SerrePositivity.KST.Spectra.SimplexDensityNaturality
+public import SerrePositivity.KST.Spectra.SimplexDensityDiagram
+public import SerrePositivity.KST.Spectra.PointedWeightedEndUnderlyingWeight
+public import SerrePositivity.KST.Spectra.UnderlyingWeightedCochains
+public import SerrePositivity.KST.Spectra.CochainDensityFamilies
+public import SerrePositivity.KST.Spectra.CochainDensityEquiv
+public import SerrePositivity.KST.Spectra.CochainDensityParameter
+public import SerrePositivity.KST.Spectra.CochainDensityIso
+public import SerrePositivity.KST.Spectra.GroupCochainTotalization
+
 public import SerrePositivity.KST.Spectra.GroupOverCodiscrete
 public import SerrePositivity.KST.Spectra.GroupOverNerve
 public import SerrePositivity.KST.Spectra.GroupUniversalCoverDiagram
