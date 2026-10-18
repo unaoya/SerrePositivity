@@ -48,10 +48,15 @@ h Fun での一意性、パラメータ付き adjunct 対応とその二変数�
 A1c の `homotopyNatTrans` と `qcatCellOfHomotopy` の評価の一致も証明した。
 区間模型への族 A→Map(x,y) と Fun(A,X) の定値関手間の辺は厳密に全単射で、
 この族から h Fun の定値関手間の Hom への写像は全射である。
-これは B1 全体の完了ではない。次はこの表示のホモトピー類への降下・単射性、
-パラメータに関する自然性を示し、実際の写像空間のホモトピー同値へ進む。
+さらに、`intervalFamilyHom f = intervalFamilyHom g` なら族 f,g の間に実際の
+単体的ホモトピーが存在することを証明した。構成は、h Fun の射の等式を右ホモトピーの
+三角形へ戻し、四辺を計算した正方形へ引き戻して、区間族を転置するもの。
+族の表示のパラメータ前合成に関する自然性と、双圏の adjunct の一胞体による前合成との
+整合もそれぞれ証明した。両者を結ぶ「QCat の whisker と内部 Hom の前合成の一致」は未完了。
+これは B1 全体の完了ではない。次はこの一致、表示のホモトピー不変性を確認し、
+全射性とホモトピーまでの単射性から実際の写像空間の同値を構成する。
 特徴づけは順向き Prop 6.2.1.17、逆向き Cor 6.2.6.5 に分けて証明する。
-B2〜B5 は未完了。対象ビルド（1635 jobs）・公理監査（73 宣言、標準三公理のみ）は成功。
+B2〜B5 は未完了。対象ビルド（1645 jobs）・公理監査（106 宣言、標準三公理のみ）は成功。
 
 ## 4. 主要宣言
 
@@ -83,5 +88,15 @@ B2〜B5 は未完了。対象ビルド（1635 jobs）・公理監査（73 宣言
 | `intervalFamilyHomotopy`・`intervalFamilyEdge`・`intervalFamilyOfEdge` | 区間模型の族と定値関手間の辺を相互変換 | 実装済み |
 | `intervalFamilyOfEdge_edge`・`intervalFamilyEdge_ofEdge`・`intervalFamilyEdgeEquiv` | 商を取る前の二つの変換の両逆・全単射 | 実装済み |
 | `intervalFamilyHom`・`intervalFamilyHom_surjective` | 区間模型の族 → h Fun の Hom と全射性（X が quasicategory） | 実装済み |
+| `intervalParameterSwap` と端点・自然性・時間制限の補題 | Δ[1]×(A×B)→A×(Δ[1]×B) の座標交換 | 実装済み |
+| `intervalTransposeUncurry` と端点・前合成の補題 | Fun(A,X) の区間族を X の区間族へ展開 | 実装済み |
+| `intervalFamilyTranspose`・`intervalFamilyTranspose_uncurry`・`intervalFamilyTranspose_precomp` | 定値関手間の区間族 B→Map → A×B→Map(x,y) と自然性 | 実装済み |
+| `rightHomotopySquareOrder`・`rightHomotopySquare` と四辺の補題 | (s,t)↦(s=0 なら t、他は 2) による正方形→三角形 | 実装済み |
+| `rightHomotopyInterval`・`rightHomotopyInterval_uncurry` | CompStruct(id,f,g) から区間模型の族を作る | 実装済み |
+| `rightHomotopyIntervalFamily_zero`・`rightHomotopyIntervalFamily_one` | 転置した族の時間零・一の値 | 実装済み |
+| `intervalFamilyHomotopyOfRightHomotopy` | 定値関手間の右ホモトピー → 区間模型の族のホモトピー | 実装済み |
+| `intervalFamilyHom_eq_imp_homotopy` | h Fun の射が等しい族はホモトピック（X が quasicategory） | 実装済み |
+| `intervalFamilyHomPrecomp`・`intervalFamilyHom_precomp` | h Fun の Hom のパラメータ前合成と族の表示の自然性 | 実装済み |
+| `bicategoryAdjunct_whiskerLeft` | 任意の双圏の adjunct 対応は一胞体による前合成と整合 | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |

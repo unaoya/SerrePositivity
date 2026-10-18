@@ -3,3 +3,6 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Adjunction
 public import SerrePositivity.InfinityCategories.F1B.AdjunctNaturality
 public import SerrePositivity.InfinityCategories.F1B.MappingParameters
+public import SerrePositivity.InfinityCategories.F1B.MappingTranspose
+public import SerrePositivity.InfinityCategories.F1B.RightHomotopySquare
+public import SerrePositivity.InfinityCategories.F1B.MappingParameterNaturality

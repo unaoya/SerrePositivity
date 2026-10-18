@@ -41,6 +41,19 @@ lemma bicategoryAdjunct_naturality_left {B : Type u} [Bicategory.{w, v} B]
   rw [Bicategory.whisker_exchange_assoc]
   rw [← Bicategory.rightUnitor_inv_naturality_assoc]
 
+/-- 概要：adjunct 対応はパラメータの一胞体による前合成と整合する。
+方針：単位の公式を展開し、双圏の結合子・単位子の coherence を使う。
+規約：非厳密な双圏でも使えるよう結合子を明記する。
+使われ方：Kerodon Prop 6.2.1.17 のパラメータ自然性。 -/
+lemma bicategoryAdjunct_whiskerLeft {B : Type u} [Bicategory.{w, v} B]
+    {a b c d : B} {l : b ⟶ c} {r : c ⟶ b}
+    (adj : Bicategory.Adjunction l r) (i : d ⟶ a) {g : a ⟶ b} {h : a ⟶ c}
+    (α : g ≫ l ⟶ h) :
+    adj.homEquiv₂ ((Bicategory.associator i g l).hom ≫ i ◁ α) =
+      i ◁ adj.homEquiv₂ α ≫ (Bicategory.associator i h r).inv := by
+  dsimp [Bicategory.Adjunction.homEquiv₂]
+  bicategory
+
 local instance (X Y : SSet.QCat.{u}) : Category.{u} (X ⟶ Y) :=
   SSet.QCat.bicategory.homCategory X Y
 

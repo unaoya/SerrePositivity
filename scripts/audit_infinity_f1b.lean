@@ -50,3 +50,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.intervalFamilyEdgeEquiv
 
 #check @SerrePositivity.InfinityCategories.intervalFamilyHom_surjective
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyTranspose
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyTranspose_precomp
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHomotopyOfRightHomotopy
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHom_eq_imp_homotopy
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHomPrecomp
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHom_precomp
+
+#check @SerrePositivity.InfinityCategories.bicategoryAdjunct_whiskerLeft
