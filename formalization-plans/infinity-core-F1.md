@@ -7272,5 +7272,35 @@ lemma vertexFiberι_stdSimplex_isFullyFaithful {E : SSet.{u}} [Quasicategory E]
     {n : ℕ} (p : E ⟶ (Δ[n] : SSet.{u})) (b : (Δ[n] : SSet.{u}) _⦋0⦌) :
     IsFullyFaithful (vertexFiberι p b)
 
+lemma pinchedHomMap_equivalence_of_vertexFiberMap_fullyFaithful
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F] {n : ℕ}
+    (p : E ⟶ (Δ[n] : SSet.{u})) (q : F ⟶ Δ[n]) (f : E ⟶ F) (hf : f ≫ q = p)
+    (b : (Δ[n] : SSet.{u}) _⦋0⦌)
+    (hb : IsFullyFaithful (vertexFiberMap p q f hf b))
+    (x y : (vertexFiber p b) _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (pinchedHomMap f x.val y.val)
+
+lemma pinchedHom_isEmpty_of_stdSimplex_reverse {E : SSet.{u}} {n : ℕ}
+    (p : E ⟶ (Δ[n] : SSet.{u})) (x y : E _⦋0⦌)
+    (h : (p.app (Opposite.op ⦋0⦌) y) 0 < (p.app (Opposite.op ⦋0⦌) x) 0) (m : ℕ) :
+    IsEmpty ((pinchedHom x y) _⦋m⦌)
+
+lemma pinchedHomMap_equivalence_of_stdSimplex_reverse
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F] {n : ℕ}
+    (p : E ⟶ (Δ[n] : SSet.{u})) (q : F ⟶ Δ[n]) (f : E ⟶ F) (hf : f ≫ q = p)
+    (x y : E _⦋0⦌)
+    (h : (p.app (Opposite.op ⦋0⦌) y) 0 < (p.app (Opposite.op ⦋0⦌) x) 0) :
+    IsSimplicialHomotopyEquivalence (pinchedHomMap f x y)
+
+lemma isFullyFaithful_over_interval_of_endpoint_fibers_of_crossing
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F]
+    (p : E ⟶ (Δ[1] : SSet.{u})) (q : F ⟶ Δ[1]) (f : E ⟶ F) (hf : f ≫ q = p)
+    (h0 : IsFullyFaithful (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))
+    (h1 : IsFullyFaithful (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))
+    (hc : ∀ x y : E _⦋0⦌,
+      p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (0 : Fin 2) →
+      p.app (Opposite.op ⦋0⦌) y = stdSimplex.obj₀Equiv.symm (1 : Fin 2) →
+        IsSimplicialHomotopyEquivalence (pinchedHomMap f x y)) : IsFullyFaithful f
+
 end SerrePositivity.InfinityCategories
 ```
