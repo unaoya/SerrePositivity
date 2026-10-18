@@ -165,3 +165,8 @@ public import SerrePositivity.InfinityCategories.F1B.QCatPostcompFaithful
 public import SerrePositivity.InfinityCategories.F1B.ReflectiveIdempotence
 public import SerrePositivity.InfinityCategories.F1B.AdjunctionUnitInvertible
 public import SerrePositivity.InfinityCategories.F1B.ReflectiveUnitInvertible
+public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalObjects
+public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.RestrictedPrecomposition
+public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalization
