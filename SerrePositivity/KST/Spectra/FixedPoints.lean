@@ -1,5 +1,13 @@
 module
 
+public import SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+public import SerrePositivity.KST.Spectra.FunctionComplexPointedSimplex
+public import SerrePositivity.KST.Spectra.FunctionComplexHomotopyGroups
+public import SerrePositivity.KST.Spectra.DiscreteInternalHom
+public import SerrePositivity.KST.Spectra.PointedActionCochainHomotopy
+public import SerrePositivity.KST.Spectra.FunctionComplexIsoFormula
+public import SerrePositivity.KST.Spectra.PointedActionCochainBasepoint
+
 public import SerrePositivity.KST.Spectra.UnderlyingWeightedCochainMap
 public import SerrePositivity.KST.Spectra.CochainDensityCoefficient
 public import SerrePositivity.KST.Spectra.PointedCochainDensityNaturality

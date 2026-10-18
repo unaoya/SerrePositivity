@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・372 モジュール 3841 宣言の公理監査成功。
+対象ビルド・379 モジュール 3898 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2914,4 +2914,41 @@ Sp の ∞ 極限性と導来写像空間の比較は γ3 の後に扱う。
 参照：Goerss–Jardine VIII §§1–2、HA §1.4.2、BF 1978 §2。
 保存単位の対象ビルド 3816 jobs 成功。
 私有宣言を含む 372 モジュール 3841 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 97. L9e の各 cochain 次数の正次数 π_* の関数群表示
+
+各次数で集合 S からの関数を取る単体集合を構成した。
+評価と族の lift を定義し、各座標でホーンを充填して Kan 性を証明した。
+境界定数単体と同じ面添字の RelStruct を座標ごとに束ねた。
+これにより、関数複体の正次数ホモトピー群から各座標の群の関数群への評価の準同型が単射となる。
+各座標で代表単体を選んで束ねることで全射性も示し、実際の群同型を得た。
+添字集合の有限性は不要で、座標ごとに異なる基点も許す。
+
+離散集合を源とする内部 Hom の通常の普遍性を具体的な関数の評価で書いた。
+パラメーターへの自然性から Yoneda を使い、この内部 Hom と関数複体の単体集合の同型を得た。
+cochain の自由軌道の end の比較にこれを合成し、各次数を Fin n → G 上の関数複体と同定した。
+Mathlib の自由軌道の比較は連続する座標の比による非斉次座標を使う。
+
+各 cochain 次数の任意の基点での正次数 π_* は、像の基点での係数の群の関数群と同型である。
+さらに自由基点の制限・自由軌道の第一座標での評価・離散内部 Hom の各具体式を使い、標準基点は全ての関数座標で元の係数の標準基点に送られることを示した。
+従って標準基点で係数の同じ群の関数群への同型を得た。
+この保存単位は次数ごとの計算であり、余単体構造との整合性や Tot の π_* をまだ計算していない。
+有理群 cohomology の消滅だけから Shapiro を結論することはしない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SimplicialFunctionComplex.obj` / `eval` / `lift` / `kanComplex` | 関数複体の具体的な単体集合と座標ごとの Kan 充填 |
+| `SimplicialFunctionComplex.simplex` / `relStruct` | 境界定数単体と関係充填の座標ごとの束ね |
+| `SimplicialFunctionComplex.homotopyMap` / `homotopyEquiv` | 正次数 π_* の関数群への評価の準同型と群同型 |
+| `DiscreteInternalHom.iso` / `comp_iso` | 離散内部 Hom と関数複体の同型と評価の式 |
+| `FreeActionFamily.comp_endIso` | 自由作用の end の比較のパラメーター付きの式 |
+| `PointedActionCochains.functionIso` / `homotopyFunctionEquiv` | 各 cochain 次数の関数複体とその正次数 π_* の表示 |
+| `PointedActionCochains.functionIso_basepoint` / `functionIso_basepoint_vertex` | 標準基点の座標ごとの保存 |
+| `PointedActionCochains.basedHomotopyFunctionEquiv` | 標準基点での正次数 π_* の係数の関数群への同型 |
+
+参照：Goerss–Jardine I §7、VIII §2、Kerodon §3.2.3、HA §1.4.2。
+保存単位の対象ビルド 3823 jobs 成功。
+私有宣言を含む 379 モジュール 3898 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
