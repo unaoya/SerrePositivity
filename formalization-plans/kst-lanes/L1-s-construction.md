@@ -946,3 +946,70 @@ L1d–f は未完了、L1g は別途指示待ち。
 この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2258 jobs）、
 `lake env lean scripts/audit_kst_s_construction.lean` 成功（551 宣言、標準三公理のみ）。
 追加公理・sorry なし。L1c 全体の完成時に全体ビルドを行う。
+
+## 6.8 trivial Kan fibration に沿う普遍性と安定性
+
+零対象・一般の余錐の余極限性・押し出し・引き戻しを保ち反映し、安定性を源へ反映する。
+第一行制限への適用も証明。Core/・Stable/ の公開定義は変更しない。
+
+**TrivialFibrationUniversality.lean**
+
+```text
+def mapJoinCocone {K X Y : SSet.{u}} (f : X ⟶ Y) {p : K ⟶ X} (c : JoinCocone p) :
+    JoinCocone (p ≫ f)
+
+instance sliceUnderPostcomp_of_trivialKanFibration {K E B : SSet.{u}}
+    (p : K ⟶ E) (q : E ⟶ B) [TrivialKanFibration q] :
+    TrivialKanFibration (sliceUnderPostcomp p q)
+
+lemma isColimitCone_iff_mapJoinCocone_of_trivialKanFibration {K E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) [TrivialKanFibration q]
+    {p : K ⟶ E} (c : JoinCocone p) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone q c)
+
+lemma isZeroVertex_iff_of_trivialKanFibration {E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
+    (q : E ⟶ B) [TrivialKanFibration q] (z : E _⦋0⦌) :
+    IsZeroVertex z ↔ IsZeroVertex (q.app (Opposite.op ⦋0⦌) z)
+
+lemma isPushoutSquare_iff_postcomp_of_trivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) [TrivialKanFibration q]
+    (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) : IsPushoutSquare F ↔ IsPushoutSquare (F ≫ q)
+
+lemma isPullbackSquare_iff_postcomp_of_trivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) [TrivialKanFibration q]
+    (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) : IsPullbackSquare F ↔ IsPullbackSquare (F ≫ q)
+
+lemma preservesSConstructionData_of_trivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) [TrivialKanFibration q] :
+    PreservesSConstructionData q
+
+lemma firstRowRestriction_preservesSConstructionData (n : ℕ) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] : PreservesSConstructionData (firstRowRestriction n C)
+
+```
+
+**TrivialFibrationStability.lean**
+
+```text
+lemma squareRightEdge_mono : Mono (squareRightEdge.{u})
+
+lemma squareBottomEdge_mono : Mono (squareBottomEdge.{u})
+
+lemma hasZeroVertex_of_trivialKanFibration {E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
+    [HasZeroVertex B] (q : E ⟶ B) [TrivialKanFibration q] : HasZeroVertex E
+
+lemma fiberSquare_nonempty_of_trivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] [IsStable B] (q : E ⟶ B) [TrivialKanFibration q]
+    {x y : E _⦋0⦌} (f : SSet.Truncated.Edge (X
+
+lemma cofiberSquare_nonempty_of_trivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] [IsStable B] (q : E ⟶ B) [TrivialKanFibration q]
+    {x y : E _⦋0⦌} (f : SSet.Truncated.Edge (X
+
+lemma isStable_of_trivialKanFibration {E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
+    [IsStable B] (q : E ⟶ B) [TrivialKanFibration q] : IsStable E
+
+```
+
+現在地：L1c 継続中。図式圏の安定性、S_n の安定性・構造射の保存性、多単体構造、delooping と Ω 条件は未完了。L1d–f は未完了。
+
+検証：対象ビルド成功（2260 jobs）、公理監査成功（565 宣言、標準三公理のみ）。追加公理・sorry なし。

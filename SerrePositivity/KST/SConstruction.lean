@@ -26,4 +26,7 @@ public import SerrePositivity.KST.SConstruction.ZeroChoiceComparison
 public import SerrePositivity.KST.SConstruction.PointedPostcomposition
 public import SerrePositivity.KST.SConstruction.IteratedObjects
 
+public import SerrePositivity.KST.SConstruction.TrivialFibrationUniversality
+public import SerrePositivity.KST.SConstruction.TrivialFibrationStability
+
 /-! # ∞-S• 構成と連結 K 理論 -/

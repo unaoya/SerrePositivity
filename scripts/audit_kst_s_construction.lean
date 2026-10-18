@@ -1479,3 +1479,45 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.iteratedCoreSConstruction_isContractibleKan_of_zero_mem
 #print axioms SerrePositivity.KST.SConstruction.iteratedCoreSConstruction_isContractibleKan_of_zero_mem
+
+#check @SerrePositivity.KST.SConstruction.mapJoinCocone
+#print axioms SerrePositivity.KST.SConstruction.mapJoinCocone
+
+#check @SerrePositivity.KST.SConstruction.sliceUnderPostcomp_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.sliceUnderPostcomp_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_iff_mapJoinCocone_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_iff_mapJoinCocone_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.isZeroVertex_iff_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.isZeroVertex_iff_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.isPushoutSquare_iff_postcomp_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.isPushoutSquare_iff_postcomp_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.isPullbackSquare_iff_postcomp_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.isPullbackSquare_iff_postcomp_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.preservesSConstructionData_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.preservesSConstructionData_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_preservesSConstructionData
+
+#check @SerrePositivity.KST.SConstruction.squareRightEdge_mono
+#print axioms SerrePositivity.KST.SConstruction.squareRightEdge_mono
+
+#check @SerrePositivity.KST.SConstruction.squareBottomEdge_mono
+#print axioms SerrePositivity.KST.SConstruction.squareBottomEdge_mono
+
+#check @SerrePositivity.KST.SConstruction.hasZeroVertex_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.hasZeroVertex_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.fiberSquare_nonempty_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.fiberSquare_nonempty_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.cofiberSquare_nonempty_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.cofiberSquare_nonempty_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.isStable_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.isStable_of_trivialKanFibration
