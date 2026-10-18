@@ -181,3 +181,5 @@ public import SerrePositivity.KST.SchemeLemmas.PresentationKernelProduct
 public import SerrePositivity.KST.SchemeLemmas.LocalPresentationMinorRank
 public import SerrePositivity.KST.SchemeLemmas.BorderedPivotDeterminant
 public import SerrePositivity.KST.SchemeLemmas.MinorPivotFactorization
+public import SerrePositivity.KST.SchemeLemmas.UnitMinorPresentationEquiv
+public import SerrePositivity.KST.SchemeLemmas.LocalMinorFreeCriterion
