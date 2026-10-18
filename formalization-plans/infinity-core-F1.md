@@ -7350,5 +7350,17 @@ instance stdSimplexCosliceFiber_subsingleton {K : SSet.{u}} {n : ℕ}
     (e : K ⟶ (Δ[n] : SSet.{u})) (y : (Δ[n] : SSet.{u}) _⦋0⦌) (m : ℕ) :
     Subsingleton ((vertexFiber (sliceUnderProjection e) y) _⦋m⦌)
 
+instance sliceUnderProjection_stdSimplex_mono {K : SSet.{u}} {n : ℕ}
+    (e : K ⟶ (Δ[n] : SSet.{u})) : Mono (sliceUnderProjection e)
+
+lemma sliceUnderPostcomp_projection {K X Y : SSet.{u}} (e : K ⟶ X) (p : X ⟶ Y) :
+    sliceUnderPostcomp e p ≫ sliceUnderProjection (e ≫ p) = sliceUnderProjection e ≫ p
+
+lemma cosliceTriangleSource_trivialKanFibration {E : SSet.{u}}
+    (p : E ⟶ (Δ[1] : SSet.{u})) (e : (Δ[1] : SSet.{u}) ⟶ E)
+    (hp : e ≫ p = 𝟙 Δ[1]) (he : IsCocartesianEdge p (SSet.yonedaEquiv e))
+    (y : E _⦋0⦌) (hy : p.app (Opposite.op ⦋0⦌) y = stdSimplex.obj₀Equiv.symm (1 : Fin 2)) :
+    TrivialKanFibration (cosliceRestrictionFiberMap e (stdSimplex.δ (1 : Fin 2)) y)
+
 end SerrePositivity.InfinityCategories
 ```

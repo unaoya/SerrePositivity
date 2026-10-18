@@ -344,3 +344,4 @@ public import SerrePositivity.InfinityCategories.F1.FiberwiseMappingSpaceCompari
 public import SerrePositivity.InfinityCategories.F1.IntervalFullyFaithfulCriterion
 public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber
 public import SerrePositivity.InfinityCategories.F1.IntervalCosliceRigidity
+public import SerrePositivity.InfinityCategories.F1.IntervalCosliceSource

@@ -1602,3 +1602,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.intervalIdentityCosliceVertex
 #check @SerrePositivity.InfinityCategories.intervalIdentityCoslice_nonempty
 #check @SerrePositivity.InfinityCategories.stdSimplexCosliceFiber_subsingleton
+#check @SerrePositivity.InfinityCategories.sliceUnderProjection_stdSimplex_mono
+#check @SerrePositivity.InfinityCategories.sliceUnderPostcomp_projection
+#check @SerrePositivity.InfinityCategories.cosliceTriangleSource_trivialKanFibration
