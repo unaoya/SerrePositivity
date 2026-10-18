@@ -1377,3 +1377,119 @@ derived_isPullbackSquare_iff_quasiIso
     IsPullbackSquare F ↔ QuasiIso (derivedSquareFiberComparison F)
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D6a・基礎比較
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u w
+open CategoryTheory DifferentialGraded
+open DGNerve.HomotopyComparison
+open scoped Simplicial
+variable (S : Type u) [CommRing S] [HasDerivedCategory.{w} (ModuleCat.{u} S)]
+derivedInfinityHomologyFunctor (i : ℤ) :
+    derivedInfinityHomotopyCategory S ⥤ ModuleCat.{u} S
+derivedInfinityHomology (i : ℤ) (x : (derivedInfinityCategory S) _⦋0⦌) : ModuleCat.{u} S
+derivedInfinityHomologyMap (i : ℤ) {x y : (derivedInfinityCategory S) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) x y) :
+    derivedInfinityHomology S i x ⟶ derivedInfinityHomology S i y
+derivedInfinityHomologyComparison (i : ℤ) :
+    derivedInfinityHomologyFunctor S i ≅
+      ((derivedInfinityH0Equivalence S).functor ⋙ semifreeHomotopyComparison S) ⋙
+        HomotopyCategory.homologyFunctor (ModuleCat S) (.up ℤ) i
+derivedInfinityHomologyIso (i : ℤ) (x : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedInfinityHomology S i x ≅ (derivedInfinityCategoryVertexEquiv S x).val.homology i
+derivedInfinityHomologyFunctor_zero :
+    derivedInfinityHomologyFunctor S 0 = derivedInfinityHZeroFunctor S
+derivedInfinityHomology_zero (x : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedInfinityHomology S 0 x = derivedInfinityHZero S x
+derivedInfinityHomologyMap_zero {x y : (derivedInfinityCategory S) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) x y) :
+    derivedInfinityHomologyMap S 0 e = derivedInfinityHZeroMap S e
+derivedInfinityHomologyIso_zero (x : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedInfinityHomologyIso S 0 x = derivedInfinityHZeroIso S x
+derivedInfinityHomologyIso_naturality (i : ℤ)
+    {x y : (derivedInfinityCategory S) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) x y) :
+    derivedInfinityHomologyMap S i e ≫ (derivedInfinityHomologyIso S i y).hom =
+      (derivedInfinityHomologyIso S i x).hom ≫ HomologicalComplex.homologyMap
+        (DGNerve.edgeChainMap (e.map ((SSet.truncation 2).map derivedInfinityInclusion))) i
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u w
+open CategoryTheory DifferentialGraded DGNerve CochainComplex HomComplex
+variable {S : Type u} [CommRing S] {B D : Complex S}
+fiberProjection_eq_mappingCocone_fst (f : B ⟶ D) :
+    fiberProjection f = mappingCocone.fst f
+variable [HasDerivedCategory.{w} (ModuleCat.{u} S)]
+open Pretriangulated
+standardFiberDerivedTriangle (f : B ⟶ D) : Triangle (DerivedCategory (ModuleCat S))
+standardFiberDerivedTriangle_distinguished (f : B ⟶ D) :
+    standardFiberDerivedTriangle f ∈ distTriang (DerivedCategory (ModuleCat S))
+standardFiberDerivedTriangle_mor₁ (f : B ⟶ D) :
+    (standardFiberDerivedTriangle f).mor₁ = DerivedCategory.Q.map (fiberProjection f)
+standardFiberDerivedTriangle_mor₂ (f : B ⟶ D) :
+    (standardFiberDerivedTriangle f).mor₂ = DerivedCategory.Q.map f
+variable {A : Complex S}
+fiberComparisonDerivedTriangle (f : B ⟶ D) (a : A ⟶ standardFiber f) [QuasiIso a] :
+    Triangle (DerivedCategory (ModuleCat S))
+fiberComparisonDerivedTriangleIso (f : B ⟶ D) (a : A ⟶ standardFiber f) [QuasiIso a] :
+    fiberComparisonDerivedTriangle f a ≅ standardFiberDerivedTriangle f
+fiberComparisonDerivedTriangle_distinguished (f : B ⟶ D)
+    (a : A ⟶ standardFiber f) [QuasiIso a] :
+    fiberComparisonDerivedTriangle f a ∈ distTriang (DerivedCategory (ModuleCat S))
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory SSet SSet.Truncated
+open scoped Simplicial
+derivedConeLeg {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) (v : K _⦋0⦌) :
+    Edge (X := (truncation 2).obj X) c.vertex (p.app _ v)
+derivedConeLegCompStruct {K X : SSet.{u}} {p : K ⟶ X} {c d : JoinCone p}
+    (e : Edge (X := (truncation 2).obj (sliceOver p)) c d) (v : K _⦋0⦌) :
+    SSet.Truncated.Edge.CompStruct (e.map ((truncation 2).map (sliceOverProjection p)))
+      (derivedConeLeg d v) (derivedConeLeg c v)
+derivedConeLeg_homMk_comp {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X}
+    {c d : JoinCone p} (e : Edge (X := (truncation 2).obj (sliceOver p)) c d)
+    (v : K _⦋0⦌) :
+    HomotopyCategory₂.homMk (e.map ((truncation 2).map (sliceOverProjection p))) ≫
+      HomotopyCategory₂.homMk (derivedConeLeg d v) = HomotopyCategory₂.homMk (derivedConeLeg c v)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory MonoidalCategory SSet
+open scoped Simplicial
+derivedSquareBottomEdge : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]
+derivedSquareLeftEdge : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]
+derivedSquareTriangle_bottom :
+    stdSimplex.δ (2 : Fin 3) ≫ squareTriangle.{u} 1 = derivedSquareBottomEdge
+derivedSquareTriangle_left :
+    stdSimplex.δ (2 : Fin 3) ≫ squareTriangle.{u} 0 = derivedSquareLeftEdge
+derivedCospanLeg_bottom :
+    (joinStdSimplexIso.{u} 0 0).inv ≫
+      joinMap (𝟙 Δ[0]) (stdSimplex.δ 1 ≫ horn₂₂.ι₀₂) ≫ cospanConeSquareIso.hom =
+        derivedSquareBottomEdge
+derivedCospanLeg_left :
+    (joinStdSimplexIso.{u} 0 0).inv ≫
+      joinMap (𝟙 Δ[0]) (stdSimplex.δ 1 ≫ horn₂₂.ι₁₂) ≫ cospanConeSquareIso.hom =
+        derivedSquareLeftEdge
+derivedConeLeg_pullback_bottom {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) :
+    (derivedConeLeg (pullbackCone F)
+      (SSet.yonedaEquiv (stdSimplex.δ 1 ≫ horn₂₂.ι₀₂))).edge =
+        SSet.yonedaEquiv (derivedSquareBottomEdge ≫ F)
+derivedConeLeg_pullback_left {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) :
+    (derivedConeLeg (pullbackCone F)
+      (SSet.yonedaEquiv (stdSimplex.δ 1 ≫ horn₂₂.ι₁₂))).edge =
+        SSet.yonedaEquiv (derivedSquareLeftEdge ≫ F)
+end SerrePositivity.InfinityCategories
+```

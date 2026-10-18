@@ -363,10 +363,45 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.derived_isPullbackSquare_of_quasiIso
 #print axioms SerrePositivity.InfinityCategories.derived_isPullbackSquare_iff_quasiIso
 
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomologyFunctor
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomology
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomologyMap
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomologyComparison
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomologyIso
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomologyFunctor_zero
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomology_zero
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomologyMap_zero
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomologyIso_zero
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomologyIso_naturality
+#print axioms SerrePositivity.InfinityCategories.fiberProjection_eq_mappingCocone_fst
+#print axioms SerrePositivity.InfinityCategories.standardFiberDerivedTriangle
+#print axioms SerrePositivity.InfinityCategories.standardFiberDerivedTriangle_distinguished
+#print axioms SerrePositivity.InfinityCategories.standardFiberDerivedTriangle_mor₁
+#print axioms SerrePositivity.InfinityCategories.standardFiberDerivedTriangle_mor₂
+#print axioms SerrePositivity.InfinityCategories.fiberComparisonDerivedTriangle
+#print axioms SerrePositivity.InfinityCategories.fiberComparisonDerivedTriangleIso
+#print axioms SerrePositivity.InfinityCategories.fiberComparisonDerivedTriangle_distinguished
+#print axioms SerrePositivity.InfinityCategories.derivedConeLeg
+#print axioms SerrePositivity.InfinityCategories.derivedConeLegCompStruct
+#print axioms SerrePositivity.InfinityCategories.derivedConeLeg_homMk_comp
+#print axioms SerrePositivity.InfinityCategories.derivedSquareBottomEdge
+#print axioms SerrePositivity.InfinityCategories.derivedSquareLeftEdge
+#print axioms SerrePositivity.InfinityCategories.derivedSquareTriangle_bottom
+#print axioms SerrePositivity.InfinityCategories.derivedSquareTriangle_left
+#print axioms SerrePositivity.InfinityCategories.derivedCospanLeg_bottom
+#print axioms SerrePositivity.InfinityCategories.derivedCospanLeg_left
+#print axioms SerrePositivity.InfinityCategories.derivedConeLeg_pullback_bottom
+#print axioms SerrePositivity.InfinityCategories.derivedConeLeg_pullback_left
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.Homology,
+    `SerrePositivity.InfinityCategories.Derived.FiberTriangle,
+    `SerrePositivity.InfinityCategories.Derived.ConeEdgeCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.SquareLegCompatibility,
+
     `SerrePositivity.InfinityCategories.Derived.PullbackPresentation,
     `SerrePositivity.InfinityCategories.Derived.PullbackComparison,
     `SerrePositivity.InfinityCategories.Derived.RightFibrationReflection,
