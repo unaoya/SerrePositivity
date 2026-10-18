@@ -262,9 +262,16 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 厳密に保持し、三辺上では path 全体が定値となる（`path_restriction`）。
 `path_right`・`unitCommaSquareComparisonPath_right`・`unitCommaMappingComparisonHomotopy_path` は
 その右辺が順方向比較の `intervalFamilyPath` 自体に一致することを、普遍族上でも保証する。
-**正方形全体の可逆 path と順方向比較の境界 path の一致は接続済み。復元側の指定境界輸送との
-比較と両合成のホモトピーは未完了。** 次の接続は、同じ始点・境界 path を持つ二つの輸送を
-相対 path 写像の可縮 fiber で比較すること。独立な二経路の合成との同一視や path の混同は用いない。
+`exists_homotopy_over_trivialKanFibration` は同じ射の持ち上げの比較を基底上で定値に保つ。
+`exists_relativePathEndpointHomotopy` は同じ始点と基底 path を持つ二つの輸送へ適用し、終点を
+基底への射を固定したまま結ぶ。`exists_relativeFunctorPointHomotopy` で関手の零単体表示から
+元の図式へ戻し、`exists_functorDiagramPath_endpointHomotopy` と
+`FunctorDiagramPathExtension.exists_endpointHomotopy` は指定部分図式を全時間で固定する
+終点ホモトピーを返す。一般の指定始点・境界 path に関する輸送の相対一意性は実装済み。
+**正方形全体の可逆 path と順方向比較の境界 path の一致、および輸送の相対一意性の一般補題は
+実装済み。** 残るのは、三辺の固定と右辺の path を正方形の全境界の等式へまとめ、復元側の
+三角形の輸送を畳み込みで正方形の輸送へ移して同じ始点・全境界 path を持つことを確認し、
+この一意性を適用する接続と、両合成のホモトピー。独立な経路の合成との同一視や path の混同は用いない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -273,8 +280,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2050 jobs）・公理監査（1141 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 382 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2054 jobs）・公理監査（1148 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 386 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -470,3 +477,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `relativeHomotopy_vertex_edge_eq_id`・`relativeHomotopy_pointwise_isInvertible`・`squareThreeEdges_vertex_surjective` | 全頂点を含む部分図式を固定した変形の垂直辺の可逆性、正方形への適用 | 実装済み |
 | `ThreeEdgeSquareComparison.path` と始点・終点・三辺の固定・右辺の公式 | 全体図式の可逆 path、順方向比較の境界 path 自体との一致 | 実装済み |
 | `unitCommaSquareComparisonPath` と端点・右辺の公式・`unitCommaMappingComparisonHomotopy_path` | 元の comma 正方形へ進む全体可逆 path、普遍族の順方向比較との厳密な整合 | 実装済み（輸送の一意性への適用と逆関係は未証明） |
+| `exists_edge_over_trivialKanFibration`・`exists_homotopy_over_trivialKanFibration` | 同じ射の二つの持ち上げを基底上の恒等辺・定値ホモトピーで結ぶ | 実装済み |
+| `exists_relativePathEndpointHomotopy` | 同じ始点・基底 path の二つの輸送の終点を基底固定で比較 | 実装済み |
+| `functorDiagramPointEquiv_vertex`・`exists_relativeFunctorPointHomotopy` | 零単体表示の比較から元の図式へ戻し、相対条件を保持 | 実装済み |
+| `exists_functorDiagramPath_endpointHomotopy`・`FunctorDiagramPathExtension.exists_endpointHomotopy` | 同じ始点・制限 path の拡張の終点を指定部分図式固定で結ぶ | 実装済み（元の正方形と復元側への適用は未接続） |

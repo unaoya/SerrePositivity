@@ -629,3 +629,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitCommaSquareComparisonPath_one
 #check @SerrePositivity.InfinityCategories.unitCommaSquareComparisonPath_right
 #check @SerrePositivity.InfinityCategories.unitCommaMappingComparisonHomotopy_path
+
+#check @SerrePositivity.InfinityCategories.exists_edge_over_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.exists_homotopy_over_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.exists_relativePathEndpointHomotopy
+#check @SerrePositivity.InfinityCategories.functorDiagramPointEquiv_vertex
+#check @SerrePositivity.InfinityCategories.exists_relativeFunctorPointHomotopy
+#check @SerrePositivity.InfinityCategories.exists_functorDiagramPath_endpointHomotopy
+#check @SerrePositivity.InfinityCategories.FunctorDiagramPathExtension.exists_endpointHomotopy

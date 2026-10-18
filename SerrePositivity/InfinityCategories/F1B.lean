@@ -99,3 +99,7 @@ public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareComparisonPa
 public import SerrePositivity.InfinityCategories.F1B.PointwiseHomotopyPath
 public import SerrePositivity.InfinityCategories.F1B.RelativeHomotopyInvertible
 public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquarePath
+public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.RelativePathEndpointComparison
+public import SerrePositivity.InfinityCategories.F1B.FunctorPointHomotopy
+public import SerrePositivity.InfinityCategories.F1B.FunctorDiagramPathUniqueness
