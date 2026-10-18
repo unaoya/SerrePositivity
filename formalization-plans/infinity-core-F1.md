@@ -6385,5 +6385,25 @@ lemma scaffoldFiniteNerveBridge_inr (n : ℕ) :
         (nervePoint (ULift.up (0 : Fin (n + 1)) : ULift.{u} _)) ≫
       scaffoldFiniteNerveBridge n = nerveMap (scaffoldFiniteTail n)
 
+def scaffoldFiniteFirstEdge (n : ℕ) :
+    ULift.{u} (Fin 2) ⥤ ULift.{u} (Fin (n + 2))
+
+lemma scaffoldFiniteNervePoint_isoNerve (n : ℕ) :
+    nervePoint (ULift.up (0 : Fin (n + 1)) : ULift.{u} _) ≫
+      (stdSimplex.isoNerve n).inv =
+        stdSimplex.map (SimplexCategory.mkHom (OrderHom.const _ (0 : Fin (n + 1))))
+
+lemma scaffoldFiniteFirstEdge_isoNerve (n : ℕ) :
+    stdSimplex.map (SimplexCategory.mkHom
+        (prependOrderHom (OrderHom.const _ (0 : Fin (n + 1))))) ≫
+      (stdSimplex.isoNerve.{u} (n + 1)).hom =
+        (stdSimplex.isoNerve 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n)
+
+lemma scaffoldFiniteNerveBridge_inl (n : ℕ) :
+    pushout.inl (stdSimplex.δ (0 : Fin 2))
+        (nervePoint (ULift.up (0 : Fin (n + 1)) : ULift.{u} _)) ≫
+      scaffoldFiniteNerveBridge n =
+        (stdSimplex.isoNerve 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n)
+
 end SerrePositivity.InfinityCategories
 ```

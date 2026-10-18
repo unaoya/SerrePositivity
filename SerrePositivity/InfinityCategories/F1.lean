@@ -297,3 +297,4 @@ public import SerrePositivity.InfinityCategories.F1.JoinRightBoundaryAnodyne
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
 public import SerrePositivity.InfinityCategories.F1.ScaffoldSimplexBridge
 public import SerrePositivity.InfinityCategories.F1.ScaffoldNerveBridge
+public import SerrePositivity.InfinityCategories.F1.ScaffoldNerveFirstEdge
