@@ -405,7 +405,16 @@ h Fun(C,D) の同型を作り、両方向の指定自然変換との両立と比
 `Strictification.left_eq/right_eq` は両端が元の F₀・F に厳密に等しいことを示す。
 `Strictification.transformation` は補正後の prism から同じ両端を持つ自然変換を取り出す。
 **この変換と元の β の h での類の一致は未完了**。
-証明には、円柱比較と補正ホモトピーが両端で同じ代表を持つことを使う。
+円柱比較の代表の制限と、`endpointsIso` の選んだ代表は raw な射として同じとは限らない。
+比較すべきなのは h Fun の類であり、前合成の作用と代表の類の計算を使う。
+
+`KanFunctorHomSquare` は指定四辺の正方形と h Fun の合成関係を与える。
+同じ下辺を持つ二つの正方形では、左右の辺の類が一致し左辺が可逆なら上辺の類が一致する。
+`KanPrismHomotopySquare` は prism 上の補正ホモトピーをこの正方形へ転置し、四辺を回収する。
+`KanRelativeJoinCorrectionSquares` は元の相対 join 図式の prism を共通の下辺とし、
+円柱比較による元の β と、厳密化後の変換を上辺に持つ二つの正方形を構成した。
+左右の辺の raw な表示も計算済み。一方は円柱比較の代表の制限、もう一方は
+両端同型の選んだ代表の制限であり、両者の類の一致と左辺の可逆性の接続は未完了。
 
 **B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
 極限からの点ごとの存在と大域的組み立てが残る。
@@ -425,8 +434,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2376 jobs、公理監査2370宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内705モジュールに straightening 依存なし。
+対象ビルド2379 jobs、公理監査2439宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内708モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -594,3 +603,10 @@ B5 の古典 nerve に戻る検査も未完了。
 | `KanFunctorIsoExtension`・`kanFunctorIsoExtension_nonempty`・`globalIso` | 単射上の同型の延長、厳密な制限と指定代表の可逆ホモトピーの保持 | 済 |
 | `LeftKanRelativeJoinRealization.Strictification`・`strictification_nonempty`・`leftKanRelativeJoinStrictification_exists` | 任意の δ での両端の同時の厳密化の証明データ | 済 |
 | `Strictification.left_eq/right_eq/transformation` | F₀・F への厳密な端点制限と補正後の指定自然変換 | 端点は済・元の β の類との一致は未完了 |
+
+| `KanFunctorHomSquare/hom_relation`・`kanFunctorHomSquare_top_hom_eq/of_boundary_classes` | 指定四辺の可換性と可逆な左辺による上辺の類の比較 | 済 |
+| `kanPrismSquareReorder/kanPrismSquare`・`kanPrismSquare_zero/one/endpoint` | prism の二時間の転置と四辺の計算 | 済 |
+| `kanPrismHomotopyLeft/Right/Square` | prism ホモトピーから指定四辺の関手正方形への構成 | 済 |
+| `LeftKanRelativeJoinRealization.prismTransformation/comparisonPrismHomotopy/comparisonSquare` | 元の相対 join 図式の prism と円柱比較の正方形 | 済 |
+| `Strictification.correctionPrismHomotopy/correctionSquare` | 同じ下辺を持ち、厳密化後の変換を上辺とする正方形 | 済 |
+| `comparisonSquare_left_h/right_h`・`Strictification.correctionSquare_left_h/right_h` | 両正方形の側辺を各比較同型の代表の制限として表示 | raw な表示は済・側辺の類の一致は未完了 |
