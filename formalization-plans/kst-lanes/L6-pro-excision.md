@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1269宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1278宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -987,3 +987,11 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `nonUnitalLemma416` は一般の非単位単体環の零次元に対する全行列同変な実比較。
 - `integerUnitizationIdealAddEquiv` とその自然性、列ごとの加法同型により、核イデアルの列は元の I の列の追加仮定を伴わない表示である。
 - 対象ビルド・1269宣言の公理監査は標準三公理のみで成功。Claim 4.15 の ĜL は各次数で可逆な行列に置き換えず、π₀ での可逆性を保つ。比較射と安定化は未完了。
+
+
+### L6d の非単位環の ĜL と三角群の実包含（2026-10-19）
+
+- `NonUnitalSimplicialRing.hatGLSubmonoid` は標準単位化の行列で、π₀ で可逆かつ整数成分が恒等行列であるもの。次数ごとの逆元を要求しない。
+- `hatGLPullback` と `hatGL` は面・退化による両条件の保存を証明した実単体的モノイド。`hatGLRepresentation` は全行列モノイドへの実表現。
+- `triangularBlockGroup_fst` は実三角群の整数成分の恒等性を証明する。`triangularHatGLHom` と `triangularHatGLMap` は実単位の π₀ での単位性からの自然な実包含。その各次数の単射性も証明。
+- 対象ビルド・1278宣言の公理監査は標準三公理のみで成功。群状性の証明、Claim 4.15 の半直積と相対項の因子化、Prop 4.14 の安定化は未完了。

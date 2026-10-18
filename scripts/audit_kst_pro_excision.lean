@@ -3654,3 +3654,30 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.integerUnitizationIdealVectorAddEquiv
 #print axioms SerrePositivity.KST.ProExcision.integerUnitizationIdealVectorAddEquiv
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLSubmonoid
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLSubmonoid
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap_fst_matrix
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap_fst_matrix
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLPullback
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLPullback
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGL
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGL
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLRepresentation
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLRepresentation
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroup_fst
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroup_fst
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularHatGLHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularHatGLHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularHatGLMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularHatGLMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularHatGLHom_injective
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularHatGLHom_injective

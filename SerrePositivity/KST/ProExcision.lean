@@ -321,3 +321,7 @@ public import SerrePositivity.KST.ProExcision.IntegerUnitizationMap
 public import SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing
 
 public import SerrePositivity.KST.ProExcision.IntegerUnitizationIdealIso
+
+public import SerrePositivity.KST.ProExcision.NonUnitalHatGL
+
+public import SerrePositivity.KST.ProExcision.TriangularHatGL
