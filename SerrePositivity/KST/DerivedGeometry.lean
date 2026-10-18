@@ -118,3 +118,11 @@ public import SerrePositivity.KST.DerivedGeometry.AdjunctionKInjective
 public import SerrePositivity.KST.DerivedGeometry.AffineGammaKInjective
 public import SerrePositivity.KST.DerivedGeometry.HomotopyAdjunctionHomEquiv
 public import SerrePositivity.KST.DerivedGeometry.KInjectiveDerivedHomAdjunction
+public import SerrePositivity.KST.DerivedGeometry.ContractibleInjectiveEnvelope
+public import SerrePositivity.KST.DerivedGeometry.AdjacentBiproductContraction
+public import SerrePositivity.KST.DerivedGeometry.ShortExactPullback
+public import SerrePositivity.KST.DerivedGeometry.ContractibleComplexEpi
+public import SerrePositivity.KST.DerivedGeometry.AcyclicCokernelQuasiIso
+public import SerrePositivity.KST.DerivedGeometry.InjectiveFactorExpansion
+public import SerrePositivity.KST.DerivedGeometry.PullbackFactorSection
+public import SerrePositivity.KST.DerivedGeometry.InjectiveFactorExpansionComponents

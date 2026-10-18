@@ -14,6 +14,19 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.shortComplexPullback_shortExact,
+    `SerrePositivity.KST.DerivedGeometry.contractibleEpiSource_acyclic,
+    `SerrePositivity.KST.DerivedGeometry.contractibleEpiSection_comp,
+    `SerrePositivity.KST.DerivedGeometry.shortExact_quasiIso_f_of_acyclic,
+    `SerrePositivity.KST.DerivedGeometry.injectiveFactorExpansionι_mono,
+    `SerrePositivity.KST.DerivedGeometry.injectiveFactorExpansionι_quasiIso,
+    `SerrePositivity.KST.DerivedGeometry.injectiveFactorExpansionFactor_mono,
+    `SerrePositivity.KST.DerivedGeometry.injectiveFactorExpansion_component_factor,
+    `SerrePositivity.KST.DerivedGeometry.termInjectiveEnvelopeι_mono,
+    `SerrePositivity.KST.DerivedGeometry.termInjectiveEnvelope_injective,
+    `SerrePositivity.KST.DerivedGeometry.adjacentBiproductContraction,
+    `SerrePositivity.KST.DerivedGeometry.adjacentBiproductComplex_acyclic,
+    `SerrePositivity.KST.DerivedGeometry.adjacentBiproductComplex_isKInjective,
     `SerrePositivity.KST.DerivedGeometry.adjunctionComplexHomotopy,
     `SerrePositivity.KST.DerivedGeometry.adjunctionComplexHomotopySymm,
     `SerrePositivity.KST.DerivedGeometry.rightAdjoint_map_isKInjective,

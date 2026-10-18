@@ -1158,8 +1158,19 @@
 - 構成の参考として [Stacks Lemma 19.12.4 (079M)](https://stacks.math.columbia.edu/tag/079M)、[Lemma 19.12.5 (079N)](https://stacks.math.columbia.edu/tag/079N)、[Theorem 19.12.6 (079P)](https://stacks.math.columbia.edu/tag/079P) の文言と証明を確認した。原典の比較先 TT §3・§8、BvdB Thm 3.1.1、Toën §3.2 を変更するものではない。
 - 最初の構成部品は任意のアーベル圏 C の十分な injective の選択だけから作る。複体 M の各項について i_n : M_n → I_n を選び、J_n := I_n ⊕ I_(n+1)、微分 (x,y) ↦ (y,0) の contractible 複体を作る。M_n → J_n は (i_n, d_n ≫ i_(n+1))。各項の単射性・injectivity、鎖写像の式、縮約を証明する。
 - 次の構成部品はこの鎖写像 u の余核 Q と v : J → Q の mapping cocone を用いる。M → cocone(v) が各項単射かつ準同型で、各成分が injective 対象を経由することを、短完全列と cone のコホモロジーから証明する。まず対象ごとの存在として実装し、関手的な injective 選択がない段階で関手性は主張しない。
+- 準同型拡大の実装では、余核 Q への contractible な各項分裂全射 E → Q を明示し、J → Q に沿う pullback N を使う。短完全列 M → N → E を核の普遍性から構成して M → N の準同型性を直接証明する。mapping cocone との同型を未証明のまま使用しない。各項の分裂で J_n が N_n の部分対象になることを証明する。
 - acyclic な小複体の射を零ホモトピーにする工程では identity cone への単射の coproduct と pushout を構成する。準同型性には AB4、極限順序数での colimit には AB5 を使う。
 - 最終的な超限反復には小複体による K-injective 判定と regular cardinal による因子化が必要。この部分を各項 injective という条件で代用しない。また切断の逆極限の収束を未証明のまま使用しない。
+
+### §55 の実装の現在地
+
+- 保存検証：単射準同型拡大と各項の injective 部分対象への因子化まで集約対象ビルド 4042 jobs 成功、公理監査 2143 宣言。標準3公理のみ、KTheory import なし。
+
+- `termInjectiveEnvelope`・`termInjectiveEnvelopeι`：非有界複体から実際の各項 injective な複体への鎖写像を構成し、各成分と複体の圏での単射性を証明した。
+- `adjacentBiproductContraction`：縮約を成分で構成し、`adjacentBiproductComplex_acyclic` と K-injectivity を証明した。後者の根拠は縮約であり、各項の injectivity ではない。
+- `injectiveFactorExpansionι`：余核への contractible な各項分裂全射の pullback から、任意の非有界複体の単射準同型な拡大を構成した。短完全列と余核の非輪状性で準同型性を証明した。
+- `injectiveFactorExpansion_component_factor`：各成分が、実際の injective 対象を中間に持ち、拡大先への単射を持つ因子化を証明した。右逆は次数ごとのもので、鎖写像とは主張しない。
+- 拡大先自体の各項 injectivity や K-injectivity は未主張。acyclic な小複体の射を殺す工程、小複体の判定、超限工程は未完了。
 
 ## 主要宣言の表
 
@@ -1381,6 +1392,9 @@
 | `affineDerivedPlus_counit_isIso`・`affineDqcPlusEquivalence` | DerivedGeometry/AffineDerivedPlusCounit・AffineDqcPlusEquivalence | 実装・対象ビルド済み |
 | `rightAdjoint_map_isKInjective`・`affineCoefficientΓ_map_isKInjective` | DerivedGeometry/AdjunctionKInjective・AffineGammaKInjective | 実装・対象ビルド済み |
 | `homotopyAdjunctionHomEquiv`・`kInjectiveDerivedHomAdjunction` | DerivedGeometry/HomotopyAdjunctionHomEquiv・KInjectiveDerivedHomAdjunction | 実装・対象ビルド済み |
+| `termInjectiveEnvelopeι_mono`・`termInjectiveEnvelope_injective` | DerivedGeometry/ContractibleInjectiveEnvelope | 実装・対象ビルド済み |
+| `adjacentBiproductContraction`・`adjacentBiproductComplex_acyclic` | DerivedGeometry/AdjacentBiproductContraction | 実装・対象ビルド済み |
+| `injectiveFactorExpansionι_quasiIso`・`injectiveFactorExpansion_component_factor` | DerivedGeometry/InjectiveFactorExpansion・InjectiveFactorExpansionComponents | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
