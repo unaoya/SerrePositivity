@@ -357,3 +357,4 @@ public import SerrePositivity.InfinityCategories.F1.MappingCylinderQuasicategory
 public import SerrePositivity.InfinityCategories.F1.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.F1.InnerAnodyneVertices
 public import SerrePositivity.InfinityCategories.F1.InnerAnodynePrismExtension
+public import SerrePositivity.InfinityCategories.F1.MappingCylinderComparison

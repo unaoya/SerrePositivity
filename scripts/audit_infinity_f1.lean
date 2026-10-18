@@ -1644,3 +1644,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.innerAnodyne_extend_prism_over_interval
 #check @SerrePositivity.InfinityCategories.prismVerticalSimplex_naturality
 #check @SerrePositivity.InfinityCategories.innerAnodyne_prism_vertical_isCocartesian
+#check @SerrePositivity.InfinityCategories.mappingCylinderMap
+#check @SerrePositivity.InfinityCategories.mappingCylinderMap_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.mappingCylinderMap_desc

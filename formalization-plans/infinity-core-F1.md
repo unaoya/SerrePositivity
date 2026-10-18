@@ -7602,5 +7602,22 @@ lemma innerAnodyne_prism_vertical_isCocartesian {A B E S : SSet.{u}}
     (hc : ∀ x : A _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex H x)) :
     ∀ y : B _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex L y)
 
+noncomputable def mappingCylinderMap {X Y X' Y' : SSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
+    pushout (prismEndpoint 1 X) f ⟶ pushout (prismEndpoint 1 X') f'
+
+lemma mappingCylinderMap_isPrecompositionEquivalence {X Y X' Y' : SSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f')
+    (ha : IsPrecompositionEquivalence a) (hb : IsPrecompositionEquivalence b) :
+    IsPrecompositionEquivalence (mappingCylinderMap f f' a b h)
+
+lemma mappingCylinderMap_desc {X Y X' Y' E : SSet.{u}}
+    (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f')
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (g : Y ⟶ E)
+    (H' : (Δ[1] : SSet.{u}) ⊗ X' ⟶ E) (g' : Y' ⟶ E)
+    (w : prismEndpoint 1 X ≫ H = f ≫ g) (w' : prismEndpoint 1 X' ≫ H' = f' ≫ g')
+    (hH : (Δ[1] ◁ a) ≫ H' = H) (hg : b ≫ g' = g) :
+    mappingCylinderMap f f' a b h ≫ pushout.desc H' g' w' = pushout.desc H g w
+
 end SerrePositivity.InfinityCategories
 ```
