@@ -81,3 +81,6 @@ public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionRightUni
 public import SerrePositivity.EInfinity.BarrattEccles.ArityDegreeTransport
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeftUnit
 public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionLeftUnit
+public import SerrePositivity.EInfinity.BarrattEccles.PermutationCompositionValues
+public import SerrePositivity.EInfinity.BarrattEccles.NestedPositions
+public import SerrePositivity.EInfinity.BarrattEccles.PermutationNested
