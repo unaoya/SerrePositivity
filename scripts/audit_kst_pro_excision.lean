@@ -2355,3 +2355,30 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.extraDegeneracy_fill_cycle
 #print axioms SerrePositivity.KST.ProExcision.extraDegeneracy_fill_cycle
+
+#check @SerrePositivity.KST.ProExcision.simplexPairEvaluationApp
+#print axioms SerrePositivity.KST.ProExcision.simplexPairEvaluationApp
+
+#check @SerrePositivity.KST.ProExcision.simplexPairEvaluationApp_generator
+#print axioms SerrePositivity.KST.ProExcision.simplexPairEvaluationApp_generator
+
+#check @SerrePositivity.KST.ProExcision.simplexPairEvaluation_naturality
+#print axioms SerrePositivity.KST.ProExcision.simplexPairEvaluation_naturality
+
+#check @SerrePositivity.KST.ProExcision.simplexPairEvaluation
+#print axioms SerrePositivity.KST.ProExcision.simplexPairEvaluation
+
+#check @SerrePositivity.KST.ProExcision.simplexPairEvaluation_map_naturality
+#print axioms SerrePositivity.KST.ProExcision.simplexPairEvaluation_map_naturality
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_generator
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_generator
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_tmul
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_tmul
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_naturality
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_naturality

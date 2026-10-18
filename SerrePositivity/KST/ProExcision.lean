@@ -128,3 +128,5 @@ public import SerrePositivity.KST.ProExcision.ShuffleChainMap
 public import SerrePositivity.KST.ProExcision.NormalizedShuffle
 public import SerrePositivity.KST.ProExcision.SimplexPairModel
 public import SerrePositivity.KST.ProExcision.ExtraDegeneracyContraction
+public import SerrePositivity.KST.ProExcision.SimplexPairEvaluation
+public import SerrePositivity.KST.ProExcision.SimplexPairOperation
