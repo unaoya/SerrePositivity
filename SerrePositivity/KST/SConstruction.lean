@@ -95,4 +95,7 @@ public import SerrePositivity.KST.SConstruction.SPathBoundary
 public import SerrePositivity.KST.SConstruction.PathFirstRow
 public import SerrePositivity.KST.SConstruction.PathFirstRowNaturality
 
+public import SerrePositivity.KST.SConstruction.STrivialFibration
+public import SerrePositivity.KST.SConstruction.MultiSTrivialFibration
+
 /-! # ∞-S• 構成と連結 K 理論 -/

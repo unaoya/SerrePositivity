@@ -3130,3 +3130,19 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.pathFirstRowRestriction_zero
 #check @SerrePositivity.KST.SConstruction.corePathFirstRowRestriction_zero
 #print axioms SerrePositivity.KST.SConstruction.corePathFirstRowRestriction_zero
+
+-- S と有限反復 S による trivial Kan fibration の保存
+#check @SerrePositivity.KST.SConstruction.ihomMap_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.ihomMap_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.fullSubcomplex_trivialKanFibration_of_reflects
+#print axioms SerrePositivity.KST.SConstruction.fullSubcomplex_trivialKanFibration_of_reflects
+#check @SerrePositivity.KST.SConstruction.isGapped_iff_postcomp_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.isGapped_iff_postcomp_of_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.multiSEndofunctor_map_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.multiSEndofunctor_map_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.multiCoreSConstructionFunctor_map_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSConstructionFunctor_map_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.multiRealizationFunctor_map_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.multiRealizationFunctor_map_localized_isIso

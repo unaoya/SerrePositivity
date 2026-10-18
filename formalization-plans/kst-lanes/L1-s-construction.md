@@ -4315,3 +4315,75 @@ lemma corePathFirstRowRestriction_zero (C : SSet.{u}) :
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3071 jobs）、公理監査成功（1135 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.36 S と有限反復 S による trivial Kan fibration の保存
+
+内部 Hom の標的への自明ファイブレーションは自明ファイブレーションを誘導することを証明した。
+テンソルが単射を保つことから、閉随伴の持ち上げ同値で全ての単射に対する RLP を移している。
+さらに頂点条件で定義した全部分複体の制限射について、底の射が自明ファイブレーションで
+頂点条件を反映するなら、制限射も自明ファイブレーションとなる一般定理を証明した。
+底の持ち上げの全頂点の条件を標的の条件から反映し、境界との可換式を包含の単射性で回収する。
+この二つの一般定理では対象の Kan 性や quasicategory 性は不要。
+
+quasicategory 間の自明ファイブレーション p:E→B による後合成は、
+対角の零対象性と各四角形の押し出し性の保存・反映から gapped 条件を保存・反映する。
+この条件の反映により、既存の sPostcompCofiber n p hf は全 n で trivial Kan fibration となる。
+hf は元の射の定義に入る保存条件の証明であり、p の自明ファイブレーション性から
+preservesSConstructionData_of_trivialKanFibration と toCofiberData で得られる。
+E・B の安定性は一段の保存定理には不要。
+
+安定な入力の圏の射 p:X→Y が底で trivial Kan fibration のとき、
+有限反復 multiSEndofunctor の全多次数の射も trivial Kan fibration であることを
+反復方向数について帰納して証明した。core の各多次数の射も trivial Kan fibration となる。
+対角方向に制限して対角の比較定理を適用すると、
+(multiRealizationFunctor r).map p は anodyne 局所化で可逆となる。
+元の実現の Kan 性は仮定していない。これで自明ファイブレーションである比較を反復 S へ移す道具を得た。
+経路の第一行比較を安定な入力の圏の図式へ束ねてこれらの定理を適用する部分は未実装。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory MonoidalCategory MonoidalClosed SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下の正確な型。
+
+```lean
+instance ihomMap_trivialKanFibration (K : SSet.{u}) {E B : SSet.{u}}
+    (p : E ⟶ B) [TrivialKanFibration p] : TrivialKanFibration ((ihom K).map p)
+
+lemma fullSubcomplex_trivialKanFibration_of_reflects {X Y : SSet.{u}}
+    (P : X _⦋0⦌ → Prop) (Q : Y _⦋0⦌ → Prop) (p : X ⟶ Y) [TrivialKanFibration p]
+    (q : (fullSubcomplexOnVertices X P : SSet.{u}) ⟶ fullSubcomplexOnVertices Y Q)
+    (hq : q ≫ (fullSubcomplexOnVertices Y Q).ι = (fullSubcomplexOnVertices X P).ι ≫ p)
+    (href : ∀ x, Q (p.app (Opposite.op ⦋0⦌) x) → P x) : TrivialKanFibration q
+
+lemma isGapped_iff_postcomp_of_trivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p]
+    {n : ℕ} (F : arNerve n ⟶ E) : IsGapped F ↔ IsGapped (F ≫ p)
+
+instance sPostcompCofiber_trivialKanFibration (n : ℕ) {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p]
+    (hf : PreservesCofiberData p) : TrivialKanFibration (sPostcompCofiber n p hf)
+
+instance multiSEndofunctor_map_trivialKanFibration (r : ℕ) {X Y : StableModel.{u}}
+    (p : X ⟶ Y) [TrivialKanFibration p.val] (d : Fin r → SimplexCategoryᵒᵖ) :
+    TrivialKanFibration ((((multiSEndofunctor r).obj d).map p).val)
+
+instance multiCoreSConstructionFunctor_map_trivialKanFibration (r : ℕ)
+    {X Y : StableModel.{u}} (p : X ⟶ Y) [TrivialKanFibration p.val]
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    TrivialKanFibration (((multiCoreSConstructionFunctor r).map p).app d)
+
+lemma multiRealizationFunctor_map_localized_isIso (r : ℕ) {X Y : StableModel.{u}}
+    (p : X ⟶ Y) [TrivialKanFibration p.val] :
+    IsIso (AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor r).map p))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。経路の第一行比較に加え、S と有限反復 S が
+trivial Kan fibration を保ち、core の実現後に弱同値を与えることまで証明済み。
+経路の比較を反復へ移す具体的な束ね、境界射の homotopy fiber と loop の比較、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3073 jobs）、公理監査成功（1142 宣言、標準三公理のみ）。追加公理・sorry なし。
