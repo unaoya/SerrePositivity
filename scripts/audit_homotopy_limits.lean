@@ -2257,3 +2257,96 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @strictCoherentCone_isLimit_of_tower_homLimit
 #print axioms strictCoherentCone_isLimit_of_tower_homLimit
+
+#check @kanObjectHomFunctor_eq
+#print axioms kanObjectHomFunctor_eq
+
+#check @kanObjectCone_isLimit_of_forget
+#print axioms kanObjectCone_isLimit_of_forget
+
+#check @kanObjectHomCone_isLimit_of_forget
+#print axioms kanObjectHomCone_isLimit_of_forget
+
+#check @kanObjectConeOfUnderlying
+#print axioms kanObjectConeOfUnderlying
+
+#check @kanObjectConeOfUnderlying_forget
+#print axioms kanObjectConeOfUnderlying_forget
+
+#check @kanObjectConeOfUnderlying_forget_isLimit
+#print axioms kanObjectConeOfUnderlying_forget_isLimit
+
+#check @kanObjectHom_map_fibration
+#print axioms kanObjectHom_map_fibration
+
+#check @strictCoherentDiagram_eq_kanDiagram
+#print axioms strictCoherentDiagram_eq_kanDiagram
+
+#check @kanProductObject
+#print axioms kanProductObject
+
+#check @kanProductCone
+#print axioms kanProductCone
+
+#check @kanProductCone_forget_isLimit
+#print axioms kanProductCone_forget_isLimit
+
+#check @kanProductCone_isLimit
+#print axioms kanProductCone_isLimit
+
+#check @spaceProductCone
+#print axioms spaceProductCone
+
+#check @spaceProductCone_vertex
+#print axioms spaceProductCone_vertex
+
+#check @spaceProductCone_isLimitCone
+#print axioms spaceProductCone_isLimitCone
+
+#check @kanPullbackDiagram
+#print axioms kanPullbackDiagram
+
+#check @kanPullbackUnderlyingCone
+#print axioms kanPullbackUnderlyingCone
+
+#check @kanPullbackCone
+#print axioms kanPullbackCone
+
+#check @kanPullbackCone_obj
+#print axioms kanPullbackCone_obj
+
+#check @kanPullbackCone_forget_isLimit
+#print axioms kanPullbackCone_forget_isLimit
+
+#check @kanPullbackCone_isLimit
+#print axioms kanPullbackCone_isLimit
+
+#check @spacePullbackCone
+#print axioms spacePullbackCone
+
+#check @spacePullbackCone_isLimitCone
+#print axioms spacePullbackCone_isLimitCone
+
+#check @kanTowerUnderlyingCone
+#print axioms kanTowerUnderlyingCone
+
+#check @kanTowerUnderlyingCone_kanComplex
+#print axioms kanTowerUnderlyingCone_kanComplex
+
+#check @kanTowerCone
+#print axioms kanTowerCone
+
+#check @kanTowerCone_obj
+#print axioms kanTowerCone_obj
+
+#check @kanTowerCone_forget_isLimit
+#print axioms kanTowerCone_forget_isLimit
+
+#check @kanTowerCone_isLimit
+#print axioms kanTowerCone_isLimit
+
+#check @spaceTowerCone
+#print axioms spaceTowerCone
+
+#check @spaceTowerCone_isLimitCone
+#print axioms spaceTowerCone_isLimitCone

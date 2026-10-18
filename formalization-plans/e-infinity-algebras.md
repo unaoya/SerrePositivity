@@ -217,7 +217,7 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
 | γ3b | q′ の切断比較と native な制限の主可換式を証明。局所 Kan 性と Hom 極限条件から、離散図式・一脚 fibration の cospan・fibration の塔の strict な錐が ∞ 極限錐となる定理を公開。元の非反転の end・q_x と反転係数の直接比較は未完了 |
-| γ3c | 𝒮 の空積は IsLimitCone として実装。SSet の積・fibration 引き戻し・塔の Kan 性を実装。𝒮 の残りと Sp は未完了 |
+| γ3c | 𝒮 の実際の任意の小さい積、一脚 Kan fibration の引き戻し、Kan fibration の可算塔の極限を既存の図式上の IsLimitCone として公開。台と Kan 複体の圏の普遍性、全 Hom 条件も検証済み。Sp は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
@@ -1071,3 +1071,32 @@ q′ と native な制限の接続は証明済みとなった。
 他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-strict-homotopy-limits-aggregate.log` と
 `/tmp/gamma3-strict-homotopy-limits-audit.log`。
+
+
+### γ3c：𝒮 の指定された三形状の実際の極限
+
+`KanConeLimits` は既存の KanObject の豊穣 Hom と内部 Hom の共変作用を厳密に同定した。
+台での極限性から通常の Kan 複体の圏と全ての豊穣 Hom の極限性を導き、fibration の
+内部 Hom による保存も検証した。一般の台の錐の Kan な頂点を束縛する構成と、
+`strictCoherentDiagram F = kanDiagramCoherentNerve F` も公開した。
+`SpaceProducts` は `kanProductObject F` と射影の錐を構成し、
+`spaceProductCone_isLimitCone (F : Discrete J ⥤ KanObject)` として任意の小さい積を公開。
+頂点の台は `limit (F ⋙ kanObjectForget)`。有限性・非空性の仮定はなく、有限積を含む。
+`SpacePullbacks` は `p : E ⟶ B`、`q : D ⟶ B` の台の p が Kan fibration の場合に、
+台の実際の `pullback p q` を束縛し、`spacePullbackCone_isLimitCone p q` を公開した。
+右脚の fibration 性は要求しない。
+`SpaceTowers` は `F : AsSmall ℕᵒᵖ ⥤ KanObject` の台の全隣接遷移が Kan fibration なら、
+実際の可算塔の `limit (AsSmall.up ⋙ F ⋙ kanObjectForget)` を束縛し、
+`spaceTowerCone_isLimitCone F` を公開した。
+三形状とも F1 の既存の `kanDiagramCoherentNerve` 上の実際の錐であり、忘却後と通常の
+Kan 複体の圏の極限の普遍性、全 Hom の極限性と必要な fibration 性を実装内で証明した。
+追加の Hom 条件や比較同値を仮定する界面ではない。
+原典は HTT 4.2.4.1 の双対、Kerodon 7.5.3.12、7.5.4.6。
+新規31宣言の正確な型・全前提は README に記録し、公開1063宣言の監査へ追加した。
+γ3c の 𝒮 の指定された三形状の極限は公開済み。Sp の具体的な三形状の極限、
+元の非反転の end・q_x と反転係数の直接比較、余極限の比較は未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4467 jobs）、公開1063宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存703ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-space-limits-aggregate.log` と `/tmp/gamma3-space-limits-audit.log`。

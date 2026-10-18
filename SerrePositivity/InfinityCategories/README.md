@@ -2067,7 +2067,8 @@ coherent な錐の全空間への実際の底上の射と、全ての頂点上�
 q′ の切断比較を native な錐全体上の weighted な族の制限として厳密に同定した。
 局所 Kan 性と Hom 錐の極限性の下で、離散図式・一脚 fibration の cospan・fibration の塔の
 strict な錐が coherent nerve の極限錐となることも証明済み（末尾の三形状の移送を参照）。
-元の豊穣 Hom の end・q_x と反転係数の直接比較、𝒮 の残りの極限と Sp への具体的適用は未完了。
+元の豊穣 Hom の end・q_x と反転係数の直接比較、Sp への具体的適用は未完了。
+𝒮 の実際の積・一脚 Kan fibration の引き戻し・Kan fibration の可算塔の極限は公開済み。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -5546,3 +5547,147 @@ lemma strictCoherentCone_isLimit_of_tower_homLimit
 他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-strict-homotopy-limits-aggregate.log` と
 `/tmp/gamma3-strict-homotopy-limits-audit.log`。
+
+
+### γ3c：𝒮 の実際の積・一脚 fibration の引き戻し・塔の極限
+
+`KanConeLimits` は F1 の既存の `KanObject` と `kanObjectForget` を使い、
+豊穣 Hom 関手が忘却後の内部 Hom 関手に厳密に一致することを証明した。
+右随伴である内部 Hom の極限保存により、台で極限となる Kan 複体の錐は全ての豊穣 Hom でも
+極限となる。通常の Kan 複体の圏の極限性も台の普遍性から戻せる。
+任意の台の錐の頂点が Kan なら、その頂点と射影を Kan 複体の錐へ束縛する構成も公開した。
+fibration の内部 Hom による保存を検証し、`strictCoherentDiagram F` と F1 の既存の
+`kanDiagramCoherentNerve F` の厳密な一致も証明した。
+
+`SpaceProducts` は任意の小さい離散図式 `F : Discrete J ⥤ KanObject` について、
+台の `limit (F ⋙ kanObjectForget)` を `kanProductObject F` に束縛し、実際の射影から
+`kanProductCone F` を構成した。忘却後と Kan 複体の通常の圏での極限性を証明。
+F1 の図式上の `spaceProductCone F` は追加の仮定なしで `IsLimitCone` を満たす。
+頂点は `spaceInfinityVertex (kanProductObject F)` に厳密に一致する。
+J に有限性や非空性は不要なので、γ3c の有限積も含む。
+
+`SpacePullbacks` は Kan 複体の射 `p : E ⟶ B`、`q : D ⟶ B` について、
+台の p が Kan fibration なら、実際の単体集合の `pullback p q` を頂点とする
+`kanPullbackCone p q` を束縛した。右脚 q の fibration 性は要求しない。
+通常の引き戻しの普遍性を AsSmall の添字へ移し、忘却後と Kan 複体の圏の極限性を証明。
+Hom の左脚の fibration 性は内部 Hom による保存で検証し、
+`spacePullbackCone_isLimitCone` は既存の空間値図式上の実際の ∞ 引き戻し錐を与える。
+
+`SpaceTowers` は `F : AsSmall ℕᵒᵖ ⥤ KanObject` の台の全隣接遷移が Kan fibration なら、
+元の可算塔の `limit (AsSmall.up ⋙ F ⋙ kanObjectForget)` を頂点とする `kanTowerCone F`
+を構成した。頂点の Kan 性、忘却後と Kan 複体の圏の極限性を証明。
+全 Hom の極限性と全隣接遷移の fibration 性を検証して、
+`spaceTowerCone_isLimitCone` は既存の空間値図式上の実際の ∞ 極限錐を与える。
+
+三つの結論はいずれも `IsLimitCone` であり、未証明の Hom 条件や比較同値を前提とする界面ではない。
+原典上の位置は HTT 4.2.4.1 の双対、Kerodon 7.5.3.12、7.5.4.6。
+γ3c の 𝒮 の指定された三形状の極限はこれで公開済みとなった。
+
+新規31宣言の型は以下。共通の宇宙は u。
+`SpaceProducts` の J は任意の `Type u`。
+`SpacePullbacks` の E、B、D は `KanObject.{u}`、p と q は上記の射であり、
+`kanPullbackCone` 以降の宣言には `[Fibration (show E.obj ⟶ B.obj from p)]` を付ける。
+`SpaceTowers` の F は上記の塔。`kanTowerUnderlyingCone` 以外には全 n について
+`[Fibration (show (F.obj (AsSmall.up.obj (Opposite.op (n+1)))).obj ⟶
+(F.obj (AsSmall.up.obj (Opposite.op n))).obj from
+F.map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))]` を付ける。
+これ以外の前提は各型に明記した。
+
+```lean
+lemma kanObjectHomFunctor_eq (X : KanObject.{u}) :
+    (SimplicialCategory.sHomFunctor KanObject.{u}).obj (Opposite.op X) =
+      kanObjectForget ⋙ ihom X.obj
+
+noncomputable def kanObjectCone_isLimit_of_forget {I : Type u} [SmallCategory I]
+    {F : I ⥤ KanObject.{u}} (c : Cone F) (hc : IsLimit (kanObjectForget.mapCone c)) :
+    IsLimit c where
+  lift s
+
+noncomputable def kanObjectHomCone_isLimit_of_forget {I : Type u} [SmallCategory I]
+    {F : I ⥤ KanObject.{u}} (c : Cone F) (hc : IsLimit (kanObjectForget.mapCone c))
+    (X : KanObject.{u}) : IsLimit (simplicialHomCone c X)
+
+def kanObjectConeOfUnderlying {I : Type u} [SmallCategory I] (F : I ⥤ KanObject.{u})
+    (c : Cone (F ⋙ kanObjectForget)) (h : KanComplex c.pt) : Cone F where
+  pt
+
+lemma kanObjectConeOfUnderlying_forget {I : Type u} [SmallCategory I]
+    (F : I ⥤ KanObject.{u}) (c : Cone (F ⋙ kanObjectForget)) (h : KanComplex c.pt) :
+    kanObjectForget.mapCone (kanObjectConeOfUnderlying F c h) = c
+
+noncomputable def kanObjectConeOfUnderlying_forget_isLimit {I : Type u} [SmallCategory I]
+    (F : I ⥤ KanObject.{u}) (c : Cone (F ⋙ kanObjectForget)) (h : KanComplex c.pt)
+    (hc : IsLimit c) : IsLimit (kanObjectForget.mapCone (kanObjectConeOfUnderlying F c h))
+
+lemma kanObjectHom_map_fibration (X : KanObject.{u}) {Y Z : KanObject.{u}} (f : Y ⟶ Z)
+    [Fibration (show Y.obj ⟶ Z.obj from f)] :
+    Fibration (((SimplicialCategory.sHomFunctor KanObject.{u}).obj (Opposite.op X)).map f)
+
+lemma strictCoherentDiagram_eq_kanDiagram {I : Type u} [SmallCategory I]
+    (F : I ⥤ KanObject.{u}) : strictCoherentDiagram F = kanDiagramCoherentNerve F
+
+noncomputable def kanProductObject (F : Discrete J ⥤ KanObject.{u}) : KanObject.{u}
+
+noncomputable def kanProductCone (F : Discrete J ⥤ KanObject.{u}) : Cone F where
+  pt
+
+noncomputable def kanProductCone_forget_isLimit (F : Discrete J ⥤ KanObject.{u}) :
+    IsLimit (kanObjectForget.mapCone (kanProductCone F))
+
+noncomputable def kanProductCone_isLimit (F : Discrete J ⥤ KanObject.{u}) :
+    IsLimit (kanProductCone F)
+
+noncomputable def spaceProductCone (F : Discrete J ⥤ KanObject.{u}) :
+    JoinCone (kanDiagramCoherentNerve F)
+
+lemma spaceProductCone_vertex (F : Discrete J ⥤ KanObject.{u}) :
+    (spaceProductCone F).vertex = spaceInfinityVertex (kanProductObject F)
+
+lemma spaceProductCone_isLimitCone (F : Discrete J ⥤ KanObject.{u}) :
+    IsLimitCone (spaceProductCone F)
+
+def kanPullbackDiagram : AsSmall.{u} WalkingCospan ⥤ KanObject.{u}
+
+noncomputable def kanPullbackUnderlyingCone : Cone (kanPullbackDiagram p q ⋙ kanObjectForget)
+
+noncomputable def kanPullbackCone : Cone (kanPullbackDiagram p q)
+
+lemma kanPullbackCone_obj : (kanPullbackCone p q).pt.obj =
+    pullback (show E.obj ⟶ B.obj from p) (show D.obj ⟶ B.obj from q)
+
+noncomputable def kanPullbackCone_forget_isLimit :
+    IsLimit (kanObjectForget.mapCone (kanPullbackCone p q))
+
+noncomputable def kanPullbackCone_isLimit : IsLimit (kanPullbackCone p q)
+
+noncomputable def spacePullbackCone : JoinCone (kanDiagramCoherentNerve (kanPullbackDiagram p q))
+
+lemma spacePullbackCone_isLimitCone : IsLimitCone (spacePullbackCone p q)
+
+noncomputable def kanTowerUnderlyingCone : Cone (F ⋙ kanObjectForget)
+
+lemma kanTowerUnderlyingCone_kanComplex : KanComplex (kanTowerUnderlyingCone F).pt
+
+noncomputable def kanTowerCone : Cone F
+
+lemma kanTowerCone_obj : (kanTowerCone F).pt.obj =
+    limit (AsSmall.up ⋙ F ⋙ kanObjectForget)
+
+noncomputable def kanTowerCone_forget_isLimit :
+    IsLimit (kanObjectForget.mapCone (kanTowerCone F))
+
+noncomputable def kanTowerCone_isLimit : IsLimit (kanTowerCone F)
+
+noncomputable def spaceTowerCone : JoinCone (kanDiagramCoherentNerve F)
+
+lemma spaceTowerCone_isLimitCone : IsLimitCone (spaceTowerCone F)
+```
+
+Sp の Ω スペクトルの実際の三形状の極限、元の非反転の end・q_x と反転係数の直接比較、
+余極限の比較は未完了。𝒮 の今回の極限の適用だけで γ3 全体を完了とは数えない。
+E2b の具体的な適用は E2a 完了後に扱う。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4467 jobs）、公開1063宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存703ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-space-limits-aggregate.log` と `/tmp/gamma3-space-limits-audit.log`。
