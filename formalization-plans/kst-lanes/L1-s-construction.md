@@ -6098,3 +6098,148 @@ McCarthy の具体的な単体ホモトピー、単体積 Quillen A、object/cor
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3183 jobs）、公理監査成功（1446 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.51 D(m,w) の全同値図式・単体的構造・頂点評価の inner fibration・零次数
+
+Fiore–Pieper Proposition 4.27 の D(m,w) のため、任意の添字 K に対する
+全同値図式の圏 `equivalenceDiagrams K C` を定義した。
+対象は K の全辺を C の同値へ送る図式であり、図式間の自然変換は全て保持する。
+従って C の core からなる関手単体集合そのものとは定義していない。
+この対象の頂点は `K → core C` の実際の射と同値であることも証明したが、
+自然変換まで core の射に制限した同型とは主張しない。
+
+任意の添字制限、指定頂点での評価、定数図式の包含を構成し、
+添字制限の恒等・合成、評価との両立、定数図式の包含の自然性を厳密な等号で証明した。
+K=Δ[m] では単体的図式 `simplicialEquivalenceDiagrams` と、
+定値図式からの自然変換 `constantEquivalenceDiagramNat` にまとめた。
+指定頂点があるとき定数図式の評価は厳密に恒等となる。
+
+一点からの内部 Hom の評価を、定数図式を逆に持つ実際の同型として構成した。
+一般の評価は一点への制限とこの同型の合成になるため、C が quasicategory なら inner fibration。
+全同値図式の包含も inner fibration なので、その指定頂点での評価も inner fibration である。
+さらに D(0,w) の評価と定数図式の包含が、任意の C について実際の同型を与えることを証明した。
+この零次数の同型から正次数の trivial Kan fibration を結論したわけではない。
+
+標準単体の零頂点から恒等射への `simplexInitialContraction` も構成した。
+時刻零は零頂点への定数、時刻一は恒等であり、零頂点上では全時刻で厳密に一定。
+次の段階でこの収縮を全同値図式へ適用し、評価と定数図式の合成の自然同値を作る。
+評価の inner fibration 性、定数図式による頂点の全射性、自然同値からの充満忠実性を合わせ、
+既存の `IsFullyFaithful.trivialKanFibration_of_surjective` へ接続する方針。
+一般の m での自然同値・充満忠実性・全境界の持ち上げはまだ未証明。
+
+追加ファイル：`EquivalenceDiagrams.lean`、`EquivalenceDiagramFunctoriality.lean`、
+`EquivalenceDiagramVertices.lean`、`FunctorVertexEvaluation.lean`、`SimplexInitialContraction.lean`。
+以下は namespace `SerrePositivity.KST.SConstruction` 内の公開宣言の正確な型。
+全同値図式の定義・制限・定数包含・対象の対応・一点評価の同型には quasicategory 性は不要。
+全同値図式の quasicategory 性と評価の inner fibration 性には標的の quasicategory 性を要求する。
+
+```lean
+def IsEquivalenceDiagramVertex {K C : SSet.{u}} (v : ((ihom K).obj C) _⦋0⦌) : Prop
+
+def equivalenceDiagrams (K C : SSet.{u}) : SSet.{u}
+
+def equivalenceDiagramι (K C : SSet.{u}) : equivalenceDiagrams K C ⟶ (ihom K).obj C
+
+instance equivalenceDiagrams_quasicategory (K C : SSet.{u}) [Quasicategory C] :
+    Quasicategory (equivalenceDiagrams K C)
+
+lemma isEquivalenceDiagramVertex_functorVertex {K C : SSet.{u}} (F : K ⟶ C) :
+    IsEquivalenceDiagramVertex (functorVertex F) ↔
+      ∀ s : K _⦋1⦌, IsInvertibleEdge (edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s))
+
+def equivalenceDiagramReindex {K L : SSet.{u}} (i : L ⟶ K) (C : SSet.{u}) :
+    equivalenceDiagrams K C ⟶ equivalenceDiagrams L C
+
+lemma equivalenceDiagramReindex_ι {K L : SSet.{u}} (i : L ⟶ K) (C : SSet.{u}) :
+    equivalenceDiagramReindex i C ≫ equivalenceDiagramι L C =
+      equivalenceDiagramι K C ≫ (pre i).app C
+
+def equivalenceDiagramEvaluation (K C : SSet.{u}) (k : K _⦋0⦌) :
+    equivalenceDiagrams K C ⟶ C
+
+def equivalenceDiagramConstant (K C : SSet.{u}) : C ⟶ equivalenceDiagrams K C
+
+lemma equivalenceDiagramConstant_ι (K C : SSet.{u}) :
+    equivalenceDiagramConstant K C ≫ equivalenceDiagramι K C = curry (snd K C)
+
+lemma equivalenceDiagramConstant_evaluation (K C : SSet.{u}) (k : K _⦋0⦌) :
+    equivalenceDiagramConstant K C ≫ equivalenceDiagramEvaluation K C k = 𝟙 C
+
+lemma equivalenceDiagramReindex_id (K C : SSet.{u}) :
+    equivalenceDiagramReindex (𝟙 K) C = 𝟙 (equivalenceDiagrams K C)
+
+lemma equivalenceDiagramReindex_comp {K L M : SSet.{u}} (i : L ⟶ K) (j : M ⟶ L)
+    (C : SSet.{u}) :
+    equivalenceDiagramReindex (j ≫ i) C = equivalenceDiagramReindex i C ≫
+      equivalenceDiagramReindex j C
+
+lemma equivalenceDiagramReindex_evaluation {K L : SSet.{u}} (i : L ⟶ K)
+    (C : SSet.{u}) (l : L _⦋0⦌) :
+    equivalenceDiagramReindex i C ≫ equivalenceDiagramEvaluation L C l =
+      equivalenceDiagramEvaluation K C (i.app (Opposite.op ⦋0⦌) l)
+
+lemma equivalenceDiagramConstant_reindex {K L : SSet.{u}} (i : L ⟶ K) (C : SSet.{u}) :
+    equivalenceDiagramConstant K C ≫ equivalenceDiagramReindex i C =
+      equivalenceDiagramConstant L C
+
+def simplicialEquivalenceDiagrams (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u}
+
+def constantEquivalenceDiagramNat (C : SSet.{u}) :
+    (Functor.const SimplexCategoryᵒᵖ).obj C ⟶ simplicialEquivalenceDiagrams C
+
+def equivalenceDiagramVertexOfCoreMap {K C : SSet.{u}} (F : K ⟶ (quasicategoryCore C : SSet.{u})) :
+    (equivalenceDiagrams K C) _⦋0⦌
+
+def equivalenceDiagramCoreMap {K C : SSet.{u}} (v : (equivalenceDiagrams K C) _⦋0⦌) :
+    K ⟶ (quasicategoryCore C : SSet.{u})
+
+def equivalenceDiagramVerticesEquiv (K C : SSet.{u}) :
+    (equivalenceDiagrams K C) _⦋0⦌ ≃ (K ⟶ (quasicategoryCore C : SSet.{u}))
+
+def pointFunctorEvaluationIso (C : SSet.{u}) : (ihom (Δ[0] : SSet.{u})).obj C ≅ C
+
+lemma evaluateFunctorAt_factor {K C : SSet.{u}} (k : K _⦋0⦌) :
+    (pre (SSet.yonedaEquiv.symm k)).app C ≫ (pointFunctorEvaluationIso C).hom =
+      evaluateFunctorAt k
+
+instance evaluateFunctorAt_innerFibration {K C : SSet.{u}} [Quasicategory C] (k : K _⦋0⦌) :
+    InnerFibration (evaluateFunctorAt (Y
+
+instance equivalenceDiagramEvaluation_innerFibration (K C : SSet.{u}) [Quasicategory C]
+    (k : K _⦋0⦌) : InnerFibration (equivalenceDiagramEvaluation K C k)
+
+def zeroEquivalenceDiagramEvaluationIso (C : SSet.{u}) :
+    equivalenceDiagrams (Δ[0] : SSet.{u}) C ≅ C
+
+instance zeroEquivalenceDiagramEvaluation_isIso (C : SSet.{u}) :
+    IsIso (equivalenceDiagramEvaluation (Δ[0] : SSet.{u}) C
+      (stdSimplex.obj₀Equiv.symm (0 : Fin 1)))
+
+def simplexInitialOrder (n : ℕ) : Fin 2 × Fin (n + 1) →o Fin (n + 1)
+
+def simplexInitialContraction (n : ℕ) : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Δ[n]
+
+lemma simplexInitialContraction_zero (n : ℕ) :
+    prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ simplexInitialContraction n =
+      SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))
+
+lemma simplexInitialContraction_one (n : ℕ) :
+    prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ simplexInitialContraction n = 𝟙 _
+
+lemma simplexInitialContraction_firstVertex (n : ℕ) :
+    (Δ[1] ◁ SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))) ≫
+      simplexInitialContraction n = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+§6.50 の object S のホモトピー不変性と自明ファイブレーションの像の弱同値に加え、
+D(m,w) の単体的構造・対象の core への図式との対応・評価の inner fibration・D(0,w) の同型を証明済み。
+一般の m での評価の trivial Kan fibration、core S の各行との比較、
+元の `objectToCoreSRealization` の弱同値性は未完了。
+McCarthy の具体的な単体ホモトピー、単体積 Quillen A、加法性比較の弱同値性、
+面のホモトピー引き戻し条件も未完了。
+反復 S 実現と §6.43 の homotopy fiber の比較、既存の構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3188 jobs）、公理監査成功（1477 宣言、標準三公理のみ）。追加公理・sorry なし。

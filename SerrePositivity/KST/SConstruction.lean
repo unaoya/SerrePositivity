@@ -162,4 +162,10 @@ public import SerrePositivity.KST.SConstruction.ArTimeCoordinates
 public import SerrePositivity.KST.SConstruction.ObjectSHomotopy
 public import SerrePositivity.KST.SConstruction.ObjectSTrivialFibration
 
+public import SerrePositivity.KST.SConstruction.EquivalenceDiagrams
+public import SerrePositivity.KST.SConstruction.EquivalenceDiagramFunctoriality
+public import SerrePositivity.KST.SConstruction.EquivalenceDiagramVertices
+public import SerrePositivity.KST.SConstruction.FunctorVertexEvaluation
+public import SerrePositivity.KST.SConstruction.SimplexInitialContraction
+
 /-! # ∞-S• 構成と連結 K 理論 -/

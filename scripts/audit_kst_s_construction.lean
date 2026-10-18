@@ -3776,3 +3776,66 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.objectS_map_localized_isIso_of_trivialKanFibration
 #check @SerrePositivity.KST.SConstruction.sTwoCofiberComparison_objectS_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.sTwoCofiberComparison_objectS_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.IsEquivalenceDiagramVertex
+#print axioms SerrePositivity.KST.SConstruction.IsEquivalenceDiagramVertex
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagrams
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagrams
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramι
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramι
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagrams_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagrams_quasicategory
+#check @SerrePositivity.KST.SConstruction.isEquivalenceDiagramVertex_functorVertex
+#print axioms SerrePositivity.KST.SConstruction.isEquivalenceDiagramVertex_functorVertex
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramReindex
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramReindex
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramReindex_ι
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramReindex_ι
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramEvaluation
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramEvaluation
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramConstant
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramConstant
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramConstant_ι
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramConstant_ι
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramConstant_evaluation
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramConstant_evaluation
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramReindex_id
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramReindex_id
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramReindex_comp
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramReindex_comp
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramReindex_evaluation
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramReindex_evaluation
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramConstant_reindex
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramConstant_reindex
+#check @SerrePositivity.KST.SConstruction.simplicialEquivalenceDiagrams
+#print axioms SerrePositivity.KST.SConstruction.simplicialEquivalenceDiagrams
+#check @SerrePositivity.KST.SConstruction.constantEquivalenceDiagramNat
+#print axioms SerrePositivity.KST.SConstruction.constantEquivalenceDiagramNat
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramVertexOfCoreMap
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramVertexOfCoreMap
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramCoreMap
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramCoreMap
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramVerticesEquiv
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramVerticesEquiv
+#check @SerrePositivity.KST.SConstruction.pointFunctorEvaluationIso
+#print axioms SerrePositivity.KST.SConstruction.pointFunctorEvaluationIso
+#check @SerrePositivity.KST.SConstruction.evaluateFunctorAt_factor
+#print axioms SerrePositivity.KST.SConstruction.evaluateFunctorAt_factor
+#check @SerrePositivity.KST.SConstruction.evaluateFunctorAt_innerFibration
+#print axioms SerrePositivity.KST.SConstruction.evaluateFunctorAt_innerFibration
+#check @SerrePositivity.KST.SConstruction.equivalenceDiagramEvaluation_innerFibration
+#print axioms SerrePositivity.KST.SConstruction.equivalenceDiagramEvaluation_innerFibration
+#check @SerrePositivity.KST.SConstruction.zeroEquivalenceDiagramEvaluationIso
+#print axioms SerrePositivity.KST.SConstruction.zeroEquivalenceDiagramEvaluationIso
+#check @SerrePositivity.KST.SConstruction.zeroEquivalenceDiagramEvaluation_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroEquivalenceDiagramEvaluation_isIso
+#check @SerrePositivity.KST.SConstruction.simplexInitialOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexInitialOrder
+#check @SerrePositivity.KST.SConstruction.simplexInitialContraction
+#print axioms SerrePositivity.KST.SConstruction.simplexInitialContraction
+#check @SerrePositivity.KST.SConstruction.simplexInitialContraction_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexInitialContraction_zero
+#check @SerrePositivity.KST.SConstruction.simplexInitialContraction_one
+#print axioms SerrePositivity.KST.SConstruction.simplexInitialContraction_one
+#check @SerrePositivity.KST.SConstruction.simplexInitialContraction_firstVertex
+#print axioms SerrePositivity.KST.SConstruction.simplexInitialContraction_firstVertex
