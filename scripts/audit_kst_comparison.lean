@@ -114,6 +114,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2532,6 +2533,33 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.integralDegenerateProjection_annihilates_iff
 
 
+-- HomologyFilteredColimits.lean
+
+#check @SerrePositivity.KST.Comparison.integralShortComplexFunctor_preservesColimits
+#print axioms SerrePositivity.KST.Comparison.integralShortComplexFunctor_preservesColimits
+
+#check @SerrePositivity.KST.Comparison.integralChainHomology_preservesExactColimits
+#print axioms SerrePositivity.KST.Comparison.integralChainHomology_preservesExactColimits
+
+#check @SerrePositivity.KST.Comparison.unnormalizedIntegralHomology_preservesExactColimits
+#print axioms SerrePositivity.KST.Comparison.unnormalizedIntegralHomology_preservesExactColimits
+
+#check @SerrePositivity.KST.Comparison.integralHomology_preservesExactColimits
+#print axioms SerrePositivity.KST.Comparison.integralHomology_preservesExactColimits
+
+#check @SerrePositivity.KST.Comparison.integralHomologyColimitIso
+#print axioms SerrePositivity.KST.Comparison.integralHomologyColimitIso
+
+#check @SerrePositivity.KST.Comparison.integralHomologyColimitIso_naturality
+#print axioms SerrePositivity.KST.Comparison.integralHomologyColimitIso_naturality
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsomorphism_colimit
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsomorphism_colimit
+
+#check @SerrePositivity.KST.Comparison.integralHomologyFilteredColimitIso
+#print axioms SerrePositivity.KST.Comparison.integralHomologyFilteredColimitIso
+
+
 -- HomologyHomotopy.lean
 
 #check @SerrePositivity.KST.Comparison.integralHomologyMap_id
@@ -2569,6 +2597,30 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.integralHomologyIsoOfPairContraction
 #print axioms SerrePositivity.KST.Comparison.integralHomologyIsoOfPairContraction
+
+
+-- HomologyPointwise.lean
+
+#check @SerrePositivity.KST.Comparison.shortComplexPointwiseHomologyIso
+#print axioms SerrePositivity.KST.Comparison.shortComplexPointwiseHomologyIso
+
+#check @SerrePositivity.KST.Comparison.shortComplexColimitCocone
+#print axioms SerrePositivity.KST.Comparison.shortComplexColimitCocone
+
+#check @SerrePositivity.KST.Comparison.shortComplexColimitIsColimit
+#print axioms SerrePositivity.KST.Comparison.shortComplexColimitIsColimit
+
+#check @SerrePositivity.KST.Comparison.shortComplexExactColimitHomologyIso
+#print axioms SerrePositivity.KST.Comparison.shortComplexExactColimitHomologyIso
+
+#check @SerrePositivity.KST.Comparison.shortComplexExactColimitHomologyIso_ι
+#print axioms SerrePositivity.KST.Comparison.shortComplexExactColimitHomologyIso_ι
+
+#check @SerrePositivity.KST.Comparison.shortComplexHomologyColimitIsColimit
+#print axioms SerrePositivity.KST.Comparison.shortComplexHomologyColimitIsColimit
+
+#check @SerrePositivity.KST.Comparison.shortComplexHomology_preservesExactColimits
+#print axioms SerrePositivity.KST.Comparison.shortComplexHomology_preservesExactColimits
 
 
 -- HomologyQuasiIso.lean

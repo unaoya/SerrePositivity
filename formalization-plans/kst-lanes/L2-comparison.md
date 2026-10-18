@@ -808,6 +808,27 @@ Lean で必要な部品：単体的セル添付、cover と係数の比較、H�
 先に既存の horn の二段階収縮を整数ホモロジーへ移し、その後局所係数・セル添付へ拡張する。
 この論理の記録は、上記各部品の形式化完了を意味しない。
 
+### filtered colimit とホモロジーの交換
+
+確認する文言：アーベル群の filtered colimit は完全であり、鎖複体の filtered colimit のホモロジーは
+各段階のホモロジーの filtered colimit と自然に同型である。
+証明方針：関手圏の三項複体のホモロジーを評価関手のホモロジー保存で点ごとに記述する。
+Mathlib の AB5 により余極限関手は有限極限・有限余極限を保存し、実際のホモロジーを保存する。
+三項複体の次数ごとの余極限と複体の評価の余極限を照合して比較の自然性を得る。
+これを自由整数鎖複体へ適用して、horn を順次添付する際の極限段階のホモロジーを計算する。
+正規化は既に証明した自然なホモロジー比較で戻す。ホモロジー保存を新しい構造体の仮定にはしない。
+Waldhausen LNM 1126 §1.7・§1.8 のセル濾過を単体的・アーベル圏の余極限で扱う証明経路である。
+
+### horn 添付の pushout と相対余核
+
+確認する文言：単射な鎖写像の擬同型性は、その余核複体が acyclic であることと同値である。
+正方向は短完全列のホモロジー長完全列、逆方向は両隣の余核ホモロジーの消滅から従う。
+非負鎖複体では H_n の左隣に H_(n+1) があるため、零次でも単射性の判定に適用できる。
+アーベル圏の pushout で単射性は保存され、対応する二本の射の余核は実際に同型である。
+従って単射な擬同型の pushout は擬同型である。
+自由非正規化整数鎖複体の pushout 保存と、horn の単射性・ホモロジー同型を使って添付へ適用する。
+原典のセル濾過による議論を、Mathlib の短完全列と余核の pushout 比較で証明する経路である。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a と L2b の要求された群状モノイドの比較・KST Lemma 2.13 を完了し、L2c に進む。
@@ -871,6 +892,8 @@ L2c：正規化整数ホモロジー、非正規化との自然同型、ホモ�
 全局所係数のホモロジー同型から整数係数のホモロジー同型を導いた。
 二段階の対の収縮によるホモロジー同型と、正次元の全 horn 包含の整数ホモロジー同型を証明した。
 自由非正規化整数鎖複体の余極限保存と、正規化・非正規化の擬同型による整数ホモロジー同型の判定も証明した。
+AB5 による filtered colimit と整数ホモロジーの自然な交換、
+各段階の整数ホモロジー同型の余極限への移送は完成した。
 Kan 置換のホモロジー保存とセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
@@ -880,10 +903,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4460 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4478 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1349 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2470 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1364 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2509 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -895,6 +918,8 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `shortComplexPointwiseHomologyIso`、`shortComplexHomologyColimitIsColimit` | 監査済み | 関手圏のホモロジーと完全な余極限の実際の普遍性 |
+| `integralHomologyFilteredColimitIso`、`integralHomologyIsomorphism_colimit` | 監査済み | filtered colimit との自然な比較同型と段階ごとの同型の保存 |
 | `integralHomologyIsoOfPairContraction`、`hornIntegralHomologyIso` | 監査済み | 二段階の対の収縮と正次元 horn の整数ホモロジー同型 |
 | `unnormalizedIntegralChains_preservesColimits` | 監査済み | 自由非正規化鎖複体の余極限保存 |
 | `integralHomologyIsomorphism_iff_unnormalized_quasiIso` | 監査済み | 余極限を保存する複体での擬同型による判定 |
