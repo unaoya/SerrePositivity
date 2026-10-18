@@ -50,7 +50,7 @@ def connectiveHomComplex_zeroIso (x y : D) :
 使われ方：HA 1.3.1.13 の次数反転による Hom の成分計算。 -/
 def connectiveHomComplex_positiveIso (x y : D) (n : ℕ) :
     (connectiveHomComplex (R := R) x y).X (n + 1) ≅
-      (homObject R D x y).X (-(n + 1 : ℕ) : ℤ) :=
+      (homObject R D x y).X (-(n + 1 : ℤ)) :=
   (homObject R D x y).truncLE'XIso (ComplexShape.embeddingUpIntLE 0) (by simp)
     (by rw [ComplexShape.boundaryLE_embeddingUpIntLE_iff]; omega)
 
@@ -72,7 +72,7 @@ def connectiveHomComplex_zeroCyclesIso (x y : D) :
 lemma connectiveHomComplex_d_positive (x y : D) (n : ℕ) :
     (connectiveHomComplex (R := R) x y).d (n + 2) (n + 1) =
       (connectiveHomComplex_positiveIso (R := R) x y (n + 1)).hom ≫
-        (homObject R D x y).d (-(n + 2 : ℕ) : ℤ) (-(n + 1 : ℕ) : ℤ) ≫
+        (homObject R D x y).d (-(n + 2 : ℤ)) (-(n + 1 : ℤ)) ≫
           (connectiveHomComplex_positiveIso (R := R) x y n).inv := by
   exact (homObject R D x y).truncLE'_d_eq (ComplexShape.embeddingUpIntLE 0)
     (by simp) (by simp; omega) (by simp)

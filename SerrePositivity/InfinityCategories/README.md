@@ -1360,11 +1360,40 @@ namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{
 H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `standardZeroEquiv` は標準零単体と閉次数零の元の R 線形同値であり、
 `standardMooreZeroIso` は実際の Moore 正規化の零項と切断 Hom の零項との同型である。
-正次数の `standardMoorePositiveIso` と合わせて全次数の各項の同型を得た。
-微分との両立と Mathlib Γ 側への接続はまだ残る。
-対象・集約ビルドは3546件で成功し、公開87宣言の型と公理監査は標準三公理のみ。
-正確な型と前提は `scripts/audit_dold_kan_comparison.lean` に記録する。
+`standardMoorePositiveIso_d` と `standardMooreZeroIso_d` により、各項の同型は微分と可換。
+`standardNormalizationIso` は標準模型の実際の Moore 正規化と切断 Hom の複体の同型である。
+`standardDoldKanModuleIso` は Dold–Kan 同値の unit と Γ の作用でこれを戻した自然同型、
+`homModuleDoldKanIso` は N4 の線形単体的加群と実際の Mathlib Γ の自然同型である。
+`homSpaceDoldKanIso` はその台単体集合の同型であり、全ての面・退化と可換である。
+`doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
+`doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
+この同型はまだ coherent nerve の写像空間との比較ではない。
+対象・集約ビルドは3549件で成功し、公開104宣言の型と公理監査は標準三公理のみ。
+正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
-γ1.5b 全体は未完了。残りは標準成分模型と実際の chain map・Mathlib Γ との同定、AW 豊穣合成と
+γ1.5b 全体は未完了。Hom の Mathlib Γ との同定と Kan 性は証明済み。残りは AW 豊穣合成と
 通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。
 この Hom の模型だけで C_Δ の構成や coherent nerve との同値を完成とは数えない。
+
+## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
+
+担当と順序は `formalization-plans/foundations.md` §1・§4 と
+`formalization-plans/e-infinity-algebras.md` §3 に従う。γ1.5 の完了後に着手し、
+𝒮（F2）・Sp（L9）・E2b が共用する比較を作る。第一段階は単体集合の Quillen モデル構造と、
+その cofibrant-fibrant 対象である Kan 複体の単体的圏を扱う。
+原典は [HTT §4.2.4、特に Theorem 4.2.4.1](https://www.math.ias.edu/~lurie/papers/HTT.pdf)。
+coherent nerve の写像空間の比較には
+[Kerodon §4.6.7](https://kerodon.net/tag/01LA) を使う。
+
+方針は、局所 Kan な単体的圏の homotopy coherent な錐の写像空間を、coherent nerve の
+錐の写像空間へ比較し、モデル側の homotopy 極限・余極限の普遍性を Core の ∞ 圏の
+極限・余極限の普遍性へ送ることである。まず 𝒮 := N^hc(Kan) で証明し、
+余極限の値には必要な Kan 置換を施す。通常の極限・余極限との無条件な同一視や
+π₀ の普遍性だけを完成とは数えない。小さい図式の宇宙と対象の宇宙を区別し、
+厳密な図式と homotopy coherent な図式の比較も証明すべき工程に含める。
+
+後続では同じ写像空間による判定を単体的モデル圏の cofibrant-fibrant 部分へ一般化し、
+Sp の ∞ 極限、E2b の右 Quillen 関手による ∞ 極限保存へ接続する。
+Quillen 随伴から ∞ 随伴への比較（HTT 5.2.4.6 型）も §3 の後続項目として保持する。
+モデル構造を使う範囲はこの古典的モデルの ∞ 圏化に限り、F0 の一般論の前提を変更しない。
+新しい sorry・axiom・未証明の引用は導入しない。現在は着手前の設計記録であり、γ3 の成果は未実装。

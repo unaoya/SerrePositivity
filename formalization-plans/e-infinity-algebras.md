@@ -154,11 +154,11 @@ simplicialNerve_quasicategory (C : Type u)
 比較の向きは `N^hc(C_Δ) → N_dg(C)`。小さい線形 Hom の Kan 性、次数の符号、
 閉零射と零単体の同値、標準 chain map 方程式の単体的加群との自然同型、
 切断 Hom 複体への Mathlib Γ の適用とその正規化、標準模型の正規化の各項の
-具体的な核の共通部分との同定と正次数の最上位評価の線形同値まで実装済み。
-`standardMoorePositiveIso x y n` は標準模型の Moore 正規化の次数 n+1 の項と
-`(homObject R D x y).X (-(n+1 : ℤ))` との同型（`[CommRing R] [DGCategory R D]`）。
-`standardMooreZeroIso x y` は零項と `(connectiveHomComplex x y).X 0` との同型。
-全次数の各項の同型を得たが微分との両立は残る。公開87宣言の正確な型・前提・公理監査は
-`scripts/audit_dold_kan_comparison.lean`。
-残りは実際の chain map・Mathlib Γ との同定、C_Δ の AW 合成、
+具体的な核の共通部分との同定まで実装済み。`standardNormalizationIso x y` は
+標準模型の実際の Moore 正規化と `connectiveHomComplex x y` の複体の同型。
+`standardDoldKanModuleIso x y : standardModule x y ≅ doldKanHomModule x y`、
+`homModuleDoldKanIso x y : homModule x y ≅ doldKanHomModule x y` は単体的加群の自然同型。
+`doldKanHomSpaceKan x y : SSet.KanComplex (doldKanHomSpace x y)` は N4 の線形充填から従う。
+前提は `[CommRing R] [DGCategory R D]`。公開104宣言の正確な型・前提・公理監査は
+`scripts/audit_dold_kan_comparison.lean`。残りは C_Δ の AW 豊穣合成、
 比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。
