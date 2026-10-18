@@ -7633,5 +7633,13 @@ lemma mappingCylinder_isPrecompositionEquivalence
     (hc : ∀ x : X _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex H x)) :
     IsPrecompositionEquivalence (pushout.desc H g w)
 
+lemma IsLeftScaffold.finiteComparison_step (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) [LeftFibration p]
+    (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    (l : simplicialReplacement F ⟶ E) (hs : IsLeftScaffold p F l)
+    (h : l ≫ p = simplicialReplacementProjection F)
+    (ht : IsPrecompositionEquivalence (leftScaffoldBaseChange p F l h (scaffoldFiniteTail n))) :
+    IsPrecompositionEquivalence l
+
 end SerrePositivity.InfinityCategories
 ```

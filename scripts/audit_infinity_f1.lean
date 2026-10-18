@@ -1648,3 +1648,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.mappingCylinderMap_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.mappingCylinderMap_desc
 #check @SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.IsLeftScaffold.finiteComparison_step
