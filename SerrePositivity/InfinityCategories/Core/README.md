@@ -440,3 +440,7 @@ A3e 続き：同値である Fibration は trivial Kan fibration となること
 A3e 続き：写像空間の基底変換と標準単体の最後の頂点の終対象性を実装。充満忠実な inner fibration は全正次元境界を持ち上げ、頂点上の全射性を加えれば trivial Kan fibration、従って A3a の同値となる。公開25宣言の正確な型・全前提は計画 §6。Core ビルド・累計781宣言の標準3公理監査成功。一般の関手の path 置換への充満忠実性の移行、主同値判定と一般の極限不変性は未完了。
 
 A3e 続き：右 pinched 写像空間の任意パラメーターに対する普遍性と後合成の自然性を実装。trivial Kan fibration が誘導する写像空間の射は trivial Kan fibration であり、quasicategory 間では充満忠実となる。Kan 複体のホモトピー同値の左右消去則と充満忠実な後合成による検出も成立する。公開18宣言の正確な型・全前提を計画 §6 に記録。Core ビルド・累計799宣言の標準3公理監査成功。主同値判定と一般の極限不変性は引き続き未完了。
+
+A3e 主同値判定完了：`isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective` は quasicategory 間の任意の関手について、右 pinched 写像空間のホモトピー同値性と本質的全射性から A3a の実際の逆射・関手単体集合の可逆二胞体を構成する。`qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は逆データの選択。可逆 path の終点評価の trivial Kan fibration 性と、関手同型による充満忠実性の不変性を経由した。新規18公開宣言の正確な型・全前提は計画 §6。Core ビルド・累計817宣言の標準3公理監査成功。一般の同値による任意の極限錐の保存・反映は未完了であり、A3e 全体は未完了。
+
+担当順は統合計画 foundations.md に従い A3e → A6（関手 ∞ 圏の極限、HTT 5.1.2.2）→ A4・A5。F1 は α2 の担当。Core の既存の公開名・型を変更する場合は事前に報告する。

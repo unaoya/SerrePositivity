@@ -5352,6 +5352,134 @@ lemma isFullyFaithful_comp_iff {X Y Z : SSet.{u}}
 end SerrePositivity.InfinityCategories
 ```
 
+
+### A3e 主同値判定：充満忠実かつ本質的全射な関手（2026-10-18）
+
+prism の反転によって可逆 path の終点評価も trivial Kan fibration と証明。関手同型による充満忠実性の不変性を経て、一般の充満忠実かつ本質的全射な関手に実際の逆射と関手単体集合の可逆二胞体を構成した。主同値判定は完了。A3e 全体では一般の同値による任意の極限錐の保存・反映が未完了。公開18宣言の全ての型・前提は以下。Core ビルド1641 jobs、累計817宣言の標準3公理監査成功。既存の公開名・型は変更していない。今後の担当順は foundations.md に従い A3e → A6（HTT 5.1.2.2）→ A4・A5、F1 は α2 が担当。
+
+PrismOpposite：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+def opTensorIso (A B : SSet.{u}) : A.op ⊗ B.op ≅ (A ⊗ B).op
+
+def reversePrism {A Y : SSet.{u}} (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y) :
+    (Δ[1] : SSet.{u}) ⊗ A.op ⟶ Y.op
+
+lemma reversePrism_precomp {A B Y : SSet.{u}} (i : A ⟶ B)
+    (H : (Δ[1] : SSet.{u}) ⊗ B ⟶ Y) :
+    reversePrism ((Δ[1] ◁ i) ≫ H) = (Δ[1] ◁ SSet.opFunctor.map i) ≫ reversePrism H
+
+lemma reversePrism_postcomp {A Y Z : SSet.{u}} (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y)
+    (p : Y ⟶ Z) : reversePrism (H ≫ p) = reversePrism H ≫ SSet.opFunctor.map p
+
+lemma reversePrism_endpoint {A Y : SSet.{u}} (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y)
+    (i : Fin 2) : prismEndpoint i A.op ≫ reversePrism H =
+      SSet.opFunctor.map (prismEndpoint i.rev A ≫ H)
+
+lemma reversePrism_double {A Y : SSet.{u}} (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y) :
+    reversePrism (reversePrism H) ≫ (SSet.opFunctorCompOpFunctorIso.app Y).hom =
+      (Δ[1] ◁ (SSet.opFunctorCompOpFunctorIso.app A).hom) ≫ H
+
+lemma reversePrism_vertical_isInvertible {A Y : SSet.{u}} [Quasicategory Y]
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y)
+    (hH : ∀ x : A _⦋0⦌, IsInvertibleEdge (edgeOfSimplex
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1))))
+    (x : A.op _⦋0⦌) : IsInvertibleEdge (edgeOfSimplex
+      ((reversePrism H).app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)))
+
+def unreversePrism {A Y : SSet.{u}} (H : (Δ[1] : SSet.{u}) ⊗ A.op ⟶ Y.op) :
+    (Δ[1] : SSet.{u}) ⊗ A ⟶ Y
+
+lemma unreversePrism_reversePrism {A Y : SSet.{u}}
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y) : unreversePrism (reversePrism H) = H
+
+lemma unreversePrism_precomp {A B Y : SSet.{u}} (i : A ⟶ B)
+    (H : (Δ[1] : SSet.{u}) ⊗ B.op ⟶ Y.op) :
+    unreversePrism ((Δ[1] ◁ SSet.opFunctor.map i) ≫ H) =
+      (Δ[1] ◁ i) ≫ unreversePrism H
+
+lemma unreversePrism_endpoint {A Y : SSet.{u}}
+    (H : (Δ[1] : SSet.{u}) ⊗ A.op ⟶ Y.op) (i : Fin 2) :
+    prismEndpoint i A ≫ unreversePrism H =
+      (SSet.opFunctorCompOpFunctorIso.app A).inv ≫
+        SSet.opFunctor.map (prismEndpoint i.rev A.op ≫ H) ≫
+          (SSet.opFunctorCompOpFunctorIso.app Y).hom
+
+end SerrePositivity.InfinityCategories
+```
+
+EquivalencePathFinalLifting：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma equivalenceHomotopy_extend_final {A B Y : SSet.{u}} [Quasicategory Y]
+    (i : A ⟶ B) [Mono i] (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y) (f : B ⟶ Y)
+    (h₁ : prismEndpoint 1 A ≫ H = i ≫ f)
+    (hH : ∀ x : A _⦋0⦌, IsInvertibleEdge (edgeOfSimplex
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ B ⟶ Y,
+      (Δ[1] ◁ i) ≫ F = H ∧ prismEndpoint 1 B ≫ F = f
+
+instance trivialKanFibration_equivalencePathEndpoint_one (Y : SSet.{u}) [Quasicategory Y] :
+    TrivialKanFibration (equivalencePathEndpoint Y 1)
+
+end SerrePositivity.InfinityCategories
+```
+
+FullyFaithfulIso：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma isFullyFaithful_iff_of_equivalenceHomotopy {A Y : SSet.{u}}
+    [Quasicategory A] [Quasicategory Y]
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y)
+    (hH : ∀ x : A _⦋0⦌, IsInvertibleEdge (edgeOfSimplex
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)))) :
+    IsFullyFaithful (prismEndpoint 0 A ≫ H) ↔ IsFullyFaithful (prismEndpoint 1 A ≫ H)
+
+lemma FunctorIso.isFullyFaithful_iff {A Y : SSet.{u}}
+    [Quasicategory A] [Quasicategory Y] {f g : A ⟶ Y} (e : FunctorIso f g) :
+    IsFullyFaithful f ↔ IsFullyFaithful g
+
+end SerrePositivity.InfinityCategories
+```
+
+FullyFaithfulEquivalence：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma IsFullyFaithful.equivalencePathReplacementMap {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsFullyFaithful f) :
+    IsFullyFaithful (equivalencePathReplacementMap f)
+
+lemma isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y)
+    (hf : IsFullyFaithful f) (he : IsEssentiallySurjective f) : IsQCatEquivalence f
+
+noncomputable def qCatEquivalenceOfFullyFaithfulEssentiallySurjective {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y)
+    (hf : IsFullyFaithful f) (he : IsEssentiallySurjective f) : QCatEquivalence X Y
+
+end SerrePositivity.InfinityCategories
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

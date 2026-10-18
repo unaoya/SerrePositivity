@@ -79,3 +79,8 @@ public import SerrePositivity.InfinityCategories.Core.PinchedUniversal
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
 
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulCalculus
+
+public import SerrePositivity.InfinityCategories.Core.PrismOpposite
+public import SerrePositivity.InfinityCategories.Core.EquivalencePathFinalLifting
+public import SerrePositivity.InfinityCategories.Core.FullyFaithfulIso
+public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
