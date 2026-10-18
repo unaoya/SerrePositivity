@@ -1,6 +1,20 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.exists_terminalCompositeTriangle
+#print axioms SerrePositivity.InfinityCategories.hasColimit_span_of_terminal_first
+#print axioms SerrePositivity.InfinityCategories.exists_pushoutRectangle_of_zeroEnd
+#print axioms SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout_zero_bottomRight
+#print axioms SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout_square
+#print axioms SerrePositivity.InfinityCategories.IsStable.pushout_of_pullback_square
+#print axioms SerrePositivity.InfinityCategories.IsStable.pullback_iff_pushout_square
+#print axioms SerrePositivity.InfinityCategories.binaryFan_isLimit_of_edge_eq
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.binaryProductOfRetraction
+#print axioms SerrePositivity.InfinityCategories.binaryProductOfRetraction_of_arrow_eq
+#print axioms SerrePositivity.InfinityCategories.zeroSourcePushout_isBinaryProduct_of_retraction
+#print axioms SerrePositivity.InfinityCategories.zeroSourcePushout_isBinaryProduct
+#print axioms SerrePositivity.InfinityCategories.zeroSourcePushoutBinaryBiproduct
+#print axioms SerrePositivity.InfinityCategories.hasBinaryBiproducts_ho
 #print axioms SerrePositivity.InfinityCategories.homotopyVertex_isInvertible_of_functorEdge
 #print axioms SerrePositivity.InfinityCategories.homotopyEvaluation_isIso_of_vertexPath
 #print axioms SerrePositivity.InfinityCategories.arrowHomotopy_isInvertible_of_evaluations
@@ -1032,7 +1046,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SpanHomotopyInvertible,
     `SerrePositivity.InfinityCategories.Stable.CofiberComparisonInvertible,
     `SerrePositivity.InfinityCategories.Stable.IsomorphismCofiberZero,
-    `SerrePositivity.InfinityCategories.Stable.IsomorphismFiberZero]
+    `SerrePositivity.InfinityCategories.Stable.IsomorphismFiberZero,
+    `SerrePositivity.InfinityCategories.Stable.TerminalCompositeTriangle,
+    `SerrePositivity.InfinityCategories.Stable.ZeroEndPasting,
+    `SerrePositivity.InfinityCategories.Stable.Bicartesian,
+    `SerrePositivity.InfinityCategories.Stable.SplitCofiberProduct,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryBiproduct]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

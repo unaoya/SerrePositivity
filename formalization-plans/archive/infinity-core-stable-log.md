@@ -10498,3 +10498,243 @@ propext・Classical.choice・Quot.sound のみ。以上は全て終了コード 
 自分の新規ファイルの警告なし。引用・追加公理・sorry は導入していない。
 双積性・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 は未完了。S4 全体の完成とは数えない。
+
+
+## 任意の四角形の双カルテジアン判定と h C の二項双積（2026-10-18）
+
+押し出しの右に零対象を付加する。第一枝が終対象へ向かう外側 span の余極限を作り、
+左四角形と底辺二単体を保持して長方形へ延長する。右・外側の零角に安定性を適用し、
+引き戻し貼り合わせを打ち消して元の押し出しの引き戻し性を得た。反対の安定性から逆方向も得る。
+よって全四角形で引き戻し iff 押し出しが完成した。全有限極限・余極限の存在は未証明。
+
+第一射が分裂する cofiber 列の右に左逆の合成二単体を付加し、零終点の押し出しから
+左逆と第二射の二項積性を得た。標準余積の包含・射影へ移し、同じ頂点の双積を作った。
+`hasBinaryBiproducts_ho` は追加の加法性を仮定せず Quasicategory と IsStable だけから得られる。
+第一射影を任意の左逆に替えた積性も公開し、加法逆元の構成に使える形にした。
+設計変更なし。公開名・正確な型・全前提は以下の Lean 出力のとおり。
+
+```lean
+@SerrePositivity.InfinityCategories.exists_terminalCompositeTriangle.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  {x y z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},
+  SerrePositivity.InfinityCategories.IsTerminalVertex.{u_1} z →
+    ∀ (f : SSet.Truncated.Edge.{u_1} x y),
+      ∃ τ,
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ)
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) ∧
+          Eq.{u_1 + 1}
+            ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} τ (Opposite.op.{1} { len := 0 })))
+              ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 2))
+            z
+@SerrePositivity.InfinityCategories.hasColimit_span_of_terminal_first.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X),
+  SerrePositivity.InfinityCategories.IsTerminalVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1} p) (Opposite.op.{1} { len := 0 })))
+        ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →
+    SerrePositivity.InfinityCategories.HasColimit.{u_1} p
+@SerrePositivity.InfinityCategories.exists_pushoutRectangle_of_zeroEnd.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (L :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} L →
+    ∀
+      (τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u_1}
+            L)
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ) →
+        SerrePositivity.InfinityCategories.IsZeroVertex.{u_1}
+            ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} τ (Opposite.op.{1} { len := 0 })))
+              ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 2)) →
+          ∃ F,
+            Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 2) L ∧
+              Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.pastingBottomTriangle.{u_1} F) τ ∧
+                SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+                    (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 0) ∧
+                  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+                    (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 1)
+@SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout_zero_bottomRight.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R →
+    SerrePositivity.InfinityCategories.IsZeroVertex.{u_1}
+        (SerrePositivity.InfinityCategories.squareVertex.{u_1} R 1 0) →
+      SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} R
+@SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout_square.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R →
+    SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} R
+@SerrePositivity.InfinityCategories.IsStable.pushout_of_pullback_square.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} R →
+    SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R
+@SerrePositivity.InfinityCategories.IsStable.pullback_iff_pushout_square.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} R ↔
+    SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R
+@SerrePositivity.InfinityCategories.binaryFan_isLimit_of_edge_eq.{u_1} : {X : SSet.{u_1}} →
+  {x y z x' y' z' : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (f : SSet.Truncated.Edge.{u_1} z x) →
+      (g : SSet.Truncated.Edge.{u_1} z y) →
+        (f' : SSet.Truncated.Edge.{u_1} z' x') →
+          (g' : SSet.Truncated.Edge.{u_1} z' y') →
+            Eq.{u_1 + 1} (SSet.Truncated.Edge.edge.{u_1} f) (SSet.Truncated.Edge.edge.{u_1} f') →
+              Eq.{u_1 + 1} (SSet.Truncated.Edge.edge.{u_1} g) (SSet.Truncated.Edge.edge.{u_1} g') →
+                CategoryTheory.Limits.IsLimit.{0, u_1, 0, u_1}
+                    (CategoryTheory.Limits.BinaryFan.mk.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} f)
+                      (SSet.Truncated.HomotopyCategory.homMk.{u_1} g)) →
+                  CategoryTheory.Limits.IsLimit.{0, u_1, 0, u_1}
+                    (CategoryTheory.Limits.BinaryFan.mk.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} f')
+                      (SSet.Truncated.HomotopyCategory.homMk.{u_1} g'))
+@SerrePositivity.InfinityCategories.ZeroTriangle.binaryProductOfRetraction.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X) →
+        SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t →
+          (r :
+              Quiver.Hom.{u_1, u_1}
+                (SerrePositivity.InfinityCategories.squareHoVertex.{u_1}
+                  (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t) 1 0)
+                (SerrePositivity.InfinityCategories.squareHoVertex.{u_1}
+                  (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t) 0 0)) →
+            Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+                  (SerrePositivity.InfinityCategories.squareHoBottom.{u_1}
+                    (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t))
+                  r)
+                (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+                  (SerrePositivity.InfinityCategories.squareHoVertex.{u_1}
+                    (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t) 0 0)) →
+              CategoryTheory.Limits.IsLimit.{0, u_1, 0, u_1}
+                (CategoryTheory.Limits.BinaryFan.mk.{u_1, u_1} r
+                  (SerrePositivity.InfinityCategories.squareHoRight.{u_1}
+                    (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} t)))
+@SerrePositivity.InfinityCategories.binaryProductOfRetraction_of_arrow_eq.{u_1,
+    u_2} : {C : Type u_1} →
+  [inst : CategoryTheory.Category.{u_2, u_1} C] →
+    {A B D A' B' D' : C} →
+      {f : Quiver.Hom.{u_2, u_1} A B} →
+        {g : Quiver.Hom.{u_2, u_1} B D} →
+          {f' : Quiver.Hom.{u_2, u_1} A' B'} →
+            {g' : Quiver.Hom.{u_2, u_1} B' D'} →
+              ((r : Quiver.Hom.{u_2, u_1} B A) →
+                  Eq.{u_2 + 1} (CategoryTheory.CategoryStruct.comp.{u_2, u_1} f r)
+                      (CategoryTheory.CategoryStruct.id.{u_2, u_1} A) →
+                    CategoryTheory.Limits.IsLimit.{0, u_2, 0, u_1}
+                      (CategoryTheory.Limits.BinaryFan.mk.{u_2, u_1} r g)) →
+                Eq.{max (u_1 + 1) (u_2 + 1)} (CategoryTheory.Arrow.mk.{u_2, u_1} f)
+                    (CategoryTheory.Arrow.mk.{u_2, u_1} f') →
+                  Eq.{max (u_1 + 1) (u_2 + 1)} (CategoryTheory.Arrow.mk.{u_2, u_1} g)
+                      (CategoryTheory.Arrow.mk.{u_2, u_1} g') →
+                    (r : Quiver.Hom.{u_2, u_1} B' A') →
+                      Eq.{u_2 + 1} (CategoryTheory.CategoryStruct.comp.{u_2, u_1} f' r)
+                          (CategoryTheory.CategoryStruct.id.{u_2, u_1} A') →
+                        CategoryTheory.Limits.IsLimit.{0, u_2, 0, u_1}
+                          (CategoryTheory.Limits.BinaryFan.mk.{u_2, u_1} r g')
+@SerrePositivity.InfinityCategories.zeroSourcePushout_isBinaryProduct_of_retraction.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (R :
+          Quiver.Hom.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            X) →
+        (hR : SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R) →
+          (hz :
+              SerrePositivity.InfinityCategories.IsZeroVertex.{u_1}
+                (SerrePositivity.InfinityCategories.squareVertex.{u_1} R 0 0)) →
+            (r :
+                Quiver.Hom.{u_1, u_1} (SerrePositivity.InfinityCategories.squareHoVertex.{u_1} R 1 1)
+                  (SerrePositivity.InfinityCategories.squareHoVertex.{u_1} R 1 0)) →
+              Eq.{u_1 + 1}
+                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+                    (SerrePositivity.InfinityCategories.squareHoRight.{u_1} R) r)
+                  (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+                    (SerrePositivity.InfinityCategories.squareHoVertex.{u_1} R 1 0)) →
+                CategoryTheory.Limits.IsLimit.{0, u_1, 0, u_1}
+                  (CategoryTheory.Limits.BinaryFan.mk.{u_1, u_1} r
+                    (SerrePositivity.InfinityCategories.zeroSourceCoproductSnd.{u_1} R hR ⋯))
+@SerrePositivity.InfinityCategories.zeroSourcePushout_isBinaryProduct.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (R :
+          Quiver.Hom.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            X) →
+        (hR : SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R) →
+          (hz :
+              SerrePositivity.InfinityCategories.IsZeroVertex.{u_1}
+                (SerrePositivity.InfinityCategories.squareVertex.{u_1} R 0 0)) →
+            CategoryTheory.Limits.IsLimit.{0, u_1, 0, u_1}
+              (CategoryTheory.Limits.BinaryFan.mk.{u_1, u_1}
+                (SerrePositivity.InfinityCategories.zeroSourceCoproductFst.{u_1} R hR ⋯)
+                (SerrePositivity.InfinityCategories.zeroSourceCoproductSnd.{u_1} R hR ⋯))
+@SerrePositivity.InfinityCategories.zeroSourcePushoutBinaryBiproduct.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (R :
+          Quiver.Hom.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            X) →
+        SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R →
+          SerrePositivity.InfinityCategories.IsZeroVertex.{u_1}
+              (SerrePositivity.InfinityCategories.squareVertex.{u_1} R 0 0) →
+            CategoryTheory.Limits.BinaryBiproductData.{u_1, u_1}
+              (SerrePositivity.InfinityCategories.squareHoVertex.{u_1} R 1 0)
+              (SerrePositivity.InfinityCategories.squareHoVertex.{u_1} R 0 1)
+@SerrePositivity.InfinityCategories.hasBinaryBiproducts_ho.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  CategoryTheory.Limits.HasBinaryBiproducts.{u_1, u_1}
+    ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+```
+
+対象 Bicartesian ビルド 2081 jobs、SplitCofiberProduct ビルド 2105 jobs、
+HomotopyBinaryBiproduct ビルド 2194 jobs、対象・Stable 集約ビルド 2222 jobs が成功。
+公開型抽出・公理監査も終了コード 0。監査は 228 モジュール・1728 宣言
+（生成・非公開宣言を含む）で標準三公理 propext・Classical.choice・Quot.sound のみ。
+自分の新規ファイルの警告なし。`git diff --check` 成功。
+引用・追加公理・sorry は導入していない。
+前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
+S4 全体の完成とは数えない。

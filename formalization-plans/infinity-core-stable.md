@@ -353,7 +353,7 @@ HasBinaryCoproducts (hoFunctor.obj X)` により h C の二項余積 instance �
 `homotopyOppositeEquivalence X : hoFunctor.obj X.op ≌ (hoFunctor.obj X)ᵒᵖ` を得た（Quasicategory）。
 `hasBinaryProducts_ho {X : SSet} [Quasicategory X] [IsStable X] :
 HasBinaryProducts (hoFunctor.obj X)` はその同値で反対側の二項余積を輸送する。
-h C の二項積・二項余積は完成。双積性・前加法構造は未完了。
+h C の二項積・二項余積は完成。双積性は下記で完成。前加法構造は未完了。
 その比較のため、零始点の押し出しの包含を、分裂する cofiber/fiber 列へ延長した。
 `exists_zeroReturnTriangle` は零対象から出る辺に、長辺が実際の恒等辺となる戻り二単体を与える
 （Quasicategory、安定性は不要）。`pastingOuterStandardSpan_bottomEdge` と
@@ -384,7 +384,7 @@ cofiber/fiber 列を作る。三対象は元の右下・右上・左上の指定
 その類が標準第二射影に等しいことを余積の一意性で証明する（Quasicategory、零射）。
 `exists_coproductCofiberSequence` は零始点の押し出しの第一包含・標準第二射影を
 Arrow の等号で指定する cofiber/fiber 列を与える。三対象の頂点、第二射の分裂性、接続射の消滅も保持する
-（Quasicategory、IsStable）。双積性・前加法構造は未完了。
+（Quasicategory、IsStable）。双積性は下記で完成。前加法構造は未完了。
 比較に使う零 cofiber・零 fiber からの同型判定を整備した。
 `homotopyOppositeEquivalence_map_homMk` と双対四角形の辺の式は、反対ホモトピー圏の比較が
 実際の辺の反転を保つことを示す。`terminalTargetPullback_isBinaryProduct` は終点が終対象の
@@ -416,7 +416,24 @@ span で可逆な比較を押し出し全体へ延長し、指定した制限の
 `CofiberSquare.homMk_isIso_iff_zero`・`FiberSquare.homMk_isIso_iff_zero` は
 任意の選んだ cofiber/fiber による同型判定を同値として公開する（Quasicategory、IsStable）。
 同型から零となる向きは安定性不要、零から同型となる向きに安定性を使う。
-次に積・余積の比較を進める。
+任意の押し出しの右に零対象を付加する構成が完成した。
+`exists_terminalCompositeTriangle` は最初の辺を固定し、指定終対象へ向かう二単体を作る
+（Quasicategory）。`hasColimit_span_of_terminal_first` と
+`exists_pushoutRectangle_of_zeroEnd` は外側 span の第一零枝から余極限を得て、
+左四角形と底辺二単体を保持した両側押し出しの長方形へ延長する（Quasicategory、IsStable）。
+`IsStable.pullback_of_pushout_square` は右側と外側の零角に安定性を適用し、
+引き戻し貼り合わせを打ち消して任意の押し出しを引き戻しにする。
+`IsStable.pushout_of_pullback_square` は反対の安定性から逆方向を与え、
+`IsStable.pullback_iff_pushout_square` は全四角形での同値を公開する（Quasicategory、IsStable）。
+HA 1.1.3.4 の四角形の条件は逆方向も完成したが、全有限極限・余極限の存在はまだ未証明。
+`ZeroTriangle.binaryProductOfRetraction` は cofiber 列の第一射の任意の左逆と第二射を
+中間対象上の二項積とする（Quasicategory、IsStable）。
+`binaryProductOfRetraction_of_arrow_eq` は三対象・二射の表示の変更を Arrow の等号で処理する
+（任意の圏）。`zeroSourcePushout_isBinaryProduct_of_retraction` と標準射影版は、
+第一包含の任意の左逆と標準第二射影の積性を与える。
+`zeroSourcePushoutBinaryBiproduct` は元の押し出し頂点と標準包含・射影を使う双積データ。
+`hasBinaryBiproducts_ho` は h C の二項双積 instance として完成した（Quasicategory、IsStable）。
+次に前加法構造を構成する。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -556,12 +573,14 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 始対象の下の図式から始対象を忘れる | `diagramNestedCosliceIso`、`sliceUnderPostcomp_trivialKanFibration_of_trivial`、`diagramNestedCosliceProjection` と射・頂点の式、`diagramNestedCosliceProjection_trivial_of_initial`（値域に仮定なし）、`isColimitCone_iff_forget_initial`（Quasicategory） | 一般の図式で完成。標準 span と離散二点図式への適用も下記で完成。h C の二項余積の普遍性は下記で完成 |
 | 離散二点図式の余極限 | `spanPointJoinIso` と三頂点の包含の式、`isColimitCone_iff_restrict_joinInr_of_initial`（Quasicategory、始点の始対象性）、`binaryPointDiagram`、`hasColimit_binaryPointDiagram`（Quasicategory、IsStable） | 任意の二つの指定頂点の余極限の存在まで完成。h C の二項余積の Hom の普遍性・instance は下記で完成 |
 | 二項余積の Hom の存在部分 | `JoinCocone.leg`、`legCompStruct`、`leg_comp_projection`、`binaryCoconeOfEdges` と脚・頂点の式（値域に仮定なし）、`exists_coconeVertexFactorization`、`exists_binaryColimit_desc`（Quasicategory、余極限性） | 指定された共通終域への二本の射の因子分解の存在まで完成。一意性・HasBinaryCoproducts instance も下記で完成 |
-| 二項余積の Hom の一意性と instance | `coconeLegTriangle` と制限の式、`exists_binaryCoconeTriangleFamily`、`exists_binaryCoconeEdgeLift`（値域に仮定なし）、`exists_binaryCoconeEdgeLift_of_comm`、`exists_binaryCoconeHomLift`、`binaryColimit_hom_ext_to_cocone`、`binaryColimit_hom_ext`、`binaryColimit_isColimit`、`hasBinaryCoproduct_of_binaryColimit`（Quasicategory、後四者は余極限性）、`hasBinaryCoproducts_ho`（Quasicategory、IsStable） | 完成。双積・前加法構造は未完了 |
-| 安定性の自己双対性と二項積 | `spanSwapIso`、`isPushoutSquare_iff_transpose`、`sliceUnderPostcomp_isIso`、`isPushoutSquare_iff_postcomp_isIso`、`isPullbackSquare_iff_postcomp_isIso`、`dualSquare` と二つの普遍性判定（値域に仮定なし）、`isStable_op`、`exists_zeroTargetPullbackSquare`（Quasicategory、IsStable）、`homotopyOppositeEquivalence`（Quasicategory）、`hasBinaryProducts_ho`（Quasicategory、IsStable） | 完成。双積性・前加法構造は未完了 |
-| 零始点の押し出しの包含の分裂列 | `exists_zeroReturnTriangle`、`exists_pushoutRectangle_of_returnTriangle`（Quasicategory）、`pastingTop_isSplitEpi_of_outer_column`（値域に仮定なし）、`exists_splitCofiberRectangle`、`exists_cofiberSequence_of_zeroSourcePushout`、`cofiberConnecting_eq_zero_of_epi`、`cofiberTriangle_mor₃_eq_zero_of_epi`、`exists_splitCofiber_of_zeroSourcePushout`（Quasicategory、IsStable） | 指定した包含・三対象の cofiber/fiber 列、第二射の切断、接続射の消滅まで完成。双積性・前加法構造は未完了 |
-| 幾何学的二項余積と標準包含・射影の照合 | `squareBinaryCocone` と脚の式、`binaryCofan_isColimit_of_edge_eq`（値域に仮定なし）、`squareBinaryCocone_isColimit`、`zeroSourcePushout_isBinaryCoproduct`、`zeroSourcePushoutCoproductIso`（Quasicategory）、`zeroSourceCoproductFst`・`Snd` と四合成式（さらに零射）、`pastingTop_hom_comp`（値域に仮定なし）、`exists_pastingProjection_eq_coproductSnd`（Quasicategory、零射）、`exists_coproductCofiberSequence`（Quasicategory、IsStable） | 指定された標準射影を持つ cofiber/fiber 列まで完成。双積性・前加法構造は未完了 |
-| 零 cofiber・零 fiber と比較の可逆性 | `terminalTargetPullback_isBinaryProduct`（Quasicategory）、`ZeroTriangle.isIso_f_of_zero_cofiber`・`isIso_g_of_zero_fiber`、`CofiberSquare.homMk_isIso_of_zero`・`FiberSquare.homMk_isIso_of_zero`、三対象の二つの零性からの消滅判定（Quasicategory、IsStable）、`colimitCoconeHomotopy_isInvertible_of_restriction`、`exists_pushoutSquareFunctorIso_lift_span`、`cofiberSquareComparisonIso`、`cofiberSquare_zero_iff`（Quasicategory） | 零 cofiber/fiber から同型となる向きと cofiber の零性の選択独立性が完成。逆向きも次行で完成。双積性・前加法構造は未完了 |
-| 同型と零 cofiber/fiber の同値 | `cofiberSquareHomotopy_isInvertible_of_vertexPaths`、`exists_invertibleCofiberSquareHomotopy_of_comm`、`ZeroTriangle.zero_cofiber_of_isIso_bottom`、`CofiberSquare.zero_of_homMk_isIso`・`FiberSquare.zero_of_homMk_isIso`（Quasicategory）、`FiberSquare.opCofiber`（仮定なし）、`CofiberSquare.homMk_isIso_iff_zero`・`FiberSquare.homMk_isIso_iff_zero`（Quasicategory、IsStable） | 任意の指定 cofiber/fiber で完成。双積性・前加法構造は未完了 |
+| 二項余積の Hom の一意性と instance | `coconeLegTriangle` と制限の式、`exists_binaryCoconeTriangleFamily`、`exists_binaryCoconeEdgeLift`（値域に仮定なし）、`exists_binaryCoconeEdgeLift_of_comm`、`exists_binaryCoconeHomLift`、`binaryColimit_hom_ext_to_cocone`、`binaryColimit_hom_ext`、`binaryColimit_isColimit`、`hasBinaryCoproduct_of_binaryColimit`（Quasicategory、後四者は余極限性）、`hasBinaryCoproducts_ho`（Quasicategory、IsStable） | 完成。双積性は下記で完成。前加法構造は未完了 |
+| 安定性の自己双対性と二項積 | `spanSwapIso`、`isPushoutSquare_iff_transpose`、`sliceUnderPostcomp_isIso`、`isPushoutSquare_iff_postcomp_isIso`、`isPullbackSquare_iff_postcomp_isIso`、`dualSquare` と二つの普遍性判定（値域に仮定なし）、`isStable_op`、`exists_zeroTargetPullbackSquare`（Quasicategory、IsStable）、`homotopyOppositeEquivalence`（Quasicategory）、`hasBinaryProducts_ho`（Quasicategory、IsStable） | 完成。双積性は下記で完成。前加法構造は未完了 |
+| 零始点の押し出しの包含の分裂列 | `exists_zeroReturnTriangle`、`exists_pushoutRectangle_of_returnTriangle`（Quasicategory）、`pastingTop_isSplitEpi_of_outer_column`（値域に仮定なし）、`exists_splitCofiberRectangle`、`exists_cofiberSequence_of_zeroSourcePushout`、`cofiberConnecting_eq_zero_of_epi`、`cofiberTriangle_mor₃_eq_zero_of_epi`、`exists_splitCofiber_of_zeroSourcePushout`（Quasicategory、IsStable） | 指定した包含・三対象の cofiber/fiber 列、第二射の切断、接続射の消滅まで完成。双積性は下記で完成。前加法構造は未完了 |
+| 幾何学的二項余積と標準包含・射影の照合 | `squareBinaryCocone` と脚の式、`binaryCofan_isColimit_of_edge_eq`（値域に仮定なし）、`squareBinaryCocone_isColimit`、`zeroSourcePushout_isBinaryCoproduct`、`zeroSourcePushoutCoproductIso`（Quasicategory）、`zeroSourceCoproductFst`・`Snd` と四合成式（さらに零射）、`pastingTop_hom_comp`（値域に仮定なし）、`exists_pastingProjection_eq_coproductSnd`（Quasicategory、零射）、`exists_coproductCofiberSequence`（Quasicategory、IsStable） | 指定された標準射影を持つ cofiber/fiber 列まで完成。双積性は下記で完成。前加法構造は未完了 |
+| 零 cofiber・零 fiber と比較の可逆性 | `terminalTargetPullback_isBinaryProduct`（Quasicategory）、`ZeroTriangle.isIso_f_of_zero_cofiber`・`isIso_g_of_zero_fiber`、`CofiberSquare.homMk_isIso_of_zero`・`FiberSquare.homMk_isIso_of_zero`、三対象の二つの零性からの消滅判定（Quasicategory、IsStable）、`colimitCoconeHomotopy_isInvertible_of_restriction`、`exists_pushoutSquareFunctorIso_lift_span`、`cofiberSquareComparisonIso`、`cofiberSquare_zero_iff`（Quasicategory） | 零 cofiber/fiber から同型となる向きと cofiber の零性の選択独立性が完成。逆向きも次行で完成。双積性は下記で完成。前加法構造は未完了 |
+| 同型と零 cofiber/fiber の同値 | `cofiberSquareHomotopy_isInvertible_of_vertexPaths`、`exists_invertibleCofiberSquareHomotopy_of_comm`、`ZeroTriangle.zero_cofiber_of_isIso_bottom`、`CofiberSquare.zero_of_homMk_isIso`・`FiberSquare.zero_of_homMk_isIso`（Quasicategory）、`FiberSquare.opCofiber`（仮定なし）、`CofiberSquare.homMk_isIso_iff_zero`・`FiberSquare.homMk_isIso_iff_zero`（Quasicategory、IsStable） | 任意の指定 cofiber/fiber で完成。双積性は下記で完成。前加法構造は未完了 |
+| 任意の四角形の双カルテジアン判定 | `exists_terminalCompositeTriangle`（Quasicategory）、`hasColimit_span_of_terminal_first`、`exists_pushoutRectangle_of_zeroEnd`、`IsStable.pullback_of_pushout_square`・`pushout_of_pullback_square`・`pullback_iff_pushout_square`（Quasicategory、IsStable） | 全四角形で完成。全有限極限・余極限の存在は未完了 |
+| 分裂 cofiber 列と二項双積 | `binaryFan_isLimit_of_edge_eq`（値域の仮定なし）、`ZeroTriangle.binaryProductOfRetraction`、`zeroSourcePushout_isBinaryProduct_of_retraction`・標準射影版、`zeroSourcePushoutBinaryBiproduct`、`hasBinaryBiproducts_ho`（Quasicategory、IsStable） | 二項双積 instance まで完成。前加法構造は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
