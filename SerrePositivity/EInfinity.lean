@@ -80,3 +80,7 @@ public import SerrePositivity.EInfinity.Operad.SchurFirstBlockGenerator
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerSplitTransport
 public import SerrePositivity.EInfinity.Operad.FirstSlotPowerAction
 public import SerrePositivity.EInfinity.Operad.SchurFirstSlotAction
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerOnes
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerSplitAppend
+public import SerrePositivity.EInfinity.Operad.FirstSlotPowerComparison
+public import SerrePositivity.EInfinity.Operad.InsertionZero
