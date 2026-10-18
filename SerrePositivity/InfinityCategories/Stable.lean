@@ -57,6 +57,10 @@ public import SerrePositivity.InfinityCategories.Stable.CoslicePostcompTrivial
 public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair
 public import SerrePositivity.InfinityCategories.Stable.InitialDiagramRestriction
 
+public import SerrePositivity.InfinityCategories.Stable.SpanPointJoin
+public import SerrePositivity.InfinityCategories.Stable.InitialJoinRestriction
+public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

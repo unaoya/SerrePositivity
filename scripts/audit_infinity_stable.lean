@@ -1,6 +1,9 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.spanPointJoinIso
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_restrict_joinInr_of_initial
+#print axioms SerrePositivity.InfinityCategories.hasColimit_binaryPointDiagram
 #print axioms SerrePositivity.InfinityCategories.diagramNestedCosliceIso
 #print axioms SerrePositivity.InfinityCategories.sliceUnderPostcomp_trivialKanFibration_of_trivial
 #print axioms SerrePositivity.InfinityCategories.diagramNestedCosliceProjection_trivial_of_initial
@@ -926,7 +929,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.DiagramNestedCoslice,
     `SerrePositivity.InfinityCategories.Stable.CoslicePostcompTrivial,
     `SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair,
-    `SerrePositivity.InfinityCategories.Stable.InitialDiagramRestriction]
+    `SerrePositivity.InfinityCategories.Stable.InitialDiagramRestriction,
+    `SerrePositivity.InfinityCategories.Stable.SpanPointJoin,
+    `SerrePositivity.InfinityCategories.Stable.InitialJoinRestriction,
+    `SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

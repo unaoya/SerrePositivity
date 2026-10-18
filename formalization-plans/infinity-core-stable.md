@@ -311,8 +311,14 @@ trivial Kan fibration の後合成が coslice でも trivial Kan fibration と�
 `diagramNestedCosliceProjection_trivial_of_initial` と `isColimitCone_iff_forget_initial` は、
 始対象の下の図式からその始対象を忘れても余極限性が同値であることを証明する。
 余極限性の同値は Quasicategory を仮定するが、射影の充填性・射の計算は値域に仮定しない。
-次に標準 span を一点と離散二点の join と同定して零始点を除き、
-離散二点図式の余極限を h C の二項余積として判定する工程が残る。
+`spanPointJoinIso` は標準 span を一点と離散二点の join と同定する。
+共通始点と二つの終点の包含の式も厳密に証明した。
+`isColimitCone_iff_restrict_joinInr_of_initial` は、始点が始対象である左 cone の余錐を
+右因子へ実際に制限しても余極限性が同値であることを示す。
+`binaryPointDiagram x y` は二つの指定頂点を値とする離散二点図式。
+`hasColimit_binaryPointDiagram` により安定な X の任意の二頂点について余極限の存在が完成した。
+零始点の押し出しの余錐を標準 span の join 表示へ移し、始対象の零始点を除いて構成した。
+次に離散二点図式の余極限を h C の二項余積として判定し、Hom の存在と一意性・instance を構成する。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -449,7 +455,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 左四角形と底辺二単体の貼り合わせ | `pastingCornerBottom_isPushout`、`pastingCornerGlue` と制限の式（値域に仮定なし）、`exists_pushoutRectangle_of_left_and_bottom`（Quasicategory、指定した左押し出しと外側基底の余極限） | 指定した左四角形・底辺二単体・外側余錐を保持する構成まで完成。外側余錐を cofiber から与える工程も下記で完成 |
 | 同値な形状・同型な図式の余極限の輸送 | `sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence`（Quasicategory、Mono、IsPrecompositionEquivalence）、`hasColimit_iff_of_functorIso`（Quasicategory、FunctorIso） | 一般の図式で完成。指定零枝を持つ span 間の同型の構成も下記で完成 |
 | 指定零枝の cofiber と二項余積四角形の存在 | `nonempty_functorIso_span_of_first_eq_terminal_second`（Quasicategory）、`hasColimit_span_of_zero_second`、`exists_pushoutRectangle_of_zeroTriangle`、`exists_zeroSourcePushoutSquare`（Quasicategory、IsStable） | 指定した二頂点を持つ零始点の押し出しまで完成。h C の二項余積の普遍性・instance と前加法構造は未完了 |
-| 始対象の下の図式から始対象を忘れる | `diagramNestedCosliceIso`、`sliceUnderPostcomp_trivialKanFibration_of_trivial`、`diagramNestedCosliceProjection` と射・頂点の式、`diagramNestedCosliceProjection_trivial_of_initial`（値域に仮定なし）、`isColimitCone_iff_forget_initial`（Quasicategory） | 一般の図式で完成。標準 span と離散二点図式への適用、および h C の二項余積の普遍性は未完了 |
+| 始対象の下の図式から始対象を忘れる | `diagramNestedCosliceIso`、`sliceUnderPostcomp_trivialKanFibration_of_trivial`、`diagramNestedCosliceProjection` と射・頂点の式、`diagramNestedCosliceProjection_trivial_of_initial`（値域に仮定なし）、`isColimitCone_iff_forget_initial`（Quasicategory） | 一般の図式で完成。標準 span と離散二点図式への適用も下記で完成。h C の二項余積の普遍性は未完了 |
+| 離散二点図式の余極限 | `spanPointJoinIso` と三頂点の包含の式、`isColimitCone_iff_restrict_joinInr_of_initial`（Quasicategory、始点の始対象性）、`binaryPointDiagram`、`hasColimit_binaryPointDiagram`（Quasicategory、IsStable） | 任意の二つの指定頂点の余極限の存在まで完成。h C の二項余積の Hom の普遍性・instance は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

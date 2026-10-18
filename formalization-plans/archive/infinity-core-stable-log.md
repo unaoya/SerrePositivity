@@ -8525,3 +8525,114 @@ JoinAssociatorRightPair ビルド 1185 jobs、InitialDiagramRestriction ビル�
 自分の新規ファイルに警告なし。`git diff --check` 成功。
 h C の二項余積・双積・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、
 S5〜S7 は未完了。TR1・TR3 は完成のまま。
+
+
+## 標準 span の join 表示と離散二点図式の余極限の存在
+
+`SpanPointJoin.lean` は標準ホーンと、一点・離散二点の join の同型を二つの pushout の比較で作る。
+二本の枝・共通始点・二つの終点について厳密な式を証明する。
+`InitialJoinRestriction.lean` は始点が始対象である left cone の余錐の余極限性を、
+実際の右因子への制限の余極限性と同値にする。前回の二重 coslice の比較を curry で適用した。
+`BinaryCoproductCocone.lean` は任意の二頂点 x・y を値とする離散二点図式 `binaryPointDiagram` を定義する。
+零始点の押し出しの余錐を join 表示へ移し、始対象の零始点を除くことで
+`hasColimit_binaryPointDiagram` を構成する（Quasicategory、IsStable）。
+離散二点図式の余極限の存在まで完成。h C の二項余積の Hom の存在・一意性と instance は次の工程。
+
+Lean で抽出した公開宣言の正確な型：
+
+```lean
+spanPointJoin_isPushout.{u_1} : CategoryTheory.IsPushout.{u_1, u_1 + 1}
+  (joinInl.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+  (joinInl.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (joinStdSimplexIso.{u_1} 0 0)) SSet.horn₂₀.ι₀₁.{u_1})
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (joinStdSimplexIso.{u_1} 0 0)) SSet.horn₂₀.ι₀₂.{u_1})
+spanPointJoinIso.{u_1} : CategoryTheory.Iso.{u_1, u_1 + 1}
+  (join.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+    (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+  (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+spanPointJoinIso_left.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (joinMap.{u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      CategoryTheory.Limits.coprod.inl.{u_1, u_1 + 1})
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanPointJoinIso.{u_1}))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (joinStdSimplexIso.{u_1} 0 0)) SSet.horn₂₀.ι₀₁.{u_1})
+spanPointJoinIso_right.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (joinMap.{u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      CategoryTheory.Limits.coprod.inr.{u_1, u_1 + 1})
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanPointJoinIso.{u_1}))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (joinStdSimplexIso.{u_1} 0 0)) SSet.horn₂₀.ι₀₂.{u_1})
+spanPointJoinIso_source.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (joinInl.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+      (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanPointJoinIso.{u_1}))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) SSet.horn₂₀.ι₀₁.{u_1})
+spanPointJoinIso_first.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} CategoryTheory.Limits.coprod.inl.{u_1, u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinInr.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanPointJoinIso.{u_1})))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) SSet.horn₂₀.ι₀₁.{u_1})
+spanPointJoinIso_second.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} CategoryTheory.Limits.coprod.inr.{u_1, u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinInr.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanPointJoinIso.{u_1})))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) SSet.horn₂₀.ι₀₂.{u_1})
+@isColimitCone_iff_restrict_joinInr_of_initial.{u_1} : ∀ {L X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (join.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) L) X),
+  IsInitialVertex.{u_1}
+      (SSet.yonedaEquiv.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (joinInl.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) L) F)) →
+    ∀ (d : JoinCocone.{u_1} F),
+      IsColimitCone.{u_1} d ↔
+        IsColimitCone.{u_1}
+          (JoinCocone.restrict.{u_1} d
+            (joinInr.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) L))
+@binaryPointDiagram.{u_1} : {X : SSet.{u_1}} →
+  CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) →
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) →
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        X
+@hasColimit_binaryPointDiagram.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  (x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  HasColimit.{u_1} (binaryPointDiagram.{u_1} x y)
+```
+
+対象 SpanPointJoin ビルド 1876 jobs、InitialJoinRestriction ビルド 1960 jobs、
+BinaryCoproductCocone ビルド 2048 jobs、対象・Stable 集約ビルド 2178 jobs、
+公開型抽出、公理監査は全て終了コード 0。
+監査は 185 モジュール・1488 宣言（生成・非公開宣言を含む）について標準三公理のみ。
+自分の新規ファイルに警告なし。`git diff --check` 成功。
+h C の二項余積・双積・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、
+S5〜S7 は未完了。TR1・TR3 は完成のまま。
