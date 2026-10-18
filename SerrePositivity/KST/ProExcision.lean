@@ -18,3 +18,4 @@ public import SerrePositivity.KST.ProExcision.SplitConnecting
 public import SerrePositivity.KST.ProExcision.ConeConnecting
 public import SerrePositivity.KST.ProExcision.FiltrationConnecting
 public import SerrePositivity.KST.ProExcision.AdjacentCut
+public import SerrePositivity.KST.ProExcision.IntervalCut

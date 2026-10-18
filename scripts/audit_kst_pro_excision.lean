@@ -410,3 +410,36 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.adjacentTensorCutBoundary_differential
 #print axioms SerrePositivity.KST.ProExcision.adjacentTensorCutBoundary_differential
+
+#check @SerrePositivity.KST.ProExcision.intervalCutShortComplex
+#print axioms SerrePositivity.KST.ProExcision.intervalCutShortComplex
+
+#check @SerrePositivity.KST.ProExcision.intervalCutIso
+#print axioms SerrePositivity.KST.ProExcision.intervalCutIso
+
+#check @SerrePositivity.KST.ProExcision.intervalCutSplitting
+#print axioms SerrePositivity.KST.ProExcision.intervalCutSplitting
+
+#check @SerrePositivity.KST.ProExcision.intervalCutShortComplex_shortExact
+#print axioms SerrePositivity.KST.ProExcision.intervalCutShortComplex_shortExact
+
+#check @SerrePositivity.KST.ProExcision.intervalTensorCutShortComplex
+#print axioms SerrePositivity.KST.ProExcision.intervalTensorCutShortComplex
+
+#check @SerrePositivity.KST.ProExcision.intervalTensorCutSplitting
+#print axioms SerrePositivity.KST.ProExcision.intervalTensorCutSplitting
+
+#check @SerrePositivity.KST.ProExcision.intervalTensorCutShortComplex_shortExact
+#print axioms SerrePositivity.KST.ProExcision.intervalTensorCutShortComplex_shortExact
+
+#check @SerrePositivity.KST.ProExcision.tensorFiltrationInterval
+#print axioms SerrePositivity.KST.ProExcision.tensorFiltrationInterval
+
+#check @SerrePositivity.KST.ProExcision.tensorFiltration_delta_split
+#print axioms SerrePositivity.KST.ProExcision.tensorFiltration_delta_split
+
+#check @SerrePositivity.KST.ProExcision.tensorFiltrationIntervalHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.tensorFiltrationIntervalHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.tensorFiltration_delta_quotientIso
+#print axioms SerrePositivity.KST.ProExcision.tensorFiltration_delta_quotientIso
