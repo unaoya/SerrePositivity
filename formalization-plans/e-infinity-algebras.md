@@ -2120,3 +2120,67 @@ fibration 性、塔は同じ x に対する全隣接遷移の fibration 性を�
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-direct-original-fiber-aggregate.log`、
 `/tmp/gamma3-direct-original-fiber-audit.log`。
+
+### γ3 余極限側：着手時の文言と方針
+
+極限側の指定三形状と元の q_x の導来 fiber の直接比較を保持したまま、余極限側へ進む。
+既存の `Stable/Cocone.lean` の `JoinCocone`・`IsColimitCone` を native な定義として使い、
+新しい余極限性の定義を作らない。通常の余錐 c を反対圏の通常の錐 c.op にし、局所 Kan な
+反対の単体的圏の coherent nerve 上で既存の極限定理を適用する。
+その錐を `reverseCocone` で反転し、coherent nerve の反対の標準同型と二重反転で元の値域へ戻す。
+添字は nerve の反対の標準同型と ULift の反転の同型で元の通常の添字へ戻す。
+
+初段は離散図式の Hom 条件による余極限判定を扱い、空余積を含む 𝒮 の余積へ接続する。
+余錐の native な構成、標準の図式との一致、頂点・脚の元の通常の余錐との一致、余極限性の
+証明を区別して検証する。双対化した図式上の条件付きの定理だけで 𝒮 の適用の完成とは数えない。
+押し出し・逐次 homotopy 余極限では実際の模型と必要な cofibration 条件・Kan 置換も検証する。
+一般形状の end の直接比較と、E2a 完了後の E2b 適用も後続に保持する。
+
+再利用候補 `Stable/ConeOpposite.lean`・`ColimitReindex.lean`・`SquareDuality.lean` の依存閉包は
+着手時点で他担当307ソース、全て追跡済み・コミット済み・変更なしであることを確認した。
+原典：HTT 4.2.4.1、Kerodon 7.1・7.4–7.5、coherent nerve の反対の同型は Kerodon 4.6.7。
+
+### γ3 余極限側：標準図式上の通常の余錐の native な表示と双対化
+
+
+`strictNativeCocone c : JoinCocone (strictCoherentDiagram F)` を、任意の通常の小圏 I、
+単体的圏 C、`F : I ⥤ C`、`c : Cocone F` に対して構成した。
+固定図式は既存の `strictCoherentDiagram F` そのものであり、元の C の coherent nerve 内の
+既存の native な余錐である。
+`strictNativeCocone_vertex c` は頂点が元の c.pt の標準頂点に等しいことを証明する。
+
+手順は次の通り。c.op の strict な錐を `reverseCocone` で反転し、添字を
+`strictCoconeIndexIso I : U N(I) ≅ (U N(Iᵒᵖ)).op` で元の I へ戻す。
+反対の単体的圏の coherent nerve の反転を `coherentOppositeReturnIso C` で元の値域へ戻す。
+この時点の図式 `strictCoherentCoconeDiagram F` が元の標準図式に厳密に等しいことを、
+`strictCoherentDiagram_opposite` と `strictCoherentCoconeDiagram_eq` で全単体について検証した。
+通常の射列の反転と定値な豊穣 Hom の反対の一致、二重反転の自然性による。
+頂点や辺だけの一致ではなく SSet の射の等式として照合している。
+
+最後に固定図式の等式で余錐を正規化する。
+`coherentCoconeOfDiagramEq` はこの移送で余錐の射・頂点・余極限性を保持する。
+値域の同型による `coherentCoconePost` も native な余極限性を保存し反映する。
+これらを既存の極限・余極限の反転の同値へ接続し、
+
+```lean
+strictNativeCocone_isColimit_iff (c : Cocone F) :
+  IsColimitCone (strictNativeCocone c) ↔ IsLimitCone (strictCoherentCone c.op)
+```
+
+を公開した。この形式的な双対化は局所 Kan 性、c の通常の余極限性、図式の特別な形を
+要求しない。後続の homotopy 余極限への適用では、局所 Kan 性と Hom 条件を具体的に検証する。
+余錐の脚の元の通常の成分との照合、離散 Hom 条件からの余極限性、𝒮 の実際の余積・空余積、
+homotopy 押し出し・逐次 homotopy 余極限の模型への適用は、この構成だけでは完成と数えない。
+一般形状の end の直接比較と、E2a 完了後の E2b 適用も引き続き後続工程。
+原典：HTT 4.2.4.1、Kerodon 4.6.7・7.1・7.4–7.5。
+
+着手時の文言と方針を README に先に記録してから実装した。
+新規5ファイル・24宣言を集約と専用監査へ追加。README の γ3 冒頭の現在地も更新した。
+全宣言の正確な型・全前提は README の同名節と専用監査の `#check @` に記録。
+型一覧は括弧の深さを考慮して抽出し、全署名をソースから復元した。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4776 jobs）、公開1513宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規5ファイルに警告・sorry・追加公理はない。
+既存の Stable 側の双対化 API の再利用で、他担当の依存は916ソースとなり、
+全て追跡済み・コミット済み・変更なしを確認した。
+ログ：`/tmp/gamma3-native-cocones-aggregate.log`、`/tmp/gamma3-native-cocones-audit.log`。

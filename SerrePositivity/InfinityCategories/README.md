@@ -2076,8 +2076,9 @@ Hom が fibration の塔では、実際の coherent nerve の錐が ∞ 極限�
 Sp は空積を含む有限積、一脚が全段で fibration の引き戻し、全隣接遷移が全段で fibration の塔。
 Sp の極限対象の段は置換せず、Kan 性・構造射の単射性・全基点全次数の Ω 条件を証明している。
 
-一般形状の end の直接比較、余極限側は引き続き後続工程。
-E2b の具体的適用は E2a 完了後。
+余極限側は着手済み。通常の余錐を元の標準図式上の native な余錐として構成し、頂点と
+反対の極限性による双対判定を検証した。Hom 条件・𝒮 の実際の余積等への適用は後続工程。
+一般形状の end の直接比較と E2a 完了後の E2b 適用も残る。
 指定三形状の可縮性判定を、これらの未完了工程を含む γ3 全体の完成とは数えない。
 以下に限定形と工程ごとの型・検証の記録を置く。
 
@@ -9261,3 +9262,155 @@ def strictConePinched_originalFiber_tower_equivalence
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-direct-original-fiber-aggregate.log`、
 `/tmp/gamma3-direct-original-fiber-audit.log`。
+
+### γ3 余極限側：着手時の文言と方針
+
+極限側の指定三形状と元の q_x の導来 fiber の直接比較を保持したまま、余極限側へ進む。
+既存の `Stable/Cocone.lean` の `JoinCocone`・`IsColimitCone` を native な定義として使い、
+新しい余極限性の定義を作らない。通常の余錐 c を反対圏の通常の錐 c.op にし、局所 Kan な
+反対の単体的圏の coherent nerve 上で既存の極限定理を適用する。
+その錐を `reverseCocone` で反転し、coherent nerve の反対の標準同型と二重反転で元の値域へ戻す。
+添字は nerve の反対の標準同型と ULift の反転の同型で元の通常の添字へ戻す。
+
+初段は離散図式の Hom 条件による余極限判定を扱い、空余積を含む 𝒮 の余積へ接続する。
+余錐の native な構成、標準の図式との一致、頂点・脚の元の通常の余錐との一致、余極限性の
+証明を区別して検証する。双対化した図式上の条件付きの定理だけで 𝒮 の適用の完成とは数えない。
+押し出し・逐次 homotopy 余極限では実際の模型と必要な cofibration 条件・Kan 置換も検証する。
+一般形状の end の直接比較と、E2a 完了後の E2b 適用も後続に保持する。
+
+再利用候補 `Stable/ConeOpposite.lean`・`ColimitReindex.lean`・`SquareDuality.lean` の依存閉包は
+着手時点で他担当307ソース、全て追跡済み・コミット済み・変更なしであることを確認した。
+原典：HTT 4.2.4.1、Kerodon 7.1・7.4–7.5、coherent nerve の反対の同型は Kerodon 4.6.7。
+
+### γ3 余極限側：標準図式上の通常の余錐の native な表示と双対化
+
+
+`strictNativeCocone c : JoinCocone (strictCoherentDiagram F)` を、任意の通常の小圏 I、
+単体的圏 C、`F : I ⥤ C`、`c : Cocone F` に対して構成した。
+固定図式は既存の `strictCoherentDiagram F` そのものであり、元の C の coherent nerve 内の
+既存の native な余錐である。
+`strictNativeCocone_vertex c` は頂点が元の c.pt の標準頂点に等しいことを証明する。
+
+手順は次の通り。c.op の strict な錐を `reverseCocone` で反転し、添字を
+`strictCoconeIndexIso I : U N(I) ≅ (U N(Iᵒᵖ)).op` で元の I へ戻す。
+反対の単体的圏の coherent nerve の反転を `coherentOppositeReturnIso C` で元の値域へ戻す。
+この時点の図式 `strictCoherentCoconeDiagram F` が元の標準図式に厳密に等しいことを、
+`strictCoherentDiagram_opposite` と `strictCoherentCoconeDiagram_eq` で全単体について検証した。
+通常の射列の反転と定値な豊穣 Hom の反対の一致、二重反転の自然性による。
+頂点や辺だけの一致ではなく SSet の射の等式として照合している。
+
+最後に固定図式の等式で余錐を正規化する。
+`coherentCoconeOfDiagramEq` はこの移送で余錐の射・頂点・余極限性を保持する。
+値域の同型による `coherentCoconePost` も native な余極限性を保存し反映する。
+これらを既存の極限・余極限の反転の同値へ接続し、
+
+```lean
+strictNativeCocone_isColimit_iff (c : Cocone F) :
+  IsColimitCone (strictNativeCocone c) ↔ IsLimitCone (strictCoherentCone c.op)
+```
+
+を公開した。この形式的な双対化は局所 Kan 性、c の通常の余極限性、図式の特別な形を
+要求しない。後続の homotopy 余極限への適用では、局所 Kan 性と Hom 条件を具体的に検証する。
+余錐の脚の元の通常の成分との照合、離散 Hom 条件からの余極限性、𝒮 の実際の余積・空余積、
+homotopy 押し出し・逐次 homotopy 余極限の模型への適用は、この構成だけでは完成と数えない。
+一般形状の end の直接比較と、E2a 完了後の E2b 適用も引き続き後続工程。
+原典：HTT 4.2.4.1、Kerodon 4.6.7・7.1・7.4–7.5。
+
+公開24宣言の正確な型と前提（namespace `HomotopyLimits`、この節の追加分）：
+
+```lean
+universe u v
+variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
+  [SimplicialCategory C]
+
+def coherentCoconePost {K X Y : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCocone p) (q : X ⟶ Y) : JoinCocone (p ≫ q)
+
+lemma coherentCoconePost_val {K X Y : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCocone p) (q : X ⟶ Y) : (coherentCoconePost c q).val = c.val ≫ q
+
+lemma coherentCoconePost_vertex {K X Y : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCocone p) (q : X ⟶ Y) : (coherentCoconePost c q).vertex = q.app _ c.vertex
+
+lemma coherentCoconePost_isColimit_iff {K X Y : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCocone p) (q : X ⟶ Y) [IsIso q] :
+    IsColimitCone c ↔ IsColimitCone (coherentCoconePost c q)
+
+def coherentCoconeOfDiagramEq {K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (c : JoinCocone p) : JoinCocone q
+
+lemma coherentCoconeOfDiagramEq_val {K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (c : JoinCocone p) : (coherentCoconeOfDiagramEq h c).val = c.val
+
+lemma coherentCoconeOfDiagramEq_vertex {K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (c : JoinCocone p) : (coherentCoconeOfDiagramEq h c).vertex = c.vertex
+
+lemma coherentCoconeOfDiagramEq_isColimit_iff {K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (c : JoinCocone p) :
+    IsColimitCone c ↔ IsColimitCone (coherentCoconeOfDiagramEq h c)
+
+def coherentOppositeReturnIso (C : Type v) [Category.{u} C] [SimplicialCategory C] :
+    (SimplicialNerve Cᵒᵖ).op ≅ SimplicialNerve C
+
+lemma coherentOppositeReturnIso_hom_vertex {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (x : C) : (coherentOppositeReturnIso C).hom.app _
+        (SSet.opObjEquiv.symm (coherentNerveVertex (Opposite.op x))) = coherentNerveVertex x
+
+def strictCoconeIndexIso (I : Type u) [SmallCategory I] :
+    (SSet.uliftFunctor.{v, u}).obj (nerve I) ≅
+      ((SSet.uliftFunctor.{v, u}).obj (nerve Iᵒᵖ)).op
+
+lemma strictCoconeIndexIso_hom_vertex {I : Type u} [SmallCategory I] (i : I) :
+    (strictCoconeIndexIso.{u, v} I).hom.app _ (ULift.up (nerveVertex i)) =
+      SSet.opObjEquiv.symm (ULift.up (nerveVertex (Opposite.op i)))
+
+lemma strictCoconeIndexIso_hom_factorization (I : Type u) [SmallCategory I] :
+    (strictCoconeIndexIso.{u, v} I).hom =
+      (SSet.opFunctorCompOpFunctorIso.app ((SSet.uliftFunctor.{v, u}).obj (nerve I))).inv ≫
+        SSet.opFunctor.map ((uliftOppositeIso (nerve I)).inv ≫
+          (SSet.uliftFunctor.{v, u}).map (nerveOppositeIso (C := I)).hom)
+
+def strictCoherentCoconeDiagram (F : I ⥤ C) :
+    (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C
+
+lemma strictCoherentCoconeDiagram_vertex (F : I ⥤ C) (i : I) :
+    (strictCoherentCoconeDiagram F).app _ (ULift.up (nerveVertex i)) =
+      coherentNerveVertex (F.obj i)
+
+def strictCoherentCocone {F : I ⥤ C} (c : Cocone F) :
+    JoinCocone (strictCoherentCoconeDiagram F)
+
+lemma strictCoherentCocone_vertex {F : I ⥤ C} (c : Cocone F) :
+    (strictCoherentCocone c).vertex = coherentNerveVertex c.pt
+
+lemma strictCoherentCocone_isColimit_iff {F : I ⥤ C} (c : Cocone F) :
+    IsColimitCone (strictCoherentCocone c) ↔ IsLimitCone (strictCoherentCone c.op)
+
+lemma strictCoherentDiagram_opposite {I : Type u} [SmallCategory I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (F : I ⥤ C) :
+    SSet.opFunctor.map (strictCoherentDiagram F) ≫ (coherentNerveOppositeIso C).hom =
+      (uliftOppositeIso (nerve I)).inv ≫
+        (SSet.uliftFunctor.{v, u}).map (nerveOppositeIso (C := I)).hom ≫
+          strictCoherentDiagram F.op
+
+lemma strictCoherentCoconeDiagram_eq {I : Type u} [SmallCategory I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (F : I ⥤ C) :
+    strictCoherentCoconeDiagram F = strictCoherentDiagram F
+
+def strictNativeCocone {F : I ⥤ C} (c : Cocone F) : JoinCocone (strictCoherentDiagram F)
+
+lemma strictNativeCocone_val {F : I ⥤ C} (c : Cocone F) :
+    (strictNativeCocone c).val = (strictCoherentCocone c).val
+
+lemma strictNativeCocone_vertex {F : I ⥤ C} (c : Cocone F) :
+    (strictNativeCocone c).vertex = coherentNerveVertex c.pt
+
+lemma strictNativeCocone_isColimit_iff {F : I ⥤ C} (c : Cocone F) :
+    IsColimitCone (strictNativeCocone c) ↔ IsLimitCone (strictCoherentCone c.op)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4776 jobs）、公開1513宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規5ファイルに警告・sorry・追加公理はない。
+既存の Stable 側の双対化 API の再利用で、他担当の依存は916ソースとなり、
+全て追跡済み・コミット済み・変更なしを確認した。
+ログ：`/tmp/gamma3-native-cocones-aggregate.log`、`/tmp/gamma3-native-cocones-audit.log`。
