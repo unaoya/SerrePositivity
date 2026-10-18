@@ -75,4 +75,53 @@ theorem productChart_left_image (a : I) (b : J) :
   · rw [← Ideal.map_mul, ← map_mul]
     exact chart_map_ideal_eq_span (I * J) (mulCenterElement I J a b)
 
+/--
+概要：積中心の ab チャートでは b の像も正則。
+方針：ab の像の正則性から第二の因子を取り出す。
+規約：KST §5、Stacks 080Y、基礎環での正則性は仮定しない。
+使われ方：降下中心 J の可逆化。
+-/
+theorem productChart_right_regular (a : I) (b : J) :
+    chartBaseMap (I * J) (mulCenterElement I J a b) b.1 ∈
+      nonZeroDivisors (BlowupChartRing (I * J) (mulCenterElement I J a b)) := by
+  have h := chartBaseMap_mem_nonZeroDivisors (I * J) (mulCenterElement I J a b)
+  change chartBaseMap _ _ (a.1 * b.1) ∈ _ at h
+  rw [map_mul] at h
+  exact (mul_mem_nonZeroDivisors.mp h).2
+
+/--
+概要：積中心の ab チャートでは J の拡大は b の像で生成される。
+方針：積中心の単項性と正則積の消去を逆の順序で使う。
+規約：KST §5、Stacks 080Y、有限生成性は不要。
+使われ方：降下中心の像を正則単項イデアルとして比較する。
+-/
+theorem productChart_right_image (a : I) (b : J) :
+    J.map (chartBaseMap (I * J) (mulCenterElement I J a b)) =
+      Ideal.span {chartBaseMap (I * J) (mulCenterElement I J a b) b.1} := by
+  let φ := chartBaseMap (I * J) (mulCenterElement I J a b)
+  apply ideal_eq_span_of_regular_product (J.map φ) (I.map φ)
+    (Ideal.mem_map_of_mem φ b.2) (Ideal.mem_map_of_mem φ a.2)
+  · rw [mul_comm (φ b.1) (φ a.1), ← map_mul]
+    exact chartBaseMap_mem_nonZeroDivisors (I * J) (mulCenterElement I J a b)
+  · rw [Ideal.mul_comm (J.map φ) (I.map φ), ← Ideal.map_mul,
+      mul_comm (φ b.1) (φ a.1), ← map_mul]
+    exact chart_map_ideal_eq_span (I * J) (mulCenterElement I J a b)
+
+/--
+概要：正則単項イデアルが一つの元倍のイデアルに等しければ、元のイデアルも正則単項。
+方針：正則生成元 b = a c の表示を取り、正則な因子 a を消去する。
+規約：KST §5、Stacks 080Y、a の正則性も結論の表示から得る。
+使われ方：例外イデアルの冪による捻りを可逆化した後に中心自身を可逆化する。
+-/
+theorem ideal_regular_principal_of_regular_multiple (K : Ideal R) (a b : R)
+    (hb : b ∈ nonZeroDivisors R) (hK : Ideal.span {a} * K = Ideal.span {b}) :
+    ∃ c : R, c ∈ nonZeroDivisors R ∧ K = Ideal.span {c} ∧ a * c = b := by
+  obtain ⟨c, hc, heq⟩ := Ideal.mem_span_singleton_mul.mp
+    (hK.symm ▸ Ideal.subset_span (Set.mem_singleton b))
+  have hreg : c * a ∈ nonZeroDivisors R := by simpa only [mul_comm c a, heq] using hb
+  refine ⟨c, (mul_mem_nonZeroDivisors.mp hreg).1, ?_, heq⟩
+  apply ideal_eq_span_of_regular_product K (Ideal.span {a}) hc
+    (Ideal.subset_span (Set.mem_singleton a)) hreg
+  rw [Ideal.mul_comm, hK, mul_comm c a, heq]
+
 end SerrePositivity.KST.SchemeLemmas

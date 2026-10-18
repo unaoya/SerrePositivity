@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 791 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 839 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -81,6 +81,10 @@
 - アフィン開被覆への逆像でのイデアル層の等式検出と、開制限・Spec のイデアル対応での積と冪の保存を証明済み。
 - Noether アフィン基底上で、任意の blowup 上の中心 K に対し、十分大きい各 D で実際の有限生成 J ⊆ Iᴰ とイデアル層等式 π⁻¹J = (π⁻¹I)ᴰ K を構成・証明済み。
 - これはアフィン基底の中心の降下であり、一般基底への大域化・admissible 性の移送・合成支配射の構成は次の段階。実際の平坦化中心の存在はなお未証明。
+- 任意のアフィン局所射による実際の中心の逆像の環イデアルを計算済み。任意のアフィン開チャート上の blowup から一般 blowup への比較射と、同チャートによる普遍写像を構成済み。
+- Noether アフィン基底上の二段の通常 blowup の合成を、一つの基底上の blowup で支配する実際の射と交換式を構成済み。
+- 正の降下次数の中心は元の U を避けることを証明し、Noether アフィン基底上の二段の U-admissible blowup を一つの U-admissible blowup で支配する定理を証明済み。
+- 次はアフィン開集合上の中心の延長と共通細分を用いて一般 Noether 基底へ大域化する。主文の平坦化中心の存在はなお未証明で、L7b 完了とはしない。
 - Noether でも実際に平坦な strict transform を達成する中心の存在と、admissible blowup の合成を一つで支配する段階は未証明。L7b 完了とはしない。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
@@ -539,6 +543,14 @@ strict transform とその平坦化の有限型特殊形は未実装であり、
 | `exists_finite_chart_ideal_descent` | AffineCenterDescent | 検証済み | Noether アフィン基底上の実中心の有限チャート降下 |
 | `idealSheaf_ext_of_affineOpenCover` / `idealSheaf_comap_mul_of_openImmersion` | IdealSheafLocality | 検証済み | チャートでの等式検出と積・冪の保存 |
 | `affineExceptionalIdealSheaf` / `exists_affine_center_descent` | AffineCenterDescentSheaf | 検証済み | 実際の例外イデアルと π⁻¹J = (π⁻¹I)ᴰ K の降下等式 |
+| `specIdealEquiv_ker_specMap` / `specIdealEquiv_comap_affine_local` | AffineIdealPullback | 検証済み | 任意のアフィン局所射での実際の逆像中心 |
+| `blowupAffineOpenMap` / `blowupAffineOpenMap_base` | BlowupAffineOpenMap | 検証済み | 任意のアフィン開チャートから一般 blowup への比較 |
+| `affine_preimage_centerComplement` / `local_principalDetector_range` | IdealComplementPullback | 検証済み | 任意の局所射での中心外開集合と検出射 |
+| `openChartUniversalLift` / `openChartUniversalLift_base` | OpenChartUniversal | 検証済み | チャート環を保持した一般の普遍写像 |
+| `productLeftChartRingMap_regular_center` | ProductLiftCenter | 検証済み | 積中心上での二段目の中心の正則単項化 |
+| `exists_affine_blowup_composition_domination` | AffineCompositionDomination | 検証済み | Noether アフィン基底の二段 blowup の実際の支配 |
+| `open_le_of_preimage_le_of_restrict_isIso` | RestrictionOpenOrder | 検証済み | 同型となる開部分での逆像包含の反映 |
+| `affine_center_descent_admissible` / `exists_affine_admissible_composition_domination` | AffineAdmissibleComposition | 検証済み | 降下中心の admissible 性と二段合成の支配 |
 | `exists_admissibleBlowup_dominating` | Flattening | 予定 | 081T の特殊形 |
 | Prop 5.2 の環論 | Section5 | 予定 | 冪・像・核 |
 | Claim 5.3 の左逆元 | K-L6 | 担当外 | K/pro の結論 |

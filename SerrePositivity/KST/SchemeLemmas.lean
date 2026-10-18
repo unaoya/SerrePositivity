@@ -80,3 +80,11 @@ public import SerrePositivity.KST.SchemeLemmas.GeneratorChartCover
 public import SerrePositivity.KST.SchemeLemmas.AffineCenterDescent
 public import SerrePositivity.KST.SchemeLemmas.IdealSheafLocality
 public import SerrePositivity.KST.SchemeLemmas.AffineCenterDescentSheaf
+public import SerrePositivity.KST.SchemeLemmas.AffineIdealPullback
+public import SerrePositivity.KST.SchemeLemmas.BlowupAffineOpenMap
+public import SerrePositivity.KST.SchemeLemmas.IdealComplementPullback
+public import SerrePositivity.KST.SchemeLemmas.OpenChartUniversal
+public import SerrePositivity.KST.SchemeLemmas.ProductLiftCenter
+public import SerrePositivity.KST.SchemeLemmas.AffineCompositionDomination
+public import SerrePositivity.KST.SchemeLemmas.RestrictionOpenOrder
+public import SerrePositivity.KST.SchemeLemmas.AffineAdmissibleComposition
