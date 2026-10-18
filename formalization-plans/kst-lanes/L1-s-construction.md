@@ -1276,3 +1276,130 @@ lemma functor_postcomp_preserves_cofiber {A C D : SSet.{u}}
 現在地：L1c 継続中。S_n の構造射の押し出し保存、多単体的反復の全構造射、境界の coherent な潰し、delooping・Ω 条件・BF スペクトルは未完了。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2273 jobs）、公理監査成功（609 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.11 二方向の余極限の交換と gapped 条件の同型不変性
+
+相対始点・終点境界充填の合成、共通の制限射上の相対始対象の比較を証明。
+二重余錐の制限射は inner fibration であり、補完の二つの順序は同じ射に対する相対始対象を与える。
+これを使い、点ごとの外側余極限を取った後の内側の余極限性を証明した。
+完成後の全行に内側余極限が存在するという前提を明示し、省略しない。
+gapped 図式への適用では零脚 span の余極限の存在を安定性から供給する方針。
+全入力が零対象の押し出しの出力が零対象になること、関手全体の同型による gapped 条件の不変性も証明。
+Core/・Stable/ の公開定義は変更していない。
+
+**RelativeUniversalityComposition.lean**
+
+```text
+lemma InitialBoundaryLifting.comp {E B D : SSet.{u}} (p : E ⟶ B) (q : B ⟶ D)
+    {x : E _⦋0⦌} (hp : InitialBoundaryLifting p x)
+    (hq : InitialBoundaryLifting q (p.app (Opposite.op ⦋0⦌) x)) :
+    InitialBoundaryLifting (p ≫ q) x
+
+lemma TerminalBoundaryLifting.comp {E B D : SSet.{u}} (p : E ⟶ B) (q : B ⟶ D)
+    {x : E _⦋0⦌} (hp : TerminalBoundaryLifting p x)
+    (hq : TerminalBoundaryLifting q (p.app (Opposite.op ⦋0⦌) x)) :
+    TerminalBoundaryLifting (p ≫ q) x
+
+def relativeInitialVertexIso {E B : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ B) [InnerFibration p] {x y : E _⦋0⦌}
+    (hx : InitialBoundaryLifting p x) (hy : InitialBoundaryLifting p y)
+    (hxy : p.app (Opposite.op ⦋0⦌) x = p.app (Opposite.op ⦋0⦌) y) : VertexIso x y
+
+```
+
+**DoubleCoconeUniversality.lean**
+
+```text
+instance ihom_pre_innerFibration {A B K C : SSet.{u}} [Quasicategory C]
+    (i : A ⟶ B) [Mono i] : InnerFibration ((ihom K).map ((pre i).app C))
+
+def doubleCoconeRestriction (J K C : SSet.{u}) :
+    (ihom (join J (Δ[0] : SSet.{u}))).obj ((ihom (join K (Δ[0] : SSet.{u}))).obj C) ⟶
+      (ihom J).obj ((ihom K).obj C)
+
+instance doubleCoconeRestriction_innerFibration (J K C : SSet.{u}) [Quasicategory C] :
+    InnerFibration (doubleCoconeRestriction J K C)
+
+lemma doubleCoconeRestriction_otherOrder (J K C : SSet.{u}) :
+    doubleCoconeRestriction J K C =
+      (ihom (join J (Δ[0] : SSet.{u}))).map (coconeRestriction K C) ≫
+        coconeRestriction J ((ihom K).obj C)
+
+lemma doubleCocone_initial_outer_inner {J K C : SSet.{u}} [Quasicategory C]
+    (F : join J (Δ[0] : SSet.{u}) ⟶ (ihom (join K (Δ[0] : SSet.{u}))).obj C)
+    (houter : IsColimitCone (⟨F, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ F)))
+    (hinner : ∀ j : J _⦋0⦌, InitialBoundaryLifting (coconeRestriction K C)
+      ((joinInl J Δ[0] ≫ F).app (Opposite.op ⦋0⦌) j)) :
+    InitialBoundaryLifting (doubleCoconeRestriction J K C) (functorVertex F)
+
+lemma doubleCocone_initial_inner_outer {J K C : SSet.{u}} [Quasicategory C]
+    (F : join J (Δ[0] : SSet.{u}) ⟶ (ihom (join K (Δ[0] : SSet.{u}))).obj C)
+    (hinner : ∀ j : (join J (Δ[0] : SSet.{u})) _⦋0⦌,
+      InitialBoundaryLifting (coconeRestriction K C) (F.app (Opposite.op ⦋0⦌) j))
+    (houter : IsColimitCone (⟨F ≫ coconeRestriction K C, rfl⟩ :
+      JoinCocone (joinInl J Δ[0] ≫ F ≫ coconeRestriction K C))) :
+    InitialBoundaryLifting (doubleCoconeRestriction J K C) (functorVertex F)
+
+def doubleCoconeUniversalIso {J K C : SSet.{u}} [Quasicategory C]
+    (F G : join J (Δ[0] : SSet.{u}) ⟶ (ihom (join K (Δ[0] : SSet.{u}))).obj C)
+    (hF : InitialBoundaryLifting (doubleCoconeRestriction J K C) (functorVertex F))
+    (hG : InitialBoundaryLifting (doubleCoconeRestriction J K C) (functorVertex G))
+    (he : (doubleCoconeRestriction J K C).app (Opposite.op ⦋0⦌) (functorVertex F) =
+      (doubleCoconeRestriction J K C).app (Opposite.op ⦋0⦌) (functorVertex G)) : FunctorIso F G
+
+```
+
+**ColimitInterchange.lean**
+
+```text
+lemma colimitInterchange_initialBoundary {J K C : SSet.{u}} [Quasicategory C]
+    (F : join J (Δ[0] : SSet.{u}) ⟶ (ihom (join K (Δ[0] : SSet.{u}))).obj C)
+    (houter : IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ F)))
+    (hinner : ∀ j : J _⦋0⦌, InitialBoundaryLifting (coconeRestriction K C)
+      ((joinInl J Δ[0] ≫ F).app (Opposite.op ⦋0⦌) j))
+    (hex : ∀ j : (join J (Δ[0] : SSet.{u})) _⦋0⦌,
+      HasColimit ((functorVertexEquiv K C).symm
+        ((F ≫ coconeRestriction K C).app (Opposite.op ⦋0⦌) j))) :
+    ∀ j : (join J (Δ[0] : SSet.{u})) _⦋0⦌,
+      InitialBoundaryLifting (coconeRestriction K C) (F.app (Opposite.op ⦋0⦌) j)
+
+```
+
+**ColimitComparison.lean**
+
+```text
+def colimitCoconeIsoOfDiagramIso {K C : SSet.{u}} [Quasicategory C]
+    {p q : K ⟶ C} (c : JoinCocone p) (d : JoinCocone q)
+    (hc : IsColimitCone c) (hd : IsColimitCone d) (e : FunctorIso p q) : FunctorIso c.val d.val
+
+def pushoutSquareIsoOfSpanIso {C : SSet.{u}} [Quasicategory C]
+    (F G : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C)
+    (hF : IsPushoutSquare F) (hG : IsPushoutSquare G)
+    (e : FunctorIso (pushoutSpan F) (pushoutSpan G)) : FunctorIso F G
+
+lemma isZeroVertex_pushout_apex_of_zeroSpan {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C) (hF : IsPushoutSquare F)
+    (hp : ∀ a : (horn 2 0 : SSet.{u}) _⦋0⦌,
+      IsZeroVertex ((pushoutSpan F).app (Opposite.op ⦋0⦌) a)) :
+    IsZeroVertex (squareVertex F 1 1)
+
+```
+
+**GappedIso.lean**
+
+```text
+lemma IsGapped.of_functorIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
+    {F G : arNerve n ⟶ C} (hF : IsGapped F) (e : FunctorIso F G) : IsGapped G
+
+lemma isGapped_iff_of_functorIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
+    {F G : arNerve n ⟶ C} (e : FunctorIso F G) : IsGapped F ↔ IsGapped G
+
+lemma isGapped_of_functorVertex_isZero {n : ℕ} {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    (F : arNerve n ⟶ C) (hF : IsZeroVertex (functorVertex F)) : IsGapped F
+
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。交換補題を標準 cofiber 正方形へ適用し、点ごとの cofiber 補完の gapped 閉性を証明する工程が残る。
+S_n の構造射の押し出し保存、多単体構造、境界の coherent な潰し、delooping・Ω 条件・BF スペクトルは未完了。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2284 jobs）、公理監査成功（626 宣言、標準三公理のみ）。追加公理・sorry なし。

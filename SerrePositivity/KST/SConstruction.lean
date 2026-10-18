@@ -34,4 +34,8 @@ public import SerrePositivity.KST.SConstruction.SConstructionStability
 public import SerrePositivity.KST.SConstruction.ZeroPreservation
 public import SerrePositivity.KST.SConstruction.FunctorCofiberPreservation
 
+public import SerrePositivity.KST.SConstruction.ColimitInterchange
+public import SerrePositivity.KST.SConstruction.ColimitComparison
+public import SerrePositivity.KST.SConstruction.GappedIso
+
 /-! # ∞-S• 構成と連結 K 理論 -/

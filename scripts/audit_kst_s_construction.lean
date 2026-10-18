@@ -1653,3 +1653,54 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.functor_postcomp_preserves_cofiber
 #print axioms SerrePositivity.KST.SConstruction.functor_postcomp_preserves_cofiber
+
+#check @SerrePositivity.KST.SConstruction.InitialBoundaryLifting.comp
+#print axioms SerrePositivity.KST.SConstruction.InitialBoundaryLifting.comp
+
+#check @SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.comp
+#print axioms SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.comp
+
+#check @SerrePositivity.KST.SConstruction.relativeInitialVertexIso
+#print axioms SerrePositivity.KST.SConstruction.relativeInitialVertexIso
+
+#check @SerrePositivity.KST.SConstruction.ihom_pre_innerFibration
+#print axioms SerrePositivity.KST.SConstruction.ihom_pre_innerFibration
+
+#check @SerrePositivity.KST.SConstruction.doubleCoconeRestriction
+#print axioms SerrePositivity.KST.SConstruction.doubleCoconeRestriction
+
+#check @SerrePositivity.KST.SConstruction.doubleCoconeRestriction_innerFibration
+#print axioms SerrePositivity.KST.SConstruction.doubleCoconeRestriction_innerFibration
+
+#check @SerrePositivity.KST.SConstruction.doubleCoconeRestriction_otherOrder
+#print axioms SerrePositivity.KST.SConstruction.doubleCoconeRestriction_otherOrder
+
+#check @SerrePositivity.KST.SConstruction.doubleCocone_initial_outer_inner
+#print axioms SerrePositivity.KST.SConstruction.doubleCocone_initial_outer_inner
+
+#check @SerrePositivity.KST.SConstruction.doubleCocone_initial_inner_outer
+#print axioms SerrePositivity.KST.SConstruction.doubleCocone_initial_inner_outer
+
+#check @SerrePositivity.KST.SConstruction.doubleCoconeUniversalIso
+#print axioms SerrePositivity.KST.SConstruction.doubleCoconeUniversalIso
+
+#check @SerrePositivity.KST.SConstruction.colimitInterchange_initialBoundary
+#print axioms SerrePositivity.KST.SConstruction.colimitInterchange_initialBoundary
+
+#check @SerrePositivity.KST.SConstruction.colimitCoconeIsoOfDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.colimitCoconeIsoOfDiagramIso
+
+#check @SerrePositivity.KST.SConstruction.pushoutSquareIsoOfSpanIso
+#print axioms SerrePositivity.KST.SConstruction.pushoutSquareIsoOfSpanIso
+
+#check @SerrePositivity.KST.SConstruction.isZeroVertex_pushout_apex_of_zeroSpan
+#print axioms SerrePositivity.KST.SConstruction.isZeroVertex_pushout_apex_of_zeroSpan
+
+#check @SerrePositivity.KST.SConstruction.IsGapped.of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.IsGapped.of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.isGapped_iff_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.isGapped_iff_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.isGapped_of_functorVertex_isZero
+#print axioms SerrePositivity.KST.SConstruction.isGapped_of_functorVertex_isZero
