@@ -621,3 +621,37 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence
 #check @representableHomotopyLimitComparison_cospan_leftFibration_homotopyEquivalence
 #print axioms representableHomotopyLimitComparison_cospan_leftFibration_homotopyEquivalence
+#check @prefixTerminalTransformation
+#print axioms prefixTerminalTransformation
+#check @prefixOverChain
+#print axioms prefixOverChain
+#check @prefixOverChain_forget
+#print axioms prefixOverChain_forget
+#check @prefixOverChain_inclusion
+#print axioms prefixOverChain_inclusion
+#check @prefixOverChain_yoneda_inclusion
+#print axioms prefixOverChain_yoneda_inclusion
+#check @prefixOverWeight
+#print axioms prefixOverWeight
+#check @prefixOverChain_restriction
+#print axioms prefixOverChain_restriction
+#check @prefixOverChain_yoneda_restriction
+#print axioms prefixOverChain_yoneda_restriction
+#check @prefixOverWeight_restriction
+#print axioms prefixOverWeight_restriction
+#check @prefixOverParameter
+#print axioms prefixOverParameter
+#check @prefixOverParameter_restriction
+#print axioms prefixOverParameter_restriction
+#check @weightedNerveCoefficients
+#print axioms weightedNerveCoefficients
+#check @weightedNerveCoefficients_restriction
+#print axioms weightedNerveCoefficients_restriction
+#check @weightedNerveSectionFromTransform
+#print axioms weightedNerveSectionFromTransform
+#check @weightedNerveSectionFromTransform_projection
+#print axioms weightedNerveSectionFromTransform_projection
+#check @bousfieldKanWeightedNerveEvaluation
+#print axioms bousfieldKanWeightedNerveEvaluation
+#check @bousfieldKanWeightedNerveEvaluation_projection
+#print axioms bousfieldKanWeightedNerveEvaluation_projection

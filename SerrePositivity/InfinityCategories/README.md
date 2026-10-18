@@ -2047,7 +2047,7 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
 現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射、
 strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性、
-塔と両脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
+塔と一脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
 離散図式の比較と 𝒮 の空積は実装済み。一般の coherent な錐との比較、end の一般の Kan 性・
 同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開308宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開325宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,8 +2820,52 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開308宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開325宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
+
+### 重み付き end から weighted nerve の切断の族（順方向を実装）
+
+γ3b の主比較へ向け、Bousfield–Kan 重み付き end と weighted nerve の切断空間の対応を作る。
+次に必要なのは切断の族から重み付き自然変換へ戻す構成と両逆関係であり、
+さらに coherent な錐の pinched Hom と導来ファイバーの比較を別途証明する。
+この切断模型への射だけで γ3b を完成とは数えない。
+
+`PrefixOverWeight.lean` は各射列 σ の初区間を、その終点の over 圏へ持ち上げる。
+I : Type u、[SmallCategory I] の下で、次を構成した。
+
+```lean
+prefixOverChain {n : ℕ} (σ : ComposableArrows I n) (i : Fin (n + 1)) :
+    ComposableArrows (Over (σ.obj i)) i.val
+prefixOverWeight {n : ℕ} (σ : ComposableArrows I n) :
+    simplexPrefixWeight n ⟶ σ ⋙ bousfieldKanWeight I
+```
+
+`prefixOverChain_inclusion` は i ≤ j に沿う後合成と初区間の包含の可換性、
+`prefixOverChain_restriction` は任意の面・退化の制限との可換性。
+Yoneda による単体集合の射の式と `prefixOverWeight_restriction` も公開した。
+
+`WeightedNerveCoefficients.lean` はパラメータ a : Δ[n] ⟶ A を各初区間へ制限し、
+over 圏の単体と直積にまとめて自然変換 η で評価する。
+`prefixOverParameter_restriction` と `weightedNerveCoefficients_restriction` により、
+全ての面・退化に整合する係数を作る。
+`WeightedNerveSections.lean` はこれを底の nerve 上の射へ束ねる。
+
+```lean
+weightedNerveSectionFromTransform {A : SSet.{u}} {H : I ⥤ SSet.{u}}
+    (η : bousfieldKanWeight I ⊗ (Functor.const I).obj A ⟶ H) :
+    nerve I ⊗ A ⟶ weightedNerve H
+weightedNerveSectionFromTransform_projection η :
+    weightedNerveSectionFromTransform η ≫ weightedNerveProjection H = fst (nerve I) A
+bousfieldKanWeightedNerveEvaluation (H : I ⥤ SSet.{u}) :
+    nerve I ⊗ bousfieldKanHolim H ⟶ weightedNerve H
+bousfieldKanWeightedNerveEvaluation_projection (H : I ⥤ SSet.{u}) :
+    bousfieldKanWeightedNerveEvaluation H ≫ weightedNerveProjection H =
+      fst (nerve I) (bousfieldKanHolim H)
+```
+
+普遍的な族は重み付き end の恒等射を uncurry して得る。
+ここでは係数やパラメータの Kan 性を要求しない。F1 の既存の `weightedNerve` を使い、
+重複した nerve の定義は導入しない。逆対応・切断空間との同型・coherent な錐との比較は未完了。
 
 ### 𝒮 の空積（実装済み）
 
