@@ -216,7 +216,7 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | 錐の頂点 fiber と切断空間の同値、切断による表現可能な極限判定、三形状の transport の end の極限判定まで実装。反転した係数の weighted nerve から錐の全空間への実際の底上の射を構成。全頂点上の実際の fiber 射の同値性を証明。三形状の実際の切断比較射の同値性まで証明。反転・ULift と元の q_x との主比較は未完了 |
+| γ3b | q′ の切断比較と native な制限の主可換式を証明。局所 Kan 性と Hom 極限条件から、離散図式・一脚 fibration の cospan・fibration の塔の strict な錐が ∞ 極限錐となる定理を公開。元の非反転の end・q_x と反転係数の直接比較は未完了 |
 | γ3c | 𝒮 の空積は IsLimitCone として実装。SSet の積・fibration 引き戻し・塔の Kan 性を実装。𝒮 の残りと Sp は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
@@ -1037,3 +1037,37 @@ q′ の切断比較との整合性はまだ未証明。次は始対象を加え
 他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-native-enriched-apex-aggregate.log` と
 `/tmp/gamma3-native-enriched-apex-audit.log`。
+
+
+### q′ と native な制限の主可換式、三形状の ∞ 極限への移送
+
+`SmallStrictConeParameter` に `WithInitial I` 上の小さい錐の図式と標準射を構成し、
+既存の strict な coherent な錐がその引き戻しであること、左右の包含での値を厳密に証明した。
+`WeightedStrictConeFamily` は始対象付き図式の標準錐の q′ から錐全体上の実際の族を構成。
+頂点評価との合成は標準の coslice fiber 比較に一致し、局所 Kan 性でこの族はホモトピー同値。
+頂点評価の切断の選択や、始対象付き図式の q′ 全体の同値性は用いない。
+`WeightedConeRestriction` は主可換式
+`weightedStrictConeFamilyComparison c x ≫
+coneSectionRestriction (strictCoherentCone c) (coherentNerveVertex x) =
+reflectedStrictConeSectionsComparison c x` を全パラメータで証明した（Kan 性や極限性は不要）。
+局所 Kan 性での主判定
+`strictCoherentCone_isLimit_iff_reflectedStrictConeSectionsComparison` の型は
+`IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+IsSimplicialHomotopyEquivalence (reflectedStrictConeSectionsComparison c x)`。
+I と c は任意で、追加の比較同値の仮定はない。
+`StrictHomotopyLimits` は `strictCoherentCone_isLimit_of_discrete_homLimit`、
+`strictCoherentCone_isLimit_of_cospan_homLimit`、`strictCoherentCone_isLimit_of_tower_homLimit`
+を公開した。共通の条件は C の局所 Kan 性と全 x での Hom 錐の strict 極限性。
+離散図式には有限性を要求せず、cospan は Hom の左脚の fibration 性のみ、
+塔は Hom の全隣接遷移の fibration 性を要求する。結論は実際の `IsLimitCone (strictCoherentCone c)`。
+原典は HTT 4.2.4.1 の双対の限定形、Kerodon 7.5.3.12、7.5.4.6。
+新規27宣言の正確な型・全前提は README に記録し、公開1032宣言の監査へ追加。
+q′ と native な制限の接続は証明済みとなった。
+元の非反転の end・q_x と反転係数の直接比較、𝒮・Sp の実際の錐と Hom 条件の検証、
+余極限の比較は未完了。一般定理のみで γ3c の具体的適用を完了とは数えず、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4460 jobs）、公開1032宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-strict-homotopy-limits-aggregate.log` と
+`/tmp/gamma3-strict-homotopy-limits-audit.log`。

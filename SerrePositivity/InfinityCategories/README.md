@@ -2064,8 +2064,10 @@ coherent な錐の全空間への実際の底上の射と、全ての頂点上�
 反転した strict Hom 錐の標準比較 q′、始対象に関する自然性、三形状での切断模型への
 合成の同値性も証明済み。合成の全パラメータでの評価式と、各対象での canonical な
 左 Hom 比較・実際の錐の脚による後合成との一致も証明済み。
-元の豊穣 Hom の end・q_x との比較、native な錐の比較射との一致、
-𝒮 の残りの極限と Sp への適用は未完了。
+q′ の切断比較を native な錐全体上の weighted な族の制限として厳密に同定した。
+局所 Kan 性と Hom 錐の極限性の下で、離散図式・一脚 fibration の cospan・fibration の塔の
+strict な錐が coherent nerve の極限錐となることも証明済み（末尾の三形状の移送を参照）。
+元の豊穣 Hom の end・q_x と反転係数の直接比較、𝒮 の残りの極限と Sp への具体的適用は未完了。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -5360,3 +5362,187 @@ q′ との整合性、元の q_x と反転係数の整合性、𝒮・Sp の残
 他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-native-enriched-apex-aggregate.log` と
 `/tmp/gamma3-native-enriched-apex-audit.log`。
+
+
+### q′ と native な制限の主可換式、三形状の homotopy 極限の移送
+
+`SmallStrictConeParameter` は、通常の小圏 I に始対象を加えた `WithInitial I` 上の
+`smallStrictConeFunctor c` と、錐の形 `Δ[0] ⋆ ULift N(I)` から `ULift N(WithInitial I)`
+への標準射 `smallStrictConeParameter I` を構成した。この標準射による図式の引き戻しは、
+既存の `strictCoherentCone c` の図式そのもの。右因子上では元の添字の包含、左頂点では
+新しい始対象に厳密に一致する。既存の錐の定義は変更していない。
+
+`WeightedStrictConeFamily` は、始対象付き図式の始対象からの標準錐
+`smallStrictConeExtension c` に既存の q′ の切断比較を適用し、標準射で引き戻して
+錐全体上の族 `weightedStrictConeFamilyComparison c x` を構成した。
+頂点評価との合成は `coherentCosliceFiberComparison x c.pt` に厳密に一致する。
+局所 Kan 性の下でこの族の比較は単体的ホモトピー同値となる。
+始対象付き図式全体の Bousfield–Kan 比較の同値性は仮定しない。
+頂点評価の切断を選ぶ前回の族とは異なり、この族は q′ の実際の構成から得ている。
+
+`WeightedConeRestriction` は全パラメータの展開式から、主可換式
+
+```lean
+weightedStrictConeFamilyComparison c x ≫
+    coneSectionRestriction (strictCoherentCone c) (coherentNerveVertex x) =
+  reflectedStrictConeSectionsComparison c x
+```
+
+を証明した。この射の等式には局所 Kan 性や極限性は不要。
+局所 Kan 性の下で `strictCoherentCone_isLimit_iff_reflectedStrictConeSectionsComparison` は
+
+```lean
+IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+  IsSimplicialHomotopyEquivalence (reflectedStrictConeSectionsComparison c x)
+```
+
+を与える。通常の小圏 I と錐 c は任意で、比較同値の追加仮定は置かない。
+これにより、q′ と native な制限の接続は証明済みとなった。
+
+`StrictHomotopyLimits` の三つの公開定理は、局所 Kan な単体的圏 C において、
+全 x で `IsLimit (simplicialHomCone c x)` ならば次の `IsLimitCone (strictCoherentCone c)` を与える。
+
+- `strictCoherentCone_isLimit_of_discrete_homLimit`：任意の離散図式。添字の有限性は不要。
+- `strictCoherentCone_isLimit_of_cospan_homLimit`：一脚が Hom 上で fibration の cospan。
+  全 x で左脚の fibration 性を要求し、右脚の fibration 性は要求しない。
+- `strictCoherentCone_isLimit_of_tower_homLimit`：Hom 上の全隣接遷移が fibration の塔。
+
+これらは任意の追加の比較同値を仮定する界面ではなく、構成済みの q′ の比較と
+主可換式による ∞ 極限錐の定理である。ただし 𝒮・Sp の実際の錐と Hom 条件の検証は別途必要。
+原典上の位置は HTT 4.2.4.1 の双対の限定形、Kerodon 7.5.3.12、7.5.4.6。
+
+新規27宣言の型は以下。共通の C は `[Category.{u} C] [SimplicialCategory C]` を持つ。
+`weightedStrictConeFamilyComparison_homotopyEquivalence`、上の極限判定、および三つの
+移送定理には `[∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]` を付ける。
+他の宣言には局所 Kan 性は不要。その他の前提は各型に明記した。
+
+```lean
+def smallStrictConeFunctor {F : I ⥤ C} (c : Cone F) : WithInitial I ⥤ C
+
+lemma smallStrictConeFunctor_restriction {F : I ⥤ C} (c : Cone F) :
+    WithInitial.incl ⋙ smallStrictConeFunctor c = F
+
+def coneIndexResize (I : Type u) [SmallCategory I] :
+    WithInitial (AsSmall.{v} I) ⥤ AsSmall.{v} (WithInitial I)
+
+lemma coneIndexResize_functor {F : I ⥤ C} (c : Cone F) :
+    coneIndexResize I ⋙ AsSmall.down ⋙ smallStrictConeFunctor c = strictConeFunctor c
+
+noncomputable def smallStrictConeParameter (I : Type u) [SmallCategory I] :
+    join (Δ[0] : SSet.{max u v}) ((SSet.uliftFunctor.{v, u}).obj (nerve I)) ⟶
+      (SSet.uliftFunctor.{v, u}).obj (nerve (WithInitial I))
+
+lemma smallStrictConeParameter_inr (I : Type u) [SmallCategory I] :
+    joinInr (Δ[0] : SSet.{max u v}) _ ≫ smallStrictConeParameter.{u, v} I =
+      (SSet.uliftFunctor.{v, u}).map (nerveMap (WithInitial.incl (C
+
+lemma smallStrictConeParameter_inl (I : Type u) [SmallCategory I] :
+    joinInl (Δ[0] : SSet.{max u v}) _ ≫ smallStrictConeParameter.{u, v} I =
+      SSet.yonedaEquiv.symm (ULift.up (nerveVertex (WithInitial.star : WithInitial I)))
+
+lemma smallStrictConeParameter_diagram {F : I ⥤ C} (c : Cone F) :
+    smallStrictConeParameter I ≫ strictCoherentDiagram (smallStrictConeFunctor c) =
+      (strictCoherentCone c).val
+
+def smallStrictConeExtension {F : I ⥤ C} (c : Cone F) : Cone (smallStrictConeFunctor c) where
+  pt
+
+lemma smallStrictConeExtension_app_of {F : I ⥤ C} (c : Cone F) (i : I) :
+    (smallStrictConeExtension c).π.app (WithInitial.of i) = c.π.app i
+
+lemma smallStrictConeExtension_app_star {F : I ⥤ C} (c : Cone F) :
+    (smallStrictConeExtension c).π.app WithInitial.star = 𝟙 c.pt
+
+lemma smallStrictConeExtension_whisker {F : I ⥤ C} (c : Cone F) :
+    (smallStrictConeExtension c).whisker WithInitial.incl = c
+
+lemma smallStrictConeParameter_apex (I : Type u) [SmallCategory I] :
+    (smallStrictConeParameter.{u, v} I).app (Opposite.op ⦋0⦌)
+        (joinApexVertex ((SSet.uliftFunctor.{v, u}).obj (nerve I))) =
+      ULift.up (nerveVertex (WithInitial.star : WithInitial I))
+
+lemma relativeFunctorUncurry_eqToHom {A K E B : SSet.{u}} (q : E ⟶ B)
+    {p r : K ⟶ B} (h : p = r) (s : A ⟶ relativeFunctorSpace q p) :
+    relativeFunctorUncurry (s ≫
+      eqToHom (congrArg (fun f : K ⟶ B ↦ relativeFunctorSpace q f) h)) =
+      relativeFunctorUncurry s
+
+noncomputable def weightedStrictConeFamilyComparison {F : I ⥤ C} (c : Cone F) (x : C) :
+    (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x c.pt).op ⟶
+      coherentConeSectionSpace (strictCoherentCone c).val (coherentNerveVertex x)
+
+lemma weightedStrictConeFamilyComparison_uncurry {F : I ⥤ C} (c : Cone F) (x : C) :
+    relativeFunctorUncurry (weightedStrictConeFamilyComparison c x) =
+      (smallStrictConeParameter I ▷
+        (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x c.pt).op) ≫
+          relativeFunctorUncurry
+            (reflectedStrictConeSectionsComparison (smallStrictConeExtension c) x)
+
+lemma strictConeApexEvaluation_ι {F : I ⥤ C} (c : Cone F) (x : C) :
+    strictConeApexEvaluation c x ≫
+        vertexFiberι (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+          (coherentNerveVertex c.pt) =
+      vertexFiberι ((ihom (join (Δ[0] : SSet.{max u v})
+        ((SSet.uliftFunctor.{v, u}).obj (nerve I)))).map
+          (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x))))
+        (functorVertex (strictCoherentCone c).val) ≫
+          evaluateFunctorAt (joinApexVertex ((SSet.uliftFunctor.{v, u}).obj (nerve I)))
+
+lemma relativeFunctorUncurry_at_vertex {A K E B : SSet.{u}} (q : E ⟶ B)
+    (p : K ⟶ B) (s : A ⟶ relativeFunctorSpace q p) (v : K _⦋0⦌) :
+    s ≫ vertexFiberι ((ihom K).map q) (functorVertex p) ≫ evaluateFunctorAt v =
+      lift (SSet.const v) (𝟙 A) ≫ relativeFunctorUncurry s
+
+lemma weightedStrictConeFamilyComparison_evaluation {F : I ⥤ C} (c : Cone F) (x : C) :
+    weightedStrictConeFamilyComparison c x ≫ strictConeApexEvaluation c x =
+      coherentCosliceFiberComparison x c.pt
+
+lemma weightedStrictConeFamilyComparison_homotopyEquivalence {F : I ⥤ C}
+    (c : Cone F) (x : C) :
+    IsSimplicialHomotopyEquivalence (weightedStrictConeFamilyComparison c x)
+
+lemma smallStrictConeDiagram_restriction {F : I ⥤ C} (c : Cone F) :
+    (SSet.uliftFunctor.{v, u}).map (nerveMap (WithInitial.incl (C
+
+lemma smallStrictConeExtension_comparison_uncurry {F : I ⥤ C} (c : Cone F) (x : C) :
+    ((SSet.uliftFunctor.{v, u}).map (nerveMap (WithInitial.incl (C
+
+lemma weightedStrictConeFamilyComparison_restriction {F : I ⥤ C} (c : Cone F) (x : C) :
+    weightedStrictConeFamilyComparison c x ≫
+        coneSectionRestriction (strictCoherentCone c) (coherentNerveVertex x) =
+      reflectedStrictConeSectionsComparison c x
+
+lemma strictCoherentCone_isLimit_iff_reflectedStrictConeSectionsComparison {F : I ⥤ C}
+    (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+      IsSimplicialHomotopyEquivalence (reflectedStrictConeSectionsComparison c x)
+
+lemma strictCoherentCone_isLimit_of_discrete_homLimit {J : Type u}
+    {F : Discrete J ⥤ C} (c : Cone F) (hc : ∀ x : C, IsLimit (simplicialHomCone c x)) :
+    IsLimitCone (strictCoherentCone c)
+
+lemma strictCoherentCone_isLimit_of_cospan_homLimit
+    {F : AsSmall.{u} WalkingCospan ⥤ C} (c : Cone F)
+    (hc : ∀ x : C, IsLimit (simplicialHomCone c x))
+    [∀ x : C, Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map WalkingCospan.Hom.inl))] :
+    IsLimitCone (strictCoherentCone c)
+
+lemma strictCoherentCone_isLimit_of_tower_homLimit
+    {F : AsSmall.{u} ℕᵒᵖ ⥤ C} (c : Cone F)
+    (hc : ∀ x : C, IsLimit (simplicialHomCone c x))
+    [∀ (x : C) (n : ℕ), Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    IsLimitCone (strictCoherentCone c)
+```
+
+未完了範囲：元の非反転の end・q_x と反転係数の直接比較、𝒮・Sp での実際の積・
+引き戻し・塔の錐とその Hom 条件の検証、余極限の比較を残す。
+𝒮 の空積以外の具体的な適用は、この一般定理だけでは完了と数えない。
+γ3 全体は継続中であり、E2b の具体的な適用は E2a 完了後に扱う。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4460 jobs）、公開1032宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-strict-homotopy-limits-aggregate.log` と
+`/tmp/gamma3-strict-homotopy-limits-audit.log`。

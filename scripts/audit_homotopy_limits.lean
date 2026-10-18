@@ -2176,3 +2176,84 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @strictCoherentCone_isLimit_iff_reflectedNativeConeComparison
 #print axioms strictCoherentCone_isLimit_iff_reflectedNativeConeComparison
+
+#check @smallStrictConeFunctor
+#print axioms smallStrictConeFunctor
+
+#check @smallStrictConeFunctor_restriction
+#print axioms smallStrictConeFunctor_restriction
+
+#check @coneIndexResize
+#print axioms coneIndexResize
+
+#check @coneIndexResize_functor
+#print axioms coneIndexResize_functor
+
+#check @smallStrictConeParameter
+#print axioms smallStrictConeParameter
+
+#check @smallStrictConeParameter_inr
+#print axioms smallStrictConeParameter_inr
+
+#check @smallStrictConeParameter_inl
+#print axioms smallStrictConeParameter_inl
+
+#check @smallStrictConeParameter_diagram
+#print axioms smallStrictConeParameter_diagram
+
+#check @smallStrictConeExtension
+#print axioms smallStrictConeExtension
+
+#check @smallStrictConeExtension_app_of
+#print axioms smallStrictConeExtension_app_of
+
+#check @smallStrictConeExtension_app_star
+#print axioms smallStrictConeExtension_app_star
+
+#check @smallStrictConeExtension_whisker
+#print axioms smallStrictConeExtension_whisker
+
+#check @smallStrictConeParameter_apex
+#print axioms smallStrictConeParameter_apex
+
+#check @relativeFunctorUncurry_eqToHom
+#print axioms relativeFunctorUncurry_eqToHom
+
+#check @weightedStrictConeFamilyComparison
+#print axioms weightedStrictConeFamilyComparison
+
+#check @weightedStrictConeFamilyComparison_uncurry
+#print axioms weightedStrictConeFamilyComparison_uncurry
+
+#check @strictConeApexEvaluation_ι
+#print axioms strictConeApexEvaluation_ι
+
+#check @relativeFunctorUncurry_at_vertex
+#print axioms relativeFunctorUncurry_at_vertex
+
+#check @weightedStrictConeFamilyComparison_evaluation
+#print axioms weightedStrictConeFamilyComparison_evaluation
+
+#check @weightedStrictConeFamilyComparison_homotopyEquivalence
+#print axioms weightedStrictConeFamilyComparison_homotopyEquivalence
+
+#check @smallStrictConeDiagram_restriction
+#print axioms smallStrictConeDiagram_restriction
+
+#check @smallStrictConeExtension_comparison_uncurry
+#print axioms smallStrictConeExtension_comparison_uncurry
+
+#check @weightedStrictConeFamilyComparison_restriction
+#print axioms weightedStrictConeFamilyComparison_restriction
+
+#check @strictCoherentCone_isLimit_iff_reflectedStrictConeSectionsComparison
+#print axioms strictCoherentCone_isLimit_iff_reflectedStrictConeSectionsComparison
+
+#check @strictCoherentCone_isLimit_of_discrete_homLimit
+#print axioms strictCoherentCone_isLimit_of_discrete_homLimit
+
+#check @strictCoherentCone_isLimit_of_cospan_homLimit
+#print axioms strictCoherentCone_isLimit_of_cospan_homLimit
+
+#check @strictCoherentCone_isLimit_of_tower_homLimit
+#print axioms strictCoherentCone_isLimit_of_tower_homLimit
