@@ -81,10 +81,23 @@ pinched 模型では、比較による移送 `PinchedInterval.liftMap` の合成
 上の自然性は hX・hY の射と任意のパラメータの h Fun での対応として検証した段階であり、
 逆向きに入力する自然な写像空間対応の型と、そこから単位・余単位を構成する接続は未実装。
 Cor 6.2.6.5 は指定された自然変換 η が誘導する比較の同値性を使う。各点で任意に選んだ
-同値だけから逆向きを主張しない。表示をホモトピー類での全単射と呼ぶには、
-別途ホモトピー不変性の確認が要る。B2〜B5 は未完了。
-対象ビルド（1947 jobs）・公理監査（271 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 279 モジュールに straightening 依存がないことも確認した。
+同値だけから逆向きを主張しない。
+
+族の表示のホモトピー不変性を証明した。`intervalFamilyHom_eq_iff_homotopy` は
+h Fun の射の等式と、族の間の実際の単体的ホモトピーの存在が同値であることを述べる。
+不変性の向きには X の quasicategory 性すら不要で、固定された両側の辺が退化する正方形の
+二つの三角形の合成関係だけで証明した。これにより族のホモトピー類の商を取り、
+`intervalFamilyHomotopyEquiv` として定値関手間の h Fun の Hom との全単射を公開した。
+任意の単体集合パラメータの前合成との自然性も証明した。
+さらに、区間・pinched 模型の写像空間の指定された同値から、任意のパラメータ上の
+定値関手間 Hom の全単射を構成した。順射がホモトピックならこの対応は同一であり、
+同値の逆や模型比較の逆の選択に由来する任意性を相殺できる。
+随伴から作った区間・pinched の同値について、この橋が元の `constantHomEquiv` を回収する
+ことも証明した。これは **任意の固定端点の写像空間同値から Hom 対応への橋** であり、
+任意の自然な写像空間対応から h Fun の単位・余単位と三角恒等式を構成する逆方向全体は
+依然として未実装。B2〜B5 も未完了。
+対象ビルド（1953 jobs）・公理監査（319 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 285 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -158,5 +171,16 @@ Cor 6.2.6.5 は指定された自然変換 η が誘導する比較の同値性�
 | `PinchedInterval.precompose/postcompose` と恒等・合成・交換の同型 | pinched 模型の前後合成作用 | 実装済み |
 | `QCatAdjunction.pinchedMap_eq_liftMap` | 既存の比較射と区間模型からの移送の一致 | 実装済み |
 | `QCatAdjunction.pinchedMapNaturalityLeftIso/RightIso`・`pinchedMap_naturality_left/right` | pinched 比較の対象自然性の h Fun の同型と実際のホモトピー | 実装済み |
+| `homMk_eq_of_square` | 両側が退化辺の正方形の横辺は h で同じ射（quasicategory 性不要） | 実装済み |
+| `intervalFamilySquare` と四辺の公式 | 族のホモトピーを h Fun の二重区間の正方形へ展開 | 実装済み |
+| `intervalFamilyHom_eq_of_homotopy`・`intervalFamilyHom_eq_iff_homotopy` | 族の Hom 表示のホモトピー不変性とホモトピー回収との同値 | 実装済み |
+| `intervalFamilyHomotopySetoid`・`IntervalFamilyHomotopyClass` | 実際の単体的ホモトピーの存在による同値関係と商 | 実装済み |
+| `intervalFamilyClassHom`・`intervalFamilyClassHom_bijective`・`intervalFamilyHomotopyEquiv` | 族のホモトピー類と定値関手間の h Fun の Hom の全単射 | 実装済み |
+| `intervalFamilyClassPrecomp`・`intervalFamilyHomotopyEquiv_precomp` | 族の類の前合成と表示全単射のパラメータ自然性 | 実装済み |
+| `intervalFamilyClassMap`・`intervalFamilyClassEquiv` | 写像空間の射・同値をパラメータ族の類へ移す | 実装済み |
+| `intervalMappingEquivalenceHomEquiv` と族・前合成・ホモトピー不変性の公式 | 区間写像空間の同値からパラメータに自然な Hom 全単射を得る | 実装済み |
+| `intervalEquivalenceOfPinched`・`pinchedMappingEquivalenceHomEquiv`・`pinchedMappingEquivalenceHomEquiv_precomp` | pinched 同値を区間模型経由で同じ Hom 全単射へ移す | 実装済み |
+| `QCatAdjunction.intervalMappingEquivalence_homEquiv`・`pinchedHomEquivalence_homEquiv` | 随伴が与える区間・pinched 同値から元の adjunct 対応を回収 | 実装済み |
+| `QCatAdjunction.pinchedEquivalenceIntervalIso` | 随伴の pinched 比較を区間模型に戻すと元の比較射に同型 | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |

@@ -25,3 +25,9 @@ public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
 public import SerrePositivity.InfinityCategories.F1B.AdjunctionObjectNaturality
 public import SerrePositivity.InfinityCategories.F1B.PinchedComposition
 public import SerrePositivity.InfinityCategories.F1B.PinchedObjectNaturality
+public import SerrePositivity.InfinityCategories.F1B.SquareClass
+public import SerrePositivity.InfinityCategories.F1B.IntervalFamilySquare
+public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyClasses
+public import SerrePositivity.InfinityCategories.F1B.MappingEquivalenceClasses
+public import SerrePositivity.InfinityCategories.F1B.PinchedEquivalenceClasses

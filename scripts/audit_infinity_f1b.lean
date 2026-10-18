@@ -146,3 +146,45 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.PinchedInterval.postcomposeCompIso
 
 #check @SerrePositivity.InfinityCategories.PinchedInterval.precomposePostcomposeIso
+
+#check @SerrePositivity.InfinityCategories.homMk_eq_of_square
+
+#check @SerrePositivity.InfinityCategories.intervalFamilySquare
+
+#check @SerrePositivity.InfinityCategories.intervalFamilySquare_zero
+
+#check @SerrePositivity.InfinityCategories.intervalFamilySquare_one
+
+#check @SerrePositivity.InfinityCategories.intervalFamilySquare_source
+
+#check @SerrePositivity.InfinityCategories.intervalFamilySquare_target
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHom_eq_of_homotopy
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHom_eq_iff_homotopy
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHomotopySetoid
+
+#check @SerrePositivity.InfinityCategories.IntervalFamilyHomotopyClass
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHomotopyEquiv
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyHomotopyEquiv_precomp
+
+#check @SerrePositivity.InfinityCategories.intervalFamilyClassEquiv
+
+#check @SerrePositivity.InfinityCategories.intervalMappingEquivalenceHomEquiv
+
+#check @SerrePositivity.InfinityCategories.intervalMappingEquivalenceHomEquiv_family
+
+#check @SerrePositivity.InfinityCategories.intervalMappingEquivalenceHomEquiv_precomp
+
+#check @SerrePositivity.InfinityCategories.intervalMappingEquivalenceHomEquiv_eq_of_homotopy
+
+#check @SerrePositivity.InfinityCategories.pinchedMappingEquivalenceHomEquiv
+
+#check @SerrePositivity.InfinityCategories.pinchedMappingEquivalenceHomEquiv_precomp
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMappingEquivalence_homEquiv
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.pinchedHomEquivalence_homEquiv
