@@ -63,3 +63,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeEdgeLiftSpace
 #check @SerrePositivity.InfinityCategories.relativeEdgeLiftSpace_isContractibleKan
 #check @SerrePositivity.InfinityCategories.relativeEdgeLiftSpaceVertexEquiv
+#check @SerrePositivity.InfinityCategories.cocartesian_prism_exists_section
+#check @SerrePositivity.InfinityCategories.cocartesian_prism_exists_lift
