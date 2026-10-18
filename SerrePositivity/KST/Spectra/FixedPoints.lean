@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Spectra.PointedWeightedEndPreMap
+public import SerrePositivity.KST.Spectra.PointedWeightedEndBifunctor
+public import SerrePositivity.KST.Spectra.WeightedCochains
+public import SerrePositivity.KST.Spectra.GroupActionCochains
+public import SerrePositivity.KST.Spectra.FreeCochainWeight
+public import SerrePositivity.KST.Spectra.GroupActionCochainFunctor
+
 public import SerrePositivity.KST.Spectra.CosimplicialHornFibration
 public import SerrePositivity.KST.Spectra.KanCompositeCancellation
 public import SerrePositivity.KST.Spectra.CosimplicialTwoProjections

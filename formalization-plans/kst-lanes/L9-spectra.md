@@ -33,7 +33,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・317 モジュール 3513 宣言の公理監査成功。
+対象ビルド・323 モジュール 3546 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2638,4 +2638,37 @@ Reedy 置換関手も各段の π_* 同型を保つことを単位の自然性�
 参照：Goerss–Jardine VII §4、VIII §1、Kerodon 4.8.4.1。
 保存単位の対象ビルド 3760 jobs 成功。
 私有宣言を含む 317 モジュール 3513 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
+
+## 89. L9e の群作用の実際の余単体 cochain 図式
+
+点つき end の重みの射に関する前合成を、end の各射影で実際に構成した。
+重みの射の合成は end の射の逆順の合成へ移り、重みの反対圏からの関手になる。
+係数の後合成との可換性も各射影で示した。
+このため、任意の単体的な重みと点つき係数から余単体 cochain 図式を作れ、係数に関して関手的である。
+
+Mathlib の classifyingSpaceUniversalCover を借り、EG_n = G^(n+1) の自由 G 集合の単体的図式を使った。
+各値を離散的な単体集合にして作用図式に移し、AsSmall で一対象圏の宇宙を揃えた。
+この単体的な重みから群作用の各スペクトル段の余単体 cochain 図式を実際に得た。
+同変な BF 射はこの余単体図式の間の厳密な自然変換を誘導する。
+顔・退化の恒等式は通常の関手の法則から成立する。
+
+各次数の G^(n+1) は、左正則作用の G と自明作用の G^n との積に同型である。
+Mathlib の斉次・非斉次座標の作用の同型を離散重みへ送り、さらに点つき end の同型へ移した。
+これにより cochain の各次数を自由軌道の重みで表示できる。
+Kan 性にはこの自由軌道の同変内部 Hom を通常の関数空間と比較する証明が続けて必要である。
+この段階では各値の Kan 性、Tot と hG の同型、有理 Shapiro の π_* 同型を主張しない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedWeightedEnd.preMap` / `preMap_comp` / `weightFunctor` | 重みの前合成と実際の反変関手 |
+| `PointedWeightedEnd.map_preMap` | 重みの前合成と係数の後合成の可換性 |
+| `weightedCochains` / `weightedCochainsFunctor` | 単体的な重みから作る実際の余単体図式と係数の関手性 |
+| `GroupActionCochains.actionWeightFunctor` / `universalCoverWeight` | G 集合の離散重みと EG の単体的重み |
+| `GroupActionCochains.level` / `levelFunctor` / `levelMap` | 群作用の各段の余単体 cochain と厳密な同変射への作用 |
+| `GroupActionCochains.universalCoverFreeIso` / `cochainFreeIso` | 自由 G × G^n の重みとその end への同型 |
+
+参照：Goerss–Jardine VIII §§1–2、HA §1.4.2。
+保存単位の対象ビルド 3766 jobs 成功。
+私有宣言を含む 323 モジュール 3546 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
