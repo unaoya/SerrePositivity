@@ -41,7 +41,19 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.tensorCoefficientSelfIso,
     `SerrePositivity.KST.DerivedGeometry.sectionAlgebra_spec,
     `SerrePositivity.KST.DerivedGeometry.affineBasicTensorSectionsEquiv,
-    `SerrePositivity.KST.DerivedGeometry.affineBasicTensorSectionsEquiv_tmul]
+    `SerrePositivity.KST.DerivedGeometry.affineBasicTensorSectionsEquiv_tmul,
+    `SerrePositivity.KST.DerivedGeometry.affineTensorSectionMap_naturality,
+    `SerrePositivity.KST.DerivedGeometry.affineTensorToTilde_basic_isIso,
+    `SerrePositivity.KST.DerivedGeometry.locallyInjective_of_basis,
+    `SerrePositivity.KST.DerivedGeometry.locallySurjective_of_basis,
+    `SerrePositivity.KST.DerivedGeometry.affineTensorSheafIso,
+    `SerrePositivity.KST.DerivedGeometry.toSheafify_affineTensorSheafIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientAdditiveIso,
+    `SerrePositivity.KST.DerivedGeometry.preservesSheafification_of_forget,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientSheafAdditiveIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientSheafAdditiveIso_fac,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientComparison_basic_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientComparison_top_isIso]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do

@@ -9,3 +9,4 @@ public import SerrePositivity.KST.DerivedGeometry.CoefficientAdjunction
 public import SerrePositivity.KST.DerivedGeometry.TensorCoefficientAction
 public import SerrePositivity.KST.DerivedGeometry.TensorCoefficientUnit
 public import SerrePositivity.KST.DerivedGeometry.AffineTensorSections
+public import SerrePositivity.KST.DerivedGeometry.AffineCoefficientSections

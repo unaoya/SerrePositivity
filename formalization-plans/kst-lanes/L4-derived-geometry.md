@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の具体的係数環層 H_X を、構造射 X → Spec A に対するテンソル前層の層化で構成済み。構造層の中心的作用と H の作用の A 上の一致、H = A での構造層の回復も証明済み。tilde の基本開切断のテンソル表示を構成済み。H_X のアフィン切断・dg 模型・降下との比較は未完了。
+- 現在地：L4a の具体的係数環層 H_X を、構造射 X → Spec A に対するテンソル前層の層化で構成済み。標準構造射 Spec R 上では基本開の比較 H ⊗_R O(D(f)) → H_X(D(f)) が環の同型であることまで証明済み。一般の A → R の底変換、構造層加群としての準連接性、dg 模型・降下との比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の146宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の195宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -328,7 +328,7 @@
 - H_X の任意の開 U の切断が H ⊗_A O_X(U) と同一であるとは定義しない。
 - アフィン U 上の比較射が同型であることは別途必要な定理。
 - Mathlib の tilde M と基本開上の IsLocalizedModule.Away を接続済み。任意の加群 M について基本開切断のテンソル表示の線形同型と純テンソルの計算式を証明済み。
-- 次は、このテンソル表示の制限射への自然性と H_X への層化比較を接続し、層化後のアフィン切断を同定する。
+- テンソル表示の制限射への自然性と層化比較は実装済み。標準構造射 Spec R 上での基本開・全体の環切断の同型判定を得た。一般の A → R に対する底変換は別途残る。
 - H = A の場合の構造層の回復は tensorCoefficientSelfIso として証明済み。一般の A → O_X(U) の底変換への自然性は別途確認する。
 - このアフィン同定なしに既存 dg 加群圏の moduleCompact_iff_perfect を適用しない。
 - 原典対応は KST 経路 §4 D4・§2.4 と Toën Derived Azumaya §3.2。
@@ -343,11 +343,37 @@
 - テンソルの因子を交換して M ⊗_R O(D(f)) の形にする。
 - 純テンソル m ⊗ s は s 倍した m の標準切断へ送られる。
 - この計算に M の平坦性・有限生成性・射影性を要求しない。
-- この線形同型はまだ環層 H_X の切断の同型を述べていない。
-- 制限射への自然性、基礎環 A から R への底変換、層化との比較をつなぐ必要がある。
+- この線形同型そのものと、係数環層の環としての比較は異なる宣言で扱う。
+- 制限への自然性と層化との比較は §19 の通り実装済み。基礎環 A から R への底変換は残る。
 - H = A の係数前層は構造層と自然同型で、すでに層条件を満たす。
 - その層化の比較も同型なので、H = A の係数環層は構造層へ標準的に戻る。
 - これらを L4a 全体の降下比較や、T1 のコンパクト生成の証明と混同しない。
+
+## 19. 自然な層化比較と基本開上の環同型
+
+- 任意の R 加群 M に対し、各開 U で M ⊗_R O(U) から tilde M の切断へ写像を作る。
+- 純テンソル m ⊗ s の像は s 倍した標準切断とする。
+- 制限に関する自然性は加群層の半線形な制限と標準切断の両立から証明する。
+- 基本開でこの写像を既存の局所化の線形同型と同定する。
+- 開基上で単射・全射な前層射は局所単射・局所全射になるという一般補題を実装する。
+- これを Spec R の基本開基に適用し、テンソル前層と tilde の局所全単射性を得る。
+- 加群圏で層化すると tilde M に自然同型になる。
+- この同型と層化の単位の合成が、指定した前層比較に等しいことも証明する。
+- 係数環前層と加群テンソル前層の基礎加法群を自然同型で比較する。
+- 切断の二つの代数構造の等式を明示的に移送し、純テンソルとの両立を示す。
+- 環および R 加群から加法群への忘却が層化と可換であることを用いる。
+- 基礎集合への忘却と可換な関手が局所全単射性による層化の同値を保存する補題を証明する。
+- 合成により係数環層の基礎加法群と tilde H の基礎加法群の層の自然同型を得る。
+- この自然同型と層化前の比較射の可換式を証明する。
+- 基本開で tilde の比較が同型なので、係数環の層化の比較も基礎加法群上で同型となる。
+- 環準同型の基礎写像の全単射性から、基本開で環の同型であることを得る。
+- D(1) = Spec R により、全体の切断の比較も同型となる。
+- この段階では H の平坦性・可換性・有限性を一切要求しない。
+- 原典の接続は KST D4・T1′、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
+- 基礎環は R、スキームは Spec R とする標準構造射での結果である。
+- 任意の A → R に対し H_R = H ⊗_A R と置いた場合との環層の比較は別途証明する。
+- 加法群の層の同型だけで O 加群としての準連接性を主張しない。O 作用との両立が残る。
+- アフィン切断の同型だけで導来圏・dg 圏・降下模型の同値を主張しない。
 
 ## 主要宣言の表
 
@@ -376,7 +402,14 @@
 | `tensorCoefficientSelfIso` | DerivedGeometry/TensorCoefficientUnit | 実装・対象ビルド済み |
 | `sectionBaseMap_spec`・`sectionAlgebra_spec` | DerivedGeometry/AffineTensorSections | 実装・対象ビルド済み |
 | `affineBasicTensorSectionsEquiv`・`affineBasicTensorSectionsEquiv_tmul` | DerivedGeometry/AffineTensorSections | 実装・対象ビルド済み |
-| H_X のアフィン切断とテンソルの比較 | DerivedGeometry/ | 未実装 |
+| `affineTensorSectionMap_naturality`・`affineTensorToTilde_basic_isIso` | DerivedGeometry/AffineTensorComparison | 実装・対象ビルド済み |
+| `locallyInjective_of_basis`・`locallySurjective_of_basis` | DerivedGeometry/BasisLocalComparison | 実装・対象ビルド済み |
+| `affineTensorSheafIso`・`toSheafify_affineTensorSheafIso` | DerivedGeometry/AffineTensorSheaf | 実装・対象ビルド済み |
+| `affineCoefficientAdditiveIso` | DerivedGeometry/AffineCoefficientComparison | 実装・対象ビルド済み |
+| `preservesSheafification_of_forget` | DerivedGeometry/ForgetSheafification | 実装・対象ビルド済み |
+| `affineCoefficientSheafAdditiveIso`・`affineCoefficientSheafAdditiveIso_fac` | DerivedGeometry/AffineCoefficientSheaf | 実装・対象ビルド済み |
+| `affineCoefficientComparison_basic_isIso`・`affineCoefficientComparison_top_isIso` | DerivedGeometry/AffineCoefficientSections | 実装・対象ビルド済み |
+| 一般の A → R に対する H_X のアフィン切断とテンソルの比較 | DerivedGeometry/ | 未実装 |
 | 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
