@@ -40,7 +40,8 @@ lemma kanDiagramUniversalFiberComparison_isQCatEquivalence
     IsQCatEquivalence (kanDiagramUniversalFiberComparison F c) :=
   (directKanUnstraighteningFiberComparison_isQCatEquivalence F c).comp
     (qCatEquivalenceOfIso
-      (leftUnstraighteningFiberIso (kanDiagramCoherentNerve F) (ULift.up (nerveVertex c)))).isQCatEquivalence
+      (leftUnstraighteningFiberIso (kanDiagramCoherentNerve F)
+        (ULift.up (nerveVertex c)))).isQCatEquivalence
 
 /-- 概要：普遍射影の transport は strict な図式の係数の射と値の同値を介して関手同型まで可換。
 方針：直接復元比較の transport 同型と底の引き戻しの transport 同型を合成する。

@@ -549,3 +549,5 @@ public import SerrePositivity.InfinityCategories.F1.UniverseReflection
 public import SerrePositivity.InfinityCategories.F1.DirectKanUnstraighteningTransport
 public import SerrePositivity.InfinityCategories.F1.PullbackTransport
 public import SerrePositivity.InfinityCategories.F1.KanDiagramUniversalTransport
+public import SerrePositivity.InfinityCategories.F1.KanDiagramEdges
+public import SerrePositivity.InfinityCategories.F1.UniversalTransportReflection

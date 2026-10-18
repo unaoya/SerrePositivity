@@ -25,7 +25,7 @@ attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 /-- 概要：left fibration の引き戻しの第二射影は left fibration。
 方針：left anodyne 射に関する右持ち上げ性の引き戻し安定性を使う。
 規約：第一引数を引き戻す射、第二引数を底の変更とする。
-使われ方：Kerodon Proposition 4.2.1.3、Corollary 5.6.0.6、引き戻しの transport の構成。 -/
+使われ方：Kerodon Corollary 5.6.0.6、引き戻しの transport の構成。 -/
 instance leftFibration_pullback_snd {E B C : SSet.{u}} (p : E ⟶ B) (k : C ⟶ B)
     [LeftFibration p] : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩

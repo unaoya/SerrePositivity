@@ -11102,5 +11102,20 @@ lemma kanDiagramUniversalTransport_isQCatEquivalence_iff
           (uliftTruncatedEdge.{u, u + 1} (nerve.edgeMk f)) (kanDiagramCoherentNerve F))) ↔
       IsQCatEquivalence (F.map f)
 
+lemma kanDiagramCoherentNerve_edge
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) {c d : C} (f : c ⟶ d) :
+    (kanDiagramCoherentNerve F).app (Opposite.op ⦋1⦌) (ULift.up (nerve.edgeMk f).edge) =
+      (coherentNerveEdge (F.map f)).edge
+
+lemma edgeTransport_isQCatEquivalence_congr_edge {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] {a b a' b' : B _⦋0⦌}
+    (e : SSet.Edge a b) (e' : SSet.Edge a' b') (h : e.edge = e'.edge) :
+    IsQCatEquivalence (edgeTransport p e) ↔ IsQCatEquivalence (edgeTransport p e')
+
+lemma pointedSpaceTransport_coherentEdge_isQCatEquivalence_iff
+    {K L : KanObject.{u}} (f : K ⟶ L) :
+    IsQCatEquivalence (edgeTransport pointedSpaceProjection (coherentNerveEdge f)) ↔
+      IsQCatEquivalence f
+
 end SerrePositivity.InfinityCategories
 ```
