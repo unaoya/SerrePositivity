@@ -82,6 +82,12 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.cofiberConnectingToSuspension_comp_eq_zero
 #print axioms SerrePositivity.InfinityCategories.cofiberConnecting
 #print axioms SerrePositivity.InfinityCategories.cofiberConnecting_comp_eq_zero
+#print axioms SerrePositivity.InfinityCategories.homotopyNatTrans_fixedVertex_arrow
+#print axioms SerrePositivity.InfinityCategories.homotopyNatTransOfEndpoints_fixedVertex_arrow
+#print axioms SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap_τ₁_arrow
+#print axioms SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap_τ₁_eqToHom
+#print axioms SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap_τ₁_isIso
+#print axioms SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap_τ₂_eq_zero
 #print axioms SerrePositivity.InfinityCategories.JoinCocone
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_eq
@@ -783,7 +789,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.TerminalSpanComparison,
     `SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison,
     `SerrePositivity.InfinityCategories.Stable.CofiberSuspensionComparison,
-    `SerrePositivity.InfinityCategories.Stable.CofiberConnecting]
+    `SerrePositivity.InfinityCategories.Stable.CofiberConnecting,
+    `SerrePositivity.InfinityCategories.Stable.FixedHomotopyComponent,
+    `SerrePositivity.InfinityCategories.Stable.CofiberComparisonComponents]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

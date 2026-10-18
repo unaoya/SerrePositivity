@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.CofiberComparisonComponents
 public import SerrePositivity.InfinityCategories.Stable.CofiberConnecting
 public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges
 public import SerrePositivity.InfinityCategories.Stable.CofiberShortComplex
