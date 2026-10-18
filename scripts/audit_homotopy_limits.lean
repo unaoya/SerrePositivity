@@ -957,3 +957,35 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms bousfieldKanMap_homotopyEquivalence
 #check @weightedTransportUnit_end_homotopyEquivalence
 #print axioms weightedTransportUnit_end_homotopyEquivalence
+#check @relativeFunctorPost
+#print axioms relativeFunctorPost
+#check @relativeFunctorPost_ι
+#print axioms relativeFunctorPost_ι
+#check @relativeFunctorPost_pre
+#print axioms relativeFunctorPost_pre
+#check @relativeFunctorPost_evaluate
+#print axioms relativeFunctorPost_evaluate
+#check @relativeFunctorUncurry_post
+#print axioms relativeFunctorUncurry_post
+#check @strictTransportDiagram_kanComplex
+#print axioms strictTransportDiagram_kanComplex
+#check @strictTransportPost
+#print axioms strictTransportPost
+#check @strictTransportPost_evaluate
+#print axioms strictTransportPost_evaluate
+#check @strictTransportPost_component_isQCatEquivalence
+#print axioms strictTransportPost_component_isQCatEquivalence
+#check @strictTransportPost_end_homotopyEquivalence
+#print axioms strictTransportPost_end_homotopyEquivalence
+#check @transportSectionsRestriction_post
+#print axioms transportSectionsRestriction_post
+#check @strictTransportSectionsComparison_naturality
+#print axioms strictTransportSectionsComparison_naturality
+#check @simplicialSectionsMap_homotopyEquivalence_of_transportComparisons
+#print axioms simplicialSectionsMap_homotopyEquivalence_of_transportComparisons
+#check @simplicialSectionsMap_cospan_homotopyEquivalence
+#print axioms simplicialSectionsMap_cospan_homotopyEquivalence
+#check @simplicialSectionsMap_tower_homotopyEquivalence
+#print axioms simplicialSectionsMap_tower_homotopyEquivalence
+#check @simplicialSectionsMap_discrete_homotopyEquivalence
+#print axioms simplicialSectionsMap_discrete_homotopyEquivalence

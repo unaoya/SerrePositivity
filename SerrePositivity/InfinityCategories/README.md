@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開476宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開492宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,7 +2820,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開476宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開492宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3186,6 +3186,55 @@ weightedTransportUnit_end_homotopyEquivalence (H : I ⥤ SSet.{u})
 単位が誘導する end の射を、切断の通常の極限錐から作る `strictTransportSectionsComparison` と
 厳密に等しいとは主張しない。この段階で自然に比較したものは H とその weighted nerve の transport。
 coherent cone の射影の transport と元の sHom 図式との自然な比較、
+錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は未完了。
+
+### 全空間の比較から transport・切断空間への比較（実装済み）
+
+`RelativeFunctorPostcomposition` は、同じ底への射影 p・q と `f ≫ q = p` を満たす実際の射 f に対し、
+相対関手の後合成 `relativeFunctorPost p q f hf a` を構成した。
+定義域の前合成・頂点での評価・uncurry と可換で、充填性は定義に不要。
+`TransportPostcomparison` は各 under 圏でこの後合成を使い、
+任意の `I : Type u`・`[SmallCategory I]`、`p : E ⟶ nerve I`、`q : E' ⟶ nerve I` に対して
+
+```lean
+strictTransportPost p q (f : E ⟶ E') (hf : f ≫ q = p) :
+    leftStrictTransportDiagram p ⟶ leftStrictTransportDiagram q
+strictTransportPost_evaluate p q f hf i :
+    (strictTransportPost p q f hf).app i ≫ leftStrictTransportEvaluate q i =
+      leftStrictTransportEvaluate p i ≫
+        vertexFiberMap p q f hf ((nerveEquiv (C := I)).symm i)
+```
+
+を証明した。p・q が left fibration なら、右辺の各 fiber の誘導射が圏同値であることから
+`strictTransportPost_component_isQCatEquivalence` が各成分の同値性を検出する。
+`strictTransportPost_end_homotopyEquivalence` は同じ全 fiber の条件の下で、
+`weightedSectionsMap (bousfieldKanWeight I) (strictTransportPost p q f hf)` の
+実際の単体的ホモトピー同値性を証明する。添字の形や遷移の fibration 性は不要。
+
+`TransportSectionsNaturality` は under 圏への制限と全空間の後合成の可換性を示し、
+次の標準比較射の厳密な可換四角形を証明した。
+
+```lean
+strictTransportSectionsComparison_naturality p q f hf :
+    simplicialSectionsMap f hf ≫ strictTransportSectionsComparison q =
+      strictTransportSectionsComparison p ≫
+        weightedSectionsMap (bousfieldKanWeight I) (strictTransportPost p q f hf)
+```
+
+`SectionsFiberwiseComparison` はこの四角形と既存の標準比較の同値性を使い、
+`IsSimplicialHomotopyEquivalence (simplicialSectionsMap f hf)` を次の三つの名前で公開した。
+
+- `simplicialSectionsMap_cospan_homotopyEquivalence`：底は `nerve (AsSmall.{u} WalkingCospan)`。
+- `simplicialSectionsMap_tower_homotopyEquivalence`：底は `nerve (AsSmall.{u} ℕᵒᵖ)`。
+- `simplicialSectionsMap_discrete_homotopyEquivalence`：底は `nerve (Discrete J)`、J の有限性は不要。
+
+各定理の前提は `[LeftFibration p]`・`[LeftFibration q]`、`hf : f ≫ q = p` と
+`∀ i, IsQCatEquivalence (vertexFiberMap p q f hf ((nerveEquiv (C := I)).symm i))`。
+f 自身の fibration 性や自明 Kan fibration 性は要求しない。
+一般の判定 `simplicialSectionsMap_homotopyEquivalence_of_transportComparisons` では、
+二つの標準比較のホモトピー同値性を入力とするが、上記三つの定理ではそれを既存の証明から供給する。
+この結果は実際の全空間の射 f からの比較であり、fiber ごとに選んだ同値の族から f の存在は結論しない。
+coherent cone の射影と元の sHom 図式の模型の間の実際の比較の構成、
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は未完了。
 
 ### 𝒮 の空積（実装済み）
