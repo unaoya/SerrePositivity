@@ -2226,3 +2226,51 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.verticalShuffle_sum
 #print axioms SerrePositivity.KST.ProExcision.verticalShuffle_sum
+
+#check @SerrePositivity.KST.ProExcision.IsUniformShuffleFace
+#print axioms SerrePositivity.KST.ProExcision.IsUniformShuffleFace
+
+#check @SerrePositivity.KST.ProExcision.uniformShuffleFace_zero
+#print axioms SerrePositivity.KST.ProExcision.uniformShuffleFace_zero
+
+#check @SerrePositivity.KST.ProExcision.uniformShuffleFace_last
+#print axioms SerrePositivity.KST.ProExcision.uniformShuffleFace_last
+
+#check @SerrePositivity.KST.ProExcision.uniformShuffleFace_internal
+#print axioms SerrePositivity.KST.ProExcision.uniformShuffleFace_internal
+
+#check @SerrePositivity.KST.ProExcision.IsVerticalShuffleFace
+#print axioms SerrePositivity.KST.ProExcision.IsVerticalShuffleFace
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffleFace_decidable
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffleFace_decidable
+
+#check @SerrePositivity.KST.ProExcision.horizontal_vertical_shuffleFace_disjoint
+#print axioms SerrePositivity.KST.ProExcision.horizontal_vertical_shuffleFace_disjoint
+
+#check @SerrePositivity.KST.ProExcision.shuffleFace_not_pure_endpoints
+#print axioms SerrePositivity.KST.ProExcision.shuffleFace_not_pure_endpoints
+
+#check @SerrePositivity.KST.ProExcision.shuffleInternalVertex_eq
+#print axioms SerrePositivity.KST.ProExcision.shuffleInternalVertex_eq
+
+#check @SerrePositivity.KST.ProExcision.shuffleFace_not_pure_mixed
+#print axioms SerrePositivity.KST.ProExcision.shuffleFace_not_pure_mixed
+
+#check @SerrePositivity.KST.ProExcision.AllHorizontalShuffleBoundaryIndex
+#print axioms SerrePositivity.KST.ProExcision.AllHorizontalShuffleBoundaryIndex
+
+#check @SerrePositivity.KST.ProExcision.AllVerticalShuffleBoundaryIndex
+#print axioms SerrePositivity.KST.ProExcision.AllVerticalShuffleBoundaryIndex
+
+#check @SerrePositivity.KST.ProExcision.AllMixedShuffleBoundaryIndex
+#print axioms SerrePositivity.KST.ProExcision.AllMixedShuffleBoundaryIndex
+
+#check @SerrePositivity.KST.ProExcision.mixedShuffleFace_not_pure
+#print axioms SerrePositivity.KST.ProExcision.mixedShuffleFace_not_pure
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundaryPartitionEquiv
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundaryPartitionEquiv
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundaryPartition_sum
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundaryPartition_sum
