@@ -323,3 +323,4 @@ public import SerrePositivity.InfinityCategories.F1.JoinMixedHornDetection
 public import SerrePositivity.InfinityCategories.F1.JoinIntervalEndpointPullbacks
 public import SerrePositivity.InfinityCategories.F1.JoinDiagonalInnerFibration
 public import SerrePositivity.InfinityCategories.F1.JoinExtremeFaceCongruence
+public import SerrePositivity.InfinityCategories.F1.JoinExtremeFaceGluing

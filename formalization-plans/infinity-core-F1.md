@@ -7046,5 +7046,13 @@ lemma Join.delta_last_right_heq_of_right_heq {X Y : SSet.{u}} {n : ℕ}
     HEq (Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 2))).toOrderHom s).2.2
       (Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom t).2.2
 
+lemma Join.Simplex.exists_extreme_faces {X Y : SSet.{u}} {n : ℕ}
+    (a b : Join.Simplex X Y (n + 1)) (hc : b.1.val = a.1.val + 1)
+    (hab : Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom a =
+      Join.simplexMap X Y (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom b) :
+    ∃ s : Join.Simplex X Y (n + 2), s.1.val = b.1.val ∧
+      Join.simplexMap X Y (SimplexCategory.δ (0 : Fin (n + 3))).toOrderHom s = a ∧
+      Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 2))).toOrderHom s = b
+
 end SerrePositivity.InfinityCategories
 ```
