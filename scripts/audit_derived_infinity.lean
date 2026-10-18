@@ -526,10 +526,57 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityDiscEdge_invertible
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityDisc_iff
 
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_iff
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_iff_quasiIso
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_of_strict
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_zero
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_of_homotopyIso
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_shift
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_mappingCone
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_finiteBiproduct
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_binaryBiproduct
+#print axioms SerrePositivity.InfinityCategories.complexPerfectModel_fiber
+#print axioms SerrePositivity.InfinityCategories.perfectSemifreeProperty
+#print axioms SerrePositivity.InfinityCategories.PerfectSemifree
+#print axioms SerrePositivity.InfinityCategories.perfectNerveModel
+#print axioms SerrePositivity.InfinityCategories.perfectNerveInclusion
+#print axioms SerrePositivity.InfinityCategories.perfectInfinitySubcomplex
+#print axioms SerrePositivity.InfinityCategories.perfectInfinityCategory
+#print axioms SerrePositivity.InfinityCategories.perfectNerveInclusion_range
+#print axioms SerrePositivity.InfinityCategories.perfectNerveInclusion_mono
+#print axioms SerrePositivity.InfinityCategories.perfectNerveModelIso
+#print axioms SerrePositivity.InfinityCategories.perfectNerveModel_quasicategory
+#print axioms SerrePositivity.InfinityCategories.perfectInfinityCategory_quasicategory
+#print axioms SerrePositivity.InfinityCategories.perfectSemifreeProperty_iff
+#print axioms SerrePositivity.InfinityCategories.perfectSemifreeZero
+#print axioms SerrePositivity.InfinityCategories.perfectSemifreeShift
+#print axioms SerrePositivity.InfinityCategories.perfectSemifreeCone
+#print axioms SerrePositivity.InfinityCategories.perfectSemifreeFiber
+#print axioms SerrePositivity.InfinityCategories.perfectSemifreeFiniteBiproduct
+#print axioms SerrePositivity.InfinityCategories.perfectNerveZero
+#print axioms SerrePositivity.InfinityCategories.perfectNerveZero_terminal
+#print axioms SerrePositivity.InfinityCategories.perfectNerveZero_initial
+#print axioms SerrePositivity.InfinityCategories.perfectInfinityZero
+#print axioms SerrePositivity.InfinityCategories.perfectInfinityZero_terminal
+#print axioms SerrePositivity.InfinityCategories.perfectInfinityZero_initial
+#print axioms SerrePositivity.InfinityCategories.perfectInfinityHomotopyCategory
+#print axioms SerrePositivity.InfinityCategories.perfectModelHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.perfectInfinityH0Equivalence
+#print axioms SerrePositivity.InfinityCategories.perfectH0Inclusion
+#print axioms SerrePositivity.InfinityCategories.perfectHomotopyInclusion
+#print axioms SerrePositivity.InfinityCategories.perfectHomotopyInclusion_full
+#print axioms SerrePositivity.InfinityCategories.perfectHomotopyInclusion_faithful
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.PerfectModels,
+    `SerrePositivity.InfinityCategories.Derived.Perfect,
+    `SerrePositivity.InfinityCategories.Derived.PerfectZero,
+    `SerrePositivity.InfinityCategories.Derived.PerfectHomotopy,
+
     `SerrePositivity.InfinityCategories.Derived.DiscreteCharacterization,
     `SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful,
     `SerrePositivity.InfinityCategories.Derived.ComplexEdgeCalculus,

@@ -1,6 +1,6 @@
 # D(S)：semifree 複体の dg nerve としての導来 ∞ 圏（レーン D）
 
-作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6 完了。D7 は別指示待ち。
+作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6 完了。D8 実装中。D7 は A4・別指示待ち。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§3。
 dg nerve（レーン N）は [dg-nerve.md](dg-nerve.md)。
 
@@ -13,6 +13,10 @@ D6a は完了。指定四辺による distinguished triangle と全整数次数�
 D6b は完了。加群の離散埋め込み J は充満忠実で、H⁰ の自然同型は D5b の増大射を使う。
 D6c は完了。Hⁱ(x)=0（i≠0）と h D(S) での x≅J(H⁰x) の同値を持ち、
 比較同型を表す可逆な辺も公開する。D7（D(S) の安定性）は α の A4 の後の別指示を待つ。
+
+D8 は実装中。Perf(S) を D(S) の実際の充満部分単体集合として定義し、quasicategory 性と
+零対象を証明した。完全 semifree モデルのシフト・cone・fiber・有限直和の閉性、
+h Perf から h D(S) への充満忠実な比較も実装済み。D4 の双方向の制限と像の同定は未完了。
 
 ## 主要宣言
 
@@ -33,6 +37,7 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | 接続射とシフト | `derivedSquareConnectingHomotopy_shift` |
 | heart の充満忠実性 | `moduleHeartFunctor`、`moduleHeartHomEquiv`、`moduleHeartHZeroNatIso`、`moduleHeartHomEquiv_hZero` |
 | 離散対象の特徴づけ | `derivedInfinityDisc`、`derivedInfinityDiscIso`、`derivedInfinityDisc_iff`、`derivedInfinityDiscEdge_invertible` |
+| 完全対象 | `perfectInfinityCategory`、`perfectNerveModelIso`、`perfectSemifreeProperty_iff`、`perfectInfinityCategory_quasicategory`、`perfectInfinityZero_terminal`、`perfectInfinityZero_initial` |
 | H⁰ | `derivedInfinityHZeroFunctor`、`derivedInfinityHZeroIso`、`derivedInfinityHZeroMap` |
 | 引き戻しの判定 | `derivedSquareFiberComparison`、`derived_isPullbackSquare_iff_quasiIso` |
 
@@ -53,6 +58,7 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | D4 | 四角形が ∞ 引き戻し ⟺ A → fib(B ⊕ C → D) が擬同型 | N7・α の A2・A3 |
 | D5 | 通常の nerve からの射、関手的離散埋め込み、底変更、H⁰ | D1〜D4・N5 |
 | D6 | 指定四辺の長完全列、heart の充満忠実性、離散対象の特徴づけ | D3〜D5・Mathlib の三角構造 |
+| D8 | 完全導来 ∞ 圏 Perf(S) と閉性・引き戻し判定・ホモトピー圏の像 | D2・D3・D4、strictlyPerfectComplex |
 | D7 | D(S) の安定性と三角構造の整合 | α の A4、別指示待ち |
 
 semifree を K-projective より優先する理由：cone・シフト・直和・テンソル積・底変更で閉じ、

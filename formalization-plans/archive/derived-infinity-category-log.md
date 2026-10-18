@@ -2012,3 +2012,110 @@ derivedInfinityDisc_iff (x : (derivedInfinityCategory S) _⦋0⦌) :
       (moduleHeartFunctor S).obj (derivedInfinityHZero S x))
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D8a：Perf の定義・モデルの閉性・零対象（2026-10-18）
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory Limits DifferentialGraded
+open scoped ZeroObject
+variable (S : Type u) [CommRing S]
+complexPerfectModel (P : Complex S) : Prop
+complexPerfectModel_iff (P : Complex S) :
+    complexPerfectModel S P ↔ ∃ K : Complex S, strictlyPerfectComplex S K ∧
+      Nonempty ((HomotopyCategory.quotient _ _).obj P ≅
+        (HomotopyCategory.quotient _ _).obj K)
+complexPerfectModel_iff_quasiIso (P : Complex S) (hP : complexSemifree S P) :
+    complexPerfectModel S P ↔ ∃ K : Complex S, strictlyPerfectComplex S K ∧
+      ∃ q : P ⟶ K, QuasiIso q
+complexPerfectModel_of_strict {P : Complex S} (hP : strictlyPerfectComplex S P) :
+    complexPerfectModel S P
+complexPerfectModel_zero : complexPerfectModel S (0 : Complex S)
+complexPerfectModel_of_homotopyIso {P Q : Complex S}
+    (e : (HomotopyCategory.quotient _ _).obj P ≅ (HomotopyCategory.quotient _ _).obj Q)
+    (hP : complexPerfectModel S P) : complexPerfectModel S Q
+complexPerfectModel_shift {P : Complex S} (hP : complexPerfectModel S P) (n : ℤ) :
+    complexPerfectModel S (P⟦n⟧)
+complexPerfectModel_mappingCone {P Q : Complex S} (f : P ⟶ Q)
+    (hP : complexPerfectModel S P) (hQ : complexPerfectModel S Q) :
+    complexPerfectModel S (CochainComplex.mappingCone f)
+complexPerfectModel_finiteBiproduct {I : Type v} [Finite I]
+    (P : I → Complex S) (hP : ∀ i, complexPerfectModel S (P i)) :
+    complexPerfectModel S (⨁ P)
+complexPerfectModel_binaryBiproduct {P Q : Complex S}
+    (hP : complexPerfectModel S P) (hQ : complexPerfectModel S Q) :
+    complexPerfectModel S (P ⊞ Q)
+complexPerfectModel_fiber {P Q : Complex S} (f : P ⟶ Q)
+    (hP : complexPerfectModel S P) (hQ : complexPerfectModel S Q) :
+    complexPerfectModel S ((CochainComplex.mappingCone f)⟦(-1 : ℤ)⟧)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory Limits DifferentialGraded DGNerve
+open scoped Simplicial ZeroObject
+variable (S : Type u) [CommRing S]
+perfectSemifreeProperty (P : Semifree S) : Prop
+PerfectSemifree
+perfectNerveModel : SSet.{u + 1}
+perfectNerveInclusion : perfectNerveModel S ⟶ derivedInfinityCategory S
+perfectInfinitySubcomplex : (derivedInfinityCategory S).Subcomplex
+perfectInfinityCategory : SSet.{u + 1}
+perfectNerveInclusion_range :
+    SSet.Subcomplex.range (perfectNerveInclusion S) = perfectInfinitySubcomplex S
+perfectNerveInclusion_mono : Mono (perfectNerveInclusion S)
+perfectNerveModelIso : perfectNerveModel S ≅ perfectInfinityCategory S
+perfectNerveModel_quasicategory : SSet.Quasicategory (perfectNerveModel S)
+perfectInfinityCategory_quasicategory :
+    SSet.Quasicategory (perfectInfinityCategory S)
+perfectSemifreeProperty_iff (P : Semifree S) :
+    perfectSemifreeProperty S P ↔ ∃ K : Complex S, strictlyPerfectComplex S K ∧
+      ∃ q : P.val ⟶ K, QuasiIso q
+perfectSemifreeZero : PerfectSemifree S
+perfectSemifreeShift (P : PerfectSemifree S) (n : ℤ) : PerfectSemifree S
+perfectSemifreeCone (P Q : PerfectSemifree S) (f : P.val.val ⟶ Q.val.val) :
+    PerfectSemifree S
+perfectSemifreeFiber (P Q : PerfectSemifree S) (f : P.val.val ⟶ Q.val.val) :
+    PerfectSemifree S
+perfectSemifreeFiniteBiproduct {I : Type v} [Finite I] [Small.{u} I]
+    (P : I → PerfectSemifree S) : PerfectSemifree S
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory DifferentialGraded DGNerve
+open scoped Simplicial ZeroObject
+variable (S : Type u) [CommRing S]
+perfectNerveZero : (perfectNerveModel S) _⦋0⦌
+perfectNerveZero_terminal : IsTerminalVertex (perfectNerveZero S)
+perfectNerveZero_initial : IsInitialVertex (perfectNerveZero S)
+perfectInfinityZero : (perfectInfinityCategory S) _⦋0⦌
+perfectInfinityZero_terminal : IsTerminalVertex (perfectInfinityZero S)
+perfectInfinityZero_initial : IsInitialVertex (perfectInfinityZero S)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory DifferentialGraded DGNerve
+open scoped Simplicial
+variable (S : Type u) [CommRing S]
+perfectInfinityHomotopyCategory
+perfectModelHomotopyEquivalence : perfectInfinityHomotopyCategory S ≌
+    SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj (perfectNerveModel S))
+perfectInfinityH0Equivalence : perfectInfinityHomotopyCategory S ≌
+    DifferentialGraded.HomotopyCategory S (PerfectSemifree S)
+perfectH0Inclusion
+perfectHomotopyInclusion : perfectInfinityHomotopyCategory S ⥤
+    derivedInfinityHomotopyCategory S
+perfectHomotopyInclusion_full : (perfectHomotopyInclusion S).Full
+perfectHomotopyInclusion_faithful : (perfectHomotopyInclusion S).Faithful
+end SerrePositivity.InfinityCategories
+```
