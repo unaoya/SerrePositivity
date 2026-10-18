@@ -374,3 +374,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex_source
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex_target
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonPinchedSimplex
+#check @SerrePositivity.InfinityCategories.pathLastReindexFunctor
+#check @SerrePositivity.InfinityCategories.pathLastMaximumMap_naturality
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonHom_cast_last
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonHom_last_last
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonObj_extend

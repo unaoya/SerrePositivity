@@ -1557,5 +1557,37 @@ noncomputable def coherentHomComparisonPinchedSimplex {C : Type v} [Category.{u}
     (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
     PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n
 
+def pathLastReindexFunctor {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
+    Path (ULift.up i.castSucc : ULift.{u} (Fin (m + 2)))
+      (ULift.up (Fin.last (m + 1))) ⥤
+      Path (ULift.up (α.toOrderHom i).castSucc : ULift.{u} (Fin (n + 2)))
+        (ULift.up (Fin.last (n + 1)))
+
+lemma pathLastMaximumMap_naturality {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (i : Fin (m + 1)) :
+    nerveMap (pathLastReindexFunctor.{u} α i) ≫ pathLastMaximumMap (α.toOrderHom i) =
+      pathLastMaximumMap i ≫ stdSimplex.map α
+
+lemma coherentHomComparisonHom_cast_last {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) (i : Fin (n + 1)) :
+    coherentHomComparisonHom σ i.castSucc (Fin.last (n + 1)) ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentHomComparisonObj_cast X Y i) (coherentHomComparisonObj_last X Y n)) =
+      pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm σ
+
+lemma coherentHomComparisonHom_last_last {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
+    coherentHomComparisonHom σ (Fin.last (n + 1)) (Fin.last (n + 1)) ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentHomComparisonObj_last X Y n) (coherentHomComparisonObj_last X Y n)) =
+      toUnit _ ≫ eId SSet Y
+
+lemma coherentHomComparisonObj_extend {C : Type v} (X Y : C) {m n : ℕ}
+    (α : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 2)) :
+    coherentHomComparisonObj X Y (PinchedHom.extendOrderHom α.toOrderHom i) =
+      coherentHomComparisonObj X Y i
+
 end SerrePositivity.InfinityCategories
 ```
