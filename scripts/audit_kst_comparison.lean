@@ -41,6 +41,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -544,6 +545,12 @@ run_cmd do
 #check @SerrePositivity.KST.Comparison.horn_preimage_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.horn_preimage_localized_isIso
 
+#check @SerrePositivity.KST.Comparison.subcomplexPreimage_isPullback
+#print axioms SerrePositivity.KST.Comparison.subcomplexPreimage_isPullback
+
+#check @SerrePositivity.KST.Comparison.pullback_horn_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.pullback_horn_localized_isIso
+
 
 -- IntervalBoundaryFamily.lean
 
@@ -567,6 +574,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.intervalBoundaryMap_self
 #print axioms SerrePositivity.KST.Comparison.intervalBoundaryMap_self
+
+
+-- KanAnodyneBaseChange.lean
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_horn_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_horn_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_anodyne_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_anodyne_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.pullback_anodyne_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.pullback_anodyne_localized_isIso
 
 
 -- LoopFamily.lean
@@ -645,6 +664,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.grouplikeTranslationIso
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslationIso
+
+
+-- OverHornLifting.lean
+
+#check @SerrePositivity.KST.Comparison.hornOverMap
+#print axioms SerrePositivity.KST.Comparison.hornOverMap
+
+#check @SerrePositivity.KST.Comparison.over_lifting_of_underlying
+#print axioms SerrePositivity.KST.Comparison.over_lifting_of_underlying
+
+#check @SerrePositivity.KST.Comparison.underlying_rlp_of_over_horns
+#print axioms SerrePositivity.KST.Comparison.underlying_rlp_of_over_horns
 
 
 -- PairHomotopyLifting.lean
@@ -933,6 +964,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.simplexMapContraction
 #print axioms SerrePositivity.KST.Comparison.simplexMapContraction
+
+
+-- SliceAdjunction.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialSliceClosed
+#print axioms SerrePositivity.KST.Comparison.simplicialSliceClosed
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_isLeftAdjoint
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_isLeftAdjoint
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_map_fst
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_map_fst
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_map_snd
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_map_snd
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_map_isPullback
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_map_isPullback
 
 
 -- SubcomplexContraction.lean

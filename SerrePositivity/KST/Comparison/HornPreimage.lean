@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Comparison.HornContraction
 public import SerrePositivity.KST.Comparison.PairHomotopyLifting
 public import SerrePositivity.KST.Comparison.SubcomplexContraction
+public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 
 /-!
 # Kan fibration に沿う horn の逆像の局所化可逆性
@@ -103,5 +104,42 @@ theorem horn_preimage_localized_isIso {n : ℕ} [NeZero n] (k : Fin (n + 1))
     rw [hfinal]
     exact const_horn_vertex_mem k d (p.app d a)
   exact subcomplex_inclusion_localized_isIso A h₀ h₁ h₀end h₁start.symm h₀A h₁A hend
+
+/--
+概要：部分単体集合の逆像は厳密な引き戻しを与える。
+方針：各次数で逆像の集合の普遍性を確認する。
+規約：射影は包含と fromPreimage を使う。
+使われ方：horn の逆像の結果を任意の引き戻し四角形へ移す。
+-/
+theorem subcomplexPreimage_isPullback {E B : SSet.{u}} (A : B.Subcomplex) (p : E ⟶ B) :
+    IsPullback (A.preimage p).ι (A.fromPreimage p) p A.ι := by
+  apply IsPullback.of_forall_isPullback_app
+  intro d
+  apply (CategoryTheory.Limits.Types.isPullback_iff _ _ _ _).mpr
+  refine ⟨by rfl, ?_, ?_⟩
+  · intro a b h
+    exact Subtype.ext h.1
+  · intro e a h
+    refine ⟨⟨e, ?_⟩, rfl, Subtype.ext h⟩
+    change p.app d e ∈ A.obj d
+    rw [h]
+    exact a.property
+
+/--
+概要：正次元 horn の Kan fibration に沿う任意の厳密引き戻しの上辺は局所化同型である。
+方針：逆像の標準引き戻しとの一意な同型で比較する。
+規約：Segal 1974 Proposition 1.6 の基底変換の補助。
+使われ方：スライス圏の積が horn に誘導する射の判定。
+-/
+theorem pullback_horn_localized_isIso {n : ℕ} [NeZero n] (k : Fin (n + 1))
+    {E P : SSet.{u}} (p : E ⟶ (Δ[n] : SSet.{u})) (hp : SSet.modelCategoryQuillen.J.rlp p)
+    (i : P ⟶ E) (j : P ⟶ (Λ[n, k] : SSet.{u})) (sq : IsPullback i j p (Λ[n, k]).ι) :
+    IsIso (AnodyneHomotopy.anodyneQ.map i) := by
+  let e := sq.isoIsPullback _ _ (subcomplexPreimage_isPullback (Λ[n, k]) p)
+  have he : e.hom ≫ ((Λ[n, k]).preimage p).ι = i := sq.isoIsPullback_hom_fst ..
+  have : IsIso (AnodyneHomotopy.anodyneQ.map ((Λ[n, k]).preimage p).ι) :=
+    horn_preimage_localized_isIso k p hp
+  rw [← he, Functor.map_comp]
+  infer_instance
 
 end SerrePositivity.KST.Comparison
