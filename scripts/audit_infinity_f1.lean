@@ -1884,3 +1884,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.exists_edgewiseRightExtensionDomain_extension
 #check @SerrePositivity.InfinityCategories.edgewiseRightWeightDomain
 #check @SerrePositivity.InfinityCategories.exists_edgewiseRightWeightDomain_extension
+#check @SerrePositivity.InfinityCategories.Join.augMem_range_iff
+#check @SerrePositivity.InfinityCategories.joinMap_range
+#check @SerrePositivity.InfinityCategories.subcomplex_range_opFunctor_map
+#check @SerrePositivity.InfinityCategories.edgewiseWeight_face_range
+#check @SerrePositivity.InfinityCategories.edgewiseWeight_face_mono
+#check @SerrePositivity.InfinityCategories.edgewiseWeight_face_range_inf

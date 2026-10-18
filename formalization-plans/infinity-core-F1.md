@@ -8726,5 +8726,30 @@ lemma exists_edgewiseRightWeightDomain_extension {K : SSet.{u}} [KanComplex K] (
     (f : (edgewiseRightWeightDomain n : SSet.{u}) ⟶ K) :
     ∃ F : edgewiseWeight.obj ⦋n⦌ ⟶ K, (edgewiseRightWeightDomain n).ι ≫ F = f
 
+lemma Join.augMem_range_iff {X Y : SSet.{u}} (f : X ⟶ Y) (r : ℕ) (a : Join.augObj Y r) :
+    Join.augMem (Subcomplex.range f) r a ↔ ∃ b : Join.augObj X r, Join.augHom f r b = a
+
+lemma joinMap_range {X X' Y Y' : SSet.{u}} (f : X ⟶ X') (g : Y ⟶ Y') :
+    Subcomplex.range (joinMap f g) =
+      joinSubcomplexLeft (Subcomplex.range f) Y' ⊓ joinSubcomplexRight X' (Subcomplex.range g)
+
+lemma subcomplex_range_opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) :
+    Subcomplex.range (SSet.opFunctor.map f) = (Subcomplex.range f).op
+
+lemma edgewiseWeight_face_range (n : ℕ) (i : Fin (n + 2)) :
+    Subcomplex.range (edgewiseWeight.{u}.map (SimplexCategory.δ i)) =
+      joinSubcomplexLeft (stdSimplex.face ({i}ᶜ)).op Δ[n + 1] ⊓
+        joinSubcomplexRight (Δ[n + 1] : SSet.{u}).op (stdSimplex.face ({i}ᶜ))
+
+instance edgewiseWeight_face_mono (n : ℕ) (i : Fin (n + 2)) :
+    Mono (edgewiseWeight.{u}.map (SimplexCategory.δ i))
+
+lemma edgewiseWeight_face_range_inf (n : ℕ) (i j : Fin (n + 2)) :
+    Subcomplex.range (edgewiseWeight.{u}.map (SimplexCategory.δ i)) ⊓
+      Subcomplex.range (edgewiseWeight.map (SimplexCategory.δ j)) =
+    joinSubcomplexLeft ((stdSimplex.face ({i}ᶜ) ⊓ stdSimplex.face ({j}ᶜ)).op) Δ[n + 1] ⊓
+      joinSubcomplexRight (Δ[n + 1] : SSet.{u}).op
+        (stdSimplex.face ({i}ᶜ) ⊓ stdSimplex.face ({j}ᶜ))
+
 end SerrePositivity.InfinityCategories
 ```
