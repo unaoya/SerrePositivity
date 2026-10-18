@@ -2403,3 +2403,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.strictDiagramMappingPost_vertex
 #check @SerrePositivity.InfinityCategories.exists_strictTransportInverse
 #check @SerrePositivity.InfinityCategories.exists_strictTransportImageInverse
+#check @SerrePositivity.InfinityCategories.coherentNerveEdge_homMk_eq_of_enrichedVertexIso
+#check @SerrePositivity.InfinityCategories.coherentNerveEdge_isInvertible_of_enrichedInverse
+#check @SerrePositivity.InfinityCategories.strictTransportImageHom
+#check @SerrePositivity.InfinityCategories.strictTransportImageHom_vertex
+#check @SerrePositivity.InfinityCategories.strictTransportImageHom_comp
+#check @SerrePositivity.InfinityCategories.strictTransportImageHom_id
+#check @SerrePositivity.InfinityCategories.strictTransportImageHom_isInvertible_of_pointwise

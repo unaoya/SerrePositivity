@@ -581,3 +581,5 @@ public import SerrePositivity.InfinityCategories.F1.StrictDiagramPrecomposition
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingVertices
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramPostcomposition
 public import SerrePositivity.InfinityCategories.F1.StrictTransportWhitehead
+public import SerrePositivity.InfinityCategories.F1.CoherentEnrichedHomotopy
+public import SerrePositivity.InfinityCategories.F1.StrictTransportCoherentWhitehead

@@ -11706,5 +11706,51 @@ lemma exists_strictTransportImageInverse {C : Type u} [Category.{u} C]
       Nonempty (VertexIso (strictDiagramMappingVertex (θ ≫ η))
         (strictDiagramMappingVertex (𝟙 (G.val ⋙ kanObjectForget))))
 
+lemma coherentNerveEdge_homMk_eq_of_enrichedVertexIso
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)]
+    {X Y : C} {f g : X ⟶ Y}
+    (h : VertexIso (SimplicialCategory.homEquiv' X Y f)
+      (SimplicialCategory.homEquiv' X Y g)) :
+    SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated =
+      SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge g).toTruncated
+
+lemma coherentNerveEdge_isInvertible_of_enrichedInverse
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)]
+    {X Y : C} (f : X ⟶ Y) (g : Y ⟶ X)
+    (hu : VertexIso (SimplicialCategory.homEquiv' X X (f ≫ g))
+      (SimplicialCategory.homEquiv' X X (𝟙 X)))
+    (hc : VertexIso (SimplicialCategory.homEquiv' Y Y (g ≫ f))
+      (SimplicialCategory.homEquiv' Y Y (𝟙 Y))) :
+    IsInvertibleEdge (coherentNerveEdge f)
+
+def strictTransportImageHom {C : Type u} [Category.{u} C]
+    {F G : StrictTransportDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) : F ⟶ G
+
+lemma strictTransportImageHom_vertex {C : Type u} [Category.{u} C]
+    {F G : StrictTransportDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    SimplicialCategory.homEquiv' F G (strictTransportImageHom η) =
+      strictDiagramMappingVertex η
+
+lemma strictTransportImageHom_comp {C : Type u} [Category.{u} C]
+    {F G H : StrictTransportDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (θ : G.val ⋙ kanObjectForget ⟶ H.val ⋙ kanObjectForget) :
+    strictTransportImageHom (η ≫ θ) = strictTransportImageHom η ≫ strictTransportImageHom θ
+
+lemma strictTransportImageHom_id {C : Type u} [Category.{u} C]
+    (F : StrictTransportDiagramObject C) :
+    strictTransportImageHom (𝟙 (F.val ⋙ kanObjectForget)) = 𝟙 F
+
+lemma strictTransportImageHom_isInvertible_of_pointwise
+    {C : Type u} [Category.{u} C] {F G : StrictTransportDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (hη : ∀ c, IsQCatEquivalence (X := (F.val.obj c).obj)
+      (Y := (G.val.obj c).obj) (η.app c)) :
+    IsInvertibleEdge (coherentNerveEdge (strictTransportImageHom η))
+
 end SerrePositivity.InfinityCategories
 ```
