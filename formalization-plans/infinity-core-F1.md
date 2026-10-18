@@ -1930,5 +1930,48 @@ lemma coherentResolutionHomEquiv_app {X Y : SSet.{u}}
       ULift.up (coherentResolutionStdIso.inv.app d.unop ≫
         coherentResolution.map (SSet.yonedaEquiv.symm x) ≫ f)
 
+def CoherentResolutionFlag.toPath {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (i : Fin (d + 1)) :
+    Path (ULift.up F.start.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))
+
+lemma CoherentResolutionFlag.mem_toPath {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (i : Fin (d + 1)) (j : Fin (n + 1)) :
+    ULift.up j.castSucc ∈ (F.toPath.{u} i).I ↔ j ∈ F.sets i
+
+lemma CoherentResolutionFlag.pathLastMaximum_toPath {n d : ℕ}
+    (F : CoherentResolutionFlag n d) (i : Fin (d + 1)) :
+    pathLastMaximum (F.toPath.{u} i) = F.maxAt i
+
+def CoherentResolutionFlag.pathFlag {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    Fin (d + 1) ⥤ Path (ULift.up F.start.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))
+
+def CoherentResolutionFlag.prefixPath {n d e : ℕ} (F : CoherentResolutionFlag n d)
+    (α : Fin (e + 1) →o Fin (d + 1)) (i : Fin (e + 1)) :
+    Path (ULift.up F.start.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (F.maxAt (α 0)).castSucc)
+
+def CoherentResolutionFlag.prefixFlag {n d e : ℕ} (F : CoherentResolutionFlag n d)
+    (α : Fin (e + 1) →o Fin (d + 1)) :
+    Fin (e + 1) ⥤ Path (ULift.up F.start.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (F.maxAt (α 0)).castSucc)
+
+lemma CoherentResolutionFlag.prefixPath_comp_pullback {n d e : ℕ}
+    (F : CoherentResolutionFlag n d) (α : Fin (e + 1) →o Fin (d + 1))
+    (i : Fin (e + 1)) :
+    @CategoryStruct.comp (SimplicialThickening (ULift.{u} (Fin (n + 2)))) _
+      ⟨ULift.up F.start.castSucc⟩ ⟨ULift.up (F.maxAt (α 0)).castSucc⟩
+      ⟨ULift.up (Fin.last (n + 1))⟩
+      (F.prefixPath α i) ((F.pullback α).toPath i) = F.toPath (α i)
+
+lemma CoherentResolutionFlag.prefixFlag_comp_pullback {n d e : ℕ}
+    (F : CoherentResolutionFlag n d) (α : Fin (e + 1) →o Fin (d + 1)) :
+    (F.prefixFlag.{u} α).prod' ((F.pullback α).pathFlag) ⋙
+      compFunctor (⟨ULift.up F.start.castSucc⟩ :
+        SimplicialThickening (ULift.{u} (Fin (n + 2))))
+        ⟨ULift.up (F.maxAt (α 0)).castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ =
+      α.toFunctor ⋙ F.pathFlag
+
 end SerrePositivity.InfinityCategories
 ```

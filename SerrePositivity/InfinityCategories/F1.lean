@@ -80,3 +80,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionHomotopy
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionEquivalence
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionPushforward
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionExtension
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionPaths

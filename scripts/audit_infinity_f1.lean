@@ -463,3 +463,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentResolutionHomEquiv
 #check @SerrePositivity.InfinityCategories.coherentResolutionProjectionAll_std_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.coherentResolutionHomEquiv_app
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.toPath
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.mem_toPath
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pathLastMaximum_toPath
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pathFlag
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixPath
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixFlag
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixPath_comp_pullback
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixFlag_comp_pullback
