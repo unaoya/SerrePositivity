@@ -19,7 +19,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | --- | --- | --- | --- |
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
-| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（定義・cofinality の計算・因子分解判定・left fibration に沿う全右ホーンの引き戻しが済、Quillen A は未完） |
+| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（left fibration に沿う一般の right cofinality の引き戻し保存・Quillen A の right 側の必要性が済、十分性と left 側は未完） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 | 未着手 |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
@@ -246,26 +246,44 @@ right anodyne に送れば任意の right anodyne な射も保つことを証明
 `leftFibration_overPullback_rightHorn_rightAnodyne` で元の全右ホーンの結果を適用した。
 
 `leftFibration_overPullback_rightAnodyne_of_isLeftAdjoint` と
-`leftFibration_pullback_rightAnodyne_of_isLeftAdjoint` は、一般の right anodyne な射について
-引き戻し保存を **`(Over.pullback p).IsLeftAdjoint` を仮定して**与える中間定理である。
-無条件の保存・一般の cofinality の保存・Quillen A を証明済みとは扱わない。
-次は単体集合の通常の前層圏の slice の同値と制限関手の右随伴からこの仮定を解消する。
-Mathlib の `overEquivPresheafCostructuredArrow` は Hom と値の宇宙が一致する形なので、
-`SSet.{u}` にそのまま適用できないことを確認済み。小さい添字圏の Hom の持ち上げと
-圏同値による移送（または宇宙を分けた fiber 表示）で対処し、宇宙を零に固定しない。
+`leftFibration_pullback_rightAnodyne_of_isLeftAdjoint` の一般圏論の仮定は解消済み。
+`cofinalOverArrowEquiv` は小さい OverArrows と Yoneda 射からの通常の slice の Hom を同定する。
+引き戻し随伴の Hom 対応を通して各 fiber の全単射を得て、その作用が第一射影であることを示した。
+二変数で自然性を検査した `cofinalPresheafPullbackRestrictionIso` により、slice の前層表示の下で
+通常の引き戻しは制限関手に対応する。通常の右 Kan 拡張を右随伴とする制限関手の随伴から、
+`cofinalPresheafPullback_isLeftAdjoint` を得た。∞ 圏の Kan 拡張や straightening は使わない。
 
-Quillen A 本体、cocartesian fibration に沿う cofinality の pullback 安定性、
+Mathlib の slice の前層表示は Hom と値の宇宙が一致する形なので、まず
+`AsSmall.{u} SimplexCategory` に添字圏を移す。
+`cofinalOverMapPostIso` と map・pullback の随伴を共役し、右随伴の一意性を使う
+`cofinalPullback_isLeftAdjoint_of_equivalence` により元の単体集合へ戻す。
+`cofinalSSetPullback_isLeftAdjoint` は任意の `SSet.{u}` の射 p に成立し、fibration 性も不要。
+宇宙を零へ固定せず、追加公理や「依存積がある」という入力も置かない。
+
+これにより `leftFibration_overPullback_rightAnodyne`・
+`leftFibration_pullback_rightAnodyne` は一般の right anodyne な射に対する無条件の引き戻し保存を与える。
+閉包を生成する pushout・余極限を個別に仮定せず、持ち上げ性そのものを随伴で移す証明である。
+right cofinal な射の right anodyne・trivial Kan 因子分解の各因子を引き戻し、
+引き戻しの貼合せ同型で第一射影を戻すと `leftFibration_pullback_isRightCofinal` を得る。
+これは Kerodon Prop 7.2.3.10 の left fibration の場合であり、一般の cocartesian fibration 版は未完。
+
+`IsRightCofinal.cosliceProjection_isRightCofinal` は、coslice 射影の left fibration 性に適用した結果。
+`IsRightCofinal.coslice_isWeaklyContractible` は、この射影の弱同値性で恒等余錐を持つ coslice の
+弱可縮性を戻し、Quillen A の **right cofinality 側の必要性**を与える。
+標的 B だけを quasicategory とし、元の始域 A と引き戻した coslice の Kan 性は要求しない。
+
+Quillen A の right 側の十分性と left 側、一般の cocartesian fibration に沿う cofinality の pullback 安定性、
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
 left/right cofinality の opposite による比較は未完了。
 
 ### 次の工程
 
-B3 の cofinality の pullback 安定性を証明し、弱可縮な coslice の判定による Quillen A へ進む。
+B3 の Quillen A の right 側の十分性を証明し、opposite による left 側との比較へ進む。
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2227 jobs、公理監査2032宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内557モジュールに straightening 依存なし。
+対象ビルド2236 jobs、公理監査2056宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内565モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -368,4 +386,11 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `cofinalRightFibration_rightAdjoint_of_horns`・`cofinalRightAnodyne_leftAdjoint_of_horns` | 生成元の像の条件から随伴による一般の right anodyne な射への移送 | 済 |
 | `leftFibration_rightHorn_isPullback_rightAnodyne`・`cofinalRightHorn_isPullback_rightAnodyne` | 全右ホーンの定理の任意の引き戻し正方形への移送 | 済 |
 | `cofinalOverPullback_map_isPullback`・`leftFibration_overPullback_rightHorn_rightAnodyne` | slice の引き戻し関手の射の正方形と生成元での検査 | 済 |
-| `leftFibration_overPullback_rightAnodyne_of_isLeftAdjoint`・`leftFibration_pullback_rightAnodyne_of_isLeftAdjoint` | 通常の引き戻し関手の右随伴の存在を仮定した一般の引き戻し保存 | 条件付き中間定理・一般圏論の仮定の解消は未完 |
+| `leftFibration_overPullback_rightAnodyne_of_isLeftAdjoint`・`leftFibration_pullback_rightAnodyne_of_isLeftAdjoint` | 通常の引き戻し関手の右随伴の存在を仮定した一般の引き戻し保存 | 中間定理・仮定は無条件版で解消済み |
+| `cofinalOverArrowEquiv/left`・`cofinalPresheafPullbackFiberEquiv/val` | 前層の小さい fiber と slice の Hom、引き戻し第一射影による計算 | 済 |
+| `cofinalPresheafPullbackRestrictionIso`・`cofinalPresheafPullback_isLeftAdjoint` | slice の前層表示の下での制限関手との同型・通常の右 Kan 随伴 | 済 |
+| `cofinalOverMapPostIso`・`cofinalPullback_isLeftAdjoint_of_equivalence` | 引き戻し関手の右随伴の存在の圏同値による移送、異なる宇宙も許す | 済 |
+| `cofinalSSetPullback_isLeftAdjoint` | 任意の宇宙の単体集合の引き戻し関手の右随伴の存在 | 済 |
+| `leftFibration_overPullback_rightAnodyne`・`leftFibration_pullback_rightAnodyne` | left fibration に沿う一般の right anodyne な射の引き戻し保存、追加条件なし | 済 |
+| `leftFibration_pullback_isRightCofinal` | left fibration に沿う一般の right cofinal な射の引き戻し保存 | 済 |
+| `IsRightCofinal.cosliceProjection_isRightCofinal/coslice_isWeaklyContractible` | Quillen A の right 側の必要性、標的だけが quasicategory | 済 |

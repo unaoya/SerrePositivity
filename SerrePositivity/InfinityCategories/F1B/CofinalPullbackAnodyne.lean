@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Comma.Over.Pullback
 /-!
 概要：right anodyne 性の引き戻し保存を、通常の引き戻し関手の右随伴の存在へ還元する。
 方針：slice の右ホーンの像は既存の引き戻しの定理で処理し、持ち上げ性の随伴対応を使う。
-規約：このファイルでは右随伴の存在は明示した仮定。前層圏の一般補題で後続で解消する。
+規約：このファイルでは右随伴の存在は明示した仮定。SSetPullbackAdjoint・LeftFibrationAnodynePullback で解消する。
 使われ方：Quillen A に必要な left fibration に沿う引き戻しの安定性。
 -/
 
@@ -72,7 +72,7 @@ lemma leftFibration_overPullback_rightHorn_rightAnodyne {E B : SSet.{u}}
 
 /-- 概要：通常の引き戻し関手に右随伴があれば、left fibration に沿う right anodyne 性が保存される。
 方針：全右ホーンの結果を随伴の持ち上げ対応で一般の射に移す。
-規約：IsLeftAdjoint の仮定は後続の前層圏の一般補題で解消する必要がある。
+規約：IsLeftAdjoint の仮定は LeftFibrationAnodynePullback で解消する。
 使われ方：引き戻し安定性の残る一般圏論的な条件を一箇所に集約する。 -/
 lemma leftFibration_overPullback_rightAnodyne_of_isLeftAdjoint {E B : SSet.{u}}
     (p : E ⟶ B) [LeftFibration p] [(Over.pullback p).IsLeftAdjoint]
@@ -83,7 +83,7 @@ lemma leftFibration_overPullback_rightAnodyne_of_isLeftAdjoint {E B : SSet.{u}}
 
 /-- 概要：依存積が存在すれば left fibration に沿う任意の right anodyne な射の引き戻しも right anodyne。
 方針：底の恒等射への slice の射を引き戻し、同型な終域を消去して第一射影へ移す。
-規約：右随伴の存在の仮定を明示した中間定理。
+規約：右随伴の存在の仮定を明示した中間定理。無条件版は LeftFibrationAnodynePullback。
 使われ方：通常の前層圏の依存積の構成後に無条件の引き戻し保存を公開する。 -/
 lemma leftFibration_pullback_rightAnodyne_of_isLeftAdjoint {E A B : SSet.{u}}
     (p : E ⟶ B) [LeftFibration p] [(Over.pullback p).IsLeftAdjoint]
