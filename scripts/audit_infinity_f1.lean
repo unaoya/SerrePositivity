@@ -173,3 +173,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeCosliceRestriction_source_of_isCocartesianEdge
 #check @SerrePositivity.InfinityCategories.isCocartesianEdge_of_relativeCosliceRestriction_source
 #check @SerrePositivity.InfinityCategories.relativeCosliceRestriction_extendCone
+#check @SerrePositivity.InfinityCategories.cocartesianTriangle_extendCone

@@ -736,5 +736,21 @@ lemma relativeCosliceRestriction_extendCone {K L X Y A : SSet.{u}}
     ∃ T : join K A ⟶ X, joinInl K A ≫ T = p ∧
       joinMap (𝟙 K) A₀.ι ≫ T = G ∧ joinMap f (𝟙 A) ≫ T = H ∧ T ≫ q = B
 
+lemma cocartesianTriangle_extendCone {X Y A : SSet.{u}}
+    (t : (Δ[2] : SSet.{u}) ⟶ X) (q : X ⟶ Y) [InnerFibration q]
+    (he : IsCocartesianEdge q (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t)))
+    (A₀ : A.Subcomplex) (G : join (Δ[2] : SSet.{u}) (A₀ : SSet.{u}) ⟶ X)
+    (H : join (Δ[1] : SSet.{u}) A ⟶ X) (B : join (Δ[2] : SSet.{u}) A ⟶ Y)
+    (hG : joinInl _ _ ≫ G = t)
+    (hH : joinInl _ _ ≫ H = stdSimplex.δ (2 : Fin 3) ≫ t)
+    (hB : joinInl _ _ ≫ B = t ≫ q)
+    (hGH : joinMap (stdSimplex.δ (2 : Fin 3)) (𝟙 (A₀ : SSet.{u})) ≫ G =
+      joinMap (𝟙 _) A₀.ι ≫ H)
+    (hGq : G ≫ q = joinMap (𝟙 _) A₀.ι ≫ B)
+    (hHq : H ≫ q = joinMap (stdSimplex.δ (2 : Fin 3)) (𝟙 A) ≫ B) :
+    ∃ T : join (Δ[2] : SSet.{u}) A ⟶ X, joinInl _ _ ≫ T = t ∧
+      joinMap (𝟙 _) A₀.ι ≫ T = G ∧
+      joinMap (stdSimplex.δ (2 : Fin 3)) (𝟙 A) ≫ T = H ∧ T ≫ q = B
+
 end SerrePositivity.InfinityCategories
 ```
