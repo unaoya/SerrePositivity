@@ -106,3 +106,7 @@ public import SerrePositivity.KST.SchemeLemmas.PureTransformImage
 public import SerrePositivity.KST.SchemeLemmas.IdealPureTransform
 public import SerrePositivity.KST.SchemeLemmas.ChartBoundaryRegular
 public import SerrePositivity.KST.SchemeLemmas.IdealFlattening
+public import SerrePositivity.KST.SchemeLemmas.LocalizationIsogeny
+public import SerrePositivity.KST.SchemeLemmas.LinearMapTensorImage
+public import SerrePositivity.KST.SchemeLemmas.RankOneIsogeny
+public import SerrePositivity.KST.SchemeLemmas.RankOneFlattening

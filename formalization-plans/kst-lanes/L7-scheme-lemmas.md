@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 967 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 996 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -92,6 +92,8 @@
 - 純変換の局所化と元の加群の局所化の実際の線形同型・生成元からの交換式を構成済み。
 - 純変換での単射・全射の保存、右端で境界元が正則に作用する場合の完全性を証明済み。
 - 正則な境界元 f の冪を含むイデアル I について、Bl_I の各チャート上の純変換を係数環と線形同型にし、平坦性を証明済み。中心が D(f) を避けることも証明済み。
+- 局所化で同型な有限表示加群について、実際の両射と両合成が同じ分母倍の恒等となる関係式を構成済み。
+- 境界外で階数一自由な有限表示 A 加群について、実際の有限生成 admissible 中心と全標準チャート上の純変換の平坦性を証明済み。一般有限 B 加群の場合は未完了。
 - 有限アフィン被覆上で実際の admissible 支配射が与えられれば、一つの大域 blowup からの支配射を構成できることを証明済み。零核の中心外開集合による重なりの一致を使う。
 - 次は一般の開埋め込みの blowup 比較射を構成し、一般 Noether 基底上の二段合成へアフィン結果を接続する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在はなお未証明。L7b 完了とはしない。
@@ -337,6 +339,17 @@ fᴺ の像は a の像の倍なので、核は f の冪で消える。
 この例は一般の有限 B 加群について平坦化中心を与える定理を置換しない。
 原典は Stacks 0815 の純変換と KST §5 の通常 blowup の可逆イデアルの計算。
 
+#### 階数一の場合への次の還元
+
+有限表示 A 加群 M と N の f による局所化が同型なら、
+分母を払って実際の写像 g : M → N と h : N → M、および指数 n を作り、
+hg = fⁿ id と gh = fⁿ id を同時に満たすことを次の補題とする。
+有限表示性で局所化された写像を持ち上げ、有限生成性で二つの合成の誤差を一様な冪で消す。
+N = A の場合、g の像をイデアル I とすると fⁿ ∈ I で、核も fⁿ で消える。
+基底変更でも合成の関係式を保つことにより、この場合の純変換を I の純変換に比較する。
+これは境界外で階数一自由な有限 A 加群の特殊形であり、一般有限 B 加群の平坦化は別に残る。
+原典の位置付けは Stacks 0815 の Noether 特殊形に向けた有限加群の分母消去。
+
 ### 7.2 証明の分解
 
 1. 閉補集合を定義する有限型イデアル層を選ぶ。
@@ -441,6 +454,11 @@ fᴺ の像は a の像の倍なので、核は f の冪で消える。
 | `idealPureTransformEquiv` | IdealPureTransform | 検証済み | 純変換と拡大イデアルの同型 |
 | `chartBaseMap_nonZeroDivisors` | ChartBoundaryRegular | 検証済み | 基礎環の正則元のチャートでの正則性 |
 | `chartIdealPureTransformEquiv` / `chartIdealPureTransform_flat` | IdealFlattening | 検証済み | イデアル加群の実際の自由化と平坦化 |
+| `exists_localization_isogeny` | LocalizationIsogeny | 検証済み | 局所化同型の分母倍の両射 |
+| `linearMapTensorToAlgebra_ker_annihilated` | LinearMapTensorImage | 検証済み | 基底変更後の核の消滅 |
+| `exists_rankOne_isogeny` | RankOneIsogeny | 検証済み | 環との冪倍同型 |
+| `chartRankOnePureTransformEquiv` | RankOneFlattening | 検証済み | 像中心のチャート上の自由化 |
+| `exists_rankOne_flattening_center` | RankOneFlattening | 検証済み | 階数一の場合の実際の平坦化中心 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |
