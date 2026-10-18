@@ -221,10 +221,14 @@ F1 の補助解像の旗を native Path に送り、最大元と末尾への正�
 `resolutionHornInsertHomotopy i` は台で定義したホーンの旗の部分複体内への制限。
 i ≠ 0 では終端の射が零頂点を除く面を通る厳密な因子分解も証明済み。
 ホーンの左 Kan 拡張との同定、縮約の完成、比較射の反対側の合成のホモトピーは未証明。
+Kan 標的の前合成の実際のホモトピー同値性を使い、向き付きホモトピー不変性と二対六則を証明した。
+`resolutionPositiveFace_inclusion_isKanPrecompositionEquivalence` は i ≠ 0 のホーンの旗の模型に
+零頂点を除く旗の面を含める射について、この条件を証明する。
+標準単体上の最大値へのホモトピーも構成済み。標準ホーン側の制限と比較の接続、i = 0 は未完了。
 判定への移送や片側の逆の性質だけでは、充満忠実性やホモトピー同値を証明したとは数えない。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開587宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開606宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。

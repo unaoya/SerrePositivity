@@ -1913,6 +1913,40 @@ resolutionHornUpperMap_factor_positiveFace {n : ℕ} (i : Fin (n + 1)) (hi : i �
 これはホーン内の恒等射を面を通る射まで変形した段階であり、面からの縮約や i = 0 の場合の
 縮約、一般の解像の射影の同値性を証明したとは数えない。
 
+Kan 標的での位相的な比較には、次の既存のホモトピー同値性による条件を使う。
+
+```lean
+IsKanPrecompositionEquivalence (f : A ⟶ B) : Prop :=
+  ∀ (K : SSet.{u}) [SSet.KanComplex K],
+    IsSimplicialHomotopyEquivalence ((MonoidalClosed.pre f).app K)
+```
+
+`functorIsoPrecompositionOfHomotopyKan` は任意の `SSet.Homotopy f g` が、Kan 標的 K への
+前合成の二射の可逆な二胞体を与えることを示す。内部 Hom が Kan であることを使うため、
+元の A・B の Kan 性やホモトピーの頂点の固定性は要求しない。
+従ってこの条件はホモトピー不変で、合成と二対六則を満たす。
+これはモデル構造の存在の引用を追加せずに補助解像を比較するための条件であり、
+最終的な dg 比較射に要求する実際のホモトピー逆は変更しない。
+
+i ≠ 0 のとき同じ一頂点の追加は零頂点を除く旗の面も保つ。
+`resolutionPositiveFaceInsertHomotopy` はその面の恒等射から最大値の自己写像へのホモトピー。
+ホーンから面へ移して包含で戻る合成と、その逆順の合成はそれぞれの最大値の自己写像に等しい。
+両方とも恒等射から変形されるので二対六則により次を得る。
+
+```lean
+resolutionPositiveFace_inclusion_isKanPrecompositionEquivalence {n : ℕ}
+    (i : Fin (n + 1)) (hi : i ≠ 0) :
+  IsKanPrecompositionEquivalence
+    (SSet.Subcomplex.homOfLE (resolutionPositiveFace_le_horn.{u} i hi))
+```
+
+この主張は任意の Kan 標的への写像空間の実際のホモトピー同値性である。
+標準単体側にも `standardUpperVertexHomotopy i` を構成した。
+その台の射は解像の区間の切断、変形、最大元の射影の合成で、各単体の各頂点での値は
+`if t r = 0 then σ r else max i (σ r)`。
+標準ホーン・面への制限、この比較を両側の射影に沿って接続する工程、i = 0 の場合、
+ホーンの左 Kan 拡張との同定と一般の解像の比較の同値性は未証明である。
+
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
 
