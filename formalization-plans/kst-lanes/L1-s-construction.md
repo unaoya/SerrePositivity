@@ -3830,3 +3830,119 @@ K 空間を零段とする列、その単射構造射への置換と各段の π
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2996 jobs）、公理監査成功（1054 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.31 構造射のホモトピー自然性と単射な列間の厳密な射
+
+一次方向の比較の選んだ逆射の自然性を写像空間の成分の等式として証明した。
+比較の両方向のホモトピー逆の式と元の比較の自然性を用いる。
+これを Kan 延長の自然性と合成し、境界商の随伴構造射、uncurry した suspension 構造射の
+成分での自然性を得た。uncurry の成分の保持と loop の余単位の自然性は一般形でも証明した。
+
+kKanSequence の零段には境界商の K 空間の関手、正の段には反復 S の Kan 実現の関手の射を使い、
+全段の構造射との成分での可換性を証明した。零段では随伴の余単位の厳密な自然性を使う。
+単射置換した源の射影を前合成した後も成分での可換性を保つことを、任意の Kan 列の一般補題で示した。
+L9 のホモトピー厳密化により、単射置換した源から元の標的列への厳密な列の射 monicKToRawMap を得た。
+各段は元の射影と入力の射の合成と同じ点つきホモトピー成分を保つ。
+
+標的の置換射影は各段で全ての単射に対する RLP を持つ。この射影に沿う L9 の列の持ち上げにより、
+入力の射 f:X→Y から実際の厳密な列の射
+monicKKanSequenceMap f : Hom (monicKKanSequence X) (monicKKanSequence Y) を構成した。
+標的の射影との合成は厳密化済みの射を厳密に回収し、元の各段の射との成分の等式も保つ。
+厳密な列の射の構成は追加仮定なし。ただし選んだ射の恒等・合成の関手法則はまだ証明していない。
+Ω 条件・連結性を仮定して BF スペクトルが完成したとは数えない。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory MonoidalCategory SSet`、`open Spectra.PointedMapping` の下の正確な型。
+
+```lean
+lemma pointedComponentInverse_naturality {A A' B B' : PointedSimplicialSet.{u}}
+    (q : A ⟶ B) (q' : A' ⟶ B') (g : B ⟶ A) (g' : B' ⟶ A')
+    (e : A ⟶ A') (b : B ⟶ B')
+    (hleft : componentOf (q' ≫ g') = componentOf (𝟙 A'))
+    (hright : componentOf (g ≫ q) = componentOf (𝟙 B))
+    (hn : e ≫ q' = q ≫ b) :
+    componentOf (g ≫ e) = componentOf (b ≫ g')
+
+lemma oneDirectionKanComparisonInverse_naturality_component (r : ℕ)
+    {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    componentOf (oneDirectionKanComparisonInverse r X ≫
+      (oneDirectionKanRealizationFunctor r).map f) =
+    componentOf ((boundaryKanRealizationFunctor r).map f ≫
+      oneDirectionKanComparisonInverse r Y)
+
+lemma boundaryKanAssemblyAdjoint_naturality_component (r : ℕ)
+    {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    componentOf ((boundaryKanRealizationFunctor r).map f ≫ boundaryKanAssemblyAdjoint r Y) =
+      componentOf (boundaryKanAssemblyAdjoint r X ≫ (loopBoundaryKanFunctor (r + 1)).map f)
+
+lemma pointedComponentUncurry {A B : PointedSimplicialSet.{u}}
+    {f g : A ⟶ Spectra.loopSpace B} (h : componentOf f = componentOf g) :
+    componentOf ((Spectra.suspensionLoopEquiv A B).symm f) =
+      componentOf ((Spectra.suspensionLoopEquiv A B).symm g)
+
+lemma boundaryKanAssemblySigma_naturality_component (r : ℕ)
+    {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    componentOf (PointedSimplicialSet.circle.{u} ◁ (boundaryKanRealizationFunctor r).map f ≫
+      boundaryKanAssemblySigma r Y) =
+      componentOf (boundaryKanAssemblySigma r X ≫
+        (boundaryKanRealizationFunctor (r + 1)).map f)
+
+lemma pointedLoopCounit_naturality {A B : PointedSimplicialSet.{u}} (f : A ⟶ B) :
+    PointedSimplicialSet.circle.{u} ◁
+      (PointedObject.basedHomFunctor (C
+
+def kKanSequenceLevelMap {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    ∀ r, ((kKanSequence X).level r).space ⟶ ((kKanSequence Y).level r).space
+
+lemma kKanSequenceLevelMap_comm {X Y : StableModel.{u}} (f : X ⟶ Y) (r : ℕ) :
+    componentOf (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap f r ≫
+      (kKanSequence Y).sigma r) =
+      componentOf ((kKanSequence X).sigma r ≫ kKanSequenceLevelMap f (r + 1))
+
+def monicKToRawLevelMap {X Y : StableModel.{u}} (f : X ⟶ Y) (r : ℕ) :
+    ((monicKKanSequence X).level r).space ⟶ ((kKanSequence Y).level r).space
+
+lemma pointedComponent_sequence_precompose {A B C : Spectra.KanSequence.{u}}
+    (p : Spectra.KanSequence.Hom A B)
+    (f : ∀ r, (B.level r).space ⟶ (C.level r).space)
+    (hf : ∀ r, componentOf (PointedSimplicialSet.circle.{u} ◁ f r ≫ C.sigma r) =
+      componentOf (B.sigma r ≫ f (r + 1))) (r : ℕ) :
+    componentOf (PointedSimplicialSet.circle.{u} ◁ (p.app r ≫ f r) ≫ C.sigma r) =
+      componentOf (A.sigma r ≫ (p.app (r + 1) ≫ f (r + 1)))
+
+lemma monicKToRawLevelMap_comm {X Y : StableModel.{u}} (f : X ⟶ Y) (r : ℕ) :
+    componentOf (PointedSimplicialSet.circle.{u} ◁ monicKToRawLevelMap f r ≫
+      (kKanSequence Y).sigma r) =
+      componentOf ((monicKKanSequence X).sigma r ≫ monicKToRawLevelMap f (r + 1))
+
+def monicKToRawMap {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    Spectra.KanSequence.Hom (monicKKanSequence X) (kKanSequence Y)
+
+lemma monicKToRawMap_component {X Y : StableModel.{u}} (f : X ⟶ Y) (r : ℕ) :
+    componentOf ((monicKToRawMap f).app r) = componentOf (monicKToRawLevelMap f r)
+
+lemma monicKKanSequenceProjection_rlp (X : StableModel.{u}) (r : ℕ) :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp
+      ((monicKKanSequenceProjection X).app r).right
+
+def monicKKanSequenceMap {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    Spectra.KanSequence.Hom (monicKKanSequence X) (monicKKanSequence Y)
+
+lemma monicKKanSequenceMap_projection {X Y : StableModel.{u}} (f : X ⟶ Y) (r : ℕ) :
+    (monicKKanSequenceMap f).app r ≫ (monicKKanSequenceProjection Y).app r =
+      (monicKToRawMap f).app r
+
+lemma monicKKanSequenceMap_projection_component {X Y : StableModel.{u}} (f : X ⟶ Y) (r : ℕ) :
+    componentOf ((monicKKanSequenceMap f).app r ≫ (monicKKanSequenceProjection Y).app r) =
+      componentOf ((monicKKanSequenceProjection X).app r ≫ kKanSequenceLevelMap f r)
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。同一の Kan 列の接続と単射置換に加え、
+構造射の成分での自然性と、入力の射から作る置換列間の厳密な比較射まで証明済み。
+正の段の Ω 条件・delooping、連結性を含む BF 連結スペクトル、列の射の関手法則は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3006 jobs）、公理監査成功（1071 宣言、標準三公理のみ）。追加公理・sorry なし。

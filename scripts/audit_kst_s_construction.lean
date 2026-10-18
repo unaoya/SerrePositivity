@@ -2958,3 +2958,39 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceProjection_piIsomorphism
 #check @SerrePositivity.KST.SConstruction.monicKKanSequence_zero
 #print axioms SerrePositivity.KST.SConstruction.monicKKanSequence_zero
+
+-- 反復 S の構造射の成分での自然性と単射置換した列間の射
+#check @SerrePositivity.KST.SConstruction.pointedComponentInverse_naturality
+#print axioms SerrePositivity.KST.SConstruction.pointedComponentInverse_naturality
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanComparisonInverse_naturality_component
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanComparisonInverse_naturality_component
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjoint_naturality_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjoint_naturality_component
+#check @SerrePositivity.KST.SConstruction.pointedComponentUncurry
+#print axioms SerrePositivity.KST.SConstruction.pointedComponentUncurry
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblySigma_naturality_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblySigma_naturality_component
+#check @SerrePositivity.KST.SConstruction.pointedLoopCounit_naturality
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopCounit_naturality
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevelMap
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevelMap
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevelMap_comm
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevelMap_comm
+#check @SerrePositivity.KST.SConstruction.monicKToRawLevelMap
+#print axioms SerrePositivity.KST.SConstruction.monicKToRawLevelMap
+#check @SerrePositivity.KST.SConstruction.pointedComponent_sequence_precompose
+#print axioms SerrePositivity.KST.SConstruction.pointedComponent_sequence_precompose
+#check @SerrePositivity.KST.SConstruction.monicKToRawLevelMap_comm
+#print axioms SerrePositivity.KST.SConstruction.monicKToRawLevelMap_comm
+#check @SerrePositivity.KST.SConstruction.monicKToRawMap
+#print axioms SerrePositivity.KST.SConstruction.monicKToRawMap
+#check @SerrePositivity.KST.SConstruction.monicKToRawMap_component
+#print axioms SerrePositivity.KST.SConstruction.monicKToRawMap_component
+#check @SerrePositivity.KST.SConstruction.monicKKanSequenceProjection_rlp
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceProjection_rlp
+#check @SerrePositivity.KST.SConstruction.monicKKanSequenceMap
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceMap
+#check @SerrePositivity.KST.SConstruction.monicKKanSequenceMap_projection
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceMap_projection
+#check @SerrePositivity.KST.SConstruction.monicKKanSequenceMap_projection_component
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceMap_projection_component

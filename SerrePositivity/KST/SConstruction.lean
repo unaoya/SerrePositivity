@@ -78,4 +78,8 @@ public import SerrePositivity.KST.SConstruction.KanAssemblyHomotopyMaps
 public import SerrePositivity.KST.SConstruction.KanAssemblySequence
 public import SerrePositivity.KST.SConstruction.KSpaceSequence
 
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturality
+public import SerrePositivity.KST.SConstruction.KSequenceMaps
+public import SerrePositivity.KST.SConstruction.MonicKSequenceMaps
+
 /-! # ∞-S• 構成と連結 K 理論 -/
