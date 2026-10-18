@@ -125,6 +125,10 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `sequenceExteriorCochain` と各項の有限自由性・下限 | ExteriorSequence | 対象ビルド済み |
 | `sequenceExteriorCochain_empty_iso` | ExteriorSequence | 空列で反復 cone と比較済み |
 | `chartSequenceGeneratorEquiv_differential`・`chartSequenceExteriorIso` | ChartSequenceComparison | 対象ビルド済み |
+| `exteriorProduct_decomposition` | ExteriorProductSplit | 対象ビルド済み |
+| `exteriorProductLinearEquiv` | ExteriorProductEquiv | 総外積の二成分分解 |
+| `exteriorProduct_contract_join`・`exteriorProduct_contract_decomposition` | ExteriorProductDifferential | cone 型微分 (-dx,ax+dy) を証明済み |
+| `exteriorProductDegreeEquiv` | ExteriorProductDegree | 第n+1外積の二成分分解 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -135,10 +139,14 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 符号付き braiding に関する可換性も証明済み。有限列では各項の有限自由性と振幅 [-n,0] を証明済み。
 `derivedChartComplex` は既存の反復 cone 複体であり、一般の列で両模型の比較同型はまだない。
 空列の比較同型、およびチャート列の Fin r と ChartIndex の添字比較同型は構成済み。
+生成元追加 M×R の外積を二成分へ分解する総外積と同次次数別の線形同型は構成済み。
+この二成分の微分が (-dx,ax+dy) になることも証明済み。
+整数次数の項と既存 mappingCone の biprod を比較する複体同型は未完了。
 この二つを合わせて「導来チャート cdga の実装済み」とは扱わない。
-所有モジュールの全329定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全370定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は生成元を一つ追加した外積の分解と、反復 cone 比較の帰納段階。
+次の実装単位は外積の二成分分解を整数次数に移し、mappingCone の複体同型へ持ち上げる。
+その後に有限列への帰納法で反復 cone 比較を完成する。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 

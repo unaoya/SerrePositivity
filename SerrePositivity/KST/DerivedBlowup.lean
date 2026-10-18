@@ -36,3 +36,7 @@ public import SerrePositivity.KST.DerivedBlowup.ExteriorFiniteness
 public import SerrePositivity.KST.DerivedBlowup.ExteriorDegreeZero
 public import SerrePositivity.KST.DerivedBlowup.ExteriorSequence
 public import SerrePositivity.KST.DerivedBlowup.ChartSequenceComparison
+public import SerrePositivity.KST.DerivedBlowup.ExteriorProductSplit
+public import SerrePositivity.KST.DerivedBlowup.ExteriorProductEquiv
+public import SerrePositivity.KST.DerivedBlowup.ExteriorProductDifferential
+public import SerrePositivity.KST.DerivedBlowup.ExteriorProductDegree
