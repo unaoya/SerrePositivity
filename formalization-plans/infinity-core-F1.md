@@ -10748,5 +10748,124 @@ lemma weightedNerveTransport_isQCatEquivalence_iff {C : Type u} [Category.{u} C]
     IsQCatEquivalence (edgeTransport (weightedNerveProjection F) (nerve.edgeMk f)) ↔
       IsQCatEquivalence (F.map f)
 
+def relativeFunctorConstFiberHom {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    relativeFunctorSpace p (SSet.const b : A ⟶ B) ⟶ (ihom A).obj (vertexFiber p b)
+
+lemma relativeFunctorConstFiberHom_vertex {A E B : SSet.{u}}
+    (p : E ⟶ B) (b : B _⦋0⦌) (g : A ⟶ vertexFiber p b) :
+    (relativeFunctorConstFiberHom (A := A) p b).app _
+      (relativeFunctorVertex p (SSet.const b) (g ≫ vertexFiberι p b) (by
+        rw [Category.assoc, vertexFiberι_comp, SSet.comp_const])) = functorVertex g
+
+def relativeExtensionFiberEndpoint {A D C E B : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (i : D ⟶ A) (v : D ⟶ E) (hv : v ≫ p = i ≫ a)
+    (j : C ⟶ A) (b : B _⦋0⦌) (hj : j ≫ a = SSet.const b) :
+    relativeFunctorExtensionSpace p a i v hv ⟶
+      (ihom C).obj (vertexFiber p b)
+
+lemma relativeExtensionFiberEndpoint_vertex {A D C E B : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (i : D ⟶ A) (v : D ⟶ E) (hv : v ≫ p = i ≫ a)
+    (j : C ⟶ A) (b : B _⦋0⦌) (hj : j ≫ a = SSet.const b)
+    (W : A ⟶ E) (hW : W ≫ p = a) (hWi : i ≫ W = v)
+    (g : C ⟶ vertexFiber p b) (hWj : j ≫ W = g ≫ vertexFiberι p b) :
+    (relativeExtensionFiberEndpoint p a i v hv j b hj).app _
+      (relativeFunctorExtensionSpaceVertexEquiv p a i v hv ⟨W, hW, hWi⟩) =
+        functorVertex g
+
+noncomputable def relativeExtensionFiberEndpoint_witnessIso {A D C E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) (i : D ⟶ A)
+    (hi : leftAnodyneExtensions i) (v : D ⟶ E) (hv : v ≫ p = i ≫ a)
+    (j : C ⟶ A) (b : B _⦋0⦌) (hj : j ≫ a = SSet.const b)
+    (W W' : A ⟶ E) (hW : W ≫ p = a) (hW' : W' ≫ p = a)
+    (hWi : i ≫ W = v) (hWi' : i ≫ W' = v)
+    (g g' : C ⟶ vertexFiber p b)
+    (hWj : j ≫ W = g ≫ vertexFiberι p b) (hWj' : j ≫ W' = g' ≫ vertexFiberι p b) :
+    FunctorIso g g'
+
+noncomputable def leftFibrationTransportNaturalityIso {E E' B : SSet.{u}}
+    (p : E ⟶ B) (q : E' ⟶ B) [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p)
+    {a b : B _⦋0⦌} (e : SSet.Edge a b)
+    {T : vertexFiber p a ⟶ vertexFiber p b} {T' : vertexFiber q a ⟶ vertexFiber q b}
+    (hT : IsEdgeTransport p e T) (hT' : IsEdgeTransport q e T') :
+    FunctorIso (T ≫ vertexFiberMap p q f hf b) (vertexFiberMap p q f hf a ≫ T')
+
+noncomputable def leftFibrationMap_transportIso {E E' B : SSet.{u}}
+    (p : E ⟶ B) (q : E' ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ E') (hf : f ≫ q = p) {a b : B _⦋0⦌} (e : SSet.Edge a b) :
+    FunctorIso
+      (edgeTransport p e ≫ vertexFiberMap p q f hf b)
+      (vertexFiberMap p q f hf a ≫ edgeTransport q e)
+
+lemma leftFibrationMap_transport_isQCatEquivalence_iff {E E' B : SSet.{u}}
+    (p : E ⟶ B) (q : E' ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ E') (hf : f ≫ q = p) {a b : B _⦋0⦌} (e : SSet.Edge a b)
+    (ha : IsQCatEquivalence (vertexFiberMap p q f hf a))
+    (hb : IsQCatEquivalence (vertexFiberMap p q f hf b)) :
+    IsQCatEquivalence (edgeTransport p e) ↔ IsQCatEquivalence (edgeTransport q e)
+
+lemma vertexFiberMap_isQCatEquivalence_of_precompositionEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) (b : B _⦋0⦌) :
+    IsQCatEquivalence (vertexFiberMap p q f hf b)
+
+lemma leftFibration_precompositionEquivalence_iff_fibers
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    IsPrecompositionEquivalence f ↔
+      ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)
+
+lemma leftFibration_isQCatEquivalence_iff_fibers
+    {E F B : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    IsQCatEquivalence f ↔ ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)
+
+noncomputable def weightedNerveComparisonFiber {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C)
+    (h : weightedNerve F ⟶ E) (hh : h ≫ q = weightedNerveProjection F) (c : C) :
+    F.obj c ⟶ vertexFiber q (nerveVertex c)
+
+noncomputable def weightedNerveComparisonFiber_transportIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (h : weightedNerve F ⟶ E) (hh : h ≫ q = weightedNerveProjection F)
+    {c d : C} (f : c ⟶ d) :
+    FunctorIso
+      (F.map f ≫ weightedNerveComparisonFiber F q h hh d)
+      (weightedNerveComparisonFiber F q h hh c ≫ edgeTransport q (nerve.edgeMk f))
+
+lemma weightedNerveComparisonFiber_isQCatEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (h : weightedNerve F ⟶ E) (hh : h ≫ q = weightedNerveProjection F) (c : C)
+    (hc : IsQCatEquivalence
+      (vertexFiberMap (weightedNerveProjection F) q h hh (nerveVertex c))) :
+    IsQCatEquivalence (weightedNerveComparisonFiber F q h hh c)
+
+lemma weightedNerveComparison_transport_isQCatEquivalence_iff
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (h : weightedNerve F ⟶ E) (hh : h ≫ q = weightedNerveProjection F)
+    {c d : C} (f : c ⟶ d)
+    (hc : IsQCatEquivalence (weightedNerveComparisonFiber F q h hh c))
+    (hd : IsQCatEquivalence (weightedNerveComparisonFiber F q h hh d)) :
+    IsQCatEquivalence (edgeTransport q (nerve.edgeMk f)) ↔ IsQCatEquivalence (F.map f)
+
+lemma weightedNerveComparisonFiber_isQCatEquivalence_of_precompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (h : weightedNerve F ⟶ E) (hh : h ≫ q = weightedNerveProjection F)
+    (eh : IsPrecompositionEquivalence h) (c : C) :
+    IsQCatEquivalence (weightedNerveComparisonFiber F q h hh c)
+
+lemma weightedNerveComparison_transport_isQCatEquivalence_iff_of_precompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (h : weightedNerve F ⟶ E) (hh : h ≫ q = weightedNerveProjection F)
+    (eh : IsPrecompositionEquivalence h) {c d : C} (f : c ⟶ d) :
+    IsQCatEquivalence (edgeTransport q (nerve.edgeMk f)) ↔ IsQCatEquivalence (F.map f)
+
 end SerrePositivity.InfinityCategories
 ```
