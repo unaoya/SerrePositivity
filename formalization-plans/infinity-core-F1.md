@@ -10159,5 +10159,35 @@ lemma leftUnstraighteningMappingVertexMap_isQCatEquivalence_of_isInvertibleEdge
     (he : IsInvertibleEdge e) :
     IsQCatEquivalence (leftUnstraighteningMappingVertexMap F G (intervalMappingVertexOfEdge e)).val
 
+lemma intervalMappingBoundary_face_one {X : SSet.{u}} (x y : X _⦋0⦌) :
+    boundary.ι (1 : Fin 2) ≫ intervalMappingBoundary x y = SSet.yonedaEquiv.symm x
+
+lemma intervalMappingBoundary_face_zero {X : SSet.{u}} (x y : X _⦋0⦌) :
+    boundary.ι (0 : Fin 2) ≫ intervalMappingBoundary x y = SSet.yonedaEquiv.symm y
+
+noncomputable def intervalMappingEdgeOfVertex {X : SSet.{u}} {x y : X _⦋0⦌}
+    (v : (intervalMappingSpace x y) _⦋0⦌) : SSet.Edge x y
+
+noncomputable def intervalMappingEdgeVertexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) :
+    SSet.Edge x y ≃ (intervalMappingSpace x y) _⦋0⦌
+
+lemma leftUnstraighteningMappingVertexMap_eq_family {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (x : (leftUnstraighteningTransformationSpace F G) _⦋0⦌) :
+    (leftUnstraighteningMappingVertexMap F G x).val =
+      lift (𝟙 (leftUnstraightening F)) (SSet.const x) ≫ leftUnstraighteningMappingFamily F G
+
+noncomputable def leftUnstraighteningMappingSpaceMap_vertexIso {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (x : (leftUnstraighteningTransformationSpace F G) _⦋0⦌) :
+    VertexIso (relativeFunctorVertex (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+      (leftUnstraighteningEdgeMap F G (intervalMappingEdgeOfVertex x)).val
+      (leftUnstraighteningEdgeMap F G (intervalMappingEdgeOfVertex x)).property)
+      ((leftUnstraighteningMappingSpaceMap F G).app _ x)
+
+lemma leftUnstraighteningMappingVertexMap_isPrecompositionEquivalence_of_recoveredEdge
+    {B : SSet.{u + 1}} [Quasicategory B] (F G : B ⟶ SpaceInfinity.{u})
+    (x : (leftUnstraighteningTransformationSpace F G) _⦋0⦌)
+    (hx : IsInvertibleEdge (intervalMappingEdgeOfVertex x)) :
+    IsPrecompositionEquivalence (leftUnstraighteningMappingVertexMap F G x).val
+
 end SerrePositivity.InfinityCategories
 ```
