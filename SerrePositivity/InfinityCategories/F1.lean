@@ -293,3 +293,6 @@ public import SerrePositivity.InfinityCategories.F1.MappingCylinderPullbackIso
 public import SerrePositivity.InfinityCategories.F1.JoinPullback
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPullbackIso
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderEquivalence
+public import SerrePositivity.InfinityCategories.F1.JoinRightBoundaryAnodyne
+public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.ScaffoldSimplexBridge

@@ -6291,5 +6291,60 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison
     {X Y : SSet.{u}} (f : X ⟶ Y) :
     IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
 
+lemma emptyJoinIso_naturality {A B : SSet.{u}} (f : A ⟶ B) (K : SSet.{u}) :
+    joinMap (𝟙 ((⊥ : K.Subcomplex) : SSet.{u})) f ≫ (emptyJoinIso K B).hom =
+      (emptyJoinIso K A).hom ≫ f
+
+lemma joinRightBoundary_subcomplex_isPushout {B : SSet.{u}} (A : B.Subcomplex) (K : SSet.{u}) :
+    IsPushout (joinInr K (A : SSet.{u})) A.ι
+      (joinUnionRight (⊥ : K.Subcomplex) A)
+      ((emptyJoinIso K B).inv ≫ joinUnionLeft (⊥ : K.Subcomplex) A)
+
+lemma joinRightBoundaryMap_innerAnodyne_of_leftAnodyne {A B : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (K : SSet.{u}) (hi : leftAnodyneExtensions i) :
+    innerAnodyneExtensions (joinRightBoundaryMap i K)
+
+lemma joinPoint_inl_leftAnodyne (K : SSet.{u}) :
+    leftAnodyneExtensions (joinInl (Δ[0] : SSet.{u}) K)
+
+def scaffoldFirstVertex (n : ℕ) : (Δ[0] : SSet.{u}) ⟶ Δ[n]
+
+instance scaffoldFirstVertex_mono (n : ℕ) : Mono (scaffoldFirstVertex.{u} n)
+
+lemma scaffoldFirstVertex_leftAnodyne (n : ℕ) :
+    leftAnodyneExtensions (scaffoldFirstVertex.{u} n)
+
+lemma scaffoldIntervalCone_inr :
+    joinInr (Δ[0] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso 0 0).hom =
+      stdSimplex.δ (0 : Fin 2)
+
+lemma scaffoldIntervalCone_endpoint :
+    stdSimplex.δ (0 : Fin 2) ≫ (joinStdSimplexIso.{u} 0 0).inv =
+      joinInr (Δ[0] : SSet.{u}) Δ[0]
+
+noncomputable def scaffoldConeBridge (n : ℕ) :
+    pushout (stdSimplex.δ (0 : Fin 2)) (scaffoldFirstVertex.{u} n) ⟶
+      join (Δ[0] : SSet.{u}) Δ[n]
+
+lemma scaffoldConeBridge_inl (n : ℕ) :
+    pushout.inl (stdSimplex.δ (0 : Fin 2)) (scaffoldFirstVertex.{u} n) ≫ scaffoldConeBridge n =
+      (joinStdSimplexIso 0 0).inv ≫ joinMap (𝟙 Δ[0]) (scaffoldFirstVertex n)
+
+lemma scaffoldConeBridge_inr (n : ℕ) :
+    pushout.inr (stdSimplex.δ (0 : Fin 2)) (scaffoldFirstVertex.{u} n) ≫ scaffoldConeBridge n =
+      joinInr Δ[0] Δ[n]
+
+lemma scaffoldConeBridge_innerAnodyne (n : ℕ) :
+    innerAnodyneExtensions (scaffoldConeBridge.{u} n)
+
+noncomputable def scaffoldSimplexBridge (n : ℕ) :
+    pushout (stdSimplex.δ (0 : Fin 2)) (scaffoldFirstVertex.{u} n) ⟶ Δ[0 + n + 1]
+
+lemma scaffoldSimplexBridge_innerAnodyne (n : ℕ) :
+    innerAnodyneExtensions (scaffoldSimplexBridge.{u} n)
+
+lemma scaffoldSimplexBridge_whiskerRight_innerAnodyne (n : ℕ) (K : SSet.{u}) :
+    innerAnodyneExtensions (scaffoldSimplexBridge n ▷ K)
+
 end SerrePositivity.InfinityCategories
 ```
