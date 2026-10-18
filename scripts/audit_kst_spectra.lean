@@ -179,7 +179,15 @@ run_cmd do
     `SerrePositivity.KST.Spectra.RationalLoopTensor,
     `SerrePositivity.KST.Spectra.RationalSpectrum,
     `SerrePositivity.KST.Spectra.SpectrumTailNaturality,
-    `SerrePositivity.KST.Spectra.RationalSpectrumModelMap]
+    `SerrePositivity.KST.Spectra.RationalSpectrumModelMap,
+    `SerrePositivity.KST.Spectra.CircleClassMap,
+    `SerrePositivity.KST.Spectra.CircleIntegerComponents,
+    `SerrePositivity.KST.Spectra.HomotopySelfComposite,
+    `SerrePositivity.KST.Spectra.LoopInversion,
+    `SerrePositivity.KST.Spectra.LoopIntegerPower,
+    `SerrePositivity.KST.Spectra.TwistedKanSequence,
+    `SerrePositivity.KST.Spectra.TwistedOmegaSpectrum,
+    `SerrePositivity.KST.Spectra.CotensorIntegerPower]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

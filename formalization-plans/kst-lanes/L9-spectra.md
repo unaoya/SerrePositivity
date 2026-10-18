@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・167 モジュール 2449 宣言の公理監査成功。
+対象ビルド・175 モジュール 2502 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1703,3 +1703,38 @@ L9d は進行中。次は次数補正した模型からの実際の射と、元�
 保存単位の対象ビルド 2367 jobs 成功。
 私有宣言を含む 167 モジュール 2449 宣言で標準三公理のみ。
 L9d は進行中。元の X からの標準射と自然性は未完了。
+
+
+## 58. L9d の整数次数射と構造射の符号変更の実際の比較
+
+円の Kan 置換の指定基本類を任意の基本群の元へ送る実際の自己射を構成した。
+これを整数冪へ適用し、負の次数も含む円の自己射と、その全正次数群での整数冪の作用を証明した。
+loop の逆元を表す実際の射を選び、その誘導準同型が通常の逆元になることを検査した。
+符号反転の二回合成は恒等射と基点固定でホモトピックになる。
+自己合成から全基点の同型性を検出する補題により、符号反転は全基点の π_* 同型である。
+これは定数 loop の基点だけの計算ではない。
+
+厳密な自己射 r により構造射を σ_n≫r_(n+1) に変える一般の Kan 列を構成した。
+n 段の比較射に r の n 回反復を使えば、厳密な比較射が得られる。
+対合性を厳密な等式で要求する必要はない。
+r が各段の全基点 π_* 同型なら、変更後も Ω 条件が保たれる。
+変更後の列を cofibrant に置換し、元の単射構造射に沿って比較を持ち上げた。
+この BF 対象間の比較射は、各段および全整数次数で π_* 同型である。
+loop cotensor の符号反転へ適用し、構造射の符号を変えた実際の BF 模型への比較を得た。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `CirclePower.classMap` / `.integerPowerMap` | 指定基本類および整数次数を実現する円の自己射 |
+| `LoopMappingClasses.post_integerPower` | 任意のパラメータでの整数冪の作用 |
+| `LoopMappingClasses.inversion` / `.groupMap_inversion` | 実際の逆元の射と通常の正次数群の逆元 |
+| `LoopMappingClasses.groupMap_pre_integer` | 円の整数次数射の全正次数群での作用 |
+| `LoopMappingClasses.pre_neg_one_twice_homotopy` / `.pre_neg_one_piIsomorphism` | 符号反転の対合性と全基点の同型性 |
+| `KanPiIsomorphism.of_self_comp` | 自己合成から全基点の同型性を検出 |
+| `KanSequence.twist` / `.twistMap` / `.twist_omegaCondition` | 構造射の変更と反復による厳密比較、Ω 条件の保存 |
+| `OmegaSpectrum.twistComparison` / `.twistComparison_piIsomorphism` | 変更後の BF 対象への厳密な π_* 同型 |
+| `OmegaSpectrum.negatedCotensor` / `.negatedCotensorComparison_piIsomorphism` | 符号を変えた loop 模型の実際の比較 |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.3、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2375 jobs 成功。
+私有宣言を含む 175 モジュール 2502 宣言で標準三公理のみ。
+L9d は進行中。次はホモトピー可換な段の比較を厳密な射へ直す相対充填を扱う。
