@@ -9436,5 +9436,103 @@ noncomputable def leftUnstraighteningTransformationMap_compositionIso
             rw [Category.assoc, (leftUnstraighteningTransformationMap G J β hβ₀ hβ₁).property,
               (leftUnstraighteningTransformationMap F G α hα₀ hα₁).property]))
 
+def functorFamilyPrism {K B X : SSet.{u}} (q : K ⟶ (ihom B).obj X) : K ⊗ B ⟶ X
+
+lemma functorFamilyPrism_restrict {K L B X : SSet.{u}}
+    (q : K ⟶ (ihom B).obj X) (i : L ⟶ K) :
+    (i ▷ B) ≫ functorFamilyPrism q = functorFamilyPrism (i ≫ q)
+
+def functorEdgePrism {B X : SSet.{u}} {F G : B ⟶ X}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex G)) : (Δ[1] : SSet.{u}) ⊗ B ⟶ X
+
+lemma functorEdgePrism_zero {B X : SSet.{u}} {F G : B ⟶ X}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex G)) : prismEndpoint 0 B ≫ functorEdgePrism e = F
+
+lemma functorEdgePrism_one {B X : SSet.{u}} {F G : B ⟶ X}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex G)) : prismEndpoint 1 B ≫ functorEdgePrism e = G
+
+lemma functorCompStructPrism_two {B X : SSet.{u}} {F G J : B ⟶ X}
+    {e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex G)}
+    {f : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex G) (functorVertex J)}
+    {g : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex J)} (σ : SSet.Truncated.Edge.CompStruct e f g) :
+    (stdSimplex.δ (2 : Fin 3) ▷ B) ≫ functorFamilyPrism (SSet.yonedaEquiv.symm σ.simplex) =
+      functorEdgePrism e
+
+lemma functorCompStructPrism_zero {B X : SSet.{u}} {F G J : B ⟶ X}
+    {e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex G)}
+    {f : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex G) (functorVertex J)}
+    {g : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex J)} (σ : SSet.Truncated.Edge.CompStruct e f g) :
+    (stdSimplex.δ (0 : Fin 3) ▷ B) ≫ functorFamilyPrism (SSet.yonedaEquiv.symm σ.simplex) =
+      functorEdgePrism f
+
+lemma functorCompStructPrism_one {B X : SSet.{u}} {F G J : B ⟶ X}
+    {e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex G)}
+    {f : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex G) (functorVertex J)}
+    {g : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X))
+      (functorVertex F) (functorVertex J)} (σ : SSet.Truncated.Edge.CompStruct e f g) :
+    (stdSimplex.δ (1 : Fin 3) ▷ B) ≫ functorFamilyPrism (SSet.yonedaEquiv.symm σ.simplex) =
+      functorEdgePrism g
+
+lemma functorEdgePrism_id {B X : SSet.{u}} (F : B ⟶ X) :
+    functorEdgePrism (F := F) (G := F)
+      (SSet.Truncated.Edge.id (X := (truncation 2).obj ((ihom B).obj X)) (functorVertex F)) = snd (Δ[1] : SSet.{u}) B ≫ F
+
+noncomputable def leftUnstraighteningEdgeMap {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G)) :
+    {f : leftUnstraightening F ⟶ leftUnstraightening G //
+      f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F}
+
+noncomputable def leftUnstraighteningEdgeMap_identityIso {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) :
+    VertexIso (relativeFunctorVertex (leftUnstraighteningProjection F)
+      (leftUnstraighteningProjection F)
+      (leftUnstraighteningEdgeMap F F (SSet.Edge.id (functorVertex F))).val
+      (leftUnstraighteningEdgeMap F F (SSet.Edge.id (functorVertex F))).property)
+      (relativeFunctorVertex (leftUnstraighteningProjection F) (leftUnstraighteningProjection F)
+        (𝟙 _) (Category.id_comp _))
+
+noncomputable def leftUnstraighteningEdgeMap_compositionIso {B : SSet.{u + 1}}
+    {F G J : B ⟶ SpaceInfinity.{u}}
+    {e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G)}
+    {f : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex G) (functorVertex J)}
+    {g : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex J)}
+    (σ : SSet.Edge.CompStruct e f g) :
+    VertexIso (relativeFunctorVertex (leftUnstraighteningProjection J)
+      (leftUnstraighteningProjection F) (leftUnstraighteningEdgeMap F J g).val
+        (leftUnstraighteningEdgeMap F J g).property)
+      (relativeFunctorVertex (leftUnstraighteningProjection J) (leftUnstraighteningProjection F)
+        ((leftUnstraighteningEdgeMap F G e).val ≫ (leftUnstraighteningEdgeMap G J f).val) (by
+          rw [Category.assoc, (leftUnstraighteningEdgeMap G J f).property,
+            (leftUnstraighteningEdgeMap F G e).property]))
+
+lemma leftUnstraighteningEdgeMap_isQCatEquivalence_of_isInvertibleEdge
+    {B : SSet.{u + 1}} [Quasicategory B] (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G))
+    (he : IsInvertibleEdge e) : IsQCatEquivalence (leftUnstraighteningEdgeMap F G e).val
+
+lemma leftUnstraighteningEdgeMap_isPrecompositionEquivalence_of_isInvertibleEdge
+    {B : SSet.{u + 1}} [Quasicategory B] (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G))
+    (he : IsInvertibleEdge e) : IsPrecompositionEquivalence (leftUnstraighteningEdgeMap F G e).val
+
+lemma exists_leftUnstraighteningComparison_of_functorIso
+    {B : SSet.{u + 1}} [Quasicategory B] {F G : B ⟶ SpaceInfinity.{u}}
+    (η : FunctorIso F G) :
+    ∃ f : leftUnstraightening F ⟶ leftUnstraightening G,
+      f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F ∧
+      IsPrecompositionEquivalence f
+
 end SerrePositivity.InfinityCategories
 ```
