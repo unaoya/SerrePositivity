@@ -45,6 +45,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -265,6 +266,33 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.hatGLMonoidObject
 #print axioms SerrePositivity.KST.Comparison.hatGLMonoidObject
+
+
+-- ExComplexity.lean
+
+#check @SerrePositivity.KST.Comparison.exComplexity
+#print axioms SerrePositivity.KST.Comparison.exComplexity
+
+#check @SerrePositivity.KST.Comparison.exComplexity_mono
+#print axioms SerrePositivity.KST.Comparison.exComplexity_mono
+
+#check @SerrePositivity.KST.Comparison.exComplexity_last
+#print axioms SerrePositivity.KST.Comparison.exComplexity_last
+
+#check @SerrePositivity.KST.Comparison.exComplexity_zero
+#print axioms SerrePositivity.KST.Comparison.exComplexity_zero
+
+#check @SerrePositivity.KST.Comparison.exComplexityLevel
+#print axioms SerrePositivity.KST.Comparison.exComplexityLevel
+
+#check @SerrePositivity.KST.Comparison.exComplexityLevel_mem
+#print axioms SerrePositivity.KST.Comparison.exComplexityLevel_mem
+
+#check @SerrePositivity.KST.Comparison.exComplexityLevel_le_iff
+#print axioms SerrePositivity.KST.Comparison.exComplexityLevel_le_iff
+
+#check @SerrePositivity.KST.Comparison.exComplexityLevel_zero_iff
+#print axioms SerrePositivity.KST.Comparison.exComplexityLevel_zero_iff
 
 
 -- ExInfinity.lean
@@ -1087,6 +1115,48 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subcomplex_inclusion_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.subcomplex_inclusion_localized_isIso
+
+
+-- SubdivisionCut.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChain_le_initialSegment
+#print axioms SerrePositivity.KST.Comparison.finiteChain_le_initialSegment
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_maximum
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_maximum
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_comp
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_comp
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_idempotent
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_idempotent
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_last
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_last
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_zero
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_zero
+
+#check @SerrePositivity.KST.Comparison.subdivisionCutAt
+#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt
+
+#check @SerrePositivity.KST.Comparison.subdivisionCutAt_comp
+#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_comp
+
+#check @SerrePositivity.KST.Comparison.subdivisionCutAt_idempotent
+#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_idempotent
+
+#check @SerrePositivity.KST.Comparison.subdivisionCutAt_last
+#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_last
+
+#check @SerrePositivity.KST.Comparison.subdivisionCutAt_zero
+#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_zero
+
+#check @SerrePositivity.KST.Comparison.subdivisionCutAt_lastVertex
+#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_lastVertex
 
 
 -- SubdivisionLastVertex.lean

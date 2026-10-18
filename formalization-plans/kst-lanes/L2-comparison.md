@@ -252,6 +252,17 @@ Mathlib の `SSet.sd`、`SSet.ex`、`sdExAdjunction` を使う。
 その反復の順序余極限を Ex∞ とする。
 有限極限保存は各 ex の右随伴性と型の filtered colimit の有限極限との交換から証明する。
 Kan 性、単位の anodyne 性、fibration 保存は別々の未証明項目として管理する。
+Moss Definition 23 の j_n^k は、有限鎖の最大元 m が k 以下なら元の集合を保ち、
+m>k なら初期区間 [0,m] に置き換える単調写像として実装する。
+これは原典の singleton 上の式を binary join で延長したものと一致する。
+最大元を保つこと、j_n^n=id、j_n^0 が最終頂点と初期区間の合成であること、
+k≤l のとき j_n^k∘j_n^l=j_n^k、冪等性を順に証明する。
+Ex の単体の固定点による有限の複雑度フィルターを作り、regular pairing の前段とする。
+Moss Definition 25 の r_n^k は、まず通常の codegeneracy σ^k による像を取り、
+元の集合が頂点 k+1 を含む場合だけ初期区間 [0,k] を加える作用素として実装する。
+これは原典の singleton 上の式の join による延長である。
+Lemma 26 の式 (1) は、δ^{k+1} の像が k+1 を含まず、σ^k∘δ^{k+1}=id となることから示す。
+他の面・退化との式 (2)–(9)、pairing の全単射・非退化性・正則性は別に証明する。
 原典の対応は Moss 2020 §3 Theorem 22、Corollary 30、Proposition 31・32 とする。
 ここに原典を書いたことを、これらの Lean 証明が存在することとは扱わない。
 Segal の位相的 fat realization の証明から、この組合せ的な補助構成を経る点を区別する。
@@ -387,6 +398,8 @@ Kan 基底上では局所化可逆な単射の Kan fibration に対する左持�
 Kan 基底上の Kan fibration 同士の比較は左の任意の射で引き戻しても可逆となり、固定した Kan 基底上のホモトピー引き戻し模型の左右両入力に関する不変性まで証明した。
 Mathlib の sd–Ex 随伴から、自然な最終頂点写像と各単体での切断、単射な X→Ex(X) を構成した。
 Ex の反復と Ex∞ の実際の余極限関手、標準単位、有限極限保存を証明した。
+Moss Definition 23 の作用素と合成則・冪等性・両端の式、Notation 24 の固定点フィルター、その零段階と単位の像の同定を証明した。
+単体ごとの最小の複雑度と、その閾値の最小性を証明した。
 Ex∞ の Kan 性・単位の anodyne 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -394,8 +407,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 314 宣言の型と公理を確認した。
-さらに名前空間全体の 725 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 335 宣言の型と公理を確認した。
+さらに名前空間全体の 755 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -462,6 +475,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `exUnit`、`exUnitAt_mono` | 実装済み | Mathlib Ex への自然な単射 |
 | `exSequence`、`exInfinity`、`exInfinityUnit` | 実装済み | Ex の反復と実際の順序余極限、標準単位 |
 | `exInfinity_preservesFiniteLimits` | 実装済み | filtered colimit と有限極限の交換による保存性 |
+| `subdivisionCutAt_comp`、`subdivisionCutAt_zero`、`subdivisionCutAt_last` | 実装済み | Moss Definition 23 の作用素の合成と両端の式 |
+| `exComplexity_zero`、`exComplexity_last` | 実装済み | Moss Notation 24 のフィルターと単位の像・全単体の同定 |
+| `exComplexityLevel_le_iff`、`exComplexityLevel_zero_iff` | 実装済み | 最小の複雑度とその零条件 |
 | Ex∞ の Kan 性と単位の anodyne 性 | 未証明 | Moss 2020 Proposition 21、Theorem 22、Corollary 30 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
