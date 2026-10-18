@@ -216,8 +216,14 @@ right anodyne 性を与える。標準単体の最後の頂点への収縮に適
 これは [Kerodon Example 7.2.3.12](https://kerodon.net/tag/02NX) の
 left fibration・標準単体の場合である。一般の cocartesian fibration や
 right anodyne な射の引き戻しの安定性は、これだけからは従わない。
-次は外側右ホーン上の終点収縮への制限と共通 fiber による比較を構成し、
-内側ホーンの場合の引き戻しを別途証明する。
+`cofinalLastHornContraction` は最後以外の欠けた頂点が保たれることを検査し、
+収縮を外側右ホーンへ制限する。両端と全ての終点定値族の固定を証明した。
+`cofinalVertexFiberBaseChangeIso` は引き戻し前後の対応する fiber の厳密な同型で、
+全空間への射影と両立する。`isRightCofinal_pullback_fst_of_vertexFibers` により、
+二つの fiber 包含の cofinality から第一射影の cofinality を得る。
+この比較とホーン・標準単体の収縮により、
+`leftFibration_lastHorn_pullback_isRightCofinal/rightAnodyne` を証明した。
+次は内側ホーンを含めた全ての右ホーンへの拡張と、弱飽和閉包への移送を証明する。
 
 Quillen A 本体、cocartesian fibration に沿う cofinality の pullback 安定性、
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
@@ -229,8 +235,8 @@ B3 の cofinality の pullback 安定性を証明し、弱可縮な coslice の�
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2215 jobs、公理監査1972宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内546モジュールに straightening 依存なし。
+対象ビルド2218 jobs、公理監査1993宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内549モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -321,3 +327,8 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `leftFibration_terminalFiber_rightAnodyne_of_fixed_contraction`・`leftFibration_terminalFiber_rightAnodyne/isRightCofinal` | 固定した頂点への収縮から fiber 包含の判定、標準単体の場合 | 済 |
 | `cofinalVertexFiberPullbackIso`・`cofinalVertexFiberPullbackIso_hom_fst` | 頂点 fiber と標準 pullback の同型・包含との整合 | 済 |
 | `leftFibration_terminalPoint_pullback_rightAnodyne/isRightCofinal` | 終点包含の left fibration に沿う引き戻し | 済 |
+
+| `cofinalLastHornVertex`・`cofinalLastHornContraction`・`..._zero/_one/_const` | 外側右ホーンに制限した固定終点収縮 | 済 |
+| `cofinalVertexFiberBaseChangeIso`・`..._hom_ι` | 引き戻し前後の頂点 fiber の同型・包含との可換性 | 済 |
+| `isRightCofinal_pullback_fst_of_vertexFibers` | 二つの fiber 包含の cofinality から第一射影への消去 | 済 |
+| `leftFibration_lastHorn_pullback_isRightCofinal/rightAnodyne` | left fibration に沿う外側右ホーンの引き戻し | 済 |

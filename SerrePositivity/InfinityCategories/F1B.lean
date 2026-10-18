@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1B.LastHornPullback
+
 public import SerrePositivity.InfinityCategories.F1B.TerminalPointPullback
 
 public import SerrePositivity.InfinityCategories.F1B.TerminalFiberCofinality
