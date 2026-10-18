@@ -126,3 +126,5 @@ public import SerrePositivity.KST.ProExcision.ShuffleBoundaryPartition
 public import SerrePositivity.KST.ProExcision.ShuffleBoundaryDecomposition
 public import SerrePositivity.KST.ProExcision.ShuffleChainMap
 public import SerrePositivity.KST.ProExcision.NormalizedShuffle
+public import SerrePositivity.KST.ProExcision.SimplexPairModel
+public import SerrePositivity.KST.ProExcision.ExtraDegeneracyContraction

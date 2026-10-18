@@ -2331,3 +2331,27 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.normalizedShuffle_naturality
 #print axioms SerrePositivity.KST.ProExcision.normalizedShuffle_naturality
+
+#check @SerrePositivity.KST.ProExcision.simplexPairModel
+#print axioms SerrePositivity.KST.ProExcision.simplexPairModel
+
+#check @SerrePositivity.KST.ProExcision.augmentedSimplexPairModel
+#print axioms SerrePositivity.KST.ProExcision.augmentedSimplexPairModel
+
+#check @SerrePositivity.KST.ProExcision.simplexPairExtraDegeneracy
+#print axioms SerrePositivity.KST.ProExcision.simplexPairExtraDegeneracy
+
+#check @SerrePositivity.KST.ProExcision.simplexPairModelMap
+#print axioms SerrePositivity.KST.ProExcision.simplexPairModelMap
+
+#check @SerrePositivity.KST.ProExcision.linearizedAugmentedSimplexPairModel
+#print axioms SerrePositivity.KST.ProExcision.linearizedAugmentedSimplexPairModel
+
+#check @SerrePositivity.KST.ProExcision.simplexPairLinearExtraDegeneracy
+#print axioms SerrePositivity.KST.ProExcision.simplexPairLinearExtraDegeneracy
+
+#check @SerrePositivity.KST.ProExcision.extraDegeneracy_positive_boundary
+#print axioms SerrePositivity.KST.ProExcision.extraDegeneracy_positive_boundary
+
+#check @SerrePositivity.KST.ProExcision.extraDegeneracy_fill_cycle
+#print axioms SerrePositivity.KST.ProExcision.extraDegeneracy_fill_cycle
