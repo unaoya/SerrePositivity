@@ -4454,5 +4454,72 @@ lemma universalScaffoldFiberMap_isQCatEquivalence
     (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
     IsQCatEquivalence (universalScaffoldFiberMap p c)
 
+def simplicialReplacementBaseMap {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) (F : C ⥤ SSet.{u}) :
+    simplicialReplacement (H ⋙ F) ⟶ simplicialReplacement F
+
+lemma simplicialReplacementBaseMap_projection
+    {C D : Type u} [Category.{u} C] [Category.{u} D] (H : D ⥤ C) (F : C ⥤ SSet.{u}) :
+    simplicialReplacementBaseMap H F ≫ simplicialReplacementProjection F =
+      simplicialReplacementProjection (H ⋙ F) ≫ nerveMap H
+
+lemma simplicialReplacementBaseMap_isPullback
+    {C D : Type u} [Category.{u} C] [Category.{u} D] (H : D ⥤ C) (F : C ⥤ SSet.{u}) :
+    IsPullback (simplicialReplacementBaseMap H F) (simplicialReplacementProjection (H ⋙ F))
+      (simplicialReplacementProjection F) (nerveMap H)
+
+lemma tautScaffold_baseMap {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) (F : C ⥤ SSet.{u}) :
+    tautScaffold (H ⋙ F) ≫ weightedNerveBaseMap H F =
+      simplicialReplacementBaseMap H F ≫ tautScaffold F
+
+lemma tautScaffold_baseMap_isPullback
+    {C D : Type u} [Category.{u} C] [Category.{u} D] (H : D ⥤ C) (F : C ⥤ SSet.{u}) :
+    IsPullback (tautScaffold (H ⋙ F)) (simplicialReplacementBaseMap H F)
+      (weightedNerveBaseMap H F) (tautScaffold F)
+
+def simplicialReplacementMap {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) : simplicialReplacement F ⟶ simplicialReplacement G
+
+lemma simplicialReplacementMap_projection {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) :
+    simplicialReplacementMap η ≫ simplicialReplacementProjection G =
+      simplicialReplacementProjection F
+
+lemma simplicialReplacementMap_id {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    simplicialReplacementMap (𝟙 F) = 𝟙 (simplicialReplacement F)
+
+lemma simplicialReplacementMap_comp {C : Type u} [Category.{u} C]
+    {F G H : C ⥤ SSet.{u}} (η : F ⟶ G) (θ : G ⟶ H) :
+    simplicialReplacementMap (η ≫ θ) = simplicialReplacementMap η ≫ simplicialReplacementMap θ
+
+def simplicialReplacementFunctor (C : Type u) [Category.{u} C] :
+    (C ⥤ SSet.{u}) ⥤ Over (nerve C)
+
+lemma tautScaffold_map {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) :
+    simplicialReplacementMap η ≫ tautScaffold G = tautScaffold F ≫ weightedNerveMap η
+
+def simplicialReplacementConstantIso (C : Type u) [Category.{u} C] (K : SSet.{u}) :
+    simplicialReplacement ((CategoryTheory.Functor.const C).obj K) ≅ nerve C ⊗ K
+
+lemma simplicialReplacementConstantIso_projection (C : Type u) [Category.{u} C]
+    (K : SSet.{u}) :
+    (simplicialReplacementConstantIso C K).hom ≫ fst (nerve C) K =
+      simplicialReplacementProjection ((CategoryTheory.Functor.const C).obj K)
+
+def simplicialReplacementInitialCoefficient {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {t : C} (ht : IsInitial t) :
+    (CategoryTheory.Functor.const C).obj (F.obj t) ⟶ F
+
+def simplicialReplacementInitialAssembly {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {t : C} (ht : IsInitial t) :
+    nerve C ⊗ F.obj t ⟶ simplicialReplacement F
+
+lemma simplicialReplacementInitialAssembly_projection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {t : C} (ht : IsInitial t) :
+    simplicialReplacementInitialAssembly F ht ≫ simplicialReplacementProjection F =
+      fst (nerve C) (F.obj t)
+
 end SerrePositivity.InfinityCategories
 ```
