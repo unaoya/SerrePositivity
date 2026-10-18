@@ -49,15 +49,17 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと361宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと381宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
-- Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。
-- Construction A.6：成分 u⁻¹ の自然変換、nerve の実ホモトピー、係数付き自由鎖複体への実鎖ホモトピーに加え、`conjugationLinearizedHomotopy` で非被約 C(H)⊗ℤΔ¹ の実区間ホモトピーを構成。両端条件は全次数で成立。区間写像そのものの群準同型についての自然性は確認中。
+- Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
+- Construction A.6：成分 u⁻¹ の自然変換、nerve の実ホモトピー、係数付き自由鎖複体への実鎖ホモトピーに加え、`conjugationLinearizedHomotopy` で非被約 C(H)⊗ℤΔ¹ の実区間ホモトピーを構成。両端条件は全次数で成立。区間関手・nerve の区間写像・自由化したテンソル区間写像について、群準同型との自然性も証明。
 - Construction A.5：ユーザーが augmentation 補正を採用し、L6c を再開。非被約 C(H)=ℤBH を保持する。下記の設計確認欄を参照。
 - A.5 の代数部分：`tensorMap_augmentation_expansion` と `tensorMap_augmentation_eq_low` を検証。二つの差の消滅から m+m′+1 以下の補正式を得る。AW・shuffle のホモトピー構成と移送は未完。
 - `LinearizedMHomotopy.cancel_augmentation`：C(ψ)≃C(ψ)+C(φ)−C(e) から C(φ)≃C(e) を区間写像の差で構成。作用の同変性は別条件として未接続。
-- L6c の Prop A.1、Lemma A.4 の m-ホモトピーからの比較、A.5 の AW・shuffle 比較は未完了。
+- `LinearizedMHomotopy.homologyMap_eq`：m 次ホモトピーから次数 ≤m の交代面写像複体のホモロジー写像の一致を証明。零次を含み、同変 bar への移送は未完。
+- `actionBarComparison`：実際の E_BH G から B(G⋉H) への単体的比較を構成。transport 関手の合成則と全ての単体射への自然性を検証。
+- L6c の Prop A.1 の同値性、Lemma A.4 の同変 bar を経由する比較、A.5 の AW・shuffle 比較は未完了。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -70,6 +72,11 @@
 | LinearizedMHomotopy.cancel_augmentation | AugmentationHomotopy.lean | 検証済み | A.5 の右辺の augmentation 補正の相殺 |
 | LinearizedMHomotopy | LinearizedHomotopy.lean | 検証済み | A.3 の零次を含む m 次両端条件、同変性は別条件 |
 | linearizedTensorIso | LinearizedTensor.lean | 検証済み | ℤX⊗ℤY と ℤ(X×Y) の単体的同型 |
+| conjugationLinearizedHomotopy_naturality | ConjugationNaturality.lean | 検証済み | A.6 の実テンソル区間写像の自然性 |
+| LinearizedMHomotopy.homologyMap_eq | MHomotopyHomology.lean | 検証済み | A.4 の非同変複体側、次数 ≤m の一致 |
+| coefficientActionBar | BarAction.lean | 検証済み | BH の作用による E_BH G |
+| barSetAction | BarAction.lean | 検証済み | 非可換な BH への集合の作用 |
+| actionBarComparison | BarTransport.lean | 検証済み | Prop A.1 の単体的比較射（同値性は未完） |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |
 | LevelHom | Pro.lean | 検証済み | 同じ添字上の可換な射 |
 | IsProIso | Pro.lean | 検証済み | eventual inverse の二つの三角形 |
@@ -475,3 +482,13 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `LinearizedHomotopy` は全次数の両端条件、`LinearizedMHomotopy` は次数 ≤m の両端条件。後者の区間写像も全次数の単体的射として保持する。
 - Definition A.3 の G 同変性はこれらの非同変な基礎型と別の条件であり、証明済みと表示しない。
 - A.5 の右辺の augmentation 補正の相殺は、区間写像 H から定数な ψ+φ の区間写像との差を作る構成である。
+
+## Prop A.1 の比較写像の圏論的な座標
+
+- 作用圏の射は x→y に対し g•x=y とし、合成ラベルは後のラベルを左から掛ける。
+- nerve の単体 p と BH の各頂点 x_i に対し、i 番目の比較ラベルを (g_i, x_{i+1} の i→i+1 のラベル) とする。
+- これは Fin(n+1)×作用圏から半直積の一対象圏への transport 関手で構成できる。
+- transport は (i,x)→(j,y) のラベル g を (g,y(i→j)) へ送る。
+- 合成の検証は z=g'•y と z(i→k)=z(j→k)·z(i→j) による。半直積の積は原典の (gg′,h·g(h′)) を維持する。
+- 本実装の nerve の射列は原典の語の座標の逆順であるため、作用する積は prefix g_i…g_0 と表示される。原典の逆順の語の添字へ戻すと右側の suffix の積になる。比較写像の docstring にこの規約差を明記する。
+- 実際の単体的比較の構成、原典の二重単体的な行の分解、各行の局所化同値、対角の局所化同値の順に確認する。最終の H_* の模型同定は所有レーンの界面。

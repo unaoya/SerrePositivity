@@ -56,3 +56,8 @@ public import SerrePositivity.KST.ProExcision.LinearizedSpace
 public import SerrePositivity.KST.ProExcision.LinearizedTensor
 public import SerrePositivity.KST.ProExcision.LinearizedHomotopy
 public import SerrePositivity.KST.ProExcision.AugmentationHomotopy
+public import SerrePositivity.KST.ProExcision.ConjugationNaturality
+public import SerrePositivity.KST.ProExcision.MHomotopyHomology
+public import SerrePositivity.KST.ProExcision.SetActionBar
+public import SerrePositivity.KST.ProExcision.BarAction
+public import SerrePositivity.KST.ProExcision.BarTransport

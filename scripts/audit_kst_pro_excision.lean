@@ -1060,3 +1060,46 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.cancel_augmentation
 #check @SerrePositivity.KST.ProExcision.conjugationLinearizedHomotopy
 #print axioms SerrePositivity.KST.ProExcision.conjugationLinearizedHomotopy
+
+#check @SerrePositivity.KST.ProExcision.simplicialIntegerTensorMap
+#print axioms SerrePositivity.KST.ProExcision.simplicialIntegerTensorMap
+#check @SerrePositivity.KST.ProExcision.linearizedTensorIso_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedTensorIso_naturality
+#check @SerrePositivity.KST.ProExcision.conjugationInterval_naturality
+#print axioms SerrePositivity.KST.ProExcision.conjugationInterval_naturality
+#check @SerrePositivity.KST.ProExcision.conjugationNerveHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.conjugationNerveHomotopy_naturality
+#check @SerrePositivity.KST.ProExcision.conjugationLinearizedHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.conjugationLinearizedHomotopy_naturality
+#check @SerrePositivity.KST.ProExcision.homologyMap_eq_of_component_eq
+#print axioms SerrePositivity.KST.ProExcision.homologyMap_eq_of_component_eq
+#check @SerrePositivity.KST.ProExcision.geometricCylinderHomotopy
+#print axioms SerrePositivity.KST.ProExcision.geometricCylinderHomotopy
+#check @SerrePositivity.KST.ProExcision.linearizedCylinderHomotopy
+#print axioms SerrePositivity.KST.ProExcision.linearizedCylinderHomotopy
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.endpointChainHomotopy
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.endpointChainHomotopy
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.homologyMap_eq
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.homologyMap_eq
+#check @SerrePositivity.KST.ProExcision.SimplicialSetAction
+#print axioms SerrePositivity.KST.ProExcision.SimplicialSetAction
+#check @SerrePositivity.KST.ProExcision.SimplicialSetAction.actionStructure
+#print axioms SerrePositivity.KST.ProExcision.SimplicialSetAction.actionStructure
+#check @SerrePositivity.KST.ProExcision.simplicialSetActionCategory
+#print axioms SerrePositivity.KST.ProExcision.simplicialSetActionCategory
+#check @SerrePositivity.KST.ProExcision.bisimplicialSetActionBar
+#print axioms SerrePositivity.KST.ProExcision.bisimplicialSetActionBar
+#check @SerrePositivity.KST.ProExcision.setActionBar
+#print axioms SerrePositivity.KST.ProExcision.setActionBar
+
+#check @SerrePositivity.KST.ProExcision.monoidNerveAction
+#print axioms SerrePositivity.KST.ProExcision.monoidNerveAction
+#check @SerrePositivity.KST.ProExcision.barSetAction
+#print axioms SerrePositivity.KST.ProExcision.barSetAction
+#check @SerrePositivity.KST.ProExcision.coefficientActionBar
+#print axioms SerrePositivity.KST.ProExcision.coefficientActionBar
+
+#check @SerrePositivity.KST.ProExcision.actionBarTransport
+#print axioms SerrePositivity.KST.ProExcision.actionBarTransport
+#check @SerrePositivity.KST.ProExcision.actionBarComparison
+#print axioms SerrePositivity.KST.ProExcision.actionBarComparison

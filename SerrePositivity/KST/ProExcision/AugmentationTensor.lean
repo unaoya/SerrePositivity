@@ -50,7 +50,6 @@ lemma tensorMap_augmentation_expansion (f e : P ⟶ P') (g e' : Q ⟶ Q') :
     ιTensorObj_cochainTensorMap]
   simp only [tensorHom_def, sub_eq_add_neg, MonoidalPreadditive.add_whiskerRight,
     MonoidalPreadditive.whiskerLeft_add, Preadditive.add_comp, Preadditive.comp_add]
-
   have hnR : (-e.f i) ▷ Q.X j = -(e.f i ▷ Q.X j) :=
     (tensorRight (Q.X j)).map_neg
   have hnL : P'.X i ◁ (-e'.f j) = -(P'.X i ◁ e'.f j) :=

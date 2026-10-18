@@ -98,6 +98,25 @@ def simplicialIntegerTensor (C D : SimplicialObject (ModuleCat.{u} ℤ)) :
     apply ModuleCat.hom_ext
     simp [integerTensorMap, TensorProduct.map_comp]
 
+/-- 概要：二つの単体的整数加群射のテンソル。
+方針：次数ごとのテンソル写像とその合成則を使う。
+規約：KST Definition A.3。使われ方：区間ホモトピーの自然性。 -/
+def simplicialIntegerTensorMap
+    {C C' D D' : SimplicialObject (ModuleCat.{u} ℤ)} (f : C ⟶ C') (g : D ⟶ D') :
+    simplicialIntegerTensor C D ⟶ simplicialIntegerTensor C' D' where
+  app n := integerTensorMap (f.app n) (g.app n)
+  naturality n m φ := by
+    apply ModuleCat.hom_ext
+    apply LinearMap.ext
+    intro z
+    refine TensorProduct.inductionOn z (fun x y ↦ ?_) (fun x y hx hy ↦ ?_)
+    · change TensorProduct.tmul ℤ (f.app m (C.map φ x)) (g.app m (D.map φ y)) =
+        TensorProduct.tmul ℤ (C'.map φ (f.app n x)) (D'.map φ (g.app n y))
+      exact congrArg₂ (TensorProduct.tmul ℤ)
+        (congrArg (fun a ↦ a.hom x) (f.naturality φ))
+        (congrArg (fun a ↦ a.hom y) (g.naturality φ))
+    · simp only [map_add, hx, hy]
+
 /-- 概要：単体的集合の積の自由化とテンソルとの比較。
 方針：各次数の有限台関数の同型の自然性を用いる。
 規約：KST Definition A.3。使われ方：A.6 の区間ホモトピーの自由化。 -/
@@ -116,5 +135,17 @@ def linearizedTensorIso (X Y : SSet.{u}) :
       linearizedSpace (X ⊗ Y) :=
   NatIso.ofComponents (fun n ↦ integerTensorIso (X.obj n) (Y.obj n))
     (fun f ↦ integerTensorIso_naturality (X.map f) (Y.map f))
+
+/-- 概要：積の自由化との単体的テンソル同型は二つの写像に自然。
+方針：次数ごとの有限台関数のテンソル比較の自然性を使う。
+規約：KST Appendix A。使われ方：A.6 の実区間写像の自然性の移送。 -/
+theorem linearizedTensorIso_naturality {X X' Y Y' : SSet.{u}}
+    (f : X ⟶ X') (g : Y ⟶ Y') :
+    simplicialIntegerTensorMap (linearizedSpaceMap f) (linearizedSpaceMap g) ≫
+        (linearizedTensorIso X' Y').hom =
+      (linearizedTensorIso X Y).hom ≫ linearizedSpaceMap (f ⊗ₘ g) := by
+  apply NatTrans.ext
+  funext n
+  exact integerTensorIso_naturality (f.app n) (g.app n)
 
 end SerrePositivity.KST.ProExcision
