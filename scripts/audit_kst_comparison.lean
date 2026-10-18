@@ -89,6 +89,9 @@ run_cmd do
 
 
 
+
+
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -279,6 +282,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
+
+
+-- BoundaryFaceRepresentation.lean
+
+#check @SerrePositivity.KST.Comparison.vertexFace_le_boundary
+#print axioms SerrePositivity.KST.Comparison.vertexFace_le_boundary
+
+#check @SerrePositivity.KST.Comparison.vertexFaceEmbedding
+#print axioms SerrePositivity.KST.Comparison.vertexFaceEmbedding
+
+#check @SerrePositivity.KST.Comparison.vertexFaceEmbedding_mono
+#print axioms SerrePositivity.KST.Comparison.vertexFaceEmbedding_mono
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFaceIso
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFaceIso
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFaceIso_hom_ι
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFaceIso_hom_ι
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFace_representation
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFace_representation
 
 
 -- BoundaryVertexFaces.lean
@@ -1145,6 +1169,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_mem_skeleton_iff_boundary
 
 
+-- FatBoundaryHomotopyPullback.lean
+
+#check @SerrePositivity.KST.Comparison.fatBoundaryAttachment_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.fatBoundaryAttachment_homotopyPullback
+
+
 -- FatDegreeNormalization.lean
 
 #check @SerrePositivity.KST.Comparison.fatDegreeCofork
@@ -1392,6 +1422,33 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.fatSkeleton_isPushout
 #print axioms SerrePositivity.KST.Comparison.fatSkeleton_isPushout
+
+
+-- FatSkeletonRowRelations.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRowOfLE
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRowOfLE
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRowOfLE_ι
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRowOfLE_ι
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRowOfLE_map
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRowOfLE_map
+
+#check @SerrePositivity.KST.Comparison.fatBoundaryAttachment_map
+#print axioms SerrePositivity.KST.Comparison.fatBoundaryAttachment_map
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRowOfLE_face
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRowOfLE_face
+
+#check @SerrePositivity.KST.Comparison.fatBoundaryAttachment_face
+#print axioms SerrePositivity.KST.Comparison.fatBoundaryAttachment_face
+
+
+-- FatSkeletonZero.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRow_zero_isIso
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRow_zero_isIso
 
 
 -- FiberwiseAnodyne.lean
@@ -3092,6 +3149,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.subcomplexDistribLattice
 
 
+-- SubcomplexPreimageIso.lean
+
+#check @SerrePositivity.KST.Comparison.subcomplexPreimageIsoOfLE
+#print axioms SerrePositivity.KST.Comparison.subcomplexPreimageIsoOfLE
+
+#check @SerrePositivity.KST.Comparison.subcomplexPreimageIsoOfLE_hom_ι
+#print axioms SerrePositivity.KST.Comparison.subcomplexPreimageIsoOfLE_hom_ι
+
+
 -- SubcomplexUnionCocone.lean
 
 #check @SerrePositivity.KST.Comparison.subcomplexUnionSpan
@@ -3504,6 +3570,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.isHomotopyPullback_tensorRight
 #print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_tensorRight
+
+
+-- TensorRestriction.lean
+
+#check @SerrePositivity.KST.Comparison.tensorRestrictionSquare
+#print axioms SerrePositivity.KST.Comparison.tensorRestrictionSquare
+
+#check @SerrePositivity.KST.Comparison.tensorRestriction_homotopyPullback_iff
+#print axioms SerrePositivity.KST.Comparison.tensorRestriction_homotopyPullback_iff
 
 
 -- TensorSubcomplexEmpty.lean
