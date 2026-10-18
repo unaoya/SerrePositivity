@@ -486,3 +486,5 @@ A6 続き：`isPrecompositionEquivalence_fatJoinComparison_stdSimplex n m` は�
 A6 続き：`equivalencePathInternalHomIso K X` は X が quasicategory のとき可逆 path と内部 Hom の同型で、両端評価と始域の制限を保つ。`trivialKanFibration_relativeEquivalencePathMap_pre i X` は i が単射なら関手単体集合の制限の相対的な可逆 path の写像が全単射に対して持ち上がること。任意のパラメーターと既定の部分の持ち上げを含む。モデル構造は使用していない。新規32宣言の全型・前提は計画 §6。Core ビルド1816 jobs・累計1146宣言の標準3公理監査成功。既存の公開名・型は維持。一般の貼り合わせ、任意の因子の fat join 比較、slice 比較と A6 の主定理は未完了。A4・A5 は未着手。
 
 A6 続き：終点指定の相対可逆 path の持ち上げを持つ inner fibration に沿う同値の引き戻しを、共通の path の解像で証明した。これを関手単体集合の制限に適用し、`IsPrecompositionEquivalence.of_isPushout_of_mono_other`（もう一方の射が単射）と `isPrecompositionEquivalence_of_pushout_gluing`（二つの正方形の同じ側が単射、三頂点の比較が同値条件）を得た。モデル構造は使わない。既存の公開名・型は維持。新規22宣言の全型・前提は計画 §6。Core ビルド1823 jobs・累計1168宣言の標準3公理監査成功。任意の因子の fat join 比較へのセル分解・余極限の接続、slice 比較と A6 の主定理は未完了。A4・A5 は未着手。
+
+A6 続き：通常の join と fat join は左右どちらの因子でも二項 pushout を保つ。`fatJoinMap_left_mono` は左因子の単射保存、`isPrecompositionEquivalence_fatJoinComparison_of_pushout_left` は左因子の三つの比較の同値条件から単射の pushout 後の比較の同値条件を得る。右因子の単射保存と無限のセル分解の余極限への接続は未完了。新規21宣言の全型・前提は計画 §6。Core ビルド1829 jobs・累計1189宣言の標準3公理監査成功。既存の公開名・型は維持。任意の因子の fat join 比較、slice 比較と A6 の主定理は未完了。A4・A5 は未着手。

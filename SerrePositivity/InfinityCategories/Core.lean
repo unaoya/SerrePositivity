@@ -201,3 +201,15 @@ public import SerrePositivity.InfinityCategories.Core.EquivalencePullbackPathLif
 public import SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing
+
+public import SerrePositivity.InfinityCategories.Core.JoinPushout
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinPushout
+
+public import SerrePositivity.InfinityCategories.Core.PushoutMonoCube
+
+public import SerrePositivity.InfinityCategories.Core.IntervalEndpointPullback
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinLeftMono
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonGluing
