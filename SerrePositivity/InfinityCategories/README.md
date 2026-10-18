@@ -6957,3 +6957,160 @@ Sp の fibration の塔の実際の極限錐は未完了。
 他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-pullback-infinity-aggregate.log` と
 `/tmp/gamma3-spectrum-pullback-infinity-audit.log`。
+
+
+### γ3c：塔の相対比較の持ち上げ性を極限へ移す準備
+
+Sp の fibration の塔に向け、L9 の実際の `FibrationTower.limit` 上の比較を構成した。
+`TowerMaps` の `towerMap f hf` は、遷移 dX、dY と厳密に可換な各段の射 f から、
+整合族の極限の射を与える。各段への射影の式、恒等射と合成の保存を証明した。
+`towerMatchingMap f hf n` は、次の源の段 X(n+1) から
+`pullback (dY n) (f n)` への射で、成分は f(n+1) と dX(n)。
+この標的は「次の標的の成分」と「既に選んだ源の前段の成分」の同時指定を表す。
+
+`TowerMatchingLifting` の `towerRelative_liftFamily` は、任意の左射 j に対し、
+初段 f(0) と全ての `towerMatchingMap f hf n` が j に対する持ち上げ性を持つなら、
+塔の極限の射の可換正方形を各段の整合する持ち上げへ解く。
+初段を充填した後、次の標的成分と前段の充填を上の引き戻しに組み、相対比較を充填する。
+ホーン上の一致、底への合成、隣接段の遷移との一致を全て保持する。
+`towerMap_hasLiftingProperty` はその族を実際の整合族の極限へ束ねる。
+`towerMap_rlp` は任意の射のクラス W への RLP を同じ条件で極限の射へ移す。
+W の閉性は要求しない。
+
+`towerMap_fibration` は初段と相対比較が Kan fibration の場合に極限の射も fibration とする。
+各段の f の fibration 性だけを前提とする主張ではなく、相対比較の fibration 性を明示している。
+`towerMap_piIsomorphism_of_matching_rlp` は、両極限が Kan で、初段と相対比較が全ての単射に
+RLP を持つとき、極限の射が全基点・全自然数次数の π_* 同型であることを与える。
+段ごとの π_* 同型だけから相対比較の RLP を推論する工程は未証明。
+
+その次工程で使う相対充填を `RelativePointedHomLifting` で拡張した。
+`relativePointedHom_lift` は、必要な一つの pushout-product の持ち上げ性を明示し、
+点つき Hom の既存族・指定部分・底への合成を同時に保つ充填を構成する。
+既存の `relativePointedHom_hornLift` は同じ公開型を保ち、この一般の補題へ渡す形へ整理した。
+新規 `relativePointedHom_anodyneLift` は、源の射が anodyne、標的の射が Kan fibration、
+パラメータの射が任意の単射の場合の相対充填を証明する。
+この補題を塔の mapping path の相対比較の全単射 RLP に用いる予定。
+原典上の位置は Goerss–Jardine I §§7–8、HTT A.3.3、BF 1978 §2、HTT 4.2.4.1。
+
+新規12宣言の正確な型・全前提は以下。namespace は
+`SerrePositivity.InfinityCategories.HomotopyLimits`、宇宙は u。
+既存のホーン充填を含む全公開宣言の公理依存の正本は `scripts/audit_homotopy_limits.lean`。
+
+`TowerMaps`：
+
+```lean
+def towerMap {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
+    {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
+    (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) :
+    FibrationTower.limit X dX ⟶ FibrationTower.limit Y dY
+
+lemma towerMap_projection {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
+    {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
+    (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) (n : ℕ) :
+    towerMap f hf ≫ FibrationTower.projection Y dY n =
+      FibrationTower.projection X dX n ≫ f n
+
+lemma towerMap_id (X : ℕ → SSet.{u}) (d : ∀ n, X (n + 1) ⟶ X n) :
+    towerMap (fun n ↦ 𝟙 (X n)) (fun n ↦ by simp) = 𝟙 (FibrationTower.limit X d)
+
+lemma towerMap_comp {X Y Z : ℕ → SSet.{u}}
+    {dX : ∀ n, X (n + 1) ⟶ X n} {dY : ∀ n, Y (n + 1) ⟶ Y n}
+    {dZ : ∀ n, Z (n + 1) ⟶ Z n}
+    (f : ∀ n, X n ⟶ Y n) (g : ∀ n, Y n ⟶ Z n)
+    (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    (hg : ∀ n, dY n ≫ g n = g (n + 1) ≫ dZ n) :
+    towerMap f hf ≫ towerMap g hg =
+      towerMap (fun n ↦ f n ≫ g n) (fun n ↦ by
+        rw [← Category.assoc, hf n, Category.assoc, hg n, ← Category.assoc])
+
+def towerMatchingMap {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
+    {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
+    (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) (n : ℕ) :
+    X (n + 1) ⟶ pullback (dY n) (f n)
+```
+
+`TowerMatchingLifting`：
+
+```lean
+lemma towerRelative_liftFamily {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
+    {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
+    (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    {T U : SSet.{u}} (j : T ⟶ U) [HasLiftingProperty j (f 0)]
+    [∀ n, HasLiftingProperty j (towerMatchingMap f hf n)]
+    (a : T ⟶ FibrationTower.limit X dX) (b : U ⟶ FibrationTower.limit Y dY)
+    (h : a ≫ towerMap f hf = j ≫ b) :
+    ∃ l : ∀ n, U ⟶ X n,
+      (∀ n, j ≫ l n = a ≫ FibrationTower.projection X dX n) ∧
+      (∀ n, l n ≫ f n = b ≫ FibrationTower.projection Y dY n) ∧
+      (∀ n, l (n + 1) ≫ dX n = l n)
+
+lemma towerMap_hasLiftingProperty {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
+    {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
+    (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    {T U : SSet.{u}} (j : T ⟶ U) [HasLiftingProperty j (f 0)]
+    [∀ n, HasLiftingProperty j (towerMatchingMap f hf n)] :
+    HasLiftingProperty j (towerMap f hf)
+
+lemma towerMap_rlp {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
+    {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
+    (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) (W : MorphismProperty SSet.{u})
+    (h0 : W.rlp (f 0)) (hm : ∀ n, W.rlp (towerMatchingMap f hf n)) : W.rlp (towerMap f hf)
+
+lemma towerMap_fibration {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
+    {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
+    (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    [Fibration (f 0)] [∀ n, Fibration (towerMatchingMap f hf n)] :
+    Fibration (towerMap f hf)
+
+lemma towerMap_piIsomorphism_of_matching_rlp {X Y : ℕ → SSet.{u}}
+    {dX : ∀ n, X (n + 1) ⟶ X n} {dY : ∀ n, Y (n + 1) ⟶ Y n}
+    [KanComplex (FibrationTower.limit X dX)] [KanComplex (FibrationTower.limit Y dY)]
+    (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
+    (h0 : (MorphismProperty.monomorphisms SSet.{u}).rlp (f 0))
+    (hm : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (towerMatchingMap f hf n)) :
+    KanPiIsomorphism (towerMap f hf)
+```
+
+`RelativePointedHomLifting`：
+
+```lean
+lemma relativePointedHom_lift {A X E B : PointedSimplicialSet.{u}}
+    (i : A ⟶ X) (p : E ⟶ B)
+    {T U : SSet.{u}} (j : T ⟶ U)
+    (hpp : HasLiftingProperty (Functor.PushoutObjObj.ofHasPushout
+      (curriedTensor SSet.{u}) i.right j).ι p.right)
+    (a : T ⟶ (PointedObject.basedHom X E).right)
+    (b : U ⟶ (PointedObject.basedHom A E).right)
+    (c : U ⟶ (PointedObject.basedHom X B).right)
+    (hc : j ≫ b = a ≫ PointedMapping.pre i E)
+    (he : a ≫ (PointedObject.basedHomMap X p).right = j ≫ c)
+    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ PointedMapping.pre i B) :
+    ∃ l : U ⟶ (PointedObject.basedHom X E).right,
+      j ≫ l = a ∧ l ≫ PointedMapping.pre i E = b ∧
+        l ≫ (PointedObject.basedHomMap X p).right = c
+
+lemma relativePointedHom_anodyneLift {A X E B : PointedSimplicialSet.{u}}
+    (i : A ⟶ X) (hi : anodyneExtensions i.right) (p : E ⟶ B) [Fibration p.right]
+    {T U : SSet.{u}} (j : T ⟶ U) [Mono j]
+    (a : T ⟶ (PointedObject.basedHom X E).right)
+    (b : U ⟶ (PointedObject.basedHom A E).right)
+    (c : U ⟶ (PointedObject.basedHom X B).right)
+    (hc : j ≫ b = a ≫ PointedMapping.pre i E)
+    (he : a ≫ (PointedObject.basedHomMap X p).right = j ≫ c)
+    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ PointedMapping.pre i B) :
+    ∃ l : U ⟶ (PointedObject.basedHom X E).right,
+      j ≫ l = a ∧ l ≫ PointedMapping.pre i E = b ∧
+        l ≫ (PointedObject.basedHomMap X p).right = c
+```
+
+次に mapping path による塔の比較の因子分解を構成し、段ごとの π_* 同型と塔の fibration 性から
+初段と相対比較の全単射 RLP を証明する必要がある。
+Sp の塔の実際の対象の Ω 条件・構造射の単射性・錐とその ∞ 極限性は未完了。
+今回の相対 RLP の条件付き判定だけを塔の工程の完成とは数えない。
+非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 全体は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4638 jobs）、公開1241宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルと変更した相対充填ファイルの警告・sorry・追加公理はない。
+他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-tower-relative-lifting-aggregate.log` と
+`/tmp/gamma3-tower-relative-lifting-audit.log`。

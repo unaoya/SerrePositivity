@@ -2848,3 +2848,39 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @spectrumPullbackInfinityCone_isLimit
 #print axioms spectrumPullbackInfinityCone_isLimit
+
+#check @towerMap
+#print axioms towerMap
+
+#check @towerMap_projection
+#print axioms towerMap_projection
+
+#check @towerMap_id
+#print axioms towerMap_id
+
+#check @towerMap_comp
+#print axioms towerMap_comp
+
+#check @towerMatchingMap
+#print axioms towerMatchingMap
+
+#check @towerRelative_liftFamily
+#print axioms towerRelative_liftFamily
+
+#check @towerMap_hasLiftingProperty
+#print axioms towerMap_hasLiftingProperty
+
+#check @towerMap_rlp
+#print axioms towerMap_rlp
+
+#check @towerMap_fibration
+#print axioms towerMap_fibration
+
+#check @towerMap_piIsomorphism_of_matching_rlp
+#print axioms towerMap_piIsomorphism_of_matching_rlp
+
+#check @relativePointedHom_lift
+#print axioms relativePointedHom_lift
+
+#check @relativePointedHom_anodyneLift
+#print axioms relativePointedHom_anodyneLift

@@ -1442,3 +1442,36 @@ Sp の fibration の塔、非反転の比較、余極限側、E2a 完了後の E
 他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-pullback-infinity-aggregate.log` と
 `/tmp/gamma3-spectrum-pullback-infinity-audit.log`。
+
+
+### γ3c：塔の相対比較の右持ち上げ性を極限へ移す準備
+
+`TowerMaps` で、厳密に可換な各段の射から L9 の整合族の極限の間の実際の射を構成した。
+射影の計算、恒等射・合成の保存を証明し、次段から
+`pullback (dY n) (f n)` への相対比較 `towerMatchingMap` を与えた。
+
+`TowerMatchingLifting` は、任意の左射 j に対し、初段と全相対比較の持ち上げ性から
+塔の極限の射の持ち上げ性を構成する。次の標的成分と既存の源の前段の充填を
+引き戻しへまとめ、ホーン上・底・遷移の三条件を保って帰納する。
+`towerMap_rlp` は任意のクラス W への RLP を極限へ移し、
+`towerMap_fibration` は初段と相対比較の fibration 性から極限の射の fibration 性を得る。
+`towerMap_piIsomorphism_of_matching_rlp` は、両極限の Kan 性と初段・相対比較の全単射 RLP の下で
+実際の極限の射の全基点・全自然数次数の π_* 同型を与える。
+各段の fibration 性だけや各段の π_* 同型だけへ前提を弱めていない。
+
+`RelativePointedHomLifting` に一般の pushout-product の持ち上げ性からの相対充填と、
+anodyne な源・任意の単射パラメータ・Kan fibration の標的の場合の相対充填を追加した。
+既存のホーン充填の公開型は保ち、一般の充填へ渡す形へ整理して再検証した。
+次にこの補題を mapping path の塔の相対比較へ適用し、元の段ごとの π_* 同型と塔の
+fibration 性から必要な全単射 RLP を構成する。Sp の塔の対象と ∞ 極限錐は未完了。
+今回の条件付き判定を塔全体の完成とは数えない。
+
+新規12宣言の正確な型・全前提は README の同名節へ記録し、監査へ追加した。
+原典は Goerss–Jardine I §§7–8、HTT A.3.3、BF 1978 §2、HTT 4.2.4.1。
+非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4638 jobs）、公開1241宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルと変更した相対充填ファイルの警告・sorry・追加公理はない。
+他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-tower-relative-lifting-aggregate.log` と
+`/tmp/gamma3-tower-relative-lifting-audit.log`。
