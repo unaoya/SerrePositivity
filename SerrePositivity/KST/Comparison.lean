@@ -70,6 +70,8 @@ public import SerrePositivity.KST.Comparison.SpanGluing
 
 public import SerrePositivity.KST.Comparison.SimplicialSumHomotopyPullbacks
 
+public import SerrePositivity.KST.Comparison.TelescopeGluing
+
 /-!
 # K-L2：比較定理の入口
 

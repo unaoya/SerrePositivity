@@ -408,7 +408,7 @@ span の射の誘導写像、各端点の包含、円筒の写像の式を先に
 現在の Ex∞ の有限極限保存、単位の anodyne 性、Kan 性と、slice の閉構造を用いて、
 厳密な引き戻しの colimit との交換から homotopy 引き戻しの比較へ進める。
 Lemma 1.7 本体を仮定とする構造体は導入せず、実際の円筒の比較について証明した。
-Lemma 1.8 の telescope と Proposition 1.6 の対角化の貼り合わせは残工程である。
+Lemma 1.8 の telescope の貼り合わせも証明した。Proposition 1.6 の対角化の貼り合わせは残工程である。
 
 ### 部分対象を保つ二段階の収縮と anodyne 性
 
@@ -619,15 +619,18 @@ Kan 分解は span の二面と、円筒への三頂点の四角形のホモト�
 追加の Kan 性・単射性の仮定を取り除き、Segal Lemma 1.7 の一般形を証明した。
 添字付き余積を各次数の依存和として構成し、添字を写す成分ごとの厳密な引き戻しを余積へ移した。
 成分ごとの Kan fibration・局所化同型の余積保存と、右縦射が Kan のホモトピー引き戻しの余積保存を証明した。
-Lemma 1.8 の telescope と Proposition 1.6 の対角化の貼り合わせは未証明。
+偶数・奇数の余積の span と二重写像円筒から、実際の telescope 関手を構成した。
+中央の Kan fibration を用いる横の貼り合わせ、隣接段からの帰納、成分ごとの Kan 分解から、
+各偶数・奇数段の telescope への四角形を追加仮定なしで証明した（Segal Lemma 1.8）。
+Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 764 宣言の型と公理を確認した。
-さらに名前空間全体の 1407 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 782 宣言の型と公理を確認した。
+さらに名前空間全体の 1440 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -774,7 +777,13 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `simplicialSumReindex_isPullback`、`simplicialSumInclusion_isPullback` | 実装済み | 任意の添字の写像と成分の包含の引き戻し |
 | `simplicialSumMap_rlp`、`simplicialSumMap_localized_isIso` | 実装済み | 成分ごとの Kan fibration と局所化同型の余積保存 |
 | `simplicialSumReindex_homotopyPullback_of_fibrations` | 実装済み | Kan な右縦射を持つホモトピー引き戻しの余積 |
-| Segal Lemma 1.8・Proposition 1.6 | 未証明 | telescope と対角化の貼り合わせ |
+| `isHomotopyPullback_paste_horiz_of_middle_fibration` | 実装済み | 中央の Kan fibration を用いる横の貼り合わせ |
+| `sequenceArrow_homotopyPullback_of_successors` | 実装済み | 隣接段から任意の遷移への帰納 |
+| `telescopeSpan`、`telescopeSpanFunctor`、`telescopeFunctor` | 実装済み | 偶数・奇数段の余積による telescope の模型 |
+| `telescopeEvenStage`、`telescopeOddStage` | 実装済み | 全ての偶数・奇数段の telescope への自然変換 |
+| `telescopeFunctor_map_localized_isIso` | 実装済み | 成分ごとの局所化同型による telescope の不変性 |
+| `telescopeStages_homotopyPullback` | 実装済み | Segal Lemma 1.8、隣接段の仮定のみ |
+| Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |

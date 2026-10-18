@@ -80,6 +80,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1367,6 +1368,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
 
 
+-- HomotopyPullbackPasting.lean
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_paste_horiz_of_middle_fibration
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_paste_horiz_of_middle_fibration
+
+
 -- HomotopyPullbackSymmetry.lean
 
 #check @SerrePositivity.KST.Comparison.isHomotopyPullback_flip_iff
@@ -2264,6 +2271,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.replacementComparison_pullback_isIso
 
 
+-- SequenceHomotopyPullbacks.lean
+
+#check @SerrePositivity.KST.Comparison.diagramArrow_id_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.diagramArrow_id_homotopyPullback
+
+#check @SerrePositivity.KST.Comparison.sequenceArrow_homotopyPullback_of_successors
+#print axioms SerrePositivity.KST.Comparison.sequenceArrow_homotopyPullback_of_successors
+
+
 -- SimplexComponents.lean
 
 #check @SerrePositivity.KST.Comparison.simplexVertex
@@ -2874,6 +2890,60 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_preservesUnion
 #print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_preservesUnion
+
+
+-- TelescopeFunctor.lean
+
+#check @SerrePositivity.KST.Comparison.telescopeSpanFunctor
+#print axioms SerrePositivity.KST.Comparison.telescopeSpanFunctor
+
+#check @SerrePositivity.KST.Comparison.telescopeFunctor
+#print axioms SerrePositivity.KST.Comparison.telescopeFunctor
+
+#check @SerrePositivity.KST.Comparison.telescopeEvenStage
+#print axioms SerrePositivity.KST.Comparison.telescopeEvenStage
+
+#check @SerrePositivity.KST.Comparison.telescopeOddStage
+#print axioms SerrePositivity.KST.Comparison.telescopeOddStage
+
+#check @SerrePositivity.KST.Comparison.telescopeFunctor_map_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.telescopeFunctor_map_localized_isIso
+
+
+-- TelescopeGluing.lean
+
+#check @SerrePositivity.KST.Comparison.telescopeSpan_homotopyPullbacks_of_fibrations
+#print axioms SerrePositivity.KST.Comparison.telescopeSpan_homotopyPullbacks_of_fibrations
+
+#check @SerrePositivity.KST.Comparison.telescopeStages_homotopyPullback_of_fibrations
+#print axioms SerrePositivity.KST.Comparison.telescopeStages_homotopyPullback_of_fibrations
+
+#check @SerrePositivity.KST.Comparison.telescopeStages_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.telescopeStages_homotopyPullback
+
+
+-- TelescopeSpan.lean
+
+#check @SerrePositivity.KST.Comparison.telescopeEdgeDegree
+#print axioms SerrePositivity.KST.Comparison.telescopeEdgeDegree
+
+#check @SerrePositivity.KST.Comparison.telescopeEvenIndex
+#print axioms SerrePositivity.KST.Comparison.telescopeEvenIndex
+
+#check @SerrePositivity.KST.Comparison.telescopeOddIndex
+#print axioms SerrePositivity.KST.Comparison.telescopeOddIndex
+
+#check @SerrePositivity.KST.Comparison.telescopeEdgeDegree_le_even
+#print axioms SerrePositivity.KST.Comparison.telescopeEdgeDegree_le_even
+
+#check @SerrePositivity.KST.Comparison.telescopeEdgeDegree_le_odd
+#print axioms SerrePositivity.KST.Comparison.telescopeEdgeDegree_le_odd
+
+#check @SerrePositivity.KST.Comparison.telescopeSpan
+#print axioms SerrePositivity.KST.Comparison.telescopeSpan
+
+#check @SerrePositivity.KST.Comparison.telescopeSpanMap
+#print axioms SerrePositivity.KST.Comparison.telescopeSpanMap
 
 
 -- TranslationDescent.lean
