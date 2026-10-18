@@ -98,10 +98,25 @@ def tensorFamilySplitLast : ∀ (n : ℕ) (V : Fin (n + 1) → Complex A),
 方針：指定した入力ごとの生成射を先頭から順にテンソルする。
 規約：空の族ではテンソル単位の恒等射を取る。
 使われ方：Schur 対象の入力ごとの生成射を一般の有限テンソルの補題へ接続する。 -/
-def tensorFamilyGenerator (X : Complex A) (D : ℕ → Complex A) (e : ∀ i, D i ⟶ X) :
-    ∀ (n : ℕ) (s : Fin n → ℕ),
+def tensorFamilyGenerator {ι : Type} (X : Complex A) (D : ι → Complex A) (e : ∀ i, D i ⟶ X) :
+    ∀ (n : ℕ) (s : Fin n → ι),
       tensorFamily n (fun i => D (s i)) ⟶ TensorPowers.power X n
   | 0, _ => 𝟙 _
   | n + 1, s => e (s 0) ⊗ₘ tensorFamilyGenerator X D e n (fun i => s i.succ)
+
+/-- 概要：生成射の有限テンソルは添字の再パラメータ化と両立する（Berger–Moerdijk §1）。
+方針：有限族の長さに関する帰納法で各入力の添字の合成を展開する。
+規約：二つの添字型はともに小さい。
+使われ方：有限全単射で添字付けた生成射を arity で添字付けた生成射と比較する。 -/
+lemma tensorFamilyGenerator_reindex {ι κ : Type} (X : Complex A) (D : ι → Complex A)
+    (e : ∀ i, D i ⟶ X) (r : κ → ι) (n : ℕ) (s : Fin n → κ) :
+    tensorFamilyGenerator X D e n (fun i => r (s i)) =
+      tensorFamilyGenerator X (fun i => D (r i)) (fun i => e (r i)) n s := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    change (e (r (s 0)) ⊗ₘ tensorFamilyGenerator X D e n (fun i => r (s i.succ))) = _
+    rw [ih]
+    rfl
 
 end SerrePositivity.EInfinity
