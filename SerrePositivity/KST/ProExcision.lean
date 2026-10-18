@@ -243,3 +243,15 @@ public import SerrePositivity.KST.ProExcision.RightColumnInsertion
 public import SerrePositivity.KST.ProExcision.Lemma416Data
 
 public import SerrePositivity.KST.ProExcision.Lemma416Homotopy
+
+public import SerrePositivity.KST.ProExcision.OneDifferenceTransform
+
+public import SerrePositivity.KST.ProExcision.LeftMultiplier
+
+public import SerrePositivity.KST.ProExcision.FirstBlockMatrix
+
+public import SerrePositivity.KST.ProExcision.FirstBlockMultiplication
+
+public import SerrePositivity.KST.ProExcision.FirstBlockPreservation
+
+public import SerrePositivity.KST.ProExcision.MatrixBlockAction

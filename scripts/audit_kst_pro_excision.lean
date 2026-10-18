@@ -3255,3 +3255,66 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.lemma416Homotopy
 #print axioms SerrePositivity.KST.ProExcision.lemma416Homotopy
+
+#check @SerrePositivity.KST.ProExcision.oneDifferenceElement
+#print axioms SerrePositivity.KST.ProExcision.oneDifferenceElement
+
+#check @SerrePositivity.KST.ProExcision.oneDifferenceElement_mul
+#print axioms SerrePositivity.KST.ProExcision.oneDifferenceElement_mul
+
+#check @SerrePositivity.KST.ProExcision.oneDifferenceElement_inv_relation
+#print axioms SerrePositivity.KST.ProExcision.oneDifferenceElement_inv_relation
+
+#check @SerrePositivity.KST.ProExcision.oneDifferenceTransform
+#print axioms SerrePositivity.KST.ProExcision.oneDifferenceTransform
+
+#check @SerrePositivity.KST.ProExcision.leftMultiplierHom
+#print axioms SerrePositivity.KST.ProExcision.leftMultiplierHom
+
+#check @SerrePositivity.KST.ProExcision.leftMultiplierGroupHom
+#print axioms SerrePositivity.KST.ProExcision.leftMultiplierGroupHom
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_left_left
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_left_left
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_left_right
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_left_right
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_right_left
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_right_left
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_right_right
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_right_right
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_firstRows
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_firstRows
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_otherRows
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_otherRows
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_right_absorbed
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_right_absorbed
+
+#check @SerrePositivity.KST.ProExcision.blockPattern_firstBlock_right_absorbed
+#print axioms SerrePositivity.KST.ProExcision.blockPattern_firstBlock_right_absorbed
+
+#check @SerrePositivity.KST.ProExcision.blockPattern_firstBlock_left_mem
+#print axioms SerrePositivity.KST.ProExcision.blockPattern_firstBlock_left_mem
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockMatrixEnd
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixEnd
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_one
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_one
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_mul
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_mul
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockMatrixEnd_val
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixEnd_val
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockMatrixAction
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixAction

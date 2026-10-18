@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1136宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1157宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -360,6 +360,10 @@
 | triangularInsertion_lastRightColumn | RightColumnInsertion.lean | 検証済み | φ の小さい帰納段階への実因子化 |
 | lemma416GroupData / lemma416GroupData_product | Lemma416Data.lean | 検証済み | A.5 の因子データと共役への同定 |
 | lemma416HomotopyStep / lemma416Homotopy | Lemma416Homotopy.lean | 非同変版検証済み | μ 版 A.5 と A.6 の連結と相殺による全 m の実帰納比較 |
+
+| oneDifferenceTransform / leftMultiplierGroupHom | OneDifferenceTransform.lean / LeftMultiplier.lean | 検証済み | 非単位三角部分の作用から実群の自己射への持ち上げ |
+| firstBlockMatrix / firstBlockMatrix_right_absorbed | FirstBlockMatrix.lean / FirstBlockMultiplication.lean | 検証済み | diag(M,1) の実成分と右吸収 |
+| triangularBlockMatrixAction | MatrixBlockAction.lean | 検証済み | 一般の行列モノイドによる実三角ブロック群の作用 |
 
 ## L6a：最小 pro 形式
 
@@ -906,3 +910,14 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `lemma416HomotopyStep` は C(P) 内の m 次帰納仮定と C(Q) 内の0次入力に μ 版 A.5 を適用し、A.6 と連結して augmentation 補正を相殺する。
 - `lemma416Homotopy` は全ての m に対する非同変な実 m 次ホモトピー。入力は n、周囲の単位環の両側イデアル J、a∈J、m のみであり、帰納法の結論を仮定にしない。中心性もこの非同変部分では不要。
 - 対象ビルド・1136宣言の公理監査は標準三公理のみで成功。外部行列作用の同変性、(I,a) に関する関手性と単体環への移送、相対零化・安定化はまだ未完了。
+
+
+### L6d の実外部行列作用（2026-10-19）
+
+- `oneDifferenceTransform` は非単位部分環の準同型を 1+S の実単位部分群の群準同型へ移す。周囲の環準同型への延長は要求せず、単位と逆の差を明示的に送る。
+- `leftMultiplierHom` は xB=x を満たす乗数 B の左乗法を部分環の非単位環準同型にする。`leftMultiplierGroupHom` はその実群への持ち上げ。
+- `firstBlockMatrix` は diag(M,1) の実行列。四ブロックの成分、左積の前半・後半の行の式、first n 列が零である元の右吸収を証明。
+- `blockPattern_firstBlock_left_mem` は三角性と係数イデアルを保つことを証明。`triangularBlockMatrixEnd` は非可逆な一般の行列 M の作用自己準同型。
+- `triangularBlockMatrixAction` は Matrix_n(R)→Monoid.End(T_{n,m}(J)) の実モノイド準同型。単位・積の法則を実成分 1+diag(M,1)(g−1) から証明した。
+- これは単位化上の全行列の作用であり、元の I の行列についても乗法の可換性が成り立つ。非単位の行列半群を単位元を持つ G と混同していない。
+- 対象ビルド・1157宣言の公理監査は標準三公理のみで成功。Q の列作用、φ・ψ・μ・u と帰納ホモトピーへの同変性の接続を続ける。
