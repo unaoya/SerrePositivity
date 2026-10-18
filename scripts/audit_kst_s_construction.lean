@@ -3651,3 +3651,16 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.selectedFunctorPushout_isPushout
 #check @SerrePositivity.KST.SConstruction.selectedFunctorPushout_reindex
 #print axioms SerrePositivity.KST.SConstruction.selectedFunctorPushout_reindex
+
+#check @SerrePositivity.KST.SConstruction.exists_relative_zeroPrism
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_zeroPrism
+#check @SerrePositivity.KST.SConstruction.zeroNaturalTransformation
+#print axioms SerrePositivity.KST.SConstruction.zeroNaturalTransformation
+#check @SerrePositivity.KST.SConstruction.zeroNaturalTransformation_zero
+#print axioms SerrePositivity.KST.SConstruction.zeroNaturalTransformation_zero
+#check @SerrePositivity.KST.SConstruction.zeroNaturalTransformation_one
+#print axioms SerrePositivity.KST.SConstruction.zeroNaturalTransformation_one
+#check @SerrePositivity.KST.SConstruction.zeroNaturalTransformation_fixed
+#print axioms SerrePositivity.KST.SConstruction.zeroNaturalTransformation_fixed
+#check @SerrePositivity.KST.SConstruction.zeroNaturalTransformation_constant
+#print axioms SerrePositivity.KST.SConstruction.zeroNaturalTransformation_constant

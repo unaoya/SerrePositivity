@@ -149,4 +149,6 @@ public import SerrePositivity.KST.SConstruction.JointNormalizedPushoutSection
 
 public import SerrePositivity.KST.SConstruction.DiagramPushoutChoice
 
+public import SerrePositivity.KST.SConstruction.ZeroNaturalTransformations
+
 /-! # ∞-S• 構成と連結 K 理論 -/

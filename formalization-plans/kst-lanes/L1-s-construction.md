@@ -5751,3 +5751,63 @@ McCarthy の具体的な単体ホモトピー、単体積 Quillen A、object/cor
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3173 jobs）、公理監査成功（1385 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.48 零対象上で恒等となる零射の自然変換
+
+Fiore–Pieper Lemma 4.24（著者公開版 p.58）と Example 9.14（pp.82–83）で使う、
+零対象から恒等関手への自然変換と恒等関手から零対象への自然変換を構成した。
+指定された `ZeroVertex C` の始対象性・終対象性のみを使い、
+`Quasicategory C` や `IsStable C` を追加の仮定にはしていない。
+零対象上で恒等になるという正規化は、単に成分のホモトピー類を固定する主張ではなく、
+零対象で一定な任意のパラメーター付き図式上で prism 全体が厳密に一定になる式で証明した。
+
+一般の相対版では `S : B.Subcomplex` 上で零対象に一定な `f : B → C` を入力にする。
+区間の両端と `interval × S` の和で図式を貼り合わせ、
+外にある単体の区間成分は両端を通るため、時刻零の始点または時刻一の終点の零対象性で延長した。
+始点・終点と既存の部分への制限を同時に厳密に保持する。
+恒等関手に適用する際には零対象の生成部分複体を固定して選んだ。
+`false` は零対象から恒等関手へ、`true` は恒等関手から零対象への向き。
+
+追加ファイル：`ZeroNaturalTransformations.lean`。
+以下は namespace `SerrePositivity.KST.SConstruction` 内の公開宣言の正確な型。
+自然変換を関手同型・弱同値とは主張しておらず、これだけから S• 後のホモトピーや
+K 空間の可縮性を結論しない。McCarthy の具体的な補完図式での利用は後続の証明。
+
+```lean
+lemma exists_relative_zeroPrism {B C : SSet.{u}} (z : ZeroVertex C) (b : Bool)
+    (S : B.Subcomplex) (f : B ⟶ C) (hf : S.ι ≫ f = SSet.const z.vertex) :
+    ∃ H : (Δ[1] : SSet.{u}) ⊗ B ⟶ C,
+      prismEndpoint 0 B ≫ H = (if b then f else SSet.const z.vertex) ∧
+      prismEndpoint 1 B ≫ H = (if b then SSet.const z.vertex else f) ∧
+      (Δ[1] ◁ S.ι) ≫ H = SSet.const z.vertex
+
+def zeroNaturalTransformation {C : SSet.{u}} (z : ZeroVertex C) (b : Bool) :
+    (Δ[1] : SSet.{u}) ⊗ C ⟶ C
+
+lemma zeroNaturalTransformation_zero {C : SSet.{u}} (z : ZeroVertex C) (b : Bool) :
+    prismEndpoint 0 C ≫ zeroNaturalTransformation z b =
+      (if b then 𝟙 C else SSet.const z.vertex)
+
+lemma zeroNaturalTransformation_one {C : SSet.{u}} (z : ZeroVertex C) (b : Bool) :
+    prismEndpoint 1 C ≫ zeroNaturalTransformation z b =
+      (if b then SSet.const z.vertex else 𝟙 C)
+
+lemma zeroNaturalTransformation_fixed {C : SSet.{u}} (z : ZeroVertex C) (b : Bool) :
+    (Δ[1] ◁ (Subcomplex.ofSimplex z.vertex).ι) ≫ zeroNaturalTransformation z b =
+      SSet.const z.vertex
+
+lemma zeroNaturalTransformation_constant {A C : SSet.{u}} (z : ZeroVertex C) (b : Bool) :
+    (Δ[1] ◁ (SSet.const z.vertex : A ⟶ C)) ≫ zeroNaturalTransformation z b =
+      SSet.const z.vertex
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+一般 pushout の存在・保存・単体的選択・両向きの同時正規化、
+図式圏への移送・添字制限との厳密な両立に加え、零対象上で正規化した零射の自然変換を証明済み。
+McCarthy の具体的な単体ホモトピー、単体積 Quillen A、object/core 比較と加法性比較の弱同値性、
+面のホモトピー引き戻し条件は未完了。
+反復 S 実現と §6.43 の homotopy fiber の比較、既存の構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3174 jobs）、公理監査成功（1391 宣言、標準三公理のみ）。追加公理・sorry なし。
