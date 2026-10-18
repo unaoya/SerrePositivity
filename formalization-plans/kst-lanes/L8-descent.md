@@ -105,10 +105,12 @@ Noether 整域上の有限加群の非零元による自由化を証明し、実
 閉包含と構造射を保つ同型で結び、全チャートのその像の有限平坦性を証明した（§51）。
 像と開底変換の両立から global strict transform の開チャートを周辺チャートの像で表示し、
 その構造射を保つ同型と Zariski 局所性で平坦性を貼り合わせた（§52）。
+非零因子の境界基本開の逆像の実際の blowup 上の稠密性を証明し、中心補集合と
+同一視せず、平坦化で使う同じ D(r) の全射性と有限忠実平坦な細分へ接続した（§53）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 127 モジュール・1549 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 129 モジュール・1554 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -653,6 +655,11 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `strictTransformOpenChartIso`、`strictTransformOpenChartIso_hom_snd` | 周辺チャートの像と global strict transform の実際のチャートの同型 | 対象ビルド済み、チャート基底への構造射を保持 |
 | `strictTransform_chart_flat_of_image_flat` | 周辺チャートの像の平坦性から strict transform のチャートの平坦性 | 対象ビルド済み、実際のスキームの射に適用 |
 | `strictTransform_flat_of_openChart_images` | 周辺チャートの全ての像の平坦性から global strict transform の平坦性 | 対象ビルド済み、実際の開被覆を使う |
+| `basicOpen_dense_of_nonZeroDivisor` | 非零因子の基本開の稠密性 | 対象ビルド済み、Noether 性・被約性は不要 |
+| `affineBlowup_boundary_dense` | アフィン blowup 上の境界基本開の逆像の稠密性 | 対象ビルド済み、中心補集合との一致は不要 |
+| `blowup_boundary_dense_of_isAffine` | アフィン基底の実際の global blowup 上の境界逆像の稠密性 | 対象ビルド済み、全体のアフィンモデルから移送 |
+| `strictTransformπ_boundary_surjective` | 平坦化と同じ境界基本開からの有限全射の strict transform の全射性 | 対象ビルド済み、生成点・中心の補集合の置換はしない |
+| `exists_finiteFlat_cover_refining_boundary` | 同じ境界での整成分の平坦化から元の有限射を細分する有限忠実平坦被覆 | 対象ビルド済み、実際の平坦性は引き続き供給すべき入力 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1791,3 +1798,40 @@ D(r) ≤ centerComplement J であるが、両者の等号は主張していな�
 §47 の中心外を使う全射性をそのまま無証明で適用してはならない。
 blowup 上の D(r) の逆像の稠密性を証明して一般の稠密開版へ渡すか、
 支配する整成分で開部分の拡大に対する strict transform の不変性を証明する必要がある。
+
+
+## 53. 平坦化に使う境界基本開の逆像の稠密性と同じ境界での有限平坦細分
+
+§52 の末尾で区別した D(r) と中心補集合の問題について、
+今回は blowup 上の D(r) の逆像の稠密性を直接証明する経路を実装した。
+D(r) = centerComplement J という未証明の等号は使わない。
+
+任意の可換環の非零因子 r に対し、局所化 R → R[1/r] は単射である。
+Spec の稠密像の判定と局所化の像の公式から、基本開 D(r) の稠密性を得た。
+これは零環の場合も含み、Noether 性や被約性は不要である。
+非零因子は実際の全 blowup チャートへの係数写像で非零因子に保たれるので、
+各チャートの境界基本開も稠密になる。
+各点の標準チャートによる表示と連続写像による閉包の包含を使い、
+アフィン blowup 全体で境界基本開の逆像が稠密となることを証明した。
+中心の有限生成性も必要ない。
+
+さらにアフィン基底 S の全体のアフィンモデルから global な実際の blowup への
+標準射が全射であることを像の公式から得た。
+その構造射との可換性と基本開の逆像の公式を使い、
+`blowup_boundary_dense_of_isAffine` は実際の global blowup 上の稠密性を与える。
+
+この結果を既存の稠密開の全射性判定へ渡し、
+有限全射 f の strict transform を平坦化に使った同じ U = D(r) で定義した場合に、
+その実際の構造射が全射であることを得た。
+元の有限全射の開部分上の同型性や D(r) と中心補集合の一致は不要である。
+したがって、選んだ支配する整成分のこの同じ D(r) による strict transform が平坦なら、
+元の有限射の底変換を細分する有限忠実平坦・局所有限表示被覆を同じ有限型の圏内で取り出せる。
+`exists_finiteFlat_cover_refining_boundary` はこの被覆と指定細分射・可換式を返す。
+
+残る幾何接続は、§51 のテンソル積のアフィン像と §52 の周辺チャートの像の一致である。
+その一致と貼り合わせで同じ境界の実際の平坦性を供給すれば、今回の全射性の結果を適用できる。
+Čech 細分の実降下・中心上の帰納、実際の Tot・hG、最小公理全体、
+自然な blowup 列と有限積保存の導出、(3.6)・K0・T2・E も未完である。
+
+§53 の保存検証：集約対象ビルドと公理監査が成功。129 モジュール・1554 宣言、標準三公理のみ。
+全体ビルドは §52 の区切りで成功済み。この保存単位では対象ビルドと監査を実行した。
