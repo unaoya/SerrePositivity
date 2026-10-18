@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の具体的係数環層 H_X を、構造射 X → Spec A に対するテンソル前層の層化で構成済み。一般の A → R に対し Spec R 上の基本開の環切断比較、正則 O 加群と tilde (H ⊗_A R) の同型および準連接性を証明済み。一般の X の開部分への制限との比較、一般の X 上での準連接性、dg 模型・降下との比較は未完了。
+- 現在地：L4a の具体的係数環層 H_X を構成し、一般の A → R に対し Spec R 上の基本開の環切断比較・正則 O 加群の tilde 模型・準連接性を証明済み。一般の X の開部分への制限との比較も環層と正則 O 加群の同型まで証明済み。アフィン開と Spec Γ(U) の同型に沿う輸送、一般の X 上の準連接性、dg 模型・降下との比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の251宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の287宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -387,7 +387,7 @@
 - tilde H の準連接性をこの同型で移送する。
 - 上記の標準構造射 Spec R 上の各比較・準連接性は Lean で実装し対象ビルド済み。
 - これは KST D4・T1 の係数環層の準連接性への入力であり、T1 のコンパクト生成は含まない。
-- 一般の A → R の底変換は §21 で証明済み。一般の X の開部分への係数環層の制限との両立は引き続き別定理とする。
+- 一般の A → R の底変換は §21 で証明済み。一般の X の開部分への係数環層の制限との両立は §22 の別定理で証明済み。
 
 ## 21. 一般の基礎環からのアフィン底変換
 
@@ -409,7 +409,30 @@
 - 正則 O 加群と tilde (H ⊗_A R) の同型を構成し、準連接性を証明済み。
 - affineBaseMap は実際の Spec R → Spec A の構造射から得る globalBaseMap と一致する。
 - coefficientSheafOfMorphism による実際の構成にもアフィン準連接性を適用済み。
-- 一般の X の開部分への制限とこのアフィン模型の比較、および導来・dg 圏の比較は未証明。
+- 一般の X の開部分への制限との比較は §22 で証明済み。アフィン開と Spec Γ(U) の同型に沿う輸送、および導来・dg 圏の比較は未証明。
+
+## 22. 開部分への制限と係数環層の構成
+
+- 開埋め込みに伴う開集合の像の関手は連続かつ余連続なサイトの関手である。
+- 連続性は Mathlib の開埋め込みの定理、余連続性は開像と逆像の随伴と被覆保存から証明する。
+- この二つの性質による層化との自然同型を用い、制限と環の層化が可換であることを示す。
+- 比較射と層化の単位の可換式も明示する。
+- U ⊆ X への基礎環写像は、a : A → Γ(X,⊤) を Γ(U,⊤) へ制限したものとする。
+- U の任意の開 V 上で、その A 作用は X の像の開に指定した A 作用と一致する。
+- この代数構造の等式でテンソルの環を移送し、前層の自然同型を作る。
+- 切断の型は一致してもスカラー作用を定義的に同一とせず、移送と純テンソルの計算式を記録する。
+- 前層の同型と層化・制限の同型を合成し、直接構成と制限による係数環層を比較する。
+- 構造層射との両立を示した後、正則 O 加群の比較と一般の X 上の準連接性へ進む。
+- 原典は KST D4、Toën Derived Azumaya §3.2。導来降下との交換はこの層の比較からは結論しない。
+- 開埋め込みの開像の関手の連続性・余連続性と、制限と層化の自然同型・単位との可換式を証明済み。
+- 開部分への基礎環写像と実際の構造射の合成の両立、各開の切断の代数構造の一致を証明済み。
+- 代数構造の等式の移送を環の束で扱い、純テンソルを保つことを確認した。
+- 直接構成した係数テンソル前層と大域前層の制限の自然同型・単位との可換式を証明済み。
+- 環層の開制限同型、層化前の比較射との可換式、構造層射との可換式を証明済み。
+- 一般の CoefficientSheaf の開制限と、その正則 O 加群の開制限との標準同型を構成済み。
+- 具体的な係数環層の正則 O 加群も、直接構成と Mathlib の開制限関手による制限とで同型になる。
+- 実際の構造射からの coefficientSheafOfMorphism にも、環層・正則 O 加群の両方の制限同型を構成済み。
+- これだけで一般の X 上の準連接性は主張しない。任意のアフィン開を Spec Γ(U) へ輸送する比較が残る。
 
 ## 主要宣言の表
 
@@ -457,6 +480,15 @@
 | `CoefficientSheaf.regularMap`・`regularMap_isIso` | DerivedGeometry/CoefficientRegularMap | 実装・対象ビルド済み |
 | `affineBaseCoefficientModuleIso`・`affineBaseCoefficientRegular_isQuasicoherent` | DerivedGeometry/AffineBaseChangeQuasicoherent | 実装・対象ビルド済み |
 | `coefficientSheafOfSpecMap_regular_isQuasicoherent` | DerivedGeometry/AffineBaseChangeQuasicoherent | 実装・対象ビルド済み |
+| `openEmbedding_isCocontinuous`・`openSheafificationIso`・`openSheafificationIso_fac` | DerivedGeometry/OpenSheafification | 実装・対象ビルド済み |
+| `restrictedBaseMap`・`globalBaseMap_restrict`・`sectionAlgebra_restrict` | DerivedGeometry/OpenBaseSections | 実装・対象ビルド済み |
+| `tensorRingObject`・`tensorRingPure_cast`・`tensorRingObject_hom_ext` | DerivedGeometry/TensorScalarTransport | 実装・対象ビルド済み |
+| `openTensorPresheafIso`・`openTensorPresheafIso_unit` | DerivedGeometry/OpenTensorPresheaf | 実装・対象ビルド済み |
+| `CoefficientSheaf.restrict` | DerivedGeometry/CoefficientRestriction | 実装・対象ビルド済み |
+| `openTensorSheafIso`・`openTensorSheafIso_structureMap` | DerivedGeometry/OpenTensorSheaf | 実装・対象ビルド済み |
+| `coefficientSheafOfMorphism_restrictIso` | DerivedGeometry/OpenTensorSheaf | 実装・対象ビルド済み |
+| `CoefficientSheaf.regularRestrictIso` | DerivedGeometry/CoefficientRegularRestriction | 実装・対象ビルド済み |
+| `openTensorRegularIso`・`coefficientSheafOfMorphism_regularRestrictIso` | DerivedGeometry/OpenTensorRegular | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
