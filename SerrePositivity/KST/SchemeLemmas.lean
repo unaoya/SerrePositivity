@@ -12,3 +12,4 @@ public import SerrePositivity.KST.SchemeLemmas.ChartEmbedding
 public import SerrePositivity.KST.SchemeLemmas.PowerCharts
 public import SerrePositivity.KST.SchemeLemmas.PowerChartCover
 public import SerrePositivity.KST.SchemeLemmas.SeparatedExt
+public import SerrePositivity.KST.SchemeLemmas.ChartGluing
