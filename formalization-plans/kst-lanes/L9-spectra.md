@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c 進行中。
 Sp、整数次数群と自然な任意段表示、Kan Ω 列の単射置換まで検証済み。
-対象ビルド・97 モジュール 1652 宣言の公理監査成功。
+対象ビルド・100 モジュール 1728 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1150,3 +1150,35 @@ L9c の残りとして、任意の射を段ごとの Kan fibration へ置換す�
 保存単位の対象ビルド 1873 jobs 成功。
 私有宣言を含む 97 モジュール 1652 宣言で標準三公理のみ。
 L9c は未完了。両端点同時評価の fibration 性と、path 列の構造射を続けて構成する。
+
+
+## 42. L9c の自由な path 列と両端点の同時評価
+
+閉 braided 圏で K ⊗ Hom(A,Y) → Hom(A,K ⊗ Y) を構成した。
+内部 Hom の源の制限・標的の後合成に関する自然性を証明した。
+単位からの内部 Hom の標準同型を評価射で表示し、交換射がこの同型と可換であることも示した。
+これを使って、任意の点つき対象 A からの内部 Hom を Kan 列の各段に施した列を構成した。
+源の制限と標的の後合成はいずれも厳密な列の射となる。
+特に自由な path 列、二つの端点評価、定数 path が厳密な列の射として得られた。
+自由区間の境界は点つき単位二つの余積で、その包含は単射である。
+反変内部 Hom の極限保存により、境界からの写像空間を標的の二項積へ同定した。
+境界への制限とこの同型の合成が、両端点の同時評価の Kan fibration を与える。
+二つの射影が既存の始点・終点評価に一致することまで計算した。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `HomTensorStrength.map` | テンソルと内部 Hom の交換射 |
+| `HomTensorStrength.natural_pre` / `.natural_post` | 両変数についての自然性 |
+| `HomTensorStrength.map_unit` | 単位の内部 Hom の標準同型との整合性 |
+| `KanSequence.mapping` / `.mappingPre` / `.mappingPost` | 内部 Hom の列と厳密な射 |
+| `KanSequence.freePathEvaluation` / `.freePathConstant` | path 列の端点と定数 path |
+| `KanSequence.freePathConstant_evaluation` | 定数 path の厳密な端点計算 |
+| `freeBoundaryIsColimit` | 自由な境界の点つき余積の普遍性 |
+| `freeBoundaryEvaluationIso` | 境界からの Hom と標的の二項積の同型 |
+| `freePathEndpoints_fibration` | 両端点同時評価の Kan fibration 性 |
+| `freePathEndpoints_fst` / `.freePathEndpoints_snd` | 二つの射影の計算 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3。
+保存単位の対象ビルド 1876 jobs 成功。
+私有宣言を含む 100 モジュール 1728 宣言で標準三公理のみ。
+L9c は未完了。段ごとの引き戻しを用いて任意の射の mapping path 列を構成する。

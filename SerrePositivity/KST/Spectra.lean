@@ -42,3 +42,5 @@ public import SerrePositivity.KST.Spectra.SpectrumFibrationSequence
 public import SerrePositivity.KST.Spectra.StageTransitionCoherence
 public import SerrePositivity.KST.Spectra.FreePathSpace
 public import SerrePositivity.KST.Spectra.CofibrantSequenceLifting
+public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
+public import SerrePositivity.KST.Spectra.MappingKanSequence
