@@ -276,3 +276,5 @@ public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistCartesianActio
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistProjective
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistDGModel
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistDGComparison
+public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeModuleHomIso
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistDGQuasiEquivalence

@@ -110,7 +110,7 @@ underlying 複体が当該添字での値に一致することを証明済み。
 指定導来係数拡大比較が可逆であることから構造加群の cartesian perfect 性を証明済み。
 元の Koszul 模型での cartesian perfect 性と、既存の射影的 dg 候補内の指定構造対象、
 その H⁰ 比較像から構造図式加群の導来像への指定同型を構成済み。
-捻りの大域実現と層レベル構造層との比較は未完了。
+整数捻りの大域 dg 実現と準同値性は証明済み。層レベル構造層との比較は未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -457,6 +457,8 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `finiteOverlapDGTwistAction`・閉零／H⁰ 随伴・`finiteOverlapTwistAction_homotopicallyProjective` | FiniteOverlapTwistProjective | 全次数 dg 捻りと図式全体のホモトピー射影性の保存 |
 | `projectiveDiagramTwistDGFunctor`・`blowupTwistDGFunctor` | FiniteOverlapTwistDGModel | 射影性と指定 cartesian perfect 条件を保つ実際の dg 関手 |
 | `blowupTwistDGFunctor_inclusion`・`blowupTwistDGDerivedComparison`・`blowupTwistDGCartesianComparison`・`blowupTwistDGFunctorHomotopyIsEquivalence` | FiniteOverlapTwistDGComparison | 包含の可換式、指定導来捻りとの部分圏内の自然同型、H⁰ 関手の同値性 |
+| `diagramGaugeModuleUnrestrictParam`・`diagramGaugeModuleHomInv`・`diagramGaugeModuleHomIso` | DiagramGaugeModuleHomIso | Hom 重み付けの消去で豊穣自然性を復元し、指定全 Hom 写像の複体同型を構成 |
+| 全三段の dg 捻りの Hom 同型・`blowupTwistHomIso`・`blowupTwistDGFunctor_quasiEquivalence` | FiniteOverlapTwistDGQuasiEquivalence | 元の dg 模型上の整数捻りの準同値性 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -524,7 +526,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全3032定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3059定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -588,7 +590,11 @@ graph の直接の導来像との比較は独立した整合性命題として�
 この証明経路は KST v4 §3.1（pp.11–14）の幾何的な捻りを図式加群模型で再構成するもの。
 この自然同型は cartesian perfect 導来部分圏内へ持ち上がり、既存の模型比較と
 導来捻りの同値から、dg 捻りの H⁰ 関手が同値であることも証明済み。
-次の実装単位は dg 捻りの全次数 Hom 比較、および coherent な降下との比較。
+gauge 制限後の全次数自然変換から各 Hom の可逆な重み付けを消去し、
+制限前の豊穣自然性を復元する逆を構成済み。Hom end の普遍性と全頂点の評価で
+指定制限 Hom 写像の複体同型を証明済み。全図式・射影的・cartesian perfect の三段の
+dg 捻りに適用し、既存 cartesian perfect dg 模型上の整数捻りの準同値性を証明済み。
+次の実装単位は L5b の例外因子・重なりの同定、および coherent な降下との比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
