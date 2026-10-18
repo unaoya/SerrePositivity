@@ -3312,3 +3312,29 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathKanBoundaryNat
 #check @SerrePositivity.KST.SConstruction.pointedIteratedPathKanBoundary
 #print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathKanBoundary
+
+-- 最内側の可変次数と最後の零方向の座標比較
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex
+#check @SerrePositivity.KST.SConstruction.innerVariableSComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.innerVariableSComparisonIso
+#check @SerrePositivity.KST.SConstruction.innerVariableSMap_succ
+#print axioms SerrePositivity.KST.SConstruction.innerVariableSMap_succ
+#check @SerrePositivity.KST.SConstruction.innerVariableSComparisonIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.innerVariableSComparisonIso_naturality
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_obj_last
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_obj_last
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_obj_castSucc
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_obj_castSucc
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_map_last
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_map_last
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_map_castSucc
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_map_castSucc
+#check @SerrePositivity.KST.SConstruction.innerVariableSComparisonNatIso
+#print axioms SerrePositivity.KST.SConstruction.innerVariableSComparisonNatIso
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_obj_diagonal
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_obj_diagonal
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_obj_zero
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_obj_zero
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_zero_map
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_zero_map

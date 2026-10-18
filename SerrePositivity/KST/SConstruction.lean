@@ -113,4 +113,7 @@ public import SerrePositivity.KST.SConstruction.ReducedPathBoundary
 public import SerrePositivity.KST.SConstruction.PointedContractibility
 public import SerrePositivity.KST.SConstruction.PointedIteratedPath
 
+public import SerrePositivity.KST.SConstruction.InnerVariableCoordinates
+public import SerrePositivity.KST.SConstruction.InnerZeroDirectionCoordinates
+
 /-! # ∞-S• 構成と連結 K 理論 -/

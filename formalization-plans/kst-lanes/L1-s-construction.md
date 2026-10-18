@@ -4794,3 +4794,91 @@ def pointedIteratedPathKanBoundary (r : ℕ) (X : StableModel.{u}) :
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3085 jobs）、公理監査成功（1222 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.40 最内側の可変次数と最後の零方向の一致
+
+`InnerVariableCoordinates.lean` と `InnerZeroDirectionCoordinates.lean`。
+外側の多次数を固定し、最内側の次数を変数とする添字関手と S 自己関手の座標同型を構成した。
+零次数を含む全単体作用素について自然性を証明し、自然同型として束ねた。
+固定した外側の次数がすべて d のとき、最内側への d の代入は対角添字に一致し、
+零次数の代入は既存の最後の零方向の添字に一致する。
+零次数から d への作用素についても、両端の添字の等号による輸送を明示して、
+既存の `zeroDirectionsIndexNat {Fin.last r}` そのものと一致する式を証明した。
+
+前提：`r : ℕ`、`d : Fin r → SimplexCategoryᵒᵖ` または `d : SimplexCategoryᵒᵖ`。
+安定な入力の圏には既存の `StableModel.{u}` を使う。零次数からの作用素の一致に追加の仮定はない。
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory`、`open scoped Simplicial` の下での正確な公開型。
+
+```lean
+def innerVariableIndex (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ) :
+    SimplexCategoryᵒᵖ ⥤ (Fin (r + 1) → SimplexCategoryᵒᵖ)
+
+def innerVariableSComparisonIso (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ)
+    (k : SimplexCategoryᵒᵖ) :
+    sEndofunctor.{u} k.unop.len ⋙ (multiSEndofunctor r).obj d ≅
+      (multiSEndofunctor (r + 1)).obj ((innerVariableIndex r d).obj k)
+
+lemma innerVariableSMap_succ (r : ℕ) (d : Fin (r + 1) → SimplexCategoryᵒᵖ)
+    {k l : SimplexCategoryᵒᵖ} (f : k ⟶ l) :
+    (multiSEndofunctor.{u} (r + 2)).map ((innerVariableIndex (r + 1) d).map f) =
+      Functor.whiskerRight
+        ((multiSEndofunctor (r + 1)).map ((innerVariableIndex r (fun i => d i.succ)).map f))
+        (sEndofunctor (d 0).unop.len)
+
+lemma innerVariableSComparisonIso_naturality (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ)
+    {k l : SimplexCategoryᵒᵖ} (f : k ⟶ l) :
+    Functor.whiskerRight (simplicialStableEndofunctor.{u}.map f) ((multiSEndofunctor r).obj d) ≫
+        (innerVariableSComparisonIso r d l).hom =
+      (innerVariableSComparisonIso r d k).hom ≫
+        (multiSEndofunctor (r + 1)).map ((innerVariableIndex r d).map f)
+
+lemma innerVariableIndex_obj_last (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ)
+    (k : SimplexCategoryᵒᵖ) : (innerVariableIndex r d).obj k (Fin.last r) = k
+
+lemma innerVariableIndex_obj_castSucc (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ)
+    (k : SimplexCategoryᵒᵖ) (i : Fin r) :
+    (innerVariableIndex r d).obj k i.castSucc = d i
+
+lemma innerVariableIndex_map_last (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ)
+    {k l : SimplexCategoryᵒᵖ} (f : k ⟶ l) :
+    eqToHom (innerVariableIndex_obj_last r d k).symm ≫
+      ((innerVariableIndex r d).map f) (Fin.last r) ≫
+      eqToHom (innerVariableIndex_obj_last r d l) = f
+
+lemma innerVariableIndex_map_castSucc (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ)
+    {k l : SimplexCategoryᵒᵖ} (f : k ⟶ l) (i : Fin r) :
+    eqToHom (innerVariableIndex_obj_castSucc r d k i).symm ≫
+      ((innerVariableIndex r d).map f) i.castSucc ≫
+      eqToHom (innerVariableIndex_obj_castSucc r d l i) = 𝟙 (d i)
+
+def innerVariableSComparisonNatIso (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ) :
+    simplicialStableEndofunctor.{u} ⋙
+        (Functor.whiskeringRight StableModel.{u} StableModel.{u} StableModel.{u}).obj
+          ((multiSEndofunctor r).obj d) ≅
+      innerVariableIndex r d ⋙ multiSEndofunctor (r + 1)
+
+lemma innerVariableIndex_obj_diagonal (r : ℕ) (d : SimplexCategoryᵒᵖ) :
+    (innerVariableIndex r (fun _ => d)).obj d = fun _ => d
+
+lemma innerVariableIndex_obj_zero (r : ℕ) (d : SimplexCategoryᵒᵖ) :
+    (innerVariableIndex r (fun _ => d)).obj (Opposite.op ⦋0⦌) =
+      (zeroDirectionsIndex {Fin.last r}).obj (fun _ => d)
+
+lemma innerVariableIndex_zero_map (r : ℕ) (d : SimplexCategoryᵒᵖ) :
+    eqToHom (innerVariableIndex_obj_zero r d).symm ≫
+      (innerVariableIndex r (fun _ => d)).map
+        (SimplexCategory.const d.unop ⦋0⦌ 0).op ≫
+      eqToHom (innerVariableIndex_obj_diagonal r d) =
+        (zeroDirectionsIndexNat {Fin.last r}).app (fun _ => d)
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+可変の最内側の次数の座標比較と、最後の零方向の包含との厳密な一致まで証明済み。
+既存の全単体的な反復実現の座標同型との照合、およびこれによる全零境界商への点つき比較は未完了。
+homotopy fiber と loop の比較、既存の suspension 構造射との照合、正の段の Ω 条件・delooping、
+負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3087 jobs）、公理監査成功（1234 宣言、標準三公理のみ）。追加公理・sorry なし。
