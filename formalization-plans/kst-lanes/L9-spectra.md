@@ -15,6 +15,7 @@
 - 既存 Spectra は比較用に読むだけで編集しない。
 - 既存 Spectra の `PointedSimplicialSet.Basic` と `Pointed.InternalHom` の基礎定義を借りる。
 - この借用は Under による点つき対象と等化子による Hom のみで、安定モデル構造は含まない。
+- suspension・loop では既存 Spectra の円、smash、閉対称モノイダル構造の通常の圏論的構成も借りる。
 - 既存 HomotopicalAlgebra は読むだけで編集しない。
 - 既存 InfinityCategories は読むだけで編集しない。
 
@@ -22,7 +23,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・14 モジュール 688 宣言の公理監査成功。
+対象ビルド・17 モジュール 747 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -501,3 +502,40 @@ L9c 全体は未完了。次は切断スペクトルの Hom の塔を実装す�
 保存単位の対象ビルド 1524 jobs 成功。
 私有宣言を含む 14 モジュール 688 宣言で標準三公理のみ。
 次は suspension・loop の随伴と、実際のスペクトルからの境界比較射を実装する。
+
+## 22. L9c の Ω スペクトルの対象と具体的写像空間
+
+`SuspensionLoop.lean` に円との smash、円からの内部 Hom と随伴を接続した。
+`HomotopyIsomorphism.lean` に全基点での π_* 同型を全単射性の述語として定義した。
+この述語は既に構成したホモトピー群の誘導写像に関する条件である。
+`OmegaSpectrum.lean` の対象は、各段 Kan・構造射単射・随伴構造射 π_* 同型を保持する。
+構造射から具体的な `mappingStep` を構成し、切断写像空間の一般構成に代入した。
+この写像空間の Kan 性まで証明済み。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `suspension` | 単体的円との reduced smash |
+| `loopSpace` | 単体的円からの点つき内部 Hom |
+| `loopSpace_kanComplex` | Kan な標的の loop は Kan |
+| `suspensionLoopEquiv` | suspension・loop の通常の Hom 随伴 |
+| `suspensionHom` | suspension が誘導する写像空間の射 |
+| `suspensionHom_curry'` | 通常の射への suspension の作用との一致 |
+| `KanPiIsomorphism` | 全基点・全自然数次数の π_* 同型という条件 |
+| `KanPiIsomorphism.id` / `.comp` | 恒等・合成に関する閉性 |
+| `PointedKanComplex` | 点つき Kan 複体 |
+| `OmegaSpectrum` | 承認済み BF 方式の対象 |
+| `OmegaSpectrum.mappingStep` | 実際の構造射からの境界比較 |
+| `OmegaSpectrum.truncatedHom` | 切断写像空間 |
+| `OmegaSpectrum.mappingSpace` | 全切断の整合族 |
+| `OmegaSpectrum.mappingSpace_kanComplex` | 構成した写像空間の Kan 性 |
+| `TruncatedMapping.totalEvaluation_condition` | 各段の評価の厳密な境界整合性 |
+
+参照：BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 1556 jobs 成功。
+私有宣言を含む 17 モジュール 747 宣言で標準三公理のみ。
+既存 Spectra の通常の圏論的な円・smash・内部 Hom の構成を借りている。
+安定モデル構造や HT-KQ は import していない。
+未完了：厳密なスペクトルの射との同定、厳密合成、単体的圏、coherent nerve。
+未完了：loop のホモトピー群の次数移動、整数次数 π_*、段の選択独立性。
+未完了：置換補題、スペクトルの fiber 列と長完全列、L9d・L9e。
+次は構成した写像空間の各段評価と通常の点つき射との比較を証明する。

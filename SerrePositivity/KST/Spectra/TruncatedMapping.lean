@@ -94,6 +94,27 @@ theorem total_projection_fibration [∀ n, Mono (i n).right] [∀ n, KanComplex 
     restriction_fibration X Y A i step n
   exact FibrationTower.projection_zero_fibration _ _
 
+/-- 概要：整合写像の指定段での評価。
+方針：切断への射影とその最終段の評価を合成する。
+規約：単体集合の全次数での評価。
+使われ方：BF 1978 §2。整合写像と段ごとの可換条件との比較。 -/
+def totalEvaluation (n : ℕ) : total X Y A i step ⟶
+    (PointedObject.basedHom (X n) (Y n)).right :=
+  FibrationTower.projection _ _ n ≫ evaluation X Y A i step n
+
+/-- 概要：整合写像の各段への評価は境界条件を満たす。
+方針：引き戻しの可換条件と塔の整合条件を合成する。
+規約：ホモトピーを介さない厳密な等式。
+使われ方：BF 1978 §2、HTT A.3.3。スペクトルの射との照合。 -/
+@[reassoc]
+theorem totalEvaluation_condition (n : ℕ) :
+    totalEvaluation X Y A i step (n + 1) ≫ PointedMapping.pre (i n) (Y (n + 1)) =
+      totalEvaluation X Y A i step n ≫ step n := by
+  dsimp only [totalEvaluation]
+  rw [Category.assoc, evaluation_condition, ← Category.assoc,
+    FibrationTower.projection_comp]
+  rfl
+
 /-- 概要：単射構造を持つ源と段ごとに Kan な標的の整合写像空間は Kan。
 方針：初段の点つき Hom の Kan 性と fibration の塔の補題を使う。
 規約：この段階では step を具体的なスペクトルから構成したとは主張しない。
