@@ -237,6 +237,15 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 元の右辺に進む二経路となる。`unitCommaCoherentComparisonTriangle` はこの二つの指定経路と
 合成経路を持つ二単体であり、`unitCommaMappingComparisonHomotopy` はこの合成を使う。
 元の正方形を入力にした順方向比較の構成は接続済みだが、二つの合成のホモトピーは未証明。
+`functorSquareOfCompositionTriangle_eq_fold` は正方形への補完を具体的な畳み込みとして表示する。
+`FunctorCompositionTriangle.squareRelativeHomotopy` は相対三角形比較を正方形全体へ移し、
+下辺・左辺・上辺を固定し、右辺は対角の比較そのものに一致する。
+`FunctorCompositionSquare.normalizationHomotopy` は上側を補完した正方形から元の正方形へ戻す
+具体的な変形で、同じ三辺を固定し、右辺は元の下側の二単体の `rightHomotopySquare` への制限。
+`unitCommaUpperSquareDeformation/LowerSquareDeformation` により、基準正方形から元の comma 正方形へ
+進む二段階の変形を得た。中間図式は厳密に一致する。**三辺を固定した両段階の合成、既存の
+下側の相対比較から選んだ path と今回の具体的な下側 path の照合、復元側の輸送との比較は未完了。**
+二つの下側 path は同じ端点を持つだけでは同一視できず、この照合を省いて逆関係を主張しない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -245,8 +254,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2038 jobs）・公理監査（1000 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 370 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2042 jobs）・公理監査（1044 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 374 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -425,3 +434,8 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `functorHomotopyComposite`・`functorHomotopyCompositeTriangle` | 指定した二つのホモトピーの合成と同じ二辺を持つ二単体 | 実装済み |
 | `unitCommaCompositionSquare`・`unitCommaCompositionDiagonalFamily` と `_homotopy` | 元の comma 正方形の四辺の認識・共通対角の族 | 実装済み |
 | `unitCommaCompositionUpperFamilyPath/LowerFamilyPath`・`unitCommaCoherentComparisonHomotopy/Triangle` | 元の上下の二単体を二辺固定で比較した経路とその合成、既存順方向比較に使用 | 実装済み（逆関係は未証明） |
+| `squareUpperFold` と二単体・四辺の制限公式 | 上側への具体的 retraction、下側は対角辺の恒等合成 | 実装済み |
+| `functorSquareOfCompositionTriangle_eq_fold` | 正方形への補完を畳み込みによる前合成と厳密に同一視 | 実装済み |
+| `FunctorCompositionSquare.normalizationHomotopy` と四辺の公式 | 補完した上側から元の正方形へ戻す変形、三辺固定・右辺は元の下側二単体由来 | 実装済み |
+| `FunctorCompositionTriangle.squareRelativeHomotopy` と四辺の公式 | 相対三角形比較を正方形全体へ移す、三辺固定・右辺は元の対角比較 | 実装済み |
+| `unitCommaUpperSquareDeformation/LowerSquareDeformation` と右辺の公式 | 基準正方形から元の comma 正方形へ進む、中間図式が厳密に一致する二段階の変形 | 実装済み（合成・既存 path との照合は未証明） |
