@@ -155,4 +155,11 @@ public import SerrePositivity.KST.SConstruction.STwoCofiberRestriction
 public import SerrePositivity.KST.SConstruction.STwoCofiberLifting
 public import SerrePositivity.KST.SConstruction.STwoCofiberModel
 
+public import SerrePositivity.KST.SConstruction.VariableTimeHomotopy
+public import SerrePositivity.KST.SConstruction.VariableTimeEquivalence
+public import SerrePositivity.KST.SConstruction.ObjectSVertices
+public import SerrePositivity.KST.SConstruction.ArTimeCoordinates
+public import SerrePositivity.KST.SConstruction.ObjectSHomotopy
+public import SerrePositivity.KST.SConstruction.ObjectSTrivialFibration
+
 /-! # ∞-S• 構成と連結 K 理論 -/

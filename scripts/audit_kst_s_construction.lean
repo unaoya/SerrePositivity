@@ -3701,3 +3701,78 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.sTwoCofiberEquivalence
 #check @SerrePositivity.KST.SConstruction.sTwoCofiberComparison_realization_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.sTwoCofiberComparison_realization_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.intervalMinOrder
+#print axioms SerrePositivity.KST.SConstruction.intervalMinOrder
+#check @SerrePositivity.KST.SConstruction.intervalMin
+#print axioms SerrePositivity.KST.SConstruction.intervalMin
+#check @SerrePositivity.KST.SConstruction.intervalMin_app_zero
+#print axioms SerrePositivity.KST.SConstruction.intervalMin_app_zero
+#check @SerrePositivity.KST.SConstruction.intervalMin_app_one
+#print axioms SerrePositivity.KST.SConstruction.intervalMin_app_one
+#check @SerrePositivity.KST.SConstruction.variableTimeShape
+#print axioms SerrePositivity.KST.SConstruction.variableTimeShape
+#check @SerrePositivity.KST.SConstruction.variableTimeShape_zero
+#print axioms SerrePositivity.KST.SConstruction.variableTimeShape_zero
+#check @SerrePositivity.KST.SConstruction.variableTimeShape_one
+#print axioms SerrePositivity.KST.SConstruction.variableTimeShape_one
+#check @SerrePositivity.KST.SConstruction.variableTimeImage
+#print axioms SerrePositivity.KST.SConstruction.variableTimeImage
+#check @SerrePositivity.KST.SConstruction.variableTimeImage_pre
+#print axioms SerrePositivity.KST.SConstruction.variableTimeImage_pre
+#check @SerrePositivity.KST.SConstruction.variableTimeImage_zero
+#print axioms SerrePositivity.KST.SConstruction.variableTimeImage_zero
+#check @SerrePositivity.KST.SConstruction.variableTimeImage_one
+#print axioms SerrePositivity.KST.SConstruction.variableTimeImage_one
+#check @SerrePositivity.KST.SConstruction.variableTimeHomotopy
+#print axioms SerrePositivity.KST.SConstruction.variableTimeHomotopy
+#check @SerrePositivity.KST.SConstruction.variableTimeHomotopy_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.variableTimeHomotopy_isInvertible
+#check @SerrePositivity.KST.SConstruction.variableTimeImageIso
+#print axioms SerrePositivity.KST.SConstruction.variableTimeImageIso
+#check @SerrePositivity.KST.SConstruction.IsGapped.variableTimeImage
+#print axioms SerrePositivity.KST.SConstruction.IsGapped.variableTimeImage
+#check @SerrePositivity.KST.SConstruction.gappedObjectVertex
+#print axioms SerrePositivity.KST.SConstruction.gappedObjectVertex
+#check @SerrePositivity.KST.SConstruction.gappedDiagram_gappedObjectVertex
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram_gappedObjectVertex
+#check @SerrePositivity.KST.SConstruction.gappedDiagram_injective
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram_injective
+#check @SerrePositivity.KST.SConstruction.gappedDiagram_sMap
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram_sMap
+#check @SerrePositivity.KST.SConstruction.gappedDiagram_objectS_map
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram_objectS_map
+#check @SerrePositivity.KST.SConstruction.gappedDiagram_sPostcompCofiber
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram_sPostcompCofiber
+#check @SerrePositivity.KST.SConstruction.gappedDiagram_objectSFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram_objectSFunctor_map
+#check @SerrePositivity.KST.SConstruction.arFirstEndpointOrder
+#print axioms SerrePositivity.KST.SConstruction.arFirstEndpointOrder
+#check @SerrePositivity.KST.SConstruction.arFirstEndpoint
+#print axioms SerrePositivity.KST.SConstruction.arFirstEndpoint
+#check @SerrePositivity.KST.SConstruction.arTimeCoordinate
+#print axioms SerrePositivity.KST.SConstruction.arTimeCoordinate
+#check @SerrePositivity.KST.SConstruction.arTimeCoordinate_naturality
+#print axioms SerrePositivity.KST.SConstruction.arTimeCoordinate_naturality
+#check @SerrePositivity.KST.SConstruction.arTimeCoordinate_constant
+#print axioms SerrePositivity.KST.SConstruction.arTimeCoordinate_constant
+#check @SerrePositivity.KST.SConstruction.objectSHomotopyVertex
+#print axioms SerrePositivity.KST.SConstruction.objectSHomotopyVertex
+#check @SerrePositivity.KST.SConstruction.objectSHomotopyVertex_diagram
+#print axioms SerrePositivity.KST.SConstruction.objectSHomotopyVertex_diagram
+#check @SerrePositivity.KST.SConstruction.objectSHomotopyMap
+#print axioms SerrePositivity.KST.SConstruction.objectSHomotopyMap
+#check @SerrePositivity.KST.SConstruction.objectSHomotopy
+#print axioms SerrePositivity.KST.SConstruction.objectSHomotopy
+#check @SerrePositivity.KST.SConstruction.objectSHomotopyOfFunctorIso
+#print axioms SerrePositivity.KST.SConstruction.objectSHomotopyOfFunctorIso
+#check @SerrePositivity.KST.SConstruction.preservesSConstructionData_section_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.preservesSConstructionData_section_of_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.objectS_map_isSimplicialHomotopyEquivalence_of_inverse
+#print axioms SerrePositivity.KST.SConstruction.objectS_map_isSimplicialHomotopyEquivalence_of_inverse
+#check @SerrePositivity.KST.SConstruction.objectS_map_isSimplicialHomotopyEquivalence_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.objectS_map_isSimplicialHomotopyEquivalence_of_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.objectS_map_localized_isIso_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.objectS_map_localized_isIso_of_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.sTwoCofiberComparison_objectS_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.sTwoCofiberComparison_objectS_localized_isIso

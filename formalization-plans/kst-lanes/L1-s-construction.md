@@ -5905,3 +5905,196 @@ McCarthy の具体的な単体ホモトピー、単体積 Quillen A、object/cor
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3177 jobs）、公理監査成功（1409 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.50 自然同値による object S の実ホモトピー・自明ファイブレーションの像の弱同値
+
+Fiore–Pieper Proposition 4.27 の object/core 比較で必要となる、
+完全関手の自然同値による object S のホモトピーを構成した。
+区間の n 単体から Ar[n] の区間の左端で読む時刻 `arTimeCoordinate` を作り、
+自然変換をその可変時刻に評価した図式を object S の n 単体にする。
+可変時刻の図式と元の始点の図式の間には、二つの時刻の min による prism がある。
+指定時刻の頂点が零ならその成分は恒等辺、一なら元の自然変換の辺になるため、
+元の自然変換が点ごとに可逆なら関手同型となる。gapped 性はこの同型で輸送した。
+
+この構成の面・退化の自然性と両端を厳密に確認し、元の既存の
+`objectSConstructionFunctor.map f` と `.map g` の間の実際の `SSet.Homotopy` を得た。
+特に関手同型 `FunctorIso f.val g.val` だけから点ごとの可逆性を供給する公開構成
+`objectSHomotopyOfFunctorIso` を実装した。元の object S を別模型へ置換していない。
+任意の可逆でない自然変換によるホモトピーは主張しない。
+
+さらに安定な入力間の trivial Kan fibration に対し、厳密な切断を選び、
+その切断の零対象・任意の押し出しの保存を射影の反映から証明した。
+二つの合成と恒等関手の関手同型から object S の二つの実ホモトピーを構成し、
+object S の射が単体ホモトピー同値であることを証明した。
+その像が anodyne 局所化で同型であることも、実ホモトピーを等号に送って逆を作ることで証明した。
+object S の Kan 性や object/core 比較の弱同値性は仮定にしていない。
+§6.49 の S₂ と全 cofiber 正方形の比較が object S の後も弱同値になることへ適用済み。
+
+追加ファイル：`VariableTimeHomotopy.lean`、`VariableTimeEquivalence.lean`、
+`ObjectSVertices.lean`、`ArTimeCoordinates.lean`、`ObjectSHomotopy.lean`、`ObjectSTrivialFibration.lean`。
+以下は namespace `SerrePositivity.KST.SConstruction` 内の公開宣言の正確な型。
+可変時刻の同型では標的の quasicategory 性と点ごとの可逆性を明示している。
+object S の関手の射についての結論では `StableModel` の既存の完全関手を使う。
+
+```lean
+def intervalMinOrder : ULift.{u} (Fin 2 × Fin 2) →o ULift.{u} (Fin 2)
+
+def intervalMin : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ Δ[1]
+
+lemma intervalMin_app_zero {n : ℕ} (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
+    intervalMin.app (Opposite.op ⦋n⦌)
+        (s, PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n) =
+      PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n
+
+lemma intervalMin_app_one {n : ℕ} (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
+    intervalMin.app (Opposite.op ⦋n⦌)
+      (s, PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n) = s
+
+def variableTimeShape {A : SSet.{u}} (τ : A ⟶ (Δ[1] : SSet.{u})) : A ⊗ Δ[1] ⟶ A ⊗ Δ[1]
+
+lemma variableTimeShape_zero {A : SSet.{u}} (τ : A ⟶ (Δ[1] : SSet.{u})) :
+    SSet.ι₀ ≫ variableTimeShape τ = (SSet.ι₀ : A ⟶ A ⊗ Δ[1])
+
+lemma variableTimeShape_one {A : SSet.{u}} (τ : A ⟶ (Δ[1] : SSet.{u})) :
+    SSet.ι₁ ≫ variableTimeShape τ = lift (𝟙 A) τ
+
+def variableTimeImage {A C D : SSet.{u}} {f g : C ⟶ D} (H : SSet.Homotopy f g)
+    (F : A ⟶ C) (τ : A ⟶ (Δ[1] : SSet.{u})) : A ⟶ D
+
+lemma variableTimeImage_pre {A B C D : SSet.{u}} {f g : C ⟶ D} (H : SSet.Homotopy f g)
+    (F : A ⟶ C) (τ : A ⟶ (Δ[1] : SSet.{u})) (i : B ⟶ A) :
+    i ≫ variableTimeImage H F τ = variableTimeImage H (i ≫ F) (i ≫ τ)
+
+lemma variableTimeImage_zero {A C D : SSet.{u}} {f g : C ⟶ D} (H : SSet.Homotopy f g)
+    (F : A ⟶ C) :
+    variableTimeImage H F (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) = F ≫ f
+
+lemma variableTimeImage_one {A C D : SSet.{u}} {f g : C ⟶ D} (H : SSet.Homotopy f g)
+    (F : A ⟶ C) :
+    variableTimeImage H F (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = F ≫ g
+
+def variableTimeHomotopy {A C D : SSet.{u}} {f g : C ⟶ D} (H : SSet.Homotopy f g)
+    (F : A ⟶ C) (τ : A ⟶ (Δ[1] : SSet.{u})) :
+    SSet.Homotopy (F ≫ f) (variableTimeImage H F τ)
+
+lemma variableTimeHomotopy_isInvertible {A C D : SSet.{u}} [Quasicategory D]
+    {f g : C ⟶ D} (H : SSet.Homotopy f g)
+    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated)
+    (F : A ⟶ C) (τ : A ⟶ (Δ[1] : SSet.{u})) (a : A _⦋0⦌) :
+    IsInvertibleEdge (simplicialHomotopyVertexEdge (variableTimeHomotopy H F τ) a).toTruncated
+
+def variableTimeImageIso {A C D : SSet.{u}} [Quasicategory D] {f g : C ⟶ D}
+    (H : SSet.Homotopy f g)
+    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated)
+    (F : A ⟶ C) (τ : A ⟶ (Δ[1] : SSet.{u})) :
+    FunctorIso (F ≫ f) (variableTimeImage H F τ)
+
+lemma IsGapped.variableTimeImage {C D : SSet.{u}} [Quasicategory D] {f g : C ⟶ D}
+    (H : SSet.Homotopy f g)
+    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated)
+    (hf : PreservesCofiberData f) {n : ℕ} {F : arNerve n ⟶ C} (hF : IsGapped F)
+    (τ : arNerve n ⟶ (Δ[1] : SSet.{u})) : IsGapped (variableTimeImage H F τ)
+
+def gappedObjectVertex {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) (hF : IsGapped F) :
+    (sConstruction n C) _⦋0⦌
+
+lemma gappedDiagram_gappedObjectVertex {n : ℕ} {C : SSet.{u}}
+    (F : arNerve n ⟶ C) (hF : IsGapped F) : gappedDiagram (gappedObjectVertex F hF) = F
+
+lemma gappedDiagram_injective {n : ℕ} {C : SSet.{u}} :
+    Function.Injective (@gappedDiagram n C)
+
+lemma gappedDiagram_sMap {m n : ℕ} {C : SSet.{u}} (θ : Fin (m + 1) →o Fin (n + 1))
+    (v : (sConstruction n C) _⦋0⦌) :
+    gappedDiagram ((sMap C θ).app (Opposite.op ⦋0⦌) v) = arNerveMap θ ≫ gappedDiagram v
+
+lemma gappedDiagram_objectS_map {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ} (α : n ⟶ m)
+    (v : (objectSConstruction C).obj n) :
+    gappedDiagram ((objectSConstruction C).map α v) =
+      arNerveMap α.unop.toOrderHom ≫ gappedDiagram v
+
+lemma gappedDiagram_sPostcompCofiber {n : ℕ} {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) (v : (sConstruction n C) _⦋0⦌) :
+    gappedDiagram ((sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌) v) = gappedDiagram v ≫ f
+
+lemma gappedDiagram_objectSFunctor_map {X Y : StableModel.{u}} (f : X ⟶ Y)
+    (n : SimplexCategoryᵒᵖ) (v : (objectSConstruction X.carrier).obj n) :
+    gappedDiagram ((objectSConstructionFunctor.map f).app n v) = gappedDiagram v ≫ f.val
+
+def arFirstEndpointOrder (n : ℕ) : Ar.{u} n →o ULift.{u} (Fin (n + 1))
+
+def arFirstEndpoint (n : ℕ) : arNerve.{u} n ⟶ Δ[n]
+
+def arTimeCoordinate {n : ℕ} (s : (Δ[1] : SSet.{u}) _⦋n⦌) : arNerve.{u} n ⟶ Δ[1]
+
+lemma arTimeCoordinate_naturality {n m : SimplexCategoryᵒᵖ} (α : n ⟶ m)
+    (s : (Δ[1] : SSet.{u}).obj n) :
+    arNerveMap α.unop.toOrderHom ≫ arTimeCoordinate s = arTimeCoordinate ((Δ[1]).map α s)
+
+lemma arTimeCoordinate_constant (n : ℕ) (i : Fin 2) :
+    arTimeCoordinate (PinchedHom.constant (stdSimplex.obj₀Equiv.symm i) n) =
+      (SSet.const (stdSimplex.obj₀Equiv.symm i) : arNerve.{u} n ⟶ Δ[1])
+
+def objectSHomotopyVertex {X Y : StableModel.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f.val g.val)
+    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated)
+    {n : ℕ} (v : (sConstruction n X.carrier) _⦋0⦌) (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
+    (sConstruction n Y.carrier) _⦋0⦌
+
+lemma objectSHomotopyVertex_diagram {X Y : StableModel.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f.val g.val)
+    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated)
+    {n : ℕ} (v : (sConstruction n X.carrier) _⦋0⦌) (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
+    gappedDiagram (objectSHomotopyVertex H hH v s) =
+      variableTimeImage H (gappedDiagram v) (arTimeCoordinate s)
+
+def objectSHomotopyMap {X Y : StableModel.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f.val g.val)
+    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated) :
+    objectSConstruction X.carrier ⊗ Δ[1] ⟶ objectSConstruction Y.carrier
+
+def objectSHomotopy {X Y : StableModel.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f.val g.val)
+    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated) :
+    SSet.Homotopy (objectSConstructionFunctor.map f) (objectSConstructionFunctor.map g)
+
+def objectSHomotopyOfFunctorIso {X Y : StableModel.{u}} {f g : X ⟶ Y}
+    (e : FunctorIso f.val g.val) :
+    SSet.Homotopy (objectSConstructionFunctor.map f) (objectSConstructionFunctor.map g)
+
+lemma preservesSConstructionData_section_of_trivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p]
+    (s : B ⟶ E) (hs : s ≫ p = 𝟙 _) : PreservesSConstructionData s
+
+lemma objectS_map_isSimplicialHomotopyEquivalence_of_inverse {X Y : StableModel.{u}}
+    (p : X ⟶ Y) (s : Y ⟶ X) (h₀ : FunctorIso (p.val ≫ s.val) (𝟙 X.carrier))
+    (h₁ : FunctorIso (s.val ≫ p.val) (𝟙 Y.carrier)) :
+    IsSimplicialHomotopyEquivalence (objectSConstructionFunctor.map p)
+
+lemma objectS_map_isSimplicialHomotopyEquivalence_of_trivialKanFibration
+    {X Y : StableModel.{u}} (p : X ⟶ Y) [TrivialKanFibration p.val] :
+    IsSimplicialHomotopyEquivalence (objectSConstructionFunctor.map p)
+
+lemma objectS_map_localized_isIso_of_trivialKanFibration {X Y : StableModel.{u}}
+    (p : X ⟶ Y) [TrivialKanFibration p.val] :
+    IsIso (AnodyneHomotopy.anodyneQ.map (objectSConstructionFunctor.map p))
+
+lemma sTwoCofiberComparison_objectS_localized_isIso (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map
+      (objectSConstructionFunctor.map (sTwoCofiberComparison X)))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+object S の自然同値による実ホモトピー、および trivial Kan fibration の object S の像の弱同値まで証明済み。
+object/core 比較の次の段階は、全ての辺が同値の図式の圏 D(m,w) を用意し、
+時刻零への評価の trivial Kan fibration と、内部 Hom の交換による core S の各行との比較を証明する。
+定数図式の包含の自然性と、今回の object S の弱同値の保存を合わせて、対角比較に接続する。
+この D(m,w) の構成・評価の充填性・core S との比較はまだ未証明であり、
+元の `objectToCoreSRealization` の弱同値性を完成扱いしない。
+McCarthy の具体的な単体ホモトピー、単体積 Quillen A、object/core 比較と加法性比較の弱同値性、
+面のホモトピー引き戻し条件は未完了。
+反復 S 実現と §6.43 の homotopy fiber の比較、既存の構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3183 jobs）、公理監査成功（1446 宣言、標準三公理のみ）。追加公理・sorry なし。
