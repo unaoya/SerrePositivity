@@ -262,7 +262,19 @@ Moss Definition 25 の r_n^k は、まず通常の codegeneracy σ^k による�
 元の集合が頂点 k+1 を含む場合だけ初期区間 [0,k] を加える作用素として実装する。
 これは原典の singleton 上の式の join による延長である。
 Lemma 26 の式 (1) は、δ^{k+1} の像が k+1 を含まず、σ^k∘δ^{k+1}=id となることから示す。
-他の面・退化との式 (2)–(9)、pairing の全単射・非退化性・正則性は別に証明する。
+他の面・退化との式、pairing の全単射・非退化性・正則性は別に証明する。
+Lemma 26 (5) は、閾値を超える最大元の像を後の作用素が初期区間へ送る吸収則で示す。
+Lemma 27 の一意性は、次の形で単体ごとの写像として証明する。
+Ex(X)_n の単体 σ を、最小の複雑度 k で r_n^k に前合成した (n+1)-単体へ送る。
+式 (4) からその像の複雑度は k 以下であり、式 (5) から任意の面の複雑度も k 以下となる。
+指定した面は式 (1) で σ に戻るので、異なる表示の最小閾値は互いに以下で一致する。
+同じ指定面を取って元の単体も一致し、この単体ごとの対応は単射となる。
+この段階では対応先の非退化性と型 II の条件を主張しない。
+Lemma 26 (7) では、先に未切断の強い式 r_n^k∘r_{n+1}^k=r_n^k∘sd(σ^{k+1}) を検証する。
+singleton では頂点 k+1 と k+2 が初期区間 [0,k] に送られ、他の頂点では通常の
+退化の恒等式に帰着する。和集合保存により任意の有限鎖へ拡張する。
+原典の式 (7) はこの等式に j_n^k を後合成して得る。
+証明後、最小閾値での拡張を二度行うと退化単体となることを示し、Lemma 28 へ接続する。
 原典の対応は Moss 2020 §3 Theorem 22、Corollary 30、Proposition 31・32 とする。
 ここに原典を書いたことを、これらの Lean 証明が存在することとは扱わない。
 Segal の位相的 fat realization の証明から、この組合せ的な補助構成を経る点を区別する。
@@ -403,7 +415,10 @@ Moss Definition 23 の作用素と合成則・冪等性・両端の式、Notatio
 Moss Definition 25 の r_n^k と、Lemma 26 (1) の指定した面との合成が恒等となる式を証明した。
 和集合保存による singleton 上の比較原理、作用素の和集合保存と初期区間の像を証明した。
 Lemma 26 (4) の拡張退化と複雑度の交換、(6) の小さい複雑度での通常の退化との一致を証明した。
-Lemma 26 (2)・(3)・(5)・(7)–(9)、pairing の全単射・非退化性・正則性は未証明。
+Lemma 26 (5) の面と複雑度の吸収則を証明した。
+最小の複雑度で次元を上げる exPairingStep と指定面による復元、単射性（Lemma 27）を証明した。
+exPairingStep が最小の複雑度を保つこと、元の X の像に入る条件の同値も証明した。
+Lemma 26 (2)・(3)・(7)–(9)、pairing の全単射・非退化性・正則性は未証明。
 Ex∞ の Kan 性・単位の anodyne 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -411,8 +426,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 368 宣言の型と公理を確認した。
-さらに名前空間全体の 804 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 380 宣言の型と公理を確認した。
+さらに名前空間全体の 817 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -486,6 +501,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `finiteChainUnion_ext`、`finiteChainCut_preservesUnion`、`finiteChainDegeneracy_preservesUnion` | 実装済み | Moss Lemma 26 の singleton 上の比較原理とその前提 |
 | `finiteChainDegeneracy_initialSegment` | 実装済み | 拡張退化の初期区間上の式 |
 | `subdivisionDegeneracyAt_cut`、`subdivisionDegeneracyAt_cut_lt` | 実装済み | Moss Lemma 26 (4)・(6) の交換則 |
+| `subdivisionCutAt_face_absorb` | 実装済み | Moss Lemma 26 (5) の面と複雑度の吸収則 |
+| `exExpansion_face`、`exComplexity_face` | 実装済み | 指定した面の復元と面の複雑度の上界 |
+| `exPairingStep_injective` | 実装済み | Moss Lemma 27 の対応先の一意性 |
+| `exPairingStep_complexityLevel`、`exPairingStep_mem_image_iff` | 実装済み | 拡張前後の最小閾値と元の部分対象の制御 |
 | Ex∞ の Kan 性と単位の anodyne 性 | 未証明 | Moss 2020 Proposition 21、Theorem 22、Corollary 30 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

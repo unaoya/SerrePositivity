@@ -48,6 +48,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -322,6 +323,36 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exInfinityUnit
 #print axioms SerrePositivity.KST.Comparison.exInfinityUnit
+
+
+-- ExPairingStep.lean
+
+#check @SerrePositivity.KST.Comparison.exExpansion
+#print axioms SerrePositivity.KST.Comparison.exExpansion
+
+#check @SerrePositivity.KST.Comparison.exExpansion_face
+#print axioms SerrePositivity.KST.Comparison.exExpansion_face
+
+#check @SerrePositivity.KST.Comparison.exExpansion_complexity
+#print axioms SerrePositivity.KST.Comparison.exExpansion_complexity
+
+#check @SerrePositivity.KST.Comparison.exComplexity_face
+#print axioms SerrePositivity.KST.Comparison.exComplexity_face
+
+#check @SerrePositivity.KST.Comparison.exPairingStep
+#print axioms SerrePositivity.KST.Comparison.exPairingStep
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_injective
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_injective
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_complexity_iff
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_complexity_iff
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_complexityLevel
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_complexityLevel
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_mem_image_iff
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_mem_image_iff
 
 
 -- ExUnit.lean
@@ -1240,6 +1271,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face
 #print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face
+
+
+-- SubdivisionFaceCut.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_map_absorb
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_map_absorb
+
+#check @SerrePositivity.KST.Comparison.liftedFace_above
+#print axioms SerrePositivity.KST.Comparison.liftedFace_above
+
+#check @SerrePositivity.KST.Comparison.subdivisionCutAt_face_absorb
+#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_face_absorb
 
 
 -- SubdivisionIntervals.lean
