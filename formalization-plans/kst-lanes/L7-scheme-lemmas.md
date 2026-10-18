@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1414 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1420 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -711,6 +711,21 @@ N × F は平坦なので自由な定義域の場合を使える。g の単射�
 自由な定義域・実際の分裂部分加群・任意の射影的な定義域の三つの文言を
 `ResidueTensorInjectivity.lean` で証明済み。
 
+次の特殊化では A を局所環、κ をその剰余体とし、κ ⊗_A B が整域とする。
+B の実際の分裂表示の下で、1 ⊗ s ≠ 0 なら s は B 上の非零因子。
+s による乗法の剰余体への基底変更は 1 ⊗ s による乗法に等しく、
+整域での単射性を既証の分裂による判定で持ち上げる。
+κ ⊗_A B への b ↦ 1 ⊗ b の核は m_A B なので、s ∉ m_A B なら仮定を満たす。
+これにより m_A B が素の場合に、B → B_(m_A B) の実際の局所化写像が単射となる。
+ここでも一般の普遍単射性は主張しない。幾何学的整性からの閉ファイバーの整域性は別に接続する。
+この正則性と局所化単射性を `SplitAlgebraFiberRegularity.lean` で証明済み。
+幾何学的整性は任意の体 K への基底変更後にも保たれるので、
+Spec(K ⊗_A B) の整性から実際のテンソル積環の整域性を得る。
+K = κ(A) として上記の閉ファイバーの入力を充足する。
+Noether 局所環・平坦有限表示・幾何学的整な代数での拡大素点の素性は既証の補題を使い、
+実際の分裂表示の下での特別な局所化の単射性を結論する。
+上記の幾何学的整性との接続も `GeometricallyIntegralFiberRegularity.lean` で証明済み。
+
 #### 選んだ有限表示の任意の基底変更
 
 原典：Stacks 0810, Lemma 38.30.2 の小行列式の基底変更の利用。
@@ -890,6 +905,12 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | `injective_of_residueTensor_injective_of_free` | 自由な定義域の剰余体による単射性判定 | 証明済み |
 | `injective_of_residueTensor_injective_of_retract` | 実分裂を持つ定義域の単射性判定 | 証明済み |
 | `injective_of_residueTensor_injective_of_projective` | 任意の射影的な定義域の単射性判定 | 証明済み |
+| `splitAlgebra_isRegular_of_residue_tmul_ne_zero` | 閉ファイバーで非零な元の正則性 | 証明済み |
+| `splitAlgebra_isRegular_of_not_mem_extended_maximalIdeal` | 拡大極大イデアルの外の元の正則性 | 証明済み |
+| `splitAlgebra_extendedMaximalLocalization_injective` | 特別な局所化への単射性 | 証明済み |
+| `isDomain_tensor_of_geometricallyIntegral` | 任意の体へのテンソル基底変更環の整域性 | 証明済み |
+| `geometricallyIntegral_split_isRegular_of_not_mem_extended_maximalIdeal` | 幾何学的整性による分母の正則性 | 証明済み |
+| `geometricallyIntegral_split_extendedMaximalLocalization_injective` | 幾何学的整な分裂代数の特別な局所化への単射性 | 証明済み |
 
 以下は予定名であり、実装済みでないものを `#check` 済みとは扱わない。
 
