@@ -7179,5 +7179,13 @@ lemma join_initialHorn_hom_ext_of_initial_vertex_joinMap {X X' Y : SSet.{u}} (n 
         horn.ι (0 : Fin (n + 3)) (Fin.last (n + 2)) (by simp)) ≫ b)
     (hf : a ≫ joinMap f (𝟙 Y) = b ≫ joinMap f (𝟙 Y)) : a = b
 
+lemma joinMap_right_id_initialHorn_hasLift_of_cut_one {X X' Y : SSet.{u}} (n : ℕ)
+    (f : X ⟶ X') (a : (horn (n + 2) 0 : SSet.{u}) ⟶ join X Y)
+    (b : (Δ[n + 2] : SSet.{u}) ⟶ join X' Y)
+    (hsq : (horn (n + 2) 0).ι ≫ b = a ≫ joinMap f (𝟙 Y))
+    (hb : (SSet.yonedaEquiv b).1.val = 1) :
+    ∃ l : (Δ[n + 2] : SSet.{u}) ⟶ join X Y,
+      (horn (n + 2) 0).ι ≫ l = a ∧ l ≫ joinMap f (𝟙 Y) = b
+
 end SerrePositivity.InfinityCategories
 ```

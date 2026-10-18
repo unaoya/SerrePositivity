@@ -331,3 +331,4 @@ public import SerrePositivity.InfinityCategories.F1.JoinMixedHornFilling
 public import SerrePositivity.InfinityCategories.F1.JoinQuasicategory
 public import SerrePositivity.InfinityCategories.F1.JoinInitialVertexDetection
 public import SerrePositivity.InfinityCategories.F1.JoinInitialHornDetection
+public import SerrePositivity.InfinityCategories.F1.JoinInitialHornLifting
