@@ -62,7 +62,21 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientModuleMap_fac,
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientModuleMap_isIso,
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientModuleIso,
-    `SerrePositivity.KST.DerivedGeometry.affineCoefficientRegular_isQuasicoherent]
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientRegular_isQuasicoherent,
+    `SerrePositivity.KST.DerivedGeometry.tensorBaseChangeCancel,
+    `SerrePositivity.KST.DerivedGeometry.tensorBaseChangeRight,
+    `SerrePositivity.KST.DerivedGeometry.tensorBaseChangeRight_naturality,
+    `SerrePositivity.KST.DerivedGeometry.globalBaseMap_spec,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientBaseChangeIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientBaseChangeIso_unit,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientBaseChangeSheafIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientBaseChangeSheafIso_structureMap,
+    `SerrePositivity.KST.DerivedGeometry.affineBaseCoefficientComparison_basic_isIso,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.regularMap,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.regularMap_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineBaseCoefficientModuleIso,
+    `SerrePositivity.KST.DerivedGeometry.affineBaseCoefficientRegular_isQuasicoherent,
+    `SerrePositivity.KST.DerivedGeometry.coefficientSheafOfSpecMap_regular_isQuasicoherent]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do

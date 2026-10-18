@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の具体的係数環層 H_X を、構造射 X → Spec A に対するテンソル前層の層化で構成済み。標準構造射 Spec R 上では基本開の環切断の比較、正則 O 加群と tilde H の同型および準連接性を証明済み。一般の A → R の底変換、一般の X 上での準連接性、dg 模型・降下との比較は未完了。
+- 現在地：L4a の具体的係数環層 H_X を、構造射 X → Spec A に対するテンソル前層の層化で構成済み。一般の A → R に対し Spec R 上の基本開の環切断比較、正則 O 加群と tilde (H ⊗_A R) の同型および準連接性を証明済み。一般の X の開部分への制限との比較、一般の X 上での準連接性、dg 模型・降下との比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の208宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の251宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -328,7 +328,7 @@
 - H_X の任意の開 U の切断が H ⊗_A O_X(U) と同一であるとは定義しない。
 - アフィン U 上の比較射が同型であることは別途必要な定理。
 - Mathlib の tilde M と基本開上の IsLocalizedModule.Away を接続済み。任意の加群 M について基本開切断のテンソル表示の線形同型と純テンソルの計算式を証明済み。
-- テンソル表示の制限射への自然性と層化比較は実装済み。標準構造射 Spec R 上での基本開・全体の環切断の同型判定を得た。一般の A → R に対する底変換は別途残る。
+- テンソル表示の制限射への自然性と層化比較は実装済み。一般の A → R に対する底変換と、基本開・全体の環切断の同型判定も §21 の通り実装済み。
 - H = A の場合の構造層の回復は tensorCoefficientSelfIso として証明済み。一般の A → O_X(U) の底変換への自然性は別途確認する。
 - このアフィン同定なしに既存 dg 加群圏の moduleCompact_iff_perfect を適用しない。
 - 原典対応は KST 経路 §4 D4・§2.4 と Toën Derived Azumaya §3.2。
@@ -344,7 +344,7 @@
 - 純テンソル m ⊗ s は s 倍した m の標準切断へ送られる。
 - この計算に M の平坦性・有限生成性・射影性を要求しない。
 - この線形同型そのものと、係数環層の環としての比較は異なる宣言で扱う。
-- 制限への自然性と層化との比較は §19 の通り実装済み。基礎環 A から R への底変換は残る。
+- 制限への自然性と層化との比較は §19 の通り、基礎環 A から R への底変換は §21 の通り実装済み。
 - H = A の係数前層は構造層と自然同型で、すでに層条件を満たす。
 - その層化の比較も同型なので、H = A の係数環層は構造層へ標準的に戻る。
 - これらを L4a 全体の降下比較や、T1 のコンパクト生成の証明と混同しない。
@@ -371,7 +371,7 @@
 - この段階では H の平坦性・可換性・有限性を一切要求しない。
 - 原典の接続は KST D4・T1′、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
 - 基礎環は R、スキームは Spec R とする標準構造射での結果である。
-- 任意の A → R に対し H_R = H ⊗_A R と置いた場合との環層の比較は別途証明する。
+- 任意の A → R に対し H_R = H ⊗_A R と置いた場合との環層の比較は §21 の別定理で証明済み。
 - 加法群の層の同型だけでは O 加群としての準連接性を主張しない。§20 の O 加群射とその同型性が追加の証明を与える。
 - アフィン切断の同型だけで導来圏・dg 圏・降下模型の同値を主張しない。
 
@@ -387,7 +387,29 @@
 - tilde H の準連接性をこの同型で移送する。
 - 上記の標準構造射 Spec R 上の各比較・準連接性は Lean で実装し対象ビルド済み。
 - これは KST D4・T1 の係数環層の準連接性への入力であり、T1 のコンパクト生成は含まない。
-- 一般の A → R の底変換と、開部分への係数環層の制限との両立は引き続き別定理とする。
+- 一般の A → R の底変換は §21 で証明済み。一般の X の開部分への係数環層の制限との両立は引き続き別定理とする。
+
+## 21. 一般の基礎環からのアフィン底変換
+
+- A → R → S を可換環の塔、H を任意の結合 A 代数とする。
+- H の非可換性を保ったまま、S ⊗_R (R ⊗_A H) と S ⊗_A H を比較する。
+- Mathlib のテンソル結合子の逆と右単位の同型を合成し、S 代数の同型を構成する。
+- H に R 作用を要求する結合子を誤って H ⊗_A R 側へ直接適用しない。
+- 純テンソル s ⊗ (r ⊗ h) は (r • s) ⊗ h に送られることを記録する。
+- 因子の交換と右側の代数構造を用い、(H ⊗_A R) ⊗_R S と H ⊗_A S を比較する。
+- S = O_SpecR(U) へ適用する際、切断の A 作用と R 作用の塔の両立を明示する。
+- 制限写像との自然性、前層の自然同型、層化との比較を順に示す。
+- 原典の接続は KST D4、Toën Derived Azumaya §3.2。平坦性はこの環の底変換には不要。
+- 二つの向きの底変換の環同型と純テンソル上の計算式、R 代数準同型への自然性を証明済み。
+- 各開のテンソル前層の環同型を自然同型として束ね、構造層からの単位との両立を証明済み。
+- 環の圏で層化し、環層の同型・比較射との可換式・構造層射との可換式を証明済み。
+- 基本開およびアフィン全体で、一段のテンソル前層から係数環層への比較が環同型になる。
+- 構造層射を保つ一般の係数環層の射から正則 O 加群の射を構成した。
+- 係数環層の同型に対し、この正則加群の射も同型になることを証明済み。
+- 正則 O 加群と tilde (H ⊗_A R) の同型を構成し、準連接性を証明済み。
+- affineBaseMap は実際の Spec R → Spec A の構造射から得る globalBaseMap と一致する。
+- coefficientSheafOfMorphism による実際の構成にもアフィン準連接性を適用済み。
+- 一般の X の開部分への制限とこのアフィン模型の比較、および導来・dg 圏の比較は未証明。
 
 ## 主要宣言の表
 
@@ -427,7 +449,14 @@
 | `affineCoefficientModuleMap`・`toOpen_affineCoefficientModuleMap`・`affineCoefficientModuleMap_tmul` | DerivedGeometry/AffineCoefficientModule | 実装・対象ビルド済み |
 | `affineCoefficientModuleMap_fac`・`affineCoefficientModuleMap_isIso` | DerivedGeometry/AffineCoefficientQuasicoherent | 実装・対象ビルド済み |
 | `affineCoefficientModuleIso`・`affineCoefficientRegular_isQuasicoherent` | DerivedGeometry/AffineCoefficientQuasicoherent | 実装・対象ビルド済み |
-| 一般の A → R に対する H_X のアフィン切断とテンソルの比較 | DerivedGeometry/ | 未実装 |
+| `tensorBaseChangeCancel`・`tensorBaseChangeRight`・`tensorBaseChangeRight_naturality` | DerivedGeometry/TensorBaseChange | 実装・対象ビルド済み |
+| `affineBaseMap`・`globalBaseMap_spec`・`affineBaseSectionScalarTower` | DerivedGeometry/AffineBaseChangeSections | 実装・対象ビルド済み |
+| `affineCoefficientBaseChangeIso`・`affineCoefficientBaseChangeIso_unit` | DerivedGeometry/AffineBaseChangeSections | 実装・対象ビルド済み |
+| `affineCoefficientBaseChangeSheafIso`・`affineCoefficientBaseChangeSheafIso_structureMap` | DerivedGeometry/AffineBaseChangeSheaf | 実装・対象ビルド済み |
+| `affineBaseCoefficientComparison_basic_isIso`・`affineBaseCoefficientComparison_top_isIso` | DerivedGeometry/AffineBaseChangeSheaf | 実装・対象ビルド済み |
+| `CoefficientSheaf.regularMap`・`regularMap_isIso` | DerivedGeometry/CoefficientRegularMap | 実装・対象ビルド済み |
+| `affineBaseCoefficientModuleIso`・`affineBaseCoefficientRegular_isQuasicoherent` | DerivedGeometry/AffineBaseChangeQuasicoherent | 実装・対象ビルド済み |
+| `coefficientSheafOfSpecMap_regular_isQuasicoherent` | DerivedGeometry/AffineBaseChangeQuasicoherent | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
