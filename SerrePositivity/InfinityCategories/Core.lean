@@ -173,3 +173,17 @@ public import SerrePositivity.InfinityCategories.Core.FatJoinCylinderEpi
 public import SerrePositivity.InfinityCategories.Core.FatJoinStdComparison
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
+
+public import SerrePositivity.InfinityCategories.Core.EquivalencePathMap
+
+public import SerrePositivity.InfinityCategories.Core.FullSubcomplexInternalHom
+
+public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
+
+public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
+
+public import SerrePositivity.InfinityCategories.Core.EquivalencePathInternalHom
+
+public import SerrePositivity.InfinityCategories.Core.RelativeInternalHomTrivialFibration
+
+public import SerrePositivity.InfinityCategories.Core.RelativeEquivalencePath

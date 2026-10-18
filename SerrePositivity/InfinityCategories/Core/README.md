@@ -482,3 +482,5 @@ A6 続き：`isIso_fatJoinComparison_point` と `isPrecompositionEquivalence_fat
 A6 続き：任意の n、m の `fatJoinStdLeftNormalize` と `fatJoinStdNormalize` を構成し、恒等→左の正規化、左右の正規化→左の正規化の二つのホモトピーを作った。左右の因子を全時間で固定し、各頂点の辺は退化し可逆であることを証明した。両正規化の自己射は前合成の同値条件を満たす。標準単体の比較自体には切断の構成と合成の同一視がまだ必要で、一般の単体集合への貼り合わせも未完了。新規66宣言の全型・前提は計画 §6。Core ビルド1804 jobs・累計1095宣言の標準3公理監査成功。既存の公開名・型は維持。slice 比較と A6 の主定理は未完了。A4・A5 は未着手。
 
 A6 続き：`isPrecompositionEquivalence_fatJoinComparison_stdSimplex n m` は任意の自然数 n、m の fat join 比較の前合成の同値条件。切断 `fatJoinStdSection` を構成し、切断→比較は厳密な恒等射、比較→切断は `fatJoinStdNormalize` と同一視した。fat join の quasicategory 性は不要。両因子に頂点がある場合の円柱包含のエピ性と一般の比較の自然性も追加した。新規19宣言の全型・前提は計画 §6。Core ビルド1809 jobs・累計1114宣言の標準3公理監査成功。既存の公開名・型は維持。任意の因子への貼り合わせ、slice 比較と A6 の主定理は未完了。A4・A5 は未着手。
+
+A6 続き：`equivalencePathInternalHomIso K X` は X が quasicategory のとき可逆 path と内部 Hom の同型で、両端評価と始域の制限を保つ。`trivialKanFibration_relativeEquivalencePathMap_pre i X` は i が単射なら関手単体集合の制限の相対的な可逆 path の写像が全単射に対して持ち上がること。任意のパラメーターと既定の部分の持ち上げを含む。モデル構造は使用していない。新規32宣言の全型・前提は計画 §6。Core ビルド1816 jobs・累計1146宣言の標準3公理監査成功。既存の公開名・型は維持。一般の貼り合わせ、任意の因子の fat join 比較、slice 比較と A6 の主定理は未完了。A4・A5 は未着手。

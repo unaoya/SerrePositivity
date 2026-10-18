@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げも整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6956,6 +6956,147 @@ lemma joinCylinderMap_naturality {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B �
 
 lemma fatJoinComparison_naturality {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
     fatJoinMap f g ≫ fatJoinComparison A' B' = fatJoinComparison A B ≫ joinMap f g
+
+end SerrePositivity.InfinityCategories
+```
+
+### A6 続き：関手単体集合の制限の相対可逆 path の持ち上げ（2026-10-18）
+
+可逆な path の射への関手性、全部分複体と内部 Hom の同型、二重の内部 Hom の交換を整備した。`equivalencePathInternalHomIso K X` は X が quasicategory のとき、Fun(K,X) の可逆 path を Fun(K,equivalencePath X) と同型にする。既存の指定された関手の辺の点ごとの可逆性判定を使って全部分複体の条件を対応させた。この同型は両端評価と始域の制限に可換。
+
+`relativeEquivalencePathMap p` は可逆 path を標的の path と指定された始点の組へ写す。`trivialKanFibration_relativeEquivalencePathMap_pre` は、単射 i:A→B と quasicategory X に対し、p=Fun(B,X)→Fun(A,X) のこの相対写像が全単射の rlp を持つことを示す。二変数の随伴と単射の pushout-product の単射性により、相対内部 Hom の trivial Kan fibration に移した。単なる各頂点の辺の存在ではなく、任意の単射のパラメーターに対する相対的な持ち上げを得ている。モデル構造は使用していない。
+
+Core ビルド1816 jobs、累計1146宣言の標準3公理監査成功。既存の公開名・型は維持。一般の fat join 比較に必要な貼り合わせの比較、slice 比較と A6 の主定理は未完了。A4・A5 は未着手。新規32宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma intervalFunctorVertexEdge_map {X Y : SSet.{u}} (f : X ⟶ Y)
+    (v : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌) :
+    intervalFunctorVertexEdge (((ihom (Δ[1] : SSet.{u})).map f).app (Opposite.op ⦋0⦌) v) =
+      f.app (Opposite.op ⦋1⦌) (intervalFunctorVertexEdge v)
+
+def equivalencePathMap {X Y : SSet.{u}} (f : X ⟶ Y) : equivalencePath X ⟶ equivalencePath Y
+
+lemma equivalencePathMap_ι {X Y : SSet.{u}} (f : X ⟶ Y) :
+    equivalencePathMap f ≫ equivalencePathι Y =
+      equivalencePathι X ≫ (ihom (Δ[1] : SSet.{u})).map f
+
+lemma equivalencePathMap_endpoint {X Y : SSet.{u}} (f : X ⟶ Y) (i : Fin 2) :
+    equivalencePathMap f ≫ equivalencePathEndpoint Y i = equivalencePathEndpoint X i ≫ f
+
+lemma equivalencePathMap_id (X : SSet.{u}) : equivalencePathMap (𝟙 X) = 𝟙 (equivalencePath X)
+
+lemma equivalencePathMap_comp {X Y Z : SSet.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    equivalencePathMap (f ≫ g) = equivalencePathMap f ≫ equivalencePathMap g
+
+def FunctorVertexSatisfies (K Y : SSet.{u}) (P : Y _⦋0⦌ → Prop)
+    (v : ((ihom K).obj Y) _⦋0⦌) : Prop
+
+noncomputable def fullSubcomplexInternalHomForward (K Y : SSet.{u}) (P : Y _⦋0⦌ → Prop) :
+    (ihom K).obj (fullSubcomplexOnVertices Y P : SSet.{u}) ⟶
+      (fullSubcomplexOnVertices ((ihom K).obj Y) (FunctorVertexSatisfies K Y P) : SSet.{u})
+
+noncomputable def fullSubcomplexInternalHomUncurry (K Y : SSet.{u}) (P : Y _⦋0⦌ → Prop) :
+    K ⊗ (fullSubcomplexOnVertices ((ihom K).obj Y) (FunctorVertexSatisfies K Y P) : SSet.{u}) ⟶
+      (fullSubcomplexOnVertices Y P : SSet.{u})
+
+noncomputable def fullSubcomplexInternalHomBackward (K Y : SSet.{u}) (P : Y _⦋0⦌ → Prop) :
+    (fullSubcomplexOnVertices ((ihom K).obj Y) (FunctorVertexSatisfies K Y P) : SSet.{u}) ⟶
+      (ihom K).obj (fullSubcomplexOnVertices Y P : SSet.{u})
+
+lemma fullSubcomplexInternalHomForward_ι (K Y : SSet.{u}) (P : Y _⦋0⦌ → Prop) :
+    fullSubcomplexInternalHomForward K Y P ≫
+      (fullSubcomplexOnVertices ((ihom K).obj Y) (FunctorVertexSatisfies K Y P)).ι =
+        (ihom K).map (fullSubcomplexOnVertices Y P).ι
+
+lemma fullSubcomplexInternalHomBackward_ι (K Y : SSet.{u}) (P : Y _⦋0⦌ → Prop) :
+    fullSubcomplexInternalHomBackward K Y P ≫ (ihom K).map (fullSubcomplexOnVertices Y P).ι =
+      (fullSubcomplexOnVertices ((ihom K).obj Y) (FunctorVertexSatisfies K Y P)).ι
+
+noncomputable def fullSubcomplexInternalHomIso (K Y : SSet.{u}) (P : Y _⦋0⦌ → Prop) :
+    (ihom K).obj (fullSubcomplexOnVertices Y P : SSet.{u}) ≅
+      (fullSubcomplexOnVertices ((ihom K).obj Y) (FunctorVertexSatisfies K Y P) : SSet.{u})
+
+lemma fullSubcomplexInternalHomIso_inv_ι (K Y : SSet.{u}) (P : Y _⦋0⦌ → Prop) :
+    (fullSubcomplexInternalHomIso K Y P).inv ≫ (ihom K).map (fullSubcomplexOnVertices Y P).ι =
+      (fullSubcomplexOnVertices ((ihom K).obj Y) (FunctorVertexSatisfies K Y P)).ι
+
+def fullSubcomplexIso {X Y : SSet.{u}} (e : X ≅ Y)
+    (P : X _⦋0⦌ → Prop) (Q : Y _⦋0⦌ → Prop)
+    (h : ∀ x : X _⦋0⦌, P x ↔ Q (e.hom.app (Opposite.op ⦋0⦌) x)) :
+    (fullSubcomplexOnVertices X P : SSet.{u}) ≅ (fullSubcomplexOnVertices Y Q : SSet.{u})
+
+lemma fullSubcomplexIso_hom_ι {X Y : SSet.{u}} (e : X ≅ Y)
+    (P : X _⦋0⦌ → Prop) (Q : Y _⦋0⦌ → Prop)
+    (h : ∀ x : X _⦋0⦌, P x ↔ Q (e.hom.app (Opposite.op ⦋0⦌) x)) :
+    (fullSubcomplexIso e P Q h).hom ≫ (fullSubcomplexOnVertices Y Q).ι =
+      (fullSubcomplexOnVertices X P).ι ≫ e.hom
+
+def internalHomSwapIso (A B X : SSet.{u}) :
+    (ihom A).obj ((ihom B).obj X) ≅ (ihom B).obj ((ihom A).obj X)
+
+lemma internalHomSwapIso_functorVertex (A B X : SSet.{u}) (f : A ⟶ (ihom B).obj X) :
+    (internalHomSwapIso A B X).hom.app (Opposite.op ⦋0⦌) (functorVertex f) =
+      functorVertex (curry ((β_ A B).hom ≫ uncurry f))
+
+lemma internalHomSwapIso_interval_evaluate (K X : SSet.{u})
+    (v : ((ihom (Δ[1] : SSet.{u})).obj ((ihom K).obj X)) _⦋0⦌) (k : K _⦋0⦌) :
+    intervalFunctorVertexEdge ((evaluateFunctorAt (Y := (ihom (Δ[1] : SSet.{u})).obj X) k).app
+      (Opposite.op ⦋0⦌) ((internalHomSwapIso Δ[1] K X).hom.app (Opposite.op ⦋0⦌) v)) =
+        (evaluateFunctorAt (Y := X) k).app (Opposite.op ⦋1⦌) (intervalFunctorVertexEdge v)
+
+lemma internalHomSwapIso_evaluate (A B X : SSet.{u}) (a : A _⦋0⦌) :
+    (internalHomSwapIso A B X).hom ≫ (ihom B).map (evaluateFunctorAt (Y := X) a) =
+      evaluateFunctorAt (Y := (ihom B).obj X) a
+
+lemma internalHomSwapIso_pre {A B C X : SSet.{u}} (i : B ⟶ C) :
+    (ihom A).map ((pre i).app X) ≫ (internalHomSwapIso A B X).hom =
+      (internalHomSwapIso A C X).hom ≫ (pre i).app ((ihom A).obj X)
+
+lemma isInvertibleEdge_iff_evaluateFunctorAt_any {K X : SSet.{u}} [Quasicategory X]
+    {v w : ((ihom K).obj X) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) v w) :
+    IsInvertibleEdge e ↔ ∀ k : K _⦋0⦌,
+      IsInvertibleEdge (e.map ((truncation 2).map (evaluateFunctorAt (Y := X) k)))
+
+noncomputable def equivalencePathInternalHomIso (K X : SSet.{u}) [Quasicategory X] :
+    equivalencePath ((ihom K).obj X) ≅ (ihom K).obj (equivalencePath X)
+
+lemma equivalencePathInternalHomIso_hom_ι (K X : SSet.{u}) [Quasicategory X] :
+    (equivalencePathInternalHomIso K X).hom ≫ (ihom K).map (equivalencePathι X) =
+      equivalencePathι ((ihom K).obj X) ≫ (internalHomSwapIso Δ[1] K X).hom
+
+lemma equivalencePathInternalHomIso_endpoint (K X : SSet.{u}) [Quasicategory X] (i : Fin 2) :
+    (equivalencePathInternalHomIso K X).hom ≫ (ihom K).map (equivalencePathEndpoint X i) =
+      equivalencePathEndpoint ((ihom K).obj X) i
+
+lemma equivalencePathInternalHomIso_pre {A B X : SSet.{u}} [Quasicategory X] (i : A ⟶ B) :
+    equivalencePathMap ((pre i).app X) ≫ (equivalencePathInternalHomIso A X).hom =
+      (equivalencePathInternalHomIso B X).hom ≫ (pre i).app (equivalencePath X)
+
+lemma trivialKanFibration_pullbackObjObjπ {A B E Y : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (p : E ⟶ Y) [TrivialKanFibration p]
+    (sq' : internalHom.PullbackObjObj i p) : TrivialKanFibration sq'.π
+
+noncomputable def relativeEquivalencePathTarget {E B : SSet.{u}} (p : E ⟶ B) : SSet.{u}
+
+noncomputable def relativeEquivalencePathMap {E B : SSet.{u}} (p : E ⟶ B) :
+    equivalencePath E ⟶ relativeEquivalencePathTarget p
+
+lemma relativeEquivalencePathMap_fst {E B : SSet.{u}} (p : E ⟶ B) :
+    relativeEquivalencePathMap p ≫ pullback.fst (equivalencePathEndpoint B 0) p =
+      equivalencePathMap p
+
+lemma relativeEquivalencePathMap_snd {E B : SSet.{u}} (p : E ⟶ B) :
+    relativeEquivalencePathMap p ≫ pullback.snd (equivalencePathEndpoint B 0) p =
+      equivalencePathEndpoint E 0
+
+lemma trivialKanFibration_relativeEquivalencePathMap_pre {A B : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (X : SSet.{u}) [Quasicategory X] :
+    TrivialKanFibration (relativeEquivalencePathMap ((pre i).app X))
 
 end SerrePositivity.InfinityCategories
 ```
