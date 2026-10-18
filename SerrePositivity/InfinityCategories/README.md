@@ -7771,3 +7771,86 @@ lemma strictCoherentCone_isLimit_of_tower_representableComparison {C : Type v} [
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-representable-limit-criterion-aggregate.log` と
 `/tmp/gamma3-representable-limit-criterion-audit.log`。
+
+
+### γ3b：元の q_x の同値性と native な ∞ 極限性の両向きの判定
+
+`UniverseHomotopyReflection` は、持ち上げた二射の実際の単体的ホモトピーを元の宇宙へ戻す
+`uliftHomotopyDown` と、持ち上げた射のホモトピー逆を充満性で戻す
+`homotopyEquivalence_of_ulift` を構成した。これにより
+`ulift_homotopyEquivalence_iff` で、宇宙の持ち上げの前後のホモトピー同値性が同値となる。
+この宇宙の移送自体には、元・持ち上げ後のいずれの単体集合にも Kan 性を要求しない。
+
+`RepresentableLimitEquivalence` は、反転 end からの切断比較の後合成を消去し、
+ULift の同値検出で反転比較 q′ の同値性へ戻す中間判定を構成した。
+一般の添字圏では、反転 end から切断空間への比較の同値性を明示した前提に置く。
+三形状では、この前提を既存の実際の比較定理で検証した。
+
+主要定理は `strictCoherentCone_isLimit_iff_discrete_representableComparison`、
+`strictCoherentCone_isLimit_iff_cospan_representableComparison`、
+`strictCoherentCone_isLimit_iff_tower_representableComparison`。
+結論はそれぞれ
+`IsLimitCone (strictCoherentCone c) ↔ ∀ x, IsSimplicialHomotopyEquivalence
+  (representableHomotopyLimitComparison c x)`。
+離散図式では局所 Kan 性のみで、添字の有限性・非空性は要求しない。
+cospan では全 x で Hom の左脚が fibration、塔では全 x・全隣接遷移で Hom が fibration
+であることを追加する。Hom 錐の厳密極限性、元の q_x の fibration 性、追加の比較同値は
+三つの主要定理の前提に置かない。
+
+これで指定三形状について、前回の十分条件の逆向きも証明された。
+元の q_x の導来 fiber と錐の pinched Hom の直接比較、および可縮性による判定への
+元の q_x を使った直接の接続は引き続き未完了。一般形状の end の直接比較、
+余極限側、E2a 完了後の E2b 適用も未完了で、γ3 全体は継続中。
+原典：HTT 4.2.4.1 の限定形、Kerodon 7.5.3.12・7.5.4.6、2.4.5、4.6.7。
+
+新規7公開宣言の正確な型・全前提（名前空間
+`SerrePositivity.InfinityCategories.HomotopyLimits`、節変数を展開）：
+
+```lean
+def uliftHomotopyDown {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy ((SSet.uliftFunctor.{v, u}).map f)
+      ((SSet.uliftFunctor.{v, u}).map g)) : SSet.Homotopy f g
+
+lemma homotopyEquivalence_of_ulift {X Y : SSet.{u}} (f : X ⟶ Y)
+    (hf : IsSimplicialHomotopyEquivalence ((SSet.uliftFunctor.{v, u}).map f)) :
+    IsSimplicialHomotopyEquivalence f
+
+lemma ulift_homotopyEquivalence_iff {X Y : SSet.{u}} (f : X ⟶ Y) :
+    IsSimplicialHomotopyEquivalence ((SSet.uliftFunctor.{v, u}).map f) ↔
+      IsSimplicialHomotopyEquivalence f
+
+lemma reflectedStrictConeSectionsComparison_homotopyEquivalence_iff {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)] {F : I ⥤ C}
+    (c : Cone F) (x : C)
+    (hE : IsSimplicialHomotopyEquivalence (reflectedHomHolimConeComparison F x)) :
+    IsSimplicialHomotopyEquivalence (reflectedStrictConeSectionsComparison c x) ↔
+      IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c x)
+
+lemma strictCoherentCone_isLimit_iff_discrete_representableComparison {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)] {J : Type u}
+    {F : Discrete J ⥤ C} (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+      IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c x)
+
+lemma strictCoherentCone_isLimit_iff_cospan_representableComparison {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : AsSmall.{u} WalkingCospan ⥤ C} (c : Cone F)
+    [∀ x : C, Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map WalkingCospan.Hom.inl))] :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+      IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c x)
+
+lemma strictCoherentCone_isLimit_iff_tower_representableComparison {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : AsSmall.{u} ℕᵒᵖ ⥤ C} (c : Cone F)
+    [∀ (x : C) (n : ℕ), Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+      IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c x)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4666 jobs）、公開1329宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-representable-limit-equivalence-aggregate.log` と
+`/tmp/gamma3-representable-limit-equivalence-audit.log`。
