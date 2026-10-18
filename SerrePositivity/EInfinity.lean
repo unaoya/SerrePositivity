@@ -66,3 +66,7 @@ public import SerrePositivity.EInfinity.Operad.TensorFamilyHeadSeparation
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerHeadAssembly
 public import SerrePositivity.EInfinity.Operad.TensorFamilyGeneratorMap
 public import SerrePositivity.EInfinity.Operad.SchurHeadAssembly
+public import SerrePositivity.EInfinity.Operad.FirstBlockFamilyAssembly
+public import SerrePositivity.EInfinity.Operad.FirstBlockPowerAssembly
+public import SerrePositivity.EInfinity.Operad.FirstBlockTensorAssembly
+public import SerrePositivity.EInfinity.Operad.SchurOperationTensor
