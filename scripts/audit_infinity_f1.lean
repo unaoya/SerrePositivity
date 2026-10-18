@@ -683,3 +683,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.intervalMappingUncurry_injective
 #check @SerrePositivity.InfinityCategories.intervalMappingCurry_uncurry
 #check @SerrePositivity.InfinityCategories.intervalMappingUncurry_precomp
+#check @SerrePositivity.InfinityCategories.rightMappingSpacePrism
+#check @SerrePositivity.InfinityCategories.rightMappingSpacePrism_zero
+#check @SerrePositivity.InfinityCategories.rightMappingSpacePrism_one
+#check @SerrePositivity.InfinityCategories.leftMappingSpacePrism
+#check @SerrePositivity.InfinityCategories.leftMappingSpacePrism_zero
+#check @SerrePositivity.InfinityCategories.leftMappingSpacePrism_one
+#check @SerrePositivity.InfinityCategories.rightMappingSpacePrism_naturality
+#check @SerrePositivity.InfinityCategories.leftMappingSpacePrism_naturality

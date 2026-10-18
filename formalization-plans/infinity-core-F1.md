@@ -2973,5 +2973,31 @@ lemma intervalMappingUncurry_precomp {A B X : SSet.{u}} {x y : X _⦋0⦌}
     (i : A ⟶ B) (f : B ⟶ intervalMappingSpace x y) :
     intervalMappingUncurry (i ≫ f) = (Δ[1] ◁ i) ≫ intervalMappingUncurry f
 
+noncomputable def rightMappingSpacePrism (A : SSet.{u}) : Δ[1] ⊗ A ⟶ join A (Δ[0] : SSet.{u})
+
+lemma rightMappingSpacePrism_zero (A : SSet.{u}) :
+    prismEndpoint 0 A ≫ rightMappingSpacePrism A = joinInl A Δ[0]
+
+lemma rightMappingSpacePrism_one (A : SSet.{u}) :
+    prismEndpoint 1 A ≫ rightMappingSpacePrism A =
+      SSet.const (stdSimplex.obj₀Equiv.symm 0) ≫ joinInr A Δ[0]
+
+noncomputable def leftMappingSpacePrism (A : SSet.{u}) : Δ[1] ⊗ A ⟶ join (Δ[0] : SSet.{u}) A
+
+lemma leftMappingSpacePrism_zero (A : SSet.{u}) :
+    prismEndpoint 0 A ≫ leftMappingSpacePrism A =
+      SSet.const (stdSimplex.obj₀Equiv.symm 0) ≫ joinInl Δ[0] A
+
+lemma leftMappingSpacePrism_one (A : SSet.{u}) :
+    prismEndpoint 1 A ≫ leftMappingSpacePrism A = joinInr Δ[0] A
+
+lemma rightMappingSpacePrism_naturality {A B : SSet.{u}} (f : A ⟶ B) :
+    (Δ[1] ◁ f) ≫ rightMappingSpacePrism B =
+      rightMappingSpacePrism A ≫ joinMap f (𝟙 Δ[0])
+
+lemma leftMappingSpacePrism_naturality {A B : SSet.{u}} (f : A ⟶ B) :
+    (Δ[1] ◁ f) ≫ leftMappingSpacePrism B =
+      leftMappingSpacePrism A ≫ joinMap (𝟙 Δ[0]) f
+
 end SerrePositivity.InfinityCategories
 ```
