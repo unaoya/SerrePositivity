@@ -4296,6 +4296,106 @@ lemma IsQCatEquivalence.isSimplicialHomotopyEquivalence {X Y : SSet.{u}}
 
 Core 対象ビルド：終了コード 0（1602 jobs）。監査：終了コード 0、累計 635 宣言、標準三公理のみ。A3a–d は完了、A3e は上記の主定理と極限の保存・反映が未完了。A3f は任意、A3g は保留。続行する。
 
+
+### A3e 続き：同値による終対象の保存・反映（2026-10-18）
+
+関手単体集合の可逆な辺を各頂点で評価する API と、同型な境界図式間で充填の存在を移す prism の補題を実装した。これにより A3a の `QCatEquivalence` が終対象性を保存・反映することを直接証明。さらに Kan 複体間の実際の単体的ホモトピー同値と quasicategory の同値が同値であること、可縮性がこの同値で不変なこと、充満忠実な射が終対象性を反映することを証明した。
+
+未完了：充満忠実＋本質的全射から A3a の逆射と可逆二胞体を構成する主定理、任意の図式の極限錐の保存・反映。終対象の保存・反映だけで極限全体の工程を完成とは数えない。§4 の設計変更はない。以下は共通の `universe u`、`open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet`、`open scoped Simplicial` の下での公開宣言18件の正確な型。
+
+FunctorEvaluation：
+
+```lean
+def evaluateFunctorAt {X Y : SSet.{u}} (x : X _⦋0⦌) : (ihom X).obj Y ⟶ Y
+
+lemma evaluateFunctorAt_functorVertex {X Y : SSet.{u}} (x : X _⦋0⦌) (f : X ⟶ Y) :
+    (evaluateFunctorAt (Y := Y) x).app (Opposite.op ⦋0⦌) (functorVertex f) =
+      f.app (Opposite.op ⦋0⦌) x
+
+lemma evaluateFunctorAt_edge {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom X).obj Y))
+      (functorVertex f) (functorVertex g)) (x : X _⦋0⦌) :
+    (simplicialHomotopyVertexEdge (simplicialHomotopyOfFunctorEdge e) x).edge =
+      (evaluateFunctorAt (Y := Y) x).app (Opposite.op ⦋1⦌) e.edge
+
+lemma simplicialHomotopyOfFunctorEdge_vertex_isInvertible {X Y : SSet.{u}}
+    [Quasicategory Y] {f g : X ⟶ Y}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom X).obj Y))
+      (functorVertex f) (functorVertex g)) (he : IsInvertibleEdge e) (x : X _⦋0⦌) :
+    IsInvertibleEdge
+      (simplicialHomotopyVertexEdge (simplicialHomotopyOfFunctorEdge e) x).toTruncated
+```
+
+KanHomotopyEquivalence：
+
+```lean
+def functorEdgeOfSimplicialHomotopy {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f g) :
+    SSet.Truncated.Edge (X := (truncation 2).obj ((ihom X).obj Y))
+      (functorVertex f) (functorVertex g)
+
+noncomputable def functorIsoOfSimplicialHomotopy {X Y : SSet.{u}} [KanComplex Y]
+    {f g : X ⟶ Y} (H : SSet.Homotopy f g) : FunctorIso f g
+
+lemma IsSimplicialHomotopyEquivalence.isQCatEquivalence {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] {f : X ⟶ Y} (hf : IsSimplicialHomotopyEquivalence f) :
+    IsQCatEquivalence f
+
+lemma isSimplicialHomotopyEquivalence_iff_isQCatEquivalence {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) :
+    IsSimplicialHomotopyEquivalence f ↔ IsQCatEquivalence f
+```
+
+HomotopyBoundaryExtension：
+
+```lean
+lemma prismEndpoint_zero_braiding (A : SSet.{u}) :
+    prismEndpoint 0 A ≫ (β_ (Δ[1] : SSet.{u}) A).hom = SSet.ι₀
+
+lemma prismEndpoint_one_braiding (A : SSet.{u}) :
+    prismEndpoint 1 A ≫ (β_ (Δ[1] : SSet.{u}) A).hom = SSet.ι₁
+
+lemma FunctorIso.exists_boundaryFilling {Y : SSet.{u}} [Quasicategory Y] {n : ℕ}
+    {f g : (boundary n : SSet.{u}) ⟶ Y} (e : FunctorIso f g)
+    (hf : ∃ F : (Δ[n] : SSet.{u}) ⟶ Y, (boundary n).ι ≫ F = f) :
+    ∃ G : (Δ[n] : SSet.{u}) ⟶ Y, (boundary n).ι ≫ G = g
+
+lemma FunctorIso.boundaryFilling_iff {Y : SSet.{u}} [Quasicategory Y] {n : ℕ}
+    {f g : (boundary n : SSet.{u}) ⟶ Y} (e : FunctorIso f g) :
+    (∃ F : (Δ[n] : SSet.{u}) ⟶ Y, (boundary n).ι ≫ F = f) ↔
+      (∃ G : (Δ[n] : SSet.{u}) ⟶ Y, (boundary n).ι ≫ G = g)
+```
+
+EquivalenceTerminal：
+
+```lean
+lemma QCatEquivalence.map_isTerminalVertex {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) {x : X _⦋0⦌}
+    (hx : IsTerminalVertex x) : IsTerminalVertex (e.hom.app (Opposite.op ⦋0⦌) x)
+
+lemma QCatEquivalence.isTerminalVertex_iff {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) (x : X _⦋0⦌) :
+    IsTerminalVertex x ↔ IsTerminalVertex (e.hom.app (Opposite.op ⦋0⦌) x)
+
+lemma QCatEquivalence.isContractibleKan {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) (hX : IsContractibleKan X) :
+    IsContractibleKan Y
+
+lemma QCatEquivalence.isContractibleKan_iff {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) :
+    IsContractibleKan X ↔ IsContractibleKan Y
+
+lemma IsSimplicialHomotopyEquivalence.isContractibleKan_iff {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] {f : X ⟶ Y} (hf : IsSimplicialHomotopyEquivalence f) :
+    IsContractibleKan X ↔ IsContractibleKan Y
+
+lemma IsFullyFaithful.reflects_isTerminalVertex {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsFullyFaithful f)
+    {x : X _⦋0⦌} (hx : IsTerminalVertex (f.app (Opposite.op ⦋0⦌) x)) : IsTerminalVertex x
+```
+
+Core 対象ビルド：終了コード 0（1607 jobs）。監査：終了コード 0、累計 653 宣言、標準三公理のみ。A3a–d は完了、A3e は上記の主定理と極限一般が未完了。A3f は任意、A3g は保留。続行する。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

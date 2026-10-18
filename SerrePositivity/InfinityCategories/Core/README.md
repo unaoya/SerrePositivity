@@ -416,3 +416,5 @@ A3d 逆方向の準備：Kerodon 4.4.2.14–15（https://kerodon.net/tag/01NU �
 まず写像空間の関手性と上の二条件の API、そのホモトピー圏での帰結を整備し、その後に quasicategory の逆射の構成と極限の保存・反映へ進む。
 
 A3e 前半保存：写像空間の射と π₀ の自然性、実際の単体的ホモトピー逆による充満忠実性、本質的全射性、そのホモトピー圏での帰結、関手単体集合の同型から実際のホモトピーを選ぶ API を実装。`IsFullyFaithful.toHoEquivalence` は通常のホモトピー圏の同値であり、quasicategory の逆射の構成は未完了。同値による極限錐の保存・反映も残る。A3e 完了とは数えない。
+
+A3e 続き：`QCatEquivalence.isTerminalVertex_iff` は同値による終対象性の保存・反映を与える。`FunctorIso.exists_boundaryFilling` は関手単体集合で同型な境界図式間で充填を移す。`IsFullyFaithful.reflects_isTerminalVertex` は本質的全射性を仮定せずに終対象性を反映する。quasicategory の逆射の構成と、任意の極限錐の保存・反映は引き続き未完了。
