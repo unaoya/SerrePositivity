@@ -177,3 +177,5 @@ public import SerrePositivity.KST.SchemeLemmas.LocalMinorPureTransformGeneration
 public import SerrePositivity.KST.SchemeLemmas.SplitMatrixMinorIdeal
 public import SerrePositivity.KST.SchemeLemmas.LocalPresentationKernel
 public import SerrePositivity.KST.SchemeLemmas.LocalPresentationSplitMatrix
+public import SerrePositivity.KST.SchemeLemmas.PresentationKernelProduct
+public import SerrePositivity.KST.SchemeLemmas.LocalPresentationMinorRank
