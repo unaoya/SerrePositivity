@@ -20,3 +20,4 @@ public import SerrePositivity.EInfinity.Operad.TensorPowerBlockSwap
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerHeads
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerAdjacent
 public import SerrePositivity.EInfinity.Operad.TwoSlotComposition
+public import SerrePositivity.EInfinity.Operad.CompositionTwoLast
