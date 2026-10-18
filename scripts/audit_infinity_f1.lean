@@ -2708,3 +2708,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentLeftPinchedHomMap
 #check @SerrePositivity.InfinityCategories.coherentOppositeInverseSimplex_postcomp
 #check @SerrePositivity.InfinityCategories.coherentLeftHomComparison_enriched_naturality
+#check @SerrePositivity.InfinityCategories.kanPointHomEnriched
+#check @SerrePositivity.InfinityCategories.kanPointHomEnrichedComparison
+#check @SerrePositivity.InfinityCategories.kanPointHomInfinityMap
+#check @SerrePositivity.InfinityCategories.kanPointHomInfinityComparisonIso
+#check @SerrePositivity.InfinityCategories.kanPointHomDiagramComparisonIso

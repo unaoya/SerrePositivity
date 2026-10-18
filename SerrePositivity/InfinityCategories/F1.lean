@@ -654,3 +654,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentLeftResolutionCompar
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftFlagComparison
 public import SerrePositivity.InfinityCategories.F1.PointedSpaceLeftResolutionCompatibility
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftHomEnrichedNaturality
+public import SerrePositivity.InfinityCategories.F1.KanPointHomEnriched

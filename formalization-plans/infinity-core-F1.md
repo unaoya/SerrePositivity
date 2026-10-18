@@ -13177,5 +13177,20 @@ lemma coherentLeftHomComparison_enriched_naturality
       (SSet.uliftFunctor.{v, u}).map (SSet.opFunctor.map (F.map x y)) ≫
         HomotopyLimits.coherentLeftHomComparison (F.obj x) (F.obj y)
 
+noncomputable def kanPointHomEnriched :
+    EnrichedFunctor SSet.{u} KanObject.{u} KanObject.{u}
+
+noncomputable def kanPointHomEnrichedComparison :
+    KanEnrichedComparison kanPointHomEnriched
+      (EnrichedFunctor.id SSet.{u} KanObject.{u})
+
+noncomputable def kanPointHomInfinityMap : SpaceInfinity.{u} ⟶ SpaceInfinity.{u}
+
+noncomputable def kanPointHomInfinityComparisonIso :
+    FunctorIso kanPointHomInfinityMap.{u} (𝟙 SpaceInfinity.{u})
+
+noncomputable def kanPointHomDiagramComparisonIso {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) : FunctorIso (F ≫ kanPointHomInfinityMap) F
+
 end SerrePositivity.InfinityCategories
 ```
