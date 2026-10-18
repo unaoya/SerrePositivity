@@ -5397,3 +5397,144 @@ cofiber 保存から任意の pushout の保存を導く補題も必要であり
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3112 jobs）、公理監査成功（1319 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.45 安定性からの全 span の押し出し・関手的な選択・完全関手による保存
+
+§6.44 の McCarthy 法に必要な二つの存在・保存補題を追加仮定なしで証明した。
+安定性の最小の公理から任意の指定 span の押し出しを構成し、
+零対象と cofiber を保つ射は任意の押し出しも保つことを示した。
+源は安定な quasicategory、保存の標的は quasicategory のみでよく、標的の安定性は不要。
+既存の `PreservesCofiberData`・`PreservesSConstructionData`・`StableModel` の定義・型は変更していない。
+
+任意 span の押し出しは、一方の枝の fiber 四角形の右側に他方の枝を貼り、
+零角を持つ左四角形と外側の長方形が cofiber となる表示で得た。
+この表示と押し出し貼り合わせの消去により保存を証明し、
+元の押し出しには同じ span 上の関手同型で輸送した。
+点ごとの余極限の存在も供給し、任意の四角形について gapped 包含の押し出しの保存・反映を得た。
+零角を仮定した以前の判定のみに依存する結論ではない。
+
+押し出し図式から span の内部 Hom への射影が trivial Kan fibration であることを証明した。
+全 span 上の厳密な単体的切断と、任意の単射で指定した部分を保持する切断の延長を構成した。
+任意パラメーターに対する選択空間は可縮 Kan であり、同じ入力の二つの族の関手同型を得た。
+完全関手で移した選択と、移した span に選んだ押し出しの族との関手同型も構成済み。
+切断は単体的なので退化した恒等射を保つが、指定した恒等 span 上での対象の厳密な正規化は
+まだ実装していない。相対切断の延長だけで正規化まで完成したとは数えない。
+
+追加ファイル：`StableSpanPushout.lean`、`StablePushoutFamilies.lean`、
+`CofiberPreservesPushout.lean`、`GappedPushoutPreservation.lean`、`StablePushoutPostcomp.lean`。
+以下は namespace `SerrePositivity.KST.SConstruction` 内の公開宣言の正確な型。
+`Quasicategory`・`IsStable` 等は既存の定義を用いる。
+
+```lean
+lemma exists_stable_pushoutPresentation_of_span {X : SSet.{u}} [Quasicategory X] [IsStable X]
+    (p : (horn 2 0 : SSet.{u}) ⟶ X) :
+    ∃ F : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X,
+      pushoutSpan (pastingSquare F 0) = p ∧
+      IsZeroVertex (squareVertex (pastingSquare F 2) 0 1) ∧
+      IsPushoutSquare (pastingSquare F 2) ∧ IsPushoutSquare (pastingSquare F 0) ∧
+      IsPushoutSquare (pastingSquare F 1)
+
+lemma exists_stable_pushoutSquare_of_span {X : SSet.{u}} [Quasicategory X] [IsStable X]
+    (p : (horn 2 0 : SSet.{u}) ⟶ X) :
+    ∃ R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X, pushoutSpan R = p ∧ IsPushoutSquare R
+
+lemma stable_hasColimit_span {X : SSet.{u}} [Quasicategory X] [IsStable X]
+    (p : (horn 2 0 : SSet.{u}) ⟶ X) : HasColimit p
+
+instance stable_pushoutProjection_trivialKanFibration (C : SSet.{u})
+    [Quasicategory C] [IsStable C] :
+    TrivialKanFibration (pushoutProjection C)
+
+lemma exists_relative_stable_pushoutFamily {A B C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (i : A ⟶ B) [Mono i] (d : B ⟶ (ihom (horn 2 0 : SSet.{u})).obj C)
+    (a : A ⟶ pushoutDiagrams C) (ha : a ≫ pushoutProjection C = i ≫ d) :
+    ∃ F : B ⟶ pushoutDiagrams C, i ≫ F = a ∧ F ≫ pushoutProjection C = d
+
+lemma exists_stablePushoutSection_extending {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (i : A ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) [Mono i]
+    (a : A ⟶ pushoutDiagrams C) (ha : a ≫ pushoutProjection C = i) :
+    ∃ s : (ihom (horn 2 0 : SSet.{u})).obj C ⟶ pushoutDiagrams C,
+      i ≫ s = a ∧ s ≫ pushoutProjection C = 𝟙 _
+
+def stablePushoutFamilySpace {A C : SSet.{u}}
+    (d : A ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) : SSet.{u}
+
+lemma stablePushoutFamilySpace_isContractibleKan {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (d : A ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) :
+    IsContractibleKan (stablePushoutFamilySpace d)
+
+def stablePushoutFamiliesIso {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (d : A ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) (F G : A ⟶ pushoutDiagrams C)
+    (hF : F ≫ pushoutProjection C = d) (hG : G ≫ pushoutProjection C = d) : FunctorIso F G
+
+def stablePushoutSection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    (ihom (horn 2 0 : SSet.{u})).obj C ⟶ pushoutDiagrams C
+
+lemma stablePushoutSection_projection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    stablePushoutSection C ≫ pushoutProjection C = 𝟙 _
+
+def stablePushoutFunctor (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    (ihom (horn 2 0 : SSet.{u})).obj C ⟶ C
+
+lemma PreservesCofiberData.isPushoutSquare {C D : SSet.{u}} [Quasicategory C] [IsStable C]
+    [Quasicategory D] {f : C ⟶ D} (hf : PreservesCofiberData f)
+    (R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C) (hR : IsPushoutSquare R) :
+    IsPushoutSquare (R ≫ f)
+
+lemma PreservesCofiberData.toSConstructionData {C D : SSet.{u}} [Quasicategory C] [IsStable C]
+    [Quasicategory D] {f : C ⟶ D} (hf : PreservesCofiberData f) : PreservesSConstructionData f
+
+lemma preservesSConstructionData_iff_cofiberData {C D : SSet.{u}} [Quasicategory C] [IsStable C]
+    [Quasicategory D] (f : C ⟶ D) : PreservesSConstructionData f ↔ PreservesCofiberData f
+
+lemma stableModelHom_preservesSConstructionData {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    PreservesSConstructionData f.val
+
+lemma functor_span_hasPointwiseColimits {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (p : (horn 2 0 : SSet.{u}) ⟶ (ihom A).obj C) : HasPointwiseColimits p
+
+lemma functor_pushout_iff_pointwise {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ (ihom A).obj C) :
+    IsPushoutSquare F ↔ ∀ a : A _⦋0⦌, IsPushoutSquare (F ≫ evaluateFunctorAt a)
+
+lemma gappedInclusion_pushout_iff {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ sConstruction n C) :
+    IsPushoutSquare F ↔ IsPushoutSquare (F ≫ (gappedSubcomplex n C).ι)
+
+lemma gappedInclusion_preservesSConstructionData (n : ℕ) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] : PreservesSConstructionData (gappedSubcomplex n C).ι
+
+lemma gappedInclusion_pushout_iff_pointwise {n : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [IsStable C]
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ sConstruction n C) :
+    IsPushoutSquare F ↔ ∀ a : (arNerve n) _⦋0⦌,
+      IsPushoutSquare (F ≫ (gappedSubcomplex n C).ι ≫ evaluateFunctorAt a)
+
+def pushoutDiagramsPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
+    pushoutDiagrams C ⟶ pushoutDiagrams D
+
+lemma pushoutDiagramsPostcomp_ι {C D : SSet.{u}} (f : C ⟶ D)
+    (hf : PreservesSConstructionData f) :
+    pushoutDiagramsPostcomp f hf ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι =
+      (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι ≫ (ihom (Δ[1] ⊗ Δ[1])).map f
+
+lemma pushoutDiagramsPostcomp_projection {C D : SSet.{u}} (f : C ⟶ D)
+    (hf : PreservesSConstructionData f) :
+    pushoutDiagramsPostcomp f hf ≫ pushoutProjection D =
+      pushoutProjection C ≫ (ihom (horn 2 0 : SSet.{u})).map f
+
+def stablePushoutSection_postcompIso {C D : SSet.{u}} [Quasicategory C] [IsStable C]
+    [Quasicategory D] [IsStable D] (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    FunctorIso (stablePushoutSection C ≫ pushoutDiagramsPostcomp f hf.toSConstructionData)
+      ((ihom (horn 2 0 : SSet.{u})).map f ≫ stablePushoutSection D)
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+McCarthy 法の全 span の存在・完全関手による保存・単体的な pushout の選択と比較を証明済み。
+指定した恒等 span 上の正規化、McCarthy の単体ホモトピー、単体積 Quillen A、
+object/core 比較と加法性比較の弱同値性、面のホモトピー引き戻し条件は未証明。
+反復 S 実現と §6.43 の homotopy fiber の比較、既存の構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3134 jobs）、公理監査成功（1344 宣言、標準三公理のみ）。追加公理・sorry なし。

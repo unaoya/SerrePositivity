@@ -3516,3 +3516,54 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.objectSAdditivityComparisonNat
 #check @SerrePositivity.KST.SConstruction.coreSAdditivityComparisonNat
 #print axioms SerrePositivity.KST.SConstruction.coreSAdditivityComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span
+#print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span
+#check @SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
+#print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
+#check @SerrePositivity.KST.SConstruction.stable_hasColimit_span
+#print axioms SerrePositivity.KST.SConstruction.stable_hasColimit_span
+#check @SerrePositivity.KST.SConstruction.stable_pushoutProjection_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.stable_pushoutProjection_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.exists_relative_stable_pushoutFamily
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_stable_pushoutFamily
+#check @SerrePositivity.KST.SConstruction.exists_stablePushoutSection_extending
+#print axioms SerrePositivity.KST.SConstruction.exists_stablePushoutSection_extending
+#check @SerrePositivity.KST.SConstruction.stablePushoutFamilySpace
+#print axioms SerrePositivity.KST.SConstruction.stablePushoutFamilySpace
+#check @SerrePositivity.KST.SConstruction.stablePushoutFamilySpace_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.stablePushoutFamilySpace_isContractibleKan
+#check @SerrePositivity.KST.SConstruction.stablePushoutFamiliesIso
+#print axioms SerrePositivity.KST.SConstruction.stablePushoutFamiliesIso
+#check @SerrePositivity.KST.SConstruction.stablePushoutSection
+#print axioms SerrePositivity.KST.SConstruction.stablePushoutSection
+#check @SerrePositivity.KST.SConstruction.stablePushoutSection_projection
+#print axioms SerrePositivity.KST.SConstruction.stablePushoutSection_projection
+#check @SerrePositivity.KST.SConstruction.stablePushoutFunctor
+#print axioms SerrePositivity.KST.SConstruction.stablePushoutFunctor
+#check @SerrePositivity.KST.SConstruction.PreservesCofiberData.isPushoutSquare
+#print axioms SerrePositivity.KST.SConstruction.PreservesCofiberData.isPushoutSquare
+#check @SerrePositivity.KST.SConstruction.PreservesCofiberData.toSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.PreservesCofiberData.toSConstructionData
+#check @SerrePositivity.KST.SConstruction.preservesSConstructionData_iff_cofiberData
+#print axioms SerrePositivity.KST.SConstruction.preservesSConstructionData_iff_cofiberData
+#check @SerrePositivity.KST.SConstruction.stableModelHom_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.stableModelHom_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.functor_span_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.functor_span_hasPointwiseColimits
+#check @SerrePositivity.KST.SConstruction.functor_pushout_iff_pointwise
+#print axioms SerrePositivity.KST.SConstruction.functor_pushout_iff_pointwise
+#check @SerrePositivity.KST.SConstruction.gappedInclusion_pushout_iff
+#print axioms SerrePositivity.KST.SConstruction.gappedInclusion_pushout_iff
+#check @SerrePositivity.KST.SConstruction.gappedInclusion_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.gappedInclusion_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.gappedInclusion_pushout_iff_pointwise
+#print axioms SerrePositivity.KST.SConstruction.gappedInclusion_pushout_iff_pointwise
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsPostcomp
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsPostcomp
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsPostcomp_ι
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsPostcomp_ι
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsPostcomp_projection
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsPostcomp_projection
+#check @SerrePositivity.KST.SConstruction.stablePushoutSection_postcompIso
+#print axioms SerrePositivity.KST.SConstruction.stablePushoutSection_postcompIso
