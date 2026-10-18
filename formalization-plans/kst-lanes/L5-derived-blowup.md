@@ -436,6 +436,10 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | 指定係数拡大比較の可逆性・cartesian perfect 性 | DiagramGaugeStructureCartesian | 一般の gauge で捻った実際の構造加群の対象条件 |
 | `derivedFiniteOverlapTwistModule_cartesian/cartesianPerfect` | FiniteOverlapTwistCartesian | 全整数 O(m) の元の Koszul 模型での指定 cartesian perfect 条件 |
 | `blowupTwistDGObject`・`blowupTwistDGObjectDerivedIso` | FiniteOverlapTwistEnhancement | 既存の大域 dg 候補内の指定捻り対象とその H⁰ 比較 |
+| 捻り射・零／加法比較・指数移送の頂点成分 | FiniteOverlapTwistActionComponents | 全図式加群で指定比較の成分を計算 |
+| `finiteOverlapTwistActionAddIso_assoc/zero_left/zero_right` | FiniteOverlapTwistActionCoherence | 整数和の移送を含む加群圏での三段結合と左右単位条件 |
+| 導来捻りの生成射・零／加法比較・指数移送の Q 上の計算 | FiniteOverlapDerivedTwistComponents | 主局所化前の指定比較への計算経路 |
+| `finiteOverlapDerivedTwistActionAddIso_assoc/zero_left/zero_right` | FiniteOverlapDerivedTwistCoherence | 全ての主導来対象での三段結合と左右単位条件 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -503,7 +507,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2835定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2849定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -537,7 +541,11 @@ regular 自己同型の重みを含む指定加群遷移の可換式を証明済
 主局所化と指定延長–制限随伴でこの可換式を移し、O(m) の canonical な
 係数拡大比較そのものの可逆性を証明済み。元の Koszul 表示での全整数 O(m) の
 cartesian perfect 性、既存の大域 dg 候補内の指定捻り対象とその H⁰ 比較を構成済み。
-次の実装単位は捻り作用の高次整合性、および coherent な降下との接続。
+指定捻り作用の三段加法比較と左右単位条件は、整数和の対象移送を含めて
+全図式加群と主導来圏の全対象で証明済み。これは指定自然同型の整合性であり、
+∞圏の極限比較や層の降下をこれだけから結論しない。
+次の実装単位は一般の cartesian perfect 対象に対する捻り作用の保存、
+および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
