@@ -35,7 +35,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・463 モジュール 4462 宣言の公理監査成功。
+対象ビルド・468 モジュール 4492 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3350,4 +3350,37 @@ BG の標準頂点で評価することで、実際の BF 標準射の各段に�
 
 参照：Goerss–Jardine I §7、VIII §2、BF 1978 §2、HA §1.4.2。
 対象ビルド 3914 jobs 成功。私有宣言を含む 463 モジュール 4462 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro の全射性、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 110. L9e の実際の塔の fiber の微分
+
+L9b の連結準同型を、標準基点での底の群から点つき fiber の群への準同型へ移した。
+像の基点への恒等射による移送と ofVertex の基点の等式を明示している。
+fiber の包含との合成、元の射の後の合成が自明となることを証明した。
+三つの群同型で L9b の各位置の完全性を移し、標準基点での正次数群の完全列を与えた。
+追加の完全性や境界射の仮定は導入していない。
+
+点つき Kan fibration の塔の fiber の最初の微分を、前の fiber の包含と次の連結準同型の合成で構成した。
+間に現れる連結射の後の包含の零合成から、微分の二乗の零性を証明した。
+骨格の写像空間の実際の fibration の塔へ適用し、stageFiber の群の微分を得た。
+さらに検証済みのセルの係数表示の群同型で共役し、非退化単体上の高次係数群の微分へ移した。
+この群同型が両微分を交換することと、移された微分の二乗が零であることを証明した。
+
+この保存単位の係数微分は実際の幾何的微分から構成されている。
+通常の交代 cochain 微分との一致、その向きの符号、塔の収束はまだ含まない。
+従って先に得た群 cohomology の消滅をこの微分の cohomology へまだ適用していない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `pointedFiberGroupEquiv` / `pointedConnectingHom` | 標準基点での fiber の群と連結準同型 |
+| `pointedConnectingHom_inclusion` / `pointedConnectingHom_projection` | 点つき長完全列の零合成 |
+| `pointed_exact_connecting_fiber` / `pointed_exact_total_base` / `pointed_exact_fiber_total` | 標準基点での三つの位置の完全性 |
+| `PointedFibrationTower.differential` / `differential_comp` | fibration の塔の fiber の最初の微分と二乗の零性 |
+| `UnbasedPointedMapping.stageDifferential` / `stageDifferential_comp` | 骨格の実際の塔への適用 |
+| `SkeletalCellAttachment.coefficientDifferential` / `stageFiberCoefficientEquiv_differential` | セルの係数への移送と群同型による可換式 |
+| `SkeletalCellAttachment.coefficientDifferential_comp` | 移された係数微分の二乗の零性 |
+
+参照：Goerss–Jardine I §§7–8、VIII §1。
+対象ビルド 3919 jobs 成功。私有宣言を含む 468 モジュール 4492 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro の全射性、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
