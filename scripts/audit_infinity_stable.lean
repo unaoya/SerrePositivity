@@ -13,6 +13,23 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.reverseGrid_postcomp
 #print axioms SerrePositivity.InfinityCategories.reverseGrid_double
 #print axioms SerrePositivity.InfinityCategories.reverseGrid_pastingSquare
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_restrict_of_isIso
+#print axioms SerrePositivity.InfinityCategories.isLimitCone_iff_reverseCocone_restrict
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_stdSimplex_zero_one
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_stdSimplex_zero_one_inv
+#print axioms SerrePositivity.InfinityCategories.stableJoinReverse_stdSimplex_zero_one_inv_triangle
+#print axioms SerrePositivity.InfinityCategories.stableHornReverse_two_left
+#print axioms SerrePositivity.InfinityCategories.stableHornReverse_two_right
+#print axioms SerrePositivity.InfinityCategories.squareConeReverseShape
+#print axioms SerrePositivity.InfinityCategories.squareConeReverseShape_left
+#print axioms SerrePositivity.InfinityCategories.squareConeReverseShape_right
+#print axioms SerrePositivity.InfinityCategories.squareTriangle_reverseGrid
+#print axioms SerrePositivity.InfinityCategories.squareConeReverseShape_square
+#print axioms SerrePositivity.InfinityCategories.JoinCone.reverseCocone_val
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_iff_reverseGrid
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_pasting_iff
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_pasting
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_pasting_cancel_right
 #print axioms SerrePositivity.InfinityCategories.JoinCocone
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_eq
@@ -697,7 +714,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ConeDiagramReverse,
     `SerrePositivity.InfinityCategories.Stable.SliceOpposite,
     `SerrePositivity.InfinityCategories.Stable.ConeOpposite,
-    `SerrePositivity.InfinityCategories.Stable.GridOpposite]
+    `SerrePositivity.InfinityCategories.Stable.GridOpposite,
+    `SerrePositivity.InfinityCategories.Stable.ColimitReindex,
+    `SerrePositivity.InfinityCategories.Stable.StandardJoinOpposite,
+    `SerrePositivity.InfinityCategories.Stable.SquareOppositeShapes,
+    `SerrePositivity.InfinityCategories.Stable.SquareOpposite,
+    `SerrePositivity.InfinityCategories.Stable.PullbackPasting]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

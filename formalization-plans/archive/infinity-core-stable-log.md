@@ -4838,3 +4838,145 @@ SerrePositivity.InfinityCategories.reverseGrid_pastingSquare.{u} {X : SSet.{u}}
 公理監査は 101 モジュール・1060 宣言について標準三公理のみ、終了コード 0。
 `git diff --check` 成功。普遍四角形の反転との照合、引き戻しの貼り合わせ、
 三角構造および S5〜S7 は未完了。
+
+## S4：標準四角形の双対性と引き戻しの貼り合わせ
+
+標準四角形の反転と余極限の同型による再添字付けには値域の追加仮定なし。
+貼り合わせの三定理には値域の Quasicategory と右四角形の引き戻し性を仮定する。
+正確な公開型（Lean の出力）：
+
+```lean
+SerrePositivity.InfinityCategories.isColimitCone_iff_restrict_of_isIso.{u} {K₀ K X : SSet.{u}}
+  {p : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u} p)
+  (f : Quiver.Hom.{u, u + 1} K₀ K) [IsIso.{u, u + 1} f] :
+  SerrePositivity.InfinityCategories.IsColimitCone.{u} c ↔
+    SerrePositivity.InfinityCategories.IsColimitCone.{u}
+      (SerrePositivity.InfinityCategories.JoinCocone.restrict.{u} c f)
+SerrePositivity.InfinityCategories.isLimitCone_iff_reverseCocone_restrict.{u} {K L X : SSet.{u}}
+  {p : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCone.{u} p)
+  (f : Quiver.Hom.{u, u + 1} L (SSet.op.{u} K)) [IsIso.{u, u + 1} f] :
+  SerrePositivity.InfinityCategories.IsLimitCone.{u} c ↔
+    SerrePositivity.InfinityCategories.IsColimitCone.{u}
+      (SerrePositivity.InfinityCategories.JoinCocone.restrict.{u}
+        (SerrePositivity.InfinityCategories.JoinCone.reverseCocone.{u} c) f)
+SerrePositivity.InfinityCategories.stableJoinReverse_stdSimplex_zero_one.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1}
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u}
+        (Iso.inv.{u, u + 1} (SerrePositivity.InfinityCategories.joinStdSimplexIso.{u} 0 1)))
+      (CategoryStruct.comp.{u, u + 1}
+        (Iso.hom.{u, u + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u} Δ[0] Δ[1]))
+        (CategoryStruct.comp.{u, u + 1}
+          (SerrePositivity.InfinityCategories.joinMap.{u} (Iso.hom.{u, u + 1} (stdSimplex.opIso.{u} ⦋1⦌))
+            (Iso.hom.{u, u + 1} (stdSimplex.opIso.{u} ⦋0⦌)))
+          (Iso.hom.{u, u + 1} (SerrePositivity.InfinityCategories.joinStdSimplexIso.{u} 1 0)))))
+    (Iso.hom.{u, u + 1} (stdSimplex.opIso.{u} ⦋2⦌))
+SerrePositivity.InfinityCategories.stableJoinReverse_stdSimplex_zero_one_inv.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u} (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋1⦌))
+        (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋0⦌)))
+      (CategoryStruct.comp.{u, u + 1}
+        (Iso.inv.{u, u + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u} Δ[0] Δ[1]))
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u}
+          (Iso.hom.{u, u + 1} (SerrePositivity.InfinityCategories.joinStdSimplexIso.{u} 0 1)))))
+    (CategoryStruct.comp.{u, u + 1} (Iso.hom.{u, u + 1} (SerrePositivity.InfinityCategories.joinStdSimplexIso.{u} 1 0))
+      (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋2⦌)))
+SerrePositivity.InfinityCategories.stableJoinReverse_stdSimplex_zero_one_inv_triangle.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} (Iso.inv.{u, u + 1} (SerrePositivity.InfinityCategories.joinStdSimplexIso.{u} 1 0))
+      (CategoryStruct.comp.{u, u + 1}
+        (SerrePositivity.InfinityCategories.joinMap.{u} (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋1⦌))
+          (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋0⦌)))
+        (Iso.inv.{u, u + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u} Δ[0] Δ[1]))))
+    (CategoryStruct.comp.{u, u + 1} (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋2⦌))
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u}
+        (Iso.inv.{u, u + 1} (SerrePositivity.InfinityCategories.joinStdSimplexIso.{u} 0 1))))
+SerrePositivity.InfinityCategories.stableHornReverse_two_left.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} horn₂₀.ι₀₁.{u}
+      (Iso.hom.{u, u + 1} (SerrePositivity.InfinityCategories.hornReverseIso.{u} 2 2)))
+    (CategoryStruct.comp.{u, u + 1} (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋1⦌))
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u} horn₂₂.ι₁₂.{u}))
+SerrePositivity.InfinityCategories.stableHornReverse_two_right.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} horn₂₀.ι₀₂.{u}
+      (Iso.hom.{u, u + 1} (SerrePositivity.InfinityCategories.hornReverseIso.{u} 2 2)))
+    (CategoryStruct.comp.{u, u + 1} (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋1⦌))
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u} horn₂₂.ι₀₂.{u}))
+SerrePositivity.InfinityCategories.squareConeReverseShape.{u} :
+  Quiver.Hom.{u, u + 1} (SerrePositivity.InfinityCategories.join.{u} (Subcomplex.toSSet.{u} Λ[2, 0]) Δ[0])
+    (SSet.op.{u} (SerrePositivity.InfinityCategories.join.{u} Δ[0] (Subcomplex.toSSet.{u} Λ[2, 2])))
+SerrePositivity.InfinityCategories.squareConeReverseShape_left.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} SerrePositivity.InfinityCategories.spanCoconeTriangleLeft.{u}
+      SerrePositivity.InfinityCategories.squareConeReverseShape.{u})
+    (CategoryStruct.comp.{u, u + 1} (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋2⦌))
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u}
+        SerrePositivity.InfinityCategories.cospanConeTriangleRight.{u}))
+SerrePositivity.InfinityCategories.squareConeReverseShape_right.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} SerrePositivity.InfinityCategories.spanCoconeTriangleRight.{u}
+      SerrePositivity.InfinityCategories.squareConeReverseShape.{u})
+    (CategoryStruct.comp.{u, u + 1} (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋2⦌))
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u}
+        SerrePositivity.InfinityCategories.cospanConeTriangleLeft.{u}))
+SerrePositivity.InfinityCategories.squareTriangle_reverseGrid.{u} (i : Fin 2) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.squareTriangle.{u} i)
+      (SerrePositivity.InfinityCategories.reverseGrid.{u}
+        (CategoryStruct.id.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]))))
+    (CategoryStruct.comp.{u, u + 1} (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋2⦌))
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u}
+        (SerrePositivity.InfinityCategories.squareTriangle.{u} i.rev)))
+SerrePositivity.InfinityCategories.squareConeReverseShape_square.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} SerrePositivity.InfinityCategories.squareConeReverseShape.{u}
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u}
+        (Iso.hom.{u, u + 1} SerrePositivity.InfinityCategories.cospanConeSquareIso.{u})))
+    (CategoryStruct.comp.{u, u + 1} (Iso.hom.{u, u + 1} SerrePositivity.InfinityCategories.spanCoconeSquareIso.{u})
+      (SerrePositivity.InfinityCategories.reverseGrid.{u}
+        (CategoryStruct.id.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]))))
+SerrePositivity.InfinityCategories.JoinCone.reverseCocone_val.{u} {K X : SSet.{u}} {p : Quiver.Hom.{u, u + 1} K X}
+  (c : SerrePositivity.InfinityCategories.JoinCone.{u} p) :
+  Eq.{u + 1} (↑(SerrePositivity.InfinityCategories.JoinCone.reverseCocone.{u} c))
+    (CategoryStruct.comp.{u, u + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u} (CategoryStruct.id.{u, u + 1} (SSet.op.{u} K))
+        (Iso.inv.{u, u + 1} (stdSimplex.opIso.{u} ⦋0⦌)))
+      (CategoryStruct.comp.{u, u + 1}
+        (Iso.inv.{u, u + 1} (SerrePositivity.InfinityCategories.stableJoinReverseIso.{u} Δ[0] K))
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u} ↑c)))
+SerrePositivity.InfinityCategories.isPullbackSquare_iff_reverseGrid.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  SerrePositivity.InfinityCategories.IsPullbackSquare.{u} F ↔
+    SerrePositivity.InfinityCategories.IsPushoutSquare.{u} (SerrePositivity.InfinityCategories.reverseGrid.{u} F)
+SerrePositivity.InfinityCategories.isPullbackSquare_pasting_iff.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[2] Δ[1]) X)
+  (hright :
+    SerrePositivity.InfinityCategories.IsPullbackSquare.{u}
+      (SerrePositivity.InfinityCategories.pastingSquare.{u} F 0)) :
+  SerrePositivity.InfinityCategories.IsPullbackSquare.{u} (SerrePositivity.InfinityCategories.pastingSquare.{u} F 2) ↔
+    SerrePositivity.InfinityCategories.IsPullbackSquare.{u} (SerrePositivity.InfinityCategories.pastingSquare.{u} F 1)
+SerrePositivity.InfinityCategories.isPullbackSquare_pasting.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[2] Δ[1]) X)
+  (hleft :
+    SerrePositivity.InfinityCategories.IsPullbackSquare.{u} (SerrePositivity.InfinityCategories.pastingSquare.{u} F 2))
+  (hright :
+    SerrePositivity.InfinityCategories.IsPullbackSquare.{u}
+      (SerrePositivity.InfinityCategories.pastingSquare.{u} F 0)) :
+  SerrePositivity.InfinityCategories.IsPullbackSquare.{u} (SerrePositivity.InfinityCategories.pastingSquare.{u} F 1)
+SerrePositivity.InfinityCategories.isPullbackSquare_pasting_cancel_right.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[2] Δ[1]) X)
+  (hright :
+    SerrePositivity.InfinityCategories.IsPullbackSquare.{u} (SerrePositivity.InfinityCategories.pastingSquare.{u} F 0))
+  (houter :
+    SerrePositivity.InfinityCategories.IsPullbackSquare.{u}
+      (SerrePositivity.InfinityCategories.pastingSquare.{u} F 1)) :
+  SerrePositivity.InfinityCategories.IsPullbackSquare.{u} (SerrePositivity.InfinityCategories.pastingSquare.{u} F 2)
+```
+
+対象 PullbackPasting ビルド 1978 jobs、Stable 集約ビルド 2050 jobs、
+公開型の抽出、公理監査はすべて終了コード 0。監査は 106 モジュール・1079 宣言
+（生成・非公開宣言を含む）、依存公理は propext・Classical.choice・Quot.sound のみ。
+HTT Lemma 4.4.2.1 の押し出し・引き戻しの両側は完了。A6 を待つ箇所はない。
+S4 の前加法構造・整数シフト・三角構造（TR1〜TR4）、S5〜S7 は未完了。
