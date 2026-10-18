@@ -662,3 +662,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentPointedFiberTranspor
 public import SerrePositivity.InfinityCategories.F1.PointedFiberTransportCoordinates
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramRestrictionFibration
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramExtensionSpace
+public import SerrePositivity.InfinityCategories.F1.LeftResolutionStrictExtension

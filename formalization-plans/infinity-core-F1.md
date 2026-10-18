@@ -13423,5 +13423,45 @@ lemma exists_strictDiagramExtension {C : Type u} [Category.{u} C]
     (θ : F ⟶ leftStrictTransportDiagram q) :
     ∃ Θ : G ⟶ leftStrictTransportDiagram q, η ≫ Θ = θ
 
+instance coherentLeftResolutionComparison_mono (X : SSet.{u}) :
+    Mono (coherentLeftResolutionComparison X)
+
+instance coherentLeftResolutionFunctor_obj_kanComplex (X : SSet.{u}) [KanComplex X] :
+    KanComplex (coherentLeftResolutionFunctor.obj X)
+
+noncomputable def leftResolutionDiagramComparison {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) : F ⟶ F ⋙ coherentLeftResolutionFunctor
+
+lemma leftResolutionDiagramExtensionSpace_isContractibleKan
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (θ : F ⟶ leftStrictTransportDiagram q) :
+    IsContractibleKan (strictDiagramExtensionSpace (leftResolutionDiagramComparison F) q θ)
+
+lemma exists_leftStrictTransportResolutionRetraction
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (q : E ⟶ nerve C) [LeftFibration q] :
+    ∃ r : leftStrictTransportDiagram q ⋙ coherentLeftResolutionFunctor ⟶ leftStrictTransportDiagram q,
+      leftResolutionDiagramComparison (leftStrictTransportDiagram q) ≫ r =
+        𝟙 (leftStrictTransportDiagram q)
+
+lemma leftResolutionDiagramExtension_isQCatEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (θ : F ⟶ leftStrictTransportDiagram q) (hθ : ∀ c, IsQCatEquivalence (θ.app c))
+    (r : F ⋙ coherentLeftResolutionFunctor ⟶ leftStrictTransportDiagram q)
+    (hr : leftResolutionDiagramComparison F ≫ r = θ) (c : C) :
+    IsQCatEquivalence (X := coherentLeftResolution (F.obj c))
+      (Y := leftStrictTransport q c) (r.app c)
+
+lemma exists_leftStrictTransportResolutionRetraction_equivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (q : E ⟶ nerve C) [LeftFibration q] :
+    ∃ r : leftStrictTransportDiagram q ⋙ coherentLeftResolutionFunctor ⟶ leftStrictTransportDiagram q,
+      leftResolutionDiagramComparison (leftStrictTransportDiagram q) ≫ r =
+        𝟙 (leftStrictTransportDiagram q) ∧ ∀ c,
+          IsQCatEquivalence (X := coherentLeftResolution (leftStrictTransport q c))
+            (Y := leftStrictTransport q c) (r.app c)
+
 end SerrePositivity.InfinityCategories
 ```
