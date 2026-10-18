@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.KST.Descent.CechBaseLocality
+public import SerrePositivity.KST.Descent.CechMapLocality
+public import SerrePositivity.KST.Descent.CechWeakTransfer
 public import SerrePositivity.KST.Descent.TransferBaseChangeGeometry
 public import SerrePositivity.KST.Descent.TransferBaseChange
 public import SerrePositivity.KST.Descent.TransferBaseChangeDescent
