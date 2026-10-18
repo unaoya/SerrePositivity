@@ -32,7 +32,10 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 自由生成加群の変換と dg 係数変更の自然性を証明済み。
 チャート基底変換行列の係数自然性、座標と微分の移送を含むチャート dg 係数変更、
 その合成律・恒等律、チャート基底変換との dg 自然性を証明済み。
-全有限重なりの環射への適用と、coherent な降下模型の組立ては未完了。
+環射と pivot 変更をまとめた半線形チャート dg 遷移と、その合成則を証明済み。
+全有限重なりの実際の環射に沿う dg 遷移を構成し、
+環射の等式移送・係数制限の標準比較を含む恒等律と合成律を証明済み。
+比較の結合・単位の高次整合性の全有限図式への適用と、coherent な降下模型の組立ては未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -228,6 +231,13 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `chartScalarNormalizedDGFunctor`・包含公式 | ChartScalarNormalization | 規格化と係数変更の順序を比較した dg 関手 |
 | `chartExteriorDGFunctor_scalar_natural` | ChartDGScalarNaturality | チャートの可逆基底変換と dg 係数変更の可換図式 |
 | `chartScalarDGFunctor_comp`・`chartScalarDGFunctor_id` | ChartScalarComposition | 実際のチャート dg 係数変更の合成律・恒等律 |
+| `chartSemilinearDGFunctor`・包含公式 | ChartSemilinearTransition | 環射と pivot 変更をまとめた実際の dg 遷移 |
+| `chartSemilinearExterior_comp`・`chartSemilinearDGFunctor_comp` | ChartSemilinearComposition | 二段の異なる係数環を通るチャート遷移の合成律 |
+| `finiteOverlapChartMap_coordinates`・`FiniteOverlapKoszulObject`・`finiteOverlapDGTransition`・包含公式 | FiniteOverlapDGTransition | 全有限重なり環上の局所模型と実際の dg 遷移 |
+| `finiteOverlapChartMap_ringHom_comp`・`finiteOverlapDGTransition_unit_comp` | FiniteOverlapDGCoherenceData | 有限重なりの合成環射と合成単元の直接射との一致 |
+| `restrictionRingHomTransportDGFunctor`・対象公式・外積 Hom の成分公式 | RestrictionRingHomTransport | 環射の等式による dg 制限の移送 |
+| `finiteOverlapDGCompositionComparison`・`finiteOverlapDGTransition_comp` | FiniteOverlapDGComposition | 標準制限比較後の全有限重なり dg 遷移の合成律 |
+| `finiteOverlapDGIdentityComparison`・`finiteOverlapDGTransition_id` | FiniteOverlapDGIdentity | 標準恒等制限比較後の全有限重なり dg 遷移の恒等律 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -282,12 +292,16 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 チャートの具体的な可逆基底変換も係数変更と可換であり、規格化座標・微分の移送を
 明示した dg 自然性の可換四角形を構成済み。
 実際の座標表示のチャート dg 係数変更の合成律・恒等律も証明済み。
-全有限重なりの係数環射への適用と、coherent な降下模型の組立ては未完了。
+環射と pivot 変更をまとめた半線形 dg 遷移の Hom は、係数変更と明示基底変換で計算できる。
+その二段の合成は直接遷移に一致し、合成単元の公式も証明済み。
+全有限重なりの実際の環射にこの構成を適用して dg 遷移を構成済み。
+環射の合成等式による行先の移送を含む標準制限比較後の合成律と、恒等制限比較後の恒等律を証明済み。
+比較の結合・単位の高次整合性の全有限図式への適用と、coherent な降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全1266定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1353定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は全有限重なりの環射に沿う dg 遷移と、その恒等・合成の整合性。
+次の実装単位は全有限重なりの制限比較の結合・単位整合性と dg 図式データの組立て。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
