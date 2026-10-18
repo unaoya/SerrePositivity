@@ -103,3 +103,6 @@ public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
 public import SerrePositivity.InfinityCategories.F1B.RelativePathEndpointComparison
 public import SerrePositivity.InfinityCategories.F1B.FunctorPointHomotopy
 public import SerrePositivity.InfinityCategories.F1B.FunctorDiagramPathUniqueness
+public import SerrePositivity.InfinityCategories.F1B.SquareBoundary
+public import SerrePositivity.InfinityCategories.F1B.SquareTransportComparison
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaReconstructionComparison

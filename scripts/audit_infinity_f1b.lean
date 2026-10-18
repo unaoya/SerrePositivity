@@ -637,3 +637,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.exists_relativeFunctorPointHomotopy
 #check @SerrePositivity.InfinityCategories.exists_functorDiagramPath_endpointHomotopy
 #check @SerrePositivity.InfinityCategories.FunctorDiagramPathExtension.exists_endpointHomotopy
+
+#check @SerrePositivity.InfinityCategories.squareBoundary
+#check @SerrePositivity.InfinityCategories.squareBoundary_restriction_eq
+#check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.exists_homotopy_to_triangleTransport
+#check @SerrePositivity.InfinityCategories.unitCommaSquare_reconstruction_homotopy

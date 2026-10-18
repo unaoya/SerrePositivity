@@ -268,10 +268,16 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 元の図式へ戻し、`exists_functorDiagramPath_endpointHomotopy` と
 `FunctorDiagramPathExtension.exists_endpointHomotopy` は指定部分図式を全時間で固定する
 終点ホモトピーを返す。一般の指定始点・境界 path に関する輸送の相対一意性は実装済み。
-**正方形全体の可逆 path と順方向比較の境界 path の一致、および輸送の相対一意性の一般補題は
-実装済み。** 残るのは、三辺の固定と右辺の path を正方形の全境界の等式へまとめ、復元側の
-三角形の輸送を畳み込みで正方形の輸送へ移して同じ始点・全境界 path を持つことを確認し、
-この一意性を適用する接続と、両合成のホモトピー。独立な経路の合成との同一視や path の混同は用いない。
+`squareBoundary` は三辺の和に右辺の像を加えた全境界で、`squareBoundary_restriction_eq` は
+三辺と右辺の一致を全境界の一致へまとめる。
+`ThreeEdgeSquareComparison.exists_homotopy_to_triangleTransport` は三角形の輸送を畳み込みで
+正方形へ移し、同じ始点・全境界 path を照合して、全境界固定の終点ホモトピーを返す。
+`unitCommaSquare_reconstruction_homotopy` は元の comma 正方形と、その標的・全体比較から
+取り出した経路で復元した正方形を、この一意性により全境界固定で結ぶ。
+**同じパラメータ上での正方形の復元比較まで実装済み。比較射の合成のホモトピーは未証明。**
+次はこの比較を comma の区間写像空間の族のホモトピーへ戻し、導来 fiber の普遍族で選んだ
+復元を前合成した場合の同じ始点・境界 path を照合して、戻る合成のホモトピーと始対象性へ接続する。
+同じパラメータで選び直した輸送と、普遍族から前合成した輸送を定義的に同じとは扱わない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -280,8 +286,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2054 jobs）・公理監査（1148 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 386 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2057 jobs）・公理監査（1153 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 389 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -480,4 +486,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `exists_edge_over_trivialKanFibration`・`exists_homotopy_over_trivialKanFibration` | 同じ射の二つの持ち上げを基底上の恒等辺・定値ホモトピーで結ぶ | 実装済み |
 | `exists_relativePathEndpointHomotopy` | 同じ始点・基底 path の二つの輸送の終点を基底固定で比較 | 実装済み |
 | `functorDiagramPointEquiv_vertex`・`exists_relativeFunctorPointHomotopy` | 零単体表示の比較から元の図式へ戻し、相対条件を保持 | 実装済み |
-| `exists_functorDiagramPath_endpointHomotopy`・`FunctorDiagramPathExtension.exists_endpointHomotopy` | 同じ始点・制限 path の拡張の終点を指定部分図式固定で結ぶ | 実装済み（元の正方形と復元側への適用は未接続） |
+| `exists_functorDiagramPath_endpointHomotopy`・`FunctorDiagramPathExtension.exists_endpointHomotopy` | 同じ始点・制限 path の拡張の終点を指定部分図式固定で結ぶ | 実装済み（同じパラメータの正方形の復元比較にも接続済み） |
+| `squareBoundary`・`squareBoundary_restriction_eq` | 三辺の固定と右辺の path の一致を全境界の等式へまとめる | 実装済み |
+| `ThreeEdgeSquareComparison.exists_homotopy_to_triangleTransport` | 三角形の輸送の畳み込みと元の正方形を、始点・全境界 path の照合により境界固定で結ぶ | 実装済み |
+| `unitCommaSquare_reconstruction_homotopy` | 同じパラメータ上で元の comma 正方形とその標的・経路からの復元を全境界固定で比較 | 実装済み（写像空間の族への移送と普遍族の前合成の照合は未完了） |
