@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・117 モジュール 1955 宣言の公理監査成功。
+対象ビルド・122 モジュール 2019 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -282,7 +282,7 @@ amend・rebase・reset を使わない。
 | L9a | 完了 | 全体ビルドも L9b の区切りで成功 |
 | L9b | 完了・対象ビルド、公理監査、全体ビルド成功 | なし |
 | L9c | 完了・対象ビルド、公理監査、全体ビルド成功 | γ3 後の導来 Sp・∞ 極限との比較は別工程 |
-| L9d | 着手 | telescope と π_* の計算 |
+| L9d | 進行中 | スペクトルの乗法射、telescope、群の計算との接続 |
 | L9e | 未着手 | Tot、hG、有理自明作用の比較 |
 
 ## 16. 主要宣言
@@ -1341,3 +1341,35 @@ suspension が余極限を保存することから、段ごとの Kan 余極限�
 保存単位の対象ビルド 1896 jobs 成功。
 私有宣言を含む 117 モジュール 1955 宣言で標準三公理のみ。
 L9d は進行中。次は有理化の telescope に対応する群の局所化の計算を進める。
+
+
+## 47. L9d の乗法列の群の局所化と ℚ テンソル
+
+2,3,4,… の整数乗法を遷移とするアーベル群の列を構成した。
+二段間の係数は整数区間の積であり、零段からの係数は (i+1)! に一致する。
+任意の非零整数は十分先の遷移係数を割ることを証明した。
+直極限の代表と等式の検出から、非零整数倍が直極限で全単射になることを示した。
+元の群のねじれを仮定しない。
+
+零段からの標準射について、整数の非零元による加群の局所化の三条件を証明した。
+有理テンソル積の標準射も同じ局所化なので、普遍性から線形同型を得た。
+この同型は零段の a を a⊗1 に送り、加法準同型に関して自然である。
+直極限の cocone がアーベル群の圏の余極限を与えることも証明した。
+これにより圏論的な乗法列の余極限も A⊗ℚ と同定できる。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `RationalTelescope.coefficient_comp` / `.coefficient_zero` | 遷移係数の合成則と階乗表示 |
+| `RationalTelescope.exists_dvd_integerCoefficient` | 任意の非零整数の後続段での可除性 |
+| `RationalTelescope.additiveLimit_smul_bijective` | 直極限での非零整数倍の全単射性 |
+| `RationalTelescope.additiveLimit_isLocalizedModule` | 零段の標準射の局所化条件 |
+| `RationalTelescope.additiveLimitTensorEquiv` | 直極限と A⊗ℚ の線形同型 |
+| `RationalTelescope.additiveDiagramTensorIso` / `.additiveDiagramTensorIso_zero` | 群の圏の余極限の比較と零段の計算 |
+| `RationalTelescope.limitMap` | 加法準同型の直極限への誘導と関手法則 |
+| `RationalTelescope.additiveLimitTensorEquiv_natural` | テンソル比較の自然性 |
+
+参照：BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2319 jobs 成功。
+私有宣言を含む 122 モジュール 2019 宣言で標準三公理のみ。
+L9d は進行中。スペクトルの実際の乗法射と telescope の構成および比較は未完了。
+群の計算だけでスペクトルの有理化の完成を主張しない。

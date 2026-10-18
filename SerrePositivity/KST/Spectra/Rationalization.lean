@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.FilteredHomotopyGroups
 public import SerrePositivity.KST.Spectra.FilteredLoopColimit
 public import SerrePositivity.KST.Spectra.FilteredSpectrumHomotopy
+public import SerrePositivity.KST.Spectra.RationalTelescopeNaturality
 
 /-!
 概要：スペクトルの telescope 有理化に使う余極限とホモトピー群の比較。
