@@ -192,6 +192,9 @@ public import SerrePositivity.KST.Descent.DerivedCechFubini
 public import SerrePositivity.KST.Descent.WeightedCechConeCompatibility
 public import SerrePositivity.KST.Descent.WeightedCechDerivedConeCompatibility
 
+public import SerrePositivity.KST.Descent.AugmentedCechSpaces
+public import SerrePositivity.KST.Descent.AugmentedCechWeightChange
+
 /-!
 # K-L8：論文 §3 の降下
 
@@ -325,6 +328,8 @@ K0・T2 による比較データの供給と (3.6) の同定自体は未完。
 導来定数比較の指定増強の可換式・その随伴像の計算も証明する。
 同じ指定導来比較から随伴と計算同型を同時に構成し、
 実際の計算同型と重み変更の合成同型そのものが指定増強の像を保つことも証明する。
+増強つき図式の圏上で指定比較を自然変換とし、指定比較の弱同値による降下条件が
+cofibrant な可縮重みの変更で不変であることも実際の模型の飽和性から証明する。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
