@@ -1,6 +1,15 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.exists_binaryCoconeTriangleFamily
+#print axioms SerrePositivity.InfinityCategories.exists_binaryCoconeEdgeLift
+#print axioms SerrePositivity.InfinityCategories.exists_binaryCoconeEdgeLift_of_comm
+#print axioms SerrePositivity.InfinityCategories.exists_binaryCoconeHomLift
+#print axioms SerrePositivity.InfinityCategories.binaryColimit_hom_ext_to_cocone
+#print axioms SerrePositivity.InfinityCategories.binaryColimit_hom_ext
+#print axioms SerrePositivity.InfinityCategories.binaryColimit_isColimit
+#print axioms SerrePositivity.InfinityCategories.hasBinaryCoproduct_of_binaryColimit
+#print axioms SerrePositivity.InfinityCategories.hasBinaryCoproducts_ho
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.legCompStruct
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.leg_comp_projection
 #print axioms SerrePositivity.InfinityCategories.exists_coconeVertexFactorization
@@ -940,7 +949,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CoconeLeg,
     `SerrePositivity.InfinityCategories.Stable.CoconeFactorization,
     `SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges,
-    `SerrePositivity.InfinityCategories.Stable.BinaryColimitDesc]
+    `SerrePositivity.InfinityCategories.Stable.BinaryColimitDesc,
+    `SerrePositivity.InfinityCategories.Stable.CoconeLegTriangle,
+    `SerrePositivity.InfinityCategories.Stable.BinaryCoconeTriangleFamily,
+    `SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdgeLift,
+    `SerrePositivity.InfinityCategories.Stable.BinaryColimitHomExt,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryCoproduct]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

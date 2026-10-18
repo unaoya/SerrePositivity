@@ -8875,3 +8875,306 @@ BinaryColimitDesc ビルド 1941 jobs、対象・Stable 集約ビルド 2182 job
 について標準三公理のみ。自分の新規ファイルの警告は解消。`git diff --check` 成功。
 h C の二項余積の一意性・instance、双積・前加法構造、シフトの加法性、回転、八面体、
 Pretriangulated instance、S5〜S7 は未完了。TR1・TR3 は完成のまま。
+
+
+## 二項余積の射の一意性とホモトピー圏の二項余積 instance
+
+`CoconeLegTriangle.lean` は合成二単体を点下の余錐の族へ戻し、両端・右辺・固定左辺を計算する。
+`BinaryCoconeTriangleFamily.lean` は二つの族を共通の頂点の辺で貼る。
+`BinaryCoconeEdgeLift.lean` はこの族を curry して余錐間の辺を作り、指定した射影の一次単体を保つ。
+これらの幾何学的構成には Quasicategory 性を仮定しない。
+Quasicategory の場合、両脚との h C の可換式を合成二単体へ持ち上げて同じ構成を適用できる。
+`BinaryColimitHomExt.lean` は可換な頂点の射を coslice の辺へ持ち上げ、
+余極限余錐の始対象性から一意性を得る。任意の共通終域へ向かう二本の脚を辺で表し、
+その余錐の頂点の等号で輸送することで `binaryColimit_hom_ext` を得た。
+`HomotopyBinaryCoproduct.lean` は存在・一意性を Mathlib の BinaryCofan の IsColimit にまとめる。
+`hasBinaryCoproducts_ho` は `[Quasicategory X] [IsStable X]` のみから
+`HasBinaryCoproducts (hoFunctor.obj X)` を与える。二項余積の普遍性・instance は完成。
+
+Lean で抽出した全公開宣言の正確な型：
+
+```lean
+@coconeLegTriangle.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    {c d : JoinCocone.{u_1} p} →
+      {i :
+          Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+            K} →
+        {e : SSet.Truncated.Edge.{u_1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)} →
+          SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c i) e (JoinCocone.leg.{u_1} d i) →
+            Quiver.Hom.{u_1, u_1 + 1}
+              (join.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+              X
+@coconeLegTriangle_right.{u_1} : ∀ {K X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X} {c d : JoinCocone.{u_1} p}
+  {i : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) K}
+  {e : SSet.Truncated.Edge.{u_1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)}
+  (t : SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c i) e (JoinCocone.leg.{u_1} d i)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinInr.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      (coconeLegTriangle.{u_1} t))
+    ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))
+@coconeLegTriangle_zero.{u_1} : ∀ {K X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X} {c d : JoinCocone.{u_1} p}
+  {i : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) K}
+  {e : SSet.Truncated.Edge.{u_1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)}
+  (t : SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c i) e (JoinCocone.leg.{u_1} d i)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1))
+      (coconeLegTriangle.{u_1} t))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1} i
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+      ↑c)
+@coconeLegTriangle_one.{u_1} : ∀ {K X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X} {c d : JoinCocone.{u_1} p}
+  {i : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) K}
+  {e : SSet.Truncated.Edge.{u_1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)}
+  (t : SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c i) e (JoinCocone.leg.{u_1} d i)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0))
+      (coconeLegTriangle.{u_1} t))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1} i
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+      ↑d)
+@coconeLegTriangle_fixed.{u_1} : ∀ {K X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X} {c d : JoinCocone.{u_1} p}
+  {i : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) K}
+  {e : SSet.Truncated.Edge.{u_1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)}
+  (t : SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c i) e (JoinCocone.leg.{u_1} d i)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinInl.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      (coconeLegTriangle.{u_1} t))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p)
+@exists_binaryCoconeTriangleFamily.{u_1} : ∀ {X : SSet.{u_1}}
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      X}
+  {c d : JoinCocone.{u_1} p} {e : SSet.Truncated.Edge.{u_1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)}
+  (L :
+    SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1}) e
+      (JoinCocone.leg.{u_1} d binaryPointLeft.{u_1}))
+  (R :
+    SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1}) e
+      (JoinCocone.leg.{u_1} d binaryPointRight.{u_1})),
+  ∃ U,
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (joinInl.{u_1}
+            (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          U)
+        p ∧
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (joinMap.{u_1}
+              (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+              (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1))
+            U)
+          ↑c ∧
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (joinMap.{u_1}
+                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                  (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+                    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+                    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+                (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0))
+              U)
+            ↑d ∧
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (joinInr.{u_1}
+                (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+              U)
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))
+@exists_binaryCoconeEdgeLift.{u_1} : ∀ {X : SSet.{u_1}}
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      X}
+  {c d : JoinCocone.{u_1} p} (e : SSet.Truncated.Edge.{u_1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d))
+  (L :
+    SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1}) e
+      (JoinCocone.leg.{u_1} d binaryPointLeft.{u_1}))
+  (R :
+    SSet.Truncated.Edge.CompStruct.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1}) e
+      (JoinCocone.leg.{u_1} d binaryPointRight.{u_1})),
+  ∃ E,
+    Eq.{u_1 + 1}
+      (SSet.Truncated.Edge.edge.{u_1}
+        (SSet.Truncated.Edge.map.{u_1} E
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2)
+            (sliceUnderProjection.{u_1} p))))
+      (SSet.Truncated.Edge.edge.{u_1} e)
+@exists_binaryCoconeEdgeLift_of_comm.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      X}
+  {c d : JoinCocone.{u_1} p} (e : SSet.Truncated.Edge.{u_1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+        (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1}))
+        (SSet.Truncated.HomotopyCategory.homMk.{u_1} e))
+      (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} d binaryPointLeft.{u_1})) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+          (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1}))
+          (SSet.Truncated.HomotopyCategory.homMk.{u_1} e))
+        (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} d binaryPointRight.{u_1})) →
+      ∃ E,
+        Eq.{u_1 + 1}
+          (SSet.Truncated.Edge.edge.{u_1}
+            (SSet.Truncated.Edge.map.{u_1} E
+              (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2)
+                (sliceUnderProjection.{u_1} p))))
+          (SSet.Truncated.Edge.edge.{u_1} e)
+@exists_binaryCoconeHomLift.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      X}
+  {c d : JoinCocone.{u_1} p}
+  (f :
+    Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} (JoinCocone.vertex.{u_1} c))
+      (SSet.HomotopyCategory.mk.{u_1} (JoinCocone.vertex.{u_1} d))),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+        (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1})) f)
+      (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} d binaryPointLeft.{u_1})) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+          (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1})) f)
+        (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} d binaryPointRight.{u_1})) →
+      ∃ E,
+        Eq.{u_1 + 1}
+          (SSet.Truncated.HomotopyCategory.homMk.{u_1}
+            (SSet.Truncated.Edge.map.{u_1} E
+              (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2)
+                (sliceUnderProjection.{u_1} p))))
+          f
+@binaryColimit_hom_ext_to_cocone.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      X}
+  (c : JoinCocone.{u_1} p),
+  IsColimitCone.{u_1} c →
+    ∀ (d : JoinCocone.{u_1} p)
+      (f g :
+        Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} (JoinCocone.vertex.{u_1} c))
+          (SSet.HomotopyCategory.mk.{u_1} (JoinCocone.vertex.{u_1} d))),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+            (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1})) f)
+          (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} d binaryPointLeft.{u_1})) →
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+              (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1})) f)
+            (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} d binaryPointRight.{u_1})) →
+          Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+                (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1})) g)
+              (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} d binaryPointLeft.{u_1})) →
+            Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+                  (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1})) g)
+                (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} d binaryPointRight.{u_1})) →
+              Eq.{u_1 + 1} f g
+@binaryColimit_hom_ext.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      X}
+  (c : JoinCocone.{u_1} p),
+  IsColimitCone.{u_1} c →
+    ∀ (z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+      (f g :
+        Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} (JoinCocone.vertex.{u_1} c))
+          (SSet.HomotopyCategory.mk.{u_1} z)),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+            (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1})) f)
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+            (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1})) g) →
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+              (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1})) f)
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+              (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1})) g) →
+          Eq.{u_1 + 1} f g
+@binaryColimit_isColimit.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {p :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+          X} →
+      (c : JoinCocone.{u_1} p) →
+        IsColimitCone.{u_1} c →
+          CategoryTheory.Limits.IsColimit.{0, u_1, 0, u_1}
+            (CategoryTheory.Limits.BinaryCofan.mk.{u_1, u_1}
+              (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointLeft.{u_1}))
+              (SSet.Truncated.HomotopyCategory.homMk.{u_1} (JoinCocone.leg.{u_1} c binaryPointRight.{u_1})))
+@hasBinaryCoproduct_of_binaryColimit.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      X},
+  HasColimit.{u_1} p →
+    CategoryTheory.Limits.HasColimit.{0, 0, u_1, u_1}
+      (CategoryTheory.Limits.pair.{u_1, u_1}
+        (SSet.HomotopyCategory.mk.{u_1}
+          (SSet.yonedaEquiv.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} binaryPointLeft.{u_1} p)))
+        (SSet.HomotopyCategory.mk.{u_1}
+          (SSet.yonedaEquiv.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} binaryPointRight.{u_1} p))))
+@hasBinaryCoproducts_ho.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X],
+  CategoryTheory.Limits.HasBinaryCoproducts.{u_1, u_1}
+    ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+```
+
+対象 CoconeLegTriangle ビルド 1939 jobs、BinaryCoconeTriangleFamily ビルド 1941 jobs、
+BinaryCoconeEdgeLift ビルド 1942 jobs、BinaryColimitHomExt ビルド 1945 jobs、
+HomotopyBinaryCoproduct ビルド 2057 jobs、対象・Stable 集約ビルド 2187 jobs、
+公開型抽出、公理監査はすべて終了コード 0。監査は 194 モジュール・1547 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。自分の新規ファイルは警告なし。
+`git diff --check` 成功。引用・追加公理・sorry は導入していない。
+双積・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
+TR1・TR3 は完成のまま。次は双積・前加法構造へ進む。
