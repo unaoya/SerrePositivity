@@ -41,3 +41,6 @@ public import SerrePositivity.KST.ProExcision.KoszulComparison
 public import SerrePositivity.KST.ProExcision.GroupHomology
 public import SerrePositivity.KST.ProExcision.SimplicialAction
 public import SerrePositivity.KST.ProExcision.ActionTranslations
+public import SerrePositivity.KST.ProExcision.ParametrizedAction
+public import SerrePositivity.KST.ProExcision.ActionDescent
+public import SerrePositivity.KST.ProExcision.ActionTwist

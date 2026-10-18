@@ -49,8 +49,9 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと278宣言の公理監査は成功し、標準三公理のみ。
-- L6c の Prop A.1、Lemma A.2 の同値性、Lemma A.4、Construction A.5・A.6 は未完了。
+- 対象ビルドと293宣言の公理監査は成功し、標準三公理のみ。
+- Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
+- L6c の Prop A.1、Lemma A.4、Construction A.5・A.6 は未完了。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -146,6 +147,9 @@
 | simplicialActionProductTwist | SimplicialAction.lean | 検証済み | Lemma A.2 の ψ の台単体写像 |
 | actionTranslationHomotopy | ActionTranslations.lean | 検証済み | 辺に沿う作用の実単体的ホモトピー |
 | grouplikeActionIso | ActionTranslations.lean | 検証済み | 群状性による各頂点の作用の可逆性 |
+| actionFamily_simplex_localized_isIso | ParametrizedAction.lean | 検証済み | 単体上の族の作用を頂点の作用へ収縮 |
+| actionFamily_localized_isIso | ActionDescent.lean | 検証済み | 一般の族の作用のセル降下 |
+| simplicialActionProductTwist_localized_isIso | ActionTwist.lean | 検証済み | KST Lemma A.2 の局所化模型 |
 | koszul_comparison | KoszulComparison.lean | 検証済み | 通常の生成イデアル冪商から実 Koszul ホモロジーへのレベル射 |
 | koszul_comparison_isProIso | KoszulComparison.lean | 検証済み | KST Lemma 4.10 の複体模型 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
@@ -246,6 +250,10 @@
 - Prop A.1 の φ は二重単体的作用 bar と半直積 bar の比較。各座標に右側の G の積を作用させる。
 - H_* 自体は K-L2 が所有する。未供給のモデル同定・ホモトピー不変性は明示入力にする。
 - Prop A.1・Lemma A.2・A.4 の結論を仮定する構造体は導入しない。
+- Lemma A.2 の証明経路の差分：原典の fibration と頂点ファイバーの比較に代え、標準単体上の収縮、骨格の pushout、順次余極限で作用の可逆性を貼り合わせる。
+- この経路では K-L2 の作用の族の降下と共有 `CellularNaturalComparison` の機構を、正則作用から一般の作用へ適用する。
+- 作用する各頂点の可逆性は証明済み `grouplikeActionIso` で供給する。原典 Lemma A.2 の結論を仮定しない。
+- 最後に台単体集合 G×H と半直積の台の同型で、族の作用を ψ へ移す。
 - A.4 の相対項は分裂包含の余核。絶対項の零性とは区別する。
 - A.5 は m と m′ の和に1を加えた範囲、A.6 は u⁻¹hu の向きの共役を扱う。
 - Appendix A の原典番号と構成の自然性を各宣言に記す。

@@ -841,3 +841,48 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.grouplikeActionIso
 #print axioms SerrePositivity.KST.ProExcision.grouplikeActionIso
+
+#check @SerrePositivity.KST.ProExcision.actionFamily
+#print axioms SerrePositivity.KST.ProExcision.actionFamily
+
+#check @SerrePositivity.KST.ProExcision.actionFamily_const
+#print axioms SerrePositivity.KST.ProExcision.actionFamily_const
+
+#check @SerrePositivity.KST.ProExcision.actionFamilyHomotopyMap
+#print axioms SerrePositivity.KST.ProExcision.actionFamilyHomotopyMap
+
+#check @SerrePositivity.KST.ProExcision.actionFamilyHomotopy
+#print axioms SerrePositivity.KST.ProExcision.actionFamilyHomotopy
+
+#check @SerrePositivity.KST.ProExcision.actionFamily_const_localized_isIso
+#print axioms SerrePositivity.KST.ProExcision.actionFamily_const_localized_isIso
+
+#check @SerrePositivity.KST.ProExcision.actionFamily_simplex_localized_isIso
+#print axioms SerrePositivity.KST.ProExcision.actionFamily_simplex_localized_isIso
+
+#check @SerrePositivity.KST.ProExcision.ActionDescent.of_iso
+#print axioms SerrePositivity.KST.ProExcision.ActionDescent.of_iso
+
+#check @SerrePositivity.KST.ProExcision.ActionDescent.initial
+#print axioms SerrePositivity.KST.ProExcision.ActionDescent.initial
+
+#check @SerrePositivity.KST.ProExcision.ActionDescent.coproduct
+#print axioms SerrePositivity.KST.ProExcision.ActionDescent.coproduct
+
+#check @SerrePositivity.KST.ProExcision.ActionDescent.pushout
+#print axioms SerrePositivity.KST.ProExcision.ActionDescent.pushout
+
+#check @SerrePositivity.KST.ProExcision.ActionDescent.stage_isIso
+#print axioms SerrePositivity.KST.ProExcision.ActionDescent.stage_isIso
+
+#check @SerrePositivity.KST.ProExcision.actionFamily_localized_isIso
+#print axioms SerrePositivity.KST.ProExcision.actionFamily_localized_isIso
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductUnderlyingIso
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductUnderlyingIso
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductTwist_underlying
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductTwist_underlying
+
+#check @SerrePositivity.KST.ProExcision.simplicialActionProductTwist_localized_isIso
+#print axioms SerrePositivity.KST.ProExcision.simplicialActionProductTwist_localized_isIso
