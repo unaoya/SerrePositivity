@@ -7547,5 +7547,19 @@ lemma mappingCylinderTargetMap_desc {X Y Z E : SSet.{u}}
     (v : prismEndpoint 1 X ≫ H = g ≫ (q ≫ k)) :
     mappingCylinderTargetMap f g q h ≫ pushout.desc H k w = pushout.desc H (q ≫ k) v
 
+lemma mappingCylinder_isPrecompositionEquivalence_of_quasicategory_factors
+    {X Y E : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory E]
+    (f : X ⟶ Y) (p : E ⟶ (Δ[1] : SSet.{u}))
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (g : Y ⟶ E)
+    (w : prismEndpoint 1 X ≫ H = f ≫ g) (hH : H ≫ p = fst Δ[1] X)
+    (hg : g ≫ p = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    (z0 : X ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+    (hz0 : z0 ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = prismEndpoint 0 X ≫ H)
+    (z1 : Y ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    (hz1 : z1 ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = g)
+    (he0 : IsPrecompositionEquivalence z0) (he1 : IsPrecompositionEquivalence z1)
+    (hc : ∀ x : X _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex H x)) :
+    IsPrecompositionEquivalence (pushout.desc H g w)
+
 end SerrePositivity.InfinityCategories
 ```

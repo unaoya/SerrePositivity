@@ -1635,3 +1635,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.mappingCylinderTargetMap
 #check @SerrePositivity.InfinityCategories.mappingCylinderTargetMap_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.mappingCylinderTargetMap_desc
+#check @SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence_of_quasicategory_factors

@@ -353,3 +353,4 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionEquival
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderIntervalEquivalence
 public import SerrePositivity.InfinityCategories.F1.BoundaryFactorization
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderTargetComparison
+public import SerrePositivity.InfinityCategories.F1.MappingCylinderQuasicategoryComparison
