@@ -220,6 +220,21 @@ Segal Proposition 1.6（本文 pp.296–298）の移植は次の順序とする�
 Lemma 1.7・1.8 や Proposition 1.6 の結論そのものを入力構造体の仮定にしない。
 全空間の収縮、厳密ファイバーの同型、標準ループ族との一致は既に実装済みである。
 
+引き戻しと貼り合わせを接続する補助命題は、次の文言で確認する。
+Kan fibration p:E→Δ[n] に沿う horn 包含の引き戻しは anodyne 局所化で同型となる。
+この段階では strong anodyne 性までは主張しない。
+組合せ的な証明方針：k を horn の添字とし、u(x)=min(x,k) とする。
+u≤id と u≤const(k) による二つの単体的ホモトピーは、horn を保つ。
+実際、新しく現れ得る頂点は k のみであり、元の単体が欠く j≠k は依然欠く。
+区間端点の anodyne 性を使ってこれらを p に沿って持ち上げる。
+基底のホモトピーが horn を保つため、その持ち上げは自動的に horn の逆像を保つ。
+部分対象上の指定を別に保つ必要がある場合の pushout-product による相対延長も証明した。
+終点は k 上のファイバーへ入り、そのファイバーは horn の逆像に含まれる。
+全空間と逆像の双方で恒等写像とのホモトピーの zigzag を得て局所化同型を証明する。
+これは Segal Proposition 1.6 の対角模型の補助であり、原典の fat realization の経路とは異なる。
+Moss 2020 §5 Theorem 42 は strong anodyne 性を regular pairing で証明するが、
+ここでは同命題を引用して済ませず、必要な局所化同型を上記の持ち上げで証明する。
+
 ## 8. L2c：H_* と plus
 
 ホモロジーのファイルは Homology.lean とする。
@@ -341,14 +356,15 @@ anodyne 包含と基底を固定する実ホモトピーを pushout-product の�
 同じ右射の二つの anodyne–Kan 分解の比較が任意の基底変換後も可逆となること、別分解でもホモトピー引き戻し性を判定できることを証明した。
 積射影の引き戻しは、因子の Kan 性を仮定せずホモトピー引き戻しとなることを証明した。
 正則 bar の各構造写像が定める四角形のホモトピー引き戻し性を、群状性だけから証明した。
+正次元 horn の包含の Kan fibration に沿う逆像が anodyne 局所化で同型となることを、実際の二段階の収縮で証明した。
 対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 248 宣言の型と公理を確認した。
-さらに名前空間全体の 619 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 266 宣言の型と公理を確認した。
+さらに名前空間全体の 650 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -399,6 +415,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `productPullback_isHomotopyPullback` | 実装済み | 任意の因子を持つ積射影の基底変換 |
 | `actionBarCoordinate_naturality` | 実装済み | 各構造写像と前置ラベルの作用の整合 |
 | `actionBarSquare_isHomotopyPullback` | 実装済み | 群状性から Segal Proposition 1.6 の各行の仮定を供給 |
+| `simplexMeetToIdentity`、`simplexMeetToVertex` | 実装済み | horn と両立する任意の頂点への二段階の収縮 |
+| `relative_interval_lift`、`interval_lift` | 実装済み | Kan fibration に沿う両端点からの持ち上げ |
+| `subcomplex_inclusion_localized_isIso` | 実装済み | 部分対象を保つ二段階の収縮による局所化可逆性 |
+| `horn_preimage_localized_isIso` | 実装済み | Kan fibration に沿う正次元 horn の逆像の局所化可逆性 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |

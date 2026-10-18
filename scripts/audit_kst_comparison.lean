@@ -40,6 +40,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -505,6 +506,45 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.IsHomotopyPullback
 
 
+-- HornContraction.lean
+
+#check @SerrePositivity.KST.Comparison.simplexOrderMap
+#print axioms SerrePositivity.KST.Comparison.simplexOrderMap
+
+#check @SerrePositivity.KST.Comparison.simplexOrderHomotopyMap
+#print axioms SerrePositivity.KST.Comparison.simplexOrderHomotopyMap
+
+#check @SerrePositivity.KST.Comparison.simplexOrderHomotopy
+#print axioms SerrePositivity.KST.Comparison.simplexOrderHomotopy
+
+#check @SerrePositivity.KST.Comparison.vertexMeet
+#print axioms SerrePositivity.KST.Comparison.vertexMeet
+
+#check @SerrePositivity.KST.Comparison.simplexOrderHomotopyMap_mem_horn
+#print axioms SerrePositivity.KST.Comparison.simplexOrderHomotopyMap_mem_horn
+
+#check @SerrePositivity.KST.Comparison.simplexMeetToIdentity
+#print axioms SerrePositivity.KST.Comparison.simplexMeetToIdentity
+
+#check @SerrePositivity.KST.Comparison.simplexMeetToVertex
+#print axioms SerrePositivity.KST.Comparison.simplexMeetToVertex
+
+#check @SerrePositivity.KST.Comparison.simplexMeetToIdentity_mem_horn
+#print axioms SerrePositivity.KST.Comparison.simplexMeetToIdentity_mem_horn
+
+#check @SerrePositivity.KST.Comparison.simplexMeetToVertex_mem_horn
+#print axioms SerrePositivity.KST.Comparison.simplexMeetToVertex_mem_horn
+
+
+-- HornPreimage.lean
+
+#check @SerrePositivity.KST.Comparison.const_horn_vertex_mem
+#print axioms SerrePositivity.KST.Comparison.const_horn_vertex_mem
+
+#check @SerrePositivity.KST.Comparison.horn_preimage_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.horn_preimage_localized_isIso
+
+
 -- IntervalBoundaryFamily.lean
 
 #check @SerrePositivity.KST.Comparison.intervalBoundaryTensorIsColimit
@@ -605,6 +645,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.grouplikeTranslationIso
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslationIso
+
+
+-- PairHomotopyLifting.lean
+
+#check @SerrePositivity.KST.Comparison.intervalEndpoint
+#print axioms SerrePositivity.KST.Comparison.intervalEndpoint
+
+#check @SerrePositivity.KST.Comparison.pointTensorIso_naturality
+#print axioms SerrePositivity.KST.Comparison.pointTensorIso_naturality
+
+#check @SerrePositivity.KST.Comparison.intervalEndpoint_anodyne
+#print axioms SerrePositivity.KST.Comparison.intervalEndpoint_anodyne
+
+#check @SerrePositivity.KST.Comparison.interval_lift
+#print axioms SerrePositivity.KST.Comparison.interval_lift
+
+#check @SerrePositivity.KST.Comparison.relative_interval_lift
+#print axioms SerrePositivity.KST.Comparison.relative_interval_lift
 
 
 -- ParametrizedTranslations.lean
@@ -875,6 +933,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.simplexMapContraction
 #print axioms SerrePositivity.KST.Comparison.simplexMapContraction
+
+
+-- SubcomplexContraction.lean
+
+#check @SerrePositivity.KST.Comparison.localized_interval_endpoints
+#print axioms SerrePositivity.KST.Comparison.localized_interval_endpoints
+
+#check @SerrePositivity.KST.Comparison.subcomplex_inclusion_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.subcomplex_inclusion_localized_isIso
 
 
 -- TranslationDescent.lean

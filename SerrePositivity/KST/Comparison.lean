@@ -22,6 +22,7 @@ public import SerrePositivity.KST.Comparison.TranslationDescent
 public import SerrePositivity.KST.Comparison.ReplacementComparison
 public import SerrePositivity.KST.Comparison.AlternativePullback
 public import SerrePositivity.KST.Comparison.ActionBarSquares
+public import SerrePositivity.KST.Comparison.HornPreimage
 
 /-!
 # K-L2：比較定理の入口
