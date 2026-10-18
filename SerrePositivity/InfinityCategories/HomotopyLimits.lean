@@ -36,3 +36,5 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanRightCorner
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightMapMono
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanTensorCorner
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanCornerTensor
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanSingleFibrationRestriction

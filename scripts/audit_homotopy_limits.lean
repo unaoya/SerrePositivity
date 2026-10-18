@@ -369,3 +369,57 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedSections_cospan_leftFibration_kanComplex
 #check @bousfieldKanHolim_cospan_leftFibration_kanComplex
 #print axioms bousfieldKanHolim_cospan_leftFibration_kanComplex
+#check @tensorRightCornerPushout
+#print axioms tensorRightCornerPushout
+#check @corner_tensor_glue
+#print axioms corner_tensor_glue
+#check @cornerTensorMap
+#print axioms cornerTensorMap
+#check @cornerTensorMap_inl
+#print axioms cornerTensorMap_inl
+#check @cornerTensorMap_inr
+#print axioms cornerTensorMap_inr
+#check @cornerTensorMap_square
+#print axioms cornerTensorMap_square
+#check @cornerTensorMap_fac
+#print axioms cornerTensorMap_fac
+#check @cornerTensorProduct
+#print axioms cornerTensorProduct
+#check @cornerTensorComparison
+#print axioms cornerTensorComparison
+#check @cornerTensorProduct_w_inl
+#print axioms cornerTensorProduct_w_inl
+#check @cornerTensorProduct_w_inr
+#print axioms cornerTensorProduct_w_inr
+#check @cornerTensorReverseBase
+#print axioms cornerTensorReverseBase
+#check @cornerTensorReverseBase_inl
+#print axioms cornerTensorReverseBase_inl
+#check @cornerTensorReverseBase_inr
+#print axioms cornerTensorReverseBase_inr
+#check @cornerTensorReverse_glue
+#print axioms cornerTensorReverse_glue
+#check @cornerTensorReverse
+#print axioms cornerTensorReverse
+#check @cornerTensorComparison_inl
+#print axioms cornerTensorComparison_inl
+#check @cornerTensorComparison_inr
+#print axioms cornerTensorComparison_inr
+#check @cornerTensorReverse_inl
+#print axioms cornerTensorReverse_inl
+#check @cornerTensorReverse_inr
+#print axioms cornerTensorReverse_inr
+#check @cornerTensorComparison_reverse
+#print axioms cornerTensorComparison_reverse
+#check @cornerTensorReverse_comparison
+#print axioms cornerTensorReverse_comparison
+#check @cornerTensorComparison_fac
+#print axioms cornerTensorComparison_fac
+#check @cornerTensorIso
+#print axioms cornerTensorIso
+#check @rightCorner_weightedCorner_anodyne
+#print axioms rightCorner_weightedCorner_anodyne
+#check @weightedSectionsPre_cospan_leftFibration_trivialKanFibration
+#print axioms weightedSectionsPre_cospan_leftFibration_trivialKanFibration
+#check @weightedSectionsPre_cospan_leftFibration_homotopyEquivalence
+#print axioms weightedSectionsPre_cospan_leftFibration_homotopyEquivalence

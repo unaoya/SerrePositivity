@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開182宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開209宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2476,7 +2476,8 @@ exists_resized_cospan_extension_of_rightCorner
 
 右脚の fibration 性は不要だが、中央の相対境界の anodyne 性 h₀ を入力に要求する。
 ホーンの直積に対する h₀ は次の定理で検証する。重みの制限と境界を同時に固定する
-pushout-product に対する h₀、一脚だけの fibration 性での κ の同値性、
+pushout-product の h₀ は後述の交換同型で元の重みの相対境界へ帰着する。
+具体的な標準重みの相対境界の anodyne 性、一脚だけの fibration 性での κ の同値性、
 coherent な錐の pinched Hom との比較と 𝒮・Sp の ∞ 引き戻しへの適用は未完了。
 両脚が fibration の比較だけで、要求された引き戻しの ∞ 普遍性を完成とは数えない。
 
@@ -2511,8 +2512,58 @@ bousfieldKanHolim_cospan_leftFibration_kanComplex
 Bousfield–Kan 重みでは添字の右脚が単射なので、必要な重みの右脚の単射性も実際に証明済み。
 右脚の fibration 性や追加の比較仮定は不要。
 これは比較先の Kan 性であり、一脚の fibration 性の下での標準比較 κ の同値性ではない。
-κ には重みの制限とパラメーターの境界を同時に固定する相対境界の検証が残る。
+κ には具体的な標準重みの中央の相対境界の anodyne 性の検証が残る。
 coherent な錐の写像空間との比較と 𝒮・Sp の ∞ 引き戻しへの適用も未完了。
+
+### 相対境界と pushout-product の交換（実装済み）
+
+`CospanCornerTensor.lean` は重みの射 j : W → W' とパラメーターの射 f : A → B について、
+中央の相対境界を取る操作と pushout-product を作る操作の間の交換同型を構成する。
+
+```
+K := W(one) ⨿_{W(right)} W'(right)
+k := cospanRightCornerMap (AsSmall.up ◁ j) : K → W'(one)
+P := weightedCorner j f
+Q := cornerTensorProduct j f  -- k と f の pushout-product
+cornerTensorIso j f : Q.pt ≅ domain(cospanRightCornerMap (AsSmall.up ◁ P.ι))
+```
+
+`tensorRightCornerPushout` は K の pushout の直積による保存。
+`cornerTensorMap` は K×B を P の中央と右成分の相対 pushout へ写す射である。
+`cornerTensorComparison` と `cornerTensorReverse` は二通りの pushout の間の射で、
+両合成が恒等であることを全ての生成成分で証明して `cornerTensorIso` を得る。
+`cornerTensorComparison_fac` は同型の順射の後で相対境界射を適用すると Q.ι に等しい式。
+交換同型とこの可換性自体には、f の単射性も j の anodyne 性も要求しない。
+
+```lean
+rightCorner_weightedCorner_anodyne
+    {W W' : AsSmall.{u} WalkingCospan ⥤ SSet.{u}} (j : W ⟶ W')
+    (hj : anodyneExtensions (cospanRightCornerMap (Functor.whiskerLeft AsSmall.up j)))
+    {A B : SSet.{u}} (f : A ⟶ B) [Mono f] :
+    anodyneExtensions (cospanRightCornerMap
+      (Functor.whiskerLeft AsSmall.up (weightedCorner j f).ι))
+```
+
+`CospanSingleFibrationRestriction.lean` はこの交換を全ての境界に適用する。
+重みの左右の成分と中央の相対境界を一脚の相対延長に渡すことで、次を証明する。
+
+```lean
+weightedSectionsPre_cospan_leftFibration_trivialKanFibration
+    {W W' H : AsSmall.{u} WalkingCospan ⥤ SSet.{u}} (j : W ⟶ W')
+    (hj : ∀ i, anodyneExtensions (j.app i))
+    (hk : anodyneExtensions (cospanRightCornerMap (Functor.whiskerLeft AsSmall.up j)))
+    [KanComplex (H.obj (AsSmall.up.obj .one))]
+    [KanComplex (H.obj (AsSmall.up.obj .right))]
+    [Fibration (H.map (AsSmall.up.map WalkingCospan.Hom.inl))] :
+    TrivialKanFibration (weightedSectionsPre j H)
+```
+
+`weightedSectionsPre_cospan_leftFibration_homotopyEquivalence` は同じ前提に加え、
+W と W' の右脚の Mono 性を要求して両 end の Kan 性を証明し、実際のホモトピー同値性を得る。
+入力 hk は具体的な標準重みで検証すべき元の相対境界の anodyne 性であり、
+境界付きの pushout-product に対する条件を別途仮定する必要はなくなった。
+標準重みの hk の検証、一脚だけの fibration 性での κ の同値性、
+coherent な錐の写像空間との比較と 𝒮・Sp の ∞ 引き戻しへの適用は引き続き未完了。
 
 ### 𝒮 の空積（実装済み）
 
