@@ -3018,3 +3018,19 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.kStageHomotopyProjection_app_isIso
 #check @SerrePositivity.KST.SConstruction.kStageHomotopyIso
 #print axioms SerrePositivity.KST.SConstruction.kStageHomotopyIso
+
+-- 全ての正の反復段の連結性
+#check @SerrePositivity.KST.SConstruction.multiDiagonalCoreSConstruction_isConnected
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalCoreSConstruction_isConnected
+#check @SerrePositivity.KST.SConstruction.boundaryReductionQuotient_piZero_bijective
+#print axioms SerrePositivity.KST.SConstruction.boundaryReductionQuotient_piZero_bijective
+#check @SerrePositivity.KST.SConstruction.boundaryReducedRealization_isConnected
+#print axioms SerrePositivity.KST.SConstruction.boundaryReducedRealization_isConnected
+#check @SerrePositivity.KST.SConstruction.boundaryKanRealization_isConnected
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanRealization_isConnected
+#check @SerrePositivity.KST.SConstruction.pointedIsConnected_of_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.pointedIsConnected_of_piIsomorphism
+#check @SerrePositivity.KST.SConstruction.kKanSequence_positive_isConnected
+#print axioms SerrePositivity.KST.SConstruction.kKanSequence_positive_isConnected
+#check @SerrePositivity.KST.SConstruction.monicKKanSequence_positive_isConnected
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequence_positive_isConnected

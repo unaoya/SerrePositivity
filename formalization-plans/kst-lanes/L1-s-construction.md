@@ -4016,3 +4016,59 @@ def kStageHomotopyIso (r n : ℕ) : kStageHomotopyFunctor r n ≅ rawKStageHomot
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3008 jobs）、公理監査成功（1082 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.33 反復実現と全ての正の候補段の連結性
+
+正の回数の反復 core S の対角実現が連結であることを証明した。
+同時零段の可縮 Kan 性から零段の連結性を取り、零段から対角への写像の π₀ の全射で移す。
+全零境界を潰す射影は anodyne を反転する任意の関手で可逆であるという既証の定理を、
+実際の π₀ 関手に適用し、その射影の連結成分での全単射を得た。
+これにより全零境界商の連結性を得て、anodyne な Kan 置換の単位に沿って移した。
+対角や商そのものの Kan 性を仮定していない。
+
+その結果、kKanSequence X の全ての正の段が連結である。
+さらに置換射影の全基点 π_* 同型と、零次数の類と π₀ との実際の同値を使い、
+monicKKanSequence X の全ての正の段も連結であることを証明した。
+点つき Kan 複体の π_* 同型に沿う連結性の反映は一般補題として記録した。
+この連結性は π₀ が一点であるという主張であり、高い次数の消滅を含めてはいない。
+零段の K 空間が連結であるとも主張しない。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory SSet`、`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`
+の下の正確な型。
+
+```lean
+instance multiDiagonalCoreSConstruction_isConnected (r : ℕ) (X : StableModel.{u}) :
+    SSet.IsConnected (multiDiagonalCoreSConstruction (r + 1) X)
+
+lemma boundaryReductionQuotient_piZero_bijective (r : ℕ) (X : StableModel.{u}) :
+    Function.Bijective (SSet.mapπ₀ (boundaryReductionQuotient r X))
+
+instance boundaryReducedRealization_isConnected (r : ℕ) (X : StableModel.{u}) :
+    SSet.IsConnected (boundaryReducedRealization r X).right
+
+instance boundaryKanRealization_isConnected (r : ℕ) (X : StableModel.{u}) :
+    SSet.IsConnected (((boundaryKanRealizationFunctor r).obj X).right)
+
+lemma pointedIsConnected_of_piIsomorphism {A B : PointedSimplicialSet.{u}}
+    [KanComplex A.right] [KanComplex B.right] [SSet.IsConnected B.right]
+    (f : A ⟶ B) (hf : Spectra.KanPiIsomorphism f.right) : SSet.IsConnected A.right
+
+instance kKanSequence_positive_isConnected (X : StableModel.{u}) (r : ℕ) :
+    SSet.IsConnected (((kKanSequence X).level (r + 1)).space).right
+
+instance monicKKanSequence_positive_isConnected (X : StableModel.{u}) (r : ℕ) :
+    SSet.IsConnected (((monicKKanSequence X).level (r + 1)).space).right
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。反復 S の Kan 列と単射置換、入力の射からの厳密な列の比較射、
+各段の成分での恒等・合成法則、段ごとのホモトピー集合の関手と自然な模型比較、
+全ての正の候補段の連結性（π₀ が一点）まで証明済み。
+正の段の Ω 条件・delooping、高い次数の消滅と負次数消滅を含む BF 連結スペクトル、
+スペクトル関手の構成は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3009 jobs）、公理監査成功（1089 宣言、標準三公理のみ）。追加公理・sorry なし。

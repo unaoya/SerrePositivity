@@ -85,4 +85,6 @@ public import SerrePositivity.KST.SConstruction.MonicKSequenceMaps
 public import SerrePositivity.KST.SConstruction.KSequenceMapLaws
 public import SerrePositivity.KST.SConstruction.KStageHomotopyFunctor
 
+public import SerrePositivity.KST.SConstruction.MultiStageConnected
+
 /-! # ∞-S• 構成と連結 K 理論 -/
