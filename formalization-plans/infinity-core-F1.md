@@ -7753,5 +7753,65 @@ noncomputable def leftStraighteningCandidateFiberEquivalence
         (ULift.up (nerveVertex c)))
       ((SSet.uliftFunctor.{u + 1, u}).obj (vertexFiber p (nerveVertex c)))
 
+lemma leftScaffoldFiberMap_postcomp
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p)
+    (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F)
+    (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) :
+    leftScaffoldFiberMap q F (l ≫ f) h' c =
+      leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)
+
+lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ E') (hf : f ≫ q = p)
+    (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) :
+    IsPrecompositionEquivalence f
+
+noncomputable def fiberComparisonBaseChange {E E' B K : SSet.{u}}
+    (p : E ⟶ B) (q : E' ⟶ B) (f : E ⟶ E') (hf : f ≫ q = p) (g : K ⟶ B) :
+    pullback p g ⟶ pullback q g
+
+lemma fiberComparisonBaseChange_projection {E E' B K : SSet.{u}}
+    (p : E ⟶ B) (q : E' ⟶ B) (f : E ⟶ E') (hf : f ≫ q = p) (g : K ⟶ B) :
+    fiberComparisonBaseChange p q f hf g ≫ pullback.snd q g = pullback.snd p g
+
+lemma fiberComparisonBaseChange_fiber {E E' B K : SSet.{u}}
+    (p : E ⟶ B) (q : E' ⟶ B) (f : E ⟶ E') (hf : f ≫ q = p)
+    (g : K ⟶ B) (k : K _⦋0⦌) :
+    vertexFiberMap (pullback.snd p g) (pullback.snd q g)
+        (fiberComparisonBaseChange p q f hf g)
+        (fiberComparisonBaseChange_projection p q f hf g) k ≫
+      (vertexFiberPullbackIso q g k).hom =
+    (vertexFiberPullbackIso p g k).hom ≫
+      vertexFiberMap p q f hf (g.app (Opposite.op ⦋0⦌) k)
+
+lemma fiberComparisonBaseChange_overPullbackMap {E E' B K : SSet.{u}}
+    (p : E ⟶ B) (q : E' ⟶ B) (f : E ⟶ E') (hf : f ≫ q = p) (g : K ⟶ B) :
+    (pullbackSymmetry g p).hom ≫ fiberComparisonBaseChange p q f hf g =
+      overPullbackMap (Over.homMk (U := Over.mk p) (V := Over.mk q) f hf) (Over.mk g) ≫
+        (pullbackSymmetry g q).hom
+
+lemma isPrecompositionEquivalence_leftFibration_nerveBaseChange
+    {E E' B : SSet.{u}} (p : E ⟶ B) (q : E' ⟶ B)
+    [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p)
+    (h : ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b))
+    {C : Type u} [Category.{u} C] (g : nerve C ⟶ B) :
+    IsPrecompositionEquivalence (fiberComparisonBaseChange p q f hf g)
+
+lemma isPrecompositionEquivalence_of_leftFibration_fibers
+    {E E' B : SSet.{u}} (p : E ⟶ B) (q : E' ⟶ B)
+    [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p)
+    (h : ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)) :
+    IsPrecompositionEquivalence f
+
+lemma isQCatEquivalence_of_leftFibration_fibers
+    {E E' B : SSet.{u}} [Quasicategory E] [Quasicategory E']
+    (p : E ⟶ B) (q : E' ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ E') (hf : f ≫ q = p)
+    (h : ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)) :
+    IsQCatEquivalence f
+
 end SerrePositivity.InfinityCategories
 ```

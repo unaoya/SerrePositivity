@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationNerveComparison
+public import SerrePositivity.InfinityCategories.F1.FiberComparisonBaseChange
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
+
 public import SerrePositivity.InfinityCategories.F1.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCandidate
 
