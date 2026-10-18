@@ -8854,5 +8854,94 @@ lemma exists_edgewiseBoundaryCover_gluing {K : SSet.{u}} {n : ℕ}
         (le_iSup (fun j ↦ Subcomplex.range (edgewiseBoundaryCoverMap n j)) i) ≫ F =
           edgewiseBoundaryCoverDiagram a b i
 
+lemma Join.mem_range_cast_iff {p q r : ℕ} (h : p = q) (f : Fin r → Fin p) (v : Fin p) :
+    Fin.cast h v ∈ Set.range (fun j ↦ Fin.cast h (f j)) ↔ v ∈ Set.range f
+
+lemma joinStdSimplexIso_mem_range_left {p q d : ℕ}
+    (s : Join.Simplex (Δ[p] : SSet.{u}) Δ[q] d) (v : Fin (p + 1)) :
+    Fin.cast (by omega : (p + 1) + (q + 1) = p + q + 1 + 1) (v.castAdd (q + 1)) ∈
+      Set.range ((joinStdSimplexIso p q).hom.app (Opposite.op ⦋d⦌) s) ↔
+      v ∈ Set.range (Join.stdAugEquiv p s.1.val s.2.1)
+
+lemma joinStdSimplexIso_mem_range_right {p q d : ℕ}
+    (s : Join.Simplex (Δ[p] : SSet.{u}) Δ[q] d) (v : Fin (q + 1)) :
+    Fin.cast (by omega : (p + 1) + (q + 1) = p + q + 1 + 1) (v.natAdd (p + 1)) ∈
+      Set.range ((joinStdSimplexIso p q).hom.app (Opposite.op ⦋d⦌) s) ↔
+      v ∈ Set.range (Join.stdAugEquiv q (d + 1 - s.1.val) s.2.2)
+
+lemma Join.augMem_face_compl_iff {p : ℕ} (i : Fin (p + 1)) (r : ℕ)
+    (a : Join.augObj (Δ[p] : SSet.{u}) r) :
+    Join.augMem (stdSimplex.face ({i}ᶜ)) r a ↔ i ∉ Set.range (Join.stdAugEquiv p r a)
+
+lemma Join.augMem_op_face_compl_iff {p : ℕ} (i : Fin (p + 1)) (r : ℕ)
+    (a : Join.augObj (Δ[p] : SSet.{u}).op r) :
+    Join.augMem (stdSimplex.face ({i}ᶜ)).op r a ↔
+      i.rev ∉ Set.range (Join.stdAugEquiv p r (Join.augHom (stdSimplex.opIso ⦋p⦌).hom r a))
+
+lemma edgewiseWeightIso_missing_left {n d : ℕ}
+    (s : (edgewiseWeight.{u}.obj ⦋n⦌).obj (Opposite.op ⦋d⦌)) (i : Fin (n + 1)) :
+    edgewiseLeftVertex n i ∉ Set.range ((edgewiseWeightIso n).hom.app (Opposite.op ⦋d⦌) s) ↔
+      Join.augMem (stdSimplex.face ({i}ᶜ)).op s.1.val s.2.1
+
+lemma edgewiseWeightIso_missing_right {n d : ℕ}
+    (s : (edgewiseWeight.{u}.obj ⦋n⦌).obj (Opposite.op ⦋d⦌)) (i : Fin (n + 1)) :
+    edgewiseRightVertex n i ∉ Set.range ((edgewiseWeightIso n).hom.app (Opposite.op ⦋d⦌) s) ↔
+      Join.augMem (stdSimplex.face ({i}ᶜ)) (d + 1 - s.1.val) s.2.2
+
+lemma edgewiseWeightIso_pair_face_preimage (n : ℕ) (i : Fin (n + 2)) :
+    (stdSimplex.face ({edgewiseLeftVertex (n + 1) i, edgewiseRightVertex (n + 1) i}ᶜ)).preimage
+      (edgewiseWeightIso.{u} (n + 1)).hom =
+    Subcomplex.range (edgewiseWeight.map (SimplexCategory.δ i))
+
+lemma edgewiseWeightIso_right_face_preimage (n : ℕ) :
+    (stdSimplex.face (edgewiseRightVertices n)).preimage (edgewiseWeightIso.{u} n).hom =
+      Subcomplex.range (joinInr (Δ[n] : SSet.{u}).op Δ[n])
+
+lemma edgewiseRightWeightDomain_eq_face_cover (n : ℕ) :
+    edgewiseRightWeightDomain.{u} (n + 1) =
+      Subcomplex.range (joinInr (Δ[n + 1] : SSet.{u}).op Δ[n + 1]) ⊔
+        ⨆ i : Fin (n + 2), Subcomplex.range (edgewiseWeight.map (SimplexCategory.δ i))
+
+lemma edgewiseRightWeightDomain_eq_boundary_cover (n : ℕ) :
+    edgewiseRightWeightDomain.{u} (n + 2) =
+      ⨆ i, Subcomplex.range (edgewiseBoundaryCoverMap.{u} n i)
+
+lemma edgewiseWeight_one_faces_inf :
+    Subcomplex.range (edgewiseWeight.{u}.map (SimplexCategory.δ (0 : Fin 2))) ⊓
+      Subcomplex.range (edgewiseWeight.map (SimplexCategory.δ (1 : Fin 2))) = ⊥
+
+lemma edgewiseBoundaryOneFaces_compatible {K : SSet.{u}}
+    (a : (boundary 1 : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (i j : Fin 2) (d : SimplexCategoryᵒᵖ)
+    (x y : (edgewiseWeight.obj ⦋0⦌).obj d)
+    (hxy : (edgewiseWeight.map (SimplexCategory.δ i)).app d x =
+      (edgewiseWeight.map (SimplexCategory.δ j)).app d y) :
+    (SSet.yonedaEquiv (boundary.ι i ≫ a)).app d x =
+      (SSet.yonedaEquiv (boundary.ι j ≫ a)).app d y
+
+lemma edgewiseBoundaryFaces_compatible_all {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 1) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (i j : Fin (n + 2)) (d : SimplexCategoryᵒᵖ)
+    (x y : (edgewiseWeight.obj ⦋n⦌).obj d)
+    (hxy : (edgewiseWeight.map (SimplexCategory.δ i)).app d x =
+      (edgewiseWeight.map (SimplexCategory.δ j)).app d y) :
+    (SSet.yonedaEquiv (boundary.ι i ≫ a)).app d x =
+      (SSet.yonedaEquiv (boundary.ι j ≫ a)).app d y
+
+lemma exists_edgewiseRight_weight_extension {K : SSet.{u}} [KanComplex K] {n : ℕ}
+    (a : (boundary (n + 1) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (b : (Δ[n + 1] : SSet.{u}) ⟶ K)
+    (sq : CommSq a (boundary (n + 1)).ι (edgewiseRight K) b) :
+    ∃ F : edgewiseWeight.obj ⦋n + 1⦌ ⟶ K,
+      (∀ i : Fin (n + 2), edgewiseWeight.map (SimplexCategory.δ i) ≫ F =
+        SSet.yonedaEquiv (boundary.ι i ≫ a)) ∧
+      joinInr (Δ[n + 1] : SSet.{u}).op Δ[n + 1] ≫ F = b
+
+instance edgewiseRight_trivialKanFibration (K : SSet.{u}) [KanComplex K] :
+    TrivialKanFibration (edgewiseRight K)
+
+instance edgewiseSubdivision_kanComplex (K : SSet.{u}) [KanComplex K] :
+    KanComplex (edgewiseSubdivision K)
+
 end SerrePositivity.InfinityCategories
 ```

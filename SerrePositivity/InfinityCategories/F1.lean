@@ -449,3 +449,8 @@ public import SerrePositivity.InfinityCategories.F1.EdgewiseBoundaryCompatibilit
 public import SerrePositivity.InfinityCategories.F1.RangeCoverGluing
 public import SerrePositivity.InfinityCategories.F1.EdgewiseRightBoundaryCompatibility
 public import SerrePositivity.InfinityCategories.F1.EdgewiseBoundaryGluing
+public import SerrePositivity.InfinityCategories.F1.JoinStandardVertexRanges
+public import SerrePositivity.InfinityCategories.F1.EdgewiseFaceDomainCoordinates
+public import SerrePositivity.InfinityCategories.F1.EdgewiseCoverDomain
+public import SerrePositivity.InfinityCategories.F1.EdgewiseOneBoundary
+public import SerrePositivity.InfinityCategories.F1.EdgewiseRightFilling
