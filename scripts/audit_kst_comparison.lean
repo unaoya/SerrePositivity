@@ -43,6 +43,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -304,6 +305,18 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_of_fibration
 
 
+-- FibrantPullbackMap.lean
+
+#check @SerrePositivity.KST.Comparison.pullbackMapBase_swap
+#print axioms SerrePositivity.KST.Comparison.pullbackMapBase_swap
+
+#check @SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_fibration
+#print axioms SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_fibration
+
+#check @SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_kan_base
+#print axioms SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_kan_base
+
+
 -- FibrantTargetLifting.lean
 
 #check @SerrePositivity.KST.Comparison.localizedMono_lifting_fibrantTarget
@@ -512,6 +525,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.IsHomotopyPullback
 #print axioms SerrePositivity.KST.Comparison.IsHomotopyPullback
+
+
+-- HomotopyPullbackInvariance.lean
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackMap_fst
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_fst
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackMap_snd
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_snd
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
 
 
 -- HornContraction.lean
