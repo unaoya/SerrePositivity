@@ -69,6 +69,8 @@ public import SerrePositivity.InfinityCategories.Derived.MooreComplex
 public import SerrePositivity.InfinityCategories.Derived.MooreHomology
 public import SerrePositivity.InfinityCategories.Derived.MappingExt
 
+public import SerrePositivity.InfinityCategories.Derived.StableLimits
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

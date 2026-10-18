@@ -19921,3 +19921,70 @@ isExactFunctor_id.{u_1} : ∀ (X : SSet.{u_1}), IsExactFunctor.{u_1} (CategoryTh
                       (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
                         (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} G)))
 ```
+
+
+## S7／D7：零対象と全 cospan・全辺の fiber（2026-10-19）
+
+既存依存先 PullbackPresentation と DerivedComparisonShift のビルド 3970 jobs 成功を確認。`Derived/StableLimits.lean` で N7 の零複体の始終対象性を `IsZeroVertex`・`HasZeroVertex` にまとめた。任意の cospan を二鎖写像で表示し、三頂点の semifree 性から標準 fiber 四角形を内部に構成。包含の単射性で元の cospan との厳密な一致を得て、その上の極限錐へ輸送した。S1 の構成により、指定された全ての辺の右辺を厳密に保つ fiber 四角形が存在する。IsStable は仮定していない。
+
+対象＋Derived・Stable 統合ビルド 5665 jobs 成功。Stable 監査は 361 modules／2664 declarations、Derived 監査は 92 modules／1557 declarations で両方成功（標準 3 公理のみ）。cofiber の coslice の始対象性、安定性、D3 と Mathlib の三角構造の一致は未完了。他レーンの変更がある derived-infinity-category.md は編集せず、この正本へ D7 の現在地と型を記録した。
+
+全 11 公開宣言の正確な型：
+
+```lean
+derivedInfinityZeroVertex_isZeroVertex.{u_1} : ∀ (S : Type u_1) [inst : CommRing.{u_1} S],
+  IsZeroVertex.{u_1 + 1} (derivedInfinityZeroVertex.{u_1} S)
+derivedInfinityCategory_hasZeroVertex.{u_1} : ∀ (S : Type u_1) [inst : CommRing.{u_1} S],
+  HasZeroVertex.{u_1 + 1} (derivedInfinityCategory.{u_1} S)
+@derivedCospanPresentation.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    (p :
+        Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.horn.{u_1 + 1} 2 2))
+          (derivedInfinityCategory.{u_1} S)) →
+      DGNerve.ComplexCospanPresentation.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} p derivedInfinityInclusion.{u_1})
+@derivedCospanPresentation_left.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  (p :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.horn.{u_1 + 1} 2 2))
+      (derivedInfinityCategory.{u_1} S)),
+  complexSemifree.{u_1} S (DGNerve.ComplexCospanPresentation.leftObj.{u_1} (derivedCospanPresentation.{u_1} p))
+@derivedCospanPresentation_right.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  (p :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.horn.{u_1 + 1} 2 2))
+      (derivedInfinityCategory.{u_1} S)),
+  complexSemifree.{u_1} S (DGNerve.ComplexCospanPresentation.rightObj.{u_1} (derivedCospanPresentation.{u_1} p))
+@derivedCospanPresentation_target.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  (p :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.horn.{u_1 + 1} 2 2))
+      (derivedInfinityCategory.{u_1} S)),
+  complexSemifree.{u_1} S (DGNerve.ComplexCospanPresentation.targetObj.{u_1} (derivedCospanPresentation.{u_1} p))
+@derivedCospanFiberSquare.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.horn.{u_1 + 1} 2 2))
+        (derivedInfinityCategory.{u_1} S) →
+      Quiver.Hom.{u_1 + 1, u_1 + 2}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1 + 1, u_1 + 2}
+          (CategoryTheory.Functor.obj.{0, u_1 + 1, 0, u_1 + 2} SSet.stdSimplex.{u_1 + 1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1 + 1, 0, u_1 + 2} SSet.stdSimplex.{u_1 + 1} { len := 1 }))
+        (derivedInfinityCategory.{u_1} S)
+@derivedCospanFiberSquare_isPullback.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  (p :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.horn.{u_1 + 1} 2 2))
+      (derivedInfinityCategory.{u_1} S)),
+  IsPullbackSquare.{u_1 + 1} (derivedCospanFiberSquare.{u_1} p)
+@derivedCospanFiberSquare_cospan.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  (p :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.horn.{u_1 + 1} 2 2))
+      (derivedInfinityCategory.{u_1} S)),
+  Eq.{u_1 + 2} (pullbackCospan.{u_1 + 1} (derivedCospanFiberSquare.{u_1} p)) p
+@derivedInfinityCategory_hasLimit_cospan.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  (p :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.horn.{u_1 + 1} 2 2))
+      (derivedInfinityCategory.{u_1} S)),
+  HasLimit.{u_1 + 1} p
+@derivedInfinityCategory_fiber_exists.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {x y :
+    CategoryTheory.Functor.obj.{0, u_1 + 1, 0, u_1 + 2} (derivedInfinityCategory.{u_1} S)
+      (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1 + 1} x y), Nonempty.{u_1 + 2} (FiberSquare.{u_1 + 1} f)
+```

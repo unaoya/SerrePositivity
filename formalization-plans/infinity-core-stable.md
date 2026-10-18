@@ -983,6 +983,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 完全関手と指定懸垂への cofiber 比較 | `squareDiagramHoEvaluation_postcomp`、`cofiberSuspensionComparisonHom_postcomp`、`cofiberConnectingToSuspension_postcomp`、`functorHomotopyEvaluation_map_app_arrow`・後合成の成分式、`functorIsoOfTrivialKanFibration_projection_arrow`・`_component_arrow`、`exactFunctorSuspensionFamilyIso_source_component_arrow` | 写した懸垂への接続射の保存と、選んだ図式比較の始点が恒等であることまで完成。Σ への接続射の両立・三角関手も完成。完全関手間の自然変換も下記で完成 |
 | 完全関手が誘導する三角関手 | `exactFunctorSuspensionIso_comp_objIso`・逆射版、`cofiberConnecting_postcomp`、`exactFunctor_map_cofiberTriangle_mor₃`、`exactFunctorCofiberTriangleIso`、`exactFunctor_isTriangulated`、`exactFunctor_additive`（Quasicategory、IsStable、IsExactFunctor F、cofiber 比較には指定 cofiber 列） | 接続射・第三射の保存、cofiber 三角形の像の同型、Mathlib の三角関手と加法性まで完成。完全関手間の自然変換も下記で完成。D7 は未完了 |
 | 完全関手間の自然変換 | `homotopyNatTransOfEndpoints_precomp_app_arrow`、`stableShiftCommutationNeg_naturality`・`stableNatTransCommShiftOfOne`、`exactFunctorNatTrans`・接続射の自然性・`exactFunctorNatTrans_suspension_comm`・`exactFunctorNatTrans_commShift`・`exactFunctorNatTransTriangle` | 任意の単体的自然変換 H に対する h の自然変換、全整数シフトとの両立、三角形の像の間の自然変換まで完成。H の成分の可逆性は不要。S6 は完了 |
-| S7 | D7 | 零対象・fiber 側の既存資産の照合に着手。cofiber の普遍性・安定性・三角構造の比較は未完了 |
+| D7 の零対象・fiber の存在 | `derivedInfinityZeroVertex_isZeroVertex`、`derivedInfinityCategory_hasZeroVertex`、`derivedCospanPresentation`・各頂点の所属、`derivedCospanFiberSquare` と普遍性・cospan 一致、`derivedInfinityCategory_hasLimit_cospan`、`derivedInfinityCategory_fiber_exists`（任意の可換環） | IsStable を仮定せず実際の零頂点・cospan 極限・全辺の fiber 四角形を構成済み。cofiber と安定性は未完了 |
+| S7 | D7 | 零対象・任意の cospan の極限・全ての指定辺の fiber の存在まで完成。cofiber の普遍性・安定性・三角構造の比較は未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

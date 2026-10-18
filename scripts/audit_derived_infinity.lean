@@ -888,7 +888,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisFiltration,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisLayers,
     `SerrePositivity.InfinityCategories.Derived.RingGradedSplit,
-    `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift]
+    `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift,
+    `SerrePositivity.InfinityCategories.Derived.StableLimits]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
