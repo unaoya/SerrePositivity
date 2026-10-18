@@ -102,4 +102,10 @@ public import SerrePositivity.KST.SConstruction.StablePathFirstRow
 public import SerrePositivity.KST.SConstruction.IteratedPathFirstRow
 public import SerrePositivity.KST.SConstruction.IteratedPathContractible
 
+public import SerrePositivity.KST.SConstruction.IteratedPathBoundary
+public import SerrePositivity.KST.SConstruction.DiagonalIterationCoordinates
+public import SerrePositivity.KST.SConstruction.DiagonalIterationNaturality
+public import SerrePositivity.KST.SConstruction.DiagonalIterationRealization
+public import SerrePositivity.KST.SConstruction.CanonicalIteratedPathBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/

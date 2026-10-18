@@ -3190,3 +3190,65 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.iteratedPathRealization_toPoint_localized_isIso
 #check @SerrePositivity.KST.SConstruction.iteratedFirstRowRealization_toPoint_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.iteratedFirstRowRealization_toPoint_localized_isIso
+
+-- 反復した経路の境界図式と多重実現への全単体的座標同型
+#check @SerrePositivity.KST.SConstruction.simplicialPathBoundary_naturality
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathBoundary_naturality
+#check @SerrePositivity.KST.SConstruction.stableSConstructionDiagram
+#print axioms SerrePositivity.KST.SConstruction.stableSConstructionDiagram
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationDiagram
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationDiagram
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary
+#check @SerrePositivity.KST.SConstruction.iteratedSRealization
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealization
+#check @SerrePositivity.KST.SConstruction.iteratedPathRealizationBoundary
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathRealizationBoundary
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationDiagramMap
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationDiagramMap
+#check @SerrePositivity.KST.SConstruction.iteratedPathRealizationDiagramMap
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathRealizationDiagramMap
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_naturality
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_naturality
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationMap
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationMap
+#check @SerrePositivity.KST.SConstruction.iteratedPathRealizationMap
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathRealizationMap
+#check @SerrePositivity.KST.SConstruction.iteratedPathRealizationBoundary_naturality
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathRealizationBoundary_naturality
+#check @SerrePositivity.KST.SConstruction.multiSConstruction_diagonal_inner
+#print axioms SerrePositivity.KST.SConstruction.multiSConstruction_diagonal_inner
+#check @SerrePositivity.KST.SConstruction.multiSEndofunctor_diagonal_inner_iso
+#print axioms SerrePositivity.KST.SConstruction.multiSEndofunctor_diagonal_inner_iso
+#check @SerrePositivity.KST.SConstruction.iteratedSRealization_zero
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealization_zero
+#check @SerrePositivity.KST.SConstruction.iteratedPathRealization_zero
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathRealization_zero
+#check @SerrePositivity.KST.SConstruction.iteratedPathRealizationBoundary_zero
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathRealizationBoundary_zero
+#check @SerrePositivity.KST.SConstruction.diagonalSEndofunctor
+#print axioms SerrePositivity.KST.SConstruction.diagonalSEndofunctor
+#check @SerrePositivity.KST.SConstruction.diagonalSEndofunctor_zero
+#print axioms SerrePositivity.KST.SConstruction.diagonalSEndofunctor_zero
+#check @SerrePositivity.KST.SConstruction.diagonalSEndofunctor_succ
+#print axioms SerrePositivity.KST.SConstruction.diagonalSEndofunctor_succ
+#check @SerrePositivity.KST.SConstruction.diagonalSInnerComparisonNatIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalSInnerComparisonNatIso
+#check @SerrePositivity.KST.SConstruction.stableEndofunctorCoreEvaluation
+#print axioms SerrePositivity.KST.SConstruction.stableEndofunctorCoreEvaluation
+#check @SerrePositivity.KST.SConstruction.diagonalInnerSCoreDiagram
+#print axioms SerrePositivity.KST.SConstruction.diagonalInnerSCoreDiagram
+#check @SerrePositivity.KST.SConstruction.diagonalInnerSCoreDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalInnerSCoreDiagramIso
+#check @SerrePositivity.KST.SConstruction.diagonalInnerSRealizationIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalInnerSRealizationIso
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationInnerIso
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationInnerIso
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationCoordinateIso
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationCoordinateIso
+#check @SerrePositivity.KST.SConstruction.canonicalIteratedPathBoundary
+#print axioms SerrePositivity.KST.SConstruction.canonicalIteratedPathBoundary
+#check @SerrePositivity.KST.SConstruction.reducedIteratedPathBoundary
+#print axioms SerrePositivity.KST.SConstruction.reducedIteratedPathBoundary
+#check @SerrePositivity.KST.SConstruction.kanIteratedPathBoundary
+#print axioms SerrePositivity.KST.SConstruction.kanIteratedPathBoundary

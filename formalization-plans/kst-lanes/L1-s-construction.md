@@ -4501,3 +4501,148 @@ lemma iteratedFirstRowRealization_toPoint_localized_isIso (r : ℕ) (X : StableM
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3076 jobs）、公理監査成功（1163 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.38 反復した境界図式と既存の多重実現への全単体的座標同型
+
+先頭を忘れる経路の境界の、任意の単体的図式の射に関する自然性を証明した。
+安定な入力の S 図式に外側の r 重 S の core の実現を施すことで、
+反復した境界の自然変換とその全対角の実際の境界射を構成した。
+入力の射による源・標的の図式の写像と全対角の写像も構成し、境界との厳密な自然性を証明した。
+
+最内側の S を用いる標的の座標を既存の多重反復の座標と照合した。
+まず全方向を次数 n に固定した対象の一致と、固定 n での安定な自己関手の自然同型を帰納的に証明した。
+零回反復では、元の core S の実現、経路実現、経路境界をそれぞれ厳密に回収する。
+
+一般の単体作用素との自然性のため、自己関手の合成のモノイダル構造と、その関手圏の点ごとの
+モノイダル構造を使い、diagonalSInnerComparisonNatIso を構成した。
+方向数の帰納の始点に左右の単位子、帰納段に結合子を使うため、単体次数と安定な入力の両方について自然。
+モノイダル構造の instance は当該モジュール内の local とし、他レーンの公開 API は変更していない。
+
+この比較を入力で評価して core を取り、対角実現で写した。
+既存の二重対角で内側の作用を先に適用する順序と、自己関手の水平合成で外側の作用を先に適用する順序の
+違いを、自然変換の自然性の式で厳密に交換した。
+その結果、実際の単体集合の同型
+iteratedSRealizationCoordinateIso r X : iteratedSRealization r X ≅ multiDiagonalCoreSConstruction (r+1) X
+を得た。対象の一致だけから構造写像の一致を推論してはいない。
+
+境界射にこの同型を合成し、既存の multiDiagonalCoreSConstruction を標的にした
+canonicalIteratedPathBoundary を構成した。さらに既存の全零境界商の射影と点つき Kan 置換の単位を合成し、
+reducedIteratedPathBoundary と kanIteratedPathBoundary を構成した。これらは底の単体集合の射である。
+源の弱可縮性は前節で証明済みで、標的は既存の各模型そのものを使っている。
+ただし源の基点を含む点つき境界の束ねと、canonical な合成射の入力への自然性の個別の式は未記録。
+
+境界射の homotopy fiber を計算したわけではなく、既存の suspension 構造射との照合全体や
+正の段の Ω 条件は未証明。全空間が弱可縮で標的が Kan であることだけから、それらを結論してはいない。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u v`、
+`open CategoryTheory MonoidalCategory MonoidalClosed SSet`、
+`open SerrePositivity.InfinityCategories`、`open scoped Simplicial` の下の正確な型。
+自己関手のテンソルの式は `attribute [local instance] CategoryTheory.endofunctorMonoidalCategory`
+および Mathlib の Monoidal.FunctorCategory の点ごとの instance の下で読む。
+
+```lean
+lemma simplicialPathBoundary_naturality {C : Type u} [Category.{v} C]
+    {X Y : SimplicialObject C} (f : X ⟶ Y) :
+    Functor.whiskerLeft SimplexPrefix.functor.op f ≫ simplicialPathBoundary Y =
+      simplicialPathBoundary X ≫ f
+
+def stableSConstructionDiagram (X : StableModel.{u}) : SimplicialObject StableModel.{u}
+
+def iteratedSRealizationDiagram (r : ℕ) (X : StableModel.{u}) : SimplicialObject SSet.{u}
+
+def iteratedPathBoundary (r : ℕ) (X : StableModel.{u}) :
+    iteratedPathRealizationDiagram r X ⟶ iteratedSRealizationDiagram r X
+
+def iteratedSRealization (r : ℕ) (X : StableModel.{u}) : SSet.{u}
+
+def iteratedPathRealizationBoundary (r : ℕ) (X : StableModel.{u}) :
+    iteratedPathRealization r X ⟶ iteratedSRealization r X
+
+def iteratedSRealizationDiagramMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    iteratedSRealizationDiagram r X ⟶ iteratedSRealizationDiagram r Y
+
+def iteratedPathRealizationDiagramMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    iteratedPathRealizationDiagram r X ⟶ iteratedPathRealizationDiagram r Y
+
+lemma iteratedPathBoundary_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    iteratedPathRealizationDiagramMap r f ≫ iteratedPathBoundary r Y =
+      iteratedPathBoundary r X ≫ iteratedSRealizationDiagramMap r f
+
+def iteratedSRealizationMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    iteratedSRealization r X ⟶ iteratedSRealization r Y
+
+def iteratedPathRealizationMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    iteratedPathRealization r X ⟶ iteratedPathRealization r Y
+
+lemma iteratedPathRealizationBoundary_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    iteratedPathRealizationMap r f ≫ iteratedPathRealizationBoundary r Y =
+      iteratedPathRealizationBoundary r X ≫ iteratedSRealizationMap r f
+
+lemma multiSConstruction_diagonal_inner (r n : ℕ) (X : StableModel.{u}) :
+    (multiSConstruction r (sStableModel n X)).obj (fun _ => Opposite.op ⦋n⦌) =
+      (multiSConstruction (r + 1) X).obj (fun _ => Opposite.op ⦋n⦌)
+
+def multiSEndofunctor_diagonal_inner_iso (r n : ℕ) :
+    sEndofunctor.{u} n ⋙ (multiSEndofunctor r).obj (fun _ => Opposite.op ⦋n⦌) ≅
+      (multiSEndofunctor (r + 1)).obj (fun _ => Opposite.op ⦋n⦌)
+
+lemma iteratedSRealization_zero (X : StableModel.{u}) :
+    iteratedSRealization 0 X = diagonalCoreSConstruction X.carrier
+
+lemma iteratedPathRealization_zero (X : StableModel.{u}) :
+    iteratedPathRealization 0 X = sPathRealization X.carrier
+
+lemma iteratedPathRealizationBoundary_zero (X : StableModel.{u}) :
+    iteratedPathRealizationBoundary 0 X = sPathRealizationBoundary X.carrier
+
+def diagonalSEndofunctor (r : ℕ) :
+    SimplexCategoryᵒᵖ ⥤ (StableModel.{u} ⥤ StableModel.{u})
+
+lemma diagonalSEndofunctor_zero :
+    diagonalSEndofunctor.{u} 0 = 𝟙_ (SimplexCategoryᵒᵖ ⥤ (StableModel.{u} ⥤ StableModel.{u}))
+
+lemma diagonalSEndofunctor_succ (r : ℕ) :
+    diagonalSEndofunctor.{u} (r + 1) = diagonalSEndofunctor r ⊗ simplicialStableEndofunctor
+
+def diagonalSInnerComparisonNatIso (r : ℕ) :
+    simplicialStableEndofunctor.{u} ⊗ diagonalSEndofunctor r ≅ diagonalSEndofunctor (r + 1)
+
+def stableEndofunctorCoreEvaluation (X : StableModel.{u}) :
+    (StableModel.{u} ⥤ StableModel.{u}) ⥤ SSet.{u}
+
+def diagonalInnerSCoreDiagram (r : ℕ) (X : StableModel.{u}) : SimplicialObject SSet.{u}
+
+def diagonalInnerSCoreDiagramIso (r : ℕ) (X : StableModel.{u}) :
+    diagonalInnerSCoreDiagram r X ≅
+      diagonalSEndofunctor (r + 1) ⋙ stableEndofunctorCoreEvaluation X
+
+def diagonalInnerSRealizationIso (r : ℕ) (X : StableModel.{u}) :
+    simplicialDiagonalFunctor.obj (diagonalInnerSCoreDiagram r X) ≅
+      multiDiagonalCoreSConstruction (r + 1) X
+
+def iteratedSRealizationInnerIso (r : ℕ) (X : StableModel.{u}) :
+    iteratedSRealization r X ≅ simplicialDiagonalFunctor.obj (diagonalInnerSCoreDiagram r X)
+
+def iteratedSRealizationCoordinateIso (r : ℕ) (X : StableModel.{u}) :
+    iteratedSRealization r X ≅ multiDiagonalCoreSConstruction (r + 1) X
+
+def canonicalIteratedPathBoundary (r : ℕ) (X : StableModel.{u}) :
+    iteratedPathRealization r X ⟶ multiDiagonalCoreSConstruction (r + 1) X
+
+def reducedIteratedPathBoundary (r : ℕ) (X : StableModel.{u}) :
+    iteratedPathRealization r X ⟶ (boundaryReducedRealization r X).right
+
+def kanIteratedPathBoundary (r : ℕ) (X : StableModel.{u}) :
+    iteratedPathRealization r X ⟶ ((boundaryKanRealizationFunctor r).obj X).right
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。反復した経路の境界図式と入力への自然性、
+境界の標的と既存の多重実現との実際の全単体的同型、全零境界商・Kan 模型への接続まで証明済み。
+境界射の homotopy fiber と loop の比較、点つき境界の束ね、既存の suspension 構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3081 jobs）、公理監査成功（1193 宣言、標準三公理のみ）。追加公理・sorry なし。
