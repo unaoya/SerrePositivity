@@ -3175,3 +3175,213 @@ SerrePositivity.InfinityCategories.pastingRightSpanIso_hom_ι.{u_1} : Eq.{u_1 + 
           (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pastingRightSpanIso.{u_1})
           (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1})))
 ```
+
+
+## S4：長方形の終端角による join 表示
+
+対象 `PastingCornerJoinIso`（1921 jobs）・集約 `Stable`（2012 jobs）のビルドは成功。
+全宣言監査は 68 モジュール・720 宣言で標準三公理のみ。
+右四角形の余錐との厳密な一致、左四角形の押し出し性を使う外側比較、
+貼り合わせ全体・三角構造・S5〜S7 は未完了。
+
+以下は `pp.universes true` での公開宣言の正確な型。
+
+```lean
+SerrePositivity.InfinityCategories.stableLastCollapseOrderHom : (n : ℕ) →
+  OrderHom.{0, 0} (Fin (HAdd.hAdd.{0, 0, 0} n 2)) (Fin (HAdd.hAdd.{0, 0, 0} n 1))
+SerrePositivity.InfinityCategories.stableLastJoinEvaluation.{u_1} : (n : ℕ) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.join.{u_1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n })
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n })
+SerrePositivity.InfinityCategories.stableLastJoinEvaluation_app_val.{u_1} : ∀ (n d : ℕ)
+  (s :
+    SerrePositivity.InfinityCategories.Join.Simplex.{u_1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n })
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) d)
+  (i : Fin (HAdd.hAdd.{0, 0, 0} d 1)),
+  Eq.{1}
+    (↑(((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.stableLastJoinEvaluation.{u_1} n) (Opposite.op.{1} { len := d })))
+          s)
+        i))
+    (min.{0} (↑((SerrePositivity.InfinityCategories.Join.stdEncode.{u_1} n 0 d s) i)) n)
+SerrePositivity.InfinityCategories.stableLastJoinEvaluation_app_of_lt.{u_1} : ∀ (n d : ℕ)
+  (s :
+    SerrePositivity.InfinityCategories.Join.Simplex.{u_1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n })
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) d)
+  (i : Fin (HAdd.hAdd.{0, 0, 0} d 1)) (hi : LT.lt.{0} ↑i ↑(Sigma.fst.{0, u_1} s)),
+  Eq.{1}
+    (((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (SerrePositivity.InfinityCategories.stableLastJoinEvaluation.{u_1} n) (Opposite.op.{1} { len := d })))
+        s)
+      i)
+    (((SerrePositivity.InfinityCategories.Join.stdAugEquiv.{u_1} n ↑(Sigma.fst.{0, u_1} s)) (Sigma.snd.{0, u_1} s).1)
+      ⟨↑i, hi⟩)
+SerrePositivity.InfinityCategories.stableLastJoinEvaluation_app_of_ge.{u_1} : ∀ (n d : ℕ)
+  (s :
+    SerrePositivity.InfinityCategories.Join.Simplex.{u_1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n })
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) d)
+  (i : Fin (HAdd.hAdd.{0, 0, 0} d 1)),
+  LE.le.{0} ↑(Sigma.fst.{0, u_1} s) ↑i →
+    Eq.{1}
+      (((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.stableLastJoinEvaluation.{u_1} n) (Opposite.op.{1} { len := d })))
+          s)
+        i)
+      (Fin.last n)
+SerrePositivity.InfinityCategories.stableLastJoinEvaluation_inl.{u_1} : ∀ (n : ℕ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinInl.{u_1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      (SerrePositivity.InfinityCategories.stableLastJoinEvaluation.{u_1} n))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n }))
+SerrePositivity.InfinityCategories.pastingAugX.{u_1} : (ℓ : ℕ) →
+  SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}) ℓ →
+    OrderHom.{0, 0} (Fin ℓ) (Fin 3)
+SerrePositivity.InfinityCategories.pastingAugY.{u_1} : (ℓ : ℕ) →
+  SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}) ℓ →
+    OrderHom.{0, 0} (Fin ℓ) (Fin 2)
+SerrePositivity.InfinityCategories.pastingAug_not_terminal.{u_1} : ∀ (ℓ : ℕ)
+  (s :
+    SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}) ℓ)
+  (i : Fin ℓ),
+  Eq.{1} ((SerrePositivity.InfinityCategories.pastingAugX.{u_1} ℓ s) i) 2 →
+    Ne.{1} ((SerrePositivity.InfinityCategories.pastingAugY.{u_1} ℓ s) i) 1
+SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (SerrePositivity.InfinityCategories.join.{u_1}
+    (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+  (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+SerrePositivity.InfinityCategories.pastingCornerCocone_inl.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.joinInl.{u_1}
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+    SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1})
+  (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+@SerrePositivity.InfinityCategories.pastingCornerCocone_appX_of_lt.{u_1} : ∀ {d : ℕ}
+  (s :
+    SerrePositivity.InfinityCategories.Join.Simplex.{u_1}
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) d)
+  (i : Fin (HAdd.hAdd.{0, 0, 0} d 1)) (hi : LT.lt.{0} ↑i ↑(Sigma.fst.{0, u_1} s)),
+  Eq.{1}
+    (((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1} (Opposite.op.{1} { len := d })))
+          s).1
+      i)
+    ((SerrePositivity.InfinityCategories.pastingAugX.{u_1} (↑(Sigma.fst.{0, u_1} s)) (Sigma.snd.{0, u_1} s).1) ⟨↑i, hi⟩)
+@SerrePositivity.InfinityCategories.pastingCornerCocone_appY_of_lt.{u_1} : ∀ {d : ℕ}
+  (s :
+    SerrePositivity.InfinityCategories.Join.Simplex.{u_1}
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) d)
+  (i : Fin (HAdd.hAdd.{0, 0, 0} d 1)) (hi : LT.lt.{0} ↑i ↑(Sigma.fst.{0, u_1} s)),
+  Eq.{1}
+    (((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1} (Opposite.op.{1} { len := d })))
+          s).2
+      i)
+    ((SerrePositivity.InfinityCategories.pastingAugY.{u_1} (↑(Sigma.fst.{0, u_1} s)) (Sigma.snd.{0, u_1} s).1) ⟨↑i, hi⟩)
+@SerrePositivity.InfinityCategories.pastingCornerCocone_app_of_ge.{u_1} : ∀ {d : ℕ}
+  (s :
+    SerrePositivity.InfinityCategories.Join.Simplex.{u_1}
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) d)
+  (i : Fin (HAdd.hAdd.{0, 0, 0} d 1)),
+  LE.le.{0} ↑(Sigma.fst.{0, u_1} s) ↑i →
+    Eq.{1}
+        (((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                  SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1} (Opposite.op.{1} { len := d })))
+              s).1
+          i)
+        2 ∧
+      Eq.{1}
+        (((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                  SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1} (Opposite.op.{1} { len := d })))
+              s).2
+          i)
+        1
+@SerrePositivity.InfinityCategories.pastingCornerCocone_vertex_corner_iff.{u_1} : ∀ {d : ℕ}
+  (s :
+    SerrePositivity.InfinityCategories.Join.Simplex.{u_1}
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) d)
+  (i : Fin (HAdd.hAdd.{0, 0, 0} d 1)),
+  Eq.{1}
+        (((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                  SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1} (Opposite.op.{1} { len := d })))
+              s).1
+          i)
+        2 →
+      Ne.{1}
+        (((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                  SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1} (Opposite.op.{1} { len := d })))
+              s).2
+          i)
+        1 ↔
+    LT.lt.{0} ↑i ↑(Sigma.fst.{0, u_1} s)
+SerrePositivity.InfinityCategories.pastingCornerCocone_app_injective.{u_1} : ∀ (d : ℕ),
+  Function.Injective.{u_1 + 1, u_1 + 1}
+    ⇑(CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1}
+          (Opposite.op.{1} { len := d })))
+SerrePositivity.InfinityCategories.pastingTerminalFlag : OrderHom.{0, 0} (Prod.{0, 0} (Fin 3) (Fin 2)) (Fin 2)
+SerrePositivity.InfinityCategories.pastingTerminalFlag_lt : ∀ (x : Fin 3) (y : Fin 2),
+  LT.lt.{0} (↑(SerrePositivity.InfinityCategories.pastingTerminalFlag (Prod.mk.{0, 0} x y))) 1 ↔ Eq.{1} x 2 → Ne.{1} y 1
+SerrePositivity.InfinityCategories.pastingAugOfCoords.{u_1} : (r : ℕ) →
+  (x : OrderHom.{0, 0} (Fin r) (Fin 3)) →
+    (y : OrderHom.{0, 0} (Fin r) (Fin 2)) →
+      (∀ (i : Fin r), Eq.{1} (x i) 2 → Ne.{1} (y i) 1) →
+        SerrePositivity.InfinityCategories.Join.augObj.{u_1}
+          (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}) r
+SerrePositivity.InfinityCategories.pastingAugOfCoords_x.{u_1} : ∀ (r : ℕ) (x : OrderHom.{0, 0} (Fin r) (Fin 3))
+  (y : OrderHom.{0, 0} (Fin r) (Fin 2)) (h : ∀ (i : Fin r), Eq.{1} (x i) 2 → Ne.{1} (y i) 1) (i : Fin r),
+  Eq.{1}
+    ((SerrePositivity.InfinityCategories.pastingAugX.{u_1} r
+        (SerrePositivity.InfinityCategories.pastingAugOfCoords.{u_1} r x y h))
+      i)
+    (x i)
+SerrePositivity.InfinityCategories.pastingAugOfCoords_y.{u_1} : ∀ (r : ℕ) (x : OrderHom.{0, 0} (Fin r) (Fin 3))
+  (y : OrderHom.{0, 0} (Fin r) (Fin 2)) (h : ∀ (i : Fin r), Eq.{1} (x i) 2 → Ne.{1} (y i) 1) (i : Fin r),
+  Eq.{1}
+    ((SerrePositivity.InfinityCategories.pastingAugY.{u_1} r
+        (SerrePositivity.InfinityCategories.pastingAugOfCoords.{u_1} r x y h))
+      i)
+    (y i)
+SerrePositivity.InfinityCategories.pastingCornerCocone_app_surjective.{u_1} : ∀ (d : ℕ),
+  Function.Surjective.{u_1 + 1, u_1 + 1}
+    ⇑(CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1}
+          (Opposite.op.{1} { len := d })))
+SerrePositivity.InfinityCategories.pastingCornerCocone_isIso.{u_1} : CategoryTheory.IsIso.{u_1, u_1 + 1}
+  SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1}
+SerrePositivity.InfinityCategories.pastingCornerJoinIso.{u_1} : CategoryTheory.Iso.{u_1, u_1 + 1}
+  (SerrePositivity.InfinityCategories.join.{u_1}
+    (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+  (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+```

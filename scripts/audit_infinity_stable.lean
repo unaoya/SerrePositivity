@@ -381,6 +381,31 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.pastingCornerRestrict_standardSpan_trivialKanFibration
 #print axioms SerrePositivity.InfinityCategories.pastingCorner_isColimitCone_iff_standardSpan
 
+#print axioms SerrePositivity.InfinityCategories.stableLastCollapseOrderHom
+#print axioms SerrePositivity.InfinityCategories.stableLastJoinEvaluation
+#print axioms SerrePositivity.InfinityCategories.stableLastJoinEvaluation_app_val
+#print axioms SerrePositivity.InfinityCategories.stableLastJoinEvaluation_app_of_lt
+#print axioms SerrePositivity.InfinityCategories.stableLastJoinEvaluation_app_of_ge
+#print axioms SerrePositivity.InfinityCategories.stableLastJoinEvaluation_inl
+#print axioms SerrePositivity.InfinityCategories.pastingAugX
+#print axioms SerrePositivity.InfinityCategories.pastingAugY
+#print axioms SerrePositivity.InfinityCategories.pastingAug_not_terminal
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_inl
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_appX_of_lt
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_appY_of_lt
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_app_of_ge
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_vertex_corner_iff
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_app_injective
+#print axioms SerrePositivity.InfinityCategories.pastingTerminalFlag
+#print axioms SerrePositivity.InfinityCategories.pastingTerminalFlag_lt
+#print axioms SerrePositivity.InfinityCategories.pastingAugOfCoords
+#print axioms SerrePositivity.InfinityCategories.pastingAugOfCoords_x
+#print axioms SerrePositivity.InfinityCategories.pastingAugOfCoords_y
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_app_surjective
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_isIso
+#print axioms SerrePositivity.InfinityCategories.pastingCornerJoinIso
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -449,7 +474,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PastingCofinality,
     `SerrePositivity.InfinityCategories.Stable.PastingRightSpanMap,
     `SerrePositivity.InfinityCategories.Stable.PastingRightSpanIso,
-    `SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparison]
+    `SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparison,
+    `SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.PastingCornerCocone,
+    `SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
