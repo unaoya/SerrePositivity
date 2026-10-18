@@ -90,6 +90,7 @@ public import SerrePositivity.KST.Descent.SectionedDescent
 public import SerrePositivity.KST.Descent.AffineSplitDescent
 public import SerrePositivity.KST.Descent.AffineBaseChangeDescent
 public import SerrePositivity.KST.Descent.AffineTensorSquare
+public import SerrePositivity.KST.Descent.FiniteTypeAffineTensorSquare
 
 /-!
 # K-L8：論文 §3 の降下
@@ -141,6 +142,8 @@ Noether な対象の整な成分による有限閉被覆、一成分と残りへ
 環の分裂から固定した基底上の切断を構成し、分裂するテンソル積の底変換と
 自己底変換の指定射影に、同じ前層の全次数降下を適用する。
 テンソル積の二射影の実際の Cartesian 性と、右射影の群作用との同変性も公開する。
+同じ S 上の有限型の圏内にも二射影・作用・切断を構成し、Cartesian 性を反映する。
+この指定第一射影そのものについて、分裂から全次数降下を導く。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

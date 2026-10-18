@@ -67,10 +67,12 @@ Noether な終域への全射閉埋め込みの冪零性と、Noether な対象�
 環の分裂から固定した S 上の切断を構成し、分裂する底変換と自己底変換の
 テンソル積モデルに同じ L の全次数降下を適用した。
 テンソル積の指定二射影の実際の Cartesian 性と、右射影の同変性を証明した。
+この二射影・作用・切断を同じ S 上の有限型の圏内にも構成し、
+その Cartesian 性と指定第一射影の全次数降下を証明した。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 90 モジュール・1031 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 91 モジュール・1047 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -507,6 +509,10 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `NaturalBlowupSequences.affine_selfBaseChange_piDescent` | 自己底変換の全次数降下 | 対象ビルド済み |
 | `tensorSpecSquare_isPullback` | 指定二射影の実際の Cartesian 性 | 対象ビルド済み |
 | `tensorSpecSquare_right_equivariant` | 右射影の元の作用との同変性 | 対象ビルド済み |
+| `affineTensorSquare_isPullback` | 同じ S 上の有限型の圏内の Cartesian 性 | 対象ビルド済み |
+| `affineTensorSection`、`affineTensorSection_identity` | 指定環射から有限型の圏内の切断と分裂恒等式 | 対象ビルド済み |
+| `affineTensorAction_over_base`、`affineTensorSnd_equivariant` | 有限型の圏内の二射影の同変性 | 対象ビルド済み |
+| `NaturalBlowupSequences.affineTensorFst_piDescent` | 指定された実際の底変換の第一射影の全次数降下 | 対象ビルド済み、元の L を使用 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1080,3 +1086,27 @@ A 代数射 φ : T → B があれば、テンソル積の普遍性により
 自然な blowup 列・有限積保存を実降下から供給する工程と、有限次元上界の接続も残る。
 最小公理 (1)–(8) 全体、(3.6)、K0・T2・E の接続も未完であり、
 本段階を論文 補題 3.2 または定理 3.1 全体の完成とは呼ばない。
+
+## 37. 前層の定義域内の同変な底変換正方形
+
+`affineTensorObject` は Spec(B ⊗_A T) を、左因子 B を通る構造射で同じ S 上の
+有限型対象にする。`affineTensorFst` と `affineTensorSnd` はそれぞれ実際の
+係数射影と右因子への射影をこの圏内に持ち上げた射である。
+右射影の構造射との可換性は §36 の Spec の正方形から導出する。
+Over の忘却と充満部分圏の包含は極限を反映するので、
+指定された四辺がこの有限型の圏内でも引き戻しを成すことを証明した。
+従って、単にスキームとして同型な対象へ前層を勝手に適用しているのではない。
+
+`affineTensorAction` は左因子を固定した右因子上の既存の作用を持ち上げる。
+第一射影の基底上の不変性と、第二射影の元の作用との同変性をこの圏内の等式で証明した。
+指定された A 代数射 T → B から `affineTensorSection` を構成し、
+第一射影との合成が恒等射であることもこの圏内で証明した。
+有限型対象に保存済みの局所有限型性と準コンパクト性の証明は、
+反復するアフィン底変換の構成に明示的に渡している。
+
+`affineTensorFst_piDescent` は、指定されたこの第一射影そのものについて、
+元の L の全係数・全整数次数の降下を結論する。
+基底の明示した有限次元上界、Noether な S と分離な構造射、
+有限な群、幾何的推移性、自然な blowup 列・有限積保存・冪零不変性が入力である。
+Čech 各段の関手的な比較、分裂余単体対象の実降下、Fubini・細分による
+元の切断を持たない射への還元は引き続き未完である。
