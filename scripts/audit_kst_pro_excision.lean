@@ -554,3 +554,24 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.adjacentTensorGradeHomology_differential
 #print axioms SerrePositivity.KST.ProExcision.adjacentTensorGradeHomology_differential
+
+#check @SerrePositivity.KST.ProExcision.intervalTensorAdjacentIso
+#print axioms SerrePositivity.KST.ProExcision.intervalTensorAdjacentIso
+
+#check @SerrePositivity.KST.ProExcision.intervalTensorGradeBoundary
+#print axioms SerrePositivity.KST.ProExcision.intervalTensorGradeBoundary
+
+#check @SerrePositivity.KST.ProExcision.intervalTensorGradeBoundary_adjacent
+#print axioms SerrePositivity.KST.ProExcision.intervalTensorGradeBoundary_adjacent
+
+#check @SerrePositivity.KST.ProExcision.intervalTensorGradeHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.intervalTensorGradeHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.intervalTensorGradeHomology_differential
+#print axioms SerrePositivity.KST.ProExcision.intervalTensorGradeHomology_differential
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageCoefficientIsoAt
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageCoefficientIsoAt
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient

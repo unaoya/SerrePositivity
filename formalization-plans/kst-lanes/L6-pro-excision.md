@@ -48,7 +48,7 @@
 - 補助初頁の項を Koszul の -p 次項と K の s+2p 次ホモロジーのテンソルへ同定済み。
 - KST の (p,q) は Mathlib の (−q−2p,p) に対応し、補助初頁 2 は KST の E₁。
 - 添字の微分次数の計算を証明済み。補助頁 r は KST r−1 頁に対応する。
-- 補助初頁の微分と Koszul 微分の同定・そのホモロジーを KST E₂ と同定する部分は残件。
+- 補助初頁の隣接二行の微分と Koszul 微分の同定は証明済み。そのホモロジーを KST E₂ と同定する部分は残件。
 - 全テンソル複体を既存 koszulComplexOn へ移す同型を列長帰納法で構成済み。
 - 次数ごと分裂する短完全列のテンソル境界を純テンソル上で計算済み。
 - 係数複体の微分の項が s≫r=0 により消えることを証明済み。
@@ -82,7 +82,11 @@
 - シフト列の一般比較を証明し、隣接一項テンソル境界のホモロジー誘導射を係数テンソル射へ移送済み。
 - 源 q・標的 q+1 の共通係数次数 s=q-a を指定できる同型を構成し、f ⊗ H_s(K) との可換性を証明済み。
 - 隣接商のテンソルホモロジー同型を作り、実際の隣接商境界が P.d ⊗ H_s(K) を誘導すると証明済み。
-- 次は有限 Koszul 濾過の実際の区間添字を隣接商へ揃え、初頁微分全体へ接続する。
+- 任意表示の隣接区間を標準隣接模型へ移す短複体同型と、その境界比較を証明済み。
+- 二つの残る次数を別に指定して、区間境界のホモロジーが P.d ⊗ H_s(K) を誘導すると証明済み。
+- 有限 Koszul 補助初頁の実際の区間添字を代入し、微分が Koszul 微分と係数ホモロジーのテンソルに一致すると証明済み。
+- 微分に適合する係数模型は koszulFirstPageCoefficientIsoAt を使う。
+- 次は初頁複体のホモロジーを計算し、Mathlib 頁 3 を KST E₂ へ同定する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -173,6 +177,10 @@
 | tensorSingleHomology_boundary_at | ShiftedComparison.lean | 検証済み | 隣接境界は共通係数次数で f ⊗ H(K) を誘導 |
 | adjacentTensorGradeHomologyIso | GradedHomology.lean | 検証済み | 隣接商のテンソルホモロジーの係数模型 |
 | adjacentTensorGradeHomology_differential | GradedHomology.lean | 検証済み | 実際の隣接商境界は P.d ⊗ H(K) を誘導 |
+| intervalTensorAdjacentIso | IntervalGradeBoundary.lean | 検証済み | 任意表示の区間の隣接模型への同型 |
+| intervalTensorGradeHomology_differential | IntervalGradeBoundary.lean | 検証済み | 正規化前の区間境界の係数微分 |
+| koszulFirstPageCoefficientIsoAt | KoszulCoefficients.lean | 検証済み | 微分と整合する指定係数次数の初頁模型 |
+| koszulFirstPage_d_coefficient | KoszulCoefficients.lean | 検証済み | 実際の有限初頁微分は Koszul 微分 ⊗ H(K) |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
