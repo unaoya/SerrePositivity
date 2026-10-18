@@ -160,3 +160,8 @@ public import SerrePositivity.InfinityCategories.F1B.NaturalMappingFamilyAdjunct
 public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
 public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
 public import SerrePositivity.InfinityCategories.F1B.Reflective
+public import SerrePositivity.InfinityCategories.F1B.RepresentableAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatPostcompFaithful
+public import SerrePositivity.InfinityCategories.F1B.ReflectiveIdempotence
+public import SerrePositivity.InfinityCategories.F1B.AdjunctionUnitInvertible
+public import SerrePositivity.InfinityCategories.F1B.ReflectiveUnitInvertible

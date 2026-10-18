@@ -437,12 +437,31 @@ P と局所対象を定義で同一視しない。`localization_mem` は反射�
 y への写像空間の同値を、包含の厳密な同型と随伴の pinched 比較から構成する。
 この選んだ比較射を X 内での単位による前合成として認識する接続は後続。
 
-次は、包含による後合成の h Fun の充満忠実性と随伴対応から余単位の逆を構成し、
-反射関手の冪等性を h Fun の同型として導く。その後、局所対象と反射の本質的な像の同定、
+`bicategoryPostcompAdjunction` は双圏随伴が任意の Hom 圏の後合成に誘導する通常の随伴。
+元の adjunct 全単射と二変数自然性から構成した。恒等一胞体での余単位を単位子で輸送すると、
+元の双圏随伴の余単位を厳密に回収する。
+`bicategory_counit_isIso_of_postcomp_fullyFaithful` は右側の対象をパラメータとする
+後合成が充満忠実なら、通常の圏の充満忠実な右随伴の定理から元の余単位の可逆性を導く。
+`qcatPostcompFullyFaithfulOfHo` は h Fun の Hom 全単射を二胞体の表示全単射で移し、
+QCat の Hom 圏の後合成の充満忠実性を供給する。
+これらを包含に適用した `counit_isIso`・`counitHom_isIso` と `counitIso` により、
+**反射の余単位は元の随伴の余単位を順射とする h Fun の自然同型**になった。
+これは [Kerodon Cor 6.2.2.26](https://kerodon.net/tag/02FF) の充満忠実な右随伴の場合の帰結に対応する。
+`idempotentIso` はその余単位に reflector と包含を前後合成して L²≅L を与える。
+自己関手の厳密な等式には強めていない。
+
+`bicategory_whiskerLeft_unit_isIso_of_counit`・`bicategory_whiskerRight_unit_isIso_of_counit` は
+左右の三角恒等式から可逆な余単位の因子を消して、単位の左右の whisker の可逆性を導く。
+`QCatAdjunction.unit_precompRight_isIso/unit_postcompLeft_isIso` がこれを h Fun に移す。
+反射の場合の `unitOnInclusionIso` は包含上の単位の制限、`reflectedUnitIso` は反射で写した単位、
+`unitOnLocalizationIso` は反射像上の単位の制限による L≅L² の同型。
+いずれも元の単位の像の可逆性から得ており、単位全体の可逆性を仮定・結論しない。
+
+次は局所対象と反射の本質的な像の同定、写像空間の普遍性の比較射と単位の前合成との照合、
 Kerodon Def 6.3.1.9 の局所化普遍性の型と反射的な場合の証明へ進む。
 これらの結論と一般の C[W⁻¹] の存在は現段階の宣言には含めない。
-対象ビルド（2161 jobs）・公理監査（1670 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 492 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2166 jobs）・公理監査（1701 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 497 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -568,7 +587,7 @@ Kerodon Def 6.3.1.9 の局所化普遍性の型と反射的な場合の証明へ
 | `universalUnitCommaProjection_innerFibration`・`universalUnitCommaSection` と射影・標的の公式 | 中間始対象条件の下での普遍矢印への切断と inner fibration 性 | 実装済み |
 | `universalUnitCommaProjection_surjective` | 同じ条件の下での始域射影の頂点上全射性（同値性は未証明） | 実装済み |
 | 写像空間による特徴づけ | 全端点の族の前層の自然変換と各点の pinchedHom のホモトピー同値による随伴判定 | 実装済み（空間値 Hom 関手自体は別レーン F1h） |
-| B2 | 反射・局所対象・包含の写像空間の充満忠実性・反射の写像空間の普遍性 | 進行中（余単位の可逆性・冪等性・局所化の普遍性は未実装） |
+| B2 | 反射・局所対象・包含の充満忠実性・写像空間の普遍性・余単位の可逆性・冪等性 | 進行中（局所対象の本質的な像との同定・局所化の普遍性は未実装） |
 | B3〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
 | `unitCommaUncurry`・`unitCommaHomotopy`・`unitCommaLift_homotopy` | comma の族の展開と厳密な回収 | 実装済み |
 | `unitCommaFiberCurry`・`unitCommaFiberFamilyEquiv` | 固定始域の族と標的図式・ホモトピーの組の厳密な全単射 | 実装済み |
@@ -721,3 +740,10 @@ Kerodon Def 6.3.1.9 の局所化普遍性の型と反射的な場合の証明へ
 | `ReflectiveSubcategory`・`IsReflectiveSubcategory` | 頂点条件の全部分複体への選んだ左随伴とその存在 | 実装済み |
 | `ReflectiveSubcategory.localization/unit/IsLocal/localization_mem` | 反射自己関手・単位・単位成分の可逆性による局所対象・反射像の所属 | 実装済み（本質的な像との同定は後続） |
 | `ReflectiveSubcategory.reflectionMappingEquivalence` | 反射像から部分圏の対象への pinched 写像空間の普遍性 | 実装済み（X 内での単位前合成の射との照合は後続） |
+| `bicategoryPostcompAdjunction`・`bicategoryPostcompAdjunction_counit_identity` | 双圏随伴の各 Hom 圏での後合成の随伴と、恒等一胞体での元の余単位の回収 | 実装済み |
+| `bicategory_counit_isIso_of_postcomp_fullyFaithful` | 一つの Hom 圏の右後合成の充満忠実性から元の余単位の可逆性 | 実装済み |
+| `qcatPostcompFullyFaithfulOfHo`・`QCatAdjunction.counitHom_isIso_of_postcompFullyFaithful` | h Fun と QCat の Hom 圏の充満忠実性を接続して余単位を可逆にする | 実装済み |
+| `ReflectiveSubcategory.counit_isIso/counitHom_isIso/counitIso/idempotentIso` | 反射の余単位の可逆性と元の余単位から誘導する L²≅L | 実装済み |
+| `bicategory_whiskerLeft_unit_isIso_of_counit/bicategory_whiskerRight_unit_isIso_of_counit` | 可逆な余単位を三角恒等式で相殺して単位の左右 whisker の可逆性を得る | 実装済み |
+| `QCatAdjunction.unit_precompRight_isIso/unit_postcompLeft_isIso` | 右随伴への単位の制限・左随伴による単位の像の h Fun の可逆性 | 実装済み |
+| `ReflectiveSubcategory.unitOnInclusionIso/reflectedUnitIso/unitOnLocalizationIso` | 包含上の単位の制限、反射で写した単位、反射像に沿う単位の制限による自然同型 | 実装済み |
