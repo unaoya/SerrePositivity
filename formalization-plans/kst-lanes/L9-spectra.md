@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・394 モジュール 3971 宣言の公理監査成功。
+対象ビルド・401 モジュール 4012 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3025,3 +3025,42 @@ L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の To
 保存単位の対象ビルド 3838 jobs 成功。
 私有宣言を含む 394 モジュール 3971 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、線形 cochain の cohomology との比較、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 100. L9e の線形 cochain 複体と群コホモロジーの比較
+
+非斉次関数 cochain の任意の単体射の式を余面へ適用した。
+零番目の余面は最初の群元の作用と tail への制限となる。
+後続の余面は contractNth による隣接する群元の積の前合成となり、最後の座標を落とす場合も含む。
+部分積の右逆と contractNth の補題を使い、これらを実証した。
+
+加群の圏の作用を係数にした線形な非斉次 cochain の余単体図式を構成した。
+同じ余面の式を線形写像へ移し、交代余面微分の座標式を計算した。
+表現を入力した場合、この微分は Mathlib の inhomogeneousCochains.d と厳密に一致する。
+整数の交代符号と係数環の交代符号を照合し、各次数の恒等同型を実際の cochain complex の同型に束ねた。
+従って構成した交代余面複体のコホモロジーは標準の群コホモロジーと同型である。
+
+有限群の標数零の体の係数では正次数のコホモロジーが零になる。
+零次数は不変部分と同型であり、自明作用なら元の係数と同型である。
+これらは代数的な cochain complex の主張であり Tot のホモトピー群をまだ計算していない。
+
+また、二以上の次数のホモトピー群を可換群・加法的可換群の図式として束ねる界面を追加した。
+余単体 Kan 図式の高次 π_* の交代余面複体も定義した。
+この高次 π_* の加法的複体と線形係数の複体の比較、および Tot への橋渡しは後続の工程である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `GroupActionCochains.functionCochains_δ_zero` / `functionCochains_δ_succ` | 標準の非斉次群 cochain の余面の式 |
+| `LinearGroupCochains.pre` / `obj` | 加群の作用を係数とする線形な余単体 cochain |
+| `LinearGroupCochains.coface_zero` / `coface_succ` / `alternating_d_apply` | 線形余面と交代微分の具体式 |
+| `LinearGroupCochains.objD_eq_inhomogeneous` | Mathlib の非斉次群 cochain 微分との一致 |
+| `LinearGroupCochains.complex` / `inhomogeneousIso` / `cohomologyIso` | 実際の cochain complex の比較と群コホモロジーへの同型 |
+| `LinearGroupCochains.positive_cohomology_isZero` | 有限群の標数零の線形 cochain の正次数コホモロジー消滅 |
+| `LinearGroupCochains.zeroCohomologyIso` / `zeroCohomologyIsoOfTrivial` | 零次数の不変部分と自明作用の元の係数への比較 |
+| `KanHomotopyGroup.commDiagram` / `commDiagramIso` / `additiveDiagram` | 高次 π_* の可換群と加法的図式 |
+| `KanHomotopyGroup.cochainComplex` | 余単体 Kan 図式の高次 π_* の交代余面複体 |
+
+参照：Goerss–Jardine I §7、VIII §2。
+保存単位の対象ビルド 3847 jobs 成功。
+私有宣言を含む 401 モジュール 4012 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、π_* の加法的 cochain と線形複体の比較、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
