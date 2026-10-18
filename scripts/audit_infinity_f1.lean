@@ -1292,3 +1292,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinderConeMap_inl
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinderConeMap_inr
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinderConeMap_comparison
+#check @SerrePositivity.InfinityCategories.joinLeftBoundary_subcomplex_isPushout
+#check @SerrePositivity.InfinityCategories.joinLeftBoundaryMap_innerAnodyne_of_rightAnodyne

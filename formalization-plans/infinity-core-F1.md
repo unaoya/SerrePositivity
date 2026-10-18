@@ -5836,5 +5836,14 @@ lemma relativeJoinCylinderConeMap_comparison {m n : ℕ}
       joinMap (relativeJoinCylinderComparison f) (𝟙 Δ[0]) ≫ relativeJoinConeMap f =
         relativeJoinCylinderComparison (f ≫ stdSimplex.δ (Fin.last (n + 1)))
 
+lemma joinLeftBoundary_subcomplex_isPushout {B : SSet.{u}} (A : B.Subcomplex) (K : SSet.{u}) :
+    IsPushout (joinInl (A : SSet.{u}) K) A.ι
+      (joinUnionLeft A (⊥ : K.Subcomplex))
+      ((joinEmptyIso B K).inv ≫ joinUnionRight A (⊥ : K.Subcomplex))
+
+lemma joinLeftBoundaryMap_innerAnodyne_of_rightAnodyne {A B : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (K : SSet.{u}) (hi : rightAnodyneExtensions i) :
+    innerAnodyneExtensions (joinLeftBoundaryMap i K)
+
 end SerrePositivity.InfinityCategories
 ```
