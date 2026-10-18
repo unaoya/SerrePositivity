@@ -470,16 +470,21 @@ HornFacePoset とその nerve から horn への最終頂点写像を構成し�
 hornChainToHorn_boundary により、horn 内の面の有限鎖上では候補と反復最大元が一致する。
 実際の sd(horn) から HornFacePoset の nerve への比較を構成し、最終頂点との合成の一致を証明した。
 全対象の subdivisionLastVertexMap と、その標準単体上の明示的な計算式を証明した。
-二重細分の候補そのものの horn 上の境界条件の一致は未証明であり、まだ充填定理や Kan 性を主張しない。
-Ex∞ の Kan 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
+hornSubdivisionComparison_inclusion で包含との可換性を証明した。
+doubleSubdivisionHornMap_boundary で二重細分の候補の horn 上の境界条件を証明した。
+二回の随伴で転置し、任意の horn の写像が二回の Ex の後で充填できることを証明した。
+有限単体集合から Ex∞ への写像の有限段階への因子化と遷移との整合を証明した。
+exInfinity_kanComplex により Ex∞ の Kan 性（Moss Proposition 21）を証明した。
+有限極限保存・anodyne な単位・Kan 性が揃い、Ex∞ は実際の Kan 置換となった。
+fibration 保存は未証明。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 493 宣言の型と公理を確認した。
-さらに名前空間全体の 988 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 509 宣言の型と公理を確認した。
+さらに名前空間全体の 1016 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -572,11 +577,13 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `subdivisionNerveChains`、`subdivisionNerveChains_naturality`、`nerveChainsExUnit_lastVertex` | 実装済み | 順序集合の nerve の細分比較・自然性・最終頂点との整合 |
 | `finiteChainGreatest`、`finiteChainGreatest_map` | 実装済み | 部分順序集合の非空有限鎖の最大元 |
 | `hornChainVertex`、`hornChainVertex_common_missing` | 実装済み | 単調な候補頂点写像と共通に欠ける頂点 |
-| `hornChainToHorn`、`doubleSubdivisionHornMap` | 実装済み | 二重細分から horn への写像、境界条件の一致は未証明 |
+| `hornChainToHorn`、`doubleSubdivisionHornMap` | 実装済み | 二重細分から horn への具体的な写像 |
 | `HornFacePoset`、`hornChainToHorn_boundary` | 実装済み | horn の面の nerve 上の境界条件 |
 | `hornSubdivisionComparison`、`hornSubdivisionComparison_lastVertex` | 実装済み | 実際の horn の細分比較と最終頂点との一致 |
 | `subdivisionLastVertexMap`、`subdivisionLastVertexMap_stdSimplex` | 実装済み | 全対象の最終頂点と標準単体上の計算 |
-| Ex∞ の Kan 性 | 未証明 | Moss 2020 Proposition 21 |
+| `doubleSubdivisionHornMap_boundary`、`exDoubleHornFiller_boundary` | 実装済み | 二重細分の境界条件と二回の Ex の後の horn の充填 |
+| `exInfinity_finite_factorization`、`exInfinityStage_succ` | 実装済み | 有限段階への因子化と反復列の遷移 |
+| `exInfinity_hornFilling`、`exInfinity_kanComplex` | 実装済み | Moss 2020 Proposition 21 の Kan 性 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |

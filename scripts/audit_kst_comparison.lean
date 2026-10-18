@@ -59,6 +59,8 @@ run_cmd do
 
 
 
+
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -308,6 +310,24 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.hatGLMonoidObject
 
 
+-- DoubleSubdivisionAdjunction.lean
+
+#check @SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv
+#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv
+
+#check @SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_naturality_left
+#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_naturality_left
+
+#check @SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_lastVertex
+#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_lastVertex
+
+
+-- DoubleSubdivisionHornBoundary.lean
+
+#check @SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_boundary
+#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_boundary
+
+
 -- DoubleSubdivisionHornMap.lean
 
 #check @SerrePositivity.KST.Comparison.doubleSubdivisionHornMap
@@ -354,6 +374,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exExpansion_rear_degeneracy
 #print axioms SerrePositivity.KST.Comparison.exExpansion_rear_degeneracy
+
+
+-- ExDoubleHornFiller.lean
+
+#check @SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller
+#print axioms SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller
+
+#check @SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller_boundary
+#print axioms SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller_boundary
+
+#check @SerrePositivity.KST.Comparison.exDoubleHornFiller
+#print axioms SerrePositivity.KST.Comparison.exDoubleHornFiller
+
+#check @SerrePositivity.KST.Comparison.exDoubleHornFiller_boundary
+#print axioms SerrePositivity.KST.Comparison.exDoubleHornFiller_boundary
 
 
 -- ExDoublePairing.lean
@@ -420,6 +455,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
 #print axioms SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
+
+
+-- ExInfinityKan.lean
+
+#check @SerrePositivity.KST.Comparison.exInfinity_hornFilling
+#print axioms SerrePositivity.KST.Comparison.exInfinity_hornFilling
+
+#check @SerrePositivity.KST.Comparison.exInfinity_kanComplex
+#print axioms SerrePositivity.KST.Comparison.exInfinity_kanComplex
+
+
+-- ExInfinityStages.lean
+
+#check @SerrePositivity.KST.Comparison.exInfinity_finite_factorization
+#print axioms SerrePositivity.KST.Comparison.exInfinity_finite_factorization
+
+#check @SerrePositivity.KST.Comparison.exInfinityStage_succ
+#print axioms SerrePositivity.KST.Comparison.exInfinityStage_succ
 
 
 -- ExPairingBijection.lean
@@ -1049,6 +1102,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison
 
 
+-- HornSubdivisionInclusion.lean
+
+#check @SerrePositivity.KST.Comparison.hornSimplex_yoneda_inclusion
+#print axioms SerrePositivity.KST.Comparison.hornSimplex_yoneda_inclusion
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_inclusion
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_inclusion
+
+
 -- HornSubdivisionLastVertex.lean
 
 #check @SerrePositivity.KST.Comparison.hornFacesExUnit_lastVertex
@@ -1197,6 +1259,9 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionNerveChains_naturality
 #print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains_naturality
+
+#check @SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex
+#print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex
 
 
 -- OverHornLifting.lean
@@ -1527,6 +1592,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subcomplex_inclusion_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.subcomplex_inclusion_localized_isIso
+
+
+-- SubdivisionAdjunctionSimplex.lean
+
+#check @SerrePositivity.KST.Comparison.subdivisionHomEquiv_app_down
+#print axioms SerrePositivity.KST.Comparison.subdivisionHomEquiv_app_down
 
 
 -- SubdivisionCommutation.lean

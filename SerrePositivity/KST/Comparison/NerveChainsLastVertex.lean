@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Comparison.SubdivisionNerveChains
 public import SerrePositivity.KST.Comparison.FiniteChainGreatest
 public import SerrePositivity.KST.Comparison.ExUnit
+public import SerrePositivity.KST.Comparison.SubdivisionLastVertexMap
 
 /-!
 # 有限鎖の細分比較と最終頂点
@@ -57,7 +58,7 @@ theorem nerveChainsExUnit_lastVertex (P : Type u) [PartialOrder P] :
 規約：二重細分の horn の制限との整合。
 使われ方：有限鎖の部分順序集合への比較の制限。
 -/
-theorem subdivisionNerveChains_naturality {P Q : Type u} [PartialOrder P] [PartialOrder Q]
+@[reassoc] theorem subdivisionNerveChains_naturality {P Q : Type u} [PartialOrder P] [PartialOrder Q]
     (f : P →o Q) :
     SSet.sd.map (nerveMap f.monotone.functor) ≫ subdivisionNerveChains Q =
       subdivisionNerveChains P ≫ nerveMap (NonemptyFiniteChains.orderHomMap f).monotone.functor := by
@@ -66,5 +67,19 @@ theorem subdivisionNerveChains_naturality {P Q : Type u} [PartialOrder P] [Parti
     SSet.sdExAdjunction.homEquiv_naturality_right]
   simpa only [subdivisionNerveChains, Equiv.apply_symm_apply] using
     nerveChainsExUnit_naturality f
+
+/--
+概要：nerve の細分比較から最大元への合成は、実際の最終頂点写像に一致する。
+方針：Ex の単位との一致を随伴同値で転置する。
+規約：二重細分の候補の境界条件を計算するための式。
+使われ方：面の nerve 上の計算から細分された horn へ戻す。
+-/
+@[reassoc] theorem subdivisionNerveChains_lastVertex (P : Type u) [PartialOrder P] :
+    subdivisionNerveChains P ≫ nerveMap finiteChainGreatest.monotone.functor =
+      subdivisionLastVertexMap.app (nerve P) := by
+  apply (SSet.sdExAdjunction.homEquiv _ _).injective
+  rw [SSet.sdExAdjunction.homEquiv_naturality_right]
+  simpa only [subdivisionNerveChains, subdivisionLastVertexMap, Functor.id_obj,
+    Equiv.apply_symm_apply] using nerveChainsExUnit_lastVertex P
 
 end SerrePositivity.KST.Comparison

@@ -45,6 +45,8 @@ public import SerrePositivity.KST.Comparison.DoubleSubdivisionHornMap
 public import SerrePositivity.KST.Comparison.HornChainBoundary
 public import SerrePositivity.KST.Comparison.HornSubdivisionLastVertex
 public import SerrePositivity.KST.Comparison.SubdivisionLastVertexSimplex
+public import SerrePositivity.KST.Comparison.DoubleSubdivisionHornBoundary
+public import SerrePositivity.KST.Comparison.ExInfinityKan
 
 /-!
 # K-L2：比較定理の入口
