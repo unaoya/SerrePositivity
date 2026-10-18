@@ -2411,3 +2411,79 @@ def diagonalIntervalComparisonNat : diagonalIntervalFunctor ⟶ reducedDiagonalF
 任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2953 jobs）、公理監査成功（818 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.19 S₁ と元の圏の自然な比較と core の充填性
+
+一次の第一行の添字の nerve と終対象の同型を使い、その内部 Hom 関手を恒等関手と自然に同一視した。
+第一行制限と合成した `sOneComparison C : S₁ C → C` は安定な quasicategory について
+trivial Kan fibration。零対象・cofiber 補完の選択を定義に含まない。
+`PreservesCofiberData` を満たす射の後合成について厳密に自然である。
+
+一般の quasicategory 間の trivial Kan fibration f について、
+`quasicategoryCoreMap f` も trivial Kan fibration であることを本レーンで証明した。
+元の境界充填を取り、その辺の像が core 内で可逆であることと、
+f の充満忠実性による可逆性の反映から、充填を core に持ち上げた。
+F1・Core の定義や公開名・型は変更していない。
+
+これを一次段へ適用し、`coreSOneComparison` の全境界充填性と
+L9 の `KanPiIsomorphism`（全基点・零次数を含む全次数）を得た。
+`StableModel` の射について自然変換にまとめたが、その逆射を自然に選んではいない。
+S₁ の比較自体の cofiber 保存、反復をまたぐ比較、既存の区間商・全境界商への接続は未完了。
+
+以下の正確な型は namespace `SerrePositivity.KST.SConstruction` 内、`universe u`、
+`open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下で記す。
+
+**CoreTrivialFibration.lean**
+
+```lean
+lemma coreMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (f : X ⟶ Y) [TrivialKanFibration f] : TrivialKanFibration (quasicategoryCoreMap f)
+```
+
+**SOneComparison.lean**
+
+```lean
+def firstRowOneUnitIso : firstRowNerve.{u} 1 ≅ 𝟙_ SSet.{u}
+
+def firstRowOneHomNatIso : ihom (firstRowNerve.{u} 1) ≅ 𝟭 SSet.{u}
+
+def sOneComparison (C : SSet.{u}) : sConstruction 1 C ⟶ C
+
+instance sOneComparison_trivialKanFibration (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    TrivialKanFibration (sOneComparison C)
+
+lemma firstRowRestriction_sPostcompCofiber (n : ℕ) {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    sPostcompCofiber n f hf ≫ firstRowRestriction n D =
+      firstRowRestriction n C ≫ (ihom (firstRowNerve n)).map f
+
+lemma sOneComparison_naturality {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    sPostcompCofiber 1 f hf ≫ sOneComparison D = sOneComparison C ≫ f
+
+def coreSOneComparison (C : SSet.{u}) :
+    coreSConstruction 1 C ⟶ (quasicategoryCore C : SSet.{u})
+
+instance coreSOneComparison_trivialKanFibration (C : SSet.{u})
+    [Quasicategory C] [IsStable C] : TrivialKanFibration (coreSOneComparison C)
+
+lemma coreSOneComparison_piIsomorphism (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    Spectra.KanPiIsomorphism (coreSOneComparison C)
+
+lemma coreSOneComparison_naturality {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    quasicategoryCoreMap (sPostcompCofiber 1 f hf) ≫ coreSOneComparison D =
+      coreSOneComparison C ≫ quasicategoryCoreMap f
+
+def coreSOneComparisonNat :
+    sEndofunctor 1 ⋙ stableModelForget ⋙ quasicategoryCoreFunctor ⟶
+      stableModelForget ⋙ quasicategoryCoreFunctor
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。S₁ と元の圏の core の自然な trivial Kan fibration を追加した。
+反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2955 jobs）、公理監査成功（830 宣言、標準三公理のみ）。追加公理・sorry なし。

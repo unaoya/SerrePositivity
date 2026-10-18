@@ -2280,3 +2280,39 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.diagonalIntervalComparisonNat
 #print axioms SerrePositivity.KST.SConstruction.diagonalIntervalComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.coreMap_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.coreMap_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.firstRowOneUnitIso
+#print axioms SerrePositivity.KST.SConstruction.firstRowOneUnitIso
+
+#check @SerrePositivity.KST.SConstruction.firstRowOneHomNatIso
+#print axioms SerrePositivity.KST.SConstruction.firstRowOneHomNatIso
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_sPostcompCofiber
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_sPostcompCofiber
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.coreSOneComparison
+#print axioms SerrePositivity.KST.SConstruction.coreSOneComparison
+
+#check @SerrePositivity.KST.SConstruction.coreSOneComparison_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.coreSOneComparison_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.coreSOneComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.coreSOneComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.coreSOneComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.coreSOneComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.coreSOneComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.coreSOneComparisonNat
