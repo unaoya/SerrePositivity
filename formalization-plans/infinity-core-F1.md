@@ -2813,5 +2813,20 @@ lemma coherentResolutionComparison_postcomp_essentiallySurjective {K Z : SSet.{u
     (a : K ⟶ coherentResolutionRightAdjoint.obj Z) :
     ∃ b : K ⟶ Z, Nonempty (FunctorIso (b ≫ coherentResolutionComparison Z) a)
 
+lemma coherentResolutionComparison_counit (Z : SSet.{u}) :
+    coherentResolution.map (coherentResolutionComparison Z) ≫
+        coherentResolutionAdjunction.counit.app Z = coherentResolutionProjectionAll.app Z
+
+lemma coherentResolutionComparison_exists_retraction (Z : SSet.{u}) [KanComplex Z] :
+    ∃ c : coherentResolutionRightAdjoint.obj Z ⟶ Z,
+      coherentResolutionComparison Z ≫ c = 𝟙 Z
+
+lemma coherentResolutionComparison_isQCatEquivalence (Z : SSet.{u}) [KanComplex Z] :
+    IsQCatEquivalence (coherentResolutionComparison Z)
+
+lemma coherentResolutionComparison_isSimplicialHomotopyEquivalence
+    (Z : SSet.{u}) [KanComplex Z] :
+    IsSimplicialHomotopyEquivalence (coherentResolutionComparison Z)
+
 end SerrePositivity.InfinityCategories
 ```

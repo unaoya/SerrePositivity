@@ -108,3 +108,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionMonomorphi
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRightQuasicategory
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRightKan
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionCylinder
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRetraction
