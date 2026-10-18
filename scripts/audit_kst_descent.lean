@@ -36,7 +36,13 @@ run_cmd do
       `SerrePositivity.KST.Descent.InvariantExactness,
       `SerrePositivity.KST.Descent.PresheafAction,
       `SerrePositivity.KST.Descent.InvariantsHomology,
-      `SerrePositivity.KST.Descent.SplitCech] do
+      `SerrePositivity.KST.Descent.SplitCech,
+      `SerrePositivity.KST.Descent.NilpotentThickening,
+      `SerrePositivity.KST.Descent.SchemeFacts,
+      `SerrePositivity.KST.Descent.ClosedDimension,
+      `SerrePositivity.KST.Descent.BlowupGeometry,
+      `SerrePositivity.KST.Descent.MayerVietoris,
+      `SerrePositivity.KST.Descent.SquareSequence] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."

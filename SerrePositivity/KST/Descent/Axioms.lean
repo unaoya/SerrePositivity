@@ -6,12 +6,13 @@ public import Mathlib.CategoryTheory.Comma.Over.Basic
 public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
 public import Mathlib.CategoryTheory.Endomorphism
 public import Mathlib.Algebra.Category.ModuleCat.Basic
+public import SerrePositivity.KST.Descent.NilpotentThickening
 
 /-!
 # 論文 §3 の降下：次数付き前層と比較写像の基礎
 
 ## 概要
-論文 (3.5) の前層の全次数の値と、(3.7) の引き戻し比較を記述する。
+論文 (3.5) の前層の全次数の値、(3.7) の引き戻し比較、公理 (3) の型を記述する。
 本ファイルは最小公理 (1)–(8) の完成版ではなく、その値域と主張の基礎である。
 
 ## 方針
@@ -125,5 +126,19 @@ def PiDescent {X Y : C} (f : X ⟶ Y) {G : Type*} [Group G]
   ∀ (H : Coefficient) (n : ℤ), Function.Bijective (L.invariantComparison H n f action over_base)
 
 end GradedPresheaf
+
+/-- 概要：有限型スキーム上の係数つき前層の冪零不変性（論文 §3、公理 (3)）。
+方針：核イデアル層が冪零な閉埋め込みによる引き戻しの全次数同型性を要求する。
+規約：これは前層に要求する法則の型であり、任意の前層の不変性を主張しない。
+使われ方：補題 3.3 と定理 3.1 の被約化、および E の実現で検証する公理。 -/
+class Nilinvariant (S : Scheme.{u}) {Coefficient : Type w}
+    (L : GradedPresheaf.{u + 1, u, w, t} (FiniteTypeSchemes S) Coefficient) : Prop where
+  /-- 概要：冪零 thickening に対する引き戻しは全次数で全単射（論文 §3）。
+  方針：係数と整数次数を固定して幾何学的な指定写像を評価する。
+  規約：負次数を含み、単なる抽象同型の存在ではない。
+  使われ方：reduction とその底変換に沿った比較。 -/
+  pullback_bijective : ∀ {X Y : FiniteTypeSchemes S} (f : X ⟶ Y)
+    [IsNilpotentThickening f.hom.left] (H : Coefficient) (n : ℤ),
+    Function.Bijective (L.pullback H n f)
 
 end SerrePositivity.KST.Descent

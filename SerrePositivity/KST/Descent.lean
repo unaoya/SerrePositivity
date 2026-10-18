@@ -9,6 +9,12 @@ public import SerrePositivity.KST.Descent.InvariantExactness
 public import SerrePositivity.KST.Descent.PresheafAction
 public import SerrePositivity.KST.Descent.InvariantsHomology
 public import SerrePositivity.KST.Descent.SplitCech
+public import SerrePositivity.KST.Descent.NilpotentThickening
+public import SerrePositivity.KST.Descent.SchemeFacts
+public import SerrePositivity.KST.Descent.ClosedDimension
+public import SerrePositivity.KST.Descent.BlowupGeometry
+public import SerrePositivity.KST.Descent.MayerVietoris
+public import SerrePositivity.KST.Descent.SquareSequence
 
 /-!
 # K-L8：論文 §3 の降下
@@ -20,6 +26,8 @@ public import SerrePositivity.KST.Descent.SplitCech
 係数つき次数付き前層、導来値域への実現、比較射の retract、
 有限平坦 transfer の有理分裂、有理不変部分の完全性・ホモロジー保存を公開する。
 底変換後の Čech nerve の分裂と、その前層の像の収縮ホモトピーも公開する。
+冪零 thickening、不変性の法則の型、抽象 blowup の幾何データ、
+境界を持つ全次数の正方形の長完全列と比較、有限次元での真閉部分の次元低下を公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

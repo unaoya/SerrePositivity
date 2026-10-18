@@ -11,14 +11,16 @@
 実施の経緯はコミットメッセージに記録する。
 状態：L8a の次数付き前層、指定比較、図式上の transfer による比較の retract、
 有理不変部分の完全性とホモロジー保存、底変換後の Čech nerve の分裂を実装。
+公理 (3) の幾何学的な型と不変性の法則の型、抽象 blowup の幾何データ、
+指定制限写像と境界を持つ長完全列の比較、有限次元の真閉部分の次元低下を実装。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 9 モジュール・119 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 15 モジュール・247 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 全体ビルドは未実施。L8a の工程全体が未完であるため、対象ビルドで検証。
 L8a 全体の完成とは区別する。
 L8b の定理 3.1 の証明は未完成。
-L8c の幾何補題は Mathlib の既存宣言を調査中。
+L8c の基本幾何補題を実装。有限型スキームの有限次元上界との接続は残る。
 L8d の (3.6) は K0・T2 への明示的な引数として設計する。
 L8e の E への接続は外部レーンの成果を使う。
 未完成の命題を `sorry` や新しい公理で埋めない。
@@ -113,7 +115,7 @@ T 側の G 不変類 y に対して正の整数倍が A から来る。
 | --- | --- | --- | --- |
 | L8a | `Axioms.lean` と補助モジュール | 最小公理 (1)–(8) と全次数の主張 | 実現界面、transfer と不変部分の基礎を実装 |
 | L8b | `Theorem31.lean` | 補題 3.2・3.3 と軌道帰納の証明 | 未着手 |
-| L8c | `SchemeFacts.lean` | 必要な幾何補題の証明・再利用 | 調査中 |
+| L8c | `SchemeFacts.lean`、`ClosedDimension.lean` | 必要な幾何補題の証明・再利用 | 基本補題実装、有限型の次元上界との接続は未完 |
 | L8d | 台の比較用モジュール | K0・T2 から (3.6) | 未着手 |
 | L8e | E 接続用モジュール | 実際の E が公理を満たす | 外部成果待ち |
 
@@ -331,8 +333,24 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `selfPullbackCechExtraDegeneracy` | 自身による底変換後の Čech nerve の分裂 | 対象ビルド済み |
 | `selfPullbackCechImageExtraDegeneracy` | 任意の前層を適用した余単体図式の分裂 | 対象ビルド済み |
 | `selfPullbackCechImage_contractingHomotopy` | 前層の Čech 図式の収縮ホモトピー | 対象ビルド済み |
+| `IsNilpotentThickening` | 核イデアル層が冪零な閉埋め込み | 型を実装 |
+| `Nilinvariant` | 係数つき前層に要求する公理 (3) | 法則の型を実装、E の検証は未完 |
+| `nilpotentThickening_surjective` | 冪零 thickening の点全射性 | 対象ビルド済み |
+| `nilpotentThickening_isIso_of_reduced` | 終域が被約な場合の同型性 | 対象ビルド済み |
+| `proper_of_finite` | 有限射の固有性 | 対象ビルド済み |
+| `isIso_of_surjective_closedImmersion` | 被約な終域への点全射閉埋め込みの同型性 | 対象ビルド済み |
+| `closedImmersion_of_section` | 分離射の切断の閉埋め込み性 | 対象ビルド済み |
+| `closedImmersion_equalizer` | 分離な対象への二射の等化子の閉埋め込み性 | 対象ビルド済み |
+| `equalizer_range_ne_univ_of_ne` | 被約な始域からの異なる二射の一致場所は真閉 | 対象ビルド済み |
+| `topologicalKrullDim_properClosed_lt_bound` | 有限次元上界からの真閉部分の次元低下 | 対象ビルド済み |
+| `integral_properClosed_dimension_lt` | 有限次元の整スキームの真閉部分の次元低下 | 対象ビルド済み |
+| `AbstractBlowupSquare` | 有限型・Cartesian・固有・閉中心・補開集合上の同型 | 幾何データの型を実装 |
+| `GradedMayerVietoris.Hom.bijective_mapA` | 全次数の境界の自然性を使う五項補題 | 対象ビルド済み |
+| `GradedPresheaf.squareDifference_comp_squareRestriction` | 指定制限と符号付きの差の零合成 | 対象ビルド済み |
+| `SquareMayerVietoris` | 前層の指定制限を持つ長完全列 | 列のデータの型を実装、実降下からの供給は未完 |
+| `SquareMayerVietoris.bijective_base_of_three_vertices` | 三頂点の全次数比較から元の指定比較の同型 | 対象ビルド済み |
 | `Theorem31`（予定） | 最小公理から主定理 | 未実装 |
-| `SchemeFacts`（予定） | 幾何入力の証明 | 未実装 |
+| `SchemeFacts` | 幾何入力の証明 | 基本補題を実装、有限型での次元上界との接続は未完 |
 | support comparison（予定） | K0・T2 から (3.6) | 未実装 |
 | E realization（予定） | 外部レーンの実装への接続 | 未実装 |
 
@@ -424,14 +442,14 @@ L9 の Tot・hG の実構成は未着手で、現在の型は π_* の基礎が�
 | 項目 | 証明・実装済みの範囲 | 残る責務 |
 | --- | --- | --- |
 | (1) Zariski Čech | 底変換後の実際の nerve の分裂・収縮 | Tot と比較、被覆での降下法則 |
-| (2) 抽象 blowup | 全次数比較の retract 安定性 | 幾何正方形と実降下の法則・境界写像 |
-| (3) 冪零不変性 | 全次数の同型性を記述する共通型 | 冪零閉埋め込みの条件と前層の不変性 |
+| (2) 抽象 blowup | 幾何正方形の型、指定制限の差、境界を持つ長完全列の型と三頂点比較 | 実際の降下からの列の供給、境界の標準性・自然性 |
+| (3) 冪零不変性 | 冪零閉埋め込みの条件、点全射性、不変性の法則の型 | reduction の核の冪零性と底変換、E の不変性の検証 |
 | (4) transfer | rank 公式から図式の retract、比較の全次数同型への移行 | 有限平坦な幾何射の transfer、底変換、射影公式、自明化による貼り合わせ |
 | (5) 有理固定点 | 通常の不変部分の完全性、ホモロジー保存、推移的置換と自明作用 | L9 の実際の hG と π_* の比較、導来 Shapiro |
 | (6) 平坦化 | 原典と必要な型の調査 | Fitting 版の平坦化と細分の型・証明 |
-| (7) スキーム補題 | Mathlib の既存宣言を調査 | 必要な範囲の公開 wrapper と不足する次元補題 |
+| (7) スキーム補題 | 有限⇒固有、被約な終域への全射閉埋め込み⇒同型、切断・等化子、真閉部分の有限次元低下 | 有限型スキームの有限次元上界、有限個の一致場所の和と帰納への接続 |
 | (8) (3.6) | 実現の自然同型を保持する型 | K0・T2 に対する台の比較と二重 fiber の同定 |
-| L8b | 比較の retract、分裂 Čech の機構 | Fubini、細分、補題 3.2・3.3、軌道正方形、整→被約→一般の帰納 |
+| L8b | 比較の retract、分裂 Čech、境界を含む正方形比較の五項補題 | Fubini、細分、補題 3.2・3.3、軌道正方形、整→被約→一般の帰納 |
 | L8e | 接続先を分離した設計 | E の実構成による (1)–(6) の検証と界面への接続 |
 
 これらは現在の未完部分であり、証明義務を削減した完成条件ではない。
