@@ -1,6 +1,33 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_vertex
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_restriction
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_inr
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_vertexEvaluation
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_vertex
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_pushoutCocone
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_restriction
+#print axioms SerrePositivity.InfinityCategories.spanCoconeSquareIso_inv_terminalVertex
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_targetEvaluation
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_fixed
+#print axioms SerrePositivity.InfinityCategories.stableHoMap_const_arrow
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_hom_restriction_arrow
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_hom_target_arrow
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_sourceEvaluation
+#print axioms SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_hom_source_arrow
+#print axioms SerrePositivity.InfinityCategories.colimitSquareComparisonIso
+#print axioms SerrePositivity.InfinityCategories.colimitSquareComparisonIso_target_arrow
+#print axioms SerrePositivity.InfinityCategories.stableHomMk_arrow_of_edge_eq
+#print axioms SerrePositivity.InfinityCategories.stableArrow_eqToHom
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.comparisonIso_eq_colimitVertexIso_arrow
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan_isColimit
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan_diagram
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.swapIso_eq_colimitVertexIso_arrow_of_sameSpan
+
 #print axioms SerrePositivity.InfinityCategories.stableHomotopyCategoryOpHomEquiv_homMk
 #print axioms SerrePositivity.InfinityCategories.stablePinchedLeftVertexEdge
 #print axioms SerrePositivity.InfinityCategories.stablePinchedHomLeftPiZeroEquiv_mk
@@ -1213,7 +1240,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PinchedLeftPiZeroVertex,
     `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialVertexFormula,
     `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialChoice,
-    `SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroChoice]
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroChoice,
+    `SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.CosliceSquareDiagram,
+    `SerrePositivity.InfinityCategories.Stable.ColimitSquareComparison,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionColimitComparison,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSameSpanSwap]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

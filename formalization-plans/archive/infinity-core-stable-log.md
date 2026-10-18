@@ -12535,3 +12535,421 @@ suspension の swapIso は四角形の関手圏で構成した比較を評価し
 その比較との同定は未証明。二枝の厳密な引き戻しとループ模型、ループの群構造と双積の加法の一致、
 負号、回転第三射、TR2、八面体・TR4、Pretriangulated instance、S5〜S7 は引き続き未完了。
 本補助工程を三角構造または目標全体の完成とは数えない。
+
+
+## 2026-10-19：Coslice の比較から四角形の標準 suspension 比較へ
+
+S4 の二枝交換を表現可能な Hom 比較へ接続する補助工程。
+coslice の余錐を固定図式上の族に写す既存の比較から、余錐全体の関手単体集合への
+cosliceCoconeDiagramMap を構成し、固定図式への制限・零次成分・余錐頂点での評価を計算した。
+終点評価は sliceUnderProjection p と厳密に一致する（値域の quasicategory 性不要）。
+余錐形状と正方形の同型の逆で前合成した cosliceSquareDiagramMap は、
+元の押し出し余錐の零次表示を元の四角形に戻し、span への制限を固定図式に定値とし、
+終端頂点の評価を同じ coslice 射影にする。
+
+これを h に移し、coslice の任意の h の射の span 制限・始点成分が恒等であること、
+終端成分が元の coslice 射影による像であることを Arrow の等号で示した。
+colimitSquareComparisonIso は二つの余極限余錐の標準同型を四角形の関手圏へ写したもので、
+終端成分は colimitVertexIso と一致する。値域 X の Quasicategory 性を仮定する。
+
+同じ span 上の二つの普遍余錐 c、d の四角形表示が suspension s、r なら、
+SuspensionSquare.comparisonIso_eq_colimitVertexIso_arrow は既存の s.comparisonIso r と
+colimitVertexIso c d hc hd が Arrow として一致することを示す。
+coslice の標準比較を辺の代表元で表し、その像を両端が正確に s、r である辺へ直す。
+始点成分による一意性で既存の標準比較と同定し、終端成分の計算へ戻す。
+この同定は条件を満たす表示が与えられた場合の定理である。
+
+転置への適用として SuspensionSquare.swapIso_eq_colimitVertexIso_arrow_of_sameSpan を証明した。
+**pushoutSpan s.transpose.square = pushoutSpan s.square を追加仮定する**。
+transposedCoconeOfSameSpan はこの等号で転置余錐の固定図式を揃える。
+任意の suspension では二つの零枝が異なり得るので、この等号を自動では主張しない。
+対称な模型の構成と任意の選択からの転送は次の義務として残る。
+
+追加モジュールは CosliceCoconeDiagramEvaluation、CosliceSquareDiagram、ColimitSquareComparison、
+SuspensionColimitComparison、SuspensionSameSpanSwap の五つ。
+公開 26 宣言の正確な型（Lean の #check @ による出力）：
+
+```lean
+@SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+      (SerrePositivity.InfinityCategories.join.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) ⟹
+        X)
+@SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_vertex.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap.{u_1} p) (Opposite.op.{1} { len := 0 })))
+      c)
+    (SerrePositivity.InfinityCategories.functorVertex.{u_1} ↑c)
+@SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_restriction.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap.{u_1} p)
+      (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X))
+    (SSet.const.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))
+@SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_inr.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.joinInr.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+      (SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry.{u_1} p))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+        (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p))
+@SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_vertexEvaluation.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap.{u_1} p)
+      (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.joinInr.{u_1} K
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+              (Opposite.op.{1} { len := 0 })))
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))))
+    (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p)
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} : {X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X) →
+    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) ⟹
+        X)
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_vertex.{u_1} : ∀ {X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X)
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p) (Opposite.op.{1} { len := 0 })))
+      c)
+    (SerrePositivity.InfinityCategories.functorVertex.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.inv.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanCoconeSquareIso.{u_1}) ↑c))
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_pushoutCocone.{u_1} : ∀ {X : SSet.{u_1}}
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1}
+            (SerrePositivity.InfinityCategories.pushoutSpan.{u_1} R))
+          (Opposite.op.{1} { len := 0 })))
+      (SerrePositivity.InfinityCategories.pushoutCocone.{u_1} R))
+    (SerrePositivity.InfinityCategories.functorVertex.{u_1} R)
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_restriction.{u_1} : ∀ {X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+        (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanSquareBoundary.{u_1})
+        X))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap.{u_1} p)
+      (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+        X))
+SerrePositivity.InfinityCategories.spanCoconeSquareIso_inv_terminalVertex.{u_1} : Eq.{u_1 + 1}
+  ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+      (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+        (CategoryTheory.Iso.inv.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanCoconeSquareIso.{u_1})
+        (Opposite.op.{1} { len := 0 })))
+    (SerrePositivity.InfinityCategories.squareVertex.{u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+      1 1))
+  ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+      (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+        (SerrePositivity.InfinityCategories.joinInr.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        (Opposite.op.{1} { len := 0 })))
+    ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_targetEvaluation.{u_1} : ∀ {X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)
+      (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+        (SerrePositivity.InfinityCategories.squareVertex.{u_1}
+          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+          1 1)))
+    (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p)
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_fixed.{u_1} : ∀ {X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+        (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanSquareBoundary.{u_1})
+        X))
+    (SSet.const.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))
+@SerrePositivity.InfinityCategories.stableHoMap_const_arrow.{u_1} : ∀ {A B : SSet.{u_1}} [SSet.Quasicategory.{u_1} A]
+  (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 }))
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })}
+  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} x) (SSet.HomotopyCategory.mk.{u_1} y)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} (SSet.const.{u_1} b)))
+        f))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} b)))
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_hom_restriction_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X)
+  {c d : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p}
+  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} c) (SSet.HomotopyCategory.mk.{u_1} d)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+                SerrePositivity.InfinityCategories.spanSquareBoundary.{u_1})
+              X)))
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+              (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)))
+          f)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+        (SSet.HomotopyCategory.mk.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))))
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_hom_target_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X)
+  {c d : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p}
+  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} c) (SSet.HomotopyCategory.mk.{u_1} d)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (SerrePositivity.InfinityCategories.squareDiagramHoEvaluation.{u_1} X 1 1)
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+              (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)))
+          f)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p)))
+        f))
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_sourceEvaluation.{u_1} : ∀ {X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)
+      (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+        (SerrePositivity.InfinityCategories.squareVertex.{u_1}
+          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+          0 0)))
+    (SSet.const.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (SerrePositivity.InfinityCategories.spanSourceEvaluation.{u_1} X) (Opposite.op.{1} { len := 0 })))
+        (SerrePositivity.InfinityCategories.functorVertex.{u_1} p)))
+@SerrePositivity.InfinityCategories.cosliceSquareDiagramMap_hom_source_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X)
+  {c d : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p}
+  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} c) (SSet.HomotopyCategory.mk.{u_1} d)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (SerrePositivity.InfinityCategories.squareDiagramHoEvaluation.{u_1} X 0 0)
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+              (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)))
+          f)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+        (SSet.HomotopyCategory.mk.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                (SerrePositivity.InfinityCategories.spanSourceEvaluation.{u_1} X) (Opposite.op.{1} { len := 0 })))
+            (SerrePositivity.InfinityCategories.functorVertex.{u_1} p)))))
+@SerrePositivity.InfinityCategories.colimitSquareComparisonIso.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X} →
+      (c d : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+        SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c →
+          SerrePositivity.InfinityCategories.IsColimitCone.{u_1} d →
+            CategoryTheory.Iso.{u_1, u_1}
+              (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+                (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                  (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+                    (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)))
+                (SSet.HomotopyCategory.mk.{u_1} c))
+              (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+                (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                  (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+                    (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p)))
+                (SSet.HomotopyCategory.mk.{u_1} d))
+@SerrePositivity.InfinityCategories.colimitSquareComparisonIso_target_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X}
+  (c d : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c)
+  (hd : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} d),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (SerrePositivity.InfinityCategories.squareDiagramHoEvaluation.{u_1} X 1 1)
+        (CategoryTheory.Iso.hom.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.colimitSquareComparisonIso.{u_1} c d hc hd))))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1} (SerrePositivity.InfinityCategories.colimitVertexIso.{u_1} c d hc hd)))
+@SerrePositivity.InfinityCategories.stableHomMk_arrow_of_edge_eq.{u_1} : ∀ {X : SSet.{u_1}}
+  {x y x' y' : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (e : SSet.Truncated.Edge.{u_1} x y) (f : SSet.Truncated.Edge.{u_1} x' y'),
+  Eq.{u_1 + 1} (SSet.Truncated.Edge.edge.{u_1} e) (SSet.Truncated.Edge.edge.{u_1} f) →
+    Eq.{u_1 + 1} (CategoryTheory.Arrow.mk.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} e))
+      (CategoryTheory.Arrow.mk.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} f))
+@SerrePositivity.InfinityCategories.stableArrow_eqToHom.{u_1,
+    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {x y : C} (h : Eq.{u_2 + 1} x y),
+  Eq.{max (u_2 + 1) (u_1 + 1)} (CategoryTheory.Arrow.mk.{u_1, u_2} (CategoryTheory.eqToHom.{u_1, u_2} h))
+    (CategoryTheory.Arrow.mk.{u_1, u_2} (CategoryTheory.CategoryStruct.id.{u_1, u_2} x))
+@SerrePositivity.InfinityCategories.SuspensionSquare.comparisonIso_eq_colimitVertexIso_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s r : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x)
+  {p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X}
+  (c d : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c)
+  (hd : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} d),
+  Eq.{u_1 + 1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p) (Opposite.op.{1} { len := 0 })))
+        c)
+      (SerrePositivity.InfinityCategories.functorVertex.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s))) →
+    Eq.{u_1 + 1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1} p) (Opposite.op.{1} { len := 0 })))
+          d)
+        (SerrePositivity.InfinityCategories.functorVertex.{u_1}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} r))) →
+      Eq.{u_1 + 1}
+        (CategoryTheory.Arrow.mk.{u_1, u_1}
+          (CategoryTheory.Iso.hom.{u_1, u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.comparisonIso.{u_1} s r)))
+        (CategoryTheory.Arrow.mk.{u_1, u_1}
+          (CategoryTheory.Iso.hom.{u_1, u_1} (SerrePositivity.InfinityCategories.colimitVertexIso.{u_1} c d hc hd)))
+@SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan.{u_1} : {X : SSet.{u_1}} →
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x) →
+      Eq.{u_1 + 1}
+          (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+                (SerrePositivity.InfinityCategories.SuspensionSquare.transpose.{u_1} s))))
+          (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s))) →
+        SerrePositivity.InfinityCategories.JoinCocone.{u_1}
+          (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))
+@SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan_isColimit.{u_1} : ∀ {X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x)
+  (h :
+    Eq.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.transpose.{u_1} s))))
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+    (SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan.{u_1} s h)
+@SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan_diagram.{u_1} : ∀ {X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x)
+  (h :
+    Eq.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.transpose.{u_1} s))))
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.cosliceSquareDiagramMap.{u_1}
+            (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+              (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+                (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s))))
+          (Opposite.op.{1} { len := 0 })))
+      (SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan.{u_1} s h))
+    (SerrePositivity.InfinityCategories.functorVertex.{u_1}
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+        (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.transpose.{u_1} s))))
+@SerrePositivity.InfinityCategories.SuspensionSquare.swapIso_eq_colimitVertexIso_arrow_of_sameSpan.{u_1} : ∀
+  {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x)
+  (h :
+    Eq.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.transpose.{u_1} s))))
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1} (SerrePositivity.InfinityCategories.SuspensionSquare.swapIso.{u_1} s)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.colimitVertexIso.{u_1}
+          (SerrePositivity.InfinityCategories.pushoutCocone.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))
+          (SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan.{u_1} s h) ⋯ ⋯)))
+```
+
+対象ビルド 2363 jobs、対象・Stable 集約ビルド 2551 jobs が終了コード 0 で成功。
+公開型抽出・公理監査も終了コード 0。監査は 265 モジュール・1980 宣言
+（生成・非公開宣言を含む）で、標準三公理 propext・Classical.choice・Quot.sound のみ。
+新規五モジュールの警告なし。git diff --check 成功。
+引用・追加公理・sorry・充填のための計算上限の引き上げは導入していない。
+他レーンのファイルは変更していない。
+
+同じ span での標準比較の一致、および span の等号を仮定した swapIso の同定まで完成。
+対称な suspension 模型の存在・転送と形状制限の作用の同定、二枝の厳密な引き戻しとループ模型、
+ループの群構造と双積の加法の一致、負号、回転第三射、TR2、八面体・TR4、
+Pretriangulated instance、S5〜S7 は未完了。
+条件付きの同定を一般の交換作用の同定や三角構造の完成とは数えない。

@@ -540,9 +540,22 @@ Core の initialVertexIso を底へ送った射による前合成で一致する
 `coconeMappingSpacePiZeroEquiv_change_cocone` は同じ図式の二つの余極限余錐の Hom 表示が
 colimitVertexIso による前合成で一致することを示す（Quasicategory、両余極限性）。
 `_restrict_change_cocone` と `_spanSwap_change_cocone` は形状制限・二枝交換の後の任意の余極限余錐での表示へ適用する。
-実際の選択付き比較射の厳密な自然性はまだ主張しない。suspension の比較は四角形の関手圏で
-定義されており、同じ span 上の colimitVertexIso との照合はなお別の義務。
-**負号との一致は未証明**。残る義務は選択済みの suspension の swapIso とこの形状制限の作用の同定、
+実際の選択付き比較射の厳密な自然性はまだ主張しない。
+coslice から余錐の関手単体集合への `cosliceCoconeDiagramMap` と、正方形への `cosliceSquareDiagramMap`
+を構成した。前者は零次の余錐・固定図式への制限・余錐頂点での評価、後者は元の四角形の
+零次表示・固定 span への制限・終端頂点評価と厳密に可換（Quasicategory 性不要）。
+`colimitSquareComparisonIso` は coslice の標準同型を四角形へ移した同型。
+`cosliceSquareDiagramMap_hom_restriction_arrow`・`_hom_source_arrow` はその span・始点成分の
+恒等性、`colimitSquareComparisonIso_target_arrow` は終端成分が colimitVertexIso であることを示す
+（Quasicategory、前者の二つは任意の coslice の h の射に適用）。
+`SuspensionSquare.comparisonIso_eq_colimitVertexIso_arrow` は同じ span 上の二つの余極限余錐が
+s、r の四角形表示を持つとき、既存の suspension 標準比較と colimitVertexIso が Arrow として
+一致することを示す。始点成分による一意性で、二種類の比較を初めて照合した。
+`SuspensionSquare.swapIso_eq_colimitVertexIso_arrow_of_sameSpan` はこれを転置へ適用するが、
+**pushoutSpan s.transpose.square = pushoutSpan s.square を追加仮定する**。
+任意の suspension では二つの零枝が異なり得るため、この等号は自動ではない。
+同じ枝を二度使う対称な模型の存在と、任意の選択からその模型への転送はまだ未証明。
+**負号との一致は未証明**。残る義務は対称な模型の構成・転送と形状制限の作用の同定、
 二枝の引き戻しとループ模型、およびループの群構造と構成済みの双積の加法の一致。
 表現可能な比較の完成を符号・TR2 全体の完成とは数えない。
 八面体、Pretriangulated instance も未完了。
@@ -698,6 +711,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | suspension の二枝交換 | `SuspensionSquare.transpose`・`transpose_transpose`・`transpose_vertex`（値域に仮定なし）、`swapIso`、`comparisonIso_hom_transpose`、`swapIso_hom_comp_self`、`diagramComparisonIso_transpose_naturality`・`swapIso_naturality`（Quasicategory） | 標準比較との両立・自然性・二乗が恒等まで完成。加法の負号との一致は未証明。TR2 は未完了 |
 | 終点固定余錐空間と二枝の引き戻し | `coconeMappingSpace`、`coconeMappingSpace_kanComplex`（Quasicategory）、`coconeMappingSpace_restrict_fibration`（Quasicategory、Mono）、`coconeMappingSpace_edge_isContractibleKan`（Quasicategory、枝の終点の始対象性）、`exists_coconeMappingSpace_glue`・`coconeMappingSpace_hom_ext_of_pushout`・`spanCoconeMapping_isPullback`・`coconeMappingSpace_spanSwap_left`・`right`（値域の仮定なし） | 空間・充填性・可縮な枝・引き戻し・交換の二成分まで完成。π₀ と Hom の比較は下記で完成。ループ模型、群構造と加法の一致は未証明 |
 | 余錐空間と余極限頂点の Hom | `leftFibrationInitialFiberPiZeroEquiv`（底 Quasicategory、LeftFibration、始点の始対象性）、`coconeMappingSpacePiZeroEquiv`・`pushoutCoconeMappingSpacePiZeroEquiv`、`coconeMappingSpaceHomComparison_homotopyEquivalence`・`coconeMappingSpacePiZeroEquiv_eq_comparison`（Quasicategory、余極限性または押し出し性） | π₀ と Hom の同値・実際の比較射のホモトピー同値・二つの比較の一致まで完成。形状制限・再添字付け・二枝交換による制限余錐での Hom 表示との両立まで完成。同じ図式の余錐の変更に対する colimitVertexIso との両立も完成。選択済みの swapIso への接続とループ模型・加法との照合は未証明 |
+| coslice の余錐比較と suspension 標準比較 | `cosliceSquareDiagramMap` と制限・評価の計算（値域の仮定なし）、`colimitSquareComparisonIso_target_arrow`、`SuspensionSquare.comparisonIso_eq_colimitVertexIso_arrow`（Quasicategory、同じ span の余極限余錐での表示）、`swapIso_eq_colimitVertexIso_arrow_of_sameSpan`（さらに転置前後の span の等号） | 同じ span の表示の下で標準比較の一致まで完成。対称な模型の存在と一般の選択への転送、負号は未証明 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

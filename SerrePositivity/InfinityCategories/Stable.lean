@@ -151,6 +151,12 @@ public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialVert
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialChoice
 public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroChoice
 
+public import SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation
+public import SerrePositivity.InfinityCategories.Stable.CosliceSquareDiagram
+public import SerrePositivity.InfinityCategories.Stable.ColimitSquareComparison
+public import SerrePositivity.InfinityCategories.Stable.SuspensionColimitComparison
+public import SerrePositivity.InfinityCategories.Stable.SuspensionSameSpanSwap
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
