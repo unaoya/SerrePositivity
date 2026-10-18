@@ -6480,5 +6480,35 @@ lemma isPrecompositionEquivalence_scaffoldFiniteCylinderComparison (n : ℕ)
     (F : ULift.{u} (Fin (n + 2)) ⥤ SSet.{u}) :
     IsPrecompositionEquivalence (scaffoldFiniteCylinderComparison n F)
 
+def scaffoldFiniteCollapseFunctor (n : ℕ) :
+    ULift.{u} (Fin (n + 2)) ⥤ ULift.{u} (Fin 2)
+
+lemma scaffoldFiniteFirstEdge_collapse (n : ℕ) :
+    scaffoldFiniteFirstEdge.{u} n ⋙ scaffoldFiniteCollapseFunctor n = 𝟭 _
+
+lemma scaffoldFiniteTail_collapse (n : ℕ) :
+    scaffoldFiniteTail.{u} n ⋙ scaffoldFiniteCollapseFunctor n =
+      (CategoryTheory.Functor.const _).obj (ULift.up (1 : Fin 2))
+
+def scaffoldFiniteCollapse (n : ℕ) :
+    nerve (ULift.{u} (Fin (n + 2))) ⟶ (Δ[1] : SSet.{u})
+
+lemma scaffoldFiniteCollapse_firstEdge (n : ℕ) :
+    (stdSimplex.isoNerve.{u} 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n) ≫
+      scaffoldFiniteCollapse n = 𝟙 Δ[1]
+
+lemma scaffoldFiniteCollapse_app (n d : ℕ)
+    (σ : (nerve (ULift.{u} (Fin (n + 2)))) _⦋d⦌) (i : Fin (d + 1)) :
+    (scaffoldFiniteCollapse n).app (Opposite.op ⦋d⦌) σ i =
+      if (σ.obj i).down = 0 then 0 else 1
+
+lemma scaffoldFiniteCollapse_tail (n : ℕ) :
+    nerveMap (scaffoldFiniteTail.{u} n) ≫ scaffoldFiniteCollapse n =
+      SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma scaffoldFiniteCollapse_zero (n : ℕ) :
+    nervePoint (ULift.up (0 : Fin (n + 2)) : ULift.{u} _) ≫ scaffoldFiniteCollapse n =
+      stdSimplex.δ (1 : Fin 2)
+
 end SerrePositivity.InfinityCategories
 ```

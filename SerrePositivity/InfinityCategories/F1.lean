@@ -300,3 +300,4 @@ public import SerrePositivity.InfinityCategories.F1.ScaffoldNerveBridge
 public import SerrePositivity.InfinityCategories.F1.ScaffoldNerveFirstEdge
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteExtension
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCylinder
+public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCollapse

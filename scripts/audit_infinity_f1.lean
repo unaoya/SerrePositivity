@@ -1433,3 +1433,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteCylinderComparison_inl
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteCylinderComparison_inr
 #check @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_scaffoldFiniteCylinderComparison
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapseFunctor
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteFirstEdge_collapse
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteTail_collapse
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_firstEdge
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_app
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_tail
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_zero
