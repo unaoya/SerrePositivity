@@ -58,6 +58,36 @@ structure SquareAction {C : Type u} [Category.{v} C] (s : Square C)
   規約：閉埋め込みそのもの。使われ方：中心の比較。 -/
   equivariant34 : ∀ g, (on3 g).asIso.hom ≫ s.f₃₄ = s.f₃₄ ≫ (on4 g).asIso.hom
 
+/-- 概要：群元の作用を可換正方形の自己射に束ねる（論文 定理 3.1）。
+方針：四頂点の作用と四辺の同変式から可換な立方体を構成する。
+規約：境界の自然性を適用できる実際の幾何正方形の射。
+使われ方：長完全列の自然性から境界の同変性を導く。 -/
+def SquareAction.endomorphism {C : Type u} [Category.{v} C] {s : Square C}
+    {G : Type*} [Group G] (a : SquareAction s G) (g : G) : s ⟶ s where
+  τ₁ := (a.on1 g).asIso.hom
+  τ₂ := (a.on2 g).asIso.hom
+  τ₃ := (a.on3 g).asIso.hom
+  τ₄ := (a.on4 g).asIso.hom
+  comm₁₂ := (a.equivariant12 g).symm
+  comm₁₃ := (a.equivariant13 g).symm
+  comm₂₄ := (a.equivariant24 g).symm
+  comm₃₄ := (a.equivariant34 g).symm
+
+/-- 概要：任意の正方形への自明 G 作用（論文 定理 3.1 の比較元）。
+方針：四頂点で恒等自己同型を取る。
+規約：全ての四辺はこの作用に対して同変。
+使われ方：基底の恒等中心正方形の不変部分の同定。 -/
+def SquareAction.trivial {C : Type u} [Category.{v} C] (s : Square C)
+    (G : Type*) [Group G] : SquareAction s G where
+  on1 := 1
+  on2 := 1
+  on3 := 1
+  on4 := 1
+  equivariant12 _ := by simp
+  equivariant13 _ := by simp
+  equivariant24 _ := by simp
+  equivariant34 _ := by simp
+
 /-- 概要：同変な閉中心の実際の引き戻し正方形の G 作用（論文 定理 3.1）。
 方針：左上の作用を構成済みの引き戻し作用で供給する。
 規約：被約性や前層の降下を仮定しない。

@@ -71,7 +71,13 @@ run_cmd do
       `SerrePositivity.KST.Descent.ClosedPullbackAction,
       `SerrePositivity.KST.Descent.SquareAction,
       `SerrePositivity.KST.Descent.EquivariantOrbitGeometry,
-      `SerrePositivity.KST.Descent.SquareSequenceAction] do
+      `SerrePositivity.KST.Descent.SquareSequenceAction,
+      `SerrePositivity.KST.Descent.SquareMapSequence,
+      `SerrePositivity.KST.Descent.BlowupSequenceData,
+      `SerrePositivity.KST.Descent.IdentityCenterSquare,
+      `SerrePositivity.KST.Descent.EquivariantSquareComparison,
+      `SerrePositivity.KST.Descent.OrbitComparisonCube,
+      `SerrePositivity.KST.Descent.OrbitCriterion] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."

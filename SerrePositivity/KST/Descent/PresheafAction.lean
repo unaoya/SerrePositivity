@@ -47,6 +47,15 @@ def pullbackRepresentation (H : Coefficient) (n : ℤ) {X : C} {G : Type*} [Grou
     simp only [mul_inv_rev, map_mul, Aut.mul_asIso, Iso.trans_hom, pullback_comp]
     rfl
 
+/-- 概要：自明な幾何作用の引き戻し表現は自明（論文 定理 3.1）。
+方針：恒等射の引き戻しが恒等写像であることを各群元で使う。
+規約：任意の係数・整数次数・群について成立する。
+使われ方：比較元の基底の不変部分を元の前層の値と同定する。 -/
+instance pullbackRepresentation_trivial (H : Coefficient) (n : ℤ) {X : C}
+    {G : Type*} [Group G] :
+    (L.pullbackRepresentation H n (1 : G →* Aut X)).IsTrivial where
+  out _ := L.pullback_id H n X
+
 /-- 概要：自己同型による固定条件は逆元の左表現の不変部分と一致（論文 (3.7)–(3.8)）。
 方針：全群元を逆元で取り直す。
 規約：この一致には有限性や平均作用素は不要。
