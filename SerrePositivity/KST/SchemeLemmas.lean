@@ -224,3 +224,5 @@ public import SerrePositivity.KST.SchemeLemmas.BoundaryHigherMinorVanishing
 public import SerrePositivity.KST.SchemeLemmas.GenericMinorCoefficientUnit
 public import SerrePositivity.KST.SchemeLemmas.BoundaryMinorCoefficientPower
 public import SerrePositivity.KST.SchemeLemmas.ConstantGenericRankCenter
+public import SerrePositivity.KST.SchemeLemmas.PureTransformStalkEquiv
+public import SerrePositivity.KST.SchemeLemmas.GenericBoundaryFreeLocus
