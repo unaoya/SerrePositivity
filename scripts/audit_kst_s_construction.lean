@@ -2709,3 +2709,45 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_quotient
 #print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_quotient
+
+#check @SerrePositivity.KST.SConstruction.cofiberProjection_epi
+#print axioms SerrePositivity.KST.SConstruction.cofiberProjection_epi
+
+#check @SerrePositivity.KST.SConstruction.cofiberTensorProjection_epi
+#print axioms SerrePositivity.KST.SConstruction.cofiberTensorProjection_epi
+
+#check @SerrePositivity.KST.SConstruction.cofiberTensor_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.cofiberTensor_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.cofiberProjection_naturality_of_quotient
+#print axioms SerrePositivity.KST.SConstruction.cofiberProjection_naturality_of_quotient
+
+#check @SerrePositivity.KST.SConstruction.adjoinTensorMap_postcomp
+#print axioms SerrePositivity.KST.SConstruction.adjoinTensorMap_postcomp
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionProjection_epi
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionProjection_epi
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionCofiberProjection_naturality
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionCofiberProjection_naturality
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionProjection_naturality
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionProjection_naturality
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_naturality
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_naturality
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssemblyNat
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssemblyNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint_naturality
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint_naturality
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjointNat
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjointNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint_uncurry
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint_uncurry

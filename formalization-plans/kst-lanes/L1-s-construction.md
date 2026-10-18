@@ -3270,3 +3270,113 @@ lemma oneDirectionSuspensionAssembly_quotient (r : ℕ) (X : StableModel.{u}) :
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2973 jobs）、公理監査成功（961 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.26 suspension の組み立てと随伴射の自然性
+
+自由な基点を加えた対象から cofiber への射影はエピ射であり、左右の tensor もエピ性を保つため、
+二つの射影の tensor もエピ射となることを証明した。
+したがって cofiber の smash からの射は、その二つの射影への引き戻しで検出できる。
+底の商射影の可換式を自由な基点を加えた射影へ移す補題と、基点追加の積上の射の後合成の式も証明した。
+
+これを前節の `oneDirectionSuspensionAssembly` に適用し、
+入力の全 `StableModel` 射に関する厳密な自然性を証明して自然変換にまとめた。
+証明は射影で検出して元の cylinder の自然性と境界商の自然性へ戻す。
+その後 L9 の suspension–loop の Hom 同値を適用し、
+`oneDirectionAssemblyAdjoint : oneDirectionReducedRealization r X → Ω(boundaryReducedRealization (r+1) X)` を構成した。
+随伴の両変数の自然性から、これも厳密な自然変換となる。逆に戻すと元の suspension の射を回収する。
+
+随伴射の同値性は未証明であり、Ω 条件を追加の仮定として与えてはいない。
+また源は S₁ 比較の源の境界商のままで、標準の境界商の列の連続二段としてはまだ束ねていない。
+段の接続・Kan 模型への移送・構造射の単射化・delooping は未完了。
+Core・Stable・F1・HA・Spectra の所有ファイルや公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u`、
+`open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet`、`open scoped Simplicial` の下で記す。
+一般の外延性・射影の自然性には Kan 性や単射性は要求しない。
+
+**CofiberTensorExt.lean**
+
+```lean
+instance cofiberProjection_epi {A B : SSet.{u}} (f : A ⟶ B) :
+    Epi (PointedObject.cofiberProjection f)
+
+instance cofiberTensorProjection_epi {A B C D : SSet.{u}} (f : A ⟶ B) (g : C ⟶ D) :
+    Epi (PointedObject.cofiberProjection f ⊗ₘ PointedObject.cofiberProjection g)
+
+lemma cofiberTensor_hom_ext {A B C D : SSet.{u}} (f : A ⟶ B) (g : C ⟶ D)
+    {Z : PointedSimplicialSet.{u}} (p q : PointedObject.cofiber f ⊗ PointedObject.cofiber g ⟶ Z)
+    (h : (PointedObject.cofiberProjection f ⊗ₘ PointedObject.cofiberProjection g) ≫ p =
+      (PointedObject.cofiberProjection f ⊗ₘ PointedObject.cofiberProjection g) ≫ q) : p = q
+```
+
+**CofiberProjectionNaturality.lean**
+
+```lean
+lemma cofiberProjection_naturality_of_quotient {A B C D : SSet.{u}}
+    (f : A ⟶ B) (g : C ⟶ D) (a : B ⟶ D)
+    (k : PointedObject.cofiber f ⟶ PointedObject.cofiber g)
+    (hk : PointedObject.cofiberQuotient f ≫ k.right = a ≫ PointedObject.cofiberQuotient g) :
+    PointedObject.adjoinFunctor.map a ≫ PointedObject.cofiberProjection g =
+      PointedObject.cofiberProjection f ≫ k
+
+lemma adjoinTensorMap_postcomp {A B : SSet.{u}} {Z W : PointedSimplicialSet.{u}}
+    (h : A ⊗ B ⟶ Z.right) (k : Z ⟶ W) :
+    adjoinTensorMap Z h ≫ k = adjoinTensorMap W (h ≫ k.right)
+```
+
+**SuspensionAssemblyNaturality.lean**
+
+```lean
+instance oneDirectionSuspensionProjection_epi (r : ℕ) (X : StableModel.{u}) :
+    Epi (oneDirectionSuspensionProjection r X)
+
+lemma oneDirectionCofiberProjection_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    PointedObject.adjoinFunctor.map ((oneDirectionRealizationFunctor (r + 1)).map f) ≫
+        PointedObject.cofiberProjection (oneDirectionFatBoundary (r + 1) Y).ι =
+      PointedObject.cofiberProjection (oneDirectionFatBoundary (r + 1) X).ι ≫
+        oneDirectionReducedRealizationMap r f
+
+lemma oneDirectionSuspensionProjection_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    (PointedObject.adjoin (Δ[1] : SSet.{u}) ◁
+        PointedObject.adjoinFunctor.map ((oneDirectionRealizationFunctor (r + 1)).map f)) ≫
+        oneDirectionSuspensionProjection r Y =
+      oneDirectionSuspensionProjection r X ≫
+        (PointedSimplicialSet.circle.{u} ◁ oneDirectionReducedRealizationMap r f)
+
+lemma oneDirectionSuspensionAssembly_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    (PointedSimplicialSet.circle.{u} ◁ oneDirectionReducedRealizationMap r f) ≫
+        oneDirectionSuspensionAssembly r Y =
+      oneDirectionSuspensionAssembly r X ≫ boundaryReducedRealizationMap (r + 1) f
+
+def oneDirectionSuspensionAssemblyNat (r : ℕ) :
+    oneDirectionReducedRealizationFunctor r ⋙ tensorLeft PointedSimplicialSet.circle.{u} ⟶
+      boundaryReducedRealizationFunctor (r + 1)
+```
+
+**SuspensionAssemblyAdjoint.lean**
+
+```lean
+def oneDirectionAssemblyAdjoint (r : ℕ) (X : StableModel.{u}) :
+    oneDirectionReducedRealization r X ⟶ Spectra.loopSpace (boundaryReducedRealization (r + 1) X)
+
+lemma oneDirectionAssemblyAdjoint_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    oneDirectionReducedRealizationMap r f ≫ oneDirectionAssemblyAdjoint r Y =
+      oneDirectionAssemblyAdjoint r X ≫
+        (PointedObject.basedHomFunctor (C
+
+def oneDirectionAssemblyAdjointNat (r : ℕ) :
+    oneDirectionReducedRealizationFunctor r ⟶ boundaryReducedRealizationFunctor (r + 1) ⋙
+      PointedObject.basedHomFunctor (C
+
+lemma oneDirectionAssemblyAdjoint_uncurry (r : ℕ) (X : StableModel.{u}) :
+    (Spectra.suspensionLoopEquiv (oneDirectionReducedRealization r X)
+    (boundaryReducedRealization (r + 1) X)).symm (oneDirectionAssemblyAdjoint r X) =
+      oneDirectionSuspensionAssembly r X
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。L9 の suspension からの反復間の比較射と随伴射は自然変換として証明済み。
+段と Kan 模型の接続、構造射の単射化、delooping・Ω 条件・BF 連結スペクトルは未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2977 jobs）、公理監査成功（975 宣言、標準三公理のみ）。追加公理・sorry なし。
