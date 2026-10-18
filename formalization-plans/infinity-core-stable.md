@@ -318,7 +318,19 @@ trivial Kan fibration の後合成が coslice でも trivial Kan fibration と�
 `binaryPointDiagram x y` は二つの指定頂点を値とする離散二点図式。
 `hasColimit_binaryPointDiagram` により安定な X の任意の二頂点について余極限の存在が完成した。
 零始点の押し出しの余錐を標準 span の join 表示へ移し、始対象の零始点を除いて構成した。
-次に離散二点図式の余極限を h C の二項余積として判定し、Hom の存在と一意性・instance を構成する。
+h C の二項余積の Hom の存在部分まで進めた。
+`JoinCocone.leg` は任意の余錐の各脚を端点つきの辺とし、`legCompStruct` は
+余錐間の辺の頂点成分との合成三角形を実際の二単体で与える。
+`leg_comp_projection` はその h C での可換式（これらには Quasicategory は不要）。
+`exists_coconeVertexFactorization` は任意の形状の余極限余錐から任意の同じ図式の余錐へ、
+全ての脚を保つ h C の頂点の射を作る（Quasicategory）。一般の形状で一意性は主張しない。
+`binaryCoconeOfEdges` は指定された共通終点の二本の辺から二点図式の余錐を作り、
+その頂点と二本の脚の一次単体を厳密に計算する（値域に仮定なし）。
+`exists_binaryColimit_desc` は任意の二点図式の余極限 c と、同じ指定頂点 z への二本の h C の射について、
+c の二つの脚との合成がそれぞれ指定射となる h C の射 c.vertex → z の存在を証明する。
+Quasicategory と IsColimitCone c のみを仮定し、安定性は不要。
+一意性・HasBinaryCoproducts instance は未完了。次に、二つの合成二単体を共通の頂点の辺で貼り、
+脚との可換式を満たす射を余錐間の辺へ持ち上げ、coslice の始対象性で一意性を示す。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -457,6 +469,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 指定零枝の cofiber と二項余積四角形の存在 | `nonempty_functorIso_span_of_first_eq_terminal_second`（Quasicategory）、`hasColimit_span_of_zero_second`、`exists_pushoutRectangle_of_zeroTriangle`、`exists_zeroSourcePushoutSquare`（Quasicategory、IsStable） | 指定した二頂点を持つ零始点の押し出しまで完成。h C の二項余積の普遍性・instance と前加法構造は未完了 |
 | 始対象の下の図式から始対象を忘れる | `diagramNestedCosliceIso`、`sliceUnderPostcomp_trivialKanFibration_of_trivial`、`diagramNestedCosliceProjection` と射・頂点の式、`diagramNestedCosliceProjection_trivial_of_initial`（値域に仮定なし）、`isColimitCone_iff_forget_initial`（Quasicategory） | 一般の図式で完成。標準 span と離散二点図式への適用も下記で完成。h C の二項余積の普遍性は未完了 |
 | 離散二点図式の余極限 | `spanPointJoinIso` と三頂点の包含の式、`isColimitCone_iff_restrict_joinInr_of_initial`（Quasicategory、始点の始対象性）、`binaryPointDiagram`、`hasColimit_binaryPointDiagram`（Quasicategory、IsStable） | 任意の二つの指定頂点の余極限の存在まで完成。h C の二項余積の Hom の普遍性・instance は未完了 |
+| 二項余積の Hom の存在部分 | `JoinCocone.leg`、`legCompStruct`、`leg_comp_projection`、`binaryCoconeOfEdges` と脚・頂点の式（値域に仮定なし）、`exists_coconeVertexFactorization`、`exists_binaryColimit_desc`（Quasicategory、余極限性） | 指定された共通終域への二本の射の因子分解の存在まで完成。一意性・HasBinaryCoproducts instance は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

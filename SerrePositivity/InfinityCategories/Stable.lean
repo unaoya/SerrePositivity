@@ -61,6 +61,11 @@ public import SerrePositivity.InfinityCategories.Stable.SpanPointJoin
 public import SerrePositivity.InfinityCategories.Stable.InitialJoinRestriction
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
 
+public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Stable.CoconeFactorization
+public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges
+public import SerrePositivity.InfinityCategories.Stable.BinaryColimitDesc
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
