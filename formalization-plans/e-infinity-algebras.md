@@ -204,7 +204,12 @@ compose R (cubeEvaluation e ψ) (cubeEvaluation f φ) _` は全最大旗の評�
 `coherentCube_split_face` は実際の合成面の Hom 写像と左右の AW 合成写像を同定する。
 `cubeEvaluation_coherent_face_one_comp` は `StrictAnti e` の下で、番号付き1面の評価と
 左右の標準成分の dg 合成を次数の濃度表示の違いを保った `HEq` で同定する。
-前提は実際の豊穣関手と同じ dg 圏・順序。次数をそろえた dg 単体の方程式への組立ては残る。
-公開369宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
+前提は実際の豊穣関手と同じ dg 圏・順序。
+`coherentCubeComponentAt_d s hab S k l hk hl` は `k=−↑S.card`、`l=k+1` の下で、
+指定次数の成分の微分が各内部点での合成項−削除成分の降順符号付き和に等しいと示す。空集合も含む。
+`coherentInterior_term_sign` はこの符号を dg nerve の全頂点による符号へ合わせる。
+`coherentSimplexData : doldKanCoherentNerve _⦋n⦌ → DGNerve.SimplexData R D n` を構成した。
+前提は `[CommRing R] [DGCategory R D]`。既存の `Simplex.equation` への適用と単体的自然性は残る。
+公開393宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
 比較写像、低次の一致、写像空間の比較。A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済み。
 比較写像と各 pinched Hom の実際のホモトピー同値を完成させた後に適用する。

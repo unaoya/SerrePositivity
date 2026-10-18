@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3726件で成功し、公開369宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3731件で成功し、公開393宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1517,10 +1517,34 @@ cubeEvaluation (cubeSumEnumeration e f) (cubeAWCompositionMap ψ φ)
 実際の豊穣関手 s、`e : Fin (m+1) ≃ S`、`StrictAnti e`、座標 i の下で、
 番号付き1面の評価と、後半・前半の `coherentCubeComponent` の通常順合成を `HEq` で同定する。
 `S.erase (e i).val` の濃度と左右の内部点数の和を同定して向きを移すため、追加の符号はない。
-次数の濃度表示の違いはこの `HEq` に保持しており、まだ dg 単体の方程式そのものではない。
+`coherentCubeComponentAt s hab S k hk` は `hk : k = −↑S.card` により次数を指定した標準成分。
+`coherentCubeCompositionAt s hab S j l hl` は `hl : l = 1−↑S.card` により終次数を指定した合成項。
+`cubeEvaluation_coherent_face_zero_at`・`cubeEvaluation_coherent_face_one_at` は、それぞれの面の評価を
+同じ次数の削除成分・合成項に通常の等号で同定する。
 
-まだ dg nerve への単体集合の射は得ていない。次数表示をそろえて dg 単体の方程式へまとめる工程、
-退化も含む自然性、および比較写像の頂点・辺・三角形での一致が残る。
+`coherentCubeComponentAt_d s hab S k l hk hl` は任意の有限内部点集合 S と
+`hk : k = −↑S.card`、`hl : l = k+1` に対し次の式を与える。
+
+```text
+Hom.d k l (coherentCubeComponentAt s hab S k hk)
+  = Σ j : S, (−1)^(#{t∈S : j<t}) •
+      (coherentCubeCompositionAt s hab S j l _
+       − coherentCubeComponentAt s hab (S.erase j) l _).
+```
+
+空の S も含み、この場合は閉零射の条件となる。
+`coherentInteriorSet I a b` は有限頂点集合 I の開区間内の内部点集合で、
+`card_coherentInteriorSet` が最小・最大の両端の下で内部点数+2=全頂点数を示す。
+`coherentInterior_term_sign` は全頂点の右側の点数が内部点の右側の点数+1であることから、
+dg nerve の符号付きの削除−合成を上の符号付きの合成−削除へ同定する。
+
+`coherentSimplexData (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.SimplexData R D n`
+は各 coherent 単体の頂点と全斉次成分を持つ実際の台データ。
+`coherentSimplexData_obj` は対象成分の一致、`coherentSimplexData_hom_heq` は各成分と
+内部点の標準立方体評価との一致を示す。前提は `[CommRing R] [DGCategory R D]`。
+まだ `DGNerve.Simplex.equation` の有限頂点集合の rhs への適用と単体的自然性は証明していないため、
+比較写像 `N^hc(C_Δ) ⟶ N_dg(C)` は未構成。既存 rhs への内部点表示の移送、退化も含む自然性、
+および比較写像の頂点・辺・三角形での一致が残る。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
