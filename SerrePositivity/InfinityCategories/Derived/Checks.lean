@@ -2,6 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DerivedComparison
 public import SerrePositivity.InfinityCategories.Derived.HomotopyCategoryComparison
 public import SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift
+public import SerrePositivity.InfinityCategories.Derived.MappingExt
 
 /-! # 標準導来圏での semifree 比較の具体化
 
@@ -56,5 +57,18 @@ example (S : Type u) [CommRing S] :
     (derivedInfinityHomotopyEquivalence S).functor.CommShift ℤ := inferInstance
 
 example : (derivedInfinityHomotopyEquivalence ℤ).functor.CommShift ℤ := inferInstance
+
+open scoped Simplicial
+
+example (S : Type u) [CommRing S] (x y : (derivedInfinityCategory S) _⦋0⦌) (n : ℕ) :
+    Nonempty (SerrePositivity.KST.Spectra.KanHomotopyGroup
+      (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) n
+      (pinchedHomZeroVertex (x.obj 0) (y.obj 0)) ≃*
+        Multiplicative (derivedInfinityExt x y (-((n + 1 : ℕ) : ℤ)))) :=
+  ⟨derivedInfinityPiExtEquiv x y n⟩
+
+example (S : Type u) [CommRing S] (x y : (derivedInfinityCategory S) _⦋0⦌) :
+    Nonempty (SSet.π₀ (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) ≃
+      derivedInfinityExt x y 0) := ⟨derivedInfinityPiZeroExtEquiv x y⟩
 
 end SerrePositivity.InfinityCategories

@@ -67,6 +67,7 @@ public import SerrePositivity.InfinityCategories.Derived.Localization
 
 public import SerrePositivity.InfinityCategories.Derived.MooreComplex
 public import SerrePositivity.InfinityCategories.Derived.MooreHomology
+public import SerrePositivity.InfinityCategories.Derived.MappingExt
 
 /-! # Semifree 複体による導来圏の dg 表示
 

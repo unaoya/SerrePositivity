@@ -2805,3 +2805,177 @@ pinchedHomMooreHomologyIso (x y : D) (n : ℕ) :
       (ModuleCat.uliftFunctor.{v} S).obj ((homObject S D x y).homology (-(n : ℤ)))
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D10b：K-L9 のホモトピー群・Moore ホモロジー・整数次数 Ext の同定
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory AlgebraicTopology
+open scoped Simplicial
+variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
+moduleUnderlyingSSet : SSet.{v}
+moduleSimplexValue (n : ℕ) (t : (moduleUnderlyingSSet W) _⦋n⦌) :
+    W.obj (Opposite.op ⦋n⦌)
+sphericalModule (n : ℕ) : Submodule S (W.obj (Opposite.op ⦋n + 1⦌))
+module_const_zero_apply {X : SSet.{v}} (n : SimplexCategoryᵒᵖ) (s : X.obj n) :
+    (SSet.const (X := X) (0 : (moduleUnderlyingSSet W) _⦋0⦌)).app n s = 0
+module_yoneda_const_zero (n : ℕ) :
+    SSet.yonedaEquiv (SSet.const (X := Δ[n]) (0 : (moduleUnderlyingSSet W) _⦋0⦌)) =
+      (0 : W.obj (Opposite.op ⦋n⦌))
+pointedModule_face_zero {n : ℕ}
+    (f : (moduleUnderlyingSSet W).PtSimplex (n + 1) 0) (j : Fin (n + 2)) :
+    W.δ j (SSet.yonedaEquiv f.map) = 0
+pointedModuleSimplexEquiv (n : ℕ) :
+    (moduleUnderlyingSSet W).PtSimplex (n + 1) 0 ≃ sphericalModule W n
+pointedModuleSimplexEquiv_symm_value (n : ℕ) (z : sphericalModule W n) :
+    SSet.yonedaEquiv (((pointedModuleSimplexEquiv W n).symm z).map) = z.val
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory AlgebraicTopology
+open scoped Simplicial
+variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
+sphericalModule_face {n : ℕ} (s : sphericalModule W n) (j : Fin (n + 2)) :
+    W.δ j s.val = 0
+mooreKernelModule_face {n : ℕ} (s : mooreKernelModule W (n + 1)) (j : Fin (n + 1)) :
+    W.δ j.succ s.val = 0
+sphereBoundaryMap (n : ℕ) :
+    mooreKernelModule W (n + 2) →ₗ[S] sphericalModule W n
+sphericalModule_degeneracy_face {n : ℕ} (s : sphericalModule W n)
+    (i : Fin (n + 2)) (j : Fin (n + 3)) :
+    W.δ j (W.σ i s.val) = if j = i.castSucc then s.val else if j = i.succ then s.val else 0
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory AlgebraicTopology
+open scoped Simplicial
+variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
+moduleRelStruct_faces {n : ℕ}
+    {f g : (moduleUnderlyingSSet W).PtSimplex (n + 1) 0}
+    (h : SSet.PtSimplex.RelStruct f g 0) :
+    W.δ 0 (SSet.yonedaEquiv h.map) = SSet.yonedaEquiv f.map ∧
+    W.δ 1 (SSet.yonedaEquiv h.map) = SSet.yonedaEquiv g.map ∧
+    ∀ j : Fin (n + 3), 1 < j → W.δ j (SSet.yonedaEquiv h.map) = 0
+moduleRelStruct_iff_boundary {n : ℕ}
+    (f g : (moduleUnderlyingSSet W).PtSimplex (n + 1) 0) :
+    Nonempty (SSet.PtSimplex.RelStruct f g 0) ↔
+      ∃ u : mooreKernelModule W (n + 2),
+        sphereBoundaryMap W n u = pointedModuleSimplexEquiv W n f -
+          pointedModuleSimplexEquiv W n g
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory AlgebraicTopology
+open SerrePositivity.KST.Spectra
+open scoped Simplicial
+variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
+sphereHomologyQuotient (n : ℕ)
+moduleSphereAddMulStruct {n : ℕ}
+    (f g : (moduleUnderlyingSSet W).PtSimplex (n + 1) 0) :
+    SSet.PtSimplex.MulStruct f g
+      ((pointedModuleSimplexEquiv W n).symm
+        (pointedModuleSimplexEquiv W n f + pointedModuleSimplexEquiv W n g)) (Fin.last n)
+modulePiSphereEquiv [SSet.KanComplex (moduleUnderlyingSSet W)] (n : ℕ) :
+    KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ sphereHomologyQuotient W n
+modulePiSphereGroupEquiv [SSet.KanComplex (moduleUnderlyingSSet W)] (n : ℕ) :
+    KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃*
+      Multiplicative (sphereHomologyQuotient W n)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory AlgebraicTopology
+open scoped Simplicial
+variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
+moore_d_zero_iff_face_zero (n : ℕ)
+    (t : ((normalizedMooreComplex (ModuleCat.{v} S)).obj W).X (n + 1)) :
+    (((normalizedMooreComplex (ModuleCat.{v} S)).obj W).d (n + 1) n) t = 0 ↔
+      W.δ 0 (((mooreKernelIso W (n + 1)).hom t).val) = 0
+mooreCyclesSphereEquiv (n : ℕ) :
+    LinearMap.ker ((((normalizedMooreComplex (ModuleCat.{v} S)).obj W).d (n + 1) n).hom) ≃ₗ[S]
+      sphericalModule W n
+mooreCyclesSphereEquiv_boundary (n : ℕ)
+    (t : ((normalizedMooreComplex (ModuleCat.{v} S)).obj W).X (n + 2)) :
+    mooreCyclesSphereEquiv W n
+      ((((normalizedMooreComplex (ModuleCat.{v} S)).obj W).sc'
+        (n + 2) (n + 1) n).moduleCatToCycles t) =
+        sphereBoundaryMap W n ((mooreKernelIso W (n + 2)).hom t)
+mooreCyclesSphereEquiv_range (n : ℕ) :
+    (LinearMap.range
+      ((((normalizedMooreComplex (ModuleCat.{v} S)).obj W).sc'
+        (n + 2) (n + 1) n).moduleCatToCycles)).map
+        (mooreCyclesSphereEquiv W n).toLinearMap = LinearMap.range (sphereBoundaryMap W n)
+mooreHomologySphereIso (n : ℕ) :
+    (((normalizedMooreComplex (ModuleCat.{v} S)).obj W).homology (n + 1)) ≅
+      ModuleCat.of S (sphereHomologyQuotient W n)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v w
+open CategoryTheory DifferentialGraded DoldKanComparison AlgebraicTopology
+open SerrePositivity.KST.Spectra
+open scoped Simplicial
+additiveGroupToMultiplicativeEquiv {A : Type v} {B : Type w}
+    [AddGroup A] [AddGroup B] (e : A ≃+ B) : Multiplicative A ≃* Multiplicative B
+kanHomotopyGroupIsoEquiv {X Y : SSet.{v}} [SSet.KanComplex X] [SSet.KanComplex Y]
+    (e : X ≅ Y) (n : ℕ) (x : X _⦋0⦌) :
+    KanHomotopyGroup X n x ≃* KanHomotopyGroup Y n (e.hom.app _ x)
+variable {S : Type u} [CommRing S]
+modulePiMooreGroupEquiv (W : SimplicialObject (ModuleCat.{v} S))
+    [SSet.KanComplex (moduleUnderlyingSSet W)] (n : ℕ) :
+    KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃*
+      Multiplicative (((normalizedMooreComplex (ModuleCat.{v} S)).obj W).homology (n + 1))
+variable {D : Type v} [DGCategory S D]
+open SSet.modelCategoryQuillen in
+pinchedHomModuleUnderlyingKan (x y : D) :
+    SSet.KanComplex (moduleUnderlyingSSet (pinchedHomModule (S := S) x y))
+pinchedHomZeroVertex (x y : D) : (DGNerve.pinchedHom S D x y) _⦋0⦌
+pinchedHomPiCohomologyEquiv (x y : D) (n : ℕ) :
+    KanHomotopyGroup (DGNerve.pinchedHom S D x y) n (pinchedHomZeroVertex x y) ≃*
+      Multiplicative ((homObject S D x y).homology (-((n + 1 : ℕ) : ℤ)))
+derivedInfinityPiCohomologyEquiv (x y : (derivedInfinityCategory S) _⦋0⦌) (n : ℕ) :
+    KanHomotopyGroup (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) n
+      (pinchedHomZeroVertex (x.obj 0) (y.obj 0)) ≃*
+        Multiplicative ((homObject S (Semifree S) (x.obj 0) (y.obj 0)).homology
+          (-((n + 1 : ℕ) : ℤ)))
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v w
+open CategoryTheory DifferentialGraded
+open SerrePositivity.KST.Spectra
+open scoped Simplicial
+variable {S : Type u} [CommRing S]
+pinchedHomPiZeroCohomologyEquiv {D : Type v} [DGCategory S D] (x y : D) :
+    SSet.π₀ (DGNerve.pinchedHom S D x y) ≃ (homObject S D x y).homology 0
+variable [HasDerivedCategory.{w} (ModuleCat.{u} S)]
+derivedInfinityExt (x y : (derivedInfinityCategory S) _⦋0⦌) (i : ℤ)
+semifreeHomCohomologyExtEquiv (P : Semifree S) (Q : Complex S) (i : ℤ) :
+    (homComplex S P.val Q).homology i ≃+
+      ((DerivedCategory.Q : Complex S ⥤ DerivedCategory (ModuleCat.{u} S)).obj P.val ⟶
+        ((DerivedCategory.Q : Complex S ⥤ DerivedCategory (ModuleCat.{u} S)).obj Q)⟦i⟧)
+derivedInfinityPiExtEquiv (x y : (derivedInfinityCategory S) _⦋0⦌) (n : ℕ) :
+    KanHomotopyGroup (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) n
+      (pinchedHomZeroVertex (x.obj 0) (y.obj 0)) ≃*
+        Multiplicative (derivedInfinityExt x y (-((n + 1 : ℕ) : ℤ)))
+derivedInfinityPiZeroExtEquiv (x y : (derivedInfinityCategory S) _⦋0⦌) :
+    SSet.π₀ (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) ≃ derivedInfinityExt x y 0
+end SerrePositivity.InfinityCategories
+```

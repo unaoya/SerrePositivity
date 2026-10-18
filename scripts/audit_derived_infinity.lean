@@ -749,10 +749,54 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.connectiveHomHomologyIso
 #print axioms SerrePositivity.InfinityCategories.pinchedHomMooreHomologyIso
 
+#print axioms SerrePositivity.InfinityCategories.moduleUnderlyingSSet
+#print axioms SerrePositivity.InfinityCategories.moduleSimplexValue
+#print axioms SerrePositivity.InfinityCategories.sphericalModule
+#print axioms SerrePositivity.InfinityCategories.module_const_zero_apply
+#print axioms SerrePositivity.InfinityCategories.module_yoneda_const_zero
+#print axioms SerrePositivity.InfinityCategories.pointedModule_face_zero
+#print axioms SerrePositivity.InfinityCategories.pointedModuleSimplexEquiv
+#print axioms SerrePositivity.InfinityCategories.pointedModuleSimplexEquiv_symm_value
+#print axioms SerrePositivity.InfinityCategories.sphericalModule_face
+#print axioms SerrePositivity.InfinityCategories.mooreKernelModule_face
+#print axioms SerrePositivity.InfinityCategories.sphereBoundaryMap
+#print axioms SerrePositivity.InfinityCategories.sphericalModule_degeneracy_face
+#print axioms SerrePositivity.InfinityCategories.moduleRelStruct_faces
+#print axioms SerrePositivity.InfinityCategories.moduleRelStruct_iff_boundary
+#print axioms SerrePositivity.InfinityCategories.sphereHomologyQuotient
+#print axioms SerrePositivity.InfinityCategories.moduleSphereAddMulStruct
+#print axioms SerrePositivity.InfinityCategories.modulePiSphereEquiv
+#print axioms SerrePositivity.InfinityCategories.modulePiSphereGroupEquiv
+#print axioms SerrePositivity.InfinityCategories.moore_d_zero_iff_face_zero
+#print axioms SerrePositivity.InfinityCategories.mooreCyclesSphereEquiv
+#print axioms SerrePositivity.InfinityCategories.mooreCyclesSphereEquiv_boundary
+#print axioms SerrePositivity.InfinityCategories.mooreCyclesSphereEquiv_range
+#print axioms SerrePositivity.InfinityCategories.mooreHomologySphereIso
+#print axioms SerrePositivity.InfinityCategories.additiveGroupToMultiplicativeEquiv
+#print axioms SerrePositivity.InfinityCategories.kanHomotopyGroupIsoEquiv
+#print axioms SerrePositivity.InfinityCategories.modulePiMooreGroupEquiv
+#print axioms SerrePositivity.InfinityCategories.pinchedHomModuleUnderlyingKan
+#print axioms SerrePositivity.InfinityCategories.pinchedHomZeroVertex
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPiCohomologyEquiv
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityPiCohomologyEquiv
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPiZeroCohomologyEquiv
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityExt
+#print axioms SerrePositivity.InfinityCategories.semifreeHomCohomologyExtEquiv
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityPiExtEquiv
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityPiZeroExtEquiv
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.PointedModuleSimplex,
+    `SerrePositivity.InfinityCategories.Derived.ModuleSphereBoundary,
+    `SerrePositivity.InfinityCategories.Derived.ModuleSphereRelation,
+    `SerrePositivity.InfinityCategories.Derived.ModuleSphereGroup,
+    `SerrePositivity.InfinityCategories.Derived.MooreCycles,
+    `SerrePositivity.InfinityCategories.Derived.MappingHomotopyGroups,
+    `SerrePositivity.InfinityCategories.Derived.MappingExt,
+
     `SerrePositivity.InfinityCategories.Derived.MooreHomology,
     `SerrePositivity.InfinityCategories.Derived.MooreUniverse,
     `SerrePositivity.InfinityCategories.Derived.PinchedHomModule,
