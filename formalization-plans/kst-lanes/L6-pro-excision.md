@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと417宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと440宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -60,8 +60,9 @@
 - `LinearizedMHomotopy.homologyMap_eq`：m 次ホモトピーから次数 ≤m の交代面写像複体のホモロジー写像の一致を証明。零次を含み、同変 bar への移送は未完。
 - `actionBarComparison`：実際の E_BH G から B(G⋉H) への単体的比較を構成。transport 関手の合成則と全ての単体射への自然性を検証。
 - `coefficientBisimplicialBarComparison`：bar 次数と係数次数を分けた二重単体的比較を構成。対角は元の比較と一致する。各行の始域は H^r×G^r と同型。
-- `tupleActionStep_localized_isIso`：同じ g_i を座標 j≥i へ作用させる一段の可逆性を、元の G の群状性だけから証明。有限合成と行の比較の同定は作業中。
-- L6c の Prop A.1 の同値性、Lemma A.4 の同変 bar を経由する比較、A.5 の AW・shuffle 比較は未完了。
+- Prop A.1 の幾何的模型は完了：`coefficientBarRowComparison_eq_sweep` で行の比較と有限合成を同定し、各行・対角・実際の `actionBarComparison` の anodyne 局所化可逆性を証明。
+- `propA1ComparisonIso` は anodyne 射を反転する任意の借用関手 F に対する実際の同型。F(E_BH G) と H_i(G;C(H)) の模型同定は H_* の所有レーンの界面。同変射に関する同型の自然性も証明。
+- L6c の残作業：Lemma A.4 の同変 m 次ホモトピーの bar への持ち上げと相対項の零化、A.5 の AW・shuffle 比較。A.1 と A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -84,6 +85,10 @@
 | coefficientBisimplicialBarRowIso | CoefficientBisimplicialBar.lean | 検証済み | 第 r 行の H^r×G^r への同型 |
 | actionNerveEquiv | ActionNerveCoordinates.lean | 検証済み | 作用圏の射列は始点×ラベル列 |
 | tupleActionStep_localized_isIso | TupleAction.lean | 検証済み | 指定された座標への群状作用の可逆性 |
+| actionBarComparison_localized_isIso | PropA1.lean | 検証済み | Prop A.1 の幾何的比較の対角の局所化同値 |
+| propA1ComparisonIso | PropA1.lean | 検証済み | 借用関手 F に対する原典 (A.2) の模型の同型 |
+| propA1ComparisonIso_naturality | PropA1Naturality.lean | 検証済み | 同変係数射についての自然性 |
+| coefficientBarRowComparison_eq_sweep | BarRowComparison.lean | 検証済み | 行の比較と指定座標作用の有限合成の一致 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |
 | LevelHom | Pro.lean | 検証済み | 同じ添字上の可換な射 |
 | IsProIso | Pro.lean | 検証済み | eventual inverse の二つの三角形 |
@@ -509,3 +514,13 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - したがって G^r の群状性を別に仮定する必要はない。必要なのは元の G の群状性だけ。
 - 完全な行の比較との座標等式を証明し、有限合成の可逆性から行の局所化同値を得る。
 - 対角への移送には既存 `BisimplicialModel.localized_diagonal_map` を、二重単体的比較を flip して適用する。
+
+## Lemma A.4 の次の持ち上げ
+
+- m 次ホモトピーの区間写像は線形であり、基底単体を一つの基底単体へ送るとは限らない。
+- そのため幾何的な SSet の射として持ち上げず、作用 bar の自由整数加群へ線形に持ち上げる。
+- 作用 bar の単体を始点と G の語で分解し、G の語を固定した係数の基底包含を使う。
+- 任意の単体射に沿う始点の変化は、元の語の始点から像の最初の頂点までの prefix の作用。
+- この式と区間写像の G 同変性から、線形に持ち上げた区間写像の単体的自然性を証明する。
+- その後、既存の `LinearizedMHomotopy.homologyMap_eq`、A.1 の自然性、相対余核の自明射零化を合成する。
+- bar への線形持ち上げの存在や Lemma A.4 の結論を、H_* の界面の仮定に含めない。

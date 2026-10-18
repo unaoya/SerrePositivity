@@ -1176,3 +1176,50 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.ProExcision.tupleActionStep
 #check @SerrePositivity.KST.ProExcision.tupleActionStep_localized_isIso
 #print axioms SerrePositivity.KST.ProExcision.tupleActionStep_localized_isIso
+
+#check @SerrePositivity.KST.ProExcision.tuplePrefixProduct
+#print axioms SerrePositivity.KST.ProExcision.tuplePrefixProduct
+#check @SerrePositivity.KST.ProExcision.tupleActionSweep
+#print axioms SerrePositivity.KST.ProExcision.tupleActionSweep
+#check @SerrePositivity.KST.ProExcision.tupleActionSweep_localized_isIso
+#print axioms SerrePositivity.KST.ProExcision.tupleActionSweep_localized_isIso
+#check @SerrePositivity.KST.ProExcision.tupleActionSweep_base
+#print axioms SerrePositivity.KST.ProExcision.tupleActionSweep_base
+#check @SerrePositivity.KST.ProExcision.tupleActionSweep_fiber
+#print axioms SerrePositivity.KST.ProExcision.tupleActionSweep_fiber
+#check @SerrePositivity.KST.ProExcision.monoidNerve_prefix_eq
+#print axioms SerrePositivity.KST.ProExcision.monoidNerve_prefix_eq
+#check @SerrePositivity.KST.ProExcision.coefficientRowProductIso
+#print axioms SerrePositivity.KST.ProExcision.coefficientRowProductIso
+#check @SerrePositivity.KST.ProExcision.tupleActionProductUnderlyingIso
+#print axioms SerrePositivity.KST.ProExcision.tupleActionProductUnderlyingIso
+#check @SerrePositivity.KST.ProExcision.semidirectBarRowProductIso
+#print axioms SerrePositivity.KST.ProExcision.semidirectBarRowProductIso
+#check @SerrePositivity.KST.ProExcision.coefficientBarRowComparison
+#print axioms SerrePositivity.KST.ProExcision.coefficientBarRowComparison
+#check @SerrePositivity.KST.ProExcision.coefficientBarRowComparison_eq_sweep
+#print axioms SerrePositivity.KST.ProExcision.coefficientBarRowComparison_eq_sweep
+#check @SerrePositivity.KST.ProExcision.coefficientBarRowComparison_localized_isIso
+#print axioms SerrePositivity.KST.ProExcision.coefficientBarRowComparison_localized_isIso
+#check @SerrePositivity.KST.ProExcision.bisimplicialDiagonalFlipIso
+#print axioms SerrePositivity.KST.ProExcision.bisimplicialDiagonalFlipIso
+#check @SerrePositivity.KST.ProExcision.bisimplicialDiagonalFlipIso_naturality
+#print axioms SerrePositivity.KST.ProExcision.bisimplicialDiagonalFlipIso_naturality
+#check @SerrePositivity.KST.ProExcision.localized_diagonal_map_of_flipped_rows
+#print axioms SerrePositivity.KST.ProExcision.localized_diagonal_map_of_flipped_rows
+#check @SerrePositivity.KST.ProExcision.actionBarComparison_localized_isIso
+#print axioms SerrePositivity.KST.ProExcision.actionBarComparison_localized_isIso
+#check @SerrePositivity.KST.ProExcision.propA1LocalizedComparisonIso
+#print axioms SerrePositivity.KST.ProExcision.propA1LocalizedComparisonIso
+#check @SerrePositivity.KST.ProExcision.actionBarComparison_map_isIso
+#print axioms SerrePositivity.KST.ProExcision.actionBarComparison_map_isIso
+#check @SerrePositivity.KST.ProExcision.propA1ComparisonIso
+#print axioms SerrePositivity.KST.ProExcision.propA1ComparisonIso
+#check @SerrePositivity.KST.ProExcision.barSetActionHom
+#print axioms SerrePositivity.KST.ProExcision.barSetActionHom
+#check @SerrePositivity.KST.ProExcision.coefficientActionBarMap
+#print axioms SerrePositivity.KST.ProExcision.coefficientActionBarMap
+#check @SerrePositivity.KST.ProExcision.actionBarComparison_naturality
+#print axioms SerrePositivity.KST.ProExcision.actionBarComparison_naturality
+#check @SerrePositivity.KST.ProExcision.propA1ComparisonIso_naturality
+#print axioms SerrePositivity.KST.ProExcision.propA1ComparisonIso_naturality

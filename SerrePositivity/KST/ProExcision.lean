@@ -67,3 +67,9 @@ public import SerrePositivity.KST.ProExcision.SetActionMorphisms
 public import SerrePositivity.KST.ProExcision.ConstantActionBar
 public import SerrePositivity.KST.ProExcision.CoefficientBisimplicialBar
 public import SerrePositivity.KST.ProExcision.TupleAction
+public import SerrePositivity.KST.ProExcision.TupleSweep
+public import SerrePositivity.KST.ProExcision.TuplePrefix
+public import SerrePositivity.KST.ProExcision.BarRowComparison
+public import SerrePositivity.KST.ProExcision.DiagonalFlip
+public import SerrePositivity.KST.ProExcision.PropA1
+public import SerrePositivity.KST.ProExcision.PropA1Naturality
