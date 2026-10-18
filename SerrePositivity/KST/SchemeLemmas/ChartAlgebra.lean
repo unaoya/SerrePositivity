@@ -15,7 +15,7 @@ universe u
 
 namespace SerrePositivity.KST.SchemeLemmas
 
-open Polynomial HomogeneousLocalization
+open Polynomial HomogeneousLocalization AlgebraicGeometry CategoryTheory
 
 variable {R : Type u} [CommRing R] (I : Ideal R)
 
@@ -49,6 +49,23 @@ lemma chartBaseMap_val (a : I) (r : R) :
         (algebraMap R (reesAlgebra I) r) := by
   change Localization.mk (algebraMap R (reesAlgebra I) r) 1 = _
   rw [Localization.mk_eq_mk', IsLocalization.mk'_one]
+
+set_option backward.isDefEq.respectTransparency false in
+/--
+概要：標準チャートの構造射はチャートの係数写像の Spec と一致する。
+方針：Proj の構造射の局所計算と Spec の反変合成則を使う。
+規約：KST §5、チャートの Spec 同型の逆向きを始域に置く。
+使われ方：チャート上のイデアル計算を例外閉部分スキームに接続する。
+-/
+@[reassoc] theorem affineBlowupChartIso_inv_ι_π (a : I) :
+    (affineBlowupChartIso I a).inv ≫ (affineBlowupChart I a).ι ≫ affineBlowupπ I =
+      Spec.map (CommRingCat.ofHom (chartBaseMap I a)) := by
+  unfold affineBlowupπ
+  simp only [← Category.assoc]
+  rw [show (affineBlowupChartIso I a).inv ≫ (affineBlowupChart I a).ι =
+    Proj.awayι (reesGrade I) _ (reesDegreeOne_mem I a) (by decide) from rfl]
+  rw [Proj.awayι_toSpecZero, ← Spec.map_comp]
+  rfl
 
 /--
 概要：チャート環内の生成元の比 b/a。
