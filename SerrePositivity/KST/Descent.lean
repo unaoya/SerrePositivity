@@ -201,6 +201,10 @@ public import SerrePositivity.KST.Descent.AugmentedDerivedCechFubini
 
 public import SerrePositivity.KST.Descent.AugmentedCechRows
 
+public import SerrePositivity.KST.Descent.DoubleAugmentedCechSpaces
+public import SerrePositivity.KST.Descent.CechDescentComparison
+public import SerrePositivity.KST.Descent.DoubleCechDescent
+
 /-!
 # K-L8：論文 §3 の降下
 
@@ -342,6 +346,8 @@ cofibrant な可縮重みの変更で不変であることも実際の模型の�
 積添字と直接構成した反復指定比較の弱同値による降下条件を同値にする。
 各行の指定比較を外側へ自然に束ね、反復した実際の指定比較が各行の比較の後の
 外側の指定比較に一致することと、それに対応する降下条件の同値を証明する。
+各行の増強元が変わる二重増強図式を構成し、各行と外側の実際の降下から
+積添字の実際の指定降下を証明する。局所化データは内部構成する入口も持つ。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
