@@ -39,3 +39,14 @@ public import SerrePositivity.KST.SchemeLemmas.SchemeExceptional
 public import SerrePositivity.KST.SchemeLemmas.BaseComparisonExt
 public import SerrePositivity.KST.SchemeLemmas.PowerNaturality
 public import SerrePositivity.KST.SchemeLemmas.SchemePowerBlowup
+public import SerrePositivity.KST.SchemeLemmas.BlowupDensity
+public import SerrePositivity.KST.SchemeLemmas.Flattening
+public import SerrePositivity.KST.SchemeLemmas.OpenImage
+public import SerrePositivity.KST.SchemeLemmas.StrictTransform
+public import SerrePositivity.KST.SchemeLemmas.ProperOpenIso
+public import SerrePositivity.KST.SchemeLemmas.StrictTransformDomination
+public import SerrePositivity.KST.SchemeLemmas.FlatOpenImmersion
+public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupCharts
+public import SerrePositivity.KST.SchemeLemmas.KernelLocality
+public import SerrePositivity.KST.SchemeLemmas.BlowupSchemeDensity
+public import SerrePositivity.KST.SchemeLemmas.FlatStrictTransform

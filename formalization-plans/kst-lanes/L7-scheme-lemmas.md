@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 500 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 552 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -50,12 +50,16 @@
 - 冪比較の係数写像に対する自然性を証明し、一般の `blowupPowerIso : Bl(Iⁿ) ≅ Bl(I)` と基底上の交換式を構成済み。
 - L7a の主要求（構成・例外因子・冪不変性・固有性・中心外同型）は一般スキーム上で実装済み。
 - 工程区切りの全体ビルドは他レーン `InfinityCategories/F1/CoherentHomComparison.lean:167` の simp エラーで失敗。L7 の import 閉包と対象ビルドは正常。
-- 次は L7b の Noether 特殊形の文言を再確認して平坦化の基盤を実装する。
+- 次は blowup の普遍性と admissible 中心の共通細分、有限型平坦化の実際の中心の構成を進める。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
 - L7a の主要求は実装済み。層としての O(±1) の記号は導入しておらず、その符号照合は将来その記号を導入する際の補助項目。
 - 例外イデアルの階数一自由化は各実チャート環の線形同型として構成済み。
-- L7b・L7c の本体は未着手。
+- L7b は Noether 特殊形の主文を §7.1a に固定して着手済み。L7c の本体は未着手。
+- 最初の admissible 中心と Cartier 化、位相的稠密性・スキーム論的稠密性を構成・証明済み。
+- strict transform をスキーム論的像として構成し、固有性・Noether 性・U 上の同型を証明済み。
+- 平坦・有限表示・分離な射を稠密な開部分上の同型から開埋め込みと判定する段階、および平坦な strict transform から実際の因子化射を作る段階を証明済み。
+- Noether でも実際に平坦な strict transform を達成する中心の存在と、admissible blowup の合成を一つで支配する段階は未証明。L7b 完了とはしない。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
 - Rees 代数は多項式環の部分代数として既にある。
@@ -238,6 +242,32 @@ U の準コンパクト性は Noether 性から導く。
 f の有限型性は固有性から導く。
 これらを追加の未証明仮定として束ねない。
 これは Stacks 081T / Temkin 2008 Lemma 2.1.5 の特殊形である。
+
+### 7.1a 実装前に固定した Lean の主文（2026-10-18 再確認）
+
+原典：https://stacks.math.columbia.edu/tag/081T （Lemma 38.31.4）。
+証明の分解の参照：https://stacks.math.columbia.edu/tag/081S と tag/080Y。
+既存の §7.1 の Noether 特殊形を維持する。主文は次の形とする。
+これは計画上の文言であり、未証明の宣言を Lean ソースに追加しない。
+
+```lean
+theorem noetherian_blowup_domination
+    {S X : Scheme} [AlgebraicGeometry.IsNoetherian S]
+    (f : X ⟶ S) [IsProper f] (U : S.Opens) [IsIso (f ∣_ U)] :
+    ∃ J : S.IdealSheafData,
+      (∀ V : S.affineOpens, (J.ideal V).FG) ∧
+      U ≤ centerComplement J ∧
+      ∃ g : blowup J ⟶ X, g ≫ f = blowupπ J
+```
+
+U の準コンパクト性、S の準分離性、f の有限型性は既存の仮定から導く。
+支配とは上記の実際の因子化を意味し、X 全体への全射性は追加しない。
+最初の中心は U の閉補集合の消滅イデアル層から取る。
+その blowup の例外因子の有効 Cartier 性は L7a の実証明を使う。
+strict transform とその平坦化の有限型特殊形は未実装であり、仮定フィールドにしない。
+最後の「固有な開部分スキームとスキーム論的稠密性から全体との一致」は独立に証明する。
+二回の admissible blowup の合成を一回で表す段階も未証明のまま仮定しない。
+この文言と方針をチャットへ報告した後、承認待ちを挟まず実装を進める。
 
 ### 7.2 証明の分解
 
@@ -441,6 +471,16 @@ f の有限型性は固有性から導く。
 | `affineBlowupPowerIso_naturality` | PowerNaturality | 検証済み | 任意の係数環写像に対する冪比較の自然性 |
 | `affineBlowupPowerNatIso` | SchemePowerBlowup | 検証済み | アフィン局所モデル図式の冪比較自然同型 |
 | `blowupPowerIso` / `blowupPowerIso_hom_base` | SchemePowerBlowup | 検証済み | 一般スキーム上の正の冪不変性と基底両立性 |
+| `IsUAdmissibleCenter` / `blowupπ_restrict_admissible_isIso` | Flattening | 検証済み | U を避ける中心と U 上の同型 |
+| `initialAdmissibleCenter` / `exists_initial_admissible_blowup` | Flattening | 検証済み | 閉補集合の消滅イデアルによる最初の固有な Cartier 化 |
+| `strictTransform` / `strictTransformπ` / `strictTransformToOriginal` | StrictTransform | 検証済み | 開部分のスキーム論的像による実際の対象と射 |
+| `strictTransformπ_isProper` / `strictTransform_isNoetherian` | StrictTransform | 検証済み | 固有性と Noether 性の移送 |
+| `strictTransformπ_restrict_isIso` | StrictTransform | 検証済み | U 上の同型の保持 |
+| `blowup_centerComplement_dense` | BlowupDensity | 検証済み | 中心外開集合の位相的稠密性 |
+| `blowup_centerComplement_isSchemeTheoreticallyDominant` | BlowupSchemeDensity | 検証済み | Noether 基底での中心外開包含の零核 |
+| `isIso_of_proper_openImmersion_dense_restrict` | ProperOpenIso | 検証済み | 固有な開埋め込みの最後の同型判定 |
+| `isOpenImmersion_of_flat_iso_on_dense_open` | FlatOpenImmersion | 検証済み | 平坦・有限表示・分離から開埋め込みへの判定 |
+| `exists_domination_of_flat_schematicallyDense_strictTransform` | FlatStrictTransform | 検証済み | 平坦化済みの strict transform から実際の因子化の構成 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
@@ -547,5 +587,5 @@ Lemma 5.6 の証明で blowup の指数 m を追加し、各固定 m に Lemma 5
 - 中心の補開集合上の同型は一般スキーム上でも構成済み。アフィン局所モデルとの比較を介して証明した。
 - 正の冪の比較は一般のイデアル層について自然同型と余極限で大域化済み。
 - 一元局所化との比較、全アフィン開集合の図式、一般スキームへの開貼り合わせは構成済み。
-- 対象ビルドと公理監査（500 宣言）は成功。全体ビルドは他レーンの CoherentHomComparison:167 で失敗し報告済み。
+- L7a 区切りの対象ビルドと公理監査（500 宣言）は成功。全体ビルドは他レーンの CoherentHomComparison:167 で失敗し報告済み。
 - 共有ルートに追加した一行の import は、他レーンの差分から分離できるまで未コミット。

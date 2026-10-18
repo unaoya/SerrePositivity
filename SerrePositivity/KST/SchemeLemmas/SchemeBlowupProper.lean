@@ -64,4 +64,15 @@ instance blowupπ_isProper_of_isLocallyNoetherian [IsLocallyNoetherian X] :
   have := IsLocallyNoetherian.component_noetherian U
   exact Ideal.fg_of_isNoetherianRing (I.ideal U)
 
+/--
+概要：Noether 基底の通常の blowup も Noether スキーム。
+方針：固有性から有限型性と準コンパクト性を得て、局所 Noether 性とコンパクト性を移す。
+規約：KST §5、Stacks 081T の最初の基底変更。
+使われ方：admissible blowup 後の有限性と開包含の準コンパクト性。
+-/
+instance blowup_isNoetherian [AlgebraicGeometry.IsNoetherian X] :
+    AlgebraicGeometry.IsNoetherian (blowup I) where
+  toIsLocallyNoetherian := LocallyOfFiniteType.isLocallyNoetherian (blowupπ I)
+  toCompactSpace := QuasiCompact.compactSpace_of_compactSpace (blowupπ I)
+
 end SerrePositivity.KST.SchemeLemmas
