@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2066 jobs、累計261宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2070 jobs、累計281宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -351,10 +351,43 @@ Ar[n] 全体への適用をつなぐ自然な cofiber 抽出を実装した。
 点ごとの存在前提を落とした逆方向や、余極限の交換そのものを無条件で主張していない。
 添字の前合成 f には単射性も quasicategory 性も要求しない。
 
-**未完了**：零次元で作った実際の図式 F について、全三つ組の正方形
+S• の零図式と次数0・1の第一行制限を完成した。
+以下で `X : SSet.{u}`、`P : X _⦋0⦌ → Prop`、`Square := (Δ[1] ⊗ Δ[1] : SSet.{u})`。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `fullSubcomplex_hasLiftingProperty_of_vertexSurjective` | `(P : X _⦋0⦌ → Prop) → (i : A ⟶ B) → Function.Surjective (i.app (Opposite.op ⦋0⦌)) → HasLiftingProperty i (fullSubcomplexOnVertices X P).ι` |
+| `isInitialVertex_fullSubcomplex_of_ambient` | `(P : X _⦋0⦌ → Prop) → (v : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌) → IsInitialVertex v.val → IsInitialVertex v` |
+| `isTerminalVertex_fullSubcomplex_of_ambient` | 同じ P・v に対し `IsTerminalVertex v.val → IsTerminalVertex v` |
+| `isGapped_const` | `(n : ℕ) → [Quasicategory C] → (z : C _⦋0⦌) → IsZeroVertex z → IsGapped (SSet.const z : arNerve n ⟶ C)` |
+| `sConstructionZeroVertex` | `(n : ℕ) → [Quasicategory C] → (z : C _⦋0⦌) → IsZeroVertex z → (sConstruction n C) _⦋0⦌` |
+| `sConstructionZeroVertex_isZero` | `(n : ℕ) → [Quasicategory C] → (z : C _⦋0⦌) → (hz : IsZeroVertex z) → IsZeroVertex (sConstructionZeroVertex n z hz)` |
+| `sMap_zeroVertex` | `[Quasicategory C] → (θ : Fin (m+1) →o Fin (n+1)) → (z : C _⦋0⦌) → (hz : IsZeroVertex z) → (sMap C θ).app (Opposite.op ⦋0⦌) (sConstructionZeroVertex n z hz) = sConstructionZeroVertex m z hz` |
+| `sConstruction_hasZeroVertex` | `(n : ℕ) → (C : SSet.{u}) → [Quasicategory C] → [HasZeroVertex C] → HasZeroVertex (sConstruction n C)` |
+| `sConstructionZero_isZeroVertex` | `(C : SSet.{u}) → [Quasicategory C] → (v : (sConstruction 0 C) _⦋0⦌) → IsZeroVertex v` |
+| `sConstructionZero_isContractibleKan` | `(C : SSet.{u}) → [Quasicategory C] → [HasZeroVertex C] → IsContractibleKan (sConstruction 0 C)` |
+| `sConstructionZero_kanComplex` | 同じ C と前提に対し `KanComplex (sConstruction 0 C)` |
+| `firstRowZero_hom_ext` | `(f g : A ⟶ (ihom (firstRowNerve 0)).obj C) → f = g` |
+| `firstRowRestriction_zero_trivialKanFibration` | `(C : SSet.{u}) → [Quasicategory C] → [HasZeroVertex C] → TrivialKanFibration (firstRowRestriction 0 C)` |
+| `arSquare_repeat_left` | `(i k l : Fin (n+1)) → (hik : i ≤ k) → (hkl : k ≤ l) → arSquare i i k l le_rfl hik hkl = CartesianMonoidalCategory.fst _ _ ≫ squareBottomEdge ≫ arSquare i i k l le_rfl hik hkl` |
+| `arSquare_repeat_right` | `(i j k : Fin (n+1)) → (hij : i ≤ j) → (hjk : j ≤ k) → arSquare i j k k hij hjk le_rfl = CartesianMonoidalCategory.snd _ _ ≫ squareLeftEdge ≫ arSquare i j k k hij hjk le_rfl` |
+| `arSquare_isPushout_of_repeated_endpoints` | `[Quasicategory C] → (F : arNerve n ⟶ C) → (i j k l : Fin (n+1)) → (hij : i ≤ j) → (hjk : j ≤ k) → (hkl : k ≤ l) → (i = j ∨ k = l) → IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F)` |
+| `isGapped_one_of_zero_diagonal` | `[Quasicategory C] → (F : arNerve 1 ⟶ C) → (∀ j : Fin 2, IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj j j le_rfl)))) → IsGapped F` |
+| `firstRowRestriction_trivialKanFibration_of_vertexSurjective` | `(n : ℕ) → (C : SSet.{u}) → [Quasicategory C] → [IsStable C] → Function.Surjective ((firstRowRestriction n C).app (Opposite.op ⦋0⦌)) → TrivialKanFibration (firstRowRestriction n C)` |
+| `firstRowRestriction_one_vertex_surjective` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → Function.Surjective ((firstRowRestriction 1 C).app (Opposite.op ⦋0⦌))` |
+| `firstRowRestriction_one_trivialKanFibration` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → TrivialKanFibration (firstRowRestriction 1 C)` |
+
+零図式は実際の gapped 図式であり、始対象性と終対象性を関手圏から全部分複体へ移した。
+S_0 の全頂点は零対象であるため、その境界を終対象性で充填して可縮 Kan 性を証明した。
+次数0の第一行制限の結論は `HasZeroVertex C` だけで足りる。
+次数1には、構成済みの零対角図式と、Fin 2 の四端点ではどちらかの組が等しいことを用いた。
+一般次数の頂点全射性からの補題は条件付きであり、次数2以上の存在の代用にはしない。
+S• の単体作用と零図式の両立は同型でなく頂点の厳密な等号である。
+
+**未完了**：次数 n≥2 で零次元から作った実際の図式 F について、全三つ組の正方形
 `arSquare i j j k hij le_rfl hjk ≫ F` が押し出しとなること。
 零対角と第一行の厳密な回収、および三つ組から全四つ組への含意は証明済み。
 cofiber 族の各区間の正方形が押し出しであることだけを、この F の三つ組の条件の代用にしない。
-正次元の境界 RLP は証明済みだが、`boundary 0` の場合を含めていないため、
+正次元の境界 RLP は全 n で証明済み、n=0・1 は全次元で証明済みだが、n≥2 の `boundary 0` が残るため、
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
 L1c–f は未着手。L1g は別途指示待ち。

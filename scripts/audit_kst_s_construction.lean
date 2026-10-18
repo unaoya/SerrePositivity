@@ -609,3 +609,63 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.isColimitCone_reindex_of_hasPointwiseColimits
 #print axioms SerrePositivity.KST.SConstruction.isColimitCone_reindex_of_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.fullSubcomplex_hasLiftingProperty_of_vertexSurjective
+#print axioms SerrePositivity.KST.SConstruction.fullSubcomplex_hasLiftingProperty_of_vertexSurjective
+
+#check @SerrePositivity.KST.SConstruction.isInitialVertex_fullSubcomplex_of_ambient
+#print axioms SerrePositivity.KST.SConstruction.isInitialVertex_fullSubcomplex_of_ambient
+
+#check @SerrePositivity.KST.SConstruction.isTerminalVertex_fullSubcomplex_of_ambient
+#print axioms SerrePositivity.KST.SConstruction.isTerminalVertex_fullSubcomplex_of_ambient
+
+#check @SerrePositivity.KST.SConstruction.isGapped_const
+#print axioms SerrePositivity.KST.SConstruction.isGapped_const
+
+#check @SerrePositivity.KST.SConstruction.sConstructionZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sConstructionZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.sConstructionZeroVertex_isZero
+#print axioms SerrePositivity.KST.SConstruction.sConstructionZeroVertex_isZero
+
+#check @SerrePositivity.KST.SConstruction.sMap_zeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sMap_zeroVertex
+
+#check @SerrePositivity.KST.SConstruction.sConstruction_hasZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sConstruction_hasZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.sConstructionZero_isZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sConstructionZero_isZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.sConstructionZero_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.sConstructionZero_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.sConstructionZero_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.sConstructionZero_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.firstRowZero_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.firstRowZero_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_zero_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_zero_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.arSquare_repeat_left
+#print axioms SerrePositivity.KST.SConstruction.arSquare_repeat_left
+
+#check @SerrePositivity.KST.SConstruction.arSquare_repeat_right
+#print axioms SerrePositivity.KST.SConstruction.arSquare_repeat_right
+
+#check @SerrePositivity.KST.SConstruction.arSquare_isPushout_of_repeated_endpoints
+#print axioms SerrePositivity.KST.SConstruction.arSquare_isPushout_of_repeated_endpoints
+
+#check @SerrePositivity.KST.SConstruction.isGapped_one_of_zero_diagonal
+#print axioms SerrePositivity.KST.SConstruction.isGapped_one_of_zero_diagonal
+
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_trivialKanFibration_of_vertexSurjective
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_trivialKanFibration_of_vertexSurjective
+
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_one_vertex_surjective
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_one_vertex_surjective
+
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_one_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_one_trivialKanFibration
