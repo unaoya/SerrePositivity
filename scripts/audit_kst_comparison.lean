@@ -47,6 +47,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -393,6 +394,45 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.localizedMono_lifting_fibrantTarget
 #print axioms SerrePositivity.KST.Comparison.localizedMono_lifting_fibrantTarget
+
+
+-- FiniteChainIntervals.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainMaximum_singleton
+#print axioms SerrePositivity.KST.Comparison.finiteChainMaximum_singleton
+
+#check @SerrePositivity.KST.Comparison.finiteChainMap_singleton
+#print axioms SerrePositivity.KST.Comparison.finiteChainMap_singleton
+
+#check @SerrePositivity.KST.Comparison.finiteChainInitialSegment_le_iff
+#print axioms SerrePositivity.KST.Comparison.finiteChainInitialSegment_le_iff
+
+#check @SerrePositivity.KST.Comparison.finiteChainInitialSegment_map
+#print axioms SerrePositivity.KST.Comparison.finiteChainInitialSegment_map
+
+
+-- FiniteChainUnion.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainOfFinset
+#print axioms SerrePositivity.KST.Comparison.finiteChainOfFinset
+
+#check @SerrePositivity.KST.Comparison.finiteChainSingleton
+#print axioms SerrePositivity.KST.Comparison.finiteChainSingleton
+
+#check @SerrePositivity.KST.Comparison.finiteChainUnion
+#print axioms SerrePositivity.KST.Comparison.finiteChainUnion
+
+#check @SerrePositivity.KST.Comparison.PreservesFiniteChainUnion
+#print axioms SerrePositivity.KST.Comparison.PreservesFiniteChainUnion
+
+#check @SerrePositivity.KST.Comparison.finiteChainUnion_ext
+#print axioms SerrePositivity.KST.Comparison.finiteChainUnion_ext
+
+#check @SerrePositivity.KST.Comparison.PreservesFiniteChainUnion.comp
+#print axioms SerrePositivity.KST.Comparison.PreservesFiniteChainUnion.comp
+
+#check @SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion
+#print axioms SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion
 
 
 -- GLComponents.lean
@@ -1118,6 +1158,24 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.subcomplex_inclusion_localized_isIso
 
 
+-- SubdivisionCommutation.lean
+
+#check @SerrePositivity.KST.Comparison.liftedDegeneracy_le_iff_of_ne
+#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_le_iff_of_ne
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut
+
+#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut
+#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut_lt
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut_lt
+
+#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut_lt
+#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut_lt
+
+
 -- SubdivisionCut.lean
 
 #check @SerrePositivity.KST.Comparison.finiteChain_le_initialSegment
@@ -1184,6 +1242,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face
 
 
+-- SubdivisionIntervals.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_initialSegment
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_initialSegment
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_singleton
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_singleton
+
+#check @SerrePositivity.KST.Comparison.liftedDegeneracy_succ
+#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_succ
+
+#check @SerrePositivity.KST.Comparison.liftedDegeneracy_surjective
+#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_surjective
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_initialSegment
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_initialSegment
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_singleton
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_singleton
+
+
 -- SubdivisionLastVertex.lean
 
 #check @SerrePositivity.KST.Comparison.finiteChainMaximum
@@ -1215,6 +1294,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi
 #print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi
+
+
+-- SubdivisionUnions.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_mem_iff
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_mem_iff
+
+#check @SerrePositivity.KST.Comparison.finiteChainCut_preservesUnion
+#print axioms SerrePositivity.KST.Comparison.finiteChainCut_preservesUnion
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_mem_iff
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_mem_iff
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_preservesUnion
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_preservesUnion
 
 
 -- TranslationDescent.lean
