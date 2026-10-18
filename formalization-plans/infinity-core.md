@@ -4396,6 +4396,160 @@ lemma IsFullyFaithful.reflects_isTerminalVertex {X Y : SSet.{u}}
 
 Core 対象ビルド：終了コード 0（1607 jobs）。監査：終了コード 0、累計 653 宣言、標準三公理のみ。A3a–d は完了、A3e は上記の主定理と極限一般が未完了。A3f は任意、A3g は保留。続行する。
 
+
+### A3e 続き：特殊な射の同値・極限と path の準備（2026-10-18）
+
+trivial Kan fibration と inner anodyne 射は、始域・終域が quasicategory なら明示的な逆射と可逆二胞体を持つ。同値の二対三則を実装した。trivial Kan fibration は任意の図式の極限錐を保存・反映する。可逆な辺からなる path の単体集合と端点評価も定義した。Core 対象ビルド成功（1612 jobs）、公開宣言累計687件の公理監査は標準3公理のみ。未完了：一般の充満忠実＋本質的全射の同値判定、および一般の同値による極限の保存・反映。path の端点評価の持ち上げ性も未完了。§4 の変更はない。
+
+以下は namespace `SerrePositivity.InfinityCategories`、`universe u` と `open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet`、`open scoped Simplicial` の下の新規34宣言の正確な型。型中の型クラスと明示的引数が全ての前提である。
+
+TrivialFibrationEquivalence：
+
+```lean
+instance trivialKanFibration_ihom_map {E B : SSet.{u}} (p : E ⟶ B)
+    [TrivialKanFibration p] (A : SSet.{u}) : TrivialKanFibration ((ihom A).map p)
+
+lemma trivialKanFibration_exists_section {E B : SSet.{u}} (p : E ⟶ B)
+    [TrivialKanFibration p] : ∃ s : B ⟶ E, s ≫ p = 𝟙 B
+
+noncomputable def qCatEquivalenceOfTrivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p] :
+    QCatEquivalence E B
+
+lemma isQCatEquivalence_of_trivialKanFibration {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p] :
+    IsQCatEquivalence p
+
+```
+
+InnerAnodyneEquivalence：
+
+```lean
+lemma trivialKanFibration_pre_of_innerAnodyne {A B : SSet.{u}} (i : A ⟶ B)
+    (hi : innerAnodyneExtensions i) (Y : SSet.{u}) [Quasicategory Y] :
+    TrivialKanFibration ((pre i).app Y)
+
+lemma innerAnodyne_exists_retraction {A B : SSet.{u}} [Quasicategory A]
+    (i : A ⟶ B) (hi : innerAnodyneExtensions i) : ∃ r : B ⟶ A, i ≫ r = 𝟙 A
+
+noncomputable def qCatEquivalenceOfInnerAnodyne {A B : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] (i : A ⟶ B) (hi : innerAnodyneExtensions i) :
+    QCatEquivalence A B
+
+lemma isQCatEquivalence_of_innerAnodyne {A B : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] (i : A ⟶ B) (hi : innerAnodyneExtensions i) :
+    IsQCatEquivalence i
+
+```
+
+EquivalenceCalculus：
+
+```lean
+lemma IsQCatEquivalence.ofFunctorIso {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f g : X ⟶ Y}
+    (hf : IsQCatEquivalence f) (e : FunctorIso f g) : IsQCatEquivalence g
+
+lemma IsQCatEquivalence.comp {X Y Z : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory Z] {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hf : IsQCatEquivalence f) (hg : IsQCatEquivalence g) : IsQCatEquivalence (f ≫ g)
+
+lemma IsQCatEquivalence.cancel_left {X Y Z : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory Z] {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hf : IsQCatEquivalence f) (hfg : IsQCatEquivalence (f ≫ g)) : IsQCatEquivalence g
+
+lemma IsQCatEquivalence.cancel_right {X Y Z : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory Z] {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hg : IsQCatEquivalence g) (hfg : IsQCatEquivalence (f ≫ g)) : IsQCatEquivalence f
+
+lemma IsSimplicialHomotopyEquivalence.comp {X Y Z : SSet.{u}}
+    [KanComplex X] [KanComplex Y] [KanComplex Z] {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hf : IsSimplicialHomotopyEquivalence f) (hg : IsSimplicialHomotopyEquivalence g) :
+    IsSimplicialHomotopyEquivalence (f ≫ g)
+
+lemma IsFullyFaithful.comp {X Y Z : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory Z] {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hf : IsFullyFaithful f) (hg : IsFullyFaithful g) : IsFullyFaithful (f ≫ g)
+
+```
+
+EquivalenceLimits：
+
+```lean
+def mapJoinCone {K X Y : SSet.{u}} (f : X ⟶ Y) {p : K ⟶ X} (c : JoinCone p) :
+    JoinCone (p ≫ f)
+
+lemma mapJoinCone_eq_sliceOverPostcomp {K X Y : SSet.{u}} (f : X ⟶ Y)
+    {p : K ⟶ X} (c : JoinCone p) :
+    mapJoinCone f c = (sliceOverPostcomp p f).app (Opposite.op ⦋0⦌) c
+
+lemma mapJoinCone_vertex {K X Y : SSet.{u}} (f : X ⟶ Y) {p : K ⟶ X} (c : JoinCone p) :
+    (mapJoinCone f c).vertex = f.app (Opposite.op ⦋0⦌) c.vertex
+
+instance trivialKanFibration_sliceOverPostcomp {K E B : SSet.{u}} (p : K ⟶ E) (q : E ⟶ B)
+    [TrivialKanFibration q] : TrivialKanFibration (sliceOverPostcomp p q)
+
+lemma isLimitCone_iff_mapJoinCone_of_trivialKanFibration {K E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) [TrivialKanFibration q]
+    {p : K ⟶ E} (c : JoinCone p) : IsLimitCone c ↔ IsLimitCone (mapJoinCone q c)
+
+```
+
+TerminalVertices：
+
+```lean
+def fullSubcomplexLift {A X : SSet.{u}} (P : X _⦋0⦌ → Prop) (f : A ⟶ X)
+    (hf : ∀ a : A _⦋0⦌, P (f.app (Opposite.op ⦋0⦌) a)) :
+    A ⟶ (fullSubcomplexOnVertices X P : SSet.{u})
+
+lemma fullSubcomplexLift_ι {A X : SSet.{u}} (P : X _⦋0⦌ → Prop) (f : A ⟶ X)
+    (hf : ∀ a : A _⦋0⦌, P (f.app (Opposite.op ⦋0⦌) a)) :
+    fullSubcomplexLift P f hf ≫ (fullSubcomplexOnVertices X P).ι = f
+
+```
+
+EquivalencePath：
+
+```lean
+def functorVertexEquiv (X Y : SSet.{u}) : (X ⟶ Y) ≃ ((ihom X).obj Y) _⦋0⦌
+
+lemma functorVertexEquiv_apply {X Y : SSet.{u}} (f : X ⟶ Y) :
+    functorVertexEquiv X Y f = functorVertex f
+
+def intervalFunctorVertexEdge {Y : SSet.{u}} (v : ((ihom (Δ[1] : SSet.{u})).obj Y) _⦋0⦌) :
+    Y _⦋1⦌
+
+lemma intervalFunctorVertexEdge_functorVertex {Y : SSet.{u}} (f : (Δ[1] : SSet.{u}) ⟶ Y) :
+    intervalFunctorVertexEdge (functorVertex f) = SSet.yonedaEquiv f
+
+def IsEquivalencePathVertex {Y : SSet.{u}}
+    (v : ((ihom (Δ[1] : SSet.{u})).obj Y) _⦋0⦌) : Prop
+
+def equivalencePath (Y : SSet.{u}) : SSet.{u}
+
+def equivalencePathι (Y : SSet.{u}) : equivalencePath Y ⟶ (ihom (Δ[1] : SSet.{u})).obj Y
+
+def equivalencePathEndpoint (Y : SSet.{u}) (i : Fin 2) : equivalencePath Y ⟶ Y
+
+lemma isEquivalencePathVertex_const {Y : SSet.{u}} (y : Y _⦋0⦌) :
+    IsEquivalencePathVertex (functorVertex (SSet.const y : (Δ[1] : SSet.{u}) ⟶ Y))
+
+noncomputable def equivalencePathRefl (Y : SSet.{u}) : Y ⟶ equivalencePath Y
+
+lemma equivalencePathRefl_endpoint (Y : SSet.{u}) (i : Fin 2) :
+    equivalencePathRefl Y ≫ equivalencePathEndpoint Y i = 𝟙 Y
+
+lemma intervalFunctorVertexEdge_curry {A Y : SSet.{u}}
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y) (x : A _⦋0⦌) :
+    intervalFunctorVertexEdge ((curry H).app (Opposite.op ⦋0⦌) x) =
+      H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)
+
+lemma curry_evaluateFunctorAt_interval {A Y : SSet.{u}}
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y) (i : Fin 2) :
+    curry H ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i) = prismEndpoint i A ≫ H
+
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

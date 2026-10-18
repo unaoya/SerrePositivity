@@ -418,3 +418,5 @@ A3d 逆方向の準備：Kerodon 4.4.2.14–15（https://kerodon.net/tag/01NU �
 A3e 前半保存：写像空間の射と π₀ の自然性、実際の単体的ホモトピー逆による充満忠実性、本質的全射性、そのホモトピー圏での帰結、関手単体集合の同型から実際のホモトピーを選ぶ API を実装。`IsFullyFaithful.toHoEquivalence` は通常のホモトピー圏の同値であり、quasicategory の逆射の構成は未完了。同値による極限錐の保存・反映も残る。A3e 完了とは数えない。
 
 A3e 続き：`QCatEquivalence.isTerminalVertex_iff` は同値による終対象性の保存・反映を与える。`FunctorIso.exists_boundaryFilling` は関手単体集合で同型な境界図式間で充填を移す。`IsFullyFaithful.reflects_isTerminalVertex` は本質的全射性を仮定せずに終対象性を反映する。quasicategory の逆射の構成と、任意の極限錐の保存・反映は引き続き未完了。
+
+A3e 続き：trivial Kan fibration と inner anodyne 射から明示的な同値を構成し、同値の二対三則を実装。trivial Kan fibration による任意の極限錐の保存・反映も成立する。可逆な辺の path と端点評価を定義した。新規34宣言の正確な型・前提は計画 §6、監査累計687件。一般の充満忠実＋本質的全射の判定と、一般の同値による極限の保存・反映は未完了。

@@ -114,4 +114,29 @@ lemma terminalVertices_isContractibleKan {X : SSet.{u}}
     rw [fullSubcomplexLiftSimplex_ι]
     exact hF
 
+/-- 概要：全頂点が条件を満たす射を全部分複体へ持ち上げる。
+方針：各単体の頂点の像を零次成分の条件と自然性で確認する。
+規約：任意の始域を扱う。
+使われ方：Kerodon §4.4.3、§4.5.3 の関手の同値の path の部分複体。 -/
+def fullSubcomplexLift {A X : SSet.{u}} (P : X _⦋0⦌ → Prop) (f : A ⟶ X)
+    (hf : ∀ a : A _⦋0⦌, P (f.app (Opposite.op ⦋0⦌) a)) :
+    A ⟶ (fullSubcomplexOnVertices X P : SSet.{u}) where
+  app d := ↾fun a ↦ ⟨f.app d a, by
+    intro v
+    have he := ConcreteCategory.congr_hom (f.naturality v.op) a
+    exact he ▸ hf (A.map v.op a)⟩
+  naturality {d e} α := by
+    apply ConcreteCategory.hom_ext
+    intro a
+    apply Subtype.ext
+    exact ConcreteCategory.congr_hom (f.naturality α) a
+
+/-- 概要：全部分複体への持ち上げを含めると元の射。
+方針：部分型の値を取る。
+規約：頂点条件の証明には依存しない。
+使われ方：Kerodon §4.4.3、§4.5.3 の path の比較。 -/
+lemma fullSubcomplexLift_ι {A X : SSet.{u}} (P : X _⦋0⦌ → Prop) (f : A ⟶ X)
+    (hf : ∀ a : A _⦋0⦌, P (f.app (Opposite.op ⦋0⦌) a)) :
+    fullSubcomplexLift P f hf ≫ (fullSubcomplexOnVertices X P).ι = f := rfl
+
 end SerrePositivity.InfinityCategories
