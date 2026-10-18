@@ -442,6 +442,8 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `finiteOverlapDerivedTwistActionAddIso_assoc/zero_left/zero_right` | FiniteOverlapDerivedTwistCoherence | 全ての主導来対象での三段結合と左右単位条件 |
 | `diagramGaugeDerivedEvaluationIso`・局所 perfect 性の保存と反映 | DiagramGaugeDerivedEvaluation | 任意の導来図式加群に対する全局所評価の指定同型 |
 | `finiteOverlapTwistEquivalence`・`finiteOverlapDerivedTwistEquivalence`・局所 perfect 条件の同値 | FiniteOverlapTwistEquivalence | 整数捻りの全加群圏・主導来圏の自己同値と元の Koszul 表示での局所条件 |
+| `diagramGaugeScale_leftLinear`・斉次積公式・`diagramGaugeGraphIso` | DiagramGaugeGraphIso | 包含 gauge の左右作用との整合性と局所遷移 graph の指定 bimodule 自己同型 |
+| `diagramGaugeDerivedExtensionIso` | DiagramGaugeDerivedExtensionIso | 同じ標準射影分解を使う局所導来係数拡大の指定自然自己同型 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -509,7 +511,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2877定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2907定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -549,6 +551,10 @@ cartesian perfect 性、既存の大域 dg 候補内の指定捻り対象とそ�
 一般の導来図式加群でも gauge 制限後の全局所導来評価は元の評価と指定同型を持つ。
 整数捻りの全図式加群圏・主導来圏の自己同値と、任意対象の局所 perfect 性の保存・反映を
 構成済み。cartesian 性の一般対象での保存は、O(m) 自身の対象条件の証明とは別に残る。
+一般の包含 gauge について、行先の右作用と始点の係数を遷移させた左作用の整合性、
+局所遷移の graph bimodule の指定自己同型、その指定主導来 tensor 作用による
+局所導来係数拡大の自然自己同型を構成済み。一般対象の canonical な cartesian 比較と
+この自己同型との可換式は未証明であり、同型の存在だけから保存を宣言しない。
 次の実装単位は一般の cartesian 対象に対する捻り作用の保存、
 および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
