@@ -341,3 +341,18 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.cutoffTensorBoundary_differential
 #print axioms SerrePositivity.KST.ProExcision.cutoffTensorBoundary_differential
 
+#check @SerrePositivity.KST.ProExcision.splitBoundary_lift_condition
+#print axioms SerrePositivity.KST.ProExcision.splitBoundary_lift_condition
+
+#check @SerrePositivity.KST.ProExcision.splitBoundary_isCycle
+#print axioms SerrePositivity.KST.ProExcision.splitBoundary_isCycle
+
+#check @SerrePositivity.KST.ProExcision.splitBoundary_connecting
+#print axioms SerrePositivity.KST.ProExcision.splitBoundary_connecting
+
+#check @SerrePositivity.KST.ProExcision.splitBoundary_shiftMap_on_cycle
+#print axioms SerrePositivity.KST.ProExcision.splitBoundary_shiftMap_on_cycle
+
+#check @SerrePositivity.KST.ProExcision.splitBoundary_connecting_eq_shiftMap
+#print axioms SerrePositivity.KST.ProExcision.splitBoundary_connecting_eq_shiftMap
+

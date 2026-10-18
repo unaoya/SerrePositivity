@@ -56,7 +56,10 @@
 - 全テンソル後の分裂境界は、元の分裂境界をテンソルして左シフト同型を合成したものと一致する。
 - 項切り詰めの境界を射影・包含で挟むと元の複体の微分になることを証明済み。
 - テンソル後も同じ射影・包含で比較すると元の微分のテンソルになることを証明済み。
-- 次は補助スペクトル対象の δ と短完全列の分裂境界を比較し、初頁微分全体へ接続する。
+- 短完全列のホモロジー連結写像を分裂境界のサイクル代表元で計算する公式を証明済み。
+- 分裂境界が誘導するシフトつきホモロジー写像も同じ代表元公式を持つことを証明済み。
+- 両者をホモロジーへの全射で比較し、短完全列の連結写像とシフトつき境界写像の一致を証明済み。
+- 次は補助スペクトル対象の δ を短完全列の δ へ移し、この比較を初頁微分全体へ接続する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -114,6 +117,9 @@
 | tensorSplitBoundary_eq | TensorBoundary.lean | 検証済み | 全複体射としてのテンソル境界の比較 |
 | cutoffBoundary_differential | CutoffBoundary.lean | 検証済み | 項切り詰めの境界は元の微分 |
 | cutoffTensorBoundary_differential | CutoffBoundary.lean | 検証済み | テンソル後も元の微分を取り出せる |
+| splitBoundary_lift_condition | SplitConnecting.lean | 検証済み | サイクルの持ち上げと分裂境界 |
+| splitBoundary_connecting | SplitConnecting.lean | 検証済み | 連結写像の代表元公式 |
+| splitBoundary_connecting_eq_shiftMap | SplitConnecting.lean | 検証済み | 連結写像とシフトつき境界の一致 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
