@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1410 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1414 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -694,6 +694,23 @@ p e = id により x = 0 を得る。Noether 局所環 A の極大イデアル�
 上記の所属判定、二つの環についての分離性、完備化への実際の写像の単射性を
 `SplitAlgebraAdicSeparation.lean` に実装済み。
 
+#### 特殊な局所化への準備：剰余体による単射性の検出
+
+原典：Stacks 05DH, Lemma 38.7.4 の単射性の特殊形の準備。
+局所環 A 上の写像 f : M → N を考える。
+M が自由、N が A 上平坦で、κ(A) ⊗_A f が単射なら f も単射。
+M の基底を剰余体へ基底変更し、f の像の線形独立性を
+Mathlib の `IsLocalRing.linearIndependent_of_flat` で A 上へ持ち上げる。
+生成元の有限性は仮定しない。
+
+M が自由加群 F の実際の分裂部分加群 e : M → F、p : F → M、p e = id
+である場合は、g : F → N × F、g(x) = (f(p(x)), x - e(p(x))) を取る。
+剰余体上で g(x) = 0 なら第一成分から p(x) = 0、第二成分から x = 0。
+N × F は平坦なので自由な定義域の場合を使える。g の単射性を e(M) へ制限して f の単射性を得る。
+この特別な検出補題は一般の普遍単射性を主張せず、上の核による設計変更案は未採用のままとする。
+自由な定義域・実際の分裂部分加群・任意の射影的な定義域の三つの文言を
+`ResidueTensorInjectivity.lean` で証明済み。
+
 #### 選んだ有限表示の任意の基底変更
 
 原典：Stacks 0810, Lemma 38.30.2 の小行列式の基底変更の利用。
@@ -869,6 +886,10 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | `splitAlgebra_isHausdorff_map` | 拡大イデアルによる分離性 | 証明済み |
 | `splitAlgebra_adicCompletion_injective` | 拡大イデアルによる完備化への単射性 | 証明済み |
 | `splitAlgebra_isHausdorff_maximalIdeal` | Noether 局所環の極大イデアルでの特殊化 | 証明済み |
+| `flat_binaryProduct` | 二つの平坦加群の直積の平坦性 | 証明済み |
+| `injective_of_residueTensor_injective_of_free` | 自由な定義域の剰余体による単射性判定 | 証明済み |
+| `injective_of_residueTensor_injective_of_retract` | 実分裂を持つ定義域の単射性判定 | 証明済み |
+| `injective_of_residueTensor_injective_of_projective` | 任意の射影的な定義域の単射性判定 | 証明済み |
 
 以下は予定名であり、実装済みでないものを `#check` 済みとは扱わない。
 
