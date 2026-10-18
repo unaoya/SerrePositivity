@@ -291,3 +291,9 @@ public import SerrePositivity.KST.SchemeLemmas.FlatFiniteFreeSequence
 public import SerrePositivity.KST.SchemeLemmas.LinearSequenceDirectLimit
 public import SerrePositivity.KST.SchemeLemmas.FlatFiniteFreeDirectLimit
 public import SerrePositivity.KST.SchemeLemmas.LinearSequenceTensorZero
+public import SerrePositivity.KST.SchemeLemmas.FiniteBasisCoevaluation
+public import SerrePositivity.KST.SchemeLemmas.MittagLefflerCoevaluation
+public import SerrePositivity.KST.SchemeLemmas.MittagLefflerUniformStage
+public import SerrePositivity.KST.SchemeLemmas.MittagLefflerDualStabilization
+public import SerrePositivity.KST.SchemeLemmas.FiniteDualFactorization
+public import SerrePositivity.KST.SchemeLemmas.MittagLefflerHomStabilization
