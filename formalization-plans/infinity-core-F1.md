@@ -7904,5 +7904,86 @@ lemma oppositeKanUnstraighteningComparison_isPrecompositionEquivalence
     {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
     IsPrecompositionEquivalence (oppositeKanUnstraighteningComparison F)
 
+instance innerFibration_uliftFunctor_map {E B : SSet.{u}} (p : E ⟶ B) [InnerFibration p] :
+    InnerFibration ((SSet.uliftFunctor.{v, u}).map p)
+
+instance quasicategory_uliftFunctor_obj (E : SSet.{u}) [Quasicategory E] :
+    Quasicategory ((SSet.uliftFunctor.{v, u}).obj E)
+
+def uliftTruncatedEdge {X : SSet.{u}} {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :
+    SSet.Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj X))
+      (ULift.up x) (ULift.up y)
+
+def uliftTruncatedCompStruct {X : SSet.{u}} {x y z : X _⦋0⦌}
+    {e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
+    {f : SSet.Truncated.Edge (X := (truncation 2).obj X) y z}
+    {g : SSet.Truncated.Edge (X := (truncation 2).obj X) x z}
+    (t : SSet.Truncated.Edge.CompStruct e f g) :
+    SSet.Truncated.Edge.CompStruct (uliftTruncatedEdge.{u, v} e)
+      (uliftTruncatedEdge f) (uliftTruncatedEdge g)
+
+lemma uliftTruncatedEdge_id {X : SSet.{u}} (x : X _⦋0⦌) :
+    uliftTruncatedEdge.{u, v} (SSet.Truncated.Edge.id x) =
+      SSet.Truncated.Edge.id
+        (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj X)) (ULift.up x)
+
+lemma IsInvertibleEdge.ulift {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    {e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y} (he : IsInvertibleEdge e) :
+    IsInvertibleEdge (X := (SSet.uliftFunctor.{v, u}).obj X)
+      (uliftTruncatedEdge.{u, v} e)
+
+lemma uliftSimplicialHomotopy_vertexEdge {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f g) (x : X _⦋0⦌) :
+    (simplicialHomotopyVertexEdge (uliftSimplicialHomotopy.{u, v} H) (ULift.up x)).toTruncated =
+      uliftTruncatedEdge (simplicialHomotopyVertexEdge H x).toTruncated
+
+noncomputable def FunctorIso.ulift {X Y : SSet.{u}} [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) :
+    FunctorIso ((SSet.uliftFunctor.{v, u}).map f) ((SSet.uliftFunctor.{v, u}).map g)
+
+lemma IsQCatEquivalence.ulift {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f : X ⟶ Y} (hf : IsQCatEquivalence f) :
+    IsQCatEquivalence ((SSet.uliftFunctor.{v, u}).map f)
+
+noncomputable def leftCoherentTransport
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve C) ⟶ SpaceInfinity.{u}
+
+noncomputable def leftCoherentTransportComparison
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (leftStrictTransportWeightedNerve p) ⟶
+      leftUnstraightening (leftCoherentTransport p)
+
+lemma leftCoherentTransportComparison_projection
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    leftCoherentTransportComparison p ≫ leftUnstraighteningProjection (leftCoherentTransport p) =
+      (SSet.uliftFunctor.{u + 1, u}).map (leftStrictTransportWeightedProjection p)
+
+lemma leftCoherentTransportComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    IsPrecompositionEquivalence (leftCoherentTransportComparison p)
+
+lemma exists_leftCoherentTransport_reconstruction_span
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    ∃ (Z : SSet.{u + 1})
+      (t : Z ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (nerve C))
+      (a : Z ⟶ (SSet.uliftFunctor.{u + 1, u}).obj E)
+      (b : Z ⟶ leftUnstraightening (leftCoherentTransport p)),
+      InnerFibration t ∧ a ≫ (SSet.uliftFunctor.{u + 1, u}).map p = t ∧
+      b ≫ leftUnstraighteningProjection (leftCoherentTransport p) = t ∧
+      IsPrecompositionEquivalence a ∧ IsPrecompositionEquivalence b
+
+lemma nonempty_leftCoherentTransportEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj E)
+      (leftUnstraightening (leftCoherentTransport p)))
+
 end SerrePositivity.InfinityCategories
 ```
