@@ -2894,5 +2894,48 @@ noncomputable def pointSpaceRightMappingEquivalenceAt (s : SpaceInfinity.{u} _�
     QCatEquivalence (pinchedHom pointSpaceVertex s)
       ((SSet.uliftFunctor.{u + 1, u}).obj (spaceInfinityObject s).obj)
 
+def cosliceFiberUncurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) :
+    join (Δ[0] : SSet.{u}) A ⟶ X
+
+lemma cosliceFiberUncurry_inl {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) :
+    joinInl Δ[0] A ≫ cosliceFiberUncurry f = SSet.yonedaEquiv.symm x
+
+lemma cosliceFiberUncurry_inr {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) :
+    joinInr Δ[0] A ≫ cosliceFiberUncurry f = SSet.const y
+
+def cosliceFiberCurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (F : join (Δ[0] : SSet.{u}) A ⟶ X)
+    (hx : joinInl Δ[0] A ≫ F = SSet.yonedaEquiv.symm x)
+    (hy : joinInr Δ[0] A ≫ F = SSet.const y) :
+    A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y
+
+lemma cosliceFiberUncurry_curry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (F : join (Δ[0] : SSet.{u}) A ⟶ X)
+    (hx : joinInl Δ[0] A ≫ F = SSet.yonedaEquiv.symm x)
+    (hy : joinInr Δ[0] A ≫ F = SSet.const y) :
+    cosliceFiberUncurry (cosliceFiberCurry F hx hy) = F
+
+lemma cosliceFiberUncurry_injective {A X : SSet.{u}} (x y : X _⦋0⦌) :
+    Function.Injective (cosliceFiberUncurry (A := A) (x := x) (y := y))
+
+lemma cosliceFiberCurry_uncurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) :
+    cosliceFiberCurry (cosliceFiberUncurry f)
+      (cosliceFiberUncurry_inl f) (cosliceFiberUncurry_inr f) = f
+
+lemma cosliceFiberUncurry_precomp {A B X : SSet.{u}} {x y : X _⦋0⦌}
+    (i : A ⟶ B)
+    (f : B ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) :
+    cosliceFiberUncurry (i ≫ f) = joinMap (𝟙 Δ[0]) i ≫ cosliceFiberUncurry f
+
+def cosliceFiberHomEquiv (A X : SSet.{u}) (x y : X _⦋0⦌) :
+    (A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) ≃
+      {F : join (Δ[0] : SSet.{u}) A ⟶ X //
+        joinInl Δ[0] A ≫ F = SSet.yonedaEquiv.symm x ∧
+        joinInr Δ[0] A ≫ F = SSet.const y}
+
 end SerrePositivity.InfinityCategories
 ```

@@ -665,3 +665,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pointKanObjectHomIso
 #check @SerrePositivity.InfinityCategories.pointSpaceRightMappingEquivalence
 #check @SerrePositivity.InfinityCategories.pointSpaceRightMappingEquivalenceAt
+#check @SerrePositivity.InfinityCategories.cosliceFiberUncurry
+#check @SerrePositivity.InfinityCategories.cosliceFiberUncurry_inl
+#check @SerrePositivity.InfinityCategories.cosliceFiberUncurry_inr
+#check @SerrePositivity.InfinityCategories.cosliceFiberCurry
+#check @SerrePositivity.InfinityCategories.cosliceFiberUncurry_curry
+#check @SerrePositivity.InfinityCategories.cosliceFiberUncurry_injective
+#check @SerrePositivity.InfinityCategories.cosliceFiberCurry_uncurry
+#check @SerrePositivity.InfinityCategories.cosliceFiberUncurry_precomp
+#check @SerrePositivity.InfinityCategories.cosliceFiberHomEquiv
