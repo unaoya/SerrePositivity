@@ -2005,3 +2005,63 @@ ULift は比較射の内部から fiber 全体の外へ移した。pinched Hom �
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-ulift-comparison-fiber-aggregate.log`、
 `/tmp/gamma3-ulift-comparison-fiber-audit.log`。
+
+### γ3b：反転した係数から元の非反転 q_x の導来 fiber の反転への直接比較
+
+
+任意の Kan 複体間の射 p と底の点 b について `oppositeComparisonFiberEquivalence p b` を構成した。
+
+```lean
+QCatEquivalence (comparisonFiber p b).op
+  (comparisonFiber (SSet.opFunctor.map p) (SSet.opObjEquiv.symm b))
+```
+
+p の fibration 性や fiber の非空性・可縮性は要求しない。
+頂点 fiber と反転の厳密な同型 `oppositeVertexFiberIso` を作り、元の path 置換の終点射を
+反転して共通の fibration 模型とした。元の path 置換への切断はホモトピー同値であり、
+反転しても同値となる。この切断が同じ底上で誘導する実際の fiber 射
+`oppositeComparisonFiberSectionMap` の同値性を、strict・導来 fiber の比較と合成した。
+
+係数図式 H の錐 c の元の標準比較 q と反転した比較 q′ は、それぞれ厳密極限への射と
+極限標準比較 κ・κ′ の合成に分解する。`reflectedConeLimitLift` の厳密な可換式、
+標的の同型による `comparisonFiberPostIsoEquivalence`、標的の同値と底の path による移送を
+合わせ、反転した比較の fiber を元の比較の fiber の反転へ直接移した。
+`bousfieldKanConeFiberReflection_{discrete,cospan,tower}_equivalence` は二つの κ の同値性を
+指定形状で検証し、利用者に追加の比較同値の仮定を要求しない。
+一般形 `bousfieldKanConeFiberReflectionEquivalence` は κ・κ′ の同値性と極限の Kan 性を明示する。
+固定点 `bousfieldKanReflectedFiberPoint H hκ' b` は、κ′ の選んだ逆、反転の極限保存同型の逆、
+元の κ の反転の順で回収し、最後に零次の反転の全単射で元の end の点に戻す。
+
+strict な錐への適用は `strictConePinched_originalEnd_discrete_equivalence`、
+`strictConePinched_originalEnd_cospan_equivalence`、`strictConePinched_originalEnd_tower_equivalence`。
+x = `coherentNerveObject d.vertex` とすると、任意の coherent な錐 d について
+
+```lean
+QCatEquivalence (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+  ((SSet.uliftFunctor.{v, u}).obj
+    (comparisonFiber (representableHomotopyLimitComparison c x)
+      (strictConeOriginalEndPoint d hκ hL')).op)
+```
+
+を与える。比較射は元の非反転 q_x そのもの。反転は fiber 全体に作用し、ULift は
+pinched Hom の宇宙に揃えるため fiber 全体の外に置く。
+離散図式は局所 Kan 性だけを要求し、有限性は不要。cospan は d の頂点が表す x に対する
+Hom 図式の左脚の fibration 性、塔は同じ x に対する全隣接遷移の fibration 性を要求する。
+錐 c 自体の厳密極限性・∞ 極限性はどの定理の前提にもしない。
+一般形 `strictConePinched_originalEndDerivedFiberEquivalence` の追加の比較入力は三形状で検証した。
+
+この結果は fiber 全体の反転を明示した直接比較であり、γ3b 冒頭の反転なしの模型の同定とは
+区別する。fiber 全体の反転を外す実際の比較、一般形状の end の直接比較、余極限側、
+E2a 完了後の E2b 適用は引き続き未完了。指定三形状の既存の全 fiber の可縮性判定は保持し、
+γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 4.5.3.24・7.4.1.6・7.5.4.6。
+
+新規5ファイル・19宣言を集約と専用監査へ追加。README の γ3 冒頭の現在地も更新した。
+全宣言の正確な型・全前提は README の同名節と専用監査の `#check @` に記録。
+型一覧は括弧の深さを考慮して抽出し、名前付き引数を含む全署名をソースから復元した。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4699 jobs）、公開1479宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規5ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-original-end-fiber-aggregate.log`、
+`/tmp/gamma3-original-end-fiber-audit.log`。
