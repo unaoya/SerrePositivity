@@ -85,6 +85,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1027,6 +1028,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
 
 
+-- FatBoundaryCriterion.lean
+
+#check @SerrePositivity.KST.Comparison.simplexImage_len_le_iff_not_epi
+#print axioms SerrePositivity.KST.Comparison.simplexImage_len_le_iff_not_epi
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_mem_skeleton_iff_boundary
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_mem_skeleton_iff_boundary
+
+
 -- FatDegreeNormalization.lean
 
 #check @SerrePositivity.KST.Comparison.fatDegreeCofork
@@ -1186,6 +1196,18 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.fatRealizationMap_mono
 
 
+-- FatRowComplement.lean
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormRealize_eq_row
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormRealize_eq_row
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_injective_off_boundary
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_injective_off_boundary
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_injective_off_boundary_range
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_injective_off_boundary_range
+
+
 -- FatSkeleton.lean
 
 #check @SerrePositivity.KST.Comparison.fatSkeleton
@@ -1202,6 +1224,66 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.fatRealizationInclusion_mem_skeleton
 #print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_mem_skeleton
+
+
+-- FatSkeletonAttachment.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonStep
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonStep
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonStep_ι
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonStep_ι
+
+#check @SerrePositivity.KST.Comparison.fatBoundaryAttachment
+#print axioms SerrePositivity.KST.Comparison.fatBoundaryAttachment
+
+#check @SerrePositivity.KST.Comparison.fatBoundaryAttachment_ι
+#print axioms SerrePositivity.KST.Comparison.fatBoundaryAttachment_ι
+
+#check @SerrePositivity.KST.Comparison.fatBoundaryAttachment_isPullback
+#print axioms SerrePositivity.KST.Comparison.fatBoundaryAttachment_isPullback
+
+
+-- FatSkeletonColimit.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonSequence
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonSequence
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonCocone
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonCocone
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonCoconeIsColimit
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonCoconeIsColimit
+
+
+-- FatSkeletonMaps.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRow
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRow
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRow_ι
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRow_ι
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonMap
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonMap
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonMap_ι
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonMap_ι
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonFunctor
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonFunctor
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonInclusion
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonInclusion
+
+
+-- FatSkeletonPushout.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonStep_row_jointly_surjective
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonStep_row_jointly_surjective
+
+#check @SerrePositivity.KST.Comparison.fatSkeleton_isPushout
+#print axioms SerrePositivity.KST.Comparison.fatSkeleton_isPushout
 
 
 -- FiberwiseAnodyne.lean

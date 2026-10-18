@@ -82,6 +82,9 @@ public import SerrePositivity.KST.Comparison.FatNormalFormEquiv
 public import SerrePositivity.KST.Comparison.FatRealizationMono
 public import SerrePositivity.KST.Comparison.FatSkeleton
 
+public import SerrePositivity.KST.Comparison.FatSkeletonPushout
+public import SerrePositivity.KST.Comparison.FatSkeletonColimit
+
 /-!
 # K-L2：比較定理の入口
 

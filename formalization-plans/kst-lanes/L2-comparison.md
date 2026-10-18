@@ -524,6 +524,16 @@ image.ι と factorThruImage の輸送を照合して、余等化子の二射で
 この部分単体集合の定義から有限骨格の付着の pushout の普遍性を別途証明し、
 ホモトピー引き戻しの骨格帰納を仮定にはしない。
 
+### 有限骨格の一段階の付着の普遍性
+
+確認する文言：n+1 行の境界との積を n 骨格へ送り、n+1 行の標準単体との積を
+貼り付ける四角形は、n+1 骨格を頂点とする実際の pushout である。
+証明方針：境界は非全射な単体写像なので、像の次元が n 以下であることと同値である。
+これにより境界の積は n 骨格の厳密な逆像になる。n+1 骨格の元は旧骨格または
+n+1 行の元から得られ、行の包含は境界の外で標準形の一意性により単射である。
+型の圏の isPushout_of_isPullback_of_mono を各次数で適用して普遍性を示す。
+この段階でもホモトピー引き戻しの貼り合わせを結論として仮定しない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -673,7 +683,12 @@ fat realization の各次数と全射な標準形の型との同値を構成し�
 単体作用後の正規化の式と終域の次元の減少を証明した。
 正規化した終域の次元による有限骨格の部分単体集合を構成した。
 骨格の単調性、各次数での安定化、全骨格の和が全体となること、各行の像の包含を証明した。
-対角への比較の局所化可逆性と有限骨格の付着の普遍性・ホモトピー引き戻しの帰納は未証明。
+各行の骨格への因子化、骨格の関手、全体への自然な包含を構成した。
+骨格の順序列の実際の包含の余錐が fat realization を余極限とすることを証明した。
+新しい行の旧骨格の逆像が境界であることと、境界外の単射性を標準形で証明した。
+境界の付着の厳密な引き戻し、旧骨格と新しい行の共同全射性から、
+一段階の骨格の付着の実際の pushout の普遍性を証明した。
+対角への比較の局所化可逆性と有限骨格のホモトピー引き戻しの帰納は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -681,8 +696,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 847 宣言の型と公理を確認した。
-さらに名前空間全体の 1570 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 868 宣言の型と公理を確認した。
+さらに名前空間全体の 1606 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -850,6 +865,12 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `fatDegreeNormalize_action`、`fatNormalDegree_action_le` | 実装済み | 単体作用後の正規化と終域の次元の減少 |
 | `fatSkeleton`、`fatSkeleton_monotone`、`iSup_fatSkeleton_eq_top` | 実装済み | 標準形の次元による部分単体集合の濾過と全体の復元 |
 | `fatSkeleton_obj_eq_univ`、`fatRealizationInclusion_mem_skeleton` | 実装済み | 各次数での安定化と各行の像の包含 |
+| `fatSkeletonRow`、`fatSkeletonFunctor`、`fatSkeletonInclusion` | 実装済み | 各行の骨格への因子化と骨格の関手性 |
+| `fatSkeletonSequence`、`fatSkeletonCoconeIsColimit` | 実装済み | 実際の有限骨格の順序余極限としての fat realization |
+| `fatRealizationInclusion_mem_skeleton_iff_boundary` | 実装済み | 新しい行の旧骨格の逆像と境界の同定 |
+| `fatRealizationInclusion_injective_off_boundary_range` | 実装済み | 境界の像の補集合での単射性 |
+| `fatBoundaryAttachment`、`fatBoundaryAttachment_isPullback` | 実装済み | 境界の旧骨格への付着と厳密な引き戻し |
+| `fatSkeletonStep_row_jointly_surjective`、`fatSkeleton_isPushout` | 実装済み | 一段階の付着の共同全射性と pushout の普遍性 |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
