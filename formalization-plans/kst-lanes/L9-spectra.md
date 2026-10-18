@@ -15,6 +15,7 @@
 - 借用：N の HomotopyLimits の Bousfield–Kan end・ホーン充填による Kan 性・path 置換による係数のホモトピー不変性。
 - この借用は段ごとの単体集合の実構成だけに使い、Sp の ∞ 極限性や導来写像空間の比較を主張しない。
 - 借用：Core の pinched 写像空間とその Kan 性。
+- 借用：既存 Pointed.CofiberPushout の通常の商の点つき pushout の普遍性。安定モデル構造は含まない。
 - 既存 Spectra は比較用に読むだけで編集しない。
 - 既存 Spectra の `PointedSimplicialSet.Basic` と `Pointed.InternalHom` の基礎定義を借りる。
 - この借用は Under による点つき対象と等化子による Hom のみで、安定モデル構造は含まない。
@@ -34,7 +35,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・445 モジュール 4369 宣言の公理監査成功。
+対象ビルド・451 モジュール 4409 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3258,4 +3259,36 @@ L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 
 
 参照：Goerss–Jardine I §7、VIII §1。
 対象ビルド 3895 jobs 成功。私有宣言を含む 445 モジュール 4369 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 107. L9e の球面の Hom の群の次数移動
+
+SphereSimplex の成分比較が loop 値の球面の写像類の群演算を保つことを証明した。
+loop の積を代表する射の正次数群への作用を二つの射影に分け、球面の射の後合成の自然性で計算した。
+従って loop 値の球面の写像類の群と loop の高次ホモトピー群は群同型となる。
+円の Kan 置換への制限の全基点 π_* 同型を通常の loop の群の次数移動へ合成した。
+これと内部 Hom の交換で、球面の Hom の基本群から係数の高次群への群同型を得た。
+さらに loop と内部 Hom の交換を反復し、正次元球面からの Hom のすべての正次数群の次数移動を構成した。
+
+自由基点を加えて作る cofiber と元の射の商の二つの pushout の一意性を比較した。
+既存 Spectra から借りるのはこの通常の点つき商の普遍性のみである。
+この同型で SimplexCell.sphere を既存の境界を直接潰す球面の模型へ移し、同じ群の次数移動を得た。
+骨格の fiber の関数表示へ合成し、セルの添字を非退化単体の型へ移した。
+従って n 段の fiber の実際の π_(r+1) は、非退化 (n+1) 単体上の π_(n+r+2)(X) の関数群と同型である。
+
+この保存単位では群の同型そのものを証明した。
+係数射についての自然性、塔の境界準同型と交代微分の照合、球面の向きの符号の照合、塔の収束は引き続き必要である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `LoopMappingClasses.sphereComponentHom` / `sphereComponentEquiv` | loop 値の球面の写像類と loop の高次群の群同型 |
+| `CirclePower.positiveHomotopyEquiv` | 円の Kan 置換の Hom の群の次数移動 |
+| `SphereSimplex.fundamentalHomotopyEquiv` / `positiveHomotopyEquiv` | 正次元球面の Hom の基本群と全正次数群の次数移動 |
+| `adjoinCofiberIso` / `SimplexCell.sphereIso` | 自由基点の商と元の商の比較、セルの球面の標準模型への同型 |
+| `SimplexCell.positiveHomotopyEquiv` | セルの球面の Hom の群の次数移動 |
+| `SkeletalCellAttachment.stageFiberCoefficientEquiv` | fiber の正次数群と非退化単体上の高次係数の関数群の同型 |
+
+参照：Goerss–Jardine I §7、VIII §1。
+対象ビルド 3902 jobs 成功。私有宣言を含む 451 モジュール 4409 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
