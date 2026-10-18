@@ -560,3 +560,42 @@ L1c–f は未着手。L1g は別途指示待ち。
 
 この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2088 jobs）、
 `lake env lean scripts/audit_kst_s_construction.lean` 成功（365 宣言、標準三公理のみ）。
+
+標準 cofiber 正方形から図式自身の gapped 性への還元を証明した。
+以下で `Span := (horn 2 0 : SSet.{u})`、`Square := Δ[1] ⊗ Δ[1]`、
+`τ := (β_ (Δ[1] : SSet.{u}) Δ[1]).hom` と略記する。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `spanTranspose` | `Span ⟶ Span` |
+| `spanTranspose_left` | `horn₂₀.ι₀₁ ≫ spanTranspose = horn₂₀.ι₀₂` |
+| `spanTranspose_right` | `horn₂₀.ι₀₂ ≫ spanTranspose = horn₂₀.ι₀₁` |
+| `spanTranspose_comp_self` | `spanTranspose ≫ spanTranspose = 𝟙 Span` |
+| `spanTransposeIso` | `Span ≅ Span` |
+| `spanTranspose_isIso` | `IsIso spanTranspose` |
+| `spanTranspose_square` | `joinMap spanTranspose (𝟙 (Δ[0] : SSet.{u})) ≫ spanCoconeSquareIso.hom = spanCoconeSquareIso.hom ≫ τ` |
+| `IsPushoutSquare.transpose` | `{C : SSet.{u}} → [Quasicategory C] → {F : Square ⟶ C} → IsPushoutSquare F → IsPushoutSquare (τ ≫ F)`、宣言は本レーンの namespace 内 |
+| `arVerticalRectangleOrder` | `{n : ℕ} → (i j k l : Fin (n + 1)) → (hij : i ≤ j) → (hjk : j ≤ k) → (hkl : k ≤ l) → (ULift.{u} (Fin 3 × Fin 2) →o Ar.{u} n)` |
+| `arVerticalRectangle` | 同じ i,j,k,l,hij,hjk,hkl に対し `(Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ arNerve n` |
+| `arVerticalRectangle_left` | 同じ引数で `pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 2 = τ ≫ arSquare i j k l hij hjk hkl` |
+| `arVerticalRectangle_outer` | 同じ引数で `pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 1 = τ ≫ arSquare i k k l (hij.trans hjk) le_rfl hkl` |
+| `arVerticalRectangle_right` | 同じ引数で `pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 0 = τ ≫ arSquare j k k l hjk le_rfl hkl` |
+| `arTriple_isPushout_of_originSquares` | `{n : ℕ} → {C : SSet.{u}} → [Quasicategory C] → (F : arNerve n ⟶ C) → (∀ (i j : Fin (n + 1)) (hij : i ≤ j), IsPushoutSquare (arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F)) → (i j k : Fin (n + 1)) → (hij : i ≤ j) → (hjk : j ≤ k) → IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F)` |
+| `isGapped_iff_originSquares` | `{n : ℕ} → {C : SSet.{u}} → [Quasicategory C] → (F : arNerve n ⟶ C) → (IsGapped F ↔ (∀ i : Fin (n + 1), IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj i i le_rfl)))) ∧ (∀ (i j : Fin (n + 1)) (hij : i ≤ j), IsPushoutSquare (arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F)))` |
+| `isGapped_iff_arCofiberFamily_vertices` | `{n : ℕ} → {C : SSet.{u}} → [Quasicategory C] → (F : arNerve n ⟶ C) → (IsGapped F ↔ ∀ a : (arNerve n) _⦋0⦌, IsCofiberDiagramVertex ((arCofiberFamily F).app (Opposite.op ⦋0⦌) a))` |
+
+転置は span の二終点の交換を同型として構成し、その同型による余錐の制限で証明した。
+還元は、標準正方形 `(0,i,i,j)` と `(0,i,i,k)` の横方向の相殺で `(0,i,j,k)` を得た後、
+これと `(0,j,j,k)` の縦方向の相殺で `(i,j,j,k)` を得る。既存の三つ組判定で全四つ組へ進む。
+退化した端点も全て含み、安定性・余極限の存在・零対角条件は押し出し部分の還元に要求しない。
+
+**現在地・未完了**：L1a は完了。L1b は全次数の正次元境界 RLP と n=0,1,2 の全境界 RLP が証明済み。
+任意の単射上で枠・span・既存境界を厳密に保つ cofiber 補完も証明済み。
+n≥3 の零次元持ち上げでは、得られた図式 F の標準抽出 `arCofiberFamily F` が選んだ cofiber 族と
+coherent に比較できることが残る。上記の同値により、その比較から gapped 性への含意は証明済み。
+選んだ cofiber 族の各正方形の普遍性を図式自身の正方形の普遍性と取り違えない。
+次は枠での厳密な一致と固定 span 条件からこの比較を構成する。
+L1c–f は未完了、L1g は別途指示待ち。
+
+この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2090 jobs）、
+`lake env lean scripts/audit_kst_s_construction.lean` 成功（381 宣言、標準三公理のみ）。

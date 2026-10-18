@@ -921,3 +921,51 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.exists_arCofiberSpanCompletion_preserving_frame
 #print axioms SerrePositivity.KST.SConstruction.exists_arCofiberSpanCompletion_preserving_frame
+
+#check @SerrePositivity.KST.SConstruction.spanTranspose
+#print axioms SerrePositivity.KST.SConstruction.spanTranspose
+
+#check @SerrePositivity.KST.SConstruction.spanTranspose_left
+#print axioms SerrePositivity.KST.SConstruction.spanTranspose_left
+
+#check @SerrePositivity.KST.SConstruction.spanTranspose_right
+#print axioms SerrePositivity.KST.SConstruction.spanTranspose_right
+
+#check @SerrePositivity.KST.SConstruction.spanTranspose_comp_self
+#print axioms SerrePositivity.KST.SConstruction.spanTranspose_comp_self
+
+#check @SerrePositivity.KST.SConstruction.spanTransposeIso
+#print axioms SerrePositivity.KST.SConstruction.spanTransposeIso
+
+#check @SerrePositivity.KST.SConstruction.spanTranspose_isIso
+#print axioms SerrePositivity.KST.SConstruction.spanTranspose_isIso
+
+#check @SerrePositivity.KST.SConstruction.spanTranspose_square
+#print axioms SerrePositivity.KST.SConstruction.spanTranspose_square
+
+#check @SerrePositivity.KST.SConstruction.IsPushoutSquare.transpose
+#print axioms SerrePositivity.KST.SConstruction.IsPushoutSquare.transpose
+
+#check @SerrePositivity.KST.SConstruction.arVerticalRectangleOrder
+#print axioms SerrePositivity.KST.SConstruction.arVerticalRectangleOrder
+
+#check @SerrePositivity.KST.SConstruction.arVerticalRectangle
+#print axioms SerrePositivity.KST.SConstruction.arVerticalRectangle
+
+#check @SerrePositivity.KST.SConstruction.arVerticalRectangle_left
+#print axioms SerrePositivity.KST.SConstruction.arVerticalRectangle_left
+
+#check @SerrePositivity.KST.SConstruction.arVerticalRectangle_outer
+#print axioms SerrePositivity.KST.SConstruction.arVerticalRectangle_outer
+
+#check @SerrePositivity.KST.SConstruction.arVerticalRectangle_right
+#print axioms SerrePositivity.KST.SConstruction.arVerticalRectangle_right
+
+#check @SerrePositivity.KST.SConstruction.arTriple_isPushout_of_originSquares
+#print axioms SerrePositivity.KST.SConstruction.arTriple_isPushout_of_originSquares
+
+#check @SerrePositivity.KST.SConstruction.isGapped_iff_originSquares
+#print axioms SerrePositivity.KST.SConstruction.isGapped_iff_originSquares
+
+#check @SerrePositivity.KST.SConstruction.isGapped_iff_arCofiberFamily_vertices
+#print axioms SerrePositivity.KST.SConstruction.isGapped_iff_arCofiberFamily_vertices

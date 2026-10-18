@@ -11,4 +11,6 @@ public import SerrePositivity.KST.SConstruction.ZeroSpanProjection
 
 public import SerrePositivity.KST.SConstruction.FramePreservingSpanCompletion
 
+public import SerrePositivity.KST.SConstruction.GappedOriginSquares
+
 /-! # ∞-S• 構成と連結 K 理論 -/
