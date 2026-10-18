@@ -111,3 +111,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianTransport_isTransport
 #check @SerrePositivity.InfinityCategories.cocartesianTransportHo
 #check @SerrePositivity.InfinityCategories.IsCocartesianTransport.toHoIso
+#check @SerrePositivity.InfinityCategories.isCartesianEdge_of_isInvertibleEdge
+#check @SerrePositivity.InfinityCategories.isCocartesianEdge_of_isInvertibleEdge
+#check @SerrePositivity.InfinityCategories.isCocartesianEdge_constant
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_of_isCartesianEdge
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCartesianEdge
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_of_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.IsEdgeTransport
+#check @SerrePositivity.InfinityCategories.edgeTransport
+#check @SerrePositivity.InfinityCategories.edgeTransport_isTransport
+#check @SerrePositivity.InfinityCategories.IsEdgeTransport.functorIso
+#check @SerrePositivity.InfinityCategories.isEdgeTransport_identity
+#check @SerrePositivity.InfinityCategories.edgeTransport_identity_iso

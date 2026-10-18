@@ -21,3 +21,6 @@ public import SerrePositivity.InfinityCategories.F1.TransportChoices
 public import SerrePositivity.InfinityCategories.F1.TransportComparison
 public import SerrePositivity.InfinityCategories.F1.TransportWitness
 public import SerrePositivity.InfinityCategories.F1.TransportHo
+public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.EdgeTransport
+public import SerrePositivity.InfinityCategories.F1.TransportIdentity

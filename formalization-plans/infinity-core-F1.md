@@ -452,5 +452,56 @@ lemma IsCocartesianTransport.toHoIso {X B : SSet.{u}} (p : X ⟶ B)
     (hF : IsCocartesianTransport p e F) :
     Nonempty ((hoFunctor.map F).toFunctor ≅ cocartesianTransportHo p e)
 
+
+lemma isCartesianEdge_of_isInvertibleEdge {X B : SSet.{u}} [Quasicategory X]
+    [Quasicategory B] (p : X ⟶ B) [InnerFibration p] {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+
+lemma isCocartesianEdge_of_isInvertibleEdge {X B : SSet.{u}} [Quasicategory X]
+    [Quasicategory B] (p : X ⟶ B) [InnerFibration p] {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+
+lemma isCocartesianEdge_constant {X B : SSet.{u}} [Quasicategory X] [Quasicategory B]
+    (p : X ⟶ B) [InnerFibration p] (x : X _⦋0⦌) :
+    IsCocartesianEdge p (PinchedHom.constant x 1)
+
+lemma isInvertibleEdge_of_isCartesianEdge {X B : SSet.{u}} [Quasicategory B]
+    (p : X ⟶ B) {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+
+lemma isInvertibleEdge_iff_isCartesianEdge {X B : SSet.{u}} [Quasicategory X]
+    [Quasicategory B] (p : X ⟶ B) [InnerFibration p] {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+
+lemma isInvertibleEdge_of_isCocartesianEdge {X B : SSet.{u}} [Quasicategory X]
+    [Quasicategory B]
+    (p : X ⟶ B) {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+
+lemma isInvertibleEdge_iff_isCocartesianEdge {X B : SSet.{u}} [Quasicategory X]
+    [Quasicategory B] (p : X ⟶ B) [InnerFibration p] {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+
+def IsEdgeTransport {X B : SSet.{u}} (p : X ⟶ B) {a b : B _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+
+noncomputable def edgeTransport {X B : SSet.{u}} (p : X ⟶ B) [CocartesianFibration p]
+    {a b : B _⦋0⦌} (e : SSet.Truncated.Edge (X
+
+lemma edgeTransport_isTransport {X B : SSet.{u}} (p : X ⟶ B) [CocartesianFibration p]
+    {a b : B _⦋0⦌} (e : SSet.Truncated.Edge (X
+
+lemma IsEdgeTransport.functorIso {X B : SSet.{u}} (p : X ⟶ B) [CocartesianFibration p]
+    {a b : B _⦋0⦌} (e : SSet.Truncated.Edge (X
+
+lemma isEdgeTransport_identity {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [CocartesianFibration p] (b : B _⦋0⦌) :
+    IsEdgeTransport p (SSet.Truncated.Edge.id (X
+
+lemma edgeTransport_identity_iso {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [CocartesianFibration p] (b : B _⦋0⦌) :
+    Nonempty (FunctorIso
+      (edgeTransport p (SSet.Truncated.Edge.id (X
+
 end SerrePositivity.InfinityCategories
 ```
