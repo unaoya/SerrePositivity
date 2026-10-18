@@ -534,6 +534,18 @@ n+1 行の元から得られ、行の包含は境界の外で標準形の一意�
 型の圏の isPushout_of_isPullback_of_mono を各次数で適用して普遍性を示す。
 この段階でもホモトピー引き戻しの貼り合わせを結論として仮定しない。
 
+### 単射な脚を持つ pushout と二重写像円筒の比較
+
+確認する文言：span の片方の脚が単射なら、二重写像円筒から通常の pushout への
+円筒を潰す比較は局所化同型である。
+証明方針：f:C→A の一端を貼る mapping cylinder を pushout(ι₀,f) として構成する。
+A からの包含は端点の anodyne 性の pushout なので局所化同型であり、円筒を潰す射も
+合成が恒等となる二対三から局所化同型である。
+既存の二重写像円筒を、この mapping cylinder の残る端点と g:C→B の pushout として
+普遍性で表示する。g が単射なら、g を共通の単射な脚とする pushout の比較の定理を使える。
+有限骨格の付着では境界の積の包含がこの単射な脚になる。
+これは通常の pushout がホモトピー pushout であることを新たに仮定するものではない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -688,6 +700,9 @@ fat realization の各次数と全射な標準形の型との同値を構成し�
 新しい行の旧骨格の逆像が境界であることと、境界外の単射性を標準形で証明した。
 境界の付着の厳密な引き戻し、旧骨格と新しい行の共同全射性から、
 一段階の骨格の付着の実際の pushout の普遍性を証明した。
+mapping cylinder の実対象、底の anodyne な包含、底への収縮の局所化可逆性を証明した。
+二重写像円筒の三部分の desc の普遍性から、一端ずつ貼る二段階の pushout 表示を証明した。
+右の脚が単射なら、二重写像円筒を通常の pushout へ潰す比較が局所化同型であると証明した。
 対角への比較の局所化可逆性と有限骨格のホモトピー引き戻しの帰納は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
@@ -696,8 +711,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 868 宣言の型と公理を確認した。
-さらに名前空間全体の 1606 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 894 宣言の型と公理を確認した。
+さらに名前空間全体の 1652 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -871,6 +886,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `fatRealizationInclusion_injective_off_boundary_range` | 実装済み | 境界の像の補集合での単射性 |
 | `fatBoundaryAttachment`、`fatBoundaryAttachment_isPullback` | 実装済み | 境界の旧骨格への付着と厳密な引き戻し |
 | `fatSkeletonStep_row_jointly_surjective`、`fatSkeleton_isPushout` | 実装済み | 一段階の付着の共同全射性と pushout の普遍性 |
+| `mappingCylinder`、`mappingCylinderBase_anodyne`、`mappingCylinderRetraction_localized_isIso` | 実装済み | 片端を貼った円筒の底への収縮 |
+| `doubleMappingCylinderDesc`、`doubleMappingCylinder_hom_ext` | 実装済み | 三部分の射による二重写像円筒の普遍性 |
+| `mappingCylinderToDouble_isPushout` | 実装済み | 一端ずつ貼る二段階の pushout 表示 |
+| `doubleMappingCylinderCollapse_localized_isIso` | 実装済み | 右の脚が単射の場合の通常の pushout への比較の可逆性 |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

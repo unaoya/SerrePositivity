@@ -85,6 +85,8 @@ public import SerrePositivity.KST.Comparison.FatSkeleton
 public import SerrePositivity.KST.Comparison.FatSkeletonPushout
 public import SerrePositivity.KST.Comparison.FatSkeletonColimit
 
+public import SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse
+
 /-!
 # K-L2：比較定理の入口
 

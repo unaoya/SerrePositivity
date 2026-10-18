@@ -86,6 +86,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -573,6 +574,45 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.doubleMappingCylinder_one
 #print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_one
+
+
+-- DoubleMappingCylinderCollapse.lean
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_middle_collapse
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_middle_collapse
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_left_collapse
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_left_collapse
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_right_collapse
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_right_collapse
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderToDouble_collapse
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderToDouble_collapse
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse_localized_isIso
+
+
+-- DoubleMappingCylinderDesc.lean
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinderDesc
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinderDesc
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_middle_desc
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_middle_desc
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_left_desc
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_left_desc
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_right_desc
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_right_desc
+
+#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext
+#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext
 
 
 -- DoubleMappingCylinderEquivalence.lean
@@ -2079,6 +2119,57 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.loopFamilyMap_evaluation
 #print axioms SerrePositivity.KST.Comparison.loopFamilyMap_evaluation
+
+
+-- MappingCylinder.lean
+
+#check @SerrePositivity.KST.Comparison.mappingCylinder
+#print axioms SerrePositivity.KST.Comparison.mappingCylinder
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderTop
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderTop
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderBase
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderBase
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderEndpoint
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderEndpoint
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderRetraction
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderRetraction
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderTop_retraction
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderTop_retraction
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderBase_retraction
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderBase_retraction
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderEndpoint_retraction
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderEndpoint_retraction
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderBase_anodyne
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderBase_anodyne
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderRetraction_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderRetraction_localized_isIso
+
+
+-- MappingCylinderDouble.lean
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderToDouble
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderToDouble
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderTop_toDouble
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderTop_toDouble
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderBase_toDouble
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderBase_toDouble
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderEndpoint_toDouble
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderEndpoint_toDouble
+
+#check @SerrePositivity.KST.Comparison.mappingCylinderToDouble_isPushout
+#print axioms SerrePositivity.KST.Comparison.mappingCylinderToDouble_isPushout
 
 
 -- MonoBasePullback.lean
