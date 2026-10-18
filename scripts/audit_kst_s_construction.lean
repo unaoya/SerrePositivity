@@ -1521,3 +1521,108 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.isStable_of_trivialKanFibration
 #print axioms SerrePositivity.KST.SConstruction.isStable_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.terminalBoundaryLifting_of_initialBoundaryLifting_op
+#print axioms SerrePositivity.KST.SConstruction.terminalBoundaryLifting_of_initialBoundaryLifting_op
+
+#check @SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.op_initial
+#print axioms SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.op_initial
+
+#check @SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.of_vertexIso
+#print axioms SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.of_vertexIso
+
+#check @SerrePositivity.KST.SConstruction.exists_terminalConeVertex_over_invertible_edge
+#print axioms SerrePositivity.KST.SConstruction.exists_terminalConeVertex_over_invertible_edge
+
+#check @SerrePositivity.KST.SConstruction.HasLimit.of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.HasLimit.of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.hasLimit_iff_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.hasLimit_iff_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanData
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanData
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDataProjection
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDataProjection
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDataProjection_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDataProjection_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDataDiagram
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDataDiagram
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDataDiagram_left
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDataDiagram_left
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDataDiagram_right
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDataDiagram_right
+
+#check @SerrePositivity.KST.SConstruction.zeroCospan_targets
+#print axioms SerrePositivity.KST.SConstruction.zeroCospan_targets
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDataLift
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDataLift
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDataLift_projection
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDataLift_projection
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDataLift_diagram
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDataLift_diagram
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanFamiliesIso
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanFamiliesIso
+
+#check @SerrePositivity.KST.SConstruction.zeroCospanDiagramsIso
+#print axioms SerrePositivity.KST.SConstruction.zeroCospanDiagramsIso
+
+#check @SerrePositivity.KST.SConstruction.hasLimit_zeroCospan
+#print axioms SerrePositivity.KST.SConstruction.hasLimit_zeroCospan
+
+#check @SerrePositivity.KST.SConstruction.fiberSquare_nonempty_of_zeroCospan_limits
+#print axioms SerrePositivity.KST.SConstruction.fiberSquare_nonempty_of_zeroCospan_limits
+
+#check @SerrePositivity.KST.SConstruction.functor_const_isZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.functor_const_isZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.functor_hasZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.functor_hasZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.isZeroVertex_evaluateFunctorAt
+#print axioms SerrePositivity.KST.SConstruction.isZeroVertex_evaluateFunctorAt
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilySquare_bottomEdge
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilySquare_bottomEdge
+
+#check @SerrePositivity.KST.SConstruction.functor_cofiberSquare_nonempty
+#print axioms SerrePositivity.KST.SConstruction.functor_cofiberSquare_nonempty
+
+#check @SerrePositivity.KST.SConstruction.zeroSourceArrow_evaluate
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceArrow_evaluate
+
+#check @SerrePositivity.KST.SConstruction.zeroTargetArrow_evaluate
+#print axioms SerrePositivity.KST.SConstruction.zeroTargetArrow_evaluate
+
+#check @SerrePositivity.KST.SConstruction.functor_zeroCospan_hasPointwiseLimits
+#print axioms SerrePositivity.KST.SConstruction.functor_zeroCospan_hasPointwiseLimits
+
+#check @SerrePositivity.KST.SConstruction.functor_zeroSpan_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.functor_zeroSpan_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.functor_fiberSquare_nonempty
+#print axioms SerrePositivity.KST.SConstruction.functor_fiberSquare_nonempty
+
+#check @SerrePositivity.KST.SConstruction.functor_zeroTriangle_pullback_iff
+#print axioms SerrePositivity.KST.SConstruction.functor_zeroTriangle_pullback_iff
+
+#check @SerrePositivity.KST.SConstruction.functor_zeroTriangle_pushout_iff
+#print axioms SerrePositivity.KST.SConstruction.functor_zeroTriangle_pushout_iff
+
+#check @SerrePositivity.KST.SConstruction.functor_isStable
+#print axioms SerrePositivity.KST.SConstruction.functor_isStable
+
+#check @SerrePositivity.KST.SConstruction.sConstruction_isStable
+#print axioms SerrePositivity.KST.SConstruction.sConstruction_isStable
+
+#check @SerrePositivity.KST.SConstruction.iteratedSConstruction_isStable
+#print axioms SerrePositivity.KST.SConstruction.iteratedSConstruction_isStable

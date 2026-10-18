@@ -96,7 +96,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 
 ## 6. 現在地・主要宣言
 
-**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
+**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
 L1b は元の全 gapped 図式の制限写像そのものについて、全次数・全境界の RLP を証明した。
 追加の存在仮定や出力の gapped 性の仮定は残っていない。
 
@@ -1013,3 +1013,204 @@ lemma isStable_of_trivialKanFibration {E B : SSet.{u}} [Quasicategory E] [Quasic
 現在地：L1c 継続中。図式圏の安定性、S_n の安定性・構造射の保存性、多単体構造、delooping と Ω 条件は未完了。L1d–f は未完了。
 
 検証：対象ビルド成功（2260 jobs）、公理監査成功（565 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.9 関手圏・S_n・有限反復の安定性
+
+任意の単体集合 A と安定な quasicategory C に対し Fun(A,C) の安定性を証明。
+零脚を持つ span/cospan の点ごとの余極限・極限の存在を証明してから A6 の双方向判定を使う。
+第一行制限の trivial Kan fibration により S_n と全有限反復の安定性を反映する。
+Core/・Stable/ の公開定義は変更していない。
+
+**TerminalBoundaryTransport.lean**
+
+```text
+lemma terminalBoundaryLifting_of_initialBoundaryLifting_op {E B : SSet.{u}}
+    (p : E ⟶ B) (x : E _⦋0⦌)
+    (hx : InitialBoundaryLifting (SSet.opFunctor.map p) (SSet.opObjEquiv.symm x)) :
+    TerminalBoundaryLifting p x
+
+lemma TerminalBoundaryLifting.op_initial {E B : SSet.{u}} {p : E ⟶ B} {x : E _⦋0⦌}
+    (hx : TerminalBoundaryLifting p x) :
+    InitialBoundaryLifting (SSet.opFunctor.map p) (SSet.opObjEquiv.symm x)
+
+lemma TerminalBoundaryLifting.of_vertexIso {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [InnerFibration p]
+    {x y : X _⦋0⦌} (hx : TerminalBoundaryLifting p x) (e : VertexIso x y) :
+    TerminalBoundaryLifting p y
+
+```
+
+**LimitBaseTransport.lean**
+
+```text
+lemma exists_terminalConeVertex_over_invertible_edge (K X : SSet.{u}) [Quasicategory X]
+    (v : ((ihom (join (Δ[0] : SSet.{u}) K)).obj X) _⦋0⦌)
+    (hv : TerminalBoundaryLifting (coneRestriction K X) v)
+    (b : ((ihom K).obj X) _⦋0⦌)
+    (e : SSet.Truncated.Edge (X
+
+lemma HasLimit.of_functorIso {K X : SSet.{u}} [Quasicategory X]
+    {p q : K ⟶ X} (hq : HasLimit q) (e : FunctorIso p q) : HasLimit p
+
+lemma hasLimit_iff_of_functorIso {K X : SSet.{u}} [Quasicategory X]
+    {p q : K ⟶ X} (e : FunctorIso p q) : HasLimit p ↔ HasLimit q
+
+```
+
+**ZeroCospanData.lean**
+
+```text
+def zeroCospanData (C : SSet.{u}) : SSet.{u}
+
+def zeroCospanDataProjection (C : SSet.{u}) : zeroCospanData C ⟶ (ihom (Δ[1] : SSet.{u})).obj C
+
+instance zeroCospanDataProjection_trivialKanFibration (C : SSet.{u}) [HasZeroVertex C] :
+    TrivialKanFibration (zeroCospanDataProjection C)
+
+def zeroCospanDataDiagram (C : SSet.{u}) :
+    zeroCospanData C ⟶ (ihom (horn 2 2 : SSet.{u})).obj C
+
+lemma zeroCospanDataDiagram_left (C : SSet.{u}) :
+    zeroCospanDataDiagram C ≫ (pre horn₂₂.ι₀₂).app C = zeroCospanDataProjection C
+
+lemma zeroCospanDataDiagram_right (C : SSet.{u}) :
+    zeroCospanDataDiagram C ≫ (pre horn₂₂.ι₁₂).app C =
+      pullback.fst (zeroSourceArrowTarget C)
+        (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
+          (fullSubcomplexOnVertices _ IsZeroSourceArrow).ι
+
+lemma zeroCospan_targets (C : SSet.{u}) :
+    (pre horn₂₂.ι₀₂).app C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      (pre horn₂₂.ι₁₂).app C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+def zeroCospanDataLift {A C : SSet.{u}} (p : A ⟶ (ihom (horn 2 2 : SSet.{u})).obj C)
+    (hp : ∀ v : A _⦋0⦌, IsZeroSourceArrow
+      (((pre horn₂₂.ι₁₂).app C).app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) v))) :
+    A ⟶ zeroCospanData C
+
+lemma zeroCospanDataLift_projection {A C : SSet.{u}}
+    (p : A ⟶ (ihom (horn 2 2 : SSet.{u})).obj C) (hp) :
+    zeroCospanDataLift p hp ≫ zeroCospanDataProjection C = p ≫ (pre horn₂₂.ι₀₂).app C
+
+lemma zeroCospanDataLift_diagram {A C : SSet.{u}}
+    (p : A ⟶ (ihom (horn 2 2 : SSet.{u})).obj C) (hp) :
+    zeroCospanDataLift p hp ≫ zeroCospanDataDiagram C = p
+
+```
+
+**ZeroCospanChoices.lean**
+
+```text
+def zeroCospanFamiliesIso {A C : SSet.{u}} [HasZeroVertex C]
+    (p q : A ⟶ (ihom (horn 2 2 : SSet.{u})).obj C)
+    (hp : ∀ v : A _⦋0⦌, IsZeroSourceArrow
+      (((pre horn₂₂.ι₁₂).app C).app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) v)))
+    (hq : ∀ v : A _⦋0⦌, IsZeroSourceArrow
+      (((pre horn₂₂.ι₁₂).app C).app (Opposite.op ⦋0⦌) (q.app (Opposite.op ⦋0⦌) v)))
+    (h : p ≫ (pre horn₂₂.ι₀₂).app C = q ≫ (pre horn₂₂.ι₀₂).app C) : FunctorIso p q
+
+def zeroCospanDiagramsIso {C : SSet.{u}} [HasZeroVertex C]
+    (p q : (horn 2 2 : SSet.{u}) ⟶ C)
+    (hp : IsZeroSourceArrow (functorVertex (horn₂₂.ι₁₂ ≫ p)))
+    (hq : IsZeroSourceArrow (functorVertex (horn₂₂.ι₁₂ ≫ q)))
+    (h : horn₂₂.ι₀₂ ≫ p = horn₂₂.ι₀₂ ≫ q) : FunctorIso p q
+
+lemma hasLimit_zeroCospan {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (p : (horn 2 2 : SSet.{u}) ⟶ C)
+    (hp : IsZeroSourceArrow (functorVertex (horn₂₂.ι₁₂ ≫ p))) : HasLimit p
+
+```
+
+**FiberFromZeroCospans.lean**
+
+```text
+lemma fiberSquare_nonempty_of_zeroCospan_limits {X : SSet.{u}} [Quasicategory X]
+    [HasZeroVertex X]
+    (h : ∀ p : (horn 2 2 : SSet.{u}) ⟶ X,
+      IsZeroSourceArrow (functorVertex (horn₂₂.ι₁₂ ≫ p)) → HasLimit p)
+    {x y : X _⦋0⦌} (f : SSet.Truncated.Edge (X
+
+```
+
+**FunctorZeroEvaluation.lean**
+
+```text
+lemma functor_const_isZeroVertex {A C : SSet.{u}} (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    IsZeroVertex (functorVertex (SSet.const z : A ⟶ C))
+
+instance functor_hasZeroVertex (A C : SSet.{u}) [HasZeroVertex C] :
+    HasZeroVertex ((ihom A).obj C)
+
+lemma isZeroVertex_evaluateFunctorAt {A C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    {v : ((ihom A).obj C) _⦋0⦌} (hv : IsZeroVertex v) (a : A _⦋0⦌) :
+    IsZeroVertex ((evaluateFunctorAt a).app (Opposite.op ⦋0⦌) v)
+
+```
+
+**FunctorCofibers.lean**
+
+```text
+lemma cofiberFamilySquare_bottomEdge {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C) :
+    squareBottomEdge ≫ cofiberFamilySquare H =
+      internalHomFlipHomEquiv A (Δ[1] : SSet.{u}) C (H ≫ cofiberProjection C)
+
+lemma functor_cofiberSquare_nonempty {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    {x y : ((ihom A).obj C) _⦋0⦌}
+    (f : SSet.Truncated.Edge (X
+
+```
+
+**FunctorStability.lean**
+
+```text
+lemma zeroSourceArrow_evaluate {A C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    (e : (Δ[1] : SSet.{u}) ⟶ (ihom A).obj C)
+    (he : IsZeroSourceArrow (functorVertex e)) (a : A _⦋0⦌) :
+    IsZeroSourceArrow (functorVertex (e ≫ evaluateFunctorAt a))
+
+lemma zeroTargetArrow_evaluate {A C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    (e : (Δ[1] : SSet.{u}) ⟶ (ihom A).obj C)
+    (he : IsZeroTargetArrow (functorVertex e)) (a : A _⦋0⦌) :
+    IsZeroTargetArrow (functorVertex (e ≫ evaluateFunctorAt a))
+
+lemma functor_zeroCospan_hasPointwiseLimits {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (p : (horn 2 2 : SSet.{u}) ⟶ (ihom A).obj C)
+    (hp : IsZeroSourceArrow (functorVertex (horn₂₂.ι₁₂ ≫ p))) : HasPointwiseLimits p
+
+lemma functor_zeroSpan_hasPointwiseColimits {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (p : (horn 2 0 : SSet.{u}) ⟶ (ihom A).obj C)
+    (hp : IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ p))) : HasPointwiseColimits p
+
+lemma functor_fiberSquare_nonempty {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    {x y : ((ihom A).obj C) _⦋0⦌}
+    (f : SSet.Truncated.Edge (X
+
+lemma functor_zeroTriangle_pullback_iff {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (t : ZeroTriangle ((ihom A).obj C)) :
+    IsPullbackSquare t.square ↔ ∀ a : A _⦋0⦌, IsPullbackSquare (t.square ≫ evaluateFunctorAt a)
+
+lemma functor_zeroTriangle_pushout_iff {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (t : ZeroTriangle ((ihom A).obj C)) :
+    IsPushoutSquare t.square ↔ ∀ a : A _⦋0⦌, IsPushoutSquare (t.square ≫ evaluateFunctorAt a)
+
+instance functor_isStable (A C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    IsStable ((ihom A).obj C)
+
+```
+
+**SConstructionStability.lean**
+
+```text
+instance sConstruction_isStable (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    IsStable (sConstruction n C)
+
+instance iteratedSConstruction_isStable (ns : List ℕ) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] : IsStable (iteratedSConstruction ns C)
+
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。関手圏・S_n・有限反復の安定性を無条件で証明した（上記の標的の安定性以外の追加仮定なし）。
+S_n の reindexing・後合成の押し出し保存、多単体構造、境界の coherent な潰し、delooping・Ω 条件・BF スペクトルは未完了。
+L1d–f は未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2271 jobs）、公理監査成功（600 宣言、標準三公理のみ）。追加公理・sorry なし。

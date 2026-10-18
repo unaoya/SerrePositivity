@@ -29,4 +29,6 @@ public import SerrePositivity.KST.SConstruction.IteratedObjects
 public import SerrePositivity.KST.SConstruction.TrivialFibrationUniversality
 public import SerrePositivity.KST.SConstruction.TrivialFibrationStability
 
+public import SerrePositivity.KST.SConstruction.SConstructionStability
+
 /-! # ∞-S• 構成と連結 K 理論 -/
