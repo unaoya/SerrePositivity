@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Spectra.FreeActionEndNaturality
+public import SerrePositivity.KST.Spectra.FreeActionEndEquivalence
+public import SerrePositivity.KST.Spectra.PointedFreeActionEquivalence
+public import SerrePositivity.KST.Spectra.PointedActionCochains
+public import SerrePositivity.KST.Spectra.PointedActionCochainEquivalence
+public import SerrePositivity.KST.Spectra.GroupActionCochainEquivalence
+
 public import SerrePositivity.KST.Spectra.FreeActionFamily
 public import SerrePositivity.KST.Spectra.FreeActionFamilyEquiv
 public import SerrePositivity.KST.Spectra.FreeActionEnd

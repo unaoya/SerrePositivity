@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・328 モジュール 3569 宣言の公理監査成功。
+対象ビルド・334 モジュール 3589 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2705,4 +2705,36 @@ Tot の Kan 性や hG との比較には、重みの全体の比較または相�
 参照：Goerss–Jardine VIII §2、HA §1.4.2。
 保存単位の対象ビルド 3771 jobs 成功。
 私有宣言を含む 328 モジュール 3569 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
+
+## 91. L9e の自由作用の end と cochain の係数の同型保存
+
+自由軌道への制限は係数の同変射の後合成と可換である。
+これを end の Hom の同値へ移し、内部 Hom との比較同型の係数への自然性を証明した。
+始域の参照頂点から実際の Whitehead 逆へ移り、通常の内部 Hom の後合成の同値性を使った。
+従って自由作用の end は係数の全基点 π_* 同型を保つ。
+
+点つき係数では基点を参照頂点として、この同型保存を忘却比較の自然性で点つき end へ移した。
+群の有限性は不要である。
+任意の点つき単体集合の群作用について、余単体 cochain の関手を定義した。
+これは BF 作用スペクトルの一段を取る場合を含み、loop を施した係数も同じ形で扱える。
+各次数の自由軌道への比較は係数の同変射に自然である。
+従って点つき Kan 係数の全基点 π_* 同型は、cochain の全ての次数でも全基点 π_* 同型を誘導する。
+
+BF 作用スペクトルの同変射についても指定したスペクトル段の同型保存へ移した。
+この結果は各余単体次数の主張であり、Tot への同型保存や hG との比較をこの段階では追加主張しない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `FreeActionFamily.endIso_natural` | 自由作用の end と内部 Hom の比較の係数への自然性 |
+| `FreeActionFamily.endMap_piIsomorphism` | 自由作用の通常の end の全基点 π_* 同型保存 |
+| `FreeActionFamily.pointedEndMap_piIsomorphism` | 基点を参照頂点にした点つき自由作用の end の同型保存 |
+| `PointedActionCochains.obj` / `functor` / `map` | 任意の点つき作用の実際の cochain 関手 |
+| `PointedActionCochains.freeIso` / `freeIso_natural` | 各次数の自由軌道への比較と係数への自然性 |
+| `PointedActionCochains.obj_kanComplex` / `map_piIsomorphism` | 各次数の Kan 性と係数の全基点 π_* 同型保存 |
+| `GroupActionCochains.levelMap_piIsomorphism` | BF 作用スペクトルの指定段の同型の各 cochain 次数への移送 |
+
+参照：Goerss–Jardine VIII §2、HA §1.4.2、Kerodon 4.8.4.1。
+保存単位の対象ビルド 3777 jobs 成功。
+私有宣言を含む 334 モジュール 3589 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
