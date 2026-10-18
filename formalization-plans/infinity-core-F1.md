@@ -3649,5 +3649,94 @@ lemma leftStrictTransportEvaluate_ι {C : Type u} [Category.{u} C] {E : SSet.{u}
         (functorVertex (nerveMap (Under.forget c))) ≫
           evaluateFunctorAt (strictTransportUnderIdentityVertex c)
 
+lemma leftFibration_pullbackObjObjπ {A D E B : SSet.{u}}
+    (i : D ⟶ A) [Mono i] (p : E ⟶ B) [LeftFibration p]
+    (sq' : internalHom.PullbackObjObj i p) : LeftFibration sq'.π
+
+lemma leftAnodyneExtensions_pushoutObjObj_right {A D K L : SSet.{u}}
+    (i : D ⟶ A) [Mono i] (j : K ⟶ L) (hj : leftAnodyneExtensions j)
+    (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) :
+    leftAnodyneExtensions sq.ι
+
+lemma leftAnodyneExtensions_pushoutObjObj_left {A D K L : SSet.{u}}
+    (i : D ⟶ A) (hi : leftAnodyneExtensions i) (j : K ⟶ L) [Mono j]
+    (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) :
+    leftAnodyneExtensions sq.ι
+
+lemma trivialKanFibration_relativeHom_of_leftAnodyne {A D E B : SSet.{u}}
+    (i : D ⟶ A) (hi : leftAnodyneExtensions i) (p : E ⟶ B) [LeftFibration p]
+    (sq' : internalHom.PullbackObjObj i p) : TrivialKanFibration sq'.π
+
+lemma relativeFunctorPre_trivialKanFibration {A D E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) (i : D ⟶ A)
+    (hi : leftAnodyneExtensions i) : TrivialKanFibration (relativeFunctorPre p a i)
+
+lemma curry_evaluateFunctorAt_vertex {A T E : SSet.{u}} (H : A ⊗ T ⟶ E) (v : A _⦋0⦌) :
+    curry H ≫ evaluateFunctorAt v = lift (SSet.const v) (𝟙 T) ≫ H
+
+lemma stdSimplex_zero_eq_constant {n : ℕ} (b : (Δ[0] : SSet.{u}) _⦋n⦌) :
+    b = PinchedHom.constant (stdSimplex.obj₀Equiv.symm 0) n
+
+def pointFunctorEvaluationIso (E : SSet.{u}) : (ihom (Δ[0] : SSet.{u})).obj E ≅ E
+
+lemma pointDiagram_eq_const {B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ B) :
+    a = SSet.const (a.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0))
+
+def relativePointFunctorInverse {E B : SSet.{u}} (p : E ⟶ B)
+    (a : (Δ[0] : SSet.{u}) ⟶ B) :
+    vertexFiber p (a.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0)) ⟶
+      relativeFunctorSpace p a
+
+lemma relativePointFunctorInverse_evaluate {E B : SSet.{u}} (p : E ⟶ B)
+    (a : (Δ[0] : SSet.{u}) ⟶ B) :
+    relativePointFunctorInverse p a ≫
+        relativeFunctorEvaluate p a (stdSimplex.obj₀Equiv.symm 0) = 𝟙 _
+
+def relativePointFunctorIso {E B : SSet.{u}} (p : E ⟶ B)
+    (a : (Δ[0] : SSet.{u}) ⟶ B) :
+    relativeFunctorSpace p a ≅
+      vertexFiber p (a.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0))
+
+lemma relativeFunctorPre_point_evaluate {A E B : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (i : (Δ[0] : SSet.{u}) ⟶ A) :
+    relativeFunctorPre p a i ≫ (relativePointFunctorIso p (i ≫ a)).hom =
+      relativeFunctorEvaluate p a (i.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0))
+
+lemma relativeFunctorEvaluate_trivialKanFibration_of_pointMap {A E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B)
+    (i : (Δ[0] : SSet.{u}) ⟶ A) (hi : leftAnodyneExtensions i) :
+    TrivialKanFibration (relativeFunctorEvaluate p a
+      (i.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0)))
+
+lemma relativeFunctorEvaluate_trivialKanFibration_of_identification {A E B : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (v : A _⦋0⦌) (b : B _⦋0⦌)
+    (hb : a.app (Opposite.op ⦋0⦌) v = b)
+    (f : relativeFunctorSpace p a ⟶ vertexFiber p b)
+    (hf : f ≫ vertexFiberι p b =
+      vertexFiberι ((ihom A).map p) (functorVertex a) ≫ evaluateFunctorAt v)
+    (he : TrivialKanFibration (relativeFunctorEvaluate p a v)) : TrivialKanFibration f
+
+instance leftStrictTransportEvaluate_trivialKanFibration
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    TrivialKanFibration (leftStrictTransportEvaluate p c)
+
+lemma leftStrictTransportEvaluate_isQCatEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    IsQCatEquivalence (leftStrictTransportEvaluate p c)
+
+noncomputable def leftStrictTransportFiberEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    QCatEquivalence (leftStrictTransport p c)
+      (vertexFiber p ((nerveEquiv (C := C)).symm c))
+
+lemma leftStrictTransportEvaluate_fiber_isContractibleKan
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C)
+    (e : (vertexFiber p ((nerveEquiv (C := C)).symm c)) _⦋0⦌) :
+    IsContractibleKan (vertexFiber (leftStrictTransportEvaluate p c) e)
+
 end SerrePositivity.InfinityCategories
 ```
