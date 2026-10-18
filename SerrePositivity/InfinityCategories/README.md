@@ -2063,8 +2063,8 @@ Hom が fibration の塔では、実際の coherent nerve の錐が ∞ 極限�
 反転比較との照合、ULift の同値検出、A3d に基づく native な切断判定を介して証明する。
 反転・ULift 後の切断比較の導来 fiber から native な制限の導来 fiber への実際の比較射も、
 任意の添字圏と通常の錐で構成し、局所 Kan 性の下で同値性を証明している。
-任意の coherent な錐の pinched Hom から、選んだ切断比較の実際の導来 fiber への同値も
-構成済み。固定点は選んだ頂点 fiber・切断模型の同値による像である。
+任意の coherent な錐 d・c の pinched Hom と標準の切断制限の実際の導来 fiber の同値も
+構成済み。底の固定点は元の d の標準の切断の点そのもので、共通模型で厳密に照合している。
 
 γ3c の指定三形状は 𝒮・Sp の双方で実際の対象と ∞ 極限錐を公開済み。
 𝒮 は小さな積、一脚 Kan fibration の引き戻し、Kan fibration の可算塔の極限。
@@ -8357,3 +8357,153 @@ def conePinchedHom_sectionComparisonDerivedFiberEquivalence {K X : SSet.{u}}
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-cone-section-derived-aggregate.log`、
 `/tmp/gamma3-cone-section-derived-audit.log`。
+
+### γ3b：標準の錐の点を保持する native な切断制限の導来 fiber と pinched Hom
+
+
+`conePinchedHom_sectionRestrictionDerivedFiberEquivalence d c` を構成した。
+X が quasicategory、`p : K ⟶ X`、`d c : JoinCone p` に対し、型は
+
+```lean
+QCatEquivalence (pinchedHom (X := sliceOver p) d c)
+  (comparisonFiber (coneSectionRestriction c d.vertex) (coherentConeSectionPoint d))
+```
+
+である。K・p・d・c は任意。strict な通常の錐への制限、極限性、比較射の同値性、
+fiber の可縮性や非空性は前提に要求しない。底の点は選んだ切断比較の像ではなく、
+元の d を coslice へ curry した標準の `coherentConeSectionPoint d` そのもの。
+
+証明の第一段では `coneMappingTotalIso c x` が始点評価と native な slice 制限を厳密に
+対応させる式から、同じ底上の実際の fiber 射 `coneSliceDerivedFiberMap c x b` を作る。
+これは源の厳密な同型から誘導される同値であり、元の点 b を変更しない。
+その結果 `conePinchedHom_sliceRestrictionDerivedFiberEquivalence d c` を得る。
+
+第二段では、slice・切断の標準比較を共通の `fixedEndpointConeSpace` へ移す。
+図式の固定条件 c.property による移送を正規化した自然性を証明し、
+`coneSliceEndpointComparison_restrict` と `coneSectionEndpointComparison_restrict` により、
+両制限が同じ `coneEndpointRestriction c x` と厳密に可換であることを確認した。
+それぞれから共通模型の導来 fiber への実際の射
+`coneSliceEndpointDerivedFiberMap` と `coneSectionEndpointDerivedFiberMap` を構成し、
+源と標的の標準比較の同値性から、両方がホモトピー同値であることを証明した。
+
+最後に `coneEndpointComparison_point_eq d` で固定点を厳密に照合する。
+標準の slice の点と標準の切断の点の共通模型での像は等しい。
+零単体の普遍族を uncurry すると両方とも
+`fst (join Δ[0] K) Δ[0] ≫ d.val` となるためである。
+この照合自体には X の quasicategory 性や同値の逆の選択は不要。
+共通模型上で同じ底の点を持つ二つの fiber の同値を合成して主定理を得た。
+
+これで、任意の coherent な錐の pinched Hom と標準の切断制限の実際の導来 fiber の
+直接比較は完了した。反転・ULift 後の切断比較からこの標準制限の fiber への実際の同値は
+既存の `weightedStrictConeFamilyFiberComparison_homotopyEquivalence` にある。
+元の非反転 q_x の fiber までの直接比較、一般形状の end の直接比較、余極限側、
+E2a 完了後の E2b 適用は引き続き未完了。γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 7.4.1.6・7.5.4.6。
+
+公開19宣言の正確な型と前提（namespace `HomotopyLimits`）：
+
+```lean
+def coneSliceDerivedFiberMap {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) (b : (vertexFiber (sliceOverProjection p) x) _⦋0⦌) :
+    comparisonFiber (rightFibrationMappingEvaluation (sliceOverProjection p) c x) b ⟶
+      comparisonFiber (coneSliceRestrictionFiberMap c x) b
+
+lemma coneSliceDerivedFiberMap_source {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) (b : (vertexFiber (sliceOverProjection p) x) _⦋0⦌) :
+    coneSliceDerivedFiberMap c x b ≫ comparisonFiberSource (coneSliceRestrictionFiberMap c x) b =
+      comparisonFiberSource (rightFibrationMappingEvaluation (sliceOverProjection p) c x) b ≫
+        (coneMappingTotalIso c x).hom
+
+lemma coneSliceDerivedFiberMap_homotopyEquivalence {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (c : JoinCone p) (x : X _⦋0⦌)
+    (b : (vertexFiber (sliceOverProjection p) x) _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (coneSliceDerivedFiberMap c x b)
+
+def conePinchedHom_sliceRestrictionDerivedFiberEquivalence {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (d c : JoinCone p) :
+    QCatEquivalence (pinchedHom (X
+
+lemma sectionConeUncurry_sectionPoint {K X : SSet.{u}} {p : K ⟶ X} (d : JoinCone p) :
+    sectionConeUncurry (SSet.yonedaEquiv.symm (coherentConeSectionPoint d)) =
+      joinMap (𝟙 (Δ[0] : SSet.{u})) (fst K (Δ[0] : SSet.{u})) ≫ d.val
+
+lemma sliceEndpointConeComparison_point_uncurry {K X : SSet.{u}} {p : K ⟶ X}
+    (d : JoinCone p) :
+    uncurry (SSet.yonedaEquiv.symm (coneVertexFiberPoint d) ≫
+        sliceEndpointConeComparison p d.vertex ≫ endpointConeEvaluation p d.vertex) =
+      fst (join (Δ[0] : SSet.{u}) K) (Δ[0] : SSet.{u}) ≫ d.val
+
+lemma sectionEndpointConeComparison_point_uncurry {K X : SSet.{u}} {p : K ⟶ X}
+    (d : JoinCone p) :
+    uncurry (SSet.yonedaEquiv.symm (coherentConeSectionPoint d) ≫
+        sectionEndpointConeComparison p d.vertex ≫ endpointConeEvaluation p d.vertex) =
+      fst (join (Δ[0] : SSet.{u}) K) (Δ[0] : SSet.{u}) ≫ d.val
+
+lemma coneEndpointComparison_point_eq {K X : SSet.{u}} {p : K ⟶ X} (d : JoinCone p) :
+    (sliceEndpointConeComparison p d.vertex).app _ (coneVertexFiberPoint d) =
+      (sectionEndpointConeComparison p d.vertex).app _ (coherentConeSectionPoint d)
+
+def normalizedEndpointConeRestriction {K J X : SSet.{u}}
+    (p : J ⟶ X) (q : K ⟶ X) (f : K ⟶ J) (h : f ≫ p = q) (x : X _⦋0⦌) :
+    fixedEndpointConeSpace p x ⟶ fixedEndpointConeSpace q x
+
+lemma normalizedSliceEndpointComparison_restrict {K J X : SSet.{u}}
+    (p : J ⟶ X) (q : K ⟶ X) (f : K ⟶ J) (h : f ≫ p = q) (x : X _⦋0⦌) :
+    vertexFiberMap (sliceOverProjection p) (sliceOverProjection q)
+        (sliceOverRestrict p f ≫ eqToHom (congrArg (fun r : K ⟶ X ↦ sliceOver r) h))
+        (by rw [Category.assoc, sliceOver_eqToHom_projection h, sliceOverRestrict_projection]) x ≫
+      sliceEndpointConeComparison q x =
+        sliceEndpointConeComparison p x ≫ normalizedEndpointConeRestriction p q f h x
+
+lemma normalizedSectionEndpointComparison_restrict {K J X : SSet.{u}}
+    (p : J ⟶ X) (q : K ⟶ X) (f : K ⟶ J) (h : f ≫ p = q) (x : X _⦋0⦌) :
+    (relativeFunctorPre (sliceUnderProjection (SSet.yonedaEquiv.symm x)) p f ≫
+        eqToHom (congrArg (fun r : K ⟶ X ↦ coherentConeSectionSpace r x) h)) ≫
+      sectionEndpointConeComparison q x =
+        sectionEndpointConeComparison p x ≫ normalizedEndpointConeRestriction p q f h x
+
+def coneEndpointRestriction {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) :
+    fixedEndpointConeSpace c.val x ⟶ fixedEndpointConeSpace p x
+
+lemma coneSliceEndpointComparison_restrict {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) :
+    coneSliceRestrictionFiberMap c x ≫ sliceEndpointConeComparison p x =
+      sliceEndpointConeComparison c.val x ≫ coneEndpointRestriction c x
+
+lemma coneSectionEndpointComparison_restrict {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) :
+    coneSectionRestriction c x ≫ sectionEndpointConeComparison p x =
+      sectionEndpointConeComparison c.val x ≫ coneEndpointRestriction c x
+
+def coneSliceEndpointDerivedFiberMap {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) (b : (vertexFiber (sliceOverProjection p) x) _⦋0⦌) :
+    comparisonFiber (coneSliceRestrictionFiberMap c x) b ⟶
+      comparisonFiber (coneEndpointRestriction c x) ((sliceEndpointConeComparison p x).app _ b)
+
+lemma coneSliceEndpointDerivedFiberMap_homotopyEquivalence {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) (x : X _⦋0⦌)
+    (b : (vertexFiber (sliceOverProjection p) x) _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (coneSliceEndpointDerivedFiberMap c x b)
+
+def coneSectionEndpointDerivedFiberMap {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) (b : (coherentConeSectionSpace p x) _⦋0⦌) :
+    comparisonFiber (coneSectionRestriction c x) b ⟶
+      comparisonFiber (coneEndpointRestriction c x)
+        ((sectionEndpointConeComparison p x).app _ b)
+
+lemma coneSectionEndpointDerivedFiberMap_homotopyEquivalence {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) (x : X _⦋0⦌)
+    (b : (coherentConeSectionSpace p x) _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (coneSectionEndpointDerivedFiberMap c x b)
+
+def conePinchedHom_sectionRestrictionDerivedFiberEquivalence {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (d c : JoinCone p) :
+    QCatEquivalence (pinchedHom (X
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4683 jobs）、公開1415宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-native-restriction-derived-aggregate.log`、
+`/tmp/gamma3-native-restriction-derived-audit.log`。

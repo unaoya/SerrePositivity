@@ -1837,3 +1837,54 @@ strict な通常の錐、極限錐、可縮な fiber に制限しない。
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-cone-section-derived-aggregate.log`、
 `/tmp/gamma3-cone-section-derived-audit.log`。
+
+### γ3b：標準の錐の点を保持する native な切断制限の導来 fiber と pinched Hom
+
+
+`conePinchedHom_sectionRestrictionDerivedFiberEquivalence d c` を構成した。
+X が quasicategory、`p : K ⟶ X`、`d c : JoinCone p` に対し、型は
+
+```lean
+QCatEquivalence (pinchedHom (X := sliceOver p) d c)
+  (comparisonFiber (coneSectionRestriction c d.vertex) (coherentConeSectionPoint d))
+```
+
+である。K・p・d・c は任意。strict な通常の錐への制限、極限性、比較射の同値性、
+fiber の可縮性や非空性は前提に要求しない。底の点は選んだ切断比較の像ではなく、
+元の d を coslice へ curry した標準の `coherentConeSectionPoint d` そのもの。
+
+証明の第一段では `coneMappingTotalIso c x` が始点評価と native な slice 制限を厳密に
+対応させる式から、同じ底上の実際の fiber 射 `coneSliceDerivedFiberMap c x b` を作る。
+これは源の厳密な同型から誘導される同値であり、元の点 b を変更しない。
+その結果 `conePinchedHom_sliceRestrictionDerivedFiberEquivalence d c` を得る。
+
+第二段では、slice・切断の標準比較を共通の `fixedEndpointConeSpace` へ移す。
+図式の固定条件 c.property による移送を正規化した自然性を証明し、
+`coneSliceEndpointComparison_restrict` と `coneSectionEndpointComparison_restrict` により、
+両制限が同じ `coneEndpointRestriction c x` と厳密に可換であることを確認した。
+それぞれから共通模型の導来 fiber への実際の射
+`coneSliceEndpointDerivedFiberMap` と `coneSectionEndpointDerivedFiberMap` を構成し、
+源と標的の標準比較の同値性から、両方がホモトピー同値であることを証明した。
+
+最後に `coneEndpointComparison_point_eq d` で固定点を厳密に照合する。
+標準の slice の点と標準の切断の点の共通模型での像は等しい。
+零単体の普遍族を uncurry すると両方とも
+`fst (join Δ[0] K) Δ[0] ≫ d.val` となるためである。
+この照合自体には X の quasicategory 性や同値の逆の選択は不要。
+共通模型上で同じ底の点を持つ二つの fiber の同値を合成して主定理を得た。
+
+これで、任意の coherent な錐の pinched Hom と標準の切断制限の実際の導来 fiber の
+直接比較は完了した。反転・ULift 後の切断比較からこの標準制限の fiber への実際の同値は
+既存の `weightedStrictConeFamilyFiberComparison_homotopyEquivalence` にある。
+元の非反転 q_x の fiber までの直接比較、一般形状の end の直接比較、余極限側、
+E2a 完了後の E2b 適用は引き続き未完了。γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 7.4.1.6・7.5.4.6。
+
+新規4ファイル・19宣言を集約と専用監査へ追加した。README の γ3 冒頭の現在地も更新した。
+全公開宣言の正確な型・全前提は README の同名節と専用監査の `#check @` に記録。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4683 jobs）、公開1415宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-native-restriction-derived-aggregate.log`、
+`/tmp/gamma3-native-restriction-derived-audit.log`。
