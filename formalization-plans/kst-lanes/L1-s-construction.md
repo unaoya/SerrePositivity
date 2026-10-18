@@ -1403,3 +1403,98 @@ lemma isGapped_of_functorVertex_isZero {n : ℕ} {C : SSet.{u}} [Quasicategory C
 S_n の構造射の押し出し保存、多単体構造、境界の coherent な潰し、delooping・Ω 条件・BF スペクトルは未完了。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2284 jobs）、公理監査成功（626 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.12 gapped 図式の点ごとの押し出し閉性
+
+二方向の交換を押し出し四角形に適用した。完成後の各 span の余極限の存在は明示的な前提。
+零 span の普遍余錐では全頂点が零対象になることを、定値零余錐との関手同型で証明。
+これらを使い、gapped な Ar[n] 図式の span に与えた点ごとの余極限の全行が gapped であることを証明した。
+零対角を先に証明し、各標準 cofiber span の余極限の存在を安定性から供給して交換補題を適用する。
+全四つ組の押し出しは既存の標準 cofiber 正方形による判定で回収する。
+任意の span に点ごとの余極限が存在するとは仮定・結論していない。Core/・Stable/ の公開定義は変更していない。
+
+**PushoutInterchange.lean**
+
+```text
+lemma squareDiagram_pre {A C : SSet.{u}}
+    (i : A ⟶ (Δ[1] ⊗ Δ[1] : SSet.{u}))
+    (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C) _⦋0⦌) :
+    (functorVertexEquiv A C).symm (((pre i).app C).app (Opposite.op ⦋0⦌) v) =
+      i ≫ squareDiagram v
+
+lemma squareDiagram_pushout_iff_initialBoundary {C : SSet.{u}} [Quasicategory C]
+    (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C) _⦋0⦌) :
+    IsPushoutSquare (squareDiagram v) ↔
+      InitialBoundaryLifting (coconeRestriction (horn 2 0 : SSet.{u}) C)
+        (((pre spanCoconeSquareIso.hom).app C).app (Opposite.op ⦋0⦌) v)
+
+lemma pushoutInterchange {J C : SSet.{u}} [Quasicategory C]
+    (F : join J (Δ[0] : SSet.{u}) ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C)
+    (houter : IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ F)))
+    (hinner : ∀ j : J _⦋0⦌,
+      IsPushoutSquare (squareDiagram ((joinInl J Δ[0] ≫ F).app (Opposite.op ⦋0⦌) j)))
+    (hex : ∀ j : (join J (Δ[0] : SSet.{u})) _⦋0⦌,
+      HasColimit (pushoutSpan (squareDiagram (F.app (Opposite.op ⦋0⦌) j)))) :
+    ∀ j : (join J (Δ[0] : SSet.{u})) _⦋0⦌,
+      IsPushoutSquare (squareDiagram (F.app (Opposite.op ⦋0⦌) j))
+
+```
+
+**ZeroSpanColimit.lean**
+
+```text
+lemma zeroSpanColimit_functorVertex_isZero {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    {p : (horn 2 0 : SSet.{u}) ⟶ C} (c : JoinCocone p) (hc : IsColimitCone c)
+    (hp : ∀ a : (horn 2 0 : SSet.{u}) _⦋0⦌, IsZeroVertex (p.app (Opposite.op ⦋0⦌) a)) :
+    IsZeroVertex (functorVertex c.val)
+
+lemma zeroSpanColimit_all_vertices_zero {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+    {p : (horn 2 0 : SSet.{u}) ⟶ C} (c : JoinCocone p) (hc : IsColimitCone c)
+    (hp : ∀ a : (horn 2 0 : SSet.{u}) _⦋0⦌, IsZeroVertex (p.app (Opposite.op ⦋0⦌) a))
+    (v : (join (horn 2 0 : SSet.{u}) Δ[0]) _⦋0⦌) :
+    IsZeroVertex (c.val.app (Opposite.op ⦋0⦌) v)
+
+```
+
+**GappedPointwiseColimit.lean**
+
+```text
+lemma functorVertexEquiv_symm_evaluate {A C : SSet.{u}}
+    (v : ((ihom A).obj C) _⦋0⦌) (a : A _⦋0⦌) :
+    ((functorVertexEquiv A C).symm v).app (Opposite.op ⦋0⦌) a =
+      (evaluateFunctorAt a).app (Opposite.op ⦋0⦌) v
+
+lemma functorVertexEquiv_symm_pre {A B C : SSet.{u}} (i : A ⟶ B)
+    (v : ((ihom B).obj C) _⦋0⦌) :
+    (functorVertexEquiv A C).symm (((pre i).app C).app (Opposite.op ⦋0⦌) v) =
+      i ≫ (functorVertexEquiv B C).symm v
+
+lemma gapped_pointwiseColimit_zero_diagonal {n : ℕ} {C : SSet.{u}}
+    [Quasicategory C] [HasZeroVertex C]
+    (F : join (horn 2 0 : SSet.{u}) Δ[0] ⟶ (ihom (arNerve n)).obj C)
+    (hF : IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone
+      (joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ F)))
+    (hg : ∀ a : (horn 2 0 : SSet.{u}) _⦋0⦌, IsGapped
+      ((functorVertexEquiv (arNerve n) C).symm
+        ((joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ F).app (Opposite.op ⦋0⦌) a)))
+    (j : (join (horn 2 0 : SSet.{u}) Δ[0]) _⦋0⦌) (i : Fin (n + 1)) :
+    IsZeroVertex (((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) j)).app
+      (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj i i le_rfl)))
+
+lemma gapped_pointwiseColimit {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (F : join (horn 2 0 : SSet.{u}) Δ[0] ⟶ (ihom (arNerve n)).obj C)
+    (hF : IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone
+      (joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ F)))
+    (hg : ∀ a : (horn 2 0 : SSet.{u}) _⦋0⦌, IsGapped
+      ((functorVertexEquiv (arNerve n) C).symm
+        ((joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ F).app (Opposite.op ⦋0⦌) a))) :
+    ∀ j : (join (horn 2 0 : SSet.{u}) Δ[0]) _⦋0⦌, IsGapped
+      ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) j))
+
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。点ごとの押し出し補完が gapped 条件を保つことは証明済み。
+S_n の包含による cofiber の保存・反映への接続、構造射の押し出し保存、多単体構造、境界の coherent な潰し、delooping・Ω 条件・BF スペクトルは未完了。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2287 jobs）、公理監査成功（635 宣言、標準三公理のみ）。追加公理・sorry なし。

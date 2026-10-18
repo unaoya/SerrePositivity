@@ -1704,3 +1704,30 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.isGapped_of_functorVertex_isZero
 #print axioms SerrePositivity.KST.SConstruction.isGapped_of_functorVertex_isZero
+
+#check @SerrePositivity.KST.SConstruction.squareDiagram_pre
+#print axioms SerrePositivity.KST.SConstruction.squareDiagram_pre
+
+#check @SerrePositivity.KST.SConstruction.squareDiagram_pushout_iff_initialBoundary
+#print axioms SerrePositivity.KST.SConstruction.squareDiagram_pushout_iff_initialBoundary
+
+#check @SerrePositivity.KST.SConstruction.pushoutInterchange
+#print axioms SerrePositivity.KST.SConstruction.pushoutInterchange
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanColimit_functorVertex_isZero
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanColimit_functorVertex_isZero
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanColimit_all_vertices_zero
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanColimit_all_vertices_zero
+
+#check @SerrePositivity.KST.SConstruction.functorVertexEquiv_symm_evaluate
+#print axioms SerrePositivity.KST.SConstruction.functorVertexEquiv_symm_evaluate
+
+#check @SerrePositivity.KST.SConstruction.functorVertexEquiv_symm_pre
+#print axioms SerrePositivity.KST.SConstruction.functorVertexEquiv_symm_pre
+
+#check @SerrePositivity.KST.SConstruction.gapped_pointwiseColimit_zero_diagonal
+#print axioms SerrePositivity.KST.SConstruction.gapped_pointwiseColimit_zero_diagonal
+
+#check @SerrePositivity.KST.SConstruction.gapped_pointwiseColimit
+#print axioms SerrePositivity.KST.SConstruction.gapped_pointwiseColimit

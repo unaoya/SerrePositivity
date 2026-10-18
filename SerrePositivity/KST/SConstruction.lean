@@ -38,4 +38,6 @@ public import SerrePositivity.KST.SConstruction.ColimitInterchange
 public import SerrePositivity.KST.SConstruction.ColimitComparison
 public import SerrePositivity.KST.SConstruction.GappedIso
 
+public import SerrePositivity.KST.SConstruction.GappedPointwiseColimit
+
 /-! # ∞-S• 構成と連結 K 理論 -/
