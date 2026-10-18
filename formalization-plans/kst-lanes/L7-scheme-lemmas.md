@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1624 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1628 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -31,6 +31,7 @@
 - 相対自由化基本開の存在を入力する任意の押し出し保存まで接続済み。標準テンソル積の述語との一致、線形同型・二段テンソル取消による保存、全一般点自由性との同値も証明済み。
 - 自由化基本開の追加の正則境界基底変更を、元の基礎環上の一段の標準表示で返す保存定理まで証明済み。実際の係数変更写像・作用の塔・押し出しを構成済み。
 - 代数同型による相対自由化基本開の移送と、二段目チャートの結果を元の基礎環・加群の一段表示へ戻す取消まで証明済み。この取消に実分裂は不要。
+- 第一段 blowup 上の大域第二段中心の全制限について、全第二段チャートの自由化を元の A と B 加群 M の一段の基底変更に統一済み。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -1156,6 +1157,17 @@ f∈E が正則なら `BoundaryPureFreeNeighborhoods A B E M f r` を得る。
 Noether 条件は E に課し、実分裂はこの表示の取消には不要。
 `RelativePureFreeNeighborhoodsAlgEquiv.lean` と `BoundaryFreeNeighborhoodsTensorCancel.lean` で証明済み。
 取消代数同型と右構造写像の可換性は `tensorAlgebraBaseChange_cancel_includeRight` として明示済み。
+各中心の結論も元の基礎環と元の加群に統一する。
+C 上の固定中心 J の各チャート E について、A→C→E の複合を実際の代数作用に選ぶ。
+中間加群 (C⊗_A B)⊗_B M の自由化基本開の結論を上の取消定理へ渡し、
+元の `BoundaryPureFreeNeighborhoods A B E M` の結論へ戻す。
+境界元 f_C が C で正則なら E でも正則であり、E の Noether 性は C の Noether 性から得る。
+この結論を `BoundaryFreeNeighborhoodsAtCenterOver A B C M f_C J` にまとめ、
+構成済みの第一段 blowup 上の大域中心の全制限中心へ適用する。
+その結果、全第二段チャートでの自由化を元の A と B 加群 M の一段の基底変更について述べる。
+`BoundaryFreeNeighborhoodCenterOver.lean` で固定中心の結論の統一を証明済み。
+`GlobalGenericFreeCenterOver.lean` で大域第二段中心の全制限へ適用済み。
+元の基礎環上の一つの blowup によるこの塔の支配と、その自由化基本開の保存は次に接続する。
 
 #### 選んだ有限表示の任意の基底変更
 
@@ -1305,6 +1317,9 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 
 | 宣言 | 内容 | 状態 |
 | --- | --- | --- |
+| `BoundaryFreeNeighborhoodsAtCenterOver` | 中間環上の中心の自由化を元の基礎環・加群で述べる条件 | 定義済み |
+| `boundaryFreeNeighborhoodsAtCenterOver_of_baseChanged_center` | 固定中心の全チャートの自由化の元のデータへの統一 | 証明済み |
+| `exists_global_twoStage_boundaryFreeNeighborhood_center_over` | 全第二段チャートの自由化を元の A,B,M で述べる大域中心 | 証明済み |
 | `relativePureFreeNeighborhoods_baseChange_of_algEquiv` | 代数同型による相対自由化基本開の基底変更移送 | 証明済み |
 | `tensorAlgebraBaseChange_cancel_includeRight` | 取消代数同型と中間代数の右構造写像の可換性 | 証明済み |
 | `boundaryPureFreeNeighborhoods_cancelTensorAlgebra` | 二段目チャートの自由化基本開を元の基礎環・加群の表示へ戻す | 証明済み |

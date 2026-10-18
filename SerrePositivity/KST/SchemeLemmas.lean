@@ -268,3 +268,5 @@ public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraBaseChangePushout
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodsSingleBaseChange
 public import SerrePositivity.KST.SchemeLemmas.RelativePureFreeNeighborhoodsAlgEquiv
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodsTensorCancel
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodCenterOver
+public import SerrePositivity.KST.SchemeLemmas.GlobalGenericFreeCenterOver
