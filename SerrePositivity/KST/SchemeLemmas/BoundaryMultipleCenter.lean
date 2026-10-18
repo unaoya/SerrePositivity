@@ -81,4 +81,22 @@ theorem boundaryMultipleCenter_chart_regular_principal (a : boundaryMultipleCent
   exact ideal_regular_principal_of_regular_multiple (I.map φ) (φ f) (φ a.val)
     (chartBaseMap_mem_nonZeroDivisors _ a) hprod
 
+/--
+概要：係数イデアルが境界冪を含めば、チャート上の正則な共通因子は同じ境界冪を割る。
+方針：冪の所属をチャートへ送り、正則単項の生成元による所属判定を使う。
+規約：KST §5、Stacks 0810, Lemma 38.30.2、共通因子と境界元を区別する。
+使われ方：共通因子の純変換から元の境界の純変換への比較全射を作る。
+-/
+theorem boundaryMultipleCenter_chart_regular_principal_dvd_pow
+    (n : ℕ) (hn : f ^ n ∈ I) (a : boundaryMultipleCenter f I) :
+    ∃ c : BlowupChartRing (boundaryMultipleCenter f I) a,
+      c ∈ nonZeroDivisors _ ∧
+      I.map (chartBaseMap (boundaryMultipleCenter f I) a) = Ideal.span {c} ∧
+      c ∣ chartBaseMap (boundaryMultipleCenter f I) a f ^ n := by
+  obtain ⟨c, hc, hC, _⟩ := boundaryMultipleCenter_chart_regular_principal f I a
+  refine ⟨c, hc, hC, ?_⟩
+  have h := Ideal.mem_map_of_mem (chartBaseMap (boundaryMultipleCenter f I) a) hn
+  rw [hC, map_pow] at h
+  exact Ideal.mem_span_singleton.mp h
+
 end SerrePositivity.KST.SchemeLemmas

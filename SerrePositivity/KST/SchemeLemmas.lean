@@ -193,3 +193,5 @@ public import SerrePositivity.KST.SchemeLemmas.CoefficientBlowupCenter
 public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientScalar
 public import SerrePositivity.KST.SchemeLemmas.NormalizedCoefficientIdeal
 public import SerrePositivity.KST.SchemeLemmas.CoefficientIdealPrimeLocalization
+public import SerrePositivity.KST.SchemeLemmas.PureTransformBoundaryComparison
+public import SerrePositivity.KST.SchemeLemmas.AdjugateBoundaryGeneration

@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1350 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1358 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -124,6 +124,7 @@
 - 直和への明示的な分裂表示を任意のテンソル基底変更先で実際に構成し、純テンソルの係数公式と分裂の合成等式を証明済み。代数イデアルの拡大の係数イデアルが、基礎環の係数イデアルの拡大と一致することを証明済み。
 - 境界元倍の中心の有限生成性・冪の所属・補開集合の D(f) との一致を証明済み。任意の実チャートで係数イデアルの拡大が正則単項となり、基底変更した代数イデアルの全元が同じ係数環の正則元で割り切れることを証明済み。分裂した係数表示を入力する古典的計算であり、一般有限型の平坦化中心の存在までは主張しない。
 - 代数イデアルの元倍と係数イデアルの可換性、colon イデアルによる共通因子の除去、および除去後の係数イデアルの単位性を証明済み。基礎環の真のイデアルの拡大への非包含と、その拡大が素である局所環で元の代数イデアルが共通因子による正則単項になることも証明済み。
+- 共通因子 c が元の境界 f の冪を割る場合の境界ねじれの包含と、c の純変換から f の純変換への実比較全射を構成済み。随伴行列の生成元削減と有限生成元数の上界を元の境界 f へ移すことを証明済み。係数中心の実チャートにおける必要な可除性も冪の所属から証明済み。
 - 正則な境界を持つ全アフィン試験対象への純変換の引き戻し平坦性を定義し、Noether アフィンモデルでの証明・任意の前合成での保存・開被覆の局所性を証明済み。
 - チャート環を基礎環とした性質を元の基礎環へ戻す定理、通常 blowup のチャート平坦性との両方向の接続を証明済み。
 - 有限アフィン被覆上の admissible 中心と局所の引き戻し平坦性から、中心の補開集合が U に等しい大域中心と同じ性質を構成・証明済み。
@@ -812,6 +813,10 @@ c が fᴺ を割るなら、c の冪で消える元は f の冪でも消える�
 | `normalizedCoefficientIdeal_coeff_eq_top` | NormalizedCoefficientIdeal | 検証済み | 共通因子を除いた係数イデアルの単位性 |
 | `normalizedCoefficientIdeal_not_le_map` | NormalizedCoefficientIdeal | 検証済み | 拡大された真のイデアルへの非包含 |
 | `coefficientIdeal_regular_principal_at_extended_prime` | CoefficientIdealPrimeLocalization | 検証済み | 拡大素イデアルでの実際の正則単項化 |
+| `modulePureTransformBoundaryMap` | PureTransformBoundaryComparison | 検証済み | 異なる境界元の純変換の実比較写像 |
+| `modulePureTransformBoundaryMap_surjective` | PureTransformBoundaryComparison | 検証済み | 境界冪の可除性による比較全射 |
+| `exists_fin_surjection_boundaryPureTransform_of_regular_minorIdeal` | AdjugateBoundaryGeneration | 検証済み | 元の境界の純変換の有限生成元数の上界 |
+| `boundaryMultipleCenter_chart_regular_principal_dvd_pow` | BoundaryMultipleCenter | 検証済み | チャート共通因子の境界冪への可除性 |
 | `finiteType_tensorPureTransform_flat_baseChange` | FiniteTypeTensorPureTransformBaseChange | 検証済み | 一般有限型加群のチャート平坦性の保存 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
