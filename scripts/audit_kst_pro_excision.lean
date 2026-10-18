@@ -2664,3 +2664,39 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.integerTensor_punit_hom_zero
 #print axioms SerrePositivity.KST.ProExcision.integerTensor_punit_hom_zero
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEndpointEval_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEndpointEval_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEndpointEval_comm
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEndpointEval_comm
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEndpointEval_boundary
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEndpointEval_boundary
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_zero
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_zero
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_add
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_add
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEdgeEvalAddHom
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEdgeEvalAddHom
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_zsmul
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_zsmul
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_comp
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_comp
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_precomp
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalEdgeEval_precomp
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalHomotopySign_zero
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalHomotopySign_zero
+
+#check @SerrePositivity.KST.ProExcision.chainIntervalHomotopySign_succ
+#print axioms SerrePositivity.KST.ProExcision.chainIntervalHomotopySign_succ

@@ -152,3 +152,6 @@ public import SerrePositivity.KST.ProExcision.IntegerIntervalComparison
 public import SerrePositivity.KST.ProExcision.IntegerTensorFreeDesc
 public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluationComponents
 public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluation
+public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluationNaturality
+public import SerrePositivity.KST.ProExcision.ChainIntervalEdgeAdditivity
+public import SerrePositivity.KST.ProExcision.ChainIntervalHomotopySigns

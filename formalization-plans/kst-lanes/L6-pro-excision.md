@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと939宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと951宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -198,6 +198,9 @@
 | integerTensorFreeDesc / integerTensor_free_hom_ext | IntegerTensorFreeDesc.lean | 検証済み | 第二因子の自由基底による降下と純テンソルの外延性 |
 | chainHomotopyIntervalBidegree | ChainIntervalEvaluationComponents.lean | 検証済み | 頂点・符号付き辺・高次の零の実成分 |
 | chainHomotopyIntervalApp / ι_chainHomotopyIntervalApp | ChainIntervalEvaluation.lean | 成分構成済み | 全テンソル区間の実降下写像、微分可換性は未完 |
+| chainIntervalEndpointEval_comm / chainIntervalEndpointEval_boundary | ChainIntervalEvaluationNaturality.lean | 検証済み | 端点評価の微分可換性と辺の境界の端点の差 |
+| chainIntervalEdgeEvalAddHom / chainIntervalEdgeEval_comp / chainIntervalEdgeEval_precomp | ChainIntervalEdgeAdditivity.lean | 検証済み | 辺評価の加法性・整数倍と前後合成 |
+| chainIntervalHomotopySign_zero / chainIntervalHomotopySign_succ | ChainIntervalHomotopySigns.lean | 検証済み | 符号付き辺評価の微分等式の代数部分 |
 | normalizedMapReconstruct / normalizedMapReconstruct_comp | NormalizedMapReconstruction.lean | 検証済み | Dold–Kan の実同値からの単体的射の復元と合成則 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
