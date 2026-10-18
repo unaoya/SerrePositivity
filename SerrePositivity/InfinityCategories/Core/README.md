@@ -524,3 +524,13 @@ A6 続き：**`isQCatEquivalence_sliceConeFamilyMap p` が任意の K、quasicat
 A6 続き：極限錐と `coneFamily` の終対象の同値、相対境界充填からの極限性、同型による相対充填の移送、評価した錐の相対充填を仮定した関手圏の極限性を追加。新規6宣言の全型・前提は計画 §6。最後の仮定は通常の点ごとの極限性より強く A6 完成には数えない。Kerodon Proposition 7.1.6.13 の逆方向には錐の制限の cocartesian な輸送が使われる。一般の inner fibration の fiber の終対象性だけでは相対充填を導けないため、輸送・充填を Core 内で構成する。既存 API・§4 の設計は維持。A6 主定理、A4・A5 は未完了。
 
 上記保存単位の検証：Core ビルド1905 jobs成功、累計1436宣言の公理監査は標準3公理のみ。
+
+A6 続き：cocartesian な辺を先頭の外側ホーンの相対充填で定義し、始点指定の cocartesian な辺の持ち上げを持つ inner fibration を `CocartesianHornFibration` とした。可逆性との整合、引き戻し、恒等射の例と、任意の inner fibration の相対 coslice の left fibration 性を追加。原典は Kerodon Definitions 5.1.1.1・5.1.4.1、Corollary 4.3.6.9。新規13宣言と class の構築子・親構造・射影を合わせた16宣言の全型・前提は計画 §6。既存 API と §4 の設計は維持。錐の制限の cocartesian な輸送・fiber の終対象からの相対境界充填・A6 主定理は未完了、A4・A5 は未着手。
+
+上記保存単位の検証：Core ビルド1909 jobs成功、累計1452宣言の公理監査は標準3公理のみ。追加分は CosliceEndpointFibration.lean とし、既存の RelativeCoslice.lean は変更していない。
+
+F1 の既存 IsCocartesianEdge と同時に import できるよう、Core の今回の補助条件は HasCocartesianHornLifting、輸送の型クラスは CocartesianHornFibration と命名する。既存の F1・Core の API は変更しない。
+
+担当更新（2026-10-18）：α は A6 の完了・報告まで。A4・A5 は D（α-S、InfinityCategories/Stable/）へ移管。Stable/ は他レーンのファイルとして編集しない。A6 後の工程は別途の指示を待つ。
+
+追加の互換性検証：Core 全体と F1.CartesianEdge の同時 import に成功。F1 の既存 IsCocartesianEdge と Core の HasCocartesianHornLifting は両立する。

@@ -353,3 +353,11 @@ public import SerrePositivity.InfinityCategories.Core.ConeTerminalBoundary
 public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryIso
 
 public import SerrePositivity.InfinityCategories.Core.FunctorConeTerminalBoundary
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianEdge
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianFibration
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianEdgePullback
+
+public import SerrePositivity.InfinityCategories.Core.CosliceEndpointFibration

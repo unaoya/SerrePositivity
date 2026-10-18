@@ -3114,3 +3114,51 @@ end InitialCofinalityUniverses
 
 #check @SerrePositivity.InfinityCategories.isLimitCone_of_pointwise_terminalBoundaryLifting
 #print axioms SerrePositivity.InfinityCategories.isLimitCone_of_pointwise_terminalBoundaryLifting
+
+#check @SerrePositivity.InfinityCategories.HasCocartesianHornLifting
+#print axioms SerrePositivity.InfinityCategories.HasCocartesianHornLifting
+
+#check @SerrePositivity.InfinityCategories.IsInvertibleEdge.hasCocartesianHornLifting
+#print axioms SerrePositivity.InfinityCategories.IsInvertibleEdge.hasCocartesianHornLifting
+
+#check @SerrePositivity.InfinityCategories.HasCocartesianHornLifting.isInvertibleEdge_of_map
+#print axioms SerrePositivity.InfinityCategories.HasCocartesianHornLifting.isInvertibleEdge_of_map
+
+#check @SerrePositivity.InfinityCategories.hasCocartesianHornLifting_iff_isInvertibleEdge_of_map
+#print axioms SerrePositivity.InfinityCategories.hasCocartesianHornLifting_iff_isInvertibleEdge_of_map
+
+#check @SerrePositivity.InfinityCategories.CocartesianHornFibration
+#print axioms SerrePositivity.InfinityCategories.CocartesianHornFibration
+
+#check @SerrePositivity.InfinityCategories.hasCocartesianHornLifting_id
+#print axioms SerrePositivity.InfinityCategories.hasCocartesianHornLifting_id
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornFibration_id
+#print axioms SerrePositivity.InfinityCategories.cocartesianHornFibration_id
+
+#check @SerrePositivity.InfinityCategories.hasCocartesianHornLifting_pullback_of_fst
+#print axioms SerrePositivity.InfinityCategories.hasCocartesianHornLifting_pullback_of_fst
+
+#check @SerrePositivity.InfinityCategories.cosliceEndpointMap
+#print axioms SerrePositivity.InfinityCategories.cosliceEndpointMap
+
+#check @SerrePositivity.InfinityCategories.cosliceEndpointMap_fst
+#print axioms SerrePositivity.InfinityCategories.cosliceEndpointMap_fst
+
+#check @SerrePositivity.InfinityCategories.cosliceEndpointMap_snd
+#print axioms SerrePositivity.InfinityCategories.cosliceEndpointMap_snd
+
+#check @SerrePositivity.InfinityCategories.cosliceEndpointMap_hasLiftingProperty
+#print axioms SerrePositivity.InfinityCategories.cosliceEndpointMap_hasLiftingProperty
+
+#check @SerrePositivity.InfinityCategories.cosliceEndpointMap_leftFibration
+#print axioms SerrePositivity.InfinityCategories.cosliceEndpointMap_leftFibration
+
+#check @SerrePositivity.InfinityCategories.CocartesianHornFibration.mk
+#print axioms SerrePositivity.InfinityCategories.CocartesianHornFibration.mk
+
+#check @SerrePositivity.InfinityCategories.CocartesianHornFibration.toInnerFibration
+#print axioms SerrePositivity.InfinityCategories.CocartesianHornFibration.toInnerFibration
+
+#check @SerrePositivity.InfinityCategories.CocartesianHornFibration.exists_lift
+#print axioms SerrePositivity.InfinityCategories.CocartesianHornFibration.exists_lift
