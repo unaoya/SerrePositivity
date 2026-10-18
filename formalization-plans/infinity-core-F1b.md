@@ -19,7 +19,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | --- | --- | --- | --- |
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
-| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon Def 7.2.1.1、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 次 |
+| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（定義・始対象・弱同値の基礎が済、Quillen A は未完） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 | 未着手 |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
@@ -121,14 +121,36 @@ min(t,s) による始域固定の伸長の像の正方形により、任意の�
 その選んだ順射を X 内での単位による前合成の具体的な射と照合する補助 API は未追加。
 B2 の局所対象・冪等性・局所化の普遍性の定理はこの補助 API を仮定せず成立する。
 
+### B3：進行中
+
+`cofinalFunctorSpace/pre` は内部 Hom の頂点 fiber と前合成による相対関手空間。
+F1 の同じ構成は `LeftFiberKan` 経由で `LeftUnstraightening` を import するため、
+一般の fiber・前合成・全境界の充填だけを F1B 内に再構成し、import を狭めた。
+`IsLeftCofinal`・`IsRightCofinal` は Kerodon Def 7.2.1.1 の相対関手空間による条件。
+元の底上の left/right fibration を全て検査し、制限写像そのものの
+`IsSimplicialHomotopyEquivalence` を要求する。始域・標的の quasicategory 性や単射性は不要。
+`cofinalFunctorPre_isSimplicialHomotopyEquivalence_of_leftAnodyne` は任意の底図式にも適用できる。
+そこから left anodyne ⇒ left cofinal と、通常の圏の始対象の頂点包含の left cofinality を得た。
+`initialRestriction_isQCatEquivalence` は二宇宙版 A2h の同じ制限写像に逆を与える。
+一般の cofinality による極限不変性、およびその双対との統一は未完了。
+
+弱同値は [Kerodon §3.1.7](https://kerodon.net/tag/00U1) に従い、全 Kan 標的 Z に対する
+π₀ Fun(-,Z) の全単射で定義した。`IsWeaklyContractible` は点への射の弱同値性であり、
+元の単体集合に Kan 性を要求しない。恒等・合成・二対三則、弱可縮性の移送を証明した。
+写像空間の π₀ の等式から実際のホモトピーを回収することで、Kan 複体間の弱同値から
+ホモトピー逆を構成した。逆方向は元の二対象の Kan 性なしに成立する。
+これにより Prop 3.1.7.13 の判定と、既存 `IsContractibleKan` から弱可縮性への十分性を得た。
+Quillen A 本体、right fibration の相対関手空間の双対 API、cofinality の合成・pullback の一般論、
+全 Kan 標的の写像空間自体の同値による弱同値の判定（Prop 3.1.7.17）は未完了。
+
 ### 次の工程
 
-B3 の right cofinal の定義と Quillen A に進む。
+B3 の相対関手空間の双対性・弱同値判定を整え、Quillen A を証明する。
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2171 jobs、公理監査1753宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内502モジュールに straightening 依存なし。
+対象ビルド2181 jobs、公理監査1794宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内512モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -170,4 +192,14 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `functorIsoRestrictedPrecompositionOfHomotopy` | 選んだ関手族上でだけ可逆となる前合成作用 | 済 |
 | `ReflectiveSubcategory.unitComponent_mem_invertedEdges/invertingUnitPrecompositionIso` | 反射による単位の反転と反転関手族上の自然同型 | 済 |
 | `ReflectiveSubcategory.localizationRestriction/localizationPrecompositionEquivalence/isLocalization` | 包含による明示的な逆と反射的局所化の普遍性 | 済 |
-| B3〜B5 | §1 の残る工程 | 未着手 |
+| `cofinalFunctorSpace/pre`・`cofinalFunctorPre_id/comp/trivialKanFibration` | straightening を import しない相対関手空間・制限・left anodyne による充填 | 済 |
+| `IsLeftCofinal/IsRightCofinal`・`isLeftCofinal_id/isRightCofinal_id` | 元の底上の fibration への関手の制限による cofinality と恒等例 | 済 |
+| `cofinalFunctorPre_isSimplicialHomotopyEquivalence_of_leftAnodyne`・`isLeftCofinal_of_leftAnodyne` | 任意の底図式の制限と left anodyne の十分性 | 済 |
+| `nervePoint_isLeftCofinal`・`initialRestriction_isQCatEquivalence` | 二宇宙版 A2h と極限の向きとの接続 | 済 |
+| `IsWeakHomotopyEquivalence/IsWeaklyContractible`・`comp/cancel_left/cancel_right/weaklyContractible_iff` | Kan 標的のホモトピー類による弱同値・二対三則・弱可縮性 | 済 |
+| `nonempty_vertexIso_of_piZero_eq`・`functorVertex_piZero_eq_iff_homotopy` | Kan 複体の成分の等式から実際の同型・ホモトピーへの変換 | 済 |
+| `functorIsoPrecompositionOfHomotopy_kan`・`IsSimplicialHomotopyEquivalence.isWeakHomotopyEquivalence` | 任意の単体集合のホモトピー逆は弱同値 | 済 |
+| `IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence`・`isWeakHomotopyEquivalence_iff_isQCatEquivalence`・`isWeakHomotopyEquivalence_iff_isSimplicialHomotopyEquivalence` | Kan 複体間の Whitehead 判定 | 済 |
+| `IsPrecompositionEquivalence.isWeakHomotopyEquivalence`・`IsQCatEquivalence.isWeakHomotopyEquivalence` | 圏同値から弱同値への接続 | 済 |
+| `IsContractibleKan.isWeaklyContractible`・`isContractibleKan_terminal/isWeaklyContractible_terminal` | 全境界の充填による十分性と一点の例 | 済 |
+| B3 の Quillen A・B4〜B5 | §1 の残る工程 | 未完了 |

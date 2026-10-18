@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1B.Cofinality
+public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.F1B.WeakContractibility
+
 public import SerrePositivity.InfinityCategories.F1B.Adjunction
 public import SerrePositivity.InfinityCategories.F1B.AdjunctNaturality
 public import SerrePositivity.InfinityCategories.F1B.MappingParameters
