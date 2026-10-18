@@ -209,3 +209,11 @@ public import SerrePositivity.KST.ProExcision.BlockColumnCommute
 public import SerrePositivity.KST.ProExcision.BlockColumnGroup
 
 public import SerrePositivity.KST.ProExcision.GroupZeroMHomotopy
+
+public import SerrePositivity.KST.ProExcision.FixedBlockGroup
+
+public import SerrePositivity.KST.ProExcision.BlockPattern
+
+public import SerrePositivity.KST.ProExcision.IntegerUnitization
+
+public import SerrePositivity.KST.ProExcision.BlockPatternColumn

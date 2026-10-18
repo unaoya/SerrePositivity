@@ -3048,3 +3048,63 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.groupZeroMHomotopy_equivariant
 #print axioms SerrePositivity.KST.ProExcision.groupZeroMHomotopy_equivariant
+
+#check @SerrePositivity.KST.ProExcision.matrix_mul_fixed_column
+#print axioms SerrePositivity.KST.ProExcision.matrix_mul_fixed_column
+
+#check @SerrePositivity.KST.ProExcision.matrix_mul_fixed_row
+#print axioms SerrePositivity.KST.ProExcision.matrix_mul_fixed_row
+
+#check @SerrePositivity.KST.ProExcision.fixedBlockSubgroup
+#print axioms SerrePositivity.KST.ProExcision.fixedBlockSubgroup
+
+#check @SerrePositivity.KST.ProExcision.fixedBlockSubgroup_commute_column
+#print axioms SerrePositivity.KST.ProExcision.fixedBlockSubgroup_commute_column
+
+#check @SerrePositivity.KST.ProExcision.fixedBlockProduct
+#print axioms SerrePositivity.KST.ProExcision.fixedBlockProduct
+
+#check @SerrePositivity.KST.ProExcision.blockPatternSubring
+#print axioms SerrePositivity.KST.ProExcision.blockPatternSubring
+
+#check @SerrePositivity.KST.ProExcision.oneDifference_mul_mem
+#print axioms SerrePositivity.KST.ProExcision.oneDifference_mul_mem
+
+#check @SerrePositivity.KST.ProExcision.oneDifferenceSubgroup
+#print axioms SerrePositivity.KST.ProExcision.oneDifferenceSubgroup
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroup
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroup
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroup_fixed_column
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroup_fixed_column
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroup_fixed_max_row
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroup_fixed_max_row
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationIdeal
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationIdeal
+
+#check @SerrePositivity.KST.ProExcision.mem_integerUnitizationIdeal
+#print axioms SerrePositivity.KST.ProExcision.mem_integerUnitizationIdeal
+
+#check @SerrePositivity.KST.ProExcision.inr_mem_integerUnitizationIdeal
+#print axioms SerrePositivity.KST.ProExcision.inr_mem_integerUnitizationIdeal
+
+#check @SerrePositivity.KST.ProExcision.mem_integerUnitizationIdeal_iff
+#print axioms SerrePositivity.KST.ProExcision.mem_integerUnitizationIdeal_iff
+
+#check @SerrePositivity.KST.ProExcision.nonUnitalTriangularBlockGroup
+#print axioms SerrePositivity.KST.ProExcision.nonUnitalTriangularBlockGroup
+
+#check @SerrePositivity.KST.ProExcision.single_mem_blockPattern
+#print axioms SerrePositivity.KST.ProExcision.single_mem_blockPattern
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_mem_blockPattern
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_mem_blockPattern
+
+#check @SerrePositivity.KST.ProExcision.squareZeroUnit_mem_oneDifference
+#print axioms SerrePositivity.KST.ProExcision.squareZeroUnit_mem_oneDifference
+
+#check @SerrePositivity.KST.ProExcision.blockColumnHom_mem_triangularBlockGroup
+#print axioms SerrePositivity.KST.ProExcision.blockColumnHom_mem_triangularBlockGroup

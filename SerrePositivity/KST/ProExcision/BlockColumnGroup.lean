@@ -59,7 +59,7 @@ def blockColumnHom (r : ι → κ) (p : κ) (hp : ∀ i, p ≠ r i) :
 方針：第一因子と第二因子の像の積を取り、交差項だけを可換にする。
 規約：KST A.5 の μ と Lemma 4.16 の P,Q,H を明示する方式。
 使われ方：ブロック P の埋め込みと ψ の準同型を最後の μ に束ねる。 -/
-def commutingProductHom {P Q H : Type u} [Group P] [Group Q] [Group H]
+def commutingProductHom {P : Type u} {Q : Type v} {H : Type w} [Group P] [Group Q] [Group H]
     (f : P →* H) (g : Q →* H) (h : ∀ p q, Commute (f p) (g q)) : P × Q →* H where
   toFun z := f z.1 * g z.2
   map_one' := by
