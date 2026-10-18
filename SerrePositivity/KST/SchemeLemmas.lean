@@ -169,3 +169,5 @@ public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdealColumnSpan
 public import SerrePositivity.KST.SchemeLemmas.RelationPivotElimination
 public import SerrePositivity.KST.SchemeLemmas.PureTransformPivotElimination
 public import SerrePositivity.KST.SchemeLemmas.AdjugateRelationElimination
+public import SerrePositivity.KST.SchemeLemmas.LocalRegularPrincipalGenerator
+public import SerrePositivity.KST.SchemeLemmas.LocalMinorPivot
