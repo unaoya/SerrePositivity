@@ -1067,6 +1067,24 @@
 - 係数の可換性・平坦性・被覆の有限性は不要。Ext・右導来切断の環層版への移送は継続中。
 - §50 の区切りの全体ビルドは、並行作業中のルート import にある `KST/Spectra/Rationalization.olean` の欠落で失敗した。K-L4 の import 閉包には Spectra はなく、集約対象ビルドは成功しているため続行した。
 
+### §51 の係数コホモロジーへの接続
+
+- 保存検証：集約対象ビルド 3938 jobs 成功、公理監査 1868 宣言。標準3公理のみ、KTheory import なし。
+
+- 実際の環層加群層圏で、自由開加群の Hom と切断の加法性・両側の自然性、injective 分解の存在、サイクルの局所境界、正次数 Ext 類の局所消滅と有限基本開被覆での同時消滅を証明した。
+- 形式的自由層の Hom と元の切断 Čech の自然同型、および Čech 制限の Ext 単射性を証明した。実際の層化の余積比較と Ext の有限余積比較も移した。
+- 基本開の全正次数 Ext 消滅の Cartan 型強帰納を環層加群層圏へ適用した。任意の係数環層 B 上で基礎 O 加群層が準連接な対象の正次数 Ext と各基本開上の実際の右導来切断が零となる。
+- H⊗O_X 係数について、実際の H 加群値大域切断関手 `affineCoefficientΓ H` の高次右導来関手も零と証明した。H の平坦性・可換性は要求していない。
+- 非有界 Dqc のアフィン同値はこれだけでは完了していない。T1・T1′、T2、T3、Perf、RHom は引き続き未完了。
+
+## 52. 全係数加群層への tilde と大域切断の随伴（実装前記録）
+
+- 文言：アフィン係数 tilde `affineCoefficientTildeFunctor H` は全係数加群層から H 加群への実際の大域切断 `affineCoefficientΓ H` の左随伴。終域層の準連接性は要求しない。
+- 方針：準連接な始域 M と任意の終域 N に対し、ΓM→ΓN の H 線形写像をまず R 線形に忘れる。通常の tilde–Γ 随伴と M の余単位同型で O 加群層の射を得る。既証の「準連接な始域からの射は大域切断で決まる」と「定数 H 作用との可換性から係数線形性」を用い、実際の係数加群層の射へ戻す。二つの Hom 表示の自然性から随伴を構成する。
+- tilde の完全性は既証なので、大域切断が injective を保つことはこの随伴と左完全性から証明できる。準連接層での高次右導来大域切断の消滅は §51 の実際の係数層の分解の結果を使う。
+- まず実際の通常随伴と bounded below の導来比較を構成する。非有界 Dqc 全体の同値は bounded below の結果だけから結論しない。非有界への延長の存在・完全忠実性・本質的全射性は別工程で証明する。
+- 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1267,6 +1285,11 @@
 | `ringedFreeSheafOnOpenHomEquiv`・`ringedFreeFormalPresheafEvaluationIso` | DerivedGeometry/RingedFreeYoneda | 実装・対象ビルド済み |
 | `ringed_exact_iff_toSheaf` | DerivedGeometry/RingedForgetExact | 実装・対象ビルド済み |
 | `ringedFreeSheafAugmentedCech_acyclic` | DerivedGeometry/RingedFreeCechExact | 実装・対象ビルド済み |
+| `ringedExt_locallyZero`・`ringedExt_finiteBasicOpenVanishing` | DerivedGeometry/RingedExtLocalVanishing・RingedAffineExtLocal | 実装・対象ビルド済み |
+| `ringedSheafCechHomIso`・`ringedCech_ext_precomp_injective` | DerivedGeometry/RingedCechExt | 実装・対象ビルド済み |
+| `ringedAffineExt_subsingleton_of_cech` | DerivedGeometry/RingedAffineExtCartan | 実装・対象ビルド済み |
+| `affineCoefficient_rightDerivedSections_isZero` | DerivedGeometry/AffineCoefficientCohomology | 実装・対象ビルド済み |
+| `affineCoefficientΓ_rightDerived_isZero` | DerivedGeometry/AffineGammaAcyclic | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
