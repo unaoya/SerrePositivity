@@ -12,7 +12,7 @@ Blumberg–Gepner–Tabuada（BGT）は arXiv:1001.2282。Waldhausen は LNM 112
 既存の計画との関係：[k-theory.md](k-theory.md) の M3〜M10 の目標は維持する。本計画はその M6〜M10 の経路を
 確定し、M4 の扱いを変える。[k-theory.md](k-theory.md) §159 の「∞ 圏は導入しない」は、
 2026-10-17 の決定（[infinity-categories.md](infinity-categories.md)）で改められており、本計画はその上に書く。
-[bs-clmst-citation-elimination.md](bs-clmst-citation-elimination.md) は未採用であり、本計画はそれに依存しない。
+[bs-clmst-citation-elimination.md](archive/bs-clmst-citation-elimination.md) は未採用であり、本計画はそれに依存しない。
 
 ---
 

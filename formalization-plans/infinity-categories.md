@@ -4,6 +4,18 @@
 
 ## 0. 一旦の目標
 
+**現在地（2026-10-18）：G1 達成。** 採用した型は
+`BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3`（D(R) レベル）で、
+原典照合と公開型は [perfectoidization-interface.md](perfectoidization-interface.md) に記録した。
+Π2-8・Π3 により、perfectoid 側の唯一の文献入力は
+`BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` となる。
+旧二入口は公開名・型を保った界面由来の定理となり、CLMST のファイルは変更しない。
+差写像の全射性は Π2 の名前で公開する。主定理の未証明依存はこの存在入力と
+`Section4.supportedRankK0_descent`・`theorem_3_1_K0` の三件。
+以下の CAlg による構造体は当初案であり、採用した E3 の universal は離散時の環の射の普遍性、
+limit は Type u の perfectoid 標的への制限付き極限である。
+具体的な prismatic perfection と降下の証明、および E2 の表示比較は引き続き別工程である。
+
 2026-10-17 の決定：Bhatt–Scholze §7–§8 と K 理論を ∞ 圏（quasicategory）の基盤に載せる。
 その最初の到達点として次を置く。
 

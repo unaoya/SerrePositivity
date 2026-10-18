@@ -16,7 +16,7 @@ its perfect-complex and rank-quotient realizations, the standard commutative alg
 (regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
 the connection to the main theorem are implemented.
 
-The main theorem still depends on **2 external quotations (both from Bhatt–Scholze) and 2 deferred K-theory proofs**.
+The main theorem still depends on **1 external quotation (the Bhatt–Scholze perfectoidization interface) and 2 deferred K-theory proofs**.
 `main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
 They are not proofs of the main theorem without those inputs. The complete Noetherian flat
 residue-field extension is now constructed without quotations; its legacy `Inputs` entry point
@@ -41,14 +41,16 @@ theorem is proved by Serre's reduction to the diagonal in
 and a comparison of Tor over `R` and over `R[[Y]]`
 (see appendix A of [the exposition](exposition/ja/exposition-ja.tex)). By section of the preprint:
 
-- §2 (residue fields, normalized length, Theorem 2.5): proved relative to 2 quotations from
-  Bhatt–Scholze, *Prisms and prismatic cohomology*: the existence of the universal perfectoidization
-  of an integral algebra (Thm 1.17(1), `BhattScholze.Inputs.exists_perfectoidization_of_integral`)
-  and the ring-level consequence of the excision Corollary 8.12
-  (`BhattScholze.Inputs.perfectoidization_excision_isPullback`). The surjectivity Thm 7.4,
-  André's flatness lemma Thm 7.14, Lemma 10.3, Prop 10.2 and Remark 10.7 are proved in the
-  repository, and CLMST Proposition 2.4.7 and Corollary 4.0.4 are proved along the CLMST proofs
-  from those inputs (see appendix A of the exposition for the exact form of the Cor 8.12 quotation).
+- §2 (residue fields, normalized length, Theorem 2.5): proved relative to the existence of
+  the derived perfectoidization interface from Bhatt–Scholze, *Prisms and prismatic cohomology*
+  (`BhattScholze.Inputs.exists_perfectoidizationInterfaceE3`). The ring-level existence theorem
+  (Thm 1.17(1), `BhattScholze.Inputs.exists_perfectoidization_of_integral`) and excision theorem
+  (Cor 8.12, `BhattScholze.Inputs.perfectoidization_excision_isPullback`) are now derived from
+  that interface, preserving their public types. The difference map is also proved surjective.
+  The surjectivity Thm 7.4, André's flatness lemma Thm 7.14, Lemma 10.3, Prop 10.2 and
+  Remark 10.7 are proved in the repository. CLMST Proposition 2.4.7 and Corollary 4.0.4
+  retain their existing entry points and depend on the single interface quotation
+  (see appendix A of the exposition for its scope).
 - §3 (Lemmas 3.4–3.5): proved, except that Theorem 3.1 (rational K-theory descent) is deferred
   (`theorem_3_1_K0`).
 - §4 (Theorem 4.7): proved, except that the descent of Lemma 4.6 is deferred
@@ -68,7 +70,7 @@ and finite-stage length calculations. CLMST Proposition 2.4.7 (the cone of `S �
 `J`-isogeny) and Corollary 4.0.4 (almost vanishing of local cohomology and Koszul homology of
 `C_D`) are now proved following the CLMST arguments: base change along a proved André extension,
 Zariski-local splitting of finite étale algebras over absolutely integrally closed rings, the
-excision input Cor 8.12 for the kernel and cokernel bounds, the elementary Claim 2.4.8, and
+ring excision theorem derived from the interface for the kernel and cokernel bounds, the elementary Claim 2.4.8, and
 descent along `p`-completely faithfully flat maps; the Tor input of Theorem 4.0.3(a) is proved for
 all modules by the Milnor sequence and Prop 10.2. The idempotence of the perfectoid ideal modulo
 `p` powers (Remark 10.7) is proved from Lemma 10.3 and Thm 7.4; neither is a quotation any more.

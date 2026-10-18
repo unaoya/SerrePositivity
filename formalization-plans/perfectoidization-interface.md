@@ -1,7 +1,11 @@
 # Perfectoid 化の界面：原典照合と E3 / E2a の型草案（Π1）
 
 2026-10-18。状態：Π1 の原典照合と Π2 の界面・導出の公開型。
-界面の存在宣言（Π2-8）と旧入力の置換（Π3）は未実施。
+Π2-8・Π3 完了（G1 達成）。perfectoid 側に残す文献入力は
+`BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` の一件。
+旧二入口は公開名・型を保って界面からの証明に置換し、CLMST の利用箇所は変更していない。
+主定理の未証明依存は、この入力と `Section4.supportedRankK0_descent`・`theorem_3_1_K0` の三件。
+界面の具体的構成・降下の証明と E2 の表示比較は別工程として残る。
 正本の計画は [infinity-categories.md](infinity-categories.md) §0・§6、
 [derived-infinity-category.md](derived-infinity-category.md) §0、
 モデルの工程は [e-infinity-algebras.md](e-infinity-algebras.md)。

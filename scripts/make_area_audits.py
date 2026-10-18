@@ -19,8 +19,7 @@ AREAS = {
     "dg": (["DifferentialGraded", "Inputs/DifferentialGraded"], []),
     "clmst": (["CLMST"], []),
     "bhatt_scholze": (["BhattScholze"], [
-        "SerrePositivity/BhattScholze/Inputs/Perfectoidization.lean",
-        "SerrePositivity/BhattScholze/Inputs/ArcExcision.lean",
+        "SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean",
     ]),
     "adams": (["KTheory", "IntersectionMultiplicity"], []),
     "shared": (["HomologicalAlgebra", "CommutativeAlgebra", "PerfectComplex", "LengthAlgebra",
