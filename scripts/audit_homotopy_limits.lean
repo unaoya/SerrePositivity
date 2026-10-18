@@ -2413,3 +2413,72 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @spectrumHomCone_isLimit_of_levelwise
 #print axioms spectrumHomCone_isLimit_of_levelwise
+
+#check @prodPointedSimplex
+#print axioms prodPointedSimplex
+
+#check @prodPointedSimplex_fst
+#print axioms prodPointedSimplex_fst
+
+#check @prodPointedSimplex_snd
+#print axioms prodPointedSimplex_snd
+
+#check @kanHomotopyProdMap
+#print axioms kanHomotopyProdMap
+
+#check @kanHomotopyProdMap_bijective
+#print axioms kanHomotopyProdMap_bijective
+
+#check @kanHomotopyProdEquiv
+#print axioms kanHomotopyProdEquiv
+
+#check @kanHomotopyProdMap_naturality
+#print axioms kanHomotopyProdMap_naturality
+
+#check @kanPiIsomorphism_tensor
+#print axioms kanPiIsomorphism_tensor
+
+#check @loopProductCone_isLimit
+#print axioms loopProductCone_isLimit
+
+#check @loopProductIso
+#print axioms loopProductIso
+
+#check @loopProductIso_hom_fst
+#print axioms loopProductIso_hom_fst
+
+#check @loopProductIso_hom_snd
+#print axioms loopProductIso_hom_snd
+
+#check @binaryProductSigma
+#print axioms binaryProductSigma
+
+#check @binaryProductSigma_adjoint
+#print axioms binaryProductSigma_adjoint
+
+#check @binaryProductKanSequence
+#print axioms binaryProductKanSequence
+
+#check @binaryProductKanSequenceFst
+#print axioms binaryProductKanSequenceFst
+
+#check @binaryProductKanSequenceSnd
+#print axioms binaryProductKanSequenceSnd
+
+#check @kanSequenceHom_ext
+#print axioms kanSequenceHom_ext
+
+#check @binaryProductKanSequenceLift
+#print axioms binaryProductKanSequenceLift
+
+#check @binaryProductKanSequenceLift_fst
+#print axioms binaryProductKanSequenceLift_fst
+
+#check @binaryProductKanSequenceLift_snd
+#print axioms binaryProductKanSequenceLift_snd
+
+#check @binaryProductKanSequenceLift_uniq
+#print axioms binaryProductKanSequenceLift_uniq
+
+#check @binaryProductKanSequence_omega
+#print axioms binaryProductKanSequence_omega

@@ -183,3 +183,5 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePullbacks
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTowers
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumMappingDiagram
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomLimitFamilies
+public import SerrePositivity.InfinityCategories.HomotopyLimits.KanPiProducts
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumBinaryProductSequence

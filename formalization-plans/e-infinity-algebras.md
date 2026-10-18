@@ -1128,3 +1128,31 @@ Sp の実際の極限対象の Ω 条件と構造射の単射性、必要な Hom
 他担当の依存758ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-hom-limits-aggregate.log` と
 `/tmp/gamma3-spectrum-hom-limits-audit.log`。
+
+
+### γ3c：Sp の二項積の Ω 条件の検証
+
+`KanPiProducts` は L9 の全自然数次数のホモトピー類について、全基点で積の二つの射影が
+全単射 `kanHomotopyProdMap_bijective` を与えることを証明した。
+積の射に関する自然性を使い、`kanPiIsomorphism_tensor` は全基点 π_* 同型の
+二項積が再び全基点 π_* 同型となることを証明。零次数も含み、正次数の指定基点だけに弱めていない。
+`SpectrumBinaryProductSequence` は loop の右随伴性から `loopProductIso` を作り、
+射影と可換すること、および `binaryProductSigma_adjoint` により積の構造射の随伴が
+二つの随伴の積に厳密に一致することを証明した。
+`binaryProductKanSequence X Y` と厳密な射影二本、任意の二射を組にする普遍射、
+射影則と一意性も構成。`binaryProductKanSequence_omega` の型は
+`(X Y : KanSequence.{u}) → X.OmegaCondition → Y.OmegaCondition →
+(binaryProductKanSequence X Y).OmegaCondition`。
+全基点・零次数を含む Ω 条件を二つの成分から検証し、構造射の単射性は仮定しない。
+原典は BF 1978 §2、HA §1.4.2、Kerodon §3.2.2、HTT 4.2.4.1。
+新規23宣言の正確な型・全前提は README に記録し、公開1107宣言の監査へ追加した。
+この対象は単射構造をまだ持たない Kan Ω 列の積であり、L9 の OmegaSpectrum として
+束縛する構造射の単射性、Sp の二項積の極限錐、空積と有限積、引き戻し・塔の公開は未完了。
+中間の列の Ω 条件と普遍性だけで Sp の有限積を完了とは数えない。
+元の非反転の end・q_x と反転係数の直接比較、余極限側も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4587 jobs）、公開1107宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-binary-product-sequence-aggregate.log` と
+`/tmp/gamma3-spectrum-binary-product-sequence-audit.log`。

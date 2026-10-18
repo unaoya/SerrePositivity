@@ -5834,3 +5834,147 @@ Sp の積・引き戻し・塔の極限対象を構成した定理ではない�
 他担当の依存758ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-hom-limits-aggregate.log` と
 `/tmp/gamma3-spectrum-hom-limits-audit.log`。
+
+
+### γ3c：Sp の二項積に向けた全基点 π_* 同型と Kan Ω 列の積
+
+`KanPiProducts` は L9 の実際の `KanHomotopy` について、積の二つの射影による
+`kanHomotopyProdMap n x y` が全単射であることを証明した。
+全ての基点 (x,y) と全自然数次数 n を扱い、零次数を除外しない。
+単射性は二つの充填関係を積へ組み合わせ、全射性は境界定数単体の代表を積へ組む。
+積の射に関する自然性を証明し、`kanPiIsomorphism_tensor` として、全基点の π_* 同型の
+二項積も全基点の π_* 同型であることを公開した。
+指定した基点の正次数の群だけへ条件を弱めていない。
+
+`SpectrumBinaryProductSequence` は loop の右随伴性から点つき二項積の標準同型
+`loopProductIso A B : loopSpace (PointedObject.prod A B) ≅
+PointedObject.prod (loopSpace A) (loopSpace B)` を構成し、射影との厳密な可換式を証明した。
+二つの構造射から `binaryProductSigma s t` を作り、その随伴がこの同型の下で
+二つの随伴構造射の積に厳密に一致することを `binaryProductSigma_adjoint` で証明。
+
+L9 の二つの `KanSequence` の段ごとの二項積 `binaryProductKanSequence X Y` を構成した。
+射影二本、任意の厳密な列の射 f、g を組にする普遍射、その射影則と一意性も公開した。
+各段の Kan 性は点つき積の成分ごとの充填から得る。
+主定理 `binaryProductKanSequence_omega` は
+
+```lean
+binaryProductKanSequence_omega (X Y : KanSequence.{u})
+    (hX : X.OmegaCondition) (hY : Y.OmegaCondition) :
+  (binaryProductKanSequence X Y).OmegaCondition
+```
+
+を与える。loop と積の厳密な同型、随伴構造射の計算、全基点 π_* 同型の二項積の保存から
+Ω 条件を検証した。各段の構造射の単射性はこの証明の前提には置かない。
+原典上の位置は BF 1978 §2、HA §1.4.2、Kerodon §3.2.2、HTT 4.2.4.1。
+
+新規23宣言の正確な型・前提は以下。宇宙は u、KanHomotopy・KanPiIsomorphism・
+KanSequence は L9 の既存のものを使う。
+
+```lean
+def prodPointedSimplex {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌} {y : Y _⦋0⦌}
+    (f : X.PtSimplex n x) (g : Y.PtSimplex n y) : (X ⊗ Y).PtSimplex n (x, y)
+
+lemma prodPointedSimplex_fst {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌} {y : Y _⦋0⦌}
+    (f : X.PtSimplex n x) (g : Y.PtSimplex n y) :
+    mapSimplex (fst X Y) rfl (prodPointedSimplex f g) = f
+
+lemma prodPointedSimplex_snd {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌} {y : Y _⦋0⦌}
+    (f : X.PtSimplex n x) (g : Y.PtSimplex n y) :
+    mapSimplex (snd X Y) rfl (prodPointedSimplex f g) = g
+
+def kanHomotopyProdMap {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
+    (n : ℕ) (x : X _⦋0⦌) (y : Y _⦋0⦌) :
+    KanHomotopy (X ⊗ Y) n (x, y) → KanHomotopy X n x × KanHomotopy Y n y
+
+lemma kanHomotopyProdMap_bijective {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
+    (n : ℕ) (x : X _⦋0⦌) (y : Y _⦋0⦌) : Function.Bijective (kanHomotopyProdMap n x y)
+
+def kanHomotopyProdEquiv {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
+    (n : ℕ) (x : X _⦋0⦌) (y : Y _⦋0⦌) :
+    KanHomotopy (X ⊗ Y) n (x, y) ≃ KanHomotopy X n x × KanHomotopy Y n y
+
+lemma kanHomotopyProdMap_naturality {X Y X' Y' : SSet.{u}}
+    [KanComplex X] [KanComplex Y] [KanComplex X'] [KanComplex Y']
+    (f : X ⟶ X') (g : Y ⟶ Y') (n : ℕ) (x : X _⦋0⦌) (y : Y _⦋0⦌)
+    (a : KanHomotopy (X ⊗ Y) n (x, y)) :
+    kanHomotopyProdMap n (f.app _ x) (g.app _ y)
+        (KanHomotopy.map n (f ⊗ₘ g) rfl a) =
+      Prod.map (KanHomotopy.map n f rfl) (KanHomotopy.map n g rfl)
+        (kanHomotopyProdMap n x y a)
+
+lemma kanPiIsomorphism_tensor {X Y X' Y' : SSet.{u}}
+    [KanComplex X] [KanComplex Y] [KanComplex X'] [KanComplex Y']
+    {f : X ⟶ X'} {g : Y ⟶ Y'} (hf : KanPiIsomorphism f) (hg : KanPiIsomorphism g) :
+    KanPiIsomorphism (f ⊗ₘ g)
+
+def loopProductCone_isLimit (A B : PointedSimplicialSet.{u}) :
+    IsLimit (BinaryFan.mk (PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
+      (PointedObject.prodFst A B)) (PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
+        (PointedObject.prodSnd A B)))
+
+def loopProductIso (A B : PointedSimplicialSet.{u}) :
+    loopSpace (PointedObject.prod A B) ≅ PointedObject.prod (loopSpace A) (loopSpace B)
+
+lemma loopProductIso_hom_fst (A B : PointedSimplicialSet.{u}) :
+    (loopProductIso A B).hom ≫ PointedObject.prodFst (loopSpace A) (loopSpace B) =
+      PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (PointedObject.prodFst A B)
+
+lemma loopProductIso_hom_snd (A B : PointedSimplicialSet.{u}) :
+    (loopProductIso A B).hom ≫ PointedObject.prodSnd (loopSpace A) (loopSpace B) =
+      PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (PointedObject.prodSnd A B)
+
+def binaryProductSigma {A B A' B' : PointedSimplicialSet.{u}}
+    (s : suspension A ⟶ A') (t : suspension B ⟶ B') :
+    suspension (PointedObject.prod A B) ⟶ PointedObject.prod A' B'
+
+lemma binaryProductSigma_adjoint {A B A' B' : PointedSimplicialSet.{u}}
+    (s : suspension A ⟶ A') (t : suspension B ⟶ B') :
+    suspensionLoopEquiv _ _ (binaryProductSigma s t) ≫ (loopProductIso A' B').hom =
+      PointedObject.prodMap (suspensionLoopEquiv _ _ s) (suspensionLoopEquiv _ _ t)
+
+def binaryProductKanSequence (X Y : KanSequence.{u}) : KanSequence.{u}
+
+def binaryProductKanSequenceFst (X Y : KanSequence.{u}) :
+    KanSequence.Hom (binaryProductKanSequence X Y) X
+
+def binaryProductKanSequenceSnd (X Y : KanSequence.{u}) :
+    KanSequence.Hom (binaryProductKanSequence X Y) Y
+
+lemma kanSequenceHom_ext {X Y : KanSequence.{u}} {f g : KanSequence.Hom X Y}
+    (h : ∀ n, f.app n = g.app n) : f = g
+
+def binaryProductKanSequenceLift {X Y Z : KanSequence.{u}}
+    (f : KanSequence.Hom Z X) (g : KanSequence.Hom Z Y) :
+    KanSequence.Hom Z (binaryProductKanSequence X Y)
+
+lemma binaryProductKanSequenceLift_fst {X Y Z : KanSequence.{u}}
+    (f : KanSequence.Hom Z X) (g : KanSequence.Hom Z Y) :
+    (binaryProductKanSequenceLift f g).comp (binaryProductKanSequenceFst X Y) = f
+
+lemma binaryProductKanSequenceLift_snd {X Y Z : KanSequence.{u}}
+    (f : KanSequence.Hom Z X) (g : KanSequence.Hom Z Y) :
+    (binaryProductKanSequenceLift f g).comp (binaryProductKanSequenceSnd X Y) = g
+
+lemma binaryProductKanSequenceLift_uniq {X Y Z : KanSequence.{u}}
+    (f : KanSequence.Hom Z X) (g : KanSequence.Hom Z Y)
+    (m : KanSequence.Hom Z (binaryProductKanSequence X Y))
+    (hf : m.comp (binaryProductKanSequenceFst X Y) = f)
+    (hg : m.comp (binaryProductKanSequenceSnd X Y) = g) :
+    m = binaryProductKanSequenceLift f g
+
+lemma binaryProductKanSequence_omega (X Y : KanSequence.{u})
+    (hX : X.OmegaCondition) (hY : Y.OmegaCondition) :
+    (binaryProductKanSequence X Y).OmegaCondition
+```
+
+今回の対象は構造射の単射性をまだ要求しない Kan Ω 列の二項積。
+L9 の `OmegaSpectrum` として束縛する構造射の単射性の検証、Sp の二項積の錐と極限性、
+空積と一般の有限積、引き戻しと塔の実際の Sp の極限の公開は未完了。
+この中間の列の Ω 条件と普遍性だけで Sp の有限積を完了とは数えない。
+元の非反転の end・q_x と反転係数の直接比較、余極限側も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4587 jobs）、公開1107宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-binary-product-sequence-aggregate.log` と
+`/tmp/gamma3-spectrum-binary-product-sequence-audit.log`。
