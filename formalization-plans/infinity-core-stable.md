@@ -468,7 +468,21 @@ cofiber 列の回転の幾何学的構成と最初の二射の照合が完成し
 （Quasicategory、IsStable）。
 **TR2 は未完了**。回転後の列の接続射が −Σf となる符号の同定、
 通常の Triangle の回転の所属とその逆方向が残る。最初の二射の照合を TR2 全体の完成とは数えない。
-次に suspension の二つの零枝の交換と負号の関係を証明する。
+suspension の二つの零枝の交換の幾何学と自然性を整備した。
+`SuspensionSquare.transpose` は二つの零角を交換し、始点・suspension 頂点を保つ。
+`transpose_transpose`・`transpose_vertex` は二回で元に戻ることと頂点の保持を示す
+（値域に仮定なし）。`swapIso` は元の四角形と転置の標準比較による同じ頂点上の自己同型
+（Quasicategory）。
+`squareTranspose_evaluation`・`squareDiagramHoEvaluation_transpose` は対角頂点の評価の
+転置不変性を単体的な射・h の射の両方で示す。
+`diagramComparisonIso_hom_transpose`・`comparisonIso_hom_transpose` は標準比較との両立。
+`swapIso_hom_eq_reverse`・`swapIso_hom_comp_self` は交換が逆向きの標準比較とも一致し、
+その二乗が恒等になることを証明する（Quasicategory、IsStable は不要）。
+`diagramComparisonIso_transpose_naturality`・`swapIso_naturality` は、異なる始点を持つ
+suspension 図式の任意の h の射に対して交換作用が可換となることを証明する
+（Quasicategory、安定性・加法性の追加仮定なし）。
+**交換の二乗が恒等であることを負の恒等射との一致とは数えない**。
+次に、構成済みの加法で `swapIso.hom + 𝟙 = 0`、従って `swapIso.hom = -𝟙` を証明する。
 八面体、Pretriangulated instance も未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -619,6 +633,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | h C の前加法構造 | `stableHomAddCommMonoid`、`exists_additiveInverse_of_zeroSourcePushout`、`exists_stableHom_additiveInverse`、`stableHomAddCommGroup`、`preadditive_ho`（Quasicategory、IsStable） | Hom の可換群・合成の双加法性・Preadditive instance まで完成 |
 | h C の有限双積とシフトの加法性 | `hasFiniteProducts_ho`、`hasFiniteBiproducts_ho`、`suspensionFunctor_additive`、`loopFunctor_additive`、`shiftFunctor_additive_ho`（Quasicategory、IsStable） | 全有限双積・Σ・Ω・全整数シフトの加法性まで完成。∞ 圏自体の全有限極限・余極限の存在は未証明 |
 | cofiber 列の回転の幾何学的構成と二射列 | `pastingLeftToOuterHomotopy`（値域の仮定なし）、`CofiberRotationRectangle` とその存在・選択（Quasicategory、IsStable）、`rotated_isCofiber`（データを入力すれば仮定なし）、`rotated_f_arrow`・`rotated_g_arrow_connecting`（Quasicategory、零射、後者は元の cofiber 性）、`tailShortComplexIso`・`exists_cofiberTailShortComplex`（Quasicategory、IsStable） | B → C → ΣA の cofiber 短複体表示まで完成。第三の接続射の負号・Triangle の回転所属・逆方向は未証明。TR2 全体は未完了 |
+| suspension の二枝交換 | `SuspensionSquare.transpose`・`transpose_transpose`・`transpose_vertex`（値域に仮定なし）、`swapIso`、`comparisonIso_hom_transpose`、`swapIso_hom_comp_self`、`diagramComparisonIso_transpose_naturality`・`swapIso_naturality`（Quasicategory） | 標準比較との両立・自然性・二乗が恒等まで完成。加法の負号との一致は未証明。TR2 は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

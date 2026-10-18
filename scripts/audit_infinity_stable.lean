@@ -1,6 +1,20 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.suspensionSquare_eq_of_square_eq
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transpose
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transpose_transpose
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transpose_vertex
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.swapIso
+#print axioms SerrePositivity.InfinityCategories.squareTranspose_evaluation
+#print axioms SerrePositivity.InfinityCategories.squareDiagramHoEvaluation_transpose
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.diagramComparisonIso_hom_transpose
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.comparisonIso_hom_transpose
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.swapIso_hom_eq_reverse
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.swapIso_hom_comp_self
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.diagramComparisonIso_transpose_source
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.diagramComparisonIso_transpose_naturality
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.swapIso_naturality
 #print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape
 #print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape_zero
 #print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape_one
@@ -1097,7 +1111,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PastingComparisonHomotopy,
     `SerrePositivity.InfinityCategories.Stable.CofiberRotationRectangle,
     `SerrePositivity.InfinityCategories.Stable.CofiberRotationConnecting,
-    `SerrePositivity.InfinityCategories.Stable.CofiberRotationShortComplex]
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationShortComplex,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionTranspose,
+    `SerrePositivity.InfinityCategories.Stable.SquareTransposeEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionTransposeComparison,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSwapNaturality]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
