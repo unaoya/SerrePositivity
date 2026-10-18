@@ -2,17 +2,15 @@
 
 ## 現在地
 
-L5a の模型を固定。L5b の多項式チャート、普遍構造射、局所化環どうしの重なり同型、
-O(1) の単元 cocycle、Koszul 生成加群の可逆変換と cocycle を対象ビルド済み。
-変換は外積代数全体へ延長し、収縮微分の平方零・変換との可換性を証明した。
-例外因子の列と全 a_j の列の可逆基底変換、外積への延長と微分適合も対象ビルド済み。
-U_i・E∩U_i・D(n)∩U_i の underlying Koszul 複体と U_i の次数境界を構成済み。
-外積の次数低下・平方零から自然数 chain 複体と整数 cochain 複体を構成済み。
-微分に適合する生成元写像を複体の射・同型へ延長し、チャートと例外因子に特殊化済み。
-同次左因子に対する graded Leibniz 則も証明済み。
-整数次数付き複体の乗法を chain map として装備する工程、外積模型と既存反復 cone 模型の比較、有限列挙の順序交換、
-普遍チャートと L7 の古典 blowup の同定は未実装であり、L5b 全体は未完了。
-L5c〜L5f は未実装。完成は各工程の構成・比較・対象ビルドと全宣言公理監査が揃った時点。
+L5a の模型を固定。L5b の多項式チャート、実際の Away 重なり、O(m) の可逆推移射、
+Koszul 基底変換と cochain cocycle を対象ビルド済み。外積模型の単位・積・結合則・
+符号付き可換性、反復 cone との比較、導来底変更の dg 準同値を証明済み。
+E∩U_i と Ko(A;a)[S] の共通 dg 模型、D(n) の局所模型、各 localHomKFlat を構成済み。
+普遍チャートの関係式商と自由多項式表示の環・代数同型、および有限関係族の弱正則性と
+Koszul 解消性を証明済み。通常の普遍チャート環への underlying 複体の擬同型を構成済み。
+この比較射は既存の選択付き H⁰ 同型を使うため、標準の cdga 添加射とは同一視しない。
+標準添加射の積・単位保存と解消比較、および全有限重なり図式の組立ては未完了。
+L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
 ## 目標と所有
@@ -160,6 +158,11 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `ExceptionalChartObject`・`ThickeningChartObject` と underlying 同型 | LocalDGModels | E・D(n) の局所 dg 模型 |
 | `exceptionalChartDGFunctor`・`exceptionalPolynomialBaseChangeDGFunctor` と準同値性 | ExceptionalDGComparison | E∩U_i と Ko(A;a)[S] の共通 dg 模型 |
 | `derivedChart_localHomKFlat`・`exceptionalChart_localHomKFlat`・`thickeningChart_localHomKFlat` | LocalHomKFlat | 既存の局所 K-flat 条件 |
+| `universalRelationIdeal`・`universalPresentationMap`・`universalPresentationEquiv` | UniversalPresentation / UniversalPresentationEquiv | 通常の普遍チャートの商表示と相互逆 |
+| `universalSplitEquiv`・`universalSplitMap_relation` | UniversalSplitCoordinates | 独立モニック変数表示への環同型 |
+| `universalRelation_fin_isWeaklyRegular`・`universalRelation_fin_isKoszulResolution` | UniversalRegularSequence | 任意の異なる有限関係族の弱正則性と解消性 |
+| `universalChartSequence_isKoszulResolution`・`universalPresentationAlgEquiv` | UniversalKoszulResolution | 既存チャート列の解消性と係数代数同型 |
+| `universalChartH0Iso`・`universalChartComplexComparison`・擬同型性 | UniversalKoszulResolution | 選択付き H⁰ 同型を経由する underlying 複体の比較 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -189,13 +192,15 @@ underlying 複体の同型を構成済み。共通係数環上の cochain 遷移
 例外因子の dg 模型と Ko(A;a) の多項式底変更を共通模型へ送る dg 準同値も構成済み。
 O(m) の単元整数冪による推移射と cocycle、および可逆性は cochain レベルで証明済み。
 チャート・例外因子・D(n) は既存 `localHomKFlat` を満たす。
-普遍チャートの多項式商表示と正則列の Koszul 解消の同定、
-および全重なり図式上での降下模型の組立ては未完了。
+普遍チャートの多項式商表示と有限正則関係族の Koszul 解消性は証明済み。
+変数再配置で各関係を負の独立モニック一次式へ移し、既存の一般モニック補題を利用する。
+既存 Koszul 解消定理の H⁰ 同型は選択を含むため、複体比較射の積・単位保存は未証明。
+標準 cdga 添加射との比較、および全重なり図式上での降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全719定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全785定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は普遍チャートの多項式商表示と Koszul 解消への比較。
+次の実装単位は標準の cdga 添加射の構成と、普遍 Koszul 解消との比較。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
