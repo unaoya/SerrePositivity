@@ -7152,5 +7152,32 @@ lemma Join.Simplex.exists_preimage_cut_one {X X' Y : SSet.{u}} {n : ℕ}
     ∃ s : Join.Simplex X Y n, s.1.val = 1 ∧ HEq s.2.1 x ∧
       (joinMap f (𝟙 Y)).app (Opposite.op ⦋n⦌) s = t
 
+lemma join_hom_ext_of_initial_vertex_joinMap {X X' Y : SSet.{u}} (n : ℕ)
+    (f : X ⟶ X') {a b : (Δ[n] : SSet.{u}) ⟶ join X Y}
+    (ha : (SSet.yonedaEquiv a).1.val = 1) (hb : (SSet.yonedaEquiv b).1.val = 1)
+    (h0 : stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ 0) ≫ a =
+      stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ 0) ≫ b)
+    (hf : a ≫ joinMap f (𝟙 Y) = b ≫ joinMap f (𝟙 Y)) : a = b
+
+lemma Join.pullCut_delta_one_of_ne_zero (n : ℕ) (j : Fin (n + 3)) (hj : j ≠ 0) :
+    Join.pullCut (SimplexCategory.δ j).toOrderHom 1 = 1
+
+lemma initialHorn_face_initial_vertex (n : ℕ) (j : Fin (n + 3)) (hj : j ≠ 0) :
+    stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0) ≫ horn.ι 0 j hj =
+      stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0) ≫
+        horn.ι (0 : Fin (n + 3)) (Fin.last (n + 2)) (by simp)
+
+lemma join_initialHorn_hom_ext_of_initial_vertex_joinMap {X X' Y : SSet.{u}} (n : ℕ)
+    (f : X ⟶ X') (a b : (horn (n + 2) 0 : SSet.{u}) ⟶ join X Y)
+    (t : (Δ[n + 2] : SSet.{u}) ⟶ Δ[1])
+    (hat : (horn (n + 2) 0).ι ≫ t = a ≫ joinIntervalProjection X Y)
+    (hbt : (horn (n + 2) 0).ι ≫ t = b ≫ joinIntervalProjection X Y)
+    (ht : Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1 = 1)
+    (h0 : (stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0) ≫
+      horn.ι (0 : Fin (n + 3)) (Fin.last (n + 2)) (by simp)) ≫ a =
+      (stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0) ≫
+        horn.ι (0 : Fin (n + 3)) (Fin.last (n + 2)) (by simp)) ≫ b)
+    (hf : a ≫ joinMap f (𝟙 Y) = b ≫ joinMap f (𝟙 Y)) : a = b
+
 end SerrePositivity.InfinityCategories
 ```

@@ -1566,3 +1566,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.Join.simplexMap_initial_left_heq
 #check @SerrePositivity.InfinityCategories.Join.Simplex.ext_of_initial_vertex_joinMap
 #check @SerrePositivity.InfinityCategories.Join.Simplex.exists_preimage_cut_one
+#check @SerrePositivity.InfinityCategories.join_hom_ext_of_initial_vertex_joinMap
+#check @SerrePositivity.InfinityCategories.Join.pullCut_delta_one_of_ne_zero
+#check @SerrePositivity.InfinityCategories.initialHorn_face_initial_vertex
+#check @SerrePositivity.InfinityCategories.join_initialHorn_hom_ext_of_initial_vertex_joinMap
