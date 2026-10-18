@@ -2723,3 +2723,110 @@ def multiIntervalBoundaryComparisonNat (r : ℕ) :
 任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2960 jobs）、公理監査成功（868 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.22 残りの零方向の cylinder と合併境界の同時 collapse
+
+一次方向を固定した実現 A_r(X) の残りの方向 j を零に固定する図式と、その包含の像を定義した。
+零方向の自己射と組み立ての添字の可換式を証明し、像の元の固定点判定を介して、
+`Δ[1] ⊗ R_j` の組み立ての像が標的の `R_(j.succ)` に入ることを示した。
+`oneDirectionFatBoundary r X := ⨆ j, R_j` とすると、その cylinder 全体も標的の全零境界へ入る。
+r=0 ではこの部分複体は空であり、追加の非空性仮定を置かない。
+
+区間の両端と、この残りの全零境界の cylinder の合併を `combinedIntervalBoundary` と定義した。
+両射影による逆像の上限という厳密な部分複体である。
+組み立てが合併境界全体を標的の全零境界へ写すため、その同時 cofiber 商から
+`boundaryReducedRealization r X` への点つき射 `combinedIntervalAssembly` を構成した。
+源・標的の Kan 性や境界の可縮性などを追加仮定しない。
+
+この源の商と L9 の円との smash の同型、源の零境界の自然性と弱可縮性、
+S₁ 比較の境界商への降下・局所化比較はまだ接続していない。
+したがって完成した反復間の suspension 構造写像とは数えない。
+Core・Stable・F1・HA・Spectra の所有ファイルや公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u`、
+`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下で記す。`StableModel` の構造以外の追加前提はない。
+
+**OneDirectionBoundary.lean**
+
+```lean
+lemma oneDirectionAssemblyIndex_zero_commute (r : ℕ) (j : Fin r)
+    (d : SimplexCategoryᵒᵖ) (α : d.unop ⟶ ⦋1⦌) :
+    (oneDirectionIndex r).map (zeroDirectionsIndexEndomorphism {j} (fun _ => d)) ≫
+        oneDirectionAssemblyIndex r d α =
+      oneDirectionAssemblyIndex r d α ≫
+        zeroDirectionsIndexEndomorphism {j.succ} (fun _ => d)
+
+def oneDirectionZeroDiagram (r : ℕ) (j : Fin r) (X : StableModel.{u}) :
+    SimplexCategoryᵒᵖ ⥤ SSet.{u}
+
+def oneDirectionZeroInclusion (r : ℕ) (j : Fin r) (X : StableModel.{u}) :
+    simplicialDiagonalFunctor.obj (oneDirectionZeroDiagram r j X) ⟶
+      (oneDirectionRealizationFunctor r).obj X
+
+def oneDirectionZeroRange (r : ℕ) (j : Fin r) (X : StableModel.{u}) :
+    ((oneDirectionRealizationFunctor r).obj X).Subcomplex
+
+lemma oneDirectionZeroRange_fixed (r : ℕ) (j : Fin r) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (x : ((oneDirectionRealizationFunctor r).obj X).obj d)
+    (hx : x ∈ (oneDirectionZeroRange r j X).obj d) :
+    ((multiCoreSConstruction (r + 1) X).map
+      ((oneDirectionIndex r).map (zeroDirectionsIndexEndomorphism {j} (fun _ => d)))).app d x = x
+
+lemma multiDiagonalAssembly_zeroRange_mem (r : ℕ) (j : Fin r) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (a : (Δ[1] : SSet.{u}).obj d)
+    (x : ((oneDirectionRealizationFunctor r).obj X).obj d)
+    (hx : x ∈ (oneDirectionZeroRange r j X).obj d) :
+    (multiDiagonalAssembly r X).app d (a, x) ∈ (zeroDirectionsRange {j.succ} X).obj d
+
+def oneDirectionFatBoundary (r : ℕ) (X : StableModel.{u}) :
+    ((oneDirectionRealizationFunctor r).obj X).Subcomplex
+
+lemma multiDiagonalAssembly_fatBoundary_mem (r : ℕ) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (a : (Δ[1] : SSet.{u}).obj d)
+    (x : ((oneDirectionRealizationFunctor r).obj X).obj d)
+    (hx : x ∈ (oneDirectionFatBoundary r X).obj d) :
+    (multiDiagonalAssembly r X).app d (a, x) ∈ (zeroDirectionsFatBoundary (r + 1) X).obj d
+```
+
+**CombinedBoundaryAssembly.lean**
+
+```lean
+def combinedIntervalBoundary (r : ℕ) (X : StableModel.{u}) :
+    ((Δ[1] : SSet.{u}) ⊗ (oneDirectionRealizationFunctor r).obj X).Subcomplex
+
+lemma combinedIntervalBoundary_image_le (r : ℕ) (X : StableModel.{u}) :
+    (combinedIntervalBoundary r X).image (multiDiagonalAssembly r X) ≤
+      zeroDirectionsFatBoundary (r + 1) X
+
+def combinedAssemblyBoundaryLift (r : ℕ) (X : StableModel.{u}) :
+    (combinedIntervalBoundary r X : SSet.{u}) ⟶
+      (zeroDirectionsFatBoundary (r + 1) X : SSet.{u})
+
+lemma combinedAssemblyBoundaryLift_ι (r : ℕ) (X : StableModel.{u}) :
+    combinedAssemblyBoundaryLift r X ≫ (zeroDirectionsFatBoundary (r + 1) X).ι =
+      (combinedIntervalBoundary r X).ι ≫ multiDiagonalAssembly r X
+
+lemma combinedIntervalBoundary_condition (r : ℕ) (X : StableModel.{u}) :
+    (combinedIntervalBoundary r X).ι ≫ multiDiagonalAssembly r X ≫
+        boundaryReductionQuotient r X =
+      toUnit (combinedIntervalBoundary r X : SSet.{u}) ≫
+        (boundaryReducedRealization r X).hom
+
+def combinedIntervalQuotient (r : ℕ) (X : StableModel.{u}) : PointedSimplicialSet.{u}
+
+def combinedIntervalAssembly (r : ℕ) (X : StableModel.{u}) :
+    combinedIntervalQuotient r X ⟶ boundaryReducedRealization r X
+
+lemma combinedIntervalAssembly_quotient (r : ℕ) (X : StableModel.{u}) :
+    PointedObject.cofiberQuotient (combinedIntervalBoundary r X).ι ≫
+      (combinedIntervalAssembly r X).right =
+        multiDiagonalAssembly r X ≫ boundaryReductionQuotient r X
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。区間の両端と残りの全零境界 cylinder を同時に潰した商から、全反復の全零境界商への点つき射は証明済み。
+源の商と円の smash の同一視、S₁ 比較の境界商への接続、反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2962 jobs）、公理監査成功（884 宣言、標準三公理のみ）。追加公理・sorry なし。

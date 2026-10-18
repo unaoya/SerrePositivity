@@ -2430,3 +2430,51 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparisonNat
 #print axioms SerrePositivity.KST.SConstruction.multiIntervalBoundaryComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyIndex_zero_commute
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyIndex_zero_commute
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionZeroDiagram
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionZeroDiagram
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionZeroInclusion
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionZeroInclusion
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionZeroRange
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionZeroRange
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionZeroRange_fixed
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionZeroRange_fixed
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalAssembly_zeroRange_mem
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalAssembly_zeroRange_mem
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionFatBoundary
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionFatBoundary
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalAssembly_fatBoundary_mem
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalAssembly_fatBoundary_mem
+
+#check @SerrePositivity.KST.SConstruction.combinedIntervalBoundary
+#print axioms SerrePositivity.KST.SConstruction.combinedIntervalBoundary
+
+#check @SerrePositivity.KST.SConstruction.combinedIntervalBoundary_image_le
+#print axioms SerrePositivity.KST.SConstruction.combinedIntervalBoundary_image_le
+
+#check @SerrePositivity.KST.SConstruction.combinedAssemblyBoundaryLift
+#print axioms SerrePositivity.KST.SConstruction.combinedAssemblyBoundaryLift
+
+#check @SerrePositivity.KST.SConstruction.combinedAssemblyBoundaryLift_ι
+#print axioms SerrePositivity.KST.SConstruction.combinedAssemblyBoundaryLift_ι
+
+#check @SerrePositivity.KST.SConstruction.combinedIntervalBoundary_condition
+#print axioms SerrePositivity.KST.SConstruction.combinedIntervalBoundary_condition
+
+#check @SerrePositivity.KST.SConstruction.combinedIntervalQuotient
+#print axioms SerrePositivity.KST.SConstruction.combinedIntervalQuotient
+
+#check @SerrePositivity.KST.SConstruction.combinedIntervalAssembly
+#print axioms SerrePositivity.KST.SConstruction.combinedIntervalAssembly
+
+#check @SerrePositivity.KST.SConstruction.combinedIntervalAssembly_quotient
+#print axioms SerrePositivity.KST.SConstruction.combinedIntervalAssembly_quotient
