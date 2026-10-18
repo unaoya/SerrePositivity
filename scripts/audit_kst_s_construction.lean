@@ -7,6 +7,18 @@ import SerrePositivity.KST.SConstruction
 使われ方：BGT §7 に対応する保存単位の検証。
 -/
 
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion
+#check @SerrePositivity.KST.SConstruction.arCofiberCompletion
+#print axioms SerrePositivity.KST.SConstruction.arCofiberCompletion
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.diagram
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.diagram
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.diagram_boundary
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.diagram_boundary
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.pointFamily
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.pointFamily
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.pointFamily_isCofiber
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.pointFamily_isCofiber
 #check @SerrePositivity.KST.SConstruction.arCofiberFamilyOperator
 #print axioms SerrePositivity.KST.SConstruction.arCofiberFamilyOperator
 #check @SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_vertex
@@ -49,6 +61,22 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cofiberApex
 #check @SerrePositivity.KST.SConstruction.gappedCofiberFamily_apex
 #print axioms SerrePositivity.KST.SConstruction.gappedCofiberFamily_apex
+#check @SerrePositivity.KST.SConstruction.arCofiberInputOrder
+#print axioms SerrePositivity.KST.SConstruction.arCofiberInputOrder
+#check @SerrePositivity.KST.SConstruction.arCofiberInputMap
+#print axioms SerrePositivity.KST.SConstruction.arCofiberInputMap
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareMap_bottom
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareMap_bottom
+#check @SerrePositivity.KST.SConstruction.frameCofiberInputOperator
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberInputOperator
+#check @SerrePositivity.KST.SConstruction.frameCofiberInputs
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberInputs
+#check @SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_input
+#print axioms SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_input
+#check @SerrePositivity.KST.SConstruction.gappedFrameRestriction_ι
+#print axioms SerrePositivity.KST.SConstruction.gappedFrameRestriction_ι
+#check @SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap_input
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap_input
 #check @SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex
 #print axioms SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex
 #check @SerrePositivity.KST.SConstruction.cofiberDiagrams
@@ -105,6 +133,26 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_vertex
 #check @SerrePositivity.KST.SConstruction.firstRowSimplexIso
 #print axioms SerrePositivity.KST.SConstruction.firstRowSimplexIso
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData
+#check @SerrePositivity.KST.SConstruction.firstRowCofiberData
+#print axioms SerrePositivity.KST.SConstruction.firstRowCofiberData
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.diagram
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.diagram
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.diagram_boundary
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.diagram_boundary
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.diagram_isGapped_of_vertexSurjective
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.diagram_isGapped_of_vertexSurjective
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.toGapped
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.toGapped
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.toGapped_ι
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.toGapped_ι
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.toGapped_boundary
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.toGapped_boundary
+#check @SerrePositivity.KST.SConstruction.boundary_vertex_surjective
+#print axioms SerrePositivity.KST.SConstruction.boundary_vertex_surjective
+#check @SerrePositivity.KST.SConstruction.exists_gappedBoundaryFilling_of_firstRowFilling
+#print axioms SerrePositivity.KST.SConstruction.exists_gappedBoundaryFilling_of_firstRowFilling
 #check @SerrePositivity.KST.SConstruction.frame_extend_boundary
 #print axioms SerrePositivity.KST.SConstruction.frame_extend_boundary
 #check @SerrePositivity.KST.SConstruction.firstRowFrameOrder
@@ -123,6 +171,28 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.frameFirstRowMap_comp
 #check @SerrePositivity.KST.SConstruction.frameFirstRowIso
 #print axioms SerrePositivity.KST.SConstruction.frameFirstRowIso
+#check @SerrePositivity.KST.SConstruction.simplexFirstVertex_stdSimplex_of_notMem_boundary
+#print axioms SerrePositivity.KST.SConstruction.simplexFirstVertex_stdSimplex_of_notMem_boundary
+#check @SerrePositivity.KST.SConstruction.initialBoundaryLifting_ihom_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.initialBoundaryLifting_ihom_of_pointwise
+#check @SerrePositivity.KST.SConstruction.isInitialVertex_functorVertex_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.isInitialVertex_functorVertex_of_pointwise
+#check @SerrePositivity.KST.SConstruction.isZeroVertex_functorVertex_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.isZeroVertex_functorVertex_of_pointwise
+#check @SerrePositivity.KST.SConstruction.isZeroVertex_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.isZeroVertex_of_pointwise
+#check @SerrePositivity.KST.SConstruction.evaluateFunctorCocone
+#print axioms SerrePositivity.KST.SConstruction.evaluateFunctorCocone
+#check @SerrePositivity.KST.SConstruction.IsPointwiseColimitCone
+#print axioms SerrePositivity.KST.SConstruction.IsPointwiseColimitCone
+#check @SerrePositivity.KST.SConstruction.initialBoundaryLifting_coconeRestriction_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.initialBoundaryLifting_coconeRestriction_of_pointwise
+#check @SerrePositivity.KST.SConstruction.isColimitCone_of_pointwise_initialBoundaryLifting
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_of_pointwise_initialBoundaryLifting
+#check @SerrePositivity.KST.SConstruction.isColimitCone_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_of_pointwise
+#check @SerrePositivity.KST.SConstruction.isPushoutSquare_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.isPushoutSquare_of_pointwise
 #check @SerrePositivity.KST.SConstruction.Ar
 #print axioms SerrePositivity.KST.SConstruction.Ar
 #check @SerrePositivity.KST.SConstruction.arObj
@@ -191,6 +261,24 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.frameRowDiagramIso
 #check @SerrePositivity.KST.SConstruction.frameRowRestriction_trivialKanFibration
 #print axioms SerrePositivity.KST.SConstruction.frameRowRestriction_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.initialBoundaryLifting_map_iso
+#print axioms SerrePositivity.KST.SConstruction.initialBoundaryLifting_map_iso
+#check @SerrePositivity.KST.SConstruction.internalHomFlipHomEquiv_evaluate
+#print axioms SerrePositivity.KST.SConstruction.internalHomFlipHomEquiv_evaluate
+#check @SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex.zero_evaluation
+#print axioms SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex.zero_evaluation
+#check @SerrePositivity.KST.SConstruction.cofiberFamilySquare
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilySquare
+#check @SerrePositivity.KST.SConstruction.cofiberFamilySquare_evaluate
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilySquare_evaluate
+#check @SerrePositivity.KST.SConstruction.cofiberFamilySquare_zero_corner
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilySquare_zero_corner
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyTriangle
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyTriangle
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_isCofiber
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_isCofiber
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_apex
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_apex
 #check @SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
 #print axioms SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
 #check @SerrePositivity.KST.SConstruction.pushoutDiagrams
@@ -213,6 +301,8 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
 #check @SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
 #print axioms SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
+#check @SerrePositivity.KST.SConstruction.exists_lift_of_initial_first_vertices
+#print axioms SerrePositivity.KST.SConstruction.exists_lift_of_initial_first_vertices
 #check @SerrePositivity.KST.SConstruction.exists_extension_with_vertices
 #print axioms SerrePositivity.KST.SConstruction.exists_extension_with_vertices
 #check @SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints
@@ -261,3 +351,21 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.exists_zeroFrame_extension
 #check @SerrePositivity.KST.SConstruction.zeroFrameProjection_trivialKanFibration
 #print axioms SerrePositivity.KST.SConstruction.zeroFrameProjection_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.mk
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.mk
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.family
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.family
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.boundary
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.boundary
+#check @SerrePositivity.KST.SConstruction.ArCofiberCompletion.input
+#print axioms SerrePositivity.KST.SConstruction.ArCofiberCompletion.input
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.mk
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.mk
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.frame
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.frame
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.frame_boundary
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.frame_boundary
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.firstRow
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.firstRow
+#check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.cofibers
+#print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.cofibers

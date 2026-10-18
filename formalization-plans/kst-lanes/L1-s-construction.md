@@ -55,6 +55,9 @@ gapped 図式の全 cofiber 四角形を一つの族として取り出す。
 相対 cofiber 補完をこの Ar[n] パラメーターに適用する際は、第一行と対角での条件を同時に固定する。
 得られる右上角の図式の全四角形が押し出しとなることは、余極限の普遍性と押し出しの貼り合わせから
 別に証明する。単に各区間に cofiber を持つことだけで gapped 条件を結論しない。
+点ごとの余極限・押し出しを関手 ∞ 圏へ移す向きは、相対始点境界充填と内部 Hom の交換で証明する。
+正次元のパラメーター境界では全頂点が指定されているため、境界を厳密に保つ補完の gapped 性は
+全部分複体の頂点条件から回収できる。零次元の gapped 性および出力の第一行の厳密な回収は別条件として残す。
 
 ### §10-11：加法性
 
@@ -117,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2011 jobs、累計127宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2020 jobs、累計181宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -198,6 +201,35 @@ Ar[n] 全体への適用をつなぐ自然な cofiber 抽出を実装した。
 内部 currying と全部分複体を標的とする内部 Hom の同型により、頂点ごとの抽出を
 全てのパラメーターに自然な単体集合の射にした。
 
-ただし **Ar[n] 全体の gapped 条件を同時に満たす cofiber 補完は未証明**。したがって
+点ごとの余極限の関手圏への移送と、枠からの相対補完を接続した。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `evaluateFunctorCocone` | `(c : JoinCocone p) → (k : K _⦋0⦌) → JoinCocone (evaluateFunctorDiagram p k)`、`p : J ⟶ (ihom K).obj X` |
+| `IsPointwiseColimitCone` | `(c : JoinCocone p) → Prop`、全 k で `IsColimitCone (evaluateFunctorCocone c k)` |
+| `isColimitCone_of_pointwise` | `[Quasicategory X] → (c : JoinCocone p) → IsPointwiseColimitCone c → IsColimitCone c` |
+| `isPushoutSquare_of_pointwise` | `[Quasicategory X] → (F : Δ[1] ⊗ Δ[1] ⟶ (ihom K).obj X) → (∀ k, IsPushoutSquare (F ≫ evaluateFunctorAt k)) → IsPushoutSquare F` |
+| `isZeroVertex_functorVertex_of_pointwise` | `(f : K ⟶ X) → (∀ k, IsZeroVertex (f.app (Opposite.op ⦋0⦌) k)) → IsZeroVertex (functorVertex f)`、quasicategory 性不要 |
+| `cofiberFamilyTriangle` | `(H : A ⟶ cofiberDiagrams C) → ZeroTriangle ((ihom A).obj C)` |
+| `cofiberFamilyTriangle_isCofiber` | `[Quasicategory C] → (H : A ⟶ cofiberDiagrams C) → IsCofiberSequence (cofiberFamilyTriangle H)` |
+| `frameCofiberInputs` | `(n : ℕ) → (C : SSet.{u}) → (zeroFrameDiagrams n C ⟶ (ihom (arNerve n)).obj ((ihom Δ[1]).obj C))` |
+| `gappedCofiberFamiliesMap_input` | `gappedCofiberFamiliesMap n C ≫ (ihom (arNerve n)).map (cofiberProjection C) = gappedFrameRestriction n C ≫ frameCofiberInputs n C` |
+| `ArCofiberCompletion` | `(n : ℕ) → (i : A ⟶ B) → (a : A ⟶ sConstruction n C) → (b : B ⟶ zeroFrameDiagrams n C) → Type u`。実際の cofiber 族と入力・境界の等号を保持する |
+| `arCofiberCompletion` | `[Quasicategory C] → [IsStable C] → (n : ℕ) → (i : A ⟶ B) → [Mono i] → (a : A ⟶ sConstruction n C) → (b : B ⟶ zeroFrameDiagrams n C) → (a ≫ gappedFrameRestriction n C = i ≫ b) → ArCofiberCompletion n i a b` |
+| `ArCofiberCompletion.diagram_boundary` | `(c : ArCofiberCompletion n i a b) → i ≫ c.diagram = a ≫ (gappedSubcomplex n C).ι` |
+| `FirstRowCofiberData` | `(n : ℕ) → (i : A ⟶ B) → (a : A ⟶ sConstruction n C) → (d : B ⟶ (ihom (firstRowNerve n)).obj C) → Type u`。枠とその第一行・境界の等号と `ArCofiberCompletion` を保持する |
+| `firstRowCofiberData` | `[Quasicategory C] → [IsStable C] → (n : ℕ) → (i : A ⟶ B) → [Mono i] → (a : A ⟶ sConstruction n C) → (d : B ⟶ (ihom (firstRowNerve n)).obj C) → (a ≫ firstRowRestriction n C = i ≫ d) → FirstRowCofiberData n i a d` |
+| `FirstRowCofiberData.toGapped` | `(c : FirstRowCofiberData n i a d) → Function.Surjective (i.app (Opposite.op ⦋0⦌)) → (B ⟶ sConstruction n C)` |
+| `FirstRowCofiberData.toGapped_boundary` | `(c : FirstRowCofiberData n i a d) → (hi : Function.Surjective (i.app (Opposite.op ⦋0⦌))) → i ≫ c.toGapped hi = a` |
+
+構造体の型・コンストラクタ・明示的なフィールドも監査対象に含めた。
+`exists_gappedBoundaryFilling_of_firstRowFilling` は `[Quasicategory C] [IsStable C]` の下で
+`a : boundary (r+1) ⟶ sConstruction n C`、`d : Δ[r+1] ⟶ (ihom (firstRowNerve n)).obj C`、
+`h : a ≫ firstRowRestriction n C = (boundary (r+1)).ι ≫ d` から
+`∃ F : Δ[r+1] ⟶ sConstruction n C, (boundary (r+1)).ι ≫ F = a` を証明する。
+この結論は **F の第一行が d と等しいことを含まない**。したがってこれを RLP の完成と数えない。
+
+**未完了**：出力図式の第一行が指定入力と厳密に一致する等号、零次元で作る図式の gapped 条件、
+三つ組の cofiber 条件から全四つ組の押し出しへの貼り合わせ。
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
 L1c–f は未着手。L1g は別途指示待ち。
