@@ -590,3 +590,6 @@ public import SerrePositivity.InfinityCategories.F1.JoinSmallness
 public import SerrePositivity.InfinityCategories.F1.PointedSpaceSmallness
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningSmallness
 public import SerrePositivity.InfinityCategories.F1.SmallSimplicialSet
+public import SerrePositivity.InfinityCategories.F1.UniverseLeftFibrationReflection
+public import SerrePositivity.InfinityCategories.F1.SmallFibration
+public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraightening

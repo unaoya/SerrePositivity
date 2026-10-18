@@ -11835,5 +11835,70 @@ noncomputable def smallSimplicialSetIso (X : SSet.{max u v})
     [∀ n, Small.{u} (X.obj n)] :
     (SSet.uliftFunctor.{v, u}).obj (smallSimplicialSet X) ≅ X
 
+def uliftSimplexHomUp {X : SSet.{u}} {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ X) :
+    (Δ[n] : SSet.{max u v}) ⟶ (SSet.uliftFunctor.{v, u}).obj X
+
+lemma uliftSimplexHomDown_up {X : SSet.{u}} {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ X) :
+    uliftSimplexHomDown (uliftSimplexHomUp.{u, v} f) = f
+
+lemma uliftSimplexHomUp_face {X : SSet.{u}} {n : ℕ} (f : (Δ[n + 1] : SSet.{u}) ⟶ X)
+    (j : Fin (n + 2)) :
+    stdSimplex.δ j ≫ uliftSimplexHomUp.{u, v} f = uliftSimplexHomUp (stdSimplex.δ j ≫ f)
+
+lemma uliftSimplexHomUp_post {X Y : SSet.{u}} (p : X ⟶ Y) {n : ℕ}
+    (f : (Δ[n] : SSet.{u}) ⟶ X) :
+    uliftSimplexHomUp.{u, v} f ≫ (SSet.uliftFunctor.{v, u}).map p =
+      uliftSimplexHomUp (f ≫ p)
+
+lemma hasLiftingProperty_horn_of_ulift {E B : SSet.{u}} (p : E ⟶ B)
+    (n : ℕ) (i : Fin (n + 2))
+    [HasLiftingProperty (horn.{max u v} (n + 1) i).ι ((SSet.uliftFunctor.{v, u}).map p)] :
+    HasLiftingProperty (horn.{u} (n + 1) i).ι p
+
+lemma leftFibration_of_ulift {E B : SSet.{u}} (p : E ⟶ B)
+    [LeftFibration ((SSet.uliftFunctor.{v, u}).map p)] : LeftFibration p
+
+noncomputable def smallSimplicialProjection {X : SSet.{max u v}}
+    [∀ n, Small.{u} (X.obj n)] {B : SSet.{u}}
+    (p : X ⟶ (SSet.uliftFunctor.{v, u}).obj B) : smallSimplicialSet X ⟶ B
+
+lemma smallSimplicialProjection_ulift {X : SSet.{max u v}}
+    [∀ n, Small.{u} (X.obj n)] {B : SSet.{u}}
+    (p : X ⟶ (SSet.uliftFunctor.{v, u}).obj B) :
+    (SSet.uliftFunctor.{v, u}).map (smallSimplicialProjection p) =
+      (smallSimplicialSetIso X).hom ≫ p
+
+instance smallSimplicialProjection_leftFibration {X : SSet.{max u v}}
+    [∀ n, Small.{u} (X.obj n)] {B : SSet.{u}}
+    (p : X ⟶ (SSet.uliftFunctor.{v, u}).obj B) [LeftFibration p] :
+    LeftFibration (smallSimplicialProjection p)
+
+instance leftUnstraightening_uliftBase_obj_small {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (n : SimplexCategoryᵒᵖ) :
+    Small.{u} ((leftUnstraightening F).obj n)
+
+noncomputable def smallLeftUnstraightening {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : SSet.{u}
+
+noncomputable def smallLeftUnstraighteningIso {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (smallLeftUnstraightening F) ≅ leftUnstraightening F
+
+noncomputable def smallLeftUnstraighteningProjection {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    smallLeftUnstraightening F ⟶ B
+
+lemma smallLeftUnstraighteningIso_projection {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    (smallLeftUnstraighteningIso F).hom ≫ leftUnstraighteningProjection F =
+      (SSet.uliftFunctor.{u + 1, u}).map (smallLeftUnstraighteningProjection F)
+
+instance smallLeftUnstraighteningProjection_leftFibration {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    LeftFibration (smallLeftUnstraighteningProjection F)
+
+noncomputable def smallLeftUnstraighteningObject {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : LeftFibrationObject B
+
 end SerrePositivity.InfinityCategories
 ```
