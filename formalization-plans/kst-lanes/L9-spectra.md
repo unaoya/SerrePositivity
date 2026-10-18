@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・109 モジュール 1864 宣言の公理監査成功。
+対象ビルド・112 モジュール 1880 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1266,3 +1266,34 @@ RelStruct は隣接二面と残りの定数面を同時に指定して後続段�
 保存単位の対象ビルド 1888 jobs 成功。
 私有宣言を含む 109 モジュール 1864 宣言で標準三公理のみ。
 次は有限な源からの点つき内部 Hom と filtered colimit の比較を進め、loop と colimit を整合させる。
+
+
+## 45. L9d の有限な内部 Hom と loop の filtered colimit 保存
+
+有限な点つき源と有限パラメータの写像族を uncurry した。
+基点包含に対する相対因子分解により、基点条件を保つ写像族を一つの段に実現できる。
+二つの族が余極限で一致すれば、有限なテンソル積からの射の等式を後続段へ移せる。
+ここには Kan 性も遷移射の単射性も不要である。
+
+各単体次数で Yoneda の同値を使い、これらの二つの事実から写像空間の余極限性を証明した。
+基点忘却の同型反映で点つき圏へ戻し、有限な源からの内部 Hom が filtered colimit を保存すると示した。
+標準単体の境界を潰した球面は、有限な対象の押し出しとして有限である。
+特に単体的円が有限なので、点つき loop 関手は filtered colimit を保存する。
+loop 対象の余極限と余極限の loop 対象との標準同型、および各段での計算式を構成した。
+この同型は通常の点つき単体集合の同型であり、Sp の ∞ 余極限の普遍性を先取りしない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedMapping.finite_basedHom_factorization` | 基点条件を保つ有限な写像族の後続段での実現 |
+| `PointedMapping.finite_basedHom_eq_eventually` | 写像族の等式の後続段での実現 |
+| `PointedMapping.finite_basedHom_isColimit` | 各次数の写像空間の余極限性 |
+| `PointedMapping.finite_basedHom_preservesColimit` | 有限な点つき源からの内部 Hom の filtered colimit 保存 |
+| `pointedSphere_finite` | 境界を潰した単体的球面の有限性 |
+| `loop_preservesFilteredDiagram` | loop 関手の filtered colimit 保存 |
+| `loopFilteredColimitIso` / `.loopFilteredColimitIso_ι` | loop と余極限の比較同型と各段の計算 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 1891 jobs 成功。
+私有宣言を含む 112 モジュール 1880 宣言で標準三公理のみ。
+次は段ごとの全基点 π_* 同型の filtered colimit 保存を示し、Ω 条件を移す。
+有理化の対象、telescope の比較、ℚ テンソルの計算は引き続き未完了。
