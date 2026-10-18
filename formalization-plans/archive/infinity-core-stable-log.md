@@ -8183,3 +8183,64 @@ pastingCornerBottom_isPushout.{u_1} : CategoryTheory.IsPushout.{u_1, u_1 + 1} sq
 自分の新規ファイルに警告なし。`git diff --check` 成功。
 有限直和と前加法構造は未完了。TR1・TR3 は完成のまま。
 シフトの加法性・回転・八面体・Pretriangulated instance・S5〜S7 も未完了。
+
+
+## 同値な形状の coslice 制限と同型な図式の余極限の存在
+
+`CosliceRestrictionEquivalence.lean` は、前合成の同値条件を持つ単射の左 join と
+相対的な join の和の包含の同値性を pushout・二対三則で証明する。
+これを使って部分複体への coslice 制限の全境界充填を構成し、像への同型で任意の単射へ移す。
+`ColimitDiagramIso.lean` は余極限の存在の保存・反映と指定余極限余錐の厳密な延長に適用する。
+`hasColimit_iff_of_functorIso` は図式の同型を可逆円柱へ延長し、両端の同値な形状へ制限して証明した。
+値域 Quasicategory のみを仮定し、安定性や形状自体の quasicategory 性は不要。
+指定零枝への cofiber の輸送に必要な一般部分は完成。二つの span の間の FunctorIso の構成が次に残る。
+
+Lean で抽出した公開宣言の正確な型：
+
+```lean
+@isPrecompositionEquivalence_joinUnion_left.{u_1} : ∀ {A K : SSet.{u_1}} (K₀ : SSet.Subcomplex.{u_1} K)
+  (A₀ : SSet.Subcomplex.{u_1} A),
+  IsPrecompositionEquivalence.{u_1} (SSet.Subcomplex.ι.{u_1} K₀) →
+    IsPrecompositionEquivalence.{u_1} (SSet.Subcomplex.ι.{u_1} (joinUnion.{u_1} K₀ A₀))
+@sliceUnderRestrict_lift_of_precompositionEquivalence.{u_1} : ∀ {A K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (A₀ : SSet.Subcomplex.{u_1} A) (K₀ : SSet.Subcomplex.{u_1} K),
+  IsPrecompositionEquivalence.{u_1} (SSet.Subcomplex.ι.{u_1} K₀) →
+    CategoryTheory.HasLiftingProperty.{u_1, u_1 + 1} (SSet.Subcomplex.ι.{u_1} A₀)
+      (sliceUnderRestrict.{u_1} p (SSet.Subcomplex.ι.{u_1} K₀))
+@sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence_subcomplex.{u_1} : ∀ {K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X) (K₀ : SSet.Subcomplex.{u_1} K),
+  IsPrecompositionEquivalence.{u_1} (SSet.Subcomplex.ι.{u_1} K₀) →
+    TrivialKanFibration.{u_1} (sliceUnderRestrict.{u_1} p (SSet.Subcomplex.ι.{u_1} K₀))
+@sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence.{u_1} : ∀ {K L X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X) (f : Quiver.Hom.{u_1, u_1 + 1} L K)
+  [CategoryTheory.Mono.{u_1, u_1 + 1} f],
+  IsPrecompositionEquivalence.{u_1} f → TrivialKanFibration.{u_1} (sliceUnderRestrict.{u_1} p f)
+@hasColimit_iff_restrict_of_precompositionEquivalence.{u_1} : ∀ {K L X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (f : Quiver.Hom.{u_1, u_1 + 1} L K) [CategoryTheory.Mono.{u_1, u_1 + 1} f],
+  IsPrecompositionEquivalence.{u_1} f →
+    (HasColimit.{u_1} p ↔ HasColimit.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p))
+@exists_colimitCocone_extension_of_precompositionEquivalence.{u_1} : ∀ {K L X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (f : Quiver.Hom.{u_1, u_1 + 1} L K) [CategoryTheory.Mono.{u_1, u_1 + 1} f],
+  IsPrecompositionEquivalence.{u_1} f →
+    ∀ (d : JoinCocone.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p)),
+      IsColimitCone.{u_1} d →
+        ∃ c,
+          IsColimitCone.{u_1} c ∧
+            Eq.{u_1 + 1} (JoinCocone.restrict.{u_1} c f) d ∧
+              Eq.{u_1 + 1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)
+@hasColimit_iff_equivalenceCylinder_endpoints.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (H :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} K equivalenceInterval.{u_1}) X),
+  HasColimit.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (equivalenceCylinderEndpoint.{u_1} K false) H) ↔
+    HasColimit.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (equivalenceCylinderEndpoint.{u_1} K true) H)
+@hasColimit_iff_of_functorIso.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X} (e : FunctorIso.{u_1} p q), HasColimit.{u_1} p ↔ HasColimit.{u_1} q
+```
+
+対象 CosliceRestrictionEquivalence ビルド 1853 jobs、ColimitDiagramIso ビルド 1939 jobs、
+対象・Stable 集約ビルド 2167 jobs、公開型抽出、公理監査はすべて終了コード 0。
+監査は 174 モジュール・1438 宣言（生成・非公開宣言を含む）について標準三公理のみ。
+自分の新規ファイルの警告は解消。`git diff --check` 成功。
+指定零枝の span 間の同型、有限直和・前加法構造・シフトの加法性・回転・八面体・
+Pretriangulated instance・S5〜S7 は未完了。TR1・TR3 は完成のまま。
