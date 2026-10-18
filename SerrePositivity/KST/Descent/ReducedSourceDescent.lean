@@ -38,6 +38,26 @@ theorem reducedSourceAction_over_base (f : X ⟶ Y) (action : G →* Aut X)
       (finiteTypeReductionInclusion X ≫ f) = finiteTypeReductionInclusion X ≫ f := by
   rw [← Category.assoc, finiteTypeReductionAction_comp_inclusion, Category.assoc, over_base]
 
+/-- 概要：基底を固定した始域の被約化は点のファイバーの推移性を保つ（定理 3.1）。
+方針：包含の同変性と点の単射性を使い、元のファイバーを結ぶ群元を被約化へ移す。
+規約：これは基礎点のファイバーの推移性であり、幾何的推移性の定義との同一視ではない。
+使われ方：アフィン基底変更後の中心の被約化に対する切断の像の被覆。 -/
+theorem reducedSourceAction_transitive_on_fibers (f : X ⟶ Y) (action : G →* Aut X)
+    (transitive : ∀ x y : X.obj.left, f.hom.left x = f.hom.left y →
+      ∃ g : G, (action g).asIso.hom.hom.left x = y)
+    (x y : (finiteTypeReduction X).obj.left)
+    (same_base : (finiteTypeReductionInclusion X ≫ f).hom.left x =
+      (finiteTypeReductionInclusion X ≫ f).hom.left y) :
+    ∃ g : G, (finiteTypeReductionAction action g).asIso.hom.hom.left x = y := by
+  obtain ⟨g, hg⟩ := transitive
+    ((finiteTypeReductionInclusion X).hom.left x)
+    ((finiteTypeReductionInclusion X).hom.left y) same_base
+  refine ⟨g, (finiteTypeReductionInclusion X).hom.left.isClosedEmbedding.injective ?_⟩
+  have equivariant := congrArg
+    (fun k : finiteTypeReduction X ⟶ X ↦ k.hom.left x)
+    (finiteTypeReductionAction_comp_inclusion action g)
+  exact equivariant.trans hg
+
 /-- 概要：始域だけの被約化の前後で全次数降下は同値（論文 補題 3.3）。
 方針：基底の恒等射と被約化の包含による正方形に冪零不変性を適用する。
 規約：始域の Noether 性だけを使い、任意の係数と整数次数を保持する。

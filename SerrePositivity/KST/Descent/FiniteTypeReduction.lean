@@ -113,4 +113,26 @@ noncomputable def finiteTypeReductionAction {G : Type*} [Group G]
       finiteTypeReductionInclusion X ≫ (action g).asIso.hom :=
   finiteTypeReductionMap_comp_inclusion _
 
+/-- 概要：被約な始域からの射を有限型の圏内で reduction へ持ち上げる（定理 3.1）。
+方針：スキームの持ち上げと包含の合成公式で基底上の条件を検査する。
+規約：始域は被約だが Noether 性は不要。
+使われ方：被約な基底上の切断を非被約な始域の被約化へ移す。 -/
+noncomputable def finiteTypeReductionLift {X Y : FiniteTypeSchemes S}
+    [IsReduced X.obj.left] (f : X ⟶ Y) : X ⟶ finiteTypeReduction Y :=
+  ObjectProperty.homMk (Over.homMk (schemeReductionLift f.hom.left) (by
+    change schemeReductionLift f.hom.left ≫
+      (schemeReductionInclusion Y.obj.left ≫ Y.obj.hom) = X.obj.hom
+    rw [← Category.assoc, schemeReductionLift_comp_inclusion, f.hom.w]))
+
+/-- 概要：有限型の圏内の被約化への持ち上げは指定射を因子分解する（定理 3.1）。
+方針：忘却してスキームの持ち上げの合成公式を適用する。
+規約：基底上の射の等式として保持する。
+使われ方：被約化した始域への切断の恒等式。 -/
+@[reassoc (attr := simp)] theorem finiteTypeReductionLift_comp_inclusion
+    {X Y : FiniteTypeSchemes S} [IsReduced X.obj.left] (f : X ⟶ Y) :
+    finiteTypeReductionLift f ≫ finiteTypeReductionInclusion Y = f := by
+  apply ObjectProperty.hom_ext
+  apply (Over.forget S).map_injective
+  exact schemeReductionLift_comp_inclusion f.hom.left
+
 end SerrePositivity.KST.Descent
