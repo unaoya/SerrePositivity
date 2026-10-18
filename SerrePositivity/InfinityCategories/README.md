@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開259宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開275宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2694,6 +2694,38 @@ initialNerveJoinSimplex {n : ℕ} (F : ComposableArrows (WithInitial C) n) :
 これらは次数ごとの構成である。全データの単体的自然性、既存の join から nerve への
 比較射との逆関係、相対錐と WithInitial の標準境界の同型による同定は未完了。
 一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の適用も継続中。
+
+`AugmentedNerve.lean` は補った空単体を含む nerve の評価を提供する。
+C : Type u、[SmallCategory C] の下で、
+
+```lean
+augNerveObj {r : ℕ} (τ : Join.augObj (nerve C) r) (i : Fin r) : C
+augNerveMap {r : ℕ} (τ : Join.augObj (nerve C) r)
+    {i j : Fin r} (h : i ≤ j) : augNerveObj τ i ⟶ augNerveObj τ j
+```
+
+を定義し、恒等射・合成の保存と任意の順序写像に沿う再添字付けを証明した。
+`augNerveObj_augMap` は対象の等式、`augNerveMap_augMap` はその等式による
+端点の移送を含む射の等式。頂点数が零なら Fin 0 の添字で処理し、対象を選ばない。
+
+`InitialJoinChain.lean` は逆向きの次数ごとの構成を提供する。
+
+```lean
+initialJoinChain {n : ℕ} (s : Join.Simplex (Δ[0] : SSet.{u}) (nerve C) n) :
+    ComposableArrows (WithInitial C) n
+initialJoinChain_star_iff {n : ℕ}
+    (s : Join.Simplex (Δ[0] : SSet.{u}) (nerve C) n) (i : Fin (n + 1)) :
+    (initialJoinChain s).obj i = WithInitial.star ↔ i.val < s.1.val
+initialNerveCut_initialJoinChain {n : ℕ}
+    (s : Join.Simplex (Δ[0] : SSet.{u}) (nerve C) n) :
+    initialNerveCut (initialJoinChain s) = s.1.val
+```
+
+前半の頂点を新しい始対象、後半を元の射列の対象にし、始対象からの射の一意性と
+`augNerveMap_comp` から関手法則を証明する。`initialJoinObj_star`・`initialJoinObj_of` で
+端点の移送を明示する。切断が元に戻ることまで検証済みである。
+この段階では単体的自然性、後半の全射を含む両向きの逆関係、単体集合の同型は未完了。
+相対錐と標準境界の同定、一脚の場合の κ 全体、γ3b の主比較、𝒮・Sp の適用も継続中。
 
 ### 𝒮 の空積（実装済み）
 

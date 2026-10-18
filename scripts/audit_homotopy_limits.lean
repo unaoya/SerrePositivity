@@ -523,3 +523,35 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms initialNerveJoinSimplex
 #check @initialNerveJoinSimplex_cut
 #print axioms initialNerveJoinSimplex_cut
+#check @augNerveObj
+#print axioms augNerveObj
+#check @augNerveMap
+#print axioms augNerveMap
+#check @augNerveMap_id
+#print axioms augNerveMap_id
+#check @augNerveMap_comp
+#print axioms augNerveMap_comp
+#check @augNerveObj_augMap
+#print axioms augNerveObj_augMap
+#check @augNerveMap_augMap
+#print axioms augNerveMap_augMap
+#check @initialJoinTailIndex
+#print axioms initialJoinTailIndex
+#check @initialJoinObj
+#print axioms initialJoinObj
+#check @initialJoinObj_star
+#print axioms initialJoinObj_star
+#check @initialJoinObj_of
+#print axioms initialJoinObj_of
+#check @initialJoinMap
+#print axioms initialJoinMap
+#check @initialJoinMap_id
+#print axioms initialJoinMap_id
+#check @initialJoinMap_comp
+#print axioms initialJoinMap_comp
+#check @initialJoinChain
+#print axioms initialJoinChain
+#check @initialJoinChain_star_iff
+#print axioms initialJoinChain_star_iff
+#check @initialNerveCut_initialJoinChain
+#print axioms initialNerveCut_initialJoinChain

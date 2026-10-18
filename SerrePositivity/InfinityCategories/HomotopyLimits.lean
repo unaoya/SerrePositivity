@@ -46,3 +46,5 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanOverRight
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialNerveCut
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialNerveOldPart
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialNerveTail
+public import SerrePositivity.InfinityCategories.HomotopyLimits.AugmentedNerve
+public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinChain
