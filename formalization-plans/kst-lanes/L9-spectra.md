@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・122 モジュール 2019 宣言の公理監査成功。
+対象ビルド・125 モジュール 2046 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1373,3 +1373,37 @@ L9d は進行中。次は有理化の telescope に対応する群の局所化�
 私有宣言を含む 122 モジュール 2019 宣言で標準三公理のみ。
 L9d は進行中。スペクトルの実際の乗法射と telescope の構成および比較は未完了。
 群の計算だけでスペクトルの有理化の完成を主張しない。
+
+
+## 48. L9d の filtered BF 対象への射と置換比較
+
+元の各対象の cofibrant 性を使い、各段の余極限への射を BF 置換へ厳密に持ち上げた。
+段ごとの比較射へ戻すと元の余極限の標準射に一致する。
+この式と正次数の段表示の自然性により、整数次数の余極限同型が選んだ射を誘導すると証明した。
+持ち上げの選択の厳密な自然性は要求しないが、π_* 上では cocone の自然性が成立する。
+
+図式の自然変換から、段ごとの Kan 余極限列の厳密な射も構成した。
+その射を標的の BF 置換へ持ち上げ、実際の Ω スペクトル間の比較射を得た。
+元の自然変換が各段で全基点 π_* 同型なら、この比較射も各段および全整数次数で π_* 同型である。
+通常の余極限模型を置換して比較するための結果であり、∞ 余極限の普遍性は含まない。
+
+乗法射の実現のため、π_* 同型である Kan fibration の fiber の消滅も長完全列から証明した。
+零次数を含む任意の fiber 基点で全ホモトピー類は一元である。
+対応する境界定数単体の RelStruct も存在する。
+この消滅から実際の境界充填を導く逆向きの Whitehead 補題は後続部分で実証する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `OmegaSpectrum.filteredSpectrumInjection` | 元の各対象から BF 余極限対象への厳密な射 |
+| `OmegaSpectrum.filteredSpectrumInjection_comparison` | 各段の余極限射との整合性 |
+| `OmegaSpectrum.filteredSpectrumHomotopyIso_ι` | 群の余極限同型の各段での計算 |
+| `OmegaSpectrum.filteredSpectrumInjection_natural` | 誘導する整数次数群の写像の自然性 |
+| `OmegaSpectrum.filteredKanMap` / `.filteredSpectrumMap` | 自然変換からの Kan 列と BF 対象の比較射 |
+| `OmegaSpectrum.filteredSpectrumMap_levelwise` / `.filteredSpectrumMap_piIsomorphism` | 段ごとおよび整数次数の π_* 同型の保存 |
+| `fiberHomotopy_eq_point` / `.fiberHomotopySubsingleton_at` | acyclic fiber の零次数を含む全類の一意性 |
+| `fiberRelStruct_nonempty` | acyclic fiber の境界定数単体間の関係の存在 |
+
+参照：Goerss–Jardine I §§7–8、Kerodon §3.2.6、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2322 jobs 成功。
+私有宣言を含む 125 モジュール 2046 宣言で標準三公理のみ。
+L9d は進行中。次はホモトピー類の消滅を境界の充填へ戻す幾何的補題を進める。
