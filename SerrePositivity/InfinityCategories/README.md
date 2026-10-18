@@ -2205,7 +2205,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開790宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開796宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2833,7 +2833,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開790宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開796宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -4148,6 +4148,46 @@ C の対象の宇宙 v と Hom・I の宇宙 u は異なってよい。
 残るのは反転した係数の weighted nerve と coherent cone の全空間の切断空間の比較、
 反転・ULift・底の nerve の同型に沿う移送、元の q_x との一致である。
 𝒮・Sp の残りの適用を含む γ3b・γ3c は未完了。
+
+### left fibration の宇宙の持ち上げと切断比較の実際の射（実装済み）
+
+`UniverseLeftFibration` は元の射 p : E→B に指定した一つのホーンの相対持ち上げ性だけを仮定して、
+その宇宙の持ち上げで同じ持ち上げ性が成り立つことを証明する。
+
+```lean
+ulift_hasLiftingProperty_horn {E B : SSet.{u}} (p : E ⟶ B)
+    (n : ℕ) (i : Fin (n + 2)) [HasLiftingProperty (horn.{u} (n + 1) i).ι p] :
+  HasLiftingProperty (horn.{max u v} (n + 1) i).ι ((SSet.uliftFunctor.{v, u}).map p)
+leftFibration_uliftFunctor_map {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] :
+  LeftFibration ((SSet.uliftFunctor.{v, u}).map p)
+```
+
+各ホーン面と底の simplex を `uliftSimplexHomDown` で元の宇宙へ戻す。
+`uliftSimplexHomDown_post` と既存の面への制限の式で相対可換条件を移し、
+互換な面を貼り合わせて元の射の相対充填を使う。
+その充填 simplex を Yoneda の同値で持ち上げ、全ての面と底の条件を確認する。
+異なる宇宙の単体集合間の射や、p の Kan fibration 性は仮定しない。
+最後以外のホーンへ適用して上の left fibration 性の保存を得る。
+
+`WeightedConeSections` は `F : I ⥤ C` と局所 Kan な C に対して
+`weightedConeSource_leftFibration` により反転豊穣係数の持ち上げた weighted nerve の射影が
+left fibration であることを証明する。図式の各射の fibration 性は不要。
+`weightedConeSourceSections_kanComplex F x` はその切断空間の Kan 性である。
+
+```lean
+weightedCoherentConeSectionsComparison F x :
+  simplicialSections ((SSet.uliftFunctor.{v, u}).map
+    (weightedNerveProjection (simplicialHomDiagram F x ⋙ SSet.opFunctor))) ⟶
+  coherentConeSectionSpace (strictCoherentDiagram F) (coherentNerveVertex x)
+```
+
+は構成済みの全体の底上の射で切断を後合成し、coherent cone の切断模型との厳密な同型を
+合成した実際の射である。射の定義には Kan 性・極限性を要求しない。
+C の対象の宇宙 v と Hom・I の宇宙 u は異なってよい。
+原典は HTT 4.2.4.1、Kerodon §7.5.4。
+
+切断比較の同値性、底の nerve の同型と反転・ULift を通じた重み付き end への移送、
+元の q_x との一致、および 𝒮・Sp の残りの適用は未完了。
 
 ### 𝒮 の空積（実装済み）
 

@@ -1585,3 +1585,15 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedCoherentConeFiberMap_homotopyEquivalence_at
 #check @weightedCoherentConeFiberMap_homotopyEquivalence
 #print axioms weightedCoherentConeFiberMap_homotopyEquivalence
+#check @uliftSimplexHomDown_post
+#print axioms uliftSimplexHomDown_post
+#check @ulift_hasLiftingProperty_horn
+#print axioms ulift_hasLiftingProperty_horn
+#check @leftFibration_uliftFunctor_map
+#print axioms leftFibration_uliftFunctor_map
+#check @weightedConeSource_leftFibration
+#print axioms weightedConeSource_leftFibration
+#check @weightedConeSourceSections_kanComplex
+#print axioms weightedConeSourceSections_kanComplex
+#check @weightedCoherentConeSectionsComparison
+#print axioms weightedCoherentConeSectionsComparison
