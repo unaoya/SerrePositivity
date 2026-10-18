@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと994宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1007宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -213,6 +213,10 @@
 | normalizedMap_eq_low_reflect | NormalizedLowDegreeReflection.lean | 検証済み | P と Q の退化分解による低次数の正規化の一致の反映 |
 | linearizedMHomotopyOfChainComparisons | LowChainComparisonReconstruction.lean | 検証済み | 比較先が低次で一致する二つの全鎖比較から実 m 次ホモトピーを構成 |
 | normalizedMooreComplex_additive | NormalizedFunctorAdditivity.lean | 検証済み | 包含・交代面複体・射影による正規化 Moore 関手の加法性 |
+| normalizedTensorComparisonWithHomotopies / normalizedTensorAugmentationComparison | NormalizedTensorComparison.lean | 検証済み | 単体的テンソルと厳密化した全テンソルの全鎖比較、補正した三項の比較 |
+| linearizedTensorAugmentationMHomotopy | TensorAugmentationMHomotopy.lean | 非同変版検証済み | 明示的な前後の射を含む補正式の実 (m+m′+1) 次区間ホモトピー |
+| groupProductNerve / groupProductNerve_comp | GroupProductNerve.lean | 検証済み | 非可換群の直積から μ を最後に適用する実 nerve の写像 |
+| linearizedGroupProduct / linearizedGroupProduct_comp | LinearizedGroupProduct.lean | 検証済み | μ と対角の自由整数テンソルへの移送と合成群準同型との実等式 |
 | normalizedMapReconstruct / normalizedMapReconstruct_comp | NormalizedMapReconstruction.lean | 検証済み | Dold–Kan の実同値からの単体的射の復元と合成則 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
@@ -767,3 +771,9 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `normalizedMap_eq_low_reflect` は P の正規化部分の一致と Q の退化分解を次数帰納法で合成し、正規化の低次数の一致を実射の低次数の一致へ反映する。
 - `linearizedMHomotopyOfChainComparisons` は N(f)≃R と N(g)≃S、R=S (次数≤m) から実 m 次ホモトピーを構成する。全ホモトピーの差を使い、補正終点 R−S+N(g) を復元するので、単なるホモロジー写像の一致を区間ホモトピーの存在として仮定していない。
 - 次は一般のテンソルの augmentation 補正式の実 m 次ホモトピーを、この復元と正規化 EZ 比較・厳密化の比較から合成する。
+
+- `linearizedTensorAugmentationMHomotopy` は一般の非同変なテンソル補正式の実 (m+m′+1) 次ホモトピーを構成済み。前合成 a と後合成 b は明示的な実単体的射。
+- 実際に使う二つの全比較の比較先の低次一致は `normalizedStrictifiedTensor_eq_low` により証明する。比較ホモトピーの存在を追加仮定に包んでいない。
+- `groupProductNerve` は ComposableArrows の点ごとの関手の積の後に μ の関手を適用する。P,Q,H の可換性を仮定しない。
+- `linearizedGroupProduct_comp` は対角と α,β,μ の実合成を C(μ∘(α,β)) へ同定する。最後に μ を適用する採用済み設計を具体化した。
+- 次はこの一般テンソル版を μ 版 A.5 の三つの補正項へ特殊化し、構成の自然性から外部 G 同変性を接続する。非同変版だけで L6c 完了とは表示しない。

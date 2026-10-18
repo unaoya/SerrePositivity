@@ -167,3 +167,7 @@ public import SerrePositivity.KST.ProExcision.ChainHomotopyCylinderNaturality
 public import SerrePositivity.KST.ProExcision.NormalizedLowDegreeReflection
 public import SerrePositivity.KST.ProExcision.LowChainComparisonReconstruction
 public import SerrePositivity.KST.ProExcision.NormalizedFunctorAdditivity
+public import SerrePositivity.KST.ProExcision.NormalizedTensorComparison
+public import SerrePositivity.KST.ProExcision.TensorAugmentationMHomotopy
+public import SerrePositivity.KST.ProExcision.GroupProductNerve
+public import SerrePositivity.KST.ProExcision.LinearizedGroupProduct

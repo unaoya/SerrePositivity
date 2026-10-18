@@ -2829,3 +2829,42 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.normalizedMooreComplex_additive
 #print axioms SerrePositivity.KST.ProExcision.normalizedMooreComplex_additive
+
+#check @SerrePositivity.KST.ProExcision.normalizedTensorComparisonHomotopy
+#print axioms SerrePositivity.KST.ProExcision.normalizedTensorComparisonHomotopy
+
+#check @SerrePositivity.KST.ProExcision.normalizedTensorComparisonWithHomotopies
+#print axioms SerrePositivity.KST.ProExcision.normalizedTensorComparisonWithHomotopies
+
+#check @SerrePositivity.KST.ProExcision.normalizedTensorAugmentationComparison
+#print axioms SerrePositivity.KST.ProExcision.normalizedTensorAugmentationComparison
+
+#check @SerrePositivity.KST.ProExcision.linearizedTensorAugmentationMHomotopy
+#print axioms SerrePositivity.KST.ProExcision.linearizedTensorAugmentationMHomotopy
+
+#check @SerrePositivity.KST.ProExcision.nervePairMap
+#print axioms SerrePositivity.KST.ProExcision.nervePairMap
+
+#check @SerrePositivity.KST.ProExcision.groupProductFunctor
+#print axioms SerrePositivity.KST.ProExcision.groupProductFunctor
+
+#check @SerrePositivity.KST.ProExcision.groupProductNerve
+#print axioms SerrePositivity.KST.ProExcision.groupProductNerve
+
+#check @SerrePositivity.KST.ProExcision.simplicialDiagonal
+#print axioms SerrePositivity.KST.ProExcision.simplicialDiagonal
+
+#check @SerrePositivity.KST.ProExcision.groupProductNerve_comp
+#print axioms SerrePositivity.KST.ProExcision.groupProductNerve_comp
+
+#check @SerrePositivity.KST.ProExcision.linearizedDiagonal
+#print axioms SerrePositivity.KST.ProExcision.linearizedDiagonal
+
+#check @SerrePositivity.KST.ProExcision.linearizedGroupProduct
+#print axioms SerrePositivity.KST.ProExcision.linearizedGroupProduct
+
+#check @SerrePositivity.KST.ProExcision.linearizedGroupProduct_comp
+#print axioms SerrePositivity.KST.ProExcision.linearizedGroupProduct_comp
+
+#check @SerrePositivity.KST.ProExcision.groupProduct_trivial
+#print axioms SerrePositivity.KST.ProExcision.groupProduct_trivial
