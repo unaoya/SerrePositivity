@@ -12537,5 +12537,42 @@ lemma liftedSmallLeftUnstraighteningMappingSpaceMap_isQCatEquivalence_iff {B : S
     IsQCatEquivalence (liftedSmallLeftUnstraighteningMappingSpaceMap F G) ↔
       IsQCatEquivalence (leftUnstraighteningMappingSpaceMap F G)
 
+lemma functorParameterizedPrism_injective {K B L X : SSet.{u}} :
+    Function.Injective (functorParameterizedPrism (K := K) (B := B) (L := L) (X := X))
+
+instance leftUnstraighteningTransformationSpace_obj_small {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (n : SimplexCategoryᵒᵖ) :
+    Small.{u} ((leftUnstraighteningTransformationSpace F G).obj n)
+
+noncomputable def smallLeftUnstraighteningTransformationSpace {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : SSet.{u}
+
+noncomputable def smallLeftUnstraighteningTransformationSpaceIso {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (smallLeftUnstraighteningTransformationSpace F G) ≅
+      leftUnstraighteningTransformationSpace F G
+
+instance smallLeftUnstraighteningTransformationSpace_kanComplex {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    KanComplex (smallLeftUnstraighteningTransformationSpace F G)
+
+noncomputable def smallLeftUnstraighteningMappingSpaceMap {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    smallLeftUnstraighteningTransformationSpace F G ⟶
+      relativeFunctorSpace (smallLeftUnstraighteningProjection G)
+        (smallLeftUnstraighteningProjection F)
+
+lemma smallLeftUnstraighteningMappingSpaceMap_comparison {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).map (smallLeftUnstraighteningMappingSpaceMap F G) ≫
+      (smallLeftUnstraighteningRelativeFunctorIso F G).hom =
+    (smallLeftUnstraighteningTransformationSpaceIso F G).hom ≫
+      leftUnstraighteningMappingSpaceMap F G
+
+lemma smallLeftUnstraighteningMappingSpaceMap_isQCatEquivalence_iff {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    IsQCatEquivalence (smallLeftUnstraighteningMappingSpaceMap F G) ↔
+      IsQCatEquivalence (leftUnstraighteningMappingSpaceMap F G)
+
 end SerrePositivity.InfinityCategories
 ```
