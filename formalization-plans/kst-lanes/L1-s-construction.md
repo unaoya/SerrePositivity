@@ -96,7 +96,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 
 ## 6. 現在地・主要宣言
 
-**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
+**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性、全多単体構造・入力についての自然性と対角実現の関手性まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
 L1b は元の全 gapped 図式の制限写像そのものについて、全次数・全境界の RLP を証明した。
 追加の存在仮定や出力の gapped 性の仮定は残っていない。
 
@@ -1615,3 +1615,184 @@ lemma sPostcomp_preserves_cofiber {n : ℕ} {C D : SSet.{u}}
 任意の押し出しに対する構造射の保存、多単体的反復の全構造射、境界の coherent な潰し、delooping・Ω 条件・BF スペクトルは未完了。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2291 jobs）、公理監査成功（652 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.14 単体的自己関手・全有限反復の多単体構造と自然性
+
+標準 cofiber 正方形による既存の gapped 判定により、零対象と cofiber を保つ射で同じ S_n の後合成を構成した。
+全四つ組の押し出し条件と全 gapped 図式を保持し、従来の保存条件による sPostcomp とは厳密に一致することを証明。
+新しい保存条件は恒等・合成・S_n の後合成・面退化で閉じる。従来の全押し出し保存条件は変更していない。
+StableModel は既存の IsStable と quasicategory 性を束ねるだけで、Core/・Stable/ の公開定義は変更しない。
+S• を安定な入力上の単体的自己関手として束ね、任意の有限反復の全多単体構造を自己関手の合成で構成した。
+各対象は既存のリスト版と厳密に一致する。各多次数で安定・quasicategory、各 core は Kan、零方向では可縮。
+入力の射について関手的であり、対角実現も関手として構成済み。対角が Kan であるとは主張しない。
+
+**CofiberMaps.lean**
+
+```text
+def PreservesCofiberData {C D : SSet.{u}} (f : C ⟶ D) : Prop
+
+lemma PreservesSConstructionData.toCofiberData {C D : SSet.{u}} {f : C ⟶ D}
+    (hf : PreservesSConstructionData f) : PreservesCofiberData f
+
+lemma preservesCofiberData_id (C : SSet.{u}) : PreservesCofiberData (𝟙 C)
+
+lemma PreservesCofiberData.comp {C D E : SSet.{u}} {f : C ⟶ D} {g : D ⟶ E}
+    (hf : PreservesCofiberData f) (hg : PreservesCofiberData g) : PreservesCofiberData (f ≫ g)
+
+lemma IsGapped.postcomp_of_cofiber {n : ℕ} {C D : SSet.{u}} [Quasicategory D]
+    {F : arNerve n ⟶ C} (hF : IsGapped F) (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    IsGapped (F ≫ f)
+
+def sPostcompCofiber (n : ℕ) {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) : sConstruction n C ⟶ sConstruction n D
+
+lemma sPostcompCofiber_ι (n : ℕ) {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    sPostcompCofiber n f hf ≫ (gappedSubcomplex n D).ι =
+      (gappedSubcomplex n C).ι ≫ (ihom (arNerve n)).map f
+
+lemma sPostcompCofiber_eq_sPostcomp (n : ℕ) {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesSConstructionData f) :
+    sPostcompCofiber n f (PreservesSConstructionData.toCofiberData hf) = sPostcomp n f hf
+
+lemma sPostcompCofiber_gapped_evaluate (n : ℕ) {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) (a : (arNerve n) _⦋0⦌) :
+    sPostcompCofiber n f hf ≫ (gappedSubcomplex n D).ι ≫ evaluateFunctorAt a =
+      (gappedSubcomplex n C).ι ≫ evaluateFunctorAt a ≫ f
+
+lemma sPostcompCofiber_isZeroVertex {n : ℕ} {C D : SSet.{u}}
+    [Quasicategory C] [HasZeroVertex C] [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f)
+    {v : (sConstruction n C) _⦋0⦌} (hv : IsZeroVertex v) :
+    IsZeroVertex ((sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌) v)
+
+lemma preservesCofiberData_sPostcompCofiber (n : ℕ) {C D : SSet.{u}}
+    [Quasicategory C] [IsStable C] [Quasicategory D] [IsStable D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    PreservesCofiberData (sPostcompCofiber n f hf)
+
+lemma preservesCofiberData_sMap {m n : ℕ} (C : SSet.{u}) [Quasicategory C] [IsStable C]
+    (θ : Fin (m + 1) →o Fin (n + 1)) : PreservesCofiberData (sMap C θ)
+
+```
+
+**CofiberPostcompLaws.lean**
+
+```text
+lemma sPostcompCofiber_id (n : ℕ) (C : SSet.{u}) [Quasicategory C] :
+    sPostcompCofiber n (𝟙 C) (preservesCofiberData_id C) = 𝟙 (sConstruction n C)
+
+lemma sPostcompCofiber_comp (n : ℕ) {C D E : SSet.{u}} [Quasicategory D] [Quasicategory E]
+    (f : C ⟶ D) (g : D ⟶ E) (hf : PreservesCofiberData f) (hg : PreservesCofiberData g) :
+    sPostcompCofiber n (f ≫ g) (PreservesCofiberData.comp hf hg) =
+      sPostcompCofiber n f hf ≫ sPostcompCofiber n g hg
+
+lemma sPostcompCofiber_sMap {m n : ℕ} {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) (θ : Fin (m + 1) →o Fin (n + 1)) :
+    sPostcompCofiber n f hf ≫ sMap D θ = sMap C θ ≫ sPostcompCofiber m f hf
+
+lemma sPostcompCofiber_zeroVertex (n : ℕ) {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    (sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌) (sConstructionZeroVertex n z hz) =
+      sConstructionZeroVertex n (f.app (Opposite.op ⦋0⦌) z) (hf.1 z hz)
+
+```
+
+**StableModels.lean**
+
+```text
+structure StableModel
+
+instance stableModelCategory : Category.{u} StableModel.{u}
+
+def stableModelForget : StableModel.{u} ⥤ SSet.{u}
+
+def sStableModel (n : ℕ) (X : StableModel.{u}) : StableModel.{u}
+
+def sEndofunctor (n : ℕ) : StableModel.{u} ⥤ StableModel.{u}
+
+def sEndofunctorMap {m n : ℕ} (θ : Fin (m + 1) →o Fin (n + 1)) :
+    sEndofunctor.{u} n ⟶ sEndofunctor m
+
+def simplicialStableEndofunctor : SimplexCategoryᵒᵖ ⥤ (StableModel.{u} ⥤ StableModel.{u})
+
+```
+
+**MultiSimplicial.lean**
+
+```text
+def multiSEndofunctor : (r : ℕ) →
+    (Fin r → SimplexCategoryᵒᵖ) ⥤ (StableModel.{u} ⥤ StableModel.{u})
+
+def multiSConstruction (r : ℕ) (X : StableModel.{u}) : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}
+
+instance multiSConstruction_quasicategory (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) : Quasicategory ((multiSConstruction r X).obj d)
+
+instance multiSConstruction_isStable (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) : IsStable ((multiSConstruction r X).obj d)
+
+lemma multiSConstruction_obj_succ (r : ℕ) (X : StableModel.{u})
+    (d : Fin (r + 1) → SimplexCategoryᵒᵖ) :
+    (multiSConstruction (r + 1) X).obj d =
+      sConstruction (d 0).unop.len ((multiSConstruction r X).obj (fun i => d i.succ))
+
+lemma multiSConstruction_obj_eq_iterated (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    (multiSConstruction r X).obj d =
+      iteratedSConstruction (List.ofFn (fun i => (d i).unop.len)) X.carrier
+
+def multiCoreSConstruction (r : ℕ) (X : StableModel.{u}) :
+    (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}
+
+instance multiCoreSConstruction_kanComplex (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) : KanComplex ((multiCoreSConstruction r X).obj d)
+
+lemma multiSConstruction_isContractibleKan_of_zero_coordinate (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) (i : Fin r) (hi : (d i).unop.len = 0) :
+    IsContractibleKan ((multiSConstruction r X).obj d)
+
+lemma multiCoreSConstruction_isContractibleKan_of_zero_coordinate (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) (i : Fin r) (hi : (d i).unop.len = 0) :
+    IsContractibleKan ((multiCoreSConstruction r X).obj d)
+
+```
+
+**MultiRealization.lean**
+
+```text
+def multiSConstructionFunctor (r : ℕ) :
+    StableModel.{u} ⥤ ((Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+
+lemma multiSConstructionFunctor_obj (r : ℕ) (X : StableModel.{u}) :
+    (multiSConstructionFunctor r).obj X = multiSConstruction r X
+
+def multiCoreSConstructionFunctor (r : ℕ) :
+    StableModel.{u} ⥤ ((Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+
+lemma multiCoreSConstructionFunctor_obj (r : ℕ) (X : StableModel.{u}) :
+    (multiCoreSConstructionFunctor r).obj X = multiCoreSConstruction r X
+
+def multiIndexDiagonal (r : ℕ) : SimplexCategoryᵒᵖ ⥤ (Fin r → SimplexCategoryᵒᵖ)
+
+def multiDiagonalFunctor (r : ℕ) :
+    ((Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) ⥤ SSet.{u}
+
+def multiRealizationFunctor (r : ℕ) : StableModel.{u} ⥤ SSet.{u}
+
+def multiDiagonalCoreSConstruction (r : ℕ) (X : StableModel.{u}) : SSet.{u}
+
+lemma multiDiagonalCoreSConstruction_obj (r : ℕ) (X : StableModel.{u}) (n : SimplexCategoryᵒᵖ) :
+    (multiDiagonalCoreSConstruction r X).obj n =
+      ((multiCoreSConstruction r X).obj (fun _ => n)).obj n
+
+```
+
+StableModel の公開フィールドは `carrier : SSet.{u}`、`[quasicategory : Quasicategory carrier]`、`[stable : IsStable carrier]`。コンストラクターとこれらの射影も監査対象。
+
+現在地：L1a・L1b 完了、L1c 継続中。S_n の包含・構造射の cofiber 保存、反復に必要な保存条件の閉性、全有限反復の多単体構造・自然性・対角実現の関手性は証明済み。
+反復実現の基点と零対象の選択に関する coherent な自然性、零方向の境界の coherent な潰し、Kan 置換、delooping・Ω 条件・BF スペクトルは未完了。
+任意の押し出し保存と cofiber 保存条件との同値は未証明。反復の構造射は、証明済みの cofiber 保存条件と元の全 gapped 条件を使う。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2296 jobs）、公理監査成功（698 宣言、標準三公理のみ）。追加公理・sorry なし。

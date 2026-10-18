@@ -42,4 +42,6 @@ public import SerrePositivity.KST.SConstruction.GappedPointwiseColimit
 
 public import SerrePositivity.KST.SConstruction.StructureMapCofibers
 
+public import SerrePositivity.KST.SConstruction.MultiRealization
+
 /-! # ∞-S• 構成と連結 K 理論 -/

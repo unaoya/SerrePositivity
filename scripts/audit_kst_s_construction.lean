@@ -1782,3 +1782,141 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.sPostcomp_preserves_cofiber
 #print axioms SerrePositivity.KST.SConstruction.sPostcomp_preserves_cofiber
+
+#check @SerrePositivity.KST.SConstruction.PreservesCofiberData
+#print axioms SerrePositivity.KST.SConstruction.PreservesCofiberData
+
+#check @SerrePositivity.KST.SConstruction.PreservesSConstructionData.toCofiberData
+#print axioms SerrePositivity.KST.SConstruction.PreservesSConstructionData.toCofiberData
+
+#check @SerrePositivity.KST.SConstruction.preservesCofiberData_id
+#print axioms SerrePositivity.KST.SConstruction.preservesCofiberData_id
+
+#check @SerrePositivity.KST.SConstruction.PreservesCofiberData.comp
+#print axioms SerrePositivity.KST.SConstruction.PreservesCofiberData.comp
+
+#check @SerrePositivity.KST.SConstruction.IsGapped.postcomp_of_cofiber
+#print axioms SerrePositivity.KST.SConstruction.IsGapped.postcomp_of_cofiber
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_ι
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_ι
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_eq_sPostcomp
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_eq_sPostcomp
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_gapped_evaluate
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_gapped_evaluate
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_isZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_isZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.preservesCofiberData_sPostcompCofiber
+#print axioms SerrePositivity.KST.SConstruction.preservesCofiberData_sPostcompCofiber
+
+#check @SerrePositivity.KST.SConstruction.preservesCofiberData_sMap
+#print axioms SerrePositivity.KST.SConstruction.preservesCofiberData_sMap
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_id
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_id
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_comp
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_comp
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_sMap
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_sMap
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_zeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_zeroVertex
+
+#check @SerrePositivity.KST.SConstruction.StableModel
+#print axioms SerrePositivity.KST.SConstruction.StableModel
+
+#check @SerrePositivity.KST.SConstruction.stableModelCategory
+#print axioms SerrePositivity.KST.SConstruction.stableModelCategory
+
+#check @SerrePositivity.KST.SConstruction.stableModelForget
+#print axioms SerrePositivity.KST.SConstruction.stableModelForget
+
+#check @SerrePositivity.KST.SConstruction.sStableModel
+#print axioms SerrePositivity.KST.SConstruction.sStableModel
+
+#check @SerrePositivity.KST.SConstruction.sEndofunctor
+#print axioms SerrePositivity.KST.SConstruction.sEndofunctor
+
+#check @SerrePositivity.KST.SConstruction.sEndofunctorMap
+#print axioms SerrePositivity.KST.SConstruction.sEndofunctorMap
+
+#check @SerrePositivity.KST.SConstruction.simplicialStableEndofunctor
+#print axioms SerrePositivity.KST.SConstruction.simplicialStableEndofunctor
+
+#check @SerrePositivity.KST.SConstruction.multiSEndofunctor
+#print axioms SerrePositivity.KST.SConstruction.multiSEndofunctor
+
+#check @SerrePositivity.KST.SConstruction.multiSConstruction
+#print axioms SerrePositivity.KST.SConstruction.multiSConstruction
+
+#check @SerrePositivity.KST.SConstruction.multiSConstruction_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.multiSConstruction_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.multiSConstruction_isStable
+#print axioms SerrePositivity.KST.SConstruction.multiSConstruction_isStable
+
+#check @SerrePositivity.KST.SConstruction.multiSConstruction_obj_succ
+#print axioms SerrePositivity.KST.SConstruction.multiSConstruction_obj_succ
+
+#check @SerrePositivity.KST.SConstruction.multiSConstruction_obj_eq_iterated
+#print axioms SerrePositivity.KST.SConstruction.multiSConstruction_obj_eq_iterated
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSConstruction
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSConstruction
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSConstruction_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSConstruction_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.multiSConstruction_isContractibleKan_of_zero_coordinate
+#print axioms SerrePositivity.KST.SConstruction.multiSConstruction_isContractibleKan_of_zero_coordinate
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSConstruction_isContractibleKan_of_zero_coordinate
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSConstruction_isContractibleKan_of_zero_coordinate
+
+#check @SerrePositivity.KST.SConstruction.multiSConstructionFunctor
+#print axioms SerrePositivity.KST.SConstruction.multiSConstructionFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiSConstructionFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.multiSConstructionFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSConstructionFunctor
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSConstructionFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSConstructionFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSConstructionFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.multiIndexDiagonal
+#print axioms SerrePositivity.KST.SConstruction.multiIndexDiagonal
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalFunctor
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.multiRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalCoreSConstruction
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalCoreSConstruction
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalCoreSConstruction_obj
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalCoreSConstruction_obj
+
+#check @SerrePositivity.KST.SConstruction.StableModel.mk
+#print axioms SerrePositivity.KST.SConstruction.StableModel.mk
+
+#check @SerrePositivity.KST.SConstruction.StableModel.carrier
+#print axioms SerrePositivity.KST.SConstruction.StableModel.carrier
+
+#check @SerrePositivity.KST.SConstruction.StableModel.quasicategory
+#print axioms SerrePositivity.KST.SConstruction.StableModel.quasicategory
+
+#check @SerrePositivity.KST.SConstruction.StableModel.stable
+#print axioms SerrePositivity.KST.SConstruction.StableModel.stable
