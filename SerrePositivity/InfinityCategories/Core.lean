@@ -163,3 +163,13 @@ public import SerrePositivity.InfinityCategories.Core.FatJoinTransformFamily
 public import SerrePositivity.InfinityCategories.Core.FatJoinHomotopyFixed
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinStdHomotopy
+
+public import SerrePositivity.InfinityCategories.Core.JoinCylinderSimplex
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinStdSection
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinCylinderEpi
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinStdComparison
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality

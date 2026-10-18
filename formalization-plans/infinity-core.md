@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6868,6 +6868,94 @@ lemma isPrecompositionEquivalence_fatJoinStdLeftNormalize (n m : ℕ) :
 
 lemma isPrecompositionEquivalence_fatJoinStdNormalize (n m : ℕ) :
     IsPrecompositionEquivalence (fatJoinStdNormalize.{u} n m)
+
+end SerrePositivity.InfinityCategories
+```
+
+### A6 続き：任意の標準単体の fat join 比較の同値条件（2026-10-18）
+
+任意の自然数 n、m に対して `isPrecompositionEquivalence_fatJoinComparison_stdSimplex` を証明した。比較の切断 `fatJoinStdSection` を構成し、切断→比較は厳密な恒等射、比較→切断は検証済みの左右の正規化の自己射となることを示した。二対六則によって、任意の quasicategory への比較の前合成が同値となる。fat join 自身の quasicategory 性は要求しない。
+
+切断は連結した頂点 z を左の min(z,n)、左右を分ける区間座標、右の z−(n+1) に写す。円柱比較の単体の式を切断の左右で直接計算して合成を同一視した。両因子に頂点があれば円柱包含がエピ射であること、一般の射についての比較の自然性も証明した。
+
+Core ビルド1809 jobs、累計1114宣言の標準3公理監査成功。既存の公開名・型は維持。一般の因子への貼り合わせ、slice 比較の同値性、A6 の主定理は未完了。A4・A5 は未着手。新規19宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma Join.augTensorEquiv_symm_augHomSnd (A B : SSet.{u}) (r : ℕ)
+    (a : Join.augObj A r) (b : Join.augObj B r) :
+    Join.augHom (snd A B) r ((Join.augTensorEquiv A B r).symm (a, b)) = b
+
+lemma joinCylinderMap_app (A B : SSet.{u}) (n : ℕ)
+    (a : A _⦋n⦌) (t : (Δ[1] : SSet.{u}) _⦋n⦌) (b : B _⦋n⦌) :
+    (joinCylinderMap A B).app (Opposite.op ⦋n⦌) ((a, t), b) =
+      let s
+
+lemma intervalJoin_cut (n : ℕ) (t : (Δ[1] : SSet.{u}) _⦋n⦌) :
+    ((joinStdSimplexIso.{u} 0 0).inv.app (Opposite.op ⦋n⦌) t).1.val =
+      Join.pullCut (stdSimplex.objEquiv t).toOrderHom 1
+
+lemma joinCylinderMap_stdSimplex_val (n m d : ℕ)
+    (a : (Δ[n] : SSet.{u}) _⦋d⦌) (t : (Δ[1] : SSet.{u}) _⦋d⦌)
+    (b : (Δ[m] : SSet.{u}) _⦋d⦌) (i : Fin (d + 1)) :
+    ((joinStdSimplexIso n m).hom.app (Opposite.op ⦋d⦌)
+      ((joinCylinderMap Δ[n] Δ[m]).app (Opposite.op ⦋d⦌) ((a, t), b)) i).val =
+        if (t i).val = 0 then (a i).val else n + 1 + (b i).val
+
+def FatJoinStd.sectionLeft (n m : ℕ) : Fin (n + m + 2) →o Fin (n + 1)
+
+def FatJoinStd.sectionTime (n m : ℕ) : Fin (n + m + 2) →o Fin 2
+
+def FatJoinStd.sectionRight (n m : ℕ) : Fin (n + m + 2) →o Fin (m + 1)
+
+lemma FatJoinStd.section_encode (n m : ℕ) (a : Fin (n + 1)) (t : Fin 2) (b : Fin (m + 1))
+    (w : Fin (n + m + 2))
+    (hw : w.val = if t.val = 0 then a.val else n + 1 + b.val) :
+    ((sectionLeft n m w, sectionTime n m w), sectionRight n m w) =
+      ((leftClamp n (a, t), t), rightClamp m (b, t))
+
+noncomputable def fatJoinStdSectionCylinder (n m : ℕ) :
+    (Δ[n + m + 1] : SSet.{u}) ⟶ ((Δ[n] : SSet.{u}) ⊗ Δ[1]) ⊗ Δ[m]
+
+noncomputable def fatJoinStdSectionSimplex (n m : ℕ) :
+    (Δ[n + m + 1] : SSet.{u}) ⟶ fatJoin (Δ[n] : SSet.{u}) Δ[m]
+
+noncomputable def fatJoinStdSection (n m : ℕ) :
+    join (Δ[n] : SSet.{u}) Δ[m] ⟶ fatJoin (Δ[n] : SSet.{u}) Δ[m]
+
+lemma fatJoinStdSectionSimplex_comparison (n m : ℕ) :
+    fatJoinStdSectionSimplex.{u} n m ≫ fatJoinComparison Δ[n] Δ[m] ≫
+      (joinStdSimplexIso n m).hom = 𝟙 (Δ[n + m + 1] : SSet.{u})
+
+lemma fatJoinStdSection_comparison (n m : ℕ) :
+    fatJoinStdSection.{u} n m ≫ fatJoinComparison Δ[n] Δ[m] =
+      𝟙 (join (Δ[n] : SSet.{u}) Δ[m])
+
+instance fatJoinCylinder_epi_of_nonempty (A B : SSet.{u})
+    [Nonempty (A _⦋0⦌)] [Nonempty (B _⦋0⦌)] : Epi (fatJoinCylinder A B)
+
+lemma joinCylinderMap_stdSectionCylinder (n m : ℕ) :
+    (joinCylinderMap (Δ[n] : SSet.{u}) Δ[m] ≫ (joinStdSimplexIso n m).hom) ≫
+      fatJoinStdSectionCylinder n m =
+        fatJoinTransformCylinder (stdSimplexProductMap (FatJoinStd.leftClamp n))
+          (stdSimplexProductMap (FatJoinStd.rightClamp m))
+
+lemma fatJoinComparison_stdSection (n m : ℕ) :
+    fatJoinComparison (Δ[n] : SSet.{u}) Δ[m] ≫ fatJoinStdSection n m =
+      fatJoinStdNormalize n m
+
+lemma isPrecompositionEquivalence_fatJoinComparison_stdSimplex (n m : ℕ) :
+    IsPrecompositionEquivalence (fatJoinComparison (Δ[n] : SSet.{u}) Δ[m])
+
+lemma joinCylinderMap_naturality {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    fatJoinCylinderMap f g ≫ joinCylinderMap A' B' =
+      joinCylinderMap A B ≫ joinMap f g
+
+lemma fatJoinComparison_naturality {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    fatJoinMap f g ≫ fatJoinComparison A' B' = fatJoinComparison A B ≫ joinMap f g
 
 end SerrePositivity.InfinityCategories
 ```
