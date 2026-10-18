@@ -276,3 +276,4 @@ public import SerrePositivity.InfinityCategories.F1.PrecompositionOverColimits
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderColimits
 public import SerrePositivity.InfinityCategories.F1.OverCoproductComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderCoproduct
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderSkeleton

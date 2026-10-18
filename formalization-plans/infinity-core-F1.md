@@ -5996,5 +5996,16 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_sigma
     (h : ∀ j, IsPrecompositionEquivalence (relativeJoinCylinderComparison (f j))) :
     IsPrecompositionEquivalence (relativeJoinCylinderComparison (Sigma.desc f))
 
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_skeleton_succ
+    {A X S : SSet.{u}} (i : A ⟶ X) [Mono i] (f : X ⟶ S) (d : ℕ)
+    (hprev : IsPrecompositionEquivalence
+      (relativeJoinCylinderComparison ((skeletonOfMono i d).ι ≫ f)))
+    (hboundary : ∀ c : Cell i d, IsPrecompositionEquivalence
+      (relativeJoinCylinderComparison ((boundary d).ι ≫ c.map ≫ f)))
+    (hcell : ∀ c : Cell i d, IsPrecompositionEquivalence
+      (relativeJoinCylinderComparison (c.map ≫ f))) :
+    IsPrecompositionEquivalence
+      (relativeJoinCylinderComparison ((skeletonOfMono i (d + 1)).ι ≫ f))
+
 end SerrePositivity.InfinityCategories
 ```
