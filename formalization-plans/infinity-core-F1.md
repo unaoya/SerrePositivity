@@ -6967,5 +6967,19 @@ lemma Join.Simplex.ext_of_extreme_faces {X Y : SSet.{u}} {n : ℕ}
     (h1 : Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom s =
       Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom t) : s = t
 
+lemma join_hom_ext_innerHorn_of_cut {X Y : SSet.{u}} (n : ℕ) (i : Fin (n + 3))
+    (hi0 : 0 < i) (hi1 : i < Fin.last (n + 2))
+    {f g : (Δ[n + 2] : SSet.{u}) ⟶ join X Y}
+    (hc : (SSet.yonedaEquiv f).1 = (SSet.yonedaEquiv g).1)
+    (hs0 : 0 < (SSet.yonedaEquiv f).1.val) (hs1 : (SSet.yonedaEquiv f).1.val ≤ n + 2)
+    (h : (horn (n + 2) i).ι ≫ f = (horn (n + 2) i).ι ≫ g) : f = g
+
+lemma join_hom_ext_innerHorn_of_interval {X Y : SSet.{u}} (n : ℕ) (i : Fin (n + 3))
+    (hi0 : 0 < i) (hi1 : i < Fin.last (n + 2))
+    {f g : (Δ[n + 2] : SSet.{u}) ⟶ join X Y}
+    (ht : f ≫ joinIntervalProjection X Y = g ≫ joinIntervalProjection X Y)
+    (hs0 : 0 < (SSet.yonedaEquiv f).1.val) (hs1 : (SSet.yonedaEquiv f).1.val ≤ n + 2)
+    (h : (horn (n + 2) i).ι ≫ f = (horn (n + 2) i).ι ≫ g) : f = g
+
 end SerrePositivity.InfinityCategories
 ```

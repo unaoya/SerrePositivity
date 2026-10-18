@@ -1531,3 +1531,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.Join.simplexMap_delta_zero_right_heq
 #check @SerrePositivity.InfinityCategories.Join.simplexMap_delta_last_left_heq
 #check @SerrePositivity.InfinityCategories.Join.Simplex.ext_of_extreme_faces
+#check @SerrePositivity.InfinityCategories.join_hom_ext_innerHorn_of_cut
+#check @SerrePositivity.InfinityCategories.join_hom_ext_innerHorn_of_interval

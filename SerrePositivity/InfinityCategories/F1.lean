@@ -319,3 +319,4 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinEndpointFibers
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionFibers
 public import SerrePositivity.InfinityCategories.F1.JoinIntervalProjection
 public import SerrePositivity.InfinityCategories.F1.JoinExtremeFaces
+public import SerrePositivity.InfinityCategories.F1.JoinMixedHornDetection
