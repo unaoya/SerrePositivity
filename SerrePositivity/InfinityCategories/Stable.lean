@@ -202,6 +202,12 @@ public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeTransport
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopProduct
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopProductNaturality
 
+public import SerrePositivity.InfinityCategories.Stable.InitialFiberZeroFactor
+public import SerrePositivity.InfinityCategories.Stable.CosliceDiagramChange
+public import SerrePositivity.InfinityCategories.Stable.SymmetricSpanFold
+public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeFoldUnit
+public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeUnitZero
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
