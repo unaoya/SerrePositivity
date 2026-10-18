@@ -2388,3 +2388,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.diagonalStrictDiagramEvaluation_transport
 #check @SerrePositivity.InfinityCategories.strictDiagramJointEvaluation_transport
 #check @SerrePositivity.InfinityCategories.leftStrictTransportInfinityMap_realization
+#check @SerrePositivity.InfinityCategories.strictDiagramMixedHom_base_id
+#check @SerrePositivity.InfinityCategories.diagonalStrictDiagramEvaluation_constant_base
+#check @SerrePositivity.InfinityCategories.strictTransportDiagramRealization_evaluate
+#check @SerrePositivity.InfinityCategories.strictTransportDiagramRealization_vertex

@@ -575,3 +575,4 @@ public import SerrePositivity.InfinityCategories.F1.DiagonalStrictDiagramEvaluat
 public import SerrePositivity.InfinityCategories.F1.DiagonalStrictDiagramReindex
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramRealization
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramRealizationComparison
+public import SerrePositivity.InfinityCategories.F1.StrictDiagramRealizationEvaluation

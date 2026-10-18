@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.StrictTransportDiagramInfini
 /-!
 概要：通常の底の図式と coherent な strict transport の図式の対角評価。
 方針：二端点が順序を持つ場合は混合 Hom の作用を使い、逆向きは空の path から射を作る。
-規約：順序の各対象で対応する相対関手空間を Kan 複体として取る。
+規約：順序の各対象で対応する図式の値を Kan 複体として取る。
 使われ方：Kerodon Corollary 5.6.0.6、二つの添字を同時に動かす分類関手の単体。
 -/
 
@@ -27,7 +27,7 @@ def diagonalStrictDiagramObject {C : Type u} [Category.{u} C] {J : Type u} [Line
   (F.obj i).val.obj (A.obj i.as)
 
 /-- 概要：対角評価の二対象間の豊穣 Hom の作用。
-方針：順向きでは strict な変換空間 を混合作用で写し、逆向きでは path の不存在を使う。
+方針：順向きでは strict な変換空間を混合作用で写し、逆向きでは path の不存在を使う。
 規約：順序の証明の選択は射を変えない。
 使われ方：Kerodon Corollary 5.6.0.6、対角 coherent 図式の Hom の作用。 -/
 noncomputable def diagonalStrictDiagramHom {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]

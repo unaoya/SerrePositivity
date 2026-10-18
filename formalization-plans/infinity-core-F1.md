@@ -11617,5 +11617,26 @@ lemma leftStrictTransportInfinityMap_realization (C : Type u) [Category.{u} C] :
     leftStrictTransportInfinityMap C ≫ strictTransportDiagramRealization C =
       leftStraighteningCoherentMap C
 
+lemma strictDiagramMixedHom_base_id {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) (c : C) :
+    strictDiagramMixedHom (𝟙 c) F G = strictDiagramMappingComponent F G c
+
+lemma diagonalStrictDiagramEvaluation_constant_base
+    {C J : Type u} [Category.{u} C] [LinearOrder J] (c : C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J)
+      (StrictTransportDiagramObject C)) :
+    diagonalStrictDiagramEvaluation ((Functor.const J).obj c) F =
+      F.comp SSet (strictTransportDiagramEvaluationEnriched c)
+
+lemma strictTransportDiagramRealization_evaluate
+    {C : Type u} [Category.{u} C] (c : C) :
+    strictTransportDiagramRealization C ≫ evaluateFunctorAt (ULift.up (nerveVertex c)) =
+      strictTransportDiagramInfinityEvaluation c
+
+lemma strictTransportDiagramRealization_vertex
+    {C : Type u} [Category.{u} C] (F : StrictTransportDiagramObject C) :
+    (strictTransportDiagramRealization C).app (Opposite.op ⦋0⦌) (coherentNerveVertex F) =
+      functorVertex (kanDiagramCoherentNerve F.val)
+
 end SerrePositivity.InfinityCategories
 ```
