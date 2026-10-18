@@ -73,6 +73,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -146,6 +147,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative
 #print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative
+
+
+-- ArbitraryBasePullback.lean
+
+#check @SerrePositivity.KST.Comparison.pullback_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.pullback_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_localized_isIso_anyBase
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_localized_isIso_anyBase
 
 
 -- BarEdge.lean
@@ -638,6 +648,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_bar_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_bar_localized_isIso
+
+
+-- ExInfinityFibrations.lean
+
+#check @SerrePositivity.KST.Comparison.exIterate_map_rlp
+#print axioms SerrePositivity.KST.Comparison.exIterate_map_rlp
+
+#check @SerrePositivity.KST.Comparison.exInfinity_map_rlp
+#print axioms SerrePositivity.KST.Comparison.exInfinity_map_rlp
 
 
 -- ExInfinityGrouplike.lean
@@ -1369,6 +1388,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.pullback_horn_anodyne
 
 
+-- HornRightColimit.lean
+
+#check @SerrePositivity.KST.Comparison.hornRight_filteredColimit
+#print axioms SerrePositivity.KST.Comparison.hornRight_filteredColimit
+
+#check @SerrePositivity.KST.Comparison.hornRight_sequentialColimit
+#print axioms SerrePositivity.KST.Comparison.hornRight_sequentialColimit
+
+
 -- HornSimplexFaceFactorization.lean
 
 #check @SerrePositivity.KST.Comparison.hornSimplexFaceFactorization
@@ -1396,6 +1424,21 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison
 
 
+-- HornSubdivisionFaceMaps.lean
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionFaceMap
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionFaceMap
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_ambient
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_ambient
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionNerveFaceCover
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionNerveFaceCover
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_common
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_common
+
+
 -- HornSubdivisionInclusion.lean
 
 #check @SerrePositivity.KST.Comparison.hornSimplex_yoneda_inclusion
@@ -1403,6 +1446,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_inclusion
 #print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_inclusion
+
+
+-- HornSubdivisionIso.lean
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_app_injective
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_app_injective
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_isIso
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_isIso
 
 
 -- HornSubdivisionLastVertex.lean
@@ -2095,6 +2147,24 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.subdivisionHomEquiv_app_down
 
 
+-- SubdivisionAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.subdivisionHorn_anodyne
+#print axioms SerrePositivity.KST.Comparison.subdivisionHorn_anodyne
+
+#check @SerrePositivity.KST.Comparison.ex_map_rlp
+#print axioms SerrePositivity.KST.Comparison.ex_map_rlp
+
+#check @SerrePositivity.KST.Comparison.subdivision_map_anodyne
+#print axioms SerrePositivity.KST.Comparison.subdivision_map_anodyne
+
+
+-- SubdivisionCommonFace.lean
+
+#check @SerrePositivity.KST.Comparison.subdivisionCommonFace
+#print axioms SerrePositivity.KST.Comparison.subdivisionCommonFace
+
+
 -- SubdivisionCommutation.lean
 
 #check @SerrePositivity.KST.Comparison.liftedDegeneracy_le_iff_of_ne
@@ -2213,6 +2283,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
 #print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
+
+
+-- SubdivisionFaceLifting.lean
+
+#check @SerrePositivity.KST.Comparison.simplexHom_factor_face
+#print axioms SerrePositivity.KST.Comparison.simplexHom_factor_face
+
+#check @SerrePositivity.KST.Comparison.subdivisionFace_app_injective
+#print axioms SerrePositivity.KST.Comparison.subdivisionFace_app_injective
+
+#check @SerrePositivity.KST.Comparison.subdivisionFace_avoids
+#print axioms SerrePositivity.KST.Comparison.subdivisionFace_avoids
+
+#check @SerrePositivity.KST.Comparison.subdivisionFace_lift
+#print axioms SerrePositivity.KST.Comparison.subdivisionFace_lift
 
 
 -- SubdivisionFrontCut.lean

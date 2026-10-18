@@ -241,7 +241,7 @@ Kan 基底に限れば、右随伴は Kan 複体を Kan な全空間に送る。
 局所化可逆な単射は Kan 基底上の Kan fibration に左持ち上げ性を持つ。
 全空間へ延長した後、基底への合成を相対ホモトピーで直して示す。
 さらに単射・全単射的右持ち上げ性の分解を使い、Kan 基底上の任意の局所化同型の
-Kan 引き戻しの可逆性を証明する。非 Kan 基底への拡張は別の未完了の項目である。
+Kan 引き戻しの可逆性を証明する。非 Kan 基底への拡張は、構成した Ex∞ の有限極限・fibration 保存で証明済み。
 Kan 基底上で両方の構造射が Kan fibration の場合、左の任意の射による引き戻しも可逆となる。
 左射を anodyne–Kan 分解し、二つの縦比較と可換四角形で一般の左射へ戻す。
 これにより、固定した Kan 基底上のホモトピー引き戻し模型は左右両入力の局所化同型で不変となる。
@@ -251,7 +251,7 @@ Mathlib の `SSet.sd`、`SSet.ex`、`sdExAdjunction` を使う。
 最終頂点写像 sd(Δ[n])→Δ[n] を有限鎖の最大元で定め、自然変換 id→ex を得る。
 その反復の順序余極限を Ex∞ とする。
 有限極限保存は各 ex の右随伴性と型の filtered colimit の有限極限との交換から証明する。
-Kan 性、単位の anodyne 性、fibration 保存は別々の未証明項目として管理する。
+Kan 性、単位の anodyne 性、fibration 保存はそれぞれ独立に証明済み。
 Moss Definition 23 の j_n^k は、有限鎖の最大元 m が k 以下なら元の集合を保ち、
 m>k なら初期区間 [0,m] に置き換える単調写像として実装する。
 これは原典の singleton 上の式を binary join で延長したものと一致する。
@@ -422,6 +422,11 @@ Moss 原論文 arXiv:1506.04887v2 §5 Theorem 5.1 の strong anodyne な pairing
 ここでは相対ホモトピーの持ち上げから anodyne 性だけを示す経路を取る。
 細分への応用は、細分した horn の像と安全な面の nerve の同定を別途証明してから行う。
 Moss 同版 Proposition 2.19 の細分保存を引用による入力にはしない。
+細分比較の単射性は、細分の元を余面で表示し、異なる二つの表示を共通の小さい面へ戻して証明する。
+同型を得た後、細分された horn の anodyne 性を移し、sd⊣Ex の持ち上げ性の対応で
+Ex の Kan fibration 保存を示す。Ex∞ の保存は、horn と標準単体の有限表示可能性により、
+arrow 圏の filtered colimit が horn の右持ち上げ性を保つことから導く。
+この経路で strong anodyne な pairing の保存そのものは主張しない。
 
 ## 12. 現在地と主要宣言
 
@@ -532,17 +537,19 @@ horn の安全な面へ頂点 k を加える収縮から、面の部分順序集
 余面の分裂による頂点集合の復元と、面の nerve の余面による被覆を証明した。
 実際の正次元 horn の細分比較の各次数の全射性と epi 性を証明した。
 細分の元の標準単体による表示を密度の余極限から証明し、horn の細分の元も余面で覆われることを証明した。
-実際の細分された horn との比較の単射性・同型性は未証明であり、細分の anodyne 保存はまだ主張しない。
+異なる余面表示の共通の小さい面への持ち上げから、実際の正次元 horn の細分比較の単射性・同型性を証明した。
+この同型で細分された horn の anodyne 性を移し、sd の anodyne 保存と Ex の Kan fibration 保存を証明した。
+horn と標準単体の有限表示可能性による arrow の順序余極限で、Ex∞ の Kan fibration 保存を証明した。
+有限極限保存と局所化後の単位の同型を合わせ、任意の基底での Kan fibration に沿う局所化同型の引き戻しを証明した。
 Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
-Ex∞ の fibration 保存は未証明。
-非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
+対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 639 宣言の型と公理を確認した。
-さらに名前空間全体の 1234 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 659 宣言の型と公理を確認した。
+さらに名前空間全体の 1256 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -662,7 +669,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `simplexFaceRetraction_chain`、`hornFaceNerve_faceCover` | 実装済み | 余面の分裂と面の nerve の余面による被覆 |
 | `hornSubdivisionComparison_app_surjective`、`hornSubdivisionComparison_epi` | 実装済み | 実際の細分比較の全射性 |
 | `subdivisionSimplexCover`、`hornSimplexFaceFactorization`、`hornSubdivisionFaceCover` | 実装済み | 密度による細分の表示と horn の余面表示 |
-| `hornSubdivisionComparison` の単射性・同型性 | 未証明 | 細分の anodyne 保存への移送に必要 |
+| `subdivisionCommonFace`、`hornSubdivisionComparison_isIso` | 実装済み | 共通の余面表示と実際の細分比較の同型性 |
+| `subdivisionHorn_anodyne`、`subdivision_map_anodyne`、`ex_map_rlp` | 実装済み | 実際の sd の anodyne 保存と Ex の Kan fibration 保存 |
+| `hornRight_sequentialColimit`、`exInfinity_map_rlp` | 実装済み | horn の有限表示可能性による Ex∞ の Kan fibration 保存 |
+| `pullback_localized_isIso`、`sliceFiberFunctor_localized_isIso_anyBase` | 実装済み | 任意の基底での Kan fibration に沿う局所化同型の引き戻し |
 | Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
