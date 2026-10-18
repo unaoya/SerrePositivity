@@ -245,3 +245,13 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedConeComparison_pre
 #check @weightedSectionsPre_tower_exists_section
 #print axioms weightedSectionsPre_tower_exists_section
+#check @weightedCorner
+#print axioms weightedCorner
+#check @weightedCornerAt
+#print axioms weightedCornerAt
+#check @weightedCorner_obj_anodyne
+#print axioms weightedCorner_obj_anodyne
+#check @weightedSectionsPre_tower_trivialKanFibration
+#print axioms weightedSectionsPre_tower_trivialKanFibration
+#check @weightedSectionsPre_tower_homotopyEquivalence
+#print axioms weightedSectionsPre_tower_homotopyEquivalence

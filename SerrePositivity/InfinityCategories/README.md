@@ -2191,7 +2191,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開120宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開125宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2308,8 +2308,28 @@ Fibration は Mathlib の単体集合の全ホーンの持ち上げ性による�
 ```
 
 前提は j の全成分の anodyne 性、H(0) の Kan 性と隣接遷移の Fibration 性。
-この切断の反対側の合成のホモトピー、制限の trivial Kan fibration 性・同値性は未証明。
-切断の存在だけを homotopy 極限の比較の完成とは数えない。
+`WeightedCorner.lean` は j とパラメーターの単射の pushout-product を図式の圏で作り、
+評価関手による pushout の保存から各成分の anodyne 性を証明する。
+`WeightedTowerTrivialFibration.lean` はこの相対的な延長を全境界に適用し、
+制限の trivial Kan fibration 性と実際の単体的ホモトピー同値性を証明する。
+
+```lean
+weightedSectionsPre_tower_trivialKanFibration
+    {W W' H : AsSmall.{u} ℕᵒᵖ ⥤ SSet.{u}} (j : W ⟶ W')
+    (hj : ∀ i, anodyneExtensions (j.app i))
+    [KanComplex (H.obj (AsSmall.up.obj (Opposite.op 0)))]
+    [∀ n : ℕ, Fibration (H.map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    TrivialKanFibration (weightedSectionsPre j H)
+weightedSectionsPre_tower_homotopyEquivalence
+    {W W' H : AsSmall.{u} ℕᵒᵖ ⥤ SSet.{u}} (j : W ⟶ W')
+    (hj : ∀ i, anodyneExtensions (j.app i))
+    [KanComplex (H.obj (AsSmall.up.obj (Opposite.op 0)))]
+    [∀ n : ℕ, Fibration (H.map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre j H)
+```
+
+この結果は任意の二つの重みの成分ごとに anodyne な比較を扱う。
+標準比較 κ_x に適用する重みの比較と、coherent な錐の写像空間の導来 fiber 比較は未完了。
 
 ### 𝒮 の空積（実装済み）
 
