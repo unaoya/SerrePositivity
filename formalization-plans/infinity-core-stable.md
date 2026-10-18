@@ -760,8 +760,22 @@ TR4 の幾何学的構成を進めた。
 対象ビルド2178 jobs・対象と集約ビルド2813 jobs、332モジュール・2458宣言の監査と
 構成子・射影を含む公開50項目の型抽出が成功した（標準三公理のみ）。
 具体的なシフト式のカーネル検査には、その定理だけ maxHeartbeats=1000000 を設定した。
-**TR4 は未完了**。残るのは合成射の cofiber から二つ目の元の射の cofiber への比較、
-Mathlib の Octahedron の四可換式を同じ三対象の表示で組み立てること、
+合成射の cofiber から二つ目の元の射の cofiber への比較も構成した。
+`CofiberOctahedronDiagram.rightToNextHomotopy` は第一長方形の右面から第二の外側の列への比較。
+転置した左から外側への比較は底辺の両端を固定し、右上を第二長方形の上辺に沿って動かす。
+`nextComparisonHom` は第一の外側から右面への比較とこれを関手圏の h で合成する。
+その始点は元の第一射、中間は恒等射、終点は最後の列の第二射である（Arrow の等号）。
+`cofiberTriangleHoMap` は関手圏の任意の h の射を cofiber 三角形の射に送り、
+三成分が元の射の各角の評価に等しいことを証明する。
+これを使う `nextTriangleMorphism` と `nextConnecting_comm` が第二の三角形の射と接続射の可換式。
+`firstTriangle_middle_arrow`・`last_first_arrow`・`nextTriangle_source_arrow`・
+`nextTriangle_middle_arrow`・`last_second_arrow` により、二つの三角形の射の成分と
+三つの元の列・最後の列の射を同時に照合した。
+始点や cofiber の表示変更は Arrow に保持し、型の等号を暗黙に捨てていない。
+新規五モジュールの対象・集約ビルド2818 jobs、337モジュール・2496宣言の監査、
+公開31宣言の universe 付き型抽出が成功した。標準三公理のみ。
+
+**TR4 は未完了**。残るのは Mathlib の Octahedron の四可換式を同じ三対象の表示で組み立てること、
 任意に指定された distinguished 三角形の三つ組への同型輸送と IsTriangulated instance。
 最後の三角形の所属までの今回の成果を八面体公理全体の完成とは数えない。
 
@@ -931,6 +945,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 三角形の回転 TR2 | `CofiberRotationRectangle.triangleIsoRotate`、`exists_cofiberPredecessor`、`cofiberTriangleIsoOfFunctorIso`、`nonempty_cofiberTriangleIso_of_bottom_eq`、`rotate_mem_cofiberDistinguishedTriangles`、`invRotate_mem_cofiberDistinguishedTriangles`、`cofiberDistinguishedTriangles_rotate_iff`（Quasicategory、IsStable） | 第三射の符号を含む順回転同型、前の列、逆回転の所属、回転による所属の同値まで完成 |
 | 前三角構造の公開 | `pretriangulated_ho`、`distinguishedTriangles_ho_eq`（Quasicategory、IsStable） | Mathlib の Pretriangulated instance と cofiber の像の集合との定義的一致まで完成。TR4 は未完了 |
 | 八面体の二長方形と最後の三角形 | `CofiberCompositionRectangle` と存在・三成分・`connecting_comm`、`PushoutCofiberRectangle` と存在・`connecting_comp`・`triangle_connecting_comp`、`CofiberOctahedronDiagram` と存在・辺の式・`lastTriangle_mem`（存在と三角形の主張は Quasicategory、IsStable） | 二長方形と第一の三角形比較、最後の第三射の合成表示と distinguished 性まで完成。Mathlib の Octahedron 全体・TR4 は未完了 |
+| 八面体の第二比較と三角形の射 | `cofiberTriangleHoMap` と三成分、`CofiberOctahedronDiagram.nextComparisonHom` と三成分、`nextTriangleMorphism`・`nextConnecting_comm`、二比較と最後の列の Arrow 照合（最終的な三角形の主張は Quasicategory、IsStable） | 第二比較と第一・第二の三角形の射の成分の照合まで完成。共通の対象表示での Octahedron の組み立て・任意の三角形への輸送・TR4 は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

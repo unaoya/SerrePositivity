@@ -237,6 +237,12 @@ public import SerrePositivity.InfinityCategories.Stable.CofiberTriangleNaturalit
 public import SerrePositivity.InfinityCategories.Stable.PushoutCofiberRectangle
 public import SerrePositivity.InfinityCategories.Stable.CofiberOctahedronDiagram
 
+public import SerrePositivity.InfinityCategories.Stable.CofiberTriangleHoMap
+public import SerrePositivity.InfinityCategories.Stable.TransposedPastingComparison
+public import SerrePositivity.InfinityCategories.Stable.PastingComparisonIdentity
+public import SerrePositivity.InfinityCategories.Stable.CofiberOctahedronNextComparison
+public import SerrePositivity.InfinityCategories.Stable.CofiberOctahedronTriangleComparisons
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
