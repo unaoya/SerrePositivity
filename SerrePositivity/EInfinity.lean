@@ -84,3 +84,6 @@ public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerOnes
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerSplitAppend
 public import SerrePositivity.EInfinity.Operad.FirstSlotPowerComparison
 public import SerrePositivity.EInfinity.Operad.InsertionZero
+public import SerrePositivity.EInfinity.Operad.SchurActionArityTransport
+public import SerrePositivity.EInfinity.Operad.SchurActionFirstInsertion
+public import SerrePositivity.EInfinity.Operad.SchurPartialEquivariance
