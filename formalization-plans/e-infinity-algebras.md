@@ -1668,3 +1668,51 @@ README の同名節に記録した。
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-representable-limit-equivalence-aggregate.log` と
 `/tmp/gamma3-representable-limit-equivalence-audit.log`。
+
+
+### γ3b：元の q_x の全導来 fiber の可縮性による三形状の両向きの極限判定
+
+`IntervalHomBoundary` は、二つの単位の余積からの内部 Hom の積表示を構成し、
+単射な二端点包含への制限が fibration であることから、通常の区間の両端点の同時評価
+`intervalHomEndpoints` の Kan fibration 性を証明した。
+第一成分は終点一、第二成分は始点零。既存の可逆 path の包含の同型を利用している。
+
+`KanComparisonFibers` の `kanEquivalencePathReplacementMap_fibration` は、
+Kan 複体間の任意の射 q の可逆 path 置換の終点射が Kan fibration であることを証明する。
+元の始域のホーンを先に充填し、標的の両端点を同時指定して path を充填する。
+元の q の fibration 性は不要。既存の `comparisonFiber q b` はその終点射の頂点 fiber
+そのものであり、任意の q と b について Kan 性を得た。
+
+`homotopyEquivalence_iff_comparisonFiber_isContractibleKan` は、Kan 複体間の任意の射で
+`IsSimplicialHomotopyEquivalence q ↔ ∀ b, IsContractibleKan (comparisonFiber q b)` を証明。
+逆向きは path 置換の終点射を右ファイブレーションとして扱い、全頂点 fiber の可縮性から
+trivial Kan fibration 性を得て、その同値性を元の射へ戻す。空の始域・標的も除外しない。
+
+`RepresentableFiberCriterion` は任意の通常の小圏について、元の q_x の同値性をその
+全導来 fiber の可縮性と同値にした。指定三形状では前回の実際の錐の極限判定と接続し、
+`strictCoherentCone_isLimit_iff_discrete_comparisonFiber`、
+`strictCoherentCone_isLimit_iff_cospan_comparisonFiber`、
+`strictCoherentCone_isLimit_iff_tower_comparisonFiber` を公開した。
+
+三定理の結論は
+`IsLimitCone (strictCoherentCone c) ↔ ∀ x b,
+  IsContractibleKan (comparisonFiber (representableHomotopyLimitComparison c x) b)`。
+b は元の `bousfieldKanHolim (simplicialHomDiagram F x)` の全頂点を走る。
+局所 Kan 性に加え、cospan では Hom の左脚の fibration 性、塔では Hom の全隣接遷移の
+fibration 性を要求する。離散図式には添字の有限性・非空性を要求しない。
+元の q_x の fibration 性、Hom 錐の厳密極限性、追加の比較同値は三定理の前提に置かない。
+
+これにより γ3b の指定三形状について、A3d に基づく native な極限性を元の q_x の導来 fiber
+の可縮性へ両向きに帰着できた。ただし、錐の pinched Hom と元の導来 fiber の実際の比較射を
+直接構成したわけではない。この直接比較、一般形状の end の直接比較、余極限側、
+E2a 完了後の E2b 適用は引き続き未完了で、γ3 全体は継続中。
+原典：HTT 4.2.4.1 の限定形、Kerodon 4.5.3.24・7.5.3.12・7.5.4.6、Goerss–Jardine I §7。
+
+新規17宣言の `#check @` と `#print axioms` を監査に追加し、README の γ3 冒頭の現在地も更新。
+正確な型・全前提は README の同名節に記録した。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4669 jobs）、公開1346宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-representable-fiber-criterion-aggregate.log` と
+`/tmp/gamma3-representable-fiber-criterion-audit.log`。

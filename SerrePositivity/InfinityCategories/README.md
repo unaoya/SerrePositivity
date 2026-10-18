@@ -2054,22 +2054,23 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 E2b が再利用できる形で公開する。余極限側は後続工程とし、極限側の部分成果で完了とはしない。
 E2b の具体的適用は E2a の完了後に行う。
 
-現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射、
-strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性、
-塔と一脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
-離散図式の比較、𝒮 の空積、Kan 値図式の end の一般の Kan 性も実装済み。
-Kan 値図式の end の同値不変性も証明済み。反転した表現可能な weighted nerve から
-coherent な錐の全空間への実際の底上の射と、全ての頂点上での実際の fiber 射の同値性も証明済み。
-三形状の反転豊穣係数の切断と coherent な錐の切断模型の実際の比較射の同値性も証明済み。
-反転した strict Hom 錐の標準比較 q′、始対象に関する自然性、三形状での切断模型への
-合成の同値性も証明済み。合成の全パラメータでの評価式と、各対象での canonical な
-左 Hom 比較・実際の錐の脚による後合成との一致も証明済み。
-q′ の切断比較を native な錐全体上の weighted な族の制限として厳密に同定した。
-局所 Kan 性と Hom 錐の極限性の下で、離散図式・一脚 fibration の cospan・fibration の塔の
-strict な錐が coherent nerve の極限錐となることも証明済み（末尾の三形状の移送を参照）。
-元の豊穣 Hom の end・q_x と反転係数の直接比較、Sp への具体的適用は未完了。
-𝒮 の実際の積・一脚 Kan fibration の引き戻し・Kan fibration の可算塔の極限は公開済み。
-当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
+現在は γ3a の限定形の記録と、γ3b の指定三形状での両向きの可縮性判定まで実装済み。
+局所 Kan な単体的圏の通常の錐について、離散図式、Hom の一脚が fibration の cospan、
+Hom が fibration の塔では、実際の coherent nerve の錐が ∞ 極限錐であることは、
+全ての x と元の Bousfield–Kan end の全頂点 b で
+`comparisonFiber (representableHomotopyLimitComparison c x) b` が可縮 Kan であることと同値。
+元の q_x の fibration 性や Hom 錐の厳密極限性は、この判定の前提に要求しない。
+反転比較との照合、ULift の同値検出、A3d に基づく native な切断判定を介して証明する。
+
+γ3c の指定三形状は 𝒮・Sp の双方で実際の対象と ∞ 極限錐を公開済み。
+𝒮 は小さな積、一脚 Kan fibration の引き戻し、Kan fibration の可算塔の極限。
+Sp は空積を含む有限積、一脚が全段で fibration の引き戻し、全隣接遷移が全段で fibration の塔。
+Sp の極限対象の段は置換せず、Kan 性・構造射の単射性・全基点全次数の Ω 条件を証明している。
+
+元の q_x の導来 fiber と錐の pinched Hom の実際の比較射の直接構成、一般形状の end の
+直接比較、余極限側は引き続き後続工程。E2b の具体的適用は E2a 完了後。
+指定三形状の可縮性判定を、これらの未完了工程を含む γ3 全体の完成とは数えない。
+以下に限定形と工程ごとの型・検証の記録を置く。
 
 ### γ3a：原典と今回の限定形
 
@@ -7854,3 +7855,135 @@ lemma strictCoherentCone_isLimit_iff_tower_representableComparison {C : Type v} 
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-representable-limit-equivalence-aggregate.log` と
 `/tmp/gamma3-representable-limit-equivalence-audit.log`。
+
+
+### γ3b：元の q_x の全導来 fiber の可縮性による三形状の両向きの極限判定
+
+`IntervalHomBoundary` は、二つの単位の余積からの内部 Hom の積表示を構成し、
+単射な二端点包含への制限が fibration であることから、通常の区間の両端点の同時評価
+`intervalHomEndpoints` の Kan fibration 性を証明した。
+第一成分は終点一、第二成分は始点零。既存の可逆 path の包含の同型を利用している。
+
+`KanComparisonFibers` の `kanEquivalencePathReplacementMap_fibration` は、
+Kan 複体間の任意の射 q の可逆 path 置換の終点射が Kan fibration であることを証明する。
+元の始域のホーンを先に充填し、標的の両端点を同時指定して path を充填する。
+元の q の fibration 性は不要。既存の `comparisonFiber q b` はその終点射の頂点 fiber
+そのものであり、任意の q と b について Kan 性を得た。
+
+`homotopyEquivalence_iff_comparisonFiber_isContractibleKan` は、Kan 複体間の任意の射で
+`IsSimplicialHomotopyEquivalence q ↔ ∀ b, IsContractibleKan (comparisonFiber q b)` を証明。
+逆向きは path 置換の終点射を右ファイブレーションとして扱い、全頂点 fiber の可縮性から
+trivial Kan fibration 性を得て、その同値性を元の射へ戻す。空の始域・標的も除外しない。
+
+`RepresentableFiberCriterion` は任意の通常の小圏について、元の q_x の同値性をその
+全導来 fiber の可縮性と同値にした。指定三形状では前回の実際の錐の極限判定と接続し、
+`strictCoherentCone_isLimit_iff_discrete_comparisonFiber`、
+`strictCoherentCone_isLimit_iff_cospan_comparisonFiber`、
+`strictCoherentCone_isLimit_iff_tower_comparisonFiber` を公開した。
+
+三定理の結論は
+`IsLimitCone (strictCoherentCone c) ↔ ∀ x b,
+  IsContractibleKan (comparisonFiber (representableHomotopyLimitComparison c x) b)`。
+b は元の `bousfieldKanHolim (simplicialHomDiagram F x)` の全頂点を走る。
+局所 Kan 性に加え、cospan では Hom の左脚の fibration 性、塔では Hom の全隣接遷移の
+fibration 性を要求する。離散図式には添字の有限性・非空性を要求しない。
+元の q_x の fibration 性、Hom 錐の厳密極限性、追加の比較同値は三定理の前提に置かない。
+
+これにより γ3b の指定三形状について、A3d に基づく native な極限性を元の q_x の導来 fiber
+の可縮性へ両向きに帰着できた。ただし、錐の pinched Hom と元の導来 fiber の実際の比較射を
+直接構成したわけではない。この直接比較、一般形状の end の直接比較、余極限側、
+E2a 完了後の E2b 適用は引き続き未完了で、γ3 全体は継続中。
+原典：HTT 4.2.4.1 の限定形、Kerodon 4.5.3.24・7.5.3.12・7.5.4.6、Goerss–Jardine I §7。
+
+新規17公開宣言の正確な型・全前提（名前空間
+`SerrePositivity.InfinityCategories.HomotopyLimits`、節変数を展開）：
+
+```lean
+lemma homPre_const_unitIsoSelf {K Y : SSet.{u}} (v : K _⦋0⦌) :
+    (MonoidalClosed.pre (SSet.const (X
+
+def intervalHomBoundaryIsLimit (Y : SSet.{u}) :
+    IsLimit (BinaryFan.mk
+      ((MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶ (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u}))).app Y)
+      ((MonoidalClosed.pre (coprod.inr : 𝟙_ SSet.{u} ⟶ (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u}))).app Y))
+
+def intervalHomBoundaryEvaluationIsLimit (Y : SSet.{u}) :
+    IsLimit (BinaryFan.mk
+      ((MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶ (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u}))).app Y ≫
+        (unitIsoSelf (X
+
+def intervalHomBoundaryEvaluationIso (Y : SSet.{u}) :
+    (ihom ((𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u}))).obj Y ≅ Y ⨯ Y
+
+lemma intervalHomBoundaryEvaluationIso_hom_fst (Y : SSet.{u}) :
+    (intervalHomBoundaryEvaluationIso Y).hom ≫ prod.fst =
+      (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶ (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u}))).app Y ≫
+        (unitIsoSelf (X
+
+lemma intervalHomBoundaryEvaluationIso_hom_snd (Y : SSet.{u}) :
+    (intervalHomBoundaryEvaluationIso Y).hom ≫ prod.snd =
+      (MonoidalClosed.pre (coprod.inr : 𝟙_ SSet.{u} ⟶ (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u}))).app Y ≫
+        (unitIsoSelf (X
+
+def intervalHomEndpoints (Y : SSet.{u}) : (ihom (Δ[1] : SSet.{u})).obj Y ⟶ Y ⨯ Y
+
+instance intervalHomEndpoints_fibration (Y : SSet.{u}) [KanComplex Y] :
+    Fibration (intervalHomEndpoints Y)
+
+lemma intervalHomEndpoints_fst (Y : SSet.{u}) :
+    intervalHomEndpoints Y ≫ prod.fst = evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 1)
+
+lemma intervalHomEndpoints_snd (Y : SSet.{u}) :
+    intervalHomEndpoints Y ≫ prod.snd = evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 0)
+
+instance kanEquivalencePathReplacementMap_fibration {E B : SSet.{u}}
+    [KanComplex E] [KanComplex B] (q : E ⟶ B) :
+    Fibration (equivalencePathReplacementMap q)
+
+instance kanComparisonFiber_kanComplex {E B : SSet.{u}}
+    [KanComplex E] [KanComplex B] (q : E ⟶ B) (b : B _⦋0⦌) :
+    KanComplex (comparisonFiber q b)
+
+lemma homotopyEquivalence_iff_comparisonFiber_isContractibleKan {E B : SSet.{u}}
+    [KanComplex E] [KanComplex B] (q : E ⟶ B) :
+    IsSimplicialHomotopyEquivalence q ↔ ∀ b : B _⦋0⦌,
+      IsContractibleKan (comparisonFiber q b)
+
+lemma representableComparison_iff_comparisonFiber_isContractibleKan {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)] {F : I ⥤ C}
+    (c : Cone F) (x : C) :
+    IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c x) ↔
+      ∀ b : (bousfieldKanHolim (simplicialHomDiagram F x)) _⦋0⦌,
+        IsContractibleKan (comparisonFiber (representableHomotopyLimitComparison c x) b)
+
+lemma strictCoherentCone_isLimit_iff_discrete_comparisonFiber {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)] {J : Type u}
+    {F : Discrete J ⥤ C} (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ (x : C)
+      (b : (bousfieldKanHolim (simplicialHomDiagram F x)) _⦋0⦌),
+        IsContractibleKan (comparisonFiber (representableHomotopyLimitComparison c x) b)
+
+lemma strictCoherentCone_isLimit_iff_cospan_comparisonFiber {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : AsSmall.{u} WalkingCospan ⥤ C} (c : Cone F)
+    [∀ x : C, Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map WalkingCospan.Hom.inl))] :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ (x : C)
+      (b : (bousfieldKanHolim (simplicialHomDiagram F x)) _⦋0⦌),
+        IsContractibleKan (comparisonFiber (representableHomotopyLimitComparison c x) b)
+
+lemma strictCoherentCone_isLimit_iff_tower_comparisonFiber {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : AsSmall.{u} ℕᵒᵖ ⥤ C} (c : Cone F)
+    [∀ (x : C) (n : ℕ), Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ (x : C)
+      (b : (bousfieldKanHolim (simplicialHomDiagram F x)) _⦋0⦌),
+        IsContractibleKan (comparisonFiber (representableHomotopyLimitComparison c x) b)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4669 jobs）、公開1346宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-representable-fiber-criterion-aggregate.log` と
+`/tmp/gamma3-representable-fiber-criterion-audit.log`。
