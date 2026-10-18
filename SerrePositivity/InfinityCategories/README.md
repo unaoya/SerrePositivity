@@ -2078,7 +2078,8 @@ Sp の極限対象の段は置換せず、Kan 性・構造射の単射性・全�
 
 余極限側は着手済み。通常の余錐を元の標準図式上の native な余錐として構成し、頂点と
 反対の極限性による双対判定を検証した。Hom 条件・𝒮 の実際の余積等への適用は後続工程。
-一般形状の end の直接比較と E2a 完了後の E2b 適用も残る。
+任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
+一般形状の非反転 q_x との直接比較と E2a 完了後の E2b 適用は残る。
 指定三形状の可縮性判定を、これらの未完了工程を含む γ3 全体の完成とは数えない。
 以下に限定形と工程ごとの型・検証の記録を置く。
 
@@ -9414,3 +9415,86 @@ lemma strictNativeCocone_isColimit_iff {F : I ⥤ C} (c : Cocone F) :
 既存の Stable 側の双対化 API の再利用で、他担当の依存は916ソースとなり、
 全て追跡済み・コミット済み・変更なしを確認した。
 ログ：`/tmp/gamma3-native-cocones-aggregate.log`、`/tmp/gamma3-native-cocones-audit.log`。
+
+### γ3：任意の小圏での切断比較と反転豊穣 end による極限・余極限の判定
+
+quasicategory K 上の二つの left fibration p・q と底を保つ実際の射 f について、
+全ての頂点の fiber で f が同値なら、f の後合成による切断空間の射はホモトピー同値である。
+F1 の fiber ごとの前合成同値の判定と底上の逆射による相対後合成を使い、切断模型との
+同型の自然性で移す。f 自身の fibration 性と添字の三形状への制限は不要。
+
+これを構成済みの weightedCoherentConeComparison に適用した。任意の小圏 I、局所 Kan な
+単体的圏 C、通常の図式 F : I → C、対象 x について、実際の
+reflectedHomHolimConeComparison F x はホモトピー同値となる。
+反転係数 sHom(x,F−).op の end を使う点は維持し、元の非反転 end と同一視しない。
+
+したがって通常の錐 c の strictCoherentCone が native な ∞ 極限錐であることは、
+全ての x で reflectedRepresentableComparison c x がホモトピー同値であることと同値。
+通常の余錐 c では、元の標準図式上の strictNativeCocone c の ∞ 余極限性を、
+反対圏の全対象 x で reflectedRepresentableComparison c.op x が同値であることで判定できる。
+Hom の厳密極限性や射の fibration 性をこの二つの判定の前提に付けない。
+
+一般形状の元の非反転 q_x への移送、余錐の各脚の同定、𝒮 の実際の余積・homotopy 押し出し・
+逐次余極限への適用、E2a 完了後の E2b は未完了。γ3 全体は引き続き進行中。
+原典：HTT 4.2.4.1、Kerodon 5.6.0.6・7.4.1.6・7.5.4.6。
+
+公開する六宣言の正確な型は以下。`I : Type u [SmallCategory I]`、`C : Type v`、
+`[Category.{u} C] [SimplicialCategory C]`、C の全 sHom の Kan 性を共通前提とする。
+最初の二宣言は宣言内の前提のみを使い、C・I は不要。
+
+`SectionsFiberwiseEquivalence.lean`：
+
+```lean
+lemma simplicialSectionsRelativeIso_naturality {K E E' : SSet.{u}}
+    (p : E ⟶ K) (q : E' ⟶ K) (f : E ⟶ E') (hf : f ≫ q = p) :
+    simplicialSectionsMap f hf ≫ (simplicialSectionsRelativeIso q).hom =
+      (simplicialSectionsRelativeIso p).hom ≫ relativeFunctorPost p q f hf (𝟙 K)
+```
+
+`SectionsFiberwiseEquivalence.lean`：
+
+```lean
+lemma simplicialSectionsMap_homotopyEquivalence_of_fibers
+    {K E E' : SSet.{u}} [Quasicategory K]
+    (p : E ⟶ K) (q : E' ⟶ K) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ E') (hf : f ≫ q = p)
+    (h : ∀ b, IsQCatEquivalence (vertexFiberMap p q f hf b)) :
+    IsSimplicialHomotopyEquivalence (simplicialSectionsMap f hf)
+```
+
+`GeneralHomHolimComparison.lean`：
+
+```lean
+lemma weightedCoherentConeSectionsComparison_homotopyEquivalence (F : I ⥤ C) (x : C) :
+    IsSimplicialHomotopyEquivalence (weightedCoherentConeSectionsComparison F x)
+```
+
+`GeneralHomHolimComparison.lean`：
+
+```lean
+lemma reflectedHomHolimConeComparison_homotopyEquivalence (F : I ⥤ C) (x : C) :
+    IsSimplicialHomotopyEquivalence (reflectedHomHolimConeComparison F x)
+```
+
+`GeneralReflectedCriterion.lean`：
+
+```lean
+lemma strictCoherentCone_isLimit_iff_reflectedRepresentableComparison {F : I ⥤ C}
+    (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+      IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c x)
+```
+
+`GeneralReflectedCriterion.lean`：
+
+```lean
+lemma strictNativeCocone_isColimit_iff_reflectedRepresentableComparison {F : I ⥤ C}
+    (c : Cocone F) :
+    IsColimitCone (strictNativeCocone c) ↔ ∀ x : Cᵒᵖ,
+      IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c.op x)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4984 jobs）、公開1519宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-general-aggregate.log`、`/tmp/gamma3-general-audit.log`。

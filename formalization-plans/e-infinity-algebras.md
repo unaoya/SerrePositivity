@@ -216,8 +216,8 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | q′ の切断比較と native な制限の主可換式を証明。局所 Kan 性と Hom 極限条件から、離散図式・一脚 fibration の cospan・fibration の塔の strict な錐が ∞ 極限錐となる定理を公開。元の非反転の end・q_x と反転係数の直接比較は未完了 |
-| γ3c | 𝒮 の実際の任意の小さい積、一脚 Kan fibration の引き戻し、Kan fibration の可算塔の極限を既存の図式上の IsLimitCone として公開。台と Kan 複体の圏の普遍性、全 Hom 条件も検証済み。Sp は未完了 |
+| γ3b | 指定三形状で元の非反転 q_x の同値性・全導来 fiber の可縮性と native な極限性の両向き判定、pinched Hom との反転なしの直接比較を公開。任意の小圏では反転係数の end の切断比較と極限・余極限の判定を公開。一般形状の非反転 q_x への移送は未完了 |
+| γ3c | 𝒮 の任意の小さい積と Sp の有限積（双方空積を含む）、一脚 fibration の引き戻し、fibration の可算塔の実際の対象と native な極限錐を公開。Sp の Kan・Ω 条件と全 Hom 条件も検証済み。余極限の具体的適用は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
@@ -2184,3 +2184,23 @@ homotopy 押し出し・逐次 homotopy 余極限の模型への適用は、こ�
 既存の Stable 側の双対化 API の再利用で、他担当の依存は916ソースとなり、
 全て追跡済み・コミット済み・変更なしを確認した。
 ログ：`/tmp/gamma3-native-cocones-aggregate.log`、`/tmp/gamma3-native-cocones-audit.log`。
+
+### γ3：一般形状の反転係数の end と切断の比較
+
+`SectionsFiberwiseEquivalence.lean` の二宣言は、quasicategory 上の left fibrations の
+fiber ごとの同値から、実際の後合成による切断空間のホモトピー同値を与える。
+`GeneralHomHolimComparison.lean` の二宣言は、任意の小圏上で
+`weightedCoherentConeSectionsComparison F x` と `reflectedHomHolimConeComparison F x`
+がホモトピー同値であることを、局所 Kan 性だけから証明する。
+`GeneralReflectedCriterion.lean` の二宣言は、任意の小圏上で
+`IsLimitCone (strictCoherentCone c) ↔ ∀ x,
+IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c x)` と、
+`IsColimitCone (strictNativeCocone c) ↔ ∀ x : Cᵒᵖ,
+IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c.op x)` を与える。
+正確な型と全前提は README の同名節と専用監査に記録する。
+一般形状の非反転 q_x への移送、余錐の脚と 𝒮 の実際の余極限、E2a 後の E2b は未完了。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4984 jobs）、公開1519宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-general-aggregate.log`、`/tmp/gamma3-general-audit.log`。
