@@ -26,12 +26,12 @@ attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 使われ方：Kerodon Example 5.6.2.9、左右の係数を揃えた具体的な fiber 模型。 -/
 noncomputable def pointedSpaceLeftResolutionIso (K : KanObject.{u}) :
     vertexFiber pointedSpaceProjection (spaceInfinityVertex (kanObjectOpFunctor.obj K)) ≅
-      (SSet.uliftFunctor.{u + 1, u}).obj (coherentLeftResolution K.obj) := by
-  rw [spaceInfinityVertex_eq_coherent]
-  refine pointedSpaceFiberPinchedIso _ ≪≫ ?_
-  rw [show pointSpaceVertex = coherentNerveVertex pointKanObject from
-    spaceInfinityVertex_eq_coherent pointKanObject]
-  exact coherentLeftPinchedFlagIso pointKanObject (kanObjectOpFunctor.obj K) ≪≫
+      (SSet.uliftFunctor.{u + 1, u}).obj (coherentLeftResolution K.obj) :=
+  pointedSpaceFiberPinchedIso _ ≪≫
+    eqToIso (congrArg₂ (fun x y ↦ pinchedHomLeft x y)
+      (spaceInfinityVertex_eq_coherent pointKanObject)
+      (spaceInfinityVertex_eq_coherent (kanObjectOpFunctor.obj K))) ≪≫
+    coherentLeftPinchedFlagIso pointKanObject (kanObjectOpFunctor.obj K) ≪≫
     (SSet.uliftFunctor.{u + 1, u}).mapIso (SSet.opFunctor.mapIso
       (coherentResolutionRightAdjoint.mapIso (pointKanObjectHomIso (kanObjectOpFunctor.obj K))))
 

@@ -13112,5 +13112,31 @@ lemma coherentCosliceFiberComparison_flagIso
     (SSet.uliftFunctor.{v, u}).map
       (SSet.opFunctor.map (coherentResolutionComparison (SimplicialCategory.sHom x y)))
 
+noncomputable def pointedSpaceLeftCoefficientIso (K : KanObject.{u}) :
+    K.obj ≅ (SimplicialCategory.sHom pointKanObject (kanObjectOpFunctor.obj K)).op
+
+lemma pointedSpaceLeftHomComparison_resolution (K : KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).map (pointedSpaceLeftCoefficientIso K).hom ≫
+      HomotopyLimits.coherentLeftHomComparison pointKanObject (kanObjectOpFunctor.obj K) ≫
+      (coherentLeftPinchedFlagIso pointKanObject (kanObjectOpFunctor.obj K)).hom ≫
+      (SSet.uliftFunctor.{u + 1, u}).map
+        (SSet.opFunctor.map (coherentResolutionRightAdjoint.map
+          (pointKanObjectHomIso (kanObjectOpFunctor.obj K)).hom)) =
+    (SSet.uliftFunctor.{u + 1, u}).map (coherentLeftResolutionComparison K.obj)
+
+noncomputable def pointedSpaceLeftCoherentComparison (K : KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj K.obj ⟶
+      vertexFiber pointedSpaceProjection (spaceInfinityVertex (kanObjectOpFunctor.obj K))
+
+lemma pointedSpaceLeftCoherentComparison_resolution (K : KanObject.{u}) :
+    pointedSpaceLeftCoherentComparison K ≫ (pointedSpaceLeftResolutionIso K).hom =
+    (SSet.uliftFunctor.{u + 1, u}).map (coherentLeftResolutionComparison K.obj)
+
+lemma pointedSpaceLeftCoherentComparison_eq_resolution (K : KanObject.{u}) :
+    pointedSpaceLeftCoherentComparison K = pointedSpaceLeftResolutionComparison K
+
+lemma pointedSpaceLeftCoherentComparison_isQCatEquivalence (K : KanObject.{u}) :
+    IsQCatEquivalence (pointedSpaceLeftCoherentComparison K)
+
 end SerrePositivity.InfinityCategories
 ```
