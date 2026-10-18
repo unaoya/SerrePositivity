@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・223 モジュール 2829 宣言の公理監査成功。
+対象ビルド・228 モジュール 2853 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2022,3 +2022,29 @@ L9d は進行中。次は相対三角形の写像空間に交換と逆元の一�
 保存単位の対象ビルド 2423 jobs 成功。
 私有宣言を含む 223 モジュール 2829 宣言で標準三公理のみ。
 L9d は進行中。次は二つの円の smash の写像と反復内部 Hom の比較を実装する。
+
+## 70. L9d の反復 curry と通常の円から Kan 円への二変数の比較
+
+テンソルの結合子で左随伴を比較し、右随伴の一意性から反復内部 Hom の自然同型を構成した。
+その順写像が評価射を二度 curry した射であり、Mathlib の `ihomCurryIso` と一致すると証明した。
+標的の写像の後合成に関する自然性を取り出し、テンソルの braiding が既存の内部 Hom の交換と一致することも示した。
+
+二つの Kan 円を通常の円へ制限する実際の点つき射を作った。
+源の anodyne な制限の全単射 RLP と標的の π_* 同型の内部 Hom での保存により、この射は全基点 π_* 同型となる。
+二つの源の同時の制限は源の交換と標的の後合成に関して自然であり、通常の円と Kan 円の間の可換式を得た。
+これらの同型と自然性を用いて、loop 値の二重円の交換と標的の符号反転の一致を、反復内部 Hom で記述し直した。
+二つの Kan 円の交換についても同じ π₀ の式が成立する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `InternalHomTensor.natIso` / `.iso` / `.hom_eq` | 反復 curry の自然同型と評価射による明示式 |
+| `InternalHomTensor.iso_eq_ihomCurryIso` / `.natural_post` / `.natural_swap` | Mathlib の同型との一致、後合成と交換の自然性 |
+| `doubleCircleRestriction` / `doubleCircleRestriction_piIsomorphism` | Kan 円から通常の円への二変数の制限と全基点 π_* 同型性 |
+| `InternalHomExchange.restrictBoth_exchange` / `.restrictBoth_post` | 同時の源の制限と交換・後合成の自然性 |
+| `doubleCircleRestriction_exchange` / `doubleCircleRestriction_post` | 二つの円の制限と交換・後合成の厳密な可換式 |
+| `ordinaryDoubleCircleLoop_exchange` / `kanDoubleCircleLoop_exchange` | loop 値の反復内部 Hom の交換と符号反転の成分での一致 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2429 jobs 成功。
+私有宣言を含む 228 モジュール 2853 宣言で標準三公理のみ。
+L9d は進行中。次は標的の loop の符号を源の loop 変数の符号へ移す。
