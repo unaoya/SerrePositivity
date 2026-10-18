@@ -858,3 +858,66 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.cofiberSpanProjection_trivialKanFibration
 #print axioms SerrePositivity.KST.SConstruction.cofiberSpanProjection_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.arCofiberZeroInputOrder
+#print axioms SerrePositivity.KST.SConstruction.arCofiberZeroInputOrder
+
+#check @SerrePositivity.KST.SConstruction.arCofiberZeroInputMap
+#print axioms SerrePositivity.KST.SConstruction.arCofiberZeroInputMap
+
+#check @SerrePositivity.KST.SConstruction.arCofiberInputs_commonSource
+#print axioms SerrePositivity.KST.SConstruction.arCofiberInputs_commonSource
+
+#check @SerrePositivity.KST.SConstruction.arCofiberSpan_isPushout
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSpan_isPushout
+
+#check @SerrePositivity.KST.SConstruction.arCofiberSpanMap
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSpanMap
+
+#check @SerrePositivity.KST.SConstruction.arCofiberSpanMap_left
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSpanMap_left
+
+#check @SerrePositivity.KST.SConstruction.arCofiberSpanMap_right
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSpanMap_right
+
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareMap_left
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareMap_left
+
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareMap_span
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareMap_span
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSpanOperator
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSpanOperator
+
+#check @SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_span
+#print axioms SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_span
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareMap_span
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareMap_span
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberFamilyOperator_span
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberFamilyOperator_span
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSpanFamily
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSpanFamily
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSpanOperator_vertex
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSpanOperator_vertex
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSpanFamily_zero
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSpanFamily_zero
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSpans
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSpans
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSpans_ι
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSpans_ι
+
+#check @SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap_span
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap_span
+
+#check @SerrePositivity.KST.SConstruction.zeroFrameCofiberFamiliesMap_span
+#print axioms SerrePositivity.KST.SConstruction.zeroFrameCofiberFamiliesMap_span
+
+#check @SerrePositivity.KST.SConstruction.exists_arCofiberSpanCompletion_preserving_frame
+#print axioms SerrePositivity.KST.SConstruction.exists_arCofiberSpanCompletion_preserving_frame

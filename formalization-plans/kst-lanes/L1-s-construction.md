@@ -519,3 +519,44 @@ cofiber 族の各区間の正方形が押し出しであることだけを、こ
 正次元の境界 RLP は全 n で証明済み、n=0・1・2 は全次元で証明済みだが、n≥3 の `boundary 0` が残るため、
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
 L1c–f は未着手。L1g は別途指示待ち。
+
+零射を含む全 span の入力と、枠・既存境界を同時に固定する補完を接続した。
+以下で `Span := (horn 2 0 : SSet.{u})`、`Square := Δ[1] ⊗ Δ[1]`、
+`Zι := (fullSubcomplexOnVertices _ IsZeroSpanVertex).ι`、
+`Fι := (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι` と略記する。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `arCofiberZeroInputOrder` | `(n : ℕ) → (Ar.{u} n × ULift.{u} (Fin 2) →o FrameAr.{u} n)`、値は `(0,i)→(i,i)` |
+| `arCofiberZeroInputMap` | `(n : ℕ) → (arNerve.{u} n ⊗ Δ[1] ⟶ frameNerve n)` |
+| `arCofiberInputs_commonSource` | `(arNerve n ◁ stdSimplex.δ (1 : Fin 2)) ≫ arCofiberInputMap n = (arNerve n ◁ stdSimplex.δ (1 : Fin 2)) ≫ arCofiberZeroInputMap n` |
+| `arCofiberSpan_isPushout` | `(n : ℕ) → IsPushout (arNerve.{u} n ◁ stdSimplex.δ (1 : Fin 2)) (arNerve n ◁ stdSimplex.δ (1 : Fin 2)) (arNerve n ◁ horn₂₀.ι₀₁) (arNerve n ◁ horn₂₀.ι₀₂)` |
+| `arCofiberSpanMap` | `(n : ℕ) → (arNerve.{u} n ⊗ Span ⟶ frameNerve n)` |
+| `arCofiberSpanMap_left` | `(arNerve n ◁ horn₂₀.ι₀₁) ≫ arCofiberSpanMap n = arCofiberInputMap n` |
+| `arCofiberSpanMap_right` | `(arNerve n ◁ horn₂₀.ι₀₂) ≫ arCofiberSpanMap n = arCofiberZeroInputMap n` |
+| `arCofiberSquareMap_left` | `(arNerve n ◁ squareLeftEdge) ≫ arCofiberSquareMap n = arCofiberZeroInputMap n ≫ frameInclusion n` |
+| `arCofiberSquareMap_span` | `(arNerve n ◁ spanSquareBoundary) ≫ arCofiberSquareMap n = arCofiberSpanMap n ≫ frameInclusion n` |
+| `frameCofiberSpanOperator` | `(n : ℕ) → (C : SSet.{u}) → ((ihom (frameNerve n)).obj C ⟶ (ihom (arNerve n)).obj ((ihom Span).obj C))` |
+| `arCofiberFamilyOperator_span` | `arCofiberFamilyOperator n C ≫ (ihom (arNerve n)).map ((pre spanSquareBoundary).app C) = (pre (frameInclusion n)).app C ≫ frameCofiberSpanOperator n C` |
+| `frameCofiberSquareMap_span` | `(frameNerve n ◁ spanSquareBoundary) ≫ frameCofiberSquareMap n = (frameInclusion n ▷ Span) ≫ arCofiberSpanMap n` |
+| `frameCofiberFamilyOperator_span` | `frameCofiberFamilyOperator n C ≫ (ihom (frameNerve n)).map ((pre spanSquareBoundary).app C) = frameCofiberSpanOperator n C ≫ (pre (frameInclusion n)).app ((ihom Span).obj C)` |
+| `frameCofiberSpanFamily` | `(F : frameNerve n ⟶ C) → (arNerve n ⟶ (ihom Span).obj C)` |
+| `frameCofiberSpanOperator_vertex` | `(F : frameNerve n ⟶ C) → (frameCofiberSpanOperator n C).app (Opposite.op ⦋0⦌) (functorVertex F) = functorVertex (frameCofiberSpanFamily F)` |
+| `frameCofiberSpanFamily_zero` | `(F : frameNerve n ⟶ C) → IsZeroFrameVertex (functorVertex F) → (a : Ar.{u} n) → IsZeroSpanVertex ((frameCofiberSpanFamily F).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))` |
+| `frameCofiberSpans` | `(n : ℕ) → (C : SSet.{u}) → (zeroFrameDiagrams n C ⟶ (ihom (arNerve n)).obj (zeroSpanDiagrams C))` |
+| `frameCofiberSpans_ι` | `frameCofiberSpans n C ≫ (ihom (arNerve n)).map Zι = Fι ≫ frameCofiberSpanOperator n C` |
+| `gappedCofiberFamiliesMap_span` | `gappedCofiberFamiliesMap n C ≫ (ihom (arNerve n)).map (cofiberSpanProjection C) = gappedFrameRestriction n C ≫ frameCofiberSpans n C` |
+| `zeroFrameCofiberFamiliesMap_span` | `[Quasicategory C] → zeroFrameCofiberFamiliesMap n C ≫ (ihom (frameNerve n)).map (cofiberSpanProjection C) = frameCofiberSpans n C ≫ (pre (frameInclusion n)).app (zeroSpanDiagrams C)` |
+| `exists_arCofiberSpanCompletion_preserving_frame` | `{A B C : SSet.{u}} → [Quasicategory C] → [IsStable C] → (n : ℕ) → (i : A ⟶ B) → [Mono i] → (a : A ⟶ sConstruction n C) → (b : B ⟶ zeroFrameDiagrams n C) → (a ≫ gappedFrameRestriction n C = i ≫ b) → ∃ H : B ⟶ (ihom (arNerve n)).obj (cofiberDiagrams C), i ≫ H = a ≫ gappedCofiberFamiliesMap n C ∧ H ≫ (ihom (arNerve n)).map (cofiberSpanProjection C) = b ≫ frameCofiberSpans n C ∧ H ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) = b ≫ zeroFrameCofiberFamiliesMap n C` |
+
+形状の段階で二辺を pushout により貼り、零対角条件で零脚つき span の内部 Hom へ持ち上げた。
+相対補完は `cofiberSpanProjection` と `frameInclusion` の相対内部 Hom の trivial Kan fibration を使う。
+したがって零頂点・零射を含む全 span と枠を、既存の境界に対して同時に厳密に固定できる。
+
+**未完了の範囲は変わらない**：補完の右上角から得た実際の Ar[n] 図式の三つ組の正方形の普遍性
+（n≥3 の零次元持ち上げ）が残る。cofiber 族自体の各正方形の普遍性を代用しない。
+次は、この固定 span 条件から図式の標準単位との coherent な比較を作り、押し出しの貼り合わせで
+三つ組の普遍性に接続する。L1b 全体と L1c–f は未完了、L1g は別途指示待ち。
+
+この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2088 jobs）、
+`lake env lean scripts/audit_kst_s_construction.lean` 成功（365 宣言、標準三公理のみ）。

@@ -9,4 +9,6 @@ public import SerrePositivity.KST.SConstruction.FirstRowDegreeTwo
 public import SerrePositivity.KST.SConstruction.ColimitBaseTransport
 public import SerrePositivity.KST.SConstruction.ZeroSpanProjection
 
+public import SerrePositivity.KST.SConstruction.FramePreservingSpanCompletion
+
 /-! # ∞-S• 構成と連結 K 理論 -/
