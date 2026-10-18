@@ -2194,7 +2194,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開553宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開575宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2822,7 +2822,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開553宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開575宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3373,6 +3373,46 @@ sectionFixedApexConeFamilyMap p x :
 大域的な `isQCatEquivalence_sliceConeFamilyMap p` から strict fiber の同値性を
 そのまま結論せず、固定頂点を保つ比較を別途証明する。
 既存の豊穣 q_x との接続と 𝒮・Sp の残りの適用も未完了。
+
+### 両端固定の fat join 模型への同値（実装済み）
+
+`FixedEndpointConeSpace` と `FixedEndpointConeIso` は、二重 fiber としての
+`fixedApexConeFamily p x` を両端固定の単一 fiber で表示する。
+任意の `K X : SSet.{u}`、`p : K ⟶ X`、`x : X _⦋0⦌` に対して
+
+```lean
+fixedEndpointConeSpace p x :=
+  vertexFiber ((pre (joinEndpointInclusion (Δ[0] : SSet.{u}) K)).app X)
+    (functorVertex (joinEndpointDesc (SSet.yonedaEquiv.symm x) p))
+fixedApexEndpointConeSpaceIso p x :
+  fixedApexConeFamily p x ≅ fixedEndpointConeSpace p x
+```
+
+を構成した。同型には充填性の仮定が不要。左右の制限を `fixedApexConeFamilyEvaluation_inl`・
+`fixedApexConeFamilyEvaluation_inr` で計算し、逆射は両端の条件を回収して二回 fiber へ持ち上げる。
+
+`FixedEndpointFatComparison` は次の模型と実際の射を追加した。
+
+```lean
+fixedEndpointFatConeSpace p x :=
+  vertexFiber ((pre (fatJoinEndpointInclusion (Δ[0] : SSet.{u}) K)).app X)
+    (functorVertex (joinEndpointDesc (SSet.yonedaEquiv.symm x) p))
+fixedEndpointConeFatComparison p x :
+  fixedEndpointConeSpace p x ⟶ fixedEndpointFatConeSpace p x
+fixedApexFatConeComparison p x :
+  fixedApexConeFamily p x ⟶ fixedEndpointFatConeSpace p x
+```
+
+`[Quasicategory X]` の下で `fixedEndpointConeFatComparison_isQCatEquivalence p x` と
+`fixedApexFatConeComparison_isQCatEquivalence p x` を証明した。
+前者は既存の F1 の `isQCatEquivalence_fatJoinComparison_fixedEndpoints` の適用であり、
+後者は厳密な同型との合成である。固定条件を外した大域的な同値だけには依存しない。
+`joinEndpointInclusion_vertex_surjective` は両端包含が全頂点を含むことを示し、
+同じ前提の下で `fixedEndpointConeSpace_kanComplex`・`fixedApexConeFamily_kanComplex` を得る。
+K の quasicategory 性や非空性、p の fibration 性は不要。
+
+前節の slice と切断空間からの二つの射の同値性は、この fat join 模型の同値とは別の未完了項目。
+豊穣 q_x との整合性および 𝒮・Sp の残りの適用も引き続き証明が必要である。
 
 ### 𝒮 の空積（実装済み）
 

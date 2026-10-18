@@ -1111,3 +1111,47 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms sectionConeFamilyMap_apex
 #check @sectionFixedApexConeFamilyMap
 #print axioms sectionFixedApexConeFamilyMap
+#check @joinEndpointFunctor_hom_ext
+#print axioms joinEndpointFunctor_hom_ext
+#check @fixedEndpointConeSpace
+#print axioms fixedEndpointConeSpace
+#check @fixedApexConeFamilyEvaluation
+#print axioms fixedApexConeFamilyEvaluation
+#check @fixedApexConeFamilyEvaluation_inr
+#print axioms fixedApexConeFamilyEvaluation_inr
+#check @fixedApexConeFamilyEvaluation_inl
+#print axioms fixedApexConeFamilyEvaluation_inl
+#check @fixedApexConeFamilyEvaluation_fixed
+#print axioms fixedApexConeFamilyEvaluation_fixed
+#check @fixedApexToEndpointConeSpace
+#print axioms fixedApexToEndpointConeSpace
+#check @fixedEndpointConeSpace_inr
+#print axioms fixedEndpointConeSpace_inr
+#check @fixedEndpointConeSpace_inl
+#print axioms fixedEndpointConeSpace_inl
+#check @endpointConeSpaceToFamily
+#print axioms endpointConeSpaceToFamily
+#check @endpointConeSpaceToFamily_apex
+#print axioms endpointConeSpaceToFamily_apex
+#check @endpointConeSpaceToFixedApex
+#print axioms endpointConeSpaceToFixedApex
+#check @fixedApexEndpointConeSpaceIso
+#print axioms fixedApexEndpointConeSpaceIso
+#check @joinEndpointInclusion_vertex_surjective
+#print axioms joinEndpointInclusion_vertex_surjective
+#check @fixedEndpointConeSpace_kanComplex
+#print axioms fixedEndpointConeSpace_kanComplex
+#check @fixedApexConeFamily_kanComplex
+#print axioms fixedApexConeFamily_kanComplex
+#check @fixedEndpointFatConeSpace
+#print axioms fixedEndpointFatConeSpace
+#check @fixedEndpointFatConeSpace_quasicategory
+#print axioms fixedEndpointFatConeSpace_quasicategory
+#check @fixedEndpointConeFatComparison
+#print axioms fixedEndpointConeFatComparison
+#check @fixedEndpointConeFatComparison_isQCatEquivalence
+#print axioms fixedEndpointConeFatComparison_isQCatEquivalence
+#check @fixedApexFatConeComparison
+#print axioms fixedApexFatConeComparison
+#check @fixedApexFatConeComparison_isQCatEquivalence
+#print axioms fixedApexFatConeComparison_isQCatEquivalence
