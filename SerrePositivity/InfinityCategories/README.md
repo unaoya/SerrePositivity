@@ -1234,7 +1234,7 @@ simplicialNerve_quasicategory (C : Type u)
 
 ## γ1.5：Dold–Kan 豊穣化と dg nerve の比較
 
-γ1.5a（紙の設計）は完了。以下の構成の Lean 実装は γ1.5b 以降で行う。
+γ1.5a（紙の設計）は完了。以下は γ1.5b 以降の実装で用いる設計と規約の正本。
 原典は [HA 1.3.1.12–1.3.1.17](https://www.math.ias.edu/~lurie/papers/HA.pdf)、
 [Kerodon 2.5.7](https://kerodon.net/tag/00RF)、
 [2.5.8](https://kerodon.net/tag/00S0)、[2.5.9](https://kerodon.net/tag/00SC)。
@@ -1326,7 +1326,7 @@ Core の現行 `IsFullyFaithful` は各 pinched Hom の射に実際の単体的�
 A3e の主定理が届いた後、充満忠実性と本質的全射性から `QCatEquivalence` を構成する。
 それまでは写像空間の比較を成果の区切りとし、∞ 圏の同値を条件なしに主張しない。
 
-現在地：γ1.5a の設計記録を完了し、γ1.5b の小さい Hom の模型と Kan 性まで実装した。
+現在地：γ1.5a の設計記録と γ1.5b の単体的圏 C_Δ の構成・局所 Kan 性が完了。
 namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{u} R)` と
 `homSpace x y : SSet.{u}` は N4 の線形解を全ての単調写像に関してまとめたもの。
 `homSpaceLiftIso x y` は `SSet.uliftFunctor.{v,u}.obj (homSpace x y)` と
@@ -1368,7 +1368,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3572件で成功し、公開195宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3688件で成功し、公開212宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1385,7 +1385,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 集合上単射なら左右の切断の像を同定し、非単射なら各切断の少なくとも片側の
 引き戻し成分が零となることを使う。ここに新しい標準方程式の仮定はない。
 
-γ1.5b 全体は未完了。Hom の Mathlib Γ との同定と Kan 性、成分族上の AW の双線形性と
+γ1.5b は完了。Hom の Mathlib Γ との同定と Kan 性、成分族上の AW の双線形性と
 単位則・結合律・単体的自然性に加え、標準方程式の保存も証明済み。
 `differential_awData_eq_standardRhs` は標準単体の AW 成分の微分が標準境界に等しいことを示す。
 Leibniz 則から得る左右の削除和を `AWIndex.boundaryPairEquiv` で、削除後の切断と
@@ -1393,9 +1393,16 @@ Leibniz 則から得る左右の削除和を `AWIndex.boundaryPairEquiv` で、�
 `awDiagonal_sum_eq_zero` によって隣接切断どうしで符号を反転して相殺する。
 `awData_mem_standard` は閉性の証明、`standardAW g f : StandardSimplex R x z n` は
 追加仮定なしの標準単体の合成である。
-残りは C_Δ の豊穣圏 instance と通常の閉零射の圏との整合性、
-γ1.5c の比較写像、γ1.5d の coherent nerve の写像空間との比較。
-この Hom の模型だけで C_Δ の構成や coherent nerve との同値を完成とは数えない。
+`standardEnrichedCategory` は単位・合成・全豊穣則を備える構造である。
+`closedStandardVertexEquiv` は閉零射と標準零単体の同値で、恒等射と合成を保つ。
+`doldKanSimplicialCategory : SimplicialCategory (ClosedCategory R D)` が通常の圏との
+整合性も備えた C_Δ の instance。豊穣 Hom は標準成分模型で実装し、
+`doldKanSimplicialHomIso` により実際の Mathlib Γ の Hom と全単調写像について自然同型となる。
+`doldKanSimplicialCategory_locallyKan` は全ての Hom の Kan instance。
+`doldKanCoherentNerve : SSet.{max u v}` はこの C_Δ の coherent nerve であり、
+`doldKanCoherentNerve_quasicategory` は γ1 の一般定理から従う。
+前提は `[CommRing R] [DGCategory R D]` のみで、任意の通常の Category D は要求しない。
+残りは γ1.5c の dg nerve への比較写像と低次の一致、γ1.5d の写像空間の比較および同値の証明。
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
 

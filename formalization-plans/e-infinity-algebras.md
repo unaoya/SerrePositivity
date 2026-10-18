@@ -167,6 +167,10 @@ simplicialNerve_quasicategory (C : Type u)
 `awData_mem_standard g f` は標準方程式の保存を証明する。
 `standardAW (g : StandardSimplex R y z n) (f : StandardSimplex R x y n) :
 StandardSimplex R x z n` が追加仮定なしの合成。
-前提は `[CommRing R] [DGCategory R D]`。公開195宣言の正確な型・前提・公理監査は
-`scripts/audit_dold_kan_comparison.lean`。残りは C_Δ の豊穣圏 instance・通常の圏との整合性、
+γ1.5b は完了。`doldKanSimplicialCategory : SimplicialCategory (ClosedCategory R D)`、
+`doldKanSimplicialCategory_locallyKan x y : SSet.KanComplex (SimplicialCategory.sHom x y)`、
+`doldKanCoherentNerve : SSet.{max u v}` とその quasicategory instance を構成した。
+`doldKanSimplicialHomIso` は豊穣 Hom と実際の Mathlib Γ の Hom の自然同型。
+通常の圏の恒等射と合成との整合性も証明済み。前提は `[CommRing R] [DGCategory R D]`。
+公開212宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
 比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。
