@@ -115,6 +115,8 @@ run_cmd do
 
 
 
+
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2500,6 +2502,21 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.normalizationHomologyNatIso
 
 
+-- HomologyAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.hornGenerators_le_integralHomology
+#print axioms SerrePositivity.KST.Comparison.hornGenerators_le_integralHomology
+
+#check @SerrePositivity.KST.Comparison.hornCellAttachments_le_integralHomology
+#print axioms SerrePositivity.KST.Comparison.hornCellAttachments_le_integralHomology
+
+#check @SerrePositivity.KST.Comparison.anodyneExtensions_le_integralHomology
+#print axioms SerrePositivity.KST.Comparison.anodyneExtensions_le_integralHomology
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsomorphism_of_anodyne
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsomorphism_of_anodyne
+
+
 -- HomologyColimits.lean
 
 #check @SerrePositivity.KST.Comparison.unnormalizedIntegralChainsEvalIso
@@ -2590,6 +2607,48 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.horn_integralHomologyIsomorphism
 
 
+-- HomologyKanReplacement.lean
+
+#check @SerrePositivity.KST.Comparison.kanReplacementUnit_integralHomologyIsomorphism
+#print axioms SerrePositivity.KST.Comparison.kanReplacementUnit_integralHomologyIsomorphism
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsomorphism_of_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsomorphism_of_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap_integralHomologyIsomorphism
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_integralHomologyIsomorphism
+
+
+-- HomologyMorphismProperty.lean
+
+#check @SerrePositivity.KST.Comparison.integralHomologyEquivalences
+#print axioms SerrePositivity.KST.Comparison.integralHomologyEquivalences
+
+#check @SerrePositivity.KST.Comparison.integralHomologyEquivalences_iff
+#print axioms SerrePositivity.KST.Comparison.integralHomologyEquivalences_iff
+
+#check @SerrePositivity.KST.Comparison.integralHomologyEquivalences_isMultiplicative
+#print axioms SerrePositivity.KST.Comparison.integralHomologyEquivalences_isMultiplicative
+
+#check @SerrePositivity.KST.Comparison.integralHomologyEquivalences_respectsIso
+#print axioms SerrePositivity.KST.Comparison.integralHomologyEquivalences_respectsIso
+
+#check @SerrePositivity.KST.Comparison.integralHomologyEquivalences_stableRetracts
+#print axioms SerrePositivity.KST.Comparison.integralHomologyEquivalences_stableRetracts
+
+#check @SerrePositivity.KST.Comparison.integralHomologyEquivalences_stableColimits
+#print axioms SerrePositivity.KST.Comparison.integralHomologyEquivalences_stableColimits
+
+#check @SerrePositivity.KST.Comparison.integralHomology_preservesCoproductsOfShape
+#print axioms SerrePositivity.KST.Comparison.integralHomology_preservesCoproductsOfShape
+
+#check @SerrePositivity.KST.Comparison.integralHomologyEquivalences_stableCoproducts
+#print axioms SerrePositivity.KST.Comparison.integralHomologyEquivalences_stableCoproducts
+
+#check @SerrePositivity.KST.Comparison.integralHomologyEquivalences_stableFilteredColimits
+#print axioms SerrePositivity.KST.Comparison.integralHomologyEquivalences_stableFilteredColimits
+
+
 -- HomologyPairContraction.lean
 
 #check @SerrePositivity.KST.Comparison.integralHomologyMap_endpoints_eq
@@ -2621,6 +2680,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.shortComplexHomology_preservesExactColimits
 #print axioms SerrePositivity.KST.Comparison.shortComplexHomology_preservesExactColimits
+
+
+-- HomologyPushout.lean
+
+#check @SerrePositivity.KST.Comparison.integralChainCokernelSequence_shortExact
+#print axioms SerrePositivity.KST.Comparison.integralChainCokernelSequence_shortExact
+
+#check @SerrePositivity.KST.Comparison.integralChain_quasiIso_iff_cokernel_acyclic
+#print axioms SerrePositivity.KST.Comparison.integralChain_quasiIso_iff_cokernel_acyclic
+
+#check @SerrePositivity.KST.Comparison.integralChain_quasiIso_of_pushout
+#print axioms SerrePositivity.KST.Comparison.integralChain_quasiIso_of_pushout
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsomorphism_of_pushout
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsomorphism_of_pushout
 
 
 -- HomologyQuasiIso.lean

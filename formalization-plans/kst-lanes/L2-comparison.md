@@ -782,7 +782,7 @@ acyclic 条件は標的上の全ての局所係数に対する、引き戻し係
 整数定数係数との比較は自由アーベル群模型との自然な同型を証明してから公開する。
 原典番号の照合：Weibel K-book III は低次 K 群と完全群の代数的背景、
 plus の存在は IV.1.5、acyclic map の局所係数による特徴付けは IV.1.6 である。
-局所係数の圏論的模型は Cegarra–Garzón, Higher cohomologies of modules,
+局所係数の圏論的模型は Calvo–Cegarra–Quang, Higher cohomologies of modules,
 AGT 12 (2012), Remark 2.1 の全射の局所化による記述と整合させる。
 原典 URL：<https://sites.math.rutgers.edu/~weibel/Kbook/Kbook.pdf>、
 <https://msp.org/agt/2012/12-1/agt-v12-n1-p15-s.pdf>。
@@ -828,6 +828,16 @@ Waldhausen LNM 1126 §1.7・§1.8 のセル濾過を単体的・アーベル圏�
 従って単射な擬同型の pushout は擬同型である。
 自由非正規化整数鎖複体の pushout 保存と、horn の単射性・ホモロジー同型を使って添付へ適用する。
 原典のセル濾過による議論を、Mathlib の短完全列と余核の pushout 比較で証明する経路である。
+
+### 局所係数の horn 計算への拡張
+
+確認する文言：標準単体 Δ[n] 上の局所係数系は、恒等 n-simplex の係数群の定数係数系と自然同型である。
+元の圏には恒等 n-simplex に対応する初対象があり、そこからの各射の輸送が同型なので従う。
+この同型を horn へ引き戻して、任意の定数アーベル群係数での二段階収縮の計算に帰着する。
+一般の基底 Y 上では、Over Y の対象 X→Y を引き戻し局所係数の鎖複体へ送る実際の関手を作る。
+各次数の係数群の直和表示を用いて余極限保存と単射保存を確認し、slice の horn 添付へ拡張する。
+整数係数だけの anodyne 保存から局所係数の保存を推論することはしない。
+原典は Weibel K-book IV.1.6。定数係数の計算は Mathlib の sigmaConst と alternating face map complex を使う。
 
 ## 12. 現在地と主要宣言
 
@@ -894,7 +904,10 @@ L2c：正規化整数ホモロジー、非正規化との自然同型、ホモ�
 自由非正規化整数鎖複体の余極限保存と、正規化・非正規化の擬同型による整数ホモロジー同型の判定も証明した。
 AB5 による filtered colimit と整数ホモロジーの自然な交換、
 各段階の整数ホモロジー同型の余極限への移送は完成した。
-Kan 置換のホモロジー保存とセル添付の計算は未完了。
+単射な整数ホモロジー同型の pushout、余積、超限合成、retract の閉性を証明し、
+全ての anodyne map と Kan 置換の単位の整数ホモロジー保存を証明した。
+anodyne 局所化の同型と群状モノイドの標準群完備化写像の整数ホモロジー同型も導いた。
+局所係数への anodyne 保存の拡張と plus のセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -903,10 +916,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4478 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4485 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1364 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2509 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1384 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2530 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -918,6 +931,9 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `integralHomologyIsomorphism_of_pushout` | 監査済み | 単射な整数ホモロジー同型の pushout 保存 |
+| `integralHomologyIsomorphism_of_anodyne`、`kanReplacementUnit_integralHomologyIsomorphism` | 監査済み | 全 anodyne map と実際の Kan 置換の単位の整数ホモロジー保存 |
+| `integralHomologyIsomorphism_of_localized_isIso`、`monoidGroupCompletionMap_integralHomologyIsomorphism` | 監査済み | 局所化と標準群完備化の比較からの整数ホモロジー同型 |
 | `shortComplexPointwiseHomologyIso`、`shortComplexHomologyColimitIsColimit` | 監査済み | 関手圏のホモロジーと完全な余極限の実際の普遍性 |
 | `integralHomologyFilteredColimitIso`、`integralHomologyIsomorphism_colimit` | 監査済み | filtered colimit との自然な比較同型と段階ごとの同型の保存 |
 | `integralHomologyIsoOfPairContraction`、`hornIntegralHomologyIso` | 監査済み | 二段階の対の収縮と正次元 horn の整数ホモロジー同型 |

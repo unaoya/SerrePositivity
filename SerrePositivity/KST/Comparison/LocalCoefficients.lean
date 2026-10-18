@@ -24,7 +24,7 @@ open CategoryTheory AlgebraicTopology
 /--
 概要：単体集合上のアーベル群値局所係数系。
 方針：元の圏上の関手で、全ての射の像が同型になるものを取る。
-規約：Cegarra–Garzón, AGT 12 (2012), Remark 2.1 の局所化の記述の逆向きの模型。
+規約：Calvo–Cegarra–Quang, AGT 12 (2012), Remark 2.1 の局所化の記述の逆向きの模型。
 使われ方：整数係数より一般の acyclic 性。
 -/
 structure LocalCoefficientSystem (X : SSet.{u}) where
