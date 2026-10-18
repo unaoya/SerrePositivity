@@ -317,17 +317,26 @@ raw な射を保ったパラメータ自然性を与える。`unitCompositionPat
 `UnitMappingSpaceCondition.exists_counitComparison` と `exists_counitHomotopy` へ接続した。
 仮定は指定単位の各点の標準写像空間比較の同値性だけであり、任意のパラメータに対する
 比較同値性を追加してはいない。比較は基底上で時間に定値な実際のホモトピーを保持する。
-余単位候補には三角恒等式をまだ付けていない。
+`UnitCommaCounitData η` は比較と基底固定条件を保持し、同じ比較から
+`counitHomotopy` と `counitHom` を取り出す。
+`unitCommaHomotopySquare` は比較を関手単体集合の正方形に移し、四辺の raw な射を回収する。
+`unitCommaHomotopy_lift_h` により左辺は指定単位の G に沿う制限、右辺は恒等矢印の族であり、
+下辺は基底固定条件により恒等、上辺は同じ比較から得た余単位の G による像になる。
+`UnitCommaCounitData.right_triangle_representatives` はこの四辺の合成関係を使い、
+`HomotopyWhiskering` の前後合成・恒等の類の公式で `right_triangle` へ移す。
+**指定単位と構成した余単位の右三角恒等式は h(Fun(Y,X)) 内で証明済み。**
+`UnitMappingSpaceCondition.exists_counit_right_triangle` は追加仮定なしにこの余単位の存在を公開する。
+左三角恒等式と随伴データ全体の構成は未完了。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
 `∃ a : QCatAdjunction F G, a.unitHom = η` を構成する逆方向である。
 comma の経路では、各点の条件から構成した基底固定の比較を用いて、
-上記の自然な余単位候補に指定単位との三角恒等式を付ける必要がある。
+右三角恒等式を満たす上記の自然な余単位に指定単位との左三角恒等式を付ける必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2128 jobs）・公理監査（1281 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 460 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2131 jobs）・公理監査（1344 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 463 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -541,18 +550,24 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `homotopyEquivalencePath_homotopy`・`unitCommaMappingToComparisonFiber_source`・`unitCommaMappingToComparisonFiber_path`・`unitCommaMappingToComparisonFiber_homotopy` | 順方向比較による普遍標的・path・raw なホモトピーの回収 | 実装済み |
 | `unitCommaMappingToComparisonFiber_comp_return_homotopy` | 恒等射から実際の戻る合成へのホモトピー | 実装済み |
 | `isContractibleKan_of_homotopy_retract` | 可縮 Kan 複体のホモトピー retract へ可縮性を移す | 実装済み |
-| `UnitMappingSpaceCondition.unitCommaMappingSpace_isContractibleKan`・`UnitMappingSpaceCondition.unitCommaInitialCondition` | 各点の標準単位比較の同値性から指定単位の comma 始対象性 | 実装済み（自然な余単位候補まで接続、三角恒等式は後続） |
+| `UnitMappingSpaceCondition.unitCommaMappingSpace_isContractibleKan`・`UnitMappingSpaceCondition.unitCommaInitialCondition` | 各点の標準単位比較の同値性から指定単位の comma 始対象性 | 実装済み（自然な余単位と右三角恒等式まで接続、左三角恒等式は後続） |
 | `exists_lift_of_initial_first_vertices` | 始点の相対境界充填による指定部分・基底を固定した図式の延長 | 実装済み |
 | `simplexFirstVertex_stdSimplex_of_notMem_boundary`・`simplexFirstVertex_prod`・`initialBoundaryLifting_ihom_of_pointwise` | 各点の相対始対象性を任意のパラメータの関手単体集合へ移す | 実装済み |
 | `exists_edge_over_of_initialBoundaryLifting`・`exists_homotopy_over_of_pointwise_initialBoundaryLifting` | 相対始対象の族から同じ基底上の任意の族への射・実際のホモトピー | 実装済み |
 | `UnitCommaInitialCondition.initialBoundaryLifting_of_op_transport` | 反転した始域射影の輸送から単位切断の相対充填を得る | 実装済み（輸送は証明済みの instance で供給） |
 | `unitCommaIdentityFamily`・`unitCommaIdentityFamily_source`・`unitCommaIdentityFamily_target` | G の像の恒等矢印の族と二つの射影の回収 | 実装済み |
-| `exists_unitCommaCounitComparison_of_relativeInitial`・`exists_unitCommaCounitHomotopy_of_relativeInitial` | 相対充填の仮定から comma 内の比較と自然な余単位候補を構成 | 実装済み（三角恒等式は未証明） |
-| `UnitCommaInitialCondition.exists_counitHomotopy_of_op_transport` | comma の始対象性と始域射影の輸送から余単位候補を構成 | 実装済み（輸送は証明済みの instance で供給、三角恒等式は未証明） |
+| `exists_unitCommaCounitComparison_of_relativeInitial`・`exists_unitCommaCounitHomotopy_of_relativeInitial` | 相対充填の仮定から comma 内の比較と自然な余単位候補を構成 | 実装済み（同じ比較を保持するデータから右三角恒等式まで証明済み） |
+| `UnitCommaInitialCondition.exists_counitHomotopy_of_op_transport` | comma の始対象性と始域射影の輸送から余単位候補を構成 | 実装済み（輸送は証明済みの instance で供給、右三角恒等式への接続も実装済み） |
 | `unitCommaArrow_evaluate_zero/one`・`unitCommaVertexArrow/Edge` と回収公式 | comma 頂点の元の矢印の端点と区間表示を厳密に回収 | 実装済み |
 | `isCartesianEdge_unitCommaSource_of_target` | Y の標的で可逆な comma の辺の始域射影に対する cartesian 性 | 実装済み |
 | `commaTransportFold`・`commaTransportFold_end/source/target` | 合成三角形から標的固定の正方形への畳み込みと端点公式 | 実装済み |
 | `exists_cartesian_unitComma_lift` | 指定終点・基底の辺を厳密に保持する標的固定の cartesian lift | 実装済み |
 | `cocartesianHornFibration_unitCommaSource_op` | 始域射影の反転した cocartesian 輸送 | 実装済み |
 | `UnitCommaInitialCondition.initialBoundaryLifting` | comma の始対象条件から追加仮定なしに相対充填を得る | 実装済み |
-| `UnitMappingSpaceCondition.exists_counitComparison`・`UnitMappingSpaceCondition.exists_counitHomotopy` | 各点の標準比較の同値条件だけから基底固定の comma 比較と自然な余単位候補を構成 | 実装済み（三角恒等式は未証明） |
+| `UnitMappingSpaceCondition.exists_counitComparison`・`UnitMappingSpaceCondition.exists_counitHomotopy` | 各点の標準比較の同値条件だけから基底固定の comma 比較と自然な余単位候補を構成 | 実装済み（同じ比較を保持するデータから右三角恒等式まで証明済み） |
+| `functorHomotopyPrecomp/Postcomp/Refl` と `*_hom` | ホモトピーの raw な前後合成・恒等と h Fun の作用との一致 | 実装済み |
+| `unitCommaHomotopySquare` と四辺の回収・`unitCommaHomotopy_lift_h` | comma 内の比較を正方形へ移し、元の単位と余単位の代表を回収 | 実装済み |
+| `UnitCommaCounitData`・`UnitMappingSpaceCondition.nonempty_counitData` | 基底固定の比較と、そこから得る余単位を同じデータで保持 | 実装済み（三角恒等式はフィールドに含めない） |
+| `UnitCommaCounitData.counitHomotopy/counitHom`・`unitAlongG/counitAlongG`・四辺の公式 | 指定比較に由来する余単位と右三角恒等式の代表 | 実装済み |
+| `UnitCommaCounitData.right_triangle_representatives/right_triangle` | 同じ比較の正方形から h(Fun(Y,X)) の右三角恒等式を証明 | 実装済み |
+| `UnitMappingSpaceCondition.exists_counit_right_triangle` | 各点の標準単位比較条件だけから右三角恒等式を持つ自然な余単位が存在 | 実装済み（左三角恒等式は未証明） |

@@ -128,3 +128,6 @@ public import SerrePositivity.InfinityCategories.F1B.CommaTransportFold
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaTransport
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSourceOppositeFibration
 public import SerrePositivity.InfinityCategories.F1B.UnitCounitExistence
+public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaHomotopySquare
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaCounitData

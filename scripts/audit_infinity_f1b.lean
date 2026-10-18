@@ -698,3 +698,24 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.UnitCommaInitialCondition.initialBoundaryLifting
 #check @SerrePositivity.InfinityCategories.UnitMappingSpaceCondition.exists_counitComparison
 #check @SerrePositivity.InfinityCategories.UnitMappingSpaceCondition.exists_counitHomotopy
+
+#check @SerrePositivity.InfinityCategories.functorHomotopyPrecomp
+#check @SerrePositivity.InfinityCategories.functorHomotopyPostcomp
+#check @SerrePositivity.InfinityCategories.functorHomotopyRefl
+#check @SerrePositivity.InfinityCategories.functorHomotopyPrecomp_hom
+#check @SerrePositivity.InfinityCategories.functorHomotopyPostcomp_hom
+#check @SerrePositivity.InfinityCategories.functorHomotopyRefl_hom
+#check @SerrePositivity.InfinityCategories.unitCommaHomotopySquare
+#check @SerrePositivity.InfinityCategories.unitCommaHomotopySquare_bottom
+#check @SerrePositivity.InfinityCategories.unitCommaHomotopySquare_top
+#check @SerrePositivity.InfinityCategories.unitCommaHomotopySquare_left
+#check @SerrePositivity.InfinityCategories.unitCommaHomotopySquare_right
+#check @SerrePositivity.InfinityCategories.unitCommaHomotopy_lift_h
+#check @SerrePositivity.InfinityCategories.UnitCommaCounitData
+#check @SerrePositivity.InfinityCategories.UnitMappingSpaceCondition.nonempty_counitData
+#check @SerrePositivity.InfinityCategories.UnitCommaCounitData.counitHom
+#check @SerrePositivity.InfinityCategories.UnitCommaCounitData.right_triangle_representatives
+#check @SerrePositivity.InfinityCategories.UnitCommaCounitData.unitAlongG_hom
+#check @SerrePositivity.InfinityCategories.UnitCommaCounitData.counitAlongG_hom
+#check @SerrePositivity.InfinityCategories.UnitCommaCounitData.right_triangle
+#check @SerrePositivity.InfinityCategories.UnitMappingSpaceCondition.exists_counit_right_triangle
