@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・238 モジュール 2896 宣言の公理監査成功。
+対象ビルド・240 モジュール 2911 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2105,3 +2105,29 @@ L9d は進行中。次は任意の源のパラメータを反復内部 Hom の�
 保存単位の対象ビルド 2439 jobs 成功。
 私有宣言を含む 238 モジュール 2896 宣言で標準三公理のみ。
 L9d は進行中。次は随伴構造射から符号を調整した loop 列への比較を組み立てる。
+
+## 73. L9d の段ごとの同型を持つ BF 射の逆方向の厳密な比較
+
+各段で全基点 π_* 同型の BF 射の mapping path の終点射は、各段で全単射に対する RLP を持つ。
+cofibrant な標的の列から恒等射をこの終点射へ持ち上げ、厳密な列の切断を構成した。
+元の源への射影を合成することで逆方向の厳密な BF 射を得た。
+切断の合成が恒等射であることと源射影の RLP から、逆方向の射も各段で全基点 π_* 同型となる。
+従って全整数次数でも π_* 同型である。
+
+全単射 RLP 射への合成が等しい二つの点つき射は同じ成分を持つことを、基点を固定する垂直ホモトピーから示した。
+これを mapping path の終点射と源射影に適用し、各段で左右の合成は恒等射と同じ点つき成分になることを証明した。
+スペクトル全体の enriched ホモトピーや coherent nerve での同値とはまだ同定しない。
+符号を調整した loop 模型から元の有理化の loop 模型へ戻す実際の射に用いる。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedMapping.componentOf_eq_of_comp_eq_rlp` | 全単射 RLP 射への同じ合成による点つき成分の一致 |
+| `OmegaSpectrum.inversePathTarget_rlp` / `.inversePathSection` / `.inversePathSection_target` | mapping path の終点射の RLP と厳密な列の切断 |
+| `OmegaSpectrum.levelwiseInverse` / `.levelwiseInverse_levelwise` | 逆方向の厳密な BF 射と各段の全基点 π_* 同型性 |
+| `OmegaSpectrum.levelwiseInverse_left_component` / `.levelwiseInverse_right_component` | 各段での左右の合成と恒等射の成分の一致 |
+| `OmegaSpectrum.levelwiseInverse_piIsomorphism` | 逆方向の射の全整数次数の同型性 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2441 jobs 成功。
+私有宣言を含む 240 モジュール 2911 宣言で標準三公理のみ。
+L9d は進行中。次は二つの随伴構造射の合成を符号を変えた loop 列の構造射と比較する。
