@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1420 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1440 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -726,6 +726,21 @@ Noether 局所環・平坦有限表示・幾何学的整な代数での拡大素
 実際の分裂表示の下での特別な局所化の単射性を結論する。
 上記の幾何学的整性との接続も `GeometricallyIntegralFiberRegularity.lean` で証明済み。
 
+#### 特別な局所化の族による大域的な消滅判定
+
+原典：Stacks 0810, Lemma 38.30.2 の高次小行列式の消滅検出、および 05DH。
+A を Noether、B を平坦有限表示・幾何学的整な A 代数とし、実際の分裂表示を入力する。
+各 P ∈ Spec A について C = A_P、D = C ⊗_A B とする。
+D の C 上の幾何学的整性から、m_C D は素であり、L_P = D_(m_C D) を構成できる。
+B → D → L_P という実際の環写像を定義する。
+既証の分裂の基底変更を用い、D → L_P は単射となる。
+全 P の L_P で x と y の像が等しければ、D で 1 ⊗ x = 1 ⊗ y。
+係数写像を適用すると全係数の A_P での像が等しい。
+A から全素点局所化の積への標準写像の単射性により全係数が等しく、分裂で x = y を得る。
+この段階では L_P と元の B_(PB) の同型は主張せず、実際に構成した対象の族を用いる。
+実際の素点・局所環・環写像と、その族による等式・零元・零イデアルの検出を
+`LocalGenericDetection.lean` で証明済み。
+
 #### 選んだ有限表示の任意の基底変更
 
 原典：Stacks 0810, Lemma 38.30.2 の小行列式の基底変更の利用。
@@ -911,6 +926,13 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | `isDomain_tensor_of_geometricallyIntegral` | 任意の体へのテンソル基底変更環の整域性 | 証明済み |
 | `geometricallyIntegral_split_isRegular_of_not_mem_extended_maximalIdeal` | 幾何学的整性による分母の正則性 | 証明済み |
 | `geometricallyIntegral_split_extendedMaximalLocalization_injective` | 幾何学的整な分裂代数の特別な局所化への単射性 | 証明済み |
+| `localizedBaseGenericPrime` | 素点で基礎環を局所化した後の閉ファイバーの一般点 | 定義済み |
+| `LocalGenericRing` | 局所基底上の一般点局所環 | 定義済み |
+| `localGenericMap` | 元の代数から一般点局所環への実環写像 | 定義済み |
+| `localGeneric_structureMap_injective` | 局所基底変更代数から一般点局所環への単射性 | 証明済み |
+| `localGenericMap_family_injective` | 一般点局所環の族による元の検出 | 証明済み |
+| `eq_zero_of_localGenericMap_eq_zero` | 元の消滅判定 | 証明済み |
+| `ideal_eq_bot_of_localGeneric_maps_eq_bot` | イデアルの消滅判定 | 証明済み |
 
 以下は予定名であり、実装済みでないものを `#check` 済みとは扱わない。
 

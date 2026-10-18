@@ -208,3 +208,4 @@ public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraAdicSeparation
 public import SerrePositivity.KST.SchemeLemmas.ResidueTensorInjectivity
 public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraFiberRegularity
 public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralFiberRegularity
+public import SerrePositivity.KST.SchemeLemmas.LocalGenericDetection
