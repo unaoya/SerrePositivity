@@ -96,7 +96,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 
 ## 6. 現在地・主要宣言
 
-**L1a・L1b 完了。L1c が次工程。L1d–f 未完了、L1g は別途指示待ち。**
+**L1a・L1b 完了。L1c 進行中（core・対角・Kan 置換・K 空間を実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
 L1b は元の全 gapped 図式の制限写像そのものについて、全次数・全境界の RLP を証明した。
 追加の存在仮定や出力の gapped 性の仮定は残っていない。
 
@@ -466,7 +466,8 @@ lemma firstRowRestriction_vertexFiber_isContractibleKan (n : ℕ) (C : SSet.{u})
 対象ビルド・標準三公理のみの監査を保存前に実施する。工程区切りの全体ビルドも一度実行する。
 その結果は以下に記す。
 
-L1c–f は未完了。次は各 S_n の core、単体的 Kan 複体、対角実現と Kan 置換、L9 の Ω と BF 模型への接続。
+L1c は各 S_n の core、単体的 Kan 複体、点つき対角実現、Kan 置換と L9 の Ω による空間模型まで実装済み。
+次は実現の連結性、零対象の選択独立性、反復 S• の構造写像、delooping と Ω 条件、BF 模型への接続。
 L9 の未着 API を使う箇所だけ明示的な入力として扱い、K 理論の主張を仮定で置き換えない。
 L1d の加法性、L1e の π₀、L1f の dg 関手性と Morita 不変性はその後の工程。
 L1g は別途指示待ち。
@@ -483,3 +484,116 @@ L1c に向けた読取確認：α2 の `quasicategoryCoreFunctor`、L9 の `KanS
 BF の構造射は `suspension (level n).space ⟶ (level (n+1)).space`、完成した模型への束ね直しは
 構造射の単射性と随伴射の全基点での `KanPiIsomorphism` を要求する。
 これらは他レーンの API として読み取り専用で使い、証明なしの入力で L1c の完成を主張しない。
+
+### 6.5 L1c：単体的 Kan core と K 空間
+
+`coreSConstruction n C` は α2 の `quasicategoryCore (sConstruction n C)`。
+`simplicialCoreSConstruction`は S• と α2 の core 関手の合成である。
+各段の Kan 性は C の quasicategory 性から証明され、安定性を要求しない。
+零図式は全ての単体作用で厳密に保たれ、点つき単体集合への関手にも束ねた。
+`diagonalCoreSConstruction C` の n 単体は `(ιS_n C)_n` で、射は外側と内側の二つの単体作用の合成。
+この対角を実現模型とし、L9 の点つき Kan 置換と Ω を使って `kSpace C` を定義した。
+零対象の選択は既存の `chosenZeroVertex C` を使う。
+
+`kanCoreIso` は Kan 複体とその core の比較同型を本レーン内で構成する補題であり、α2 の公開 API を変更しない。
+これにより `coreSConstruction 0 C` の可縮 Kan 性を証明した。
+
+以下は namespace・universe・open 宣言を §6.3 と同じとした公開ヘッダー（本文を除く）。
+
+**CoreSimplicial.lean**
+
+```text
+def coreSConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u}
+
+instance coreSConstruction_kanComplex (n : ℕ) (C : SSet.{u}) [Quasicategory C] :
+    KanComplex (coreSConstruction n C)
+
+def coreSMap {m n : ℕ} (C : SSet.{u}) (θ : Fin (m + 1) →o Fin (n + 1)) :
+    coreSConstruction n C ⟶ coreSConstruction m C
+
+def simplicialCoreSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u}
+
+instance simplicialCoreSConstruction_obj_kanComplex (C : SSet.{u}) [Quasicategory C]
+    (n : SimplexCategoryᵒᵖ) : KanComplex ((simplicialCoreSConstruction C).obj n)
+
+def coreSConstructionZeroVertex (n : ℕ) {C : SSet.{u}} [Quasicategory C]
+    (z : C _⦋0⦌) (hz : IsZeroVertex z) : (coreSConstruction n C) _⦋0⦌
+
+lemma coreSMap_zeroVertex {m n : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (θ : Fin (m + 1) →o Fin (n + 1)) (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    (coreSMap C θ).app (Opposite.op ⦋0⦌) (coreSConstructionZeroVertex n z hz) =
+      coreSConstructionZeroVertex m z hz
+
+def diagonalCoreSConstruction (C : SSet.{u}) : SSet.{u}
+
+lemma diagonalCoreSConstruction_obj (C : SSet.{u}) (n : SimplexCategoryᵒᵖ) :
+    (diagonalCoreSConstruction C).obj n = (coreSConstruction n.unop.len C).obj n
+
+lemma diagonalCoreSConstruction_map (C : SSet.{u}) {d e : SimplexCategoryᵒᵖ}
+    (f : d ⟶ e) (x : (diagonalCoreSConstruction C).obj d) :
+    (diagonalCoreSConstruction C).map f x =
+      ((simplicialCoreSConstruction C).obj e).map f
+        (((simplicialCoreSConstruction C).map f).app d x)
+
+def kanCoreIso (X : SSet.{u}) [KanComplex X] : X ≅ (quasicategoryCore X : SSet.{u})
+
+lemma coreSConstructionZero_isContractibleKan (C : SSet.{u}) [Quasicategory C]
+    [HasZeroVertex C] : IsContractibleKan (coreSConstruction 0 C)
+```
+
+**PointedCoreSimplicial.lean**
+
+```text
+def pointedCoreSConstruction (n : ℕ) (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    PointedSimplicialSet.{u}
+
+instance pointedCoreSConstruction_kanComplex (n : ℕ) (C : SSet.{u})
+    [Quasicategory C] [HasZeroVertex C] : KanComplex (pointedCoreSConstruction n C).right
+
+def pointedCoreSMap {m n : ℕ} (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
+    (θ : Fin (m + 1) →o Fin (n + 1)) :
+    pointedCoreSConstruction n C ⟶ pointedCoreSConstruction m C
+
+def simplicialPointedCoreSConstruction (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    SimplexCategoryᵒᵖ ⥤ PointedSimplicialSet.{u}
+
+lemma simplicialPointedCoreSConstruction_forget (C : SSet.{u})
+    [Quasicategory C] [HasZeroVertex C] :
+    simplicialPointedCoreSConstruction C ⋙ PointedSimplicialSet.forget =
+      simplicialCoreSConstruction C
+```
+
+**KSpace.lean**
+
+```text
+def pointedSRealization (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    PointedSimplicialSet.{u}
+
+def kanSRealization (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    PointedSimplicialSet.{u}
+
+instance kanSRealization_kanComplex (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    KanComplex (kanSRealization C).right
+
+def sRealizationToKan (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    pointedSRealization C ⟶ kanSRealization C
+
+lemma sRealizationToKan_anodyne (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    anodyneExtensions (sRealizationToKan C).right
+
+def kSpace (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] : PointedSimplicialSet.{u}
+
+instance kSpace_kanComplex (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    KanComplex (kSpace C).right
+```
+
+**未完了の範囲**：L1c 全体は未完了。対角の Kan 性は主張せず、構成済みの Kan 置換を通している。
+実現の連結性、零対象の選択独立性、反復 S• による delooping、スペクトルの構造射と Ω 条件、
+連結スペクトルとしての検証はまだ証明が必要。
+L9 の `PointedSequence.kanReplacement` と `KanSequence.cofibrantOmegaSpectrum` は既に存在するため、
+自分で証明すべき Ω 条件を未着 API という名の入力にしない。
+L1d–f は未完了、L1g は別途指示待ち。
+
+この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2234 jobs）、
+`lake env lean scripts/audit_kst_s_construction.lean` 成功（484 宣言、標準三公理のみ）。
+L1c の途中成果なので全体ビルドは繰り返さず、工程全体の完成時に実施する。

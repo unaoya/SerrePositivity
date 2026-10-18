@@ -1206,3 +1206,75 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.firstRowEquivalence
 #print axioms SerrePositivity.KST.SConstruction.firstRowEquivalence
+
+#check @SerrePositivity.KST.SConstruction.coreSConstruction
+#print axioms SerrePositivity.KST.SConstruction.coreSConstruction
+
+#check @SerrePositivity.KST.SConstruction.coreSConstruction_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.coreSConstruction_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.coreSMap
+#print axioms SerrePositivity.KST.SConstruction.coreSMap
+
+#check @SerrePositivity.KST.SConstruction.simplicialCoreSConstruction
+#print axioms SerrePositivity.KST.SConstruction.simplicialCoreSConstruction
+
+#check @SerrePositivity.KST.SConstruction.simplicialCoreSConstruction_obj_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.simplicialCoreSConstruction_obj_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.coreSConstructionZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.coreSConstructionZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.coreSMap_zeroVertex
+#print axioms SerrePositivity.KST.SConstruction.coreSMap_zeroVertex
+
+#check @SerrePositivity.KST.SConstruction.diagonalCoreSConstruction
+#print axioms SerrePositivity.KST.SConstruction.diagonalCoreSConstruction
+
+#check @SerrePositivity.KST.SConstruction.diagonalCoreSConstruction_obj
+#print axioms SerrePositivity.KST.SConstruction.diagonalCoreSConstruction_obj
+
+#check @SerrePositivity.KST.SConstruction.diagonalCoreSConstruction_map
+#print axioms SerrePositivity.KST.SConstruction.diagonalCoreSConstruction_map
+
+#check @SerrePositivity.KST.SConstruction.kanCoreIso
+#print axioms SerrePositivity.KST.SConstruction.kanCoreIso
+
+#check @SerrePositivity.KST.SConstruction.coreSConstructionZero_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.coreSConstructionZero_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.pointedCoreSConstruction
+#print axioms SerrePositivity.KST.SConstruction.pointedCoreSConstruction
+
+#check @SerrePositivity.KST.SConstruction.pointedCoreSConstruction_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.pointedCoreSConstruction_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.pointedCoreSMap
+#print axioms SerrePositivity.KST.SConstruction.pointedCoreSMap
+
+#check @SerrePositivity.KST.SConstruction.simplicialPointedCoreSConstruction
+#print axioms SerrePositivity.KST.SConstruction.simplicialPointedCoreSConstruction
+
+#check @SerrePositivity.KST.SConstruction.simplicialPointedCoreSConstruction_forget
+#print axioms SerrePositivity.KST.SConstruction.simplicialPointedCoreSConstruction_forget
+
+#check @SerrePositivity.KST.SConstruction.pointedSRealization
+#print axioms SerrePositivity.KST.SConstruction.pointedSRealization
+
+#check @SerrePositivity.KST.SConstruction.kanSRealization
+#print axioms SerrePositivity.KST.SConstruction.kanSRealization
+
+#check @SerrePositivity.KST.SConstruction.kanSRealization_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.kanSRealization_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.sRealizationToKan
+#print axioms SerrePositivity.KST.SConstruction.sRealizationToKan
+
+#check @SerrePositivity.KST.SConstruction.sRealizationToKan_anodyne
+#print axioms SerrePositivity.KST.SConstruction.sRealizationToKan_anodyne
+
+#check @SerrePositivity.KST.SConstruction.kSpace
+#print axioms SerrePositivity.KST.SConstruction.kSpace
+
+#check @SerrePositivity.KST.SConstruction.kSpace_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.kSpace_kanComplex

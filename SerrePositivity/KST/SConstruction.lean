@@ -19,4 +19,6 @@ public import SerrePositivity.KST.SConstruction.FixedSpanCofiberGapped
 
 public import SerrePositivity.KST.SConstruction.FirstRowFibration
 
+public import SerrePositivity.KST.SConstruction.KSpace
+
 /-! # ∞-S• 構成と連結 K 理論 -/
