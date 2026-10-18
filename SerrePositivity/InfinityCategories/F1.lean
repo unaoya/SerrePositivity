@@ -335,3 +335,5 @@ public import SerrePositivity.InfinityCategories.F1.JoinInitialHornLifting
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinInitialHornLifting
 public import SerrePositivity.InfinityCategories.F1.IntervalInitialEdgeCut
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCrossingCocartesian
+public import SerrePositivity.InfinityCategories.F1.IntervalCocartesianCriterion
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCocartesianFibration

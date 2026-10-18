@@ -7215,5 +7215,25 @@ lemma relativeJoinPrism_vertical_isCocartesian {X Y : SSet.{u}} [Quasicategory Y
     IsCocartesianEdge (relativeJoinProjection f (𝟙 Y))
       (prismVerticalSimplex (relativeJoinPrism f) x)
 
+lemma interval_hom_eq_id_or_const (e : (Δ[1] : SSet.{u}) ⟶ Δ[1]) :
+    e = 𝟙 Δ[1] ∨ ∃ i : Fin 2, e = SSet.const (stdSimplex.obj₀Equiv.symm i)
+
+lemma cocartesianFibration_interval_of_lift {E : SSet.{u}}
+    (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p]
+    (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (0 : Fin 2) →
+      ∃ l : (Δ[1] : SSet.{u}) ⟶ E,
+        stdSimplex.δ 1 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧
+          IsCocartesianEdge p (SSet.yonedaEquiv l)) : CocartesianFibration p
+
+lemma relativeJoin_vertex_inl_of_projection_zero {X Y S : SSet.{u}}
+    (f : X ⟶ S) (g : Y ⟶ S) (x : (relativeJoin f g) _⦋0⦌)
+    (hx : (relativeJoinProjection f g).app (Opposite.op ⦋0⦌) x =
+      stdSimplex.obj₀Equiv.symm (0 : Fin 2)) :
+    ∃ y : X _⦋0⦌, (relativeJoinInl f g).app (Opposite.op ⦋0⦌) y = x
+
+instance relativeJoinProjection_cocartesianFibration {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) :
+    CocartesianFibration (relativeJoinProjection f (𝟙 Y))
+
 end SerrePositivity.InfinityCategories
 ```

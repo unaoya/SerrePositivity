@@ -1575,3 +1575,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.intervalHom_cut_one_of_initial_edge
 #check @SerrePositivity.InfinityCategories.relativeJoin_crossing_isCocartesian
 #check @SerrePositivity.InfinityCategories.relativeJoinPrism_vertical_isCocartesian
+#check @SerrePositivity.InfinityCategories.interval_hom_eq_id_or_const
+#check @SerrePositivity.InfinityCategories.cocartesianFibration_interval_of_lift
+#check @SerrePositivity.InfinityCategories.relativeJoin_vertex_inl_of_projection_zero
+#check @SerrePositivity.InfinityCategories.relativeJoinProjection_cocartesianFibration
