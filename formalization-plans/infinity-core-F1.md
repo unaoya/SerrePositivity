@@ -7437,5 +7437,41 @@ lemma coslicePostcompFiberMap_equivalence_iff_pinchedHomMap
     IsQCatEquivalence (coslicePostcompFiberMap a f y) ↔
       IsSimplicialHomotopyEquivalence (pinchedHomMap f (SSet.yonedaEquiv a) y)
 
+lemma cocartesian_crossing_mapping_equivalence_of_target
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F]
+    (p : E ⟶ (Δ[1] : SSet.{u})) (q : F ⟶ Δ[1]) (f : E ⟶ F) (hf : f ≫ q = p)
+    (e : (Δ[1] : SSet.{u}) ⟶ E) (hp : e ≫ p = 𝟙 Δ[1])
+    (he : IsCocartesianEdge p (SSet.yonedaEquiv e))
+    (hef : IsCocartesianEdge q (SSet.yonedaEquiv (e ≫ f)))
+    (y : E _⦋0⦌) (hy : p.app (Opposite.op ⦋0⦌) y = stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+    (ht : IsSimplicialHomotopyEquivalence
+      (pinchedHomMap f (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ e)) y)) :
+    IsSimplicialHomotopyEquivalence
+      (pinchedHomMap f (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ e)) y)
+
+lemma isFullyFaithful_over_interval_of_endpoint_fibers_of_cocartesian_lifts
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F]
+    (p : E ⟶ (Δ[1] : SSet.{u})) (q : F ⟶ Δ[1]) (f : E ⟶ F) (hf : f ≫ q = p)
+    (h0 : IsFullyFaithful (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))
+    (h1 : IsFullyFaithful (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))
+    (hl : ∀ x : E _⦋0⦌,
+      p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (0 : Fin 2) →
+      ∃ e : (Δ[1] : SSet.{u}) ⟶ E,
+        stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm x ∧ e ≫ p = 𝟙 Δ[1] ∧
+          IsCocartesianEdge p (SSet.yonedaEquiv e) ∧
+          IsCocartesianEdge q (SSet.yonedaEquiv (e ≫ f))) : IsFullyFaithful f
+
+lemma isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F]
+    (p : E ⟶ (Δ[1] : SSet.{u})) (q : F ⟶ Δ[1]) (f : E ⟶ F) (hf : f ≫ q = p)
+    (h0 : IsQCatEquivalence (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))
+    (h1 : IsQCatEquivalence (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))
+    (hl : ∀ x : E _⦋0⦌,
+      p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (0 : Fin 2) →
+      ∃ e : (Δ[1] : SSet.{u}) ⟶ E,
+        stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm x ∧ e ≫ p = 𝟙 Δ[1] ∧
+          IsCocartesianEdge p (SSet.yonedaEquiv e) ∧
+          IsCocartesianEdge q (SSet.yonedaEquiv (e ≫ f))) : IsQCatEquivalence f
+
 end SerrePositivity.InfinityCategories
 ```
