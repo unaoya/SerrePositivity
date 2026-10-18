@@ -4031,3 +4031,59 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberSection_parameter
 #check @SerrePositivity.KST.SConstruction.mcCarthyFiberSection_quotient
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberSection_quotient
+#check @SerrePositivity.KST.SConstruction.orderPrismOrder
+#print axioms SerrePositivity.KST.SConstruction.orderPrismOrder
+#check @SerrePositivity.KST.SConstruction.orderPrism
+#print axioms SerrePositivity.KST.SConstruction.orderPrism
+#check @SerrePositivity.KST.SConstruction.orderPrism_zero
+#print axioms SerrePositivity.KST.SConstruction.orderPrism_zero
+#check @SerrePositivity.KST.SConstruction.orderPrism_one
+#print axioms SerrePositivity.KST.SConstruction.orderPrism_one
+#check @SerrePositivity.KST.SConstruction.orderPrism_pre
+#print axioms SerrePositivity.KST.SConstruction.orderPrism_pre
+#check @SerrePositivity.KST.SConstruction.orderPrism_post
+#print axioms SerrePositivity.KST.SConstruction.orderPrism_post
+#check @SerrePositivity.KST.SConstruction.orderPrism_refl
+#print axioms SerrePositivity.KST.SConstruction.orderPrism_refl
+#check @SerrePositivity.KST.SConstruction.orderPrism_of_eq
+#print axioms SerrePositivity.KST.SConstruction.orderPrism_of_eq
+#check @SerrePositivity.KST.SConstruction.mcCarthyMovedOrder
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyMovedOrder
+#check @SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_le
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_le
+#check @SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_comp
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_comp
+#check @SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_zero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_zero
+#check @SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_one
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_one
+#check @SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_simplex
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyMovedOrder_simplex
+#check @SerrePositivity.KST.SConstruction.mcCarthyArMotion
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyArMotion
+#check @SerrePositivity.KST.SConstruction.mcCarthyArMotion_zero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyArMotion_zero
+#check @SerrePositivity.KST.SConstruction.mcCarthyArMotion_one
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyArMotion_one
+#check @SerrePositivity.KST.SConstruction.mcCarthyArMotion_pre
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyArMotion_pre
+#check @SerrePositivity.KST.SConstruction.mcCarthyArMotion_timeZero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyArMotion_timeZero
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambda
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambda
+#check @SerrePositivity.KST.SConstruction.mcCarthyMu
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyMu
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaMu
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaMu
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_zero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_zero
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_one
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_one
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_pre
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_pre
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambda_isGapped
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambda_isGapped
+#check @SerrePositivity.KST.SConstruction.mcCarthyMu_isGapped
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyMu_isGapped
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_timeZero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_timeZero

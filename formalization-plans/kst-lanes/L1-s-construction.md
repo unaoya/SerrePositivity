@@ -6794,3 +6794,149 @@ McCarthy の fiber と切断は X : StableModel を要求する。切断の存�
 L1d–f 未完了、L1g は別途指示待ち。Core と他レーンの公開名・型は変更なし。
 
 検証：対象ビルド成功（3207 jobs）、公理監査成功（1573 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.57 McCarthy の μ の添字と λ→μ の coherent な prism
+
+Fiore–Pieper (1.26)・(4.26) の μ の添字を、標準単体の最後の頂点への既存の収縮から構成した。
+有限鎖上で α(i) を、τ(i)=0 なら α(i)、それ以外なら最後の頂点へ動かす。
+α≤μ を証明し、Ar の両端への作用を点ごとに順序づけた写像の nerve の prism として実装した。
+始点・終点・面と退化の前合成との自然性は全て厳密な射の等号である。
+元の図式と標準恒等 cofiber 関手の後合成により λ・μ とその間の prism を構成し、
+両端の gapped 性を完全性から証明した。時刻の単体が全て零なら prism 全体は λ で一定である。
+この段階では ρ をまだ構成していない。
+
+主要公開宣言（namespace `SerrePositivity.KST.SConstruction`、宇宙 `u`）：
+
+```lean
+def orderPrismOrder {A B : Type u} [Preorder A] [Preorder B]
+    (f g : A →o B) (h : ∀ a, f a ≤ g a) : Fin 2 × A →o B
+
+def orderPrism {A B : Type u} [Preorder A] [Preorder B]
+    (f g : A →o B) (h : ∀ a, f a ≤ g a) :
+    (Δ[1] : SSet.{u}) ⊗ nerve A ⟶ nerve B
+
+lemma orderPrism_zero {A B : Type u} [Preorder A] [Preorder B]
+    (f g : A →o B) (h : ∀ a, f a ≤ g a) :
+    prismEndpoint 0 (nerve A) ≫ orderPrism f g h = nerveMap f.toFunctor
+
+lemma orderPrism_one {A B : Type u} [Preorder A] [Preorder B]
+    (f g : A →o B) (h : ∀ a, f a ≤ g a) :
+    prismEndpoint 1 (nerve A) ≫ orderPrism f g h = nerveMap g.toFunctor
+
+lemma orderPrism_pre {A B D : Type u} [Preorder A] [Preorder B] [Preorder D]
+    (f g : A →o B) (h : ∀ a, f a ≤ g a) (k : D →o A) :
+    (Δ[1] ◁ nerveMap k.toFunctor) ≫ orderPrism f g h =
+      orderPrism (f.comp k) (g.comp k) (fun d => h (k d))
+
+lemma orderPrism_post {A B D : Type u} [Preorder A] [Preorder B] [Preorder D]
+    (f g : A →o B) (h : ∀ a, f a ≤ g a) (k : B →o D) :
+    orderPrism f g h ≫ nerveMap k.toFunctor =
+      orderPrism (k.comp f) (k.comp g) (fun a => k.monotone (h a))
+
+lemma orderPrism_refl {A B : Type u} [Preorder A] [Preorder B]
+    (f : A →o B) (h : ∀ a, f a ≤ f a) :
+    orderPrism f f h = CartesianMonoidalCategory.snd (Δ[1] : SSet.{u}) (nerve A) ≫
+      nerveMap f.toFunctor
+
+lemma orderPrism_of_eq {A B : Type u} [Preorder A] [Preorder B]
+    (f g : A →o B) (h : ∀ a, f a ≤ g a) (hg : g = f) :
+    orderPrism f g h = CartesianMonoidalCategory.snd (Δ[1] : SSet.{u}) (nerve A) ≫
+      nerveMap f.toFunctor
+
+def mcCarthyMovedOrder {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) : Fin (n + 1) →o Fin (m + 1)
+
+lemma mcCarthyMovedOrder_le {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (i : Fin (n + 1)) : α i ≤ mcCarthyMovedOrder α τ i
+
+lemma mcCarthyMovedOrder_comp {l n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (σ : Fin (l + 1) →o Fin (n + 1)) :
+    mcCarthyMovedOrder (α.comp σ) (τ.comp σ) = (mcCarthyMovedOrder α τ).comp σ
+
+lemma mcCarthyMovedOrder_zero {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1)) :
+    mcCarthyMovedOrder α (OrderHom.const _ 0) = α
+
+lemma mcCarthyMovedOrder_one {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1)) :
+    mcCarthyMovedOrder α (OrderHom.const _ 1) = OrderHom.const _ (Fin.last m)
+
+lemma mcCarthyMovedOrder_simplex {n m : ℕ} (α : (Δ[m] : SSet.{u}) _⦋n⦌)
+    (τ : (Δ[1] : SSet.{u}) _⦋n⦌) :
+    stdSimplex.objEquiv ((prismLastContraction m).app (Opposite.op ⦋n⦌) (τ, α)) =
+      SimplexCategory.mkHom (mcCarthyMovedOrder (stdSimplex.objEquiv α).toOrderHom
+        (stdSimplex.objEquiv τ).toOrderHom)
+
+def mcCarthyArMotion {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) : (Δ[1] : SSet.{u}) ⊗ arNerve n ⟶ arNerve m
+
+lemma mcCarthyArMotion_zero {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) :
+    prismEndpoint 0 (arNerve n) ≫ mcCarthyArMotion.{u} α τ = arNerveMap α
+
+lemma mcCarthyArMotion_one {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) :
+    prismEndpoint 1 (arNerve n) ≫ mcCarthyArMotion.{u} α τ =
+      arNerveMap (mcCarthyMovedOrder α τ)
+
+lemma mcCarthyArMotion_pre {l n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (σ : Fin (l + 1) →o Fin (n + 1)) :
+    (Δ[1] ◁ arNerveMap σ) ≫ mcCarthyArMotion.{u} α τ =
+      mcCarthyArMotion (α.comp σ) (τ.comp σ)
+
+lemma mcCarthyArMotion_timeZero {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1)) :
+    mcCarthyArMotion.{u} α (OrderHom.const _ 0) =
+      CartesianMonoidalCategory.snd (Δ[1] : SSet.{u}) (arNerve n) ≫ arNerveMap α
+
+def mcCarthyLambda {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1)) :
+    arNerve n ⟶ cofiberDiagrams C
+
+def mcCarthyMu {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) : arNerve n ⟶ cofiberDiagrams C
+
+def mcCarthyLambdaMu {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) : (Δ[1] : SSet.{u}) ⊗ arNerve n ⟶ cofiberDiagrams C
+
+lemma mcCarthyLambdaMu_zero {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) :
+    prismEndpoint 0 (arNerve n) ≫ mcCarthyLambdaMu z A α τ = mcCarthyLambda z A α
+
+lemma mcCarthyLambdaMu_one {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) :
+    prismEndpoint 1 (arNerve n) ≫ mcCarthyLambdaMu z A α τ = mcCarthyMu z A α τ
+
+lemma mcCarthyLambdaMu_pre {l n m : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (σ : Fin (l + 1) →o Fin (n + 1)) :
+    (Δ[1] ◁ arNerveMap σ) ≫ mcCarthyLambdaMu z A α τ =
+      mcCarthyLambdaMu z A (α.comp σ) (τ.comp σ)
+
+lemma mcCarthyLambda_isGapped {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (hA : IsGapped A)
+    (α : Fin (n + 1) →o Fin (m + 1)) : IsGapped (mcCarthyLambda z A α)
+
+lemma mcCarthyMu_isGapped {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (hA : IsGapped A)
+    (α : Fin (n + 1) →o Fin (m + 1)) (τ : Fin (n + 1) →o Fin 2) :
+    IsGapped (mcCarthyMu z A α τ)
+
+lemma mcCarthyLambdaMu_timeZero {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1)) :
+    mcCarthyLambdaMu z A α (OrderHom.const _ 0) =
+      CartesianMonoidalCategory.snd (Δ[1] : SSet.{u}) (arNerve n) ≫ mcCarthyLambda z A α
+```
+
+前提：順序の prism は同宇宙の任意の前順序と型に記した点ごとの不等式を要求する。
+Ar の添字の変換には圏の仮定はない。λ・μ の構成は `[Quasicategory C]` と z : ZeroVertex C、
+gapped 性の保存はさらに `[IsStable C]` と元の図式の IsGapped を要求する。
+
+現在地：L1a・L1b 完了、L1c 継続中。McCarthy の左 fiber の切断に加え、μ の添字と λ→μ の変換まで証明済み。
+λ→ν の coherent な変換、押し出しによる ρ、ιr と恒等射を結ぶ二つの実ホモトピー、単体積 Quillen A、
+加法性比較の弱同値性は未完了。面のホモトピー引き戻し条件、反復 S 実現と §6.43 の homotopy fiber の比較、
+構造射との照合、正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトルとスペクトル関手も未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core と他レーンの公開名・型は変更なし。
+
+検証：対象ビルド成功（3210 jobs）、公理監査成功（1601 宣言、標準三公理のみ）。追加公理・sorry なし。

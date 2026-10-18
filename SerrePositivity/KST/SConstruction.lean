@@ -190,4 +190,8 @@ public import SerrePositivity.KST.SConstruction.SimplexLeftFiber
 public import SerrePositivity.KST.SConstruction.ObjectSConstantRestriction
 public import SerrePositivity.KST.SConstruction.McCarthyFiberSection
 
+public import SerrePositivity.KST.SConstruction.OrderPrism
+public import SerrePositivity.KST.SConstruction.McCarthyLastMotion
+public import SerrePositivity.KST.SConstruction.McCarthyLambdaMu
+
 /-! # ∞-S• 構成と連結 K 理論 -/
