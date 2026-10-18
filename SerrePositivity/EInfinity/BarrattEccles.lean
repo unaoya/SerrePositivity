@@ -28,3 +28,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.PermutationInsertion
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalDeletion
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalDeletion
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleDeletionCoordinates
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleStepMembership
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalFace
