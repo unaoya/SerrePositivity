@@ -11,6 +11,7 @@ public import SerrePositivity.KST.Spectra.AcyclicFibrationLifting
 public import SerrePositivity.KST.Spectra.UnbasedHomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.PostMappingIsomorphism
 public import SerrePositivity.KST.Spectra.SpectrumTail
+public import SerrePositivity.KST.Spectra.CirclePower
 
 /-!
 概要：スペクトルの telescope 有理化に使う余極限とホモトピー群の比較。
