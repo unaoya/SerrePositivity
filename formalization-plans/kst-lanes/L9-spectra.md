@@ -13,6 +13,8 @@
 - 借用：γ3 は N レーンのホモトピー極限と ∞ 極限の比較。
 - 借用：Core の pinched 写像空間とその Kan 性。
 - 既存 Spectra は比較用に読むだけで編集しない。
+- 既存 Spectra の `PointedSimplicialSet.Basic` と `Pointed.InternalHom` の基礎定義を借りる。
+- この借用は Under による点つき対象と等化子による Hom のみで、安定モデル構造は含まない。
 - 既存 HomotopicalAlgebra は読むだけで編集しない。
 - 既存 InfinityCategories は読むだけで編集しない。
 
@@ -20,7 +22,8 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・11 モジュール 631 宣言の公理監査・全体ビルド（8370 jobs）成功。
+対象ビルド・12 モジュール 644 宣言の公理監査成功。
+直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
 基盤の正本：[foundations](../foundations.md) §1 の F3・γ。
@@ -430,3 +433,24 @@ L9b 完了時：対象ビルド成功。631 宣言、11 モジュールで標準
 γ1 による quasicategory 性と、導来写像空間を持つ正しい Sp との比較を区別する。
 後者は γ3 後の工程であり、第 1 段の主張には含めない。
 HT-KQ は使わない。共有正本 §13-3 はユーザーが更新する。
+
+## 19. L9c の写像空間の相対充填
+
+`PointedMapping.lean` に次の補題を証明済み。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedMapping.basepoint_mono` | 基点包含は単射 |
+| `PointedMapping.restriction_fibration` | Kan な標的への指数の基点制限は fibration |
+| `PointedMapping.basedHom_kanComplex` | 点つき Hom の Kan 性 |
+| `PointedMapping.pre_restriction` | 点つき射の制限と基点評価の可換性 |
+| `PointedMapping.pre` | 源に沿う点つき Hom の制限 |
+| `PointedMapping.pre_hasLiftingProperty` | 基礎指数から点つき Hom への相対充填の移送 |
+| `PointedMapping.pre_fibration` | 単射に沿う点つき Hom の制限は Kan fibration |
+
+源の Kan 性や Ω 条件を用いず、指数版 pushout-product から証明した。
+既存 Spectra の点つき対象と等化子の基礎定義のみを借りる。
+既存の安定モデル構造の定理は import していない。
+保存単位の検証：対象ビルド 1522 jobs 成功。
+私有宣言を含む 12 モジュール 644 宣言で標準三公理のみ。
+L9c 全体は未完了。次は fibration の塔の極限への相対充填を構成する。

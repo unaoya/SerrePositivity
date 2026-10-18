@@ -23,7 +23,8 @@ run_cmd do
     `SerrePositivity.KST.Spectra.FibrationSequence,
     `SerrePositivity.KST.Spectra.FibrationExactness,
     `SerrePositivity.KST.Spectra.FibrationNaturality,
-    `SerrePositivity.KST.Spectra.FibrationMultiplication]
+    `SerrePositivity.KST.Spectra.FibrationMultiplication,
+    `SerrePositivity.KST.Spectra.PointedMapping]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

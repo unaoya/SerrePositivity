@@ -10,3 +10,4 @@ public import SerrePositivity.KST.Spectra.FibrationExactness
 public import SerrePositivity.KST.Spectra.HomotopyZeroRelations
 public import SerrePositivity.KST.Spectra.FibrationNaturality
 public import SerrePositivity.KST.Spectra.FibrationMultiplication
+public import SerrePositivity.KST.Spectra.PointedMapping
