@@ -1112,6 +1112,16 @@
 - bounded below の自然な単位・余単位の同型性は、単一対象と有限コホモロジー区間への帰納、および下限保存と上側切断の三角を用いて各固定次数へ拡張する。非有界対象へ同じ議論を無条件に適用しない。
 - 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
 
+### §53 の実装の現在地
+
+- 保存検証：集約対象ビルド 4011 jobs 成功、公理監査 1990 宣言。標準3公理のみ、KTheory import なし。
+
+- `rightDerivedPlus_isGE`：同じ下限の injective 模型から全整数の下限保存を証明した。
+- 元の injective 分解を実際の injective 対象の複体へ持ち上げ、`rightDerivedPlusSingleIso` を構成した。
+- 正次数の短複体の比較と最下次数の核の保存から、単一対象の正次数消滅と零次数の `rightDerivedPlusSingleZeroIso` を証明した。
+- `affineDerivedΓPlus_single_isLE` により準連接係数層の像は次数零に集中する。H の平坦性・可換性は不要。
+- 導来単位・余単位の同型性と非有界の Dqc 同値は未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1322,6 +1332,8 @@
 | `exactDerivedFunctorPlus`・`exactDerivedFunctorPlusSquare` | DerivedGeometry/ExactDerivedPlus | 実装・対象ビルド済み |
 | `derivedPlusAdjunction`・`adjunctionComplexPlus` | DerivedGeometry/DerivedPlusAdjunction・ComplexAdjunction | 実装・対象ビルド済み |
 | `affineDerivedTildePlus`・`affineDerivedΓPlus`・`affineDerivedPlusAdjunction` | DerivedGeometry/AffineDerivedPlus・AffineDerivedPlusAdjunction | 実装・対象ビルド済み |
+| `rightDerivedPlus_isGE`・`rightDerivedPlusSingleIso` | DerivedGeometry/RightDerivedPlusBounds・RightDerivedPlusSingle | 実装・対象ビルド済み |
+| `affineDerivedΓPlus_single_isLE`・`rightDerivedPlusSingleZeroIso` | DerivedGeometry/AffineDerivedSingleBounds・RightDerivedPlusSingleZero | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
