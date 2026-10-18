@@ -120,6 +120,7 @@ run_cmd do
       `SerrePositivity.KST.Descent.StrictTransformOpenCharts,
       `SerrePositivity.KST.Descent.BoundaryBlowupDensity,
       `SerrePositivity.KST.Descent.BoundaryFlatRefinement,
+      `SerrePositivity.KST.Descent.StrictTransformTensorChart,
       `SerrePositivity.KST.Descent.ComponentSplit,
       `SerrePositivity.KST.Descent.ComponentRemainderCover,
       `SerrePositivity.KST.Descent.FiberTransitivityNaturality,

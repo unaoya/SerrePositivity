@@ -92,6 +92,7 @@ public import SerrePositivity.KST.Descent.ImageOpenBaseChange
 public import SerrePositivity.KST.Descent.StrictTransformOpenCharts
 public import SerrePositivity.KST.Descent.BoundaryBlowupDensity
 public import SerrePositivity.KST.Descent.BoundaryFlatRefinement
+public import SerrePositivity.KST.Descent.StrictTransformTensorChart
 public import SerrePositivity.KST.Descent.ComponentSplit
 public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
@@ -215,7 +216,9 @@ Noether 整域上の有限加群を非零元の局所化で自由にし、実際
 閉包含と構造射を保つ同型で結ぶ。全 blowup チャートでこの実際の像を有限平坦にする。
 像と開底変換の両立から global な strict transform の開チャートを周辺チャートの像で
 表示し、その構造射を保持して開被覆上の平坦性を貼り合わせる。
-テンソル積のアフィン像とこの周辺チャートの像の一致は残す。
+テンソル積の Spec と実際の周辺チャートの標準同型を構成し、チャート基底への射影、
+元の基礎環への構造射、同じ境界元の基本開を保つことを証明する。
+この同型による像の比較を通した平坦性の接続は残す。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と

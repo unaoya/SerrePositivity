@@ -107,10 +107,12 @@ Noether 整域上の有限加群の非零元による自由化を証明し、実
 その構造射を保つ同型と Zariski 局所性で平坦性を貼り合わせた（§52）。
 非零因子の境界基本開の逆像の実際の blowup 上の稠密性を証明し、中心補集合と
 同一視せず、平坦化で使う同じ D(r) の全射性と有限忠実平坦な細分へ接続した（§53）。
+テンソル積の Spec と実際の周辺チャートを同定し、二つの基底への構造射と
+同じ境界元の基本開を保つことを証明した（§54）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 129 モジュール・1554 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 130 モジュール・1564 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -660,6 +662,10 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `blowup_boundary_dense_of_isAffine` | アフィン基底の実際の global blowup 上の境界逆像の稠密性 | 対象ビルド済み、全体のアフィンモデルから移送 |
 | `strictTransformπ_boundary_surjective` | 平坦化と同じ境界基本開からの有限全射の strict transform の全射性 | 対象ビルド済み、生成点・中心の補集合の置換はしない |
 | `exists_finiteFlat_cover_refining_boundary` | 同じ境界での整成分の平坦化から元の有限射を細分する有限忠実平坦被覆 | 対象ビルド済み、実際の平坦性は引き続き供給すべき入力 |
+| `strictTransformTensorChart_isPullback`、`strictTransformTensorChart_ambient_isPullback` | テンソル積モデルと実際の周辺チャートの共通の Cartesian 表示 | 対象ビルド済み、チャートの係数射との可換性を明示 |
+| `strictTransformTensorChartIso` | テンソル積の Spec と実際の周辺チャートの標準同型 | 対象ビルド済み、引き戻しの普遍性を使用 |
+| `strictTransformTensorChartIso_hom_snd`、`strictTransformTensorChartIso_hom_base` | チャート基底と元の基礎環への構造射の保存 | 対象ビルド済み、同じ指定射を使用 |
+| `strictTransformTensorChartIso_preimage_boundary` | 同じ境界基本開の二つのチャートでの一致 | 対象ビルド済み、型の一致だけではなく開集合として証明 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1835,3 +1841,38 @@ Spec の稠密像の判定と局所化の像の公式から、基本開 D(r) の
 
 §53 の保存検証：集約対象ビルドと公理監査が成功。129 モジュール・1554 宣言、標準三公理のみ。
 全体ビルドは §52 の区切りで成功済み。この保存単位では対象ビルドと監査を実行した。
+
+
+## 54. テンソル積の Spec と実際の周辺チャートの同型と境界の保存
+
+アフィン射 Spec B → Spec R と、blowup 上のチャート j : Spec C → Bl_J を取る。
+R から C の係数射の Spec が j と blowup 構造射の合成に一致するという式を明示する。
+この式は実際の blowup チャートで検証して適用すべき幾何条件であり、
+チャートや底変換を任意の別のものへ交換する仮定ではない。
+
+C を左因子とするテンソル積 C ⊗_R B の Spec の指定二射影の Cartesian 性を使い、
+この Spec が元の射と j の基底への合成の引き戻しを表すことを証明した。
+一方、実際の strict transform の周辺チャートは二段の選択された引き戻しである。
+その二つの Cartesian 正方形を縦に貼り合わせ、同じ引き戻しを表すことを検査した。
+両者の同じ引き戻しへの標準同型を合成して `strictTransformTensorChartIso` を構成した。
+別の引き戻しの型クラスを選んで対象を変更してはいない。
+
+この標準同型は C への射影を保つ。
+元の二つの引き戻しの可換性とチャートの係数射との可換式を組み合わせると、
+R の Spec への構造射も保つことが分かる。
+この構造射の等式で境界 D(r) を引き戻し、
+周辺チャートの strict transform を定義する開部分が、
+テンソル積の係数の像による基本開 `algebraBoundaryOpen C (C ⊗_R B) (r の C での像)` に
+対応することを証明した。
+
+これにより §51 のアフィン像と §52 の周辺チャートの像を比較するための
+実際の周辺空間の同型と開部分の対応が揃った。
+この周辺同型のもとでスキーム論的像を移す比較を構成し、構造射の可換性を使って
+平坦性を移す工程を続ける必要がある。
+実際の全 blowup チャートの係数射の公式を適用して §52 の貼り合わせに渡し、
+§53 の同じ境界の全射性と有限忠実平坦細分へ接続する工程はまだ残る。
+Čech 細分の実降下・中心上の帰納、実際の Tot・hG、最小公理全体、
+自然な blowup 列と有限積保存の導出、(3.6)・K0・T2・E も未完である。
+
+§54 の保存検証：集約対象ビルドと公理監査が成功。130 モジュール・1564 宣言、標準三公理のみ。
+全体ビルドはアフィン平坦化の global 接続の区切りで再確認する。
