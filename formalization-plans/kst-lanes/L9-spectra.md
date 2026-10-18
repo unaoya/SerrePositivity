@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・233 モジュール 2872 宣言の公理監査成功。
+対象ビルド・238 モジュール 2896 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2077,3 +2077,31 @@ Kan loop へ同型で写る対象にも交換の符号の式を反映できる�
 私有宣言を含む 233 モジュール 2872 宣言で標準三公理のみ。
 L9d は進行中。次は任意の源のパラメータを反復内部 Hom の内側へ移す比較を実装する。
 ここまでの π₀ 上の自己射の等式だけから、任意の源の写像空間での等式は推論しない。
+
+## 72. L9d の任意の源のパラメータを保つ交換の符号
+
+反復 curry はテンソルの第一・第二因子の任意の制限に関して自然であることを二重評価で証明した。
+外側のパラメータ A を二つの源の内側へ移す自然同型を構成した。
+二つの源を一つのテンソルへ戻してから A と交換し、再び curry する構成である。
+この同型は二つの源の交換、内側の源の制限、外側の源の制限、標的の後合成と厳密に可換となる。
+
+通常の Ω 条件から、任意の源の写像空間への Kan 円による実際の delooping 射を構成した。
+標的の π_* 同型の後合成による保存と源の交換の同型から、この射も全基点 π_* 同型である。
+パラメータを標的の側へ移し、その写像空間の Ω 条件に交換の符号の式を適用した。
+結果として任意の源 A からの二重 loop 値の写像でも、円の交換と内側の符号反転は同じ成分となる。
+この主張は π₀ 上の自己射の等式を無条件に後合成へ持ち上げたものではなく、上記の実際の同型の可換式で証明した。
+また suspension–loop 随伴の逆は成分の等式を保つことを、suspension と評価の後合成から証明した。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `InternalHomTensor.natural_pre_left` / `.natural_pre_right` | 反復 curry の二つの源の制限の自然性 |
+| `InternalHomExchange.pairNatIso` / `.pairIso` / `.pairIso_hom` | パラメータを二つの源の内側へ移す同型と明示式 |
+| `InternalHomExchange.pairIso_post` / `.pairIso_swap` / `.pairIso_pre_inner` / `.pairIso_pre_outer` | パラメータの移動と後合成・交換・制限の可換性 |
+| `mappingKanDelooping` / `mappingKanDelooping_piIsomorphism` | 任意の源の写像空間の Kan 円による Ω 条件 |
+| `omega_exchange_sign_parameterized` / `omega_exchange_sign_component` | 任意のパラメータを保つ交換と符号反転の成分での一致 |
+| `PointedMapping.componentOf_uncurry` / `.componentOf_of_curry` | 随伴側の成分の等式から suspension 側へ戻す補題 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2439 jobs 成功。
+私有宣言を含む 238 モジュール 2896 宣言で標準三公理のみ。
+L9d は進行中。次は随伴構造射から符号を調整した loop 列への比較を組み立てる。
