@@ -2194,7 +2194,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開689宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開703宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2822,7 +2822,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開689宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開703宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3670,8 +3670,48 @@ coherentNerveOppositeMap_post F :
 ```
 
 を証明した。これは豊穣関手への実際の自然性であり、点ごとの同値の選択ではない。
-反対の標準射の逆射・往復則、左 coslice の係数図式への接続はまだ証明していない。
+反対の標準射の逆射・往復則は次節で証明した。左 coslice の係数図式への接続は未完了。
 元の豊穣 Hom の図式・q_x との比較、および 𝒮・Sp の残りの適用は引き続き未完了。
+
+### 反対の coherent nerve の厳密な同型と逆射の自然性（実装済み）
+
+`CoherentDoubleOpposite` は二重反対の豊穣圏から元の圏への標準関手
+`coherentEnrichedDoubleUnop C : EnrichedFunctor SSet Cᵒᵖᵒᵖ C` を構成した。
+対象を二回 unop し、Hom は恒等射とする。二つの対称性が合成で打ち消し合うことと、
+豊穣関手への自然性を証明している。
+
+`CoherentReverseInvolution` は標準 thickening の二回の頂点と path の反転の往復則を証明した。
+対象では `Fin.rev_rev`、Hom では端点の等式による移送を明示し、部分集合の二回の像を計算する。
+
+`CoherentOppositeIso` は任意の `C : Type v`、`[Category.{u} C]`、`[SimplicialCategory C]` に対し、
+
+```lean
+coherentNerveOppositeInverse C : SimplicialNerve Cᵒᵖ ⟶ (SimplicialNerve C).op
+coherentNerveOppositeIso C : (SimplicialNerve C).op ≅ SimplicialNerve Cᵒᵖ
+coherentNerveOppositeMap_isIso C : IsIso (coherentNerveOppositeMap C)
+coherentNerveOppositeInverse_vertex x :
+  (coherentNerveOppositeInverse C).app (Opposite.op ⦋0⦌)
+    (coherentNerveVertex (Opposite.op x)) = SSet.opObjEquiv.symm (coherentNerveVertex x)
+```
+
+を公開した。同型の順方向は既存の `coherentNerveOppositeMap C` である。
+逆射は同じ反転をもう一度行い、二重反対を忘れる構成から得る。
+`coherentOppositeSimplex_involution`・`coherentOppositeInverseSimplex_opposite`・
+`coherentOppositeSimplex_inverse` が各 simplex の両方の往復を厳密な等式で与え、
+`coherentOppositeInverseSimplex_naturality` が面・退化との可換性を与える。
+Kan 性・quasicategory 性・逆の選択の追加仮定は不要。
+
+さらに対象の宇宙が共通の C・D と豊穣関手 F に対し、
+
+```lean
+coherentNerveOppositeInverse_post F :
+  coherentNervePost (coherentEnrichedFunctorOp F) ≫ coherentNerveOppositeInverse D =
+    coherentNerveOppositeInverse C ≫ SSet.opFunctor.map (coherentNervePost F)
+```
+
+を証明した。順方向の自然性の両側に逆射を合成し、往復則で消去する。
+これで反対への移送を両方向で自然に使える。
+左 coslice の係数図式、元の豊穣 Hom の図式・q_x との比較、𝒮・Sp の残りの適用は未完了。
 
 ### 𝒮 の空積（実装済み）
 

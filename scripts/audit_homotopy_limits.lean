@@ -1383,3 +1383,31 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms coherentOppositeSimplex_post
 #check @coherentNerveOppositeMap_post
 #print axioms coherentNerveOppositeMap_post
+#check @coherentEnrichedDoubleUnop
+#print axioms coherentEnrichedDoubleUnop
+#check @coherentEnrichedDoubleUnop_naturality
+#print axioms coherentEnrichedDoubleUnop_naturality
+#check @coherentReverseThickening_involution
+#print axioms coherentReverseThickening_involution
+#check @coherentOppositeSimplex_involution
+#print axioms coherentOppositeSimplex_involution
+#check @coherentEnrichedDoubleUnop_op
+#print axioms coherentEnrichedDoubleUnop_op
+#check @coherentOppositeInverseSimplex
+#print axioms coherentOppositeInverseSimplex
+#check @coherentOppositeInverseSimplex_naturality
+#print axioms coherentOppositeInverseSimplex_naturality
+#check @coherentOppositeInverseSimplex_opposite
+#print axioms coherentOppositeInverseSimplex_opposite
+#check @coherentOppositeSimplex_inverse
+#print axioms coherentOppositeSimplex_inverse
+#check @coherentNerveOppositeInverse
+#print axioms coherentNerveOppositeInverse
+#check @coherentNerveOppositeIso
+#print axioms coherentNerveOppositeIso
+#check @coherentNerveOppositeMap_isIso
+#print axioms coherentNerveOppositeMap_isIso
+#check @coherentNerveOppositeInverse_vertex
+#print axioms coherentNerveOppositeInverse_vertex
+#check @coherentNerveOppositeInverse_post
+#print axioms coherentNerveOppositeInverse_post
