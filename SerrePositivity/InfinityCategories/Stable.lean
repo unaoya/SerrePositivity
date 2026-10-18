@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Suspension
 public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges
 public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary

@@ -263,6 +263,33 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.exists_colimitCoconeFamily
 #print axioms SerrePositivity.InfinityCategories.colimitCoconeFamilyIso
 
+#print axioms SerrePositivity.InfinityCategories.stable_interval_lastVertex_of_notMem_firstHorn
+#print axioms SerrePositivity.InfinityCategories.stable_prism_extend_terminal_boundary
+#print axioms SerrePositivity.InfinityCategories.IsZeroTargetArrow
+#print axioms SerrePositivity.InfinityCategories.zeroTargetArrows
+#print axioms SerrePositivity.InfinityCategories.zeroTargetArrowSource
+#print axioms SerrePositivity.InfinityCategories.zeroTargetArrowSource_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.stable_intervalFamily_flip_source
+#print axioms SerrePositivity.InfinityCategories.stable_spanFamilyOfArrows
+#print axioms SerrePositivity.InfinityCategories.stable_spanFamilyOfArrows_left
+#print axioms SerrePositivity.InfinityCategories.stable_spanFamilyOfArrows_right
+#print axioms SerrePositivity.InfinityCategories.stable_spanFamily_hom_ext
+#print axioms SerrePositivity.InfinityCategories.stable_pre_evaluateFunctorAt
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramBottomArrow
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramLeftArrow
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramBottomArrow_source
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramLeftArrow_source
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily_ι
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily_projection
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramSourceEquivalence
+#print axioms SerrePositivity.InfinityCategories.suspensionFunctor
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramFamilyIso
+#print axioms SerrePositivity.InfinityCategories.suspensionFunctorChoiceIso
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramSourceEquivalence_inv_source
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.suspensionFunctorObjIso
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -307,7 +334,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration,
     `SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary,
     `SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices,
-    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies]
+    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies,
+    `SerrePositivity.InfinityCategories.Stable.TerminalPrismBoundary,
+    `SerrePositivity.InfinityCategories.Stable.ZeroTargetArrows,
+    `SerrePositivity.InfinityCategories.Stable.SpanFamilies,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionEvaluationLifting,
+    `SerrePositivity.InfinityCategories.Stable.Suspension]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

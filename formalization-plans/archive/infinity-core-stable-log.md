@@ -2142,3 +2142,294 @@ SerrePositivity.InfinityCategories.colimitCoconeProjection.{u_1} : (K X : SSet.{
                 d →
               SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g
 ```
+
+## S3：Suspension 関手と選択の自然な比較
+
+零対象へ向かう辺の始点評価と、suspension 図式の始点評価の trivial Kan fibration 性を証明した。後者の逆と右上の評価から `suspensionFunctor : h C ⥤ h C` を構成した。
+同じ始点の族を持つ任意の二つの図式の選択を FunctorIso で比較し、得られる h C 上の関手の自然同型を構成した。任意の指定した SuspensionSquare x の右上と Σx の同型も構成した。
+零終点の辺の持ち上げには HasZeroVertex のみ、suspension の主定理には Quasicategory と IsStable を仮定する。
+未完了：loop の終点評価の同値性、Ω の関手化、ΣΩ の逆性と自己同値、S4〜S7。S3 全体を完了とは数えない。
+検証：Stable 集約ビルド 1981 jobs 成功、全 533 宣言／47 モジュールの公理監査成功（標準三公理のみ）。
+
+```lean
+@SerrePositivity.InfinityCategories.stable_interval_lastVertex_of_notMem_firstHorn.{u_1} : ∀ {n : ℕ},
+  ∀ s ∉ CategoryTheory.Subfunctor.obj.{u_1, 0, 0} (SSet.horn.{u_1} 1 0) (Opposite.op.{1} { len := n }),
+    Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.simplexLastVertex.{u_1} s)
+      ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)
+@SerrePositivity.InfinityCategories.stable_prism_extend_terminal_boundary.{u_1} : ∀ {X : SSet.{u_1}} (n : ℕ)
+  (H :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+      X)
+  (F₀ :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 1 }) X),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))) F₀)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0
+          (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+        H) →
+    (∀
+        (v :
+          CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+            (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+            (Opposite.op.{1} { len := 0 })),
+        SerrePositivity.InfinityCategories.IsTerminalVertex.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} H (Opposite.op.{1} { len := 0 })))
+            (Prod.mk.{u_1, u_1} ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1) v))) →
+      ∃ F,
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+                (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+              F)
+            H ∧
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1}
+                  { len := HAdd.hAdd.{0, 0, 0} n 1 }))
+              F)
+            F₀
+@SerrePositivity.InfinityCategories.IsZeroTargetArrow.{u_1} : {X : SSet.{u_1}} →
+  CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 } ⟹ X)
+      (Opposite.op.{1} { len := 0 }) →
+    Prop
+SerrePositivity.InfinityCategories.zeroTargetArrows.{u_1} : SSet.{u_1} → SSet.{u_1}
+SerrePositivity.InfinityCategories.zeroTargetArrowSource.{u_1} : (X : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.zeroTargetArrows.{u_1} X) X
+SerrePositivity.InfinityCategories.zeroTargetArrowSource_trivialKanFibration.{u_1} : ∀ (X : SSet.{u_1})
+  [SerrePositivity.InfinityCategories.HasZeroVertex.{u_1} X],
+  SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+    (SerrePositivity.InfinityCategories.zeroTargetArrowSource.{u_1} X)
+@SerrePositivity.InfinityCategories.stable_intervalFamily_flip_source.{u_1} : ∀ {A X : SSet.{u_1}}
+  (L R :
+    Quiver.Hom.{u_1, u_1 + 1} A
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 } ⟹ X)),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L
+        (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} R
+        (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))) →
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+        ((SerrePositivity.InfinityCategories.internalHomFlipHomEquiv.{u_1} A
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X)
+          L))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+        ((SerrePositivity.InfinityCategories.internalHomFlipHomEquiv.{u_1} A
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X)
+          R))
+@SerrePositivity.InfinityCategories.stable_spanFamilyOfArrows.{u_1} : {A X : SSet.{u_1}} →
+  (L R :
+      Quiver.Hom.{u_1, u_1 + 1} A
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 } ⟹ X)) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L
+          (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+            ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} R
+          (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+            ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))) →
+      Quiver.Hom.{u_1, u_1 + 1} A (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0) ⟹ X)
+@SerrePositivity.InfinityCategories.stable_spanFamilyOfArrows_left.{u_1} : ∀ {A X : SSet.{u_1}}
+  (L R :
+    Quiver.Hom.{u_1, u_1 + 1} A
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 } ⟹ X))
+  (h :
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L
+        (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} R
+        (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.stable_spanFamilyOfArrows.{u_1} L R h)
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+        (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1}) X))
+    L
+@SerrePositivity.InfinityCategories.stable_spanFamilyOfArrows_right.{u_1} : ∀ {A X : SSet.{u_1}}
+  (L R :
+    Quiver.Hom.{u_1, u_1 + 1} A
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 } ⟹ X))
+  (h :
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L
+        (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} R
+        (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.stable_spanFamilyOfArrows.{u_1} L R h)
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+        (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1}) X))
+    R
+@SerrePositivity.InfinityCategories.stable_spanFamily_hom_ext.{u_1} : ∀ {A X : SSet.{u_1}}
+  {f g : Quiver.Hom.{u_1, u_1 + 1} A (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0) ⟹ X)},
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+          (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1}) X))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+          (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1}) X)) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+          (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+            (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1}) X))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g
+          (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+            (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1}) X)) →
+      Eq.{u_1 + 1} f g
+@SerrePositivity.InfinityCategories.stable_pre_evaluateFunctorAt.{u_1} : ∀ {A B X : SSet.{u_1}}
+  (i : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (v : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} i) X)
+      (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1} v))
+    (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} i (Opposite.op.{1} { len := 0 })))
+        v))
+SerrePositivity.InfinityCategories.suspensionDiagramBottomArrow.{u_1} : (X : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X)
+    (SerrePositivity.InfinityCategories.zeroTargetArrows.{u_1} X)
+SerrePositivity.InfinityCategories.suspensionDiagramLeftArrow.{u_1} : (X : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X)
+    (SerrePositivity.InfinityCategories.zeroTargetArrows.{u_1} X)
+SerrePositivity.InfinityCategories.suspensionDiagramBottomArrow_source.{u_1} : ∀ (X : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.suspensionDiagramBottomArrow.{u_1} X)
+      (SerrePositivity.InfinityCategories.zeroTargetArrowSource.{u_1} X))
+    (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0)
+SerrePositivity.InfinityCategories.suspensionDiagramLeftArrow_source.{u_1} : ∀ (X : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.suspensionDiagramLeftArrow.{u_1} X)
+      (SerrePositivity.InfinityCategories.zeroTargetArrowSource.{u_1} X))
+    (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0)
+SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily.{u_1} : (X : SSet.{u_1}) →
+  [SSet.Quasicategory.{u_1} X] →
+    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X)
+      (SerrePositivity.InfinityCategories.colimitCocones.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X)
+SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily_ι.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X],
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily.{u_1} X)
+      (SSet.Subcomplex.ι.{u_1}
+        (SerrePositivity.InfinityCategories.relativeInitialVertices.{u_1}
+          (SerrePositivity.InfinityCategories.coconeRestriction.{u_1}
+            (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X))))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SSet.Subcomplex.ι.{u_1}
+        (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) ⟹
+            X)
+          SerrePositivity.InfinityCategories.IsSuspensionDiagramVertex.{u_1}))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+        (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+          (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanCoconeSquareIso.{u_1}))
+        X))
+SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily_projection.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X],
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily.{u_1} X)
+      (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u_1}
+        (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SSet.Subcomplex.ι.{u_1}
+        (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) ⟹
+            X)
+          SerrePositivity.InfinityCategories.IsSuspensionDiagramVertex.{u_1}))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+        (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanSquareBoundary.{u_1})
+        X))
+SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_trivialKanFibration.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+    (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0)
+SerrePositivity.InfinityCategories.suspensionDiagramSourceEquivalence.{u_1} : (X : SSet.{u_1}) →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      SerrePositivity.InfinityCategories.QCatEquivalence.{u_1}
+        (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X) X
+SerrePositivity.InfinityCategories.suspensionFunctor.{u_1} : (X : SSet.{u_1}) →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      CategoryTheory.Functor.{u_1, u_1, u_1, u_1}
+        ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+        ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+@SerrePositivity.InfinityCategories.suspensionDiagramFamilyIso.{u_1} : {A X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X)) →
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+              (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0))
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g
+              (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0)) →
+          SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g
+@SerrePositivity.InfinityCategories.suspensionFunctorChoiceIso.{u_1} : {A X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X)) →
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+              (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0))
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g
+              (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0)) →
+          CategoryTheory.Iso.{u_1, u_1}
+            (CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1}
+              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} f))
+              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+                  (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 1 1))))
+            (CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1}
+              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} g))
+              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+                  (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 1 1))))
+SerrePositivity.InfinityCategories.suspensionDiagramSourceEquivalence_inv_source.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.QCatEquivalence.inv.{u_1}
+        (SerrePositivity.InfinityCategories.suspensionDiagramSourceEquivalence.{u_1} X))
+      (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)
+@SerrePositivity.InfinityCategories.SuspensionSquare.suspensionFunctorObjIso.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+        (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x) →
+          CategoryTheory.Iso.{u_1, u_1}
+            (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+              (SerrePositivity.InfinityCategories.suspensionFunctor.{u_1} X) (SSet.HomotopyCategory.mk.{u_1} x))
+            (SSet.HomotopyCategory.mk.{u_1} (SerrePositivity.InfinityCategories.SuspensionSquare.vertex.{u_1} s))
+```
