@@ -77,7 +77,9 @@
 - 平坦な左テンソルのホモロジー比較について、係数加群の射に関する自然性を証明済み。
 - 次数零と一般次数の一項テンソルのシフト比較について、係数射に関する自然性を証明済み。
 - 一項テンソルのホモロジー同型についても、同じ次数の係数射が f ⊗ H(K) へ移ることを証明済み。
-- 次は隣接二次数の境界に対するシフトの整合性と合わせ、初頁微分全体へ接続する。
+- 一項関手族のシフト加法則により、隣接二次数の境界と標準正規化の整合性を証明済み。
+- 一般の一項テンソル境界を標準比較で移すと、通常の係数テンソル射のシフトになることを複体射として証明済み。
+- 次はこの隣接境界比較をホモロジーへ移し、実際の初頁微分全体へ接続する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -161,6 +163,8 @@
 | flatLeftTensorHomologyIso_map | CoefficientHomology.lean | 検証済み | 平坦テンソルの係数射についてのホモロジー自然性 |
 | singleTensorShiftIso_coefficient | SingleTensorNaturality.lean | 検証済み | 一項テンソルのシフト比較の係数自然性 |
 | singleTensorHomologyIso_coefficient | SingleTensorNaturality.lean | 検証済み | 一項ホモロジー比較の係数自然性 |
+| singleFamilyShift_boundary | SingleShiftCoherence.lean | 検証済み | 一項関手族の隣接境界とシフト加法の整合性 |
+| tensorSingleShift_boundary | SingleShiftCoherence.lean | 検証済み | 隣接テンソル境界の正規化は通常の係数射のシフト |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

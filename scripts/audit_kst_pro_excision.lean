@@ -509,3 +509,24 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.singleTensorHomologyIso_coefficient
 #print axioms SerrePositivity.KST.ProExcision.singleTensorHomologyIso_coefficient
+
+#check @SerrePositivity.KST.ProExcision.singleFamilyShift_boundary
+#print axioms SerrePositivity.KST.ProExcision.singleFamilyShift_boundary
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleFamily
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleFamily
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleDegreeBoundary_id_family
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleDegreeBoundary_id_family
+
+#check @SerrePositivity.KST.ProExcision.singleTensorShiftIso_family
+#print axioms SerrePositivity.KST.ProExcision.singleTensorShiftIso_family
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleShift_boundary_id
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleShift_boundary_id
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleDegreeBoundary_factor
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleDegreeBoundary_factor
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleShift_boundary
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleShift_boundary
