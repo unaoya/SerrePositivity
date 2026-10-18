@@ -146,6 +146,11 @@ public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZe
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomNaturality
 public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroNaturality
 
+public import SerrePositivity.InfinityCategories.Stable.PinchedLeftPiZeroVertex
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialVertexFormula
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialChoice
+public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroChoice
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

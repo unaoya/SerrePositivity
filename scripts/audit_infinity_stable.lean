@@ -1,6 +1,21 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.stableHomotopyCategoryOpHomEquiv_homMk
+#print axioms SerrePositivity.InfinityCategories.stablePinchedLeftVertexEdge
+#print axioms SerrePositivity.InfinityCategories.stablePinchedHomLeftPiZeroEquiv_mk
+#print axioms SerrePositivity.InfinityCategories.stableCosliceFiberPiZeroEquiv_mk
+#print axioms SerrePositivity.InfinityCategories.stableCosliceFiberChange_vertex_val
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotalVertexEdge
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_total_vertex
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_total_initialHom
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialVertexHom
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_mk
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_change_initial
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_change_cocone
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_restrict_change_cocone
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_spanSwap_change_cocone
+
 #print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp
 #print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp_projection
 #print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp_uncurry
@@ -1194,7 +1209,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialNaturality,
     `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZeroNaturality,
     `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomNaturality,
-    `SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroNaturality]
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroNaturality,
+    `SerrePositivity.InfinityCategories.Stable.PinchedLeftPiZeroVertex,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialVertexFormula,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialChoice,
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroChoice]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
