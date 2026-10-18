@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2081 jobs、累計319宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2085 jobs、累計344宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -464,7 +464,53 @@ Core と Stable のファイルには変更を加えていない。
 引き戻した対象として表す。同じ第一辺を持つ二つのデータはこの trivial Kan fibration の
 可縮 fiber で同型となり、`stable_spanFamilyOfArrows` で全 span の関手同型に送れる。
 上記の `HasColimit.of_functorIso` を選んだ cofiber の span に適用することで、指定した任意の零射を
-保つ span の余極限の存在へ接続する。この接続はまだ未実装であり、完成した定理に数えない。
+保つ span の余極限の存在へ接続する。この接続は下記の `hasColimit_zeroSpan` で証明済み。
+
+指定した零射を持つ span の余極限存在、および span 全体を固定した相対 cofiber 補完を証明した。
+以下で `Span := (horn 2 0 : SSet.{u})`、`L := (pre horn₂₀.ι₀₁).app C`、
+`R := (pre horn₂₀.ι₀₂).app C`、`s := evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))`、
+`Zι := (fullSubcomplexOnVertices _ IsZeroTargetArrow).ι`、
+`ZeroSpanFamily d := ∀ v, IsZeroTargetArrow (R.app (Opposite.op ⦋0⦌) (d.app (Opposite.op ⦋0⦌) v))` と略記する。
+この `ZeroSpanFamily` は表のための略記であり、追加の仮定や Lean 宣言ではない。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `zeroSpanData` | `(C : SSet.{u}) → SSet.{u}`、値は `pullback (zeroTargetArrowSource C) s` |
+| `zeroSpanDataProjection` | `(C : SSet.{u}) → (zeroSpanData C ⟶ (ihom Δ[1]).obj C)`、値は引き戻しの第二射影 |
+| `zeroSpanDataProjection_trivialKanFibration` | `(C : SSet.{u}) → [HasZeroVertex C] → TrivialKanFibration (zeroSpanDataProjection C)` |
+| `zeroSpanDataDiagram` | `(C : SSet.{u}) → (zeroSpanData C ⟶ (ihom Span).obj C)` |
+| `zeroSpanDataDiagram_left` | `zeroSpanDataDiagram C ≫ L = zeroSpanDataProjection C` |
+| `zeroSpanDataDiagram_right` | `zeroSpanDataDiagram C ≫ R = pullback.fst (zeroTargetArrowSource C) s ≫ Zι` |
+| `zeroSpan_sources` | `(C : SSet.{u}) → L ≫ s = R ≫ s` |
+| `zeroSpanDataLift` | `(p : A ⟶ (ihom Span).obj C) → ZeroSpanFamily p → (A ⟶ zeroSpanData C)` |
+| `zeroSpanDataLift_projection` | `(p : A ⟶ (ihom Span).obj C) → (hp : ZeroSpanFamily p) → zeroSpanDataLift p hp ≫ zeroSpanDataProjection C = p ≫ L` |
+| `zeroSpanDataLift_diagram` | 同じ p・hp に対し `zeroSpanDataLift p hp ≫ zeroSpanDataDiagram C = p` |
+| `zeroSpanFamiliesIso` | `[HasZeroVertex C] → (p q : A ⟶ (ihom Span).obj C) → ZeroSpanFamily p → ZeroSpanFamily q → (p ≫ L = q ≫ L) → FunctorIso p q` |
+| `zeroSpanDiagramsIso` | `[HasZeroVertex C] → (p q : Span ⟶ C) → IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ p)) → IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ q)) → (horn₂₀.ι₀₁ ≫ p = horn₂₀.ι₀₁ ≫ q) → FunctorIso p q` |
+| `hasColimit_zeroSpan` | `[Quasicategory C] → [IsStable C] → (p : Span ⟶ C) → IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ p)) → HasColimit p` |
+| `cofiberSpan` | `(C : SSet.{u}) → (cofiberDiagrams C ⟶ (ihom Span).obj C)`、cofiber 四角形の二辺への制限 |
+| `isZeroTargetArrow_pushoutSpan_iff` | `(F : Square ⟶ C) → (IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ pushoutSpan F)) ↔ IsZeroVertex (squareVertex F 0 1))` |
+| `zeroSpanFamily_hasColimits` | `[Quasicategory C] → [IsStable C] → (d : B ⟶ (ihom Span).obj C) → ZeroSpanFamily d → (v : B _⦋0⦌) → HasColimit ((functorVertexEquiv Span C).symm (d.app (Opposite.op ⦋0⦌) v))` |
+| `exists_relative_cofiberFamily_over_span` | `[Quasicategory C] → [IsStable C] → (i : A ⟶ B) → [Mono i] → (d : B ⟶ (ihom Span).obj C) → ZeroSpanFamily d → (a : A ⟶ cofiberDiagrams C) → (a ≫ cofiberSpan C = i ≫ d) → ∃ F : B ⟶ cofiberDiagrams C, i ≫ F = a ∧ F ≫ cofiberSpan C = d` |
+| `cofiberSpan_pullback_trivialKanFibration` | `[Quasicategory C] → [IsStable C] → (d : B ⟶ (ihom Span).obj C) → ZeroSpanFamily d → TrivialKanFibration (pullback.snd (cofiberSpan C) d)` |
+| `cofiberSpan_vertexFiber_isContractibleKan` | `[Quasicategory C] → [IsStable C] → (p : Span ⟶ C) → IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ p)) → IsContractibleKan (vertexFiber (cofiberSpan C) (functorVertex p))` |
+| `IsZeroSpanVertex` | `(v : ((ihom Span).obj C) _⦋0⦌) → Prop`、値は `IsZeroTargetArrow (R.app (Opposite.op ⦋0⦌) v)` |
+| `zeroSpanDiagrams` | `(C : SSet.{u}) → SSet.{u}`、IsZeroSpanVertex による全部分複体 |
+| `zeroSpanDiagrams_quasicategory` | `(C : SSet.{u}) → [Quasicategory C] → Quasicategory (zeroSpanDiagrams C)` |
+| `cofiberSpanProjection` | `(C : SSet.{u}) → (cofiberDiagrams C ⟶ zeroSpanDiagrams C)` |
+| `cofiberSpanProjection_ι` | `cofiberSpanProjection C ≫ (fullSubcomplexOnVertices _ IsZeroSpanVertex).ι = cofiberSpan C` |
+| `cofiberSpanProjection_trivialKanFibration` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → TrivialKanFibration (cofiberSpanProjection C)` |
+
+零脚の選択の比較には `zeroTargetArrowSource` の引き戻しの同じ fiber を使い、
+`stable_spanFamilyOfArrows` で全 span の関手同型へ送った。選んだ cofiber の span の余極限を
+`HasColimit.of_functorIso` で任意の指定零脚へ移している。
+相対補完は、この実際の存在証明を `exists_relative_pushoutFamily` に入力し、
+指定 span の零終点条件で cofiber 部分複体へ戻す。全ての等号は厳密で、追加の存在仮定を使わない。
+これにより従来の第一辺だけを指定する `cofiberProjection` より強く、零角と零射も固定できる。
+
+次の接続は、Ar[n] の各区間の span `(0,i)→(0,j),(i,i)` を枠から自然に取り出し、
+`cofiberSpanProjection` の相対内部 Hom で枠と境界を同時に固定すること。
+この全区間の図式と各三つ組の正方形の普遍性の接続は、まだ証明が必要である。
 
 **未完了**：次数 n≥3 で零次元から作った実際の図式 F について、全三つ組の正方形
 `arSquare i j j k hij le_rfl hjk ≫ F` が押し出しとなること。

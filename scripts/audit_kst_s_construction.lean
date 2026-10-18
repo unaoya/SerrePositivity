@@ -783,3 +783,78 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.hasColimit_iff_of_functorIso
 #print axioms SerrePositivity.KST.SConstruction.hasColimit_iff_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanData
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanData
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDataProjection
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDataProjection
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDataProjection_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDataProjection_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDataDiagram
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDataDiagram
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDataDiagram_left
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDataDiagram_left
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDataDiagram_right
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDataDiagram_right
+
+#check @SerrePositivity.KST.SConstruction.zeroSpan_sources
+#print axioms SerrePositivity.KST.SConstruction.zeroSpan_sources
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDataLift
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDataLift
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDataLift_projection
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDataLift_projection
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDataLift_diagram
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDataLift_diagram
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanFamiliesIso
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanFamiliesIso
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDiagramsIso
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDiagramsIso
+
+#check @SerrePositivity.KST.SConstruction.hasColimit_zeroSpan
+#print axioms SerrePositivity.KST.SConstruction.hasColimit_zeroSpan
+
+#check @SerrePositivity.KST.SConstruction.cofiberSpan
+#print axioms SerrePositivity.KST.SConstruction.cofiberSpan
+
+#check @SerrePositivity.KST.SConstruction.isZeroTargetArrow_pushoutSpan_iff
+#print axioms SerrePositivity.KST.SConstruction.isZeroTargetArrow_pushoutSpan_iff
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanFamily_hasColimits
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanFamily_hasColimits
+
+#check @SerrePositivity.KST.SConstruction.exists_relative_cofiberFamily_over_span
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_cofiberFamily_over_span
+
+#check @SerrePositivity.KST.SConstruction.cofiberSpan_pullback_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.cofiberSpan_pullback_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.cofiberSpan_vertexFiber_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.cofiberSpan_vertexFiber_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.IsZeroSpanVertex
+#print axioms SerrePositivity.KST.SConstruction.IsZeroSpanVertex
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDiagrams
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDiagrams
+
+#check @SerrePositivity.KST.SConstruction.zeroSpanDiagrams_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.zeroSpanDiagrams_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.cofiberSpanProjection
+#print axioms SerrePositivity.KST.SConstruction.cofiberSpanProjection
+
+#check @SerrePositivity.KST.SConstruction.cofiberSpanProjection_ι
+#print axioms SerrePositivity.KST.SConstruction.cofiberSpanProjection_ι
+
+#check @SerrePositivity.KST.SConstruction.cofiberSpanProjection_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.cofiberSpanProjection_trivialKanFibration
