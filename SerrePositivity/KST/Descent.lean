@@ -96,6 +96,10 @@ public import SerrePositivity.KST.Descent.FiniteTypeCech
 public import SerrePositivity.KST.Descent.EquivariantPullbackComparison
 public import SerrePositivity.KST.Descent.AffinePullbackDescent
 public import SerrePositivity.KST.Descent.FiniteTypeCechAction
+public import SerrePositivity.KST.Descent.FiniteTypeLimitPreservation
+public import SerrePositivity.KST.Descent.FiniteTypeCechGeometry
+public import SerrePositivity.KST.Descent.AffineFiniteDimension
+public import SerrePositivity.KST.Descent.CechFiniteDimension
 
 /-!
 # K-L8：論文 §3 の降下
@@ -156,6 +160,9 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 全次数降下を、元の前層と指定 pullbackAction のまま実際の第一射影へ移す。
 Čech 各段のファイバーへの作用と外側の単体射の同変性、
 その不変部分への全次数の指定比較の自然性も公開する。
+有限型の圏から Over への有限極限保存、スキームへの有限連結極限保存を証明し、
+実際のアフィン Čech 各段と底変換の始域のアフィン性・分離性を導く。
+局所 Noether 基底では、各段の有限次元上界も座標環の有限型性から実際に供給する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

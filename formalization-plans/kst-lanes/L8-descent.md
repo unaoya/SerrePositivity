@@ -76,17 +76,22 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 指定 pullbackAction に関する全次数降下を実際の第一射影へ移した。
 Čech 各段のファイバーの作用の外側の単体射との同変性と、
 元の前層の全次数の指定不変比較の自然性を証明した。
+有限型の圏の包含の有限極限保存とスキームへの忘却の有限連結極限保存を証明した。
+実際のアフィン Čech 各段と底変換の始域のアフィン性・S 上の分離性を証明した。
+局所 Noether 基底では、各段の有限次元上界も実際の構造射から供給した。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 96 モジュール・1109 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 100 モジュール・1129 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
-今回の Čech 図式の区切りでの全体ビルドは、所有範囲外の
+§38 の Čech 図式の区切りでの全体ビルドは、所有範囲外の
 `KST/ProExcision/LinearizedTensor.lean` の 110 行・104 行・140 行のエラーで失敗。
 ログは `/tmp/l8-finite-type-cech-full-build.log`、終了コード 1 を確認した。
 L8 の対象ビルドと監査は成功しており、import 閉包の破損ではない。
+今回の §40 の幾何条件の区切りの全体ビルドは成功（9756 ジョブ）。
+`set -eo pipefail` で終了コード 0 を確認し、ログは `/tmp/l8-cech-geometry-full-build.log`。
 L8a 全体の完成とは区別する。
 L8b の切断を持つ射について「整 → 被約 → 一般」の帰納を完了した。
 自然な列・有限積保存・冪零不変性を明示的に入力する条件付きの段階である。
@@ -539,6 +544,15 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `finiteTypeCechStageAction_over_base` | 実際の Čech 各段のファイバーへの群作用 | 対象ビルド済み |
 | `finiteTypeCechStageAction_naturality` | 外側の全単体射による底変換の射の同変性 | 対象ビルド済み |
 | `GradedPresheaf.finiteTypeCechStageComparison_naturality` | 全係数・全整数次数の指定不変比較の外側自然性 | 対象ビルド済み |
+| `finiteTypeOverInclusion_preservesFiniteLimits` | 有限型の圏から Over への包含の有限極限保存 | 対象ビルド済み、Noether 基底 |
+| `finiteTypeSchemesForget_preservesFiniteConnectedLimits` | スキームへの忘却の有限連結極限保存 | 対象ビルド済み、終対象保存とは区別 |
+| `finiteTypeLimit_isAffine` | アフィン有限型対象の有限連結極限のアフィン性 | 対象ビルド済み |
+| `finiteTypeCechStage_isAffine`、`finiteTypeCechStageSource_isAffine` | 実際の Čech 段と底変換の始域のアフィン性 | 対象ビルド済み |
+| `finiteTypeCechStageSource_isSeparated` | 各段の底変換の始域の S 上の分離性 | 対象ビルド済み、S の分離性は不要 |
+| `finiteType_spec_dimension_bound` | Noether 基底環の上界から有限型代数の有限次元上界を供給 | 対象ビルド済み、多項式環の商を使用 |
+| `localNoether_spec_dimension_bound` | 局所 Noether 基底の極大イデアルの生成元数による上界 | 対象ビルド済み |
+| `affineMorphism_dimension_bound` | 実際の有限型アフィン射の始域の次元上界 | 対象ビルド済み、座標環の代数構造と有限型性を導出 |
+| `localNoether_finiteTypeCechStage_dimension_bound` | 局所 Noether 基底の実際の Čech 各段の有限次元上界 | 対象ビルド済み、段ごとの上界を仮定しない |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1201,3 +1215,41 @@ Noether 性を必要としない。Noether 基底上では有限型対象の und
 通常の点のファイバーの推移性だけを任意の底変換で保存すると仮定してはいない。
 実際の Tot の分裂降下・Fubini・細分、実降下からの自然な列と有限積保存、
 最小公理全体、(3.6)、K0・T2・E の接続も引き続き未完である。
+
+## 40. 実際の Čech 各段のアフィン性・分離性・有限次元
+
+`finiteTypeOverInclusion` は同じ S 上の有限型の圏から Over S への包含である。
+構成済みの引き戻しモデルは両圏で Cartesian であり、基底の恒等構造射による
+終対象も保たれる。従ってこの包含は有限極限を保つ。
+Over からスキームへの忘却は連結極限を保つので、合成により
+`finiteTypeSchemesForget_preservesFiniteConnectedLimits` を得る。
+スキームへの忘却は終対象を保つとは主張しない。
+
+`finiteTypeLimit_isAffine` は、元の有限型の圏で指定した有限連結な極限錐を
+スキームの極限錐に写し、Mathlib のアフィン対象の極限の定理を適用する。
+Čech の有限 wide pullback では図式の全頂点が元の始域または基底である。
+両者がアフィンなら、実際の各非増強段もアフィンとなる。
+各段への底変換の始域についても、三頂点の cospan に同じ議論を適用する。
+アフィンなスキームは絶対分離的なので、底変換の始域の S への構造射も分離的である。
+S 自身の分離性は入力していない。
+
+Noether 環 A に自然数の次元上界 d があるとする。
+有限型 A 代数 T を有限変数多項式環の商として表示し、全射による次元の不増大と
+dim A[X₁,…,Xₙ] = dim A + n を使って、Spec T の自然数上界を実際に供給した。
+A が局所 Noether の場合、Krull の高さ定理から極大イデアルの最小生成元数が上界となる。
+一般の Noether 環の有限次元性を主張していない。
+
+実際のアフィンスキーム X の有限型射 X → Spec A については、
+isoSpec の逆射と構造射の合成の Spec.preimage により Γ(X,⊤) に A 代数構造を入れる。
+この射の局所有限型性から座標環の有限型性を証明し、上記の環論的な上界を適用する。
+isoSpec の同相による次元の等式で、指定された X 自身の上界へ戻す。
+従って座標環の有限型性や始域の有限次元性は追加仮定に残らない。
+
+`localNoether_finiteTypeCechStage_dimension_bound` は、局所 Noether な A の Spec を基底とする
+実際の Čech 各段へこれを適用する。
+増強射の局所有限型性は、同じ S 上の有限型対象間の射であることから導く。
+各段の有限次元上界を結論として供給するので、後の次元帰納へそのまま渡せる。
+
+幾何的推移性を実際の各段の底変換へ移す工程は残る。
+これを供給して完成した切断つき降下を各段へ適用し、さらに Tot の実降下・Fubini・細分で
+元の射へ戻す必要がある。最小公理全体・(3.6)・K0・T2・E の接続も未完である。
