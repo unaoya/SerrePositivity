@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.KanDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCandidate
+
 public import SerrePositivity.InfinityCategories.F1.OverComparisonResolution
 public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportReconstruction
 

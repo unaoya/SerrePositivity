@@ -1660,3 +1660,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.exists_leftStrictTransport_reconstruction_span
 #check @SerrePositivity.InfinityCategories.nonempty_leftStrictTransportTotalEquivalence
 #check @SerrePositivity.InfinityCategories.leftStrictTransportTotalEquivalence
+#check @SerrePositivity.InfinityCategories.kanDiagramCoherentNerve
+#check @SerrePositivity.InfinityCategories.kanDiagramCoherentNerve_vertex
+#check @SerrePositivity.InfinityCategories.kanDiagramCoherentNerve_precomp
+#check @SerrePositivity.InfinityCategories.leftStraighteningCandidate
+#check @SerrePositivity.InfinityCategories.leftStraighteningCandidate_vertex
+#check @SerrePositivity.InfinityCategories.leftStraighteningCandidateFiberEquivalence

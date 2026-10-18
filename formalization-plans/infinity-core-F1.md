@@ -7719,5 +7719,39 @@ noncomputable def leftStrictTransportTotalEquivalence
     (p : E ⟶ nerve C) [LeftFibration p] :
     QCatEquivalence E (leftStrictTransportWeightedNerve p)
 
+noncomputable def kanDiagramCoherentNerve
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve C) ⟶ SpaceInfinity.{u}
+
+lemma kanDiagramCoherentNerve_vertex
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    (kanDiagramCoherentNerve F).app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex c)) =
+      spaceInfinityVertex (F.obj c)
+
+lemma kanDiagramCoherentNerve_precomp
+    {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) (F : C ⥤ KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).map (nerveMap H) ≫ kanDiagramCoherentNerve F =
+      kanDiagramCoherentNerve (H ⋙ F)
+
+noncomputable def leftStraighteningCandidate
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve C) ⟶ SpaceInfinity.{u}
+
+lemma leftStraighteningCandidate_vertex
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    (leftStraighteningCandidate p).app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex c)) =
+      spaceInfinityVertex ((leftStrictTransportFunctor p).obj c)
+
+noncomputable def leftStraighteningCandidateFiberEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    QCatEquivalence
+      (vertexFiber (leftUnstraighteningProjection (leftStraighteningCandidate p))
+        (ULift.up (nerveVertex c)))
+      ((SSet.uliftFunctor.{u + 1, u}).obj (vertexFiber p (nerveVertex c)))
+
 end SerrePositivity.InfinityCategories
 ```
