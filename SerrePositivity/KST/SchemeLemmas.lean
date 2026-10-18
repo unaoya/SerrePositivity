@@ -32,3 +32,4 @@ public import SerrePositivity.KST.SchemeLemmas.AffineModelRange
 public import SerrePositivity.KST.SchemeLemmas.SchemeBlowup
 public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupAffine
 public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupProper
+public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupAway
