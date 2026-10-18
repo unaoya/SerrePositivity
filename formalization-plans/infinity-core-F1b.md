@@ -19,7 +19,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | --- | --- | --- | --- |
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
-| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（定義・始対象・cofinal ⇒ 弱同値・合成・単射の anodyne 判定が済、Quillen A は未完） |
+| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（定義・始対象・cofinal ⇒ 弱同値・合成・anodyne 因子分解判定が済、Quillen A は未完） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 | 未着手 |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
@@ -185,28 +185,36 @@ right fibration の場合は可縮な Kan fiber の Core の判定へ渡し、
 left fibration の場合は逆向きのホモトピーと left prism で切断による充填の境界を補正する。
 `IsLeftCofinal.trivialKanFibration`・`IsRightCofinal.trivialKanFibration` は
 [Cor 7.2.1.14](https://kerodon.net/tag/02ND) の (1)⇒(3)・(2)⇒(3) を与える。
-逆の (3)⇒(1)・(3)⇒(2) は任意の trivial Kan fibration の cofinality の工程として残る。
+
+逆方向では、`cofinalFunctorOverPre` が底上の射の前合成を型の移送なしに保持する。
+`cofinalFunctorOverPreHomotopy` は底を固定したホモトピーを相対関手空間の
+前合成の実際のホモトピーへ移す。Kan 性を要求しない一般のパラメータ付き評価の構成である。
+`CofinalSectionHomotopy.restriction_isSimplicialHomotopyEquivalence` は、
+切断による前合成を逆とし、一方の合成は厳密に、他方は底上の逆向きの収縮で戻す。
+trivial Kan fibration では切断と両方向の底上の収縮が存在するので、
+`isLeftCofinal_of_trivialKanFibration`・right 版により Cor 7.2.1.14 の逆方向も得た。
+`trivialKanFibration_iff_leftFibration_and_isLeftCofinal` と right 版が全体の判定。
 
 これを因子分解に適用して、`exists_anodyne_trivialKan_factorization` を左右とも得た。
-これは [Cor 7.2.1.15](https://kerodon.net/tag/02NE) の cofinal ⇒ 因子分解の方向であり、
-逆方向に必要な任意の trivial Kan fibration の cofinality はまだ未証明。
+さらに、両因子の cofinality の合成から逆方向も得た。
+`isLeftCofinal_iff_exists_anodyne_trivialKan_factorization` と right 版は
+[Cor 7.2.1.15](https://kerodon.net/tag/02NE) の因子分解による特徴づけを両方向に証明する。
 単射の場合は trivial Kan 右因子の持ち上げで左因子から左持ち上げ性を戻し、
 `leftAnodyneExtensions_iff_mono_and_isLeftCofinal` と right 版を得た。
 これは [Prop 7.2.1.3](https://kerodon.net/tag/02N3) の単射性を含む全体の判定。
 
-Quillen A 本体、任意の trivial Kan fibration の左右 cofinality、
-cocartesian fibration に沿う cofinality の pullback 安定性、
+Quillen A 本体、cocartesian fibration に沿う cofinality の pullback 安定性、
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
 left/right cofinality の opposite による比較は未完了。
 
 ### 次の工程
 
-B3 の任意の trivial Kan fibration の cofinality と pullback 安定性を証明し、Quillen A へ進む。
+B3 の cofinality の pullback 安定性を証明し、弱可縮な coslice の判定による Quillen A へ進む。
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2204 jobs、公理監査1929宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内535モジュールに straightening 依存なし。
+対象ビルド2209 jobs、公理監査1951宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内540モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -284,4 +292,9 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `IsLeftCofinal.exists_anodyne_trivialKan_factorization`・right 版 | cofinal な射の anodyne な単射と trivial Kan fibration への因子分解 | 済 |
 | `cofinalLlp_of_mono_trivialKan_factorization`・`IsLeftCofinal.leftAnodyneExtensions`・right 版・`isLeftCofinal_iff_leftAnodyne_of_mono`・right 版 | cofinal な単射の左右 anodyne 性 | 済 |
 | `cofinalMono_of_leftAnodyne`・right 版・`leftAnodyneExtensions_iff_mono_and_isLeftCofinal`・right 版 | 単射性を含む Prop 7.2.1.3 の全体の判定 | 済 |
+| `cofinalFunctorOverPre/ι/id/comp`・`cofinalFunctorOverPreHomotopy` | 底上の射・ホモトピーの相対関手空間への前合成作用 | 済 |
+| `CofinalSectionHomotopy.restriction_isSimplicialHomotopyEquivalence/isLeftCofinal/isRightCofinal` | 底上の収縮による元の制限写像の実際のホモトピー逆 | 済 |
+| `nonempty_cofinalSectionHomotopy_of_trivialKanFibration`・`isLeftCofinal_of_trivialKanFibration`・right 版 | 任意の trivial Kan fibration の切断・底上の収縮・左右 cofinality | 済 |
+| `trivialKanFibration_iff_leftFibration_and_isLeftCofinal`・right 版 | Cor 7.2.1.14 の三条件の同値 | 済 |
+| `isLeftCofinal_iff_exists_anodyne_trivialKan_factorization`・right 版 | Cor 7.2.1.15 の anodyne・trivial Kan 因子分解による特徴づけ | 済 |
 | B3 の Quillen A・B4〜B5 | §1 の残る工程 | 未完了 |
