@@ -133,6 +133,11 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `exteriorProductCochainEquiv_d` | ExteriorProductCochainDifferential | 整数 cochain の cone 型微分 |
 | `exteriorToConeXIso`・射影との適合性 | ExteriorConeComponents | 対象ビルド済み |
 | `exteriorProductConeIso` | ExteriorConeIso | 生成元追加と mappingCone の複体同型 |
+| `sequenceGeneratorEquiv`・`sequenceGeneratorJoin_differential` | SequenceGeneratorSplit | 有限列の末尾の自由生成元分解 |
+| `sequenceExteriorSuccIso`・`koszulExteriorIso` | KoszulConeComparison | 全有限列で反復 cone 模型との複体同型 |
+| `derivedChartExteriorIso` | KoszulConeComparison | チャート反復 cone と外積複体の比較 |
+| `exceptionalChartExteriorIso`・`exceptionalChartProductIso` | ExceptionalConeComparison | 例外因子の二つの反復 cone 表示の比較 |
+| `exceptionalChartBaseChangeIso` | ExceptionalConeComparison | E∩U_i の Ko(A;a)[S] 表示の複体比較 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -141,18 +146,20 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 チャートと例外因子の基底変換は Hom の射が可逆な dg 関手として構成済み。
 異なる微分の構造を同時に扱う公開対象型は `ExteriorKoszulObject d` とする。
 符号付き braiding に関する可換性も証明済み。有限列では各項の有限自由性と振幅 [-n,0] を証明済み。
-`derivedChartComplex` は既存の反復 cone 複体であり、一般の列で両模型の比較同型はまだない。
-空列の比較同型、およびチャート列の Fin r と ChartIndex の添字比較同型は構成済み。
+`derivedChartComplex` は既存の反復 cone 複体であり、一般の有限列で外積模型との比較同型を構成済み。
+チャート列の Fin r と ChartIndex の添字比較同型も構成済み。
 生成元追加 M×R の外積を二成分へ分解する総外積と同次次数別の線形同型は構成済み。
 この二成分の微分が (-dx,ax+dy) になることも証明済み。
 整数次数の項と既存 mappingCone の biprod を比較し、生成元追加 M×R の
 Koszul 外積複体とスカラー作用の mappingCone の複体同型を構成済み。
-有限列の Fin(n+1) の自由生成加群を (Fin n→₀R)×R と比較する帰納法は未完了。
-この二つを合わせて「導来チャート cdga の実装済み」とは扱わない。
-所有モジュールの全426定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+有限列の Fin(n+1) の自由生成加群を (Fin n→₀R)×R と比較する帰納法は証明済み。
+例外因子の反復 cone 複体を Ko(A;a)[S] の underlying 複体と同定済み。
+この比較を dg 代数の導来底変更および重なりの局所化に適合させる工程は未完了。
+導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
+局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
+所有モジュールの全458定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は Fin(n+1) の自由生成加群の分解と微分比較。
-生成元追加の複体同型と有限列への帰納法で反復 cone 比較を完成する。
+次の実装単位はチャート環から共通重なり環への底変更と Koszul 比較。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 

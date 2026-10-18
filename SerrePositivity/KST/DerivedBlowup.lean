@@ -46,3 +46,6 @@ public import SerrePositivity.KST.DerivedBlowup.ExteriorProductCochainComponents
 public import SerrePositivity.KST.DerivedBlowup.ExteriorProductCochainDifferential
 public import SerrePositivity.KST.DerivedBlowup.ExteriorConeComponents
 public import SerrePositivity.KST.DerivedBlowup.ExteriorConeIso
+public import SerrePositivity.KST.DerivedBlowup.SequenceGeneratorSplit
+public import SerrePositivity.KST.DerivedBlowup.KoszulConeComparison
+public import SerrePositivity.KST.DerivedBlowup.ExceptionalConeComparison
