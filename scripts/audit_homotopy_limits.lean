@@ -2041,3 +2041,42 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @isLimitCone_iff_coneSliceRestrictionFiberMap_homotopyEquivalence
 #print axioms isLimitCone_iff_coneSliceRestrictionFiberMap_homotopyEquivalence
+
+#check @endpointConeEvaluation
+#print axioms endpointConeEvaluation
+
+#check @endpointConeEvaluation_restrict_fixed
+#print axioms endpointConeEvaluation_restrict_fixed
+
+#check @endpointConeRestrict
+#print axioms endpointConeRestrict
+
+#check @endpointConeRestrict_evaluation
+#print axioms endpointConeRestrict_evaluation
+
+#check @sectionConeUncurry_restrict
+#print axioms sectionConeUncurry_restrict
+
+#check @augTensorEquiv_symm_homLeft
+#print axioms augTensorEquiv_symm_homLeft
+
+#check @joinTensorRight_diagram
+#print axioms joinTensorRight_diagram
+
+#check @joinTensorLeft_diagram
+#print axioms joinTensorLeft_diagram
+
+#check @sectionEndpointConeComparison
+#print axioms sectionEndpointConeComparison
+
+#check @sectionEndpointConeComparison_uncurry
+#print axioms sectionEndpointConeComparison_uncurry
+
+#check @sectionEndpointConeComparison_restrict
+#print axioms sectionEndpointConeComparison_restrict
+
+#check @sectionEndpointConeComparison_homotopyEquivalence
+#print axioms sectionEndpointConeComparison_homotopyEquivalence
+
+#check @sectionRestriction_homotopyEquivalence_iff_endpoint
+#print axioms sectionRestriction_homotopyEquivalence_iff_endpoint

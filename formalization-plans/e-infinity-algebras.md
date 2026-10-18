@@ -957,3 +957,28 @@ slice の頂点 fiber の判定から coslice の切断の制限への移送、�
 集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-cone-slice-restriction-aggregate.log` と
 `/tmp/gamma3-cone-slice-restriction-audit.log`。
+
+
+### 図式の制限と切断の標準比較の自然性
+
+`ConeDiagramRestriction` に両端固定の錐の制限 `endpointConeRestrict p x f` と
+その包含後の値・固定条件、切断の族の `sectionConeUncurry_restrict` を構成した。
+`ConeDiagramTensor` は図式の因子の射と join・直積の左右の標準比較の自然性を証明。
+`ConeRestrictionComparison` の実際の比較 `sectionEndpointConeComparison` は
+`relativeFunctorPre ... p f ≫ sectionEndpointConeComparison (f ≫ p) x =
+sectionEndpointConeComparison p x ≫ endpointConeRestrict p x f` を満たす。
+ここまでは全て任意の単体集合の図式で成立し、充填性の前提はない。
+X が quasicategory ならこの比較は単体的ホモトピー同値であり、
+`sectionRestriction_homotopyEquivalence_iff_endpoint` は切断の制限の同値性と
+両端固定の錐の制限の同値性を同値にする。全ての単体的パラメータの値を追跡し、
+選択した逆同値の自然性は使っていない。原典は HTT 4.2.4.1、Kerodon 7.4.1.6。
+新規13宣言の正確な型・全前提は README に記録し、公開973宣言の監査に追加した。
+slice 側の制限との可換式、native な極限判定の切断の制限への移送、豊穣 q′ との可換式、
+元の q_x と反転係数の整合性、𝒮・Sp の残りの適用、余極限の比較は未完了。
+γ3b・γ3c は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4452 jobs）、公開973宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-cone-diagram-restriction-aggregate.log` と
+`/tmp/gamma3-cone-diagram-restriction-audit.log`。

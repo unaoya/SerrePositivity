@@ -5014,3 +5014,101 @@ strict な豊穣錐についてその制限と構成済みの q′ の可換式�
 集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-cone-slice-restriction-aggregate.log` と
 `/tmp/gamma3-cone-slice-restriction-audit.log`。
+
+
+### 図式の制限と切断から両端固定の錐への標準比較の自然性
+
+`ConeDiagramRestriction` に任意の `p : J ⟶ X`、`f : K ⟶ J`、頂点 x について
+`endpointConeRestrict p x f` を構成した。これは両端固定の内部 Hom の錐を
+`joinMap (𝟙 Δ[0]) f` で前合成する実際の射である。射の構成と固定条件には
+quasicategory 性・Kan 性・f の単射性は不要。
+`ConeDiagramTensor` は、この図式因子の変更と左右の join・直積の標準比較の可換式を与える。
+
+`ConeRestrictionComparison` は coslice の切断から両端固定の錐への標準比較について
+次の厳密な可換式を証明した。
+
+```lean
+relativeFunctorPre (sliceUnderProjection (SSet.yonedaEquiv.symm x)) p f ≫
+    sectionEndpointConeComparison (f ≫ p) x =
+  sectionEndpointConeComparison p x ≫ endpointConeRestrict p x f
+```
+
+この式は任意の図式に成立する。X が quasicategory なら両方の標準比較は
+単体的ホモトピー同値であり、二対三則により
+`sectionRestriction_homotopyEquivalence_iff_endpoint` を得る。
+選択した逆同値の自然性は仮定せず、全パラメータでの uncurry の式から証明した。
+原典上の位置は HTT 4.2.4.1 の双対、Kerodon 4.6.6.8、7.4.1.6。
+
+新規13宣言の正確な型は以下。別記の `[Quasicategory X]` 以外の充填性の前提はない。
+
+```lean
+abbrev endpointConeEvaluation {K X : SSet.{u}} (p : K ⟶ X) (x : X _⦋0⦌)
+
+lemma endpointConeEvaluation_restrict_fixed {K J X : SSet.{u}} (p : J ⟶ X)
+    (x : X _⦋0⦌) (f : K ⟶ J) :
+    endpointConeEvaluation p x ≫ (pre (joinMap (𝟙 (Δ[0] : SSet.{u})) f)).app X ≫
+      (pre (joinEndpointInclusion Δ[0] K)).app X =
+        SSet.const (functorVertex (joinEndpointDesc (SSet.yonedaEquiv.symm x) (f ≫ p)))
+
+def endpointConeRestrict {K J X : SSet.{u}} (p : J ⟶ X) (x : X _⦋0⦌) (f : K ⟶ J) :
+    fixedEndpointConeSpace p x ⟶ fixedEndpointConeSpace (f ≫ p) x
+
+lemma endpointConeRestrict_evaluation {K J X : SSet.{u}} (p : J ⟶ X)
+    (x : X _⦋0⦌) (f : K ⟶ J) :
+    endpointConeRestrict p x f ≫ endpointConeEvaluation (f ≫ p) x =
+      endpointConeEvaluation p x ≫ (pre (joinMap (𝟙 (Δ[0] : SSet.{u})) f)).app X
+
+lemma sectionConeUncurry_restrict {A K J X : SSet.{u}} {p : J ⟶ X}
+    {x : X _⦋0⦌} (s : A ⟶ coherentConeSectionSpace p x) (f : K ⟶ J) :
+    sectionConeUncurry (s ≫ relativeFunctorPre
+      (sliceUnderProjection (SSet.yonedaEquiv.symm x)) p f) =
+      joinMap (𝟙 (Δ[0] : SSet.{u})) (f ▷ A) ≫ sectionConeUncurry s
+
+lemma augTensorEquiv_symm_homLeft {B D : SSet.{u}} (f : B ⟶ D) (A : SSet.{u})
+    (r : ℕ) (b : Join.augObj B r) (a : Join.augObj A r) :
+    Join.augHom (f ▷ A) r ((Join.augTensorEquiv B A r).symm (b, a)) =
+      (Join.augTensorEquiv D A r).symm (Join.augHom f r b, a)
+
+lemma joinTensorRight_diagram {B D : SSet.{u}} (f : B ⟶ D) (C A : SSet.{u}) :
+    (joinMap (𝟙 C) f ▷ A) ≫ joinTensorRight C D A =
+      joinTensorRight C B A ≫ joinMap (𝟙 C) (f ▷ A)
+
+lemma joinTensorLeft_diagram {B D : SSet.{u}} (f : B ⟶ D) (A C : SSet.{u}) :
+    (A ◁ joinMap (𝟙 C) f) ≫ joinTensorLeft A C D =
+      joinTensorLeft A C B ≫ joinMap (𝟙 (A ⊗ C)) f
+
+noncomputable def sectionEndpointConeComparison {K X : SSet.{u}} (p : K ⟶ X)
+    (x : X _⦋0⦌) : coherentConeSectionSpace p x ⟶ fixedEndpointConeSpace p x
+
+lemma sectionEndpointConeComparison_uncurry {A K X : SSet.{u}} {p : K ⟶ X}
+    {x : X _⦋0⦌} (s : A ⟶ coherentConeSectionSpace p x) :
+    uncurry (s ≫ sectionEndpointConeComparison p x ≫ endpointConeEvaluation p x) =
+      joinTensorRight Δ[0] K A ≫ sectionConeUncurry s
+
+lemma sectionEndpointConeComparison_restrict {K J X : SSet.{u}} (p : J ⟶ X)
+    (x : X _⦋0⦌) (f : K ⟶ J) :
+    relativeFunctorPre (sliceUnderProjection (SSet.yonedaEquiv.symm x)) p f ≫
+        sectionEndpointConeComparison (f ≫ p) x =
+      sectionEndpointConeComparison p x ≫ endpointConeRestrict p x f
+
+lemma sectionEndpointConeComparison_homotopyEquivalence {K X : SSet.{u}}
+    [Quasicategory X] (p : K ⟶ X) (x : X _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (sectionEndpointConeComparison p x)
+
+lemma sectionRestriction_homotopyEquivalence_iff_endpoint {K J X : SSet.{u}}
+    [Quasicategory X] (p : J ⟶ X) (x : X _⦋0⦌) (f : K ⟶ J) :
+    IsSimplicialHomotopyEquivalence
+        (relativeFunctorPre (sliceUnderProjection (SSet.yonedaEquiv.symm x)) p f) ↔
+      IsSimplicialHomotopyEquivalence (endpointConeRestrict p x f)
+```
+
+slice の頂点 fiber の制限と両端固定の錐の制限の可換式は、次の証明対象として残る。
+従って native な極限判定の切断の制限への移送はまだ完了していない。
+豊穣 q′ の制限との可換式、元の q_x と反転係数の整合性、𝒮・Sp の残りの適用、
+余極限の比較も未完了。γ3b・γ3c は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4452 jobs）、公開973宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-cone-diagram-restriction-aggregate.log` と
+`/tmp/gamma3-cone-diagram-restriction-audit.log`。
