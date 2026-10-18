@@ -219,3 +219,29 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms strictCoherentConeLeg
 #check @strictCoherentConeLeg_eq
 #print axioms strictCoherentConeLeg_eq
+#check @exists_tower_diagram_extension
+#print axioms exists_tower_diagram_extension
+#check @exists_resized_tower_diagram_extension
+#print axioms exists_resized_tower_diagram_extension
+#check @exists_resized_tower_extension_of_anodyne
+#print axioms exists_resized_tower_extension_of_anodyne
+#check @weightedSections_tower_projection_fibration
+#print axioms weightedSections_tower_projection_fibration
+#check @weightedSections_tower_kanComplex
+#print axioms weightedSections_tower_kanComplex
+#check @bousfieldKanHolim_tower_kanComplex
+#print axioms bousfieldKanHolim_tower_kanComplex
+#check @weightedSectionsPre
+#print axioms weightedSectionsPre
+#check @weightedSectionsPre_π
+#print axioms weightedSectionsPre_π
+#check @weightedSectionsUncurry_comp_pre
+#print axioms weightedSectionsUncurry_comp_pre
+#check @weightedSectionsPre_id
+#print axioms weightedSectionsPre_id
+#check @weightedSectionsPre_comp
+#print axioms weightedSectionsPre_comp
+#check @weightedConeComparison_pre
+#print axioms weightedConeComparison_pre
+#check @weightedSectionsPre_tower_exists_section
+#print axioms weightedSectionsPre_tower_exists_section

@@ -2046,7 +2046,7 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 `formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
 現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射、
-strict な図式・錐の coherent nerve での表示まで実装。
+strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性まで実装。
 離散図式の比較と 𝒮 の空積は実装済み。一般の coherent な錐との比較、end の一般の Kan 性・
 同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
@@ -2191,7 +2191,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開107宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開120宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2269,6 +2269,47 @@ Fibration は Mathlib の単体集合の全ホーンの持ち上げ性による�
 | `pullback_kanComplex_of_fibration p q` | `p : E → B` が Fibration、`q : D → B`、D が Kan なら `KanComplex (pullback p q)` |
 | `towerLimit_kanComplex H` | `H : ℕᵒᵖ ⥤ SSet.{u}`、H(0) が Kan、全ての隣接遷移が Fibration なら `KanComplex (limit H)` |
 | `towerLimitπ_zero_fibration H` | 隣接遷移の Fibration 性だけから `Fibration (limit.π H (Opposite.op 0))` |
+
+### fibration の塔の重み付き end（実装済み）
+
+通常の小圏で添字付けた end の規約では添字と係数の単体のサイズを u にそろえるため、
+可算塔の添字には `AsSmall.{u} ℕᵒᵖ` を使う。
+`TowerDiagramExtension.lean` は、始域も変化する図式の射 j : A → B に対して、
+零段の指定された延長を保ちながら、各後続段の j と標的の遷移の間の持ち上げ性で自然変換を延長する。
+`exists_resized_tower_diagram_extension` はこの構成を持ち上げた添字へ移す。
+
+`WeightedTowerKan.lean` は任意の重み `W : AsSmall.{u} ℕᵒᵖ ⥤ SSet.{u}` と図式 H に対して
+次を証明する。重み W の Kan 性・可縮性は要求しない。
+
+| 宣言 | 前提と結論 |
+| --- | --- |
+| `weightedSections_tower_projection_fibration W H` | H の全隣接遷移が Fibration なら、`weightedSectionsπ W H (AsSmall.up.obj (Opposite.op 0))` が Fibration。H(0) の Kan 性は不要 |
+| `weightedSections_tower_kanComplex W H` | 加えて H(0) が Kan なら `KanComplex (weightedSections W H)` |
+| `bousfieldKanHolim_tower_kanComplex H` | `H : ℕᵒᵖ ⥤ SSet.{u}`、H(0) が Kan、全隣接遷移が Fibration なら `KanComplex (bousfieldKanHolim ((AsSmall.down : AsSmall.{u} ℕᵒᵖ ⥤ ℕᵒᵖ) ⋙ H))` |
+
+証明は end のホーンをパラメーター付き自然変換として表示し、
+重みとホーン包含の直積の anodyne 性を各段の相対的な持ち上げに渡す。
+これは塔の標準比較 κ_x の同値性や、一般の図式の end の Kan 性の証明ではない。
+
+`WeightedRestriction.lean` は重みの射 j : W → W' に対して実際の前合成
+`weightedSectionsPre j H : weightedSections W' H → weightedSections W H` を定義する。
+その内部 Hom への成分、任意のパラメーターでの uncurry との整合性、恒等・合成則、
+`weightedConeComparison W' c ≫ weightedSectionsPre j H = weightedConeComparison W c`
+を証明する。
+
+`exists_resized_tower_extension_of_anodyne j hj a` は、H(0) の Kan 性と隣接遷移の Fibration 性の下で、
+成分ごとに anodyne な j に沿って a : A → H を自然変換として延長する。
+`WeightedTowerRestriction.lean` の `weightedSectionsPre_tower_exists_section` は、
+制限先の end 自体をパラメーターにして、この延長から次の厳密な切断を構成する。
+
+```lean
+∃ s : weightedSections W H ⟶ weightedSections W' H,
+  s ≫ weightedSectionsPre j H = 𝟙 (weightedSections W H)
+```
+
+前提は j の全成分の anodyne 性、H(0) の Kan 性と隣接遷移の Fibration 性。
+この切断の反対側の合成のホモトピー、制限の trivial Kan fibration 性・同値性は未証明。
+切断の存在だけを homotopy 極限の比較の完成とは数えない。
 
 ### 𝒮 の空積（実装済み）
 
