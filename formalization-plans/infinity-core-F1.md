@@ -918,5 +918,25 @@ lemma intervalEndomorphism_cases (f : ⦋1⦌ ⟶ ⦋1⦌) :
 lemma quasicategoryCore_mem_edge_iff {X : SSet.{u}} (s : X _⦋1⦌) :
     s ∈ (quasicategoryCore X).obj (Opposite.op ⦋1⦌) ↔ IsInvertibleEdge (edgeOfSimplex s)
 
+lemma isInvertibleEdge_map_const {X : SSet.{u}} {n : SimplexCategory}
+    (s : X.obj (Opposite.op n)) (v : Fin (n.len + 1)) :
+    IsInvertibleEdge (edgeOfSimplex (X.map (SimplexCategory.const ⦋1⦌ n v).op s))
+
+lemma triangleEdge_cases (f : ⦋1⦌ ⟶ ⦋2⦌) :
+    (∃ i : Fin 3, f = SimplexCategory.δ i) ∨
+      ∃ v : Fin 3, f = SimplexCategory.const _ _ v
+
+lemma quasicategoryCore_mem_triangle_iff {X : SSet.{u}} (s : X _⦋2⦌) :
+    s ∈ (quasicategoryCore X).obj (Opposite.op ⦋2⦌) ↔
+      ∀ i : Fin 3, IsInvertibleEdge (edgeOfSimplex (X.δ i s))
+
+lemma edge_mem_horn_of_three_le (n : ℕ) (i : Fin (n + 4))
+    (e : (Δ[n + 3] : SSet.{u}) _⦋1⦌) :
+    e ∈ (horn (n + 3) i).obj (Opposite.op ⦋1⦌)
+
+lemma isInvertibleEdge_triangle_missing {X : SSet.{u}} (s : X _⦋2⦌) (k : Fin 3)
+    (h : ∀ i : Fin 3, i ≠ k → IsInvertibleEdge (edgeOfSimplex (X.δ i s))) :
+    IsInvertibleEdge (edgeOfSimplex (X.δ k s))
+
 end SerrePositivity.InfinityCategories
 ```

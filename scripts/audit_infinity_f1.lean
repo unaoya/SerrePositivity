@@ -210,3 +210,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.quasicategoryCore_vertex
 #check @SerrePositivity.InfinityCategories.intervalEndomorphism_cases
 #check @SerrePositivity.InfinityCategories.quasicategoryCore_mem_edge_iff
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_map_const
+#check @SerrePositivity.InfinityCategories.triangleEdge_cases
+#check @SerrePositivity.InfinityCategories.quasicategoryCore_mem_triangle_iff
+#check @SerrePositivity.InfinityCategories.edge_mem_horn_of_three_le
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_triangle_missing
