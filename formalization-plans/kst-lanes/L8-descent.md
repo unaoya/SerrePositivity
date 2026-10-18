@@ -101,10 +101,12 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 有限忠実平坦被覆を元の有限全射の底変換へ細分する射を構成した（§49）。
 Noether 整域上の有限加群の非零元による自由化を証明し、実際の全チャートで純変換を
 平坦にする中心の存在に必要だった境界外の平坦性を供給した（§50）。
+加群純変換を実際の商代数と同定し、その Spec を基本開のスキーム論的像に
+閉包含と構造射を保つ同型で結び、全チャートのその像の有限平坦性を証明した（§51）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 121 モジュール・1476 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 125 モジュール・1517 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -635,6 +637,14 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `exists_nonzero_away_free_of_finite` | Noether 整域上の有限加群の非零元による自由化 | 対象ビルド済み、元の平坦性は不要 |
 | `exists_nonzero_away_flat_of_finite` | 同じ有限加群の境界外の平坦性 | 対象ビルド済み、生成点付近の自由化から導出 |
 | `exists_nonzero_finite_module_flattening_center` | Noether 整域上有限な加群の実際の全チャート純変換の平坦化中心 | 対象ビルド済み、スキームの strict transform との同定は別工程 |
+| `boundaryTorsionIdeal`、`algebraPureTransform` | 境界ねじれを除く実際のイデアルと商代数 | 対象ビルド済み、有限性は定義に不要 |
+| `algebraPureTransformModuleEquiv`、`boundaryTorsionIdeal_eq_ker` | 加群純変換との線形同型と環の局所化の核との一致 | 対象ビルド済み、代表元を保つ |
+| `algebraPureTransformToLocalization_injective` | 商代数から一元局所化への単射 | 対象ビルド済み、全射性は主張しない |
+| `algebraPureTransformSpecπ_flat`、`algebraPureTransformSpecπ_isFinite` | 商の実際の Spec の平坦性・有限性 | 対象ビルド済み、元の加群の性質から移送 |
+| `algebraPureTransformImageIso`、`algebraPureTransformBasicOpenImageIso` | 商の Spec と局所化・基本開の実際のスキーム論的像との同型 | 対象ビルド済み、閉包含を保持 |
+| `algebraPureTransformBasicOpenImageIso_hom_structure` | 基本開の像との同型の基礎環上の可換性 | 対象ビルド済み、構造射を保持 |
+| `algebraBoundaryOpen_image_flat`、`algebraBoundaryOpen_image_isFinite` | 基本開の実際のスキーム論的像の構造射の平坦性・有限性 | 対象ビルド済み、構造層を保持 |
+| `exists_nonzero_finiteFlat_image_charts` | 実際の全 blowup チャート上のアフィン像を有限平坦にする中心 | 対象ビルド済み、global strict transform とのチャート比較・貼り合わせは別工程 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1678,3 +1688,48 @@ Noether 整域 R 上の有限加群 M について生成点付近の自由化を
 
 §50 の保存検証：集約対象ビルドと公理監査が成功。121 モジュール・1476 宣言、標準三公理のみ。
 §49 で全体ビルドを確認済みなので、この代数入力の保存単位では反復しない。
+
+
+## 51. 純変換商の Spec と基本開の実際のスキーム論的像
+
+§50 の加群の平坦化を実際のスキーム射に移すため、
+境界ねじれを除く商を実際の可換代数として構成した。
+R 代数 B と f ∈ R について、B 自身上の境界元の像のねじれ部分加群は B のイデアルである。
+`boundaryTorsionIdeal` はこのイデアル、`algebraPureTransform` はその実際の商環である。
+スカラー制限の同型を使い、この商環の R 加群と既存の `modulePureTransform f B` を
+代表元を保つ線形同型で結んだ。したがって加群の有限性と平坦性を商代数へ移せる。
+
+環の局所化と加群の局所化の核は、同じ冪消滅条件で記述される。
+これにより境界ねじれイデアルが B → B[1/f] の環準同型の核であることを証明した。
+商代数からこの一元局所化への実際の環準同型を構成し、その単射性を示した。
+局所化全体との同型や、この写像の全射性は主張していない。
+
+商代数の Spec と B への閉包含、R への構造射を構成した。
+加群の平坦性・有限性から、これらの実際のスキームの射の平坦性・有限性を得た。
+Spec のイデアル対応を使い、商写像の Spec と局所化の Spec の核イデアル層が一致することを示す。
+二つの閉埋め込みの lift の普遍性により、商の Spec と局所化の実際のスキーム論的像の
+閉包含を保つ標準同型を構成した。
+
+基本開 D(f) と局所化の Spec の標準同型は元の B の Spec への射を保つ。
+この同型を通して核を比較し、商の Spec と基本開の実際のスキーム論的像の標準同型も構成した。
+この同型は閉包含と R への構造射を保つ。
+その逆射と商の Spec の構造射の合成を使い、
+基本開の実際のスキーム論的像の平坦性・有限性へ移した。
+点集合の閉包による代用や、構造層を忘れた同定は行っていない。
+
+最後に Noether 整域 R 上有限な代数 B について、§50 の実際の中心を選び、
+各 blowup チャート C 上の B の基底変更 C ⊗_R B に以上の同定を適用した。
+全ての実際のチャートで、境界基本開のスキーム論的像の構造射が有限平坦になる。
+これは実際のスキームの射についての結論であり、各チャートでの加群の平坦性だけには留めない。
+
+ここで定義したアフィン像を、元の global strict transform の各チャートへ引き戻したものと
+同定する部分はまだ残る。像の形成と開埋め込みによる底変換の両立、
+実際のテンソル積のアフィン引き戻しとの比較、境界基本開の一致、
+開被覆上の平坦性の貼り合わせを行う必要がある。
+全射性は §47–49 の global な判定へ接続して供給し、現在の局所像について独立に仮定しない。
+Čech 細分の実降下・中心上の帰納、実際の Tot・hG、最小公理全体、
+自然な blowup 列と有限積保存の導出、(3.6)・K0・T2・E も未完である。
+
+§51 の保存検証：集約対象ビルドと公理監査が成功。125 モジュール・1517 宣言、標準三公理のみ。
+§51 の区切りの全体ビルドも成功（10179 ジョブ）。`set -eo pipefail` で終了コード 0。
+ログは `/tmp/l8-affine-pure-transform-full-build.log`。
