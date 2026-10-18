@@ -187,7 +187,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.LoopIntegerPower,
     `SerrePositivity.KST.Spectra.TwistedKanSequence,
     `SerrePositivity.KST.Spectra.TwistedOmegaSpectrum,
-    `SerrePositivity.KST.Spectra.CotensorIntegerPower]
+    `SerrePositivity.KST.Spectra.CotensorIntegerPower,
+    `SerrePositivity.KST.Spectra.PointedHomotopyExtension,
+    `SerrePositivity.KST.Spectra.PointedVertexComparison,
+    `SerrePositivity.KST.Spectra.PointedHomotopyClasses,
+    `SerrePositivity.KST.Spectra.SequenceHomotopyRectification,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyRectification]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

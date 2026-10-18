@@ -18,6 +18,7 @@ public import SerrePositivity.KST.Spectra.InternalHomExchangeNaturality
 public import SerrePositivity.KST.Spectra.LoopPositivePower
 public import SerrePositivity.KST.Spectra.RationalSpectrumModelMap
 public import SerrePositivity.KST.Spectra.CotensorIntegerPower
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyRectification
 
 /-!
 概要：スペクトルの telescope 有理化に使う余極限とホモトピー群の比較。
