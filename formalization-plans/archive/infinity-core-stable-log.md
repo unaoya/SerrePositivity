@@ -5156,3 +5156,115 @@ SerrePositivity.InfinityCategories.exists_fiber_hoShortComplex.{u} {X : SSet.{u}
 （生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
 これらは短複体とその射まで。接続射 Z → ΣX、前加法構造、整数シフト、
 TR1〜TR4、Pretriangulated と S5〜S7 は未完了。
+
+## S4：指定した普遍余錐の部分族・両端を保つ持ち上げ
+
+単射な部分族を保つ延長には値域 Quasicategory と全頂点での余極限の存在を仮定する。
+図式間の辺・余錐間のホモトピーへの持ち上げには、値域 Quasicategory と両端の
+IsColimitCone のみ。一次元境界の辺の持ち上げ自体には quasicategory 仮定なし。
+正確な公開型（Lean の出力）：
+
+```lean
+SerrePositivity.InfinityCategories.stableBoundaryPair.{u} {X : SSet.{u}} (x y : X _⦋0⦌) :
+  Quiver.Hom.{u, u + 1} (Subcomplex.toSSet.{u} ∂Δ[1]) X
+SerrePositivity.InfinityCategories.stableBoundaryPair_zero.{u} {X : SSet.{u}} (x y : X _⦋0⦌) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.boundaryVertex.{u} 0 0)
+      (SerrePositivity.InfinityCategories.stableBoundaryPair.{u} x y))
+    ((Equiv.symm.{u + 1, u + 1} SSet.yonedaEquiv.{u}) x)
+SerrePositivity.InfinityCategories.stableBoundaryPair_one.{u} {X : SSet.{u}} (x y : X _⦋0⦌) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.boundaryVertex.{u} 0 1)
+      (SerrePositivity.InfinityCategories.stableBoundaryPair.{u} x y))
+    ((Equiv.symm.{u + 1, u + 1} SSet.yonedaEquiv.{u}) y)
+SerrePositivity.InfinityCategories.stableBoundaryPair_hom_ext.{u} {X : SSet.{u}}
+  {f g : Quiver.Hom.{u, u + 1} (Subcomplex.toSSet.{u} ∂Δ[1]) X}
+  (h₀ :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.boundaryVertex.{u} 0 0) f)
+      (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.boundaryVertex.{u} 0 0) g))
+  (h₁ :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.boundaryVertex.{u} 0 1) f)
+      (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.boundaryVertex.{u} 0 1) g)) :
+  Eq.{u + 1} f g
+SerrePositivity.InfinityCategories.stableBoundaryPair_postcomp.{u} {X Y : SSet.{u}} (x y : X _⦋0⦌)
+  (p : Quiver.Hom.{u, u + 1} X Y) :
+  Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.stableBoundaryPair.{u} x y) p)
+    (SerrePositivity.InfinityCategories.stableBoundaryPair.{u}
+      ((ConcreteCategory.hom.{u, u, u + 1, u} (NatTrans.app.{0, u, 0, u + 1} p (Opposite.op.{1} ⦋0⦌))) x)
+      ((ConcreteCategory.hom.{u, u, u + 1, u} (NatTrans.app.{0, u, 0, u + 1} p (Opposite.op.{1} ⦋0⦌))) y))
+SerrePositivity.InfinityCategories.stableBoundaryPair_edge.{u} {X : SSet.{u}} {x y : X _⦋0⦌}
+  (e : Truncated.Edge.{u} x y) :
+  Eq.{u + 1} (SerrePositivity.InfinityCategories.stableBoundaryPair.{u} x y)
+    (CategoryStruct.comp.{u, u + 1} (Subcomplex.ι.{u} ∂Δ[1])
+      ((Equiv.symm.{u + 1, u + 1} SSet.yonedaEquiv.{u}) (Truncated.Edge.edge.{u} e)))
+SerrePositivity.InfinityCategories.exists_edge_lift_of_boundary_one.{u} {E B : SSet.{u}} (p : Quiver.Hom.{u, u + 1} E B)
+  [HasLiftingProperty.{u, u + 1} (Subcomplex.ι.{u} ∂Δ[1]) p] (x y : E _⦋0⦌)
+  (e :
+    Truncated.Edge.{u}
+      ((ConcreteCategory.hom.{u, u, u + 1, u} (NatTrans.app.{0, u, 0, u + 1} p (Opposite.op.{1} ⦋0⦌))) x)
+      ((ConcreteCategory.hom.{u, u, u + 1, u} (NatTrans.app.{0, u, 0, u + 1} p (Opposite.op.{1} ⦋0⦌))) y)) :
+  ∃ f, Eq.{u + 1} (Truncated.Edge.map.{u} f (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} (truncation.{u} 2) p)) e
+SerrePositivity.InfinityCategories.exists_colimitCoconeFamily_extension.{u} {A₀ A K X : SSet.{u}} [Quasicategory.{u} X]
+  (i : Quiver.Hom.{u, u + 1} A₀ A) [Mono.{u, u + 1} i] (d : Quiver.Hom.{u, u + 1} A (K ⟹ X))
+  (hd :
+    ∀ (a : A _⦋0⦌),
+      SerrePositivity.InfinityCategories.HasColimit.{u}
+        ((Equiv.symm.{u + 1, u + 1} (SerrePositivity.InfinityCategories.functorVertexEquiv.{u} K X))
+          ((ConcreteCategory.hom.{u, u, u + 1, u} (NatTrans.app.{0, u, 0, u + 1} d (Opposite.op.{1} ⦋0⦌))) a)))
+  (c : Quiver.Hom.{u, u + 1} A₀ (SerrePositivity.InfinityCategories.colimitCocones.{u} K X))
+  (hc :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} c (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X))
+      (CategoryStruct.comp.{u, u + 1} i d)) :
+  ∃ f,
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} i f) c ∧
+      Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} f (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X))
+        d
+SerrePositivity.InfinityCategories.colimitCoconeVertex.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {p : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u} p)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u} c) :
+  SerrePositivity.InfinityCategories.colimitCocones.{u} K X _⦋0⦌
+SerrePositivity.InfinityCategories.colimitCoconeVertex_projection.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {p : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u} p)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u} c) :
+  Eq.{u + 1}
+    ((ConcreteCategory.hom.{u, u, u + 1, u}
+        (NatTrans.app.{0, u, 0, u + 1} (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)
+          (Opposite.op.{1} ⦋0⦌)))
+      (SerrePositivity.InfinityCategories.colimitCoconeVertex.{u} c hc))
+    (SerrePositivity.InfinityCategories.functorVertex.{u} p)
+SerrePositivity.InfinityCategories.exists_colimitCocone_edge.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {p q : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u} p)
+  (d : SerrePositivity.InfinityCategories.JoinCocone.{u} q)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u} c)
+  (hd : SerrePositivity.InfinityCategories.IsColimitCone.{u} d)
+  (e :
+    Truncated.Edge.{u} (SerrePositivity.InfinityCategories.functorVertex.{u} p)
+      (SerrePositivity.InfinityCategories.functorVertex.{u} q)) :
+  ∃ f,
+    Eq.{u + 1}
+      (Truncated.Edge.edge.{u}
+        (Truncated.Edge.map.{u} f
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} (truncation.{u} 2)
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X))))
+      (Truncated.Edge.edge.{u} e)
+SerrePositivity.InfinityCategories.exists_colimitCoconeHomotopy.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {p q : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u} p)
+  (d : SerrePositivity.InfinityCategories.JoinCocone.{u} q)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u} c)
+  (hd : SerrePositivity.InfinityCategories.IsColimitCone.{u} d)
+  (e :
+    Truncated.Edge.{u} (SerrePositivity.InfinityCategories.functorVertex.{u} p)
+      (SerrePositivity.InfinityCategories.functorVertex.{u} q)) :
+  ∃ H,
+    Eq.{u + 1}
+      (CategoryStruct.comp.{u, u + 1}
+        (whiskerRight.{u, u + 1} (SerrePositivity.InfinityCategories.joinInl.{u} K Δ[0]) Δ[1])
+        (RelativeMorphism.Homotopy.h.{u} H))
+      (uncurry.{u, u + 1} ((Equiv.symm.{u + 1, u + 1} SSet.yonedaEquiv.{u}) (Truncated.Edge.edge.{u} e)))
+```
+
+対象 ColimitCoconeEdges ビルド 1974 jobs、Stable 集約ビルド 2058 jobs、
+公開型の抽出、公理監査はすべて終了コード 0。監査は 113 モジュール・1120 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
+cofiber の span から suspension の span への具体的な辺と、持ち上げて得る射の Σ との
+比較は未完了。接続射、前加法構造、整数シフト、TR1〜TR4、S5〜S7 は未完了。

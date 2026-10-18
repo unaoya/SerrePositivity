@@ -53,6 +53,18 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMapOfHomotopy
 #print axioms SerrePositivity.InfinityCategories.exists_cofiber_hoShortComplex
 #print axioms SerrePositivity.InfinityCategories.exists_fiber_hoShortComplex
+#print axioms SerrePositivity.InfinityCategories.stableBoundaryPair
+#print axioms SerrePositivity.InfinityCategories.stableBoundaryPair_zero
+#print axioms SerrePositivity.InfinityCategories.stableBoundaryPair_one
+#print axioms SerrePositivity.InfinityCategories.stableBoundaryPair_hom_ext
+#print axioms SerrePositivity.InfinityCategories.stableBoundaryPair_postcomp
+#print axioms SerrePositivity.InfinityCategories.stableBoundaryPair_edge
+#print axioms SerrePositivity.InfinityCategories.exists_edge_lift_of_boundary_one
+#print axioms SerrePositivity.InfinityCategories.exists_colimitCoconeFamily_extension
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeVertex
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeVertex_projection
+#print axioms SerrePositivity.InfinityCategories.exists_colimitCocone_edge
+#print axioms SerrePositivity.InfinityCategories.exists_colimitCoconeHomotopy
 #print axioms SerrePositivity.InfinityCategories.JoinCocone
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_eq
@@ -745,7 +757,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PullbackPasting,
     `SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory,
     `SerrePositivity.InfinityCategories.Stable.ZeroTriangleHoMap,
-    `SerrePositivity.InfinityCategories.Stable.CofiberShortComplex]
+    `SerrePositivity.InfinityCategories.Stable.CofiberShortComplex,
+    `SerrePositivity.InfinityCategories.Stable.BoundaryPair,
+    `SerrePositivity.InfinityCategories.Stable.BoundaryEdgeLifting,
+    `SerrePositivity.InfinityCategories.Stable.ColimitFamilyExtension,
+    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

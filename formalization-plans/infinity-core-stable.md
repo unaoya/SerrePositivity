@@ -126,6 +126,16 @@ S4 の三角構造へ向け、四辺を端点つきの辺と h C の射として
 `exists_cofiber_hoShortComplex` と `exists_fiber_hoShortComplex` により、安定な X の
 h C の全ての射が、cofiber 短複体の第一射／fiber 短複体の第二射として現れる。
 これは短複体の存在までであり、接続射 Z → ΣX、distinguished triangle、TR1〜TR4 は未証明。
+接続射と cofiber 列の射に向け、`exists_colimitCoconeFamily_extension` により
+各頂点で余極限が存在する族の任意の単射部分族上で、指定した普遍余錐の族を
+厳密に保持して延長できることを証明した。`colimitCoconeVertex` とその射影の等式により
+与えた余極限余錐を普遍余錐全体の頂点として扱える。
+`exists_colimitCocone_edge` は任意の図式間の実際の辺を、両端を指定した普遍余錐間の
+辺へ持ち上げる。`exists_colimitCoconeHomotopy` はその辺を余錐の間の単体的ホモトピーに
+直し、元の図式への制限が元の辺の uncurry と厳密に一致することも保証する。
+この二つの持ち上げには値域 Quasicategory と両端の IsColimitCone のみを仮定し、
+中間図式の余極限の存在は追加仮定しない。接続射の具体的な適用には、まだ cofiber の span
+から suspension の span への辺を構成し、その余極限対象の射を Σ と照合する必要がある。
 S4 の三角構造は未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -232,6 +242,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | h C の零射と短複体 | `hasZeroMorphisms_ho`（Quasicategory、HasZeroVertex）、`square_homMk_comm`（任意の X）、`ZeroTriangle.homMk_comp_eq_zero`、`ZeroTriangle.hoShortComplex`（Quasicategory、任意の HasZeroMorphisms） | 完了 |
 | 零角の短複体の射 | `ZeroTriangle.hoShortComplexMap`、恒等・合成則、`hoShortComplexMapOfHomotopy`（Quasicategory、任意の HasZeroMorphisms） | 完了。三角形の接続射との可換性は未着手 |
 | 任意の h C の射を含む列 | `exists_cofiber_hoShortComplex`、`exists_fiber_hoShortComplex`（Quasicategory、IsStable） | 短複体まで完了。接続射と TR1 は未完了 |
+| 部分族を保持した普遍余錐の延長 | `exists_colimitCoconeFamily_extension`（値域 Quasicategory、部分族の射は単射、全頂点の余極限の存在） | 完了 |
+| 普遍余錐間の辺 | `colimitCoconeVertex`、`colimitCoconeVertex_projection`、`exists_colimitCocone_edge`、`exists_colimitCoconeHomotopy`（値域 Quasicategory、両端が余極限） | 完了。接続射への具体的な適用は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
