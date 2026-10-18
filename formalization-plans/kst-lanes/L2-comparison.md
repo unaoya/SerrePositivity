@@ -907,7 +907,10 @@ AB5 による filtered colimit と整数ホモロジーの自然な交換、
 単射な整数ホモロジー同型の pushout、余積、超限合成、retract の閉性を証明し、
 全ての anodyne map と Kan 置換の単位の整数ホモロジー保存を証明した。
 anodyne 局所化の同型と群状モノイドの標準群完備化写像の整数ホモロジー同型も導いた。
-局所係数への anodyne 保存の拡張と plus のセル添付の計算は未完了。
+標準単体上の局所係数の自明化、任意の定数アーベル群係数の直和模型との比較、
+実際の horn の鎖ホモトピー同値、係数変換の自然性と誘導写像の恒等・合成法則を証明した。
+正次元の全 horn 包含は全ての標的局所係数で正規化鎖写像の擬同型を誘導することも証明した。
+局所係数の基底上の関手、anodyne 保存の拡張と plus のセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -916,10 +919,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4485 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4494 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1384 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2530 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1417 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2603 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -931,6 +934,11 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `standardSimplexLocalCoefficientTrivialization` | 監査済み | 初対象からの輸送による局所係数の自明化 |
+| `constantCoefficientSimplicialIso`、`localConstantCoefficientMap_quasiIso_iff` | 監査済み | 任意の定数係数と Mathlib の鎖複体の誘導射の比較 |
+| `constantCoefficientHornChainHomotopyEquiv` | 監査済み | 任意のアーベル群係数の実際の鎖ホモトピー同値 |
+| `localCoefficientSimplicialMap_comp`、`localCoefficientChainsMap_naturality` | 監査済み | 係数変換の自然性と誘導写像の関手性 |
+| `localCoefficientHorn_quasiIso`、`horn_localHomologyIsomorphism` | 監査済み | 全標的局所係数での horn 包含の擬同型とホモロジー同型 |
 | `integralHomologyIsomorphism_of_pushout` | 監査済み | 単射な整数ホモロジー同型の pushout 保存 |
 | `integralHomologyIsomorphism_of_anodyne`、`kanReplacementUnit_integralHomologyIsomorphism` | 監査済み | 全 anodyne map と実際の Kan 置換の単位の整数ホモロジー保存 |
 | `integralHomologyIsomorphism_of_localized_isIso`、`monoidGroupCompletionMap_integralHomologyIsomorphism` | 監査済み | 局所化と標準群完備化の比較からの整数ホモロジー同型 |

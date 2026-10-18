@@ -117,6 +117,8 @@ run_cmd do
 
 
 
+
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -498,6 +500,24 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.cartesianTensorSquare_isPullback
 
 
+-- ChainPairContraction.lean
+
+#check @SerrePositivity.KST.Comparison.intervalMapSimplicialHomotopy
+#print axioms SerrePositivity.KST.Comparison.intervalMapSimplicialHomotopy
+
+#check @SerrePositivity.KST.Comparison.chainHomotopyEquivOfPairContraction
+#print axioms SerrePositivity.KST.Comparison.chainHomotopyEquivOfPairContraction
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientChainHomotopyEquivOfPairContraction
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientChainHomotopyEquivOfPairContraction
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientHornChainHomotopyEquiv
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientHornChainHomotopyEquiv
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientHorn_quasiIso
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientHorn_quasiIso
+
+
 -- CoconeBaseComparison.lean
 
 #check @SerrePositivity.KST.Comparison.coconeBaseSquare
@@ -637,6 +657,45 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
 #print axioms SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
+
+
+-- ConstantCoefficientComparison.lean
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientSimplicialFunctor
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientSimplicialFunctor
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientUnit
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientUnit
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientComparison
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientComparison
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientComparison_unit
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientComparison_unit
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientComparison_app
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientComparison_app
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientSimplicialIso
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientSimplicialIso
+
+
+-- ConstantCoefficientMaps.lean
+
+#check @SerrePositivity.KST.Comparison.constantCoefficientComparison_naturality
+#print axioms SerrePositivity.KST.Comparison.constantCoefficientComparison_naturality
+
+#check @SerrePositivity.KST.Comparison.constantLocalCoefficientChainsIso
+#print axioms SerrePositivity.KST.Comparison.constantLocalCoefficientChainsIso
+
+#check @SerrePositivity.KST.Comparison.constantLocalCoefficientChainsIso_naturality
+#print axioms SerrePositivity.KST.Comparison.constantLocalCoefficientChainsIso_naturality
+
+#check @SerrePositivity.KST.Comparison.normalizedMooreMap_quasiIso_iff
+#print axioms SerrePositivity.KST.Comparison.normalizedMooreMap_quasiIso_iff
+
+#check @SerrePositivity.KST.Comparison.localConstantCoefficientMap_quasiIso_iff
+#print axioms SerrePositivity.KST.Comparison.localConstantCoefficientMap_quasiIso_iff
 
 
 -- ContractibleComparison.lean
@@ -3280,6 +3339,69 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.coefficientSimplicialObjIsoSigma_unit
 #print axioms SerrePositivity.KST.Comparison.coefficientSimplicialObjIsoSigma_unit
+
+
+-- LocalCoefficientFunctoriality.lean
+
+#check @SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_id
+#print axioms SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_id
+
+#check @SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_comp
+#print axioms SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_comp
+
+#check @SerrePositivity.KST.Comparison.localCoefficientChainsMap_id
+#print axioms SerrePositivity.KST.Comparison.localCoefficientChainsMap_id
+
+#check @SerrePositivity.KST.Comparison.localCoefficientChainsMap_comp
+#print axioms SerrePositivity.KST.Comparison.localCoefficientChainsMap_comp
+
+
+-- LocalCoefficientHorn.lean
+
+#check @SerrePositivity.KST.Comparison.localCoefficientChainsMapArrowIso
+#print axioms SerrePositivity.KST.Comparison.localCoefficientChainsMapArrowIso
+
+#check @SerrePositivity.KST.Comparison.localCoefficientHorn_quasiIso
+#print axioms SerrePositivity.KST.Comparison.localCoefficientHorn_quasiIso
+
+#check @SerrePositivity.KST.Comparison.horn_localHomologyIsomorphism
+#print axioms SerrePositivity.KST.Comparison.horn_localHomologyIsomorphism
+
+
+-- LocalCoefficientNaturality.lean
+
+#check @SerrePositivity.KST.Comparison.coefficientSimplicialFunctor_map_unit
+#print axioms SerrePositivity.KST.Comparison.coefficientSimplicialFunctor_map_unit
+
+#check @SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_naturality
+#print axioms SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_naturality
+
+#check @SerrePositivity.KST.Comparison.localCoefficientChainsMap_naturality
+#print axioms SerrePositivity.KST.Comparison.localCoefficientChainsMap_naturality
+
+
+-- LocalCoefficientTrivialization.lean
+
+#check @SerrePositivity.KST.Comparison.localCoefficientConstIsoOfInitial
+#print axioms SerrePositivity.KST.Comparison.localCoefficientConstIsoOfInitial
+
+#check @SerrePositivity.KST.Comparison.standardSimplexRepresentableBy
+#print axioms SerrePositivity.KST.Comparison.standardSimplexRepresentableBy
+
+#check @SerrePositivity.KST.Comparison.standardSimplexIdentityElement
+#print axioms SerrePositivity.KST.Comparison.standardSimplexIdentityElement
+
+#check @SerrePositivity.KST.Comparison.standardSimplexIdentityElementIsInitial
+#print axioms SerrePositivity.KST.Comparison.standardSimplexIdentityElementIsInitial
+
+#check @SerrePositivity.KST.Comparison.standardSimplexLocalCoefficientTrivialization
+#print axioms SerrePositivity.KST.Comparison.standardSimplexLocalCoefficientTrivialization
+
+#check @SerrePositivity.KST.Comparison.localCoefficientChainsIso
+#print axioms SerrePositivity.KST.Comparison.localCoefficientChainsIso
+
+#check @SerrePositivity.KST.Comparison.localCoefficientHomologyIso
+#print axioms SerrePositivity.KST.Comparison.localCoefficientHomologyIso
 
 
 -- LocalCoefficients.lean

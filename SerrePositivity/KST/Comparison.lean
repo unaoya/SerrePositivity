@@ -135,7 +135,9 @@ public import SerrePositivity.KST.Comparison.HomologyHomotopy
 public import SerrePositivity.KST.Comparison.HomologyKanReplacement
 public import SerrePositivity.KST.Comparison.HomologyHorn
 public import SerrePositivity.KST.Comparison.HomologyQuasiIso
-public import SerrePositivity.KST.Comparison.IntegerCoefficientNaturality
+public import SerrePositivity.KST.Comparison.LocalCoefficientFunctoriality
+public import SerrePositivity.KST.Comparison.LocalCoefficientHorn
+public import SerrePositivity.KST.Comparison.ChainPairContraction
 
 /-!
 # K-L2：比較定理の入口
