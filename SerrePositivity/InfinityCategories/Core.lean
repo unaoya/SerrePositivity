@@ -125,3 +125,17 @@ public import SerrePositivity.InfinityCategories.Core.CodiscreteNerve
 public import SerrePositivity.InfinityCategories.Core.PushoutDisjoint
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinder
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionPushoutProduct
+
+public import SerrePositivity.InfinityCategories.Core.RelativeEquivalenceCylinder
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionFunctorCriterion
+
+public import SerrePositivity.InfinityCategories.Core.RelativeCylinderDisjoint
+
+public import SerrePositivity.InfinityCategories.Core.RelativeMappingCylinder
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionUnderCriterion
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionUnderPushout

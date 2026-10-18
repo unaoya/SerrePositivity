@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6376,6 +6376,146 @@ lemma isPrecompositionEquivalence_equivalenceMappingCylinderOut {A B : SSet.{u}}
 lemma isPrecompositionEquivalence_iff_equivalenceMappingCylinderIn {A B : SSet.{u}}
     (f : A ⟶ B) : IsPrecompositionEquivalence f ↔
       IsPrecompositionEquivalence (equivalenceMappingCylinderIn f)
+
+end SerrePositivity.InfinityCategories
+```
+
+### A6 続き：相対写像円柱と固定基底の pushout の比較（2026-10-18）
+
+前合成の同値条件の pushout-product による保存を整備し、固定部分 A→B を持つ可逆な円柱を構成した。A→B が単射なら両端は単射であり前合成の同値条件を満たす。B→C の相対写像円柱では、A→B と A→C の両方が単射なら残った B の包含も単射となる。型での分離関数を二段の pushout に延長してこの単射性を証明した。
+
+これから、Under A の固定部分の包含が単射な対象間の関手は、単射の同値条件の保存を示せば全ての同値条件を保存することを得た。`isPrecompositionEquivalence_underPushout_map` と `isPrecompositionEquivalence_of_pushout_fixed_base` は、固定基底からの二つの包含が単射なら、対象間の比較射の同値条件を pushout 後に保つ。比較射自身に単射性は要求しない。基底も変化する一般の図式の貼り合わせはまだ証明していない。
+
+Core ビルド1792 jobs、累計1012宣言の標準3公理監査成功。既存の公開名・型は維持。fat join 比較・slice 比較の同値性と A6 の主定理は未完了。A4・A5 は未着手。新規29宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma IsPrecompositionEquivalence.pushoutObjObj {A B C D : SSet.{u}}
+    {i : A ⟶ B} [Mono i] (hi : IsPrecompositionEquivalence i) (j : C ⟶ D)
+    (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) :
+    IsPrecompositionEquivalence sq.ι
+
+lemma IsPrecompositionEquivalence.pushoutObjObj_right {A B C D : SSet.{u}}
+    (i : A ⟶ B) {j : C ⟶ D} [Mono j] (hj : IsPrecompositionEquivalence j)
+    (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) :
+    IsPrecompositionEquivalence sq.ι
+
+lemma mono_pushoutObjObj_ι {A B C D : SSet.{u}} (i : A ⟶ B) (j : C ⟶ D)
+    [Mono i] [Mono j] (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) : Mono sq.ι
+
+lemma equivalenceCylinderEndpoint_naturality {A B : SSet.{u}} (i : A ⟶ B) (b : Bool) :
+    i ≫ equivalenceCylinderEndpoint B b =
+      equivalenceCylinderEndpoint A b ≫ (i ▷ equivalenceInterval)
+
+noncomputable def relativeEquivalenceCylinder {A B : SSet.{u}} (i : A ⟶ B) : SSet.{u}
+
+noncomputable def relativeEquivalenceCylinderEndpoint {A B : SSet.{u}} (i : A ⟶ B) (b : Bool) :
+    B ⟶ relativeEquivalenceCylinder i
+
+lemma relativeEquivalenceCylinderEndpoint_fixed {A B : SSet.{u}} (i : A ⟶ B) (b : Bool) :
+    i ≫ relativeEquivalenceCylinderEndpoint i b =
+      pushout.inr (i ▷ equivalenceInterval) (fst A equivalenceInterval)
+
+noncomputable def relativeEquivalenceCylinderCorner {A B : SSet.{u}} (i : A ⟶ B) (b : Bool) :
+    (Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u})
+      i (equivalenceIntervalPoint b)).pt ⟶ B
+
+lemma relativeEquivalenceCylinderEndpoint_isPushout {A B : SSet.{u}} (i : A ⟶ B) (b : Bool) :
+    IsPushout (Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u})
+      i (equivalenceIntervalPoint b)).ι (relativeEquivalenceCylinderCorner i b)
+      (pushout.inl (i ▷ equivalenceInterval) (fst A equivalenceInterval))
+      (relativeEquivalenceCylinderEndpoint i b)
+
+instance relativeEquivalenceCylinderEndpoint_mono {A B : SSet.{u}} (i : A ⟶ B) [Mono i]
+    (b : Bool) : Mono (relativeEquivalenceCylinderEndpoint i b)
+
+lemma isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint {A B : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (b : Bool) :
+    IsPrecompositionEquivalence (relativeEquivalenceCylinderEndpoint i b)
+
+lemma isPrecompositionEquivalence_map_of_mono (F : SSet.{u} ⥤ SSet.{u})
+    (hF : ∀ {A B : SSet.{u}} (i : A ⟶ B) [Mono i],
+      IsPrecompositionEquivalence i → IsPrecompositionEquivalence (F.map i))
+    {A B : SSet.{u}} {f : A ⟶ B} (hf : IsPrecompositionEquivalence f) :
+    IsPrecompositionEquivalence (F.map f)
+
+lemma preservesPrecompositionEquivalences_iff_mono (F : SSet.{u} ⥤ SSet.{u}) :
+    (∀ {A B : SSet.{u}} (f : A ⟶ B),
+      IsPrecompositionEquivalence f → IsPrecompositionEquivalence (F.map f)) ↔
+    (∀ {A B : SSet.{u}} (f : A ⟶ B) [Mono f],
+      IsPrecompositionEquivalence f → IsPrecompositionEquivalence (F.map f))
+
+lemma relativeCylinder_endpoint_injective {A B C E R M : Type u}
+    (i : A ⟶ B) (f : B ⟶ C) (k : B × E ⟶ R) (l : A ⟶ R)
+    (r : R ⟶ M) (s : C ⟶ M) (e₀ e₁ : E) (he : e₁ ≠ e₀)
+    (hR : IsPushout (↾fun a : A × E ↦ (i a.1, a.2)) (↾Prod.fst) k l)
+    (hM : IsPushout (↾fun b ↦ k (b, e₀)) f r s)
+    (hc : Function.Injective (fun a ↦ f (i a))) :
+    Function.Injective (fun b ↦ r (k (b, e₁)))
+
+noncomputable def relativeEquivalenceCylinderProjection {A B : SSet.{u}} (i : A ⟶ B) :
+    relativeEquivalenceCylinder i ⟶ B
+
+lemma relativeEquivalenceCylinderEndpoint_projection {A B : SSet.{u}} (i : A ⟶ B) (b : Bool) :
+    relativeEquivalenceCylinderEndpoint i b ≫ relativeEquivalenceCylinderProjection i = 𝟙 B
+
+noncomputable def relativeEquivalenceMappingCylinder {A B C : SSet.{u}}
+    (i : A ⟶ B) (f : B ⟶ C) : SSet.{u}
+
+noncomputable def relativeEquivalenceMappingCylinderIn {A B C : SSet.{u}}
+    (i : A ⟶ B) (f : B ⟶ C) : B ⟶ relativeEquivalenceMappingCylinder i f
+
+instance relativeEquivalenceMappingCylinderIn_mono {A B C : SSet.{u}}
+    (i : A ⟶ B) (f : B ⟶ C) [Mono i] [Mono (i ≫ f)] :
+    Mono (relativeEquivalenceMappingCylinderIn i f)
+
+lemma relativeEquivalenceMappingCylinderIn_fixed {A B C : SSet.{u}}
+    (i : A ⟶ B) (f : B ⟶ C) :
+    i ≫ relativeEquivalenceMappingCylinderIn i f =
+      (i ≫ f) ≫ pushout.inr (relativeEquivalenceCylinderEndpoint i false) f
+
+noncomputable def relativeEquivalenceMappingCylinderOut {A B C : SSet.{u}}
+    (i : A ⟶ B) (f : B ⟶ C) : relativeEquivalenceMappingCylinder i f ⟶ C
+
+lemma relativeEquivalenceMappingCylinderIn_out {A B C : SSet.{u}}
+    (i : A ⟶ B) (f : B ⟶ C) :
+    relativeEquivalenceMappingCylinderIn i f ≫ relativeEquivalenceMappingCylinderOut i f = f
+
+lemma isPrecompositionEquivalence_relativeEquivalenceMappingCylinderOut {A B C : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (f : B ⟶ C) :
+    IsPrecompositionEquivalence (relativeEquivalenceMappingCylinderOut i f)
+
+lemma isPrecompositionEquivalence_iff_relativeEquivalenceMappingCylinderIn {A B C : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (f : B ⟶ C) : IsPrecompositionEquivalence f ↔
+      IsPrecompositionEquivalence (relativeEquivalenceMappingCylinderIn i f)
+
+lemma isPrecompositionEquivalence_map_under_of_mono {A : SSet.{u}}
+    (F : Under A ⥤ SSet.{u})
+    (hF : ∀ {X Y : Under A} [Mono X.hom] [Mono Y.hom] (f : X ⟶ Y) [Mono f.right],
+      IsPrecompositionEquivalence f.right → IsPrecompositionEquivalence (F.map f))
+    {X Y : Under A} [Mono X.hom] [Mono Y.hom] (f : X ⟶ Y)
+    (hf : IsPrecompositionEquivalence f.right) : IsPrecompositionEquivalence (F.map f)
+
+def monoPrecompositionEquivalences : MorphismProperty SSet.{u}
+
+instance monoPrecompositionEquivalences_isStableUnderCobaseChange :
+    monoPrecompositionEquivalences.{u}.IsStableUnderCobaseChange
+
+lemma isPrecompositionEquivalence_underPushout_map {A C : SSet.{u}} (g : A ⟶ C)
+    {X Y : Under A} [Mono X.hom] [Mono Y.hom] (f : X ⟶ Y)
+    (hf : IsPrecompositionEquivalence f.right) :
+    IsPrecompositionEquivalence (((Under.pushout g).map f).right)
+
+lemma isPrecompositionEquivalence_of_pushout_fixed_base {A B B' C D D' : SSet.{u}}
+    {i : A ⟶ B} {i' : A ⟶ B'} [Mono i] [Mono i'] {g : A ⟶ C}
+    {r : B ⟶ D} {s : C ⟶ D} {r' : B' ⟶ D'} {s' : C ⟶ D'}
+    (hP : IsPushout i g r s) (hP' : IsPushout i' g r' s')
+    (f : B ⟶ B') (h : D ⟶ D') (hi : i ≫ f = i')
+    (hr : r ≫ h = f ≫ r') (hs : s ≫ h = s')
+    (hf : IsPrecompositionEquivalence f) : IsPrecompositionEquivalence h
 
 end SerrePositivity.InfinityCategories
 ```
