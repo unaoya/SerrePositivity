@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせも整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせを整備し、任意の二つの単体集合の fat join 比較の普遍的な前合成の同値性も完成したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -7778,6 +7778,74 @@ lemma isPrecompositionEquivalence_of_coproduct_colimit
     (objs : J → SSet.{u}) (h0 : IsPrecompositionEquivalence (t.app (⊥_ SSet.{u})))
     (h : ∀ j, IsPrecompositionEquivalence (t.app (objs j))) :
     IsPrecompositionEquivalence (t.app (∐ objs))
+```
+
+### A6 続き（2026-10-18）：任意の二つの単体集合の fat join 比較
+
+新規13宣言。`isPrecompositionEquivalence_natComponent_of_stdSimplex` は、単射・pushout・可算余極限・単体の宇宙の wide pushout を保つ二つの関手の自然な比較について、初期対象と全標準単体での同値条件から任意の単体集合での条件を得る。証明は境界の次数の帰納、各次元のセルの族の coproduct、骨格の pushout、無限の骨格の余極限による。初期対象を含む join の包含の同型性も実装した。
+
+**`isPrecompositionEquivalence_fatJoinComparison (A B : SSet.{u}) : IsPrecompositionEquivalence (fatJoinComparison A B)` は任意の A、B に対して完成。** 定義を展開すれば、任意の `X : SSet.{u}` と `[Quasicategory X]` に対して `IsQCatEquivalence ((pre (fatJoinComparison A B)).app X)`。A、B には有限性・非空性・quasicategory 性を要求しない。標準単体の場合だけの条件付き成果ではない。Kerodon Theorem 4.6.2.8 の普遍的な前合成の同値性を証明した。
+
+検証：Core ビルド成功（1858 jobs）、続けて監査成功（累計1309宣言、標準3公理のみ）。既存の公開名・型は維持。slice から関手単体集合の錐の fiber への比較の同値性、相対終対象・極限錐との接続、任意図式の A6 主定理は未完了。A4・A5 は未着手。
+
+以下は namespace `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、`open scoped Simplicial` の下での正確な型。
+
+```lean
+lemma isIso_joinInr_of_isInitial (A : SSet.{u}) (hA : IsInitial A) (K : SSet.{u}) :
+    IsIso (joinInr A K)
+
+lemma isIso_joinInl_of_isInitial (K A : SSet.{u}) (hA : IsInitial A) :
+    IsIso (joinInl K A)
+
+lemma isIso_fatJoinInr_of_isInitial (A : SSet.{u}) (hA : IsInitial A) (K : SSet.{u}) :
+    IsIso (fatJoinInr A K)
+
+lemma isIso_fatJoinInl_of_isInitial (K A : SSet.{u}) (hA : IsInitial A) :
+    IsIso (fatJoinInl K A)
+
+lemma isPrecompositionEquivalence_fatJoinComparison_initial_left
+    (A : SSet.{u}) (hA : IsInitial A) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (fatJoinComparison A K)
+
+lemma isPrecompositionEquivalence_fatJoinComparison_initial_right
+    (K A : SSet.{u}) (hA : IsInitial A) :
+    IsPrecompositionEquivalence (fatJoinComparison K A)
+
+lemma isPrecompositionEquivalence_natComponent_of_iso
+    {F G : SSet.{u} ⥤ SSet.{u}} (t : F ⟶ G) {A B : SSet.{u}} (e : A ≅ B)
+    (hB : IsPrecompositionEquivalence (t.app B)) : IsPrecompositionEquivalence (t.app A)
+
+lemma isPrecompositionEquivalence_natComponent_of_pushout
+    {F G : SSet.{u} ⥤ SSet.{u}} (t : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape WalkingSpan F] [PreservesColimitsOfShape WalkingSpan G]
+    {A B C D : SSet.{u}} {f : A ⟶ B} [Mono f] {g : A ⟶ C} {r : B ⟶ D} {s : C ⟶ D}
+    (h : IsPushout f g r s) (hA : IsPrecompositionEquivalence (t.app A))
+    (hB : IsPrecompositionEquivalence (t.app B)) (hC : IsPrecompositionEquivalence (t.app C)) :
+    IsPrecompositionEquivalence (t.app D)
+
+lemma skeleton_eq_top_of_hasDimensionLT (X : SSet.{u}) (n : ℕ) [X.HasDimensionLT n] :
+    X.skeleton n = ⊤
+
+noncomputable def initialSkeletonIso (X : SSet.{u}) (n : ℕ) [X.HasDimensionLT n] :
+    (skeletonOfMono (initial.to X) n : SSet.{u}) ≅ X
+
+lemma isPrecompositionEquivalence_natComponent_of_stdSimplex
+    {F G : SSet.{u} ⥤ SSet.{u}} (t : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape WalkingSpan F] [PreservesColimitsOfShape WalkingSpan G]
+    [PreservesColimitsOfShape ℕ F] [PreservesColimitsOfShape ℕ G]
+    [∀ J : Type u, PreservesColimitsOfShape (WidePushoutShape J) F]
+    [∀ J : Type u, PreservesColimitsOfShape (WidePushoutShape J) G]
+    (h0 : IsPrecompositionEquivalence (t.app (⊥_ SSet.{u})))
+    (hstd : ∀ n, IsPrecompositionEquivalence (t.app (Δ[n] : SSet.{u})))
+    (X : SSet.{u}) : IsPrecompositionEquivalence (t.app X)
+
+lemma isPrecompositionEquivalence_fatJoinComparison_stdSimplex_left (n : ℕ) (B : SSet.{u}) :
+    IsPrecompositionEquivalence (fatJoinComparison (Δ[n] : SSet.{u}) B)
+
+lemma isPrecompositionEquivalence_fatJoinComparison (A B : SSet.{u}) :
+    IsPrecompositionEquivalence (fatJoinComparison A B)
 ```
 
 ## 7. A3 の工程（2026-10-18 追加）

@@ -255,3 +255,9 @@ public import SerrePositivity.InfinityCategories.Core.WideRelativeLifting
 public import SerrePositivity.InfinityCategories.Core.PrecompositionWideGluing
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionCoproductGluing
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinInitialComparison
+
+public import SerrePositivity.InfinityCategories.Core.CellularNaturalComparison
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinGeneralComparison
