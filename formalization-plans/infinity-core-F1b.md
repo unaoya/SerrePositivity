@@ -51,7 +51,7 @@ sorry・追加公理・文献入力は使わない。実施の経緯はコミッ
 
 ## 3. 現在地
 
-B1 は全パラメータの族の前層による自然性の模型で完了。次は B2。
+B1 は全パラメータの族の前層による自然性の模型で完了。B2 を実装中。
 単位・余単位、三角恒等式、恒等随伴、合成、左右随伴の
 h Fun での一意性、パラメータ付き adjunct 対応とその二変数の自然性を実装した。
 A1c の `homotopyNatTrans` と `qcatCellOfHomotopy` の評価の一致も証明した。
@@ -419,9 +419,30 @@ left fibration の straightening で構成する別レーンである。
 その **空間値二変数 ∞ 関手**の自然変換と今回の模型との比較は未形式化で、ここで証明済みとは
 主張しない。B1 の自然性の定義・判定にはその別レーンの型を使っていない。
 独立に選んだ各点の同値だけからの存在判定でもない。
-B2〜B5 は未完了。次は反射的部分 ∞ 圏と局所化の B2 に進む。
-対象ビルド（2158 jobs）・公理監査（1628 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 489 モジュールに straightening 依存がないことも確認した。
+B2〜B5 は未完了。B2 の現在地は次の通り。
+
+`ReflectiveSubcategory X P` は頂点条件 P が張る充満部分複体への関手と、包含を右随伴とする
+`QCatAdjunction` を保持する。余単位の可逆性・冪等性・局所化の普遍性をフィールドに追加しない。
+`localization` は反射を包含に続けた自己関手で、`unit` は元の随伴の h Fun の単位。
+`IsLocal x` はその単位成分が hX で可逆である条件。P の同型不変性を仮定していないため、
+P と局所対象を定義で同一視しない。`localization_mem` は反射の値が P に属することを保証する。
+`fullSubcomplexPinchedIso` は充満部分複体内の両端を持つ pinched 写像空間と元の圏の
+写像空間の厳密な同型である。元の pinched 単体の全頂点が両端のいずれかであることを使い、
+同じ単体を部分複体に持ち上げた。quasicategory 性も P の同型不変性も不要。
+これにより `isFullyFaithful_fullSubcomplexOnVertices_ι` が包含の写像空間の意味での
+充満忠実性を供給する。内部 Hom の全部分複体表示に適用して、
+`isFullyFaithful_fullSubcomplexFunctorInclusion` は任意のパラメータ A での後合成の
+充満忠実性を与える。`fullSubcomplexFunctorInclusionHoFullyFaithful` はその h Fun での帰結。
+`reflectionMappingEquivalence` は、反射像から部分圏内の y への写像空間と元の対象から
+y への写像空間の同値を、包含の厳密な同型と随伴の pinched 比較から構成する。
+この選んだ比較射を X 内での単位による前合成として認識する接続は後続。
+
+次は、包含による後合成の h Fun の充満忠実性と随伴対応から余単位の逆を構成し、
+反射関手の冪等性を h Fun の同型として導く。その後、局所対象と反射の本質的な像の同定、
+Kerodon Def 6.3.1.9 の局所化普遍性の型と反射的な場合の証明へ進む。
+これらの結論と一般の C[W⁻¹] の存在は現段階の宣言には含めない。
+対象ビルド（2161 jobs）・公理監査（1670 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 492 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -547,7 +568,8 @@ B2〜B5 は未完了。次は反射的部分 ∞ 圏と局所化の B2 に進む
 | `universalUnitCommaProjection_innerFibration`・`universalUnitCommaSection` と射影・標的の公式 | 中間始対象条件の下での普遍矢印への切断と inner fibration 性 | 実装済み |
 | `universalUnitCommaProjection_surjective` | 同じ条件の下での始域射影の頂点上全射性（同値性は未証明） | 実装済み |
 | 写像空間による特徴づけ | 全端点の族の前層の自然変換と各点の pinchedHom のホモトピー同値による随伴判定 | 実装済み（空間値 Hom 関手自体は別レーン F1h） |
-| B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
+| B2 | 反射・局所対象・包含の写像空間の充満忠実性・反射の写像空間の普遍性 | 進行中（余単位の可逆性・冪等性・局所化の普遍性は未実装） |
+| B3〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
 | `unitCommaUncurry`・`unitCommaHomotopy`・`unitCommaLift_homotopy` | comma の族の展開と厳密な回収 | 実装済み |
 | `unitCommaFiberCurry`・`unitCommaFiberFamilyEquiv` | 固定始域の族と標的図式・ホモトピーの組の厳密な全単射 | 実装済み |
 | `unitCommaFiberTarget_precomp`・`unitCommaFiberHomotopy_precomp`・`unitCommaFiber_hom_ext` | パラメータ自然性と二データによる外延性 | 実装済み |
@@ -693,3 +715,9 @@ B2〜B5 は未完了。次は反射的部分 ∞ 圏と局所化の B2 に進む
 | `NaturalMappingFamilyComparison`・`mappingArrowNaturalFamilyEquiv` | 端点を保つ通常の前層自然変換と coherent 矢印比較の厳密な全単射 | 実装済み（空間値二変数 ∞ 関手の自然変換との比較ではない） |
 | `NaturalMappingFamilyComparison.transformation_app/transformation_h/intervalMap_family_h` | 表示した射の作用から元の自然変換の任意のパラメータ成分を raw に回収 | 実装済み |
 | `NaturalMappingFamilyComparison.adjunctionOfPointwiseEquivalence`・`qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison`・`qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison` | 前層の自然変換を直接入力し各点の同値性のみで随伴を判定・構成 | 実装済み |
+| `fullSubcomplex_pinchedSimplex_mem/fullSubcomplexPinchedSimplexLift`・`fullSubcomplexPinchedIso` | 両端を持つ pinched 単体の厳密な持ち上げと写像空間の同型 | 実装済み |
+| `isFullyFaithful_fullSubcomplexOnVertices_ι` | 全部分複体の包含の写像空間による充満忠実性 | 実装済み（quasicategory 性不要） |
+| `isFullyFaithful_fullSubcomplexFunctorInclusion`・`fullSubcomplexFunctorInclusionHoFullyFaithful` | 任意のパラメータの関手 ∞ 圏と h Fun での包含による後合成の充満忠実性 | 実装済み |
+| `ReflectiveSubcategory`・`IsReflectiveSubcategory` | 頂点条件の全部分複体への選んだ左随伴とその存在 | 実装済み |
+| `ReflectiveSubcategory.localization/unit/IsLocal/localization_mem` | 反射自己関手・単位・単位成分の可逆性による局所対象・反射像の所属 | 実装済み（本質的な像との同定は後続） |
+| `ReflectiveSubcategory.reflectionMappingEquivalence` | 反射像から部分圏の対象への pinched 写像空間の普遍性 | 実装済み（X 内での単位前合成の射との照合は後続） |

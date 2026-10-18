@@ -157,3 +157,6 @@ public import SerrePositivity.InfinityCategories.F1B.MappingFamilies
 public import SerrePositivity.InfinityCategories.F1B.MappingFamilyPresheaves
 public import SerrePositivity.InfinityCategories.F1B.NaturalMappingFamilyComparison
 public import SerrePositivity.InfinityCategories.F1B.NaturalMappingFamilyAdjunction
+public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.Reflective
