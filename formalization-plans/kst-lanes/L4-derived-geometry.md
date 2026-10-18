@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の path 商と元の指定 Verdier 商の tria 比較を実装済み。層の DerivedDG・DqcDGModel も平坦分解後の商へ移行済み。商自体の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の644宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の698宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -624,6 +624,31 @@
 - tria の同値を商自体の H⁰ の同値と同一視しない。L4a 全体の完了は主張しない。
 - 対象ビルドと644宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 
+## 29. Lemma 13.5 の半自由な段階表示の明示（実装前記録）
+
+- 現在の分解は具体的な閉元被覆・生成元添加列から構成済み。今回はその段階表示を一般 API として明示する。
+- 生成元添加の Hom は、前段階の Hom と球生成元を交互に並べた有限語の直和。
+- 空語への射影は内部微分についての chain map だが、追加微分後には一般に chain map ではない。
+- この空語射影を次数ごとにのみ使い、前段階の包含が次数別に分裂単射であることを証明する。
+- 逐次列の全遷移射を単射とし、filtered colimit の完全性から各有限段階の極限への包含も単射とする。
+- 具体的な余極限の元の有限段表示と合わせて、段階列の網羅性を示す。
+- 各後続段階の生成元 t について、dt は前段階の指定閉元、増大像は指定原始元であることを明示する。
+- 一段の添加からの dg 関手と、前段階の dg 関手および指定境界を持つ生成元の像の組の全単射を構成する。延長・制限の往復を証明し、自由添加の普遍性を公開する。
+- 初期段階も、閉元ごとの球を生成辺とする自由 dg 圏であることを普遍性で明示する。球の直和からの射を各生成元の閉じた像と対応させ、初期自由圏の普遍性と合成する。
+- 「次数別に分裂」を複体の分裂と混同せず、K-flat 性の証明は §27 のフィルトレーションのものを維持する。
+- 未証明の半自由性・分解の存在を構造体へ入れない。一般の可換環・dg 圏に対する所有ディレクトリの定理とする。
+
+### 現在地
+
+- `CellEmbedding`：空語射影による次数別分裂単射と、添加した複体への包含の単射性を証明済み。
+- `StagePresentation`：段階ごとの生成元、指定微分、増大像を公開し、それらが極限でも維持されることを証明済み。
+- 全段階間の遷移射と各段階から極限への包含が単射であり、斉次元・閉元が有限段階から来ることを証明済み。
+- `CellUniversal`：添加した dg 圏からの関手と、前段階の関手および指定原始元のデータが全単射に対応する。順写像が実際の制限・評価であることも証明済み。
+- `InitialPresentation`：初期の自由 dg 圏からの関手が、対象写像と球生成元の閉じた像で分類されることを証明済み。
+- 任意の対象集合に対する商の供給は §27–28 の実装をそのまま維持する。K-flat 性を次数別分裂だけから再定義しない。
+- 対象ビルドと698宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 設計上の判断待ち・所有 import 閉包の破損はない。商自体の H⁰ と Mathlib 導来圏の比較は未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -708,6 +733,11 @@
 | `DGResolution.augmentation_surjective`・`augmentation_degree_epi` | DGResolution/Surjectivity | 実装・対象ビルド済み |
 | `DGResolution.triaEquivalence`・`triaEquivalenceIsTriangulated` | DGResolution/Pretriangulation・PretriangulationTriangles | 実装・対象ビルド済み |
 | `DGResolution.localKFlat`・`quotientTriaEquivalence`・`perfectQuotientEquivalence` | DGResolution/Construction・Quotient | 実装・対象ビルド済み |
+| `DGResolution.attachment_degree_splitMono`・`attachment_mono` | DGResolution/CellEmbedding | 実装・対象ビルド済み |
+| `DGResolution.stageGenerator_differential`・`limitGenerator_differential`・`limitGenerator_augmentation` | DGResolution/StagePresentation | 実装・対象ビルド済み |
+| `DGResolution.stageInclusion_degree_mono`・`homogeneous_finiteStage`・`cycle_finiteStage` | DGResolution/StagePresentation | 実装・対象ビルド済み |
+| `DGResolution.cellFunctorEquiv`・`cellFunctorEquiv_apply` | DGResolution/CellUniversal | 実装・対象ビルド済み |
+| `DGResolution.cycleCoverHomEquiv`・`initialFunctorEquiv` | DGResolution/InitialPresentation | 実装・対象ビルド済み |
 | `DGResolution.augmentation_triaImage_iff`・`augmentation_trW_eq` | DGResolution/SupportTransport・VerdierTransport | 実装・対象ビルド済み |
 | `DGResolution.verdierSquare`・`quotientToOriginalVerdierIsTriangulated` | DGResolution/VerdierTransport | 実装・対象ビルド済み |
 | `ResolvedComplexes`・`resolvedAcyclicComplexes`・`resolvedAugmentation_quasiEquivalence` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |

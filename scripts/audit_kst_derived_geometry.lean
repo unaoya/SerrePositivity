@@ -14,6 +14,18 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.cycleCoverHomEquiv,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.initialFunctorEquiv,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.attachment_degree_splitMono,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.stageGenerator_differential,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.stageGenerator_augmentation,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.stageInclusion_degree_mono,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.homogeneous_finiteStage,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.cycle_finiteStage,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.limitGenerator_differential,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.limitGenerator_augmentation,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.cellFunctorEquiv,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.cellFunctorEquiv_apply,
     `SerrePositivity.KST.DerivedGeometry.DGResolution.augmentation_triaImage_iff,
     `SerrePositivity.KST.DerivedGeometry.DGResolution.augmentation_trW_eq,
     `SerrePositivity.KST.DerivedGeometry.DGResolution.verdierSquare,

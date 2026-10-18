@@ -19,3 +19,6 @@ public import SerrePositivity.KST.DerivedGeometry.CoefficientComplexComparison
 public import SerrePositivity.KST.DerivedGeometry.DqcDGModel
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.Quotient
 public import SerrePositivity.KST.DerivedGeometry.ResolvedSheafComparison
+public import SerrePositivity.KST.DerivedGeometry.DGResolution.StagePresentation
+public import SerrePositivity.KST.DerivedGeometry.DGResolution.CellUniversal
+public import SerrePositivity.KST.DerivedGeometry.DGResolution.InitialPresentation
