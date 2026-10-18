@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,092宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,168宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -767,6 +767,22 @@
 - 集約ビルド（3,717 jobs）と1,160宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - 通常の準連接加群層の同値から非有界 Dqc の同値を直ちに結論しない。実際の層導来圏とのアフィン導来比較、Perf、T1–T3、有限被覆の導来降下は継続する。
 
+## 36. T1 の随伴による移送（実装前の紙上確認）
+
+- 文言：加法圏の随伴 F ⊣ G で G が指定宇宙の余積を保てば、余積への射が有限和に分解する意味で compact な X に対して F(X) も compact である。
+- 証明：随伴で射を G(∐Y) への射に移し、余積比較同型で ∐G(Y) へ送る。X の有限和分解を取り、随伴の逆で各成分を戻す。Hom の加法性と随伴の自然性で元の射への一致を示す。
+- 文言：さらに F が整数シフトと可換で G が保存的なら、全シフトの Hom の消滅で零対象を検出する族の F による像も零対象を検出する。
+- 証明：随伴と F のシフト同型で G(Y) への全シフトの Hom の消滅へ移し、元の族で G(Y) が零と判定する。G が同型を反映することを零自己射に適用して Y が零と示す。
+- 原典：Bondal–van den Bergh Thm 3.1.1、Toën Derived Azumaya §3.2 の係数版で使う形式的な部分。一般の随伴について証明し、実際の導来自由・忘却随伴の構成や BvdB の生成定理そのものの代用とはしない。T1 はこの補題だけでは完了しない。
+
+### 現在地
+
+- `coproductCompact_leftAdjoint`：加法的 Hom 随伴、余積比較同型、有限和の自然性から証明済み。
+- `isZero_of_conservative`・`shiftZeroDetecting_leftAdjoint`：零自己射の同型反映とシフト同型を使い証明済み。右随伴の忠実性は不要。
+- `coproductCompact_iff_moduleCompact`・`coproductCompact_iff_modulePerfect`：既存 dg 加群の compact 性と perfect 性へ接続済み。既存ファイルは変更しない。
+- 集約ビルド（3,720 jobs）と1,168宣言の公理監査に成功。標準3公理のみ、KTheory import なし。工程区切りの全体ビルドは所有 import 閉包の外にある `KST/SConstruction/ArCofiberFamily.lean` の91・125・130行の型エラーで終了コード1。所有閉包は成功しているため、他レーンを修正せず続行する。
+- これらは随伴の存在・生成性・余積保存を結論に組み込む条件つき一般定理であり、実際の層の非平坦な導来自由関手の構成と T1 自体は未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -895,6 +911,9 @@
 | `coefficientTensorSectionEnd`・`coefficientActionPresheaf` | DerivedGeometry/CoefficientTensorSectionAction・CoefficientActionPresheaf | 実装・対象ビルド済み |
 | `coefficientModuleOfAction`・`coefficientModuleOfActionForgetIso` | DerivedGeometry/CoefficientActionSheaf | 実装・対象ビルド済み |
 | `affineCoefficientTildeUnit`・`affineCoefficientEquivalence` | DerivedGeometry/AffineCoefficientEquivalence | 実装・対象ビルド済み |
+| `coproductCompact`・`coproductCompact_leftAdjoint` | DerivedGeometry/AdjunctionCompact | 実装・対象ビルド済み |
+| `isZero_of_conservative`・`shiftZeroDetecting_leftAdjoint` | DerivedGeometry/AdjunctionGenerators | 実装・対象ビルド済み |
+| `coproductCompact_iff_moduleCompact`・`coproductCompact_iff_modulePerfect` | DerivedGeometry/DGCompactComparison | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

@@ -33,3 +33,6 @@ public import SerrePositivity.KST.DerivedGeometry.SheafDerivedComparisonObjects
 public import SerrePositivity.KST.DerivedGeometry.DqcDerivedComparison
 public import SerrePositivity.KST.DerivedGeometry.AffineCoefficientFull
 public import SerrePositivity.KST.DerivedGeometry.AffineCoefficientEquivalence
+
+public import SerrePositivity.KST.DerivedGeometry.AdjunctionGenerators
+public import SerrePositivity.KST.DerivedGeometry.DGCompactComparison
