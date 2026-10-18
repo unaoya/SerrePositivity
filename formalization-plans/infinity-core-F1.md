@@ -2875,5 +2875,24 @@ def leftPinchedSimplexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) (n : ℕ) :
 noncomputable def cosliceFiberPinchedLeftIso {X : SSet.{u}} (x y : X _⦋0⦌) :
     vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y ≅ pinchedHomLeft x y
 
+noncomputable def pointedSpaceFiberPinchedLeftIso (s : SpaceInfinity.{u} _⦋0⦌) :
+    vertexFiber pointedSpaceProjection s ≅ pinchedHomLeft pointSpaceVertex s
+
+noncomputable def leftUnstraighteningFiberPinchedLeftIso {C : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
+    vertexFiber (leftUnstraighteningProjection F) c ≅
+      pinchedHomLeft pointSpaceVertex (F.app (Opposite.op ⦋0⦌) c)
+
+noncomputable def pointKanObjectHomIso (K : KanObject.{u}) :
+    SimplicialCategory.sHom pointKanObject K ≅ K.obj
+
+noncomputable def pointSpaceRightMappingEquivalence (K : KanObject.{u}) :
+    QCatEquivalence (pinchedHom pointSpaceVertex (spaceInfinityVertex K))
+      ((SSet.uliftFunctor.{u + 1, u}).obj K.obj)
+
+noncomputable def pointSpaceRightMappingEquivalenceAt (s : SpaceInfinity.{u} _⦋0⦌) :
+    QCatEquivalence (pinchedHom pointSpaceVertex s)
+      ((SSet.uliftFunctor.{u + 1, u}).obj (spaceInfinityObject s).obj)
+
 end SerrePositivity.InfinityCategories
 ```

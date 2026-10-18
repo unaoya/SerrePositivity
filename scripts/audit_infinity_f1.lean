@@ -660,3 +660,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.rev_extend_rev
 #check @SerrePositivity.InfinityCategories.leftPinchedSimplexEquiv
 #check @SerrePositivity.InfinityCategories.cosliceFiberPinchedLeftIso
+#check @SerrePositivity.InfinityCategories.pointedSpaceFiberPinchedLeftIso
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningFiberPinchedLeftIso
+#check @SerrePositivity.InfinityCategories.pointKanObjectHomIso
+#check @SerrePositivity.InfinityCategories.pointSpaceRightMappingEquivalence
+#check @SerrePositivity.InfinityCategories.pointSpaceRightMappingEquivalenceAt
