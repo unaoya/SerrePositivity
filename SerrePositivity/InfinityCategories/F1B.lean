@@ -144,3 +144,12 @@ public import SerrePositivity.InfinityCategories.F1B.LeftMappingArrow
 public import SerrePositivity.InfinityCategories.F1B.LeftMappingArrowFamilies
 public import SerrePositivity.InfinityCategories.F1B.MappingArrowComparison
 public import SerrePositivity.InfinityCategories.F1B.MappingArrowInterval
+public import SerrePositivity.InfinityCategories.F1B.IntervalPrefix
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowPrefix
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowUnitFormula
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowUnitComparison
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowAdjunction
+public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionRestriction
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowOfUnit
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowCriterion
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowNaturality
