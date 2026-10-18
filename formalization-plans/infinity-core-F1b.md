@@ -219,16 +219,24 @@ comma の正方形へ戻す。標的族と三角形の輸送から得た関手�
 `homotopyEquivalencePath` で戻すと元の path 成分そのものとなる。
 これを復元に代入した `unitComparisonFiberToCommaMapping` は、導来 fiber から comma の区間写像空間へ
 戻る実際の射である。正方形表示と元の始域座標への射影を厳密に保持する。
-**両合成のホモトピーと比較射の同値性は未証明。** 合成の Hom の等式から三角形を族ごとに
-選ぶだけでは、与えられた path の情報を保つ保証はない。順方向の比較の path は h Fun の等式から
-選んでいるため、今回保持した導来 fiber の path との両合成の整合性も別に検証する必要がある。
+**両合成のホモトピーと比較射の同値性は未証明。** 合成の Hom の等式だけから選ぶ
+path では元の二単体の情報を保つ保証がないため、順方向比較の path は、元の正方形の上下の
+三角形を指定して比較する構成 `unitCommaCoherentComparisonHomotopy` に変更した。
+この構成と、導来 fiber から復元する側の三角形の輸送との両合成の整合性は別に検証する必要がある。
 二方向の射の存在と終域の可縮性だけでは始域の可縮性は従わず、始対象性を結論してはならない。
 `exists_homotopy_relative_innerAnodyne` は inner anodyne な部分図式を固定して延長を比較する。
 `FunctorCompositionTriangle.relativeHomotopy` は同じ二辺を持つ三角形を内ホーン上で固定して結ぶ。
 `diagonalHomotopy` はその比較そのものを対角辺へ制限し、始点・終点の関手を時間方向にも
 固定する（`diagonalHomotopy_source/target`）。この構成は元の三角形を指定して比較できるため、
-h Fun の等式から任意の path を取り直す操作とは区別する。元の comma 正方形の上下の三角形へ
-適用して順方向の比較の coherence を検証する接続と、二つの合成のホモトピーは未完了。
+h Fun の等式から任意の path を取り直す操作とは区別する。
+`FunctorCompositionSquare.upperTriangle/lowerTriangle` は元の正方形の二単体をそのまま保持する。
+`intervalFamilyHomotopyOfSquare` は固定側辺の正方形を族のホモトピーへ転置し、
+`intervalFamilyHomotopyOfSquare_square` は入力正方形そのものの回収を保証する。
+`FunctorCompositionTriangle.familyHomotopy` で相対三角形比較を族に移し、
+`unitCommaCompositionUpperFamilyPath/LowerFamilyPath` は単位比較の像から共通対角を経て
+元の右辺に進む二経路となる。`unitCommaCoherentComparisonTriangle` はこの二つの指定経路と
+合成経路を持つ二単体であり、`unitCommaMappingComparisonHomotopy` はこの合成を使う。
+元の正方形を入力にした順方向比較の構成は接続済みだが、二つの合成のホモトピーは未証明。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -237,8 +245,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2033 jobs）・公理監査（945 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 365 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2038 jobs）・公理監査（1000 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 370 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -410,3 +418,10 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `exists_homotopy_relative_innerAnodyne` | inner anodyne な部分図式を固定した延長の相対ホモトピー | 実装済み |
 | `FunctorCompositionTriangle.horn_eq`・`relativeHomotopy` とホーン・面の制限公式 | 同じ二辺を持つ三角形を、二辺を厳密に固定して比較 | 実装済み |
 | `FunctorCompositionTriangle.diagonalHomotopy` と `source/target` | 指定三角形の比較に由来する対角辺のホモトピー、両端を時間方向にも固定 | 実装済み |
+| `FunctorCompositionSquare.diagonal`・`diagonal_curry`・`upperTriangle/lowerTriangle` | 元の正方形の対角辺と二つの二単体を厳密に取り出す | 実装済み |
+| `identityFunctorHomotopy`・`identityFunctorCompositionTriangle` | 指定辺の恒等合成を表す基準三角形 | 実装済み |
+| `intervalFamilyOfEdge_homotopy`・`intervalFamilyHomotopyOfSquare` と `_square` | 元の関手辺・固定側辺の正方形を族に戻し、ホモトピー代表・入力図式を回収 | 実装済み |
+| `FunctorCompositionTriangle.familyHomotopy` | 二辺固定の三角形比較を写像空間の族へ転置 | 実装済み |
+| `functorHomotopyComposite`・`functorHomotopyCompositeTriangle` | 指定した二つのホモトピーの合成と同じ二辺を持つ二単体 | 実装済み |
+| `unitCommaCompositionSquare`・`unitCommaCompositionDiagonalFamily` と `_homotopy` | 元の comma 正方形の四辺の認識・共通対角の族 | 実装済み |
+| `unitCommaCompositionUpperFamilyPath/LowerFamilyPath`・`unitCommaCoherentComparisonHomotopy/Triangle` | 元の上下の二単体を二辺固定で比較した経路とその合成、既存順方向比較に使用 | 実装済み（逆関係は未証明） |

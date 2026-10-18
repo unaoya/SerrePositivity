@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaComparisonHomotopy
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaCompositionPaths
 public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaLocalCriterion
 
@@ -19,7 +19,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- 概要：comma の普遍正方形の標的が標準単位比較で固定右辺へ移るホモトピー。
-方針：一般の正方形のホモトピーを普遍族に適用し、右辺の族が定値であることを使う。
+方針：元の普遍正方形の上下の二単体を二辺固定で比較し、得た二経路を合成する。
 規約：元の単位 η と右辺の頂点 w を固定する。
 使われ方：導来 fiber への比較射の可逆 path 成分。 -/
 noncomputable def unitCommaMappingComparisonHomotopy {X Y : SSet.{u}}
@@ -31,8 +31,8 @@ noncomputable def unitCommaMappingComparisonHomotopy {X Y : SSet.{u}}
           unitIntervalMap η x (unitCommaFiberTargetVertex G x w))
       (SSet.const (unitCommaArrowVertex G x w)) := by
   simpa only [unitCommaArrowFamily_eq_const] using
-    (unitCommaSquareTargetFamily_unit_homotopy η x w
-      (unitCommaFiberMappingSquare (𝟙 (intervalMappingSpace (unitCommaSectionVertex η x) w)))).some
+    (unitCommaCoherentComparisonHomotopy η x w
+      (unitCommaFiberMappingSquare (𝟙 (intervalMappingSpace (unitCommaSectionVertex η x) w))))
 
 /-- 概要：comma の区間写像空間から標準単位比較の導来 fiber への実際の射。
 方針：普遍正方形の標的とホモトピーで path 置換へ写し、右辺の固定頂点の fiber に入れる。
