@@ -281,3 +281,48 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.koszulFirstPageXIso
 #print axioms SerrePositivity.KST.ProExcision.koszulFirstPageXIso
 
+#check @SerrePositivity.KST.ProExcision.filteredHomologySpectralObject
+#print axioms SerrePositivity.KST.ProExcision.filteredHomologySpectralObject
+
+#check @SerrePositivity.KST.ProExcision.filtrationIntervalHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.filtrationIntervalHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.singleTensorShiftIso
+#print axioms SerrePositivity.KST.ProExcision.singleTensorShiftIso
+
+#check @SerrePositivity.KST.ProExcision.flatLeftTensorHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.flatLeftTensorHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.singleTensorHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.singleTensorHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageConeIso
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageConeIso
+
+#check @SerrePositivity.KST.ProExcision.truncationTensorConeIsoOfEq
+#print axioms SerrePositivity.KST.ProExcision.truncationTensorConeIsoOfEq
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageSingleIso
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageSingleIso
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageTermIso
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageTermIso
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageHomologicalTermIso
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageHomologicalTermIso
+
+#check @SerrePositivity.KST.ProExcision.kst_reindex_differential_degree
+#print axioms SerrePositivity.KST.ProExcision.kst_reindex_differential_degree
+
+#check @SerrePositivity.KST.ProExcision.scalarConeTensorIso
+#print axioms SerrePositivity.KST.ProExcision.scalarConeTensorIso
+
+#check @SerrePositivity.KST.ProExcision.totalKoszulTensorIso
+#print axioms SerrePositivity.KST.ProExcision.totalKoszulTensorIso
+
+#check @SerrePositivity.KST.ProExcision.tensorDegreeMap_apply_homogeneous
+#print axioms SerrePositivity.KST.ProExcision.tensorDegreeMap_apply_homogeneous
+
+#check @SerrePositivity.KST.ProExcision.tensorSplitBoundary_apply_homogeneous
+#print axioms SerrePositivity.KST.ProExcision.tensorSplitBoundary_apply_homogeneous
+

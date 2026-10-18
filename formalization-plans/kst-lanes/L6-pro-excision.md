@@ -45,7 +45,13 @@
 - 複体の射に関する切り詰め濾過の自然性と関手性を証明済み。
 - 隣接する項濾過の cone と、一項複体をテンソルした複体のホモロジーの同型まで証明済み。
 - Mathlib の有限行初頁をスペクトル対象の区間ホモロジーへ同定済み。
-- Mathlib の補助頁番号と KST の E₂ 頁の対応は未検証。微分・次頁の同定を次に行う。
+- 補助初頁の項を Koszul の -p 次項と K の s+2p 次ホモロジーのテンソルへ同定済み。
+- KST の (p,q) は Mathlib の (−q−2p,p) に対応し、補助初頁 2 は KST の E₁。
+- 添字の微分次数の計算を証明済み。補助頁 r は KST r−1 頁に対応する。
+- 補助初頁の微分と Koszul 微分の同定・そのホモロジーを KST E₂ と同定する部分は残件。
+- 全テンソル複体を既存 koszulComplexOn へ移す同型を列長帰納法で構成済み。
+- 次数ごと分裂する短完全列のテンソル境界を純テンソル上で計算済み。
+- 係数複体の微分の項が s≫r=0 により消えることを証明済み。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -96,6 +102,10 @@
 | truncationFiltrationFunctor | TruncationNaturality.lean | 検証済み | 複体の射に自然な項濾過 |
 | adjacentTensorConeHomologyIso | KoszulGraded.lean | 検証済み | 隣接する項濾過の cone のホモロジー計算 |
 | koszulFirstPageXIso | KoszulGraded.lean | 検証済み | 補助初頁の区間ホモロジー表示 |
+| koszulFirstPageTermIso | KoszulFirstPage.lean | 検証済み | 補助初頁の具体的な係数 |
+| koszulFirstPageHomologicalTermIso | KoszulFirstPage.lean | 検証済み | KST 添字での E₁ の係数 |
+| totalKoszulTensorIso | TotalKoszul.lean | 検証済み | 全テンソルと既存 Koszul 構成の同型 |
+| tensorSplitBoundary_apply_homogeneous | TensorBoundary.lean | 検証済み | テンソル境界の同次純テンソル上の計算 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
