@@ -161,3 +161,6 @@ public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDerivedNaturality
 public import SerrePositivity.KST.DerivedBlowup.DiagramCartesianCondition
 public import SerrePositivity.KST.DerivedBlowup.DiagramCartesianIsomorphism
 public import SerrePositivity.KST.DerivedBlowup.DiagramCartesianEnhancement
+public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnitCoherence
+public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnderlyingDiagram
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapComparisonComponents
