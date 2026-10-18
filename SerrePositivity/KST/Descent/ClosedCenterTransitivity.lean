@@ -77,6 +77,15 @@ noncomputable def closedBaseChangeSection (s : Y ⟶ X) (hs : s ≫ f = 𝟙 Y) 
     closedBaseChangeSection f i s hs ≫ (closedImmersionSquare f i).f₁₃ = 𝟙 Z :=
   closedImmersionPullbackLift_snd f i (i ≫ s) (𝟙 Z) _
 
+/-- 概要：中心上の切断の第一射影は包含と元の切断の合成（論文 補題 3.3）。
+方針：引き戻しの持ち上げの第一射影の公式を使う。
+規約：元の切断との指定された因子分解を保持する。
+使われ方：二つの閉部分の交わりへの切断の構成。 -/
+@[reassoc (attr := simp)] theorem closedBaseChangeSection_first
+    (s : Y ⟶ X) (hs : s ≫ f = 𝟙 Y) :
+    closedBaseChangeSection f i s hs ≫ (closedImmersionSquare f i).f₁₂ = i ≫ s :=
+  closedImmersionPullbackLift_fst f i (i ≫ s) (𝟙 Z) _
+
 /-- 概要：中心上の元の切断の移動が実際の引き戻し全体を覆う（論文 定理 3.1）。
 方針：閉中心上へ移した点の推移性と構成した切断を被覆判定に適用する。
 規約：像の被覆を別の仮定にしない。

@@ -55,6 +55,17 @@ noncomputable def closedCoverPullbackSquare : Square (FiniteTypeSchemes S) := by
     (closedImmersionSquare f i).f₁₂ (closedImmersionSquare f j).f₁₂
     (closedImmersionSquare_first_isClosedImmersion f j)
 
+/-- 概要：引き戻した閉被覆の交わりは有限型の圏内でも引き戻し（論文 補題 3.3）。
+方針：実際の閉中心の引き戻しの普遍性を使う。
+規約：比較の左上の指定対象を保持する。
+使われ方：元の切断から交わりの比較射の切断を構成する。 -/
+theorem closedCoverPullbackSquare_isPullback :
+    IsPullback (closedCoverPullbackSquare f i j).f₁₂ (closedCoverPullbackSquare f i j).f₁₃
+      (closedImmersionSquare f i).f₁₂ (closedImmersionSquare f j).f₁₂ :=
+  @closedImmersionSquare_isPullback S V (closedImmersionPullback f i)
+    (closedImmersionPullback f j) (closedImmersionSquare f i).f₁₂ (closedImmersionSquare f j).f₁₂
+    (closedImmersionSquare_first_isClosedImmersion f j)
+
 /-- 概要：引き戻した閉被覆を実際の抽象 blowup とする（論文 補題 3.3）。
 方針：始域の被約性と引き戻した被覆に閉和の構成を適用する。
 規約：引き戻した二つの部分と交わりの被約性は要求しない。
