@@ -23,7 +23,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・17 モジュール 747 宣言の公理監査成功。
+対象ビルド・21 モジュール 821 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -539,3 +539,39 @@ L9c 全体は未完了。次は切断スペクトルの Hom の塔を実装す�
 未完了：loop のホモトピー群の次数移動、整数次数 π_*、段の選択独立性。
 未完了：置換補題、スペクトルの fiber 列と長完全列、L9d・L9e。
 次は構成した写像空間の各段評価と通常の点つき射との比較を証明する。
+
+## 23. L9c の厳密射と写像空間の零次単体
+
+等化子で構成した源の制限と、点つき閉構造から得る pre が一致することを証明した。
+随伴を構成する Hom 同値は命題として比較し、定義的な一致を仮定しない。
+切断写像空間の極限へ整合族を持ち上げる普遍性を任意の単体集合パラメータで証明した。
+全段への評価による極限への射の一意性も証明済み。
+厳密可換なスペクトルの射を定義し、段ごとの合成で通常の圏を構成した。
+その射と構成済みの Kan 写像空間の零次単体を実際の同値で比較した。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedMapping.prePointed` | 源の制限を点つき射として扱う |
+| `PointedMapping.smashCurry_pre` | smash 第一変数と源の制限の随伴の自然性 |
+| `PointedMapping.prePointed_eq_closedPre` | 等化子の制限と閉構造の pre の一致 |
+| `PointedMapping.curry'_pre` | 頂点表示への源の制限の作用 |
+| `TruncatedMapping.familyStage` | 整合族の切断への持ち上げ |
+| `TruncatedMapping.familyLift` | 任意のパラメータから極限への持ち上げ |
+| `TruncatedMapping.familyLift_evaluation` | 持ち上げの評価の計算 |
+| `TruncatedMapping.total_hom_ext` | 全段評価による極限への射の一意性 |
+| `pointedHomVertexEquiv` | 点つき射と点つき内部 Hom の頂点の同値 |
+| `OmegaSpectrum.Hom` | 構造射と厳密可換な点つき射の族 |
+| `OmegaSpectrum.category` | 段ごとの合成による通常の圏 |
+| `OmegaSpectrum.evaluation` | 写像空間から段ごとの Hom への評価 |
+| `OmegaSpectrum.mappingStep_vertex` | 境界比較の頂点への作用 |
+| `OmegaSpectrum.homOfVertex` | 写像空間の頂点から厳密な射を復元 |
+| `OmegaSpectrum.vertexOfHom` | 厳密な射を整合族の頂点へ移す |
+| `OmegaSpectrum.vertex_ext` | 全段評価による頂点の一意性 |
+| `OmegaSpectrum.homVertexEquiv` | 厳密な射と写像空間の零次単体の同値 |
+
+参照：BF 1978 §2、HTT A.3.3。
+保存単位の対象ビルド 1561 jobs 成功。
+私有宣言を含む 21 モジュール 821 宣言で標準三公理のみ。
+未完了：単体的合成の極限への持ち上げと単位律・結合律、γ1 の適用。
+整数次数群・置換・fiber 列・有理化・hG・Tot は引き続き未完了。
+次は各段の点つき Hom の単体的合成を構成し、極限の普遍性で写像空間へ持ち上げる。

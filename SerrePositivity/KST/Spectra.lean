@@ -14,3 +14,4 @@ public import SerrePositivity.KST.Spectra.PointedMapping
 public import SerrePositivity.KST.Spectra.FibrationTower
 public import SerrePositivity.KST.Spectra.TruncatedMapping
 public import SerrePositivity.KST.Spectra.OmegaSpectrum
+public import SerrePositivity.KST.Spectra.SpectrumMappingVertices

@@ -29,7 +29,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.TruncatedMapping,
     `SerrePositivity.KST.Spectra.SuspensionLoop,
     `SerrePositivity.KST.Spectra.HomotopyIsomorphism,
-    `SerrePositivity.KST.Spectra.OmegaSpectrum]
+    `SerrePositivity.KST.Spectra.OmegaSpectrum,
+    `SerrePositivity.KST.Spectra.PointedMappingNaturality,
+    `SerrePositivity.KST.Spectra.TruncatedMappingUniversal,
+    `SerrePositivity.KST.Spectra.SpectrumMorphisms,
+    `SerrePositivity.KST.Spectra.SpectrumMappingVertices]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
