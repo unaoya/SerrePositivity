@@ -11,7 +11,10 @@ Koszul 解消性を証明済み。通常の普遍チャート環への underlyin
 既存の選択付き H⁰ 同型を使う複体比較とは別に、生成元を零へ送る標準添加射を構成済み。
 標準 H⁰=R/im d の計算、添加の成分ごとの積・単位保存、係数代数に関する自然性と
 普遍チャートへの標準添加射の擬同型性を証明済み。
-単一複体の dg 圏構造への束ね直しと全有限重なり図式の組立ては未完了。
+標準添加を係数変更の単位・外積底変更・零生成元射の合成による dg 関手として構成済み。
+空 Koszul の係数制限を通常のチャート環の単一複体へ同定すると、Hom 写像は標準添加射に一致する。
+既存 DerivedChartObject から通常の普遍チャートの局所 dg 模型への準同値まで証明済み。
+全有限重なり図式の組立ては未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -171,6 +174,11 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `exteriorQuotientAugmentation_eq_toSingle`・`exteriorQuotientAugmentation_quasiIso` | ExteriorQuotientAugmentation | 商への標準射と H⁰ 比較の一致 |
 | `exteriorKoszulAugmentation_naturality`・`exteriorKoszulAugmentation_quasiIso_of_quotient` | ExteriorAugmentationNaturality | 係数代数の表示変更と擬同型移送 |
 | `universalCanonicalAugmentation`・`universalCanonicalAugmentation_quasiIso` | UniversalCanonicalAugmentation | 通常の普遍チャートへの標準添加射と擬同型性 |
+| `exteriorAugmentationDGFunctor` | ExteriorAugmentationDGFunctor | 係数変更と零生成元射から構成する標準添加 dg 関手 |
+| `emptyKoszulRestrictionIso`・`emptyKoszulRestriction_unit_one` | EmptyKoszulRestriction | 空 Koszul の通常の係数単一複体への比較 |
+| `exteriorKoszulAugmentation_unique` | ExteriorAugmentationUniqueness | 単位の1保存による添加鎖写像の一意性 |
+| `exteriorAugmentationDGFunctor_map_comparison`・準同値の判定 | ExteriorAugmentationDGComparison | Hom 写像と標準添加鎖写像の一致 |
+| `universalChartAugmentationDGFunctor`・準同値性 | UniversalChartDGResolution | 既存 DerivedChartObject の通常の普遍チャートへの局所 dg 準同値 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -205,12 +213,14 @@ O(m) の単元整数冪による推移射と cocycle、および可逆性は coc
 既存 Koszul 解消定理の H⁰ 同型は選択を含むため、これを使う旧比較射の積・単位保存は主張しない。
 標準添加射を別途構成し、H⁰ と微分像の商の標準同型、成分ごとの積・単位保存、
 係数代数に関する自然性、普遍チャートの標準添加射の擬同型性を証明済み。
-単一複体の dg 圏構造への束ね直しと全重なり図式上での降下模型の組立ては未完了。
+標準添加の dg 関手を構成し、その Hom と標準添加鎖写像の一致を証明済み。
+既存 DerivedChartObject から、通常の普遍チャートを表す空 Koszul 模型の係数制限への
+局所 dg 準同値を証明済み。全重なり図式上での降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全847定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全886定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は標準添加射の dg 関手への束ね直しと、重なり図式との整合性。
+次の実装単位は dg 遷移の三重 cocycle と、全有限重なり図式の構成。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 

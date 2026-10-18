@@ -88,3 +88,8 @@ public import SerrePositivity.KST.DerivedBlowup.ExteriorHomologyZero
 public import SerrePositivity.KST.DerivedBlowup.ExteriorQuotientAugmentation
 public import SerrePositivity.KST.DerivedBlowup.ExteriorAugmentationNaturality
 public import SerrePositivity.KST.DerivedBlowup.UniversalCanonicalAugmentation
+public import SerrePositivity.KST.DerivedBlowup.ExteriorAugmentationDGFunctor
+public import SerrePositivity.KST.DerivedBlowup.EmptyKoszulRestriction
+public import SerrePositivity.KST.DerivedBlowup.ExteriorAugmentationUniqueness
+public import SerrePositivity.KST.DerivedBlowup.ExteriorAugmentationDGComparison
+public import SerrePositivity.KST.DerivedBlowup.UniversalChartDGResolution
