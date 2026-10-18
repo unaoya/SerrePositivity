@@ -27,7 +27,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・62 モジュール 1221 宣言の公理監査成功。
+対象ビルド・67 モジュール 1320 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -837,3 +837,43 @@ coherent nerve の導来写像空間との比較は引き続き γ3 後に扱う
 保存単位の対象ビルド 1832 jobs 成功。
 私有宣言を含む 62 モジュール 1221 宣言で標準三公理のみ。
 L9c は未完了。段の比較の整合性、列全体の置換、スペクトルの fiber 列と長完全列が残る。
+
+## 32. L9c の Kan Ω 列の cofibrant 置換
+
+構造射に単射性を要求しない `KanSequence` と、その随伴構造射による Ω 条件を定義した。
+厳密な列の射は随伴構造射に関しても可換であることを証明した。
+零段を元の段とし、各後続段で前段の比較射を suspension して元の構造射と合成する。
+その射の境界の小対象論法による分解を取り、中間対象を次の段、左因子を新しい構造射とした。
+写像柱に続けて単射化する代わりに、同じ BF の単射条件を境界 cell 分解で直接実現した。
+対象と Hom と Ω 条件の承認済み仕様に変更はない。
+元の標的段が Kan なので各中間段も Kan、各比較射は全ての単射への RLP を持つ。
+比較射は全基点 π_* 同型である。
+点つき Hom の後合成も全ての単射への RLP を保つことを相対積の充填から証明した。
+したがって比較射を loop に移しても全基点 π_* 同型である。
+随伴構造射の可換正方形と後の射の打ち消しから、置換した列の Ω 条件を証明した。
+構造射が単射でない Kan Ω 列から、承認済みの BF 対象への実際の置換が得られた。
+元がすでに Ω スペクトルの場合は厳密な比較射をスペクトルの射として束ねた。
+その比較射の全整数次数の π_* 同型性を証明した。
+また、L9b の fiber に点つき構造を付け、点つき包含と普遍的な持ち上げを構成した。
+スペクトルの fiber 列の Ω 条件と整数次数長完全列はまだ未完了。
+Kan でない列全体の fibrant 置換の構造射への接続も未完了。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `KanSequence` / `.OmegaCondition` | 単射性を要求しない Kan 列と Ω 条件 |
+| `KanSequence.replacementStage` | 境界 cell 分解による各段の帰納構成 |
+| `KanSequence.cofibrantReplacement` | 構造射が単射な Kan 列への置換 |
+| `KanSequence.replacementProjection` | 元の列への厳密な比較射 |
+| `KanSequence.replacementProjection_piIsomorphism` | 各段の全基点 π_* 同型 |
+| `PointedMapping.post_rlp_monomorphisms` | 点つき Hom の後合成による RLP 保存 |
+| `KanPiIsomorphism.of_comp` | 後の π_* 同型の打ち消し |
+| `KanSequence.Hom.adjoint_comm` | 随伴構造射に関する可換性 |
+| `KanSequence.Hom.omegaCondition_of_target` | RLP 比較射による Ω 条件の移送 |
+| `KanSequence.cofibrantOmegaSpectrum` | Kan Ω 列から BF 対象への置換 |
+| `OmegaSpectrum.cofibrantProjection_piIsomorphism` | 置換比較の全整数次数の π_* 同型 |
+| `pointedFiber` / `pointedFiberι` / `pointedFiberLift` | 点つき fiber と普遍性 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 1840 jobs 成功。
+私有宣言を含む 67 モジュール 1320 宣言で標準三公理のみ。
+L9c は未完了。次は段ごとの fiber を列にして Ω 条件と長完全列へ接続する。

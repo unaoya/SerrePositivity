@@ -53,4 +53,20 @@ theorem KanPiIsomorphism.comp {f : X ⟶ Y} {g : Y ⟶ Z}
   rw [h]
   exact (hg (f.app _ x) n).comp (hf x n)
 
+/-- 概要：後の射と合成が全基点 π_* 同型なら、前の射も全基点 π_* 同型。
+方針：指定基点での誘導写像の合成を計算し、後の全単射を打ち消す。
+規約：零次数を含み、基点の逆像を選ばない方向の打ち消し。
+使われ方：BF 1978 §2、HA §1.4.2。置換後の Ω 条件の検証。 -/
+theorem KanPiIsomorphism.of_comp {f : X ⟶ Y} {Z : SSet.{u}} [KanComplex Z]
+    {g : Y ⟶ Z} (hfg : KanPiIsomorphism (f ≫ g)) (hg : KanPiIsomorphism g) :
+    KanPiIsomorphism f := by
+  intro x n
+  have heq : KanHomotopy.map n (f ≫ g) (x := x) rfl =
+      KanHomotopy.map n g (x := f.app _ x) rfl ∘ KanHomotopy.map n f (x := x) rfl := by
+    funext a
+    exact KanHomotopy.map_comp n f rfl g rfl rfl a
+  have hb := hfg x n
+  rw [heq] at hb
+  exact hb.of_comp_left (hg (f.app _ x) n).injective
+
 end SerrePositivity.KST.Spectra

@@ -28,3 +28,5 @@ public import SerrePositivity.KST.Spectra.SpectrumHomotopyEquivalences
 public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
 public import SerrePositivity.KST.Spectra.PointedKanReplacement
 public import SerrePositivity.KST.Spectra.PointedFactorization
+public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
+public import SerrePositivity.KST.Spectra.PointedFiber
