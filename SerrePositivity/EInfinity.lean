@@ -75,3 +75,8 @@ public import SerrePositivity.EInfinity.Operad.FirstBlockSubstitution
 public import SerrePositivity.EInfinity.Operad.TensorNestedCoefficient
 public import SerrePositivity.EInfinity.Operad.SchurFirstBlockTensor
 public import SerrePositivity.EInfinity.Operad.SchurFirstBlockComposition
+public import SerrePositivity.EInfinity.Operad.FirstBlockGeneratorAssembly
+public import SerrePositivity.EInfinity.Operad.SchurFirstBlockGenerator
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerSplitTransport
+public import SerrePositivity.EInfinity.Operad.FirstSlotPowerAction
+public import SerrePositivity.EInfinity.Operad.SchurFirstSlotAction
