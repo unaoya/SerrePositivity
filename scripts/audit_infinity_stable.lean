@@ -1,6 +1,10 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.nonempty_functorIso_span_of_first_eq_terminal_second
+#print axioms SerrePositivity.InfinityCategories.hasColimit_span_of_zero_second
+#print axioms SerrePositivity.InfinityCategories.exists_pushoutRectangle_of_zeroTriangle
+#print axioms SerrePositivity.InfinityCategories.exists_zeroSourcePushoutSquare
 #print axioms SerrePositivity.InfinityCategories.sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence
 #print axioms SerrePositivity.InfinityCategories.hasColimit_iff_of_functorIso
 #print axioms SerrePositivity.InfinityCategories.pastingCornerBottom_isPushout
@@ -910,7 +914,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PastingBottomTriangle,
     `SerrePositivity.InfinityCategories.Stable.PastingCornerGluing,
     `SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence,
-    `SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso]
+    `SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso,
+    `SerrePositivity.InfinityCategories.Stable.SpanZeroBranchIso,
+    `SerrePositivity.InfinityCategories.Stable.SpecifiedCofiberSpan,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerPasting,
+    `SerrePositivity.InfinityCategories.Stable.BinaryCoproductSquare]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

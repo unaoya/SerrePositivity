@@ -47,6 +47,11 @@ public import SerrePositivity.InfinityCategories.Stable.PastingCornerGluing
 public import SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
 
+public import SerrePositivity.InfinityCategories.Stable.SpanZeroBranchIso
+public import SerrePositivity.InfinityCategories.Stable.SpecifiedCofiberSpan
+public import SerrePositivity.InfinityCategories.Stable.ZeroCornerPasting
+public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductSquare
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

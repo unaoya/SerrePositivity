@@ -284,16 +284,24 @@ S4 の三角構造は未完了。前加法構造・シフトの加法性、回�
 `pastingCornerGlue` とその二つの制限の式により、入力の四角形と合成二単体を厳密に保持できる。
 `exists_pushoutRectangle_of_left_and_bottom` はこの貼り合わせを余極限の延長に適用し、
 左四角形・底辺二単体・外側余錐を保つ右押し出し長方形を構成する。
-直和の存在へ適用するため、外側余錐を零射の cofiber から与える工程が残る。
-特に既存の cofiber の選択は左枝の零対象と辺を指定していないため、指定した零枝を持つ
-span の余極限の存在への輸送が必要。
+外側余錐を cofiber から与える工程も、下記の指定零枝の輸送によって完成した。
 この輸送の一般部分として、`sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence`
 を証明した。前合成の同値条件を持つ単射による coslice 制限は trivial Kan fibration である。
 join の相対的な和の包含が同値条件を持つことを、pushout と二対三則で直接証明した。
 `hasColimit_iff_of_functorIso` は任意の同型な図式の余極限の存在の同値を証明する。
 可逆円柱の両端の形状の同値と、指定した余極限余錐の厳密な延長を使う。
-指定零枝への適用には、同じ第一枝を持つ二つの span の間の FunctorIso を
-終対象への枝の始点固定比較から構成する工程が次に残る。
+`nonempty_functorIso_span_of_first_eq_terminal_second` により、第一枝が同じで
+第二枝が終対象へ向かう二つの span の FunctorIso を構成した。始点評価の fiber 内で
+二つの第二枝が終対象となることと、その終対象全体の可縮性を使う（Quasicategory のみ）。
+`hasColimit_span_of_terminal_second`・`hasColimit_span_of_zero_second` により、安定な X では
+指定した零枝を持つ span に余極限が存在する。
+`hasColimit_pastingOuterBase_of_zeroCorner` と `exists_pushoutRectangle_of_zeroTriangle` は
+これを貼り合わせに適用し、外側余極限の追加仮定を外した。
+`exists_zeroSourcePushoutSquare` は任意の二頂点 x・y について、(0,0) が零、
+(1,0) が x、(0,1) が y である押し出し四角形の存在を証明する。
+y の loop 四角形の右に、右下の零頂点から x への辺との合成二単体を貼って構成した。
+二つの入力頂点と実際の押し出し性まで完成。h C 上の二項余積としての普遍性・instance、
+双積・前加法構造への移行は次の工程。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -426,9 +434,10 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | TR3 | `exists_cofiberTriangleMorphism_of_comm`、`exists_cofiberDistinguishedTriangleMorphism`、`complete_cofiberDistinguishedTriangle_morphism`（Quasicategory、IsStable、指定した最初の二成分の可換正方形） | 定義済み distinguished 集合の全ての三角形について完成。Pretriangulated instance は未完了 |
 | 一点・区間の終点余極限 | `cosliceIdentityCone_isInitialVertex`、`cosliceIdentityCone_isColimit`、`isColimitCone_of_point_constant`、`edgeTerminalCocone_isColimit`（Quasicategory のみ） | 完了。恒等射の cofiber 四角形への適用も下記で完成 |
 | 恒等射の cofiber と TR1 | `squareColumnDiagram_isPushout`（Quasicategory）、`columnZeroTriangle`、`columnZeroTriangle_isCofiber`、`columnZeroTriangle_f_eq_id`（Quasicategory、HasZeroVertex）、`columnCofiberTriangleIso`、`contractibleTriangle_mem_cofiberDistinguishedTriangles`（Quasicategory、IsStable） | 可縮三角形の所属まで完了。定義済み distinguished 集合の TR1 が揃った |
-| 余極限の存在の転送・貼り合わせによる長方形の構成 | `exists_colimitCocone_extension_of_trivialRestriction`、`hasColimit_iff_of_trivialRestriction`、right anodyne・余極限付加版、`exists_pastingExtension_of_outerColimit`（Quasicategory） | 指定した余錐・頂点と五頂点図式を厳密に保持して完成。有限直和への適用は未完了 |
-| 左四角形と底辺二単体の貼り合わせ | `pastingCornerBottom_isPushout`、`pastingCornerGlue` と制限の式（値域に仮定なし）、`exists_pushoutRectangle_of_left_and_bottom`（Quasicategory、指定した左押し出しと外側基底の余極限） | 指定した左四角形・底辺二単体・外側余錐を保持する構成まで完成。外側余錐を cofiber から与える工程は未完了 |
-| 同値な形状・同型な図式の余極限の輸送 | `sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence`（Quasicategory、Mono、IsPrecompositionEquivalence）、`hasColimit_iff_of_functorIso`（Quasicategory、FunctorIso） | 一般の図式で完成。指定零枝を持つ span 間の同型の構成は未完了 |
+| 余極限の存在の転送・貼り合わせによる長方形の構成 | `exists_colimitCocone_extension_of_trivialRestriction`、`hasColimit_iff_of_trivialRestriction`、right anodyne・余極限付加版、`exists_pastingExtension_of_outerColimit`（Quasicategory） | 指定した余錐・頂点と五頂点図式を厳密に保持して完成。零始点の押し出し四角形への適用も下記で完成。h C の二項余積・前加法構造は未完了 |
+| 左四角形と底辺二単体の貼り合わせ | `pastingCornerBottom_isPushout`、`pastingCornerGlue` と制限の式（値域に仮定なし）、`exists_pushoutRectangle_of_left_and_bottom`（Quasicategory、指定した左押し出しと外側基底の余極限） | 指定した左四角形・底辺二単体・外側余錐を保持する構成まで完成。外側余錐を cofiber から与える工程も下記で完成 |
+| 同値な形状・同型な図式の余極限の輸送 | `sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence`（Quasicategory、Mono、IsPrecompositionEquivalence）、`hasColimit_iff_of_functorIso`（Quasicategory、FunctorIso） | 一般の図式で完成。指定零枝を持つ span 間の同型の構成も下記で完成 |
+| 指定零枝の cofiber と二項余積四角形の存在 | `nonempty_functorIso_span_of_first_eq_terminal_second`（Quasicategory）、`hasColimit_span_of_zero_second`、`exists_pushoutRectangle_of_zeroTriangle`、`exists_zeroSourcePushoutSquare`（Quasicategory、IsStable） | 指定した二頂点を持つ零始点の押し出しまで完成。h C の二項余積の普遍性・instance と前加法構造は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

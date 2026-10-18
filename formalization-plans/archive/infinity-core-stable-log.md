@@ -8244,3 +8244,126 @@ Lean で抽出した公開宣言の正確な型：
 自分の新規ファイルの警告は解消。`git diff --check` 成功。
 指定零枝の span 間の同型、有限直和・前加法構造・シフトの加法性・回転・八面体・
 Pretriangulated instance・S5〜S7 は未完了。TR1・TR3 は完成のまま。
+
+
+## 指定した零枝の cofiber と任意の二頂点を持つ零始点の押し出し
+
+`SpanZeroBranchIso.lean` は第一枝が同じで第二枝が終対象へ向かう二つの span の同型を構成する。
+始点評価の fiber の二つの終対象を、その終対象全体の可縮な部分複体で比較して span の族へ写す。
+fiber 自体に Quasicategory を仮定する必要はない。値域の Quasicategory のみを要求する。
+`SpecifiedCofiberSpan.lean` は第一枝の選ばれた cofiber との同型と前回の余極限の輸送を使い、
+指定した零枝を持つ span の余極限の存在を安定性から証明する。
+`ZeroCornerPasting.lean` は外側基底に適用して余極限の追加仮定を外し、零角の左押し出しと
+適合する底辺二単体から、左右と外側が押し出しの長方形を構成する。
+`BinaryCoproductSquare.lean` は y の loop 四角形の右に零頂点から x への辺を付加し、
+任意の x・y を厳密に指定した零始点の押し出し四角形を構成する。
+実際の四角形の存在と押し出し性まで完成。通常の h C の二項余積の普遍性と instance は未完了。
+
+Lean で抽出した公開宣言の正確な型：
+
+```lean
+@spanFunctorVertex_ext.{u_1} : ∀ {X : SSet.{u_1}}
+  {v w :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0) ⟹ X)
+      (Opposite.op.{1} { len := 0 })},
+  Eq.{u_1 + 1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1}) X)
+            (Opposite.op.{1} { len := 0 })))
+        v)
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+              (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1}) X)
+            (Opposite.op.{1} { len := 0 })))
+        w) →
+    Eq.{u_1 + 1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+                (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1}) X)
+              (Opposite.op.{1} { len := 0 })))
+          v)
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+                (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1}) X)
+              (Opposite.op.{1} { len := 0 })))
+          w) →
+      Eq.{u_1 + 1} v w
+@nonempty_functorIso_span_of_first_eq_terminal_second.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (F G : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X),
+  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1} F)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1} G) →
+    IsTerminalVertex.{u_1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1} F)
+              (Opposite.op.{1} { len := 0 })))
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →
+      IsTerminalVertex.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1} G)
+                (Opposite.op.{1} { len := 0 })))
+            ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →
+        Nonempty.{u_1 + 1} (FunctorIso.{u_1} F G)
+@hasColimit_span_of_terminal_second.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X),
+  IsTerminalVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1} p) (Opposite.op.{1} { len := 0 })))
+        ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →
+    HasColimit.{u_1} p
+@hasColimit_span_of_zero_second.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)) X),
+  IsZeroVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1} p) (Opposite.op.{1} { len := 0 })))
+        ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →
+    HasColimit.{u_1} p
+@hasColimit_pushoutSpan_of_zeroTriangle.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X), HasColimit.{u_1} (pushoutSpan.{u_1} (ZeroTriangle.square.{u_1} t))
+pastingOuterStandardSpan_leftEdge.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Iso.hom.{u_1, u_1 + 1} pastingOuterSpanIso.{u_1})
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SSet.Subcomplex.ι.{u_1} pastingOuterSpan.{u_1})
+        pastingOuterBaseToCorner.{u_1})))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareLeftEdge.{u_1} pastingCornerLeftInclusion.{u_1})
+@hasColimit_pastingOuterBase_of_zeroCorner.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (G : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} pastingCorner.{u_1}) X),
+  IsZeroVertex.{u_1} (squareVertex.{u_1} (pastingCornerLeftDiagram.{u_1} G) 0 1) →
+    HasColimit.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} pastingOuterBaseToCorner.{u_1} G)
+@exists_pushoutRectangle_of_zeroTriangle.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsCofiberSequence.{u_1} t →
+    ∀
+      (τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} (ZeroTriangle.square.{u_1} t))
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ) →
+        ∃ F,
+          Eq.{u_1 + 1} (pastingSquare.{u_1} F 2) (ZeroTriangle.square.{u_1} t) ∧
+            Eq.{u_1 + 1} (pastingBottomTriangle.{u_1} F) τ ∧
+              IsPushoutSquare.{u_1} (pastingSquare.{u_1} F 0) ∧ IsPushoutSquare.{u_1} (pastingSquare.{u_1} F 1)
+@exists_zeroSourcePushoutSquare.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  (x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  ∃ R,
+    IsZeroVertex.{u_1} (squareVertex.{u_1} R 0 0) ∧
+      Eq.{u_1 + 1} (squareVertex.{u_1} R 1 0) x ∧ Eq.{u_1 + 1} (squareVertex.{u_1} R 0 1) y ∧ IsPushoutSquare.{u_1} R
+```
+
+対象 SpanZeroBranchIso ビルド 1979 jobs、SpecifiedCofiberSpan ビルド 2006 jobs、
+ZeroCornerPasting ビルド 2029 jobs、BinaryCoproductSquare ビルド 2030 jobs、
+対象・Stable 集約ビルド 2171 jobs、公開型抽出、公理監査はすべて終了コード 0。
+監査は 178 モジュール・1447 宣言（生成・非公開宣言を含む）について標準三公理のみ。
+自分の新規ファイルの警告は解消。`git diff --check` 成功。
+h C の二項余積・双積・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、
+S5〜S7 は未完了。TR1・TR3 は完成のまま。
