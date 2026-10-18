@@ -18,6 +18,7 @@
 - 既存 Spectra の `PointedSimplicialSet.Basic` と `Pointed.InternalHom` の基礎定義を借りる。
 - この借用は Under による点つき対象と等化子による Hom のみで、安定モデル構造は含まない。
 - suspension・loop では既存 Spectra の円、smash、閉対称モノイダル構造の通常の圏論的構成も借りる。
+- 借用：既存 Pointed の自由基点の追加、自由基点の smash と直積の同型、tensor した余積の普遍性。
 - 豊穣構造の移送は既存 CategoryTheory の通常の lax monoidal 関手の補題を借りる。
 - 既存 HomotopicalAlgebra は読むだけで編集しない。
 - 借用：同ディレクトリの基点を含む指定部分を固定する垂直ホモトピー充填。
@@ -30,7 +31,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・274 モジュール 3113 宣言の公理監査成功。
+対象ビルド・280 モジュール 3194 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2357,3 +2358,32 @@ N の別定義の π_n や Sp の ∞ 極限性をこの段階の主張には用
 私有宣言を含む 274 モジュール 3113 宣言で標準三公理のみ。
 L9e は進行中。次は内部 Hom と end の交換を構成し、hG・Tot を Kan Ω 列と BF 対象へ束ねる。
 有理 Shapiro のスペクトルの実際の比較と π_* 同型性は未完了。
+
+## 81. L9e の点つき閉構造による end と loop の交換
+
+内部 Hom と end の交換、および一般の右随伴と end の交換を、射影と随伴の Hom 同値で実際に構成した。
+これにより点つき end を忘れた後の end と、点つき内部 Hom を end に送った図式を計算できる。
+既存の自由基点の追加と smash の基礎構成を読み取り専用で借り、自由基点を加えた源からの点つき Hom と通常の Hom の自然同型を得た。
+さらにその順射を元の余積成分への制限として固定し、逆射を新しい基点で定数となる延長で構成した。
+両逆関係と源・標的の自然性は、tensor した余積の二成分での計算で実証した。
+
+自由基点を加えた重みを源として、点つき閉モノイダル圏の enriched end を構成した。
+通常の Kan end との underlying 同型を二変数の図式の自然同型から作り、Kan 性を移した。
+内部 Hom と end を交換した後、二重内部 Hom の二つの源を交換すると、係数図式に内部 Hom を施した end との点つき同型になる。
+この同型は重み・係数に Kan 性を要求しない通常の圏の同型であり、loop と end の交換に使用する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `EndInternalHom.iso` | 閉モノイダル圏の内部 Hom と end の実際の同型 |
+| `EndRightAdjoint.iso` | 一般の右随伴と end の実際の同型 |
+| `FreePointedHom.natIso` | 自由基点の Hom を二つの随伴の比較で同定する自然同型 |
+| `FreePointedHomRestriction.restrict` / `extend` / `iso` | 元の成分への制限と基点での定数延長の具体的な同型 |
+| `FreePointedHomRestriction.natural_pre` / `natural_post` | 具体的な比較の両変数の自然性 |
+| `PointedWeightedEnd.obj` / `underlyingDiagramIso` / `underlyingIso` / `kanComplex` | 点つき enriched end と underlying Kan end の比較 |
+| `PointedWeightedEnd.cotensorDiagramIso` / `cotensorIso` | 点つき内部 Hom・loop と end の交換同型 |
+
+参照：HA §1.4.2、BF 1978 §2、Kerodon 7.5.4.6。
+保存単位の対象ビルド 3638 jobs 成功。
+私有宣言を含む 280 モジュール 3194 宣言で標準三公理のみ。
+L9e は進行中。次は点つき end の係数への作用と π_* 同型保存を整え、Ω 条件を証明して BF 対象へ束ねる。
+有理 Shapiro と通常の Tot との比較は引き続き未完了。

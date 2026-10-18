@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Spectra.EndInternalHom
+public import SerrePositivity.KST.Spectra.EndRightAdjoint
+public import SerrePositivity.KST.Spectra.FreePointedHom
+public import SerrePositivity.KST.Spectra.FreePointedHomRestriction
+public import SerrePositivity.KST.Spectra.PointedWeightedEnd
+public import SerrePositivity.KST.Spectra.PointedWeightedEndCotensor
+
 public import SerrePositivity.KST.Spectra.PointedHomotopyLimitInvariance
 
 public import SerrePositivity.KST.Spectra.GroupAction
