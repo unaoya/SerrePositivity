@@ -28,7 +28,9 @@ run_cmd do
     unless unexpected.isEmpty do throwError "Unexpected axioms in {name}: {unexpected}"
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
-  for expected in #[`SerrePositivity.KST.Descent.GeneralSchemeBaseChange,
+  for expected in #[`SerrePositivity.KST.Descent.GeneralSplitBaseChangeDescent,
+      `SerrePositivity.KST.Descent.BlowupSeparated,
+      `SerrePositivity.KST.Descent.GeneralSchemeBaseChange,
       `SerrePositivity.KST.Descent.FiniteTypeGeneralBaseChange,
       `SerrePositivity.KST.Descent.GeneralFiniteDimension,
       `SerrePositivity.KST.Descent.Axioms,
