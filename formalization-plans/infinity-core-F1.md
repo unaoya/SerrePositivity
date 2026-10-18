@@ -2502,5 +2502,34 @@ lemma coherentResolutionFaceProjection_naturality {n : ℕ}
       coherentResolutionFaceProjection T ≫
         Subcomplex.homOfLE ((stdSimplex.face_le_face_iff T U).mpr h)
 
+def subcomplexRestriction {X Y : SSet.{u}} (f : X ⟶ Y)
+    (A : X.Subcomplex) (B : Y.Subcomplex) (h : A ≤ B.preimage f) : A.toSSet ⟶ B.toSSet
+
+lemma subcomplexRestriction_ι {X Y : SSet.{u}} (f : X ⟶ Y)
+    (A : X.Subcomplex) (B : Y.Subcomplex) (h : A ≤ B.preimage f) :
+    subcomplexRestriction f A B h ≫ B.ι = A.ι ≫ f
+
+lemma subcomplexRestriction_naturality {X Y : SSet.{u}} (f : X ⟶ Y)
+    {A A' : X.Subcomplex} {B B' : Y.Subcomplex}
+    (h : A ≤ B.preimage f) (h' : A' ≤ B'.preimage f) (hA : A ≤ A') (hB : B ≤ B') :
+    Subcomplex.homOfLE hA ≫ subcomplexRestriction f A' B' h' =
+      subcomplexRestriction f A B h ≫ Subcomplex.homOfLE hB
+
+lemma subcomplexRestriction_isPrecompositionEquivalence_congr {X Y : SSet.{u}} (f : X ⟶ Y)
+    {A A' : X.Subcomplex} {B B' : Y.Subcomplex}
+    (h : A ≤ B.preimage f) (h' : A' ≤ B'.preimage f) (hA : A = A') (hB : B = B') :
+    IsPrecompositionEquivalence (subcomplexRestriction f A B h) ↔
+      IsPrecompositionEquivalence (subcomplexRestriction f A' B' h')
+
+lemma subcomplexRestriction_isPrecompositionEquivalence_sup {X Y : SSet.{u}} (f : X ⟶ Y)
+    (A₁ A₂ : X.Subcomplex) (B₁ B₂ : Y.Subcomplex)
+    (h₁ : A₁ ≤ B₁.preimage f) (h₂ : A₂ ≤ B₂.preimage f)
+    (hI : A₁ ⊓ A₂ ≤ (B₁ ⊓ B₂).preimage f)
+    (hU : A₁ ⊔ A₂ ≤ (B₁ ⊔ B₂).preimage f)
+    (eI : IsPrecompositionEquivalence (subcomplexRestriction f _ _ hI))
+    (e₁ : IsPrecompositionEquivalence (subcomplexRestriction f _ _ h₁))
+    (e₂ : IsPrecompositionEquivalence (subcomplexRestriction f _ _ h₂)) :
+    IsPrecompositionEquivalence (subcomplexRestriction f _ _ hU)
+
 end SerrePositivity.InfinityCategories
 ```
