@@ -39,3 +39,4 @@ public import SerrePositivity.EInfinity.Operad.DiagonalEquivariance
 public import SerrePositivity.EInfinity.Operad.SchurActionEquivariance
 public import SerrePositivity.EInfinity.Operad.CompositionNestedBase
 public import SerrePositivity.EInfinity.Operad.CompositionNestedTransport
+public import SerrePositivity.EInfinity.Operad.CompositionNested
