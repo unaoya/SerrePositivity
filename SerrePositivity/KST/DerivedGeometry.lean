@@ -76,3 +76,5 @@ public import SerrePositivity.KST.DerivedGeometry.RelativeAffineCech
 
 public import SerrePositivity.KST.DerivedGeometry.AffineSheafExtVanishing
 public import SerrePositivity.KST.DerivedGeometry.FiniteCoproductExt
+
+public import SerrePositivity.KST.DerivedGeometry.AffineQuasicoherentExt

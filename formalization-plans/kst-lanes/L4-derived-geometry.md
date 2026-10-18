@@ -1032,6 +1032,31 @@
 - 一般の有限余積を始域とする Ext の消滅、および各挿入への前合成での零の検出を証明した。
 - 基本開の全ての正次数 Ext の消滅を帰納する工程は継続中。
 
+## 50. 固定環加群層の Ext 消滅から右導来切断の消滅（実装前記録）
+
+- 文言：Ext^{n+1}(L_U,F)=0 なら、選んだ injective 分解の U 上の切断複体は n+1 次数で完全。従って実際の右導来切断 R^{n+1}Γ(U,F) は零対象。
+- 方針：切断 cocycle を自由層から分解への射へ直し、`extMk` の類の消滅を `extMk_eq_zero_iff` で射の境界表示に直す。Hom と切断の標的自然性で切断の境界表示を得る。分解による右導来関手の既証の比較同型で零対象を移す。
+- 固定環の加群層圏の結論である。O_X や H_X 加群層圏との導来比較には、忘却関手が injective 分解による計算と両立することの証明を別に要求する。非平坦 H で O_X への忘却が injective を保つとは仮定しない。
+- 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2。
+
+### §50 の実装の現在地
+
+- 保存検証：集約対象ビルド 3922 jobs 成功、公理監査 1748 宣言。標準3公理のみ、KTheory import なし。
+
+- 自由層の形式的有限余積について、実際の層化の余積比較を用いた Ext 消滅と零の検出を証明した。一元余積の増大先と元の自由層の比較も各挿入と両立させた。
+- 有限基本開の Čech 完全性から基本開上の全正次数 Ext 消滅を導く強帰納が完成した。低次数の帰納仮定は有限交叉の自由層と有限余積へ適用し、各類が零になる有限被覆に沿う制限単射性で結論する。
+- 準連接 O 加群層を固定 A 加群層として見る場合に適用し、各基本開で実際の正次数右導来切断が零対象であることを証明した。
+- 係数環層の加群圏でのアフィン導来比較、T1–T3、Perf、RHom は引き続き未完了。
+
+## 51. 環層上の自由 Yoneda 加群による同じ Čech 次元移動（実装前記録）
+
+- 文言：任意の実際の環層 B 上で、開 U の切断を表す自由層 L^B_U を、`PresheafOfModules.free B.obj` と Yoneda、実際の加群層化の合成として構成する。任意の開被覆の自由増大 Čech は全次数で完全。
+- 方針：開 W で評価した自由前層は B(W) 上の Hom(W,U) の自由加群である。被覆元内では既存の表現可能自由 Čech の追加退化を評価比較で移す。被覆外では基底が空で零。基礎アーベル群前層の層化の局所完全性と、加群層化が基礎層化と可換である比較を経て、忠実で完全な基礎アーベル群層への忘却により完全性を反映する。
+- Hom(L^B_U,F) と切断は加法群として比較し、局所境界から Ext 類の局所消滅を証明する。同じ有限次元移動により、準連接基礎層の Čech 完全性から B 加群層圏での基本開上の正次数 Ext・右導来切断の消滅へ進む。
+- これは既存の層の複体・acyclic dg 商・Dqc の定義を維持した証明の具体化である。B から O_X への忘却が injective を保つとは仮定しない。H の非平坦性に関する追加仮定を導入しない。
+- 任意の環層についての自由分解と、具体的 H_X の準連接 Čech 完全性の適用を別の証明にする。存在・完全性・導来比較を構造体の未証明フィールドにしない。
+- 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7・§13-11。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1225,6 +1250,10 @@
 | `relativeAffineCech_exactAt`・`relativeAffineCoefficientCech_exactAt` | DerivedGeometry/RelativeAffineCech | 実装・対象ビルド済み |
 | `moduleSheafExt_locallyZero`・`moduleSheafExt_finiteBasicOpenVanishing` | DerivedGeometry/SheafExtLocalVanishing・AffineSheafExtVanishing | 実装・対象ビルド済み |
 | `finiteCoproduct_ext_eq_zero`・`finiteCoproduct_ext_subsingleton` | DerivedGeometry/FiniteCoproductExt | 実装・対象ビルド済み |
+| `freeFormalSheaf_ext_eq_zero`・`freeFormalSheaf_point_precomp_eq_zero` | DerivedGeometry/FreeFormalExt | 実装・対象ビルド済み |
+| `affineExt_subsingleton_of_cech` | DerivedGeometry/AffineExtCartan | 実装・対象ビルド済み |
+| `rightDerivedSections_isZero_of_ext_subsingleton` | DerivedGeometry/SectionsFromExt | 実装・対象ビルド済み |
+| `affineQuasicoherent_fixedRightDerived_isZero` | DerivedGeometry/AffineQuasicoherentExt | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
