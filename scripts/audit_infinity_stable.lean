@@ -1081,6 +1081,23 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transpose_objIso_inv
 #print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.connecting_eq_neg_suspension
 
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.triangle_mor₃_eq_neg_shift
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.triangleIsoRotate
+#print axioms SerrePositivity.InfinityCategories.stableReverseSimplex_double
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.op
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.op_isCofiber
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.unop
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.unop_isCofiber
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberPredecessor
+#print axioms SerrePositivity.InfinityCategories.cofiberTriangleIsoOfFunctorIso
+#print axioms SerrePositivity.InfinityCategories.nonempty_cofiberTriangleIso_of_bottom_eq
+#print axioms SerrePositivity.InfinityCategories.cofiberTriangle_rotate_mem
+#print axioms SerrePositivity.InfinityCategories.rotate_mem_cofiberDistinguishedTriangles
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberTriangle_rotate_iso
+#print axioms SerrePositivity.InfinityCategories.cofiberTriangle_invRotate_mem
+#print axioms SerrePositivity.InfinityCategories.invRotate_mem_cofiberDistinguishedTriangles
+#print axioms SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles_rotate_iff
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -1405,7 +1422,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PastingOuterToRightHomotopy,
     `SerrePositivity.InfinityCategories.Stable.CofiberRotationComparison,
     `SerrePositivity.InfinityCategories.Stable.SuspensionAmbientHom,
-    `SerrePositivity.InfinityCategories.Stable.CofiberRotationSign]
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationSign,
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationTriangle,
+    `SerrePositivity.InfinityCategories.Stable.CofiberPredecessor,
+    `SerrePositivity.InfinityCategories.Stable.CofiberTriangleIso,
+    `SerrePositivity.InfinityCategories.Stable.DistinguishedRotation]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

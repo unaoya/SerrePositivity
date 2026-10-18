@@ -224,6 +224,11 @@ public import SerrePositivity.InfinityCategories.Stable.CofiberRotationCompariso
 public import SerrePositivity.InfinityCategories.Stable.SuspensionAmbientHom
 public import SerrePositivity.InfinityCategories.Stable.CofiberRotationSign
 
+public import SerrePositivity.InfinityCategories.Stable.CofiberRotationTriangle
+public import SerrePositivity.InfinityCategories.Stable.CofiberPredecessor
+public import SerrePositivity.InfinityCategories.Stable.CofiberTriangleIso
+public import SerrePositivity.InfinityCategories.Stable.DistinguishedRotation
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
