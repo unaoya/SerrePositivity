@@ -108,4 +108,9 @@ public import SerrePositivity.KST.SConstruction.DiagonalIterationNaturality
 public import SerrePositivity.KST.SConstruction.DiagonalIterationRealization
 public import SerrePositivity.KST.SConstruction.CanonicalIteratedPathBoundary
 
+public import SerrePositivity.KST.SConstruction.ReducedPathDiagonal
+public import SerrePositivity.KST.SConstruction.ReducedPathBoundary
+public import SerrePositivity.KST.SConstruction.PointedContractibility
+public import SerrePositivity.KST.SConstruction.PointedIteratedPath
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -4646,3 +4646,151 @@ def kanIteratedPathBoundary (r : ℕ) (X : StableModel.{u}) :
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3081 jobs）、公理監査成功（1193 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.39 定数経路を潰す点つき反復経路と実際の可縮 Kan 模型
+
+一般の単体的単体集合の経路実現について、元の零段からの定数経路の切断は
+射影との合成が恒等であるため単射であることを証明した。その切断の像を cofiber で一点へ潰し、
+reducedPathDiagonal とその図式に対する関手を構成した。
+経路図式自身の零次段（元の第一段）全体を潰すのではなく、元の零段から来る定数経路の像のみを潰している。
+元の零段が弱可縮なら、この商射影は全 anodyne 反転関手で可逆となる。零段自体の Kan 性は不要。
+
+先頭を忘れる経路境界は、定数切断を元の零段の対角への包含 diagonalZeroColumn に送る。
+この厳密な式から、境界を reducedPathDiagonal X → reducedDiagonal X という点つき射に降ろした。
+商射影の前で元の境界を回収する式と、任意の単体的図式の写像に対する厳密な自然性を証明し、
+境界を自然変換 reducedPathDiagonalBoundaryNat にまとめた。
+標的はこの時点では一つの零方向を潰す reducedDiagonal であり、既存の全零方向の商との比較は未証明。
+
+具体的な反復 S の図式に適用し、chosen zero を使わない点つき反復経路の関手
+pointedIteratedPathFunctor r を構成した。元の零段は S₀X の反復実現なので弱可縮であり、
+元の反復経路から点つき商への射影は弱同値となる。したがってこの点つき商自体も弱可縮である。
+点つき境界とその入力への自然性は一般の自然変換の前合成から得ている。
+
+L9 の点つき Kan 置換を後合成して pointedIteratedPathKanFunctor r を構成した。
+置換の anodyne 単位と元の点つき経路の弱可縮性から、その Kan 模型も弱可縮である。
+一般に弱可縮な点つき Kan 複体について、局所化の比較を実際の全基点 π_* 同型へ移し、
+点への Kan fibration の相対 Whitehead の充填から全境界の充填を導く一般補題を証明した。
+これにより pointedIteratedPathKan_isContractibleKan r X は追加仮定なしで証明済み。
+Kan な点つき境界も自然変換にまとめ、可縮 Kan な全空間からの実際の射を得た。
+
+今回の点つき境界の標的は最内側の一つの零方向を潰した模型の Kan 置換。
+既存の全零境界商の Kan 模型への点つき比較、前節の canonicalIteratedPathBoundary の降下との照合、
+homotopy fiber の計算と Ω の比較は未完了。可縮 Kan な全空間の構成だけで Ω 条件を結論してはいない。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u v w`、
+`open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下の正確な型。
+
+```lean
+instance simplicialPathDiagonalSection_mono (X : SimplicialObject SSet.{u}) :
+    Mono (simplicialPathDiagonalSection X)
+
+lemma simplicialPathDiagonalSection_naturality {X Y : SimplicialObject SSet.{u}} (f : X ⟶ Y) :
+    f.app (Opposite.op ⦋0⦌) ≫ simplicialPathDiagonalSection Y =
+      simplicialPathDiagonalSection X ≫
+        simplicialDiagonalFunctor.map (Functor.whiskerLeft SimplexPrefix.functor.op f)
+
+def reducedPathDiagonal (X : SimplicialObject SSet.{u}) : PointedSimplicialSet.{u}
+
+def pathDiagonalReductionQuotient (X : SimplicialObject SSet.{u}) :
+    simplicialDiagonalFunctor.obj (simplicialPath X) ⟶ (reducedPathDiagonal X).right
+
+def reducedPathDiagonalMap {X Y : SimplicialObject SSet.{u}} (f : X ⟶ Y) :
+    reducedPathDiagonal X ⟶ reducedPathDiagonal Y
+
+lemma reducedPathDiagonalMap_quotient {X Y : SimplicialObject SSet.{u}} (f : X ⟶ Y) :
+    pathDiagonalReductionQuotient X ≫ (reducedPathDiagonalMap f).right =
+      simplicialDiagonalFunctor.map (Functor.whiskerLeft SimplexPrefix.functor.op f) ≫
+        pathDiagonalReductionQuotient Y
+
+lemma pathDiagonalReductionQuotient_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    (X : SimplicialObject SSet.{u})
+    (hX : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (X.obj (Opposite.op ⦋0⦌))))) :
+    IsIso (L.map (pathDiagonalReductionQuotient X))
+
+def reducedPathDiagonalFunctor :
+    (SimplexCategoryᵒᵖ ⥤ SSet.{u}) ⥤ PointedSimplicialSet.{u}
+
+lemma simplicialPathDiagonalSection_boundary (X : SimplicialObject SSet.{u}) :
+    simplicialPathDiagonalSection X ≫ simplicialPathDiagonalBoundary X = diagonalZeroColumn X
+
+def reducedPathDiagonalBoundary (X : SimplicialObject SSet.{u}) :
+    reducedPathDiagonal X ⟶ reducedDiagonal X
+
+lemma reducedPathDiagonalBoundary_quotient (X : SimplicialObject SSet.{u}) :
+    pathDiagonalReductionQuotient X ≫ (reducedPathDiagonalBoundary X).right =
+      simplicialPathDiagonalBoundary X ≫ diagonalReductionQuotient X
+
+lemma reducedPathDiagonalBoundary_naturality {X Y : SimplicialObject SSet.{u}} (f : X ⟶ Y) :
+    reducedPathDiagonalMap f ≫ reducedPathDiagonalBoundary Y =
+      reducedPathDiagonalBoundary X ≫ reducedDiagonalMap f
+
+def reducedPathDiagonalBoundaryNat : reducedPathDiagonalFunctor.{u} ⟶ reducedDiagonalFunctor
+
+lemma pointedIsContractibleKan_of_localized_toPoint (Z : PointedSimplicialSet.{u})
+    [KanComplex Z.right]
+    (hZ : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit Z.right))) :
+    IsContractibleKan Z.right
+
+def iteratedSRealizationDiagramFunctor (r : ℕ) :
+    StableModel.{u} ⥤ (SimplexCategoryᵒᵖ ⥤ SSet.{u})
+
+def pointedIteratedPathFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+def pointedIteratedPathRealization (r : ℕ) (X : StableModel.{u}) : PointedSimplicialSet.{u}
+
+def pointedIteratedPathQuotient (r : ℕ) (X : StableModel.{u}) :
+    iteratedPathRealization r X ⟶ (pointedIteratedPathRealization r X).right
+
+lemma pointedIteratedPathQuotient_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L) (r : ℕ) (X : StableModel.{u}) :
+    IsIso (L.map (pointedIteratedPathQuotient r X))
+
+lemma pointedIteratedPath_toPoint_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (pointedIteratedPathRealization r X).right))
+
+def pointedIteratedPathBoundaryNat (r : ℕ) : pointedIteratedPathFunctor.{u} r ⟶
+    iteratedSRealizationDiagramFunctor r ⋙ reducedDiagonalFunctor
+
+def pointedIteratedPathBoundary (r : ℕ) (X : StableModel.{u}) :
+    pointedIteratedPathRealization r X ⟶ reducedDiagonal (iteratedSRealizationDiagram r X)
+
+lemma pointedIteratedPathBoundary_quotient (r : ℕ) (X : StableModel.{u}) :
+    pointedIteratedPathQuotient r X ≫ (pointedIteratedPathBoundary r X).right =
+      iteratedPathRealizationBoundary r X ≫
+        diagonalReductionQuotient (iteratedSRealizationDiagram r X)
+
+def pointedIteratedPathKanFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+instance pointedIteratedPathKan_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (((pointedIteratedPathKanFunctor r).obj X).right)
+
+lemma pointedIteratedPathKan_toPoint_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map
+      (toUnit (((pointedIteratedPathKanFunctor r).obj X).right)))
+
+lemma pointedIteratedPathKan_isContractibleKan (r : ℕ) (X : StableModel.{u}) :
+    IsContractibleKan (((pointedIteratedPathKanFunctor r).obj X).right)
+
+def pointedIteratedPathKanBoundaryNat (r : ℕ) : pointedIteratedPathKanFunctor.{u} r ⟶
+    (iteratedSRealizationDiagramFunctor r ⋙ reducedDiagonalFunctor) ⋙
+      Spectra.PointedKanReplacement.functor
+
+def pointedIteratedPathKanBoundary (r : ℕ) (X : StableModel.{u}) :
+    (pointedIteratedPathKanFunctor r).obj X ⟶
+      Spectra.PointedKanReplacement.obj (reducedDiagonal (iteratedSRealizationDiagram r X))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。定数経路の像を潰した自然な点つき反復経路、
+一つの零方向の商を標的にした自然な点つき境界、その Kan 置換と全空間の実際の可縮 Kan 性まで証明済み。
+全零境界商を標的とする境界への点つき比較、homotopy fiber と loop の比較、
+既存の suspension 構造射との照合、正の段の Ω 条件・delooping、
+負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3085 jobs）、公理監査成功（1222 宣言、標準三公理のみ）。追加公理・sorry なし。

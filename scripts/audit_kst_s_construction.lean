@@ -3252,3 +3252,63 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.reducedIteratedPathBoundary
 #check @SerrePositivity.KST.SConstruction.kanIteratedPathBoundary
 #print axioms SerrePositivity.KST.SConstruction.kanIteratedPathBoundary
+
+-- 定数経路を潰す点つき反復経路・自然な境界・実際の可縮 Kan 性
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection_mono
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection_mono
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection_naturality
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection_naturality
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonal
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonal
+#check @SerrePositivity.KST.SConstruction.pathDiagonalReductionQuotient
+#print axioms SerrePositivity.KST.SConstruction.pathDiagonalReductionQuotient
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalMap
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalMap
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalMap_quotient
+#check @SerrePositivity.KST.SConstruction.pathDiagonalReductionQuotient_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.pathDiagonalReductionQuotient_image_isIso
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalFunctor
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalFunctor
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection_boundary
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalSection_boundary
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalBoundary
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalBoundary
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalBoundary_quotient
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalBoundary_quotient
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalBoundary_naturality
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalBoundary_naturality
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalBoundaryNat
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalBoundaryNat
+#check @SerrePositivity.KST.SConstruction.pointedIsContractibleKan_of_localized_toPoint
+#print axioms SerrePositivity.KST.SConstruction.pointedIsContractibleKan_of_localized_toPoint
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationDiagramFunctor
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationDiagramFunctor
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathFunctor
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathRealization
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathRealization
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathQuotient
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathQuotient
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathQuotient_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathQuotient_image_isIso
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPath_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPath_toPoint_localized_isIso
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathBoundaryNat
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathBoundaryNat
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathBoundary
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathBoundary
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathBoundary_quotient
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathBoundary_quotient
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathKanFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathKanFunctor
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathKan_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathKan_kanComplex
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathKan_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathKan_toPoint_localized_isIso
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathKan_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathKan_isContractibleKan
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathKanBoundaryNat
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathKanBoundaryNat
+#check @SerrePositivity.KST.SConstruction.pointedIteratedPathKanBoundary
+#print axioms SerrePositivity.KST.SConstruction.pointedIteratedPathKanBoundary
