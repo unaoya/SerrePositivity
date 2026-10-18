@@ -1003,3 +1003,60 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.ProExcision.tensorMap_augmentation_eq_above
 #check @SerrePositivity.KST.ProExcision.tensorMap_augmentation_eq_low
 #print axioms SerrePositivity.KST.ProExcision.tensorMap_augmentation_eq_low
+
+#check @SerrePositivity.KST.ProExcision.integerLinearization
+#print axioms SerrePositivity.KST.ProExcision.integerLinearization
+#check @SerrePositivity.KST.ProExcision.integerGenerator
+#print axioms SerrePositivity.KST.ProExcision.integerGenerator
+#check @SerrePositivity.KST.ProExcision.integerLinearization_map_generator
+#print axioms SerrePositivity.KST.ProExcision.integerLinearization_map_generator
+#check @SerrePositivity.KST.ProExcision.integerLinearization_hom_ext
+#print axioms SerrePositivity.KST.ProExcision.integerLinearization_hom_ext
+#check @SerrePositivity.KST.ProExcision.linearizedSpace
+#print axioms SerrePositivity.KST.ProExcision.linearizedSpace
+#check @SerrePositivity.KST.ProExcision.linearizedSpaceMap
+#print axioms SerrePositivity.KST.ProExcision.linearizedSpaceMap
+#check @SerrePositivity.KST.ProExcision.linearizedSpaceHomotopy
+#print axioms SerrePositivity.KST.ProExcision.linearizedSpaceHomotopy
+#check @SerrePositivity.KST.ProExcision.integerTensor
+#print axioms SerrePositivity.KST.ProExcision.integerTensor
+#check @SerrePositivity.KST.ProExcision.integerTensorMap
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap
+#check @SerrePositivity.KST.ProExcision.integerTensor_hom_ext
+#print axioms SerrePositivity.KST.ProExcision.integerTensor_hom_ext
+#check @SerrePositivity.KST.ProExcision.integerTensorIso
+#print axioms SerrePositivity.KST.ProExcision.integerTensorIso
+#check @SerrePositivity.KST.ProExcision.integerTensorIso_generator
+#print axioms SerrePositivity.KST.ProExcision.integerTensorIso_generator
+#check @SerrePositivity.KST.ProExcision.integerTensorIso_naturality
+#print axioms SerrePositivity.KST.ProExcision.integerTensorIso_naturality
+#check @SerrePositivity.KST.ProExcision.simplicialIntegerTensor
+#print axioms SerrePositivity.KST.ProExcision.simplicialIntegerTensor
+#check @SerrePositivity.KST.ProExcision.linearizedTensorComparison
+#print axioms SerrePositivity.KST.ProExcision.linearizedTensorComparison
+#check @SerrePositivity.KST.ProExcision.linearizedTensorIso
+#print axioms SerrePositivity.KST.ProExcision.linearizedTensorIso
+#check @SerrePositivity.KST.ProExcision.linearizedCylinder
+#print axioms SerrePositivity.KST.ProExcision.linearizedCylinder
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₀
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₀
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₁
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₁
+#check @SerrePositivity.KST.ProExcision.LinearizedHomotopy
+#print axioms SerrePositivity.KST.ProExcision.LinearizedHomotopy
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy
+#check @SerrePositivity.KST.ProExcision.LinearizedHomotopy.truncate
+#print axioms SerrePositivity.KST.ProExcision.LinearizedHomotopy.truncate
+#check @SerrePositivity.KST.ProExcision.linearizedTensorHomotopy
+#print axioms SerrePositivity.KST.ProExcision.linearizedTensorHomotopy
+#check @SerrePositivity.KST.ProExcision.linearizedCylinderProjection
+#print axioms SerrePositivity.KST.ProExcision.linearizedCylinderProjection
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₀_projection
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₀_projection
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₁_projection
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₁_projection
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.cancel_augmentation
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.cancel_augmentation
+#check @SerrePositivity.KST.ProExcision.conjugationLinearizedHomotopy
+#print axioms SerrePositivity.KST.ProExcision.conjugationLinearizedHomotopy

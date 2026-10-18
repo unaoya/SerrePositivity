@@ -49,14 +49,15 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと333宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと361宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。
-- Construction A.6：成分 u⁻¹ の自然変換、nerve の実ホモトピー、係数付き自由鎖複体への実鎖ホモトピーを構成。
+- Construction A.6：成分 u⁻¹ の自然変換、nerve の実ホモトピー、係数付き自由鎖複体への実鎖ホモトピーに加え、`conjugationLinearizedHomotopy` で非被約 C(H)⊗ℤΔ¹ の実区間ホモトピーを構成。両端条件は全次数で成立。区間写像そのものの群準同型についての自然性は確認中。
 - Construction A.5：ユーザーが augmentation 補正を採用し、L6c を再開。非被約 C(H)=ℤBH を保持する。下記の設計確認欄を参照。
 - A.5 の代数部分：`tensorMap_augmentation_expansion` と `tensorMap_augmentation_eq_low` を検証。二つの差の消滅から m+m′+1 以下の補正式を得る。AW・shuffle のホモトピー構成と移送は未完。
-- L6c の Prop A.1、Lemma A.4 の m-ホモトピーからの比較、A.5 は未完了。A.6 の C(H) の界面への移送も残る。
+- `LinearizedMHomotopy.cancel_augmentation`：C(ψ)≃C(ψ)+C(φ)−C(e) から C(φ)≃C(e) を区間写像の差で構成。作用の同変性は別条件として未接続。
+- L6c の Prop A.1、Lemma A.4 の m-ホモトピーからの比較、A.5 の AW・shuffle 比較は未完了。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -65,6 +66,10 @@
 | --- | --- | --- | --- |
 | tensorMap_augmentation_eq_low | AugmentationTensor.lean | 検証済み | A.5 の右辺の augmentation 補正と次数 m+m′+1 の計算 |
 | tensorMap_augmentation_expansion | AugmentationTensor.lean | 検証済み | 差のテンソルの双線形展開 |
+| conjugationLinearizedHomotopy | Conjugation.lean | 検証済み | A.6 の C(H)⊗ℤΔ¹ の区間写像と両端条件 |
+| LinearizedMHomotopy.cancel_augmentation | AugmentationHomotopy.lean | 検証済み | A.5 の右辺の augmentation 補正の相殺 |
+| LinearizedMHomotopy | LinearizedHomotopy.lean | 検証済み | A.3 の零次を含む m 次両端条件、同変性は別条件 |
+| linearizedTensorIso | LinearizedTensor.lean | 検証済み | ℤX⊗ℤY と ℤ(X×Y) の単体的同型 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |
 | LevelHom | Pro.lean | 検証済み | 同じ添字上の可換な射 |
 | IsProIso | Pro.lean | 検証済み | eventual inverse の二つの三角形 |
@@ -459,3 +464,14 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 被約複体 ker ε へ移す別案は採用しない。H_*・相対項との界面を増やさず、非被約模型を維持する。
 - 設計確認は採用済み。低次数テンソル消滅、AW・shuffle の比較、m-ホモトピーへの移送の順で実装する。正本 §12 への追記はユーザーが担当し、本レーンから編集しない。
 - 他レーンの計画・ソースは変更していない。依存側の修復や追加公理は導入しない。
+
+## C(H) の区間界面
+
+- C(H)=ℤBH は `linearizedSpace (nerve (SingleObj H))` の非被約自由整数加群模型。
+- `integerLinearization` は任意の宇宙の集合を有限台整数関数へ送る。H_* は定義しない。
+- 固定版 Mathlib の ModuleCat のモノイド構造は環と加群の宇宙を同一に限定するため、整数加群のテンソルは本レーンの `integerTensor`、`simplicialIntegerTensor` で通常の TensorProduct ℤ を明示的に束ねる。
+- `linearizedTensorIso` は各次数の有限台関数の標準テンソル同型と、その自然性から構成する。
+- `linearizedEndpoint₀`、`linearizedEndpoint₁` は幾何的端点の自由化をこの同型の逆で移したもの。
+- `LinearizedHomotopy` は全次数の両端条件、`LinearizedMHomotopy` は次数 ≤m の両端条件。後者の区間写像も全次数の単体的射として保持する。
+- Definition A.3 の G 同変性はこれらの非同変な基礎型と別の条件であり、証明済みと表示しない。
+- A.5 の右辺の augmentation 補正の相殺は、区間写像 H から定数な ψ+φ の区間写像との差を作る構成である。

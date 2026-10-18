@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.KST.ProExcision.LinearizedHomotopy
 public import Mathlib.Algebra.Group.Hom.Defs
 public import Mathlib.CategoryTheory.SingleObj
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homology.HomotopyInvariance
@@ -81,5 +82,14 @@ def conjugationChainHomotopy {C : Type w} [Category.{c} C]
     Homotopy (SSet.chainComplexMap (nerveMap (𝟭 (SingleObj H))) R)
       (SSet.chainComplexMap (nerveMap (conjugationFunctor u)) R) :=
   (conjugationNerveHomotopy u).chainComplexMap R
+
+/-- 概要：共役と恒等写像の間の非被約 C(H) のテンソル区間ホモトピー。
+方針：成分 u⁻¹ の自然変換の nerve ホモトピーを自由化し、積とテンソルの同型で移す。
+規約：KST Construction A.6、Definition A.3 の両端条件を全次数で満たす。
+使われ方：Lemma 4.16 の C(ψ) の比較と任意の m 次への制限。 -/
+def conjugationLinearizedHomotopy (u : H) :
+    LinearizedHomotopy (linearizedSpaceMap (nerveMap (𝟭 (SingleObj H))))
+      (linearizedSpaceMap (nerveMap (conjugationFunctor u))) :=
+  linearizedTensorHomotopy (conjugationNerveHomotopy u)
 
 end SerrePositivity.KST.ProExcision
