@@ -183,3 +183,6 @@ public import SerrePositivity.KST.SchemeLemmas.BorderedPivotDeterminant
 public import SerrePositivity.KST.SchemeLemmas.MinorPivotFactorization
 public import SerrePositivity.KST.SchemeLemmas.UnitMinorPresentationEquiv
 public import SerrePositivity.KST.SchemeLemmas.LocalMinorFreeCriterion
+public import SerrePositivity.KST.SchemeLemmas.MatrixTensorBaseChange
+public import SerrePositivity.KST.SchemeLemmas.FiniteFreePresentationBaseChange
+public import SerrePositivity.KST.SchemeLemmas.BaseChangedMinorFreeCriterion
