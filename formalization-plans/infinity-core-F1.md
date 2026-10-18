@@ -885,5 +885,38 @@ lemma isCartesianEdge_triangle_longEdge {X B : SSet.{u}} [Quasicategory B]
     (hsecond : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t))) :
     IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ t))
 
+def quasicategoryCore (X : SSet.{u}) : X.Subcomplex
+
+lemma quasicategoryCore_edge {X : SSet.{u}} (s : (quasicategoryCore X : SSet.{u}) _⦋1⦌) :
+    IsInvertibleEdge (edgeOfSimplex s.val)
+
+def quasicategoryCoreLift {A X : SSet.{u}} (f : A ⟶ X)
+    (hf : ∀ s : A _⦋1⦌, IsInvertibleEdge (edgeOfSimplex (f.app (Opposite.op ⦋1⦌) s))) :
+    A ⟶ (quasicategoryCore X : SSet.{u})
+
+lemma quasicategoryCoreLift_ι {A X : SSet.{u}} (f : A ⟶ X)
+    (hf : ∀ s : A _⦋1⦌, IsInvertibleEdge (edgeOfSimplex (f.app (Opposite.op ⦋1⦌) s))) :
+    quasicategoryCoreLift f hf ≫ (quasicategoryCore X).ι = f
+
+def quasicategoryCoreMap {X Y : SSet.{u}} (f : X ⟶ Y) :
+    (quasicategoryCore X : SSet.{u}) ⟶ (quasicategoryCore Y : SSet.{u})
+
+lemma quasicategoryCoreMap_ι {X Y : SSet.{u}} (f : X ⟶ Y) :
+    quasicategoryCoreMap f ≫ (quasicategoryCore Y).ι = (quasicategoryCore X).ι ≫ f
+
+def quasicategoryCoreFunctor : SSet.{u} ⥤ SSet.{u}
+
+lemma isInvertibleEdge_degenerate {X : SSet.{u}} (v : X _⦋0⦌) :
+    IsInvertibleEdge (edgeOfSimplex (X.σ 0 v))
+
+lemma quasicategoryCore_vertex {X : SSet.{u}} (v : X _⦋0⦌) :
+    v ∈ (quasicategoryCore X).obj (Opposite.op ⦋0⦌)
+
+lemma intervalEndomorphism_cases (f : ⦋1⦌ ⟶ ⦋1⦌) :
+    f = SimplexCategory.const _ _ 0 ∨ f = 𝟙 _ ∨ f = SimplexCategory.const _ _ 1
+
+lemma quasicategoryCore_mem_edge_iff {X : SSet.{u}} (s : X _⦋1⦌) :
+    s ∈ (quasicategoryCore X).obj (Opposite.op ⦋1⦌) ↔ IsInvertibleEdge (edgeOfSimplex s)
+
 end SerrePositivity.InfinityCategories
 ```

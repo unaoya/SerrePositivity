@@ -199,3 +199,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.isCartesianEdge_of_isCocartesianEdge_op
 #check @SerrePositivity.InfinityCategories.isCartesianEdge_iff_isCocartesianEdge_op
 #check @SerrePositivity.InfinityCategories.isCartesianEdge_triangle_longEdge
+#check @SerrePositivity.InfinityCategories.quasicategoryCore
+#check @SerrePositivity.InfinityCategories.quasicategoryCore_edge
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreLift
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreLift_ι
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreMap
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreMap_ι
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreFunctor
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_degenerate
+#check @SerrePositivity.InfinityCategories.quasicategoryCore_vertex
+#check @SerrePositivity.InfinityCategories.intervalEndomorphism_cases
+#check @SerrePositivity.InfinityCategories.quasicategoryCore_mem_edge_iff
