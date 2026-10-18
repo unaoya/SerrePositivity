@@ -1920,3 +1920,96 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_right
 #print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_right
+
+#check @SerrePositivity.KST.ProExcision.discretePath_threshold
+#print axioms SerrePositivity.KST.ProExcision.discretePath_threshold
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.left_threshold
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.left_threshold
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.right_threshold
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right_threshold
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_left_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_left_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_right_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_right_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_left_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_left_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_right_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_right_face
+
+#check @SerrePositivity.KST.ProExcision.shuffleInsertion_zero_prefix_card
+#print axioms SerrePositivity.KST.ProExcision.shuffleInsertion_zero_prefix_card
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_zero_left
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_zero_left
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_zero_left
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_zero_left
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_zero_right
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_zero_right
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_zero_right
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_zero_right
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_first_left_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_first_left_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_first_right_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_first_right_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_first_left_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_first_left_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_first_right_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_first_right_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_last_left_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_last_left_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_last_right_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_last_right_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_last_left_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_last_left_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_last_right_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_last_right_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_compl
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_compl
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_right_image
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_right_image
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_right_insert
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_right_insert
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_inversions
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_inversions
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_face_sign
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertHorizontal_face_sign
+
+#check @SerrePositivity.KST.ProExcision.shuffleInsertion_step_val
+#print axioms SerrePositivity.KST.ProExcision.shuffleInsertion_step_val
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_left_image
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_left_image
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_right_image
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_right_image
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.suffix_card
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.suffix_card
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_inversions
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_inversions
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_face_sign
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.insertVertical_face_sign
