@@ -95,6 +95,12 @@ public import SerrePositivity.KST.Descent.BoundaryFlatRefinement
 public import SerrePositivity.KST.Descent.StrictTransformTensorChart
 public import SerrePositivity.KST.Descent.OpenImageAmbientIso
 public import SerrePositivity.KST.Descent.StrictTransformTensorImage
+public import SerrePositivity.KST.Descent.StrictTransformChartModel
+public import SerrePositivity.KST.Descent.AffineTensorChartModel
+public import SerrePositivity.KST.Descent.AffinePresentation
+public import SerrePositivity.KST.Descent.AffineBlowupFlatness
+public import SerrePositivity.KST.Descent.AffineFiniteFlattening
+public import SerrePositivity.KST.Descent.AffineFlatRefinement
 public import SerrePositivity.KST.Descent.ComponentSplit
 public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
@@ -222,7 +228,9 @@ Noether 整域上の有限加群を非零元の局所化で自由にし、実際
 元の基礎環への構造射、同じ境界元の基本開を保つことを証明する。
 この周辺同型による実際の像の比較を構成し、同じ境界のテンソル積の純変換加群の
 チャート基底上の平坦性から、元の strict transform の実際のチャートの平坦性を導く。
-実際の全チャートへの係数射の適用と global な平坦化中心の結論は残す。
+元のアフィンスキームと全切断環の Spec との同型を保って、実際の全標準チャートへ適用する。
+整なアフィン Noether 基底への有限射の真閉平坦化中心を構成し、
+有限全射には blowup 後の実際の有限忠実平坦細分を供給する。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
