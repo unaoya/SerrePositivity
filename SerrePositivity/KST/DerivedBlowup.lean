@@ -177,3 +177,6 @@ public import SerrePositivity.KST.DerivedBlowup.AlgebraVertexFunctor
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraVertex
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapAlgebraVertexComparison
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraModuleComparison
+public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraModuleComparisonComponents
+public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraRestrictionCoherence
+public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraModuleComparisonCoherence

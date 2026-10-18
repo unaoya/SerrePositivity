@@ -74,7 +74,9 @@ underlying 複体が当該添字での値に一致することを証明済み。
 有限重なりの元の Koszul 模型への dg 準同値と、既存の大域係数圏への埋め込みとの整合性を証明済み。
 正規表示での局所遷移の恒等・合成律、指定全次数自然変換、加群評価・標準制限同型・指定加群比較を構成済み。
 全 diagram-module の係数圏と係数関手を保持し、局所の同じ dg 代数の表示のみを正規化する。
-三重加群比較の全体と、その随伴導来係数拡大への移送はカーネル検証を含め未完了。
+正規表示の標準制限同型の評価、指定比較と underlying 図式の包含写像の成分一致、
+指定加群比較の単位条件・三重整合性を証明済み。
+随伴導来係数拡大への整合性の移送と、既存局所 perfect 条件との同定は未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -325,6 +327,9 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramAlgebraVertexEmbedding`・遷移・恒等合成律・指定全次数変換 | DiagramAlgebraVertex | 全図式の同じ係数圏内での正規表示の局所頂点と標準単位矢 |
 | `FiniteOverlapAlgebraVertex`・元チャートへの準同値・大域埋め込みの整合性 | FiniteOverlapAlgebraVertexComparison | 正規表示と既存の有限重なり Koszul 模型の dg 比較 |
 | 正規表示の加群評価・一段二段制限同型・`diagramAlgebraModuleComparisonNatTrans` | DiagramAlgebraModuleComparison | 元の全図式係数圏上の加群に対する正規表示での canonical な局所比較 |
+| 正規表示の標準評価同型の恒等成分・`diagramAlgebraModuleComparison_eval`・任意局所対象での評価 | DiagramAlgebraModuleComparisonComponents | 指定比較の underlying 包含写像による計算 |
+| `diagramAlgebraRestrictionIdIso`・`diagramAlgebraRestrictionCompIso`・任意局所加群上の恒等評価 | DiagramAlgebraRestrictionCoherence | 正規表示における標準単位・合成制限同型 |
+| `diagramAlgebraModuleComparison_id`・`diagramAlgebraModuleComparison_comp` | DiagramAlgebraModuleComparisonCoherence | 標準制限同型を介する指定加群比較の単位・三重整合性 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -392,7 +397,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2069定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2089定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -400,8 +405,8 @@ coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全
 指定単位矢とその加群作用の underlying 恒等・合成律は証明済み。
 標準制限同型を含む加群比較の単位条件も証明済み。
 標準局所合成同型の具体的評価と、一般の導来制限の標準単位・合成自然同型も構成済み。
-次の実装単位は dg 準同値な一対象正規表示での加群比較の三重整合性と、
-既存局所 perfect 条件への移送、随伴導来比較の単位・三重整合性、
+dg 準同値な一対象正規表示での指定加群比較の単位・三重整合性は証明済み。
+次の実装単位は既存局所 perfect 条件への移送、随伴導来比較の単位・三重整合性、
 および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
