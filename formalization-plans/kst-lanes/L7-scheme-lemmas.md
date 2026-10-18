@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 577 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 641 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -60,7 +60,10 @@
 - strict transform をスキーム論的像として構成し、固有性・Noether 性・U 上の同型を証明済み。
 - 平坦・有限表示・分離な射を稠密な開部分上の同型から開埋め込みと判定する段階、および平坦な strict transform から実際の因子化射を作る段階を証明済み。
 - 像中心が中心元の正則な像で生成される場合の実際のチャート環準同型・blowup への射と、基底上の一意性を証明済み。
-- 任意の正則な単項像中心について、中心元の像で局所的に生成される基本開被覆と各局所化の正則性・像中心の等式を証明済み。これらの局所射の貼り合わせは次の段階。
+- 任意の正則な単項像中心について、生成係数の基本開被覆を構成し、blowup への実際の大域持ち上げの存在と一意性を証明済み。
+- 始域が任意のスキームでも、アフィン開被覆上で像中心が正則単項となる条件から普遍写像を構成し、その基底両立性と一意性を証明済み。
+- 積中心 IJ の積生成元チャートの被覆性と因子中心の正則単項性を証明し、Bl_{IJ} から Bl_I・Bl_J への実際のアフィン比較射と基底交換式を構成済み。
+- 次は積中心の比較射を一般スキームへ大域化する。同一基底上の二中心の共通細分と、blowup の合成を一つで支配する問題は区別する。後者はまだ未証明。
 - Noether でも実際に平坦な strict transform を達成する中心の存在と、admissible blowup の合成を一つで支配する段階は未証明。L7b 完了とはしない。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
@@ -489,6 +492,13 @@ strict transform とその平坦化の有限型特殊形は未実装であり、
 | `affineBlowup_hom_ext_of_regular` | AffineRegularLift | 検証済み | 正則局所化と分離性による射の一意性 |
 | `span_regularCenterCoefficients` / `iSup_regularCenterCoefficient_basicOpen` | RegularCenterCover | 検証済み | 任意の正則単項生成元を中心元の像へ局所化 |
 | `regularCenter_localized_regular` / `regularCenter_localized_image` | RegularCenterCover | 検証済み | 局所的な普遍写像の条件 |
+| `local_lift_overlap_hom_ext` | LocalLiftGluing | 検証済み | 零核の検出射による重なり上の一意性 |
+| `affineBlowupPrincipalRegularLift` / `existsUnique_affineBlowup_lift_of_principal_regular` | PrincipalRegularLift | 検証済み | 任意の正則単項像中心からの存在と一意性 |
+| `principalDetector_range_complement` | PrincipalDetector | 検証済み | 単項生成元の局所化の像は中心外 |
+| `affineBlowupCoverLift` / `existsUnique_affineBlowup_cover_lift` | AffineUniversal | 検証済み | 任意の始域と局所正則単項条件による普遍写像 |
+| `ideal_eq_span_of_regular_product` / `productChart_left_image` | ProductCenter | 検証済み | 積中心チャートで因子中心を単項化 |
+| `affineBlowupProductChartCover` | ProductChartCover | 検証済み | 積生成元による実際のアフィン開被覆 |
+| `affineBlowupProductLeftMap` / `affineBlowupProductRightMap` | ProductBlowup | 検証済み | 二つのアフィン blowup の共通細分の比較射 |
 | `exists_admissibleBlowup_dominating` | Flattening | 予定 | 081T の特殊形 |
 | Prop 5.2 の環論 | Section5 | 予定 | 冪・像・核 |
 | Claim 5.3 の左逆元 | K-L6 | 担当外 | K/pro の結論 |

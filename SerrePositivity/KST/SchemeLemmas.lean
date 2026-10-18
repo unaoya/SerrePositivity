@@ -53,3 +53,10 @@ public import SerrePositivity.KST.SchemeLemmas.FlatStrictTransform
 public import SerrePositivity.KST.SchemeLemmas.ChartRegularLift
 public import SerrePositivity.KST.SchemeLemmas.AffineRegularLift
 public import SerrePositivity.KST.SchemeLemmas.RegularCenterCover
+public import SerrePositivity.KST.SchemeLemmas.LocalLiftGluing
+public import SerrePositivity.KST.SchemeLemmas.PrincipalRegularLift
+public import SerrePositivity.KST.SchemeLemmas.PrincipalDetector
+public import SerrePositivity.KST.SchemeLemmas.AffineUniversal
+public import SerrePositivity.KST.SchemeLemmas.ProductCenter
+public import SerrePositivity.KST.SchemeLemmas.ProductChartCover
+public import SerrePositivity.KST.SchemeLemmas.ProductBlowup

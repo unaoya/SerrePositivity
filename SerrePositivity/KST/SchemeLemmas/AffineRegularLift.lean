@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.SchemeLemmas.ChartRegularLift
 public import SerrePositivity.KST.SchemeLemmas.ChartGluing
+public import SerrePositivity.KST.SchemeLemmas.LocalLiftGluing
 
 /-!
 概要：KST §5 の通常 blowup への正則な単項中心からの持ち上げ。
@@ -73,5 +74,31 @@ theorem affineBlowup_hom_ext_of_regular (hreg : f a.1 ∈ nonZeroDivisors S)
     rintro _ ⟨x, rfl⟩
     change algebraMap S (Localization.Away (f a.1)) (f a.1) ∉ x.asIdeal
     exact Ideal.notMem_of_isUnit _ (IsLocalization.Away.algebraMap_isUnit _)
+
+set_option backward.isDefEq.respectTransparency false in
+/--
+概要：正則な像中心元を持つアフィン局所射は、任意の開集合との重なりで一意。
+方針：正則像中心元を可逆化する検出射を重なりに引き戻す。
+規約：KST §5、重なり自体がアフィンである必要はない。
+使われ方：正則単項中心からの普遍写像の貼り合わせ。
+-/
+theorem affineBlowup_regular_overlap {T Z : Scheme.{u}}
+    (hreg : f a.1 ∈ nonZeroDivisors S)
+    (j : Spec (.of S) ⟶ T) (k : Z ⟶ T) [IsOpenImmersion k]
+    (g : Spec (.of S) ⟶ affineBlowup I) (h : Z ⟶ affineBlowup I)
+    (hg : g ≫ affineBlowupπ I = Spec.map (CommRingCat.ofHom f))
+    (hbase : (Limits.pullback.fst j k ≫ g) ≫ affineBlowupπ I =
+      (Limits.pullback.snd j k ≫ h) ≫ affineBlowupπ I) :
+    Limits.pullback.fst j k ≫ g = Limits.pullback.snd j k ≫ h := by
+  have := affineBlowupπ_restrict_basicOpen_isIso I a
+  apply local_lift_overlap_hom_ext (affineBlowupπ I) (PrimeSpectrum.basicOpen a.1)
+    j k g h hbase
+    (Spec.map (CommRingCat.ofHom (algebraMap S (Localization.Away (f a.1)))))
+    (specMap_ker_eq_bot_of_injective _ (IsLocalization.injective
+      (Localization.Away (f a.1)) (Submonoid.powers_le.mpr hreg)))
+  rw [hg, ← Spec.map_comp]
+  rintro _ ⟨x, rfl⟩
+  change algebraMap S (Localization.Away (f a.1)) (f a.1) ∉ x.asIdeal
+  exact Ideal.notMem_of_isUnit _ (IsLocalization.Away.algebraMap_isUnit _)
 
 end SerrePositivity.KST.SchemeLemmas
