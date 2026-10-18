@@ -31,3 +31,7 @@ public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
 public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyClasses
 public import SerrePositivity.InfinityCategories.F1B.MappingEquivalenceClasses
 public import SerrePositivity.InfinityCategories.F1B.PinchedEquivalenceClasses
+public import SerrePositivity.InfinityCategories.F1B.HomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.UnitHomCriterion
+public import SerrePositivity.InfinityCategories.F1B.QCatUnitHomCriterion

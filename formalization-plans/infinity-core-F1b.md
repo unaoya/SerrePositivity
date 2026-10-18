@@ -93,11 +93,27 @@ h Fun の射の等式と、族の間の実際の単体的ホモトピーの存�
 定値関手間 Hom の全単射を構成した。順射がホモトピックならこの対応は同一であり、
 同値の逆や模型比較の逆の選択に由来する任意性を相殺できる。
 随伴から作った区間・pinched の同値について、この橋が元の `constantHomEquiv` を回収する
-ことも証明した。これは **任意の固定端点の写像空間同値から Hom 対応への橋** であり、
-任意の自然な写像空間対応から h Fun の単位・余単位と三角恒等式を構成する逆方向全体は
-依然として未実装。B2〜B5 も未完了。
-対象ビルド（1953 jobs）・公理監査（319 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 285 モジュールに straightening 依存がないことも確認した。
+ことも証明した。これは **任意の固定端点の写像空間同値から Hom 対応への橋** である。
+
+逆方向の代数的な終点を実装した。`BicategoryHomCorrespondence` は任意の双圏での
+Hom 全単射、二変数自然性、パラメータの左 whisker との整合を持つ。恒等関手の
+単位子の像・逆像から単位・余単位を取り出し、三角恒等式をこれらの自然性から導出した。
+`adjunctionEquiv` は自然な対応と随伴のデータの全単射で、両方向の往復を証明している。
+`QCatFunctorHomCorrespondence` は任意の関手 U:A→X、V:A→Y の h Fun の Hom と
+内部 Hom の前後合成・パラメータ前合成で同じ条件を表示する。この型から
+`QCatAdjunction` を構成し、元の Hom 対応・単位・余単位を回収する公式を得た。
+三角恒等式や随伴の存在を対応の入力に含めていない。
+さらに、指定された単位による canonical な二胞体の Hom 写像の全単射性から、
+その単位を持つ随伴を構成する判定を双圏と h Fun の表示で実装した。
+**この判定の全単射条件は全ての quasicategory パラメータ A と任意の U,V に課す。**
+点ごとの hX の Hom 全単射に弱めていない。
+
+B1 の逆方向全体は未完了。残るのは、自然な pinched 写像空間対応（または
+Cor 6.2.6.5 の指定単位による各点の比較の同値性）から、**非定値 U,V を含む**
+上の自然な h Fun の対応または全パラメータの単位条件へ移す橋である。
+固定端点の定値関手についての既存の橋だけではこの工程を埋めない。
+B2〜B5 も未完了。対象ビルド（1957 jobs）・公理監査（409 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 289 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -182,5 +198,15 @@ h Fun の射の等式と、族の間の実際の単体的ホモトピーの存�
 | `intervalEquivalenceOfPinched`・`pinchedMappingEquivalenceHomEquiv`・`pinchedMappingEquivalenceHomEquiv_precomp` | pinched 同値を区間模型経由で同じ Hom 全単射へ移す | 実装済み |
 | `QCatAdjunction.intervalMappingEquivalence_homEquiv`・`pinchedHomEquivalence_homEquiv` | 随伴が与える区間・pinched 同値から元の adjunct 対応を回収 | 実装済み |
 | `QCatAdjunction.pinchedEquivalenceIntervalIso` | 随伴の pinched 比較を区間模型に戻すと元の比較射に同型 | 実装済み |
+| `BicategoryHomCorrespondence` | 全パラメータの二胞体の Hom 全単射と二変数・左 whisker 自然性 | 実装済み |
+| `BicategoryHomCorrespondence.unit/counit`・`left_triangle/right_triangle` | 恒等関手の単位子から単位・余単位を構成し、自然性から三角式を導出 | 実装済み |
+| `BicategoryHomCorrespondence.toAdjunction/ofAdjunction`・`adjunctionEquiv` | 自然な Hom 対応と双圏随伴の全単射、両方向の回収 | 実装済み |
+| `FunctorHom`・`QCatFunctorHomCorrespondence` | 任意の関手 U,V の h Fun の Hom を使った自然な対応の表示 | 実装済み |
+| `QCatFunctorHomCorrespondence.toBicategory/toAdjunction`・`adjunctionEquiv` | h Fun の自然な対応から QCat 随伴を構成し、両方向の回収を証明 | 実装済み |
+| `QCatFunctorHomCorrespondence.toAdjunction_homEquiv/unitHom/counitHom` | 構成した随伴の対応・単位・余単位の明示的な仕様 | 実装済み |
+| `bicategoryUnitHomMap` と三つの自然性 | 任意の単位候補からの canonical な二胞体の Hom 写像 | 実装済み |
+| `BicategoryHomCorrespondence.ofUnit`・`bicategoryAdjunctionOfUnitHomBijective` | 全パラメータの単位 Hom 写像の全単射性から随伴を構成 | 実装済み |
+| `bicategory_exists_adjunction_unit_iff` | 指定単位を持つ双圏随伴と全パラメータ Hom 全単射条件の同値 | 実装済み |
+| `qcatUnitHomMap`・`qcatAdjunctionOfUnitHomBijective`・`qcat_exists_adjunction_unitHom_iff` | h Fun の指定単位と全パラメータ Hom 全単射による同じ判定 | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |

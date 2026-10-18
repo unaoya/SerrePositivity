@@ -188,3 +188,47 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMappingEquivalence_homEquiv
 
 #check @SerrePositivity.InfinityCategories.QCatAdjunction.pinchedHomEquivalence_homEquiv
+
+#check @SerrePositivity.InfinityCategories.BicategoryHomCorrespondence
+
+#check @SerrePositivity.InfinityCategories.BicategoryHomCorrespondence.unit
+
+#check @SerrePositivity.InfinityCategories.BicategoryHomCorrespondence.counit
+
+#check @SerrePositivity.InfinityCategories.BicategoryHomCorrespondence.left_triangle
+
+#check @SerrePositivity.InfinityCategories.BicategoryHomCorrespondence.right_triangle
+
+#check @SerrePositivity.InfinityCategories.BicategoryHomCorrespondence.toAdjunction
+
+#check @SerrePositivity.InfinityCategories.BicategoryHomCorrespondence.toAdjunction_homEquiv
+
+#check @SerrePositivity.InfinityCategories.BicategoryHomCorrespondence.adjunctionEquiv
+
+#check @SerrePositivity.InfinityCategories.QCatFunctorHomCorrespondence
+
+#check @SerrePositivity.InfinityCategories.QCatFunctorHomCorrespondence.toAdjunction
+
+#check @SerrePositivity.InfinityCategories.QCatFunctorHomCorrespondence.adjunctionEquiv
+
+#check @SerrePositivity.InfinityCategories.QCatFunctorHomCorrespondence.toAdjunction_homEquiv
+
+#check @SerrePositivity.InfinityCategories.QCatFunctorHomCorrespondence.toAdjunction_unitHom
+
+#check @SerrePositivity.InfinityCategories.QCatFunctorHomCorrespondence.toAdjunction_counitHom
+
+#check @SerrePositivity.InfinityCategories.bicategoryUnitHomMap
+
+#check @SerrePositivity.InfinityCategories.bicategoryAdjunctionOfUnitHomBijective
+
+#check @SerrePositivity.InfinityCategories.bicategoryAdjunctionOfUnitHomBijective_unit
+
+#check @SerrePositivity.InfinityCategories.bicategory_exists_adjunction_unit_iff
+
+#check @SerrePositivity.InfinityCategories.qcatUnitHomMap
+
+#check @SerrePositivity.InfinityCategories.qcatAdjunctionOfUnitHomBijective
+
+#check @SerrePositivity.InfinityCategories.qcatAdjunctionOfUnitHomBijective_unitHom
+
+#check @SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff
