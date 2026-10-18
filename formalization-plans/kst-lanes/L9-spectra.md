@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・218 モジュール 2814 宣言の公理監査成功。
+対象ビルド・223 モジュール 2829 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1997,3 +1997,28 @@ fibration の可換四角形が自己 pullback と fiber の包含に誘導す�
 保存単位の対象ビルド 2418 jobs 成功。
 私有宣言を含む 218 モジュール 2814 宣言で標準三公理のみ。
 L9d は進行中。次は相対三角形の写像空間に交換と逆元の一般式を適用する。
+
+## 69. L9d の loop 値の二重円の変数交換と符号反転
+
+相対三角形の写像空間の実際の収縮から、連結成分が一つであることを証明した。
+二重円の写像空間と自己 pullback の厳密な同型を取り出し、変数交換が両因子の交換となる可換式を示した。
+標的の写像の後合成についてもこの同型は自然である。
+これらに自己 pullback の全成分での逆元の比較を適用した。
+
+標的が円の Kan 置換からの内部 Hom である場合、二つの通常の円の交換は標的の loop の符号反転の後合成と π₀ 上で一致する。
+一般の自己 pullback の基本群の基点を零写像の基点と照合する等式の移送を明示した。
+別に二つの Kan 円を源とする写像では、どちらの円の整数次数射も同じ整数冪に作用することを証明した。
+通常の円から Kan 円への二変数の比較、および元のスペクトルの随伴構造射への適用は継続する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `triangleDiskHom_piZero_subsingleton` | 相対三角形の Kan 値写像空間の連結性 |
+| `circleSmashMappingPairIso` / `circleSmashMappingPairIso_swap` | 自己 pullback の同型と変数交換の可換性 |
+| `PointedMapping.pre_post_comm` / `circleSmashMappingPairIso_post` | 源の制限と後合成の可換性と同型の自然性 |
+| `circleSmashLoop_swap_components` | loop 値の二重円の交換と標的の符号反転の成分での一致 |
+| `LoopMappingClasses.pre_integer` / `.pre_integer_eq_post_integer` | 二つの Kan 円のいずれの次数射も同じ整数冪に作用 |
+
+参照：Goerss–Jardine I §7、Kerodon §§3.2.3・3.2.5、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2423 jobs 成功。
+私有宣言を含む 223 モジュール 2829 宣言で標準三公理のみ。
+L9d は進行中。次は二つの円の smash の写像と反復内部 Hom の比較を実装する。
