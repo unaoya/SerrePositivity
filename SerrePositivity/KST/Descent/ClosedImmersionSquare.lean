@@ -71,6 +71,14 @@ theorem closedImmersionSquare_cartesian (f : Y ⟶ X) (i : Z ⟶ X)
       (closedImmersionSquare f i).f₁₃.hom.left f.hom.left i.hom.left :=
   IsPullback.of_hasPullback _ _
 
+/-- 概要：閉中心の正方形の第一射影は閉埋め込み（論文 補題 3.3）。
+方針：元の閉埋め込みの底変換として判定する。
+規約：被約性は要求しない。
+使われ方：閉被覆を始域へ引き戻した二つの閉部分。 -/
+instance closedImmersionSquare_first_isClosedImmersion (f : Y ⟶ X) (i : Z ⟶ X)
+    [IsClosedImmersion i.hom.left] : IsClosedImmersion (closedImmersionSquare f i).f₁₂.hom.left :=
+  inferInstanceAs (IsClosedImmersion (pullback.fst f.hom.left i.hom.left))
+
 /-- 概要：中心の外で同型な固有射を任意の閉中心の抽象 blowup にする（論文 §3）。
 方針：実際の引き戻し正方形と、中心・補集合・指定制限の性質を束ねる。
 規約：中心が被約であるという追加条件を要求しない。

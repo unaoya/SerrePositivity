@@ -100,7 +100,10 @@ run_cmd do
       `SerrePositivity.KST.Descent.GeometricBaseChange,
       `SerrePositivity.KST.Descent.ClosedCenterTransitivity,
       `SerrePositivity.KST.Descent.OrbitCenterInduction,
-      `SerrePositivity.KST.Descent.ClosedCoverGeometry] do
+      `SerrePositivity.KST.Descent.ClosedCoverGeometry,
+      `SerrePositivity.KST.Descent.ClosedCoverPullback,
+      `SerrePositivity.KST.Descent.ClosedCoverAction,
+      `SerrePositivity.KST.Descent.ClosedCoverDescent] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."
