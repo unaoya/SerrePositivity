@@ -12991,5 +12991,77 @@ noncomputable def edgewiseCoherentOppositeReplacement {B : SSet.{u + 1}} (F : B 
 noncomputable def edgewiseCoherentOppositeReplacementIso {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) :
     FunctorIso F (edgewiseCoherentOppositeReplacement F)
 
+def pinchedHomIsoOfIso {X Y : SSet.{u}} (e : X ≅ Y) (x y : X _⦋0⦌) :
+    pinchedHom x y ≅
+      pinchedHom (e.hom.app (Opposite.op ⦋0⦌) x) (e.hom.app (Opposite.op ⦋0⦌) y)
+
+noncomputable def coherentOppositePinchedIso {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (x y : C) :
+    pinchedHom (X := (SimplicialNerve C).op)
+      (SSet.opObjEquiv.symm (coherentNerveVertex y))
+      (SSet.opObjEquiv.symm (coherentNerveVertex x)) ≅
+    pinchedHom (coherentNerveVertex (Opposite.op y)) (coherentNerveVertex (Opposite.op x))
+
+noncomputable def coherentLeftPinchedFlagIso {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (x y : C) :
+    pinchedHomLeft (coherentNerveVertex x) (coherentNerveVertex y) ≅
+      (SSet.uliftFunctor.{v, u}).obj
+        (coherentResolutionRightAdjoint.obj (SimplicialCategory.sHom x y)).op
+
+noncomputable def coherentLeftResolution (X : SSet.{u}) : SSet.{u}
+
+instance coherentLeftResolution_kanComplex (X : SSet.{u}) [KanComplex X] :
+    KanComplex (coherentLeftResolution X)
+
+noncomputable def coherentLeftResolutionFunctor : SSet.{u} ⥤ SSet.{u}
+
+noncomputable def coherentLeftResolutionComparison (X : SSet.{u}) :
+    X ⟶ coherentLeftResolution X
+
+noncomputable def coherentLeftResolutionComparisonNat : 𝟭 SSet.{u} ⟶ coherentLeftResolutionFunctor
+
+lemma coherentLeftResolutionComparisonNat_app (X : SSet.{u}) :
+    coherentLeftResolutionComparisonNat.app X = coherentLeftResolutionComparison X
+
+lemma coherentLeftResolutionComparison_isQCatEquivalence (X : SSet.{u}) [KanComplex X] :
+    IsQCatEquivalence (coherentLeftResolutionComparison X)
+
+noncomputable def pointedSpaceLeftResolutionIso (K : KanObject.{u}) :
+    vertexFiber pointedSpaceProjection (spaceInfinityVertex (kanObjectOpFunctor.obj K)) ≅
+      (SSet.uliftFunctor.{u + 1, u}).obj (coherentLeftResolution K.obj)
+
+noncomputable def pointedSpaceLeftResolutionComparison (K : KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj K.obj ⟶
+      vertexFiber pointedSpaceProjection (spaceInfinityVertex (kanObjectOpFunctor.obj K))
+
+lemma pointedSpaceLeftResolutionComparison_factorization (K : KanObject.{u}) :
+    pointedSpaceLeftResolutionComparison K ≫ (pointedSpaceLeftResolutionIso K).hom =
+      (SSet.uliftFunctor.{u + 1, u}).map (coherentLeftResolutionComparison K.obj)
+
+lemma pointedSpaceLeftResolutionComparison_isQCatEquivalence (K : KanObject.{u}) :
+    IsQCatEquivalence (pointedSpaceLeftResolutionComparison K)
+
+noncomputable def edgewiseCoherentDiagramValue {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) : KanObject.{u}
+
+lemma edgewiseCoherentOppositeReplacement_vertex {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    (edgewiseCoherentOppositeReplacement F).app (Opposite.op ⦋0⦌) b =
+      spaceInfinityVertex (kanObjectOpFunctor.obj (edgewiseCoherentDiagramValue F b))
+
+noncomputable def edgewiseOppositeUnstraighteningFiberResolutionIso {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    vertexFiber (leftUnstraighteningProjection (edgewiseCoherentOppositeReplacement F)) b ≅
+      (SSet.uliftFunctor.{u + 1, u}).obj (coherentLeftResolution (edgewiseCoherentDiagramValue F b).obj)
+
+noncomputable def edgewiseOppositeUnstraighteningFiberComparison {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (edgewiseCoherentDiagramValue F b).obj ⟶
+      vertexFiber (leftUnstraighteningProjection (edgewiseCoherentOppositeReplacement F)) b
+
+lemma edgewiseOppositeUnstraighteningFiberComparison_isQCatEquivalence {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
+    IsQCatEquivalence (edgewiseOppositeUnstraighteningFiberComparison F b)
+
 end SerrePositivity.InfinityCategories
 ```
