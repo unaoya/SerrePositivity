@@ -46,3 +46,4 @@ public import SerrePositivity.EInfinity.Operad.CompositionAfterInputs
 public import SerrePositivity.EInfinity.Operad.TensorSubstitutionEmptyTail
 public import SerrePositivity.EInfinity.Operad.CompositionBlockDecomposition
 public import SerrePositivity.EInfinity.Operad.CompositionBlockTheorem
+public import SerrePositivity.EInfinity.Operad.FirstParallelInsertion
