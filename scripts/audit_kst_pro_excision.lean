@@ -2310,3 +2310,18 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.shuffleBoundary_vertical_succ
 #print axioms SerrePositivity.KST.ProExcision.shuffleBoundary_vertical_succ
+
+#check @SerrePositivity.KST.ProExcision.shuffle_horizontal_differential
+#print axioms SerrePositivity.KST.ProExcision.shuffle_horizontal_differential
+
+#check @SerrePositivity.KST.ProExcision.shuffle_vertical_differential
+#print axioms SerrePositivity.KST.ProExcision.shuffle_vertical_differential
+
+#check @SerrePositivity.KST.ProExcision.shuffle_comm
+#print axioms SerrePositivity.KST.ProExcision.shuffle_comm
+
+#check @SerrePositivity.KST.ProExcision.shuffle
+#print axioms SerrePositivity.KST.ProExcision.shuffle
+
+#check @SerrePositivity.KST.ProExcision.shuffle_naturality
+#print axioms SerrePositivity.KST.ProExcision.shuffle_naturality

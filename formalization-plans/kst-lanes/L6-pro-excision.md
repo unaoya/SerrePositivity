@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと821宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと826宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -172,6 +172,7 @@
 | horizontalShuffle_sum / verticalShuffle_sum | ShufflePureSum.lean | 検証済み | 純粋境界和と各因子の通常境界の一致 |
 | shuffleBoundaryPartitionEquiv / shuffleBoundaryPartition_sum | ShuffleBoundaryPartition.lean | 検証済み | 零次も含む全境界の水平・垂直・混合への実同値と和の分解 |
 | shuffleBidegree_boundary_pure | ShuffleBoundaryDecomposition.lean | 検証済み | 実微分の混合和を消去し二つの純粋和に分解 |
+| shuffle / shuffle_comm / shuffle_naturality | ShuffleChainMap.lean | 検証済み | 標準 shuffle の実鎖写像と両因子に関する自然性 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
 | obstructionHalfTurnBoundingChain_boundary | CommutingImageObstruction.lean | 検証済み | [r²]−[1] の明示的な一次の境界 |
