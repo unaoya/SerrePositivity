@@ -12707,5 +12707,63 @@ noncomputable def coherentSimplexStrictificationIso
     FunctorIso (SSet.yonedaEquiv.symm σ)
       (SSet.yonedaEquiv.symm (enrichedFunctorOfOrderDiagram (coherentSimplexStrictDiagram σ)))
 
+def localKanDiagramBaseIso (n : ℕ) :
+    (Δ[n] : SSet.{u + 1}) ≅
+      (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1))))
+
+lemma localKanDiagramBaseIso_coherentNerve {n : ℕ}
+    (F : ULift.{u} (Fin (n + 1)) ⥤ KanObject.{u}) :
+    (localKanDiagramBaseIso n).hom ≫ kanDiagramCoherentNerve F =
+      SSet.yonedaEquiv.symm (enrichedFunctorOfOrderDiagram F)
+
+noncomputable def localKanDiagramStrictificationIso {n : ℕ}
+    (σ : SpaceInfinity.{u} _⦋n⦌) :
+    FunctorIso (SSet.yonedaEquiv.symm σ)
+      ((localKanDiagramBaseIso n).hom ≫
+        kanDiagramCoherentNerve (coherentSimplexStrictDiagram σ))
+
+lemma exists_localKanDiagramStrictification {n : ℕ} (F : (Δ[n] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}) :
+    ∃ A : ULift.{u} (Fin (n + 1)) ⥤ KanObject.{u},
+      Nonempty (FunctorIso F ((localKanDiagramBaseIso n).hom ≫ kanDiagramCoherentNerve A))
+
+lemma exists_uliftLocalKanDiagramStrictification {n : ℕ}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj (Δ[n] : SSet.{u}) ⟶ SpaceInfinity.{u}) :
+    ∃ A : ULift.{u} (Fin (n + 1)) ⥤ KanObject.{u},
+      Nonempty (FunctorIso F
+        ((SSet.uliftFunctor.{u + 1, u}).map (stdSimplex.isoNerve n).hom ≫ kanDiagramCoherentNerve A))
+
+lemma smallLeftUnstraighteningBaseChangeIso_hom_snd {B D : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    (smallLeftUnstraighteningBaseChangeIso F k).hom ≫
+      pullback.snd (smallLeftUnstraighteningProjection F) k =
+        smallLeftUnstraighteningProjection ((SSet.uliftFunctor.{u + 1, u}).map k ≫ F)
+
+lemma exists_smallLeftUnstraighteningComparison_of_baseChangeIso
+    {B D : SSet.{u}} [Quasicategory D]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (k : D ⟶ B)
+    (η : FunctorIso F ((SSet.uliftFunctor.{u + 1, u}).map k ≫ G)) :
+    ∃ f : smallLeftUnstraightening F ⟶ pullback (smallLeftUnstraighteningProjection G) k,
+      f ≫ pullback.snd (smallLeftUnstraighteningProjection G) k =
+        smallLeftUnstraighteningProjection F ∧ IsPrecompositionEquivalence f
+
+lemma exists_smallLocalUnstraighteningStrictification {n : ℕ}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj (Δ[n] : SSet.{u}) ⟶ SpaceInfinity.{u}) :
+    ∃ (A : ULift.{u} (Fin (n + 1)) ⥤ KanObject.{u})
+      (f : smallLeftUnstraightening F ⟶
+        pullback (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve A))
+          (stdSimplex.isoNerve n).hom),
+      f ≫ pullback.snd (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve A))
+        (stdSimplex.isoNerve n).hom = smallLeftUnstraighteningProjection F ∧
+          IsPrecompositionEquivalence f
+
+lemma exists_smallLocalUnstraighteningVertexIso {n : ℕ}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj (Δ[n] : SSet.{u}) ⟶ SpaceInfinity.{u}) :
+    ∃ A : ULift.{u} (Fin (n + 1)) ⥤ KanObject.{u},
+      Nonempty (VertexIso (leftFibrationInfinityVertex (smallLeftUnstraighteningProjection F))
+        (leftFibrationInfinityVertex
+          (pullback.snd (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve A))
+            (stdSimplex.isoNerve n).hom)))
+
 end SerrePositivity.InfinityCategories
 ```

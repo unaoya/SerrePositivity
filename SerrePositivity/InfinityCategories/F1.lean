@@ -632,3 +632,5 @@ public import SerrePositivity.InfinityCategories.F1.CoherentSimplexDeformationIs
 public import SerrePositivity.InfinityCategories.F1.CoherentMaximalPathFunctor
 public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
 public import SerrePositivity.InfinityCategories.F1.CoherentSimplexStrictification
+public import SerrePositivity.InfinityCategories.F1.LocalKanDiagramStrictification
+public import SerrePositivity.InfinityCategories.F1.LocalUnstraighteningStrictification
