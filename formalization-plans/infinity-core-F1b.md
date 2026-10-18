@@ -19,7 +19,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | --- | --- | --- | --- |
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
-| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（定義・始対象・cofinal ⇒ 弱同値・合成・anodyne 因子分解判定が済、Quillen A は未完） |
+| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（定義・cofinality の計算・因子分解判定・left fibration に沿う全右ホーンの引き戻しが済、Quillen A は未完） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 | 未着手 |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
@@ -223,7 +223,19 @@ right anodyne な射の引き戻しの安定性は、これだけからは従わ
 二つの fiber 包含の cofinality から第一射影の cofinality を得る。
 この比較とホーン・標準単体の収縮により、
 `leftFibration_lastHorn_pullback_isRightCofinal/rightAnodyne` を証明した。
-次は内側ホーンを含めた全ての右ホーンへの拡張と、弱飽和閉包への移送を証明する。
+内側ホーンを含む全ての右ホーンについても、終点を固定する**二段の**収縮を構成した。
+第一段の頂点列は j→max(j,k) で、k 以外の欠けた頂点が保たれる。
+第二段は max(j,k)→last で、全ての出力が k 以上なので零が欠けたままである（k ≠ 0）。
+二つの prism を単一の区間の射と同一視しない。
+`rightFibration_lift_fixed_prism` と
+`rightAnodyneExtensions_of_fixed_terminal_homotopies` は、任意の right fibration に
+対する持ち上げ問題を終端から二段の prism に沿って戻して解く。
+`leftFibration_terminalFiber_rightAnodyne_of_two_fixed_contractions` が
+二段の底の収縮を終点 fiber を固定して持ち上げる。
+これに `cofinalRightHornRaise/Finish` の両端・接続・定値族の固定の式を渡し、
+`leftFibration_rightHorn_pullback_isRightCofinal/rightAnodyne` を証明した。
+この定理は単射ごとの cofinality 判定を使い、Quillen A を前提としない。
+次は全右ホーンの結果を弱飽和閉包に移して一般の right anodyne な射に拡張する。
 
 Quillen A 本体、cocartesian fibration に沿う cofinality の pullback 安定性、
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
@@ -235,8 +247,8 @@ B3 の cofinality の pullback 安定性を証明し、弱可縮な coslice の�
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2218 jobs、公理監査1993宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内549モジュールに straightening 依存なし。
+対象ビルド2223 jobs、公理監査2022宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内554モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -332,3 +344,9 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `cofinalVertexFiberBaseChangeIso`・`..._hom_ι` | 引き戻し前後の頂点 fiber の同型・包含との可換性 | 済 |
 | `isRightCofinal_pullback_fst_of_vertexFibers` | 二つの fiber 包含の cofinality から第一射影への消去 | 済 |
 | `leftFibration_lastHorn_pullback_isRightCofinal/rightAnodyne` | left fibration に沿う外側右ホーンの引き戻し | 済 |
+
+| `rightFibration_lift_fixed_prism` | 任意の単射上を固定した終端からの相対 prism の持ち上げ | 済 |
+| `rightAnodyneExtensions_of_fixed_terminal_homotopies` | 二段の固定した終端収縮から単射の right anodyne 性 | 済 |
+| `leftFibration_terminalFiber_rightAnodyne_of_two_fixed_contractions` | 二段の底の収縮から終点 fiber 包含の right anodyne 性 | 済 |
+| `cofinalHornRaiseOrderHom/FinishOrderHom`・`cofinalRightHornVertex/Raise/Finish`・両端と定値族の固定の式 | 全右ホーンの二段の固定終点収縮 | 済 |
+| `leftFibration_rightHorn_pullback_isRightCofinal/rightAnodyne` | left fibration に沿う全右ホーンの引き戻し、k ≠ 0 | 済 |
