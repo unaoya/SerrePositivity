@@ -2010,5 +2010,55 @@ lemma coherentPinchedEvaluate_comparison {C : Type v} [Category.{u} C]
       (SimplicialCategory.sHom X Y).map
         (SimplexCategory.mkHom ⟨F.maxAt, F.maxAt_monotone⟩).op σ
 
+lemma enrichedFunctor_map_eqToHom_of_eq {A : Type w} {C : Type v}
+    [EnrichedCategory SSet.{u} A] [EnrichedCategory SSet.{u} C]
+    {F G : EnrichedFunctor SSet.{u} A C} (h : F = G) (i j : A) :
+    F.map i j ≫ eqToHom (congrArg₂ (fun a b : C ↦ (a ⟶[SSet.{u}] b))
+      (congrArg (fun H ↦ H.obj i) h) (congrArg (fun H ↦ H.obj j) h)) = G.map i j
+
+lemma coherentPinched_sourceMap {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (i j : Fin (n + 1)) :
+    (SimplicialThickening.functor (PinchedHom.front n).toOrderHom.uliftMap).map
+      (⟨ULift.up i⟩ : SimplicialThickening (ULift.{u} (Fin (n + 1)))) ⟨ULift.up j⟩ ≫
+      τ.val.map ⟨ULift.up i.castSucc⟩ ⟨ULift.up j.castSucc⟩ ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentPinched_sourceObj τ i) (coherentPinched_sourceObj τ j)) =
+      toUnit _ ≫ eId SSet X
+
+def CoherentResolutionFlag.prefixSmallPath {n d e : ℕ} (F : CoherentResolutionFlag n d)
+    (α : Fin (e + 1) →o Fin (d + 1)) (i : Fin (e + 1)) :
+    Path (ULift.up F.start : ULift.{u} (Fin (n + 1))) (ULift.up (F.maxAt (α 0)))
+
+def CoherentResolutionFlag.prefixSmallFlag {n d e : ℕ} (F : CoherentResolutionFlag n d)
+    (α : Fin (e + 1) →o Fin (d + 1)) :
+    Fin (e + 1) ⥤ Path (ULift.up F.start : ULift.{u} (Fin (n + 1)))
+      (ULift.up (F.maxAt (α 0)))
+
+lemma CoherentResolutionFlag.front_prefixSmallPath {n d e : ℕ}
+    (F : CoherentResolutionFlag n d) (α : Fin (e + 1) →o Fin (d + 1))
+    (i : Fin (e + 1)) :
+    (SimplicialThickening.functorMap (PinchedHom.front n).toOrderHom.uliftMap
+      (⟨ULift.up F.start⟩ : SimplicialThickening (ULift.{u} (Fin (n + 1))))
+      ⟨ULift.up (F.maxAt (α 0))⟩).obj (F.prefixSmallPath α i) = F.prefixPath α i
+
+lemma CoherentResolutionFlag.front_prefixSmallFlag {n d e : ℕ}
+    (F : CoherentResolutionFlag n d) (α : Fin (e + 1) →o Fin (d + 1)) :
+    ((SimplicialThickening.functor (PinchedHom.front n).toOrderHom.uliftMap).map
+      (⟨ULift.up F.start⟩ : SimplicialThickening (ULift.{u} (Fin (n + 1))))
+      ⟨ULift.up (F.maxAt (α 0))⟩).app (Opposite.op ⦋e⦌) (F.prefixSmallFlag α) =
+        F.prefixFlag α
+
+lemma coherentPinched_prefixFlag {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n d e : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (F : CoherentResolutionFlag n d) (α : Fin (e + 1) →o Fin (d + 1)) :
+    (τ.val.map ⟨ULift.up F.start.castSucc⟩ ⟨ULift.up (F.maxAt (α 0)).castSucc⟩ ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentPinched_sourceObj τ F.start)
+        (coherentPinched_sourceObj τ (F.maxAt (α 0))))).app (Opposite.op ⦋e⦌)
+      (F.prefixFlag α) = (eId SSet X).app (Opposite.op ⦋e⦌) PUnit.unit
+
 end SerrePositivity.InfinityCategories
 ```

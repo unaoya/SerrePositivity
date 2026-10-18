@@ -477,3 +477,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate
 #check @SerrePositivity.InfinityCategories.coherentPinchedHom_comparison
 #check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate_comparison
+#check @SerrePositivity.InfinityCategories.enrichedFunctor_map_eqToHom_of_eq
+#check @SerrePositivity.InfinityCategories.coherentPinched_sourceMap
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixSmallPath
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixSmallFlag
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.front_prefixSmallPath
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.front_prefixSmallFlag
+#check @SerrePositivity.InfinityCategories.coherentPinched_prefixFlag
