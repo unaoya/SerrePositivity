@@ -104,7 +104,13 @@
 - 各頁の項の E 模型の塔を実際の冪遷移から構成し、既存の頁の項との段ごとの同型を構成済み。
 - スペクトル対象の射を cycles・opcycles へ誘導し、πE・ιE との可換性を証明済み。
 - Ψ の自然性を介して、実際の三区間の頁の微分 d がスペクトル対象の射と可換になることを証明済み。
-- 次は各頁の複体を関手化し、E₂ 比較の冪遷移自然性、有限収束と edge 比較を進める。
+- 四添字の変更を自然同型として構成し、実際の pageXIso との対象成分の一致を証明済み。
+- 微分を自然変換にまとめ、Mathlib の実際の pageD と比較して各頁の複体の関手を構成済み。
+- 各頁の複体関手の対象が既存スペクトル系列の実際の頁に一致すると証明済み。
+- Koszul 冪遷移が微分と可換な各頁複体の塔を構成済み。
+- その項の塔は既存の E 模型の項の塔と遷移まで一致すると証明済み。
+- 頁の指定位置の pro-零性がその頁のホモロジーの塔へ移ることを証明済み。
+- 次は頁ホモロジーと次頁の同型の自然性、E₂ 比較の冪遷移自然性、有限収束と edge 比較を進める。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -226,6 +232,12 @@
 | spectralPageMap_πE | SpectralObjectCyclesMaps.lean | 検証済み | 頁の射と標準全射の可換性 |
 | spectralPageMap_ιE | SpectralObjectCyclesMaps.lean | 検証済み | 頁の射と標準単射の可換性 |
 | spectralPageMap_d | SpectralObjectCyclesMaps.lean | 検証済み | 実際の頁の微分との可換性 |
+| spectralSequenceTermFunctorIso | SpectralSequencePageFunctor.lean | 検証済み | 四添字・次数の表示変更の自然同型 |
+| spectralSequencePageDNatTrans | SpectralSequencePageFunctor.lean | 検証済み | 実際の頁微分の自然変換 |
+| spectralSequencePageFunctor | SpectralSequencePageFunctor.lean | 検証済み | スペクトル対象から実際の各頁複体への関手 |
+| koszulPageComplexTower | KoszulPageTowers.lean | 検証済み | 実際の冪遷移と微分が可換な頁複体の塔 |
+| koszulPageComplexTower_eval_eq | KoszulPageTowers.lean | 検証済み | 項の塔と E 模型の遷移までの一致 |
+| koszulPageHomologyTower_isProZero_of_terms | KoszulPageTowers.lean | 検証済み | 項の pro-零性から頁ホモロジーの pro-零性 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

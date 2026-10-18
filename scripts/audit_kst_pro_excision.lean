@@ -740,3 +740,42 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.spectralPageMap_d
 #print axioms SerrePositivity.KST.ProExcision.spectralPageMap_d
+
+#check @SerrePositivity.KST.ProExcision.spectralDifferentialNatTrans
+#print axioms SerrePositivity.KST.ProExcision.spectralDifferentialNatTrans
+
+#check @SerrePositivity.KST.ProExcision.spectralSequenceTermFunctor
+#print axioms SerrePositivity.KST.ProExcision.spectralSequenceTermFunctor
+
+#check @SerrePositivity.KST.ProExcision.spectralSequenceTermFunctorIso
+#print axioms SerrePositivity.KST.ProExcision.spectralSequenceTermFunctorIso
+
+#check @SerrePositivity.KST.ProExcision.spectralSequenceTermFunctorIso_app
+#print axioms SerrePositivity.KST.ProExcision.spectralSequenceTermFunctorIso_app
+
+#check @SerrePositivity.KST.ProExcision.spectralSequencePageDNatTrans
+#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageDNatTrans
+
+#check @SerrePositivity.KST.ProExcision.spectralSequencePageDNatTrans_app
+#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageDNatTrans_app
+
+#check @SerrePositivity.KST.ProExcision.spectralSequencePageFunctor
+#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageFunctor
+
+#check @SerrePositivity.KST.ProExcision.spectralSequencePageFunctor_obj
+#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageFunctor_obj
+
+#check @SerrePositivity.KST.ProExcision.koszulPageComplexTower
+#print axioms SerrePositivity.KST.ProExcision.koszulPageComplexTower
+
+#check @SerrePositivity.KST.ProExcision.koszulPageComplexTower_obj
+#print axioms SerrePositivity.KST.ProExcision.koszulPageComplexTower_obj
+
+#check @SerrePositivity.KST.ProExcision.koszulPageComplexTower_eval_eq
+#print axioms SerrePositivity.KST.ProExcision.koszulPageComplexTower_eval_eq
+
+#check @SerrePositivity.KST.ProExcision.koszulPageHomologyTower
+#print axioms SerrePositivity.KST.ProExcision.koszulPageHomologyTower
+
+#check @SerrePositivity.KST.ProExcision.koszulPageHomologyTower_isProZero_of_terms
+#print axioms SerrePositivity.KST.ProExcision.koszulPageHomologyTower_isProZero_of_terms
