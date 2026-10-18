@@ -10,3 +10,4 @@ public import SerrePositivity.EInfinity.BarrattEccles.ExtraDegeneracy
 public import SerrePositivity.EInfinity.BarrattEccles.Contraction
 public import SerrePositivity.EInfinity.BarrattEccles.BasisAction
 public import SerrePositivity.EInfinity.BarrattEccles.EquivariantBasis
+public import SerrePositivity.EInfinity.BarrattEccles.Sequence
