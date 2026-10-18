@@ -11330,5 +11330,95 @@ noncomputable def leftStrictTransportMappingRetraction_unitIso
     FunctorIso (leftStrictTransportMappingSpaceMap p q ≫ leftStrictTransportMappingRetraction p q)
       (𝟙 (relativeFunctorSpace q p))
 
+def simplicialReplacementUnderEvaluation {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) : nerve (Under c) ⊗ F.obj c ⟶ simplicialReplacement F
+
+lemma simplicialReplacementUnderEvaluation_projection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    simplicialReplacementUnderEvaluation F c ≫ simplicialReplacementProjection F =
+      fst (nerve (Under c)) (F.obj c) ≫ nerveMap (Under.forget c)
+
+lemma simplicialReplacementUnderEvaluation_naturality
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {c d : C} (f : c ⟶ d) :
+    (nerveUnderMap f ▷ F.obj c) ≫ simplicialReplacementUnderEvaluation F c =
+      (nerve (Under d) ◁ F.map f) ≫ simplicialReplacementUnderEvaluation F d
+
+lemma simplicialReplacementUnderEvaluation_scaffold {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} (σ : ComposableArrows C n) (x : (F.obj (σ.obj 0)) _⦋n⦌) :
+    (simplicialReplacementUnderEvaluation F (σ.obj 0)).app (Opposite.op ⦋n⦌)
+      (scaffoldUnderChain σ, x) = ⟨σ, SSet.yonedaEquiv.symm x⟩
+
+lemma scaffoldUnderChain_forget_factorization {C : Type u} [Category.{u} C]
+    {c : C} {n : ℕ} (τ : ComposableArrows (Under c) n) :
+    scaffoldUnderChain (τ ⋙ Under.forget c) ⋙ Under.map (τ.obj 0).hom = τ
+
+def strictDiagramScaffoldInverseComponent {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) (c : C) :
+    relativeFunctorSpace q (simplicialReplacementProjection F) ⟶
+      (ihom (F.obj c)).obj (leftStrictTransport q c)
+
+lemma sSetInternalHom_pre_app {A D E : SSet.{u}} (i : D ⟶ A)
+    (n k : SimplexCategoryᵒᵖ) (s : ((ihom A).obj E).obj n) (α : n ⟶ k) (d : D.obj k) :
+    ((((pre i).app E).app n s).app k α d) = s.app k α (i.app k d)
+
+lemma strictDiagramScaffoldInverseComponent_app {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) (c : C)
+    (n k l : SimplexCategoryᵒᵖ)
+    (x : (relativeFunctorSpace q (simplicialReplacementProjection F)).obj n)
+    (α : n ⟶ k) (y : (F.obj c).obj k) (β : k ⟶ l) (τ : (nerve (Under c)).obj l) :
+    ((((strictDiagramScaffoldInverseComponent F q c).app n x).app k α y).val.app l β τ) =
+      x.val.app l (α ≫ β) ((simplicialReplacementUnderEvaluation F c).app l
+        (τ, (F.obj c).map β y))
+
+def strictDiagramMappingScaffoldInverse {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) :
+    relativeFunctorSpace q (simplicialReplacementProjection F) ⟶
+      strictDiagramMappingSpace F (leftStrictTransportDiagram q)
+
+lemma strictDiagramMappingScaffoldMap_app {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) {n k : ℕ}
+    (η : (strictDiagramMappingSpace F (leftStrictTransportDiagram q)) _⦋n⦌)
+    (α : Opposite.op ⦋n⦌ ⟶ Opposite.op ⦋k⦌) (s : simplicialReplacementSimplex F k) :
+    (((strictDiagramMappingScaffoldMap F q).app (Opposite.op ⦋n⦌) η).val.app
+      (Opposite.op ⦋k⦌) α s) =
+      ((η.val (s.1.obj 0)).app (Opposite.op ⦋k⦌) α (SSet.yonedaEquiv s.2)).val.app
+        (Opposite.op ⦋k⦌) (𝟙 _) (scaffoldUnderChain s.1)
+
+lemma strictDiagramMappingScaffoldInverse_map {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) :
+    strictDiagramMappingScaffoldInverse F q ≫ strictDiagramMappingScaffoldMap F q =
+      𝟙 (relativeFunctorSpace q (simplicialReplacementProjection F))
+
+lemma strictDiagramMappingScaffoldMap_inverse {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) :
+    strictDiagramMappingScaffoldMap F q ≫ strictDiagramMappingScaffoldInverse F q =
+      𝟙 (strictDiagramMappingSpace F (leftStrictTransportDiagram q))
+
+def strictDiagramMappingScaffoldIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) :
+    strictDiagramMappingSpace F (leftStrictTransportDiagram q) ≅
+      relativeFunctorSpace q (simplicialReplacementProjection F)
+
+instance strictDiagramMappingSpace_leftStrictTransport_kanComplex
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {E : SSet.{u}}
+    (q : E ⟶ nerve C) [LeftFibration q] :
+    KanComplex (strictDiagramMappingSpace F (leftStrictTransportDiagram q))
+
+lemma strictDiagramMappingScaffoldMap_isQCatEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {E : SSet.{u}}
+    (q : E ⟶ nerve C) [LeftFibration q] :
+    IsQCatEquivalence (strictDiagramMappingScaffoldMap F q)
+
+lemma leftStrictTransportMappingSpaceMap_isQCatEquivalence
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] :
+    IsQCatEquivalence (leftStrictTransportMappingSpaceMap p q)
+
+noncomputable def leftStrictTransportMappingEquivalence
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] :
+    QCatEquivalence (relativeFunctorSpace q p)
+      (strictDiagramMappingSpace (leftStrictTransportDiagram p) (leftStrictTransportDiagram q))
+
 end SerrePositivity.InfinityCategories
 ```
