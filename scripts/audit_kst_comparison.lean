@@ -51,6 +51,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -214,6 +215,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
 #print axioms SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
+
+
+-- CutDegeneracy.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainCutDegeneracy_singleton
+#print axioms SerrePositivity.KST.Comparison.finiteChainCutDegeneracy_singleton
+
+#check @SerrePositivity.KST.Comparison.liftedDegeneracy_le_castSucc_iff
+#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_le_castSucc_iff
+
+#check @SerrePositivity.KST.Comparison.liftedDegeneracy_le_succ_iff
+#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_le_succ_iff
 
 
 -- DGAlgebra.lean
@@ -1350,6 +1363,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
 
 
+-- SubdivisionFrontDegeneracy.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_front
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_front
+
+#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front
+#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front
+
+
 -- SubdivisionFrontFace.lean
 
 #check @SerrePositivity.KST.Comparison.finiteChainFrontImage
@@ -1432,6 +1454,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge
 #print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge
+
+
+-- SubdivisionRearDegeneracy.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_rear
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_rear
+
+#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_rear
+#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_rear
 
 
 -- SubdivisionUnions.lean
