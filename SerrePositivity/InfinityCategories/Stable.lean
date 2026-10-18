@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Stable.Definition
 
 /-! # 安定 ∞ 圏の基盤
 

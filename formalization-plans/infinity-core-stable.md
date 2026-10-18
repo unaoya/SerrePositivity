@@ -1,6 +1,6 @@
 # α-S：安定 ∞ 圏と D(S) の安定性
 
-作成日：2026-10-18。状態：S1 完了、S2 実装中。S3〜S7 未完了。
+作成日：2026-10-18。状態：S1・S2 完了、S3 実装中。S4〜S7 未完了。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
 担当は旧 α の A4・A5 と D7。実施経緯・検証結果は各保存単位のコミットメッセージに記す。
 
@@ -8,8 +8,11 @@
 
 S1 は完了。零対象、coslice の始対象としての余極限錐、余極限の一意性、
 Λ[2,0]⋆Δ[0] と正方形の同型による押し出し四角形、零角の fiber/cofiber 四角形を定義した。
-span の二辺が正方形の下辺・左辺に写ることも証明済み。S2 の安定性の定義へ進む。
-安定性・ΣΩ の自己同値・三角構造・D7 はまだ未完了。
+span の二辺が正方形の下辺・左辺に写ることも証明済み。
+S2 は完了。HA 1.1.1.9 の三条件を `IsStable` に定義し、有限極限・有限余極限と
+全四角形の引き戻し／押し出しの一致から安定性を証明した（HA 1.1.3.4 の十分な向き）。
+外側ホーンの極限／余極限から、指定した辺を持つ fiber/cofiber 四角形を直接構成している。
+安定性から全有限極限・余極限を導く逆向きは未証明。ΣΩ の自己同値・三角構造・D7 も未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
 引用・追加公理・sorry を使わず、各工程を対象・集約ビルドと公理監査の後に保存する。
@@ -32,8 +35,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 工程 | ファイル | 必須の到達点 | 状態 |
 | --- | --- | --- | --- |
 | S1 | `Stable/Pointed.lean` | 零対象、coslice の始対象としての IsColimitCone、IsPushoutSquare、fiber/cofiber 四角形 | 完了 |
-| S2 | `Stable/Definition.lean` | HA 1.1.1.9 の安定性、HA 1.1.3.4 の必要な向き | 実装中 |
-| S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 未着手 |
+| S2 | `Stable/Definition.lean` | HA 1.1.1.9 の安定性、HA 1.1.3.4 の必要な向き | 完了 |
+| S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 実装中 |
 | S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 未着手 |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 未着手 |
 | S6 | `Stable/ExactFunctor.lean` | 完全関手、h の三角関手、完全関手間の自然変換 | 未着手 |
@@ -63,6 +66,10 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 余極限錐 | `JoinCocone p`、`IsColimitCone c : Prop`、`HasColimit p : Prop`、`colimitVertexIso`（Quasicategory の下で） | 完了 |
 | 押し出し | `spanCoconeSquareIso`、`pushoutSpan`、`pushoutCocone`、`IsPushoutSquare F : Prop` | 完了 |
 | fiber/cofiber | `ZeroTriangle X`、`IsFiberSequence`、`IsCofiberSequence`、`FiberSquare f`、`CofiberSquare f` | 完了 |
-| S2〜S7 | 安定性・ΣΩ・三角構造・完全関手・D7 | 未完了 |
+| 有限形状 | `edgeCospan`、`edgeSpan`、`coneSquare`、`coconeSquare` と境界・普遍性の保存 | 完了 |
+| fiber/cofiber の存在 | `exists_fiberSquare_of_cospan_limits`、`exists_cofiberSquare_of_span_colimits`（零頂点と該当ホーンの極限／余極限のみ） | 完了 |
+| 安定性 | `IsStable X : Prop`（`[Quasicategory X]`。零対象、全辺の fiber/cofiber、零角の列の同値） | 完了 |
+| 有限極限による判定 | `isStable_of_finite_limits_colimits`（Quasicategory、HasZeroVertex、HasFiniteLimits、HasFiniteColimits、全四角形の引き戻し iff 押し出し） | 完了 |
+| S3〜S7 | ΣΩ・三角構造・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

@@ -50,13 +50,46 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.FiberSquare.fiber
 #print axioms SerrePositivity.InfinityCategories.CofiberSquare.cofiber
 
+#print axioms SerrePositivity.InfinityCategories.edgeSimplex_source
+#print axioms SerrePositivity.InfinityCategories.edgeSimplex_target
+#print axioms SerrePositivity.InfinityCategories.edgeCospan
+#print axioms SerrePositivity.InfinityCategories.edgeCospan_left
+#print axioms SerrePositivity.InfinityCategories.edgeCospan_right
+#print axioms SerrePositivity.InfinityCategories.edgeSpan
+#print axioms SerrePositivity.InfinityCategories.edgeSpan_left
+#print axioms SerrePositivity.InfinityCategories.edgeSpan_right
+#print axioms SerrePositivity.InfinityCategories.coneSquare
+#print axioms SerrePositivity.InfinityCategories.coneSquare_cospan
+#print axioms SerrePositivity.InfinityCategories.coneSquare_isPullback
+#print axioms SerrePositivity.InfinityCategories.coconeSquare
+#print axioms SerrePositivity.InfinityCategories.coconeSquare_span
+#print axioms SerrePositivity.InfinityCategories.coconeSquare_isPushout
+#print axioms SerrePositivity.InfinityCategories.coneSquare_right
+#print axioms SerrePositivity.InfinityCategories.coneSquare_top
+#print axioms SerrePositivity.InfinityCategories.coconeSquare_bottom
+#print axioms SerrePositivity.InfinityCategories.coconeSquare_left
+#print axioms SerrePositivity.InfinityCategories.squareTopEdge_source
+#print axioms SerrePositivity.InfinityCategories.squareLeftEdge_target
+#print axioms SerrePositivity.InfinityCategories.exists_fiberSquare_of_cospan_limits
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberSquare_of_span_colimits
+#print axioms SerrePositivity.InfinityCategories.HasFiniteLimits
+#print axioms SerrePositivity.InfinityCategories.HasFiniteColimits
+#print axioms SerrePositivity.InfinityCategories.IsStable
+#print axioms SerrePositivity.InfinityCategories.chosenFiberSquare
+#print axioms SerrePositivity.InfinityCategories.chosenCofiberSquare
+#print axioms SerrePositivity.InfinityCategories.IsStable.pushout_of_pullback
+#print axioms SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout
+#print axioms SerrePositivity.InfinityCategories.isStable_of_finite_limits_colimits
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.InfinityCategories.Stable.Cocone,
     `SerrePositivity.InfinityCategories.Stable.PushoutShape,
-    `SerrePositivity.InfinityCategories.Stable.Pointed]
+    `SerrePositivity.InfinityCategories.Stable.Pointed,
+    `SerrePositivity.InfinityCategories.Stable.FiniteShapes,
+    `SerrePositivity.InfinityCategories.Stable.Definition]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
