@@ -4087,3 +4087,43 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyMu_isGapped
 #check @SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_timeZero
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_timeZero
+#check @SerrePositivity.KST.SConstruction.exists_lift_prism_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.exists_lift_prism_of_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.liftPrismOfTrivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.liftPrismOfTrivialKanFibration
+#check @SerrePositivity.KST.SConstruction.liftPrismOfTrivialKanFibration_zero
+#print axioms SerrePositivity.KST.SConstruction.liftPrismOfTrivialKanFibration_zero
+#check @SerrePositivity.KST.SConstruction.liftPrismOfTrivialKanFibration_one
+#print axioms SerrePositivity.KST.SConstruction.liftPrismOfTrivialKanFibration_one
+#check @SerrePositivity.KST.SConstruction.liftPrismOfTrivialKanFibration_projection
+#print axioms SerrePositivity.KST.SConstruction.liftPrismOfTrivialKanFibration_projection
+#check @SerrePositivity.KST.SConstruction.arrowSourcePrism
+#print axioms SerrePositivity.KST.SConstruction.arrowSourcePrism
+#check @SerrePositivity.KST.SConstruction.arrowSourcePrism_zero
+#print axioms SerrePositivity.KST.SConstruction.arrowSourcePrism_zero
+#check @SerrePositivity.KST.SConstruction.arrowSourcePrism_one
+#print axioms SerrePositivity.KST.SConstruction.arrowSourcePrism_one
+#check @SerrePositivity.KST.SConstruction.arrowSourcePrism_source
+#print axioms SerrePositivity.KST.SConstruction.arrowSourcePrism_source
+#check @SerrePositivity.KST.SConstruction.zeroCofiberFunctor_identityProjection
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberFunctor_identityProjection
+#check @SerrePositivity.KST.SConstruction.cofiberLambdaNu
+#print axioms SerrePositivity.KST.SConstruction.cofiberLambdaNu
+#check @SerrePositivity.KST.SConstruction.cofiberLambdaNu_zero
+#print axioms SerrePositivity.KST.SConstruction.cofiberLambdaNu_zero
+#check @SerrePositivity.KST.SConstruction.cofiberLambdaNu_one
+#print axioms SerrePositivity.KST.SConstruction.cofiberLambdaNu_one
+#check @SerrePositivity.KST.SConstruction.cofiberLambdaNu_projection
+#print axioms SerrePositivity.KST.SConstruction.cofiberLambdaNu_projection
+#check @SerrePositivity.KST.SConstruction.cofiberLambdaNu_source
+#print axioms SerrePositivity.KST.SConstruction.cofiberLambdaNu_source
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaNu
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaNu
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_pre
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_pre
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_zero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_zero
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_one
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_one
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_source
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_source

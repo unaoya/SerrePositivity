@@ -194,4 +194,8 @@ public import SerrePositivity.KST.SConstruction.OrderPrism
 public import SerrePositivity.KST.SConstruction.McCarthyLastMotion
 public import SerrePositivity.KST.SConstruction.McCarthyLambdaMu
 
+public import SerrePositivity.KST.SConstruction.TrivialFibrationPrism
+public import SerrePositivity.KST.SConstruction.ArrowSourcePrism
+public import SerrePositivity.KST.SConstruction.McCarthyLambdaNu
+
 /-! # ∞-S• 構成と連結 K 理論 -/

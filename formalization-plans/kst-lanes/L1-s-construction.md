@@ -6940,3 +6940,133 @@ gapped 性の保存はさらに `[IsStable C]` と元の図式の IsGapped を�
 L1d–f 未完了、L1g は別途指示待ち。Core と他レーンの公開名・型は変更なし。
 
 検証：対象ビルド成功（3210 jobs）、公理監査成功（1601 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.58 McCarthy の λ→ν の coherent な変換と subobject の固定
+
+区間の最小値で、辺 f:x→y に対し id_x から f への普遍 prism を構成した。
+その始点・終点は関手として厳密に一致し、始点 x の成分は prism 全体で一定である。
+任意の自明ファイブレーションの下の prism を両端指定で持ち上げる一般補題を証明した。
+これを cofiber 射影に適用し、標準恒等 cofiber λ(subobject E) から元の cofiber 図式 E=ν への
+大域的な prism を構成した。一つの選択を全ての E に適用するため、Ar の前合成と厳密に両立する。
+cofiber 射影は指定した普遍 prism に厳密に一致し、subobject の成分も厳密に一定である。
+ρ の subobject の回収にはこの固定を用い、商の回収には λ→μ の商が指定零対象で一定となることと、
+C 内の正規化した点ごとの押し出しを用いる。cofiber 図式の圏内の任意の押し出しの選択だけでは
+これらの strict な条件を結論しない。
+
+主要公開宣言（namespace `SerrePositivity.KST.SConstruction`、宇宙 `u`）：
+
+```lean
+lemma exists_lift_prism_of_trivialKanFibration {A E B : SSet.{u}}
+    (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E)
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (h₀ : prismEndpoint 0 A ≫ H = f ≫ p) (h₁ : prismEndpoint 1 A ≫ H = g ≫ p) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ A ⟶ E,
+      prismEndpoint 0 A ≫ F = f ∧ prismEndpoint 1 A ≫ F = g ∧ F ≫ p = H
+
+def liftPrismOfTrivialKanFibration {A E B : SSet.{u}}
+    (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E)
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (h₀ : prismEndpoint 0 A ≫ H = f ≫ p) (h₁ : prismEndpoint 1 A ≫ H = g ≫ p) :
+    (Δ[1] : SSet.{u}) ⊗ A ⟶ E
+
+lemma liftPrismOfTrivialKanFibration_zero {A E B : SSet.{u}}
+    (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E)
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (h₀ : prismEndpoint 0 A ≫ H = f ≫ p) (h₁ : prismEndpoint 1 A ≫ H = g ≫ p) :
+    prismEndpoint 0 A ≫ liftPrismOfTrivialKanFibration p f g H h₀ h₁ = f
+
+lemma liftPrismOfTrivialKanFibration_one {A E B : SSet.{u}}
+    (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E)
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (h₀ : prismEndpoint 0 A ≫ H = f ≫ p) (h₁ : prismEndpoint 1 A ≫ H = g ≫ p) :
+    prismEndpoint 1 A ≫ liftPrismOfTrivialKanFibration p f g H h₀ h₁ = g
+
+lemma liftPrismOfTrivialKanFibration_projection {A E B : SSet.{u}}
+    (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E)
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (h₀ : prismEndpoint 0 A ≫ H = f ≫ p) (h₁ : prismEndpoint 1 A ≫ H = g ≫ p) :
+    liftPrismOfTrivialKanFibration p f g H h₀ h₁ ≫ p = H
+
+def arrowSourcePrism (C : SSet.{u}) :
+    (Δ[1] : SSet.{u}) ⊗ (ihom (Δ[1] : SSet.{u})).obj C ⟶ (ihom (Δ[1] : SSet.{u})).obj C
+
+lemma arrowSourcePrism_zero (C : SSet.{u}) :
+    prismEndpoint 0 ((ihom (Δ[1] : SSet.{u})).obj C) ≫ arrowSourcePrism C =
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫
+        curry (snd (Δ[1] : SSet.{u}) C)
+
+lemma arrowSourcePrism_one (C : SSet.{u}) :
+    prismEndpoint 1 ((ihom (Δ[1] : SSet.{u})).obj C) ≫ arrowSourcePrism C = 𝟙 _
+
+lemma arrowSourcePrism_source (C : SSet.{u}) :
+    arrowSourcePrism C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      snd (Δ[1] : SSet.{u}) ((ihom (Δ[1] : SSet.{u})).obj C) ≫
+        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
+lemma zeroCofiberFunctor_identityProjection {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) : zeroCofiberFunctor z false ≫ cofiberProjection C =
+      curry (snd (Δ[1] : SSet.{u}) C)
+
+def cofiberLambdaNu {C : SSet.{u}} [Quasicategory C] [IsStable C] (z : ZeroVertex C) :
+    (Δ[1] : SSet.{u}) ⊗ cofiberDiagrams C ⟶ cofiberDiagrams C
+
+lemma cofiberLambdaNu_zero {C : SSet.{u}} [Quasicategory C] [IsStable C] (z : ZeroVertex C) :
+    prismEndpoint 0 (cofiberDiagrams C) ≫ cofiberLambdaNu z =
+      cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫
+        zeroCofiberFunctor z false
+
+lemma cofiberLambdaNu_one {C : SSet.{u}} [Quasicategory C] [IsStable C] (z : ZeroVertex C) :
+    prismEndpoint 1 (cofiberDiagrams C) ≫ cofiberLambdaNu z = 𝟙 _
+
+lemma cofiberLambdaNu_projection {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) : cofiberLambdaNu z ≫ cofiberProjection C =
+      (Δ[1] ◁ cofiberProjection C) ≫ arrowSourcePrism C
+
+lemma cofiberLambdaNu_source {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) :
+    cofiberLambdaNu z ≫ cofiberProjection C ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      snd (Δ[1] : SSet.{u}) (cofiberDiagrams C) ≫ cofiberProjection C ≫
+        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
+def mcCarthyLambdaNu {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (E : arNerve n ⟶ cofiberDiagrams C) :
+    (Δ[1] : SSet.{u}) ⊗ arNerve n ⟶ cofiberDiagrams C
+
+lemma mcCarthyLambdaNu_pre {l n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (E : arNerve n ⟶ cofiberDiagrams C)
+    (σ : Fin (l + 1) →o Fin (n + 1)) :
+    (Δ[1] ◁ arNerveMap σ) ≫ mcCarthyLambdaNu z E =
+      mcCarthyLambdaNu z (arNerveMap σ ≫ E)
+
+lemma mcCarthyLambdaNu_zero {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (E : arNerve n ⟶ cofiberDiagrams C) :
+    prismEndpoint 0 (arNerve n) ≫ mcCarthyLambdaNu z E =
+      E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫
+        zeroCofiberFunctor z false
+
+lemma mcCarthyLambdaNu_one {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (E : arNerve n ⟶ cofiberDiagrams C) :
+    prismEndpoint 1 (arNerve n) ≫ mcCarthyLambdaNu z E = E
+
+lemma mcCarthyLambdaNu_source {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (E : arNerve n ⟶ cofiberDiagrams C) :
+    mcCarthyLambdaNu z E ≫ cofiberProjection C ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      snd (Δ[1] : SSet.{u}) (arNerve n) ≫ E ≫ cofiberProjection C ≫
+        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+```
+
+前提：prism の持ち上げは型に記した実際の TrivialKanFibration と両端の式のみ。
+辺の普遍 prism には quasicategory 性を要求しない。λ→ν の cofiber への持ち上げには
+`[Quasicategory C] [IsStable C]` と指定零対象 z : ZeroVertex C を要求する。
+持ち上げや subobject の固定を追加仮定にはしていない。
+
+現在地：L1a・L1b 完了、L1c 継続中。McCarthy の左 fiber の切断と λ→μ・λ→ν の両枝まで証明済み。
+両枝の span への貼り合わせ、C 内での点ごとの押し出しによる ρ、ιr と恒等射を結ぶ二つの実ホモトピー、
+単体積 Quillen A、加法性比較の弱同値性は未完了。面のホモトピー引き戻し条件、反復 S 実現と
+§6.43 の homotopy fiber の比較、構造射との照合、正の段の Ω 条件・delooping、
+負次数消滅を含む BF 連結スペクトルとスペクトル関手も未完了。L1d–f 未完了、L1g は別途指示待ち。
+Core と他レーンの公開名・型は変更なし。
+
+検証：対象ビルド成功（3213 jobs）、公理監査成功（1621 宣言、標準三公理のみ）。追加公理・sorry なし。
