@@ -1589,5 +1589,81 @@ lemma coherentHomComparisonObj_extend {C : Type v} (X Y : C) {m n : ℕ}
     coherentHomComparisonObj X Y (PinchedHom.extendOrderHom α.toOrderHom i) =
       coherentHomComparisonObj X Y i
 
+lemma coherentHomComparisonHom_transport {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y A B : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) {i j i' j' : Fin (n + 2)}
+    (hi : i = i') (hj : j = j')
+    (hA : coherentHomComparisonObj X Y i' = A)
+    (hB : coherentHomComparisonObj X Y j' = B) :
+    coherentHomComparisonHom σ i j ≫ eqToHom (congrArg₂ SimplicialCategory.sHom
+      ((congrArg (coherentHomComparisonObj X Y) hi).trans hA)
+      ((congrArg (coherentHomComparisonObj X Y) hj).trans hB)) =
+      eqToHom (congrArg₂ (fun a b : Fin (n + 2) ↦ SimplicialCategory.sHom
+        (⟨ULift.up a⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2)))) ⟨ULift.up b⟩) hi hj) ≫
+        coherentHomComparisonHom σ i' j' ≫
+          eqToHom (congrArg₂ SimplicialCategory.sHom hA hB)
+
+lemma thickeningHom_transport_I {J : Type u} [LinearOrder J]
+    {i j i' j' : SimplicialThickening J} (hi : i = i') (hj : j = j')
+    {d : SimplexCategoryᵒᵖ} (P : (SimplicialCategory.sHom i j).obj d)
+    (k : Fin (d.unop.len + 1)) :
+    (((eqToHom (congrArg₂ SimplicialCategory.sHom hi hj)).app d P).obj k).I =
+      (P.obj k).I
+
+lemma thickeningExtend_map_cast_last {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
+    (SimplicialThickening.functor (PinchedHom.extend α).toOrderHom.uliftMap).map
+      (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (m + 2))))
+      ⟨ULift.up (Fin.last (m + 1))⟩ ≫
+      eqToHom (congrArg₂ (fun a b : Fin (n + 2) ↦ SimplicialCategory.sHom
+        (⟨ULift.up a⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2)))) ⟨ULift.up b⟩)
+        (PinchedHom.extendOrderHom_castSucc α.toOrderHom i)
+        (PinchedHom.extendOrderHom_last α.toOrderHom)) =
+      nerveMap (pathLastReindexFunctor α i)
+
+def thickeningExtendHom {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (i j : Fin (m + 2)) :
+    SimplicialCategory.sHom
+      (⟨ULift.up i⟩ : SimplicialThickening (ULift.{u} (Fin (m + 2)))) ⟨ULift.up j⟩ ⟶
+      SimplicialCategory.sHom
+        (⟨ULift.up (PinchedHom.extendOrderHom α.toOrderHom i)⟩ :
+          SimplicialThickening (ULift.{u} (Fin (n + 2))))
+        ⟨ULift.up (PinchedHom.extendOrderHom α.toOrderHom j)⟩
+
+lemma coherentHomComparisonHom_naturality_of_normalized
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] {X Y A B : C} {m n : ℕ}
+    (α : ⦋m⦌ ⟶ ⦋n⦌) (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) (i j : Fin (m + 2))
+    (hA : coherentHomComparisonObj X Y i = A) (hB : coherentHomComparisonObj X Y j = B)
+    (hA' : coherentHomComparisonObj X Y (PinchedHom.extendOrderHom α.toOrderHom i) = A)
+    (hB' : coherentHomComparisonObj X Y (PinchedHom.extendOrderHom α.toOrderHom j) = B)
+    (h : thickeningExtendHom α i j ≫ coherentHomComparisonHom σ
+      (PinchedHom.extendOrderHom α.toOrderHom i)
+      (PinchedHom.extendOrderHom α.toOrderHom j) ≫
+        eqToHom (congrArg₂ SimplicialCategory.sHom hA' hB') =
+          coherentHomComparisonHom ((SimplicialCategory.sHom X Y).map α.op σ) i j ≫
+            eqToHom (congrArg₂ SimplicialCategory.sHom hA hB)) :
+    (thickeningExtendHom α i j ≫ coherentHomComparisonHom σ
+      (PinchedHom.extendOrderHom α.toOrderHom i)
+      (PinchedHom.extendOrderHom α.toOrderHom j)) ≫
+        eqToHom (congrArg₂ SimplicialCategory.sHom
+          (coherentHomComparisonObj_extend X Y α i)
+          (coherentHomComparisonObj_extend X Y α j)) =
+            coherentHomComparisonHom ((SimplicialCategory.sHom X Y).map α.op σ) i j
+
+lemma coherentHomComparisonSimplex_naturality {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
+    (SimplicialNerve C).map (PinchedHom.extend α).op (coherentHomComparisonSimplex σ) =
+      coherentHomComparisonSimplex ((SimplicialCategory.sHom X Y).map α.op σ)
+
+noncomputable def coherentHomComparison {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] (X Y : C) :
+    (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom X Y) ⟶
+      pinchedHom (coherentNerveVertex X) (coherentNerveVertex Y)
+
+lemma coherentHomComparison_app_val {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
+    ((coherentHomComparison X Y).app (Opposite.op ⦋n⦌) (ULift.up σ)).val =
+      coherentHomComparisonSimplex σ
+
 end SerrePositivity.InfinityCategories
 ```

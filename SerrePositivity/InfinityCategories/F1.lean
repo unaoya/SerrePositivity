@@ -69,3 +69,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentPathMaximum
 public import SerrePositivity.InfinityCategories.F1.CoherentHomComparison
 public import SerrePositivity.InfinityCategories.F1.CoherentHomFaces
 public import SerrePositivity.InfinityCategories.F1.CoherentHomReindex
+public import SerrePositivity.InfinityCategories.F1.CoherentHomNaturality

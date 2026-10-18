@@ -379,3 +379,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonHom_cast_last
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonHom_last_last
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonObj_extend
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonHom_transport
+#check @SerrePositivity.InfinityCategories.thickeningHom_transport_I
+#check @SerrePositivity.InfinityCategories.thickeningExtend_map_cast_last
+#check @SerrePositivity.InfinityCategories.thickeningExtendHom
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonHom_naturality_of_normalized
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex_naturality
+#check @SerrePositivity.InfinityCategories.coherentHomComparison
+#check @SerrePositivity.InfinityCategories.coherentHomComparison_app_val
