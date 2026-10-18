@@ -87,6 +87,9 @@ public import SerrePositivity.KST.Descent.ComponentCount
 public import SerrePositivity.KST.Descent.SeparatedObjects
 public import SerrePositivity.KST.Descent.ReducedDescentStep
 public import SerrePositivity.KST.Descent.SectionedDescent
+public import SerrePositivity.KST.Descent.AffineSplitDescent
+public import SerrePositivity.KST.Descent.AffineBaseChangeDescent
+public import SerrePositivity.KST.Descent.AffineTensorSquare
 
 /-!
 # K-L8：論文 §3 の降下
@@ -135,6 +138,9 @@ Noether な対象の整な成分による有限閉被覆、一成分と残りへ
 切断を持つ射の全次数降下を証明する。Noether 性と冪零不変性で始域の被約性も外す。
 残り自身の既約成分数の減少から内側の強い帰納を実行し、外側の次元帰納も閉じる。
 明示した実降下の帰結のもとで、有限次元の基底への切断を持つ射の全次数降下を導く。
+環の分裂から固定した基底上の切断を構成し、分裂するテンソル積の底変換と
+自己底変換の指定射影に、同じ前層の全次数降下を適用する。
+テンソル積の二射影の実際の Cartesian 性と、右射影の群作用との同変性も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

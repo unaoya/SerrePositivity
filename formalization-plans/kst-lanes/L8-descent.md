@@ -64,10 +64,13 @@ Noether な終域への全射閉埋め込みの冪零性と、Noether な対象�
 零より低い次元に対する帰納仮定は、空の基底の降下から証明した。
 残り自身の既約成分数の厳密な減少を証明し、内側の成分数の強い帰納を完了した。
 外側の次元上界の帰納も実行し、切断を持つ射の全次数 PiDescent を低次元の仮定なしで証明した。
+環の分裂から固定した S 上の切断を構成し、分裂する底変換と自己底変換の
+テンソル積モデルに同じ L の全次数降下を適用した。
+テンソル積の指定二射影の実際の Cartesian 性と、右射影の同変性を証明した。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 87 モジュール・1003 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 90 モジュール・1031 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -497,6 +500,13 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `NaturalBlowupSequences.piDescent_of_below` | 被約化を戻した一般の基底の一段 | 対象ビルド済み、低次元の仮定だけを入力 |
 | `NaturalBlowupSequences.sectionedDescentBelow` | 外側の次元帰納による全ての低次元の仮定の構成 | 対象ビルド済み |
 | `NaturalBlowupSequences.sectioned_piDescent` | 切断を持つ射の全次数降下 | 対象ビルド済み、局所降下・次元・成分数の帰納仮定は残らない |
+| `affineSplitSection`、`affineSplitSection_identity` | 環の分裂から固定した S 上の切断 | 対象ビルド済み |
+| `NaturalBlowupSequences.affine_split_piDescent` | 分裂するアフィン射の全次数降下 | 対象ビルド済み、元の L を使用 |
+| `tensorBaseChangeRetraction` | 指定された T → B から底変換の分裂 | 対象ビルド済み、B 代数射 |
+| `NaturalBlowupSequences.affine_baseChange_piDescent` | 分裂するテンソル積底変換の全次数降下 | 対象ビルド済み |
+| `NaturalBlowupSequences.affine_selfBaseChange_piDescent` | 自己底変換の全次数降下 | 対象ビルド済み |
+| `tensorSpecSquare_isPullback` | 指定二射影の実際の Cartesian 性 | 対象ビルド済み |
+| `tensorSpecSquare_right_equivariant` | 右射影の元の作用との同変性 | 対象ビルド済み |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1040,3 +1050,33 @@ Noether な S と公理 (3) があれば、始域 V が被約でない場合も�
 自然な列と有限積保存を実際の降下から供給すること、切断を持たない射への Čech 還元、
 最小公理 (1)–(8) 全体、(3.6) と K0・T2・E の接続は未完である。
 この条件付きの切断を持つ段階の完成を、定理 3.1 全体の完成とは呼ばない。
+
+## 36. 環の分裂とアフィン底変換の全次数降下
+
+`affineOverObject` と `affineAlgebraOverObject` は、任意の固定した S 上で
+Spec A と Spec T を有限型の圏の対象にする。構造射を保持したまま、
+指定射影と元の環の群作用も同じ圏内に構成する。
+A 代数射 r : T → A の係数保存から Spec r が実際の切断となることを証明した。
+`affine_split_piDescent` はこの切断と元の幾何的推移性を使い、§35 の完成した帰納を適用する。
+前層を別の基底上の任意の前層に交換する操作はしていない。
+
+A 代数射 φ : T → B があれば、テンソル積の普遍性により
+`tensorBaseChangeRetraction φ : B ⊗_A T →ₐ[B] B` を実際に構成できる。
+純テンソル b ⊗ t の像は b · φ(t) である。
+既存の係数拡大の推移性と組み合わせ、Spec B が同じ S 上の有限型かつ分離な対象で、
+その次元に明示した有限上界があれば、Spec(B ⊗_A T) → Spec B の指定された
+全係数・全整数次数の PiDescent を元の L に対して証明した。
+自己底変換では φ を T の恒等射とし、乗法による分裂から同じ結論を得る。
+左因子 B または T は固定し、右因子だけに元の群作用を適用する。
+
+`tensorSpecSquare_isPullback` は Mathlib の `pullbackSpecIso` の二射影の公式を使い、
+指定された係数射影と右射影が実際のスキームの Cartesian 正方形を成すことを証明する。
+右射影は元の Spec T の作用と同変であり、左射影は Spec B 上の作用である。
+単なる対象同型の存在だけを使って引き戻しであると称してはいない。
+
+ここで完成したのは、分裂を持つ底変換の全次数降下と、その幾何的な正方形である。
+有限型の圏内の Čech 各段との関手的な比較、Tot と引き戻しの Fubini、
+分裂余単体対象の実降下、細分補題、および元の切断を持たない射への還元は残る。
+自然な blowup 列・有限積保存を実降下から供給する工程と、有限次元上界の接続も残る。
+最小公理 (1)–(8) 全体、(3.6)、K0・T2・E の接続も未完であり、
+本段階を論文 補題 3.2 または定理 3.1 全体の完成とは呼ばない。
