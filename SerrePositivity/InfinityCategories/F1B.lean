@@ -117,3 +117,8 @@ public import SerrePositivity.InfinityCategories.F1B.UnitComparisonFiberForwardD
 public import SerrePositivity.InfinityCategories.F1B.UnitComparisonReturnHomotopy
 public import SerrePositivity.InfinityCategories.F1B.ContractibleHomotopyRetract
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaInitialFromMapping
+public import SerrePositivity.InfinityCategories.F1B.RelativeInitialExtension
+public import SerrePositivity.InfinityCategories.F1B.FunctorRelativeInitial
+public import SerrePositivity.InfinityCategories.F1B.RelativeInitialHomotopy
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaRelativeInitial
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaCounit

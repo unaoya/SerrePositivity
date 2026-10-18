@@ -294,15 +294,31 @@ raw な射を保ったパラメータ自然性を与える。`unitCompositionPat
 ここでは可縮性の移送に必要な一方の合成を証明した。任意の比較 fiber 上のもう一方の合成の
 ホモトピーや、二方向比較が常にホモトピー逆になるという強い主張は含めない。
 
+`exists_lift_of_initial_first_vertices` は既存の `InitialBoundaryLifting` を用いて、
+指定部分と基底を固定した相対骨格の延長を構成する。
+`initialBoundaryLifting_ihom_of_pointwise` はこれを直積上で適用し、任意のパラメータの
+関手単体集合へ点ごとの相対始対象性を移す。
+`exists_homotopy_over_of_pointwise_initialBoundaryLifting` は、同じ基底上で相対始対象の
+族から任意の族への実際のホモトピーを与え、その射影全体が時間に定値であることを保証する。
+`unitCommaIdentityFamily G` は恒等矢印の族で、始域は G、標的は恒等関手に厳密に一致する。
+これと G に沿った単位切断を comma 内で結び、標的へ射影することで、相対始点境界充填を
+仮定した自然な余単位候補 `exists_unitCommaCounitHomotopy_of_relativeInitial` を得た。
+`UnitCommaInitialCondition.initialBoundaryLifting_of_op_transport` と
+`UnitCommaInitialCondition.exists_counitHomotopy_of_op_transport` は既存の
+`Stable.CartesianInitialBoundary` を用いる接続である。
+**反転した `unitCommaSource G` の `CocartesianHornFibration` 性は明示的な未充足仮定として残る。**
+この輸送を構成すれば、証明済みの各点の単位比較条件から余単位候補まで接続できる。
+余単位候補には三角恒等式をまだ付けていない。
+
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
 `∃ a : QCatAdjunction F G, a.unitHom = η` を構成する逆方向である。
 comma の経路では、証明済みの `UnitCommaInitialCondition η` から普遍矢印の射影の
-充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
+反転した始域射影の輸送を構成し、上記の余単位候補に三角恒等式を付ける必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2068 jobs）・公理監査（1240 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 400 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2103 jobs）・公理監査（1257 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 435 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -517,3 +533,10 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `unitCommaMappingToComparisonFiber_comp_return_homotopy` | 恒等射から実際の戻る合成へのホモトピー | 実装済み |
 | `isContractibleKan_of_homotopy_retract` | 可縮 Kan 複体のホモトピー retract へ可縮性を移す | 実装済み |
 | `UnitMappingSpaceCondition.unitCommaMappingSpace_isContractibleKan`・`UnitMappingSpaceCondition.unitCommaInitialCondition` | 各点の標準単位比較の同値性から指定単位の comma 始対象性 | 実装済み（余単位・三角恒等式の構成は後続） |
+| `exists_lift_of_initial_first_vertices` | 始点の相対境界充填による指定部分・基底を固定した図式の延長 | 実装済み |
+| `simplexFirstVertex_stdSimplex_of_notMem_boundary`・`simplexFirstVertex_prod`・`initialBoundaryLifting_ihom_of_pointwise` | 各点の相対始対象性を任意のパラメータの関手単体集合へ移す | 実装済み |
+| `exists_edge_over_of_initialBoundaryLifting`・`exists_homotopy_over_of_pointwise_initialBoundaryLifting` | 相対始対象の族から同じ基底上の任意の族への射・実際のホモトピー | 実装済み |
+| `UnitCommaInitialCondition.initialBoundaryLifting_of_op_transport` | 反転した始域射影の輸送から単位切断の相対充填を得る | 実装済み（輸送は仮定） |
+| `unitCommaIdentityFamily`・`unitCommaIdentityFamily_source`・`unitCommaIdentityFamily_target` | G の像の恒等矢印の族と二つの射影の回収 | 実装済み |
+| `exists_unitCommaCounitComparison_of_relativeInitial`・`exists_unitCommaCounitHomotopy_of_relativeInitial` | 相対充填の仮定から comma 内の比較と自然な余単位候補を構成 | 実装済み（三角恒等式は未証明） |
+| `UnitCommaInitialCondition.exists_counitHomotopy_of_op_transport` | comma の始対象性と始域射影の輸送から余単位候補を構成 | 実装済み（輸送は仮定、三角恒等式は未証明） |
