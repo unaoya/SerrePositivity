@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2064 jobs、累計250宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2066 jobs、累計261宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -325,6 +325,31 @@ Ar[n] 全体への適用をつなぐ自然な cofiber 抽出を実装した。
 この還元に安定性や零対角の仮定は不要で、`isGapped_iff_triples` では零対角を別に保持する。
 また空の指定境界に枠を保つ補完を適用し、任意の第一行から実際の Ar[n] 図式を構成した。
 この存在定理の結論に三つ組の押し出し性は含まれておらず、L1b 完成とは数えない。
+
+関手圏の余極限について、点ごとの存在から自然な余錐を構成する向きと、
+任意の余極限余錐を評価へ戻す向きを接続した。
+これは構成済みの cofiber 族の普遍性を部分図式へ制限するための API である。
+既存の Core A6 の公開宣言は変更していない。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `HasPointwiseColimits` | `(p : J ⟶ (ihom K).obj X) → Prop`、定義は `∀ k : K _⦋0⦌, HasColimit (evaluateFunctorDiagram p k)` |
+| `IsPointwiseColimitCone.hasPointwiseColimits` | `{c : JoinCocone p} → IsPointwiseColimitCone c → HasPointwiseColimits p` |
+| `exists_pointwiseColimitCone` | `[Quasicategory X] → (p : J ⟶ (ihom K).obj X) → HasPointwiseColimits p → ∃ c : JoinCocone p, IsPointwiseColimitCone c` |
+| `hasColimit_of_hasPointwiseColimits` | `[Quasicategory X] → (p : J ⟶ (ihom K).obj X) → HasPointwiseColimits p → HasColimit p` |
+| `IsPointwiseColimitCone.of_vertexIso` | `[Quasicategory X] → {c d : JoinCocone p} → IsPointwiseColimitCone c → VertexIso (X := sliceUnder p) c d → IsPointwiseColimitCone d` |
+| `isPointwiseColimitCone_of_isColimitCone_of_hasPointwiseColimits` | `[Quasicategory X] → HasPointwiseColimits p → (c : JoinCocone p) → IsColimitCone c → IsPointwiseColimitCone c` |
+| `isColimitCone_iff_pointwise_of_hasPointwiseColimits` | `[Quasicategory X] → HasPointwiseColimits p → (c : JoinCocone p) → (IsColimitCone c ↔ IsPointwiseColimitCone c)` |
+| `isPushoutSquare_iff_pointwise_of_hasPointwiseColimits` | `[Quasicategory X] → (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ (ihom K).obj X) → HasPointwiseColimits (pushoutSpan F) → (IsPushoutSquare F ↔ ∀ k : K _⦋0⦌, IsPushoutSquare (F ≫ evaluateFunctorAt k))` |
+| `reindexFunctorCocone` | `(c : JoinCocone p) → (f : L ⟶ K) → JoinCocone (p ≫ (pre f).app X)`、`p : J ⟶ (ihom K).obj X` |
+| `IsPointwiseColimitCone.reindex` | `{c : JoinCocone p} → IsPointwiseColimitCone c → (f : L ⟶ K) → IsPointwiseColimitCone (reindexFunctorCocone c f)` |
+| `isColimitCone_reindex_of_hasPointwiseColimits` | `[Quasicategory X] → HasPointwiseColimits p → (c : JoinCocone p) → IsColimitCone c → (f : L ⟶ K) → IsColimitCone (reindexFunctorCocone c f)` |
+
+`exists_pointwiseColimitCone` は α-S の `exists_colimitCoconeFamily` により図式の転置に沿って
+普遍余錐を coherent に選び、内部 Hom を再び転置して実際の余錐を作る。
+逆方向はこの余錐と任意の普遍余錐を coslice の同型で比較して証明した。
+点ごとの存在前提を落とした逆方向や、余極限の交換そのものを無条件で主張していない。
+添字の前合成 f には単射性も quasicategory 性も要求しない。
 
 **未完了**：零次元で作った実際の図式 F について、全三つ組の正方形
 `arSquare i j j k hij le_rfl hjk ≫ F` が押し出しとなること。

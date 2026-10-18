@@ -576,3 +576,36 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.exists_firstRowDiagramWithZeroDiagonal
 #print axioms SerrePositivity.KST.SConstruction.exists_firstRowDiagramWithZeroDiagonal
+
+#check @SerrePositivity.KST.SConstruction.HasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.HasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.IsPointwiseColimitCone.hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.IsPointwiseColimitCone.hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.exists_pointwiseColimitCone
+#print axioms SerrePositivity.KST.SConstruction.exists_pointwiseColimitCone
+
+#check @SerrePositivity.KST.SConstruction.hasColimit_of_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.hasColimit_of_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.IsPointwiseColimitCone.of_vertexIso
+#print axioms SerrePositivity.KST.SConstruction.IsPointwiseColimitCone.of_vertexIso
+
+#check @SerrePositivity.KST.SConstruction.isPointwiseColimitCone_of_isColimitCone_of_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.isPointwiseColimitCone_of_isColimitCone_of_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_iff_pointwise_of_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_iff_pointwise_of_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.isPushoutSquare_iff_pointwise_of_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.isPushoutSquare_iff_pointwise_of_hasPointwiseColimits
+
+#check @SerrePositivity.KST.SConstruction.reindexFunctorCocone
+#print axioms SerrePositivity.KST.SConstruction.reindexFunctorCocone
+
+#check @SerrePositivity.KST.SConstruction.IsPointwiseColimitCone.reindex
+#print axioms SerrePositivity.KST.SConstruction.IsPointwiseColimitCone.reindex
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_reindex_of_hasPointwiseColimits
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_reindex_of_hasPointwiseColimits
