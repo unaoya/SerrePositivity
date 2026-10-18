@@ -4353,5 +4353,67 @@ lemma simplicialReplacementFiberMap_tautScaffoldFiberMap
 instance tautScaffoldFiberMap_isIso {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) (c : C) : IsIso (tautScaffoldFiberMap F c)
 
+def scaffoldInitialTransformation {C : Type u} [Category.{u} C]
+    {n : ℕ} (σ : ComposableArrows C n) :
+    (CategoryTheory.Functor.const (Fin (n + 1))).obj (σ.obj 0) ⟶ σ
+
+def scaffoldUnderChain {C : Type u} [Category.{u} C]
+    {n : ℕ} (σ : ComposableArrows C n) : ComposableArrows (Under (σ.obj 0)) n
+
+lemma scaffoldUnderChain_projection {C : Type u} [Category.{u} C]
+    {n : ℕ} (σ : ComposableArrows C n) :
+    scaffoldUnderChain σ ⋙ Under.forget (σ.obj 0) = σ
+
+lemma scaffoldUnderChain_yoneda_projection {C : Type u} [Category.{u} C]
+    {n : ℕ} (σ : ComposableArrows C n) :
+    SSet.yonedaEquiv.symm (scaffoldUnderChain σ) ≫ nerveMap (Under.forget (σ.obj 0)) =
+      SSet.yonedaEquiv.symm σ
+
+lemma scaffoldUnderChain_restriction {C : Type u} [Category.{u} C]
+    {m n : SimplexCategory} (α : m ⟶ n) (σ : ComposableArrows C n.len) :
+    (SimplexCategory.toCat.map α).toFunctor ⋙ scaffoldUnderChain σ =
+      scaffoldUnderChain ((SimplexCategory.toCat.map α).toFunctor ⋙ σ) ⋙
+        Under.map (σ.map (homOfLE (Fin.zero_le (α.toOrderHom 0))))
+
+lemma scaffoldUnderChain_yoneda_restriction {C : Type u} [Category.{u} C]
+    {m n : SimplexCategory} (α : m ⟶ n) (σ : ComposableArrows C n.len) :
+    stdSimplex.map α ≫ SSet.yonedaEquiv.symm (scaffoldUnderChain σ) =
+      SSet.yonedaEquiv.symm
+        (scaffoldUnderChain ((SimplexCategory.toCat.map α).toFunctor ⋙ σ)) ≫
+          nerveUnderMap (σ.map (homOfLE (Fin.zero_le (α.toOrderHom 0))))
+
+lemma relativeFunctorUncurry_parameter {A T U E B : SSet.{u}}
+    {p : E ⟶ B} {a : A ⟶ B} (f : T ⟶ relativeFunctorSpace p a) (r : U ⟶ T) :
+    relativeFunctorUncurry (r ≫ f) = A ◁ r ≫ relativeFunctorUncurry f
+
+lemma relativeFunctorUncurry_pre {A D T E B : SSet.{u}}
+    {p : E ⟶ B} {a : A ⟶ B} (f : T ⟶ relativeFunctorSpace p a) (i : D ⟶ A) :
+    relativeFunctorUncurry (f ≫ relativeFunctorPre p a i) =
+      i ▷ T ≫ relativeFunctorUncurry f
+
+def universalScaffoldSimplex {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) {n : ℕ}
+    (s : simplicialReplacementSimplex (leftStrictTransportDiagram p) n) :
+    (Δ[n] : SSet.{u}) ⟶ E
+
+lemma universalScaffoldSimplex_projection {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) {n : ℕ}
+    (s : simplicialReplacementSimplex (leftStrictTransportDiagram p) n) :
+    universalScaffoldSimplex p s ≫ p = SSet.yonedaEquiv.symm s.1
+
+lemma universalScaffoldSimplex_naturality {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) {m n : SimplexCategory} (α : m ⟶ n)
+    (s : simplicialReplacementSimplex (leftStrictTransportDiagram p) n.len) :
+    universalScaffoldSimplex p
+        (simplicialReplacementSimplexMap (leftStrictTransportDiagram p) α s) =
+      stdSimplex.map α ≫ universalScaffoldSimplex p s
+
+def universalScaffold {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) : simplicialReplacement (leftStrictTransportDiagram p) ⟶ E
+
+lemma universalScaffold_projection {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) :
+    universalScaffold p ≫ p = simplicialReplacementProjection (leftStrictTransportDiagram p)
+
 end SerrePositivity.InfinityCategories
 ```

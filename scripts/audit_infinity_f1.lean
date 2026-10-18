@@ -971,3 +971,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.tautScaffoldFiberMap
 #check @SerrePositivity.InfinityCategories.simplicialReplacementFiberMap_tautScaffoldFiberMap
 #check @SerrePositivity.InfinityCategories.tautScaffoldFiberMap_isIso
+#check @SerrePositivity.InfinityCategories.scaffoldInitialTransformation
+#check @SerrePositivity.InfinityCategories.scaffoldUnderChain
+#check @SerrePositivity.InfinityCategories.scaffoldUnderChain_projection
+#check @SerrePositivity.InfinityCategories.scaffoldUnderChain_yoneda_projection
+#check @SerrePositivity.InfinityCategories.scaffoldUnderChain_restriction
+#check @SerrePositivity.InfinityCategories.scaffoldUnderChain_yoneda_restriction
+#check @SerrePositivity.InfinityCategories.relativeFunctorUncurry_parameter
+#check @SerrePositivity.InfinityCategories.relativeFunctorUncurry_pre
+#check @SerrePositivity.InfinityCategories.universalScaffoldSimplex
+#check @SerrePositivity.InfinityCategories.universalScaffoldSimplex_projection
+#check @SerrePositivity.InfinityCategories.universalScaffoldSimplex_naturality
+#check @SerrePositivity.InfinityCategories.universalScaffold
+#check @SerrePositivity.InfinityCategories.universalScaffold_projection

@@ -186,3 +186,6 @@ public import SerrePositivity.InfinityCategories.F1.WeightedNerveLeftFibration
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacement
 public import SerrePositivity.InfinityCategories.F1.TautScaffold
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFiber
+public import SerrePositivity.InfinityCategories.F1.ScaffoldUnderChain
+public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1.UniversalScaffold
