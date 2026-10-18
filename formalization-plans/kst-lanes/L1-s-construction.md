@@ -96,7 +96,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 
 ## 6. 現在地・主要宣言
 
-**L1a・L1b 完了。L1c 進行中（core・対角・Kan 置換・連結性・K 空間の零対象比較を実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
+**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
 L1b は元の全 gapped 図式の制限写像そのものについて、全次数・全境界の RLP を証明した。
 追加の存在仮定や出力の gapped 性の仮定は残っていない。
 
@@ -762,3 +762,187 @@ L1d–f は未完了、L1g は別途指示待ち。
 この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2254 jobs）、
 `lake env lean scripts/audit_kst_s_construction.lean` 成功（515 宣言、標準三公理のみ）。
 追加公理・sorry なし。L1c 全体は未完了なので、全体ビルドは工程完了時に行う。
+
+### 6.7 L1c：後合成と有限反復の対象
+
+`PreservesSConstructionData f` は、零頂点と実際の押し出し正方形を保つという本レーンの入力条件。
+α-S の安定性の定義を変更せず、h 圏の通常の押し出しに置き換えない。
+この条件から `IsGapped.postcomp`、S_n の後合成 `sPostcomp`、core と対角の写像を構成した。
+S_n の恒等・合成・単体作用との可換性、および対角の恒等・合成則は厳密等号である。
+零図式は像の零対象の零図式へ厳密に送られる。
+
+点つきの公開 `kSpace` の間の厳密な写像には、既定の零対象の頂点を厳密に保つ
+`PreservesChosenZero f` をさらに明示する。
+この条件の下で `pointedSPostcomp`、`kanSPostcomp`、`kSpacePostcomp` を構成し、K 空間写像の恒等・合成則を証明した。
+一般の exact な射では零対象の像は既定の零対象と同型でも頂点の等号とは限らない。
+§6.6 の基点比較をこの写像と coherent に組み合わせる部分は未完了であり、
+今回の厳密な基点保存条件を一般の dg 関手に対する関手性の証明の代用にしない。
+
+`iteratedSConstruction ns C` は既存の全 gapped 図式の S 構成を有限回そのまま反復した対象。
+リストの先頭が最も外側。空リストでは C、`n::ns` では `sConstruction n (iteratedSConstruction ns C)`。
+core は最後に取り、Kan core を S の入力にする別構成にはしない。
+全ての反復対象の quasicategory 性と零対象、core の Kan 性を証明した。
+任意の位置の次数が零なら、反復対象自体と core は可縮 Kan 複体になる。
+これは reduced な境界条件の可縮性であり、全ての境界が同じ一点に厳密に等しいという主張ではない。
+
+以下は §6.3 と同じ namespace・universe の公開ヘッダー（本文を除く）。
+
+**ExactMaps.lean**
+
+```text
+def PreservesSConstructionData {C D : SSet.{u}} (f : C ⟶ D) : Prop
+
+lemma preservesSConstructionData_id (C : SSet.{u}) : PreservesSConstructionData (𝟙 C)
+
+lemma PreservesSConstructionData.comp {C D E : SSet.{u}} {f : C ⟶ D} {g : D ⟶ E}
+    (hf : PreservesSConstructionData f) (hg : PreservesSConstructionData g) :
+    PreservesSConstructionData (f ≫ g)
+
+lemma IsGapped.postcomp {n : ℕ} {C D : SSet.{u}} {F : arNerve n ⟶ C}
+    (hF : IsGapped F) (f : C ⟶ D) (hf : PreservesSConstructionData f) : IsGapped (F ≫ f)
+```
+
+**Postcomposition.lean**
+
+```text
+def sPostcomp (n : ℕ) {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
+    sConstruction n C ⟶ sConstruction n D
+
+lemma sPostcomp_ι (n : ℕ) {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
+    sPostcomp n f hf ≫ (gappedSubcomplex n D).ι =
+      (gappedSubcomplex n C).ι ≫ (ihom (arNerve n)).map f
+
+lemma sPostcomp_id (n : ℕ) (C : SSet.{u}) :
+    sPostcomp n (𝟙 C) (preservesSConstructionData_id C) = 𝟙 (sConstruction n C)
+
+lemma sPostcomp_comp (n : ℕ) {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E)
+    (hf : PreservesSConstructionData f) (hg : PreservesSConstructionData g) :
+    sPostcomp n (f ≫ g) (hf.comp hg) = sPostcomp n f hf ≫ sPostcomp n g hg
+
+lemma sPostcomp_sMap {m n : ℕ} {C D : SSet.{u}} (f : C ⟶ D)
+    (hf : PreservesSConstructionData f) (θ : Fin (m + 1) →o Fin (n + 1)) :
+    sPostcomp n f hf ≫ sMap D θ = sMap C θ ≫ sPostcomp m f hf
+
+def simplicialSPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
+    simplicialSConstruction C ⟶ simplicialSConstruction D
+
+def simplicialCoreSPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
+    simplicialCoreSConstruction C ⟶ simplicialCoreSConstruction D
+
+def diagonalSPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
+    diagonalCoreSConstruction C ⟶ diagonalCoreSConstruction D
+
+lemma sPostcomp_zeroVertex (n : ℕ) {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesSConstructionData f) (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    (sPostcomp n f hf).app (Opposite.op ⦋0⦌) (sConstructionZeroVertex n z hz) =
+      sConstructionZeroVertex n (f.app (Opposite.op ⦋0⦌) z) (hf.1 z hz)
+
+lemma diagonalSPostcomp_id (C : SSet.{u}) :
+    diagonalSPostcomp (𝟙 C) (preservesSConstructionData_id C) = 𝟙 (diagonalCoreSConstruction C)
+
+lemma diagonalSPostcomp_comp {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E)
+    (hf : PreservesSConstructionData f) (hg : PreservesSConstructionData g) :
+    diagonalSPostcomp (f ≫ g) (hf.comp hg) = diagonalSPostcomp f hf ≫ diagonalSPostcomp g hg
+
+lemma diagonalSPostcomp_zeroVertex {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesSConstructionData f) (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    (diagonalSPostcomp f hf).app (Opposite.op ⦋0⦌) (coreSConstructionZeroVertex 0 z hz) =
+      coreSConstructionZeroVertex 0 (f.app (Opposite.op ⦋0⦌) z) (hf.1 z hz)
+```
+
+**PointedPostcomposition.lean**
+
+```text
+def PreservesChosenZero {C D : SSet.{u}} [HasZeroVertex C] [HasZeroVertex D] (f : C ⟶ D) : Prop
+
+lemma preservesChosenZero_id (C : SSet.{u}) [HasZeroVertex C] : PreservesChosenZero (𝟙 C)
+
+lemma PreservesChosenZero.comp {C D E : SSet.{u}}
+    [HasZeroVertex C] [HasZeroVertex D] [HasZeroVertex E] {f : C ⟶ D} {g : D ⟶ E}
+    (hf : PreservesChosenZero f) (hg : PreservesChosenZero g) : PreservesChosenZero (f ≫ g)
+
+def pointedSPostcomp {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    [HasZeroVertex C] [HasZeroVertex D] (f : C ⟶ D)
+    (hf : PreservesSConstructionData f) (hzero : PreservesChosenZero f) :
+    pointedSRealization C ⟶ pointedSRealization D
+
+lemma pointedSPostcomp_id (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    pointedSPostcomp (𝟙 C) (preservesSConstructionData_id C) (preservesChosenZero_id C) =
+      𝟙 (pointedSRealization C)
+
+lemma pointedSPostcomp_comp {C D E : SSet.{u}}
+    [Quasicategory C] [Quasicategory D] [Quasicategory E]
+    [HasZeroVertex C] [HasZeroVertex D] [HasZeroVertex E]
+    (f : C ⟶ D) (g : D ⟶ E) (hf : PreservesSConstructionData f) (hg : PreservesSConstructionData g)
+    (hfzero : PreservesChosenZero f) (hgzero : PreservesChosenZero g) :
+    pointedSPostcomp (f ≫ g) (hf.comp hg) (hfzero.comp hgzero) =
+      pointedSPostcomp f hf hfzero ≫ pointedSPostcomp g hg hgzero
+
+def kanSPostcomp {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    [HasZeroVertex C] [HasZeroVertex D] (f : C ⟶ D)
+    (hf : PreservesSConstructionData f) (hzero : PreservesChosenZero f) :
+    kanSRealization C ⟶ kanSRealization D
+
+def kSpacePostcomp {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    [HasZeroVertex C] [HasZeroVertex D] (f : C ⟶ D)
+    (hf : PreservesSConstructionData f) (hzero : PreservesChosenZero f) :
+    kSpace C ⟶ kSpace D
+
+lemma kSpacePostcomp_id (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] :
+    kSpacePostcomp (𝟙 C) (preservesSConstructionData_id C) (preservesChosenZero_id C) =
+      𝟙 (kSpace C)
+
+lemma kSpacePostcomp_comp {C D E : SSet.{u}}
+    [Quasicategory C] [Quasicategory D] [Quasicategory E]
+    [HasZeroVertex C] [HasZeroVertex D] [HasZeroVertex E]
+    (f : C ⟶ D) (g : D ⟶ E) (hf : PreservesSConstructionData f) (hg : PreservesSConstructionData g)
+    (hfzero : PreservesChosenZero f) (hgzero : PreservesChosenZero g) :
+    kSpacePostcomp (f ≫ g) (hf.comp hg) (hfzero.comp hgzero) =
+      kSpacePostcomp f hf hfzero ≫ kSpacePostcomp g hg hgzero
+```
+
+**IteratedObjects.lean**
+
+```text
+def iteratedSConstruction : List ℕ → SSet.{u} → SSet.{u}
+
+instance iteratedSConstruction_quasicategory (ns : List ℕ) (C : SSet.{u}) [Quasicategory C] :
+    Quasicategory (iteratedSConstruction ns C)
+
+instance iteratedSConstruction_hasZeroVertex (ns : List ℕ) (C : SSet.{u}) [Quasicategory C]
+    [HasZeroVertex C] : HasZeroVertex (iteratedSConstruction ns C)
+
+def iteratedZeroVertex (ns : List ℕ) {C : SSet.{u}} [Quasicategory C]
+    (z : C _⦋0⦌) (hz : IsZeroVertex z) : ZeroVertex (iteratedSConstruction ns C)
+
+def iteratedCoreSConstruction (ns : List ℕ) (C : SSet.{u}) : SSet.{u}
+
+instance iteratedCoreSConstruction_kanComplex (ns : List ℕ) (C : SSet.{u}) [Quasicategory C] :
+    KanComplex (iteratedCoreSConstruction ns C)
+
+lemma sConstruction_isZeroVertex_of_contractible (n : ℕ) {C : SSet.{u}}
+    [Quasicategory C] (h : IsContractibleKan C) (v : (sConstruction n C) _⦋0⦌) :
+    IsZeroVertex v
+
+lemma sConstruction_isContractibleKan_of_contractible (n : ℕ) {C : SSet.{u}}
+    [Quasicategory C] (h : IsContractibleKan C) : IsContractibleKan (sConstruction n C)
+
+lemma iteratedSConstruction_isContractibleKan_of_zero_mem (ns : List ℕ) (C : SSet.{u})
+    [Quasicategory C] [HasZeroVertex C] (h : 0 ∈ ns) :
+    IsContractibleKan (iteratedSConstruction ns C)
+
+lemma iteratedCoreSConstruction_isContractibleKan_of_zero_mem (ns : List ℕ) (C : SSet.{u})
+    [Quasicategory C] [HasZeroVertex C] (h : 0 ∈ ns) :
+    IsContractibleKan (iteratedCoreSConstruction ns C)
+```
+
+**現在地・未完了**：L1a・L1b は完了。L1c は空間模型・連結性・基点比較、保存条件を持つ射の後合成、
+有限反復の対象と零方向の可縮性まで証明済み。
+S_n とその reindexing が零対象・押し出しの保存条件を保つこと、多単体的な反復 S• の全構造射、
+境界の coherent な潰し、delooping、Ω 条件、BF の連結スペクトルとその自然性は未完了。
+今回 `PreservesSConstructionData (sPostcomp n f hf)` を証明したとは扱わない。
+L1d–f は未完了、L1g は別途指示待ち。
+
+この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2258 jobs）、
+`lake env lean scripts/audit_kst_s_construction.lean` 成功（551 宣言、標準三公理のみ）。
+追加公理・sorry なし。L1c 全体の完成時に全体ビルドを行う。

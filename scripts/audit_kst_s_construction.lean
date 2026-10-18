@@ -1371,3 +1371,111 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kSpace_zeroChoice_comparison
 #print axioms SerrePositivity.KST.SConstruction.kSpace_zeroChoice_comparison
+
+#check @SerrePositivity.KST.SConstruction.PreservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.PreservesSConstructionData
+
+#check @SerrePositivity.KST.SConstruction.preservesSConstructionData_id
+#print axioms SerrePositivity.KST.SConstruction.preservesSConstructionData_id
+
+#check @SerrePositivity.KST.SConstruction.PreservesSConstructionData.comp
+#print axioms SerrePositivity.KST.SConstruction.PreservesSConstructionData.comp
+
+#check @SerrePositivity.KST.SConstruction.IsGapped.postcomp
+#print axioms SerrePositivity.KST.SConstruction.IsGapped.postcomp
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp_ι
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp_ι
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp_id
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp_id
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp_comp
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp_comp
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp_sMap
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp_sMap
+
+#check @SerrePositivity.KST.SConstruction.simplicialSPostcomp
+#print axioms SerrePositivity.KST.SConstruction.simplicialSPostcomp
+
+#check @SerrePositivity.KST.SConstruction.simplicialCoreSPostcomp
+#print axioms SerrePositivity.KST.SConstruction.simplicialCoreSPostcomp
+
+#check @SerrePositivity.KST.SConstruction.diagonalSPostcomp
+#print axioms SerrePositivity.KST.SConstruction.diagonalSPostcomp
+
+#check @SerrePositivity.KST.SConstruction.sPostcomp_zeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sPostcomp_zeroVertex
+
+#check @SerrePositivity.KST.SConstruction.diagonalSPostcomp_id
+#print axioms SerrePositivity.KST.SConstruction.diagonalSPostcomp_id
+
+#check @SerrePositivity.KST.SConstruction.diagonalSPostcomp_comp
+#print axioms SerrePositivity.KST.SConstruction.diagonalSPostcomp_comp
+
+#check @SerrePositivity.KST.SConstruction.diagonalSPostcomp_zeroVertex
+#print axioms SerrePositivity.KST.SConstruction.diagonalSPostcomp_zeroVertex
+
+#check @SerrePositivity.KST.SConstruction.PreservesChosenZero
+#print axioms SerrePositivity.KST.SConstruction.PreservesChosenZero
+
+#check @SerrePositivity.KST.SConstruction.preservesChosenZero_id
+#print axioms SerrePositivity.KST.SConstruction.preservesChosenZero_id
+
+#check @SerrePositivity.KST.SConstruction.PreservesChosenZero.comp
+#print axioms SerrePositivity.KST.SConstruction.PreservesChosenZero.comp
+
+#check @SerrePositivity.KST.SConstruction.pointedSPostcomp
+#print axioms SerrePositivity.KST.SConstruction.pointedSPostcomp
+
+#check @SerrePositivity.KST.SConstruction.pointedSPostcomp_id
+#print axioms SerrePositivity.KST.SConstruction.pointedSPostcomp_id
+
+#check @SerrePositivity.KST.SConstruction.pointedSPostcomp_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedSPostcomp_comp
+
+#check @SerrePositivity.KST.SConstruction.kanSPostcomp
+#print axioms SerrePositivity.KST.SConstruction.kanSPostcomp
+
+#check @SerrePositivity.KST.SConstruction.kSpacePostcomp
+#print axioms SerrePositivity.KST.SConstruction.kSpacePostcomp
+
+#check @SerrePositivity.KST.SConstruction.kSpacePostcomp_id
+#print axioms SerrePositivity.KST.SConstruction.kSpacePostcomp_id
+
+#check @SerrePositivity.KST.SConstruction.kSpacePostcomp_comp
+#print axioms SerrePositivity.KST.SConstruction.kSpacePostcomp_comp
+
+#check @SerrePositivity.KST.SConstruction.iteratedSConstruction
+#print axioms SerrePositivity.KST.SConstruction.iteratedSConstruction
+
+#check @SerrePositivity.KST.SConstruction.iteratedSConstruction_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.iteratedSConstruction_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.iteratedSConstruction_hasZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.iteratedSConstruction_hasZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.iteratedZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.iteratedZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.iteratedCoreSConstruction
+#print axioms SerrePositivity.KST.SConstruction.iteratedCoreSConstruction
+
+#check @SerrePositivity.KST.SConstruction.iteratedCoreSConstruction_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.iteratedCoreSConstruction_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.sConstruction_isZeroVertex_of_contractible
+#print axioms SerrePositivity.KST.SConstruction.sConstruction_isZeroVertex_of_contractible
+
+#check @SerrePositivity.KST.SConstruction.sConstruction_isContractibleKan_of_contractible
+#print axioms SerrePositivity.KST.SConstruction.sConstruction_isContractibleKan_of_contractible
+
+#check @SerrePositivity.KST.SConstruction.iteratedSConstruction_isContractibleKan_of_zero_mem
+#print axioms SerrePositivity.KST.SConstruction.iteratedSConstruction_isContractibleKan_of_zero_mem
+
+#check @SerrePositivity.KST.SConstruction.iteratedCoreSConstruction_isContractibleKan_of_zero_mem
+#print axioms SerrePositivity.KST.SConstruction.iteratedCoreSConstruction_isContractibleKan_of_zero_mem

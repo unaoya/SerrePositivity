@@ -23,4 +23,7 @@ public import SerrePositivity.KST.SConstruction.KSpace
 
 public import SerrePositivity.KST.SConstruction.ZeroChoiceComparison
 
+public import SerrePositivity.KST.SConstruction.PointedPostcomposition
+public import SerrePositivity.KST.SConstruction.IteratedObjects
+
 /-! # ∞-S• 構成と連結 K 理論 -/
