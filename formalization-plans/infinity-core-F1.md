@@ -6945,5 +6945,27 @@ lemma joinIntervalProjection_naturality {X Y X' Y' : SSet.{u}} (f : X ⟶ X') (g
 lemma joinDiagonal_joinIntervalProjection (K : SSet.{u}) :
     joinDiagonal K ≫ joinIntervalProjection K K = fst (Δ[1] : SSet.{u}) K
 
+lemma Join.pullCut_delta_zero (n l : ℕ) (hl : 0 < l) (hn : l ≤ n + 2) :
+    Join.pullCut (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom l = l - 1
+
+lemma Join.pullCut_delta_last (n l : ℕ) (hl : l ≤ n + 1) :
+    Join.pullCut (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom l = l
+
+lemma Join.simplexMap_delta_zero_right_heq {X Y : SSet.{u}} {n : ℕ}
+    (s : Join.Simplex X Y (n + 1)) (hs : 0 < s.1.val) :
+    HEq (Join.simplexMap X Y (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom s).2.2 s.2.2
+
+lemma Join.simplexMap_delta_last_left_heq {X Y : SSet.{u}} {n : ℕ}
+    (s : Join.Simplex X Y (n + 1)) (hs : s.1.val ≤ n + 1) :
+    HEq (Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom s).2.1 s.2.1
+
+lemma Join.Simplex.ext_of_extreme_faces {X Y : SSet.{u}} {n : ℕ}
+    (s t : Join.Simplex X Y (n + 1)) (hc : s.1 = t.1)
+    (hs0 : 0 < s.1.val) (hs1 : s.1.val ≤ n + 1)
+    (h0 : Join.simplexMap X Y (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom s =
+      Join.simplexMap X Y (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom t)
+    (h1 : Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom s =
+      Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom t) : s = t
+
 end SerrePositivity.InfinityCategories
 ```

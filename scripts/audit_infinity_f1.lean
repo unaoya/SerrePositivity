@@ -1526,3 +1526,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.joinIntervalProjection_app_eq_zero_iff
 #check @SerrePositivity.InfinityCategories.joinIntervalProjection_naturality
 #check @SerrePositivity.InfinityCategories.joinDiagonal_joinIntervalProjection
+#check @SerrePositivity.InfinityCategories.Join.pullCut_delta_zero
+#check @SerrePositivity.InfinityCategories.Join.pullCut_delta_last
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_delta_zero_right_heq
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_delta_last_left_heq
+#check @SerrePositivity.InfinityCategories.Join.Simplex.ext_of_extreme_faces
