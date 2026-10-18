@@ -87,3 +87,6 @@ public import SerrePositivity.EInfinity.Operad.InsertionZero
 public import SerrePositivity.EInfinity.Operad.SchurActionArityTransport
 public import SerrePositivity.EInfinity.Operad.SchurActionFirstInsertion
 public import SerrePositivity.EInfinity.Operad.SchurPartialEquivariance
+public import SerrePositivity.EInfinity.Operad.MoveFirstBlock
+public import SerrePositivity.EInfinity.Operad.MoveFirstBlockTensor
+public import SerrePositivity.EInfinity.Operad.InsertionRotationCoherence
