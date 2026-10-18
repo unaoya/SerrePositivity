@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げも整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせも整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -7099,6 +7099,117 @@ lemma trivialKanFibration_relativeEquivalencePathMap_pre {A B : SSet.{u}}
     TrivialKanFibration (relativeEquivalencePathMap ((pre i).app X))
 
 end SerrePositivity.InfinityCategories
+```
+
+### A6 続き（2026-10-18）：可逆 path に沿う引き戻しと一般の pushout の貼り合わせ
+
+既存の公開名・型を維持し、新規22宣言を追加した。`relativeEquivalencePathMapAt` は両端のいずれを指定してもよい相対 path の射。`IsQCatEquivalence.pullback_snd_of_relativePath` は quasicategory 間の inner fibration が終点指定の相対 path の全境界充填を持つとき、同値をその射に沿って引き戻せることを示す。基底の quasicategory 性はこの定理では仮定する。モデル構造は使わず、path 置換と二つの trivial Kan fibration の共通の解像で証明した。
+
+`IsPrecompositionEquivalence.of_isPushout_of_mono_other` では同値条件を満たす射自体の単射性は不要で、もう一方の射だけが単射である。`isPrecompositionEquivalence_of_pushout_gluing` は二つの pushout の同じ側の射が単射なら、基底を含む三つの比較が同値条件を満たすとき第四も満たす。比較射自身の単射性は要求しない。
+
+検証：`lake build SerrePositivity.InfinityCategories.Core` 成功（1823 jobs）、続けて `lake env lean scripts/audit_infinity_core.lean` 成功（累計1168宣言、標準3公理のみ）。任意の因子の fat join 比較にはセル分解・余極限への接続が未完了。slice 比較と A6 の主定理、A4・A5 は未完了。
+
+以下は全て namespace `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet` の下での正確な型。
+
+```lean
+noncomputable def relativeEquivalencePathTargetAt {E B : SSet.{u}} (p : E ⟶ B) (j : Fin 2) : SSet.{u}
+
+noncomputable def relativeEquivalencePathMapAt {E B : SSet.{u}} (p : E ⟶ B) (j : Fin 2) :
+    equivalencePath E ⟶ relativeEquivalencePathTargetAt p j
+
+lemma relativeEquivalencePathMapAt_fst {E B : SSet.{u}} (p : E ⟶ B) (j : Fin 2) :
+    relativeEquivalencePathMapAt p j ≫ pullback.fst (equivalencePathEndpoint B j) p =
+      equivalencePathMap p
+
+lemma relativeEquivalencePathMapAt_snd {E B : SSet.{u}} (p : E ⟶ B) (j : Fin 2) :
+    relativeEquivalencePathMapAt p j ≫ pullback.snd (equivalencePathEndpoint B j) p =
+      equivalencePathEndpoint E j
+
+lemma trivialKanFibration_relativeEquivalencePathMapAt_pre {A B : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (X : SSet.{u}) [Quasicategory X] (j : Fin 2) :
+    TrivialKanFibration (relativeEquivalencePathMapAt ((pre i).app X) j)
+
+noncomputable def pullbackMapRightOfComp {E B F T : SSet.{u}}
+    (e : E ⟶ B) (p : F ⟶ B) (q : T ⟶ B) (r : T ⟶ F) (h : q = r ≫ p) :
+    pullback e q ⟶ pullback e p
+
+lemma pullbackMapRightOfComp_fst {E B F T : SSet.{u}}
+    (e : E ⟶ B) (p : F ⟶ B) (q : T ⟶ B) (r : T ⟶ F) (h : q = r ≫ p) :
+    pullbackMapRightOfComp e p q r h ≫ pullback.fst e p = pullback.fst e q
+
+lemma pullbackMapRightOfComp_snd {E B F T : SSet.{u}}
+    (e : E ⟶ B) (p : F ⟶ B) (q : T ⟶ B) (r : T ⟶ F) (h : q = r ≫ p) :
+    pullbackMapRightOfComp e p q r h ≫ pullback.snd e p = pullback.snd e q ≫ r
+
+lemma pullbackMapRightOfComp_isPullback {E B F T : SSet.{u}}
+    (e : E ⟶ B) (p : F ⟶ B) (q : T ⟶ B) (r : T ⟶ F) (h : q = r ≫ p) :
+    IsPullback (pullback.snd e q) (pullbackMapRightOfComp e p q r h) r (pullback.snd e p)
+
+lemma trivialKanFibration_pullbackMapRightOfComp {E B F T : SSet.{u}}
+    (e : E ⟶ B) (p : F ⟶ B) (q : T ⟶ B) (r : T ⟶ F) (h : q = r ≫ p)
+    [TrivialKanFibration r] : TrivialKanFibration (pullbackMapRightOfComp e p q r h)
+
+noncomputable def pullbackZigzag {A B C S T : SSet.{u}}
+    (f : A ⟶ S) (g : B ⟶ S) (h : B ⟶ T) (k : C ⟶ T) : SSet.{u}
+
+noncomputable def pullbackZigzagLeft {A B C S T : SSet.{u}}
+    (f : A ⟶ S) (g : B ⟶ S) (h : B ⟶ T) (k : C ⟶ T) :
+    pullbackZigzag f g h k ⟶ pullback g f
+
+noncomputable def pullbackZigzagRight {A B C S T : SSet.{u}}
+    (f : A ⟶ S) (g : B ⟶ S) (h : B ⟶ T) (k : C ⟶ T) :
+    pullbackZigzag f g h k ⟶ C
+
+lemma pullbackZigzagLeft_fst {A B C S T : SSet.{u}}
+    (f : A ⟶ S) (g : B ⟶ S) (h : B ⟶ T) (k : C ⟶ T) :
+    pullbackZigzagLeft f g h k ≫ pullback.fst g f =
+      pullback.snd f (pullback.fst h k ≫ g) ≫ pullback.fst h k
+
+lemma pullbackZigzagLeft_snd {A B C S T : SSet.{u}}
+    (f : A ⟶ S) (g : B ⟶ S) (h : B ⟶ T) (k : C ⟶ T) :
+    pullbackZigzagLeft f g h k ≫ pullback.snd g f =
+      pullback.fst f (pullback.fst h k ≫ g)
+
+lemma pullbackZigzag_isPullback {A B C S T : SSet.{u}}
+    (f : A ⟶ S) (g : B ⟶ S) (h : B ⟶ T) (k : C ⟶ T) :
+    IsPullback (pullbackZigzagLeft f g h k) (pullbackZigzagRight f g h k)
+      (pullback.fst g f ≫ h) k
+
+lemma trivialKanFibration_pullbackZigzagRight {A B C S T : SSet.{u}}
+    (f : A ⟶ S) (g : B ⟶ S) (h : B ⟶ T) (k : C ⟶ T)
+    [TrivialKanFibration (pullback.fst g f ≫ h)] :
+    TrivialKanFibration (pullbackZigzagRight f g h k)
+
+lemma IsQCatEquivalence.pullback_snd_of_relativePath {E B F : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] [Quasicategory F] {e : E ⟶ B}
+    (he : IsQCatEquivalence e) (p : F ⟶ B) [InnerFibration p]
+    [TrivialKanFibration (relativeEquivalencePathMapAt p 1)] :
+    IsQCatEquivalence (pullback.snd e p)
+
+lemma IsPrecompositionEquivalence.of_isPushout_of_mono_other {A B C D : SSet.{u}}
+    {i : A ⟶ B} {g : A ⟶ C} [Mono g] {k : B ⟶ D} {j : C ⟶ D}
+    (hi : IsPrecompositionEquivalence i) (h : IsPushout i g k j) :
+    IsPrecompositionEquivalence j
+
+lemma isPrecompositionEquivalence_of_pushout_gluing
+    {A B C D A' B' C' D' : SSet.{u}}
+    {i : A ⟶ B} {i' : A' ⟶ B'} [Mono i] [Mono i']
+    {g : A ⟶ C} {g' : A' ⟶ C'} {r : B ⟶ D} {s : C ⟶ D}
+    {r' : B' ⟶ D'} {s' : C' ⟶ D'}
+    (hP : IsPushout i g r s) (hP' : IsPushout i' g' r' s')
+    (a : A ⟶ A') (b : B ⟶ B') (c : C ⟶ C') (d : D ⟶ D')
+    (hi : i ≫ b = a ≫ i') (hg : g ≫ c = a ≫ g')
+    (hr : r ≫ d = b ≫ r') (hs : s ≫ d = c ≫ s')
+    (ha : IsPrecompositionEquivalence a) (hb : IsPrecompositionEquivalence b)
+    (hc : IsPrecompositionEquivalence c) : IsPrecompositionEquivalence d
+
+instance (priority := 100) quasicategory_pullback_of_innerFibration_right
+    {E F B : SSet.{u}} (e : E ⟶ B) (p : F ⟶ B) [Quasicategory E] [InnerFibration p] :
+    Quasicategory (pullback e p)
+
+instance (priority := 100) quasicategory_pullback_of_innerFibration_left
+    {E F B : SSet.{u}} (e : E ⟶ B) (p : F ⟶ B) [Quasicategory F] [InnerFibration e] :
+    Quasicategory (pullback e p)
 ```
 
 ## 7. A3 の工程（2026-10-18 追加）

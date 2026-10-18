@@ -187,3 +187,17 @@ public import SerrePositivity.InfinityCategories.Core.EquivalencePathInternalHom
 public import SerrePositivity.InfinityCategories.Core.RelativeInternalHomTrivialFibration
 
 public import SerrePositivity.InfinityCategories.Core.RelativeEquivalencePath
+
+public import SerrePositivity.InfinityCategories.Core.RelativeEquivalencePathAt
+
+public import SerrePositivity.InfinityCategories.Core.PullbackRightComposition
+
+public import SerrePositivity.InfinityCategories.Core.PullbackZigzag
+
+public import SerrePositivity.InfinityCategories.Core.InnerPullback
+
+public import SerrePositivity.InfinityCategories.Core.EquivalencePullbackPathLifting
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing
