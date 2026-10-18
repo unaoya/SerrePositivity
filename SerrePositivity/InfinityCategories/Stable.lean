@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.SuspensionComparisonIso
 public import SerrePositivity.InfinityCategories.Stable.CofiberConnectingIndependence
 public import SerrePositivity.InfinityCategories.Stable.SpanComparisonUniqueness
 public import SerrePositivity.InfinityCategories.Stable.ColimitHomLift

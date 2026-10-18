@@ -1,6 +1,10 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.cofiberSuspensionComparison_hom_ext
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.comparisonIso
+#print axioms SerrePositivity.InfinityCategories.cofiberConnectingToSuspension_comparisonIso
+#print axioms SerrePositivity.InfinityCategories.cofiberConnecting_eq_via_suspensionComparison
 #print axioms SerrePositivity.InfinityCategories.cofiberSuspensionComparison_homMk_eq
 #print axioms SerrePositivity.InfinityCategories.cofiberComparison_τ₃_eq_connectingToSuspension
 
@@ -836,7 +840,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ColimitHomotopyUniqueness,
     `SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition,
     `SerrePositivity.InfinityCategories.Stable.CofiberComparisonUniqueness,
-    `SerrePositivity.InfinityCategories.Stable.CofiberConnectingIndependence]
+    `SerrePositivity.InfinityCategories.Stable.CofiberConnectingIndependence,
+    `SerrePositivity.InfinityCategories.Stable.CofiberComparisonExt,
+    `SerrePositivity.InfinityCategories.Stable.CofiberComparisonComposition,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionComparisonIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
