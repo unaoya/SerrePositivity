@@ -13293,5 +13293,46 @@ noncomputable def coherentCosliceFiberComparison_transportIso
         edgeTransport (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
           (coherentNerveEdge (F.map f)))
 
+lemma pointedSpaceLeftCoefficientIso_naturality {I : Type u} [Category.{u} I]
+    (F : I ⥤ KanObject.{u}) {i j : I} (f : i ⟶ j) :
+    (show (F.obj i).obj ⟶ (F.obj j).obj from F.map f) ≫
+        (pointedSpaceLeftCoefficientIso (F.obj j)).hom =
+      (pointedSpaceLeftCoefficientIso (F.obj i)).hom ≫
+        ((HomotopyLimits.simplicialHomDiagram (F ⋙ kanObjectOpFunctor) pointKanObject ⋙
+          SSet.opFunctor).map f)
+
+noncomputable def coherentPointedFiberComparison (K : KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj K.obj ⟶
+      vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm
+        (coherentNerveVertex pointKanObject))) (coherentNerveVertex (kanObjectOpFunctor.obj K))
+
+lemma coherentPointedFiberComparison_isQCatEquivalence (K : KanObject.{u}) :
+    IsQCatEquivalence (coherentPointedFiberComparison K)
+
+noncomputable def coherentPointedFiberComparison_transportIso
+    {I : Type u} [Category.{u} I] (F : I ⥤ KanObject.{u}) {i j : I} (f : i ⟶ j) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u + 1, u}).map (F.map f) ≫ coherentPointedFiberComparison (F.obj j))
+      (coherentPointedFiberComparison (F.obj i) ≫
+        edgeTransport (sliceUnderProjection (SSet.yonedaEquiv.symm
+          (coherentNerveVertex pointKanObject)))
+            (coherentNerveEdge (kanObjectOpFunctor.map (F.map f))))
+
+noncomputable def coherentPointedFiberComparison_morphismIso
+    {K L : KanObject.{u}} (f : K ⟶ L) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u + 1, u}).map f ≫ coherentPointedFiberComparison L)
+      (coherentPointedFiberComparison K ≫
+        edgeTransport (sliceUnderProjection (SSet.yonedaEquiv.symm
+          (coherentNerveVertex pointKanObject)))
+            (coherentNerveEdge (kanObjectOpFunctor.map f)))
+
+lemma coherentPointedFiberTransport_isQCatEquivalence_iff
+    {K L : KanObject.{u}} (f : K ⟶ L) :
+    IsQCatEquivalence
+      (edgeTransport (sliceUnderProjection (SSet.yonedaEquiv.symm
+        (coherentNerveVertex pointKanObject))) (coherentNerveEdge (kanObjectOpFunctor.map f))) ↔
+      IsQCatEquivalence (X := K.obj) (Y := L.obj) f
+
 end SerrePositivity.InfinityCategories
 ```
