@@ -449,6 +449,11 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramGaugeModuleRestrictionIso_apply` | DiagramGaugeRestrictionMateComponents | 制限側 mate の成分は重み付けされた次数零単位の加群作用 |
 | `diagramGaugeDGFunctor_unit_cycle`・`diagramGaugeModuleUnderlying_map` | DiagramGaugeModuleComparison | 任意図式加群の underlying 包含射と mate の合成式 |
 | `diagramGaugeModuleComparison_square` | DiagramGaugeModuleComparisonSquare | 指定局所同型を含む任意図式加群の指定比較射の可換式 |
+| `diagramGaugeDerivedRestrictionIso`・Q 上の計算・`diagramGaugeDerivedExtensionMateIso`・共役式 | DiagramGaugeDerivedRestrictionMate | 通常 mate の指定局所化と既存の指定導来随伴で戻す係数拡大自己同型 |
+| `diagramGaugeDerivedEvaluationIso_hom_Q`・`diagramGaugeDerivedComparison_square` | DiagramGaugeDerivedComparisonSquare | 全導来対象の指定制限比較と局所同型・mate の可換式 |
+| `adjointEndomorphism_homEquiv` | AdjointEndomorphismComparison | 左随伴の自然自己射を Hom 同値で右 mate の作用へ移す一般公式 |
+| `diagramGaugeDerivedExtensionComparison_square`・可逆性の同値・cartesian perfect 性の保存反映 | DiagramGaugeDerivedExtensionSquare | canonical な比較そのものの全対象での可逆性を同型の消去で移す |
+| `finiteOverlapDerivedTwistAction_cartesian/cartesianPerfect_iff`・`blowupDerivedTwistEquivalence` | FiniteOverlapTwistCartesianAction | 元の Koszul 表示の全対象の条件保存反映と既存の大域導来部分圏の捻り自己同値 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -516,7 +521,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2963定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2996定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -555,24 +560,24 @@ cartesian perfect 性、既存の大域 dg 候補内の指定捻り対象とそ�
 ∞圏の極限比較や層の降下をこれだけから結論しない。
 一般の導来図式加群でも gauge 制限後の全局所導来評価は元の評価と指定同型を持つ。
 整数捻りの全図式加群圏・主導来圏の自己同値と、任意対象の局所 perfect 性の保存・反映を
-構成済み。cartesian 性の一般対象での保存は、O(m) 自身の対象条件の証明とは別に残る。
+構成済み。一般対象の cartesian 性の保存・反映も、指定比較射の可換式から証明済み。
 一般の包含 gauge について、行先の右作用と始点の係数を遷移させた左作用の整合性、
 局所遷移の graph bimodule の指定自己同型、その指定主導来 tensor 作用による
 局所導来係数拡大の自然自己同型を構成済み。
 通常係数拡大の graph 重み付けの純 tensor 公式、指定通常随伴で移した制限側 mate、
 その成分が重み付けされた次数零単位の加群作用になる式を証明済み。
 任意図式加群の指定比較は、指定局所同型を介して元の比較とこの mate の合成に一致する。
-この可換式の主導来圏への移送と canonical な導来係数拡大比較への接続は未完了であり、
-通常加群の可換式だけから一般の cartesian 性の保存を宣言しない。
+この可換式を全主導来対象へ移し、canonical な導来係数拡大比較へ接続済み。
 導来化の証明経路：通常制限の mate β を標準因子分解と
 `moduleDerivedIsoExtension` で導来制限の自然自己同型 βᴰ へ移す。
 canonical な比較には、βᴰ を既存の指定導来随伴 `A : L_h ⊣ R_h` で戻す
 `χ := (conjugateIsoEquiv A A).symm βᴰ` を使う。
 局所同型 e_i と制限側の可換式から、随伴の Hom 同値によって
-`L_h(e_i) ≫ χ ≫ κ_M = κ_twist(M) ≫ e_j` を証明し、同型の合成と消去で
-cartesian 性の保存を導く。graph の直接の導来像との比較は独立した整合性命題として扱う。
-次の実装単位は一般の cartesian 対象に対する捻り作用の保存、
-および coherent な降下との接続。
+`L_h(e_i) ≫ χ ≫ κ_M = κ_twist(M) ≫ e_j` を証明済み。同型の合成と消去で
+全対象の cartesian 性の保存・反映を導き、元の Koszul 表示へ移して
+既存の cartesian perfect 導来部分圏の全整数捻り自己同値を構成済み。
+graph の直接の導来像との比較は独立した整合性命題として扱う。
+次の実装単位は捻り作用の dg 模型との接続、および coherent な降下との比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
