@@ -153,3 +153,7 @@ public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionRestricti
 public import SerrePositivity.InfinityCategories.F1B.MappingArrowOfUnit
 public import SerrePositivity.InfinityCategories.F1B.MappingArrowCriterion
 public import SerrePositivity.InfinityCategories.F1B.MappingArrowNaturality
+public import SerrePositivity.InfinityCategories.F1B.MappingFamilies
+public import SerrePositivity.InfinityCategories.F1B.MappingFamilyPresheaves
+public import SerrePositivity.InfinityCategories.F1B.NaturalMappingFamilyComparison
+public import SerrePositivity.InfinityCategories.F1B.NaturalMappingFamilyAdjunction

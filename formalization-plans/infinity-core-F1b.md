@@ -34,6 +34,11 @@ sorry・追加公理・文献入力は使わない。実施の経緯はコミッ
   右模型の比較は `F1B/PinchedInterval*.lean` の `PinchedInterval` namespace に置く。
   相対 join 延長・端点固定の持ち上げ・レトラクションの一般補題は、straightening に
   依存しない F1 の小さいモジュールから読む。共有の F1/ は編集しない。
+  自然比較を直接指定するため、全てのパラメータ A と非定値端点 a,b を持つ
+  ホモトピー族の**集合値前層**を別に定義する。その端点を保つ通常の自然変換と
+  coherent 矢印比較との厳密な全単射を証明し、自然性を入力できる型を公開する。
+  これは空間値二変数 ∞ 関手の自然変換そのものの定義ではなく、その模型との
+  対応は別の主張である。集合値前層の表示だけでその対応定理を証明済みとは扱わない。
 - 局所化の普遍性は、W を可逆辺へ送る関手の充満部分 ∞ 圏への前合成同値。
   一般の C[W⁻¹] の存在は F2 に委ね、ここでは反射的な場合を構成する。
 - right cofinal は colimit を計算する向き。始対象による limit 計算は双対の
@@ -46,7 +51,8 @@ sorry・追加公理・文献入力は使わない。実施の経緯はコミッ
 
 ## 3. 現在地
 
-B1 を実装中。単位・余単位、三角恒等式、恒等随伴、合成、左右随伴の
+B1 は全パラメータの族の前層による自然性の模型で完了。次は B2。
+単位・余単位、三角恒等式、恒等随伴、合成、左右随伴の
 h Fun での一意性、パラメータ付き adjunct 対応とその二変数の自然性を実装した。
 A1c の `homotopyNatTrans` と `qcatCellOfHomotopy` の評価の一致も証明した。
 区間模型への族 A→Map(x,y) と Fun(A,X) の定値関手間の辺は厳密に全単射で、
@@ -82,7 +88,8 @@ pinched 模型では、比較による移送 `PinchedInterval.liftMap` の合成
 上の自然性は hX・hY の射と任意のパラメータの h Fun での対応として検証した段階であり、
 逆向きに使う具体的な coherent 比較の型と単位候補の抽出は後述の通り実装した。
 各点の同値性から随伴を構成し、元の比較と構成した随伴の比較との同型も証明した。
-この具体的な型による一般の自然な写像空間対応の表示は、別途その模型の正確な意味を確認する。
+族の集合値前層の自然変換との厳密な表示定理と、その型での pinched 判定も実装した。
+空間値二変数 ∞ 関手の自然変換との対応は、なお別の主張として扱う。
 Cor 6.2.6.5 は指定された自然変換 η が誘導する比較の同値性を使う。各点で任意に選んだ
 同値だけから逆向きを主張しない。
 
@@ -386,13 +393,35 @@ coherent 比較模型での両方向の存在判定である。単位や全パ�
 二変数自然性を実際のホモトピーとして公開した。全パラメータの coherence は引き続き
 元の矢印空間全体の射が保持する。
 
-B1 全体の完了判定は保留する。具体的な coherent 矢印比較による存在判定と二変数自然性は
-証明済みだが、抽象的な写像空間の二変数関手の自然変換とこの模型の表示の同値はまだ形式化していない。
-その表示定理を証明したという主張や、独立に選んだ各点の同値だけからの存在判定はしない。
-指定単位 η の各点の条件から、非定値の全パラメータ Hom 全単射、随伴と両三角恒等式へ進む経路は完了した。
-この指定単位版だけで、当初の自然な写像空間対応との同値全体を完了とは扱わない。B2〜B5 も未完了。
-対象ビルド（2154 jobs）・公理監査（1528 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 485 モジュールに straightening 依存がないことも確認した。
+自然性を矢印空間の射だけで入力する形式から進めるため、`LeftMappingFamily F A` と
+`RightMappingFamily G A` を端点図式・raw なホモトピーの三データとして定義した。
+それぞれの族は矢印空間・comma 空間への A からの射と厳密に全単射である。
+`leftMappingFamilyPresheaf`・`rightMappingFamilyPresheaf` は SSetᵒᵖ 上の集合値前層で、
+パラメータ作用が raw なホモトピーの前合成であることを `*_map_h` で確認した。
+`*_PresheafIso` は表現可能前層との自然同型である。
+`NaturalMappingFamilyComparison` はこれらの前層の間の、両端の射影を保つ通常の自然変換である。
+`mappingArrowNaturalFamilyEquiv` はそのデータと `MappingArrowComparison` との厳密な全単射。
+逆方向は普遍矢印の族への評価であり、`transformation_app` が任意の族での元の自然変換を回収する。
+`transformation_h`・`intervalMap_family_h` によって、回収した各点の写像空間の射の作用も
+元の自然変換の作用と raw な射として一致する。
+`qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison` と
+`qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison` は、この前層の
+自然変換を直接入力する存在判定を与える。同値条件は各点にだけ課し、全パラメータの
+同値性や単位・余単位をフィールドに追加しない。
+
+B1 の自然な写像空間対応は、全パラメータのホモトピー族の前層の端点を保つ自然変換と、
+その各点の pinched 比較の実際のホモトピー同値性として具体化した。
+この型での表示定理・両方向の随伴判定・元の比較との整合・二変数自然性が証明済みである。
+単位・余単位と h Fun の三角恒等式、A1c との整合、随伴の合成と h Fun での左右随伴の一意性も
+証明済みなので、**B1 はこの straightening に依存しない模型で完了**とする。
+正本 [infinity-core-F1.md](infinity-core-F1.md) §1 の F1h は、空間値 Hom 関手を
+left fibration の straightening で構成する別レーンである。
+その **空間値二変数 ∞ 関手**の自然変換と今回の模型との比較は未形式化で、ここで証明済みとは
+主張しない。B1 の自然性の定義・判定にはその別レーンの型を使っていない。
+独立に選んだ各点の同値だけからの存在判定でもない。
+B2〜B5 は未完了。次は反射的部分 ∞ 圏と局所化の B2 に進む。
+対象ビルド（2158 jobs）・公理監査（1628 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 489 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -517,7 +546,7 @@ B1 全体の完了判定は保留する。具体的な coherent 矢印比較に�
 | `unitCommaInitialCondition_iff` | 始対象条件を指定した x 上の単位の頂点で表示 | 実装済み |
 | `universalUnitCommaProjection_innerFibration`・`universalUnitCommaSection` と射影・標的の公式 | 中間始対象条件の下での普遍矢印への切断と inner fibration 性 | 実装済み |
 | `universalUnitCommaProjection_surjective` | 同じ条件の下での始域射影の頂点上全射性（同値性は未証明） | 実装済み |
-| 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
+| 写像空間による特徴づけ | 全端点の族の前層の自然変換と各点の pinchedHom のホモトピー同値による随伴判定 | 実装済み（空間値 Hom 関手自体は別レーン F1h） |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
 | `unitCommaUncurry`・`unitCommaHomotopy`・`unitCommaLift_homotopy` | comma の族の展開と厳密な回収 | 実装済み |
 | `unitCommaFiberCurry`・`unitCommaFiberFamilyEquiv` | 固定始域の族と標的図式・ホモトピーの組の厳密な全単射 | 実装済み |
@@ -658,3 +687,9 @@ B1 全体の完了判定は保留する。具体的な coherent 矢印比較に�
 | `qcat_nonempty_adjunction_iff_exists_mappingArrowComparison`・`qcat_nonempty_adjunction_iff_exists_pinchedMappingArrowComparison` | 具体的な coherent 矢印比較模型による随伴の存在判定の両方向 | 実装済み（抽象的な二変数関手の自然変換との模型比較は未形式化） |
 | `MappingArrowComparison.pinchedMap_unitIso/pinchedMapAdjunctionIso` | 元の pinched 比較と標準単位比較・構成した随伴比較との h Fun 同型 | 実装済み |
 | `MappingArrowComparison.pinchedMapNaturalityLeftIso/RightIso`・`pinchedMap_naturality_left/right` | 各点で同値な元の比較の二変数自然性を同型と実際のホモトピーで回収 | 実装済み |
+| `LeftMappingFamily/RightMappingFamily`・`leftMappingFamilyEquiv/rightMappingFamilyEquiv` | 非定値端点のホモトピー族と矢印空間・comma 空間の射による厳密な表示 | 実装済み |
+| `leftMappingFamilyPresheaf/rightMappingFamilyPresheaf`・`*_map_h` | 全端点の族の集合値前層と raw な前合成によるパラメータ作用 | 実装済み |
+| `leftMappingFamilyPresheafIso/rightMappingFamilyPresheafIso` | 表現可能前層との自然同型 | 実装済み |
+| `NaturalMappingFamilyComparison`・`mappingArrowNaturalFamilyEquiv` | 端点を保つ通常の前層自然変換と coherent 矢印比較の厳密な全単射 | 実装済み（空間値二変数 ∞ 関手の自然変換との比較ではない） |
+| `NaturalMappingFamilyComparison.transformation_app/transformation_h/intervalMap_family_h` | 表示した射の作用から元の自然変換の任意のパラメータ成分を raw に回収 | 実装済み |
+| `NaturalMappingFamilyComparison.adjunctionOfPointwiseEquivalence`・`qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison`・`qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison` | 前層の自然変換を直接入力し各点の同値性のみで随伴を判定・構成 | 実装済み |
