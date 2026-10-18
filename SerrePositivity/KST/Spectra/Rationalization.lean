@@ -41,6 +41,7 @@ public import SerrePositivity.KST.Spectra.ParameterizedExchangeSign
 public import SerrePositivity.KST.Spectra.PointedCurryingComponents
 public import SerrePositivity.KST.Spectra.SpectrumLevelwiseInverse
 public import SerrePositivity.KST.Spectra.SignedLoopModel
+public import SerrePositivity.KST.Spectra.RationalSpectrumUnit
 
 /-!
 概要：スペクトルの telescope 有理化に使う余極限とホモトピー群の比較。

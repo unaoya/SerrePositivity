@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・245 モジュール 2938 宣言の公理監査成功。
+対象ビルド・248 モジュール 2960 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2164,3 +2164,38 @@ Kan 円の内部 Hom 列の構造射の後に符号を反転して一段をず�
 保存単位の対象ビルド 2446 jobs 成功。
 私有宣言を含む 245 モジュール 2938 宣言で標準三公理のみ。
 L9d は進行中。次は通常の一段先の cotensor 模型との実際の比較を合成する。
+
+## 75. L9d の元の対象からの実際の有理化写像と全整数次数の単位の公式
+
+通常の一段先の cotensor 模型から実際の内部 Hom 列へ射影し、
+段ごとの符号反転の反復による twist の比較を合成した。
+この比較を符号を調整した BF loop 模型の cofibrant 比較射へ持ち上げ、
+二つの BF 模型の間の実際の各段 π_* 同型を構成した。
+その逆方向の厳密な比較と、元の対象から符号を調整した模型への随伴の比較を合成した。
+元の X から有理化に用いる通常の loop 模型への実際の厳密な各段 π_* 同型が得られた。
+
+この射を telescope の零段からの射へ合成し、元の X を始域とする有理化の単位写像を構成した。
+従来の loop 模型の群の表示と実際の比較射の誘導同型の差は群の自己同型として明示した。
+その逆のテンソルを既存のテンソル同型へ合成し、実際の単位に適合する群の表示を得た。
+その表示の下で、全整数次数の単位は a を a⊗1 へ送る。
+加法群の標準の ℤ 加群構造による線形表示も構成した。
+
+ここでは射を群の同型から推論しておらず、随伴・相対充填・mapping path・telescope の実際の射を合成している。
+射の自然性は未完了のため L9d をまだ完了としない。
+自然性を検証するため、単射置換前の内部 Hom 列の図式と既存の BF telescope の比較を次に構成する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `signedLoopRawComparison` / `signedLoopRawComparison_levelwise` | 通常の loop 模型と符号を変えた Kan 列の厳密な比較 |
+| `signedLoopComparison` / `signedLoopComparison_projection` / `signedLoopComparison_levelwise` | BF 模型の比較と各段の全基点 π_* 同型性 |
+| `originalLoopModelMap` / `originalLoopModelMap_levelwise` / `originalLoopModelMap_piIsomorphism` | 元の X から通常の loop 模型への実際の厳密な同型比較 |
+| `originalLoopModelEquiv` | 実際の比較射の誘導する全整数次数群の同型 |
+| `rationalizationUnit` | 元の X から telescope への実際の厳密な単位写像 |
+| `rationalizationUnitCoefficientEquiv` | 従来の群の表示と実際の比較の差を記す自己同型 |
+| `rationalizationUnitHomotopyEquiv` / `rationalizationUnitTensorEquiv` | 単位に適合する全整数次数の乗法・加法・線形のテンソル表示 |
+| `rationalizationUnit_homotopy` | 実際の単位が全整数次数で a を a⊗1 へ送る公式 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2、HTT A.3.3。
+保存単位の対象ビルド 2449 jobs 成功。
+私有宣言を含む 248 モジュール 2960 宣言で標準三公理のみ。
+L9d は進行中。次は置換前の Kan 列の関手的な telescope の比較と単位の自然性を扱う。
