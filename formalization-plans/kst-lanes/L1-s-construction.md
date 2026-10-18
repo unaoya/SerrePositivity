@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2074 jobs、累計305宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2077 jobs、累計309宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -421,6 +421,22 @@ Ar[2] の中央の四頂点 `(0,1),(0,2),(1,1),(1,2)` に一つの実際の cofi
 他の三つ組には退化正方形の押し出し性を適用し、`isGapped_iff_triples` で全四つ組へ移した。
 `exists_gapped_arTwo_of_cofiber` は実際の cofiber を入力すれば安定性を要求しない。
 一般次数の存在はこの低次数の計算から自動的には従わない。
+
+次数3以上の補完に向け、相対始対象からの射を基底の余錐上で選ぶ比較を証明した。
+これは cofiber の零角・零射を固定する輸送のための準備であり、
+固定した任意の零射の cofiber 存在そのものを完成扱いしない。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting` | `(a : (Δ[0] : SSet.{u}) ⟶ X) → (p : X ⟶ Y) → InitialBoundaryLifting p (SSet.yonedaEquiv a) → TrivialKanFibration (relativeCosliceMap a p (boundary 0))` |
+| `sliceUnder_empty_hom_ext` | `(p : ((⊥ : K.Subcomplex) : SSet.{u}) ⟶ X) → (f g : A ⟶ sliceUnder p) → (f ≫ sliceUnderProjection p = g ≫ sliceUnderProjection p) → f = g` |
+| `cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting` | `(a : (Δ[0] : SSet.{u}) ⟶ X) → (p : X ⟶ Y) → InitialBoundaryLifting p (SSet.yonedaEquiv a) → TrivialKanFibration (cosliceEndpointMap a p)` |
+| `exists_relativeInitialCosliceLift` | `(a : (Δ[0] : SSet.{u}) ⟶ X) → (p : X ⟶ Y) → InitialBoundaryLifting p (SSet.yonedaEquiv a) → (i : A ⟶ B) → [Mono i] → (u : A ⟶ sliceUnder a) → (v : B ⟶ X) → (w : B ⟶ sliceUnder (a ≫ p)) → (v ≫ p = w ≫ sliceUnderProjection (a ≫ p)) → (u ≫ sliceUnderProjection a = i ≫ v) → (u ≫ sliceUnderPostcomp a p = i ≫ w) → ∃ F : B ⟶ sliceUnder a, i ≫ F = u ∧ F ≫ sliceUnderProjection a = v ∧ F ≫ sliceUnderPostcomp a p = w` |
+
+上記の全宣言は X・Y・A・B の quasicategory 性、p の inner fibration 性、安定性を仮定しない。
+比較写像の境界充填は、点と境界を貼った標準境界に `InitialBoundaryLifting` を適用して構成した。
+端点比較は空図式上の coslice の射の一意性でこの比較へ移し、全単射の RLP から相対延長を得た。
+Core と Stable のファイルには変更を加えていない。
 
 **未完了**：次数 n≥3 で零次元から作った実際の図式 F について、全三つ組の正方形
 `arSquare i j j k hij le_rfl hjk ≫ F` が押し出しとなること。

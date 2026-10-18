@@ -741,3 +741,15 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.firstRowRestriction_two_trivialKanFibration
 #print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_two_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting
+#print axioms SerrePositivity.KST.SConstruction.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting
+
+#check @SerrePositivity.KST.SConstruction.sliceUnder_empty_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.sliceUnder_empty_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting
+#print axioms SerrePositivity.KST.SConstruction.cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting
+
+#check @SerrePositivity.KST.SConstruction.exists_relativeInitialCosliceLift
+#print axioms SerrePositivity.KST.SConstruction.exists_relativeInitialCosliceLift
