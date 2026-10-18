@@ -255,3 +255,19 @@ public import SerrePositivity.KST.ProExcision.FirstBlockMultiplication
 public import SerrePositivity.KST.ProExcision.FirstBlockPreservation
 
 public import SerrePositivity.KST.ProExcision.MatrixBlockAction
+
+public import SerrePositivity.KST.ProExcision.IdealMatrixAction
+
+public import SerrePositivity.KST.ProExcision.ColumnMatrixAction
+
+public import SerrePositivity.KST.ProExcision.IdealColumnEquivariance
+
+public import SerrePositivity.KST.ProExcision.MatrixActionComponents
+
+public import SerrePositivity.KST.ProExcision.AuxiliaryUnitAction
+
+public import SerrePositivity.KST.ProExcision.EquivariantHomotopyOperations
+
+public import SerrePositivity.KST.ProExcision.AffineMatrixAction
+
+public import SerrePositivity.KST.ProExcision.MatrixActionInsertion

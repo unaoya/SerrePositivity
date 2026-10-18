@@ -3318,3 +3318,81 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.triangularBlockMatrixAction
 #print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixAction
+
+#check @SerrePositivity.KST.ProExcision.idealMatrixVecHom
+#print axioms SerrePositivity.KST.ProExcision.idealMatrixVecHom
+
+#check @SerrePositivity.KST.ProExcision.idealMatrixAction
+#print axioms SerrePositivity.KST.ProExcision.idealMatrixAction
+
+#check @SerrePositivity.KST.ProExcision.idealVectorRightHom_equivariant
+#print axioms SerrePositivity.KST.ProExcision.idealVectorRightHom_equivariant
+
+#check @SerrePositivity.KST.ProExcision.firstRows_blockColumn_apply
+#print axioms SerrePositivity.KST.ProExcision.firstRows_blockColumn_apply
+
+#check @SerrePositivity.KST.ProExcision.otherRows_blockColumn_apply
+#print axioms SerrePositivity.KST.ProExcision.otherRows_blockColumn_apply
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_blockColumn
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_blockColumn
+
+#check @SerrePositivity.KST.ProExcision.idealBlockColumnHom_equivariant
+#print axioms SerrePositivity.KST.ProExcision.idealBlockColumnHom_equivariant
+
+#check @SerrePositivity.KST.ProExcision.lastBlockColumnHom_equivariant
+#print axioms SerrePositivity.KST.ProExcision.lastBlockColumnHom_equivariant
+
+#check @SerrePositivity.KST.ProExcision.lastRightColumnHom_equivariant
+#print axioms SerrePositivity.KST.ProExcision.lastRightColumnHom_equivariant
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryBlockColumnHom_equivariant
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryBlockColumnHom_equivariant
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_firstRows
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_firstRows
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_otherRows
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_otherRows
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_preserves_fixed_column
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_preserves_fixed_column
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_fixed_aux_column
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_fixed_aux_column
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryBlockUnit_fixed
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryBlockUnit_fixed
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.precomp_equivariant
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.precomp_equivariant
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.trans_equivariant
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.trans_equivariant
+
+#check @SerrePositivity.KST.ProExcision.groupConjugationMHomotopy_equivariant
+#print axioms SerrePositivity.KST.ProExcision.groupConjugationMHomotopy_equivariant
+
+#check @SerrePositivity.KST.ProExcision.affineMatrixAction
+#print axioms SerrePositivity.KST.ProExcision.affineMatrixAction
+
+#check @SerrePositivity.KST.ProExcision.affineMatrixAction_firstRows
+#print axioms SerrePositivity.KST.ProExcision.affineMatrixAction_firstRows
+
+#check @SerrePositivity.KST.ProExcision.affineMatrixAction_otherRows
+#print axioms SerrePositivity.KST.ProExcision.affineMatrixAction_otherRows
+
+#check @SerrePositivity.KST.ProExcision.affineMatrixAction_fixed_column
+#print axioms SerrePositivity.KST.ProExcision.affineMatrixAction_fixed_column
+
+#check @SerrePositivity.KST.ProExcision.insertion_preserves_firstRows
+#print axioms SerrePositivity.KST.ProExcision.insertion_preserves_firstRows
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_fixed_new_column
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_fixed_new_column
+
+#check @SerrePositivity.KST.ProExcision.affineMatrixAction_insertion
+#print axioms SerrePositivity.KST.ProExcision.affineMatrixAction_insertion
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockInsertion_equivariant
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockInsertion_equivariant
