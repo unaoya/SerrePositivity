@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。Perf、アフィン係数加群圏の同値、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルド、全体ビルド（10,097 jobs）、所有 namespace の1,078宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,092宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -731,6 +731,24 @@
 - 対象ビルド、全体ビルド（10,097 jobs）、1,078宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - 半自由分解から導来比較までの工程は完了。次はアフィン係数加群圏の比較を完成し、Perf と有限アフィン被覆の導来降下へ接続する。
 
+## 34. アフィン係数加群圏の比較：係数線形性の再構成（着手前記録）
+
+- 確認する文言：H_X 加群層の基礎 O 加群間の射が全ての H の定数作用と可換なら、その射は H_X 線形である。H の平坦性・可換性は不要。
+- 各開 U で `H ⊗ O(U)` の純テンソルを `(h ⊗ 1)(1 ⊗ r)` と表示する。O 線形性と定数作用との可換性から純テンソルに対する線形性を示し、加法についてテンソル帰納する。
+- 得られた射をテンソル前層から係数環層への比較に沿うスカラー制限上の射として束ねる。
+- 既に証明済みの比較の局所全射性と Mathlib の `restrictHomEquivOfIsLocallySurjective` を使い、実際の係数加群層の射へ戻す。
+- アフィンの場合は大域切断の H 線形性から定数作用との可換性を得る既存補題と合成し、大域切断関手の充満性へ進む。通常の準連接層の tilde 同値を保持する。
+- この工程は有限アフィン被覆の導来降下と Perf の局所条件への接続であり、Dqc を厳密な複体降下データとして定義し直すことはしない。
+
+### 現在地
+
+- `tensorCoefficientComparison_tmul`・`coefficientUnderlyingHom_tensor_smul`：純テンソルの二因子の積への分解と、テンソル帰納による線形性を証明済み。
+- `coefficientHomOfCommutes`・`coefficientHomOfCommutes_forget`：局所全射の Hom 同値で係数加群層の射を再構成し、忘却後の射が元の射に一致することを証明済み。
+- `coefficientHomEquiv`：任意のスキーム上で、係数加群層の Hom と定数 H 作用に可換な O 加群層の Hom の同値を証明済み。H の平坦性・可換性、加群の準連接性は不要。
+- `affineUnderlyingHom_lift`・`affineQcohΓ_full`：通常の tilde 同値と係数作用の再構成を合成して、アフィン準連接係数加群層の大域切断の充満性を証明済み。既存の忠実性と合わせて完全忠実性が得られた。
+- 対象ビルドと1,092宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 本質的全射性、アフィン導来比較、Perf の局所条件、有限被覆の導来降下は未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -846,6 +864,8 @@
 | `DGResolution.quotientHomotopyOriginalRepresentableIso` | DGResolution/QuotientComparisonObjects | 実装・対象ビルド済み |
 | `derivedDGHomotopyEquivalence_objIso` | DerivedGeometry/SheafDerivedComparisonObjects | 実装・対象ビルド済み |
 | `dqcDGObject_image_iff`・`dqcDGHomotopyEquivalence` | DerivedGeometry/DqcDerivedComparison | 実装・対象ビルド済み |
+| `coefficientUnderlyingHom_tensor_smul`・`coefficientHomOfCommutes`・`coefficientHomEquiv` | DerivedGeometry/CoefficientLinearity | 実装・対象ビルド済み |
+| `affineUnderlyingHom_lift`・`affineQcohΓ_full` | DerivedGeometry/AffineCoefficientFull | 実装・対象ビルド済み |
 | `DGResolution.augmentation_triaImage_iff`・`augmentation_trW_eq` | DGResolution/SupportTransport・VerdierTransport | 実装・対象ビルド済み |
 | `DGResolution.verdierSquare`・`quotientToOriginalVerdierIsTriangulated` | DGResolution/VerdierTransport | 実装・対象ビルド済み |
 | `ResolvedComplexes`・`resolvedAcyclicComplexes`・`resolvedAugmentation_quasiEquivalence` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
