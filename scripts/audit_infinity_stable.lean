@@ -1354,7 +1354,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.KanKernelPairNaturality,
     `SerrePositivity.InfinityCategories.Stable.KanKernelPairDiagonal,
     `SerrePositivity.InfinityCategories.Stable.KanKernelPairLoopProduct,
-    `SerrePositivity.InfinityCategories.Stable.RepresentableAddition]
+    `SerrePositivity.InfinityCategories.Stable.RepresentableAddition,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationPrismLift,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationFiberTransport,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationFiberTransportLift,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationTransportHom,
+    `SerrePositivity.InfinityCategories.Stable.CoconeEndpointTransport,
+    `SerrePositivity.InfinityCategories.Stable.CoslicePushoutGluing,
+    `SerrePositivity.InfinityCategories.Stable.CoconeEndpointGluing]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -627,9 +627,28 @@ E が可縮な Kan・射が Kan fibration なら π₀ で全単射となる。
 `representableOperation_eq_add` は一般の前加法圏で二項双積が存在するとき、
 後合成に自然で零射を左右単位に持つ Hom(A,B) 上の演算が既存の加法に一致することを示す。
 演算の結合性や可換性は仮定しない。`representableRightInverse_eq_neg` はその右逆元を負号に同定する。
-これらの抽象補題の自然性・零単位の仮定を、余錐の Hom 表示へ移したループ演算で満たす工程は未完了。
-**負号との一致は未証明**。残る義務は終点の変化に沿う余錐空間の輸送とその二枝への整合、
-Hom の後合成への対応、対角成分と零射との照合、構成済みの双積の加法への適用。
+`leftFibration_prism_lift` は任意パラメーターの区間族を指定先頭から left fibration に持ち上げる。
+`LeftFibrationFiberTransport` は fiber の射と包含を結ぶ区間族を、両端・底への像の等号付きで保持する。
+`nonempty_leftFibrationFiberTransport` は底の任意の辺についてその存在を証明する
+（left fibration のみ、全空間・底の quasicategory 性は不要）。
+`exists_leftFibrationFiberTransport_lift` は中間の fiber の輸送を、left fibration である制限射に沿って
+持ち上げる。区間族と fiber の射の両方で制限と厳密に可換となる。
+`LeftFibrationFiberTransport.vertexEdge_over` は輸送の各頂点の辺が底の指定辺そのものに写る等号。
+`leftFibrationInitialFiberPiZeroEquiv_transport` は全空間・底 quasicategory、left fibration、始対象の下で、
+輸送が Hom 表示で底の辺との後合成になることを証明する。
+`nonempty_coconeEndpointTransport`・`coconeMappingSpacePiZeroEquiv_transport` は
+余錐空間と余極限頂点からの Hom 表示への適用（Quasicategory、後者は余極限余錐）。
+`exists_coconeEndpointTransport_restrict` は任意の単射による図式制限に対し、
+部分図式で選んだ輸送を変更せず全図式の輸送を制限と厳密に可換に選べることを示す（Quasicategory）。
+`exists_coslice_glue_of_pushout`・`coslice_hom_ext_of_pushout` は終点固定条件なしの coslice の族の
+貼り合わせの存在・一意性。`exists_coconeEndpointTransport_glue` はこれにより
+二枝の輸送の区間族が共通部分で一致するという入力から、全図式の輸送を両枝と厳密に可換に構成する。
+これら三つの貼り合わせ結果に値域の quasicategory 性や余極限性は不要。
+対称 span で共通始点の輸送を一つ選び同じ枝へ持ち上げた場合に、
+表示変更を含む二枝の区間族の一致を証明してこの貼り合わせを適用する工程は未完了。
+また、ループ演算を Hom に移すための枝の基点の選択・変更の整合と対角成分と零射の照合が未完了。
+従って、抽象補題の自然性・零単位の仮定を余錐の Hom 表示へ移した演算で満たすことは未証明。
+**負号との一致は未証明**。構成済みの双積の加法への適用も残る。
 表現可能な比較の完成を符号・TR2 全体の完成とは数えない。
 八面体、Pretriangulated instance も未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
@@ -790,6 +809,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 対称 span 全体からのループ比較 | `symmetricCoconeBranches_isPullback`・`symmetricCoconeKernelPairIso`・`symmetricCoconeKernelPairIso_swap`（値域の仮定なし）、`symmetricCoconeLoopComparison_homotopyEquivalence`・`symmetricCoconePiZeroLoopEquiv_eq_comparison`（Quasicategory、辺の終点の始対象性、枝の余錐の基点） | 全体の余錐空間のループ模型への実際のホモトピー同値と、自己引き戻しへの交換作用の転送まで完成。ループの逆射との一致も下記で完成。加法の負号との一致は未証明 |
 | 二成分・二枝交換とループの逆射 | `kanKernelPairFiberInclusion_piZero_bijective`（Kan fibration、E Kan・可縮）、`exists_kanKernelPairSwap_fiber_path`（同前）、`kanKernelPairPiZeroLoopEquiv_comp_swap`・`kanKernelPairPiZeroLoopEquiv_swap`（さらに B Kan）、`symmetricCoconePiZeroLoopEquiv_comp_swap`・`symmetricCoconePiZeroLoopEquiv_swap`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 成分交換と二枝交換がループの逆射となることまで完成。ループの群構造と双積の加法との一致、負号、TR2 は未証明 |
 | ループ積の自然性と加法の一般判定 | `kanKernelPairPiZeroLoopEquiv_naturality`（両射 Kan fibration、両全空間 Kan・可縮、両底 Kan、可換正方形）、`kanKernelPairPiZeroLoopEquiv_diagonal`・`kanKernelPairLoopProduct` と結合則・左右単位・交換右逆元・自然性（同前）、`representableOperation_eq_add`・`representableRightInverse_eq_neg`（一般の前加法圏、二項双積、演算の零単位・後合成自然性） | 自己引き戻しの π₀ 上の自然なループ積と、加法へ照合する一般補題が完成。余錐の Hom 表示に移した演算の後合成自然性・零単位の照合と適用は未完了 |
+| 余錐空間の終点輸送と貼り合わせ | `nonempty_leftFibrationFiberTransport`（left fibration のみ）、`exists_leftFibrationFiberTransport_lift`（中間の輸送、制限射が left fibration）、`leftFibrationInitialFiberPiZeroEquiv_transport`（全空間・底 Quasicategory、left fibration、始対象）、`coconeMappingSpacePiZeroEquiv_transport`（Quasicategory、余極限余錐）、`exists_coconeEndpointTransport_restrict`（Quasicategory、Mono）、`exists_coconeEndpointTransport_glue`（二枝の区間族の整合を入力、充填性・余極限性不要） | 終点輸送の存在、単射の制限との同時可換性、Hom の後合成への対応、整合条件付きの全図式の輸送の貼り合わせまで完成。対称 span での整合条件の検証・基点の整合・零射の照合と演算への適用は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

@@ -188,6 +188,14 @@ public import SerrePositivity.InfinityCategories.Stable.KanKernelPairDiagonal
 public import SerrePositivity.InfinityCategories.Stable.KanKernelPairLoopProduct
 public import SerrePositivity.InfinityCategories.Stable.RepresentableAddition
 
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationPrismLift
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationFiberTransport
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationFiberTransportLift
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationTransportHom
+public import SerrePositivity.InfinityCategories.Stable.CoconeEndpointTransport
+public import SerrePositivity.InfinityCategories.Stable.CoslicePushoutGluing
+public import SerrePositivity.InfinityCategories.Stable.CoconeEndpointGluing
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
