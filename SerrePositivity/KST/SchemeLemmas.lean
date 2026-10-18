@@ -186,3 +186,5 @@ public import SerrePositivity.KST.SchemeLemmas.LocalMinorFreeCriterion
 public import SerrePositivity.KST.SchemeLemmas.MatrixTensorBaseChange
 public import SerrePositivity.KST.SchemeLemmas.FiniteFreePresentationBaseChange
 public import SerrePositivity.KST.SchemeLemmas.BaseChangedMinorFreeCriterion
+public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraTensorCoefficients
+public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientBaseChange
