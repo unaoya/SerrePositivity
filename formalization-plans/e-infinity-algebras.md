@@ -163,6 +163,11 @@ doldKanSimplicialCategory_locallyKan (x y : ClosedCategory R D) :
 doldKanCoherentNerve : SSet.{max u v}
 coherentSimplex {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.Simplex R D n
 coherentComparison : doldKanCoherentNerve (R := R) (D := D) ⟶ dgNerve R D
+coherentComparison_essentiallySurjective : IsEssentiallySurjective
+  (coherentComparison (R := R) (D := D))
+coherentPinchedStandardComparison (x y : D) :
+  coherentPinchedHom (R := R) x y ⟶
+    SSet.uliftFunctor.{v,u}.obj (standardHomSpace (R := R) x y)
 ```
 
 Hom を実際の Mathlib Γ と自然同型で同定し、AW の全豊穣則と方程式の保存を証明済み。
@@ -172,10 +177,13 @@ Hom を実際の Mathlib Γ と自然同型で同定し、AW の全豊穣則と�
 対象、二端点だけの Path の零成分、`{0,2} → {0,1,2}` の旗の次数 −1 の成分との一致。
 三角形に追加の負号はない。追加の単射性・整合性・充填の仮定はない。
 
-残りは γ1.5d の各 pinched Hom の実際の単体的ホモトピー同値と ∞ 圏の同値。
+γ1.5d では全頂点を対象から再構成する `coherentVertexEquiv` を構成し、本質的全射性を証明済み。
+`coherentPinchedComparison` は実際の pinched Hom の射、標準座標での各成分は N4 回収成分に
+`degreeSign (J.card−1)` を掛けた値。全ての面・退化と可換である。
+残りは Q^• との比較、各 pinched Hom の実際の単体的ホモトピー逆、全頂点での充満忠実性と ∞ 圏の同値。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開459宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開476宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。

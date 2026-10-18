@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3751件で成功し、公開459宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3840件で成功し、公開476宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1619,6 +1619,44 @@ coherentSimplex_pullback {m n : ℕ} (s : doldKanCoherentNerve _⦋n⦌)
 旗は `{0,2} → {0,1,2}`、追加の負号はない。既存の `differential_triangleHom` により
 `δh = f₁₂ ∘ f₀₁ − f₀₂` となる。これで γ1.5c の頂点・辺・二単体の検査を満たす。
 γ1.5d の pinched Hom の実際の単体的ホモトピー同値と ∞ 圏の同値は未証明。
+
+### γ1.5d：比較射と端点の同定（進行中）
+
+`coherentConstant x n` は全ての対象を x、全ての Hom を dg 単位の定数単体に送る
+実際の豊穣関手である。`coherentVertex x` はその零単体で、
+`coherentComparison_vertex x` が比較像を `DGNerve.Simplex.vertex x` に等号で同定する。
+`coherentVertex_reconstruct` は任意の coherent 零単体を唯一の対象から再構成し、
+Hom の写像まで単位保存から一致させる。従って `coherentVertexEquiv` は全零単体と D の同値。
+`coherentComparison_surjective_vertices` と `coherentComparison_essentiallySurjective` により、
+A3e の本質的全射側は追加仮定なしに完了している。
+
+```lean
+coherentVertexEquiv : doldKanCoherentNerve (R := R) (D := D) _⦋0⦌ ≃ D
+coherentComparison_essentiallySurjective : IsEssentiallySurjective
+  (coherentComparison (R := R) (D := D))
+coherentPinchedComparison (x y : D) :
+  coherentPinchedHom (R := R) x y ⟶ DGNerve.pinchedHom R D x y
+standardHomPinchedIso (x y : D) :
+  SSet.uliftFunctor.{v,u}.obj (standardHomSpace (R := R) x y) ≅ DGNerve.pinchedHom R D x y
+coherentPinchedStandardComparison (x y : D) :
+  coherentPinchedHom (R := R) x y ⟶
+    SSet.uliftFunctor.{v,u}.obj (standardHomSpace (R := R) x y)
+```
+
+前提は `[CommRing R] [DGCategory R D]` のみ。
+`coherentPinchedHom` の端点は `coherentVertex x` と `coherentVertex y`。
+`coherentPinchedSimplex` は端点の同一視の cast を台の単体に残さず、
+比較写像の値そのものに pinched 条件を添える。比較射は全ての面・退化と可換である。
+`coherentPinchedComparison_component_heq` は任意の非空有限集合 J について、N4 の回収成分を
+`withLast J` の内部座標の降順立方体評価に同定する。
+`coherentPinchedStandardComparison_component` はこれを標準 DK 座標で表し、
+回収成分に `degreeSign (J.card−1)` を掛けたものに等しいと示す。
+`coherentPinchedStandardComparison_comp` はこの射を `standardHomPinchedIso.hom` で戻すと
+元の `coherentPinchedComparison` に等しいという、実際の単体集合の射の等式である。
+
+残りは余単体的立方体模型 Q^• との比較、標準座標での射の実際の単体的ホモトピー逆、
+Core の `pinchedHomMap coherentComparison` への移送と全頂点での充満忠実性、A3e の適用。
+比較射と成分表示の構成を、写像空間のホモトピー同値の証明としては数えない。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

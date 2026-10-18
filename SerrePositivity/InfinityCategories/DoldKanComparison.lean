@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentPinchedStandard
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentLowComparison
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentNoninjectiveNaturality
