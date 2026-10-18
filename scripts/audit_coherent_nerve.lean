@@ -22,6 +22,7 @@ set_option pp.explicit true
 
 
 
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough
 #check @SerrePositivity.InfinityCategories.Coherent.pathThrough
 
@@ -282,6 +283,72 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor_obj
 #check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor_obj
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathLift
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathLift
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathInclusionFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathInclusionFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathLiftFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathLiftFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathInclusion_lift
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathInclusion_lift
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathLift_inclusion
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathLift_inclusion
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathInclusion_comp_lift
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathInclusion_comp_lift
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathLift_comp_inclusion
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathLift_comp_inclusion
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_hom
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_hom
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_comp
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_comp
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_id
+#check @SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_id
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalHomMap
+#check @SerrePositivity.InfinityCategories.Coherent.intervalHomMap
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalHomMap_on_interval
+#check @SerrePositivity.InfinityCategories.Coherent.intervalHomMap_on_interval
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalHomMap_comp
+#check @SerrePositivity.InfinityCategories.Coherent.intervalHomMap_comp
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalHomMap_id
+#check @SerrePositivity.InfinityCategories.Coherent.intervalHomMap_id
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_interval
+#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_interval
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.intervalVertex_ne_outside
+#check @SerrePositivity.InfinityCategories.Coherent.intervalVertex_ne_outside
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_eq_viaFace
+#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_eq_viaFace
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_comp
+#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_comp
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_id
+#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_id
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.path_hom_iff
 #check @SerrePositivity.InfinityCategories.Coherent.path_hom_iff
