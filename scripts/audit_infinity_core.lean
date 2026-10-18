@@ -3300,3 +3300,75 @@ end InitialCofinalityUniverses
 
 #check @SerrePositivity.InfinityCategories.cocartesianHomotopy_extend
 #print axioms SerrePositivity.InfinityCategories.cocartesianHomotopy_extend
+
+#check @SerrePositivity.InfinityCategories.boundaryReverseIso
+#print axioms SerrePositivity.InfinityCategories.boundaryReverseIso
+
+#check @SerrePositivity.InfinityCategories.boundaryReverseIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.boundaryReverseIso_hom_ι
+
+#check @SerrePositivity.InfinityCategories.reverseStdPrism
+#print axioms SerrePositivity.InfinityCategories.reverseStdPrism
+
+#check @SerrePositivity.InfinityCategories.reverseBoundaryPrism
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryPrism
+
+#check @SerrePositivity.InfinityCategories.reverseStdPrism_boundary
+#print axioms SerrePositivity.InfinityCategories.reverseStdPrism_boundary
+
+#check @SerrePositivity.InfinityCategories.reverseStdPrism_double
+#print axioms SerrePositivity.InfinityCategories.reverseStdPrism_double
+
+#check @SerrePositivity.InfinityCategories.boundaryReverseIso_double
+#print axioms SerrePositivity.InfinityCategories.boundaryReverseIso_double
+
+#check @SerrePositivity.InfinityCategories.reverseBoundaryPrism_double
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryPrism_double
+
+#check @SerrePositivity.InfinityCategories.reverseStdPrism_endpoint
+#print axioms SerrePositivity.InfinityCategories.reverseStdPrism_endpoint
+
+#check @SerrePositivity.InfinityCategories.reverseBoundaryPrism_endpoint
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryPrism_endpoint
+
+#check @SerrePositivity.InfinityCategories.reverseStdPrism_postcomp
+#print axioms SerrePositivity.InfinityCategories.reverseStdPrism_postcomp
+
+#check @SerrePositivity.InfinityCategories.reverseBoundaryPrism_postcomp
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryPrism_postcomp
+
+#check @SerrePositivity.InfinityCategories.prismBoundaryLastVerticalEdge
+#print axioms SerrePositivity.InfinityCategories.prismBoundaryLastVerticalEdge
+
+#check @SerrePositivity.InfinityCategories.reverseBoundaryPrism_first_isInvertible
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryPrism_first_isInvertible
+
+#check @SerrePositivity.InfinityCategories.prism_lift_boundary_with_final_endpoint
+#print axioms SerrePositivity.InfinityCategories.prism_lift_boundary_with_final_endpoint
+
+#check @SerrePositivity.InfinityCategories.prismLastOrderHom
+#print axioms SerrePositivity.InfinityCategories.prismLastOrderHom
+
+#check @SerrePositivity.InfinityCategories.prismLastContraction
+#print axioms SerrePositivity.InfinityCategories.prismLastContraction
+
+#check @SerrePositivity.InfinityCategories.prismLastContraction_zero
+#print axioms SerrePositivity.InfinityCategories.prismLastContraction_zero
+
+#check @SerrePositivity.InfinityCategories.prismLastContraction_one
+#print axioms SerrePositivity.InfinityCategories.prismLastContraction_one
+
+#check @SerrePositivity.InfinityCategories.prismBoundaryLastVerticalEdge_contraction
+#print axioms SerrePositivity.InfinityCategories.prismBoundaryLastVerticalEdge_contraction
+
+#check @SerrePositivity.InfinityCategories.prismLastContraction_lastVertex
+#print axioms SerrePositivity.InfinityCategories.prismLastContraction_lastVertex
+
+#check @SerrePositivity.InfinityCategories.cocartesianHomotopy_exists_fixed_vertex
+#print axioms SerrePositivity.InfinityCategories.cocartesianHomotopy_exists_fixed_vertex
+
+#check @SerrePositivity.InfinityCategories.terminalBoundaryLifting_of_isTerminalVertex_fiber
+#print axioms SerrePositivity.InfinityCategories.terminalBoundaryLifting_of_isTerminalVertex_fiber
+
+#check @SerrePositivity.InfinityCategories.isTerminalVertex_fiber_iff_terminalBoundaryLifting
+#print axioms SerrePositivity.InfinityCategories.isTerminalVertex_fiber_iff_terminalBoundaryLifting

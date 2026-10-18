@@ -391,3 +391,13 @@ public import SerrePositivity.InfinityCategories.Core.CocartesianPathVertices
 public import SerrePositivity.InfinityCategories.Core.CocartesianPathLifting
 
 public import SerrePositivity.InfinityCategories.Core.CocartesianHomotopyExtension
+
+public import SerrePositivity.InfinityCategories.Core.BoundaryPrismOpposite
+
+public import SerrePositivity.InfinityCategories.Core.PrismFinalBoundary
+
+public import SerrePositivity.InfinityCategories.Core.PrismLastContraction
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianFixedVertexTransport
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianTerminalBoundary

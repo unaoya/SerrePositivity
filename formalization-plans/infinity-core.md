@@ -9081,6 +9081,153 @@ lemma cocartesianHomotopy_extend {A D E B : SSet.{u}} (p : E ⟶ B) [Cocartesian
 
 検証：Core 対象ビルド1924 jobs成功、累計1498宣言の公理監査は標準3公理のみ。
 
+### A6 続き（2026-10-18）：fiber の終対象性と相対終点境界充填の同値
+
+cocartesian fibration p:E→B、quasicategory E・B に対し、fiber の終対象 x は TerminalBoundaryLifting p x.val を満たすことを証明した。基底の標準単体を最後の頂点へ収縮し、x を固定した cocartesian な輸送で境界を fiber へ写し、そこで終対象性を適用する。最後の垂直辺だけが可逆であればよい終点側の prism の相対延長を反転から構成し、元の境界へ戻した。既存の fiber への制限と合わせて同値も証明。Kerodon Proposition 7.1.5.19 の終対象の場合。一般の inner fibration には同じ逆向きは成立せず、cocartesian な輸送の仮定を明示している。モデル構造は使わない。
+
+既存の公開名・型と §4 の設計は維持。以下 universe u、CategoryTheory・Limits・MonoidalCategory・MonoidalClosed・CartesianMonoidalCategory・SSet と scoped Simplicial を開く。型に列挙したもの以外の前提はない。
+
+`Core/BoundaryPrismOpposite.lean`：
+
+```lean
+def boundaryReverseIso (n : ℕ) : (boundary n : SSet.{u}) ≅ (boundary n : SSet.{u}).op
+
+lemma boundaryReverseIso_hom_ι (n : ℕ) :
+    (boundaryReverseIso.{u} n).hom ≫ SSet.opFunctor.map (boundary n).ι =
+      (boundary n).ι ≫ (stdSimplex.opIso ⦋n⦌).inv
+
+def reverseStdPrism {Y : SSet.{u}} {n : ℕ} (H : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Y) :
+    (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Y.op
+
+def reverseBoundaryPrism {Y : SSet.{u}} {n : ℕ}
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ Y) :
+    (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ Y.op
+
+lemma reverseStdPrism_boundary {Y : SSet.{u}} {n : ℕ}
+    (H : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Y) :
+    (Δ[1] ◁ (boundary n).ι) ≫ reverseStdPrism H =
+      reverseBoundaryPrism ((Δ[1] ◁ (boundary n).ι) ≫ H)
+
+lemma reverseStdPrism_double {Y : SSet.{u}} {n : ℕ}
+    (H : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Y) :
+    reverseStdPrism (reverseStdPrism H) ≫ (SSet.opFunctorCompOpFunctorIso.app Y).hom = H
+
+lemma boundaryReverseIso_double (n : ℕ) :
+    (boundaryReverseIso.{u} n).hom ≫ SSet.opFunctor.map (boundaryReverseIso n).hom ≫
+      (SSet.opFunctorCompOpFunctorIso.app (boundary n : SSet.{u})).hom = 𝟙 _
+
+lemma reverseBoundaryPrism_double {Y : SSet.{u}} {n : ℕ}
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ Y) :
+    reverseBoundaryPrism (reverseBoundaryPrism H) ≫
+      (SSet.opFunctorCompOpFunctorIso.app Y).hom = H
+
+lemma reverseStdPrism_endpoint {Y : SSet.{u}} {n : ℕ}
+    (H : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Y) (i : Fin 2) :
+    prismEndpoint i Δ[n] ≫ reverseStdPrism H =
+      (stdSimplex.opIso ⦋n⦌).inv ≫ SSet.opFunctor.map (prismEndpoint i.rev Δ[n] ≫ H)
+
+lemma reverseBoundaryPrism_endpoint {Y : SSet.{u}} {n : ℕ}
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ Y) (i : Fin 2) :
+    prismEndpoint i (boundary n : SSet.{u}) ≫ reverseBoundaryPrism H =
+      (boundaryReverseIso n).hom ≫
+        SSet.opFunctor.map (prismEndpoint i.rev (boundary n : SSet.{u}) ≫ H)
+
+lemma reverseStdPrism_postcomp {Y Z : SSet.{u}} {n : ℕ}
+    (H : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Y) (p : Y ⟶ Z) :
+    reverseStdPrism (H ≫ p) = reverseStdPrism H ≫ SSet.opFunctor.map p
+
+lemma reverseBoundaryPrism_postcomp {Y Z : SSet.{u}} {n : ℕ}
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ Y) (p : Y ⟶ Z) :
+    reverseBoundaryPrism (H ≫ p) = reverseBoundaryPrism H ≫ SSet.opFunctor.map p
+```
+
+`Core/PrismFinalBoundary.lean`：
+
+```lean
+def prismBoundaryLastVerticalEdge (n : ℕ) :
+    ((Δ[1] : SSet.{u}) ⊗ (boundary (n + 1) : SSet.{u})) _⦋1⦌
+
+lemma reverseBoundaryPrism_first_isInvertible {E : SSet.{u}} [Quasicategory E] (n : ℕ)
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary (n + 1) : SSet.{u}) ⟶ E)
+    (hH : IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌)
+      (prismBoundaryLastVerticalEdge n)))) :
+    IsInvertibleEdge (edgeOfSimplex ((reverseBoundaryPrism H).app (Opposite.op ⦋1⦌)
+      (prismBoundaryFirstVerticalEdge n)))
+
+lemma prism_lift_boundary_with_final_endpoint {E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
+    (p : E ⟶ B) [InnerFibration p] (n : ℕ)
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary (n + 1) : SSet.{u}) ⟶ E)
+    (F₁ : (Δ[n + 1] : SSet.{u}) ⟶ E)
+    (β : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ B)
+    (hF₁ : (boundary (n + 1)).ι ≫ F₁ = prismEndpoint 1 (boundary (n + 1) : SSet.{u}) ≫ H)
+    (hHp : H ≫ p = (Δ[1] ◁ (boundary (n + 1)).ι) ≫ β)
+    (hF₁p : F₁ ≫ p = prismEndpoint 1 Δ[n + 1] ≫ β)
+    (hH : IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌)
+      (prismBoundaryLastVerticalEdge n)))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ E,
+      (Δ[1] ◁ (boundary (n + 1)).ι) ≫ F = H ∧
+        prismEndpoint 1 Δ[n + 1] ≫ F = F₁ ∧ F ≫ p = β
+```
+
+`Core/PrismLastContraction.lean`：
+
+```lean
+def prismLastOrderHom (n : ℕ) : Fin 2 × Fin (n + 1) →o Fin (n + 1)
+
+def prismLastContraction (n : ℕ) : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Δ[n]
+
+lemma prismLastContraction_zero (n : ℕ) :
+    prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ prismLastContraction n = 𝟙 Δ[n]
+
+lemma prismLastContraction_one (n : ℕ) :
+    prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ prismLastContraction n =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last n))
+
+lemma prismBoundaryLastVerticalEdge_contraction (n : ℕ) :
+    ((Δ[1] ◁ (boundary (n + 1)).ι) ≫ prismLastContraction (n + 1)).app (Opposite.op ⦋1⦌)
+      (prismBoundaryLastVerticalEdge n) =
+        PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1))) 1
+
+lemma prismLastContraction_lastVertex (n : ℕ) :
+    (Δ[1] ◁ SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (Fin.last n))) ≫
+      prismLastContraction n = SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last n))
+```
+
+`Core/CocartesianFixedVertexTransport.lean`：
+
+```lean
+lemma cocartesianHomotopy_exists_fixed_vertex {A E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
+    (p : E ⟶ B) [CocartesianHornFibration p]
+    (i : (Δ[0] : SSet.{u}) ⟶ A) [Mono i] (f : A ⟶ E) (x : E _⦋0⦌)
+    (hix : i ≫ f = SSet.yonedaEquiv.symm x)
+    (β : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (hβ₀ : f ≫ p = prismEndpoint 0 A ≫ β)
+    (hβi : (Δ[1] ◁ i) ≫ β = SSet.const (p.app (Opposite.op ⦋0⦌) x)) :
+    ∃ H : (Δ[1] : SSet.{u}) ⊗ A ⟶ E,
+      (Δ[1] ◁ i) ≫ H = SSet.const x ∧ prismEndpoint 0 A ≫ H = f ∧ H ≫ p = β ∧
+      ∀ y : A _⦋0⦌, HasCocartesianHornLifting p (edgeOfSimplex
+        (H.app (Opposite.op ⦋1⦌)
+          (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant y 1)))
+```
+
+`Core/CocartesianTerminalBoundary.lean`：
+
+```lean
+lemma terminalBoundaryLifting_of_isTerminalVertex_fiber {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [CocartesianHornFibration p]
+    (b₀ : B _⦋0⦌) (x : (vertexFiber p b₀) _⦋0⦌) (hx : IsTerminalVertex x) :
+    TerminalBoundaryLifting p x.val
+
+lemma isTerminalVertex_fiber_iff_terminalBoundaryLifting {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [CocartesianHornFibration p]
+    (b : B _⦋0⦌) (x : (vertexFiber p b) _⦋0⦌) :
+    IsTerminalVertex x ↔ TerminalBoundaryLifting p x.val
+```
+
+未完了：錐の制限の cocartesian な輸送、通常の点ごとの極限性からの自然な錐の構成、A6 主定理。今回の一般補題により fiber の終対象から相対境界充填への接続は完了。A4・A5 は D チャット α-S の担当。本チャットは A6 完了・報告まで。
+
+検証：Core 対象ビルド1929 jobs成功、累計1522宣言の公理監査は標準3公理のみ。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

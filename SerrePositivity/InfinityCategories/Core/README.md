@@ -546,3 +546,7 @@ A6 続き：固定基底の辺の持ち上げの圏の cocartesian な始対象�
 A6 続き：cocartesian な最初の垂直辺を持つ prism の基底上の延長、cocartesian な path の始点と基底への射の trivial Kan fibration 性、任意の単射上の輸送を固定した相対延長を証明。quasicategory 性は不要。新規16宣言の全型・前提は §6。A6 主定理は未完了。
 
 上記保存単位の検証：Core 対象ビルド1924 jobs成功、累計1498宣言の公理監査は標準3公理のみ。
+
+A6 続き：cocartesian fibration p:E→B、quasicategory E・B に対し、fiber の終対象性と TerminalBoundaryLifting p x.val の同値を証明。最後の頂点を固定して境界を fiber へ輸送・充填し、終点側の prism の相対延長で戻す。一般の inner fibration には逆向きを主張しない。新規24宣言の全型・前提は §6。錐の制限の cocartesian 性と A6 主定理は未完了。
+
+上記保存単位の検証：Core 対象ビルド1929 jobs成功、累計1522宣言の公理監査は標準3公理のみ。
