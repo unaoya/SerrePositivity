@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせを整備し、任意の二つの単体集合の fat join 比較の普遍的な前合成の同値性も完成したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせを整備し、任意の二つの単体集合の fat join 比較の普遍的な前合成の同値性も完成したが、右因子の図式を固定した fat join 比較の同値性も証明した。slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -7847,6 +7847,175 @@ lemma isPrecompositionEquivalence_fatJoinComparison_stdSimplex_left (n : ℕ) (B
 lemma isPrecompositionEquivalence_fatJoinComparison (A B : SSet.{u}) :
     IsPrecompositionEquivalence (fatJoinComparison A B)
 ```
+
+### A6 続き（2026-10-18）：固定図式上の fat join 比較
+
+任意の普遍的な前合成の同値条件は join と fat join の左右で保存される。比較射のエピ性を標準単体の切断と curry の外延性から証明した。前合成の間の単射な同値について、相対持ち上げから厳密な左逆と基底を固定する可逆ホモトピーを構成し、各頂点の fiber 上の同値を得た。これにより、任意の A、K と quasicategory X、図式 p : K ⟶ X に対し、右因子上の p を固定した fat join 比較も同値となる。
+
+既存の公開名・型は変更していない。以下では universe u、CategoryTheory・Limits・MonoidalCategory・MonoidalClosed・CartesianMonoidalCategory・SSet と scoped Simplicial を開く。各型に列挙したもの以外の仮定はない。
+
+`Core/JoinEquivalenceFunctor.lean`：
+
+```lean
+lemma IsPrecompositionEquivalence.fatJoinStageMapLeft_equivalence {A B : SSet.{u}} {f : A ⟶ B}
+    (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (fatJoinStageMapLeft f K)
+
+lemma IsPrecompositionEquivalence.fatJoinStageMapRight_equivalence {A B : SSet.{u}} {f : A ⟶ B}
+    (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (fatJoinStageMapRight K f)
+
+lemma IsPrecompositionEquivalence.fatJoinMap_left {A B : SSet.{u}} {f : A ⟶ B}
+    (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (fatJoinMap f (𝟙 K))
+
+lemma IsPrecompositionEquivalence.fatJoinMap_right {A B : SSet.{u}} {f : A ⟶ B}
+    (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (fatJoinMap (𝟙 K) f)
+
+lemma IsPrecompositionEquivalence.joinMap_left {A B : SSet.{u}} {f : A ⟶ B}
+    (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (joinMap f (𝟙 K))
+
+lemma IsPrecompositionEquivalence.joinMap_right {A B : SSet.{u}} {f : A ⟶ B}
+    (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (joinMap (𝟙 K) f)
+```
+
+`Core/JoinCurryHomExt.lean`：
+
+```lean
+lemma join_left_hom_ext {A K X : SSet.{u}} {f g : join A K ⟶ X}
+    (hK : joinInr A K ≫ f = joinInr A K ≫ g)
+    (hA : ∀ n (a : (Δ[n] : SSet.{u}) ⟶ A), joinMap a (𝟙 K) ≫ f = joinMap a (𝟙 K) ≫ g) :
+    f = g
+
+lemma join_right_hom_ext {A K X : SSet.{u}} {f g : join K A ⟶ X}
+    (hK : joinInl K A ≫ f = joinInl K A ≫ g)
+    (hA : ∀ n (a : (Δ[n] : SSet.{u}) ⟶ A), joinMap (𝟙 K) a ≫ f = joinMap (𝟙 K) a ≫ g) :
+    f = g
+```
+
+`Core/FatJoinComparisonEpi.lean`：
+
+```lean
+instance fatJoinComparison_stdSimplex_epi (n m : ℕ) :
+    Epi (fatJoinComparison (Δ[n] : SSet.{u}) Δ[m])
+
+instance fatJoinComparison_stdSimplex_left_epi (n : ℕ) (B : SSet.{u}) :
+    Epi (fatJoinComparison (Δ[n] : SSet.{u}) B)
+
+instance (priority := 100) fatJoinComparison_epi (A B : SSet.{u}) : Epi (fatJoinComparison A B)
+```
+
+`Core/PrecompositionRelativeLifting.lean`：
+
+```lean
+lemma IsPrecompositionEquivalence.hasLiftingProperty_pre {A B K L : SSet.{u}}
+    {i : A ⟶ B} [Mono i] (hi : IsPrecompositionEquivalence i) (j : K ⟶ L) [Mono j]
+    (X : SSet.{u}) [Quasicategory X] : HasLiftingProperty i ((pre j).app X)
+
+lemma IsPrecompositionEquivalence.trivialKanFibration_relative_pre
+    {A B K L : SSet.{u}} {i : A ⟶ B} [Mono i]
+    (hi : IsPrecompositionEquivalence i) (j : K ⟶ L) [Mono j]
+    (X : SSet.{u}) [Quasicategory X]
+    (sq' : internalHom.PullbackObjObj i ((pre j).app X)) : TrivialKanFibration sq'.π
+```
+
+`Core/PrecompositionMonomorphism.lean`：
+
+```lean
+instance mono_pre_of_epi {A B : SSet.{u}} (i : A ⟶ B) [Epi i] (X : SSet.{u}) :
+    Mono ((pre i).app X)
+```
+
+`Core/RelativePrecompositionFunctorEdge.lean`：
+
+```lean
+lemma IsPrecompositionEquivalence.exists_functorEdge_over_pre
+    {A B K L X : SSet.{u}} {i : A ⟶ B} [Mono i] (hi : IsPrecompositionEquivalence i)
+    (j : K ⟶ L) [Mono j] [Quasicategory X]
+    (u v : B ⟶ (ihom L).obj X) (b : B ⟶ (ihom K).obj X)
+    (huv : i ≫ v = i ≫ u) (hu : u ≫ (pre j).app X = b) (hv : v ≫ (pre j).app X = b) :
+    ∃ k : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom B).obj ((ihom L).obj X)))
+        (functorVertex u) (functorVertex v), IsInvertibleEdge k ∧
+      ((ihom B).map ((pre j).app X)).app (Opposite.op ⦋1⦌) k.edge =
+        (SSet.Truncated.Edge.id (X := (truncation 2).obj ((ihom B).obj ((ihom K).obj X)))
+          (functorVertex b)).edge
+```
+
+`Core/VertexFiberInvertible.lean`：
+
+```lean
+lemma isInvertibleEdge_vertexFiber_iff {E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [InnerFibration p]
+    (b : B _⦋0⦌) {x y : (vertexFiber p b) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj (vertexFiber p b)) x y) :
+    IsInvertibleEdge e ↔ IsInvertibleEdge (e.map ((truncation 2).map (vertexFiberι p b)))
+```
+
+`Core/VertexFiberMap.lean`：
+
+```lean
+def vertexFiberMap {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F)
+    (hf : f ≫ q = p) (b : B _⦋0⦌) : vertexFiber p b ⟶ vertexFiber q b
+
+lemma vertexFiberMap_ι {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F)
+    (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    vertexFiberMap p q f hf b ≫ vertexFiberι q b = vertexFiberι p b ≫ f
+
+lemma vertexFiberMap_id {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    vertexFiberMap p p (𝟙 E) (by simp) b = 𝟙 _
+
+lemma vertexFiberMap_comp {E F G B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B) (r : G ⟶ B)
+    (f : E ⟶ F) (g : F ⟶ G) (hf : f ≫ q = p) (hg : g ≫ r = q) (b : B _⦋0⦌) :
+    vertexFiberMap p q f hf b ≫ vertexFiberMap q r g hg b =
+      vertexFiberMap p r (f ≫ g) (by rw [Category.assoc, hg, hf]) b
+```
+
+`Core/VertexFiberHomotopy.lean`：
+
+```lean
+def vertexFiberHomotopy {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B)
+    {f g : E ⟶ F} (hf : f ≫ q = p) (hg : g ≫ q = p) (H : SSet.Homotopy f g)
+    (hH : H.h ≫ q = fst E (Δ[1] : SSet.{u}) ≫ p) (b : B _⦋0⦌) :
+    SSet.Homotopy (vertexFiberMap p q f hf b) (vertexFiberMap p q g hg b)
+
+lemma vertexFiberHomotopy_isInvertible {E F B : SSet.{u}}
+    [Quasicategory F] [Quasicategory B] (p : E ⟶ B) (q : F ⟶ B) [InnerFibration q]
+    {f g : E ⟶ F} (hf : f ≫ q = p) (hg : g ≫ q = p) (H : SSet.Homotopy f g)
+    (hH : H.h ≫ q = fst E (Δ[1] : SSet.{u}) ≫ p)
+    (hI : ∀ x : E _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated)
+    (b : B _⦋0⦌) (x : (vertexFiber p b) _⦋0⦌) :
+    IsInvertibleEdge (simplicialHomotopyVertexEdge (vertexFiberHomotopy p q hf hg H hH b) x).toTruncated
+```
+
+`Core/PrecompositionFiberEquivalence.lean`：
+
+```lean
+lemma isQCatEquivalence_vertexFiberMap_pre
+    {K L M X : SSet.{u}} [Quasicategory X]
+    (j : K ⟶ L) (k : K ⟶ M) [Mono j] [Mono k]
+    (e : (ihom L).obj X ⟶ (ihom M).obj X) [Mono e]
+    (he : IsQCatEquivalence e) (h : e ≫ (pre k).app X = (pre j).app X)
+    (b : ((ihom K).obj X) _⦋0⦌) :
+    IsQCatEquivalence (vertexFiberMap ((pre j).app X) ((pre k).app X) e h b)
+```
+
+`Core/FatJoinFixedDiagramComparison.lean`：
+
+```lean
+instance fatJoinInr_mono (A B : SSet.{u}) : Mono (fatJoinInr A B)
+
+lemma isQCatEquivalence_fatJoinComparison_fixedDiagram
+    (A K X : SSet.{u}) [Quasicategory X] (p : K ⟶ X) :
+    IsQCatEquivalence (vertexFiberMap
+      ((pre (joinInr A K)).app X) ((pre (fatJoinInr A K)).app X)
+      ((pre (fatJoinComparison A K)).app X)
+      (by rw [← NatTrans.comp_app, ← pre_map, fatJoinInr_comparison]) (functorVertex p))
+```
+
+未完了：sliceConeFamilyMap の同値性、IsLimitCone と錐の制限の相対終対象の同値、任意図式に対する A6 主定理。A4・A5 は未着手。保存検証：Core 対象ビルド1869 jobs成功、累計1334宣言の公理監査は標準3公理のみ。
 
 ## 7. A3 の工程（2026-10-18 追加）
 

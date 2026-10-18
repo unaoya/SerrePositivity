@@ -2733,3 +2733,78 @@ end InitialCofinalityUniverses
 #print axioms SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison_stdSimplex_left
 #check @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison
 #print axioms SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.fatJoinStageMapLeft_equivalence
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.fatJoinStageMapLeft_equivalence
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.fatJoinStageMapRight_equivalence
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.fatJoinStageMapRight_equivalence
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.fatJoinMap_left
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.fatJoinMap_left
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.fatJoinMap_right
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.fatJoinMap_right
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_left
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_left
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_right
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_right
+
+#check @SerrePositivity.InfinityCategories.join_left_hom_ext
+#print axioms SerrePositivity.InfinityCategories.join_left_hom_ext
+
+#check @SerrePositivity.InfinityCategories.join_right_hom_ext
+#print axioms SerrePositivity.InfinityCategories.join_right_hom_ext
+
+#check @SerrePositivity.InfinityCategories.fatJoinComparison_stdSimplex_epi
+#print axioms SerrePositivity.InfinityCategories.fatJoinComparison_stdSimplex_epi
+
+#check @SerrePositivity.InfinityCategories.fatJoinComparison_stdSimplex_left_epi
+#print axioms SerrePositivity.InfinityCategories.fatJoinComparison_stdSimplex_left_epi
+
+#check @SerrePositivity.InfinityCategories.fatJoinComparison_epi
+#print axioms SerrePositivity.InfinityCategories.fatJoinComparison_epi
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.hasLiftingProperty_pre
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.hasLiftingProperty_pre
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.trivialKanFibration_relative_pre
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.trivialKanFibration_relative_pre
+
+#check @SerrePositivity.InfinityCategories.mono_pre_of_epi
+#print axioms SerrePositivity.InfinityCategories.mono_pre_of_epi
+
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.exists_functorEdge_over_pre
+#print axioms SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.exists_functorEdge_over_pre
+
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_vertexFiber_iff
+#print axioms SerrePositivity.InfinityCategories.isInvertibleEdge_vertexFiber_iff
+
+#check @SerrePositivity.InfinityCategories.vertexFiberMap
+#print axioms SerrePositivity.InfinityCategories.vertexFiberMap
+
+#check @SerrePositivity.InfinityCategories.vertexFiberMap_ι
+#print axioms SerrePositivity.InfinityCategories.vertexFiberMap_ι
+
+#check @SerrePositivity.InfinityCategories.vertexFiberMap_id
+#print axioms SerrePositivity.InfinityCategories.vertexFiberMap_id
+
+#check @SerrePositivity.InfinityCategories.vertexFiberMap_comp
+#print axioms SerrePositivity.InfinityCategories.vertexFiberMap_comp
+
+#check @SerrePositivity.InfinityCategories.vertexFiberHomotopy
+#print axioms SerrePositivity.InfinityCategories.vertexFiberHomotopy
+
+#check @SerrePositivity.InfinityCategories.vertexFiberHomotopy_isInvertible
+#print axioms SerrePositivity.InfinityCategories.vertexFiberHomotopy_isInvertible
+
+#check @SerrePositivity.InfinityCategories.isQCatEquivalence_vertexFiberMap_pre
+#print axioms SerrePositivity.InfinityCategories.isQCatEquivalence_vertexFiberMap_pre
+
+#check @SerrePositivity.InfinityCategories.fatJoinInr_mono
+#print axioms SerrePositivity.InfinityCategories.fatJoinInr_mono
+
+#check @SerrePositivity.InfinityCategories.isQCatEquivalence_fatJoinComparison_fixedDiagram
+#print axioms SerrePositivity.InfinityCategories.isQCatEquivalence_fatJoinComparison_fixedDiagram

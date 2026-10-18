@@ -261,3 +261,25 @@ public import SerrePositivity.InfinityCategories.Core.FatJoinInitialComparison
 public import SerrePositivity.InfinityCategories.Core.CellularNaturalComparison
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinGeneralComparison
+
+public import SerrePositivity.InfinityCategories.Core.JoinEquivalenceFunctor
+
+public import SerrePositivity.InfinityCategories.Core.JoinCurryHomExt
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonEpi
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionRelativeLifting
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionMonomorphism
+
+public import SerrePositivity.InfinityCategories.Core.RelativePrecompositionFunctorEdge
+
+public import SerrePositivity.InfinityCategories.Core.VertexFiberInvertible
+
+public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
+
+public import SerrePositivity.InfinityCategories.Core.VertexFiberHomotopy
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionFiberEquivalence
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinFixedDiagramComparison
