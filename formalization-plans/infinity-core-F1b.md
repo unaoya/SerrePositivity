@@ -20,7 +20,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、右の指定自然変換の h 不変性） |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の指定自然変換の h 不変性、h Fun の射への降下） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定
@@ -370,21 +370,34 @@ straightening を import するため使用せず、Core の join・coslice API 
 `isRightKanExtension_iff_of_homMk_eq` は右 Kan 拡張条件の h での不変性を与える。
 slice での制限の自然性を使い、異なる端点表示の照合は h の射の Arrow 表示の等式で扱う。
 
-**B4 は未完了。** 左側の自然変換の h での同値による不変性（Remark 7.3.1.10）、
+`KanLeftHomotopyInvariant` の `coconeFamily_opIso_of_homMk_eq` は、
+指定自然変換が h Fun(K,D) で等しい場合の左比較余錐の固定図式上の反転同型。
+`isLeftKanExtension_iff_of_homMk_eq` により左 Kan 条件の h 不変性も証明済み。
+辺の類の反転は Core の左右ホモトピーの比較から直接扱う。
+
+`KanExtensionHom` は A1c の `functorHomHomotopy` により、
+`IsRightKanExtensionHom`・`IsLeftKanExtensionHom` を h Fun の射に対する条件として定義する。
+`..._iff_of_representative` は元の射を表す任意のホモトピーによる判定との一致、
+`..._homotopy` は実際のホモトピーの類を入力したときの元の条件との一致を与える。
+
+**B4 は未完了。**
 h Fun(C,D) での大域的一意性、極限からの点ごとの存在と大域的組み立てが残る。
 各点の `valueIso` を大域的な同型の証明とは扱わない。
 
 ### 次の工程
 
-左側の指定自然変換の h での不変性を証明し、大域的一意性・存在へ接続する。
+点ごとの Kan 条件から h Fun 全体の普遍写像性（Kerodon Prop 7.3.6.1 の左右版）を導き、
+Remark 7.3.6.6 の大域的一意性へ接続する。
+普遍写像性だけの条件は一般には点ごとの Kan 条件より弱い（§7.3.6 冒頭・Cor 7.3.6.5）。
+点ごとの定義と無条件に同値だとは主張しない。存在・組み立ても未完了。
 A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 `isLimitCone_iff_pointwise_of_hasPointwiseLimits` は到着済みで型を確認した。
 点ごとの極限の存在条件から自然な錐を作る API であり、単に成分の錐を選んだだけの自然性は仮定しない。
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2286 jobs、公理監査2254宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内615モジュールに straightening 依存なし。
+対象ビルド2288 jobs、公理監査2263宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内617モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -535,4 +548,9 @@ B5 の古典 nerve に戻る検査も未完了。
 | `kanTransportBaseFiberTarget_nonempty_iso_of_homMk_eq` | 終点固定の輸送の基底ホモトピー不変性 | 済 |
 | `kanTransportBaseEdge/Vertex`・`kanTransportBaseEdgeVertex_target_val/base_edge` | 実際の cocartesian な辺の終点固定の輸送空間での表示 | 済 |
 | `exists_kanTransportEndVertexIso_of_homMk_eq` | 基底の辺の h の等式から元の終点 fiber 内の同型 | 済 |
-| `RightKanConeTransport.coneFamily_iso_of_homMk_eq`・`isRightKanExtension_iff_of_homMk_eq` | 指定自然変換の h での等式に対する右比較錐の同型と右 Kan 条件の不変性 | 済・左側は未完了 |
+| `RightKanConeTransport.coneFamily_iso_of_homMk_eq`・`isRightKanExtension_iff_of_homMk_eq` | 指定自然変換の h での等式に対する右比較錐の同型と右 Kan 条件の不変性 | 済 |
+
+| `kanHomMk_edgeOp_eq_of_eq` | 辺の h での等式の反転による保存 | 済 |
+| `LeftKanCoconeTransport.coconeFamily_opIso_of_homMk_eq`・`isLeftKanExtension_iff_of_homMk_eq` | 指定自然変換の h の等式による左比較余錐の反転同型と左 Kan 条件の不変性 | 済 |
+| `IsRightKanExtensionHom/IsLeftKanExtensionHom` | h Fun の指定した射に対する左右 Kan 条件 | 済 |
+| `isRightKanExtensionHom_iff_of_representative/isLeftKanExtensionHom_iff_of_representative`・`..._homotopy` | 任意の代表による判定と元の点ごとの定義との一致 | 済 |

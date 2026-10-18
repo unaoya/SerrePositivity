@@ -1169,3 +1169,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.exists_kanTransportEndVertexIso_of_homMk_eq
 #check @SerrePositivity.InfinityCategories.RightKanConeTransport.coneFamily_iso_of_homMk_eq
 #check @SerrePositivity.InfinityCategories.isRightKanExtension_iff_of_homMk_eq
+
+#check @SerrePositivity.InfinityCategories.kanHomMk_edgeOp_eq_of_eq
+#check @SerrePositivity.InfinityCategories.LeftKanCoconeTransport.coconeFamily_opIso_of_homMk_eq
+#check @SerrePositivity.InfinityCategories.isLeftKanExtension_iff_of_homMk_eq
+#check @SerrePositivity.InfinityCategories.IsRightKanExtensionHom
+#check @SerrePositivity.InfinityCategories.IsLeftKanExtensionHom
+#check @SerrePositivity.InfinityCategories.isRightKanExtensionHom_iff_of_representative
+#check @SerrePositivity.InfinityCategories.isLeftKanExtensionHom_iff_of_representative
+#check @SerrePositivity.InfinityCategories.isRightKanExtensionHom_homotopy
+#check @SerrePositivity.InfinityCategories.isLeftKanExtensionHom_homotopy
