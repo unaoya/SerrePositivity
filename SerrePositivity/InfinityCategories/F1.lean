@@ -19,3 +19,5 @@ public import SerrePositivity.InfinityCategories.F1.FunctorFiber
 public import SerrePositivity.InfinityCategories.F1.LiftEndpoint
 public import SerrePositivity.InfinityCategories.F1.TransportChoices
 public import SerrePositivity.InfinityCategories.F1.TransportComparison
+public import SerrePositivity.InfinityCategories.F1.TransportWitness
+public import SerrePositivity.InfinityCategories.F1.TransportHo

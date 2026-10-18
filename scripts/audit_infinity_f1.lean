@@ -102,3 +102,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.transportAtChoice_vertex
 #check @SerrePositivity.InfinityCategories.transportAtChoice_witness
 #check @SerrePositivity.InfinityCategories.transportAtChoiceIso
+#check @SerrePositivity.InfinityCategories.IsCocartesianTransport
+#check @SerrePositivity.InfinityCategories.transportChoiceOfPrism
+#check @SerrePositivity.InfinityCategories.transportChoiceOfPrism_lift
+#check @SerrePositivity.InfinityCategories.transportAtChoice_ofPrism
+#check @SerrePositivity.InfinityCategories.IsCocartesianTransport.functorIso
+#check @SerrePositivity.InfinityCategories.cocartesianTransport
+#check @SerrePositivity.InfinityCategories.cocartesianTransport_isTransport
+#check @SerrePositivity.InfinityCategories.cocartesianTransportHo
+#check @SerrePositivity.InfinityCategories.IsCocartesianTransport.toHoIso

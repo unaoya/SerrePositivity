@@ -394,5 +394,63 @@ noncomputable def transportAtChoiceIso {X B : SSet.{u}} (p : X ⟶ B)
     [CocartesianFibration p] (e : B _⦋1⦌) (x y : (transportChoiceSpace p e) _⦋0⦌) :
     FunctorIso (transportAtChoice p e x) (transportAtChoice p e y)
 
+
+def IsCocartesianTransport {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (F : vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e)) : Prop
+
+noncomputable def transportChoiceOfPrism {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (B.δ 1 e) ⟶ X)
+    (h₀ : prismEndpoint 0 _ ≫ H = vertexFiberι p (B.δ 1 e))
+    (hb : H ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm e)
+    (hc : ∀ v : (vertexFiber p (B.δ 1 e)) _⦋0⦌, IsCocartesianEdge p
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1))) :
+    (transportChoiceSpace p e) _⦋0⦌
+
+lemma transportChoiceOfPrism_lift {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (B.δ 1 e) ⟶ X)
+    (h₀ : prismEndpoint 0 _ ≫ H = vertexFiberι p (B.δ 1 e))
+    (hb : H ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm e)
+    (hc : ∀ v : (vertexFiber p (B.δ 1 e)) _⦋0⦌, IsCocartesianEdge p
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1))) :
+    (transportChoiceLift p e (transportChoiceOfPrism p e H h₀ hb hc)).val ≫
+      cocartesianPathι p = curry H
+
+lemma transportAtChoice_ofPrism {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (F : vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e))
+    (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (B.δ 1 e) ⟶ X)
+    (h₀ : prismEndpoint 0 _ ≫ H = vertexFiberι p (B.δ 1 e))
+    (h₁ : prismEndpoint 1 _ ≫ H = F ≫ vertexFiberι p (B.δ 0 e))
+    (hb : H ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm e)
+    (hc : ∀ v : (vertexFiber p (B.δ 1 e)) _⦋0⦌, IsCocartesianEdge p
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1))) :
+    transportAtChoice p e (transportChoiceOfPrism p e H h₀ hb hc) = F
+
+lemma IsCocartesianTransport.functorIso {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌)
+    {F G : vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e)}
+    (hF : IsCocartesianTransport p e F) (hG : IsCocartesianTransport p e G) :
+    Nonempty (FunctorIso F G)
+
+noncomputable def cocartesianTransport {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌) :
+    vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e)
+
+lemma cocartesianTransport_isTransport {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌) :
+    IsCocartesianTransport p e (cocartesianTransport p e)
+
+noncomputable def cocartesianTransportHo {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌) :
+    hoFunctor.obj (vertexFiber p (B.δ 1 e)) ⥤ hoFunctor.obj (vertexFiber p (B.δ 0 e))
+
+lemma IsCocartesianTransport.toHoIso {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌)
+    {F : vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e)}
+    (hF : IsCocartesianTransport p e F) :
+    Nonempty ((hoFunctor.map F).toFunctor ≅ cocartesianTransportHo p e)
+
 end SerrePositivity.InfinityCategories
 ```
