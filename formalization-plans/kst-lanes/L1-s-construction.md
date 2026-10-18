@@ -111,5 +111,31 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-次は L1b。第一行制限およびその trivial Kan fibration は未証明。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド1995 jobs、累計59宣言の監査。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `firstRowNerve` | `(n : ℕ) → SSet.{u}`、`nerve (ULift (Fin n))` |
+| `firstRowRestriction` | `(n : ℕ) → (C : SSet.{u}) → (sConstruction n C ⟶ (ihom (firstRowNerve n)).obj C)` |
+| `firstRowSimplexIso` | `(n : ℕ) → ((Δ[n] : SSet.{u}) ≅ firstRowNerve (n+1))` |
+| `gappedDiagram` | `(v : (sConstruction n C) _⦋0⦌) → (arNerve n ⟶ C)` |
+| `gappedDiagram_isGapped` | `(v : (sConstruction n C) _⦋0⦌) → IsGapped (gappedDiagram v)` |
+| `zeroChoices` | `(C : SSet.{u}) → C.Subcomplex`、全零対象の充満部分複体 |
+| `zeroChoices_isContractibleKan` | `(C : SSet.{u}) → [HasZeroVertex C] → IsContractibleKan (zeroChoices C : SSet.{u})` |
+| `exists_zeroChoices_extension` | `[HasZeroVertex C] → (i : A ⟶ B) → [Mono i] → (f : A ⟶ (zeroChoices C : SSet.{u})) → ∃ F, i ≫ F = f` |
+| `zeroFrameDiagrams` | `(n : ℕ) → (C : SSet.{u}) → SSet.{u}`、`frameNerve n` の全図式のうち全対角が零対象となる充満部分複体 |
+| `zeroFrameProjection` | `(n : ℕ) → (C : SSet.{u}) → (zeroFrameDiagrams n C ⟶ (ihom (framePositiveRow n : SSet.{u})).obj C)` |
+| `zeroFrameProjection_trivialKanFibration` | `(n : ℕ) → (C : SSet.{u}) → [HasZeroVertex C] → TrivialKanFibration (zeroFrameProjection n C)` |
+
+`FrameAr n` は Ar[n] の「左端0または対角」の順序部分型、`frameNerve n` はその nerve、
+`framePositiveRow n` は対角(0,0)を除く第一行の全部分複体。
+`frameChain_diagonal_endpoint`・`frameNerve_diagonal_endpoint` は、その第一行の順序凸性と、
+新しい鎖がどちらかの端点に対角を持つことを証明する。
+`exists_extension_of_initial_or_terminal_endpoints`、`frame_extend_boundary`、
+`exists_extension_with_vertices`、`zeroFrame_extend_boundary` は相対拡張の補助定理。
+全公開宣言の展開された型・前提を監査スクリプトで検査する。
+
+零対角の射影の trivial Kan fibration は無条件の相対境界証明であり、quasicategory 性・安定性を仮定しない。
+ただし **gapped 条件の cofiber 補完段階は未証明**。したがって
+`firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
 L1c–f は未着手。L1g は別途指示待ち。

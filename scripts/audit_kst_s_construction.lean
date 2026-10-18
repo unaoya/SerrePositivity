@@ -2,11 +2,29 @@ import SerrePositivity.KST.SConstruction
 
 /-!
 概要：S• 構成の公開宣言の型と公理を監査する。
-方針：各宣言を #check / #print axioms で検査する。
+方針：型の検査と公理一覧を各宣言について出力する。
 規約：propext・Classical.choice・Quot.sound のみ許可。
 使われ方：BGT §7 に対応する保存単位の検証。
 -/
 
+#check @SerrePositivity.KST.SConstruction.firstRowNerve
+#print axioms SerrePositivity.KST.SConstruction.firstRowNerve
+#check @SerrePositivity.KST.SConstruction.firstRowOrder
+#print axioms SerrePositivity.KST.SConstruction.firstRowOrder
+#check @SerrePositivity.KST.SConstruction.firstRowInclusion
+#print axioms SerrePositivity.KST.SConstruction.firstRowInclusion
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction
+#check @SerrePositivity.KST.SConstruction.gappedDiagram
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram
+#check @SerrePositivity.KST.SConstruction.gappedDiagram_isGapped
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram_isGapped
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_vertex
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_vertex
+#check @SerrePositivity.KST.SConstruction.firstRowSimplexIso
+#print axioms SerrePositivity.KST.SConstruction.firstRowSimplexIso
+#check @SerrePositivity.KST.SConstruction.frame_extend_boundary
+#print axioms SerrePositivity.KST.SConstruction.frame_extend_boundary
 #check @SerrePositivity.KST.SConstruction.Ar
 #print axioms SerrePositivity.KST.SConstruction.Ar
 #check @SerrePositivity.KST.SConstruction.arObj
@@ -59,3 +77,51 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.sMap_comp
 #check @SerrePositivity.KST.SConstruction.simplicialSConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplicialSConstruction
+#check @SerrePositivity.KST.SConstruction.exists_extension_with_vertices
+#print axioms SerrePositivity.KST.SConstruction.exists_extension_with_vertices
+#check @SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints
+#print axioms SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints
+#check @SerrePositivity.KST.SConstruction.zeroChoices
+#print axioms SerrePositivity.KST.SConstruction.zeroChoices
+#check @SerrePositivity.KST.SConstruction.zeroChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.zeroChoices_isContractibleKan
+#check @SerrePositivity.KST.SConstruction.zeroChoices_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.zeroChoices_kanComplex
+#check @SerrePositivity.KST.SConstruction.exists_zeroChoices_extension
+#print axioms SerrePositivity.KST.SConstruction.exists_zeroChoices_extension
+#check @SerrePositivity.KST.SConstruction.IsDiagonal
+#print axioms SerrePositivity.KST.SConstruction.IsDiagonal
+#check @SerrePositivity.KST.SConstruction.IsPositiveRow
+#print axioms SerrePositivity.KST.SConstruction.IsPositiveRow
+#check @SerrePositivity.KST.SConstruction.positiveRow_orderConvex
+#print axioms SerrePositivity.KST.SConstruction.positiveRow_orderConvex
+#check @SerrePositivity.KST.SConstruction.positiveRow_of_frame_not_diagonal
+#print axioms SerrePositivity.KST.SConstruction.positiveRow_of_frame_not_diagonal
+#check @SerrePositivity.KST.SConstruction.frameChain_diagonal_endpoint
+#print axioms SerrePositivity.KST.SConstruction.frameChain_diagonal_endpoint
+#check @SerrePositivity.KST.SConstruction.FrameAr
+#print axioms SerrePositivity.KST.SConstruction.FrameAr
+#check @SerrePositivity.KST.SConstruction.frameForgetOrder
+#print axioms SerrePositivity.KST.SConstruction.frameForgetOrder
+#check @SerrePositivity.KST.SConstruction.frameNerve
+#print axioms SerrePositivity.KST.SConstruction.frameNerve
+#check @SerrePositivity.KST.SConstruction.framePositiveRow
+#print axioms SerrePositivity.KST.SConstruction.framePositiveRow
+#check @SerrePositivity.KST.SConstruction.frameNerve_diagonal_endpoint
+#print axioms SerrePositivity.KST.SConstruction.frameNerve_diagonal_endpoint
+#check @SerrePositivity.KST.SConstruction.zeroFrame_extend_boundary
+#print axioms SerrePositivity.KST.SConstruction.zeroFrame_extend_boundary
+#check @SerrePositivity.KST.SConstruction.IsZeroFrameVertex
+#print axioms SerrePositivity.KST.SConstruction.IsZeroFrameVertex
+#check @SerrePositivity.KST.SConstruction.zeroFrameDiagrams
+#print axioms SerrePositivity.KST.SConstruction.zeroFrameDiagrams
+#check @SerrePositivity.KST.SConstruction.zeroFrameProjection
+#print axioms SerrePositivity.KST.SConstruction.zeroFrameProjection
+#check @SerrePositivity.KST.SConstruction.diagonal_not_positiveRow
+#print axioms SerrePositivity.KST.SConstruction.diagonal_not_positiveRow
+#check @SerrePositivity.KST.SConstruction.diagonal_not_mem_framePositiveRow
+#print axioms SerrePositivity.KST.SConstruction.diagonal_not_mem_framePositiveRow
+#check @SerrePositivity.KST.SConstruction.exists_zeroFrame_extension
+#print axioms SerrePositivity.KST.SConstruction.exists_zeroFrame_extension
+#check @SerrePositivity.KST.SConstruction.zeroFrameProjection_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.zeroFrameProjection_trivialKanFibration
