@@ -5,6 +5,9 @@ public import SerrePositivity.KST.Descent.Transfer
 public import SerrePositivity.KST.Descent.RationalFixedPoints
 public import SerrePositivity.KST.Descent.PiComparison
 public import SerrePositivity.KST.Descent.DiagramTransfer
+public import SerrePositivity.KST.Descent.PresheafBaseChange
+public import SerrePositivity.KST.Descent.PresheafAugmentation
+public import SerrePositivity.KST.Descent.CechTransferRetract
 public import SerrePositivity.KST.Descent.InvariantExactness
 public import SerrePositivity.KST.Descent.PresheafAction
 public import SerrePositivity.KST.Descent.InvariantsHomology
@@ -181,6 +184,10 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 実際の二重 Čech の各対象のファイバー積表示と、全単体射を保つ軸交換の自然同型を公開する。
 同じ基底上の平行な細分比較の実際の Čech ホモトピーを構成し、
 相互細分の指定比較の両合成と恒等射の間のホモトピー、および同じ前層の像を公開する。
+
+元の前層の実際の底変換 pullback と、自然な transfer・局所 rank 公式から、
+基底の値を含む指定 Čech 増強比較の retract を構成する。
+任意の図式関手での像と全次数観測の同型への移行も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

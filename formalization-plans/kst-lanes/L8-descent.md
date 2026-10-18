@@ -87,10 +87,12 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 軸交換の自然同型を構成した。値域の Tot の Fubini は引き続き未完である。
 同じ基底上の平行な Čech 細分比較の間の実際の単体ホモトピーを構成した。
 相互細分の指定比較は両側のホモトピー逆を持ち、元の前層の像にもホモトピーを移した。
+元の前層の実際の底変換から自然な pullback を構成し、自然な transfer と局所 rank 公式から
+基底の値を含む指定 Čech 増強比較の retract を構成した（§44）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 111 モジュール・1350 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 114 モジュール・1401 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -587,6 +589,11 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `refinementCechMap_id`、`refinementCechMap_comp` | 指定細分比較の恒等射・合成の保存 | 対象ビルド済み |
 | `refinementCechHomotopyLeftInverse`、`refinementCechHomotopyRightInverse` | 相互細分の両側のホモトピー逆 | 対象ビルド済み、持ち上げの合成が恒等である仮定は不要 |
 | `refinementCechImageHomotopyLeftInverse`、`refinementCechImageHomotopyRightInverse` | 元の前層の像における両側のホモトピー | 対象ビルド済み、Tot の実降下とは区別 |
+| `baseChangePresheafPullback`、`baseChangePresheafPullback_at_base` | 元の前層の実際の底変換の自然な pullback と基底での比較 | 対象ビルド済み、実際の二射影を使用 |
+| `BaseChangeTransfer.retract` | 自然な transfer と局所 rank 公式からの前層 retract | 対象ビルド済み、transfer の存在は明示入力 |
+| `presheafAugmentationComparison`、`BaseChangeTransfer.augmentationRetract` | 基底の値を含む指定増強の自然性と retract | 対象ビルド済み、全ての図式射を保持 |
+| `BaseChangeTransfer.cechAugmentationRetract` | 実際の Čech 増強比較の矢の圏の retract | 対象ビルド済み、Tot はまだ接続しない |
+| `BaseChangeTransfer.piCechComparison_of_transfer` | 図式関手での像の全次数比較の移行 | 対象ビルド済み、実際の観測関手は明示入力 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1393,3 +1400,32 @@ Comma の二射影による極限の共同反映でこれを証明した。
 Tot の実降下や任意の細分の降下保存を、この結果だけで結論してはいない。
 L9 の実際の Tot・hG とその性質、Fubini、transfer の自然な図式、
 実降下からの自然な列・有限積保存、最小公理全体・(3.6)・K0・T2・E の接続は残る。
+
+
+## 44. 元の前層の実際の底変換と Čech transfer retract
+
+固定した f : X → Y に対し、Over Y の底変換関手は Z → Y を Z ×_Y X → Y に写す。
+元の反変前層をこの関手で制限して `baseChangedPresheaf` を構成した。
+Over の底変換随伴の余単位を元の前層で写すことで、全ての基底変更とその射に自然な
+`baseChangePresheafPullback` を得る。その成分は実際の第一射影の引き戻しである。
+基底自身の底変換と X の標準同型も、現在選択された引き戻しの二射影から直接構成した。
+この同型のもとで基底での pullback は元の f の引き戻しと一致する。
+
+`BaseChangeTransfer` は底変換後から元への自然変換を保持する。
+これは公理 (4) の自然性部分の入力であり、有限平坦 transfer の存在や射影公式の証明ではない。
+局所自明化後の正の rank について rank 公式が与えられると、有理数で正規化して
+前層そのものの retract を構成する。一般の有限平坦射に大域的な定数 rank 公式を仮定してはいない。
+
+基底上の任意の図式について、その構造射から指定増強を作り、前層についての自然性を証明した。
+この自然性により前層 retract は増強比較の矢の圏の retract へ移る。
+実際の Čech nerve の指定増強を Over の構造射にした図式へ適用し、
+`BaseChangeTransfer.cechAugmentationRetract` を得た。増強先の基底の値も同時に含む。
+任意の図式関手で写しても retract は保たれ、底変換後の比較が全次数観測で同型なら
+元の指定比較も全次数で同型となる。
+
+この結果だけで補題 3.2 の実降下が完成したとはしない。
+底変換後の係数図式と底変換した被覆の Čech 図式との増強を保つ自然同型、
+L9 の実際の Tot・π_*・hG とホモトピー不変性、Fubini・分裂降下を接続する必要がある。
+値域を有理線形圏として扱える実際の実現も別途必要で、L9 のスペクトル圏の線形性を仮定しない。
+有限平坦 transfer 自体、射影公式、自然な blowup 列と有限積保存の実降下からの導出、
+最小公理全体・(3.6)・K0・T2・E の接続は残る。
