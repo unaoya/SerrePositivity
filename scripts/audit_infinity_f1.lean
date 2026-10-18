@@ -2442,3 +2442,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.smallLeftUnstraighteningIso_projection
 #check @SerrePositivity.InfinityCategories.smallLeftUnstraighteningProjection_leftFibration
 #check @SerrePositivity.InfinityCategories.smallLeftUnstraighteningObject
+#check @SerrePositivity.InfinityCategories.vertexFiberTotalIso
+#check @SerrePositivity.InfinityCategories.uliftMorphismDown_lift
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.downOfKan
+#check @SerrePositivity.InfinityCategories.smallLeftUnstraighteningFiberIso
+#check @SerrePositivity.InfinityCategories.smallLeftUnstraighteningLiftedFiberValueEquivalence
+#check @SerrePositivity.InfinityCategories.smallLeftUnstraighteningFiberValueEquivalence

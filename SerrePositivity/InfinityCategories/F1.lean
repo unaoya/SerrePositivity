@@ -593,3 +593,6 @@ public import SerrePositivity.InfinityCategories.F1.SmallSimplicialSet
 public import SerrePositivity.InfinityCategories.F1.UniverseLeftFibrationReflection
 public import SerrePositivity.InfinityCategories.F1.SmallFibration
 public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraightening
+public import SerrePositivity.InfinityCategories.F1.VertexFiberTotalIso
+public import SerrePositivity.InfinityCategories.F1.UniverseEquivalenceDescent
+public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningFiber

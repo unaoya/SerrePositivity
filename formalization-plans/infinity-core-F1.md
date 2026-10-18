@@ -11900,5 +11900,34 @@ instance smallLeftUnstraighteningProjection_leftFibration {B : SSet.{u}}
 noncomputable def smallLeftUnstraighteningObject {B : SSet.{u}}
     (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : LeftFibrationObject B
 
+def vertexFiberTotalIso {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B)
+    (e : E ≅ F) (he : e.hom ≫ q = p) (b : B _⦋0⦌) : vertexFiber p b ≅ vertexFiber q b
+
+lemma uliftMorphismDown_lift {X Y : SSet.{u}}
+    (f : (SSet.uliftFunctor.{v, u}).obj X ⟶ (SSet.uliftFunctor.{v, u}).obj Y) :
+    (SSet.uliftFunctor.{v, u}).map (uliftMorphismDown f) = f
+
+noncomputable def QCatEquivalence.downOfKan {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
+    (e : QCatEquivalence ((SSet.uliftFunctor.{v, u}).obj X)
+      ((SSet.uliftFunctor.{v, u}).obj Y)) : QCatEquivalence X Y
+
+noncomputable def smallLeftUnstraighteningFiberIso {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (c : B _⦋0⦌) :
+    (SSet.uliftFunctor.{u + 1, u}).obj
+        (vertexFiber (smallLeftUnstraighteningProjection F) c) ≅
+      vertexFiber (leftUnstraighteningProjection F) (ULift.up c)
+
+noncomputable def smallLeftUnstraighteningLiftedFiberValueEquivalence {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (c : B _⦋0⦌) :
+    QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj
+      (vertexFiber (smallLeftUnstraighteningProjection F) c))
+      ((SSet.uliftFunctor.{u + 1, u}).obj
+        (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up c))).obj)
+
+noncomputable def smallLeftUnstraighteningFiberValueEquivalence {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (c : B _⦋0⦌) :
+    QCatEquivalence (vertexFiber (smallLeftUnstraighteningProjection F) c)
+      (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up c))).obj
+
 end SerrePositivity.InfinityCategories
 ```
