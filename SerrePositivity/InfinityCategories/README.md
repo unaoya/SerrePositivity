@@ -7431,3 +7431,203 @@ lemma pointedTowerMap_piIsomorphism (X Y : ℕ → PointedSimplicialSet.{u})
 公理監査成功（標準3公理のみ）。新規3ファイルの警告・sorry・追加公理はない。
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-tower-pi-aggregate.log` と `/tmp/gamma3-tower-pi-audit.log`。
+
+
+### γ3c：Sp の段ごとに fibration の塔の実際の ∞ 極限錐
+
+`PointedTowers` は `FibrationTower.limit` の整合族の極限に基点を加え、射影・持ち上げ・
+外延性と通常の極限錐 `pointedTowerCone_isLimit` を構成する。初段が Kan、遷移が fibration
+なら点つき極限も Kan。`LoopTowers` は loop の右随伴性を用いて、極限の loop と loop の塔の
+極限の厳密同型 `loopTowerIso` を構成し、各射影との可換式を証明する。
+
+`SpectrumTowerSequence` は元の Kan 列の塔の段ごとの極限へ懸垂構造射を組み立てる。
+随伴構造射と `loopTowerIso` の合成は各段の随伴構造射が誘導する実際の塔の極限の射に
+厳密に一致する。`SpectrumTowerOmega` は前回の `pointedTowerMap_piIsomorphism` を適用し、
+各元の列の Ω 条件から極限の列の全基点・全自然数次数の Ω 条件を証明した。
+
+構造射の単射性には `SmashJointProjections` を使う。右因子の単体を識別する基点保存射の族は、
+smash の単体も識別する。非基点の組と基点の具体的表示で基点へ潰れる場合も検査する。
+`SpectrumTowerMonomorphisms` は元の全構造射が単射なら極限の構造射も単射であることを証明。
+この単射性の証明自体には、遷移の fibration 性や Ω 条件を使わない。
+
+`SpectrumTowers` の `spectrumTower X d` は、各段を置換せず、上の Kan 性・単射性・Ω 条件で
+L9 の Ω スペクトルに束ねた実際の極限対象である。射影を通常の錐にまとめ、各スペクトル段で
+点つき極限の普遍性を検証し、既存の全切断の族の定理で全ての実際の豊穣 Hom の極限性を得る。
+隣接遷移の Hom の fibration 性には既存の `spectrumHomMap_fibration` を適用した。
+
+主要定理 `spectrumTowerInfinityCone_isLimit` の前提は、
+`X : ℕ → OmegaSpectrum`、`d : ∀ n, X (n+1) ⟶ X n` と
+`[∀ n k, Fibration ((d n).app k).right]` のみ。
+結論は `IsLimitCone (spectrumTowerInfinityCone X d)`。
+添字は `AsSmall ℕᵒᵖ`、通常図式は `AsSmall.down ⋙ Functor.ofOpSequence d`、
+錐の頂点は実際の `spectrumTower X d` である。
+Hom の極限性や追加の比較同値・Ω 条件を前提に置かない。
+
+これにより、γ3c で指定された 𝒮 と Sp の有限積・一脚 fibration の引き戻し・fibration の塔は、
+いずれも実際の対象と錐について ∞ 極限錐であることが揃った。
+γ3 全体は継続中。非反転の元の比較射の導来 fiber と反転比較との直接の橋渡し、
+余極限側、E2a 完了後の E2b 適用は引き続き未完了。
+原典：Goerss–Jardine I §§7–8、BF 1978 §2、HA §1.4.2、HTT A.3.3、HTT 4.2.4.1 の双対。
+
+新規35公開宣言の正確な型・全前提（名前空間
+`SerrePositivity.InfinityCategories.HomotopyLimits`）：
+
+```lean
+def pointedTowerLimit (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) : PointedSimplicialSet.{u}
+
+instance pointedTowerLimit_kanComplex (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) [∀ n, Fibration (d n).right] [KanComplex (X 0).right] :
+    KanComplex (pointedTowerLimit X d).right
+
+def pointedTowerProjection (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) (n : ℕ) : pointedTowerLimit X d ⟶ X n
+
+lemma pointedTowerProjection_comp (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) (n : ℕ) :
+    pointedTowerProjection X d (n + 1) ≫ d n = pointedTowerProjection X d n
+
+def pointedTowerLift {A : PointedSimplicialSet.{u}} (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) (f : ∀ n, A ⟶ X n)
+    (hf : ∀ n, f (n + 1) ≫ d n = f n) : A ⟶ pointedTowerLimit X d
+
+lemma pointedTowerLift_projection {A : PointedSimplicialSet.{u}}
+    (X : ℕ → PointedSimplicialSet.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    (f : ∀ n, A ⟶ X n) (hf : ∀ n, f (n + 1) ≫ d n = f n) (n : ℕ) :
+    pointedTowerLift X d f hf ≫ pointedTowerProjection X d n = f n
+
+lemma pointedTowerLimit_hom_ext {A : PointedSimplicialSet.{u}}
+    (X : ℕ → PointedSimplicialSet.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    {f g : A ⟶ pointedTowerLimit X d}
+    (h : ∀ n, f ≫ pointedTowerProjection X d n = g ≫ pointedTowerProjection X d n) : f = g
+
+def pointedTowerCone (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) : Cone (Functor.ofOpSequence d)
+
+def pointedTowerCone_isLimit (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) : IsLimit (pointedTowerCone X d)
+
+def loopTowerCone (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) :
+    Cone (Functor.ofOpSequence d ⋙
+      PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u})
+
+def loopTowerCone_isLimit (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) : IsLimit (loopTowerCone X d)
+
+def loopTowerIso (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) :
+    loopSpace (pointedTowerLimit X d) ≅
+      pointedTowerLimit (fun n ↦ loopSpace (X n))
+        (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (d n))
+
+lemma loopTowerIso_hom_projection (X : ℕ → PointedSimplicialSet.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) (n : ℕ) :
+    (loopTowerIso X d).hom ≫ pointedTowerProjection _ _ n =
+      PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pointedTowerProjection X d n)
+
+def towerSequenceSigma (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
+    suspension (pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k)) ⟶
+      pointedTowerLimit (fun n ↦ ((X n).level (k + 1)).space) (fun n ↦ (d n).app (k + 1))
+
+def towerKanSequence (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
+    [∀ n k, Fibration ((d n).app k).right] : KanSequence.{u}
+
+def towerKanSequenceProjection (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
+    [∀ n k, Fibration ((d n).app k).right] (n : ℕ) :
+    KanSequence.Hom (towerKanSequence X d) (X n)
+
+def towerSequenceAdjointMap (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
+    pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) ⟶
+      pointedTowerLimit (fun n ↦ loopSpace ((X n).level (k + 1)).space)
+        (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} ((d n).app (k + 1)))
+
+lemma towerSequenceSigma_adjoint (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
+    suspensionLoopEquiv _ _ (towerSequenceSigma X d k) ≫
+        (loopTowerIso (fun n ↦ ((X n).level (k + 1)).space)
+          (fun n ↦ (d n).app (k + 1))).hom = towerSequenceAdjointMap X d k
+
+lemma towerSequenceAdjointMap_piIsomorphism (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
+    [∀ n k, Fibration ((d n).app k).right]
+    (hX : ∀ n, (X n).OmegaCondition) (k : ℕ) :
+    KanPiIsomorphism (towerSequenceAdjointMap X d k).right
+
+lemma towerKanSequence_omega (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
+    [∀ n k, Fibration ((d n).app k).right]
+    (hX : ∀ n, (X n).OmegaCondition) : (towerKanSequence X d).OmegaCondition
+
+lemma smashSimplexPack_eq_of_family {A B : Type u} {J : Type v} {C : J → Type u}
+    (a₀ : A) (b₀ : B) (c₀ : ∀ i, C i) (f : ∀ i, B → C i)
+    (hf : ∀ i, f i b₀ = c₀ i) (hinj : Function.Injective (fun b ↦ fun i ↦ f i b))
+    (a a' : A) (b b' : B)
+    (h : ∀ i, smashSimplexPack a₀ (c₀ i) a (f i b) =
+      smashSimplexPack a₀ (c₀ i) a' (f i b')) :
+    smashSimplexPack a₀ b₀ a b = smashSimplexPack a₀ b₀ a' b'
+
+lemma smashMap_jointlyInjective {J : Type v} (A B : PointedSimplicialSet.{u})
+    (C : J → PointedSimplicialSet.{u}) (f : ∀ i, B ⟶ C i) (m : SimplexCategoryᵒᵖ)
+    (hf : Function.Injective (fun b ↦ fun i ↦ (f i).right.app m b))
+    (s t : (PointedObject.smash A B).right.obj m)
+    (h : ∀ i, (PointedObject.smashMap (𝟙 A) (f i)).right.app m s =
+      (PointedObject.smashMap (𝟙 A) (f i)).right.app m t) : s = t
+
+lemma towerSequenceSigma_app_injective (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
+    (hmono : ∀ n k, Mono ((X n).sigma k).right) (k : ℕ) (m : SimplexCategoryᵒᵖ) :
+    Function.Injective ((towerSequenceSigma X d k).right.app m)
+
+lemma towerSequenceSigma_mono (X : ℕ → KanSequence.{u})
+    (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
+    (hmono : ∀ n k, Mono ((X n).sigma k).right) (k : ℕ) :
+    Mono (towerSequenceSigma X d k).right
+
+def spectrumTower (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    [∀ n k, Fibration ((d n).app k).right] : OmegaSpectrum.{u}
+
+def spectrumTowerProjection (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    [∀ n k, Fibration ((d n).app k).right] (n : ℕ) : spectrumTower X d ⟶ X n
+
+lemma spectrumTowerProjection_comp (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    [∀ n k, Fibration ((d n).app k).right] (n : ℕ) :
+    spectrumTowerProjection X d (n + 1) ≫ d n = spectrumTowerProjection X d n
+
+def spectrumTowerOrdinaryCone (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    [∀ n k, Fibration ((d n).app k).right] : Cone (Functor.ofOpSequence d)
+
+def spectrumTowerOrdinaryCone_level_isLimit (X : ℕ → OmegaSpectrum.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (k : ℕ) :
+    IsLimit ((spectrumLevelFunctor k).mapCone (spectrumTowerOrdinaryCone X d))
+
+def spectrumTowerDiagram (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n) :
+    AsSmall.{u} ℕᵒᵖ ⥤ OmegaSpectrum.{u}
+
+def spectrumTowerCone (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    [∀ n k, Fibration ((d n).app k).right] : Cone (spectrumTowerDiagram X d)
+
+def spectrumTowerCone_level_isLimit (X : ℕ → OmegaSpectrum.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (k : ℕ) :
+    IsLimit (spectrumLevelCone (spectrumTowerCone X d) k)
+
+def spectrumTowerCone_hom_isLimit (X : ℕ → OmegaSpectrum.{u})
+    (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (Z : OmegaSpectrum.{u}) :
+    IsLimit (simplicialHomCone (spectrumTowerCone X d) Z)
+
+def spectrumTowerInfinityCone (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    [∀ n k, Fibration ((d n).app k).right] :
+    JoinCone (strictCoherentDiagram (spectrumTowerDiagram X d))
+
+lemma spectrumTowerInfinityCone_isLimit (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
+    [∀ n k, Fibration ((d n).app k).right] : IsLimitCone (spectrumTowerInfinityCone X d)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4660 jobs）、公開1307宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規7ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-towers-aggregate.log` と `/tmp/gamma3-spectrum-towers-audit.log`。
