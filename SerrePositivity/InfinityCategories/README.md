@@ -2203,7 +2203,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開707宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開714宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2831,7 +2831,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開707宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開714宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3744,6 +3744,52 @@ uliftOppositeIso (X : SSet.{u}) :
 Kan 性の下では可逆な二胞体の逆を使い、反転した逆射の両合成を恒等射と比較する。
 これは Kerodon §4.6.7 の左右の Hom の移送の補助段階であり、
 左 coslice の係数図式への実際の自然比較と元の q_x への接続は引き続き未完了。
+
+### 反転した豊穣 Hom から左 coslice fiber への比較（実装済み）
+
+`CoherentLeftHomComparison` は `C : Type v`、`[Category.{u} C]`、
+`[SimplicialCategory C]`、`x y : C` に対して次の実際の射を構成する。
+
+```lean
+coherentOppositeRightHomComparison (x y : C) :
+  (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x y) ⟶
+    pinchedHom (X := (SimplicialNerve C).op)
+      (SSet.opObjEquiv.symm (coherentNerveVertex y))
+      (SSet.opObjEquiv.symm (coherentNerveVertex x))
+coherentLeftHomComparison (x y : C) :
+  (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x y).op ⟶
+    pinchedHomLeft (coherentNerveVertex x) (coherentNerveVertex y)
+coherentCosliceFiberComparison (x y : C) :
+  (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x y).op ⟶
+    vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+      (coherentNerveVertex y)
+```
+
+まず Cᵒᵖ の対象 op(y), op(x) に標準の `coherentHomComparison` を適用する。
+その後 `coherentNerveOppositeInverse C` が誘導する右 Hom の射を合成し、
+`coherentOppositeHomEndpointIso x y` で二端点を厳密に移す。
+この射全体を反転し、`uliftOppositeIso` と `pinchedLeftCosliceFiberIso` で
+始域と終域を同定する。射の定義には Kan 性もホモトピー逆の選択も必要ない。
+
+`[∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]` の下で、三つの射はそれぞれ
+
+```lean
+coherentOppositeRightHomComparison_homotopyEquivalence (x y : C) :
+  IsSimplicialHomotopyEquivalence (coherentOppositeRightHomComparison x y)
+coherentLeftHomComparison_homotopyEquivalence (x y : C) :
+  IsSimplicialHomotopyEquivalence (coherentLeftHomComparison x y)
+coherentCosliceFiberComparison_homotopyEquivalence (x y : C) :
+  IsSimplicialHomotopyEquivalence (coherentCosliceFiberComparison x y)
+```
+
+を満たす。反対 nerve の逆射は同型なので、その右 Hom の射は trivial Kan fibration。
+F1 の標準比較の同値性とこれを合成し、Kan ホモトピー同値の反転による保存を使う。
+左 coslice fiber の Kan 性も左 Hom との厳密な同型から移す。
+
+これは Kerodon §4.6.7 と HTT 4.2.4.1 の係数比較の各値の段階である。
+始域の反転は明示的で、元の sHom と同じ図式とは扱わない。
+添字圏の射・高次整合性を含む係数図式全体への自然比較と、元の q_x との接続は未完了。
+したがって γ3b と 𝒮・Sp の残りの適用は引き続き未完了である。
 
 ### 𝒮 の空積（実装済み）
 

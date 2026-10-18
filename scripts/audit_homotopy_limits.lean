@@ -1419,3 +1419,17 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms oppositeKanHomotopyEquivalence
 #check @uliftOppositeIso
 #print axioms uliftOppositeIso
+#check @coherentOppositeHomEndpointIso
+#print axioms coherentOppositeHomEndpointIso
+#check @coherentOppositeRightHomComparison
+#print axioms coherentOppositeRightHomComparison
+#check @coherentOppositeRightHomComparison_homotopyEquivalence
+#print axioms coherentOppositeRightHomComparison_homotopyEquivalence
+#check @coherentLeftHomComparison
+#print axioms coherentLeftHomComparison
+#check @coherentLeftHomComparison_homotopyEquivalence
+#print axioms coherentLeftHomComparison_homotopyEquivalence
+#check @coherentCosliceFiberComparison
+#print axioms coherentCosliceFiberComparison
+#check @coherentCosliceFiberComparison_homotopyEquivalence
+#print axioms coherentCosliceFiberComparison_homotopyEquivalence

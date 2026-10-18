@@ -139,3 +139,4 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentDoubleOp
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentReverseInvolution
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentOppositeIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentLeftHomComparison
