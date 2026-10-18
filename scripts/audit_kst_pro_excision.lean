@@ -1223,3 +1223,78 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.ProExcision.actionBarComparison_naturality
 #check @SerrePositivity.KST.ProExcision.propA1ComparisonIso_naturality
 #print axioms SerrePositivity.KST.ProExcision.propA1ComparisonIso_naturality
+
+#check @SerrePositivity.KST.ProExcision.actionNerveWordCoordinates
+#print axioms SerrePositivity.KST.ProExcision.actionNerveWordCoordinates
+#check @SerrePositivity.KST.ProExcision.actionNerveWordCoordinates_injective
+#print axioms SerrePositivity.KST.ProExcision.actionNerveWordCoordinates_injective
+#check @SerrePositivity.KST.ProExcision.actionNerveWordEquiv
+#print axioms SerrePositivity.KST.ProExcision.actionNerveWordEquiv
+#check @SerrePositivity.KST.ProExcision.actionNerveWordSection
+#print axioms SerrePositivity.KST.ProExcision.actionNerveWordSection
+#check @SerrePositivity.KST.ProExcision.actionNerveWordSection_source
+#print axioms SerrePositivity.KST.ProExcision.actionNerveWordSection_source
+#check @SerrePositivity.KST.ProExcision.actionNerveWordSection_projection
+#print axioms SerrePositivity.KST.ProExcision.actionNerveWordSection_projection
+#check @SerrePositivity.KST.ProExcision.setActionBarProjection
+#print axioms SerrePositivity.KST.ProExcision.setActionBarProjection
+#check @SerrePositivity.KST.ProExcision.setActionBarFiberSection
+#print axioms SerrePositivity.KST.ProExcision.setActionBarFiberSection
+#check @SerrePositivity.KST.ProExcision.setActionBarFiberSection_projection
+#print axioms SerrePositivity.KST.ProExcision.setActionBarFiberSection_projection
+#check @SerrePositivity.KST.ProExcision.setActionBarFiberSection_source
+#print axioms SerrePositivity.KST.ProExcision.setActionBarFiberSection_source
+#check @SerrePositivity.KST.ProExcision.barWordFacePrefix
+#print axioms SerrePositivity.KST.ProExcision.barWordFacePrefix
+#check @SerrePositivity.KST.ProExcision.setActionBarFiberSection_naturality
+#print axioms SerrePositivity.KST.ProExcision.setActionBarFiberSection_naturality
+#check @SerrePositivity.KST.ProExcision.setActionBarFiberSection_reconstruct
+#print axioms SerrePositivity.KST.ProExcision.setActionBarFiberSection_reconstruct
+#check @SerrePositivity.KST.ProExcision.setActionBar_map_source
+#print axioms SerrePositivity.KST.ProExcision.setActionBar_map_source
+#check @SerrePositivity.KST.ProExcision.setActionBar_map_projection
+#print axioms SerrePositivity.KST.ProExcision.setActionBar_map_projection
+#check @SerrePositivity.KST.ProExcision.integerLinearizationDesc
+#print axioms SerrePositivity.KST.ProExcision.integerLinearizationDesc
+#check @SerrePositivity.KST.ProExcision.integerLinearizationDesc_generator
+#print axioms SerrePositivity.KST.ProExcision.integerLinearizationDesc_generator
+#check @SerrePositivity.KST.ProExcision.linearizedSetAction
+#print axioms SerrePositivity.KST.ProExcision.linearizedSetAction
+#check @SerrePositivity.KST.ProExcision.linearizedActionBarFiber
+#print axioms SerrePositivity.KST.ProExcision.linearizedActionBarFiber
+#check @SerrePositivity.KST.ProExcision.linearizedActionBarFiber_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedActionBarFiber_naturality
+
+#check @SerrePositivity.KST.ProExcision.EquivariantLinearizedCylinderMap
+#print axioms SerrePositivity.KST.ProExcision.EquivariantLinearizedCylinderMap
+#check @SerrePositivity.KST.ProExcision.linearizedActionBarCylinderApp
+#print axioms SerrePositivity.KST.ProExcision.linearizedActionBarCylinderApp
+#check @SerrePositivity.KST.ProExcision.linearizedActionBarCylinderApp_generator
+#print axioms SerrePositivity.KST.ProExcision.linearizedActionBarCylinderApp_generator
+#check @SerrePositivity.KST.ProExcision.linearizedActionBarCylinderMap
+#print axioms SerrePositivity.KST.ProExcision.linearizedActionBarCylinderMap
+
+#check @SerrePositivity.KST.ProExcision.integerTensorIso_inv_generator
+#print axioms SerrePositivity.KST.ProExcision.integerTensorIso_inv_generator
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₀_generator
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₀_generator
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₁_generator
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₁_generator
+#check @SerrePositivity.KST.ProExcision.setActionBarMap_projection
+#print axioms SerrePositivity.KST.ProExcision.setActionBarMap_projection
+#check @SerrePositivity.KST.ProExcision.setActionBarFiberSection_map
+#print axioms SerrePositivity.KST.ProExcision.setActionBarFiberSection_map
+#check @SerrePositivity.KST.ProExcision.linearizedActionBarCylinder_endpoint_generator
+#print axioms SerrePositivity.KST.ProExcision.linearizedActionBarCylinder_endpoint_generator
+#check @SerrePositivity.KST.ProExcision.linearizedActionBarMHomotopy
+#print axioms SerrePositivity.KST.ProExcision.linearizedActionBarMHomotopy
+#check @SerrePositivity.KST.ProExcision.SimplicialHomologyModel
+#print axioms SerrePositivity.KST.ProExcision.SimplicialHomologyModel
+#check @SerrePositivity.KST.ProExcision.SimplicialHomologyModel.map_eq_of_mHomotopy
+#print axioms SerrePositivity.KST.ProExcision.SimplicialHomologyModel.map_eq_of_mHomotopy
+#check @SerrePositivity.KST.ProExcision.HomologicallyMConstant
+#print axioms SerrePositivity.KST.ProExcision.HomologicallyMConstant
+#check @SerrePositivity.KST.ProExcision.lemmaA4_absolute
+#print axioms SerrePositivity.KST.ProExcision.lemmaA4_absolute
+#check @SerrePositivity.KST.ProExcision.lemmaA4
+#print axioms SerrePositivity.KST.ProExcision.lemmaA4

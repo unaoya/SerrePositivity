@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと440宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと476宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -62,7 +62,9 @@
 - `coefficientBisimplicialBarComparison`：bar 次数と係数次数を分けた二重単体的比較を構成。対角は元の比較と一致する。各行の始域は H^r×G^r と同型。
 - Prop A.1 の幾何的模型は完了：`coefficientBarRowComparison_eq_sweep` で行の比較と有限合成を同定し、各行・対角・実際の `actionBarComparison` の anodyne 局所化可逆性を証明。
 - `propA1ComparisonIso` は anodyne 射を反転する任意の借用関手 F に対する実際の同型。F(E_BH G) と H_i(G;C(H)) の模型同定は H_* の所有レーンの界面。同変射に関する同型の自然性も証明。
-- L6c の残作業：Lemma A.4 の同変 m 次ホモトピーの bar への持ち上げと相対項の零化、A.5 の AW・shuffle 比較。A.1 と A.6 の H_* の具体模型への特殊化は所有レーンの界面。
+- Lemma A.4 は借用する H_* の界面に対して完了：`HomologicallyMConstant` は Definition A.3 の入力データだけを保持し、線形な区間写像の bar への持ち上げ、その m 次両端条件、複体の低次数比較、A.1 の自然性、相対余核の零化を実際に証明。
+- `SimplicialHomologyModel` は任意の対象の複体模型同型と全ての射の自然性を入力する明示的な H_* の界面であり、A.4 の結論や bar の持ち上げは仮定しない。
+- L6c の残作業：A.5 の AW・shuffle 比較。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -89,6 +91,11 @@
 | propA1ComparisonIso | PropA1.lean | 検証済み | 借用関手 F に対する原典 (A.2) の模型の同型 |
 | propA1ComparisonIso_naturality | PropA1Naturality.lean | 検証済み | 同変係数射についての自然性 |
 | coefficientBarRowComparison_eq_sweep | BarRowComparison.lean | 検証済み | 行の比較と指定座標作用の有限合成の一致 |
+| lemmaA4 | LemmaA4.lean | 検証済み | 同変な m 次ホモトピーから相対項の零化、借用 H_* の界面つき |
+| lemmaA4_absolute | LemmaA4.lean | 検証済み | 半直積の絶対項で自明射と一致 |
+| linearizedActionBarMHomotopy | LinearizedBarMHomotopy.lean | 検証済み | 同変 m 次ホモトピーの bar への線形な持ち上げ |
+| linearizedActionBarCylinderMap | LinearizedBarCylinder.lean | 検証済み | 任意の単体射に自然な線形区間写像 |
+| SimplicialHomologyModel | HomologyModel.lean | 界面 | 所有レーンの H_* と複体ホモロジーとの自然同型 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |
 | LevelHom | Pro.lean | 検証済み | 同じ添字上の可換な射 |
 | IsProIso | Pro.lean | 検証済み | eventual inverse の二つの三角形 |

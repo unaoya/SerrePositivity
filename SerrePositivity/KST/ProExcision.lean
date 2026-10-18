@@ -73,3 +73,13 @@ public import SerrePositivity.KST.ProExcision.BarRowComparison
 public import SerrePositivity.KST.ProExcision.DiagonalFlip
 public import SerrePositivity.KST.ProExcision.PropA1
 public import SerrePositivity.KST.ProExcision.PropA1Naturality
+public import SerrePositivity.KST.ProExcision.ActionNerveWord
+public import SerrePositivity.KST.ProExcision.ActionBarFibers
+public import SerrePositivity.KST.ProExcision.IntegerLinearizationDesc
+public import SerrePositivity.KST.ProExcision.LinearizedActionBarFibers
+public import SerrePositivity.KST.ProExcision.LinearizedBarCylinder
+public import SerrePositivity.KST.ProExcision.LinearizedEndpoints
+public import SerrePositivity.KST.ProExcision.ActionBarFiberMap
+public import SerrePositivity.KST.ProExcision.LinearizedBarMHomotopy
+public import SerrePositivity.KST.ProExcision.HomologyModel
+public import SerrePositivity.KST.ProExcision.LemmaA4
