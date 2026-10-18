@@ -1463,3 +1463,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteOneFiberComparison_ι
 #check @SerrePositivity.InfinityCategories.IsLeftScaffold.finiteZeroFiber_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteOneFiberComparison_isPrecompositionEquivalence_iff
+#check @SerrePositivity.InfinityCategories.thinNerve_hom_ext_vertices
+#check @SerrePositivity.InfinityCategories.thinNerve_hom_ext_horn
+#check @SerrePositivity.InfinityCategories.thinNerve_innerFibration
+#check @SerrePositivity.InfinityCategories.stdSimplexTarget_innerFibration

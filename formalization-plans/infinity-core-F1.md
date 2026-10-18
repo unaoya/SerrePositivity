@@ -6645,5 +6645,19 @@ lemma scaffoldFiniteOneFiberComparison_isPrecompositionEquivalence_iff
     IsPrecompositionEquivalence (scaffoldFiniteOneFiberComparison n p F l h) ↔
       IsPrecompositionEquivalence (leftScaffoldBaseChange p F l h (scaffoldFiniteTail n))
 
+lemma thinNerve_hom_ext_vertices {C : Type u} [Category.{u} C] [Quiver.IsThin C]
+    {X : SSet.{u}} {f g : X ⟶ nerve C}
+    (h : f.app (Opposite.op ⦋0⦌) = g.app (Opposite.op ⦋0⦌)) : f = g
+
+lemma thinNerve_hom_ext_horn {C : Type u} [Category.{u} C] [Quiver.IsThin C]
+    (n : ℕ) (i : Fin (n + 3)) {f g : (Δ[n + 2] : SSet.{u}) ⟶ nerve C}
+    (h : (horn (n + 2) i).ι ≫ f = (horn (n + 2) i).ι ≫ g) : f = g
+
+instance thinNerve_innerFibration {C : Type u} [Category.{u} C] [Quiver.IsThin C]
+    {X : SSet.{u}} [Quasicategory X] (p : X ⟶ nerve C) : InnerFibration p
+
+instance stdSimplexTarget_innerFibration {X : SSet.{u}} [Quasicategory X]
+    (n : ℕ) (p : X ⟶ (Δ[n] : SSet.{u})) : InnerFibration p
+
 end SerrePositivity.InfinityCategories
 ```
