@@ -2351,5 +2351,43 @@ noncomputable def coherentResolutionComparisonNat : 𝟭 SSet.{u} ⟶ coherentRe
 instance coherentResolutionComparison_mono (X : SSet.{u}) :
     Mono (coherentResolutionComparison X)
 
+def CoherentResolutionFlag.support {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    Finset (Fin (n + 1))
+
+lemma CoherentResolutionFlag.sets_subset_support {n d : ℕ}
+    (F : CoherentResolutionFlag n d) (k : Fin (d + 1)) : F.sets k ⊆ F.support
+
+lemma CoherentResolutionFlag.support_pullback_subset {n d e : ℕ}
+    (F : CoherentResolutionFlag n d) (α : Fin (e + 1) →o Fin (d + 1)) :
+    (F.pullback α).support ⊆ F.support
+
+lemma CoherentResolutionFlag.support_pushforward {n m d : ℕ}
+    (F : CoherentResolutionFlag n d) (β : Fin (n + 1) →o Fin (m + 1)) :
+    (F.pushforward β).support = F.support.image β
+
+lemma CoherentResolutionFlag.pushforward_injective {n m d : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
+    Function.Injective (fun F : CoherentResolutionFlag n d ↦ F.pushforward β)
+
+lemma coherentResolutionMap_mono {n m : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
+    Mono (coherentResolutionMap.{u} β)
+
+noncomputable def CoherentResolutionFlag.preimage {n m d : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β)
+    (F : CoherentResolutionFlag m d)
+    (hs : ∀ k ∈ F.support, k ∈ Set.range β) : CoherentResolutionFlag n d
+
+lemma CoherentResolutionFlag.preimage_pushforward {n m d : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β)
+    (F : CoherentResolutionFlag m d) (hs : ∀ k ∈ F.support, k ∈ Set.range β) :
+    (CoherentResolutionFlag.preimage β hβ F hs).pushforward β = F
+
+lemma CoherentResolutionFlag.mem_range_pushforward_iff {n m d : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β)
+    (F : CoherentResolutionFlag m d) :
+    F ∈ Set.range (fun G : CoherentResolutionFlag n d ↦ G.pushforward β) ↔
+      ∀ k ∈ F.support, k ∈ Set.range β
+
 end SerrePositivity.InfinityCategories
 ```

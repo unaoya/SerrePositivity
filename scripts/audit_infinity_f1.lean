@@ -534,3 +534,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentHomComparison_flagIso
 #check @SerrePositivity.InfinityCategories.coherentResolutionComparisonNat
 #check @SerrePositivity.InfinityCategories.coherentResolutionComparison_mono
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.support
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.sets_subset_support
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.support_pullback_subset
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.support_pushforward
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pushforward_injective
+#check @SerrePositivity.InfinityCategories.coherentResolutionMap_mono
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.preimage
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.preimage_pushforward
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.mem_range_pushforward_iff
