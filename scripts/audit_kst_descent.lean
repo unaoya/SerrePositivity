@@ -111,6 +111,7 @@ run_cmd do
       `SerrePositivity.KST.Descent.IrreducibleComponents,
       `SerrePositivity.KST.Descent.DominatingComponent,
       `SerrePositivity.KST.Descent.ComponentFlatRefinement,
+      `SerrePositivity.KST.Descent.GenericFiniteFlattening,
       `SerrePositivity.KST.Descent.ComponentSplit,
       `SerrePositivity.KST.Descent.ComponentRemainderCover,
       `SerrePositivity.KST.Descent.FiberTransitivityNaturality,

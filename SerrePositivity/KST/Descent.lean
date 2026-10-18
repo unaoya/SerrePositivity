@@ -83,6 +83,7 @@ public import SerrePositivity.KST.Descent.ClosedCoverDescent
 public import SerrePositivity.KST.Descent.IrreducibleComponents
 public import SerrePositivity.KST.Descent.DominatingComponent
 public import SerrePositivity.KST.Descent.ComponentFlatRefinement
+public import SerrePositivity.KST.Descent.GenericFiniteFlattening
 public import SerrePositivity.KST.Descent.ComponentSplit
 public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
@@ -200,6 +201,8 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 局所 Noether 基底で平坦なら有限忠実平坦な細分を取り出す。
 既約基底への固有全射から基底を支配する被約既約成分を選び、その成分の平坦化後の
 有限忠実平坦被覆を元の射の底変換へ細分する射も構成する。
+Noether 整域上の有限加群を非零元の局所化で自由にし、実際の全チャートの純変換を
+平坦にする中心の存在へ接続する。スキームの strict transform との同定は残す。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
 中心の台を用いる抽象 blowup 正方形も構成する。
 元の値域の線形性を使わず、実際の図式関手の像における観測後の rank 公式で
