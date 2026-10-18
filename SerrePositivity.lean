@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Descent
 public import SerrePositivity.KST.Comparison
 public import SerrePositivity.InfinityCategories.DGNerve
 public import SerrePositivity.InfinityCategories.Derived
