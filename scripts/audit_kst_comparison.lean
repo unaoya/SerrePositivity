@@ -101,6 +101,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -225,6 +226,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidBarLoopFamily
 #print axioms SerrePositivity.KST.Comparison.monoidBarLoopFamily
+
+
+-- BarFundamentalComparison.lean
+
+#check @SerrePositivity.KST.Comparison.monoidBarFundamentalEquiv
+#print axioms SerrePositivity.KST.Comparison.monoidBarFundamentalEquiv
+
+#check @SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv
+#print axioms SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv
 
 
 -- BarLocalizedEquivalence.lean
@@ -2093,6 +2103,48 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.hatGLBar
 
 
+-- GroupCompletionBasepoint.lean
+
+#check @SerrePositivity.KST.Comparison.monoidUnitMap
+#print axioms SerrePositivity.KST.Comparison.monoidUnitMap
+
+#check @SerrePositivity.KST.Comparison.monoidBarEdgeAt_unit
+#print axioms SerrePositivity.KST.Comparison.monoidBarEdgeAt_unit
+
+#check @SerrePositivity.KST.Comparison.monoidBarEdgeMap_unit
+#print axioms SerrePositivity.KST.Comparison.monoidBarEdgeMap_unit
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap_restriction_ι
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_restriction_ι
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap_unit
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_unit
+
+
+-- GroupCompletionHomotopy.lean
+
+#check @SerrePositivity.KST.Comparison.monoidPointed
+#print axioms SerrePositivity.KST.Comparison.monoidPointed
+
+#check @SerrePositivity.KST.Comparison.exists_groupCompletionKanExtension
+#print axioms SerrePositivity.KST.Comparison.exists_groupCompletionKanExtension
+
+#check @SerrePositivity.KST.Comparison.groupCompletionKanMap
+#print axioms SerrePositivity.KST.Comparison.groupCompletionKanMap
+
+#check @SerrePositivity.KST.Comparison.groupCompletionKanMap_fac
+#print axioms SerrePositivity.KST.Comparison.groupCompletionKanMap_fac
+
+#check @SerrePositivity.KST.Comparison.groupCompletionKanMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.groupCompletionKanMap_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.pointedKanHomotopyEquivOfLocalizedIso
+#print axioms SerrePositivity.KST.Comparison.pointedKanHomotopyEquivOfLocalizedIso
+
+#check @SerrePositivity.KST.Comparison.monoidBarHomotopyEquiv
+#print axioms SerrePositivity.KST.Comparison.monoidBarHomotopyEquiv
+
+
 -- GroupCompletionPathIdentity.lean
 
 #check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap_path
@@ -2610,6 +2662,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.coprodMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.coprodMap_localized_isIso
+
+
+-- LocalizedHomotopyComparison.lean
+
+#check @SerrePositivity.KST.Comparison.kanPiIsomorphism_of_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.kanPiIsomorphism_of_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.kanHomotopyEquivOfLocalizedIso
+#print axioms SerrePositivity.KST.Comparison.kanHomotopyEquivOfLocalizedIso
 
 
 -- LocalizedPushoutCube.lean

@@ -119,6 +119,8 @@ public import SerrePositivity.KST.Comparison.StableHatGL
 
 public import SerrePositivity.KST.Comparison.StableGLComponents
 
+public import SerrePositivity.KST.Comparison.BarFundamentalComparison
+
 /-!
 # K-L2：比較定理の入口
 

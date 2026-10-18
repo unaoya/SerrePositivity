@@ -903,14 +903,17 @@ Segal Proposition 1.5 の群状モノイドの比較部分は完了。
 行列のブロック和の積・単位保存と係数環への自然性を証明し、有限 rank の ĜL の安定化の自然変換を構成した。
 実際の安定 ĜL の順序余極限、零単体の有限段階の代表による群状性、標準群完備化写像の局所化可逆性を証明した。
 成分モノイド関手の定数関手への左随伴性を証明し、実際の誘導乗法を保つ安定成分の GL(π₀A) との同型を構成した。
-KST Lemma 2.13 の具体的な π_n の同型への接続は残る。
+標準群完備化写像が単位を定数ループへ送ることを全次数で証明した。
+Kan 置換への厳密な延長と局所化可逆性から、K-L9 の全自然数次数のホモトピー類の delooping 同値を構成した。
+安定 GL(π₀A) と BĜL の基本群の台集合の全単射を構成した。
+KST Lemma 2.13 の基本群の群演算との整合、および高次の行列公式の接続は残る。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 1112 宣言の型と公理を確認した。
-さらに名前空間全体の 2021 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 1128 宣言の型と公理を確認した。
+さらに名前空間全体の 2044 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -1166,3 +1169,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `SimplicialMonoid.componentsFunctor`、`componentsConstAdjunction` | 実装済み | 成分モノイドと定数単体的モノイドの随伴 |
 | `hatGLInducedComponentsEquiv`、`hatGLRankComponentsIso` | 実装済み | 誘導乗法の有限比較と安定化の自然性 |
 | `stableGeneralLinear`、`stableHatGLComponentsIso` | 実装済み | 実際の安定 rank の余極限と π₀ĜL ≅ GL(π₀A) |
+
+| `monoidGroupCompletionMap_unit` | 実装済み | 標準写像が単位を定数ループへ送る |
+| `kanPiIsomorphism_of_localized_isIso` | 実装済み | Kan 複体間の比較から K-L9 の全ホモトピー類へ |
+| `groupCompletionKanMap`、`groupCompletionKanMap_fac` | 実装済み | 元の標準写像に厳密に一致する Kan 延長 |
+| `monoidBarHomotopyEquiv` | 実装済み | 群状モノイドの Kan 模型の π_n と BM の π_(n+1) |
+| `monoidBarFundamentalEquiv`、`stableHatGLBarFundamentalEquiv` | 実装済み | 実際の成分、安定 GL と基本群の台集合の全単射 |
