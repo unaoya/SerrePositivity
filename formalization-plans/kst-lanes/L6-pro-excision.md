@@ -75,7 +75,9 @@
 - テンソル後の隣接商境界は、元の商境界のテンソルと左シフト比較の合成であることを証明済み。
 - 全テンソル後にも、一項模型での境界は元の微分のテンソルに一致すると複体射として証明済み。
 - 平坦な左テンソルのホモロジー比較について、係数加群の射に関する自然性を証明済み。
-- 次は一項テンソルのシフト比較の係数自然性と合わせ、初頁のホモロジー上の係数微分へ接続する。
+- 次数零と一般次数の一項テンソルのシフト比較について、係数射に関する自然性を証明済み。
+- 一項テンソルのホモロジー同型についても、同じ次数の係数射が f ⊗ H(K) へ移ることを証明済み。
+- 次は隣接二次数の境界に対するシフトの整合性と合わせ、初頁微分全体へ接続する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -157,6 +159,8 @@
 | adjacentTensorGradeBoundary_eq | TensorGradeBoundary.lean | 検証済み | 全テンソルと隣接商境界の比較 |
 | adjacentTensorGradeBoundary_single | TensorGradeBoundary.lean | 検証済み | 一項模型でのテンソル微分との一致 |
 | flatLeftTensorHomologyIso_map | CoefficientHomology.lean | 検証済み | 平坦テンソルの係数射についてのホモロジー自然性 |
+| singleTensorShiftIso_coefficient | SingleTensorNaturality.lean | 検証済み | 一項テンソルのシフト比較の係数自然性 |
+| singleTensorHomologyIso_coefficient | SingleTensorNaturality.lean | 検証済み | 一項ホモロジー比較の係数自然性 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

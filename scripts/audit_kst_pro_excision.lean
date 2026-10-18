@@ -497,3 +497,15 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.flatLeftTensorHomologyIso_map
 #print axioms SerrePositivity.KST.ProExcision.flatLeftTensorHomologyIso_map
+
+#check @SerrePositivity.KST.ProExcision.singleZeroTensorIso_inv_naturality
+#print axioms SerrePositivity.KST.ProExcision.singleZeroTensorIso_inv_naturality
+
+#check @SerrePositivity.KST.ProExcision.singleZeroTensorIso_hom_naturality
+#print axioms SerrePositivity.KST.ProExcision.singleZeroTensorIso_hom_naturality
+
+#check @SerrePositivity.KST.ProExcision.singleTensorShiftIso_coefficient
+#print axioms SerrePositivity.KST.ProExcision.singleTensorShiftIso_coefficient
+
+#check @SerrePositivity.KST.ProExcision.singleTensorHomologyIso_coefficient
+#print axioms SerrePositivity.KST.ProExcision.singleTensorHomologyIso_coefficient
