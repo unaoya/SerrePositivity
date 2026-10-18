@@ -11929,5 +11929,76 @@ noncomputable def smallLeftUnstraighteningFiberValueEquivalence {B : SSet.{u}}
     QCatEquivalence (vertexFiber (smallLeftUnstraighteningProjection F) c)
       (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up c))).obj
 
+noncomputable def smallSimplicialMap {X Y : SSet.{max u v}}
+    [∀ n, Small.{u} (X.obj n)] [∀ n, Small.{u} (Y.obj n)] (f : X ⟶ Y) :
+    smallSimplicialSet.{u, v} X ⟶ smallSimplicialSet.{u, v} Y
+
+lemma smallSimplicialMap_ulift {X Y : SSet.{max u v}}
+    [∀ n, Small.{u} (X.obj n)] [∀ n, Small.{u} (Y.obj n)] (f : X ⟶ Y) :
+    (SSet.uliftFunctor.{v, u}).map (smallSimplicialMap f) =
+      (smallSimplicialSetIso X).hom ≫ f ≫ (smallSimplicialSetIso Y).inv
+
+lemma smallSimplicialMap_naturality {X Y : SSet.{max u v}}
+    [∀ n, Small.{u} (X.obj n)] [∀ n, Small.{u} (Y.obj n)] (f : X ⟶ Y) :
+    (SSet.uliftFunctor.{v, u}).map (smallSimplicialMap f) ≫ (smallSimplicialSetIso Y).hom =
+      (smallSimplicialSetIso X).hom ≫ f
+
+lemma smallSimplicialMap_id (X : SSet.{max u v}) [∀ n, Small.{u} (X.obj n)] :
+    smallSimplicialMap.{u, v} (𝟙 X) = 𝟙 (smallSimplicialSet X)
+
+lemma smallSimplicialMap_comp {X Y Z : SSet.{max u v}}
+    [∀ n, Small.{u} (X.obj n)] [∀ n, Small.{u} (Y.obj n)] [∀ n, Small.{u} (Z.obj n)]
+    (f : X ⟶ Y) (g : Y ⟶ Z) :
+    smallSimplicialMap.{u, v} (f ≫ g) = smallSimplicialMap f ≫ smallSimplicialMap g
+
+noncomputable def smallLeftUnstraighteningMap {B D : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (α : B ⟶ D) (h : (SSet.uliftFunctor.{u + 1, u}).map α ≫ G = F) :
+    smallLeftUnstraightening F ⟶ smallLeftUnstraightening G
+
+lemma smallLeftUnstraighteningMap_naturality {B D : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (α : B ⟶ D) (h : (SSet.uliftFunctor.{u + 1, u}).map α ≫ G = F) :
+    (SSet.uliftFunctor.{u + 1, u}).map (smallLeftUnstraighteningMap F G α h) ≫
+      (smallLeftUnstraighteningIso G).hom =
+    (smallLeftUnstraighteningIso F).hom ≫
+      leftUnstraighteningMap F G ((SSet.uliftFunctor.{u + 1, u}).map α) h
+
+lemma smallLeftUnstraighteningMap_projection {B D : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (α : B ⟶ D) (h : (SSet.uliftFunctor.{u + 1, u}).map α ≫ G = F) :
+    smallLeftUnstraighteningMap F G α h ≫ smallLeftUnstraighteningProjection G =
+      smallLeftUnstraighteningProjection F ≫ α
+
+lemma smallLeftUnstraighteningMap_isPullback {B D : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (α : B ⟶ D) (h : (SSet.uliftFunctor.{u + 1, u}).map α ≫ G = F) :
+    IsPullback (smallLeftUnstraighteningMap F G α h) (smallLeftUnstraighteningProjection F)
+      (smallLeftUnstraighteningProjection G) α
+
+noncomputable def smallLeftUnstraighteningBaseChangeIso {B D : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    smallLeftUnstraightening ((SSet.uliftFunctor.{u + 1, u}).map k ≫ F) ≅
+      pullback (smallLeftUnstraighteningProjection F) k
+
+lemma smallLeftUnstraighteningMap_id {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    smallLeftUnstraighteningMap F F (𝟙 B) (by simp) = 𝟙 (smallLeftUnstraightening F)
+
+lemma smallLeftUnstraighteningMap_comp {B D E : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (H : (SSet.uliftFunctor.{u + 1, u}).obj E ⟶ SpaceInfinity.{u})
+    (α : B ⟶ D) (β : D ⟶ E)
+    (hα : (SSet.uliftFunctor.{u + 1, u}).map α ≫ G = F)
+    (hβ : (SSet.uliftFunctor.{u + 1, u}).map β ≫ H = G) :
+    smallLeftUnstraighteningMap F H (α ≫ β)
+        (by rw [Functor.map_comp, Category.assoc, hβ, hα]) =
+      smallLeftUnstraighteningMap F G α hα ≫ smallLeftUnstraighteningMap G H β hβ
+
 end SerrePositivity.InfinityCategories
 ```
