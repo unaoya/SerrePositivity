@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・146 モジュール 2275 宣言の公理監査成功。
+対象ビルド・153 モジュール 2346 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1574,3 +1574,33 @@ Kan 複体の正次数では、ホモトピー類の等式と境界固定ホモ�
 保存単位の対象ビルド 2346 jobs 成功。
 私有宣言を含む 146 モジュール 2275 宣言で標準三公理のみ。
 L9d は進行中。次はこれらの相対ホモトピーを球面の商へ降ろし、写像空間の連結成分と比較する。
+
+
+## 54. L9d の球面と円からの写像空間の成分の計算
+
+境界固定の単体ホモトピーを、球面の cofiber の積の pushout に沿って降ろした。
+写像空間の頂点と点つき射の同値、辺と基点固定ホモトピーの相互変換を構成した。
+Kan 複体の同じ成分の二頂点を一つの辺で結び、成分の等式と点つきホモトピーの存在を比較した。
+これにより球面からの写像空間の π₀ と通常の正次数のホモトピー群の集合の同値を証明した。
+
+円の Kan 置換の単位への制限は anodyne な源の置換なので、同じ比較を Kan 置換した円へ移した。
+指定基本類の像による表示と一致し、powerMap m の前合成がすべての成分で m 乗になる。
+球面と円の成分比較は標的の点つき射について自然である。
+内部 Hom の交換についても最初の源の制限自然性を二重評価により証明した。
+高次群での powerMap の作用と有理化の対象の完成はまだ主張しない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SphereSimplex.homotopy` / `.pullHomotopy` | 球面の商と境界固定ホモトピーの往復 |
+| `PointedMapping.familyVertexEquiv` | 実際の点つき射と写像空間の頂点の同値 |
+| `PointedMapping.edgeOfHomotopy` / `.homotopyOfEdge` | 基点固定ホモトピーと写像空間の辺の比較 |
+| `PointedMapping.piZero_eq_iff_pointedHomotopy` | 成分の等式と基点固定ホモトピーの存在の同値 |
+| `SphereSimplex.componentEquiv` / `.componentClass_natural` | 球面からの写像空間の成分と通常のホモトピー群 |
+| `CirclePower.componentEquiv` / `.componentEquiv_pre_power` | 円の Kan 置換の写像空間の成分と冪の作用 |
+| `CirclePower.componentEquiv_natural` | 円の成分比較の標的に関する自然性 |
+| `InternalHomExchange.natural_pre_left` | 交換同型と最初の源の制限の可換性 |
+
+参照：Goerss–Jardine I §7、Kerodon §§3.2.2–3.2.3、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2353 jobs 成功。
+私有宣言を含む 153 モジュール 2346 宣言で標準三公理のみ。
+L9d は進行中。次は loop を値とする写像の群演算と高次ホモトピー群の演算を比較する。
