@@ -197,3 +197,5 @@ public import SerrePositivity.KST.SchemeLemmas.PureTransformBoundaryComparison
 public import SerrePositivity.KST.SchemeLemmas.AdjugateBoundaryGeneration
 public import SerrePositivity.KST.SchemeLemmas.GenericMinorCoefficientCenter
 public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralExtendedPrime
+public import SerrePositivity.KST.SchemeLemmas.FinitePresentationMatrix
+public import SerrePositivity.KST.SchemeLemmas.CoefficientPrimeBoundaryGeneration
