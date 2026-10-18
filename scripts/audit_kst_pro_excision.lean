@@ -2196,3 +2196,33 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.verticalShuffleBoundary_sum
 #print axioms SerrePositivity.KST.ProExcision.verticalShuffleBoundary_sum
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffleFace_map
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffleFace_map
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffleFace_map
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffleFace_map
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_sign
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_sign
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.verticalFace_sign
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.verticalFace_sign
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffleWeight
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffleWeight
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffleWeight
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffleWeight
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffleWeight_equiv
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffleWeight_equiv
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffleWeight_equiv
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffleWeight_equiv
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffle_sum
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffle_sum
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffle_sum
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffle_sum

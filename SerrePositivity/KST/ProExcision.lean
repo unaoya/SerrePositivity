@@ -120,3 +120,5 @@ public import SerrePositivity.KST.ProExcision.ShuffleTranspose
 public import SerrePositivity.KST.ProExcision.ShuffleMixedSum
 public import SerrePositivity.KST.ProExcision.ShuffleHorizontalBoundary
 public import SerrePositivity.KST.ProExcision.ShuffleVerticalBoundary
+public import SerrePositivity.KST.ProExcision.ShuffleBoundaryMap
+public import SerrePositivity.KST.ProExcision.ShufflePureSum
