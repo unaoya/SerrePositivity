@@ -54,6 +54,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -397,6 +398,36 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exInfinityUnit
 #print axioms SerrePositivity.KST.Comparison.exInfinityUnit
+
+
+-- ExPairingBijection.lean
+
+#check @SerrePositivity.KST.Comparison.exTypeOne
+#print axioms SerrePositivity.KST.Comparison.exTypeOne
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_mem_typeOne
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_mem_typeOne
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_mem_typeTwo_of_typeOne
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_mem_typeTwo_of_typeOne
+
+#check @SerrePositivity.KST.Comparison.exPairingEquiv
+#print axioms SerrePositivity.KST.Comparison.exPairingEquiv
+
+#check @SerrePositivity.KST.Comparison.exPairingEquiv_apply
+#print axioms SerrePositivity.KST.Comparison.exPairingEquiv_apply
+
+
+-- ExPairingCore.lean
+
+#check @SerrePositivity.KST.Comparison.exPairingCore
+#print axioms SerrePositivity.KST.Comparison.exPairingCore
+
+#check @SerrePositivity.KST.Comparison.exPairingCore_isProper
+#print axioms SerrePositivity.KST.Comparison.exPairingCore_isProper
+
+#check @SerrePositivity.KST.Comparison.exPairing
+#print axioms SerrePositivity.KST.Comparison.exPairing
 
 
 -- ExPairingFaceUniqueness.lean
