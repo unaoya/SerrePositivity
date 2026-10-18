@@ -7,6 +7,7 @@ public import SerrePositivity.InfinityCategories.Stable
 
 public import SerrePositivity.InfinityCategories.Core
 public import SerrePositivity.InfinityCategories.F1
+public import SerrePositivity.InfinityCategories.F1B
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Basic
 public import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
