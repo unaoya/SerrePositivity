@@ -799,5 +799,19 @@ lemma cocartesianTrianglePrism_longEdge {X B A : SSet.{u}} [Quasicategory B]
       (((stdSimplex.δ (1 : Fin 3) ▷ A) ≫ T).app (Opposite.op ⦋1⦌)
         (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1))
 
+lemma IsEdgeTransport.comp {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [InnerFibration p] {a b c : B _⦋0⦌}
+    {e : SSet.Edge (X := B) a b} {f : SSet.Edge (X := B) b c}
+    {g : SSet.Edge (X := B) a c} (σ : SSet.Edge.CompStruct e f g)
+    {F : vertexFiber p a ⟶ vertexFiber p b} {G : vertexFiber p b ⟶ vertexFiber p c}
+    (hF : IsEdgeTransport p e F) (hG : IsEdgeTransport p f G) :
+    IsEdgeTransport p g (F ≫ G)
+
+lemma edgeTransport_composition_iso {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [CocartesianFibration p] {a b c : B _⦋0⦌}
+    {e : SSet.Edge (X := B) a b} {f : SSet.Edge (X := B) b c}
+    {g : SSet.Edge (X := B) a c} (σ : SSet.Edge.CompStruct e f g) :
+    Nonempty (FunctorIso (edgeTransport p g) (edgeTransport p e ≫ edgeTransport p f))
+
 end SerrePositivity.InfinityCategories
 ```

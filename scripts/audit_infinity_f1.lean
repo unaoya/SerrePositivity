@@ -181,3 +181,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.trianglePrism_endpoint_zero
 #check @SerrePositivity.InfinityCategories.innerFibration_fillTrianglePrism
 #check @SerrePositivity.InfinityCategories.cocartesianTrianglePrism_longEdge
+#check @SerrePositivity.InfinityCategories.IsEdgeTransport.comp
+#check @SerrePositivity.InfinityCategories.edgeTransport_composition_iso

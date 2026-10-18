@@ -41,3 +41,4 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTriangleRestricti
 public import SerrePositivity.InfinityCategories.F1.CocartesianComposition
 public import SerrePositivity.InfinityCategories.F1.TrianglePrism
 public import SerrePositivity.InfinityCategories.F1.CocartesianTrianglePrism
+public import SerrePositivity.InfinityCategories.F1.TransportComposition
