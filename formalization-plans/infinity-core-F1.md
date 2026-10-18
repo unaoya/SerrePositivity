@@ -6981,5 +6981,37 @@ lemma join_hom_ext_innerHorn_of_interval {X Y : SSet.{u}} (n : ℕ) (i : Fin (n 
     (hs0 : 0 < (SSet.yonedaEquiv f).1.val) (hs1 : (SSet.yonedaEquiv f).1.val ≤ n + 2)
     (h : (horn (n + 2) i).ι ≫ f = (horn (n + 2) i).ι ≫ g) : f = g
 
+lemma joinIntervalProjection_inl_isPullback (X Y : SSet.{u}) :
+    IsPullback (joinInl X Y) (stdSimplex.isTerminalObj₀.from X) (joinIntervalProjection X Y)
+      (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+
+lemma joinIntervalProjection_inr_isPullback (X Y : SSet.{u}) :
+    IsPullback (joinInr X Y) (stdSimplex.isTerminalObj₀.from Y) (joinIntervalProjection X Y)
+      (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+
+lemma join_exists_factor_inl_of_interval_zero {K X Y : SSet.{u}} (b : K ⟶ join X Y)
+    (hb : b ≫ joinIntervalProjection X Y = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) :
+    ∃ c : K ⟶ X, c ≫ joinInl X Y = b
+
+lemma join_exists_factor_inr_of_interval_one {K X Y : SSet.{u}} (b : K ⟶ join X Y)
+    (hb : b ≫ joinIntervalProjection X Y = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :
+    ∃ c : K ⟶ Y, c ≫ joinInr X Y = b
+
+lemma joinIntervalProjection_inl (X Y : SSet.{u}) :
+    joinInl X Y ≫ joinIntervalProjection X Y =
+      SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
+lemma joinIntervalProjection_inr (X Y : SSet.{u}) :
+    joinInr X Y ≫ joinIntervalProjection X Y =
+      SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma join_hom_exists_factor_inl_of_cut {X Y : SSet.{u}} {n : ℕ}
+    (b : (Δ[n] : SSet.{u}) ⟶ join X Y) (hb : (SSet.yonedaEquiv b).1.val = n + 1) :
+    ∃ c : (Δ[n] : SSet.{u}) ⟶ X, c ≫ joinInl X Y = b
+
+lemma join_hom_exists_factor_inr_of_cut {X Y : SSet.{u}} {n : ℕ}
+    (b : (Δ[n] : SSet.{u}) ⟶ join X Y) (hb : (SSet.yonedaEquiv b).1.val = 0) :
+    ∃ c : (Δ[n] : SSet.{u}) ⟶ Y, c ≫ joinInr X Y = b
+
 end SerrePositivity.InfinityCategories
 ```

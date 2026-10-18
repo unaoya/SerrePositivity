@@ -1533,3 +1533,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.Join.Simplex.ext_of_extreme_faces
 #check @SerrePositivity.InfinityCategories.join_hom_ext_innerHorn_of_cut
 #check @SerrePositivity.InfinityCategories.join_hom_ext_innerHorn_of_interval
+#check @SerrePositivity.InfinityCategories.joinIntervalProjection_inl_isPullback
+#check @SerrePositivity.InfinityCategories.joinIntervalProjection_inr_isPullback
+#check @SerrePositivity.InfinityCategories.join_exists_factor_inl_of_interval_zero
+#check @SerrePositivity.InfinityCategories.join_exists_factor_inr_of_interval_one
+#check @SerrePositivity.InfinityCategories.joinIntervalProjection_inl
+#check @SerrePositivity.InfinityCategories.joinIntervalProjection_inr
+#check @SerrePositivity.InfinityCategories.join_hom_exists_factor_inl_of_cut
+#check @SerrePositivity.InfinityCategories.join_hom_exists_factor_inr_of_cut
