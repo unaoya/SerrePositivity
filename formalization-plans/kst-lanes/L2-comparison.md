@@ -638,6 +638,15 @@ Segal Proposition 1.6 の無限骨格の段階では、この有限表示可能�
 既証の Lemma 1.8 は独立した比較補題として保持する。
 fat realization と対角の比較の局所化可逆性は、この順序余極限の定理だけでは得られず別途残る。
 
+### fat realization の各行の局所化同型に対する不変性
+
+確認する文言：各行で anodyne 局所化同型である二重単体集合の射は、
+fat realization 全体でも anodyne 局所化同型を誘導する。
+証明方針：各有限骨格の不変性を骨格の順序列の自然変換へ適用する。
+骨格の包含は単射であり、既存の KanSequentialColimitComparison の
+具体的な余錐の比較を、実際の fat realization の包含の余錐へ適用する。
+これは対角への自然な比較の可逆性とは別の主張である。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -810,7 +819,10 @@ mapping cylinder の実対象、底の anodyne な包含、底への収縮の局
 付着の実際の span とその余極限・自然性を構成し、旧骨格と新しい行から次の骨格への比較を証明した。
 各行が Kan fibration の場合、全ての m ≤ n 行から n 骨格へのホモトピー引き戻し性の帰納を完了した。
 各行の局所化同型による有限骨格の不変性を証明し、各行の Kan 性を仮定しない有限骨格の比較へ移した。
-無限骨格の比較と対角への比較の局所化可逆性は未証明。
+上側二つの図式の遷移が単射な順序余極限の四角形のホモトピー引き戻し保存を証明した。
+各行を含む骨格の余終な尾と定数図式に適用し、各行から fat realization 全体への比較を証明した。
+各行の局所化同型に対する fat realization 全体の不変性も証明した。
+対角への比較の局所化可逆性は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -818,8 +830,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 970 宣言の型と公理を確認した。
-さらに名前空間全体の 1782 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 988 宣言の型と公理を確認した。
+さらに名前空間全体の 1805 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -1023,6 +1035,13 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `fatSkeletonRow_homotopyPullback` | 実装済み | 各行の Kan 性の下で全ての有限骨格の行の比較 |
 | `fatSkeletonMap_localized_isIso` | 実装済み | 各行の局所化同型に対する有限骨格の不変性 |
 | `fatSkeletonRow_general_homotopyPullback` | 実装済み | Kan 性を仮定しない全ての有限骨格の行の比較 |
+| `isHomotopyPullback_iff_alternative_fiber` | 実装済み | 任意の厳密なファイバーへの局所化同型による判定 |
+| `sequentialColim_rlp`、`sequentialColim_preservesPullbacks` | 実装済み | 順序余極限の Kan fibration と厳密な引き戻しの保存 |
+| `sequentialFiberComparison_app_localized_isIso` | 実装済み | 図式圏のファイバーへの各成分の比較 |
+| `sequential_homotopyPullback`、`actual_sequential_homotopyPullback` | 実装済み | 単射な順序列のホモトピー引き戻しの実際の余極限への保存 |
+| `fatSkeletonTailCoconeIsColimit`、`fatSkeletonTailRow_map` | 実装済み | 各行を含む骨格の余終な尾の普遍性と自然性 |
+| `fatRealizationInclusion_homotopyPullback` | 実装済み | 各行から fat realization 全体への比較 |
+| `fatRealizationMap_localized_isIso` | 実装済み | 各行の局所化同型に対する全体の不変性 |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

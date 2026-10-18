@@ -94,6 +94,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -152,6 +153,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.actionBarSquare_isHomotopyPullback
 #print axioms SerrePositivity.KST.Comparison.actionBarSquare_isHomotopyPullback
+
+
+-- ActualSequentialComparison.lean
+
+#check @SerrePositivity.KST.Comparison.colimitCoconeIso_naturality
+#print axioms SerrePositivity.KST.Comparison.colimitCoconeIso_naturality
+
+#check @SerrePositivity.KST.Comparison.actual_sequential_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.actual_sequential_homotopyPullback
+
+
+-- AlternativeFiberCriterion.lean
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative_fiber
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative_fiber
 
 
 -- AlternativePullback.lean
@@ -1348,6 +1364,18 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.fatRealizationToDiagonalNatTrans
 
 
+-- FatRealizationHomotopyPullback.lean
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_homotopyPullback
+
+
+-- FatRealizationInvariance.lean
+
+#check @SerrePositivity.KST.Comparison.fatRealizationMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.fatRealizationMap_localized_isIso
+
+
 -- FatRealizationMono.lean
 
 #check @SerrePositivity.KST.Comparison.fatNormalFormMap_injective
@@ -1493,6 +1521,33 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.fatSkeleton_successor_homotopyPullback
 #print axioms SerrePositivity.KST.Comparison.fatSkeleton_successor_homotopyPullback
+
+
+-- FatSkeletonTail.lean
+
+#check @SerrePositivity.KST.Comparison.natTailFunctor
+#print axioms SerrePositivity.KST.Comparison.natTailFunctor
+
+#check @SerrePositivity.KST.Comparison.natTailFunctor_final
+#print axioms SerrePositivity.KST.Comparison.natTailFunctor_final
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonTail
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonTail
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonTailCocone
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonTailCocone
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonTailCoconeIsColimit
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonTailCoconeIsColimit
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonTailMap
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonTailMap
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonTailRow
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonTailRow
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonTailRow_map
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonTailRow_map
 
 
 -- FatSkeletonZero.lean
@@ -2867,6 +2922,30 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.sequenceArrow_homotopyPullback_of_successors
 #print axioms SerrePositivity.KST.Comparison.sequenceArrow_homotopyPullback_of_successors
+
+
+-- SequentialFiberComparison.lean
+
+#check @SerrePositivity.KST.Comparison.sequentialFiberComparison
+#print axioms SerrePositivity.KST.Comparison.sequentialFiberComparison
+
+#check @SerrePositivity.KST.Comparison.sequentialFiberComparison_app_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.sequentialFiberComparison_app_localized_isIso
+
+
+-- SequentialHomotopyPullback.lean
+
+#check @SerrePositivity.KST.Comparison.sequential_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.sequential_homotopyPullback
+
+
+-- SequentialKanColimit.lean
+
+#check @SerrePositivity.KST.Comparison.sequentialColim_rlp
+#print axioms SerrePositivity.KST.Comparison.sequentialColim_rlp
+
+#check @SerrePositivity.KST.Comparison.sequentialColim_preservesPullbacks
+#print axioms SerrePositivity.KST.Comparison.sequentialColim_preservesPullbacks
 
 
 -- SimplexComponents.lean
