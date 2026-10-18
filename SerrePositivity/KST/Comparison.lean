@@ -26,6 +26,7 @@ public import SerrePositivity.KST.Comparison.HornPreimage
 public import SerrePositivity.KST.Comparison.KanAnodyneBaseChange
 public import SerrePositivity.KST.Comparison.KanBasePullback
 public import SerrePositivity.KST.Comparison.HomotopyPullbackInvariance
+public import SerrePositivity.KST.Comparison.ExInfinity
 
 /-!
 # K-L2：比較定理の入口

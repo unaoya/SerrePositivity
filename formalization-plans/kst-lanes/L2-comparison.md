@@ -246,6 +246,17 @@ Kan 基底上で両方の構造射が Kan fibration の場合、左の任意の�
 左射を anodyne–Kan 分解し、二つの縦比較と可換四角形で一般の左射へ戻す。
 これにより、固定した Kan 基底上のホモトピー引き戻し模型は左右両入力の局所化同型で不変となる。
 これは Segal Proposition 1.6 の対角模型の補助であり、原典の fat realization の経路とは異なる。
+非 Kan 基底の比較を進める補助として、有限極限と両立する Kan 置換 Ex∞ を構成する。
+Mathlib の `SSet.sd`、`SSet.ex`、`sdExAdjunction` を使う。
+最終頂点写像 sd(Δ[n])→Δ[n] を有限鎖の最大元で定め、自然変換 id→ex を得る。
+その反復の順序余極限を Ex∞ とする。
+有限極限保存は各 ex の右随伴性と型の filtered colimit の有限極限との交換から証明する。
+Kan 性、単位の anodyne 性、fibration 保存は別々の未証明項目として管理する。
+原典の対応は Moss 2020 §3 Theorem 22、Corollary 30、Proposition 31・32 とする。
+ここに原典を書いたことを、これらの Lean 証明が存在することとは扱わない。
+Segal の位相的 fat realization の証明から、この組合せ的な補助構成を経る点を区別する。
+既に定義した bar、標準群完備化写像、ホモトピー引き戻し模型の界面は変更しない。
+
 Moss 2020 §5 Theorem 42 は strong anodyne 性を regular pairing で証明するが、
 ここでは同命題を引用して済ませず、必要な局所化同型を上記の持ち上げで証明する。
 
@@ -374,14 +385,17 @@ anodyne 包含と基底を固定する実ホモトピーを pushout-product の�
 スライスの閉構造と積・忘却の右随伴を実際に構成し、horn ごとの持ち上げ性を移すことで、一般の anodyne 射の Kan fibration に沿う引き戻しの局所化可逆性を証明した。
 Kan 基底上では局所化可逆な単射の Kan fibration に対する左持ち上げ性、および任意の局所化同型の Kan 引き戻しの可逆性を証明した。
 Kan 基底上の Kan fibration 同士の比較は左の任意の射で引き戻しても可逆となり、固定した Kan 基底上のホモトピー引き戻し模型の左右両入力に関する不変性まで証明した。
+Mathlib の sd–Ex 随伴から、自然な最終頂点写像と各単体での切断、単射な X→Ex(X) を構成した。
+Ex の反復と Ex∞ の実際の余極限関手、標準単位、有限極限保存を証明した。
+Ex∞ の Kan 性・単位の anodyne 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 292 宣言の型と公理を確認した。
-さらに名前空間全体の 683 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 314 宣言の型と公理を確認した。
+さらに名前空間全体の 725 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -444,6 +458,11 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `pullback_localized_isIso_of_kan_base` | 実装済み | Kan 基底上の任意の局所化同型の Kan 引き戻し |
 | `pullbackMapBase_localized_isIso_of_kan_base` | 実装済み | Kan 基底上の Kan fibration の比較の任意の左射による引き戻し |
 | `homotopyPullbackMap_localized_isIso_fixed_kan_base` | 実装済み | 固定した Kan 基底上のホモトピー引き戻しの両入力の不変性 |
+| `subdivisionLastVertex`、`subdivisionVertexSectionAt_lastVertex` | 実装済み | 細分の自然な最終頂点写像と各単体での切断 |
+| `exUnit`、`exUnitAt_mono` | 実装済み | Mathlib Ex への自然な単射 |
+| `exSequence`、`exInfinity`、`exInfinityUnit` | 実装済み | Ex の反復と実際の順序余極限、標準単位 |
+| `exInfinity_preservesFiniteLimits` | 実装済み | filtered colimit と有限極限の交換による保存性 |
+| Ex∞ の Kan 性と単位の anodyne 性 | 未証明 | Moss 2020 Proposition 21、Theorem 22、Corollary 30 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
@@ -452,6 +471,7 @@ L2a の工程の区切りで全体ビルドを実行した。
 
 ## 13. 原典の所在
 
+- [Moss 2020 原論文](https://link.springer.com/article/10.1007/s40062-019-00247-y)
 - [Segal 1974 原論文 PDF](https://ncatlab.org/nlab/files/SegalCategoriesAndCohomologyTheories.pdf)
 - [KST arXiv:1611.08466v4](https://arxiv.org/pdf/1611.08466v4)
 - [Schwede–Shipley 2003 原論文 PDF](https://people.math.rochester.edu/faculty/doug/otherpapers/schwede-shipley2.pdf)
