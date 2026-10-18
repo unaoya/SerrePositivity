@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.KST.Spectra.SkeletalFiberAbelian
+public import SerrePositivity.KST.Spectra.RationalSkeletalFiberModules
+
 public import SerrePositivity.KST.Spectra.PointedFibrationBoundary
 public import SerrePositivity.KST.Spectra.PointedFibrationExactness
 public import SerrePositivity.KST.Spectra.PointedTowerDifferential

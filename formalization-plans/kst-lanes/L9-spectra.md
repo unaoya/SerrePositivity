@@ -35,7 +35,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・468 モジュール 4492 宣言の公理監査成功。
+対象ビルド・470 モジュール 4508 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3384,3 +3384,29 @@ fiber の包含との合成、元の射の後の合成が自明となること�
 参照：Goerss–Jardine I §§7–8、VIII §1。
 対象ビルド 3919 jobs 成功。私有宣言を含む 468 モジュール 4492 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro の全射性、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 111. L9e の fiber の可換性と有理線形な微分
+
+セルの係数の実際のホモトピー次数は常に二以上である。
+係数の関数群の可換性と fiber の群同型の単射性から、骨格の fiber の基本群も可換であることを証明した。
+既存の群演算を維持して交換則を加えている。
+係数の基本群自体が可換であることは仮定せず、一般の Kan 係数に対してこの fiber の可換性が成立する。
+
+実際の有理化スペクトルの段の高次ホモトピー群の有理作用を、セルの関数群と fiber の群へ移した。
+加法的なタグと関数群の加法の比較同型を使い、telescope 由来の作用を供給している。
+加法群の準同型が有理加群の間では自動的に有理線形であることを用い、移された幾何的微分を有理線形写像にした。
+二乗の零性も線形な微分の合成の零性として証明した。
+係数の有理性や線形性の追加仮定は導入していない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SkeletalCellAttachment.coefficientGroupCommGroup` | 二以上の次数のセルの係数の可換性 |
+| `SkeletalCellAttachment.stageFiberCommGroup` | fiber の基本群を含む全正次数群の可換性 |
+| `SkeletalCellAttachment.rationalCoefficientModule` | 実際の有理化係数の関数群の有理作用 |
+| `SkeletalCellAttachment.rationalStageFiberModule` | 実際の骨格の fiber の群の有理作用 |
+| `SkeletalCellAttachment.rationalCoefficientDifferential` / `rationalCoefficientDifferential_comp` | 幾何的微分の有理線形な表示と零合成 |
+
+参照：Goerss–Jardine I §7、VIII §1、BF 1978 §2。
+対象ビルド 3921 jobs 成功。私有宣言を含む 470 モジュール 4508 宣言で標準三公理のみ。
+L9e は進行中。通常の交代 cochain 微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
