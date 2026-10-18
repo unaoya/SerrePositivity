@@ -152,6 +152,19 @@ theorem extendedIdeal_rTensor_injective [Module.Flat R M] (I : Ideal R) :
   exact h
 
 /--
+概要：極大イデアルが基礎環のイデアルの拡大なら有限表示の平坦加群は自由。
+方針：拡大イデアルに対するテンソル包含の単射性を局所自由性判定に使う。
+規約：KST §5、Stacks 0810、基礎環には局所環の仮定を置かない。
+使われ方：拡大素イデアルで局所化した加群の自由性を直接得る。
+-/
+theorem free_of_flat_of_maximalIdeal_eq_extendedIdeal [IsLocalRing S]
+    [Module.Flat R M] [Module.FinitePresentation S M] (I : Ideal R)
+    (hmax : IsLocalRing.maximalIdeal S = I.map (algebraMap R S)) : Module.Free S M := by
+  apply Module.free_of_maximalIdeal_rTensor_injective
+  rw [hmax]
+  exact extendedIdeal_rTensor_injective (M := M) I
+
+/--
 概要：極大イデアルが拡大される局所環上では基礎環上平坦な有限表示加群は自由。
 方針：拡大極大イデアルのテンソル包含の単射性を既存の局所自由性判定へ渡す。
 規約：KST §5、Stacks 0810、二つの局所環と両立する加群作用を使う。
@@ -161,8 +174,6 @@ theorem free_of_flat_of_maximalIdeal_eq_map [IsLocalRing R] [IsLocalRing S]
     [Module.Flat R M] [Module.FinitePresentation S M]
     (hmax : IsLocalRing.maximalIdeal S =
       (IsLocalRing.maximalIdeal R).map (algebraMap R S)) : Module.Free S M := by
-  apply Module.free_of_maximalIdeal_rTensor_injective
-  rw [hmax]
-  exact extendedIdeal_rTensor_injective (M := M) (IsLocalRing.maximalIdeal R)
+  exact free_of_flat_of_maximalIdeal_eq_extendedIdeal (IsLocalRing.maximalIdeal R) hmax
 
 end SerrePositivity.KST.SchemeLemmas

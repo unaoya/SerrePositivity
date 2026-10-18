@@ -200,3 +200,5 @@ public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralExtendedPrim
 public import SerrePositivity.KST.SchemeLemmas.FinitePresentationMatrix
 public import SerrePositivity.KST.SchemeLemmas.CoefficientPrimeBoundaryGeneration
 public import SerrePositivity.KST.SchemeLemmas.ExtendedIdealTensor
+public import SerrePositivity.KST.SchemeLemmas.RelativeFlatTensor
+public import SerrePositivity.KST.SchemeLemmas.ExtendedPrimeLocalFreeness
