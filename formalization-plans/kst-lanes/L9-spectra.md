@@ -35,7 +35,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・470 モジュール 4508 宣言の公理監査成功。
+対象ビルド・483 モジュール 4563 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3409,4 +3409,40 @@ L9e は進行中。有理 Shapiro の全射性、Tot の π_* の計算、一般
 
 参照：Goerss–Jardine I §7、VIII §1、BF 1978 §2。
 対象ビルド 3921 jobs 成功。私有宣言を含む 470 モジュール 4508 宣言で標準三公理のみ。
+L9e は進行中。通常の交代 cochain 微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
+
+
+## 112. L9e の実際の fiber と係数微分の自然性
+
+参照頂点を明示して fiber の包含と可換な任意の射を扱う L9b の自然性の形を追加した。
+これを標準基点の群同型の二つの正方形へ合成し、点つき可換正方形に対する連結準同型の自然性を得た。
+隣り合う二つの正方形で fiber 包含の式を合成し、点つき fibration の塔の最初の微分の自然性を証明した。
+通常の写像空間の後合成の点つき関手と骨格の塔の実際の射を構成した。
+この射から stageFiberMap を作り、実際の骨格の微分がこれと可換であることを検証した。
+
+cofiber の Hom の fiber 表示の包含後の式を界面にし、係数射との自然性を包含の一意性で証明した。
+自由基点の Hom の比較の後合成自然性と合わせ、相対骨格の cofiber とセルの cofiber の Hom の比較を係数射と照合した。
+関数複体の後合成と点つき座標評価を構成し、その群の座標表示が係数射に自然であることを証明した。
+余積の Hom の関数表示の各座標は包含への前合成なので、同じ自然性が成り立つ。
+これらを合成して stageFiberFunctionIso および正次数の関数群の表示の自然性を得た。
+
+先に検証したセルの球面の次数移動の自然性を各非退化単体へ適用した。
+従って実際の stageFiberMap の群の射は、高次係数の関数表示で元の係数射の π_* を座標ごとに施す射と一致する。
+群同型の逆の可換式と実際の微分の自然性を合成し、coefficientDifferential の係数自然性も証明した。
+ここまでで、幾何的微分とその係数表示・射がすべて自然に接続されている。
+通常の交代微分の具体式との一致と向きの符号、塔の収束は引き続き後続の課題である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `FibrationSquare.connectingHomOver_natural` / `pointedConnectingHom_natural` | 指定参照頂点の fiber と標準基点の連結準同型の自然性 |
+| `PointedFibrationTower.differential_natural` | 塔の射に対する幾何的微分の自然性 |
+| `UnbasedPointedMapping.towerPost` / `stageFiberMap` / `stageDifferential_natural` | 骨格の実際の塔の係数射と微分の可換式 |
+| `pointedCofiberMappingFiberIso_natural` / `UnbasedPointedMapping.restrictionFiberIso_natural` | cofiber 表示と通常の制限の fiber の係数自然性 |
+| `SimplicialFunctionComplex.pointedPost` / `pointedHomotopyEquiv_natural` | 関数複体の後合成と正次数群の座標表示の自然性 |
+| `pointedCoproductHomIso_natural` / `SkeletalCellAttachment.stageFiberFunctionIso_natural` | 余積の Hom と実際の fiber の関数表示の自然性 |
+| `SkeletalCellAttachment.stageFiberCoefficientEquiv_natural` | 非退化単体上の高次係数表示の自然性 |
+| `SkeletalCellAttachment.coefficientDifferential_natural` | 移された実際の微分の座標ごとの係数射への自然性 |
+
+参照：Goerss–Jardine I §§7–8、VIII §1。
+対象ビルド 3934 jobs 成功。私有宣言を含む 483 モジュール 4563 宣言で標準三公理のみ。
 L9e は進行中。通常の交代 cochain 微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。

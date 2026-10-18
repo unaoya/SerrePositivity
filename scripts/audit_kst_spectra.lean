@@ -13,6 +13,19 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.FibrationBoundaryOverNaturality,
+    `SerrePositivity.KST.Spectra.PointedFibrationNaturality,
+    `SerrePositivity.KST.Spectra.PointedTowerDifferentialNaturality,
+    `SerrePositivity.KST.Spectra.UnbasedMappingPost,
+    `SerrePositivity.KST.Spectra.SkeletalFiberDifferentialNaturality,
+    `SerrePositivity.KST.Spectra.PointedCofiberMappingNaturality,
+    `SerrePositivity.KST.Spectra.UnbasedRestrictionFiberNaturality,
+    `SerrePositivity.KST.Spectra.SkeletalCellFiberNaturality,
+    `SerrePositivity.KST.Spectra.FunctionComplexPost,
+    `SerrePositivity.KST.Spectra.PointedCoproductHomNaturality,
+    `SerrePositivity.KST.Spectra.SkeletalFunctionNaturality,
+    `SerrePositivity.KST.Spectra.SkeletalCoefficientNaturality,
+    `SerrePositivity.KST.Spectra.SkeletalCoefficientDifferentialNaturality,
     `SerrePositivity.KST.Spectra.SkeletalFiberAbelian,
     `SerrePositivity.KST.Spectra.RationalSkeletalFiberModules,
     `SerrePositivity.KST.Spectra.PointedFibrationBoundary,
