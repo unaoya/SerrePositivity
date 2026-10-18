@@ -5399,5 +5399,65 @@ lemma relativeJoinPrismPenultimateBoundaryLift_isPullback {Y : SSet.{u}} {m : �
       (relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f) (boundary m).ι rfl)
       (relativeJoinPrism f)
 
+instance relativeJoinPrism_lastCell_mono {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    Mono (SSet.yonedaEquiv.symm (relativeJoinPrismShuffle m (Fin.last m)) ≫
+      relativeJoinPrism f)
+
+lemma relativeJoinPrism_injective_outside_penultimate {m n d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n])
+    (x y : ((Δ[1] : SSet.{u}) ⊗ Δ[m]) _⦋d⦌)
+    (hx : x ∉ (relativeJoinPrismPenultimate m).obj (Opposite.op ⦋d⦌))
+    (hy : y ∉ (relativeJoinPrismPenultimate m).obj (Opposite.op ⦋d⦌))
+    (h : (relativeJoinPrism f).app (Opposite.op ⦋d⦌) x =
+      (relativeJoinPrism f).app (Opposite.op ⦋d⦌) y) : x = y
+
+lemma relativeJoin_stdSimplex_hom_apply {m n d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) (a : (Δ[m] : SSet.{u}) _⦋d⦌) (i : Fin (d + 1)) :
+    f.app (Opposite.op ⦋d⦌) a i = (SSet.yonedaEquiv f) (a i)
+
+lemma relativeJoin_stdAugHom_apply {m n r : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) (a : Join.augObj (Δ[m] : SSet.{u}) r) (i : Fin r) :
+    Join.stdAugEquiv n r (Join.augHom f r a) i =
+      (SSet.yonedaEquiv f) (Join.stdAugEquiv m r a i)
+
+lemma relativeJoin_stdSimplex_join_prefix_val {m n d : ℕ}
+    (s : Join.Simplex (Δ[m] : SSet.{u}) Δ[n] d) (i : Fin s.1.val) :
+    ((joinStdSimplexIso m n).hom.app (Opposite.op ⦋d⦌) s
+      (Join.prefixIncl (d + 1) s.1.val (Nat.le_of_lt_succ s.1.isLt) i)).val =
+      (Join.stdAugEquiv m _ s.2.1 i).val
+
+lemma relativeJoin_stdSimplex_join_suffix_val {m n d : ℕ}
+    (s : Join.Simplex (Δ[m] : SSet.{u}) Δ[n] d) (i : Fin (d + 1 - s.1.val)) :
+    ((joinStdSimplexIso m n).hom.app (Opposite.op ⦋d⦌) s
+      (Join.suffixIncl (d + 1) s.1.val (Nat.le_of_lt_succ s.1.isLt) i)).val =
+      m + 1 + (Join.stdAugEquiv n _ s.2.2 i).val
+
+lemma relativeJoin_not_left_boundary_surjective {Y : SSet.{u}} {m d : ℕ}
+    (s : Join.Simplex (Δ[m] : SSet.{u}) Y d)
+    (hs : s ∉ (joinSubcomplexLeft (boundary m) Y).obj (Opposite.op ⦋d⦌)) :
+    Function.Surjective (Join.stdAugEquiv m _ s.2.1)
+
+lemma relativeJoin_stdSimplex_right_tail_last {m n d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) = Fin.last n)
+    (s : Join.Simplex (Δ[m] : SSet.{u}) Δ[n] d)
+    (t : (Δ[1] : SSet.{u}) _⦋d⦌) (c : (Δ[n] : SSet.{u}) _⦋d⦌)
+    (h : (joinMap f (𝟙 Δ[n])).app (Opposite.op ⦋d⦌) s =
+      (joinDiagonal Δ[n]).app (Opposite.op ⦋d⦌) (t, c))
+    (hs : s ∉ (joinSubcomplexLeft (boundary m) Δ[n]).obj (Opposite.op ⦋d⦌)) :
+    ∀ j : Fin (d + 1 - s.1.val), Join.stdAugEquiv n _ s.2.2 j = Fin.last n
+
+lemma relativeJoinPrism_lastCell_stdSimplex_val {m n d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) = Fin.last n)
+    (a : (Δ[m + 1] : SSet.{u}) _⦋d⦌) (i : Fin (d + 1)) :
+    ((joinStdSimplexIso m n).hom.app (Opposite.op ⦋d⦌)
+      ((pullback.fst (joinMap f (𝟙 Δ[n])) (joinDiagonal Δ[n])).app (Opposite.op ⦋d⦌)
+        ((relativeJoinPrism f).app (Opposite.op ⦋d⦌)
+          ((SSet.yonedaEquiv.symm (relativeJoinPrismShuffle m (Fin.last m))).app
+            (Opposite.op ⦋d⦌) a))) i).val =
+      if (a i).val ≤ m then (a i).val else m + 1 + n
+
 end SerrePositivity.InfinityCategories
 ```
