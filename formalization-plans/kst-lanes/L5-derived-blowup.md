@@ -94,6 +94,8 @@ underlying 複体が当該添字での値に一致することを証明済み。
 同じ射影的 dg 候補の H⁰ と正規表示の cartesian perfect 部分圏との同値を構成済み。
 正規表示の標準加群制限同型自体の四頂点の結合整合性と左右の単位条件も証明済み。
 標準導来制限同型自体についても同じ結合・左右単位条件を自然変換の等式として証明済み。
+標準導来係数拡大同型と共役対応の一致、制限側の逆の整合性を構成し、
+係数拡大側の四頂点の結合整合性と左右の単位条件も証明済み。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -370,6 +372,11 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramAlgebraRestrictionCompIso_left_unit`・`diagramAlgebraRestrictionCompIso_right_unit` | DiagramAlgebraRestrictionUnits | 標準局所加群制限同型の左右の単位整合性 |
 | `diagramAlgebraDerivedRestrictionCompIso_assoc` | DiagramAlgebraDerivedRestrictionAssociativity | 標準導来制限同型の四頂点の結合整合性の自然変換等式 |
 | `diagramAlgebraDerivedRestrictionCompIso_left_unit`・`diagramAlgebraDerivedRestrictionCompIso_right_unit` | DiagramAlgebraDerivedRestrictionUnits | 標準導来制限同型の左右の単位整合性の自然変換等式 |
+| `adjointComparison_conjugate` | AdjointComparisonConjugate | 左随伴一意性で作る指定同型と Mathlib の共役対応の一致 |
+| `diagramAlgebraDerivedAdjunction`・標準単位・合成同型の共役公式 | DiagramAlgebraDerivedExtensionConjugate | 指定 graph 随伴での標準係数拡大同型の共役像の同定 |
+| 標準制限合成同型の逆の結合・左右単位条件 | DiagramAlgebraDerivedRestrictionInverseCoherence | 係数拡大側へ移す向きの整合性 |
+| `diagramAlgebraDerivedExtensionCompIso_assoc` | DiagramAlgebraDerivedExtensionAssociativity | 関手結合子を含む標準係数拡大同型の四頂点整合性 |
+| `diagramAlgebraDerivedExtensionCompIso_left_unit`・`diagramAlgebraDerivedExtensionCompIso_right_unit` | DiagramAlgebraDerivedExtensionUnits | 関手単位子を含む標準係数拡大同型の左右の単位整合性 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -437,7 +444,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2294定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2315定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -453,7 +460,8 @@ dg 準同値な一対象正規表示での指定加群比較の単位・三重�
 元の指定係数拡大比較と正規表示の比較の可逆性は同値であり、cartesian perfect の対象条件は一致する。
 標準局所加群制限同型の四頂点の結合整合性・左右の単位条件も証明済み。
 標準導来制限同型自体の四頂点の結合・左右単位条件も自然変換の等式として証明済み。
-次の実装単位は標準導来係数拡大同型の結合・単位整合性、および coherent な降下との接続。
+標準導来係数拡大同型自体の四頂点の結合・左右単位条件も証明済み。
+次の実装単位は局所自由加群・捻りの大域図式加群での実現、および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
