@@ -100,3 +100,5 @@ public import SerrePositivity.KST.ProExcision.AWTensorDifferential
 public import SerrePositivity.KST.ProExcision.AWBoundaryExpansion
 public import SerrePositivity.KST.ProExcision.AWBoundaryCoordinates
 public import SerrePositivity.KST.ProExcision.AWBoundaryTerms
+public import SerrePositivity.KST.ProExcision.AWBoundarySum
+public import SerrePositivity.KST.ProExcision.AWChainMap

@@ -1701,3 +1701,54 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.awDiagonalBoundaryTerm
 #print axioms SerrePositivity.KST.ProExcision.awDiagonalBoundaryTerm
+
+#check @SerrePositivity.KST.ProExcision.awBoundaryCoordinates_sum
+#print axioms SerrePositivity.KST.ProExcision.awBoundaryCoordinates_sum
+
+#check @SerrePositivity.KST.ProExcision.awHorizontalFaceTerm
+#print axioms SerrePositivity.KST.ProExcision.awHorizontalFaceTerm
+
+#check @SerrePositivity.KST.ProExcision.awVerticalFaceTerm
+#print axioms SerrePositivity.KST.ProExcision.awVerticalFaceTerm
+
+#check @SerrePositivity.KST.ProExcision.awDeletedFaceTerm
+#print axioms SerrePositivity.KST.ProExcision.awDeletedFaceTerm
+
+#check @SerrePositivity.KST.ProExcision.awCutDiagonalTerm
+#print axioms SerrePositivity.KST.ProExcision.awCutDiagonalTerm
+
+#check @SerrePositivity.KST.ProExcision.awHorizontalFaceTerm_eq
+#print axioms SerrePositivity.KST.ProExcision.awHorizontalFaceTerm_eq
+
+#check @SerrePositivity.KST.ProExcision.awHorizontalFaceTerm_nonDiagonal
+#print axioms SerrePositivity.KST.ProExcision.awHorizontalFaceTerm_nonDiagonal
+
+#check @SerrePositivity.KST.ProExcision.awVerticalFaceTerm_nonDiagonal
+#print axioms SerrePositivity.KST.ProExcision.awVerticalFaceTerm_nonDiagonal
+
+#check @SerrePositivity.KST.ProExcision.awHorizontalFaceTerm_diagonal
+#print axioms SerrePositivity.KST.ProExcision.awHorizontalFaceTerm_diagonal
+
+#check @SerrePositivity.KST.ProExcision.awVerticalFaceTerm_diagonal
+#print axioms SerrePositivity.KST.ProExcision.awVerticalFaceTerm_diagonal
+
+#check @SerrePositivity.KST.ProExcision.awHorizontal_boundary_model
+#print axioms SerrePositivity.KST.ProExcision.awHorizontal_boundary_model
+
+#check @SerrePositivity.KST.ProExcision.awVertical_boundary_model
+#print axioms SerrePositivity.KST.ProExcision.awVertical_boundary_model
+
+#check @SerrePositivity.KST.ProExcision.awHorizontal_sum_split
+#print axioms SerrePositivity.KST.ProExcision.awHorizontal_sum_split
+
+#check @SerrePositivity.KST.ProExcision.awVertical_sum_split
+#print axioms SerrePositivity.KST.ProExcision.awVertical_sum_split
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitney_comm
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitney_comm
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitney
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitney
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitney_naturality
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitney_naturality
