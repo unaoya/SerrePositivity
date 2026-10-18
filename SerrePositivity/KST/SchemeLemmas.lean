@@ -157,3 +157,6 @@ public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraModule
 public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraModuleFinite
 public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraBoundaryTorsion
 public import SerrePositivity.KST.SchemeLemmas.FiniteTypeTensorPureTransformBaseChange
+public import SerrePositivity.KST.SchemeLemmas.PureTransformScalarRestriction
+public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraPureTransform
+public import SerrePositivity.KST.SchemeLemmas.FiniteTypePureTransformFlatSpec
