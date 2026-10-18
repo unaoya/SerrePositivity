@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・357 モジュール 3770 宣言の公理監査成功。
+対象ビルド・363 モジュール 3804 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2842,3 +2842,40 @@ EG に適用して群圏の BK 重みの同型を合成し、群 cochain の通�
 保存単位の対象ビルド 3801 jobs 成功。
 私有宣言を含む 357 モジュール 3770 宣言で標準三公理のみ。
 L9e は進行中。Sp の ∞ 極限性は γ3 の後に扱い、ここでは追加主張しない。
+
+
+## 95. L9e の点つき密度比較と通常の群 Tot の Kan Ω 列
+
+密度の同型が厳密な錐の標準射を保存することを恒等単体での具体的な評価で証明した。
+自由基点からの Hom の基点を元の成分へ制限すると基点の定数族になることを示した。
+点つき end の忘却の比較の基点も各係数の基点の錐の標準射として計算した。
+この式と錐への密度の整合式から、通常の Tot と点つき end の密度比較が基点を保存することを証明した。
+従って群 cochain の通常の Tot と群圏の BK end は点つき単体集合として厳密に同型である。
+
+一般の Kan 列について、指定された段の点つき同型を介して随伴構造射を共役する構成を追加した。
+この構成は元の列への厳密な比較射を持ち、元の Ω 条件を保つ。
+群 cochain の通常の Tot の各段へ BK end の構造をこの構成で移し、実際の Kan Ω 列を得た。
+構造射はこの指定した密度の同型による移送で定義する。
+先に作った余単体随伴構造射を通常の Tot に直接送る別の定義との一致は、この保存単位では追加主張しない。
+
+単射構造射の置換で通常の Tot の BF 対象を得た。
+この BF 対象から hG の Kan end への厳密な比較射は各段で全基点 π_* 同型である。
+hG の BF 対象との比較は、この同じ Kan end を介する具体的な zigzag で与えられる。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SimplexDensity.coneFamily` / `totalizationEndIso_cone` | 錐の標準射に対する密度の整合性 |
+| `FreePointedHomRestriction.basepoint_restrict` | 自由基点 Hom の基点の制限の具体式 |
+| `PointedWeightedEnd.underlyingIso_basepoint` | end の忘却比較の基点の定数族による表示 |
+| `SimplexDensity.pointedTotalizationEndIso` | 通常の Tot と完全な重みの点つき end の同型 |
+| `GroupActionCochains.totalizationEndIso` | 群 cochain の通常の Tot と BK end の点つき同型 |
+| `KanSequence.changeLevels` / `changeLevelsProjection` / `changeLevels_omegaCondition` | 指定した段の同型による Ω 構造の移送 |
+| `GroupActionCochains.totalizationKan` / `totalizationKan_omegaCondition` | 通常の群 cochain Tot の段を持つ実際の Kan Ω 列 |
+| `GroupActionCochains.totalizationSpectrum` | 通常の群 Tot の BF 対象 |
+| `GroupActionCochains.totalizationSpectrumComparison` / `totalizationSpectrumComparison_levelwise` | hG の Kan end への厳密な比較と各段の π_* 同型 |
+
+参照：Goerss–Jardine VIII §§1–2、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 3807 jobs 成功。
+私有宣言を含む 363 モジュール 3804 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+Sp の ∞ 極限性と導来写像空間の比較は γ3 の後に扱う。

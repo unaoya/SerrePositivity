@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Spectra.CochainDensityCone
+public import SerrePositivity.KST.Spectra.PointedWeightedEndBasepoint
+public import SerrePositivity.KST.Spectra.PointedCochainDensity
+public import SerrePositivity.KST.Spectra.GroupPointedTotalization
+public import SerrePositivity.KST.Spectra.KanSequenceLevelIso
+public import SerrePositivity.KST.Spectra.GroupTotalizationSequence
+
 public import SerrePositivity.KST.Spectra.SimplexDensityFamilies
 public import SerrePositivity.KST.Spectra.SimplexDensityEquiv
 public import SerrePositivity.KST.Spectra.SimplexDensityNaturality
