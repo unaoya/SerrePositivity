@@ -1656,3 +1656,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.IsLeftScaffold.isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.tautScaffold_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.universalScaffold_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.exists_innerFibration_comparison_span
+#check @SerrePositivity.InfinityCategories.exists_leftStrictTransport_reconstruction_span
+#check @SerrePositivity.InfinityCategories.nonempty_leftStrictTransportTotalEquivalence
+#check @SerrePositivity.InfinityCategories.leftStrictTransportTotalEquivalence

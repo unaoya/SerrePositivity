@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.OverComparisonResolution
+public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportReconstruction
+
 public import SerrePositivity.InfinityCategories.F1.LeftScaffoldComparison
 
 public import SerrePositivity.InfinityCategories.F1.PrecompositionNerveLocality

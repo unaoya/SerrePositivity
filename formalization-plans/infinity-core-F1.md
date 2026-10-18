@@ -7691,5 +7691,33 @@ lemma universalScaffold_isPrecompositionEquivalence
     (p : E ⟶ nerve C) [LeftFibration p] :
     IsPrecompositionEquivalence (universalScaffold p)
 
+lemma exists_innerFibration_comparison_span
+    {A X Y S : SSet.{u}} (r : A ⟶ S) (p : X ⟶ S) (q : Y ⟶ S)
+    [InnerFibration p] [InnerFibration q]
+    (f : A ⟶ X) (g : A ⟶ Y) (hf : f ≫ p = r) (hg : g ≫ q = r)
+    (ef : IsPrecompositionEquivalence f) (eg : IsPrecompositionEquivalence g) :
+    ∃ (Z : SSet.{u}) (i : A ⟶ Z) (t : Z ⟶ S) (a : Z ⟶ X) (b : Z ⟶ Y),
+      innerAnodyneExtensions i ∧ InnerFibration t ∧ i ≫ t = r ∧
+      i ≫ a = f ∧ i ≫ b = g ∧ a ≫ p = t ∧ b ≫ q = t ∧
+      IsPrecompositionEquivalence a ∧ IsPrecompositionEquivalence b
+
+lemma exists_leftStrictTransport_reconstruction_span
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    ∃ (Z : SSet.{u}) (t : Z ⟶ nerve C) (a : Z ⟶ E)
+      (b : Z ⟶ leftStrictTransportWeightedNerve p),
+      InnerFibration t ∧ a ≫ p = t ∧ b ≫ leftStrictTransportWeightedProjection p = t ∧
+      IsPrecompositionEquivalence a ∧ IsPrecompositionEquivalence b
+
+lemma nonempty_leftStrictTransportTotalEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    Nonempty (QCatEquivalence E (leftStrictTransportWeightedNerve p))
+
+noncomputable def leftStrictTransportTotalEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    QCatEquivalence E (leftStrictTransportWeightedNerve p)
+
 end SerrePositivity.InfinityCategories
 ```
