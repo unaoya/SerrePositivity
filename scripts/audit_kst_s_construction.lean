@@ -2544,3 +2544,99 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.oneDirectionReducedComparisonNat
 #print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroDiagram
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroDiagram
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroDiagramMap
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroDiagramMap
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroInclusion
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroInclusion
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroInclusion_mono
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroInclusion_mono
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroRetractionAt
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroRetractionAt
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroRetractionAt_leftInverse
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroRetractionAt_leftInverse
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroOperator
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroOperator
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroOperator_eq_map
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroOperator_eq_map
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroOperator_union
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroOperator_union
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroRange
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroRange
+
+#check @SerrePositivity.KST.SConstruction.mem_coordinateZeroRange_iff
+#print axioms SerrePositivity.KST.SConstruction.mem_coordinateZeroRange_iff
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroRange_antitone
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroRange_antitone
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroRange_union
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroRange_union
+
+#check @SerrePositivity.KST.SConstruction.CoordinateZeroContractible
+#print axioms SerrePositivity.KST.SConstruction.CoordinateZeroContractible
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroDiagramToPoint
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroDiagramToPoint
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroRealization_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroRealization_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroRange_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroRange_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroBoundary
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroBoundary
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroBoundary_insert
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroBoundary_insert
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroBoundary_inf
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroBoundary_inf
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroBoundary_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroBoundary_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.oneDirection_coordinateZeroContractible
+#print axioms SerrePositivity.KST.SConstruction.oneDirection_coordinateZeroContractible
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionFatBoundary_eq_coordinate
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionFatBoundary_eq_coordinate
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionFatBoundary_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionFatBoundary_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReductionQuotient_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReductionQuotient_image_isIso
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedComparison_kan_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedComparison_kan_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanRealization_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanRealization_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionLoopComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionLoopComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionLoopComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionLoopComparison_piIsomorphism

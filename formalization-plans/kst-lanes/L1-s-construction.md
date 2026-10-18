@@ -2952,3 +2952,162 @@ def oneDirectionReducedComparisonNat (r : ℕ) :
 任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2965 jobs）、公理監査成功（906 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.24 一次方向の境界商の弱同値比較
+
+零方向の包含の単射性、像の固定点判定・反単調性・交差の式を任意の多単体図式 M について証明した。
+各非空の零方向の交差が各段で可縮 Kan である条件 `CoordinateZeroContractible M` を明記し、
+その下で零境界の有限合併が anodyne 局所化で一点と同値になる一般形も証明した。
+既存の反復 core S に関する定理の名前・型は保持している。
+
+一次方向を固定した M := oneDirectionIndex r ⋙ multiCoreSConstruction (r+1) X については、
+残りの零方向 j を標的の j.succ へ移して、この条件を無条件で証明した。
+残りの反復数が正なら、その全零境界は弱可縮となり、商への射影は任意の anodyne 反転関手で可逆。
+これと標的の商写像・元の S₁ 比較の局所化可逆性を射影の可換式で合わせて、
+`oneDirectionReducedComparison` の局所化可逆性を証明した。
+
+点つき Kan 置換後の比較は L9 の `KanPiIsomorphism`、すなわち全基点・零次数を含む全次数の π_* 同型。
+Kan 置換の比較を自然変換にまとめ、Ω 後も同じ π_* 同型であることを示した。
+これは同じ反復数の模型の比較であり、反復数を変える delooping の Ω 条件ではない。
+元の実現・商の Kan 性は追加仮定しない。
+Core・Stable・F1・HA・Spectra の所有ファイルや公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u v w`、
+`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下で記す。一般形の `CoordinateZeroContractible` は
+定理の前提として明示するが、一次方向を固定した反復への適用では証明済みである。
+
+**CoordinateZeroRanges.lean**
+
+```lean
+def coordinateZeroDiagram {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    SimplexCategoryᵒᵖ ⥤ SSet.{u}
+
+def coordinateZeroDiagramMap {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    coordinateZeroDiagram s M ⟶ multiIndexDiagonal r ⋙ M
+
+def coordinateZeroInclusion {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    simplicialDiagonalFunctor.obj (coordinateZeroDiagram s M) ⟶ simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)
+
+instance coordinateZeroInclusion_mono {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    Mono (coordinateZeroInclusion s M)
+
+def coordinateZeroRetractionAt {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)).obj d) :
+    (simplicialDiagonalFunctor.obj (coordinateZeroDiagram s M)).obj d
+
+lemma coordinateZeroRetractionAt_leftInverse {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (d : SimplexCategoryᵒᵖ) :
+    Function.LeftInverse (coordinateZeroRetractionAt s M d) ((coordinateZeroInclusion s M).app d)
+
+def coordinateZeroOperator {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)).obj d) :
+    (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)).obj d
+
+lemma coordinateZeroOperator_eq_map {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)).obj d) :
+    coordinateZeroOperator s M d x =
+      (M.map (zeroDirectionsIndexEndomorphism s (fun _ => d))).app d x
+
+lemma coordinateZeroOperator_union {r : ℕ} (s t : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)).obj d) :
+    coordinateZeroOperator (s ∪ t) M d x =
+      coordinateZeroOperator t M d (coordinateZeroOperator s M d x)
+
+def coordinateZeroRange {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)).Subcomplex
+
+lemma mem_coordinateZeroRange_iff {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)).obj d) :
+    x ∈ (coordinateZeroRange s M).obj d ↔ coordinateZeroOperator s M d x = x
+
+lemma coordinateZeroRange_antitone {r : ℕ} {s t : Finset (Fin r)} (hst : s ⊆ t)
+    (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) : coordinateZeroRange t M ≤ coordinateZeroRange s M
+
+lemma coordinateZeroRange_union {r : ℕ} (s t : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    coordinateZeroRange (s ∪ t) M = coordinateZeroRange s M ⊓ coordinateZeroRange t M
+```
+
+**CoordinateZeroBoundary.lean**
+
+```lean
+def CoordinateZeroContractible {r : ℕ} (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) : Prop
+
+def coordinateZeroDiagramToPoint {r : ℕ} (s : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    coordinateZeroDiagram s M ⟶ (Functor.const SimplexCategoryᵒᵖ).obj (𝟙_ SSet.{u})
+
+lemma coordinateZeroRealization_toPoint_localized_isIso {r : ℕ} (s : Finset (Fin r))
+    (hs : s.Nonempty) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (hM : CoordinateZeroContractible M) :
+    IsIso (AnodyneHomotopy.anodyneQ.map
+      (toUnit (simplicialDiagonalFunctor.obj (coordinateZeroDiagram s M))))
+
+lemma coordinateZeroRange_toPoint_localized_isIso {r : ℕ} (s : Finset (Fin r))
+    (hs : s.Nonempty) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (hM : CoordinateZeroContractible M) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (coordinateZeroRange s M : SSet.{u})))
+
+def coordinateZeroBoundary {r : ℕ} (s t : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ M)).Subcomplex
+
+lemma coordinateZeroBoundary_insert {r : ℕ} (i : Fin r) (s t : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    coordinateZeroBoundary (insert i s) t M =
+      coordinateZeroRange (insert i t) M ⊔ coordinateZeroBoundary s t M
+
+lemma coordinateZeroBoundary_inf {r : ℕ} (i : Fin r) (s t : Finset (Fin r)) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :
+    coordinateZeroRange (insert i t) M ⊓ coordinateZeroBoundary s t M =
+      coordinateZeroBoundary s (insert i t) M
+
+lemma coordinateZeroBoundary_toPoint_localized_isIso {r : ℕ} (s t : Finset (Fin r))
+    (hs : s.Nonempty) (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u})
+    (hM : CoordinateZeroContractible M) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (coordinateZeroBoundary s t M : SSet.{u})))
+```
+
+**OneDirectionWeakComparison.lean**
+
+```lean
+lemma oneDirection_coordinateZeroContractible (r : ℕ) (X : StableModel.{u}) :
+    CoordinateZeroContractible (oneDirectionIndex r ⋙ multiCoreSConstruction (r + 1) X)
+
+lemma oneDirectionFatBoundary_eq_coordinate (r : ℕ) (X : StableModel.{u}) :
+    oneDirectionFatBoundary r X = coordinateZeroBoundary Finset.univ ∅
+      (oneDirectionIndex r ⋙ multiCoreSConstruction (r + 1) X)
+
+lemma oneDirectionFatBoundary_toPoint_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map
+      (toUnit (oneDirectionFatBoundary (r + 1) X : SSet.{u})))
+
+lemma oneDirectionReductionQuotient_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L) (r : ℕ) (X : StableModel.{u}) :
+    IsIso (L.map (oneDirectionReductionQuotient r X))
+
+lemma oneDirectionReducedComparison_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (oneDirectionReducedComparison r X).right)
+
+lemma oneDirectionReducedComparison_kan_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism
+      (Spectra.PointedKanReplacement.map (oneDirectionReducedComparison r X)).right
+
+def oneDirectionKanRealizationFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+instance oneDirectionKanRealization_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (((oneDirectionKanRealizationFunctor r).obj X).right)
+
+def oneDirectionKanComparisonNat (r : ℕ) :
+    oneDirectionKanRealizationFunctor r ⟶ boundaryKanRealizationFunctor r
+
+def oneDirectionLoopComparisonNat (r : ℕ) :
+    oneDirectionKanRealizationFunctor r ⋙
+      PointedObject.basedHomFunctor (C
+
+lemma oneDirectionLoopComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism ((oneDirectionLoopComparisonNat r).app X).right
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。S₁ 比較の境界商への降下が局所化可逆であることと、Kan 置換・Ω 後の全基点 π_* 比較は証明済み。
+同時商と円の smash の同一視、反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2968 jobs）、公理監査成功（938 宣言、標準三公理のみ）。追加公理・sorry なし。

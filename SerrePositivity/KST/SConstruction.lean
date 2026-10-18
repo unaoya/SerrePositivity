@@ -60,4 +60,6 @@ public import SerrePositivity.KST.SConstruction.CombinedBoundaryAssembly
 
 public import SerrePositivity.KST.SConstruction.OneDirectionReducedComparison
 
+public import SerrePositivity.KST.SConstruction.OneDirectionWeakComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
