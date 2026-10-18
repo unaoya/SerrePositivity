@@ -61,3 +61,8 @@ public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerSplitLast
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerSplitAt
 public import SerrePositivity.EInfinity.Operad.TensorFamilyTensorSplitLast
 public import SerrePositivity.EInfinity.Operad.TensorFamilyTensorSplitAt
+public import SerrePositivity.EInfinity.Operad.TensorFamilyHeadAssembly
+public import SerrePositivity.EInfinity.Operad.TensorFamilyHeadSeparation
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerHeadAssembly
+public import SerrePositivity.EInfinity.Operad.TensorFamilyGeneratorMap
+public import SerrePositivity.EInfinity.Operad.SchurHeadAssembly
