@@ -1340,3 +1340,123 @@ derivedInfinityHZeroMap_comp {x y z : (derivedInfinityCategory S) _⦋0⦌}
     derivedInfinityHZeroMap S e ≫ derivedInfinityHZeroMap S f = derivedInfinityHZeroMap S g
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D4
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory MonoidalCategory DifferentialGraded DGNerve
+open scoped Simplicial
+variable {S : Type u} [CommRing S]
+derivedInfinityInclusion : derivedInfinityCategory S ⟶ dgNerve S (Complex S)
+derivedSquarePresentation
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    ComplexCospanPresentation (pullbackCospan (F ≫ derivedInfinityInclusion))
+derivedSquarePresentation_left
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    complexSemifree S (derivedSquarePresentation F).leftObj
+derivedSquarePresentation_right
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    complexSemifree S (derivedSquarePresentation F).rightObj
+derivedSquarePresentation_target
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    complexSemifree S (derivedSquarePresentation F).targetObj
+derivedSquareStandardFiber
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) : Semifree S
+derivedSquareFiberSquare
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S
+derivedSquareFiberSquare_isPullback
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    IsPullbackSquare (derivedSquareFiberSquare F)
+derivedSquareFiberSquare_cospan
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    pullbackCospan (derivedSquareFiberSquare F) = pullbackCospan F
+derivedSquareFiberSquare_vertex
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    (pullbackCone (derivedSquareFiberSquare F)).vertex =
+      Simplex.vertex (derivedSquareStandardFiber F)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory MonoidalCategory DifferentialGraded DGNerve
+open DGNerve.HomotopyComparison
+open scoped Simplicial
+variable {S : Type u} [CommRing S]
+derivedSquareComparisonCone
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    JoinCone (pullbackCospan (derivedSquareFiberSquare F))
+derivedSquareComparisonSliceEdge
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    SSet.Truncated.Edge (X := (SSet.truncation 2).obj
+      (sliceOver (pullbackCospan (derivedSquareFiberSquare F))))
+        (derivedSquareComparisonCone F) (pullbackCone (derivedSquareFiberSquare F))
+derivedSquareComparisonEdge
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    SSet.Truncated.Edge (X := twoTruncation S (Semifree S))
+      (pullbackCone F).vertex (Simplex.vertex (derivedSquareStandardFiber F))
+derivedSquareComparisonEdge_isIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S)
+    (hF : IsPullbackSquare F) :
+    IsIso (SSet.Truncated.HomotopyCategory₂.homMk (derivedSquareComparisonEdge F))
+derivedSquareFiberComparison
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    ((pullbackCone F).vertex.obj 0).val ⟶ (derivedSquareStandardFiber F).val
+derivedSquareFiberComparison_homotopyEquivalence
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S)
+    (hF : IsPullbackSquare F) :
+    HomologicalComplex.homotopyEquivalences (ModuleCat.{u} S) (.up ℤ)
+      (derivedSquareFiberComparison F)
+derivedSquareFiberComparison_quasiIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S)
+    (hF : IsPullbackSquare F) : QuasiIso (derivedSquareFiberComparison F)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory SSet SimplicialObject.Truncated
+open scoped Simplicial
+derived_rightFibration_liftCompStruct {X Y : SSet.{u}} (q : X ⟶ Y) [RightFibration q]
+    {x₀ x₁ x₂ : X _⦋0⦌}
+    (g : SSet.Truncated.Edge (X := (truncation 2).obj X) x₁ x₂)
+    (h : SSet.Truncated.Edge (X := (truncation 2).obj X) x₀ x₂)
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj Y)
+      (q.app (Opposite.op ⦋0⦌) x₀) (q.app (Opposite.op ⦋0⦌) x₁))
+    (t : SSet.Truncated.Edge.CompStruct f (g.map ((truncation 2).map q))
+      (h.map ((truncation 2).map q))) :
+    Nonempty (Σ f' : SSet.Truncated.Edge (X := (truncation 2).obj X) x₀ x₁,
+      {t' : SSet.Truncated.Edge.CompStruct f' g h //
+        q.app (Opposite.op ⦋2⦌) t'.simplex = t.simplex})
+derived_rightFibration_reflects_invertibleEdge {X Y : SSet.{u}} [Quasicategory X]
+    [Quasicategory Y] (q : X ⟶ Y) [RightFibration q] {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
+    (he : IsInvertibleEdge (e.map ((truncation 2).map q))) : IsInvertibleEdge e
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory MonoidalCategory DifferentialGraded DGNerve
+open DGNerve.HomotopyComparison
+open scoped Simplicial
+variable {S : Type u} [CommRing S]
+derived_edge_invertible_of_quasiIso {x y : (derivedInfinityCategory S) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := twoTruncation S (Semifree S)) x y)
+    (he : QuasiIso (edgeChainMap (e.map ((SSet.truncation 2).map derivedInfinityInclusion)))) :
+    IsInvertibleEdge e
+derived_isPullbackSquare_of_quasiIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S)
+    (hF : QuasiIso (derivedSquareFiberComparison F)) : IsPullbackSquare F
+derived_isPullbackSquare_iff_quasiIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory S) :
+    IsPullbackSquare F ↔ QuasiIso (derivedSquareFiberComparison F)
+end SerrePositivity.InfinityCategories
+```

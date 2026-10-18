@@ -340,10 +340,38 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroSimplexMap
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroMap_comp
 
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityInclusion
+#print axioms SerrePositivity.InfinityCategories.derivedSquarePresentation
+#print axioms SerrePositivity.InfinityCategories.derivedSquarePresentation_left
+#print axioms SerrePositivity.InfinityCategories.derivedSquarePresentation_right
+#print axioms SerrePositivity.InfinityCategories.derivedSquarePresentation_target
+#print axioms SerrePositivity.InfinityCategories.derivedSquareStandardFiber
+#print axioms SerrePositivity.InfinityCategories.derivedSquareFiberSquare
+#print axioms SerrePositivity.InfinityCategories.derivedSquareFiberSquare_isPullback
+#print axioms SerrePositivity.InfinityCategories.derivedSquareFiberSquare_cospan
+#print axioms SerrePositivity.InfinityCategories.derivedSquareFiberSquare_vertex
+#print axioms SerrePositivity.InfinityCategories.derivedSquareComparisonCone
+#print axioms SerrePositivity.InfinityCategories.derivedSquareComparisonSliceEdge
+#print axioms SerrePositivity.InfinityCategories.derivedSquareComparisonEdge
+#print axioms SerrePositivity.InfinityCategories.derivedSquareComparisonEdge_isIso
+#print axioms SerrePositivity.InfinityCategories.derivedSquareFiberComparison
+#print axioms SerrePositivity.InfinityCategories.derivedSquareFiberComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.derivedSquareFiberComparison_quasiIso
+#print axioms SerrePositivity.InfinityCategories.derived_rightFibration_liftCompStruct
+#print axioms SerrePositivity.InfinityCategories.derived_rightFibration_reflects_invertibleEdge
+#print axioms SerrePositivity.InfinityCategories.derived_edge_invertible_of_quasiIso
+#print axioms SerrePositivity.InfinityCategories.derived_isPullbackSquare_of_quasiIso
+#print axioms SerrePositivity.InfinityCategories.derived_isPullbackSquare_iff_quasiIso
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.PullbackPresentation,
+    `SerrePositivity.InfinityCategories.Derived.PullbackComparison,
+    `SerrePositivity.InfinityCategories.Derived.RightFibrationReflection,
+    `SerrePositivity.InfinityCategories.Derived.PullbackCriterion,
+
     `SerrePositivity.InfinityCategories.Derived.HZero,
     `SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve,
     `SerrePositivity.InfinityCategories.Derived.BaseChangeDG,
