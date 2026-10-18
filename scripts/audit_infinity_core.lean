@@ -1852,3 +1852,32 @@ end InitialCofinalityUniverses
 #print axioms SerrePositivity.InfinityCategories.TerminalBoundaryLifting
 #print axioms SerrePositivity.InfinityCategories.exists_lift_of_terminal_last_vertices
 #print axioms SerrePositivity.InfinityCategories.terminalBoundaryLifting_ihom_of_pointwise
+
+-- A6: join と直積・slice と錐の fiber の比較
+#print axioms SerrePositivity.InfinityCategories.Join.prefixIncl
+#print axioms SerrePositivity.InfinityCategories.Join.augTensorEquiv
+#print axioms SerrePositivity.InfinityCategories.Join.augTensorEquiv_symm_augMap
+#print axioms SerrePositivity.InfinityCategories.Join.augTensorEquiv_symm_augHomLeft
+#print axioms SerrePositivity.InfinityCategories.Join.augMap_prefix_leftMap
+#print axioms SerrePositivity.InfinityCategories.Join.tensorLeftSimplex
+#print axioms SerrePositivity.InfinityCategories.Join.tensorLeftSimplex_naturality
+#print axioms SerrePositivity.InfinityCategories.joinTensorLeft
+#print axioms SerrePositivity.InfinityCategories.joinTensorLeft_naturality
+#print axioms SerrePositivity.InfinityCategories.joinInr_mono
+#print axioms SerrePositivity.InfinityCategories.joinInl_mono
+#print axioms SerrePositivity.InfinityCategories.joinTensorLeft_inl
+#print axioms SerrePositivity.InfinityCategories.joinTensorLeft_inr
+#print axioms SerrePositivity.InfinityCategories.joinTensorLeft_unit
+#print axioms SerrePositivity.InfinityCategories.vertexFiber_quasicategory_of_innerFibration
+#print axioms SerrePositivity.InfinityCategories.uncurry_yoneda_functorVertex
+#print axioms SerrePositivity.InfinityCategories.coneRestriction
+#print axioms SerrePositivity.InfinityCategories.coneFamily
+#print axioms SerrePositivity.InfinityCategories.coneRestriction_innerFibration
+#print axioms SerrePositivity.InfinityCategories.coneFamily_quasicategory
+#print axioms SerrePositivity.InfinityCategories.coneFamilyVertexEquiv
+#print axioms SerrePositivity.InfinityCategories.sliceConeFamilyUncurry
+#print axioms SerrePositivity.InfinityCategories.sliceConeFamilyUncurry_fixed
+#print axioms SerrePositivity.InfinityCategories.sliceConeFamilyUncurry_curry_fixed
+#print axioms SerrePositivity.InfinityCategories.sliceConeFamilyMap
+#print axioms SerrePositivity.InfinityCategories.sliceConeFamilyUncurry_vertex
+#print axioms SerrePositivity.InfinityCategories.sliceConeFamilyMap_app_zero

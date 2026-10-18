@@ -462,3 +462,5 @@ A3e 主同値判定完了：`isQCatEquivalence_of_isFullyFaithful_of_isEssential
 新規19公開宣言の全型・前提は infinity-core.md §6。Core ビルド1648 jobs、累計846宣言の標準3公理監査が成功。任意図式の自然な極限錐の構成と主同値・評価の保存の一般形は未完了。A4・A5 は未着手。既存の公開名・型は変更していない。
 
 A6 続き：標的を固定した相対骨格の境界持ち上げを貼り合わせる二補題と `TerminalBoundaryLifting p x`、この条件での部分複体からの延長、`terminalBoundaryLifting_ihom_of_pointwise` を実装した。最後の補題は各点の厳密な終点境界充填条件が関手単体集合の射にも移ることを証明する。全て quasicategory 性・fibration 性を仮定しない。この厳密な条件と相対終対象・極限錐の同値はまだ主張しない。公開5宣言の全型・前提は計画 §6、Core ビルド1651 jobs・累計851宣言の標準3公理監査成功。A6 の任意図式の主定理、A4・A5 は未完了。既存の公開名・型は変更していない。
+
+A6 続き：`joinTensorLeft` と自然性・左右包含・一点の計算、join の左右包含の単射性を実装。`coneRestriction J X`（錐の制限）の図式の頂点上の fiber を `coneFamily p` とし、X が quasicategory なら両者の inner fibration 性・fiber の quasicategory 性を得た。`sliceConeFamilyMap p` は既存の slice からこの fiber への比較射で、その零次成分は `coneFamilyVertexEquiv p` に一致する。零単体の全単射だけから同値とは結論していない。比較射の同値性、Kerodon Example 4.6.6.8・Proposition 7.1.6.13 との接続、A6 の主定理は未完了。公開27宣言の全型・前提は計画 §6。Core ビルド1654 jobs、累計878宣言の標準3公理監査成功。既存の公開名・型は変更していない。

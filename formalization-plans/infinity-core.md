@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は標的を固定した相対境界充填の関手への移送まで完了し、任意図式の錐との比較と主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -5749,6 +5749,150 @@ lemma terminalBoundaryLifting_ihom_of_pointwise {K X Y : SSet.{u}}
     (p : X ⟶ Y) (f : K ⟶ X)
     (hf : ∀ k : K _⦋0⦌, TerminalBoundaryLifting p (f.app (Opposite.op ⦋0⦌) k)) :
     TerminalBoundaryLifting ((ihom K).map p) (functorVertex f)
+
+end SerrePositivity.InfinityCategories
+```
+
+
+### A6 続き：join と直積、slice と関手単体集合の錐の fiber（2026-10-18）
+
+`joinTensorLeft A B C : A ⊗ join B C ⟶ join (A ⊗ B) C` とその自然性・包含・一点での計算を実装。join の左右包含の単射性も追加した。`coneRestriction J X` は Fun(Δ[0]⋆J,X) → Fun(J,X) の制限、`coneFamily p` はその図式 p の頂点上の厳密な fiber。X が quasicategory なら制限は inner fibration、fiber は quasicategory。一般の inner fibration の fiber の quasicategory 性には始域・標的の quasicategory 性は不要。
+
+既存の join による slice から `sliceConeFamilyMap p : sliceOver p ⟶ coneFamily p` を構成し、その零次成分が錐の射の標準的な関手頂点の表示と一致することを証明した。零単体は `coneFamilyVertexEquiv p : JoinCone p ≃ (coneFamily p) _⦋0⦌` で厳密に対応する。ただし比較射の同値性は未完了。Kerodon Example 4.6.6.8（https://kerodon.net/tag/04J5）、Lemma 4.6.6.7（https://kerodon.net/tag/04J4）、Proposition 7.1.6.13（https://kerodon.net/tag/02XB）との接続が次の課題。A6 の一般の存在・点ごとの極限判定、A4・A5 は未完了。既存の公開名・型は変更していない。
+
+検証：Core ビルド1654 jobs、累計878宣言の標準3公理監査成功。新規27公開宣言の全型・前提：
+
+JoinTensor：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+namespace Join
+def prefixIncl (n r : ℕ) (hr : r ≤ n) : Fin r →o Fin n
+
+def augTensorEquiv (A B : SSet.{u}) : (r : ℕ) → augObj (A ⊗ B) r ≃ augObj A r × augObj B r
+  | 0 =>
+    { toFun := fun _ ↦ (PUnit.unit, PUnit.unit)
+      invFun := fun _ ↦ PUnit.unit
+      left_inv := fun _ ↦ rfl
+      right_inv := fun x ↦ by rcases x with ⟨⟨⟩, ⟨⟩⟩; rfl }
+  | _ + 1 => Equiv.refl _
+
+/-- 概要：補った直積の単体の同値は順序写像による引き戻しと可換。
+方針：空区間を分け、非空区間では直積の単体作用を計算する。
+規約：空の始域への写像も含む。
+使われ方：Kerodon §4.6.6 の比較射の自然性。 -/
+lemma augTensorEquiv_symm_augMap (A B : SSet.{u}) {r s : ℕ} (α : Fin r →o Fin s)
+    (a : augObj A s) (b : augObj B s) :
+    augMap (A ⊗ B) α ((augTensorEquiv A B s).symm (a, b)) =
+      (augTensorEquiv A B r).symm (augMap A α a, augMap B α b)
+
+lemma augTensorEquiv_symm_augMap (A B : SSet.{u}) {r s : ℕ} (α : Fin r →o Fin s)
+    (a : augObj A s) (b : augObj B s) :
+    augMap (A ⊗ B) α ((augTensorEquiv A B s).symm (a, b)) =
+      (augTensorEquiv A B r).symm (augMap A α a, augMap B α b)
+
+lemma augTensorEquiv_symm_augHomLeft {A A' : SSet.{u}} (f : A ⟶ A') (B : SSet.{u})
+    (r : ℕ) (a : augObj A r) (b : augObj B r) :
+    augHom (f ▷ B) r ((augTensorEquiv A B r).symm (a, b)) =
+      (augTensorEquiv A' B r).symm (augHom f r a, b)
+
+lemma augMap_prefix_leftMap (A : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (r : ℕ) (hr : r ≤ n) (a : augObj A n) :
+    augMap A (leftMap α r) (augMap A (prefixIncl n r hr) a) =
+      augMap A (prefixIncl m (pullCut α r) (pullCut_le α r)) (augMap A α a)
+
+def tensorLeftSimplex (A B C : SSet.{u}) (n : ℕ)
+    (a : A _⦋n⦌) (s : Simplex B C n) : Simplex (A ⊗ B) C n
+
+lemma tensorLeftSimplex_naturality (A B C : SSet.{u}) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (a : A _⦋n⦌) (s : Simplex B C n) :
+    simplexMap (A ⊗ B) C α (tensorLeftSimplex A B C n a s) =
+      tensorLeftSimplex A B C m (augMap A α a) (simplexMap B C α s)
+
+end Join
+def joinTensorLeft (A B C : SSet.{u}) : A ⊗ join B C ⟶ join (A ⊗ B) C
+
+lemma joinTensorLeft_naturality {A A' : SSet.{u}} (f : A ⟶ A') (B C : SSet.{u}) :
+    (f ▷ join B C) ≫ joinTensorLeft A' B C =
+      joinTensorLeft A B C ≫ joinMap (f ▷ B) (𝟙 C)
+
+instance joinInr_mono (A B : SSet.{u}) : Mono (joinInr A B)
+
+instance joinInl_mono (A B : SSet.{u}) : Mono (joinInl A B)
+
+lemma joinTensorLeft_inl (A B C : SSet.{u}) :
+    (A ◁ joinInl B C) ≫ joinTensorLeft A B C = joinInl (A ⊗ B) C
+
+lemma joinTensorLeft_inr (A B C : SSet.{u}) :
+    (A ◁ joinInr B C) ≫ joinTensorLeft A B C =
+      CartesianMonoidalCategory.snd A C ≫ joinInr (A ⊗ B) C
+
+lemma joinTensorLeft_unit (B C : SSet.{u}) :
+    joinTensorLeft (Δ[0] : SSet.{u}) B C ≫
+        joinMap (CartesianMonoidalCategory.snd (Δ[0] : SSet.{u}) B) (𝟙 C) =
+      CartesianMonoidalCategory.snd (Δ[0] : SSet.{u}) (join B C)
+
+end SerrePositivity.InfinityCategories
+```
+
+InnerFiber：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+instance vertexFiber_quasicategory_of_innerFibration {E B : SSet.{u}} (p : E ⟶ B)
+    [InnerFibration p] (b : B _⦋0⦌) : Quasicategory (vertexFiber p b)
+
+end SerrePositivity.InfinityCategories
+```
+
+ConeFamily：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma uncurry_yoneda_functorVertex {A X : SSet.{u}} (f : A ⟶ X) :
+    uncurry (SSet.yonedaEquiv.symm (functorVertex f)) = fst A (Δ[0] : SSet.{u}) ≫ f
+
+def coneRestriction (J X : SSet.{u}) :
+    (ihom (join (Δ[0] : SSet.{u}) J)).obj X ⟶ (ihom J).obj X
+
+def coneFamily {J X : SSet.{u}} (p : J ⟶ X) : SSet.{u}
+
+instance coneRestriction_innerFibration (J X : SSet.{u}) [Quasicategory X] :
+    InnerFibration (coneRestriction J X)
+
+instance coneFamily_quasicategory {J X : SSet.{u}} [Quasicategory X] (p : J ⟶ X) :
+    Quasicategory (coneFamily p)
+
+def coneFamilyVertexEquiv {J X : SSet.{u}} (p : J ⟶ X) :
+    JoinCone p ≃ (coneFamily p) _⦋0⦌
+
+noncomputable def sliceConeFamilyUncurry {J X : SSet.{u}} (p : J ⟶ X) :
+    join (Δ[0] : SSet.{u}) J ⊗ sliceOver p ⟶ X
+
+lemma sliceConeFamilyUncurry_fixed {J X : SSet.{u}} (p : J ⟶ X) :
+    (joinInr Δ[0] J ▷ sliceOver p) ≫ sliceConeFamilyUncurry p = fst J (sliceOver p) ≫ p
+
+lemma sliceConeFamilyUncurry_curry_fixed {J X : SSet.{u}} (p : J ⟶ X) :
+    curry (sliceConeFamilyUncurry p) ≫ coneRestriction J X = SSet.const (functorVertex p)
+
+noncomputable def sliceConeFamilyMap {J X : SSet.{u}} (p : J ⟶ X) :
+    sliceOver p ⟶ coneFamily p
+
+lemma sliceConeFamilyUncurry_vertex {J X : SSet.{u}} (p : J ⟶ X) (c : JoinCone p) :
+    (join (Δ[0] : SSet.{u}) J ◁ SSet.yonedaEquiv.symm c) ≫ sliceConeFamilyUncurry p =
+      fst (join (Δ[0] : SSet.{u}) J) (Δ[0] : SSet.{u}) ≫ c.val
+
+lemma sliceConeFamilyMap_app_zero {J X : SSet.{u}} (p : J ⟶ X) (c : JoinCone p) :
+    (sliceConeFamilyMap p).app (Opposite.op ⦋0⦌) c = coneFamilyVertexEquiv p c
 
 end SerrePositivity.InfinityCategories
 ```

@@ -98,3 +98,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.Core.SkeletalLifting
 public import SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension
 public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
+
+public import SerrePositivity.InfinityCategories.Core.JoinTensor
+public import SerrePositivity.InfinityCategories.Core.InnerFiber
+public import SerrePositivity.InfinityCategories.Core.ConeFamily
