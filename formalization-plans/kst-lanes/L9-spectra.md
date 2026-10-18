@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・125 モジュール 2046 宣言の公理監査成功。
+対象ビルド・132 モジュール 2102 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1407,3 +1407,41 @@ L9d は進行中。スペクトルの実際の乗法射と telescope の構成�
 保存単位の対象ビルド 2322 jobs 成功。
 私有宣言を含む 125 モジュール 2046 宣言で標準三公理のみ。
 L9d は進行中。次はホモトピー類の消滅を境界の充填へ戻す幾何的補題を進める。
+
+
+## 49. L9d の消滅からの実際の境界充填と相対 Whitehead
+
+標準単体の単体を、区間の値が零の間は元の値、その後は最後の頂点とする収縮を構成した。
+この収縮は最後のホーンを保つ。ホーンの収縮を相対区間充填で境界全体へ延長する。
+その結果、任意の Kan 値の境界射を最後のホーン上で定数となる射へホモトピーで移せる。
+最後の面は PtSimplex となり、その類が零なら定数単体との RelStruct が全境界の充填を与える。
+さらに、境界のホモトピーを標準単体へ延長し、元の境界の充填へ戻せる。
+
+従って、非空な Kan 複体で全基点・全自然数次数の類が一元なら、終対象射は全単射 RLP を持つ。
+単射への拡張には境界 cell 分解に対する RLP の閉性だけを使った。
+Kan fibration の π₀ 全射性から頂点そのものの全射性を、RelStruct の辺の持ち上げで証明した。
+
+相対版では、底の標準単体の収縮を境界で持ち上げた。
+終点での境界は一つの fiber 内に入り、その fiber の充填後、区間の相対延長で元の底へ戻す。
+これにより、全ての fiber の終対象射が全単射 RLP を持てば、元の fibration 自身も全単射 RLP を持つ。
+長完全列からの fiber の消滅と合わせ、非空な Kan 複体間の Kan fibration の π_* 同型性と全単射 RLP の同値を実証した。
+HT-KQ の引用も新しい弱同値公理も用いない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SimplexLastContraction.map` / `.homotopy` | 標準単体の明示的な区間収縮 |
+| `LastHornContraction.map` / `.homotopy` | 最後のホーンへの制限と端点の式 |
+| `BoundaryNormalization.exists_normalization` | 境界のホーン上での定数化と実ホモトピー |
+| `BoundaryNormalization.lastSimplex` | 正規化した境界の最後の面の PtSimplex 表示 |
+| `BoundaryNormalization.exists_filler_of_lastSimplex` | 最後の面の類の消滅からの充填 |
+| `terminal_rlp_of_homotopySubsingleton` | 全ホモトピー類の消滅から全単射 RLP |
+| `fiber_terminal_rlp_of_piIsomorphism` | acyclic fiber の実際の充填性 |
+| `exists_fibration_interval_lift` | 指定始点からの区間の持ち上げ |
+| `fibration_surjective_vertices_of_zero` | π₀ 全射性からの頂点の全射性 |
+| `exists_boundary_lift_of_fiber_lifting` | fiber の充填から相対境界充填 |
+| `fibration_rlp_of_piIsomorphism` / `.fibration_piIsomorphism_iff_rlp` | Kan fibration の相対 Whitehead |
+
+参照：Goerss–Jardine I §§7–8、Kerodon §§3.2.2・3.2.6、BF 1978 §2。
+保存単位の対象ビルド 2331 jobs 成功。
+私有宣言を含む 132 モジュール 2102 宣言で標準三公理のみ。
+L9d は進行中。任意の Kan 射の π_* 同型からの逆射の実現と乗法 telescope は引き続き未完了。
