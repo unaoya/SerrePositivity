@@ -13,6 +13,7 @@ set_option pp.universes true
 set_option pp.explicit true
 
 
+
 -- BarEdge.lean
 
 #check @SerrePositivity.KST.Comparison.monoidEdgeSimplex
@@ -398,6 +399,51 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.RegularAction.val
 #print axioms SerrePositivity.KST.Comparison.RegularAction.val
+
+
+-- RegularBarContraction.lean
+
+#check @SerrePositivity.KST.Comparison.regularAction_eqToHom_val
+#print axioms SerrePositivity.KST.Comparison.regularAction_eqToHom_val
+
+#check @SerrePositivity.KST.Comparison.regularAction_id_val
+#print axioms SerrePositivity.KST.Comparison.regularAction_id_val
+
+#check @SerrePositivity.KST.Comparison.regularAction_comp_val
+#print axioms SerrePositivity.KST.Comparison.regularAction_comp_val
+
+#check @SerrePositivity.KST.Comparison.regularActionInterval
+#print axioms SerrePositivity.KST.Comparison.regularActionInterval
+
+#check @SerrePositivity.KST.Comparison.regularActionInterval_map
+#print axioms SerrePositivity.KST.Comparison.regularActionInterval_map
+
+#check @SerrePositivity.KST.Comparison.regularBarContractionMap
+#print axioms SerrePositivity.KST.Comparison.regularBarContractionMap
+
+#check @SerrePositivity.KST.Comparison.regularBarBasepoint
+#print axioms SerrePositivity.KST.Comparison.regularBarBasepoint
+
+#check @SerrePositivity.KST.Comparison.regularBarContractionMap_one
+#print axioms SerrePositivity.KST.Comparison.regularBarContractionMap_one
+
+#check @SerrePositivity.KST.Comparison.regularBarContractionMap_zero
+#print axioms SerrePositivity.KST.Comparison.regularBarContractionMap_zero
+
+#check @SerrePositivity.KST.Comparison.regularBarContraction
+#print axioms SerrePositivity.KST.Comparison.regularBarContraction
+
+
+-- RegularBarProjection.lean
+
+#check @SerrePositivity.KST.Comparison.regularBarProjection
+#print axioms SerrePositivity.KST.Comparison.regularBarProjection
+
+#check @SerrePositivity.KST.Comparison.regularBarFiberMap
+#print axioms SerrePositivity.KST.Comparison.regularBarFiberMap
+
+#check @SerrePositivity.KST.Comparison.regularBarFiberMap_projection
+#print axioms SerrePositivity.KST.Comparison.regularBarFiberMap_projection
 
 
 -- SimplexComponents.lean

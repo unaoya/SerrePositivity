@@ -8,6 +8,7 @@ public import SerrePositivity.KST.Comparison.ConnectiveTruncation
 public import SerrePositivity.KST.Comparison.GrouplikeGL
 public import SerrePositivity.KST.Comparison.RegularBar
 public import SerrePositivity.KST.Comparison.BarEdge
+public import SerrePositivity.KST.Comparison.RegularBarContraction
 
 /-!
 # K-L2：比較定理の入口
