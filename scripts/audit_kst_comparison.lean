@@ -58,6 +58,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -916,6 +917,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
 
 
+-- HornChainBoundary.lean
+
+#check @SerrePositivity.KST.Comparison.hornChainVertex_map_hornFaces
+#print axioms SerrePositivity.KST.Comparison.hornChainVertex_map_hornFaces
+
+#check @SerrePositivity.KST.Comparison.hornChainToHorn_boundary
+#print axioms SerrePositivity.KST.Comparison.hornChainToHorn_boundary
+
+
 -- HornChainMissingVertex.lean
 
 #check @SerrePositivity.KST.Comparison.hornChainVertex_common_missing
@@ -985,6 +995,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.simplexMeetToVertex_mem_horn
 
 
+-- HornFacePoset.lean
+
+#check @SerrePositivity.KST.Comparison.HornFacePoset
+#print axioms SerrePositivity.KST.Comparison.HornFacePoset
+
+#check @SerrePositivity.KST.Comparison.hornFacePoset_partialOrder
+#print axioms SerrePositivity.KST.Comparison.hornFacePoset_partialOrder
+
+#check @SerrePositivity.KST.Comparison.hornFaceInclusion
+#print axioms SerrePositivity.KST.Comparison.hornFaceInclusion
+
+#check @SerrePositivity.KST.Comparison.hornFacesToSimplex
+#print axioms SerrePositivity.KST.Comparison.hornFacesToSimplex
+
+#check @SerrePositivity.KST.Comparison.hornFacesToSimplex_range_le
+#print axioms SerrePositivity.KST.Comparison.hornFacesToSimplex_range_le
+
+#check @SerrePositivity.KST.Comparison.hornFacesLastVertex
+#print axioms SerrePositivity.KST.Comparison.hornFacesLastVertex
+
+
 -- HornPreimage.lean
 
 #check @SerrePositivity.KST.Comparison.const_horn_vertex_mem
@@ -998,6 +1029,33 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.pullback_horn_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.pullback_horn_localized_isIso
+
+
+-- HornSubdivisionComparison.lean
+
+#check @SerrePositivity.KST.Comparison.hornSimplexOrderHom
+#print axioms SerrePositivity.KST.Comparison.hornSimplexOrderHom
+
+#check @SerrePositivity.KST.Comparison.hornSimplexOrderHom_map_mem
+#print axioms SerrePositivity.KST.Comparison.hornSimplexOrderHom_map_mem
+
+#check @SerrePositivity.KST.Comparison.hornSimplexFaceMap
+#print axioms SerrePositivity.KST.Comparison.hornSimplexFaceMap
+
+#check @SerrePositivity.KST.Comparison.hornFacesExUnit
+#print axioms SerrePositivity.KST.Comparison.hornFacesExUnit
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison
+
+
+-- HornSubdivisionLastVertex.lean
+
+#check @SerrePositivity.KST.Comparison.hornFacesExUnit_lastVertex
+#print axioms SerrePositivity.KST.Comparison.hornFacesExUnit_lastVertex
+
+#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_lastVertex
+#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_lastVertex
 
 
 -- IntervalBoundaryFamily.lean
@@ -1682,6 +1740,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi
 #print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi
+
+
+-- SubdivisionLastVertexMap.lean
+
+#check @SerrePositivity.KST.Comparison.subdivisionLastVertexMap
+#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexMap
+
+
+-- SubdivisionLastVertexSimplex.lean
+
+#check @SerrePositivity.KST.Comparison.subdivisionLastVertexMap_on_simplex
+#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexMap_on_simplex
+
+#check @SerrePositivity.KST.Comparison.subdivisionLastVertexMap_stdSimplex
+#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexMap_stdSimplex
 
 
 -- SubdivisionMaximum.lean
