@@ -80,7 +80,8 @@ pinched 模型では、比較による移送 `PinchedInterval.liftMap` の合成
 これは B1 全体の完了ではない。指定単位版（Cor 6.2.6.5）の逆方向は後述の通り完了し、
 単位を先に指定しない自然な各点の対応から単位を取り出す接続が残る。
 上の自然性は hX・hY の射と任意のパラメータの h Fun での対応として検証した段階であり、
-逆向きに入力する自然な写像空間対応の型と、そこから単位・余単位を構成する接続は未実装。
+逆向きに使う具体的な coherent 比較の型と単位候補の抽出は後述の通り実装した。
+その型による一般の自然な写像空間対応の表示と、各点の同値性から随伴を構成する接続は未完了。
 Cor 6.2.6.5 は指定された自然変換 η が誘導する比較の同値性を使う。各点で任意に選んだ
 同値だけから逆向きを主張しない。
 
@@ -346,12 +347,28 @@ raw な射を保ったパラメータ自然性を与える。`unitCompositionPat
 `qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition` として公開し、
 `UnitMappingSpaceCondition.qcatUnitHomMap_bijective` によって以前の全パラメータ版の条件も帰結として回収した。
 
-B1 全体は未完了。残るのは、単位を先に指定しない自然な各点の pinched 写像空間対応から
-自然な単位 η とその標準比較条件を取り出す接続である。
+単位を入力に含めない具体的な coherent 比較の準備として `leftMappingArrow F` を構成した。
+これは Y の矢印の始域射影を F に沿って引き戻した単体集合で、F(x)→y の族を全体として保持する。
+`leftMappingArrowLift` と `leftMappingArrowHomotopy` は、任意の単体集合 A 上の
+非定値の端点を持つホモトピーと矢印の族の相互表示を与える。射影・raw な射の回収と
+任意のパラメータ射に対する厳密な自然性を証明した。
+`MappingArrowComparison F G` はこの空間から `unitComma G` への一つの単体的な射で、
+x と y の射影を厳密に保つ。単位・余単位・同値性はフィールドに含めない。
+恒等矢印の族の像から `unitHomotopy : id_X ~ F≫G` とその `unitHom` を構成し、
+各点の成分が同じホモトピーの辺の類であることを証明した。
+`mapHomotopy` は非定値の端点にも作用し、その raw なパラメータ自然性を持つ。
+`MappingArrowComparison.intervalMap` は各点の区間写像空間の実際の射である。
+`intervalMap_family_h`・`intervalMap_family` は任意の A と A→Map(F(x),y) について、
+この射への前合成が元の coherent な比較の作用と厳密に一致することを保証する。
+各点で独立に選んだ同値の族では、この比較のデータを与えたことにはならない。
+
+B1 全体は未完了。残るのは、この具体的な比較模型と意図する自然な pinched 写像空間対応の
+同値の証明、および各点の比較と構成した単位 η の標準比較のホモトピーによる照合である。
+coherent な比較だけから構成した `unitHom` を、随伴の単位であるとはまだ主張しない。
 指定単位 η の各点の条件から、非定値の全パラメータ Hom 全単射、随伴と両三角恒等式へ進む経路は完了した。
 この指定単位版だけで、当初の自然な写像空間対応との同値全体を完了とは扱わない。B2〜B5 も未完了。
-対象ビルド（2141 jobs）・公理監査（1375 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 472 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2145 jobs）・公理監査（1457 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 476 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -597,3 +614,10 @@ B1 全体は未完了。残るのは、単位を先に指定しない自然な�
 | `qcatAdjunctionOfUnitMappingSpaceCondition`・`*_unitHom` | 各点の標準単位比較条件だけから指定単位を持つ随伴を構成・回収 | 実装済み |
 | `qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition` | 指定単位の Cor 6.2.6.5 の両方向 | 実装済み（単位を先に指定しない自然な対応との接続は別工程） |
 | `UnitMappingSpaceCondition.qcatUnitHomMap_bijective` | 各点の指定単位条件から非定値関手を含む全パラメータの Hom 全単射を回収 | 実装済み（追加仮定ではなく帰結） |
+| `leftMappingArrow`・`leftMappingArrowSource/Target`・`leftMappingArrowIdentityFamily` | F(x)→y の coherent な矢印の空間と恒等矢印の族 | 実装済み |
+| `leftMappingArrowLift`・`leftMappingArrowHomotopy` と回収・前合成公式 | 非定値端点を持つ任意のパラメータ族の厳密な表示 | 実装済み |
+| `MappingArrowComparison` | 両端の射影を保つ全単体的な矢印比較 | 実装済み（一般の自然な写像空間対応との同値は未証明） |
+| `MappingArrowComparison.unitHomotopy/unitHom/unitHom_component` | 恒等矢印の族から自然な単位候補とその各点の成分を抽出 | 実装済み（随伴の単位であることは未証明） |
+| `MappingArrowComparison.mapHomotopy`・`mapHomotopy_precomp_h` | 非定値の族への比較の作用と厳密なパラメータ自然性 | 実装済み |
+| `leftMappingIntervalFamily`・`leftMappingIntervalFamily_precomp` | 各点の区間族の矢印空間への自然な持ち上げ | 実装済み |
+| `MappingArrowComparison.intervalMap`・`intervalMap_family_h/intervalMap_family` | 各点の区間写像空間の射と任意の族への作用の厳密な一致 | 実装済み（同値性・標準単位比較との照合は別工程） |

@@ -742,3 +742,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.qcatAdjunctionOfUnitMappingSpaceCondition_unitHom
 #check @SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition
 #check @SerrePositivity.InfinityCategories.UnitMappingSpaceCondition.qcatUnitHomMap_bijective
+
+#check @SerrePositivity.InfinityCategories.leftMappingArrow
+#check @SerrePositivity.InfinityCategories.leftMappingArrowIdentityFamily
+#check @SerrePositivity.InfinityCategories.leftMappingArrowLift
+#check @SerrePositivity.InfinityCategories.leftMappingArrowHomotopy
+#check @SerrePositivity.InfinityCategories.leftMappingArrowLift_homotopy
+#check @SerrePositivity.InfinityCategories.leftMappingArrowLift_precomp
+#check @SerrePositivity.InfinityCategories.MappingArrowComparison
+#check @SerrePositivity.InfinityCategories.MappingArrowComparison.unitHomotopy
+#check @SerrePositivity.InfinityCategories.MappingArrowComparison.unitHom
+#check @SerrePositivity.InfinityCategories.MappingArrowComparison.unitHom_component
+#check @SerrePositivity.InfinityCategories.MappingArrowComparison.mapHomotopy_precomp_h
+#check @SerrePositivity.InfinityCategories.leftMappingIntervalFamily_precomp
+#check @SerrePositivity.InfinityCategories.MappingArrowComparison.intervalMap
+#check @SerrePositivity.InfinityCategories.MappingArrowComparison.intervalMap_family_h
+#check @SerrePositivity.InfinityCategories.MappingArrowComparison.intervalMap_family

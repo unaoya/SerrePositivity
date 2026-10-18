@@ -140,3 +140,7 @@ public import SerrePositivity.InfinityCategories.F1B.UnitLeftZigzagPointwise
 public import SerrePositivity.InfinityCategories.F1B.TriangleIdempotence
 public import SerrePositivity.InfinityCategories.F1B.UnitLeftTriangle
 public import SerrePositivity.InfinityCategories.F1B.UnitMappingAdjunction
+public import SerrePositivity.InfinityCategories.F1B.LeftMappingArrow
+public import SerrePositivity.InfinityCategories.F1B.LeftMappingArrowFamilies
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowComparison
+public import SerrePositivity.InfinityCategories.F1B.MappingArrowInterval
