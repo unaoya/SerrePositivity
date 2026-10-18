@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.KanPointHomNaturality
+public import SerrePositivity.InfinityCategories.F1.KanOppositeCoefficients
+public import SerrePositivity.InfinityCategories.F1.OppositeKanUnstraightening
+
 public import SerrePositivity.InfinityCategories.F1.StrictKanUnstraighteningComparison
 
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationNerveComparison

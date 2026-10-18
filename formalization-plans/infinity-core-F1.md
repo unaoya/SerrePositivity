@@ -7859,5 +7859,50 @@ lemma strictKanUnstraighteningComparison_isPrecompositionEquivalence
     {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
     IsPrecompositionEquivalence (strictKanUnstraighteningComparison F)
 
+def kanObjectForget : KanObject.{u} ⥤ SSet.{u}
+
+lemma kanObject_sHomWhiskerLeft (K : KanObject.{u}) {L M : KanObject.{u}} (f : L ⟶ M) :
+    (((SimplicialCategory.sHomFunctor KanObject).obj (Opposite.op K)).map f) =
+      (ihom K.obj).map f
+
+noncomputable def pointKanObjectHomNatIso :
+    (SimplicialCategory.sHomFunctor KanObject.{u}).obj (Opposite.op pointKanObject) ≅
+      kanObjectForget
+
+def kanObjectOpFunctor : KanObject.{u} ⥤ KanObject.{u}
+
+noncomputable def oppositePointHomDiagramIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (HomotopyLimits.simplicialHomDiagram (F ⋙ kanObjectOpFunctor) pointKanObject ⋙
+      SSet.opFunctor) ≅ F ⋙ kanObjectForget
+
+noncomputable def oppositePointHomWeightedIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerve (HomotopyLimits.simplicialHomDiagram
+      (F ⋙ kanObjectOpFunctor) pointKanObject ⋙ SSet.opFunctor) ≅
+      weightedNerve (F ⋙ kanObjectForget)
+
+lemma oppositePointHomWeightedIso_inv_projection
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (oppositePointHomWeightedIso F).inv ≫
+      weightedNerveProjection (HomotopyLimits.simplicialHomDiagram
+        (F ⋙ kanObjectOpFunctor) pointKanObject ⋙ SSet.opFunctor) =
+      weightedNerveProjection (F ⋙ kanObjectForget)
+
+noncomputable def oppositeKanUnstraighteningComparison
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (weightedNerve (F ⋙ kanObjectForget)) ⟶
+      leftUnstraightening (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor))
+
+lemma oppositeKanUnstraighteningComparison_projection
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    oppositeKanUnstraighteningComparison F ≫
+      leftUnstraighteningProjection (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor)) =
+      (SSet.uliftFunctor.{u + 1, u}).map (weightedNerveProjection (F ⋙ kanObjectForget))
+
+lemma oppositeKanUnstraighteningComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    IsPrecompositionEquivalence (oppositeKanUnstraighteningComparison F)
+
 end SerrePositivity.InfinityCategories
 ```
