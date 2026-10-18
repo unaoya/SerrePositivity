@@ -106,3 +106,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionExtensionG
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionBoundaryExtension
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionMonomorphisms
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRightQuasicategory
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRightKan

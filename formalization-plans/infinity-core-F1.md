@@ -2774,5 +2774,20 @@ lemma exists_extension_of_precompositionEquivalence {A B Z : SSet.{u}} [Quasicat
 instance coherentResolutionRightAdjoint_quasicategory (Z : SSet.{u}) [Quasicategory Z] :
     Quasicategory (coherentResolutionRightAdjoint.obj Z)
 
+lemma trivialKanFibration_pre_horn (Z : SSet.{u}) [KanComplex Z]
+    (n : ℕ) (i : Fin (n + 2)) : TrivialKanFibration ((pre (horn (n + 1) i).ι).app Z)
+
+lemma coherentResolution_pre_horn_isQCatEquivalence (Z : SSet.{u}) [KanComplex Z]
+    (n : ℕ) (i : Fin (n + 2)) :
+    IsQCatEquivalence ((pre (coherentResolution.map (horn (n + 1) i).ι)).app Z)
+
+lemma coherentResolutionRightAdjoint_horn_extension (Z : SSet.{u}) [KanComplex Z]
+    (n : ℕ) (i : Fin (n + 2))
+    (σ : (horn (n + 1) i).toSSet ⟶ coherentResolutionRightAdjoint.obj Z) :
+    ∃ F : Δ[n + 1] ⟶ coherentResolutionRightAdjoint.obj Z, (horn (n + 1) i).ι ≫ F = σ
+
+instance coherentResolutionRightAdjoint_kanComplex (Z : SSet.{u}) [KanComplex Z] :
+    KanComplex (coherentResolutionRightAdjoint.obj Z)
+
 end SerrePositivity.InfinityCategories
 ```
