@@ -10262,5 +10262,134 @@ lemma relativeFunctorPullback_vertex {E F B D : SSet.{u}}
       (pullback.lift (pullback.fst p k ≫ f) (pullback.snd p k)
         (by rw [Category.assoc, hf, pullback.condition])) (pullback.lift_snd _ _ _)
 
+lemma intervalMappingBoundary_post {X Y : SSet.{u}} (f : X ⟶ Y) (x y : X _⦋0⦌) :
+    intervalMappingBoundary x y ≫ f =
+      intervalMappingBoundary (f.app _ x) (f.app _ y)
+
+def intervalMappingPost {X Y : SSet.{u}} (f : X ⟶ Y) (x y : X _⦋0⦌) :
+    intervalMappingSpace x y ⟶ intervalMappingSpace (f.app _ x) (f.app _ y)
+
+lemma intervalMappingPost_uncurry {T X Y : SSet.{u}}
+    (f : X ⟶ Y) (x y : X _⦋0⦌) (g : T ⟶ intervalMappingSpace x y) :
+    intervalMappingUncurry (g ≫ intervalMappingPost f x y) =
+      intervalMappingUncurry g ≫ f
+
+lemma functorParameterizedPrism_pre {K B D L X : SSet.{u}}
+    (H : K ⊗ L ⟶ (ihom B).obj X) (k : D ⟶ B) :
+    functorParameterizedPrism (H ≫ (pre k).app X) =
+      ((K ◁ k) ▷ L) ≫ functorParameterizedPrism H
+
+lemma functorParameterizedPrism_parameter {K B L M X : SSet.{u}}
+    (H : K ⊗ L ⟶ (ihom B).obj X) (i : M ⟶ L) :
+    functorParameterizedPrism ((K ◁ i) ≫ H) =
+      ((K ⊗ B) ◁ i) ≫ functorParameterizedPrism H
+
+def leftUnstraighteningTransformationRestriction {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    leftUnstraighteningTransformationSpace F G ⟶
+      leftUnstraighteningTransformationSpace (k ≫ F) (k ≫ G)
+
+lemma leftUnstraighteningTransformationRestriction_uncurry {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    intervalMappingUncurry (leftUnstraighteningTransformationRestriction F G k) =
+      intervalMappingUncurry (𝟙 (leftUnstraighteningTransformationSpace F G)) ≫
+        (pre k).app SpaceInfinity
+
+lemma leftUnstraighteningTransformationFamily_restriction {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    ((Δ[1] ⊗ D) ◁ leftUnstraighteningTransformationRestriction F G k) ≫
+      leftUnstraighteningTransformationFamily (k ≫ F) (k ≫ G) =
+    ((Δ[1] ◁ k) ▷ leftUnstraighteningTransformationSpace F G) ≫
+      leftUnstraighteningTransformationFamily F G
+
+noncomputable def leftUnstraighteningRestrictedLift {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    ((Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening (k ≫ F)) ⊗
+      leftUnstraighteningTransformationSpace F G ⟶ PointedSpaceInfinity.{u}
+
+noncomputable def leftUnstraighteningRestrictionLift {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    ((Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening (k ≫ F)) ⊗
+      leftUnstraighteningTransformationSpace F G ⟶ PointedSpaceInfinity.{u}
+
+lemma leftUnstraighteningRestrictedLift_projection {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    leftUnstraighteningRestrictedLift F G k ≫ pointedSpaceProjection =
+      ((Δ[1] ◁ leftUnstraighteningProjection (k ≫ F)) ▷
+        leftUnstraighteningTransformationSpace F G) ≫
+      ((Δ[1] ⊗ D) ◁ leftUnstraighteningTransformationRestriction F G k) ≫
+        leftUnstraighteningTransformationFamily (k ≫ F) (k ≫ G)
+
+lemma leftUnstraighteningRestrictionLift_projection {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    leftUnstraighteningRestrictionLift F G k ≫ pointedSpaceProjection =
+      ((Δ[1] ◁ leftUnstraighteningProjection (k ≫ F)) ▷
+        leftUnstraighteningTransformationSpace F G) ≫
+      ((Δ[1] ⊗ D) ◁ leftUnstraighteningTransformationRestriction F G k) ≫
+        leftUnstraighteningTransformationFamily (k ≫ F) (k ≫ G)
+
+lemma leftUnstraighteningRestrictedLift_start {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    (simplexPrismVertex 1 0 (leftUnstraightening (k ≫ F)) ▷
+      leftUnstraighteningTransformationSpace F G) ≫ leftUnstraighteningRestrictedLift F G k =
+    fst (leftUnstraightening (k ≫ F)) (leftUnstraighteningTransformationSpace F G) ≫
+      pullback.fst pointedSpaceProjection (k ≫ F)
+
+lemma leftUnstraighteningRestrictionLift_start {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    (simplexPrismVertex 1 0 (leftUnstraightening (k ≫ F)) ▷
+      leftUnstraighteningTransformationSpace F G) ≫ leftUnstraighteningRestrictionLift F G k =
+    fst (leftUnstraightening (k ≫ F)) (leftUnstraighteningTransformationSpace F G) ≫
+      pullback.fst pointedSpaceProjection (k ≫ F)
+
+noncomputable def relativeFunctorExtensionEndpoint_curryIso
+    {A D C E F B L : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+    (b : A ⟶ B) (i : D ⟶ A) (hi : leftAnodyneExtensions i)
+    (v : D ⟶ E) (hv : v ≫ p = i ≫ b)
+    (j : C ⊗ L ⟶ A) (q : F ⟶ B) (a : C ⟶ F)
+    (hj : j ≫ b = (fst C L ≫ a) ≫ q)
+    (W W' : A ⟶ E) (hW : W ≫ p = b) (hW' : W' ≫ p = b)
+    (hWi : i ≫ W = v) (hWi' : i ≫ W' = v)
+    (g g' : C ⊗ L ⟶ pullback p q)
+    (hg : g ≫ pullback.snd p q = fst C L ≫ a)
+    (hg' : g' ≫ pullback.snd p q = fst C L ≫ a)
+    (hWj : j ≫ W = g ≫ pullback.fst p q)
+    (hWj' : j ≫ W' = g' ≫ pullback.fst p q) :
+    FunctorIso (relativeFunctorCurry g hg) (relativeFunctorCurry g' hg')
+
+lemma leftUnstraighteningMappingFamily_projection {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    leftUnstraighteningMappingFamily F G ≫ leftUnstraighteningProjection G =
+      fst _ _ ≫ leftUnstraighteningProjection F
+
+lemma leftUnstraighteningMappingFamily_pointed {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    leftUnstraighteningMappingFamily F G ≫ pullback.fst pointedSpaceProjection G =
+      (simplexPrismVertex 1 1 (leftUnstraightening F) ▷
+        leftUnstraighteningTransformationSpace F G) ≫
+          leftUnstraighteningTransformationFamilyLift F G
+
+noncomputable def leftUnstraighteningMappingSourceRestriction {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    {g : leftUnstraightening (k ≫ F) ⊗ leftUnstraighteningTransformationSpace F G ⟶
+        leftUnstraightening G //
+      g ≫ leftUnstraighteningProjection G =
+        fst _ _ ≫ leftUnstraighteningProjection (k ≫ F) ≫ k}
+
+noncomputable def leftUnstraighteningMappingTargetRestriction {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    {g : leftUnstraightening (k ≫ F) ⊗ leftUnstraighteningTransformationSpace F G ⟶
+        leftUnstraightening G //
+      g ≫ leftUnstraighteningProjection G =
+        fst _ _ ≫ leftUnstraighteningProjection (k ≫ F) ≫ k}
+
+noncomputable def leftUnstraighteningMappingRestrictionIso {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    FunctorIso
+      (relativeFunctorCurry (leftUnstraighteningMappingSourceRestriction F G k).val
+        (leftUnstraighteningMappingSourceRestriction F G k).property)
+      (relativeFunctorCurry (leftUnstraighteningMappingTargetRestriction F G k).val
+        (leftUnstraighteningMappingTargetRestriction F G k).property)
+
 end SerrePositivity.InfinityCategories
 ```
