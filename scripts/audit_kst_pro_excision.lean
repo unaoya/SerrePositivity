@@ -1752,3 +1752,78 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.alexanderWhitney_naturality
 #print axioms SerrePositivity.KST.ProExcision.alexanderWhitney_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMap_comp
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMap_comp
+
+#check @SerrePositivity.KST.ProExcision.normalizedAlexanderWhitney
+#print axioms SerrePositivity.KST.ProExcision.normalizedAlexanderWhitney
+
+#check @SerrePositivity.KST.ProExcision.normalizedAlexanderWhitney_naturality
+#print axioms SerrePositivity.KST.ProExcision.normalizedAlexanderWhitney_naturality
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.compl_card
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.compl_card
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.left
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.left
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.right
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.inversions
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.inversions
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.left_apply
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.left_apply
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.right_apply
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right_apply
+
+#check @SerrePositivity.KST.ProExcision.shuffleBidegree
+#print axioms SerrePositivity.KST.ProExcision.shuffleBidegree
+
+#check @SerrePositivity.KST.ProExcision.shuffleApp
+#print axioms SerrePositivity.KST.ProExcision.shuffleApp
+
+#check @SerrePositivity.KST.ProExcision.ι_shuffleApp
+#print axioms SerrePositivity.KST.ProExcision.ι_shuffleApp
+
+#check @SerrePositivity.KST.ProExcision.shuffleBidegree_naturality
+#print axioms SerrePositivity.KST.ProExcision.shuffleBidegree_naturality
+
+#check @SerrePositivity.KST.ProExcision.shuffleApp_naturality
+#print axioms SerrePositivity.KST.ProExcision.shuffleApp_naturality
+
+#check @SerrePositivity.KST.ProExcision.shufflePrefix_card
+#print axioms SerrePositivity.KST.ProExcision.shufflePrefix_card
+
+#check @SerrePositivity.KST.ProExcision.shufflePrefix_partition
+#print axioms SerrePositivity.KST.ProExcision.shufflePrefix_partition
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.coordinates_add
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.coordinates_add
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.left_zero
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.left_zero
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.right_zero
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right_zero
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.left_last
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.left_last
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.right_last
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right_last
+
+#check @SerrePositivity.KST.ProExcision.shufflePrefix_succ
+#print axioms SerrePositivity.KST.ProExcision.shufflePrefix_succ
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.left_step
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.left_step
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.right_step
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right_step

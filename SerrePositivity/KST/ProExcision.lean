@@ -102,3 +102,7 @@ public import SerrePositivity.KST.ProExcision.AWBoundaryCoordinates
 public import SerrePositivity.KST.ProExcision.AWBoundaryTerms
 public import SerrePositivity.KST.ProExcision.AWBoundarySum
 public import SerrePositivity.KST.ProExcision.AWChainMap
+public import SerrePositivity.KST.ProExcision.NormalizedAlexanderWhitney
+public import SerrePositivity.KST.ProExcision.ShuffleIndex
+public import SerrePositivity.KST.ProExcision.Shuffle
+public import SerrePositivity.KST.ProExcision.ShufflePath
