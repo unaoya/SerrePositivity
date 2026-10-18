@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.JoinFunctor
+public import SerrePositivity.InfinityCategories.Core.JoinLeftColimits
 
 /-!
 概要：join の左因子に関する二辺の貼り合わせ。
@@ -15,16 +16,6 @@ universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：右因子を固定した join は左因子の射に関して関手。
-方針：joinMap の右成分に恒等射を入れる。
-規約：固定した右因子は B。
-使われ方：Kerodon §4.3.3、Proposition 5.2.5.1 の内ホーンの貼り合わせ。 -/
-def joinLeftFunctor (B : SSet.{u}) : SSet.{u} ⥤ SSet.{u} where
-  obj A := join A B
-  map f := joinMap f (𝟙 B)
-  map_id A := joinMap_id A B
-  map_comp f g := by simpa only [Category.comp_id] using joinMap_comp f g (𝟙 B) (𝟙 B)
 
 /-- 概要：左因子の部分複体の交わりは join の交わりに写る。
 方針：補った次数での左単体の所属を比較する。

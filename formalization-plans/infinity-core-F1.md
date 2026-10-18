@@ -609,8 +609,6 @@ lemma squareComparison_trivialKanFibration_cancel_left
     [TrivialKanFibration (squareComparison (sq₂.horiz_comp sq₁))] :
     TrivialKanFibration (squareComparison sq₁)
 
-def joinLeftFunctor (B : SSet.{u}) : SSet.{u} ⥤ SSet.{u}
-
 lemma joinSubcomplexLeft_inf (B : SSet.{u}) {A : SSet.{u}} (A₀ A₁ : A.Subcomplex) :
     joinSubcomplexLeft (A₀ ⊓ A₁) B = joinSubcomplexLeft A₀ B ⊓ joinSubcomplexLeft A₁ B
 
@@ -3036,6 +3034,30 @@ lemma cosliceFiberToIntervalMappingSpace_uncurry {A X : SSet.{u}} {x y : X _⦋0
     (f : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) :
     intervalMappingUncurry (f ≫ cosliceFiberToIntervalMappingSpace x y) =
       leftMappingSpacePrism A ≫ cosliceFiberUncurry f
+
+def joinEndpointDiagram (A B : SSet.{u}) : SSet.{u}
+
+def joinEndpointInclusion (A B : SSet.{u}) : joinEndpointDiagram A B ⟶ join A B
+
+noncomputable def fatJoinEndpointInclusion (A B : SSet.{u}) :
+    joinEndpointDiagram A B ⟶ fatJoin A B
+
+instance joinEndpointInclusion_mono (A B : SSet.{u}) : Mono (joinEndpointInclusion A B)
+
+lemma fatJoinEndpointInclusion_comparison (A B : SSet.{u}) :
+    fatJoinEndpointInclusion A B ≫ fatJoinComparison A B = joinEndpointInclusion A B
+
+instance fatJoinEndpointInclusion_mono (A B : SSet.{u}) :
+    Mono (fatJoinEndpointInclusion A B)
+
+lemma isQCatEquivalence_fatJoinComparison_fixedEndpoints
+    (A B X : SSet.{u}) [Quasicategory X] (p : joinEndpointDiagram A B ⟶ X) :
+    IsQCatEquivalence (vertexFiberMap
+      ((pre (joinEndpointInclusion A B)).app X)
+      ((pre (fatJoinEndpointInclusion A B)).app X)
+      ((pre (fatJoinComparison A B)).app X)
+      (by rw [← NatTrans.comp_app, ← pre_map, fatJoinEndpointInclusion_comparison])
+      (functorVertex p))
 
 end SerrePositivity.InfinityCategories
 ```

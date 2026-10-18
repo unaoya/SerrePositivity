@@ -146,7 +146,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.squareComparison_exists_lift
 #check @SerrePositivity.InfinityCategories.squareComparison_trivialKanFibration_horiz_comp
 #check @SerrePositivity.InfinityCategories.squareComparison_trivialKanFibration_cancel_left
-#check @SerrePositivity.InfinityCategories.joinLeftFunctor
 #check @SerrePositivity.InfinityCategories.joinSubcomplexLeft_inf
 #check @SerrePositivity.InfinityCategories.joinSubcomplexLeft_sup
 #check @SerrePositivity.InfinityCategories.joinSubcomplexLeft_bicartSq
@@ -700,3 +699,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace
 #check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_uncurry
 #check @SerrePositivity.InfinityCategories.cosliceFiberToIntervalMappingSpace_uncurry
+#check @SerrePositivity.InfinityCategories.joinEndpointDiagram
+#check @SerrePositivity.InfinityCategories.joinEndpointInclusion
+#check @SerrePositivity.InfinityCategories.fatJoinEndpointInclusion
+#check @SerrePositivity.InfinityCategories.joinEndpointInclusion_mono
+#check @SerrePositivity.InfinityCategories.fatJoinEndpointInclusion_comparison
+#check @SerrePositivity.InfinityCategories.fatJoinEndpointInclusion_mono
+#check @SerrePositivity.InfinityCategories.isQCatEquivalence_fatJoinComparison_fixedEndpoints
