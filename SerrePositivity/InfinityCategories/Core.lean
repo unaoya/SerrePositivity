@@ -102,3 +102,8 @@ public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
 public import SerrePositivity.InfinityCategories.Core.JoinTensor
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
 public import SerrePositivity.InfinityCategories.Core.ConeFamily
+
+public import SerrePositivity.InfinityCategories.Core.JoinTensorRight
+public import SerrePositivity.InfinityCategories.Core.FatJoin
+public import SerrePositivity.InfinityCategories.Core.FatJoinComparison
+public import SerrePositivity.InfinityCategories.Core.FunctorComposition

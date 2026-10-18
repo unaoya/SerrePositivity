@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -5893,6 +5893,191 @@ lemma sliceConeFamilyUncurry_vertex {J X : SSet.{u}} (p : J ⟶ X) (c : JoinCone
 
 lemma sliceConeFamilyMap_app_zero {J X : SSet.{u}} (p : J ⟶ X) (c : JoinCone p) :
     (sliceConeFamilyMap p).app (Opposite.op ⦋0⦌) c = coneFamilyVertexEquiv p c
+
+end SerrePositivity.InfinityCategories
+```
+
+
+### A6 続き：fat join の構成と比較射、関手単体集合の前後合成（2026-10-18）
+
+既存の join を変えず、(A×Δ[1])×B の零端を A、一端を B に射影で潰す二つの pushout として fatJoin A B を構成した。貼り合わせの普遍性、左右包含・円柱上の計算を証明。joinTensorRight と標準区間の join 表示を使い、fatJoinComparison A B : fatJoin A B ⟶ join A B を構成して両因子と円柱上の計算を得た。比較射が categorical equivalence であることは未完了（Kerodon Theorem 4.6.2.8、https://kerodon.net/tag/01HV）。
+
+内部 Hom の合成を curry して前後合成の単体集合の射を構成し、FunctorIso.map_pre/map_post を得た。これにより QCatEquivalence.precompose/postcompose と IsQCatEquivalence の対応を証明した。前合成では新しい標的 Z の quasicategory 性を仮定し、後合成のパラメーター K は任意。各定義・定理の正確な前提は以下。Core ビルド1658 jobs、累計918宣言の標準3公理監査成功。A6 の任意図式の主定理、A4・A5 は未完了。既存の公開名・型は変更していない。
+
+JoinTensorRight：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+namespace Join
+def suffixIncl (n r : ℕ) (_hr : r ≤ n) : Fin (n - r) →o Fin n
+
+lemma augMap_suffix_rightMap (C : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (r : ℕ) (hr : r ≤ n) (c : augObj C n) :
+    augMap C (rightMap α r) (augMap C (suffixIncl n r hr) c) =
+      augMap C (suffixIncl m (pullCut α r) (pullCut_le α r)) (augMap C α c)
+
+def tensorRightSimplex (A B C : SSet.{u}) (n : ℕ)
+    (s : Simplex A B n) (c : C _⦋n⦌) : Simplex A (B ⊗ C) n
+
+lemma tensorRightSimplex_naturality (A B C : SSet.{u}) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (s : Simplex A B n) (c : C _⦋n⦌) :
+    simplexMap A (B ⊗ C) α (tensorRightSimplex A B C n s c) =
+      tensorRightSimplex A B C m (simplexMap A B α s) (augMap C α c)
+
+end Join
+def joinTensorRight (A B C : SSet.{u}) : join A B ⊗ C ⟶ join A (B ⊗ C)
+
+lemma joinTensorRight_inr (A B C : SSet.{u}) :
+    (joinInr A B ▷ C) ≫ joinTensorRight A B C = joinInr A (B ⊗ C)
+
+lemma joinTensorRight_inl (A B C : SSet.{u}) :
+    (joinInl A B ▷ C) ≫ joinTensorRight A B C = fst A C ≫ joinInl A (B ⊗ C)
+
+end SerrePositivity.InfinityCategories
+```
+
+FatJoin：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+noncomputable def fatJoinStage (A B : SSet.{u}) : SSet.{u}
+
+noncomputable def fatJoinStageEnd (A B : SSet.{u}) : A ⊗ B ⟶ fatJoinStage A B
+
+noncomputable def fatJoin (A B : SSet.{u}) : SSet.{u}
+
+noncomputable def fatJoinCylinder (A B : SSet.{u}) :
+    (A ⊗ (Δ[1] : SSet.{u})) ⊗ B ⟶ fatJoin A B
+
+noncomputable def fatJoinInl (A B : SSet.{u}) : A ⟶ fatJoin A B
+
+noncomputable def fatJoinInr (A B : SSet.{u}) : B ⟶ fatJoin A B
+
+lemma fatJoinCylinder_zero (A B : SSet.{u}) :
+    (SSet.ι₀ (X := A) ▷ B) ≫ fatJoinCylinder A B = fst A B ≫ fatJoinInl A B
+
+lemma fatJoinCylinder_one (A B : SSet.{u}) :
+    (SSet.ι₁ (X := A) ▷ B) ≫ fatJoinCylinder A B = snd A B ≫ fatJoinInr A B
+
+noncomputable def fatJoinDesc {A B X : SSet.{u}} (f : A ⟶ X) (g : B ⟶ X)
+    (H : (A ⊗ (Δ[1] : SSet.{u})) ⊗ B ⟶ X)
+    (h₀ : (SSet.ι₀ (X := A) ▷ B) ≫ H = fst A B ≫ f)
+    (h₁ : (SSet.ι₁ (X := A) ▷ B) ≫ H = snd A B ≫ g) : fatJoin A B ⟶ X
+
+lemma fatJoinCylinder_desc {A B X : SSet.{u}} (f : A ⟶ X) (g : B ⟶ X)
+    (H : (A ⊗ (Δ[1] : SSet.{u})) ⊗ B ⟶ X)
+    (h₀ : (SSet.ι₀ (X := A) ▷ B) ≫ H = fst A B ≫ f)
+    (h₁ : (SSet.ι₁ (X := A) ▷ B) ≫ H = snd A B ≫ g) :
+    fatJoinCylinder A B ≫ fatJoinDesc f g H h₀ h₁ = H
+
+lemma fatJoinInl_desc {A B X : SSet.{u}} (f : A ⟶ X) (g : B ⟶ X)
+    (H : (A ⊗ (Δ[1] : SSet.{u})) ⊗ B ⟶ X)
+    (h₀ : (SSet.ι₀ (X := A) ▷ B) ≫ H = fst A B ≫ f)
+    (h₁ : (SSet.ι₁ (X := A) ▷ B) ≫ H = snd A B ≫ g) :
+    fatJoinInl A B ≫ fatJoinDesc f g H h₀ h₁ = f
+
+lemma fatJoinInr_desc {A B X : SSet.{u}} (f : A ⟶ X) (g : B ⟶ X)
+    (H : (A ⊗ (Δ[1] : SSet.{u})) ⊗ B ⟶ X)
+    (h₀ : (SSet.ι₀ (X := A) ▷ B) ≫ H = fst A B ≫ f)
+    (h₁ : (SSet.ι₁ (X := A) ▷ B) ≫ H = snd A B ≫ g) :
+    fatJoinInr A B ≫ fatJoinDesc f g H h₀ h₁ = g
+
+lemma fatJoin_hom_ext {A B X : SSet.{u}} {f g : fatJoin A B ⟶ X}
+    (hH : fatJoinCylinder A B ≫ f = fatJoinCylinder A B ≫ g)
+    (hf : fatJoinInl A B ≫ f = fatJoinInl A B ≫ g)
+    (hg : fatJoinInr A B ≫ f = fatJoinInr A B ≫ g) : f = g
+
+end SerrePositivity.InfinityCategories
+```
+
+FatJoinComparison：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+noncomputable def pointTensorSection (A : SSet.{u}) : A ⟶ A ⊗ (Δ[0] : SSet.{u})
+
+lemma intervalJoin_zero (A : SSet.{u}) :
+    SSet.ι₀ (X := A) ≫ (A ◁ (joinStdSimplexIso 0 0).inv) =
+      pointTensorSection A ≫ (A ◁ joinInl (Δ[0] : SSet.{u}) Δ[0])
+
+lemma intervalJoin_one (A : SSet.{u}) :
+    SSet.ι₁ (X := A) ≫ (A ◁ (joinStdSimplexIso 0 0).inv) =
+      pointTensorSection A ≫ (A ◁ joinInr (Δ[0] : SSet.{u}) Δ[0])
+
+noncomputable def joinCylinderMap (A B : SSet.{u}) :
+    (A ⊗ (Δ[1] : SSet.{u})) ⊗ B ⟶ join A B
+
+lemma joinCylinderMap_zero (A B : SSet.{u}) :
+    (SSet.ι₀ (X := A) ▷ B) ≫ joinCylinderMap A B = fst A B ≫ joinInl A B
+
+lemma joinCylinderMap_one (A B : SSet.{u}) :
+    (SSet.ι₁ (X := A) ▷ B) ≫ joinCylinderMap A B = snd A B ≫ joinInr A B
+
+noncomputable def fatJoinComparison (A B : SSet.{u}) : fatJoin A B ⟶ join A B
+
+lemma fatJoinCylinder_comparison (A B : SSet.{u}) :
+    fatJoinCylinder A B ≫ fatJoinComparison A B = joinCylinderMap A B
+
+lemma fatJoinInl_comparison (A B : SSet.{u}) :
+    fatJoinInl A B ≫ fatJoinComparison A B = joinInl A B
+
+lemma fatJoinInr_comparison (A B : SSet.{u}) :
+    fatJoinInr A B ≫ fatJoinComparison A B = joinInr A B
+
+end SerrePositivity.InfinityCategories
+```
+
+FunctorComposition：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+def functorPrecompositionMap (A B Z : SSet.{u}) :
+    (ihom A).obj B ⟶ (ihom ((ihom B).obj Z)).obj ((ihom A).obj Z)
+
+def functorPostcompositionMap (K X Y : SSet.{u}) :
+    (ihom X).obj Y ⟶ (ihom ((ihom K).obj X)).obj ((ihom K).obj Y)
+
+lemma functorPrecompositionMap_vertex {A B Z : SSet.{u}} (f : A ⟶ B) :
+    (functorPrecompositionMap A B Z).app (Opposite.op ⦋0⦌) (functorVertex f) =
+      functorVertex ((pre f).app Z)
+
+lemma functorPostcompositionMap_vertex {K X Y : SSet.{u}} (f : X ⟶ Y) :
+    (functorPostcompositionMap K X Y).app (Opposite.op ⦋0⦌) (functorVertex f) =
+      functorVertex ((ihom K).map f)
+
+def FunctorIso.map_pre {A B : SSet.{u}} {f g : A ⟶ B} (e : FunctorIso f g) (Z : SSet.{u}) :
+    FunctorIso ((pre f).app Z) ((pre g).app Z)
+
+def FunctorIso.map_post {X Y : SSet.{u}} {f g : X ⟶ Y} (e : FunctorIso f g) (K : SSet.{u}) :
+    FunctorIso ((ihom K).map f) ((ihom K).map g)
+
+def QCatEquivalence.precompose {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (e : QCatEquivalence X Y) (Z : SSet.{u}) [Quasicategory Z] :
+    QCatEquivalence ((ihom Y).obj Z) ((ihom X).obj Z)
+
+def QCatEquivalence.postcompose {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (e : QCatEquivalence X Y) (K : SSet.{u}) :
+    QCatEquivalence ((ihom K).obj X) ((ihom K).obj Y)
+
+lemma IsQCatEquivalence.precompose {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f : X ⟶ Y} (he : IsQCatEquivalence f) (Z : SSet.{u}) [Quasicategory Z] :
+    IsQCatEquivalence ((pre f).app Z)
+
+lemma IsQCatEquivalence.postcompose {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f : X ⟶ Y} (he : IsQCatEquivalence f) (K : SSet.{u}) :
+    IsQCatEquivalence ((ihom K).map f)
 
 end SerrePositivity.InfinityCategories
 ```
