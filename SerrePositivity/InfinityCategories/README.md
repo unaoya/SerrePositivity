@@ -2194,7 +2194,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開615宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開649宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2822,7 +2822,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開615宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開649宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3504,6 +3504,63 @@ isLimitCone_iff_fixedApexConeHomComparison_homotopyEquivalence c :
 元の span の自明 Kan fibration の切断の選択を保持する。その自然性は主張しない。
 切断空間側の `sectionFixedApexConeFamilyMap` の同値性、豊穣 q_x との一致、
 𝒮・Sp の残りの適用は未完了であり、γ3b・γ3c の完成とは数えない。
+
+### 切断の右パラメータ表示と標準比較の厳密な左逆（実装済み）
+
+`SectionConeUniversal` は切断空間の任意パラメータ A に対する普遍性を公開した。
+任意の `K X A : SSet.{u}`、`p : K ⟶ X`、`x : X _⦋0⦌` に対して、充填性の仮定なしで
+
+```lean
+sectionConeHomEquiv p x A :
+  (A ⟶ coherentConeSectionSpace p x) ≃
+    {F : join (Δ[0] : SSet.{u}) (K ⊗ A) ⟶ X //
+      joinInl Δ[0] (K ⊗ A) ≫ F = SSet.yonedaEquiv.symm x ∧
+        joinInr Δ[0] (K ⊗ A) ≫ F = fst K A ≫ p}
+```
+
+を証明した。`sectionConeUncurry`・`sectionConeCurry` の両端条件、自然性、単射性と往復則を含む。
+
+`FatJoinTensorRight` と `FatJoinTensorRightComparison` は右パラメータを fat join の右因子へ移す射
+`fatJoinTensorRight A B P : fatJoin A B ⊗ P ⟶ fatJoin A (B ⊗ P)` を構成した。
+左右の包含と円柱上の計算、パラメータへの自然性に加え、次の厳密な可換性を証明した。
+
+```lean
+fatJoinTensorRight_comparison A B P :
+  fatJoinTensorRight A B P ≫ fatJoinComparison A (B ⊗ P) =
+    (fatJoinComparison A B ▷ P) ≫ joinTensorRight A B P
+```
+
+`RightFatConeDiagram`・`RightFatConeNaturality` は任意の族
+`f : A ⟶ fixedEndpointFatConeSpace p x` を
+`rightFatConeDiagram f : fatJoin Δ[0] (K ⊗ A) ⟶ X` へ展開した。
+左端は x、右端は `fst K A ≫ p`。右直積比較で引き戻すと元の普遍族になること、
+パラメータへの自然性と単射性を証明した。左端と引き戻しによる射の一意性を使うため、
+空の A も扱え、右直積比較自体のエピ性を要求しない。
+
+`SectionFatConeComparison` は既存の二つの射の合成をそのまま比較として使う。
+
+```lean
+sectionFatConeComparison p x :
+  coherentConeSectionSpace p x ⟶ fixedEndpointFatConeSpace p x :=
+    sectionFixedApexConeFamilyMap p x ≫ fixedApexFatConeComparison p x
+sectionFatConeComparison_diagram f :
+  rightFatConeDiagram (f ≫ sectionFatConeComparison p x) =
+    fatJoinComparison Δ[0] (K ⊗ A) ≫ sectionConeUncurry f
+```
+
+この任意パラメータの同定から `sectionFatConeComparison_mono p x` を充填性なしで得た。
+さらに `[Quasicategory X]` の下で、F1 の `exists_joinDiagram_right_relative_extension` により
+比較の像の部分族を固定して延長し、次を証明した。
+
+```lean
+sectionFatConeComparison_exists_retraction p x :
+  ∃ r : fixedEndpointFatConeSpace p x ⟶ coherentConeSectionSpace p x,
+    sectionFatConeComparison p x ≫ r = 𝟙 _
+```
+
+K の quasicategory 性や非空性、p の fibration 性は不要。逆射は図式と頂点を保つ。
+圏同値性にはもう一方の合成のホモトピーが必要であり、厳密な左逆だけでは結論しない。
+切断側の比較の同値性、豊穣 q_x との接続、𝒮・Sp の残りの適用は引き続き未完了。
 
 ### 𝒮 の空積（実装済み）
 

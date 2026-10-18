@@ -1235,3 +1235,71 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms fixedApexConeHomComparison_homotopyEquivalence_iff
 #check @isLimitCone_iff_fixedApexConeHomComparison_homotopyEquivalence
 #print axioms isLimitCone_iff_fixedApexConeHomComparison_homotopyEquivalence
+#check @sectionConeUncurry
+#print axioms sectionConeUncurry
+#check @sectionConeUncurry_inl
+#print axioms sectionConeUncurry_inl
+#check @sectionConeUncurry_inr
+#print axioms sectionConeUncurry_inr
+#check @sectionConeUncurry_precomp
+#print axioms sectionConeUncurry_precomp
+#check @sectionConeUncurry_injective
+#print axioms sectionConeUncurry_injective
+#check @sectionConeCurry
+#print axioms sectionConeCurry
+#check @sectionConeUncurry_curry
+#print axioms sectionConeUncurry_curry
+#check @sectionConeCurry_uncurry
+#print axioms sectionConeCurry_uncurry
+#check @sectionConeHomEquiv
+#print axioms sectionConeHomEquiv
+#check @fatJoinTensorRightCylinderShuffle
+#print axioms fatJoinTensorRightCylinderShuffle
+#check @fatJoinTensorRight
+#print axioms fatJoinTensorRight
+#check @fatJoinTensorRight_inl
+#print axioms fatJoinTensorRight_inl
+#check @fatJoinTensorRight_inr
+#print axioms fatJoinTensorRight_inr
+#check @fatJoinTensorRight_cylinder
+#print axioms fatJoinTensorRight_cylinder
+#check @augTensorEquiv_symm_augHom_snd
+#print axioms augTensorEquiv_symm_augHom_snd
+#check @fatJoinTensorRight_parameter
+#print axioms fatJoinTensorRight_parameter
+#check @fatJoinTensorRight_comparison
+#print axioms fatJoinTensorRight_comparison
+#check @fixedFatConeFamily
+#print axioms fixedFatConeFamily
+#check @fixedFatConeFamily_inl
+#print axioms fixedFatConeFamily_inl
+#check @fixedFatConeFamily_inr
+#print axioms fixedFatConeFamily_inr
+#check @rightFatConeDiagram
+#print axioms rightFatConeDiagram
+#check @rightFatConeDiagram_inl
+#print axioms rightFatConeDiagram_inl
+#check @rightFatConeDiagram_inr
+#print axioms rightFatConeDiagram_inr
+#check @rightFatConeDiagram_family
+#print axioms rightFatConeDiagram_family
+#check @fatJoinTensorRight_hom_ext
+#print axioms fatJoinTensorRight_hom_ext
+#check @fixedFatConeFamily_precomp
+#print axioms fixedFatConeFamily_precomp
+#check @rightFatConeDiagram_precomp
+#print axioms rightFatConeDiagram_precomp
+#check @rightFatConeDiagram_injective
+#print axioms rightFatConeDiagram_injective
+#check @sectionFatConeComparison
+#print axioms sectionFatConeComparison
+#check @sectionConeFamilyUncurry_parameter
+#print axioms sectionConeFamilyUncurry_parameter
+#check @sectionFatConeComparison_family
+#print axioms sectionFatConeComparison_family
+#check @sectionFatConeComparison_diagram
+#print axioms sectionFatConeComparison_diagram
+#check @sectionFatConeComparison_mono
+#print axioms sectionFatConeComparison_mono
+#check @sectionFatConeComparison_exists_retraction
+#print axioms sectionFatConeComparison_exists_retraction
