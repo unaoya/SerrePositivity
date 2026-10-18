@@ -60,3 +60,6 @@ public import SerrePositivity.KST.SchemeLemmas.AffineUniversal
 public import SerrePositivity.KST.SchemeLemmas.ProductCenter
 public import SerrePositivity.KST.SchemeLemmas.ProductChartCover
 public import SerrePositivity.KST.SchemeLemmas.ProductBlowup
+public import SerrePositivity.KST.SchemeLemmas.ProductNaturality
+public import SerrePositivity.KST.SchemeLemmas.SchemeProductBlowup
+public import SerrePositivity.KST.SchemeLemmas.AdmissibleRefinement

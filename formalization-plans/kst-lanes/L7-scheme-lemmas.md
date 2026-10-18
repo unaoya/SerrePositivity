@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 641 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 663 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -63,7 +63,9 @@
 - 任意の正則な単項像中心について、生成係数の基本開被覆を構成し、blowup への実際の大域持ち上げの存在と一意性を証明済み。
 - 始域が任意のスキームでも、アフィン開被覆上で像中心が正則単項となる条件から普遍写像を構成し、その基底両立性と一意性を証明済み。
 - 積中心 IJ の積生成元チャートの被覆性と因子中心の正則単項性を証明し、Bl_{IJ} から Bl_I・Bl_J への実際のアフィン比較射と基底交換式を構成済み。
-- 次は積中心の比較射を一般スキームへ大域化する。同一基底上の二中心の共通細分と、blowup の合成を一つで支配する問題は区別する。後者はまだ未証明。
+- 積中心の比較射の自然性を証明して一般スキームへ大域化済み。積中心は admissible 性とアフィン局所有限生成性を保つ。
+- 局所 Noether 基底上の有限個の admissible 中心の blowup を一つで共通支配する補題を証明済み。
+- 同一基底上の有限中心の共通細分と、blowup 後の基底上にある中心の降下・合成の支配は区別する。次は後者のための幾何学的普遍性とイデアルの降下を進める。合成の支配はまだ未証明。
 - Noether でも実際に平坦な strict transform を達成する中心の存在と、admissible blowup の合成を一つで支配する段階は未証明。L7b 完了とはしない。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
@@ -499,6 +501,11 @@ strict transform とその平坦化の有限型特殊形は未実装であり、
 | `ideal_eq_span_of_regular_product` / `productChart_left_image` | ProductCenter | 検証済み | 積中心チャートで因子中心を単項化 |
 | `affineBlowupProductChartCover` | ProductChartCover | 検証済み | 積生成元による実際のアフィン開被覆 |
 | `affineBlowupProductLeftMap` / `affineBlowupProductRightMap` | ProductBlowup | 検証済み | 二つのアフィン blowup の共通細分の比較射 |
+| `affineBlowupProductLeftMap_naturality` | ProductNaturality | 検証済み | 積中心の比較射の係数写像に対する自然性 |
+| `blowupProductLeftMap` / `blowupProductRightMap` | SchemeProductBlowup | 検証済み | 一般スキーム上の二つの中心の共通細分 |
+| `centerComplement_mul` / `isUAdmissibleCenter_mul` | AdmissibleRefinement | 検証済み | 積中心の中心外開集合と admissible 性 |
+| `productCenter_finiteGeneration` | AdmissibleRefinement | 検証済み | 積中心のアフィン局所有限生成性 |
+| `exists_admissible_binary_refinement` / `exists_admissible_finite_refinement` | AdmissibleRefinement | 検証済み | 同一基底上の二中心・有限個の中心の共通支配 |
 | `exists_admissibleBlowup_dominating` | Flattening | 予定 | 081T の特殊形 |
 | Prop 5.2 の環論 | Section5 | 予定 | 冪・像・核 |
 | Claim 5.3 の左逆元 | K-L6 | 担当外 | K/pro の結論 |
