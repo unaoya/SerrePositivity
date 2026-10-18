@@ -21,6 +21,8 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせを整備し、任意の二つの単体集合の fat join 比較の普遍的な前合成の同値性も完成したが、右因子の図式を固定した fat join 比較の同値性と、固定図式上の可逆ホモトピーの join の円柱への延長と、任意のパラメーターにおける slice と固定図式上の関手の同型判定も証明した。太い slice の任意のパラメーターに対する普遍性も証明した。slice 比較射 `isQCatEquivalence_sliceConeFamilyMap` の同値性も完成。錐の fiber の終対象による極限判定と、相対境界充填を仮定した点ごとの条件からの極限性も証明した。cocartesian な輸送のホーンによる基礎と inner fibration の相対 coslice の left fibration 性も追加。点ごとの極限性から相対充填への方向と自然な錐の構成、任意図式の主定理は未完了。
 
+直近の A6：cocartesian な輸送の相対延長、fiber の終対象と相対境界充填の同値、錐の制限の cocartesian 性、通常の `IsPointwiseLimitCone` から `IsLimitCone` への方向まで完了。`HasPointwiseLimits` から自然な錐を構成する存在定理と、その存在仮定の下での任意の極限錐との同値は未完了。
+
 ## 1. Mathlib（固定版）の現状
 
 あるもの：`SSet`、`Δ[n]`、`∂Δ[n]`、`Λ[n, i]`、`Subcomplex`、`stdSimplex`、`horn.face`・`horn.hom_ext`、
@@ -9227,6 +9229,172 @@ lemma isTerminalVertex_fiber_iff_terminalBoundaryLifting {E B : SSet.{u}}
 未完了：錐の制限の cocartesian な輸送、通常の点ごとの極限性からの自然な錐の構成、A6 主定理。今回の一般補題により fiber の終対象から相対境界充填への接続は完了。A4・A5 は D チャット α-S の担当。本チャットは A6 完了・報告まで。
 
 検証：Core 対象ビルド1929 jobs成功、累計1522宣言の公理監査は標準3公理のみ。
+
+### A6 続き（2026-10-18）：錐の制限の cocartesian 性と通常の点ごとの極限性
+
+任意の K と quasicategory X に対して coneRestriction K X が CocartesianHornFibration になることを証明した。錐の頂点で可逆な関手の辺は cocartesian になる。先頭の外側ホーンと標準単体の積の正則 pairing を使い、右因子外の錐の単体の最初の頂点が錐の頂点であることから相対骨格で充填した。基底の辺の持ち上げは点の coslice の left fibration を使って錐の頂点を固定して構成した。
+
+これを一般の fiber の終対象から相対境界充填への定理に適用し、通常の IsLimitCone と錐の制限の TerminalBoundaryLifting の同値を得た。さらに従来の点ごとの相対充填の移送を接続して isLimitCone_of_pointwise を証明。入力は通常の IsPointwiseLimitCone であり、追加の相対充填の仮定は不要。HTT Proposition 5.1.2.2、Kerodon Propositions 5.3.7.5・7.1.6.13・7.1.8.5 の極限側。モデル構造や straightening は使わない。
+
+既存の公開名・型と §4 の設計は維持。以下 universe u、CategoryTheory・Limits・MonoidalCategory・MonoidalClosed・CartesianMonoidalCategory・SSet と scoped Simplicial を開く。型に列挙したもの以外の前提はない。
+
+`Core/InitialHornProductPairing.lean`：
+
+```lean
+def initialHornProductFirstEdge (m n : ℕ) :
+    ((Δ[m + 2] : SSet.{u}) ⊗ Δ[n]) _⦋1⦌
+
+lemma initialHornProductFirstEdge_mem (m n : ℕ) :
+    initialHornProductFirstEdge.{u} m n ∈
+      (Subcomplex.unionProd (horn (m + 2) 0) (boundary n)).obj (Opposite.op ⦋1⦌)
+
+lemma initialHornProductPairing_first_right_zero (m n : ℕ)
+    (s : prodStdSimplex.pairingCore.Type₁.{u} (0 : Fin (m + 2)) n) :
+    (s.x.cast s.hd).simplex.2 (0 : Fin (s.d + 2)) = 0
+
+lemma initialHornProductPairing_firstEdge_eq (m n : ℕ)
+    (s : prodStdSimplex.pairingCore.Type₁.{u} (0 : Fin (m + 2)) n) (hi : s.index = 0) :
+    ((Δ[m + 2] : SSet.{u}) ⊗ Δ[n]).map
+      (stdSimplex.objEquiv (stdSimplex.edge.{u} (s.d + 1) 0 1 (Fin.zero_le _))).op
+        (s.x.cast s.hd).simplex = initialHornProductFirstEdge m n
+
+lemma initialHornProductPairing_dim_ge (m n : ℕ)
+    (s : prodStdSimplex.pairingCore.Type₁.{u} (0 : Fin (m + 2)) n) : m + 1 ≤ s.d
+```
+
+`Core/InitialHornProductExtension.lean`：
+
+```lean
+lemma initialHornProduct_exists_extension_of_invertible_firstEdge {E : SSet.{u}} [Quasicategory E]
+    (m n : ℕ) (a : (Subcomplex.unionProd (horn (m + 2) 0) (boundary n) : SSet.{u}) ⟶ E)
+    (ha : IsInvertibleEdge (edgeOfSimplex (a.app (Opposite.op ⦋1⦌)
+      ⟨initialHornProductFirstEdge m n, initialHornProductFirstEdge_mem m n⟩))) :
+    ∃ F : (Δ[m + 2] : SSet.{u}) ⊗ Δ[n] ⟶ E,
+      (Subcomplex.unionProd (horn (m + 2) 0) (boundary n)).ι ≫ F = a
+```
+
+`Core/ConeFirstVertex.lean`：
+
+```lean
+lemma coneSimplex_firstVertex_of_not_range {K : SSet.{u}} {n : ℕ}
+    (s : (join (Δ[0] : SSet.{u}) K) _⦋n⦌)
+    (hs : s ∉ Set.range ((joinInr (Δ[0] : SSet.{u}) K).app (Opposite.op ⦋n⦌))) :
+    (join (Δ[0] : SSet.{u}) K).map (SimplexCategory.const ⦋0⦌ ⦋n⦌ 0).op s =
+      (joinInl (Δ[0] : SSet.{u}) K).app (Opposite.op ⦋0⦌)
+        (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
+```
+
+`Core/InitialHornProductBoundary.lean`：
+
+```lean
+lemma initialHornProduct_fill_boundary {X : SSet.{u}} [Quasicategory X] (m n : ℕ)
+    (G : (Δ[m + 2] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ X)
+    (H : (horn (m + 2) 0 : SSet.{u}) ⊗ Δ[n] ⟶ X)
+    (hw : ((horn (m + 2) 0).ι ▷ (boundary n : SSet.{u})) ≫ G =
+      ((horn (m + 2) 0 : SSet.{u}) ◁ (boundary n).ι) ≫ H)
+    (hi : IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌)
+      (initialHornEdge m, PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) 1)))) :
+    ∃ F : (Δ[m + 2] : SSet.{u}) ⊗ Δ[n] ⟶ X,
+      (Δ[m + 2] ◁ (boundary n).ι) ≫ F = G ∧ ((horn (m + 2) 0).ι ▷ Δ[n]) ≫ F = H
+```
+
+`Core/InitialHornRestrictionLifting.lean`：
+
+```lean
+def simplexFirstVertex {A : SSet.{u}} {n : ℕ} (s : A _⦋n⦌) : A _⦋0⦌
+
+lemma initialHornRestriction_lift_of_first_vertices {A D X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ D) [Mono i] (m : ℕ)
+    (a : A ⟶ (ihom (Δ[m + 2] : SSet.{u})).obj X)
+    (b : D ⟶ (ihom (horn (m + 2) 0 : SSet.{u})).obj X)
+    (hw : a ≫ (pre (horn (m + 2) 0).ι).app X = i ≫ b)
+    (ht : ∀ (n : ℕ) (s : D _⦋n⦌), s ∉ Set.range (i.app (Opposite.op ⦋n⦌)) →
+      IsInvertibleEdge (edgeOfSimplex ((uncurry b).app (Opposite.op ⦋1⦌)
+        (initialHornEdge m, PinchedHom.constant (simplexFirstVertex s) 1)))) :
+    ∃ F : D ⟶ (ihom (Δ[m + 2] : SSet.{u})).obj X,
+      i ≫ F = a ∧ F ≫ (pre (horn (m + 2) 0).ι).app X = b
+```
+
+`Core/ConeRestrictionCocartesianEdge.lean`：
+
+```lean
+def coneApexEvaluation (K X : SSet.{u}) : (ihom (join (Δ[0] : SSet.{u}) K)).obj X ⟶ X
+
+lemma hasCocartesianHornLifting_coneRestriction_of_apex {K X : SSet.{u}} [Quasicategory X]
+    {f g : ((ihom (join (Δ[0] : SSet.{u}) K)).obj X) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom (join (Δ[0] : SSet.{u}) K)).obj X)) f g)
+    (he : IsInvertibleEdge (e.map ((truncation 2).map (coneApexEvaluation K X)))) :
+    HasCocartesianHornLifting (coneRestriction K X) e
+```
+
+`Core/LeftPrism.lean`：
+
+```lean
+lemma leftAnodyneExtensions_pushoutObjObj_point {A B : SSet.{u}} (i : A ⟶ B) [Mono i]
+    (sq : (curriedTensor SSet.{u}).PushoutObjObj (horn 1 0).ι i) :
+    leftAnodyneExtensions sq.ι
+
+lemma leftAnodyneExtensions_point_whiskerRight (A : SSet.{u}) :
+    leftAnodyneExtensions ((horn 1 0).ι ▷ A)
+```
+
+`Core/JoinTensorInterval.lean`：
+
+```lean
+lemma Join.augTensorEquiv_symm_augHomRight {C D : SSet.{u}} (A : SSet.{u}) (f : C ⟶ D)
+    (r : ℕ) (a : Join.augObj A r) (c : Join.augObj C r) :
+    Join.augHom (A ◁ f) r ((Join.augTensorEquiv A C r).symm (a, c)) =
+      (Join.augTensorEquiv A D r).symm (a, Join.augHom f r c)
+
+lemma joinTensorRight_parameter {C D : SSet.{u}} (A B : SSet.{u}) (f : C ⟶ D) :
+    (join A B ◁ f) ≫ joinTensorRight A B D =
+      joinTensorRight A B C ≫ joinMap (𝟙 A) (B ◁ f)
+
+lemma fst_stdSimplexZero_comp_ι₀ (A : SSet.{u}) :
+    fst A (Δ[0] : SSet.{u}) ≫ SSet.ι₀ = A ◁ (stdSimplex.δ (1 : Fin 2))
+
+lemma joinTensorRight_ι₀ (A B : SSet.{u}) :
+    (SSet.ι₀ : join A B ⟶ join A B ⊗ Δ[1]) ≫ joinTensorRight A B Δ[1] =
+      joinMap (𝟙 A) (SSet.ι₀ : B ⟶ B ⊗ Δ[1])
+```
+
+`Core/ConeHomotopyTransport.lean`：
+
+```lean
+lemma coneHomotopy_extend {K X : SSet.{u}} [Quasicategory X]
+    (F₀ : join (Δ[0] : SSet.{u}) K ⟶ X)
+    (H : K ⊗ (Δ[1] : SSet.{u}) ⟶ X)
+    (h₀ : SSet.ι₀ ≫ H = joinInr Δ[0] K ≫ F₀) :
+    ∃ G : join (Δ[0] : SSet.{u}) K ⊗ Δ[1] ⟶ X,
+      SSet.ι₀ ≫ G = F₀ ∧ (joinInr Δ[0] K ▷ Δ[1]) ≫ G = H ∧
+        (joinInl Δ[0] K ▷ Δ[1]) ≫ G = fst Δ[0] Δ[1] ≫ joinInl Δ[0] K ≫ F₀
+```
+
+`Core/ConeRestrictionCocartesianFibration.lean`：
+
+```lean
+instance cocartesianHornFibration_coneRestriction (K X : SSet.{u}) [Quasicategory X] :
+    CocartesianHornFibration (coneRestriction K X)
+```
+
+`Core/FunctorPointwiseLimitCriterion.lean`：
+
+```lean
+lemma terminalBoundaryLifting_coneRestriction_of_isLimitCone {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) (hc : IsLimitCone c) :
+    TerminalBoundaryLifting (coneRestriction K X) (functorVertex c.val)
+
+lemma isLimitCone_iff_terminalBoundaryLifting_coneRestriction {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) :
+    IsLimitCone c ↔ TerminalBoundaryLifting (coneRestriction K X) (functorVertex c.val)
+
+lemma isLimitCone_of_pointwise {J K X : SSet.{u}} [Quasicategory X]
+    {p : J ⟶ (ihom K).obj X} (c : JoinCone p) (hc : IsPointwiseLimitCone c) : IsLimitCone c
+```
+
+未完了：HasPointwiseLimits から自然な点ごとの極限錐を構成する存在定理、その存在仮定の下で任意の極限錐との同値を得る逆方向。通常の点ごとの極限性から関手圏の極限性への方向と、錐の制限の cocartesian 性は今回で完了。A4・A5 は D チャット α-S の担当。本チャットは A6 完了・報告まで。
+
+検証：Core 対象ビルド1940 jobs成功、累計1545宣言の公理監査は標準3公理のみ。
 
 ## 7. A3 の工程（2026-10-18 追加）
 

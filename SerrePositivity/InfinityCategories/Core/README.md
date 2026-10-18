@@ -550,3 +550,7 @@ A6 続き：cocartesian な最初の垂直辺を持つ prism の基底上の延�
 A6 続き：cocartesian fibration p:E→B、quasicategory E・B に対し、fiber の終対象性と TerminalBoundaryLifting p x.val の同値を証明。最後の頂点を固定して境界を fiber へ輸送・充填し、終点側の prism の相対延長で戻す。一般の inner fibration には逆向きを主張しない。新規24宣言の全型・前提は §6。錐の制限の cocartesian 性と A6 主定理は未完了。
 
 上記保存単位の検証：Core 対象ビルド1929 jobs成功、累計1522宣言の公理監査は標準3公理のみ。
+
+A6 続き：錐の制限 coneRestriction K X の CocartesianHornFibration 性、錐の頂点で可逆な辺の cocartesian 性、IsLimitCone と相対境界充填の同値を証明し、通常の IsPointwiseLimitCone から IsLimitCone への方向を得た。X の quasicategory 性のみ、添字 J・K は任意。新規23宣言の全型・前提は §6。HasPointwiseLimits からの自然な錐の存在と、存在仮定の下での逆方向は未完了。
+
+上記保存単位の検証：Core 対象ビルド1940 jobs成功、累計1545宣言の公理監査は標準3公理のみ。

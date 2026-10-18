@@ -401,3 +401,25 @@ public import SerrePositivity.InfinityCategories.Core.PrismLastContraction
 public import SerrePositivity.InfinityCategories.Core.CocartesianFixedVertexTransport
 
 public import SerrePositivity.InfinityCategories.Core.CocartesianTerminalBoundary
+
+public import SerrePositivity.InfinityCategories.Core.InitialHornProductPairing
+
+public import SerrePositivity.InfinityCategories.Core.InitialHornProductExtension
+
+public import SerrePositivity.InfinityCategories.Core.ConeFirstVertex
+
+public import SerrePositivity.InfinityCategories.Core.InitialHornProductBoundary
+
+public import SerrePositivity.InfinityCategories.Core.InitialHornRestrictionLifting
+
+public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianEdge
+
+public import SerrePositivity.InfinityCategories.Core.LeftPrism
+
+public import SerrePositivity.InfinityCategories.Core.JoinTensorInterval
+
+public import SerrePositivity.InfinityCategories.Core.ConeHomotopyTransport
+
+public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration
+
+public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
