@@ -19,7 +19,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | --- | --- | --- | --- |
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
-| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（left fibration に沿う一般の right cofinality の引き戻し保存・Quillen A の right 側の必要性が済、十分性と left 側は未完） |
+| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（Quillen A の right 側は両方向とも済、left 側と A2h の統一的な回収は未完） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 | 未着手 |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
@@ -272,18 +272,47 @@ right cofinal な射の right anodyne・trivial Kan 因子分解の各因子を�
 弱可縮性を戻し、Quillen A の **right cofinality 側の必要性**を与える。
 標的 B だけを quasicategory とし、元の始域 A と引き戻した coslice の Kan 性は要求しない。
 
-Quillen A の right 側の十分性と left 側、一般の cocartesian fibration に沿う cofinality の pullback 安定性、
+`IsWeaklyContractible.isContractibleKan` は Kan 複体に限って弱可縮性を全境界充填へ移す。
+全体で弱可縮性の定義を強めず、終対象への弱同値に Whitehead 判定を適用する。
+`rightFibration_trivialKanFibration_of_weaklyContractible_fibers` がこの判定を Kan fiber に使う。
+
+`cofinalPointJoinPrism` は点との join の円柱比較から、左包含に定値な端点と右包含を持つ prism を与える。
+`IsInitialVertex.exists_fixed_coslice_section` は始対象下の coslice 射影の trivial Kan 性を使い、
+指定頂点で恒等錐になる切断を選ぶ。これを uncurry して円柱を合成すると
+`IsInitialVertex.exists_fixed_initial_prism` が定値始対象から恒等射への収縮を与える。
+任意のパラメータの始対象への定値族を厳密に固定することも検査した。
+
+この収縮を right fibration の終端から持ち上げ、fiber を全時間で固定すると
+`rightFibration_initialFiber_isSimplicialHomotopyEquivalence` を得る。
+これは bottom の Kan 性なしに実際の retraction とホモトピーを与える構成であり、
+`rightFibration_initialFiber_isWeakHomotopyEquivalence` が弱同値性へ渡す。
+coslice の恒等錐は始対象なので、coslice へ引き戻した right fibration に適用し、
+底変換による fiber の同型を通して元の頂点 fiber の弱可縮性を得る。
+`rightFibration_trivialKanFibration_of_weaklyContractible_coslices` はその結果。
+
+`isRightCofinal_of_weaklyContractible_coslices` は一般の f を right anodyne な j と
+right fibration p に因子分解する。各 coslice 射影は left fibration なので、j の引き戻しは
+right anodyne、従って弱同値となり、f の弱可縮条件が p に移る。
+p は上の判定で trivial Kan fibration、従って right cofinal となる。
+j との合成から f の right cofinality を得た。
+`isRightCofinal_iff_weaklyContractible_coslices` が **Quillen A の right 側の両方向**。
+標的 B だけを quasicategory とし、始域 A は任意の単体集合。
+Kerodon Thm 7.2.3.1 の原文の証明は inner fibration と cartesian fibration の局所化を使うが、
+ここでは既に証明した left fibration に沿う right anodyne 性の保存を使って
+right fibration への因子分解で閉じた。追加の存在仮定や straightening 依存はない。
+
+Quillen A の left 側と A2h の統一的な回収、一般の cocartesian fibration に沿う cofinality の pullback 安定性、
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
 left/right cofinality の opposite による比較は未完了。
 
 ### 次の工程
 
-B3 の Quillen A の right 側の十分性を証明し、opposite による left 側との比較へ進む。
+B3 の opposite による left 側の Quillen A と A2h の統一的な回収へ進む。
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2236 jobs、公理監査2056宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内565モジュールに straightening 依存なし。
+対象ビルド2242 jobs、公理監査2075宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内571モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -394,3 +423,10 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `leftFibration_overPullback_rightAnodyne`・`leftFibration_pullback_rightAnodyne` | left fibration に沿う一般の right anodyne な射の引き戻し保存、追加条件なし | 済 |
 | `leftFibration_pullback_isRightCofinal` | left fibration に沿う一般の right cofinal な射の引き戻し保存 | 済 |
 | `IsRightCofinal.cosliceProjection_isRightCofinal/coslice_isWeaklyContractible` | Quillen A の right 側の必要性、標的だけが quasicategory | 済 |
+| `IsWeaklyContractible.isContractibleKan`・`isWeaklyContractible_iff_isContractibleKan` | Kan 複体に限った弱可縮性と全境界充填の同値 | 済 |
+| `rightFibration_trivialKanFibration_of_weaklyContractible_fibers` | 弱可縮な Kan fiber による right fibration の trivial 性 | 済 |
+| `cofinalPointInterval`・`cofinalPointJoinPrism/zero/one/naturality` | 点との join から得る、二端と自然性を保つ prism | 済 |
+| `cofinalPointInclusion_mono`・`IsInitialVertex.exists_fixed_coslice_section/exists_fixed_initial_prism` | 恒等錐を固定した切断と始対象を固定する収縮、底の quasicategory 性は不要 | 済 |
+| `rightFibration_initialFiber_isSimplicialHomotopyEquivalence/isWeakHomotopyEquivalence` | right fibration の始対象上の fiber と全空間の実際のホモトピー同値 | 済 |
+| `rightFibration_vertexFiber_isWeaklyContractible_of_coslices`・`rightFibration_trivialKanFibration_of_weaklyContractible_coslices` | coslice 引き戻しの弱可縮性から fiber の弱可縮性・trivial 性への還元 | 済 |
+| `isRightCofinal_of_weaklyContractible_coslices`・`isRightCofinal_iff_weaklyContractible_coslices` | Quillen A の right 側の十分性と両方向の判定、標的だけが quasicategory | 済 |
