@@ -2,17 +2,23 @@ module
 
 public import Mathlib.Algebra.Polynomial.Eval.Defs
 public import Mathlib.Algebra.Group.Submonoid.Basic
+public import SerrePositivity.KST.Comparison.GammaRing
+public import SerrePositivity.KST.Comparison.PiZeroRing
+public import Mathlib.Data.Matrix.Basic
+public import Mathlib.Algebra.Category.MonCat.Basic
 
 /-!
 # ĜL の入力となる単元成分の逆像
 
 概要：KST §2.2、式 (2.2) の代数的な逆像を定義し、群とは限らないことを検証する。
 方針：ℤ[X] の 1+X を零点と −1 で評価する。原典の群状単体的モノイドという区別を保つ。
-規約：SS03 Proposition 2.13 の Γ と式 (2.9) の AW 積はまだ実装していない。
-使われ方：L2a の「単体的群」という要求の設計変更を検討するための代数的反例。
+規約：Γ の AW 環は GammaRing.lean、π₀ の環は PiZeroRing.lean に置く。
+使われ方：正本 §13-10 の群状単体的モノイドと、単体的群との差を示す反例。
 -/
 
-public section
+@[expose] public section
+
+set_option backward.isDefEq.respectTransparency false
 
 namespace SerrePositivity.KST.Comparison
 
@@ -80,5 +86,93 @@ theorem one_add_X_no_right_inverse :
     congrArg (fun r : evalZeroUnits => r.val) hq
   have h := congrArg (Polynomial.evalRingHom (-1 : ℤ)) hp
   simp at h
+
+end SerrePositivity.KST.Comparison
+
+noncomputable section
+
+namespace SerrePositivity.KST.Comparison
+
+open CategoryTheory Opposite SSet
+open scoped Simplicial
+
+variable (A : SimplicialObject RingCat.{u}) (r : ℕ)
+
+/--
+概要：各次数の行列を π₀A 上の行列に送る環準同型。
+方針：成分環への準同型を各行列成分に適用する。
+規約：KST 式 (2.2) の右側の縦射。行列の rank は r、単体次数は q。
+使われ方：ĜL_r(A) の各次数の定義。
+-/
+def matrixToComponents (q : ℕ) :
+    Matrix (Fin r) (Fin r) (A.obj (op ⦋q⦌)) →+*
+      Matrix (Fin r) (Fin r) (π₀ (ringSpace A)) :=
+  (SimplicialRing.simplexToComponents A q).mapMatrix
+
+/--
+概要：行列の成分写像は面と退化で不変である。
+方針：各行列成分に成分環への準同型の自然性を適用する。
+規約：KST 式 (2.2) の単体的自然性。
+使われ方：π₀ で可逆な行列の面・退化の閉性。
+-/
+theorem matrixToComponents_natural {p q : ℕ} (f : ⦋p⦌ ⟶ ⦋q⦌)
+    (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋q⦌))) :
+    matrixToComponents A r p ((A.map f.op).hom.mapMatrix s) = matrixToComponents A r q s := by
+  apply Matrix.ext
+  intro i j
+  exact SimplicialRing.simplexToComponents_natural A f (s i j)
+
+/--
+概要：π₀ で可逆な行列からなる各次数の部分モノイド。
+方針：成分行列環の単元の逆像を取る。
+規約：各次数で逆元を要求しない。KST 式 (2.2)、正本 §13-10。
+使われ方：群状単体的モノイド ĜL_r(A) の台。
+-/
+def hatGLSubmonoid (q : ℕ) : Submonoid (Matrix (Fin r) (Fin r) (A.obj (op ⦋q⦌))) :=
+  unitsPreimage (matrixToComponents A r q)
+
+/--
+概要：ĜL_r の面・退化をモノイド準同型として制限する。
+方針：成分写像の自然性から単元の逆像の保存を得る。
+規約：全ての単調写像に対する反変作用。KST 式 (2.2)。
+使われ方：ĜL_r を単体的モノイドへまとめる。
+-/
+def hatGLPullback {p q : ℕ} (f : ⦋p⦌ ⟶ ⦋q⦌) :
+    hatGLSubmonoid A r q →* hatGLSubmonoid A r p where
+  toFun s := ⟨(A.map f.op).hom.mapMatrix s.val, by
+    change IsUnit (matrixToComponents A r p ((A.map f.op).hom.mapMatrix s.val))
+    rw [matrixToComponents_natural]
+    exact s.property⟩
+  map_one' := Subtype.ext (map_one _)
+  map_mul' a b := Subtype.ext (map_mul _ a.val b.val)
+
+/--
+概要：π₀ で可逆な行列の群状単体的モノイドの単体的部分を構成する。
+方針：各次数の部分モノイドと行列の面・退化をまとめる。
+規約：KST 式 (2.2)。π₀ の群性の証明はこの定義には仮定しない。
+使われ方：ΓA に適用する ĜL_r(A) と bar 構成。
+-/
+def hatGLMonoidObject : SimplicialObject MonCat.{u} where
+  obj q := MonCat.of (hatGLSubmonoid A r q.unop.len)
+  map f := MonCat.ofHom (hatGLPullback A r f.unop)
+  map_id q := by
+    apply MonCat.hom_ext
+    apply MonoidHom.ext
+    intro s
+    apply Subtype.ext
+    apply Matrix.ext
+    intro i j
+    change (A.map (𝟙 q)).hom (s.val i j) = s.val i j
+    simp
+  map_comp f g := by
+    apply MonCat.hom_ext
+    apply MonoidHom.ext
+    intro s
+    apply Subtype.ext
+    apply Matrix.ext
+    intro i j
+    change (A.map (f ≫ g)).hom (s.val i j) =
+      (A.map g).hom ((A.map f).hom (s.val i j))
+    simp
 
 end SerrePositivity.KST.Comparison
