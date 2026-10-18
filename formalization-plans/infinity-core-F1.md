@@ -12954,5 +12954,42 @@ noncomputable def smallEdgewiseCoherentReplacementEquivalence {B : SSet.{u}} [Qu
     QCatEquivalence (smallLeftUnstraightening (edgewiseCoherentReplacement F))
       (smallLeftUnstraightening F)
 
+def oppositeInternalHomEvaluation (X Y : SSet.{u}) :
+    X.op ⊗ ((ihom X).obj Y).op ⟶ Y.op
+
+def edgewiseOppositeInternalHomEvaluation (X Y : SSet.{u}) :
+    X.op ⊗ edgewiseSubdivision ((ihom X).obj Y) ⟶ Y.op
+
+def edgewiseOppositeKanEnrichedMap (X Y : SSet.{u}) :
+    edgewiseSubdivision ((ihom X).obj Y) ⟶ (ihom X.op).obj Y.op
+
+def edgewiseOppositeKanEnriched :
+    EnrichedFunctor SSet.{u} (EdgewiseEnrichedObject KanObject.{u}) KanObject.{u}
+
+lemma edgewiseInternalHomEvaluation_left (X Y : SSet.{u}) :
+    edgewiseInternalHomEvaluation X Y ≫ edgewiseLeft Y =
+      (edgewiseLeft X ⊗ₘ edgewiseLeft ((ihom X).obj Y)) ≫ oppositeInternalHomEvaluation X Y
+
+def edgewiseKanLeftComparison :
+    KanEnrichedComparison edgewiseKanEnriched.{u} edgewiseOppositeKanEnriched.{u}
+
+def edgewiseOppositeKanInfinityMap :
+    SimplicialNerve (EdgewiseEnrichedObject KanObject.{u}) ⟶ SpaceInfinity.{u}
+
+noncomputable def edgewiseOppositeKanInfinityComparisonIso :
+    FunctorIso edgewiseKanInfinityMap.{u} edgewiseOppositeKanInfinityMap.{u}
+
+noncomputable def edgewiseKanOppositeInfinityComparisonIso :
+    FunctorIso (edgewiseEnrichedInfinityMap KanObject.{u}) edgewiseOppositeKanInfinityMap.{u}
+
+noncomputable def edgewiseOppositeKanInfinityEquivalence :
+    QCatEquivalence (SimplicialNerve (EdgewiseEnrichedObject KanObject.{u})) SpaceInfinity.{u}
+
+noncomputable def edgewiseCoherentOppositeReplacement {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) :
+    B ⟶ SpaceInfinity.{u}
+
+noncomputable def edgewiseCoherentOppositeReplacementIso {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) :
+    FunctorIso F (edgewiseCoherentOppositeReplacement F)
+
 end SerrePositivity.InfinityCategories
 ```
