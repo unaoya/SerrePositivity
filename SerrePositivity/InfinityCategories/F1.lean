@@ -39,3 +39,5 @@ public import SerrePositivity.InfinityCategories.F1.CosliceConeExtension
 public import SerrePositivity.InfinityCategories.F1.CocartesianTriangleCone
 public import SerrePositivity.InfinityCategories.F1.CocartesianTriangleRestriction
 public import SerrePositivity.InfinityCategories.F1.CocartesianComposition
+public import SerrePositivity.InfinityCategories.F1.TrianglePrism
+public import SerrePositivity.InfinityCategories.F1.CocartesianTrianglePrism

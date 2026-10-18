@@ -769,5 +769,35 @@ lemma isCocartesianEdge_triangle_longEdge {X Y : SSet.{u}} [Quasicategory Y]
     (hsecond : IsCocartesianEdge q (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t))) :
     IsCocartesianEdge q (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ t))
 
+lemma trianglePrism_endpoint_one (A : SSet.{u}) :
+    ((stdSimplex.δ (0 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1]) ▷ A) =
+      snd (Δ[0] : SSet.{u}) A ≫ prismEndpoint 1 A
+
+lemma trianglePrism_endpoint_zero (A : SSet.{u}) :
+    ((stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1]) ▷ A) =
+      snd (Δ[0] : SSet.{u}) A ≫ prismEndpoint 0 A
+
+lemma innerFibration_fillTrianglePrism {X B A : SSet.{u}} (p : X ⟶ B)
+    [InnerFibration p] (H₀₁ H₁₂ : (Δ[1] : SSet.{u}) ⊗ A ⟶ X)
+    (b : (Δ[2] : SSet.{u}) ⊗ A ⟶ B)
+    (hw : prismEndpoint 1 A ≫ H₀₁ = prismEndpoint 0 A ≫ H₁₂)
+    (h₀₁ : H₀₁ ≫ p = (stdSimplex.δ (2 : Fin 3) ▷ A) ≫ b)
+    (h₁₂ : H₁₂ ≫ p = (stdSimplex.δ (0 : Fin 3) ▷ A) ≫ b) :
+    ∃ T : (Δ[2] : SSet.{u}) ⊗ A ⟶ X,
+      (stdSimplex.δ (2 : Fin 3) ▷ A) ≫ T = H₀₁ ∧
+      (stdSimplex.δ (0 : Fin 3) ▷ A) ≫ T = H₁₂ ∧ T ≫ p = b
+
+lemma cocartesianTrianglePrism_longEdge {X B A : SSet.{u}} [Quasicategory B]
+    (p : X ⟶ B) [InnerFibration p] (T : (Δ[2] : SSet.{u}) ⊗ A ⟶ X)
+    (hfirst : ∀ v : A _⦋0⦌, IsCocartesianEdge p
+      (((stdSimplex.δ (2 : Fin 3) ▷ A) ≫ T).app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1)))
+    (hsecond : ∀ v : A _⦋0⦌, IsCocartesianEdge p
+      (((stdSimplex.δ (0 : Fin 3) ▷ A) ≫ T).app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1))) :
+    ∀ v : A _⦋0⦌, IsCocartesianEdge p
+      (((stdSimplex.δ (1 : Fin 3) ▷ A) ≫ T).app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1))
+
 end SerrePositivity.InfinityCategories
 ```

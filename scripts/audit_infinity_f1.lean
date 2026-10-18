@@ -177,3 +177,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeCosliceRestriction_triangleFirstEdge_lift
 #check @SerrePositivity.InfinityCategories.relativeCosliceRestriction_triangleFirstEdge
 #check @SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_longEdge
+#check @SerrePositivity.InfinityCategories.trianglePrism_endpoint_one
+#check @SerrePositivity.InfinityCategories.trianglePrism_endpoint_zero
+#check @SerrePositivity.InfinityCategories.innerFibration_fillTrianglePrism
+#check @SerrePositivity.InfinityCategories.cocartesianTrianglePrism_longEdge
