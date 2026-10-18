@@ -13,6 +13,10 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.CosimplicialHornFactorization,
+    `SerrePositivity.KST.Spectra.CosimplicialKanReplacement,
+    `SerrePositivity.KST.Spectra.PointedCosimplicialKanReplacement,
+    `SerrePositivity.KST.Spectra.PointedCosimplicialKanFunctor,
     `SerrePositivity.KST.Spectra.PointedWeightedEndFunctor,
     `SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitMap,
     `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitMap,

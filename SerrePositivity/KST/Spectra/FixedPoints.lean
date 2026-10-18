@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.KST.Spectra.CosimplicialHornFactorization
+public import SerrePositivity.KST.Spectra.CosimplicialKanReplacement
+public import SerrePositivity.KST.Spectra.PointedCosimplicialKanReplacement
+public import SerrePositivity.KST.Spectra.PointedCosimplicialKanFunctor
+
 public import SerrePositivity.KST.Spectra.PointedWeightedEndFunctor
 public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitMap
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitMap

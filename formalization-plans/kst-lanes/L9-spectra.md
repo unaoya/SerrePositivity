@@ -23,15 +23,17 @@
 - 既存 HomotopicalAlgebra は読むだけで編集しない。
 - 借用：同ディレクトリの基点を含む指定部分を固定する垂直ホモトピー充填。
 - 借用：`AnodyneKanReplacement` のホーンの小対象論法と `Generators` の境界生成定理。
+- 借用：一般の Reedy 次数帰納による関手的因子分解、matching・latching の右類・左類閉性、simplex 圏の Reedy 構造。
+- この借用は通常の因子分解と持ち上げ性だけであり、Reedy モデル圏や HT-KQ のインスタンスを用いない。
 - これらはモデル構造を仮定しない充填と因子分解で、HT-KQ の import は含まない。
 - 既存 InfinityCategories は読むだけで編集しない。
 
 ## 1. 正本と目的
 
 作成日：2026-10-18。
-状態：L9a・L9b・L9c・L9d 完了。L9e 着手。
+状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・294 モジュール 3316 宣言の公理監査成功。
+対象ビルド・298 モジュール 3362 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2484,4 +2486,36 @@ BF 置換の持ち上げを使い、hG と homotopy Tot の間の実際の BF �
 参照：HA §1.4.2、BF 1978 §2、HTT A.3.3。
 保存単位の対象ビルド 3652 jobs 成功。
 私有宣言を含む 294 モジュール 3316 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot との比較は引き続き未完了。
+
+## 85. L9e の余単体 Kan 複体の実際の Reedy 置換
+
+通常の Tot のため、horn の小対象論法を一般の Reedy 関手的因子分解へ適用した。
+simplex 圏は次数ごとにただ一つの対象を持つので、次数の単射性・全射性を具体的に与えられる。
+左射は相対 latching anodyne、右射は相対 matching horn RLP である。
+この構成は Kan–Quillen モデル構造を仮定しない。
+
+matching と latching での持ち上げ類の閉性から、それぞれの条件は各段にも移る。
+終図式への射を実際に因子分解して Reedy 置換関手と自然な単位を得た。
+置換の各値は Kan 複体で、単位の各値は anodyne である。
+元の各値も Kan なら、単位は零次数を含む全基点 π_* 同型である。
+
+置換の自然な単位で基点を移し、点つき余単体図式の置換関手も構成した。
+余単体構造・射・関手法則・単位の自然性はいずれも厳密である。
+Reedy 置換だけから通常の Tot の Kan 性や BF 対象との比較を結論していない。
+そのためには標準単体の重みと horn の積の相対 latching 条件を続けて証明する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `CosimplicialHornFactorization.factorization` | 余単体図式の実際の関手的 Reedy horn 因子分解 |
+| `CosimplicialHornFactorization.right_app` / `left_app` | 相対条件から各段の horn RLP・anodyne への移送 |
+| `CosimplicialKanReplacement.functor` / `unit` | 終図式への因子分解で作る Reedy 置換と自然な比較 |
+| `CosimplicialKanReplacement.reedy_terminal_rlp` | 置換の相対 matching の充填条件 |
+| `CosimplicialKanReplacement.kanComplex` / `unit_anodyne` / `unit_piIsomorphism` | 各段の Kan 性と比較射の性質 |
+| `PointedCosimplicialKanReplacement.obj` / `unitApp` | 点つき余単体図式の実際の置換 |
+| `PointedCosimplicialKanReplacement.functor` / `unit` | 点つき置換の関手性と自然な単位 |
+
+参照：Goerss–Jardine I §7、HTT A.3.3。
+保存単位の対象ビルド 3717 jobs 成功。
+私有宣言を含む 298 モジュール 3362 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot との比較は引き続き未完了。
