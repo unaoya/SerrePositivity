@@ -90,3 +90,9 @@ public import SerrePositivity.EInfinity.Operad.SchurPartialEquivariance
 public import SerrePositivity.EInfinity.Operad.MoveFirstBlock
 public import SerrePositivity.EInfinity.Operad.MoveFirstBlockTensor
 public import SerrePositivity.EInfinity.Operad.InsertionRotationCoherence
+public import SerrePositivity.EInfinity.Operad.MoveFirstInputTensor
+public import SerrePositivity.EInfinity.Operad.InsertionPrefixNaturality
+public import SerrePositivity.EInfinity.Operad.InsertionCore
+public import SerrePositivity.EInfinity.Operad.InsertionMoveFirst
+public import SerrePositivity.EInfinity.Operad.SchurActionComposition
+public import SerrePositivity.EInfinity.Operad.FreeAlgebra
