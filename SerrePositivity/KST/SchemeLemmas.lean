@@ -290,3 +290,4 @@ public import SerrePositivity.KST.SchemeLemmas.NoetherianFlatFactorization
 public import SerrePositivity.KST.SchemeLemmas.FlatFiniteFreeSequence
 public import SerrePositivity.KST.SchemeLemmas.LinearSequenceDirectLimit
 public import SerrePositivity.KST.SchemeLemmas.FlatFiniteFreeDirectLimit
+public import SerrePositivity.KST.SchemeLemmas.LinearSequenceTensorZero
