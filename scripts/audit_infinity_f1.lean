@@ -512,3 +512,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pathFlagPrepend_pathFlag
 #check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate_pathFlagResolution
 #check @SerrePositivity.InfinityCategories.pathResolutionMap_coherentPinchedFlagMap
+#check @SerrePositivity.InfinityCategories.pathFrontInverse
+#check @SerrePositivity.InfinityCategories.pathFrontInverseFunctor
+#check @SerrePositivity.InfinityCategories.pathFrontInverseFunctor_comp
+#check @SerrePositivity.InfinityCategories.thickeningFront_map_epi
+#check @SerrePositivity.InfinityCategories.coherentPinched_sourceMap_full

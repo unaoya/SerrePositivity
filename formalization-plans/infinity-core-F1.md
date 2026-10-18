@@ -2228,5 +2228,32 @@ lemma pathResolutionMap_coherentPinchedFlagMap {C : Type v} [Category.{u} C]
     (i : Fin (n + 1)) :
     pathResolutionMap i ≫ coherentPinchedFlagMap τ = coherentPinchedHom τ i
 
+def pathFrontInverse {n : ℕ} {i j : Fin (n + 1)}
+    (P : Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2))) (ULift.up j.castSucc)) :
+    Path (ULift.up i : ULift.{u} (Fin (n + 1))) (ULift.up j)
+
+def pathFrontInverseFunctor {n : ℕ} (i j : Fin (n + 1)) :
+    Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2))) (ULift.up j.castSucc) ⥤
+      Path (ULift.up i : ULift.{u} (Fin (n + 1))) (ULift.up j)
+
+lemma pathFrontInverseFunctor_comp {n : ℕ} (i j : Fin (n + 1)) :
+    pathFrontInverseFunctor.{u} i j ⋙ SimplicialThickening.functorMap
+      (PinchedHom.front n).toOrderHom.uliftMap
+      (⟨ULift.up i⟩ : SimplicialThickening (ULift.{u} (Fin (n + 1)))) ⟨ULift.up j⟩ =
+      𝟭 (Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2))) (ULift.up j.castSucc))
+
+instance thickeningFront_map_epi {n : ℕ} (i j : Fin (n + 1)) :
+    Epi ((SimplicialThickening.functor (PinchedHom.front n).toOrderHom.uliftMap).map
+      (⟨ULift.up i⟩ : SimplicialThickening (ULift.{u} (Fin (n + 1)))) ⟨ULift.up j⟩)
+
+lemma coherentPinched_sourceMap_full {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (i j : Fin (n + 1)) :
+    τ.val.map ⟨ULift.up i.castSucc⟩ ⟨ULift.up j.castSucc⟩ ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentPinched_sourceObj τ i) (coherentPinched_sourceObj τ j)) =
+      toUnit _ ≫ eId SSet X
+
 end SerrePositivity.InfinityCategories
 ```

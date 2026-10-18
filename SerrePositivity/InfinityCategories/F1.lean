@@ -87,3 +87,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentPinchedFlagMap
 public import SerrePositivity.InfinityCategories.F1.CoherentPathResolution
 public import SerrePositivity.InfinityCategories.F1.CoherentFlagSimplex
 public import SerrePositivity.InfinityCategories.F1.CoherentPathPrepend
+public import SerrePositivity.InfinityCategories.F1.CoherentFrontHom
