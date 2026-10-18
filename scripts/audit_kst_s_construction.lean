@@ -3567,3 +3567,58 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsPostcomp_projection
 #check @SerrePositivity.KST.SConstruction.stablePushoutSection_postcompIso
 #print axioms SerrePositivity.KST.SConstruction.stablePushoutSection_postcompIso
+
+#check @SerrePositivity.KST.SConstruction.identityPushoutShape
+#print axioms SerrePositivity.KST.SConstruction.identityPushoutShape
+#check @SerrePositivity.KST.SConstruction.identityPushoutShape_isPushout
+#print axioms SerrePositivity.KST.SConstruction.identityPushoutShape_isPushout
+#check @SerrePositivity.KST.SConstruction.identitySpanShape
+#print axioms SerrePositivity.KST.SConstruction.identitySpanShape
+#check @SerrePositivity.KST.SConstruction.identitySpanSection
+#print axioms SerrePositivity.KST.SConstruction.identitySpanSection
+#check @SerrePositivity.KST.SConstruction.identitySpanSection_shape
+#print axioms SerrePositivity.KST.SConstruction.identitySpanSection_shape
+#check @SerrePositivity.KST.SConstruction.identitySpanFamily
+#print axioms SerrePositivity.KST.SConstruction.identitySpanFamily
+#check @SerrePositivity.KST.SConstruction.identitySpanFamily_mono
+#print axioms SerrePositivity.KST.SConstruction.identitySpanFamily_mono
+#check @SerrePositivity.KST.SConstruction.identityPushoutFamily
+#print axioms SerrePositivity.KST.SConstruction.identityPushoutFamily
+#check @SerrePositivity.KST.SConstruction.identityPushoutFamily_ι
+#print axioms SerrePositivity.KST.SConstruction.identityPushoutFamily_ι
+#check @SerrePositivity.KST.SConstruction.identityPushoutFamily_projection
+#print axioms SerrePositivity.KST.SConstruction.identityPushoutFamily_projection
+#check @SerrePositivity.KST.SConstruction.identitySquareReconstruction
+#print axioms SerrePositivity.KST.SConstruction.identitySquareReconstruction
+#check @SerrePositivity.KST.SConstruction.identitySpanFamily_reconstruction
+#print axioms SerrePositivity.KST.SConstruction.identitySpanFamily_reconstruction
+#check @SerrePositivity.KST.SConstruction.identitySquareReconstruction_cross
+#print axioms SerrePositivity.KST.SConstruction.identitySquareReconstruction_cross
+#check @SerrePositivity.KST.SConstruction.identitySquareReconstruction_overlap
+#print axioms SerrePositivity.KST.SConstruction.identitySquareReconstruction_overlap
+#check @SerrePositivity.KST.SConstruction.subcomplexUnionMap
+#print axioms SerrePositivity.KST.SConstruction.subcomplexUnionMap
+#check @SerrePositivity.KST.SConstruction.identitySpanSubcomplex
+#print axioms SerrePositivity.KST.SConstruction.identitySpanSubcomplex
+#check @SerrePositivity.KST.SConstruction.identityUnionSquare
+#print axioms SerrePositivity.KST.SConstruction.identityUnionSquare
+#check @SerrePositivity.KST.SConstruction.identityUnionSquare_on_family
+#print axioms SerrePositivity.KST.SConstruction.identityUnionSquare_on_family
+#check @SerrePositivity.KST.SConstruction.identityUnionSquare_span
+#print axioms SerrePositivity.KST.SConstruction.identityUnionSquare_span
+#check @SerrePositivity.KST.SConstruction.identityUnionPushoutFamily
+#print axioms SerrePositivity.KST.SConstruction.identityUnionPushoutFamily
+#check @SerrePositivity.KST.SConstruction.identityUnionPushoutFamily_projection
+#print axioms SerrePositivity.KST.SConstruction.identityUnionPushoutFamily_projection
+#check @SerrePositivity.KST.SConstruction.exists_jointNormalizedPushoutSection
+#print axioms SerrePositivity.KST.SConstruction.exists_jointNormalizedPushoutSection
+#check @SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection
+#print axioms SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection
+#check @SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_projection
+#print axioms SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_projection
+#check @SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_union
+#print axioms SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_union
+#check @SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_identity
+#print axioms SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_identity
+#check @SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_comparison
+#print axioms SerrePositivity.KST.SConstruction.jointNormalizedPushoutSection_comparison

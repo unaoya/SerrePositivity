@@ -142,4 +142,9 @@ public import SerrePositivity.KST.SConstruction.CofiberPreservesPushout
 public import SerrePositivity.KST.SConstruction.GappedPushoutPreservation
 public import SerrePositivity.KST.SConstruction.StablePushoutPostcomp
 
+public import SerrePositivity.KST.SConstruction.IdentityPushoutShapes
+public import SerrePositivity.KST.SConstruction.IdentityPushoutOverlap
+public import SerrePositivity.KST.SConstruction.IdentityPushoutUnion
+public import SerrePositivity.KST.SConstruction.JointNormalizedPushoutSection
+
 /-! # ∞-S• 構成と連結 K 理論 -/

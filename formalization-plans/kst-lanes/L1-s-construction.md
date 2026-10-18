@@ -5538,3 +5538,127 @@ object/core 比較と加法性比較の弱同値性、面のホモトピー引�
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3134 jobs）、公理監査成功（1344 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.46 恒等な枝を持つ二つの span 族の同時正規化
+
+§6.45 に残していた恒等 span 上の対象・四角形の厳密な正規化を証明した。
+Fiore–Pieper Notation 3.26・Proposition 3.28（著者公開版 pp.40–42）に従い、
+二つの枝のうちどちらかが恒等である標準 span の二つの像の和を使う。
+向きごとに別々の切断を選ぶだけでは同時正規化を意味しないため、
+共通部分で標準四角形が厳密に一致することを確認してから貼り合わせた。
+`false` は横方向に一定（下辺が恒等）、`true` は縦方向に一定（左辺が恒等）の四角形。
+重なりの一致は、二つの像への冪等な射の交差した復元がともに共通始点の一定図式となる
+形状の等号から得た。高次の比較を同型に弱めた主張ではない。
+
+`jointNormalizedPushoutSection C` は全 span の内部 Hom 上の単一の厳密な切断であり、
+二つの `identitySpanFamily b C` に対して同時に `identityPushoutFamily b C` を回収する。
+全単体次数での式なので、退化した恒等射の保存だけを主張していた以前の選択より強い。
+既存の `stablePushoutSection` の公開定義・型は変更せず、二つの選択の関手同型も構成した。
+
+追加ファイル：`IdentityPushoutShapes.lean`、`IdentityPushoutOverlap.lean`、
+`IdentityPushoutUnion.lean`、`JointNormalizedPushoutSection.lean`。
+以下は namespace `SerrePositivity.KST.SConstruction` 内の公開宣言の正確な型。
+
+```lean
+def identityPushoutShape (b : Bool) : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ Δ[1]
+
+lemma identityPushoutShape_isPushout {C : SSet.{u}} [Quasicategory C] (b : Bool)
+    (g : (Δ[1] : SSet.{u}) ⟶ C) : IsPushoutSquare (identityPushoutShape b ≫ g)
+
+def identitySpanShape (b : Bool) : (horn 2 0 : SSet.{u}) ⟶ Δ[1]
+
+def identitySpanSection (b : Bool) : (Δ[1] : SSet.{u}) ⟶ horn 2 0
+
+lemma identitySpanSection_shape (b : Bool) :
+    identitySpanSection b ≫ identitySpanShape b = 𝟙 (Δ[1] : SSet.{u})
+
+def identitySpanFamily (b : Bool) (C : SSet.{u}) :
+    (ihom (Δ[1] : SSet.{u})).obj C ⟶ (ihom (horn 2 0 : SSet.{u})).obj C
+
+instance identitySpanFamily_mono (b : Bool) (C : SSet.{u}) : Mono (identitySpanFamily b C)
+
+def identityPushoutFamily (b : Bool) (C : SSet.{u}) [Quasicategory C] :
+    (ihom (Δ[1] : SSet.{u})).obj C ⟶ pushoutDiagrams C
+
+lemma identityPushoutFamily_ι (b : Bool) (C : SSet.{u}) [Quasicategory C] :
+    identityPushoutFamily b C ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι =
+      (pre (identityPushoutShape b)).app C
+
+lemma identityPushoutFamily_projection (b : Bool) (C : SSet.{u}) [Quasicategory C] :
+    identityPushoutFamily b C ≫ pushoutProjection C = identitySpanFamily b C
+
+def identitySquareReconstruction (b : Bool) (C : SSet.{u}) :
+    (ihom (horn 2 0 : SSet.{u})).obj C ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C
+
+lemma identitySpanFamily_reconstruction (b : Bool) (C : SSet.{u}) :
+    identitySpanFamily b C ≫ identitySquareReconstruction b C =
+      (pre (identityPushoutShape b)).app C
+
+lemma identitySquareReconstruction_cross (C : SSet.{u}) :
+    (pre (identitySpanSection true)).app C ≫ identitySpanFamily true C ≫
+        identitySquareReconstruction false C =
+      (pre (identitySpanSection false)).app C ≫ identitySpanFamily false C ≫
+        identitySquareReconstruction true C
+
+lemma identitySquareReconstruction_overlap (C : SSet.{u}) (n : SimplexCategoryᵒᵖ)
+    (v : ((ihom (horn 2 0 : SSet.{u})).obj C).obj n)
+    (h₀ : v ∈ (Subcomplex.range (identitySpanFamily false C)).obj n)
+    (h₁ : v ∈ (Subcomplex.range (identitySpanFamily true C)).obj n) :
+    (identitySquareReconstruction false C).app n v =
+      (identitySquareReconstruction true C).app n v
+
+def subcomplexUnionMap {X Y : SSet.{u}} (S T : X.Subcomplex) (f g : X ⟶ Y)
+    (h : ∀ n v, v ∈ S.obj n → v ∈ T.obj n → f.app n v = g.app n v) :
+    ((S ⊔ T : X.Subcomplex) : SSet.{u}) ⟶ Y
+
+def identitySpanSubcomplex (C : SSet.{u}) : ((ihom (horn 2 0 : SSet.{u})).obj C).Subcomplex
+
+def identityUnionSquare (C : SSet.{u}) :
+    (identitySpanSubcomplex C : SSet.{u}) ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C
+
+lemma identityUnionSquare_on_family (C : SSet.{u}) (b : Bool) (n : SimplexCategoryᵒᵖ)
+    (g : ((ihom (Δ[1] : SSet.{u})).obj C).obj n)
+    (v : (identitySpanSubcomplex C).obj n) (hv : v.val = (identitySpanFamily b C).app n g) :
+    (identityUnionSquare C).app n v = ((pre (identityPushoutShape b)).app C).app n g
+
+lemma identityUnionSquare_span (C : SSet.{u}) :
+    identityUnionSquare C ≫ (pre spanSquareBoundary).app C = (identitySpanSubcomplex C).ι
+
+def identityUnionPushoutFamily (C : SSet.{u}) [Quasicategory C] :
+    (identitySpanSubcomplex C : SSet.{u}) ⟶ pushoutDiagrams C
+
+lemma identityUnionPushoutFamily_projection (C : SSet.{u}) [Quasicategory C] :
+    identityUnionPushoutFamily C ≫ pushoutProjection C = (identitySpanSubcomplex C).ι
+
+lemma exists_jointNormalizedPushoutSection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    ∃ s : (ihom (horn 2 0 : SSet.{u})).obj C ⟶ pushoutDiagrams C,
+      (identitySpanSubcomplex C).ι ≫ s = identityUnionPushoutFamily C ∧
+        s ≫ pushoutProjection C = 𝟙 _
+
+def jointNormalizedPushoutSection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    (ihom (horn 2 0 : SSet.{u})).obj C ⟶ pushoutDiagrams C
+
+lemma jointNormalizedPushoutSection_projection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    jointNormalizedPushoutSection C ≫ pushoutProjection C = 𝟙 _
+
+lemma jointNormalizedPushoutSection_union (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    (identitySpanSubcomplex C).ι ≫ jointNormalizedPushoutSection C =
+      identityUnionPushoutFamily C
+
+lemma jointNormalizedPushoutSection_identity (b : Bool) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] :
+    identitySpanFamily b C ≫ jointNormalizedPushoutSection C = identityPushoutFamily b C
+
+def jointNormalizedPushoutSection_comparison (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    FunctorIso (jointNormalizedPushoutSection C) (stablePushoutSection C)
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+McCarthy 法の一般 pushout の存在・保存・単体的な選択に加え、恒等 span の両向きの同時正規化まで証明済み。
+図式圏に移した正規化付き pushout の添字制限との両立、McCarthy の単体ホモトピー、単体積 Quillen A、
+object/core 比較と加法性比較の弱同値性、面のホモトピー引き戻し条件は未完了。
+反復 S 実現と §6.43 の homotopy fiber の比較、既存の構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3172 jobs）、公理監査成功（1371 宣言、標準三公理のみ）。追加公理・sorry なし。
