@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・417 モジュール 4168 宣言の公理監査成功。
+対象ビルド・427 モジュール 4223 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3149,4 +3149,42 @@ L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 
 
 参照：Goerss–Jardine VIII §1、BF 1978 §2。
 対象ビルド 3864 jobs 成功。私有宣言を含む 417 モジュール 4168 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 104. L9e の自明作用の写像空間表示と BG の Kan 塔
+
+定値係数の weighted nerve と底の nerve と係数の直積が厳密に同型であることを証明した。
+構成済みの直積からの射と最後の係数の評価を互いに逆とし、自然性で各初区間を最後の成分から復元した。
+直積射影の切断空間と内部 Hom の同型を、切断の普遍性と curry の往復則で構成した。
+これらを Bousfield–Kan end の切断表示へ合成し、定値図式の end を底の nerve からの写像空間と同定した。
+同型の普遍評価の式と、定値図式への任意の一定の脚の錐の標準比較が定数族となる式も証明した。
+特に基点の錐を適用することで、点つき定値 end の同型を得た。
+
+自明な BF スペクトルの作用に適用し、置換前の hG の段 k は BG から X_k への定数基点つき写像空間となる。
+BG は宇宙をそろえた AsSmall の一対象群圏の nerve を使う。
+骨格からの写像空間の塔を実際に構成し、係数が Kan なら各段が Kan、各遷移が Kan fibration であることを指数版 pushout-product から証明した。
+全体の写像空間から各段への制限も Kan fibration である。
+定数基点が前合成で保存されることを示して点つき塔へ戻し、通常の極限による復元も証明した。
+従って実際の自明作用の hG の各段は、この BG の骨格の点つき Kan 塔の極限と同型である。
+
+これは群の有限性と有理性を使わない模型の表示である。
+各 fiber の π_* と群 cochain の比較、微分の計算、塔の π_* の収束をまだ含まない。
+有理 Shapiro の比較が π_* 同型であるという結論はまだ主張しない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `constantWeightedNerveIso` | 定値 weighted nerve と底との直積の同型 |
+| `productSectionsIso` | 直積射影の切断空間と内部 Hom の同型 |
+| `constantHomotopyEndIso` / `constantHomotopyEndIso_uncurry` | 定値 end の写像空間表示と実際の評価式 |
+| `constantHomotopyEndIso_cone` | 定値図式の標準比較は写像空間で定数族 |
+| `constantPointedHomotopyEndIso` | 基点の定数族を保つ点つき end の同型 |
+| `trivialFixedPointLevelIso` | 構成済みの自明作用の hG の各段の写像空間表示 |
+| `SkeletalMapping.tower` / `map_fibration` / `coneIsLimit` | 骨格の Kan 写像空間の塔と通常の極限 |
+| `UnbasedPointedMapping.tower` / `tower_map_fibration` / `coneIsLimit` | 定数基点の点つき Kan 塔と復元 |
+| `trivialFixedPointLevelTower` / `trivialFixedPointLevelTower_fibration` | 自明作用の hG の実際の Kan fibration の塔 |
+| `trivialFixedPointLevelLimitIso` | 置換前の hG の各段と BG の骨格の塔の極限の同型 |
+
+参照：Goerss–Jardine I §7、VIII §§1–2、BF 1978 §2、Kerodon §§3.1.3・5.3.3。
+対象ビルド 3876 jobs 成功。私有宣言を含む 427 モジュール 4223 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
