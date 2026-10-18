@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Descent.CoincidenceLocus
 public import SerrePositivity.KST.Descent.ClosedCoproduct
+public import SerrePositivity.KST.Descent.CoproductRestriction
 public import Mathlib.AlgebraicGeometry.PullbackCarrier
 
 /-!
@@ -124,5 +125,18 @@ theorem restrictedSectionCoproduct_isIso [Finite I] [IsReduced Y.left]
     exact y.property
   · apply Subtype.ext
     exact (morphismRestrict_base_coe (sections i).left U _).trans hx
+
+/-- 概要：軌道射自体の開制限は一致中心の外で同型（論文 定理 3.1）。
+方針：制限切断の非交和の同型を、有限非交和と開制限の標準比較を通して移す。
+規約：軌道射の指定された開制限の同型であり、点集合の全単射には弱めない。
+使われ方：軌道正方形の抽象 blowup の補集合上の同型条件。 -/
+theorem sectionOrbitMap_restrict_isIso [Finite I] [IsReduced Y.left]
+    (p : Y ⟶ X) [IsSeparated p.left]
+    (sections : I → (X ⟶ Y)) (section_identity : ∀ i, sections i ≫ p = 𝟙 X)
+    (covering : ⋃ i, Set.range (sections i).left = Set.univ)
+    (U : Y.left.Opens) (outside : ∀ y : U, p.left (U.ι y) ∉ coincidenceLocus sections) :
+    IsIso (sectionOrbitMap (fun i ↦ (sections i).left) ∣_ U) := by
+  have := restrictedSectionCoproduct_isIso p sections section_identity covering U outside
+  exact coproductRestriction_isIso (fun i ↦ (sections i).left) U
 
 end SerrePositivity.KST.Descent

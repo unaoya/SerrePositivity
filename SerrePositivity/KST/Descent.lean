@@ -34,6 +34,9 @@ public import SerrePositivity.KST.Descent.FiniteCoproduct
 public import SerrePositivity.KST.Descent.SectionOrbit
 public import SerrePositivity.KST.Descent.ClosedCoproduct
 public import SerrePositivity.KST.Descent.SectionCoincidence
+public import SerrePositivity.KST.Descent.CoproductRestriction
+public import SerrePositivity.KST.Descent.ClosedImmersionSquare
+public import SerrePositivity.KST.Descent.OrbitGeometry
 
 /-!
 # K-L8：論文 §3 の降下
@@ -54,6 +57,7 @@ public import SerrePositivity.KST.Descent.SectionCoincidence
 Noether 基底上の「一般 → 被約」の全次数降下比較の還元も公開する。
 切断の有限非交和の有限性・固有性と、被約化への軌道射の G 同変性も公開する。
 一致中心の外の切断の像の互いに素と、被約な終域の有限閉被覆の非交和同型も公開する。
+有限非交和と開制限の標準比較、および基底の一致中心を引き戻した実際の軌道正方形を公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。
