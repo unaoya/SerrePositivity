@@ -6138,5 +6138,106 @@ lemma isPrecompositionEquivalence_of_pullback_stdSimplex
       IsPrecompositionEquivalence (overPullbackMap u (Over.mk p))) :
     IsPrecompositionEquivalence u.left
 
+noncomputable def relativeJoinBaseProjection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    relativeJoin f g ⟶ S
+
+lemma relativeJoinInr_baseProjection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    relativeJoinInr f g ≫ relativeJoinBaseProjection f g = g
+
+lemma relativeJoinPrism_baseProjection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    relativeJoinPrism f ≫ relativeJoinBaseProjection f (𝟙 Y) =
+      snd (Δ[1] : SSet.{u}) X ≫ f
+
+noncomputable def mappingCylinderBaseProjection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout (prismEndpoint 1 X) f ⟶ Y
+
+lemma mappingCylinderBaseProjection_inl {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout.inl (prismEndpoint 1 X) f ≫ mappingCylinderBaseProjection f =
+      snd (Δ[1] : SSet.{u}) X ≫ f
+
+lemma mappingCylinderBaseProjection_inr {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout.inr (prismEndpoint 1 X) f ≫ mappingCylinderBaseProjection f = 𝟙 Y
+
+lemma relativeJoinCylinderComparison_baseProjection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    relativeJoinCylinderComparison f ≫ relativeJoinBaseProjection f (𝟙 Y) =
+      mappingCylinderBaseProjection f
+
+noncomputable def relativeJoinCylinderComparisonOver {X Y : SSet.{u}} (f : X ⟶ Y) :
+    Over.mk (mappingCylinderBaseProjection f) ⟶ Over.mk (relativeJoinBaseProjection f (𝟙 Y))
+
+noncomputable def relativeJoinPullbackMap {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoin (pullback.snd f h) (𝟙 Z) ⟶ relativeJoin f (𝟙 Y)
+
+lemma relativeJoinPullbackMap_fst {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoinPullbackMap f h ≫ pullback.fst (joinMap f (𝟙 Y)) (joinDiagonal Y) =
+      pullback.fst (joinMap (pullback.snd f h) (𝟙 Z)) (joinDiagonal Z) ≫
+        joinMap (pullback.fst f h) h
+
+lemma relativeJoinPullbackMap_snd {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoinPullbackMap f h ≫ pullback.snd (joinMap f (𝟙 Y)) (joinDiagonal Y) =
+      pullback.snd (joinMap (pullback.snd f h) (𝟙 Z)) (joinDiagonal Z) ≫
+        ((Δ[1] : SSet.{u}) ◁ h)
+
+lemma relativeJoinPullbackMap_baseProjection {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoinPullbackMap f h ≫ relativeJoinBaseProjection f (𝟙 Y) =
+      relativeJoinBaseProjection (pullback.snd f h) (𝟙 Z) ≫ h
+
+lemma relativeJoinPrism_pullbackMap {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoinPrism (pullback.snd f h) ≫ relativeJoinPullbackMap f h =
+      ((Δ[1] : SSet.{u}) ◁ pullback.fst f h) ≫ relativeJoinPrism f
+
+lemma relativeJoinInr_pullbackMap {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoinInr (pullback.snd f h) (𝟙 Z) ≫ relativeJoinPullbackMap f h =
+      h ≫ relativeJoinInr f (𝟙 Y)
+
+noncomputable def mappingCylinderPullbackMap {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    pushout (prismEndpoint 1 (pullback f h)) (pullback.snd f h) ⟶
+      pushout (prismEndpoint 1 X) f
+
+lemma mappingCylinderPullbackMap_inl {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    pushout.inl (prismEndpoint 1 (pullback f h)) (pullback.snd f h) ≫
+      mappingCylinderPullbackMap f h =
+        ((Δ[1] : SSet.{u}) ◁ pullback.fst f h) ≫ pushout.inl (prismEndpoint 1 X) f
+
+lemma mappingCylinderPullbackMap_inr {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    pushout.inr (prismEndpoint 1 (pullback f h)) (pullback.snd f h) ≫
+      mappingCylinderPullbackMap f h = h ≫ pushout.inr (prismEndpoint 1 X) f
+
+lemma mappingCylinderPullbackMap_baseProjection {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    mappingCylinderPullbackMap f h ≫ mappingCylinderBaseProjection f =
+      mappingCylinderBaseProjection (pullback.snd f h) ≫ h
+
+lemma relativeJoinCylinderComparison_pullbackMap {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    mappingCylinderPullbackMap f h ≫ relativeJoinCylinderComparison f =
+      relativeJoinCylinderComparison (pullback.snd f h) ≫ relativeJoinPullbackMap f h
+
+noncomputable def mappingCylinderPullbackLift {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    pushout (prismEndpoint 1 (pullback f h)) (pullback.snd f h) ⟶
+      pullback h (mappingCylinderBaseProjection f)
+
+lemma mappingCylinderPullbackLift_fst {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    mappingCylinderPullbackLift f h ≫ pullback.fst h (mappingCylinderBaseProjection f) =
+      mappingCylinderBaseProjection (pullback.snd f h)
+
+lemma mappingCylinderPullbackLift_snd {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    mappingCylinderPullbackLift f h ≫ pullback.snd h (mappingCylinderBaseProjection f) =
+      mappingCylinderPullbackMap f h
+
+noncomputable def relativeJoinPullbackLift {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoin (pullback.snd f h) (𝟙 Z) ⟶ pullback h (relativeJoinBaseProjection f (𝟙 Y))
+
+lemma relativeJoinPullbackLift_fst {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoinPullbackLift f h ≫ pullback.fst h (relativeJoinBaseProjection f (𝟙 Y)) =
+      relativeJoinBaseProjection (pullback.snd f h) (𝟙 Z)
+
+lemma relativeJoinPullbackLift_snd {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoinPullbackLift f h ≫ pullback.snd h (relativeJoinBaseProjection f (𝟙 Y)) =
+      relativeJoinPullbackMap f h
+
+lemma relativeJoinCylinderComparison_pullbackLift {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    relativeJoinCylinderComparison (pullback.snd f h) ≫ relativeJoinPullbackLift f h =
+      mappingCylinderPullbackLift f h ≫
+        overPullbackMap (relativeJoinCylinderComparisonOver f) (Over.mk h)
+
 end SerrePositivity.InfinityCategories
 ```

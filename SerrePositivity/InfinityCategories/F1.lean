@@ -284,3 +284,7 @@ public import SerrePositivity.InfinityCategories.F1.OverCellularNaturalCompariso
 public import SerrePositivity.InfinityCategories.F1.OverPullbackColimits
 public import SerrePositivity.InfinityCategories.F1.OverPullbackMorphism
 public import SerrePositivity.InfinityCategories.F1.PrecompositionSimplexLocality
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinBaseProjection
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPullbackMap
+public import SerrePositivity.InfinityCategories.F1.MappingCylinderPullbackMap
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderPullbackLift
