@@ -163,8 +163,25 @@ suspension の source_eq の逆向きによる eqToHom として厳密に記述�
 `colimitCoconeProjection_ho_map_injective` は射影した射の等号を反映する。
 `colimitCoconeLiftHom` は指定された二つの普遍余錐間に図式側の h の射を一意に
 持ち上げる。射影との逆関係、一意性、恒等射・合成との両立も公開済み。
-これは基底の h の射を固定した持ち上げの選択独立性までであり、接続射全体の
-選択独立性には span の比較自体の h の射が一意であることをさらに証明する必要がある。
+これは基底の h の射を固定した持ち上げの選択独立性である。
+span 比較側の一意性のため、`stable_prism_extend_terminal_last` により境界の最後の
+終点だけが終対象であれば始点側を指定した prism を延長できることを証明した。
+`terminalBoundaryLifting_arrowSource_of_terminalTarget` と
+`terminalBoundaryLifting_spanSource_of_terminalTargets` は、辺の終点／span の両端が
+終対象であれば始点評価に関して相対終点境界を充填することを保証する。
+これらの充填自体には値域の quasicategory 性は不要。
+相対終点境界充填から、その頂点への写像空間上の trivial Kan fibration を構成した。
+`homotopyCategoryMap_bijective_of_terminalBoundaryLifting` は、元・値域が quasicategory
+のとき、その頂点への h の Hom が基底の Hom と全単射で対応することを証明する。
+`spanSourceEvaluation_homMap_bijective` により終対象を両端とする span への h の射は
+共通始点の成分だけで決まる。suspension の span への適用も `suspensionSpan_hom_ext` に公開。
+`homotopyEvaluation_arrow` はホモトピーの関手辺を評価した類と自然変換の頂点成分を照合し、
+固定頂点での類の一致を `homotopyEvaluation_eq_of_fixedVertex` に導いた。
+`suspensionSpanHomotopy_homMk_eq` は始点を厳密に固定した二つの suspension span への
+比較ホモトピーが h で同じ射を与えることを保証する。
+span 比較側と、図式の h の射を固定した普遍余錐間の持ち上げ側の一意性は揃った。
+接続射全体の選択独立性には、これらを四角形の比較から頂点で取り出した接続射へ
+接続して照合する段階がまだ残る。
 `cofiberConnecting` の前提は Quasicategory と IsStable のみで、列は零角の四角形と
 IsCofiberSequence の証明で与える。選択独立性、接続射の自然性、Σf の後との零合成、
 回転・八面体を含む三角圏の公理は未完了。
@@ -280,7 +297,10 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | cofiber 列の接続射 | `cofiberConnectingToSuspension`（Quasicategory、HasZeroMorphisms、指定 suspension）、`cofiberConnecting`、`cofiberConnecting_comp_eq_zero`（Quasicategory、IsStable、IsCofiberSequence） | 構成と第二射の後の零合成まで完了。選択独立性・自然性・三角構造は未完了 |
 | suspension 比較の最初の二成分 | `homotopyNatTrans_fixedVertex_arrow`（追加仮定なし）、`cofiberSuspensionShortComplexMap_τ₁_arrow`、`cofiberSuspensionShortComplexMap_τ₁_eqToHom`、`cofiberSuspensionShortComplexMap_τ₁_isIso`、`cofiberSuspensionShortComplexMap_τ₂_eq_zero`（Quasicategory、HasZeroMorphisms、cofiber 列と指定 suspension） | 完了。接続射全体の選択独立性・自然性は未完了 |
 | 正次元境界による充満忠実性 | `pinchedHomMap_boundary_of_boundary_succ`、`pinchedHomMap_trivialKanFibration_of_boundary_succ`（元・値域の仮定なし）、`isFullyFaithful_of_boundary_succ`（元・値域 Quasicategory） | 完了 |
-| 普遍余錐の射影と射の一意な持ち上げ | `relativeInitialProjection_isFullyFaithful`（元・基底 Quasicategory）、`colimitCoconeProjection_isFullyFaithful`、`colimitCoconeProjectionHoFullyFaithful`、`colimitCoconeLiftHom` と射影・一意性・恒等・合成則（X が Quasicategory） | 基底の h の射を固定した一意性まで完了。span 比較自体の選択独立性は未完了 |
+| 普遍余錐の射影と射の一意な持ち上げ | `relativeInitialProjection_isFullyFaithful`（元・基底 Quasicategory）、`colimitCoconeProjection_isFullyFaithful`、`colimitCoconeProjectionHoFullyFaithful`、`colimitCoconeLiftHom` と射影・一意性・恒等・合成則（X が Quasicategory） | 基底の h の射を固定した一意性まで完了。span 比較側の一意性も下記で完成、接続射への照合は未完了 |
+| 終対象への辺・span の相対境界充填 | `stable_prism_extend_terminal_last`、`terminalBoundaryLifting_arrowSource_of_terminalTarget`、`terminalBoundaryLifting_spanSource_of_terminalTargets`（指定終点の終対象性、Quasicategory は不要） | 完了 |
+| 相対終点と写像空間 | `TerminalBoundaryLifting.exists_joinBoundary_lift`、`pinchedHomMap_trivialKanFibration_of_terminalBoundaryLifting`（追加仮定なし）、`homotopyCategoryMap_bijective_of_terminalBoundaryLifting`（元・値域 Quasicategory） | 完了 |
+| 始点固定の span 比較の一意性 | `spanSourceEvaluation_homMap_bijective`、`suspensionSpan_hom_ext`、`suspensionSpanHomotopy_homMk_eq`（X が Quasicategory、指定 suspension への始点固定の比較） | 完了。接続射全体への照合は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

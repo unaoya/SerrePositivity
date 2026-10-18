@@ -5677,3 +5677,217 @@ SerrePositivity.InfinityCategories.colimitCoconeLiftHom_comp.{u} {K X : SSet.{u}
 基底の h の射を固定した普遍余錐間の射の一意性・関手性まで完了。
 接続射全体の選択独立性には span 比較自体の一意性が未完了。自然性、Σf との零合成、
 前加法構造、整数シフト、TR1〜TR4、Pretriangulated および S5〜S7 も未完了。
+
+## S4：終対象への相対境界充填と始点固定の span 比較の一意性
+
+prism・辺・span の相対境界充填は、指定した最後の終点の終対象性のみを仮定し、
+値域の Quasicategory は不要。相対終点への写像空間の trivial Kan fibration も
+元・値域の Quasicategory は不要。h の Hom の全単射には元・値域 Quasicategory、
+span の比較の一意性への適用には X が Quasicategory であることを仮定する。
+正確な公開型（Lean の出力）：
+
+```lean
+SerrePositivity.InfinityCategories.stable_prism_extend_terminal_last.{u} {X : SSet.{u}} (n : ℕ)
+  (H : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] (Subcomplex.toSSet.{u} ∂Δ[HAdd.hAdd.{0, 0, 0} n 1])) X)
+  (F₀ : Quiver.Hom.{u, u + 1} Δ[HAdd.hAdd.{0, 0, 0} n 1] X)
+  (hF₀ :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} (Subcomplex.ι.{u} ∂Δ[HAdd.hAdd.{0, 0, 0} n 1]) F₀)
+      (CategoryStruct.comp.{u, u + 1}
+        (SerrePositivity.InfinityCategories.prismEndpoint.{u} 0 (Subcomplex.toSSet.{u} ∂Δ[HAdd.hAdd.{0, 0, 0} n 1])) H))
+  (ht :
+    SerrePositivity.InfinityCategories.IsTerminalVertex.{u}
+      ((ConcreteCategory.hom.{u, u, u + 1, u} (NatTrans.app.{0, u, 0, u + 1} H (Opposite.op.{1} ⦋0⦌)))
+        (Prod.mk.{u, u} ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 1)
+          (Subtype.mk.{u + 1} ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) (Fin.last (HAdd.hAdd.{0, 0, 0} n 1)))
+            ⋯)))) :
+  ∃ F,
+    Eq.{u + 1}
+        (CategoryStruct.comp.{u, u + 1} (whiskerLeft.{u, u + 1} Δ[1] (Subcomplex.ι.{u} ∂Δ[HAdd.hAdd.{0, 0, 0} n 1])) F)
+        H ∧
+      Eq.{u + 1}
+        (CategoryStruct.comp.{u, u + 1}
+          (SerrePositivity.InfinityCategories.prismEndpoint.{u} 0 Δ[HAdd.hAdd.{0, 0, 0} n 1]) F)
+        F₀
+SerrePositivity.InfinityCategories.terminalBoundaryLifting_arrowSource_of_terminalTarget.{u} {X : SSet.{u}}
+  (g : Quiver.Hom.{u, u + 1} Δ[1] X)
+  (hg :
+    SerrePositivity.InfinityCategories.IsTerminalVertex.{u}
+      ((ConcreteCategory.hom.{u, u, u + 1, u} (NatTrans.app.{0, u, 0, u + 1} g (Opposite.op.{1} ⦋0⦌)))
+        ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 1))) :
+  SerrePositivity.InfinityCategories.TerminalBoundaryLifting.{u}
+    (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u} ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 0))
+    (SerrePositivity.InfinityCategories.functorVertex.{u} g)
+SerrePositivity.InfinityCategories.spanSourceEvaluation.{u} (X : SSet.{u}) :
+  Quiver.Hom.{u, u + 1} (Subcomplex.toSSet.{u} Λ[2, 0] ⟹ X) X
+SerrePositivity.InfinityCategories.spanSourceEvaluation_right.{u} (X : SSet.{u}) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} (NatTrans.app.{u, u, u + 1, u + 1} (pre.{u, u + 1} horn₂₀.ι₀₂.{u}) X)
+      (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u} ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 0)))
+    (SerrePositivity.InfinityCategories.spanSourceEvaluation.{u} X)
+SerrePositivity.InfinityCategories.terminalBoundaryLifting_spanSource_of_terminalTargets.{u} {X : SSet.{u}}
+  (g : Quiver.Hom.{u, u + 1} (Subcomplex.toSSet.{u} Λ[2, 0]) X)
+  (hg₁ :
+    SerrePositivity.InfinityCategories.IsTerminalVertex.{u}
+      ((ConcreteCategory.hom.{u, u, u + 1, u}
+          (NatTrans.app.{0, u, 0, u + 1} (CategoryStruct.comp.{u, u + 1} horn₂₀.ι₀₁.{u} g) (Opposite.op.{1} ⦋0⦌)))
+        ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 1)))
+  (hg₂ :
+    SerrePositivity.InfinityCategories.IsTerminalVertex.{u}
+      ((ConcreteCategory.hom.{u, u, u + 1, u}
+          (NatTrans.app.{0, u, 0, u + 1} (CategoryStruct.comp.{u, u + 1} horn₂₀.ι₀₂.{u} g) (Opposite.op.{1} ⦋0⦌)))
+        ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 1))) :
+  SerrePositivity.InfinityCategories.TerminalBoundaryLifting.{u}
+    (SerrePositivity.InfinityCategories.spanSourceEvaluation.{u} X)
+    (SerrePositivity.InfinityCategories.functorVertex.{u} g)
+SerrePositivity.InfinityCategories.TerminalBoundaryLifting.exists_joinBoundary_lift.{u} {E B : SSet.{u}}
+  {p : Quiver.Hom.{u, u + 1} E B} {y : E _⦋0⦌} (hy : SerrePositivity.InfinityCategories.TerminalBoundaryLifting.{u} p y)
+  (n : ℕ) (B₀ : Subcomplex.{u} Δ[0]) (hB₀ : Eq.{u + 1} B₀ ∂Δ[0])
+  (a : Quiver.Hom.{u, u + 1} (Subcomplex.toSSet.{u} (SerrePositivity.InfinityCategories.joinUnion.{u} ∂Δ[n] B₀)) E)
+  (b : Quiver.Hom.{u, u + 1} (SerrePositivity.InfinityCategories.join.{u} Δ[n] Δ[0]) B)
+  (hw :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} a p)
+      (CategoryStruct.comp.{u, u + 1} (Subcomplex.ι.{u} (SerrePositivity.InfinityCategories.joinUnion.{u} ∂Δ[n] B₀)) b))
+  (hlast :
+    Eq.{u + 1}
+      (CategoryStruct.comp.{u, u + 1}
+        (SerrePositivity.InfinityCategories.joinInr.{u} (Subcomplex.toSSet.{u} ∂Δ[n]) Δ[0])
+        (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.joinUnionLeft.{u} ∂Δ[n] B₀) a))
+      ((Equiv.symm.{u + 1, u + 1} SSet.yonedaEquiv.{u}) y)) :
+  ∃ F,
+    Eq.{u + 1}
+        (CategoryStruct.comp.{u, u + 1} (Subcomplex.ι.{u} (SerrePositivity.InfinityCategories.joinUnion.{u} ∂Δ[n] B₀))
+          F)
+        a ∧
+      Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} F p) b
+SerrePositivity.InfinityCategories.pinchedHomMap_boundary_of_terminalBoundaryLifting.{u} {X Y : SSet.{u}}
+  (p : Quiver.Hom.{u, u + 1} X Y) {y : X _⦋0⦌} (ht : SerrePositivity.InfinityCategories.TerminalBoundaryLifting.{u} p y)
+  (x : X _⦋0⦌) (n : ℕ) :
+  HasLiftingProperty.{u, u + 1} (Subcomplex.ι.{u} ∂Δ[n]) (SerrePositivity.InfinityCategories.pinchedHomMap.{u} p x y)
+SerrePositivity.InfinityCategories.pinchedHomMap_trivialKanFibration_of_terminalBoundaryLifting.{u} {X Y : SSet.{u}}
+  (p : Quiver.Hom.{u, u + 1} X Y) {y : X _⦋0⦌} (ht : SerrePositivity.InfinityCategories.TerminalBoundaryLifting.{u} p y)
+  (x : X _⦋0⦌) :
+  SerrePositivity.InfinityCategories.TrivialKanFibration.{u}
+    (SerrePositivity.InfinityCategories.pinchedHomMap.{u} p x y)
+SerrePositivity.InfinityCategories.homotopyCategoryMap_bijective_of_terminalBoundaryLifting.{u} {X Y : SSet.{u}}
+  [Quasicategory.{u} X] [Quasicategory.{u} Y] (p : Quiver.Hom.{u, u + 1} X Y) {y : X _⦋0⦌}
+  (ht : SerrePositivity.InfinityCategories.TerminalBoundaryLifting.{u} p y) (x : X _⦋0⦌) :
+  Function.Bijective.{u + 1, u + 1}
+    (CategoryTheory.Functor.map.{u, u, u, u}
+      (Cat.Hom.toFunctor.{u, u} (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u} p)))
+SerrePositivity.InfinityCategories.homotopyEvaluation_arrow.{u} {A X : SSet.{u}} {F G : Quiver.Hom.{u, u + 1} A X}
+  (H : Homotopy.{u} F G) (a : A _⦋0⦌) :
+  Eq.{u + 1}
+    (Arrow.mk.{u, u}
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u} a)))
+        (Truncated.HomotopyCategory.homMk.{u}
+          (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H))))
+    (Arrow.mk.{u, u}
+      (NatTrans.app.{u, u, u, u}
+        (SerrePositivity.InfinityCategories.homotopyNatTrans.{u} (RelativeMorphism.Homotopy.h.{u} H))
+        (HomotopyCategory.mk.{u} a)))
+SerrePositivity.InfinityCategories.homotopyEvaluation_eq_of_fixedVertex.{u} {A X : SSet.{u}}
+  {F G : Quiver.Hom.{u, u + 1} A X} (H J : Homotopy.{u} F G) (i : Quiver.Hom.{u, u + 1} Δ[0] A) (x : X _⦋0⦌)
+  (hH :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} (whiskerRight.{u, u + 1} i Δ[1]) (RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1]) (const.{u} x)))
+  (hJ :
+    Eq.{u + 1} (CategoryStruct.comp.{u, u + 1} (whiskerRight.{u, u + 1} i Δ[1]) (RelativeMorphism.Homotopy.h.{u} J))
+      (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1]) (const.{u} x))) :
+  Eq.{u + 1}
+    (CategoryTheory.Functor.map.{u, u, u, u}
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u} (SSet.yonedaEquiv.{u} i))))
+      (Truncated.HomotopyCategory.homMk.{u} (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H)))
+    (CategoryTheory.Functor.map.{u, u, u, u}
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u} (SSet.yonedaEquiv.{u} i))))
+      (Truncated.HomotopyCategory.homMk.{u} (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} J)))
+SerrePositivity.InfinityCategories.spanSourceEvaluation_homMap_bijective.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (f g : Quiver.Hom.{u, u + 1} (Subcomplex.toSSet.{u} Λ[2, 0]) X)
+  (hg₁ :
+    SerrePositivity.InfinityCategories.IsTerminalVertex.{u}
+      ((ConcreteCategory.hom.{u, u, u + 1, u}
+          (NatTrans.app.{0, u, 0, u + 1} (CategoryStruct.comp.{u, u + 1} horn₂₀.ι₀₁.{u} g) (Opposite.op.{1} ⦋0⦌)))
+        ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 1)))
+  (hg₂ :
+    SerrePositivity.InfinityCategories.IsTerminalVertex.{u}
+      ((ConcreteCategory.hom.{u, u, u + 1, u}
+          (NatTrans.app.{0, u, 0, u + 1} (CategoryStruct.comp.{u, u + 1} horn₂₀.ι₀₂.{u} g) (Opposite.op.{1} ⦋0⦌)))
+        ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 1))) :
+  Function.Bijective.{u + 1, u + 1}
+    (CategoryTheory.Functor.map.{u, u, u, u}
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.spanSourceEvaluation.{u} X))))
+SerrePositivity.InfinityCategories.suspensionSpan_hom_ext.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0))
+  {a b :
+    Quiver.Hom.{u, u}
+      (HomotopyCategory.mk.{u}
+        (SerrePositivity.InfinityCategories.functorVertex.{u} (SerrePositivity.InfinityCategories.pushoutSpan.{u} F)))
+      (HomotopyCategory.mk.{u}
+        (SerrePositivity.InfinityCategories.functorVertex.{u}
+          (SerrePositivity.InfinityCategories.pushoutSpan.{u}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u}
+              (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s)))))}
+  (h :
+    Eq.{u + 1}
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.spanSourceEvaluation.{u} X)))
+        a)
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.spanSourceEvaluation.{u} X)))
+        b)) :
+  Eq.{u + 1} a b
+SerrePositivity.InfinityCategories.spanSourceEvaluation_eq_evaluate.{u} (X : SSet.{u}) :
+  Eq.{u + 1} (SerrePositivity.InfinityCategories.spanSourceEvaluation.{u} X)
+    (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u}
+      (SSet.yonedaEquiv.{u}
+        (CategoryStruct.comp.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1) horn₂₀.ι₀₁.{u})))
+SerrePositivity.InfinityCategories.suspensionSpanHomotopy_homMk_eq.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0))
+  (H J :
+    Homotopy.{u} (SerrePositivity.InfinityCategories.pushoutSpan.{u} F)
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s))))
+  (hH :
+    Eq.{u + 1}
+      (CategoryStruct.comp.{u, u + 1}
+        (whiskerRight.{u, u + 1}
+          (CategoryStruct.comp.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1) horn₂₀.ι₀₁.{u}) Δ[1])
+        (RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1])
+        (const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0))))
+  (hJ :
+    Eq.{u + 1}
+      (CategoryStruct.comp.{u, u + 1}
+        (whiskerRight.{u, u + 1}
+          (CategoryStruct.comp.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1) horn₂₀.ι₀₁.{u}) Δ[1])
+        (RelativeMorphism.Homotopy.h.{u} J))
+      (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1])
+        (const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)))) :
+  Eq.{u + 1}
+    (Truncated.HomotopyCategory.homMk.{u} (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H))
+    (Truncated.HomotopyCategory.homMk.{u} (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} J))
+```
+
+対象 SpanComparisonUniqueness ビルド 1992 jobs、Stable 集約ビルド 2075 jobs、
+公開型抽出、公理監査はすべて終了コード 0。監査は 130 モジュール・1181 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
+始点固定の suspension span 比較の h の射の一意性まで完了。接続射全体の選択独立性は、
+これと前回の普遍余錐間の持ち上げの一意性を、頂点で取り出した射に照合する段階が未完了。
+自然性、Σf との零合成、前加法構造、整数シフト、TR1〜TR4、Pretriangulated、S5〜S7 も未完了。
