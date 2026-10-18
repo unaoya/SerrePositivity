@@ -76,7 +76,12 @@ underlying 複体が当該添字での値に一致することを証明済み。
 全 diagram-module の係数圏と係数関手を保持し、局所の同じ dg 代数の表示のみを正規化する。
 正規表示の標準制限同型の評価、指定比較と underlying 図式の包含写像の成分一致、
 指定加群比較の単位条件・三重整合性を証明済み。
-随伴導来係数拡大への整合性の移送と、既存局所 perfect 条件との同定は未完了。
+正規表示への導来評価と標準計算同型、局所 perfect 条件と同型不変性を構成済み。
+元の Koszul 模型への指定 dg 準同値に沿う導来評価比較を構成し、
+各局所 perfect 条件と全有限重なりでの既存局所 perfect 条件との iff を証明済み。
+正規表示の指定導来制限比較を主局所化上の自然変換として延長し、
+実際の延長–制限随伴から係数拡大比較、随伴公式、全導来射に対する自然性を構成済み。
+随伴導来比較の単位・三重整合性と、元の cartesian 比較との同定は未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -330,6 +335,10 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | 正規表示の標準評価同型の恒等成分・`diagramAlgebraModuleComparison_eval`・任意局所対象での評価 | DiagramAlgebraModuleComparisonComponents | 指定比較の underlying 包含写像による計算 |
 | `diagramAlgebraRestrictionIdIso`・`diagramAlgebraRestrictionCompIso`・任意局所加群上の恒等評価 | DiagramAlgebraRestrictionCoherence | 正規表示における標準単位・合成制限同型 |
 | `diagramAlgebraModuleComparison_id`・`diagramAlgebraModuleComparison_comp` | DiagramAlgebraModuleComparisonCoherence | 標準制限同型を介する指定加群比較の単位・三重整合性 |
+| `diagramAlgebraDerivedEvaluation`・擬同型保存・因子分解・標準自然同型・underlying 評価 | DiagramAlgebraDerivedEvaluation | 正規表示への実際の主導来評価 |
+| `diagramAlgebraLocallyPerfect`・同型不変性 | DiagramAlgebraLocallyPerfect | 正規表示での局所 perfect 条件 |
+| `finiteOverlapAlgebraDerivedEvaluationComparison`・`finiteOverlapAlgebraPerfect_iff`・全局所条件の iff | FiniteOverlapAlgebraPerfectComparison | 指定 dg 準同値を介する導来評価と既存局所 perfect 条件の一致 |
+| `diagramAlgebraDerivedRestrictionNatTrans`・`diagramAlgebraDerivedExtensionComparison`・随伴公式・自然性 | DiagramAlgebraDerivedComparison | 正規表示での canonical な導来比較の構成 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -397,7 +406,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2089定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2156定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -406,7 +415,8 @@ coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全
 標準制限同型を含む加群比較の単位条件も証明済み。
 標準局所合成同型の具体的評価と、一般の導来制限の標準単位・合成自然同型も構成済み。
 dg 準同値な一対象正規表示での指定加群比較の単位・三重整合性は証明済み。
-次の実装単位は既存局所 perfect 条件への移送、随伴導来比較の単位・三重整合性、
+既存局所 perfect 条件との一致と、正規表示の canonical な導来係数拡大比較の自然性は証明済み。
+次の実装単位は随伴導来比較の単位・三重整合性と元の cartesian 比較との同定、
 および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
