@@ -1586,3 +1586,45 @@ Hom の極限性や追加の比較同値・Ω 条件を前提に置かない。
 公理監査成功（標準3公理のみ）。新規7ファイルの警告・sorry・追加公理はない。
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-towers-aggregate.log` と `/tmp/gamma3-spectrum-towers-audit.log`。
+
+
+### γ3b：元の q_x と反転比較 q′ の同値判定、および元の比較からの極限性
+
+`ReflectedConeLimitLift` で Kan 複体間のホモトピー同値性が反転で検出されることと、
+任意の錐の厳密極限への射が反転の極限保存同型と可換であることを証明した。
+錐の厳密極限性は要求しない。二重反転の自然同型で元の射へ戻す。
+
+`ConeComparisonReflection` は任意の錐の比較を
+`bousfieldKanConeComparison c = limit.lift H c ≫ bousfieldKanLimitComparison H`
+と厳密に分解する。元と反転後の標準比較 κ の同値性を消去し、両極限への射を比較する。
+離散 Kan 図式、一脚 fibration の Kan cospan、Kan fibration の塔について、
+必要な κ の同値性と厳密極限の Kan 性を検証して、比較の同値性の一致を得た。
+反転した end と元の end を同一視することはなく、中間の厳密極限の保存同型を使う。
+
+`RepresentableReflection` の三つの `representableComparison_reflection_*_iff` は、
+局所 Kan な単体的圏の実際の Hom 錐にこの判定を適用し、元の
+`representableHomotopyLimitComparison c x` が同値であることと、
+`reflectedRepresentableComparison c x` が同値であることの同値を証明した。
+cospan には Hom の左脚の fibration 性、塔には全隣接遷移の Hom の fibration 性を要求する。
+Hom 錐そのものが厳密極限であることは、三形状のいずれの定理にも要求しない。
+
+`RepresentableLimitCriterion` の三つの
+`strictCoherentCone_isLimit_of_*_representableComparison` は、元の q_x の同値性を全 x で
+仮定して `IsLimitCone (strictCoherentCone c)` を導く共有定理である。
+反転比較を ULift し、反転 end から実際の coherent 錐の切断模型への比較と合成して、
+既存の native な極限判定へ渡す。局所 Kan 性と形状に応じた Hom の fibration 性は明示する。
+
+これは三形状で元の q_x を入力とする十分条件を証明したもの。
+元の q_x の同値性と native な極限性の逆向き、元の比較射の導来 fiber と錐の pinched Hom
+との直接比較、一般形状の元と反転 end の直接比較は、引き続き未完了。
+余極限側と E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+原典：HTT 4.2.4.1 の限定形、Kerodon 7.5.3.12・7.5.4.6、2.4.5、4.6.7。
+
+新規15宣言の正確な型・全前提を README の同名節へ記録し、
+全ての `#check @` と `#print axioms` を監査に追加した。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4664 jobs）、公開1322宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-representable-limit-criterion-aggregate.log` と
+`/tmp/gamma3-representable-limit-criterion-audit.log`。
