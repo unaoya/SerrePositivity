@@ -2531,5 +2531,51 @@ lemma subcomplexRestriction_isPrecompositionEquivalence_sup {X Y : SSet.{u}} (f 
     (e₂ : IsPrecompositionEquivalence (subcomplexRestriction f _ _ h₂)) :
     IsPrecompositionEquivalence (subcomplexRestriction f _ _ hU)
 
+def coherentResolutionFaceUnion {n : ℕ} (S : Finset (Finset (Fin (n + 1)))) :
+    (coherentResolutionSimplex.{u} n).Subcomplex
+
+def stdSimplexFaceUnion {n : ℕ} (S : Finset (Finset (Fin (n + 1)))) :
+    (Δ[n] : SSet.{u}).Subcomplex
+
+lemma mem_coherentResolutionFaceUnion_iff {n : ℕ} (S : Finset (Finset (Fin (n + 1))))
+    {d : SimplexCategoryᵒᵖ} (F : (coherentResolutionSimplex.{u} n).obj d) :
+    F ∈ (coherentResolutionFaceUnion S).obj d ↔ ∃ T ∈ S, F.down.support ⊆ T
+
+lemma coherentResolutionFaceUnion_empty (n : ℕ) :
+    coherentResolutionFaceUnion.{u} (∅ : Finset (Finset (Fin (n + 1)))) = ⊥
+
+lemma stdSimplexFaceUnion_empty (n : ℕ) :
+    stdSimplexFaceUnion.{u} (∅ : Finset (Finset (Fin (n + 1)))) = ⊥
+
+lemma coherentResolutionFaceUnion_insert {n : ℕ} (T : Finset (Fin (n + 1)))
+    (S : Finset (Finset (Fin (n + 1)))) :
+    coherentResolutionFaceUnion.{u} (insert T S) =
+      coherentResolutionFace T ⊔ coherentResolutionFaceUnion S
+
+lemma stdSimplexFaceUnion_insert {n : ℕ} (T : Finset (Fin (n + 1)))
+    (S : Finset (Finset (Fin (n + 1)))) :
+    stdSimplexFaceUnion.{u} (insert T S) = stdSimplex.face T ⊔ stdSimplexFaceUnion S
+
+lemma subcomplex_finsetSup_inf {X : SSet.{u}} {ι : Type*} (S : Finset ι)
+    (F : ι → X.Subcomplex) (A : X.Subcomplex) :
+    S.sup F ⊓ A = S.sup (fun i ↦ F i ⊓ A)
+
+lemma coherentResolutionFaceUnion_inf_face {n : ℕ} (S : Finset (Finset (Fin (n + 1))))
+    (T : Finset (Fin (n + 1))) :
+    coherentResolutionFaceUnion.{u} S ⊓ coherentResolutionFace T =
+      coherentResolutionFaceUnion (S.image (fun U ↦ U ∩ T))
+
+lemma stdSimplexFaceUnion_inf_face {n : ℕ} (S : Finset (Finset (Fin (n + 1))))
+    (T : Finset (Fin (n + 1))) :
+    stdSimplexFaceUnion.{u} S ⊓ stdSimplex.face T =
+      stdSimplexFaceUnion (S.image (fun U ↦ U ∩ T))
+
+lemma coherentResolutionFaceUnion_mapsTo {n : ℕ} (S : Finset (Finset (Fin (n + 1)))) :
+    coherentResolutionFaceUnion.{u} S ≤ (stdSimplexFaceUnion S).preimage
+      (coherentResolutionProjection n)
+
+def coherentResolutionFaceUnionProjection {n : ℕ} (S : Finset (Finset (Fin (n + 1)))) :
+    (coherentResolutionFaceUnion.{u} S).toSSet ⟶ (stdSimplexFaceUnion S).toSSet
+
 end SerrePositivity.InfinityCategories
 ```

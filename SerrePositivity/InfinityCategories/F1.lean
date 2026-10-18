@@ -97,3 +97,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionImage
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaces
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceProjection
 public import SerrePositivity.InfinityCategories.F1.SubcomplexRestriction
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceUnion
