@@ -48,4 +48,6 @@ public import SerrePositivity.KST.SConstruction.ReducedKComparison
 
 public import SerrePositivity.KST.SConstruction.BoundaryKComparison
 
+public import SerrePositivity.KST.SConstruction.DiagonalAssembly
+
 /-! # ∞-S• 構成と連結 K 理論 -/

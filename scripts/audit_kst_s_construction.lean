@@ -2238,3 +2238,45 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kSpaceBoundaryComparison_naturality
 #print axioms SerrePositivity.KST.SConstruction.kSpaceBoundaryComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.diagonalAssembly
+#print axioms SerrePositivity.KST.SConstruction.diagonalAssembly
+
+#check @SerrePositivity.KST.SConstruction.diagonalAssembly_naturality
+#print axioms SerrePositivity.KST.SConstruction.diagonalAssembly_naturality
+
+#check @SerrePositivity.KST.SConstruction.diagonalAssembly_reindex
+#print axioms SerrePositivity.KST.SConstruction.diagonalAssembly_reindex
+
+#check @SerrePositivity.KST.SConstruction.diagonalAssembly_zero
+#print axioms SerrePositivity.KST.SConstruction.diagonalAssembly_zero
+
+#check @SerrePositivity.KST.SConstruction.diagonalAssembly_endpoint
+#print axioms SerrePositivity.KST.SConstruction.diagonalAssembly_endpoint
+
+#check @SerrePositivity.KST.SConstruction.diagonalAssembly_endpoint_reduced
+#print axioms SerrePositivity.KST.SConstruction.diagonalAssembly_endpoint_reduced
+
+#check @SerrePositivity.KST.SConstruction.intervalBoundary_simplex_constant
+#print axioms SerrePositivity.KST.SConstruction.intervalBoundary_simplex_constant
+
+#check @SerrePositivity.KST.SConstruction.diagonalAssembly_interval_boundary
+#print axioms SerrePositivity.KST.SConstruction.diagonalAssembly_interval_boundary
+
+#check @SerrePositivity.KST.SConstruction.diagonalIntervalComparison
+#print axioms SerrePositivity.KST.SConstruction.diagonalIntervalComparison
+
+#check @SerrePositivity.KST.SConstruction.diagonalIntervalComparison_quotient
+#print axioms SerrePositivity.KST.SConstruction.diagonalIntervalComparison_quotient
+
+#check @SerrePositivity.KST.SConstruction.diagonalIntervalMap
+#print axioms SerrePositivity.KST.SConstruction.diagonalIntervalMap
+
+#check @SerrePositivity.KST.SConstruction.diagonalIntervalMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.diagonalIntervalMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.diagonalIntervalFunctor
+#print axioms SerrePositivity.KST.SConstruction.diagonalIntervalFunctor
+
+#check @SerrePositivity.KST.SConstruction.diagonalIntervalComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.diagonalIntervalComparisonNat

@@ -2317,3 +2317,97 @@ lemma kSpaceBoundaryComparison_naturality {X Y : StableModel.{u}}
 任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2952 jobs）、公理監査成功（804 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.18 各段から対角への組み立てと区間商の自然な比較
+
+構造写像の cylinder を用意するため、任意の単体的単体集合 X について
+`diagonalAssembly m X : Δ[m] ⊗ X_m ⟶ diag X` を構成した。
+n 次の単体 (α,x) を外側構造射 X(αᵒᵖ)(x) に送る。
+入力について自然で、外側の全単体作用素による次数変更と両立する。
+各頂点の制限は零段の対角への包含を経由し、零段を潰すと全端点が厳密に基点となる。
+
+区間の境界の任意の高次単体が定値であることから、全境界について同じ式を証明した。
+この式を cofiber の普遍性へ渡し、
+`cofiber (∂Δ[1] ⊗ X₁ → Δ[1] ⊗ X₁) → reducedDiagonal X` を作った。
+源の区間商を関手にまとめ、この比較の厳密な自然性も証明した。
+Kan 性・安定性・可縮性などを追加仮定しない。
+
+この区間商の源は X₁ の全両端を一つの基点へ潰す模型であり、指定済みの点つき X₁ の
+reduced suspension と同一視していない。完成した S の反復間の構造写像とは数えない。
+S₁ の評価との比較、他の零方向を含む全境界商への降下、L9 の円の smash との接続が残る。
+
+以下の正確な型は namespace `SerrePositivity.KST.SConstruction` 内、`universe u`、
+`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、
+`open scoped Simplicial` の下で記す。
+
+**DiagonalAssembly.lean**
+
+```lean
+def diagonalAssembly (m : ℕ) (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    (Δ[m] : SSet.{u}) ⊗ X.obj (Opposite.op ⦋m⦌) ⟶ simplicialDiagonalFunctor.obj X
+
+lemma diagonalAssembly_naturality (m : ℕ) {X Y : SimplexCategoryᵒᵖ ⥤ SSet.{u}}
+    (f : X ⟶ Y) :
+    ((Δ[m] : SSet.{u}) ◁ f.app (Opposite.op ⦋m⦌)) ≫ diagonalAssembly m Y =
+      diagonalAssembly m X ≫ simplicialDiagonalFunctor.map f
+
+lemma diagonalAssembly_reindex {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    (stdSimplex.map θ ▷ X.obj (Opposite.op ⦋n⦌)) ≫ diagonalAssembly n X =
+      ((Δ[m] : SSet.{u}) ◁ X.map θ.op) ≫ diagonalAssembly m X
+
+lemma diagonalAssembly_zero (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    diagonalAssembly 0 X =
+      snd (Δ[0] : SSet.{u}) (X.obj (Opposite.op ⦋0⦌)) ≫ diagonalZeroColumn X
+
+lemma diagonalAssembly_endpoint (m : ℕ) (θ : ⦋0⦌ ⟶ ⦋m⦌)
+    (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    (stdSimplex.map θ ▷ X.obj (Opposite.op ⦋m⦌)) ≫ diagonalAssembly m X =
+      ((Δ[0] : SSet.{u}) ◁ X.map θ.op) ≫
+        snd (Δ[0] : SSet.{u}) (X.obj (Opposite.op ⦋0⦌)) ≫ diagonalZeroColumn X
+
+lemma diagonalAssembly_endpoint_reduced (m : ℕ) (θ : ⦋0⦌ ⟶ ⦋m⦌)
+    (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    (stdSimplex.map θ ▷ X.obj (Opposite.op ⦋m⦌)) ≫ diagonalAssembly m X ≫
+        diagonalReductionQuotient X =
+      toUnit ((Δ[0] : SSet.{u}) ⊗ X.obj (Opposite.op ⦋m⦌)) ≫ (reducedDiagonal X).hom
+
+lemma intervalBoundary_simplex_constant {n : ℕ} (a : (Δ[1] : SSet.{u}) _⦋n⦌)
+    (ha : a ∈ (boundary 1).obj (Opposite.op ⦋n⦌)) :
+    stdSimplex.objEquiv a = SimplexCategory.const ⦋n⦌ ⦋1⦌ (a 0)
+
+lemma diagonalAssembly_interval_boundary (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    ((boundary 1).ι ▷ X.obj (Opposite.op ⦋1⦌)) ≫ diagonalAssembly 1 X ≫
+        diagonalReductionQuotient X =
+      toUnit ((boundary 1 : (Δ[1] : SSet.{u}).Subcomplex).toSSet ⊗
+        X.obj (Opposite.op ⦋1⦌)) ≫ (reducedDiagonal X).hom
+
+def diagonalIntervalComparison (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    PointedObject.cofiber ((boundary 1).ι ▷ X.obj (Opposite.op ⦋1⦌)) ⟶
+      reducedDiagonal X
+
+lemma diagonalIntervalComparison_quotient (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    PointedObject.cofiberQuotient ((boundary 1).ι ▷ X.obj (Opposite.op ⦋1⦌)) ≫
+      (diagonalIntervalComparison X).right =
+        diagonalAssembly 1 X ≫ diagonalReductionQuotient X
+
+def diagonalIntervalMap {X Y : SimplexCategoryᵒᵖ ⥤ SSet.{u}} (f : X ⟶ Y) :
+    PointedObject.cofiber ((boundary 1).ι ▷ X.obj (Opposite.op ⦋1⦌)) ⟶
+      PointedObject.cofiber ((boundary 1).ι ▷ Y.obj (Opposite.op ⦋1⦌))
+
+lemma diagonalIntervalMap_quotient {X Y : SimplexCategoryᵒᵖ ⥤ SSet.{u}} (f : X ⟶ Y) :
+    PointedObject.cofiberQuotient ((boundary 1).ι ▷ X.obj (Opposite.op ⦋1⦌)) ≫
+      (diagonalIntervalMap f).right =
+        ((Δ[1] : SSet.{u}) ◁ f.app (Opposite.op ⦋1⦌)) ≫
+          PointedObject.cofiberQuotient ((boundary 1).ι ▷ Y.obj (Opposite.op ⦋1⦌))
+
+def diagonalIntervalFunctor : (SimplexCategoryᵒᵖ ⥤ SSet.{u}) ⥤ PointedSimplicialSet.{u}
+
+def diagonalIntervalComparisonNat : diagonalIntervalFunctor ⟶ reducedDiagonalFunctor
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。各段の組み立てと区間商の自然な比較を追加した。
+反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2953 jobs）、公理監査成功（818 宣言、標準三公理のみ）。追加公理・sorry なし。
