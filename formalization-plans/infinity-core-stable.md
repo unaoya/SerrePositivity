@@ -791,7 +791,24 @@ Mathlib の IsTriangulated.mk' を使い、任意の三つの distinguished 三�
 従って h C は cofiber 列の像を distinguished とする三角圏である（HA 1.1.2.14）。
 対象ビルド2808 jobs、対象・Stable 集約ビルド2824 jobs、342モジュール・2504宣言の監査と
 公開7宣言の universe 付き型抽出が成功した。標準三公理のみ。
-安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
+**S5 は完成**。
+`fiberTriangle` は fiber 列を安定性で cofiber 列とみなす三角形であり、distinguished である。
+`fiberHomFunctor W` の次数 n の台は Hom(W,A[n])、射はシフトした射との後合成である。
+`fiberHomConnecting` は Hom(W,C[n]) → Hom(W,A[n+1]) の準同型で、
+第三射の n 回シフトと整数シフトの比較同型による評価式と、三角形の射に対する自然性を公開する。
+`fiberHomSequence` は A[n]・B[n]・C[n] と次次数の三項からなる六項部分列、
+`fiberHomSequence_exact` は任意の W・任意の整数 n の完全性である。
+`fiberContravariantHomFunctor W` の次数 n の台は Hom(A,W[n])、射は前合成。
+`fiberContravariantHomConnecting` とその評価式、反対三角形を用いる
+`fiberContravariantHomSequence`・`fiberContravariantHomSequence_exact` も公開した。
+反変の六項は Hom(C,W[n]) → Hom(B,W[n]) → Hom(A,W[n]) →
+Hom(C,W[n+1]) → Hom(B,W[n+1]) → Hom(A,W[n+1]) である。
+両側とも全 n の部分列は同じ関手・接続射を使って重なり、全ての位置の完全性を覆う。
+仮定は Quasicategory X、IsStable X、入力 fiber 列のみ。有界性や compact 性は不要。
+対象ビルド3051 jobs、対象・Stable 集約ビルド3067 jobs、343モジュール・2523宣言の監査、
+公開17宣言の universe 付き型抽出が成功した。標準三公理のみ。
+
+安定性から全有限極限・余極限を導く逆向きの一般論と、S6〜S7 の完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
 引用・追加公理・sorry を使わず、各工程を対象・集約ビルドと公理監査の後に保存する。
@@ -817,7 +834,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S2 | `Stable/Definition.lean` | HA 1.1.1.9 の安定性、HA 1.1.3.4 の必要な向き | 完了 |
 | S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 完了 |
 | S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 完了（貼り合わせ、TR1〜TR4、Pretriangulated・IsTriangulated instance） |
-| S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 未着手 |
+| S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 完了（共変・反変、全整数次数、六項部分列の完全性、接続準同型の評価式） |
 | S6 | `Stable/ExactFunctor.lean` | 完全関手、h の三角関手、完全関手間の自然変換 | 未着手 |
 | S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 未着手 |
 
@@ -959,6 +976,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 八面体の二長方形と最後の三角形 | `CofiberCompositionRectangle` と存在・三成分・`connecting_comm`、`PushoutCofiberRectangle` と存在・`connecting_comp`・`triangle_connecting_comp`、`CofiberOctahedronDiagram` と存在・辺の式・`lastTriangle_mem`（存在と三角形の主張は Quasicategory、IsStable） | 二長方形と第一の三角形比較、最後の第三射の合成表示と distinguished 性まで完成。Mathlib の Octahedron 全体・TR4 も下記で完成 |
 | 八面体の第二比較と三角形の射 | `cofiberTriangleHoMap` と三成分、`CofiberOctahedronDiagram.nextComparisonHom` と三成分、`nextTriangleMorphism`・`nextConnecting_comm`、二比較と最後の列の Arrow 照合（最終的な三角形の主張は Quasicategory、IsStable） | 第二比較と第一・第二の三角形の射の成分の照合まで完成。共通の対象表示での Octahedron の組み立て・任意の三角形への輸送・TR4 も下記で完成 |
 | 八面体公理と三角構造の公開 | `OctahedronModel`、`exists_octahedron_of_triangle_comparisons`、`CofiberOctahedronDiagram.octahedronModel`、`isTriangulated_of_octahedronModels`、`octahedronModel_of_morphisms`、`isTriangulated_ho`（最終的な instance は Quasicategory、IsStable のみ） | 任意の二射と任意の三つの distinguished 三角形について八面体公理が完成。S4 は完了 |
-| S5〜S7 | 長完全列・完全関手・D7 | 未完了 |
+| Hom 長完全列 | `fiberTriangle` と所属、`fiberHomFunctor`・`fiberContravariantHomFunctor` と台・射の計算、両接続準同型と評価式、`fiberHomSequence_exact`・`fiberContravariantHomSequence_exact`（Quasicategory、IsStable、fiber 列） | 両側の Hom 長完全列が全整数次数で完成。有界性・compact 性は不要 |
+| S6〜S7 | 完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

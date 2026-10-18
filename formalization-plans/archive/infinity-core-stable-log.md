@@ -18675,3 +18675,295 @@ TR1〜TR4、Mathlib の Pretriangulated と IsTriangulated の instance を公�
 S5 の Hom 長完全列、S6 の完全関手と自然変換、S7・D7 は未完了。
 安定性から ∞ 圏の全有限極限・余極限を導く逆向きの一般論も未完了のまま明記する。
 目標全体は未完了であり、S5 へ続ける。
+
+
+## 2026-10-19：fiber 列の共変・反変 Hom 長完全列（S5 完了）
+
+`fiberTriangle` は安定性によって fiber 列を cofiber 列とみなし、構成済みの三角形を使う。
+その distinguished 性から、加法的 coyoneda と yoneda のホモロジー関手性を適用する。
+`fiberHomFunctor W` の次数 n の台集合は Hom(W,A[n])、射への作用はシフトした射との後合成。
+`fiberContravariantHomFunctor W` の次数 n の台集合は Hom(A,W[n])、射は前合成である。
+両関手の別名を abbrev とし、既存のシフト列・ホモロジー関手の instance をそのまま使う。
+
+共変の六項部分列は
+Hom(W,A[n]) → Hom(W,B[n]) → Hom(W,C[n]) →
+Hom(W,A[n+1]) → Hom(W,B[n+1]) → Hom(W,C[n+1])。
+反変の六項部分列は
+Hom(C,W[n]) → Hom(B,W[n]) → Hom(A,W[n]) →
+Hom(C,W[n+1]) → Hom(B,W[n+1]) → Hom(A,W[n+1])。
+全 n の部分列は同じ関手と接続射を使って重なる。
+六項の四つの内部位置の完全性を全 n で示すため、両長完全列の全ての位置を覆う。
+両接続準同型を実際のアーベル群の射として公開し、三角形の第三射とシフトの比較による
+評価式も示した。共変の接続射については任意の三角形の射に対する自然性も公開する。
+
+主要定理の正確な型（namespace SerrePositivity.InfinityCategories）：
+
+```lean
+lemma fiberHomSequence_exact {X : SSet.{u}} [Quasicategory X] [IsStable X]
+    (W : hoFunctor.obj X) (t : ZeroTriangle X) (ht : IsFiberSequence t) (n : ℤ) :
+    (fiberHomSequence W t ht n).Exact
+
+lemma fiberContravariantHomSequence_exact {X : SSet.{u}} [Quasicategory X] [IsStable X]
+    (W : hoFunctor.obj X) (t : ZeroTriangle X) (ht : IsFiberSequence t) (n : ℤ) :
+    (fiberContravariantHomSequence W t ht n).Exact
+```
+
+有界性、compact 性、特別な fiber/cofiber の選択、導来圏の同定などを前提にしていない。
+新規公開17宣言の `#check @...`、pp.universes=true による全型：
+
+```text
+@SerrePositivity.InfinityCategories.fiberTriangle.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X) →
+        SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t →
+          CategoryTheory.Pretriangulated.Triangle.{u_1, u_1}
+            ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+@SerrePositivity.InfinityCategories.fiberTriangle_distinguished.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X)
+  (ht : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t),
+  Membership.mem.{u_1, u_1} CategoryTheory.Pretriangulated.distinguishedTriangles.{u_1, u_1}
+    (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht)
+@SerrePositivity.InfinityCategories.fiberHomFunctor.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X) →
+        CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) AddCommGrpCat.{u_1}
+@SerrePositivity.InfinityCategories.fiberHomFunctor_shift_obj_type.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W A : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) (n : ℤ),
+  Eq.{u_1 + 2}
+    (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1}
+        (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+          (SerrePositivity.InfinityCategories.fiberHomFunctor.{u_1} W) n)
+        A))
+    (Quiver.Hom.{u_1, u_1} W
+      (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+        A))
+@SerrePositivity.InfinityCategories.fiberHomFunctor_shift_map_apply.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) (n : ℤ)
+  {A B : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)}
+  (f : Quiver.Hom.{u_1, u_1} A B)
+  (x :
+    Quiver.Hom.{u_1, u_1} W
+      (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+        A)),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1 + 1}
+          (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+            (SerrePositivity.InfinityCategories.fiberHomFunctor.{u_1} W) n)
+          f))
+      x)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} x
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+        f))
+@SerrePositivity.InfinityCategories.fiberHomConnecting.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) →
+        (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X) →
+          (ht : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t) →
+            (n : ℤ) →
+              Quiver.Hom.{u_1, u_1 + 1}
+                (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1}
+                  (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+                    (SerrePositivity.InfinityCategories.fiberHomFunctor.{u_1} W) n)
+                  (CategoryTheory.Pretriangulated.Triangle.obj₃.{u_1, u_1}
+                    (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht)))
+                (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1}
+                  (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+                    (SerrePositivity.InfinityCategories.fiberHomFunctor.{u_1} W) (HAdd.hAdd.{0, 0, 0} n 1))
+                  (CategoryTheory.Pretriangulated.Triangle.obj₁.{u_1, u_1}
+                    (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht)))
+@SerrePositivity.InfinityCategories.fiberHomConnecting_apply.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X))
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X)
+  (ht : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t) (n : ℤ)
+  (x :
+    Quiver.Hom.{u_1, u_1} W
+      (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+        (CategoryTheory.Pretriangulated.Triangle.obj₃.{u_1, u_1}
+          (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht)))),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (SerrePositivity.InfinityCategories.fiberHomConnecting.{u_1} W t ht n))
+      x)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} x
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+            (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+          (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1}
+            (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht)))
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Iso.inv.{u_1, u_1}
+            (CategoryTheory.shiftFunctorAdd'.{u_1, u_1, 0}
+              (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) 1 n
+              (HAdd.hAdd.{0, 0, 0} n 1) ⋯))
+          (CategoryTheory.Pretriangulated.Triangle.obj₁.{u_1, u_1}
+            (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht)))))
+@SerrePositivity.InfinityCategories.fiberHomConnecting_naturality.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X))
+  (t d : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X)
+  (ht : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t)
+  (hd : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} d)
+  (φ :
+    Quiver.Hom.{u_1, u_1} (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht)
+      (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} d hd))
+  (n : ℤ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1 + 1}
+        (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+          (SerrePositivity.InfinityCategories.fiberHomFunctor.{u_1} W) n)
+        (CategoryTheory.Pretriangulated.TriangleMorphism.hom₃.{u_1, u_1} φ))
+      (SerrePositivity.InfinityCategories.fiberHomConnecting.{u_1} W d hd n))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fiberHomConnecting.{u_1} W t ht n)
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1 + 1}
+        (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+          (SerrePositivity.InfinityCategories.fiberHomFunctor.{u_1} W) (HAdd.hAdd.{0, 0, 0} n 1))
+        (CategoryTheory.Pretriangulated.TriangleMorphism.hom₁.{u_1, u_1} φ)))
+@SerrePositivity.InfinityCategories.fiberHomSequence.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X) →
+        (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X) →
+          SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t →
+            ℤ → CategoryTheory.ComposableArrows.{u_1, u_1 + 1} AddCommGrpCat.{u_1} 5
+@SerrePositivity.InfinityCategories.fiberHomSequence_exact.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X))
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X)
+  (ht : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t) (n : ℤ),
+  CategoryTheory.ComposableArrows.Exact.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.fiberHomSequence.{u_1} W t ht n)
+@SerrePositivity.InfinityCategories.fiberContravariantHomFunctor.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X) →
+        CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1}
+          (Opposite.{u_1 + 1} ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X))
+          AddCommGrpCat.{u_1}
+@SerrePositivity.InfinityCategories.fiberContravariantHomFunctor_shift_obj_type.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W A : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) (n : ℤ),
+  Eq.{u_1 + 2}
+    (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1}
+        (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+          (SerrePositivity.InfinityCategories.fiberContravariantHomFunctor.{u_1} W) n)
+        (Opposite.op.{u_1 + 1} A)))
+    (Quiver.Hom.{u_1, u_1} A
+      (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+        W))
+@SerrePositivity.InfinityCategories.fiberContravariantHomFunctor_shift_map_apply.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) (n : ℤ)
+  {A B : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)}
+  (f : Quiver.Hom.{u_1, u_1} A B)
+  (x :
+    Quiver.Hom.{u_1, u_1} B
+      (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+        W)),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1 + 1}
+          (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+            (SerrePositivity.InfinityCategories.fiberContravariantHomFunctor.{u_1} W) n)
+          (Quiver.Hom.op.{u_1, u_1} f)))
+      x)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} f x)
+@SerrePositivity.InfinityCategories.fiberContravariantHomConnecting.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) →
+        (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X) →
+          (ht : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t) →
+            (n : ℤ) →
+              Quiver.Hom.{u_1, u_1 + 1}
+                (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1}
+                  (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+                    (SerrePositivity.InfinityCategories.fiberContravariantHomFunctor.{u_1} W) n)
+                  (Opposite.op.{u_1 + 1}
+                    (CategoryTheory.Pretriangulated.Triangle.obj₁.{u_1, u_1}
+                      (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht))))
+                (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1}
+                  (CategoryTheory.Functor.shift.{u_1, u_1, u_1, u_1 + 1, 0}
+                    (SerrePositivity.InfinityCategories.fiberContravariantHomFunctor.{u_1} W) (HAdd.hAdd.{0, 0, 0} n 1))
+                  (Opposite.op.{u_1 + 1}
+                    (CategoryTheory.Pretriangulated.Triangle.obj₃.{u_1, u_1}
+                      (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht))))
+@SerrePositivity.InfinityCategories.fiberContravariantHomConnecting_apply.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X))
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X)
+  (ht : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t) (n : ℤ)
+  (x :
+    Quiver.Hom.{u_1, u_1}
+      (CategoryTheory.Pretriangulated.Triangle.obj₁.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht))
+      (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+          (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n)
+        W)),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (SerrePositivity.InfinityCategories.fiberContravariantHomConnecting.{u_1} W t ht n))
+      x)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.fiberTriangle.{u_1} t ht))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+            (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) 1)
+          x)
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Iso.inv.{u_1, u_1}
+            (CategoryTheory.shiftFunctorAdd'.{u_1, u_1, 0}
+              (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) n 1
+              (HAdd.hAdd.{0, 0, 0} n 1) ⋯))
+          W)))
+@SerrePositivity.InfinityCategories.fiberContravariantHomSequence.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X) →
+        (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X) →
+          SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t →
+            ℤ → CategoryTheory.ComposableArrows.{u_1, u_1 + 1} AddCommGrpCat.{u_1} 5
+@SerrePositivity.InfinityCategories.fiberContravariantHomSequence_exact.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (W : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X))
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X)
+  (ht : SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} t) (n : ℤ),
+  CategoryTheory.ComposableArrows.Exact.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.fiberContravariantHomSequence.{u_1} W t ht n)
+```
+
+対象ビルド3051 jobs、対象・Stable 集約ビルド3067 jobsで終了コード0。
+新規モジュールに警告なし。型抽出・全宣言の監査も終了コード0。
+343モジュール・2523宣言（生成・非公開宣言含む）について標準三公理のみ。
+担当範囲のステージ済み差分の git diff --check 成功。引用・追加公理・sorry は導入していない。
+他レーンの変更は含めない。
+
+S5 の fiber 列への Hom 長完全列は両側・全整数次数で完成。
+S6 の完全関手と自然変換、S7・D7 は未完了。∞ 圏の全有限極限・余極限を導く逆向きの
+一般論も別の未完了項目として保持する。目標全体は未完了であり、次は S6。

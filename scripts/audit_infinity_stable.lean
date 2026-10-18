@@ -1192,6 +1192,24 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.octahedronModel_of_morphisms
 #print axioms SerrePositivity.InfinityCategories.isTriangulated_ho
 
+#print axioms SerrePositivity.InfinityCategories.fiberTriangle
+#print axioms SerrePositivity.InfinityCategories.fiberTriangle_distinguished
+#print axioms SerrePositivity.InfinityCategories.fiberHomFunctor
+#print axioms SerrePositivity.InfinityCategories.fiberHomFunctor_shift_obj_type
+#print axioms SerrePositivity.InfinityCategories.fiberHomFunctor_shift_map_apply
+#print axioms SerrePositivity.InfinityCategories.fiberHomConnecting
+#print axioms SerrePositivity.InfinityCategories.fiberHomConnecting_apply
+#print axioms SerrePositivity.InfinityCategories.fiberHomConnecting_naturality
+#print axioms SerrePositivity.InfinityCategories.fiberHomSequence
+#print axioms SerrePositivity.InfinityCategories.fiberHomSequence_exact
+#print axioms SerrePositivity.InfinityCategories.fiberContravariantHomFunctor
+#print axioms SerrePositivity.InfinityCategories.fiberContravariantHomFunctor_shift_obj_type
+#print axioms SerrePositivity.InfinityCategories.fiberContravariantHomFunctor_shift_map_apply
+#print axioms SerrePositivity.InfinityCategories.fiberContravariantHomConnecting
+#print axioms SerrePositivity.InfinityCategories.fiberContravariantHomConnecting_apply
+#print axioms SerrePositivity.InfinityCategories.fiberContravariantHomSequence
+#print axioms SerrePositivity.InfinityCategories.fiberContravariantHomSequence_exact
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -1537,7 +1555,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CofiberOctahedronModel,
     `SerrePositivity.InfinityCategories.Stable.OctahedronModelTransport,
     `SerrePositivity.InfinityCategories.Stable.OctahedronForMorphisms,
-    `SerrePositivity.InfinityCategories.Stable.TriangulatedInstance]
+    `SerrePositivity.InfinityCategories.Stable.TriangulatedInstance,
+    `SerrePositivity.InfinityCategories.Stable.LongExactSequence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
