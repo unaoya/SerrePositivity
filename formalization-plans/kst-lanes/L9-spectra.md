@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・208 モジュール 2777 宣言の公理監査成功。
+対象ビルド・213 モジュール 2798 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1942,3 +1942,31 @@ smash の交換は上側・下側の包含を厳密に交換する。
 保存単位の対象ビルド 2408 jobs 成功。
 私有宣言を含む 208 モジュール 2777 宣言で標準三公理のみ。
 L9d は進行中。次は連結写像の逆元の三角形を fibration に沿って持ち上げる。
+
+## 67. L9d の自己 pullback の交換と基本群の逆元の幾何的な比較
+
+底の左逆元を表す三角形の零面に元の辺の持ち上げ、一面に基点の定数辺を置いた。
+fibration のホーン持ち上げで二面を取り出すと、基点から元の持ち上げの始点へ向かう逆向きの辺が得られる。
+この辺は底で左逆元の辺へ写る。
+同じ左逆元の通常の連結射の持ち上げと組にすると、自己 pullback 内に実際の辺を構成できる。
+その両端点は、逆元の連結射の fiber 点と、元の連結射の fiber 点の二因子を交換した点になる。
+
+零単体からの射の成分を Yoneda で定義し、この辺を π₀ の等式へ送った。
+Kan 複体の左逆元の三角形の存在により任意の基本群の元で比較できる。
+代表によらない連結射の式へ戻し、自己 pullback の交換は連結射の像上で基本群の逆元に対応すると証明した。
+この一般式は全空間の収縮可能性を使わず、全空間と底の Kan 性と fibration 性だけを仮定する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `exists_inverse_edge` | 逆元の三角形からの逆向きの辺の持ち上げ |
+| `selfPullbackFiberInclusion` / `selfPullbackSwap` | fiber の第一因子への包含と二因子の交換 |
+| `selfPullback_exists_inverse_edge` | 交換と逆元の二つの代表を結ぶ自己 pullback 内の辺 |
+| `zeroMapComponent` / `zeroMapComponent_edge` | 零単体の射の成分と辺の両端点の一致 |
+| `selfPullback_swap_inverse_representative` | 任意の代表に対する逆元の代表での比較 |
+| `selfPullbackConnecting` / `selfPullbackConnecting_eq` | 自己 pullback へ向かう連結射とその代表の計算 |
+| `selfPullbackConnecting_swap` | 二因子の交換と基本群の逆元の代表によらない式 |
+
+参照：Goerss–Jardine I §7、Kerodon §§3.2.3・3.2.5。
+保存単位の対象ビルド 2413 jobs 成功。
+私有宣言を含む 213 モジュール 2798 宣言で標準三公理のみ。
+L9d は進行中。次は連結な全空間の場合にこの連結射の全射性を示す。
