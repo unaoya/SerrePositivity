@@ -247,3 +247,8 @@ public import SerrePositivity.KST.SchemeLemmas.BoundaryFlatBaseChange
 public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankBaseChange
 public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankReduction
 public import SerrePositivity.KST.SchemeLemmas.TwoStageGenericFreeCenters
+public import SerrePositivity.KST.SchemeLemmas.DisjointOpenCenters
+public import SerrePositivity.KST.SchemeLemmas.DisjointOpenCoverClosed
+public import SerrePositivity.KST.SchemeLemmas.DisjointCenterGluing
+public import SerrePositivity.KST.SchemeLemmas.DisjointBlowupChartCenter
+public import SerrePositivity.KST.SchemeLemmas.GlobalGenericFreeCenter
