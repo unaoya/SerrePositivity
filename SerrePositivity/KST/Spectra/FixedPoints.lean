@@ -1,5 +1,13 @@
 module
 
+public import SerrePositivity.KST.Spectra.PointedWeightedEndCotensorWeight
+public import SerrePositivity.KST.Spectra.WeightedCochainsCotensor
+public import SerrePositivity.KST.Spectra.PointedActionDiagrams
+public import SerrePositivity.KST.Spectra.PointedActionCochainCotensor
+public import SerrePositivity.KST.Spectra.GroupActionAdjoint
+public import SerrePositivity.KST.Spectra.GroupActionCochainAdjoint
+public import SerrePositivity.KST.Spectra.GroupActionCochainSequence
+
 public import SerrePositivity.KST.Spectra.FreeActionEndNaturality
 public import SerrePositivity.KST.Spectra.FreeActionEndEquivalence
 public import SerrePositivity.KST.Spectra.PointedFreeActionEquivalence

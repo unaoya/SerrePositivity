@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・334 モジュール 3589 宣言の公理監査成功。
+対象ビルド・341 モジュール 3634 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2737,4 +2737,40 @@ BF 作用スペクトルの同変射についても指定したスペクトル�
 参照：Goerss–Jardine VIII §2、HA §1.4.2、Kerodon 4.8.4.1。
 保存単位の対象ビルド 3777 jobs 成功。
 私有宣言を含む 334 モジュール 3589 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
+
+## 92. L9e の cochain の余単体 Kan Ω 列
+
+点つき end と内部 Hom の交換が重みの前合成にも自然であることを、各射影で証明した。
+これを単体的な重みの cochain 全体の自然同型へ束ね、係数の図式にも自然な同型にした。
+作用の係数図式を取る操作と後合成の交換を合成して、作用の cochain と内部 Hom の交換を得た。
+比較は余単体図式の実際の同型で、係数の同変射にも自然である。
+
+作用スペクトルの随伴構造射は、群の各元のスペクトル射との随伴可換式によって同変である。
+この実際の同変射を cochain へ送り、loop 交換の逆を合成した。
+これが一段の cochain から次段の loop への余単体自然変換である。
+元の Ω 条件、cochain の係数の同型保存、交換同型から、各余単体成分で全基点 π_* 同型となる。
+
+各余単体次数の各スペクトル段を束ね、随伴構造射を uncurry して Kan 列を作った。
+この列は Ω 条件を満たす。
+余単体の随伴射の自然性を uncurry し、余単体の射が Kan 列の厳密な構造可換射になることを示した。
+従って実際の余単体 Kan Ω 列を得た。
+各次数の列は単射構造射の置換で BF 対象へ移せる。
+ここでの BF 置換は各対象の構成であり、BF 置換全体の厳密な余単体関手性は主張しない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedWeightedEnd.cotensorIso_preMap` | end と内部 Hom の交換の重みへの自然性 |
+| `WeightedCochains.cotensorIso` / `cotensorNatIso` | 通常の図式の cochain と内部 Hom の交換 |
+| `FreeActionFamily.pointedCoefficientsPostIso` | 作用の係数図式と後合成の自然な比較 |
+| `PointedActionCochains.cotensorNatIso` / `cotensorIso` / `cotensorIso_natural` | 作用の cochain と loop を含む内部 Hom の自然な交換 |
+| `GroupAction.adjointMap` / `adjointMap_piIsomorphism` / `adjointMap_natural` | 元の随伴構造射の同変な形と自然性 |
+| `GroupActionCochains.adjointTransformation` / `adjointTransformation_piIsomorphism` | cochain の実際の余単体随伴構造射と全基点 π_* 同型 |
+| `GroupActionCochains.sequence` / `sequence_omegaCondition` | 各余単体次数の実際の Kan Ω 列 |
+| `GroupActionCochains.diagram` | 厳密な余単体 Kan Ω 列の図式 |
+| `GroupActionCochains.spectrum` | 各余単体次数の BF 対象への実際の置換 |
+
+参照：Goerss–Jardine VIII §2、HA §1.4.2、BF 1978 §2。
+保存単位の対象ビルド 3784 jobs 成功。
+私有宣言を含む 341 モジュール 3634 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
