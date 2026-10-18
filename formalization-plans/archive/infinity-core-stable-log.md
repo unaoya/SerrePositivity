@@ -19122,3 +19122,240 @@ isExactFunctor_id.{u_1} : ∀ (X : SSet.{u_1}), IsExactFunctor.{u_1} (CategoryTh
                     (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
                   (suspensionFunctor.{u_1} Y))
 ```
+
+
+## S6：一回比較の全整数への整合的延長と完全関手の CommShift（2026-10-19）
+
+次数付きの交換同型の群を構成し、一回比較の整数冪から `stableCommShiftOfOne` を構成。任意の圏・既存の整数シフト・任意の関手に適用でき、零次数・加法の整合条件を全て含み、一回比較を厳密に復元する。完全関手には懸垂比較をこの構成へ適用して `exactFunctorCommShift` を instance として公開。シフトや完全性を強める追加仮定はない。対象＋統合ビルド 3074 jobs 成功。全 350 modules／2601 declarations の公理監査成功（標準 3 公理のみ）。三角形の接続射との両立・三角関手・自然変換・D7 は未完了。
+
+全公開宣言の正確な型：
+
+```lean
+@StableShiftCommutationIso.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D → ℤ → Type (max u_2 u_3)
+@StableShiftCommutation.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D → Type (max u_3 u_2)
+@stableShiftCommutationIsoAdd_heq.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] (F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D) {a b c : ℤ}
+  (h : Eq.{1} (HAdd.hAdd.{0, 0, 0} a b) c) (ea : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F a)
+  (eb : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F b),
+  HEq.{max (u_3 + 1) (u_2 + 1)} (CategoryTheory.Functor.CommShift.isoAdd.{u_1, u_2, u_3, u_4, 0} ea eb)
+    (CategoryTheory.Functor.CommShift.isoAdd'.{u_1, u_2, u_3, u_4, 0} h ea eb)
+@stableShiftCommutation_monoid.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            (F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D) →
+              Monoid.{max u_3 u_2} (StableShiftCommutation.{u_1, u_2, u_3, u_4} F)
+@stableShiftCommutationDegree.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            (F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D) →
+              MonoidHom.{max u_3 u_2, 0} (StableShiftCommutation.{u_1, u_2, u_3, u_4} F) (Multiplicative.{0} ℤ)
+@stableShiftCommutationNeg.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D} →
+              {a : ℤ} →
+                StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F a →
+                  StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F (Neg.neg.{0} a)
+@stableShiftCommutationNeg_hom_app.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D} {a : ℤ}
+  (e : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F a) (X : C),
+  Eq.{u_3 + 1}
+    (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4}
+      (CategoryTheory.Iso.hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}
+        (stableShiftCommutationNeg.{u_1, u_2, u_3, u_4} e))
+      X)
+    (CategoryTheory.CategoryStruct.comp.{u_3, u_4}
+      (CategoryTheory.NatTrans.app.{u_3, u_3, u_4, u_4}
+        (CategoryTheory.Iso.inv.{max u_4 u_3, max u_4 u_3}
+          (CategoryTheory.shiftFunctorCompIsoId.{u_3, u_4, 0} D a (Neg.neg.{0} a) ⋯))
+        (CategoryTheory.Functor.obj.{u_1, u_3, u_2, u_4} F
+          (CategoryTheory.Functor.obj.{u_1, u_1, u_2, u_2} (CategoryTheory.shiftFunctor.{u_1, u_2, 0} C (Neg.neg.{0} a))
+            X)))
+      (CategoryTheory.CategoryStruct.comp.{u_3, u_4}
+        (CategoryTheory.Functor.map.{u_3, u_3, u_4, u_4} (CategoryTheory.shiftFunctor.{u_3, u_4, 0} D (Neg.neg.{0} a))
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4}
+            (CategoryTheory.Iso.inv.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3} e)
+            (CategoryTheory.Functor.obj.{u_1, u_1, u_2, u_2}
+              (CategoryTheory.shiftFunctor.{u_1, u_2, 0} C (Neg.neg.{0} a)) X)))
+        (CategoryTheory.Functor.map.{u_3, u_3, u_4, u_4} (CategoryTheory.shiftFunctor.{u_3, u_4, 0} D (Neg.neg.{0} a))
+          (CategoryTheory.Functor.map.{u_1, u_3, u_2, u_4} F
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_2, u_2}
+              (CategoryTheory.Iso.hom.{max u_2 u_1, max u_2 u_1}
+                (CategoryTheory.shiftFunctorCompIsoId.{u_1, u_2, 0} C (Neg.neg.{0} a) a ⋯))
+              X)))))
+@stableShiftCommutation_mul_neg.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D} {a : ℤ}
+  (e : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F a),
+  Eq.{max (u_2 + 1) (u_3 + 1)}
+    (CategoryTheory.Functor.CommShift.isoAdd'.{u_1, u_2, u_3, u_4, 0} ⋯ e
+      (stableShiftCommutationNeg.{u_1, u_2, u_3, u_4} e))
+    (CategoryTheory.Functor.CommShift.isoZero.{u_1, u_2, u_3, u_4, 0} F ℤ)
+@stableShiftCommutationInverse.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            (F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D) →
+              StableShiftCommutation.{u_1, u_2, u_3, u_4} F → StableShiftCommutation.{u_1, u_2, u_3, u_4} F
+@stableShiftCommutation_mul_inverse.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] (F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D)
+  (e : StableShiftCommutation.{u_1, u_2, u_3, u_4} F),
+  Eq.{max (u_2 + 1) (u_3 + 1)}
+    (HMul.hMul.{max u_2 u_3, max u_2 u_3, max u_2 u_3} e (stableShiftCommutationInverse.{u_1, u_2, u_3, u_4} F e)) 1
+@stableShiftCommutation_inverse_mul.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] (F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D)
+  (e : StableShiftCommutation.{u_1, u_2, u_3, u_4} F),
+  Eq.{max (u_2 + 1) (u_3 + 1)}
+    (HMul.hMul.{max u_2 u_3, max u_2 u_3, max u_2 u_3} (stableShiftCommutationInverse.{u_1, u_2, u_3, u_4} F e) e) 1
+@stableShiftCommutation_group.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            (F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D) →
+              Group.{max u_3 u_2} (StableShiftCommutation.{u_1, u_2, u_3, u_4} F)
+@stableShiftCommutation_zpow_degree.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] (F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D)
+  (e : StableShiftCommutation.{u_1, u_2, u_3, u_4} F) (n : ℤ),
+  Eq.{1} (Sigma.fst.{0, max u_2 u_3} (HPow.hPow.{max u_2 u_3, 0, max u_2 u_3} e n))
+    (HMul.hMul.{0, 0, 0} n (Sigma.fst.{0, max u_2 u_3} e))
+@stableShiftCommutationIsoOfDegree.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D} →
+              (e : StableShiftCommutation.{u_1, u_2, u_3, u_4} F) →
+                {n : ℤ} → Eq.{1} (Sigma.fst.{0, max u_2 u_3} e) n → StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F n
+@stableShiftCommutationIsoOfDegree_mk.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D}
+  (e : StableShiftCommutation.{u_1, u_2, u_3, u_4} F) {n : ℤ} (h : Eq.{1} (Sigma.fst.{0, max u_2 u_3} e) n),
+  Eq.{max (u_2 + 1) (u_3 + 1)}
+    (Sigma.mk.{0, max u_2 u_3} n (stableShiftCommutationIsoOfDegree.{u_1, u_2, u_3, u_4} e h)) e
+@stableShiftCommutationGenerator.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D} →
+              StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F 1 → StableShiftCommutation.{u_1, u_2, u_3, u_4} F
+@stableShiftCommutationPower.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D} →
+              StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F 1 →
+                (n : ℤ) → StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F n
+@stableShiftCommutationPower_mk.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D}
+  (e : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F 1) (n : ℤ),
+  Eq.{max (u_2 + 1) (u_3 + 1)} (Sigma.mk.{0, max u_2 u_3} n (stableShiftCommutationPower.{u_1, u_2, u_3, u_4} e n))
+    (HPow.hPow.{max u_2 u_3, 0, max u_2 u_3} (stableShiftCommutationGenerator.{u_1, u_2, u_3, u_4} e) n)
+@stableCommShiftOfOne.{u_1, u_2, u_3,
+    u_4} : {C : Type u_2} →
+  {D : Type u_4} →
+    [inst : CategoryTheory.Category.{u_1, u_2} C] →
+      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →
+        [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ] →
+          [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] →
+            {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D} →
+              StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F 1 →
+                CategoryTheory.Functor.CommShift.{u_1, u_2, u_3, u_4, 0} F ℤ
+@stableCommShiftOfOne_one.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D}
+  (e : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F 1),
+  Eq.{max (u_2 + 1) (u_3 + 1)} (CategoryTheory.Functor.commShiftIso.{u_1, u_2, u_3, u_4, 0} F 1) e
+@exactFunctorShiftOneIso.{u_1} : {X Y : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : IsStable.{u_1} X] →
+      [inst_2 : SSet.Quasicategory.{u_1} Y] →
+        [inst_3 : IsStable.{u_1} Y] →
+          (F : Quiver.Hom.{u_1, u_1 + 1} X Y) →
+            [IsExactFunctor.{u_1} F] →
+              CategoryTheory.Iso.{u_1, u_1}
+                (CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1}
+                  (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+                    (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) 1)
+                  (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F)))
+                (CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1}
+                  (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+                  (CategoryTheory.shiftFunctor.{u_1, u_1, 0}
+                    (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} Y)) 1))
+@exactFunctorCommShift.{u_1} : {X Y : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : IsStable.{u_1} X] →
+      [inst_2 : SSet.Quasicategory.{u_1} Y] →
+        [inst_3 : IsStable.{u_1} Y] →
+          (F : Quiver.Hom.{u_1, u_1 + 1} X Y) →
+            [IsExactFunctor.{u_1} F] →
+              CategoryTheory.Functor.CommShift.{u_1, u_1, u_1, u_1, 0}
+                (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                  (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+                ℤ
+@exactFunctorCommShift_one.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : IsStable.{u_1} X]
+  [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  [inst_4 : IsExactFunctor.{u_1} F],
+  Eq.{u_1 + 1}
+    (CategoryTheory.Functor.commShiftIso.{u_1, u_1, u_1, u_1, 0}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+      1)
+    (exactFunctorShiftOneIso.{u_1} F)
+```

@@ -835,7 +835,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 完了 |
 | S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 完了（貼り合わせ、TR1〜TR4、Pretriangulated・IsTriangulated instance） |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 完了（共変・反変、全整数次数、六項部分列の完全性、接続準同型の評価式） |
-| S6 | `Stable/ExactFunctor.lean` | 完全関手、h の三角関手、完全関手間の自然変換 | 零対象・cofiber 列による定義、fiber 列と全押し出し・引き戻しの保存まで完了。suspension 図式の後合成と懸垂比較自然同型も完成。整数シフト・接続射の両立と自然変換は未完了 |
+| S6 | `Stable/ExactFunctor.lean` | 完全関手、h の三角関手、完全関手間の自然変換 | 零対象・cofiber 列による定義、fiber 列と全押し出し・引き戻しの保存まで完了。suspension 図式の後合成と懸垂比較自然同型も完成。整数シフトの CommShift も完成。接続射の両立と自然変換は未完了 |
 | S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 未着手 |
 
 ## 設計上の決定
@@ -977,8 +977,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 八面体の第二比較と三角形の射 | `cofiberTriangleHoMap` と三成分、`CofiberOctahedronDiagram.nextComparisonHom` と三成分、`nextTriangleMorphism`・`nextConnecting_comm`、二比較と最後の列の Arrow 照合（最終的な三角形の主張は Quasicategory、IsStable） | 第二比較と第一・第二の三角形の射の成分の照合まで完成。共通の対象表示での Octahedron の組み立て・任意の三角形への輸送・TR4 も下記で完成 |
 | 八面体公理と三角構造の公開 | `OctahedronModel`、`exists_octahedron_of_triangle_comparisons`、`CofiberOctahedronDiagram.octahedronModel`、`isTriangulated_of_octahedronModels`、`octahedronModel_of_morphisms`、`isTriangulated_ho`（最終的な instance は Quasicategory、IsStable のみ） | 任意の二射と任意の三つの distinguished 三角形について八面体公理が完成。S4 は完了 |
 | Hom 長完全列 | `fiberTriangle` と所属、`fiberHomFunctor`・`fiberContravariantHomFunctor` と台・射の計算、両接続準同型と評価式、`fiberHomSequence_exact`・`fiberContravariantHomSequence_exact`（Quasicategory、IsStable、fiber 列） | 両側の Hom 長完全列が全整数次数で完成。有界性・compact 性は不要 |
-| 完全関手の定義と四角形の保存 | `PreservesZeroVertices`、`ZeroTriangle.map`、`IsExactFunctor`、恒等・合成の完全性、`IsExactFunctor.preservesFiber`、`isExactFunctor_of_preservesFiber`、`preservesPushoutSquare`・`preservesPullbackSquare`（後四者は始域・終域 Quasicategory、IsStable） | 完全性は零対象と cofiber 列の保存で定義。任意の四角形の保存を追加仮定せず導出済み。suspension 図式の後合成と懸垂比較自然同型も完成。整数シフト・接続射の両立と自然変換は未完了 |
+| 完全関手の定義と四角形の保存 | `PreservesZeroVertices`、`ZeroTriangle.map`、`IsExactFunctor`、恒等・合成の完全性、`IsExactFunctor.preservesFiber`、`isExactFunctor_of_preservesFiber`、`preservesPushoutSquare`・`preservesPullbackSquare`（後四者は始域・終域 Quasicategory、IsStable） | 完全性は零対象と cofiber 列の保存で定義。任意の四角形の保存を追加仮定せず導出済み。suspension 図式の後合成と懸垂比較自然同型も完成。整数シフトの CommShift も完成。接続射の両立と自然変換は未完了 |
 | 完全関手と懸垂 | `squareDiagram_postcomp`、`IsExactFunctor.preservesSuspensionDiagramVertex`、`exactFunctorSuspensionDiagrams` と全角の評価式、`SuspensionSquare.map`、`exactFunctorSuspensionFamilyIso`、`exactFunctorSuspensionIso` | 全単体に自然な図式の後合成と Σ ⋙ hF ≅ hF ⋙ Σ まで完成。後二者は始域・終域 Quasicategory、IsStable、IsExactFunctor F のみ |
+| 完全関手と整数シフト | `StableShiftCommutation` と群構造、`stableCommShiftOfOne`・`stableCommShiftOfOne_one`（任意の整数シフトを持つ二圏の関手と一回比較）、`exactFunctorShiftOneIso`、`exactFunctorCommShift`・`exactFunctorCommShift_one`（Quasicategory、IsStable、IsExactFunctor F） | 全整数の零・加法の整合条件を持つ CommShift ℤ と一回比較の厳密な復元まで完成。三角関手と自然変換は未完了 |
 | S7 | D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

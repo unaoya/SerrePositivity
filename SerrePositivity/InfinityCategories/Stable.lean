@@ -254,6 +254,12 @@ public import SerrePositivity.InfinityCategories.Stable.LongExactSequence
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspension
 
+public import SerrePositivity.InfinityCategories.Stable.ShiftCommutationMonoid
+public import SerrePositivity.InfinityCategories.Stable.ShiftCommutationInverse
+public import SerrePositivity.InfinityCategories.Stable.ShiftCommutationGroup
+public import SerrePositivity.InfinityCategories.Stable.ShiftCommutationInteger
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorShift
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

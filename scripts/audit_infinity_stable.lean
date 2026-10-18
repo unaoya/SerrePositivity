@@ -1558,7 +1558,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.TriangulatedInstance,
     `SerrePositivity.InfinityCategories.Stable.LongExactSequence,
     `SerrePositivity.InfinityCategories.Stable.ExactFunctor,
-    `SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspension]
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspension,
+    `SerrePositivity.InfinityCategories.Stable.ShiftCommutationMonoid,
+    `SerrePositivity.InfinityCategories.Stable.ShiftCommutationInverse,
+    `SerrePositivity.InfinityCategories.Stable.ShiftCommutationGroup,
+    `SerrePositivity.InfinityCategories.Stable.ShiftCommutationInteger,
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorShift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
