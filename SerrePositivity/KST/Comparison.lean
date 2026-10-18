@@ -100,6 +100,8 @@ public import SerrePositivity.KST.Comparison.TensorRestriction
 public import SerrePositivity.KST.Comparison.FatBoundaryHomotopyPullback
 public import SerrePositivity.KST.Comparison.FatSkeletonZero
 
+public import SerrePositivity.KST.Comparison.FatSkeletonHomotopyPullback
+
 /-!
 # K-L2：比較定理の入口
 
@@ -108,4 +110,3 @@ public import SerrePositivity.KST.Comparison.FatSkeletonZero
 規約：π₀ĜL の群性と Γ と H⁰ の環比較を証明する。群完備化、H_*、plus、K の比較は残工程。
 使われ方：K-L2 の対象ビルドと公理監査。比較定理の完成を主張する入口ではない。
 -/
-

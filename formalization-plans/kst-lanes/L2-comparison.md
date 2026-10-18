@@ -611,6 +611,16 @@ m ≤ n に対して、m 行と標準 m 単体の積から n 骨格への四角�
 単位の自然性で外周の比較を元の外周へ戻す。
 これは有限骨格の古い各行の比較を次の骨格へ進めるための補助である。
 
+### 各行の局所化同型による有限骨格の比較
+
+確認する文言：二重単体集合の射が各行で anodyne 局所化同型なら、
+各有限骨格へ誘導される射も anodyne 局所化同型である。
+証明方針：零骨格の実際の同型と行の自然性で初期段階を処理する。
+次の骨格の付着の span の境界と新しい行では、固定対象との積の局所化同型保存を使う。
+旧骨格には帰納仮定を使い、単射な脚の span の具体的な余極限の比較を適用する。
+この不変性と四頂点の比較により、各行の Kan 性を仮定した有限骨格の比較を
+一般の入力へ関手的な anodyne–Kan 分解で戻す。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -779,7 +789,10 @@ mapping cylinder の実対象、底の anodyne な包含、底への収縮の局
 小さい行から指定した骨格への射、行・境界の付着の自然性、各面での因子化を証明した。
 各行の Kan 性と低い行の比較から境界の付着のホモトピー引き戻し性を得た。
 零骨格と第零行と標準零単体の積との実際の同型も証明した。
-対角への比較の局所化可逆性と有限骨格のホモトピー引き戻しの帰納は未証明。
+中央の Kan 性を課さないホモトピー引き戻しの横の貼り合わせを、三縦射の関手的 Kan 分解で証明した。
+付着の実際の span とその余極限・自然性を構成し、旧骨格と新しい行から次の骨格への比較を証明した。
+各行が Kan fibration の場合、全ての m ≤ n 行から n 骨格へのホモトピー引き戻し性の帰納を完了した。
+有限骨格の Kan 性を仮定しない比較への移送と、対角への比較の局所化可逆性は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -787,8 +800,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 954 宣言の型と公理を確認した。
-さらに名前空間全体の 1759 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 968 宣言の型と公理を確認した。
+さらに名前空間全体の 1780 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -985,6 +998,11 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `tensorRestriction_homotopyPullback_iff` | 実装済み | 右因子の同型による比較の保存・反映 |
 | `fatBoundaryAttachment_homotopyPullback` | 実装済み | 各行の Kan 性の下で低い行から境界の付着への比較 |
 | `fatSkeletonRow_zero_isIso` | 実装済み | 零骨格と第零行の積の同型 |
+| `kanReplacementSquare_homotopyPullback_iff` | 実装済み | 関手的な縦射の Kan 分解による四角形の比較 |
+| `isHomotopyPullback_paste_horiz` | 実装済み | Kan 性を仮定しない二つの四角形の横の貼り合わせ |
+| `fatAttachmentCoconeIsColimit`、`fatAttachmentSpanMap` | 実装済み | 骨格の実際の付着の span の余極限と比較 |
+| `fatSkeleton_successor_homotopyPullback` | 実装済み | 境界から旧骨格・新しい行の次骨格への比較 |
+| `fatSkeletonRow_homotopyPullback` | 実装済み | 各行の Kan 性の下で全ての有限骨格の行の比較 |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

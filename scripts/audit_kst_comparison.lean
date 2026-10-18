@@ -92,6 +92,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1160,6 +1161,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
 
 
+-- FatAttachmentSpan.lean
+
+#check @SerrePositivity.KST.Comparison.fatAttachmentSpan
+#print axioms SerrePositivity.KST.Comparison.fatAttachmentSpan
+
+#check @SerrePositivity.KST.Comparison.fatAttachmentSpan_snd_mono
+#print axioms SerrePositivity.KST.Comparison.fatAttachmentSpan_snd_mono
+
+#check @SerrePositivity.KST.Comparison.fatAttachmentCocone
+#print axioms SerrePositivity.KST.Comparison.fatAttachmentCocone
+
+#check @SerrePositivity.KST.Comparison.fatAttachmentCoconeIsColimit
+#print axioms SerrePositivity.KST.Comparison.fatAttachmentCoconeIsColimit
+
+#check @SerrePositivity.KST.Comparison.fatAttachmentSpanMap
+#print axioms SerrePositivity.KST.Comparison.fatAttachmentSpanMap
+
+#check @SerrePositivity.KST.Comparison.fatAttachmentCocone_map
+#print axioms SerrePositivity.KST.Comparison.fatAttachmentCocone_map
+
+
 -- FatBoundaryCriterion.lean
 
 #check @SerrePositivity.KST.Comparison.simplexImage_len_le_iff_not_epi
@@ -1394,6 +1416,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.fatSkeletonCoconeIsColimit
 
 
+-- FatSkeletonHomotopyPullback.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRow_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRow_homotopyPullback
+
+
 -- FatSkeletonMaps.lean
 
 #check @SerrePositivity.KST.Comparison.fatSkeletonRow
@@ -1443,6 +1471,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.fatBoundaryAttachment_face
 #print axioms SerrePositivity.KST.Comparison.fatBoundaryAttachment_face
+
+
+-- FatSkeletonSuccessor.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonStep_map
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonStep_map
+
+#check @SerrePositivity.KST.Comparison.fatSkeleton_successor_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.fatSkeleton_successor_homotopyPullback
 
 
 -- FatSkeletonZero.lean
@@ -1818,6 +1855,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.IsHomotopyPullback
 #print axioms SerrePositivity.KST.Comparison.IsHomotopyPullback
+
+
+-- HomotopyPullbackGeneralPasting.lean
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_paste_horiz
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_paste_horiz
 
 
 -- HomotopyPullbackInvariance.lean
@@ -2202,6 +2245,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.spanCylinderKan_vertexSquare_iff
 #print axioms SerrePositivity.KST.Comparison.spanCylinderKan_vertexSquare_iff
+
+
+-- KanSquareReplacement.lean
+
+#check @SerrePositivity.KST.Comparison.kanSquareTop
+#print axioms SerrePositivity.KST.Comparison.kanSquareTop
+
+#check @SerrePositivity.KST.Comparison.kanReplacementSquare
+#print axioms SerrePositivity.KST.Comparison.kanReplacementSquare
+
+#check @SerrePositivity.KST.Comparison.kanSquareTop_unit
+#print axioms SerrePositivity.KST.Comparison.kanSquareTop_unit
+
+#check @SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
+#print axioms SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
 
 
 -- LocalizedCoproductMaps.lean
