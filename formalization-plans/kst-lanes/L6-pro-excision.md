@@ -95,7 +95,10 @@
 - 右係数と左係数の点ごとの交換を複体・ホモロジーの自然同型として構成済み。
 - 固定有限生成係数の右 Koszul ホモロジーの塔の pro-零性を Lemma 4.9 から移送済み。
 - KST E₂ の項は既存の左係数 Koszul 模型でも表示可能。
-- 次はスペクトル対象の射による頁の関手性を実装し、E₂ 同型の Koszul 冪遷移・係数射についての自然性、塔への持ち上げ、有限収束と edge 比較を進める。
+- スペクトル対象の射に対する三連結写像短複体と、そのホモロジー E の関手を構成済み。
+- 中央区間の射が零なら頁の射も零になることを証明済み。
+- 関手間の自然変換を合成可能図式へ持ち上げ、恒等・合成の保存を証明済み。
+- 次は濾過間の自然変換をスペクトル対象の射へ持ち上げ、E₂ 同型の冪遷移・係数射についての自然性、塔・有限収束と edge 比較を進める。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -201,6 +204,10 @@
 | pointwiseTensorSwapHomologyIso | KoszulCoefficientSwap.lean | 検証済み | 係数の左右交換のホモロジー自然同型 |
 | koszulRightTensorHomologyTower_isProZero | KoszulCoefficientSwap.lean | 検証済み | 固定有限生成右係数の Koszul pro-消滅 |
 | koszulSecondPageLeftIso | KoszulCoefficientSwap.lean | 検証済み | E₂ を既存左係数模型で表示 |
+| spectralShortComplexFunctor | SpectralObjectMaps.lean | 検証済み | スペクトル対象の射に対する短複体関手 |
+| spectralPageFunctor | SpectralObjectMaps.lean | 検証済み | 三区間の頁を与える関手 |
+| spectralPageFunctor_map_zero | SpectralObjectMaps.lean | 検証済み | 中央区間の零射から頁の零射 |
+| composableArrowsMapNatTrans | SpectralObjectMaps.lean | 検証済み | 自然変換の合成可能図式への持ち上げ |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

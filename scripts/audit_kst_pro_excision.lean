@@ -653,3 +653,24 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.koszulSecondPageLeftIso
 #print axioms SerrePositivity.KST.ProExcision.koszulSecondPageLeftIso
+
+#check @SerrePositivity.KST.ProExcision.shortComplex_homologyMap_zero_of_middle
+#print axioms SerrePositivity.KST.ProExcision.shortComplex_homologyMap_zero_of_middle
+
+#check @SerrePositivity.KST.ProExcision.spectralShortComplexFunctor
+#print axioms SerrePositivity.KST.ProExcision.spectralShortComplexFunctor
+
+#check @SerrePositivity.KST.ProExcision.spectralPageFunctor
+#print axioms SerrePositivity.KST.ProExcision.spectralPageFunctor
+
+#check @SerrePositivity.KST.ProExcision.spectralPageFunctor_map_zero
+#print axioms SerrePositivity.KST.ProExcision.spectralPageFunctor_map_zero
+
+#check @SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans
+#print axioms SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans
+
+#check @SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_id
+#print axioms SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_id
+
+#check @SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_comp
+#print axioms SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_comp

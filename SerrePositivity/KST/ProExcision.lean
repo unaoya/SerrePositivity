@@ -33,3 +33,4 @@ public import SerrePositivity.KST.ProExcision.FiniteKoszulShape
 public import SerrePositivity.KST.ProExcision.SupportedRestriction
 public import SerrePositivity.KST.ProExcision.KoszulCoefficientRow
 public import SerrePositivity.KST.ProExcision.KoszulCoefficientSwap
+public import SerrePositivity.KST.ProExcision.SpectralObjectMaps
