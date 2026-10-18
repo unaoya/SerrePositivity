@@ -153,3 +153,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.joinLeftSubcomplexIso
 #check @SerrePositivity.InfinityCategories.joinLeftSubcomplexIso_hom_ι
 #check @SerrePositivity.InfinityCategories.joinLeft_horn₂₁_isPushout
+#check @SerrePositivity.InfinityCategories.sliceUnderRestrict_comp
+#check @SerrePositivity.InfinityCategories.cosliceRestrictionSquare
+#check @SerrePositivity.InfinityCategories.relativeCosliceRestriction
+#check @SerrePositivity.InfinityCategories.relativeCosliceRestriction_subcomplex
+#check @SerrePositivity.InfinityCategories.relativeCosliceRestriction_trivialKanFibration_comp
+#check @SerrePositivity.InfinityCategories.relativeCosliceRestriction_trivialKanFibration_cancel
+#check @SerrePositivity.InfinityCategories.squareComparison_trivialKanFibration_congr

@@ -145,4 +145,17 @@ lemma squareComparison_trivialKanFibration_cancel_left
       rw [Category.assoc, sq₂.w, ← Category.assoc, hlp, hz]
     simpa only [squareComparison, Category.assoc, pullback.lift_snd] using h
 
+/-- 概要：横の射を等しい表示に置き換えても相対比較写像の充填性は変わらない。
+方針：二つの等式で置換し、可換性の証明の違いを証明無関係性で除く。
+規約：縦の射と四隅の対象は固定する。
+使われ方：Kerodon Proposition 5.2.5.1、coslice 制限の合成表示の正規化。 -/
+lemma squareComparison_trivialKanFibration_congr {E F B C : SSet.{u}}
+    {f f' : E ⟶ F} {p : E ⟶ B} {q : F ⟶ C} {g g' : B ⟶ C}
+    (sq : CommSq f p q g) (sq' : CommSq f' p q g') (hf : f = f') (hg : g = g') :
+    TrivialKanFibration (squareComparison sq) ↔
+      TrivialKanFibration (squareComparison sq') := by
+  subst f'
+  subst g'
+  rfl
+
 end SerrePositivity.InfinityCategories

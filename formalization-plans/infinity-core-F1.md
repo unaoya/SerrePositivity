@@ -636,5 +636,43 @@ lemma joinLeft_horn₂₁_isPushout (A : SSet.{u}) :
       (joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 A))
       (joinMap horn₂₁.ι₀₁ (𝟙 A)) (joinMap horn₂₁.ι₁₂ (𝟙 A))
 
+lemma sliceUnderRestrict_comp {K L M X : SSet.{u}} (p : K ⟶ X)
+    (f : L ⟶ K) (g : M ⟶ L) :
+    sliceUnderRestrict p f ≫ sliceUnderRestrict (f ≫ p) g =
+      sliceUnderRestrict p (g ≫ f)
+
+lemma cosliceRestrictionSquare {K L X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y)
+    (f : L ⟶ K) :
+    CommSq (sliceUnderRestrict p f) (sliceUnderPostcomp p q)
+      (sliceUnderPostcomp (f ≫ p) q) (sliceUnderRestrict (p ≫ q) f)
+
+noncomputable def relativeCosliceRestriction {K L X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) (f : L ⟶ K) :
+    sliceUnder p ⟶ pullback (sliceUnderPostcomp (f ≫ p) q)
+      (sliceUnderRestrict (p ≫ q) f)
+
+lemma relativeCosliceRestriction_subcomplex {K X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) :
+    relativeCosliceRestriction p q K₀.ι = relativeCosliceMap p q K₀
+
+lemma relativeCosliceRestriction_trivialKanFibration_comp {K L M X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) (f : L ⟶ K) (g : M ⟶ L)
+    [TrivialKanFibration (relativeCosliceRestriction p q f)]
+    [TrivialKanFibration (relativeCosliceRestriction (f ≫ p) q g)] :
+    TrivialKanFibration (relativeCosliceRestriction p q (g ≫ f))
+
+lemma relativeCosliceRestriction_trivialKanFibration_cancel {K L M X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) (f : L ⟶ K) (g : M ⟶ L)
+    [TrivialKanFibration (sliceUnderRestrict (p ≫ q) f)]
+    [TrivialKanFibration (relativeCosliceRestriction p q f)]
+    [TrivialKanFibration (relativeCosliceRestriction p q (g ≫ f))] :
+    TrivialKanFibration (relativeCosliceRestriction (f ≫ p) q g)
+
+lemma squareComparison_trivialKanFibration_congr {E F B C : SSet.{u}}
+    {f f' : E ⟶ F} {p : E ⟶ B} {q : F ⟶ C} {g g' : B ⟶ C}
+    (sq : CommSq f p q g) (sq' : CommSq f' p q g') (hf : f = f') (hg : g = g') :
+    TrivialKanFibration (squareComparison sq) ↔
+      TrivialKanFibration (squareComparison sq')
+
 end SerrePositivity.InfinityCategories
 ```
