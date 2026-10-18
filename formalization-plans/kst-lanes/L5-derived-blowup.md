@@ -2,9 +2,13 @@
 
 ## 現在地
 
-L5a の模型を固定。L5b の多項式チャート、普遍構造射、重なりの座標 cocycle、
-O(1) の単元 cocycle、Koszul 関係式の変換公式は対象ビルド済み。
-局所化環上の同型と Koszul cdga の構造・基底変換は未実装であり、L5b 全体は未完了。
+L5a の模型を固定。L5b の多項式チャート、普遍構造射、局所化環どうしの重なり同型、
+O(1) の単元 cocycle、Koszul 生成加群の可逆変換と cocycle を対象ビルド済み。
+変換は外積代数全体へ延長し、収縮微分の平方零・変換との可換性を証明した。
+例外因子の列と全 a_j の列の可逆基底変換、外積への延長と微分適合も対象ビルド済み。
+U_i・E∩U_i・D(n)∩U_i の underlying Koszul 複体と U_i の次数境界を構成済み。
+整数次数付き dg 代数への装備、外積模型と既存反復 cone 模型の比較、有限列挙の順序交換、
+普遍チャートと L7 の古典 blowup の同定は未実装であり、L5b 全体は未完了。
 L5c〜L5f は未実装。完成は各工程の構成・比較・対象ビルドと全宣言公理監査が揃った時点。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -83,9 +87,26 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `chartTransition_relation` | Charts | 対象ビルド済み |
 | `UniversalBase`・`UniversalChart`・`projectiveChartInclusion` | UniversalCharts | 対象ビルド済み |
 | `universalBaseMap`・`universalBaseMap_X`・`universalMinor_zero` | UniversalCharts | 対象ビルド済み |
+| `OverlapRing`・`overlapUnit`・`overlapTransitionBase` | Overlaps | 対象ビルド済み |
+| `overlapMap`・`overlapMap_comp`・`overlapEquiv` | Overlaps | 対象ビルド済み |
+| `koszulGeneratorMap_cocycle`・`koszulGeneratorMap_inverse`・`koszulGeneratorEquiv` | KoszulBasis | 対象ビルド済み |
+| `chartKoszulDifferential`・`koszulGeneratorMap_differential` | KoszulDifferential | 対象ビルド済み |
+| `ChartExterior`・`chartExteriorDifferential_sq` | ChartExterior | 対象ビルド済み |
+| `chartExteriorMap_cocycle`・`chartExteriorMap_differential`・`chartExteriorEquiv` | ChartExterior | 対象ビルド済み |
+| `chartKoszulSequence`・`derivedChartComplex` | ChartComplexes | 対象ビルド済み |
+| `exceptionalChartSequence`・`exceptionalChartComplex`・`exceptionalProductSequence` | ChartComplexes | 対象ビルド済み |
+| `thickeningChartSequence`・`thickeningChartComplex`・`derivedChartComplex_isZero_X_pos/lt` | ChartComplexes | 対象ビルド済み |
+| `exceptionalGeneratorEquiv`・`exceptionalGeneratorMap_differential` | ExceptionalBasis | 対象ビルド済み |
+| `exceptionalExteriorEquiv`・`exceptionalExteriorEquiv_differential` | ExceptionalBasis | 対象ビルド済み |
 
-Koszul 関係式の変換は環の元の等式であり、複体または dg 代数の同型ではない。
-上表の所有モジュールの全34定数について、公理監査は標準三公理のみで成功。
+`ChartExterior` は総外積代数であり、整数次数の構造は未装備。
+`derivedChartComplex` は既存の反復 cone 複体であり、両模型の比較同型はまだない。
+この二つを合わせて「導来チャート cdga の実装済み」とは扱わない。
+所有モジュールの全118定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+
+次の実装単位は外積の次数分解と収縮の次数低下を証明し、cochain の次数−nに
+第n外積を置く複体を構成する。その後に既存反復 cone 模型との比較を行う。
+L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
 ## 保存単位の検査
 
