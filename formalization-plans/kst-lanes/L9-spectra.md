@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・213 モジュール 2798 宣言の公理監査成功。
+対象ビルド・218 モジュール 2814 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1970,3 +1970,30 @@ Kan 複体の左逆元の三角形の存在により任意の基本群の元で�
 保存単位の対象ビルド 2413 jobs 成功。
 私有宣言を含む 213 モジュール 2798 宣言で標準三公理のみ。
 L9d は進行中。次は連結な全空間の場合にこの連結射の全射性を示す。
+
+## 68. L9d の自己 pullback の全成分と loop の整数冪の後合成
+
+底の成分が一つの fibration の fiber 包含は成分で全射となることを零次数の完全列から示した。
+これを自己 pullback の第二射影に適用し、第二因子を基点に固定した元の fiber が全成分を代表すると証明した。
+全空間が連結なら元の連結射も全 fiber 成分を代表するため、自己 pullback への連結射は全射である。
+この全射性は収縮可能性より弱い連結性だけを使う。
+
+fibration の可換四角形が自己 pullback と fiber の包含に誘導する射を作った。
+連結写像の自然性を自己 pullback の成分へ移し、基点の等式の移送も明示した。
+底の基本群で逆元に作用する基点を保つ自己四角形は、自己 pullback の全成分で二因子の交換と一致する。
+別に内部 Hom の源二つの交換同型を使い、loop の整数冪の射の後合成は任意のパラメータを持つ写像空間の正次数群に整数冪で作用すると証明した。
+これらを相対三角形の写像空間へ適用する部分は継続する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `fiberInclusion_piZero_surjective` / `fiberInclusion_piZero_surjective_at` | 連結な底の上の fiber 包含の成分での全射性 |
+| `selfPullbackFiberInclusion_surjective` / `selfPullbackConnecting_surjective` | 連結な全空間の自己 pullback の全成分の代表 |
+| `selfPullbackMap` / `selfPullbackFiberInclusion_natural` | 可換四角形の自己 pullback への作用と包含の自然性 |
+| `selfPullbackConnecting_natural` / `selfPullbackConnecting_natural_fixed` | 連結射の自然性と基点の移送 |
+| `selfPullbackMap_eq_swap_on_components` | 逆元に作用する射と二因子の交換の全成分での一致 |
+| `LoopMappingClasses.groupMap_post_integer` | loop の整数冪の後合成の正次数群での作用 |
+
+参照：Goerss–Jardine I §7、Kerodon §§3.2.5・3.2.6、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 2418 jobs 成功。
+私有宣言を含む 218 モジュール 2814 宣言で標準三公理のみ。
+L9d は進行中。次は相対三角形の写像空間に交換と逆元の一般式を適用する。

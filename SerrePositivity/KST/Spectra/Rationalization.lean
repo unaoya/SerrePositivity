@@ -31,6 +31,8 @@ public import SerrePositivity.KST.Spectra.CircleSmashMappingPullback
 public import SerrePositivity.KST.Spectra.CircleSmashSwap
 public import SerrePositivity.KST.Spectra.FibrationInverseEdge
 public import SerrePositivity.KST.Spectra.SelfPullbackConnectingSwap
+public import SerrePositivity.KST.Spectra.SelfPullbackSwapComparison
+public import SerrePositivity.KST.Spectra.PostLoopIntegerPower
 
 /-!
 概要：スペクトルの telescope 有理化に使う余極限とホモトピー群の比較。
