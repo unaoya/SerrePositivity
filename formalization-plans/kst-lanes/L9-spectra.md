@@ -19,7 +19,9 @@
 ## 1. 正本と目的
 
 作成日：2026-10-18。
-状態：L9a 着手。L9c の写像空間の局所 Kan 性に設計確認点がある。
+状態：L9a 完了（対象ビルド・公理監査成功）。L9b に着手。
+全体ビルドは別レーン ChartAlgebra の heartbeat 超過で失敗し、自分の import 閉包は正常。
+L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
 基盤の正本：[foundations](../foundations.md) §1 の F3・γ。
 本文は実装順と検証状態を管理する。
@@ -132,8 +134,9 @@ Mathlib の将来の `π_n` と衝突させない。
 左逆元は `exists_left_inverse` から選ぶ。
 群構造を商の上に構成する。
 逆元の代表選択は群法則による一意性で処理する。
-二つの積の interchange を充填で証明する。
-Eckmann–Hilton により二以上の次数の可換性を得る。
+隣接する積の反転を四面の比較ホーンの充填で証明する。
+四面の消去と正順・逆順の充填の比較により二以上の次数の可換性を得る。
+可換性の具体的証明は Kerodon §3.2.3 の四面の議論に合わせる。
 可換性に π_* の安定化を先取りしない。
 
 ## 8. L9a：自然性とホモトピー
@@ -185,22 +188,31 @@ Kan 性は端点制限の fibration 性から得る。
 
 ## 11. L9c：スペクトルと写像空間
 
-指定された対象データは X_n と X_n ≅ ΩX_(n+1)。
-同型は単体集合の厳密な同型として読むのが現行指定。
-HA の spectrum object の構造同値と区別する。
-対象の構造同型を保つ射を定義する。
-段ごとの pointed Hom は Kan である。
-段の整合条件を課した Hom は極限として記述できる。
-ただし一般の Kan 複体の極限は Kan とは限らない。
-したがって「極限だから Kan」という証明は使えない。
-必要なのはこの特定の図式の追加の充填性の証明である。
-逆系の遷移射の fibration 性は十分条件の候補。
-その fibration 性を仮定として追加することはしない。
-厳密 Hom を homotopy coherent Hom に替えるなら設計変更となる。
-構造同型を弱同値に替える場合も設計変更となる。
-その変更を L9 が独断で採用しない。
-局所 Kan 性が得られてから coherent nerve を作る。
-γ1 の適用条件を実際に満たすことを監査する。
+対象は点つき Kan 複体の列 X_n と構造写像 σ_n : ΣX_n → X_(n+1)。
+σ_n は単射とし、随伴 X_n → ΩX_(n+1) は全基点で π_* 同型とする。
+これは Bousfield–Friedlander 1978 の安定モデル構造の cofibrant–fibrant モデルである。
+原典は Bousfield–Friedlander 1978 と HTT A.3.3。
+厳密な構造同型 X_n ≅ ΩX_(n+1) は要求しない。
+厳密同型を外した理由は、従来の Hom の厳密極限の Kan 性の証明が得られないため。
+構造写像と可換な段ごとの点つき射をスペクトルの射とする。
+豊穣 Hom は有限切断への写像空間の塔の極限とする。
+各段の制限は Hom_*(X_(n+1),Y_(n+1)) → Hom_*(ΣX_n,Y_(n+1)) の引き戻し。
+源の単射 σ_n と標的の Kan 性によりこの制限は Kan fibration。
+Kan fibration の引き戻しと塔の極限についての閉性を RLP から証明する。
+従って Hom(X,Y) → Hom_*(X_0,Y_0) は Kan fibration となる。
+始段の Kan 性と合わせて Hom(X,Y) の Kan 性を得る。
+この Kan 性の証明には Ω 条件を使わない。
+Ω 条件はスペクトルの正しいホモトピー型を表すための条件である。
+合成と単位は厳密な段ごとの合成と単位から作る。
+Sp はこの単体的圏の coherent nerve とし、γ1 を適用する。
+この nerve が導来写像空間を持つ正しい Sp であることの比較は γ3 後に扱う。
+第 1 段の π_* の証明にその比較を使わない。
+非単射の構造射は写像柱によって cofibrant 置換する。
+各段の Kan 置換には既存 AnodyneKanReplacement の実構成を使う。
+両置換の存在と π_* の保存を本レーンで証明し、入力にしない。
+fiber 列の各段の fiber は構造射の単射性を保つとは限らないので置換を挟む。
+K 理論の反復 delooping もこの対象仕様に直接合わせる。
+単射の cell 分解は Mathlib の relativeCellComplexOfMono により得る。
 整数次数 π_* とその自然性を構成する。
 fiber 列の定義と長完全列を実装する。
 ここまでを L9c の完了条件とする。
@@ -258,9 +270,9 @@ amend・rebase・reset を使わない。
 | 工程 | 状態 | 残る証明 |
 | --- | --- | --- |
 | 計画 | 作成 | 実装と同期する |
-| L9a | 部分実装・対象ビルド済み | 可換性、零次数、相対ホモトピーとの比較、不変性 |
-| L9b | 未着手 | fiber の連結射と完全性 |
-| L9c | 設計確認点あり | 特定の Hom 極限の Kan 性 |
+| L9a | 完了・対象ビルドと公理監査成功 | 全体ビルドの別レーン失敗は下記 |
+| L9b | 着手 | fiber の連結射と完全性 |
+| L9c | 改訂仕様を承認済み・未着手 | 単射による Hom の塔と Kan 性、置換、整数次数 |
 | L9d | 未着手 | telescope と π_* の計算 |
 | L9e | 未着手 | Tot、hG、有理自明作用の比較 |
 
@@ -268,7 +280,8 @@ amend・rebase・reset を使わない。
 
 以下は検証済みの宣言だけを記載する。
 名前の共通接頭辞は `SerrePositivity.KST.Spectra`。
-全て `SerrePositivity/KST/Spectra/HomotopyGroups.lean` に置く。
+最初の表の宣言は `SerrePositivity/KST/Spectra/HomotopyGroups.lean` に置く。
+補助の幾何的構成と全自然数次数の界面は後続の四モジュールに分割する。
 
 | 宣言 | 内容 |
 | --- | --- |
@@ -294,6 +307,35 @@ amend・rebase・reset を使わない。
 | `KanHomotopyGroup.map_id` | 恒等射の保存 |
 | `KanHomotopyGroup.map_comp` | 合成の保存 |
 
+追加の主要宣言：
+
+| ファイル | 宣言（共通接頭辞は同じ） | 内容 |
+| --- | --- | --- |
+| `HomotopyDegreeZero.lean` | `KanHomotopyZero` | RelStruct₀ の商による零次数 |
+| 同上 | `KanHomotopyZero.equivPiZero` | Mathlib の π₀ との全単射 |
+| 同上 | `KanHomotopyZero.equivPiZero_map` | π₀ との比較の自然性 |
+| `HomotopyInvariance.lean` | `RelativePrism.sectionRel` | prism の隣接断面の RelStruct |
+| 同上 | `KanHomotopyGroup.eq_of_relativeHomotopy` | 相対ホモトピーを類の等式へ送る |
+| 同上 | `KanHomotopyGroup.map_eq_of_basedHomotopy` | 基点固定ホモトピーによる群準同型の不変性 |
+| 同上 | `KanHomotopyGroup.equivOfBasedHomotopyInverse` | ホモトピー逆が誘導する群同型 |
+| 同上 | `KanHomotopyZero.map_eq_of_homotopy` | 零次数のホモトピー不変性 |
+| `Commutativity.lean` | `AdjacentProduct.flip` | 隣接する面の積の反転の充填 |
+| 同上 | `FourStruct.exists_fill` | 四面の指定を持つ Kan 充填の存在 |
+| 同上 | `FourReduction.class_eq` | 四面から積の式を得る |
+| 同上 | `FourComparison.compare` | 正順・逆順の充填の比較 |
+| 同上 | `KanHomotopyGroup.mul_comm` | 二以上の次数での可換性 |
+| `HomotopyIndexing.lean` | `KanHomotopy` | 実際の自然数次数で添字付けした π_n |
+| 同上 | `KanHomotopy.map` | 全自然数次数の誘導写像 |
+| 同上 | `KanHomotopy.map_id`、`map_comp` | 全次数の関手性 |
+| 同上 | `KanHomotopy.map_point` | 全次数の基点保存 |
+| 同上 | `KanHomotopy.map_eq_of_basedHomotopy` | 全次数のホモトピー不変性 |
+
+`KanHomotopy X (n + 1) x` は群、`KanHomotopy X (n + 2) x` は可換群。
+正次数の群準同型としての界面は `KanHomotopyGroup.map`。
+零次数には群を付けない。
+相対ホモトピーから類の等式への向きと、任意の面添字の RelStruct との比較を証明済み。
+一般の相対写像のホモトピー類との圏論的同定はここでは主張しない。
+
 検証コマンド：
 
 ```sh
@@ -302,8 +344,12 @@ lake build SerrePositivity.KST.Spectra
 lake env lean scripts/audit_kst_spectra.lean
 ```
 
-結果：対象ビルド成功。監査は私有宣言を含め 63 宣言、標準三公理のみ。
-全体ビルドは L9a 完了時に行う。
+結果：対象ビルド成功。監査は私有宣言を含め 367 宣言、5 モジュールで標準三公理のみ。
+L9a の区切りで `set -o pipefail; lake build` を実行した。
+終了コード 1：`SerrePositivity/KST/SchemeLemmas/ChartAlgebra.lean:62` の
+`isDefEq` の heartbeat 超過（8150/8153）。
+本レーンの import 閉包にはこのファイルを含まない。対象ビルドは正常。
+他レーンのファイルを編集せず L9b に進む。
 ルートには指定の public import 一行を追加済み。
 ルートは他レーンの未コミット変更を含むので、この保存ではコミット対象から外す。
 
@@ -319,34 +365,27 @@ lake env lean scripts/audit_kst_spectra.lean
 設計変更の提案時は変更箇所と理由を明記する。
 通常の工程報告後は承認を待たず次の工程へ進む。
 
-## 18. L9c の設計変更提案（未採用）
+## 18. L9c の改訂仕様（ユーザー承認済み）
 
-現行指定は維持している。以下は提案であり、Lean の定義にはまだ採用していない。
-L9a の正次数の群構造はどちらの選択にも依存しない。
+2026-10-18 のユーザー承認により §11 の BF cofibrant–fibrant 方式を採用した。
+厳密な Ω 同型の仕様は置き換える。
+全基点での π_* 同型、構造写像の単射性、Hom の塔の引き戻し表示を同時に保持する。
+これらの条件を追加公理にせず、必要な存在・置換・充填を実証する。
+π_j(X) は k ≥ −j に対する π_(j+k)(X_k) とし、段の選択独立性を証明する。
+零次数が群となる点もループ構造と比較して証明する。
 
-確認した原典：
+参照：
 
-- [HA](https://www.math.ias.edu/~lurie/papers/HA.pdf) Definition 1.4.2.8 と
-  Proposition 1.4.3.6 の証明では、空間の列の構造は Ω への同値として扱う。
-- [Kerodon の塔の補題](https://kerodon.net/tag/0194) Corollary 11.9.7.2
-  （retired subsection の現行番号）は、逆極限の Kan 性に各遷移射の Kan fibration 性を使う。
-- Mathlib `AnodyneExtensions/PushoutProduct.lean` の
-  `fibration_pullbackObjObjπ` は、単射による源の制限に対する fibration 性を実証する。
+- Bousfield–Friedlander, *Homotopy theory of Γ-spaces, spectra, and bisimplicial sets*
+  (1978), §2。安定モデル構造の cofibrant–fibrant モデル。
+- [HTT](https://www.math.ias.edu/~lurie/papers/HTT.pdf), A.3.3。単体的図式のモデルと写像空間。
+- [HA](https://www.math.ias.edu/~lurie/papers/HA.pdf), §1.4.2 と Proposition 1.4.3.6 の証明。
+- [Kerodon の塔の補題](https://kerodon.net/tag/0194), Corollary 11.9.7.2
+  （retired subsection の現行番号）。
+- Mathlib `AnodyneExtensions/PushoutProduct.lean`, `fibration_pullbackObjObjπ`。
+- Mathlib `Skeleton.lean`, `relativeCellComplexOfMono`。
+- 既存 `HomotopicalAlgebra/Simplicial/AnodyneKanReplacement.lean`。
 
-現行の厳密 Hom の極限が非 Kan であると証明したわけではない。
-未解決なのは、この特定の極限に対する充填の存在である。
-段ごとの Hom の Kan 性だけからは一般の極限の Kan 性を導けない。
-従って γ1 を適用するには、図式固有の補題が必要になる。
-
-提案する変更箇所：
-
-1. X_n ≅ ΩX_(n+1) の厳密同型を、π_* 同型となる構造写像で置き換える。
-2. 源となるスペクトルの cell 分解を実際に構成する。
-3. 有限段の写像空間を cell 分解の段への制限で作る。
-4. 制限写像の Kan fibration 性を pushout-product の充填から証明する。
-5. その逆極限を豊穣 Hom とし、合成・単位・局所 Kan 性を実証する。
-6. coherent nerve と γ1 の利用、HT-KQ 不使用、γ3 まで ∞ 極限を主張しない方針は維持する。
-
-この案でも cell 分解の存在と構造写像の同値性保存の証明は必要となる。
-それを入力仮説に移さない。
-ユーザーの決定前には L9c の対象や Hom を変更しない。
+γ1 による quasicategory 性と、導来写像空間を持つ正しい Sp との比較を区別する。
+後者は γ3 後の工程であり、第 1 段の主張には含めない。
+HT-KQ は使わない。共有正本 §13-3 はユーザーが更新する。

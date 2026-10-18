@@ -12,6 +12,12 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
+  let expected := #[
+    `SerrePositivity.KST.Spectra.HomotopyGroups,
+    `SerrePositivity.KST.Spectra.HomotopyDegreeZero,
+    `SerrePositivity.KST.Spectra.HomotopyInvariance,
+    `SerrePositivity.KST.Spectra.Commutativity,
+    `SerrePositivity.KST.Spectra.HomotopyIndexing]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -24,6 +30,6 @@ run_cmd do
     count := count + 1
     unless modules.contains mod do modules := modules.push mod
   if count == 0 then throwError "K-L9: no declarations audited"
-  unless modules.contains `SerrePositivity.KST.Spectra.HomotopyGroups do
-    throwError "K-L9: HomotopyGroups module missing"
+  for mod in expected do
+    unless modules.contains mod do throwError "K-L9: required module missing: {mod}"
   logInfo m!"K-L9: {count} declarations in {modules.size} modules audited; standard three axioms only."

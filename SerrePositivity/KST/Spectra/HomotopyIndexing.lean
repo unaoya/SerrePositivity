@@ -1,0 +1,123 @@
+module
+
+public import SerrePositivity.KST.Spectra.HomotopyInvariance
+public import SerrePositivity.KST.Spectra.Commutativity
+
+/-!
+概要：実際の自然数次数で添字付けした Kan 複体のホモトピー類。
+方針：零次数の商と正次数の群を次数でまとめる。
+規約：KanHomotopy X n x の n は実際の次数。零次数は基点付き集合。
+使われ方：Kerodon §3.2.2、Goerss–Jardine I §7。長完全列の全次数の界面。
+-/
+
+@[expose] public section
+
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+
+namespace SerrePositivity.KST.Spectra
+
+/-- 概要：Kan 複体の自然数次数のホモトピー類。
+方針：零次数は RelStruct₀ の商、正次数は充填関係による群とする。
+規約：n は実際の次数であり、零次数に群構造を要求しない。
+使われ方：Kerodon Construction 3.2.2.4、Example 3.2.2.6、Theorem 3.2.2.10。 -/
+def KanHomotopy (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u :=
+  match n with
+  | 0 => KanHomotopyZero X x
+  | n + 1 => KanHomotopyGroup X n x
+
+namespace KanHomotopy
+
+variable {X Y Z : SSet.{u}} [KanComplex X] [KanComplex Y] [KanComplex Z]
+  {x : X _⦋0⦌} {y : Y _⦋0⦌} {z : Z _⦋0⦌}
+
+/-- 概要：正の自然数次数のホモトピー類には群構造がある。
+方針：充填で構成済みの正次数の群構造を使う。
+規約：実際の次数 n + 1。
+使われ方：Kerodon Theorem 3.2.2.10。長完全列の群の部分。 -/
+noncomputable instance {n : ℕ} : Group (KanHomotopy X (n + 1) x) :=
+  inferInstanceAs (Group (KanHomotopyGroup X n x))
+
+/-- 概要：二以上の自然数次数のホモトピー類には可換群構造がある。
+方針：四面の比較で構成済みの可換群構造を使う。
+規約：実際の次数 n + 2。
+使われ方：Kerodon Theorem 3.2.2.10。スペクトルへの安定化。 -/
+noncomputable instance {n : ℕ} : CommGroup (KanHomotopy X (n + 2) x) :=
+  inferInstanceAs (CommGroup (KanHomotopyGroup X (n + 1) x))
+
+/-- 概要：全ての自然数次数のホモトピー類の基点。
+方針：零次数では x の連結成分、正次数では定数単体の類を取る。
+規約：群のある次数では単位元と一致する。
+使われ方：Kerodon §3.2.2。長完全列の基点付き集合の端。 -/
+def point (n : ℕ) : KanHomotopy X n x :=
+  match n with
+  | 0 => KanHomotopyZero.mk ((PtSimplex.equiv₀ x).symm x)
+  | _ + 1 => KanHomotopyGroup.mk .const
+
+/-- 概要：全自然数次数のホモトピー類の誘導写像。
+方針：零次数と正次数の構成済みの誘導写像をまとめる。
+規約：基点の像を hφ で指定する。
+使われ方：Kerodon §3.2.2。π_* 同型を述べる共通界面。 -/
+noncomputable def map (n : ℕ) (φ : X ⟶ Y) (hφ : φ.app _ x = y) :
+    KanHomotopy X n x → KanHomotopy Y n y :=
+  match n with
+  | 0 => KanHomotopyZero.map φ hφ
+  | _ + 1 => KanHomotopyGroup.map φ hφ
+
+/-- 概要：全次数の誘導写像は恒等射を保つ。
+方針：零次数と正次数それぞれの恒等法則を使う。
+規約：基点は同じ x。
+使われ方：Kerodon §3.2.2。全次数の関手性。 -/
+@[simp]
+theorem map_id (n : ℕ) (a : KanHomotopy X n x) : map n (𝟙 X) rfl a = a := by
+  cases n with
+  | zero => exact KanHomotopyZero.map_id a
+  | succ n => exact DFunLike.congr_fun KanHomotopyGroup.map_id a
+
+/-- 概要：全次数の誘導写像は合成を保つ。
+方針：零次数と正次数それぞれの合成法則を使う。
+規約：hcomp は合成射の基点保存を指定する。
+使われ方：Kerodon §3.2.2。全次数の自然性。 -/
+theorem map_comp (n : ℕ) (φ : X ⟶ Y) (hφ : φ.app _ x = y)
+    (ψ : Y ⟶ Z) (hψ : ψ.app _ y = z) (hcomp : (φ ≫ ψ).app _ x = z)
+    (a : KanHomotopy X n x) :
+    map n (φ ≫ ψ) hcomp a = map n ψ hψ (map n φ hφ a) := by
+  cases n with
+  | zero => exact KanHomotopyZero.map_comp φ hφ ψ hψ hcomp a
+  | succ n => exact DFunLike.congr_fun (KanHomotopyGroup.map_comp φ hφ ψ hψ hcomp) a
+
+/-- 概要：全次数の誘導写像はホモトピー類の基点を保つ。
+方針：零次数では基点の像、正次数では群準同型の単位保存を使う。
+規約：hφ により指定した y を標的の基点とする。
+使われ方：Kerodon §3.2.2。基点付き長完全列の界面。 -/
+@[simp]
+theorem map_point (n : ℕ) (φ : X ⟶ Y) (hφ : φ.app _ x = y) :
+    map n φ hφ (point n) = point n := by
+  cases n with
+  | zero =>
+    apply KanHomotopyZero.equivPiZero.injective
+    simp only [map, point, KanHomotopyZero.equivPiZero_map,
+      KanHomotopyZero.equivPiZero_mk, mapπ₀_mk, Equiv.apply_symm_apply, hφ]
+  | succ n => exact (KanHomotopyGroup.map φ hφ).map_one
+
+/-- 概要：基点固定ホモトピーの両端の誘導写像は全自然数次数で一致する。
+方針：正次数の prism の計算と零次数の辺の計算をまとめる。
+規約：ホモトピーは基点上に定数。
+使われ方：Kerodon Proposition 3.2.1.4 と §3.2.2。全次数のホモトピー不変性。 -/
+theorem map_eq_of_basedHomotopy (n : ℕ) {φ ψ : X ⟶ Y}
+    (hφ : φ.app _ x = y) (hψ : ψ.app _ x = y)
+    (H : (RelativeMorphism.ofSimplex₀ φ x y hφ).Homotopy
+      (RelativeMorphism.ofSimplex₀ ψ x y hψ)) (a : KanHomotopy X n x) :
+    map n φ hφ a = map n ψ hψ a := by
+  cases n with
+  | zero =>
+    apply KanHomotopyZero.map_eq_of_homotopy hφ hψ ?_ a
+    exact { h := H.h, h₀ := H.h₀, h₁ := H.h₁
+            rel := by ext m ⟨⟨v, hv⟩, t⟩; exact hv.elim }
+  | succ n =>
+    exact DFunLike.congr_fun (KanHomotopyGroup.map_eq_of_basedHomotopy hφ hψ H) a
+
+end KanHomotopy
+
+end SerrePositivity.KST.Spectra
