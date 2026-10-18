@@ -10,6 +10,7 @@ public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.ClosedCoverIntersectionGeometry
 public import SerrePositivity.KST.Descent.BasicDescent
 public import SerrePositivity.KST.Descent.IntegralDescentStep
+public import SerrePositivity.KST.Descent.SectionedDescent
 
 /-!
 # 定理 3.1 の軌道正方形における全次数の貼り合わせ
@@ -22,6 +23,7 @@ public import SerrePositivity.KST.Descent.IntegralDescentStep
 `ComponentRemainderCover` では、整な成分の有限被覆と交わりの次元低下を構成する。
 交わりの指定比較の切断・推移性と、両側の被約化後の被覆、空の基底の降下も公開する。
 整な基底では、低次元に限った帰納仮定から中心上の降下を導き、軌道段階を閉じる。
+`SectionedDescent` では成分数と次元の帰納を完了し、切断を持つ場合の指定降下を証明する。
 本ファイルの宣言は、これと併用する代数的な表現による貼り合わせを記述する。
 
 ## 方針
@@ -31,7 +33,7 @@ public import SerrePositivity.KST.Descent.IntegralDescentStep
 ## 規約
 定理 3.1 全体の完成版ではない。実際の L の降下から自然な長完全列と有限積保存を供給し、
 幾何的推移性からの被覆はアフィンの場合と実際の閉中心へ接続済み。
-Čech 還元と次元帰納を完成する責務が残る。
+切断を持つ場合の次元帰納は完了。切断を持たない射への Čech 還元と、実降下の条件の供給は残る。
 主張の結論そのものを仮定していない。
 
 ## 使われ方
