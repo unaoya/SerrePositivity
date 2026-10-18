@@ -218,3 +218,5 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinder
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinIdentity
 public import SerrePositivity.InfinityCategories.F1.FatJoinPointCylinder
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPoint
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinLeftFunctor
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinLeftPushout

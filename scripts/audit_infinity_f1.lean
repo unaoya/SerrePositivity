@@ -1105,3 +1105,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.fatJoinPointPrism_comparison
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinderComparison_point_fst
 #check @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeJoinCylinderComparison_point
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftMap
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftMap_fst
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftMap_snd
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftMap_id
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftMap_comp
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftFunctor
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftMap_isPullback
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftMap_mono
+#check @SerrePositivity.InfinityCategories.relativeJoinLeftFunctor_preservesMonomorphisms
+#check @SerrePositivity.InfinityCategories.relativeJoin_left_isPushout

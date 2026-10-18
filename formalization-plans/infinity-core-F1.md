@@ -4972,5 +4972,50 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_point
     {X : SSet.{u}} (f : X ⟶ (Δ[0] : SSet.{u})) :
     IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
 
+noncomputable def relativeJoinLeftMap {X X' Y S : SSet.{u}} (g : Y ⟶ S)
+    {f : X ⟶ S} {f' : X' ⟶ S} (u : X ⟶ X') (h : u ≫ f' = f) :
+    relativeJoin f g ⟶ relativeJoin f' g
+
+lemma relativeJoinLeftMap_fst {X X' Y S : SSet.{u}} (g : Y ⟶ S)
+    {f : X ⟶ S} {f' : X' ⟶ S} (u : X ⟶ X') (h : u ≫ f' = f) :
+    relativeJoinLeftMap g u h ≫ pullback.fst (joinMap f' g) (joinDiagonal S) =
+      pullback.fst (joinMap f g) (joinDiagonal S) ≫ joinMap u (𝟙 Y)
+
+lemma relativeJoinLeftMap_snd {X X' Y S : SSet.{u}} (g : Y ⟶ S)
+    {f : X ⟶ S} {f' : X' ⟶ S} (u : X ⟶ X') (h : u ≫ f' = f) :
+    relativeJoinLeftMap g u h ≫ pullback.snd (joinMap f' g) (joinDiagonal S) =
+      pullback.snd (joinMap f g) (joinDiagonal S)
+
+lemma relativeJoinLeftMap_id {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S)
+    (h : 𝟙 X ≫ f = f) : relativeJoinLeftMap g (𝟙 X) h = 𝟙 (relativeJoin f g)
+
+lemma relativeJoinLeftMap_comp {X X' X'' Y S : SSet.{u}} (g : Y ⟶ S)
+    {f : X ⟶ S} {f' : X' ⟶ S} {f'' : X'' ⟶ S}
+    (u : X ⟶ X') (v : X' ⟶ X'') (hu : u ≫ f' = f) (hv : v ≫ f'' = f')
+    (h' : (u ≫ v) ≫ f'' = f) :
+    relativeJoinLeftMap g (u ≫ v) h' = relativeJoinLeftMap g u hu ≫ relativeJoinLeftMap g v hv
+
+noncomputable def relativeJoinLeftFunctor {Y S : SSet.{u}} (g : Y ⟶ S) :
+    Over S ⥤ SSet.{u}
+
+lemma relativeJoinLeftMap_isPullback {X X' Y S : SSet.{u}} (g : Y ⟶ S)
+    {f : X ⟶ S} {f' : X' ⟶ S} (u : X ⟶ X') (h : u ≫ f' = f) :
+    IsPullback (relativeJoinLeftMap g u h)
+      (pullback.fst (joinMap f g) (joinDiagonal S))
+      (pullback.fst (joinMap f' g) (joinDiagonal S)) (joinMap u (𝟙 Y))
+
+instance relativeJoinLeftMap_mono {X X' Y S : SSet.{u}} (g : Y ⟶ S)
+    {f : X ⟶ S} {f' : X' ⟶ S} (u : X ⟶ X') [Mono u] (h : u ≫ f' = f) :
+    Mono (relativeJoinLeftMap g u h)
+
+instance relativeJoinLeftFunctor_preservesMonomorphisms {Y S : SSet.{u}} (g : Y ⟶ S) :
+    (relativeJoinLeftFunctor g).PreservesMonomorphisms
+
+lemma relativeJoin_left_isPushout {Y S : SSet.{u}} (g : Y ⟶ S)
+    {A B C D : Over S} {u : A ⟶ B} {v : A ⟶ C} {r : B ⟶ D} {s : C ⟶ D}
+    [Mono u.left] (hp : IsPushout u.left v.left r.left s.left) :
+    IsPushout ((relativeJoinLeftFunctor g).map u) ((relativeJoinLeftFunctor g).map v)
+      ((relativeJoinLeftFunctor g).map r) ((relativeJoinLeftFunctor g).map s)
+
 end SerrePositivity.InfinityCategories
 ```
