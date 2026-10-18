@@ -1116,5 +1116,42 @@ def spaceInfinityObject (s : SpaceInfinity.{u} _⦋0⦌) : KanObject.{u}
 
 noncomputable def spaceInfinityVertexEquiv : KanObject.{u} ≃ SpaceInfinity.{u} _⦋0⦌
 
+lemma unitHom_app_constant {X : SSet.{u}} (f : (𝟙_ SSet.{u}) ⟶ X) (n : ℕ) :
+    f.app (Opposite.op ⦋n⦌) PUnit.unit = PinchedHom.constant (SSet.unitHomEquiv X f) n
+
+lemma simplicialHom_vertex_comp {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {A B D : C} (f : A ⟶ B) (g : B ⟶ D) :
+    SimplicialCategory.homEquiv' A D (f ≫ g) =
+      (SimplicialCategory.sHomComp A B D).app (Opposite.op ⦋0⦌)
+        (SimplicialCategory.homEquiv' A B f, SimplicialCategory.homEquiv' B D g)
+
+lemma simplicialHom_constant_comp {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {A B D : C} (f : A ⟶ B) (g : B ⟶ D) (n : ℕ) :
+    (SimplicialCategory.sHomComp A B D).app (Opposite.op ⦋n⦌)
+      (PinchedHom.constant (SimplicialCategory.homEquiv' A B f) n,
+        PinchedHom.constant (SimplicialCategory.homEquiv' B D g) n) =
+      PinchedHom.constant (SimplicialCategory.homEquiv' A D (f ≫ g)) n
+
+noncomputable def orderDiagramEnrichedHom {J : Type u} [LinearOrder J]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (F : J ⥤ C)
+    (i j : SimplicialThickening J) :
+    SimplicialCategory.sHom i j ⟶ SimplicialCategory.sHom (F.obj i.as) (F.obj j.as)
+
+noncomputable def enrichedFunctorOfOrderDiagram {J : Type u} [LinearOrder J]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (F : J ⥤ C) :
+    EnrichedFunctor SSet (SimplicialThickening J) C
+
+lemma enrichedFunctorOfOrderDiagram_precomp {J K : Type u} [LinearOrder J] [LinearOrder K]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (α : J →o K) (F : K ⥤ C) :
+    (SimplicialThickening.functor α).comp SSet (enrichedFunctorOfOrderDiagram F) =
+      enrichedFunctorOfOrderDiagram (α.toFunctor ⋙ F)
+
+noncomputable def nerveToCoherent (C : Type v) [Category.{u} C] [SimplicialCategory C] :
+    nerve C ⟶ SimplicialNerve C
+
+lemma nerveToCoherent_vertex {C : Type v} [Category.{u} C] [SimplicialCategory C] (X : C) :
+    (nerveToCoherent C).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X) =
+      coherentNerveVertex X
+
 end SerrePositivity.InfinityCategories
 ```

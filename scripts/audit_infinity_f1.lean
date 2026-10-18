@@ -274,3 +274,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.spaceInfinityVertex_eq_coherent
 #check @SerrePositivity.InfinityCategories.spaceInfinityObject
 #check @SerrePositivity.InfinityCategories.spaceInfinityVertexEquiv
+#check @SerrePositivity.InfinityCategories.unitHom_app_constant
+#check @SerrePositivity.InfinityCategories.simplicialHom_vertex_comp
+#check @SerrePositivity.InfinityCategories.simplicialHom_constant_comp
+#check @SerrePositivity.InfinityCategories.orderDiagramEnrichedHom
+#check @SerrePositivity.InfinityCategories.enrichedFunctorOfOrderDiagram
+#check @SerrePositivity.InfinityCategories.enrichedFunctorOfOrderDiagram_precomp
+#check @SerrePositivity.InfinityCategories.nerveToCoherent
+#check @SerrePositivity.InfinityCategories.nerveToCoherent_vertex
