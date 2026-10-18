@@ -174,3 +174,4 @@ public import SerrePositivity.KST.SchemeLemmas.LocalMinorPivot
 public import SerrePositivity.KST.SchemeLemmas.FreeModuleRowPartition
 public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdealRestriction
 public import SerrePositivity.KST.SchemeLemmas.LocalMinorPureTransformGeneration
+public import SerrePositivity.KST.SchemeLemmas.SplitMatrixMinorIdeal
