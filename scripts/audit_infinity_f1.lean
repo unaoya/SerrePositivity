@@ -739,3 +739,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.joinLeftBoundaryMap_join
 #check @SerrePositivity.InfinityCategories.joinLeftBoundaryMap_left
 #check @SerrePositivity.InfinityCategories.joinLeftBoundaryMap_mono
+#check @SerrePositivity.InfinityCategories.exists_joinDiagramFamily_extension_of_leftBoundary
+#check @SerrePositivity.InfinityCategories.exists_joinDiagramFamily_extension_of_leftBoundary_of_hasLiftingProperty

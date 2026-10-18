@@ -3199,5 +3199,30 @@ lemma joinLeftBoundaryMap_left {A B : SSet.{u}} (i : A ⟶ B) (K : SSet.{u}) :
 instance joinLeftBoundaryMap_mono {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (K : SSet.{u}) :
     Mono (joinLeftBoundaryMap i K)
 
+lemma exists_joinDiagramFamily_extension_of_leftBoundary
+    {E F A B X : SSet.{u}} [Quasicategory X]
+    (e : E ⟶ F) [Mono e] (he : IsPrecompositionEquivalence e)
+    (i : A ⟶ B) [Mono i] (K : SSet.{u})
+    (u : E ⟶ (ihom (join B K)).obj X)
+    (v : F ⟶ (ihom (join A K)).obj X) (w : F ⟶ (ihom B).obj X)
+    (hv : e ≫ v = u ≫ (pre (joinMap i (𝟙 K))).app X)
+    (hw : e ≫ w = u ≫ (pre (joinInl B K)).app X)
+    (hvw : v ≫ (pre (joinInl A K)).app X = w ≫ (pre i).app X) :
+    ∃ U : F ⟶ (ihom (join B K)).obj X,
+      e ≫ U = u ∧ U ≫ (pre (joinMap i (𝟙 K))).app X = v ∧
+        U ≫ (pre (joinInl B K)).app X = w
+
+lemma exists_joinDiagramFamily_extension_of_leftBoundary_of_hasLiftingProperty
+    {E F A B X : SSet.{u}} (e : E ⟶ F) (i : A ⟶ B) (K : SSet.{u})
+    [HasLiftingProperty e ((pre (joinLeftBoundaryMap i K)).app X)]
+    (u : E ⟶ (ihom (join B K)).obj X)
+    (v : F ⟶ (ihom (join A K)).obj X) (w : F ⟶ (ihom B).obj X)
+    (hv : e ≫ v = u ≫ (pre (joinMap i (𝟙 K))).app X)
+    (hw : e ≫ w = u ≫ (pre (joinInl B K)).app X)
+    (hvw : v ≫ (pre (joinInl A K)).app X = w ≫ (pre i).app X) :
+    ∃ U : F ⟶ (ihom (join B K)).obj X,
+      e ≫ U = u ∧ U ≫ (pre (joinMap i (𝟙 K))).app X = v ∧
+        U ≫ (pre (joinInl B K)).app X = w
+
 end SerrePositivity.InfinityCategories
 ```

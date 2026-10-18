@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointComparison
+public import SerrePositivity.InfinityCategories.Core.JoinTensor
+public import Mathlib.CategoryTheory.Adhesive.Basic
 public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 
 /-!
