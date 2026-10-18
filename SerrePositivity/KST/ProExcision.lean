@@ -113,3 +113,7 @@ public import SerrePositivity.KST.ProExcision.ShuffleInsert
 public import SerrePositivity.KST.ProExcision.ShufflePureFace
 public import SerrePositivity.KST.ProExcision.ShuffleEndFace
 public import SerrePositivity.KST.ProExcision.ShuffleInsertSign
+public import SerrePositivity.KST.ProExcision.ShuffleDelete
+public import SerrePositivity.KST.ProExcision.ShuffleRank
+public import SerrePositivity.KST.ProExcision.ShuffleHorizontalFaceIndex
+public import SerrePositivity.KST.ProExcision.ShuffleTranspose

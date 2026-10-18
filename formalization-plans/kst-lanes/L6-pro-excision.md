@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと722宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと751宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -82,6 +82,7 @@
 - shuffle の混合面：`swapSteps` の二重適用は恒等。間の頂点を削除した第一・第二写像は交換前後で一致し、`shuffleSwapMixedFace_map` が実テンソル写像の一致を与える。水平・垂直から垂直・水平への交換で逆転数が1増えることを前半ステップ数の和で証明し、`shuffleSwapMixedFace_cancel` で二つの実混合境界項の相殺まで検証。同種ステップの面と端点は下記で検証済み。全有限和への統合は未完。
 - shuffle の一ステップ挿入：`insertHorizontal` と `insertVertical` は実際の水平集合の濃度を保つ構成。挿入を飛ばす頂点包含に沿う第一・第二座標の増分を検証。各因子の通常境界への対応を続行する。
 - shuffle の同種ステップと端点の面：`insertHorizontal_left_face`・`insertVertical_right_face` は内部の同種ステップの面を各因子の面へ同定。先頭・末尾も第一・第二因子ごとの実単体写像の等式を検証。`insertHorizontal_inversions`・`insertVertical_inversions` は前半垂直数・後半水平数による増分を計算し、`insertHorizontal_face_sign`・`insertVertical_face_sign` は通常境界の符号を同定。残る鎖写像性の作業は境界添字の分類と全有限和の組み立て。
+- shuffle の境界添字：`removeHorizontal`・`removeVertical` と挿入の両逆を検証し、位置つき挿入の実同値を構成。`rank_eq_left` は水平ステップの順位と第一座標を同定。`horizontalFacePosition`・`horizontalFaceVertex` は各第一因子の面を実挿入に送り、`horizontalFace_left`・`horizontalFace_right` が面の実写像を同定。補集合による二因子交換で `verticalFace_left`・`verticalFace_right` も検証。境界添字全体の分類と全和への統合は未完。
 - L6c の残作業：採用済み μ 版 A.5 の shuffle の鎖写像性と AW/shuffle の標準ホモトピー、正規化した鎖ホモトピーの単体的区間への復元、μ と対角への移送。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
@@ -157,6 +158,10 @@
 | ShuffleIndex.insertHorizontal_first_left_face / insertHorizontal_last_left_face / insertVertical_first_right_face / insertVertical_last_right_face | ShuffleEndFace.lean | 検証済み | 先頭・末尾の各因子の実面写像の同定 |
 | ShuffleIndex.insertHorizontal_inversions / insertVertical_inversions | ShuffleInsertSign.lean | 検証済み | 前半垂直数・後半水平数による逆転数の増分 |
 | ShuffleIndex.insertHorizontal_face_sign / insertVertical_face_sign | ShuffleInsertSign.lean | 検証済み | 各因子の通常境界の符号との一致 |
+| horizontalInsertionEquiv / verticalInsertionEquiv | ShuffleDelete.lean | 検証済み | 位置つきの挿入と指定ステップを持つ shuffle の実同値 |
+| ShuffleIndex.rank_eq_left / horizontalStep_left | ShuffleRank.lean | 検証済み | 列挙した水平ステップの順位と第一座標の一致 |
+| ShuffleIndex.horizontalFace_left / horizontalFace_right | ShuffleHorizontalFaceIndex.lean | 検証済み | 第一因子の面番号から挿入への実対応と二つの面写像の一致 |
+| ShuffleIndex.verticalFace_left / verticalFace_right | ShuffleTranspose.lean | 検証済み | 第二因子の面番号から挿入への実対応と二つの面写像の一致 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
 | obstructionHalfTurnBoundingChain_boundary | CommutingImageObstruction.lean | 検証済み | [r²]−[1] の明示的な一次の境界 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |
