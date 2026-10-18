@@ -12,6 +12,34 @@ import SerrePositivity.KST.Comparison
 set_option pp.universes true
 set_option pp.explicit true
 
+
+-- BarEdge.lean
+
+#check @SerrePositivity.KST.Comparison.monoidEdgeSimplex
+#print axioms SerrePositivity.KST.Comparison.monoidEdgeSimplex
+
+#check @SerrePositivity.KST.Comparison.monoidEdgeSimplex_map
+#print axioms SerrePositivity.KST.Comparison.monoidEdgeSimplex_map
+
+#check @SerrePositivity.KST.Comparison.monoidBarEdgeAt
+#print axioms SerrePositivity.KST.Comparison.monoidBarEdgeAt
+
+#check @SerrePositivity.KST.Comparison.monoidBarEdgeMap
+#print axioms SerrePositivity.KST.Comparison.monoidBarEdgeMap
+
+#check @SerrePositivity.KST.Comparison.monoidBarEdgeAt_const
+#print axioms SerrePositivity.KST.Comparison.monoidBarEdgeAt_const
+
+#check @SerrePositivity.KST.Comparison.monoidBarEdgeMap_zero
+#print axioms SerrePositivity.KST.Comparison.monoidBarEdgeMap_zero
+
+#check @SerrePositivity.KST.Comparison.monoidBarEdgeMap_one
+#print axioms SerrePositivity.KST.Comparison.monoidBarEdgeMap_one
+
+#check @SerrePositivity.KST.Comparison.monoidBarLoopFamily
+#print axioms SerrePositivity.KST.Comparison.monoidBarLoopFamily
+
+
 -- ComponentSubcomplex.lean
 
 #check @SerrePositivity.KST.Comparison.componentSubcomplex
@@ -32,6 +60,7 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.componentClassEquiv
 #print axioms SerrePositivity.KST.Comparison.componentClassEquiv
 
+
 -- ConnectiveTruncation.lean
 
 #check @SerrePositivity.KST.Comparison.supported_nonpositive_of_connective
@@ -42,6 +71,7 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
 #print axioms SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
+
 
 -- DGAlgebra.lean
 
@@ -65,6 +95,7 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.dgAlgebraHatGLComponents
 #print axioms SerrePositivity.KST.Comparison.dgAlgebraHatGLComponents
+
 
 -- DoldKanGL.lean
 
@@ -97,6 +128,7 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.hatGLMonoidObject
 #print axioms SerrePositivity.KST.Comparison.hatGLMonoidObject
+
 
 -- GLComponents.lean
 
@@ -145,6 +177,7 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.hatGL_mk_one
 #print axioms SerrePositivity.KST.Comparison.hatGL_mk_one
 
+
 -- GammaH0.lean
 
 #check @SerrePositivity.KST.Comparison.sameUniverseLiftIso
@@ -158,6 +191,7 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.gammaEndPiZeroHomologyEquiv
 #print axioms SerrePositivity.KST.Comparison.gammaEndPiZeroHomologyEquiv
+
 
 -- GammaH0Ring.lean
 
@@ -175,6 +209,7 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.dgAlgebraComponentsH0RingEquiv
 #print axioms SerrePositivity.KST.Comparison.dgAlgebraComponentsH0RingEquiv
+
 
 -- GammaRing.lean
 
@@ -196,6 +231,7 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.gammaEndDoldKanIso
 #print axioms SerrePositivity.KST.Comparison.gammaEndDoldKanIso
 
+
 -- GammaZeroRing.lean
 
 #check @SerrePositivity.KST.Comparison.standardZeroEval_mul
@@ -203,6 +239,7 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.gammaZeroClosedRingEquiv
 #print axioms SerrePositivity.KST.Comparison.gammaZeroClosedRingEquiv
+
 
 -- GroupCompletion.lean
 
@@ -233,10 +270,12 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.hatGLBar
 #print axioms SerrePositivity.KST.Comparison.hatGLBar
 
+
 -- GrouplikeGL.lean
 
 #check @SerrePositivity.KST.Comparison.hatGL_isGrouplike
 #print axioms SerrePositivity.KST.Comparison.hatGL_isGrouplike
+
 
 -- MonoidComponents.lean
 
@@ -257,6 +296,7 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsGroup
 #print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsGroup
+
 
 -- PiZeroRing.lean
 
@@ -323,6 +363,7 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.SimplicialRing.simplexToComponents_natural
 #print axioms SerrePositivity.KST.Comparison.SimplicialRing.simplexToComponents_natural
 
+
 -- RegularBar.lean
 
 #check @SerrePositivity.KST.Comparison.RegularAction
@@ -352,6 +393,13 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.regularBar
 #print axioms SerrePositivity.KST.Comparison.regularBar
 
+#check @SerrePositivity.KST.Comparison.RegularAction.mk
+#print axioms SerrePositivity.KST.Comparison.RegularAction.mk
+
+#check @SerrePositivity.KST.Comparison.RegularAction.val
+#print axioms SerrePositivity.KST.Comparison.RegularAction.val
+
+
 -- SimplexComponents.lean
 
 #check @SerrePositivity.KST.Comparison.simplexVertex
@@ -368,9 +416,3 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.simplexClass_zero
 #print axioms SerrePositivity.KST.Comparison.simplexClass_zero
-
-#check @SerrePositivity.KST.Comparison.RegularAction.mk
-#print axioms SerrePositivity.KST.Comparison.RegularAction.mk
-
-#check @SerrePositivity.KST.Comparison.RegularAction.val
-#print axioms SerrePositivity.KST.Comparison.RegularAction.val
