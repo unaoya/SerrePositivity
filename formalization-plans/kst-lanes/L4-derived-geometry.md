@@ -1057,6 +1057,16 @@
 - 任意の環層についての自由分解と、具体的 H_X の準連接 Čech 完全性の適用を別の証明にする。存在・完全性・導来比較を構造体の未証明フィールドにしない。
 - 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7・§13-11。
 
+### §51 の実装の現在地
+
+- 保存検証：集約対象ビルド成功、公理監査 1784 宣言。標準3公理のみ、KTheory import なし。
+
+- 任意の環層 B 上で自由 Yoneda 加群前層・実際の自由加群層・Hom と切断の同値を構成した。
+- 各開 W での B(W) 上の表現可能自由 Čech との自然比較と追加退化を構成し、増大を含む全次数の局所完全性を証明した。
+- 基礎アーベル群の局所層化判定と、加群層から基礎層への忘却の余極限保存・完全性反映を用い、任意の開被覆について実際の B 加群層圏内の自由増大 Čech の全次数完全性を証明した。
+- 係数の可換性・平坦性・被覆の有限性は不要。Ext・右導来切断の環層版への移送は継続中。
+- §50 の区切りの全体ビルドは、並行作業中のルート import にある `KST/Spectra/Rationalization.olean` の欠落で失敗した。K-L4 の import 閉包には Spectra はなく、集約対象ビルドは成功しているため続行した。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1254,6 +1264,9 @@
 | `affineExt_subsingleton_of_cech` | DerivedGeometry/AffineExtCartan | 実装・対象ビルド済み |
 | `rightDerivedSections_isZero_of_ext_subsingleton` | DerivedGeometry/SectionsFromExt | 実装・対象ビルド済み |
 | `affineQuasicoherent_fixedRightDerived_isZero` | DerivedGeometry/AffineQuasicoherentExt | 実装・対象ビルド済み |
+| `ringedFreeSheafOnOpenHomEquiv`・`ringedFreeFormalPresheafEvaluationIso` | DerivedGeometry/RingedFreeYoneda | 実装・対象ビルド済み |
+| `ringed_exact_iff_toSheaf` | DerivedGeometry/RingedForgetExact | 実装・対象ビルド済み |
+| `ringedFreeSheafAugmentedCech_acyclic` | DerivedGeometry/RingedFreeCechExact | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
