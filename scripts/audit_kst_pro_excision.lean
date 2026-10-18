@@ -2100,3 +2100,27 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.ShuffleIndex.verticalFace_right
 #print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.verticalFace_right
+
+#check @SerrePositivity.KST.ProExcision.MixedShuffleIndex
+#print axioms SerrePositivity.KST.ProExcision.MixedShuffleIndex
+
+#check @SerrePositivity.KST.ProExcision.MixedShuffleIndex.swap
+#print axioms SerrePositivity.KST.ProExcision.MixedShuffleIndex.swap
+
+#check @SerrePositivity.KST.ProExcision.MixedShuffleIndex.swap_swap
+#print axioms SerrePositivity.KST.ProExcision.MixedShuffleIndex.swap_swap
+
+#check @SerrePositivity.KST.ProExcision.MixedShuffleIndex.swap_ne_self
+#print axioms SerrePositivity.KST.ProExcision.MixedShuffleIndex.swap_ne_self
+
+#check @SerrePositivity.KST.ProExcision.shuffleMixedWeight
+#print axioms SerrePositivity.KST.ProExcision.shuffleMixedWeight
+
+#check @SerrePositivity.KST.ProExcision.shuffleMixedWeight_cancel_of_left
+#print axioms SerrePositivity.KST.ProExcision.shuffleMixedWeight_cancel_of_left
+
+#check @SerrePositivity.KST.ProExcision.shuffleMixedWeight_cancel
+#print axioms SerrePositivity.KST.ProExcision.shuffleMixedWeight_cancel
+
+#check @SerrePositivity.KST.ProExcision.shuffleMixed_sum_zero
+#print axioms SerrePositivity.KST.ProExcision.shuffleMixed_sum_zero
