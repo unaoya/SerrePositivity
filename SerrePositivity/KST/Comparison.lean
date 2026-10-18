@@ -107,6 +107,8 @@ public import SerrePositivity.KST.Comparison.FatSkeletonGeneralComparison
 public import SerrePositivity.KST.Comparison.FatRealizationHomotopyPullback
 public import SerrePositivity.KST.Comparison.FatRealizationInvariance
 
+public import SerrePositivity.KST.Comparison.FreeStandardContraction
+
 /-!
 # K-L2：比較定理の入口
 

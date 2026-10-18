@@ -647,6 +647,21 @@ fat realization 全体でも anodyne 局所化同型を誘導する。
 具体的な余錐の比較を、実際の fat realization の包含の余錐へ適用する。
 これは対角への自然な比較の可逆性とは別の主張である。
 
+### fat realization と対角の自然比較の可逆性の補助模型
+
+確認する文言：単体集合 X の各 Xₙ を定数単体集合とした二重単体集合の fat realization を D(X) とする。
+各次数の標準形は全射 [d]→[k] と Xₖ の元の組であり、D(X)→X はその全射で元を引き戻す写像である。
+D(Δ[n]) は頂点 0 を先頭に追加する余分な退化により可縮である。
+証明方針：既存の fat realization と標準形を使って D と自然な augmentation を実際に構成する。
+標準単体上では標準形の全射と頂点写像の双方に初期頂点を追加する操作を定義し、
+面・退化との等式を証明して ExtraDegeneracyContraction に適用する。
+D の余極限・単射保存を独立に示し、CellularNaturalComparison により任意の X の augmentation を局所化同型にする。
+二重単体集合には各列で D を適用し、標準形による対角との同型と既存の対角の行ごとの局所化同型保存へ移す。
+これは Segal 1974 Proposition 1.6 の fat realization と通常の realization の比較のための、
+自由な退化の補助模型による証明経路である。可縮性や最終的な比較の可逆性を入力として仮定しない。
+この補助模型、全次数の面・退化と整合する実際の余分な退化、標準単体上の augmentation の局所化可逆性は証明済み。
+一般の単体集合への移送と二重単体集合の対角への比較は未証明である。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -822,6 +837,10 @@ mapping cylinder の実対象、底の anodyne な包含、底への収縮の局
 上側二つの図式の遷移が単射な順序余極限の四角形のホモトピー引き戻し保存を証明した。
 各行を含む骨格の余終な尾と定数図式に適用し、各行から fat realization 全体への比較を証明した。
 各行の局所化同型に対する fat realization 全体の不変性も証明した。
+自由な退化の補助関手 D と augmentation を構成し、各次数の全射の標準形による計算と単射保存を証明した。
+頂点の先頭追加の全射・単射・面・退化との整合、像分解の正規化との交換を証明した。
+D(Δ[n]) の実際の余分な退化を構成し、標準単体上の augmentation の局所化可逆性を証明した。
+D の余極限保存と任意の単体集合への augmentation の比較は未証明。
 対角への比較の局所化可逆性は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
@@ -830,8 +849,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 988 宣言の型と公理を確認した。
-さらに名前空間全体の 1805 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 1026 宣言の型と公理を確認した。
+さらに名前空間全体の 1858 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -1042,6 +1061,12 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `fatSkeletonTailCoconeIsColimit`、`fatSkeletonTailRow_map` | 実装済み | 各行を含む骨格の余終な尾の普遍性と自然性 |
 | `fatRealizationInclusion_homotopyPullback` | 実装済み | 各行から fat realization 全体への比較 |
 | `fatRealizationMap_localized_isIso` | 実装済み | 各行の局所化同型に対する全体の不変性 |
+| `freeDegeneracies`、`freeDegeneraciesAugmentation` | 実装済み | 自由な退化の実際の補助模型と自然な augmentation |
+| `freeDegeneraciesAugmentation_realize`、`freeDegeneracies_preservesMonomorphisms` | 実装済み | 標準形での評価と単射保存 |
+| `simplexPrepend`、`simplexConeZero` | 実装済み | 全射と頂点写像への零点の追加 |
+| `freeStandardPrepend_normalize`、`freeStandardPrepend_naturality` | 実装済み | 零点追加と像分解・単体作用との交換 |
+| `freeStandardExtraDegeneracy` | 実装済み | 全ての面・退化の恒等式を満たす実際の余分な退化 |
+| `freeDegeneraciesAugmentation_standard_localized_isIso` | 実装済み | 標準単体上の augmentation の局所化可逆性 |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

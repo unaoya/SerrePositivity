@@ -95,6 +95,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1715,6 +1716,99 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.coproductMap_rlp
 
 
+-- FreeDegeneracies.lean
+
+#check @SerrePositivity.KST.Comparison.discreteRowsFunctor
+#print axioms SerrePositivity.KST.Comparison.discreteRowsFunctor
+
+#check @SerrePositivity.KST.Comparison.discreteRowsDiagonalIso
+#print axioms SerrePositivity.KST.Comparison.discreteRowsDiagonalIso
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracies
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracies
+
+#check @SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation
+#print axioms SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation
+
+#check @SerrePositivity.KST.Comparison.freeDegeneraciesNormalForm
+#print axioms SerrePositivity.KST.Comparison.freeDegeneraciesNormalForm
+
+
+-- FreeDegeneraciesCalculations.lean
+
+#check @SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation_realize
+#print axioms SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation_realize
+
+#check @SerrePositivity.KST.Comparison.freeDegeneraciesNormalForm_action
+#print axioms SerrePositivity.KST.Comparison.freeDegeneraciesNormalForm_action
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracies_preservesMonomorphisms
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracies_preservesMonomorphisms
+
+
+-- FreeStandardContraction.lean
+
+#check @SerrePositivity.KST.Comparison.freeStandardAugmented
+#print axioms SerrePositivity.KST.Comparison.freeStandardAugmented
+
+#check @SerrePositivity.KST.Comparison.freeStandardExtraDegeneracy
+#print axioms SerrePositivity.KST.Comparison.freeStandardExtraDegeneracy
+
+#check @SerrePositivity.KST.Comparison.freeStandardAugmented_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.freeStandardAugmented_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation_standard_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation_standard_localized_isIso
+
+
+-- FreeStandardNormalization.lean
+
+#check @SerrePositivity.KST.Comparison.simplexConeZero_simplexMap
+#print axioms SerrePositivity.KST.Comparison.simplexConeZero_simplexMap
+
+#check @SerrePositivity.KST.Comparison.freeStandardPrepend_normalize
+#print axioms SerrePositivity.KST.Comparison.freeStandardPrepend_normalize
+
+
+-- FreeStandardPrepend.lean
+
+#check @SerrePositivity.KST.Comparison.freeStandardPrependNormalForm
+#print axioms SerrePositivity.KST.Comparison.freeStandardPrependNormalForm
+
+#check @SerrePositivity.KST.Comparison.freeStandardPrepend
+#print axioms SerrePositivity.KST.Comparison.freeStandardPrepend
+
+
+-- FreeStandardPrependAction.lean
+
+#check @SerrePositivity.KST.Comparison.freeStandardPrependNormalForm_action
+#print axioms SerrePositivity.KST.Comparison.freeStandardPrependNormalForm_action
+
+
+-- FreeStandardPrependFaces.lean
+
+#check @SerrePositivity.KST.Comparison.freeStandardPrependNormalForm_δ_zero
+#print axioms SerrePositivity.KST.Comparison.freeStandardPrependNormalForm_δ_zero
+
+#check @SerrePositivity.KST.Comparison.freeStandardPrepend_δ_zero
+#print axioms SerrePositivity.KST.Comparison.freeStandardPrepend_δ_zero
+
+#check @SerrePositivity.KST.Comparison.freeStandardPrepend_naturality
+#print axioms SerrePositivity.KST.Comparison.freeStandardPrepend_naturality
+
+
+-- FreeStandardZeroVertex.lean
+
+#check @SerrePositivity.KST.Comparison.freeStandardZeroNormalForm
+#print axioms SerrePositivity.KST.Comparison.freeStandardZeroNormalForm
+
+#check @SerrePositivity.KST.Comparison.freeStandardZeroVertex
+#print axioms SerrePositivity.KST.Comparison.freeStandardZeroVertex
+
+#check @SerrePositivity.KST.Comparison.freeStandardPrependNormalForm_δ_one
+#print axioms SerrePositivity.KST.Comparison.freeStandardPrependNormalForm_δ_one
+
+
 -- FunctorHomotopyPullbacks.lean
 
 #check @SerrePositivity.KST.Comparison.isHomotopyPullback_map_of_preserves_factorizations
@@ -2966,6 +3060,24 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.simplexClass_zero
 
 
+-- SimplexConeVertex.lean
+
+#check @SerrePositivity.KST.Comparison.simplexConeZero
+#print axioms SerrePositivity.KST.Comparison.simplexConeZero
+
+#check @SerrePositivity.KST.Comparison.simplexConeZero_zero
+#print axioms SerrePositivity.KST.Comparison.simplexConeZero_zero
+
+#check @SerrePositivity.KST.Comparison.simplexConeZero_succ
+#print axioms SerrePositivity.KST.Comparison.simplexConeZero_succ
+
+#check @SerrePositivity.KST.Comparison.simplexConeZero_comp
+#print axioms SerrePositivity.KST.Comparison.simplexConeZero_comp
+
+#check @SerrePositivity.KST.Comparison.simplexConeZero_δ_zero
+#print axioms SerrePositivity.KST.Comparison.simplexConeZero_δ_zero
+
+
 -- SimplexContraction.lean
 
 #check @SerrePositivity.KST.Comparison.simplexContractionAt
@@ -3015,6 +3127,42 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.simplexFactorThruImage_of_epi
 #print axioms SerrePositivity.KST.Comparison.simplexFactorThruImage_of_epi
+
+
+-- SimplexPrepend.lean
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_zero
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_zero
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_succ
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_succ
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_comp
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_comp
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_id
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_id
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_epi
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_epi
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_mono
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_mono
+
+
+-- SimplexPrependRelations.lean
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_δ_zero
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_δ_zero
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_δ
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_δ
+
+#check @SerrePositivity.KST.Comparison.simplexPrepend_σ
+#print axioms SerrePositivity.KST.Comparison.simplexPrepend_σ
 
 
 -- SimplicialCoproductMono.lean
