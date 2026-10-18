@@ -39,3 +39,4 @@ public import SerrePositivity.KST.Spectra.FiberComponentNaturality
 public import SerrePositivity.KST.Spectra.FibrationComparison
 public import SerrePositivity.KST.Spectra.FiberOmegaSpectrum
 public import SerrePositivity.KST.Spectra.SpectrumFibrationSequence
+public import SerrePositivity.KST.Spectra.StageTransitionCoherence

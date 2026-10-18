@@ -105,7 +105,8 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumFiberStage,
     `SerrePositivity.KST.Spectra.SpectrumBoundary,
     `SerrePositivity.KST.Spectra.GroupExactTransfer,
-    `SerrePositivity.KST.Spectra.SpectrumFibrationSequence]
+    `SerrePositivity.KST.Spectra.SpectrumFibrationSequence,
+    `SerrePositivity.KST.Spectra.StageTransitionCoherence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
