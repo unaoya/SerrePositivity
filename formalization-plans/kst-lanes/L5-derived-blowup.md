@@ -53,7 +53,11 @@ underlying 複体が当該添字での値に一致することを証明済み。
 導来評価による局所 perfect 性、その同型不変性と射影的 dg 充満部分圏を定義済み。
 全次数自然変換の前後合成、図式の標準単位矢と左右作用の自然性を構成済み。
 局所埋め込みから遷移後の局所埋め込みへの指定の単位パラメータ `GradedNatTrans` を構成済み。
-その加群への作用、canonical な導来係数拡大の比較射と cartesian 条件は未実装。
+その加群への全次数自然な作用を実際の閉加群射として構成し、加群射に関する自然性を証明済み。
+指定の導来制限比較と、延長–制限随伴で移した canonical な導来係数拡大比較を構成済み。
+主局所化上の両比較の自然変換と、随伴で元の指定射へ戻る等式を証明済み。
+指定比較の可逆性による cartesian 条件、局所 perfect 条件との連言、
+その射影的充満 dg 候補模型と両条件の同型不変性を構成済み。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -279,6 +283,14 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `dgGradedWhiskerRight`・`dgGradedWhiskerLeft` | GradedNaturalWhiskering | パラメータ複体に関する全次数自然性を保つ dg 関手による前後合成 |
 | `diagramModuleTransitionUnit`・左右作用公式・`diagramModuleTransitionUnit_natural` | DiagramModuleTransitionUnit | 包含に対する指定の単位矢と全 Hom 作用との自然性 |
 | `finiteOverlapTransitionGradedNatTrans` | FiniteOverlapTransitionTransformation | 局所埋め込みから遷移後の埋め込みへの指定の全次数自然変換 |
+| `transitionModuleParam`・`transitionModuleMorphism`・評価公式 | TransitionModuleAction | 全次数自然変換の加群への実際の閉零作用 |
+| `transitionModuleMorphism_natural`・`transitionModuleNatTrans` | TransitionModuleNaturality | 指定作用の全加群射に関する自然性 |
+| `finiteOverlapLocalDGTransition`・`finiteOverlapCompositeEvaluationIso`・`finiteOverlapModuleComparison` | FiniteOverlapModuleComparison | 指定の単位矢から反復制限加群への canonical な比較 |
+| `finiteOverlapModuleComparisonNatTrans`・自然性 | FiniteOverlapModuleComparisonNaturality | 局所加群比較の実際の自然変換 |
+| 導来評価の自然同型・`finiteOverlapDerivedRestrictionComparison`・`finiteOverlapDerivedExtensionComparison`・随伴公式 | FiniteOverlapDerivedComparison | 指定加群比較を主局所化と導来係数拡大へ移す |
+| `finiteOverlapDerivedRestrictionNatTrans`・`finiteOverlapDerivedExtensionNatTrans`・両自然性 | FiniteOverlapDerivedNaturality | 主局所化の全射に関する canonical な比較の自然変換 |
+| `diagramCartesian`・`diagramCartesianPerfect`・`CartesianPerfectDiagramDGModel` | DiagramCartesianCondition | 指定の導来係数拡大比較の可逆性と局所 perfect 性による候補模型 |
+| cartesian・cartesian perfect 条件の同型不変性 | DiagramCartesianIsomorphism | 射影的代表への条件の移送 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -346,11 +358,12 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全1689定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1845定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は指定の全次数自然変換の図式加群への作用と、canonical な導来係数拡大の比較射。
-この指定射を使って cartesian 条件を定める。
-局所評価・局所 perfect 条件をその比較に接続する。
+指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
+全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
+次の実装単位は射影的候補模型の H⁰ 比較をこの条件へ制限することと、
+指定比較の単位・三重整合性、および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
