@@ -61,6 +61,16 @@ structure Hom (X Y : KanSequence.{u}) where
   comm : ∀ n, PointedSimplicialSet.circle.{u} ◁ app n ≫ Y.sigma n =
     X.sigma n ≫ app (n + 1)
 
+/-- 概要：Kan 列の厳密な射の合成。
+方針：各段の射を合成し、二つの構造射の可換式をつなぐ。
+規約：段ごとの通常の合成。
+使われ方：BF 1978 §2。置換した fiber から全空間への比較。 -/
+def Hom.comp {X Y Z : KanSequence.{u}} (f : Hom X Y) (g : Hom Y Z) : Hom X Z where
+  app n := f.app n ≫ g.app n
+  comm n := by
+    rw [whiskerLeft_comp, Category.assoc, g.comm n, ← Category.assoc,
+      f.comm n, Category.assoc]
+
 /-- 概要：単射な構造射と Ω 条件を持つ Kan 列を本レーンの Ω スペクトルへ束ねる。
 方針：構成済みの各データと証明をそのまま移す。
 規約：この束ね直し自体は新しい条件を証明しない。

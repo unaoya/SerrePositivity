@@ -37,3 +37,4 @@ public import SerrePositivity.KST.Spectra.StageComparisonNaturality
 public import SerrePositivity.KST.Spectra.KanSequenceReplacement
 public import SerrePositivity.KST.Spectra.FiberComponentNaturality
 public import SerrePositivity.KST.Spectra.FibrationComparison
+public import SerrePositivity.KST.Spectra.FiberOmegaSpectrum

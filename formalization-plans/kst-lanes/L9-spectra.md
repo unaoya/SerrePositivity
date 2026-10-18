@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c 進行中。
 Sp、整数次数群と自然な任意段表示、Kan Ω 列の単射置換まで検証済み。
-対象ビルド・86 モジュール 1494 宣言の公理監査成功。
+対象ビルド・89 モジュール 1523 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1022,3 +1022,39 @@ fiber の零次数比較の単射性では、第一の原像の頂点を参照�
 私有宣言を含む 86 モジュール 1494 宣言で標準三公理のみ。
 L9c は未完了。次は loop と fiber の比較を用いて fiber 列の Ω 条件を証明する。
 整数次数長完全列と反復比較の隣接構造射との添字正規化も残る。
+
+## 38. L9c の fiber の Ω 条件と BF 対象
+
+点つき fiber の既存の普遍性から kernel fork の極限性を証明した。
+円からの点つき内部 Hom は右随伴なので、この kernel を保存する。
+これにより fiber の loop と loop した射の fiber の点つき同型を構成した。
+この同型は全空間への包含と可換である。
+また、基点包含とホーンの pushout product の充填から、点つき Hom の後合成が
+Kan fibration を保つことを証明した。
+各段が Kan fibration である Ω 列の射について、fiber の随伴構造射を上の同型へ合成した。
+全空間と底の随伴構造射の π_* 同型性を、fiber の全基点比較定理へ適用した。
+その合成は π_* 同型であり、厳密同型を打ち消して fiber 自身の Ω 条件を得た。
+fiber の Kan 列へ単射置換を施し、承認済みの BF 対象として fiber を定義した。
+全空間への包含は厳密なスペクトルの射で、各段で元の射との合成が零である。
+置換した fiber の各段から実際の fiber への比較射は全基点 π_* 同型である。
+現時点の fiber 構成は各段が Kan fibration である射に対して与える。
+任意のスペクトルの射をその形へ置換する工程と、整数次数長完全列は引き続き扱う。
+Sp の ∞ 極限という主張は含めず、γ3 後に扱う。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `pointedFiberKernelIsLimit` | 点つき fiber の kernel としての普遍性 |
+| `loopPointedFiberIso` / `.loopPointedFiberIso_hom_ι` | loop と fiber の厳密な同型と包含との可換性 |
+| `PointedMapping.post_hasLiftingProperty` | 基点とパラメータの pushout product による後合成の充填 |
+| `PointedMapping.post_fibration` | 後合成による Kan fibration の保存 |
+| `KanSequence.Hom.fiber_omegaCondition` | fiber の全基点 Ω 条件 |
+| `KanSequence.Hom.fiberOmegaSpectrum` | fiber の Kan 列から BF 対象への置換 |
+| `OmegaSpectrum.fiber` | 段ごとの Kan fibration の fiber 対象 |
+| `OmegaSpectrum.fiberLevelProjection_piIsomorphism` | 実際の段の fiber への全基点 π_* 同型 |
+| `OmegaSpectrum.fiberInclusion` / `.fiberInclusion_comp_app` | 厳密な包含と各段の零合成 |
+
+参照：Goerss–Jardine I §§7–8、Kerodon §3.1.3、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 1863 jobs 成功。
+私有宣言を含む 89 モジュール 1523 宣言で標準三公理のみ。
+L9c は未完了。整数次数長完全列、任意の射の段ごとの fibration への置換、
+反復比較の隣接構造射との添字正規化が残る。

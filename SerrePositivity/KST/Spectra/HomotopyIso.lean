@@ -143,4 +143,12 @@ theorem KanHomotopy.equivOfPiIsomorphism_point (n : ℕ) (f : X ⟶ Y)
   subst y
   exact map_point n f rfl
 
+/-- 概要：単体集合の同型の順射は全基点 π_* 同型。
+方針：任意の源の基点で構成済みのホモトピー類の同値を使う。
+規約：零次数も含む。
+使われ方：Goerss–Jardine I §7、BF 1978 §2。loop と fiber の厳密同型の移送。 -/
+theorem KanPiIsomorphism.of_iso (e : X ≅ Y) : KanPiIsomorphism e.hom := by
+  intro x n
+  exact (KanHomotopy.equivOfIso n e rfl).bijective
+
 end SerrePositivity.KST.Spectra
