@@ -81,6 +81,33 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout
 #print axioms SerrePositivity.InfinityCategories.isStable_of_finite_limits_colimits
 
+#print axioms SerrePositivity.InfinityCategories.edgeCosliceVertex
+#print axioms SerrePositivity.InfinityCategories.edgeCosliceVertex_projection
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.homMk_eq
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.isInitialHo₂
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.isInitialHo
+#print axioms SerrePositivity.InfinityCategories.IsZeroVertex.isZeroHo
+#print axioms SerrePositivity.InfinityCategories.hasZeroObject_ho
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.exists_cosliceLift
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_of_isInitialHo
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_iff_of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.IsZeroVertex.of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.IsColimitCone.of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.squareBottomEdge_source
+#print axioms SerrePositivity.InfinityCategories.squareBottomEdge_target
+#print axioms SerrePositivity.InfinityCategories.squareRightEdge_source
+#print axioms SerrePositivity.InfinityCategories.squareRightEdge_target
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare
+#print axioms SerrePositivity.InfinityCategories.LoopSquare
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.vertex
+#print axioms SerrePositivity.InfinityCategories.LoopSquare.vertex
+#print axioms SerrePositivity.InfinityCategories.chosenSuspensionSquare
+#print axioms SerrePositivity.InfinityCategories.chosenLoopSquare
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.toLoopSquare
+#print axioms SerrePositivity.InfinityCategories.LoopSquare.toSuspensionSquare
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -89,7 +116,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PushoutShape,
     `SerrePositivity.InfinityCategories.Stable.Pointed,
     `SerrePositivity.InfinityCategories.Stable.FiniteShapes,
-    `SerrePositivity.InfinityCategories.Stable.Definition]
+    `SerrePositivity.InfinityCategories.Stable.Definition,
+    `SerrePositivity.InfinityCategories.Stable.ZeroHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.InitialTransport,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSquare]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

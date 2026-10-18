@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Definition
+public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
 
 /-! # 安定 ∞ 圏の基盤
 

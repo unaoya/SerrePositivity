@@ -12,7 +12,11 @@ span の二辺が正方形の下辺・左辺に写ることも証明済み。
 S2 は完了。HA 1.1.1.9 の三条件を `IsStable` に定義し、有限極限・有限余極限と
 全四角形の引き戻し／押し出しの一致から安定性を証明した（HA 1.1.3.4 の十分な向き）。
 外側ホーンの極限／余極限から、指定した辺を持つ fiber/cofiber 四角形を直接構成している。
-安定性から全有限極限・余極限を導く逆向きは未証明。ΣΩ の自己同値・三角構造・D7 も未完了。
+S3 の準備として、始頂点が h C の始対象となること、零頂点が h C の零対象となること、
+始対象・余極限錐の h(sliceUnder) の同型による不変性を直接証明した。
+二つの零角を持つ suspension/loop 四角形は全頂点で構成でき、安定性によって同じ四角形が
+互いの普遍四角形となる。これは関手性・選択の自然な比較・自己同値の完成ではない。
+安定性から全有限極限・余極限を導く逆向き、S3 の関手性と自己同値、三角構造・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
 引用・追加公理・sorry を使わず、各工程を対象・集約ビルドと公理監査の後に保存する。
@@ -70,6 +74,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | fiber/cofiber の存在 | `exists_fiberSquare_of_cospan_limits`、`exists_cofiberSquare_of_span_colimits`（零頂点と該当ホーンの極限／余極限のみ） | 完了 |
 | 安定性 | `IsStable X : Prop`（`[Quasicategory X]`。零対象、全辺の fiber/cofiber、零角の列の同値） | 完了 |
 | 有限極限による判定 | `isStable_of_finite_limits_colimits`（Quasicategory、HasZeroVertex、HasFiniteLimits、HasFiniteColimits、全四角形の引き戻し iff 押し出し） | 完了 |
-| S3〜S7 | ΣΩ・三角構造・完全関手・D7 | 未完了 |
+| h C の零対象 | `IsInitialVertex.isInitialHo`、`IsZeroVertex.isZeroHo`、`hasZeroObject_ho`（Quasicategory と該当する頂点条件） | 完了 |
+| 余極限の同型不変性 | `IsInitialVertex.of_vertexIso`、`IsColimitCone.of_vertexIso`（Quasicategory、同じ図式の coslice 内の同型） | 完了 |
+| ΣΩ の四角形 | `chosenSuspensionSquare x`、`chosenLoopSquare x`（Quasicategory、IsStable）、`SuspensionSquare.toLoopSquare` と双対 | 完了（対象と四角形のみ） |
+| S3〜S7 | ΣΩ の関手性・自然な選択比較・自己同値、三角構造・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
