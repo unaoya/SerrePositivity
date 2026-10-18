@@ -471,3 +471,55 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms bousfieldKanWeight_cospan_inr_anodyne
 #check @bousfieldKanWeight_cospan_inr_relativeCone_anodyne
 #print axioms bousfieldKanWeight_cospan_inr_relativeCone_anodyne
+#check @initialNerveTag
+#print axioms initialNerveTag
+#check @initialNerveTag_le
+#print axioms initialNerveTag_le
+#check @initialNerveChainTag
+#print axioms initialNerveChainTag
+#check @initialNerveCut
+#print axioms initialNerveCut
+#check @initialNerveCut_le
+#print axioms initialNerveCut_le
+#check @initialNerve_lt_cut_iff
+#print axioms initialNerve_lt_cut_iff
+#check @initialNerveCut_precomp
+#print axioms initialNerveCut_precomp
+#check @initialNerveCut_map
+#print axioms initialNerveCut_map
+#check @initialNerveCut_incl
+#print axioms initialNerveCut_incl
+#check @initialNerveCut_constStar
+#print axioms initialNerveCut_constStar
+#check @initialNerveOldObj
+#print axioms initialNerveOldObj
+#check @initialNerveOldObj_of
+#print axioms initialNerveOldObj_of
+#check @initialNerveOldMap
+#print axioms initialNerveOldMap
+#check @initialNerveOldMap_id
+#print axioms initialNerveOldMap_id
+#check @initialNerveOldMap_comp
+#print axioms initialNerveOldMap_comp
+#check @initialNerveOldMap_of
+#print axioms initialNerveOldMap_of
+#check @initialNerveOldFunctor
+#print axioms initialNerveOldFunctor
+#check @initialNerveOldFunctor_obj
+#print axioms initialNerveOldFunctor_obj
+#check @initialNerveOldFunctor_map
+#print axioms initialNerveOldFunctor_map
+#check @initialNerveTailIndex
+#print axioms initialNerveTailIndex
+#check @initialNerveTail_nonstar
+#print axioms initialNerveTail_nonstar
+#check @initialNerveTail
+#print axioms initialNerveTail
+#check @initialNerveTail_obj
+#print axioms initialNerveTail_obj
+#check @initialNerveTail_map
+#print axioms initialNerveTail_map
+#check @initialNerveJoinSimplex
+#print axioms initialNerveJoinSimplex
+#check @initialNerveJoinSimplex_cut
+#print axioms initialNerveJoinSimplex_cut

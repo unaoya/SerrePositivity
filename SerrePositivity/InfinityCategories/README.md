@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開233宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開259宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2644,6 +2644,56 @@ bousfieldKanWeight_cospan_inr_relativeCone_anodyne :
 この相対錐の単体集合と `cospanRightCornerMap` で作った元の重み W → V の相対境界との
 始域・終域・境界射の同型による同定は未完了。
 したがって一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の残りの ∞ 極限は未完了。
+
+### WithInitial の nerve の切断と元の圏の部分（次数ごとの構成）
+
+以下では `C : Type u` と `[SmallCategory C]` を前提とする。関手の標的 D も同じ宇宙の小圏とする。
+
+`InitialNerveCut.lean` は新しい始対象を 0、元の対象を 1 に送るタグを定義する。
+WithInitial の射はタグを増加させるので、射列 F のタグは単調写像になる。
+その零の初区間の逆像に既存の `Join.pullCut` を使い、新しい始対象の頂点数を定める。
+
+```lean
+initialNerveCut {n : ℕ} (F : ComposableArrows (WithInitial C) n) : ℕ
+initialNerveCut_le F : initialNerveCut F ≤ n + 1
+initialNerve_lt_cut_iff F (i : Fin (n + 1)) :
+  i.val < initialNerveCut F ↔ F.obj i = WithInitial.star
+initialNerveCut_precomp {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (F : (nerve (WithInitial C)) _⦋n⦌) :
+  initialNerveCut ((nerve (WithInitial C)).map α.op F) =
+    Join.pullCut α.toOrderHom (initialNerveCut F)
+```
+
+`initialNerveCut_map` は元の圏の任意の関手の WithInitial への拡張が切断を保つ式。
+元の圏の包含後の射列の切断は零、新しい始対象で一定の射列の切断は n+1 である。
+対象の等号判定や元の圏の非空性は使わない。
+
+`InitialNerveOldPart.lean` は新しい始対象でない対象と、それらの間の射を元の圏へ戻す。
+`initialNerveOldMap_id` と `initialNerveOldMap_comp` により、この操作は関手になる。
+
+```lean
+initialNerveOldFunctor {J : Type v} [Category.{w} J]
+    (F : J ⥤ WithInitial C) (h : ∀ i, F.obj i ≠ .star) : J ⥤ C
+```
+
+対象と射の包含後の等式は `initialNerveOldFunctor_obj` と `initialNerveOldFunctor_map`。
+端点の等式による移送を eqToHom で明示する。
+
+`InitialNerveTail.lean` は切断以後の区間を制限し、元の圏の後半の射列を構成する。
+
+```lean
+initialNerveTail {n : ℕ} (F : ComposableArrows (WithInitial C) n)
+    (h : initialNerveCut F ≤ n) : ComposableArrows C (n - initialNerveCut F)
+initialNerveJoinSimplex {n : ℕ} (F : ComposableArrows (WithInitial C) n) :
+    Join.Simplex (Δ[0] : SSet.{u}) (nerve C) n
+```
+
+後半が非空なら `initialNerveTail`、空なら補った空単体を使い、元の圏の対象を選ばない。
+`initialNerveTail_obj`・`initialNerveTail_map` は復元した後半の対象と射を元の射列と同定し、
+`initialNerveJoinSimplex_cut` は構成したデータの切断を元の切断と同定する。
+これらは次数ごとの構成である。全データの単体的自然性、既存の join から nerve への
+比較射との逆関係、相対錐と WithInitial の標準境界の同型による同定は未完了。
+一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の適用も継続中。
 
 ### 𝒮 の空積（実装済み）
 
