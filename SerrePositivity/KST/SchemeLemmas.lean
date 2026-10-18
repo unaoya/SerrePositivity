@@ -284,3 +284,5 @@ public import SerrePositivity.KST.SchemeLemmas.TwoStageFreeOpenPullbacks
 public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraFreeOpenBlowup
 public import SerrePositivity.KST.SchemeLemmas.ModuleMittagLeffler
 public import SerrePositivity.KST.SchemeLemmas.FiniteTypeCountableGeneration
+public import SerrePositivity.KST.SchemeLemmas.NoetherianCountableGeneration
+public import SerrePositivity.KST.SchemeLemmas.CountableFreePresentation
