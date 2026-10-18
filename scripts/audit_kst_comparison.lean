@@ -93,6 +93,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1416,10 +1417,22 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.fatSkeletonCoconeIsColimit
 
 
+-- FatSkeletonGeneralComparison.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonRow_general_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonRow_general_homotopyPullback
+
+
 -- FatSkeletonHomotopyPullback.lean
 
 #check @SerrePositivity.KST.Comparison.fatSkeletonRow_homotopyPullback
 #print axioms SerrePositivity.KST.Comparison.fatSkeletonRow_homotopyPullback
+
+
+-- FatSkeletonInvariance.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeletonMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.fatSkeletonMap_localized_isIso
 
 
 -- FatSkeletonMaps.lean

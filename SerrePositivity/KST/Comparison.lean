@@ -102,6 +102,8 @@ public import SerrePositivity.KST.Comparison.FatSkeletonZero
 
 public import SerrePositivity.KST.Comparison.FatSkeletonHomotopyPullback
 
+public import SerrePositivity.KST.Comparison.FatSkeletonGeneralComparison
+
 /-!
 # K-L2：比較定理の入口
 
