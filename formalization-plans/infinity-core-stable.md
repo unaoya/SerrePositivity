@@ -1,6 +1,6 @@
 # α-S：安定 ∞ 圏と D(S) の安定性
 
-作成日：2026-10-18。状態：S1〜S3 完了。S4〜S7 未完了。
+作成日：2026-10-18。状態：S1〜S3 完了。S4 実装中、S5〜S7 未完了。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
 担当は旧 α の A4・A5 と D7。実施経緯・検証結果は各保存単位のコミットメッセージに記す。
 
@@ -46,7 +46,9 @@ fiber の始対象から相対始点境界充填を得た。さらに最後の�
 その厳密な切断による全単体に自然な余極限の選択と、二つの選択の関手同型も構成した。
 suspension 側ではこれを span の族へ適用済み。二本の零終点の辺の始点評価の
 trivial Kan fibration 性を証明し、span を貼って普遍余錐を充填した。
-loop 側の双対的な適用も完了した。次は S4 の貼り合わせと三角構造へ進む。
+loop 側の双対的な適用も完了した。S4 に着手し、`Δ[2] × Δ[1]` の左・右・外側の
+四角形、共有辺、上下の二単体との一致を構成した。貼り合わせの普遍性は未完了で、
+部分長方形上の slice/coslice の制限の比較が残る。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
@@ -72,7 +74,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S1 | `Stable/Pointed.lean` | 零対象、coslice の始対象としての IsColimitCone、IsPushoutSquare、fiber/cofiber 四角形 | 完了 |
 | S2 | `Stable/Definition.lean` | HA 1.1.1.9 の安定性、HA 1.1.3.4 の必要な向き | 完了 |
 | S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 完了 |
-| S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 未着手 |
+| S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 実装中（形状のみ完了） |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 未着手 |
 | S6 | `Stable/ExactFunctor.lean` | 完全関手、h の三角関手、完全関手間の自然変換 | 未着手 |
 | S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 未着手 |
@@ -123,6 +125,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | loop の終点評価 | `loopDiagramEvaluation_target_trivialKanFibration`、`loopDiagramTargetEquivalence`（Quasicategory、IsStable） | 完了 |
 | h C の Ω と選択の比較 | `loopFunctor`、`loopDiagramFamilyIso`、`loopFunctorChoiceIso`、`LoopSquare.loopFunctorObjIso`（Quasicategory、IsStable） | 完了 |
 | ΣΩ の逆性 | `suspensionEquivalence`、`suspensionEquivalence_functor`、`suspensionEquivalence_inverse`、`suspensionLoopUnitIso`、`loopSuspensionCounitIso`（Quasicategory、IsStable） | 完了 |
+| 貼り合わせの形状 | `pastingSquare`、`pastingBottomTriangle`、`pastingTopTriangle`、`pastingSquare_sharedEdge`、外側二辺・上下辺の一致（任意の `Δ[2] × Δ[1] → X`、X に追加の仮定なし） | 完了（普遍性の貼り合わせは未完了） |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

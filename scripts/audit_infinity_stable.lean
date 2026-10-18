@@ -334,6 +334,15 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.suspensionLoopUnitIso
 #print axioms SerrePositivity.InfinityCategories.loopSuspensionCounitIso
 
+#print axioms SerrePositivity.InfinityCategories.pastingSquare
+#print axioms SerrePositivity.InfinityCategories.pastingBottomTriangle
+#print axioms SerrePositivity.InfinityCategories.pastingTopTriangle
+#print axioms SerrePositivity.InfinityCategories.pastingSquare_sharedEdge
+#print axioms SerrePositivity.InfinityCategories.pastingSquare_outer_leftEdge
+#print axioms SerrePositivity.InfinityCategories.pastingSquare_outer_rightEdge
+#print axioms SerrePositivity.InfinityCategories.pastingSquare_bottomEdge
+#print axioms SerrePositivity.InfinityCategories.pastingSquare_topEdge
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -393,7 +402,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.LoopDiagramArrows,
     `SerrePositivity.InfinityCategories.Stable.LoopEvaluationLifting,
     `SerrePositivity.InfinityCategories.Stable.Loop,
-    `SerrePositivity.InfinityCategories.Stable.SuspensionEquivalence]
+    `SerrePositivity.InfinityCategories.Stable.SuspensionEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.PastingShapes]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
