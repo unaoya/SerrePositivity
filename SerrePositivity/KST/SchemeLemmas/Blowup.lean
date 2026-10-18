@@ -2,6 +2,7 @@ module
 
 public import Mathlib.RingTheory.ReesAlgebra
 public import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper
+public import Mathlib.AlgebraicGeometry.Morphisms.Proper
 public import SerrePositivity.CommutativeAlgebra.GradedSubquotient
 
 /-!
@@ -124,5 +125,73 @@ instance reesGradeGradedRing : GradedRing (reesGrade I) :=
 使われ方：一般スキームへの貼り合わせの局所モデル。
 -/
 def affineBlowup : Scheme := Proj (reesGrade I)
+
+/--
+概要：Rees 代数の零次成分は基礎環と同型。
+方針：定数係数と定数多項式を互いに逆の環準同型にする。
+規約：KST §5 の零次成分には I の制約がない。
+使われ方：blowup の構造射の基底を Spec R に合わせる。
+-/
+def reesZeroEquiv : reesGrade I 0 ≃+* R where
+  toFun p := p.1.1.coeff 0
+  invFun r := ⟨algebraMap R (reesAlgebra I) r,
+    (mem_reesGrade_iff I 0 _).mpr (by simp)⟩
+  left_inv p := by
+    apply Subtype.ext
+    apply Subtype.ext
+    exact ((mem_reesGrade_iff I 0 p).mp p.2).symm
+  right_inv r := by simp
+  map_mul' p q := by
+    change ((p.1 : R[X]) * (q.1 : R[X])).coeff 0 = _
+    simp
+  map_add' p q := by simp
+
+/--
+概要：アフィン blowup の Spec R への構造射。
+方針：Proj の零次成分への射を零次成分の環同型で移す。
+規約：KST §5 の blowup は基礎スキーム上の対象として扱う。
+使われ方：固有性・中心の逆像・支配射の交換式の基準射。
+-/
+def affineBlowupπ : affineBlowup I ⟶ Spec (.of R) :=
+  Proj.toSpecZero (reesGrade I) ≫
+    Spec.map (CommRingCat.ofHom (reesZeroEquiv I).symm.toRingHom)
+
+/--
+概要：有限生成中心の Rees 代数は零次成分上で有限型。
+方針：既存の R 上の有限型性から係数環を拡大する。
+規約：KST §5、Noether 性ではなく中心の有限生成性だけを使う。
+使われ方：Proj の固有性をアフィン blowup に適用する。
+-/
+lemma rees_finiteType_over_zero (hI : I.FG) :
+    Algebra.FiniteType (reesGrade I 0) (reesAlgebra I) := by
+  let : Algebra.FiniteType R (reesAlgebra I) :=
+    ⟨(reesAlgebra I).fg_top.mpr (reesAlgebra.fg hI)⟩
+  have hcomp : (algebraMap (reesGrade I 0) (reesAlgebra I)).comp
+      (reesZeroEquiv I).symm.toRingHom = algebraMap R (reesAlgebra I) := by
+    ext r
+    rfl
+  apply RingHom.finiteType_algebraMap.mp
+  apply RingHom.FiniteType.of_comp_finiteType (f := (reesZeroEquiv I).symm.toRingHom)
+  rw [hcomp]
+  exact RingHom.finiteType_algebraMap.mpr inferInstance
+
+set_option backward.isDefEq.respectTransparency false in
+/--
+概要：有限生成イデアルに沿うアフィン blowup の構造射は固有。
+方針：有限型次数付き環の Proj の固有性と基底の同型を使う。
+規約：KST §5、中心は有限生成と仮定する。
+使われ方：抽象 blowup 正方形の固有射を与える。
+-/
+theorem affineBlowupπ_isProper (hI : I.FG) : IsProper (affineBlowupπ I) := by
+  let := rees_finiteType_over_zero I hI
+  have : IsIso (CommRingCat.ofHom (reesZeroEquiv I).symm.toRingHom) :=
+    (ConcreteCategory.isIso_iff_bijective _).mpr (reesZeroEquiv I).symm.bijective
+  have : IsProper (Proj.toSpecZero (reesGrade I)) := inferInstance
+  have : IsIso (Spec.map (CommRingCat.ofHom (reesZeroEquiv I).symm.toRingHom)) :=
+    inferInstance
+  have : IsProper (Spec.map (CommRingCat.ofHom (reesZeroEquiv I).symm.toRingHom)) :=
+    inferInstance
+  unfold affineBlowupπ
+  infer_instance
 
 end SerrePositivity.KST.SchemeLemmas

@@ -10,8 +10,9 @@
 ## 1. 現在地
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
-- 対象ビルド成功。最初の保存単位の監査は 14 宣言、標準三公理のみ。
-- 次は零次成分の同定と基礎環上の構造射・固有性。
+- 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
+- 対象ビルド成功。公理監査は保存単位ごとに再実行する。
+- 次は中心の逆像と標準アフィンチャート。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
 - Rees 代数は多項式環の部分代数として既にある。
@@ -288,10 +289,11 @@ f の有限型性は固有性から導く。
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |
 | `isInternal_reesGrade` | Blowup | 検証済み | 内部直和 |
 | `reesGradeGradedRing` | Blowup | 検証済み | Proj の入力 |
-| `reesZeroEquiv` | Blowup | 予定 | 零次成分と R |
+| `reesZeroEquiv` | Blowup | 検証済み | 零次成分と R |
 | `affineBlowup` | Blowup | 検証済み | アフィン blowup |
-| `affineBlowupπ` | Blowup | 予定 | 構造射 |
-| `affineBlowupπ_isProper` | Blowup | 予定 | 固有性 |
+| `affineBlowupπ` | Blowup | 検証済み | 構造射 |
+| `rees_finiteType_over_zero` | Blowup | 検証済み | 零次成分上の有限型性 |
+| `affineBlowupπ_isProper` | Blowup | 検証済み | 有限生成中心での固有性 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
