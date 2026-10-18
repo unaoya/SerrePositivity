@@ -575,3 +575,33 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient
 #print axioms SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulShape
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulShape
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding_isRelIff
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding_isRelIff
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isRelIff
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isRelIff
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isTruncGE
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isTruncGE
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isTruncLE
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isTruncLE
+
+#check @SerrePositivity.KST.ProExcision.closedEmbedding_next
+#print axioms SerrePositivity.KST.ProExcision.closedEmbedding_next
+
+#check @SerrePositivity.KST.ProExcision.closedEmbedding_prev
+#print axioms SerrePositivity.KST.ProExcision.closedEmbedding_prev
+
+#check @SerrePositivity.KST.ProExcision.closedRestrictionHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.closedRestrictionHomologyIso

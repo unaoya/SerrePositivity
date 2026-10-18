@@ -29,3 +29,4 @@ public import SerrePositivity.KST.ProExcision.ShiftedComparison
 public import SerrePositivity.KST.ProExcision.GradedHomology
 public import SerrePositivity.KST.ProExcision.IntervalGradeBoundary
 public import SerrePositivity.KST.ProExcision.KoszulCoefficients
+public import SerrePositivity.KST.ProExcision.FiniteKoszulShape

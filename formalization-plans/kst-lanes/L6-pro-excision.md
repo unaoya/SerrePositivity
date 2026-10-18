@@ -86,7 +86,10 @@
 - 二つの残る次数を別に指定して、区間境界のホモロジーが P.d ⊗ H_s(K) を誘導すると証明済み。
 - 有限 Koszul 補助初頁の実際の区間添字を代入し、微分が Koszul 微分と係数ホモロジーのテンソルに一致すると証明済み。
 - 微分に適合する係数模型は koszulFirstPageCoefficientIsoAt を使う。
-- 次は初頁複体のホモロジーを計算し、Mathlib 頁 3 を KST E₂ へ同定する。
+- 固定係数次数の有限行の複体形状と、整数次数・補助初頁への埋め込みを構成済み。
+- 初頁への有限行の埋め込みは微分元・微分先について閉じることを証明済み。
+- 両方向に閉じた形状への制限が、端を含めホモロジーを保つ一般同型を構成済み。
+- 次は有限行の複体同型を作り、そのホモロジーを Mathlib 頁 3＝KST E₂ へ同定する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -181,6 +184,9 @@
 | intervalTensorGradeHomology_differential | IntervalGradeBoundary.lean | 検証済み | 正規化前の区間境界の係数微分 |
 | koszulFirstPageCoefficientIsoAt | KoszulCoefficients.lean | 検証済み | 微分と整合する指定係数次数の初頁模型 |
 | koszulFirstPage_d_coefficient | KoszulCoefficients.lean | 検証済み | 実際の有限初頁微分は Koszul 微分 ⊗ H(K) |
+| finiteKoszulShape | FiniteKoszulShape.lean | 検証済み | 巡回しない有限下降複体の形状 |
+| finiteKoszulSpectralEmbedding | FiniteKoszulShape.lean | 検証済み | 固定係数次数の有限行の閉じた埋め込み |
+| closedRestrictionHomologyIso | FiniteKoszulShape.lean | 検証済み | 両方向に閉じた制限のホモロジー比較 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
