@@ -8103,5 +8103,89 @@ lemma leftCoherentTransportDirectComparison_isQCatEquivalence
     (p : E ⟶ nerve C) [LeftFibration p] :
     IsQCatEquivalence (leftCoherentTransportDirectComparison p)
 
+def relativeFunctorEvaluation {B : SSet.{u}} (a b : Over B) :
+    a.left ⊗ relativeFunctorSpace b.hom a.hom ⟶ b.left
+
+lemma relativeFunctorEvaluation_projection {B : SSet.{u}} (a b : Over B) :
+    relativeFunctorEvaluation a b ≫ b.hom =
+      fst a.left (relativeFunctorSpace b.hom a.hom) ≫ a.hom
+
+def relativeFunctorComposition {B : SSet.{u}} (a b c : Over B) :
+    relativeFunctorSpace b.hom a.hom ⊗ relativeFunctorSpace c.hom b.hom ⟶
+      relativeFunctorSpace c.hom a.hom
+
+lemma relativeFunctorComposition_ι {B : SSet.{u}} (a b c : Over B) :
+    relativeFunctorComposition a b c ≫
+      vertexFiberι ((ihom a.left).map c.hom) (functorVertex a.hom) =
+    (vertexFiberι ((ihom a.left).map b.hom) (functorVertex a.hom) ⊗ₘ
+      vertexFiberι ((ihom b.left).map c.hom) (functorVertex b.hom)) ≫
+      MonoidalClosed.comp a.left b.left c.left
+
+def relativeFunctorIdentity {B : SSet.{u}} (a : Over B) :
+    𝟙_ SSet.{u} ⟶ relativeFunctorSpace a.hom a.hom
+
+lemma relativeFunctorIdentity_ι {B : SSet.{u}} (a : Over B) :
+    relativeFunctorIdentity a ≫
+      vertexFiberι ((ihom a.left).map a.hom) (functorVertex a.hom) =
+      MonoidalClosed.id a.left
+
+lemma relativeFunctorIdentity_comp {B : SSet.{u}} (a b : Over B) :
+    (λ_ (relativeFunctorSpace b.hom a.hom)).inv ≫
+      relativeFunctorIdentity a ▷ _ ≫ relativeFunctorComposition a a b = 𝟙 _
+
+lemma relativeFunctorComposition_id {B : SSet.{u}} (a b : Over B) :
+    (ρ_ (relativeFunctorSpace b.hom a.hom)).inv ≫
+      _ ◁ relativeFunctorIdentity b ≫ relativeFunctorComposition a b b = 𝟙 _
+
+lemma relativeFunctorComposition_assoc {B : SSet.{u}} (a b c d : Over B) :
+    (α_ (relativeFunctorSpace b.hom a.hom) (relativeFunctorSpace c.hom b.hom)
+      (relativeFunctorSpace d.hom c.hom)).inv ≫
+      relativeFunctorComposition a b c ▷ _ ≫ relativeFunctorComposition a c d =
+    _ ◁ relativeFunctorComposition b c d ≫ relativeFunctorComposition a b d
+
+noncomputable def relativeFunctorVertexEquiv {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) :
+    {f : A ⟶ E // f ≫ p = a} ≃ (relativeFunctorSpace p a) _⦋0⦌
+
+def overHomEquivSubtype {B : SSet.{u}} (a b : Over B) :
+    (a ⟶ b) ≃ {f : a.left ⟶ b.left // f ≫ b.hom = a.hom}
+
+noncomputable def relativeFunctorHomEquiv {B : SSet.{u}} (a b : Over B) :
+    (a ⟶ b) ≃ (𝟙_ SSet.{u} ⟶ relativeFunctorSpace b.hom a.hom)
+
+lemma relativeFunctorHomEquiv_ι {B : SSet.{u}} {a b : Over B} (f : a ⟶ b) :
+    relativeFunctorHomEquiv a b f ≫
+      vertexFiberι ((ihom a.left).map b.hom) (functorVertex a.hom) = curry' f.left
+
+lemma relativeFunctorHomEquiv_id {B : SSet.{u}} (a : Over B) :
+    relativeFunctorHomEquiv a a (𝟙 a) = relativeFunctorIdentity a
+
+lemma relativeFunctorHomEquiv_comp {B : SSet.{u}} {a b c : Over B}
+    (f : a ⟶ b) (g : b ⟶ c) :
+    relativeFunctorHomEquiv a c (f ≫ g) =
+      (λ_ (𝟙_ SSet.{u})).inv ≫
+        (relativeFunctorHomEquiv a b f ⊗ₘ relativeFunctorHomEquiv b c g) ≫
+          relativeFunctorComposition a b c
+
+def LeftFibrationObject (B : SSet.{u})
+
+instance leftFibrationObject_category (B : SSet.{u}) : Category.{u} (LeftFibrationObject B)
+
+instance leftFibrationObject_projection {B : SSet.{u}} (p : LeftFibrationObject B) :
+    LeftFibration p.val.hom
+
+instance leftFibrationObject_enrichedCategory (B : SSet.{u}) :
+    EnrichedCategory SSet.{u} (LeftFibrationObject B)
+
+noncomputable instance leftFibrationObject_simplicialCategory (B : SSet.{u}) :
+    SimplicialCategory (LeftFibrationObject B)
+
+instance leftFibrationObject_sHom_kanComplex {B : SSet.{u}} (p q : LeftFibrationObject B) :
+    KanComplex (SimplicialCategory.sHom p q)
+
+noncomputable def LeftFibrationInfinity (B : SSet.{u}) : SSet.{u + 1}
+
+instance leftFibrationInfinity_quasicategory (B : SSet.{u}) :
+    Quasicategory (LeftFibrationInfinity B)
+
 end SerrePositivity.InfinityCategories
 ```

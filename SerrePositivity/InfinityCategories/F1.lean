@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComposition
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorCompositionLaws
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorUnitHom
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInfinity
+
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationSpanStrictification
 public import SerrePositivity.InfinityCategories.F1.LeftCoherentTransportDirectComparison
