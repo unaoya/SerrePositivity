@@ -100,3 +100,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.TripleShufflePermutation
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNestedSimplex
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNestedGenerators
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNestedChains
+public import SerrePositivity.EInfinity.BarrattEccles.TripleComplexExt
+public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionNested
