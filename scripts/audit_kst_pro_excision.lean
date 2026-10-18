@@ -530,3 +530,27 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.tensorSingleShift_boundary
 #print axioms SerrePositivity.KST.ProExcision.tensorSingleShift_boundary
+
+#check @SerrePositivity.KST.ProExcision.shiftMap_comparison
+#print axioms SerrePositivity.KST.ProExcision.shiftMap_comparison
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleHomology_shift_boundary
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleHomology_shift_boundary
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleHomology_boundary
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleHomology_boundary
+
+#check @SerrePositivity.KST.ProExcision.singleTensorHomologyIsoAt
+#print axioms SerrePositivity.KST.ProExcision.singleTensorHomologyIsoAt
+
+#check @SerrePositivity.KST.ProExcision.singleTensorHomologyIsoAt_hom
+#print axioms SerrePositivity.KST.ProExcision.singleTensorHomologyIsoAt_hom
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleHomology_boundary_at
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleHomology_boundary_at
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorGradeHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorGradeHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorGradeHomology_differential
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorGradeHomology_differential

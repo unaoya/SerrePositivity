@@ -38,7 +38,7 @@
 - L6b：進行中。Lemma 4.9 の有限生成加群係数版を検証済み。
 - 平坦底変換の自然なホモロジー比較・イデアル倍の像・pro-零性保存まで検証済み。
 - Lemma 4.10：実際の Mathlib SpectralSequence の頁の pro-零性保存と有限拡張を検証済み。
-- Koszul SS 自体の構成・E₂ 同定・次数ごとの有限収束と edge 比較は残件。
+- Koszul SS の E₂ 同定・次数ごとの有限収束と edge 比較は残件。
 - 有限な Koszul 方向の項による濾過をテンソル複体上に構成済み。
 - そこから実際の mapping cone スペクトル対象と有限行補助スペクトル系列を構成済み。
 - 初端の零性と終端の全 Koszul 複体への包含が同型であることを証明済み。
@@ -79,7 +79,10 @@
 - 一項テンソルのホモロジー同型についても、同じ次数の係数射が f ⊗ H(K) へ移ることを証明済み。
 - 一項関手族のシフト加法則により、隣接二次数の境界と標準正規化の整合性を証明済み。
 - 一般の一項テンソル境界を標準比較で移すと、通常の係数テンソル射のシフトになることを複体射として証明済み。
-- 次はこの隣接境界比較をホモロジーへ移し、実際の初頁微分全体へ接続する。
+- シフト列の一般比較を証明し、隣接一項テンソル境界のホモロジー誘導射を係数テンソル射へ移送済み。
+- 源 q・標的 q+1 の共通係数次数 s=q-a を指定できる同型を構成し、f ⊗ H_s(K) との可換性を証明済み。
+- 隣接商のテンソルホモロジー同型を作り、実際の隣接商境界が P.d ⊗ H_s(K) を誘導すると証明済み。
+- 次は有限 Koszul 濾過の実際の区間添字を隣接商へ揃え、初頁微分全体へ接続する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -165,6 +168,11 @@
 | singleTensorHomologyIso_coefficient | SingleTensorNaturality.lean | 検証済み | 一項ホモロジー比較の係数自然性 |
 | singleFamilyShift_boundary | SingleShiftCoherence.lean | 検証済み | 一項関手族の隣接境界とシフト加法の整合性 |
 | tensorSingleShift_boundary | SingleShiftCoherence.lean | 検証済み | 隣接テンソル境界の正規化は通常の係数射のシフト |
+| shiftMap_comparison | ShiftedComparison.lean | 検証済み | 二重シフトの比較を誘導射へ移す |
+| singleTensorHomologyIsoAt | ShiftedComparison.lean | 検証済み | 共通係数次数を指定した一項ホモロジー同型 |
+| tensorSingleHomology_boundary_at | ShiftedComparison.lean | 検証済み | 隣接境界は共通係数次数で f ⊗ H(K) を誘導 |
+| adjacentTensorGradeHomologyIso | GradedHomology.lean | 検証済み | 隣接商のテンソルホモロジーの係数模型 |
+| adjacentTensorGradeHomology_differential | GradedHomology.lean | 検証済み | 実際の隣接商境界は P.d ⊗ H(K) を誘導 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

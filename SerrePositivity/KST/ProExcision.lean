@@ -25,3 +25,5 @@ public import SerrePositivity.KST.ProExcision.TensorGradeBoundary
 public import SerrePositivity.KST.ProExcision.CoefficientHomology
 public import SerrePositivity.KST.ProExcision.SingleTensorNaturality
 public import SerrePositivity.KST.ProExcision.SingleShiftCoherence
+public import SerrePositivity.KST.ProExcision.ShiftedComparison
+public import SerrePositivity.KST.ProExcision.GradedHomology
