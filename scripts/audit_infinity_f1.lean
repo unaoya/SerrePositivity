@@ -316,3 +316,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.vertexFiber_kanComplex_of_leftFibration
 #check @SerrePositivity.InfinityCategories.pointedSpaceFiber_kanComplex
 #check @SerrePositivity.InfinityCategories.leftUnstraighteningFiber_kanComplex
+#check @SerrePositivity.InfinityCategories.leftPointSimplexIndexIso
+#check @SerrePositivity.InfinityCategories.leftPointStdSimplexIso
+#check @SerrePositivity.InfinityCategories.joinStdSimplexIso_leftPoint_inl
+#check @SerrePositivity.InfinityCategories.joinStdSimplexIso_leftPoint_inr
+#check @SerrePositivity.InfinityCategories.cosliceFiberSimplex
+#check @SerrePositivity.InfinityCategories.leftPointStdSimplexIso_first_inv
+#check @SerrePositivity.InfinityCategories.leftPointStdSimplexIso_face_inv
+#check @SerrePositivity.InfinityCategories.cosliceFiberSimplex_source
+#check @SerrePositivity.InfinityCategories.cosliceFiberSimplex_target
+#check @SerrePositivity.InfinityCategories.cosliceFiberSimplexInverse
+#check @SerrePositivity.InfinityCategories.cosliceFiberSimplexEquiv

@@ -1283,5 +1283,48 @@ instance leftUnstraighteningFiber_kanComplex {C : SSet.{u + 1}}
     (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
     KanComplex (vertexFiber (leftUnstraighteningProjection F) c)
 
+def leftPointSimplexIndexIso (n : ℕ) : ⦋0 + n + 1⦌ ≅ ⦋n + 1⦌
+
+def leftPointStdSimplexIso (n : ℕ) :
+    join (Δ[0] : SSet.{u}) Δ[n] ≅ Δ[n + 1]
+
+lemma joinStdSimplexIso_leftPoint_inl (n : ℕ) :
+    joinInl (Δ[0] : SSet.{u}) Δ[n] ≫ (leftPointStdSimplexIso n).hom =
+      stdSimplex.map (SimplexCategory.const _ _ 0)
+
+lemma joinStdSimplexIso_leftPoint_inr (n : ℕ) :
+    joinInr (Δ[0] : SSet.{u}) Δ[n] ≫ (leftPointStdSimplexIso n).hom =
+      stdSimplex.δ 0
+
+def cosliceFiberSimplex {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (s : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋n⦌) :
+    X _⦋n + 1⦌
+
+lemma leftPointStdSimplexIso_first_inv (n : ℕ) :
+    stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0) ≫
+      (leftPointStdSimplexIso.{u} n).inv = joinInl Δ[0] Δ[n]
+
+lemma leftPointStdSimplexIso_face_inv (n : ℕ) :
+    stdSimplex.δ 0 ≫ (leftPointStdSimplexIso.{u} n).inv = joinInr Δ[0] Δ[n]
+
+lemma cosliceFiberSimplex_source {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (s : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋n⦌) :
+    X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op (cosliceFiberSimplex n s) = x
+
+lemma cosliceFiberSimplex_target {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (s : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋n⦌) :
+    X.δ 0 (cosliceFiberSimplex n s) = PinchedHom.constant y n
+
+def cosliceFiberSimplexInverse {X : SSet.{u}} {x y : X _⦋0⦌} (n : ℕ)
+    (t : {s : X _⦋n + 1⦌ //
+      X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op s = x ∧
+        X.δ 0 s = PinchedHom.constant y n}) :
+    (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋n⦌
+
+def cosliceFiberSimplexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) (n : ℕ) :
+    (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋n⦌ ≃
+      {s : X _⦋n + 1⦌ // X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op s = x ∧
+        X.δ 0 s = PinchedHom.constant y n}
+
 end SerrePositivity.InfinityCategories
 ```
