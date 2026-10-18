@@ -10084,5 +10084,80 @@ noncomputable def leftUnstraighteningMappingSpaceMap_iso_ofLift {B : SSet.{u + 1
     FunctorIso (leftUnstraighteningMappingSpaceMap F G)
       (leftUnstraighteningMappingSpaceMapOfLift F G W hWp)
 
+lemma intervalMappingBoundary_of_edge {X : SSet.{u}} {x y : X _⦋0⦌} (e : SSet.Edge x y) :
+    (boundary 1).ι ≫ SSet.yonedaEquiv.symm e.edge = intervalMappingBoundary x y
+
+def intervalMappingVertexOfEdge {X : SSet.{u}} {x y : X _⦋0⦌} (e : SSet.Edge x y) :
+    (intervalMappingSpace x y) _⦋0⦌
+
+lemma uncurry_at_vertex {A L E : SSet.{u}} (f : L ⟶ (ihom A).obj E) (x : L _⦋0⦌) :
+    lift (𝟙 A) (SSet.const x) ≫ uncurry f =
+      (functorVertexEquiv A E).symm (f.app (Opposite.op ⦋0⦌) x)
+
+lemma relativeFunctorCurry_vertex {A L E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B)
+    (H : A ⊗ L ⟶ E) (hH : H ≫ p = fst A L ≫ a) (x : L _⦋0⦌) :
+    (relativeFunctorCurry H hH).app _ x =
+      relativeFunctorVertex p a (lift (𝟙 A) (SSet.const x) ≫ H) (by
+        rw [Category.assoc, hH, ← Category.assoc, lift_fst, Category.id_comp])
+
+lemma functorParameterizedPrism_at_parameter {K B L E : SSet.{u}}
+    (H : K ⊗ L ⟶ (ihom B).obj E) (x : L _⦋0⦌) :
+    lift (𝟙 (K ⊗ B)) (SSet.const x) ≫ functorParameterizedPrism H =
+      functorFamilyPrism (lift (𝟙 K) (SSet.const x) ≫ H)
+
+lemma parameterVertex_naturality {A B L : SSet.{u}} (f : A ⟶ B) (x : L _⦋0⦌) :
+    lift (𝟙 A) (SSet.const x) ≫ (f ▷ L) = f ≫ lift (𝟙 B) (SSet.const x)
+
+lemma intervalMappingUniversal_at_edge {X : SSet.{u}} {x y : X _⦋0⦌} (e : SSet.Edge x y) :
+    lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (intervalMappingVertexOfEdge e)) ≫
+      intervalMappingUncurry (𝟙 (intervalMappingSpace x y)) = SSet.yonedaEquiv.symm e.edge
+
+lemma leftUnstraighteningTransformationFamily_at_edge {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G)) :
+    lift (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ B)) (SSet.const (intervalMappingVertexOfEdge e)) ≫
+      leftUnstraighteningTransformationFamily F G = functorEdgePrism e
+
+lemma leftUnstraighteningMappingSpaceMap_vertex {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (x : (leftUnstraighteningTransformationSpace F G) _⦋0⦌) :
+    (leftUnstraighteningMappingSpaceMap F G).app _ x =
+      relativeFunctorVertex (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+        (lift (𝟙 (leftUnstraightening F)) (SSet.const x) ≫ leftUnstraighteningMappingFamily F G) (by
+          have hp : leftUnstraighteningMappingFamily F G ≫ leftUnstraighteningProjection G =
+              fst (leftUnstraightening F) (leftUnstraighteningTransformationSpace F G) ≫
+                leftUnstraighteningProjection F := pullback.lift_snd _ _ _
+          rw [Category.assoc, hp, ← Category.assoc, lift_fst, Category.id_comp])
+
+noncomputable def leftUnstraighteningMappingSpaceMap_edgeVertexIso {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G)) :
+    VertexIso (relativeFunctorVertex (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+      (leftUnstraighteningEdgeMap F G e).val (leftUnstraighteningEdgeMap F G e).property)
+      ((leftUnstraighteningMappingSpaceMap F G).app _ (intervalMappingVertexOfEdge e))
+
+noncomputable def leftUnstraighteningMappingVertexMap {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (x : (leftUnstraighteningTransformationSpace F G) _⦋0⦌) :
+    {f : leftUnstraightening F ⟶ leftUnstraightening G //
+      f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F}
+
+lemma leftUnstraighteningMappingVertexMap_vertex {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (x : (leftUnstraighteningTransformationSpace F G) _⦋0⦌) :
+    relativeFunctorVertex (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+      (leftUnstraighteningMappingVertexMap F G x).val (leftUnstraighteningMappingVertexMap F G x).property =
+      (leftUnstraighteningMappingSpaceMap F G).app _ x
+
+lemma leftUnstraighteningMappingVertexMap_isPrecompositionEquivalence_of_isInvertibleEdge
+    {B : SSet.{u + 1}} [Quasicategory B] (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G))
+    (he : IsInvertibleEdge e) :
+    IsPrecompositionEquivalence
+      (leftUnstraighteningMappingVertexMap F G (intervalMappingVertexOfEdge e)).val
+
+lemma leftUnstraighteningMappingVertexMap_isQCatEquivalence_of_isInvertibleEdge
+    {B : SSet.{u + 1}} [Quasicategory B] (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G))
+    (he : IsInvertibleEdge e) :
+    IsQCatEquivalence (leftUnstraighteningMappingVertexMap F G (intervalMappingVertexOfEdge e)).val
+
 end SerrePositivity.InfinityCategories
 ```
