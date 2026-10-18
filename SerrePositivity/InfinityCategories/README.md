@@ -2203,7 +2203,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開720宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開737宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2831,7 +2831,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開720宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開737宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3828,6 +3828,54 @@ coherentHomComparison_post F (x y : C) :
 原典上の位置は Kerodon §4.6.7、HTT 4.2.4.1 の係数比較の自然性である。
 添字圏の射が誘導する Hom の合成作用と高次整合性への接続、および左 coslice 側への移送、
 元の q_x との一致は未完了。𝒮・Sp の残りの適用も引き続き未完了である。
+
+### 左 coslice の係数を評価する最小点の座標（実装済み）
+
+`CoherentPathMinimum` は `j : Fin (n+1)` と
+`P : Path (ULift.up 0 : ULift.{u} (Fin (n+2))) (ULift.up j.succ)` に対して、
+零以外の path の頂点を Fin(n+1) の添字で集めた `pathAfterFirst P` を定義する。
+この集合は終点を含むので空でない。`pathFirstMinimum P` はその最小元である。
+所属、各正頂点以下、終点以下の式を公開した。
+
+```lean
+pathFirstMinimum_antitone (h : P.I ⊆ Q.I) :
+  pathFirstMinimum Q ≤ pathFirstMinimum P
+```
+
+正の切断点 i.succ で合成すると、後半の全点は切断点以上であり、前半の最小点は
+切断点以下である。`pathFirstMinimum_comp P Q` はそのため最小点が前半の値に等しいことを示す。
+これは HTT 4.2.4.1 の重み付き nerve から左 coslice への比較で必要な豊穣合成の座標則である。
+
+終点までの初区間に値を置いた `pathFirstMinimumIndex P : Fin (j.val+1)` を用い、
+その値を反転する単調関手 `pathFirstMinimumReverseFunctor j` と
+
+```lean
+pathFirstMinimumMap (j : Fin (n + 1)) :
+  nerve (Path (ULift.up 0 : ULift.{u} (Fin (n + 2))) (ULift.up j.succ)) ⟶
+    (Δ[j.val] : SSet.{u}).op
+```
+
+を構成した。`pathFirstMinimumMap_apply j F k` の値は
+`pathFirstMinimumIndex (F.obj k.rev)` に一致する。
+Mathlib の path は包含順序なので最小点は反単調であり、この値域の反転を省略しない。
+
+初点固定の拡張は既存 Core の `prependOrderHom` を用いる。
+`pathFirstReindex α P` はその拡張で path の部分集合の像を取り、
+`pathFirstMinimum_reindex α P` は最小点が α と可換になることを示す。
+α は非単射でもよい。さらに初区間内の添字と単体集合の射について
+
+```lean
+pathFirstMinimumMap_reindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (j : Fin (m + 1)) :
+  nerveMap (pathFirstReindexFunctor α.toOrderHom j) ≫
+    pathFirstMinimumMap (α.toOrderHom j) =
+  pathFirstMinimumMap j ≫
+    SSet.opFunctor.map (stdSimplex.map (simplexPrefixRestriction α j))
+```
+
+を証明した。全ての面・退化を含み、Kan 性・図式の極限性は要求しない。
+原典上の位置は Kerodon §4.6.7 と HTT 4.2.4.1 の係数評価である。
+これらの座標則を重み付き nerve の実際の左 coslice 射へ組み立てる工程、
+元の q_x との一致、および 𝒮・Sp の残りの適用は未完了。
 
 ### 𝒮 の空積（実装済み）
 

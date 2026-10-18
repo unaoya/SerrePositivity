@@ -1445,3 +1445,37 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms coherentHomPostEndpointIso
 #check @coherentHomComparison_post
 #print axioms coherentHomComparison_post
+#check @pathAfterFirst
+#print axioms pathAfterFirst
+#check @pathAfterFirst_nonempty
+#print axioms pathAfterFirst_nonempty
+#check @pathFirstMinimum
+#print axioms pathFirstMinimum
+#check @pathFirstMinimum_mem
+#print axioms pathFirstMinimum_mem
+#check @pathFirstMinimum_le
+#print axioms pathFirstMinimum_le
+#check @pathFirstMinimum_antitone
+#print axioms pathFirstMinimum_antitone
+#check @pathFirstMinimum_le_end
+#print axioms pathFirstMinimum_le_end
+#check @pathFirstMinimum_comp
+#print axioms pathFirstMinimum_comp
+#check @pathFirstMinimumIndex
+#print axioms pathFirstMinimumIndex
+#check @pathFirstMinimumReverseFunctor
+#print axioms pathFirstMinimumReverseFunctor
+#check @pathFirstMinimumMap
+#print axioms pathFirstMinimumMap
+#check @pathFirstReindex
+#print axioms pathFirstReindex
+#check @pathFirstMinimum_reindex
+#print axioms pathFirstMinimum_reindex
+#check @pathFirstReindexFunctor
+#print axioms pathFirstReindexFunctor
+#check @pathFirstMinimumMap_apply
+#print axioms pathFirstMinimumMap_apply
+#check @pathFirstMinimumIndex_reindex
+#print axioms pathFirstMinimumIndex_reindex
+#check @pathFirstMinimumMap_reindex
+#print axioms pathFirstMinimumMap_reindex
