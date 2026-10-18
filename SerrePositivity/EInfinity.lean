@@ -57,3 +57,5 @@ public import SerrePositivity.EInfinity.Operad.CompositionAheadBlockFactor
 public import SerrePositivity.EInfinity.Operad.CompositionFirstBlock
 public import SerrePositivity.EInfinity.Operad.FirstBlockArities
 public import SerrePositivity.EInfinity.Operad.CompositionFirstBlockFull
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerSplitLast
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPowerSplitAt
