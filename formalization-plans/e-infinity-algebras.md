@@ -174,7 +174,12 @@ StandardSimplex R x z n` が追加仮定なしの合成。
 通常の圏の恒等射と合成との整合性も証明済み。前提は `[CommRing R] [DGCategory R D]`。
 γ1.5c では `cubeEvaluation e φ : GradedHom R x y (-(m : ℤ))` と native Path の
 `coherentCubeComponent` を構成し、`cubeFlag_internal_sum_eq_zero` で内部面の相殺を証明した。
-零次・一次の旗の評価も計算済み。比較写像の定義には外側の面・合成面の境界式が残る。
-公開232宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
+`cubeFlag_boundary_sum` は最大旗の全境界を座標1面−座標0面の交代和にする。
+`cubeEvaluation_succ_d` は `e : Fin (n+1) ≃ T` と
+`φ : Coherent.cube T ⟶ standardHomSpace x y` に対し、
+`d (−↑(n+1)) (−↑n) (cubeEvaluation e φ)` が各座標面の評価の差の交代和に等しいと示す。
+`cubeEvaluation_zero_closed e φ : differential R (cubeEvaluation e φ) = 0`。
+前提は同じく `[CommRing R] [DGCategory R D]`。座標面と Path の削除・合成の対応は残る。
+公開264宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
 比較写像、低次の一致、写像空間の比較。A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済み。
 比較写像と各 pinched Hom の実際のホモトピー同値を完成させた後に適用する。

@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3694件で成功し、公開232宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3702件で成功し、公開264宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1418,7 +1418,29 @@ Leibniz 則から得る左右の削除和を `AWIndex.boundaryPairEquiv` で、�
 `cubeFlag_internal_sum_eq_zero` はその交換を固定点のない対合として、任意の可換加法群への
 評価で内部面の符号付き和が零となることを証明する。二倍の消去や 2 の可逆性は使わない。
 `cubeEvaluation_zero`・`cubeEvaluation_one` は零次・一次の旗の一意性による評価の計算。
-まだ dg nerve への単体集合の射は得ていない。外側の座標面の式、AW・shuffle と合成面の対応、
+`cubeFaceMap e i ε` は一つの座標を固定する面の包含。残りの座標は
+`ULift (Fin n)` で番号付けし、元と同じ宇宙の単体集合を保つ。
+`cubeFlag_boundary_sum` は任意の可換加法群で、全最大旗の交代境界を
+座標1面−座標0面の交代和へ変換する。内部面の対合による相殺と、
+先頭・末尾の座標を指定する置換の分解を使い、整数の係数のまま証明した。
+
+`standardTopEval_d` は最上位評価の微分を面の最上位評価の交代和に送る。
+`cubeEvaluation_succ_d` は `[CommRing R] [DGCategory R D]` の下で、
+任意の `e : Fin (n+1) ≃ T` と
+`φ : Coherent.cube T ⟶ standardHomSpace x y` に対し、次の等式を与える。
+ここで `e₀ : Fin n ≃ ULift.{u} (Fin n)` は `Equiv.ulift.symm`。
+
+```text
+δ(cubeEvaluation e φ)
+  = Σ i : Fin (n+1), (−1)^i •
+      (cubeEvaluation e₀ (cubeFaceMap e i true ≫ φ)
+       − cubeEvaluation e₀ (cubeFaceMap e i false ≫ φ)).
+```
+
+型は Hom の微分 `d (−↑(n+1)) (−↑n)` の等式であり、全ての正次元を含む。
+`cubeEvaluation_zero_closed e φ : differential R (cubeEvaluation e φ) = 0`
+が零次元の閉性を与える。これは座標境界の公式であり、まだ dg nerve への
+単体集合の射は得ていない。座標0面と Path の削除、座標1面と AW・shuffle による合成の対応、
 dg 単体の方程式、退化も含む自然性、および比較写像の頂点・辺・三角形での一致が残る。
 
 

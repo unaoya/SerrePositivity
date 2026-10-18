@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.CubeOneBoundary
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.PathEvaluation
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CubeLowDimensional
 public import SerrePositivity.InfinityCategories.DoldKanComparison.HomSpace
