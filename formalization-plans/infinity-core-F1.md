@@ -1283,8 +1283,6 @@ instance leftUnstraighteningFiber_kanComplex {C : SSet.{u + 1}}
     (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
     KanComplex (vertexFiber (leftUnstraighteningProjection F) c)
 
-def leftPointSimplexIndexIso (n : ℕ) : ⦋0 + n + 1⦌ ≅ ⦋n + 1⦌
-
 def leftPointStdSimplexIso (n : ℕ) :
     join (Δ[0] : SSet.{u}) Δ[n] ≅ Δ[n + 1]
 
@@ -1325,6 +1323,19 @@ def cosliceFiberSimplexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) (n : ℕ) :
     (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋n⦌ ≃
       {s : X _⦋n + 1⦌ // X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op s = x ∧
         X.δ 0 s = PinchedHom.constant y n}
+
+lemma leftPointStdSimplexIso_inv_naturality {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    stdSimplex.map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)) ≫
+      (leftPointStdSimplexIso.{u} n).inv = (leftPointStdSimplexIso m).inv ≫
+        joinMap (𝟙 Δ[0]) (stdSimplex.map α)
+
+lemma cosliceFiberSimplex_naturality {X : SSet.{u}} {x y : X _⦋0⦌}
+    {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (s : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋n⦌) :
+    cosliceFiberSimplex m
+      ((vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y).map α.op s) =
+        X.map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)).op
+          (cosliceFiberSimplex n s)
 
 end SerrePositivity.InfinityCategories
 ```

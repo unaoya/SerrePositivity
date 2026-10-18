@@ -16,25 +16,13 @@ open CategoryTheory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
-/-- 概要：次元 0+n+1 と n+1 の標準単体圏の同型。
-方針：頂点の値を変えない単調写像を両方向に作る。
-規約：等号による型の移送を頂点の具体的な計算として表す。
-使われ方：Kerodon Construction 4.6.5.1、join の次元の表示の調整。 -/
-def leftPointSimplexIndexIso (n : ℕ) : ⦋0 + n + 1⦌ ≅ ⦋n + 1⦌ where
-  hom := SimplexCategory.mkHom ⟨fun i ↦ ⟨i.val, by simpa only [Nat.zero_add] using i.isLt⟩,
-    fun _ _ h ↦ h⟩
-  inv := SimplexCategory.mkHom ⟨fun i ↦ ⟨i.val, by simpa only [Nat.zero_add] using i.isLt⟩,
-    fun _ _ h ↦ h⟩
-  hom_inv_id := by ext i; rfl
-  inv_hom_id := by ext i; rfl
-
 /-- 概要：点を前置した標準単体の join の標準単体表示。
-方針：join の標準同型の次元 0+n+1 を n+1 に直す。
+方針：Core の点との join の標準同型を用いる。
 規約：同型の始域は Δ[0] ⋆ Δ[n]。
 使われ方：Kerodon Construction 4.6.5.1、左 pinched 単体の座標。 -/
 def leftPointStdSimplexIso (n : ℕ) :
     join (Δ[0] : SSet.{u}) Δ[n] ≅ Δ[n + 1] :=
-  joinStdSimplexIso 0 n ≪≫ stdSimplex.mapIso (leftPointSimplexIndexIso n)
+  pointJoinStdSimplexIso n
 
 /-- 概要：点と標準単体の join の左包含は最初の頂点。
 方針：join の頂点の公式を標準単体の定値射として読む。
@@ -43,12 +31,14 @@ def leftPointStdSimplexIso (n : ℕ) :
 lemma joinStdSimplexIso_leftPoint_inl (n : ℕ) :
     joinInl (Δ[0] : SSet.{u}) Δ[n] ≫ (leftPointStdSimplexIso n).hom =
       stdSimplex.map (SimplexCategory.const _ _ 0) := by
-  rw [leftPointStdSimplexIso, Iso.trans_hom, ← Category.assoc,
+  rw [leftPointStdSimplexIso, pointJoinStdSimplexIso, Iso.trans_hom, ← Category.assoc,
     joinStdSimplexIso_inl_vertex]
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
   apply stdSimplex.ext
   intro i
+  apply Fin.ext
+  rw [simplexCastIso_hom_app_val]
   rfl
 
 /-- 概要：点と標準単体の join の右包含は最初の頂点を除いた面。
@@ -62,6 +52,10 @@ lemma joinStdSimplexIso_leftPoint_inr (n : ℕ) :
   apply stdSimplex.ext
   intro i
   apply Fin.ext
+  change ((pointJoinStdSimplexIso n).hom.app (Opposite.op ⦋n⦌)
+    ((joinInr Δ[0] Δ[n]).app (Opposite.op ⦋n⦌)
+      (SSet.yonedaEquiv (𝟙 (Δ[n] : SSet.{u})))) i).val = _
+  rw [pointJoinStdSimplexIso_hom_app_val]
   change (Join.concat 0 (by omega)
     (Join.stdAugEquiv.{u} 0 0 PUnit.unit)
     (Join.stdAugEquiv.{u} n (n + 1) (SSet.yonedaEquiv (𝟙 (Δ[n] : SSet.{u})))) i).val = _
@@ -161,5 +155,35 @@ def cosliceFiberSimplexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) (n : ℕ) :
     change SSet.yonedaEquiv ((leftPointStdSimplexIso n).inv ≫
       ((leftPointStdSimplexIso n).hom ≫ SSet.yonedaEquiv.symm s.val)) = s.val
     rw [Iso.inv_hom_id_assoc, Equiv.apply_symm_apply]
+
+/-- 概要：点との join の同型の逆は右因子の単体圏の射に自然。
+方針：Core の順方向の自然性から同型を両側で消去する。
+規約：元の添字写像には最初の頂点を固定する prependOrderHom を適用する。
+使われ方：Kerodon Construction 4.6.5.1、coslice fiber の座標の自然性。 -/
+lemma leftPointStdSimplexIso_inv_naturality {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    stdSimplex.map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)) ≫
+      (leftPointStdSimplexIso.{u} n).inv = (leftPointStdSimplexIso m).inv ≫
+        joinMap (𝟙 Δ[0]) (stdSimplex.map α) := by
+  dsimp only [leftPointStdSimplexIso]
+  apply (cancel_mono (pointJoinStdSimplexIso n).hom).1
+  rw [Category.assoc, Iso.inv_hom_id, Category.comp_id, Category.assoc,
+    joinStdSimplexIso_point_naturality, Iso.inv_hom_id_assoc]
+
+/-- 概要：coslice fiber の単体表示は面と退化の全ての引き戻しに自然。
+方針：fiber の作用を join に沿う前合成と読み、標準同型の逆の自然性を使う。
+規約：元の添字写像には最初の頂点を固定する延長を施す。
+使われ方：Kerodon Construction 4.6.5.1、fiber と coherent Hom の単体的比較。 -/
+lemma cosliceFiberSimplex_naturality {X : SSet.{u}} {x y : X _⦋0⦌}
+    {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (s : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋n⦌) :
+    cosliceFiberSimplex m
+      ((vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y).map α.op s) =
+        X.map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)).op
+          (cosliceFiberSimplex n s) := by
+  change SSet.yonedaEquiv ((leftPointStdSimplexIso m).inv ≫
+    (joinMap (𝟙 Δ[0]) (stdSimplex.map α) ≫ s.val.val)) =
+      X.map _ (SSet.yonedaEquiv ((leftPointStdSimplexIso n).inv ≫ s.val.val))
+  rw [SSet.yonedaEquiv_naturality, ← Category.assoc,
+    ← leftPointStdSimplexIso_inv_naturality, Category.assoc]
 
 end SerrePositivity.InfinityCategories
