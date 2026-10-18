@@ -25,3 +25,4 @@ public import SerrePositivity.EInfinity.Operad.CompositionTwoSlot
 public import SerrePositivity.EInfinity.Operad.AdjacentComposition
 public import SerrePositivity.EInfinity.Operad.TailBlockSwap
 public import SerrePositivity.EInfinity.Operad.CompositionTailBijection
+public import SerrePositivity.EInfinity.Operad.TensorFamilySplitTwoRecursion
