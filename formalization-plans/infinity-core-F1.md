@@ -3297,5 +3297,57 @@ lemma joinEndpointMap_desc {A B C D X : SSet.{u}}
     (f : A ⟶ C) (g : B ⟶ D) (p : C ⟶ X) (q : D ⟶ X) :
     joinEndpointMap f g ≫ joinEndpointDesc p q = joinEndpointDesc (f ≫ p) (g ≫ q)
 
+lemma exists_pre_fatJoinComparison_retraction (A K X : SSet.{u}) [Quasicategory X] :
+    ∃ r : (ihom (fatJoin A K)).obj X ⟶ (ihom (join A K)).obj X,
+      (pre (fatJoinComparison A K)).app X ≫ r = 𝟙 _ ∧
+      r ≫ (pre (joinInl A K)).app X = (pre (fatJoinInl A K)).app X ∧
+      r ≫ (pre (joinInr A K)).app X = (pre (fatJoinInr A K)).app X
+
+lemma exists_pre_fatJoinComparison_relative_retraction
+    {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (K X : SSet.{u}) [Quasicategory X] :
+    ∃ rA : (ihom (fatJoin A K)).obj X ⟶ (ihom (join A K)).obj X,
+    ∃ rB : (ihom (fatJoin B K)).obj X ⟶ (ihom (join B K)).obj X,
+      (pre (fatJoinComparison A K)).app X ≫ rA = 𝟙 _ ∧
+      (pre (fatJoinComparison B K)).app X ≫ rB = 𝟙 _ ∧
+      rB ≫ (pre (joinMap i (𝟙 K))).app X = (pre (fatJoinMap i (𝟙 K))).app X ≫ rA ∧
+      rB ≫ (pre (joinInl B K)).app X = (pre (fatJoinInl B K)).app X ∧
+      rB ≫ (pre (joinInr B K)).app X = (pre (fatJoinInr B K)).app X
+
+lemma exists_joinDiagram_relative_extension {A B K X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ B) [Mono i] (F : fatJoin B K ⟶ X) (G : join A K ⟶ X)
+    (hFG : fatJoinMap i (𝟙 K) ≫ F = fatJoinComparison A K ≫ G) :
+    ∃ H : join B K ⟶ X,
+      joinMap i (𝟙 K) ≫ H = G ∧
+      joinInl B K ≫ H = fatJoinInl B K ≫ F ∧
+      joinInr B K ≫ H = fatJoinInr B K ≫ F
+
+lemma rightIntervalFatDiagram_cylinder {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    fatJoinCylinder A Δ[0] ≫ rightIntervalFatDiagram f =
+      rightIntervalCylinderProjection A ≫ intervalMappingUncurry f
+
+lemma rightIntervalCylinderProjection_naturality {A B : SSet.{u}} (i : A ⟶ B) :
+    fatJoinCylinderMap i (𝟙 (Δ[0] : SSet.{u})) ≫ rightIntervalCylinderProjection B =
+      rightIntervalCylinderProjection A ≫ (Δ[1] ◁ i)
+
+lemma rightIntervalFatDiagram_precomp {A B X : SSet.{u}} {x y : X _⦋0⦌}
+    (i : A ⟶ B) (f : B ⟶ intervalMappingSpace x y) :
+    fatJoinMap i (𝟙 (Δ[0] : SSet.{u})) ≫ rightIntervalFatDiagram f =
+      rightIntervalFatDiagram (i ≫ f)
+
+lemma rightIntervalFatDiagram_comparison {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ pinchedHom x y) :
+    rightIntervalFatDiagram (f ≫ pinchedHomToIntervalMappingSpace x y) =
+      fatJoinComparison A Δ[0] ≫ pinchedHomUncurry f
+
+lemma pinchedHomToIntervalMappingSpace_exists_retraction {X : SSet.{u}}
+    [Quasicategory X] (x y : X _⦋0⦌) :
+    ∃ r : intervalMappingSpace x y ⟶ pinchedHom x y,
+      pinchedHomToIntervalMappingSpace x y ≫ r = 𝟙 _
+
+lemma pinchedHomToIntervalMappingSpace_isQCatEquivalence {X : SSet.{u}}
+    [Quasicategory X] (x y : X _⦋0⦌) :
+    IsQCatEquivalence (pinchedHomToIntervalMappingSpace x y)
+
 end SerrePositivity.InfinityCategories
 ```

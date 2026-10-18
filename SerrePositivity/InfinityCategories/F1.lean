@@ -130,3 +130,8 @@ public import SerrePositivity.InfinityCategories.F1.JoinLeftBoundaryLifting
 public import SerrePositivity.InfinityCategories.F1.EquivalenceRetraction
 public import SerrePositivity.InfinityCategories.F1.FixedDiagramRestriction
 public import SerrePositivity.InfinityCategories.F1.JoinEndpointMaps
+public import SerrePositivity.InfinityCategories.F1.JoinDiagramRetraction
+public import SerrePositivity.InfinityCategories.F1.JoinDiagramRelativeRetraction
+public import SerrePositivity.InfinityCategories.F1.JoinDiagramRelativeExtension
+public import SerrePositivity.InfinityCategories.F1.IntervalFatNaturality
+public import SerrePositivity.InfinityCategories.F1.RightIntervalEquivalence
