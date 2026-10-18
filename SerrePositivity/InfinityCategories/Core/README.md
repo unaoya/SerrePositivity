@@ -516,3 +516,7 @@ A6 続き：`nonempty_functorIso_iff_sliceOverFixedDiagramVertexIso` により K
 A6 続き：`laxSliceHomEquiv p A : (A ⟶ laxSlice p) ≃ {F : fatJoin A K ⟶ X // fatJoinInr A K ≫ F = p}` を任意の A、K、X で証明。太い slice は太い零単体の join の固定図式上の内部 Hom の fiber で、X が quasicategory なら quasicategory。`coneFamilyLaxSliceMap p` は X が quasicategory のとき同値。太い join と直積の比較と curry・uncurry の両方の逆則も追加。新規34宣言の全型・前提は計画 §6。既存 API は維持。パラメーター付きの同型類の対応・slice 比較射の同値性・A6 主定理は未完了、A4・A5 は未着手。
 
 上記保存単位の検証：Core ビルド1891 jobs成功、累計1403宣言の公理監査は標準3公理のみ。
+
+A6 続き：**`isQCatEquivalence_sliceConeFamilyMap p` が任意の K、quasicategory X、p : K ⟶ X で完成。** 通常の slice と錐の関手単体集合の固定図式上の fiber は既存の比較射で同値。太い slice への `sliceLaxMap` の同値性を任意のパラメーターの関手の同型類の比較で証明し、二つの比較射の厳密な整合性と二対三則を適用した。原典は Kerodon Proposition 4.6.4.19、Example 4.6.6.8。新規27宣言の全型・前提は計画 §6。既存 API は維持。相対終対象への接続・自然な点ごとの極限錐の構成・A6 主定理は未完了、A4・A5 は未着手。
+
+上記保存単位の検証：Core ビルド1901 jobs成功、累計1430宣言の公理監査は標準3公理のみ。

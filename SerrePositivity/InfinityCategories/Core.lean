@@ -325,3 +325,23 @@ public import SerrePositivity.InfinityCategories.Core.LaxSliceUncurry
 public import SerrePositivity.InfinityCategories.Core.LaxSliceCurryUnit
 
 public import SerrePositivity.InfinityCategories.Core.LaxSliceUniversal
+
+public import SerrePositivity.InfinityCategories.Core.LaxSliceNaturality
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinCoproductPushout
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinCylinderExtension
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinCylinderFixedDiagram
+
+public import SerrePositivity.InfinityCategories.Core.LaxSliceFixedDiagramIso
+
+public import SerrePositivity.InfinityCategories.Core.FixedDiagramVertexEquiv
+
+public import SerrePositivity.InfinityCategories.Core.SliceLaxMap
+
+public import SerrePositivity.InfinityCategories.Core.SliceLaxEquivalence
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinTensorComparison
+
+public import SerrePositivity.InfinityCategories.Core.SliceConeFamilyEquivalence
