@@ -694,5 +694,22 @@ lemma relativeCosliceRestriction_triangleLongEdge {X Y : SSet.{u}}
     (t : (Δ[2] : SSet.{u}) ⟶ X) (q : X ⟶ Y) [InnerFibration q] :
     TrivialKanFibration (relativeCosliceRestriction t q (stdSimplex.δ (1 : Fin 3)))
 
+lemma sliceUnderRestrict_lift_of_rightAnodyne {A K X : SSet.{u}} [Quasicategory X]
+    (p : K ⟶ X) (A₀ : A.Subcomplex) (K₀ : K.Subcomplex)
+    (hK : rightAnodyneExtensions K₀.ι) : HasLiftingProperty A₀.ι (sliceUnderRestrict p K₀.ι)
+
+lemma sliceUnderRestrict_trivialKanFibration_of_rightAnodyne {K X : SSet.{u}}
+    [Quasicategory X] (p : K ⟶ X) (K₀ : K.Subcomplex)
+    (hK : rightAnodyneExtensions K₀.ι) : TrivialKanFibration (sliceUnderRestrict p K₀.ι)
+
+lemma sliceUnderRestrict_trivialKanFibration_subcomplexIso {K L X : SSet.{u}}
+    (p : K ⟶ X) (K₀ : K.Subcomplex) (e : L ≅ (K₀ : SSet.{u}))
+    [TrivialKanFibration (sliceUnderRestrict p K₀.ι)] :
+    TrivialKanFibration (sliceUnderRestrict p (e.hom ≫ K₀.ι))
+
+lemma sliceUnderRestrict_triangleLongEdge {X : SSet.{u}} [Quasicategory X]
+    (t : (Δ[2] : SSet.{u}) ⟶ X) :
+    TrivialKanFibration (sliceUnderRestrict t (stdSimplex.δ (1 : Fin 3)))
+
 end SerrePositivity.InfinityCategories
 ```

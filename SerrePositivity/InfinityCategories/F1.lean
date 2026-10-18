@@ -33,3 +33,4 @@ public import SerrePositivity.InfinityCategories.F1.SquareComparison
 public import SerrePositivity.InfinityCategories.F1.JoinLeftGluing
 public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 public import SerrePositivity.InfinityCategories.F1.CosliceRestrictionIso
+public import SerrePositivity.InfinityCategories.F1.CosliceRightRestriction
