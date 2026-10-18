@@ -270,6 +270,10 @@ public import SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspensionOb
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorConnecting
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorTriangulated
 
+public import SerrePositivity.InfinityCategories.Stable.HomotopyNatTransPrecomposition
+public import SerrePositivity.InfinityCategories.Stable.ShiftCommutationNaturalTransformation
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorNaturalTransformation
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

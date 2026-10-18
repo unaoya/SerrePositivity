@@ -19711,3 +19711,213 @@ isExactFunctor_id.{u_1} : ∀ (X : SSet.{u_1}), IsExactFunctor.{u_1} (CategoryTh
     (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
       (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
 ```
+
+
+## S6 完了：完全関手間の自然変換と全整数シフトの両立（2026-10-19）
+
+任意の単体的ホモトピー H : F ⇒ G から `exactFunctorNatTrans H` を定義。cofiber 四角形へ制限した成分を元の自然変換へ戻し、像の接続射の自然性を証明した。零中間対象の接続射の可逆性で消去し、懸垂比較との可換式、一回シフトとの両立を得た。一般の関手の一回交換同型と可換な自然変換について、逆次数の比較の自然性と整数の両方向の帰納法により全整数への両立を証明する `stableNatTransCommShiftOfOne` を公開。これを適用し、`exactFunctorNatTrans_commShift` を Mathlib の NatTrans.CommShift ℤ instance として公開した。`exactFunctorNatTransTriangle` は三角形の像の間の自然変換を与える。H の成分の可逆性は一切仮定しない。
+
+対象＋統合ビルド 3084 jobs 成功。全 360 modules／2651 declarations の公理監査成功（標準 3 公理のみ）。S6 は完了。S7（D7：導来 ∞ 圏の安定性と Mathlib の三角構造の比較）は未完了で、次工程。
+
+全 14 公開宣言の正確な型：
+
+```lean
+@homotopyNatTransOfEndpoints_app_arrow.{u_1} : ∀ {X Y : SSet.{u_1}} {F G : Quiver.Hom.{u_1, u_1 + 1} X Y}
+  (H :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} X
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      Y)
+  (h₀ : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.ι₀.{u_1} H) F)
+  (h₁ : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.ι₁.{u_1} H) G)
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1} (homotopyNatTransOfEndpoints.{u_1} H h₀ h₁)
+        (SSet.HomotopyCategory.mk.{u_1} x)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1} (homotopyNatTrans.{u_1} H) (SSet.HomotopyCategory.mk.{u_1} x)))
+@homotopyNatTrans_precomp_app_arrow.{u_1} : ∀ {A X Y : SSet.{u_1}} (i : Quiver.Hom.{u_1, u_1 + 1} A X)
+  {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} (H : SSet.Homotopy.{u_1} F G)
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (homotopyNatTrans.{u_1} (SSet.RelativeMorphism.Homotopy.h.{u_1} (stableHomotopyPrecomp.{u_1} i H)))
+        (SSet.HomotopyCategory.mk.{u_1} x)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (homotopyNatTrans.{u_1} (SSet.RelativeMorphism.Homotopy.h.{u_1} H))
+        (SSet.HomotopyCategory.mk.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} i (Opposite.op.{1} { len := 0 })))
+            x))))
+@homotopyNatTransOfEndpoints_precomp_app_arrow.{u_1} : ∀ {A X Y : SSet.{u_1}} (i : Quiver.Hom.{u_1, u_1 + 1} A X)
+  {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} (H : SSet.Homotopy.{u_1} F G)
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (homotopyNatTransOfEndpoints.{u_1} (SSet.RelativeMorphism.Homotopy.h.{u_1} (stableHomotopyPrecomp.{u_1} i H)) ⋯
+          ⋯)
+        (SSet.HomotopyCategory.mk.{u_1} x)))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (homotopyNatTransOfEndpoints.{u_1} (SSet.RelativeMorphism.Homotopy.h.{u_1} H) ⋯ ⋯)
+        (SSet.HomotopyCategory.mk.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} i (Opposite.op.{1} { len := 0 })))
+            x))))
+@stableCommShiftOfOne_neg_one.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] {F : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D}
+  (e : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F 1),
+  Eq.{max (u_2 + 1) (u_3 + 1)} (CategoryTheory.Functor.commShiftIso.{u_1, u_2, u_3, u_4, 0} F (-1))
+    (stableShiftCommutationNeg.{u_1, u_2, u_3, u_4} e)
+@stableShiftCommutationNeg_naturality.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] {F G : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D}
+  (τ : Quiver.Hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3} F G) {a : ℤ}
+  (eF : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F a) (eG : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} G a),
+  (∀ (X : C),
+      Eq.{u_3 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_3, u_4}
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4}
+            (CategoryTheory.Iso.hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3} eF) X)
+          (CategoryTheory.Functor.map.{u_3, u_3, u_4, u_4} (CategoryTheory.shiftFunctor.{u_3, u_4, 0} D a)
+            (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4} τ X)))
+        (CategoryTheory.CategoryStruct.comp.{u_3, u_4}
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4} τ
+            (CategoryTheory.Functor.obj.{u_1, u_1, u_2, u_2} (CategoryTheory.shiftFunctor.{u_1, u_2, 0} C a) X))
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4}
+            (CategoryTheory.Iso.hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3} eG) X))) →
+    ∀ (X : C),
+      Eq.{u_3 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_3, u_4}
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4}
+            (CategoryTheory.Iso.hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}
+              (stableShiftCommutationNeg.{u_1, u_2, u_3, u_4} eF))
+            X)
+          (CategoryTheory.Functor.map.{u_3, u_3, u_4, u_4} (CategoryTheory.shiftFunctor.{u_3, u_4, 0} D (Neg.neg.{0} a))
+            (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4} τ X)))
+        (CategoryTheory.CategoryStruct.comp.{u_3, u_4}
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4} τ
+            (CategoryTheory.Functor.obj.{u_1, u_1, u_2, u_2}
+              (CategoryTheory.shiftFunctor.{u_1, u_2, 0} C (Neg.neg.{0} a)) X))
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4}
+            (CategoryTheory.Iso.hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}
+              (stableShiftCommutationNeg.{u_1, u_2, u_3, u_4} eG))
+            X))
+@stableNatTransCommShiftOfOne.{u_1, u_2, u_3,
+    u_4} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] [inst_2 : CategoryTheory.HasShift.{u_1, u_2, 0} C ℤ]
+  [inst_3 : CategoryTheory.HasShift.{u_3, u_4, 0} D ℤ] {F G : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D}
+  (τ : Quiver.Hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3} F G)
+  (eF : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} F 1) (eG : StableShiftCommutationIso.{u_1, u_2, u_3, u_4} G 1),
+  (∀ (X : C),
+      Eq.{u_3 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_3, u_4}
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4}
+            (CategoryTheory.Iso.hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3} eF) X)
+          (CategoryTheory.Functor.map.{u_3, u_3, u_4, u_4} (CategoryTheory.shiftFunctor.{u_3, u_4, 0} D 1)
+            (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4} τ X)))
+        (CategoryTheory.CategoryStruct.comp.{u_3, u_4}
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4} τ
+            (CategoryTheory.Functor.obj.{u_1, u_1, u_2, u_2} (CategoryTheory.shiftFunctor.{u_1, u_2, 0} C 1) X))
+          (CategoryTheory.NatTrans.app.{u_1, u_3, u_2, u_4}
+            (CategoryTheory.Iso.hom.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3} eG) X))) →
+    CategoryTheory.NatTrans.CommShift.{u_1, u_2, u_3, u_4, 0} τ ℤ
+@exactFunctorNatTrans.{u_1} : {X Y : SSet.{u_1}} →
+  {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} →
+    [IsExactFunctor.{u_1} F] →
+      [IsExactFunctor.{u_1} G] →
+        SSet.Homotopy.{u_1} F G →
+          Quiver.Hom.{u_1, u_1}
+            (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+              (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+            (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+              (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} G))
+@exactFunctorNatTrans_cofiberConnecting.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} [inst_4 : IsExactFunctor.{u_1} F] [inst_5 : IsExactFunctor.{u_1} G]
+  (H : SSet.Homotopy.{u_1} F G) (t : ZeroTriangle.{u_1} X) (ht : IsCofiberSequence.{u_1} t),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1} (exactFunctorNatTrans.{u_1} H)
+        (CategoryTheory.ShortComplex.X₃.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t)))
+      (cofiberConnecting.{u_1} (ZeroTriangle.map.{u_1} t G ⋯) ⋯))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (cofiberConnecting.{u_1} (ZeroTriangle.map.{u_1} t F ⋯) ⋯)
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (suspensionFunctor.{u_1} Y)
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1} (exactFunctorNatTrans.{u_1} H)
+          (CategoryTheory.ShortComplex.X₁.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t)))))
+@cofiberConnecting_isIso_of_zero_middle.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X) (ht : IsCofiberSequence.{u_1} t),
+  IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) →
+    CategoryTheory.IsIso.{u_1, u_1} (cofiberConnecting.{u_1} t ht)
+@exactFunctorNatTrans_suspension_comm_of_zero_middle.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} [inst_4 : IsExactFunctor.{u_1} F] [inst_5 : IsExactFunctor.{u_1} G]
+  (H : SSet.Homotopy.{u_1} F G) (t : ZeroTriangle.{u_1} X),
+  IsCofiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) →
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+          (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1} (exactFunctorNatTrans.{u_1} H)
+            (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1} (suspensionFunctor.{u_1} X)
+              (CategoryTheory.ShortComplex.X₁.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))))
+          (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+            (CategoryTheory.Iso.hom.{u_1, u_1} (exactFunctorSuspensionIso.{u_1} G))
+            (CategoryTheory.ShortComplex.X₁.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+          (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+            (CategoryTheory.Iso.hom.{u_1, u_1} (exactFunctorSuspensionIso.{u_1} F))
+            (CategoryTheory.ShortComplex.X₁.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t)))
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (suspensionFunctor.{u_1} Y)
+            (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1} (exactFunctorNatTrans.{u_1} H)
+              (CategoryTheory.ShortComplex.X₁.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t)))))
+@exactFunctorNatTrans_suspension_comm.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} [inst_4 : IsExactFunctor.{u_1} F] [inst_5 : IsExactFunctor.{u_1} G]
+  (H : SSet.Homotopy.{u_1} F G) (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1} (exactFunctorNatTrans.{u_1} H)
+        (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1} (suspensionFunctor.{u_1} X)
+          (SSet.HomotopyCategory.mk.{u_1} x)))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (exactFunctorSuspensionIso.{u_1} G)) (SSet.HomotopyCategory.mk.{u_1} x)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (exactFunctorSuspensionIso.{u_1} F)) (SSet.HomotopyCategory.mk.{u_1} x))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (suspensionFunctor.{u_1} Y)
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1} (exactFunctorNatTrans.{u_1} H)
+          (SSet.HomotopyCategory.mk.{u_1} x))))
+@exactFunctorNatTrans_commShift_one.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} [inst_4 : IsExactFunctor.{u_1} F] [inst_5 : IsExactFunctor.{u_1} G]
+  (H : SSet.Homotopy.{u_1} F G),
+  CategoryTheory.NatTrans.CommShiftCore.{u_1, u_1, u_1, u_1, 0} (exactFunctorNatTrans.{u_1} H) 1
+@exactFunctorNatTrans_commShift.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} [inst_4 : IsExactFunctor.{u_1} F] [inst_5 : IsExactFunctor.{u_1} G]
+  (H : SSet.Homotopy.{u_1} F G),
+  CategoryTheory.NatTrans.CommShift.{u_1, u_1, u_1, u_1, 0} (exactFunctorNatTrans.{u_1} H) ℤ
+@exactFunctorNatTransTriangle.{u_1} : {X Y : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : IsStable.{u_1} X] →
+      [inst_2 : SSet.Quasicategory.{u_1} Y] →
+        [inst_3 : IsStable.{u_1} Y] →
+          {F G : Quiver.Hom.{u_1, u_1 + 1} X Y} →
+            [inst_4 : IsExactFunctor.{u_1} F] →
+              [inst_5 : IsExactFunctor.{u_1} G] →
+                SSet.Homotopy.{u_1} F G →
+                  Quiver.Hom.{u_1, u_1}
+                    (CategoryTheory.Functor.mapTriangle.{u_1, u_1, u_1, u_1}
+                      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F)))
+                    (CategoryTheory.Functor.mapTriangle.{u_1, u_1, u_1, u_1}
+                      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} G)))
+```

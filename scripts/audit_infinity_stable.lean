@@ -1570,7 +1570,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspensionComponents,
     `SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspensionObjectComparison,
     `SerrePositivity.InfinityCategories.Stable.ExactFunctorConnecting,
-    `SerrePositivity.InfinityCategories.Stable.ExactFunctorTriangulated]
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorTriangulated,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyNatTransPrecomposition,
+    `SerrePositivity.InfinityCategories.Stable.ShiftCommutationNaturalTransformation,
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorNaturalTransformation]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
