@@ -91,3 +91,5 @@ public import SerrePositivity.KST.ProExcision.GroupProductData
 public import SerrePositivity.KST.ProExcision.ConjugationEquivariance
 public import SerrePositivity.KST.ProExcision.IntegerTensorBifunctor
 public import SerrePositivity.KST.ProExcision.ChainTensorVanishing
+public import SerrePositivity.KST.ProExcision.LinearizedHomotopyOperations
+public import SerrePositivity.KST.ProExcision.AlexanderWhitney

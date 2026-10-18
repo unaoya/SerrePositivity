@@ -1518,3 +1518,60 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.normalizedStrictifiedTensor_eq_low
 #print axioms SerrePositivity.KST.ProExcision.normalizedStrictifiedTensor_eq_low
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.refl
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.refl
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.symm
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.symm
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.trans
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.trans
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.restrict
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.restrict
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.postcomp
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.postcomp
+
+#check @SerrePositivity.KST.ProExcision.linearizedCylinderMap
+#print axioms SerrePositivity.KST.ProExcision.linearizedCylinderMap
+
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₀_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₀_naturality
+
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₁_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₁_naturality
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.precomp
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.precomp
+
+#check @SerrePositivity.KST.ProExcision.awFront
+#print axioms SerrePositivity.KST.ProExcision.awFront
+
+#check @SerrePositivity.KST.ProExcision.awBack
+#print axioms SerrePositivity.KST.ProExcision.awBack
+
+#check @SerrePositivity.KST.ProExcision.awFront_apply
+#print axioms SerrePositivity.KST.ProExcision.awFront_apply
+
+#check @SerrePositivity.KST.ProExcision.awBack_apply
+#print axioms SerrePositivity.KST.ProExcision.awBack_apply
+
+#check @SerrePositivity.KST.ProExcision.awDegrees
+#print axioms SerrePositivity.KST.ProExcision.awDegrees
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitneySummand
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitneySummand
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitneyApp
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitneyApp
+
+#check @SerrePositivity.KST.ProExcision.ι_chainIntegerTensorMap
+#print axioms SerrePositivity.KST.ProExcision.ι_chainIntegerTensorMap
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitneySummand_naturality
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitneySummand_naturality
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitneyApp_naturality
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitneyApp_naturality
