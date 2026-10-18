@@ -7575,5 +7575,32 @@ lemma exists_quasicategory_resolution_over {X Y : SSet.{u}} [Quasicategory Y] (f
 lemma innerAnodyne_vertex_bijective {A B : SSet.{u}} (i : A ⟶ B)
     (hi : innerAnodyneExtensions i) : Function.Bijective (i.app (Opposite.op ⦋0⦌))
 
+lemma intervalBoundaryDiagram_postcomp {A E F : SSet.{u}} (a b : A ⟶ E) (f : E ⟶ F) :
+    intervalBoundaryDiagram a b ≫ f = intervalBoundaryDiagram (a ≫ f) (b ≫ f)
+
+lemma innerAnodyne_extend_prism_over_interval {A B E : SSet.{u}}
+    (i : A ⟶ B) (hi : innerAnodyneExtensions i)
+    (p : E ⟶ (Δ[1] : SSet.{u})) [InnerFibration p]
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ E) (hH : H ≫ p = fst Δ[1] A)
+    (F0 F1 : B ⟶ E)
+    (h0 : i ≫ F0 = prismEndpoint 0 A ≫ H) (h1 : i ≫ F1 = prismEndpoint 1 A ≫ H)
+    (h0p : F0 ≫ p = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+    (h1p : F1 ≫ p = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :
+    ∃ L : (Δ[1] : SSet.{u}) ⊗ B ⟶ E,
+      (Δ[1] ◁ i) ≫ L = H ∧ prismEndpoint 0 B ≫ L = F0 ∧
+      prismEndpoint 1 B ≫ L = F1 ∧ L ≫ p = fst Δ[1] B
+
+lemma prismVerticalSimplex_naturality {A B E : SSet.{u}} (i : A ⟶ B)
+    (H : (Δ[1] : SSet.{u}) ⊗ B ⟶ E) (x : A _⦋0⦌) :
+    prismVerticalSimplex ((Δ[1] ◁ i) ≫ H) x =
+      prismVerticalSimplex H (i.app (Opposite.op ⦋0⦌) x)
+
+lemma innerAnodyne_prism_vertical_isCocartesian {A B E S : SSet.{u}}
+    (i : A ⟶ B) (hi : innerAnodyneExtensions i) (p : E ⟶ S)
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ E) (L : (Δ[1] : SSet.{u}) ⊗ B ⟶ E)
+    (hL : (Δ[1] ◁ i) ≫ L = H)
+    (hc : ∀ x : A _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex H x)) :
+    ∀ y : B _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex L y)
+
 end SerrePositivity.InfinityCategories
 ```

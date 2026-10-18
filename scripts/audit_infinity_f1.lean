@@ -1640,3 +1640,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.exists_innerAnodyne_innerFibration_factorization
 #check @SerrePositivity.InfinityCategories.exists_quasicategory_resolution_over
 #check @SerrePositivity.InfinityCategories.innerAnodyne_vertex_bijective
+#check @SerrePositivity.InfinityCategories.intervalBoundaryDiagram_postcomp
+#check @SerrePositivity.InfinityCategories.innerAnodyne_extend_prism_over_interval
+#check @SerrePositivity.InfinityCategories.prismVerticalSimplex_naturality
+#check @SerrePositivity.InfinityCategories.innerAnodyne_prism_vertical_isCocartesian
