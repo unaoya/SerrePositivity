@@ -5246,3 +5246,117 @@ strict な豊穣錐について、この制限と構成済みの q′ の可換�
 他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-cone-section-restriction-aggregate.log` と
 `/tmp/gamma3-cone-section-restriction-audit.log`。
+
+
+### 錐の頂点評価と、反転した豊穣 Hom を始域とする native な比較
+
+`ConeApexEvaluation` は任意の単体集合 K について、左頂点の包含
+`joinInl Δ[0] K` が left anodyne であることを証明した。
+任意の quasicategory X の任意の coherent な錐 c と頂点 x について、錐の図式 c.val 上の
+coslice の切断を c.vertex で評価する実際の射 `coneApexSectionEvaluation c x` は
+trivial Kan fibration、従って単体的ホモトピー同値である。
+包含後の値も内部 Hom の頂点評価に厳密に一致する。
+
+`StrictConeNativeComparison` は strict な錐 c に特殊化し、終域を c.pt の標準頂点へ
+正規化した `strictConeApexEvaluation c x` の厳密な切断 `strictConeApexSection c x` を選ぶ。
+反転した豊穣 Hom からの既存の `coherentCosliceFiberComparison x c.pt` をこの切断と合成して
+`reflectedStrictConeFamilyComparison c x` を構成した。
+頂点評価との合成は元の coslice fiber 比較に厳密に一致し、局所 Kan 性の下で
+この族の比較は単体的ホモトピー同値となる。元の図式への `coneSectionRestriction` を合成した
+`reflectedNativeConeComparison c x` に対し、主定理は次の通り。
+
+```lean
+IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+  IsSimplicialHomotopyEquivalence (reflectedNativeConeComparison c x)
+```
+
+I は任意の小圏、C は単体的圏で、追加の前提は
+`[∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]` のみ。
+通常の錐 c の極限性、Hom 錐の極限性、図式の fibration 性や比較同値の仮定は置かない。
+この比較の始域は `ULift (sHom(x,c.pt).op)`、終域は元の strict な図式上の
+coslice の切断空間である。選んだ切断を含む実際の native な射であり、構成済みの
+`reflectedStrictConeSectionsComparison`（q′ と weighted 比較の合成）とはまだ同定していない。
+切断の選択に関する図式の自然性も主張しない。
+原典上の位置は HTT 4.2.4.1 の双対、Kerodon 7.4.1.6、7.5.4.6。
+
+新規16宣言の正確な型と全前提は以下。
+
+```lean
+lemma joinApexInclusion_leftAnodyne (K : SSet.{u}) :
+    leftAnodyneExtensions (joinInl (Δ[0] : SSet.{u}) K)
+
+def joinApexVertex (K : SSet.{u}) : (join (Δ[0] : SSet.{u}) K) _⦋0⦌
+
+lemma coneDiagram_apex {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
+    c.val.app (Opposite.op ⦋0⦌) (joinApexVertex K) = c.vertex
+
+def coneApexSectionEvaluation {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) : coherentConeSectionSpace c.val x ⟶
+      vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) c.vertex
+
+lemma coneApexSectionEvaluation_ι {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) :
+    coneApexSectionEvaluation c x ≫
+        vertexFiberι (sliceUnderProjection (SSet.yonedaEquiv.symm x)) c.vertex =
+      vertexFiberι ((ihom (join (Δ[0] : SSet.{u}) K)).map
+        (sliceUnderProjection (SSet.yonedaEquiv.symm x))) (functorVertex c.val) ≫
+          evaluateFunctorAt (joinApexVertex K)
+
+lemma coneApexSectionEvaluation_trivialKanFibration {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (c : JoinCone p) (x : X _⦋0⦌) :
+    TrivialKanFibration (coneApexSectionEvaluation c x)
+
+lemma coneApexSectionEvaluation_homotopyEquivalence {K X : SSet.{u}} [Quasicategory X]
+    {p : K ⟶ X} (c : JoinCone p) (x : X _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (coneApexSectionEvaluation c x)
+
+noncomputable def strictConeApexEvaluation {F : I ⥤ C} (c : Cone F) (x : C) :
+    coherentConeSectionSpace (strictCoherentCone c).val (coherentNerveVertex x) ⟶
+      vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+        (coherentNerveVertex c.pt)
+
+lemma strictConeApexEvaluation_trivialKanFibration {F : I ⥤ C} (c : Cone F) (x : C) :
+    TrivialKanFibration (strictConeApexEvaluation c x)
+
+noncomputable def strictConeApexSection {F : I ⥤ C} (c : Cone F) (x : C) :
+    vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+        (coherentNerveVertex c.pt) ⟶
+      coherentConeSectionSpace (strictCoherentCone c).val (coherentNerveVertex x)
+
+lemma strictConeApexSection_evaluation {F : I ⥤ C} (c : Cone F) (x : C) :
+    strictConeApexSection c x ≫ strictConeApexEvaluation c x = 𝟙 _
+
+noncomputable def reflectedStrictConeFamilyComparison {F : I ⥤ C} (c : Cone F) (x : C) :
+    (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x c.pt).op ⟶
+      coherentConeSectionSpace (strictCoherentCone c).val (coherentNerveVertex x)
+
+lemma reflectedStrictConeFamilyComparison_evaluation {F : I ⥤ C} (c : Cone F) (x : C) :
+    reflectedStrictConeFamilyComparison c x ≫ strictConeApexEvaluation c x =
+      coherentCosliceFiberComparison x c.pt
+
+lemma reflectedStrictConeFamilyComparison_homotopyEquivalence {F : I ⥤ C}
+    (c : Cone F) (x : C) :
+    IsSimplicialHomotopyEquivalence (reflectedStrictConeFamilyComparison c x)
+
+noncomputable def reflectedNativeConeComparison {F : I ⥤ C} (c : Cone F) (x : C) :
+    (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x c.pt).op ⟶
+      coherentConeSectionSpace (strictCoherentDiagram F) (coherentNerveVertex x)
+
+lemma strictCoherentCone_isLimit_iff_reflectedNativeConeComparison {F : I ⥤ C}
+    (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+      IsSimplicialHomotopyEquivalence (reflectedNativeConeComparison c x)
+```
+
+次は q′ の切断比較とこの native な制限の比較を接続する。
+方針は、strict な錐を通常の添字圏に始対象を加えた図式で表し、その図式の Hom 錐から
+weighted な切断比較を作り、元の図式への制限と頂点での評価を同時に追跡すること。
+今回の定理だけでは Hom の strict 極限から ∞ 極限はまだ得られない。
+q′ との整合性、元の q_x と反転係数の整合性、𝒮・Sp の残りの適用、余極限の比較は未完了。
+従って γ3b・γ3c の完成とはしない。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4456 jobs）、公開1005宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-native-enriched-apex-aggregate.log` と
+`/tmp/gamma3-native-enriched-apex-audit.log`。

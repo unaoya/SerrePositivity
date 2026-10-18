@@ -2128,3 +2128,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @isLimitCone_iff_coneSectionRestriction_homotopyEquivalence
 #print axioms isLimitCone_iff_coneSectionRestriction_homotopyEquivalence
+
+#check @joinApexInclusion_leftAnodyne
+#print axioms joinApexInclusion_leftAnodyne
+
+#check @joinApexVertex
+#print axioms joinApexVertex
+
+#check @coneDiagram_apex
+#print axioms coneDiagram_apex
+
+#check @coneApexSectionEvaluation
+#print axioms coneApexSectionEvaluation
+
+#check @coneApexSectionEvaluation_ι
+#print axioms coneApexSectionEvaluation_ι
+
+#check @coneApexSectionEvaluation_trivialKanFibration
+#print axioms coneApexSectionEvaluation_trivialKanFibration
+
+#check @coneApexSectionEvaluation_homotopyEquivalence
+#print axioms coneApexSectionEvaluation_homotopyEquivalence
+
+#check @strictConeApexEvaluation
+#print axioms strictConeApexEvaluation
+
+#check @strictConeApexEvaluation_trivialKanFibration
+#print axioms strictConeApexEvaluation_trivialKanFibration
+
+#check @strictConeApexSection
+#print axioms strictConeApexSection
+
+#check @strictConeApexSection_evaluation
+#print axioms strictConeApexSection_evaluation
+
+#check @reflectedStrictConeFamilyComparison
+#print axioms reflectedStrictConeFamilyComparison
+
+#check @reflectedStrictConeFamilyComparison_evaluation
+#print axioms reflectedStrictConeFamilyComparison_evaluation
+
+#check @reflectedStrictConeFamilyComparison_homotopyEquivalence
+#print axioms reflectedStrictConeFamilyComparison_homotopyEquivalence
+
+#check @reflectedNativeConeComparison
+#print axioms reflectedNativeConeComparison
+
+#check @strictCoherentCone_isLimit_iff_reflectedNativeConeComparison
+#print axioms strictCoherentCone_isLimit_iff_reflectedNativeConeComparison

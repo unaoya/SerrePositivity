@@ -1009,3 +1009,31 @@ native な極限判定の切断の制限への移送は証明済みとなった�
 他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-cone-section-restriction-aggregate.log` と
 `/tmp/gamma3-cone-section-restriction-audit.log`。
+
+
+### 錐の頂点評価と豊穣 Hom を始域とする native な比較
+
+`ConeApexEvaluation` は任意の K の左頂点包含 `joinInl Δ[0] K` の left anodyne 性と、
+任意の quasicategory X の錐 c に対する `coneApexSectionEvaluation c x` の
+trivial Kan fibration 性・ホモトピー同値性を証明した。包含後の値も通常の頂点評価に同定。
+`StrictConeNativeComparison` は strict な錐の頂点評価を c.pt へ正規化し、その厳密な切断を選ぶ。
+既存の coslice fiber 比較との合成 `reflectedStrictConeFamilyComparison c x` は
+頂点で元の比較に厳密に一致し、局所 Kan 性の下で単体的ホモトピー同値である。
+元の図式への制限を合成した `reflectedNativeConeComparison c x` を定義し、主定理
+`strictCoherentCone_isLimit_iff_reflectedNativeConeComparison` として
+`IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+IsSimplicialHomotopyEquivalence (reflectedNativeConeComparison c x)` を証明した。
+前提は C の局所 Kan 性のみで、I は任意の小圏、c は任意の通常の錐。
+Hom 錐の極限性や図式の fibration 性は要求しない。始域は `ULift (sHom(x,c.pt).op)`。
+切断の選択を含み、その自然性は主張しない。新規16宣言の正確な型・全前提は README に記録。
+原典は HTT 4.2.4.1 の双対、Kerodon 7.4.1.6、7.5.4.6。
+q′ の切断比較との整合性はまだ未証明。次は始対象を加えた通常の図式上の weighted な
+切断比較を使い、頂点での評価と元の図式への制限を同時に追跡する。
+元の q_x と反転係数の整合性、𝒮・Sp の残りの適用、余極限の比較も未完了。
+γ3b・γ3c は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4456 jobs）、公開1005宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-native-enriched-apex-aggregate.log` と
+`/tmp/gamma3-native-enriched-apex-audit.log`。
