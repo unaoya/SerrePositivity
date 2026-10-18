@@ -2868,3 +2868,54 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.groupProduct_trivial
 #print axioms SerrePositivity.KST.ProExcision.groupProduct_trivial
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare.refl
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare.refl
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare.add
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare.add
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare.smul
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare.smul
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.linearizedCylinderHomotopy_generator
+#print axioms SerrePositivity.KST.ProExcision.linearizedCylinderHomotopy_generator
+
+#check @SerrePositivity.KST.ProExcision.linearizedCylinderHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedCylinderHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.linearizedEndpointSimplicialHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpointSimplicialHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.linearizedEndpointChainHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpointChainHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.normalizedLinearizedEndpointHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedLinearizedEndpointHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.normalizedStrictificationHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedStrictificationHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.chainComparisonDifferenceHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.chainComparisonDifferenceHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.linearizedMHomotopyOfChainComparisons_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedMHomotopyOfChainComparisons_naturality
+
+#check @SerrePositivity.KST.ProExcision.simplicialIntegerTensorMap_comp
+#print axioms SerrePositivity.KST.ProExcision.simplicialIntegerTensorMap_comp
+
+#check @SerrePositivity.KST.ProExcision.normalizedTensorComparisonHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedTensorComparisonHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.normalizedTensorComparisonWithHomotopies_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedTensorComparisonWithHomotopies_square
+
+#check @SerrePositivity.KST.ProExcision.normalizedTensorAugmentationComparison_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedTensorAugmentationComparison_square
+
+#check @SerrePositivity.KST.ProExcision.constructionA5
+#print axioms SerrePositivity.KST.ProExcision.constructionA5

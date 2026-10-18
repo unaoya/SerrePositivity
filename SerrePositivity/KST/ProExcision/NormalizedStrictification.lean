@@ -92,10 +92,12 @@ lemma LinearizedMHomotopy.normalized_strictifiedDifference_eq_zero
 def LinearizedMHomotopy.normalizedStrictificationHomotopy
     (H : LinearizedMHomotopy f g m) :
     Homotopy ((normalizedMooreComplex _).map f)
-      ((normalizedMooreComplex _).map H.strictifiedMap) := by
-  have h := normalizedChainHomotopy
-    ((linearizedCylinderHomotopy S).postcomp H.strictificationHomotopy.h)
-  rw [H.strictificationHomotopy.h₀, H.strictificationHomotopy.h₁] at h
-  exact h
+      ((normalizedMooreComplex _).map H.strictifiedMap) :=
+  (Homotopy.ofEq (congrArg ((normalizedMooreComplex _).map)
+      H.strictificationHomotopy.h₀.symm)).trans
+    ((normalizedChainHomotopy
+      ((linearizedCylinderHomotopy S).postcomp H.strictificationHomotopy.h)).trans
+      (Homotopy.ofEq (congrArg ((normalizedMooreComplex _).map)
+        H.strictificationHomotopy.h₁)))
 
 end SerrePositivity.KST.ProExcision

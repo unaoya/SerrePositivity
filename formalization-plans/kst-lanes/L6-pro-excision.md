@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1007宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1024宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -777,3 +777,14 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `groupProductNerve` は ComposableArrows の点ごとの関手の積の後に μ の関手を適用する。P,Q,H の可換性を仮定しない。
 - `linearizedGroupProduct_comp` は対角と α,β,μ の実合成を C(μ∘(α,β)) へ同定する。最後に μ を適用する採用済み設計を具体化した。
 - 次はこの一般テンソル版を μ 版 A.5 の三つの補正項へ特殊化し、構成の自然性から外部 G 同変性を接続する。非同変版だけで L6c 完了とは表示しない。
+
+
+### A.5 の自然性の接続（2026-10-19）
+
+- μ 版の非同変な実ホモトピー `constructionA5` を構成し、対象ビルド・公理監査に追加した。
+- `ChainHomotopySquare` に和・整数倍・恒等比較を加え、一般の二つの鎖ホモトピーの全テンソルの自然性を証明した。
+- 標準線形区間の組合せ的ホモトピー、交代面複体への移送、Moore 正規化、厳密化比較の順に自然性を証明した。
+- 厳密化比較の端点の同定は等式輸送に代えて零ホモトピーとの連結で明示した。数学的な構成は同じで、自然性の証明で端点同定が零成分であることを直接使える。
+- `linearizedMHomotopyOfChainComparisons_naturality` により、二つの低次一致する全鎖比較の差からの実区間復元が自然であることを証明した。
+- `normalizedTensorComparisonWithHomotopies_square` と `normalizedTensorAugmentationComparison_square` により、AW・shuffle で挟んだ比較と補正した三項の比較の自然性を証明した。
+- この保存単位では1024宣言の監査が標準三公理のみで成功。L6c は未完了であり、対角・μ の自然性および最終的な外部 G 同変性の接続を続ける。

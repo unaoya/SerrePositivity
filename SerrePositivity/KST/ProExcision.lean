@@ -171,3 +171,19 @@ public import SerrePositivity.KST.ProExcision.NormalizedTensorComparison
 public import SerrePositivity.KST.ProExcision.TensorAugmentationMHomotopy
 public import SerrePositivity.KST.ProExcision.GroupProductNerve
 public import SerrePositivity.KST.ProExcision.LinearizedGroupProduct
+
+public import SerrePositivity.KST.ProExcision.ChainHomotopySquareLinear
+
+public import SerrePositivity.KST.ProExcision.TensorHomotopyGeneralNaturality
+
+public import SerrePositivity.KST.ProExcision.LinearizedCylinderHomotopyNaturality
+
+public import SerrePositivity.KST.ProExcision.LinearizedEndpointChainNaturality
+
+public import SerrePositivity.KST.ProExcision.NormalizedStrictificationNaturality
+
+public import SerrePositivity.KST.ProExcision.LowChainComparisonNaturality
+
+public import SerrePositivity.KST.ProExcision.NormalizedTensorComparisonNaturality
+
+public import SerrePositivity.KST.ProExcision.ConstructionA5
