@@ -2672,5 +2672,43 @@ lemma coherentResolutionFaceExtensionIsoAll_projection {n : ℕ} (T : Finset (Fi
 lemma coherentResolution_map_face_ι_mono_all {n : ℕ} (T : Finset (Fin (n + 1))) :
     Mono (coherentResolution.{u}.map (stdSimplex.face T).ι)
 
+lemma exists_pushoutIsoOfCompatibleIsos
+    {Z X Y P Z' X' Y' P' : SSet.{u}}
+    {f : Z ⟶ X} {g : Z ⟶ Y} {i : X ⟶ P} {j : Y ⟶ P}
+    {f' : Z' ⟶ X'} {g' : Z' ⟶ Y'} {i' : X' ⟶ P'} {j' : Y' ⟶ P'}
+    (h : IsPushout f g i j) (h' : IsPushout f' g' i' j')
+    (eZ : Z ≅ Z') (eX : X ≅ X') (eY : Y ≅ Y')
+    (hf : f ≫ eX.hom = eZ.hom ≫ f') (hg : g ≫ eY.hom = eZ.hom ≫ g') :
+    ∃ e : P ≅ P', i ≫ e.hom = eX.hom ≫ i' ∧ j ≫ e.hom = eY.hom ≫ j'
+
+def HasCoherentResolutionExtension {n : ℕ} (A : (Δ[n] : SSet.{u}).Subcomplex)
+    (B : (coherentResolutionSimplex.{u} n).Subcomplex) : Prop
+
+lemma hasCoherentResolutionExtension_face {n : ℕ} (T : Finset (Fin (n + 1))) :
+    HasCoherentResolutionExtension (stdSimplex.face.{u} T) (coherentResolutionFace T)
+
+lemma hasCoherentResolutionExtension_congr {n : ℕ}
+    {A A' : (Δ[n] : SSet.{u}).Subcomplex}
+    {B B' : (coherentResolutionSimplex.{u} n).Subcomplex} (hA : A = A') (hB : B = B') :
+    HasCoherentResolutionExtension A B ↔ HasCoherentResolutionExtension A' B'
+
+lemma coherentResolutionExtension_naturality {n : ℕ}
+    {A A' : (Δ[n] : SSet.{u}).Subcomplex}
+    {B B' : (coherentResolutionSimplex.{u} n).Subcomplex}
+    (e : coherentResolution.obj A.toSSet ≅ B.toSSet)
+    (e' : coherentResolution.obj A'.toSSet ≅ B'.toSSet)
+    (he : e.hom ≫ B.ι = coherentResolution.map A.ι ≫ coherentResolutionStdIso.hom.app ⦋n⦌)
+    (he' : e'.hom ≫ B'.ι = coherentResolution.map A'.ι ≫ coherentResolutionStdIso.hom.app ⦋n⦌)
+    (hA : A ≤ A') (hB : B ≤ B') :
+    coherentResolution.map (Subcomplex.homOfLE hA) ≫ e'.hom = e.hom ≫ Subcomplex.homOfLE hB
+
+lemma hasCoherentResolutionExtension_sup {n : ℕ}
+    (A₁ A₂ : (Δ[n] : SSet.{u}).Subcomplex)
+    (B₁ B₂ : (coherentResolutionSimplex.{u} n).Subcomplex)
+    (hI : HasCoherentResolutionExtension (A₁ ⊓ A₂) (B₁ ⊓ B₂))
+    (h₁ : HasCoherentResolutionExtension A₁ B₁)
+    (h₂ : HasCoherentResolutionExtension A₂ B₂) :
+    HasCoherentResolutionExtension (A₁ ⊔ A₂) (B₁ ⊔ B₂)
+
 end SerrePositivity.InfinityCategories
 ```

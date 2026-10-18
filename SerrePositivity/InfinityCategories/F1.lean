@@ -102,3 +102,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFiniteGlui
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionBoundaryProjection
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceExtension
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionAllFaces
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionExtensionGluing
