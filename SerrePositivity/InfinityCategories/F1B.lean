@@ -131,3 +131,12 @@ public import SerrePositivity.InfinityCategories.F1B.UnitCounitExistence
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaHomotopySquare
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaCounitData
+public import SerrePositivity.InfinityCategories.F1B.ConstantHomFaithful
+public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyComparisonBijective
+public import SerrePositivity.InfinityCategories.F1B.UnitHomComponentInjective
+public import SerrePositivity.InfinityCategories.F1B.UnitHomLeftNaturality
+public import SerrePositivity.InfinityCategories.F1B.UnitLeftZigzag
+public import SerrePositivity.InfinityCategories.F1B.UnitLeftZigzagPointwise
+public import SerrePositivity.InfinityCategories.F1B.TriangleIdempotence
+public import SerrePositivity.InfinityCategories.F1B.UnitLeftTriangle
+public import SerrePositivity.InfinityCategories.F1B.UnitMappingAdjunction

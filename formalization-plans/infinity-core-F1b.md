@@ -77,7 +77,8 @@ pinched 模型では、比較による移送 `PinchedInterval.liftMap` の合成
 同じ前後合成作用とその恒等・合成・交換の同型を構成した。既存の `pinchedMap` がこの移送と
 等しいことを確認し、`pinchedMap_naturality_left/right` を実際のホモトピーとして公開した。
 
-これは B1 全体の完了ではない。**特徴づけの逆方向（Cor 6.2.6.5）** が残る。
+これは B1 全体の完了ではない。指定単位版（Cor 6.2.6.5）の逆方向は後述の通り完了し、
+単位を先に指定しない自然な各点の対応から単位を取り出す接続が残る。
 上の自然性は hX・hY の射と任意のパラメータの h Fun での対応として検証した段階であり、
 逆向きに入力する自然な写像空間対応の型と、そこから単位・余単位を構成する接続は未実装。
 Cor 6.2.6.5 は指定された自然変換 η が誘導する比較の同値性を使う。各点で任意に選んだ
@@ -155,9 +156,10 @@ fiber も quasicategory である。ここで用いる直積の第一射影の i
 `unitCommaFiber_exists_extension_iff` は任意の射 i に沿う fiber 内の延長問題を、
 b とホモトピーの同時延長へ厳密に移す。`unitCommaFiber_isInitialVertex_iff` により、
 始対象性を初頂点を指定した境界図式とホモトピーの同時延長で判定できる。
-これは元の始対象性との同値であり、各点の写像空間条件から延長が存在する証明はまだ残る。
+これは元の始対象性との同値であり、各点の写像空間条件から始対象性への接続も後述の通り証明済み。
 原典 Prop 6.2.6.1 の証明は relative join の cartesian fibration を使う。現在の境界引き戻しの
-区間 comma 模型について、その cartesian な輸送や原典模型との比較はまだ実装していない。
+区間 comma 模型では、標的で可逆な辺の cartesian 性と標的固定の lift を直接構成した。
+原典の relative join 模型との同型を仮定せず、この模型で局所単位判定を完結させる。
 
 始対象性について、`isInitialVertex_iff_pinchedHomLeft_isContractibleKan` を実装した。
 可縮性の反転不変性を境界充填から証明し、Core の終対象の右模型での判定と
@@ -219,10 +221,11 @@ comma の正方形へ戻す。標的族と三角形の輸送から得た関手�
 `homotopyEquivalencePath` で戻すと元の path 成分そのものとなる。
 これを復元に代入した `unitComparisonFiberToCommaMapping` は、導来 fiber から comma の区間写像空間へ
 戻る実際の射である。正方形表示と元の始域座標への射影を厳密に保持する。
-**両合成のホモトピーと比較射の同値性は未証明。** 合成の Hom の等式だけから選ぶ
+**恒等射から戻る合成へのホモトピーは後述の通り証明済み。任意の入力に対する
+もう一方の合成のホモトピーと比較射の同値性は主張しない。** 合成の Hom の等式だけから選ぶ
 path では元の二単体の情報を保つ保証がないため、順方向比較の path は、三辺固定の正方形全体の
 比較から取り出す `unitCommaSquareComparisonHomotopy` を使う。
-この構成と、導来 fiber から復元する側の三角形の輸送との両合成の整合性は別に検証する必要がある。
+この構成と、導来 fiber の普遍族で選んだ輸送の前合成との整合性を検証した。
 二方向の射の存在と終域の可縮性だけでは始域の可縮性は従わず、始対象性を結論してはならない。
 `exists_homotopy_relative_innerAnodyne` は inner anodyne な部分図式を固定して延長を比較する。
 `FunctorCompositionTriangle.relativeHomotopy` は同じ二辺を持つ三角形を内ホーン上で固定して結ぶ。
@@ -236,7 +239,8 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 `unitCommaCompositionUpperFamilyPath/LowerFamilyPath` は単位比較の像から共通対角を経て
 元の右辺に進む二経路となる。`unitCommaCoherentComparisonTriangle` はこの二つの指定経路と
 合成経路を持つ二単体である。この二経路の合成自体は独立な構成として保持する。
-元の正方形を入力にした順方向比較の構成は接続済みだが、二つの合成のホモトピーは未証明。
+元の正方形を入力にした順方向比較と実際の戻る合成のホモトピーは接続済み。
+もう一方の合成は指定単位の局所判定に不要であり、ここでは未証明のままにする。
 `functorSquareOfCompositionTriangle_eq_fold` は正方形への補完を具体的な畳み込みとして表示する。
 `FunctorCompositionTriangle.squareRelativeHomotopy` は相対三角形比較を正方形全体へ移し、
 下辺・左辺・上辺を固定し、右辺は対角の比較そのものに一致する。
@@ -326,17 +330,28 @@ raw な射を保ったパラメータ自然性を与える。`unitCompositionPat
 `HomotopyWhiskering` の前後合成・恒等の類の公式で `right_triangle` へ移す。
 **指定単位と構成した余単位の右三角恒等式は h(Fun(Y,X)) 内で証明済み。**
 `UnitMappingSpaceCondition.exists_counit_right_triangle` は追加仮定なしにこの余単位の存在を公開する。
-左三角恒等式と随伴データ全体の構成は未完了。
+`intervalFamilyComparison_bijective` は各点の写像空間同値から、任意のパラメータ上の
+定値関手間の Hom 比較を全単射にする。`constantFunctorHomMap_injective` は頂点での評価の左逆を使い、
+`unitComponentHomMap_injective` と `qcatUnitHomMap_constant_injective` を供給する。
+`qcatUnitHomMap_naturality_left` と右三角恒等式から、左 zigzag の単位比較による像が恒等の像と
+同じであることを得る（`qcatUnitHomMap_leftZigzag`）。これを各頂点へ制限して定値比較の単射性を
+適用すると左 zigzag は各点で恒等となる。Core の点ごとの可逆性判定により、h Fun 全体で可逆である。
+**各点の等式から全体の等式を直接は推論しない。**
+`bicategory_leftZigzag_idempotent_of_right_triangle` は一胞体反対双圏で既存の双対定理を使い、
+右三角恒等式から左 zigzag の冪等性を導く。これを QCat の表示へ移し、可逆な左因子を消去すると
+`UnitMappingSpaceCondition.left_triangle` を得る。
+`qcatAdjunctionOfUnitMappingSpaceCondition` は同じ comma 比較から得た余単位と左右の三角恒等式で
+随伴を構成し、`*_unitHom` が指定単位 η の厳密な回収を保証する。
+**指定単位の局所判定（Cor 6.2.6.5）は両方向とも証明済み。**
+`qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition` として公開し、
+`UnitMappingSpaceCondition.qcatUnitHomMap_bijective` によって以前の全パラメータ版の条件も帰結として回収した。
 
-B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
-接続と、`UnitMappingSpaceCondition η` から
-`∃ a : QCatAdjunction F G, a.unitHom = η` を構成する逆方向である。
-comma の経路では、各点の条件から構成した基底固定の比較を用いて、
-右三角恒等式を満たす上記の自然な余単位に指定単位との左三角恒等式を付ける必要がある。
-既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
-B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2131 jobs）・公理監査（1344 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 463 モジュールに straightening 依存がないことも確認した。
+B1 全体は未完了。残るのは、単位を先に指定しない自然な各点の pinched 写像空間対応から
+自然な単位 η とその標準比較条件を取り出す接続である。
+指定単位 η の各点の条件から、非定値の全パラメータ Hom 全単射、随伴と両三角恒等式へ進む経路は完了した。
+この指定単位版だけで、当初の自然な写像空間対応との同値全体を完了とは扱わない。B2〜B5 も未完了。
+対象ビルド（2141 jobs）・公理監査（1375 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 472 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -440,7 +455,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `mappingSpaceHomMap_functor/comp/id/square` | 関手の作用・合成・恒等・ホモトピー可換正方形の移送 | 実装済み |
 | `functorMappingSpaceHomEquiv`・`functorMappingSpaceHomEquiv_precomp` | 非定値関手間の写像空間比較から Hom 全単射とパラメータ自然性を導く | 実装済み |
 | `qcatUnitHomMap_bijective_of_mappingSpace` | 代表辺で単位を表す写像空間比較の同値性から Hom 全単射を導く | 実装済み |
-| `qcatAdjunctionOfUnitMappingEquivalences`・`qcatAdjunctionOfUnitMappingEquivalences_unitHom` | 全 A,U,V の比較から指定単位を持つ随伴を構成（各点の条件への還元は未完了） | 実装済み |
+| `qcatAdjunctionOfUnitMappingEquivalences`・`qcatAdjunctionOfUnitMappingEquivalences_unitHom` | 全 A,U,V の比較から指定単位を持つ随伴を構成（指定単位の各点の条件からの接続も証明済み） | 実装済み |
 | `qcatUnitHomMap_formula`・`qcatUnitHomMap_naturality_right/precomp` | 任意の単位候補による比較の内部 Hom での公式と自然性 | 実装済み |
 | `evaluateFunctorAt_constantFunctorMap`・`functorHomEvaluate` と恒等・合成・定値族の公式 | 点での評価と定値射による前合成の同一視 | 実装済み |
 | `homMk_transport`・`intervalFunctorMap_familyHom` | 辺の端点の輸送と、族の後合成の h Fun の表示 | 実装済み |
@@ -504,7 +519,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `functorSquareCoherence` と左右辺・`recover` の公式 | 関手正方形から coherence への復元、図式全体の厳密な回収 | 実装済み |
 | `unitCommaSquareOfComparisonHomotopy`・`unitCommaMappingFamilyOfComparisonHomotopy` | 単位比較の像から終辺へのホモトピーから comma の正方形・族を復元 | 実装済み |
 | `unitComparisonFiberSource/Path/Homotopy`・`unitComparisonFiberHomotopy_path` | 元の導来 fiber の普遍族・path・ホモトピー、path 自体の厳密な回収 | 実装済み |
-| `unitComparisonFiberToCommaMapping` と正方形・射影の公式 | 導来 fiber から comma の写像空間へ戻る実際の射 | 実装済み（逆関係は未証明） |
+| `unitComparisonFiberToCommaMapping` と正方形・射影の公式 | 導来 fiber から comma の写像空間へ戻る実際の射 | 実装済み（恒等射から戻る合成への比較は証明済み、もう一方は主張しない） |
 | `exists_homotopy_relative_innerAnodyne` | inner anodyne な部分図式を固定した延長の相対ホモトピー | 実装済み |
 | `FunctorCompositionTriangle.horn_eq`・`relativeHomotopy` とホーン・面の制限公式 | 同じ二辺を持つ三角形を、二辺を厳密に固定して比較 | 実装済み |
 | `FunctorCompositionTriangle.diagonalHomotopy` と `source/target` | 指定三角形の比較に由来する対角辺のホモトピー、両端を時間方向にも固定 | 実装済み |
@@ -524,10 +539,10 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `exists_relativeFunctorHomotopyComposite`・`relativeFunctorHomotopyComposite` と固定条件・合成三角形・二単体の固定条件 | 指定部分図式を全時間で固定する合成、元の二経路の実際の二単体、二単体自体も部分図式上で定値 | 実装済み |
 | `squareThreeEdges`・三つの包含・`restriction_eq`・`homotopy_restriction` | 三辺の和の部分図式、三辺の固定を一つの相対条件へまとめる | 実装済み |
 | `ThreeEdgeSquareComparison`・`threeEdgeSquareComparison`・`restriction_precomp` | 三辺固定の正方形の合成ホモトピー、元の二段階の合成三角形 | 実装済み |
-| `unitCommaSquareComparison` | 単位の基準正方形から元の comma 正方形への三辺固定の合成 | 実装済み（境界 path の取り出しも実装済み、復元側との比較は未証明） |
+| `unitCommaSquareComparison` | 単位の基準正方形から元の comma 正方形への三辺固定の合成 | 実装済み（境界 path の回収、復元側との相対比較、普遍族の前合成の照合も証明済み） |
 | `ThreeEdgeSquareComparison.bottom/left/top`・`rightSquare` と四辺の公式 | 三辺固定の全体比較から右辺を取り出し、四辺の代表と両端固定を確認 | 実装済み |
 | `ThreeEdgeSquareComparison.familyHomotopy`・`familyHomotopy_square` | 右辺を写像空間の族の経路へ戻し、元の図式を厳密に回収 | 実装済み |
-| `unitCommaSquareComparisonHomotopy`・`_square`・`unitCommaMappingComparisonHomotopy_square` | 現行順方向比較の path と普遍正方形の全体比較の右辺の厳密な一致 | 実装済み（復元側との比較は未証明） |
+| `unitCommaSquareComparisonHomotopy`・`_square`・`unitCommaMappingComparisonHomotopy_square` | 現行順方向比較の path と普遍正方形の全体比較の右辺の厳密な一致 | 実装済み（復元側との相対比較と戻る合成へ接続済み） |
 | `pointwiseHomotopyPath` と包含・端点・raw なホモトピーの回収・相対制限の公式 | 指定ホモトピーから実際の可逆 path へ移し、元の図式と固定部分図式を保持 | 実装済み |
 | `relativeHomotopy_vertex_edge_eq_id`・`relativeHomotopy_pointwise_isInvertible`・`squareThreeEdges_vertex_surjective` | 全頂点を含む部分図式を固定した変形の垂直辺の可逆性、正方形への適用 | 実装済み |
 | `ThreeEdgeSquareComparison.path` と始点・終点・三辺の固定・右辺の公式 | 全体図式の可逆 path、順方向比較の境界 path 自体との一致 | 実装済み |
@@ -550,7 +565,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `homotopyEquivalencePath_homotopy`・`unitCommaMappingToComparisonFiber_source`・`unitCommaMappingToComparisonFiber_path`・`unitCommaMappingToComparisonFiber_homotopy` | 順方向比較による普遍標的・path・raw なホモトピーの回収 | 実装済み |
 | `unitCommaMappingToComparisonFiber_comp_return_homotopy` | 恒等射から実際の戻る合成へのホモトピー | 実装済み |
 | `isContractibleKan_of_homotopy_retract` | 可縮 Kan 複体のホモトピー retract へ可縮性を移す | 実装済み |
-| `UnitMappingSpaceCondition.unitCommaMappingSpace_isContractibleKan`・`UnitMappingSpaceCondition.unitCommaInitialCondition` | 各点の標準単位比較の同値性から指定単位の comma 始対象性 | 実装済み（自然な余単位と右三角恒等式まで接続、左三角恒等式は後続） |
+| `UnitMappingSpaceCondition.unitCommaMappingSpace_isContractibleKan`・`UnitMappingSpaceCondition.unitCommaInitialCondition` | 各点の標準単位比較の同値性から指定単位の comma 始対象性 | 実装済み（自然な余単位と両三角恒等式・指定単位を持つ随伴まで接続） |
 | `exists_lift_of_initial_first_vertices` | 始点の相対境界充填による指定部分・基底を固定した図式の延長 | 実装済み |
 | `simplexFirstVertex_stdSimplex_of_notMem_boundary`・`simplexFirstVertex_prod`・`initialBoundaryLifting_ihom_of_pointwise` | 各点の相対始対象性を任意のパラメータの関手単体集合へ移す | 実装済み |
 | `exists_edge_over_of_initialBoundaryLifting`・`exists_homotopy_over_of_pointwise_initialBoundaryLifting` | 相対始対象の族から同じ基底上の任意の族への射・実際のホモトピー | 実装済み |
@@ -570,4 +585,15 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `UnitCommaCounitData`・`UnitMappingSpaceCondition.nonempty_counitData` | 基底固定の比較と、そこから得る余単位を同じデータで保持 | 実装済み（三角恒等式はフィールドに含めない） |
 | `UnitCommaCounitData.counitHomotopy/counitHom`・`unitAlongG/counitAlongG`・四辺の公式 | 指定比較に由来する余単位と右三角恒等式の代表 | 実装済み |
 | `UnitCommaCounitData.right_triangle_representatives/right_triangle` | 同じ比較の正方形から h(Fun(Y,X)) の右三角恒等式を証明 | 実装済み |
-| `UnitMappingSpaceCondition.exists_counit_right_triangle` | 各点の標準単位比較条件だけから右三角恒等式を持つ自然な余単位が存在 | 実装済み（左三角恒等式は未証明） |
+| `UnitMappingSpaceCondition.exists_counit_right_triangle` | 各点の標準単位比較条件だけから右三角恒等式を持つ自然な余単位が存在 | 実装済み（同じ比較データから左三角恒等式も証明済み） |
+| `constantFunctorMap_evaluate`・`constantFunctorHomMap_injective` | 頂点を持つパラメータでの定値化の左逆と Hom の単射性 | 実装済み |
+| `intervalFamilyComparison_bijective`・`UnitMappingSpaceCondition.constantUnitHomMap_bijective` | 各点の同値性から定値関手間のパラメータ付き Hom 全単射 | 実装済み |
+| `constantUnitHomMap_constant`・`UnitMappingSpaceCondition.unitComponentHomMap_injective/qcatUnitHomMap_constant_injective` | 単位比較の各点・定値端点での単射性 | 実装済み |
+| `qcatUnitHomMap_naturality_left`・`qcatUnitHomMap_leftZigzag`・`UnitCommaCounitData.leftZigzag_image` | 左 zigzag の単位による像は恒等射の像と一致 | 実装済み |
+| `UnitMappingSpaceCondition.component_eq_id_of_unitHomMap_eq/isIso_of_unitHomMap_eq/leftZigzag_isIso` | 各点への制限の一意性から、左 zigzag 全体の可逆性を検出 | 実装済み |
+| `bicategory_leftZigzag_idempotent_of_right_triangle`・`unitLeftZigzag_idempotent` | 右三角恒等式から双圏・h Fun の左 zigzag の冪等性 | 実装済み |
+| `qcatLeftZigzag_hom/qcatRightZigzag_hom` | 双圏の zigzag と h Fun の前後合成の式との一致 | 実装済み |
+| `UnitMappingSpaceCondition.left_triangle` | 可逆性と冪等性から h Fun 全体の左三角恒等式 | 実装済み |
+| `qcatAdjunctionOfUnitMappingSpaceCondition`・`*_unitHom` | 各点の標準単位比較条件だけから指定単位を持つ随伴を構成・回収 | 実装済み |
+| `qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition` | 指定単位の Cor 6.2.6.5 の両方向 | 実装済み（単位を先に指定しない自然な対応との接続は別工程） |
+| `UnitMappingSpaceCondition.qcatUnitHomMap_bijective` | 各点の指定単位条件から非定値関手を含む全パラメータの Hom 全単射を回収 | 実装済み（追加仮定ではなく帰結） |
