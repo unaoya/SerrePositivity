@@ -2721,3 +2721,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.leftPointHomInfinityMap
 #check @SerrePositivity.InfinityCategories.leftPointHomInfinityComparisonIso
 #check @SerrePositivity.InfinityCategories.leftPointHomDiagramComparisonIso
+#check @SerrePositivity.InfinityCategories.leftFibrationPrism_transportIso
+#check @SerrePositivity.InfinityCategories.strictCoherentDiagram_edge
+#check @SerrePositivity.InfinityCategories.coherentCosliceFiberComparison_weighted_ι
+#check @SerrePositivity.InfinityCategories.weightedCosliceTransportPrism
+#check @SerrePositivity.InfinityCategories.weightedCosliceTransportPrism_zero
+#check @SerrePositivity.InfinityCategories.weightedCosliceTransportPrism_one
+#check @SerrePositivity.InfinityCategories.weightedCosliceTransportPrism_projection
+#check @SerrePositivity.InfinityCategories.coherentCosliceFiberComparison_transportIso

@@ -656,3 +656,5 @@ public import SerrePositivity.InfinityCategories.F1.PointedSpaceLeftResolutionCo
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftHomEnrichedNaturality
 public import SerrePositivity.InfinityCategories.F1.KanPointHomEnriched
 public import SerrePositivity.InfinityCategories.F1.LeftPointHomEnriched
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationPrismTransport
+public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport

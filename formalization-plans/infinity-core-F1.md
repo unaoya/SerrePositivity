@@ -13222,5 +13222,76 @@ noncomputable def leftPointHomInfinityComparisonIso :
 noncomputable def leftPointHomDiagramComparisonIso {B : SSet.{u + 1}}
     (F : B ⟶ SpaceInfinity.{u}) : FunctorIso (F ≫ leftPointHomInfinityMap) F
 
+noncomputable def leftFibrationPrism_transportIso {A E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] {a b : B _⦋0⦌} (e : SSet.Edge a b)
+    (f : A ⟶ vertexFiber p a) (g : A ⟶ vertexFiber p b)
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ E)
+    (hH₀ : prismEndpoint 0 A ≫ H = f ≫ vertexFiberι p a)
+    (hH₁ : prismEndpoint 1 A ≫ H = g ≫ vertexFiberι p b)
+    (hHp : H ≫ p = fst (Δ[1] : SSet.{u}) A ≫ SSet.yonedaEquiv.symm e.edge) :
+    FunctorIso g (f ≫ edgeTransport p e)
+
+lemma strictCoherentDiagram_edge {I : Type u} [Category.{u} I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) {i j : I} (f : i ⟶ j) :
+    (HomotopyLimits.strictCoherentDiagram F).app (Opposite.op ⦋1⦌)
+      (ULift.up (nerve.edgeMk f).edge) = (coherentNerveEdge (F.map f)).edge
+
+lemma coherentCosliceFiberComparison_weighted_ι {I : Type u} [Category.{u} I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) (x : C) (i : I) :
+    HomotopyLimits.coherentCosliceFiberComparison x (F.obj i) ≫
+      vertexFiberι (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+        (coherentNerveVertex (F.obj i)) =
+    (SSet.uliftFunctor.{v, u}).map
+      (weightedNerveConstantLift (HomotopyLimits.simplicialHomDiagram F x ⋙ SSet.opFunctor) i) ≫
+      HomotopyLimits.weightedCosliceComparison F x
+
+noncomputable def weightedCosliceTransportPrism {I : Type u} [Category.{u} I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) (x : C) {i j : I} (f : i ⟶ j) :
+    (Δ[1] : SSet.{max u v}) ⊗
+      (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x (F.obj i)).op ⟶
+      sliceUnder (SSet.yonedaEquiv.symm (coherentNerveVertex x))
+
+lemma weightedCosliceTransportPrism_zero {I : Type u} [Category.{u} I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) (x : C) {i j : I} (f : i ⟶ j) :
+    prismEndpoint 0 _ ≫ weightedCosliceTransportPrism F x f =
+      HomotopyLimits.coherentCosliceFiberComparison x (F.obj i) ≫
+        vertexFiberι (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+          (coherentNerveVertex (F.obj i))
+
+lemma weightedCosliceTransportPrism_one {I : Type u} [Category.{u} I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) (x : C) {i j : I} (f : i ⟶ j) :
+    prismEndpoint 1 _ ≫ weightedCosliceTransportPrism F x f =
+      (SSet.uliftFunctor.{v, u}).map
+        ((HomotopyLimits.simplicialHomDiagram F x ⋙ SSet.opFunctor).map f) ≫
+      HomotopyLimits.coherentCosliceFiberComparison x (F.obj j) ≫
+        vertexFiberι (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+          (coherentNerveVertex (F.obj j))
+
+lemma weightedCosliceTransportPrism_projection {I : Type u} [Category.{u} I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) (x : C) {i j : I} (f : i ⟶ j) :
+    weightedCosliceTransportPrism F x f ≫
+      sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)) =
+    fst (Δ[1] : SSet.{max u v})
+      ((SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x (F.obj i)).op) ≫
+      SSet.yonedaEquiv.symm (coherentNerveEdge (F.map f)).edge
+
+noncomputable def coherentCosliceFiberComparison_transportIso
+    {I : Type u} [Category.{u} I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    [Quasicategory (SimplicialNerve C)] (F : I ⥤ C) (x : C) {i j : I} (f : i ⟶ j) :
+    FunctorIso
+      ((SSet.uliftFunctor.{v, u}).map
+          ((HomotopyLimits.simplicialHomDiagram F x ⋙ SSet.opFunctor).map f) ≫
+        HomotopyLimits.coherentCosliceFiberComparison x (F.obj j))
+      (HomotopyLimits.coherentCosliceFiberComparison x (F.obj i) ≫
+        edgeTransport (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+          (coherentNerveEdge (F.map f)))
+
 end SerrePositivity.InfinityCategories
 ```
