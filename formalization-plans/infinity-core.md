@@ -4157,6 +4157,145 @@ lemma isTerminalVertex_iff_pinchedHom_isContractibleKan {X : SSet.{u}} [Quasicat
 
 Core 対象ビルド：終了コード 0（1593 jobs）。監査：終了コード 0、累計 604 宣言、標準三公理のみ。A3a–d 完了。A3e は未完了、A3f は任意、A3g は保留。A3 全体の完了時に全体ビルドを行う。§4 の設計変更はない。承認を待たず A3e に進む。
 
+
+### A3e 前半：写像空間の関手性とホモトピー圏への帰結（2026-10-18）
+
+実装前に README へ文言を記録し、現行 Kerodon §4.8.1・§4.8.3・Theorem 4.8.4.1 と照合した。写像空間の関手性、実際の単体的ホモトピー逆の存在による充満忠実性、本質的全射性、ホモトピー圏での充満忠実性と圏同値を実装した。関手単体集合の同型から代表の可逆辺と実際のホモトピーを得る API も追加。
+
+重要：`IsFullyFaithful.toHoEquivalence` は通常のホモトピー圏の圏同値であり、A3a の `QCatEquivalence` を構成する主定理の代替ではない。充満忠実＋本質的全射から quasicategory の逆射を構成すること、および同値による任意の極限錐の保存・反映は未完了。A3e 完了とは数えない。§4 の設計変更はない。
+
+公開宣言31件の型は以下。共通の `universe u`、`open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet`、`open scoped Simplicial` の下で読む。
+
+MappingSpaceMap：
+
+```lean
+lemma pinchedConstant_map {X Y : SSet.{u}} (f : X ⟶ Y) (x : X _⦋0⦌) (n : ℕ) :
+    f.app (Opposite.op ⦋n⦌) (PinchedHom.constant x n) =
+      PinchedHom.constant (f.app (Opposite.op ⦋0⦌) x) n
+
+def pinchedSimplexMap {X Y : SSet.{u}} (f : X ⟶ Y) {x y : X _⦋0⦌} {n : ℕ}
+    (s : PinchedHom.Simplex x y n) :
+    PinchedHom.Simplex (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y) n
+
+def pinchedHomMap {X Y : SSet.{u}} (f : X ⟶ Y) (x y : X _⦋0⦌) :
+    pinchedHom x y ⟶ pinchedHom (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)
+
+lemma pinchedHomMap_id {X : SSet.{u}} (x y : X _⦋0⦌) : pinchedHomMap (𝟙 X) x y = 𝟙 _
+
+lemma pinchedHomMap_comp {X Y Z : SSet.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) (x y : X _⦋0⦌) :
+    pinchedHomMap (f ≫ g) x y = pinchedHomMap f x y ≫
+      pinchedHomMap g (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)
+
+lemma pinchedHomPiZeroToHom_naturality {X Y : SSet.{u}} (f : X ⟶ Y) (x y : X _⦋0⦌)
+    (a : SSet.π₀ (pinchedHom x y)) :
+    pinchedHomPiZeroToHom (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)
+      (SSet.mapπ₀ (pinchedHomMap f x y) a) =
+        (hoFunctor.map f).toFunctor.map (pinchedHomPiZeroToHom x y a)
+```
+
+SimplicialHomotopyEquivalence：
+
+```lean
+def simplicialHomotopyVertexEdge {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f g) (x : X _⦋0⦌) :
+    SSet.Edge (f.app (Opposite.op ⦋0⦌) x) (g.app (Opposite.op ⦋0⦌) x)
+
+lemma mapPiZero_eq_of_homotopy {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f g) (a : SSet.π₀ X) : SSet.mapπ₀ f a = SSet.mapπ₀ g a
+
+def IsSimplicialHomotopyEquivalence {X Y : SSet.{u}} (f : X ⟶ Y) : Prop
+
+lemma isSimplicialHomotopyEquivalence_id (X : SSet.{u}) :
+    IsSimplicialHomotopyEquivalence (𝟙 X)
+
+lemma IsSimplicialHomotopyEquivalence.mapPiZero_bijective {X Y : SSet.{u}} {f : X ⟶ Y}
+    (hf : IsSimplicialHomotopyEquivalence f) : Function.Bijective (SSet.mapπ₀ f)
+```
+
+FullyFaithful：
+
+```lean
+def IsFullyFaithful {X Y : SSet.{u}} (f : X ⟶ Y) : Prop
+
+def IsEssentiallySurjective {X Y : SSet.{u}} (f : X ⟶ Y) : Prop
+
+lemma isFullyFaithful_id (X : SSet.{u}) : IsFullyFaithful (𝟙 X)
+
+lemma isEssentiallySurjective_id (X : SSet.{u}) : IsEssentiallySurjective (𝟙 X)
+
+lemma IsFullyFaithful.homotopyCategoryMap_bijective {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsFullyFaithful f)
+    (x y : X _⦋0⦌) : Function.Bijective
+      ((hoFunctor.map f).toFunctor.map :
+        (SSet.HomotopyCategory.mk x ⟶ SSet.HomotopyCategory.mk y) →
+        (SSet.HomotopyCategory.mk (f.app (Opposite.op ⦋0⦌) x) ⟶
+          SSet.HomotopyCategory.mk (f.app (Opposite.op ⦋0⦌) y)))
+
+noncomputable def IsFullyFaithful.toHoFullyFaithful {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsFullyFaithful f) :
+    (hoFunctor.map f).toFunctor.FullyFaithful
+
+lemma isEssentiallySurjective_iff_hoFunctor {X Y : SSet.{u}} (f : X ⟶ Y) :
+    IsEssentiallySurjective f ↔ (hoFunctor.map f).toFunctor.EssSurj
+
+lemma QCatEquivalence.isEssentiallySurjective {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) :
+    IsEssentiallySurjective e.hom
+
+lemma IsEssentiallySurjective.comp {X Y Z : SSet.{u}} {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hf : IsEssentiallySurjective f) (hg : IsEssentiallySurjective g) :
+    IsEssentiallySurjective (f ≫ g)
+
+noncomputable def IsFullyFaithful.toHoEquivalence {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y}
+    (hf : IsFullyFaithful f) (he : IsEssentiallySurjective f) :
+    hoFunctor.obj X ≌ hoFunctor.obj Y
+
+noncomputable def FunctorIso.app {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) (x : X _⦋0⦌) :
+    VertexIso (f.app (Opposite.op ⦋0⦌) x) (g.app (Opposite.op ⦋0⦌) x)
+```
+
+FunctorHomotopy：
+
+```lean
+lemma functorVertex_injective {X Y : SSet.{u}} :
+    Function.Injective (functorVertex (X := X) (Y := Y))
+
+lemma functorVertex_uncurry_zero {X Y : SSet.{u}} (s : ((ihom X).obj Y) _⦋1⦌) :
+    functorVertex (SSet.ι₀ ≫ uncurry (SSet.yonedaEquiv.symm s)) =
+      ((ihom X).obj Y).δ 1 s
+
+lemma functorVertex_uncurry_one {X Y : SSet.{u}} (s : ((ihom X).obj Y) _⦋1⦌) :
+    functorVertex (SSet.ι₁ ≫ uncurry (SSet.yonedaEquiv.symm s)) =
+      ((ihom X).obj Y).δ 0 s
+
+def simplicialHomotopyOfFunctorEdge {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom X).obj Y))
+      (functorVertex f) (functorVertex g)) : SSet.Homotopy f g
+
+noncomputable def FunctorIso.edge {X Y : SSet.{u}} [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) :
+    SSet.Truncated.Edge (X := (truncation 2).obj ((ihom X).obj Y))
+      (functorVertex f) (functorVertex g)
+
+lemma FunctorIso.edge_homMk {X Y : SSet.{u}} [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) :
+    SSet.Truncated.HomotopyCategory.homMk (FunctorIso.edge e) = e.hom
+
+lemma FunctorIso.edge_isInvertible {X Y : SSet.{u}} [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) : IsInvertibleEdge (FunctorIso.edge e)
+
+noncomputable def FunctorIso.simplicialHomotopy {X Y : SSet.{u}} [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) : SSet.Homotopy f g
+
+lemma IsQCatEquivalence.isSimplicialHomotopyEquivalence {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) :
+    IsSimplicialHomotopyEquivalence f
+```
+
+Core 対象ビルド：終了コード 0（1602 jobs）。監査：終了コード 0、累計 635 宣言、標準三公理のみ。A3a–d は完了、A3e は上記の主定理と極限の保存・反映が未完了。A3f は任意、A3g は保留。続行する。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

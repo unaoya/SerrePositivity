@@ -1255,3 +1255,67 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.isTerminalVertex_of_pinchedHom_isContractibleKan
 #check @SerrePositivity.InfinityCategories.isTerminalVertex_iff_pinchedHom_isContractibleKan
 #print axioms SerrePositivity.InfinityCategories.isTerminalVertex_iff_pinchedHom_isContractibleKan
+
+-- A3e 前半：写像空間の作用、充満忠実性と本質的全射性、実際のホモトピー。
+#check @SerrePositivity.InfinityCategories.pinchedConstant_map
+#print axioms SerrePositivity.InfinityCategories.pinchedConstant_map
+#check @SerrePositivity.InfinityCategories.pinchedSimplexMap
+#print axioms SerrePositivity.InfinityCategories.pinchedSimplexMap
+#check @SerrePositivity.InfinityCategories.pinchedHomMap
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMap
+#check @SerrePositivity.InfinityCategories.pinchedHomMap_id
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMap_id
+#check @SerrePositivity.InfinityCategories.pinchedHomMap_comp
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMap_comp
+#check @SerrePositivity.InfinityCategories.pinchedHomPiZeroToHom_naturality
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPiZeroToHom_naturality
+#check @SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge
+#print axioms SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge
+#check @SerrePositivity.InfinityCategories.mapPiZero_eq_of_homotopy
+#print axioms SerrePositivity.InfinityCategories.mapPiZero_eq_of_homotopy
+#check @SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.isSimplicialHomotopyEquivalence_id
+#print axioms SerrePositivity.InfinityCategories.isSimplicialHomotopyEquivalence_id
+#check @SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.mapPiZero_bijective
+#print axioms SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.mapPiZero_bijective
+#check @SerrePositivity.InfinityCategories.IsFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful
+#check @SerrePositivity.InfinityCategories.IsEssentiallySurjective
+#print axioms SerrePositivity.InfinityCategories.IsEssentiallySurjective
+#check @SerrePositivity.InfinityCategories.isFullyFaithful_id
+#print axioms SerrePositivity.InfinityCategories.isFullyFaithful_id
+#check @SerrePositivity.InfinityCategories.isEssentiallySurjective_id
+#print axioms SerrePositivity.InfinityCategories.isEssentiallySurjective_id
+#check @SerrePositivity.InfinityCategories.IsFullyFaithful.homotopyCategoryMap_bijective
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.homotopyCategoryMap_bijective
+#check @SerrePositivity.InfinityCategories.IsFullyFaithful.toHoFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.toHoFullyFaithful
+#check @SerrePositivity.InfinityCategories.isEssentiallySurjective_iff_hoFunctor
+#print axioms SerrePositivity.InfinityCategories.isEssentiallySurjective_iff_hoFunctor
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.isEssentiallySurjective
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.isEssentiallySurjective
+#check @SerrePositivity.InfinityCategories.IsEssentiallySurjective.comp
+#print axioms SerrePositivity.InfinityCategories.IsEssentiallySurjective.comp
+#check @SerrePositivity.InfinityCategories.IsFullyFaithful.toHoEquivalence
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.toHoEquivalence
+#check @SerrePositivity.InfinityCategories.FunctorIso.app
+#print axioms SerrePositivity.InfinityCategories.FunctorIso.app
+#check @SerrePositivity.InfinityCategories.functorVertex_injective
+#print axioms SerrePositivity.InfinityCategories.functorVertex_injective
+#check @SerrePositivity.InfinityCategories.functorVertex_uncurry_zero
+#print axioms SerrePositivity.InfinityCategories.functorVertex_uncurry_zero
+#check @SerrePositivity.InfinityCategories.functorVertex_uncurry_one
+#print axioms SerrePositivity.InfinityCategories.functorVertex_uncurry_one
+#check @SerrePositivity.InfinityCategories.simplicialHomotopyOfFunctorEdge
+#print axioms SerrePositivity.InfinityCategories.simplicialHomotopyOfFunctorEdge
+#check @SerrePositivity.InfinityCategories.FunctorIso.edge
+#print axioms SerrePositivity.InfinityCategories.FunctorIso.edge
+#check @SerrePositivity.InfinityCategories.FunctorIso.edge_homMk
+#print axioms SerrePositivity.InfinityCategories.FunctorIso.edge_homMk
+#check @SerrePositivity.InfinityCategories.FunctorIso.edge_isInvertible
+#print axioms SerrePositivity.InfinityCategories.FunctorIso.edge_isInvertible
+#check @SerrePositivity.InfinityCategories.FunctorIso.simplicialHomotopy
+#print axioms SerrePositivity.InfinityCategories.FunctorIso.simplicialHomotopy
+#check @SerrePositivity.InfinityCategories.IsQCatEquivalence.isSimplicialHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.IsQCatEquivalence.isSimplicialHomotopyEquivalence

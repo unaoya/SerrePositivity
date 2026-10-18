@@ -401,3 +401,18 @@ A3d 逆方向の準備：Kerodon 4.4.2.14–15（https://kerodon.net/tag/01NU �
 ### A3d 完了（2026-10-18）
 
 `isTerminalVertex_iff_pinchedHom_isContractibleKan` は `[Quasicategory X]` の下で終対象性と全ての右 pinched 写像空間の可縮性を同値にする。逆方向は `rightFibration_trivialKanFibration_of_contractible_fibers` を slice 射影に適用する。右ファイブレーションの判定には base の quasicategory 性を仮定しない。prism を標準単体へ引き戻して証明し、可逆な先頭の垂直辺を持つ外側ホーンは A3b を用いる。同型不変性と終対象全体の可縮性も実装済みであり、上の途中経過に記した未完了箇所は解消した。A3e が残る。
+
+### A3e の文言（実装前、2026-10-18）
+
+原典を再照合：計画に記載された旧番号に対応する同値判定は現行 Kerodon Theorem 4.8.4.1（https://kerodon.net/tag/01JX ）、写像空間による充満忠実性は §4.8.3（https://kerodon.net/tag/0578 ）、本質的全射性は §4.8.1。Joyal モデル構造は使わない。
+
+- `pinchedHomMap f x y : pinchedHom x y ⟶ pinchedHom (f.app _ x) (f.app _ y)` を後合成で定義する。
+- Kan 複体間の射のホモトピー同値性は、逆射 g と `SSet.Homotopy (f ≫ g) (𝟙 _)`、`SSet.Homotopy (g ≫ f) (𝟙 _)` の存在で表す。
+- `IsFullyFaithful f` は、全ての x,y について `pinchedHomMap f x y` がこの意味のホモトピー同値であること。h X の Hom の全単射だけへ弱めない。
+- `IsEssentiallySurjective f` は、各 y に対し x と h Y の同型 `VertexIso (f.app _ x) y` が存在すること。
+- 主目標は `[Quasicategory X] [Quasicategory Y]` の下で、上の二条件から `IsQCatEquivalence f` を構成すること。
+- 同値 e による極限の保存・反映は、任意の p : K ⟶ X と c : JoinCone p に対する `IsLimitCone c ↔ IsLimitCone (mapJoinCone e.hom c)`。ここで像の図式は p ≫ e.hom であり、頂点の h X での同型だけを仮定する主張ではない。
+
+まず写像空間の関手性と上の二条件の API、そのホモトピー圏での帰結を整備し、その後に quasicategory の逆射の構成と極限の保存・反映へ進む。
+
+A3e 前半保存：写像空間の射と π₀ の自然性、実際の単体的ホモトピー逆による充満忠実性、本質的全射性、そのホモトピー圏での帰結、関手単体集合の同型から実際のホモトピーを選ぶ API を実装。`IsFullyFaithful.toHoEquivalence` は通常のホモトピー圏の同値であり、quasicategory の逆射の構成は未完了。同値による極限錐の保存・反映も残る。A3e 完了とは数えない。
