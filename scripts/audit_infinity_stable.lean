@@ -1,6 +1,17 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.homotopyOppositeEquivalence_map_homMk
+#print axioms SerrePositivity.InfinityCategories.terminalTargetPullback_isBinaryProduct
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.isIso_f_of_zero_cofiber
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.isIso_g_of_zero_fiber
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.homMk_isIso_of_zero
+#print axioms SerrePositivity.InfinityCategories.FiberSquare.homMk_isIso_of_zero
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.zero_source_of_zero_middle_cofiber
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeHomotopy_isInvertible_of_restriction
+#print axioms SerrePositivity.InfinityCategories.exists_pushoutSquareFunctorIso_lift_span
+#print axioms SerrePositivity.InfinityCategories.cofiberSquareComparisonIso
+#print axioms SerrePositivity.InfinityCategories.cofiberSquare_zero_iff
 #print axioms SerrePositivity.InfinityCategories.squareBinaryCocone_isColimit
 #print axioms SerrePositivity.InfinityCategories.zeroSourcePushout_isBinaryCoproduct
 #print axioms SerrePositivity.InfinityCategories.zeroSourcePushoutCoproductIso
@@ -995,7 +1006,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ZeroSourceCoproductComparison,
     `SerrePositivity.InfinityCategories.Stable.PastingHomotopyComposition,
     `SerrePositivity.InfinityCategories.Stable.ZeroSourceProjection,
-    `SerrePositivity.InfinityCategories.Stable.ZeroSourceCofiberComparison]
+    `SerrePositivity.InfinityCategories.Stable.ZeroSourceCofiberComparison,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyOppositeEdges,
+    `SerrePositivity.InfinityCategories.Stable.ZeroTargetProduct,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCofiberIso,
+    `SerrePositivity.InfinityCategories.Stable.ZeroTriangleVanishing,
+    `SerrePositivity.InfinityCategories.Stable.ColimitHomotopyInvertible,
+    `SerrePositivity.InfinityCategories.Stable.PushoutComparisonInvertible,
+    `SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

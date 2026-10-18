@@ -92,6 +92,14 @@ public import SerrePositivity.InfinityCategories.Stable.PastingHomotopyCompositi
 public import SerrePositivity.InfinityCategories.Stable.ZeroSourceProjection
 public import SerrePositivity.InfinityCategories.Stable.ZeroSourceCofiberComparison
 
+public import SerrePositivity.InfinityCategories.Stable.HomotopyOppositeEdges
+public import SerrePositivity.InfinityCategories.Stable.ZeroTargetProduct
+public import SerrePositivity.InfinityCategories.Stable.ZeroCofiberIso
+public import SerrePositivity.InfinityCategories.Stable.ZeroTriangleVanishing
+public import SerrePositivity.InfinityCategories.Stable.ColimitHomotopyInvertible
+public import SerrePositivity.InfinityCategories.Stable.PushoutComparisonInvertible
+public import SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

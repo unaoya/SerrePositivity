@@ -9956,3 +9956,247 @@ ZeroSourceProjection ビルド 2093 jobs、ZeroSourceCofiberComparison ビルド
 自分の新規ファイルは警告なし。`git diff --check` 成功。引用・追加公理・sorry は導入していない。
 双積性・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
 TR1・TR3 と二項積・二項余積の instance は完成のまま。
+
+
+## 終対象終点の二項積・零 cofiber/fiber の同型判定・普遍余錐の比較の可逆性
+
+`HomotopyOppositeEdges.lean` は反対ホモトピー圏の比較同値が辺の類を元へ戻した辺の反対射に
+送る式を証明し、双対四角形の右辺・上辺が元の下辺・左辺へ戻ることを計算した。
+`ZeroTargetProduct.lean` はこの計算で終対象終点の引き戻しを h C の普遍二項錐へ移す。
+`terminalTargetPullback_isBinaryProduct` は下辺・左辺を指定した IsLimit を与える。
+上側二頂点が終対象なら下辺の類は同型となる。Quasicategory 性のみを使い、安定性は不要。
+
+`ZeroCofiberIso.lean` は左側二頂点が始対象である押し出しの右辺の同型判定も整備する。
+任意の零角の fiber 列で終端頂点が終対象なら第一射は同型、cofiber 列で始点が始対象なら第二射は同型。
+安定な場合には fiber/cofiber 列を交換できるため、
+`ZeroTriangle.isIso_f_of_zero_cofiber`・`isIso_g_of_zero_fiber` が得られる。
+指定した辺の任意の cofiber/fiber 四角形についても、
+`CofiberSquare.homMk_isIso_of_zero`・`FiberSquare.homMk_isIso_of_zero` で元の辺の類の同型性を認証する。
+零 cofiber/fiber から同型性を得る向きを証明したもので、逆向きはこの保存単位では証明していない。
+`ZeroTriangleVanishing.lean` は cofiber 列の三対象の任意の二つの零性から第三の零性を導く三つの判定と、
+その fiber 列版を与える。零頂点を上記の同型で移し、前加法構造や三角圏の公理を使わない。
+
+`ColimitHomotopyInvertible.lean` は普遍余錐の全部分圏への持ち上げと充満忠実射影を使い、
+基底への制限が可逆な比較ホモトピーは普遍余錐全体でも可逆であることを証明する。
+全図式での余極限の存在は仮定せず、指定した両端の余極限性だけを使う。
+`PushoutComparisonInvertible.lean` は span への制限で可逆性を判定する四角形版と、
+指定した span の FunctorIso を押し出し全体へ延長する存在定理を与える。
+後者は制限した順射の h の類を元の指定同型の順射と厳密に一致させる。
+
+`CofiberSquareComparisonIso.lean` は同じ辺の二つの cofiber 四角形について、
+第一枝を固定した span の同型を全体へ延長し、`nonempty_cofiberSquareFunctorIso` を得る。
+終端頂点で評価した `cofiberSquareComparisonIso` と、零性の選択独立性 `cofiberSquare_zero_iff` も構成した。
+これらの比較には値域の Quasicategory 性だけを仮定し、安定性は不要。
+
+Lean で抽出した全公開宣言の正確な型：
+
+```lean
+@homotopyOppositeEquivalence_map_homMk.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SSet.op.{u_1} X) (Opposite.op.{1} { len := 0 })}
+  (e : SSet.Truncated.Edge.{u_1} x y),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Equivalence.functor.{u_1, u_1, u_1, u_1} (homotopyOppositeEquivalence.{u_1} X))
+      (SSet.Truncated.HomotopyCategory.homMk.{u_1} e))
+    (Quiver.Hom.op.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} (edgeUnop.{u_1} e)))
+@edgeUnop_dualSquare_right.{u_1} : ∀ {X : SSet.{u_1}}
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1} (edgeUnop.{u_1} (squareRightArrow.{u_1} (dualSquare.{u_1} R))) (squareBottomArrow.{u_1} R)
+@edgeUnop_dualSquare_top.{u_1} : ∀ {X : SSet.{u_1}}
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1} (edgeUnop.{u_1} (squareTopArrow.{u_1} (dualSquare.{u_1} R))) (squareLeftArrow.{u_1} R)
+@terminalTargetPullback_isBinaryProduct.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    (R :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          X) →
+      IsPullbackSquare.{u_1} R →
+        IsTerminalVertex.{u_1} (squareVertex.{u_1} R 1 1) →
+          CategoryTheory.Limits.IsLimit.{0, u_1, 0, u_1}
+            (CategoryTheory.Limits.BinaryFan.mk.{u_1, u_1} (squareHoBottom.{u_1} R) (squareHoLeft.{u_1} R))
+@isIso_squareHoBottom_of_pullback_terminal_top.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPullbackSquare.{u_1} R →
+    IsTerminalVertex.{u_1} (squareVertex.{u_1} R 0 1) →
+      IsTerminalVertex.{u_1} (squareVertex.{u_1} R 1 1) → CategoryTheory.IsIso.{u_1, u_1} (squareHoBottom.{u_1} R)
+@isIso_squareHoRight_of_pushout_initial_left.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} R →
+    IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0) →
+      IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 1) → CategoryTheory.IsIso.{u_1, u_1} (squareHoRight.{u_1} R)
+@ZeroTriangle.isIso_f_of_fiber_terminal_cofiber.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)]
+  (t : ZeroTriangle.{u_1} X),
+  IsFiberSequence.{u_1} t →
+    IsTerminalVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) →
+      CategoryTheory.IsIso.{u_1, u_1} (CategoryTheory.ShortComplex.f.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))
+@ZeroTriangle.isIso_g_of_cofiber_initial_fiber.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)]
+  (t : ZeroTriangle.{u_1} X),
+  IsCofiberSequence.{u_1} t →
+    IsInitialVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) →
+      CategoryTheory.IsIso.{u_1, u_1} (CategoryTheory.ShortComplex.g.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))
+@ZeroTriangle.isIso_f_of_zero_cofiber.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsCofiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) →
+      CategoryTheory.IsIso.{u_1, u_1} (CategoryTheory.ShortComplex.f.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))
+@ZeroTriangle.isIso_g_of_zero_fiber.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsFiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) →
+      CategoryTheory.IsIso.{u_1, u_1} (CategoryTheory.ShortComplex.g.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))
+@CofiberSquare.homMk_isIso_of_zero.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  {f : SSet.Truncated.Edge.{u_1} x y} (s : CofiberSquare.{u_1} f),
+  IsZeroVertex.{u_1} (CofiberSquare.cofiber.{u_1} s) →
+    CategoryTheory.IsIso.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} f)
+@FiberSquare.homMk_isIso_of_zero.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  {f : SSet.Truncated.Edge.{u_1} x y} (s : FiberSquare.{u_1} f),
+  IsZeroVertex.{u_1} (FiberSquare.fiber.{u_1} s) →
+    CategoryTheory.IsIso.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} f)
+@ZeroTriangle.zero_cofiber_of_zero_source_middle.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsCofiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) →
+      IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) →
+        IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1)
+@ZeroTriangle.zero_middle_of_zero_source_cofiber.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsCofiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) →
+      IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) →
+        IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0)
+@ZeroTriangle.zero_source_of_zero_middle_cofiber.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsCofiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) →
+      IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) →
+        IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0)
+@ZeroTriangle.zero_cofiber_of_fiber_zero_source_middle.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsFiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) →
+      IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) →
+        IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1)
+@ZeroTriangle.zero_middle_of_fiber_zero_source_cofiber.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsFiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) →
+      IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) →
+        IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0)
+@ZeroTriangle.zero_source_of_fiber_zero_middle_cofiber.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [IsStable.{u_1} X] (t : ZeroTriangle.{u_1} X),
+  IsFiberSequence.{u_1} t →
+    IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) →
+      IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) →
+        IsZeroVertex.{u_1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0)
+@colimitCoconeHomotopy_isInvertible_of_restriction.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X} (c : JoinCocone.{u_1} p) (d : JoinCocone.{u_1} q),
+  IsColimitCone.{u_1} c →
+    IsColimitCone.{u_1} d →
+      ∀ (H : SSet.Homotopy.{u_1} ↑c ↑d),
+        CategoryTheory.IsIso.{u_1, u_1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+                  (coconeRestriction.{u_1} K X)))
+              (SSet.Truncated.HomotopyCategory.homMk.{u_1} (functorEdgeOfSimplicialHomotopy.{u_1} H))) →
+          IsInvertibleEdge.{u_1} (functorEdgeOfSimplicialHomotopy.{u_1} H)
+@colimitCoconeHomotopy_isInvertible_of_precomp.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X} (c : JoinCocone.{u_1} p) (d : JoinCocone.{u_1} q),
+  IsColimitCone.{u_1} c →
+    IsColimitCone.{u_1} d →
+      ∀ (H : SSet.Homotopy.{u_1} ↑c ↑d),
+        IsInvertibleEdge.{u_1}
+            (functorEdgeOfSimplicialHomotopy.{u_1}
+              (stableHomotopyPrecomp.{u_1}
+                (joinInl.{u_1} K (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+                H)) →
+          IsInvertibleEdge.{u_1} (functorEdgeOfSimplicialHomotopy.{u_1} H)
+@pushoutSquareHomotopy_isInvertible_of_span.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (F G :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} F →
+    IsPushoutSquare.{u_1} G →
+      ∀ (Q : SSet.Homotopy.{u_1} F G),
+        IsInvertibleEdge.{u_1}
+            (functorEdgeOfSimplicialHomotopy.{u_1} (stableHomotopyPrecomp.{u_1} spanSquareBoundary.{u_1} Q)) →
+          IsInvertibleEdge.{u_1} (functorEdgeOfSimplicialHomotopy.{u_1} Q)
+@exists_pushoutSquareFunctorIso_lift_span.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (F G :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} F →
+    IsPushoutSquare.{u_1} G →
+      ∀ (e : FunctorIso.{u_1} (pushoutSpan.{u_1} F) (pushoutSpan.{u_1} G)),
+        ∃ d,
+          Eq.{u_1 + 1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+                  (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+                    (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} spanSquareBoundary.{u_1}) X)))
+              (CategoryTheory.Iso.hom.{u_1, u_1} d))
+            (CategoryTheory.Iso.hom.{u_1, u_1} e)
+@nonempty_cofiberSquareFunctorIso.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  {f : SSet.Truncated.Edge.{u_1} x y} (s t : CofiberSquare.{u_1} f),
+  Nonempty.{u_1 + 1}
+    (FunctorIso.{u_1} (ZeroTriangle.square.{u_1} (CofiberSquare.toZeroTriangle.{u_1} s))
+      (ZeroTriangle.square.{u_1} (CofiberSquare.toZeroTriangle.{u_1} t)))
+@cofiberSquareComparisonIso.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+      {f : SSet.Truncated.Edge.{u_1} x y} →
+        (s t : CofiberSquare.{u_1} f) → VertexIso.{u_1} (CofiberSquare.cofiber.{u_1} s) (CofiberSquare.cofiber.{u_1} t)
+@cofiberSquare_zero_iff.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  {f : SSet.Truncated.Edge.{u_1} x y} (s t : CofiberSquare.{u_1} f),
+  IsZeroVertex.{u_1} (CofiberSquare.cofiber.{u_1} s) ↔ IsZeroVertex.{u_1} (CofiberSquare.cofiber.{u_1} t)
+```
+
+対象 HomotopyOppositeEdges ビルド 2079 jobs、ZeroTargetProduct ビルド 2099 jobs、
+ZeroCofiberIso ビルド 2100 jobs、ColimitHomotopyInvertible ビルド 1980 jobs、
+PushoutComparisonInvertible・ZeroTriangleVanishing 対象ビルド 2104 jobs、
+CofiberSquareComparisonIso ビルド 1995 jobs、対象・Stable 集約ビルド 2212 jobs、
+公開型抽出、公理監査はすべて終了コード 0。監査は 218 モジュール・1682 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。自分の新規ファイルの警告は解消済み。
+`git diff --check` 成功。引用・追加公理・sorry は導入していない。
+同型から零 cofiber/fiber を得る逆向き、双積性・前加法構造、シフトの加法性、回転、八面体、
+Pretriangulated instance、S5〜S7 は未完了。TR1・TR3 と二項積・二項余積の instance は完成のまま。
