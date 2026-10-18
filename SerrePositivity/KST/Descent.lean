@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.KST.Descent.CechLocalRanks
+public import SerrePositivity.KST.Descent.PresheafWeakTransfer
+public import SerrePositivity.KST.Descent.FiniteZariskiCover
+public import SerrePositivity.KST.Descent.FiniteFreeChartLocalRanks
 public import SerrePositivity.KST.Descent.LocalRankIsomorphisms
 public import SerrePositivity.KST.Descent.FiniteTypeCoproducts
 public import SerrePositivity.KST.Descent.FiniteCoproductPullbacks
