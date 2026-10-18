@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1258 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1269 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -113,7 +113,8 @@
 - 自由な直和の明示的な直和因子となる代数について、係数イデアルの生成元への還元・有限生成性・拡大イデアルの所属判定・分裂表示からの独立性・境界元の冪の所属を証明済み。一般の平坦有限表示代数の直和因子表示の存在と Fitting イデアルによる自由化は未証明。
 - 表示行列の小行列式イデアルの有限生成性・任意の係数変更との交換・次数の包含・行数と列数による消滅、および行・列の線形結合と可逆変換での比較を証明済み。同じ列部分加群の有限生成族による選択からの独立性も証明済み。標的の自由加群の階数を変える表示の安定化と生成元数・自由性判定は未証明。
 - 可逆な成分を持つ関係式による生成元の除去と、境界ねじれを除いた純変換への適用を証明済み。随伴行列を使い、境界の単元倍であるピボット小行列式と小行列式イデアルの包含から、残る成分から純変換への実際の全射を構成済み。
-- 局所環の正則単項イデアルを生成する集合からの単元倍の選択と、正則単項小行列式イデアルからの単射な行・列ピボットの存在を証明済み。選んだ行を直和因子として分解して消去へ接続する段階は残る。
+- 局所環の正則単項イデアルを生成する集合からの単元倍の選択と、正則単項小行列式イデアルからの単射な行・列ピボットの存在を証明済み。
+- 選んだ行と残りの行への実際の線形同型、小行列への制限の包含を接続し、局所環で k 次小行列式イデアルが正則単項なら純変換がピボット外からの全射を持つことを証明済み。有限な生成元数 N の場合は Fin(N-k) 上の自由加群からの実際の全射を構成済み。これは選んだ関係式行列の下での 080Z の正則単項特殊形で、一般有限型の平坦化中心の存在までは主張しない。
 - 正則な境界を持つ全アフィン試験対象への純変換の引き戻し平坦性を定義し、Noether アフィンモデルでの証明・任意の前合成での保存・開被覆の局所性を証明済み。
 - チャート環を基礎環とした性質を元の基礎環へ戻す定理、通常 blowup のチャート平坦性との両方向の接続を証明済み。
 - 有限アフィン被覆上の admissible 中心と局所の引き戻し平坦性から、中心の補開集合が U に等しい大域中心と同じ性質を構成・証明済み。
@@ -688,6 +689,10 @@ f の正則性で一が J に入るため、局所環の極大イデアルへの
 | `minorIdeal_pureTransform_complement_surjective` | AdjugateRelationElimination | 検証済み | 単項小行列式条件と単元倍ピボットから純変換への全射 |
 | `exists_unit_multiple_of_span_eq_regular_principal` | LocalRegularPrincipalGenerator | 検証済み | 正則単項生成集合から単元倍を選ぶ |
 | `exists_injective_minor_unit_multiple` | LocalMinorPivot | 検証済み | 局所環で実際の単射ピボット小行列式を選ぶ |
+| `rowPartitionLinearEquiv` | FreeModuleRowPartition | 検証済み | 選んだ行と残りの行への実際の自由加群の分解 |
+| `matrixMinorIdeal_submatrix_le` | MatrixMinorIdealRestriction | 検証済み | 小行列への制限の包含 |
+| `exists_pureTransform_complement_surjection_of_regular_minorIdeal` | LocalMinorPureTransformGeneration | 検証済み | 局所ピボット選択から純変換への全射 |
+| `exists_fin_surjection_pureTransform_of_regular_minorIdeal` | LocalMinorPureTransformGeneration | 検証済み | N 個の生成元を N-k 個へ削減した実全射 |
 | `finiteType_tensorPureTransform_flat_baseChange` | FiniteTypeTensorPureTransformBaseChange | 検証済み | 一般有限型加群のチャート平坦性の保存 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |

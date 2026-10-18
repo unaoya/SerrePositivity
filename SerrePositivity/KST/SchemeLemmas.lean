@@ -171,3 +171,6 @@ public import SerrePositivity.KST.SchemeLemmas.PureTransformPivotElimination
 public import SerrePositivity.KST.SchemeLemmas.AdjugateRelationElimination
 public import SerrePositivity.KST.SchemeLemmas.LocalRegularPrincipalGenerator
 public import SerrePositivity.KST.SchemeLemmas.LocalMinorPivot
+public import SerrePositivity.KST.SchemeLemmas.FreeModuleRowPartition
+public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdealRestriction
+public import SerrePositivity.KST.SchemeLemmas.LocalMinorPureTransformGeneration
