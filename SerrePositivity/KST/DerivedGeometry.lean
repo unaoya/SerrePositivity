@@ -15,3 +15,5 @@ public import SerrePositivity.KST.DerivedGeometry.AffineBaseChangeQuasicoherent
 public import SerrePositivity.KST.DerivedGeometry.OpenTensorRegular
 public import SerrePositivity.KST.DerivedGeometry.CoefficientQuasicoherent
 public import SerrePositivity.KST.DerivedGeometry.AffineQuasicoherentActions
+public import SerrePositivity.KST.DerivedGeometry.CoefficientComplexComparison
+public import SerrePositivity.KST.DerivedGeometry.DqcDGModel

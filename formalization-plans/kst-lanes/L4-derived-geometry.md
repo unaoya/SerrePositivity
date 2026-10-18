@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の具体的係数環層 H_X の構成・アフィン切断比較・開埋め込みに沿う比較・任意の X 上の正則 O 加群の準連接性は証明済み。準連接係数加群層の圏 QCoh(B) と、アフィン上の H 加群への大域切断関手を構成し、忠実性・同型の反映まで証明済み。アフィン係数加群圏の同値・dg 模型・導来降下との比較は未完了。
+- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。全層複体の dg 圏と acyclic の dg 商を構成し、商の前の Z⁰・H⁰ と元の層複体・ホモトピー圏の同値、商の H⁰ での acyclic の零性を証明済み。準連接コホモロジーの充満 dg 部分模型も構成済み。dg 商の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の366宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の500宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -485,6 +485,37 @@
 - 大域切断上で H 線形な O 加群層の射が定数 H 作用と層全体で可換になることを証明済み。
 - 全 H_X 切断の作用への線形性を局所的なテンソル持ち上げで示す段階、充満性、本質的全射性は残る。
 
+## 25. 層の複体の dg 圏と acyclic の商
+
+- 正本 §13 決定11の dg 増強の始域は、全 H_X 加群層の非有界コチェイン複体とする。
+- 既存 DifferentialGraded.Complex は可換環と同じ宇宙の加群複体専用なので、層の複体をその対象と定義的に同一視しない。
+- Mathlib の linearHomComplex は任意の線形加法圏の複体に使えるので、実際の層複体の Hom 複体に採用する。
+- dg 圏の係数環は Hom の宇宙に合わせた ULift ℤ とし、通常の整数による加法的作用をスカラー制限で持ち上げる。
+- この宇宙の調整は係数環層 H_X 自体の変更ではない。
+- 既存 dg 商は対象型の Small 条件を係数環の宇宙に対して要求する。全層複体の対象は層の Hom より一段大きいので、ULiftHom によって Hom も対象の宇宙まで持ち上げる。
+- ULiftHom 上の複体と元の層複体との圏同値を示し、acyclic と準連接コホモロジーはその比較で実際の層複体の条件から定める。
+- これにより全層複体を不当に小さい型と仮定せず、既存 dg 商の Small 条件を満たす。
+- dg 合成は Mathlib の Cochain.comp と δ_comp を用い、既存の tensorLift・単位複体・符号つき交換を再利用する。
+- 豊穣順の合成は f ⊗ g を (-1)^(deg f deg g) g∘f へ送る既存規約と一致させる。
+- 閉次数零の圏を実際の層複体の圏と比較し、H⁰ を Mathlib のホモトピー圏と比較する。
+- acyclic は層複体の実際の全コホモロジーが零であることにより指定する。
+- 既存の Drinfeld dg 商にこの対象集合を渡し、商の H⁰ と層複体の導来局所化との比較を別途証明する。
+- D_qc は忘却後のコホモロジーの準連接性による充満部分圏として保つ。
+- 単に dg 商の型を作っただけで Mathlib の DerivedCategory との同値を主張しない。
+- 一般の線形加法圏の複体について写像複体・dg 合成とその三法則を Lean で証明済み。
+- 閉次数零と通常の chain map の比較は単位・合成を保つ圏同値として証明済み。
+- dg 境界関係と通常の鎖ホモトピーの一致、および H⁰ と通常のホモトピー圏の同値を証明済み。
+- ULiftHom の加法的構造・持ち上げた整数環上の線形構造と、元の層複体との圏同値を構成済み。
+- 層複体の dg 圏の Z⁰・H⁰ から元の層複体の圏・ホモトピー圏への同値を構成済み。
+- 元の層複体の acyclic 条件が全コホモロジーの零性と一致することを証明済み。
+- 既存 Drinfeld 商に acyclic の集合を渡し、標準 dg 関手と指定収縮を構成済み。
+- acyclic 対象の像の恒等射が境界となり、商の H⁰ で零対象になることを証明済み。
+- 商の対象に準連接コホモロジーの条件を課した充満 dg 部分模型 DqcDGModel を構成済み。
+- その対象条件と、元の複体の Mathlib 導来像についての既存 Dqc の対象条件の同値を証明済み。
+- 対象条件の一致だけでは、商から Mathlib の導来圏への関手・完全充満性・圏同値はまだ得ていない。
+- その比較では既存 dg 商の定理の前提、とくに K-flat 条件が現れる箇所を照合し、未証明の前提を追加仮定として済ませない。
+- 原典は KST D4・§13 決定11、Drinfeld の dg 商、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -555,7 +586,16 @@
 | `affineUnderlyingHom_ext`・`affineQcohΓ_faithful`・`affineQcohΓ_reflectsIsomorphisms` | DerivedGeometry/AffineQuasicoherentSections | 実装・対象ビルド済み |
 | `coefficientConstantAction`・`coefficientConstantActionRingHom`・`coefficientConstantActionNat` | DerivedGeometry/CoefficientConstantAction | 実装・対象ビルド済み |
 | `affineUnderlyingHom_commutesConstant` | DerivedGeometry/AffineQuasicoherentActions | 実装・対象ビルド済み |
-| 層の複体の dg 圏・acyclic による dg 商 | DerivedGeometry/ | 未実装・正本 §13 決定11 の模型 |
+| `LinearComplex.mappingComplex`・`composition`・`forwardComposition` | DerivedGeometry/LinearComplexMapping | 実装・対象ビルド済み |
+| `LinearComplex.enrichment` | DerivedGeometry/LinearComplexEnrichment | 実装・対象ビルド済み |
+| `LinearComplex.closedToComplex_isEquivalence` | DerivedGeometry/LinearComplexClosed | 実装・対象ビルド済み |
+| `LinearComplex.boundary_iff`・`homotopyComparison_isEquivalence` | DerivedGeometry/LinearComplexHomotopy | 実装・対象ビルド済み |
+| `CoefficientDGBase`・`LiftedModules`・`complexLiftEquivalence`・`complexesDGCategory` | DerivedGeometry/LiftedCoefficientComplex | 実装・対象ビルド済み |
+| `closedComplexEquivalence`・`homotopyComplexEquivalence` | DerivedGeometry/CoefficientComplexComparison | 実装・対象ビルド済み |
+| `acyclicComplexes`・`mem_acyclicComplexes_iff` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
+| `DerivedDG`・`derivedDGProjection`・`derivedDGContractedProjection`・`derivedDG_acyclic_isZero` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
+| `DqcDGModel`・`dqcDGModelInclusion`・`mem_dqcDGObjects_iff` | DerivedGeometry/DqcDGModel | 実装・対象ビルド済み |
+| dg 商の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | 未実装 |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

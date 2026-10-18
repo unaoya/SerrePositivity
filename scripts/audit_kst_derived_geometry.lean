@@ -117,7 +117,23 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.affineUnderlyingHom_ext,
     `SerrePositivity.KST.DerivedGeometry.coefficientConstantActionRingHom,
     `SerrePositivity.KST.DerivedGeometry.coefficientConstantActionNat,
-    `SerrePositivity.KST.DerivedGeometry.affineUnderlyingHom_commutesConstant]
+    `SerrePositivity.KST.DerivedGeometry.affineUnderlyingHom_commutesConstant,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingComplex,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.enrichment,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.closedToComplex_isEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.homotopyComparison_isEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientDGBase,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.complexLiftEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.complexesDGCategory,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.closedComplexEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.homotopyComplexEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.mem_acyclicComplexes_iff,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedDGProjection,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedDGContractedProjection,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedDG_acyclic_isZero,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGModelCategory,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGModelInclusion,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.mem_dqcDGObjects_iff]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do
