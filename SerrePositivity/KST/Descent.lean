@@ -100,6 +100,10 @@ public import SerrePositivity.KST.Descent.FiniteTypeLimitPreservation
 public import SerrePositivity.KST.Descent.FiniteTypeCechGeometry
 public import SerrePositivity.KST.Descent.AffineFiniteDimension
 public import SerrePositivity.KST.Descent.CechFiniteDimension
+public import SerrePositivity.KST.Descent.SchemeActionTransport
+public import SerrePositivity.KST.Descent.AffineSchemeBaseChange
+public import SerrePositivity.KST.Descent.FiniteTypeAffineBaseChange
+public import SerrePositivity.KST.Descent.AffineCechDescent
 
 /-!
 # K-L8：論文 §3 の降下
@@ -163,6 +167,9 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 有限型の圏から Over への有限極限保存、スキームへの有限連結極限保存を証明し、
 実際のアフィン Čech 各段と底変換の始域のアフィン性・分離性を導く。
 局所 Noether 基底では、各段の有限次元上界も座標環の有限型性から実際に供給する。
+元の環の幾何的推移性から任意のアフィン基底変更の点の推移性を導き、
+実際の Čech 各段の指定作用へ移す。構成済みの切断・分離性・次元上界を用いて、
+実降下の帰結を明示した条件のもとで各段の全次数降下を証明する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。
