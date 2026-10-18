@@ -178,4 +178,8 @@ public import SerrePositivity.KST.SConstruction.GappedEquivalenceDiagramSwap
 public import SerrePositivity.KST.SConstruction.CoreGappedEquivalenceDiagram
 public import SerrePositivity.KST.SConstruction.ObjectCoreRowIso
 
+public import SerrePositivity.KST.SConstruction.ObjectRowInclusion
+public import SerrePositivity.KST.SConstruction.ConstantFamilySwap
+public import SerrePositivity.KST.SConstruction.ObjectCoreWeakEquivalence
+
 /-! # ∞-S• 構成と連結 K 理論 -/

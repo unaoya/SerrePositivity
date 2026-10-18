@@ -3917,3 +3917,25 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap_sMap
 #check @SerrePositivity.KST.SConstruction.objectCoreRowIso
 #print axioms SerrePositivity.KST.SConstruction.objectCoreRowIso
+#check @SerrePositivity.KST.SConstruction.objectRowInclusion
+#print axioms SerrePositivity.KST.SConstruction.objectRowInclusion
+#check @SerrePositivity.KST.SConstruction.objectRowsInclusion
+#print axioms SerrePositivity.KST.SConstruction.objectRowsInclusion
+#check @SerrePositivity.KST.SConstruction.diagonalFlipIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalFlipIso
+#check @SerrePositivity.KST.SConstruction.diagonalConstIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalConstIso
+#check @SerrePositivity.KST.SConstruction.objectRowsInclusion_diagonal
+#print axioms SerrePositivity.KST.SConstruction.objectRowsInclusion_diagonal
+#check @SerrePositivity.KST.SConstruction.flipConstantFamily
+#print axioms SerrePositivity.KST.SConstruction.flipConstantFamily
+#check @SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap_constant
+#print axioms SerrePositivity.KST.SConstruction.gappedEquivalenceDiagramCoreMap_constant
+#check @SerrePositivity.KST.SConstruction.objectCoreRowIso_constant
+#print axioms SerrePositivity.KST.SConstruction.objectCoreRowIso_constant
+#check @SerrePositivity.KST.SConstruction.objectRowInclusion_coreS_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.objectRowInclusion_coreS_localized_isIso
+#check @SerrePositivity.KST.SConstruction.diagonalObjectInclusion_coreS_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalObjectInclusion_coreS_localized_isIso
+#check @SerrePositivity.KST.SConstruction.objectToCoreSRealization_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.objectToCoreSRealization_localized_isIso

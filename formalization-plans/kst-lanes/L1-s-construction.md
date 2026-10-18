@@ -6478,3 +6478,74 @@ def objectCoreRowIso (m : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
 Core と他レーンの公開名・型は変更していない。
 
 検証：対象ビルド成功（3198 jobs）、公理監査成功（1516 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.54 元の object/core 実現比較の弱同値
+
+D(m,w) の定数包含の object S の像を §6.53 の行の同型で移すと、
+元の object/core 比較の各行の退化写像に厳密に一致することを証明した。
+各行の弱同値を既存の対角の保存定理で移し、転置前後の対角を恒等成分の同型で同定した。
+これにより元の `objectToCoreSRealization C` 自身の像が anodyne 局所化で同型となる。
+別の比較射の弱同値で代用せず、対角の Kan 性や object/core 比較の弱同値を入力にしていない。
+Fiore–Pieper Proposition 4.27 に必要な object/core 比較を追加仮定なしで完成した。
+
+主要公開宣言（namespace `SerrePositivity.KST.SConstruction`、宇宙 `u`）：
+
+```lean
+def objectRowInclusion (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) (m : SimplexCategoryᵒᵖ) :
+    diagonalObjects X ⟶ X.flip.obj m
+
+def objectRowsInclusion (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    (Functor.const SimplexCategoryᵒᵖ).obj (diagonalObjects X) ⟶ X.flip
+
+def diagonalFlipIso (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    simplicialDiagonalFunctor.obj X.flip ≅ simplicialDiagonalFunctor.obj X
+
+def diagonalConstIso (A : SSet.{u}) :
+    A ≅ simplicialDiagonalFunctor.obj ((Functor.const SimplexCategoryᵒᵖ).obj A)
+
+lemma objectRowsInclusion_diagonal (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    (diagonalConstIso (diagonalObjects X)).hom ≫
+      simplicialDiagonalFunctor.map (objectRowsInclusion X) ≫ (diagonalFlipIso X).hom =
+      diagonalObjectInclusion X
+
+lemma flipConstantFamily {A K C : SSet.{u}} (F : A ⟶ C) :
+    internalHomFlipHomEquiv A K C (F ≫ curry (snd K C)) =
+      (SSet.const (functorVertex F) : K ⟶ (ihom A).obj C)
+
+lemma gappedEquivalenceDiagramCoreMap_constant (n m : ℕ) (X : StableModel.{u})
+    (v : (sConstruction n X.carrier) _⦋0⦌) :
+    gappedEquivalenceDiagramCoreMap
+      ((objectSConstructionFunctor.map (equivalenceDiagramStableConstant m X)).app
+        (Opposite.op ⦋n⦌) v) =
+      (SSet.const ⟨v, quasicategoryCore_vertex v⟩ :
+        (Δ[m] : SSet.{u}) ⟶ (quasicategoryCore (sConstruction n X.carrier) : SSet.{u}))
+
+lemma objectCoreRowIso_constant (m : ℕ) (X : StableModel.{u}) :
+    objectSConstructionFunctor.map (equivalenceDiagramStableConstant m X) ≫
+      (objectCoreRowIso m X.carrier).hom =
+      (objectSCoreVertexIso X.carrier).hom ≫
+        objectRowInclusion (simplicialCoreSConstruction X.carrier) (Opposite.op ⦋m⦌)
+
+lemma objectRowInclusion_coreS_localized_isIso (m : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map
+      (objectRowInclusion (simplicialCoreSConstruction X.carrier) (Opposite.op ⦋m⦌)))
+
+lemma diagonalObjectInclusion_coreS_localized_isIso (C : SSet.{u})
+    [Quasicategory C] [IsStable C] : IsIso (AnodyneHomotopy.anodyneQ.map
+      (diagonalObjectInclusion (simplicialCoreSConstruction C)))
+
+lemma objectToCoreSRealization_localized_isIso (C : SSet.{u})
+    [Quasicategory C] [IsStable C] :
+    IsIso (AnodyneHomotopy.anodyneQ.map (objectToCoreSRealization C))
+```
+
+前提：最終比較は `[Quasicategory C] [IsStable C]` のみ。行の弱同値は X : StableModel、
+一般の二重単体集合の row 包含と対角の同型は前提なし。
+
+現在地：L1a・L1b 完了、L1c 継続中。元の object/core 実現比較の弱同値まで証明済み。
+McCarthy の具体的な単体ホモトピー、単体積 Quillen A、加法性比較の弱同値性、
+面のホモトピー引き戻し条件は未完了。反復 S 実現と §6.43 の homotopy fiber の比較、
+構造射との照合、正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトルと
+スペクトル関手も未完了。L1d–f 未完了、L1g は別途指示待ち。Core・他レーンの公開名・型は変更なし。
+
+検証：対象ビルド成功（3201 jobs）、公理監査成功（1527 宣言、標準三公理のみ）。追加公理・sorry なし。
