@@ -112,6 +112,8 @@ run_cmd do
 
 
 
+
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2497,6 +2499,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.normalizationHomologyNatIso
 
 
+-- HomologyColimits.lean
+
+#check @SerrePositivity.KST.Comparison.unnormalizedIntegralChainsEvalIso
+#print axioms SerrePositivity.KST.Comparison.unnormalizedIntegralChainsEvalIso
+
+#check @SerrePositivity.KST.Comparison.unnormalizedIntegralChains_preservesColimits
+#print axioms SerrePositivity.KST.Comparison.unnormalizedIntegralChains_preservesColimits
+
+
 -- HomologyDegenerate.lean
 
 #check @SerrePositivity.KST.Comparison.integralDegenerateProjection
@@ -2540,6 +2551,36 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.integralHomologyIsoOfHomotopyInverse
 #print axioms SerrePositivity.KST.Comparison.integralHomologyIsoOfHomotopyInverse
+
+
+-- HomologyHorn.lean
+
+#check @SerrePositivity.KST.Comparison.hornIntegralHomologyIso
+#print axioms SerrePositivity.KST.Comparison.hornIntegralHomologyIso
+
+#check @SerrePositivity.KST.Comparison.horn_integralHomologyIsomorphism
+#print axioms SerrePositivity.KST.Comparison.horn_integralHomologyIsomorphism
+
+
+-- HomologyPairContraction.lean
+
+#check @SerrePositivity.KST.Comparison.integralHomologyMap_endpoints_eq
+#print axioms SerrePositivity.KST.Comparison.integralHomologyMap_endpoints_eq
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsoOfPairContraction
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsoOfPairContraction
+
+
+-- HomologyQuasiIso.lean
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsomorphism_iff_normalized_quasiIso
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsomorphism_iff_normalized_quasiIso
+
+#check @SerrePositivity.KST.Comparison.normalizationInclusion_quasiIso
+#print axioms SerrePositivity.KST.Comparison.normalizationInclusion_quasiIso
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsomorphism_iff_unnormalized_quasiIso
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsomorphism_iff_unnormalized_quasiIso
 
 
 -- HomologyRelative.lean

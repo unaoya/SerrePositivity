@@ -132,7 +132,9 @@ public import SerrePositivity.KST.Comparison.HatGLCoefficientKan
 public import SerrePositivity.KST.Comparison.StableHatGLHigherComparison
 
 public import SerrePositivity.KST.Comparison.HomologyHomotopy
-public import SerrePositivity.KST.Comparison.HomologyRelative
+public import SerrePositivity.KST.Comparison.HomologyColimits
+public import SerrePositivity.KST.Comparison.HomologyHorn
+public import SerrePositivity.KST.Comparison.HomologyQuasiIso
 public import SerrePositivity.KST.Comparison.IntegerCoefficientNaturality
 
 /-!

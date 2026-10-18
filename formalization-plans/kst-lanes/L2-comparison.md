@@ -869,6 +869,8 @@ L2c：正規化整数ホモロジー、非正規化との自然同型、ホモ�
 定数整数係数の単体的群と自由単体的アーベル群の実際の同型、正規化複体とホモロジーの同型を構成した。
 単体写像に対する比較の自然性を単体的群・正規化複体・ホモロジーで証明し、
 全局所係数のホモロジー同型から整数係数のホモロジー同型を導いた。
+二段階の対の収縮によるホモロジー同型と、正次元の全 horn 包含の整数ホモロジー同型を証明した。
+自由非正規化整数鎖複体の余極限保存と、正規化・非正規化の擬同型による整数ホモロジー同型の判定も証明した。
 Kan 置換のホモロジー保存とセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
@@ -878,10 +880,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4456 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4460 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1340 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2447 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1349 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2470 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -893,6 +895,9 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `integralHomologyIsoOfPairContraction`、`hornIntegralHomologyIso` | 監査済み | 二段階の対の収縮と正次元 horn の整数ホモロジー同型 |
+| `unnormalizedIntegralChains_preservesColimits` | 監査済み | 自由非正規化鎖複体の余極限保存 |
+| `integralHomologyIsomorphism_iff_unnormalized_quasiIso` | 監査済み | 余極限を保存する複体での擬同型による判定 |
 | `integralHomologyFunctor`、`normalizationHomologyNatIso` | 監査済み | 実際の正規化整数ホモロジーと非正規化との自然同型 |
 | `coefficientFiberIsColimit`、`coefficientSimplicialObjIsoSigma` | 監査済み | 各次数の係数群の直和の普遍性と実際の比較同型 |
 | `integerLocalCoefficientHomologyIso_naturality`、`integralHomologyIsomorphism_of_local` | 監査済み | 自然な比較と全局所係数から整数係数への帰結 |
