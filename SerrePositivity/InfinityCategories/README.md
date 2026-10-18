@@ -2077,7 +2077,8 @@ Sp は空積を含む有限積、一脚が全段で fibration の引き戻し、
 Sp の極限対象の段は置換せず、Kan 性・構造射の単射性・全基点全次数の Ω 条件を証明している。
 
 余極限側は着手済み。通常の余錐を元の標準図式上の native な余錐として構成し、頂点と
-反対の極限性による双対判定を検証した。Hom 条件・𝒮 の実際の余積等への適用は後続工程。
+反対の極限性による双対判定を検証した。離散添字では全反変 Hom の極限性から余極限性を導き、
+Kan 複体の余錐では台の余極限性からこの Hom 条件を検証する。実際の余積等の構成は後続工程。
 任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
 一般形状の非反転 q_x との直接比較と E2a 完了後の E2b 適用は残る。
 指定三形状の可縮性判定を、これらの未完了工程を含む γ3 全体の完成とは数えない。
@@ -9498,3 +9499,133 @@ lemma strictNativeCocone_isColimit_iff_reflectedRepresentableComparison {F : I �
 公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-general-aggregate.log`、`/tmp/gamma3-general-audit.log`。
+
+### γ3：離散な添字上の Hom 条件による余極限性と Kan 複体の台での検証
+
+離散添字は `Discrete J` という表示に限らず、任意の小圏 I に `[IsDiscrete I]` を
+要求する形で扱える。各 Over i は対象・射とも一意で、その nerve は厳密な終対象である。
+したがって Bousfield–Kan 重みも終対象で、strict な極限から end への標準比較は同型。
+これは反対の離散圏 Iᵒᵖ にも追加の再添字なしに適用でき、空の添字も含む。
+
+局所 Kan な単体的圏 C の通常の余錐 c について、全ての x : Cᵒᵖ で
+`IsLimit (simplicialHomCone c.op x)` なら、元の図式上の `strictNativeCocone c` は
+`IsColimitCone` を満たす。反転した Hom 錐の厳密な極限性、終対象の重みとの比較、
+前節の一般形状の native な極限判定を使って証明する。
+通常の圏での余極限性だけを豊穣 Hom の極限性の代わりに仮定しない。
+
+𝒮 の入力となる Kan 複体の余錐 c では、その台が単体集合の余極限であれば、
+全ての反変豊穣 Hom の極限性を直接検証できる。反対圏の豊穣 Hom 関手は、忘却後の
+内部 Hom の反変変数の関手と厳密に一致する。braiding と豊穣合成を展開して前合成の式に戻し、
+この内部 Hom 関手の極限保存を使う。離散添字では台の余極限性から native な余極限性を得る。
+
+これらは実際に与えた Kan な頂点を保持する移送定理であり、任意の Kan 複体の族の余積対象の
+構成やその Kan 性をまだ含まない。余積対象・余錐の各脚・homotopy 押し出し・逐次余極限、
+一般形状の非反転 q_x への移送、E2a 後の E2b の範囲は継続する。
+原典：HTT 4.2.4.1、Kerodon 7.5.4.1・7.5.4.6。
+
+公開する十三宣言の正確な型を次に置く。`DiscreteShapeComparison` は
+`I : Type u [SmallCategory I] [IsDiscrete I]` を共通前提とする。
+`DiscreteHomColimits` にはさらに `C : Type v [Category.{u} C] [SimplicialCategory C]` を置き、
+最後の二宣言には C の全 sHom の Kan 性を要求する。
+`KanCoconeColimits` は宣言内の前提だけで、対象は既存の `KanObject.{u}` を使う。
+
+`DiscreteShapeComparison.lean`：
+
+```lean
+instance isDiscreteOver_subsingleton (i : I) : Subsingleton (Over i)
+```
+
+`DiscreteShapeComparison.lean`：
+
+```lean
+instance isDiscreteOver_isThin (i : I) : Quiver.IsThin (Over i)
+```
+
+`DiscreteShapeComparison.lean`：
+
+```lean
+instance isDiscreteOverNerve_obj_subsingleton (i : I) (n : SimplexCategoryᵒᵖ) :
+    Subsingleton ((nerve (Over i)).obj n)
+```
+
+`DiscreteShapeComparison.lean`：
+
+```lean
+def isDiscreteOverNerve_isTerminal (i : I) : IsTerminal (nerve (Over i))
+```
+
+`DiscreteShapeComparison.lean`：
+
+```lean
+def isDiscreteBousfieldKanWeight_isTerminal : IsTerminal (bousfieldKanWeight I)
+```
+
+`DiscreteShapeComparison.lean`：
+
+```lean
+instance bousfieldKanLimitComparison_isDiscrete_isIso (H : I ⥤ SSet.{u}) :
+    IsIso (bousfieldKanLimitComparison H)
+```
+
+`DiscreteHomColimits.lean`：
+
+```lean
+lemma reflectedRepresentableComparison_isDiscrete_isIso {F : I ⥤ C}
+    (c : Cone F) (x : C) (hc : IsLimit (simplicialHomCone c x)) :
+    IsIso (reflectedRepresentableComparison c x)
+```
+
+`DiscreteHomColimits.lean`：
+
+```lean
+lemma strictCoherentCone_isLimit_of_isDiscrete_homLimit {F : I ⥤ C}
+    (c : Cone F) (hc : ∀ x : C, IsLimit (simplicialHomCone c x)) :
+    IsLimitCone (strictCoherentCone c)
+```
+
+`DiscreteHomColimits.lean`：
+
+```lean
+lemma strictNativeCocone_isColimit_of_isDiscrete_homLimit {F : I ⥤ C}
+    (c : Cocone F) (hc : ∀ x : Cᵒᵖ, IsLimit (simplicialHomCone c.op x)) :
+    IsColimitCone (strictNativeCocone c)
+```
+
+`KanCoconeColimits.lean`：
+
+```lean
+lemma kanObjectOppositeHomFunctor_eq (X : KanObject.{u}) :
+    (SimplicialCategory.sHomFunctor KanObject.{u}ᵒᵖ).obj (Opposite.op (Opposite.op X)) =
+      kanObjectForget.op ⋙ (internalHom (C := SSet.{u})).flip.obj X.obj
+```
+
+`KanCoconeColimits.lean`：
+
+```lean
+noncomputable def kanObjectCocone_isColimit_of_forget {I : Type u} [SmallCategory I]
+    {F : I ⥤ KanObject.{u}} (c : Cocone F)
+    (hc : IsColimit (kanObjectForget.mapCocone c)) : IsColimit c
+```
+
+`KanCoconeColimits.lean`：
+
+```lean
+noncomputable def kanObjectOppositeHomCone_isLimit_of_forget
+    {I : Type u} [SmallCategory I] {F : I ⥤ KanObject.{u}} (c : Cocone F)
+    (hc : IsColimit (kanObjectForget.mapCocone c)) (X : KanObject.{u}ᵒᵖ) :
+    IsLimit (simplicialHomCone c.op X)
+```
+
+`KanCoconeColimits.lean`：
+
+```lean
+lemma strictNativeCocone_isColimit_of_kanDiscrete_forget
+    {I : Type u} [SmallCategory I] [IsDiscrete I] {F : I ⥤ KanObject.{u}}
+    (c : Cocone F) (hc : IsColimit (kanObjectForget.mapCocone c)) :
+    IsColimitCone (strictNativeCocone c)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4987 jobs）、公開1532宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-discrete-colimit-aggregate.log`、`/tmp/gamma3-discrete-colimit-audit.log`。

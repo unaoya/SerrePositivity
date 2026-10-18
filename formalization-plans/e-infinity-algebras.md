@@ -2204,3 +2204,22 @@ IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c.op x)` を�
 公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-general-aggregate.log`、`/tmp/gamma3-general-audit.log`。
+
+### γ3：離散添字の余極限の Hom 条件と Kan 複体の台での検証
+
+`DiscreteShapeComparison.lean` の六宣言は `[IsDiscrete I]` の任意の小圏の各 over 圏の
+対象・射と全 nerve 単体の一意性、nerve と Bousfield–Kan 重みの終対象性、標準比較の同型性。
+`DiscreteHomColimits.lean` の三宣言は反転比較 q′ の同型性と、全豊穣 Hom の極限性から
+native な極限・余極限性を導く。余錐の条件は全 x : Cᵒᵖ での
+`IsLimit (simplicialHomCone c.op x)` で、元の図式上の `strictNativeCocone c` を使う。
+`KanCoconeColimits.lean` の四宣言は反対圏の豊穣 Hom と反変内部 Hom の厳密な同定、
+台での余極限の通常の Kan 複体の圏への移送、全反変 Hom の極限性、離散図式の native な
+余極限性への移送。余錐の Kan な頂点を保持し、Hom の極限性を追加仮定にしない。
+十三宣言の正確な型・全前提は README の同名節に記録する。
+実際の余積対象とその Kan 性、余錐の各脚、homotopy 押し出し・逐次余極限、
+一般形状の非反転 q_x、E2a 後の E2b は未完了。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4987 jobs）、公開1532宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-discrete-colimit-aggregate.log`、`/tmp/gamma3-discrete-colimit-audit.log`。
