@@ -40,3 +40,9 @@ public import SerrePositivity.KST.DerivedBlowup.ExteriorProductSplit
 public import SerrePositivity.KST.DerivedBlowup.ExteriorProductEquiv
 public import SerrePositivity.KST.DerivedBlowup.ExteriorProductDifferential
 public import SerrePositivity.KST.DerivedBlowup.ExteriorProductDegree
+public import SerrePositivity.KST.DerivedBlowup.ExteriorProductCochain
+public import SerrePositivity.KST.DerivedBlowup.ExteriorInclusionTransport
+public import SerrePositivity.KST.DerivedBlowup.ExteriorProductCochainComponents
+public import SerrePositivity.KST.DerivedBlowup.ExteriorProductCochainDifferential
+public import SerrePositivity.KST.DerivedBlowup.ExteriorConeComponents
+public import SerrePositivity.KST.DerivedBlowup.ExteriorConeIso
