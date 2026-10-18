@@ -8424,5 +8424,9 @@ lemma leftStraighteningCoherentMap_evaluate
     leftStraighteningCoherentMap C ≫ evaluateFunctorAt (ULift.up (nerveVertex c)) =
       leftStrictTransportCoherentEvaluation c
 
+lemma relativeFunctorPostHom_ordinary {B : SSet.{u}} (a b c : Over B) (f : b ⟶ c) :
+    relativeFunctorHomEquiv b c f ≫ relativeFunctorPostHom a b c =
+      curry' (HomotopyLimits.relativeFunctorPost b.hom c.hom f.left f.w a.hom)
+
 end SerrePositivity.InfinityCategories
 ```

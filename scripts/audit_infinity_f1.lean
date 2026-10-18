@@ -1803,3 +1803,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.strictTransportSimplexUnderDiagram_constant
 #check @SerrePositivity.InfinityCategories.strictTransportDiagonalSimplex_constant_base
 #check @SerrePositivity.InfinityCategories.leftStraighteningCoherentMap_evaluate
+#check @SerrePositivity.InfinityCategories.relativeFunctorPostHom_ordinary

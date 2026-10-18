@@ -425,3 +425,4 @@ public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeConstant
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningVertices
 public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeConstantBase
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningEvaluation
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostHomOrdinary
