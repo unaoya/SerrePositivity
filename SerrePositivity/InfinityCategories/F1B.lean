@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1B.RightCofinalFunctor
+
+public import SerrePositivity.InfinityCategories.F1B.WeakMappingSpaces
+
 public import SerrePositivity.InfinityCategories.F1B.Cofinality
 public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
 public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
