@@ -3981,3 +3981,53 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_subobject
 #check @SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_quotient
 #print axioms SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_quotient
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiber
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiber
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberProjection
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberProjection
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberParameter
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberParameter
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiber_condition
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiber_condition
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberLift
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberLift
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberLift_projection
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberLift_projection
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberLift_parameter
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberLift_parameter
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiber_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiber_hom_ext
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberMap
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberMap
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberMap_projection
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberMap_projection
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberMap_parameter
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberMap_parameter
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberSimplexEquiv
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberSimplexEquiv
+#check @SerrePositivity.KST.SConstruction.simplexLeftFiberMap_postcomp
+#print axioms SerrePositivity.KST.SConstruction.simplexLeftFiberMap_postcomp
+#check @SerrePositivity.KST.SConstruction.cofiberSubobjectLeftFiber
+#print axioms SerrePositivity.KST.SConstruction.cofiberSubobjectLeftFiber
+#check @SerrePositivity.KST.SConstruction.cofiberLeftFiberQuotient
+#print axioms SerrePositivity.KST.SConstruction.cofiberLeftFiberQuotient
+#check @SerrePositivity.KST.SConstruction.arNerveMap_const
+#print axioms SerrePositivity.KST.SConstruction.arNerveMap_const
+#check @SerrePositivity.KST.SConstruction.gappedDiagram_objectS_const
+#print axioms SerrePositivity.KST.SConstruction.gappedDiagram_objectS_const
+#check @SerrePositivity.KST.SConstruction.objectSLastDiagonalZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.objectSLastDiagonalZeroVertex
+#check @SerrePositivity.KST.SConstruction.stableConstantZero
+#print axioms SerrePositivity.KST.SConstruction.stableConstantZero
+#check @SerrePositivity.KST.SConstruction.objectS_lastVertex_constantZero
+#print axioms SerrePositivity.KST.SConstruction.objectS_lastVertex_constantZero
+#check @SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_subobject_true
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_subobject_true
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberSection
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberSection
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberSection_projection
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberSection_projection
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberSection_parameter
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberSection_parameter
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberSection_quotient
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberSection_quotient

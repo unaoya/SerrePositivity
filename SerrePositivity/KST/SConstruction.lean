@@ -186,4 +186,8 @@ public import SerrePositivity.KST.SConstruction.ZeroCofiberFunctors
 public import SerrePositivity.KST.SConstruction.ZeroCofiberExactness
 public import SerrePositivity.KST.SConstruction.CofiberEvaluations
 
+public import SerrePositivity.KST.SConstruction.SimplexLeftFiber
+public import SerrePositivity.KST.SConstruction.ObjectSConstantRestriction
+public import SerrePositivity.KST.SConstruction.McCarthyFiberSection
+
 /-! # ∞-S• 構成と連結 K 理論 -/

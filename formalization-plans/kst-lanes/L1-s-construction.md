@@ -6659,3 +6659,138 @@ cofiber 関手と完全性を証明済み。固定単体上の fiber、μ の添
 L1d–f 未完了、L1g は別途指示待ち。Core と他レーンの公開名・型は変更なし。
 
 検証：対象ビルド成功（3204 jobs）、公理監査成功（1548 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.56 McCarthy の左 fiber と quotient の厳密な切断
+
+Fiore–Pieper Definition 1.13・Lemma 4.24 の f/(m,A) を単体の Yoneda 射に沿う実際の
+pullback として定義した。元の単体と添字の射影、一致条件、任意の族の持ち上げと射の外延性、
+単体の制限に沿う射と各射影の式を証明した。n 単体を一致条件付きの (e,α) の対と同定した。
+cofiber 図式の subobject の object S にこれを適用し、原典の r に当たる quotient への射を構成した。
+固定単体 A の最後の対角零対象を実際に取り出し、定値な添字制限がこの零対象への定値図式となる
+厳密な式を証明した。この零対象を使う ι 型の標準零 cofiber 関手を左 fiber に持ち上げ、
+quotient 射との合成が厳密に恒等射となる切断 `mcCarthyFiberSection` を構成した。
+任意の零対象を共通零対象に置き換える仮定を加えていない。
+
+主要公開宣言（namespace `SerrePositivity.KST.SConstruction`、宇宙 `u`）：
+
+```lean
+def simplexLeftFiber {X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ} (y : Y _⦋m⦌) : SSet.{u}
+
+def simplexLeftFiberProjection {X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ} (y : Y _⦋m⦌) :
+    simplexLeftFiber f y ⟶ X
+
+def simplexLeftFiberParameter {X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ} (y : Y _⦋m⦌) :
+    simplexLeftFiber f y ⟶ Δ[m]
+
+lemma simplexLeftFiber_condition {X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ} (y : Y _⦋m⦌) :
+    simplexLeftFiberProjection f y ≫ f =
+      simplexLeftFiberParameter f y ≫ SSet.yonedaEquiv.symm y
+
+def simplexLeftFiberLift {A X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ} (y : Y _⦋m⦌)
+    (e : A ⟶ X) (a : A ⟶ Δ[m]) (h : e ≫ f = a ≫ SSet.yonedaEquiv.symm y) :
+    A ⟶ simplexLeftFiber f y
+
+lemma simplexLeftFiberLift_projection {A X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ}
+    (y : Y _⦋m⦌) (e : A ⟶ X) (a : A ⟶ Δ[m])
+    (h : e ≫ f = a ≫ SSet.yonedaEquiv.symm y) :
+    simplexLeftFiberLift f y e a h ≫ simplexLeftFiberProjection f y = e
+
+lemma simplexLeftFiberLift_parameter {A X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ}
+    (y : Y _⦋m⦌) (e : A ⟶ X) (a : A ⟶ Δ[m])
+    (h : e ≫ f = a ≫ SSet.yonedaEquiv.symm y) :
+    simplexLeftFiberLift f y e a h ≫ simplexLeftFiberParameter f y = a
+
+lemma simplexLeftFiber_hom_ext {A X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ} (y : Y _⦋m⦌)
+    {a b : A ⟶ simplexLeftFiber f y}
+    (he : a ≫ simplexLeftFiberProjection f y = b ≫ simplexLeftFiberProjection f y)
+    (ha : a ≫ simplexLeftFiberParameter f y = b ≫ simplexLeftFiberParameter f y) : a = b
+
+def simplexLeftFiberMap {X Y : SSet.{u}} (f : X ⟶ Y) {l m : ℕ}
+    (θ : ⦋l⦌ ⟶ ⦋m⦌) (y : Y _⦋m⦌) :
+    simplexLeftFiber f (Y.map θ.op y) ⟶ simplexLeftFiber f y
+
+lemma simplexLeftFiberMap_projection {X Y : SSet.{u}} (f : X ⟶ Y) {l m : ℕ}
+    (θ : ⦋l⦌ ⟶ ⦋m⦌) (y : Y _⦋m⦌) :
+    simplexLeftFiberMap f θ y ≫ simplexLeftFiberProjection f y =
+      simplexLeftFiberProjection f (Y.map θ.op y)
+
+lemma simplexLeftFiberMap_parameter {X Y : SSet.{u}} (f : X ⟶ Y) {l m : ℕ}
+    (θ : ⦋l⦌ ⟶ ⦋m⦌) (y : Y _⦋m⦌) :
+    simplexLeftFiberMap f θ y ≫ simplexLeftFiberParameter f y =
+      simplexLeftFiberParameter f (Y.map θ.op y) ≫ stdSimplex.map θ
+
+def simplexLeftFiberSimplexEquiv {X Y : SSet.{u}} (f : X ⟶ Y) {m : ℕ}
+    (y : Y _⦋m⦌) (n : ℕ) :
+    (simplexLeftFiber f y) _⦋n⦌ ≃
+      {p : X _⦋n⦌ × (Δ[m] : SSet.{u}) _⦋n⦌ //
+        f.app (Opposite.op ⦋n⦌) p.1 = (SSet.yonedaEquiv.symm y).app (Opposite.op ⦋n⦌) p.2}
+
+lemma simplexLeftFiberMap_postcomp {X Y T : SSet.{u}} (f : X ⟶ Y) (g : X ⟶ T)
+    {l m : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌) (y : Y _⦋m⦌) :
+    simplexLeftFiberMap f θ y ≫ simplexLeftFiberProjection f y ≫ g =
+      simplexLeftFiberProjection f (Y.map θ.op y) ≫ g
+
+def cofiberSubobjectLeftFiber (X : StableModel.{u}) {m : ℕ}
+    (a : (objectSConstruction X.carrier) _⦋m⦌) : SSet.{u}
+
+def cofiberLeftFiberQuotient (X : StableModel.{u}) {m : ℕ}
+    (a : (objectSConstruction X.carrier) _⦋m⦌) :
+    cofiberSubobjectLeftFiber X a ⟶ objectSConstruction X.carrier
+
+lemma arNerveMap_const (n m : ℕ) (i : Fin (m + 1)) :
+    arNerveMap.{u} (OrderHom.const (Fin (n + 1)) i) =
+      (SSet.const (ComposableArrows.mk₀ (arObj i i le_rfl)) : arNerve n ⟶ arNerve m)
+
+lemma gappedDiagram_objectS_const {C : SSet.{u}} {m n : ℕ}
+    (v : (objectSConstruction C) _⦋m⦌) (i : Fin (m + 1)) :
+    gappedDiagram ((objectSConstruction C).map (SimplexCategory.const ⦋n⦌ ⦋m⦌ i).op v) =
+      (SSet.const ((gappedDiagram v).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ (arObj i i le_rfl))) : arNerve n ⟶ C)
+
+def objectSLastDiagonalZeroVertex {C : SSet.{u}} {m : ℕ}
+    (a : (objectSConstruction C) _⦋m⦌) : ZeroVertex C
+
+def stableConstantZero (X : StableModel.{u}) (z : ZeroVertex X.carrier) : X ⟶ X
+
+lemma objectS_lastVertex_constantZero (X : StableModel.{u}) {m : ℕ}
+    (a : (objectSConstruction X.carrier) _⦋m⦌) :
+    (SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last m)) :
+      objectSConstruction X.carrier ⟶ Δ[m]) ≫ SSet.yonedaEquiv.symm a =
+      objectSConstructionFunctor.map (stableConstantZero X (objectSLastDiagonalZeroVertex a))
+
+lemma zeroCofiberStableFunctor_subobject_true (X : StableModel.{u}) (z : ZeroVertex X.carrier) :
+    zeroCofiberStableFunctor X z true ≫ cofiberStableSubobject X = stableConstantZero X z
+
+def mcCarthyFiberSection (X : StableModel.{u}) {m : ℕ}
+    (a : (objectSConstruction X.carrier) _⦋m⦌) :
+    objectSConstruction X.carrier ⟶ cofiberSubobjectLeftFiber X a
+
+lemma mcCarthyFiberSection_projection (X : StableModel.{u}) {m : ℕ}
+    (a : (objectSConstruction X.carrier) _⦋m⦌) :
+    mcCarthyFiberSection X a ≫
+      simplexLeftFiberProjection (objectSConstructionFunctor.map (cofiberStableSubobject X)) a =
+      objectSConstructionFunctor.map
+        (zeroCofiberStableFunctor X (objectSLastDiagonalZeroVertex a) true)
+
+lemma mcCarthyFiberSection_parameter (X : StableModel.{u}) {m : ℕ}
+    (a : (objectSConstruction X.carrier) _⦋m⦌) :
+    mcCarthyFiberSection X a ≫
+      simplexLeftFiberParameter (objectSConstructionFunctor.map (cofiberStableSubobject X)) a =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last m))
+
+lemma mcCarthyFiberSection_quotient (X : StableModel.{u}) {m : ℕ}
+    (a : (objectSConstruction X.carrier) _⦋m⦌) :
+    mcCarthyFiberSection X a ≫ cofiberLeftFiberQuotient X a =
+      𝟙 (objectSConstruction X.carrier)
+```
+
+前提：一般の左 fiber と添字制限は任意の単体集合・射、対角零対象の抽出は任意の object S の単体。
+McCarthy の fiber と切断は X : StableModel を要求する。切断の存在を仮定せず構成した。
+
+現在地：L1a・L1b 完了、L1c 継続中。McCarthy の左 fiber と quotient への射の厳密な切断まで証明済み。
+μ の添字と変換、押し出しによる ρ、ιr と恒等射を結ぶ二つの実ホモトピー、単体積 Quillen A、
+加法性比較の弱同値性は未完了。面のホモトピー引き戻し条件、反復 S 実現と §6.43 の homotopy fiber の比較、
+構造射との照合、正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトルとスペクトル関手も未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core と他レーンの公開名・型は変更なし。
+
+検証：対象ビルド成功（3207 jobs）、公理監査成功（1573 宣言、標準三公理のみ）。追加公理・sorry なし。
