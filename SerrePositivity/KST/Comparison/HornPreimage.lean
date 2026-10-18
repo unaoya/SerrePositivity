@@ -2,16 +2,16 @@ module
 
 public import SerrePositivity.KST.Comparison.HornContraction
 public import SerrePositivity.KST.Comparison.PairHomotopyLifting
-public import SerrePositivity.KST.Comparison.SubcomplexContraction
+public import SerrePositivity.KST.Comparison.PairContractionAnodyne
 public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 
 /-!
 # Kan fibration に沿う horn の逆像の局所化可逆性
 
-概要：horn 包含の Kan fibration に沿う逆像は anodyne 局所化で同型となる。
+概要：horn 包含の Kan fibration に沿う逆像は anodyne となる。
 方針：horn を保つ min(x,k) を経由する二つの収縮を持ち上げる。
 規約：Segal 1974 Proposition 1.6 の対角模型の補助。Moss 2020 §5 Theorem 42 の
-strong anodyne 性を引用せず、必要な局所化同型を実ホモトピーで証明する。
+strong anodyne 性を引用せず、anodyne 性を相対ホモトピーの持ち上げで証明する。
 使われ方：ホモトピー引き戻しと骨格の貼り合わせを接続する。
 -/
 
@@ -53,14 +53,14 @@ theorem const_horn_vertex_mem {n : ℕ} [NeZero n] (k : Fin (n + 1))
   exact hj hi.symm
 
 /--
-概要：Kan fibration に沿う正次元 horn の逆像の包含は局所化で可逆である。
+概要：Kan fibration に沿う正次元 horn の逆像の包含は anodyne である。
 方針：標準単体と horn の同時収縮を持ち上げ、逆像を保つ二つの区間写像を得る。
 規約：Segal 1974 Proposition 1.6 の補助。strong anodyne 性を仮定も結論もしない。
 使われ方：Kan fibration に沿う基底変換とセルの比較。
 -/
-theorem horn_preimage_localized_isIso {n : ℕ} [NeZero n] (k : Fin (n + 1))
+theorem horn_preimage_anodyne {n : ℕ} [NeZero n] (k : Fin (n + 1))
     {E : SSet.{u}} (p : E ⟶ (Δ[n] : SSet.{u})) (hp : SSet.modelCategoryQuillen.J.rlp p) :
-    IsIso (AnodyneHomotopy.anodyneQ.map ((Λ[n, k]).preimage p).ι) := by
+    SSet.anodyneExtensions ((Λ[n, k]).preimage p).ι := by
   let A := (Λ[n, k]).preimage p
   let H₀ := simplexMeetToIdentity.{u} k
   let H₁ := simplexMeetToVertex.{u} k
@@ -103,7 +103,19 @@ theorem horn_preimage_localized_isIso {n : ℕ} [NeZero n] (k : Fin (n + 1))
     change ((SSet.ι₁ ≫ h₁) ≫ p).app d a ∈ (Λ[n, k]).obj d
     rw [hfinal]
     exact const_horn_vertex_mem k d (p.app d a)
-  exact subcomplex_inclusion_localized_isIso A h₀ h₁ h₀end h₁start.symm h₀A h₁A hend
+  exact subcomplex_inclusion_anodyne A h₀ h₁ h₀end h₁start.symm h₀A h₁A hend
+
+/--
+概要：Kan fibration に沿う正次元 horn の逆像の包含は局所化で可逆である。
+方針：証明済みの anodyne 性に局所化の普遍性を適用する。
+規約：Segal 1974 Proposition 1.6 の基底変換の補助。
+使われ方：従来の局所化同型の界面を保つ。
+-/
+theorem horn_preimage_localized_isIso {n : ℕ} [NeZero n] (k : Fin (n + 1))
+    {E : SSet.{u}} (p : E ⟶ (Δ[n] : SSet.{u})) (hp : SSet.modelCategoryQuillen.J.rlp p) :
+    IsIso (AnodyneHomotopy.anodyneQ.map ((Λ[n, k]).preimage p).ι) :=
+  Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions _
+    (horn_preimage_anodyne k p hp)
 
 /--
 概要：部分単体集合の逆像は厳密な引き戻しを与える。
@@ -141,5 +153,21 @@ theorem pullback_horn_localized_isIso {n : ℕ} [NeZero n] (k : Fin (n + 1))
     horn_preimage_localized_isIso k p hp
   rw [← he, Functor.map_comp]
   infer_instance
+
+/--
+概要：正次元 horn の Kan fibration に沿う任意の厳密引き戻しの上辺は anodyne である。
+方針：逆像の包含との標準同型を合成し、anodyne 性を移す。
+規約：Moss arXiv:1506.04887v2 Theorem 5.1 と異なり strong anodyne 性は主張しない。
+使われ方：スライスの右随伴の任意の Kan fibration の保存。
+-/
+theorem pullback_horn_anodyne {n : ℕ} [NeZero n] (k : Fin (n + 1))
+    {E P : SSet.{u}} (p : E ⟶ (Δ[n] : SSet.{u})) (hp : SSet.modelCategoryQuillen.J.rlp p)
+    (i : P ⟶ E) (j : P ⟶ (Λ[n, k] : SSet.{u})) (sq : IsPullback i j p (Λ[n, k]).ι) :
+    SSet.anodyneExtensions i := by
+  let e := sq.isoIsPullback _ _ (subcomplexPreimage_isPullback (Λ[n, k]) p)
+  have he : e.hom ≫ ((Λ[n, k]).preimage p).ι = i := sq.isoIsPullback_hom_fst ..
+  rw [← he]
+  exact SSet.anodyneExtensions.comp_mem _ _ (SSet.anodyneExtensions.of_isIso _)
+    (horn_preimage_anodyne k p hp)
 
 end SerrePositivity.KST.Comparison

@@ -70,6 +70,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1326,6 +1327,9 @@ run_cmd do
 #check @SerrePositivity.KST.Comparison.const_horn_vertex_mem
 #print axioms SerrePositivity.KST.Comparison.const_horn_vertex_mem
 
+#check @SerrePositivity.KST.Comparison.horn_preimage_anodyne
+#print axioms SerrePositivity.KST.Comparison.horn_preimage_anodyne
+
 #check @SerrePositivity.KST.Comparison.horn_preimage_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.horn_preimage_localized_isIso
 
@@ -1334,6 +1338,9 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.pullback_horn_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.pullback_horn_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.pullback_horn_anodyne
+#print axioms SerrePositivity.KST.Comparison.pullback_horn_anodyne
 
 
 -- HornSubdivisionComparison.lean
@@ -1397,6 +1404,18 @@ run_cmd do
 
 
 -- KanAnodyneBaseChange.lean
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_horn_anodyne
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_horn_anodyne
+
+#check @SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_rlp
+#print axioms SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_rlp
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_anodyne
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_anodyne
+
+#check @SerrePositivity.KST.Comparison.pullback_anodyne
+#print axioms SerrePositivity.KST.Comparison.pullback_anodyne
 
 #check @SerrePositivity.KST.Comparison.sliceFiberFunctor_horn_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_horn_localized_isIso
@@ -1568,6 +1587,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.underlying_rlp_of_over_horns
 #print axioms SerrePositivity.KST.Comparison.underlying_rlp_of_over_horns
+
+
+-- PairContractionAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.subcomplex_inclusion_anodyne
+#print axioms SerrePositivity.KST.Comparison.subcomplex_inclusion_anodyne
 
 
 -- PairHomotopyLifting.lean

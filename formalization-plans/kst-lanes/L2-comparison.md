@@ -409,6 +409,20 @@ span の射の誘導写像、各端点の包含、円筒の写像の式を先に
 厳密な引き戻しの colimit との交換から homotopy 引き戻しの比較へ進める。
 この段階では Lemma 1.7 本体を仮定とする構造体は導入せず、証明済みと主張しない。
 
+### 部分対象を保つ二段階の収縮と anodyne 性
+
+確認する文言：単射 i:A→X に対し、X の恒等射と A に入る射を結ぶ二つの区間写像が
+A を保つなら、i は anodyne である。単なる局所化可逆性より強い結論を証明する。
+証明方針：任意の Kan fibration p に対する正方形を取り、A に入る終点から始める。
+A 上で指定する写像を二つの制限ホモトピーで動かし、単射と区間端点の
+pushout-product の持ち上げを二回使って恒等射側へ戻す。最終端点は元の A 上の射に厳密に一致する。
+この補題を、既証の horn を保つ min(x,k) 経由の二段階の収縮の持ち上げへ適用する。
+これにより Kan fibration に沿う horn の逆像は anodyne となる。
+Moss 原論文 arXiv:1506.04887v2 §5 Theorem 5.1 の strong anodyne な pairing とは異なり、
+ここでは相対ホモトピーの持ち上げから anodyne 性だけを示す経路を取る。
+細分への応用は、細分した horn の像と安全な面の nerve の同定を別途証明してから行う。
+Moss 同版 Proposition 2.19 の細分保存を引用による入力にはしない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -509,6 +523,9 @@ span の各成分の局所化可逆な比較が二重写像円筒で可逆とな
 円筒の端点の自然性の四角形と、二つの引き戻しの二項余積の引き戻し性を証明した。
 adhesive 性による立方体の貼り合わせから、span の厳密な引き戻しについて、
 二重写像円筒の中央の円筒・左右の頂点・中央の頂点の各四角形の引き戻し性を証明した。
+部分対象を保つ二段階の収縮から、包含の anodyne 性を相対ホモトピーの持ち上げで証明した。
+Kan fibration に沿う horn の逆像と、任意の anodyne 射の引き戻しの anodyne 性を証明した。
+スライスの積の右随伴が、任意の Kan fibration を保つことも証明した。基底の Kan 性は不要。
 Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
 Ex∞ の fibration 保存は未証明。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
@@ -517,8 +534,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 600 宣言の型と公理を確認した。
-さらに名前空間全体の 1172 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 607 宣言の型と公理を確認した。
+さらに名前空間全体の 1179 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -630,6 +647,8 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `cylinderEndpoints_isPullback`、`coproductSquare_isPullback` | 実装済み | 円筒の境界と二項余積の厳密な引き戻し |
 | `strictPushoutCube`、`doubleMappingCylinderMap_isPullback` | 実装済み | van Kampen 性による厳密な貼り合わせ |
 | `doubleMappingCylinder_left_isPullback`、`doubleMappingCylinder_right_isPullback`、`doubleMappingCylinder_center_isPullback` | 実装済み | 三つの頂点の厳密な引き戻し |
+| `subcomplex_inclusion_anodyne`、`horn_preimage_anodyne` | 実装済み | 二段階の収縮による相対持ち上げと horn の逆像の anodyne 性 |
+| `sliceFiberRightAdjoint_rlp`、`pullback_anodyne` | 実装済み | 任意の基底での Kan fibration に沿う anodyne 射の基底変換 |
 | Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
