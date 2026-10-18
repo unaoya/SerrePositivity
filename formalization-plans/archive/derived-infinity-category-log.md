@@ -2259,3 +2259,203 @@ perfectInfinityU13Equivalence : perfectInfinityHomotopyCategory S ≌
     DifferentialGraded.HomotopyCategory S (PerfectDGModuleOver S PUnit.{1} Set.univ)
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D9a：台つき部分単体集合・閉性・局所化核の基礎
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory Limits DifferentialGraded
+open scoped ZeroObject
+variable (S : Type u) [CommRing S]
+supportHomotopyProperty (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) :
+    ObjectProperty (_root_.HomotopyCategory (ModuleCat.{u} S) (.up ℤ))
+supportHomotopyProperty_quotient
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) (P : Complex S) :
+    supportHomotopyProperty S Z ((HomotopyCategory.quotient _ _).obj P) ↔
+      HasHomologySupportOn Z P
+supportHomotopyProperty_isoClosed
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) :
+    (supportHomotopyProperty S Z).IsClosedUnderIsomorphisms
+supportHomotopyProperty_containsZero
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) :
+    (supportHomotopyProperty S Z).ContainsZero
+supportHomotopyProperty_shift
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) :
+    (supportHomotopyProperty S Z).IsStableUnderShift ℤ
+supportHomotopyProperty_closed₃
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) :
+    (supportHomotopyProperty S Z).IsTriangulatedClosed₃
+supportHomotopyProperty_triangulated
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) :
+    (supportHomotopyProperty S Z).IsTriangulated
+homologySupport_finiteBiproduct
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) {I : Type v} [Finite I]
+    (P : I → Complex S) (hP : ∀ i, HasHomologySupportOn Z (P i)) :
+    HasHomologySupportOn Z (⨁ P)
+homologySupport_binaryBiproduct
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) {P Q : Complex S}
+    (hP : HasHomologySupportOn Z P) (hQ : HasHomologySupportOn Z Q) :
+    HasHomologySupportOn Z (P ⊞ Q)
+homologySupport_fiber
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) {P Q : Complex S} (f : P ⟶ Q)
+    (hP : HasHomologySupportOn Z P) (hQ : HasHomologySupportOn Z Q) :
+    HasHomologySupportOn Z ((CochainComplex.mappingCone f)⟦(-1 : ℤ)⟧)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory DifferentialGraded DGNerve
+variable (S : Type u) [CommRing S] (P : Semifree S → Prop)
+semifreeFullNerve : SSet.{u + 1}
+semifreeFullNerveInclusion : semifreeFullNerve S P ⟶ derivedInfinityCategory S
+semifreeFullSubcomplex : (derivedInfinityCategory S).Subcomplex
+semifreeFullNerveInclusion_mono : Mono (semifreeFullNerveInclusion S P)
+semifreeFullNerveInclusion_range :
+    SSet.Subcomplex.range (semifreeFullNerveInclusion S P) = semifreeFullSubcomplex S P
+semifreeFullNerveIso :
+    semifreeFullNerve S P ≅ (semifreeFullSubcomplex S P : SSet.{u + 1})
+semifreeFullNerve_quasicategory : SSet.Quasicategory (semifreeFullNerve S P)
+semifreeFullSubcomplex_quasicategory :
+    SSet.Quasicategory (semifreeFullSubcomplex S P : SSet.{u + 1})
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory DifferentialGraded DGNerve
+variable (S : Type u) [CommRing S] (Z : TopologicalSpace.Closeds (PrimeSpectrum S))
+derivedSupportProperty (P : Semifree S) : Prop
+perfectSupportProperty (P : Semifree S) : Prop
+derivedSupportSubcomplex : (derivedInfinityCategory S).Subcomplex
+derivedSupportCategory : SSet.{u + 1}
+perfectSupportSubcomplex : (derivedInfinityCategory S).Subcomplex
+perfectSupportCategory : SSet.{u + 1}
+perfectSupportSubcomplex_eq_inf :
+    perfectSupportSubcomplex S Z = perfectInfinitySubcomplex S ⊓ derivedSupportSubcomplex S Z
+derivedSupportCategory_quasicategory : SSet.Quasicategory (derivedSupportCategory S Z)
+perfectSupportCategory_quasicategory : SSet.Quasicategory (perfectSupportCategory S Z)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory Limits DifferentialGraded
+variable {S : Type u} [CommRing S] {e : ℕ} (z : Fin e → S)
+strictlyPerfect_support_iff_scalar (K : Complex S) (hK : strictlyPerfectComplex S K) :
+    HasHomologySupportOn (supportZeroLocus (Ideal.span (Set.range z))) K ↔
+      scalarSupported z ((HomotopyCategory.quotient _ _).obj K)
+perfectModel_support_iff_scalar (P : Complex S) (hP : complexPerfectModel S P) :
+    HasHomologySupportOn (supportZeroLocus (Ideal.span (Set.range z))) P ↔
+      scalarSupported z ((HomotopyCategory.quotient _ _).obj P)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory Limits DifferentialGraded
+open scoped ZeroObject
+variable (S : Type u) [CommRing S] (Z : TopologicalSpace.Closeds (PrimeSpectrum S))
+SupportedSemifree
+PerfectSupportedSemifree
+supportedSemifreeZero : SupportedSemifree S Z
+perfectSupportedSemifreeZero : PerfectSupportedSemifree S Z
+supportedSemifreeShift (P : SupportedSemifree S Z) (n : ℤ) : SupportedSemifree S Z
+supportedSemifreeCone (P Q : SupportedSemifree S Z) (f : P.val.val ⟶ Q.val.val) :
+    SupportedSemifree S Z
+supportedSemifreeFiber (P Q : SupportedSemifree S Z) (f : P.val.val ⟶ Q.val.val) :
+    SupportedSemifree S Z
+supportedSemifreeFiniteBiproduct {I : Type v} [Finite I] [Small.{u} I]
+    (P : I → SupportedSemifree S Z) : SupportedSemifree S Z
+perfectSupportedSemifreeShift (P : PerfectSupportedSemifree S Z) (n : ℤ) :
+    PerfectSupportedSemifree S Z
+perfectSupportedSemifreeCone (P Q : PerfectSupportedSemifree S Z)
+    (f : P.val.val ⟶ Q.val.val) : PerfectSupportedSemifree S Z
+perfectSupportedSemifreeFiber (P Q : PerfectSupportedSemifree S Z)
+    (f : P.val.val ⟶ Q.val.val) : PerfectSupportedSemifree S Z
+perfectSupportedSemifreeFiniteBiproduct {I : Type v} [Finite I] [Small.{u} I]
+    (P : I → PerfectSupportedSemifree S Z) : PerfectSupportedSemifree S Z
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory Limits DifferentialGraded DGNerve
+open scoped Simplicial ZeroObject
+variable (S : Type u) [CommRing S]
+derivedInfinityZeroVertex : (derivedInfinityCategory S) _⦋0⦌
+derivedInfinityZeroVertex_isZero :
+    IsZero (⟨derivedInfinityZeroVertex S⟩ : derivedInfinityHomotopyCategory S)
+derivedInfinityVertex_isZero_iff_homology
+    (x : (derivedInfinityCategory S) _⦋0⦌) :
+    IsZero (⟨x⟩ : derivedInfinityHomotopyCategory S) ↔
+      ∀ i : ℤ, IsZero ((x.obj 0).val.homology i)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory Limits DifferentialGraded TensorProduct
+open scoped Simplicial
+variable {S T : Type u} [CommRing S] [CommRing T]
+module_support_principal_iff_torsion (a : S) (M : ModuleCat.{u} S) :
+    Module.support S M ⊆ supportZeroLocus (Ideal.span ({a} : Set S)) ↔
+      IsModuleSTorsion (Submonoid.powers a) M
+variable [Algebra S T]
+homologySupport_iff_localization_acyclic (a : S) [IsLocalization.Away a T]
+    (P : Complex S) :
+    HasHomologySupportOn (supportZeroLocus (Ideal.span ({a} : Set S))) P ↔
+      ∀ i : ℤ, IsZero (((complexBaseChange (algebraMap S T)).obj P).homology i)
+derivedSupport_iff_baseChange_homology_zero (a : S) [IsLocalization.Away a T]
+    (x : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedSupportProperty S (supportZeroLocus (Ideal.span ({a} : Set S))) (x.obj 0) ↔
+      ∀ i : ℤ, IsZero
+        ((((derivedInfinityBaseChange (algebraMap S T)).app _ x).obj 0).val.homology i)
+derivedSupport_iff_baseChange_isZero (a : S) [IsLocalization.Away a T]
+    (x : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedSupportProperty S (supportZeroLocus (Ideal.span ({a} : Set S))) (x.obj 0) ↔
+      IsZero (⟨(derivedInfinityBaseChange (algebraMap S T)).app _ x⟩ :
+        derivedInfinityHomotopyCategory T)
+perfectSupport_localization_scalar (a : S) [IsLocalization.Away a T]
+    (x : (derivedInfinityCategory S) _⦋0⦌) (hx : perfectSemifreeProperty S (x.obj 0)) :
+    (derivedSupportProperty S (supportZeroLocus (Ideal.span ({a} : Set S))) (x.obj 0) ↔
+      IsZero (⟨(derivedInfinityBaseChange (algebraMap S T)).app _ x⟩ :
+        derivedInfinityHomotopyCategory T)) ∧
+    (derivedSupportProperty S (supportZeroLocus (Ideal.span ({a} : Set S))) (x.obj 0) ↔
+      scalarSupported (fun _ : Fin 1 => a)
+        ((HomotopyCategory.quotient _ _).obj (x.obj 0).val))
+derivedSupportCategory_baseChange_zero (a : S) [IsLocalization.Away a T]
+    (x : (derivedSupportCategory S (supportZeroLocus (Ideal.span ({a} : Set S)))) _⦋0⦌) :
+    IsZero (⟨(derivedInfinityBaseChange (algebraMap S T)).app _ x.val⟩ :
+      derivedInfinityHomotopyCategory T)
+perfectSupportCategory_baseChange_zero (a : S) [IsLocalization.Away a T]
+    (x : (perfectSupportCategory S (supportZeroLocus (Ideal.span ({a} : Set S)))) _⦋0⦌) :
+    IsZero (⟨(derivedInfinityBaseChange (algebraMap S T)).app _ x.val⟩ :
+      derivedInfinityHomotopyCategory T)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory Limits DifferentialGraded DGNerve
+open scoped Simplicial ZeroObject
+variable (S : Type u) [CommRing S]
+semifreeFullSubcomplex_hasZeroVertex (P : Semifree S → Prop)
+    (h0 : P ⟨0, complexSemifree_zero S⟩) :
+    ∃ x : (semifreeFullSubcomplex S P : SSet.{u + 1}) _⦋0⦌,
+      IsInitialVertex x ∧ IsTerminalVertex x
+derivedSupportCategory_hasZeroVertex (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) :
+    ∃ x : (derivedSupportCategory S Z) _⦋0⦌, IsInitialVertex x ∧ IsTerminalVertex x
+perfectSupportCategory_hasZeroVertex (Z : TopologicalSpace.Closeds (PrimeSpectrum S)) :
+    ∃ x : (perfectSupportCategory S Z) _⦋0⦌, IsInitialVertex x ∧ IsTerminalVertex x
+end SerrePositivity.InfinityCategories
+```

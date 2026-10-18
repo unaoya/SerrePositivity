@@ -1,6 +1,6 @@
 # D(S)：semifree 複体の dg nerve としての導来 ∞ 圏（レーン D）
 
-作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6・D8 完了。D7 は A4・別指示待ち。
+作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6・D8 完了。D9 実装中、D10 待機。D7 は A4・別指示待ち。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§3。
 dg nerve（レーン N）は [dg-nerve.md](dg-nerve.md)。
 
@@ -18,6 +18,17 @@ D8 は完了。Perf(S) は D(S) の実際の充満部分単体集合で、quasic
 シフト・cone・fiber・有限直和を正本の頂点上に構成し、D4 の擬同型判定を双方向に制限した。
 標準包含 h Perf → h D(S) は充満忠実で、その本質像は有界有限射影複体の導来像である。
 U13 の一対象 perfect dg 加群の H⁰ との圏同値も実装済み。公開入口は `Derived/Perfect.lean`。
+
+
+D9 は実装中。一般の D_Z(S) は各 Hⁱ の幾何学的台で定義する。主イデアルでは
+各 Hⁱ が元ごとの a 冪ねじれであること、D5c の底変更 X ⊗^L S[1/a] が零になることと同値。
+Perf_Z(S)=Perf(S)∩D_Z(S) は実際の全部分単体集合である。両者の quasicategory 性・零対象と
+semifree モデルのシフト・cone・fiber・有限直和閉性を実装済み。
+完全対象上では、台 ⟺ 局所化底変更で零 ⟺ scalarSupported の三条件が一致する。
+この比較は有限射影代表の null-homotopy 定理を使い、可換環に Noether 条件を課さない。
+一般には最後の同値は成立しない：S=ℤ、a=2、H⁰=⊕ₙ≥1 ℤ/2ⁿ は V(2) に台を持つが、
+恒等射を消す共通の 2 の冪はない。一般の台条件を scalarSupported に置き換えない。
+h レベルの台つき圏・既存 K₀ 局所化列との比較は未完了。D10 は D9 の後に行う。
 
 ## 主要宣言
 
@@ -41,6 +52,8 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | 完全対象 | `perfectInfinityCategory`、`perfectNerveModelIso`、`perfectSemifreeProperty_iff`、`perfectInfinityCategory_quasicategory`、`perfectInfinityZero_terminal`、`perfectInfinityZero_initial` |
 | Perf の引き戻し判定 | `perfect_isPullbackSquare_iff_quasiIso` |
 | h Perf の像と U13 | `perfectCanonicalHomotopyInclusion`、`perfectCanonicalHomotopyInclusion_essImage_iff`、`perfectInfinityU13Equivalence` |
+| 台つき部分圏 | `derivedSupportCategory`、`perfectSupportCategory`、`perfectSupportSubcomplex_eq_inf` |
+| 台と局所化 | `derivedSupport_iff_baseChange_isZero`、`perfectSupport_localization_scalar`、`perfectSupportCategory_baseChange_zero` |
 | H⁰ | `derivedInfinityHZeroFunctor`、`derivedInfinityHZeroIso`、`derivedInfinityHZeroMap` |
 | 引き戻しの判定 | `derivedSquareFiberComparison`、`derived_isPullbackSquare_iff_quasiIso` |
 

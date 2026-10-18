@@ -603,10 +603,74 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.perfectInfinityFiber
 #print axioms SerrePositivity.InfinityCategories.perfectInfinityFiniteBiproduct
 
+#print axioms SerrePositivity.InfinityCategories.supportHomotopyProperty
+#print axioms SerrePositivity.InfinityCategories.supportHomotopyProperty_quotient
+#print axioms SerrePositivity.InfinityCategories.supportHomotopyProperty_isoClosed
+#print axioms SerrePositivity.InfinityCategories.supportHomotopyProperty_containsZero
+#print axioms SerrePositivity.InfinityCategories.supportHomotopyProperty_shift
+#print axioms SerrePositivity.InfinityCategories.supportHomotopyProperty_closed₃
+#print axioms SerrePositivity.InfinityCategories.supportHomotopyProperty_triangulated
+#print axioms SerrePositivity.InfinityCategories.homologySupport_finiteBiproduct
+#print axioms SerrePositivity.InfinityCategories.homologySupport_binaryBiproduct
+#print axioms SerrePositivity.InfinityCategories.homologySupport_fiber
+#print axioms SerrePositivity.InfinityCategories.semifreeFullNerve
+#print axioms SerrePositivity.InfinityCategories.semifreeFullNerveInclusion
+#print axioms SerrePositivity.InfinityCategories.semifreeFullSubcomplex
+#print axioms SerrePositivity.InfinityCategories.semifreeFullNerveInclusion_mono
+#print axioms SerrePositivity.InfinityCategories.semifreeFullNerveInclusion_range
+#print axioms SerrePositivity.InfinityCategories.semifreeFullNerveIso
+#print axioms SerrePositivity.InfinityCategories.semifreeFullNerve_quasicategory
+#print axioms SerrePositivity.InfinityCategories.semifreeFullSubcomplex_quasicategory
+#print axioms SerrePositivity.InfinityCategories.derivedSupportProperty
+#print axioms SerrePositivity.InfinityCategories.perfectSupportProperty
+#print axioms SerrePositivity.InfinityCategories.derivedSupportSubcomplex
+#print axioms SerrePositivity.InfinityCategories.derivedSupportCategory
+#print axioms SerrePositivity.InfinityCategories.perfectSupportSubcomplex
+#print axioms SerrePositivity.InfinityCategories.perfectSupportCategory
+#print axioms SerrePositivity.InfinityCategories.perfectSupportSubcomplex_eq_inf
+#print axioms SerrePositivity.InfinityCategories.derivedSupportCategory_quasicategory
+#print axioms SerrePositivity.InfinityCategories.perfectSupportCategory_quasicategory
+#print axioms SerrePositivity.InfinityCategories.strictlyPerfect_support_iff_scalar
+#print axioms SerrePositivity.InfinityCategories.perfectModel_support_iff_scalar
+#print axioms SerrePositivity.InfinityCategories.SupportedSemifree
+#print axioms SerrePositivity.InfinityCategories.PerfectSupportedSemifree
+#print axioms SerrePositivity.InfinityCategories.supportedSemifreeZero
+#print axioms SerrePositivity.InfinityCategories.perfectSupportedSemifreeZero
+#print axioms SerrePositivity.InfinityCategories.supportedSemifreeShift
+#print axioms SerrePositivity.InfinityCategories.supportedSemifreeCone
+#print axioms SerrePositivity.InfinityCategories.supportedSemifreeFiber
+#print axioms SerrePositivity.InfinityCategories.supportedSemifreeFiniteBiproduct
+#print axioms SerrePositivity.InfinityCategories.perfectSupportedSemifreeShift
+#print axioms SerrePositivity.InfinityCategories.perfectSupportedSemifreeCone
+#print axioms SerrePositivity.InfinityCategories.perfectSupportedSemifreeFiber
+#print axioms SerrePositivity.InfinityCategories.perfectSupportedSemifreeFiniteBiproduct
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityZeroVertex
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityZeroVertex_isZero
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityVertex_isZero_iff_homology
+#print axioms SerrePositivity.InfinityCategories.module_support_principal_iff_torsion
+#print axioms SerrePositivity.InfinityCategories.homologySupport_iff_localization_acyclic
+#print axioms SerrePositivity.InfinityCategories.derivedSupport_iff_baseChange_homology_zero
+#print axioms SerrePositivity.InfinityCategories.derivedSupport_iff_baseChange_isZero
+#print axioms SerrePositivity.InfinityCategories.perfectSupport_localization_scalar
+#print axioms SerrePositivity.InfinityCategories.derivedSupportCategory_baseChange_zero
+#print axioms SerrePositivity.InfinityCategories.perfectSupportCategory_baseChange_zero
+#print axioms SerrePositivity.InfinityCategories.semifreeFullSubcomplex_hasZeroVertex
+#print axioms SerrePositivity.InfinityCategories.derivedSupportCategory_hasZeroVertex
+#print axioms SerrePositivity.InfinityCategories.perfectSupportCategory_hasZeroVertex
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.SupportModels,
+    `SerrePositivity.InfinityCategories.Derived.FullSemifreeSubcategory,
+    `SerrePositivity.InfinityCategories.Derived.SupportBasic,
+    `SerrePositivity.InfinityCategories.Derived.SupportScalar,
+    `SerrePositivity.InfinityCategories.Derived.SupportClosure,
+    `SerrePositivity.InfinityCategories.Derived.AcyclicVertex,
+    `SerrePositivity.InfinityCategories.Derived.Localization,
+    `SerrePositivity.InfinityCategories.Derived.SupportZero,
+
     `SerrePositivity.InfinityCategories.Derived.PerfectImage,
     `SerrePositivity.InfinityCategories.Derived.PerfectInclusion,
     `SerrePositivity.InfinityCategories.Derived.PerfectPullback,

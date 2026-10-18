@@ -62,6 +62,9 @@ public import SerrePositivity.InfinityCategories.Derived.Perfect
 public import SerrePositivity.InfinityCategories.Derived.PerfectZero
 public import SerrePositivity.InfinityCategories.Derived.PerfectHomotopy
 
+public import SerrePositivity.InfinityCategories.Derived.Support
+public import SerrePositivity.InfinityCategories.Derived.Localization
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
