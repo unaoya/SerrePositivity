@@ -163,3 +163,6 @@ public import SerrePositivity.KST.SchemeLemmas.FiniteTypePureTransformFlatSpec
 public import SerrePositivity.KST.SchemeLemmas.CoefficientIdeal
 public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientIdeal
 public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientMembership
+public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdeal
+public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdealOperations
+public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdealColumnSpan
