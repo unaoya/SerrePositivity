@@ -1795,5 +1795,43 @@ lemma CoherentResolutionFlag.intervalHull_pullback {n d e : ℕ}
 lemma CoherentResolutionFlag.intervalHull_idempotent {n d : ℕ}
     (F : CoherentResolutionFlag n d) : F.intervalHull.intervalHull = F.intervalHull
 
+def CoherentResolutionFlag.deform {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (t : Fin (d + 1) →o Fin 2) : CoherentResolutionFlag n d
+
+lemma CoherentResolutionFlag.maxAt_deform {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (t : Fin (d + 1) →o Fin 2) (i : Fin (d + 1)) :
+    (F.deform t).maxAt i = F.maxAt i
+
+lemma CoherentResolutionFlag.deform_pullback {n d e : ℕ} (F : CoherentResolutionFlag n d)
+    (t : Fin (d + 1) →o Fin 2) (α : Fin (e + 1) →o Fin (d + 1)) :
+    (F.deform t).pullback α = (F.pullback α).deform (t.comp α)
+
+lemma CoherentResolutionFlag.deform_zero {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    F.deform (OrderHom.const _ 0) = F
+
+lemma CoherentResolutionFlag.deform_one {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    F.deform (OrderHom.const _ 1) = F.intervalHull
+
+lemma CoherentResolutionFlag.deform_intervalHull {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (t : Fin (d + 1) →o Fin 2) : F.intervalHull.deform t = F.intervalHull
+
+lemma CoherentResolutionFlag.deform_vertex {n : ℕ} (F : CoherentResolutionFlag n 0)
+    (t : Fin 1 →o Fin 2) : F.deform t = F
+
+def coherentResolutionDeformation (n : ℕ) :
+    coherentResolutionSimplex.{u} n ⊗ Δ[1] ⟶ coherentResolutionSimplex n
+
+lemma coherentResolutionDeformation_projection (n : ℕ) :
+    coherentResolutionDeformation.{u} n ≫ coherentResolutionProjection n =
+      fst _ _ ≫ coherentResolutionProjection n
+
+lemma coherentResolutionDeformation_vertex (n : ℕ)
+    (x : (coherentResolutionSimplex.{u} n ⊗ Δ[1]) _⦋0⦌) :
+    (coherentResolutionDeformation n).app _ x = x.1
+
+def coherentResolutionHomotopy (n : ℕ) :
+    SSet.Homotopy (𝟙 (coherentResolutionSimplex.{u} n))
+      (coherentResolutionProjection n ≫ coherentResolutionSection n)
+
 end SerrePositivity.InfinityCategories
 ```

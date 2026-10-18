@@ -424,3 +424,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.maxAt_intervalHull
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.intervalHull_pullback
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.intervalHull_idempotent
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.deform
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.maxAt_deform
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.deform_pullback
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.deform_zero
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.deform_one
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.deform_intervalHull
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.deform_vertex
+#check @SerrePositivity.InfinityCategories.coherentResolutionDeformation
+#check @SerrePositivity.InfinityCategories.coherentResolutionDeformation_projection
+#check @SerrePositivity.InfinityCategories.coherentResolutionDeformation_vertex
+#check @SerrePositivity.InfinityCategories.coherentResolutionHomotopy
