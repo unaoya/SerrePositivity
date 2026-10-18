@@ -1647,3 +1647,49 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedCoherentConeSectionsComparison_cospan_homotopyEquivalence
 #check @weightedCoherentConeSectionsComparison_tower_homotopyEquivalence
 #print axioms weightedCoherentConeSectionsComparison_tower_homotopyEquivalence
+#check @uliftSSetFullyFaithful
+#print axioms uliftSSetFullyFaithful
+#check @uliftSSetFunctor_full
+#print axioms uliftSSetFunctor_full
+#check @uliftSSetFunctor_faithful
+#print axioms uliftSSetFunctor_faithful
+#check @uliftTensorIso
+#print axioms uliftTensorIso
+#check @uliftTensorIso_inv_whiskerLeft
+#print axioms uliftTensorIso_inv_whiskerLeft
+#check @uliftStdSimplexIso
+#print axioms uliftStdSimplexIso
+#check @uliftYonedaMap
+#print axioms uliftYonedaMap
+#check @uliftSectionsComparison
+#print axioms uliftSectionsComparison
+#check @uliftSectionsComparison_evaluation
+#print axioms uliftSectionsComparison_evaluation
+#check @uliftSectionsComparison_map_evaluation
+#print axioms uliftSectionsComparison_map_evaluation
+#check @uliftSectionsFamilyDown
+#print axioms uliftSectionsFamilyDown
+#check @uliftSectionsFamilyDown_projection
+#print axioms uliftSectionsFamilyDown_projection
+#check @uliftSectionsHomDown
+#print axioms uliftSectionsHomDown
+#check @uliftSectionsHomDown_evaluation
+#print axioms uliftSectionsHomDown_evaluation
+#check @uliftSectionsHomEquiv
+#print axioms uliftSectionsHomEquiv
+#check @uliftSectionsSimplexEquiv
+#print axioms uliftSectionsSimplexEquiv
+#check @uliftSectionsSimplexEquiv_apply
+#print axioms uliftSectionsSimplexEquiv_apply
+#check @uliftSectionsComparison_isIso
+#print axioms uliftSectionsComparison_isIso
+#check @uliftSectionsIso
+#print axioms uliftSectionsIso
+#check @reflectedHomHolimConeComparison
+#print axioms reflectedHomHolimConeComparison
+#check @reflectedHomHolimConeComparison_discrete_homotopyEquivalence
+#print axioms reflectedHomHolimConeComparison_discrete_homotopyEquivalence
+#check @reflectedHomHolimConeComparison_cospan_homotopyEquivalence
+#print axioms reflectedHomHolimConeComparison_cospan_homotopyEquivalence
+#check @reflectedHomHolimConeComparison_tower_homotopyEquivalence
+#print axioms reflectedHomHolimConeComparison_tower_homotopyEquivalence

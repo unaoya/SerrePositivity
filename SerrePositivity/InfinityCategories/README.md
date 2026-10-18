@@ -2205,7 +2205,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開821宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開844宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2833,7 +2833,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開821宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開844宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -4243,6 +4243,66 @@ C の対象と Hom の宇宙は異なってよい。図式の射に fibration �
 その反転と ULift を元の `sHom(x,F−)` の Bousfield–Kan end へ移す比較、
 元の q_x と cone の写像空間の射との一致、𝒮・Sp の残りの適用は未完了。
 したがってこの三形状の切断比較の同値性だけで γ3b・γ3c の完成とはしない。
+
+### 切断空間の ULift 同型と反転豊穣 Hom の end からの実際の比較（実装済み）
+
+`UniverseSSetMaps` は型の ULift の完全忠実性を関手圏へ移して
+単体集合の ULift 関手の充満性・忠実性を構成した。
+`uliftTensorIso X Y` は ULift された対と ULift の対を交換する直積の同型、
+`uliftStdSimplexIso n` は標準単体の二段の ULift を大きい宇宙の一段の ULift にする同型。
+直積の同型の第二因子の自然性と、同型を通じた Yoneda 射の式も公開した。
+
+`UniverseSections` は任意の `p : E ⟶ K` に対し
+
+```lean
+uliftSectionsComparison p :
+  (SSet.uliftFunctor.{v, u}).obj (simplicialSections p) ⟶
+  simplicialSections ((SSet.uliftFunctor.{v, u}).map p)
+uliftSectionsIso p :
+  (SSet.uliftFunctor.{v, u}).obj (simplicialSections p) ≅
+  simplicialSections ((SSet.uliftFunctor.{v, u}).map p)
+```
+
+を構成し、同型の順方向が上の標準比較射であることを保持する。
+標準比較は普遍的な評価を持ち上げ、直積の同型を前合成して作る。
+小さいパラメータ A からの切断と ULift(A) からの持ち上げた切断の全単射を、
+ULift の完全忠実性と普遍的な評価で構成した。
+逆対応は直積の同型を前合成した評価の族の原像を取り、底を固定することを忠実性で検出する。
+標準単体へ適用して各次数の全単射を得て、実際の標準比較が同型であることを示す。
+Kan 性・fibration 性・極限性の仮定はない。
+
+`ReflectedHomHolimComparison` はこの同型と既存の `bousfieldKanSectionsIso` を使い、
+
+```lean
+reflectedHomHolimConeComparison (F : I ⥤ C) (x : C) :
+  (SSet.uliftFunctor.{v, u}).obj
+    (bousfieldKanHolim (simplicialHomDiagram F x ⋙ SSet.opFunctor)) ⟶
+  coherentConeSectionSpace (strictCoherentDiagram F) (coherentNerveVertex x)
+```
+
+を定義した。射の定義は任意の小圏 I と単体的圏 C に対し、局所 Kan 性なしで成立する。
+全ての豊穣 Hom が Kan のとき、以下を証明した。
+
+```lean
+reflectedHomHolimConeComparison_discrete_homotopyEquivalence
+    {J : Type u} (F : Discrete J ⥤ C) (x : C) :
+  IsSimplicialHomotopyEquivalence (reflectedHomHolimConeComparison F x)
+reflectedHomHolimConeComparison_cospan_homotopyEquivalence
+    (F : AsSmall.{u} WalkingCospan ⥤ C) (x : C) :
+  IsSimplicialHomotopyEquivalence (reflectedHomHolimConeComparison F x)
+reflectedHomHolimConeComparison_tower_homotopyEquivalence
+    (F : AsSmall.{u} ℕᵒᵖ ⥤ C) (x : C) :
+  IsSimplicialHomotopyEquivalence (reflectedHomHolimConeComparison F x)
+```
+
+持ち上げた二つの厳密な同型と三形状の実際の切断比較の同値性を合成する。
+離散対象に有限性を要求せず、図式の射の fibration 性もこの比較には不要。
+C の対象の宇宙 v と Hom・I の宇宙 u は異なってよい。
+原典は HTT 4.2.4.1、Kerodon §7.5.4。
+
+これで始域の ULift を切断空間の外へ移したが、係数は依然として反転した sHom である。
+元の sHom の end や q_x と同一視せず、その反転の移送と strict な錐の比較射との整合性を
+次の証明対象として残す。𝒮・Sp の残りの適用を含む γ3b・γ3c は未完了。
 
 ### 𝒮 の空積（実装済み）
 
