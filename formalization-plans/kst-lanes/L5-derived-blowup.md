@@ -444,6 +444,11 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `finiteOverlapTwistEquivalence`・`finiteOverlapDerivedTwistEquivalence`・局所 perfect 条件の同値 | FiniteOverlapTwistEquivalence | 整数捻りの全加群圏・主導来圏の自己同値と元の Koszul 表示での局所条件 |
 | `diagramGaugeScale_leftLinear`・斉次積公式・`diagramGaugeGraphIso` | DiagramGaugeGraphIso | 包含 gauge の左右作用との整合性と局所遷移 graph の指定 bimodule 自己同型 |
 | `diagramGaugeDerivedExtensionIso` | DiagramGaugeDerivedExtensionIso | 同じ標準射影分解を使う局所導来係数拡大の指定自然自己同型 |
+| `diagramGaugeModuleExtensionIso`・純 tensor 上の作用公式 | DiagramGaugeModuleExtensionIso | 通常係数拡大の指定自然自己同型と graph 因子への重み付け |
+| `diagramGaugeModuleRestrictionIso`・単位と余単位による成分式 | DiagramGaugeRestrictionMate | 指定通常随伴で移した局所制限の自然自己同型 |
+| `diagramGaugeModuleRestrictionIso_apply` | DiagramGaugeRestrictionMateComponents | 制限側 mate の成分は重み付けされた次数零単位の加群作用 |
+| `diagramGaugeDGFunctor_unit_cycle`・`diagramGaugeModuleUnderlying_map` | DiagramGaugeModuleComparison | 任意図式加群の underlying 包含射と mate の合成式 |
+| `diagramGaugeModuleComparison_square` | DiagramGaugeModuleComparisonSquare | 指定局所同型を含む任意図式加群の指定比較射の可換式 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -511,7 +516,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2907定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2963定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -553,8 +558,19 @@ cartesian perfect 性、既存の大域 dg 候補内の指定捻り対象とそ�
 構成済み。cartesian 性の一般対象での保存は、O(m) 自身の対象条件の証明とは別に残る。
 一般の包含 gauge について、行先の右作用と始点の係数を遷移させた左作用の整合性、
 局所遷移の graph bimodule の指定自己同型、その指定主導来 tensor 作用による
-局所導来係数拡大の自然自己同型を構成済み。一般対象の canonical な cartesian 比較と
-この自己同型との可換式は未証明であり、同型の存在だけから保存を宣言しない。
+局所導来係数拡大の自然自己同型を構成済み。
+通常係数拡大の graph 重み付けの純 tensor 公式、指定通常随伴で移した制限側 mate、
+その成分が重み付けされた次数零単位の加群作用になる式を証明済み。
+任意図式加群の指定比較は、指定局所同型を介して元の比較とこの mate の合成に一致する。
+この可換式の主導来圏への移送と canonical な導来係数拡大比較への接続は未完了であり、
+通常加群の可換式だけから一般の cartesian 性の保存を宣言しない。
+導来化の証明経路：通常制限の mate β を標準因子分解と
+`moduleDerivedIsoExtension` で導来制限の自然自己同型 βᴰ へ移す。
+canonical な比較には、βᴰ を既存の指定導来随伴 `A : L_h ⊣ R_h` で戻す
+`χ := (conjugateIsoEquiv A A).symm βᴰ` を使う。
+局所同型 e_i と制限側の可換式から、随伴の Hom 同値によって
+`L_h(e_i) ≫ χ ≫ κ_M = κ_twist(M) ≫ e_j` を証明し、同型の合成と消去で
+cartesian 性の保存を導く。graph の直接の導来像との比較は独立した整合性命題として扱う。
 次の実装単位は一般の cartesian 対象に対する捻り作用の保存、
 および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。

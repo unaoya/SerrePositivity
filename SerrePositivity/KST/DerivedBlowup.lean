@@ -263,3 +263,8 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeDerivedEvaluation
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistEquivalence
 public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeGraphIso
 public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeDerivedExtensionIso
+public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeModuleExtensionIso
+public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeRestrictionMate
+public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeRestrictionMateComponents
+public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeModuleComparison
+public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeModuleComparisonSquare
