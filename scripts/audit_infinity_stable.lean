@@ -1,6 +1,24 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.vertexFiberι_isQCatEquivalence_of_contractible_base
+#print axioms SerrePositivity.InfinityCategories.vertexFiberι_homotopyEquivalence_of_contractible_base
+#print axioms SerrePositivity.InfinityCategories.vertexFiberPiZeroEquivOfContractibleBase
+#print axioms SerrePositivity.InfinityCategories.kanKernelPairProjection_fibration
+#print axioms SerrePositivity.InfinityCategories.kanKernelPair_kanComplex
+#print axioms SerrePositivity.InfinityCategories.kanKernelPairFiberRetraction
+#print axioms SerrePositivity.InfinityCategories.kanKernelPairFiberRetraction_piZero
+#print axioms SerrePositivity.InfinityCategories.kanKernelPairFiberRetraction_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.kanKernelPairLoopComparison
+#print axioms SerrePositivity.InfinityCategories.kanKernelPairLoopComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv
+#print axioms SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv_fiber
+#print axioms SerrePositivity.InfinityCategories.coconeBranchSource
+#print axioms SerrePositivity.InfinityCategories.coconeBranchSource_fibration
+#print axioms SerrePositivity.InfinityCategories.coconeBranchKernelPairLoopComparison
+#print axioms SerrePositivity.InfinityCategories.coconeBranchKernelPairLoopComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.coconeBranchKernelPairPiZeroLoopEquiv
+
 #print axioms SerrePositivity.InfinityCategories.fixedCosliceReindex
 #print axioms SerrePositivity.InfinityCategories.fixedCosliceReindex_projection
 #print axioms SerrePositivity.InfinityCategories.fixedCosliceReindex_comp_self
@@ -1299,7 +1317,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.FixedCoconeReindexHom,
     `SerrePositivity.InfinityCategories.Stable.SuspensionFixedReindexSwap,
     `SerrePositivity.InfinityCategories.Stable.FixedCosliceReindexUncurry,
-    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeSwap]
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeSwap,
+    `SerrePositivity.InfinityCategories.Stable.KanContractibleBaseFiber,
+    `SerrePositivity.InfinityCategories.Stable.KanKernelPairLoops,
+    `SerrePositivity.InfinityCategories.Stable.CoconeBranchKernelPairLoops]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
