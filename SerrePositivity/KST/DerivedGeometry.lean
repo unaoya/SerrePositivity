@@ -6,3 +6,6 @@ public import SerrePositivity.KST.DerivedGeometry.FiniteAffineCover
 public import SerrePositivity.KST.DerivedGeometry.CoefficientExact
 public import SerrePositivity.KST.DerivedGeometry.DqcForget
 public import SerrePositivity.KST.DerivedGeometry.CoefficientAdjunction
+public import SerrePositivity.KST.DerivedGeometry.TensorCoefficientAction
+public import SerrePositivity.KST.DerivedGeometry.TensorCoefficientUnit
+public import SerrePositivity.KST.DerivedGeometry.AffineTensorSections

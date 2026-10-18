@@ -29,7 +29,19 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedForgetHomologyIso,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedForget_reflectsIsomorphisms,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcForget_reflectsIsomorphisms,
-    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.freeForgetAdjunction]
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.freeForgetAdjunction,
+    `SerrePositivity.KST.DerivedGeometry.globalBaseMap,
+    `SerrePositivity.KST.DerivedGeometry.restriction_comp_sectionBaseMap,
+    `SerrePositivity.KST.DerivedGeometry.coefficientTensorPresheaf,
+    `SerrePositivity.KST.DerivedGeometry.tensorCoefficientSheaf,
+    `SerrePositivity.KST.DerivedGeometry.coefficientSheafOfMorphism,
+    `SerrePositivity.KST.DerivedGeometry.tensorCoefficientConstant_comp_algebraMap,
+    `SerrePositivity.KST.DerivedGeometry.tensorCoefficientSheaf_structureMap_commutes,
+    `SerrePositivity.KST.DerivedGeometry.tensorCoefficientSectionAlgebra,
+    `SerrePositivity.KST.DerivedGeometry.tensorCoefficientSelfIso,
+    `SerrePositivity.KST.DerivedGeometry.sectionAlgebra_spec,
+    `SerrePositivity.KST.DerivedGeometry.affineBasicTensorSectionsEquiv,
+    `SerrePositivity.KST.DerivedGeometry.affineBasicTensorSectionsEquiv_tmul]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do

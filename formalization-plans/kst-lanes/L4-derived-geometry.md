@@ -1,6 +1,6 @@
 # K-L4：導来圏と幾何の基盤
 
-作成日：2026-10-18。状態：L4a 途中。降下模型の明確化提案と両模型に共通する係数忘却の基盤を整備中。
+作成日：2026-10-18。状態：L4a 途中。具体的係数環層 H_X とその中心的な構造層作用を構成済み。アフィン模型・降下との比較を整備中。
 
 ## 0. 目的と所有範囲
 
@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の実際の加群層と D_qc の型、有限アフィン被覆に加え、係数忘却の完全性・層レベルの余極限保存・自由忘却随伴、導来忘却とそのコホモロジー比較・同型反映性を実装。L4a の降下比較は未完了。
+- 現在地：L4a の具体的係数環層 H_X を、構造射 X → Spec A に対するテンソル前層の層化で構成済み。構造層の中心的作用と H の作用の A 上の一致、H = A での構造層の回復も証明済み。tilde の基本開切断のテンソル表示を構成済み。H_X のアフィン切断・dg 模型・降下との比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の100宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の146宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -258,7 +258,7 @@
 - 任意の加群層の複体ではアフィン上でも各項を環の加群と同一視できない。
 - 比較すべき対象は各項の準連接性ではなくコホモロジーの準連接性である。
 - 現在実装した CoefficientSheaf.Dqc はこのコホモロジー条件を採っており変更不要。
-- CoefficientSheaf は一般の環層と構造層射を扱う基礎型であり、H_X の構成は未実装。
+- CoefficientSheaf は一般の環層と構造層射を扱う基礎型。H_X の具体的構成は coefficientSheafOfMorphism が与え、構造層の中心性も別定理で証明済み。
 - 一般の CoefficientSheaf について無条件の compact 生成を主張していない。
 - D4 の「有限アフィン被覆上の加群の降下」を厳密降下と読んだ実装には進まない。
 - 推奨する明確化：降下模型をアフィン導来 dg 加群圏のホモトピー降下とする。
@@ -301,9 +301,53 @@
 - 係数つき Dqc の対象条件は、導来忘却の像が通常の DqcO に属する条件と同値である。
 - この同値により Dqc 間の忘却関手を構成し、同型反映性も移す。
 - 導来忘却の余積保存には、導来圏の余積の構成との比較をさらに証明する必要がある。
-- T1 の残りは H_X の具体的構成、導来自由関手と随伴、余積保存、通常の Dqc の生成である。
+- T1 の残りは H_X のアフィン模型・準連接性との比較、導来自由関手と随伴、導来余積保存、通常の Dqc の生成である。
 - T1′ の局所有限射影複体との一致と、L4a のアフィン dg 模型への比較も別に残る。
 - これらを既存の dg 加群圏の定理を名前だけ変更することで代替しない。
+
+## 17. 具体的係数環層 H_X とアフィン比較の接続
+
+- 入力は単位的結合 A 代数 H と、実際の構造射 f : X → Spec A。
+- 構造射の大域切断の写像を Γ(Spec A,⊤) ≃ A と合成して A → Γ(X,⊤) を得る。
+- 各開の A 代数構造は、この大域写像を構造層の制限写像と合成して作る。
+- 制限写像の A 線形性を前層の合成則から証明する。
+- 異なる構造射による A 作用を暗黙の大域インスタンスとして混在させない。
+- 係数テンソル前層の値は H ⊗_A O_X(U)、制限は id_H ⊗ res。
+- テンソル前層の恒等射・合成則は純テンソルによる帰納で証明する。
+- H の可換性と A 上の平坦性はこの構成・前層法則に不要。
+- 構造層からの単位は r ↦ 1 ⊗ r。
+- H の定数前層からの写像は h ↦ h ⊗ 1。
+- 定数前層が層であるという仮定は置かない。
+- 二つの包含は A の作用について一致する。
+- O_X(U) の像が中心的であることは純テンソルの積と加法による帰納で示す。
+- 環の圏 RingCat でテンソル前層を層化して H_X を得る。
+- 構造層の環層射は、右因子への包含と層化の単位を合成して作る。
+- 比較射は局所全射であり、大域切断上の全射性は主張しない。
+- 層化後の中心性は比較射を使って局所的にテンソル前層へ持ち上げ、層の分離性で示す。
+- これにより各開の H_X の切断の O_X(U) 代数構造も実際のデータとして得る。
+- H_X の任意の開 U の切断が H ⊗_A O_X(U) と同一であるとは定義しない。
+- アフィン U 上の比較射が同型であることは別途必要な定理。
+- Mathlib の tilde M と基本開上の IsLocalizedModule.Away を接続済み。任意の加群 M について基本開切断のテンソル表示の線形同型と純テンソルの計算式を証明済み。
+- 次は、このテンソル表示の制限射への自然性と H_X への層化比較を接続し、層化後のアフィン切断を同定する。
+- H = A の場合の構造層の回復は tensorCoefficientSelfIso として証明済み。一般の A → O_X(U) の底変換への自然性は別途確認する。
+- このアフィン同定なしに既存 dg 加群圏の moduleCompact_iff_perfect を適用しない。
+- 原典対応は KST 経路 §4 D4・§2.4 と Toën Derived Azumaya §3.2。
+
+## 18. アフィン基本開での計算と残る接続
+
+- Spec R 上の sectionBaseMap は Mathlib の標準の algebraMap R O(U) と一致する。
+- sectionAlgebra も、標準の切断の代数構造と実際の構造として一致する。
+- tilde M の D(f) 上の切断への写像は IsLocalizedModule.Away f を満たす。
+- O(D(f)) が R の f による局所化であることを使い、加群局所化を底変換へ直す。
+- これにより O(D(f)) ⊗_R M から tilde M の切断への線形同型を得る。
+- テンソルの因子を交換して M ⊗_R O(D(f)) の形にする。
+- 純テンソル m ⊗ s は s 倍した m の標準切断へ送られる。
+- この計算に M の平坦性・有限生成性・射影性を要求しない。
+- この線形同型はまだ環層 H_X の切断の同型を述べていない。
+- 制限射への自然性、基礎環 A から R への底変換、層化との比較をつなぐ必要がある。
+- H = A の係数前層は構造層と自然同型で、すでに層条件を満たす。
+- その層化の比較も同型なので、H = A の係数環層は構造層へ標準的に戻る。
+- これらを L4a 全体の降下比較や、T1 のコンパクト生成の証明と混同しない。
 
 ## 主要宣言の表
 
@@ -323,6 +367,16 @@
 | `derivedForget_reflectsIsomorphisms` | DerivedGeometry/DerivedForget | 実装・対象ビルド済み |
 | `DqcO`・`hasQuasicoherentCohomology_iff`・`dqcForget` | DerivedGeometry/DqcForget | 実装・対象ビルド済み |
 | `dqcForget_reflectsIsomorphisms` | DerivedGeometry/DqcForget | 実装・対象ビルド済み |
+| `globalBaseMap`・`sectionBaseMap`・`sectionRestriction` | DerivedGeometry/BaseSections | 実装・対象ビルド済み |
+| `coefficientTensorPresheaf`・`coefficientTensorUnit` | DerivedGeometry/CoefficientTensorPresheaf | 実装・対象ビルド済み |
+| `coefficientTensorConstant`・`coefficientTensorUnit_commutes` | DerivedGeometry/CoefficientTensorAction | 実装・対象ビルド済み |
+| `tensorCoefficientSheaf`・`coefficientSheafOfMorphism` | DerivedGeometry/TensorCoefficientSheaf | 実装・対象ビルド済み |
+| `tensorCoefficientConstant_comp_algebraMap` | DerivedGeometry/TensorCoefficientAction | 実装・対象ビルド済み |
+| `tensorCoefficientSheaf_structureMap_commutes`・`tensorCoefficientSectionAlgebra` | DerivedGeometry/TensorCoefficientAction | 実装・対象ビルド済み |
+| `tensorCoefficientSelfIso` | DerivedGeometry/TensorCoefficientUnit | 実装・対象ビルド済み |
+| `sectionBaseMap_spec`・`sectionAlgebra_spec` | DerivedGeometry/AffineTensorSections | 実装・対象ビルド済み |
+| `affineBasicTensorSectionsEquiv`・`affineBasicTensorSectionsEquiv_tmul` | DerivedGeometry/AffineTensorSections | 実装・対象ビルド済み |
+| H_X のアフィン切断とテンソルの比較 | DerivedGeometry/ | 未実装 |
 | 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
