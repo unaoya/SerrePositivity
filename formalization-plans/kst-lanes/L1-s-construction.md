@@ -6549,3 +6549,113 @@ McCarthy の具体的な単体ホモトピー、単体積 Quillen A、加法性�
 スペクトル関手も未完了。L1d–f 未完了、L1g は別途指示待ち。Core・他レーンの公開名・型は変更なし。
 
 検証：対象ビルド成功（3201 jobs）、公理監査成功（1527 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.55 McCarthy の λ・ι の標準零 cofiber 関手と完全な評価
+
+§6.44 の方針に従い、Fiore–Pieper Lemma 4.24 の証明に現れる λ と ι の
+cofiber 図式を C 全体からの実際の関手として構成した。
+false は恒等射の cofiber (c,c,z,z)、true は零対象からの射の cofiber (z,c,z,c)。
+零射の自然変換を座標射影で引き戻すため、全ての高次単体で coherent な族となる。
+零角・押し出し性・入力の両端・商を厳密な等号で確認し、零対象と全押し出しの保存を証明した。
+さらに cofiber 図式の包含を S₂ への完全な切断で表示し、包含と全ての角の評価の完全性を証明した。
+subobject・middle・quotient および標準零 cofiber 関手を StableModel の射として束ねた。
+ι 型の標準零 cofiber 関手と quotient の合成は、完全関手として厳密に恒等射となる。
+
+主要公開宣言（namespace `SerrePositivity.KST.SConstruction`、宇宙 `u`）：
+
+```lean
+def zeroCofiberSquare {C : SSet.{u}} (z : ZeroVertex C) (b : Bool) :
+    C ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C
+
+lemma zeroCofiberSquare_evaluation {C : SSet.{u}} (z : ZeroVertex C) (b : Bool)
+    (i j : Fin 2) :
+    zeroCofiberSquare z b ≫ evaluateFunctorAt
+      (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j) =
+      (if b then (if i = 0 then SSet.const z.vertex else 𝟙 C)
+        else (if j = 0 then 𝟙 C else SSet.const z.vertex))
+
+lemma zeroCofiberSquare_vertex_isPushout {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (b : Bool) (c : C _⦋0⦌) :
+    IsPushoutDiagramVertex ((zeroCofiberSquare z b).app (Opposite.op ⦋0⦌) c)
+
+def zeroCofiberFunctor {C : SSet.{u}} [Quasicategory C] (z : ZeroVertex C) (b : Bool) :
+    C ⟶ cofiberDiagrams C
+
+lemma zeroCofiberFunctor_ι {C : SSet.{u}} [Quasicategory C] (z : ZeroVertex C) (b : Bool) :
+    zeroCofiberFunctor z b ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
+      zeroCofiberSquare z b
+
+lemma zeroCofiberFunctor_input_evaluation {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (b : Bool) (i : Fin 2) :
+    zeroCofiberFunctor z b ≫ cofiberProjection C ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i) =
+      (if b ∧ i = 0 then SSet.const z.vertex else 𝟙 C)
+
+lemma zeroCofiberFunctor_quotient {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (b : Bool) :
+    zeroCofiberFunctor z b ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm 1) =
+      (if b then 𝟙 C else SSet.const z.vertex)
+
+lemma constantZero_preservesSConstructionData {A C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) : PreservesSConstructionData (SSet.const z.vertex : A ⟶ C)
+
+lemma preservesSConstructionData_functor_of_pointwise {A K C : SSet.{u}}
+    [Quasicategory C] [IsStable C] (f : A ⟶ (ihom K).obj C)
+    (hf : ∀ k : K _⦋0⦌, PreservesSConstructionData (f ≫ evaluateFunctorAt k)) :
+    PreservesSConstructionData f
+
+lemma preservesSConstructionData_of_comp_trivialKanFibration {A E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p]
+    (f : A ⟶ E) (hf : PreservesSConstructionData (f ≫ p)) :
+    PreservesSConstructionData f
+
+lemma zeroCofiberFunctor_preservesSConstructionData {C : SSet.{u}}
+    [Quasicategory C] [IsStable C] (z : ZeroVertex C) (b : Bool) :
+    PreservesSConstructionData (zeroCofiberFunctor z b)
+
+lemma pre_preservesSConstructionData {A B C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (i : A ⟶ B) : PreservesSConstructionData ((pre i).app C)
+
+lemma cofiberInclusion_preservesSConstructionData (C : SSet.{u})
+    [Quasicategory C] [IsStable C] :
+    PreservesSConstructionData
+      (fullSubcomplexOnVertices _ (IsCofiberDiagramVertex (C := C))).ι
+
+lemma cofiberEvaluation_preservesSConstructionData (C : SSet.{u})
+    [Quasicategory C] [IsStable C] (a : (Δ[1] ⊗ Δ[1] : SSet.{u}) _⦋0⦌) :
+    PreservesSConstructionData
+      ((fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt (Y := C) a)
+
+def cofiberStableEvaluation (X : StableModel.{u})
+    (a : (Δ[1] ⊗ Δ[1] : SSet.{u}) _⦋0⦌) : cofiberStableModel X ⟶ X
+
+def cofiberStableSubobject (X : StableModel.{u}) : cofiberStableModel X ⟶ X
+
+def cofiberStableMiddle (X : StableModel.{u}) : cofiberStableModel X ⟶ X
+
+def cofiberStableQuotient (X : StableModel.{u}) : cofiberStableModel X ⟶ X
+
+def zeroCofiberStableFunctor (X : StableModel.{u}) (z : ZeroVertex X.carrier) (b : Bool) :
+    X ⟶ cofiberStableModel X
+
+lemma zeroCofiberStableFunctor_subobject (X : StableModel.{u}) (z : ZeroVertex X.carrier)
+    (b : Bool) : (zeroCofiberStableFunctor X z b).val ≫ (cofiberStableSubobject X).val =
+      (if b then SSet.const z.vertex else 𝟙 X.carrier)
+
+lemma zeroCofiberStableFunctor_quotient (X : StableModel.{u}) (z : ZeroVertex X.carrier) :
+    zeroCofiberStableFunctor X z true ≫ cofiberStableQuotient X = 𝟙 X
+```
+
+前提：標準正方形は指定した z : ZeroVertex C を使い、cofiber への持ち上げは `[Quasicategory C]`。
+完全性・安定な入力への束ねは `[Quasicategory C] [IsStable C]` または X : StableModel。
+普遍性の反映の一般補題には型に記した実際の trivial Kan fibration を要求する。
+
+現在地：L1a・L1b 完了、L1c 継続中。object/core 実現比較の弱同値に加え、McCarthy の λ・ι の
+cofiber 関手と完全性を証明済み。固定単体上の fiber、μ の添字と変換、押し出しによる ρ、
+二つの実ホモトピー、単体積 Quillen A、加法性比較の弱同値性は未完了。
+面のホモトピー引き戻し条件、反復 S 実現と §6.43 の homotopy fiber の比較、構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトルとスペクトル関手も未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core と他レーンの公開名・型は変更なし。
+
+検証：対象ビルド成功（3204 jobs）、公理監査成功（1548 宣言、標準三公理のみ）。追加公理・sorry なし。

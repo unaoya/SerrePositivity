@@ -3939,3 +3939,45 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.diagonalObjectInclusion_coreS_localized_isIso
 #check @SerrePositivity.KST.SConstruction.objectToCoreSRealization_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.objectToCoreSRealization_localized_isIso
+#check @SerrePositivity.KST.SConstruction.zeroCofiberSquare
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberSquare
+#check @SerrePositivity.KST.SConstruction.zeroCofiberSquare_evaluation
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberSquare_evaluation
+#check @SerrePositivity.KST.SConstruction.zeroCofiberSquare_vertex_isPushout
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberSquare_vertex_isPushout
+#check @SerrePositivity.KST.SConstruction.zeroCofiberFunctor
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberFunctor
+#check @SerrePositivity.KST.SConstruction.zeroCofiberFunctor_ι
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberFunctor_ι
+#check @SerrePositivity.KST.SConstruction.zeroCofiberFunctor_input_evaluation
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberFunctor_input_evaluation
+#check @SerrePositivity.KST.SConstruction.zeroCofiberFunctor_quotient
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberFunctor_quotient
+#check @SerrePositivity.KST.SConstruction.constantZero_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.constantZero_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.preservesSConstructionData_functor_of_pointwise
+#print axioms SerrePositivity.KST.SConstruction.preservesSConstructionData_functor_of_pointwise
+#check @SerrePositivity.KST.SConstruction.preservesSConstructionData_of_comp_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.preservesSConstructionData_of_comp_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.zeroCofiberFunctor_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberFunctor_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.pre_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.pre_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.cofiberInclusion_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.cofiberInclusion_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.cofiberEvaluation_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.cofiberEvaluation_preservesSConstructionData
+#check @SerrePositivity.KST.SConstruction.cofiberStableEvaluation
+#print axioms SerrePositivity.KST.SConstruction.cofiberStableEvaluation
+#check @SerrePositivity.KST.SConstruction.cofiberStableSubobject
+#print axioms SerrePositivity.KST.SConstruction.cofiberStableSubobject
+#check @SerrePositivity.KST.SConstruction.cofiberStableMiddle
+#print axioms SerrePositivity.KST.SConstruction.cofiberStableMiddle
+#check @SerrePositivity.KST.SConstruction.cofiberStableQuotient
+#print axioms SerrePositivity.KST.SConstruction.cofiberStableQuotient
+#check @SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor
+#check @SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_subobject
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_subobject
+#check @SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_quotient
+#print axioms SerrePositivity.KST.SConstruction.zeroCofiberStableFunctor_quotient
