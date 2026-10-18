@@ -2640,3 +2640,72 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.oneDirectionLoopComparison_piIsomorphism
 #print axioms SerrePositivity.KST.SConstruction.oneDirectionLoopComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.tensorCofiberRightSquare
+#print axioms SerrePositivity.KST.SConstruction.tensorCofiberRightSquare
+
+#check @SerrePositivity.KST.SConstruction.tensorCofiberLeftSquare
+#print axioms SerrePositivity.KST.SConstruction.tensorCofiberLeftSquare
+
+#check @SerrePositivity.KST.SConstruction.tensorCofiberRightDesc
+#print axioms SerrePositivity.KST.SConstruction.tensorCofiberRightDesc
+
+#check @SerrePositivity.KST.SConstruction.tensorCofiberRightDesc_quotient
+#print axioms SerrePositivity.KST.SConstruction.tensorCofiberRightDesc_quotient
+
+#check @SerrePositivity.KST.SConstruction.tensorCofiberRightDesc_point
+#print axioms SerrePositivity.KST.SConstruction.tensorCofiberRightDesc_point
+
+#check @SerrePositivity.KST.SConstruction.tensorCofiberLeftDesc
+#print axioms SerrePositivity.KST.SConstruction.tensorCofiberLeftDesc
+
+#check @SerrePositivity.KST.SConstruction.tensorCofiberLeftDesc_quotient
+#print axioms SerrePositivity.KST.SConstruction.tensorCofiberLeftDesc_quotient
+
+#check @SerrePositivity.KST.SConstruction.tensorCofiberRightDesc_left_zero
+#print axioms SerrePositivity.KST.SConstruction.tensorCofiberRightDesc_left_zero
+
+#check @SerrePositivity.KST.SConstruction.cofiberTensorDesc
+#print axioms SerrePositivity.KST.SConstruction.cofiberTensorDesc
+
+#check @SerrePositivity.KST.SConstruction.cofiberTensorDesc_quotient
+#print axioms SerrePositivity.KST.SConstruction.cofiberTensorDesc_quotient
+
+#check @SerrePositivity.KST.SConstruction.adjoinTensorMap
+#print axioms SerrePositivity.KST.SConstruction.adjoinTensorMap
+
+#check @SerrePositivity.KST.SConstruction.adjoinTensorMap_precomp
+#print axioms SerrePositivity.KST.SConstruction.adjoinTensorMap_precomp
+
+#check @SerrePositivity.KST.SConstruction.adjoinTensorMap_zero
+#print axioms SerrePositivity.KST.SConstruction.adjoinTensorMap_zero
+
+#check @SerrePositivity.KST.SConstruction.adjoinTensorMap_left_zero
+#print axioms SerrePositivity.KST.SConstruction.adjoinTensorMap_left_zero
+
+#check @SerrePositivity.KST.SConstruction.adjoinTensorMap_right_zero
+#print axioms SerrePositivity.KST.SConstruction.adjoinTensorMap_right_zero
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberTensorDesc
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberTensorDesc
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberTensorDesc_quotient
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberTensorDesc_quotient
+
+#check @SerrePositivity.KST.SConstruction.zeroCylinderAssemblyLift
+#print axioms SerrePositivity.KST.SConstruction.zeroCylinderAssemblyLift
+
+#check @SerrePositivity.KST.SConstruction.zeroCylinderAssemblyLift_ι
+#print axioms SerrePositivity.KST.SConstruction.zeroCylinderAssemblyLift_ι
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalAssembly_zeroCylinder_condition
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalAssembly_zeroCylinder_condition
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionProjection
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionProjection
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_quotient
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_quotient

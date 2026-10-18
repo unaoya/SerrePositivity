@@ -3111,3 +3111,162 @@ lemma oneDirectionLoopComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
 任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2968 jobs）、公理監査成功（938 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.25 cofiber の smash の降下と実際の suspension からの写像
+
+点つき単体集合の閉対称モノイダル構造により、左右のテンソル積は cofiber の pushout を保存する。
+その二つの pushout から逐次降下し、自由な基点を持つ対象の smash 上の射が両境界を零にするなら、
+二つの cofiber の smash から降りることと、二つの商射影で元の射を回収することを証明した。
+自由な基点の追加と smash の比較を用い、通常の積上の射が両境界を基点へ送る条件からも降ろせる。
+いずれも Kan 性・単射性・弱可縮性などを仮定しない、通常の圏の pushout の構成である。
+
+反復 S の区間の組み立てに適用するため、残りの全零境界の cylinder を標的の全零境界へ制限する射と、
+それが標的の境界商の基点へ写る式を構成した。
+区間の両端についての既存の式と合わせ、L9 の実際の定義である
+`Spectra.suspension (oneDirectionReducedRealization r X)` から
+`boundaryReducedRealization (r+1) X` への点つき射 `oneDirectionSuspensionAssembly` を構成した。
+二つの商射影で引き戻すと元の区間の組み立ての射を回収する厳密な式も証明済み。
+
+この構成では、前節の同時商と smash の同型を先に作る代わりに、
+両境界を基点へ送る式をテンソル pushout の普遍性で直接降ろしている。
+源は S₁ 比較の源の境界商であり、標準の境界商の列の連続する二段とはまだ揃えていない。
+自然性、S₁ 比較を用いた段の接続と Kan 模型への移送、構造射の単射化、delooping・Ω 条件は未完了。
+同時商と円の smash の明示的な同型もまだ証明していないが、今回の suspension の射にはその同型を仮定しない。
+Core・Stable・F1・HA・Spectra の所有ファイルや公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u`、
+`open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet`、
+`open scoped Simplicial` の下で記す。SuspensionAssembly ではさらに
+`CartesianMonoidalCategory` と `SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel` を開く。
+
+**CofiberTensorDesc.lean**
+
+```lean
+lemma tensorCofiberRightSquare {A B : SSet.{u}} (g : A ⟶ B) (Y : PointedSimplicialSet.{u}) :
+    IsPushout (Y ◁ PointedObject.adjoinFunctor.map g)
+      (Y ◁ PointedObject.toPoint (PointedObject.adjoin A))
+      (Y ◁ PointedObject.cofiberProjection g) (Y ◁ PointedObject.fromPoint (PointedObject.cofiber g))
+
+lemma tensorCofiberLeftSquare {A B : SSet.{u}} (f : A ⟶ B) (Y : PointedSimplicialSet.{u}) :
+    IsPushout (PointedObject.adjoinFunctor.map f ▷ Y)
+      (PointedObject.toPoint (PointedObject.adjoin A) ▷ Y)
+      (PointedObject.cofiberProjection f ▷ Y) (PointedObject.fromPoint (PointedObject.cofiber f) ▷ Y)
+
+def tensorCofiberRightDesc {A B : SSet.{u}} (g : A ⟶ B) (Y Z : PointedSimplicialSet.{u})
+    (h : Y ⊗ PointedObject.adjoin B ⟶ Z)
+    (hg : (Y ◁ PointedObject.adjoinFunctor.map g) ≫ h = 0) :
+    Y ⊗ PointedObject.cofiber g ⟶ Z
+
+lemma tensorCofiberRightDesc_quotient {A B : SSet.{u}} (g : A ⟶ B)
+    (Y Z : PointedSimplicialSet.{u}) (h : Y ⊗ PointedObject.adjoin B ⟶ Z) (hg) :
+    (Y ◁ PointedObject.cofiberProjection g) ≫ tensorCofiberRightDesc g Y Z h hg = h
+
+lemma tensorCofiberRightDesc_point {A B : SSet.{u}} (g : A ⟶ B)
+    (Y Z : PointedSimplicialSet.{u}) (h : Y ⊗ PointedObject.adjoin B ⟶ Z) (hg) :
+    (Y ◁ PointedObject.fromPoint (PointedObject.cofiber g)) ≫
+      tensorCofiberRightDesc g Y Z h hg = 0
+
+def tensorCofiberLeftDesc {A B : SSet.{u}} (f : A ⟶ B) (Y Z : PointedSimplicialSet.{u})
+    (h : PointedObject.adjoin B ⊗ Y ⟶ Z)
+    (hf : (PointedObject.adjoinFunctor.map f ▷ Y) ≫ h = 0) :
+    PointedObject.cofiber f ⊗ Y ⟶ Z
+
+lemma tensorCofiberLeftDesc_quotient {A B : SSet.{u}} (f : A ⟶ B)
+    (Y Z : PointedSimplicialSet.{u}) (h : PointedObject.adjoin B ⊗ Y ⟶ Z) (hf) :
+    (PointedObject.cofiberProjection f ▷ Y) ≫ tensorCofiberLeftDesc f Y Z h hf = h
+
+lemma tensorCofiberRightDesc_left_zero {A B C D : SSet.{u}} (f : A ⟶ B) (g : C ⟶ D)
+    (Z : PointedSimplicialSet.{u}) (h : PointedObject.adjoin B ⊗ PointedObject.adjoin D ⟶ Z)
+    (hf : (PointedObject.adjoinFunctor.map f ▷ PointedObject.adjoin D) ≫ h = 0)
+    (hg : (PointedObject.adjoin B ◁ PointedObject.adjoinFunctor.map g) ≫ h = 0) :
+    (PointedObject.adjoinFunctor.map f ▷ PointedObject.cofiber g) ≫
+      tensorCofiberRightDesc g (PointedObject.adjoin B) Z h hg = 0
+
+def cofiberTensorDesc {A B C D : SSet.{u}} (f : A ⟶ B) (g : C ⟶ D)
+    (Z : PointedSimplicialSet.{u}) (h : PointedObject.adjoin B ⊗ PointedObject.adjoin D ⟶ Z)
+    (hf : (PointedObject.adjoinFunctor.map f ▷ PointedObject.adjoin D) ≫ h = 0)
+    (hg : (PointedObject.adjoin B ◁ PointedObject.adjoinFunctor.map g) ≫ h = 0) :
+    PointedObject.cofiber f ⊗ PointedObject.cofiber g ⟶ Z
+
+lemma cofiberTensorDesc_quotient {A B C D : SSet.{u}} (f : A ⟶ B) (g : C ⟶ D)
+    (Z : PointedSimplicialSet.{u}) (h : PointedObject.adjoin B ⊗ PointedObject.adjoin D ⟶ Z)
+    (hf) (hg) :
+    (PointedObject.cofiberProjection f ⊗ₘ PointedObject.cofiberProjection g) ≫
+      cofiberTensorDesc f g Z h hf hg = h
+```
+
+**RawCofiberTensorDesc.lean**
+
+```lean
+def adjoinTensorMap {A B : SSet.{u}} (Z : PointedSimplicialSet.{u}) (h : A ⊗ B ⟶ Z.right) :
+    PointedObject.adjoin A ⊗ PointedObject.adjoin B ⟶ Z
+
+lemma adjoinTensorMap_precomp {A B C D : SSet.{u}} (f : A ⟶ B) (g : C ⟶ D)
+    (Z : PointedSimplicialSet.{u}) (h : B ⊗ D ⟶ Z.right) :
+    (PointedObject.adjoinFunctor.map f ⊗ₘ PointedObject.adjoinFunctor.map g) ≫
+      adjoinTensorMap Z h = adjoinTensorMap Z ((f ⊗ₘ g) ≫ h)
+
+lemma adjoinTensorMap_zero {A B : SSet.{u}} (Z : PointedSimplicialSet.{u})
+    (h : A ⊗ B ⟶ Z.right)
+    (hh : h = CartesianMonoidalCategory.toUnit (A ⊗ B) ≫ Z.hom) :
+    adjoinTensorMap Z h = 0
+
+lemma adjoinTensorMap_left_zero {A B D : SSet.{u}} (f : A ⟶ B)
+    (Z : PointedSimplicialSet.{u}) (h : B ⊗ D ⟶ Z.right)
+    (hf : (f ▷ D) ≫ h = CartesianMonoidalCategory.toUnit (A ⊗ D) ≫ Z.hom) :
+    (PointedObject.adjoinFunctor.map f ▷ PointedObject.adjoin D) ≫ adjoinTensorMap Z h = 0
+
+lemma adjoinTensorMap_right_zero {B C D : SSet.{u}} (g : C ⟶ D)
+    (Z : PointedSimplicialSet.{u}) (h : B ⊗ D ⟶ Z.right)
+    (hg : (B ◁ g) ≫ h = CartesianMonoidalCategory.toUnit (B ⊗ C) ≫ Z.hom) :
+    (PointedObject.adjoin B ◁ PointedObject.adjoinFunctor.map g) ≫ adjoinTensorMap Z h = 0
+
+def rawCofiberTensorDesc {A B C D : SSet.{u}} (f : A ⟶ B) (g : C ⟶ D)
+    (Z : PointedSimplicialSet.{u}) (h : B ⊗ D ⟶ Z.right)
+    (hf : (f ▷ D) ≫ h = CartesianMonoidalCategory.toUnit (A ⊗ D) ≫ Z.hom)
+    (hg : (B ◁ g) ≫ h = CartesianMonoidalCategory.toUnit (B ⊗ C) ≫ Z.hom) :
+    PointedObject.cofiber f ⊗ PointedObject.cofiber g ⟶ Z
+
+lemma rawCofiberTensorDesc_quotient {A B C D : SSet.{u}} (f : A ⟶ B) (g : C ⟶ D)
+    (Z : PointedSimplicialSet.{u}) (h : B ⊗ D ⟶ Z.right) (hf) (hg) :
+    (PointedObject.cofiberProjection f ⊗ₘ PointedObject.cofiberProjection g) ≫
+      rawCofiberTensorDesc f g Z h hf hg = adjoinTensorMap Z h
+```
+
+**SuspensionAssembly.lean**
+
+```lean
+def zeroCylinderAssemblyLift (r : ℕ) (X : StableModel.{u}) :
+    (Δ[1] : SSet.{u}) ⊗ (oneDirectionFatBoundary r X : SSet.{u}) ⟶
+      (zeroDirectionsFatBoundary (r + 1) X : SSet.{u})
+
+lemma zeroCylinderAssemblyLift_ι (r : ℕ) (X : StableModel.{u}) :
+    zeroCylinderAssemblyLift r X ≫ (zeroDirectionsFatBoundary (r + 1) X).ι =
+      ((Δ[1] : SSet.{u}) ◁ (oneDirectionFatBoundary r X).ι) ≫ multiDiagonalAssembly r X
+
+lemma multiDiagonalAssembly_zeroCylinder_condition (r : ℕ) (X : StableModel.{u}) :
+    ((Δ[1] : SSet.{u}) ◁ (oneDirectionFatBoundary r X).ι) ≫
+        multiDiagonalAssembly r X ≫ boundaryReductionQuotient r X =
+      toUnit ((Δ[1] : SSet.{u}) ⊗ (oneDirectionFatBoundary r X : SSet.{u})) ≫
+        (boundaryReducedRealization r X).hom
+
+def oneDirectionSuspensionAssembly (r : ℕ) (X : StableModel.{u}) :
+    Spectra.suspension (oneDirectionReducedRealization r X) ⟶ boundaryReducedRealization (r + 1) X
+
+def oneDirectionSuspensionProjection (r : ℕ) (X : StableModel.{u}) :
+    PointedObject.adjoin (Δ[1] : SSet.{u}) ⊗
+      PointedObject.adjoin ((oneDirectionRealizationFunctor (r + 1)).obj X) ⟶
+        Spectra.suspension (oneDirectionReducedRealization r X)
+
+lemma oneDirectionSuspensionAssembly_quotient (r : ℕ) (X : StableModel.{u}) :
+    oneDirectionSuspensionProjection r X ≫ oneDirectionSuspensionAssembly r X =
+      adjoinTensorMap (boundaryReducedRealization (r + 1) X)
+        (multiDiagonalAssembly (r + 1) X ≫ boundaryReductionQuotient (r + 1) X)
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。L9 の suspension を源とする反復間の比較射は構成済み。
+その自然性、段と Kan 模型の接続、構造射の単射化、delooping・Ω 条件・BF 連結スペクトルは未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2973 jobs）、公理監査成功（961 宣言、標準三公理のみ）。追加公理・sorry なし。
