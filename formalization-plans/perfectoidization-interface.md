@@ -674,3 +674,20 @@ structure PerfectoidizationInterfaceE3 (R : Type u) [CommRing R]
     ArcOutside R p f I → IsPullbackSquare (perfdSquare R perfd f I)
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 ```
+
+### Π2-5（始対象の宣言）
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u
+open CategoryTheory CategoryTheory.Limits
+variable (p : ℕ) [Fact p.Prime]
+specifiedTarget (S : CommRingCat.{u}) {C : Type u} [CommRing C]
+    (η : S →+* C) (hC : IsPerfectoidization p η) : PerfUnder_u p S
+specifiedTargetTo (S : CommRingCat.{u}) {C : Type u} [CommRing C]
+    (η : S →+* C) (hC : IsPerfectoidization p η) (T : PerfUnder_u p S) :
+    specifiedTarget p S η hC ⟶ T
+specifiedTarget_isInitial (S : CommRingCat.{u}) {C : Type u} [CommRing C]
+    (η : S →+* C) (hC : IsPerfectoidization p η) : IsInitial (specifiedTarget p S η hC)
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```

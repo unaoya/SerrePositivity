@@ -27,7 +27,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.PerfectoidizationInterface.Completion,
     `SerrePositivity.BhattScholze.PerfectoidizationInterface.LimitData,
     `SerrePositivity.BhattScholze.PerfectoidizationInterface.ExcisionDiagram,
-    `SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface]
+    `SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface,
+    `SerrePositivity.BhattScholze.PerfectoidizationInterface.InitialBridge]
   for mod in expected do
     unless seen.contains mod do throwError "監査から欠けているモジュール: {mod}"
   unless env.contains

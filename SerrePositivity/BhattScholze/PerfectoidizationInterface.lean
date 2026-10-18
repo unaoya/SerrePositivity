@@ -5,5 +5,6 @@ public import SerrePositivity.BhattScholze.PerfectoidizationInterface.Derived
 public import SerrePositivity.BhattScholze.PerfectoidizationInterface.Completion
 public import SerrePositivity.BhattScholze.PerfectoidizationInterface.LimitData
 public import SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface
+public import SerrePositivity.BhattScholze.PerfectoidizationInterface.InitialBridge
 
 /-! # D(R) 上の perfectoid 化界面の公開入口 -/
