@@ -46,3 +46,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalCorner
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalSum
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalEndpointSum
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalContribution
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalCorner
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalSum
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalEndpointSum
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalContribution
