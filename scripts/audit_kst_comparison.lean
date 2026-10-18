@@ -88,6 +88,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -278,6 +279,30 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
+
+
+-- BoundaryVertexFaces.lean
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFace
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFace
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFace_inf
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFace_inf
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFace_univ
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFace_univ
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFace_empty
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFace_empty
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFace_finset_inf
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFace_finset_inf
+
+#check @SerrePositivity.KST.Comparison.boundaryVertexFace_coface_cover
+#print axioms SerrePositivity.KST.Comparison.boundaryVertexFace_coface_cover
+
+#check @SerrePositivity.KST.Comparison.cofaceVertexIntersection_ne_univ
+#print axioms SerrePositivity.KST.Comparison.cofaceVertexIntersection_ne_univ
 
 
 -- CartesianTensorSquare.lean
@@ -3061,6 +3086,33 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.subcomplex_inclusion_localized_isIso
 
 
+-- SubcomplexDistributive.lean
+
+#check @SerrePositivity.KST.Comparison.subcomplexDistribLattice
+#print axioms SerrePositivity.KST.Comparison.subcomplexDistribLattice
+
+
+-- SubcomplexUnionCocone.lean
+
+#check @SerrePositivity.KST.Comparison.subcomplexUnionSpan
+#print axioms SerrePositivity.KST.Comparison.subcomplexUnionSpan
+
+#check @SerrePositivity.KST.Comparison.subcomplexUnionCocone
+#print axioms SerrePositivity.KST.Comparison.subcomplexUnionCocone
+
+#check @SerrePositivity.KST.Comparison.subcomplexUnionCoconeIsColimit
+#print axioms SerrePositivity.KST.Comparison.subcomplexUnionCoconeIsColimit
+
+#check @SerrePositivity.KST.Comparison.tensorLeft_mono_of_mono
+#print axioms SerrePositivity.KST.Comparison.tensorLeft_mono_of_mono
+
+#check @SerrePositivity.KST.Comparison.tensorSubcomplexUnionCocone
+#print axioms SerrePositivity.KST.Comparison.tensorSubcomplexUnionCocone
+
+#check @SerrePositivity.KST.Comparison.tensorSubcomplexUnionCoconeIsColimit
+#print axioms SerrePositivity.KST.Comparison.tensorSubcomplexUnionCoconeIsColimit
+
+
 -- SubdivisionAdjunctionSimplex.lean
 
 #check @SerrePositivity.KST.Comparison.subdivisionHomEquiv_app_down
@@ -3439,6 +3491,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.telescopeSpanMap
 
 
+-- TensorBoundaryGluing.lean
+
+#check @SerrePositivity.KST.Comparison.tensorBoundary_homotopyPullback_of_faces
+#print axioms SerrePositivity.KST.Comparison.tensorBoundary_homotopyPullback_of_faces
+
+
 -- TensorHomotopyPullbacks.lean
 
 #check @SerrePositivity.KST.Comparison.tensorRight_isPullback
@@ -3446,6 +3504,36 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.isHomotopyPullback_tensorRight
 #print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_tensorRight
+
+
+-- TensorSubcomplexEmpty.lean
+
+#check @SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_bot
+#print axioms SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_bot
+
+
+-- TensorSubcomplexFiniteCover.lean
+
+#check @SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_finset_sup
+#print axioms SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_finset_sup
+
+#check @SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_of_finset_cover
+#print axioms SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_of_finset_cover
+
+
+-- TensorSubcomplexGluing.lean
+
+#check @SerrePositivity.KST.Comparison.tensorSubcomplexSquare
+#print axioms SerrePositivity.KST.Comparison.tensorSubcomplexSquare
+
+#check @SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_sup
+#print axioms SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_sup
+
+
+-- TensorSubcomplexTop.lean
+
+#check @SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_top_iff
+#print axioms SerrePositivity.KST.Comparison.tensorSubcomplex_homotopyPullback_top_iff
 
 
 -- TranslationDescent.lean

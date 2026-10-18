@@ -91,6 +91,8 @@ public import SerrePositivity.KST.Comparison.SpanPushoutGluing
 public import SerrePositivity.KST.Comparison.CoconeBaseGluing
 public import SerrePositivity.KST.Comparison.FiniteCoverInduction
 
+public import SerrePositivity.KST.Comparison.TensorBoundaryGluing
+
 /-!
 # K-L2：比較定理の入口
 

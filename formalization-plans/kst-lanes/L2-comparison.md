@@ -727,6 +727,8 @@ mapping cylinder の実対象、底の anodyne な包含、底への収縮の局
 任意の余錐の基底上への持ち上げと、固定した射の厳密ファイバーの余極限保存を証明した。
 各頂点で同じ固定射へのホモトピー引き戻し性を、単射な脚の span の余極限へ貼り合わせる定理を証明した。
 全ての非空な部分族の交叉から有限和へ進む分配束の帰納補題を証明した。
+部分単体集合の分配束構造を既存の束演算のまま証明し、積と部分対象の有限被覆の比較を構成した。
+境界の余面の有限被覆と頂点集合による交叉を計算し、適切な非空な面の比較から境界全体のホモトピー引き戻し性を証明した。
 対角への比較の局所化可逆性と有限骨格のホモトピー引き戻しの帰納は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
@@ -735,8 +737,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 915 宣言の型と公理を確認した。
-さらに名前空間全体の 1694 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 936 宣言の型と公理を確認した。
+さらに名前空間全体の 1728 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -920,6 +922,12 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `coconeOverCoconeIsColimit`、`fiberCoconeIsColimit` | 実装済み | スライスへの持ち上げと厳密ファイバーの余極限保存 |
 | `coconeBaseFiberComparison`、`coconeBase_homotopyPullback_of_span` | 実装済み | 同じ固定射への四角形の各頂点から余極限への貼り合わせ |
 | `finiteSup_of_nonempty_intersections` | 実装済み | 有限交叉の条件を有限和へ移す束の帰納 |
+| `subcomplexUnionCoconeIsColimit`、`tensorSubcomplexUnionCoconeIsColimit` | 実装済み | 部分対象の和とその積の実際の pushout |
+| `tensorLeft_mono_of_mono`、`subcomplexDistribLattice` | 実装済み | 積の単射保存と部分対象の分配束構造 |
+| `tensorSubcomplex_homotopyPullback_sup`、`tensorSubcomplex_homotopyPullback_bot` | 実装済み | 二つの部分対象の和と空対象の比較 |
+| `tensorSubcomplex_homotopyPullback_top_iff`、`tensorSubcomplex_homotopyPullback_of_finset_cover` | 実装済み | 有限被覆から全体への比較 |
+| `boundaryVertexFace_finset_inf`、`boundaryVertexFace_coface_cover` | 実装済み | 境界の余面の被覆と有限交叉 |
+| `tensorBoundary_homotopyPullback_of_faces` | 実装済み | 適切な非空な面から境界への貼り合わせ |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
