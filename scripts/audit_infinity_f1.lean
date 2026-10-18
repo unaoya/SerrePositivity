@@ -65,3 +65,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeEdgeLiftSpaceVertexEquiv
 #check @SerrePositivity.InfinityCategories.cocartesian_prism_exists_section
 #check @SerrePositivity.InfinityCategories.cocartesian_prism_exists_lift
+#check @SerrePositivity.InfinityCategories.cocartesian_prism_extend_boundary
+#check @SerrePositivity.InfinityCategories.IsCocartesianPathVertex
+#check @SerrePositivity.InfinityCategories.cocartesianPath
+#check @SerrePositivity.InfinityCategories.cocartesianPathι
+#check @SerrePositivity.InfinityCategories.cocartesianPathSource
+#check @SerrePositivity.InfinityCategories.cocartesianPathVertex
+#check @SerrePositivity.InfinityCategories.cocartesianPathSource_lift_vertex
+#check @SerrePositivity.InfinityCategories.cocartesianPathSource_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.cocartesianFibration_lift_prism
+#check @SerrePositivity.InfinityCategories.cocartesianFibration_exists_transport
+#check @SerrePositivity.InfinityCategories.cocartesianLiftSpace
+#check @SerrePositivity.InfinityCategories.cocartesianLiftSpace_isContractibleKan
+#check @SerrePositivity.InfinityCategories.cocartesianLiftSpaceVertexEquiv

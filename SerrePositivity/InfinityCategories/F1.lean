@@ -10,3 +10,8 @@ public import SerrePositivity.InfinityCategories.F1.LeftPath
 public import SerrePositivity.InfinityCategories.F1.LeftTransport
 public import SerrePositivity.InfinityCategories.F1.LeftLiftSpace
 public import SerrePositivity.InfinityCategories.F1.CocartesianPrism
+public import SerrePositivity.InfinityCategories.F1.CocartesianBoundaryPrism
+public import SerrePositivity.InfinityCategories.F1.CocartesianPath
+public import SerrePositivity.InfinityCategories.F1.CocartesianPathLifting
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransport
+public import SerrePositivity.InfinityCategories.F1.CocartesianLiftSpace

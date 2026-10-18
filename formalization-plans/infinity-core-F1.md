@@ -224,5 +224,72 @@ lemma cocartesian_prism_exists_lift {E B : SSet.{u}} (p : E ⟶ B) [InnerFibrati
     ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ E,
       (Subcomplex.unionProd (horn 1 0) (boundary (n + 1))).ι ≫ F = a ∧ F ≫ p = b
 
+
+lemma cocartesian_prism_extend_boundary {X B : SSet.{u}} (p : X ⟶ B) [InnerFibration p]
+    (n : ℕ) (H : (Δ[1] : SSet.{u}) ⊗ (boundary (n + 1) : SSet.{u}) ⟶ X)
+    (F₀ : (Δ[n + 1] : SSet.{u}) ⟶ X)
+    (b : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ B)
+    (hF₀ : (boundary (n + 1)).ι ≫ F₀ =
+      prismEndpoint 0 (boundary (n + 1) : SSet.{u}) ≫ H)
+    (hHp : H ≫ p = (Δ[1] ◁ (boundary (n + 1)).ι) ≫ b)
+    (hb : F₀ ≫ p = prismEndpoint 0 Δ[n + 1] ≫ b)
+    (hH : IsCocartesianEdge p (H.app (Opposite.op ⦋1⦌)
+      (prismBoundaryFirstVerticalEdge n))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ X,
+      (Δ[1] ◁ (boundary (n + 1)).ι) ≫ F = H ∧
+        prismEndpoint 0 Δ[n + 1] ≫ F = F₀ ∧ F ≫ p = b
+
+def IsCocartesianPathVertex {X B : SSet.{u}} (p : X ⟶ B)
+    (v : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌) : Prop
+
+def cocartesianPath {X B : SSet.{u}} (p : X ⟶ B) : SSet.{u}
+
+def cocartesianPathι {X B : SSet.{u}} (p : X ⟶ B) :
+    cocartesianPath p ⟶ (ihom (Δ[1] : SSet.{u})).obj X
+
+noncomputable def cocartesianPathSource {X B : SSet.{u}} (p : X ⟶ B) :
+    cocartesianPath p ⟶ relativeEdgeSourceTarget p
+
+def cocartesianPathVertex {X B : SSet.{u}} (p : X ⟶ B) (f : (Δ[1] : SSet.{u}) ⟶ X)
+    (hf : IsCocartesianEdge p (SSet.yonedaEquiv f)) : (cocartesianPath p) _⦋0⦌
+
+lemma cocartesianPathSource_lift_vertex {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (b : (Δ[0] : SSet.{u}) ⟶ relativeEdgeSourceTarget p) :
+    ∃ g : (Δ[0] : SSet.{u}) ⟶ cocartesianPath p, g ≫ cocartesianPathSource p = b
+
+instance cocartesianPathSource_trivialKanFibration {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] : TrivialKanFibration (cocartesianPathSource p)
+
+lemma cocartesianFibration_lift_prism {A X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (F₀ : A ⟶ X) (b : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (hb : F₀ ≫ p = prismEndpoint 0 A ≫ b) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ A ⟶ X,
+      prismEndpoint 0 A ≫ F = F₀ ∧ F ≫ p = b ∧
+      ∀ x : A _⦋0⦌, IsCocartesianEdge p (F.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1))
+
+lemma cocartesianFibration_exists_transport {X B : SSet.{u}} (p : X ⟶ B) [CocartesianFibration p]
+    (e : B _⦋1⦌) :
+    ∃ (F : vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e))
+      (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (B.δ 1 e) ⟶ X),
+      prismEndpoint 0 _ ≫ H = vertexFiberι p (B.δ 1 e) ∧
+      prismEndpoint 1 _ ≫ H = F ≫ vertexFiberι p (B.δ 0 e) ∧
+      H ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm e ∧
+      ∀ x : (vertexFiber p (B.δ 1 e)) _⦋0⦌,
+        IsCocartesianEdge p (H.app (Opposite.op ⦋1⦌)
+          (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1))
+
+noncomputable def cocartesianLiftSpace {A X B : SSet.{u}} (p : X ⟶ B)
+    (c : A ⟶ relativeEdgeSourceTarget p) : SSet.{u}
+
+lemma cocartesianLiftSpace_isContractibleKan {A X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (c : A ⟶ relativeEdgeSourceTarget p) :
+    IsContractibleKan (cocartesianLiftSpace p c)
+
+noncomputable def cocartesianLiftSpaceVertexEquiv {A X B : SSet.{u}} (p : X ⟶ B)
+    (c : A ⟶ relativeEdgeSourceTarget p) :
+    {F : A ⟶ cocartesianPath p // F ≫ cocartesianPathSource p = c} ≃
+      (cocartesianLiftSpace p c) _⦋0⦌
+
 end SerrePositivity.InfinityCategories
 ```
