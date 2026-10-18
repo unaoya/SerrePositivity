@@ -10490,5 +10490,32 @@ noncomputable def leftUnstraighteningMappingSpaceMap_restrictionIso
       (leftUnstraighteningTransformationRestriction F G k ≫
         leftUnstraighteningMappingSpaceMap (k ≫ F) (k ≫ G))
 
+lemma coherentHomComparison_ordinary {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} (f : X ⟶ Y) :
+    ((coherentHomComparison X Y).app (Opposite.op ⦋0⦌)
+      (ULift.up (SimplicialCategory.homEquiv' X Y f))).val =
+        (coherentNerveEdge f).edge
+
+noncomputable def spaceInfinityUnderlyingHomEquivalence (K L : KanObject.{u}) :
+    QCatEquivalence (pinchedHom (coherentNerveVertex K) (coherentNerveVertex L))
+      ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K.obj)).obj
+        ((SSet.uliftFunctor.{u + 1, u}).obj L.obj))
+
+lemma spaceInfinityUnderlyingHomEquivalence_inv_vertex (K L : KanObject.{u}) (f : K ⟶ L) :
+    ((spaceInfinityUnderlyingHomEquivalence K L).inv.app (Opposite.op ⦋0⦌)
+      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map f))).val =
+        (coherentNerveEdge f).edge
+
+noncomputable def spaceInfinityUnderlyingHomEquivalenceAt
+    (s t : SpaceInfinity.{u} _⦋0⦌) :
+    QCatEquivalence (pinchedHom s t)
+      ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj (spaceInfinityObject s).obj)).obj
+        ((SSet.uliftFunctor.{u + 1, u}).obj (spaceInfinityObject t).obj))
+
+noncomputable def pointedSpaceFiberHomEquivalence (s t : SpaceInfinity.{u} _⦋0⦌) :
+    QCatEquivalence (pinchedHom s t)
+      ((ihom (vertexFiber pointedSpaceProjection s)).obj
+        (vertexFiber pointedSpaceProjection t))
+
 end SerrePositivity.InfinityCategories
 ```

@@ -523,3 +523,5 @@ public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSquarePost
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingNaturality
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullbackSquare
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingPullback
+public import SerrePositivity.InfinityCategories.F1.CoherentHomOrdinary
+public import SerrePositivity.InfinityCategories.F1.PointedSpaceFiberHomEquivalence
