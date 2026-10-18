@@ -137,3 +137,5 @@ public import SerrePositivity.KST.SchemeLemmas.FreeBoundaryFlattening
 public import SerrePositivity.KST.SchemeLemmas.FreeCoverCharts
 public import SerrePositivity.KST.SchemeLemmas.PureTransformCongr
 public import SerrePositivity.KST.SchemeLemmas.TensorPureTransformBaseChange
+public import SerrePositivity.KST.SchemeLemmas.ChartLocalFlattening
+public import SerrePositivity.KST.SchemeLemmas.FiniteFlatLocalCenters
