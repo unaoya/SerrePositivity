@@ -7265,5 +7265,12 @@ lemma relativeJoin_extension_isEssentiallySurjective {X Y E : SSet.{u}}
     (he0 : IsPrecompositionEquivalence z0) (he1 : IsPrecompositionEquivalence z1) :
     IsEssentiallySurjective G
 
+lemma stdSimplex_vertex_isFullyFaithful {n : ℕ} (b : (Δ[n] : SSet.{u}) _⦋0⦌) :
+    IsFullyFaithful (SSet.const b : (Δ[0] : SSet.{u}) ⟶ Δ[n])
+
+lemma vertexFiberι_stdSimplex_isFullyFaithful {E : SSet.{u}} [Quasicategory E]
+    {n : ℕ} (p : E ⟶ (Δ[n] : SSet.{u})) (b : (Δ[n] : SSet.{u}) _⦋0⦌) :
+    IsFullyFaithful (vertexFiberι p b)
+
 end SerrePositivity.InfinityCategories
 ```

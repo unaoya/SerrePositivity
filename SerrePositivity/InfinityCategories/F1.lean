@@ -339,3 +339,4 @@ public import SerrePositivity.InfinityCategories.F1.IntervalCocartesianCriterion
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCocartesianFibration
 public import SerrePositivity.InfinityCategories.F1.FiberwiseEssentialSurjectivity
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionEssentialSurjectivity
+public import SerrePositivity.InfinityCategories.F1.StdSimplexFiberFullyFaithful

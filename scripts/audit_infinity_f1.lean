@@ -1583,3 +1583,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.isEssentiallySurjective_of_vertexFiberMap_equivalence
 #check @SerrePositivity.InfinityCategories.isEssentiallySurjective_over_interval_of_endpoint_fibers
 #check @SerrePositivity.InfinityCategories.relativeJoin_extension_isEssentiallySurjective
+#check @SerrePositivity.InfinityCategories.stdSimplex_vertex_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.vertexFiberι_stdSimplex_isFullyFaithful
