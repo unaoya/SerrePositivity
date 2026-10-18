@@ -3542,5 +3542,112 @@ noncomputable def leftUnstraighteningFiberValueEquivalence {C : SSet.{u + 1}}
       ((SSet.uliftFunctor.{u + 1, u}).obj
         (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) c)).obj)
 
+lemma leftAnodyneExtensions_pushoutObjObj_horn {m : ℕ} (k : Fin (m + 1))
+    {A B : SSet.{u}} (i : A ⟶ B) [Mono i]
+    (sq : (curriedTensor SSet.{u}).PushoutObjObj (horn (m + 1) k.castSucc).ι i) :
+    leftAnodyneExtensions sq.ι
+
+lemma leftAnodyneExtensions_horn_whiskerRight {m : ℕ} (k : Fin (m + 1))
+    (A : SSet.{u}) : leftAnodyneExtensions ((horn (m + 1) k.castSucc).ι ▷ A)
+
+instance ihom_map_leftFibration {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+    (A : SSet.{u}) : LeftFibration ((ihom A).map p)
+
+def relativeFunctorSpace {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) : SSet.{u}
+
+def relativeFunctorUncurry {A T E B : SSet.{u}} {p : E ⟶ B} {a : A ⟶ B}
+    (f : T ⟶ relativeFunctorSpace p a) : A ⊗ T ⟶ E
+
+lemma relativeFunctorUncurry_projection {A T E B : SSet.{u}} {p : E ⟶ B} {a : A ⟶ B}
+    (f : T ⟶ relativeFunctorSpace p a) :
+    relativeFunctorUncurry f ≫ p = fst A T ≫ a
+
+def relativeFunctorCurry {A T E B : SSet.{u}} {p : E ⟶ B} {a : A ⟶ B}
+    (H : A ⊗ T ⟶ E) (hH : H ≫ p = fst A T ≫ a) :
+    T ⟶ relativeFunctorSpace p a
+
+lemma relativeFunctorUncurry_curry {A T E B : SSet.{u}} {p : E ⟶ B} {a : A ⟶ B}
+    (H : A ⊗ T ⟶ E) (hH : H ≫ p = fst A T ≫ a) :
+    relativeFunctorUncurry (relativeFunctorCurry H hH) = H
+
+lemma relativeFunctorUncurry_injective {A T E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) :
+    Function.Injective (relativeFunctorUncurry (T := T) (p := p) (a := a))
+
+instance relativeFunctorSpace_kanComplex {A E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+    (a : A ⟶ B) : KanComplex (relativeFunctorSpace p a)
+
+def relativeFunctorPre {A D E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (i : D ⟶ A) :
+    relativeFunctorSpace p a ⟶ relativeFunctorSpace p (i ≫ a)
+
+lemma relativeFunctorPre_ι {A D E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (i : D ⟶ A) :
+    relativeFunctorPre p a i ≫ vertexFiberι ((ihom D).map p) (functorVertex (i ≫ a)) =
+      vertexFiberι ((ihom A).map p) (functorVertex a) ≫ (pre i).app E
+
+lemma relativeFunctorPre_id {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) :
+    relativeFunctorPre p a (𝟙 A) = 𝟙 (relativeFunctorSpace p a)
+
+lemma relativeFunctorPre_comp {A D T E B : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (i : D ⟶ A) (j : T ⟶ D) :
+    relativeFunctorPre p a i ≫ relativeFunctorPre p (i ≫ a) j =
+      relativeFunctorPre p a (j ≫ i)
+
+def relativeFunctorEvaluate {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (v : A _⦋0⦌) :
+    relativeFunctorSpace p a ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)
+
+lemma relativeFunctorEvaluate_ι {A E B : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (v : A _⦋0⦌) :
+    relativeFunctorEvaluate p a v ≫ vertexFiberι p (a.app (Opposite.op ⦋0⦌) v) =
+      vertexFiberι ((ihom A).map p) (functorVertex a) ≫ evaluateFunctorAt v
+
+def nerveUnderMap {C : Type u} [Category.{u} C] {c d : C} (f : c ⟶ d) :
+    nerve (Under d) ⟶ nerve (Under c)
+
+lemma nerveUnderMap_projection {C : Type u} [Category.{u} C] {c d : C} (f : c ⟶ d) :
+    nerveUnderMap f ≫ nerveMap (Under.forget c) = nerveMap (Under.forget d)
+
+lemma nerveUnderMap_id {C : Type u} [Category.{u} C] (c : C) :
+    nerveUnderMap (𝟙 c) = 𝟙 (nerve (Under c))
+
+lemma nerveUnderMap_comp {C : Type u} [Category.{u} C] {c d e : C}
+    (f : c ⟶ d) (g : d ⟶ e) : nerveUnderMap (f ≫ g) = nerveUnderMap g ≫ nerveUnderMap f
+
+def leftStrictTransport {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (c : C) : SSet.{u}
+
+def leftStrictTransportMap {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) {c d : C} (f : c ⟶ d) :
+    leftStrictTransport p c ⟶ leftStrictTransport p d
+
+lemma leftStrictTransportMap_id {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (c : C) : leftStrictTransportMap p (𝟙 c) = 𝟙 _
+
+lemma leftStrictTransportMap_comp {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) {c d e : C} (f : c ⟶ d) (g : d ⟶ e) :
+    leftStrictTransportMap p (f ≫ g) = leftStrictTransportMap p f ≫ leftStrictTransportMap p g
+
+instance leftStrictTransport_kanComplex {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) : KanComplex (leftStrictTransport p c)
+
+def leftStrictTransportFunctor {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] : C ⥤ KanObject.{u}
+
+def strictTransportUnderIdentityVertex {C : Type u} [Category.{u} C] (c : C) :
+    (nerve (Under c)) _⦋0⦌
+
+lemma strictTransportUnderIdentityVertex_projection {C : Type u} [Category.{u} C] (c : C) :
+    (nerveMap (Under.forget c)).app (Opposite.op ⦋0⦌) (strictTransportUnderIdentityVertex c) =
+      (nerveEquiv (C := C)).symm c
+
+def leftStrictTransportEvaluate {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (c : C) :
+    leftStrictTransport p c ⟶ vertexFiber p ((nerveEquiv (C := C)).symm c)
+
+lemma leftStrictTransportEvaluate_ι {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (c : C) :
+    leftStrictTransportEvaluate p c ≫ vertexFiberι p ((nerveEquiv (C := C)).symm c) =
+      vertexFiberι ((ihom (nerve (Under c))).map p)
+        (functorVertex (nerveMap (Under.forget c))) ≫
+          evaluateFunctorAt (strictTransportUnderIdentityVertex c)
+
 end SerrePositivity.InfinityCategories
 ```
