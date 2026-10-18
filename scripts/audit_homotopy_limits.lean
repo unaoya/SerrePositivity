@@ -989,3 +989,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms simplicialSectionsMap_tower_homotopyEquivalence
 #check @simplicialSectionsMap_discrete_homotopyEquivalence
 #print axioms simplicialSectionsMap_discrete_homotopyEquivalence
+#check @rightConeBoundary_horn_preimage
+#print axioms rightConeBoundary_horn_preimage
+#check @joinBoundary_point_rightAnodyne
+#print axioms joinBoundary_point_rightAnodyne
+#check @sliceOverPostcomp_boundary_lifting_of_rightFibration
+#print axioms sliceOverPostcomp_boundary_lifting_of_rightFibration
+#check @sliceOverPostcomp_trivialKanFibration_of_rightFibration
+#print axioms sliceOverPostcomp_trivialKanFibration_of_rightFibration
+#check @vertexFiberMap_hasLiftingProperty
+#print axioms vertexFiberMap_hasLiftingProperty
+#check @vertexFiberMap_trivialKanFibration
+#print axioms vertexFiberMap_trivialKanFibration
+#check @vertexFiberMap_rightFibration
+#print axioms vertexFiberMap_rightFibration
+#check @sliceOverPostcomp_projection
+#print axioms sliceOverPostcomp_projection
+#check @rightFibrationMappingTotal
+#print axioms rightFibrationMappingTotal
+#check @rightFibrationMappingProjection
+#print axioms rightFibrationMappingProjection
+#check @rightFibrationMappingEvaluation
+#print axioms rightFibrationMappingEvaluation
+#check @rightFibrationMappingProjection_trivialKanFibration
+#print axioms rightFibrationMappingProjection_trivialKanFibration
+#check @rightFibrationMappingTotal_kanComplex
+#print axioms rightFibrationMappingTotal_kanComplex
+#check @rightFibrationMappingEvaluation_fibration
+#print axioms rightFibrationMappingEvaluation_fibration
+#check @vertexFiberMapFiberIso
+#print axioms vertexFiberMapFiberIso
+#check @rightFibrationMappingEvaluationFiberIso
+#print axioms rightFibrationMappingEvaluationFiberIso
+#check @coneVertexFiberPoint
+#print axioms coneVertexFiberPoint
+#check @conePinchedHom_mappingEvaluationFiberIso
+#print axioms conePinchedHom_mappingEvaluationFiberIso
+#check @rightFibrationMappingBaseIso
+#print axioms rightFibrationMappingBaseIso
+#check @rightFibrationMappingHomProjection
+#print axioms rightFibrationMappingHomProjection
+#check @rightFibrationMappingHomProjection_trivialKanFibration
+#print axioms rightFibrationMappingHomProjection_trivialKanFibration
+#check @rightFibrationMappingSection
+#print axioms rightFibrationMappingSection
+#check @rightFibrationMappingSection_projection
+#print axioms rightFibrationMappingSection_projection
+#check @rightFibrationHomComparison
+#print axioms rightFibrationHomComparison
