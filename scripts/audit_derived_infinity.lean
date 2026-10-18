@@ -330,10 +330,21 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityBaseChange
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityBaseChange_vertex
 
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroFunctor
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZero
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroIso
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroMap
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroMap_homotopicL
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroMap_homotopicR
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroMap_id
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroSimplexMap
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHZeroMap_comp
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.HZero,
     `SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve,
     `SerrePositivity.InfinityCategories.Derived.BaseChangeDG,
     `SerrePositivity.InfinityCategories.Derived.BaseChange,

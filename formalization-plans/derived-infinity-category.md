@@ -1302,3 +1302,41 @@ derivedInfinityBaseChange_vertex (f : S →+* T)
       (complexBaseChange f).obj (derivedInfinityCategoryVertexEquiv S x).val
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D5d
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u w
+open CategoryTheory DifferentialGraded
+open scoped Simplicial
+variable (S : Type u) [CommRing S] [HasDerivedCategory.{w} (ModuleCat.{u} S)]
+derivedInfinityHZeroFunctor : derivedInfinityHomotopyCategory S ⥤ ModuleCat.{u} S
+derivedInfinityHZero (x : (derivedInfinityCategory S) _⦋0⦌) : ModuleCat.{u} S
+derivedInfinityHZeroIso (x : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedInfinityHZero S x ≅ (derivedInfinityCategoryVertexEquiv S x).val.homology 0
+derivedInfinityHZeroMap {x y : (derivedInfinityCategory S) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) x y) :
+    derivedInfinityHZero S x ⟶ derivedInfinityHZero S y
+derivedInfinityHZeroMap_homotopicL {x y : (derivedInfinityCategory S) _⦋0⦌}
+    {e e' : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) x y}
+    (h : SSet.Truncated.HomotopicL e e') :
+    derivedInfinityHZeroMap S e = derivedInfinityHZeroMap S e'
+derivedInfinityHZeroMap_homotopicR {x y : (derivedInfinityCategory S) _⦋0⦌}
+    {e e' : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) x y}
+    (h : SSet.Truncated.HomotopicR e e') :
+    derivedInfinityHZeroMap S e = derivedInfinityHZeroMap S e'
+derivedInfinityHZeroMap_id (x : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedInfinityHZeroMap S (SSet.Truncated.Edge.id x) = 𝟙 (derivedInfinityHZero S x)
+derivedInfinityHZeroSimplexMap (e : (derivedInfinityCategory S) _⦋1⦌) :
+    derivedInfinityHZero S ((derivedInfinityCategory S).δ 1 e) ⟶
+      derivedInfinityHZero S ((derivedInfinityCategory S).δ 0 e)
+derivedInfinityHZeroMap_comp {x y z : (derivedInfinityCategory S) _⦋0⦌}
+    {e : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) x y}
+    {f : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) y z}
+    {g : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S)) x z}
+    (t : SSet.Truncated.Edge.CompStruct e f g) :
+    derivedInfinityHZeroMap S e ≫ derivedInfinityHZeroMap S f = derivedInfinityHZeroMap S g
+end SerrePositivity.InfinityCategories
+```
