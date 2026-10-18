@@ -9697,5 +9697,56 @@ lemma exists_leftUnstraighteningSimplexLift_relative_parameters
         leftUnstraighteningParameterizedSimplexStart F L ∧
       W ≫ pointedSpaceProjection = ((Δ[n] ◁ leftUnstraighteningProjection F) ▷ L) ≫ T
 
+lemma relativeFunctorPost_id {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) :
+    HomotopyLimits.relativeFunctorPost p p (𝟙 E) (Category.id_comp p) a =
+      𝟙 (relativeFunctorSpace p a)
+
+lemma relativeFunctorPost_comp {A E F G B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (r : G ⟶ B)
+    (f : E ⟶ F) (hf : f ≫ q = p) (g : F ⟶ G) (hg : g ≫ r = q) (a : A ⟶ B) :
+    HomotopyLimits.relativeFunctorPost p q f hf a ≫ HomotopyLimits.relativeFunctorPost q r g hg a =
+      HomotopyLimits.relativeFunctorPost p r (f ≫ g)
+        (by rw [Category.assoc, hg, hf]) a
+
+lemma relativeFunctorPost_vertex {A E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p)
+    (a : A ⟶ B) (g : A ⟶ E) (hg : g ≫ p = a) :
+    (HomotopyLimits.relativeFunctorPost p q f hf a).app _ (relativeFunctorVertex p a g hg) =
+      relativeFunctorVertex q a (g ≫ f) (by rw [Category.assoc, hf, hg])
+
+lemma relativeFunctorPostHom_vertex {B : SSet.{u}} (a b c : Over B) (f : b ⟶ c) :
+    (relativeFunctorPostHom a b c).app _ (relativeFunctorVertex c.hom b.hom f.left f.w) =
+      functorVertex (HomotopyLimits.relativeFunctorPost b.hom c.hom f.left f.w a.hom)
+
+lemma exists_relativeFunctorInverse_of_precompositionEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    ∃ (g : F ⟶ E) (hg : g ≫ p = q),
+      Nonempty (VertexIso
+        (relativeFunctorVertex p p (f ≫ g) (by rw [Category.assoc, hg, hf]))
+        (relativeFunctorVertex p p (𝟙 E) (Category.id_comp p))) ∧
+      Nonempty (VertexIso
+        (relativeFunctorVertex q q (g ≫ f) (by rw [Category.assoc, hf, hg]))
+        (relativeFunctorVertex q q (𝟙 F) (Category.id_comp q)))
+
+noncomputable def relativeFunctorPostIso {B : SSet.{u}} (a b c : Over B) (f g : b ⟶ c)
+    (η : VertexIso (relativeFunctorVertex c.hom b.hom f.left f.w)
+      (relativeFunctorVertex c.hom b.hom g.left g.w)) :
+    FunctorIso (HomotopyLimits.relativeFunctorPost b.hom c.hom f.left f.w a.hom)
+      (HomotopyLimits.relativeFunctorPost b.hom c.hom g.left g.w a.hom)
+
+lemma relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence
+    {A E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) (a : A ⟶ B) :
+    IsQCatEquivalence (HomotopyLimits.relativeFunctorPost p q f hf a)
+
+lemma relativeFunctorPost_isPrecompositionEquivalence_of_precompositionEquivalence
+    {A E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) (a : A ⟶ B) :
+    IsPrecompositionEquivalence (HomotopyLimits.relativeFunctorPost p q f hf a)
+
 end SerrePositivity.InfinityCategories
 ```
