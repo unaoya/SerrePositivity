@@ -22,7 +22,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・13 モジュール 672 宣言の公理監査成功。
+対象ビルド・14 モジュール 688 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -477,3 +477,27 @@ L9c 全体は未完了。次は fibration の塔の極限への相対充填を�
 保存単位の対象ビルド 1523 jobs 成功。
 私有宣言を含む 13 モジュール 672 宣言で標準三公理のみ。
 L9c 全体は未完了。次は切断スペクトルの Hom の塔を実装する。
+
+## 21. L9c の切断写像空間の構成部品
+
+`TruncatedMapping.lean` に境界比較射を持つ点つき写像空間の塔を構成した。
+これは具体的な単体集合の射 `step` に対する一般構成である。
+スペクトルの suspension が誘導する `step` の実装は次の工程に残る。
+一般構成をもってスペクトルの写像空間の実装完了とはしない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `TruncatedMapping.stage` | 切断写像空間と最終段の評価を同時に帰納構成 |
+| `TruncatedMapping.space` | 切断写像空間の基礎単体集合 |
+| `TruncatedMapping.evaluation` | 最終段への評価 |
+| `TruncatedMapping.restriction` | 引き戻しの第二射影による遷移 |
+| `TruncatedMapping.evaluation_condition` | 境界比較との整合条件 |
+| `TruncatedMapping.restriction_fibration` | 単射の制限を引き戻した遷移の fibration 性 |
+| `TruncatedMapping.total` | 全切断の整合族の単体集合 |
+| `TruncatedMapping.total_projection_fibration` | 初段への射影の fibration 性 |
+| `TruncatedMapping.total_kanComplex` | 源の構造単射・標的各段 Kan による極限の Kan 性 |
+
+参照：BF 1978 §2、HTT A.3.3。
+保存単位の対象ビルド 1524 jobs 成功。
+私有宣言を含む 14 モジュール 688 宣言で標準三公理のみ。
+次は suspension・loop の随伴と、実際のスペクトルからの境界比較射を実装する。
