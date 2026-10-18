@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,168宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,199宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -783,6 +783,23 @@
 - 集約ビルド（3,720 jobs）と1,168宣言の公理監査に成功。標準3公理のみ、KTheory import なし。工程区切りの全体ビルドは所有 import 閉包の外にある `KST/SConstruction/ArCofiberFamily.lean` の91・125・130行の型エラーで終了コード1。所有閉包は成功しているため、他レーンを修正せず続行する。
 - これらは随伴の存在・生成性・余積保存を結論に組み込む条件つき一般定理であり、実際の層の非平坦な導来自由関手の構成と T1 自体は未完了。
 
+## 37. アフィン準連接加群圏の完全構造と複体局所化（着手前記録）
+
+- 証明済みの通常の圏同値を使い、アフィン準連接係数加群層の圏に有限極限とアーベル構造を構成する。既存の射の加法は保持する。
+- 大域切断関手の加法性を確認し、同値による有限極限・余極限保存を得る。
+- 一般のアーベル圏の加法的同値について、複体の同値と準同型の逆像の一致を証明し、Mathlib の実際の導来局所化を同値として比較する。
+- これは D(QCoh(Spec R;H)) と D(H) の比較の入力である。実際の全加群層の導来圏内の Dqc への埋め込みの比較は別途必要であり、その非有界比較を圏同値の形式操作で省略しない。
+- 原典との位置：Toën §3.2、BvdB Thm 3.1.1 のアフィンの計算への準備。§13 決定11 の Dqc の定義は維持する。
+
+### 現在地
+
+- `affineQcoh_abelian`：元の射の加法を保持してアーベル構造を構成済み。
+- `affineQcohΓ_additive`・有限極限／有限余極限の保存：実際の大域切断関手について証明済み。
+- `exactEquivalence_quasiIso_eq`・`exactDerivedEquivalence`：任意のアーベル圏の加法的同値について、複体の同値と準同型の逆像を使った実際の Mathlib 導来同値を証明済み。整数シフトの整合性と三角同値も証明済み。
+- `affineQcohDerivedEquivalence`・`affineQcohDerivedSquare`：アフィン準連接係数複体と左 H 加群複体の非有界導来圏の三角同値と、同じ複体の大域切断による比較正方形を構成済み。
+- 集約ビルド（3,723 jobs）と1,199宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 全加群層内の Dqc との非有界比較と T1 は未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -914,6 +931,9 @@
 | `coproductCompact`・`coproductCompact_leftAdjoint` | DerivedGeometry/AdjunctionCompact | 実装・対象ビルド済み |
 | `isZero_of_conservative`・`shiftZeroDetecting_leftAdjoint` | DerivedGeometry/AdjunctionGenerators | 実装・対象ビルド済み |
 | `coproductCompact_iff_moduleCompact`・`coproductCompact_iff_modulePerfect` | DerivedGeometry/DGCompactComparison | 実装・対象ビルド済み |
+| `affineQcoh_abelian`・`affineQcohΓ_preservesFiniteLimits`・`affineQcohΓ_preservesFiniteColimits` | DerivedGeometry/AffineCoefficientAbelian | 実装・対象ビルド済み |
+| `exactEquivalence_quasiIso_eq`・`exactDerivedEquivalence`・`exactDerivedEquivalence_isTriangulated` | DerivedGeometry/ExactDerivedEquivalence | 実装・対象ビルド済み |
+| `affineQcohDerivedEquivalence`・`affineQcohDerivedSquare` | DerivedGeometry/AffineQcohDerived | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

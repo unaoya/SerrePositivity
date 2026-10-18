@@ -14,6 +14,19 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.affineQcohΓ_additive,
+    `SerrePositivity.KST.DerivedGeometry.affineQcoh_hasLimits,
+    `SerrePositivity.KST.DerivedGeometry.affineQcoh_abelian,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohΓ_preservesFiniteLimits,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohΓ_preservesFiniteColimits,
+    `SerrePositivity.KST.DerivedGeometry.exactEquivalence_quasiIso_eq,
+    `SerrePositivity.KST.DerivedGeometry.exactEquivalence_localizedEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.exactEquivalence_mapDerivedCategory_isEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.exactDerivedEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.exactDerivedEquivalence_isTriangulated,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohDerivedEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohDerivedEquivalence_isTriangulated,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohDerivedSquare,
     `SerrePositivity.KST.DerivedGeometry.coproductCompact,
     `SerrePositivity.KST.DerivedGeometry.coproductCompact_leftAdjoint,
     `SerrePositivity.KST.DerivedGeometry.isZero_of_conservative,
