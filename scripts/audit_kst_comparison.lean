@@ -55,6 +55,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -400,6 +401,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.exInfinityUnit
 
 
+-- ExInfinityAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.exInfinityAnodyneSequence
+#print axioms SerrePositivity.KST.Comparison.exInfinityAnodyneSequence
+
+#check @SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
+#print axioms SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
+
+
 -- ExPairingBijection.lean
 
 #check @SerrePositivity.KST.Comparison.exTypeOne
@@ -428,6 +438,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exPairing
 #print axioms SerrePositivity.KST.Comparison.exPairing
+
+
+-- ExPairingFaceRank.lean
+
+#check @SerrePositivity.KST.Comparison.exExpansion_notMem_typeTwo
+#print axioms SerrePositivity.KST.Comparison.exExpansion_notMem_typeTwo
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt_succ
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt_succ
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt
 
 
 -- ExPairingFaceUniqueness.lean
@@ -470,6 +492,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exPairingStep_isUniquelyCodimOneFace
 #print axioms SerrePositivity.KST.Comparison.exPairingStep_isUniquelyCodimOneFace
+
+
+-- ExPairingRegular.lean
+
+#check @SerrePositivity.KST.Comparison.exPairingWeakRank
+#print axioms SerrePositivity.KST.Comparison.exPairingWeakRank
+
+#check @SerrePositivity.KST.Comparison.exPairingCore_isRegular
+#print axioms SerrePositivity.KST.Comparison.exPairingCore_isRegular
+
+#check @SerrePositivity.KST.Comparison.exPairing_isRegular
+#print axioms SerrePositivity.KST.Comparison.exPairing_isRegular
 
 
 -- ExPairingStep.lean
@@ -515,6 +549,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exUnitAt_mono
 #print axioms SerrePositivity.KST.Comparison.exUnitAt_mono
+
+
+-- ExUnitAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.exUnitRange_anodyne
+#print axioms SerrePositivity.KST.Comparison.exUnitRange_anodyne
+
+#check @SerrePositivity.KST.Comparison.exUnitAt_anodyne
+#print axioms SerrePositivity.KST.Comparison.exUnitAt_anodyne
 
 
 -- FaceIntervals.lean

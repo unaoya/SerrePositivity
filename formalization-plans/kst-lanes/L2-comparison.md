@@ -444,16 +444,19 @@ Lemma 26 の九つの式を全て証明した。
 Mathlib の IsUniquelyCodimOneFace への接続も証明した。
 型 I の集合 exTypeOne と、型 II の n 単体から型 I の n+1 単体への全単射を構成した。
 全次元をまとめる exPairingCore と exPairing、その properness を構成した。
-pairing の正則性は未証明。
-Ex∞ の Kan 性・単位の anodyne 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
+同次元の異なる型 II の面での最小複雑度の厳密な減少を証明した。
+自然数値の弱 rank 関数 exPairingWeakRank から exPairing の正則性を証明した。
+単位 X→Ex(X) の anodyne 性（Moss Theorem 22）を正則 pairing から証明した。
+反復列を順序合成とし、X→Ex∞(X) の anodyne 性（Corollary 30）を証明した。
+Ex∞ の Kan 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 440 宣言の型と公理を確認した。
-さらに名前空間全体の 897 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 450 宣言の型と公理を確認した。
+さらに名前空間全体の 914 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -540,8 +543,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `exTypeTwo`、`exPairingStep_face_unique`、`exPairingStep_nonDegenerate_target` | 実装済み | 型 II の定義と Moss Lemma 29 の指定面・対応先の性質 |
 | `nonDegenerate_of_unique_face`、`exPairingStep_isUniquelyCodimOneFace` | 実装済み | 一意な非退化面の一般補題と Mathlib の properness 述語への接続 |
 | `exTypeOne`、`exPairingEquiv` | 実装済み | 型 I の定義と各次元の型 II との全単射 |
-| `exPairingCore`、`exPairingCore_isProper`、`exPairing` | 実装済み | 全次元の proper pairing、正則性は未証明 |
-| Ex∞ の Kan 性と単位の anodyne 性 | 未証明 | Moss 2020 Proposition 21、Theorem 22、Corollary 30 |
+| `exPairingCore`、`exPairingCore_isProper`、`exPairing` | 実装済み | 全次元の proper pairing |
+| `exPairingWeakRank`、`exPairingCore_isRegular`、`exPairing_isRegular` | 実装済み | 最小複雑度による先行関係の整礎性 |
+| `exUnitAt_anodyne`、`exInfinityUnit_anodyne` | 実装済み | Moss Theorem 22、Corollary 30 の単位の anodyne 性 |
+| Ex∞ の Kan 性 | 未証明 | Moss 2020 Proposition 21 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |

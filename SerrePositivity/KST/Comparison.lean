@@ -39,6 +39,7 @@ public import SerrePositivity.KST.Comparison.SubdivisionRearDegeneracy
 public import SerrePositivity.KST.Comparison.ExPairingNondegenerate
 public import SerrePositivity.KST.Comparison.ExPairingProperness
 public import SerrePositivity.KST.Comparison.ExPairingCore
+public import SerrePositivity.KST.Comparison.ExInfinityAnodyne
 
 /-!
 # K-L2：比較定理の入口
