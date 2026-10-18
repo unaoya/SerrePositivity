@@ -5213,5 +5213,77 @@ lemma relativeJoinPrismPenultimateBoundaryLift_comp {Y : SSet.{u}} {m : ℕ}
         relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f) (boundary m).ι rfl =
       (relativeJoinPrismPenultimate m).ι ≫ relativeJoinPrism f
 
+lemma relativeJoinPrismShuffle_time_zero_iff (m : ℕ) (k : Fin (m + 1))
+    (i : Fin (m + 2)) :
+    ((relativeJoinPrismShuffle.{u} m k).1 i).val = 0 ↔ i ≤ k.castSucc
+
+lemma relativeJoinPrismShuffle_coefficient_val (m : ℕ) (k : Fin (m + 1))
+    (i : Fin (m + 2)) :
+    ((relativeJoinPrismShuffle.{u} m k).2 i).val =
+      if i ≤ k.castSucc then i.val else i.val - 1
+
+lemma relativeJoinPrismShuffle_vertex_sum (m : ℕ) (k : Fin (m + 1))
+    (i : Fin (m + 2)) :
+    ((relativeJoinPrismShuffle.{u} m k).1 i).val +
+      ((relativeJoinPrismShuffle.{u} m k).2 i).val = i.val
+
+lemma relativeJoinPrismShuffle_vertex_injective (m : ℕ) (k : Fin (m + 1)) :
+    Function.Injective (fun i : Fin (m + 2) ↦
+      ((relativeJoinPrismShuffle.{u} m k).1 i, (relativeJoinPrismShuffle.{u} m k).2 i))
+
+instance relativeJoinPrismShuffle_mono (m : ℕ) (k : Fin (m + 1)) :
+    Mono (SSet.yonedaEquiv.symm (relativeJoinPrismShuffle.{u} m k))
+
+noncomputable def relativeJoinPrismStage (m r : ℕ) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]).Subcomplex
+
+lemma relativeJoinPrismStage_zero (m : ℕ) :
+    relativeJoinPrismStage.{u} m 0 = relativeJoinPrismInitial m
+
+lemma relativeJoinPrismStage_penultimate (m : ℕ) :
+    relativeJoinPrismStage.{u} m m = relativeJoinPrismPenultimate m
+
+lemma relativeJoinPrismStage_monotone (m : ℕ) :
+    Monotone (relativeJoinPrismStage.{u} m)
+
+lemma relativeJoinPrismStage_succ (m : ℕ) (k : Fin (m + 1)) :
+    relativeJoinPrismStage.{u} m (k.val + 1) =
+      relativeJoinPrismStage m k.val ⊔ Subcomplex.ofSimplex (relativeJoinPrismShuffle m k)
+
+lemma relativeJoinPrismInitial_preimage_shuffle_le_horn (m : ℕ) (k : Fin (m + 1)) :
+    (relativeJoinPrismInitial m).preimage
+        (SSet.yonedaEquiv.symm (relativeJoinPrismShuffle.{u} m k)) ≤ horn (m + 1) k.succ
+
+lemma relativeJoinPrismShuffle_preimage_previous_le_face (m : ℕ) (j k : Fin (m + 1))
+    (hjk : j < k) :
+    (Subcomplex.ofSimplex (relativeJoinPrismShuffle.{u} m j)).preimage
+        (SSet.yonedaEquiv.symm (relativeJoinPrismShuffle m k)) ≤
+      stdSimplex.face {k.castSucc}ᶜ
+
+lemma relativeJoinPrismStage_preimage_shuffle_le_horn (m : ℕ) (k : Fin (m + 1)) :
+    (relativeJoinPrismStage m k.val).preimage
+        (SSet.yonedaEquiv.symm (relativeJoinPrismShuffle.{u} m k)) ≤ horn (m + 1) k.succ
+
+lemma relativeJoinPrismShuffle_coefficient_fiber_singleton (m : ℕ) (k : Fin (m + 1))
+    (i j : Fin (m + 2)) (hi₀ : i ≠ k.castSucc) (hi₁ : i ≠ k.succ)
+    (h : (relativeJoinPrismShuffle.{u} m k).2 j =
+      (relativeJoinPrismShuffle.{u} m k).2 i) : j = i
+
+lemma relativeJoinPrismShuffle_face_coefficient_mem_boundary (m : ℕ) (k : Fin (m + 1))
+    (i : Fin (m + 2)) (hi₀ : i ≠ k.castSucc) (hi₁ : i ≠ k.succ) :
+    (((Δ[1] : SSet.{u}) ⊗ Δ[m]).δ i (relativeJoinPrismShuffle.{u} m k)).2 ∈
+      (boundary m).obj (Opposite.op ⦋m⦌)
+
+lemma relativeJoinPrismShuffle_face_mem_initial (m : ℕ) (k : Fin (m + 1))
+    (i : Fin (m + 2)) (hi₀ : i ≠ k.castSucc) (hi₁ : i ≠ k.succ) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]).δ i (relativeJoinPrismShuffle.{u} m k) ∈
+      (relativeJoinPrismInitial m).obj (Opposite.op ⦋m⦌)
+
+lemma relativeJoinPrismShuffle_shared_face (m : ℕ) (j : Fin m) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]).δ j.succ.castSucc
+        (relativeJoinPrismShuffle m j.succ) =
+      ((Δ[1] : SSet.{u}) ⊗ Δ[m]).δ j.castSucc.succ
+        (relativeJoinPrismShuffle m j.castSucc)
+
 end SerrePositivity.InfinityCategories
 ```

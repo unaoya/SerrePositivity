@@ -230,3 +230,7 @@ public import SerrePositivity.InfinityCategories.F1.JoinDiagonalStdSimplex
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismBoundary
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismShuffle
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismPenultimate
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismShuffleVertices
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismStage
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismHornPreimage
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismBoundaryFaces
