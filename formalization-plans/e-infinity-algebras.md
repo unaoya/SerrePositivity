@@ -203,3 +203,21 @@ F1 の確定済みの一般の解像の射影の同値性により、余単位�
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。
 実施の経緯と検証はコミットメッセージに置く。
+
+### γ3：homotopy 極限と ∞ 極限の比較（進行中）
+
+正本は本書 §3 と `foundations.md` §1。γ1.5 の後に N が担当し、𝒮（F2）・Sp（L9）・E2b が共有する。
+γ3a の紙の限定形と証明方針は `InfinityCategories/README.md` に記録済み。
+HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
+局所 Kan な単体的圏 C の strict な錐について、全ての x で
+`sHom(x,L) ≅ lim_I sHom(x,F−) → holim_I sHom(x,F−)` が同値なら極限錐となる形を採用する。
+可縮性を検出する対象はこの比較の導来ファイバーで、strict な Hom の極限自体ではない。
+
+| 工程 | 現在地 |
+| --- | --- |
+| γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
+| γ3b | 錐の pinched 写像空間と導来ファイバーの比較、極限性の Lean 証明は未実装 |
+| γ3c | 𝒮・Sp の引き戻し、fibration の塔、有限積への適用は未実装。Alg_E は E2a 後 |
+
+Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
+置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。

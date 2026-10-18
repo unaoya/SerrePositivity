@@ -2040,27 +2040,131 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 γ3 の極限・余極限の比較は後続の別工程であり、この同値だけで完成したとは数えない。
 
 
-## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
+## γ3：homotopy 極限・余極限と ∞ 極限・余極限
 
-担当は N。正本は `formalization-plans/foundations.md` §1 と
-`formalization-plans/e-infinity-algebras.md` §3、着手順は foundations.md §4 に従う。
-担当項目の文言は「γ3：homotopy 極限・余極限 = ∞ 極限・余極限（HTT 4.2.4.1 型）。
-γ1.5 の完了後、まず Kan 複体の単体的モデル圏に対して証明する」とする。
-𝒮（F2）・Sp（L9）・E2b が共用する比較を作る。第一段階は単体集合の Quillen モデル構造と、
-その cofibrant-fibrant 対象である Kan 複体の単体的圏を扱う。
-原典は [HTT §4.2.4、特に Theorem 4.2.4.1](https://www.math.ias.edu/~lurie/papers/HTT.pdf)。
-coherent nerve の写像空間の比較には
-[Kerodon §4.6.7](https://kerodon.net/tag/01LA) を使う。
+担当は N。正本は `formalization-plans/e-infinity-algebras.md` §3 と
+`formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
+𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
+現在は γ3a の紙の主張と実装方針の記録が完了。γ3b・γ3c の Lean 証明は未実装。
+当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
-方針は、局所 Kan な単体的圏の homotopy coherent な錐の写像空間を、coherent nerve の
-錐の写像空間へ比較し、モデル側の homotopy 極限・余極限の普遍性を Core の ∞ 圏の
-極限・余極限の普遍性へ送ることである。まず 𝒮 := N^hc(Kan) で証明し、
-余極限の値には必要な Kan 置換を施す。通常の極限・余極限との無条件な同一視や
-π₀ の普遍性だけを完成とは数えない。小さい図式の宇宙と対象の宇宙を区別し、
-厳密な図式と homotopy coherent な図式の比較も証明すべき工程に含める。
+### γ3a：原典と今回の限定形
 
-後続では同じ写像空間による判定を単体的モデル圏の cofibrant-fibrant 部分へ一般化し、
-Sp の ∞ 極限、E2b の右 Quillen 関手による ∞ 極限保存へ接続する。
-Quillen 随伴から ∞ 随伴への比較（HTT 5.2.4.6 型）も §3 の後続項目として保持する。
-モデル構造を使う範囲はこの古典的モデルの ∞ 圏化に限り、F0 の一般論の前提を変更しない。
-新しい sorry・axiom・未証明の引用は導入しない。現在は着手前の設計記録であり、γ3 の成果は未実装。
+[HTT Theorem 4.2.4.1](https://arxiv.org/pdf/math/0608040) は局所 Kan な単体的圏の
+homotopy 余極限と coherent nerve の余極限の対応である。今回はその双対である極限形を使う。
+単体的モデル圏 A に適用するときは cofibrant-fibrant 対象の充満単体的部分圏 A° を用いる。
+モデル構造の存在を新しい引用・公理として導入せず、第一段階は必要な充填と比較を直接証明する。
+
+原典の対応は次の通り。
+
+| 役割 | 原典 |
+| --- | --- |
+| 局所 Kan な C の coherent nerve が ∞ 圏 | [Kerodon Theorem 2.4.5.1](https://kerodon.net/tag/00LH)（γ1） |
+| 単体的 Hom と coherent nerve の写像空間 | [Kerodon Theorem 4.6.7.5、Remark 4.6.7.9](https://kerodon.net/tag/01LA)。リポジトリの右 pinched の向きとの移送を含む |
+| 表現可能な空間値関手による極限の検出 | [Kerodon Proposition 7.4.1.22](https://kerodon.net/tag/039L) |
+| 空間の極限と切断空間 | [Kerodon Proposition 7.4.1.6](https://kerodon.net/tag/05QS)、[Construction 7.5.1.1](https://kerodon.net/tag/03A0) |
+| strict 極限から homotopy 極限への比較 | [Kerodon Proposition 7.5.3.12](https://kerodon.net/tag/03B1)。isofibrant 図式の場合 |
+| Kan 図式の homotopy 極限錐 | [Kerodon Definition 7.5.4.1](https://kerodon.net/tag/03B6) |
+| 今回の局所 Kan な単体的圏への限定形 | [Kerodon Corollary 7.5.4.6](https://kerodon.net/tag/03BB) |
+
+§2.4.5 は quasicategory 性の入力であり、写像空間の比較そのものは §4.6.7 を使う。
+通常の strict 極限だけでは homotopy 極限錐になるとは限らない点は
+[Kerodon Warning 7.5.4.3](https://kerodon.net/tag/03B8) に対応する。
+
+**限定した主張。** C を各 sHom が Kan である単体的圏、I を小さい通常の圏とする。
+F : I → C を strict な図式、λ を頂点 L から F への strict な錐とする。
+ここで必要な strict 極限は単体的豊穣を含む極限であり、全ての x : C について
+
+```
+θ_x : sHom_C(x,L) ≅ lim_{i ∈ I} sHom_C(x,F(i))
+```
+
+が SSet の自然な同型で、λ の成分による射に一致することを要求する。
+台の通常の圏での極限であるという条件だけでは、この同型を省略しない。
+H_x(i) := sHom_C(x,F(i)) と置き、さらに strict な極限から homotopy 極限への
+標準の比較が全ての x について同値であると仮定する。
+
+```
+κ_x : lim_I H_x → holim_I H_x
+q_x := κ_x ∘ θ_x : sHom_C(x,L) → holim_I H_x
+```
+
+このとき λ が定める図式
+`N(I)◁ → N^hc(C)` は極限図式、すなわちリポジトリの `IsLimitCone` を満たす。
+より一般に、豊穣 strict 極限を前提にせずとも、この錐から得られる q_x が全ての x で
+Kan 複体のホモトピー同値なら同じ結論を得る。strict 極限の限定形はこれを θ_x と κ_x で検証する。
+
+錐の左頂点の向きは `Δ[0] ⋆ N(I)` とする。I に始対象を付加した圏の nerve との同定を
+明示して strict な錐から `JoinCone` を構成し、二つを定義的に等しいとは扱わない。
+局所 Kan 性だけから全ての strict 極限の保存を結論しない。
+
+### γ3b：pinched 写像空間による証明の界面
+
+Z := N^hc(C)、p := N^hc(F)、λ̂ : JoinCone p とする。
+Core の定義では `IsLimitCone λ̂ = IsTerminalVertex (X := sliceOver p) λ̂`。
+A3d の `isTerminalVertex_iff_pinchedHom_isContractibleKan` によって、
+全ての錐 c : JoinCone p について、錐の ∞ 圏の `pinchedHom c λ̂` が可縮であることへ帰着する。
+
+c の頂点を x とすると、c は homotopy coherent な錐の点 b_c を `holim_I H_x` に与える。
+γ3b で構成する本体は、端点と錐のデータに整合する比較
+
+```
+pinchedHom_{sliceOver p}(c,λ̂) ≃ hofib_{b_c}(q_x)
+```
+
+である。q_x が同値なら右辺は可縮であり、A3d から λ̂ の極限性を得る。
+可縮性を要求する対象はこのファイバーである。`lim_I H_x` 自体の可縮性を要求すると、
+例えば一点図式の一般の Hom まで可縮にするため、極限の主張を変えてしまう。
+また任意の c は coherent な錐であり、strict な錐の点だけに制限しない。
+
+実装では holim の Kan 模型を選び、q_x を Kan fibration で置き換えた後の strict fiber を使える。
+q_x 自体の fibration 性を証明した場合だけ、置き換え前の strict fiber と同一視する。
+可縮性は `IsContractibleKan`（零次元を含む全境界の充填）で証明し、π₀ の全単射で代用しない。
+各 i での sHom と pinched Hom の同値だけを並べても図式全体の比較にはならないので、
+錐の成分・添字圏の射・高次の整合性を含む比較を証明する。
+
+holim の候補は通常の図式の同値に不変な Kan 模型とする。
+Bousfield–Kan 型なら `∫_i Fun(N(I/i), H_x(i))` という重み付き end を使い、
+`N(I/i)` の i に関する作用も含めて定義する。
+strict limit をこの重み付き end に写す比較 κ_x と、coherent な錐の点 b_c の対応が証明対象である。
+既存の F1 の空間・写像空間の API を再利用するが、原典の定理を Lean の仮定に追加しない。
+
+### γ3c：最初に検証する三つの極限
+
+下表は H_x の Kan 図式での条件である。C の射が「fibration」と呼ばれることだけでは代用せず、
+全ての x で sHom_C(x,−) が必要な Kan fibration を与えることを検証する。
+
+| 形 | strict な計算と追加条件 |
+| --- | --- |
+| 有限積（空積を含む） | 各 H_x(i) が Kan。豊穣積の θ_x と、Kan 複体の積が homotopy 積を計算することを証明する |
+| 引き戻し A → B ← D | 三つの写像空間が Kan で、少なくとも一方の脚が全ての x で Kan fibration。strict pullback が homotopy pullback を計算することを証明する |
+| 塔 … → X₂ → X₁ → X₀ | 各段が Kan で、全ての遷移が全ての x で Kan fibration。逆極限の Kan 性と homotopy 極限との比較を証明する |
+
+𝒮 には F1 の `KanObject` と `SpaceInfinity := SimplicialNerve KanObject` を使う。
+写像空間は内部 Hom `Fun(X,Y)`。SSet の全対象が cofibrant であることに対応する直接の
+内部 Hom のホーン充填を使い、Kan fibration の引き戻しと塔、有限積を適用例として公開する。
+一般の Kan 図式の strict 極限を無条件に ∞ 極限とはしない。
+
+Sp には L9 の単体的豊穣と Ω スペクトルの API を接続する。
+単体的モデル圏から raw sHom を使うときは cofibrant な始対象と fibrant な終対象が必要なので、
+単に「全対象が Ω スペクトル」という条件だけで局所 Kan 性を主張しない。
+cofibrant かつ fibrant な Ω スペクトルの充満部分圏を使うか、同じ導来写像空間を与える模型を選ぶ。
+levelwise に strict 極限を作った後も、Ω 条件・fibrant 性・豊穣 Hom の保存を個別に確認する。
+その極限が cofibrant でない場合は cofibrant-fibrant 置換 L° → L を取り、
+L° から元の図式への錐が同じ homotopy 普遍性を持つことを比較してから Sp の極限として公開する。
+A° が strict 極限で閉じていることを暗黙に仮定しない。
+E2b（Alg_E）への適用は E2a 完了後に行う。
+
+### 宇宙・配置・完了条件
+
+Hom の宇宙を u、C の対象の宇宙を v とし、まず I : Type u と Hom も u の小圏を扱う。
+H_x とその極限は SSet.{u}、coherent nerve は SSet.{max u v} に置き、
+N(I) と錐の shape の ULift を明示する。𝒮 は対象型のため SSet.{u+1} となる。
+異なる図式の宇宙への一般化は、そのサイズの極限の存在と持ち上げの同型を前提として明示する。
+
+実装は `InfinityCategories/HomotopyLimits/` と専用の集約・公理監査に置き、Core・F1・Sp の
+他レーンのソースは編集しない。新しい sorry・axiom・未証明の引用を導入せず、公開宣言の
+正確な型・全前提・依存公理を検査する。モデル構造を使う範囲は古典的対象の ∞ 圏化に限る。
+γ3b の完了には錐の pinched Hom と導来ファイバーの比較および極限錐の定理、
+γ3c の完了には 𝒮 と Sp の三つの適用の公開と対象ビルド・標準三公理の監査が必要。
+この紙の記録と原典の照合だけを γ3b・γ3c の完成とは数えない。
