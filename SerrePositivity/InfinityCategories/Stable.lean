@@ -127,6 +127,13 @@ public import SerrePositivity.InfinityCategories.Stable.SquareTransposeEvaluatio
 public import SerrePositivity.InfinityCategories.Stable.SuspensionTransposeComparison
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSwapNaturality
 
+public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.Stable.CoconeMappingContractible
+public import SerrePositivity.InfinityCategories.Stable.CoconeMappingGluing
+public import SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingPullback
+public import SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingSwap
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

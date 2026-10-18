@@ -483,6 +483,28 @@ suspension 図式の任意の h の射に対して交換作用が可換となる
 （Quasicategory、安定性・加法性の追加仮定なし）。
 **交換の二乗が恒等であることを負の恒等射との一致とは数えない**。
 次に、構成済みの加法で `swapIso.hom + 𝟙 = 0`、従って `swapIso.hom = -𝟙` を証明する。
+その証明のため、HA Lemma 1.1.2.10 の終点固定余錐空間 D(p) を構成した。
+原典の証明は D(σ) を、可縮な二因子 D(f) の D(A) 上の引き戻しとして扱い、
+ループ模型への比較で二枝交換をループ反転へ移す。
+[coconeMappingSpace の参照箇所](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=25)。
+これは証明方針の参照であり、形式化で引用公理として使っていない。
+`coconeMappingSpace p y` は既存の coslice 射影の頂点 fiber で、
+`coconeMappingSpace_kanComplex` が Kan 性を与える（Quasicategory、安定性不要）。
+`coconeMappingSpace_restrict_fibration` は任意の単射による部分図式への制限が
+全ホーンの持ち上げ性を持つことを示す（Quasicategory、Mono）。
+`coconeMappingSpace_point_isContractibleKan` は始対象からの空間の可縮性、
+`coconeMappingSpace_edge_isContractibleKan` は始対象へ向かう辺からの空間の可縮性を与える
+（後者は Quasicategory、前者は不要）。
+`exists_coconeMappingSpace_glue` と `coconeMappingSpace_hom_ext_of_pushout` は、
+図式の pushout に沿う任意パラメーターの余錐の厳密な貼り合わせの存在・一意性。
+`spanCoconeMapping_isPullback` は二枝の余錐空間の共通始点上の厳密な引き戻しを与える
+（以上、値域の仮定なし）。右脚 `spanCoconeMappingRightBase` は、共通始点の二つの図式表示を
+ホーンの等号で輸送する。制限と輸送は一般の uncurry の補題へ分離し、カーネル検査の時間切れを解消した。
+`coconeMappingSpace_spanSwap_left`・`right` は span の交換によって二枝が交換されることを
+任意パラメーターの余錐の等号として示す（値域の仮定なし）。
+**負号との一致は未証明**。残る比較は π₀ D(σ) と Hom(ΣA, Y)、
+二枝の引き戻しとループ模型、およびループの群構造と構成済みの双積の加法の一致。
+D(p) の構成や引き戻し表示だけを符号・TR2 の完成とは数えない。
 八面体、Pretriangulated instance も未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -634,6 +656,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | h C の有限双積とシフトの加法性 | `hasFiniteProducts_ho`、`hasFiniteBiproducts_ho`、`suspensionFunctor_additive`、`loopFunctor_additive`、`shiftFunctor_additive_ho`（Quasicategory、IsStable） | 全有限双積・Σ・Ω・全整数シフトの加法性まで完成。∞ 圏自体の全有限極限・余極限の存在は未証明 |
 | cofiber 列の回転の幾何学的構成と二射列 | `pastingLeftToOuterHomotopy`（値域の仮定なし）、`CofiberRotationRectangle` とその存在・選択（Quasicategory、IsStable）、`rotated_isCofiber`（データを入力すれば仮定なし）、`rotated_f_arrow`・`rotated_g_arrow_connecting`（Quasicategory、零射、後者は元の cofiber 性）、`tailShortComplexIso`・`exists_cofiberTailShortComplex`（Quasicategory、IsStable） | B → C → ΣA の cofiber 短複体表示まで完成。第三の接続射の負号・Triangle の回転所属・逆方向は未証明。TR2 全体は未完了 |
 | suspension の二枝交換 | `SuspensionSquare.transpose`・`transpose_transpose`・`transpose_vertex`（値域に仮定なし）、`swapIso`、`comparisonIso_hom_transpose`、`swapIso_hom_comp_self`、`diagramComparisonIso_transpose_naturality`・`swapIso_naturality`（Quasicategory） | 標準比較との両立・自然性・二乗が恒等まで完成。加法の負号との一致は未証明。TR2 は未完了 |
+| 終点固定余錐空間と二枝の引き戻し | `coconeMappingSpace`、`coconeMappingSpace_kanComplex`（Quasicategory）、`coconeMappingSpace_restrict_fibration`（Quasicategory、Mono）、`coconeMappingSpace_edge_isContractibleKan`（Quasicategory、枝の終点の始対象性）、`exists_coconeMappingSpace_glue`・`coconeMappingSpace_hom_ext_of_pushout`・`spanCoconeMapping_isPullback`・`coconeMappingSpace_spanSwap_left`・`right`（値域の仮定なし） | 空間・充填性・可縮な枝・引き戻し・交換の二成分まで完成。π₀ と Hom の比較、ループ模型、群構造と加法の一致は未証明 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

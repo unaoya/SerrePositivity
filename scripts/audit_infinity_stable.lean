@@ -1,6 +1,27 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_kanComplex
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_ι
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_comp
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_change_uncurry
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_uncurry
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_change_uncurry
+#print axioms SerrePositivity.InfinityCategories.sliceUnderRestrict_leftFibration_of_mono
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_leftFibration
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_fibration
+#print axioms SerrePositivity.InfinityCategories.stable_isContractibleKan_of_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_point_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_edge_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.exists_coconeMappingSpace_glue
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_hom_ext_of_pushout
+#print axioms SerrePositivity.InfinityCategories.spanCoconeMappingRightBase
+#print axioms SerrePositivity.InfinityCategories.spanCoconeMappingRightBase_uncurry
+#print axioms SerrePositivity.InfinityCategories.spanCoconeMapping_restriction_comm
+#print axioms SerrePositivity.InfinityCategories.spanCoconeMapping_isPullback
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_spanSwap_left
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_spanSwap_right
 #print axioms SerrePositivity.InfinityCategories.suspensionSquare_eq_of_square_eq
 #print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transpose
 #print axioms SerrePositivity.InfinityCategories.SuspensionSquare.transpose_transpose
@@ -1115,7 +1136,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SuspensionTranspose,
     `SerrePositivity.InfinityCategories.Stable.SquareTransposeEvaluation,
     `SerrePositivity.InfinityCategories.Stable.SuspensionTransposeComparison,
-    `SerrePositivity.InfinityCategories.Stable.SuspensionSwapNaturality]
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSwapNaturality,
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace,
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction,
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingContractible,
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingGluing,
+    `SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingPullback,
+    `SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingSwap]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
