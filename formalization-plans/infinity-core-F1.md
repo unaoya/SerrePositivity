@@ -711,5 +711,18 @@ lemma sliceUnderRestrict_triangleLongEdge {X : SSet.{u}} [Quasicategory X]
     (t : (Δ[2] : SSet.{u}) ⟶ X) :
     TrivialKanFibration (sliceUnderRestrict t (stdSimplex.δ (1 : Fin 3)))
 
+lemma initialHorn_eq_sourceFace :
+    horn.{u} 1 0 = stdSimplex.face {(1 : Fin 2)}ᶜ
+
+lemma relativeCosliceRestriction_source_of_isCocartesianEdge {X Y : SSet.{u}}
+    (e : (Δ[1] : SSet.{u}) ⟶ X) (q : X ⟶ Y)
+    (he : IsCocartesianEdge q (SSet.yonedaEquiv e)) :
+    TrivialKanFibration (relativeCosliceRestriction e q (stdSimplex.δ (1 : Fin 2)))
+
+lemma isCocartesianEdge_of_relativeCosliceRestriction_source {X Y : SSet.{u}}
+    (e : (Δ[1] : SSet.{u}) ⟶ X) (q : X ⟶ Y)
+    [TrivialKanFibration (relativeCosliceRestriction e q (stdSimplex.δ (1 : Fin 2)))] :
+    IsCocartesianEdge q (SSet.yonedaEquiv e)
+
 end SerrePositivity.InfinityCategories
 ```
