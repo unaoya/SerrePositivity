@@ -1,0 +1,147 @@
+module
+
+public import SerrePositivity.KST.Spectra.KanSequence
+public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks
+
+/-!
+概要：段ごとの Kan fibration に沿う Kan 列の引き戻し。
+方針：点つき圏で段ごとに引き戻し、構造射を普遍性で貼る。
+規約：構造射の単射性や Ω 条件はここでは主張しない。
+使われ方：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3。mapping path 列。
+-/
+
+@[expose] public section
+
+universe u
+
+open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
+open SSet.modelCategoryQuillen
+
+namespace SerrePositivity.KST.Spectra
+
+noncomputable section
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+local instance : PointedSimplicialSet.forget.{u}.IsRightAdjoint :=
+  PointedObject.adjoinForgetAdjunction.isRightAdjoint
+
+/-- 概要：点つきの引き戻しの基礎正方形は単体集合でも引き戻し。
+方針：基点忘却の右随伴性から引き戻しの保存を使う。
+規約：選んだ点つき極限の射の基礎射について述べる。
+使われ方：HTT A.3.3、Goerss–Jardine I §7。右持ち上げ性の引き戻し。 -/
+theorem pointedPullback_isPullback {E X B : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (g : X ⟶ B) :
+    IsPullback (pullback.fst f g).right (pullback.snd f g).right f.right g.right :=
+  (IsPullback.of_hasPullback f g).map PointedSimplicialSet.forget
+
+/-- 概要：点つき引き戻しの第二射影は全単射への RLP を保存する。
+方針：基礎引き戻しと右持ち上げクラスの基底変換閉性を使う。
+規約：元の第一の射について RLP を要求する。
+使われ方：HTT A.3.3、Goerss–Jardine I §7。mapping path の比較射。 -/
+theorem pointedPullback_snd_rlp {E X B : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (g : X ⟶ B)
+    (hf : (MorphismProperty.monomorphisms SSet.{u}).rlp f.right) :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (pullback.snd f g).right :=
+  (MorphismProperty.monomorphisms SSet.{u}).rlp.of_isPullback
+    (pointedPullback_isPullback f g) hf
+
+/-- 概要：Kan fibration の点つき引き戻しの第二射影も Kan fibration。
+方針：ホーン RLP の基底変換閉性を使う。
+規約：標的 X に Kan 性は不要。
+使われ方：Goerss–Jardine I §7、HTT A.3.3。引き戻しの段の Kan 性。 -/
+instance pointedPullback_snd_fibration {E X B : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (g : X ⟶ B) [Fibration f.right] :
+    Fibration (pullback.snd f g).right := by
+  apply (fibration_iff _).2
+  exact J.rlp.of_isPullback (pointedPullback_isPullback f g) ((fibration_iff _).1 inferInstance)
+
+/-- 概要：Kan な底への Kan fibration の引き戻しの全空間は Kan。
+方針：第二射影と底の終対象射の fibration を合成する。
+規約：X の Kan 性だけを追加する。
+使われ方：Goerss–Jardine I §7、HTT A.3.3。Kan 列の引き戻しの各段。 -/
+instance pointedPullback_kanComplex {E X B : PointedSimplicialSet.{u}}
+    (f : E ⟶ B) (g : X ⟶ B) [Fibration f.right] [KanComplex X.right] :
+    KanComplex (pullback f g).right := by
+  change Fibration (terminal.from (pullback f g).right)
+  rw [show terminal.from (pullback f g).right =
+    (pullback.snd f g).right ≫ terminal.from X.right from terminal.hom_ext _ _]
+  infer_instance
+
+namespace KanSequence
+
+variable {E X B : KanSequence.{u}} (f : Hom E B) (g : Hom X B)
+
+/-- 概要：引き戻しの段の suspension 構造射。
+方針：二つの射影の suspension と元の構造射を引き戻しの普遍性で貼る。
+規約：各段の Kan 性は構造射の構成そのものには不要。
+使われ方：BF 1978 §2、HTT A.3.3。mapping path 列の構造。 -/
+def pullbackSigma (n : ℕ) :
+    suspension (pullback (f.app n) (g.app n)) ⟶
+      pullback (f.app (n + 1)) (g.app (n + 1)) :=
+  pullback.lift (PointedSimplicialSet.circle.{u} ◁ pullback.fst (f.app n) (g.app n) ≫ E.sigma n)
+    (PointedSimplicialSet.circle.{u} ◁ pullback.snd (f.app n) (g.app n) ≫ X.sigma n) (by
+      rw [Category.assoc, ← f.comm n, ← Category.assoc, ← whiskerLeft_comp,
+        pullback.condition, whiskerLeft_comp, Category.assoc, g.comm n, ← Category.assoc])
+
+variable [hf : ∀ n, Fibration (f.app n).right]
+
+/-- 概要：段ごとの Kan fibration に沿う Kan 列の引き戻し。
+方針：点つき引き戻しの各段と構成済みの構造射を束ねる。
+規約：Ω 条件を入力にも出力の主張にも含めない。
+使われ方：BF 1978 §2、Goerss–Jardine I §7。mapping path 列。 -/
+def pullbackSequence : KanSequence.{u} where
+  level n := {
+    space := pullback (f.app n) (g.app n)
+    kan := pointedPullback_kanComplex _ _ }
+  sigma := pullbackSigma f g
+
+/-- 概要：引き戻しの Kan 列から第一の列への厳密な射影。
+方針：引き戻しの第一射影を各段で使う。
+規約：構造射との可換性は引き戻しの計算式。
+使われ方：BF 1978 §2。mapping path の path 成分。 -/
+def pullbackFirst : Hom (pullbackSequence f g) E where
+  app n := pullback.fst (f.app n) (g.app n)
+  comm n := by
+    change _ = pullbackSigma f g n ≫ pullback.fst _ _
+    simp only [pullbackSigma, pullback.lift_fst]
+
+/-- 概要：引き戻しの Kan 列から第二の列への厳密な射影。
+方針：引き戻しの第二射影を各段で使う。
+規約：構造射との可換性は引き戻しの計算式。
+使われ方：BF 1978 §2。mapping path の元の源への比較射。 -/
+def pullbackSecond : Hom (pullbackSequence f g) X where
+  app n := pullback.snd (f.app n) (g.app n)
+  comm n := by
+    change _ = pullbackSigma f g n ≫ pullback.snd _ _
+    simp only [pullbackSigma, pullback.lift_snd]
+
+/-- 概要：二つの厳密な列の射から引き戻し列への厳密な射を作る。
+方針：各段を引き戻しへ持ち上げ、構造条件を両射影の後で確認する。
+規約：二つの合成の一致を各段で要求する。
+使われ方：BF 1978 §2、HTT A.3.3。mapping path の比較射。 -/
+def pullbackLift {T : KanSequence.{u}} (a : Hom T E) (b : Hom T X)
+    (h : ∀ n, a.app n ≫ f.app n = b.app n ≫ g.app n) :
+    Hom T (pullbackSequence f g) where
+  app n := pullback.lift (a.app n) (b.app n) (h n)
+  comm n := by
+    apply pullback.hom_ext
+    · change (PointedSimplicialSet.circle.{u} ◁ pullback.lift (a.app n) (b.app n) (h n) ≫
+        pullbackSigma f g n) ≫ pullback.fst _ _ =
+          (T.sigma n ≫ pullback.lift (a.app (n + 1)) (b.app (n + 1)) (h (n + 1))) ≫
+            pullback.fst _ _
+      simp only [Category.assoc, pullbackSigma, pullback.lift_fst,
+        ← whiskerLeft_comp_assoc, a.comm n]
+    · change (PointedSimplicialSet.circle.{u} ◁ pullback.lift (a.app n) (b.app n) (h n) ≫
+        pullbackSigma f g n) ≫ pullback.snd _ _ =
+          (T.sigma n ≫ pullback.lift (a.app (n + 1)) (b.app (n + 1)) (h (n + 1))) ≫
+            pullback.snd _ _
+      simp only [Category.assoc, pullbackSigma, pullback.lift_snd,
+        ← whiskerLeft_comp_assoc, b.comm n]
+
+end KanSequence
+
+end
+
+end SerrePositivity.KST.Spectra

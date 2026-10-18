@@ -26,10 +26,10 @@
 ## 1. 正本と目的
 
 作成日：2026-10-18。
-状態：L9a・L9b 完了。L9c 進行中。
-Sp、整数次数群と自然な任意段表示、Kan Ω 列の単射置換まで検証済み。
-対象ビルド・100 モジュール 1728 宣言の公理監査成功。
-直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
+状態：L9a・L9b・L9c 完了。L9d 着手。
+Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
+対象ビルド・105 モジュール 1819 宣言の公理監査成功。
+直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
 基盤の正本：[foundations](../foundations.md) §1 の F3・γ。
@@ -216,7 +216,7 @@ Kan fibration の引き戻しと塔の極限についての閉性を RLP から�
 Sp はこの単体的圏の coherent nerve とし、γ1 を適用する。
 この nerve が導来写像空間を持つ正しい Sp であることの比較は γ3 後に扱う。
 第 1 段の π_* の証明にその比較を使わない。
-非単射の構造射は写像柱によって cofibrant 置換する。
+非単射の構造射は境界生成の cell 分解によって直接 cofibrant 置換する（§33）。
 各段の Kan 置換には既存 AnodyneKanReplacement の実構成を使う。
 両置換の存在と π_* の保存を本レーンで証明し、入力にしない。
 fiber 列の各段の fiber は構造射の単射性を保つとは限らないので置換を挟む。
@@ -281,8 +281,8 @@ amend・rebase・reset を使わない。
 | 計画 | 作成 | 実装と同期する |
 | L9a | 完了 | 全体ビルドも L9b の区切りで成功 |
 | L9b | 完了・対象ビルド、公理監査、全体ビルド成功 | なし |
-| L9c | 改訂仕様を承認済み・着手 | 点つき Kan、Σ・Ω、単射による Hom の塔、置換、整数次数 |
-| L9d | 未着手 | telescope と π_* の計算 |
+| L9c | 完了・対象ビルド、公理監査、全体ビルド成功 | γ3 後の導来 Sp・∞ 極限との比較は別工程 |
+| L9d | 着手 | telescope と π_* の計算 |
 | L9e | 未着手 | Tot、hG、有理自明作用の比較 |
 
 ## 16. 主要宣言
@@ -1182,3 +1182,49 @@ L9c は未完了。両端点同時評価の fibration 性と、path 列の構造
 保存単位の対象ビルド 1876 jobs 成功。
 私有宣言を含む 100 モジュール 1728 宣言で標準三公理のみ。
 L9c は未完了。段ごとの引き戻しを用いて任意の射の mapping path 列を構成する。
+
+
+## 43. L9c 完了：任意の射の fibration 置換と homotopy fiber の長完全列
+
+段ごとの Kan fibration に沿う引き戻しを点つき圏で取り、Kan 列として束ねた。
+構造射は二つの射影から普遍性で作り、射影と持ち上げは厳密な列の射である。
+自由な path の始点評価を任意の射に沿って引き戻して mapping path を構成した。
+源への射影は全単射への RLP を持つ。
+終点射のホーン充填は、まず元の源の成分を充填し、次に両端点を同時に充填して証明した。
+定数 path による比較射と終点射の合成は厳密に元の射である。
+源が Ω 条件を持つと、中間列も源への射影の RLP を通して Ω 条件を持つ。
+この列を境界 cell 分解で単射置換し、元の cofibrant な源から厳密に持ち上げた。
+従って元の任意の射は、段ごとの全基点 π_* 同型と段ごとの Kan fibration の厳密な合成となる。
+中間対象は本レーンで固定した BF cofibrant–fibrant 対象である。
+元の源への厳密な射影も構成し、整数次数群では比較射の逆写像になることを証明した。
+
+置換した右因子の fiber を単射置換し、任意の射の homotopy fiber を BF 対象として定義した。
+包含は置換後の fiber 包含と元の源への射影の合成であり、実際の厳密なスペクトルの射である。
+連結射は置換後の段の連結準同型から来る。
+比較群同型を通して、fiber・全空間・底の三つの位置の完全性を元の射の誘導準同型へ移した。
+全ての整数次数で核と像が一致し、隣接射の合成が自明である。
+Sp の ∞ 極限としての普遍性、正しい導来写像空間との比較はこの主張に含めていない。
+これらは承認済みの仕様どおり γ3 後の別工程である。
+L9c の本工程は完了とし、L9d の telescope 有理化へ進む。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `pointedPullback_isPullback` / `.pointedPullback_snd_rlp` | 基礎引き戻しと全単射 RLP の保存 |
+| `KanSequence.pullbackSequence` / `.pullbackLift` | Kan 列の引き戻しと厳密な普遍射 |
+| `mappingPathProjection_fibration` | 任意の点つき Kan 射の終点射の相対ホーン充填 |
+| `KanSequence.mappingPathSequence_omegaCondition` | mapping path 列の Ω 条件 |
+| `OmegaSpectrum.fibrationReplacement` | BF 対象としての中間対象 |
+| `OmegaSpectrum.fibrationReplacement_fac` | 元の射の厳密な因子分解 |
+| `OmegaSpectrum.fibrationReplacementProjection_fibration` | 右因子の各段の Kan fibration 性 |
+| `OmegaSpectrum.fibrationReplacementUnit_piIsomorphism` | 左因子の全整数次数 π_* 同型 |
+| `OmegaSpectrum.fibrationReplacementRetraction` | 元の源への厳密な射影 |
+| `OmegaSpectrum.homotopyFiber` / `.homotopyFiberInclusion` | 任意の射の homotopy fiber と包含 |
+| `OmegaSpectrum.homotopyFiberBoundary` | 全整数次数の連結準同型 |
+| `OmegaSpectrum.homotopyFiberLongExact` | 任意の射の三つの位置での長完全性 |
+| `OmegaSpectrum.homotopyFiberBoundary_inclusion` / `.homotopyFiberInclusion_projection` / `.homotopyFiberBoundary_projection` | 隣接射の零合成 |
+
+参照：Goerss–Jardine I §§7–8、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 1881 jobs 成功。
+私有宣言を含む 105 モジュール 1819 宣言で標準三公理のみ。
+工程区切りの全体ビルド 9543 jobs 成功。
+L9d・L9e は未完了であり、全体目標の完了は主張しない。
