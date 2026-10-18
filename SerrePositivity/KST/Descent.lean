@@ -112,6 +112,10 @@ public import SerrePositivity.KST.Descent.FiniteTypeFreeCharts
 public import SerrePositivity.KST.Descent.FreeChartBaseChange
 public import SerrePositivity.KST.Descent.RationalLift
 public import SerrePositivity.KST.Descent.IntegralComparison
+public import SerrePositivity.KST.Descent.MixedCech
+public import SerrePositivity.KST.Descent.MixedCechNaturality
+public import SerrePositivity.KST.Descent.MixedCechRefinement
+public import SerrePositivity.KST.Descent.FlatteningMixedCech
 public import SerrePositivity.KST.Descent.ComponentSplit
 public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
@@ -256,6 +260,9 @@ transfer の射影公式からの rank 公式の導出は残す。
 有理化後の持ち上げから分母とねじれを消して正の整数倍の持ち上げを得る。
 指定 PiDescent と自然な整数群の比較データから、同じ整数写像での不変類の整数形を導く。
 K0・T2 による比較データの供給と (3.6) の同定自体は未完。
+異なる二つの射の混合二重 Čech と軸交換の自然同型を構成し、
+細分射から各行の分裂と元の前層の像の収縮ホモトピーを得る。
+実際のアフィン平坦化細分にも同じ分裂行を供給し、低次元中心と正の定 rank を同時に保持する。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
