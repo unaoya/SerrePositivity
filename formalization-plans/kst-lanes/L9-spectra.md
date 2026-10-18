@@ -7,6 +7,7 @@
 - 所有：γ-B の Ω スペクトル、その単体的圏と coherent nerve。
 - 所有：整数次数のスペクトルの π_n。
 - 所有：有理化、hG、Tot の Kan 複体による実構成。
+- 借用：Mathlib の EG の自由 G 集合の単体的図式と、斉次・非斉次座標の作用の同型。
 - 借用：H_* は K-L2 が所有する。
 - 借用：pro 形式は K-L6 が所有する。
 - 借用：γ1 は N レーンの局所 Kan coherent nerve 定理。
@@ -33,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・323 モジュール 3546 宣言の公理監査成功。
+対象ビルド・328 モジュール 3569 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2671,4 +2672,37 @@ Kan 性にはこの自由軌道の同変内部 Hom を通常の関数空間と�
 参照：Goerss–Jardine VIII §§1–2、HA §1.4.2。
 保存単位の対象ビルド 3766 jobs 成功。
 私有宣言を含む 323 モジュール 3546 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
+
+## 90. L9e の自由作用の end の内部 Hom 表示と cochain の各値の Kan 性
+
+自由 G 集合 G × S の重みから作用図式へのパラメーター付き自然変換を扱った。
+第一座標が 1 の部分へ制限すると、通常の S とパラメーターとの直積から係数への射になる。
+逆にこの族へ第一座標の群作用を施すことで、同変な自然変換を構成した。
+図式の自然性を第一座標 1 で評価し、制限と拡張が両逆であることを証明した。
+パラメーターの射による前合成との可換性も示した。
+
+end への射の普遍性、同変族の同値、curry の随伴を合成した。
+この同値はパラメーターに自然なので、Yoneda の充満忠実性から実際の単体集合の同型を得た。
+自由作用の重みを持つ同変 end は、離散的な S から係数への通常の内部 Hom と同型である。
+従って係数が Kan ならこの end も Kan である。
+忘却と点つき end の比較同型によって、この Kan 性を点つき模型へ移した。
+
+§89 の EG_n の自由軌道の表示へ適用して、群作用の余単体 cochain の各値が Kan であることを証明した。
+これは任意の群について成立し、有限性や有理性を使わない。
+図式の各値の Kan 性だけから厳密 Tot の Kan 性を結論してはいない。
+Tot の Kan 性や hG との比較には、重みの全体の比較または相対 matching の充填が続けて必要である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `FreeActionFamily.restrict` / `extend` | 第一座標 1 への制限と群作用による同変拡張 |
+| `FreeActionFamily.equiv` / `restrict_pre` / `extend_pre` | パラメーター付き同変族の同値と自然性 |
+| `FreeActionFamily.homEquiv` / `homEquiv_pre` | 自由作用の end への Hom と内部 Hom への Hom の自然な同値 |
+| `FreeActionFamily.endIso` | 自由作用の end と通常の内部 Hom の実際の同型 |
+| `FreeActionFamily.end_kanComplex` / `pointedEnd_kanComplex` | 自由作用の end の Kan 性と点つき模型への移送 |
+| `GroupActionCochains.level_kanComplex` | 群作用の各スペクトル段・各余単体次数の点つき Kan 性 |
+
+参照：Goerss–Jardine VIII §2、HA §1.4.2。
+保存単位の対象ビルド 3771 jobs 成功。
+私有宣言を含む 328 モジュール 3569 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。

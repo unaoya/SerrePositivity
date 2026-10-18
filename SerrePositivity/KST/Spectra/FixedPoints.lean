@@ -1,5 +1,11 @@
 module
 
+public import SerrePositivity.KST.Spectra.FreeActionFamily
+public import SerrePositivity.KST.Spectra.FreeActionFamilyEquiv
+public import SerrePositivity.KST.Spectra.FreeActionEnd
+public import SerrePositivity.KST.Spectra.FreeActionEndKan
+public import SerrePositivity.KST.Spectra.GroupActionCochainKan
+
 public import SerrePositivity.KST.Spectra.PointedWeightedEndPreMap
 public import SerrePositivity.KST.Spectra.PointedWeightedEndBifunctor
 public import SerrePositivity.KST.Spectra.WeightedCochains
