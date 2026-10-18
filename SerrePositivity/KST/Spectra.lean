@@ -51,3 +51,4 @@ public import SerrePositivity.KST.Spectra.FilteredKanSequence
 public import SerrePositivity.KST.Spectra.KanSequenceForgetful
 public import SerrePositivity.KST.Spectra.FilteredKanSequenceForgetful
 public import SerrePositivity.KST.Spectra.FilteredKanSequenceMap
+public import SerrePositivity.KST.Spectra.FixedPoints

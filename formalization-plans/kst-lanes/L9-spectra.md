@@ -11,6 +11,8 @@
 - 借用：pro 形式は K-L6 が所有する。
 - 借用：γ1 は N レーンの局所 Kan coherent nerve 定理。
 - 借用：γ3 は N レーンのホモトピー極限と ∞ 極限の比較。
+- 借用：N の HomotopyLimits の Bousfield–Kan end・ホーン充填による Kan 性・path 置換による係数のホモトピー不変性。
+- この借用は段ごとの単体集合の実構成だけに使い、Sp の ∞ 極限性や導来写像空間の比較を主張しない。
 - 借用：Core の pinched 写像空間とその Kan 性。
 - 既存 Spectra は比較用に読むだけで編集しない。
 - 既存 Spectra の `PointedSimplicialSet.Basic` と `Pointed.InternalHom` の基礎定義を借りる。
@@ -28,7 +30,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・267 モジュール 3077 宣言の公理監査成功。
+対象ビルド・274 モジュール 3113 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2318,3 +2320,40 @@ L9e の有限群の作用、段ごとの hG と Tot、有理自明作用の比�
 私有宣言を含む 267 モジュール 3077 宣言で標準三公理のみ。
 工程区切りの全体ビルドは共有ルートで F1 と F1B の relativeFunctorVertex の重複により失敗。
 K-L9 の import 閉包は通っているため、回避策も他レーンの編集もせず L9e を継続する。
+
+## 80. L9e の開始：群作用、段ごとの Kan end、有理平均化と係数の比較
+
+厳密な群作用を通常の圏の End への準同型として与え、各段・Kan 列・全整数次数の群への作用を関手で構成した。
+N レーンの Bousfield–Kan の重み付き end を読み取り専用で借り、基点の錐から点つき end を構成した。
+その実際の射は恒等・合成を保ち、係数が Kan なら既存のホーン充填によって Kan になる。
+群圏は対象の宇宙が小さいため AsSmall を挟み、hG の各段の実際の点つき Kan 複体と射を得た。
+余単体 BF 対象についても同じ方法で homotopy totalization の各段の点つき Kan 複体と射を得た。
+通常の Reedy 型の Tot との比較と BF 構造への束ね直しは未完了。
+
+有限群の位数が ℚ で非零かつ可逆であることを明示した。
+norm を位数で割る実際の平均化作用素を構成し、像の不変性・不変元での恒等性・冪等性を示した。
+Mathlib の平均化による射影性と bar resolution–Ext の比較を使い、正次数の群コホモロジーの零対象性を証明した。
+この比較は Mathlib の係数と群の宇宙が同じである制約を避けて扱えるよう、ℚ を含む標数零の体に一般化している。
+
+点つき Whitehead と写像空間の成分の対称性から、L9 の全基点 π_* 同型を実際の単体的ホモトピー同値へ移した。
+逆方向は N の可逆 path の二つの全単射 RLP 射と切断の分解から L9 の誘導写像の全単射性を示した。
+この比較と N の path 分解による係数のホモトピー不変性から、点つき end が L9 の全基点 π_* 同型を保存すると証明した。
+N の別定義の π_n や Sp の ∞ 極限性をこの段階の主張には用いていない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `GroupAction` / `diagramFunctor` / `levelFunctor` / `homotopyFunctor` | 厳密な群作用と段・π_* の作用 |
+| `PointedHomotopyLimit.obj` / `map` / `kanComplex` / `functor` | 基点を持つ Bousfield–Kan end と Kan 性・関手性 |
+| `homotopyFixedLevel` / `homotopyFixedLevel_kanComplex` / `homotopyFixedLevelMap` | hG のレベルごとの実際の構成 |
+| `homotopyTotalizationLevel` / `homotopyTotalizationLevel_kanComplex` | 余単体対象のレベルごとの Kan 模型 |
+| `finiteGroupOrder_ne_zero` / `finiteGroupOrder_isUnit` | 平均化の分母の非零性と可逆性 |
+| `rationalAverage` / `rationalAverage_invariant` / `rationalAverage_idempotent` | 実際の有理平均化の射影 |
+| `rationalGroupCohomology_isZero` | 有限群・標数零の正次数群コホモロジーの消滅 |
+| `pointed_piIsomorphism_homotopyEquivalence` / `kanPiIsomorphism_of_qCatEquivalence` | L9 の全基点 π_* 同型と既存の実際の path 充填の比較 |
+| `PointedHomotopyLimit.map_piIsomorphism` | 段ごとの end による L9 の全基点 π_* 同型の保存 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2、Kerodon 4.8.4.1、7.5.4.6。
+保存単位の対象ビルド 3631 jobs 成功。
+私有宣言を含む 274 モジュール 3113 宣言で標準三公理のみ。
+L9e は進行中。次は内部 Hom と end の交換を構成し、hG・Tot を Kan Ω 列と BF 対象へ束ねる。
+有理 Shapiro のスペクトルの実際の比較と π_* 同型性は未完了。
