@@ -380,3 +380,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.universalUnitCommaSection_target
 
 #check @SerrePositivity.InfinityCategories.universalUnitCommaProjection_surjective
+
+#check @SerrePositivity.InfinityCategories.unitCommaHomotopy
+
+#check @SerrePositivity.InfinityCategories.unitCommaLift_homotopy
+
+#check @SerrePositivity.InfinityCategories.unitCommaFiberFamilyEquiv
+
+#check @SerrePositivity.InfinityCategories.unitCommaFiber_hom_ext
+
+#check @SerrePositivity.InfinityCategories.unitCommaFiber_exists_extension_iff
+
+#check @SerrePositivity.InfinityCategories.unitCommaFiber_isInitialVertex_iff

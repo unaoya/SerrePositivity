@@ -149,6 +149,13 @@ fiber も quasicategory である。ここで用いる直積の第一射影の i
 `unitCommaSectionVertex η x` の始対象性との同値も証明した。この中間条件の下で単位の切断を
 普遍矢印へ制限し、始域射影の inner fibration 性・頂点上の全射性と標的関手 F の回収を得た。
 **これだけから射影の同値性を主張しない。** 充満忠実性または外側ホーンを含む相対充填が残る。
+固定始域の comma の任意の族を、Y 値の図式 b とホモトピー `const x → G∘b` の
+組へ展開する厳密な全単射 `unitCommaFiberFamilyEquiv` を構成した。パラメータの前合成に
+関する標的・ホモトピーの公式と、両データによる射の外延性も証明済みである。
+`unitCommaFiber_exists_extension_iff` は任意の射 i に沿う fiber 内の延長問題を、
+b とホモトピーの同時延長へ厳密に移す。`unitCommaFiber_isInitialVertex_iff` により、
+始対象性を初頂点を指定した境界図式とホモトピーの同時延長で判定できる。
+これは元の始対象性との同値であり、各点の写像空間条件から延長が存在する証明はまだ残る。
 原典 Prop 6.2.6.1 の証明は relative join の cartesian fibration を使う。現在の境界引き戻しの
 区間 comma 模型について、その cartesian な輸送や原典模型との比較はまだ実装していない。
 
@@ -159,8 +166,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（1971 jobs）・公理監査（545 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 303 モジュールに straightening 依存がないことも確認した。
+対象ビルド（1974 jobs）・公理監査（579 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 306 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -286,3 +293,9 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `universalUnitCommaProjection_surjective` | 同じ条件の下での始域射影の頂点上全射性（同値性は未証明） | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
+
+| `unitCommaUncurry`・`unitCommaHomotopy`・`unitCommaLift_homotopy` | comma の族の展開と厳密な回収 | 実装済み |
+| `unitCommaFiberCurry`・`unitCommaFiberFamilyEquiv` | 固定始域の族と標的図式・ホモトピーの組の厳密な全単射 | 実装済み |
+| `unitCommaFiberTarget_precomp`・`unitCommaFiberHomotopy_precomp`・`unitCommaFiber_hom_ext` | パラメータ自然性と二データによる外延性 | 実装済み |
+| `unitCommaFiber_exists_extension_iff` | 任意の射に沿う延長問題と図式・ホモトピーの同時延長の同値 | 実装済み |
+| `unitCommaFiber_isInitialVertex_iff` | 初頂点固定の境界延長による始対象性の判定 | 実装済み |

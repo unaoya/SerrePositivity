@@ -48,3 +48,6 @@ public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
 public import SerrePositivity.InfinityCategories.F1B.InnerProductProjection
 public import SerrePositivity.InfinityCategories.F1B.UnitComma
 public import SerrePositivity.InfinityCategories.F1B.UniversalUnitComma
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaFamilies
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberFamilies
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberExtension
