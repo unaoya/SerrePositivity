@@ -215,3 +215,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.quasicategoryCore_mem_triangle_iff
 #check @SerrePositivity.InfinityCategories.edge_mem_horn_of_three_le
 #check @SerrePositivity.InfinityCategories.isInvertibleEdge_triangle_missing
+#check @SerrePositivity.InfinityCategories.quasicategoryCore_horn_filler_mem
+#check @SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex

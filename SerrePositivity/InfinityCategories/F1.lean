@@ -47,3 +47,4 @@ public import SerrePositivity.InfinityCategories.F1.HomotopyTransport
 public import SerrePositivity.InfinityCategories.F1.CartesianOpposite
 public import SerrePositivity.InfinityCategories.F1.QuasicategoryCore
 public import SerrePositivity.InfinityCategories.F1.CoreFaces
+public import SerrePositivity.InfinityCategories.F1.CoreKan

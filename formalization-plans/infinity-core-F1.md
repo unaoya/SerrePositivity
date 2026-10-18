@@ -938,5 +938,14 @@ lemma isInvertibleEdge_triangle_missing {X : SSet.{u}} (s : X _⦋2⦌) (k : Fin
     (h : ∀ i : Fin 3, i ≠ k → IsInvertibleEdge (edgeOfSimplex (X.δ i s))) :
     IsInvertibleEdge (edgeOfSimplex (X.δ k s))
 
+lemma quasicategoryCore_horn_filler_mem {X : SSet.{u}} (n : ℕ) (i : Fin (n + 3))
+    (a : (horn (n + 2) i : SSet.{u}) ⟶ (quasicategoryCore X : SSet.{u}))
+    (F : (Δ[n + 2] : SSet.{u}) ⟶ X)
+    (hF : (horn (n + 2) i).ι ≫ F = a ≫ (quasicategoryCore X).ι) :
+    SSet.yonedaEquiv F ∈ (quasicategoryCore X).obj (Opposite.op ⦋n + 2⦌)
+
+instance quasicategoryCore_kanComplex (X : SSet.{u}) [Quasicategory X] :
+    KanComplex (quasicategoryCore X : SSet.{u})
+
 end SerrePositivity.InfinityCategories
 ```
