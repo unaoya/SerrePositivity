@@ -69,3 +69,9 @@ public import SerrePositivity.KST.SchemeLemmas.BlowupUniversal
 public import SerrePositivity.KST.SchemeLemmas.ChartIdealDescent
 public import SerrePositivity.KST.SchemeLemmas.ChartFractions
 public import SerrePositivity.KST.SchemeLemmas.HomogeneousNumerators
+public import SerrePositivity.KST.SchemeLemmas.ChartOverlap
+public import SerrePositivity.KST.SchemeLemmas.ChartOverlapFractions
+public import SerrePositivity.KST.SchemeLemmas.CompatibleChartIdeals
+public import SerrePositivity.KST.SchemeLemmas.SpecIdeal
+public import SerrePositivity.KST.SchemeLemmas.BlowupChartIdeals
+public import SerrePositivity.KST.SchemeLemmas.FiniteChartNumerators

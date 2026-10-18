@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 709 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 754 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -71,6 +71,11 @@
 - 一チャート上の有限生成イデアルは、十分大きい任意の次数で I のその冪に含まれる基礎環イデアルへ降ろせる。
 - 指定次数のチャート分数の演算と、全チャートのイデアル条件を満たす斉次な分子の候補中心を構成済み。各チャートで必要なイデアルへの包含と次数の増加は証明済み。
 - 候補中心が十分大きい次数で全チャートの指定イデアルを生成する逆包含は未証明。次はチャートの重なりで分数とイデアルの局所化を比較する。
+- 標準チャートの重なりを斉次局所化環の Spec と実際のファイバー積で同定し、両側の比による局所化と両射の交換式を証明済み。
+- 重なりで同じ分子を持つ分数の比較式、整合するチャートイデアル族での比の冪による所属移送、有限個のチャートでの一様な分子補正を証明済み。
+- Spec 上のイデアル層と環イデアルの順序同型を構成し、任意の環準同型の map・comap と両立することを証明済み。
+- 実際の blowup 上のイデアル層から構成したチャートイデアル族の整合性を証明済み。Noether 基礎環ではチャート環も Noether で、各チャートイデアルは有限生成。
+- 次は指定した有限チャート族に対する分子候補中心を用い、十分大きい次数で像イデアルが必要なイデアルに等しいことを証明する。全体の平坦化中心の存在はなお未証明。
 - Noether でも実際に平坦な strict transform を達成する中心の存在と、admissible blowup の合成を一つで支配する段階は未証明。L7b 完了とはしない。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
@@ -518,6 +523,12 @@ strict transform とその平坦化の有限型特殊形は未実装であり、
 | `chart_finite_ideal_descent` / `chart_finite_ideal_descent_eventually` | ChartIdealDescent | 検証済み | 一チャート上の有限生成イデアルの各十分大次数での降下 |
 | `chartFraction` / `chartFraction_clear` / `chartFraction_mul` | ChartFractions | 検証済み | 指定次数の斉次分数とその演算 |
 | `homogeneousNumeratorIdeal` / `homogeneousNumeratorIdeal_map_le` / `homogeneousNumeratorIdeal_mul_le` | HomogeneousNumerators | 検証済み | 全チャートの条件を満たす実際の分子候補中心と包含・次数増加 |
+| `affineBlowupChartOverlapIso` / `chartOverlap_isLocalizationLeft` / `chartOverlap_isLocalizationRight` | ChartOverlap | 検証済み | 重なりの実際の環モデルと両側の局所化 |
+| `chartOverlap_fraction` / `chartOverlap_left_ratio_isUnit` | ChartOverlapFractions | 検証済み | 重なり上の斉次分数の比較と比の可逆性 |
+| `ChartIdealsCompatible` / `chart_fraction_mem_after_numerator_pow` | CompatibleChartIdeals | 検証済み | 像イデアルの整合性と分子補正による所属移送 |
+| `specIdealEquiv` / `specIdealEquiv_map` / `specIdealEquiv_comap` | SpecIdeal | 検証済み | アフィンのイデアル層と環イデアルの対応・関手性 |
+| `blowupChartIdeal` / `blowupChartIdeals_compatible` / `blowupChartIdeal_fg` | BlowupChartIdeals | 検証済み | 実際のイデアル層からの整合族と Noether 時の有限生成性 |
+| `chart_fraction_mem_on_finite_charts` | FiniteChartNumerators | 検証済み | 指定した有限チャート族での分子補正の一様化 |
 | `exists_admissibleBlowup_dominating` | Flattening | 予定 | 081T の特殊形 |
 | Prop 5.2 の環論 | Section5 | 予定 | 冪・像・核 |
 | Claim 5.3 の左逆元 | K-L6 | 担当外 | K/pro の結論 |

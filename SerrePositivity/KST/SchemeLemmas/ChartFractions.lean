@@ -111,4 +111,18 @@ theorem chartFraction_mul (n m : ℕ) (r : ↥(I ^ n)) (s : ↥(I ^ m)) :
       rw [chartFraction_clear, chartFraction_clear, ← map_mul]
     _ = _ := by ring
 
+/--
+概要：中心元 b の n 乗を分子とする分数は比 b/a の n 乗。
+方針：aⁿ を払い、a · (b/a) = b の n 乗を使う。
+規約：KST §5、Stacks 080Y、中心元の冪の所属を保持する。
+使われ方：重なりで比の冪を掛けた分数を次数を増やした分子に戻す。
+-/
+theorem chartFraction_center_pow (b : I) (n : ℕ) :
+    chartFraction I a n ⟨b.1 ^ n, Ideal.pow_mem_pow b.2 n⟩ = chartRatio I a b ^ n := by
+  apply chart_mul_base_pow_injective I a n
+  dsimp only
+  rw [chartFraction_clear]
+  dsimp only
+  rw [← mul_pow, mul_comm (chartRatio I a b), chartBaseMap_mul_ratio, map_pow]
+
 end SerrePositivity.KST.SchemeLemmas
