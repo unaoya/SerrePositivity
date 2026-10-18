@@ -199,6 +199,16 @@ def IsProZero [HasZeroMorphisms C] (X : Tower C) : Prop :=
 
 namespace IsProZero
 
+/-- 概要：各段が同型なレベル射は pro-零性を移す。
+方針：自然性の四角形と各段の同型で遷移を比較する。
+規約：零化指数を変える必要はない。使われ方：KST Lemma 4.9 のモデル間比較。 -/
+theorem of_levelwiseIso [HasZeroMorphisms C] {X Y : Tower C}
+    (f : LevelHom X Y) [∀ n, IsIso (f.app n)] (hX : IsProZero X) : IsProZero Y := by
+  intro n
+  obtain ⟨m, h, hz⟩ := hX n
+  refine ⟨m, h, ?_⟩
+  rw [← cancel_epi (f.app m), ← f.naturality h, hz, zero_comp, comp_zero]
+
 /-- 概要：零射を保つ関手は pro-零性を保つ。
 方針：零化遷移を写す。規約：零射保存は明示的な引数。
 使われ方：KST Lemma 4.9 の平坦係数への移行。 -/

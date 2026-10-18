@@ -35,7 +35,13 @@
 - L1：具体的な自然なレベル完全列から塔への持ち上げを証明。fiber 長完全列自体は K-L9 の入力。
 - L2：加群の塔における pro 五項補題を証明。外側はレベル同型でなく pro 同型。
 - L3：任意の関手での保存を証明したので、加法関手にも適用可能。具体的な有理化関手は K-L9 から借用。
-- L6b：着手。Koszul の既存定義と遷移・Artin–Rees の依存を調査中。
+- L6b：進行中。Lemma 4.9 の有限生成加群係数版を検証済み。
+- 平坦底変換の自然なホモロジー比較・イデアル倍の像・pro-零性保存まで検証済み。
+- Lemma 4.10：Koszul SS の構成・次数ごとの有限収束と edge 比較は残件。
+- π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
+- Lemma 4.9 は原典の列長帰納法と異なり、Artin–Rees と実際の冪遷移の深度を用いた。
+- L6a 区切りの全体ビルドは別レーンの RationalFixedPoints・CoefficientForget で失敗。
+- 当該二ファイルは L6 の import 閉包外であり変更しない。L6 対象ビルドは成功。
 - L6c：未着手。
 - L6d：未着手。紙の検証を実装前に記録する。
 - L6e：未着手。simple 空間版の検証が必要。
@@ -64,7 +70,12 @@
 | isProIso_of_mono_epi | ModulePro.lean | 検証済み | 核・余核の eventual 零化から逆射を構成 |
 | LevelwiseExactSequence.toTower | ExactSequence.lean | 検証済み | L1 の自然な族を塔に組み立てる |
 | ExactTowerSequence.fiveTerm | ExactSequence.lean | 検証済み | 五項部分の抽出 |
-| koszul_pro_zero | KoszulPro.lean | 予定 | KST Lemma 4.9 |
+| koszulHomologyTower_isProZero | KoszulPro.lean | 検証済み | Lemma 4.9 の環係数版 |
+| koszulTensorHomologyTower_isProZero | KoszulPro.lean | 検証済み | Lemma 4.9 の全有限生成加群版 |
+| range_lTensor_le_ideal_smul | KoszulPro.lean | 検証済み | 平坦性不要の遷移深度保存 |
+| flatTensorHomologyIso | FlatBaseChange.lean | 検証済み | 平坦テンソルとホモロジーの自然同型 |
+| ideal_smul_tensor_range | FlatBaseChange.lean | 検証済み | a(n)M のテンソル像 |
+| koszul_flatTensor_homology_proZero | FlatBaseChange.lean | 検証済み | 有限生成性を係数変更前にのみ要求 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
@@ -106,7 +117,9 @@
 
 ## L6b：Koszul と平坦底変換
 
-- 原典は KST Lemma 4.9・Lemma 4.10。
+- 原典は [KST v4](https://arxiv.org/pdf/1611.08466v4) p.23、Lemma 4.9・Lemma 4.10。
+- Lemma 4.9 の証明経路の差分：列長帰納法を用いず、標的項の有限性・Koszul 座標の零作用・Artin–Rees・冪遷移のイデアル深度を使う。
+- 係数付き複体は既存 koszulComplex に tensor を施したものであり、既存の反復錐モデルとの自然同型を用いて零化イデアルを移す。
 - 既存の koszulComplex の次数規約を先に確認する。
 - ホモロジーの次数変換を docstring に明記する。
 - 有限生成加群と Noether 仮定の使用箇所を分ける。

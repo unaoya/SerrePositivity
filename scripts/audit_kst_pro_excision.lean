@@ -125,3 +125,51 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.ExactTowerSequence.fiveTerm
 #print axioms SerrePositivity.KST.ProExcision.ExactTowerSequence.fiveTerm
 
+#check @SerrePositivity.KST.ProExcision.Tower.ofInverseDiagram
+#print axioms SerrePositivity.KST.ProExcision.Tower.ofInverseDiagram
+
+#check @SerrePositivity.KST.ProExcision.koszulTower
+#print axioms SerrePositivity.KST.ProExcision.koszulTower
+
+#check @SerrePositivity.KST.ProExcision.koszulHomologyTower
+#print axioms SerrePositivity.KST.ProExcision.koszulHomologyTower
+
+#check @SerrePositivity.KST.ProExcision.koszulHomologyTower_isProZero
+#print axioms SerrePositivity.KST.ProExcision.koszulHomologyTower_isProZero
+
+#check @SerrePositivity.KST.ProExcision.range_lTensor_le_ideal_smul
+#print axioms SerrePositivity.KST.ProExcision.range_lTensor_le_ideal_smul
+
+#check @SerrePositivity.KST.ProExcision.koszulTensorTower
+#print axioms SerrePositivity.KST.ProExcision.koszulTensorTower
+
+#check @SerrePositivity.KST.ProExcision.koszulTensorHomologyTower
+#print axioms SerrePositivity.KST.ProExcision.koszulTensorHomologyTower
+
+#check @SerrePositivity.KST.ProExcision.koszulTensorHomologyTower_isProZero
+#print axioms SerrePositivity.KST.ProExcision.koszulTensorHomologyTower_isProZero
+
+#check @SerrePositivity.KST.ProExcision.IsProZero.of_levelwiseIso
+#print axioms SerrePositivity.KST.ProExcision.IsProZero.of_levelwiseIso
+
+#check @SerrePositivity.KST.ProExcision.flatTensorHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.flatTensorHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.ideal_smul_tensor_range
+#print axioms SerrePositivity.KST.ProExcision.ideal_smul_tensor_range
+
+#check @SerrePositivity.KST.ProExcision.tensor_proZero
+#print axioms SerrePositivity.KST.ProExcision.tensor_proZero
+
+#check @SerrePositivity.KST.ProExcision.tensor_proIso
+#print axioms SerrePositivity.KST.ProExcision.tensor_proIso
+
+#check @SerrePositivity.KST.ProExcision.flatTensor_homologyMap_zero
+#print axioms SerrePositivity.KST.ProExcision.flatTensor_homologyMap_zero
+
+#check @SerrePositivity.KST.ProExcision.flatTensor_homology_proZero
+#print axioms SerrePositivity.KST.ProExcision.flatTensor_homology_proZero
+
+#check @SerrePositivity.KST.ProExcision.koszul_flatTensor_homology_proZero
+#print axioms SerrePositivity.KST.ProExcision.koszul_flatTensor_homology_proZero
+
