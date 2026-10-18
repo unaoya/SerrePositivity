@@ -72,10 +72,14 @@ Noether な終域への全射閉埋め込みの冪零性と、Noether な対象�
 Noether 基底上の有限型の圏に有限極限を構成し、実際の Čech nerve・各段での
 底変換の関手・二重 Čech 図式と元の前層による像を構成した。
 各非増強段の底変換に実際の切断と extra degeneracy を構成した。
+Cartesian モデルと指定引き戻しの標準同型の同変性を証明し、アフィン底変換の
+指定 pullbackAction に関する全次数降下を実際の第一射影へ移した。
+Čech 各段のファイバーの作用の外側の単体射との同変性と、
+元の前層の全次数の指定不変比較の自然性を証明した。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 93 モジュール・1090 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 96 モジュール・1109 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -528,6 +532,13 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `finiteTypeDoubleCech`、`finiteTypeDoubleCechImage` | 実際の二重 Čech 図式と元の前層の像 | 対象ビルド済み |
 | `finiteTypeCechStageSplitEpi` | 各非増強段での底変換の実際の切断 | 対象ビルド済み、切断の外側自然性は主張しない |
 | `finiteTypeCechStageExtraDegeneracy`、`finiteTypeCechStageImageExtraDegeneracy` | 各行の全次数の分裂と同じ前層の像での分裂 | 対象ビルド済み、Tot の実降下は未完 |
+| `isPullback_isoPullback_equivariant` | Cartesian モデルと指定引き戻しの標準同型の同変性 | 対象ビルド済み、任意の圏で証明 |
+| `pullbackAction_map_trivialBase` | 基底変更の射と元の始域の作用の可換性 | 対象ビルド済み |
+| `affineTensorPullbackIso_equivariant` | テンソル積モデルと実際のアフィン引き戻しの作用の比較 | 対象ビルド済み |
+| `NaturalBlowupSequences.affine_pullback_piDescent` | 指定引き戻しの第一射影の全次数降下 | 対象ビルド済み、元の L と指定作用を保持 |
+| `finiteTypeCechStageAction_over_base` | 実際の Čech 各段のファイバーへの群作用 | 対象ビルド済み |
+| `finiteTypeCechStageAction_naturality` | 外側の全単体射による底変換の射の同変性 | 対象ビルド済み |
+| `GradedPresheaf.finiteTypeCechStageComparison_naturality` | 全係数・全整数次数の指定不変比較の外側自然性 | 対象ビルド済み |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1156,3 +1167,37 @@ Noether 性を必要としない。Noether 基底上では有限型対象の und
 各段での作用・推移性・分離性・有限次元上界を既存の切断つき全次数降下へ渡す工程、
 実際の Tot の分裂降下・Fubini・細分による元の射への還元は残る。
 自然な blowup 列・有限積保存の導出と、最小公理全体・(3.6)・E の実現も残る。
+
+## 39. 指定引き戻しへの同変な移行と Čech 比較の自然性
+
+`isPullback_isoPullback_equivariant` は任意の圏で、四頂点の指定作用と
+二射影の同変性から、Cartesian モデルと指定引き戻しの標準同型の同変性を証明する。
+比較先の作用を共役で新しく定義する方法は使っていない。
+比較先は既存の `pullbackAction` であり、同変性を二射影で実際に検査する。
+
+アフィン底変換に適用すると、テンソル積モデルの作用と指定引き戻しの作用を
+`affineTensorPullbackIso_equivariant` で結べる。
+指定第一射影への比較は元の L を適用した同変正方形を成す。
+標準同型の引き戻しの全単射性と不変部分の比較の自然性により、
+モデルの PiDescent を実際の引き戻しの第一射影へ移した。
+`affine_pullback_piDescent` は指定された作用と幾何射の全係数・全整数次数の主張である。
+環の射 T → B による分裂、明示した次元上界、有限型性・分離性・Noether 性、
+有限な群と幾何的推移性、自然な blowup 列・有限積保存・冪零不変性を入力する。
+
+`finiteTypeCechStageAction` は実際の Čech 各段で底変換した元の始域に作用する。
+Čech の基底の段自身は固定する。これは Čech の全座標への対角作用とは異なる。
+第二射影はこの作用について基底上にある。
+`pullbackAction_map_trivialBase` は基底変更の射と元の始域の作用の可換性を、
+二つの pullback.map の合成公式から証明する一般補題である。
+これを適用して、全ての外側の単体射について段間の射の同変性を証明した。
+切断を選ぶ零番目の射影が外側の射について自然であることは使わない。
+
+この同変性を指定比較の一般の自然性へ渡し、元の L の全係数・全整数次数について
+`finiteTypeCechStageComparison_naturality` を得る。
+各段の比較の左辺・右辺はいずれも元の前層の幾何射からの引き戻しであり、
+無関係な群の抽象同型に置き換えてはいない。
+
+一般の実際の Čech 各段に対する幾何的推移性の移行、分離性と有限次元上界の供給は残る。
+通常の点のファイバーの推移性だけを任意の底変換で保存すると仮定してはいない。
+実際の Tot の分裂降下・Fubini・細分、実降下からの自然な列と有限積保存、
+最小公理全体、(3.6)、K0・T2・E の接続も引き続き未完である。

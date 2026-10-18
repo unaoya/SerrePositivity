@@ -120,7 +120,10 @@ run_cmd do
       `SerrePositivity.KST.Descent.AffineTensorSquare,
       `SerrePositivity.KST.Descent.FiniteTypeAffineTensorSquare,
       `SerrePositivity.KST.Descent.FiniteTypeLimits,
-      `SerrePositivity.KST.Descent.FiniteTypeCech] do
+      `SerrePositivity.KST.Descent.FiniteTypeCech,
+      `SerrePositivity.KST.Descent.EquivariantPullbackComparison,
+      `SerrePositivity.KST.Descent.AffinePullbackDescent,
+      `SerrePositivity.KST.Descent.FiniteTypeCechAction] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."
