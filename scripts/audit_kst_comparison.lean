@@ -71,6 +71,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1301,6 +1302,21 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.simplexMeetToVertex_mem_horn
 
 
+-- HornFaceInclusionAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.hornFaceAddVertex
+#print axioms SerrePositivity.KST.Comparison.hornFaceAddVertex
+
+#check @SerrePositivity.KST.Comparison.hornFaceAddVertex_mem
+#print axioms SerrePositivity.KST.Comparison.hornFaceAddVertex_mem
+
+#check @SerrePositivity.KST.Comparison.hornFaceSingleton_mem
+#print axioms SerrePositivity.KST.Comparison.hornFaceSingleton_mem
+
+#check @SerrePositivity.KST.Comparison.hornFaceInclusion_anodyne
+#print axioms SerrePositivity.KST.Comparison.hornFaceInclusion_anodyne
+
+
 -- HornFacePoset.lean
 
 #check @SerrePositivity.KST.Comparison.HornFacePoset
@@ -1577,6 +1593,45 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex
 
 
+-- OrderNerveContraction.lean
+
+#check @SerrePositivity.KST.Comparison.orderNerveSubcomplex
+#print axioms SerrePositivity.KST.Comparison.orderNerveSubcomplex
+
+#check @SerrePositivity.KST.Comparison.orderIntervalMap
+#print axioms SerrePositivity.KST.Comparison.orderIntervalMap
+
+#check @SerrePositivity.KST.Comparison.orderNerveHomotopyMap
+#print axioms SerrePositivity.KST.Comparison.orderNerveHomotopyMap
+
+#check @SerrePositivity.KST.Comparison.orderNerveHomotopyMap_zero
+#print axioms SerrePositivity.KST.Comparison.orderNerveHomotopyMap_zero
+
+#check @SerrePositivity.KST.Comparison.orderNerveHomotopyMap_one
+#print axioms SerrePositivity.KST.Comparison.orderNerveHomotopyMap_one
+
+#check @SerrePositivity.KST.Comparison.orderNerveHomotopyMap_mem
+#print axioms SerrePositivity.KST.Comparison.orderNerveHomotopyMap_mem
+
+#check @SerrePositivity.KST.Comparison.orderNerveSubcomplex_anodyne
+#print axioms SerrePositivity.KST.Comparison.orderNerveSubcomplex_anodyne
+
+
+-- OrderNerveSubcomplexIso.lean
+
+#check @SerrePositivity.KST.Comparison.orderSubtypeInclusion
+#print axioms SerrePositivity.KST.Comparison.orderSubtypeInclusion
+
+#check @SerrePositivity.KST.Comparison.orderNerveSubcomplexIso
+#print axioms SerrePositivity.KST.Comparison.orderNerveSubcomplexIso
+
+#check @SerrePositivity.KST.Comparison.orderNerveSubcomplexIso_inclusion
+#print axioms SerrePositivity.KST.Comparison.orderNerveSubcomplexIso_inclusion
+
+#check @SerrePositivity.KST.Comparison.orderSubtypeNerve_anodyne
+#print axioms SerrePositivity.KST.Comparison.orderSubtypeNerve_anodyne
+
+
 -- OverHornLifting.lean
 
 #check @SerrePositivity.KST.Comparison.hornOverMap
@@ -1590,6 +1645,18 @@ run_cmd do
 
 
 -- PairContractionAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.intervalEndpoint_zero_eq
+#print axioms SerrePositivity.KST.Comparison.intervalEndpoint_zero_eq
+
+#check @SerrePositivity.KST.Comparison.intervalEndpoint_one_eq
+#print axioms SerrePositivity.KST.Comparison.intervalEndpoint_one_eq
+
+#check @SerrePositivity.KST.Comparison.intervalEndpoint_naturality
+#print axioms SerrePositivity.KST.Comparison.intervalEndpoint_naturality
+
+#check @SerrePositivity.KST.Comparison.subcomplex_pairContraction_anodyne
+#print axioms SerrePositivity.KST.Comparison.subcomplex_pairContraction_anodyne
 
 #check @SerrePositivity.KST.Comparison.subcomplex_inclusion_anodyne
 #print axioms SerrePositivity.KST.Comparison.subcomplex_inclusion_anodyne
