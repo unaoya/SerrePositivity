@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・198 モジュール 2692 宣言の公理監査成功。
+対象ビルド・201 モジュール 2718 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1870,3 +1870,27 @@ smash の商の普遍性と合わせて、二つの円の smash 積からの点�
 保存単位の対象ビルド 2398 jobs 成功。
 私有宣言を含む 198 モジュール 2692 宣言で標準三公理のみ。
 L9d は進行中。次は二つの相対三角形から貼る写像の四辺の条件を検証する。
+
+## 64. L9d の相対三角形の二つの写像の貼り合わせ
+
+相対三角形の外側の二辺が基点へ潰れることを、ホーンの cofiber の式から証明した。
+正方形の境界の四つの端点パラメータを、三角形分割の外側の面と座標射影で表示した。
+第二変数に境界を持つ積の射についても各面で判定する補題を構成した。
+共通の対角辺で一致する二つの点つき写像を、正方形の pushout により貼り合わせた。
+その写像の四辺が基点へ写ることを証明し、円の smash 積からの実際の点つき射を得た。
+座標の交換は二つの三角形の写像の交換となり、smash へ降ろした写像は正方形上で元に戻る。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `triangleDiskQuotient_outer_face` | 相対三角形の外側の辺の消滅 |
+| `SquareTriangles.first_endpoint_zero` / `.second_endpoint_one` | 正方形の境界と三角形の外側の面の対応 |
+| `tensor_boundary_hom_ext` | 第二変数の境界との積の面ごとの判定 |
+| `trianglePairSquare` / `upper_trianglePairSquare` / `lower_trianglePairSquare` | 二つの相対三角形の貼り合わせと復元 |
+| `trianglePairSquare_boundary_left` / `trianglePairSquare_boundary_right` | 貼った写像の四辺の消滅 |
+| `trianglePairSmash` / `trianglePairSmash_quotient` | 円の smash 積への点つき射と正方形での復元 |
+| `trianglePairSquare_swap` | 座標交換と二つの相対三角形の交換 |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.3、BF 1978 §2。
+保存単位の対象ビルド 2401 jobs 成功。
+私有宣言を含む 201 モジュール 2718 宣言で標準三公理のみ。
+L9d は進行中。次は正方形から相対三角形へ制限する逆構成を証明する。
