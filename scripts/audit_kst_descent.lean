@@ -30,7 +30,13 @@ run_cmd do
     unless modules.contains mod do modules := modules.push mod
   for expected in #[`SerrePositivity.KST.Descent.Axioms,
       `SerrePositivity.KST.Descent.Transfer,
-      `SerrePositivity.KST.Descent.RationalFixedPoints] do
+      `SerrePositivity.KST.Descent.RationalFixedPoints,
+      `SerrePositivity.KST.Descent.PiComparison,
+      `SerrePositivity.KST.Descent.DiagramTransfer,
+      `SerrePositivity.KST.Descent.InvariantExactness,
+      `SerrePositivity.KST.Descent.PresheafAction,
+      `SerrePositivity.KST.Descent.InvariantsHomology,
+      `SerrePositivity.KST.Descent.SplitCech] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"KST descent audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only. This checks dependencies, not completion of Theorem 3.1."

@@ -3,6 +3,12 @@ module
 public import SerrePositivity.KST.Descent.Axioms
 public import SerrePositivity.KST.Descent.Transfer
 public import SerrePositivity.KST.Descent.RationalFixedPoints
+public import SerrePositivity.KST.Descent.PiComparison
+public import SerrePositivity.KST.Descent.DiagramTransfer
+public import SerrePositivity.KST.Descent.InvariantExactness
+public import SerrePositivity.KST.Descent.PresheafAction
+public import SerrePositivity.KST.Descent.InvariantsHomology
+public import SerrePositivity.KST.Descent.SplitCech
 
 /-!
 # K-L8：論文 §3 の降下
@@ -11,7 +17,9 @@ public import SerrePositivity.KST.Descent.RationalFixedPoints
 定理 3.1 の全次数 π_* 比較と、その証明に用いる代数的な基礎を集約する。
 
 ## 方針
-係数つき次数付き前層、有限平坦 transfer の有理分裂、(3.8) の置換不変部分を公開する。
+係数つき次数付き前層、導来値域への実現、比較射の retract、
+有限平坦 transfer の有理分裂、有理不変部分の完全性・ホモロジー保存を公開する。
+底変換後の Čech nerve の分裂と、その前層の像の収縮ホモトピーも公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。
