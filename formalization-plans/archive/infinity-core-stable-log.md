@@ -8367,3 +8367,161 @@ ZeroCornerPasting ビルド 2029 jobs、BinaryCoproductSquare ビルド 2030 job
 自分の新規ファイルの警告は解消。`git diff --check` 成功。
 h C の二項余積・双積・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、
 S5〜S7 は未完了。TR1・TR3 は完成のまま。
+
+
+## 始対象の下の図式から始対象を忘れる余錐の比較
+
+`DiagramNestedCoslice.lean` は既存の一点の二重 coslice の比較を任意の図式 c : L → sliceUnder p に拡張する。
+join の結合同型で括弧を移し、任意パラメーターからの射の自然な同値から実際の同型を構成する。
+`CoslicePostcompTrivial.lean` は trivial Kan fibration q による任意の図式の coslice の後合成を、
+join の単射の持ち上げで直接認証する。
+`JoinAssociatorRightPair.lean` は後二因子の包含と結合同型の可換性を空次数を含む切断表示で証明する。
+`InitialDiagramRestriction.lean` は二重 coslice の同型と内側の射影による後合成を合成する。
+最初の頂点が始対象ならこの射は trivial Kan fibration であり、余極限性を保ち反映する。
+uncurry と実際の余錐の射の式、余錐の頂点を保つ式も公開する。
+形状・射・充填性の計算に値域の仮定は不要。余極限性の保存・反映には値域 Quasicategory を仮定する。
+次の工程は、標準 span を一点と離散二点の join と同定して零始点を除くこと、
+離散二点図式の余極限から h C の二項余積の普遍性を取り出すこと。
+
+Lean で抽出した公開宣言の正確な型：
+
+```lean
+@diagramNestedCosliceDiagramCurry.{u_1} : {K L X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) →
+      (A : SSet.{u_1}) →
+        (Subtype.{u_1 + 1} fun F =>
+            Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (joinInl.{u_1} (join.{u_1} K L) A) F)
+              (sliceUnderUncurry.{u_1} c)) →
+          Subtype.{u_1 + 1} fun G =>
+            Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (joinInl.{u_1} L A) G) c
+@diagramNestedCosliceDiagramUncurry.{u_1} : {K L X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) →
+      (A : SSet.{u_1}) →
+        (Subtype.{u_1 + 1} fun G =>
+            Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (joinInl.{u_1} L A) G) c) →
+          Subtype.{u_1 + 1} fun F =>
+            Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (joinInl.{u_1} (join.{u_1} K L) A) F)
+              (sliceUnderUncurry.{u_1} c)
+@diagramNestedCosliceDiagramEquiv.{u_1} : {K L X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) →
+      (A : SSet.{u_1}) →
+        Equiv.{u_1 + 1, u_1 + 1}
+          (Subtype.{u_1 + 1} fun F =>
+            Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (joinInl.{u_1} (join.{u_1} K L) A) F)
+              (sliceUnderUncurry.{u_1} c))
+          (Subtype.{u_1 + 1} fun G =>
+            Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (joinInl.{u_1} L A) G) c)
+@diagramNestedCosliceHomEquiv.{u_1} : {K L X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) →
+      (A : SSet.{u_1}) →
+        Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_1 + 1} A (sliceUnder.{u_1} (sliceUnderUncurry.{u_1} c)))
+          (Quiver.Hom.{u_1, u_1 + 1} A (sliceUnder.{u_1} c))
+@diagramNestedCosliceHomEquiv_doubleUncurry.{u_1} : ∀ {K L X A : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p))
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (sliceUnder.{u_1} (sliceUnderUncurry.{u_1} c))),
+  Eq.{u_1 + 1} (sliceUnderUncurry.{u_1} (sliceUnderUncurry.{u_1} ((diagramNestedCosliceHomEquiv.{u_1} c A) f)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (stableJoinAssociator.{u_1} K L A)) (sliceUnderUncurry.{u_1} f))
+@diagramNestedCosliceHomEquiv_naturality.{u_1} : ∀ {K L X A B : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} B (sliceUnder.{u_1} (sliceUnderUncurry.{u_1} c))),
+  Eq.{u_1 + 1} ((diagramNestedCosliceHomEquiv.{u_1} c A) (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f g))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f ((diagramNestedCosliceHomEquiv.{u_1} c B) g))
+@diagramNestedCosliceIso.{u_1} : {K L X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) →
+      CategoryTheory.Iso.{u_1, u_1 + 1} (sliceUnder.{u_1} (sliceUnderUncurry.{u_1} c)) (sliceUnder.{u_1} c)
+@sliceUnderPostcomp_trivialKanFibration_of_trivial.{u_1} : ∀ {K E B : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} K E)
+  (q : Quiver.Hom.{u_1, u_1 + 1} E B) [TrivialKanFibration.{u_1} q],
+  TrivialKanFibration.{u_1} (sliceUnderPostcomp.{u_1} p q)
+stableAugReassociation_rightPair.{u_1} : ∀ (K L M : SSet.{u_1}) (r : ℕ) (s : StableAugJoin.{u_1} L M r),
+  Eq.{u_1 + 1}
+    ((stableAugReassociationEquiv.{u_1} K L M r)
+      (stableAugJoinHom.{u_1} (joinInr.{u_1} K L) (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} M) r s))
+    (stableAugJoinInr.{u_1} K (join.{u_1} L M) r ((Equiv.symm.{u_1 + 1, u_1 + 1} (stableAugJoinEquiv.{u_1} L M r)) s))
+stableJoinAssociator_rightPair.{u_1} : ∀ (K L M : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1} (joinInr.{u_1} K L) (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} M))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (stableJoinAssociator.{u_1} K L M)))
+    (joinInr.{u_1} K (join.{u_1} L M))
+stableJoinAssociator_rightPair_inv.{u_1} : ∀ (K L M : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (joinInr.{u_1} K (join.{u_1} L M))
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (stableJoinAssociator.{u_1} K L M)))
+    (joinMap.{u_1} (joinInr.{u_1} K L) (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} M))
+@diagramNestedCosliceProjection.{u_1} : {K L X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) →
+      Quiver.Hom.{u_1, u_1 + 1} (sliceUnder.{u_1} (sliceUnderUncurry.{u_1} c))
+        (sliceUnder.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} c (sliceUnderProjection.{u_1} p)))
+@diagramNestedCosliceHomEquiv_eq_comp.{u_1} : ∀ {K L X A : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p))
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (sliceUnder.{u_1} (sliceUnderUncurry.{u_1} c))),
+  Eq.{u_1 + 1} ((diagramNestedCosliceHomEquiv.{u_1} c A) f)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (diagramNestedCosliceIso.{u_1} c)))
+@diagramNestedCosliceProjection_uncurry.{u_1} : ∀ {K L X A : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p))
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (sliceUnder.{u_1} (sliceUnderUncurry.{u_1} c))),
+  Eq.{u_1 + 1}
+    (sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f (diagramNestedCosliceProjection.{u_1} c)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1} (joinInr.{u_1} K L) (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} A))
+      (sliceUnderUncurry.{u_1} f))
+@diagramNestedCosliceProjection_val.{u_1} : ∀ {K L X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) (d : JoinCocone.{u_1} (sliceUnderUncurry.{u_1} c)),
+  Eq.{u_1 + 1}
+    (↑((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} (diagramNestedCosliceProjection.{u_1} c)
+            (Opposite.op.{1} { len := 0 })))
+        d))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1} (joinInr.{u_1} K L)
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+      ↑d)
+@diagramNestedCosliceProjection_vertex.{u_1} : ∀ {K L X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)) (d : JoinCocone.{u_1} (sliceUnderUncurry.{u_1} c)),
+  Eq.{u_1 + 1}
+    (JoinCocone.vertex.{u_1}
+      (have this :=
+        (CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} (diagramNestedCosliceProjection.{u_1} c)
+              (Opposite.op.{1} { len := 0 })))
+          d;
+      this))
+    (JoinCocone.vertex.{u_1} d)
+@diagramNestedCosliceProjection_trivialKanFibration.{u_1} : ∀ {K L X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  [TrivialKanFibration.{u_1} (sliceUnderProjection.{u_1} p)] (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} p)),
+  TrivialKanFibration.{u_1} (diagramNestedCosliceProjection.{u_1} c)
+@diagramNestedCosliceProjection_trivial_of_initial.{u_1} : ∀ {L X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},
+  IsInitialVertex.{u_1} x →
+    ∀ (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x))),
+      TrivialKanFibration.{u_1} (diagramNestedCosliceProjection.{u_1} c)
+@isColimitCone_iff_forget_initial.{u_1} : ∀ {L X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},
+  IsInitialVertex.{u_1} x →
+    ∀ (c : Quiver.Hom.{u_1, u_1 + 1} L (sliceUnder.{u_1} ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x)))
+      (d : JoinCocone.{u_1} (sliceUnderUncurry.{u_1} c)),
+      IsColimitCone.{u_1} d ↔
+        IsColimitCone.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} (diagramNestedCosliceProjection.{u_1} c)
+                (Opposite.op.{1} { len := 0 })))
+            d)
+```
+
+対象 DiagramNestedCoslice ビルド 1523 jobs、CoslicePostcompTrivial ビルド 1600 jobs、
+JoinAssociatorRightPair ビルド 1185 jobs、InitialDiagramRestriction ビルド 1941 jobs、
+対象・Stable 集約ビルド 2175 jobs、公開型抽出、公理監査は全て終了コード 0。
+監査は 182 モジュール・1474 宣言（生成・非公開宣言を含む）について標準三公理のみ。
+自分の新規ファイルに警告なし。`git diff --check` 成功。
+h C の二項余積・双積・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、
+S5〜S7 は未完了。TR1・TR3 は完成のまま。

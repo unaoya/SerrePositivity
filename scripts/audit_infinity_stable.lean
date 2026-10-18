@@ -1,6 +1,10 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.diagramNestedCosliceIso
+#print axioms SerrePositivity.InfinityCategories.sliceUnderPostcomp_trivialKanFibration_of_trivial
+#print axioms SerrePositivity.InfinityCategories.diagramNestedCosliceProjection_trivial_of_initial
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_forget_initial
 #print axioms SerrePositivity.InfinityCategories.nonempty_functorIso_span_of_first_eq_terminal_second
 #print axioms SerrePositivity.InfinityCategories.hasColimit_span_of_zero_second
 #print axioms SerrePositivity.InfinityCategories.exists_pushoutRectangle_of_zeroTriangle
@@ -918,7 +922,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SpanZeroBranchIso,
     `SerrePositivity.InfinityCategories.Stable.SpecifiedCofiberSpan,
     `SerrePositivity.InfinityCategories.Stable.ZeroCornerPasting,
-    `SerrePositivity.InfinityCategories.Stable.BinaryCoproductSquare]
+    `SerrePositivity.InfinityCategories.Stable.BinaryCoproductSquare,
+    `SerrePositivity.InfinityCategories.Stable.DiagramNestedCoslice,
+    `SerrePositivity.InfinityCategories.Stable.CoslicePostcompTrivial,
+    `SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair,
+    `SerrePositivity.InfinityCategories.Stable.InitialDiagramRestriction]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

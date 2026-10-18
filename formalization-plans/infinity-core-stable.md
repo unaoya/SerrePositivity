@@ -302,6 +302,17 @@ join の相対的な和の包含が同値条件を持つことを、pushout と�
 y の loop 四角形の右に、右下の零頂点から x への辺との合成二単体を貼って構成した。
 二つの入力頂点と実際の押し出し性まで完成。h C 上の二項余積としての普遍性・instance、
 双積・前加法構造への移行は次の工程。
+この普遍性へ向けて `diagramNestedCosliceIso` を追加した。任意の c : L → sliceUnder p に対し、
+sliceUnder (sliceUnderUncurry c) と sliceUnder c を join の結合同型で比較する。
+`sliceUnderPostcomp_trivialKanFibration_of_trivial` は任意の形状の固定図式について、
+trivial Kan fibration の後合成が coslice でも trivial Kan fibration となることを示す。
+`diagramNestedCosliceProjection` は二重 coslice の同型の後で内側の射影を適用する射で、
+`diagramNestedCosliceProjection_uncurry`・`_val`・`_vertex` により脚の厳密な制限と頂点保持を計算する。
+`diagramNestedCosliceProjection_trivial_of_initial` と `isColimitCone_iff_forget_initial` は、
+始対象の下の図式からその始対象を忘れても余極限性が同値であることを証明する。
+余極限性の同値は Quasicategory を仮定するが、射影の充填性・射の計算は値域に仮定しない。
+次に標準 span を一点と離散二点の join と同定して零始点を除き、
+離散二点図式の余極限を h C の二項余積として判定する工程が残る。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -438,6 +449,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 左四角形と底辺二単体の貼り合わせ | `pastingCornerBottom_isPushout`、`pastingCornerGlue` と制限の式（値域に仮定なし）、`exists_pushoutRectangle_of_left_and_bottom`（Quasicategory、指定した左押し出しと外側基底の余極限） | 指定した左四角形・底辺二単体・外側余錐を保持する構成まで完成。外側余錐を cofiber から与える工程も下記で完成 |
 | 同値な形状・同型な図式の余極限の輸送 | `sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence`（Quasicategory、Mono、IsPrecompositionEquivalence）、`hasColimit_iff_of_functorIso`（Quasicategory、FunctorIso） | 一般の図式で完成。指定零枝を持つ span 間の同型の構成も下記で完成 |
 | 指定零枝の cofiber と二項余積四角形の存在 | `nonempty_functorIso_span_of_first_eq_terminal_second`（Quasicategory）、`hasColimit_span_of_zero_second`、`exists_pushoutRectangle_of_zeroTriangle`、`exists_zeroSourcePushoutSquare`（Quasicategory、IsStable） | 指定した二頂点を持つ零始点の押し出しまで完成。h C の二項余積の普遍性・instance と前加法構造は未完了 |
+| 始対象の下の図式から始対象を忘れる | `diagramNestedCosliceIso`、`sliceUnderPostcomp_trivialKanFibration_of_trivial`、`diagramNestedCosliceProjection` と射・頂点の式、`diagramNestedCosliceProjection_trivial_of_initial`（値域に仮定なし）、`isColimitCone_iff_forget_initial`（Quasicategory） | 一般の図式で完成。標準 span と離散二点図式への適用、および h C の二項余積の普遍性は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
