@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.KST.Descent.DisjointFamilyCechGeometry
+public import SerrePositivity.KST.Descent.FamilyCechDiagonalComparison
 public import SerrePositivity.KST.Descent.FiniteProductTensor
 public import SerrePositivity.KST.Descent.CechFiniteProducts
 public import SerrePositivity.KST.Descent.TerminalCechDescent
