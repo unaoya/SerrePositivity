@@ -103,3 +103,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionBoundaryPr
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceExtension
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionAllFaces
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionExtensionGluing
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionBoundaryExtension

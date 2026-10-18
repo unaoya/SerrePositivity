@@ -2710,5 +2710,42 @@ lemma hasCoherentResolutionExtension_sup {n : ℕ}
     (h₂ : HasCoherentResolutionExtension A₂ B₂) :
     HasCoherentResolutionExtension (A₁ ⊔ A₂) (B₁ ⊔ B₂)
 
+lemma hasCoherentResolutionExtension_faceUnion_empty (n : ℕ) :
+    HasCoherentResolutionExtension
+      (stdSimplexFaceUnion.{u} (∅ : Finset (Finset (Fin (n + 1)))))
+      (coherentResolutionFaceUnion (∅ : Finset (Finset (Fin (n + 1)))))
+
+lemma hasCoherentResolutionExtension_faceUnion_insert {n : ℕ}
+    (S : Finset (Finset (Fin (n + 1)))) (T : Finset (Fin (n + 1)))
+    (eS : HasCoherentResolutionExtension (stdSimplexFaceUnion.{u} S) (coherentResolutionFaceUnion S))
+    (eI : HasCoherentResolutionExtension (stdSimplexFaceUnion.{u} (S.image (fun U ↦ U ∩ T)))
+      (coherentResolutionFaceUnion (S.image (fun U ↦ U ∩ T)))) :
+    HasCoherentResolutionExtension (stdSimplexFaceUnion.{u} (insert T S))
+      (coherentResolutionFaceUnion (insert T S))
+
+lemma hasCoherentResolutionExtension_faceUnion {n : ℕ} (S : Finset (Finset (Fin (n + 1)))) :
+    HasCoherentResolutionExtension (stdSimplexFaceUnion.{u} S) (coherentResolutionFaceUnion S)
+
+lemma hasCoherentResolutionExtension_boundary (n : ℕ) :
+    HasCoherentResolutionExtension (SSet.boundary.{u} n) (coherentResolutionBoundary n)
+
+noncomputable def coherentResolutionBoundaryExtensionIso (n : ℕ) :
+    coherentResolution.{u}.obj (SSet.boundary n).toSSet ≅ (coherentResolutionBoundary n).toSSet
+
+lemma coherentResolutionBoundaryExtensionIso_hom_ι (n : ℕ) :
+    (coherentResolutionBoundaryExtensionIso.{u} n).hom ≫ (coherentResolutionBoundary n).ι =
+      coherentResolution.map (SSet.boundary n).ι ≫ coherentResolutionStdIso.hom.app ⦋n⦌
+
+lemma coherentResolutionBoundaryExtensionIso_projection (n : ℕ) :
+    (coherentResolutionBoundaryExtensionIso.{u} n).hom ≫ coherentResolutionBoundaryProjection n =
+      coherentResolutionProjectionAll.app (SSet.boundary n).toSSet
+
+lemma coherentResolutionProjectionAll_boundary_isPrecompositionEquivalence (n : ℕ) :
+    IsPrecompositionEquivalence
+      (coherentResolutionProjectionAll.{u}.app (SSet.boundary n).toSSet)
+
+lemma coherentResolution_map_boundary_ι_mono (n : ℕ) :
+    Mono (coherentResolution.{u}.map (SSet.boundary n).ι)
+
 end SerrePositivity.InfinityCategories
 ```
