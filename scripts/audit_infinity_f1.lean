@@ -1546,3 +1546,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.joinDiagonal_hasLift_of_inr
 #check @SerrePositivity.InfinityCategories.joinDiagonal_innerFibration
 #check @SerrePositivity.InfinityCategories.relativeJoin_fst_innerFibration
+#check @SerrePositivity.InfinityCategories.Join.delta_zero_left_heq_of_left_heq
+#check @SerrePositivity.InfinityCategories.Join.delta_last_right_heq_of_right_heq

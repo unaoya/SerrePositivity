@@ -7033,5 +7033,18 @@ instance relativeJoin_fst_innerFibration {X Y S : SSet.{u}} [Quasicategory S]
     (f : X ⟶ S) (g : Y ⟶ S) :
     InnerFibration (pullback.fst (joinMap f g) (joinDiagonal S))
 
+lemma Join.delta_zero_left_heq_of_left_heq {X Y : SSet.{u}} {n : ℕ}
+    (s : Join.Simplex X Y (n + 2)) (t : Join.Simplex X Y (n + 1))
+    (hc : s.1.val = t.1.val) (hs : 0 < s.1.val) (hx : HEq s.2.1 t.2.1) :
+    HEq (Join.simplexMap X Y (SimplexCategory.δ (0 : Fin (n + 3))).toOrderHom s).2.1
+      (Join.simplexMap X Y (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom t).2.1
+
+lemma Join.delta_last_right_heq_of_right_heq {X Y : SSet.{u}} {n : ℕ}
+    (s : Join.Simplex X Y (n + 2)) (t : Join.Simplex X Y (n + 1))
+    (hc : n + 3 - s.1.val = n + 2 - t.1.val)
+    (hs : s.1.val ≤ n + 2) (ht : t.1.val ≤ n + 1) (hy : HEq s.2.2 t.2.2) :
+    HEq (Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 2))).toOrderHom s).2.2
+      (Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 1))).toOrderHom t).2.2
+
 end SerrePositivity.InfinityCategories
 ```
