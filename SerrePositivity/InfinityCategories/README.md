@@ -2083,6 +2083,9 @@ Kan 複体の余錐では台の余極限性からこの Hom 条件を検証す�
 通常の余錐の各脚と元の射の厳密な一致、および余積の成分包含との一致も検証した。
 homotopy 押し出し・逐次余極限は後続工程。
 任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
+この一般形状では q′ の全導来 fiber の可縮性による両向き判定も証明済み。
+任意の coherent な錐から strict な錐への pinched Hom は、標準点から回収した反転 end の
+点における q′ の導来 fiber 全体の ULift と、追加の比較仮定なしで直接同値である。
 一般形状の非反転 q_x との直接比較と E2a 完了後の E2b 適用は残る。
 指定三形状の可縮性判定を、これらの未完了工程を含む γ3 全体の完成とは数えない。
 以下に限定形と工程ごとの型・検証の記録を置く。
@@ -9919,3 +9922,106 @@ lemma spaceCoproductCoconeLeg_eq (F : Discrete J ⥤ KanObject.{u}) (j : J) :
 公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-coproduct-leg-aggregate.log`、`/tmp/gamma3-coproduct-leg-audit.log`。
+
+### γ3b：任意の小圏上の反転比較の全導来 fiber と pinched Hom の直接模型
+
+反転比較 q′ について、任意の小圏 I、局所 Kan な単体的圏 C、通常の錐 c に対し、
+`strictCoherentCone c` の native な極限性が、全ての x と反転 end の全頂点 b における
+`comparisonFiber (reflectedRepresentableComparison c x) b` の可縮 Kan 性と同値である。
+通常の余錐についても、元の標準図式上の余錐の native な余極限性を反対圏の同じ全導来 fiber
+の可縮性で判定する。元の比較射の fibration 性、Hom の厳密極限性、添字の形状は要求しない。
+
+さらに任意の coherent な錐 d の標準切断点を、一般の end と切断の比較同値の逆で戻し、
+元の宇宙の反転 end の点 `generalStrictConeReflectedEndPoint d` を定める。
+この点での q′ の導来 fiber 全体を ULift した模型は、d から strictCoherentCone c への
+pinched Hom と実際に同値である。逆の選択の像と元の標準点のずれは既存の底の path の
+移送で照合している。追加の比較同値の仮定はなく、c の極限性も前提としない。
+
+A3d の全写像空間の可縮性による終対象判定から、任意の c の極限性は全ての coherent な錐 d
+に対するこの具体的な fiber 模型の可縮性とも同値となる。d の量化を strict な錐だけへ
+制限しない。可縮性は零次元を含む全境界の充填であり、非空性も含む。
+
+今回の一般形状の模型は反転係数の q′ の fiber である。指定三形状で既に証明した元の非反転
+q_x の直接模型と同一視しない。一般形状の非反転 q_x への移送、homotopy 押し出し・
+逐次余極限の実際の構成、E2a 完了後の E2b は引き続き未完了。
+原典：HTT 4.2.4.1、Kerodon 7.4.1.6・7.5.4.6、A3d の終対象の写像空間判定。
+
+公開する七宣言の正確な型は以下。共通前提は `I : Type u [SmallCategory I]`、
+`C : Type v [Category.{u} C] [SimplicialCategory C]` と C の全 sHom の Kan 性。
+
+`GeneralReflectedFibers.lean`：
+
+```lean
+lemma reflectedRepresentableComparison_iff_comparisonFiber_isContractibleKan {F : I ⥤ C}
+    (c : Cone F) (x : C) :
+    IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c x) ↔
+      ∀ b : (bousfieldKanHolim (simplicialHomDiagram F x ⋙ SSet.opFunctor)) _⦋0⦌,
+        IsContractibleKan (comparisonFiber (reflectedRepresentableComparison c x) b)
+```
+
+`GeneralReflectedFibers.lean`：
+
+```lean
+lemma strictCoherentCone_isLimit_iff_reflectedComparisonFiber {F : I ⥤ C} (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ (x : C)
+      (b : (bousfieldKanHolim (simplicialHomDiagram F x ⋙ SSet.opFunctor)) _⦋0⦌),
+        IsContractibleKan (comparisonFiber (reflectedRepresentableComparison c x) b)
+```
+
+`GeneralReflectedFibers.lean`：
+
+```lean
+lemma strictNativeCocone_isColimit_iff_reflectedComparisonFiber {F : I ⥤ C} (c : Cocone F) :
+    IsColimitCone (strictNativeCocone c) ↔ ∀ (x : Cᵒᵖ)
+      (b : (bousfieldKanHolim (simplicialHomDiagram F.op x ⋙ SSet.opFunctor)) _⦋0⦌),
+        IsContractibleKan (comparisonFiber (reflectedRepresentableComparison c.op x) b)
+```
+
+`GeneralConeFiberModel.lean`：
+
+```lean
+def generalStrictConeReflectedEndPoint {F : I ⥤ C}
+    (d : JoinCone (strictCoherentDiagram F)) :
+    (bousfieldKanHolim
+      (simplicialHomDiagram F (coherentNerveObject d.vertex) ⋙ SSet.opFunctor)) _⦋0⦌
+```
+
+`GeneralConeFiberModel.lean`：
+
+```lean
+def strictConePinched_generalReflectedEnd_equivalence {F : I ⥤ C}
+    (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (reflectedRepresentableComparison c (coherentNerveObject d.vertex))
+          (generalStrictConeReflectedEndPoint d)))
+```
+
+`GeneralConeFiberModel.lean`：
+
+```lean
+lemma strictConePinched_isContractibleKan_iff_generalReflectedEnd {F : I ⥤ C}
+    (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
+    IsContractibleKan
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c)) ↔
+    IsContractibleKan ((SSet.uliftFunctor.{v, u}).obj
+      (comparisonFiber (reflectedRepresentableComparison c (coherentNerveObject d.vertex))
+        (generalStrictConeReflectedEndPoint d)))
+```
+
+`GeneralConeFiberModel.lean`：
+
+```lean
+lemma strictCoherentCone_isLimit_iff_generalReflectedEndPointFibers {F : I ⥤ C}
+    (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ d : JoinCone (strictCoherentDiagram F),
+      IsContractibleKan ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (reflectedRepresentableComparison c (coherentNerveObject d.vertex))
+          (generalStrictConeReflectedEndPoint d)))
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4995 jobs）、公開1568宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-general-fiber-model-aggregate.log`、`/tmp/gamma3-general-fiber-model-audit.log`。

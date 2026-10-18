@@ -216,7 +216,7 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | 指定三形状で元の非反転 q_x の同値性・全導来 fiber の可縮性と native な極限性の両向き判定、pinched Hom との反転なしの直接比較を公開。任意の小圏では反転係数の end の切断比較と極限・余極限の判定を公開。一般形状の非反転 q_x への移送は未完了 |
+| γ3b | 指定三形状で元の非反転 q_x の同値性・全導来 fiber の可縮性と native な極限性の両向き判定、pinched Hom との反転なしの直接比較を公開。任意の小圏では反転係数の end の切断比較、全導来 fiber の可縮性による極限・余極限判定、pinched Hom の具体的な反転 fiber 模型を公開。一般形状の非反転 q_x への移送は未完了 |
 | γ3c | 𝒮 の任意の小さい積と Sp の有限積（双方空積を含む）、一脚 fibration の引き戻し、fibration の可算塔の実際の対象と native な極限錐を公開。Sp の Kan・Ω 条件と全 Hom 条件も検証済み。𝒮 の空余積を含む小さい余積も公開。homotopy 押し出し・逐次余極限等は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
@@ -2258,3 +2258,21 @@ homotopy 押し出し・逐次余極限、一般形状の非反転 q_x、E2a 後
 公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-coproduct-leg-aggregate.log`、`/tmp/gamma3-coproduct-leg-audit.log`。
+
+### γ3b：任意の小圏上の反転比較の全導来 fiber と pinched Hom の模型
+
+`GeneralReflectedFibers.lean` の三宣言は、反転比較 q′ の同値性と全導来 fiber の可縮 Kan 性の
+同値、native な極限性と余極限性の両向きの可縮性判定。添字の形状、Hom の厳密極限性、
+比較射の fibration 性を要求しない。
+`GeneralConeFiberModel.lean` の四宣言は、任意の coherent な錐 d の標準切断点を元の宇宙の
+反転 end に戻した点、その点での q′ の fiber 全体の ULift と pinched Hom の実際の同値、
+可縮性の同値、A3d による全ての coherent な錐 d の fiber 模型での native な極限性の判定。
+局所 Kan 性だけで比較の同値性を検証し、追加の比較仮定を要求しない。
+七宣言の正確な型・全前提は README の同名節と専用監査に置く。
+一般形状の元の非反転 q_x への移送、実際の homotopy 押し出し・逐次余極限、
+E2a 完了後の E2b は未完了。反転係数の一般判定を γ3 全体の完成とは数えない。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4995 jobs）、公開1568宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-general-fiber-model-aggregate.log`、`/tmp/gamma3-general-fiber-model-audit.log`。
