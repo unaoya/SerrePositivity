@@ -999,6 +999,30 @@
 - Hom の因子分解による表示と、実際の加法群値 Hom 複体の正次数完全性の同値を証明した。
 - 自由増大 Čech の完全性を実際の層化から移し、その Hom の完全性を実際の切断 Čech の正次数完全性から導いた。これにより Čech に沿う Ext 制限単射性まで証明した。基本開上の消滅への適用は継続中。Dqc のアフィン同値・T1–T3 の完了とはしていない。
 
+## 48. 基本開の被覆に対する完全性判定（実装前記録）
+
+- 文言：D(a) を基本開 D(fᵢ) が被覆し、短複体の最初の二項で a の作用が可逆であるとする。各 fᵢ で局所化した短複体が完全なら元の短複体は完全。
+- 方針：核の元 y に対し J={r | r y が最初の射の像に入る} をイデアルとする。局所化の完全性と分母払いから各 fᵢ は radical(J) に入る。基本開の被覆と零点集合の反変対応により a も radical(J) に入る。従って a^N y が像に入り、最初の二項の a 可逆性で y 自身が像に入る。
+- 適用：tilde 層の各 Čech 項は D(a) 内の有限交叉の切断の有限積であり、a は可逆に作用する。各 D(fᵢ) での局所化後の完全性は既証の Čech 局所化比較と最大開を含む被覆の収縮による。
+- 全空間の被覆の定理を D(a) の被覆へ無条件に適用しない。a の作用の可逆性を実際の切断から証明して使う。
+- 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
+
+### §48 の実装の現在地
+
+- 保存検証：集約対象ビルドと公理監査 1716 宣言が成功。標準3公理のみ、KTheory import なし。
+
+- 自由増大 Čech の全次数完全性と Ext 制限単射性を、任意の開 V の被覆へ拡張した。V 外の開では Hom の空性から自由前層の各項が零となることを証明した。
+- 基本開 D(a) の被覆に対する短複体の相対局所化判定を、イデアルの根基と分母払いから証明した。
+- 各 Čech 項の a の作用の可逆性を実際の切断の積から証明し、準連接層と係数つき準連接層の基礎 Čech の基本開被覆に対する完全性を得た。
+- 基本開の層コホモロジーの大域消滅・Dqc アフィン同値はまだ未完了。
+
+## 49. 自由層を始域とする Ext 類の局所消滅（実装前記録）
+
+- 文言：固定環 R の加群層 F、開 U、n>0、α∈Extⁿ(L_U,F) に対し、α は U の各点の近傍で制限すると零。アフィン準コンパクト開では有限基本開被覆で同時に零。
+- 方針：Grothendieck 性から構成済みの injective 分解 I を使う。Mathlib の `InjectiveResolution.extMk_surjective` で α を L_U→Iⁿ の cocycle として表す。自由層の Hom と切断の同値の標的自然性から切断 cocycle を得る。層の完全性による既証の局所境界表示を使い、自由層の Hom の単射性で局所的な射の境界表示へ戻す。`mk₀_comp_extMk` と `extMk_eq_zero_iff` により実際の Ext の制限が零となる。
+- 存在する比較と分解だけを使い、Ext と層コホモロジーの未証明の同一視は仮定しない。係数環は非可換でもよい。
+- 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1187,6 +1211,9 @@
 | `cycleResolutionTail_acyclic`・`chainHomPositiveExact_tail` | DerivedGeometry/ResolutionTail | 実装・対象ビルド済み |
 | `resolution_ext_precomp_injective`・`chainHomPositiveExact_iff` | DerivedGeometry/ResolutionExtCriterion・ChainHomExact | 実装・対象ビルド済み |
 | `freeFormalSheafAugmentedCech_homExact`・`cech_ext_precomp_injective` | DerivedGeometry/CechExtCriterion | 実装・対象ビルド済み |
+| `relativeFreeSheafAugmentedCech_acyclic`・`relativeCech_ext_precomp_injective` | DerivedGeometry/RelativeFreeCech | 実装・対象ビルド済み |
+| `relativeBasicOpenLocalization_exact` | DerivedGeometry/RelativeLocalizationExact | 実装・対象ビルド済み |
+| `relativeAffineCech_exactAt`・`relativeAffineCoefficientCech_exactAt` | DerivedGeometry/RelativeAffineCech | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
