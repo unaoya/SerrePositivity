@@ -232,3 +232,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.qCat_simplicialCategory
 #check @SerrePositivity.InfinityCategories.qCat_sHom
 #check @SerrePositivity.InfinityCategories.qCat_sHom_kanComplex
+#check @SerrePositivity.InfinityCategories.CatInfinity
+#check @SerrePositivity.InfinityCategories.catInfinity_quasicategory
+#check @SerrePositivity.InfinityCategories.CatInfinityFunctor
+#check @SerrePositivity.InfinityCategories.catInfinityFunctor_quasicategory
+#check @SerrePositivity.InfinityCategories.KanObject
+#check @SerrePositivity.InfinityCategories.kanObject_category
+#check @SerrePositivity.InfinityCategories.kanObject_enrichedCategory
+#check @SerrePositivity.InfinityCategories.kanObject_simplicialCategory
+#check @SerrePositivity.InfinityCategories.kanObject_sHom_kanComplex
+#check @SerrePositivity.InfinityCategories.SpaceInfinity
+#check @SerrePositivity.InfinityCategories.spaceInfinity_quasicategory
+#check @SerrePositivity.InfinityCategories.SpaceInfinityFunctor
+#check @SerrePositivity.InfinityCategories.spaceInfinityFunctor_quasicategory

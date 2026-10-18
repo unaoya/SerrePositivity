@@ -988,5 +988,36 @@ lemma qCat_sHom (X Y : QCat.{u}) :
 instance qCat_sHom_kanComplex (X Y : QCat.{u}) :
     KanComplex (SimplicialCategory.sHom X Y)
 
+noncomputable def CatInfinity : SSet.{u + 1}
+
+instance catInfinity_quasicategory : Quasicategory CatInfinity.{u}
+
+noncomputable def CatInfinityFunctor (C : SSet.{u + 1}) : SSet.{u + 1}
+
+instance catInfinityFunctor_quasicategory (C : SSet.{u + 1}) :
+    Quasicategory (CatInfinityFunctor C)
+
+structure KanObject where
+  obj : SSet.{u}
+  isKanComplex : KanComplex obj
+
+instance kanObject_category : Category.{u} KanObject.{u}
+
+instance kanObject_enrichedCategory : EnrichedCategory SSet.{u} KanObject.{u}
+
+instance kanObject_simplicialCategory : SimplicialCategory KanObject.{u}
+
+instance kanObject_sHom_kanComplex (X Y : KanObject.{u}) :
+    KanComplex (SimplicialCategory.sHom X Y)
+
+def SpaceInfinity : SSet.{u + 1}
+
+instance spaceInfinity_quasicategory : Quasicategory SpaceInfinity.{u}
+
+def SpaceInfinityFunctor (C : SSet.{u + 1}) : SSet.{u + 1}
+
+instance spaceInfinityFunctor_quasicategory (C : SSet.{u + 1}) :
+    Quasicategory (SpaceInfinityFunctor C)
+
 end SerrePositivity.InfinityCategories
 ```

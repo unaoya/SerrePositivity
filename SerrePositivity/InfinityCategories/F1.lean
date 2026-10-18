@@ -50,3 +50,4 @@ public import SerrePositivity.InfinityCategories.F1.CoreFaces
 public import SerrePositivity.InfinityCategories.F1.CoreKan
 public import SerrePositivity.InfinityCategories.F1.CoreProduct
 public import SerrePositivity.InfinityCategories.F1.QCatSimplicial
+public import SerrePositivity.InfinityCategories.F1.CatInfinity
