@@ -5112,3 +5112,137 @@ slice の頂点 fiber の制限と両端固定の錐の制限の可換式は、�
 他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-cone-diagram-restriction-aggregate.log` と
 `/tmp/gamma3-cone-diagram-restriction-audit.log`。
+
+
+### native な極限判定の coslice の切断の制限への移送
+
+`SliceEndpointConeComparison` は、slice の頂点 fiber から両端固定の錐への実際の
+標準比較 `sliceEndpointConeComparison p x` を追跡し、任意の図式の射 f について
+次の厳密な可換式を証明した。
+
+```lean
+sliceRestrictionFiberMap p x f ≫ sliceEndpointConeComparison (f ≫ p) x =
+  sliceEndpointConeComparison p x ≫ endpointConeRestrict p x f
+```
+
+全パラメータでの uncurry の値、slice の制限と可変頂点の射影の可換性も証明した。
+X が quasicategory なら、この比較は単体的ホモトピー同値である。前回の切断側の
+可換式と合わせ、`sliceRestriction_homotopyEquivalence_iff_sections` は
+slice の頂点 fiber の制限と coslice の切断の制限のホモトピー同値性を同値にする。
+
+`ConeSectionRestrictionCriterion` は任意の coherent な錐 c に特殊化する。
+`coneSliceOverRestriction_eq` は従来の native な制限を通常の図式の制限へ厳密に同定し、
+錐の固定条件による終域の移送を含めて `coneSectionRestriction c x` を定義した。
+主定理 `isLimitCone_iff_coneSectionRestriction_homotopyEquivalence` は
+
+```lean
+IsLimitCone c ↔ ∀ x : X _⦋0⦌,
+  IsSimplicialHomotopyEquivalence (coneSectionRestriction c x)
+```
+
+を与える。前提は `[Quasicategory X]` のみ。K は任意の単体集合、c は任意の錐であり、
+strict な錐、通常の圏の nerve、有限の添字、fibration の図式に制限しない。
+追加の比較同値の仮定もない。A3d の native な極限判定から、実際の標準比較と
+その可換四角形の二対三則により導いた。選択した逆同値の自然性は使わない。
+`coneSectionRestriction_uncurry` は、この実際の制限の全パラメータの値も与える。
+原典上の位置は HTT 4.2.4.1 の双対、Kerodon 7.4.1.6、7.5.4.6。
+
+新規16宣言の正確な型と全前提は以下。
+
+```lean
+noncomputable def sliceEndpointConeComparison {K X : SSet.{u}} (p : K ⟶ X)
+    (x : X _⦋0⦌) : vertexFiber (sliceOverProjection p) x ⟶ fixedEndpointConeSpace p x
+
+lemma sliceConeFamilyUncurry_parameter {A K X : SSet.{u}} {p : K ⟶ X}
+    (s : A ⟶ sliceOver p) :
+    (join (Δ[0] : SSet.{u}) K ◁ s) ≫ sliceConeFamilyUncurry p =
+      (β_ (join (Δ[0] : SSet.{u}) K) A).hom ≫ joinTensorLeft A Δ[0] K ≫
+        joinMap (fst A Δ[0]) (𝟙 K) ≫ sliceOverUncurry s
+
+lemma sliceEndpointConeComparison_uncurry {A K X : SSet.{u}} {p : K ⟶ X}
+    {x : X _⦋0⦌} (s : A ⟶ vertexFiber (sliceOverProjection p) x) :
+    uncurry (s ≫ sliceEndpointConeComparison p x ≫ endpointConeEvaluation p x) =
+      (β_ (join (Δ[0] : SSet.{u}) K) A).hom ≫ joinTensorLeft A Δ[0] K ≫
+        joinMap (fst A Δ[0]) (𝟙 K) ≫
+          sliceOverUncurry (s ≫ vertexFiberι (sliceOverProjection p) x)
+
+lemma sliceOverRestrict_projection {K J X : SSet.{u}} (p : J ⟶ X) (f : K ⟶ J) :
+    sliceOverRestrict p f ≫ sliceOverProjection (f ≫ p) = sliceOverProjection p
+
+def sliceRestrictionFiberMap {K J X : SSet.{u}} (p : J ⟶ X) (x : X _⦋0⦌)
+    (f : K ⟶ J) :
+    vertexFiber (sliceOverProjection p) x ⟶ vertexFiber (sliceOverProjection (f ≫ p)) x
+
+lemma sliceEndpointConeComparison_restrict {K J X : SSet.{u}} (p : J ⟶ X)
+    (x : X _⦋0⦌) (f : K ⟶ J) :
+    sliceRestrictionFiberMap p x f ≫ sliceEndpointConeComparison (f ≫ p) x =
+      sliceEndpointConeComparison p x ≫ endpointConeRestrict p x f
+
+lemma sliceEndpointConeComparison_homotopyEquivalence {K X : SSet.{u}}
+    [Quasicategory X] (p : K ⟶ X) (x : X _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (sliceEndpointConeComparison p x)
+
+lemma sliceRestriction_homotopyEquivalence_iff_sections {K J X : SSet.{u}}
+    [Quasicategory X] (p : J ⟶ X) (x : X _⦋0⦌) (f : K ⟶ J) :
+    IsSimplicialHomotopyEquivalence (sliceRestrictionFiberMap p x f) ↔
+      IsSimplicialHomotopyEquivalence
+        (relativeFunctorPre (sliceUnderProjection (SSet.yonedaEquiv.symm x)) p f)
+
+lemma coneSliceOverRestriction_uncurry {A K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (s : A ⟶ sliceOver c.val) :
+    sliceOverUncurry (s ≫ coneSliceOverRestriction c) =
+      joinMap (𝟙 A) (joinInr (Δ[0] : SSet.{u}) K) ≫ sliceOverUncurry s
+
+lemma coneSliceOverRestriction_eq {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
+    coneSliceOverRestriction c =
+      sliceOverRestrict c.val (joinInr (Δ[0] : SSet.{u}) K) ≫
+        eqToHom (congrArg (fun f : K ⟶ X ↦ sliceOver f) c.property)
+
+def coneSectionRestriction {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p)
+    (x : X _⦋0⦌) : coherentConeSectionSpace c.val x ⟶ coherentConeSectionSpace p x
+
+lemma sectionConeUncurry_eqToHom {A K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (x : X _⦋0⦌) (s : A ⟶ coherentConeSectionSpace p x) :
+    sectionConeUncurry (s ≫
+      eqToHom (congrArg (fun f : K ⟶ X ↦ coherentConeSectionSpace f x) h)) =
+      sectionConeUncurry s
+
+lemma coneSectionRestriction_uncurry {A K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) (s : A ⟶ coherentConeSectionSpace c.val x) :
+    sectionConeUncurry (s ≫ coneSectionRestriction c x) =
+      joinMap (𝟙 (Δ[0] : SSet.{u})) (joinInr (Δ[0] : SSet.{u}) K ▷ A) ≫
+        sectionConeUncurry s
+
+lemma normalizedSliceRestriction_iff_sections {K J X : SSet.{u}} [Quasicategory X]
+    (p : J ⟶ X) (q : K ⟶ X) (f : K ⟶ J) (h : f ≫ p = q)
+    (x : X _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence
+      (vertexFiberMap (sliceOverProjection p) (sliceOverProjection q)
+        (sliceOverRestrict p f ≫ eqToHom (congrArg (fun r : K ⟶ X ↦ sliceOver r) h))
+        (by rw [Category.assoc, sliceOver_eqToHom_projection h, sliceOverRestrict_projection])
+        x) ↔
+      IsSimplicialHomotopyEquivalence
+        (relativeFunctorPre (sliceUnderProjection (SSet.yonedaEquiv.symm x)) p f ≫
+          eqToHom (congrArg (fun r : K ⟶ X ↦ coherentConeSectionSpace r x) h))
+
+lemma coneSliceRestriction_homotopyEquivalence_iff_sections {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) (x : X _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (coneSliceRestrictionFiberMap c x) ↔
+      IsSimplicialHomotopyEquivalence (coneSectionRestriction c x)
+
+lemma isLimitCone_iff_coneSectionRestriction_homotopyEquivalence {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) :
+    IsLimitCone c ↔ ∀ x : X _⦋0⦌,
+      IsSimplicialHomotopyEquivalence (coneSectionRestriction c x)
+```
+
+これで native な極限判定の切断の制限への移送は証明済み。
+strict な豊穣錐について、この制限と構成済みの q′ の可換式、
+元の q_x と反転係数の整合性、𝒮・Sp の残りの適用、余極限の比較は未完了。
+従って γ3b・γ3c の完成とはしない。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4454 jobs）、公開989宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存700ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-cone-section-restriction-aggregate.log` と
+`/tmp/gamma3-cone-section-restriction-audit.log`。

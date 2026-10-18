@@ -2080,3 +2080,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @sectionRestriction_homotopyEquivalence_iff_endpoint
 #print axioms sectionRestriction_homotopyEquivalence_iff_endpoint
+
+#check @sliceEndpointConeComparison
+#print axioms sliceEndpointConeComparison
+
+#check @sliceConeFamilyUncurry_parameter
+#print axioms sliceConeFamilyUncurry_parameter
+
+#check @sliceEndpointConeComparison_uncurry
+#print axioms sliceEndpointConeComparison_uncurry
+
+#check @sliceOverRestrict_projection
+#print axioms sliceOverRestrict_projection
+
+#check @sliceRestrictionFiberMap
+#print axioms sliceRestrictionFiberMap
+
+#check @sliceEndpointConeComparison_restrict
+#print axioms sliceEndpointConeComparison_restrict
+
+#check @sliceEndpointConeComparison_homotopyEquivalence
+#print axioms sliceEndpointConeComparison_homotopyEquivalence
+
+#check @sliceRestriction_homotopyEquivalence_iff_sections
+#print axioms sliceRestriction_homotopyEquivalence_iff_sections
+
+#check @coneSliceOverRestriction_uncurry
+#print axioms coneSliceOverRestriction_uncurry
+
+#check @coneSliceOverRestriction_eq
+#print axioms coneSliceOverRestriction_eq
+
+#check @coneSectionRestriction
+#print axioms coneSectionRestriction
+
+#check @sectionConeUncurry_eqToHom
+#print axioms sectionConeUncurry_eqToHom
+
+#check @coneSectionRestriction_uncurry
+#print axioms coneSectionRestriction_uncurry
+
+#check @normalizedSliceRestriction_iff_sections
+#print axioms normalizedSliceRestriction_iff_sections
+
+#check @coneSliceRestriction_homotopyEquivalence_iff_sections
+#print axioms coneSliceRestriction_homotopyEquivalence_iff_sections
+
+#check @isLimitCone_iff_coneSectionRestriction_homotopyEquivalence
+#print axioms isLimitCone_iff_coneSectionRestriction_homotopyEquivalence
