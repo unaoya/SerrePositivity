@@ -205,3 +205,7 @@ public import SerrePositivity.InfinityCategories.F1.LeftScaffold
 public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
 public import SerrePositivity.InfinityCategories.F1.LeftScaffoldBaseChange
 public import SerrePositivity.InfinityCategories.F1.LeftScaffoldPoint
+public import SerrePositivity.InfinityCategories.F1.LeftKanFibration
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionLifting
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportThinRestriction

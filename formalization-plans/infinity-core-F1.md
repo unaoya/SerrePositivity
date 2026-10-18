@@ -4725,5 +4725,41 @@ lemma IsLeftScaffold.isPrecompositionEquivalence_of_point
     {l : simplicialReplacement F ⟶ E} (hs : IsLeftScaffold p F l) (c : C) :
     IsPrecompositionEquivalence l
 
+lemma leftFibration_hasLiftingProperty_horn_of_kanComplex {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (q : X ⟶ Y) [LeftFibration q]
+    (n : ℕ) (i : Fin (n + 2)) : HasLiftingProperty (horn (n + 1) i).ι q
+
+lemma leftFibration_fibration_of_kanComplex {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (q : X ⟶ Y) [LeftFibration q] : Fibration q
+
+lemma hasLiftingProperty_relativeFunctorPre {A D E B T U : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (i : D ⟶ A)
+    (r : internalHom.PullbackObjObj i p) (j : T ⟶ U) [HasLiftingProperty j r.π] :
+    HasLiftingProperty j (relativeFunctorPre p a i)
+
+instance relativeFunctorPre_leftFibration {A D E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) (i : D ⟶ A) [Mono i] :
+    LeftFibration (relativeFunctorPre p a i)
+
+lemma relativeFunctorPre_fibration {A D E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) (i : D ⟶ A) [Mono i] :
+    Fibration (relativeFunctorPre p a i)
+
+instance under_isThin_of_thin
+    {C : Type u} [Category.{u} C] [Quiver.IsThin C] (c : C) : Quiver.IsThin (Under c)
+
+lemma underMap_obj_injective_of_thin
+    {C : Type u} [Category.{u} C] [Quiver.IsThin C] {c d : C} (f : c ⟶ d) :
+    Function.Injective (Under.map f).obj
+
+instance nerveUnderMap_mono_of_thin
+    {C : Type u} [Category.{u} C] [Quiver.IsThin C] {c d : C} (f : c ⟶ d) :
+    Mono (nerveUnderMap f)
+
+lemma leftStrictTransportMap_fibration_of_thin
+    {C : Type u} [Category.{u} C] [Quiver.IsThin C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] {c d : C} (f : c ⟶ d) :
+    Fibration (leftStrictTransportMap p f)
+
 end SerrePositivity.InfinityCategories
 ```
