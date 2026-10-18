@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.Perfect
+public import SerrePositivity.InfinityCategories.Derived.PerfectBasic
 public import SerrePositivity.InfinityCategories.Derived.HomotopyCategoryComparison
 public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap
 

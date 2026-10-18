@@ -2119,3 +2119,143 @@ perfectHomotopyInclusion_full : (perfectHomotopyInclusion S).Full
 perfectHomotopyInclusion_faithful : (perfectHomotopyInclusion S).Faithful
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D8b：標準包含・引き戻し判定・本質像・U13 比較（2026-10-18）
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory
+variable (S : Type u) [CommRing S]
+perfectInfinityInclusion : perfectInfinityCategory S ⟶ derivedInfinityCategory S
+perfectNerveModelIso_hom_inclusion :
+    (perfectNerveModelIso S).hom ≫ perfectInfinityInclusion S = perfectNerveInclusion S
+perfectNerveModelIso_inv_inclusion :
+    (perfectNerveModelIso S).inv ≫ perfectNerveInclusion S = perfectInfinityInclusion S
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory DifferentialGraded DGNerve
+open scoped Simplicial
+variable (S : Type u) [CommRing S]
+perfectInfinityVertex (P : PerfectSemifree S) : (perfectInfinityCategory S) _⦋0⦌
+perfectInfinityVertex_inclusion (P : PerfectSemifree S) :
+    (perfectInfinityInclusion S).app _ (perfectInfinityVertex S P) =
+      Simplex.vertex P.val
+perfectInfinityVertexRepresentative (x : (perfectInfinityCategory S) _⦋0⦌) :
+    PerfectSemifree S
+perfectInfinityShift (x : (perfectInfinityCategory S) _⦋0⦌) (n : ℤ) :
+    (perfectInfinityCategory S) _⦋0⦌
+perfectInfinityCone (x y : (perfectInfinityCategory S) _⦋0⦌)
+    (f : (x.val.obj 0).val ⟶ (y.val.obj 0).val) : (perfectInfinityCategory S) _⦋0⦌
+perfectInfinityFiber (x y : (perfectInfinityCategory S) _⦋0⦌)
+    (f : (x.val.obj 0).val ⟶ (y.val.obj 0).val) : (perfectInfinityCategory S) _⦋0⦌
+perfectInfinityFiniteBiproduct {I : Type v} [Finite I] [Small.{u} I]
+    (x : I → (perfectInfinityCategory S) _⦋0⦌) : (perfectInfinityCategory S) _⦋0⦌
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory MonoidalCategory DifferentialGraded DGNerve
+open scoped Simplicial
+variable {S : Type u} [CommRing S]
+perfectSquareStandardFiber
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectNerveModel S) :
+    perfectSemifreeProperty S (derivedSquareStandardFiber (F ≫ perfectNerveInclusion S))
+perfectNerve_isPullbackSquare_map
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectNerveModel S)
+    (hF : IsPullbackSquare F) : IsPullbackSquare (F ≫ perfectNerveInclusion S)
+perfectNerve_isPullbackSquare_iff_quasiIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectNerveModel S) :
+    IsPullbackSquare F ↔ QuasiIso (derivedSquareFiberComparison (F ≫ perfectNerveInclusion S))
+perfect_isPullbackSquare_iff_quasiIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectInfinityCategory S) :
+    IsPullbackSquare F ↔
+      QuasiIso (derivedSquareFiberComparison (F ≫ perfectInfinityInclusion S))
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory DifferentialGraded DGNerve
+open scoped Simplicial
+variable (S : Type u) [CommRing S]
+perfectModelH0InclusionIso :
+    HomotopyCategoryMap.map (perfectNerveInclusion S) ⋙ (derivedInfinityH0Equivalence S).functor ≅
+      (HomotopyComparison.equivalence S (PerfectSemifree S)).functor ⋙ perfectH0Inclusion S
+perfectCanonicalHomotopyInclusion : perfectInfinityHomotopyCategory S ⥤
+    derivedInfinityHomotopyCategory S
+perfectCanonicalH0Iso :
+    perfectCanonicalHomotopyInclusion S ⋙ (derivedInfinityH0Equivalence S).functor ≅
+      (perfectInfinityH0Equivalence S).functor ⋙ perfectH0Inclusion S
+perfectCanonicalHomotopyInclusion_full : (perfectCanonicalHomotopyInclusion S).Full
+perfectCanonicalHomotopyInclusion_faithful :
+    (perfectCanonicalHomotopyInclusion S).Faithful
+perfectHomotopyInclusionIso :
+    perfectCanonicalHomotopyInclusion S ≅ perfectHomotopyInclusion S
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory DifferentialGraded DGNerve
+variable (S : Type u) [CommRing S]
+perfectComplexHomotopyInclusion : perfectInfinityHomotopyCategory S ⥤
+    _root_.HomotopyCategory (ModuleCat.{u} S) (.up ℤ)
+perfectComplexHomotopyInclusion_full : (perfectComplexHomotopyInclusion S).Full
+perfectComplexHomotopyInclusion_faithful :
+    (perfectComplexHomotopyInclusion S).Faithful
+perfectComplexHomotopyInclusion_obj (X : perfectInfinityHomotopyCategory S) :
+    (perfectHomotopyProperty S).isoClosure ((perfectComplexHomotopyInclusion S).obj X)
+perfectComplexHomotopyInclusion_essImage_iff
+    (X : _root_.HomotopyCategory (ModuleCat.{u} S) (.up ℤ)) :
+    (∃ Y : perfectInfinityHomotopyCategory S,
+      Nonempty ((perfectComplexHomotopyInclusion S).obj Y ≅ X)) ↔
+        (perfectHomotopyProperty S).isoClosure X
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u w
+open CategoryTheory DifferentialGraded
+variable (S : Type u) [CommRing S] [HasDerivedCategory.{w} (ModuleCat.{u} S)]
+perfectCanonicalDerivedIso (Y : perfectInfinityHomotopyCategory S) :
+    (derivedInfinityHomotopyEquivalence S).functor.obj
+      ((perfectCanonicalHomotopyInclusion S).obj Y) ≅
+        DerivedCategory.Qh.obj ((perfectComplexHomotopyInclusion S).obj Y)
+perfectCanonicalHomotopyInclusion_essImage_iff
+    (X : derivedInfinityHomotopyCategory S) :
+    (∃ Y : perfectInfinityHomotopyCategory S,
+      Nonempty ((perfectCanonicalHomotopyInclusion S).obj Y ≅ X)) ↔
+        ∃ K : Complex S, strictlyPerfectComplex S K ∧
+          Nonempty ((derivedInfinityHomotopyEquivalence S).functor.obj X ≅
+            DerivedCategory.Q.obj K)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory DifferentialGraded
+variable (S : Type u) [CommRing S]
+RepletePerfectHomotopy
+perfectToRepleteHomotopy : perfectInfinityHomotopyCategory S ⥤ RepletePerfectHomotopy S
+perfectToRepleteHomotopy_isEquivalence : (perfectToRepleteHomotopy S).IsEquivalence
+strictPerfectToRepleteHomotopy : PerfectHomotopy S ⥤ RepletePerfectHomotopy S
+strictPerfectToRepleteHomotopy_isEquivalence :
+    (strictPerfectToRepleteHomotopy S).IsEquivalence
+perfectInfinityStrictHomotopyEquivalence :
+    perfectInfinityHomotopyCategory S ≌ PerfectHomotopy S
+perfectInfinityU13Equivalence : perfectInfinityHomotopyCategory S ≌
+    DifferentialGraded.HomotopyCategory S (PerfectDGModuleOver S PUnit.{1} Set.univ)
+end SerrePositivity.InfinityCategories
+```

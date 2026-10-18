@@ -1,6 +1,6 @@
 # D(S)：semifree 複体の dg nerve としての導来 ∞ 圏（レーン D）
 
-作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6 完了。D8 実装中。D7 は A4・別指示待ち。
+作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6・D8 完了。D7 は A4・別指示待ち。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§3。
 dg nerve（レーン N）は [dg-nerve.md](dg-nerve.md)。
 
@@ -14,9 +14,10 @@ D6b は完了。加群の離散埋め込み J は充満忠実で、H⁰ の自�
 D6c は完了。Hⁱ(x)=0（i≠0）と h D(S) での x≅J(H⁰x) の同値を持ち、
 比較同型を表す可逆な辺も公開する。D7（D(S) の安定性）は α の A4 の後の別指示を待つ。
 
-D8 は実装中。Perf(S) を D(S) の実際の充満部分単体集合として定義し、quasicategory 性と
-零対象を証明した。完全 semifree モデルのシフト・cone・fiber・有限直和の閉性、
-h Perf から h D(S) への充満忠実な比較も実装済み。D4 の双方向の制限と像の同定は未完了。
+D8 は完了。Perf(S) は D(S) の実際の充満部分単体集合で、quasicategory・零対象を持つ。
+シフト・cone・fiber・有限直和を正本の頂点上に構成し、D4 の擬同型判定を双方向に制限した。
+標準包含 h Perf → h D(S) は充満忠実で、その本質像は有界有限射影複体の導来像である。
+U13 の一対象 perfect dg 加群の H⁰ との圏同値も実装済み。公開入口は `Derived/Perfect.lean`。
 
 ## 主要宣言
 
@@ -38,6 +39,8 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | heart の充満忠実性 | `moduleHeartFunctor`、`moduleHeartHomEquiv`、`moduleHeartHZeroNatIso`、`moduleHeartHomEquiv_hZero` |
 | 離散対象の特徴づけ | `derivedInfinityDisc`、`derivedInfinityDiscIso`、`derivedInfinityDisc_iff`、`derivedInfinityDiscEdge_invertible` |
 | 完全対象 | `perfectInfinityCategory`、`perfectNerveModelIso`、`perfectSemifreeProperty_iff`、`perfectInfinityCategory_quasicategory`、`perfectInfinityZero_terminal`、`perfectInfinityZero_initial` |
+| Perf の引き戻し判定 | `perfect_isPullbackSquare_iff_quasiIso` |
+| h Perf の像と U13 | `perfectCanonicalHomotopyInclusion`、`perfectCanonicalHomotopyInclusion_essImage_iff`、`perfectInfinityU13Equivalence` |
 | H⁰ | `derivedInfinityHZeroFunctor`、`derivedInfinityHZeroIso`、`derivedInfinityHZeroMap` |
 | 引き戻しの判定 | `derivedSquareFiberComparison`、`derived_isPullbackSquare_iff_quasiIso` |
 
@@ -118,6 +121,7 @@ dg 加群層（`SerrePositivity/DifferentialGraded/`）は一点 dg 圏 `PUnit` 
 | D6a | `Derived/FiberLongExactSequence.lean` | 引き戻しの四辺による A → B ⊕ C → D（右辺 − 下辺）を distinguished triangle にし、全整数次数の長完全列と H⁰ の射の一致を公開 |
 | D6b | `Derived/HeartFullyFaithful.lean` | 加群の離散埋め込み J の Hom 全単射と H⁰ 比較との両立 |
 | D6c | `Derived/DiscreteCharacterization.lean` | Hⁱ(x)=0（i≠0）なら h D(S) で x≅J(H⁰x)、同型を表す辺も公開 |
+| D8 | `Derived/Perfect.lean` | Perf(S) の充満部分単体集合、quasicategory・各閉性、D4 の判定の制限、h Perf の本質像と U13 の H⁰ との同値。完了 |
 
 ## 4. 設計上の決定
 
