@@ -14,6 +14,17 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.complexYoneda,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.complexYoneda_additive,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.finiteCell_representable,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.homotopyTriaEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.yonedaToTria,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.yonedaToTria_objIso,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.yonedaToTria_essSurj_of_quasiEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.pathQuotient_yonedaToTria_essSurj,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.quotientHomotopyTriaEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedDGHomotopyTriaEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedDGHomotopyVerdierEquivalence,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.yoneda_map_eval,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.representablePostcompose_eq_yoneda,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableHom_lift,

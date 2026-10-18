@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の path 商と元の指定 Verdier 商の tria 比較を実装済み。層の DerivedDG・DqcDGModel も平坦分解後の商へ移行済み。商自体の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の776宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の836宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -673,7 +673,26 @@
 - `yoneda_map_eval`・`representablePostcompose_eq_yoneda`：具体的な後合成は既存の dg Yoneda の同じ閉零射に一致する。
 - `representableHom_lift`：代表加群間の任意の射を元の複体の chain map として表示済み。
 - 対象ビルドと776宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
-- 次は有限 cell の代表可能性の帰納。H⁰ と Mathlib 導来圏の最終比較は未完了。
+- `finiteCell_representable`：零・shift・有限和・任意の射の cone・同型の各操作で実際の代表加群の同型を構成する帰納証明を実装済み。
+- `homotopyTriaEquivalence`：元の複体 dg 圏の H⁰ と tria の圏同値を証明済み。三角構造と Mathlib 導来局所化の最終比較は未完了。
+
+## 31. §10-7：分解後の商自体の H⁰ の本質的全射性（実装前記録）
+
+- 確認する文言：元の dg 圏の H⁰ → tria が本質的全射なら、準同値な半自由分解後の path 商についても H⁰ → tria が本質的全射になる。
+- Drinfeld §2.4・Thm 3.4・§3.5 を用いる証明方針：tria の準同値による移送、Verdier 局所化の本質的全射性、既存 `localQuotientTriaEquivalence` の三つを合成する。
+- 任意の商の tria 対象を元の tria 対象の局所化像へ戻す。元の tria 対象は H⁰ の対象、すなわち代表加群の導来像と同型である。
+- `localQuotientTriaRepresentableIso` により同じ代表対象は商の代表対象へ送られる。一般の `yonedaToTria` の完全忠実性と合わせて、商自体の H⁰ と tria の同値を得る。
+- 冪等完備化は不要。商自体の H⁰ を tria に定義し直さず、前述の代表対象の同型を使って本質的全射性を証明する。
+- 三角構造と Mathlib の acyclic 局所化への接続では、引き続き関手の正方形と shift・cone の両立を検証する。
+
+### 現在地
+
+- `yonedaToTria_essSurj_of_quasiEquivalence`：準同値による tria の代表可能性の移送を証明済み。
+- `pathQuotient_yonedaToTria_essSurj`：片側 K-flat 条件を満たす既存 path 商の代表可能性を証明済み。
+- `quotientHomotopyTriaEquivalence`：半自由分解後の商自体の H⁰ と tria の同値を構成済み。元の Hom の平坦性を仮定しない。
+- `derivedDGHomotopyTriaEquivalence`・`derivedDGHomotopyVerdierEquivalence`：係数加群層へ適用済み。後者は商の H⁰ と元の tria の指定 Verdier 商との圏同値。
+- 対象ビルドと836宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 残るのは元の複体での shift・標準 cone triangle の比較、それを用いた acyclic 局所化と Mathlib 導来圏の同定。商の H⁰ の代表可能性の未実装は解消した。
 
 ## 主要宣言の表
 
@@ -770,11 +789,17 @@
 | `LinearComplex.representableStandardConeIso` | DerivedGeometry/LinearRepresentableCone | 実装・対象ビルド済み |
 | `DGResolution.derivedYoneda_map_bijective`・`derivedYoneda_full`・`derivedYoneda_faithful` | DGResolution/DerivedYoneda | 実装・対象ビルド済み |
 | `LinearComplex.yoneda_map_eval`・`representableHom_lift` | DerivedGeometry/LinearYonedaComparison | 実装・対象ビルド済み |
+| `LinearComplex.complexYoneda`・`complexYoneda_additive` | DerivedGeometry/LinearYonedaFunctor・LinearRepresentableClosure | 実装・対象ビルド済み |
+| `LinearComplex.finiteCell_representable`・`homotopyTriaEquivalence` | DerivedGeometry/LinearRepresentableClosure・LinearPretriangulation | 実装・対象ビルド済み |
+| `DGResolution.yonedaToTria`・`yonedaToTria_objIso` | DGResolution/YonedaTria | 実装・対象ビルド済み |
+| `DGResolution.yonedaToTria_essSurj_of_quasiEquivalence` | DGResolution/RepresentabilityTransport | 実装・対象ビルド済み |
+| `DGResolution.quotientHomotopyTriaEquivalence` | DGResolution/QuotientRepresentability | 実装・対象ビルド済み |
+| `derivedDGHomotopyTriaEquivalence`・`derivedDGHomotopyVerdierEquivalence` | DerivedGeometry/SheafPretriangulation | 実装・対象ビルド済み |
 | `DGResolution.augmentation_triaImage_iff`・`augmentation_trW_eq` | DGResolution/SupportTransport・VerdierTransport | 実装・対象ビルド済み |
 | `DGResolution.verdierSquare`・`quotientToOriginalVerdierIsTriangulated` | DGResolution/VerdierTransport | 実装・対象ビルド済み |
 | `ResolvedComplexes`・`resolvedAcyclicComplexes`・`resolvedAugmentation_quasiEquivalence` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
 | `resolvedHomotopyComplexEquivalence`・`derivedDGTriaEquivalenceIsTriangulated` | DerivedGeometry/ResolvedSheafComparison | 実装・対象ビルド済み |
-| dg 商自体の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | 前三角化の代表可能性と導来局所化の同定は未実装 |
+| dg 商自体の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | H⁰ と tria・指定 Verdier 商との同値は実装済み。三角構造と Mathlib 導来局所化の同定は未実装 |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
