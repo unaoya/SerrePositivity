@@ -57,7 +57,7 @@ loop 側の双対的な適用も完了した。S4 に着手し、`Δ[2] × Δ[1]
 五頂点図式の余錐の余極限性を右四角形の標準 span 上で判定する補題まで証明した。
 全長方形の join 表示 `pastingCornerJoinIso` を構成した。二座標の最後の頂点への
 評価で余錐を作り、終端角になる最初の頂点から切断を復元して各次数の全単射性を証明した。
-この同型には値域や安定性の仮定はない。貼り合わせの普遍性全体は未完了。
+この同型には値域や安定性の仮定はない。押し出し側の貼り合わせの普遍性まで完了した。
 右 span への制限は右四角形の余錐と厳密に一致することまで証明した。
 `pastingCocone_isColimitCone_iff_right` により、値域の quasicategory 性のみの下で、
 五頂点図式上の余極限性と右四角形の押し出し性が同値である。
@@ -66,10 +66,10 @@ loop 側の双対的な適用も完了した。S4 に着手し、`Δ[2] × Δ[1]
 `pastingOuterSpanIso` で標準ホーンと同定し、その包含は外側四角形の span に一致する。
 `pastingOuterCocone_isColimitCone_iff_outer` により、四頂点図式へ制限した余錐の
 余極限性は外側四角形の押し出し性と同値である（値域 Quasicategory）。
-残る貼り合わせ本体の比較は、左四角形が押し出しなら
+左四角形が押し出しなら
 `IsColimitCone (pastingCocone F) ↔ IsColimitCone (pastingOuterCocone F)`
-となることである。これは五頂点から四頂点へ左四角形の余極限頂点を忘れる
-coslice の比較であり、まだ証明していない。標準 span の形状の不一致は解消済み。
+となる五頂点／四頂点の比較を `pastingCocone_isColimitCone_iff_outerCocone` として証明した。
+標準 span の形状の不一致も解消済み。
 この比較に必要な二重 coslice の計算のため、空次数を含む join の統一した
 切断表示 `stableAugJoinEquiv` とその自然性を証明した。三因子の頂点数ごとの
 同値 `stableAugJoinAssociatorEquiv` は、二つの切断の再添字付けと直和・直積の
@@ -84,9 +84,15 @@ coslice の比較であり、まだ証明していない。標準 span の形状
 `colimitCosliceRestriction c : sliceUnder c.val → sliceUnder p` は、uncurry すると
 基底の包含 `K → K⋆Δ[0]` に沿う制限となり、X への頂点射影と厳密に可換である。
 `IsColimitCone c ↔ TrivialKanFibration (colimitCosliceRestriction c)` を
-値域の quasicategory 性を仮定せず証明した。左押し出しによる五頂点／四頂点の
-比較は未完了。次は図式の pushout に沿う上記制限の引き戻しの充填を証明し、
-左四角形と四頂点図式の和として五頂点図式に適用する。
+値域の quasicategory 性を仮定せず証明した。さらに、余極限余錐を任意の図式の
+pushout で付け加えた場合、残りの図式への coslice 制限が trivial Kan fibration
+であることを全ての単射の持ち上げにより直接証明した。形状の射の単射性も不要。
+左四角形と四頂点図式の和が五頂点図式であることを部分複体の格子から証明し、
+左四角形・共通 span の標準形との包含の一致を通じてこの一般補題を適用した。
+`isPushoutSquare_pasting_iff F hleft` により、任意の quasicategory に値を持つ
+長方形について、左四角形が押し出しなら右が押し出し iff 外側が押し出しとなる。
+二つの押し出しの合成と、左・外側から右を判定する系も公開した。
+HTT Lemma 4.4.2.1 の押し出し側は完了。A6 を待つ箇所は生じていない。
 引き戻しへの双対化と三角構造も未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -165,21 +171,24 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | loop の終点評価 | `loopDiagramEvaluation_target_trivialKanFibration`、`loopDiagramTargetEquivalence`（Quasicategory、IsStable） | 完了 |
 | h C の Ω と選択の比較 | `loopFunctor`、`loopDiagramFamilyIso`、`loopFunctorChoiceIso`、`LoopSquare.loopFunctorObjIso`（Quasicategory、IsStable） | 完了 |
 | ΣΩ の逆性 | `suspensionEquivalence`、`suspensionEquivalence_functor`、`suspensionEquivalence_inverse`、`suspensionLoopUnitIso`、`loopSuspensionCounitIso`（Quasicategory、IsStable） | 完了 |
-| 貼り合わせの形状 | `pastingSquare`、`pastingBottomTriangle`、`pastingTopTriangle`、`pastingSquare_sharedEdge`、外側二辺・上下辺の一致（任意の `Δ[2] × Δ[1] → X`、X に追加の仮定なし） | 完了（普遍性の貼り合わせは未完了） |
+| 貼り合わせの形状 | `pastingSquare`、`pastingBottomTriangle`、`pastingTopTriangle`、`pastingSquare_sharedEdge`、外側二辺・上下辺の一致（任意の `Δ[2] × Δ[1] → X`、X に追加の仮定なし） | 完了（押し出し側の普遍性も完了） |
 | right anodyne な制限 | `sliceUnderRestrict_trivialKanFibration`、`isColimitCone_iff_restrict_of_rightAnodyne`（値域 Quasicategory、right anodyne な単射） | 完了 |
-| 部分長方形の右への制限 | `pastingRightSpan_rightAnodyne`、`pastingCornerRestrict_trivialKanFibration`、`pastingCorner_isColimitCone_iff_rightSpan`（後二者は値域 Quasicategory） | 完了（貼り合わせ全体の主張は未完了） |
+| 部分長方形の右への制限 | `pastingRightSpan_rightAnodyne`、`pastingCornerRestrict_trivialKanFibration`、`pastingCorner_isColimitCone_iff_rightSpan`（後二者は値域 Quasicategory） | 完了（引き戻し側は未完了） |
 | 右 span の標準形 | `pastingRightSpanIso : (horn 2 0 : SSet) ≅ pastingRightSpan`、`pastingRightSpanIso_hom_ι`（値域の図式を選ぶ前の単体集合の同型と辺の一致） | 完了 |
-| 標準 span 上の余極限判定 | `pastingCornerRestrict_standardSpan_trivialKanFibration`、`pastingCorner_isColimitCone_iff_standardSpan`（値域 Quasicategory、五頂点図式の任意の余錐） | 完了（外側比較は未完了） |
-| 全長方形の join 表示 | `pastingCornerCocone`、`pastingCornerCocone_inl`、`pastingCornerCocone_app_injective`、`pastingCornerCocone_app_surjective`、`pastingCornerJoinIso`（任意の宇宙、追加仮定なし） | 完了（外側比較は未完了） |
-| 右四角形の余錐の比較 | `pastingCornerCocone_rightSpan`、`pastingCocone`、`pastingCocone_isColimitCone_iff_right`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了（外側比較は未完了） |
+| 標準 span 上の余極限判定 | `pastingCornerRestrict_standardSpan_trivialKanFibration`、`pastingCorner_isColimitCone_iff_standardSpan`（値域 Quasicategory、五頂点図式の任意の余錐） | 完了 |
+| 全長方形の join 表示 | `pastingCornerCocone`、`pastingCornerCocone_inl`、`pastingCornerCocone_app_injective`、`pastingCornerCocone_app_surjective`、`pastingCornerJoinIso`（任意の宇宙、追加仮定なし） | 完了 |
+| 右四角形の余錐の比較 | `pastingCornerCocone_rightSpan`、`pastingCocone`、`pastingCocone_isColimitCone_iff_right`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了 |
 | 四頂点図式から外側 span | `pastingOuterSpan_rightAnodyne`、`pastingOuterBaseRestrict_standardSpan_trivialKanFibration`、`pastingOuterBase_isColimitCone_iff_standardSpan`（後二者は値域 Quasicategory） | 完了 |
-| 外側四角形の余錐の比較 | `pastingOuterSpanIso`、`pastingOuterSpanIso_hom_ι`、`pastingCornerCocone_outerSpan`、`pastingOuterCocone_isColimitCone_iff_outer`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了（左四角形の余極限頂点を忘れる比較は未完了） |
+| 外側四角形の余錐の比較 | `pastingOuterSpanIso`、`pastingOuterSpanIso_hom_ι`、`pastingCornerCocone_outerSpan`、`pastingOuterCocone_isColimitCone_iff_outer`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了 |
 | 空次数を含む join | `StableAugJoin`、`stableAugJoinEquiv`、`stableAugJoinEquiv_naturality`（任意の二因子、有限順序写像） | 完了 |
 | join の結合の各次数の同値 | `stableJoinCutEquiv`、`stableAugReassociationEquiv`、`stableAugJoinAssociatorEquiv`（任意の三因子、頂点数 r） | 各次数と組み替えの自然性まで完了 |
 | 二段の切断の引き戻し | `stablePullCut_leftMap`（a≤b）、`stablePullCut_rightMap`、`stablePullCut_middle`（a≤b） | 完了 |
 | join の結合同型 | `stableJoinAssociator`、`stableJoinAssociator_naturality`、`stableJoinAssociator_inl`、`stableJoinAssociator_inr`（任意の三因子とその射、追加の仮定なし） | 完了。二重 coslice への適用も完了 |
 | 二重 coslice | `nestedCosliceDiagramEquiv`、`nestedCosliceHomEquiv`、`nestedCosliceIso`（任意の余錐 c、値域の追加仮定なし） | 完了 |
-| 余極限余錐の coslice 制限 | `colimitCosliceRestriction`、`colimitCosliceRestriction_uncurry`、`colimitCosliceRestriction_projection`、`isColimitCone_iff_colimitCosliceRestriction`（任意の余錐、値域の追加仮定なし） | 完了。pushout に沿う適用と貼り合わせ本体は未完了 |
-| S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
+| 余極限余錐の coslice 制限 | `colimitCosliceRestriction`、`colimitCosliceRestriction_uncurry`、`colimitCosliceRestriction_projection`、`isColimitCone_iff_colimitCosliceRestriction`（任意の余錐、値域の追加仮定なし） | 完了。pushout に沿う適用と押し出し貼り合わせも完了 |
+| 余極限頂点の pushout での付加 | `cosliceRestriction_lift_of_colimit_attachment`、`cosliceRestriction_trivialKanFibration_of_colimit_attachment`、`isColimitCone_iff_restrict_of_colimit_attachment`（前二者は任意の値域、最後は Quasicategory） | 完了 |
+| 左四角形の余極限頂点の付加 | `pastingLeftAttachment_isPushout`、`pastingCornerRestrict_outerBase_trivialKanFibration`、`pastingCocone_isColimitCone_iff_outerCocone`（最後は値域 Quasicategory、後二者は左が押し出し） | 完了 |
+| 押し出しの貼り合わせ | `isPushoutSquare_pasting_iff`、`isPushoutSquare_pasting`、`isPushoutSquare_pasting_cancel_left`（値域 Quasicategory、左が押し出し） | 完了（引き戻しへの双対化は未完了） |
+| S4〜S7 | 引き戻しの貼り合わせ・三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
