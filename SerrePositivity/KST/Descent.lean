@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.KST.Descent.MixedCechSpaceSwap
+public import SerrePositivity.KST.Descent.CechRefinementDescent
 public import SerrePositivity.KST.Descent.DoubleCechDescentReflection
 public import SerrePositivity.KST.Descent.MixedCechSpaces
 public import SerrePositivity.KST.Descent.CechBaseChangeSpaces
