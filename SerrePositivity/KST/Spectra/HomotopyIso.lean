@@ -20,6 +20,18 @@ namespace SerrePositivity.KST.Spectra
 
 variable {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
 
+/-- 概要：基点の等式によって誘導写像の全単射性を移す。
+方針：二つの基点の等式で帰納する。
+規約：両方の像の基点保存を明示する。
+使われ方：Goerss–Jardine I §7。点つき置換から任意基点への移送。 -/
+theorem KanHomotopy.map_bijective_congr (n : ℕ) (f : X ⟶ Y)
+    {x x' : X _⦋0⦌} {y y' : Y _⦋0⦌} (hx : x = x') (hy : y = y')
+    (h : f.app _ x = y) (h' : f.app _ x' = y')
+    (hf : Function.Bijective (map n f h)) : Function.Bijective (map n f h') := by
+  subst x'
+  subst y'
+  exact hf
+
 omit [KanComplex X] [KanComplex Y] in
 /-- 概要：単体集合の同型の逆射は指定基点を逆へ戻す。
 方針：同型の合成の等式を頂点で評価する。
@@ -78,6 +90,17 @@ noncomputable def KanHomotopy.equivOfPiIsomorphism (n : ℕ) (f : X ⟶ Y)
     KanHomotopy X n x ≃ KanHomotopy Y n y := by
   subst y
   exact Equiv.ofBijective (map n f rfl) (hf x n)
+
+/-- 概要：全基点 π_* 同型の同値の順写像は元の誘導写像。
+方針：基点の等式で場合分けして全単射からの同値を展開する。
+規約：零次数を含む。
+使われ方：BF 1978 §2。置換射の全単射性の照合。 -/
+@[simp]
+theorem KanHomotopy.equivOfPiIsomorphism_apply (n : ℕ) (f : X ⟶ Y)
+    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y)
+    (a : KanHomotopy X n x) : equivOfPiIsomorphism n f hf h a = map n f h a := by
+  subst y
+  rfl
 
 /-- 概要：単体集合の同型によるホモトピー類の同値は基点を保つ。
 方針：誘導写像の基点保存を適用する。

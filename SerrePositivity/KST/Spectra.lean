@@ -24,3 +24,7 @@ public import SerrePositivity.KST.Spectra.LoopPathFiber
 public import SerrePositivity.KST.Spectra.OmegaSpectrumTransitions
 public import SerrePositivity.KST.Spectra.OmegaSpectrumZeroGroups
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFunctor
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyEquivalences
+public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.KST.Spectra.PointedKanReplacement
+public import SerrePositivity.KST.Spectra.PointedFactorization

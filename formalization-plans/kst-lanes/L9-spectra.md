@@ -18,13 +18,16 @@
 - suspension・loop では既存 Spectra の円、smash、閉対称モノイダル構造の通常の圏論的構成も借りる。
 - 豊穣構造の移送は既存 CategoryTheory の通常の lax monoidal 関手の補題を借りる。
 - 既存 HomotopicalAlgebra は読むだけで編集しない。
+- 借用：同ディレクトリの基点を含む指定部分を固定する垂直ホモトピー充填。
+- 借用：`AnodyneKanReplacement` のホーンの小対象論法と `Generators` の境界生成定理。
+- これらはモデル構造を仮定しない充填と因子分解で、HT-KQ の import は含まない。
 - 既存 InfinityCategories は読むだけで編集しない。
 
 ## 1. 正本と目的
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・56 モジュール 1166 宣言の公理監査成功。
+対象ビルド・62 モジュール 1221 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -796,3 +799,41 @@ pushout product の持ち上げ対応により、path space の終対象への�
 保存単位の対象ビルド 1665 jobs 成功。
 私有宣言を含む 56 モジュール 1166 宣言で標準三公理のみ。
 L9c は未完了。置換、スペクトルの fiber 列と長完全列が残る。
+
+## 31. L9c の π_* 同型と置換の基礎補題
+
+整数次数の π_* 同型の性質を構成済みの群準同型の全単射性として定義した。
+各段の全基点 π_* 同型から整数次数の π_* 同型が従うことを証明した。
+基点固定ホモトピーの相対表示と、点つき射の全自然数次数の誘導写像を整理した。
+各段の基点固定ホモトピーから整数次数の準同型の等式を得た。
+全ての単射に対する RLP を持つ射では、基点を保つ切断と垂直ホモトピーを実際に充填した。
+anodyne な射では Kan な源へのレトラクションと、包含上で固定されたホモトピーを充填した。
+両端が Kan の場合、それぞれ全基点 π_* 同型であることを L9 のホモトピー類で証明した。
+ホーンの Kan 置換を点つき関手と自然な単位に拡張した。
+元の対象が Kan ならその単位は全基点 π_* 同型である。
+境界の小対象論法による分解も点つき対象に移した。
+標的が Kan なら中間対象は Kan、左因子は単射、右因子は全基点 π_* 同型である。
+これは置換の各段に用いる基礎補題であり、スペクトル全体の置換はまだ構成していない。
+coherent nerve の導来写像空間との比較は引き続き γ3 後に扱う。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `OmegaSpectrum.PiIsomorphism` | 全整数次数の誘導準同型の全単射性 |
+| `OmegaSpectrum.PiIsomorphism.groupEquiv` | その各次数の群同型 |
+| `OmegaSpectrum.piIsomorphism_of_levelwise` | 各段の π_* 同型からの帰結 |
+| `pointedRelativeHomotopy` | 全区間の基点固定式から相対ホモトピーへ |
+| `OmegaSpectrum.homotopyMap_eq_of_levelHomotopy` | 各段の基点固定ホモトピーによる不変性 |
+| `kanPiIsomorphism_of_monoRight` | 全ての単射への RLP から全基点 π_* 同型 |
+| `kanPiIsomorphism_of_anodyne` | Kan 複体間の anodyne 射の全基点 π_* 同型 |
+| `PointedKanReplacement.functor` / `.unit` | 点つき Kan 置換と自然な比較射 |
+| `PointedKanReplacement.obj_kanComplex` | 置換の値の Kan 性 |
+| `PointedKanReplacement.unit_piIsomorphism` | 元が Kan の場合の単位の π_* 保存 |
+| `PointedFactorization.middle` / `.left` / `.right` | 点つき射の境界による分解 |
+| `PointedFactorization.right_rlp` | 右因子の全ての単射への RLP |
+| `PointedFactorization.middle_kanComplex` | 標的が Kan の場合の中間対象の Kan 性 |
+| `PointedFactorization.right_piIsomorphism` | 右因子の全基点 π_* 同型性 |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.1、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 1832 jobs 成功。
+私有宣言を含む 62 モジュール 1221 宣言で標準三公理のみ。
+L9c は未完了。段の比較の整合性、列全体の置換、スペクトルの fiber 列と長完全列が残る。
