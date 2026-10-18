@@ -53,7 +53,16 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientSheafAdditiveIso,
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientSheafAdditiveIso_fac,
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientComparison_basic_isIso,
-    `SerrePositivity.KST.DerivedGeometry.affineCoefficientComparison_top_isIso]
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientComparison_top_isIso,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.regular,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientConstantLinear,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientModuleMap,
+    `SerrePositivity.KST.DerivedGeometry.toOpen_affineCoefficientModuleMap,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientModuleMap_tmul,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientModuleMap_fac,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientModuleMap_isIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientModuleIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientRegular_isQuasicoherent]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do

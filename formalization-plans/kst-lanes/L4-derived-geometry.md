@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の具体的係数環層 H_X を、構造射 X → Spec A に対するテンソル前層の層化で構成済み。標準構造射 Spec R 上では基本開の比較 H ⊗_R O(D(f)) → H_X(D(f)) が環の同型であることまで証明済み。一般の A → R の底変換、構造層加群としての準連接性、dg 模型・降下との比較は未完了。
+- 現在地：L4a の具体的係数環層 H_X を、構造射 X → Spec A に対するテンソル前層の層化で構成済み。標準構造射 Spec R 上では基本開の環切断の比較、正則 O 加群と tilde H の同型および準連接性を証明済み。一般の A → R の底変換、一般の X 上での準連接性、dg 模型・降下との比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の195宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の208宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -372,8 +372,22 @@
 - 原典の接続は KST D4・T1′、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
 - 基礎環は R、スキームは Spec R とする標準構造射での結果である。
 - 任意の A → R に対し H_R = H ⊗_A R と置いた場合との環層の比較は別途証明する。
-- 加法群の層の同型だけで O 加群としての準連接性を主張しない。O 作用との両立が残る。
+- 加法群の層の同型だけでは O 加群としての準連接性を主張しない。§20 の O 加群射とその同型性が追加の証明を与える。
 - アフィン切断の同型だけで導来圏・dg 圏・降下模型の同値を主張しない。
+
+## 20. 構造層加群としてのアフィン比較
+
+- 係数環層を自分自身への左作用で加群層とし、構造層へスカラー制限する。
+- H の定数切断は大域切断への R 線形写像を与える。
+- R 線形性は基礎環上の二つの作用の一致から証明する。
+- tilde と大域切断の随伴を用いて tilde H からこの O 加群層への射を作る。
+- この射が標準切断にどう作用するかを、随伴の余単位との計算式で示す。
+- 基本開上では純テンソル上の式を用い、既存の環層化の比較射と一致させる。
+- 既存の基本開上の同型判定と開基による層の同型判定で、O 加群層の同型を得る。
+- tilde H の準連接性をこの同型で移送する。
+- 上記の標準構造射 Spec R 上の各比較・準連接性は Lean で実装し対象ビルド済み。
+- これは KST D4・T1 の係数環層の準連接性への入力であり、T1 のコンパクト生成は含まない。
+- 一般の A → R の底変換と、開部分への係数環層の制限との両立は引き続き別定理とする。
 
 ## 主要宣言の表
 
@@ -409,6 +423,10 @@
 | `preservesSheafification_of_forget` | DerivedGeometry/ForgetSheafification | 実装・対象ビルド済み |
 | `affineCoefficientSheafAdditiveIso`・`affineCoefficientSheafAdditiveIso_fac` | DerivedGeometry/AffineCoefficientSheaf | 実装・対象ビルド済み |
 | `affineCoefficientComparison_basic_isIso`・`affineCoefficientComparison_top_isIso` | DerivedGeometry/AffineCoefficientSections | 実装・対象ビルド済み |
+| `CoefficientSheaf.regular`・`affineCoefficientConstantLinear` | DerivedGeometry/AffineCoefficientModule | 実装・対象ビルド済み |
+| `affineCoefficientModuleMap`・`toOpen_affineCoefficientModuleMap`・`affineCoefficientModuleMap_tmul` | DerivedGeometry/AffineCoefficientModule | 実装・対象ビルド済み |
+| `affineCoefficientModuleMap_fac`・`affineCoefficientModuleMap_isIso` | DerivedGeometry/AffineCoefficientQuasicoherent | 実装・対象ビルド済み |
+| `affineCoefficientModuleIso`・`affineCoefficientRegular_isQuasicoherent` | DerivedGeometry/AffineCoefficientQuasicoherent | 実装・対象ビルド済み |
 | 一般の A → R に対する H_X のアフィン切断とテンソルの比較 | DerivedGeometry/ | 未実装 |
 | 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
