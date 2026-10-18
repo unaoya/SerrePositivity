@@ -306,13 +306,15 @@ L2b：一般のモノイドの二重単体的 bar、対角による分類空間�
 標準写像の随伴側 M×Δ¹→BM と、両端が基点に一致する実単体的ホモトピーを構成した。
 正則 bar の対角上の収縮を実単体的ホモトピーとして証明した。
 正則 bar から BM への射影、M から全空間への写像と基点への三角形を構成した。
+頂点による左平行移動、その辺に沿う実ホモトピーと π₀ への降下を構成した。
+群状性から逆成分の平行移動で局所化後の左右逆を作り、anodyne 局所化での同型を証明した。
 bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-全ての公開 132 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
+全ての公開 141 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -341,6 +343,8 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `monoidBarEdgeMap`、`monoidBarLoopFamily` | 実装済み | 各元が与える基点ループの自然な族 |
 | `regularBar`、`regularBarContraction` | 実装済み | 正則作用の全空間の対角と実収縮 |
 | `regularBarProjection`、`regularBarFiberMap_projection` | 実装済み | 分類空間への射影と標準ファイバー写像の三角形 |
+| `monoidLeftTranslationHomotopy`、`grouplikeTranslationIso` | 実装済み | 実ホモトピーと逆成分による平行移動の可逆性 |
+| `grouplikeTranslation_localized_isIso` | 実装済み | anodyne 局所化での具体的な適用 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |

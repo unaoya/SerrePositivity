@@ -14,6 +14,7 @@ set_option pp.explicit true
 
 
 
+
 -- BarEdge.lean
 
 #check @SerrePositivity.KST.Comparison.monoidEdgeSimplex
@@ -278,6 +279,12 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.Comparison.hatGL_isGrouplike
 
 
+-- GrouplikeTranslations.lean
+
+#check @SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
+
+
 -- MonoidComponents.lean
 
 #check @SerrePositivity.KST.Comparison.monoidSpace
@@ -297,6 +304,33 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsGroup
 #print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsGroup
+
+
+-- MonoidTranslations.lean
+
+#check @SerrePositivity.KST.Comparison.monoidMultiplication
+#print axioms SerrePositivity.KST.Comparison.monoidMultiplication
+
+#check @SerrePositivity.KST.Comparison.monoidLeftTranslation
+#print axioms SerrePositivity.KST.Comparison.monoidLeftTranslation
+
+#check @SerrePositivity.KST.Comparison.monoidLeftTranslation_one
+#print axioms SerrePositivity.KST.Comparison.monoidLeftTranslation_one
+
+#check @SerrePositivity.KST.Comparison.monoidLeftTranslation_comp
+#print axioms SerrePositivity.KST.Comparison.monoidLeftTranslation_comp
+
+#check @SerrePositivity.KST.Comparison.monoidLeftTranslationHomotopy
+#print axioms SerrePositivity.KST.Comparison.monoidLeftTranslationHomotopy
+
+#check @SerrePositivity.KST.Comparison.monoidTranslationClass
+#print axioms SerrePositivity.KST.Comparison.monoidTranslationClass
+
+#check @SerrePositivity.KST.Comparison.monoidLeftTranslation_map_eq
+#print axioms SerrePositivity.KST.Comparison.monoidLeftTranslation_map_eq
+
+#check @SerrePositivity.KST.Comparison.grouplikeTranslationIso
+#print axioms SerrePositivity.KST.Comparison.grouplikeTranslationIso
 
 
 -- PiZeroRing.lean
