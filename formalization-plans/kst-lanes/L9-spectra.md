@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・379 モジュール 3898 宣言の公理監査成功。
+対象ビルド・388 モジュール 3939 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2951,4 +2951,43 @@ Mathlib の自由軌道の比較は連続する座標の比による非斉次座
 参照：Goerss–Jardine I §7、VIII §2、Kerodon §3.2.3、HA §1.4.2。
 保存単位の対象ビルド 3823 jobs 成功。
 私有宣言を含む 379 モジュール 3898 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 98. L9e の非斉次関数 cochain の余単体図式と座標式
+
+自由軌道 G×T から G×S への同変射が関数複体へ誘導する前合成を具体的に定義した。
+軌道代表 (1,t) の像の第一成分を係数へ作用させ、第二成分で元の関数を評価する。
+同変族の自由拡張と軌道代表への制限が両逆であることから、この式が自由作用の end の前合成と可換であることを証明した。
+前合成の恒等・合成法則も示した。
+
+EG の各次数を連続する座標の比の自由軌道へ移し、顔・退化を共役して単体的な自由軌道の図式を作った。
+標準 EG との単体的自然同型を構成した。
+これに関数の前合成を適用し、非斉次関数複体の実際の余単体図式を得た。
+点つき係数の作用では各前合成が座標ごとの基点を保つことを示し、点つき図式へ持ち上げた。
+
+単体的な重みの同型が点つき cochain 全体の同型を誘導する一般的な構成を追加した。
+自由軌道の点つき end の関数表示とその重みへの自然性を束ね、元の点つき群 cochain と非斉次関数複体の点つき余単体図式の自然同型を得た。
+従って対象ごとの比較だけでなく、全ての顔・退化と基点を保つ比較がある。
+
+さらに任意の単体射の自由軌道の構造射を部分積と隣接座標の比で展開した。
+これを関数の前合成へ代入して、係数の群作用を含む余単体構造射の具体式を得た。
+この単位は単体集合の余単体図式の比較であり、Tot の π_* の計算をまだ主張しない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `FreeActionFamily.functionPre` / `functionPre_eval` | 軌道代表の像による関数の前合成の座標式 |
+| `FreeActionFamily.functionIso` / `functionIso_pre` | 自由作用の end の関数表示と重みへの自然性 |
+| `GroupActionCochains.freeUniversalCover` / `universalCoverFreeNatIso` | 非斉次座標の単体的な自由軌道図式と EG との自然同型 |
+| `GroupActionCochains.functionCochains` | 非斉次関数複体の余単体図式 |
+| `SimplicialFunctionComplex.pointedObj` | 全座標を元の基点にした点つき関数複体 |
+| `FreeActionFamily.pointedFunctionPre` / `pointedFunctionIso` / `pointedFunctionIso_pre` | 基点を保つ自由軌道の関数表示と自然性 |
+| `WeightedCochains.weightIso` | 単体的な重みの同型による cochain 図式の同型 |
+| `GroupActionCochains.pointedFunctionCochains` / `freeFunctionNatIso` | 点つき非斉次図式と自由軌道 cochain の同型 |
+| `PointedActionCochains.functionNatIso` | 元の点つき群 cochain 全体の非斉次関数図式への同型 |
+| `GroupActionCochains.freeUniversalCover_map_apply` / `functionCochains_map_apply` | 任意の単体射の部分積と隣接座標の比による具体式 |
+
+参照：Goerss–Jardine VIII §2、HA §1.4.2。
+保存単位の対象ビルド 3832 jobs 成功。
+私有宣言を含む 388 モジュール 3939 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。

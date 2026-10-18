@@ -1,5 +1,15 @@
 module
 
+public import SerrePositivity.KST.Spectra.FreeActionFunctionPre
+public import SerrePositivity.KST.Spectra.FreeActionFunctionIso
+public import SerrePositivity.KST.Spectra.FreeUniversalCover
+public import SerrePositivity.KST.Spectra.GroupFunctionCochains
+public import SerrePositivity.KST.Spectra.FreePointedFunctionIso
+public import SerrePositivity.KST.Spectra.FreePointedFunctionNaturality
+public import SerrePositivity.KST.Spectra.WeightedCochainsWeightIso
+public import SerrePositivity.KST.Spectra.PointedGroupFunctionCochains
+public import SerrePositivity.KST.Spectra.FreeUniversalCoverCoordinates
+
 public import SerrePositivity.KST.Spectra.SimplicialFunctionComplex
 public import SerrePositivity.KST.Spectra.FunctionComplexPointedSimplex
 public import SerrePositivity.KST.Spectra.FunctionComplexHomotopyGroups
