@@ -3,6 +3,7 @@ public import SerrePositivity.KST.Descent
 public import SerrePositivity.KST.Comparison
 public import SerrePositivity.InfinityCategories.DGNerve
 public import SerrePositivity.InfinityCategories.Derived
+public import SerrePositivity.InfinityCategories.Stable
 
 public import SerrePositivity.InfinityCategories.Core
 public import SerrePositivity.InfinityCategories.F1

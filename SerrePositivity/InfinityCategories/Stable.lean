@@ -1,0 +1,9 @@
+module
+public import SerrePositivity.InfinityCategories.Stable.Pointed
+
+/-! # 安定 ∞ 圏の基盤
+
+概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
+方針：A2 の join・slice の極限の一般論を用いる。
+規約：HA §1.1 に従う。使われ方：h C の三角構造・完全関手と D(S) の安定性。
+-/
