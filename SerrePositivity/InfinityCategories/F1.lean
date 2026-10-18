@@ -54,3 +54,4 @@ public import SerrePositivity.InfinityCategories.F1.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.PointedSpaces
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraightening
 public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.CoherentVertices

@@ -265,3 +265,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.vertexFiberPullbackIso
 #check @SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι
 #check @SerrePositivity.InfinityCategories.leftUnstraighteningFiberIso
+#check @SerrePositivity.InfinityCategories.coherentNerveVertex
+#check @SerrePositivity.InfinityCategories.thickeningZero_eId_epi
+#check @SerrePositivity.InfinityCategories.coherentNerveObject
+#check @SerrePositivity.InfinityCategories.coherentNerveObject_vertex
+#check @SerrePositivity.InfinityCategories.coherentNerveVertex_object
+#check @SerrePositivity.InfinityCategories.coherentNerveVertexEquiv
+#check @SerrePositivity.InfinityCategories.spaceInfinityVertex_eq_coherent
+#check @SerrePositivity.InfinityCategories.spaceInfinityObject
+#check @SerrePositivity.InfinityCategories.spaceInfinityVertexEquiv

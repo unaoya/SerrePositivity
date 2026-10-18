@@ -45,7 +45,7 @@ Kerodon 5.6 の証明（5.3 の「fibration の ∞ 圏」、5.4 の （∞,2）
 ## 3. 現在地と主要宣言
 
 ```lean
-universe u
+universe u v
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
@@ -1090,6 +1090,31 @@ noncomputable def leftUnstraighteningFiberIso {C : SSet.{u + 1}}
     (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
     vertexFiber (leftUnstraighteningProjection F) c ≅
       vertexFiber pointedSpaceProjection (F.app (Opposite.op ⦋0⦌) c)
+
+noncomputable def coherentNerveVertex {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (K : C) : (SimplicialNerve C) _⦋0⦌
+
+lemma thickeningZero_eId_epi (o : SimplicialThickening (ULift.{u} (Fin 1))) :
+    Epi (eId SSet o)
+
+def coherentNerveObject {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (s : (SimplicialNerve C) _⦋0⦌) : C
+
+lemma coherentNerveObject_vertex {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (K : C) : coherentNerveObject (coherentNerveVertex K) = K
+
+lemma coherentNerveVertex_object {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (s : (SimplicialNerve C) _⦋0⦌) : coherentNerveVertex (coherentNerveObject s) = s
+
+noncomputable def coherentNerveVertexEquiv (C : Type v) [Category.{u} C] [SimplicialCategory C] :
+    C ≃ (SimplicialNerve C) _⦋0⦌
+
+lemma spaceInfinityVertex_eq_coherent (K : KanObject.{u}) :
+    spaceInfinityVertex K = coherentNerveVertex K
+
+def spaceInfinityObject (s : SpaceInfinity.{u} _⦋0⦌) : KanObject.{u}
+
+noncomputable def spaceInfinityVertexEquiv : KanObject.{u} ≃ SpaceInfinity.{u} _⦋0⦌
 
 end SerrePositivity.InfinityCategories
 ```
