@@ -144,10 +144,13 @@ blowup 後の有限忠実平坦細分を構成した。アフィンの場合の�
 中心を逆にした後の閉台の空性と実際の可換係数の有限射影複体の零対象性も証明した（§68）。
 中心局所化の共通核を既存の scalarSupported の部分圏と同定し、
 元の圏への忘却と局所化に可換な係数変更への自然性を保つ加法的な線形圏同値を構成した（§69）。
+単体的重みつき錐空間の Fubini を実際の右随伴の自然同型として証明した。
+積添字と反復した射影的模型の Quillen 随伴から外重みの cofibrancy を導き、
+既存の二つのホモトピー錐の重みの外積にも可縮な指定増強を構成した（§70）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 173 モジュール・2021 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 176 モジュール・2045 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -448,6 +451,16 @@ Z 上の帰納仮定で残りの辺を同型とする。
 (3.6) により全次数の支持つき K の主張にする。
 
 ## 17. 主要宣言の表
+
+| 宣言（§70） | 内容 | 状態 |
+| --- | --- | --- |
+| `externalCechWeight`、`externalCechWeightIso` | 二つの単体的重みの外積と反復テンソル関手による表示 | 対象ビルド済み |
+| `externalCechTensorIso`、`iteratedCechConeAdjunction`、`weightedCechFubiniIso` | 実際の左随伴の結合子と右随伴の一意性による錐空間の Fubini | 対象ビルド済み、導来性の比較は別工程 |
+| `cechCurry_isRightQuillen`、`cechUncurry_isLeftQuillen` | 積添字と反復した射影的模型の Quillen 随伴 | 対象ビルド済み、左クラスを点ごととはしない |
+| `externalCechWeight_isCofibrant` | 射影的 cofibrant 重みの外積の cofibrancy | 対象ビルド済み、左 Quillen 関手で導出 |
+| `externalCechWeightAugmentation`、`externalCechWeightAugmentation_weakEquivalence` | 二つの可縮重みの外積の指定増強と各点の弱同値 | 対象ビルド済み |
+| `homotopyCechProductWeight`、`homotopyCechProductWeight_isCofibrant`、`homotopyCechProductWeightAugmentation_weakEquivalence` | 既存の選択されたホモトピー錐の二つの重みの cofibrant な可縮外積 | 対象ビルド済み、新しい置換の仮定は不要 |
+
 
 | 宣言（§69） | 内容 | 状態 |
 | --- | --- | --- |
@@ -2549,3 +2562,36 @@ K0・T2 から実際に供給すべき明示的な入力である。
 `InfinityCategories.F1.RelativeFunctorVertices` の `relativeFunctorVertex` 重複で失敗。
 `set -eo pipefail` で終了コード 1 を確認。ログは `/tmp/l8-central-kernel-full-build.log`。
 L8 の対象ビルド・監査は成功しており、所有範囲外の宣言は変更しない。
+
+
+## 70. 単体的重みつき錐空間の Fubini と cofibrant な可縮外重み
+
+論文 補題 3.2・3.3 の二重 Čech の Fubini へ進むため、既存の単体集合の
+WeightedCones の実際の右随伴を使った模型での比較を構成した。
+二つの重み W, V の外テンソル積を積添字上の実際の関手として作り、
+外重みとのテンソルと二段のテンソル関手の間を結合子の逆で自然同定した。
+二つの重みつき随伴と curry/uncurry の同値の随伴を合成し、
+右随伴の一意性から外重みの錐空間と反復した錐空間の自然同型を得た。
+通常の極限をホモトピー極限として代用したものではなく、実際の重みつき右随伴の比較である。
+
+積添字上の射影的模型と、内側・外側の順に反復した射影的模型について、
+curry は右 Quillen であると二つの添字で右クラスを評価して証明した。
+随伴から uncurry の左 Quillen 性を得た。射影的 cofibration を点ごとの cofibration と
+同一視せず、二つの重みがそれぞれ実際に射影的 cofibrant であるという条件から、
+内側とのテンソル関手の左 Quillen 性を外側へ持ち上げ、uncurry して
+外テンソル積の実際の射影的 cofibrancy を導いた。
+
+二つの単位重みへの増強のテンソル積と単位子で、外重みの指定増強を構成した。
+単体集合の全 cofibrancy と左右テンソルの左 Quillen 性から、二つの元の増強が
+各点で弱同値なら外重みの増強も各積添字で弱同値であることを証明した。
+既存の HomotopyCones の選択された二つの重みへ適用し、
+積添字上の cofibrant で各点で可縮な外重みを実際に得た。
+
+残る接続：fibrant な図式に対する重みの変更と実際のホモトピー極限の比較、
+反復した fibrant 置換との比較を行い、導来 Fubini へ進める。
+Sp 内の Tot と hG は L9 の実現を使う責務が残り、ここまでを Tot の Fubini の完成とは数えない。
+原典の τ 位相の層論を Čech 計算へ置換する方針に従う。
+(3.6)・TT・自然な blowup 列・最小公理全体・E の実現も未完。
+
+§70 の保存検証：集約対象ビルドと公理監査が成功。176 モジュール・2045 宣言、標準三公理のみ。
+この保存単位では対象ビルドと監査を実行。全体ビルドの所有範囲外の失敗は §69 の記録どおり。

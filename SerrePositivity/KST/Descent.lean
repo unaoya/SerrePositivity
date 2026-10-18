@@ -178,6 +178,10 @@ public import SerrePositivity.KST.Descent.PerfectSupportInversion
 public import SerrePositivity.KST.Descent.CentralKernelIdentification
 public import SerrePositivity.KST.Descent.CentralKernelNaturality
 
+public import SerrePositivity.KST.Descent.WeightedCechFubini
+public import SerrePositivity.KST.Descent.WeightedCechCofibrancy
+public import SerrePositivity.KST.Descent.WeightedCechAugmentation
+
 /-!
 # K-L8：論文 §3 の降下
 
@@ -301,6 +305,8 @@ K0・T2 による比較データの供給と (3.6) の同定自体は未完。
 中心を逆にした後の閉台の空性と、既存の可換係数の実際の有限射影複体の零対象性も証明する。
 中心局所化の共通核と既存の scalarSupported の加法的な線形圏同値を構成し、
 忘却と係数変更に関する自然同型を保持する。
+単体的重みつき錐空間の Fubini を実際の右随伴の自然同型で証明し、
+積添字の射影的 cofibrancy と選択されたホモトピー錐の外重みの可縮増強も構成する。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
