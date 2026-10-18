@@ -14492,3 +14492,394 @@ X の安定性や前加法構造は不要である。
 ループの群構造と双積の加法の一致、swapIso = -id、回転第三射の負号、TR2、
 八面体・TR4、Pretriangulated instance、S5〜S7 は未完了。
 逆射との一致だけを加法の負号との一致とは数えない。α-S 全体の目標は継続中。
+
+
+## 2026-10-19：ループ積の自然性・単位と表現可能な演算の加法判定
+
+底を変える可換正方形 f ≫ q = p ≫ g から自己引き戻しの射 `kanKernelPairMap` と
+基点の像の上の fiber の射 `kanKernelPairFiberMap` を構成した。
+両射影・fiber 包含後の式と固定 fiber の包含との可換性を証明した。
+
+`leftFibrationInitialVertexHom_square` は代表辺を二通りに底へ送る厳密な一致と、
+両端の等号輸送によって頂点の Hom 表示の自然性を証明する。
+仮定は四空間の quasicategory 性、始点とその像の始対象性、可換正方形。
+`kanKernelPairPiZeroLoopEquiv_naturality` は固定 fiber の包含の π₀ 全射性を使って
+ループ比較全体の自然性を得る。仮定は両射が Kan fibration、両全空間が可縮な Kan、
+両底が Kan、指定基点、可換正方形。基点の像の等号は eqToHom の可換式として明示した。
+
+`kanKernelPairDiagonal` とその自然性を構成し、対角の基点の成分のループ表示が恒等射になることを
+`kanKernelPairPiZeroLoopEquiv_diagonal` で証明した。
+`kanKernelPairLoopProduct` はループの射の合成を同値で自己引き戻しの π₀ に移した演算。
+結合則、対角成分の左右単位、二成分交換が右逆元となる式、可換正方形が積を保つ自然性まで証明した。
+これらの結果は X の安定性や前加法構造を仮定しない。
+
+`representableOperation_eq_add` は一般の前加法圏で二項双積があるとき、
+Hom(A,B) の二項演算が後合成に自然で零射を左右単位とすれば、既存の加法と一致することを示す。
+演算の結合則・可換性は仮定しない。二つの射を双積の別の成分に入れ、二射影で判定し、
+和を取る射へ合成して証明した。`representableRightInverse_eq_neg` は同じ演算の右逆元を -f に同定する。
+この抽象補題だけで懸垂交換の負号を証明したとは数えない。
+
+公開24宣言の正確な型（`#check @`、宇宙変数を含む）：
+
+```lean
+@SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} : {E B E' B' : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+    (q : Quiver.Hom.{u_1, u_1 + 1} E' B') →
+      (f : Quiver.Hom.{u_1, u_1 + 1} E E') →
+        (g : Quiver.Hom.{u_1, u_1 + 1} B B') →
+          Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g) →
+            Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)
+              (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} q q)
+@SerrePositivity.InfinityCategories.kanKernelPairMap_fst.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} E' B') (f : Quiver.Hom.{u_1, u_1 + 1} E E')
+  (g : Quiver.Hom.{u_1, u_1 + 1} B B')
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} p q f g h)
+      (CategoryTheory.Limits.pullback.fst.{u_1, u_1 + 1} q q))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Limits.pullback.fst.{u_1, u_1 + 1} p p) f)
+@SerrePositivity.InfinityCategories.kanKernelPairMap_snd.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} E' B') (f : Quiver.Hom.{u_1, u_1 + 1} E E')
+  (g : Quiver.Hom.{u_1, u_1 + 1} B B')
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} p q f g h)
+      (CategoryTheory.Limits.pullback.snd.{u_1, u_1 + 1} q q))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Limits.pullback.snd.{u_1, u_1 + 1} p p) f)
+@SerrePositivity.InfinityCategories.kanKernelPairMap_basepoint.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} E' B') (f : Quiver.Hom.{u_1, u_1 + 1} E E')
+  (g : Quiver.Hom.{u_1, u_1 + 1} B B'),
+  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g) →
+    ∀ (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })),
+      Eq.{u_1 + 1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} g (Opposite.op.{1} { len := 0 })))
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+            e))
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+            e))
+@SerrePositivity.InfinityCategories.kanKernelPairFiberMap.{u_1} : {E B E' B' : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+    (q : Quiver.Hom.{u_1, u_1 + 1} E' B') →
+      (f : Quiver.Hom.{u_1, u_1 + 1} E E') →
+        (g : Quiver.Hom.{u_1, u_1 + 1} B B') →
+          Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g) →
+            (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })) →
+              Quiver.Hom.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p
+                  ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                      (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+                    e))
+                (SerrePositivity.InfinityCategories.vertexFiber.{u_1} q
+                  ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                      (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))
+                    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+                      e)))
+@SerrePositivity.InfinityCategories.kanKernelPairFiberMap_ι.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} E' B') (f : Quiver.Hom.{u_1, u_1 + 1} E E')
+  (g : Quiver.Hom.{u_1, u_1 + 1} B B')
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g))
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.kanKernelPairFiberMap.{u_1} p q f g h e)
+      (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} q
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+            e))))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+          e))
+      f)
+@SerrePositivity.InfinityCategories.kanKernelPairFiberMap_inclusion.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} E' B') (f : Quiver.Hom.{u_1, u_1 + 1} E E')
+  (g : Quiver.Hom.{u_1, u_1 + 1} B B')
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g))
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.kanKernelPairFiberInclusion.{u_1} p e)
+      (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} p q f g h))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.kanKernelPairFiberMap.{u_1} p q f g h e)
+      (SerrePositivity.InfinityCategories.kanKernelPairFiberInclusion.{u_1} q
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+          e)))
+@SerrePositivity.InfinityCategories.leftFibrationInitialVertexHom_eq_edge.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} E] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (he : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} e)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 }))
+  (s :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p y)
+      (Opposite.op.{1} { len := 0 }))
+  (a : SSet.Truncated.Edge.{u_1} e ↑s),
+  Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.leftFibrationInitialVertexHom.{u_1} p e he y s)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (SSet.Truncated.HomotopyCategory.homMk.{u_1}
+        (SSet.Truncated.Edge.map.{u_1} a
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) p)))
+      (CategoryTheory.eqToHom.{u_1, u_1} ⋯))
+@SerrePositivity.InfinityCategories.leftFibrationInitialVertexHom_square.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} E] [SSet.Quasicategory.{u_1} B] [inst_2 : SSet.Quasicategory.{u_1} E']
+  [SSet.Quasicategory.{u_1} B'] (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} E' B')
+  (f : Quiver.Hom.{u_1, u_1 + 1} E E') (g : Quiver.Hom.{u_1, u_1 + 1} B B')
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g))
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (he : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} e)
+  (he' :
+    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+        e))
+  (s :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+          e))
+      (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (CategoryTheory.eqToHom.{u_1, u_1} ⋯)
+      (SerrePositivity.InfinityCategories.leftFibrationInitialVertexHom.{u_1} q
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+          e)
+        he'
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+            e))
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.kanKernelPairFiberMap.{u_1} p q f g h e)
+              (Opposite.op.{1} { len := 0 })))
+          s)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} g))
+        (SerrePositivity.InfinityCategories.leftFibrationInitialVertexHom.{u_1} p e he
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+            e)
+          s))
+      (CategoryTheory.eqToHom.{u_1, u_1} ⋯))
+@SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv_naturality.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  [inst : SSet.KanComplex.{u_1} E] [inst_1 : SSet.KanComplex.{u_1} B] [inst_2 : SSet.KanComplex.{u_1} E']
+  [inst_3 : SSet.KanComplex.{u_1} B'] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_4 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p] (q : Quiver.Hom.{u_1, u_1 + 1} E' B')
+  [inst_5 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} q] (f : Quiver.Hom.{u_1, u_1 + 1} E E')
+  (g : Quiver.Hom.{u_1, u_1 + 1} B B')
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g))
+  (hE : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E)
+  (hE' : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E')
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (c : SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (CategoryTheory.eqToHom.{u_1, u_1} ⋯)
+      ((SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv.{u_1} q hE'
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+            e))
+        (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} p q f g h) c)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} g))
+        ((SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv.{u_1} p hE e) c))
+      (CategoryTheory.eqToHom.{u_1, u_1} ⋯))
+@SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} : {E B : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) → Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)
+@SerrePositivity.InfinityCategories.kanKernelPairDiagonal_fst.{u_1} : ∀ {E B : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} p)
+      (CategoryTheory.Limits.pullback.fst.{u_1, u_1 + 1} p p))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} E)
+@SerrePositivity.InfinityCategories.kanKernelPairDiagonal_snd.{u_1} : ∀ {E B : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} p)
+      (CategoryTheory.Limits.pullback.snd.{u_1, u_1 + 1} p p))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} E)
+@SerrePositivity.InfinityCategories.kanKernelPairDiagonal_map.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} E' B') (f : Quiver.Hom.{u_1, u_1 + 1} E E')
+  (g : Quiver.Hom.{u_1, u_1 + 1} B B')
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} p)
+      (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} p q f g h))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+      (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} q))
+@SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv_diagonal.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.KanComplex.{u_1} E] [inst_1 : SSet.KanComplex.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_2 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p]
+  (hE : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E)
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv.{u_1} p hE e)
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} p) (SSet.π₀.mk.{u_1} e)))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+      (SSet.HomotopyCategory.mk.{u_1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+          e)))
+@SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} : {E B : SSet.{u_1}} →
+  [SSet.KanComplex.{u_1} E] →
+    [SSet.KanComplex.{u_1} B] →
+      (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+        [HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p] →
+          SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E →
+            CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }) →
+              SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p) →
+                SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p) →
+                  SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)
+@SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv_product.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.KanComplex.{u_1} E] [inst_1 : SSet.KanComplex.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_2 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p]
+  (hE : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E)
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (a b : SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv.{u_1} p hE e)
+      (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e a b))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      ((SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv.{u_1} p hE e) a)
+      ((SerrePositivity.InfinityCategories.kanKernelPairPiZeroLoopEquiv.{u_1} p hE e) b))
+@SerrePositivity.InfinityCategories.kanKernelPairLoopProduct_assoc.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.KanComplex.{u_1} E] [inst_1 : SSet.KanComplex.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_2 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p]
+  (hE : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E)
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (a b c : SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e
+      (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e a b) c)
+    (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e a
+      (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e b c))
+@SerrePositivity.InfinityCategories.kanKernelPairLoopProduct_diagonal_left.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.KanComplex.{u_1} E] [inst_1 : SSet.KanComplex.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_2 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p]
+  (hE : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E)
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (a : SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} p) (SSet.π₀.mk.{u_1} e)) a)
+    a
+@SerrePositivity.InfinityCategories.kanKernelPairLoopProduct_diagonal_right.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.KanComplex.{u_1} E] [inst_1 : SSet.KanComplex.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_2 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p]
+  (hE : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E)
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (a : SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e a
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} p) (SSet.π₀.mk.{u_1} e)))
+    a
+@SerrePositivity.InfinityCategories.kanKernelPairLoopProduct_swap.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.KanComplex.{u_1} E] [inst_1 : SSet.KanComplex.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_2 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p]
+  (hE : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E)
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (a : SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e a
+      (SSet.mapπ₀.{u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (CategoryTheory.Limits.pullbackSymmetry.{u_1, u_1 + 1} p p)) a))
+    (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1} p) (SSet.π₀.mk.{u_1} e))
+@SerrePositivity.InfinityCategories.kanKernelPairLoopProduct_naturality.{u_1} : ∀ {E B E' B' : SSet.{u_1}}
+  [inst : SSet.KanComplex.{u_1} E] [inst_1 : SSet.KanComplex.{u_1} B] [inst_2 : SSet.KanComplex.{u_1} E']
+  [inst_3 : SSet.KanComplex.{u_1} B'] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_4 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} p] (q : Quiver.Hom.{u_1, u_1 + 1} E' B')
+  [inst_5 : HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} q] (f : Quiver.Hom.{u_1, u_1 + 1} E E')
+  (g : Quiver.Hom.{u_1, u_1 + 1} B B')
+  (h :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} p g))
+  (hE : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E)
+  (hE' : SerrePositivity.InfinityCategories.IsContractibleKan.{u_1} E')
+  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (a b : SSet.π₀.{u_1} (CategoryTheory.Limits.pullback.{u_1, u_1 + 1} p p)),
+  Eq.{u_1 + 1}
+    (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} p q f g h)
+      (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} p hE e a b))
+    (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1} q hE'
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} f (Opposite.op.{1} { len := 0 })))
+        e)
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} p q f g h) a)
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1} p q f g h) b))
+@SerrePositivity.InfinityCategories.representableOperation_eq_add.{u_1,
+    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Preadditive.{u_1, u_2} C] [CategoryTheory.Limits.HasBinaryBiproducts.{u_1, u_2} C] (A : C)
+  (μ : (B : C) → Quiver.Hom.{u_1, u_2} A B → Quiver.Hom.{u_1, u_2} A B → Quiver.Hom.{u_1, u_2} A B),
+  (∀ (B : C) (f : Quiver.Hom.{u_1, u_2} A B), Eq.{u_1 + 1} (μ B 0 f) f) →
+    (∀ (B : C) (f : Quiver.Hom.{u_1, u_2} A B), Eq.{u_1 + 1} (μ B f 0) f) →
+      (∀ (B D : C) (f g : Quiver.Hom.{u_1, u_2} A B) (h : Quiver.Hom.{u_1, u_2} B D),
+          Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_2} (μ B f g) h)
+            (μ D (CategoryTheory.CategoryStruct.comp.{u_1, u_2} f h)
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_2} g h))) →
+        ∀ (B : C) (f g : Quiver.Hom.{u_1, u_2} A B), Eq.{u_1 + 1} (μ B f g) (HAdd.hAdd.{u_1, u_1, u_1} f g)
+@SerrePositivity.InfinityCategories.representableRightInverse_eq_neg.{u_1,
+    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]
+  [inst_1 : CategoryTheory.Preadditive.{u_1, u_2} C] [CategoryTheory.Limits.HasBinaryBiproducts.{u_1, u_2} C] (A : C)
+  (μ : (B : C) → Quiver.Hom.{u_1, u_2} A B → Quiver.Hom.{u_1, u_2} A B → Quiver.Hom.{u_1, u_2} A B),
+  (∀ (B : C) (f : Quiver.Hom.{u_1, u_2} A B), Eq.{u_1 + 1} (μ B 0 f) f) →
+    (∀ (B : C) (f : Quiver.Hom.{u_1, u_2} A B), Eq.{u_1 + 1} (μ B f 0) f) →
+      (∀ (B D : C) (f g : Quiver.Hom.{u_1, u_2} A B) (h : Quiver.Hom.{u_1, u_2} B D),
+          Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_2} (μ B f g) h)
+            (μ D (CategoryTheory.CategoryStruct.comp.{u_1, u_2} f h)
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_2} g h))) →
+        ∀ (ν : (B : C) → Quiver.Hom.{u_1, u_2} A B → Quiver.Hom.{u_1, u_2} A B),
+          (∀ (B : C) (f : Quiver.Hom.{u_1, u_2} A B), Eq.{u_1 + 1} (μ B f (ν B f)) 0) →
+            ∀ (B : C) (f : Quiver.Hom.{u_1, u_2} A B), Eq.{u_1 + 1} (ν B f) (Neg.neg.{u_1} f)
+```
+
+対象ビルドは Map 2300 jobs、Naturality 2303 jobs、Diagonal 2304 jobs、
+LoopProduct 2305 jobs、RepresentableAddition 941 jobs、Stable 集約 2628 jobs で終了コード 0。
+公開型抽出・公理監査も終了コード 0。
+監査は 290 モジュール・2164 宣言（生成・非公開宣言を含む）、
+標準三公理 propext・Classical.choice・Quot.sound のみ。
+新規五モジュールの警告なし。担当ファイルを指定した git diff --check 成功。
+引用・追加公理・sorry は導入していない。他レーンのファイルは変更していない。
+
+未完了の義務は、終点の射に沿う余錐空間の輸送を二枝と共通始点で整合的に与えること、
+その π₀ 上の作用が余錐の Hom 表示で後合成となること、対角成分が零射に対応すること、
+Hom に移したループ積に加法の一般判定を適用すること。
+従って swapIso = -id、回転第三射の負号、TR2、八面体・TR4、Pretriangulated instance、
+S5〜S7 は未完了。α-S 全体の目標は継続中。

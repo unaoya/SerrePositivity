@@ -607,9 +607,29 @@ E ×_B E → pinchedHomLeft (r e) (r e) の実際の射を与える。
 `_homotopyEquivalence` は X Quasicategory・z 始対象の下での同値性。安定性全体は不要。
 `symmetricCoconePiZeroLoopEquiv` と `_eq_comparison` は π₀ の Hom 同値と実際の射の一致。
 これで対称 span 全体の余錐空間からループ模型への表示の輸送まで完成した。
-**ループ比較が成分交換を逆射へ送ること・群構造との両立はまだ主張しない**。
-**負号との一致は未証明**。残る義務は交換がループの逆射に対応する計算と、
-ループの群構造と構成済みの双積の加法の一致。
+`kanKernelPairFiberInclusion` は元の基点の像の fiber を第二成分固定の自己引き戻しに含め、
+E が可縮な Kan・射が Kan fibration なら π₀ で全単射となる。
+`exists_kanKernelPairSwap_fiber_path` は交換された頂点から固定 fiber へ戻す辺を、
+基点への辺とその底への像の持ち上げの組として構成する。
+`kanKernelPairPiZeroLoopEquiv_comp_swap`・`_swap` は二成分交換をループの逆射へ送り、
+`symmetricCoconePiZeroLoopEquiv_comp_swap`・`_swap` は対称 span の二枝交換への適用。
+二乗が恒等という性質だけから逆射を推論せず、二辺の底への厳密な一致から合成の恒等式を証明した。
+`kanKernelPairMap`・`kanKernelPairFiberMap` は底を変える可換正方形が誘導する射。
+`kanKernelPairFiberMap_inclusion` は固定 fiber の包含との可換性。
+`leftFibrationInitialVertexHom_square` は四空間が quasicategory で始点と像が始対象のとき、
+代表辺を二通りに底へ送る公式を比較する。これにより `kanKernelPairPiZeroLoopEquiv_naturality` を
+両射が Kan fibration・両全空間が可縮な Kan・両底が Kan の仮定で証明した。
+底の基点の等号は eqToHom による可換式として明示する。
+`kanKernelPairDiagonal` は自己引き戻しの対角、`kanKernelPairPiZeroLoopEquiv_diagonal` は
+基点の対角成分がループの恒等射を表すことを示す。
+`kanKernelPairLoopProduct` はループの射の合成を π₀ に移した演算。
+結合則、対角成分の左右単位、交換による右逆元、可換正方形での積の自然性を証明した。
+`representableOperation_eq_add` は一般の前加法圏で二項双積が存在するとき、
+後合成に自然で零射を左右単位に持つ Hom(A,B) 上の演算が既存の加法に一致することを示す。
+演算の結合性や可換性は仮定しない。`representableRightInverse_eq_neg` はその右逆元を負号に同定する。
+これらの抽象補題の自然性・零単位の仮定を、余錐の Hom 表示へ移したループ演算で満たす工程は未完了。
+**負号との一致は未証明**。残る義務は終点の変化に沿う余錐空間の輸送とその二枝への整合、
+Hom の後合成への対応、対角成分と零射との照合、構成済みの双積の加法への適用。
 表現可能な比較の完成を符号・TR2 全体の完成とは数えない。
 八面体、Pretriangulated instance も未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
@@ -769,6 +789,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 可縮な枝の自己引き戻しとループ模型 | `vertexFiberι_homotopyEquivalence_of_contractible_base`（Kan fibration、Kan な全空間・可縮な底）、`kanKernelPairLoopComparison_homotopyEquivalence`（Kan fibration、E・B Kan、E 可縮、基点 e）、`kanKernelPairPiZeroLoopEquiv_fiber`、`coconeBranchKernelPairLoopComparison_homotopyEquivalence`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 実際のホモトピー同値・π₀ の Hom 同値と固定 fiber 上の計算まで完成。交換と逆射の両立も下記で完成。群構造と加法との一致は未証明 |
 | 対称 span 全体からのループ比較 | `symmetricCoconeBranches_isPullback`・`symmetricCoconeKernelPairIso`・`symmetricCoconeKernelPairIso_swap`（値域の仮定なし）、`symmetricCoconeLoopComparison_homotopyEquivalence`・`symmetricCoconePiZeroLoopEquiv_eq_comparison`（Quasicategory、辺の終点の始対象性、枝の余錐の基点） | 全体の余錐空間のループ模型への実際のホモトピー同値と、自己引き戻しへの交換作用の転送まで完成。ループの逆射との一致も下記で完成。加法の負号との一致は未証明 |
 | 二成分・二枝交換とループの逆射 | `kanKernelPairFiberInclusion_piZero_bijective`（Kan fibration、E Kan・可縮）、`exists_kanKernelPairSwap_fiber_path`（同前）、`kanKernelPairPiZeroLoopEquiv_comp_swap`・`kanKernelPairPiZeroLoopEquiv_swap`（さらに B Kan）、`symmetricCoconePiZeroLoopEquiv_comp_swap`・`symmetricCoconePiZeroLoopEquiv_swap`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 成分交換と二枝交換がループの逆射となることまで完成。ループの群構造と双積の加法との一致、負号、TR2 は未証明 |
+| ループ積の自然性と加法の一般判定 | `kanKernelPairPiZeroLoopEquiv_naturality`（両射 Kan fibration、両全空間 Kan・可縮、両底 Kan、可換正方形）、`kanKernelPairPiZeroLoopEquiv_diagonal`・`kanKernelPairLoopProduct` と結合則・左右単位・交換右逆元・自然性（同前）、`representableOperation_eq_add`・`representableRightInverse_eq_neg`（一般の前加法圏、二項双積、演算の零単位・後合成自然性） | 自己引き戻しの π₀ 上の自然なループ積と、加法へ照合する一般補題が完成。余錐の Hom 表示に移した演算の後合成自然性・零単位の照合と適用は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

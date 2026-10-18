@@ -1349,7 +1349,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.KanKernelPairFiber,
     `SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapPath,
     `SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapInverse,
-    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopSwap]
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopSwap,
+    `SerrePositivity.InfinityCategories.Stable.KanKernelPairMap,
+    `SerrePositivity.InfinityCategories.Stable.KanKernelPairNaturality,
+    `SerrePositivity.InfinityCategories.Stable.KanKernelPairDiagonal,
+    `SerrePositivity.InfinityCategories.Stable.KanKernelPairLoopProduct,
+    `SerrePositivity.InfinityCategories.Stable.RepresentableAddition]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

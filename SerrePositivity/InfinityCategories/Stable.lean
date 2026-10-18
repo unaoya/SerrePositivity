@@ -182,6 +182,12 @@ public import SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapPath
 public import SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapInverse
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopSwap
 
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairMap
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairNaturality
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairDiagonal
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairLoopProduct
+public import SerrePositivity.InfinityCategories.Stable.RepresentableAddition
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
