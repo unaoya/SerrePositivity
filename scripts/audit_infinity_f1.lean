@@ -1549,3 +1549,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.Join.delta_zero_left_heq_of_left_heq
 #check @SerrePositivity.InfinityCategories.Join.delta_last_right_heq_of_right_heq
 #check @SerrePositivity.InfinityCategories.Join.Simplex.exists_extreme_faces
+#check @SerrePositivity.InfinityCategories.Join.pullCut_delta_inner_mixed
+#check @SerrePositivity.InfinityCategories.join_horn_face_cut
+#check @SerrePositivity.InfinityCategories.horn_inner_face_zero_comp
+#check @SerrePositivity.InfinityCategories.horn_inner_face_last_comp
+#check @SerrePositivity.InfinityCategories.intervalSimplex_eq_of_pullCut_eq
+#check @SerrePositivity.InfinityCategories.intervalHom_eq_const_one_of_cut_zero
+#check @SerrePositivity.InfinityCategories.intervalHom_eq_const_zero_of_cut_all

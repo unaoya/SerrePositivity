@@ -7054,5 +7054,40 @@ lemma Join.Simplex.exists_extreme_faces {X Y : SSet.{u}} {n : ℕ}
       Join.simplexMap X Y (SimplexCategory.δ (0 : Fin (n + 3))).toOrderHom s = a ∧
       Join.simplexMap X Y (SimplexCategory.δ (Fin.last (n + 2))).toOrderHom s = b
 
+lemma Join.pullCut_delta_inner_mixed (n l : ℕ) (hl0 : 0 < l) (hl1 : l ≤ n + 2)
+    (j : Fin (n + 3)) (hj0 : 0 < j) (hj1 : j < Fin.last (n + 2)) :
+    0 < Join.pullCut (SimplexCategory.δ j).toOrderHom l ∧
+      Join.pullCut (SimplexCategory.δ j).toOrderHom l ≤ n + 1
+
+lemma join_horn_face_cut {X Y : SSet.{u}} (n : ℕ) (i : Fin (n + 3))
+    (a : (horn (n + 2) i : SSet.{u}) ⟶ join X Y) (t : (Δ[n + 2] : SSet.{u}) ⟶ Δ[1])
+    (ht : (horn (n + 2) i).ι ≫ t = a ≫ joinIntervalProjection X Y)
+    (j : Fin (n + 3)) (hj : j ≠ i) :
+    (a.app (Opposite.op ⦋n + 1⦌) (horn.face i j hj)).1.val =
+      Join.pullCut (SimplexCategory.δ j).toOrderHom
+        (Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1)
+
+lemma horn_inner_face_zero_comp (n : ℕ) (i j : Fin (n + 3)) (hi0 : 0 < i) (hj0 : 0 < j)
+    (hji : j ≠ i) :
+    stdSimplex.δ (0 : Fin (n + 2)) ≫ horn.ι i j hji =
+      stdSimplex.δ (j.pred (ne_of_gt hj0)) ≫ horn.ι i 0 (ne_of_gt hi0).symm
+
+lemma horn_inner_face_last_comp (n : ℕ) (i j : Fin (n + 3))
+    (hi1 : i < Fin.last (n + 2)) (hj1 : j < Fin.last (n + 2)) (hji : j ≠ i) :
+    stdSimplex.δ (Fin.last (n + 1)) ≫ horn.ι i j hji =
+      stdSimplex.δ (j.castPred (ne_of_lt hj1)) ≫ horn.ι i (Fin.last (n + 2)) (ne_of_gt hi1)
+
+lemma intervalSimplex_eq_of_pullCut_eq {n : ℕ} (s t : (Δ[1] : SSet.{u}) _⦋n⦌)
+    (hc : Join.pullCut (stdSimplex.objEquiv s).toOrderHom 1 =
+      Join.pullCut (stdSimplex.objEquiv t).toOrderHom 1) : s = t
+
+lemma intervalHom_eq_const_one_of_cut_zero {n : ℕ} (t : (Δ[n] : SSet.{u}) ⟶ Δ[1])
+    (hc : Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1 = 0) :
+    t = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma intervalHom_eq_const_zero_of_cut_all {n : ℕ} (t : (Δ[n] : SSet.{u}) ⟶ Δ[1])
+    (hc : Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1 = n + 1) :
+    t = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
 end SerrePositivity.InfinityCategories
 ```
