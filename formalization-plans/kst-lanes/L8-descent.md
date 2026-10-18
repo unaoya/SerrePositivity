@@ -133,10 +133,12 @@ blowup 後の有限忠実平坦細分を構成した。アフィンの場合の�
 例外部分の指定底変換との同型・二射影の保存を証明した（§63）。
 指定底変換と抽象 blowup の正方形の族を関手にし、元の正方形への比較立方体を自然変換にした。
 圏の選択された pullback との自然同型を増強先を保って混合 Čech と元の前層の像へ移した（§64）。
+抽象 blowup の四頂点の列を元の被覆の実際の底変換の Čech nerve と自然同定し、
+指定増強を保つ増強単体対象の同型へまとめた（§65）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 160 モジュール・1900 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 163 モジュール・1953 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -437,6 +439,15 @@ Z 上の帰納仮定で残りの辺を同型とする。
 (3.6) により全次数の支持つき K の主張にする。
 
 ## 17. 主要宣言の表
+
+| 宣言（§65） | 内容 | 状態 |
+| --- | --- | --- |
+| `finiteTypeCechColumnIso`、`finiteTypeCechColumnIso_augmentation`、`finiteTypeCechColumnIso_toOriginal` | 指定底変換列と実際の底変換被覆の Čech nerve の自然同型、増強・元の Čech への指定射の保存 | 対象ビルド済み |
+| `AbstractBlowupSquare.baseChangeExceptionalNatIso` | 例外部分と元の例外部分の指定底変換との全基底射に自然な同型 | 対象ビルド済み |
+| `AbstractBlowupSquare.cechColumn₁Iso`、`cechColumn₂Iso`、`cechColumn₃Iso` | 三つの非自明な頂点の列と実際の底変換被覆の Čech nerve の自然同型 | 対象ビルド済み |
+| `AbstractBlowupSquare.cechColumn₁Iso_augmentation`、`cechColumn₂Iso_augmentation`、`cechColumn₃Iso_augmentation` | 同じ指定増強の保存 | 対象ビルド済み |
+| `AbstractBlowupSquare.cechColumn₁AugmentedIso`、`cechColumn₂AugmentedIso`、`cechColumn₃AugmentedIso`、`cechColumn₄AugmentedIso` | 四頂点全ての列と実際の増強 Čech nerve の同型 | 対象ビルド済み、増強先を含む |
+
 
 | 宣言（§64） | 内容 | 状態 |
 | --- | --- | --- |
@@ -2331,3 +2342,37 @@ Tot の Fubini・分裂降下・細分の結論、最小公理全体、(3.6)・K
 67 行の rfl と 68 行の introN のエラーで失敗。`set -eo pipefail` で終了コード 1 を確認。
 ログは `/tmp/l8-blowup-basechange-functor-full-build.log`。L8 の import 閉包は対象ビルドと監査を通過している。
 所有範囲外を編集・回避せず、指定底変換の Čech 列の比較を続ける。
+
+
+## 65. 抽象 blowup の四頂点の列と実際の増強 Čech nerve の比較
+
+論文 補題 3.3 の抽象 blowup を元の被覆の全 Čech 段に底変換して得る列を、
+実際に元の被覆を各頂点へ底変換した被覆の Čech nerve と同定した。
+まず一般の射 f と被覆 cover について、指定 `finiteTypePullback` の列の
+二つの自然な射影を構成し、列全体が定数図式と元の増強の幾何的引き戻しであることを
+各段の指定 Cartesian 性から証明した。Čech 底変換の Cartesian 正方形と比較することで、
+選択された底変換被覆の Čech nerve との自然同型を得る。
+さらに実際の `finiteTypePullbackSnd cover f` の Arrow の標準同型を Čech nerve で写し、
+実際の指定底変換被覆そのものとの自然同型を構成した。
+増強先 X への増強と元の cover の Čech nerve への指定射も両方保持する。
+
+抽象 blowup の右上・左下・右下の列は、それぞれ指定底変換列・元の Čech nerve と
+定義から同じ関手になる。左上の例外部分については §63 の標準同型が
+全基底射に自然であることを二射影で証明した。
+この一般の Over の自然同型を元の Čech 図式へ制限し、例外部分の列との比較を得た。
+Čech の巨大な各段の型を直接展開せず、先に全基底射に関する証明を行う構造である。
+
+元の正方形への自然な比較立方体を各頂点の評価関手で写し、指定増強を固定した。
+三つの非自明な頂点の列の自然同型がそれぞれの増強を保つことを証明し、
+四頂点全てについて、元の被覆の実際の底変換の増強 Čech nerve との同型にまとめた。
+これは各頂点の値の同型の寄せ集めではなく、全ての単体射と増強先を保つ同型である。
+元の前層には増強単体対象の関手としてそのまま適用できる。
+前層が幾何的引き戻しを保存することや π_* と Tot の交換は使っていない。
+
+残る工程：実際の抽象 blowup 降下から自然な fiber 列・全次数の列を供給し、
+Tot の Fubini・分裂降下・細分と、この四頂点の実際の Čech 比較を接続する。
+最小公理全体、(3.6)・K0・T2・E の実現も未完である。
+原典の τ 位相の層論を Čech 計算へ置換する方針は同じ。
+
+§65 の保存検証：集約対象ビルドと公理監査が成功。163 モジュール・1953 宣言、標準三公理のみ。
+この保存単位では対象ビルドと監査を実行した。全体ビルドの所有範囲外の失敗は §64 の記録どおり。
