@@ -3166,5 +3166,19 @@ noncomputable def intervalMappingHomotopyOfFatJoin {A X : SSet.{u}} {x y : X _�
     (hy : (fatJoinInr A Δ[0] ▷ (Δ[1] : SSet.{u})) ≫ H.h =
       fst (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm y) : SSet.Homotopy f g
 
+lemma pinchedHomToIntervalMappingSpace_exists_homotopy {A X : SSet.{u}}
+    [Quasicategory X] {x y : X _⦋0⦌} (a : A ⟶ intervalMappingSpace x y) :
+    ∃ b : A ⟶ pinchedHom x y,
+      Nonempty (SSet.Homotopy (b ≫ pinchedHomToIntervalMappingSpace x y) a)
+
+lemma pinchedHomToIntervalMappingSpace_postcomp_essentiallySurjective {A X : SSet.{u}}
+    [Quasicategory X] {x y : X _⦋0⦌} (a : A ⟶ intervalMappingSpace x y) :
+    ∃ b : A ⟶ pinchedHom x y, Nonempty (FunctorIso (b ≫ pinchedHomToIntervalMappingSpace x y) a)
+
+lemma pinchedHomToIntervalMappingSpace_exists_homotopy_section {X : SSet.{u}}
+    [Quasicategory X] (x y : X _⦋0⦌) :
+    ∃ r : intervalMappingSpace x y ⟶ pinchedHom x y,
+      Nonempty (SSet.Homotopy (r ≫ pinchedHomToIntervalMappingSpace x y) (𝟙 _))
+
 end SerrePositivity.InfinityCategories
 ```
