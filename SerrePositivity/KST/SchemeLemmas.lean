@@ -204,3 +204,4 @@ public import SerrePositivity.KST.SchemeLemmas.RelativeFlatTensor
 public import SerrePositivity.KST.SchemeLemmas.ExtendedPrimeLocalFreeness
 public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralGenericFreeness
 public import SerrePositivity.KST.SchemeLemmas.SplitGenericPrimeContinuity
+public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraAdicSeparation
