@@ -65,6 +65,23 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.colimitCoconeVertex_projection
 #print axioms SerrePositivity.InfinityCategories.exists_colimitCocone_edge
 #print axioms SerrePositivity.InfinityCategories.exists_colimitCoconeHomotopy
+#print axioms SerrePositivity.InfinityCategories.stableTriangleComparisonShape
+#print axioms SerrePositivity.InfinityCategories.stableTriangleComparisonShape_bottom
+#print axioms SerrePositivity.InfinityCategories.stableTriangleComparisonShape_top
+#print axioms SerrePositivity.InfinityCategories.stableTriangleComparisonShape_source
+#print axioms SerrePositivity.InfinityCategories.exists_terminalArrowComparison
+#print axioms SerrePositivity.InfinityCategories.exists_terminalSpanComparison
+#print axioms SerrePositivity.InfinityCategories.squareLeftArrow_edge
+#print axioms SerrePositivity.InfinityCategories.edgeSpan_squareArrows
+#print axioms SerrePositivity.InfinityCategories.exists_suspensionSpanComparison
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberSuspensionComparison
+#print axioms SerrePositivity.InfinityCategories.chosenCofiberSuspensionComparison
+#print axioms SerrePositivity.InfinityCategories.chosenCofiberSuspensionComparison_source
+#print axioms SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap
+#print axioms SerrePositivity.InfinityCategories.cofiberConnectingToSuspension
+#print axioms SerrePositivity.InfinityCategories.cofiberConnectingToSuspension_comp_eq_zero
+#print axioms SerrePositivity.InfinityCategories.cofiberConnecting
+#print axioms SerrePositivity.InfinityCategories.cofiberConnecting_comp_eq_zero
 #print axioms SerrePositivity.InfinityCategories.JoinCocone
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_eq
@@ -761,7 +778,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.BoundaryPair,
     `SerrePositivity.InfinityCategories.Stable.BoundaryEdgeLifting,
     `SerrePositivity.InfinityCategories.Stable.ColimitFamilyExtension,
-    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges]
+    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges,
+    `SerrePositivity.InfinityCategories.Stable.TerminalArrowComparison,
+    `SerrePositivity.InfinityCategories.Stable.TerminalSpanComparison,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison,
+    `SerrePositivity.InfinityCategories.Stable.CofiberSuspensionComparison,
+    `SerrePositivity.InfinityCategories.Stable.CofiberConnecting]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

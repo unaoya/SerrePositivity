@@ -5268,3 +5268,170 @@ SerrePositivity.InfinityCategories.exists_colimitCoconeHomotopy.{u} {K X : SSet.
 （生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
 cofiber の span から suspension の span への具体的な辺と、持ち上げて得る射の Σ との
 比較は未完了。接続射、前加法構造、整数シフト、TR1〜TR4、S5〜S7 は未完了。
+
+## S4：始点固定の suspension 比較と cofiber 列の接続射
+
+終対象への辺の比較と span の比較には Quasicategory と指定終点の終対象性を仮定する。
+四角形の比較には元の押し出し四角形と、同じ始点の指定 suspension 四角形を与える。
+指定 suspension 頂点への接続射には Quasicategory と任意の HasZeroMorphisms、
+実際の Σ への接続射には Quasicategory と IsStable を仮定する。
+正確な公開型（Lean の出力）：
+
+```lean
+SerrePositivity.InfinityCategories.stableTriangleComparisonShape.{u} :
+  Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) Δ[2]
+SerrePositivity.InfinityCategories.stableTriangleComparisonShape_bottom.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} SerrePositivity.InfinityCategories.squareBottomEdge.{u}
+      SerrePositivity.InfinityCategories.stableTriangleComparisonShape.{u})
+    (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 2)
+SerrePositivity.InfinityCategories.stableTriangleComparisonShape_top.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} SerrePositivity.InfinityCategories.squareTopEdge.{u}
+      SerrePositivity.InfinityCategories.stableTriangleComparisonShape.{u})
+    (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1)
+SerrePositivity.InfinityCategories.stableTriangleComparisonShape_source.{u} :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1} (whiskerRight.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1) Δ[1])
+      SerrePositivity.InfinityCategories.stableTriangleComparisonShape.{u})
+    (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1])
+      (const.{u} ((Equiv.symm.{u + 1, 1} stdSimplex.obj₀Equiv.{u}) 0)))
+SerrePositivity.InfinityCategories.exists_terminalArrowComparison.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  {x y z : X _⦋0⦌} (f : Truncated.Edge.{u} x y) (g : Truncated.Edge.{u} x z)
+  (hz : SerrePositivity.InfinityCategories.IsTerminalVertex.{u} z) :
+  ∃ H,
+    Eq.{u + 1}
+      (CategoryStruct.comp.{u, u + 1} (whiskerRight.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1) Δ[1])
+        (RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1]) (const.{u} x))
+SerrePositivity.InfinityCategories.exists_terminalSpanComparison.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  {x y₁ y₂ z₁ z₂ : X _⦋0⦌} (f₁ : Truncated.Edge.{u} x y₁) (f₂ : Truncated.Edge.{u} x y₂) (g₁ : Truncated.Edge.{u} x z₁)
+  (g₂ : Truncated.Edge.{u} x z₂) (hz₁ : SerrePositivity.InfinityCategories.IsTerminalVertex.{u} z₁)
+  (hz₂ : SerrePositivity.InfinityCategories.IsTerminalVertex.{u} z₂) :
+  ∃ H,
+    Eq.{u + 1}
+      (CategoryStruct.comp.{u, u + 1}
+        (whiskerRight.{u, u + 1}
+          (CategoryStruct.comp.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1) horn₂₀.ι₀₁.{u}) Δ[1])
+        (RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1]) (const.{u} x))
+SerrePositivity.InfinityCategories.squareLeftArrow_edge.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Eq.{u + 1} (Truncated.Edge.edge.{u} (SerrePositivity.InfinityCategories.squareLeftArrow.{u} F))
+    (SSet.yonedaEquiv.{u} (CategoryStruct.comp.{u, u + 1} SerrePositivity.InfinityCategories.squareLeftEdge.{u} F))
+SerrePositivity.InfinityCategories.edgeSpan_squareArrows.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X) :
+  Eq.{u + 1}
+    (SerrePositivity.InfinityCategories.edgeSpan.{u} (SerrePositivity.InfinityCategories.squareBottomArrow.{u} F)
+      (SerrePositivity.InfinityCategories.squareLeftArrow.{u} F))
+    (SerrePositivity.InfinityCategories.pushoutSpan.{u} F)
+SerrePositivity.InfinityCategories.exists_suspensionSpanComparison.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)) :
+  ∃ H,
+    Eq.{u + 1}
+      (CategoryStruct.comp.{u, u + 1}
+        (whiskerRight.{u, u + 1}
+          (CategoryStruct.comp.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1) horn₂₀.ι₀₁.{u}) Δ[1])
+        (RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1])
+        (const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)))
+SerrePositivity.InfinityCategories.exists_cofiberSuspensionComparison.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X)
+  (hF : SerrePositivity.InfinityCategories.IsPushoutSquare.{u} F)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)) :
+  ∃ Q,
+    Eq.{u + 1}
+      (CategoryStruct.comp.{u, u + 1}
+        (whiskerRight.{u, u + 1}
+          (CategoryStruct.comp.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1)
+            SerrePositivity.InfinityCategories.squareBottomEdge.{u})
+          Δ[1])
+        (RelativeMorphism.Homotopy.h.{u} Q))
+      (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1])
+        (const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)))
+SerrePositivity.InfinityCategories.chosenCofiberSuspensionComparison.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X)
+  (hF : SerrePositivity.InfinityCategories.IsPushoutSquare.{u} F)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)) :
+  Homotopy.{u} F
+    (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u}
+      (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s))
+SerrePositivity.InfinityCategories.chosenCofiberSuspensionComparison_source.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[1] Δ[1]) X)
+  (hF : SerrePositivity.InfinityCategories.IsPushoutSquare.{u} F)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1}
+      (whiskerRight.{u, u + 1}
+        (CategoryStruct.comp.{u, u + 1} (CosimplicialObject.δ.{u, u + 1} stdSimplex.{u} 1)
+          SerrePositivity.InfinityCategories.squareBottomEdge.{u})
+        Δ[1])
+      (RelativeMorphism.Homotopy.h.{u}
+        (SerrePositivity.InfinityCategories.chosenCofiberSuspensionComparison.{u} F hF s)))
+    (CategoryStruct.comp.{u, u + 1} (SemiCartesianMonoidalCategory.snd.{u, u + 1} Δ[0] Δ[1])
+      (const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)))
+SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t) 0 0)) :
+  Quiver.Hom.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t)
+    (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u}
+      (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s))
+SerrePositivity.InfinityCategories.cofiberConnectingToSuspension.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t) 0 0)) :
+  Quiver.Hom.{u, u} (ShortComplex.X₃.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t))
+    (HomotopyCategory.mk.{u} (SerrePositivity.InfinityCategories.SuspensionSquare.vertex.{u} s))
+SerrePositivity.InfinityCategories.cofiberConnectingToSuspension_comp_eq_zero.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [HasZeroMorphisms.{u, u} ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} X)]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t) 0 0)) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u}
+      (ShortComplex.g.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t))
+      (SerrePositivity.InfinityCategories.cofiberConnectingToSuspension.{u} t ht s))
+    0
+SerrePositivity.InfinityCategories.cofiberConnecting.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t) :
+  Quiver.Hom.{u, u} (ShortComplex.X₃.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t))
+    (Functor.obj.{u, u, u, u} (SerrePositivity.InfinityCategories.suspensionFunctor.{u} X)
+      (ShortComplex.X₁.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t)))
+SerrePositivity.InfinityCategories.cofiberConnecting_comp_eq_zero.{u} {X : SSet.{u}} [Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u}
+      (ShortComplex.g.{u, u} (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u} t))
+      (SerrePositivity.InfinityCategories.cofiberConnecting.{u} t ht))
+    0
+```
+
+対象 CofiberConnecting ビルド 1991 jobs、Stable 集約ビルド 2063 jobs、
+公開型抽出、公理監査はすべて終了コード 0。監査は 118 モジュール・1143 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
+接続射の構成と、列の第二射の後に接続射を合成した際の零合成まで完了。
+選択独立性、自然性、接続射の後の Σf との零合成、前加法構造、整数シフト、
+TR1〜TR4、Pretriangulated および S5〜S7 は未完了。

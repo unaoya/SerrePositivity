@@ -125,7 +125,8 @@ S4 の三角構造へ向け、四辺を端点つきの辺と h C の射として
 実際の単体的ホモトピーからの構成も `hoShortComplexMapOfHomotopy` に公開する。
 `exists_cofiber_hoShortComplex` と `exists_fiber_hoShortComplex` により、安定な X の
 h C の全ての射が、cofiber 短複体の第一射／fiber 短複体の第二射として現れる。
-これは短複体の存在までであり、接続射 Z → ΣX、distinguished triangle、TR1〜TR4 は未証明。
+この存在定理は短複体まで。接続射 Z → ΣX の構成は下記のとおり追加したが、
+distinguished triangle と TR1〜TR4 は未証明。
 接続射と cofiber 列の射に向け、`exists_colimitCoconeFamily_extension` により
 各頂点で余極限が存在する族の任意の単射部分族上で、指定した普遍余錐の族を
 厳密に保持して延長できることを証明した。`colimitCoconeVertex` とその射影の等式により
@@ -134,8 +135,21 @@ h C の全ての射が、cofiber 短複体の第一射／fiber 短複体の第�
 辺へ持ち上げる。`exists_colimitCoconeHomotopy` はその辺を余錐の間の単体的ホモトピーに
 直し、元の図式への制限が元の辺の uncurry と厳密に一致することも保証する。
 この二つの持ち上げには値域 Quasicategory と両端の IsColimitCone のみを仮定し、
-中間図式の余極限の存在は追加仮定しない。接続射の具体的な適用には、まだ cofiber の span
-から suspension の span への辺を構成し、その余極限対象の射を Σ と照合する必要がある。
+中間図式の余極限の存在は追加仮定しない。
+`exists_terminalArrowComparison` は共通の始点の辺から終対象へ向かう辺への、始点を
+厳密に固定したホモトピーを与える。合成三角形を左辺を潰した正方形で引き戻して構成した。
+二辺をホーンの pushout で貼り合わせた `exists_terminalSpanComparison` も始点を固定する。
+四角形の二辺からの span の表示を通じ、`exists_suspensionSpanComparison` により任意の
+四角形の span から同じ始点の指定 suspension 四角形の span へ比較できる。
+`exists_cofiberSuspensionComparison` は、この span の比較を両端の普遍余錐へ持ち上げ、
+始点を全パラメーターで厳密に固定した四角形間のホモトピーを与える。
+`chosenCofiberSuspensionComparison` はその比較を選び、始点固定の式も公開する。
+`cofiberSuspensionShortComplexMap` の第三成分が指定 suspension の頂点への接続射で、
+`cofiberConnecting` は S3 の対象比較同型を用いて実際の suspensionFunctor の値 ΣX に送る。
+`cofiberConnecting_comp_eq_zero` により、cofiber 列の第二射の後に接続射を合成すると零。
+`cofiberConnecting` の前提は Quasicategory と IsStable のみで、列は零角の四角形と
+IsCofiberSequence の証明で与える。選択独立性、接続射の自然性、Σf の後との零合成、
+回転・八面体を含む三角圏の公理は未完了。
 S4 の三角構造は未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -241,9 +255,11 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 引き戻しの貼り合わせ | `isPullbackSquare_pasting_iff`、`isPullbackSquare_pasting`、`isPullbackSquare_pasting_cancel_right`（値域 Quasicategory、右が引き戻し） | 完了 |
 | h C の零射と短複体 | `hasZeroMorphisms_ho`（Quasicategory、HasZeroVertex）、`square_homMk_comm`（任意の X）、`ZeroTriangle.homMk_comp_eq_zero`、`ZeroTriangle.hoShortComplex`（Quasicategory、任意の HasZeroMorphisms） | 完了 |
 | 零角の短複体の射 | `ZeroTriangle.hoShortComplexMap`、恒等・合成則、`hoShortComplexMapOfHomotopy`（Quasicategory、任意の HasZeroMorphisms） | 完了。三角形の接続射との可換性は未着手 |
-| 任意の h C の射を含む列 | `exists_cofiber_hoShortComplex`、`exists_fiber_hoShortComplex`（Quasicategory、IsStable） | 短複体まで完了。接続射と TR1 は未完了 |
+| 任意の h C の射を含む列 | `exists_cofiber_hoShortComplex`、`exists_fiber_hoShortComplex`（Quasicategory、IsStable） | 短複体と接続射の構成は完了。TR1 は未完了 |
 | 部分族を保持した普遍余錐の延長 | `exists_colimitCoconeFamily_extension`（値域 Quasicategory、部分族の射は単射、全頂点の余極限の存在） | 完了 |
-| 普遍余錐間の辺 | `colimitCoconeVertex`、`colimitCoconeVertex_projection`、`exists_colimitCocone_edge`、`exists_colimitCoconeHomotopy`（値域 Quasicategory、両端が余極限） | 完了。接続射への具体的な適用は未完了 |
+| 普遍余錐間の辺 | `colimitCoconeVertex`、`colimitCoconeVertex_projection`、`exists_colimitCocone_edge`、`exists_colimitCoconeHomotopy`（値域 Quasicategory、両端が余極限） | 完了。接続射の構成に適用済み |
+| 始点固定の suspension との比較 | `exists_terminalArrowComparison`、`exists_terminalSpanComparison`、`exists_suspensionSpanComparison`（Quasicategory、指定終点が終対象）、`exists_cofiberSuspensionComparison`（さらに元の四角形は押し出し） | 完了 |
+| cofiber 列の接続射 | `cofiberConnectingToSuspension`（Quasicategory、HasZeroMorphisms、指定 suspension）、`cofiberConnecting`、`cofiberConnecting_comp_eq_zero`（Quasicategory、IsStable、IsCofiberSequence） | 構成と第二射の後の零合成まで完了。選択独立性・自然性・三角構造は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
