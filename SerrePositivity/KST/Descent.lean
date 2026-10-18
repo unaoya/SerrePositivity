@@ -101,6 +101,8 @@ public import SerrePositivity.KST.Descent.AffinePresentation
 public import SerrePositivity.KST.Descent.AffineBlowupFlatness
 public import SerrePositivity.KST.Descent.AffineFiniteFlattening
 public import SerrePositivity.KST.Descent.AffineFlatRefinement
+public import SerrePositivity.KST.Descent.FiniteFlatRankCover
+public import SerrePositivity.KST.Descent.AffineBlowupRank
 public import SerrePositivity.KST.Descent.ComponentSplit
 public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
@@ -231,6 +233,10 @@ Noether 整域上の有限加群を非零元の局所化で自由にし、実際
 元のアフィンスキームと全切断環の Spec との同型を保って、実際の全標準チャートへ適用する。
 整なアフィン Noether 基底への有限射の真閉平坦化中心を構成し、
 有限全射には blowup 後の実際の有限忠実平坦細分を供給する。
+平坦化後の blowup の既約性からその被覆の正の定 rank を得て、
+実際の抽象 blowup 正方形の中心の次元低下も同時に供給する。
+一般の有限忠実平坦有限表示射には有限な定 rank の開被覆を構成する。
+定 rank だけから transfer の rank 公式は結論せず、局所自明化への接続を残す。
 非零因子の境界基本開の実際の blowup 上の稠密性を証明し、中心補集合との一致を要求せず
 同じ基本開での strict transform の全射性と有限忠実平坦な細分へ接続する。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と

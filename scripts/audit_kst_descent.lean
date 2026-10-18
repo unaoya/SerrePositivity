@@ -129,6 +129,8 @@ run_cmd do
       `SerrePositivity.KST.Descent.AffineBlowupFlatness,
       `SerrePositivity.KST.Descent.AffineFiniteFlattening,
       `SerrePositivity.KST.Descent.AffineFlatRefinement,
+      `SerrePositivity.KST.Descent.FiniteFlatRankCover,
+      `SerrePositivity.KST.Descent.AffineBlowupRank,
       `SerrePositivity.KST.Descent.ComponentSplit,
       `SerrePositivity.KST.Descent.ComponentRemainderCover,
       `SerrePositivity.KST.Descent.FiberTransitivityNaturality,
