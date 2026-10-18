@@ -1201,6 +1201,23 @@
 - 試験族の添字は整数と生成対象の部分対象の小さい縮小を使う。既存の任意の acyclic 試験族との和に small object factorization を適用して、単射準同型・各項 injectivity・指定した試験族へのホモトピー直交を同時に得る。
 - 全 K-injective 性には別途 Stacks 19.12.3 の小さい acyclic 試験集合の判定を証明する。ここで各項 injective だけから K-injective としない。原典の接続は TT §3・§8、BvdB Thm 3.1.1、Toën §3.2。
 
+### §57 の実装の現在地
+
+- 保存検証：集約対象ビルド 4068 jobs 成功、公理監査 2249 宣言。標準3公理のみ、KTheory import なし。
+
+- `cochainDisk_acyclic`：恒等微分の二項複体の非輪状性を実際の微分の同型性から証明した。
+- `diskEnvelope_injective_factor`：評価の corepresentability と持ち上げの成分等式から、指定した射の injective 因子化を構成した。
+- `injective_of_generator_injective_factors`：生成対象の部分対象からの全射の因子化による injectivity 判定を証明した。
+- `exists_mono_quasiIso_injective_test_orthogonal`：任意の非有界複体から、各項 injective で固定した非輪状試験集合の全射を零ホモトピーにする対象への単射準同型を構成した。
+- 全 acyclic 複体の試験集合による判定は引き続き残件。各項 injective を全 K-injective 性と取り違えない。
+
+## 58. 小さい非輪状試験集合の判定の証明部品（実装前記録）
+
+- 原典は [Stacks Lemma 19.12.3 (079L)](https://stacks.math.columbia.edu/tag/079L)。各項 injective な I に対し、適当な固定濃度以下の上に有界な非輪状複体からの射が全て零ホモトピーなら I は K-injective、という文言を確認した。
+- 後続段階の方針：任意の非輪状複体を、小さい上に有界な非輪状商を逐次加えた連続超限列として尽くす。部分複体の構成と濃度の上界は別途存在を証明する。短完全列の継ぎ足しと極限段階の互換な零ホモトピーの構成を先に実装する。
+- 短完全列 A → B → Q において、A から I への零ホモトピーの各成分を I の各項 injectivity で B へ延長する。対応する零ホモトピーな鎖写像を引いた差は A で零なので Q を経由する。Q での零ホモトピーを戻し、B での零ホモトピーを構成する。
+- 極限段階では任意に選んだ零ホモトピーの極限を取らない。前段階での成分を保った延長と colimit の普遍性を用い、互換性を証明する。これと小さい試験集合の実際の構成を終えるまで全 K-injective 分解の存在とはしない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1428,6 +1445,7 @@
 | `smallMonoFamily_hasSmallObjectArgument`・`isKInjective_of_rlp_mono_quasiIso` | DerivedGeometry/SmallMonoFamilyArgument・KInjectiveLiftingCriterion | 実装・対象ビルド済み |
 | `monicQuasiIsomorphisms_transfinite`・`smallMonoQuasiIsoFamily_exists_factorization` | DerivedGeometry/MonoQuasiIsoCellClosure・SmallMonoQuasiIsoFactorization | 実装・対象ビルド済み |
 | `exists_mono_quasiIso_test_homotopy_orthogonal` | DerivedGeometry/GrothendieckTestQuasiIso | 実装・対象ビルド済み |
+| `exists_mono_quasiIso_injective_test_orthogonal` | DerivedGeometry/GrothendieckInjectiveTestFamily | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

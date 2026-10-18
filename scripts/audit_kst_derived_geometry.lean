@@ -14,6 +14,11 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.injective_of_generator_injective_factors,
+    `SerrePositivity.KST.DerivedGeometry.cochainDisk_acyclic,
+    `SerrePositivity.KST.DerivedGeometry.diskEnvelope_injective_factor,
+    `SerrePositivity.KST.DerivedGeometry.injective_components_of_disk_envelope_lifting,
+    `SerrePositivity.KST.DerivedGeometry.exists_mono_quasiIso_injective_test_orthogonal,
     `SerrePositivity.KST.DerivedGeometry.smallMonoFamily_exists_factorization,
     `SerrePositivity.KST.DerivedGeometry.quasiIso_colimMap_of_exactColimits,
     `SerrePositivity.KST.DerivedGeometry.exists_mono_test_homotopy_orthogonal,
