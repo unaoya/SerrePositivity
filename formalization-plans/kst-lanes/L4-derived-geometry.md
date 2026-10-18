@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,303宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,332宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -855,6 +855,21 @@
 - 集約ビルド（3,737 jobs）と1,303宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - アフィン導来比較の完全忠実性・本質的全射性は未完了。基本開被覆の局所化と Čech 複体の計算を続ける。
 
+### Čech 計算の現在地
+
+- `basicOpenLocalized_exactAt_iff`・`basicOpenLocalized_acyclic_iff`・`basicOpenLocalized_quasiIso_iff`：基本開被覆上の局所化による任意の複体形状での完全性・acyclic 性・準同型の検出を証明済み。
+- `splitOpenCechExtraDegeneracy`：全体に等しい被覆要素を先頭へ挿入する追加退化を具体的に構成済み。
+- `openCechCochainUnopIso`・`splitOpenCech_exactAt`：対圏の鎖複体の収縮を Mathlib の実際の cechComplexFunctor へ移し、全正次数の完全性を証明済み。符号・次数の比較を含む。
+- 集約ビルド（3,785 jobs）と1,332宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 一般の有限基本開被覆では、各項の局所化と制限後の Čech 複体の比較が引き続き必要。アフィン導来比較の同値性はまだ結論しない。
+
+## 41. 基本開の切断の反復局所化（実装前の紙上確認）
+
+- 文言：可換環 R、加群と R 線形写像 M --f→ N --g→ L に対し、f が b に関する局所化で g ∘ f が ab に関する局所化なら、g は a に関する局所化である。
+- 証明：ab の作用が L で可逆なので a・b の作用がともに可逆。L の元の分母 (ab)^n を消し、N で b^n を割って a^n の分母表示を得る。g の核の元は N で b^k を掛けて M から持ち上げ、ab の冪で消した後に N 上で可逆な b の冪を消去する。
+- 基本開への適用：tilde M の D(b) と D(ab) の切断の比較へ適用し、D(b) から D(a)∩D(b) への制限が a の局所化であることを示す。有限交叉は基本開なので、有限被覆の Čech 複体の各項の局所化比較へ進む。
+- 原典との位置：TT §3、BvdB Thm 3.1.1、Toën §3.2 のアフィン計算。この補題の後も、層コホモロジーと非有界導来比較までを別途検証する。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1002,6 +1017,9 @@
 | `affineCoefficientTildeFunctor_preservesFiniteLimits`・`affineCoefficientTildeFunctor_preservesColimits` | DerivedGeometry/AffineCoefficientTildeExact | 実装・対象ビルド済み |
 | `exactFunctorDerivedHomologyIso`・`exactFunctorDerived_reflectsIsomorphisms` | DerivedGeometry/ExactDerivedHomology | 実装・対象ビルド済み |
 | `affineDerivedTilde`・`affineDerivedTildeToDqc`・`affineDerivedTildeSquare` | DerivedGeometry/AffineDerivedTilde | 実装・対象ビルド済み |
+| `basicOpenLocalized_acyclic_iff`・`basicOpenLocalized_quasiIso_iff` | DerivedGeometry/BasicOpenLocalization | 実装・対象ビルド済み |
+| `openCechAugmented`・`splitOpenCechExtraDegeneracy` | DerivedGeometry/SplitOpenCech | 実装・対象ビルド済み |
+| `openCechCochainUnopIso`・`splitOpenCech_exactAt` | DerivedGeometry/OpenCechContraction | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
