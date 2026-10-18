@@ -127,3 +127,4 @@ public import SerrePositivity.EInfinity.Operad.SchurOperationRightUnit
 public import SerrePositivity.EInfinity.Operad.SchurActionGenerators
 public import SerrePositivity.EInfinity.Operad.FreeAlgebraUniversal
 public import SerrePositivity.EInfinity.Operad.FreeAlgebraAdjunction
+public import SerrePositivity.EInfinity.BarrattEccles

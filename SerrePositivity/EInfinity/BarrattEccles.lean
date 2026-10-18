@@ -1,0 +1,8 @@
+module
+
+public import SerrePositivity.EInfinity.BarrattEccles.Simplicial
+public import SerrePositivity.EInfinity.BarrattEccles.Nondegenerate
+public import SerrePositivity.EInfinity.BarrattEccles.Orbits
+public import SerrePositivity.EInfinity.BarrattEccles.Normalized
+public import SerrePositivity.EInfinity.BarrattEccles.Degrees
+public import SerrePositivity.EInfinity.BarrattEccles.Basis
