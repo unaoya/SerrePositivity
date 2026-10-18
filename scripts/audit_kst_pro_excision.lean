@@ -1,9 +1,9 @@
 import SerrePositivity.KST.ProExcision
 /-!
 概要：K-L6 が所有する公開宣言の型と公理を監査する。
-方針：各宣言を #check @ と #print axioms で確認する。
+方針：各宣言の型と公理集合を表示する。
 規約：標準三公理 propext・Classical.choice・Quot.sound のみを許す。
-使われ方：KST §4・App. A の各保存単位。未完了の工程を証明済みとはしない。
+使われ方：KST §4・App. A の各保存単位。
 -/
 set_option pp.universes true
 set_option pp.explicit true
@@ -182,17 +182,11 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.homology_proZero_of_component
 #print axioms SerrePositivity.KST.ProExcision.homology_proZero_of_component
 
-#check @SerrePositivity.KST.ProExcision.spectral_successor_proZero
-#print axioms SerrePositivity.KST.ProExcision.spectral_successor_proZero
-
 #check @SerrePositivity.KST.ProExcision.proZero_of_exact
 #print axioms SerrePositivity.KST.ProExcision.proZero_of_exact
 
 #check @SerrePositivity.KST.ProExcision.proIso_of_injective_exact_proZero
 #print axioms SerrePositivity.KST.ProExcision.proIso_of_injective_exact_proZero
-
-#check @SerrePositivity.KST.ProExcision.spectral_page_proZero
-#print axioms SerrePositivity.KST.ProExcision.spectral_page_proZero
 
 #check @SerrePositivity.KST.ProExcision.proZero_finite_extension
 #print axioms SerrePositivity.KST.ProExcision.proZero_finite_extension
@@ -214,12 +208,6 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.finiteKoszulTensorFiltration
 #print axioms SerrePositivity.KST.ProExcision.finiteKoszulTensorFiltration
-
-#check @SerrePositivity.KST.ProExcision.koszulFilteredSpectralObject
-#print axioms SerrePositivity.KST.ProExcision.koszulFilteredSpectralObject
-
-#check @SerrePositivity.KST.ProExcision.koszulFilteredSpectralSequence
-#print axioms SerrePositivity.KST.ProExcision.koszulFilteredSpectralSequence
 
 #check @SerrePositivity.KST.ProExcision.koszulTruncation_initial_isZero
 #print axioms SerrePositivity.KST.ProExcision.koszulTruncation_initial_isZero
@@ -275,18 +263,6 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.adjacentTensorConeHomologyIso
 #print axioms SerrePositivity.KST.ProExcision.adjacentTensorConeHomologyIso
 
-#check @SerrePositivity.KST.ProExcision.finiteFirstPageComputation
-#print axioms SerrePositivity.KST.ProExcision.finiteFirstPageComputation
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageXIso
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageXIso
-
-#check @SerrePositivity.KST.ProExcision.filteredHomologySpectralObject
-#print axioms SerrePositivity.KST.ProExcision.filteredHomologySpectralObject
-
-#check @SerrePositivity.KST.ProExcision.filtrationIntervalHomologyIso
-#print axioms SerrePositivity.KST.ProExcision.filtrationIntervalHomologyIso
-
 #check @SerrePositivity.KST.ProExcision.singleTensorShiftIso
 #print axioms SerrePositivity.KST.ProExcision.singleTensorShiftIso
 
@@ -296,23 +272,8 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.singleTensorHomologyIso
 #print axioms SerrePositivity.KST.ProExcision.singleTensorHomologyIso
 
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageConeIso
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageConeIso
-
 #check @SerrePositivity.KST.ProExcision.truncationTensorConeIsoOfEq
 #print axioms SerrePositivity.KST.ProExcision.truncationTensorConeIsoOfEq
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageSingleIso
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageSingleIso
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageTermIso
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageTermIso
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageHomologicalTermIso
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageHomologicalTermIso
-
-#check @SerrePositivity.KST.ProExcision.kst_reindex_differential_degree
-#print axioms SerrePositivity.KST.ProExcision.kst_reindex_differential_degree
 
 #check @SerrePositivity.KST.ProExcision.scalarConeTensorIso
 #print axioms SerrePositivity.KST.ProExcision.scalarConeTensorIso
@@ -328,9 +289,6 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.tensorSplitBoundary_homogeneous
 #print axioms SerrePositivity.KST.ProExcision.tensorSplitBoundary_homogeneous
-
-#check @SerrePositivity.KST.ProExcision.tensorSplitBoundary_homogeneous_assoc
-#print axioms SerrePositivity.KST.ProExcision.tensorSplitBoundary_homogeneous_assoc
 
 #check @SerrePositivity.KST.ProExcision.tensorSplitBoundary_eq
 #print axioms SerrePositivity.KST.ProExcision.tensorSplitBoundary_eq
@@ -361,19 +319,6 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.coneCompositeConnecting_quotient
 #print axioms SerrePositivity.KST.ProExcision.coneCompositeConnecting_quotient
-
-#check @SerrePositivity.KST.ProExcision.filtrationTriangulated_delta
-#print axioms SerrePositivity.KST.ProExcision.filtrationTriangulated_delta
-
-#check @SerrePositivity.KST.ProExcision.filtrationInterval_delta
-#print axioms SerrePositivity.KST.ProExcision.filtrationInterval_delta
-
-#check @SerrePositivity.KST.ProExcision.filtrationInterval_delta_quotient
-#print axioms SerrePositivity.KST.ProExcision.filtrationInterval_delta_quotient
-
-#check @SerrePositivity.KST.ProExcision.filtrationInterval_delta_split
-#print axioms SerrePositivity.KST.ProExcision.filtrationInterval_delta_split
-
 
 #check @SerrePositivity.KST.ProExcision.splitBoundary_differential
 #print axioms SerrePositivity.KST.ProExcision.splitBoundary_differential
@@ -435,23 +380,8 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.tensorFiltrationInterval
 #print axioms SerrePositivity.KST.ProExcision.tensorFiltrationInterval
 
-#check @SerrePositivity.KST.ProExcision.tensorFiltration_delta_split
-#print axioms SerrePositivity.KST.ProExcision.tensorFiltration_delta_split
-
-#check @SerrePositivity.KST.ProExcision.tensorFiltrationIntervalHomologyIso
-#print axioms SerrePositivity.KST.ProExcision.tensorFiltrationIntervalHomologyIso
-
-#check @SerrePositivity.KST.ProExcision.tensorFiltration_delta_quotientIso
-#print axioms SerrePositivity.KST.ProExcision.tensorFiltration_delta_quotientIso
-
 #check @SerrePositivity.KST.ProExcision.tensorFiltrationBoundary
 #print axioms SerrePositivity.KST.ProExcision.tensorFiltrationBoundary
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageQuotientIso
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageQuotientIso
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPage_d_quotient
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPage_d_quotient
 
 #check @SerrePositivity.KST.ProExcision.adjacentGradeBoundary
 #print axioms SerrePositivity.KST.ProExcision.adjacentGradeBoundary
@@ -570,72 +500,6 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.intervalTensorGradeHomology_differential
 #print axioms SerrePositivity.KST.ProExcision.intervalTensorGradeHomology_differential
 
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageCoefficientIsoAt
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageCoefficientIsoAt
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient
-
-#check @SerrePositivity.KST.ProExcision.finiteKoszulShape
-#print axioms SerrePositivity.KST.ProExcision.finiteKoszulShape
-
-#check @SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding
-#print axioms SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding
-
-#check @SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding_isRelIff
-#print axioms SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding_isRelIff
-
-#check @SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding
-#print axioms SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding
-
-#check @SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isRelIff
-#print axioms SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isRelIff
-
-#check @SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isTruncGE
-#print axioms SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isTruncGE
-
-#check @SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isTruncLE
-#print axioms SerrePositivity.KST.ProExcision.finiteKoszulSpectralEmbedding_isTruncLE
-
-#check @SerrePositivity.KST.ProExcision.closedEmbedding_next
-#print axioms SerrePositivity.KST.ProExcision.closedEmbedding_next
-
-#check @SerrePositivity.KST.ProExcision.closedEmbedding_prev
-#print axioms SerrePositivity.KST.ProExcision.closedEmbedding_prev
-
-#check @SerrePositivity.KST.ProExcision.closedRestrictionHomologyIso
-#print axioms SerrePositivity.KST.ProExcision.closedRestrictionHomologyIso
-
-#check @SerrePositivity.KST.ProExcision.supportedRestrictionExtendIso
-#print axioms SerrePositivity.KST.ProExcision.supportedRestrictionExtendIso
-
-#check @SerrePositivity.KST.ProExcision.supportedRestrictionHomologyIso
-#print axioms SerrePositivity.KST.ProExcision.supportedRestrictionHomologyIso
-
-#check @SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding_mem_iff
-#print axioms SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding_mem_iff
-
-#check @SerrePositivity.KST.ProExcision.koszulCoefficientComplex_isStrictlySupported
-#print axioms SerrePositivity.KST.ProExcision.koszulCoefficientComplex_isStrictlySupported
-
-#check @SerrePositivity.KST.ProExcision.koszulCoefficientFiniteComplex
-#print axioms SerrePositivity.KST.ProExcision.koszulCoefficientFiniteComplex
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageFiniteRow
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageFiniteRow
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient_of_eq
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient_of_eq
-
-#check @SerrePositivity.KST.ProExcision.koszulFirstPageFiniteRowIso
-#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageFiniteRowIso
-
-#check @SerrePositivity.KST.ProExcision.koszulSecondPageFiniteIso
-#print axioms SerrePositivity.KST.ProExcision.koszulSecondPageFiniteIso
-
-#check @SerrePositivity.KST.ProExcision.koszulSecondPageIso
-#print axioms SerrePositivity.KST.ProExcision.koszulSecondPageIso
-
 #check @SerrePositivity.KST.ProExcision.IsProZero.of_natIso
 #print axioms SerrePositivity.KST.ProExcision.IsProZero.of_natIso
 
@@ -651,155 +515,104 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.koszulRightTensorHomologyTower_isProZero
 #print axioms SerrePositivity.KST.ProExcision.koszulRightTensorHomologyTower_isProZero
 
-#check @SerrePositivity.KST.ProExcision.koszulSecondPageLeftIso
-#print axioms SerrePositivity.KST.ProExcision.koszulSecondPageLeftIso
-
-#check @SerrePositivity.KST.ProExcision.shortComplex_homologyMap_zero_of_middle
-#print axioms SerrePositivity.KST.ProExcision.shortComplex_homologyMap_zero_of_middle
-
-#check @SerrePositivity.KST.ProExcision.spectralShortComplexFunctor
-#print axioms SerrePositivity.KST.ProExcision.spectralShortComplexFunctor
-
-#check @SerrePositivity.KST.ProExcision.spectralPageFunctor
-#print axioms SerrePositivity.KST.ProExcision.spectralPageFunctor
-
-#check @SerrePositivity.KST.ProExcision.spectralPageFunctor_map_zero
-#print axioms SerrePositivity.KST.ProExcision.spectralPageFunctor_map_zero
-
-#check @SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans
-#print axioms SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans
-
-#check @SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_id
-#print axioms SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_id
-
-#check @SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_comp
-#print axioms SerrePositivity.KST.ProExcision.composableArrowsMapNatTrans_comp
-
-#check @SerrePositivity.KST.ProExcision.spectralPrecompMap
-#print axioms SerrePositivity.KST.ProExcision.spectralPrecompMap
-
-#check @SerrePositivity.KST.ProExcision.spectralPrecompMap_id
-#print axioms SerrePositivity.KST.ProExcision.spectralPrecompMap_id
-
-#check @SerrePositivity.KST.ProExcision.spectralPrecompMap_comp
-#print axioms SerrePositivity.KST.ProExcision.spectralPrecompMap_comp
-
-#check @SerrePositivity.KST.ProExcision.spectralPrecompFunctor
-#print axioms SerrePositivity.KST.ProExcision.spectralPrecompFunctor
-
-#check @SerrePositivity.KST.ProExcision.filteredHomologySpectralFunctor
-#print axioms SerrePositivity.KST.ProExcision.filteredHomologySpectralFunctor
-
-#check @SerrePositivity.KST.ProExcision.finiteTensorFiltrationFunctor
-#print axioms SerrePositivity.KST.ProExcision.finiteTensorFiltrationFunctor
-
-#check @SerrePositivity.KST.ProExcision.finiteTensorSpectralFunctor
-#print axioms SerrePositivity.KST.ProExcision.finiteTensorSpectralFunctor
-
-#check @SerrePositivity.KST.ProExcision.koszulSpectralTower
-#print axioms SerrePositivity.KST.ProExcision.koszulSpectralTower
-
-#check @SerrePositivity.KST.ProExcision.koszulSpectralTower_obj
-#print axioms SerrePositivity.KST.ProExcision.koszulSpectralTower_obj
-
-#check @SerrePositivity.KST.ProExcision.koszulPageETower
-#print axioms SerrePositivity.KST.ProExcision.koszulPageETower
-
-#check @SerrePositivity.KST.ProExcision.koszulPageTowerLevelIso
-#print axioms SerrePositivity.KST.ProExcision.koszulPageTowerLevelIso
-
-#check @SerrePositivity.KST.ProExcision.spectralCyclesMap
-#print axioms SerrePositivity.KST.ProExcision.spectralCyclesMap
-
-#check @SerrePositivity.KST.ProExcision.spectralCyclesMap_iCycles
-#print axioms SerrePositivity.KST.ProExcision.spectralCyclesMap_iCycles
-
-#check @SerrePositivity.KST.ProExcision.spectralOpcyclesMap
-#print axioms SerrePositivity.KST.ProExcision.spectralOpcyclesMap
-
-#check @SerrePositivity.KST.ProExcision.spectralOpcyclesMap_pOpcycles
-#print axioms SerrePositivity.KST.ProExcision.spectralOpcyclesMap_pOpcycles
-
-#check @SerrePositivity.KST.ProExcision.spectralCyclesMap_cyclesIso_inv
-#print axioms SerrePositivity.KST.ProExcision.spectralCyclesMap_cyclesIso_inv
-
-#check @SerrePositivity.KST.ProExcision.spectralPageMap_πE
-#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_πE
-
-#check @SerrePositivity.KST.ProExcision.spectralOpcyclesMap_opcyclesIso_hom
-#print axioms SerrePositivity.KST.ProExcision.spectralOpcyclesMap_opcyclesIso_hom
-
-#check @SerrePositivity.KST.ProExcision.spectralPageMap_ιE
-#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_ιE
-
-#check @SerrePositivity.KST.ProExcision.spectralCyclesMap_toCycles
-#print axioms SerrePositivity.KST.ProExcision.spectralCyclesMap_toCycles
-
-#check @SerrePositivity.KST.ProExcision.spectralΨMap_naturality
-#print axioms SerrePositivity.KST.ProExcision.spectralΨMap_naturality
-
-#check @SerrePositivity.KST.ProExcision.spectralPageMap_d
-#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_d
-
-#check @SerrePositivity.KST.ProExcision.spectralDifferentialNatTrans
-#print axioms SerrePositivity.KST.ProExcision.spectralDifferentialNatTrans
-
-#check @SerrePositivity.KST.ProExcision.spectralSequenceTermFunctor
-#print axioms SerrePositivity.KST.ProExcision.spectralSequenceTermFunctor
-
-#check @SerrePositivity.KST.ProExcision.spectralSequenceTermFunctorIso
-#print axioms SerrePositivity.KST.ProExcision.spectralSequenceTermFunctorIso
-
-#check @SerrePositivity.KST.ProExcision.spectralSequenceTermFunctorIso_app
-#print axioms SerrePositivity.KST.ProExcision.spectralSequenceTermFunctorIso_app
-
-#check @SerrePositivity.KST.ProExcision.spectralSequencePageDNatTrans
-#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageDNatTrans
-
-#check @SerrePositivity.KST.ProExcision.spectralSequencePageDNatTrans_app
-#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageDNatTrans_app
-
-#check @SerrePositivity.KST.ProExcision.spectralSequencePageFunctor
-#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageFunctor
-
-#check @SerrePositivity.KST.ProExcision.spectralSequencePageFunctor_obj
-#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageFunctor_obj
-
-#check @SerrePositivity.KST.ProExcision.koszulPageComplexTower
-#print axioms SerrePositivity.KST.ProExcision.koszulPageComplexTower
-
-#check @SerrePositivity.KST.ProExcision.koszulPageComplexTower_obj
-#print axioms SerrePositivity.KST.ProExcision.koszulPageComplexTower_obj
-
-#check @SerrePositivity.KST.ProExcision.koszulPageComplexTower_eval_eq
-#print axioms SerrePositivity.KST.ProExcision.koszulPageComplexTower_eval_eq
-
-#check @SerrePositivity.KST.ProExcision.koszulPageHomologyTower
-#print axioms SerrePositivity.KST.ProExcision.koszulPageHomologyTower
-
-#check @SerrePositivity.KST.ProExcision.koszulPageHomologyTower_isProZero_of_terms
-#print axioms SerrePositivity.KST.ProExcision.koszulPageHomologyTower_isProZero_of_terms
-
-#check @SerrePositivity.KST.ProExcision.spectralShortComplexMap_interval
-#print axioms SerrePositivity.KST.ProExcision.spectralShortComplexMap_interval
-
-#check @SerrePositivity.KST.ProExcision.spectralPageMap_interval
-#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_interval
-
 #check @SerrePositivity.KST.ProExcision.leftHomologyModelMap_comm
 #print axioms SerrePositivity.KST.ProExcision.leftHomologyModelMap_comm
 
-#check @SerrePositivity.KST.ProExcision.spectralPageMap_fourδ₁Toδ₀
-#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_fourδ₁Toδ₀
+#check @SerrePositivity.KST.ProExcision.powerKernel
+#print axioms SerrePositivity.KST.ProExcision.powerKernel
 
-#check @SerrePositivity.KST.ProExcision.spectralPageMap_fourδ₄Toδ₃
-#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_fourδ₄Toδ₃
+#check @SerrePositivity.KST.ProExcision.powerKernel_mono
+#print axioms SerrePositivity.KST.ProExcision.powerKernel_mono
 
-#check @SerrePositivity.KST.ProExcision.spectralSequencePageKernelFunctor
-#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageKernelFunctor
+#check @SerrePositivity.KST.ProExcision.exists_power_torsion_bound
+#print axioms SerrePositivity.KST.ProExcision.exists_power_torsion_bound
 
-#check @SerrePositivity.KST.ProExcision.spectralSequencePageKernelInclusion
-#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageKernelInclusion
+#check @SerrePositivity.KST.ProExcision.powerKernelTransition
+#print axioms SerrePositivity.KST.ProExcision.powerKernelTransition
 
-#check @SerrePositivity.KST.ProExcision.spectralSequencePageKernelProjection
-#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageKernelProjection
+#check @SerrePositivity.KST.ProExcision.powerKernelTower
+#print axioms SerrePositivity.KST.ProExcision.powerKernelTower
+
+#check @SerrePositivity.KST.ProExcision.powerKernelTower_isProZero
+#print axioms SerrePositivity.KST.ProExcision.powerKernelTower_isProZero
+
+#check @SerrePositivity.KST.ProExcision.scalarHomologyQuotient
+#print axioms SerrePositivity.KST.ProExcision.scalarHomologyQuotient
+
+#check @SerrePositivity.KST.ProExcision.scalarHomologyQuotientπ
+#print axioms SerrePositivity.KST.ProExcision.scalarHomologyQuotientπ
+
+#check @SerrePositivity.KST.ProExcision.scalarCone_inr_smul_zero
+#print axioms SerrePositivity.KST.ProExcision.scalarCone_inr_smul_zero
+
+#check @SerrePositivity.KST.ProExcision.scalarConeHomologyComparison
+#print axioms SerrePositivity.KST.ProExcision.scalarConeHomologyComparison
+
+#check @SerrePositivity.KST.ProExcision.scalarConeHomologyComparison_π
+#print axioms SerrePositivity.KST.ProExcision.scalarConeHomologyComparison_π
+
+#check @SerrePositivity.KST.ProExcision.scalarConeHomologyComparison_injective
+#print axioms SerrePositivity.KST.ProExcision.scalarConeHomologyComparison_injective
+
+#check @SerrePositivity.KST.ProExcision.scalarConeHomologyComparison_exact
+#print axioms SerrePositivity.KST.ProExcision.scalarConeHomologyComparison_exact
+
+#check @SerrePositivity.KST.ProExcision.scalarCone_connecting_smul_zero
+#print axioms SerrePositivity.KST.ProExcision.scalarCone_connecting_smul_zero
+
+#check @SerrePositivity.KST.ProExcision.cone_connecting_naturality
+#print axioms SerrePositivity.KST.ProExcision.cone_connecting_naturality
+
+#check @SerrePositivity.KST.ProExcision.powerScalarSquare
+#print axioms SerrePositivity.KST.ProExcision.powerScalarSquare
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeMap
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeMap
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeTower
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeTower
+
+#check @SerrePositivity.KST.ProExcision.powerScalarRange_le
+#print axioms SerrePositivity.KST.ProExcision.powerScalarRange_le
+
+#check @SerrePositivity.KST.ProExcision.powerHomologyQuotientTower
+#print axioms SerrePositivity.KST.ProExcision.powerHomologyQuotientTower
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeMap_inr
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeMap_inr
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeComparison
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeComparison
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeConnecting
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeConnecting
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeComparison_isProIso
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeComparison_isProIso
+
+#check @SerrePositivity.KST.ProExcision.coneOfArrowFunctor
+#print axioms SerrePositivity.KST.ProExcision.coneOfArrowFunctor
+
+#check @SerrePositivity.KST.ProExcision.BiTower
+#print axioms SerrePositivity.KST.ProExcision.BiTower
+
+#check @SerrePositivity.KST.ProExcision.BiTower.row
+#print axioms SerrePositivity.KST.ProExcision.BiTower.row
+
+#check @SerrePositivity.KST.ProExcision.BiTower.diagonal
+#print axioms SerrePositivity.KST.ProExcision.BiTower.diagonal
+
+#check @SerrePositivity.KST.ProExcision.BiLevelHom
+#print axioms SerrePositivity.KST.ProExcision.BiLevelHom
+
+#check @SerrePositivity.KST.ProExcision.BiLevelHom.row
+#print axioms SerrePositivity.KST.ProExcision.BiLevelHom.row
+
+#check @SerrePositivity.KST.ProExcision.BiLevelHom.diagonal
+#print axioms SerrePositivity.KST.ProExcision.BiLevelHom.diagonal
+
+#check @SerrePositivity.KST.ProExcision.BiLevelHom.diagonal_isProIso
+#print axioms SerrePositivity.KST.ProExcision.BiLevelHom.diagonal_isProIso
+
+#check @SerrePositivity.KST.ProExcision.BiTower.diagonal_isProZero
+#print axioms SerrePositivity.KST.ProExcision.BiTower.diagonal_isProZero

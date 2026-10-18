@@ -1,18 +1,17 @@
 module
 
 public import SerrePositivity.KST.ProExcision.FlatBaseChange
-public import Mathlib.Algebra.Homology.SpectralSequence.Basic
 
 @[expose] public noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
 /-!
-# スペクトル系列の pro-零性の形式部分
+# 完全列における pro-零性
 
-概要：各頁の pro-零性を次頁へ移し、完全列で有限拡張を扱う。
+概要：複体のホモロジーの pro-零性と完全列による有限拡張を扱う。
 方針：ホモロジーはサイクルの部分商であり、零射を保つことを使う。
-規約：Koszul スペクトル系列の構成と収束はこのファイルの仮定に隠さない。
+規約：完全性は実際の射に対して指定する。
 使われ方：KST Lemma 4.10 の頁比較。局所係数つき Claim 4.18 の構成は別工程。
 -/
 
@@ -52,24 +51,6 @@ theorem homology_proZero_of_component {I : Type w} {c : ComplexShape I}
   intro n
   obtain ⟨m, h, hz⟩ := hX n
   exact ⟨m, h, homologyMap_zero_of_component_zero (X.transition h) i hz⟩
-
-/-- 概要：スペクトル系列の一つの位置の pro-零性は次頁へ移る。
-方針：頁のホモロジーの pro-零性を自然な頁同型で移す。
-規約：系列は Mathlib の実際の SpectralSequence とその射の塔。
-使われ方：KST Lemma 4.10 の E₂ から E∞ への有限比較。 -/
-theorem spectral_successor_proZero {I : Type w} {c : ℤ → ComplexShape I} {r₀ : ℤ}
-    (X : Tower (SpectralSequence (ModuleCat.{u} R) c r₀))
-    (r r' : ℤ) (i : I) (hr : r₀ ≤ r) (hs : r + 1 = r')
-    (hX : IsProZero (X.map (SpectralSequence.pageFunctor _ _ _ r hr) |>.map
-      (eval _ _ i))) :
-    IsProZero (X.map (SpectralSequence.pageFunctor _ _ _ r' (by omega)) |>.map
-      (eval _ _ i)) := by
-  have hz := homology_proZero_of_component
-    (X.map (SpectralSequence.pageFunctor _ _ _ r hr)) i hX
-  let iso := SpectralSequence.pageHomologyNatIso (ModuleCat.{u} R) c r₀ r r' i hs hr
-  let f := X.mapNatTrans iso.hom
-  let : ∀ n, IsIso (f.app n) := fun n ↦ inferInstanceAs (IsIso (iso.hom.app (X.obj n)))
-  exact IsProZero.of_levelwiseIso f hz
 
 /-- 概要：完全列の両端が pro-零なら中央も pro-零。
 方針：右の遷移を零化して左から持ち上げ、左の遷移を零化する。
@@ -113,20 +94,6 @@ theorem proIso_of_injective_exact_proZero {A B C : Tower (ModuleCat.{u} R)}
     apply (hex n _).mp
     rw [g.naturality_apply, hz]
     exact LinearMap.zero_apply _
-
-/-- 概要：初頁で pro-零な位置はすべての有限後続頁で pro-零。
-方針：次頁への保存補題を頁数について反復する。
-規約：頁数を全塔の段で固定し、指数の一様性は主張しない。
-使われ方：KST Lemma 4.10 の有界な Koszul 方向の比較。 -/
-theorem spectral_page_proZero {I : Type w} {c : ℤ → ComplexShape I} {r₀ : ℤ}
-    (X : Tower (SpectralSequence (ModuleCat.{u} R) c r₀)) (i : I)
-    (hX : IsProZero (X.map (SpectralSequence.pageFunctor _ _ _ r₀ (le_refl _)) |>.map
-      (eval _ _ i))) (r : ℤ) (hr : r₀ ≤ r) :
-    IsProZero (X.map (SpectralSequence.pageFunctor _ _ _ r hr) |>.map
-      (eval _ _ i)) := by
-  induction r, hr using Int.leInduction with
-  | base => exact hX
-  | succ r hr ih => exact spectral_successor_proZero X r (r + 1) i hr rfl ih
 
 /-- 概要：有限個の pro-零な商による拡張は pro-零。
 方針：完全列の両端から中央の零化を帰納的に得る。

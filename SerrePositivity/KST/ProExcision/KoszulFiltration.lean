@@ -3,10 +3,8 @@ module
 public import SerrePositivity.KST.ProExcision.SpectralPro
 public import SerrePositivity.HomologicalAlgebra.StupidTruncation
 public import SerrePositivity.HomologicalAlgebra.CochainTensorCone
-public import Mathlib.Algebra.Homology.HomotopyCategory.SpectralObject
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
-public import Mathlib.Algebra.Homology.SpectralObject.SpectralSequence
 
 @[expose] public noncomputable section
 
@@ -18,8 +16,8 @@ set_option maxSynthPendingDepth 10
 
 概要：Koszul 複体の有限な方向を項ごとに切り詰めた濾過を構成する。
 方針：元の Koszul 複体の切り詰めと既存の全テンソル複体を使う。
-規約：スペクトル系列の E₂ 同定・収束は別に証明する。
-使われ方：KST Lemma 4.10 の Koszul スペクトル系列の構成。
+規約：通常の複体の濾過だけを構成する。
+使われ方：KST Lemma 4.10 の 短完全列と長完全列への接続。
 -/
 
 universe u
@@ -112,28 +110,6 @@ def finiteKoszulTensorFiltration {e : ℕ} (z : Fin e → R)
     (K : CochainComplex (ModuleCat.{u} R) ℤ) :
     Fin (e + 2) ⥤ CochainComplex (ModuleCat.{u} R) ℤ :=
   koszulFiltrationIndex e ⋙ koszulTensorFiltration z K
-
-/-- 概要：Koszul 有限濾過から実際のスペクトル対象を得る。
-方針：Mathlib の mapping cone スペクトル対象にホモロジー関手を施す。
-規約：E₂ 頁の Koszul ホモロジーとの同定をこの構成の仮定に置かない。
-使われ方：KST Lemma 4.10 のスペクトル系列の構成段階。 -/
-def koszulFilteredSpectralObject {e : ℕ} (z : Fin e → R)
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) :
-    Abelian.SpectralObject (ModuleCat.{u} R) (Fin (e + 2)) :=
-  ((HomotopyCategory.spectralObjectMappingCone (ModuleCat.{u} R)).precomp
-    (finiteKoszulTensorFiltration z K)).mapHomologicalFunctor
-      (HomotopyCategory.homologyFunctor (ModuleCat.{u} R) (.up ℤ) 0)
-
-/-- 概要：Koszul 有限濾過の補助スペクトル系列を構成する。
-方針：Mathlib の有限行スペクトル系列の構成を実際のスペクトル対象に適用する。
-規約：Mathlib の頁番号を使い、KST の E₂ 頁との番号対応・同定は未証明。
-使われ方：KST Lemma 4.10 の構成。収束と edge 比較を主張する定理ではない。 -/
-def koszulFilteredSpectralSequence {e : ℕ} (z : Fin e → R)
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) :
-    SpectralSequence (ModuleCat.{u} R)
-      (fun r ↦ ComplexShape.spectralSequenceFin (e + 1) (⟨r, 1 - r⟩ : ℤ × ℤ)) 2 :=
-  (koszulFilteredSpectralObject z K).spectralSequence
-    (Abelian.SpectralObject.coreE₂CohomologicalFin (e + 1))
 
 /-- 概要：Koszul 複体を一度以上で切り詰めると零複体になる。
 方針：残る正次数は Koszul の上界で消え、他の次数は切り詰めで消える。

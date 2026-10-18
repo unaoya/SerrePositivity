@@ -31,106 +31,26 @@
 
 ## 現在地
 
-- **依存側の公開 API の kernel エラーで停止（2026-10-18）。** 下記の依存エラー欄を参照。
-- Mathlib の作業ツリーに変更はなく、並行作業による破損かどうかは未確認。
-- 修復・代替実装は行わない。L6b は未完了、L6c〜g は未着手のまま。
+- **L6b を再開（2026-10-18、ユーザー指定の反復 cone 経路）。**
+- 固定 Mathlib の公開 API 不具合は並行作業の破損ではないとユーザーが確認。依存側は修復しない。
+- SpectralSequence API の使用を終了し、短完全列・cone 長完全列で再利用可能な補題を残す。
+- L6b は未完了、L6c〜g は未着手。旧頁計算の検証済み記録は完成の根拠に数えない。
 - L6a：最小形式の実装完了。塔・レベル射・pro 同型判定・関手保存・再添字・pro-零性・対角共終性を検証済み。
 - L1：具体的な自然なレベル完全列から塔への持ち上げを証明。fiber 長完全列自体は K-L9 の入力。
 - L2：加群の塔における pro 五項補題を証明。外側はレベル同型でなく pro 同型。
 - L3：任意の関手での保存を証明したので、加法関手にも適用可能。具体的な有理化関手は K-L9 から借用。
 - L6b：進行中。Lemma 4.9 の有限生成加群係数版を検証済み。
 - 平坦底変換の自然なホモロジー比較・イデアル倍の像・pro-零性保存まで検証済み。
-- Lemma 4.10：実際の Mathlib SpectralSequence の頁の pro-零性保存と有限拡張を検証済み。
-- Koszul SS の実際の次頁を係数付き全 Koszul ホモロジーへ同定済み。塔の自然性・次数ごとの有限収束と edge 比較は残件。
-- 有限な Koszul 方向の項による濾過をテンソル複体上に構成済み。
-- そこから実際の mapping cone スペクトル対象と有限行補助スペクトル系列を構成済み。
-- 初端の零性と終端の全 Koszul 複体への包含が同型であることを証明済み。
-- 複体の射に関する切り詰め濾過の自然性と関手性を証明済み。
-- 隣接する項濾過の cone と、一項複体をテンソルした複体のホモロジーの同型まで証明済み。
-- Mathlib の有限行初頁をスペクトル対象の区間ホモロジーへ同定済み。
-- 補助初頁の項を Koszul の -p 次項と K の s+2p 次ホモロジーのテンソルへ同定済み。
-- KST の (p,q) は Mathlib の (−q−2p,p) に対応し、補助初頁 2 は KST の E₁。
-- 添字の微分次数の計算を証明済み。補助頁 r は KST r−1 頁に対応する。
-- 補助初頁の微分と Koszul 微分の同定、次頁の KST E₂ の Koszul ホモロジー表示を証明済み。
-- 全テンソル複体を既存 koszulComplexOn へ移す同型を列長帰納法で構成済み。
-- 次数ごと分裂する短完全列のテンソル境界を純テンソル上で計算済み。
-- 係数複体の微分の項が s≫r=0 により消えることを証明済み。
-- その純テンソル計算を射の同次成分の等式、さらに全複体射の等式へ引き上げ済み。
-- 全テンソル後の分裂境界は、元の分裂境界をテンソルして左シフト同型を合成したものと一致する。
-- 項切り詰めの境界を射影・包含で挟むと元の複体の微分になることを証明済み。
-- テンソル後も同じ射影・包含で比較すると元の微分のテンソルになることを証明済み。
-- 短完全列のホモロジー連結写像を分裂境界のサイクル代表元で計算する公式を証明済み。
-- 分裂境界が誘導するシフトつきホモロジー写像も同じ代表元公式を持つことを証明済み。
-- 両者をホモロジーへの全射で比較し、短完全列の連結写像とシフトつき境界写像の一致を証明済み。
-- cone 三角形の境界を短完全列の δ へ移す一般公式を証明済み。
-- 合成 cone 三角形の δ を、右の短完全列の δ と左の商射の合成で表す公式を証明済み。
-- 濾過スペクトル対象の δ を実際の合成 cone 三角形へ移す比較を証明済み。
-- その δ を cone–商比較で移し、次数ごとの分裂境界のホモロジー写像で表す公式を証明済み。
-- 実際の隣接切り詰め射を第一射にした短完全列と、その次数ごと分裂を構成済み。
-- 隣接包含の残る次数での同型性と、分裂境界が中央切り詰めの微分になることを証明済み。
-- その全テンソル境界の同次成分も中央切り詰めの微分のテンソルに一致する。
-- 一般区間の短完全列を構成し、任意の単調再添字による濾過の実際の射に適用済み。
-- 有限 Koszul 濾過を含む区間ホモロジーから商ホモロジーへの同型を構成済み。
-- この同型で δ を移すと分裂境界と左の商射になることを証明済み。
-- 実際の有限 Koszul 濾過の補助初頁微分を、商ホモロジー上の分裂境界と左の商射の合成として計算済み。
-- テンソル前の隣接次数別商の境界は、標準項同型で移すと元の複体の微分になることを証明済み。
-- その比較を複体射の等式へ引き上げ、一項複体のシフト同型を含めた微分との一致を証明済み。
-- テンソル後の隣接商境界は、元の商境界のテンソルと左シフト比較の合成であることを証明済み。
-- 全テンソル後にも、一項模型での境界は元の微分のテンソルに一致すると複体射として証明済み。
-- 平坦な左テンソルのホモロジー比較について、係数加群の射に関する自然性を証明済み。
-- 次数零と一般次数の一項テンソルのシフト比較について、係数射に関する自然性を証明済み。
-- 一項テンソルのホモロジー同型についても、同じ次数の係数射が f ⊗ H(K) へ移ることを証明済み。
-- 一項関手族のシフト加法則により、隣接二次数の境界と標準正規化の整合性を証明済み。
-- 一般の一項テンソル境界を標準比較で移すと、通常の係数テンソル射のシフトになることを複体射として証明済み。
-- シフト列の一般比較を証明し、隣接一項テンソル境界のホモロジー誘導射を係数テンソル射へ移送済み。
-- 源 q・標的 q+1 の共通係数次数 s=q-a を指定できる同型を構成し、f ⊗ H_s(K) との可換性を証明済み。
-- 隣接商のテンソルホモロジー同型を作り、実際の隣接商境界が P.d ⊗ H_s(K) を誘導すると証明済み。
-- 任意表示の隣接区間を標準隣接模型へ移す短複体同型と、その境界比較を証明済み。
-- 二つの残る次数を別に指定して、区間境界のホモロジーが P.d ⊗ H_s(K) を誘導すると証明済み。
-- 有限 Koszul 補助初頁の実際の区間添字を代入し、微分が Koszul 微分と係数ホモロジーのテンソルに一致すると証明済み。
-- 微分に適合する係数模型は koszulFirstPageCoefficientIsoAt を使う。
-- 固定係数次数の有限行の複体形状と、整数次数・補助初頁への埋め込みを構成済み。
-- 初頁への有限行の埋め込みは微分元・微分先について閉じることを証明済み。
-- 両方向に閉じた形状への制限が、端を含めホモロジーを保つ一般同型を構成済み。
-- 固定係数次数の初頁の一行を係数付き Koszul 複体の有限制限へ同型にし、補助頁 3 の有限模型を構成済み。
-- 項の台への制限と零延長の一般比較を証明し、有限模型から係数付き全 Koszul ホモロジーへの同型を構成済み。
-- koszulSecondPageIso により Mathlib 頁 3＝KST E₂ の項を計算済み。
-- 右係数と左係数の点ごとの交換を複体・ホモロジーの自然同型として構成済み。
-- 固定有限生成係数の右 Koszul ホモロジーの塔の pro-零性を Lemma 4.9 から移送済み。
-- KST E₂ の項は既存の左係数 Koszul 模型でも表示可能。
-- スペクトル対象の射に対する三連結写像短複体と、そのホモロジー E の関手を構成済み。
-- 中央区間の射が零なら頁の射も零になることを証明済み。
-- 関手間の自然変換を合成可能図式へ持ち上げ、恒等・合成の保存を証明済み。
-- 濾過間の自然変換をスペクトル対象の射へ持ち上げ、δ との可換性と恒等・合成保存を証明済み。
-- 複体の濾過からホモロジースペクトル対象への実際の関手を構成済み。
-- Koszul 冪の塔を有限テンソル濾過とホモロジースペクトル対象へ関手的に持ち上げ済み。
-- 各頁の項の E 模型の塔を実際の冪遷移から構成し、既存の頁の項との段ごとの同型を構成済み。
-- スペクトル対象の射を cycles・opcycles へ誘導し、πE・ιE との可換性を証明済み。
-- Ψ の自然性を介して、実際の三区間の頁の微分 d がスペクトル対象の射と可換になることを証明済み。
-- 四添字の変更を自然同型として構成し、実際の pageXIso との対象成分の一致を証明済み。
-- 微分を自然変換にまとめ、Mathlib の実際の pageD と比較して各頁の複体の関手を構成済み。
-- 各頁の複体関手の対象が既存スペクトル系列の実際の頁に一致すると証明済み。
-- Koszul 冪遷移が微分と可換な各頁複体の塔を構成済み。
-- その項の塔は既存の E 模型の項の塔と遷移まで一致すると証明済み。
-- 頁の指定位置の pro-零性がその頁のホモロジーの塔へ移ることを証明済み。
-- 頁を定める区間の変更がスペクトル対象の射と可換であることを短複体・ホモロジーで証明済み。
-- 左端・右端の標準変更射の自然性を証明済み。
-- 左ホモロジー模型の包含と射影の可換性から、標準ホモロジー写像との比較を得る補題を証明済み。
-- 頁ホモロジーの核模型の関手と、その包含・射影の自然変換まで構成済み。
-- 次の公開 homologyData との接続で依存側の kernel エラーを再現。修復後は次頁同型の自然性、E₂ 比較の冪遷移自然性、有限収束と edge 比較から再開する。
-- 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
-- スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
-- π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
-- Lemma 4.9 は原典の列長帰納法と異なり、Artin–Rees と実際の冪遷移の深度を用いた。
-- L6a 区切りの全体ビルドは別レーンの RationalFixedPoints・CoefficientForget で失敗。
-- 当該二ファイルは L6 の import 閉包外であり変更しない。L6 対象ビルドは成功。
-- L6c：未着手。
-- L6d：未着手。紙の検証を実装前に記録する。
-- L6e：未着手。simple 空間版の検証が必要。
-- L6f：未着手。最小スペクトル系列の仕様を着手前に報告する。
-- L6g：未着手。非零因子化と系の再構成を着手前に確認する。
-- この文書は現在の仕様と到達点を上書きして保つ。
-- 実施の経緯はコミットメッセージに記録する。
+- 旧スペクトル系列経路を使用停止。通常の複体・短完全列・cone 境界で使える補題を保存。
+- `powerKernelTower_isProZero`：Noether 加群の冪核の塔の pro-消滅を証明済み。
+- `scalarConeHomologyComparison`：通常商から cone ホモロジーへの比較射を構成。
+- `scalarConeHomologyComparison_injective` と `_exact`：長完全列で単射性・次の核との一致を証明。
+- `cone_connecting_naturality`：可換正方形に対する長完全列の自然性を証明。
+- `powerScalarConeComparison_isProIso`：一変数比較を冪核の pro-零性から証明。
+- 二重塔の行ごとの pro 同型・pro-零性を対角へ移す一般補題を検証済み。
+- 残件：二重塔を反復 Koszul 冪系へ適用する列長帰納法、元の冪遷移との比較。
+- 対象ビルドと203宣言の公理監査が成功。公理は標準三公理の範囲内。
+- L6b 完了とはまだ主張しない。
 
 ## 主要宣言の表
 
@@ -158,18 +78,12 @@
 | flatTensorHomologyIso | FlatBaseChange.lean | 検証済み | 平坦テンソルとホモロジーの自然同型 |
 | ideal_smul_tensor_range | FlatBaseChange.lean | 検証済み | a(n)M のテンソル像 |
 | koszul_flatTensor_homology_proZero | FlatBaseChange.lean | 検証済み | 有限生成性を係数変更前にのみ要求 |
-| spectral_page_proZero | SpectralPro.lean | 検証済み | 実際のスペクトル系列の全後続頁へ零性を移す |
 | proZero_finite_extension | SpectralPro.lean | 検証済み | 有限拡張の pro-零性 |
 | proIso_of_injective_exact_proZero | SpectralPro.lean | 検証済み | edge 比較に使う pro 同型判定 |
-| koszulFilteredSpectralObject | KoszulFiltration.lean | 検証済み | 有限な実際の濾過から構成 |
-| koszulFilteredSpectralSequence | KoszulFiltration.lean | 検証済み | Mathlib の有限行補助スペクトル系列 |
 | koszulTruncation_initial_isZero | KoszulFiltration.lean | 検証済み | 濾過の初端 |
 | koszulTruncation_terminal_isIso | KoszulFiltration.lean | 検証済み | 濾過の終端 |
 | truncationFiltrationFunctor | TruncationNaturality.lean | 検証済み | 複体の射に自然な項濾過 |
 | adjacentTensorConeHomologyIso | KoszulGraded.lean | 検証済み | 隣接する項濾過の cone のホモロジー計算 |
-| koszulFirstPageXIso | KoszulGraded.lean | 検証済み | 補助初頁の区間ホモロジー表示 |
-| koszulFirstPageTermIso | KoszulFirstPage.lean | 検証済み | 補助初頁の具体的な係数 |
-| koszulFirstPageHomologicalTermIso | KoszulFirstPage.lean | 検証済み | KST 添字での E₁ の係数 |
 | totalKoszulTensorIso | TotalKoszul.lean | 検証済み | 全テンソルと既存 Koszul 構成の同型 |
 | tensorSplitBoundary_apply_homogeneous | TensorBoundary.lean | 検証済み | テンソル境界の同次純テンソル上の計算 |
 | tensorSplitBoundary_eq | TensorBoundary.lean | 検証済み | 全複体射としてのテンソル境界の比較 |
@@ -179,19 +93,13 @@
 | splitBoundary_connecting | SplitConnecting.lean | 検証済み | 連結写像の代表元公式 |
 | splitBoundary_connecting_eq_shiftMap | SplitConnecting.lean | 検証済み | 連結写像とシフトつき境界の一致 |
 | coneCompositeConnecting_quotient | ConeConnecting.lean | 検証済み | 合成 cone の δ と商の連結写像 |
-| filtrationInterval_delta | FiltrationConnecting.lean | 検証済み | 濾過の δ と実際の cone 三角形 |
-| filtrationInterval_delta_split | FiltrationConnecting.lean | 検証済み | 濾過の δ を分裂境界へ移す |
 | splitBoundary_differential | CutoffBoundary.lean | 検証済み | 二次数で同型な分裂境界は微分 |
 | splitTensorBoundary_differential | CutoffBoundary.lean | 検証済み | 同じ一般境界のテンソル計算 |
 | adjacentCutShortComplex | AdjacentCut.lean | 検証済み | 実際の隣接射の短完全模型 |
 | adjacentTensorCutShortComplex_shortExact | AdjacentCut.lean | 検証済み | 分裂による全テンソルの短完全性 |
 | adjacentTensorCutBoundary_differential | AdjacentCut.lean | 検証済み | 隣接濾過の同次境界計算 |
 | intervalCutShortComplex | IntervalCut.lean | 検証済み | 一般区間の実際の商短完全列 |
-| tensorFiltrationIntervalHomologyIso | IntervalCut.lean | 検証済み | 再添字濾過の区間と商のホモロジー比較 |
-| tensorFiltration_delta_quotientIso | IntervalCut.lean | 検証済み | 実際の濾過の δ の商比較 |
 | tensorFiltrationBoundary | IntervalCut.lean | 検証済み | 実際の区間のシフトつき境界 |
-| koszulFirstPageQuotientIso | KoszulDifferential.lean | 検証済み | 補助初頁の商ホモロジーモデル |
-| koszulFirstPage_d_quotient | KoszulDifferential.lean | 検証済み | 初頁微分の商モデルでの計算 |
 | adjacentGradeBoundary_differential | AdjacentGradeBoundary.lean | 検証済み | 商境界の下端成分は元の微分 |
 | adjacentGradeIso | AdjacentGradeBoundary.lean | 検証済み | 標準項同型に合う一項複体模型 |
 | singleDegreeBoundary | AdjacentGradeBoundary.lean | 検証済み | 係数射から作るシフトつき一項境界 |
@@ -210,48 +118,17 @@
 | adjacentTensorGradeHomology_differential | GradedHomology.lean | 検証済み | 実際の隣接商境界は P.d ⊗ H(K) を誘導 |
 | intervalTensorAdjacentIso | IntervalGradeBoundary.lean | 検証済み | 任意表示の区間の隣接模型への同型 |
 | intervalTensorGradeHomology_differential | IntervalGradeBoundary.lean | 検証済み | 正規化前の区間境界の係数微分 |
-| koszulFirstPageCoefficientIsoAt | KoszulCoefficients.lean | 検証済み | 微分と整合する指定係数次数の初頁模型 |
-| koszulFirstPage_d_coefficient | KoszulCoefficients.lean | 検証済み | 実際の有限初頁微分は Koszul 微分 ⊗ H(K) |
-| finiteKoszulShape | FiniteKoszulShape.lean | 検証済み | 巡回しない有限下降複体の形状 |
-| finiteKoszulSpectralEmbedding | FiniteKoszulShape.lean | 検証済み | 固定係数次数の有限行の閉じた埋め込み |
-| closedRestrictionHomologyIso | FiniteKoszulShape.lean | 検証済み | 両方向に閉じた制限のホモロジー比較 |
-| supportedRestrictionExtendIso | SupportedRestriction.lean | 検証済み | 項の台の上の制限の零延長との同型 |
-| supportedRestrictionHomologyIso | SupportedRestriction.lean | 検証済み | 端を含む台上の制限のホモロジー比較 |
-| koszulFirstPageFiniteRowIso | KoszulCoefficientRow.lean | 検証済み | 初頁の有限行と係数付き Koszul 有限複体の同型 |
-| koszulSecondPageIso | KoszulCoefficientRow.lean | 検証済み | 実際の KST E₂ の項の全 Koszul ホモロジー表示 |
 | IsProZero.of_natIso | KoszulCoefficientSwap.lean | 検証済み | 自然同型による像の塔の pro-零性移送 |
 | pointwiseTensorSwapHomologyIso | KoszulCoefficientSwap.lean | 検証済み | 係数の左右交換のホモロジー自然同型 |
 | koszulRightTensorHomologyTower_isProZero | KoszulCoefficientSwap.lean | 検証済み | 固定有限生成右係数の Koszul pro-消滅 |
-| koszulSecondPageLeftIso | KoszulCoefficientSwap.lean | 検証済み | E₂ を既存左係数模型で表示 |
-| spectralShortComplexFunctor | SpectralObjectMaps.lean | 検証済み | スペクトル対象の射に対する短複体関手 |
-| spectralPageFunctor | SpectralObjectMaps.lean | 検証済み | 三区間の頁を与える関手 |
-| spectralPageFunctor_map_zero | SpectralObjectMaps.lean | 検証済み | 中央区間の零射から頁の零射 |
-| composableArrowsMapNatTrans | SpectralObjectMaps.lean | 検証済み | 自然変換の合成可能図式への持ち上げ |
-| spectralPrecompMap | FilteredSpectralMaps.lean | 検証済み | 引き戻しの自然変換から δ と可換なスペクトル対象の射 |
-| spectralPrecompFunctor | FilteredSpectralMaps.lean | 検証済み | スペクトル対象の引き戻し関手 |
-| filteredHomologySpectralFunctor | FilteredSpectralMaps.lean | 検証済み | 実際の複体濾過のホモロジースペクトル対象関手 |
-| finiteTensorFiltrationFunctor | FilteredTowers.lean | 検証済み | 有限テンソル濾過の関手 |
-| koszulSpectralTower | FilteredTowers.lean | 検証済み | 実際の冪遷移によるスペクトル対象の塔 |
-| koszulPageETower | FilteredTowers.lean | 検証済み | 各頁の E 模型の項の塔 |
-| koszulPageTowerLevelIso | FilteredTowers.lean | 検証済み | 塔の各段と既存の頁の項の同型 |
-| spectralCyclesMap | SpectralObjectCyclesMaps.lean | 検証済み | δ の核への誘導射 |
-| spectralOpcyclesMap | SpectralObjectCyclesMaps.lean | 検証済み | δ の余核への誘導射 |
-| spectralPageMap_πE | SpectralObjectCyclesMaps.lean | 検証済み | 頁の射と標準全射の可換性 |
-| spectralPageMap_ιE | SpectralObjectCyclesMaps.lean | 検証済み | 頁の射と標準単射の可換性 |
-| spectralPageMap_d | SpectralObjectCyclesMaps.lean | 検証済み | 実際の頁の微分との可換性 |
-| spectralSequenceTermFunctorIso | SpectralSequencePageFunctor.lean | 検証済み | 四添字・次数の表示変更の自然同型 |
-| spectralSequencePageDNatTrans | SpectralSequencePageFunctor.lean | 検証済み | 実際の頁微分の自然変換 |
-| spectralSequencePageFunctor | SpectralSequencePageFunctor.lean | 検証済み | スペクトル対象から実際の各頁複体への関手 |
-| koszulPageComplexTower | KoszulPageTowers.lean | 検証済み | 実際の冪遷移と微分が可換な頁複体の塔 |
-| koszulPageComplexTower_eval_eq | KoszulPageTowers.lean | 検証済み | 項の塔と E 模型の遷移までの一致 |
-| koszulPageHomologyTower_isProZero_of_terms | KoszulPageTowers.lean | 検証済み | 項の pro-零性から頁ホモロジーの pro-零性 |
-| spectralPageMap_interval | SpectralPageIntervalNaturality.lean | 検証済み | 区間図式の変更と頁の射の可換性 |
-| spectralPageMap_fourδ₁Toδ₀ | SpectralPageIntervalNaturality.lean | 検証済み | 左端変更の自然性 |
-| spectralPageMap_fourδ₄Toδ₃ | SpectralPageIntervalNaturality.lean | 検証済み | 右端変更の自然性 |
 | leftHomologyModelMap_comm | SpectralPageIntervalNaturality.lean | 検証済み | 明示的左ホモロジー模型の写像比較 |
-| spectralSequencePageKernelFunctor | SpectralSequenceHomologyNaturality.lean | 検証済み | 頁ホモロジーの核の E 模型の関手 |
-| spectralSequencePageKernelInclusion | SpectralSequenceHomologyNaturality.lean | 検証済み | 核模型の包含の自然変換 |
-| spectralSequencePageKernelProjection | SpectralSequenceHomologyNaturality.lean | 検証済み | 核模型から次頁への射影の自然変換 |
+| powerKernelTower_isProZero | PowerKernel.lean | 検証済み | 冪倍遷移を持つ核の pro-消滅 |
+| scalarConeHomologyComparison_injective | ScalarConeHomology.lean | 検証済み | 一変数の通常商から cone ホモロジーへの単射 |
+| scalarConeHomologyComparison_exact | ScalarConeHomology.lean | 検証済み | 比較射と連結写像の完全性 |
+| cone_connecting_naturality | ConeNaturality.lean | 検証済み | 可換正方形に対する cone 連結写像の自然性 |
+| powerScalarConeComparison_isProIso | ScalarConePro.lean | 検証済み | 一変数版 Lemma 4.10 |
+| BiLevelHom.diagonal_isProIso | BiTower.lean | 検証済み | 行ごとの pro 同型を対角へ移す |
+| BiTower.diagonal_isProZero | BiTower.lean | 検証済み | 行ごとの pro-零性を対角へ移す |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
@@ -455,18 +332,49 @@
 - 本レーンの完成とリポジトリ全体の完成を区別する。
 
 
-## 依存側の公開 API の kernel エラー（2026-10-18）
+## L6b の反復 cone 経路（再開時の設計）
 
-- 必要な処理：Mathlib の公開 `spectralSequenceHomologyData` の左ホモロジー模型を使い、既存の頁間同型の自然性を証明する。
-- 公開 `SpectralSequence.homologyData` と公開ラッパー `X.spectralSequenceHomologyData` の両方で同じ kernel エラーを再現した。
-- エラー：`(kernel) unknown constant '_private.Mathlib.Algebra.Homology.SpectralObject.SpectralSequence.0._proof_27'`。
-- 自分の新しい構造体宣言だけでなく、公開 API を使う `Nonempty` の最小例でも再現した。
-- 最小再現例：`/tmp/kst-l6-public-data-probe.lean`。
-- 最小例の出力：`/tmp/kst-l6-public-data-probe.log`。
-- 失敗した左ホモロジー模型の宣言：`/tmp/kst-l6-failed-left-data-declaration.txt`。
-- `.lake/packages/mathlib` の `git status --short` は空だった。
-- 依存ソースと olean の更新日はともに 2026-10-07。並行作業が原因かどうかは未確認。
-- 検証済みの L6 対象の import・ビルドは成功しており、失敗する宣言は集約へ入れていない。
-- 依存側の修復、私有定数へのアクセス、代替ホモロジー模型の再構成は実施していない。
-- 保存するのは、すでに証明済みの区間自然性と核模型の三つの関手・自然変換まで。
-- L6b の Lemma 4.10 の完成、L6c〜g の完成は主張しない。
+- ユーザー指定：Kos(a₁,…,aᵣ;K) = Cone(aᵣ : Kos(a₁,…,aᵣ₋₁;K) → Kos(a₁,…,aᵣ₋₁;K))。
+- 実際の既存定義 `koszulComplexOn` と `scalarConeFunctor` を使う。
+- 長完全列は既存 `ConeLES` の `Cone.exact₁`・`exact₂`・`exact₃` を用いる。
+- Lemma 4.9：列長で帰納し、正次数の両側を帰納仮定で消す。
+- 境界次数では固定された短い列の零次ホモロジーの有限性を使い、末尾変数の冪核を消す。
+- 冪核の遷移は aᵐ⁻ⁿ 倍であり、有限生成性と Noether 性（Artin–Rees／核の安定化）が必要。
+- 各変数の冪指数は独立に扱い、最後に対角の共終性を使う。
+- Lemma 4.10：長完全列から Hⁱ(K)/aⁿ → Hⁱ(Cone(aⁿ,K)) を作る。
+- この射は単射であり、その余核は Hⁱ⁺¹(K) 上の aⁿ 倍の核へ入る。
+- この核の pro-零性により一変数比較は pro 同型。
+- 一変数比較を列長で反復する際、自然性・商への降下・対角への移行を明示する。
+- 係数ホモロジーの有限生成性は必要な次数ごとに仮定する。係数複体の項の有限性は要求しない。
+- 原典 Lemma 4.10 のスペクトル系列証明とは異なる経路であることを宣言の docstring に明記する。
+- 保存済みの区間自然性・核模型は通常の短複体や長完全列として再利用できる部分だけ残す。
+- スペクトル対象・頁・収束を前提とする部分は新経路の import と監査から除く。
+- この変更はユーザーが明示した設計であり、承認待ちを設けない。
+- L6b 完了後は L6c へ進む。
+
+## Mathlib 更新時の再確認
+
+- 固定版：Lean `v4.35.0-rc4`。Mathlib revision は `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`（`lake-manifest.json`）。
+- 公開 `SpectralSequence.homologyData` と公開ラッパーの私有証明定数参照に起因する kernel エラーを再確認する。[^mathlib-homologydata]
+- 本レーンでは Mathlib 自体を修復せず、版も上げない。
+- 版更新時は独立 probe だけを再実行し、成功・失敗を記録する。cone 証明を頁の実装に戻す必要はない。
+
+[^mathlib-homologydata]: 最小再現は `/tmp/kst-l6-public-data-probe.lean`、出力は `/tmp/kst-l6-public-data-probe.log`。公開 `X.spectralSequenceHomologyData ...` の `.left` を `Nonempty` に包むだけで `(kernel) unknown constant '_private.Mathlib.Algebra.Homology.SpectralObject.SpectralSequence.0._proof_27'`。失敗した宣言は保存 Lean ファイルに含めていない。再現コードは次のとおり（旧レーン import を Mathlib 直接 import へ置換して独立実行する）。
+
+```lean
+module
+public import Mathlib.Algebra.Homology.SpectralObject.SpectralSequence
+@[expose] public noncomputable section
+open CategoryTheory CategoryTheory.Limits
+variable {C J κ : Type} [Category C] [Abelian C] [Preorder J]
+variable {c : ℤ → ComplexShape κ} {r₀ : ℤ}
+example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
+    (r r' : ℤ) (hrr' : r + 1 = r') (hr : r₀ ≤ r) (pq : κ)
+    (X : Abelian.SpectralObject C J) [X.HasSpectralSequence data] :
+    Nonempty ((((X.spectralSequence data).page r hr).sc pq).LeftHomologyData) := by
+  exact ⟨(X.spectralSequenceHomologyData data r r' hrr' hr
+    ((c r).prev pq) pq ((c r).next pq) rfl rfl
+    (data.i₀ r' pq) (data.i₀ r pq) (data.i₁ pq) (data.i₂ pq)
+    (data.i₃ r pq) (data.i₃ r' pq) rfl rfl rfl rfl rfl rfl
+    (data.deg pq - 1) (data.deg pq) (data.deg pq + 1) rfl (by omega) rfl).left⟩
+```

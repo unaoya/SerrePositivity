@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.ProExcision.KoszulCoefficientRow
+public import SerrePositivity.KST.ProExcision.SpectralPro
 
 @[expose] public noncomputable section
 
@@ -68,15 +68,5 @@ theorem koszulRightTensorHomologyTower_isProZero [IsNoetherianRing R]
   IsProZero.of_natIso (koszulTower z) (pointwiseTensorSwapHomologyIso M q)
     (koszulTensorHomologyTower_isProZero z M q hq)
 
-/-- 概要：KST E₂ の項を Lemma 4.9 で使用した左係数 Koszul ホモロジーで表す。
-方針：実際の次頁の右係数表示に、点ごとの係数交換のホモロジー同型を続ける。
-規約：係数は H_t(K)、Koszul 次数は -p。使われ方：KST Lemma 4.10 の既存 pro-零性への接続。 -/
-def koszulSecondPageLeftIso {e : ℕ} (z : Fin e → R)
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) (t : ℤ) (p : Fin (e + 1)) :
-    ((koszulFilteredSpectralSequence z K).page 3).X (t - 2 * (p.val : ℤ), p) ≅
-      ((((tensorLeft (K.homology t)).mapHomologicalComplex (.up ℤ)).obj
-        (koszulComplex z)).homology (-(p.val : ℤ))) :=
-  koszulSecondPageIso z K t p ≪≫
-    (pointwiseTensorSwapHomologyIso (K.homology t) (-(p.val : ℤ))).app (koszulComplex z)
 
 end SerrePositivity.KST.ProExcision

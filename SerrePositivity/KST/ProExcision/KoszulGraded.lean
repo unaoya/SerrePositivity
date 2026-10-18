@@ -4,7 +4,6 @@ public import SerrePositivity.KST.ProExcision.TruncationNaturality
 public import SerrePositivity.HomologicalAlgebra.BoundedTermKoszulAcyclic
 public import SerrePositivity.HomologicalAlgebra.CochainTensorShortExact
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShortExact
-public import Mathlib.Algebra.Homology.SpectralObject.FirstPage
 
 @[expose] public noncomputable section
 
@@ -112,6 +111,18 @@ theorem aboveAboveIso_inv_comp_inclusion (P : CochainComplex (ModuleCat.{u} R) �
   rw [Category.assoc, ← aboveAboveIso_comp_inclusion P a b hab,
     ← Category.assoc, Iso.inv_hom_id, Category.id_comp, truncationInclusion_comp_inclusion]
 
+/-- 概要：可換な射の図式を cone の図式へ送る。
+方針：通常の mapping cone の射と合成則を使う。
+規約：スペクトル対象は使用しない。使われ方：KST Lemma 4.10 の区間 cone の自然性。 -/
+def coneOfArrowFunctor :
+    ComposableArrows (CochainComplex (ModuleCat.{u} R) ℤ) 1 ⥤
+      CochainComplex (ModuleCat.{u} R) ℤ where
+  obj f := CochainComplex.mappingCone (f.map' 0 1)
+  map φ := CochainComplex.mappingCone.map _ _ (φ.app 0) (φ.app 1)
+    (ComposableArrows.naturality' φ 0 1)
+  map_id _ := CochainComplex.mappingCone.map_id _
+  map_comp _ _ := CochainComplex.mappingCone.map_comp _ _ _ _ _ _ _ _ _
+
 /-- 概要：隣接する項濾過の cone は短完全列の cone と同型。
 方針：二重切り詰めの標準同型から射の同型を作り cone 関手で写す。
 規約：テンソル後の実際の隣接射を使用する。
@@ -130,7 +141,7 @@ def adjacentTensorConeIso (P K : CochainComplex (ModuleCat.{u} R) ℤ) (a : ℤ)
         F.map (truncationInclusion P (a + 1) a _) ≫ 𝟙 _
       rw [← F.map_comp, Category.comp_id]
       exact congrArg F.map (aboveAboveIso_inv_comp_inclusion P (a + 1) a _))
-  exact (HomotopyCategory.composableArrowsFunctor (ModuleCat.{u} R)).mapIso iso
+  exact (coneOfArrowFunctor (R := R)).mapIso iso
 
 /-- 概要：項濾過の隣接射の cone のホモロジーは、その項のテンソルで計算できる。
 方針：隣接 cone の同型と次数別商の擬同型を合成する。
@@ -144,29 +155,5 @@ def adjacentTensorConeHomologyIso
   (homologyFunctor _ _ q).mapIso (adjacentTensorConeIso P K a) ≪≫
     tensorCutConeHomologyIso P K a q
 
-/-- 概要：有限行のスペクトル系列の初頁はスペクトル対象の区間ホモロジー。
-方針：初頁の外側添字と内側添字の一致を計算する。
-規約：Mathlib の頁番号 2。使われ方：KST Lemma 4.10 の補助初頁計算。 -/
-instance finiteFirstPageComputation (l : ℕ) :
-    (Abelian.SpectralObject.coreE₂CohomologicalFin l).HasFirstPageComputation where
-  hi₀₁ pq := by
-    apply Fin.ext
-    simp [Abelian.SpectralObject.coreE₂CohomologicalFin]
-  hi₂₃ pq := by
-    apply Fin.ext
-    simp [Abelian.SpectralObject.coreE₂CohomologicalFin, Fin.clamp]
-
-/-- 概要：Koszul 補助スペクトル系列の初頁を区間ホモロジーで表す。
-方針：有限行の初頁計算を実際の Koszul スペクトル対象に適用する。
-規約：この初頁自体を KST の E₂ と呼ばない。
-使われ方：KST Lemma 4.10 の初頁と次頁の同定の出発点。 -/
-def koszulFirstPageXIso {e : ℕ} (z : Fin e → R)
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) (pq : ℤ × Fin (e + 1)) :
-    ((koszulFilteredSpectralSequence z K).page 2).X pq ≅
-      ((koszulFilteredSpectralObject z K).H (pq.1 + (pq.2.val : ℤ))).obj
-        (ComposableArrows.mk₁ (homOfLE (show pq.2.castSucc ≤ pq.2.succ by
-          simp [Fin.le_iff_val_le_val]))) :=
-  (koszulFilteredSpectralObject z K).spectralSequenceFirstPageXIso
-    (Abelian.SpectralObject.coreE₂CohomologicalFin (e + 1)) pq _ _ rfl rfl _ rfl
 
 end SerrePositivity.KST.ProExcision
