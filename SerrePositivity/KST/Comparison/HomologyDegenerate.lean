@@ -55,7 +55,8 @@ theorem degenerateIntegralChains_split (X : SSet.{u}) :
     DoldKan.QInfty_idem (X := freeAbelianSimplicialFunctor.obj X)
   apply (cancel_epi (factorThruImage (integralDegenerateProjection X))).mp
   apply (cancel_mono (image.ι (integralDegenerateProjection X))).mp
-  simpa only [degenerateIntegralChains, Category.assoc, image.fac, image.fac_assoc, Category.id_comp, Category.comp_id] using
+  simpa only [degenerateIntegralChains, Category.assoc, image.fac, image.fac_assoc,
+    Category.id_comp, Category.comp_id] using
     hq
 
 /--

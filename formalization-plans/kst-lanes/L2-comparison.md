@@ -61,6 +61,8 @@ plus 構成の存在とその性質を区別して証明する。
 | 対象 | 原典 | 本レーンでの用途 |
 | --- | --- | --- |
 | `integralHomologyFunctor`、`normalizationHomologyNatIso` | 監査済み | 実際の正規化整数ホモロジーと非正規化との自然同型 |
+| `relativeIntegralChainsFunctor`、`normalizedIntegralChains_map_mono` | 監査済み | 相対鎖複体の関手と包含の単射性 |
+| `relativeIntegralHomologyBoundary`、`relativeIntegralHomology_exact_at_source`、`relativeIntegralHomology_exact_at_target`、`relativeIntegralHomology_exact_at_relative` | 監査済み | 相対ホモロジー長完全列の連結射と完全性 |
 | `integralHomologyMap_eq_of_homotopy` | 監査済み | 単体的ホモトピー不変性 |
 | `degenerateIntegralChainsContraction`、`degenerateIntegralChains_homology_isZero` | 監査済み | 退化部分の実際の鎖収縮と消滅 |
 | `integralDegenerateProjection_annihilates_iff` | 監査済み | 退化射影の像の普遍的特徴付け |
@@ -775,11 +777,30 @@ H_n(X;ℤ) を Nℤ[X] の実際の homology として定義し、誘導写像�
 この経路は非正規化複体を正規化と呼び換える経路ではない。
 原典は Weibel K-book III の plus のホモロジー、Waldhausen LNM 1126 §1.7・§1.8・§2.3。
 
+### 局所係数の単体的模型と acyclic 性
+
+確認する文言：X.Elements の全ての射を同型へ送るアーベル群値関手を局所係数系とする。
+Elements は Δᵒᵖ 上の共変の元の圏であり、通常の単体の圏と向きが逆である。
+係数系を忘却 X.Elements→Δᵒᵖ に沿って左 Kan 拡張し、正規化 Moore 複体を取る。
+この左 Kan 拡張の各次数は、その次数の単体の係数群の直和に一致することを別途証明する。
+引き戻し係数は mapElements による前合成であり、鎖写像は Kan 拡張の普遍性から構成する。
+acyclic 条件は標的上の全ての局所係数に対する、引き戻し係数からの実際のホモロジー写像の可逆性とする。
+整数定数係数との比較は自由アーベル群模型との自然な同型を証明してから公開する。
+原典番号の照合：Weibel K-book III は低次 K 群と完全群の代数的背景、
+plus の存在は IV.1.5、acyclic map の局所係数による特徴付けは IV.1.6 である。
+局所係数の圏論的模型は Cegarra–Garzón, Higher cohomologies of modules,
+AGT 12 (2012), Remark 2.1 の全射の局所化による記述と整合させる。
+原典 URL：<https://sites.math.rutgers.edu/~weibel/Kbook/Kbook.pdf>、
+<https://msp.org/agt/2012/12-1/agt-v12-n1-p15-s.pdf>。
+plus のセル添付の存在証明、π₁ の商、ホモトピーファイバーの acyclic 性との同値は未証明である。
+これらを局所係数系の構造体のフィールドとして仮定しない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a と L2b の要求された群状モノイドの比較・KST Lemma 2.13 を完了し、L2c に進む。
 L2c の正規化整数ホモロジー・自然な正規化比較・ホモトピー不変性・退化部分の収縮を証明した。
-L2c の相対・局所係数ホモロジーと plus、L2d の K₀・K₁、L2e の ∞-S• の比較は未完了である。
+相対整数ホモロジーの余核模型、包含の鎖写像の単射性、連結射と三箇所の長完全性も完成した。
+L2c の局所係数ホモロジーと plus、L2d の K₀・K₁、L2e の ∞-S• の比較は未完了である。
 正本 §13-10 のとおり、ĜL は群状単体的モノイドであり、次数ごとの単体的群とはしない。
 π_n とその既存の群演算・loop の次数移動・filtered colimit の定理は K-L9 の実装を借りた。
 π_n の計算を追加仮定として導入せず、実際の Kan 模型に対する群同型を構成した。
@@ -829,7 +850,8 @@ KST Lemma 2.13 は次の三つの実際の宣言で供給される。
 
 L2c：正規化整数ホモロジー、非正規化との自然同型、ホモトピー不変性は完成。
 退化射影 Q∞ の像の分裂と鎖収縮、全次数のホモロジー消滅、退化の消滅による普遍的特徴付けも証明した。
-相対整数ホモロジーの余核模型と長完全列、局所係数の実装へ進む。
+相対整数ホモロジーの余核模型と包含に対する長完全列は完成。
+局所係数の実装へ進む。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -838,10 +860,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4450 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4451 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1288 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2334 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1303 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2361 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の

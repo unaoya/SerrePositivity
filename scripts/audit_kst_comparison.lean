@@ -108,6 +108,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2536,6 +2537,54 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.integralHomologyIsoOfHomotopyInverse
 #print axioms SerrePositivity.KST.Comparison.integralHomologyIsoOfHomotopyInverse
+
+
+-- HomologyRelative.lean
+
+#check @SerrePositivity.KST.Comparison.unnormalizedIntegralChains_map_mono
+#print axioms SerrePositivity.KST.Comparison.unnormalizedIntegralChains_map_mono
+
+#check @SerrePositivity.KST.Comparison.normalizedIntegralChains_map_mono
+#print axioms SerrePositivity.KST.Comparison.normalizedIntegralChains_map_mono
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralChains
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralChains
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralChainsMap
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralChainsMap
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralChainsFunctor
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralChainsFunctor
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralHomologyFunctor
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralHomologyFunctor
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralHomology
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralHomology
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralChainsSequence
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralChainsSequence
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralChainsSequence_shortExact
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralChainsSequence_shortExact
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralHomologyBoundary
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralHomologyBoundary
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralHomology_comp_boundary
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralHomology_comp_boundary
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralHomology_boundary_comp
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralHomology_boundary_comp
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralHomology_exact_at_source
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralHomology_exact_at_source
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralHomology_exact_at_target
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralHomology_exact_at_target
+
+#check @SerrePositivity.KST.Comparison.relativeIntegralHomology_exact_at_relative
+#print axioms SerrePositivity.KST.Comparison.relativeIntegralHomology_exact_at_relative
 
 
 -- HomotopyPullback.lean

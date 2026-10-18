@@ -132,7 +132,7 @@ public import SerrePositivity.KST.Comparison.HatGLCoefficientKan
 public import SerrePositivity.KST.Comparison.StableHatGLHigherComparison
 
 public import SerrePositivity.KST.Comparison.HomologyHomotopy
-public import SerrePositivity.KST.Comparison.HomologyDegenerate
+public import SerrePositivity.KST.Comparison.HomologyRelative
 
 /-!
 # K-L2：比較定理の入口
