@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。全層複体の dg 圏と acyclic の path 商の候補を構成済み。§26 採用後、任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の商への localKFlat の供給を実装済み。層の分解後の商への移行、dg 商の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
+- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の path 商と元の指定 Verdier 商の tria 比較を実装済み。層の DerivedDG・DqcDGModel も平坦分解後の商へ移行済み。商自体の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の564宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の644宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -516,7 +516,7 @@
 - その比較では既存 dg 商の定理の前提、とくに K-flat 条件が現れる箇所を照合し、未証明の前提を追加仮定として済ませない。
 - 原典は KST D4・§13 決定11、Drinfeld の dg 商、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
 
-## 26. §10-7 の再照合：平坦分解を経る導来 dg 商の設計変更案
+## 26. §10-7 の再照合：平坦分解を経る導来 dg 商の採用設計
 
 ### 原典の条件と現実装の限界
 
@@ -527,13 +527,13 @@
 - 現在の基礎環は宇宙を持ち上げた整数環。宇宙の調整から Hom の K-flat 性は導けない。
 - 全係数加群層の Hom 複体に対する片側 K-flat 性は現状では未証明。
 - acyclic 対象を商で収縮させたことだけでは Verdier 局所化との同値は証明できていない。
-- 現 `DerivedDG` は明示的 path 商、`DqcDGModel` はその充満部分候補としてのみ扱う。
+- 未分解の層複体の path 商を最終模型としては使わない。現 `DerivedDG` は §27–28 の平坦分解後の商。
 - `mem_dqcDGObjects_iff` は対象条件の一致。関手の完全充満性を含まない。
 
 ### 変更案と実装前の証明方針
 
 - §13 決定11の対象となる導来圏、係数環層、準連接コホモロジー条件は維持する。
-- dg 増強の構成順序を「全層複体 → acyclic の path 商」から次へ変更する案を提出する。
+- 採用された dg 増強の構成順序は、以下の平坦分解を先行させるものとする。
 - 全層複体 dg 圏 C に対し、対象を保つ半自由 dg 圏 C̃ と準同値 C̃ → C を構成する。
 - Lemma 13.5 の段階的生成元添加を形式化し、Hom 上の全射準同型と準同型性を証明する。
 - 半自由フィルトレーションから Hom 複体の K-flat 性を証明する。次数ごとの自由性だけで非有界 K-flat 性を済ませない。
@@ -547,12 +547,11 @@
 
 ### 影響と現在地
 
-- `DifferentialGraded/` は読み取り専用を維持し、新しい構成は所有ディレクトリに置く案とする。
-- 既存 path 商・指定収縮・acyclic の零性の証明は有効であり保持する。
-- `DerivedDG`・`DqcDGModel` を最終的な導来 dg 増強として使う工程は保留する。
+- `DifferentialGraded/` は読み取り専用を維持し、一般定理の入口は所有ディレクトリに置く。
+- 既存 path 商・指定収縮を再利用し、平坦分解後の acyclic の零性を証明する。
+- `DerivedDG`・`DqcDGModel` の平坦分解後の構成への移行は完了。導来圏との H⁰ 比較は保留。
 - L4a の完了、L4b–e の完了は主張しない。
-- 今回は変更案と限界の明記までを保存し、ユーザー指定の「設計変更の提案」で停止する。
-- 正本や他レーンのファイルは変更しない。半自由分解の実装は今回開始しない。
+- 設計変更の採用により判断待ちは解消。正本や他レーンのファイルは変更しない。
 
 ## 27. 採用された Lemma 13.5 の構成と証明方針（実装前記録）
 
@@ -600,8 +599,30 @@
 - `Pretriangulation`：任意の dg 準同値について有限 cell の三角閉包 tria の同値を構成した。
 - `PretriangulationTriangles`：包含正方形、shift、区別三角形、随伴の単位と shift の両立を証明した。
 - `Quotient`：分解後の逆像部分圏の path 商を構成し、既存の完備化前・後の商比較へ証明済み localKFlat を渡した。
-- 元の圏の Verdier 商へ戻す正方形と、層の acyclic 商の H⁰ の導来圏比較はまだ未実装。
-- 対象ビルド成功。所有 namespace の564宣言を公理監査し、標準3公理のみ、KTheory import なし。
+- 元の圏の Verdier 商へ戻す正方形は §28 で実装済み。層の acyclic 商自体の H⁰ の導来圏比較は未実装。
+- 最新の対象ビルドと公理監査の結果は §3・§28 を参照。
+
+## 28. 分解前後の指定部分圏と Verdier 商の移送（実装前記録）
+
+- §10-7 の導来比較に先立ち、増大準同値の tria 同値が指定対象集合の三角閉包を対応させることを証明する。
+- 順向き：指定代表加群の像が指定代表加群に同型であり、逆像部分圏は三角的なので最小性を使う。
+- 逆向き：増大関手は対象ラベルを保つため、各指定対象は指定持ち上げを持つ。導来随伴の単位で代表加群を戻す。
+- この二方向と単位同型により、指定閉包の membership の同値を証明する。
+- `inverseImage_trW_iff` で三角局所化の弱同値を対応させ、既存の局所化の普遍性から商の移送を得る。
+- 元の Hom の平坦性を加えず、分解後の商の三角比較を元の指定 Verdier 商へ接続する。
+- 層への特殊化は一般の移送の証明後に行う。Mathlib 導来圏の局所化の universal property と照合する。
+
+### 実装と残りの接続
+
+- `SupportTransport`：指定対象の三角閉包が増大準同値の前三角化延長と対応することを証明済み。
+- `VerdierTransport`：trW の逆像の一致、実際の局所化の可換正方形、分解前後の Verdier 商の三角同値を証明済み。
+- `quotientToOriginalVerdierEquivalence`：平坦分解後の path 商の tria と元の指定 Verdier 商の三角同値。
+- `SheafDerivedDG`：ResolvedComplexes → Complexes と、ResolvedComplexes → DerivedDG の屋根へ変更済み。
+- `DqcDGModel`：商の元の対象を増大関手で戻し、実際の層コホモロジーの準連接性を判定する。
+- `ResolvedSheafComparison`：分解の H⁰ と実際の層複体のホモトピー圏の同値、商の tria の三角比較を実装済み。
+- 残る比較は、複体 dg 圏とその商の前三角化の代表可能性、および Mathlib の導来局所化との同定。
+- tria の同値を商自体の H⁰ の同値と同一視しない。L4a 全体の完了は主張しない。
+- 対象ビルドと644宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 
 ## 主要宣言の表
 
@@ -687,7 +708,11 @@
 | `DGResolution.augmentation_surjective`・`augmentation_degree_epi` | DGResolution/Surjectivity | 実装・対象ビルド済み |
 | `DGResolution.triaEquivalence`・`triaEquivalenceIsTriangulated` | DGResolution/Pretriangulation・PretriangulationTriangles | 実装・対象ビルド済み |
 | `DGResolution.localKFlat`・`quotientTriaEquivalence`・`perfectQuotientEquivalence` | DGResolution/Construction・Quotient | 実装・対象ビルド済み |
-| dg 商の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | 分解後の商への移行と比較は未実装 |
+| `DGResolution.augmentation_triaImage_iff`・`augmentation_trW_eq` | DGResolution/SupportTransport・VerdierTransport | 実装・対象ビルド済み |
+| `DGResolution.verdierSquare`・`quotientToOriginalVerdierIsTriangulated` | DGResolution/VerdierTransport | 実装・対象ビルド済み |
+| `ResolvedComplexes`・`resolvedAcyclicComplexes`・`resolvedAugmentation_quasiEquivalence` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
+| `resolvedHomotopyComplexEquivalence`・`derivedDGTriaEquivalenceIsTriangulated` | DerivedGeometry/ResolvedSheafComparison | 実装・対象ビルド済み |
+| dg 商自体の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | 前三角化の代表可能性と導来局所化の同定は未実装 |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

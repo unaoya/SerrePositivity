@@ -8,8 +8,7 @@ public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
 
 概要：層複体の acyclic dg 商で、忘却後のコホモロジーが準連接な対象を取る。
 方針：元の層複体のコホモロジーで対象条件を指定し、既存の充満 dg 部分圏を使う。
-規約：明示的 path 商の部分候補であり、H⁰ と既存 D_qc の圏同値は未証明。
-Drinfeld Thm 3.4 の K-flat 条件を確認せず導来増強として使わない。
+規約：平坦分解後の path 商を使う。H⁰ と既存 D_qc の圏同値は未証明。
 使われ方：KST D4・§13 決定11、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
 -/
 
@@ -44,12 +43,13 @@ def complexHasQuasicoherentCohomology (K : B.Complexes) : Prop :=
 規約：商の Hom や微分は変更しない。
 使われ方：KST D4・§13 決定11の充満 dg 部分圏。
 -/
-def dqcDGObjects : Set B.DerivedDG := fun K => B.complexHasQuasicoherentCohomology K.val
+def dqcDGObjects : Set B.DerivedDG := fun K =>
+  B.complexHasQuasicoherentCohomology (B.resolvedAugmentation.obj K.val)
 
 /--
 概要：準連接コホモロジーを持つ対象による充満 dg 部分模型。
 方針：層複体の実際の dg 商の充満部分圏を取る。
-規約：既存の三角圏 Dqc との比較は未証明。平坦分解を経る案はレーン計画 §26。
+規約：既存の三角圏 Dqc との比較は未証明。採用された平坦分解はレーン計画 §26–28。
 使われ方：KST D4・§13 決定11、Toën §3.2 の導来幾何の dg 模型。
 -/
 abbrev DqcDGModel := DGFullSubcategory B.DerivedDG B.dqcDGObjects
@@ -82,8 +82,9 @@ variable [HasDerivedCategory.{w} B.Modules]
 -/
 lemma mem_dqcDGObjects_iff (K : B.DerivedDG) :
     K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology
-      ((DerivedCategory.Q (C := B.Modules)).obj (B.complexLiftEquivalence.inverse.obj K.val)) := by
-  let L := B.complexLiftEquivalence.inverse.obj K.val
+      ((DerivedCategory.Q (C := B.Modules)).obj
+        (B.complexLiftEquivalence.inverse.obj (B.resolvedAugmentation.obj K.val))) := by
+  let L := B.complexLiftEquivalence.inverse.obj (B.resolvedAugmentation.obj K.val)
   constructor
   · intro h n
     exact (SheafOfModules.isQuasicoherent X.ringCatSheaf).prop_of_iso
