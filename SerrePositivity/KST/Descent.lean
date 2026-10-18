@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.KST.Descent.LocalRankIsomorphisms
+public import SerrePositivity.KST.Descent.FiniteTypeCoproducts
+public import SerrePositivity.KST.Descent.FiniteCoproductPullbacks
 public import SerrePositivity.KST.Descent.CechBaseLocality
 public import SerrePositivity.KST.Descent.CechMapLocality
 public import SerrePositivity.KST.Descent.CechWeakTransfer
