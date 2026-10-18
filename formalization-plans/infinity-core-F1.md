@@ -7128,5 +7128,29 @@ instance relativeJoinProjection_innerFibration {X Y S : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) :
     InnerFibration (relativeJoinProjection f g)
 
+lemma Join.Simplex.ext_of_joinMap_right_id {X X' Y : SSet.{u}} {n : ℕ}
+    (f : X ⟶ X') (s t : Join.Simplex X Y n) (hx : HEq s.2.1 t.2.1)
+    (hf : (joinMap f (𝟙 Y)).app (Opposite.op ⦋n⦌) s =
+      (joinMap f (𝟙 Y)).app (Opposite.op ⦋n⦌) t) : s = t
+
+lemma Join.simplexMap_initial_left_heq {X Y : SSet.{u}} {n : ℕ}
+    (s : Join.Simplex X Y n) (hs : s.1.val = 1) :
+    HEq (Join.simplexMap X Y (OrderHom.const (Fin 1) (0 : Fin (n + 1))) s).2.1
+      s.2.1
+
+lemma Join.Simplex.ext_of_initial_vertex_joinMap {X X' Y : SSet.{u}} {n : ℕ}
+    (f : X ⟶ X') (s t : Join.Simplex X Y n)
+    (hs : s.1.val = 1) (ht : t.1.val = 1)
+    (h0 : Join.simplexMap X Y (OrderHom.const (Fin 1) (0 : Fin (n + 1))) s =
+      Join.simplexMap X Y (OrderHom.const (Fin 1) (0 : Fin (n + 1))) t)
+    (hf : (joinMap f (𝟙 Y)).app (Opposite.op ⦋n⦌) s =
+      (joinMap f (𝟙 Y)).app (Opposite.op ⦋n⦌) t) : s = t
+
+lemma Join.Simplex.exists_preimage_cut_one {X X' Y : SSet.{u}} {n : ℕ}
+    (f : X ⟶ X') (t : Join.Simplex X' Y n) (ht : t.1.val = 1)
+    (x : X _⦋0⦌) (hx : HEq (f.app (Opposite.op ⦋0⦌) x) t.2.1) :
+    ∃ s : Join.Simplex X Y n, s.1.val = 1 ∧ HEq s.2.1 x ∧
+      (joinMap f (𝟙 Y)).app (Opposite.op ⦋n⦌) s = t
+
 end SerrePositivity.InfinityCategories
 ```

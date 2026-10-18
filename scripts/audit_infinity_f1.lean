@@ -1562,3 +1562,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.join_quasicategory
 #check @SerrePositivity.InfinityCategories.relativeJoin_quasicategory
 #check @SerrePositivity.InfinityCategories.relativeJoinProjection_innerFibration
+#check @SerrePositivity.InfinityCategories.Join.Simplex.ext_of_joinMap_right_id
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_initial_left_heq
+#check @SerrePositivity.InfinityCategories.Join.Simplex.ext_of_initial_vertex_joinMap
+#check @SerrePositivity.InfinityCategories.Join.Simplex.exists_preimage_cut_one
