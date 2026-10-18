@@ -121,6 +121,8 @@ run_cmd do
       `SerrePositivity.KST.Descent.BoundaryBlowupDensity,
       `SerrePositivity.KST.Descent.BoundaryFlatRefinement,
       `SerrePositivity.KST.Descent.StrictTransformTensorChart,
+      `SerrePositivity.KST.Descent.OpenImageAmbientIso,
+      `SerrePositivity.KST.Descent.StrictTransformTensorImage,
       `SerrePositivity.KST.Descent.ComponentSplit,
       `SerrePositivity.KST.Descent.ComponentRemainderCover,
       `SerrePositivity.KST.Descent.FiberTransitivityNaturality,

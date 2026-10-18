@@ -109,10 +109,12 @@ Noether 整域上の有限加群の非零元による自由化を証明し、実
 同一視せず、平坦化で使う同じ D(r) の全射性と有限忠実平坦な細分へ接続した（§53）。
 テンソル積の Spec と実際の周辺チャートを同定し、二つの基底への構造射と
 同じ境界元の基本開を保つことを証明した（§54）。
+その周辺同型で実際の像を移し、同じ境界の純変換加群の平坦性から
+元の strict transform の実際のチャートの平坦性を導いた（§55）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 130 モジュール・1564 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 132 モジュール・1588 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -666,6 +668,10 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `strictTransformTensorChartIso` | テンソル積の Spec と実際の周辺チャートの標準同型 | 対象ビルド済み、引き戻しの普遍性を使用 |
 | `strictTransformTensorChartIso_hom_snd`、`strictTransformTensorChartIso_hom_base` | チャート基底と元の基礎環への構造射の保存 | 対象ビルド済み、同じ指定射を使用 |
 | `strictTransformTensorChartIso_preimage_boundary` | 同じ境界基本開の二つのチャートでの一致 | 対象ビルド済み、型の一致だけではなく開集合として証明 |
+| `openImageAmbientIso`、`openImageAmbientIsoOfEq` | 周辺同型が対応させる開部分の実際のスキーム論的像の同型 | 対象ビルド済み、閉包含を保持 |
+| `strictTransformTensorImageIso` | テンソル積の像と実際の周辺チャートの像の同型 | 対象ビルド済み、同じ境界 D(r) |
+| `strictTransformTensorPullbackIso`、`strictTransformTensorPullbackIso_hom_snd` | テンソル積の像と global strict transform のチャートの基底 C 上の同型 | 対象ビルド済み、指定構造射を保持 |
+| `strictTransform_chart_flat_of_tensorPureTransform` | チャート係数環 C 上の純変換加群の平坦性から実際の strict transform のチャートの平坦性 | 対象ビルド済み、係数射の可換式と開チャートを明示 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1876,3 +1882,43 @@ R の Spec への構造射も保つことが分かる。
 
 §54 の保存検証：集約対象ビルドと公理監査が成功。130 モジュール・1564 宣言、標準三公理のみ。
 全体ビルドはアフィン平坦化の global 接続の区切りで再確認する。
+
+
+## 55. 周辺同型での像の移送から実際の strict transform のチャートの平坦性へ
+
+§54 の周辺同型が二つの境界開部分を対応させることを使い、
+その実際のスキーム論的像を移す一般的な比較を構成した。
+準コンパクトな開包含の像を周辺同型で引き戻し、
+像と開底変換の同型に、同型に沿う引き戻しの第二射影による同型を合成する。
+同じ開集合を別の表示で指定する場合も、その等式による標準同型を先に合成できる。
+この全ての同型が、実際の閉包含と周辺同型の hom に関する可換式を満たすことを証明した。
+別の引き戻しの型クラスを選んで対象を変更してはいない。
+
+strict transform を定義する開包含の準コンパクト性から、
+その周辺チャートの逆像開包含の準コンパクト性を実際の Cartesian 正方形で導いた。
+チャート環の Noether 性をここで別途仮定する必要はない。
+この入力により、§54 の周辺同型と同じ境界の基本開の等式を使って、
+`strictTransformTensorImageIso` はテンソル積の基本開の実際の像と
+周辺チャートの開部分の実際の像を同定する。
+
+これを §52 の global strict transform のチャートとの同型に合成した。
+`strictTransformTensorPullbackIso` は、
+テンソル積の基本開のスキーム論的像を元の構造射の実際の底変換に同定する。
+二つの像の比較と周辺同型の C 射影の公式を合成し、
+この同型が C への指定構造射を保つことを証明した。
+したがってチャート係数環 C 上の純変換加群が平坦なら、
+§51 のアフィン像の平坦性をこの同型の逆で移し、
+元の strict transform の実際のチャートも平坦になる。
+`strictTransform_chart_flat_of_tensorPureTransform` はこの結論を実際のスキームの射で主張する。
+
+この段階のチャート j と R → C の係数射の可換式は明示した引数である。
+実際の blowup の標準チャートの公式を適用し、全開被覆のチャートで入力を供給して
+§52 の貼り合わせと §53 の同じ境界の全射性・有限忠実平坦細分へ渡す工程はまだ残る。
+全切断環とその Spec との標準同型による係数の表示を保持し、
+元の環とその全切断環を無証明で同じ環として扱ってはならない。
+Čech 細分の実降下・中心上の帰納、実際の Tot・hG、最小公理全体、
+自然な blowup 列と有限積保存の導出、(3.6)・K0・T2・E も未完である。
+
+§55 の保存検証：集約対象ビルドと公理監査が成功。132 モジュール・1588 宣言、標準三公理のみ。
+§55 の区切りの全体ビルドも成功（10342 ジョブ）。`set -eo pipefail` で終了コード 0。
+ログは `/tmp/l8-tensor-image-flatness-full-build.log`。
