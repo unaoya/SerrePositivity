@@ -478,3 +478,5 @@ A6 続き：fat join の関手性を追加。codiscrete 圏の nerve への射�
 A6 続き：固定部分 A→B が単射なら相対円柱の両端は単射であり前合成の同値条件を満たす。相対写像円柱の残った端点は A→B と A→C が単射なら単射。`isPrecompositionEquivalence_map_under_of_mono` は固定部分の単射な対象間での関手による保存を単射上の保存から検出する。`isPrecompositionEquivalence_underPushout_map`・`isPrecompositionEquivalence_of_pushout_fixed_base` は固定基底からの二つの射が単射の図式の比較を pushout 後に保存する。基底も変わる一般の貼り合わせは未完了。新規29宣言の全型・前提は計画 §6。Core ビルド1792 jobs・累計1012宣言の標準3公理監査成功。既存の公開名・型は維持。fat join 比較・slice 比較の同値性と A6 の主定理は未完了。A4・A5 は未着手。
 
 A6 続き：`isIso_fatJoinComparison_point` と `isPrecompositionEquivalence_fatJoinComparison_point` は二点 Δ[0]・Δ[0] の fat join 比較の厳密な同型性と前合成の同値条件。一般の標準単体の場合の完成とは数えない。点との直積と join の同型、および前合成の同値条件の二対六則と二つの可逆ホモトピーによる検出を追加した。新規17宣言の全型・前提は計画 §6。Core ビルド1795 jobs・累計1029宣言の標準3公理監査成功。既存の公開名・型は維持。一般の fat join 比較・slice 比較の同値性と A6 の主定理は未完了。A4・A5 は未着手。
+
+A6 続き：任意の n、m の `fatJoinStdLeftNormalize` と `fatJoinStdNormalize` を構成し、恒等→左の正規化、左右の正規化→左の正規化の二つのホモトピーを作った。左右の因子を全時間で固定し、各頂点の辺は退化し可逆であることを証明した。両正規化の自己射は前合成の同値条件を満たす。標準単体の比較自体には切断の構成と合成の同一視がまだ必要で、一般の単体集合への貼り合わせも未完了。新規66宣言の全型・前提は計画 §6。Core ビルド1804 jobs・累計1095宣言の標準3公理監査成功。既存の公開名・型は維持。slice 比較と A6 の主定理は未完了。A4・A5 は未着手。

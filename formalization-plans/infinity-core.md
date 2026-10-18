@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6586,6 +6586,288 @@ lemma isPrecompositionEquivalence_of_section_zigzag {A B : SSet.{u}}
     (h₀ : ∀ a : A _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H₀ a).toTruncated)
     (h₁ : ∀ a : A _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H₁ a).toTruncated) :
     IsPrecompositionEquivalence f
+
+end SerrePositivity.InfinityCategories
+```
+
+### A6 続き：任意の標準単体の fat join の正規化への可逆な変形（2026-10-18）
+
+任意の n、m に対し、円柱の一端で左成分を最後の頂点に移す `fatJoinStdLeftNormalize n m` と、さらに零端で右成分を零へ移す `fatJoinStdNormalize n m` を構成した。有限順序集合の最小値・最大値の単調写像を単体集合の射にして、パラメーター付きの fat join の普遍性により二つのホモトピーを貼り合わせた。
+
+`fatJoinStdLeftHomotopy` は恒等から左の正規化へ、`fatJoinStdRightHomotopy` は左右の正規化から左の正規化へ向かう。全時間で左右の包含を固定するため、fat join の各頂点上の辺が退化し可逆となることを証明した。fat join 自身の quasicategory 性は要求していない。これにより両方の正規化の自己射が前合成の同値条件を満たす。
+
+この成果は正規化の自己射の同値条件であり、標準単体の fat join 比較自体の同値性はまだ結論していない。比較の切断を構成し、その合成を正規化の自己射と同一視する工程、および一般の単体集合への貼り合わせが残る。Core ビルド1804 jobs、累計1095宣言の標準3公理監査成功。既存の公開名・型は維持。slice 比較と A6 の任意図式の主定理は未完了。A4・A5 は未着手。新規66宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+def stdSimplexProductMap {a b c : ℕ} (f : Fin (a + 1) × Fin (b + 1) →o Fin (c + 1)) :
+    (Δ[a] : SSet.{u}) ⊗ Δ[b] ⟶ Δ[c]
+
+lemma stdSimplexProductMap_apply {a b c n : ℕ}
+    (f : Fin (a + 1) × Fin (b + 1) →o Fin (c + 1))
+    (s : ((Δ[a] : SSet.{u}) ⊗ Δ[b]) _⦋n⦌) (i : Fin (n + 1)) :
+    (stdSimplexProductMap f).app (Opposite.op ⦋n⦌) s i = f (s.1 i, s.2 i)
+
+def stdSimplexTripleProductMap {a b c d : ℕ}
+    (f : (Fin (a + 1) × Fin (b + 1)) × Fin (c + 1) →o Fin (d + 1)) :
+    ((Δ[a] : SSet.{u}) ⊗ Δ[b]) ⊗ Δ[c] ⟶ Δ[d]
+
+lemma stdSimplexTripleProductMap_apply {a b c d n : ℕ}
+    (f : (Fin (a + 1) × Fin (b + 1)) × Fin (c + 1) →o Fin (d + 1))
+    (s : (((Δ[a] : SSet.{u}) ⊗ Δ[b]) ⊗ Δ[c]) _⦋n⦌) (i : Fin (n + 1)) :
+    (stdSimplexTripleProductMap f).app (Opposite.op ⦋n⦌) s i =
+      f ((s.1.1 i, s.1.2 i), s.2 i)
+
+def FatJoinStd.leftClamp (n : ℕ) : Fin (n + 1) × Fin 2 →o Fin (n + 1)
+
+def FatJoinStd.rightClamp (n : ℕ) : Fin (n + 1) × Fin 2 →o Fin (n + 1)
+
+def FatJoinStd.leftClampHom (n : ℕ) : (Fin (n + 1) × Fin 2) × Fin 2 →o Fin (n + 1)
+
+def FatJoinStd.rightClampHom (n : ℕ) : (Fin (n + 1) × Fin 2) × Fin 2 →o Fin (n + 1)
+
+lemma FatJoinStd.leftClamp_zero (n : ℕ) (a : Fin (n + 1)) : leftClamp n (a, 0) = a
+
+lemma FatJoinStd.leftClamp_one (n : ℕ) (a : Fin (n + 1)) : leftClamp n (a, 1) = Fin.last n
+
+lemma FatJoinStd.rightClamp_zero (n : ℕ) (a : Fin (n + 1)) : rightClamp n (a, 0) = 0
+
+lemma FatJoinStd.rightClamp_one (n : ℕ) (a : Fin (n + 1)) : rightClamp n (a, 1) = a
+
+lemma FatJoinStd.leftClampHom_zero (n : ℕ) (a : Fin (n + 1)) (t : Fin 2) :
+    leftClampHom n ((a, t), 0) = a
+
+lemma FatJoinStd.leftClampHom_one (n : ℕ) (a : Fin (n + 1)) (t : Fin 2) :
+    leftClampHom n ((a, t), 1) = leftClamp n (a, t)
+
+lemma FatJoinStd.rightClampHom_zero (n : ℕ) (a : Fin (n + 1)) (t : Fin 2) :
+    rightClampHom n ((a, t), 0) = rightClamp n (a, t)
+
+lemma FatJoinStd.rightClampHom_one (n : ℕ) (a : Fin (n + 1)) (t : Fin 2) :
+    rightClampHom n ((a, t), 1) = a
+
+lemma FatJoinStd.leftClampHom_fixed_zero (n : ℕ) (a : Fin (n + 1)) (s : Fin 2) :
+    leftClampHom n ((a, 0), s) = a
+
+lemma FatJoinStd.rightClampHom_fixed_one (n : ℕ) (a : Fin (n + 1)) (s : Fin 2) :
+    rightClampHom n ((a, 1), s) = a
+
+lemma fatJoinCylinder_lift_zero {A B T : SSet.{u}} (f : T ⟶ A) (g : T ⟶ B) :
+    lift (f ≫ SSet.ι₀) g ≫ fatJoinCylinder A B = f ≫ fatJoinInl A B
+
+lemma fatJoinCylinder_lift_one {A B T : SSet.{u}} (f : T ⟶ A) (g : T ⟶ B) :
+    lift (f ≫ SSet.ι₁) g ≫ fatJoinCylinder A B = g ≫ fatJoinInr A B
+
+def fatJoinTransformCylinder {A B : SSet.{u}}
+    (f : A ⊗ (Δ[1] : SSet.{u}) ⟶ A) (g : B ⊗ (Δ[1] : SSet.{u}) ⟶ B) :
+    (A ⊗ (Δ[1] : SSet.{u})) ⊗ B ⟶ (A ⊗ (Δ[1] : SSet.{u})) ⊗ B
+
+lemma fatJoinTransformCylinder_zero {A B : SSet.{u}}
+    (f : A ⊗ (Δ[1] : SSet.{u}) ⟶ A) (g : B ⊗ (Δ[1] : SSet.{u}) ⟶ B)
+    (hf : SSet.ι₀ ≫ f = 𝟙 A) :
+    (SSet.ι₀ (X := A) ▷ B) ≫ fatJoinTransformCylinder f g ≫ fatJoinCylinder A B =
+      fst A B ≫ fatJoinInl A B
+
+lemma fatJoinTransformCylinder_one {A B : SSet.{u}}
+    (f : A ⊗ (Δ[1] : SSet.{u}) ⟶ A) (g : B ⊗ (Δ[1] : SSet.{u}) ⟶ B)
+    (hg : SSet.ι₁ ≫ g = 𝟙 B) :
+    (SSet.ι₁ (X := A) ▷ B) ≫ fatJoinTransformCylinder f g ≫ fatJoinCylinder A B =
+      snd A B ≫ fatJoinInr A B
+
+noncomputable def fatJoinTransform {A B : SSet.{u}}
+    (f : A ⊗ (Δ[1] : SSet.{u}) ⟶ A) (g : B ⊗ (Δ[1] : SSet.{u}) ⟶ B)
+    (hf : SSet.ι₀ ≫ f = 𝟙 A) (hg : SSet.ι₁ ≫ g = 𝟙 B) :
+    fatJoin A B ⟶ fatJoin A B
+
+lemma fatJoinCylinder_transform {A B : SSet.{u}}
+    (f : A ⊗ (Δ[1] : SSet.{u}) ⟶ A) (g : B ⊗ (Δ[1] : SSet.{u}) ⟶ B)
+    (hf : SSet.ι₀ ≫ f = 𝟙 A) (hg : SSet.ι₁ ≫ g = 𝟙 B) :
+    fatJoinCylinder A B ≫ fatJoinTransform f g hf hg =
+      fatJoinTransformCylinder f g ≫ fatJoinCylinder A B
+
+lemma fatJoinInl_transform {A B : SSet.{u}}
+    (f : A ⊗ (Δ[1] : SSet.{u}) ⟶ A) (g : B ⊗ (Δ[1] : SSet.{u}) ⟶ B)
+    (hf : SSet.ι₀ ≫ f = 𝟙 A) (hg : SSet.ι₁ ≫ g = 𝟙 B) :
+    fatJoinInl A B ≫ fatJoinTransform f g hf hg = fatJoinInl A B
+
+lemma fatJoinInr_transform {A B : SSet.{u}}
+    (f : A ⊗ (Δ[1] : SSet.{u}) ⟶ A) (g : B ⊗ (Δ[1] : SSet.{u}) ⟶ B)
+    (hf : SSet.ι₀ ≫ f = 𝟙 A) (hg : SSet.ι₁ ≫ g = 𝟙 B) :
+    fatJoinInr A B ≫ fatJoinTransform f g hf hg = fatJoinInr A B
+
+def curryTensorRight {Y T X : SSet.{u}} (H : Y ⊗ T ⟶ X) : Y ⟶ (ihom T).obj X
+
+lemma curryTensorRight_natural_left {Y Z T X : SSet.{u}} (f : Y ⟶ Z) (H : Z ⊗ T ⟶ X) :
+    curryTensorRight ((f ▷ T) ≫ H) = f ≫ curryTensorRight H
+
+def uncurryTensorRight {Y T X : SSet.{u}} (F : Y ⟶ (ihom T).obj X) : Y ⊗ T ⟶ X
+
+lemma uncurryTensorRight_curryTensorRight {Y T X : SSet.{u}} (H : Y ⊗ T ⟶ X) :
+    uncurryTensorRight (curryTensorRight H) = H
+
+lemma uncurryTensorRight_natural_left {Y Z T X : SSet.{u}}
+    (f : Y ⟶ Z) (F : Z ⟶ (ihom T).obj X) :
+    uncurryTensorRight (f ≫ F) = (f ▷ T) ≫ uncurryTensorRight F
+
+noncomputable def fatJoinDescTensorRight {A B T X : SSet.{u}}
+    (f : A ⊗ T ⟶ X) (g : B ⊗ T ⟶ X)
+    (H : ((A ⊗ (Δ[1] : SSet.{u})) ⊗ B) ⊗ T ⟶ X)
+    (h₀ : ((SSet.ι₀ (X := A) ▷ B) ▷ T) ≫ H = (CartesianMonoidalCategory.fst A B ▷ T) ≫ f)
+    (h₁ : ((SSet.ι₁ (X := A) ▷ B) ▷ T) ≫ H = (CartesianMonoidalCategory.snd A B ▷ T) ≫ g) :
+    fatJoin A B ⊗ T ⟶ X
+
+lemma fatJoinCylinder_descTensorRight {A B T X : SSet.{u}}
+    (f : A ⊗ T ⟶ X) (g : B ⊗ T ⟶ X)
+    (H : ((A ⊗ (Δ[1] : SSet.{u})) ⊗ B) ⊗ T ⟶ X)
+    (h₀ : ((SSet.ι₀ (X := A) ▷ B) ▷ T) ≫ H = (CartesianMonoidalCategory.fst A B ▷ T) ≫ f)
+    (h₁ : ((SSet.ι₁ (X := A) ▷ B) ▷ T) ≫ H = (CartesianMonoidalCategory.snd A B ▷ T) ≫ g) :
+    (fatJoinCylinder A B ▷ T) ≫ fatJoinDescTensorRight f g H h₀ h₁ = H
+
+lemma fatJoinInl_descTensorRight {A B T X : SSet.{u}}
+    (f : A ⊗ T ⟶ X) (g : B ⊗ T ⟶ X)
+    (H : ((A ⊗ (Δ[1] : SSet.{u})) ⊗ B) ⊗ T ⟶ X)
+    (h₀ : ((SSet.ι₀ (X := A) ▷ B) ▷ T) ≫ H = (CartesianMonoidalCategory.fst A B ▷ T) ≫ f)
+    (h₁ : ((SSet.ι₁ (X := A) ▷ B) ▷ T) ≫ H = (CartesianMonoidalCategory.snd A B ▷ T) ≫ g) :
+    (fatJoinInl A B ▷ T) ≫ fatJoinDescTensorRight f g H h₀ h₁ = f
+
+lemma fatJoinInr_descTensorRight {A B T X : SSet.{u}}
+    (f : A ⊗ T ⟶ X) (g : B ⊗ T ⟶ X)
+    (H : ((A ⊗ (Δ[1] : SSet.{u})) ⊗ B) ⊗ T ⟶ X)
+    (h₀ : ((SSet.ι₀ (X := A) ▷ B) ▷ T) ≫ H = (CartesianMonoidalCategory.fst A B ▷ T) ≫ f)
+    (h₁ : ((SSet.ι₁ (X := A) ▷ B) ▷ T) ≫ H = (CartesianMonoidalCategory.snd A B ▷ T) ≫ g) :
+    (fatJoinInr A B ▷ T) ≫ fatJoinDescTensorRight f g H h₀ h₁ = g
+
+lemma fatJoin_vertex_cases (A B : SSet.{u}) (x : (fatJoin A B) _⦋0⦌) :
+    (∃ a : A _⦋0⦌, (fatJoinInl A B).app (Opposite.op ⦋0⦌) a = x) ∨
+      ∃ b : B _⦋0⦌, (fatJoinInr A B).app (Opposite.op ⦋0⦌) b = x
+
+lemma stdSimplexProductMap_leftClamp_zero (n : ℕ) :
+    SSet.ι₀ ≫ stdSimplexProductMap.{u} (FatJoinStd.leftClamp n) = 𝟙 (Δ[n] : SSet.{u})
+
+lemma stdSimplexProductMap_rightClamp_one (n : ℕ) :
+    SSet.ι₁ ≫ stdSimplexProductMap.{u} (FatJoinStd.rightClamp n) = 𝟙 (Δ[n] : SSet.{u})
+
+noncomputable def fatJoinStdLeftNormalize (n m : ℕ) :
+    fatJoin (Δ[n] : SSet.{u}) Δ[m] ⟶ fatJoin (Δ[n] : SSet.{u}) Δ[m]
+
+noncomputable def fatJoinStdNormalize (n m : ℕ) :
+    fatJoin (Δ[n] : SSet.{u}) Δ[m] ⟶ fatJoin (Δ[n] : SSet.{u}) Δ[m]
+
+lemma fatJoinStdLeftNormalize_vertex (n m : ℕ) (x : (fatJoin (Δ[n] : SSet.{u}) Δ[m]) _⦋0⦌) :
+    (fatJoinStdLeftNormalize n m).app (Opposite.op ⦋0⦌) x = x
+
+lemma fatJoinStdNormalize_vertex (n m : ℕ) (x : (fatJoin (Δ[n] : SSet.{u}) Δ[m]) _⦋0⦌) :
+    (fatJoinStdNormalize n m).app (Opposite.op ⦋0⦌) x = x
+
+def fatJoinTransformFamilyCylinder {A B T : SSet.{u}}
+    (f : (A ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ A)
+    (g : (B ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ B) :
+    ((A ⊗ (Δ[1] : SSet.{u})) ⊗ B) ⊗ T ⟶ (A ⊗ (Δ[1] : SSet.{u})) ⊗ B
+
+lemma fatJoinTransformFamilyCylinder_zero {A B T : SSet.{u}}
+    (f : (A ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ A)
+    (g : (B ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ B)
+    (hf : (SSet.ι₀ (X := A) ▷ T) ≫ f = fst A T) :
+    ((SSet.ι₀ (X := A) ▷ B) ▷ T) ≫
+        (fatJoinTransformFamilyCylinder f g ≫ fatJoinCylinder A B) =
+      (fst A B ▷ T) ≫ (fst A T ≫ fatJoinInl A B)
+
+lemma fatJoinTransformFamilyCylinder_one {A B T : SSet.{u}}
+    (f : (A ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ A)
+    (g : (B ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ B)
+    (hg : (SSet.ι₁ (X := B) ▷ T) ≫ g = fst B T) :
+    ((SSet.ι₁ (X := A) ▷ B) ▷ T) ≫
+        (fatJoinTransformFamilyCylinder f g ≫ fatJoinCylinder A B) =
+      (snd A B ▷ T) ≫ (fst B T ≫ fatJoinInr A B)
+
+noncomputable def fatJoinTransformFamily {A B T : SSet.{u}}
+    (f : (A ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ A)
+    (g : (B ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ B)
+    (hf : (SSet.ι₀ (X := A) ▷ T) ≫ f = fst A T)
+    (hg : (SSet.ι₁ (X := B) ▷ T) ≫ g = fst B T) : fatJoin A B ⊗ T ⟶ fatJoin A B
+
+lemma fatJoinCylinder_transformFamily {A B T : SSet.{u}}
+    (f : (A ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ A)
+    (g : (B ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ B)
+    (hf : (SSet.ι₀ (X := A) ▷ T) ≫ f = fst A T)
+    (hg : (SSet.ι₁ (X := B) ▷ T) ≫ g = fst B T) :
+    (fatJoinCylinder A B ▷ T) ≫ fatJoinTransformFamily f g hf hg =
+      fatJoinTransformFamilyCylinder f g ≫ fatJoinCylinder A B
+
+lemma fatJoinInl_transformFamily {A B T : SSet.{u}}
+    (f : (A ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ A)
+    (g : (B ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ B)
+    (hf : (SSet.ι₀ (X := A) ▷ T) ≫ f = fst A T)
+    (hg : (SSet.ι₁ (X := B) ▷ T) ≫ g = fst B T) :
+    (fatJoinInl A B ▷ T) ≫ fatJoinTransformFamily f g hf hg = fst A T ≫ fatJoinInl A B
+
+lemma fatJoinInr_transformFamily {A B T : SSet.{u}}
+    (f : (A ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ A)
+    (g : (B ⊗ (Δ[1] : SSet.{u})) ⊗ T ⟶ B)
+    (hf : (SSet.ι₀ (X := A) ▷ T) ≫ f = fst A T)
+    (hg : (SSet.ι₁ (X := B) ▷ T) ≫ g = fst B T) :
+    (fatJoinInr A B ▷ T) ≫ fatJoinTransformFamily f g hf hg = fst B T ≫ fatJoinInr A B
+
+lemma simplicialHomotopyVertexEdge_isInvertible_of_fixed_map {A B : SSet.{u}}
+    {f g : B ⟶ B} (H : SSet.Homotopy f g) (i : A ⟶ B)
+    (hi : (i ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A Δ[1] ≫ i) (a : A _⦋0⦌) :
+    IsInvertibleEdge (simplicialHomotopyVertexEdge H (i.app (Opposite.op ⦋0⦌) a)).toTruncated
+
+lemma fatJoinHomotopy_isInvertible_of_fixed_factors {A B : SSet.{u}}
+    {f g : fatJoin A B ⟶ fatJoin A B} (H : SSet.Homotopy f g)
+    (hA : (fatJoinInl A B ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A Δ[1] ≫ fatJoinInl A B)
+    (hB : (fatJoinInr A B ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst B Δ[1] ≫ fatJoinInr A B) :
+    ∀ x : (fatJoin A B) _⦋0⦌,
+      IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated
+
+lemma stdSimplexTripleProductMap_leftClampHom_fixed (n : ℕ) :
+    (SSet.ι₀ (X := (Δ[n] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫
+        stdSimplexTripleProductMap (FatJoinStd.leftClampHom n) = fst Δ[n] Δ[1]
+
+lemma stdSimplexTripleProductMap_rightClampHom_fixed (n : ℕ) :
+    (SSet.ι₁ (X := (Δ[n] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫
+        stdSimplexTripleProductMap (FatJoinStd.rightClampHom n) = fst Δ[n] Δ[1]
+
+noncomputable def fatJoinStdLeftFamily (n m : ℕ) :
+    fatJoin (Δ[n] : SSet.{u}) Δ[m] ⊗ Δ[1] ⟶ fatJoin (Δ[n] : SSet.{u}) Δ[m]
+
+noncomputable def fatJoinStdRightFamily (n m : ℕ) :
+    fatJoin (Δ[n] : SSet.{u}) Δ[m] ⊗ Δ[1] ⟶ fatJoin (Δ[n] : SSet.{u}) Δ[m]
+
+lemma fatJoinStdLeftFamily_zero (n m : ℕ) :
+    SSet.ι₀ ≫ fatJoinStdLeftFamily.{u} n m = 𝟙 (fatJoin (Δ[n] : SSet.{u}) Δ[m])
+
+lemma fatJoinStdLeftFamily_one (n m : ℕ) :
+    SSet.ι₁ ≫ fatJoinStdLeftFamily.{u} n m = fatJoinStdLeftNormalize n m
+
+lemma fatJoinStdRightFamily_zero (n m : ℕ) :
+    SSet.ι₀ ≫ fatJoinStdRightFamily.{u} n m = fatJoinStdNormalize n m
+
+lemma fatJoinStdRightFamily_one (n m : ℕ) :
+    SSet.ι₁ ≫ fatJoinStdRightFamily.{u} n m = fatJoinStdLeftNormalize n m
+
+noncomputable def fatJoinStdLeftHomotopy (n m : ℕ) :
+    SSet.Homotopy (𝟙 (fatJoin (Δ[n] : SSet.{u}) Δ[m])) (fatJoinStdLeftNormalize n m)
+
+noncomputable def fatJoinStdRightHomotopy (n m : ℕ) :
+    SSet.Homotopy (fatJoinStdNormalize.{u} n m) (fatJoinStdLeftNormalize n m)
+
+lemma fatJoinStdLeftHomotopy_isInvertible (n m : ℕ) :
+    ∀ x : (fatJoin (Δ[n] : SSet.{u}) Δ[m]) _⦋0⦌,
+      IsInvertibleEdge (simplicialHomotopyVertexEdge (fatJoinStdLeftHomotopy n m) x).toTruncated
+
+lemma fatJoinStdRightHomotopy_isInvertible (n m : ℕ) :
+    ∀ x : (fatJoin (Δ[n] : SSet.{u}) Δ[m]) _⦋0⦌,
+      IsInvertibleEdge (simplicialHomotopyVertexEdge (fatJoinStdRightHomotopy n m) x).toTruncated
+
+lemma isPrecompositionEquivalence_fatJoinStdLeftNormalize (n m : ℕ) :
+    IsPrecompositionEquivalence (fatJoinStdLeftNormalize.{u} n m)
+
+lemma isPrecompositionEquivalence_fatJoinStdNormalize (n m : ℕ) :
+    IsPrecompositionEquivalence (fatJoinStdNormalize.{u} n m)
 
 end SerrePositivity.InfinityCategories
 ```

@@ -145,3 +145,21 @@ public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
 public import SerrePositivity.InfinityCategories.Core.FatJoinPoint
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionHomotopy
+
+public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinStdClamp
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinTransform
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinTensorDesc
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinVertices
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinStdNormalize
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinTransformFamily
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinHomotopyFixed
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinStdHomotopy
