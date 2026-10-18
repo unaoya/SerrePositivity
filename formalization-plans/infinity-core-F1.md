@@ -12028,5 +12028,94 @@ lemma coherentResolutionEnrichedMap_app_comparison (X Y : SSet.{u})
         ((coherentResolutionComparison X).app k x) =
       (coherentResolutionComparison Y).app k (η.app k α x)
 
+def KanDiagramObject (C : Type u) [Category.{u} C]
+
+instance kanDiagramObject_enrichedCategory (C : Type u) [Category.{u} C] :
+    EnrichedCategory SSet.{u} (KanDiagramObject C)
+
+instance kanDiagramObject_category (C : Type u) [Category.{u} C] :
+    Category.{u} (KanDiagramObject C)
+
+instance kanDiagramObject_simplicialCategory (C : Type u) [Category.{u} C] :
+    SimplicialCategory (KanDiagramObject C)
+
+noncomputable def KanDiagramNerve (C : Type u) [Category.{u} C] : SSet.{u + 1}
+
+def diagonalKanDiagramObject {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]
+    (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (KanDiagramObject C))
+    (i : SimplicialThickening J) : KanObject.{u}
+
+noncomputable def diagonalKanDiagramHom {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]
+    (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (KanDiagramObject C))
+    (i j : SimplicialThickening J) :
+    SimplicialCategory.sHom i j ⟶
+      SimplicialCategory.sHom (diagonalKanDiagramObject A F i) (diagonalKanDiagramObject A F j)
+
+lemma diagonalKanDiagramHom_of_le {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]
+    (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (KanDiagramObject C))
+    (i j : SimplicialThickening J) (h : i.as ≤ j.as) :
+    diagonalKanDiagramHom A F i j =
+      F.map i j ≫ strictDiagramMixedHom (A.map (homOfLE h))
+      ((F.obj i).val ⋙ kanObjectForget) ((F.obj j).val ⋙ kanObjectForget)
+
+noncomputable def diagonalKanDiagramEvaluation {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]
+    (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (KanDiagramObject C)) :
+    EnrichedFunctor SSet.{u} (SimplicialThickening J) KanObject.{u}
+
+lemma diagonalKanDiagramEvaluation_reindex {C : Type u} [Category.{u} C] {J K : Type u}
+    [LinearOrder J] [LinearOrder K] (α : J →o K) (A : K ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening K) (KanDiagramObject C)) :
+    (SimplicialThickening.functor α).comp SSet (diagonalKanDiagramEvaluation A F) =
+      diagonalKanDiagramEvaluation (α.toFunctor ⋙ A)
+        ((SimplicialThickening.functor α).comp SSet F)
+
+def kanDiagramSimplexBase {C : Type u} [Category.{u} C] {n : ℕ}
+    (σ : (nerve C) _⦋n⦌) : ULift.{u} (Fin (n + 1)) ⥤ C
+
+noncomputable def kanDiagramDiagonalSimplex
+    {C : Type u} [Category.{u} C] {n : ℕ} (σ : (nerve C) _⦋n⦌)
+    (F : (KanDiagramNerve C) _⦋n⦌) : SpaceInfinity.{u} _⦋n⦌
+
+lemma kanDiagramDiagonalSimplex_naturality
+    {C : Type u} [Category.{u} C] {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : (nerve C) _⦋n⦌) (F : (KanDiagramNerve C) _⦋n⦌) :
+    SpaceInfinity.map α.op (kanDiagramDiagonalSimplex σ F) =
+      kanDiagramDiagonalSimplex ((nerve C).map α.op σ)
+        ((KanDiagramNerve C).map α.op F)
+
+noncomputable def kanDiagramJointEvaluation (C : Type u) [Category.{u} C] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve C) ⊗ KanDiagramNerve C ⟶
+      SpaceInfinity.{u}
+
+noncomputable def kanDiagramRealization (C : Type u) [Category.{u} C] :
+    KanDiagramNerve C ⟶
+      SpaceInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve C))
+
+def kanDiagramEvaluationEnriched {C : Type u} [Category.{u} C] (c : C) :
+    EnrichedFunctor SSet.{u} (KanDiagramObject C) KanObject.{u}
+
+noncomputable def kanDiagramNerveEvaluation {C : Type u} [Category.{u} C] (c : C) :
+    KanDiagramNerve C ⟶ SpaceInfinity.{u}
+
+lemma kanDiagramMixedHom_base_id {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) (c : C) :
+    strictDiagramMixedHom (𝟙 c) F G = strictDiagramMappingComponent F G c
+
+lemma diagonalKanDiagramEvaluation_constant_base
+    {C J : Type u} [Category.{u} C] [LinearOrder J] (c : C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J)
+      (KanDiagramObject C)) :
+    diagonalKanDiagramEvaluation ((Functor.const J).obj c) F =
+      F.comp SSet (kanDiagramEvaluationEnriched c)
+
+lemma kanDiagramRealization_evaluate
+    {C : Type u} [Category.{u} C] (c : C) :
+    kanDiagramRealization C ≫ evaluateFunctorAt (ULift.up (nerveVertex c)) =
+      kanDiagramNerveEvaluation c
+
 end SerrePositivity.InfinityCategories
 ```
