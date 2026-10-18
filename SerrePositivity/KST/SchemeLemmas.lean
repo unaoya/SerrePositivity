@@ -202,3 +202,4 @@ public import SerrePositivity.KST.SchemeLemmas.CoefficientPrimeBoundaryGeneratio
 public import SerrePositivity.KST.SchemeLemmas.ExtendedIdealTensor
 public import SerrePositivity.KST.SchemeLemmas.RelativeFlatTensor
 public import SerrePositivity.KST.SchemeLemmas.ExtendedPrimeLocalFreeness
+public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralGenericFreeness
