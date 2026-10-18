@@ -2424,3 +2424,33 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.simplexPairOperation_ezDifference
 #print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_ezDifference
+
+#check @SerrePositivity.KST.ProExcision.simplexPairFaceSum
+#print axioms SerrePositivity.KST.ProExcision.simplexPairFaceSum
+
+#check @SerrePositivity.KST.ProExcision.simplexPairFaceSum_zero
+#print axioms SerrePositivity.KST.ProExcision.simplexPairFaceSum_zero
+
+#check @SerrePositivity.KST.ProExcision.simplexPairFaceSum_sub
+#print axioms SerrePositivity.KST.ProExcision.simplexPairFaceSum_sub
+
+#check @SerrePositivity.KST.ProExcision.simplexPairOperation_faceSum
+#print axioms SerrePositivity.KST.ProExcision.simplexPairOperation_faceSum
+
+#check @SerrePositivity.KST.ProExcision.simplexPairFaceSum_faceSum
+#print axioms SerrePositivity.KST.ProExcision.simplexPairFaceSum_faceSum
+
+#check @SerrePositivity.KST.ProExcision.simplexPairFaceSum_boundary
+#print axioms SerrePositivity.KST.ProExcision.simplexPairFaceSum_boundary
+
+#check @SerrePositivity.KST.ProExcision.ezDifference_comm
+#print axioms SerrePositivity.KST.ProExcision.ezDifference_comm
+
+#check @SerrePositivity.KST.ProExcision.ezUniversalDifference_boundary
+#print axioms SerrePositivity.KST.ProExcision.ezUniversalDifference_boundary
+
+#check @SerrePositivity.KST.ProExcision.ezComposite_zero
+#print axioms SerrePositivity.KST.ProExcision.ezComposite_zero
+
+#check @SerrePositivity.KST.ProExcision.ezUniversalDifference_zero
+#print axioms SerrePositivity.KST.ProExcision.ezUniversalDifference_zero
