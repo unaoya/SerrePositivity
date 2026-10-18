@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・410 モジュール 4092 宣言の公理監査成功。
+対象ビルド・417 モジュール 4168 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3115,4 +3115,38 @@ Tot の π_* へ移すための塔の解析と収束の証明はまだ含まな�
 
 参照：BF 1978 §2、HA §1.4.2、Goerss–Jardine VIII §2。
 対象ビルド 3857 jobs 成功。私有宣言を含む 410 モジュール 4092 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 103. L9e の骨格の end の塔と厳密な極限
+
+単体集合の射は次元 n 未満の骨格を同じ段の骨格へ写すことを生成単体の像から証明した。
+骨格を関手に束ね、段に関する包含と元の対象への包含の自然性を与えた。
+通常の n 骨格には Mathlib の skeleton (n+1) を使う。
+重みの骨格の増加図式を点つき end の反変関手へ送り、塔と全体からの標準錐を構成した。
+部分複体の上限の余極限から、重みの全体が有限骨格の図式の通常の余極限であることを証明した。
+
+二変数図式の end 関手が通常の極限を保つことを、各成分の極限の持ち上げと end の整合式で実証した。
+自由基点の左随伴性、反変な内部 Hom の極限保存、end の極限保存を組み合わせた。
+これにより点つき重み付き end は重みの余極限を通常の極限へ送る。
+従って全体の end から有限骨格の end の塔への標準錐は極限錐である。
+この同型を Bousfield–Kan 重みと Kan 列の段へ適用し、実際の homotopy end の各段を復元した。
+
+これらは厳密な通常の極限の結果である。
+骨格の塔の段の Kan 性、遷移の fibration 性、π_* の計算と収束はこの保存単位ではまだ証明していない。
+自明作用の場合は定値 weighted nerve と直積の同型を使って nerve からの写像空間へ移す工程を続ける。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SkeletonFiltration.image_le` / `map` / `functor` | 骨格の射への関手性 |
+| `SkeletonFiltration.inclusion` / `transition` | 骨格の段の包含と全体への自然変換 |
+| `SkeletalWeightedEnd.weightDiagram` / `tower` / `cone` | 有限骨格の重みと点つき end の塔 |
+| `SkeletalWeightedEnd.weightCoconeIsColimit` | 有限骨格の重みの余極限は元の重み |
+| `EndLimitPreservation.isLimit` / `preservesLimit` | end 関手の通常の極限保存 |
+| `PointedWeightedEnd.weightFunctor_preservesLimit` | 重みの余極限からの end の極限保存 |
+| `SkeletalWeightedEnd.coneIsLimit` / `limitIso` | 全体の end と骨格の塔の厳密な極限の同型 |
+| `KanSequence.homotopyEndLevelTower` / `homotopyEndLevelLimitIso` | 実際の Kan homotopy end の各段への適用 |
+
+参照：Goerss–Jardine VIII §1、BF 1978 §2。
+対象ビルド 3864 jobs 成功。私有宣言を含む 417 モジュール 4168 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
