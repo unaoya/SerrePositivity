@@ -258,3 +258,6 @@ public import SerrePositivity.KST.SchemeLemmas.FreeNeighborhoodStalk
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodsGenericFree
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodsBaseChange
 public import SerrePositivity.KST.SchemeLemmas.PureFreeStalkBaseChange
+public import SerrePositivity.KST.SchemeLemmas.GenericPrimePushout
+public import SerrePositivity.KST.SchemeLemmas.RelativePureFreeNeighborhoods
+public import SerrePositivity.KST.SchemeLemmas.GenericPureFreePushout
