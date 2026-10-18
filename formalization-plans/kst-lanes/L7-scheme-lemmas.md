@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1741 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1761 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -40,6 +40,7 @@
 - Noether 基底で可算生成性を任意の部分加群へ継承し、可算自由全射の核から可算個の関係式を持つ実際の自由表示を構成済み。
 - Noether 基底上の平坦加群について、有限生成部分加群の有限自由単射因子化と、核を保ち指定元を追加する有限自由近似の一段を証明済み。
 - 可算生成な平坦加群について有限自由近似列を実際に構成済み。評価像が全体を覆い、評価の核は直後の遷移で正確に消える。極限の普遍性と Mittag–Leffler 性からの射影性判定は未完了。
+- 可算生成平坦加群の構成済みの有限自由近似列と元の加群の直極限評価を実際の線形同型として構成済み。一般の加群列で核消去・評価像被覆からの直極限比較も証明済み。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -1267,6 +1268,22 @@ g の値域が M を生成すれば、評価像の上限は全体となる。
 これは未証明の極限・射影性を含まない段階データと証明された可換式の構成である。
 `FlatFiniteFreeSequence.lean` で段階・細分・実際の再帰列と遷移、可換式、核消去、評価像の被覆を証明済み。
 `HasCountableGeneratingSet.exists_nat_spanning` で零を追加した自然数生成元列を選び、可算生成平坦加群の実際の近似列の存在へ接続済み。
+直極限比較の文言：一般の R 加群列 F_n、遷移 a_n、整合的評価 q_n:F_n→M に対し、
+評価像の上限が M、かつ ker(a_n)=ker(q_n) なら、列の直極限から M への評価は実際の線形同型となる。
+全 n≤m の遷移は Mathlib の `Functor.ofSequence` により後続遷移から構成し、`DirectedSystem` の法則を得る。
+評価の整合性は `NatTrans.ofSequence` で全 n≤m へ延長する。
+単射性は各代表元 x∈F_n の評価が零なら直後の a_n で零になることと直極限の元の等式判定から従う。
+全射性は評価像の上限が M であり、各 q_n が直極限評価を通ることから従う。
+この一般比較を構成済みの有限自由近似列へ適用し、Noether 基底上の可算生成平坦加群を実際の直極限と同定する。
+`LinearSequenceDirectLimit.lean` で一般の加群列の全遷移、有向系、整合的評価、単射性・全射性・線形同型を構成済み。
+`FlatFiniteFreeDirectLimit.lean` で構成済みの有限自由列へ適用し、可算生成平坦加群の実際の有限自由直極限表示を証明済み。
+テンソル零判定の文言：上の直極限比較の下で、x∈F_n⊗_R P の評価が M⊗_R P で零であることと、
+ある m≥n の段階で (a_nm⊗id_P)(x)=0 となることは同値。
+Mathlib の二つの代数的直極限の `Module.DirectLimit.linearEquiv` を使い、
+テンソル積との可換同型 `TensorProduct.directLimitLeft` と後続段階での零判定へ接続する。
+試験加群 P の平坦性は不要。逆向きは全遷移に対する評価の可換式から従う。
+
+
 
 
 
@@ -1424,6 +1441,10 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | --- | --- | --- |
 | `BoundaryFreeNeighborhoodsAtCenterOver` | 中間環上の中心の自由化を元の基礎環・加群で述べる条件 | 定義済み |
 | `boundaryFreeNeighborhoodsAtCenterOver_of_baseChanged_center` | 固定中心の全チャートの自由化の元のデータへの統一 | 証明済み |
+| `linearSequenceMap` / `linearSequenceLimitEval` | 加群列の全遷移と実際の直極限評価 | 構成済み |
+| `linearSequenceDirectLimitEquiv` | 核が直後に消え像が全体を覆う列の実際の直極限同型 | 証明済み |
+| `flatFiniteFreeDirectLimitEquiv` | 構成した有限自由近似列と元の平坦加群の実際の同型 | 構成済み |
+| `exists_finiteFree_sequence_directLimit_equiv` | Noether 基底上可算生成平坦加群の有限自由直極限表示 | 証明済み |
 | `HasCountableGeneratingSet.exists_nat_spanning` | 零加群も含む自然数生成元列の実際の選択 | 証明済み |
 | `flatFiniteFreeStage` / `flatFiniteFreeTransition` | 指定生成元列からの有限自由近似列と遷移 | 構成済み |
 | `flatFiniteFreeTransition_eval` / `flatFiniteFreeTransition_ker` | 評価の可換式と次段での正確な核消去 | 証明済み |

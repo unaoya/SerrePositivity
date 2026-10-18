@@ -288,3 +288,5 @@ public import SerrePositivity.KST.SchemeLemmas.NoetherianCountableGeneration
 public import SerrePositivity.KST.SchemeLemmas.CountableFreePresentation
 public import SerrePositivity.KST.SchemeLemmas.NoetherianFlatFactorization
 public import SerrePositivity.KST.SchemeLemmas.FlatFiniteFreeSequence
+public import SerrePositivity.KST.SchemeLemmas.LinearSequenceDirectLimit
+public import SerrePositivity.KST.SchemeLemmas.FlatFiniteFreeDirectLimit
