@@ -1155,3 +1155,47 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms fixedApexFatConeComparison
 #check @fixedApexFatConeComparison_isQCatEquivalence
 #print axioms fixedApexFatConeComparison_isQCatEquivalence
+#check @fixedFatConeSpace_inr
+#print axioms fixedFatConeSpace_inr
+#check @fixedFatConeSpace_inl
+#print axioms fixedFatConeSpace_inl
+#check @fixedFatConeToLaxSlice
+#print axioms fixedFatConeToLaxSlice
+#check @fixedFatConeUncurry
+#print axioms fixedFatConeUncurry
+#check @fixedFatConeUncurry_inr
+#print axioms fixedFatConeUncurry_inr
+#check @fixedFatConeUncurry_inl
+#print axioms fixedFatConeUncurry_inl
+#check @fixedFatConeUncurry_precomp
+#print axioms fixedFatConeUncurry_precomp
+#check @fixedFatConeUncurry_injective
+#print axioms fixedFatConeUncurry_injective
+#check @fixedFatConeCurryFamily_inl
+#print axioms fixedFatConeCurryFamily_inl
+#check @fixedFatConeCurry_fixed
+#print axioms fixedFatConeCurry_fixed
+#check @fixedFatConeCurry
+#print axioms fixedFatConeCurry
+#check @fixedFatConeCurry_toLaxSlice
+#print axioms fixedFatConeCurry_toLaxSlice
+#check @fixedFatConeUncurry_curry
+#print axioms fixedFatConeUncurry_curry
+#check @fixedFatConeCurry_uncurry
+#print axioms fixedFatConeCurry_uncurry
+#check @fixedFatConeHomEquiv
+#print axioms fixedFatConeHomEquiv
+#check @sliceLaxMap_mono
+#print axioms sliceLaxMap_mono
+#check @fixedSliceFatConeComparison
+#print axioms fixedSliceFatConeComparison
+#check @fixedSliceFatConeComparison_toLaxSlice
+#print axioms fixedSliceFatConeComparison_toLaxSlice
+#check @fixedSliceFatConeComparison_mono
+#print axioms fixedSliceFatConeComparison_mono
+#check @fixedSliceFatConeComparison_uncurry
+#print axioms fixedSliceFatConeComparison_uncurry
+#check @fixedSliceFatConeComparison_exists_retraction
+#print axioms fixedSliceFatConeComparison_exists_retraction
+#check @fixedEndpointFatConeSpace_kanComplex
+#print axioms fixedEndpointFatConeSpace_kanComplex

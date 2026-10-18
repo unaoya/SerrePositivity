@@ -2194,7 +2194,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開575宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開597宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2822,7 +2822,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開575宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開597宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3413,6 +3413,52 @@ K の quasicategory 性や非空性、p の fibration 性は不要。
 
 前節の slice と切断空間からの二つの射の同値性は、この fat join 模型の同値とは別の未完了項目。
 豊穣 q_x との整合性および 𝒮・Sp の残りの適用も引き続き証明が必要である。
+
+### 両端固定の普遍性と slice 比較の厳密な左逆（実装済み）
+
+`FixedFatConeUniversal`・`FixedFatConeCurry` は太い slice の既存の普遍性を、
+頂点も固定する fiber に制限した。任意の `K X A : SSet.{u}`、
+`p : K ⟶ X`、`x : X _⦋0⦌` に対して、充填性の仮定なしで
+
+```lean
+fixedFatConeHomEquiv p x A :
+  (A ⟶ fixedEndpointFatConeSpace p x) ≃
+    {F : fatJoin A K ⟶ X //
+      fatJoinInl A K ≫ F = SSet.const x ∧ fatJoinInr A K ≫ F = p}
+```
+
+を構成した。順方向は `fixedFatConeUncurry`、逆方向は `fixedFatConeCurry`。
+左右の固定条件、パラメータの前合成との可換性、単射性と両方の往復則を証明した。
+`fixedEndpointFatConeSpace_kanComplex p x` は `[Quasicategory X]` の下で成立する。
+これは前節の圏同値をホモトピー圏の同値へ移し、亜群性から導く。
+
+`FixedSliceFatComparison` は、前節までの二つの実際の射の合成をそのまま使う。
+
+```lean
+fixedSliceFatConeComparison p x :
+  vertexFiber (sliceOverProjection p) x ⟶ fixedEndpointFatConeSpace p x :=
+    coneVertexFiberFamilyMap p x ≫ fixedApexFatConeComparison p x
+```
+
+`fixedSliceFatConeComparison_toLaxSlice` は頂点の固定を忘れた合成が
+`vertexFiberι (sliceOverProjection p) x ≫ sliceLaxMap p` に厳密に一致することを示す。
+`sliceLaxMap_mono` は fat join 比較のエピ性と uncurry の単射性から従い、
+`fixedSliceFatConeComparison_mono` も充填性の仮定なしで得られる。
+`fixedSliceFatConeComparison_uncurry x f` は任意パラメータの族を展開した射を
+`fatJoinComparison A K ≫ sliceOverUncurry (f ≫ vertexFiberι _ x)` と同定する。
+
+`[Quasicategory X]` の下で、既存の F1 の `exists_joinDiagram_relative_extension` を
+この比較の像を固定した部分族として使い、次を証明した。
+
+```lean
+fixedSliceFatConeComparison_exists_retraction p x :
+  ∃ r : fixedEndpointFatConeSpace p x ⟶ vertexFiber (sliceOverProjection p) x,
+    fixedSliceFatConeComparison p x ≫ r = 𝟙 _
+```
+
+逆射は頂点と図式を保つ。K の quasicategory 性や非空性は不要である。
+この厳密な左逆だけでは圏同値性を結論しない。もう一方の合成のホモトピー、
+切断空間側の同値、豊穣 q_x との接続と 𝒮・Sp の残りの適用は未完了。
 
 ### 𝒮 の空積（実装済み）
 
