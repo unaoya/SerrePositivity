@@ -8187,5 +8187,22 @@ noncomputable def LeftFibrationInfinity (B : SSet.{u}) : SSet.{u + 1}
 instance leftFibrationInfinity_quasicategory (B : SSet.{u}) :
     Quasicategory (LeftFibrationInfinity B)
 
+def leftFibrationObjectOf {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] :
+    LeftFibrationObject B
+
+noncomputable def leftFibrationInfinityVertex {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] : (LeftFibrationInfinity B) _⦋0⦌
+
+noncomputable def leftFibrationInfinityEdge {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    (LeftFibrationInfinity B).Edge
+      (leftFibrationInfinityVertex p) (leftFibrationInfinityVertex q)
+
+noncomputable def leftFibrationInfinityMappingEquivalence {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q] :
+    QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj (relativeFunctorSpace q p))
+      (pinchedHom (leftFibrationInfinityVertex p) (leftFibrationInfinityVertex q))
+
 end SerrePositivity.InfinityCategories
 ```

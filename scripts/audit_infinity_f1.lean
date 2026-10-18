@@ -1755,3 +1755,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.leftFibrationObject_sHom_kanComplex
 #check @SerrePositivity.InfinityCategories.LeftFibrationInfinity
 #check @SerrePositivity.InfinityCategories.leftFibrationInfinity_quasicategory
+#check @SerrePositivity.InfinityCategories.leftFibrationObjectOf
+#check @SerrePositivity.InfinityCategories.leftFibrationInfinityVertex
+#check @SerrePositivity.InfinityCategories.leftFibrationInfinityEdge
+#check @SerrePositivity.InfinityCategories.leftFibrationInfinityMappingEquivalence

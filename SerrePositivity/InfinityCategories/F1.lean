@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationMappingSpaces
+
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComposition
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorCompositionLaws
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorUnitHom
