@@ -13463,5 +13463,43 @@ lemma exists_leftStrictTransportResolutionRetraction_equivalence
           IsQCatEquivalence (X := coherentLeftResolution (leftStrictTransport q c))
             (Y := leftStrictTransport q c) (r.app c)
 
+noncomputable def strictDiagramMappingVertexEquiv {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) : (F ⟶ G) ≃ (strictDiagramMappingSpace F G) _⦋0⦌
+
+noncomputable def strictDiagramScaffoldHomEquiv {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) :
+    (F ⟶ leftStrictTransportDiagram q) ≃
+      {f : simplicialReplacement F ⟶ E // f ≫ q = simplicialReplacementProjection F}
+
+lemma strictDiagramScaffoldHomEquiv_vertex {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C)
+    (θ : F ⟶ leftStrictTransportDiagram q) :
+    relativeFunctorVertex q (simplicialReplacementProjection F)
+      (strictDiagramScaffoldHomEquiv F q θ).val
+      (strictDiagramScaffoldHomEquiv F q θ).property =
+    (strictDiagramMappingScaffoldMap F q).app (Opposite.op ⦋0⦌)
+      (strictDiagramMappingVertex θ)
+
+lemma strictDiagramScaffoldHomEquiv_symm_vertex {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C)
+    (h : {f : simplicialReplacement F ⟶ E // f ≫ q = simplicialReplacementProjection F}) :
+    strictDiagramMappingVertex ((strictDiagramScaffoldHomEquiv F q).symm h) =
+      (strictDiagramMappingScaffoldInverse F q).app (Opposite.op ⦋0⦌)
+        (relativeFunctorVertex q (simplicialReplacementProjection F) h.val h.property)
+
+lemma strictDiagramScaffoldHomEquiv_symm_app {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C)
+    (h : {f : simplicialReplacement F ⟶ E // f ≫ q = simplicialReplacementProjection F})
+    (c : C) (n m : SimplexCategoryᵒᵖ) (x : (F.obj c).obj n) (α : n ⟶ m)
+    (τ : (nerve (Under c)).obj m) :
+    ((((strictDiagramScaffoldHomEquiv F q).symm h).app c).app n x).val.app m α τ =
+      h.val.app m ((simplicialReplacementUnderEvaluation F c).app m (τ, (F.obj c).map α x))
+
+lemma strictDiagramScaffoldHomEquiv_symm_evaluate_ι {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C)
+    (h : {f : simplicialReplacement F ⟶ E // f ≫ q = simplicialReplacementProjection F}) (c : C) :
+    ((strictDiagramScaffoldHomEquiv F q).symm h).app c ≫ leftStrictTransportEvaluate q c ≫
+      vertexFiberι q (nerveVertex c) = simplicialReplacementConstantLift F c ≫ h.val
+
 end SerrePositivity.InfinityCategories
 ```
