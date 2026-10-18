@@ -199,3 +199,4 @@ public import SerrePositivity.KST.SchemeLemmas.GenericMinorCoefficientCenter
 public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralExtendedPrime
 public import SerrePositivity.KST.SchemeLemmas.FinitePresentationMatrix
 public import SerrePositivity.KST.SchemeLemmas.CoefficientPrimeBoundaryGeneration
+public import SerrePositivity.KST.SchemeLemmas.ExtendedIdealTensor
