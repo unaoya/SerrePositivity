@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c 進行中。
 Sp、整数次数群と自然な任意段表示、Kan Ω 列の単射置換まで検証済み。
-対象ビルド・89 モジュール 1523 宣言の公理監査成功。
+対象ビルド・93 モジュール 1574 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1058,3 +1058,38 @@ Sp の ∞ 極限という主張は含めず、γ3 後に扱う。
 私有宣言を含む 89 モジュール 1523 宣言で標準三公理のみ。
 L9c は未完了。整数次数長完全列、任意の射の段ごとの fibration への置換、
 反復比較の隣接構造射との添字正規化が残る。
+
+## 39. L9c の整数次数の連結準同型と長完全列
+
+整数次数群の正次数の段による表示を整理した。
+置換した fiber の段から実際の fiber の群への同型を、実際の fiberPoint を基点に構成した。
+整数次数の包含と射影が、これらの表示で段の実際の fiber 列の射へ移ることを証明した。
+連結射 δ_j : π_(j+1)(Y) → π_j(fiber) は、段 |j|+2 の正次数の連結準同型を移して定義した。
+底と fiber の計算次数はそれぞれ boundaryIndex j + 2 と boundaryIndex j + 1 である。
+全ての整数 j で群準同型が使える。
+単なる定義に留めず、段の連結準同型で計算する式を証明した。
+群同型によって核と像の完全性を移す一般補題を証明した。
+これを段の完全列の fiber・全空間・底の三つの位置へ適用した。
+整数次数の長完全列は全ての整数で完全であり、隣接射の合成も自明である。
+対象の fiber は単射置換を挟んだ BF 対象で、射は元のホモトピー群の誘導準同型である。
+現時点では各段が Kan fibration である射についての長完全列である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `OmegaSpectrum.positiveStageEquiv` | 整数次数群の正次数の段表示 |
+| `OmegaSpectrum.fiberPositiveStageEquiv` | 整数次数の fiber 群と実際の段の fiber 群の同型 |
+| `OmegaSpectrum.fiberPositiveStageEquiv_inclusion` | 包含との可換性 |
+| `OmegaSpectrum.positiveStageEquiv_projection` | 基点を像へ移した射影との可換性 |
+| `OmegaSpectrum.boundaryStage` / `.boundaryIndex` | 連結準同型を計算する段と次数 |
+| `OmegaSpectrum.stableConnectingHom` | 全整数次数の連結準同型 |
+| `OmegaSpectrum.stableConnectingHom_compute` | 実際の段の連結準同型による計算式 |
+| `group_exact_of_equivalences` | 群同型で可換に対応する完全性の移送 |
+| `OmegaSpectrum.stableFiberLongExact` | 全整数次数の三つの位置での核と像の一致 |
+| `OmegaSpectrum.stableConnectingHom_inclusion` / `.stableConnectingHom_projection` | 連結準同型との零合成 |
+| `OmegaSpectrum.homotopyMap_fiberInclusion` | 包含と射影の零合成 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 1867 jobs 成功。
+私有宣言を含む 93 モジュール 1574 宣言で標準三公理のみ。
+L9c は未完了。任意の射の段ごとの fibration への置換と、
+反復比較の隣接構造射との添字正規化を引き続き進める。
