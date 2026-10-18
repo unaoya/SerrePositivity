@@ -1,6 +1,6 @@
 # D(S)：semifree 複体の dg nerve としての導来 ∞ 圏（レーン D）
 
-作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6・D8 完了。D9 実装中、D10 待機。D7 は A4・別指示待ち。
+作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6・D8 完了。D9 完了、D10 実装中。D7 は A4・別指示待ち。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§3。
 dg nerve（レーン N）は [dg-nerve.md](dg-nerve.md)。
 
@@ -20,7 +20,7 @@ D8 は完了。Perf(S) は D(S) の実際の充満部分単体集合で、quasic
 U13 の一対象 perfect dg 加群の H⁰ との圏同値も実装済み。公開入口は `Derived/Perfect.lean`。
 
 
-D9 は実装中。一般の D_Z(S) は各 Hⁱ の幾何学的台で定義する。主イデアルでは
+D9 は完了。一般の D_Z(S) は各 Hⁱ の幾何学的台で定義する。主イデアルでは
 各 Hⁱ が元ごとの a 冪ねじれであること、D5c の底変更 X ⊗^L S[1/a] が零になることと同値。
 Perf_Z(S)=Perf(S)∩D_Z(S) は実際の全部分単体集合である。両者の quasicategory 性・零対象と
 semifree モデルのシフト・cone・fiber・有限直和閉性を実装済み。
@@ -28,7 +28,14 @@ semifree モデルのシフト・cone・fiber・有限直和閉性を実装済�
 この比較は有限射影代表の null-homotopy 定理を使い、可換環に Noether 条件を課さない。
 一般には最後の同値は成立しない：S=ℤ、a=2、H⁰=⊕ₙ≥1 ℤ/2ⁿ は V(2) に台を持つが、
 恒等射を消す共通の 2 の冪はない。一般の台条件を scalarSupported に置き換えない。
-h レベルの台つき圏・既存 K₀ 局所化列との比較は未完了。D10 は D9 の後に行う。
+正本上のシフト・cone・fiber・有限直和と、D_{V(a)} の任意の小さい直和を構成した。
+h Perf_Z は既存の SupportedPerfectHomotopyOn Z と圏同値で、有限生成イデアルでは
+scalarSupported 版の圏とも同値。標準単体包含のホモトピー関手は充満忠実である。
+既存の K₀WithSupport の代表と D5c の底変更の像をホモトピー同型で比較し、
+Perf_{V(a)} の類の局所化による零化を示した。K₀Supported の有限自由版との比較は
+任意環では写像、局所環では同型。既存 K₀ 局所化列の核・像と全射性の比較には
+両環の Noether 性と有限射影解像度の仮定を保持する。
+一般の dg 商の nerve 比較は N β3 待ちで主張に含めない。D10 は実装中。
 
 ## 主要宣言
 
@@ -54,6 +61,8 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | h Perf の像と U13 | `perfectCanonicalHomotopyInclusion`、`perfectCanonicalHomotopyInclusion_essImage_iff`、`perfectInfinityU13Equivalence` |
 | 台つき部分圏 | `derivedSupportCategory`、`perfectSupportCategory`、`perfectSupportSubcomplex_eq_inf` |
 | 台と局所化 | `derivedSupport_iff_baseChange_isZero`、`perfectSupport_localization_scalar`、`perfectSupportCategory_baseChange_zero` |
+| 台つき h 比較 | `perfectSupportClosedEquivalence`、`perfectSupportScalarEquivalence`、`perfectSupportBaseChangeIso` |
+| 台つき K₀ | `perfectSupportK0Class_localize_zero`、`supportedFreeK0Equivalence`、`supportedK0_localization_kernel`、`supportedK0_localization_surjective` |
 | H⁰ | `derivedInfinityHZeroFunctor`、`derivedInfinityHZeroIso`、`derivedInfinityHZeroMap` |
 | 引き戻しの判定 | `derivedSquareFiberComparison`、`derived_isPullbackSquare_iff_quasiIso` |
 
