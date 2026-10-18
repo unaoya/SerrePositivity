@@ -77,3 +77,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFlags
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionSimplex
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionInterval
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionHomotopy
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionEquivalence

@@ -1833,5 +1833,34 @@ def coherentResolutionHomotopy (n : ℕ) :
     SSet.Homotopy (𝟙 (coherentResolutionSimplex.{u} n))
       (coherentResolutionProjection n ≫ coherentResolutionSection n)
 
+lemma CoherentResolutionFlag.intervalHull_interval {n d : ℕ}
+    (f : Fin (d + 1) →o Fin (n + 1)) :
+    (CoherentResolutionFlag.interval f).intervalHull = CoherentResolutionFlag.interval f
+
+lemma CoherentResolutionFlag.deform_interval {n d : ℕ}
+    (f : Fin (d + 1) →o Fin (n + 1)) (t : Fin (d + 1) →o Fin 2) :
+    (CoherentResolutionFlag.interval f).deform t = CoherentResolutionFlag.interval f
+
+lemma CoherentResolutionFlag.intervalHull_vertex {n : ℕ} (F : CoherentResolutionFlag n 0) :
+    F.intervalHull = F
+
+lemma coherentResolutionSection_vertex_surjective (n : ℕ) :
+    Function.Surjective ((coherentResolutionSection.{u} n).app (Opposite.op ⦋0⦌))
+
+lemma coherentResolutionDeformation_section (n : ℕ) :
+    (coherentResolutionSection.{u} n ▷ Δ[1]) ≫ coherentResolutionDeformation n =
+      fst _ _ ≫ coherentResolutionSection n
+
+lemma coherentResolutionHomotopy_vertex_isInvertible (n : ℕ)
+    (F : coherentResolutionSimplex.{u} n _⦋0⦌) :
+    IsInvertibleEdge
+      (simplicialHomotopyVertexEdge (coherentResolutionHomotopy n) F).toTruncated
+
+lemma coherentResolutionProjection_isPrecompositionEquivalence (n : ℕ) :
+    IsPrecompositionEquivalence (coherentResolutionProjection.{u} n)
+
+lemma coherentResolutionSection_isPrecompositionEquivalence (n : ℕ) :
+    IsPrecompositionEquivalence (coherentResolutionSection.{u} n)
+
 end SerrePositivity.InfinityCategories
 ```
