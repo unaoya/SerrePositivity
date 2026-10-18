@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1B.TerminalPointPullback
+
+public import SerrePositivity.InfinityCategories.F1B.TerminalFiberCofinality
+
 public import SerrePositivity.InfinityCategories.F1B.CofinalFactorizationCriterion
 
 public import SerrePositivity.InfinityCategories.F1B.CofinalAnodyneRecognition

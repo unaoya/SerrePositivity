@@ -203,6 +203,22 @@ trivial Kan fibration では切断と両方向の底上の収縮が存在する�
 `leftAnodyneExtensions_iff_mono_and_isLeftCofinal` と right 版を得た。
 これは [Prop 7.2.1.3](https://kerodon.net/tag/02N3) の単射性を含む全体の判定。
 
+`leftFibration_lift_fixed_prism` は、任意の単射部分上を全時間で固定し、
+時刻零から底の prism を left fibration に持ち上げる。
+`rightAnodyneExtensions_of_fixed_terminal_homotopy` は、単射とその retraction、
+部分を固定した恒等射から retraction 合成へのホモトピーから right anodyne 性を得る。
+証明は終点ホーンと単射の pushout-product の arrow retract を明示する。
+これにより、任意の定値族を固定する頂点への収縮を持つ底では、
+`leftFibration_terminalFiber_rightAnodyne_of_fixed_contraction` が fiber 包含の
+right anodyne 性を与える。標準単体の最後の頂点への収縮に適用した
+`leftFibration_terminalFiber_rightAnodyne` と、頂点 fiber と通常の引き戻しの厳密な同型により、
+`leftFibration_terminalPoint_pullback_rightAnodyne`・`..._isRightCofinal` を得た。
+これは [Kerodon Example 7.2.3.12](https://kerodon.net/tag/02NX) の
+left fibration・標準単体の場合である。一般の cocartesian fibration や
+right anodyne な射の引き戻しの安定性は、これだけからは従わない。
+次は外側右ホーン上の終点収縮への制限と共通 fiber による比較を構成し、
+内側ホーンの場合の引き戻しを別途証明する。
+
 Quillen A 本体、cocartesian fibration に沿う cofinality の pullback 安定性、
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
 left/right cofinality の opposite による比較は未完了。
@@ -213,8 +229,8 @@ B3 の cofinality の pullback 安定性を証明し、弱可縮な coslice の�
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2209 jobs、公理監査1951宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内540モジュールに straightening 依存なし。
+対象ビルド2215 jobs、公理監査1972宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内546モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -298,3 +314,10 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `trivialKanFibration_iff_leftFibration_and_isLeftCofinal`・right 版 | Cor 7.2.1.14 の三条件の同値 | 済 |
 | `isLeftCofinal_iff_exists_anodyne_trivialKan_factorization`・right 版 | Cor 7.2.1.15 の anodyne・trivial Kan 因子分解による特徴づけ | 済 |
 | B3 の Quillen A・B4〜B5 | §1 の残る工程 | 未完了 |
+
+| `leftFibration_lift_fixed_prism` | 単射部分を固定した底の prism の持ち上げ | 済 |
+| `cofinalLastHorn_prism_factorization`・`rightAnodyneExtensions_of_fixed_terminal_homotopy` | 固定した終端収縮を持つ単射の right anodyne 性 | 済 |
+| `cofinalVertexFiberι_mono`・`cofinalPrismLastContraction_const` | fiber の単射性と終点収縮による任意の定値族の固定 | 済 |
+| `leftFibration_terminalFiber_rightAnodyne_of_fixed_contraction`・`leftFibration_terminalFiber_rightAnodyne/isRightCofinal` | 固定した頂点への収縮から fiber 包含の判定、標準単体の場合 | 済 |
+| `cofinalVertexFiberPullbackIso`・`cofinalVertexFiberPullbackIso_hom_fst` | 頂点 fiber と標準 pullback の同型・包含との整合 | 済 |
+| `leftFibration_terminalPoint_pullback_rightAnodyne/isRightCofinal` | 終点包含の left fibration に沿う引き戻し | 済 |
