@@ -1653,3 +1653,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_of_pullback_finiteNerve
 #check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange_overPullbackMap
 #check @SerrePositivity.InfinityCategories.IsLeftScaffold.overPullback_finiteComparison
+#check @SerrePositivity.InfinityCategories.IsLeftScaffold.isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.tautScaffold_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.universalScaffold_isPrecompositionEquivalence

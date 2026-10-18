@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.LeftScaffoldComparison
+
 public import SerrePositivity.InfinityCategories.F1.PrecompositionNerveLocality
 public import SerrePositivity.InfinityCategories.F1.ScaffoldPullbackComparison
 

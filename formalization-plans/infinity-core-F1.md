@@ -7675,5 +7675,21 @@ lemma IsLeftScaffold.overPullback_finiteComparison
           (Over.homMk (U := Over.mk (simplicialReplacementProjection F)) (V := Over.mk p) l h)
           (Over.mk (nerveMap H)))
 
+lemma IsLeftScaffold.isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    {p : E ⟶ nerve C} [LeftFibration p]
+    {F : C ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)]
+    {l : simplicialReplacement F ⟶ E} (hs : IsLeftScaffold p F l) :
+    IsPrecompositionEquivalence l
+
+lemma tautScaffold_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] :
+    IsPrecompositionEquivalence (tautScaffold F)
+
+lemma universalScaffold_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    IsPrecompositionEquivalence (universalScaffold p)
+
 end SerrePositivity.InfinityCategories
 ```
