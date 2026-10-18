@@ -517,3 +517,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.pathFrontInverseFunctor_comp
 #check @SerrePositivity.InfinityCategories.thickeningFront_map_epi
 #check @SerrePositivity.InfinityCategories.coherentPinched_sourceMap_full
+#check @SerrePositivity.InfinityCategories.simplicialHom_normalized_ext
+#check @SerrePositivity.InfinityCategories.enrichedFunctor_thickening_self_map
+#check @SerrePositivity.InfinityCategories.coherentFlagHom_last_last
+#check @SerrePositivity.InfinityCategories.coherentFlagPinchedSimplex_flagMap
+#check @SerrePositivity.InfinityCategories.coherentPinchedFlagEquiv
