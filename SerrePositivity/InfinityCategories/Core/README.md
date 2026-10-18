@@ -538,3 +538,7 @@ F1 の既存 IsCocartesianEdge と同時に import できるよう、Core の今
 A6 続き：cocartesian な辺の coslice の射影の trivial Kan fibration 性を、点と境界の join の先頭ホーン表示と辺の持ち上げから証明。quasicategory 性は不要。新規20宣言の正確な型・前提は §6。A6 主定理は未完了。A4・A5 は D チャット α-S の担当。
 
 上記保存単位の検証：Core 対象ビルド1914 jobs成功、累計1472宣言の公理監査は標準3公理のみ。Core 全体と F1.CartesianEdge の同時 import も成功。
+
+A6 続き：固定基底の辺の持ち上げの圏の cocartesian な始対象性、始対象を持つ left fibration の終対象上の fiber の可縮性、固定基底の coslice の射影の left fibration 性を証明。組み合わせて fiber の終対象へ向かう固定基底上の射の空間の可縮性を得た。quasicategory 性は不要。新規10宣言の全型・前提は §6。A6 主定理は未完了。
+
+上記保存単位の検証：Core 対象ビルド1917 jobs成功、累計1482宣言の公理監査は標準3公理のみ。

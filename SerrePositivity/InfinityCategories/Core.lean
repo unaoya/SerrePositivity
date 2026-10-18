@@ -371,3 +371,9 @@ public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.Core.CocartesianCoslice
 
 public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceLifting
+
+public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceFiber
+
+public import SerrePositivity.InfinityCategories.Core.LeftFibrationTerminalFiber
+
+public import SerrePositivity.InfinityCategories.Core.CosliceFiberProjection

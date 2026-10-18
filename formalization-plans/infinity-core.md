@@ -8869,6 +8869,84 @@ instance cocartesianCosliceProjection_trivialKanFibration {E B : SSet.{u}}
 
 検証：Core 対象ビルド1914 jobs成功、累計1472宣言の公理監査は標準3公理のみ。Core 全体と F1.CartesianEdge の同時 import も成功。
 
+### A6 続き（2026-10-18）：固定基底上の射の空間の可縮性
+
+固定した基底の辺の持ち上げの圏で cocartesian な辺は始対象になる。一般に始対象を持つ left fibration の終対象上の fiber は可縮な Kan 複体になることを、境界上の始対象からの錐、基底の終対象による境界充填、左ホーンの相対充填で証明。inner fibration の基底の辺を固定した coslice の終点射影は left fibration になることも証明。これを組み合わせ、cocartesian fibration の fiber の終対象へ向かう固定基底上の射の空間の可縮性を得た。元・標的の quasicategory 性は不要。Kerodon §5.1.1・§5.1.4・§7.1.5 の相対終対象への接続のための充填構成であり、モデル構造は使わない。
+
+既存の公開名・型と §4 の設計は維持。以下 universe u、CategoryTheory・Limits・SSet と scoped Simplicial を開く。型に記したもの以外の前提はない。
+
+`Core/CocartesianCosliceFiber.lean`：
+
+```lean
+lemma isInitialVertex_cocartesianCosliceFiber {E B : SSet.{u}}
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B)
+    (s : (sliceUnder (a ≫ p)) _⦋0⦌)
+    (t : (vertexFiber (sliceUnderPostcomp a p) s) _⦋0⦌)
+    (ht : IsCocartesianCosliceVertex a p t.val) : IsInitialVertex t
+
+lemma cocartesianCosliceFiber_isContractibleKan {E B : SSet.{u}}
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) [CocartesianHornFibration p]
+    (s : (sliceUnder (a ≫ p)) _⦋0⦌) :
+    IsContractibleKan (vertexFiber (cocartesianCosliceProjection a p) s)
+```
+
+`Core/LeftFibrationTerminalFiber.lean`：
+
+```lean
+lemma IsInitialVertex.exists_cosliceLift {A X : SSet.{u}} {x : X _⦋0⦌}
+    (hx : IsInitialVertex x) (b : A ⟶ X) :
+    ∃ C : A ⟶ sliceUnder (SSet.yonedaEquiv.symm x),
+      C ≫ sliceUnderProjection (SSet.yonedaEquiv.symm x) = b
+
+lemma joinStdSimplexIso_inr_lastVertex (n : ℕ) :
+    SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (Fin.last n)) ≫
+      joinInr (Δ[0] : SSet.{u}) Δ[n] ≫ (joinStdSimplexIso 0 n).hom =
+        SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (Fin.last (0 + n + 1)))
+
+lemma IsTerminalVertex.exists_pointJoinBoundary_extension {X : SSet.{u}}
+    {x : X _⦋0⦌} (hx : IsTerminalVertex x) (n : ℕ)
+    (G : join (Δ[0] : SSet.{u}) (boundary n) ⟶ X)
+    (hG : joinInr Δ[0] (boundary n : SSet.{u}) ≫ G = SSet.const x) :
+    ∃ H : join (Δ[0] : SSet.{u}) Δ[n] ⟶ X,
+      joinMap (𝟙 Δ[0]) (boundary n).ι ≫ H = G ∧
+        joinInr Δ[0] Δ[n] ≫ H = SSet.const x
+
+lemma leftFibration_terminalFiber_isContractibleKan {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] {e : E _⦋0⦌} (he : IsInitialVertex e)
+    {b : B _⦋0⦌} (hb : IsTerminalVertex b) :
+    IsContractibleKan (vertexFiber p b)
+```
+
+`Core/CosliceFiberProjection.lean`：
+
+```lean
+def cosliceFiberProjection {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B)
+    (s : (sliceUnder (a ≫ p)) _⦋0⦌) :
+    vertexFiber (sliceUnderPostcomp a p) s ⟶
+      vertexFiber p ((sliceUnderProjection (a ≫ p)).app (Opposite.op ⦋0⦌) s)
+
+lemma cosliceFiberProjection_ι {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B)
+    (s : (sliceUnder (a ≫ p)) _⦋0⦌) :
+    cosliceFiberProjection a p s ≫
+      vertexFiberι p ((sliceUnderProjection (a ≫ p)).app (Opposite.op ⦋0⦌) s) =
+        vertexFiberι (sliceUnderPostcomp a p) s ≫ sliceUnderProjection a
+
+instance cosliceFiberProjection_leftFibration {E B : SSet.{u}}
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) [InnerFibration p]
+    (s : (sliceUnder (a ≫ p)) _⦋0⦌) : LeftFibration (cosliceFiberProjection a p s)
+
+lemma cosliceFiberProjection_terminalFiber_isContractibleKan {E B : SSet.{u}}
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) [CocartesianHornFibration p]
+    (s : (sliceUnder (a ≫ p)) _⦋0⦌)
+    (x : (vertexFiber p ((sliceUnderProjection (a ≫ p)).app (Opposite.op ⦋0⦌) s)) _⦋0⦌)
+    (hx : IsTerminalVertex x) :
+    IsContractibleKan (vertexFiber (cosliceFiberProjection a p s) x)
+```
+
+未完了：固定基底上の射の空間の可縮性と相対境界充填の比較、錐の制限の cocartesian な輸送、点ごとの極限から自然な錐を構成する A6 主定理。A4・A5 は D チャット α-S の担当。本チャットは A6 完了・報告まで。
+
+検証：Core 対象ビルド1917 jobs成功、累計1482宣言の公理監査は標準3公理のみ。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。
