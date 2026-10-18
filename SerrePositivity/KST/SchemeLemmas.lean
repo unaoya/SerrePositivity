@@ -246,3 +246,4 @@ public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankLocalization
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFlatBaseChange
 public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankBaseChange
 public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankReduction
+public import SerrePositivity.KST.SchemeLemmas.TwoStageGenericFreeCenters
