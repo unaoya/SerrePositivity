@@ -138,3 +138,4 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentNervePos
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentDoubleOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentReverseInvolution
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentOppositeIso
+public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy

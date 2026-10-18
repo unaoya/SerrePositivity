@@ -1411,3 +1411,11 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms coherentNerveOppositeInverse_vertex
 #check @coherentNerveOppositeInverse_post
 #print axioms coherentNerveOppositeInverse_post
+#check @oppositeTensorIso
+#print axioms oppositeTensorIso
+#check @oppositeSimplicialHomotopy
+#print axioms oppositeSimplicialHomotopy
+#check @oppositeKanHomotopyEquivalence
+#print axioms oppositeKanHomotopyEquivalence
+#check @uliftOppositeIso
+#print axioms uliftOppositeIso

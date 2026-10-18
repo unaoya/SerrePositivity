@@ -2045,6 +2045,15 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 担当は N。正本は `formalization-plans/e-infinity-algebras.md` §3 と
 `formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
+
+担当と着手順（foundations.md §1 の決定）：γ1.5 の後に N が γ3 を担当する。
+目標は homotopy 極限・余極限と ∞ 極限・余極限の比較（HTT 4.2.4.1 型）であり、
+まず Kan 複体の単体的モデル圏の cofibrant-fibrant 部分圏を対象とする。
+初段は通常の小圏の strict な図式について、有限積・fibration 引き戻し・塔の極限を扱う。
+豊穣 Hom の標準比較 q_x と coherent な錐の比較を証明し、𝒮（F2）、Sp（L9）、
+E2b が再利用できる形で公開する。余極限側は後続工程とし、極限側の部分成果で完了とはしない。
+E2b の具体的適用は E2a の完了後に行う。
+
 現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射、
 strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性、
 塔と一脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
@@ -2194,7 +2203,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開703宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開707宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2822,7 +2831,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開703宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開707宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3712,6 +3721,29 @@ coherentNerveOppositeInverse_post F :
 を証明した。順方向の自然性の両側に逆射を合成し、往復則で消去する。
 これで反対への移送を両方向で自然に使える。
 左 coslice の係数図式、元の豊穣 Hom の図式・q_x との比較、𝒮・Sp の残りの適用は未完了。
+
+### 反転による Kan ホモトピー同値の保存（実装済み）
+
+`OppositeKanHomotopy` は以下を公開する。全ての単体集合は同じ宇宙 u に置き、
+`uliftOppositeIso` の追加宇宙 v は任意とする。
+
+```lean
+oppositeTensorIso (X Y : SSet.{u}) : (X ⊗ Y).op ≅ X.op ⊗ Y.op
+oppositeSimplicialHomotopy {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (H : SSet.Homotopy f g) :
+  SSet.Homotopy (SSet.opFunctor.map g) (SSet.opFunctor.map f)
+oppositeKanHomotopyEquivalence {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
+    {f : X ⟶ Y} (hf : IsSimplicialHomotopyEquivalence f) :
+  IsSimplicialHomotopyEquivalence (SSet.opFunctor.map f)
+uliftOppositeIso (X : SSet.{u}) :
+  (SSet.uliftFunctor.{v, u}).obj X.op ≅ ((SSet.uliftFunctor.{v, u}).obj X).op
+```
+
+直積と宇宙の持ち上げの同型は成分ごとの恒等対応である。
+ホモトピーを反転すると区間の端点が交換されるため、その向きも交換する。
+Kan 性の下では可逆な二胞体の逆を使い、反転した逆射の両合成を恒等射と比較する。
+これは Kerodon §4.6.7 の左右の Hom の移送の補助段階であり、
+左 coslice の係数図式への実際の自然比較と元の q_x への接続は引き続き未完了。
 
 ### 𝒮 の空積（実装済み）
 
