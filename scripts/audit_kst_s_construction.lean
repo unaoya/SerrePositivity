@@ -2478,3 +2478,69 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.combinedIntervalAssembly_quotient
 #print axioms SerrePositivity.KST.SConstruction.combinedIntervalAssembly_quotient
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionZeroRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionZeroRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroInclusion_naturality
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroInclusion_naturality
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionZeroInclusionNat
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionZeroInclusionNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionZeroInclusionNat_app
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionZeroInclusionNat_app
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionZeroRange_image_le
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionZeroRange_image_le
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionFatBoundary_image_le
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionFatBoundary_image_le
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionComparison_zeroRange_image_le
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionComparison_zeroRange_image_le
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionComparison_fatBoundary_image_le
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionComparison_fatBoundary_image_le
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionBoundaryMap
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionBoundaryMap
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionBoundaryMap_ι
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionBoundaryMap_ι
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedRealization
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedRealization
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReductionQuotient
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReductionQuotient
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedRealizationMap
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedRealizationMap
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedRealizationMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedRealizationMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReductionNat
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReductionNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionComparisonBoundaryMap
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionComparisonBoundaryMap
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionComparisonBoundaryMap_ι
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionComparisonBoundaryMap_ι
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedComparison
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedComparison
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedComparison_quotient
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedComparison_quotient
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionReducedComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionReducedComparisonNat

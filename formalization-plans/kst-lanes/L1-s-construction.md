@@ -2830,3 +2830,125 @@ lemma combinedIntervalAssembly_quotient (r : ℕ) (X : StableModel.{u}) :
 任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2962 jobs）、公理監査成功（884 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.23 一次方向の残りの境界商と S₁ 比較の自然な降下
+
+一次方向を固定した実現 A_r(X) の各零方向の像と全零境界が、入力の全 `StableModel` 射で保存されることを証明した。
+一般の多単体図式の零段の包含の自然性を証明してから、反復 S の関手へ代入している。
+S₁ の比較は各零方向の像を残りの反復の対応する零方向の像へ送るため、全零境界も保つ。
+
+正の残りの反復数 r+1 に対し、
+`oneDirectionReducedRealization r X := cofiber (oneDirectionFatBoundary (r+1) X).ι` を定義した。
+その入力についての関手と元の実現からの自然な商写像も構成済み。
+S₁ 比較の境界への制限と cofiber の普遍性から、
+`oneDirectionReducedComparison : oneDirectionReducedRealization r X → boundaryReducedRealization r X` を得て、
+厳密な点つき自然変換にまとめた。
+
+ここで source は未点化実現 A_(r+1)(X) の残りの全零境界を一点へ潰した商。
+今回の商写像・降下した比較の局所化可逆性や π_* 同型はまだ証明していない。
+そのために源の境界の弱可縮性と元の S₁ 比較の局所化可逆性を接続する工程が残る。
+前節の同時商と円の smash の同一視・構造写像への接続も未完了。
+Core・Stable・F1・HA・Spectra の所有ファイルや公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u`、
+`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下で記す。`StableModel` の構造以外の追加前提はない。
+
+**OneDirectionBoundaryNaturality.lean**
+
+```lean
+def oneDirectionZeroRealizationFunctor (r : ℕ) (j : Fin r) : StableModel.{u} ⥤ SSet.{u}
+
+lemma diagonalZeroInclusion_naturality {r : ℕ} (s : Finset (Fin r))
+    {M N : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}} (f : M ⟶ N) :
+    simplicialDiagonalFunctor.map (Functor.whiskerLeft (multiIndexDiagonal r)
+      (Functor.whiskerRight (zeroDirectionsIndexNat s) M)) ≫
+        simplicialDiagonalFunctor.map (Functor.whiskerLeft (multiIndexDiagonal r) f) =
+      simplicialDiagonalFunctor.map (Functor.whiskerLeft (multiIndexDiagonal r)
+        (Functor.whiskerLeft (zeroDirectionsIndex s) f)) ≫
+          simplicialDiagonalFunctor.map (Functor.whiskerLeft (multiIndexDiagonal r)
+            (Functor.whiskerRight (zeroDirectionsIndexNat s) N))
+
+def oneDirectionZeroInclusionNat (r : ℕ) (j : Fin r) :
+    oneDirectionZeroRealizationFunctor.{u} r j ⟶ oneDirectionRealizationFunctor r
+
+lemma oneDirectionZeroInclusionNat_app (r : ℕ) (j : Fin r) (X : StableModel.{u}) :
+    (oneDirectionZeroInclusionNat r j).app X = oneDirectionZeroInclusion r j X
+
+lemma oneDirectionZeroRange_image_le (r : ℕ) (j : Fin r) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    (oneDirectionZeroRange r j X).image ((oneDirectionRealizationFunctor r).map f) ≤
+      oneDirectionZeroRange r j Y
+
+lemma oneDirectionFatBoundary_image_le (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    (oneDirectionFatBoundary r X).image ((oneDirectionRealizationFunctor r).map f) ≤
+      oneDirectionFatBoundary r Y
+
+lemma oneDirectionComparison_zeroRange_image_le (r : ℕ) (j : Fin r) (X : StableModel.{u}) :
+    (oneDirectionZeroRange r j X).image (oneDirectionRealizationComparison r X) ≤
+      zeroDirectionsRange {j} X
+
+lemma oneDirectionComparison_fatBoundary_image_le (r : ℕ) (X : StableModel.{u}) :
+    (oneDirectionFatBoundary r X).image (oneDirectionRealizationComparison r X) ≤
+      zeroDirectionsFatBoundary r X
+```
+
+**OneDirectionReduction.lean**
+
+```lean
+def oneDirectionBoundaryMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    (oneDirectionFatBoundary r X : SSet.{u}) ⟶ (oneDirectionFatBoundary r Y : SSet.{u})
+
+lemma oneDirectionBoundaryMap_ι (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    oneDirectionBoundaryMap r f ≫ (oneDirectionFatBoundary r Y).ι =
+      (oneDirectionFatBoundary r X).ι ≫ (oneDirectionRealizationFunctor r).map f
+
+def oneDirectionReducedRealization (r : ℕ) (X : StableModel.{u}) : PointedSimplicialSet.{u}
+
+def oneDirectionReductionQuotient (r : ℕ) (X : StableModel.{u}) :
+    (oneDirectionRealizationFunctor (r + 1)).obj X ⟶ (oneDirectionReducedRealization r X).right
+
+def oneDirectionReducedRealizationMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    oneDirectionReducedRealization r X ⟶ oneDirectionReducedRealization r Y
+
+lemma oneDirectionReducedRealizationMap_quotient (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    oneDirectionReductionQuotient r X ≫ (oneDirectionReducedRealizationMap r f).right =
+      (oneDirectionRealizationFunctor (r + 1)).map f ≫ oneDirectionReductionQuotient r Y
+
+def oneDirectionReducedRealizationFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+def oneDirectionReductionNat (r : ℕ) : oneDirectionRealizationFunctor (r + 1) ⟶
+    oneDirectionReducedRealizationFunctor r ⋙ PointedSimplicialSet.forget
+```
+
+**OneDirectionReducedComparison.lean**
+
+```lean
+def oneDirectionComparisonBoundaryMap (r : ℕ) (X : StableModel.{u}) :
+    (oneDirectionFatBoundary (r + 1) X : SSet.{u}) ⟶
+      (zeroDirectionsFatBoundary (r + 1) X : SSet.{u})
+
+lemma oneDirectionComparisonBoundaryMap_ι (r : ℕ) (X : StableModel.{u}) :
+    oneDirectionComparisonBoundaryMap r X ≫ (zeroDirectionsFatBoundary (r + 1) X).ι =
+      (oneDirectionFatBoundary (r + 1) X).ι ≫ oneDirectionRealizationComparison (r + 1) X
+
+def oneDirectionReducedComparison (r : ℕ) (X : StableModel.{u}) :
+    oneDirectionReducedRealization r X ⟶ boundaryReducedRealization r X
+
+lemma oneDirectionReducedComparison_quotient (r : ℕ) (X : StableModel.{u}) :
+    oneDirectionReductionQuotient r X ≫ (oneDirectionReducedComparison r X).right =
+      oneDirectionRealizationComparison (r + 1) X ≫ boundaryReductionQuotient r X
+
+lemma oneDirectionReducedComparison_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    (oneDirectionReducedRealizationFunctor r).map f ≫ oneDirectionReducedComparison r Y =
+      oneDirectionReducedComparison r X ≫ (boundaryReducedRealizationFunctor r).map f
+
+def oneDirectionReducedComparisonNat (r : ℕ) :
+    oneDirectionReducedRealizationFunctor r ⟶ boundaryReducedRealizationFunctor r
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。一次方向の残りの零境界の商の関手と、S₁ 比較の商への自然な降下は証明済み。
+この比較の局所化可逆性・π_* 同型、同時商と円の smash の同一視、反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2965 jobs）、公理監査成功（906 宣言、標準三公理のみ）。追加公理・sorry なし。

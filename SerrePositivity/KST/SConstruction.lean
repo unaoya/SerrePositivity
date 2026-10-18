@@ -58,4 +58,6 @@ public import SerrePositivity.KST.SConstruction.MultiIntervalNaturality
 
 public import SerrePositivity.KST.SConstruction.CombinedBoundaryAssembly
 
+public import SerrePositivity.KST.SConstruction.OneDirectionReducedComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
