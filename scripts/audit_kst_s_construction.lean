@@ -3338,3 +3338,11 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_obj_zero
 #check @SerrePositivity.KST.SConstruction.innerVariableIndex_zero_map
 #print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_zero_map
+
+-- 最内側の零方向の包含の自然変換の比較
+#check @SerrePositivity.KST.SConstruction.innerZeroDirectionComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.innerZeroDirectionComparisonIso
+#check @SerrePositivity.KST.SConstruction.innerDiagonalComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.innerDiagonalComparisonIso
+#check @SerrePositivity.KST.SConstruction.innerZeroDirectionComparisonIso_inclusion
+#print axioms SerrePositivity.KST.SConstruction.innerZeroDirectionComparisonIso_inclusion

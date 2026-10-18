@@ -4882,3 +4882,46 @@ homotopy fiber と loop の比較、既存の suspension 構造射との照合�
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3087 jobs）、公理監査成功（1234 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.41 最内側の零方向の包含の自然変換の比較
+
+`InnerZeroDirectionComparison.lean`。
+§6.40 の可変の内側の次数の同型に添字の等号を合成し、
+最内側の S_0 を最後の零方向の自己関手へ移す同型と、対角次数の同型を作った。
+両者の下で、最内側の零次数からの作用が既存の最後の零方向の包含そのものに移ることを、
+安定な入力の自己関手の自然変換の厳密等号として証明した。
+
+前提：`r n : ℕ` のみ。以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory`、`open scoped Simplicial` の下での正確な公開型。
+
+```lean
+def innerZeroDirectionComparisonIso (r n : ℕ) :
+    sEndofunctor.{u} 0 ⋙ (multiSEndofunctor r).obj (fun _ => Opposite.op ⦋n⦌) ≅
+      (multiSEndofunctor (r + 1)).obj
+        ((zeroDirectionsIndex {Fin.last r}).obj (fun _ => Opposite.op ⦋n⦌))
+
+def innerDiagonalComparisonIso (r n : ℕ) :
+    sEndofunctor.{u} n ⋙ (multiSEndofunctor r).obj (fun _ => Opposite.op ⦋n⦌) ≅
+      (multiSEndofunctor (r + 1)).obj (fun _ => Opposite.op ⦋n⦌)
+
+lemma innerZeroDirectionComparisonIso_inclusion (r n : ℕ) :
+    Functor.whiskerRight
+        (simplicialStableEndofunctor.{u}.map (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).op)
+        ((multiSEndofunctor r).obj (fun _ => Opposite.op ⦋n⦌)) ≫
+      (innerDiagonalComparisonIso r n).hom =
+        (innerZeroDirectionComparisonIso r n).hom ≫
+          (multiSEndofunctor (r + 1)).map
+            ((zeroDirectionsIndexNat {Fin.last r}).app (fun _ => Opposite.op ⦋n⦌))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+零方向の包含の比較は自己関手の自然変換まで証明済み。
+既存の `diagonalSInnerComparisonNatIso` の成分と今回の `innerDiagonalComparisonIso` の一致、
+実現への移行、全零境界商への点つき比較は未完了。
+特に、関手の等号による同型の型の輸送を成分評価の下で処理する補題が必要。
+homotopy fiber と loop の比較、既存の suspension 構造射との照合、正の段の Ω 条件・delooping、
+負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3088 jobs）、公理監査成功（1237 宣言、標準三公理のみ）。追加公理・sorry なし。
