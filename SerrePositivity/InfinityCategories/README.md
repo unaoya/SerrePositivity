@@ -2067,6 +2067,8 @@ Hom が fibration の塔では、実際の coherent nerve の錐が ∞ 極限�
 構成済み。底の固定点は元の d の標準の切断の点そのもので、共通模型で厳密に照合している。
 さらに三形状では、反転豊穣比較 q′ の ULift 後の導来 fiber までの同値を公開済み。
 標準切断点は end の比較同値の逆で回収し、その像とのずれは底の path で移送する。
+導来 fiber と ULift の厳密な交換同型により、三形状の比較は元の宇宙の q′ の fiber 全体を
+持ち上げた模型まで移送済み。残る係数の反転の直接比較は区別して扱う。
 
 γ3c の指定三形状は 𝒮・Sp の双方で実際の対象と ∞ 極限錐を公開済み。
 𝒮 は小さな積、一脚 Kan fibration の引き戻し、Kan fibration の可算塔の極限。
@@ -8671,3 +8673,237 @@ def strictConePinched_reflectedEnd_tower_equivalence
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-reflected-end-derived-aggregate.log`、
 `/tmp/gamma3-reflected-end-derived-audit.log`。
+
+### γ3b：導来 fiber と ULift の厳密な交換、および元の宇宙の反転比較への移送
+
+
+`uliftComparisonFiberIso p b` を構成した。型は
+
+```lean
+(SSet.uliftFunctor.{v, u}).obj (comparisonFiber p b) ≅
+  comparisonFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b)
+```
+
+であり、`p : E ⟶ B`、`b : B _⦋0⦌` と B の Kan 性だけを前提に取る。
+E の Kan 性、p の fibration 性、fiber の非空性・可縮性は要求しない。
+ホモトピー型の存在だけでなく、既存の path 置換で定義した実際の導来 fiber の厳密な同型。
+
+まず `uliftInternalHomComparison` を評価の ULift から curry して定義し、ULift の完全忠実性
+でパラメータごとの逆を作る。各標準単体の全単射が実際の比較の成分であることを確認して
+`uliftInternalHomIso` を得た。標準区間の宇宙の同型で始域を移した `uliftIntervalHomIso` は、
+両端評価と標的への後合成に厳密に可換。Kan 複体の path は全て可逆であることを使い、
+`uliftEquivalencePathIso` と、その包含・両端評価・後合成の可換式を得た。
+
+ULift の引き戻し保存を型の極限保存と単体対象の後合成から証明した。
+これと可逆 path の始点評価の可換式により `uliftPathReplacementIso p` を作った。
+その同型は元の源への射影と終点評価を厳密に保持する。
+最後に頂点 fiber と ULift の交換同型を合成して、元の p と b の導来 fiber を復元した。
+
+三形状への適用は `strictConePinched_smallReflectedEnd_discrete_equivalence`、
+`strictConePinched_smallReflectedEnd_cospan_equivalence`、
+`strictConePinched_smallReflectedEnd_tower_equivalence`。
+x = `coherentNerveObject d.vertex` とすると、pinched Hom と
+
+```lean
+(SSet.uliftFunctor.{v, u}).obj
+  (comparisonFiber (reflectedRepresentableComparison c x)
+    (strictConeSmallReflectedEndPoint d hκ))
+```
+
+の圏同値である。hκ は各形状の既存の end・切断比較の同値性の証明で、三定理の利用者に
+追加の比較仮定は要求しない。局所 Kan 性のみを要求し、c の厳密極限性、Hom の fibration 性、
+離散図式の有限性は不要。元の宇宙の点は既存の回収した点の ULift.down で定義する。
+一般の添字圏で使う補助定理は `strictConePinched_smallReflectedEndDerivedFiberEquivalence` で、
+この一般形には hκ を明示する。
+
+ULift は比較射の内部から fiber 全体の外へ移した。pinched Hom の宇宙が max u v なので、
+比較対象の宇宙を揃える ULift 自体は fiber 全体に残す。
+係数の反転 q′ と元の非反転 q_x の fiber の直接比較、一般形状の end の直接比較、
+余極限側、E2a 完了後の E2b 適用は未完了。γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 4.5.3.24・7.4.1.6・7.5.4.6。
+
+公開30宣言の正確な型と前提（namespace `HomotopyLimits`）：
+
+```lean
+universe u v
+variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
+  [SimplicialCategory C]
+
+def uliftInternalHomComparison (K B : SSet.{u}) :
+    (SSet.uliftFunctor.{v, u}).obj ((ihom K).obj B) ⟶
+      (ihom ((SSet.uliftFunctor.{v, u}).obj K)).obj ((SSet.uliftFunctor.{v, u}).obj B)
+
+lemma uliftInternalHomComparison_map_uncurry {K B A : SSet.{u}}
+    (f : A ⟶ (ihom K).obj B) :
+    uncurry ((SSet.uliftFunctor.{v, u}).map f ≫ uliftInternalHomComparison K B) =
+      (uliftTensorIso K A).inv ≫ (SSet.uliftFunctor.{v, u}).map (uncurry f)
+
+def uliftInternalHomHomEquiv (K B A : SSet.{u}) :
+    (A ⟶ (ihom K).obj B) ≃
+      ((SSet.uliftFunctor.{v, u}).obj A ⟶
+        (ihom ((SSet.uliftFunctor.{v, u}).obj K)).obj ((SSet.uliftFunctor.{v, u}).obj B))
+
+def uliftInternalHomSimplexEquiv (K B : SSet.{u}) (n : ℕ) :
+    ((SSet.uliftFunctor.{v, u}).obj ((ihom K).obj B)) _⦋n⦌ ≃
+      ((ihom ((SSet.uliftFunctor.{v, u}).obj K)).obj
+        ((SSet.uliftFunctor.{v, u}).obj B)) _⦋n⦌
+
+lemma uliftInternalHomSimplexEquiv_apply (K B : SSet.{u}) {n : ℕ}
+    (s : ((SSet.uliftFunctor.{v, u}).obj ((ihom K).obj B)) _⦋n⦌) :
+    uliftInternalHomSimplexEquiv K B n s =
+      (uliftInternalHomComparison K B).app (Opposite.op ⦋n⦌) s
+
+instance uliftInternalHomComparison_isIso (K B : SSet.{u}) :
+    IsIso (uliftInternalHomComparison.{u, v} K B)
+
+def uliftInternalHomIso (K B : SSet.{u}) :
+    (SSet.uliftFunctor.{v, u}).obj ((ihom K).obj B) ≅
+      (ihom ((SSet.uliftFunctor.{v, u}).obj K)).obj ((SSet.uliftFunctor.{v, u}).obj B)
+
+lemma uliftInternalHomComparison_evaluate (K B : SSet.{u}) (k : K _⦋0⦌) :
+    uliftInternalHomComparison.{u, v} K B ≫ evaluateFunctorAt (Y :=
+        (SSet.uliftFunctor.{v, u}).obj B) (ULift.up k) =
+      (SSet.uliftFunctor.{v, u}).map (evaluateFunctorAt (Y := B) k)
+
+def uliftIntervalHomIso (B : SSet.{u}) :
+    (SSet.uliftFunctor.{v, u}).obj ((ihom (Δ[1] : SSet.{u})).obj B) ≅
+      (ihom (Δ[1] : SSet.{max u v})).obj ((SSet.uliftFunctor.{v, u}).obj B)
+
+lemma uliftIntervalHomIso_hom_evaluate (B : SSet.{u}) (j : Fin 2) :
+    (uliftIntervalHomIso.{u, v} B).hom ≫
+        evaluateFunctorAt (Y := (SSet.uliftFunctor.{v, u}).obj B) (stdSimplex.obj₀Equiv.symm j) =
+      (SSet.uliftFunctor.{v, u}).map
+        (evaluateFunctorAt (Y := B) (stdSimplex.obj₀Equiv.symm j))
+
+lemma uliftIntervalHomIso_hom_naturality {E B : SSet.{u}} (p : E ⟶ B) :
+    (uliftIntervalHomIso.{u, v} E).hom ≫
+        (ihom (Δ[1] : SSet.{max u v})).map ((SSet.uliftFunctor.{v, u}).map p) =
+      (SSet.uliftFunctor.{v, u}).map ((ihom (Δ[1] : SSet.{u})).map p) ≫
+        (uliftIntervalHomIso.{u, v} B).hom
+
+def uliftEquivalencePathIso (B : SSet.{u}) [KanComplex B] :
+    (SSet.uliftFunctor.{v, u}).obj (equivalencePath B) ≅
+      equivalencePath ((SSet.uliftFunctor.{v, u}).obj B)
+
+lemma uliftEquivalencePathIso_hom_ι (B : SSet.{u}) [KanComplex B] :
+    (uliftEquivalencePathIso.{u, v} B).hom ≫
+        equivalencePathι ((SSet.uliftFunctor.{v, u}).obj B) =
+      (SSet.uliftFunctor.{v, u}).map (equivalencePathι B) ≫
+        (uliftIntervalHomIso.{u, v} B).hom
+
+lemma uliftEquivalencePathIso_hom_endpoint (B : SSet.{u}) [KanComplex B] (j : Fin 2) :
+    (uliftEquivalencePathIso.{u, v} B).hom ≫
+        equivalencePathEndpoint ((SSet.uliftFunctor.{v, u}).obj B) j =
+      (SSet.uliftFunctor.{v, u}).map (equivalencePathEndpoint B j)
+
+lemma uliftEquivalencePathIso_hom_naturality {E B : SSet.{u}} [KanComplex E] [KanComplex B]
+    (p : E ⟶ B) :
+    (uliftEquivalencePathIso.{u, v} E).hom ≫
+        equivalencePathMap ((SSet.uliftFunctor.{v, u}).map p) =
+      (SSet.uliftFunctor.{v, u}).map (equivalencePathMap p) ≫
+        (uliftEquivalencePathIso.{u, v} B).hom
+
+instance uliftSSetFunctor_preservesPullback {A B C : SSet.{u}} (f : A ⟶ B) (g : C ⟶ B) :
+    PreservesLimit (cospan f g) (SSet.uliftFunctor.{v, u})
+
+def uliftPullbackIso {A B C : SSet.{u}} (f : A ⟶ B) (g : C ⟶ B) :
+    (SSet.uliftFunctor.{v, u}).obj (pullback f g) ≅
+      pullback ((SSet.uliftFunctor.{v, u}).map f) ((SSet.uliftFunctor.{v, u}).map g)
+
+lemma uliftPullbackIso_hom_fst {A B C : SSet.{u}} (f : A ⟶ B) (g : C ⟶ B) :
+    (uliftPullbackIso.{u, v} f g).hom ≫ pullback.fst _ _ =
+      (SSet.uliftFunctor.{v, u}).map (pullback.fst f g)
+
+lemma uliftPullbackIso_hom_snd {A B C : SSet.{u}} (f : A ⟶ B) (g : C ⟶ B) :
+    (uliftPullbackIso.{u, v} f g).hom ≫ pullback.snd _ _ =
+      (SSet.uliftFunctor.{v, u}).map (pullback.snd f g)
+
+lemma uliftPathReplacement_isPullback {E B : SSet.{u}} [KanComplex B] (p : E ⟶ B) :
+    IsPullback
+      ((SSet.uliftFunctor.{v, u}).map (pullback.fst (equivalencePathEndpoint B 0) p) ≫
+        (uliftEquivalencePathIso.{u, v} B).hom)
+      ((SSet.uliftFunctor.{v, u}).map (equivalencePathReplacementProjection p))
+      (equivalencePathEndpoint ((SSet.uliftFunctor.{v, u}).obj B) 0)
+      ((SSet.uliftFunctor.{v, u}).map p)
+
+def uliftPathReplacementIso {E B : SSet.{u}} [KanComplex B] (p : E ⟶ B) :
+    (SSet.uliftFunctor.{v, u}).obj (equivalencePathReplacement p) ≅
+      equivalencePathReplacement ((SSet.uliftFunctor.{v, u}).map p)
+
+lemma uliftPathReplacementIso_hom_path {E B : SSet.{u}} [KanComplex B] (p : E ⟶ B) :
+    (uliftPathReplacementIso.{u, v} p).hom ≫ pullback.fst
+        (equivalencePathEndpoint ((SSet.uliftFunctor.{v, u}).obj B) 0)
+        ((SSet.uliftFunctor.{v, u}).map p) =
+      (SSet.uliftFunctor.{v, u}).map (pullback.fst (equivalencePathEndpoint B 0) p) ≫
+        (uliftEquivalencePathIso.{u, v} B).hom
+
+lemma uliftPathReplacementIso_hom_source {E B : SSet.{u}} [KanComplex B] (p : E ⟶ B) :
+    (uliftPathReplacementIso.{u, v} p).hom ≫
+        equivalencePathReplacementProjection ((SSet.uliftFunctor.{v, u}).map p) =
+      (SSet.uliftFunctor.{v, u}).map (equivalencePathReplacementProjection p)
+
+lemma uliftPathReplacementIso_hom_target {E B : SSet.{u}} [KanComplex B] (p : E ⟶ B) :
+    (uliftPathReplacementIso.{u, v} p).hom ≫
+        equivalencePathReplacementMap ((SSet.uliftFunctor.{v, u}).map p) =
+      (SSet.uliftFunctor.{v, u}).map (equivalencePathReplacementMap p)
+
+def uliftComparisonFiberIso {E B : SSet.{u}} [KanComplex B] (p : E ⟶ B) (b : B _⦋0⦌) :
+    (SSet.uliftFunctor.{v, u}).obj (comparisonFiber p b) ≅
+      comparisonFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b)
+
+def strictConeSmallReflectedEndPoint {F : I ⥤ C} (d : JoinCone (strictCoherentDiagram F))
+    (hκ : IsSimplicialHomotopyEquivalence
+      (reflectedHomHolimConeComparison F (coherentNerveObject d.vertex))) :
+    (bousfieldKanHolim
+      (simplicialHomDiagram F (coherentNerveObject d.vertex) ⋙ SSet.opFunctor)) _⦋0⦌
+
+def strictConePinched_smallReflectedEndDerivedFiberEquivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : I ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F))
+    (hκ : IsSimplicialHomotopyEquivalence
+      (reflectedHomHolimConeComparison F (coherentNerveObject d.vertex))) :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (reflectedRepresentableComparison c (coherentNerveObject d.vertex))
+          (strictConeSmallReflectedEndPoint d hκ)))
+
+def strictConePinched_smallReflectedEnd_discrete_equivalence {J : Type u}
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : (Discrete J) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (reflectedRepresentableComparison c (coherentNerveObject d.vertex))
+          (strictConeSmallReflectedEndPoint d
+            (reflectedHomHolimConeComparison_discrete_homotopyEquivalence F
+              (coherentNerveObject d.vertex)))))
+
+def strictConePinched_smallReflectedEnd_cospan_equivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : (AsSmall.{u} WalkingCospan) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (reflectedRepresentableComparison c (coherentNerveObject d.vertex))
+          (strictConeSmallReflectedEndPoint d
+            (reflectedHomHolimConeComparison_cospan_homotopyEquivalence F
+              (coherentNerveObject d.vertex)))))
+
+def strictConePinched_smallReflectedEnd_tower_equivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : (AsSmall.{u} ℕᵒᵖ) ⥤ C} (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (reflectedRepresentableComparison c (coherentNerveObject d.vertex))
+          (strictConeSmallReflectedEndPoint d
+            (reflectedHomHolimConeComparison_tower_homotopyEquivalence F
+              (coherentNerveObject d.vertex)))))
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4694 jobs）、公開1460宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規6ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-ulift-comparison-fiber-aggregate.log`、
+`/tmp/gamma3-ulift-comparison-fiber-audit.log`。

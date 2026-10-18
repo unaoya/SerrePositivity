@@ -1947,3 +1947,61 @@ g⁻¹≫g から恒等射へのホモトピーを b で評価した辺による
 型一覧の記録の修正：直近三節の46宣言を括弧の深さを考慮して再抽出し、名前付き引数
 `(X := ...)` で途中終了していた8宣言の型の末尾を README に復元した。
 Lean ソースと監査は変更なし。4688 jobs・1430宣言の検証結果を保持し、文書の diff 検査も成功。
+
+### γ3b：導来 fiber と ULift の厳密な交換、および元の宇宙の反転比較への移送
+
+
+`uliftComparisonFiberIso p b` を構成した。型は
+
+```lean
+(SSet.uliftFunctor.{v, u}).obj (comparisonFiber p b) ≅
+  comparisonFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b)
+```
+
+であり、`p : E ⟶ B`、`b : B _⦋0⦌` と B の Kan 性だけを前提に取る。
+E の Kan 性、p の fibration 性、fiber の非空性・可縮性は要求しない。
+ホモトピー型の存在だけでなく、既存の path 置換で定義した実際の導来 fiber の厳密な同型。
+
+まず `uliftInternalHomComparison` を評価の ULift から curry して定義し、ULift の完全忠実性
+でパラメータごとの逆を作る。各標準単体の全単射が実際の比較の成分であることを確認して
+`uliftInternalHomIso` を得た。標準区間の宇宙の同型で始域を移した `uliftIntervalHomIso` は、
+両端評価と標的への後合成に厳密に可換。Kan 複体の path は全て可逆であることを使い、
+`uliftEquivalencePathIso` と、その包含・両端評価・後合成の可換式を得た。
+
+ULift の引き戻し保存を型の極限保存と単体対象の後合成から証明した。
+これと可逆 path の始点評価の可換式により `uliftPathReplacementIso p` を作った。
+その同型は元の源への射影と終点評価を厳密に保持する。
+最後に頂点 fiber と ULift の交換同型を合成して、元の p と b の導来 fiber を復元した。
+
+三形状への適用は `strictConePinched_smallReflectedEnd_discrete_equivalence`、
+`strictConePinched_smallReflectedEnd_cospan_equivalence`、
+`strictConePinched_smallReflectedEnd_tower_equivalence`。
+x = `coherentNerveObject d.vertex` とすると、pinched Hom と
+
+```lean
+(SSet.uliftFunctor.{v, u}).obj
+  (comparisonFiber (reflectedRepresentableComparison c x)
+    (strictConeSmallReflectedEndPoint d hκ))
+```
+
+の圏同値である。hκ は各形状の既存の end・切断比較の同値性の証明で、三定理の利用者に
+追加の比較仮定は要求しない。局所 Kan 性のみを要求し、c の厳密極限性、Hom の fibration 性、
+離散図式の有限性は不要。元の宇宙の点は既存の回収した点の ULift.down で定義する。
+一般の添字圏で使う補助定理は `strictConePinched_smallReflectedEndDerivedFiberEquivalence` で、
+この一般形には hκ を明示する。
+
+ULift は比較射の内部から fiber 全体の外へ移した。pinched Hom の宇宙が max u v なので、
+比較対象の宇宙を揃える ULift 自体は fiber 全体に残す。
+係数の反転 q′ と元の非反転 q_x の fiber の直接比較、一般形状の end の直接比較、
+余極限側、E2a 完了後の E2b 適用は未完了。γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 4.5.3.24・7.4.1.6・7.5.4.6。
+
+新規6ファイル・30宣言を集約と専用監査へ追加。README の γ3 冒頭の現在地も更新した。
+全公開宣言の正確な型と前提は README の同名節と専用監査の `#check @` に記録。
+型一覧は括弧の深さを考慮して抽出し、名前付き引数を含む全30署名をソースから復元した。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4694 jobs）、公開1460宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規6ファイルに警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-ulift-comparison-fiber-aggregate.log`、
+`/tmp/gamma3-ulift-comparison-fiber-audit.log`。
