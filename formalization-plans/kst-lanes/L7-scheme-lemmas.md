@@ -11,13 +11,14 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 91 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 105 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
 - チャート上で a が非零因子であることを基礎環の仮定なしで証明済み。
 - チャートの a による分母消去・係数の等式判定・a を可逆化した環と R[1/a] の同型を証明済み。
 - 一般の Proj 構造射で、零次成分の素イデアルの所属と基本開集合の逆像を計算済み。
+- アフィン blowup が中心の補開集合全体で同型となることを証明し、構造射と両立するスキーム同型を構成済み。
 - 次は環論的局所計算と実際のイデアル層の制限を同定する。
 - Mathlib に Cartier 因子の API はなく、通常の局所正則生成条件を別途定義する必要がある。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
@@ -326,6 +327,12 @@ f の有限型性は固有性から導く。
 | `proj_basicOpenToSpec_mk_mem` | ProjBase | 検証済み | 斉次分数の素イデアルへの所属 |
 | `proj_toSpecZero_mem` | ProjBase | 検証済み | 構造射での素イデアルの交わり |
 | `proj_toSpecZero_preimage_basicOpen` | ProjBase | 検証済み | 零次基本開集合の逆像 |
+| `affineBlowupπ_preimage_basicOpen` | BlowupAway | 検証済み | 基礎環の基本開集合の逆像 |
+| `affineBlowupπ_preimage_basicOpen_le_chart` | BlowupAway | 検証済み | 逆像が一つの標準チャートに入る |
+| `affineBlowupπ_restrict_basicOpen_isIso` | BlowupAway | 検証済み | D(a) 上の構造射の同型性 |
+| `affineCenterComplement` / `mem_affineCenterComplement` | BlowupAway | 検証済み | D(I) = Spec R ∖ V(I) |
+| `affineBlowupπ_restrict_complement_isIso` | BlowupAway | 検証済み | 中心の補集合上の同型性 |
+| `affineBlowupAwayIso` / `affineBlowupAwayIso_hom_ι` | BlowupAway | 検証済み | 実際の基底上のスキーム同型 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
@@ -430,7 +437,7 @@ Lemma 5.6 の証明で blowup の指数 m を追加し、各固定 m に Lemma 5
 
 - 例外閉部分スキームのイデアル層とチャートの拡大イデアルを同定する。
 - Cartier 条件を実際のイデアル層上の局所正則生成性として定義し証明する。
-- 中心の補開集合上の同型を構成する。
+- 中心の補開集合上の同型はアフィン基底で構成済み。一般スキームへの貼り合わせとの両立を証明する。
 - 正の冪に関する Veronese 比較と基底上の同型を構成する。
 - 局所化との可換性と一般スキームへの貼り合わせを証明する。
 - L7a 完了時には対象ビルド・公理監査と全体ビルドを行う。
