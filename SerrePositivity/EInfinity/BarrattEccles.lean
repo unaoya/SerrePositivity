@@ -67,3 +67,8 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNegativeComponent
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCochainDifferential
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCochainLeibniz
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleChainMap
+public import SerrePositivity.EInfinity.BarrattEccles.NormalizedNaturality
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleEquivariance
+public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionExt
+public import SerrePositivity.EInfinity.BarrattEccles.NormalizedRightAction
+public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionEquivariance
