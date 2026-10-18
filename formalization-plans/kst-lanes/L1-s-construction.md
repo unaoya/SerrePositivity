@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2040 jobs、累計218宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2044 jobs、累計239宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -269,8 +269,43 @@ Ar[n] 全体への適用をつなぐ自然な cofiber 抽出を実装した。
 枠の cofiber 族とその厳密な回収に `IsStable C` は必要なく、`Quasicategory C` だけを使う。
 恒等脚の条件を除去したり、h C の通常の押し出しで代用したりしていない。
 
-**未完了**：この枠上の族と指定境界の族を合わせた相対 cofiber 補完、
-出力図式の第一行が指定入力と厳密に一致する等号、零次元で作る図式の gapped 条件、
-三つ組の cofiber 条件から全四つ組の押し出しへの貼り合わせ。
+枠の cofiber 族をパラメーターに自然な射にし、指定境界と枠を同時に保つ補完を構成した。
+その結果、第一行制限の **正次元の全境界に対する RLP** が厳密な両側の等号を伴って証明済み。
+以下で `ιFrame := (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι`、
+`ιCof := (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι` と書く。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `frameCofiberFamilyOperator` | `(n : ℕ) → (C : SSet.{u}) → ((ihom (frameNerve n)).obj C ⟶ (ihom (frameNerve n)).obj ((ihom Square).obj C))` |
+| `frameCofiberFamilyOperator_vertex` | `(F : frameNerve n ⟶ C) → (frameCofiberFamilyOperator n C).app (Opposite.op ⦋0⦌) (functorVertex F) = functorVertex (frameCofiberFamily F)` |
+| `IsZeroFrameVertex.frameCofiberFamily_vertex` | `[Quasicategory C] → {F : frameNerve n ⟶ C} → IsZeroFrameVertex (functorVertex F) → (a : (frameNerve n) _⦋0⦌) → IsCofiberDiagramVertex ((frameCofiberFamily F).app (Opposite.op ⦋0⦌) a)` |
+| `zeroFrameCofiberFamiliesMap` | `(n : ℕ) → (C : SSet.{u}) → [Quasicategory C] → (zeroFrameDiagrams n C ⟶ (ihom (frameNerve n)).obj (cofiberDiagrams C))` |
+| `zeroFrameCofiberFamiliesMap_ι` | `[Quasicategory C] → zeroFrameCofiberFamiliesMap n C ≫ (ihom (frameNerve n)).map ιCof = ιFrame ≫ frameCofiberFamilyOperator n C` |
+| `frameCofiberFamilyOperator_apex` | `frameCofiberFamilyOperator n C ≫ (ihom (frameNerve n)).map (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = 𝟙 _` |
+| `zeroFrameCofiberFamiliesMap_apex` | `[Quasicategory C] → zeroFrameCofiberFamiliesMap n C ≫ (ihom (frameNerve n)).map (cofiberApex C) = ιFrame` |
+| `ihomCurry_pre_whiskerLeft` | `(f : A ⟶ B) → (K X : SSet.{u}) → (pre (K ◁ f)).app X ≫ (ihomCurryIso K A X).hom = (ihomCurryIso K B X).hom ≫ (pre f).app ((ihom K).obj X)` |
+| `arCofiberFamilyOperator_frame` | `arCofiberFamilyOperator n C ≫ (pre (frameInclusion n)).app ((ihom Square).obj C) = (pre (frameInclusion n)).app C ≫ frameCofiberFamilyOperator n C` |
+| `gappedCofiberFamiliesMap_frame` | `[Quasicategory C] → gappedCofiberFamiliesMap n C ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) = gappedFrameRestriction n C ≫ zeroFrameCofiberFamiliesMap n C` |
+| `frameCofiberSquareMap_bottom` | `(n : ℕ) → (frameNerve n ◁ squareBottomEdge) ≫ frameCofiberSquareMap n = (frameInclusion n ▷ (Δ[1] : SSet.{u})) ≫ arCofiberInputMap n` |
+| `frameCofiberFamilyOperator_input` | `frameCofiberFamilyOperator n C ≫ (ihom (frameNerve n)).map ((pre squareBottomEdge).app C) = frameCofiberInputOperator n C ≫ (pre (frameInclusion n)).app ((ihom (Δ[1] : SSet.{u})).obj C)` |
+| `zeroFrameCofiberFamiliesMap_input` | `[Quasicategory C] → zeroFrameCofiberFamiliesMap n C ≫ (ihom (frameNerve n)).map (cofiberProjection C) = frameCofiberInputs n C ≫ (pre (frameInclusion n)).app ((ihom (Δ[1] : SSet.{u})).obj C)` |
+| `frameInclusion_mono` | `(n : ℕ) → Mono (frameInclusion.{u} n)` |
+| `exists_arCofiberCompletion_preserving_frame` | `[Quasicategory C] → [IsStable C] → (n : ℕ) → (i : A ⟶ B) → [Mono i] → (a : A ⟶ sConstruction n C) → (b : B ⟶ zeroFrameDiagrams n C) → (a ≫ gappedFrameRestriction n C = i ≫ b) → ∃ c : ArCofiberCompletion n i a b, c.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) = b ≫ zeroFrameCofiberFamiliesMap n C` |
+| `ArCofiberCompletion.diagram_frame` | `[Quasicategory C] → (c : ArCofiberCompletion n i a b) → (c.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) = b ≫ zeroFrameCofiberFamiliesMap n C) → c.diagram ≫ (pre (frameInclusion n)).app C = b ≫ ιFrame` |
+| `exists_firstRowCofiberData_preserving_frame` | `[Quasicategory C] → [IsStable C] → (n : ℕ) → (i : A ⟶ B) → [Mono i] → (a : A ⟶ sConstruction n C) → (d : B ⟶ (ihom (firstRowNerve n)).obj C) → (a ≫ firstRowRestriction n C = i ≫ d) → ∃ c : FirstRowCofiberData n i a d, c.cofibers.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) = c.frame ≫ zeroFrameCofiberFamiliesMap n C` |
+| `FirstRowCofiberData.toGapped_frame` | `[Quasicategory C] → (c : FirstRowCofiberData n i a d) → (hi : Function.Surjective (i.app (Opposite.op ⦋0⦌))) → (c.cofibers.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) = c.frame ≫ zeroFrameCofiberFamiliesMap n C) → c.toGapped hi ≫ gappedFrameRestriction n C = c.frame` |
+| `FirstRowCofiberData.toGapped_firstRow` | 同じ c・hi・枠保持の前提から `c.toGapped hi ≫ firstRowRestriction n C = d` |
+| `firstRowRestriction_hasLiftingProperty_of_vertexSurjective` | `[Quasicategory C] → [IsStable C] → (n : ℕ) → (i : A ⟶ B) → [Mono i] → Function.Surjective (i.app (Opposite.op ⦋0⦌)) → HasLiftingProperty i (firstRowRestriction n C)` |
+| `firstRowRestriction_hasLiftingProperty_boundary` | `(n r : ℕ) → (C : SSet.{u}) → [Quasicategory C] → [IsStable C] → HasLiftingProperty (boundary (r+1)).ι (firstRowRestriction n C)` |
+
+未証明の枠保持条件を構造体に追加したのではなく、相対内部 Hom の
+`trivialKanFibration_pullbackObjObjπ` から実際の補完を構成した。
+従来の第一行の等号を含まない充填補題より強く、任意の単射 i が全頂点を含む場合に
+指定した第一行と境界の両方を厳密に保つ。
+
+**未完了**：零次元で新しく作る図式の gapped 条件と、全四つ組の押し出しへの貼り合わせ。
+正次元の境界 RLP は証明済みだが、`boundary 0` の場合を含めていないため、
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
+α-S の `Stable/Pasting.lean` の押し出し貼り合わせ API が到着していることを確認した。
+これを読み取り専用で用い、cofiber 族から零次元の gapped 条件を証明する段階に進む。
 L1c–f は未着手。L1g は別途指示待ち。
