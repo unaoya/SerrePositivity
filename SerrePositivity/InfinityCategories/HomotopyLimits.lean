@@ -48,3 +48,6 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialNerveOldP
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialNerveTail
 public import SerrePositivity.InfinityCategories.HomotopyLimits.AugmentedNerve
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinChain
+public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinNaturality
+public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinRetraction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinIso

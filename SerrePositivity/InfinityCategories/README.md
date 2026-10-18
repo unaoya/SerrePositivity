@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開275宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開289宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2691,8 +2691,8 @@ initialNerveJoinSimplex {n : ℕ} (F : ComposableArrows (WithInitial C) n) :
 後半が非空なら `initialNerveTail`、空なら補った空単体を使い、元の圏の対象を選ばない。
 `initialNerveTail_obj`・`initialNerveTail_map` は復元した後半の対象と射を元の射列と同定し、
 `initialNerveJoinSimplex_cut` は構成したデータの切断を元の切断と同定する。
-これらは次数ごとの構成である。全データの単体的自然性、既存の join から nerve への
-比較射との逆関係、相対錐と WithInitial の標準境界の同型による同定は未完了。
+これらの次数ごとの構成の単体的自然性と逆関係は、後述の `InitialJoinIso.lean` で証明した。
+既存の始対象の錐の射との一致、相対錐と WithInitial の標準境界の同型による同定は未完了。
 一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の適用も継続中。
 
 `AugmentedNerve.lean` は補った空単体を含む nerve の評価を提供する。
@@ -2724,7 +2724,40 @@ initialNerveCut_initialJoinChain {n : ℕ}
 前半の頂点を新しい始対象、後半を元の射列の対象にし、始対象からの射の一意性と
 `augNerveMap_comp` から関手法則を証明する。`initialJoinObj_star`・`initialJoinObj_of` で
 端点の移送を明示する。切断が元に戻ることまで検証済みである。
-この段階では単体的自然性、後半の全射を含む両向きの逆関係、単体集合の同型は未完了。
+この次数ごとの構成から単体集合の同型への拡張は、以下の三ファイルで証明した。
+相対錐と標準境界の同定、一脚の場合の κ 全体、γ3b の主比較、𝒮・Sp の適用も継続中。
+
+`InitialJoinNaturality.lean` は任意の順序写像に対する後半の添字の可換性を証明し、
+対象の等式と射の HEq を介して射列の厳密な自然性を得る。
+
+```lean
+initialJoinChain_simplexMap {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (s : Join.Simplex (Δ[0] : SSet.{u}) (nerve C) n) :
+    initialJoinChain (Join.simplexMap Δ[0] (nerve C) α.toOrderHom s) =
+      (nerve (WithInitial C)).map α.op (initialJoinChain s)
+initialJoinNerveMap (C : Type u) [SmallCategory C] :
+    join (Δ[0] : SSet.{u}) (nerve C) ⟶ nerve (WithInitial C)
+```
+
+`InitialJoinRetraction.lean` は復元した後半の対象・射と元の射列の式を使う。
+空の後半も含め、分解して戻す向きの厳密な逆関係を証明した。
+`InitialJoinIso.lean` は比較後の射列から切断と後半の全対象・全射を読み戻して単射性を証明し、
+もう一方の逆関係と分解の自然性を導く。
+
+```lean
+initialJoinChain_initialNerveJoinSimplex {n : ℕ}
+    (F : ComposableArrows (WithInitial C) n) :
+    initialJoinChain (initialNerveJoinSimplex F) = F
+initialNerveJoinSimplex_initialJoinChain {n : ℕ}
+    (s : Join.Simplex (Δ[0] : SSet.{u}) (nerve C) n) :
+    initialNerveJoinSimplex (initialJoinChain s) = s
+initialJoinNerveIso (C : Type u) [SmallCategory C] :
+    join (Δ[0] : SSet.{u}) (nerve C) ≅ nerve (WithInitial C)
+```
+
+前提は小さい圏であることだけであり、C の非空性・Kan 性や関手の忠実性は要求しない。
+同型の順方向は `initialJoinNerveMap`、逆方向は `initialNerveJoinMap`。
+この同型と両端の包含・元の圏の関手との可換性、既存の始対象の錐の射との一致は未完了。
 相対錐と標準境界の同定、一脚の場合の κ 全体、γ3b の主比較、𝒮・Sp の適用も継続中。
 
 ### 𝒮 の空積（実装済み）

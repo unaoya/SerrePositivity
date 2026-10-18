@@ -555,3 +555,31 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms initialJoinChain_star_iff
 #check @initialNerveCut_initialJoinChain
 #print axioms initialNerveCut_initialJoinChain
+#check @initialJoinTailIndex_simplexMap
+#print axioms initialJoinTailIndex_simplexMap
+#check @initialJoinObj_simplexMap
+#print axioms initialJoinObj_simplexMap
+#check @initialJoinMap_simplexMap
+#print axioms initialJoinMap_simplexMap
+#check @initialJoinChain_simplexMap
+#print axioms initialJoinChain_simplexMap
+#check @initialJoinNerveMap
+#print axioms initialJoinNerveMap
+#check @initialNerveJoinSimplex_right_heq
+#print axioms initialNerveJoinSimplex_right_heq
+#check @initialJoinObj_initialNerveJoinSimplex
+#print axioms initialJoinObj_initialNerveJoinSimplex
+#check @initialJoinMap_initialNerveJoinSimplex
+#print axioms initialJoinMap_initialNerveJoinSimplex
+#check @initialJoinChain_initialNerveJoinSimplex
+#print axioms initialJoinChain_initialNerveJoinSimplex
+#check @initialJoinChain_injective
+#print axioms initialJoinChain_injective
+#check @initialNerveJoinSimplex_initialJoinChain
+#print axioms initialNerveJoinSimplex_initialJoinChain
+#check @initialNerveJoinSimplex_naturality
+#print axioms initialNerveJoinSimplex_naturality
+#check @initialNerveJoinMap
+#print axioms initialNerveJoinMap
+#check @initialJoinNerveIso
+#print axioms initialJoinNerveIso
