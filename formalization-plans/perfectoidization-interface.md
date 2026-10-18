@@ -601,3 +601,76 @@ structure BSLimitConeData (p : ℕ) [Fact p.Prime]
       (discreteAlgebraModule R).map (projection T)
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 ```
+
+### Π2-4
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u
+open CategoryTheory CategoryTheory.Limits MonoidalCategory
+open SerrePositivity.InfinityCategories SerrePositivity.DerivedCompletion
+open scoped Simplicial
+variable (R : Type u) [CommRing R]
+def ordinarySquare {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
+    (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d) :
+    (Δ[1] : SSet.{u + 1}) ⊗ Δ[1] ⟶ algebraNerve R
+
+theorem ordinarySquare_triangle_zero {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
+    (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d) :
+    squareTriangle 0 ≫ ordinarySquare R a b c d w =
+      SSet.yonedaEquiv.symm (ComposableArrows.mk₂ b d)
+
+theorem ordinarySquare_triangle_one {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
+    (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d) :
+    squareTriangle 1 ≫ ordinarySquare R a b c d w =
+      SSet.yonedaEquiv.symm (ComposableArrows.mk₂ a c)
+
+def quotientAlgebra (S : A_R R) (I : Ideal S.right) : A_R R
+
+def quotientProjection (S : A_R R) (I : Ideal S.right) : S ⟶ quotientAlgebra R S I
+
+def quotientComparison {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) :
+    quotientAlgebra R S I ⟶ quotientAlgebra R T (I.map f.right.hom)
+
+theorem quotientSquare_commutes {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) :
+    f ≫ quotientProjection R T (I.map f.right.hom) =
+      quotientProjection R S I ≫ quotientComparison R f I
+
+def perfdSquare (P : algebraNerve R ⟶ derivedInfinityCategory R)
+    {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) :
+    (Δ[1] : SSet.{u + 1}) ⊗ Δ[1] ⟶ derivedInfinityCategory R
+
+theorem perfdSquare_triangle_zero (P : algebraNerve R ⟶ derivedInfinityCategory R)
+    {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) :
+    squareTriangle 0 ≫ perfdSquare R P f I =
+      SSet.yonedaEquiv.symm (ComposableArrows.mk₂
+        (quotientProjection R S I) (quotientComparison R f I)) ≫ P
+
+theorem perfdSquare_triangle_one (P : algebraNerve R ⟶ derivedInfinityCategory R)
+    {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) :
+    squareTriangle 1 ≫ perfdSquare R P f I =
+      SSet.yonedaEquiv.symm (ComposableArrows.mk₂ f
+        (quotientProjection R T (I.map f.right.hom))) ≫ P
+
+def ArcOutside (p : ℕ) {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) : Prop
+
+structure PerfectoidizationInterfaceE3 (R : Type u) [CommRing R]
+    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) where
+  perfd : algebraNerve R ⟶ derivedInfinityCategory R
+  unit : NatInfinity R (J R) perfd
+  h0 : H0RingData R perfd unit
+  coconnective : ∀ S (i : ℤ), i < 0 → IsZero (H R i (vertex R perfd S))
+  universal : ∀ S, Disc R (vertex R perfd S) →
+    IsPerfectoidization p (h0.unit.app S).right.hom
+  limitCone : ∀ S, BSLimitConeData R p perfd unit h0 S
+  limit_isLimit : ∀ S, IsLimitCone (limitCone S).cone
+  integral : ∀ (S : A_R R),
+    (letI : Algebra R S.right := S.hom.hom.toAlgebra; Algebra.IsIntegral R S.right) →
+    Disc R (vertex R perfd S) ∧ IsIntegralPerfectoid (h0.ringFunctor.obj S).right p
+  excision : ∀ {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right),
+    IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right S.right) →
+    IsModuleComplete T.right (p : T.right) (ModuleCat.of T.right T.right) →
+    IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right I) →
+    ArcOutside R p f I → IsPullbackSquare (perfdSquare R perfd f I)
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
