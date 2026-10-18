@@ -724,5 +724,17 @@ lemma isCocartesianEdge_of_relativeCosliceRestriction_source {X Y : SSet.{u}}
     [TrivialKanFibration (relativeCosliceRestriction e q (stdSimplex.δ (1 : Fin 2)))] :
     IsCocartesianEdge q (SSet.yonedaEquiv e)
 
+lemma relativeCosliceRestriction_extendCone {K L X Y A : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) (f : L ⟶ K)
+    [TrivialKanFibration (relativeCosliceRestriction p q f)] (A₀ : A.Subcomplex)
+    (G : join K (A₀ : SSet.{u}) ⟶ X) (H : join L A ⟶ X) (B : join K A ⟶ Y)
+    (hG : joinInl K (A₀ : SSet.{u}) ≫ G = p)
+    (hH : joinInl L A ≫ H = f ≫ p) (hB : joinInl K A ≫ B = p ≫ q)
+    (hGH : joinMap f (𝟙 (A₀ : SSet.{u})) ≫ G = joinMap (𝟙 L) A₀.ι ≫ H)
+    (hGq : G ≫ q = joinMap (𝟙 K) A₀.ι ≫ B)
+    (hHq : H ≫ q = joinMap f (𝟙 A) ≫ B) :
+    ∃ T : join K A ⟶ X, joinInl K A ≫ T = p ∧
+      joinMap (𝟙 K) A₀.ι ≫ T = G ∧ joinMap f (𝟙 A) ≫ T = H ∧ T ≫ q = B
+
 end SerrePositivity.InfinityCategories
 ```
