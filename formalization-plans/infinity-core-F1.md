@@ -7416,5 +7416,26 @@ lemma pointCosliceFiberMap_equivalence_iff_pinchedHomMap
     IsQCatEquivalence (pointCosliceFiberMap f x y) ↔
       IsSimplicialHomotopyEquivalence (pinchedHomMap f x y)
 
+def cosliceFiberDiagramIso {K E : SSet.{u}} {a b : K ⟶ E} (h : a = b) (y : E _⦋0⦌) :
+    vertexFiber (sliceUnderProjection a) y ≅ vertexFiber (sliceUnderProjection b) y
+
+lemma cosliceFiberDiagramIso_uncurry {A K E : SSet.{u}} {a b : K ⟶ E}
+    (h : a = b) (y : E _⦋0⦌) (g : A ⟶ vertexFiber (sliceUnderProjection a) y) :
+    sliceUnderUncurry ((g ≫ (cosliceFiberDiagramIso h y).hom) ≫
+      vertexFiberι (sliceUnderProjection b) y) =
+        sliceUnderUncurry (g ≫ vertexFiberι (sliceUnderProjection a) y)
+
+lemma pointCosliceFiberMap_eq_postcomp {E F : SSet.{u}}
+    (f : E ⟶ F) (x y : E _⦋0⦌) :
+    pointCosliceFiberMap f x y = coslicePostcompFiberMap (SSet.yonedaEquiv.symm x) f y ≫
+      (cosliceFiberDiagramIso (SSet.yonedaEquiv_symm_comp x f)
+        (f.app (Opposite.op ⦋0⦌) y)).hom
+
+lemma coslicePostcompFiberMap_equivalence_iff_pinchedHomMap
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F]
+    (a : (Δ[0] : SSet.{u}) ⟶ E) (f : E ⟶ F) (y : E _⦋0⦌) :
+    IsQCatEquivalence (coslicePostcompFiberMap a f y) ↔
+      IsSimplicialHomotopyEquivalence (pinchedHomMap f (SSet.yonedaEquiv a) y)
+
 end SerrePositivity.InfinityCategories
 ```
