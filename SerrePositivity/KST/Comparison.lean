@@ -40,6 +40,7 @@ public import SerrePositivity.KST.Comparison.ExPairingNondegenerate
 public import SerrePositivity.KST.Comparison.ExPairingProperness
 public import SerrePositivity.KST.Comparison.ExPairingCore
 public import SerrePositivity.KST.Comparison.ExInfinityAnodyne
+public import SerrePositivity.KST.Comparison.NerveChainsLastVertex
 
 /-!
 # K-L2：比較定理の入口

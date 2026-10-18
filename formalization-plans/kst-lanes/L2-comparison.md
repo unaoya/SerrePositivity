@@ -382,6 +382,18 @@ git diff --check で空白の問題を確認する。
 既存の staged 状態を巻き込んだり破棄したりしない。
 amend、rebase、reset は使用しない。
 
+### Ex∞ の Kan 性へ向けた細分の比較
+
+Moss Proposition 21 が用いる Kan 性を仮定として置かず、二重細分の horn の充填で示す。
+最初に任意の部分順序集合 P について、nerve(P)→Ex(nerve(NonemptyFiniteChains P)) を作る。
+各単体 [n]→P が、有限鎖の像を取る単調写像を与えることを使い、sd⊣Ex で転置する。
+この段階では比較が同型であることは要求しない。これは Mathlib Subdivision.lean の未実装の
+一般の B 関手を仮定せず、順序集合の nerve に必要な比較だけを直接構成する経路である。
+次に二重細分の頂点である非空有限鎖 C から、horn に属する面 S の最大元を集める。
+horn に属さない面が C にあれば horn の欠けた面の添字 k も加え、その最大元を取る。
+この候補の単調性・像の horn への包含・horn 上での反復最終頂点写像との一致は、
+それぞれ明示的に証明する項目であり、現時点では充填の成立を主張しない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -448,6 +460,9 @@ Mathlib の IsUniquelyCodimOneFace への接続も証明した。
 自然数値の弱 rank 関数 exPairingWeakRank から exPairing の正則性を証明した。
 単位 X→Ex(X) の anodyne 性（Moss Theorem 22）を正則 pairing から証明した。
 反復列を順序合成とし、X→Ex∞(X) の anodyne 性（Corollary 30）を証明した。
+順序集合の nerve の細分から有限鎖の nerve への比較写像を構成した。
+単調写像に関する自然性、最大元の写像を合成した際の Ex の単位との一致を証明した。
+部分順序集合の非空有限鎖の最大元の存在・単調性・像との交換も証明した。
 Ex∞ の Kan 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -455,8 +470,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 450 宣言の型と公理を確認した。
-さらに名前空間全体の 914 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 463 宣言の型と公理を確認した。
+さらに名前空間全体の 932 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -546,6 +561,8 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `exPairingCore`、`exPairingCore_isProper`、`exPairing` | 実装済み | 全次元の proper pairing |
 | `exPairingWeakRank`、`exPairingCore_isRegular`、`exPairing_isRegular` | 実装済み | 最小複雑度による先行関係の整礎性 |
 | `exUnitAt_anodyne`、`exInfinityUnit_anodyne` | 実装済み | Moss Theorem 22、Corollary 30 の単位の anodyne 性 |
+| `subdivisionNerveChains`、`subdivisionNerveChains_naturality`、`nerveChainsExUnit_lastVertex` | 実装済み | 順序集合の nerve の細分比較・自然性・最終頂点との整合 |
+| `finiteChainGreatest`、`finiteChainGreatest_map` | 実装済み | 部分順序集合の非空有限鎖の最大元 |
 | Ex∞ の Kan 性 | 未証明 | Moss 2020 Proposition 21 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

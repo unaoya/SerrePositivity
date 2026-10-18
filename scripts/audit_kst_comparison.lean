@@ -56,6 +56,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -629,6 +630,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.localizedMono_lifting_fibrantTarget
 
 
+-- FiniteChainGreatest.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChain_exists_greatest
+#print axioms SerrePositivity.KST.Comparison.finiteChain_exists_greatest
+
+#check @SerrePositivity.KST.Comparison.finiteChainGreatest
+#print axioms SerrePositivity.KST.Comparison.finiteChainGreatest
+
+#check @SerrePositivity.KST.Comparison.finiteChainGreatest_mem
+#print axioms SerrePositivity.KST.Comparison.finiteChainGreatest_mem
+
+#check @SerrePositivity.KST.Comparison.le_finiteChainGreatest
+#print axioms SerrePositivity.KST.Comparison.le_finiteChainGreatest
+
+#check @SerrePositivity.KST.Comparison.finiteChainGreatest_map
+#print axioms SerrePositivity.KST.Comparison.finiteChainGreatest_map
+
+#check @SerrePositivity.KST.Comparison.finiteChainGreatest_eq_maximum
+#print axioms SerrePositivity.KST.Comparison.finiteChainGreatest_eq_maximum
+
+
 -- FiniteChainIntervals.lean
 
 #check @SerrePositivity.KST.Comparison.finiteChainMaximum_singleton
@@ -1059,6 +1081,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.grouplikeTranslationIso
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslationIso
+
+
+-- NerveChainsLastVertex.lean
+
+#check @SerrePositivity.KST.Comparison.nerveChainsExUnit_lastVertex
+#print axioms SerrePositivity.KST.Comparison.nerveChainsExUnit_lastVertex
+
+#check @SerrePositivity.KST.Comparison.subdivisionNerveChains_naturality
+#print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains_naturality
 
 
 -- OverHornLifting.lean
@@ -1611,6 +1642,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge
 #print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge
+
+
+-- SubdivisionNerveChains.lean
+
+#check @SerrePositivity.KST.Comparison.nerveSimplexOrderHom
+#print axioms SerrePositivity.KST.Comparison.nerveSimplexOrderHom
+
+#check @SerrePositivity.KST.Comparison.finiteChainMap_comp
+#print axioms SerrePositivity.KST.Comparison.finiteChainMap_comp
+
+#check @SerrePositivity.KST.Comparison.nerveChainsExUnit
+#print axioms SerrePositivity.KST.Comparison.nerveChainsExUnit
+
+#check @SerrePositivity.KST.Comparison.subdivisionNerveChains
+#print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains
+
+#check @SerrePositivity.KST.Comparison.nerveChainsExUnit_naturality
+#print axioms SerrePositivity.KST.Comparison.nerveChainsExUnit_naturality
 
 
 -- SubdivisionRearDegeneracy.lean
