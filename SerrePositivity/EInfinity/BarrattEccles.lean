@@ -92,3 +92,9 @@ public import SerrePositivity.EInfinity.BarrattEccles.OrderedSubset
 public import SerrePositivity.EInfinity.BarrattEccles.OrderedSubsetPrefix
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleFlags
 public import SerrePositivity.EInfinity.BarrattEccles.TripleShuffleCoordinates
+public import SerrePositivity.EInfinity.BarrattEccles.OrderedSubsetEnumeration
+public import SerrePositivity.EInfinity.BarrattEccles.TripleShuffleEdges
+public import SerrePositivity.EInfinity.BarrattEccles.TripleShuffleEnumeration
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleBlockPermutation
+public import SerrePositivity.EInfinity.BarrattEccles.TripleShufflePermutation
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNestedSimplex
