@@ -87,3 +87,5 @@ public import SerrePositivity.KST.ProExcision.HomotopyStrictification
 public import SerrePositivity.KST.ProExcision.CommutingImageObstruction
 public import SerrePositivity.KST.ProExcision.EquivariantStrictification
 public import SerrePositivity.KST.ProExcision.NormalizedStrictification
+public import SerrePositivity.KST.ProExcision.GroupProductData
+public import SerrePositivity.KST.ProExcision.ConjugationEquivariance

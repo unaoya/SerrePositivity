@@ -1410,3 +1410,57 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.normalizedStrictificationHomotopy
 #print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.normalizedStrictificationHomotopy
+
+#check @SerrePositivity.KST.ProExcision.GroupProductData
+#print axioms SerrePositivity.KST.ProExcision.GroupProductData
+
+#check @SerrePositivity.KST.ProExcision.GroupProductData.left
+#print axioms SerrePositivity.KST.ProExcision.GroupProductData.left
+
+#check @SerrePositivity.KST.ProExcision.GroupProductData.right
+#print axioms SerrePositivity.KST.ProExcision.GroupProductData.right
+
+#check @SerrePositivity.KST.ProExcision.GroupProductData.product
+#print axioms SerrePositivity.KST.ProExcision.GroupProductData.product
+
+#check @SerrePositivity.KST.ProExcision.GroupProductData.product_apply
+#print axioms SerrePositivity.KST.ProExcision.GroupProductData.product_apply
+
+#check @SerrePositivity.KST.ProExcision.GroupProductData.images_commute
+#print axioms SerrePositivity.KST.ProExcision.GroupProductData.images_commute
+
+#check @SerrePositivity.KST.ProExcision.groupLinearizedMap
+#print axioms SerrePositivity.KST.ProExcision.groupLinearizedMap
+
+#check @SerrePositivity.KST.ProExcision.discreteNerveAction
+#print axioms SerrePositivity.KST.ProExcision.discreteNerveAction
+
+#check @SerrePositivity.KST.ProExcision.EquivariantGroupProductData
+#print axioms SerrePositivity.KST.ProExcision.EquivariantGroupProductData
+
+#check @SerrePositivity.KST.ProExcision.ConstructionA5Input
+#print axioms SerrePositivity.KST.ProExcision.ConstructionA5Input
+
+#check @SerrePositivity.KST.ProExcision.groupLinearizedMap_equivariant
+#print axioms SerrePositivity.KST.ProExcision.groupLinearizedMap_equivariant
+
+#check @SerrePositivity.KST.ProExcision.EquivariantGroupProductData.left_equivariant
+#print axioms SerrePositivity.KST.ProExcision.EquivariantGroupProductData.left_equivariant
+
+#check @SerrePositivity.KST.ProExcision.EquivariantGroupProductData.right_equivariant
+#print axioms SerrePositivity.KST.ProExcision.EquivariantGroupProductData.right_equivariant
+
+#check @SerrePositivity.KST.ProExcision.EquivariantGroupProductData.product_equivariant
+#print axioms SerrePositivity.KST.ProExcision.EquivariantGroupProductData.product_equivariant
+
+#check @SerrePositivity.KST.ProExcision.ConstructionA5Input.first_strictified_equivariant
+#print axioms SerrePositivity.KST.ProExcision.ConstructionA5Input.first_strictified_equivariant
+
+#check @SerrePositivity.KST.ProExcision.ConstructionA5Input.second_strictified_equivariant
+#print axioms SerrePositivity.KST.ProExcision.ConstructionA5Input.second_strictified_equivariant
+
+#check @SerrePositivity.KST.ProExcision.conjugationLinearizedHomotopy_equivariant
+#print axioms SerrePositivity.KST.ProExcision.conjugationLinearizedHomotopy_equivariant
+
+#check @SerrePositivity.KST.ProExcision.conjugationEquivariantCylinderMap
+#print axioms SerrePositivity.KST.ProExcision.conjugationEquivariantCylinderMap
