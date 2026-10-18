@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・341 モジュール 3634 宣言の公理監査成功。
+対象ビルド・346 モジュール 3670 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2773,4 +2773,34 @@ L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較�
 参照：Goerss–Jardine VIII §2、HA §1.4.2、BF 1978 §2。
 保存単位の対象ビルド 3784 jobs 成功。
 私有宣言を含む 341 モジュール 3634 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
+
+## 93. L9e の群圏の over nerve と EG の重みの比較
+
+宇宙を揃えた一対象群圏の over 圏を、群の元を対象とする codiscrete 圏と比較した。
+over の対象は終点への射の群の元で表示され、任意の二対象間の射は除法で一意に定まる。
+対象を復元する厳密な等式と平行射の一意性から、両 nerve の実際の同型を得た。
+射の宇宙が異なるため、nerve の射は各次数の composable arrows の関手として構成した。
+
+codiscrete nerve の単体を頂点列に移し、EG の完全な単体集合と同定した。
+群圏の射の後合成は全座標への左乗法となるため、これは重みの図式の自然同型である。
+点つき end の重みに関する反変関手へ送り、hG の BK end と EG の同変 end の厳密な同型を得た。
+係数の射への自然性と、任意の厳密な錐からの標準射を保存する等式も証明した。
+通常の Tot との同定は次の工程であり、この重みの比較だけから有理 Shapiro を主張しない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `GroupOverCodiscrete.toCodiscrete` / `fromCodiscrete` | over 圏と群の codiscrete 圏の具体的な比較 |
+| `GroupOverCodiscrete.nerveIso` | 両 nerve の実際の同型 |
+| `discreteLevels` | 単体集合の図式の各次数の離散化 |
+| `GroupActionCochains.universalCoverDiagram` | 完全な EG の作用図式 |
+| `GroupActionCochains.universalCoverWeight_eq_discreteLevels` | cochain の離散重みとの厳密な同定 |
+| `GroupActionCochains.bousfieldKanUniversalCoverIso` | BK 重みと EG の重みの自然同型 |
+| `GroupActionCochains.universalCoverEndIso` / `universalCoverEndIso_natural` | 点つき end の比較と係数への自然性 |
+| `PointedWeightedEnd.coneComparison_preMap` | 錐の標準射の重みへの自然性 |
+| `GroupActionCochains.coneComparison_universalCoverEndIso` | 比較が錐の標準射を保存する等式 |
+
+参照：Goerss–Jardine VIII §§1–2、HA §1.4.2。
+保存単位の対象ビルド 3790 jobs 成功。
+私有宣言を含む 346 モジュール 3670 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
