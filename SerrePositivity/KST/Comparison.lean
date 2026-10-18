@@ -51,6 +51,10 @@ public import SerrePositivity.KST.Comparison.ExInfinityLocalization
 public import SerrePositivity.KST.Comparison.ExInfinityGrouplike
 public import SerrePositivity.KST.Comparison.ExInfinityBar
 public import SerrePositivity.KST.Comparison.KanBarRows
+public import SerrePositivity.KST.Comparison.DoubleMappingCylinderMap
+public import SerrePositivity.KST.Comparison.SliceFiberPushouts
+public import SerrePositivity.KST.Comparison.CylinderBoundary
+public import SerrePositivity.KST.Comparison.DoubleMappingCylinderEquivalence
 
 /-!
 # K-L2：比較定理の入口

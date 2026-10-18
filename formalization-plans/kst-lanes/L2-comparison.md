@@ -394,6 +394,21 @@ horn に属さない面が C にあれば horn の欠けた面の添字 k も加
 この候補の単調性・像の horn への包含・horn 上での反復最終頂点写像との一致は、
 それぞれ明示的に証明する項目であり、現時点では充填の成立を主張しない。
 
+### Segal Lemma 1.7・1.8 の貼り合わせの文言と証明方針
+
+原典 p.297 Lemma 1.7：span Y₁←Y₀→Y₂ から X₁←X₀→X₂ への射で、
+二つの四角形が homotopy-cartesian なら、誘導される二重写像円筒 Y→X への各頂点の
+四角形も homotopy-cartesian である。p.298 Lemma 1.8 は順序列の各四角形から telescope
+の各段階の同じ性質を導く。原典は telescope を偶数・奇数の余積の二重写像円筒として扱う。
+Lean では二重写像円筒を、X₀⊔X₀→X₀⊗Δ[1]（両端点）と
+X₀⊔X₀→X₁⊔X₂（span の二射）との pushout として定義する。
+span の射の誘導写像、各端点の包含、円筒の写像の式を先に証明する。
+局所化可逆な各行の対角化の定理は模型の不変性だけに使い、homotopy-cartesian 性の
+貼り合わせの代用にはしない。貼り合わせの本体はこの実際の pushout の比較について証明する。
+現在の Ex∞ の有限極限保存、単位の anodyne 性、Kan 性と、slice の閉構造を用いて、
+厳密な引き戻しの colimit との交換から homotopy 引き戻しの比較へ進める。
+この段階では Lemma 1.7 本体を仮定とする構造体は導入せず、証明済みと主張しない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -486,15 +501,21 @@ Ex∞ の monoidal 構造と、内部モノイドの置換・単位を構成し�
 Ex∞ のモノイド置換への bar の比較射が局所化可逆であることを証明した。
 Kan モノイドの有限積座標・bar の基底と全空間の各行の Kan 性を証明した。
 正則 bar の各行の射影が Kan fibration であることを証明した。
-fibration 保存は未証明。
+二重写像円筒を実際の pushout として定義し、比較写像とその恒等・合成の保存を証明した。
+スライスのファイバー関手の余極限・pushout 保存と、その標準比較同型を証明した。
+円筒の端点の余積を C⊗∂Δ[1] と同定し、貼り付けの脚の単射性を証明した。
+局所化可逆な二項余積の射、単射な脚を持つ pushout の比較の可逆性を証明した。
+span の各成分の局所化可逆な比較が二重写像円筒で可逆となることを証明した。
+Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
+Ex∞ の fibration 保存は未証明。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 554 宣言の型と公理を確認した。
-さらに名前空間全体の 1096 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 586 宣言の型と公理を確認した。
+さらに名前空間全体の 1156 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -600,6 +621,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `monoidTupleMap_localized_isIso`、`monoidBarMap_localized_isIso` | 実装済み | 有限積座標と bar の局所化不変性 |
 | `exInfinitySimplicialMonoid_bar_localized_isIso` | 実装済み | Kan モノイドへの置換が誘導する bar の可逆性 |
 | `monoidBarRow_kanComplex`、`regularBarRow_kanComplex`、`actionBarProjection_row_rlp` | 実装済み | Kan モノイドの各行と射影の Kan 条件 |
+| `doubleMappingCylinder`、`doubleMappingCylinderMap`、`doubleMappingCylinderMap_comp` | 実装済み | 実際の二重写像円筒と比較の関手性 |
+| `sliceFiberPushoutIso`、`cylinderEndpoints_mono` | 実装済み | 厳密なファイバーと pushout の交換、貼り付けの単射性 |
+| `pushoutMap_localized_isIso`、`doubleMappingCylinderMap_localized_isIso` | 実装済み | pushout と二重写像円筒の模型の局所化不変性 |
+| Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
