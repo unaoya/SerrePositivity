@@ -216,12 +216,15 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | pinched Hom による検出と同値な比較射の導来 fiber の可縮性は実装。具体的な sHom 図式との比較は未実装 |
+| γ3b | 検出・導来 fiber・重み付き end・q_x と θκ 分解は実装。coherent な錐との比較、end の Kan 性・同値不変性は未実装 |
 | γ3c | 𝒮・Sp の引き戻し、fibration の塔、有限積への適用は未実装。Alg_E は E2a 後 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
 γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開9宣言は検出・path 置換の fiber の可縮性・比較を入力とする極限性の推論。
-比較の構成を入力とする界面だけでは γ3b の完成とは数えない。
+公開52宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+`representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
+`representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
+重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
+coherent な錐から end の点への対応と pinched Hom の fiber 比較が未完了なので、γ3b は未完了。

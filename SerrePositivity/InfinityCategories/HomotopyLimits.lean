@@ -2,3 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Detection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ComparisonFiber
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSections
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedFunctor
+public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKan
+public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableComparison

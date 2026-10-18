@@ -2045,8 +2045,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 担当は N。正本は `formalization-plans/e-infinity-algebras.md` §3 と
 `formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
-現在は γ3a の記録と γ3b の検出・比較ファイバーの補題が完了。
-具体的な sHom 図式との比較および γ3c は未実装。
+現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射まで実装。
+coherent な錐との比較、end の Kan 性・同値不変性、および γ3c は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -2143,9 +2143,52 @@ namespace は `SerrePositivity.InfinityCategories.HomotopyLimits`。
 | `isLimitCone_of_comparisonFiber_homotopyEquivalence` | 全ての coherent な錐 d で、同値な比較射 q_d の fiber と錐の pinched Hom の実際のホモトピー同値を与えれば `IsLimitCone c` |
 
 最後の API は比較射とその同値の**構成を入力として要求する**。
-これを `sHom(x,L) → holim sHom(x,F−)` に具体化する構成は未完了であり、
-この界面だけを HTT 4.2.4.1 の双対の証明完成とは数えない。
-公開9宣言の正確な型・全前提・公理は `scripts/audit_homotopy_limits.lean` で検査する。
+これだけを HTT 4.2.4.1 の双対の証明完成とは数えない。
+
+`WeightedSections.lean`・`WeightedFunctor.lean` では一般の共変な重み W と図式 H に対して
+`weightedSections W H := ∫_i Fun(W(i),H(i))` を Mathlib の豊穣 end で構成した。
+次の普遍性は Kan 性なしで成立する。
+
+```lean
+weightedSectionsHomEquiv (W H : I ⥤ SSet.{u}) (A : SSet.{u}) :
+  (A ⟶ weightedSections W H) ≃ (W ⊗ (Functor.const I).obj A ⟶ H)
+
+weightedSectionsAdjunction (W : I ⥤ SSet.{u}) :
+  weightedParameterFunctor W ⊣ weightedSectionsFunctor W
+```
+
+ここで `weightedParameterFunctor W` は `A ↦ (i ↦ W(i) × A)`。
+`weightedSectionsFunctor_preservesLimits` は通常の単体集合の極限の保存であり、
+一般の図式の strict 極限が Kan であることや ∞ 極限性の証明ではない。
+
+`BousfieldKan.lean` の `bousfieldKanWeight I := Over.mapFunctor I ⋙ nerveFunctor` は
+共変な i ↦ N(I/i) を実際に定義する。`bousfieldKanHolim H` はこの重みの end。
+`bousfieldKanLimitComparison H : limit H → bousfieldKanHolim H` は重みを忘れる標準射であり、
+`bousfieldKanLimitComparison_evaluation H i` により恒等射 `i → i` での評価は極限射影になる。
+`bousfieldKanLimitComparison_naturality η` は図式に関する厳密な自然性。
+この end の Kan 性、対象ごとの同値に対する不変性、Kerodon の切断模型との比較は未証明。
+
+`RepresentableComparison.lean` は strict な錐から実際の射 q_x を作る。
+前提は `I : Type u`、`[SmallCategory I]`、`C : Type v`、`[Category.{u} C]`、
+`[SimplicialCategory C]`。以下の構成に局所 Kan 性は不要。
+
+```lean
+representableHomotopyLimitComparison (c : Cone F) (x : C) :
+  SimplicialCategory.sHom x c.pt ⟶ bousfieldKanHolim (simplicialHomDiagram F x)
+
+representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
+    (h : IsLimit (simplicialHomCone c x)) :
+  representableHomotopyLimitComparison c x =
+    (enrichedLimitHomIso c x h).hom ≫
+      bousfieldKanLimitComparison (simplicialHomDiagram F x)
+```
+
+`representableHomotopyLimitComparison_naturality c f` は始対象の射 f に関する反変な自然性。
+局所 Kan 性を仮定すれば `simplicialHomDiagram_obj_kanComplex` が各成分の Kan 性を与える。
+ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
+錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
+strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
+公開52宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### γ3c：最初に検証する三つの極限
 

@@ -23,3 +23,89 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms isLimitCone_of_comparisonFiber_iso
 #check @isLimitCone_of_comparisonFiber_homotopyEquivalence
 #print axioms isLimitCone_of_comparisonFiber_homotopyEquivalence
+#check @weightedSections
+#print axioms weightedSections
+#check @weightedSectionsπ
+#print axioms weightedSectionsπ
+#check @weightedSections_condition
+#print axioms weightedSections_condition
+#check @weightedSections_hom_ext
+#print axioms weightedSections_hom_ext
+#check @weightedSectionsLift
+#print axioms weightedSectionsLift
+#check @weightedSectionsLift_π
+#print axioms weightedSectionsLift_π
+#check @weightedSectionsUncurry
+#print axioms weightedSectionsUncurry
+#check @weightedSectionsUncurry_lift
+#print axioms weightedSectionsUncurry_lift
+#check @weightedSectionsLift_uncurry
+#print axioms weightedSectionsLift_uncurry
+#check @weightedSectionsHomEquiv
+#print axioms weightedSectionsHomEquiv
+#check @weightedConeComparison
+#print axioms weightedConeComparison
+#check @weightedConeComparison_π
+#print axioms weightedConeComparison_π
+#check @weightedSectionsEval
+#print axioms weightedSectionsEval
+#check @weightedConeComparison_eval
+#print axioms weightedConeComparison_eval
+#check @weightedSectionsMap
+#print axioms weightedSectionsMap
+#check @weightedSectionsMap_π
+#print axioms weightedSectionsMap_π
+#check @weightedSectionsMap_id
+#print axioms weightedSectionsMap_id
+#check @weightedSectionsMap_comp
+#print axioms weightedSectionsMap_comp
+#check @weightedSectionsFunctor
+#print axioms weightedSectionsFunctor
+#check @weightedSectionsLift_postcomp
+#print axioms weightedSectionsLift_postcomp
+#check @weightedSectionsUncurry_precomp
+#print axioms weightedSectionsUncurry_precomp
+#check @weightedParameterFunctor
+#print axioms weightedParameterFunctor
+#check @weightedSectionsAdjunction
+#print axioms weightedSectionsAdjunction
+#check @weightedSectionsFunctor_preservesLimits
+#print axioms weightedSectionsFunctor_preservesLimits
+#check @weightedConeComparison_naturality
+#print axioms weightedConeComparison_naturality
+#check @bousfieldKanWeight
+#print axioms bousfieldKanWeight
+#check @bousfieldKanHolim
+#print axioms bousfieldKanHolim
+#check @bousfieldKanConeComparison
+#print axioms bousfieldKanConeComparison
+#check @bousfieldKanLimitComparison
+#print axioms bousfieldKanLimitComparison
+#check @bousfieldKanLimitComparison_π
+#print axioms bousfieldKanLimitComparison_π
+#check @bousfieldKanEvaluation
+#print axioms bousfieldKanEvaluation
+#check @bousfieldKanLimitComparison_evaluation
+#print axioms bousfieldKanLimitComparison_evaluation
+#check @bousfieldKanHolimFunctor
+#print axioms bousfieldKanHolimFunctor
+#check @bousfieldKanLimitComparison_naturality
+#print axioms bousfieldKanLimitComparison_naturality
+#check @simplicialHomDiagram
+#print axioms simplicialHomDiagram
+#check @simplicialHomCone
+#print axioms simplicialHomCone
+#check @simplicialHomDiagram_obj_kanComplex
+#print axioms simplicialHomDiagram_obj_kanComplex
+#check @representableHomotopyLimitComparison
+#print axioms representableHomotopyLimitComparison
+#check @enrichedLimitHomIso
+#print axioms enrichedLimitHomIso
+#check @enrichedLimitHomIso_π
+#print axioms enrichedLimitHomIso_π
+#check @representableHomotopyLimitComparison_factorization
+#print axioms representableHomotopyLimitComparison_factorization
+#check @simplicialHomDiagramPre
+#print axioms simplicialHomDiagramPre
+#check @representableHomotopyLimitComparison_naturality
+#print axioms representableHomotopyLimitComparison_naturality
