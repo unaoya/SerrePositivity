@@ -460,3 +460,5 @@ A3e 主同値判定完了：`isQCatEquivalence_of_isFullyFaithful_of_isEssential
 評価図式・評価錐、`HasPointwiseLimits`、`IsPointwiseLimitCone` と同じ slice 内の同型による不変性を実装した。`SkeletalExtension` は各次数の境界充填を coproduct と pushout で貼り、互換な射の余極限から全体への延長を作る。`exists_extension_of_terminal_last_vertices` は全頂点を含む指定部分の外で、単体の最後の頂点が終対象へ写れば延長できることを証明する。`isTerminalVertex_functorVertex_of_pointwise` は各点で終対象となる関手が関手単体集合でも終対象になることを証明し、この向きには標的の quasicategory 性を仮定しない。
 
 新規19公開宣言の全型・前提は infinity-core.md §6。Core ビルド1648 jobs、累計846宣言の標準3公理監査が成功。任意図式の自然な極限錐の構成と主同値・評価の保存の一般形は未完了。A4・A5 は未着手。既存の公開名・型は変更していない。
+
+A6 続き：標的を固定した相対骨格の境界持ち上げを貼り合わせる二補題と `TerminalBoundaryLifting p x`、この条件での部分複体からの延長、`terminalBoundaryLifting_ihom_of_pointwise` を実装した。最後の補題は各点の厳密な終点境界充填条件が関手単体集合の射にも移ることを証明する。全て quasicategory 性・fibration 性を仮定しない。この厳密な条件と相対終対象・極限錐の同値はまだ主張しない。公開5宣言の全型・前提は計画 §6、Core ビルド1651 jobs・累計851宣言の標準3公理監査成功。A6 の任意図式の主定理、A4・A5 は未完了。既存の公開名・型は変更していない。

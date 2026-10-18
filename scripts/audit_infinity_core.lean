@@ -1845,3 +1845,10 @@ end InitialCofinalityUniverses
 #print axioms SerrePositivity.InfinityCategories.simplexLastVertex_stdSimplex_of_notMem_boundary
 #print axioms SerrePositivity.InfinityCategories.simplexLastVertex_prod
 #print axioms SerrePositivity.InfinityCategories.isTerminalVertex_functorVertex_of_pointwise
+
+-- A6: 標的を固定した相対境界充填と関手への移送
+#print axioms SerrePositivity.InfinityCategories.exists_lift_skeletonOfMono_succ
+#print axioms SerrePositivity.InfinityCategories.exists_lift_of_skeletal_lifts
+#print axioms SerrePositivity.InfinityCategories.TerminalBoundaryLifting
+#print axioms SerrePositivity.InfinityCategories.exists_lift_of_terminal_last_vertices
+#print axioms SerrePositivity.InfinityCategories.terminalBoundaryLifting_ihom_of_pointwise

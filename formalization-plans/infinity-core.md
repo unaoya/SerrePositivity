@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は標的を固定した相対境界充填の関手への移送まで完了し、任意図式の錐との比較と主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -5682,6 +5682,73 @@ lemma simplexLastVertex_prod {A B : SSet.{u}} {n : ℕ} (s : (A ⊗ B) _⦋n⦌)
 lemma isTerminalVertex_functorVertex_of_pointwise {K X : SSet.{u}} (f : K ⟶ X)
     (hf : ∀ k : K _⦋0⦌, IsTerminalVertex (f.app (Opposite.op ⦋0⦌) k)) :
     IsTerminalVertex (functorVertex f)
+
+end SerrePositivity.InfinityCategories
+```
+
+
+### A6 続き：標的を固定したセル延長と点ごとの相対境界充填（2026-10-18）
+
+相対骨格の各境界充填について標的への射との可換性を保持して貼り合わせた。`TerminalBoundaryLifting p x` は終点 x を固定した正次元境界の厳密な持ち上げ条件であり、相対終対象性との同値をこの定義自体では主張しない。各点のこの条件は `(ihom K).map p` 上の関手の頂点にも移る。新規5宣言は全て quasicategory 性・fibration 性を仮定しない。Core ビルド1651 jobs、累計851宣言の標準3公理監査成功。任意図式の錐とこの相対境界判定の比較、A6 の一般の存在・点ごとの判定は未完了。A4・A5 は未着手。既存の公開名・型は変更していない。
+
+SkeletalLifting：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet SSet.relativeCellComplexOfMono
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma exists_lift_skeletonOfMono_succ {A B X Y : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (p : X ⟶ Y) (b : B ⟶ Y) (d : ℕ)
+    (f : (skeletonOfMono i d : SSet.{u}) ⟶ X)
+    (hfp : f ≫ p = (skeletonOfMono i d).ι ≫ b)
+    (hf : ∀ c : Cell i d, ∃ F : (Δ[d] : SSet.{u}) ⟶ X,
+      (boundary d).ι ≫ F = c.ιSigmaBoundary ≫ t i d ≫ f ∧ F ≫ p = c.map ≫ b) :
+    ∃ F : (skeletonOfMono i (d + 1) : SSet.{u}) ⟶ X,
+      r i d ≫ F = f ∧ F ≫ p = (skeletonOfMono i (d + 1)).ι ≫ b
+
+lemma exists_lift_of_skeletal_lifts {A B X Y : SSet.{u}}
+    (i : A ⟶ B) [Mono i] (p : X ⟶ Y) (a : A ⟶ X) (b : B ⟶ Y)
+    (hw : a ≫ p = i ≫ b)
+    (hstep : ∀ d (f : (skeletonOfMono i d : SSet.{u}) ⟶ X),
+      skeletonBase i d ≫ f = a → f ≫ p = (skeletonOfMono i d).ι ≫ b →
+        ∃ F : (skeletonOfMono i (d + 1) : SSet.{u}) ⟶ X,
+          r i d ≫ F = f ∧ F ≫ p = (skeletonOfMono i (d + 1)).ι ≫ b) :
+    ∃ F : B ⟶ X, i ≫ F = a ∧ F ≫ p = b
+
+end SerrePositivity.InfinityCategories
+```
+
+RelativeTerminalExtension：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet SSet.relativeCellComplexOfMono
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+def TerminalBoundaryLifting {X Y : SSet.{u}} (p : X ⟶ Y) (x : X _⦋0⦌) : Prop
+
+lemma exists_lift_of_terminal_last_vertices {B X Y : SSet.{u}} (A : B.Subcomplex)
+    (hA : ∀ v : B _⦋0⦌, v ∈ A.obj (Opposite.op ⦋0⦌))
+    (p : X ⟶ Y) (a : (A : SSet.{u}) ⟶ X) (b : B ⟶ Y) (hw : a ≫ p = A.ι ≫ b)
+    (ht : ∀ (n : ℕ) (s : B _⦋n + 1⦌), s ∉ A.obj (Opposite.op ⦋n + 1⦌) →
+      TerminalBoundaryLifting p (a.app (Opposite.op ⦋0⦌) ⟨simplexLastVertex s, hA _⟩)) :
+    ∃ F : B ⟶ X, A.ι ≫ F = a ∧ F ≫ p = b
+
+end SerrePositivity.InfinityCategories
+```
+
+FunctorRelativeTerminal：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet SSet.relativeCellComplexOfMono
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma terminalBoundaryLifting_ihom_of_pointwise {K X Y : SSet.{u}}
+    (p : X ⟶ Y) (f : K ⟶ X)
+    (hf : ∀ k : K _⦋0⦌, TerminalBoundaryLifting p (f.app (Opposite.op ⦋0⦌) k)) :
+    TerminalBoundaryLifting ((ihom K).map p) (functorVertex f)
 
 end SerrePositivity.InfinityCategories
 ```

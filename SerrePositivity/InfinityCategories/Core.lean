@@ -94,3 +94,7 @@ public import SerrePositivity.InfinityCategories.Core.SkeletalExtension
 public import SerrePositivity.InfinityCategories.Core.TerminalExtension
 
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
+
+public import SerrePositivity.InfinityCategories.Core.SkeletalLifting
+public import SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension
+public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
