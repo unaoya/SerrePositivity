@@ -1,10 +1,12 @@
 # Perfectoid 化の界面：原典照合と E3 / E2a の型草案（Π1）
 
-2026-10-18。状態：紙上の設計。Lean の実装・入力の置換（Π2・Π3）は行わない。
+2026-10-18。状態：Π1 の原典照合と Π2 の界面・導出の公開型。
+界面の存在宣言（Π2-8）と旧入力の置換（Π3）は未実施。
 正本の計画は [infinity-categories.md](infinity-categories.md) §0・§6、
 [derived-infinity-category.md](derived-infinity-category.md) §0、
 モデルの工程は [e-infinity-algebras.md](e-infinity-algebras.md)。
-以下のコードは **型の草案**。既存宣言と設計用の略記を区別し、コンパイル済みとは扱わない。
+§4・§5 のコードは **型の草案**。既存宣言と設計用の略記を区別する。
+§7 末尾は実装した公開宣言の名前と型である。
 
 ## 1. 原文（著者版の印刷ページ = PDF の1始まりページ）
 
@@ -65,9 +67,9 @@ T の R 作用は `R → S → T`。異なる R 作用を持つ標的もこの�
 極限に関する用語は coinitial / initial（しばしば「始対象の cofinality」と呼ぶもの）。
 `PerfUnder_u(S)` の対象は Type (u+1) だが、`derivedInfinityCategory R : SSet.{u+1}` なので
 この nerve を始域に持つ錐と `IsLimitCone` は述べられる。対象宇宙と Hom 宇宙は別に記帳する。
-既存 `initialCofinality` は `{I : Type v} [Category.{v} I]` を要求するため、
-対象 Type (u+1)・Hom Type u のこの圏に、そのまま適用できるとはしない。
-α の担当は二宇宙版への一般化、または Hom の ULift と nerve・錐の比較である。
+二宇宙版 `initialCofinality` は `{I : Type v} [Category.{w} I]` と
+`X : SSet.{max v w}` を取り、対象 Type (u+1)・Hom Type u のこの圏へ適用できる。
+この用途では Hom の ULift も不要である。
 これは加群の宇宙や D(R) の拡大とは区別する。任意のそのサイズの極限の存在も仮定しない。
 **採用形**は `cone : JoinCone F_S`、`cone.vertex = v P S`（または指定同値）、`IsLimitCone cone`。
 
@@ -411,8 +413,8 @@ d := IsPerfectoidization.map hQ hE
 
 ### Π2：E3 の型を置く順序と担当
 
-以下の担当はレーン・モジュールの責務を指す。今回の改訂では Lean 実装を開始しない。
-配置候補は `BhattScholze/PerfectoidizationInterface/`。一般補題を文献入力の欄へ混ぜない。
+以下の担当はレーン・モジュールの責務を指す。実装した公開型は本節末尾に記録する。
+配置は `BhattScholze/PerfectoidizationInterface/`。一般補題を文献入力の欄へ混ぜない。
 
 | 順序 | Lean に置くもの・受入条件 | 一般補題の担当と依存 |
 | --- | --- | --- |
@@ -423,7 +425,7 @@ d := IsPerfectoidization.map hQ hE
 | Π2-4 構造体 | perfd、unit、h0、coconnective、離散時 universal、limit、integral、excision の型を宣言 | Π/Interface。excision の四角形・2単体は元の商図式から作る。D4 の定理の証明を待たず構造体の型を置ける |
 | Π2-5 始対象の橋 | `hC : IsPerfectoidization p η` から `P(S) ≃ J(C)` を指定錐・単位に両立して導く。4辺を map に同定 | α は §2.1 の二宇宙対応と `initialCofinality` からの極限計算・一意性、Π/Comparison は環同型と `lift_unique` の比較等式を担当。ここで全4頂点の離散性を得る |
 | Π2-6 存在入力 | integral → Disc → universal で `exists_perfectoidization_of_integral` と同じ型を証明 | Π/Integral。§2.2 の包装により非完備 S も扱う。既存の存在入力を証明中に使わない |
-| Π2-7 Excision 入力 | 四頂点の Disc を仮定として受け取り、excision → D4 → 指定された差の fiber 列 → 長完全列 → 短完全列・差の全射性・環の引き戻し | β/D4・D6a の公開定理を使い、Π/Excision が既存の4辺へ輸送。最後は既存 DerivedSingleTrianglePullback の橋を使う。Disc の供給は保留中の Π2-5 後半で後から埋める |
+| Π2-7 Excision 入力 | 四頂点の Disc を仮定として受け取り、excision → D4 → 指定された差の fiber 列 → 長完全列 → 短完全列・差の全射性・環の引き戻し | β/D4・D6a の公開定理を使い、Π/Excision が既存の4辺へ輸送。最後は既存 DerivedSingleTrianglePullback の橋を使う。Disc の供給は Π2-5 後半の `specified_disc` で埋める（Π2-7′） |
 | Π2-8 存在と監査 | E3 界面の存在だけを一つの文献入力にする。二入力の界面依存版を監査 | Π/Existence。BS の各命題・§2 の紙上導出に対応する。旧 Inputs の置換と CLMST の付替えは Π3 として別に行う |
 
 Π2-3 の limit 欄は特定の錐の極限性を受け取るので、§2.1 の cover 構成を Lean で先に
@@ -443,7 +445,7 @@ D6a の `derivedSquareFiberTriangle_distinguished`・`derivedSquareInfinityHomol
 D6b の `moduleHeartHomEquiv`、D6c の `derivedInfinityDisc_iff`・
 `derivedInfinityDiscEdge_invertible` は公開済み。Π2-7 では Disc の消滅条件から直接
 長完全列の両端を消せる。指定普遍環との H⁰ 環同型と四辺の一致は universal と単位の自然性で得る。
-この環の比較は Π2-5 後半の指定錐・単位付き導来同値を代替する成果とは数えない。
+Π2-5 後半は別途、始対象への制限と極限錐の一意性から指定錐・単位付き導来同値を持つ。
 
 採用する変更は、(i) Cor 8.12 を E3 では D(R) で述べる、(ii) E2a では homotopy
 引き戻し・Map^h で述べる、(iii) universal を Cor 8.14 の **離散時**に限定する、
@@ -883,6 +885,202 @@ theorem perfectoidization_excision_of_disc
     IsPullback (CommRingCat.ofHom a) (CommRingCat.ofHom b)
         (CommRingCat.ofHom c) (CommRingCat.ofHom d) ∧
       Function.Surjective (fun x : D × Q => c x.1 - d x.2)
+
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
+
+### Π2-5（指定錐・単位付き比較）
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u v w
+open CategoryTheory CategoryTheory.Limits SSet
+open SerrePositivity.InfinityCategories
+open scoped Simplicial
+theorem sliceIdentityCone_terminal {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) :
+    IsTerminalVertex (sliceIdentityCone x)
+
+def initialValueCone {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} (F : nerve I ⟶ X) : JoinCone F
+
+theorem initialValueCone_restriction {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} (F : nerve I ⟶ X) :
+    ((initialRestriction F c).app (Opposite.op ⦋0⦌) (initialValueCone hc F)).val =
+      SSet.const (F.app _ (nerveVertex c))
+
+theorem initialValueCone_isLimit {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X) :
+    IsLimitCone (initialValueCone hc F)
+
+def coneHomotopyMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (q : X ⟶ Y) :
+    SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj X) ⥤
+      SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj Y)
+
+theorem coneHomotopyMap_homMk {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (q : X ⟶ Y) {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :
+    (coneHomotopyMap q).map (SSet.Truncated.HomotopyCategory₂.homMk e) =
+      SSet.Truncated.HomotopyCategory₂.homMk (e.map ((truncation 2).map q))
+
+theorem coneEdge_isIso_of_edge_eq {X : SSet.{u}} [Quasicategory X]
+    {x y x' y' : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
+    (e' : SSet.Truncated.Edge (X := (truncation 2).obj X) x' y')
+    (h : e.edge = e'.edge) [IsIso (SSet.Truncated.HomotopyCategory₂.homMk e')] :
+    IsIso (SSet.Truncated.HomotopyCategory₂.homMk e)
+
+theorem initialValueCone_leg {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} (F : nerve I ⟶ X) :
+    (derivedConeLeg (initialValueCone hc F) (nerveVertex c)).edge =
+      (SSet.Truncated.Edge.id (X := (truncation 2).obj X) (F.app _ (nerveVertex c))).edge
+
+def initialLimitConeIso {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
+    (a : JoinCone F) (ha : IsLimitCone a) :
+    (SSet.HomotopyCategory.mk a : hoFunctor.obj (sliceOver F)) ≅
+      SSet.HomotopyCategory.mk (initialValueCone hc F)
+
+def initialLimitConeEdge {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
+    (a : JoinCone F) (ha : IsLimitCone a) :
+    SSet.Truncated.Edge (X := (truncation 2).obj (sliceOver F)) a (initialValueCone hc F)
+
+theorem initialLimitConeEdge_homMk {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
+    (a : JoinCone F) (ha : IsLimitCone a) :
+    SSet.Truncated.HomotopyCategory₂.homMk (initialLimitConeEdge hc F a ha) =
+      (terminalVertexIso₂ ha (initialValueCone_isLimit hc F)).hom
+
+theorem initialLimitConeEdge_path {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
+    (a : JoinCone F) (ha : IsLimitCone a) :
+    (homotopyCategoryBridge (sliceOver F)).functor.map
+        (SSet.Truncated.HomotopyCategory₂.homMk (initialLimitConeEdge hc F a ha)) =
+      (initialLimitConeIso hc F a ha).hom
+
+theorem initialLimitConeEdge_leg {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
+    (a : JoinCone F) (ha : IsLimitCone a) (t : (nerve I) _⦋0⦌) :
+    SSet.Truncated.HomotopyCategory₂.homMk
+        ((initialLimitConeEdge hc F a ha).map ((truncation 2).map (sliceOverProjection F))) ≫
+      SSet.Truncated.HomotopyCategory₂.homMk (derivedConeLeg (initialValueCone hc F) t) =
+        SSet.Truncated.HomotopyCategory₂.homMk (derivedConeLeg a t)
+
+theorem initialLimitLeg_isIso {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
+    (a : JoinCone F) (ha : IsLimitCone a) :
+    IsIso (SSet.Truncated.HomotopyCategory₂.homMk (derivedConeLeg a (nerveVertex c)))
+
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u v w
+open CategoryTheory CategoryTheory.Limits SSet
+open SerrePositivity.InfinityCategories
+open scoped Simplicial
+attribute [local instance] HasDerivedCategory.standard
+variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]
+def specifiedAlgebra (S : A_R R) {C : Type u} [CommRing C]
+    (ηC : S.right →+* C) (hC : IsPerfectoidization p ηC) : A_R R
+
+theorem coneLeg_edge {K X : SSet.{u + 1}} {G : K ⟶ X}
+    (a : JoinCone G) (v : K _⦋0⦌) :
+    (derivedConeLeg a v).edge = a.val.app _ (joinLegSimplex v)
+
+variable (hR : IsIntegralPerfectoid R p) (F : PerfectoidizationInterfaceE3 R p hR)
+    (S : A_R R) {C : Type u} [CommRing C]
+    (ηC : S.right →+* C) (hC : IsPerfectoidization p ηC)
+
+def specifiedLimitConeIso :
+    (SSet.HomotopyCategory.mk (F.limitCone S).cone :
+        SSet.hoFunctor.obj (sliceOver (targetDiagram R p S))) ≅
+      SSet.HomotopyCategory.mk (initialValueCone
+        (specifiedTarget_isInitial p S.right ηC hC) (targetDiagram R p S))
+
+theorem specifiedProjection_isIso :
+    IsIso (SSet.Truncated.HomotopyCategory₂.homMk
+      ((F.limitCone S).projectionEdge (specifiedTarget p S.right ηC hC)).toTruncated)
+
+def specifiedDerivedIso :
+    (⟨vertex R F.perfd S⟩ : derivedInfinityHomotopyCategory R) ≅
+      ⟨vertex R (J R) (specifiedAlgebra p R S ηC hC)⟩
+
+theorem specifiedDerivedIso_unit :
+    SSet.Truncated.HomotopyCategory₂.homMk (component R F.unit S).toTruncated ≫
+        (specifiedDerivedIso p R hR F S ηC hC).hom =
+      SSet.Truncated.HomotopyCategory₂.homMk
+        (edge R (J R) (targetUnitMap R p S (specifiedTarget p S.right ηC hC))).toTruncated
+
+include ηC hC in
+theorem specified_disc : Disc R (vertex R F.perfd S)
+
+theorem specifiedRingProjection_isIso :
+    IsIso ((F.limitCone S).projection (specifiedTarget p S.right ηC hC)).right
+
+def specifiedRingIso : (F.h0.ringFunctor.obj S).right ≅ CommRingCat.of C
+
+theorem specifiedRingIso_unit :
+    (specifiedRingIso p R hR F S ηC hC).hom.hom.comp (F.h0.unit.app S).right.hom = ηC
+
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
+
+### Π2-7′（離散性仮定の解消）
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u v w
+open CategoryTheory CategoryTheory.Limits SSet
+open SerrePositivity.InfinityCategories
+open scoped Simplicial
+open SerrePositivity.DerivedCompletion
+variable (R S T : Type u) [CommRing R] [CommRing S] [CommRing T]
+    [Algebra R S] [Algebra R T] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (F : PerfectoidizationInterfaceE3 R p hR)
+    (f : S →ₐ[R] T) (I : Ideal S)
+    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))
+    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T))
+    (hI : IsModuleComplete S (p : S) (ModuleCat.of S I))
+    (harc : ∀ (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V],
+      ringKrullDim V = 1 → IsAdicComplete (Ideal.span {(p : V)}) V →
+      ∀ k : S →+* V, ¬ (I ≤ RingHom.ker k) →
+        ∃! l : T →+* V, l.comp f.toRingHom = k)
+    {C D Q E : Type u} [CommRing C] [CommRing D] [CommRing Q] [CommRing E]
+    {ηS : S →+* C} {ηT : T →+* D}
+    {ηQ : S ⧸ I →+* Q} {ηE : T ⧸ I.map f.toRingHom →+* E}
+    (hC : IsPerfectoidization p ηS) (hD : IsPerfectoidization p ηT)
+    (hQ : IsPerfectoidization p ηQ) (hE : IsPerfectoidization p ηE)
+
+
+include F hS hT hI harc in
+theorem perfectoidization_excision :
+    let a := IsPerfectoidization.map hC hD f.toRingHom
+    let b := IsPerfectoidization.map hC hQ (Ideal.Quotient.mk I)
+    let c := IsPerfectoidization.map hD hE (Ideal.Quotient.mk (I.map f.toRingHom))
+    let d := IsPerfectoidization.map hQ hE
+      (Ideal.quotientMap (I.map f.toRingHom) f.toRingHom Ideal.le_comap_map)
+    IsPullback (CommRingCat.ofHom a) (CommRingCat.ofHom b)
+        (CommRingCat.ofHom c) (CommRingCat.ofHom d) ∧
+      Function.Surjective (fun x : D × Q => c x.1 - d x.2)
+
+include F hS hT hI harc in
+theorem perfectoidization_excision_isPullback :
+    IsPullback
+      (CommRingCat.ofHom (IsPerfectoidization.map hC hD f.toRingHom))
+      (CommRingCat.ofHom (IsPerfectoidization.map hC hQ (Ideal.Quotient.mk I)))
+      (CommRingCat.ofHom (IsPerfectoidization.map hD hE (Ideal.Quotient.mk (I.map f.toRingHom))))
+      (CommRingCat.ofHom (IsPerfectoidization.map hQ hE
+        (Ideal.quotientMap (I.map f.toRingHom) f.toRingHom Ideal.le_comap_map)))
+
+include F hS hT hI harc hC in
+theorem perfectoidization_excision_difference_surjective :
+    Function.Surjective (fun x : D × Q =>
+      IsPerfectoidization.map hD hE (Ideal.Quotient.mk (I.map f.toRingHom)) x.1 -
+      IsPerfectoidization.map hQ hE
+        (Ideal.quotientMap (I.map f.toRingHom) f.toRingHom Ideal.le_comap_map) x.2)
 
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 ```
