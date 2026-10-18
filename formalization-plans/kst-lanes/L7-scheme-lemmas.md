@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 552 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 577 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -59,6 +59,8 @@
 - 最初の admissible 中心と Cartier 化、位相的稠密性・スキーム論的稠密性を構成・証明済み。
 - strict transform をスキーム論的像として構成し、固有性・Noether 性・U 上の同型を証明済み。
 - 平坦・有限表示・分離な射を稠密な開部分上の同型から開埋め込みと判定する段階、および平坦な strict transform から実際の因子化射を作る段階を証明済み。
+- 像中心が中心元の正則な像で生成される場合の実際のチャート環準同型・blowup への射と、基底上の一意性を証明済み。
+- 任意の正則な単項像中心について、中心元の像で局所的に生成される基本開被覆と各局所化の正則性・像中心の等式を証明済み。これらの局所射の貼り合わせは次の段階。
 - Noether でも実際に平坦な strict transform を達成する中心の存在と、admissible blowup の合成を一つで支配する段階は未証明。L7b 完了とはしない。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
@@ -481,14 +483,16 @@ strict transform とその平坦化の有限型特殊形は未実装であり、
 | `isIso_of_proper_openImmersion_dense_restrict` | ProperOpenIso | 検証済み | 固有な開埋め込みの最後の同型判定 |
 | `isOpenImmersion_of_flat_iso_on_dense_open` | FlatOpenImmersion | 検証済み | 平坦・有限表示・分離から開埋め込みへの判定 |
 | `exists_domination_of_flat_schematicallyDense_strictTransform` | FlatStrictTransform | 検証済み | 平坦化済みの strict transform から実際の因子化の構成 |
-| `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
-| `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
-| `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
-| `blowupAwayIso` | Blowup | 予定 | 補開集合上の同型 |
+| `chartRegularLift` / `chartRegularLift_base` | ChartRegularLift | 検証済み | 正則な単項像中心からの環準同型 |
+| `chart_hom_ext_of_regular` | ChartRegularLift | 検証済み | 分母消去による環準同型の一意性 |
+| `affineBlowupRegularLift` / `affineBlowupRegularLift_base` | AffineRegularLift | 検証済み | 基底上の実際の局所普遍写像 |
+| `affineBlowup_hom_ext_of_regular` | AffineRegularLift | 検証済み | 正則局所化と分離性による射の一意性 |
+| `span_regularCenterCoefficients` / `iSup_regularCenterCoefficient_basicOpen` | RegularCenterCover | 検証済み | 任意の正則単項生成元を中心元の像へ局所化 |
+| `regularCenter_localized_regular` / `regularCenter_localized_image` | RegularCenterCover | 検証済み | 局所的な普遍写像の条件 |
 | `exists_admissibleBlowup_dominating` | Flattening | 予定 | 081T の特殊形 |
 | Prop 5.2 の環論 | Section5 | 予定 | 冪・像・核 |
-| Claim 5.3 の左逆元 | Section5 | 予定 | 幾何的 retract |
-| Prop 5.4 の支配 | Section5 | 予定 | 実 blowup への帰着 |
+| Claim 5.3 の左逆元 | K-L6 | 担当外 | K/pro の結論 |
+| Prop 5.4 の支配 | K-L6 | 担当外 | 実 blowup への帰着の K/pro 部分 |
 | Huneke–Swanson の有限射 | Section5 | 予定 | 二乗生成元の比較 |
 | Lemma 5.5 の古典的入力 | Section5 | 予定 | 導来比較への入力 |
 

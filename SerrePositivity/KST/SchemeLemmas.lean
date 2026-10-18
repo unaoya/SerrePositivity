@@ -50,3 +50,6 @@ public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupCharts
 public import SerrePositivity.KST.SchemeLemmas.KernelLocality
 public import SerrePositivity.KST.SchemeLemmas.BlowupSchemeDensity
 public import SerrePositivity.KST.SchemeLemmas.FlatStrictTransform
+public import SerrePositivity.KST.SchemeLemmas.ChartRegularLift
+public import SerrePositivity.KST.SchemeLemmas.AffineRegularLift
+public import SerrePositivity.KST.SchemeLemmas.RegularCenterCover
