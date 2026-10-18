@@ -1499,3 +1499,33 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms simplicialHomWhiskerLeft_app
 #check @weightedRepresentableCoefficient_comp
 #print axioms weightedRepresentableCoefficient_comp
+#check @weightedConeObj
+#print axioms weightedConeObj
+#check @weightedConeEmptyMap
+#print axioms weightedConeEmptyMap
+#check @weightedConeTailHom
+#print axioms weightedConeTailHom
+#check @weightedConeHom
+#print axioms weightedConeHom
+#check @weightedConeSimplex
+#print axioms weightedConeSimplex
+#check @weightedConeSimplex_apex
+#print axioms weightedConeSimplex_apex
+#check @weightedConeSimplex_tail
+#print axioms weightedConeSimplex_tail
+#check @weightedConeSimplex_reindex
+#print axioms weightedConeSimplex_reindex
+#check @weightedCosliceSimplex
+#print axioms weightedCosliceSimplex
+#check @weightedCosliceSimplex_naturality
+#print axioms weightedCosliceSimplex_naturality
+#check @weightedCosliceSimplex_projection
+#print axioms weightedCosliceSimplex_projection
+#check @weightedCosliceComparison
+#print axioms weightedCosliceComparison
+#check @weightedCosliceComparison_over
+#print axioms weightedCosliceComparison_over
+#check @weightedCoherentConeComparison
+#print axioms weightedCoherentConeComparison
+#check @weightedCoherentConeComparison_over
+#print axioms weightedCoherentConeComparison_over

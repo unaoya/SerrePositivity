@@ -2058,8 +2058,9 @@ E2b の具体的適用は E2a の完了後に行う。
 strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性、
 塔と一脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
 離散図式の比較、𝒮 の空積、Kan 値図式の end の一般の Kan 性も実装済み。
-Kan 値図式の end の同値不変性も証明済み。一般の coherent な錐との比較、
-𝒮 の残りの極限と Sp への適用は未実装。
+Kan 値図式の end の同値不変性も証明済み。反転した表現可能な weighted nerve から
+coherent な錐の全空間への実際の底上の射も構成済み。その fiber の同値性と元の q_x の比較、
+𝒮 の残りの極限と Sp への適用は未完了。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -2203,7 +2204,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開747宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開762宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2831,7 +2832,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開747宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開762宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3928,6 +3929,63 @@ C の対象の宇宙 v は Hom・I の宇宙 u と異なってよい。
 これは HTT 4.2.4.1、Kerodon §7.5.4 の cone の豊穣関手を作る非定値 Hom の合成則である。
 cone の全ての頂点と Hom を一つの豊穣関手に組み立て、実際の左 coslice への射とする工程、
 元の q_x との一致、および 𝒮・Sp の残りの適用は引き続き未完了。
+
+### weighted nerve から coherent な錐の全空間への実際の射（実装済み）
+
+`WeightedConeSimplex` は `I : Type u`、`[SmallCategory I]`、`C : Type v`、
+`[Category.{u} C]`、`[SimplicialCategory C]` と `F : I ⥤ C`、`x : C` に対し、
+反転した表現可能な係数の simplex を coherent な cone simplex にする。
+
+```lean
+weightedConeSimplex F x {n : ℕ} {σ : ComposableArrows I n}
+    (τ : simplexPrefixWeight n ⟶ σ ⋙ simplicialHomDiagram F x ⋙ SSet.opFunctor) :
+  (SimplicialNerve C) _⦋n + 1⦌
+weightedConeSimplex_apex F x τ :
+  (SimplicialNerve C).map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op
+    (weightedConeSimplex F x τ) = coherentNerveVertex x
+weightedConeSimplex_tail F x τ :
+  (SimplicialNerve C).δ 0 (weightedConeSimplex F x τ) =
+    (strictCoherentDiagram F).app (Opposite.op ⦋n⦌) (ULift.up σ)
+```
+
+`weightedConeObj` は初点を x、正頂点 j.succ を F(σj) に写す。
+`weightedConeHom` は初点の自己 Hom を恒等、初点からの Hom を係数評価、
+正頂点から初点への空の Hom を `weightedConeEmptyMap`、
+正頂点間を `weightedConeTailHom` の通常の射の定値 simplex にする。
+単位則と合成則の八分岐を検証し、非定値部分には
+`weightedRepresentableCoefficient_comp` を用いた。
+`weightedConeSimplex_reindex F x α τ` は初点固定の `prependOrderHom` による
+thickening の前合成と全ての面・退化の作用の可換性を与える。
+
+`WeightedCosliceComparison` は join の同型でこの simplex を左 coslice に写す。
+`weightedCosliceSimplex`、`weightedCosliceSimplex_naturality`、
+`weightedCosliceSimplex_projection` が各次数の構成・自然性・底の計算である。
+
+```lean
+weightedCosliceComparison F x :
+  (SSet.uliftFunctor.{v, u}).obj
+    (weightedNerve (simplicialHomDiagram F x ⋙ SSet.opFunctor)) ⟶
+  sliceUnder (SSet.yonedaEquiv.symm (coherentNerveVertex x))
+weightedCoherentConeComparison F x :
+  (SSet.uliftFunctor.{v, u}).obj
+    (weightedNerve (simplicialHomDiagram F x ⋙ SSet.opFunctor)) ⟶
+  coherentConeTotal (strictCoherentDiagram F) (coherentNerveVertex x)
+weightedCoherentConeComparison_over F x :
+  weightedCoherentConeComparison F x ≫
+    coherentConeProjection (strictCoherentDiagram F) (coherentNerveVertex x) =
+  (SSet.uliftFunctor.{v, u}).map
+    (weightedNerveProjection (simplicialHomDiagram F x ⋙ SSet.opFunctor))
+```
+
+`weightedCosliceComparison_over` は左 coslice の射影との可換性を与え、
+引き戻しへの持ち上げで `weightedCoherentConeComparison` を定義する。
+これで添字圏の作用と高次 simplex の整合性を持つ実際の底上の射ができた。
+Kan 性・図式の極限性・Hom のホモトピー逆の選択は一切要求しない。
+原典は HTT 4.2.4.1、Kerodon §7.5.4。
+
+この射の各 fiber の同値性はまだ未証明であり、点ごとの既存の Hom の同値だけで
+射全体の同値性を結論しない。始域には係数の反転があるので、その切断空間の移送と
+元の q_x との一致も証明対象である。𝒮・Sp の残りの適用を含む γ3b・γ3c は未完了。
 
 ### 𝒮 の空積（実装済み）
 
