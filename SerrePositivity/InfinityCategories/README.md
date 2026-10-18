@@ -1799,8 +1799,39 @@ resolutionHomEquiv (x y : ClosedCategory R D) (n : ℕ) :
 `resolutionHomMap_equiv_symm` と `resolutionHomEquiv_symm_map` は実際の評価の両側の回収則、
 `resolutionHomEquiv_symm_reindex` は逆構成の面・退化との整合である。
 この固定次数の同値と自然性だけでは、標準 Hom との比較射のホモトピー同値とは数えない。
-残りは解像の比較を通じた反対側の合成の単体的ホモトピー、
-上の判定による充満忠実性の証明、A3e による ∞ 圏の同値の構成。
+`resolutionHomIso` はこの同値と自然性を実際の単体集合の同型にまとめる。
+F1 の確定済みの解像の右随伴を使い、二段の ULift で Hom と coherent nerve の宇宙を合わせる。
+
+```lean
+resolutionHomIso (x y : ClosedCategory R D) :
+  coherentPinchedHom (R := R) (D := D) x y ≅
+    SSet.uliftFunctor.{v, u}.obj
+      (coherentResolutionRightAdjoint.obj (standardHomSpace (R := R) (D := D) x y))
+
+standardHomToCoherentPinched_resolutionHomIso (x y : ClosedCategory R D) :
+  standardHomToCoherentPinched (R := R) (D := D) x y ≫ (resolutionHomIso x y).hom =
+    SSet.uliftFunctor.{v, u}.map
+      (coherentResolutionComparison (standardHomSpace (R := R) (D := D) x y))
+```
+
+前提は引き続き `[CommRing R] [DGCategory R D]` のみ。
+可換式は全次数の旗での評価から証明した射の等式である。
+`simplicialHomotopyEquivalence_split_iff` は Kan 複体間の二射 f、g が `f ≫ g = 𝟙 _` を
+満たすとき、一方の実際のホモトピー同値性が他方の同値性と同値であることを示す。
+この判定と解像の同型により、元の dg 比較射について次を得る。
+
+```lean
+coherentComparison_fullyFaithful_iff_resolution :
+  IsFullyFaithful (coherentComparison (R := R) (D := D)) ↔
+    ∀ x y : D, IsSimplicialHomotopyEquivalence (SSet.uliftFunctor.{v, u}.map
+      (coherentResolutionComparison (standardHomSpace (R := R) (D := D) x y)))
+```
+
+右随伴側の必要な Kan 性は `resolutionHomIso` の逆射によって実際の pinched Hom から導く。
+残りはこの判定の右辺、すなわち解像の標準比較射の実際のホモトピー同値性の証明と、
+充満忠実性・本質的全射性を合わせた A3e による ∞ 圏の同値の構成。
+標準単体ごとの解像の変形だけでは次数間の自然性を持つホモトピーとみなさない。
+一般の解像について境界の貼り合わせを扱う工程は、この判定では仮定として残っている。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

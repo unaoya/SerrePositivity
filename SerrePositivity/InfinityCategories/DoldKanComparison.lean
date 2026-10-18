@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomotopyReduction
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomEquiv
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomReindex

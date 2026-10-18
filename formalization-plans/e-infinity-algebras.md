@@ -207,12 +207,15 @@ F1 の補助解像の旗を native Path に送り、最大元と末尾への正�
 `resolutionHomEquiv x y n` は固定次数の pinched 単体と解像から標準 Hom への射の型の同値。
 実際の `resolutionHomMap` を F1 の確定済みの構成に厳密に同定し、両側の回収則を移した。
 逆構成の面・退化との整合も `resolutionHomEquiv_symm_reindex` で証明済み。
-残りは解像の比較を通じた反対側の合成の単体的ホモトピー、
-判定の右辺の証明と ∞ 圏の同値。
+`resolutionHomIso` はこれを単体集合の同型にまとめる。
+`standardHomToCoherentPinched_resolutionHomIso` は逆向きの射を解像の標準比較射へ厳密に同定する。
+`coherentComparison_fullyFaithful_iff_resolution` は厳密な片側の逆と Kan 性を使い、
+充満忠実性を全ての標準 Hom に対する解像の標準比較射の実際のホモトピー同値性と同値にする。
+残りはこの右辺の証明と ∞ 圏の同値。一般の解像の境界の貼り合わせは未接続。
 判定への移送や片側の逆の性質だけでは、充満忠実性やホモトピー同値を証明したとは数えない。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開546宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開552宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。
