@@ -99,3 +99,5 @@ public import SerrePositivity.KST.SchemeLemmas.BlowupOpenMap
 public import SerrePositivity.KST.SchemeLemmas.FiniteAffineCover
 public import SerrePositivity.KST.SchemeLemmas.SchemeCompositionDomination
 public import SerrePositivity.KST.SchemeLemmas.PureTransformModule
+public import SerrePositivity.KST.SchemeLemmas.PureTransformLocalization
+public import SerrePositivity.KST.SchemeLemmas.PureTransformExact
