@@ -2921,3 +2921,142 @@ HTT の原典表記は Lemma 4.4.2.1（https://people.math.harvard.edu/~lurie/pa
       (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} i)
       (SerrePositivity.InfinityCategories.pastingTopTriangle.{u_1} F))
 ```
+
+## S4：部分長方形の右側への cofinal な制限
+
+右上の終端角を除いた五頂点図式 `pastingCorner` と、その右側の三頂点部分 `pastingRightSpan` を構成した。横座標を max(x,t) に写し、右の部分を全時刻で固定する prism から、その包含の right anodyne 性を証明した。
+固定部分を持つ prism の収縮から right anodyne 性を得る一般補題も証明した。F1 の部分複体への coslice 制限定理と同型による制限を再利用し、任意の right anodyne な単射への拡張を証明した。余極限性を保ち反映することを得て、部分長方形に適用した。Core・F1 の既存宣言は変更していない。
+値域に Quasicategory を仮定する余錐の比較と、値域を選ぶ前の包含の right anodyne 性を区別する。これを貼り合わせ定理全体の完成とは数えない。
+残る工程：右側の三頂点部分の標準 span との同定、長方形の join 表示、左四角形の普遍性を使う外側図式への coslice の比較、引き戻しへの双対化、三角構造（前加法性・整数シフト・TR1〜TR4を含む）、S5〜S7。
+検証：PastingCofinality 対象ビルド 1921 jobs・Stable 集約ビルド 2006 jobs 成功。全 645 宣言／62 モジュールの公理監査成功（標準三公理のみ）。
+
+```lean
+@SerrePositivity.InfinityCategories.sliceUnderRestrict_trivialKanFibration.{u_1} : ∀ {K₀ K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X) (f : Quiver.Hom.{u_1, u_1 + 1} K₀ K)
+  [CategoryTheory.Mono.{u_1, u_1 + 1} f],
+  SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} f →
+    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderRestrict.{u_1} p f)
+@SerrePositivity.InfinityCategories.stable_rightAnodyneExtensions_of_prism_retraction.{u_1} : ∀ {B : SSet.{u_1}}
+  (A : SSet.Subcomplex.{u_1} B) (r : Quiver.Hom.{u_1, u_1 + 1} B (SSet.Subcomplex.toSSet.{u_1} A)),
+  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SSet.Subcomplex.ι.{u_1} A) r)
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} A)) →
+    ∀
+      (H :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) B)
+          B),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0 B) H)
+          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} B) →
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1 B) H)
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} r (SSet.Subcomplex.ι.{u_1} A)) →
+          Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+                  (SSet.Subcomplex.ι.{u_1} A))
+                H)
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+                  (SSet.Subcomplex.toSSet.{u_1} A))
+                (SSet.Subcomplex.ι.{u_1} A)) →
+            SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} (SSet.Subcomplex.ι.{u_1} A)
+SerrePositivity.InfinityCategories.pastingCorner.{u_1} : SSet.Subcomplex.{u_1}
+  (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+SerrePositivity.InfinityCategories.pastingRightSpan.{u_1} : SSet.Subcomplex.{u_1}
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+SerrePositivity.InfinityCategories.pastingRaiseOrderHom : OrderHom.{0, 0} (Prod.{0, 0} (Fin 2) (Fin 3)) (Fin 3)
+@SerrePositivity.InfinityCategories.pastingRaiseSimplex.{u_1} : {n : Opposite.{1} SimplexCategory} →
+  CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) n →
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) n →
+      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) n
+SerrePositivity.InfinityCategories.pastingCornerPrism.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+    (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}))
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+SerrePositivity.InfinityCategories.pastingCornerPrism_zero.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}))
+    SerrePositivity.InfinityCategories.pastingCornerPrism.{u_1})
+  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+    (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}))
+SerrePositivity.InfinityCategories.pastingCornerRetraction.{u_1} : Quiver.Hom.{u_1, u_1 + 1}
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1})
+  (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1})
+SerrePositivity.InfinityCategories.pastingCornerPrism_one.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}))
+    SerrePositivity.InfinityCategories.pastingCornerPrism.{u_1})
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pastingCornerRetraction.{u_1}
+    (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1}))
+SerrePositivity.InfinityCategories.pastingRightSpan_retraction.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1})
+    SerrePositivity.InfinityCategories.pastingCornerRetraction.{u_1})
+  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+    (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1}))
+SerrePositivity.InfinityCategories.pastingCornerPrism_fixed.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+      (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1}))
+    SerrePositivity.InfinityCategories.pastingCornerPrism.{u_1})
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1}
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+      (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1}))
+    (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1}))
+SerrePositivity.InfinityCategories.pastingRightSpan_rightAnodyne.{u_1} : SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1}
+  (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1})
+@SerrePositivity.InfinityCategories.JoinCocone.restrict.{u_1} : {K₀ K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    SerrePositivity.InfinityCategories.JoinCocone.{u_1} p →
+      (f : Quiver.Hom.{u_1, u_1 + 1} K₀ K) →
+        SerrePositivity.InfinityCategories.JoinCocone.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p)
+@SerrePositivity.InfinityCategories.isColimitCone_iff_restrict_of_rightAnodyne.{u_1} : ∀ {K₀ K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) (f : Quiver.Hom.{u_1, u_1 + 1} K₀ K)
+  [CategoryTheory.Mono.{u_1, u_1 + 1} f],
+  SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} f →
+    (SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c ↔
+      SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+        (SerrePositivity.InfinityCategories.JoinCocone.restrict.{u_1} c f))
+@SerrePositivity.InfinityCategories.IsColimitCone.restrict_of_rightAnodyne.{u_1} : ∀ {K₀ K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  {c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p},
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c →
+    ∀ (f : Quiver.Hom.{u_1, u_1 + 1} K₀ K) [CategoryTheory.Mono.{u_1, u_1 + 1} f],
+      SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} f →
+        SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+          (SerrePositivity.InfinityCategories.JoinCocone.restrict.{u_1} c f)
+@SerrePositivity.InfinityCategories.pastingCornerRestrict_trivialKanFibration.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  (p :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}) X),
+  SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+    (SerrePositivity.InfinityCategories.sliceUnderRestrict.{u_1} p
+      (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1}))
+@SerrePositivity.InfinityCategories.pastingCorner_isColimitCone_iff_rightSpan.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  {p :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}) X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c ↔
+    SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+      (SerrePositivity.InfinityCategories.JoinCocone.restrict.{u_1} c
+        (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1}))
+```

@@ -343,6 +343,25 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.pastingSquare_bottomEdge
 #print axioms SerrePositivity.InfinityCategories.pastingSquare_topEdge
 
+#print axioms SerrePositivity.InfinityCategories.sliceUnderRestrict_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.stable_rightAnodyneExtensions_of_prism_retraction
+#print axioms SerrePositivity.InfinityCategories.pastingCorner
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpan
+#print axioms SerrePositivity.InfinityCategories.pastingRaiseOrderHom
+#print axioms SerrePositivity.InfinityCategories.pastingRaiseSimplex
+#print axioms SerrePositivity.InfinityCategories.pastingCornerPrism
+#print axioms SerrePositivity.InfinityCategories.pastingCornerPrism_zero
+#print axioms SerrePositivity.InfinityCategories.pastingCornerRetraction
+#print axioms SerrePositivity.InfinityCategories.pastingCornerPrism_one
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpan_retraction
+#print axioms SerrePositivity.InfinityCategories.pastingCornerPrism_fixed
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpan_rightAnodyne
+#print axioms SerrePositivity.InfinityCategories.JoinCocone.restrict
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_restrict_of_rightAnodyne
+#print axioms SerrePositivity.InfinityCategories.IsColimitCone.restrict_of_rightAnodyne
+#print axioms SerrePositivity.InfinityCategories.pastingCornerRestrict_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pastingCorner_isColimitCone_iff_rightSpan
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -403,7 +422,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.LoopEvaluationLifting,
     `SerrePositivity.InfinityCategories.Stable.Loop,
     `SerrePositivity.InfinityCategories.Stable.SuspensionEquivalence,
-    `SerrePositivity.InfinityCategories.Stable.PastingShapes]
+    `SerrePositivity.InfinityCategories.Stable.PastingShapes,
+    `SerrePositivity.InfinityCategories.Stable.CosliceRestriction,
+    `SerrePositivity.InfinityCategories.Stable.PrismRetraction,
+    `SerrePositivity.InfinityCategories.Stable.PastingCorner,
+    `SerrePositivity.InfinityCategories.Stable.ColimitRestriction,
+    `SerrePositivity.InfinityCategories.Stable.PastingCofinality]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
