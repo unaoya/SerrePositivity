@@ -605,3 +605,33 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.closedRestrictionHomologyIso
 #print axioms SerrePositivity.KST.ProExcision.closedRestrictionHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.supportedRestrictionExtendIso
+#print axioms SerrePositivity.KST.ProExcision.supportedRestrictionExtendIso
+
+#check @SerrePositivity.KST.ProExcision.supportedRestrictionHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.supportedRestrictionHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding_mem_iff
+#print axioms SerrePositivity.KST.ProExcision.finiteKoszulIntEmbedding_mem_iff
+
+#check @SerrePositivity.KST.ProExcision.koszulCoefficientComplex_isStrictlySupported
+#print axioms SerrePositivity.KST.ProExcision.koszulCoefficientComplex_isStrictlySupported
+
+#check @SerrePositivity.KST.ProExcision.koszulCoefficientFiniteComplex
+#print axioms SerrePositivity.KST.ProExcision.koszulCoefficientFiniteComplex
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageFiniteRow
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageFiniteRow
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient_of_eq
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPage_d_coefficient_of_eq
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageFiniteRowIso
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageFiniteRowIso
+
+#check @SerrePositivity.KST.ProExcision.koszulSecondPageFiniteIso
+#print axioms SerrePositivity.KST.ProExcision.koszulSecondPageFiniteIso
+
+#check @SerrePositivity.KST.ProExcision.koszulSecondPageIso
+#print axioms SerrePositivity.KST.ProExcision.koszulSecondPageIso

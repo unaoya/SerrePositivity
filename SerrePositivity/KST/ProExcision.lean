@@ -30,3 +30,5 @@ public import SerrePositivity.KST.ProExcision.GradedHomology
 public import SerrePositivity.KST.ProExcision.IntervalGradeBoundary
 public import SerrePositivity.KST.ProExcision.KoszulCoefficients
 public import SerrePositivity.KST.ProExcision.FiniteKoszulShape
+public import SerrePositivity.KST.ProExcision.SupportedRestriction
+public import SerrePositivity.KST.ProExcision.KoszulCoefficientRow

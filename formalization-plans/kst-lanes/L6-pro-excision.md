@@ -38,7 +38,7 @@
 - L6b：進行中。Lemma 4.9 の有限生成加群係数版を検証済み。
 - 平坦底変換の自然なホモロジー比較・イデアル倍の像・pro-零性保存まで検証済み。
 - Lemma 4.10：実際の Mathlib SpectralSequence の頁の pro-零性保存と有限拡張を検証済み。
-- Koszul SS の E₂ 同定・次数ごとの有限収束と edge 比較は残件。
+- Koszul SS の実際の次頁を係数付き全 Koszul ホモロジーへ同定済み。塔の自然性・次数ごとの有限収束と edge 比較は残件。
 - 有限な Koszul 方向の項による濾過をテンソル複体上に構成済み。
 - そこから実際の mapping cone スペクトル対象と有限行補助スペクトル系列を構成済み。
 - 初端の零性と終端の全 Koszul 複体への包含が同型であることを証明済み。
@@ -48,7 +48,7 @@
 - 補助初頁の項を Koszul の -p 次項と K の s+2p 次ホモロジーのテンソルへ同定済み。
 - KST の (p,q) は Mathlib の (−q−2p,p) に対応し、補助初頁 2 は KST の E₁。
 - 添字の微分次数の計算を証明済み。補助頁 r は KST r−1 頁に対応する。
-- 補助初頁の隣接二行の微分と Koszul 微分の同定は証明済み。そのホモロジーを KST E₂ と同定する部分は残件。
+- 補助初頁の微分と Koszul 微分の同定、次頁の KST E₂ の Koszul ホモロジー表示を証明済み。
 - 全テンソル複体を既存 koszulComplexOn へ移す同型を列長帰納法で構成済み。
 - 次数ごと分裂する短完全列のテンソル境界を純テンソル上で計算済み。
 - 係数複体の微分の項が s≫r=0 により消えることを証明済み。
@@ -89,7 +89,10 @@
 - 固定係数次数の有限行の複体形状と、整数次数・補助初頁への埋め込みを構成済み。
 - 初頁への有限行の埋め込みは微分元・微分先について閉じることを証明済み。
 - 両方向に閉じた形状への制限が、端を含めホモロジーを保つ一般同型を構成済み。
-- 次は有限行の複体同型を作り、そのホモロジーを Mathlib 頁 3＝KST E₂ へ同定する。
+- 固定係数次数の初頁の一行を係数付き Koszul 複体の有限制限へ同型にし、補助頁 3 の有限模型を構成済み。
+- 項の台への制限と零延長の一般比較を証明し、有限模型から係数付き全 Koszul ホモロジーへの同型を構成済み。
+- koszulSecondPageIso により Mathlib 頁 3＝KST E₂ の項を計算済み。
+- 次はこの同型の Koszul 冪遷移と係数射についての自然性、塔への持ち上げ、有限収束と edge 比較を進める。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -187,6 +190,10 @@
 | finiteKoszulShape | FiniteKoszulShape.lean | 検証済み | 巡回しない有限下降複体の形状 |
 | finiteKoszulSpectralEmbedding | FiniteKoszulShape.lean | 検証済み | 固定係数次数の有限行の閉じた埋め込み |
 | closedRestrictionHomologyIso | FiniteKoszulShape.lean | 検証済み | 両方向に閉じた制限のホモロジー比較 |
+| supportedRestrictionExtendIso | SupportedRestriction.lean | 検証済み | 項の台の上の制限の零延長との同型 |
+| supportedRestrictionHomologyIso | SupportedRestriction.lean | 検証済み | 端を含む台上の制限のホモロジー比較 |
+| koszulFirstPageFiniteRowIso | KoszulCoefficientRow.lean | 検証済み | 初頁の有限行と係数付き Koszul 有限複体の同型 |
+| koszulSecondPageIso | KoszulCoefficientRow.lean | 検証済み | 実際の KST E₂ の項の全 Koszul ホモロジー表示 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
