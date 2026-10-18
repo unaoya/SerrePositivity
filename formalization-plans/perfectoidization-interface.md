@@ -64,8 +64,11 @@ T の R 作用は `R → S → T`。異なる R 作用を持つ標的もこの�
 添字は **この向き**であり opposite にしない。`(C,η)` が始対象なら `lim F_S ≃ J(C)`。
 極限に関する用語は coinitial / initial（しばしば「始対象の cofinality」と呼ぶもの）。
 `PerfUnder_u(S)` の対象は Type (u+1) だが、`derivedInfinityCategory R : SSet.{u+1}` なので
-この nerve を始域に持つ錐と `IsLimitCone` は述べられる。必要な Hom 宇宙の ULift は圏の
-記帳だけであり、加群の宇宙や D(R) を拡大しない。任意のそのサイズの極限の存在も仮定しない。
+この nerve を始域に持つ錐と `IsLimitCone` は述べられる。対象宇宙と Hom 宇宙は別に記帳する。
+既存 `initialCofinality` は `{I : Type v} [Category.{v} I]` を要求するため、
+対象 Type (u+1)・Hom Type u のこの圏に、そのまま適用できるとはしない。
+α の担当は二宇宙版への一般化、または Hom の ULift と nerve・錐の比較である。
+これは加群の宇宙や D(R) の拡大とは区別する。任意のそのサイズの極限の存在も仮定しない。
 **採用形**は `cone : JoinCone F_S`、`cone.vertex = v P S`（または指定同値）、`IsLimitCone cone`。
 
 以下は原文 pp.64–65 の証明を Type u 内で読み直した確認であり、原文に宇宙添字があるという引用ではない。
@@ -76,18 +79,25 @@ T の R 作用は `R → S → T`。異なる R 作用を持つ標的もこの�
    元全体での添字、有限変数多項式・商・p 完備化・必要な超限列は u-small に取れる。
    完備化が可算極限を使うため、単に可算回で十分とはせず、u 内の非可算正則長で反復する。
    これは Prop 7.2 の証明 (p.55) が使う完備化と ω₁-filtered colimit の交換と同じサイズ管理。
+   各段階で全元に対する操作を行い、極限段階で p 完備化する。固定した標的 T への延長は
+   各段階の根の選択から超限帰納で作る。u-small な可算積とこの長さの和・商の閉性を使う。
    Cor 7.3 (p.56) により `Q₀ := U_perfd` も Type u に構成でき、`Q₀ → T` は各 T に存在する。
+   ここでの U は「全標的への写像を延長できる」cover であり、平坦性を追加で主張しない。
 2. p.65 の Čech–Alexander 計算は `U_n := (U ⊗_S … ⊗_S U)^∧`（n+1因子）、
    `Q_n := (U_n)_perfd` の cosimplicial 環で計算するもの。各項は u-small、semiperfectoid 側の
    Cor 7.3 を使う。導来テンソルで作る場合も Prop 8.5 直前の π₀ 依存性で同じ通常の標的圏を得る。
    完備テンソルと Cor 7.3 の普遍性から、各 `(T,k) ∈ PerfUnder_u(S)` に自然に
    `Hom_S(Q_n,T) ≅ Hom_S(U_n,T) ≅ Hom_S(U,T)^(n+1) ≅ Hom_S(Q₀,T)^(n+1)`。
    これは Q_n がこの圏で Q₀ の n+1 個の coproduct であることも示す。
+   U_n の mod p で Frobenius が全射なので semiperfectoid 性が保たれる。
+   Hom の同定は n と T に自然で、coface は因子の挿入、codegeneracy は因子の乗法に対応する。
 3. `q : Δ → PerfUnder_u(S), [n] ↦ Q_n` と置く。各 T について `L_T := Hom_S(Q₀,T)` は非空。
    comma 圏 `(q ↓ T)` は、単体集合 `[n] ↦ L_T^(n+1)` の単体の圏である。
    この単体集合は L_T 上の indiscrete groupoid の nerve。L_T の一点を選び前置する
    extra degeneracy により可縮。単体の圏にも `id → prepend ← const(選んだ0単体)` があり、nerve は可縮。
    よって [HTT Thm 4.1.3.1](https://www.math.ias.edu/~lurie/papers/HTT.pdf) の双対から q は coinitial。
+   comma の射は `α : [n] → [m]` と `f_n = f_m ∘ q(α)` の組なので、使うのは
+   `(q ↓ T)` であり `(T ↓ q)` ではない。環の圏と affine site の向きをここで区別する。
    **弱始対象 Q₀ の包含一点だけが coinitial だとは主張しない。**
 4. したがって `lim_{PerfUnder_u(S)} F_S ≃ Tot_{[n]∈Δ} J(Q_n)`。
    原文の Čech 計算が右辺を S_perfd と同定する。右辺は u-small な可算図式の導来極限であり、
@@ -99,6 +109,9 @@ T の R 作用は `R → S → T`。異なる R 作用を持つ標的もこの�
 Π2 ではこの特定の錐の極限性を文献入力の欄として受け取り、任意の巨大極限を実装する必要はない。
 将来このサイズ管理を再検討して宇宙拡大案に戻すなら、D と Alg_E の宇宙拡大の充満忠実性、
 Hⁱ・単位・有限極限との整合、同じ Q_• の Tot の宇宙変更比較と u-small 模型への降下が必要になる。
+具体的には拡大関手 `ι` について、この Čech 図式に対する
+`ι(Tot J(Q_•)) ≃ Tot ι(J(Q_•))`、両宇宙の q の coinitiality、
+`ι(J_u T) ≃ J_v T` の自然性から指定錐を降ろす。充満忠実性だけでは極限の比較は出ない。
 
 ### 2.2 非完備 S の拡張と `IsModuleComplete` の関係
 
@@ -133,6 +146,23 @@ connective な animated 代数から離散 T への写像空間は離散で、π
 `Map(S^∧,T) ≃ disc Hom(H⁰S^∧,T) ≃ disc Hom(S,T) ≃ Map(S,T)`。
 必要なのはこの **離散標的に対する**式であり、全非離散代数への反射性をここで追加しない。
 E∞ 表示で述べる場合の離散切断の出典は HA Prop 7.1.3.15・7.1.3.18、animated 版も π₀ の随伴性。
+
+この鎖では三つの段階を区別する。(i) 091V と全シフトへの適用は完備な**加群**への
+写像空間の比較、(ii) `completionH0_existsUnique_algHom` は H⁰ での**環**の乗法を含む
+一意延長、(iii) HA の connective な代数の 0 切断は、その環 Hom を離散標的への Map と
+同定する一般定理である。perfectoid T は通常の離散環として使うので (ii)・(iii) で十分。
+`S^∧` と既存の Koszul 完備化代数の底・乗法・単位の比較は E2 の一般比較補題として残す。
+
+Lean に要求する具体的な補題は次のとおり（名称は役割の略記）：
+
+| 補題 | 正確に必要な結論 | 担当・根拠 |
+| --- | --- | --- |
+| 完備性比較 | `IsModuleComplete S p T ↔ IsModuleComplete T p T`（`S →+* T` に沿う作用） | DerivedCompletion / ScalarRestriction、`map_natCast` |
+| 環 Hom の延長 | 完備 T に対し `∃! g : S^∧₀ →+* T, g.comp η = f` | DerivedCompletion の上記代数定理と一変数完備化の比較 |
+| 延長の自然性 | `ext(f ∘ a) = ext(f) ∘ completionMap(a)`、`ext(b ∘ f) = b ∘ ext(f)`（b の標的も完備） | Π/Completion。一意性から証明 |
+| 完備始域の単位 | S が `IsModuleComplete` なら `η : S →+* S^∧₀` は環同型 | 加群完備化単位の同型と乗法保存 |
+| 添字圏の比較 | 単位との前合成と一意延長が互いに逆、標的忘却関手と両立 | Π/Completion。標的 T の台は Type u のまま |
+| 完備化 Map | connective な完備化の比較を経て `Map(S^∧,T) ≃ Map(S,T)`、前合成は単位で与える | E2。HA 7.1.3.15・18 と上記環 Hom 同値 |
 
 §0 の元の始域からの拡張は `P(S) := P_C(S^∧₀)` とし、単位は `S → S^∧₀ → P_C(S^∧₀)`。
 Prop 8.5 の π₀ 依存性によりこれは `(S^∧)_perfd` と同じである。
@@ -391,9 +421,9 @@ d := IsPerfectoidization.map hQ hE
 | Π2-2 完備化の橋 | `S^∧₀` と単位を通常の R 代数の関手に包装。完備性と C_R 上の単位同型を証明 | DerivedCompletion が Λ・単位・H⁰ 完備性・環の一意延長を供給済み。Π/Completion が自然性・制限した標的圏同値・錐の輸送を担当。animated Map は E2 に留保 |
 | Π2-3 H⁰・limit データ | `H0RingData`、`BSLimitConeData` を定義。射影・単位の環準同型と各自然性を型に含める | Π/LimitData。α は既存 `JoinCone`・`IsLimitCone`、β は H⁰ の自然性を供給。H⁰ の極限保存は α/β の一般補題 |
 | Π2-4 構造体 | perfd、unit、h0、coconnective、離散時 universal、limit、integral、excision の型を宣言 | Π/Interface。excision の四角形・2単体は元の商図式から作る。D4 の定理の証明を待たず構造体の型を置ける |
-| Π2-5 始対象の橋 | `hC : IsPerfectoidization p η` から `P(S) ≃ J(C)` を指定錐・単位に両立して導く。4辺を map に同定 | α は `initialCofinality` から極限計算と一意性、Π/Comparison は環同型と `lift_unique` の比較等式を担当。ここで全4頂点の離散性を得る |
+| Π2-5 始対象の橋 | `hC : IsPerfectoidization p η` から `P(S) ≃ J(C)` を指定錐・単位に両立して導く。4辺を map に同定 | α は §2.1 の二宇宙対応と `initialCofinality` からの極限計算・一意性、Π/Comparison は環同型と `lift_unique` の比較等式を担当。ここで全4頂点の離散性を得る |
 | Π2-6 存在入力 | integral → Disc → universal で `exists_perfectoidization_of_integral` と同じ型を証明 | Π/Integral。§2.2 の包装により非完備 S も扱う。既存の存在入力を証明中に使わない |
-| Π2-7 Excision 入力 | excision → D4 → 指定された差の fiber 列 → 長完全列 → 短完全列・差の全射性・環の引き戻し | β/D4 と α/安定性・長完全列が一般定理を供給、Π/Excision が既存の4辺へ輸送。最後は既存 DerivedSingleTrianglePullback の橋を使う |
+| Π2-7 Excision 入力 | 四頂点の Disc を仮定として受け取り、excision → D4 → 指定された差の fiber 列 → 長完全列 → 短完全列・差の全射性・環の引き戻し | β/D4・D6a の公開定理を使い、Π/Excision が既存の4辺へ輸送。最後は既存 DerivedSingleTrianglePullback の橋を使う。Disc の供給は保留中の Π2-5 後半で後から埋める |
 | Π2-8 存在と監査 | E3 界面の存在だけを一つの文献入力にする。二入力の界面依存版を監査 | Π/Existence。BS の各命題・§2 の紙上導出に対応する。旧 Inputs の置換と CLMST の付替えは Π3 として別に行う |
 
 Π2-3 の limit 欄は特定の錐の極限性を受け取るので、§2.1 の cover 構成を Lean で先に
@@ -403,6 +433,17 @@ Hom の表示、α が「有限 coproduct 冪による Čech 図式の coinitial
 Čech coinitiality まで証明済みとは扱わない。
 同様に §2.2 の animated 完備化と既存の加群完備化の乗法・単位付き比較、離散標的への
 Map と π₀ の比較は E2 が担当し、E3 の二入力への橋は環 Hom の既存定理で閉じる。
+
+型を置く順序は `0 → 1 → 2 → 3 → 4`、その後 `5` と `6`、最後に `7 → 8`。
+Π2-6 は Π2-5 を待たず、界面の integral・universal のみで進められる。
+各欄の一般補題の帰属は、perfd・unit が Π2-1、H⁰ が Π2-3、coconnective の判定が β/D、
+universal の通常環への包装が Π2-5、limit の coinitiality が α、integral の非完備拡張が
+Π2-2・6、excision の長完全列が β/D6a、環への帰結が Π2-7 である。
+D6a の `derivedSquareFiberTriangle_distinguished`・`derivedSquareInfinityHomologyLongExact`、
+D6b の `moduleHeartHomEquiv`、D6c の `derivedInfinityDisc_iff`・
+`derivedInfinityDiscEdge_invertible` は公開済み。Π2-7 では Disc の消滅条件から直接
+長完全列の両端を消せる。指定普遍環との H⁰ 環同型と四辺の一致は universal と単位の自然性で得る。
+この環の比較は Π2-5 後半の指定錐・単位付き導来同値を代替する成果とは数えない。
 
 採用する変更は、(i) Cor 8.12 を E3 では D(R) で述べる、(ii) E2a では homotopy
 引き戻し・Map^h で述べる、(iii) universal を Cor 8.14 の **離散時**に限定する、
@@ -702,5 +743,146 @@ exists_perfectoidization_of_integral
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
     (F : PerfectoidizationInterfaceE3 R p hR) :
     ∃ (C : Type u) (_ : CommRing C) (f : S →+* C), IsPerfectoidization p f
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
+
+### Π2-7（Disc を仮定する excision の橋）
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u
+open CategoryTheory CategoryTheory.Limits MonoidalCategory
+open SerrePositivity.InfinityCategories
+open scoped Simplicial
+attribute [local instance] HasDerivedCategory.standard
+variable (R : Type u) [CommRing R]
+theorem squareHZero_shortExact
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory R)
+    (hF : IsPullbackSquare F)
+    (hD : IsZero (derivedInfinityHomology R (-1) (derivedSquareTargetVertex F)))
+    (hA : IsZero (derivedInfinityHomology R 1 (pullbackCone F).vertex)) :
+    (derivedSquareInfinityHomology₂ F hF 0).ShortExact
+
+abbrev underAlgebra (S : A_R R) : Algebra R S.right
+
+attribute [local instance] underAlgebra
+
+def underAlgHom {S T : A_R R} (f : S ⟶ T) : S.right →ₐ[R] T.right
+
+variable {P : algebraNerve R ⟶ derivedInfinityCategory R}
+    {η : NatInfinity R (J R) P} (h0 : H0RingData R P η)
+    {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
+    (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d)
+def h0SquareShortComplex : ShortComplex (ModuleCat.{u} R)
+
+theorem h0SquareShortComplex_shortExact
+    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
+    (hA : Disc R (vertex R P A)) (hD : Disc R (vertex R P D)) :
+    (h0SquareShortComplex R h0 a b c d w).ShortExact
+
+theorem h0Square_isPullback
+    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
+    (hA : Disc R (vertex R P A)) (hD : Disc R (vertex R P D)) :
+    IsPullback (h0.ringFunctor.map a).right (h0.ringFunctor.map b).right
+      (h0.ringFunctor.map c).right (h0.ringFunctor.map d).right
+
+theorem h0Square_difference_surjective
+    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
+    (hA : Disc R (vertex R P A)) (hD : Disc R (vertex R P D)) :
+    Function.Surjective (fun x : (h0.ringFunctor.obj B).right × (h0.ringFunctor.obj C).right =>
+      (h0.ringFunctor.map c).right.hom x.1 - (h0.ringFunctor.map d).right.hom x.2)
+
+variable (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    (F : PerfectoidizationInterfaceE3 R p hR)
+def h0PerfectoidEquiv (S : A_R R) (hS : Disc R (vertex R F.perfd S))
+    {C : Type u} [CommRing C] (ηC : S.right →+* C) (hC : IsPerfectoidization p ηC) :
+    (F.h0.ringFunctor.obj S).right ≃+* C
+
+theorem h0PerfectoidEquiv_unit (S : A_R R) (hS : Disc R (vertex R F.perfd S))
+    {C : Type u} [CommRing C] (ηC : S.right →+* C) (hC : IsPerfectoidization p ηC) :
+    (h0PerfectoidEquiv R p hR F S hS ηC hC).toRingHom.comp (F.h0.unit.app S).right.hom = ηC
+
+theorem h0PerfectoidEquiv_naturality {S T : A_R R} (f : S ⟶ T)
+    (hS : Disc R (vertex R F.perfd S)) (hT : Disc R (vertex R F.perfd T))
+    {C D : Type u} [CommRing C] [CommRing D]
+    (ηC : S.right →+* C) (ηD : T.right →+* D)
+    (hC : IsPerfectoidization p ηC) (hD : IsPerfectoidization p ηD) :
+    (h0PerfectoidEquiv R p hR F T hT ηD hD).toRingHom.comp
+        (F.h0.ringFunctor.map f).right.hom =
+      (IsPerfectoidization.map hC hD f.right.hom).comp
+        (h0PerfectoidEquiv R p hR F S hS ηC hC).toRingHom
+
+theorem specifiedSquare_of_disc
+    {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
+    (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d)
+    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ F.perfd))
+    (hA : Disc R (vertex R F.perfd A)) (hB : Disc R (vertex R F.perfd B))
+    (hC : Disc R (vertex R F.perfd C)) (hD : Disc R (vertex R F.perfd D))
+    {A' B' C' D' : Type u} [CommRing A'] [CommRing B'] [CommRing C'] [CommRing D']
+    {ηA : A.right →+* A'} {ηB : B.right →+* B'}
+    {ηC : C.right →+* C'} {ηD : D.right →+* D'}
+    (hA' : IsPerfectoidization p ηA) (hB' : IsPerfectoidization p ηB)
+    (hC' : IsPerfectoidization p ηC) (hD' : IsPerfectoidization p ηD) :
+    let a' := IsPerfectoidization.map hA' hB' a.right.hom
+    let b' := IsPerfectoidization.map hA' hC' b.right.hom
+    let c' := IsPerfectoidization.map hB' hD' c.right.hom
+    let d' := IsPerfectoidization.map hC' hD' d.right.hom
+    IsPullback (CommRingCat.ofHom a') (CommRingCat.ofHom b')
+        (CommRingCat.ofHom c') (CommRingCat.ofHom d') ∧
+      Function.Surjective (fun x : B' × C' => c' x.1 - d' x.2)
+
+theorem excision_of_disc {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
+    (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S.right (p : S.right)
+      (ModuleCat.of S.right S.right))
+    (hT : SerrePositivity.DerivedCompletion.IsModuleComplete T.right (p : T.right)
+      (ModuleCat.of T.right T.right))
+    (hI : SerrePositivity.DerivedCompletion.IsModuleComplete S.right (p : S.right)
+      (ModuleCat.of S.right I)) (harc : ArcOutside R p f I)
+    (dS : Disc R (vertex R F.perfd S)) (dT : Disc R (vertex R F.perfd T))
+    (dQ : Disc R (vertex R F.perfd (quotientAlgebra R S I)))
+    (dE : Disc R (vertex R F.perfd (quotientAlgebra R T (I.map f.right.hom))))
+    {C D Q E : Type u} [CommRing C] [CommRing D] [CommRing Q] [CommRing E]
+    {ηS : S.right →+* C} {ηT : T.right →+* D}
+    {ηQ : S.right ⧸ I →+* Q} {ηE : T.right ⧸ I.map f.right.hom →+* E}
+    (hC : IsPerfectoidization p ηS) (hD : IsPerfectoidization p ηT)
+    (hQ : IsPerfectoidization p ηQ) (hE : IsPerfectoidization p ηE) :
+    let a := IsPerfectoidization.map hC hD f.right.hom
+    let b := IsPerfectoidization.map hC hQ (Ideal.Quotient.mk I)
+    let c := IsPerfectoidization.map hD hE (Ideal.Quotient.mk (I.map f.right.hom))
+    let d := IsPerfectoidization.map hQ hE
+      (Ideal.quotientMap (I.map f.right.hom) f.right.hom Ideal.le_comap_map)
+    IsPullback (CommRingCat.ofHom a) (CommRingCat.ofHom b)
+        (CommRingCat.ofHom c) (CommRingCat.ofHom d) ∧
+      Function.Surjective (fun x : D × Q => c x.1 - d x.2)
+
+theorem perfectoidization_excision_of_disc
+    (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
+    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    (F : PerfectoidizationInterfaceE3 R p hR) (f : S →ₐ[R] T) (I : Ideal S)
+    (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))
+    (hT : SerrePositivity.DerivedCompletion.IsModuleComplete T (p : T) (ModuleCat.of T T))
+    (hI : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S I))
+    (harc : ∀ (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V],
+      ringKrullDim V = 1 → IsAdicComplete (Ideal.span {(p : V)}) V →
+      ∀ k : S →+* V, ¬ (I ≤ RingHom.ker k) →
+        ∃! l : T →+* V, l.comp f.toRingHom = k)
+    (dS : Disc R (vertex R F.perfd (ofAlgebra R S)))
+    (dT : Disc R (vertex R F.perfd (ofAlgebra R T)))
+    (dQ : Disc R (vertex R F.perfd (quotientAlgebra R (ofAlgebra R S) I)))
+    (dE : Disc R (vertex R F.perfd (quotientAlgebra R (ofAlgebra R T) (I.map f.toRingHom))))
+    {C D Q E : Type u} [CommRing C] [CommRing D] [CommRing Q] [CommRing E]
+    {ηS : S →+* C} {ηT : T →+* D}
+    {ηQ : S ⧸ I →+* Q} {ηE : T ⧸ I.map f.toRingHom →+* E}
+    (hC : IsPerfectoidization p ηS) (hD : IsPerfectoidization p ηT)
+    (hQ : IsPerfectoidization p ηQ) (hE : IsPerfectoidization p ηE) :
+    let a := IsPerfectoidization.map hC hD f.toRingHom
+    let b := IsPerfectoidization.map hC hQ (Ideal.Quotient.mk I)
+    let c := IsPerfectoidization.map hD hE (Ideal.Quotient.mk (I.map f.toRingHom))
+    let d := IsPerfectoidization.map hQ hE
+      (Ideal.quotientMap (I.map f.toRingHom) f.toRingHom Ideal.le_comap_map)
+    IsPullback (CommRingCat.ofHom a) (CommRingCat.ofHom b)
+        (CommRingCat.ofHom c) (CommRingCat.ofHom d) ∧
+      Function.Surjective (fun x : D × Q => c x.1 - d x.2)
+
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 ```
