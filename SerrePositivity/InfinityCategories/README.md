@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3717件で成功し、公開332宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3720件で成功し、公開344宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1488,9 +1488,23 @@ topEval (p+q) (AW (ψ (projA (flag (e⊕f)))) (φ (projB (flag (e⊕f)))))
 `standardTopEval_AW_cubeSum_signed_sum` はこの二つの置換に関する AW 評価の符号付き二重和が
 `compose R (cubeEvaluation e ψ) (cubeEvaluation f φ)` に等しいことを示す。
 
-まだ dg nerve への単体集合の射は得ていない。全置換の和から区間を保つ置換の組への再添字付け、
-その和と Path の合成面の対応、dg 単体の方程式、退化も含む自然性、
-および比較写像の頂点・辺・三角形での一致が残る。
+`cubeBlockPermutation_inversion_of_not_range` は区間を保たない全置換から逆転の組を取り出し、
+`cubeBlockPermutation_sum` は像の外で零となる和を区間内置換の二重和へ再添字付けする。
+`standardTopEval_AW_cubeSum_all_permutations` は、これを AW 評価の全置換の和に適用する。
+`cubeAWCompositionMap ψ φ : Coherent.cube (A ⊕ B) ⟶ standardHomSpace x z` は
+前の射・後の射の座標射影を Cartesian な積に組み、標準合成へ送る実際の単体集合の射。
+`cubeEvaluation_AW_comp e f ψ φ` は次の等式を与える。
+
+```text
+cubeEvaluation (cubeSumEnumeration e f) (cubeAWCompositionMap ψ φ)
+  = compose R (cubeEvaluation e ψ) (cubeEvaluation f φ).
+```
+
+前提は同じく `[CommRing R] [DGCategory R D]`、次数は `−↑(p+q)`、零次元も含む。
+これで全最大旗の AW 評価の合成公式を得た。
+まだ dg nerve への単体集合の射は得ていない。Path の内部点の削除集合と切断点の左右の
+区間の座標集合をこの和の座標へ同定し、降順の向きを対応させる工程、dg 単体の方程式、
+退化も含む自然性、および比較写像の頂点・辺・三角形での一致が残る。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

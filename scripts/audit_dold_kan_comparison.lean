@@ -359,6 +359,18 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_deletion
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_deletion
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum_zero_of_not_block
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum_zero_of_not_block
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum_all_permutations
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum_all_permutations
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeAWCompositionMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeAWCompositionMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_AW_comp
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_AW_comp
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_cubeSum_prefix
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_cubeSum_prefix
 
@@ -409,6 +421,18 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_signed_sum
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_signed_sum
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_injective
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_injective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_exists_of_mapsTo
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_exists_of_mapsTo
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_inversion_of_not_range
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_inversion_of_not_range
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_sum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_sum
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_all_internal_sum_eq_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_all_internal_sum_eq_zero
@@ -565,6 +589,18 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_restriction_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_restriction_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumLeftMap_flag_repeat
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumLeftMap_flag_repeat
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumRightMap_flag_repeat
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumRightMap_flag_repeat
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeSum_zero_of_inversion
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeSum_zero_of_inversion
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum_zero_of_inversion
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum_zero_of_inversion
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumEnumeration
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumEnumeration

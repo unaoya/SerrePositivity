@@ -194,7 +194,11 @@ StandardSimplex R x z n` が追加仮定なしの合成。
 `compose R (cubeFlagEvaluation e ψ) (cubeFlagEvaluation f φ)` に等しいと示す。
 `standardTopEval_AW_cubeSum_signed_sum` は区間内置換の符号付き二重和が
 `compose R (cubeEvaluation e ψ) (cubeEvaluation f φ)` に等しいと示す。次数は `−↑(p+q)`、零次元の因子も含む。
-全置換の和を区間内置換の組の和へ再添字付けし、Path の合成面へ戻す工程は残る。
-公開332宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
+`cubeBlockPermutation_sum` は区間外で零の全置換の和を区間内置換の二重和へ再添字付けする。
+`cubeEvaluation_AW_comp e f ψ φ :
+cubeEvaluation (cubeSumEnumeration e f) (cubeAWCompositionMap ψ φ) =
+compose R (cubeEvaluation e ψ) (cubeEvaluation f φ) _` は全最大旗の評価の合成公式。
+同じ前提・次数で零次元も含む。Path の左右の区間への座標と降順の向きの同定は残る。
+公開344宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
 比較写像、低次の一致、写像空間の比較。A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済み。
 比較写像と各 pinched Hom の実際のホモトピー同値を完成させた後に適用する。
