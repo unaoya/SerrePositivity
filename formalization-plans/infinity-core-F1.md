@@ -5932,5 +5932,69 @@ instance relativeJoinLeftFunctor_preservesConnectedColimits {Y S : SSet.{u}} (g 
     (J : Type v) [Category.{w} J] [Small.{u} J] [IsConnected J] :
     PreservesColimitsOfShape J (relativeJoinLeftFunctor g)
 
+lemma isPrecompositionEquivalence_over_of_sequential_colimit {S : SSet.{u}}
+    {F G : Over S ⥤ SSet.{u}} (t : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape ℕ F] [PreservesColimitsOfShape ℕ G]
+    (D : ℕ ⥤ Over S) [∀ n, Mono (D.map (homOfLE (Nat.le_succ n)))]
+    (c : Cocone D) (hc : IsColimit c)
+    (ht : ∀ n, IsPrecompositionEquivalence (t.app (D.obj n))) :
+    IsPrecompositionEquivalence (t.app c.pt)
+
+lemma isPrecompositionEquivalence_over_of_widePushout_colimit {S : SSet.{u}}
+    (J : Type u) {F G : Over S ⥤ SSet.{u}} (t : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape (WidePushoutShape J) F] [PreservesColimitsOfShape (WidePushoutShape J) G]
+    (D : WidePushoutShape J ⥤ Over S) [∀ j, Mono (D.map (.init j))]
+    (c : Cocone D) (hc : IsColimit c)
+    (ht : ∀ n, IsPrecompositionEquivalence (t.app (D.obj n))) :
+    IsPrecompositionEquivalence (t.app c.pt)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_of_sequential_colimit
+    {S : SSet.{u}} (D : ℕ ⥤ Over S)
+    [∀ n, Mono (D.map (homOfLE (Nat.le_succ n)))]
+    (c : Cocone D) (hc : IsColimit c)
+    (h : ∀ n, IsPrecompositionEquivalence (relativeJoinCylinderComparison (D.obj n).hom)) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison c.pt.hom)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_of_widePushout_colimit
+    (J : Type u) {S : SSet.{u}} (D : WidePushoutShape J ⥤ Over S)
+    [∀ j, Mono (D.map (.init j))] (c : Cocone D) (hc : IsColimit c)
+    (h : ∀ j, IsPrecompositionEquivalence (relativeJoinCylinderComparison (D.obj j).hom)) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison c.pt.hom)
+
+noncomputable def overCoproductWideCocone {J : Type u} {S : SSet.{u}}
+    (objs : J → Over S) (c : Cofan objs) :
+    Cocone (WidePushoutShape.wideSpan (⊥_ (Over S)) objs (fun j ↦ initial.to (objs j)))
+
+noncomputable def overCoproductWideCocone_isColimit {J : Type u} {S : SSet.{u}}
+    (objs : J → Over S) (c : Cofan objs) (hc : IsColimit c) :
+    IsColimit (overCoproductWideCocone objs c)
+
+lemma isPrecompositionEquivalence_over_of_coproduct_cocone
+    (J : Type u) {S : SSet.{u}} {F G : Over S ⥤ SSet.{u}} (t : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape (WidePushoutShape J) F]
+    [PreservesColimitsOfShape (WidePushoutShape J) G]
+    (objs : J → Over S) (c : Cofan objs) (hc : IsColimit c)
+    (h0 : IsPrecompositionEquivalence (t.app (⊥_ (Over S))))
+    (h : ∀ j, IsPrecompositionEquivalence (t.app (objs j))) :
+    IsPrecompositionEquivalence (t.app c.pt)
+
+noncomputable def relativeJoinOverSigmaCofan {J : Type u} {S : SSet.{u}}
+    (X : J → SSet.{u}) (f : ∀ j, X j ⟶ S) : Cofan (fun j ↦ Over.mk (f j))
+
+noncomputable def relativeJoinOverSigmaCofan_isColimit {J : Type u} {S : SSet.{u}}
+    (X : J → SSet.{u}) (f : ∀ j, X j ⟶ S) :
+    IsColimit (relativeJoinOverSigmaCofan X f)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_initialOver (S : SSet.{u}) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison (⊥_ (Over S)).hom)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_sigma
+    {J : Type u} {S : SSet.{u}} (X : J → SSet.{u}) (f : ∀ j, X j ⟶ S)
+    (h : ∀ j, IsPrecompositionEquivalence (relativeJoinCylinderComparison (f j))) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison (Sigma.desc f))
+
 end SerrePositivity.InfinityCategories
 ```
