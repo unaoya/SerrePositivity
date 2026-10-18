@@ -83,6 +83,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1023,6 +1024,66 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
 #print axioms SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
+
+
+-- FatDegreeNormalization.lean
+
+#check @SerrePositivity.KST.Comparison.fatDegreeCofork
+#print axioms SerrePositivity.KST.Comparison.fatDegreeCofork
+
+#check @SerrePositivity.KST.Comparison.fatDegreeCoforkIsColimit
+#print axioms SerrePositivity.KST.Comparison.fatDegreeCoforkIsColimit
+
+#check @SerrePositivity.KST.Comparison.fatRowNormalize
+#print axioms SerrePositivity.KST.Comparison.fatRowNormalize
+
+#check @SerrePositivity.KST.Comparison.fatRowNormalize_condition
+#print axioms SerrePositivity.KST.Comparison.fatRowNormalize_condition
+
+#check @SerrePositivity.KST.Comparison.fatDegreeNormalize
+#print axioms SerrePositivity.KST.Comparison.fatDegreeNormalize
+
+#check @SerrePositivity.KST.Comparison.fatDegreeNormalize_π
+#print axioms SerrePositivity.KST.Comparison.fatDegreeNormalize_π
+
+#check @SerrePositivity.KST.Comparison.fatDegreeNormalize_inclusion
+#print axioms SerrePositivity.KST.Comparison.fatDegreeNormalize_inclusion
+
+
+-- FatNormalForm.lean
+
+#check @SerrePositivity.KST.Comparison.FatNormalForm
+#print axioms SerrePositivity.KST.Comparison.FatNormalForm
+
+#check @SerrePositivity.KST.Comparison.fatNormalize
+#print axioms SerrePositivity.KST.Comparison.fatNormalize
+
+#check @SerrePositivity.KST.Comparison.fatNormalize_eq_of_factorization
+#print axioms SerrePositivity.KST.Comparison.fatNormalize_eq_of_factorization
+
+#check @SerrePositivity.KST.Comparison.fatNormalize_face
+#print axioms SerrePositivity.KST.Comparison.fatNormalize_face
+
+#check @SerrePositivity.KST.Comparison.fatNormalize_of_normalForm
+#print axioms SerrePositivity.KST.Comparison.fatNormalize_of_normalForm
+
+
+-- FatNormalFormEquiv.lean
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormRealize
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormRealize
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormRealize_normalize
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormRealize_normalize
+
+#check @SerrePositivity.KST.Comparison.fatDegreeNormalize_realize
+#print axioms SerrePositivity.KST.Comparison.fatDegreeNormalize_realize
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormRealize_degreeNormalize
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormRealize_degreeNormalize
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormEquiv
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormEquiv
 
 
 -- FatRealization.lean
@@ -2421,6 +2482,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.simplexFaceRetraction_chain
 #print axioms SerrePositivity.KST.Comparison.simplexFaceRetraction_chain
+
+
+-- SimplexImageMono.lean
+
+#check @SerrePositivity.KST.Comparison.simplexImage_comp_mono
+#print axioms SerrePositivity.KST.Comparison.simplexImage_comp_mono
+
+#check @SerrePositivity.KST.Comparison.simplexImage_comp_mono_ι
+#print axioms SerrePositivity.KST.Comparison.simplexImage_comp_mono_ι
+
+#check @SerrePositivity.KST.Comparison.simplexFactorThruImage_comp_mono
+#print axioms SerrePositivity.KST.Comparison.simplexFactorThruImage_comp_mono
+
+#check @SerrePositivity.KST.Comparison.simplexImage_of_epi
+#print axioms SerrePositivity.KST.Comparison.simplexImage_of_epi
+
+#check @SerrePositivity.KST.Comparison.simplexImage_ι_of_epi
+#print axioms SerrePositivity.KST.Comparison.simplexImage_ι_of_epi
+
+#check @SerrePositivity.KST.Comparison.simplexFactorThruImage_of_epi
+#print axioms SerrePositivity.KST.Comparison.simplexFactorThruImage_of_epi
 
 
 -- SimplicialCoproductMono.lean

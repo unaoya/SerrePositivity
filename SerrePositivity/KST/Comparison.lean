@@ -77,6 +77,8 @@ public import SerrePositivity.KST.Comparison.DiagonalRowDesc
 
 public import SerrePositivity.KST.Comparison.FatRealizationFunctor
 
+public import SerrePositivity.KST.Comparison.FatNormalFormEquiv
+
 /-!
 # K-L2：比較定理の入口
 
