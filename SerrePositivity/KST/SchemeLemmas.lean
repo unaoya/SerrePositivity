@@ -252,3 +252,5 @@ public import SerrePositivity.KST.SchemeLemmas.DisjointOpenCoverClosed
 public import SerrePositivity.KST.SchemeLemmas.DisjointCenterGluing
 public import SerrePositivity.KST.SchemeLemmas.DisjointBlowupChartCenter
 public import SerrePositivity.KST.SchemeLemmas.GlobalGenericFreeCenter
+public import SerrePositivity.KST.SchemeLemmas.GenericPureFreeBaseChange
+public import SerrePositivity.KST.SchemeLemmas.GenericPureFreeBaseChangeNeighborhoods
