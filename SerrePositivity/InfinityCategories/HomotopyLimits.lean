@@ -279,3 +279,6 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.KanCoconeColimit
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SimplicialCoproducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanCoproducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceCoproducts
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeLegs
+public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCoconeLegs
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceCoproductLegs

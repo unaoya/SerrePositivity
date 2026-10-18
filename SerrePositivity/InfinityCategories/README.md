@@ -2080,7 +2080,8 @@ Sp の極限対象の段は置換せず、Kan 性・構造射の単射性・全�
 反対の極限性による双対判定を検証した。離散添字では全反変 Hom の極限性から余極限性を導き、
 Kan 複体の余錐では台の余極限性からこの Hom 条件を検証する。
 𝒮 の実際の小さい余積を、空余積を含めて Kan 性・台の普遍性とともに公開した。
-余錐の各脚の照合、homotopy 押し出し・逐次余極限は後続工程。
+通常の余錐の各脚と元の射の厳密な一致、および余積の成分包含との一致も検証した。
+homotopy 押し出し・逐次余極限は後続工程。
 任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
 一般形状の非反転 q_x との直接比較と E2a 完了後の E2b 適用は残る。
 指定三形状の可縮性判定を、これらの未完了工程を含む γ3 全体の完成とは数えない。
@@ -9792,3 +9793,129 @@ lemma spaceCoproductCocone_isColimitCone (F : Discrete J ⥤ KanObject.{u}) :
 公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-space-coproduct-aggregate.log`、`/tmp/gamma3-space-coproduct-audit.log`。
+
+### γ3：native な余錐の各脚と元の通常の射・余積の成分包含の厳密な一致
+
+native な余錐を指定した頂点と余錐頂点の二点の join に制限し、標準区間へ戻す実際の射を
+`coherentCoconeLegMap` とした。この脚は、値域の後合成、添字の再表示、図式の等式による
+余錐の移送と厳密に可換である。錐を反転して得た余錐の脚は、元の錐の脚を区間ごと反転した
+射に等しい。二点の join の反転を標準区間の反転と照合して証明した。
+
+通常の余錐 c の `strictNativeCocone c` について、任意の i の脚は、元の射 c.ι.app i の
+通常の nerve から coherent nerve への標準表示に厳密に一致する。
+添字の反転の同型を零単体で計算し、反対の錐の脚の既存の等式を使ってから値域を元へ戻す。
+値域の帰還については一次の coherent simplex の対象と Hom を比較する。
+逆向きの Path が存在しない場合も空の始域の射の一意性で処理し、省略しない。
+局所 Kan 性、余極限性、添字の形状の仮定は不要。
+
+𝒮 の実際の余積では、`spaceCoproductCoconeLeg F j` が直和の標準包含
+`simplicialCoproductι (fun k ↦ (F.obj ⟨k⟩).obj) j` の coherent 表示に一致する。
+元の F1 の図式上への移送は脚を変えず、余積対象も実際の直和のまま保持される。
+これで小さい余積について、対象・native な余錐・余極限性に加えて各成分包含の照合も完了した。
+
+homotopy 押し出し・逐次余極限、一般形状の非反転 q_x への移送、E2a 後の E2b は未完了。
+原典：HTT 4.2.4.1、Kerodon 4.6.7・7.5.4.6。
+
+公開する十一宣言の正確な型は以下。最初の六宣言は宣言内の前提のみを使う。
+`StrictCoconeLegs` の共通前提は `I : Type u [SmallCategory I]`、
+`C : Type v [Category.{u} C] [SimplicialCategory C]`。値域の帰還の辺の補題には I は不要。
+`SpaceCoproductLegs` は `J : Type u` を共通前提とする。
+
+`CoherentCoconeLegs.lean`：
+
+```lean
+def coherentCoconeLegMap {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCocone p)
+    (i : (Δ[0] : SSet.{u}) ⟶ K) : (Δ[1] : SSet.{u}) ⟶ X
+```
+
+`CoherentCoconeLegs.lean`：
+
+```lean
+lemma coherentCoconeLegMap_post {K X Y : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCocone p) (q : X ⟶ Y) (i : (Δ[0] : SSet.{u}) ⟶ K) :
+    coherentCoconeLegMap (coherentCoconePost c q) i = coherentCoconeLegMap c i ≫ q
+```
+
+`CoherentCoconeLegs.lean`：
+
+```lean
+lemma coherentCoconeLegMap_restrict {K L X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCocone p) (r : L ⟶ K) (i : (Δ[0] : SSet.{u}) ⟶ L) :
+    coherentCoconeLegMap (c.restrict r) i = coherentCoconeLegMap c (i ≫ r)
+```
+
+`CoherentCoconeLegs.lean`：
+
+```lean
+lemma coherentCoconeLegMap_ofDiagramEq {K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (c : JoinCocone p) (i : (Δ[0] : SSet.{u}) ⟶ K) :
+    coherentCoconeLegMap (coherentCoconeOfDiagramEq h c) i = coherentCoconeLegMap c i
+```
+
+`CoherentCoconeLegs.lean`：
+
+```lean
+lemma pointJoinStdSimplexIso_reverse :
+    (pointJoinStdSimplexIso.{u} 0).inv ≫
+        joinMap (stdSimplex.opIso ⦋0⦌).inv (stdSimplex.opIso ⦋0⦌).inv ≫
+        (stableJoinReverseIso Δ[0] Δ[0]).inv =
+      (stdSimplex.opIso ⦋1⦌).inv ≫ SSet.opFunctor.map (pointJoinStdSimplexIso 0).inv
+```
+
+`CoherentCoconeLegs.lean`：
+
+```lean
+lemma coherentCoconeLegMap_reverse {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (i : (Δ[0] : SSet.{u}) ⟶ K) :
+    coherentCoconeLegMap c.reverseCocone
+        ((stdSimplex.opIso ⦋0⦌).inv ≫ SSet.opFunctor.map i) =
+      (stdSimplex.opIso ⦋1⦌).inv ≫ SSet.opFunctor.map
+        ((pointJoinStdSimplexIso 0).inv ≫ joinMap (𝟙 Δ[0]) i ≫ c.val)
+```
+
+`StrictCoconeLegs.lean`：
+
+```lean
+lemma coherentOppositeReturnIso_hom_edge {x y : C} (f : x ⟶ y) :
+    (coherentOppositeReturnIso C).hom.app (Opposite.op ⦋1⦌)
+        (SSet.opObjEquiv.symm ((nerveToCoherent Cᵒᵖ).app (Opposite.op ⦋1⦌)
+          (ComposableArrows.mk₁ f.op))) =
+      (nerveToCoherent C).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)
+```
+
+`StrictCoconeLegs.lean`：
+
+```lean
+def strictNativeCoconeLeg {F : I ⥤ C} (c : Cocone F) (i : I) :
+    (Δ[1] : SSet.{max u v}) ⟶ SimplicialNerve C
+```
+
+`StrictCoconeLegs.lean`：
+
+```lean
+lemma strictNativeCoconeLeg_eq {F : I ⥤ C} (c : Cocone F) (i : I) :
+    strictNativeCoconeLeg c i = SSet.yonedaEquiv.symm
+      ((nerveToCoherent C).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ (c.ι.app i)))
+```
+
+`SpaceCoproductLegs.lean`：
+
+```lean
+noncomputable def spaceCoproductCoconeLeg (F : Discrete J ⥤ KanObject.{u}) (j : J) :
+    (Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}
+```
+
+`SpaceCoproductLegs.lean`：
+
+```lean
+lemma spaceCoproductCoconeLeg_eq (F : Discrete J ⥤ KanObject.{u}) (j : J) :
+    spaceCoproductCoconeLeg F j = SSet.yonedaEquiv.symm
+      ((nerveToCoherent KanObject.{u}).app (Opposite.op ⦋1⦌)
+        (ComposableArrows.mk₁ (show F.obj ⟨j⟩ ⟶ kanCoproductObject F from
+          simplicialCoproductι (fun k : J ↦ (F.obj ⟨k⟩).obj) j)))
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4993 jobs）、公開1561宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-coproduct-leg-aggregate.log`、`/tmp/gamma3-coproduct-leg-audit.log`。

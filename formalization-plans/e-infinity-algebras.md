@@ -2242,3 +2242,19 @@ IsColimitCone (spaceCoproductCocone F)`。J : Type u に有限性・非空性は
 公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-space-coproduct-aggregate.log`、`/tmp/gamma3-space-coproduct-audit.log`。
+
+### γ3：native な余錐の各脚と元の射・空間の余積の包含の照合
+
+`CoherentCoconeLegs.lean` の六宣言で余錐の実際の脚を定義し、後合成・制限・図式の移送との
+可換性、二点の join の反転と脚の反転の等式を証明。
+`StrictCoconeLegs.lean` の三宣言で値域の帰還の一次単体を計算し、元の通常の余錐 c の
+`strictNativeCoconeLeg c i` が c.ι.app i の coherent 表示に厳密に一致することを証明した。
+局所 Kan 性や余極限性は不要。
+`SpaceCoproductLegs.lean` の二宣言で元の空間値図式上の余積の各脚を標準の成分包含と同定。
+小さい余積の対象・余錐・余極限性・各脚は検証済み。十一宣言の正確な型と全前提は README。
+homotopy 押し出し・逐次余極限、一般形状の非反転 q_x、E2a 後の E2b は未完了。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4993 jobs）、公開1561宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-coproduct-leg-aggregate.log`、`/tmp/gamma3-coproduct-leg-audit.log`。
