@@ -33,7 +33,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.PointedMappingNaturality,
     `SerrePositivity.KST.Spectra.TruncatedMappingUniversal,
     `SerrePositivity.KST.Spectra.SpectrumMorphisms,
-    `SerrePositivity.KST.Spectra.SpectrumMappingVertices]
+    `SerrePositivity.KST.Spectra.SpectrumMappingVertices,
+    `SerrePositivity.KST.Spectra.PointedEnrichment,
+    `SerrePositivity.KST.Spectra.TensorMapping,
+    `SerrePositivity.KST.Spectra.SuspensionComposition,
+    `SerrePositivity.KST.Spectra.EnrichedMappingLaws]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

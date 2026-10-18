@@ -16,6 +16,7 @@
 - 既存 Spectra の `PointedSimplicialSet.Basic` と `Pointed.InternalHom` の基礎定義を借りる。
 - この借用は Under による点つき対象と等化子による Hom のみで、安定モデル構造は含まない。
 - suspension・loop では既存 Spectra の円、smash、閉対称モノイダル構造の通常の圏論的構成も借りる。
+- 豊穣構造の移送は既存 CategoryTheory の通常の lax monoidal 関手の補題を借りる。
 - 既存 HomotopicalAlgebra は読むだけで編集しない。
 - 既存 InfinityCategories は読むだけで編集しない。
 
@@ -23,7 +24,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・21 モジュール 821 宣言の公理監査成功。
+対象ビルド・25 モジュール 844 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -575,3 +576,32 @@ L9c 全体は未完了。次は切断スペクトルの Hom の塔を実装す�
 未完了：単体的合成の極限への持ち上げと単位律・結合律、γ1 の適用。
 整数次数群・置換・fiber 列・有理化・hG・Tot は引き続き未完了。
 次は各段の点つき Hom の単体的合成を構成し、極限の普遍性で写像空間へ持ち上げる。
+
+## 24. L9c の各段の単体的合成と suspension の豊穣性
+
+点つき閉 smash の自己豊穣を、忘却の lax monoidal 関手で単体的豊穣へ移した。
+その Hom と零次単体の同値は既存の等化子・頂点表示と一致する。
+源と標的への豊穣作用を、相対充填に使った pre と後合成に比較した。
+左テンソルの写像対象への作用が豊穣合成を保つことを一般の閉モノイダル圏で証明した。
+これを suspension に特殊化し、単体的豊穣関手として構成した。
+構造射と整合する二つのパラメータ付き写像の合成の整合性も一般に証明した。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedEnrichment.simplicialCategory` | 点つき単体集合の単体的圏 |
+| `PointedEnrichment.hom_eq` | 等化子による Hom との一致 |
+| `PointedEnrichment.vertexEquiv_eq` | 点つき射と頂点の同値との一致 |
+| `PointedEnrichment.whiskerRight_eq` / `.whiskerLeft_eq` | 源と標的への作用の比較 |
+| `TensorMapping.map` | 一般の閉モノイダル圏での左テンソルの写像対象への作用 |
+| `TensorMapping.comp` | 一般の左テンソルの豊穣合成保存 |
+| `suspensionHom_id` / `suspensionHom_comp` | 点つき豊穣の単位・合成の保存 |
+| `suspensionHom_simplicial_comp` | 単体的豊穣の合成保存 |
+| `suspensionEnrichedFunctor` | 単体的豊穣関手としての suspension |
+| `enriched_comp_middle` | 中間の射の前合成と後合成の整合性 |
+| `enriched_compatible_comp` | 構造射との整合条件の合成に関する閉性 |
+
+参照：BF 1978 §2、HTT A.3.3。
+保存単位の対象ビルド 1573 jobs 成功。
+私有宣言を含む 25 モジュール 844 宣言で標準三公理のみ。
+次はこの合成の整合性をスペクトルの評価族へ適用し、極限へ合成を持ち上げる。
+スペクトルの単体的圏と coherent nerve の構成は引き続き未完了。

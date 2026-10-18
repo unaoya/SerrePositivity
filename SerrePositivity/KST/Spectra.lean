@@ -15,3 +15,5 @@ public import SerrePositivity.KST.Spectra.FibrationTower
 public import SerrePositivity.KST.Spectra.TruncatedMapping
 public import SerrePositivity.KST.Spectra.OmegaSpectrum
 public import SerrePositivity.KST.Spectra.SpectrumMappingVertices
+public import SerrePositivity.KST.Spectra.SuspensionComposition
+public import SerrePositivity.KST.Spectra.EnrichedMappingLaws
