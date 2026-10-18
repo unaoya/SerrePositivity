@@ -2408,5 +2408,30 @@ lemma coherentResolutionBoundary_eq_iSup_faces (n : ℕ) :
       ⨆ j : Fin (n + 2),
         Subcomplex.range (coherentResolutionMap (SimplexCategory.δ j).toOrderHom)
 
+lemma stdSimplex_map_mono_of_injective {n m : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
+    Mono (SSet.stdSimplex.{u}.map (SimplexCategory.mkHom β))
+
+noncomputable def coherentResolutionImageProjection {n m : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
+    (Subcomplex.range (coherentResolutionMap.{u} β)).toSSet ⟶
+      (Subcomplex.range (SSet.stdSimplex.map (SimplexCategory.mkHom β))).toSSet
+
+lemma coherentResolutionImageProjection_toRange {n m : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
+    Subcomplex.toRange (coherentResolutionMap.{u} β) ≫ coherentResolutionImageProjection β hβ =
+      coherentResolutionProjection n ≫
+        Subcomplex.toRange (SSet.stdSimplex.map (SimplexCategory.mkHom β))
+
+lemma coherentResolutionImageProjection_ι {n m : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
+    coherentResolutionImageProjection.{u} β hβ ≫
+      (Subcomplex.range (SSet.stdSimplex.map (SimplexCategory.mkHom β))).ι =
+      (Subcomplex.range (coherentResolutionMap β)).ι ≫ coherentResolutionProjection m
+
+lemma coherentResolutionImageProjection_isPrecompositionEquivalence {n m : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (hβ : Function.Injective β) :
+    IsPrecompositionEquivalence (coherentResolutionImageProjection.{u} β hβ)
+
 end SerrePositivity.InfinityCategories
 ```

@@ -93,3 +93,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentPinchedReindex
 public import SerrePositivity.InfinityCategories.F1.CoherentFlagIso
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionSupport
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionBoundary
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionImage
