@@ -7514,5 +7514,22 @@ lemma mappingCylinder_isPrecompositionEquivalence_of_quasicategories
     (hc : ∀ x : X _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex H x)) :
     IsPrecompositionEquivalence (pushout.desc H g w)
 
+def boundaryInclusions : MorphismProperty SSet.{u}
+
+instance boundaryInclusions_isSmall : MorphismProperty.IsSmall.{u} boundaryInclusions.{u}
+
+instance boundaryInclusions_isCardinalForSmallObjectArgument :
+    IsCardinalForSmallObjectArgument boundaryInclusions.{u} Cardinal.aleph0.{u}
+
+instance boundaryInclusions_hasSmallObjectArgument : HasSmallObjectArgument.{u} boundaryInclusions.{u}
+
+lemma boundaryInclusions_rlp_eq : boundaryInclusions.{u}.rlp = trivialKanFibrations
+
+lemma boundaryInclusions_llp_rlp_le_monomorphisms :
+    boundaryInclusions.{u}.rlp.llp ≤ monomorphisms SSet
+
+lemma exists_mono_trivialKan_factorization {X Y : SSet.{u}} (f : X ⟶ Y) :
+    ∃ (Z : SSet.{u}) (i : X ⟶ Z) (p : Z ⟶ Y), Mono i ∧ TrivialKanFibration p ∧ i ≫ p = f
+
 end SerrePositivity.InfinityCategories
 ```

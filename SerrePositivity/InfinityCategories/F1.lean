@@ -351,3 +351,4 @@ public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
 public import SerrePositivity.InfinityCategories.F1.CocartesianCrossingComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionEquivalence
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1.BoundaryFactorization
