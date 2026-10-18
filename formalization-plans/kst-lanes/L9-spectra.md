@@ -31,7 +31,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・283 モジュール 3230 宣言の公理監査成功。
+対象ビルド・289 モジュール 3281 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2423,4 +2423,38 @@ BF 対象の構成に群の有限性は不要である。
 保存単位の対象ビルド 3641 jobs 成功。
 私有宣言を含む 283 モジュール 3230 宣言で標準三公理のみ。
 L9e は進行中。次は厳密な錐から end への比較を構成し、自明作用から hG への標準射を BF 射にする。
+有理 Shapiro と通常の Tot との比較は引き続き未完了。
+
+## 83. L9e の自明作用から hG への実際の標準射
+
+自由基点を加えた重みを smash の単位へ潰し、各対象の元を重み全体で定数な族へ送る点つき射を構成した。
+標的と重みの源に関する自然性を示し、任意の厳密な点つき錐から enriched end への標準比較を得た。
+この比較は極限錐の仮定を必要としない。
+
+二重内部 Hom の単位での整合性を二重 uncurry と単位子の計算で示した。
+これにより定数族は loop の交換と整合し、end への標準比較は内部 Hom と係数の双方に自然となる。
+Kan 列の錐を各段で評価して end へ送り、随伴構造射との可換性から厳密な Kan 列の射に束ねた。
+
+BF 図式の厳密な錐では、その始域の単射構造射を使い、比較を標的の BF 置換へ持ち上げた。
+自明作用の図式は元の X を頂点とする厳密な定数錐を持つ。
+その錐を使い、元の X から (自明 G 作用の X)^{hG} への実際の BF 射を構成した。
+比較を置換前へ射影すると、Kan end の定数族の標準比較そのものになる。
+射の構成には有限性・有理性を仮定していない。
+有限群・有理係数での π_* 同型性は後続で証明する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `InternalHomExchange.natural_unit_inv` | 二つの内部 Hom の交換と単位の逆同型の整合性 |
+| `PointedWeightedEnd.constantFamily` / `constantFamily_pre` / `constantFamily_post` | 重みの変数を忘れた実際の定数族と自然性 |
+| `PointedWeightedEnd.coneComparison` / `coneComparison_π` | 厳密な錐から end への標準比較と各射影の式 |
+| `PointedWeightedEnd.coneComparison_natural` / `coneComparison_cotensor` | 標準比較と係数・内部 Hom の自然性 |
+| `KanSequence.homotopyLimitCone` | 厳密な Kan 列の錐から段ごとの homotopy end への厳密な射 |
+| `OmegaSpectrum.homotopyLimitConeComparison` / `homotopyLimitConeComparison_projection` | BF 置換へ持ち上げた標準比較と射影式 |
+| `trivialActionCone` | 元の X を頂点とする自明作用図式の実際の厳密な錐 |
+| `homotopyFixedPointsUnit` / `homotopyFixedPointsUnit_projection` | 自明作用の hG への実際の標準射と置換前の公式 |
+
+参照：HA §1.4.2、BF 1978 §2、HTT A.3.3、Kerodon 7.5.4.1。
+保存単位の対象ビルド 3647 jobs 成功。
+私有宣言を含む 289 モジュール 3281 宣言で標準三公理のみ。
+L9e は進行中。次は end と Kan 列の射への関手性を整え、有理係数の π_* 比較を進める。
 有理 Shapiro と通常の Tot との比較は引き続き未完了。

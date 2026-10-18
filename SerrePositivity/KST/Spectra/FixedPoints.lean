@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Spectra.InternalHomExchangeUnit
+public import SerrePositivity.KST.Spectra.PointedWeightedCone
+public import SerrePositivity.KST.Spectra.PointedWeightedConeCompatibility
+public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitCone
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitCone
+public import SerrePositivity.KST.Spectra.FixedPointUnit
+
 public import SerrePositivity.KST.Spectra.PointedWeightedEndMap
 public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimit
 public import SerrePositivity.KST.Spectra.FixedPointSpectra
