@@ -13156,3 +13156,412 @@ SerrePositivity.InfinityCategories.spanSquareBoundary_swap.{u_1} : Eq.{u_1 + 1}
 ループの群構造と双積の加法の一致、負号、回転第三射、TR2、八面体・TR4、
 Pretriangulated instance、S5〜S7 は未完了。
 この帰着を負号または三角構造の完成とは数えない。
+
+
+## 2026-10-19：固定図式上の二枝交換の自己作用と Hom 表示
+
+S4 の対称 suspension 模型の交換を写像空間で扱う補助工程。
+i : K → K が i ≫ p = p を満たす場合、fixedCosliceReindex p i hi は同じ sliceUnder p の自己射。
+図式の輸送を部分型の条件へ閉じ込め、自己射の型には輸送を残さない。
+終点射影と厳密に可換で、i が対合なら自己射も対合となる。
+fixedCoconeMappingReindex は同じ終点 y の余錐空間への制限で、同じく対合。
+これらの構成・計算は値域の充填性を要求しない。
+
+JoinCocone.reindexFixed は同じ coslice 内での余錐の変更。
+vertex_reindexFixed は頂点を保つ等号、IsColimitCone.reindexFixed は対合の下での余極限性の保存。
+fixedCoconeReindexVertexIso は元の余錐と再添字付け後の余錐の標準比較を、
+同じ頂点の表示へ戻した自己同型。X が Quasicategory、c が余極限余錐なら、
+coconeMappingSpacePiZeroEquiv_reindexFixed は余錐空間の π₀ の作用がこの自己同型による
+Hom の前合成になることを証明する。
+通常の形状制限と図式の等号輸送への分解、ならびに任意パラメータでの uncurry の計算も証明した。
+
+転置で span が変わらない suspension s について、固定図式内で再添字付けた pushoutCocone は
+transposedCoconeOfSameSpan と部分型として等しい。
+SuspensionSquare.fixedReindexVertexIso_eq_swapIso_arrow は、この標準頂点自己同型が
+既存の s.swapIso と Arrow として一致することを示す。
+chosenSymmetricSuspensionSquare_reindex_swap_arrow は対称模型に適用し、追加の span の等号を除く。
+
+symmetricCoconeSwap f y は edgeSpan f f の余錐空間 D(p) 上の実際の二枝交換。
+二度で恒等となり、symmetricCoconeSwapIso に束ねられる。
+_left・_right は任意パラメータの余錐を展開したとき二枝を交換する計算則。
+ここには Quasicategory 性・f の終点の零対象性は不要。
+_piZero は X が Quasicategory、c が edgeSpan f f の余極限余錐なら、
+Hom 表示での作用が標準頂点自己同型による前合成であることを与える。
+
+追加モジュールは FixedCosliceReindex、FixedCoconeReindexHom、SuspensionFixedReindexSwap、
+FixedCosliceReindexUncurry、SymmetricCoconeSwap の五つ。
+公開名付き 28 宣言の正確な型（Lean の #check @ による出力）：
+
+```lean
+@SerrePositivity.InfinityCategories.fixedCosliceReindex.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    (i : Quiver.Hom.{u_1, u_1 + 1} K K) →
+      Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p →
+        Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+          (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+@SerrePositivity.InfinityCategories.fixedCosliceReindex_projection.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (i : Quiver.Hom.{u_1, u_1 + 1} K K)
+  (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.fixedCosliceReindex.{u_1} p i hi)
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p))
+    (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p)
+@SerrePositivity.InfinityCategories.fixedCosliceReindex_comp_self.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (i : Quiver.Hom.{u_1, u_1 + 1} K K)
+  (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p),
+  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i i)
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) →
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.fixedCosliceReindex.{u_1} p i hi)
+        (SerrePositivity.InfinityCategories.fixedCosliceReindex.{u_1} p i hi))
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+@SerrePositivity.InfinityCategories.fixedCosliceReindexIso.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    (i : Quiver.Hom.{u_1, u_1 + 1} K K) →
+      Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p →
+        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i i)
+            (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) →
+          CategoryTheory.Iso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+            (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+@SerrePositivity.InfinityCategories.fixedCoconeMappingReindex.{u_1} : {K X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) →
+    (i : Quiver.Hom.{u_1, u_1 + 1} K K) →
+      Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p →
+        (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+          Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p y)
+            (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p y)
+@SerrePositivity.InfinityCategories.fixedCoconeMappingReindex_comp_self.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (i : Quiver.Hom.{u_1, u_1 + 1} K K)
+  (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p),
+  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i i)
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) →
+    ∀ (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.fixedCoconeMappingReindex.{u_1} p i hi y)
+          (SerrePositivity.InfinityCategories.fixedCoconeMappingReindex.{u_1} p i hi y))
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p y))
+@SerrePositivity.InfinityCategories.JoinCocone.reindexFixed.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    SerrePositivity.InfinityCategories.JoinCocone.{u_1} p →
+      (i : Quiver.Hom.{u_1, u_1 + 1} K K) →
+        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p →
+          SerrePositivity.InfinityCategories.JoinCocone.{u_1} p
+@SerrePositivity.InfinityCategories.JoinCocone.vertex_reindexFixed.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (i : Quiver.Hom.{u_1, u_1 + 1} K K) (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1}
+      (SerrePositivity.InfinityCategories.JoinCocone.reindexFixed.{u_1} c i hi))
+    (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1} c)
+@SerrePositivity.InfinityCategories.IsColimitCone.reindexFixed.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} {c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p},
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c →
+    ∀ (i : Quiver.Hom.{u_1, u_1 + 1} K K) (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p),
+      Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i i)
+          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) →
+        SerrePositivity.InfinityCategories.IsColimitCone.{u_1}
+          (SerrePositivity.InfinityCategories.JoinCocone.reindexFixed.{u_1} c i hi)
+@SerrePositivity.InfinityCategories.fixedCoconeReindexVertexIso.{u_1} : {K X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+      (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+        SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c →
+          (i : Quiver.Hom.{u_1, u_1 + 1} K K) →
+            Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p →
+              Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i i)
+                  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) →
+                CategoryTheory.Iso.{u_1, u_1}
+                  (SSet.HomotopyCategory.mk.{u_1} (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1} c))
+                  (SSet.HomotopyCategory.mk.{u_1} (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1} c))
+@SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_reindexFixed.{u_1} : ∀ {K X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c) (i : Quiver.Hom.{u_1, u_1 + 1} K K)
+  (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p)
+  (hii :
+    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i i)
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K))
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a : SSet.π₀.{u_1} (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p y)),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv.{u_1} c hc y)
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.fixedCoconeMappingReindex.{u_1} p i hi y) a))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.fixedCoconeReindexVertexIso.{u_1} c hc i hi hii))
+      ((SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv.{u_1} c hc y) a))
+@SerrePositivity.InfinityCategories.stableArrow_comp_eqToHom.{u_1,
+    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {x y z : C} (f : Quiver.Hom.{u_1, u_2} x y)
+  (h : Eq.{u_2 + 1} y z),
+  Eq.{max (u_2 + 1) (u_1 + 1)}
+    (CategoryTheory.Arrow.mk.{u_1, u_2}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_2} f (CategoryTheory.eqToHom.{u_1, u_2} h)))
+    (CategoryTheory.Arrow.mk.{u_1, u_2} f)
+@SerrePositivity.InfinityCategories.stableColimitVertexIso_congr_target_arrow.{u_1} : ∀ {K X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c d e : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c)
+  (hd : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} d)
+  (he : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} e),
+  Eq.{u_1 + 1} d e →
+    Eq.{u_1 + 1}
+      (CategoryTheory.Arrow.mk.{u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (SerrePositivity.InfinityCategories.colimitVertexIso.{u_1} c d hc hd)))
+      (CategoryTheory.Arrow.mk.{u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (SerrePositivity.InfinityCategories.colimitVertexIso.{u_1} c e hc he)))
+@SerrePositivity.InfinityCategories.SuspensionSquare.spanSwap_fixed.{u_1} : ∀ {X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x),
+  Eq.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.transpose.{u_1} s))))
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s))) →
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanSwap.{u_1}
+        (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+          (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s))))
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))
+@SerrePositivity.InfinityCategories.SuspensionSquare.pushoutCocone_reindexFixed_spanSwap.{u_1} : ∀ {X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x)
+  (h :
+    Eq.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.transpose.{u_1} s))))
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.JoinCocone.reindexFixed.{u_1}
+      (SerrePositivity.InfinityCategories.pushoutCocone.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))
+      SerrePositivity.InfinityCategories.spanSwap.{u_1} ⋯)
+    (SerrePositivity.InfinityCategories.SuspensionSquare.transposedCoconeOfSameSpan.{u_1} s h)
+@SerrePositivity.InfinityCategories.SuspensionSquare.fixedReindexVertexIso_eq_swapIso_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x)
+  (h :
+    Eq.{u_1 + 1}
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+            (SerrePositivity.InfinityCategories.SuspensionSquare.transpose.{u_1} s))))
+      (SerrePositivity.InfinityCategories.pushoutSpan.{u_1}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+          (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.fixedCoconeReindexVertexIso.{u_1}
+          (SerrePositivity.InfinityCategories.pushoutCocone.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s)))
+          ⋯ SerrePositivity.InfinityCategories.spanSwap.{u_1} ⋯
+          SerrePositivity.InfinityCategories.spanSwap_comp_self.{u_1})))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1} (SerrePositivity.InfinityCategories.SuspensionSquare.swapIso.{u_1} s)))
+@SerrePositivity.InfinityCategories.chosenSymmetricSuspensionSquare_reindex_swap_arrow.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.fixedCoconeReindexVertexIso.{u_1}
+          (SerrePositivity.InfinityCategories.pushoutCocone.{u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+              (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1}
+                (SerrePositivity.InfinityCategories.chosenSymmetricSuspensionSquare.{u_1} x))))
+          ⋯ SerrePositivity.InfinityCategories.spanSwap.{u_1} ⋯
+          SerrePositivity.InfinityCategories.spanSwap_comp_self.{u_1})))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.SuspensionSquare.swapIso.{u_1}
+          (SerrePositivity.InfinityCategories.chosenSymmetricSuspensionSquare.{u_1} x))))
+@SerrePositivity.InfinityCategories.stableCosliceChange_val.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X} (h : Eq.{u_1 + 1} p q) (n : ℕ)
+  (s :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+      (Opposite.op.{1} { len := n })),
+  Eq.{u_1 + 1}
+    ↑((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} (CategoryTheory.eqToHom.{u_1, u_1 + 1} ⋯)
+            (Opposite.op.{1} { len := n })))
+        s)
+    ↑s
+@SerrePositivity.InfinityCategories.fixedCosliceReindex_eq_restrict.{u_1} : ∀ {K X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (i : Quiver.Hom.{u_1, u_1 + 1} K K)
+  (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p),
+  Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.fixedCosliceReindex.{u_1} p i hi)
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnderRestrict.{u_1} p i)
+      (CategoryTheory.eqToHom.{u_1, u_1 + 1} ⋯))
+@SerrePositivity.InfinityCategories.stableCosliceChange_uncurry.{u_1} : ∀ {K X T : SSet.{u_1}}
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X} (h : Eq.{u_1 + 1} p q)
+  (a : Quiver.Hom.{u_1, u_1 + 1} T (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a (CategoryTheory.eqToHom.{u_1, u_1 + 1} ⋯)))
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1} a)
+@SerrePositivity.InfinityCategories.fixedCosliceReindex_uncurry.{u_1} : ∀ {K X T : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (i : Quiver.Hom.{u_1, u_1 + 1} K K)
+  (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p)
+  (a : Quiver.Hom.{u_1, u_1 + 1} T (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+        (SerrePositivity.InfinityCategories.fixedCosliceReindex.{u_1} p i hi)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} i (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} T))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1} a))
+@SerrePositivity.InfinityCategories.fixedCoconeMappingReindex_uncurry.{u_1} : ∀ {K X T : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (i : Quiver.Hom.{u_1, u_1 + 1} K K)
+  (hi : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p) p)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a : Quiver.Hom.{u_1, u_1 + 1} T (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p y)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.fixedCoconeMappingReindex.{u_1} p i hi y))
+        (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+          (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p) y)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} i (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} T))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p) y))))
+@SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} : {X : SSet.{u_1}} →
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (f : SSet.Truncated.Edge.{u_1} x z) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+        Quiver.Hom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+@SerrePositivity.InfinityCategories.symmetricCoconeSwap_comp_self.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y)
+      (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y))
+@SerrePositivity.InfinityCategories.symmetricCoconeSwapIso.{u_1} : {X : SSet.{u_1}} →
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (f : SSet.Truncated.Edge.{u_1} x z) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+        CategoryTheory.Iso.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+@SerrePositivity.InfinityCategories.symmetricCoconeSwap_left.{u_1} : ∀ {X T : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a :
+    Quiver.Hom.{u_1, u_1 + 1} T
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} SSet.horn₂₀.ι₀₁.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} T))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+            (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y))
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+            y))))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} SSet.horn₂₀.ι₀₂.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} T))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+            y))))
+@SerrePositivity.InfinityCategories.symmetricCoconeSwap_right.{u_1} : ∀ {X T : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a :
+    Quiver.Hom.{u_1, u_1 + 1} T
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} SSet.horn₂₀.ι₀₂.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} T))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+            (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y))
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+            y))))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} SSet.horn₂₀.ι₀₁.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} T))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+            y))))
+@SerrePositivity.InfinityCategories.symmetricCoconeSwap_piZero.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a :
+    SSet.π₀.{u_1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv.{u_1} c hc y)
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y) a))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1}
+        (SerrePositivity.InfinityCategories.fixedCoconeReindexVertexIso.{u_1} c hc
+          SerrePositivity.InfinityCategories.spanSwap.{u_1} ⋯
+          SerrePositivity.InfinityCategories.spanSwap_comp_self.{u_1}))
+      ((SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv.{u_1} c hc y) a))
+```
+
+対象ビルド 2523 jobs、対象・Stable 集約ビルド 2560 jobs が終了コード 0 で成功。
+公開型抽出・公理監査も終了コード 0。監査は 274 モジュール・2051 宣言
+（生成・非公開宣言を含む）で、標準三公理 propext・Classical.choice・Quot.sound のみ。
+新規五モジュールの警告なし。git diff --check 成功。
+引用・追加公理・sorry は導入していない。他レーンのファイルは変更していない。
+
+実際の交換自己同型、その二枝への作用、Hom 表示での前合成、対称模型の swapIso との同定まで完成。
+二枝の厳密な引き戻しからループ模型への比較（余錐空間の表示の輸送を含む）、
+ループの群構造と双積の加法の一致、負号、回転第三射、TR2、八面体・TR4、
+Pretriangulated instance、S5〜S7 は未完了。
+交換が対合であることや Hom 表示との両立だけを負号の証明とは数えない。

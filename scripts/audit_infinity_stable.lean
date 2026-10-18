@@ -1,6 +1,35 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.fixedCosliceReindex
+#print axioms SerrePositivity.InfinityCategories.fixedCosliceReindex_projection
+#print axioms SerrePositivity.InfinityCategories.fixedCosliceReindex_comp_self
+#print axioms SerrePositivity.InfinityCategories.fixedCosliceReindexIso
+#print axioms SerrePositivity.InfinityCategories.fixedCoconeMappingReindex
+#print axioms SerrePositivity.InfinityCategories.fixedCoconeMappingReindex_comp_self
+#print axioms SerrePositivity.InfinityCategories.JoinCocone.reindexFixed
+#print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_reindexFixed
+#print axioms SerrePositivity.InfinityCategories.IsColimitCone.reindexFixed
+#print axioms SerrePositivity.InfinityCategories.fixedCoconeReindexVertexIso
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_reindexFixed
+#print axioms SerrePositivity.InfinityCategories.stableArrow_comp_eqToHom
+#print axioms SerrePositivity.InfinityCategories.stableColimitVertexIso_congr_target_arrow
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.spanSwap_fixed
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.pushoutCocone_reindexFixed_spanSwap
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.fixedReindexVertexIso_eq_swapIso_arrow
+#print axioms SerrePositivity.InfinityCategories.chosenSymmetricSuspensionSquare_reindex_swap_arrow
+#print axioms SerrePositivity.InfinityCategories.stableCosliceChange_val
+#print axioms SerrePositivity.InfinityCategories.fixedCosliceReindex_eq_restrict
+#print axioms SerrePositivity.InfinityCategories.stableCosliceChange_uncurry
+#print axioms SerrePositivity.InfinityCategories.fixedCosliceReindex_uncurry
+#print axioms SerrePositivity.InfinityCategories.fixedCoconeMappingReindex_uncurry
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSwap
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSwap_comp_self
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSwapIso
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSwap_left
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSwap_right
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSwap_piZero
+
 #print axioms SerrePositivity.InfinityCategories.spanSquareBoundary_swap
 #print axioms SerrePositivity.InfinityCategories.pushoutSpan_transpose
 #print axioms SerrePositivity.InfinityCategories.edgeSpan_self_swap
@@ -1265,7 +1294,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SymmetricSpan,
     `SerrePositivity.InfinityCategories.Stable.SymmetricSuspension,
     `SerrePositivity.InfinityCategories.Stable.SuspensionSwapChoice,
-    `SerrePositivity.InfinityCategories.Stable.ChosenSymmetricSuspension]
+    `SerrePositivity.InfinityCategories.Stable.ChosenSymmetricSuspension,
+    `SerrePositivity.InfinityCategories.Stable.FixedCosliceReindex,
+    `SerrePositivity.InfinityCategories.Stable.FixedCoconeReindexHom,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionFixedReindexSwap,
+    `SerrePositivity.InfinityCategories.Stable.FixedCosliceReindexUncurry,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeSwap]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

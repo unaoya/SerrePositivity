@@ -162,6 +162,12 @@ public import SerrePositivity.InfinityCategories.Stable.SymmetricSuspension
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSwapChoice
 public import SerrePositivity.InfinityCategories.Stable.ChosenSymmetricSuspension
 
+public import SerrePositivity.InfinityCategories.Stable.FixedCosliceReindex
+public import SerrePositivity.InfinityCategories.Stable.FixedCoconeReindexHom
+public import SerrePositivity.InfinityCategories.Stable.SuspensionFixedReindexSwap
+public import SerrePositivity.InfinityCategories.Stable.FixedCosliceReindexUncurry
+public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeSwap
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
