@@ -1,11 +1,7 @@
 module
 
 public import SerrePositivity.KST.SchemeLemmas.GenericPrimeBaseChange
-public import SerrePositivity.KST.SchemeLemmas.PureTransformStalkEquiv
-public import SerrePositivity.KST.SchemeLemmas.PureTransformCongr
-public import SerrePositivity.KST.SchemeLemmas.FlatPureTransformBaseChange
-public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientScalar
-public import SerrePositivity.KST.SchemeLemmas.NormalizedCoefficientIdeal
+public import SerrePositivity.KST.SchemeLemmas.PureFreeStalkBaseChange
 
 /-!
 概要：KST §5、Stacks 0810・0811 の一般点で自由な純変換の追加基底変更。
@@ -56,55 +52,26 @@ theorem genericPureTransformFree_baseChange
   intro P
   let Q := geometricallyIntegralGenericPrime C D P
   let q := Q.comap (algebraMap B D)
-  let L₀ := Localization.AtPrime q.asIdeal
   let L := Localization.AtPrime Q.asIdeal
-  let := Localization.AtPrime.algebraOfLiesOver q.asIdeal Q.asIdeal
   let : IsNoetherianRing B := Algebra.FiniteType.isNoetherianRing A B
   have hq : q = geometricallyIntegralGenericPrime A B (PrimeSpectrum.comap (algebraMap A C) P) :=
     geometricallyIntegralGenericPrime_baseChange_comap A B C e p hpe P
-  let d₀ := algebraMap B L₀ (algebraMap A B f)
-  let N₀ := L₀ ⊗[B] M
   let G := modulePureTransform (algebraMap A B f) M
   have hqfree : q ∈ Module.freeLocus B G := by rw [hq]; exact (hfree _).1
   have hqrank : Module.rankAtStalk G q = r := by rw [hq]; exact (hfree _).2
-  let : Module.Free L₀ (LocalizedModule q.asIdeal.primeCompl G) := Module.mem_freeLocus.mp hqfree
-  let E₀ := pureTransformAtPrimeTensorEquiv (M := M) q.asIdeal (algebraMap A B f)
-  let : Module.Free L₀ (modulePureTransform d₀ N₀) := Module.Free.of_equiv E₀
-  have hr₀ : Module.finrank L₀ (modulePureTransform d₀ N₀) = r :=
-    E₀.finrank_eq.symm.trans hqrank
   let d := algebraMap D L (algebraMap C D (algebraMap A C f))
-  let e' := splitAlgebraTensorEmbedding (C := C) e
-  let p' := splitAlgebraTensorRetraction (C := C) p
-  have hs : p'.comp e' = LinearMap.id := splitAlgebraTensorRetraction_comp_embedding e p hpe
   have hd : IsRegular d := by
     apply isRegular_iff_mem_nonZeroDivisors.mpr
     exact IsLocalization.nonZeroDivisors_le_comap (S := L) Q.asIdeal.primeCompl
       (isRegular_iff_mem_nonZeroDivisors.mp
-        (algebraMap_isRegular_of_split_coefficients e' p' hs (algebraMap A C f) hf))
-  have hscalar : algebraMap L₀ L d₀ = d := by
-    rw [← IsScalarTower.algebraMap_apply B L₀ L]
-    change algebraMap D L (algebraMap B D (algebraMap A B f)) = d
+        (algebraMap_isRegular_of_flat C D (algebraMap A C f) hf))
+  have hscalar : algebraMap B D (algebraMap A B f) =
+      algebraMap C D (algebraMap A C f) := by
     rw [← IsScalarTower.algebraMap_apply A B D, IsScalarTower.algebraMap_apply A C D]
-  have hd₀ : IsRegular (algebraMap L₀ L d₀) := hscalar.symm ▸ hd
-  let E₁ := flatPureTransformBaseChangeEquiv L d₀ N₀ hd₀
-  have E₁' : modulePureTransform d (L ⊗[L₀] N₀) ≃ₗ[L]
-      L ⊗[L₀] modulePureTransform d₀ N₀ := by
-    rw [← hscalar]
-    exact E₁
-  let E₂ : (L ⊗[L₀] N₀) ≃ₗ[L] (L ⊗[B] M) :=
-    TensorProduct.AlgebraTensorModule.cancelBaseChange B L₀ L L M
-  let E : modulePureTransform d (L ⊗[B] M) ≃ₗ[L]
-      L ⊗[L₀] modulePureTransform d₀ N₀ :=
-    (modulePureTransformCongr d E₂).symm.trans E₁'
-  let N := D ⊗[B] M
-  let dD := algebraMap C D (algebraMap A C f)
-  let E₃ : (L ⊗[D] N) ≃ₗ[L] (L ⊗[B] M) :=
-    TensorProduct.AlgebraTensorModule.cancelBaseChange B D L L M
-  let E₄ : LocalizedModule Q.asIdeal.primeCompl (modulePureTransform dD N) ≃ₗ[L]
-      L ⊗[L₀] modulePureTransform d₀ N₀ :=
-    (pureTransformAtPrimeTensorEquiv (M := N) Q.asIdeal dD).trans
-      ((modulePureTransformCongr d E₃).trans E)
-  refine ⟨Module.mem_freeLocus.mpr (Module.Free.of_equiv E₄.symm), ?_⟩
-  exact E₄.finrank_eq.trans ((Module.finrank_baseChange).trans hr₀)
+  have hd' : IsRegular (algebraMap D L (algebraMap B D (algebraMap A B f))) := by
+    rwa [hscalar]
+  have h := pureTransform_freeLocus_rankAtStalk_baseChange
+    (M := M) (algebraMap A B f) r Q ⟨hqfree, hqrank⟩ hd'
+  rwa [hscalar] at h
 
 end SerrePositivity.KST.SchemeLemmas
