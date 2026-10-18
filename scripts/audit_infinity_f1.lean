@@ -453,3 +453,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentResolutionMap_comp
 #check @SerrePositivity.InfinityCategories.coherentResolutionDiagram
 #check @SerrePositivity.InfinityCategories.coherentResolutionProjectionNat
+#check @SerrePositivity.InfinityCategories.coherentResolution
+#check @SerrePositivity.InfinityCategories.coherentResolutionRightAdjoint
+#check @SerrePositivity.InfinityCategories.coherentResolutionAdjunction
+#check @SerrePositivity.InfinityCategories.coherentResolutionStdIso
+#check @SerrePositivity.InfinityCategories.coherentResolution_isLeftKanExtension
+#check @SerrePositivity.InfinityCategories.coherentResolutionProjectionAll
+#check @SerrePositivity.InfinityCategories.coherentResolutionProjectionAll_std
+#check @SerrePositivity.InfinityCategories.coherentResolutionHomEquiv
+#check @SerrePositivity.InfinityCategories.coherentResolutionProjectionAll_std_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.coherentResolutionHomEquiv_app

@@ -1898,5 +1898,37 @@ def coherentResolutionDiagram : SimplexCategory ⥤ SSet.{u}
 
 def coherentResolutionProjectionNat : coherentResolutionDiagram.{u} ⟶ SSet.stdSimplex
 
+noncomputable def coherentResolution : SSet.{u} ⥤ SSet.{u}
+
+noncomputable def coherentResolutionRightAdjoint : SSet.{u} ⥤ SSet.{u}
+
+noncomputable def coherentResolutionAdjunction :
+    coherentResolution.{u} ⊣ coherentResolutionRightAdjoint
+
+noncomputable def coherentResolutionStdIso :
+    SSet.stdSimplex.{u} ⋙ coherentResolution ≅ coherentResolutionDiagram
+
+instance coherentResolution_isLeftKanExtension :
+    coherentResolution.{u}.IsLeftKanExtension
+      (SSet.stdSimplex.{u}.leftKanExtensionUnit coherentResolutionDiagram.{u})
+
+noncomputable def coherentResolutionProjectionAll : coherentResolution.{u} ⟶ 𝟭 SSet
+
+lemma coherentResolutionProjectionAll_std (n : ℕ) :
+    coherentResolutionStdIso.{u}.inv.app ⦋n⦌ ≫
+      coherentResolutionProjectionAll.app Δ[n] = coherentResolutionProjection n
+
+noncomputable def coherentResolutionHomEquiv (X Y : SSet.{u}) :
+    (coherentResolution.obj X ⟶ Y) ≃ (X ⟶ coherentResolutionRightAdjoint.obj Y)
+
+lemma coherentResolutionProjectionAll_std_isPrecompositionEquivalence (n : ℕ) :
+    IsPrecompositionEquivalence (coherentResolutionProjectionAll.{u}.app Δ[n])
+
+lemma coherentResolutionHomEquiv_app {X Y : SSet.{u}}
+    (f : coherentResolution.obj X ⟶ Y) {d : SimplexCategoryᵒᵖ} (x : X.obj d) :
+    (coherentResolutionHomEquiv X Y f).app d x =
+      ULift.up (coherentResolutionStdIso.inv.app d.unop ≫
+        coherentResolution.map (SSet.yonedaEquiv.symm x) ≫ f)
+
 end SerrePositivity.InfinityCategories
 ```
