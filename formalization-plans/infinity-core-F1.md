@@ -13063,5 +13063,33 @@ lemma edgewiseOppositeUnstraighteningFiberComparison_isQCatEquivalence {B : SSet
     (F : B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌) :
     IsQCatEquivalence (edgewiseOppositeUnstraighteningFiberComparison F b)
 
+noncomputable def coherentLeftResolutionParameterizedMap {X Y T : SSet.{u}} (f : X ⊗ T ⟶ Y) :
+    coherentLeftResolution X ⊗ T ⟶ coherentLeftResolution Y
+
+noncomputable def coherentLeftResolutionEnrichedMap (X Y : SSet.{u}) :
+    (ihom X).obj Y ⟶ (ihom (coherentLeftResolution X)).obj (coherentLeftResolution Y)
+
+noncomputable def coherentLeftResolutionKanEnriched :
+    EnrichedFunctor SSet.{u} KanObject.{u} KanObject.{u}
+
+lemma coherentLeftResolutionParameterizedMap_comparison {X Y T : SSet.{u}} (f : X ⊗ T ⟶ Y) :
+    (coherentLeftResolutionComparison X ▷ T) ≫ coherentLeftResolutionParameterizedMap f =
+      f ≫ coherentLeftResolutionComparison Y
+
+noncomputable def coherentLeftResolutionKanComparison :
+    KanEnrichedComparison (EnrichedFunctor.id SSet.{u} KanObject.{u})
+      coherentLeftResolutionKanEnriched
+
+noncomputable def coherentLeftResolutionInfinityMap : SpaceInfinity.{u} ⟶ SpaceInfinity.{u}
+
+noncomputable def coherentLeftResolutionInfinityComparisonIso :
+    FunctorIso (𝟙 SpaceInfinity.{u}) coherentLeftResolutionInfinityMap.{u}
+
+noncomputable def coherentLeftResolutionInfinityEquivalence :
+    QCatEquivalence SpaceInfinity.{u} SpaceInfinity.{u}
+
+noncomputable def coherentLeftResolutionDiagramComparisonIso {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) : FunctorIso F (F ≫ coherentLeftResolutionInfinityMap)
+
 end SerrePositivity.InfinityCategories
 ```
