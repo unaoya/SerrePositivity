@@ -225,3 +225,11 @@ public import SerrePositivity.KST.ProExcision.MatrixInsertion
 public import SerrePositivity.KST.ProExcision.BlockInsertion
 
 public import SerrePositivity.KST.ProExcision.BlockInsertionFixed
+
+public import SerrePositivity.KST.ProExcision.IdealColumnGroup
+
+public import SerrePositivity.KST.ProExcision.TriangularBlockProduct
+
+public import SerrePositivity.KST.ProExcision.IdealRightColumn
+
+public import SerrePositivity.KST.ProExcision.GroupHomotopyOperations

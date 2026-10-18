@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1105宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1118宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -351,6 +351,10 @@
 | matrixInsertionHom / matrixInsertionUnits | MatrixInsertion.lean | 検証済み | 補助座標の実挿入と成分の公式 |
 | triangularBlockGroupInsertion | BlockInsertion.lean | 検証済み | 三角条件と係数を保つ実ブロック埋め込み |
 | triangularBlockInsertionFixedHom | BlockInsertionFixed.lean | 検証済み | ψ(Q) と可換な固定ブロック群への実埋め込み |
+
+| idealBlockColumnHom / triangularBlockProductHom | IdealColumnGroup.lean / TriangularBlockProduct.lean | 検証済み | 同じ実群 H 内に値を持つ ψ と μ:P×Q→H |
+| idealVectorRightHom / lastRightColumnHom | IdealRightColumn.lean | 検証済み | イデアル内の右乗法と最後の列の実準同型 |
+| groupConjugationMHomotopy | GroupHomotopyOperations.lean | 検証済み | C(f) と C(u⁻¹fu) の実 m 次比較 |
 
 ## L6a：最小 pro 形式
 
@@ -878,3 +882,12 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `triangularBlockGroupInsertion` は三角条件と係数イデアルを保つ実群準同型。単位と逆の両方に対して差の所属を証明した。
 - `triangularBlockInsertionFixedHom` はその埋め込みが固定ブロック群に値を持つことを証明する。これで P の全体と ψ(Q) の可換性へ実際に接続できる。
 - 対象ビルド・1105宣言の公理監査は標準三公理のみで成功。Q のイデアル内への制限、実 μ、行列作用と帰納ホモトピーは続行中。
+
+
+### L6d の実 μ と右乗法の群準同型（2026-10-19）
+
+- `idealBlockColumnHom` はイデアル内の列ベクトルから実三角ブロック群への ψ。定義域は乗法タグを付けた加法群であり、H 内の値域所属を証明済み。
+- `triangularBlockProductHom` は小さい群の挿入とこの ψ の積による実群準同型 P×Q→H。固定ブロック群内での可換性から乗法保存を導いた。
+- `idealRightMultiplication` と `idealVectorRightHom` はイデアル内の右乗法。中心性を要さず、`lastRightColumnHom` で同じ実三角ブロック群の最後の列へ入れる。
+- `groupConjugationMHomotopy` は A.6 を任意の群準同型へ前合成した実 m 次ホモトピー。C(f) と C(u⁻¹fu) の両端を自由化の合成則で同定した。
+- 対象ビルド・1118宣言の公理監査は標準三公理のみで成功。次は補助元 u の実群所属、共役と μ の積の同定、帰納ホモトピーと外部行列作用。

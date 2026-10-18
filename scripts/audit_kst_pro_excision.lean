@@ -3162,3 +3162,42 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.triangularBlockInsertionFixedHom
 #print axioms SerrePositivity.KST.ProExcision.triangularBlockInsertionFixedHom
+
+#check @SerrePositivity.KST.ProExcision.idealVectorInclusion
+#print axioms SerrePositivity.KST.ProExcision.idealVectorInclusion
+
+#check @SerrePositivity.KST.ProExcision.idealBlockColumnHom
+#print axioms SerrePositivity.KST.ProExcision.idealBlockColumnHom
+
+#check @SerrePositivity.KST.ProExcision.insertion_first_rows_lt
+#print axioms SerrePositivity.KST.ProExcision.insertion_first_rows_lt
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockInsertion_commute_column
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockInsertion_commute_column
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockProductHom
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockProductHom
+
+#check @SerrePositivity.KST.ProExcision.idealRightMultiplication
+#print axioms SerrePositivity.KST.ProExcision.idealRightMultiplication
+
+#check @SerrePositivity.KST.ProExcision.idealVectorRightHom
+#print axioms SerrePositivity.KST.ProExcision.idealVectorRightHom
+
+#check @SerrePositivity.KST.ProExcision.firstRows_lt_last
+#print axioms SerrePositivity.KST.ProExcision.firstRows_lt_last
+
+#check @SerrePositivity.KST.ProExcision.lastBlockColumnHom
+#print axioms SerrePositivity.KST.ProExcision.lastBlockColumnHom
+
+#check @SerrePositivity.KST.ProExcision.lastRightColumnHom
+#print axioms SerrePositivity.KST.ProExcision.lastRightColumnHom
+
+#check @SerrePositivity.KST.ProExcision.groupLinearizedMap_comp
+#print axioms SerrePositivity.KST.ProExcision.groupLinearizedMap_comp
+
+#check @SerrePositivity.KST.ProExcision.groupLinearizedMap_id
+#print axioms SerrePositivity.KST.ProExcision.groupLinearizedMap_id
+
+#check @SerrePositivity.KST.ProExcision.groupConjugationMHomotopy
+#print axioms SerrePositivity.KST.ProExcision.groupConjugationMHomotopy
