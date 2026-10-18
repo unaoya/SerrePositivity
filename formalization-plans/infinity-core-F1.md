@@ -10231,5 +10231,36 @@ lemma leftFibrationInfinityBaseChange_vertex {B D : SSet.{u}}
     (leftFibrationInfinityBaseChange k).app (Opposite.op ⦋0⦌) (coherentNerveVertex p) =
       coherentNerveVertex (leftFibrationBaseChangeObject k p)
 
+noncomputable def leftUnstraighteningBaseChangeIso {B D : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    leftUnstraightening (k ≫ F) ≅ pullback (leftUnstraighteningProjection F) k
+
+lemma leftUnstraighteningBaseChangeIso_hom_fst {B D : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    (leftUnstraighteningBaseChangeIso F k).hom ≫
+      pullback.fst (leftUnstraighteningProjection F) k =
+        leftUnstraighteningMap (k ≫ F) F k rfl
+
+lemma leftUnstraighteningBaseChangeIso_hom_snd {B D : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    (leftUnstraighteningBaseChangeIso F k).hom ≫
+      pullback.snd (leftUnstraighteningProjection F) k =
+        leftUnstraighteningProjection (k ≫ F)
+
+noncomputable def leftUnstraighteningBaseChangeOverIso {B D : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    Over.mk (leftUnstraighteningProjection (k ≫ F)) ≅
+      (leftFibrationBaseChangeObject k
+        (leftFibrationObjectOf (leftUnstraighteningProjection F))).val
+
+lemma relativeFunctorPullback_vertex {E F B D : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (k : D ⟶ B)
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    (relativeFunctorPullback p q k).app (Opposite.op ⦋0⦌)
+      (relativeFunctorVertex q p f hf) =
+    relativeFunctorVertex (pullback.snd q k) (pullback.snd p k)
+      (pullback.lift (pullback.fst p k ≫ f) (pullback.snd p k)
+        (by rw [Category.assoc, hf, pullback.condition])) (pullback.lift_snd _ _ _)
+
 end SerrePositivity.InfinityCategories
 ```

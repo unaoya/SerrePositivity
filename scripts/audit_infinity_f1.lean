@@ -2138,3 +2138,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.leftFibrationBaseChangeEnriched
 #check @SerrePositivity.InfinityCategories.leftFibrationInfinityBaseChange
 #check @SerrePositivity.InfinityCategories.leftFibrationInfinityBaseChange_vertex
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningBaseChangeIso
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningBaseChangeIso_hom_fst
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningBaseChangeIso_hom_snd
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningBaseChangeOverIso
+#check @SerrePositivity.InfinityCategories.relativeFunctorPullback_vertex

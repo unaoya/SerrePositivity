@@ -511,3 +511,5 @@ public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingVe
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullback
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullbackLaws
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationBaseChange
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningBaseChange
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullbackVertices
