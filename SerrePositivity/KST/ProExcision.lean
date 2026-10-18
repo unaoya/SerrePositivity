@@ -197,3 +197,15 @@ public import SerrePositivity.KST.ProExcision.TensorAugmentationNaturality
 public import SerrePositivity.KST.ProExcision.DiscreteActionNaturality
 
 public import SerrePositivity.KST.ProExcision.ConstructionA5Equivariant
+
+public import SerrePositivity.KST.ProExcision.Prop414
+
+public import SerrePositivity.KST.ProExcision.BlockConjugation
+
+public import SerrePositivity.KST.ProExcision.BlockColumn
+
+public import SerrePositivity.KST.ProExcision.BlockColumnCommute
+
+public import SerrePositivity.KST.ProExcision.BlockColumnGroup
+
+public import SerrePositivity.KST.ProExcision.GroupZeroMHomotopy

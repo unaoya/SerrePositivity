@@ -2958,3 +2958,93 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.constructionA5EquivariantCylinderMap
 #print axioms SerrePositivity.KST.ProExcision.constructionA5EquivariantCylinderMap
+
+#check @SerrePositivity.KST.ProExcision.IsCentralElement
+#print axioms SerrePositivity.KST.ProExcision.IsCentralElement
+
+#check @SerrePositivity.KST.ProExcision.rightMultiplication
+#print axioms SerrePositivity.KST.ProExcision.rightMultiplication
+
+#check @SerrePositivity.KST.ProExcision.vectorRightMultiplication
+#print axioms SerrePositivity.KST.ProExcision.vectorRightMultiplication
+
+#check @SerrePositivity.KST.ProExcision.vectorRightMultiplication_mulVec
+#print axioms SerrePositivity.KST.ProExcision.vectorRightMultiplication_mulVec
+
+#check @SerrePositivity.KST.ProExcision.centralMultiplicationIdeal
+#print axioms SerrePositivity.KST.ProExcision.centralMultiplicationIdeal
+
+#check @SerrePositivity.KST.ProExcision.mem_centralMultiplicationIdeal
+#print axioms SerrePositivity.KST.ProExcision.mem_centralMultiplicationIdeal
+
+#check @SerrePositivity.KST.ProExcision.mem_centralMultiplicationIdeal_iff_right
+#print axioms SerrePositivity.KST.ProExcision.mem_centralMultiplicationIdeal_iff_right
+
+#check @SerrePositivity.KST.ProExcision.rightMultiplication_injective
+#print axioms SerrePositivity.KST.ProExcision.rightMultiplication_injective
+
+#check @SerrePositivity.KST.ProExcision.rightMultiplication_naturality
+#print axioms SerrePositivity.KST.ProExcision.rightMultiplication_naturality
+
+#check @SerrePositivity.KST.ProExcision.vectorRightMultiplication_naturality
+#print axioms SerrePositivity.KST.ProExcision.vectorRightMultiplication_naturality
+
+#check @SerrePositivity.KST.ProExcision.centralMultiplicationIdeal_map_mem
+#print axioms SerrePositivity.KST.ProExcision.centralMultiplicationIdeal_map_mem
+
+#check @SerrePositivity.KST.ProExcision.squareZeroUnit
+#print axioms SerrePositivity.KST.ProExcision.squareZeroUnit
+
+#check @SerrePositivity.KST.ProExcision.squareZero_conjugation
+#print axioms SerrePositivity.KST.ProExcision.squareZero_conjugation
+
+#check @SerrePositivity.KST.ProExcision.squareZero_mul_of_reverse_zero
+#print axioms SerrePositivity.KST.ProExcision.squareZero_mul_of_reverse_zero
+
+#check @SerrePositivity.KST.ProExcision.squareZeroUnit_conjugation
+#print axioms SerrePositivity.KST.ProExcision.squareZeroUnit_conjugation
+
+#check @SerrePositivity.KST.ProExcision.blockColumn
+#print axioms SerrePositivity.KST.ProExcision.blockColumn
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_square_zero
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_square_zero
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_mul_aux
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_mul_aux
+
+#check @SerrePositivity.KST.ProExcision.aux_mul_blockColumn_zero
+#print axioms SerrePositivity.KST.ProExcision.aux_mul_blockColumn_zero
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_conjugation
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_conjugation
+
+#check @SerrePositivity.KST.ProExcision.matrix_mul_single_of_fixed_column
+#print axioms SerrePositivity.KST.ProExcision.matrix_mul_single_of_fixed_column
+
+#check @SerrePositivity.KST.ProExcision.matrix_single_mul_of_fixed_row
+#print axioms SerrePositivity.KST.ProExcision.matrix_single_mul_of_fixed_row
+
+#check @SerrePositivity.KST.ProExcision.matrix_commute_one_add_blockColumn
+#print axioms SerrePositivity.KST.ProExcision.matrix_commute_one_add_blockColumn
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_mul_zero
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_mul_zero
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_add
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_add
+
+#check @SerrePositivity.KST.ProExcision.blockColumnHom
+#print axioms SerrePositivity.KST.ProExcision.blockColumnHom
+
+#check @SerrePositivity.KST.ProExcision.commutingProductHom
+#print axioms SerrePositivity.KST.ProExcision.commutingProductHom
+
+#check @SerrePositivity.KST.ProExcision.groupLinearizedMap_zero_eq
+#print axioms SerrePositivity.KST.ProExcision.groupLinearizedMap_zero_eq
+
+#check @SerrePositivity.KST.ProExcision.groupZeroMHomotopy
+#print axioms SerrePositivity.KST.ProExcision.groupZeroMHomotopy
+
+#check @SerrePositivity.KST.ProExcision.groupZeroMHomotopy_equivariant
+#print axioms SerrePositivity.KST.ProExcision.groupZeroMHomotopy_equivariant

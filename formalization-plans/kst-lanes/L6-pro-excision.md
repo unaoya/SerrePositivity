@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1037宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1067宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -336,6 +336,11 @@
 | constructionA5EquivariantCylinderMap | ConstructionA5Equivariant.lean | 検証済み | 作用 bar に渡す同変な実区間射 |
 | linearizedTensorAugmentationMHomotopy_naturality | TensorAugmentationNaturality.lean | 検証済み | augmentation 補正の構成全体の自然性 |
 | linearizedGroupProduct_naturality / linearizedDiagonal_naturality | LinearizedGroupProductNaturality.lean | 検証済み | 最後の μ と対角の自然性 |
+
+| vectorRightMultiplication_mulVec / centralMultiplicationIdeal | Prop414.lean | 検証済み | 非可換右乗法の行列同変性と aI の両側性 |
+| squareZeroUnit_conjugation / blockColumn_conjugation | BlockConjugation.lean / BlockColumn.lean | 検証済み | 右乗法の順序を保つ実行列の共役公式 |
+| matrix_commute_one_add_blockColumn / blockColumnHom | BlockColumnCommute.lean / BlockColumnGroup.lean | 検証済み | μ のための可換性と実 ψ |
+| groupZeroMHomotopy / groupZeroMHomotopy_equivariant | GroupZeroMHomotopy.lean | 検証済み | A.5 の第二因子の0次入力と帰納基底 |
 
 ## L6a：最小 pro 形式
 
@@ -823,3 +828,21 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
    Claim 4.15 の相対零化を A.4 の明示的 H_* 模型界面へ移し、有限次元から安定化する。
 
 上記は非可換版の文言と紙の計算であり、Lean での Prop 4.14 の完成を主張しない。まず右乗法・両側イデアル・零積による共役公式を実装し、その後ブロック群と帰納法を実装する。
+
+
+### L6c 区切りの全体ビルド結果（2026-10-19）
+
+- 全体ビルドはルートの import で失敗：`InfinityCategories.F1B.RelativeFunctorHomotopyComposition` と `InfinityCategories.F1.RelativeFunctorVertices` が `SerrePositivity.InfinityCategories.relativeFunctorVertex` を重複定義している。
+- K-L6 の対象ビルド・1037宣言の公理監査は成功した。自分の import 閉包の破損ではないため、他レーンの依存は修復せず L6d を続行する。
+- ログ：`/tmp/kst-l6-full-build.log`。
+
+
+### L6d の第一保存単位（2026-10-19）
+
+- `Prop414.lean`：結合的な非単位環上の右乗法・列の右乗法と左行列積の可換性、中心元 a の像 aI の両側イデアル性、右乗法の像との一致、単射性の移送、(I,a) に関する自然性を証明。
+- `BlockConjugation.lean`：逆元 1−U を持つ `squareZeroUnit` と、U²=V²=UV=0 による非可換共役公式を証明。
+- `BlockColumn.lean`：実行列の単一成分行列の和で補助列を構成し、VU の成分が v_i a になることと共役公式を証明。
+- `BlockColumnCommute.lean`：固定列・固定行の条件から P の埋め込みと ψ(Q) の可換性を導く。
+- `BlockColumnGroup.lean`：補助列の群準同型 ψ と可換な二つの群準同型からの `commutingProductHom` を構成。
+- `GroupZeroMHomotopy.lean`：実0次ホモトピーと外部 G 同変性を証明。A.5 の第二入力と Lemma 4.16 の帰納基底に使う。
+- 対象ビルド・1067宣言の公理監査が成功し、標準三公理のみ。L6d 全体は未完了。次は T_{n,m} の実ブロック群、帰納法、相対ホモロジー零化・安定化。
