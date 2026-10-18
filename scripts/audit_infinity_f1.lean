@@ -1254,3 +1254,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinConeMap_fst
 #check @SerrePositivity.InfinityCategories.relativeJoinConeMap_snd
 #check @SerrePositivity.InfinityCategories.relativeJoinConeMap_mono
+#check @SerrePositivity.InfinityCategories.join_augHom_isPullback
+#check @SerrePositivity.InfinityCategories.join_left_isPullback
+#check @SerrePositivity.InfinityCategories.prismRightConeMap
+#check @SerrePositivity.InfinityCategories.relativeJoinConeSecond_factor
+#check @SerrePositivity.InfinityCategories.relativeJoinConeSecond_id_mono
+#check @SerrePositivity.InfinityCategories.prismRightConeMap_mono
+#check @SerrePositivity.InfinityCategories.prismRightConeMap_time_prefix
+#check @SerrePositivity.InfinityCategories.prismRightConeMap_time_suffix
+#check @SerrePositivity.InfinityCategories.prismRightConeMap_mem_range
+#check @SerrePositivity.InfinityCategories.prismRightConeMap_last_time_one
+#check @SerrePositivity.InfinityCategories.prismRightConeMap_mem_range_iff

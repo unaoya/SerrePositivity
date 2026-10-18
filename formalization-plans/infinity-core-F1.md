@@ -5662,5 +5662,57 @@ lemma relativeJoinConeMap_snd {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
 instance relativeJoinConeMap_mono {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
     Mono (relativeJoinConeMap f)
 
+lemma join_augHom_isPullback {P A B C : SSet.{u}}
+    {a : P ⟶ A} {b : P ⟶ B} {f : A ⟶ C} {g : B ⟶ C}
+    (h : IsPullback a b f g) (r : ℕ) :
+    IsPullback (↾(Join.augHom a r)) (↾(Join.augHom b r))
+      (↾(Join.augHom f r)) (↾(Join.augHom g r))
+
+lemma join_left_isPullback {P A B C : SSet.{u}}
+    {a : P ⟶ A} {b : P ⟶ B} {f : A ⟶ C} {g : B ⟶ C}
+    (h : IsPullback a b f g) (K : SSet.{u}) :
+    IsPullback (joinMap a (𝟙 K)) (joinMap b (𝟙 K))
+      (joinMap f (𝟙 K)) (joinMap g (𝟙 K))
+
+noncomputable def prismRightConeMap (n : ℕ) :
+    join ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] ⟶ (Δ[1] : SSet.{u}) ⊗ Δ[n + 1]
+
+lemma relativeJoinConeSecond_factor {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    relativeJoinConeSecond f =
+      joinMap (pullback.snd (joinMap f (𝟙 Δ[n])) (joinDiagonal Δ[n])) (𝟙 Δ[0]) ≫
+        prismRightConeMap n
+
+instance relativeJoinConeSecond_id_mono (n : ℕ) :
+    Mono (relativeJoinConeSecond (𝟙 (Δ[n] : SSet.{u})))
+
+instance prismRightConeMap_mono (n : ℕ) : Mono (prismRightConeMap.{u} n)
+
+lemma prismRightConeMap_time_prefix {n d : ℕ}
+    (s : Join.Simplex ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] d) (i : Fin s.1.val) :
+    ((prismRightConeMap n).app (Opposite.op ⦋d⦌) s).1
+        (Join.prefixIncl (d + 1) s.1.val (Nat.le_of_lt_succ s.1.isLt) i) =
+      Join.stdAugEquiv 1 _ (Join.augHom (fst (Δ[1] : SSet.{u}) Δ[n]) _ s.2.1) i
+
+lemma prismRightConeMap_time_suffix {n d : ℕ}
+    (s : Join.Simplex ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] d)
+    (i : Fin (d + 1 - s.1.val)) :
+    ((prismRightConeMap n).app (Opposite.op ⦋d⦌) s).1
+        (Join.suffixIncl (d + 1) s.1.val (Nat.le_of_lt_succ s.1.isLt) i) = 1
+
+lemma prismRightConeMap_mem_range {n d : ℕ}
+    (t : (Δ[1] : SSet.{u}) _⦋d⦌) (c : (Δ[n + 1] : SSet.{u}) _⦋d⦌)
+    (h : ∀ i : Fin (d + 1), c i = Fin.last (n + 1) → t i = 1) :
+    (t, c) ∈ Set.range ((prismRightConeMap n).app (Opposite.op ⦋d⦌))
+
+lemma prismRightConeMap_last_time_one {n d : ℕ}
+    (s : Join.Simplex ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] d) (i : Fin (d + 1))
+    (h : ((prismRightConeMap n).app (Opposite.op ⦋d⦌) s).2 i = Fin.last (n + 1)) :
+    ((prismRightConeMap n).app (Opposite.op ⦋d⦌) s).1 i = 1
+
+lemma prismRightConeMap_mem_range_iff {n d : ℕ}
+    (t : (Δ[1] : SSet.{u}) _⦋d⦌) (c : (Δ[n + 1] : SSet.{u}) _⦋d⦌) :
+    (t, c) ∈ Set.range ((prismRightConeMap n).app (Opposite.op ⦋d⦌)) ↔
+      ∀ i : Fin (d + 1), c i = Fin.last (n + 1) → t i = 1
+
 end SerrePositivity.InfinityCategories
 ```

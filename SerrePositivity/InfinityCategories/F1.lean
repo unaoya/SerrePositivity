@@ -255,3 +255,6 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinConeCoordinates
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinConeFirst
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinConeSecond
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinConeMap
+public import SerrePositivity.InfinityCategories.F1.JoinLeftPullback
+public import SerrePositivity.InfinityCategories.F1.PrismRightConeMap
+public import SerrePositivity.InfinityCategories.F1.PrismRightConeRange
