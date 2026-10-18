@@ -1,6 +1,11 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.hasShift_ho
+#print axioms SerrePositivity.InfinityCategories.shiftOneSuspensionIso
+#print axioms SerrePositivity.InfinityCategories.cofiberTriangle
+#print axioms SerrePositivity.InfinityCategories.cofiberTriangleMapOfHomotopy
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberDistinguishedTriangle
 #print axioms SerrePositivity.InfinityCategories.exists_squareToSuspension_zero_target
 #print axioms SerrePositivity.InfinityCategories.cofiberConnecting_comp_suspension_map_eq_zero
 #print axioms SerrePositivity.InfinityCategories.SuspensionSquare.comparisonIso_eq_suspensionFunctorObjIso
@@ -860,7 +865,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SquareHorizontalComponents,
     `SerrePositivity.InfinityCategories.Stable.SquareColumnComparison,
     `SerrePositivity.InfinityCategories.Stable.ZeroTargetSquareComparison,
-    `SerrePositivity.InfinityCategories.Stable.CofiberConnectingVanishing]
+    `SerrePositivity.InfinityCategories.Stable.CofiberConnectingVanishing,
+    `SerrePositivity.InfinityCategories.Stable.StrictAutomorphismShift,
+    `SerrePositivity.InfinityCategories.Stable.EquivalenceSkeletonShift,
+    `SerrePositivity.InfinityCategories.Stable.EquivalenceIntegerShift,
+    `SerrePositivity.InfinityCategories.Stable.Shift,
+    `SerrePositivity.InfinityCategories.Stable.CofiberTriangle,
+    `SerrePositivity.InfinityCategories.Stable.Triangulated,
+    `SerrePositivity.InfinityCategories.Stable.DistinguishedCoconeTriangle]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -125,8 +125,8 @@ S4 の三角構造へ向け、四辺を端点つきの辺と h C の射として
 実際の単体的ホモトピーからの構成も `hoShortComplexMapOfHomotopy` に公開する。
 `exists_cofiber_hoShortComplex` と `exists_fiber_hoShortComplex` により、安定な X の
 h C の全ての射が、cofiber 短複体の第一射／fiber 短複体の第二射として現れる。
-この存在定理は短複体まで。接続射 Z → ΣX の構成は下記のとおり追加したが、
-distinguished triangle と TR1〜TR4 は未証明。
+この存在定理自体は短複体まで。接続射、整数シフト、通常の Triangle、distinguished 集合の定義、
+TR1 の存在部分は下記のとおり追加した。恒等射の三角形・回転・TR3・八面体は未証明。
 接続射と cofiber 列の射に向け、`exists_colimitCoconeFamily_extension` により
 各頂点で余極限が存在する族の任意の単射部分族上で、指定した普遍余錐の族を
 厳密に保持して延長できることを証明した。`colimitCoconeVertex` とその射影の等式により
@@ -233,8 +233,21 @@ S3 の対象比較の自然性で Σ に移した。
 `cofiberConnecting_comp_suspension_map_eq_zero` により δ ≫ Σf = 0 が成り立つ
 （Quasicategory、IsStable、IsCofiberSequence）。f ≫ g = 0、g ≫ δ = 0 と合わせ、
 cofiber 列の三つの隣接零合成は完成。回転・八面体を含む三角圏の公理は未完了。
-S4 の三角構造は未完了。Mathlib の三角構造の構成には h C の
-前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
+`stableEquivalenceHasShift` は任意の圏の自己同値から整合的な整数シフトを構成する。
+skeleton 上の mapSkeleton は充満忠実かつ対象全単射なので厳密な自己同型となり、その
+Aut(Cat) の整数冪の等号から ShiftMkCore を作る。HasShift.induced により元の圏へ戻す。
+skeleton は内部の補助構成だけに用い、h C の対象・射は変更しない。
+`hasShift_ho` により h C は HasShift ℤ を持つ。`shiftOneSuspensionIso` と
+`shiftNegOneLoopIso` は +1 と −1 のシフトを既存の Σ・Ω と自然同型で比較する。
+単位・加法・結合の整合条件を含む整数シフトは完成。前加法構造とシフトの加法性は未完了。
+`cofiberTriangle` は cofiber 列を Mathlib の通常の Triangle にまとめ、三つの隣接零合成も満たす。
+`cofiberTriangleMapOfHomotopy` は実際の四角形間のホモトピーを三角形の射に移す。
+`cofiberDistinguishedTriangles` はこれらの三角形の同型による閉包で、同型不変性も証明済み。
+`exists_cofiberDistinguishedTriangle` は任意の射 f : a ⟶ b について、a・b・f を厳密に指定した
+Triangle.mk f g h がこの集合に属することを証明する（TR1 の存在部分）。
+これは単なる Arrow 表示での存在には留めていない。恒等射の三角形の所属は未証明。
+S4 の三角構造は未完了。前加法構造・シフトの加法性、恒等射の三角形の判定、
+回転・TR3・八面体および Pretriangulated instance は残る S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
@@ -338,7 +351,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 引き戻しの貼り合わせ | `isPullbackSquare_pasting_iff`、`isPullbackSquare_pasting`、`isPullbackSquare_pasting_cancel_right`（値域 Quasicategory、右が引き戻し） | 完了 |
 | h C の零射と短複体 | `hasZeroMorphisms_ho`（Quasicategory、HasZeroVertex）、`square_homMk_comm`（任意の X）、`ZeroTriangle.homMk_comp_eq_zero`、`ZeroTriangle.hoShortComplex`（Quasicategory、任意の HasZeroMorphisms） | 完了 |
 | 零角の短複体の射 | `ZeroTriangle.hoShortComplexMap`、恒等・合成則、`hoShortComplexMapOfHomotopy`（Quasicategory、任意の HasZeroMorphisms） | 完了。三角形の接続射との可換性は未着手 |
-| 任意の h C の射を含む列 | `exists_cofiber_hoShortComplex`、`exists_fiber_hoShortComplex`（Quasicategory、IsStable） | 短複体と接続射の構成は完了。TR1 は未完了 |
+| 任意の h C の射を含む列 | `exists_cofiber_hoShortComplex`、`exists_fiber_hoShortComplex`（Quasicategory、IsStable） | 短複体・通常の三角形と接続射の構成は完了。TR1 の存在部分も下記で完成、恒等射の三角形の判定は未完了 |
 | 部分族を保持した普遍余錐の延長 | `exists_colimitCoconeFamily_extension`（値域 Quasicategory、部分族の射は単射、全頂点の余極限の存在） | 完了 |
 | 普遍余錐間の辺 | `colimitCoconeVertex`、`colimitCoconeVertex_projection`、`exists_colimitCocone_edge`、`exists_colimitCoconeHomotopy`（値域 Quasicategory、両端が余極限） | 完了。接続射の構成に適用済み |
 | 始点固定の suspension との比較 | `exists_terminalArrowComparison`、`exists_terminalSpanComparison`、`exists_suspensionSpanComparison`（Quasicategory、指定終点が終対象）、`exists_cofiberSuspensionComparison`（さらに元の四角形は押し出し） | 完了 |
@@ -359,6 +372,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | ホモトピーの道と水平変形 | `homotopyEvaluation_arrow_of_vertexPath`、`squareHorizontalRightHomotopy`・`squareHorizontalLeftHomotopy` と始点成分の式（追加仮定なし） | 完了 |
 | 最後の成分が零となる suspension への比較 | `exists_squareRightToSuspensionLeft`（Quasicategory）、`exists_squareToSuspension_zero_target`（さらに任意の HasZeroMorphisms、任意の四角形と右下の頂点の指定 suspension） | 完了。元の四角形の普遍性は不要 |
 | 接続射の後の零合成 | `cofiberConnecting_comp_suspension_map_eq_zero`（Quasicategory、IsStable、cofiber 列） | 完了。三つの隣接零合成が揃った。三角構造は未完了 |
+| h C の整数シフト | `stableEquivalenceHasShift`（任意の圏の自己同値）、`hasShift_ho`、`shiftOneSuspensionIso`、`shiftNegOneLoopIso`（Quasicategory、IsStable） | HasShift ℤ の全整合条件と Σ・Ω との比較まで完了。加法性は未完了 |
+| Mathlib の cofiber 三角形 | `cofiberTriangle`、三つの隣接零合成、`cofiberTriangleMapOfHomotopy`（Quasicategory、IsStable、cofiber 列） | 通常の Triangle とその射として完了 |
+| distinguished 集合と TR1 の存在部分 | `cofiberDistinguishedTriangles` と同型不変性、`exists_cofiberDistinguishedTriangle`（Quasicategory、IsStable、任意の h C の射） | 集合の定義・同型不変性・厳密に指定した射を含む三角形の存在は完了。恒等射の三角形・回転・TR3・八面体・Pretriangulated は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

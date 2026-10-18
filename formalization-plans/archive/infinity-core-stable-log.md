@@ -7283,3 +7283,195 @@ SerrePositivity.InfinityCategories.cofiberConnecting_comp_suspension_map_eq_zero
 任意の h の可換正方形を cofiber 四角形間の比較へ延長すること（TR3）、
 前加法構造、整数シフトと加法性、distinguished triangle、TR1〜TR4、Pretriangulated、
 S5〜S7 は未完了。
+
+
+## 整数シフト・通常の cofiber 三角形・TR1 の存在部分
+
+任意の自己同値 e : C ≌ C から整合的な整数シフトを構成した。
+mapSkeleton は充満忠実かつ対象全単射なので厳密な自己同型となる。
+その Aut(Cat) の整数冪を通常の関手の族とし、整数の和についての関手の等号から
+ShiftMkCore を作った。HasShift.induced で元の圏へ戻し、+1 シフトと e.functor の
+自然同型を構成した。skeleton は内部の補助構成のみで、元の圏の対象・射は変更しない。
+hasShift_ho により安定 ∞ 圏の h C に HasShift ℤ を入れた。
+shiftOneSuspensionIso と shiftNegOneLoopIso は ±1 のシフトを既存の Σ・Ω と自然同型で比較する。
+単位・加法・結合の整合条件を含む整数シフトは完成。前加法構造とシフトの加法性は未証明。
+cofiberTriangle は構成済みの接続射を一回シフトへ移して Mathlib の Triangle にまとめる。
+三つの隣接零合成を証明し、実際の四角形間のホモトピーから Triangle の射を構成した。
+cofiberDistinguishedTriangles はその三角形の同型による閉包であり、同型不変性を証明した。
+exists_cofiberDistinguishedTriangle は任意の f : a ⟶ b に対して
+∃ z g h, Triangle.mk f g h ∈ cofiberDistinguishedTriangles X を証明する。
+a・b・f は厳密に指定されており、Arrow 表示での存在だけではない（TR1 の存在部分）。
+主な前提は X の Quasicategory 性と IsStable。cofiberTriangle には IsCofiberSequence も必要。
+
+以下は Lean による全公開宣言の正確な型の出力（宇宙・完全修飾名つき）。
+
+```text
+SerrePositivity.InfinityCategories.stableStrictShiftMkCore.{v, u, u_1} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  {A : Type u_1} [AddMonoid.{u_1} A] (F : A → CategoryTheory.Functor.{v, v, u, u} C C)
+  (h₀ : Eq.{max (u + 1) (v + 1)} (F 0) (CategoryTheory.Functor.id.{v, u} C))
+  (hadd :
+    ∀ (n m : A),
+      Eq.{max (u + 1) (v + 1)} (F (HAdd.hAdd.{u_1, u_1, u_1} n m))
+        (CategoryTheory.Functor.comp.{v, v, v, u, u, u} (F n) (F m))) :
+  CategoryTheory.ShiftMkCore.{v, u, u_1} C A
+SerrePositivity.InfinityCategories.stableAutPowerFunctor.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Aut.{max u v, max (u + 1) (v + 1)} ↧C) (n : ℤ) : CategoryTheory.Functor.{v, v, u, u} C C
+SerrePositivity.InfinityCategories.stableAutPowerFunctor_zero.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Aut.{max u v, max (u + 1) (v + 1)} ↧C) :
+  Eq.{max (u + 1) (v + 1)} (SerrePositivity.InfinityCategories.stableAutPowerFunctor.{v, u} e 0)
+    (CategoryTheory.Functor.id.{v, u} C)
+SerrePositivity.InfinityCategories.stableAutPowerFunctor_add.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Aut.{max u v, max (u + 1) (v + 1)} ↧C) (n m : ℤ) :
+  Eq.{max (u + 1) (v + 1)} (SerrePositivity.InfinityCategories.stableAutPowerFunctor.{v, u} e (HAdd.hAdd.{0, 0, 0} n m))
+    (CategoryTheory.Functor.comp.{v, v, v, u, u, u}
+      (SerrePositivity.InfinityCategories.stableAutPowerFunctor.{v, u} e n)
+      (SerrePositivity.InfinityCategories.stableAutPowerFunctor.{v, u} e m))
+SerrePositivity.InfinityCategories.stableAutHasShift.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Aut.{max u v, max (u + 1) (v + 1)} ↧C) : CategoryTheory.HasShift.{v, u, 0} C ℤ
+SerrePositivity.InfinityCategories.stableAutHasShift_shiftFunctor.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Aut.{max u v, max (u + 1) (v + 1)} ↧C) (n : ℤ) :
+  Eq.{max (u + 1) (v + 1)} (CategoryTheory.shiftFunctor.{v, u, 0} C n)
+    (SerrePositivity.InfinityCategories.stableAutPowerFunctor.{v, u} e n)
+SerrePositivity.InfinityCategories.stableAutOfIsoCat.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.IsoCat.{v, u, v, u} C C) : CategoryTheory.Aut.{max u v, max (u + 1) (v + 1)} ↧C
+SerrePositivity.InfinityCategories.stableEquivalenceSkeletonAut.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Equivalence.{v, v, u, u} C C) :
+  CategoryTheory.Aut.{max u v, max (u + 1) (v + 1)} ↧(CategoryTheory.Skeleton.{v, u} C)
+SerrePositivity.InfinityCategories.stableEquivalenceSkeletonAut_functor.{v, u} {C : Type u}
+  [CategoryTheory.Category.{v, u} C] (e : CategoryTheory.Equivalence.{v, v, u, u} C C) :
+  Eq.{max (u + 1) (v + 1)}
+    (CategoryTheory.Cat.Hom.toFunctor.{v, u}
+      (CategoryTheory.Iso.hom.{max u v, max (u + 1) (v + 1)}
+        (CategoryTheory.Aut.asIso.{max u v, max (u + 1) (v + 1)}
+          (SerrePositivity.InfinityCategories.stableEquivalenceSkeletonAut.{v, u} e))))
+    (CategoryTheory.Functor.mapSkeleton.{v, v, u, u} (CategoryTheory.Equivalence.functor.{v, v, u, u} e))
+SerrePositivity.InfinityCategories.stableEquivalenceSkeletonHasShift.{v, u} {C : Type u}
+  [CategoryTheory.Category.{v, u} C] (e : CategoryTheory.Equivalence.{v, v, u, u} C C) :
+  CategoryTheory.HasShift.{v, u, 0} (CategoryTheory.Skeleton.{v, u} C) ℤ
+SerrePositivity.InfinityCategories.stableEquivalenceSkeletonHasShift_one.{v, u} {C : Type u}
+  [CategoryTheory.Category.{v, u} C] (e : CategoryTheory.Equivalence.{v, v, u, u} C C) :
+  Eq.{max (u + 1) (v + 1)} (CategoryTheory.shiftFunctor.{v, u, 0} (CategoryTheory.Skeleton.{v, u} C) 1)
+    (CategoryTheory.Functor.mapSkeleton.{v, v, u, u} (CategoryTheory.Equivalence.functor.{v, v, u, u} e))
+SerrePositivity.InfinityCategories.stableEquivalenceShiftFamily.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Equivalence.{v, v, u, u} C C) (n : ℤ) : CategoryTheory.Functor.{v, v, u, u} C C
+SerrePositivity.InfinityCategories.stableEquivalenceShiftFamilyComparison.{v, u} {C : Type u}
+  [CategoryTheory.Category.{v, u} C] (e : CategoryTheory.Equivalence.{v, v, u, u} C C) (n : ℤ) :
+  CategoryTheory.Iso.{max u v, max u v}
+    (CategoryTheory.Functor.comp.{v, v, v, u, u, u}
+      (CategoryTheory.Equivalence.functor.{v, v, u, u} (CategoryTheory.skeletonEquivalence.{v, u} C))
+      (SerrePositivity.InfinityCategories.stableEquivalenceShiftFamily.{v, u} e n))
+    (CategoryTheory.Functor.comp.{v, v, v, u, u, u}
+      (CategoryTheory.shiftFunctor.{v, u, 0} (CategoryTheory.Skeleton.{v, u} C) n)
+      (CategoryTheory.Equivalence.functor.{v, v, u, u} (CategoryTheory.skeletonEquivalence.{v, u} C)))
+SerrePositivity.InfinityCategories.stableEquivalenceHasShift.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Equivalence.{v, v, u, u} C C) : CategoryTheory.HasShift.{v, u, 0} C ℤ
+SerrePositivity.InfinityCategories.stableEquivalenceHasShift_shiftFunctor.{v, u} {C : Type u}
+  [CategoryTheory.Category.{v, u} C] (e : CategoryTheory.Equivalence.{v, v, u, u} C C) (n : ℤ) :
+  Eq.{max (u + 1) (v + 1)} (CategoryTheory.shiftFunctor.{v, u, 0} C n)
+    (SerrePositivity.InfinityCategories.stableEquivalenceShiftFamily.{v, u} e n)
+SerrePositivity.InfinityCategories.stableEquivalenceShiftOneIso.{v, u} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  (e : CategoryTheory.Equivalence.{v, v, u, u} C C) :
+  CategoryTheory.Iso.{max u v, max u v} (CategoryTheory.shiftFunctor.{v, u, 0} C 1)
+    (CategoryTheory.Equivalence.functor.{v, v, u, u} e)
+SerrePositivity.InfinityCategories.hasShift_ho.{u} (X : SSet.{u}) [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] :
+  CategoryTheory.HasShift.{u, u, 0} ↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X) ℤ
+SerrePositivity.InfinityCategories.shiftOneSuspensionIso.{u} (X : SSet.{u}) [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] :
+  CategoryTheory.Iso.{u, u}
+    (CategoryTheory.shiftFunctor.{u, u, 0} (↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X)) 1)
+    (SerrePositivity.InfinityCategories.suspensionFunctor.{u} X)
+SerrePositivity.InfinityCategories.shiftNegOneLoopIso.{u} (X : SSet.{u}) [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] :
+  CategoryTheory.Iso.{u, u}
+    (CategoryTheory.shiftFunctor.{u, u, 0} (↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X))
+      (-1))
+    (SerrePositivity.InfinityCategories.loopFunctor.{u} X)
+SerrePositivity.InfinityCategories.cofiberTriangle.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t) :
+  CategoryTheory.Pretriangulated.Triangle.{u, u} ↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X)
+SerrePositivity.InfinityCategories.cofiberTriangle_mor₁_comp_mor₂.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t) :
+  Eq.{u + 1}
+    (CategoryTheory.CategoryStruct.comp.{u, u}
+      (CategoryTheory.Pretriangulated.Triangle.mor₁.{u, u}
+        (SerrePositivity.InfinityCategories.cofiberTriangle.{u} t ht))
+      (CategoryTheory.Pretriangulated.Triangle.mor₂.{u, u}
+        (SerrePositivity.InfinityCategories.cofiberTriangle.{u} t ht)))
+    0
+SerrePositivity.InfinityCategories.cofiberTriangle_mor₂_comp_mor₃.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t) :
+  Eq.{u + 1}
+    (CategoryTheory.CategoryStruct.comp.{u, u}
+      (CategoryTheory.Pretriangulated.Triangle.mor₂.{u, u}
+        (SerrePositivity.InfinityCategories.cofiberTriangle.{u} t ht))
+      (CategoryTheory.Pretriangulated.Triangle.mor₃.{u, u}
+        (SerrePositivity.InfinityCategories.cofiberTriangle.{u} t ht)))
+    0
+SerrePositivity.InfinityCategories.cofiberTriangle_mor₃_comp_shift_mor₁.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t) :
+  Eq.{u + 1}
+    (CategoryTheory.CategoryStruct.comp.{u, u}
+      (CategoryTheory.Pretriangulated.Triangle.mor₃.{u, u}
+        (SerrePositivity.InfinityCategories.cofiberTriangle.{u} t ht))
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (CategoryTheory.shiftFunctor.{u, u, 0} (↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X))
+          1)
+        (CategoryTheory.Pretriangulated.Triangle.mor₁.{u, u}
+          (SerrePositivity.InfinityCategories.cofiberTriangle.{u} t ht))))
+    0
+SerrePositivity.InfinityCategories.cofiberTriangleMapOfHomotopy.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] (t d : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t)
+  (hd : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} d)
+  (H :
+    SSet.Homotopy.{u} (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t)
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} d)) :
+  Quiver.Hom.{u, u} (SerrePositivity.InfinityCategories.cofiberTriangle.{u} t ht)
+    (SerrePositivity.InfinityCategories.cofiberTriangle.{u} d hd)
+SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u} (X : SSet.{u}) [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X] :
+  Set.{u}
+    (CategoryTheory.Pretriangulated.Triangle.{u, u}
+      ↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X))
+SerrePositivity.InfinityCategories.cofiberTriangle_mem_cofiberDistinguishedTriangles.{u} {X : SSet.{u}}
+  [SSet.Quasicategory.{u} X] [SerrePositivity.InfinityCategories.IsStable.{u} X]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t) :
+  Membership.mem.{u, u} (SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u} X)
+    (SerrePositivity.InfinityCategories.cofiberTriangle.{u} t ht)
+SerrePositivity.InfinityCategories.mem_cofiberDistinguishedTriangles_of_iso.{u} {X : SSet.{u}}
+  [SSet.Quasicategory.{u} X] [SerrePositivity.InfinityCategories.IsStable.{u} X]
+  {T U :
+    CategoryTheory.Pretriangulated.Triangle.{u, u}
+      ↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X)}
+  (e : CategoryTheory.Iso.{u, u} T U)
+  (h : Membership.mem.{u, u} (SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u} X) T) :
+  Membership.mem.{u, u} (SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u} X) U
+SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles_iso_iff.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X]
+  {T U :
+    CategoryTheory.Pretriangulated.Triangle.{u, u}
+      ↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X)}
+  (e : CategoryTheory.Iso.{u, u} T U) :
+  Membership.mem.{u, u} (SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u} X) T ↔
+    Membership.mem.{u, u} (SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u} X) U
+SerrePositivity.InfinityCategories.exists_cofiberDistinguishedTriangle.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  [SerrePositivity.InfinityCategories.IsStable.{u} X]
+  {a b : ↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X)} (f : Quiver.Hom.{u, u} a b) :
+  ∃ z g h,
+    Membership.mem.{u, u} (SerrePositivity.InfinityCategories.cofiberDistinguishedTriangles.{u} X)
+      (CategoryTheory.Pretriangulated.Triangle.mk.{u, u} f g h)
+```
+
+対象 DistinguishedCoconeTriangle ビルド 2096 jobs、対象・Stable 集約ビルド 2149 jobs、
+公開型抽出、公理監査はすべて終了コード 0。監査は 156 モジュール・1351 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
+整数シフト・通常の cofiber 三角形とそのホモトピーによる射・distinguished 集合の定義と
+同型不変性・任意の射を含む三角形の存在まで完了。
+前加法構造、シフトの加法性、恒等射の三角形の所属、回転、任意の h の可換正方形の
+延長（TR3）、八面体、Pretriangulated instance、S5〜S7 は未完了。
