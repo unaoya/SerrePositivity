@@ -88,3 +88,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.ParallelPositionValues
 public import SerrePositivity.EInfinity.BarrattEccles.ParallelPositions
 public import SerrePositivity.EInfinity.BarrattEccles.PermutationParallelValues
 public import SerrePositivity.EInfinity.BarrattEccles.PermutationParallel
+public import SerrePositivity.EInfinity.BarrattEccles.OrderedSubset
+public import SerrePositivity.EInfinity.BarrattEccles.OrderedSubsetPrefix
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleFlags
+public import SerrePositivity.EInfinity.BarrattEccles.TripleShuffleCoordinates
