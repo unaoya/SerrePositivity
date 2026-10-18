@@ -82,3 +82,25 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_unique_homotopy
 
 #check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.comparison
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.comparison_uncurry
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.comparison_mono
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.comparison_exists_retraction
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.comparison_exists_homotopy_section
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.comparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.pinchedHomEquivalence
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.pinchedMap_isSimplicialHomotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.pinchedMap_comparisonIso
+
+#check @SerrePositivity.InfinityCategories.intervalFunctorMap_uncurry
+
+#check @SerrePositivity.InfinityCategories.pinchedIntervalComparison_naturality

@@ -10,3 +10,11 @@ public import SerrePositivity.InfinityCategories.F1B.EnrichedPrecomposition
 public import SerrePositivity.InfinityCategories.F1B.AdjunctParameterNaturality
 public import SerrePositivity.InfinityCategories.F1B.ConstantAdjunct
 public import SerrePositivity.InfinityCategories.F1B.AdjunctionMappingSpaces
+public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalComparison
+public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalDiagram
+public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalHomotopy
+public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalSection
+public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1B.AdjunctionPinchedSpaces
+public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorMap

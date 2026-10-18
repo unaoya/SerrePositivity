@@ -31,6 +31,9 @@ sorry・追加公理・文献入力は使わない。実施の経緯はコミッ
   中間模型には既存の `F1.IntervalMappingSpace` を使う。この小さいモジュールへの
   推移的 import は straightening を含まない。端点の補助計算は F1B 内に置き、
   `F1.IntervalFatDiagram` の広い集約への依存は作らない。
+  右模型の比較は `F1B/PinchedInterval*.lean` の `PinchedInterval` namespace に置く。
+  相対 join 延長・端点固定の持ち上げ・レトラクションの一般補題は、straightening に
+  依存しない F1 の小さいモジュールから読む。共有の F1/ は編集しない。
 - 局所化の普遍性は、W を可逆辺へ送る関手の充満部分 ∞ 圏への前合成同値。
   一般の C[W⁻¹] の存在は F2 に委ね、ここでは反射的な場合を構成する。
 - right cofinal は colimit を計算する向き。始対象による limit 計算は双対の
@@ -57,11 +60,16 @@ QCat の whisker と内部 Hom の前合成の一致も証明し、adjunct の�
 ことを証明した（`intervalMap_isSimplicialHomotopyEquivalence`）。比較射が任意の
 quasicategory パラメータ族の adjunct を表す公式と、その仕様によるホモトピー一意性も公開した。
 
-これは B1 全体の完了ではない。残るのは区間模型から **pinchedHom への比較**、
-対象 x,y の射に関する自然性、および **特徴づけの逆方向（Cor 6.2.6.5）**。
-区間模型版の順方向には族の全射性・射の等式からホモトピーを得る向き・パラメータ自然性を
-用いた。表示をホモトピー類での全単射と呼ぶには、別途ホモトピー不変性の確認が要る。
-B2〜B5 は未完了。対象ビルド（1682 jobs）・公理監査（136 宣言、標準三公理のみ）は成功。
+右 pinched 模型→区間模型の比較を、任意の族の回収、厳密な左逆、ホモトピー右逆から
+証明した。この模型比較を前後で合成した `pinchedHomEquivalence` は
+`pinchedHom(F(x),y)` と `pinchedHom(x,G(y))` の明示的な同値で、順射 `pinchedMap` は
+実際の単体的ホモトピー逆を持つ。区間模型の adjunct 比較との h Fun の同型による整合も公開した。
+模型比較そのものは、任意の単体集合の射の作用と厳密に可換である。
+
+これは B1 全体の完了ではない。残るのは **随伴比較の対象 x,y の射に関する自然性** と
+**特徴づけの逆方向（Cor 6.2.6.5）**。各点での同値を構成しただけで自然な Hom 随伴との同値を
+完了したとは扱わない。表示をホモトピー類での全単射と呼ぶには、別途ホモトピー不変性の確認が要る。
+B2〜B5 は未完了。対象ビルド（1940 jobs）・公理監査（204 宣言、標準三公理のみ）は成功。
 
 ## 4. 主要宣言
 
@@ -112,6 +120,16 @@ B2〜B5 は未完了。対象ビルド（1682 jobs）・公理監査（136 宣�
 | `QCatAdjunction.intervalMap_family`・`intervalInverse_family` | 任意の quasicategory パラメータ族で順・逆 adjunct を表す | 実装済み |
 | `QCatAdjunction.intervalMap_unique_homotopy` | 指定された普遍族の adjunct を表す射はホモトピーまで一意 | 実装済み |
 | `QCatAdjunction.intervalMap_inverse_homotopy`・`intervalInverse_map_homotopy` | 両合成から恒等射への実際の単体的ホモトピー | 実装済み |
-| `QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence` | 随伴から区間模型の写像空間のホモトピー同値 | 実装済み（pinched への移行は未完了） |
+| `QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence` | 随伴から区間模型の写像空間のホモトピー同値 | 実装済み |
+| `PinchedInterval.comparison`・`comparison_uncurry`・`comparison_mono` | 右 pinched 模型→区間模型の指定射、任意族での公式、単射性 | 実装済み |
+| `PinchedInterval.rightIntervalFatDiagram` と円柱・端点・自然性の補題 | 区間族を両端固定の fat join 図式へ展開 | 実装済み |
+| `PinchedInterval.intervalMappingHomotopyOfSquare`・`intervalMappingHomotopyOfFatJoin` | 両端固定の図式のホモトピーを区間族へ戻す | 実装済み |
+| `PinchedInterval.comparison_exists_homotopy`・`comparison_exists_homotopy_section` | 任意の区間族のホモトピーまでの回収と恒等族の回収 | 実装済み |
+| `PinchedInterval.comparison_exists_retraction`・`comparison_isQCatEquivalence` | 相対延長による厳密な左逆と右模型の比較の同値性 | 実装済み |
+| `QCatAdjunction.intervalMappingEquivalence`・`pinchedHomEquivalence` | 区間模型の同値を pinchedHom(F(x),y) と pinchedHom(x,G(y)) へ移す | 実装済み（各点でのデータ） |
+| `QCatAdjunction.pinchedMap`・`pinchedMap_isSimplicialHomotopyEquivalence` | 指定した順射と実際の単体的ホモトピー逆の存在 | 実装済み |
+| `QCatAdjunction.pinchedMap_comparisonIso` | pinched の順射と区間模型の adjunct 比較の h Fun での整合 | 実装済み |
+| `intervalFunctorMap`・`intervalFunctorMap_uncurry` | 関手の区間模型への作用と任意族での後合成公式 | 実装済み |
+| `pinchedIntervalComparison_naturality` | 模型比較は任意の単体集合の射の作用と厳密に可換 | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
