@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 190 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 195 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -23,6 +23,7 @@
 - Stacks 01WQ Lemma 31.14.2 のアフィン局所モデルを有効 Cartier 条件の定義とし、アフィン例外因子について証明済み。
 - 各チャートの拡大イデアルは、チャート環との実際の線形同型により階数一自由加群として自明化済み。
 - 正の冪の対応チャート環の同型と係数保存、純冪チャートによる被覆性は証明済み。
+- 核が零の射と分離標的による射の一意性、開基底変換での零核の保存を証明済み。
 - 次は冪チャート同型の重なり上の両立と大域化、局所化・一般スキームへの貼り合わせ。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
@@ -350,6 +351,10 @@ f の有限型性は固有性から導く。
 | `powerChartEquiv` / `powerChartEquiv_base` | PowerCharts | 検証済み | 対応する冪チャート環の係数を保つ同型 |
 | `prime_contains_degreeOne_of_contains_powers` | PowerChartCover | 検証済み | 純冪から積生成元への素イデアル判定 |
 | `iSup_affineBlowup_powerCharts` | PowerChartCover | 検証済み | 純冪チャートによる冪中心の blowup の被覆 |
+| `specMap_ker_eq_bot_of_injective` | SeparatedExt | 検証済み | 単射な環準同型の Spec の零核 |
+| `hom_ext_of_ker_eq_bot_of_separated` | SeparatedExt | 検証済み | 非被約スキームでも使える比較射の一意性 |
+| `pullback_snd_ker_eq_bot_of_openImmersion` | SeparatedExt | 検証済み | 開基底変換での零核の保存 |
+| `hom_ext_of_isIso_restrict` | SeparatedExt | 検証済み | 補開集合上の比較の一意性 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
