@@ -24,14 +24,14 @@ public import SerrePositivity.KST.Descent.CechTransferRetract
 
 noncomputable section
 
-universe u v w t
+universe u v w t z
 
 open CategoryTheory CategoryTheory.Limits Opposite HomotopicalAlgebra
 
 namespace SerrePositivity.KST.Descent
 
 variable {C : Type u} [Category.{v} C] {V : Type w} [Category.{t} V]
-  {K : Type u} [SmallCategory K] {Y : C} (D : K ⥤ Over Y) (U : V ⥤ SSet.{u})
+  {K : Type z} [SmallCategory K] {Y : C} (D : K ⥤ Over Y) (U : V ⥤ SSet.{z})
 
 /-- 概要：元の前層から指定増強を保持する空間図式への実際の関手（補題 3.2）。
 方針：構造射の反変像と前層射の自然性を値域関手で写す。
@@ -71,8 +71,8 @@ def presheafAugmentedCechSpaces : ((Over Y)ᵒᵖ ⥤ V) ⥤ AugmentedCechDiagra
       funext k
       exact U.map_comp _ _
 
-variable [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+variable [ModelCategory SSet.{z}]
+  (I J : MorphismProperty SSet.{z}) [ModelGeneration.CofibrantlyGenerated.{z} I J]
 
 /-- 概要：前層の retract は実際の指定降下を元の前層へ戻す（補題 3.2）。
 方針：増強を保持する関手で retract を写し、実際の比較の弱同値を移す。
