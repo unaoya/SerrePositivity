@@ -1,6 +1,34 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape_zero
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape_one
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterHomotopy
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape_source
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterShape_target
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterHomotopy_source
+#print axioms SerrePositivity.InfinityCategories.pastingLeftToOuterHomotopy_target
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle
+#print axioms SerrePositivity.InfinityCategories.nonempty_cofiberRotationRectangle
+#print axioms SerrePositivity.InfinityCategories.chosenCofiberRotationRectangle
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.suspensionSquare
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.rotatedZeroTriangle
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.rotated_isCofiber
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.comparisonHomotopy
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.comparisonHomotopy_source
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.rotated_source
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.rotated_middle
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.rotated_target
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.rotated_f_arrow
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.rotated_g_arrow_top
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.rotated_g_arrow_connecting
+#print axioms SerrePositivity.InfinityCategories.shortComplex_eq_of_arrow_eq
+#print axioms SerrePositivity.InfinityCategories.cofiberTailShortComplex
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.hoShortComplex_eq_tail
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.tailShortComplexIso
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberTailShortComplex
+#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.mk
 #print axioms SerrePositivity.InfinityCategories.stableHomAddCommMonoid
 #print axioms SerrePositivity.InfinityCategories.exists_additiveInverse_of_zeroSourcePushout
 #print axioms SerrePositivity.InfinityCategories.exists_stableHom_additiveInverse
@@ -1065,7 +1093,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.HomotopyAdditiveInverse,
     `SerrePositivity.InfinityCategories.Stable.HomotopyPreadditive,
     `SerrePositivity.InfinityCategories.Stable.HomotopyFiniteBiproduct,
-    `SerrePositivity.InfinityCategories.Stable.ShiftAdditive]
+    `SerrePositivity.InfinityCategories.Stable.ShiftAdditive,
+    `SerrePositivity.InfinityCategories.Stable.PastingComparisonHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationRectangle,
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationConnecting,
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationShortComplex]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

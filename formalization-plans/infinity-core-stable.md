@@ -448,7 +448,28 @@ h C の有限積・有限双積を与える（Quasicategory、IsStable）。
 `suspensionFunctor_additive`・`loopFunctor_additive`・`shiftFunctor_additive_ho` は
 自己同値が二項積と零射を保つことから Σ・Ω・全整数シフトの加法性を与える
 （Quasicategory、IsStable）。元の Σ・Ω・HasShift ℤ は変更しない。
-次に cofiber 列の回転を構成する。回転、八面体、Pretriangulated instance は未完了。
+cofiber 列の回転の幾何学的構成と最初の二射の照合が完成した。
+`pastingLeftToOuterShape`・`pastingLeftToOuterHomotopy` は長方形の左四角形から外側への
+左列を固定する変形を構成する。始点・終点・固定始点・右上の道を厳密に計算した
+（値域の仮定なし）。
+`CofiberRotationRectangle t` は、左面が t の四角形と厳密に同じ、右下が零、
+右面・外側が押し出しの長方形のデータ。`nonempty_cofiberRotationRectangle` と
+`chosenCofiberRotationRectangle` は任意の cofiber 列でその存在と選択を与える
+（Quasicategory、IsStable）。外側は入力の始点の `suspensionSquare`、右面の転置は
+`rotatedZeroTriangle` となり、`rotated_isCofiber` がその押し出し性を与える
+（回転長方形を入力すれば値域の仮定なし）。
+`rotated_source`・`rotated_middle`・`rotated_target` は三対象を B・C・指定 suspension と照合する。
+`rotated_f_arrow` は第一射が元の第二射、`rotated_g_arrow_connecting` は第二射が
+外側 suspension への接続射であることを端点も含めて示す
+（Quasicategory、任意の HasZeroMorphisms、後者は IsCofiberSequence t）。
+`cofiberTailShortComplex t ht` は厳密に B → C → ΣA の短複体。
+`CofiberRotationRectangle.tailShortComplexIso` と `exists_cofiberTailShortComplex` は
+その二射列が cofiber 列の短複体の像と同型となることを、追加の条件なしに証明する
+（Quasicategory、IsStable）。
+**TR2 は未完了**。回転後の列の接続射が −Σf となる符号の同定、
+通常の Triangle の回転の所属とその逆方向が残る。最初の二射の照合を TR2 全体の完成とは数えない。
+次に suspension の二つの零枝の交換と負号の関係を証明する。
+八面体、Pretriangulated instance も未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
@@ -597,6 +618,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 分裂 cofiber 列と二項双積 | `binaryFan_isLimit_of_edge_eq`（値域の仮定なし）、`ZeroTriangle.binaryProductOfRetraction`、`zeroSourcePushout_isBinaryProduct_of_retraction`・標準射影版、`zeroSourcePushoutBinaryBiproduct`、`hasBinaryBiproducts_ho`（Quasicategory、IsStable） | 二項双積 instance まで完成。前加法構造も下記で完成 |
 | h C の前加法構造 | `stableHomAddCommMonoid`、`exists_additiveInverse_of_zeroSourcePushout`、`exists_stableHom_additiveInverse`、`stableHomAddCommGroup`、`preadditive_ho`（Quasicategory、IsStable） | Hom の可換群・合成の双加法性・Preadditive instance まで完成 |
 | h C の有限双積とシフトの加法性 | `hasFiniteProducts_ho`、`hasFiniteBiproducts_ho`、`suspensionFunctor_additive`、`loopFunctor_additive`、`shiftFunctor_additive_ho`（Quasicategory、IsStable） | 全有限双積・Σ・Ω・全整数シフトの加法性まで完成。∞ 圏自体の全有限極限・余極限の存在は未証明 |
+| cofiber 列の回転の幾何学的構成と二射列 | `pastingLeftToOuterHomotopy`（値域の仮定なし）、`CofiberRotationRectangle` とその存在・選択（Quasicategory、IsStable）、`rotated_isCofiber`（データを入力すれば仮定なし）、`rotated_f_arrow`・`rotated_g_arrow_connecting`（Quasicategory、零射、後者は元の cofiber 性）、`tailShortComplexIso`・`exists_cofiberTailShortComplex`（Quasicategory、IsStable） | B → C → ΣA の cofiber 短複体表示まで完成。第三の接続射の負号・Triangle の回転所属・逆方向は未証明。TR2 全体は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
