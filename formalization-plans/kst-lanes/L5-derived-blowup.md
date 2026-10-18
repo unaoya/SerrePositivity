@@ -40,6 +40,8 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 共通基底環への制限後の dg 遷移も恒等・合成を保つことを証明済み。
 自己 Hom を Mathlib のモノイド対象へ束ね、全非空有限重なりから `Mon (Complex R)` への
 実際の関手 `finiteOverlapDGAlgebraDiagram` を構成済み。
+全 diagram-module の係数 dg 圏に向け、包含に対応する Hom、単位、合成の候補と
+二つの包含があるときの合成公式を構成済み。圏法則と dg 圏への組立ては未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -252,6 +254,7 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `finiteOverlapBaseDGTransition_comp`・`finiteOverlapBaseDGTransition_id` | FiniteOverlapBaseDGFunctoriality | 共通基底環上の dg 遷移の恒等・合成則 |
 | `dgEndMonoid`・`dgEndMonoidMap` | DGEndMonoid | dg 自己 Hom の Mathlib の複体モノイド対象への接続 |
 | `finiteOverlapDGAlgebra`・`finiteOverlapDGAlgebraMap`・恒等・合成則・`finiteOverlapDGAlgebraDiagram` | FiniteOverlapDGAlgebraDiagram | 全非空有限重なりから共通基底環上の dg 代数への実際の関手 |
+| `diagramModuleHom`・包含による同定・`diagramModuleId`・`diagramModuleComp`・`diagramModuleComp_on_le` | DiagramModuleHom | 全 diagram-module の係数 dg 圏の Hom・単位・合成の候補と包含上の公式。圏法則は未実装 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -319,9 +322,10 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全1468定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1489定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は係数 dg 代数図式上の coherent な dg 加群模型と局所 perfect 条件。
+次の実装単位は全 diagram-module の係数 dg 圏の単位・結合律と dg 圏への組立て。
+その加群圏を objectwise acyclic で導来化し、cartesian・局所 perfect 条件へ接続する。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
