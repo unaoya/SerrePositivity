@@ -1923,3 +1923,13 @@ end InitialCofinalityUniverses
 #print axioms SerrePositivity.InfinityCategories.QCatEquivalence.postcompose
 #print axioms SerrePositivity.InfinityCategories.IsQCatEquivalence.precompose
 #print axioms SerrePositivity.InfinityCategories.IsQCatEquivalence.postcompose
+
+-- A6: 指定された関手の辺の可逆性の点ごとの判定
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.reflects_isInvertibleEdge
+#print axioms SerrePositivity.InfinityCategories.equivalencePathRefl_ι
+#print axioms SerrePositivity.InfinityCategories.equivalencePathHomotopy
+#print axioms SerrePositivity.InfinityCategories.equivalencePathHomotopy_refl
+#print axioms SerrePositivity.InfinityCategories.equivalencePathHomotopy_edge_isInvertible
+#print axioms SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise
+#print axioms SerrePositivity.InfinityCategories.isInvertibleEdge_iff_evaluateFunctorAt
+#print axioms SerrePositivity.InfinityCategories.functorIsoOfPointwiseInvertibleHomotopy

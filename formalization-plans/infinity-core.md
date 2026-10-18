@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6078,6 +6078,56 @@ lemma IsQCatEquivalence.precompose {X Y : SSet.{u}} [Quasicategory X] [Quasicate
 lemma IsQCatEquivalence.postcompose {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {f : X ⟶ Y} (he : IsQCatEquivalence f) (K : SSet.{u}) :
     IsQCatEquivalence ((ihom K).map f)
+
+end SerrePositivity.InfinityCategories
+```
+
+
+### A6 続き：指定された関手の辺の可逆性の点ごとの判定（2026-10-18）
+
+`isInvertibleEdge_iff_evaluateFunctorAt` は、quasicategory X を標的とする関手単体集合の指定された辺について、可逆性と全ての頂点での評価の可逆性を同値にした。K 自身の quasicategory 性は不要。同じ両端を結ぶ別の同型の存在に弱めていない。可逆 path の普遍ホモトピーを定値 path の切断による前合成で恒等の辺に制限し、前合成の同値と充満忠実性で可逆性を反映した。点ごとに可逆なホモトピーから、その辺の類を順方向の射とする FunctorIso も構成した。
+
+Core ビルド1659 jobs、累計926宣言の標準3公理監査成功。既存の公開名・型は変更していない。fat join 比較の categorical equivalence 性、slice 比較の同値性と A6 の任意図式の主定理は未完了。A4・A5 は未着手。新規8宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma IsFullyFaithful.reflects_isInvertibleEdge {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsFullyFaithful f)
+    {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
+    (he : IsInvertibleEdge (e.map ((truncation 2).map f))) : IsInvertibleEdge e
+
+lemma equivalencePathRefl_ι (Y : SSet.{u}) :
+    equivalencePathRefl Y ≫ equivalencePathι Y = curry (snd (Δ[1] : SSet.{u}) Y)
+
+noncomputable def equivalencePathHomotopy (Y : SSet.{u}) :
+    SSet.Homotopy (equivalencePathEndpoint Y 0) (equivalencePathEndpoint Y 1)
+
+lemma equivalencePathHomotopy_refl (Y : SSet.{u}) :
+    (equivalencePathRefl Y ▷ (Δ[1] : SSet.{u})) ≫ (equivalencePathHomotopy Y).h =
+      fst Y (Δ[1] : SSet.{u})
+
+lemma equivalencePathHomotopy_edge_isInvertible (Y : SSet.{u}) [Quasicategory Y] :
+    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy (equivalencePathHomotopy Y))
+
+lemma functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise {K X : SSet.{u}}
+    [Quasicategory X] {f g : K ⟶ X} (H : SSet.Homotopy f g)
+    (hH : ∀ k : K _⦋0⦌,
+      IsInvertibleEdge (simplicialHomotopyVertexEdge H k).toTruncated) :
+    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy H)
+
+lemma isInvertibleEdge_iff_evaluateFunctorAt {K X : SSet.{u}} [Quasicategory X]
+    {f g : K ⟶ X} (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X))
+      (functorVertex f) (functorVertex g)) :
+    IsInvertibleEdge e ↔ ∀ k : K _⦋0⦌,
+      IsInvertibleEdge (e.map ((truncation 2).map (evaluateFunctorAt (Y := X) k)))
+
+noncomputable def functorIsoOfPointwiseInvertibleHomotopy {K X : SSet.{u}}
+    [Quasicategory X] {f g : K ⟶ X} (H : SSet.Homotopy f g)
+    (hH : ∀ k : K _⦋0⦌,
+      IsInvertibleEdge (simplicialHomotopyVertexEdge H k).toTruncated) : FunctorIso f g
 
 end SerrePositivity.InfinityCategories
 ```

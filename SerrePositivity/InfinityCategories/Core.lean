@@ -107,3 +107,5 @@ public import SerrePositivity.InfinityCategories.Core.JoinTensorRight
 public import SerrePositivity.InfinityCategories.Core.FatJoin
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparison
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
+
+public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
