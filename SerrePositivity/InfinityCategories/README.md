@@ -2081,7 +2081,8 @@ Sp の極限対象の段は置換せず、Kan 性・構造射の単射性・全�
 Kan 複体の余錐では台の余極限性からこの Hom 条件を検証する。
 𝒮 の実際の小さい余積を、空余積を含めて Kan 性・台の普遍性とともに公開した。
 通常の余錐の各脚と元の射の厳密な一致、および余積の成分包含との一致も検証した。
-homotopy 押し出し・逐次余極限は後続工程。
+単射な遷移を持つ Kan 複体列の実際の逐次余極限は、対象・余錐・各脚とともに公開した。
+一般の列の homotopy 余極限と homotopy 押し出しは後続工程。
 任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
 この一般形状では q′ の全導来 fiber の可縮性による両向き判定も証明済み。
 任意の coherent な錐から strict な錐への pinched Hom は、標準点から回収した反転 end の
@@ -10025,3 +10026,221 @@ lemma strictCoherentCone_isLimit_iff_generalReflectedEndPointFibers {F : I ⥤ C
 公理監査成功（標準3公理のみ）。新規2ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-general-fiber-model-aggregate.log`、`/tmp/gamma3-general-fiber-model-audit.log`。
+
+### γ3：strict な錐の再添字と単射な Kan 複体列の実際の逐次余極限
+
+strict な coherent 錐を添字の任意の標準単体に制限した式を、元の射列の先頭へ錐の脚を
+前置した通常の nerve の表示として計算した。これにより、任意の通常の関手 G に対し、
+`strictCoherentConeMap (c.whisker G)` は元の錐の射への `joinMap id (ULift.map (nerveMap G))`
+の前合成に厳密に等しい。固定図式も既存の自然性の等式で移す。
+添字の nerve の持ち上げが同型なら、この再添字は native な極限性を保ち反映する。
+この部分には局所 Kan 性を要求しない。
+
+標準の塔の添字 AsSmall ℕᵒᵖ と列の反対の添字 (AsSmall ℕ)ᵒᵖ を、通常の圏同値に加え
+nerve の厳密な同型として比較した。反対の錐を既存の塔の極限定理に適用できる。
+
+F : AsSmall.{u} ℕ → KanObject.{u} の台の通常の余極限を、L9 の確定済みの filtered colimit
+の Kan 性により `kanSequentialColimitObject F` として束縛する。この Kan 性には遷移の
+単射性は不要。通常の余錐、台と Kan 複体の圏の余極限の普遍性、全反変 Hom の塔の極限性を
+証明した。隣接遷移が台の単体集合で単射なら、その前合成による各 Hom の遷移は Kan
+fibration である。これは全ての Kan 対象 X と全ての隣接遷移について検証する。
+
+したがって、全隣接遷移の台の単射性を前提に、F1 の元の図式 kanDiagramCoherentNerve F 上の
+実際の余錐 `spaceSequentialColimitCocone F` は native な `IsColimitCone` を満たす。
+頂点は通常の台の colimit のままで、Kan 置換を挟まない。余錐の各脚も、台の通常の余極限の
+包含射の coherent 表示と厳密に一致する。追加の Hom 極限条件や比較同値の仮定は不要。
+
+単射性は通常の Kan 複体の圏の Mono ではなく、`F ⋙ kanObjectForget` の隣接射の Mono として
+指定する。任意の遷移の列からの cofibrant な列への置換と比較、homotopy 押し出し、
+一般形状の非反転 q_x への移送、E2a 後の E2b は未完了。
+原典：HTT 4.2.4.1、Kerodon 7.5.3.12・7.5.4.6、Goerss–Jardine I §7。
+
+公開する二十二宣言の正確な型は以下。`StrictConeSimplex` の後半と `StrictConeReindex` の
+後半は `I J : Type u [SmallCategory I] [SmallCategory J]`、
+`C : Type v [Category.{u} C] [SimplicialCategory C]` を共通前提とする。
+その他は各宣言内の前提のみ。`OppositeSequenceIndex` の持ち上げの宇宙は u。
+
+`StrictConeSimplex.lean`：
+
+```lean
+lemma nerveInitialCone_simplex {J : Type u} [SmallCategory J] {j : J}
+    (h : IsInitial j) {n : ℕ} (a : (Δ[n] : SSet.{u}) ⟶ nerve J) :
+    joinMap (𝟙 Δ[0]) a ≫ nerveInitialCone h =
+      (pointJoinStdSimplexIso n).hom ≫ SSet.yonedaEquiv.symm (initialChain h
+        (SSet.yonedaEquiv a))
+```
+
+`StrictConeSimplex.lean`：
+
+```lean
+lemma strictCoherentConeMap_simplex {F : I ⥤ C} (c : Cone F) {n : ℕ}
+    (a : (Δ[n] : SSet.{max u v}) ⟶ (SSet.uliftFunctor.{v, u}).obj (nerve I)) :
+    joinMap (𝟙 Δ[0]) a ≫ strictCoherentConeMap c =
+      (pointJoinStdSimplexIso n).hom ≫ SSet.yonedaEquiv.symm
+        ((nerveToCoherent C).app (Opposite.op ⦋n + 1⦌)
+          (ComposableArrows.precomp ((SSet.yonedaEquiv a).down ⋙ F)
+            (c.π.app ((SSet.yonedaEquiv a).down.obj 0))))
+```
+
+`StrictConeReindex.lean`：
+
+```lean
+def coherentConeRestrict {K L X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) (f : L ⟶ K) :
+    JoinCone (f ≫ p)
+```
+
+`StrictConeReindex.lean`：
+
+```lean
+lemma coherentConeRestrict_isLimit_iff {K L X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (f : L ⟶ K) [IsIso f] :
+    IsLimitCone c ↔ IsLimitCone (coherentConeRestrict c f)
+```
+
+`StrictConeReindex.lean`：
+
+```lean
+lemma coherentConeCast_isLimit_iff {K X : SSet.{u}} {p q : K ⟶ X}
+    (c : JoinCone p) (h : p = q) : IsLimitCone (c.cast h) ↔ IsLimitCone c
+```
+
+`StrictConeReindex.lean`：
+
+```lean
+lemma strictCoherentConeMap_whisker {F : I ⥤ C} (c : Cone F) (G : J ⥤ I) :
+    joinMap (𝟙 (Δ[0] : SSet.{max u v}))
+        ((SSet.uliftFunctor.{v, u}).map (nerveMap G)) ≫ strictCoherentConeMap c =
+      strictCoherentConeMap (c.whisker G)
+```
+
+`StrictConeReindex.lean`：
+
+```lean
+lemma strictCoherentCone_whisker {F : I ⥤ C} (c : Cone F) (G : J ⥤ I) :
+    strictCoherentCone (c.whisker G) =
+      (coherentConeRestrict (strictCoherentCone c)
+        ((SSet.uliftFunctor.{v, u}).map (nerveMap G))).cast
+          (strictCoherentDiagram_precomp G F)
+```
+
+`StrictConeReindex.lean`：
+
+```lean
+lemma strictCoherentCone_isLimit_iff_whisker {F : I ⥤ C} (c : Cone F) (G : J ⥤ I)
+    [IsIso ((SSet.uliftFunctor.{v, u}).map (nerveMap G))] :
+    IsLimitCone (strictCoherentCone c) ↔ IsLimitCone (strictCoherentCone (c.whisker G))
+```
+
+`OppositeSequenceIndex.lean`：
+
+```lean
+def oppositeSequenceIndex : AsSmall.{u} ℕᵒᵖ ⥤ (AsSmall.{u} ℕ)ᵒᵖ
+```
+
+`OppositeSequenceIndex.lean`：
+
+```lean
+def oppositeSequenceIndexEquivalence : AsSmall.{u} ℕᵒᵖ ≌ (AsSmall.{u} ℕ)ᵒᵖ
+```
+
+`OppositeSequenceIndex.lean`：
+
+```lean
+instance nerveMap_oppositeSequenceIndex_isIso : IsIso (nerveMap oppositeSequenceIndex.{u})
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+noncomputable def kanSequentialColimitObject (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    KanObject.{u}
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+noncomputable def kanSequentialColimitCocone (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) : Cocone F
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+noncomputable def kanSequentialColimitCocone_forget_isColimit
+    (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    IsColimit (kanObjectForget.mapCocone (kanSequentialColimitCocone F))
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+noncomputable def kanSequentialColimitCocone_isColimit (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    IsColimit (kanSequentialColimitCocone F)
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+noncomputable def kanSequentialColimitCocone_homTower_isLimit
+    (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) (X : KanObject.{u}ᵒᵖ) :
+    IsLimit (simplicialHomCone
+      ((kanSequentialColimitCocone F).op.whisker oppositeSequenceIndex) X)
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+instance kanSequenceHomTower_map_fibration (F : AsSmall.{u} ℕ ⥤ KanObject.{u})
+    [∀ n : ℕ, Mono ((F ⋙ kanObjectForget).map
+      (AsSmall.up.map (homOfLE (Nat.le_succ n))))]
+    (X : KanObject.{u}ᵒᵖ) (n : ℕ) :
+    Fibration ((simplicialHomDiagram (oppositeSequenceIndex ⋙ F.op) X).map
+      (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+noncomputable def spaceSequentialColimitCocone (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    JoinCocone (kanDiagramCoherentNerve F)
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+lemma spaceSequentialColimitCocone_vertex (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    (spaceSequentialColimitCocone F).vertex =
+      spaceInfinityVertex (kanSequentialColimitObject F)
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+noncomputable def spaceSequentialColimitCoconeLeg (F : AsSmall.{u} ℕ ⥤ KanObject.{u})
+    (n : ℕ) : (Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+lemma spaceSequentialColimitCoconeLeg_eq (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) (n : ℕ) :
+    spaceSequentialColimitCoconeLeg F n = SSet.yonedaEquiv.symm
+      ((nerveToCoherent KanObject.{u}).app (Opposite.op ⦋1⦌)
+        (ComposableArrows.mk₁ (show F.obj (AsSmall.up.obj n) ⟶ kanSequentialColimitObject F from
+          colimit.ι (F ⋙ kanObjectForget) (AsSmall.up.obj n))))
+```
+
+`SpaceSequentialColimits.lean`：
+
+```lean
+lemma spaceSequentialColimitCocone_isColimitCone (F : AsSmall.{u} ℕ ⥤ KanObject.{u})
+    [∀ n : ℕ, Mono ((F ⋙ kanObjectForget).map
+      (AsSmall.up.map (homOfLE (Nat.le_succ n))))] :
+    IsColimitCone (spaceSequentialColimitCocone F)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（5000 jobs）、公開1590宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルに警告・sorry・追加公理はない。
+L9 の確定済みの filtered colimit の Kan 性を再利用し、他担当の依存は1115ソース。
+全て追跡済み・コミット済み・変更なしを確認した。
+ログ：`/tmp/gamma3-space-sequential-colimit-aggregate.log`、
+`/tmp/gamma3-space-sequential-colimit-audit.log`。
