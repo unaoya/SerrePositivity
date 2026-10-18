@@ -1,6 +1,15 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.squareBinaryCocone_isColimit
+#print axioms SerrePositivity.InfinityCategories.zeroSourcePushout_isBinaryCoproduct
+#print axioms SerrePositivity.InfinityCategories.zeroSourcePushoutCoproductIso
+#print axioms SerrePositivity.InfinityCategories.zeroSourceCoproductFst
+#print axioms SerrePositivity.InfinityCategories.zeroSourceCoproductSnd
+#print axioms SerrePositivity.InfinityCategories.pastingTop_hom_comp
+#print axioms SerrePositivity.InfinityCategories.pastingTop_composite_arrow_of_outer_column
+#print axioms SerrePositivity.InfinityCategories.exists_pastingProjection_eq_coproductSnd
+#print axioms SerrePositivity.InfinityCategories.exists_coproductCofiberSequence
 #print axioms SerrePositivity.InfinityCategories.exists_zeroReturnTriangle
 #print axioms SerrePositivity.InfinityCategories.exists_pushoutRectangle_of_returnTriangle
 #print axioms SerrePositivity.InfinityCategories.pastingTop_isSplitEpi_of_outer_column
@@ -980,7 +989,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ZeroReturnPasting,
     `SerrePositivity.InfinityCategories.Stable.PastingSplitProjection,
     `SerrePositivity.InfinityCategories.Stable.SplitCofiberRectangle,
-    `SerrePositivity.InfinityCategories.Stable.SplitCofiberConnecting]
+    `SerrePositivity.InfinityCategories.Stable.SplitCofiberConnecting,
+    `SerrePositivity.InfinityCategories.Stable.SquareBinaryCocone,
+    `SerrePositivity.InfinityCategories.Stable.ZeroSourceCoproduct,
+    `SerrePositivity.InfinityCategories.Stable.ZeroSourceCoproductComparison,
+    `SerrePositivity.InfinityCategories.Stable.PastingHomotopyComposition,
+    `SerrePositivity.InfinityCategories.Stable.ZeroSourceProjection,
+    `SerrePositivity.InfinityCategories.Stable.ZeroSourceCofiberComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

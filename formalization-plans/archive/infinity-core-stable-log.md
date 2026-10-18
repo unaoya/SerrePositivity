@@ -9612,3 +9612,347 @@ SplitCofiberConnecting ビルド 2161 jobs、対象・Stable 集約ビルド 219
 `git diff --check` 成功。引用・追加公理・sorry は導入していない。
 双積性・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
 TR1・TR3 と二項積・二項余積の instance は完成のまま。
+
+
+## 幾何学的二項余積と標準包含・射影を持つ cofiber 列の照合
+
+`SquareBinaryCocone.lean` は四角形の標準 span の始点を除いて二点図式の余錐を取り出す。
+標準 join 同型と余錐の二三角形の式を使い、第一・第二脚の一次単体が元の右辺・上辺に
+それぞれ厳密に一致することを証明した。これらの形状・辺の計算は値域への仮定なし。
+`ZeroSourceCoproduct.lean` は一次単体の一致で二項余錐の余極限性を輸送する一般補題を置き、
+始点が始対象である押し出しの二本の包含が h C の普遍二項余錐となることを示す。
+`zeroSourcePushout_isBinaryCoproduct` は Quasicategory 性のみを仮定し、安定性は使わない。
+
+`ZeroSourceCoproductComparison.lean` は Mathlib の選ばれた二項余積から幾何学的余積への
+比較同型 `zeroSourcePushoutCoproductIso` を作り、標準の二包含を元の右辺・上辺へ送る式を与える。
+零射を仮定すると第一・第二射影 `zeroSourceCoproductFst`・`Snd` が得られ、包含との四合成式が成り立つ。
+前加法構造は仮定しない。
+`PastingHomotopyComposition.lean` は上側二単体の端点を保持する合成二単体を取り出し、
+左・右上辺の合成が外側上辺であることを証明する。外側が列四角形なら、その合成は
+恒等射と Arrow の等号で一致する。これらには値域の Quasicategory 性を仮定しない。
+
+`ZeroSourceProjection.lean` は外側が列四角形の延長長方形について、右上辺を元の二頂点間の辺 b として
+取り出す。上側合成二単体は元の第二包含との合成恒等を与え、右零角は第一包含との合成零を与える。
+二項余積の普遍性によって `homMk b = zeroSourceCoproductSnd R hR hz.1` を得た。
+この比較は Quasicategory 性と零射だけを使い、安定性は不要。
+`ZeroSourceCofiberComparison.lean` は安定な場合の延長長方形にこの同定を適用する。
+`exists_coproductCofiberSequence` は第一射を元の包含、第二射を標準第二射影と Arrow の等号で指定し、
+三対象の頂点・cofiber/fiber 性・第二射の切断・接続射の消滅を持つ列を与える。
+標準余積との比較同型の二包含の式によって Mathlib の選ばれた包含と照合できる形になった。
+積と余積の標準比較が同型であること、双積性、前加法構造は未完了であり、この成果で完成とは数えない。
+
+Lean で抽出した全公開宣言の正確な型：
+
+```lean
+spanCoconeSquareIso_first_terminalLeg.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (joinStdSimplexIso.{u_1} 0 0))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) SSet.horn₂₀.ι₀₁.{u_1})
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanCoconeSquareIso.{u_1})))
+  squareRightEdge.{u_1}
+spanCoconeSquareIso_second_terminalLeg.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (joinStdSimplexIso.{u_1} 0 0))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) SSet.horn₂₀.ι₀₂.{u_1})
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanCoconeSquareIso.{u_1})))
+  squareTopEdge.{u_1}
+@squareBinaryCocone.{u_1} : {X : SSet.{u_1}} →
+  (R :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X) →
+    JoinCocone.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (joinInr.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+          (CategoryTheory.Limits.coprod.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanPointJoinIso.{u_1}) (pushoutSpan.{u_1} R)))
+@squareBinaryCocone_leg_left.{u_1} : ∀ {X : SSet.{u_1}}
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    (SSet.Truncated.Edge.edge.{u_1} (JoinCocone.leg.{u_1} (squareBinaryCocone.{u_1} R) binaryPointLeft.{u_1}))
+    (SSet.Truncated.Edge.edge.{u_1} (squareRightArrow.{u_1} R))
+@squareBinaryCocone_leg_right.{u_1} : ∀ {X : SSet.{u_1}}
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    (SSet.Truncated.Edge.edge.{u_1} (JoinCocone.leg.{u_1} (squareBinaryCocone.{u_1} R) binaryPointRight.{u_1}))
+    (SSet.Truncated.Edge.edge.{u_1} (squareTopArrow.{u_1} R))
+@binaryCofan_isColimit_of_edge_eq.{u_1} : {X : SSet.{u_1}} →
+  {x y z x' y' z' : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (f : SSet.Truncated.Edge.{u_1} x z) →
+      (g : SSet.Truncated.Edge.{u_1} y z) →
+        (f' : SSet.Truncated.Edge.{u_1} x' z') →
+          (g' : SSet.Truncated.Edge.{u_1} y' z') →
+            Eq.{u_1 + 1} (SSet.Truncated.Edge.edge.{u_1} f) (SSet.Truncated.Edge.edge.{u_1} f') →
+              Eq.{u_1 + 1} (SSet.Truncated.Edge.edge.{u_1} g) (SSet.Truncated.Edge.edge.{u_1} g') →
+                CategoryTheory.Limits.IsColimit.{0, u_1, 0, u_1}
+                    (CategoryTheory.Limits.BinaryCofan.mk.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} f)
+                      (SSet.Truncated.HomotopyCategory.homMk.{u_1} g)) →
+                  CategoryTheory.Limits.IsColimit.{0, u_1, 0, u_1}
+                    (CategoryTheory.Limits.BinaryCofan.mk.{u_1, u_1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} f')
+                      (SSet.Truncated.HomotopyCategory.homMk.{u_1} g'))
+@squareBinaryCocone_isColimit.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} R →
+    IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0) → IsColimitCone.{u_1} (squareBinaryCocone.{u_1} R)
+@zeroSourcePushout_isBinaryCoproduct.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    (R :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          X) →
+      IsPushoutSquare.{u_1} R →
+        IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0) →
+          CategoryTheory.Limits.IsColimit.{0, u_1, 0, u_1}
+            (CategoryTheory.Limits.BinaryCofan.mk.{u_1, u_1} (squareHoRight.{u_1} R) (squareHoTop.{u_1} R))
+@zeroSourcePushoutCoproductIso.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    (R :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          X) →
+      IsPushoutSquare.{u_1} R →
+        IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0) →
+          [inst :
+              CategoryTheory.Limits.HasBinaryCoproduct.{u_1, u_1} (squareHoVertex.{u_1} R 1 0)
+                (squareHoVertex.{u_1} R 0 1)] →
+            CategoryTheory.Iso.{u_1, u_1}
+              (CategoryTheory.Limits.coprod.{u_1, u_1} (squareHoVertex.{u_1} R 1 0) (squareHoVertex.{u_1} R 0 1))
+              (squareHoVertex.{u_1} R 1 1)
+@zeroSourcePushoutCoproductIso_inl.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (hR : IsPushoutSquare.{u_1} R) (hz : IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0))
+  [inst_1 :
+    CategoryTheory.Limits.HasBinaryCoproduct.{u_1, u_1} (squareHoVertex.{u_1} R 1 0) (squareHoVertex.{u_1} R 0 1)],
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} CategoryTheory.Limits.coprod.inl.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1} (zeroSourcePushoutCoproductIso.{u_1} R hR hz)))
+    (squareHoRight.{u_1} R)
+@zeroSourcePushoutCoproductIso_inr.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (hR : IsPushoutSquare.{u_1} R) (hz : IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0))
+  [inst_1 :
+    CategoryTheory.Limits.HasBinaryCoproduct.{u_1, u_1} (squareHoVertex.{u_1} R 1 0) (squareHoVertex.{u_1} R 0 1)],
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} CategoryTheory.Limits.coprod.inr.{u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1} (zeroSourcePushoutCoproductIso.{u_1} R hR hz)))
+    (squareHoTop.{u_1} R)
+@zeroSourceCoproductFst.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    [CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+          ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)] →
+      (R :
+          Quiver.Hom.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            X) →
+        IsPushoutSquare.{u_1} R →
+          IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0) →
+            Quiver.Hom.{u_1, u_1} (squareHoVertex.{u_1} R 1 1) (squareHoVertex.{u_1} R 1 0)
+@zeroSourceCoproductSnd.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    [CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+          ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)] →
+      (R :
+          Quiver.Hom.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            X) →
+        IsPushoutSquare.{u_1} R →
+          IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0) →
+            Quiver.Hom.{u_1, u_1} (squareHoVertex.{u_1} R 1 1) (squareHoVertex.{u_1} R 0 1)
+@zeroSourceCoproduct_right_fst.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (hR : IsPushoutSquare.{u_1} R) (hz : IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (squareHoRight.{u_1} R) (zeroSourceCoproductFst.{u_1} R hR hz))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1} (squareHoVertex.{u_1} R 1 0))
+@zeroSourceCoproduct_top_fst.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (hR : IsPushoutSquare.{u_1} R) (hz : IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (squareHoTop.{u_1} R) (zeroSourceCoproductFst.{u_1} R hR hz)) 0
+@zeroSourceCoproduct_right_snd.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (hR : IsPushoutSquare.{u_1} R) (hz : IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (squareHoRight.{u_1} R) (zeroSourceCoproductSnd.{u_1} R hR hz)) 0
+@zeroSourceCoproduct_top_snd.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (hR : IsPushoutSquare.{u_1} R) (hz : IsInitialVertex.{u_1} (squareVertex.{u_1} R 0 0)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (squareHoTop.{u_1} R) (zeroSourceCoproductSnd.{u_1} R hR hz))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1} (squareHoVertex.{u_1} R 0 1))
+@pastingTopCompStruct.{u_1} : {X : SSet.{u_1}} →
+  (F :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X) →
+    SSet.Truncated.Edge.CompStruct.{u_1} (squareTopArrow.{u_1} (pastingSquare.{u_1} F 2))
+      (squareTopArrow.{u_1} (pastingSquare.{u_1} F 0)) (squareTopArrow.{u_1} (pastingSquare.{u_1} F 1))
+@pastingTop_hom_comp.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (squareHoTop.{u_1} (pastingSquare.{u_1} F 2))
+      (squareHoTop.{u_1} (pastingSquare.{u_1} F 0)))
+    (squareHoTop.{u_1} (pastingSquare.{u_1} F 1))
+@pastingTop_composite_arrow_of_outer_column.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (g :
+    Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X),
+  Eq.{u_1 + 1} (pastingSquare.{u_1} F 1) (squareColumnDiagram.{u_1} g) →
+    Eq.{u_1 + 1}
+      (CategoryTheory.Arrow.mk.{u_1, u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1} (squareHoTop.{u_1} (pastingSquare.{u_1} F 2))
+          (squareHoTop.{u_1} (pastingSquare.{u_1} F 0))))
+      (CategoryTheory.Arrow.mk.{u_1, u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1} (squareHoVertex.{u_1} (pastingSquare.{u_1} F 2) 0 1)))
+@exists_pastingProjection_eq_coproductSnd.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 :
+    CategoryTheory.Limits.HasZeroMorphisms.{u_1, u_1}
+      ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (hR : IsPushoutSquare.{u_1} R) (hz : IsZeroVertex.{u_1} (squareVertex.{u_1} R 0 0))
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1} (pastingSquare.{u_1} F 2) R →
+    Eq.{u_1 + 1} (pastingSquare.{u_1} F 1)
+        (squareColumnDiagram.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareLeftEdge.{u_1} R)) →
+      ∃ b,
+        Eq.{u_1 + 1} (SSet.Truncated.Edge.edge.{u_1} b)
+            (SSet.Truncated.Edge.edge.{u_1} (squareTopArrow.{u_1} (pastingSquare.{u_1} F 0))) ∧
+          Eq.{u_1 + 1} (SSet.Truncated.HomotopyCategory.homMk.{u_1} b) (zeroSourceCoproductSnd.{u_1} R hR ⋯)
+@exists_coproductCofiberSequence.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X]
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (hR : IsPushoutSquare.{u_1} R) (hz : IsZeroVertex.{u_1} (squareVertex.{u_1} R 0 0)),
+  ∃ t,
+    ∃ (ht : IsCofiberSequence.{u_1} t),
+      Eq.{u_1 + 1}
+          (CategoryTheory.Arrow.mk.{u_1, u_1}
+            (CategoryTheory.ShortComplex.f.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t)))
+          (CategoryTheory.Arrow.mk.{u_1, u_1} (squareHoRight.{u_1} R)) ∧
+        Eq.{u_1 + 1}
+            (CategoryTheory.Arrow.mk.{u_1, u_1}
+              (CategoryTheory.ShortComplex.g.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t)))
+            (CategoryTheory.Arrow.mk.{u_1, u_1} (zeroSourceCoproductSnd.{u_1} R hR ⋯)) ∧
+          Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 0 0) (squareVertex.{u_1} R 1 0) ∧
+            Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 0) (squareVertex.{u_1} R 1 1) ∧
+              Eq.{u_1 + 1} (squareVertex.{u_1} (ZeroTriangle.square.{u_1} t) 1 1) (squareVertex.{u_1} R 0 1) ∧
+                IsFiberSequence.{u_1} t ∧
+                  CategoryTheory.IsSplitEpi.{u_1, u_1}
+                      (CategoryTheory.ShortComplex.g.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t)) ∧
+                    Eq.{u_1 + 1} (cofiberConnecting.{u_1} t ht) 0
+```
+
+対象 SquareBinaryCocone ビルド 2089 jobs、ZeroSourceCoproduct ビルド 2090 jobs、
+ZeroSourceCoproductComparison ビルド 2091 jobs、PastingHomotopyComposition ビルド 2061 jobs、
+ZeroSourceProjection ビルド 2093 jobs、ZeroSourceCofiberComparison ビルド 2184 jobs、
+対象・Stable 集約ビルド 2205 jobs、公開型抽出、公理監査はすべて終了コード 0。
+監査は 211 モジュール・1645 宣言（生成・非公開宣言を含む）について標準三公理のみ。
+自分の新規ファイルは警告なし。`git diff --check` 成功。引用・追加公理・sorry は導入していない。
+双積性・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
+TR1・TR3 と二項積・二項余積の instance は完成のまま。
