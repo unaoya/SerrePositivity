@@ -26,7 +26,10 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 実導来係数拡大との比較を証明済み。
 通常の普遍チャート商は元の自由チャートと基底係数を保つ環同型を持ち、
 その実導来底変更が指定係数の Koszul チャートを与える局所同型を構成済み。
-係数環が変わる dg 図式全体の合成比較と、coherent な降下模型の組立ては未完了。
+係数制限の合成・恒等比較を dg 関手として構成し、三段階の結合整合性を証明済み。
+自由 Koszul 模型の環射に沿う dg 関手、その Hom と総外積の係数変更の一致、
+二段の合成律と恒等律を証明済み。
+これらとチャートの基底変換を結ぶ自然性、および coherent な降下模型の組立ては未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -209,6 +212,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `polynomialDerivedBaseChangeIso` | PolynomialDerivedBaseChange | K-flat 複体の実導来底変更と表示環の項別底変更の比較 |
 | `liftedUniversalDerivedChartIso` | UniversalDerivedChartComparison | 普遍チャート解消の実導来底変更と任意係数チャートの局所同型 |
 | `liftedUniversalOrdinaryChartEquiv`・係数保存・`liftedUniversalDerivedOrdinaryChartIso` | LiftedUniversalOrdinaryChart | 通常の普遍チャート商そのものの実導来底変更の Koszul 表示 |
+| `restrictionCompositionIso`・単位・tensor 整合性・`restrictionCompositionDGFunctor` | RestrictionComposition | 二段の係数制限を合成環射の制限に比較する dg 関手 |
+| `restrictionCompositionDGFunctor_assoc` | RestrictionAssociativity | 三段の係数制限比較の結合整合性 |
+| `restrictionIdentityIso`・単位・tensor 整合性・`restrictionIdentityDGFunctor` | RestrictionIdentity | 恒等環射による制限と元の dg 圏の標準比較 |
+| `freeExteriorScalarMap`・生成元・係数公式・合成律・恒等律 | FreeExteriorScalarMap | 総外積上の係数変更の実際の射とその関手性 |
+| `freeKoszulScalarDGFunctor`・`freeKoszulScalarDGFunctor_inclusion` | FreeKoszulScalarDGFunctor | 環射に沿う自由 Koszul dg 関手と総外積への包含公式 |
+| `freeKoszulScalarDGFunctor_comp`・`freeKoszulScalarDGFunctor_id` | FreeKoszulScalarComposition | 係数制限の標準比較を明示した dg 係数変更の合成律・恒等律 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -255,12 +264,16 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 実導来係数拡大との比較を証明済み。
 通常の普遍チャート商は元の自由チャートと基底係数を保つ環同型を持ち、
 その実導来底変更が指定係数の Koszul チャートを与える局所同型を構成済み。
-係数環が変わる dg 図式全体の合成比較と、coherent な降下模型の組立ては未完了。
+係数制限の合成・恒等比較は単位・tensor と整合し、dg 関手として構成済み。
+三段階の係数制限比較の結合整合性を証明済み。
+自由 Koszul の係数変更 dg 関手は総外積上の係数変更と一致し、
+標準制限比較を挟んだ二段の合成律と恒等律を証明済み。
+チャートの可逆基底変換との自然性と、coherent な降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全1169定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1226定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は係数環変更の合成比較とチャート遷移を結ぶ dg 図式の整合性。
+次の実装単位は自由 Koszul の係数変更とチャート遷移の基底変換の自然性。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 

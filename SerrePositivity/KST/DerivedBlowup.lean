@@ -110,3 +110,9 @@ public import SerrePositivity.KST.DerivedBlowup.PolynomialPushoutBaseChange
 public import SerrePositivity.KST.DerivedBlowup.PolynomialDerivedBaseChange
 public import SerrePositivity.KST.DerivedBlowup.UniversalDerivedChartComparison
 public import SerrePositivity.KST.DerivedBlowup.LiftedUniversalOrdinaryChart
+public import SerrePositivity.KST.DerivedBlowup.RestrictionComposition
+public import SerrePositivity.KST.DerivedBlowup.RestrictionAssociativity
+public import SerrePositivity.KST.DerivedBlowup.RestrictionIdentity
+public import SerrePositivity.KST.DerivedBlowup.FreeExteriorScalarMap
+public import SerrePositivity.KST.DerivedBlowup.FreeKoszulScalarDGFunctor
+public import SerrePositivity.KST.DerivedBlowup.FreeKoszulScalarComposition
