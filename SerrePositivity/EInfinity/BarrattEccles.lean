@@ -50,3 +50,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalCorner
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalSum
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalEndpointSum
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalContribution
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCornerPartition
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCornerCoordinates
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleBoundaryFaces
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleBoundaryDecomposition
