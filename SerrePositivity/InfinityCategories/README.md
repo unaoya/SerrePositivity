@@ -2062,7 +2062,9 @@ Kan 値図式の end の同値不変性も証明済み。反転した表現可�
 coherent な錐の全空間への実際の底上の射と、全ての頂点上での実際の fiber 射の同値性も証明済み。
 三形状の反転豊穣係数の切断と coherent な錐の切断模型の実際の比較射の同値性も証明済み。
 反転した strict Hom 錐の標準比較 q′、始対象に関する自然性、三形状での切断模型への
-合成の同値性も証明済み。元の豊穣 Hom の end・q_x との比較、native な錐の比較射との一致、
+合成の同値性も証明済み。合成の全パラメータでの評価式と、各対象での canonical な
+左 Hom 比較・実際の錐の脚による後合成との一致も証明済み。
+元の豊穣 Hom の end・q_x との比較、native な錐の比較射との一致、
 𝒮 の残りの極限と Sp への適用は未完了。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
@@ -4466,3 +4468,113 @@ Kan 性と左脚の fibration 性のみを要求し、右脚の条件を加え�
 集約から再帰的に辿る他担当の700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-reflected-strict-aggregate.log` と
 `/tmp/gamma3-reflected-strict-audit.log`。
+
+
+### strict な錐の全パラメータでの評価と各脚との整合性
+
+`StrictConeWeightedEvaluation` は任意の `H : I ⥤ SSet.{u}` と `c : Cone H` に対し、
+標準比較を weighted nerve の族へ評価すると、第二射影と c の脚から直接作る族に一致することを
+証明する。各初区間の係数は `stdSimplex.map prefix ≫ a ≫ c.π.app (σ.obj j)`。
+底を対象 i に固定したときは `c.π.app i ≫ weightedNerveConstantLift H i` に一致する。
+これらは Kan 性・極限性なしで全次数・全パラメータについて厳密に成立する。
+原典上の位置は HTT 4.2.4.1 の双対、Kerodon 7.5.4.6 の strict な錐の主比較の整合性。
+
+以下は `universe u`、`{I : Type u} [SmallCategory I] {H : I ⥤ SSet.{u}}` の下の正確な型。
+
+```lean
+lemma bousfieldKanConeComparison_weightedNerveEvaluation (c : Cone H) :
+    (nerve I ◁ bousfieldKanConeComparison c) ≫ bousfieldKanWeightedNerveEvaluation H =
+      weightedNerveSectionFromTransform
+        (snd (bousfieldKanWeight I) ((Functor.const I).obj c.pt) ≫ c.π)
+lemma weightedNerveCoefficients_cone_app (c : Cone H) {n : ℕ}
+    (σ : ComposableArrows I n) (a : (Δ[n] : SSet.{u}) ⟶ c.pt) (j : Fin (n + 1)) :
+    (weightedNerveCoefficients
+      (snd (bousfieldKanWeight I) ((Functor.const I).obj c.pt) ≫ c.π) σ a).app j =
+    stdSimplex.map (simplexPrefixInclusion j.val n (Nat.le_of_lt_succ j.isLt)) ≫
+      a ≫ c.π.app (σ.obj j)
+lemma bousfieldKanConeComparison_sections_evaluation (c : Cone H) :
+    (nerve I ◁ (bousfieldKanConeComparison c ≫ bousfieldKanSectionsMap H)) ≫
+      simplicialSectionsEvaluation (weightedNerveProjection H) =
+    weightedNerveSectionFromTransform
+      (snd (bousfieldKanWeight I) ((Functor.const I).obj c.pt) ≫ c.π)
+lemma weightedNerveSectionFromCone_constant (c : Cone H) (i : I) :
+    lift (SSet.const (nerveVertex i)) (𝟙 c.pt) ≫ weightedNerveSectionFromTransform
+      (snd (bousfieldKanWeight I) ((Functor.const I).obj c.pt) ≫ c.π) =
+    c.π.app i ≫ weightedNerveConstantLift H i
+```
+
+`ReflectedStrictConeEvaluation` は切断空間・引き戻し・ULift・重み付き end の評価を順に戻し、
+`reflectedStrictConeSectionsComparison` の相対関手としての普遍的な族を同定する。
+終域の coslice への族は、反転した Hom 錐の脚から作る weighted nerve の族を ULift で写して
+`weightedCosliceComparison F x` に合成した射と厳密に一致する。
+非定値 Hom の係数も、初区間の最小点の座標、反転したパラメータ a、実際の錐の脚による
+sHom の後合成という式へ分解した。
+
+さらに `reflectedStrictConeSectionsComparison_evaluate` は任意の i で底を固定すると、
+錐の脚 `c.π.app i` による sHom の後合成を反転・ULift した射と
+`coherentCosliceFiberComparison x (F.obj i)` の合成（包含後）に一致することを示す。
+これは既存の canonical な左 Hom 比較そのものへの等式であり、各点で選んだ逆射を使わない。
+対象 i を固定しても Hom のパラメータは全次数で自由である。
+
+共通変数は `universe u v`、`{I : Type u} [SmallCategory I]`、
+`{C : Type v} [Category.{u} C] [SimplicialCategory C]`。
+新規公開宣言の正確な型・全前提は以下と監査スクリプトの `#check @` に記録。
+
+```lean
+lemma pullbackSectionsRelativeIso_hom_uncurry {K E B : SSet.{u}}
+    (p : E ⟶ B) (a : K ⟶ B) :
+    relativeFunctorUncurry (pullbackSectionsRelativeIso p a).hom =
+      simplicialSectionsEvaluation (pullback.snd p a) ≫ pullback.fst p a
+lemma weightedCoherentConeSectionsComparison_uncurry (F : I ⥤ C) (x : C) :
+    relativeFunctorUncurry (weightedCoherentConeSectionsComparison F x) =
+      simplicialSectionsEvaluation ((SSet.uliftFunctor.{v, u}).map
+        (weightedNerveProjection (simplicialHomDiagram F x ⋙ SSet.opFunctor))) ≫
+      weightedCosliceComparison F x
+lemma reflectedHomHolimConeComparison_uncurry (F : I ⥤ C) (x : C) :
+    relativeFunctorUncurry (reflectedHomHolimConeComparison F x) =
+      (uliftTensorIso (nerve I)
+        (bousfieldKanHolim (simplicialHomDiagram F x ⋙ SSet.opFunctor))).inv ≫
+      (SSet.uliftFunctor.{v, u}).map
+        (bousfieldKanWeightedNerveEvaluation (simplicialHomDiagram F x ⋙ SSet.opFunctor)) ≫
+      weightedCosliceComparison F x
+lemma reflectedStrictConeSectionsComparison_uncurry {F : I ⥤ C} (c : Cone F) (x : C) :
+    relativeFunctorUncurry (reflectedStrictConeSectionsComparison c x) =
+      (uliftTensorIso (nerve I) (SimplicialCategory.sHom x c.pt).op).inv ≫
+      (SSet.uliftFunctor.{v, u}).map (weightedNerveSectionFromTransform
+        (snd (bousfieldKanWeight I) ((Functor.const I).obj
+          (reflectedSimplicialHomCone c x).pt) ≫ (reflectedSimplicialHomCone c x).π)) ≫
+      weightedCosliceComparison F x
+lemma weightedCoherentCoefficient_strictCone {F : I ⥤ C} (c : Cone F) (x : C)
+    {n : ℕ} (σ : ComposableArrows I n)
+    (a : (Δ[n] : SSet.{u}) ⟶ (SimplicialCategory.sHom x c.pt).op)
+    (j : Fin (n + 1)) :
+    weightedCoherentCoefficient (weightedNerveCoefficients
+      (snd (bousfieldKanWeight I) ((Functor.const I).obj
+        (reflectedSimplicialHomCone c x).pt) ≫ (reflectedSimplicialHomCone c x).π) σ a) j =
+      pathFirstMinimumMap j ≫
+        SSet.opFunctor.map (SSet.stdSimplex.map
+          (simplexPrefixInclusion j.val n (Nat.le_of_lt_succ j.isLt))) ≫
+        reflectedSimplexMap a ≫
+        ((SimplicialCategory.sHomFunctor C).obj (Opposite.op x)).map (c.π.app (σ.obj j))
+lemma reflectedStrictConeSectionsComparison_evaluate {F : I ⥤ C}
+    (c : Cone F) (x : C) (i : I) :
+    lift (SSet.const (ULift.up (nerveVertex i)))
+        (𝟙 ((SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x c.pt).op)) ≫
+      relativeFunctorUncurry (reflectedStrictConeSectionsComparison c x) =
+    (SSet.uliftFunctor.{v, u}).map (SSet.opFunctor.map
+        (((SimplicialCategory.sHomFunctor C).obj (Opposite.op x)).map (c.π.app i))) ≫
+      coherentCosliceFiberComparison x (F.obj i) ≫
+      vertexFiberι (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+        (coherentNerveVertex (F.obj i))
+```
+
+以上の整合性は極限性・局所 Kan 性を追加せず、定義済みの実際の比較射について証明した。
+選択付きの `coneSectionHomComparison (strictCoherentCone c)` とこの合成との全体の比較は
+まだ未完了であり、各脚の等式だけで錐の ∞ 圏での普遍性を結論しない。
+元の q_x と係数の反転との整合性、𝒮・Sp の残りの適用、余極限の比較も継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4436 jobs）、公開866宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-strict-cone-evaluation-aggregate.log` と
+`/tmp/gamma3-strict-cone-evaluation-audit.log`。

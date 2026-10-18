@@ -871,3 +871,24 @@ cospan・塔の上記 fibration 条件の下で同値である。
 集約から再帰的に辿る他担当の700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-reflected-strict-aggregate.log` と
 `/tmp/gamma3-reflected-strict-audit.log`。
+
+
+### γ3b：strict な錐の全パラメータの評価と各脚の比較
+
+`StrictConeWeightedEvaluation` に任意の strict な単体集合の錐について、標準比較を
+weighted nerve と切断空間で評価する式、初区間の全係数の式、底の各対象での評価式を証明。
+`ReflectedStrictConeEvaluation` に引き戻し切断同型の評価、weighted nerve の切断比較と
+反転 end の比較の評価、反転した strict Hom 錐の合成の全パラメータでの評価を証明した。
+非定値係数を初区間の最小点・反転した Hom のパラメータ・実際の錐の脚の後合成へ分解し、
+`reflectedStrictConeSectionsComparison_evaluate` により各対象で既存の canonical な
+`coherentCosliceFiberComparison x (F.obj i)` と錐の脚の後合成に一致することを示した。
+全て定義済みの実際の射に関する等式であり、Kan 性・極限性・同値の逆の選択を要求しない。
+新規10宣言の正確な型・全前提は README と公開866宣言の監査に記録。
+選択付きの native な錐の Hom 比較との全体の比較、元の q_x と係数の反転の整合性、
+𝒮・Sp の残りの適用は未完了。各脚での一致だけから `IsLimitCone` を結論していない。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4436 jobs）、公開866宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-strict-cone-evaluation-aggregate.log` と
+`/tmp/gamma3-strict-cone-evaluation-audit.log`。

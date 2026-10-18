@@ -1729,3 +1729,33 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @reflectedStrictConeSectionsComparison_tower_homotopyEquivalence
 #print axioms reflectedStrictConeSectionsComparison_tower_homotopyEquivalence
+
+#check @bousfieldKanConeComparison_weightedNerveEvaluation
+#print axioms bousfieldKanConeComparison_weightedNerveEvaluation
+
+#check @weightedNerveCoefficients_cone_app
+#print axioms weightedNerveCoefficients_cone_app
+
+#check @bousfieldKanConeComparison_sections_evaluation
+#print axioms bousfieldKanConeComparison_sections_evaluation
+
+#check @weightedNerveSectionFromCone_constant
+#print axioms weightedNerveSectionFromCone_constant
+
+#check @pullbackSectionsRelativeIso_hom_uncurry
+#print axioms pullbackSectionsRelativeIso_hom_uncurry
+
+#check @weightedCoherentConeSectionsComparison_uncurry
+#print axioms weightedCoherentConeSectionsComparison_uncurry
+
+#check @reflectedHomHolimConeComparison_uncurry
+#print axioms reflectedHomHolimConeComparison_uncurry
+
+#check @reflectedStrictConeSectionsComparison_uncurry
+#print axioms reflectedStrictConeSectionsComparison_uncurry
+
+#check @weightedCoherentCoefficient_strictCone
+#print axioms weightedCoherentCoefficient_strictCone
+
+#check @reflectedStrictConeSectionsComparison_evaluate
+#print axioms reflectedStrictConeSectionsComparison_evaluate
