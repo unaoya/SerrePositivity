@@ -7235,5 +7235,22 @@ instance relativeJoinProjection_cocartesianFibration {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) :
     CocartesianFibration (relativeJoinProjection f (𝟙 Y))
 
+lemma isEssentiallySurjective_of_vertexFiberMap {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p)
+    (h : ∀ b : B _⦋0⦌, IsEssentiallySurjective (vertexFiberMap p q f hf b)) :
+    IsEssentiallySurjective f
+
+lemma isEssentiallySurjective_of_vertexFiberMap_equivalence {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [InnerFibration p] [InnerFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p)
+    (h : ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)) :
+    IsEssentiallySurjective f
+
+lemma isEssentiallySurjective_over_interval_of_endpoint_fibers {E F : SSet.{u}}
+    (p : E ⟶ (Δ[1] : SSet.{u})) (q : F ⟶ Δ[1]) (f : E ⟶ F) (hf : f ≫ q = p)
+    (h0 : IsEssentiallySurjective (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))
+    (h1 : IsEssentiallySurjective (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) :
+    IsEssentiallySurjective f
+
 end SerrePositivity.InfinityCategories
 ```

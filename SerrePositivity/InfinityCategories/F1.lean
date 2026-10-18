@@ -337,3 +337,4 @@ public import SerrePositivity.InfinityCategories.F1.IntervalInitialEdgeCut
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCrossingCocartesian
 public import SerrePositivity.InfinityCategories.F1.IntervalCocartesianCriterion
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCocartesianFibration
+public import SerrePositivity.InfinityCategories.F1.FiberwiseEssentialSurjectivity
