@@ -556,3 +556,6 @@ public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningReflectsE
 public import SerrePositivity.InfinityCategories.F1.CoherentHomEnrichedNaturality
 public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberEvaluation
+public import SerrePositivity.InfinityCategories.F1.SubterminalFiber
+public import SerrePositivity.InfinityCategories.F1.SubterminalRelativeFunctor
+public import SerrePositivity.InfinityCategories.F1.SubterminalFibrationClassification

@@ -11212,5 +11212,49 @@ lemma leftFibrationFiberEvaluation_mapping_naturality {B : SSet.{u}} (b : B _⦋
       (SSet.uliftFunctor.{u + 1, u}).map (relativeFunctorFiberHom p.val.hom q.val.hom b) ≫
         coherentHomComparison (leftFibrationFiberObject b p) (leftFibrationFiberObject b q)
 
+def vertexFiberSubterminalBaseIso {E B : SSet.{u}}
+    [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)] (p : E ⟶ B) (b : B _⦋0⦌) :
+    vertexFiber p b ≅ E
+
+instance ihom_subsingleton_of_subterminal {A B : SSet.{u}}
+    [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)] (n : SimplexCategoryᵒᵖ) :
+    Subsingleton (((ihom A).obj B).obj n)
+
+def relativeFunctorSubterminalBaseIso {E F B : SSet.{u}}
+    [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)]
+    (p : E ⟶ B) (q : F ⟶ B) (b : B _⦋0⦌) :
+    relativeFunctorSpace q p ≅ (ihom (vertexFiber p b)).obj (vertexFiber q b)
+
+lemma relativeFunctorSubterminalBaseIso_hom {E F B : SSet.{u}}
+    [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)]
+    (p : E ⟶ B) (q : F ⟶ B) (b : B _⦋0⦌) :
+    (relativeFunctorSubterminalBaseIso p q b).hom = relativeFunctorFiberHom p q b
+
+instance relativeFunctorFiberHom_isIso_of_subterminal {E F B : SSet.{u}}
+    [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)]
+    (p : E ⟶ B) (q : F ⟶ B) (b : B _⦋0⦌) : IsIso (relativeFunctorFiberHom p q b)
+
+lemma leftFibrationInfinityFiberEvaluation_isFullyFaithful_of_subterminal
+    {B : SSet.{u}} [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)] (b : B _⦋0⦌) :
+    IsFullyFaithful (leftFibrationInfinityFiberEvaluation b)
+
+instance leftFibration_to_subterminal_of_kan {E B : SSet.{u}} [KanComplex E]
+    [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)] (p : E ⟶ B) : LeftFibration p
+
+lemma leftFibrationInfinityFiberEvaluation_isEssentiallySurjective_of_subterminal
+    {B : SSet.{u}} [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)] (b : B _⦋0⦌) :
+    IsEssentiallySurjective (leftFibrationInfinityFiberEvaluation b)
+
+lemma leftFibrationInfinityFiberEvaluation_isQCatEquivalence_of_subterminal
+    {B : SSet.{u}} [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)] (b : B _⦋0⦌) :
+    IsQCatEquivalence (leftFibrationInfinityFiberEvaluation b)
+
+noncomputable def leftFibrationInfinitySubterminalEquivalence
+    {B : SSet.{u}} [∀ n : SimplexCategoryᵒᵖ, Subsingleton (B.obj n)] (b : B _⦋0⦌) :
+    QCatEquivalence (LeftFibrationInfinity B) SpaceInfinity.{u}
+
+noncomputable def leftFibrationInfinityPointEquivalence :
+    QCatEquivalence (LeftFibrationInfinity (Δ[0] : SSet.{u})) SpaceInfinity.{u}
+
 end SerrePositivity.InfinityCategories
 ```
