@@ -245,3 +245,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.spaceInfinity_quasicategory
 #check @SerrePositivity.InfinityCategories.SpaceInfinityFunctor
 #check @SerrePositivity.InfinityCategories.spaceInfinityFunctor_quasicategory
+#check @SerrePositivity.InfinityCategories.spaceInfinityVertex
+#check @SerrePositivity.InfinityCategories.pointKanObject
+#check @SerrePositivity.InfinityCategories.pointSpaceVertex
+#check @SerrePositivity.InfinityCategories.PointedSpaceInfinity
+#check @SerrePositivity.InfinityCategories.pointedSpaceProjection
+#check @SerrePositivity.InfinityCategories.pointedSpaceProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.pointedSpaceInfinity_quasicategory

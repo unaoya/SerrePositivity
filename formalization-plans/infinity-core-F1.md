@@ -1019,5 +1019,19 @@ def SpaceInfinityFunctor (C : SSet.{u + 1}) : SSet.{u + 1}
 instance spaceInfinityFunctor_quasicategory (C : SSet.{u + 1}) :
     Quasicategory (SpaceInfinityFunctor C)
 
+noncomputable def spaceInfinityVertex (K : KanObject.{u}) : SpaceInfinity.{u} _⦋0⦌
+
+def pointKanObject : KanObject.{u}
+
+noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌
+
+noncomputable def PointedSpaceInfinity : SSet.{u + 1}
+
+noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u}
+
+instance pointedSpaceProjection_leftFibration : LeftFibration pointedSpaceProjection.{u}
+
+instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u}
+
 end SerrePositivity.InfinityCategories
 ```
