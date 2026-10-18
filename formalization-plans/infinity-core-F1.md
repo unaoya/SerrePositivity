@@ -11256,5 +11256,79 @@ noncomputable def leftFibrationInfinitySubterminalEquivalence
 noncomputable def leftFibrationInfinityPointEquivalence :
     QCatEquivalence (LeftFibrationInfinity (Δ[0] : SSet.{u})) SpaceInfinity.{u}
 
+def strictDiagramMappingSimplex {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) (n : SimplexCategoryᵒᵖ) : Type u
+
+def strictDiagramMappingSimplexMap {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) {n m : SimplexCategoryᵒᵖ} (α : n ⟶ m)
+    (η : strictDiagramMappingSimplex F G n) : strictDiagramMappingSimplex F G m
+
+def strictDiagramMappingSpace {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) : SSet.{u}
+
+def strictDiagramMappingComponent {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) (c : C) :
+    strictDiagramMappingSpace F G ⟶ (ihom (F.obj c)).obj (G.obj c)
+
+def leftStrictTransportMappingSpaceMap {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) :
+    relativeFunctorSpace q p ⟶
+      strictDiagramMappingSpace (leftStrictTransportDiagram p) (leftStrictTransportDiagram q)
+
+def strictDiagramMappingEvaluation {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    F ⋙ tensorRight (strictDiagramMappingSpace F G) ⟶ G
+
+def simplicialReplacementTensorMap {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (T : SSet.{u}) :
+    simplicialReplacement F ⊗ T ⟶ simplicialReplacement (F ⋙ tensorRight T)
+
+lemma simplicialReplacementTensorMap_projection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (T : SSet.{u}) :
+    simplicialReplacementTensorMap F T ≫ simplicialReplacementProjection (F ⋙ tensorRight T) =
+      fst (simplicialReplacement F) T ≫ simplicialReplacementProjection F
+
+def strictDiagramMappingReplacementEvaluation {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    simplicialReplacement F ⊗ strictDiagramMappingSpace F G ⟶ simplicialReplacement G
+
+lemma strictDiagramMappingReplacementEvaluation_projection
+    {C : Type u} [Category.{u} C] (F G : C ⥤ SSet.{u}) :
+    strictDiagramMappingReplacementEvaluation F G ≫ simplicialReplacementProjection G =
+      fst (simplicialReplacement F) (strictDiagramMappingSpace F G) ≫
+        simplicialReplacementProjection F
+
+def strictDiagramMappingScaffoldMap {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) :
+    strictDiagramMappingSpace F (leftStrictTransportDiagram q) ⟶
+      relativeFunctorSpace q (simplicialReplacementProjection F)
+
+lemma leftStrictTransportMappingSpaceMap_scaffold
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) :
+    leftStrictTransportMappingSpaceMap p q ≫
+        strictDiagramMappingScaffoldMap (leftStrictTransportDiagram p) q =
+      relativeFunctorOverPre q (Over.homMk
+        (U := Over.mk (simplicialReplacementProjection (leftStrictTransportDiagram p)))
+        (V := Over.mk p) (universalScaffold p) (universalScaffold_projection p))
+
+noncomputable def leftStrictTransportScaffoldRestrictionEquivalence
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] :
+    QCatEquivalence (relativeFunctorSpace q p)
+      (relativeFunctorSpace q (simplicialReplacementProjection (leftStrictTransportDiagram p)))
+
+noncomputable def leftStrictTransportMappingRetraction
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] :
+    strictDiagramMappingSpace (leftStrictTransportDiagram p) (leftStrictTransportDiagram q) ⟶
+      relativeFunctorSpace q p
+
+noncomputable def leftStrictTransportMappingRetraction_unitIso
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] :
+    FunctorIso (leftStrictTransportMappingSpaceMap p q ≫ leftStrictTransportMappingRetraction p q)
+      (𝟙 (relativeFunctorSpace q p))
+
 end SerrePositivity.InfinityCategories
 ```

@@ -559,3 +559,6 @@ public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberEvaluation
 public import SerrePositivity.InfinityCategories.F1.SubterminalFiber
 public import SerrePositivity.InfinityCategories.F1.SubterminalRelativeFunctor
 public import SerrePositivity.InfinityCategories.F1.SubterminalFibrationClassification
+public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingSpace
+public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingEvaluation
+public import SerrePositivity.InfinityCategories.F1.StrictTransportMappingRetraction
