@@ -9764,5 +9764,90 @@ noncomputable def leftStraighteningCandidateRelativeEquivalence
       (relativeFunctorSpace (leftUnstraighteningProjection (leftStraighteningCandidate q))
         (leftUnstraighteningProjection (leftStraighteningCandidate p)))
 
+def uliftFunctorHomUp {A E : SSet.{u}} {n : SimplexCategoryᵒᵖ}
+    (f : ((ihom A).obj E).obj n) :
+    ((ihom ((SSet.uliftFunctor.{v, u}).obj A)).obj ((SSet.uliftFunctor.{v, u}).obj E)).obj n
+
+def uliftFunctorHomDown {A E : SSet.{u}} {n : SimplexCategoryᵒᵖ}
+    (f : ((ihom ((SSet.uliftFunctor.{v, u}).obj A)).obj
+      ((SSet.uliftFunctor.{v, u}).obj E)).obj n) : ((ihom A).obj E).obj n
+
+lemma uliftFunctorHomDown_up {A E : SSet.{u}} {n : SimplexCategoryᵒᵖ}
+    (f : ((ihom A).obj E).obj n) :
+    uliftFunctorHomDown (uliftFunctorHomUp.{u, v} f) = f
+
+lemma uliftFunctorHomUp_down {A E : SSet.{u}} {n : SimplexCategoryᵒᵖ}
+    (f : ((ihom ((SSet.uliftFunctor.{v, u}).obj A)).obj
+      ((SSet.uliftFunctor.{v, u}).obj E)).obj n) :
+    uliftFunctorHomUp (uliftFunctorHomDown f) = f
+
+lemma uliftFunctorHomUp_injective {A E : SSet.{u}} {n : SimplexCategoryᵒᵖ} :
+    Function.Injective (uliftFunctorHomUp.{u, v} (A := A) (E := E) (n := n))
+
+lemma uliftFunctorHomUp_post {A E B : SSet.{u}} {n : SimplexCategoryᵒᵖ}
+    (p : E ⟶ B) (f : ((ihom A).obj E).obj n) :
+    uliftFunctorHomUp.{u, v} (((ihom A).map p).app n f) =
+      ((ihom ((SSet.uliftFunctor.{v, u}).obj A)).map ((SSet.uliftFunctor.{v, u}).map p)).app n
+        (uliftFunctorHomUp.{u, v} f)
+
+lemma uliftFunctorHomUp_constant {A E : SSet.{u}} (a : A ⟶ E) (n : ℕ) :
+    uliftFunctorHomUp.{u, v} (PinchedHom.constant (functorVertex a) n) =
+      PinchedHom.constant (functorVertex ((SSet.uliftFunctor.{v, u}).map a)) n
+
+def uliftFunctorSpaceMap (A E : SSet.{u}) :
+    (SSet.uliftFunctor.{v, u}).obj ((ihom A).obj E) ⟶
+      (ihom ((SSet.uliftFunctor.{v, u}).obj A)).obj ((SSet.uliftFunctor.{v, u}).obj E)
+
+def uliftFunctorSpaceDown (A E : SSet.{u}) :
+    (ihom ((SSet.uliftFunctor.{v, u}).obj A)).obj ((SSet.uliftFunctor.{v, u}).obj E) ⟶
+      (SSet.uliftFunctor.{v, u}).obj ((ihom A).obj E)
+
+def uliftFunctorSpaceIso (A E : SSet.{u}) :
+    (SSet.uliftFunctor.{v, u}).obj ((ihom A).obj E) ≅
+      (ihom ((SSet.uliftFunctor.{v, u}).obj A)).obj ((SSet.uliftFunctor.{v, u}).obj E)
+
+def uliftRelativeFunctorMap {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) :
+    (SSet.uliftFunctor.{v, u}).obj (relativeFunctorSpace p a) ⟶
+      relativeFunctorSpace ((SSet.uliftFunctor.{v, u}).map p) ((SSet.uliftFunctor.{v, u}).map a)
+
+def uliftRelativeFunctorDown {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) :
+    relativeFunctorSpace ((SSet.uliftFunctor.{v, u}).map p) ((SSet.uliftFunctor.{v, u}).map a) ⟶
+      (SSet.uliftFunctor.{v, u}).obj (relativeFunctorSpace p a)
+
+def uliftRelativeFunctorIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) :
+    (SSet.uliftFunctor.{v, u}).obj (relativeFunctorSpace p a) ≅
+      relativeFunctorSpace ((SSet.uliftFunctor.{v, u}).map p) ((SSet.uliftFunctor.{v, u}).map a)
+
+lemma uliftRelativeFunctorMap_vertex {A E B : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (f : A ⟶ E) (hf : f ≫ p = a) :
+    (uliftRelativeFunctorMap.{u, v} p a).app _ (ULift.up (relativeFunctorVertex p a f hf)) =
+      relativeFunctorVertex ((SSet.uliftFunctor.{v, u}).map p) ((SSet.uliftFunctor.{v, u}).map a)
+        ((SSet.uliftFunctor.{v, u}).map f) (by rw [← Functor.map_comp, hf])
+
+lemma uliftRelativeFunctorMap_post {A E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p) (a : A ⟶ B) :
+    (SSet.uliftFunctor.{v, u}).map (HomotopyLimits.relativeFunctorPost p q f hf a) ≫
+      uliftRelativeFunctorMap q a =
+    uliftRelativeFunctorMap p a ≫ HomotopyLimits.relativeFunctorPost
+      ((SSet.uliftFunctor.{v, u}).map p) ((SSet.uliftFunctor.{v, u}).map q)
+      ((SSet.uliftFunctor.{v, u}).map f) (by rw [← Functor.map_comp, hf])
+      ((SSet.uliftFunctor.{v, u}).map a)
+
+lemma uliftRelativeFunctorMap_pre {D A E B : SSet.{u}}
+    (p : E ⟶ B) (a : A ⟶ B) (i : D ⟶ A) :
+    (SSet.uliftFunctor.{v, u}).map (relativeFunctorPre p a i) ≫
+      uliftRelativeFunctorMap p (i ≫ a) =
+    uliftRelativeFunctorMap p a ≫ relativeFunctorPre
+      ((SSet.uliftFunctor.{v, u}).map p) ((SSet.uliftFunctor.{v, u}).map a)
+      ((SSet.uliftFunctor.{v, u}).map i)
+
+noncomputable def leftStraighteningCandidateMappingEquivalence
+    {C : Type u} [Category.{u} C] {E F : SSet.{u}}
+    (p : E ⟶ nerve C) (q : F ⟶ nerve C) [LeftFibration p] [LeftFibration q] :
+    QCatEquivalence
+      ((SSet.uliftFunctor.{u + 1, u}).obj (relativeFunctorSpace q p))
+      (relativeFunctorSpace (leftUnstraighteningProjection (leftStraighteningCandidate q))
+        (leftUnstraighteningProjection (leftStraighteningCandidate p)))
+
 end SerrePositivity.InfinityCategories
 ```
