@@ -618,3 +618,8 @@ public import SerrePositivity.KST.Spectra.RawSpectrumHomPoints
 public import SerrePositivity.KST.Spectra.PointedHomTransposeComponents
 public import SerrePositivity.KST.Spectra.SequenceParameterRectification
 public import SerrePositivity.KST.Spectra.PointedRelativeHomotopyAdjustment
+public import SerrePositivity.KST.Spectra.InternalHomTensorVertices
+public import SerrePositivity.KST.Spectra.PointedCurryingParameterComponents
+public import SerrePositivity.KST.Spectra.SequenceParameterTranspose
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterStructure
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterRectification
