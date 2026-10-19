@@ -2,6 +2,23 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.dgModuleTriangle_postcompose_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleTriangleAppendFaces_compatible
+#print axioms SerrePositivity.InfinityCategories.dgModuleTriangleAppend_face
+#print axioms SerrePositivity.InfinityCategories.dgModuleTriangleAppend_top_zero
+#print axioms SerrePositivity.InfinityCategories.dgModuleTriangleAppend_face_two
+#print axioms SerrePositivity.InfinityCategories.dgModuleTriangleAppend_lastEdge
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparisonLower_face_two
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparisonUpper_face_two
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparison_common
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparisonJoin_face_one
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparisonJoin_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparison_span
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparisonSliceEdge
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparisonSliceEdge_projection
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberComparisonSliceEdge_isInvertible
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberSquare_isPushout
+
 #print axioms SerrePositivity.InfinityCategories.dgSourceTriangle_obj
 #print axioms SerrePositivity.InfinityCategories.dgSourceTriangle_edge12
 #print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparisonCycle_eq
@@ -1011,6 +1028,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTrianglePostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendHorn,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendKnownFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendMissingFace,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonTriangles,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonJoin,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonSlice,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberPushout,
+
     `SerrePositivity.InfinityCategories.Derived.DGSourceTriangleComponents,
     `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberComparisonTriangles,
     `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberComparisonJoin,

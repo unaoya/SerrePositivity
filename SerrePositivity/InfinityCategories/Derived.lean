@@ -398,6 +398,17 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberCom
 public import SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberComparisonProjection
 public import SerrePositivity.InfinityCategories.Derived.DGModuleConePullback
 
+public import SerrePositivity.InfinityCategories.Derived.DGModuleTrianglePostcomposition
+public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendHorn
+public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendKnownFaces
+public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendMissingFace
+public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendEdge
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonTriangles
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonJoin
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonSlice
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonProjection
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberPushout
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

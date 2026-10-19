@@ -10,11 +10,8 @@
 - D(S) の実零対象・全 fiber/cofiber・cospan の極限と span の余極限を構成。実境界の Q・A の二未知 cochain と微分式から coslice を充填し、cofiber の普遍性を証明済み。
 - fiber/cofiber 比較の二脚・対角・ホモトピーと同値性、実 slice/coslice 比較辺を照合。同じ四角形の関手同型輸送から任意四角形の双カルテジアン判定と `derivedInfinityCategory_isStable` を証明済み。
 - 通常の h D(S) と二切断の D3 を接続。実 suspension と複体シフトの自然同型・全整数 CommShift・実接続射の符号を照合し、標準 cofiber 列の D3 像を Mathlib の cone 三角形と同定済み。
-- 全 distinguished triangle の標準 cofiber 表示から保存・反映・逆関手の三角性を証明。`derivedStableHomotopyEquivalenceIsTriangulated` は単位・余単位のシフト整合性も持つ。通常の導来圏から三角構造を引き戻して済ませていない。
-- D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/DGModuleConePullback.lean`、`Derived/DGModuleCofiberFiberComparisonSlice.lean`、`Derived/DGModuleCofiberFiberComparisonProjection.lean`。両比較辺の同値性は `DGModuleCofiberFiberEquivalence`・`DGModuleFiberCofiberEquivalence`。
-- D7 は `dfa5b50d`、β3 の全 fiber の普遍性は `f263915e`、両比較の代数的同値性は `ee0a1eac` まで保存済み。今回の保存単位は新規 6 モジュール。最新の Stable・Derived 集約ビルドは 6,213 jobs 成功。
-- 最新公理監査：Derived 420 modules／4,440 宣言、Stable 690 modules／5,557 宣言。標準三公理のみ。
+- 全 distinguished triangle の標準 cofiber 表示から保存・反映・逆関手の三角性を証明。`derivedStableHomotopyEquivalenceIsTriangulated` は単位・余単位のシフト整合性も持つ。通常の導来圏から三角構造を引き戻して済ませていない。 D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
+- β3 の入口：`Derived/DGModuleFiberPushout.lean`・`Derived/DGModuleConePullback.lean`。実 coslice 比較は `DGModuleFiberCofiberComparisonSlice`・`DGModuleFiberCofiberComparisonProjection`、後合成三単体の全ての面は `DGModuleTriangleAppendMissingFace`。 D7 は `dfa5b50d`、β3 の全 fiber の普遍性は `f263915e`、実 slice 比較と cone の引き戻し性は `2dcb050e` まで保存済み。今回の保存単位は新規 10 モジュール。最新の Stable・Derived 集約ビルドは 6,223 jobs 成功。 最新公理監査：Derived 430 modules／4,537 宣言、Stable 700 modules／5,654 宣言。標準三公理のみ。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -37,7 +34,7 @@
 - 任意の辺を閉加群射へ戻し、入力辺を厳密に保つ `dgModuleCofiberSquare`・`dgModuleNerve_cofiber_exists` を構成済み。
 - shifted cone の射影・零ホモトピー・実四角形を構成。fiber の逆 Hom 座標の微分 `(da, f a − db)` と実射影・零ホモトピーへの一致、二残差からの原始元を証明済み。
 - 実 slice 境界の六残差から二未知成分を定義。左右の全方程式・全面・共通面を保って直接充填。`dgModuleFiberCone_isLimit`・`dgModuleFiberSquare_isPullback`・`dgModuleNerve_fiber_exists` が揃った。
-- M→fiber(inr f) と双対の cone(projection f)→N の両実比較の代数的同値性を証明。cofiber→fiber は比較三単体・join・curry により実 slice 辺へ昇格し、端点・射影・cospan を照合。`dgModuleConeSquare_isPullback` により標準 cone 四角形は双カルテジアン。双対の実 coslice 比較、零角の判定と安定性は未証明。
+- M→fiber(inr f) と双対の cone(projection f)→N の両実比較の代数的同値性を証明。両方向を比較三単体・join・curry により実 slice/coslice 辺へ昇格し、端点・射影・span/cospan を照合。`dgModuleConeSquare_isPullback`・`dgModuleFiberSquare_isPushout` により標準 cone/fiber 四角形は双方とも双カルテジアン。任意の零角の判定と安定性は未証明。
 
 ### 残り（依存順、時間は推定）
 
@@ -77,7 +74,7 @@
 - `dgModuleConeBoundaryLeftCandidate_suffix_equation`、`dgModuleConeBoundaryRightCandidate_suffix_equation`、`dgModuleConeBoundaryCandidate_common`。
 - `dgModuleConeCocone_isColimit`、`dgModuleConeSquare_isPushout`、`dgModuleCofiberSquare`、`dgModuleNerve_cofiber_exists`。
 - `dgModuleFiberCone_isLimit`、`dgModuleFiberSquare_isPullback`、`dgModuleFiberSquareOfMorphism`、`dgModuleNerve_fiber_exists`。
-- `dgModuleCofiberFiberLift_isInvertible`、`dgModuleFiberCofiberDesc_isInvertible`、`dgModuleCofiberFiberComparisonSliceEdge_projection`、`dgModuleCofiberFiberComparisonSliceEdge_isInvertible`、`dgModuleConeSquare_isPullback`。
+- `dgModuleCofiberFiberLift_isInvertible`、`dgModuleFiberCofiberDesc_isInvertible`、`dgModuleCofiberFiberComparisonSliceEdge_projection`、`dgModuleCofiberFiberComparisonSliceEdge_isInvertible`、`dgModuleConeSquare_isPullback`・`dgModuleFiberSquare_isPushout`。
 
 ### 依存と提供
 
@@ -98,7 +95,7 @@
 
 ### 次の一手
 
-- β3：最初に双対の実 coslice 比較辺を作る。`ComplexTrianglePostcomposition`・`TriangleAppendHorn`・`TriangleAppendKnownFaces`・`TriangleAppendMissingFace`・`TriangleAppendEdge` を全 Hom end の閉加群射へ所有側で一般化する。後合成ホモトピーは `compose (cycle q) t`、その微分は Leibniz 則で照合する。最上位が零の実三次内部ホーン充填の全既知面と欠けた面を検証し、`FiberCofiberComparison*` 同様に三単体を span の join 上へ貼る。`dgModuleFiberCofiberDesc_inr`・`_inl`、四辺と span の一致、curry の端点・実辺の射影を照合し、左 fibration の反映から実 coslice 辺の可逆性を得る。これを `dgModuleConeCocone_isColimit` から移送して標準 fiber 四角形の押し出し性を閉じる。その後 D7 の同じ四角形の関手同型輸送により、任意の零角四角形の fiber iff cofiber と `dgModuleNerve` の安定性を証明する。今回、具体的な単体の `rfl` に頼るとカーネル timeout が発生した。`DGModuleCofiberFiberComparisonCycle` の型付き閉成分と `dgModuleCompStruct_*`・`DGSourceTriangleComponents` を使って成分を明示的に計算すると通る。主経路で大きな定義を直接展開しない。前三角 dg 圏／平坦商の安定性・完全性、全 ∞ 関手圏の局所化普遍性、Verdier 列はその後。DGNerve・DifferentialGraded は変更しない。
+- β3：標準 cone/fiber の双カルテジアン性から、任意の零角四角形の fiber iff cofiber と `dgModuleNerve` の安定性へ進む。`Derived/Stability` の全四角形の関手同型輸送を参考にするが、加群版は現時点で標準零枝に対してのみ構成済みなので、そのまま一般 span/cospan の存在を仮定しない。`Stable/SpanZeroBranchIso` の共通第一枝・終対象第二枝の関手同型と双対の始対象枝の比較、`ColimitDiagramIso` 等の錐の輸送を確認し、零角付き入力と具体的零加群の標準枝を比較する。既存 `SpecifiedCofiberSpan` は `IsStable` を要求するため、その定理を安定性の証明へ循環して使わない。必要なら一般 span/cospan の dg 加群の標準双カルテジアン四角形を所有側で構成する。標準 cofiber/fiber から任意の零角へ、実際の四角形全体の `FunctorIso` で普遍性を輸送してから `IsStable` を公開する。`dgModuleFiberSquare_isPushout` の実 coslice 比較は完成し再実装不要。`DGModuleTriangleAppend*` は最上位零・三既知面・欠けた面・最後の辺を全て保持する。後合成の微分は全 Hom end の `differential_compose` と閉零成分の微分零から直接証明し、評価の不透明な end の metadata の書換えを避けた。前三角 dg 圏／平坦商の安定性・完全性、全 ∞ 関手圏の局所化普遍性、Verdier 列はその後。DGNerve・DifferentialGraded は変更しない。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
