@@ -17,9 +17,9 @@
 - 任意の h の射の鎖写像代表と source の TR3 から、全 distinguished triangle の標準 cofiber 表示を証明。D3 の distinguished triangle の保存・反映、逆関手の保存を証明済み。
 - `derivedStableHomotopyEquivalenceIsTriangulated` を公開。両関手の整数シフト比較と単位・余単位の整合性も含む。通常の導来圏から三角構造を引き戻して済ませていない。
 - D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/ResolvedDGQuotientZeroObjects.lean`、`Derived/ResolvedDGQuotientNerve.lean`、`Derived/CellDGResolutionNerve.lean`、`Derived/DGFunctorTrivialFibration.lean`。
-- D7 は `dfa5b50d`、β3 の実零化は `18920238` まで保存済み。今回の保存単位は新規 10 モジュール。最新の Stable・Derived 集約ビルドは 6,106 jobs 成功。
-- 最新公理監査：Derived 314 modules／3,431 宣言、Stable 584 modules／4,547 宣言。標準三公理のみ。
+- β3 の入口：`Derived/DGFunctorFullyFaithful.lean`、`Derived/DGFullSubcategoryNerve.lean`、`Derived/ResolvedDGQuotientZeroObjects.lean`、`Derived/ResolvedDGQuotientNerve.lean`。
+- D7 は `dfa5b50d`、β3 の平坦模型は `ca40f20c` まで保存済み。今回の保存単位は新規 11 モジュール。最新の Stable・Derived 集約ビルドは 6,117 jobs 成功。
+- 最新公理監査：Derived 325 modules／3,473 宣言、Stable 595 modules／4,589 宣言。標準三公理のみ。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -31,6 +31,8 @@
 - 対象上全射・全 Hom 上次数ごと全射な準同型の dg 関手の nerve は `TrivialKanFibration`。逆写像・可逆二胞体を持つ `QCatEquivalence` まで公開済み。
 - 具体的な cell 分解の第一添加と余極限から増大の各次数全射性を証明し、増大の nerve の明示的 ∞ 圏同値に適用済み。一般部品は DifferentialGraded の公開 API を使用し、KST の import は追加していない。
 - 平坦分解後の path 商の nerve、元の nerve からの関手、屋根の比較同型を構成。証明済み K-flat 条件を供給し、元の指定対象の零化・指定部分圏上の定値零関手との可逆二胞体も構成済み。
+- 任意の固定 Hom 複体の鎖写像に沿う pinched 線形単体・実写像空間の射を構成。全射準同型なら、零次元を含む全相対境界充填から `TrivialKanFibration` とホモトピー同値を証明済み。
+- 実際の `pinchedHomMap (dgNerve.map F)` を端点の等式による同型込みで線形写像と同定。対象上全射性を外した充満忠実性、Hom 複体同型の場合、dg 充満部分圏の包含への適用を公開済み。
 
 ### 残り（依存順、時間は推定）
 
@@ -65,6 +67,8 @@
 - `dgNerve_map_trivialKanFibration_of_surjective_quasiIso`、`dgCellAugmentationNerve_trivialKanFibration`、`dgCellResolutionNerveEquivalence`。
 - `resolvedDGQuotientNerve`、`resolvedDGQuotientFunctor`、`resolvedDGQuotientRoofIso`、`resolvedDGQuotient_localKFlat`。
 - `resolvedDGQuotientFunctor_kills`、`resolvedDGQuotientNullFunctorIsoZero`。
+- `pinchedHomChainMap_trivialKanFibration`、`pinchedHomChainMap_isSimplicialHomotopyEquivalence`、`dgFunctor_pinchedHomMap_eq`。
+- `dgNerve_map_isFullyFaithful_of_surjective_quasiIso`、`dgNerve_map_isFullyFaithful_of_homIso`、`dgFullSubcategoryInclusionNerve_isFullyFaithful`。
 
 ### 依存と提供
 
@@ -85,7 +89,7 @@
 
 ### 次の一手
 
-- β3：前三角化・表現可能部分への比較に必要な dg nerve の充満忠実性を整備する。まず Hom 上次数ごと全射な準同型の dg 関手について、対象上全射性を外した `IsFullyFaithful (dgNerve.map F)` を証明する。固定二対象の Hom 複体の chain map に沿う pinched 線形単体の後合成を定義し、相対全境界充填を `CellCriterion.complex_boundary_lifting_of_surjective_quasiIso` で行う。対応する `pinchedHomMap` が自明 Kan fibration となることを示し、Core の `IsFullyFaithful` へ渡す。これで Hom 複体同型の場合、特に dg Yoneda に適用できる。既存 `Module/YonedaFunctor.dgYoneda`・`Module/Yoneda.dgYonedaIso` は読み取り専用で使う。対象の宇宙は現 `dgNerve.map` と同様共通（異なる場合の持ち上げは別途必要）。その後、前三角 dg 圏／平坦商の安定性と商関手の完全性、cofiber 条件の辺の反転、F1B `IsLocalization` の全 ∞ 関手圏の普遍性、Verdier 列へ進む。H⁰ の比較や dg 関手だけの延長で普遍性を済ませない。
+- β3：dg Yoneda の表現可能部分の比較へ進む。`Module/YonedaFunctor.dgYoneda` と `Module/Yoneda.dgYonedaIso` を読み取り専用で使い、Hom 同型を `dgNerve_map_isFullyFaithful_of_homIso` へ渡す。注意：`RightModule A D` の対象宇宙は D より大きく、現 `dgNerve.map` は共通対象宇宙を要求する。まず D を対象ラベルとして代表加群間の Hom 複体・単位・合成を引き戻した dg 圏を作れば、同一宇宙で Yoneda の明示的同値を得られる（全加群圏への包含と宇宙持ち上げは別途）。その後、前三角 dg 圏／平坦商の安定性と商関手の完全性、cofiber 条件の辺の反転、F1B `IsLocalization` の全 ∞ 関手圏の普遍性、Verdier 列へ進む。H⁰ の比較や dg 関手だけの延長で普遍性を済ませない。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。

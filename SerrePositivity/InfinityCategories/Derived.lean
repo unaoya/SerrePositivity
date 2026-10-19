@@ -287,6 +287,18 @@ public import SerrePositivity.InfinityCategories.Derived.DGSimplexFaceExtensiona
 public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientNerve
 public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientZeroObjects
 
+public import SerrePositivity.InfinityCategories.Derived.PinchedLinearChainMap
+public import SerrePositivity.InfinityCategories.Derived.PinchedHomChainMap
+public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeTopLifting
+public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeSimplexLifting
+public import SerrePositivity.InfinityCategories.Derived.PinchedBoundaryFaceCompatibility
+public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeBoundaryLifting
+public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapTrivialFibration
+public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedMap
+public import SerrePositivity.InfinityCategories.Derived.DGFunctorFullyFaithful
+public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

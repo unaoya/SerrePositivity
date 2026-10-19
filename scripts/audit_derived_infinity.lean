@@ -2,6 +2,16 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.pinchedLinearDataMap_pullback
+#print axioms SerrePositivity.InfinityCategories.pinchedLinear_relative_simplex_lift
+#print axioms SerrePositivity.InfinityCategories.pinchedHomChainMap_relative_boundary_lift
+#print axioms SerrePositivity.InfinityCategories.pinchedHomChainMap_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pinchedHomChainMap_isSimplicialHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgFunctor_pinchedHomMap_eq
+#print axioms SerrePositivity.InfinityCategories.dgNerve_map_isFullyFaithful_of_surjective_quasiIso
+#print axioms SerrePositivity.InfinityCategories.dgNerve_map_isFullyFaithful_of_homIso
+#print axioms SerrePositivity.InfinityCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful
+
 #print axioms SerrePositivity.InfinityCategories.dgFunctor_relative_top_lift
 #print axioms SerrePositivity.InfinityCategories.dgFunctor_relative_simplex_lift
 #print axioms SerrePositivity.InfinityCategories.dgFunctor_relative_boundary_lift
@@ -841,6 +851,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.PinchedLinearChainMap,
+    `SerrePositivity.InfinityCategories.Derived.PinchedHomChainMap,
+    `SerrePositivity.InfinityCategories.Derived.PinchedRelativeTopLifting,
+    `SerrePositivity.InfinityCategories.Derived.PinchedRelativeSimplexLifting,
+    `SerrePositivity.InfinityCategories.Derived.PinchedBoundaryFaceCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.PinchedRelativeBoundaryLifting,
+    `SerrePositivity.InfinityCategories.Derived.PinchedChainMapTrivialFibration,
+    `SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedMap,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorFullyFaithful,
+    `SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve,
+
     `SerrePositivity.InfinityCategories.Derived.CellDGResolutionNerve,
     `SerrePositivity.InfinityCategories.Derived.DGBoundaryTopCompletion,
     `SerrePositivity.InfinityCategories.Derived.DGFunctorBoundaryFaceCompatibility,
