@@ -739,3 +739,6 @@ public import SerrePositivity.KST.Spectra.SignedLoopSourceTwist
 public import SerrePositivity.KST.Spectra.SignedLoopSourceComparison
 public import SerrePositivity.KST.Spectra.PointedTrivialVerticalPaths
 public import SerrePositivity.KST.Spectra.SignedLoopSourcePostComparison
+public import SerrePositivity.KST.Spectra.RawSpectrumPointedPostComposition
+public import SerrePositivity.KST.Spectra.SpectrumLevelwiseInversePostInterval
+public import SerrePositivity.KST.Spectra.SignedLoopUnitPostFactor
