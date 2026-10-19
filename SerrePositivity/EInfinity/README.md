@@ -11,7 +11,7 @@ namespace は `SerrePositivity.EInfinity`。
 テンソル積と交換には既存の Koszul 符号付きモノイダル構造を使う。
 オペラッドと代数は arity 0 の演算を含む。
 
-## E2a-3 の設計変更案（未採用）
+## E2a-3 の採用方針（2026-10-19）
 
 目標は任意の可換環 A 上の完全な転送モデル構造であり、
 弱同値と fibration は忘却関手 U で作る。自由関手を F、複体の生成類を I・J とする。
@@ -27,21 +27,34 @@ cellular である。Berger–Fresse 3.1.7 も Σ-projective なオペラッド�
 cofibrant な始域の結論を述べている。これらから任意の始域に対する上記の包含を
 そのまま得ることはできない。始域の cofibrancy を追加した結果で置き換えない。
 
-提案する証明経路は次のとおり。
+採用する証明経路は次の四工程とし、各工程で検証してコミットする。
 
-1. E2a-2 に Alexander–Whitney 対角 `E → E ⊗ E` と、標準区間の正規化鎖の
-   E-coalgebra 構造を追加する。
-2. これらから全 E 代数の functorial path object を構成する。これは
-   Berger–Moerdijk 命題 4.1(a)・§4.6.3、Berger–Fresse 3.1.2–3.1.6 の経路である。
-3. fibration に対して左持ち上げ性を持つ任意の代数射について、零複体上の終対象への
-   持ち上げから retraction を得る。さらに path object の両端への fibration に
-   持ち上げ、底の複体射がホモトピー同値であることを証明する。
-4. したがって `fibrations.llp ≤ weakEquivalences` を得る。自由・忘却随伴の
-   lifting 対応から生成 J-cell 射にこれを適用し、上記の acyclicity を得る。
-5. 自由像の I・J の小対象性と有限極限・余極限は別途証明し、
-   `Transfer.Right.rightTransfer` で Mathlib の `ModelCategory` を構成する。
+1. **Hopf 構造**：各 `E(n) = N_*(EΣ_n)` に Alexander–Whitney 対角を構成する。
+   一般の単体集合について shuffle 写像が AW 余代数の射であることを証明し、
+   単体的合成写像に対する AW の自然性から `E → E ⊗ E` のオペラッド射性を得る。
+   余結合性、augmentation `E → Com` による余単位、Σ_n 同変性も証明する。
+2. **区間の界面**：E-coalgebra H、鎖ホモトピー同値である余単位 `H → 𝟙`、
+   E-coalgebra 射であり次数ごとに分裂単射である二点 `𝟙 ⊕ 𝟙 → H` を
+   一つの structure にまとめる。この界面から全 E 代数の functorial path object
+   `A → Hom(H, A) → A × A` を構成する。
+   fibration に対して左持ち上げ性を持つ代数射について、終対象への持ち上げから
+   retraction を得て、path object の両端への fibration に持ち上げることで、
+   底の複体射がホモトピー同値であることを証明する。
+   これにより `fibrations.llp ≤ weakEquivalences` を得る。
+   自由・忘却随伴の lifting 対応から J-cell 射の acyclicity を導く。
+   自由像の I・J の小対象性と有限極限・余極限も証明し、
+   `Transfer.Right.rightTransfer` の適用を H の具体的構成に依存せず閉じる。
+3. **区間の構成**：`H = N_*(Δ¹)` を用いる。Berger–Fresse §1.3 の
+   table reduction `TR : E → χ` のオペラッド射性を一般に証明し、
+   χ の区間切断作用（McClure–Smith）を Δ¹ に適用する。
+   区間切断作用の計算は Δ¹ に特殊化してよく、必要な次数は `E(n)_r, r ≤ n`。
+   一般の単体集合への一般化は費用が変わらない場合に限る。
+   着手前にファイル数と主要補題の見積もりを計画に一段落で記す。
+4. **転送の完成**：構成した区間を工程 2 の界面に代入して E2a-3 を完成し、E2a-4 へ進む。
 
-この案は未採用であり、`AlgebraModel.lean` の実装はまだ開始していない。
+この経路は Berger–Moerdijk 命題 4.1・§4.6.3、Berger–Fresse §3.1 に基づく。
+始域の cofibrancy は追加せず、任意の可換環上の完全なモデル構造を構成する。
+Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-split でないためである。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

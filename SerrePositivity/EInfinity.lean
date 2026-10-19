@@ -128,3 +128,5 @@ public import SerrePositivity.EInfinity.Operad.SchurActionGenerators
 public import SerrePositivity.EInfinity.Operad.FreeAlgebraUniversal
 public import SerrePositivity.EInfinity.Operad.FreeAlgebraAdjunction
 public import SerrePositivity.EInfinity.BarrattEccles
+public import SerrePositivity.EInfinity.AlexanderWhitney.ComponentLaws
+public import SerrePositivity.EInfinity.AlexanderWhitney.FaceCuts

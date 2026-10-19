@@ -39,7 +39,7 @@ E2b ≃ E1 の比較（HA 4.5.4.7 型の rectification）を任意項目とし�
 | E2a-0 | Ch(A) の非有界射影モデル構造：弱同値 = 擬同型、fibration = 各次数全射、生成 cofibration `complexSphere (n+1) → complexDisk n`、生成 trivial cofibration `0 → complexDisk n`。`Transfer/Recognition.lean` で構成 | Hovey, Model Categories 2.3.11 |
 | E2a-1 | Ch(A) 上の対称オペラッド：各 arity n の複体 P(n) と Σ_n 右作用、合成、単位。代数、代数の射、自由代数 Sym_P（⊕ (P(n) ⊗ A^{⊗n})_{Σ_n}）、自由 ⊣ 忘却 | Loday–Vallette、Berger–Moerdijk 2003 §1 |
 | E2a-2 | Barratt–Eccles オペラッド E：EΣ_n（Σ_n の translation 亜群の nerve）の正規化鎖。各 arity が可縮、Σ-cofibrant（各 E(n) が Σ_n 上自由な次数ごとの基底を持つ）、E → Com | Barratt–Eccles 1974、Berger–Fresse 2004 §1 |
-| E2a-3 | Alg_E の転送モデル構造：弱同値・fibration は忘却で作る。`Transfer/Right.lean` を適用。acyclicity（生成 trivial cofibration の自由代数の pushout が弱同値）は Berger–Moerdijk §5／Hinich の filtration 議論で証明 | Hinich 1997 Thm 4.1.1、Berger–Moerdijk 2003 Thm 4.1 |
+| E2a-3 | Alg_E の完全な転送モデル構造：弱同値・fibration は忘却で作る。AW 対角による E の Hopf 構造と E-coalgebra 区間の抽象界面から全代数の functorial path object を構成し、fibrations.llp ⊆ 弱同値、J-cell acyclicity、`Transfer.Right.rightTransfer` の適用を先に証明。TR : E → χ と区間切断作用で N_*(Δ¹) を界面に代入する。始域の cofibrancy は追加しない | Berger–Moerdijk 2003 命題 4.1・§4.6.3、Berger–Fresse 2004 §3.1（TR は §1.3）。Hinich 4.1.1 は使用しない（正標数で E は Σ-split でない） |
 | E2a-4 | U : Alg_E → Ch(A) は右 Quillen、全対象 fibrant、homotopy 引き戻し・homotopy 極限は底で計算。E 代数の H⁰ が可換環であること、離散可換代数は E 代数（E → Com 経由） | 同上 |
 | E2a-5 | homotopy function complex Map^h(A, B)（`HomotopyFunctionComplex/` の frame を Alg_E に適用）、π₀ Map^h = Ho(Alg_E) の Hom | Hovey §5、Dwyer–Kan |
 
@@ -2855,3 +2855,187 @@ lemma strictCoherentCone_isLimit_iff_generalOriginalEndPointFibers {F : I ⥤ C}
 新規ファイルに警告・sorry・追加公理はない。edgewise 解像を含む他担当の再帰的な依存
 1229ソースは全て追跡済み・コミット済み・変更なしを再確認した。
 ログ：`/tmp/gamma3-general-original-aggregate.log`、`/tmp/gamma3-general-original-audit.log`。
+
+
+### E2a-3(1) — AW の次数成分
+
+```lean
+universe u
+open CategoryTheory MonoidalCategory AlgebraicTopology AlgebraicTopology.DoldKan
+open scoped Simplicial TensorProduct
+namespace SerrePositivity.EInfinity.AlexanderWhitney
+variable (A : Type u) [CommRing A]
+
+segmentMap (a b n : ℕ) (h : a + b ≤ n) : ⦋b⦌ ⟶ ⦋n⦌
+
+segmentMap_zero (n : ℕ) : segmentMap 0 n n (by omega) = 𝟙 _
+
+segmentMap_comp (a b n c d : ℕ) (h : a + b ≤ n) (k : c + d ≤ b) :
+    segmentMap c d b k ≫ segmentMap a b n h =
+      segmentMap (a + c) d n (by omega)
+
+cut (X : SSet) {n : ℕ} (x : X _⦋n⦌) (a b : ℕ) (h : a + b ≤ n) : X _⦋b⦌
+
+cut_natural {X Y : SSet} (f : X ⟶ Y) {n : ℕ} (x : X _⦋n⦌)
+    (a b : ℕ) (h : a + b ≤ n) :
+    f.app _ (cut X x a b h) = cut Y (f.app _ x) a b h
+
+cut_zero (X : SSet) {n : ℕ} (x : X _⦋n⦌) :
+    cut X x 0 n (by omega) = x
+
+cut_cut (X : SSet) {n : ℕ} (x : X _⦋n⦌)
+    (a b c d : ℕ) (h : a + b ≤ n) (k : c + d ≤ b) :
+    cut X (cut X x a b h) c d k = cut X x (a + c) d (by omega)
+
+simplexModule (X : SSet.{0}) (n : ℕ) : ModuleCat A
+
+rawComponent (X : SSet.{0}) (n p q : ℕ) (h : p + q = n) :
+    simplexModule A X n ⟶ simplexModule A X p ⊗ simplexModule A X q
+
+rawComponent_freeMk (X : SSet.{0}) (n p q : ℕ) (h : p + q = n)
+    (x : X _⦋n⦌) :
+    rawComponent A X n p q h (ModuleCat.freeMk (ULift.up x)) =
+      ModuleCat.freeMk (ULift.up (cut X x 0 p (by omega))) ⊗ₜ[A]
+        ModuleCat.freeMk (ULift.up (cut X x p q (by omega)))
+
+rawComponent_natural {X Y : SSet.{0}} (f : X ⟶ Y)
+    (n p q : ℕ) (h : p + q = n) :
+    ((BarrattEccles.linearization A).map f).app _ ≫ rawComponent A Y n p q h =
+      rawComponent A X n p q h ≫
+        (((BarrattEccles.linearization A).map f).app _ ⊗ₘ
+          ((BarrattEccles.linearization A).map f).app _)
+
+rawComponent_coassoc (X : SSet.{0}) (p q r : ℕ) :
+    rawComponent A X (p + q + r) (p + q) r rfl ≫
+        (rawComponent A X (p + q) p q rfl ▷ simplexModule A X r) ≫
+        (α_ (simplexModule A X p) (simplexModule A X q) (simplexModule A X r)).hom =
+      rawComponent A X (p + q + r) p (q + r) (Nat.add_assoc p q r).symm ≫
+        (simplexModule A X p ◁ rawComponent A X (q + r) q r rfl)
+
+projector_comp_of_degeneracies_zero
+    {C : Type*} [Category* C] [Preadditive C] (X : SimplicialObject C)
+    {Z : C} (n : ℕ) (f : X _⦋n⦌ ⟶ Z)
+    (h : ∀ (k : ℕ) (e : k + 1 = n) (i : Fin (k + 1)),
+      X.σ i ≫ eqToHom (congrArg (fun j => X _⦋j⦌) e) ≫ f = 0) :
+    (PInfty.f n : X _⦋n⦌ ⟶ _) ≫ f = f
+
+restrictToNormalized {C : Type*} [Category* C] [Abelian C]
+    (X : SimplicialObject C) {Z : C} (n : ℕ) (f : X _⦋n⦌ ⟶ Z) :
+    ((normalizedMooreComplex C).obj X).X n ⟶ Z
+
+normalization_restrictToNormalized {C : Type*} [Category* C] [Abelian C]
+    (X : SimplicialObject C) {Z : C} (n : ℕ) (f : X _⦋n⦌ ⟶ Z)
+    (h : ∀ (k : ℕ) (e : k + 1 = n) (i : Fin (k + 1)),
+      X.σ i ≫ eqToHom (congrArg (fun j => X _⦋j⦌) e) ≫ f = 0) :
+    (PInftyToNormalizedMooreComplex X).f n ≫ restrictToNormalized X n f = f
+
+cut_σ (X : SSet) {n : ℕ} (i : Fin (n + 1)) (x : X _⦋n⦌)
+    (a b : ℕ) (h : a + b ≤ n + 1) :
+    cut X (X.σ i x) a b h =
+      X.map (segmentMap a b (n + 1) h ≫ SimplexCategory.σ i).op x
+
+segment_degeneracy_not_mono {n : ℕ} (i : Fin (n + 1))
+    (a b : ℕ) (h : a + b ≤ n + 1) (ha : a ≤ i.val) (hb : i.val < a + b) :
+    ¬Mono (segmentMap a b (n + 1) h ≫ SimplexCategory.σ i)
+
+aw_degeneracy_not_mono {n : ℕ} (i : Fin (n + 1))
+    (p q : ℕ) (h : p + q = n + 1) :
+    (¬Mono (segmentMap 0 p (n + 1) (by omega) ≫ SimplexCategory.σ i)) ∨
+      (¬Mono (segmentMap p q (n + 1) (by omega) ≫ SimplexCategory.σ i))
+
+chains (X : SSet.{0}) : ChainComplex (ModuleCat A) ℕ
+
+normalization (X : SSet.{0}) :
+    (alternatingFaceMapComplex (ModuleCat A)).obj ((BarrattEccles.linearization A).obj X) ⟶
+      chains A X
+
+generator (X : SSet.{0}) (n : ℕ) (x : X _⦋n⦌) : (chains A X).X n
+
+degeneracy_normalization (X : SSet.{0}) (n : ℕ) {Δ : SimplexCategory}
+    (θ : ⦋n⦌ ⟶ Δ) (hθ : ¬Mono θ) :
+    ((BarrattEccles.linearization A).obj X).map θ.op ≫ (normalization A X).f n = 0
+
+generator_map_of_not_mono (X : SSet.{0}) (n : ℕ) {Δ : SimplexCategory}
+    (θ : ⦋n⦌ ⟶ Δ) (hθ : ¬Mono θ) (x : X.obj (Opposite.op Δ)) :
+    generator A X n (X.map θ.op x) = 0
+
+generator_hom_ext (X : SSet.{0}) (n : ℕ) {Z : ModuleCat A}
+    {f g : (chains A X).X n ⟶ Z}
+    (h : ∀ x : X _⦋n⦌, f (generator A X n x) = g (generator A X n x)) : f = g
+
+projectedRawComponent (X : SSet.{0}) (n p q : ℕ) (h : p + q = n) :
+    simplexModule A X n ⟶ (chains A X).X p ⊗ (chains A X).X q
+
+projectedRawComponent_freeMk (X : SSet.{0}) (n p q : ℕ)
+    (h : p + q = n) (x : X _⦋n⦌) :
+    projectedRawComponent A X n p q h (ModuleCat.freeMk (ULift.up x)) =
+      generator A X p (cut X x 0 p (by omega)) ⊗ₜ[A]
+        generator A X q (cut X x p q (by omega))
+
+σ_projectedRawComponent (X : SSet.{0}) (n p q : ℕ)
+    (h : p + q = n + 1) (i : Fin (n + 1)) :
+    ((BarrattEccles.linearization A).obj X).σ i ≫
+      projectedRawComponent A X (n + 1) p q h = 0
+
+component (X : SSet.{0}) (n p q : ℕ) (h : p + q = n) :
+    (chains A X).X n ⟶ (chains A X).X p ⊗ (chains A X).X q
+
+normalization_component (X : SSet.{0}) (n p q : ℕ) (h : p + q = n) :
+    (normalization A X).f n ≫ component A X n p q h = projectedRawComponent A X n p q h
+
+component_generator (X : SSet.{0}) (n p q : ℕ)
+    (h : p + q = n) (x : X _⦋n⦌) :
+    component A X n p q h (generator A X n x) =
+      generator A X p (cut X x 0 p (by omega)) ⊗ₜ[A]
+        generator A X q (cut X x p q (by omega))
+
+chainMap {X Y : SSet.{0}} (f : X ⟶ Y) : chains A X ⟶ chains A Y
+
+chainMap_generator {X Y : SSet.{0}} (f : X ⟶ Y) (n : ℕ) (x : X _⦋n⦌) :
+    (chainMap A f).f n (generator A X n x) = generator A Y n (f.app _ x)
+
+component_natural {X Y : SSet.{0}} (f : X ⟶ Y)
+    (n p q : ℕ) (h : p + q = n) :
+    (chainMap A f).f n ≫ component A Y n p q h =
+      component A X n p q h ≫ ((chainMap A f).f p ⊗ₘ (chainMap A f).f q)
+
+component_coassoc (X : SSet.{0}) (p q r : ℕ) :
+    component A X (p + q + r) (p + q) r rfl ≫
+        (component A X (p + q) p q rfl ▷ (chains A X).X r) ≫
+        (α_ ((chains A X).X p) ((chains A X).X q) ((chains A X).X r)).hom =
+      component A X (p + q + r) p (q + r) (Nat.add_assoc p q r).symm ≫
+        ((chains A X).X p ◁ component A X (q + r) q r rfl)
+
+vertexAugmentation (X : SSet.{0}) : (chains A X).X 0 ⟶ 𝟙_ (ModuleCat A)
+
+vertexAugmentation_generator (X : SSet.{0}) (x : X _⦋0⦌) :
+    vertexAugmentation A X (generator A X 0 x) = (1 : A)
+
+component_left_counit (X : SSet.{0}) (n : ℕ) :
+    component A X n 0 n (by omega) ≫
+        (vertexAugmentation A X ▷ (chains A X).X n) ≫ (λ_ ((chains A X).X n)).hom =
+      𝟙 ((chains A X).X n)
+
+component_right_counit (X : SSet.{0}) (n : ℕ) :
+    component A X n n 0 (by omega) ≫
+        ((chains A X).X n ◁ vertexAugmentation A X) ≫ (ρ_ ((chains A X).X n)).hom =
+      𝟙 ((chains A X).X n)
+
+segmentMap_face_before {n : ℕ} (i : Fin (n + 2))
+    (a b : ℕ) (h : a + b ≤ n) (hi : i.val ≤ a) :
+    segmentMap a b n h ≫ SimplexCategory.δ i =
+      segmentMap (a + 1) b (n + 1) (by omega)
+
+segmentMap_face_after {n : ℕ} (i : Fin (n + 2))
+    (a b : ℕ) (h : a + b ≤ n) (hi : a + b < i.val) :
+    segmentMap a b n h ≫ SimplexCategory.δ i =
+      segmentMap a b (n + 1) (by omega)
+
+segmentMap_face_inside {n : ℕ} (i : Fin (n + 2))
+    (a b : ℕ) (h : a + b ≤ n) (ha : a ≤ i.val) (hb : i.val ≤ a + b + 1) :
+    segmentMap a b n h ≫ SimplexCategory.δ i =
+      SimplexCategory.δ (⟨i.val - a, by omega⟩ : Fin (b + 2)) ≫
+        segmentMap a (b + 1) (n + 1) (by omega)
+
+end SerrePositivity.EInfinity.AlexanderWhitney
+```
