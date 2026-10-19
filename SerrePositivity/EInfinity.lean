@@ -153,3 +153,11 @@ public import SerrePositivity.EInfinity.Operad.ConvolutionFunctor
 public import SerrePositivity.EInfinity.Operad.ConvolutionPathAlgebra
 public import SerrePositivity.EInfinity.Operad.IntervalEvaluationFibration
 public import SerrePositivity.EInfinity.Operad.IntervalConstantQuasiIso
+public import SerrePositivity.EInfinity.Operad.InsertionBaseNaturality
+public import SerrePositivity.EInfinity.Operad.AlgebraLimitCriterion
+public import SerrePositivity.EInfinity.Operad.AlgebraProducts
+public import SerrePositivity.EInfinity.Operad.AlgebraTerminal
+public import SerrePositivity.EInfinity.Operad.AlgebraModelClasses
+public import SerrePositivity.EInfinity.Operad.IntervalPathObject
+public import SerrePositivity.EInfinity.Operad.IntervalAcyclicity
+public import SerrePositivity.EInfinity.Operad.IntervalJCellAcyclicity

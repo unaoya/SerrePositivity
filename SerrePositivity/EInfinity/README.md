@@ -87,7 +87,15 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 `constant_quasiIso` と `evaluation_quasiIso` により、定数射と両端点評価は底で擬同型。
 単位の cofibrancy と端点の trivial cofibration から鎖ホモトピー逆を構成し、
 符号付き前合成によって内部 Hom へ移した。区間のホモトピー同値性を追加仮定にしていない。
-代数の積と底の直和の比較、極限余極限と小対象性、転送モデル構造は未完成。
+`Algebra.ofJointlyMonicActions` は共同単射な射の後で代数公理を判定する。
+`Algebra.binaryProductIsLimit` と `Algebra.terminalAlgebraIsTerminal` により二項積と終対象を構成。
+`Algebra.binaryProductIso` は選んだ積と底の直和上の代数の比較同型。
+弱同値・fibration の構造は忘却の逆像として局所的に選び、モデル構造は仮定しない。
+`CoalgebraInterval.pathAlgebra` は全代数の good path object。
+`fibrations_llp_quasiIso` は終対象と二端点評価への持ち上げから retraction と逆合成の path を取り、
+底の擬同型性を示す。`freeGeneratingTrivialCofibrations_cell_acyclicity` は自由・忘却随伴と
+左持ち上げ類の閉性を使い、任意の始域に対する相対 J-cell 射の acyclicity を与える。
+一般の極限余極限と自由像の小対象性、転送モデル構造は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

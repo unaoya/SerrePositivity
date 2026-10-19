@@ -192,7 +192,26 @@ run_cmd do
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constant_quasiIso,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluation_quasiIso,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat_quasiIso,
-      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat_quasiIso] do
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat_quasiIso,
+      `SerrePositivity.EInfinity.tensorInsertionBlock_naturality,
+      `SerrePositivity.EInfinity.tensorInsertionAction_base_naturality,
+      `SerrePositivity.EInfinity.Operad.Algebra.ofJointlyMonicActions,
+      `SerrePositivity.EInfinity.Operad.Algebra.binaryProduct,
+      `SerrePositivity.EInfinity.Operad.Algebra.binaryProductIsLimit,
+      `SerrePositivity.EInfinity.Operad.Algebra.binaryProductIso,
+      `SerrePositivity.EInfinity.Operad.Algebra.terminalAlgebraIsTerminal,
+      `SerrePositivity.EInfinity.Operad.Algebra.weakEquivalenceStructure,
+      `SerrePositivity.EInfinity.Operad.Algebra.fibrationStructure,
+      `SerrePositivity.EInfinity.Operad.Algebra.toTerminal_projectiveFibration,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathAlgebra_p_compare,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.pathAlgebra,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.pathAlgebra_isGood,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.exists_retraction_path,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.fibrations_llp_quasiIso,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.freeGeneratingTrivialCofibrations_rlp,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.freeGeneratingTrivialCofibrations_llp_le,
+      Name.str `SerrePositivity.EInfinity.Operad.CoalgebraInterval
+        "freeGeneratingTrivialCofibrations_cell_acyclicity"] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

@@ -5248,3 +5248,99 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @strictSpanCoconeToPointHomEnd_homotopyEquivalence
 #print axioms strictSpanCoconeToPointHomEnd_homotopyEquivalence
+
+#check @strictSpanHornIso_left_edge
+#print axioms strictSpanHornIso_left_edge
+
+#check @strictSpanHornIso_right_edge
+#print axioms strictSpanHornIso_right_edge
+
+#check @strictSpanHornDiagram_left_edge
+#print axioms strictSpanHornDiagram_left_edge
+
+#check @strictSpanHornDiagram_right_edge
+#print axioms strictSpanHornDiagram_right_edge
+
+#check @pointCoconeMappingIso
+#print axioms pointCoconeMappingIso
+
+#check @pointHomCospan
+#print axioms pointHomCospan
+
+#check @cosliceEdgeFiberPrecomposition_points
+#print axioms cosliceEdgeFiberPrecomposition_points
+
+#check @pointHomCospanPointsIso
+#print axioms pointHomCospanPointsIso
+
+#check @pointHomCospanPresentationIso
+#print axioms pointHomCospanPresentationIso
+
+#check @coconeVertexDiagram
+#print axioms coconeVertexDiagram
+
+#check @coconeVertexDiagram_eq
+#print axioms coconeVertexDiagram_eq
+
+#check @colimitAttachmentPointEdge
+#print axioms colimitAttachmentPointEdge
+
+#check @colimitAttachmentPointEdge_eq
+#print axioms colimitAttachmentPointEdge_eq
+
+#check @colimitAttachmentPointEdge_source
+#print axioms colimitAttachmentPointEdge_source
+
+#check @colimitAttachmentPointEdge_target
+#print axioms colimitAttachmentPointEdge_target
+
+#check @colimitAttachmentPointHom_square
+#print axioms colimitAttachmentPointHom_square
+
+#check @partialColimitPointHomCospan
+#print axioms partialColimitPointHomCospan
+
+#check @partialColimitPointHomCospanIso
+#print axioms partialColimitPointHomCospanIso
+
+#check @partialColimitPointHomEndIso
+#print axioms partialColimitPointHomEndIso
+
+#check @partialColimitSpanHorn_left_edge
+#print axioms partialColimitSpanHorn_left_edge
+
+#check @partialColimitSpanHorn_right_edge
+#print axioms partialColimitSpanHorn_right_edge
+
+#check @partialColimitSpanPointHomCospanIso
+#print axioms partialColimitSpanPointHomCospanIso
+
+#check @partialColimitSpanHomEndIso
+#print axioms partialColimitSpanHomEndIso
+
+#check @partialColimitSpanCoconeToHomEnd
+#print axioms partialColimitSpanCoconeToHomEnd
+
+#check @partialColimitSpanCoconeToHomEnd_homotopyEquivalence
+#print axioms partialColimitSpanCoconeToHomEnd_homotopyEquivalence
+
+#check @partialColimitSpanHomEndRetraction
+#print axioms partialColimitSpanHomEndRetraction
+
+#check @partialColimitSpanHomEndRetraction_homotopyEquivalence
+#print axioms partialColimitSpanHomEndRetraction_homotopyEquivalence
+
+#check @partialColimitOriginalToSpanCocones
+#print axioms partialColimitOriginalToSpanCocones
+
+#check @partialColimitOriginalToSpanCocones_homotopyEquivalence
+#print axioms partialColimitOriginalToSpanCocones_homotopyEquivalence
+
+#check @partialColimitOriginalToSpanCocones_end_homotopy
+#print axioms partialColimitOriginalToSpanCocones_end_homotopy
+
+#check @partialColimitOriginalToNativeSpanCocones
+#print axioms partialColimitOriginalToNativeSpanCocones
+
+#check @partialColimitOriginalToNativeSpanCocones_homotopyEquivalence
+#print axioms partialColimitOriginalToNativeSpanCocones_homotopyEquivalence

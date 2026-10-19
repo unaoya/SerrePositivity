@@ -126,13 +126,17 @@
   `evaluationPair_projectiveFibration` は底の二端点評価の対が射影 fibration であることを示す。
   `constant_quasiIso` と `evaluation_quasiIso` は任意の値域で定数射・両評価の底の擬同型性を示す。
   単位の cofibrancy、端点の鎖ホモトピー逆、符号付き Hom 前合成の移送から導出済み。
-  代数の積と底の直和との比較・転送は未完成。
+  `Algebra.binaryProductIsLimit`・`terminalAlgebraIsTerminal` で積・終対象を底の複体に構成。
+  `pathAlgebra` は全代数の good path object。忘却の逆像の弱同値・fibration は局所選択。
+  `fibrations_llp_quasiIso` は retraction と逆合成の path から底の擬同型性を示す。
+  自由像の `freeGeneratingTrivialCofibrations_cell_acyclicity` は任意の始域で成立。
+  一般の極限余極限・自由像の小対象性・転送定理の適用は未完成。
   E2a-3 の工程 (2) の転送と工程 (3)・(4)、E2a-4・5、E2b・G1′ は未完成。
   現在地のコードと検証は本節と同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
   1. 代数の積と終対象を底で構成し、忘却関手との比較から good functorial path object を完成。
      続いてこの path object から底のホモトピー同値性を示し、
-     fibrations.llp ⊆ 弱同値、J-cell acyclicity、小対象性・極限余極限と転送の適用を閉じる。
+     小対象性・一般の極限余極限と転送の適用を閉じる。J-cell acyclicity は構成済み。
      Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
   2. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
      BF §1.3・§3.1 と McClure–Smith の区間切断作用、80〜200 時間。
@@ -159,31 +163,29 @@
   `SerrePositivity.EInfinity.Operad.convolutionAlgebra`、
   `SerrePositivity.EInfinity.Operad.convolutionFunctor`、
   `SerrePositivity.EInfinity.Operad.convolutionPreNat`、
-  `SerrePositivity.EInfinity.Operad.unitCoalgebra`、
   `SerrePositivity.EInfinity.Operad.convolutionUnitNatIso`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathAlgebra`、
   `SerrePositivity.EInfinity.projectiveTrivialCofibration_homotopyEquiv`、
-  `SerrePositivity.EInfinity.homPrecomposeHomotopyEquiv`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constant_quasiIso`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat_quasiIso`、
   `SerrePositivity.EInfinity.projectiveCofibration_degreewise_isSplitMono`、
   `SerrePositivity.EInfinity.homPrecompose_projectiveFibration`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationPair_projectiveFibration`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathComplex`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constantNat`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationNat`。
+  `SerrePositivity.EInfinity.Operad.Algebra.binaryProductIsLimit`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.pathAlgebra`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.fibrations_llp_quasiIso`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.freeGeneratingTrivialCofibrations_cell_acyclicity`。
 - **依存と提供**：HomotopicalAlgebra の Transfer/Recognition・Transfer/Right・
   HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
   Cells・複体のテンソル・HomComplex を読み取り専用で使う。
   提供済みは局所選択する Ch(A) のモデル構造、自由代数随伴、実際の E と E → Com、
-  テンソルオペラッドと E の Hopf 構造、余代数区間の界面と自然な代数の prepath object。
+  E の Hopf 構造、余代数区間の界面、全代数の good path object と J-cell acyclicity。
   Alg_E のモデル構造・右 Quillen U・CAlg は未提供。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：対象ビルド成功（2768 jobs）、公理監査成功（5505 宣言、標準 3 公理のみ）。
-  新規 sorry・追加公理・名前衝突はなく、562 モジュールの import 閉包に他レーンの未コミット依存はない。
+- **既知の問題**：対象ビルド成功（2778 jobs）、公理監査成功（5600 宣言、標準 3 公理のみ）。
+  新規 sorry・追加公理・名前衝突はなく、572 モジュールの import 閉包に他レーンの未コミット依存はない。
   今回の宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -191,13 +193,11 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：工程 (2) の P 代数の二項積と終対象を底の複体で構成する。
-  最初に `tensorInsertionAction` の底の複体射についての自然性を証明する。
-  積の底を二項直和とし、両射影後の作用から代数公理と普遍性を検証する。終対象は零複体。
-  忘却関手の積との比較と逆像の弱同値・fibration の類で `prepathAlgebra` を good path object にする。
-  底のモデル的性質は `algebraConstantNat_quasiIso` と `algebraEvaluationPair_projectiveFibration`。
-  続いて fibrations.llp の底の鎖ホモトピー同値性、J-cell acyclicity、小対象性と転送へ進む。
-  全極限余極限と転送は未完成。TR・具体区間には着手していない。
+- **次の一手**：工程 (2) の一般の極限余極限と自由像の小対象性を構成する。
+  極限は `Algebra.ofJointlyMonicActions` と底の極限錐を使い、忘却が極限を作ることを示す。
+  余極限は自由・忘却随伴の代数的表示、filtered 余極限とテンソル冪・coinvariant の保存を使う。
+  自由像の I・J の小対象性を得て、`Transfer.Right.rightTransfer` へ
+  `freeGeneratingTrivialCofibrations_cell_acyclicity` を渡す。TR・具体区間には未着手。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。
