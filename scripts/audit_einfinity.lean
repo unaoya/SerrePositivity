@@ -378,7 +378,16 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.transfer_block_extraction,
       `SerrePositivity.EInfinity.TableReduction.transfer_block_deleted_outputs,
       `SerrePositivity.EInfinity.Surjection.previousOccurrence_no_between,
-      `SerrePositivity.EInfinity.Surjection.previousOccurrence_not_mem_slice] do
+      `SerrePositivity.EInfinity.Surjection.previousOccurrence_not_mem_slice,
+      `SerrePositivity.EInfinity.TableReduction.rows_deletionScheduleTransfer,
+      `SerrePositivity.EInfinity.TableReduction.ofFn_split_two,
+      `SerrePositivity.EInfinity.TableReduction.rows_transfer_blocks,
+      `SerrePositivity.EInfinity.TableReduction.two_row_extraction,
+      `SerrePositivity.EInfinity.TableReduction.rows_prefix_sum,
+      `SerrePositivity.EInfinity.TableReduction.final_deletion_location,
+      `SerrePositivity.EInfinity.TableReduction.final_deletion_row_cases,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_terminal_donor_step,
+      `SerrePositivity.EInfinity.TableReduction.terminal_transfer_block_deleted_outputs] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

@@ -46,13 +46,15 @@ lemma owner_length_gt_one_of_remaining {n d : ℕ} (r : Schedule n d)
 方針：同じ行内の重複を排除して、直前の出現の行末が削除行より前にあると示す。
 規約：直前の出現があることを要求し、退化出力も含む。
 使われ方：長さの移動の二行・順序・余裕と削除係数を同時に指定する。 -/
-lemma final_deletion_rows {n d : ℕ} (w : Fin (d + 1) → Equiv.Perm (Fin n))
+lemma final_deletion_location {n d : ℕ} (w : Fin (d + 1) → Equiv.Perm (Fin n))
     (r : Schedule n d) (out : List (Fin n)) (h : reduceRows (rows w r) [] = some out)
     (k : Fin out.length) (hx : k ∉ singletonPositions r out (output_length w r out h))
     (hf : ¬ Caesura (fun j : Fin out.length => out[j.val]) k)
     (hp : (previousOccurrences (fun j : Fin out.length => out[j.val]) k).Nonempty) :
     ∃ (donor : Fin (d + 1)) (receiver : Fin d),
-      receiver.castSucc < donor ∧ 1 < (r.val donor).val ∧ (r.val receiver.castSucc).val < n ∧
+      receiver.castSucc < donor ∧ 1 < (r.val donor).val ∧
+      scheduleOffset r donor ≤ k.val ∧ k.val < scheduleOffset r donor + (r.val donor).val ∧
+      (r.val receiver.castSucc).val < n ∧
       scheduleEnd r receiver =
         ((previousOccurrences (fun j : Fin out.length => out[j.val]) k).max' hp).val ∧
       deletionCoefficient (fun j : Fin out.length => out[j.val]) k =
@@ -69,7 +71,28 @@ lemma final_deletion_rows {n d : ℕ} (w : Fin (d + 1) → Equiv.Perm (Fin n))
   have hd := owner_length_gt_one_of_remaining r out pre row (output_length w r out h)
     donor j k hstart hlength hk hx
   have hne : donor ≠ receiver.castSucc := ne_of_gt horder
-  exact ⟨donor, receiver, horder, hd, schedule_receiver_lt r donor receiver.castSucc hne hd,
-    hreceive, hcoeff⟩
+  have hj := j.isLt
+  refine ⟨donor, receiver, horder, hd, ?_, ?_,
+    schedule_receiver_lt r donor receiver.castSucc hne hd, hreceive, hcoeff⟩
+  · omega
+  · omega
+
+/-- 概要：残余の最終出現削除で移す二行と余裕・符号（BF §1.4.4）。
+方針：所属位置も保持する強い証明書から行長と符号の部分を取り出す。
+規約：既存の二行の指定の公開界面を保つ。
+使われ方：行長変更の構成と係数比較へ必要な部分だけを渡す。 -/
+lemma final_deletion_rows {n d : ℕ} (w : Fin (d + 1) → Equiv.Perm (Fin n))
+    (r : Schedule n d) (out : List (Fin n)) (h : reduceRows (rows w r) [] = some out)
+    (k : Fin out.length) (hx : k ∉ singletonPositions r out (output_length w r out h))
+    (hf : ¬ Caesura (fun j : Fin out.length => out[j.val]) k)
+    (hp : (previousOccurrences (fun j : Fin out.length => out[j.val]) k).Nonempty) :
+    ∃ (donor : Fin (d + 1)) (receiver : Fin d),
+      receiver.castSucc < donor ∧ 1 < (r.val donor).val ∧ (r.val receiver.castSucc).val < n ∧
+      scheduleEnd r receiver =
+        ((previousOccurrences (fun j : Fin out.length => out[j.val]) k).max' hp).val ∧
+      deletionCoefficient (fun j : Fin out.length => out[j.val]) k =
+        -((-1 : ℤ) ^ receiver.val) := by
+  obtain ⟨donor, receiver, ho, hd, _, _, hr, he, hc⟩ := final_deletion_location w r out h k hx hf hp
+  exact ⟨donor, receiver, ho, hd, hr, he, hc⟩
 
 end SerrePositivity.EInfinity.TableReduction

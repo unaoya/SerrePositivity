@@ -174,7 +174,12 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `reduceRows_receiver_step` は長くした受け取り行の出力と削除値の早い除外を計算する。
 `transfer_block_deleted_outputs` は三部分の抽出を連結し、指定した一文字の削除後出力の一致を証明する。
 `previousOccurrence_not_mem_slice` は直前の同値の出現と削除位置の間に削除値がないことを示す。
-一般の成功 Schedule からこのブロック比較の全入力を取り出す接続は未完成。
+`rows_deletionScheduleTransfer` と `rows_transfer_blocks` は実際の Schedule の二行だけを変更することを示す。
+`two_row_extraction` は元の成功抽出を先行部・二行・中間部・後続の状態と出力へ分ける。
+`final_deletion_location` は削除行の指定に実際の削除位置の所属範囲も保持する。
+`final_deletion_row_cases` は最終出現の削除を行内部か最後の行末に分類する。
+`terminal_transfer_block_deleted_outputs` は最終末尾の削除にも成功抽出と削除後出力の一致を与える。
+一般の成功 Schedule から二つのブロック比較の語・位置・不出現の全入力を取り出す接続は未完成。
 実際の対の添字・逆符号・逆対応、残余和の零性は未完成。
 TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。

@@ -190,3 +190,6 @@ public import SerrePositivity.EInfinity.TableReduction.FinalDeletionRows
 public import SerrePositivity.EInfinity.TableReduction.DonorStep
 public import SerrePositivity.EInfinity.TableReduction.TransferBlock
 public import SerrePositivity.EInfinity.Surjection.PreviousOccurrenceGap
+public import SerrePositivity.EInfinity.TableReduction.TwoRowExtraction
+public import SerrePositivity.EInfinity.TableReduction.TerminalTransferBlock
+public import SerrePositivity.EInfinity.TableReduction.FinalDeletionCases
