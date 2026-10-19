@@ -44,15 +44,15 @@
   零保存二関手から零頂点を構成。両射影の全零頂点の保存、成分ごとの零対象判定、完全二関手の HasZeroVertex を証明。
   錐族の後合成・指定錐の像の頂点・充填性、引き戻しと直積の交換・指定両脚の一致を証明。
   反転同型と指定評価の一致、点ごとの余極限を使い、両入力と像から極限・余極限の十分条件を証明。
-  錐族の同値持ち上げで、像も極限である極限錐の像を指定極限錐へ全次数で厳密に合わせる補題を構成。
-  引き戻しの錐の貼り合わせと矢印圏の点ごとの存在から、選んだ両入力の全極限錐を保つ lax pullback の極限錐を構成。
-  入力の極限の存在と元の二関手の保存の下で任意の錐の成分判定は同値。有限版で HasFiniteLimits と両射影の判定を供給。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6628 jobs）、F2 公理監査成功（1167 宣言、標準三公理のみ）。
+  錐族・余錐族の同値持ち上げで、像も普遍である錐・余錐の像を指定された普遍錐・余錐へ全次数で厳密に合わせる。
+  錐・余錐の貼り合わせと関手圏の点ごとの存在から、選んだ両入力の全錐・全余錐を保つ lax pullback の極限・余極限を構成。
+  入力の存在と元の二関手の保存の下で極限・余極限の成分判定は同値。有限版で HasFiniteLimits・HasFiniteColimits と両射影の判定を供給。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6642 jobs）、F2 公理監査成功（1181 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-4：余極限の成分ごとの存在・保存と逆方向の判定、完全な入力関手の保存との接続、安定性・射影の完全性。Tamme §1 Lemma 8(i)(iv)。24〜60 時間。
+- F2L-4：元の安定圏・完全関手から必要な有限図式の存在と保存を導き、安定性・射影の完全性へ接続。Tamme §1 Lemma 8(i)(iv)。24〜60 時間。
 - Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
 
 ### 主要宣言（名前のみ）
@@ -76,7 +76,7 @@
 - `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
 - `F2.laxPullbackLift` / `F2.laxPullbackFunctorCoreIso` / `F2.arrowEndpointPair_internalHom_core_fibration`
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
-- `F2.exists_limitCone_laxPullback_with_components` / `F2.isLimitCone_laxPullback_iff_components` / `F2.isColimitCone_laxPullback_of_components`
+- `F2.exists_colimitCone_laxPullback_with_components` / `F2.isLimitCone_laxPullback_iff_components` / `F2.isColimitCone_laxPullback_iff_components`
 
 ### 依存と提供
 
@@ -87,7 +87,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：選んだ両入力の全錐を保つ極限の存在、逆方向の成分判定と有限極限の界面、集約・監査と本書。
+  本保存単位：選んだ両入力の全余錐を保つ余極限の存在、逆方向の成分判定と有限余極限の界面、集約・監査と本書。
 
 ### 既知の問題
 
@@ -100,8 +100,8 @@
 
 ### 次の一手
 
-- F2L-4：像の厳密化・引き戻しの極限の存在を反転し、選んだ入力の余極限錐を保つ lax pullback の存在を構成する。
-  KanEquivalenceLifting.op と kanCoconeReverseCone を使い、余極限の成分判定・保存と有限版、安定性・完全性へ進む。
+- F2L-4：pullbackCone・pushoutCocone と射影後の四角形の全錐の一致を使い、成分ごとの四角形判定を構成する。
+  元の IsStable・IsExactFunctor から必要な存在・保存を導き、零対象と有限版を安定性・両射影の完全性へ合成する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
