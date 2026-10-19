@@ -2273,3 +2273,29 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaSource_hoFullyFaithful
 
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaSource_pre_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_functor_of_pointwise
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_functor_of_pointwise
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFunctorTranspose_const
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeConstantFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_constantFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalCocone_postcomp_val
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_constantFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsColimitCone_congr
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsColimitCone_constantFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalColimits_constantFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtension_refl_of_canonicalColimits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalHomMap_bijective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalHomMap_constantFamily_bijective
