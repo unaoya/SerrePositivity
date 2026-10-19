@@ -352,7 +352,22 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.sum_singleton_terms_vertexBoundary,
       `SerrePositivity.EInfinity.TableReduction.differential_onSequence_vertexBoundary_add_remainder,
       `SerrePositivity.EInfinity.TableReduction.vertexBoundary_identity_iff_remainder_zero,
-      `SerrePositivity.EInfinity.TableReduction.normalizedMap_comm_iff_remainder_zero] do
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_comm_iff_remainder_zero,
+      `SerrePositivity.EInfinity.TableReduction.schedule_excess_sum,
+      `SerrePositivity.EInfinity.TableReduction.schedule_receiver_lt,
+      `SerrePositivity.EInfinity.TableReduction.deletionScheduleTransfer,
+      `SerrePositivity.EInfinity.TableReduction.deletionScheduleTransfer_inverse,
+      `SerrePositivity.EInfinity.TableReduction.flatten_position_decomposition,
+      `SerrePositivity.EInfinity.TableReduction.previous_position_lt_row_start,
+      `SerrePositivity.EInfinity.TableReduction.row_lt_of_end_lt_start,
+      `SerrePositivity.EInfinity.TableReduction.previousOccurrence_scheduleEnd,
+      `SerrePositivity.EInfinity.TableReduction.final_deletion_coefficient_receiver,
+      `SerrePositivity.EInfinity.TableReduction.output_position_owner,
+      `SerrePositivity.EInfinity.TableReduction.final_deletion_rows,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_congr_removed,
+      `SerrePositivity.EInfinity.TableReduction.donor_selected_split,
+      `SerrePositivity.EInfinity.TableReduction.donor_exclusion_equiv,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_donor_step] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
