@@ -1697,3 +1697,11 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRightKanShapeToUnitCommaFiber_isPrecompositionEquivalence
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRightKanShapeToUnitCommaFiber_baseChange_isPrecompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanQCatEquivalenceOpposite
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiberViaOpposite_isPrecompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiberViaOpposite_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaFiber_hasColimit_iff_local
