@@ -579,7 +579,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitCommaUpperSquareDeformation_right
 #check @SerrePositivity.InfinityCategories.unitCommaLowerSquareDeformation_right
 
-#check @SerrePositivity.InfinityCategories.relativeFunctorVertex
+#check @SerrePositivity.InfinityCategories.relativeExtensionVertex
 #check @SerrePositivity.InfinityCategories.relativeFunctorEdge
 #check @SerrePositivity.InfinityCategories.exists_relativeFunctorHomotopyComposite
 #check @SerrePositivity.InfinityCategories.relativeFunctorHomotopyComposite
@@ -1298,3 +1298,32 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.kanJoinTensorLeft_factors
 #check @SerrePositivity.InfinityCategories.kanJoinShiftPrism_naturality
 #check @SerrePositivity.InfinityCategories.kanJoinShiftHomotopy
+
+#check @SerrePositivity.InfinityCategories.kanJoin_pullCut_prefix
+#check @SerrePositivity.InfinityCategories.kanJoin_pullCut_suffix
+#check @SerrePositivity.InfinityCategories.kanAugJoin_prefix
+#check @SerrePositivity.InfinityCategories.kanAugJoin_suffix
+#check @SerrePositivity.InfinityCategories.kanAugJoin_partialSplit_reassociate
+#check @SerrePositivity.InfinityCategories.kanAugJoinDiagonal_formula
+#check @SerrePositivity.InfinityCategories.kanJoinShiftPrism_app_normal
+#check @SerrePositivity.InfinityCategories.kanJoinShiftPrism_coefficient
+#check @SerrePositivity.InfinityCategories.kanJoinShiftTime
+#check @SerrePositivity.InfinityCategories.kanJoinShiftTime_zero
+#check @SerrePositivity.InfinityCategories.kanJoinShiftTime_one
+#check @SerrePositivity.InfinityCategories.kanJoinShiftTime_left
+#check @SerrePositivity.InfinityCategories.kanJoinShiftTime_right
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinShiftPrism
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinShiftPrism_fst
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinShiftPrism_snd
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinShiftPrism_zero
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinShiftPrism_one
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinShiftPrism_left
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinShiftPrism_right
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinTransformation
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinCoconeTransport
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinCoconeTransport_cocone_val
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinCoconeTransport_cocone
+#check @SerrePositivity.InfinityCategories.isLeftKanExtension_relativeJoin_iff_local_colimits
+#check @SerrePositivity.InfinityCategories.isLeftKanExtension_iff_of_diagram_eq_of_h_eq
+#check @SerrePositivity.InfinityCategories.LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits
+#check @SerrePositivity.InfinityCategories.IsLeftKanExtension.exists_relativeJoin_local_colimits

@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：前合成の零単体への作用を計算する。
 規約：固定条件は厳密な等式。
 使われ方：相対ホモトピーの始点・終点。 -/
-def relativeFunctorVertex {A B X : SSet.{u}} (i : A ⟶ B) (a : A ⟶ X)
+def relativeExtensionVertex {A B X : SSet.{u}} (i : A ⟶ B) (a : A ⟶ X)
     (f : B ⟶ X) (hf : i ≫ f = a) :
     (vertexFiber ((pre i).app X) (functorVertex a)) _⦋0⦌ :=
   ⟨functorVertex f, by
@@ -40,7 +40,7 @@ def relativeFunctorEdge {A B X : SSet.{u}} (i : A ⟶ B) (a : A ⟶ X)
     (hH : (i ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A (Δ[1] : SSet.{u}) ≫ a) :
     SSet.Truncated.Edge
       (X := (truncation 2).obj (vertexFiber ((pre i).app X) (functorVertex a)))
-      (relativeFunctorVertex i a f hf) (relativeFunctorVertex i a g hg) where
+      (relativeExtensionVertex i a f hf) (relativeExtensionVertex i a g hg) where
   edge := ⟨(functorEdgeOfSimplicialHomotopy H).edge, by
     have hc : curry H.h ≫ (pre i).app X = SSet.const (functorVertex a) := by
       apply uncurry_injective
