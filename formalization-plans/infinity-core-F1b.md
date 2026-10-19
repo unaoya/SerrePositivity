@@ -20,6 +20,7 @@
   終対象上では通常の余極限性と同値。底の余錐が余極限なら、この相対条件から元の余極限性を回収。
 - 相対充填を図式固定の余錐の族へ制限し、coslice との比較の後合成自然性で写像空間の同値を移送。
   標準の `IsRelativeColimitCone`（通常の coslice の相対始対象性）を定義し、操作的条件からの含意を証明。
+- inner fibration の相対始対象性と厳密な始点境界充填は同値。底変換と最初の頂点の始対象性の反映で証明。
 - 相対関手の境界充填は指定部分外の単体の始点の条件だけで成立。相対内部 Hom の順序交換で、
   V′ の局所余錐の境界固定の延長と相対普遍性を構成済み。
 - 全空間の相対比較と fiber を通常の相対余錐制限と同定。制限と後合成は cartesian 辺を保つ。
@@ -40,8 +41,8 @@
 - 反転の h Fun の逆向き Hom 全単射、指定ホモトピー・合成・前合成との両立を証明。
   指定変換を保持した右条件の双対化から、右側も Hom 普遍性と大域的一意性まで証明。
 - F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3777 jobs）、同時 import 検査成功（F1 6773・F1B 4235 宣言）。
-  公理監査成功（4239 宣言、標準三公理のみ、1143 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3779 jobs）、同時 import 検査成功（F1 6783・F1B 4243 宣言）。
+  公理監査成功（4247 宣言、標準三公理のみ、1145 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -74,7 +75,7 @@
 - `F1B.kanLeftCommaHomEquiv` / `F1B.exists_kanLeftExtension_with_homUniversal_of_local_colimits`
 - `F1B.kanLeftKanExtension_homUniversal` / `F1B.kanLeftKanExtensionIso`
 - `F1B.kanRightKanExtension_homUniversal` / `F1B.kanRightKanExtensionIso`
-- `F1B.IsRelativeColimitCone` / `F1B.kanIsRelativeColimitCone_of_lifting`
+- `F1B.IsRelativeColimitCone` / `F1B.kanRelativeInitialVertex_iff_initialBoundary`
 
 ### 依存と提供
 
@@ -85,7 +86,7 @@
 
 ### 未コミット
 
-- `KanRelativeInitialBaseChange.lean`・`KanRelativeInitialBoundaryCriterion.lean`：相対始対象の逆方向の判定を作業中。
+- `KanRelativeInitialComparison.lean`：充満忠実な比較で相対始対象性を移す一般判定を作業中。
 
 ### 既知の問題
 
@@ -94,15 +95,14 @@
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
 - `kanFiberwiseHom` の cartesian fibration 性は cocartesian な p について証明済み。
   制限 V 自体の cartesian fibration 性は未証明。B4 の充填には不要で、Kerodon 7.1.5.19 の経路で移送済み。
-- 任意の指定左右 Kan 変換の Hom 普遍性と大域的一意性は証明済み。相対的な写像空間の結論は未完。
 - B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手との比較は未形式化。
   B2 は同じ宇宙の標的に対する普遍性。一般の C[W⁻¹] の存在は主張しない。
 
 ### 次の一手
 
-- 標準 U 余極限から操作的条件への逆方向を、isofibration の上で証明する。
-  `kanIsRelativeColimitCone_of_lifting` と `cosliceEndpointMap_leftFibration` を読む。
-  相対始対象の写像空間判定から始点境界充填へ戻し、原典 7.3.6.7 の相対的な制限定理へ接続する。
+- 標準 U 余極限から操作的条件への逆方向を、余錐制限の cartesian 輸送の保存を用いて証明する。
+  `kanRelativeInitialVertex_iff_initialBoundary` と `kanCosliceCoconeFamilyMap_postcomp` を読む。
+  coslice と固定図式の族の相対始対象性を移し、fiber→全空間を合成して原典 7.3.6.7 へ進む。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

@@ -2031,3 +2031,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_of_lifting
 
 #check @SerrePositivity.InfinityCategories.F1B.KanRelativeInitialVertex.comp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInitial_pinchedHom_pullback_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.KanRelativeInitialVertex.pullback_snd
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialVertex_pinchedHom_isContractibleKan
+
+#check @SerrePositivity.InfinityCategories.F1B.KanRelativeInitialVertex.reflects_isInitialVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanStdSimplex_first_isInitialVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_of_relativeInitial
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInitialVertex_iff_initialBoundary

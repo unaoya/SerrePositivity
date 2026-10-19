@@ -510,3 +510,5 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeVertexFiberIniti
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeFamilyInitial
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeSliceMapping
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeColimit
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBaseChange
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
