@@ -10972,3 +10972,152 @@ lemma strictCoherentCone_isLimit_iff_generalOriginalEndPointFibers {F : I ⥤ C}
 新規ファイルに警告・sorry・追加公理はない。edgewise 解像を含む他担当の再帰的な依存
 1229ソースは全て追跡済み・コミット済み・変更なしを再確認した。
 ログ：`/tmp/gamma3-general-original-aggregate.log`、`/tmp/gamma3-general-original-audit.log`。
+
+### γ3：自然な単体的 Hom 随伴同型と coherent nerve による極限錐の像
+
+`SimplicialAdjunctionHomIso adj` は、通常の随伴 adj : L ⊣ R に対する
+sHom_D(Lx,y) ≅ sHom_C(x,Ry) の y に自然な同型と、零単体で adj.homEquiv に一致する条件。
+x に関する追加の高次の豊穣自然性は型に含めない。
+この同型は任意の図式 F の表現可能な係数図式の自然同型を誘導し、錐の頂点の Hom 同型と
+元の Bousfield–Kan 比較 q の厳密な可換正方形を作る。
+両圏の局所 Kan 性の下で、同型な二辺の消去によって、左像 Lx で測る元の q の同値性と
+右像の錐の q の同値性が一致する。全 x の判定により、任意の小圏上の strict な表示の
+∞ 極限錐を通常の右随伴 R の mapCone が保つ。
+
+R が豊穣関手の場合、通常の作用には F1 の `coherentEnrichedUnderlyingFunctor R` を使う。
+`nerveToCoherent_postcomp`、`strictCoherentDiagram_postcomp`、
+`strictCoherentConeMap_postcomp` は、通常の像の coherent 表示が実際の
+`coherentNerveMap R` による後合成と厳密に一致することを述べる。
+錐の固定図式の等式による移送まで含めて `strictCoherentCone_postcomp` で照合し、
+`strictCoherentCone_postcomp_isLimit_of_adjunctionHomIso` は像の native な極限性を与える。
+
+一般に、同じ図式の二つの極限錐は h(slice) で同型である。その同型を後合成の slice 写像で
+移せば、一つの極限錐の保存から全ての極限錐の保存が従う。
+`strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso` はこの事実を用い、
+標準となる通常の錐 c が一つ存在する strict な図式の上の、任意の coherent な極限錐 d の
+保存を述べる。d 自体が通常の strict な錐から来るとは仮定しない。
+
+必要な入力は通常の随伴・自然な単体的 Hom 同型・局所 Kan 性であり、Hom の厳密極限性や
+遷移の fibration 性は追加しない。通常の Quillen 条件だけから Hom 同型の存在を導いたり、
+任意の coherent な図式に対する導来随伴を構成したりする段階は含めない。
+モデル圏の cofibrant-fibrant 置換・frame との接続と E2b の具体的適用は後続の課題。
+原典：HTT 4.2.4.1・5.2.4.6、Kerodon 7.5.4.6。
+
+公開十四宣言の正確な型は以下。名前空間は
+`SerrePositivity.InfinityCategories.HomotopyLimits`。
+`AdjunctionHomLimits` の共通前提は `C : Type v`、`D : Type w`、
+`[Category.{u} C] [Category.{u} D] [SimplicialCategory C] [SimplicialCategory D]`、
+`L : C → D` と `R : D → C` は通常の関手。図式の添字は `I : Type u [SmallCategory I]`。
+`StrictConeFunctorImage` は対象の宇宙を共有する `C D : Type v` と同じ Hom の前提を使う。
+ただし `composableArrows_precomp_postcomp` は通常の Category だけで、SimplicialCategory は不要。
+`PostcompLimitTransport` の全前提は型内に明記した。
+
+`AdjunctionHomLimits.lean`：
+
+```lean
+def SimplicialAdjunctionHomIso (adj : L ⊣ R)
+```
+
+```lean
+lemma simplicialAdjunctionHomIso_zero {adj : L ⊣ R} (e : SimplicialAdjunctionHomIso adj)
+    (x : C) (y : D) (f : L.obj x ⟶ y) :
+    ((e.val x).hom.app y).app (Opposite.op ⦋0⦌) (SimplicialCategory.homEquiv' _ _ f) =
+      SimplicialCategory.homEquiv' _ _ (adj.homEquiv x y f)
+```
+
+```lean
+def simplicialAdjunctionHomDiagramIso {adj : L ⊣ R} (e : SimplicialAdjunctionHomIso adj)
+    (F : I ⥤ D) (x : C) :
+    simplicialHomDiagram F (L.obj x) ≅ simplicialHomDiagram (F ⋙ R) x
+```
+
+```lean
+lemma representableComparison_adjunction_square {adj : L ⊣ R}
+    (e : SimplicialAdjunctionHomIso adj) {F : I ⥤ D} (c : Cone F) (x : C) :
+    ((e.val x).app c.pt).hom ≫ representableHomotopyLimitComparison (R.mapCone c) x =
+      representableHomotopyLimitComparison c (L.obj x) ≫
+        weightedSectionsMap (bousfieldKanWeight I)
+          (simplicialAdjunctionHomDiagramIso e F x).hom
+```
+
+```lean
+lemma representableComparison_adjunction_homotopyEquivalence_iff
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    [∀ a b : D, KanComplex (SimplicialCategory.sHom a b)]
+    {adj : L ⊣ R} (e : SimplicialAdjunctionHomIso adj) {F : I ⥤ D} (c : Cone F) (x : C) :
+    IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c (L.obj x)) ↔
+      IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison (R.mapCone c) x)
+```
+
+```lean
+lemma strictCoherentCone_map_isLimit_of_adjunctionHomIso
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    [∀ a b : D, KanComplex (SimplicialCategory.sHom a b)]
+    {adj : L ⊣ R} (e : SimplicialAdjunctionHomIso adj) {F : I ⥤ D} (c : Cone F)
+    (hc : IsLimitCone (strictCoherentCone c)) : IsLimitCone (strictCoherentCone (R.mapCone c))
+```
+
+`PostcompLimitTransport.lean`：
+
+```lean
+lemma isLimitCone_postcomp_of_one_limitCone {K X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {p : K ⟶ X} (f : X ⟶ Y)
+    (c : JoinCone p) (hc : IsLimitCone c) (hfc : IsLimitCone (c.postcomp f))
+    (d : JoinCone p) (hd : IsLimitCone d) : IsLimitCone (d.postcomp f)
+```
+
+`StrictConeFunctorImage.lean`：
+
+```lean
+lemma nerveToCoherent_postcomp (R : EnrichedFunctor SSet.{u} D C) :
+    nerveToCoherent D ≫ coherentNerveMap R =
+      nerveMap (coherentEnrichedUnderlyingFunctor R) ≫ nerveToCoherent C
+```
+
+```lean
+lemma strictCoherentDiagram_postcomp (F : I ⥤ D) (R : EnrichedFunctor SSet.{u} D C) :
+    strictCoherentDiagram F ≫ coherentNerveMap R =
+      strictCoherentDiagram (F ⋙ coherentEnrichedUnderlyingFunctor R)
+```
+
+```lean
+lemma composableArrows_precomp_postcomp {n : ℕ} (A : ComposableArrows D n)
+    {d : D} (f : d ⟶ A.obj 0) (G : D ⥤ C) :
+    ComposableArrows.precomp A f ⋙ G = ComposableArrows.precomp (A ⋙ G) (G.map f)
+```
+
+```lean
+lemma strictCoherentConeMap_postcomp {F : I ⥤ D} (c : Cone F)
+    (R : EnrichedFunctor SSet.{u} D C) :
+    strictCoherentConeMap c ≫ coherentNerveMap R =
+      strictCoherentConeMap ((coherentEnrichedUnderlyingFunctor R).mapCone c)
+```
+
+```lean
+lemma strictCoherentCone_postcomp {F : I ⥤ D} (c : Cone F)
+    (R : EnrichedFunctor SSet.{u} D C) :
+    ((strictCoherentCone c).postcomp (coherentNerveMap R)).cast
+        (strictCoherentDiagram_postcomp F R) =
+      strictCoherentCone ((coherentEnrichedUnderlyingFunctor R).mapCone c)
+```
+
+```lean
+lemma strictCoherentCone_postcomp_isLimit_of_adjunctionHomIso
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    [∀ a b : D, KanComplex (SimplicialCategory.sHom a b)]
+    (R : EnrichedFunctor SSet.{u} D C) {L : C ⥤ D}
+    {adj : L ⊣ coherentEnrichedUnderlyingFunctor R} (e : SimplicialAdjunctionHomIso adj)
+    {F : I ⥤ D} (c : Cone F) (hc : IsLimitCone (strictCoherentCone c)) :
+    IsLimitCone ((strictCoherentCone c).postcomp (coherentNerveMap R))
+```
+
+```lean
+lemma strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    [∀ a b : D, KanComplex (SimplicialCategory.sHom a b)]
+    (R : EnrichedFunctor SSet.{u} D C) {L : C ⥤ D}
+    {adj : L ⊣ coherentEnrichedUnderlyingFunctor R} (e : SimplicialAdjunctionHomIso adj)
+    {F : I ⥤ D} (c : Cone F) (hc : IsLimitCone (strictCoherentCone c))
+    (d : JoinCone (strictCoherentDiagram F)) (hd : IsLimitCone d) :
+    IsLimitCone (d.postcomp (coherentNerveMap R))
+```
