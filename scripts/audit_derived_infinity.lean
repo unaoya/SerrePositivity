@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegTriangles
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeRefinement
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramHornSource
 import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedDiagramTriangle
@@ -1981,10 +1982,59 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramHorn_source
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramHorn_target
 
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableModulePrecompose_d
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableModulePrecompose_closed
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableModulePrecompose_id
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableModulePrecompose_comp
+#print axioms SerrePositivity.InfinityCategories.dgClosedTargetTransport
+#print axioms SerrePositivity.InfinityCategories.dgClosedTargetTransport_edge
+#print axioms SerrePositivity.InfinityCategories.dgClosedTargetTransport_mem
+#print axioms SerrePositivity.InfinityCategories.dgClosedTargetTransport_comp
+#print axioms SerrePositivity.InfinityCategories.dgFiniteCellGraded_exists_transportedSource_primitives
+#print axioms SerrePositivity.InfinityCategories.DGLastHornFiniteRefinement
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFiniteRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement
+#print axioms SerrePositivity.InfinityCategories.dgVerdierFiniteEdgeRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgClosedEdge_raw_injective
+#print axioms SerrePositivity.InfinityCategories.dgClosedEdge_comp_of_edge_eq
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.commonDenominator
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.commonApex
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.apex_eq
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.sourceLeg
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.targetLeg
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.compStruct
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.compStruct_simplex
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.sourceLeg_mem
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.targetLeg_mem
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_congr
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramLegTriangle
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramLegTriangle_diagonal
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramLegTriangle_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramLegTriangle_source
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramLegTriangle_target
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramCanonicalFace1_leg
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramCanonicalFace2_leg
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.legTriangle
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.refinedFace1_legTriangle
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.refinedFace2_legTriangle
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.legTriangle_face0
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.legTriangle_face1
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGRepresentableModulePrecomposeAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedEqualityTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteCellCommonSourcePrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornFiniteRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteEdgeRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedEdgeCompositionEquality,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteCommonApex,
+    `SerrePositivity.InfinityCategories.Derived.DGTriangleSourceRefinementCongruence,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierVertexLegTriangle,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegTriangles,
+
     `SerrePositivity.InfinityCategories.Derived.DGTriangleRefinementClosedDiagonal,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierInitialDiagonal,
     `SerrePositivity.InfinityCategories.Derived.RoofTetrahedronApexEdge,
