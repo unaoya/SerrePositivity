@@ -367,3 +367,8 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinColimitProje
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinDiagramExistence
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialPullback
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinPointwiseExistence
+public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHornFibrationComparison
+public import SerrePositivity.InfinityCategories.F1B.KanLeftComma
+public import SerrePositivity.InfinityCategories.F1B.KanVertexFiberPostIso
+public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaFiber
+public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaHomotopy

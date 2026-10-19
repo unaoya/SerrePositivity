@@ -22,7 +22,6 @@
 - 射影の持ち上げ問題を逆像上の図式の延長と同定し、inner fibration 性の必要十分条件を証明。
   標準単体上の cocartesian fibration の最終 fiber への厳密な retraction と、そこで固定された輸送を構成。
   射影の終点指定の辺の持ち上げ（任意次元の最後の頂点版も）を証明。
-- 最終 fiber への retraction と逆像上の図式の延長が cocartesian 辺を可逆辺に送ることまで証明。
 - cocartesian section の全部分単体集合を構成し、inner fibration の場合の quasicategory 性を証明。
   前合成の関手性、一般の strict transport の図式と fiber 評価射、任意パラメータの族の curry・uncurry を構成。
   部分パラメータと始対象の評価を同時に固定した延長、評価の自明 Kan fibration 性と ∞ 圏同値を証明。
@@ -36,20 +35,21 @@
   終点指定の特殊持ち上げと合わせ、`kanFiberwiseHomProjection` の cartesian fibration 性まで証明。
 - join の inner fibration 性に加え、cocartesian な p の相対 join の底への cocartesian fibration 性を証明。
   左包含は任意の底変換後も cocartesian 辺を保存。相対指数の制限は任意の cartesian 辺を保存する。
-- 輸送の可逆な比較による保存性と、cartesian fibration の fiber の始対象から全空間の相対境界充填を証明。
 - cocartesian fibration 間の単射による相対指数の制限は inner fibration。相対 join の制限 V にも適用済み。
 - 余錐制限と相対 join 制限の各 fiber の cartesian fibration 性を証明。縦合成の比較射の pullback 分解も証明。
 - 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。
 - 対象の族の各頂点に必要な余極限だけで、普遍余錐全体からの引き戻しは自明 Kan fibration。図式を延長できる。
-- 最終検証：F1・F1B 同時ビルド成功（3425 jobs）、同時 import 検査成功（F1 5684・F1B 3548 宣言）。
-  公理監査成功（3552 宣言、標準三公理のみ、969 モジュールに straightening なし）。ソース名衝突 0。
+- 任意の関手 δ に対し、既存 comma の反転 `F1B.kanLeftComma δ` を構成。底への射影は cocartesian fibration。
+  恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示と既存の矢印空間への比較を証明。
+- 最終検証：F1・F1B 同時ビルド成功（3430 jobs）、同時 import 検査成功（F1 5684・F1B 3571 宣言）。
+  公理監査成功（3575 宣言、標準三公理のみ、974 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - 1. 点ごとの余極限からの相対 join の図式の存在を、一般の δ と Kan 条件へ接続する。
   Kerodon Lemma 7.3.4.5–6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
   fiber の充填の全空間への移送、実際の図式の延長、対象の族の点ごとの余極限だけによる存在は証明済み。
-  その後 oriented fiber product で全部分 ∞ 圏からの存在へ接続し、任意の δ に沿う存在も扱う。
+  構成済み oriented fiber product の fiber を局所添字と比較し、任意の δ に沿う存在へ接続する。
 - 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
   原典は相対 Kan 拡張の存在（Prop 7.3.5.5）を使う。局所境界充填から直接は結論しない。
@@ -70,7 +70,7 @@
 - `KanCocartesianScaffold.isPrecompositionEquivalence` / `kanUniversalScaffold_overPullback_isPrecompositionEquivalence`
 - `kanCocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
-- `exists_kanFinalHorn_extension_of_edgeRestriction` / `kanFiberwiseHom_isCartesianEdge_of_inverting`
+- `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftCommaFiberIso`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.kanRelativeJoinRestriction_preservesCartesianEdges` / `F1B.kanRelativeJoinRestriction_innerFibration`
 
@@ -83,7 +83,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：相対始対象全体の引き戻し、単一頂点の余極限、点ごとの図式の存在、集約・監査・本書）。
+- なし（本保存単位：反転 comma の cocartesian な置き換え、fiber と指定変換の比較、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `exists_kanRelativeJoin_diagram_of_pointwise_colimits` は対象の図式の各頂点の余極限だけを要求する。
-  次は既存 `leftMappingArrow δ` を oriented fiber product として再利用し、その標的射影の cocartesian 性を示す。
-  fiber と `leftKanShape δ c` の比較を構成して一般の δ と点ごとの Kan 条件へ接続する（Kerodon 7.3.4–5）。
+- `kanLeftCommaProjection δ` は既存 comma の反転による cocartesian な射影。元の K の包含は射影すると δ。
+  次は `kanLeftCommaFiberIso` の反転 comma の fiber と `leftKanShape δ c` の図式を比較する。
+  余極限を移して点ごとの存在定理へ渡し、指定変換を元の K へ制限する（Kerodon 7.3.4–5）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

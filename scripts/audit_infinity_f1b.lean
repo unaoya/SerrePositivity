@@ -1657,3 +1657,14 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinPointwiseColimitProjection_trivialKanFibration
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoin_initial_family_of_pointwise_colimits
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoin_diagram_of_pointwise_colimits
+#check @SerrePositivity.InfinityCategories.F1B.kanCocartesianHornFibration_toCocartesianFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftComma
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaProjection_cocartesianFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaInclusion_source
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaInclusion_projection
+#check @SerrePositivity.InfinityCategories.F1B.kanVertexFiberPostIso
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaFiberIso
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaHomotopy
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaToLeftMappingArrow
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaToLeftMappingArrow_source
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaToLeftMappingArrow_projection
