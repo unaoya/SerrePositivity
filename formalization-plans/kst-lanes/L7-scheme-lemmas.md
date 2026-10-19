@@ -1,5 +1,72 @@
 # K-L7：スキーム論と blowup
 
+## 引き継ぎ（2026-10-19）
+
+### 現在地
+
+- K-L7。K 非依存、正本 §13-13 の分担を維持。新しい工程には進まず停止する。
+- L7a 完了：一般スキームの通常 blowup、例外 Cartier 因子、正の冪比較、固有性、中心外同型。
+- L7b 進行中：有限基礎加群の平坦化、実分裂／射影代数を入力する自由化中心、中心の降下・合成、strict transform の幾何は証明済み。
+- Stacks 05CG・05DJ・05DK・05DM・05DP、059X の Noether 特殊形、忠実平坦降下、局所化と完備化による射影性判定は証明済み。
+- 今回の区切りは Stacks 051R の多項式商の場合。非零な先頭係数の積を反転し、実際の標準単項式基底から自由性を証明した。
+- 一般の 05FS、一般の L7b、L7c の本体は未完了。条件付きの中心存在を一般平坦化の完成とは呼ばない。
+- 検証済みコミット：`4adf352c`。対象ビルド成功（3705 jobs）、公理監査成功（2003 宣言、標準三公理のみ）。
+
+### 残り（依存順、時間は概算）
+
+- Stacks 051R：多項式商の局所化とテンソル基底変更の比較を構成し、有限型代数の一般自由性へ移送する（1–3 時間）。
+- Stacks 05FS, Lemma 38.9.2：一般自由性・Noether 帰納法・証明済みの剰余／完備化／忠実平坦降下を接続し、代数の射影性の存在を完成する（8–20 時間）。
+- Stacks 0811 と 0810：相対 Noether 正規化・支持次元の devissage を実装し、実分裂を入力する現在の中心存在から一般有限型加群の平坦化へ進む（16–40 時間）。
+- Stacks 081T, Lemma 38.31.4／Temkin 2008 Lemma 2.1.5：上記の平坦化中心を strict transform と大域貼り合わせへ接続し、固定済みの Noether 特殊形を完成する（8–20 時間）。
+- KST Prop 5.2：鳩ノ巣による共通冪、核の消滅、Artin–Rees による交わり消滅（4–8 時間）。
+- Huneke–Swanson 8.1.5・8.2.1／KST Lemma 5.6 古典部分：生成元毎の二乗とイデアル平方を区別し、Rees 拡大の整性・有限性から有限射を構成（8–20 時間）。
+- KST Remark 3.3／Lemma 5.5 の幾何入力：K-L5 の対象確定後、別対象間の閉埋め込みと中心外同型を接続する（界面受領後 4–12 時間）。K/pro の結論は K-L6。
+
+### 主要宣言（名前のみ）
+
+- `blowup`、`blowupπ`、`blowupPowerIso`
+- `exists_noetherian_finite_flattening_center`
+- `exists_admissible_composition_domination`
+- `exists_domination_of_flat_schematicallyDense_strictTransform`
+- `exists_fg_center_boundaryFreeOpenPullbacks_of_split`
+- `exists_fg_center_boundaryFreeOpenPullbacks_of_projective`
+- `projective_of_countable_flat_mittagLeffler`
+- `projective_of_complete_of_fibre_associatedPrimes`
+- `faithfullyFlat_localization_completion_product`
+- `projective_of_countable_flat_of_localization_completion`
+- `projective_reduction_baseChange`
+- `projective_geometricallyIntegral_completion_baseChange`
+- `projective_geometricallyIntegral_of_free_localization_of_projective_reduction`
+- `exists_finite_leading_degree_cover`
+- `standardMonomialQuotientBasis`
+- `leading_degree_cover_localization`
+- `exists_nonzero_free_polynomial_quotient_localization`
+
+### 依存と提供
+
+- 読み取り専用の既存環論：`CommutativeAlgebra.GradedSubquotient`、`AdicCompletionTensor`、`AdicCompletionFlat`、`AdicCompletionNoetherian`。
+- Mathlib の Proj・局所化・イデアル層・テンソル積・単項式順序／除法を使用。K のモジュールは依存に含めない。
+- K-L5 に通常 blowup、冪比較、中心外同型、普遍写像を提供。導来 blowup の underlying scheme は別対象として受領する。
+- K-L6 に古典的幾何入力を提供予定。Lemma 5.5・Claim 5.3・Prop 5.4 の K/pro の結論は同レーン担当。
+
+### 未コミット
+
+- 所有ディレクトリ・集約・監査スクリプトの検証済み Lean 差分はコミット済み。本引き継ぎ節は別の文書コミットで保存する。
+- 共有 `SerrePositivity.lean` の `public import SerrePositivity.KST.SchemeLemmas` 一行は追加済みだが未コミット。他レーンの import 追加と混在し、ファイル全体の `git commit --only` が他者の差分を含むため残す。
+- 他レーンの共有作業ツリー差分は本レーンのコミット対象外。
+
+### 既知の問題
+
+- L7 の import 閉包・対象ビルド・公理監査は正常。追加公理・sorry は導入していない。
+- 前回の工程区切りの全体ビルドは他レーン `InfinityCategories/F1/CoherentHomComparison.lean:167` の simp エラーで失敗。今回の区切りでは全体ビルドを再実行していない。
+- `ModelCategory SSet` の instance 仮定は本レーンでは使用しない。既知の宣言名衝突はない。
+- 実分裂／射影性の入力を 05FS の存在証明に読み替えない。`X̃` を `affineBlowup I` と定義しない。
+- `Finset.image` を型に使う際は DecidableEq が必要。標準単項式の基底は同一 universe の有限変数型と係数環を使う現在の宣言を正本とする。
+
+### 次の一手
+
+- `GenericFreePolynomialQuotient.lean` を起点に、局所化後の多項式商と元の商のテンソル基底変更との実際の線形／代数同型を構成する。有限型代数への移送だけを次の保存単位とし、対象ビルドと既存監査を通す。
+
 作成日：2026-10-18。
 レーン名：K-L7（スキーム論と blowup）。
 正本：`formalization-plans/k-theory-kst-route.md`。
