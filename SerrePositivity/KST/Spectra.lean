@@ -339,3 +339,11 @@ public import SerrePositivity.KST.Spectra.RawSpectrumMappingLaws
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFamily
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingAcyclic
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingPointed
+public import SerrePositivity.KST.Spectra.TensorExchangeCoherence
+public import SerrePositivity.KST.Spectra.InternalHomTensorAction
+public import SerrePositivity.KST.Spectra.InternalHomExchangeStrength
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingExchange
+public import SerrePositivity.KST.Spectra.RawSpectrumCotensorComparison
+public import SerrePositivity.KST.Spectra.RawSpectrumCotensorInverse
+public import SerrePositivity.KST.Spectra.RawSpectrumCotensorIso
+public import SerrePositivity.KST.Spectra.SpectrumCotensorMappingEquivalence

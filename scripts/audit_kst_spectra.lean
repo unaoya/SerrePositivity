@@ -826,7 +826,15 @@ run_cmd do
     `SerrePositivity.KST.Spectra.RawSpectrumMappingLaws,
     `SerrePositivity.KST.Spectra.RawSpectrumMappingFamily,
     `SerrePositivity.KST.Spectra.RawSpectrumMappingAcyclic,
-    `SerrePositivity.KST.Spectra.RawSpectrumMappingPointed]
+    `SerrePositivity.KST.Spectra.RawSpectrumMappingPointed,
+    `SerrePositivity.KST.Spectra.TensorExchangeCoherence,
+    `SerrePositivity.KST.Spectra.InternalHomTensorAction,
+    `SerrePositivity.KST.Spectra.InternalHomExchangeStrength,
+    `SerrePositivity.KST.Spectra.RawSpectrumMappingExchange,
+    `SerrePositivity.KST.Spectra.RawSpectrumCotensorComparison,
+    `SerrePositivity.KST.Spectra.RawSpectrumCotensorInverse,
+    `SerrePositivity.KST.Spectra.RawSpectrumCotensorIso,
+    `SerrePositivity.KST.Spectra.SpectrumCotensorMappingEquivalence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -29,6 +29,10 @@ def pointedSpace (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) : PointedSimplici
     (fun n ↦ (Under.w (PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space)).trans
       (Under.w (pointedStep X Y n)).symm))
 
+/-- 基点を入れても元の Kan な整合写像単体集合を保つ。 -/
+instance pointedSpace_kanComplex (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) :
+    KanComplex (pointedSpace X Y).right := space_kanComplex X Y
+
 /-- 各段評価は基点を保つ。 -/
 def pointedEvaluation (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) (n : ℕ) :
     pointedSpace X Y ⟶ PointedObject.basedHom (X.level n).space (Y.level n).space :=
