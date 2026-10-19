@@ -1929,3 +1929,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanMappingCylinderUnit
 
 #check @SerrePositivity.InfinityCategories.F1B.kanMappingCylinderContraction_baseProjection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPrecompositionNatTrans_app
+
+#check @SerrePositivity.InfinityCategories.F1B.kanMappingCylinderPrecompositionAdjunction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanMappingCylinderHomEquiv_apply
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRightHomEquiv_apply
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRightHomEquiv_symm_apply
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinUniversalHomEquiv_apply
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinUnitLeft_homUniversal
