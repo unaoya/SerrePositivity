@@ -134,9 +134,12 @@ reflexive coequalizer の形の sifted 性を検証し、図式圏へのモナ�
 `canonicalRows_extract_original_segment` と `canonicalRows_exclusion_update` は、
 その長さで元の語の一行を抽出し、次の正しい除外状態へ移ることを保証する。
 最後の行の尾部は重複せず、`reduceRows_canonical_last` で残りの語全体を抽出する。
-全行の Schedule・reduceRows の反復と一般の和の一意性は未完成。
-具体例の復元行と唯一の非退化出力は監査済み。一般の TR の値の同定は未証明。
-TR の全射性・微分保存・部分合成保存は未完成。
+`canonicalSchedule` は正しい全行長で、`reduceRows_canonical` はその抽出が元の語と証明する。
+`schedule_eq_canonical_of_isChain` により、非退化出力を持つ Schedule はこれだけである。
+`onSequence_canonical` は nullary を含む全 arity で標準頂点列の TR が元の語となる式。
+`degreeMap_comp_section` は各次数の線形な切断、`degreeMap_surjective` と
+`normalizedMap_surjective` は任意の可換環・全 arity・全次数での全射性を与える。
+この切断が微分や部分合成を保つとは主張しない。TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

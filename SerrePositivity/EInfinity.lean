@@ -178,3 +178,4 @@ public import SerrePositivity.EInfinity.TableReduction.CanonicalAdjacentVertices
 public import SerrePositivity.EInfinity.TableReduction.CanonicalForcedLength
 public import SerrePositivity.EInfinity.TableReduction.CanonicalExtraction
 public import SerrePositivity.EInfinity.TableReduction.CanonicalLastRow
+public import SerrePositivity.EInfinity.TableReduction.Surjectivity
