@@ -505,3 +505,29 @@ public import SerrePositivity.KST.ProExcision.ModuleHomologySequentialColimits
 public import SerrePositivity.KST.ProExcision.IntegerLinearizationAdjunction
 
 public import SerrePositivity.KST.ProExcision.HomologyModelSequentialColimits
+
+public import SerrePositivity.KST.ProExcision.RelativeModuleDiagram
+
+public import SerrePositivity.KST.ProExcision.RelativeModuleSequentialColimit
+
+public import SerrePositivity.KST.ProExcision.StableBarHomologyComparison
+
+public import SerrePositivity.KST.ProExcision.RelativeModuleDiagramMaps
+
+public import SerrePositivity.KST.ProExcision.RelativeModuleColimitNaturality
+
+public import SerrePositivity.KST.ProExcision.StableColumnAffine
+
+public import SerrePositivity.KST.ProExcision.StableBarRelativeMaps
+
+public import SerrePositivity.KST.ProExcision.StableColumnAffineRelativeComparison
+
+public import SerrePositivity.KST.ProExcision.StableColumnAffineRelativeZero
+
+public import SerrePositivity.KST.ProExcision.RowLeftBlockCoherence
+
+public import SerrePositivity.KST.ProExcision.StableRowAffine
+
+public import SerrePositivity.KST.ProExcision.StableRowAffineRelativeComparison
+
+public import SerrePositivity.KST.ProExcision.StableRowAffineRelativeZero

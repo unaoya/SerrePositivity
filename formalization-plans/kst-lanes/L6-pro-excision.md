@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1569宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1619宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1189,3 +1189,19 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `SimplicialHomologyModel.preservesSequentialColimits`・`sequentialColimitIso` は借用する自然な複体模型だけから得る H_* の実順序余極限保存・比較同型。filtered 保存を新しい構造体のフィールドや仮定にしない。
 - 相対商との交換、実置換共役と整数作用への移送は残る。L6d 全体の完了はまだ主張しない。
 - 対象ビルド・1569宣言の公理監査は標準三公理のみで成功。
+
+
+### L6d の実安定相対 H_* への接続と行・列の零化（2026-10-19）
+
+- `relativeModuleDiagram` と `relativeModuleDiagramProjection` は実自然変換の像の商図式と実商射影。`relativeModuleDiagramIsCokernel` は各評価の通常商の実普遍性から得る実余核。
+- `relativeModuleSequentialColimitIso` は実相対商の余核余錐を左随伴である実余極限関手に写して得る実同型。相対商との交換を仮定にしない。
+- `relativeModuleDiagramMap`・`relativeModuleSequentialMap` と二つの実射影正方形、`relativeModuleSequentialColimitIso_natural` は実正方形への自然性。
+- `SimplicialHomologyModel.barSequentialColimitIso`・`relativeBarSequentialColimitIso` は既存の自然な実鎖模型だけから得る実安定 bar H_*・相対 H_* の比較。対応する自然性も全て実証明した。
+- `columnAffineRankSequence`・`stableColumnAffine`・`stableColumnAffineSection` は通常の実有限半直積の実 rank 余極限と実標準包含。`columnAffineRightNatTrans`・`stableColumnAffineRightMap` は実右乗法であり、零を定義に含めない。
+- `columnAffineRelativeDiagramIso` は有限相対商図式と既存の実相対 rank 順序列の恒等成分の実自然同型。`stableColumnAffineRelativeIso` は実安定相対 H_* と有限相対項の実余極限の同型。
+- `stableColumnAffineRelativeIso_right` は実右乗法への自然性。`stableColumnAffineRelativeRightMap_zero` は有限 rank 余極限の実零化を実安定相対 H_* へ移した列側の零化。
+- `rowAffineLeft_block_commute`・`rowAffineRankSequence`・`stableRowAffine`・`stableRowAffineSection` は独立に構成した実右行列作用の行側の通常の rank 模型と実標準包含。
+- `rowAffineLeftNatTrans`・`stableRowAffineLeftMap` は行の実左乗法。`rowAffineRelativeDiagramIso` と `stableRowAffineRelativeIso` は実安定行側相対 H_* と通常の有限 rank 相対項の実余極限の同型。
+- `stableRowAffineRelativeIso_left` は実左乗法への自然性。`stableRowAffineRelativeLeftMap_zero` は反対転置で実証明した行側の有限 rank 余極限の零化を実安定相対 H_* に移す。
+- 行・列とも、安定 H_* と有限 rank 余極限の比較を仮定に隠さず実証明した。残件は aI→I の実係数包含・実アフィン共役・有限支持の実置換共役と整数作用への移送。L6d 全体の完了はまだ主張しない。
+- 対象ビルド・1619宣言の公理監査は標準三公理のみで成功。
