@@ -1,5 +1,76 @@
 # K-L9（Sp・ホモトピー群）
 
+## 引き継ぎ（2026-10-19）
+
+### 現在地
+- L9a・L9b・改訂 L9c・L9d 完了。L9e は未完。
+- Sp の quasicategory 性、全整数次数の群、置換、homotopy fiber の長完全列、有理 telescope とテンソル表示を構成済み。
+- hG と homotopy Tot の段ごとの Kan 構成・BF 置換・比較射、および自明作用の標準射の全整数次数 π の単射性まで証明済み。
+- 有理化各段の高次群係数で BG の通常の正規化 cochain の正次数 cohomology が消滅することを証明済み。
+- 球面的境界の交代関係と充填判定、骨格の一段の厳密な延長と通常の cocycle 条件の同値、任意の cochain・cocycle の骨格の射による実現まで完了。
+- 最新の実装保存：`c5872423`。直前の保存：`e4bb0902`、`9c9a3de5`。詳細の到達点は既存本文 §116–119。
+- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、3979 jobs、終了コード 0。
+- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、511 モジュール・4951 宣言、標準三公理のみ、終了コード 0。
+
+### 残り（依存順）
+- 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
+- 骨格の射の係数表示を写像空間の連結成分へ移し、正次数群の既存表示・連結準同型・球面の向きと整合させる。
+  原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
+- 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
+  原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
+- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。
+  原典：Goerss–Jardine VIII §§1–2。24–80 時間。E₂ の消滅だけで収束を仮定しない。
+- 有限群の有理自明作用について標準射の全射性を証明し、既証の単射性と合わせて全整数次数の有理 Shapiro を完成させる。
+  原典：Goerss–Jardine VIII §2、Bousfield–Friedlander 1978 §2。上記の後で 8–24 時間。
+- 通常の余単体 Tot と一般の BF 置換した homotopy Tot の比較を完了する。
+  原典：Goerss–Jardine VII §4、VIII §1、HTT A.3.3。12–32 時間。
+- γ3 後の導来写像空間を持つ正しい Sp との比較・Sp の ∞ 極限性は後続範囲であり、現段階の主張に含めない。
+  原典：HTT Theorem 4.2.4.1、HA §1.4.2。γ3 完了後 16–40 時間。
+
+### 主要宣言（共通接頭辞 `SerrePositivity.KST.Spectra`、以下は名前のみ）
+- `KanHomotopyGroup`
+- `OmegaSpectrum`
+- `Sp`
+- `OmegaSpectrum.homotopyGroupEquivAt`
+- `OmegaSpectrum.homotopyFiberLongExact`
+- `OmegaSpectrum.rationalization`
+- `OmegaSpectrum.rationalizationTensorEquiv`
+- `homotopyFixedPoints`
+- `homotopyTotalization`
+- `homotopyFixedPointsUnit_homotopyMap_injective`
+- `SkeletalCellAttachment.stageFiberCoefficientEquiv`
+- `SkeletalCellAttachment.coefficientDifferential`
+- `RationalLevelNormalizedCochains.positive_cohomology_isZero`
+- `SphericalBoundary.boundary_filler_iff`
+- `SkeletalSphericalCochain.extension_iff_differential_eq_zero`
+- `SkeletalSphericalRealization.exists_extended_realization`
+
+### 依存と提供
+- 読取専用：Mathlib の PtSimplex・RelStruct・MulStruct、pushout-product、骨格の相対セル分解、正規化鎖、群 cochain。
+- 読取専用：既存 Spectra/ の点つき単体集合・閉構造・通常の cofiber。安定モデル構造の結果は借用しない。
+- 読取専用：HomotopicalAlgebra/Simplicial/ のホーン充填・因子分解・AnodyneKanReplacement と一般の Reedy 因子分解。
+- 読取専用：InfinityCategories/ の coherent nerve の γ1、Core の Kan 性、HomotopyLimits の Bousfield–Kan end。
+- 提供：π_n と関手性・長完全列、BF 対象と Sp、整数 π、置換、有理化、hG/Tot の具体的な模型、骨格の障害計算。
+- H_* は K-L2、pro 形式は K-L6、γ3 は N 所有。K 理論の主定理への合流は他レーンの仕事。
+
+### 未コミット
+- 本節の保存後、K-L9 所有ファイルに未コミットなし。Lean の最後の保存は `c5872423`。
+- 共有ルート `SerrePositivity.lean` および他レーンの既存差分は触らず、今回のコミット対象にも含めない。
+
+### 既知の問題
+- 自分の import 閉包と対象ビルドは成功。全体ビルドは今回再実行していない。
+- 前回の L9d 全体ビルドは共有ルートの `relativeFunctorVertex` 重複で失敗した。今回その衝突の解消は未確認。
+- 所有ソースの sorry・追加 axiom はなし。所有宣言の型に `HomotopicalAlgebra.ModelCategory` 定数がないことも Lean 環境を走査して確認済み。
+- import 閉包に KanQuillen モジュールなし。`SSet.modelCategoryQuillen` 名前空間は Mathlib のホーン生成射・Fibration の既存 API に使うが、`ModelCategory SSet` は仮定しない。
+- 公理監査は私有宣言と推移的な公理依存も調べる。標準三公理の検査だけでは instance 仮定を検出しないため、上記の型走査は別途実行した。
+- BF cofibrant–fibrant 仕様を承認済み。構造射は単射、随伴は全基点 π_* 同型。厳密 Ω 同型は要求しない。
+- 厳密 Ω 同型と厳密極限だけからの局所 Kan 性は未解決だったため改訂した。現仕様では単射の指数版・引き戻し・塔の RLP 閉性で証明する。
+- cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
+
+### 次の一手
+- `FunctionComplexPointedSimplex` と `SphereMappingComponents` を読み、関数複体の π₀ と座標ごとの π₀ の同値を Kan 充填で構成する。
+- それをセルの fiber 表示へ合成し、§119 の骨格上の係数と写像空間の連結成分の係数を同一の代表で比較する。この工程は未着手。
+
 ## 所有するもの・借りるもの
 
 - 所有：Kan 複体の π_n とその群構造・自然性・ホモトピー不変性。
