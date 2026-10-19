@@ -581,3 +581,7 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKIsLimit
 public import SerrePositivity.KST.Spectra.SpectrumCircleCotensorComponents
 public import SerrePositivity.KST.Spectra.SpectrumCircleCotensorReversal
 public import SerrePositivity.KST.Spectra.SpectrumCircleCotensorReversalEvaluation
+public import SerrePositivity.KST.Spectra.FundamentalLoopEdges
+public import SerrePositivity.KST.Spectra.FundamentalLoopHomotopyCategory
+public import SerrePositivity.KST.Spectra.FundamentalLoopNaturality
+public import SerrePositivity.KST.Spectra.SpectrumCircleEdgewiseDifferenceHom
