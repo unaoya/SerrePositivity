@@ -197,7 +197,12 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `receiver_release` は現在行を一文字短くして直前値を解放し、初期の重複のなさと不所属を保証する。
 `releaseSearch_constructs_extension` は停止行の延長による成功抽出と、一文字だけを挿入した後続出力を構成する。
 `reverse_block_extraction` は現在行の短縮も連結し、二つの削除後出力の一致を与える。
-逆の行リストを実際の Schedule と同定する接続、順方向との一致・全単射・全残余項の有限和の相殺は未完成。
+`reverseTransferData_nonempty` は全残余行末から実際の逆 Schedule の成功と削除後出力の一致を構成する。
+`ReverseTransferData.point_not_caesura` と `point_previousOccurrence` は挿入点の最終出現と直前出現の短縮行末を同定する。
+`point_in_late_row` と `point_not_singleton` により挿入点は長い延長行内の残余位置。
+`point_coefficient` と `pair_cancel` はその負符号と次数 d−1 の正規化二項の相殺を与える。
+`forward_rows`・`forward_schedule`・`forward_position` は逆から順へ戻した二行・Schedule・位置の一致。
+順から逆の一致・全単射・全残余項の有限和の相殺は未完成。
 TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

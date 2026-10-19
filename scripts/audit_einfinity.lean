@@ -420,7 +420,22 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.releaseSearch_on_schedule_suffix,
       `SerrePositivity.EInfinity.TableReduction.releaseSearch_constructs_extension,
       `SerrePositivity.EInfinity.TableReduction.receiver_release,
-      `SerrePositivity.EInfinity.TableReduction.reverse_block_extraction] do
+      `SerrePositivity.EInfinity.TableReduction.reverse_block_extraction,
+      `SerrePositivity.EInfinity.TableReduction.nonfinalRowPrefix_nonempty,
+      `SerrePositivity.EInfinity.TableReduction.reverseTransferData_nonempty,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.split_success,
+      `SerrePositivity.EInfinity.TableReduction.previousOccurrence_double_insert,
+      `SerrePositivity.EInfinity.TableReduction.position_in_long_row_not_singleton,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.shortened_end,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.point_not_caesura,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.point_previousOccurrence,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.point_coefficient,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.pair_cancel,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.point_in_late_row,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.point_not_singleton,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.forward_rows,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.forward_schedule,
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.forward_position] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -539,3 +554,13 @@ example : ReleaseSearch (0 : Fin 2) [([1, 0], 1)] [] [] [] [] ([1, 0], 1) [] := 
   exact .terminal (by decide) (by decide)
 example : reduceRows [([1, 0], 1)] ([0] : List (Fin 2)) = some [1] := by decide
 example : reduceRows [([1, 0], 2)] ([] : List (Fin 2)) = some [1, 0] := by decide
+
+-- 実際の逆 Schedule の入力は退化出力の残余行末も含む。
+private def reverseTerminalSchedule : Schedule 2 1 := ⟨![2, 1], by decide⟩
+example : Nonempty (ReverseTransferData terminalTable reverseTerminalSchedule
+    [0, 1, 1] ⟨1, by decide⟩) := by
+  apply reverseTransferData_nonempty terminalTable reverseTerminalSchedule
+    [0, 1, 1] (by decide) ⟨1, by decide⟩ (by decide) (by decide)
+example : reduceRows (rows terminalTable
+    (deletionScheduleTransfer reverseTerminalSchedule 0 1 (by decide) (by decide))) [] =
+      some [0, 1, 0] := by decide

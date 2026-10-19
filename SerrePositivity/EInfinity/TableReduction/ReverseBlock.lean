@@ -29,6 +29,8 @@ lemma reverse_block_extraction {n : ℕ} (removed row : List (Fin n)) (r : ℕ)
     (hb : removed.length + (r - 1) + (rest.map (fun p => p.2 - 1)).sum + 1 = n) :
     ∃ a b earlier picked finish chosen later left middle right free,
       ReleaseSearch a rest free earlier picked finish chosen later ∧
+      free = removed ++ (available removed row).take ((r - 1) - 1) ∧
+      (∃ head, left = head ++ [a]) ∧
       a ≠ b ∧ a ∉ middle ∧ a ∉ right ∧ left.length = r - 1 ∧
       out = left ++ b :: (middle ++ right) ∧
       reduceRows ((row, r - 1) :: (earlier ++ (chosen.1, chosen.2 + 1) :: later)) removed =
@@ -68,7 +70,7 @@ lemma reverse_block_extraction {n : ℕ} (removed row : List (Fin n)) (r : ℕ)
     rw [hout, hfull, htailOut]
     simp only [left, List.append_assoc, List.cons_append, List.nil_append]
   refine ⟨a, b, earlier, picked, finish, chosen, later, left, mid, post, free,
-    hs, hab, haMid, haPost, hleft, hold, ?_, ?_⟩
+    hs, hnewState.symm, ⟨pre, rfl⟩, hab, haMid, haPost, hleft, hold, ?_, ?_⟩
   · simpa only [hshort, left] using hnew
   · have hdel := transferred_words_delete_eq left mid post a b
     calc
