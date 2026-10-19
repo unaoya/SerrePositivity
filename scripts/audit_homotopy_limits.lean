@@ -3907,3 +3907,132 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @kanReplacedTensorFrameAdjunction_square
 #print axioms kanReplacedTensorFrameAdjunction_square
+
+#check @weightedColimitDiagram
+#print axioms weightedColimitDiagram
+
+#check @weightedColimit
+#print axioms weightedColimit
+
+#check @weightedColimitι
+#print axioms weightedColimitι
+
+#check @weightedColimit_condition
+#print axioms weightedColimit_condition
+
+#check @weightedColimit_hom_ext
+#print axioms weightedColimit_hom_ext
+
+#check @weightedColimitHomDiagram
+#print axioms weightedColimitHomDiagram
+
+#check @weightedColimitHomTo
+#print axioms weightedColimitHomTo
+
+#check @weightedColimitHomFrom
+#print axioms weightedColimitHomFrom
+
+#check @weightedColimitι_homFrom
+#print axioms weightedColimitι_homFrom
+
+#check @weightedColimitHomTo_from
+#print axioms weightedColimitHomTo_from
+
+#check @weightedColimitHomFrom_to
+#print axioms weightedColimitHomFrom_to
+
+#check @weightedColimitHomEquiv
+#print axioms weightedColimitHomEquiv
+
+#check @weightedColimitTensorDiagram
+#print axioms weightedColimitTensorDiagram
+
+#check @weightedColimitTensorCowedge
+#print axioms weightedColimitTensorCowedge
+
+#check @weightedColimitTensorCowedge_isColimit
+#print axioms weightedColimitTensorCowedge_isColimit
+
+#check @weightedColimitMap
+#print axioms weightedColimitMap
+
+#check @weightedColimitι_map
+#print axioms weightedColimitι_map
+
+#check @weightedColimitFunctor
+#print axioms weightedColimitFunctor
+
+#check @weightedColimitHomSection_naturality
+#print axioms weightedColimitHomSection_naturality
+
+#check @weightedColimitHomSection
+#print axioms weightedColimitHomSection
+
+#check @weightedColimitHomComparison
+#print axioms weightedColimitHomComparison
+
+#check @weightedColimitHomComparison_π
+#print axioms weightedColimitHomComparison_π
+
+#check @weightedColimitEndEvaluationι
+#print axioms weightedColimitEndEvaluationι
+
+#check @weightedColimit_doubleUncurry
+#print axioms weightedColimit_doubleUncurry
+
+#check @weightedColimitEndEvaluation_condition
+#print axioms weightedColimitEndEvaluation_condition
+
+#check @weightedColimitEndEvaluation
+#print axioms weightedColimitEndEvaluation
+
+#check @weightedColimitι_endEvaluation
+#print axioms weightedColimitι_endEvaluation
+
+#check @weightedColimitHomInverse
+#print axioms weightedColimitHomInverse
+
+#check @weightedColimitι_homInverse
+#print axioms weightedColimitι_homInverse
+
+#check @weightedColimitHomInverse_comparison
+#print axioms weightedColimitHomInverse_comparison
+
+#check @weightedColimitHomComparison_inverse
+#print axioms weightedColimitHomComparison_inverse
+
+#check @weightedColimitHomIso
+#print axioms weightedColimitHomIso
+
+#check @weightedColimitHomDiagramMap
+#print axioms weightedColimitHomDiagramMap
+
+#check @weightedColimitHomDiagramFunctor
+#print axioms weightedColimitHomDiagramFunctor
+
+#check @weightedColimitHomComparison_naturality
+#print axioms weightedColimitHomComparison_naturality
+
+#check @weightedColimitHomNatIso
+#print axioms weightedColimitHomNatIso
+
+#check @bousfieldKanColimit
+#print axioms bousfieldKanColimit
+
+#check @bousfieldKanColimitHomIso
+#print axioms bousfieldKanColimitHomIso
+
+#check @kanBousfieldKanColimitObject
+#print axioms kanBousfieldKanColimitObject
+
+#check @kanBousfieldKanColimitHomDiagram_eq
+#print axioms kanBousfieldKanColimitHomDiagram_eq
+
+#check @kanBousfieldKanColimitUnderlyingHomIso
+#print axioms kanBousfieldKanColimitUnderlyingHomIso
+
+#check @kanBousfieldKanColimitHomComparison
+#print axioms kanBousfieldKanColimitHomComparison
+
+#check @kanBousfieldKanColimitHomComparison_homotopyEquivalence
+#print axioms kanBousfieldKanColimitHomComparison_homotopyEquivalence
