@@ -221,3 +221,4 @@ public import SerrePositivity.EInfinity.TableReduction.RowFusionContext
 public import SerrePositivity.EInfinity.TableReduction.RowFusion
 public import SerrePositivity.EInfinity.Surjection.TableCompositionRaw
 public import SerrePositivity.EInfinity.Surjection.TableCompositionJoins
+public import SerrePositivity.EInfinity.Surjection.TableCompositionFused

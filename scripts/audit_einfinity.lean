@@ -550,6 +550,9 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.singletonHorizontalExtraction_success,
       `SerrePositivity.EInfinity.Surjection.finalHorizontalExtraction_success,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.raw_success_zero,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fused_success_zero,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedWord_step,
+      `SerrePositivity.EInfinity.TableReduction.fuseBoundary_in_context,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.horizontal_vertical_join,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.vertical_horizontal_join,
       `SerrePositivity.EInfinity.TableReduction.ReductionInterval.weightedVertices_vertex,
@@ -1117,3 +1120,15 @@ example : ((fullCompositionFixture.horizontalRows 0).map Prod.fst).getLast? =
 example : ((fullCompositionFixture.verticalRows ⟨1, by decide⟩).map Prod.fst).getLast? =
     ((fullCompositionFixture.horizontalRows 2).map Prod.fst).head? :=
   fullCompositionFixture.vertical_horizontal_join ⟨1, by decide⟩
+
+-- 全共有行の融合後は、四つの重複境界文字を消した実際の合成語を返す。
+private lemma fusedFixture_word : fullCompositionFixture.fusedWord 0 =
+    [0, 1, 2, 4, 2, 1, 4, 3] := by
+  rw [fullCompositionFixture.fusedWord_step ⟨0, by decide⟩,
+    fullCompositionFixture.fusedWord_step ⟨1, by decide⟩,
+    TableCompositionData.fusedWord,
+    dite_eq_right (show ¬2 < fullCompositionFixture.count by decide)]
+  decide
+example : reduceRows (fullCompositionFixture.fusedRows 0) [] =
+    some [0, 1, 2, 4, 2, 1, 4, 3] := by
+  simpa only [fusedFixture_word] using fullCompositionFixture.fused_success_zero
