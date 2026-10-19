@@ -17,9 +17,9 @@
 - 任意の h の射の鎖写像代表と source の TR3 から、全 distinguished triangle の標準 cofiber 表示を証明。D3 の distinguished triangle の保存・反映、逆関手の保存を証明済み。
 - `derivedStableHomotopyEquivalenceIsTriangulated` を公開。両関手の整数シフト比較と単位・余単位の整合性も含む。通常の導来圏から三角構造を引き戻して済ませていない。
 - D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/DGFunctorFullyFaithful.lean`、`Derived/DGFullSubcategoryNerve.lean`、`Derived/ResolvedDGQuotientZeroObjects.lean`、`Derived/ResolvedDGQuotientNerve.lean`。
-- D7 は `dfa5b50d`、β3 の平坦模型は `ca40f20c` まで保存済み。今回の保存単位は新規 11 モジュール。最新の Stable・Derived 集約ビルドは 6,117 jobs 成功。
-- 最新公理監査：Derived 325 modules／3,473 宣言、Stable 595 modules／4,589 宣言。標準三公理のみ。
+- β3 の入口：`Derived/DGModelStability.lean`、`Derived/DGYonedaRepresentableNerve.lean`、`Stable/EquivalenceStability.lean`、`Derived/ResolvedDGQuotientNerve.lean`。
+- D7 は `dfa5b50d`、β3 の充満忠実性は `656fd9ca` まで保存済み。今回の保存単位は新規 10 モジュール。最新の Stable・Derived 集約ビルドは 6,127 jobs 成功。
+- 最新公理監査：Derived 335 modules／3,562 宣言、Stable 605 modules／4,678 宣言。標準三公理のみ。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -33,6 +33,8 @@
 - 平坦分解後の path 商の nerve、元の nerve からの関手、屋根の比較同型を構成。証明済み K-flat 条件を供給し、元の指定対象の零化・指定部分圏上の定値零関手との可逆二胞体も構成済み。
 - 任意の固定 Hom 複体の鎖写像に沿う pinched 線形単体・実写像空間の射を構成。全射準同型なら、零次元を含む全相対境界充填から `TrivialKanFibration` とホモトピー同値を証明済み。
 - 実際の `pinchedHomMap (dgNerve.map F)` を端点の等式による同型込みで線形写像と同定。対象上全射性を外した充満忠実性、Hom 複体同型の場合、dg 充満部分圏の包含への適用を公開済み。
+- 任意対象族のラベル付き dg 充満像と評価への厳密な分解を構成。dg Yoneda の全 Hom 複体同型から、同一宇宙の代表加群の模型との明示的 ∞ 圏同値を証明済み。
+- 自明 Kan fibration の始域・基底の両方向に実 fiber/cofiber を構成し、一般の ∞ 圏同値の安定性の同値不変性と完全性を証明。Yoneda 模型と具体的 cell 分解の安定性の比較、実関手・逆関手の完全性へ適用済み。
 
 ### 残り（依存順、時間は推定）
 
@@ -69,6 +71,8 @@
 - `resolvedDGQuotientFunctor_kills`、`resolvedDGQuotientNullFunctorIsoZero`。
 - `pinchedHomChainMap_trivialKanFibration`、`pinchedHomChainMap_isSimplicialHomotopyEquivalence`、`dgFunctor_pinchedHomMap_eq`。
 - `dgNerve_map_isFullyFaithful_of_surjective_quasiIso`、`dgNerve_map_isFullyFaithful_of_homIso`、`dgFullSubcategoryInclusionNerve_isFullyFaithful`。
+- `dgYonedaRepresentableNerveEquivalence`、`representableDGYoneda_evaluation`、`IsQCatEquivalence.isStable_iff`、`isExactFunctor_of_isQCatEquivalence`。
+- `dgYonedaRepresentableNerve_isStable_iff`、`dgCellResolutionNerve_isStable_iff`、`dgCellAugmentationNerve_isExactFunctor`。
 
 ### 依存と提供
 
@@ -89,7 +93,7 @@
 
 ### 次の一手
 
-- β3：dg Yoneda の表現可能部分の比較へ進む。`Module/YonedaFunctor.dgYoneda` と `Module/Yoneda.dgYonedaIso` を読み取り専用で使い、Hom 同型を `dgNerve_map_isFullyFaithful_of_homIso` へ渡す。注意：`RightModule A D` の対象宇宙は D より大きく、現 `dgNerve.map` は共通対象宇宙を要求する。まず D を対象ラベルとして代表加群間の Hom 複体・単位・合成を引き戻した dg 圏を作れば、同一宇宙で Yoneda の明示的同値を得られる（全加群圏への包含と宇宙持ち上げは別途）。その後、前三角 dg 圏／平坦商の安定性と商関手の完全性、cofiber 条件の辺の反転、F1B `IsLocalization` の全 ∞ 関手圏の普遍性、Verdier 列へ進む。H⁰ の比較や dg 関手だけの延長で普遍性を済ませない。
+- β3：dg 加群圏の nerve の実際の零対象・cone の普遍性へ進む。最初に、閉零圏で零対象となる dg 対象について恒等閉元が零なので収縮元 0 を持つことを証明し、既存 `Module/Zero.zeroModule`・`moduleZero_isZero` を `dgNerve_contractingElement_isZeroVertex` へ接続する。次に `Module/HomConeIso.moduleHomConeIso`（cone への全 Hom 複体の同型）と `Module/ConeLift`・`ConeElements` の全次数成分を読み取り専用で使い、実境界の fiber/cofiber 充填を dg 加群へ一般化する。`Module/Pretriangulated` は h の三角構造だけであり安定性の証明には代用しない。表現可能閉包や平坦商の安定性を得たら `dgYonedaRepresentableNerve_isStable_iff` などで輸送する。その後、商関手の完全性、cofiber 条件の辺の反転、F1B `IsLocalization` の全 ∞ 関手圏の普遍性、Verdier 列へ進む。全加群圏への包含の宇宙持ち上げは未実装。現在のラベル付き代表模型は D と同じ対象宇宙で実 Hom 複体を持つ。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
@@ -139,7 +143,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
-D7 の後に着手済み。実零対象性・整合的な零化、平坦分解の nerve の同値と平坦商への関手まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
+D7 の後に着手済み。実零化、平坦模型、Hom 準同型による充満忠実性、Yoneda の代表模型との同値、安定性の同値不変性まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
 F1b の `Localization.lean` の `IsLocalization` を入口とし、同じ宇宙の標的への
 `localizationPrecomposition` が反転関手の全部分 ∞ 圏との同値になることを証明する。
 

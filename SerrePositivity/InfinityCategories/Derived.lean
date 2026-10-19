@@ -299,6 +299,11 @@ public import SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedMap
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorFullyFaithful
 public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
 
+public import SerrePositivity.InfinityCategories.Derived.DGObjectImage
+public import SerrePositivity.InfinityCategories.Derived.DGObjectImageNerve
+public import SerrePositivity.InfinityCategories.Derived.DGYonedaRepresentableNerve
+public import SerrePositivity.InfinityCategories.Derived.DGModelStability
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

@@ -2,6 +2,27 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.dgFunctorToObjectImage_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgObjectImageNerveEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgObjectImageNerveEquivalenceOfHomIso
+#print axioms SerrePositivity.InfinityCategories.representableDGYoneda_hom_isIso
+#print axioms SerrePositivity.InfinityCategories.dgYonedaRepresentableNerveEquivalence
+#print axioms SerrePositivity.InfinityCategories.representableDGYoneda_evaluation
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_mapJoinCocone_of_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_iff_postcomp_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isPushoutSquare_iff_postcomp_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isStable_of_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isStable_target_of_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isStable_iff_of_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.IsQCatEquivalence.isStable_iff
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.isStable_iff
+#print axioms SerrePositivity.InfinityCategories.isExactFunctor_of_isQCatEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgYonedaRepresentableNerve_isStable_iff
+#print axioms SerrePositivity.InfinityCategories.representableDGYonedaNerve_isExactFunctor
+#print axioms SerrePositivity.InfinityCategories.dgCellResolutionNerve_isStable_iff
+#print axioms SerrePositivity.InfinityCategories.dgCellAugmentationNerve_isExactFunctor
+#print axioms SerrePositivity.InfinityCategories.dgCellResolutionNerveInverse_isExactFunctor
+
 #print axioms SerrePositivity.InfinityCategories.pinchedLinearDataMap_pullback
 #print axioms SerrePositivity.InfinityCategories.pinchedLinear_relative_simplex_lift
 #print axioms SerrePositivity.InfinityCategories.pinchedHomChainMap_relative_boundary_lift
@@ -851,6 +872,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGObjectImage,
+    `SerrePositivity.InfinityCategories.Derived.DGObjectImageNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaRepresentableNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGModelStability,
+    `SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone,
+    `SerrePositivity.InfinityCategories.Stable.TrivialFibrationSquares,
+    `SerrePositivity.InfinityCategories.Stable.TrivialFibrationStability,
+    `SerrePositivity.InfinityCategories.Stable.TrivialFibrationSection,
+    `SerrePositivity.InfinityCategories.Stable.TrivialFibrationStabilityDescent,
+    `SerrePositivity.InfinityCategories.Stable.EquivalenceStability,
+
     `SerrePositivity.InfinityCategories.Derived.PinchedLinearChainMap,
     `SerrePositivity.InfinityCategories.Derived.PinchedHomChainMap,
     `SerrePositivity.InfinityCategories.Derived.PinchedRelativeTopLifting,
