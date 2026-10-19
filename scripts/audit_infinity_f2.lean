@@ -251,3 +251,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementTriangleIso_isFunctorEqIso
 #check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementTriangleIso_eq
 #check @SerrePositivity.InfinityCategories.F2.catPullbackConeLegSectionIso_strict_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.functorComposition_post_edge
+#check @SerrePositivity.InfinityCategories.F2.functorComposition_pre_edge
+#check @SerrePositivity.InfinityCategories.F2.functorIso_whisker_exchange
+#check @SerrePositivity.InfinityCategories.F2.functorIso_transport_square
+#check @SerrePositivity.InfinityCategories.F2.mapIso_heq_of_functor_eq
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_id
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeLeftImageIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeRightImageIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeLeftImageIso_triangle
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeRightImageIso_triangle
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeImageIso_commutativity
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_postcomp
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_postcomp

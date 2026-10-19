@@ -7,6 +7,9 @@ public import SerrePositivity.InfinityCategories.F2.CatPullbackConeTetrahedronLo
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeComparisonNaturality
 public import SerrePositivity.InfinityCategories.F2.HomotopyEdgeTriangleLowerFaces
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeStrictNaturality
+public import SerrePositivity.InfinityCategories.F2.CatPullbackConeImageCommutativity
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerComposition
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
