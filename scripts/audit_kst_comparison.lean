@@ -121,6 +121,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -3358,6 +3359,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
 
 
+-- LocalCoefficientAnodyne.lean
+
+#check @SerrePositivity.KST.Comparison.overHornMap_quasiIso
+#print axioms SerrePositivity.KST.Comparison.overHornMap_quasiIso
+
+#check @SerrePositivity.KST.Comparison.overHornGenerators_le_localHomology
+#print axioms SerrePositivity.KST.Comparison.overHornGenerators_le_localHomology
+
+#check @SerrePositivity.KST.Comparison.overHornGenerators_le_underlyingMonomorphisms
+#print axioms SerrePositivity.KST.Comparison.overHornGenerators_le_underlyingMonomorphisms
+
+#check @SerrePositivity.KST.Comparison.overHornCellAttachments_le_localHomology
+#print axioms SerrePositivity.KST.Comparison.overHornCellAttachments_le_localHomology
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalence_of_anodyne
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalence_of_anodyne
+
+#check @SerrePositivity.KST.Comparison.localHomologyIsomorphism_of_anodyne
+#print axioms SerrePositivity.KST.Comparison.localHomologyIsomorphism_of_anodyne
+
+
 -- LocalCoefficientColimits.lean
 
 #check @SerrePositivity.KST.Comparison.overSimplicialEvaluation_preservesColimits
@@ -3458,6 +3480,51 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.horn_localHomologyIsomorphism
 #print axioms SerrePositivity.KST.Comparison.horn_localHomologyIsomorphism
+
+
+-- LocalCoefficientKanReplacement.lean
+
+#check @SerrePositivity.KST.Comparison.kanReplacementUnit_localHomologyIsomorphism
+#print axioms SerrePositivity.KST.Comparison.kanReplacementUnit_localHomologyIsomorphism
+
+
+-- LocalCoefficientMorphismProperty.lean
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyFunctor
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyFunctor
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalences
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalences
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_iff
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_iff
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_isMultiplicative
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_isMultiplicative
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_respectsIso
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_respectsIso
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_stableRetracts
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_stableRetracts
+
+#check @SerrePositivity.KST.Comparison.overLocalHomology_preservesExactColimits
+#print axioms SerrePositivity.KST.Comparison.overLocalHomology_preservesExactColimits
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_stableColimits
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_stableColimits
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_stableCoproducts
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_stableCoproducts
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_stableFilteredColimits
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalences_stableFilteredColimits
+
+#check @SerrePositivity.KST.Comparison.overUnderlyingMonomorphisms
+#print axioms SerrePositivity.KST.Comparison.overUnderlyingMonomorphisms
+
+#check @SerrePositivity.KST.Comparison.overUnderlyingMonomorphisms_stableCoproducts
+#print axioms SerrePositivity.KST.Comparison.overUnderlyingMonomorphisms_stableCoproducts
 
 
 -- LocalCoefficientNaturality.lean
@@ -3928,6 +3995,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslationIso
 
 
+-- MorphismPropertyColimits.lean
+
+#check @SerrePositivity.KST.Comparison.morphismProperty_inverseImage_stableColimits
+#print axioms SerrePositivity.KST.Comparison.morphismProperty_inverseImage_stableColimits
+
+
 -- NerveChainsLastVertex.lean
 
 #check @SerrePositivity.KST.Comparison.nerveChainsExUnit_lastVertex
@@ -4010,6 +4083,30 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.orderSubtypeNerve_anodyne
 #print axioms SerrePositivity.KST.Comparison.orderSubtypeNerve_anodyne
+
+
+-- OverFinitePresentable.lean
+
+#check @SerrePositivity.KST.Comparison.over_isFinitelyPresentable_of_left
+#print axioms SerrePositivity.KST.Comparison.over_isFinitelyPresentable_of_left
+
+
+-- OverHornGenerators.lean
+
+#check @SerrePositivity.KST.Comparison.overHornMap
+#print axioms SerrePositivity.KST.Comparison.overHornMap
+
+#check @SerrePositivity.KST.Comparison.overHornGenerators
+#print axioms SerrePositivity.KST.Comparison.overHornGenerators
+
+#check @SerrePositivity.KST.Comparison.overHornGenerators_rlp_iff
+#print axioms SerrePositivity.KST.Comparison.overHornGenerators_rlp_iff
+
+#check @SerrePositivity.KST.Comparison.overHornGenerators_llp_of_anodyne
+#print axioms SerrePositivity.KST.Comparison.overHornGenerators_llp_of_anodyne
+
+#check @SerrePositivity.KST.Comparison.overHornGenerators_cellPresentation
+#print axioms SerrePositivity.KST.Comparison.overHornGenerators_cellPresentation
 
 
 -- OverHornLifting.lean

@@ -935,7 +935,10 @@ anodyne 局所化の同型と群状モノイドの標準群完備化写像の整
 次数ごとの係数直和と準同型の族の具体的な随伴を構成し、直和の射の式と単射保存を証明した。
 基底上の局所係数の単体的群と、この次数ごとの左随伴の合成との自然同型を証明した。
 これにより単体的群の余極限・単射保存を得て、実際の Dold–Kan 同値で正規化複体の余極限・単射保存へ移した。
-slice の小対象構成による全局所係数の anodyne 保存と plus のセル添付の計算は未完了。
+slice の horn 生成射の有限表示性・小対象構成・台の右持ち上げ条件との同値を証明した。
+台が anodyne な基底上の射のセル表示を構成し、余積・単射の pushout・超限合成・retract の閉性で
+全ての anodyne map と Kan 置換の単位の全局所係数ホモロジー同型を証明した。
+plus のセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -944,10 +947,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4500 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4507 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1454 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2658 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1480 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2692 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -959,6 +962,8 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `over_isFinitelyPresentable_of_left`、`overHornGenerators_rlp_iff`、`overHornGenerators_cellPresentation` | 監査済み | slice の horn の小対象構成と実際のセル表示 |
+| `localHomologyIsomorphism_of_anodyne`、`kanReplacementUnit_localHomologyIsomorphism` | 監査済み | anodyne map と Kan 置換の全局所係数ホモロジー同型 |
 | `fiberCoefficientAdjunction`、`fiberCoefficientFunctor_preservesMonomorphisms` | 監査済み | 基底上の係数の直和の実際の随伴と単射保存 |
 | `overLocalCoefficientDegreeIso` | 監査済み | 各次数の係数直和の自然な比較 |
 | `overLocalCoefficientChainsFunctor_preservesColimits`、`overLocalCoefficientChainsFunctor_preservesMonomorphisms` | 監査済み | 基底上の正規化局所係数複体の余極限・単射保存 |

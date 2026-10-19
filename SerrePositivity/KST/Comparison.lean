@@ -135,6 +135,7 @@ public import SerrePositivity.KST.Comparison.HomologyHomotopy
 public import SerrePositivity.KST.Comparison.HomologyKanReplacement
 public import SerrePositivity.KST.Comparison.HomologyHorn
 public import SerrePositivity.KST.Comparison.HomologyQuasiIso
+public import SerrePositivity.KST.Comparison.LocalCoefficientKanReplacement
 public import SerrePositivity.KST.Comparison.LocalCoefficientColimits
 public import SerrePositivity.KST.Comparison.LocalCoefficientHorn
 public import SerrePositivity.KST.Comparison.ChainPairContraction
