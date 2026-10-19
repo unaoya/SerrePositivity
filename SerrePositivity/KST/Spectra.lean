@@ -217,3 +217,10 @@ public import SerrePositivity.KST.Spectra.LastVertexMappingComparison
 public import SerrePositivity.KST.Spectra.LastVertexKanWeightComparison
 public import SerrePositivity.KST.Spectra.LastVertexWeightProjections
 public import SerrePositivity.KST.Spectra.ReedyWeightCofibrancy
+public import SerrePositivity.KST.Spectra.WeightTensorLatching
+public import SerrePositivity.KST.Spectra.PushoutProductMonomorphism
+public import SerrePositivity.KST.Spectra.WeightTensorCofibrancy
+public import SerrePositivity.KST.Spectra.WeightCylinderBoundary
+public import SerrePositivity.KST.Spectra.WeightCylinderLifting
+public import SerrePositivity.KST.Spectra.WeightCylinderFunctor
+public import SerrePositivity.KST.Spectra.LastVertexWeightHomotopy
