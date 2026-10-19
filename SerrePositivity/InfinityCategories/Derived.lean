@@ -146,6 +146,13 @@ public import SerrePositivity.InfinityCategories.Derived.StableColimits
 public import SerrePositivity.InfinityCategories.Derived.RebaseCocone
 public import SerrePositivity.InfinityCategories.Derived.PushoutComparison
 public import SerrePositivity.InfinityCategories.Derived.CofiberFiberRotation
+public import SerrePositivity.InfinityCategories.Derived.FiberCoconeCoordinates
+public import SerrePositivity.InfinityCategories.Derived.CofiberFiberLift
+public import SerrePositivity.InfinityCategories.Derived.ConeMapProjections
+public import SerrePositivity.InfinityCategories.Derived.ConeRotationCoordinates
+public import SerrePositivity.InfinityCategories.Derived.CofiberFiberLiftEquivalence
+public import SerrePositivity.InfinityCategories.Derived.SourcePrecomposition
+public import SerrePositivity.InfinityCategories.Derived.SourcePrecompositionFaces
 
 /-! # Semifree 複体による導来圏の dg 表示
 

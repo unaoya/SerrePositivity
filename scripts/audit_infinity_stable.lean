@@ -39,6 +39,13 @@ import SerrePositivity.InfinityCategories.Derived.StableColimits
 import SerrePositivity.InfinityCategories.Derived.RebaseCocone
 import SerrePositivity.InfinityCategories.Derived.PushoutComparison
 import SerrePositivity.InfinityCategories.Derived.CofiberFiberRotation
+import SerrePositivity.InfinityCategories.Derived.FiberCoconeCoordinates
+import SerrePositivity.InfinityCategories.Derived.CofiberFiberLift
+import SerrePositivity.InfinityCategories.Derived.ConeMapProjections
+import SerrePositivity.InfinityCategories.Derived.ConeRotationCoordinates
+import SerrePositivity.InfinityCategories.Derived.CofiberFiberLiftEquivalence
+import SerrePositivity.InfinityCategories.Derived.SourcePrecomposition
+import SerrePositivity.InfinityCategories.Derived.SourcePrecompositionFaces
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1688,6 +1695,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.RebaseCocone,
     `SerrePositivity.InfinityCategories.Derived.PushoutComparison,
     `SerrePositivity.InfinityCategories.Derived.CofiberFiberRotation,
+    `SerrePositivity.InfinityCategories.Derived.FiberCoconeCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberLift,
+    `SerrePositivity.InfinityCategories.Derived.ConeMapProjections,
+    `SerrePositivity.InfinityCategories.Derived.ConeRotationCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberLiftEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.SourcePrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.SourcePrecompositionFaces,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

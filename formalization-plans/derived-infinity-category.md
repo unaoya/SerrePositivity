@@ -12,7 +12,7 @@ D6a は完了。指定四辺による distinguished triangle と全整数次数�
 零次の射は D5d の H⁰ に一致する。接続射は D3 のシフト比較を通じて持ち上がる。
 D6b は完了。加群の離散埋め込み J は充満忠実で、H⁰ の自然同型は D5b の増大射を使う。
 D6c は完了。Hⁱ(x)=0（i≠0）と h D(S) での x≅J(H⁰x) の同値を持ち、
-比較同型を表す可逆な辺も公開する。D7（D(S) の安定性）は D レーンで実装中。coslice の直接充填から標準 cofiber の普遍性を証明し、Semifree 内へ反映済み。全 span の余極限・全辺の cofiber も完成。fiber/cofiber 列の一致、安定性と三角比較が残る。
+比較同型を表す可逆な辺も公開する。D7（D(S) の安定性）は D レーンで実装中。coslice の直接充填から標準 cofiber の普遍性を証明し、Semifree 内へ反映済み。全 span の余極限・全辺の cofiber も完成。標準 cofiber から fiber への明示的比較の二脚・ホモトピー保存と擬同型性を証明済み。錐の比較辺への接続、安定性と三角比較が残る。
 
 D8 は完了。Perf(S) は D(S) の実際の充満部分単体集合で、quasicategory・零対象を持つ。
 シフト・cone・fiber・有限直和を正本の頂点上に構成し、D4 の擬同型判定を双方向に制限した。
@@ -100,7 +100,7 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | D5 | 通常の nerve からの射、関手的離散埋め込み、底変更、H⁰ | D1〜D4・N5 |
 | D6 | 指定四辺の長完全列、heart の充満忠実性、離散対象の特徴づけ | D3〜D5・Mathlib の三角構造 |
 | D8 | 完全導来 ∞ 圏 Perf(S) と閉性・引き戻し判定・ホモトピー圏の像 | D2・D3・D4、strictlyPerfectComplex |
-| D7 | D(S) の cofiber の普遍性・安定性、D3 の三角同値への昇格 | D レーンで進行中。全 span の余極限・全辺の cofiber と押し出しの擬同型判定が完成。fiber/cofiber の一致、安定性・三角比較が残る |
+| D7 | D(S) の cofiber の普遍性・安定性、D3 の三角同値への昇格 | D レーンで進行中。全 span の余極限・全辺の cofiber と押し出しの擬同型判定が完成。明示的 fiber 比較の二脚・ホモトピー保存と擬同型性も完成。錐比較への接続、安定性・三角比較が残る |
 
 semifree を K-projective より優先する理由：cone・シフト・直和・テンソル積・底変更で閉じ、
 D(S)^⊗ を対称モノイダル dg 圏の dg nerve として作れる。K-projective 版との同値は後の項目。

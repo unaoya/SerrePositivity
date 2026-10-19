@@ -964,6 +964,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.RebaseCocone,
     `SerrePositivity.InfinityCategories.Derived.PushoutComparison,
     `SerrePositivity.InfinityCategories.Derived.CofiberFiberRotation,
+    `SerrePositivity.InfinityCategories.Derived.FiberCoconeCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberLift,
+    `SerrePositivity.InfinityCategories.Derived.ConeMapProjections,
+    `SerrePositivity.InfinityCategories.Derived.ConeRotationCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberLiftEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.SourcePrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.SourcePrecompositionFaces,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
