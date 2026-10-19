@@ -4224,3 +4224,60 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLMulEquiv
 #print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLMulEquiv
+
+#check @SerrePositivity.KST.ProExcision.monoidReverseOpposite
+#print axioms SerrePositivity.KST.ProExcision.monoidReverseOpposite
+
+#check @SerrePositivity.KST.ProExcision.monoidReverseOppositeMap
+#print axioms SerrePositivity.KST.ProExcision.monoidReverseOppositeMap
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMatrixOpEquiv_natural
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMatrixOpEquiv_natural
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGL_natural
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGL_natural
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLIso
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLIso
+
+#check @SerrePositivity.KST.ProExcision.singleObjOppositeFunctor
+#print axioms SerrePositivity.KST.ProExcision.singleObjOppositeFunctor
+
+#check @SerrePositivity.KST.ProExcision.singleObjUnopFunctor
+#print axioms SerrePositivity.KST.ProExcision.singleObjUnopFunctor
+
+#check @SerrePositivity.KST.ProExcision.singleObjOppositeFunctor_natural
+#print axioms SerrePositivity.KST.ProExcision.singleObjOppositeFunctor_natural
+
+#check @SerrePositivity.KST.ProExcision.singleObjOppositeNerveIso
+#print axioms SerrePositivity.KST.ProExcision.singleObjOppositeNerveIso
+
+#check @SerrePositivity.KST.ProExcision.singleObjOppositeNerveIso_natural
+#print axioms SerrePositivity.KST.ProExcision.singleObjOppositeNerveIso_natural
+
+#check @SerrePositivity.KST.ProExcision.monoidOppositeNerveIso
+#print axioms SerrePositivity.KST.ProExcision.monoidOppositeNerveIso
+
+#check @SerrePositivity.KST.ProExcision.monoidOppositeNerveIso_natural
+#print axioms SerrePositivity.KST.ProExcision.monoidOppositeNerveIso_natural
+
+#check @SerrePositivity.KST.ProExcision.bisimplicialBarReverseOppositeIso
+#print axioms SerrePositivity.KST.ProExcision.bisimplicialBarReverseOppositeIso
+
+#check @SerrePositivity.KST.ProExcision.monoidBarReverseOppositeIso
+#print axioms SerrePositivity.KST.ProExcision.monoidBarReverseOppositeIso
+
+#check @SerrePositivity.KST.ProExcision.monoidBarReverseOppositeIso_natural
+#print axioms SerrePositivity.KST.ProExcision.monoidBarReverseOppositeIso_natural
+
+#check @SerrePositivity.KST.ProExcision.monoidBarIso
+#print axioms SerrePositivity.KST.ProExcision.monoidBarIso
+
+#check @SerrePositivity.KST.ProExcision.monoidBarReverseOppositeHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.monoidBarReverseOppositeHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLBarIso
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLBarIso
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLHomologyIso

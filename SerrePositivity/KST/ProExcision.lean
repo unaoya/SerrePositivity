@@ -437,3 +437,13 @@ public import SerrePositivity.KST.ProExcision.UnitizationReverseOppositeComponen
 public import SerrePositivity.KST.ProExcision.HatGLReverseOppositeMatrix
 
 public import SerrePositivity.KST.ProExcision.HatGLReverseOppositeEquiv
+
+public import SerrePositivity.KST.ProExcision.MonoidReverseOpposite
+
+public import SerrePositivity.KST.ProExcision.HatGLReverseOppositeIso
+
+public import SerrePositivity.KST.ProExcision.SingleObjOppositeNerve
+
+public import SerrePositivity.KST.ProExcision.MonoidBarReverseOpposite
+
+public import SerrePositivity.KST.ProExcision.MonoidBarReversalHomology

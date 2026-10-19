@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1459宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1478宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1125,3 +1125,14 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `integerUnitizationMatrixOpEquiv` と `reverseOppositeMatrixComponentsEquiv` は非可換な反対転置の実環同型。整数射影と成分行列との可換性を証明した。
 - `reverseOppositeHatGL_mem_iff` は成分での単位性と整数核条件を両方向に保存する。`reverseOppositeHatGLMulEquiv` はこれを制限した実部分モノイドの乗法同型。次数ごとの逆行列は要求しない。
 - 対象ビルド・1459宣言の公理監査は標準三公理のみで成功。自然な実単体的モノイドの比較、行側半直積と整数作用の移送は引き続き L6d の残件。
+
+
+### L6d の反対モノイドの実対角 bar 同型（2026-10-19）
+
+- `monoidReverseOpposite`・`monoidReverseOppositeMap` は係数方向の rev と反対モノイドの実図式・実射。
+- `integerUnitizationMatrixOpEquiv_natural`・`reverseOppositeHatGL_natural` は任意の係数射・全ての面・退化で反対転置の自然性を証明する。`reverseOppositeHatGLIso` は実単体的モノイド同型。
+- `singleObjOppositeFunctor`・`singleObjUnopFunctor` と `singleObjOppositeNerveIso` は反対モノイドの一対象圏と反対圏の実比較。`monoidOppositeNerveIso` は元の nerve の順序反転への実同型。係数準同型に自然。
+- `bisimplicialBarReverseOppositeIso` は係数方向と nerve 方向を両方反転した実二重図式の同型。`monoidBarReverseOppositeIso` は uncurry と対角への制限から得る実単体的集合同型であり、実射に自然。
+- `monoidBarReverseOppositeHomologyIso` は実符号付き鎖反転から、既存の H_* の模型だけを用いて得る実ホモロジー同型。反転不変性を追加の仮定にしない。
+- `reverseOppositeHatGLBarIso`・`reverseOppositeHatGLHomologyIso` は非単位 ĜL の実 bar・ホモロジー比較。行側半直積の全体の同型・安定比較・整数作用の移送は未完了。
+- 対象ビルド・1478宣言の公理監査は標準三公理のみで成功。L6d 全体の完了はまだ主張しない。
