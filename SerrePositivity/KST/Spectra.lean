@@ -646,3 +646,8 @@ public import SerrePositivity.KST.Spectra.PointedRelativeTransposePaths
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryStructure
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryRectification
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryBFComparison
+public import SerrePositivity.KST.Spectra.PointedVerticalPathFiber
+public import SerrePositivity.KST.Spectra.PointedVerticalChainCompression
+public import SerrePositivity.KST.Spectra.PointedRelativeTransposeHomotopy
+public import SerrePositivity.KST.Spectra.SequenceParameterRelativeHomotopy
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryRelativeHomotopy
