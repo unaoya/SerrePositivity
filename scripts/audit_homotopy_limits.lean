@@ -5845,3 +5845,126 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeBoundaryCorrectionFullHomFamily_endpoint
 #print axioms specifiedCoconeBoundaryCorrectionFullHomFamily_endpoint
+
+#check @joinMap_rightAnodyne
+#print axioms joinMap_rightAnodyne
+
+#check @joinEdgeEdge_terminalFace
+#print axioms joinEdgeEdge_terminalFace
+
+#check @tetrahedronTerminalFace_rightAnodyne
+#print axioms tetrahedronTerminalFace_rightAnodyne
+
+#check @joinPointEdge_firstVertex
+#print axioms joinPointEdge_firstVertex
+
+#check @joinEdgeEdge_firstEdge
+#print axioms joinEdgeEdge_firstEdge
+
+#check @exists_prefixTetrahedron_over_innerFibration
+#print axioms exists_prefixTetrahedron_over_innerFibration
+
+#check @degenerateTetrahedron_firstEdge
+#print axioms degenerateTetrahedron_firstEdge
+
+#check @degenerateTetrahedron_terminalFace
+#print axioms degenerateTetrahedron_terminalFace
+
+#check @exists_prefixTetrahedron_over_degenerateTriangle
+#print axioms exists_prefixTetrahedron_over_degenerateTriangle
+
+#check @relativeCosliceRestriction_tetrahedronTerminalFace
+#print axioms relativeCosliceRestriction_tetrahedronTerminalFace
+
+#check @sliceUnderRestrict_tetrahedronTerminalFace
+#print axioms sliceUnderRestrict_tetrahedronTerminalFace
+
+#check @tetrahedronTerminalFaceSection
+#print axioms tetrahedronTerminalFaceSection
+
+#check @tetrahedronTerminalFaceSection_target
+#print axioms tetrahedronTerminalFaceSection_target
+
+#check @exists_relativeTetrahedronFamily
+#print axioms exists_relativeTetrahedronFamily
+
+#check @relativeTetrahedronTerminalFaceSection
+#print axioms relativeTetrahedronTerminalFaceSection
+
+#check @relativeTetrahedronTerminalFaceSection_target
+#print axioms relativeTetrahedronTerminalFaceSection_target
+
+#check @relativeTetrahedronTerminalFaceSection_base
+#print axioms relativeTetrahedronTerminalFaceSection_base
+
+#check @relativeTetrahedronTerminalFaceSection_projection
+#print axioms relativeTetrahedronTerminalFaceSection_projection
+
+#check @initialDiagramHomFamily
+#print axioms initialDiagramHomFamily
+
+#check @initialDiagramHomFamily_evaluation
+#print axioms initialDiagramHomFamily_evaluation
+
+#check @initialDiagramHomFamily_base
+#print axioms initialDiagramHomFamily_base
+
+#check @initialDiagramHomFamily_section_homotopy
+#print axioms initialDiagramHomFamily_section_homotopy
+
+#check @initialDiagramHomComparison_homotopy
+#print axioms initialDiagramHomComparison_homotopy
+
+#check @specifiedCoconeCommonRightTriangle
+#print axioms specifiedCoconeCommonRightTriangle
+
+#check @exists_specifiedCoconeRootedRightTetrahedron
+#print axioms exists_specifiedCoconeRootedRightTetrahedron
+
+#check @specifiedCoconeRootedRightTetrahedron
+#print axioms specifiedCoconeRootedRightTetrahedron
+
+#check @specifiedCoconeRootedRightTetrahedron_firstEdge
+#print axioms specifiedCoconeRootedRightTetrahedron_firstEdge
+
+#check @specifiedCoconeRootedRightTetrahedron_terminalFace
+#print axioms specifiedCoconeRootedRightTetrahedron_terminalFace
+
+#check @specifiedCoconeRootedRightTetrahedron_base
+#print axioms specifiedCoconeRootedRightTetrahedron_base
+
+#check @specifiedCoconeRootedRightTetrahedron_initialVertex
+#print axioms specifiedCoconeRootedRightTetrahedron_initialVertex
+
+#check @specifiedCoconeCommonHomFamily
+#print axioms specifiedCoconeCommonHomFamily
+
+#check @specifiedCoconeCommonHomTriangleFamily
+#print axioms specifiedCoconeCommonHomTriangleFamily
+
+#check @specifiedCoconeCommonHomTriangleFamily_endpoint
+#print axioms specifiedCoconeCommonHomTriangleFamily_endpoint
+
+#check @specifiedCoconeRootedHomTetrahedronFamily
+#print axioms specifiedCoconeRootedHomTetrahedronFamily
+
+#check @specifiedCoconeRootedHomTetrahedronFamily_terminalFace
+#print axioms specifiedCoconeRootedHomTetrahedronFamily_terminalFace
+
+#check @specifiedCoconeRootedHomTetrahedronFamily_base
+#print axioms specifiedCoconeRootedHomTetrahedronFamily_base
+
+#check @specifiedCoconeRootedHomTetrahedronFamily_endpoint
+#print axioms specifiedCoconeRootedHomTetrahedronFamily_endpoint
+
+#check @specifiedCoconeRootedHomTetrahedronFamily_fixed
+#print axioms specifiedCoconeRootedHomTetrahedronFamily_fixed
+
+#check @specifiedCoconeRootedInitialHomFamily
+#print axioms specifiedCoconeRootedInitialHomFamily
+
+#check @specifiedCoconeRootedInitialHomFamily_evaluation
+#print axioms specifiedCoconeRootedInitialHomFamily_evaluation
+
+#check @specifiedCoconeRootedHomComparison_homotopy
+#print axioms specifiedCoconeRootedHomComparison_homotopy
