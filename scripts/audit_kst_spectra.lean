@@ -13,6 +13,11 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.CofiberMappingFamilies,
+    `SerrePositivity.KST.Spectra.LoopIntervalEndFamilies,
+    `SerrePositivity.KST.Spectra.IntervalEndpointFamilies,
+    `SerrePositivity.KST.Spectra.LoopIntervalEndCircleIso,
+    `SerrePositivity.KST.Spectra.LoopCircleBousfieldKanComparison,
     `SerrePositivity.KST.Spectra.CospanOverWeightObjects,
     `SerrePositivity.KST.Spectra.CospanBousfieldKanWeight,
     `SerrePositivity.KST.Spectra.CospanBousfieldKanLoopComparison,

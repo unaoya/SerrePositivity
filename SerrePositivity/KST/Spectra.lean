@@ -507,3 +507,8 @@ public import SerrePositivity.KST.Spectra.CospanLoopWeightComparison
 public import SerrePositivity.KST.Spectra.CospanOverWeightObjects
 public import SerrePositivity.KST.Spectra.CospanBousfieldKanWeight
 public import SerrePositivity.KST.Spectra.CospanBousfieldKanLoopComparison
+public import SerrePositivity.KST.Spectra.CofiberMappingFamilies
+public import SerrePositivity.KST.Spectra.LoopIntervalEndFamilies
+public import SerrePositivity.KST.Spectra.IntervalEndpointFamilies
+public import SerrePositivity.KST.Spectra.LoopIntervalEndCircleIso
+public import SerrePositivity.KST.Spectra.LoopCircleBousfieldKanComparison
