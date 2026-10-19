@@ -310,3 +310,4 @@ public import SerrePositivity.KST.SchemeLemmas.CompletedFlatMittagLeffler
 public import SerrePositivity.KST.SchemeLemmas.ProjectivityFromCompletion
 public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralCompleteProjective
 public import SerrePositivity.KST.SchemeLemmas.CountableProjectiveFaithfullyFlatDescent
+public import SerrePositivity.KST.SchemeLemmas.LocalizationCompletionCover
