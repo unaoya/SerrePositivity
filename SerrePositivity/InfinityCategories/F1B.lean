@@ -491,3 +491,8 @@ public import SerrePositivity.InfinityCategories.F1B.KanPrecompositionHomotopy
 public import SerrePositivity.InfinityCategories.F1B.KanMappingCylinderHom
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRightHom
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinUniversalHom
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinPrismNaturality
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinPrismHom
+public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaInclusionHomotopy
+public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaHom
+public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaHomUniversal

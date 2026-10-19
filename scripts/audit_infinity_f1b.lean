@@ -1943,3 +1943,19 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinUniversalHomEquiv_apply
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinUnitLeft_homUniversal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinTransformation_naturality
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinUnitLeft_eq_transformation
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinTransformation_homUniversal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaHomotopy_inclusion_h
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaHomEquiv
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCandidateTransformation_hom_restriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCandidate_homUniversal
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftExtension_with_homUniversal_of_local_colimits
