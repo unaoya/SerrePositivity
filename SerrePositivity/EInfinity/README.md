@@ -475,7 +475,11 @@ nullary を含む TR の部分合成保存は完了。
 `edgeComponent`・`vertexComponent` は全射語加群から実際の区間テンソル成分への線形写像。
 `edgeChain_d`・`faceVector_edge_d` は辺の微分＝終点−始点を自然数鎖・整数表示で証明する。
 `intervalChains_isZero` は鎖次数 >1 の零性、`interval_isZero_positive` は整数正次数の零性。
-具体的な Δ¹ の余代数構造は未完成。次はテンソル境界と全射語の削除微分の比較。
+`tensorVector_d` は反復テンソルの境界を因子ごとの Koszul 符号付き有限和へ展開する。
+`tensorBoundaryTerm_eq_zero_of_vertex` で頂点因子を消し、`tensorVector_d_eq_sum_edges` で辺だけへ制限。
+`tensorBoundaryTerm_zero_edge` は先頭辺の境界を二端点のテンソルの差として明示する。
+頂点だけの任意の出力族が閉じることも証明済み。
+具体的な Δ¹ の余代数構造は未完成。次はこの境界和と全射語の削除による切断和の対応・符号一致。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

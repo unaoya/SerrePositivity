@@ -268,3 +268,4 @@ public import SerrePositivity.EInfinity.TableReduction.OperadMap
 public import SerrePositivity.EInfinity.IntervalCuts.Values
 public import SerrePositivity.EInfinity.IntervalCuts.Components
 public import SerrePositivity.EInfinity.IntervalCuts.IntervalBoundary
+public import SerrePositivity.EInfinity.IntervalCuts.TensorBoundaryValues

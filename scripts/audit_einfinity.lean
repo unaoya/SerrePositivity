@@ -823,6 +823,16 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.intervalChains_isZero,
       `SerrePositivity.EInfinity.IntervalCuts.interval_isZero_positive,
       `SerrePositivity.EInfinity.IntervalCuts.faceVector_edge_d,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorPair_d_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorBoundaryTerm,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVector_d,
+      `SerrePositivity.EInfinity.IntervalCuts.simplex_cases,
+      `SerrePositivity.EInfinity.IntervalCuts.faceVector_vertex_d,
+      `SerrePositivity.EInfinity.IntervalCuts.faceVector_edge_d_sub,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorBoundaryTerm_eq_zero_of_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVector_d_eq_zero_of_vertices,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVector_d_eq_sum_edges,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorBoundaryTerm_zero_edge,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2414,3 +2424,24 @@ example : CategoryTheory.Limits.IsZero ((IntervalCuts.interval ℤ).X 1) :=
 example : vertexComponent ℤ 2 1 1 (basis ℤ 2 1 (ULift.up compositionInner)) = 0 := by
   rw [vertexComponent_basis]
   exact vertexComponentOnWord_eq_zero_of_positive ℤ compositionInner (by decide) 1
+
+-- 二つの辺の後の因子を微分する境界項には負符号が付く。
+open HomologicalComplex in
+example : tensorBoundaryTerm ℤ 2 (fun _ => IntervalCuts.edge) 1 =
+    -ιTensorObj (IntervalCuts.interval ℤ)
+      (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 1) (-1) 0 (-1) (by decide)
+      (faceVector ℤ IntervalCuts.edge ⊗ₜ[ℤ]
+        tensorBoundaryTerm ℤ 1 (fun _ => IntervalCuts.edge) 0) := by
+  change (-1 : ℤ).negOnePow •
+    ιTensorObj (IntervalCuts.interval ℤ)
+      (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 1) (-1) 0 (-1) _
+      (faceVector ℤ IntervalCuts.edge ⊗ₜ[ℤ]
+        tensorBoundaryTerm ℤ 1 (fun _ => IntervalCuts.edge) 0) = _
+  simp only [Int.negOnePow_neg, Int.negOnePow_one, Units.smul_def,
+    Units.val_neg, Units.val_one, neg_one_zsmul]
+-- 同じ頂点である必要はなく、任意の三つの端点のテンソルは実際に閉じている。
+example (b : Fin 3 → Fin 2) :
+    (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 3).d 0 1
+      (tensorVectorOfDegree ℤ 3 0 (fun i => IntervalCuts.vertex (b i))
+        (by rw [tupleDegree_eq_sum]; simp)) = 0 :=
+  tensorVectorOfDegree_d_eq_zero ℤ 3 0 _ _ (tensorVector_d_eq_zero_of_vertices ℤ 3 b)
