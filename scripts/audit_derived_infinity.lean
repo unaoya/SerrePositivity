@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteDiagramTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleConeFaces
 import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementTriangle
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleCommonApex
@@ -2166,10 +2167,41 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteTriangleRefinement.simplex_face_cone
 #print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteTriangleRefinement.commonConeFace_eq
 
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.commonDenominator
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.legTriangle
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.legTriangle_face1
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.vertexLegSimplex_source
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.vertexLegSimplex_target
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.vertexLeg
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.vertexCone
+#print axioms SerrePositivity.InfinityCategories.dgOverTwoSimplexPositiveFace_triangle
+#print axioms SerrePositivity.InfinityCategories.dgOverTwoSimplexPositiveFace_source
+#print axioms SerrePositivity.InfinityCategories.dgOverTwoSimplexInitialRefinement_face_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdgeConeTetrahedron_diagonal
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdgeConeTetrahedron_source
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdgeConePositiveFace_triangle
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.edgeCone
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.edgeCone_face0
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.edgeCone_face_positive
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.edgeCompStruct
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteTriangleRefinement.vertexRefinement
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteTriangleRefinement.simplex_face_refinedCone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTriangles_exists_closedRefinedVertexCone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramFiniteTriangles_exists_vertexCone
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierClosedVertexRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierClosedLegTriangles,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierClosedVertexLegs,
+    `SerrePositivity.InfinityCategories.Derived.DGOverTwoSimplexRefinedFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierEdgeConeSource,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierClosedEdgeCones,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleVertexCone,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteDiagramTwoCones,
     `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementTriangle,
     `SerrePositivity.InfinityCategories.Derived.DGOverTwoSimplexInitialRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGOverTwoSimplexInitialApex,

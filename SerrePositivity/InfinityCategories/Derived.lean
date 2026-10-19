@@ -883,6 +883,15 @@ public import SerrePositivity.InfinityCategories.Derived.DGVerdierTwoSimplexRefi
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedThreeConeFaces
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleConeFaces
 
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierClosedVertexRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierClosedLegTriangles
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierClosedVertexLegs
+public import SerrePositivity.InfinityCategories.Derived.DGOverTwoSimplexRefinedFaces
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierEdgeConeSource
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierClosedEdgeCones
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleVertexCone
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteDiagramTwoCones
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
