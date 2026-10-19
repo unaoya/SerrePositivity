@@ -373,3 +373,11 @@ public import SerrePositivity.KST.Spectra.InternalHomTensorAdjointAction
 public import SerrePositivity.KST.Spectra.SpectrumMappingStepEquivalence
 public import SerrePositivity.KST.Spectra.SpectrumTailMappingEquivalence
 public import SerrePositivity.KST.Spectra.SpectrumTailEquivalence
+public import SerrePositivity.KST.Spectra.KanSequenceMappingFunctor
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingFunctor
+public import SerrePositivity.KST.Spectra.RawSpectrumCotensorNaturality
+public import SerrePositivity.KST.Spectra.KanSequenceWeightedDiagram
+public import SerrePositivity.KST.Spectra.RawSpectrumWeightedDiagram
+public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitEvaluation
+public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitWedge
+public import SerrePositivity.KST.Spectra.KanSequenceLevelLimits
