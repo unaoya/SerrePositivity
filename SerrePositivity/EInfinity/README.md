@@ -150,7 +150,14 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 各行の末尾以外は後続に現れず、長さの上限が飽和することから非最終行末の再出現を証明。
 `rowEnds_of_reduction` は再出現位置が非最終行末に尽きることを与える。
 `rawRowEndSigns_of_reduction` は退化出力も含む全成功 table で、その削除係数を (−1)^行番号と同定する。
-実際の削除対の出力一致・逆符号・Schedule の対応は未完成。
+`rowEndOffsets_of_reduction` は区切り位置を Schedule の行長の部分和−1 と表示する。
+`singletonScheduleEquiv` は指定位置の一文字行の削除・挿入を次数間の全単射にする。
+`singleton_boundary_certificate` は一文字行の削除位置・出力・符号を同時に与える。
+最終一文字行では出力末尾が隣接重複し、その係数は直前行末の符号反転で頂点境界と一致する。
+`singleton_reduction_none_iff` は元の table と頂点削除後の抽出の失敗が同値であることを示す。
+`singleton_deletion_term` は任意の可換環で符号付き削除項と頂点境界項の値を同定する。
+`sum_singletonSchedules_vertexBoundary` は Schedule の全単射による有限和を頂点境界と同定する。
+残りの削除項の相殺対の出力一致・逆符号・Schedule の対応は未完成。
 TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

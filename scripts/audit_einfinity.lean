@@ -326,7 +326,20 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.rowEndSigns_of_reduction,
       `SerrePositivity.EInfinity.Surjection.caesuraRank_raw_get,
       `SerrePositivity.EInfinity.Surjection.deletionCoefficient_raw_get,
-      `SerrePositivity.EInfinity.TableReduction.rawRowEndSigns_of_reduction] do
+      `SerrePositivity.EInfinity.TableReduction.rawRowEndSigns_of_reduction,
+      `SerrePositivity.EInfinity.TableReduction.rowEndOffsets_of_reduction,
+      `SerrePositivity.EInfinity.TableReduction.singletonScheduleEquiv,
+      `SerrePositivity.EInfinity.TableReduction.rows_scheduleDelete,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_deleted_vertex,
+      `SerrePositivity.EInfinity.TableReduction.deletionCoefficient_schedule_rowEnd,
+      `SerrePositivity.EInfinity.TableReduction.deletionCoefficient_singleton_final,
+      `SerrePositivity.EInfinity.TableReduction.deletionCoefficient_singleton,
+      `SerrePositivity.EInfinity.TableReduction.singleton_boundary_certificate,
+      `SerrePositivity.EInfinity.TableReduction.rows_prefix_budget,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_inserted_vertex,
+      `SerrePositivity.EInfinity.TableReduction.singleton_reduction_none_iff,
+      `SerrePositivity.EInfinity.TableReduction.singleton_deletion_term,
+      `SerrePositivity.EInfinity.TableReduction.sum_singletonSchedules_vertexBoundary] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
