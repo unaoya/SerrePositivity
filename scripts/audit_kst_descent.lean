@@ -28,7 +28,15 @@ run_cmd do
     unless unexpected.isEmpty do throwError "Unexpected axioms in {name}: {unexpected}"
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
-  for expected in #[`SerrePositivity.KST.Descent.CechProductRestriction,
+  for expected in #[`SerrePositivity.KST.Descent.FamilyCechFunctorComparison,
+      `SerrePositivity.KST.Descent.FamilyCechPresheafComparison,
+      `SerrePositivity.KST.Descent.FamilyCechOver,
+      `SerrePositivity.KST.Descent.FamilyCechOverRanks,
+      `SerrePositivity.KST.Descent.FiniteZariskiBaseChange,
+      `SerrePositivity.KST.Descent.OverRankCharts,
+      `SerrePositivity.KST.Descent.TransferWeakCechDescent,
+      `SerrePositivity.KST.Descent.TransferRankChartDescent,
+      `SerrePositivity.KST.Descent.CechProductRestriction,
       `SerrePositivity.KST.Descent.DisjointFamilyCechWeak,
       `SerrePositivity.KST.Descent.FiniteCoproductZariskiCover,
       `SerrePositivity.KST.Descent.ZariskiCoproductDescent,

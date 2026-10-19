@@ -196,7 +196,9 @@ Noether 基底上の有限型の圏に任意の有限非交和とその extensiv
 非交和被覆の多重交叉を計算し、定数添字の列の指定対角による値の積への自然変換と元の指定増強の可換性を証明した（§96）。
 公理 (1) から有限非交和の値と各成分の値の積の指定比較の弱同値を導き、実際の有限自由 chart の rank 検査も被覆族の実降下から直接得た（§97）。
 この入口は有限積保存・別の単一被覆射の降下を前提にせず、局所 rank の式だけを射影公式からの未完の入力に残す。
-監査状態：`scripts/audit_kst_descent.lean` は 240 モジュール・2579 宣言を検査し成功。
+被覆族の指定降下を Over へ移し、同じ有限 chart の正 rank の式から Over の全対象の合成の弱同値と元の実 Čech 降下を証明した（§98）。
+射影公式からの局所 rank の式は明示した入力に残し、最小公理 (4) 全体の実現の完成とは区別する。
+監査状態：`scripts/audit_kst_descent.lean` は 248 モジュール・2620 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -497,6 +499,15 @@ Z 上の帰納仮定で残りの辺を同型とする。
 (3.6) により全次数の支持つき K の主張にする。
 
 ## 17. 主要宣言の表
+
+| 宣言（§98） | 内容 | 状態 |
+| --- | --- | --- |
+| `familyCechTermFunctorIso`、`_naturality`、`_inv_naturality` | 有限 wide pullback を保つ関手による各段の指定同型と単体自然性 | 終対象保存は要求しない |
+| `familyCechFunctorSpaceIso`、`familyOverPresheafSpaceIso` | 関手による像と元の前層の増強つき図式の同型、Over への移送 | 指定増強を保持 |
+| `FiniteTypeZariskiCover.baseChange`、`.baseChangeOverProjection` | 任意の構造射への実際の有限被覆と元の chart への Over 射 | 同じ有限添字を保持 |
+| `overZariskiAction_weak_everywhere_of_fixedRankCharts` | 同じ chart の局所 rank 公式から Over の全対象で弱同値 | 自然変換の定義域を変更しない |
+| `BaseChangeTransfer.cechDescent_of_weakComposite` | 自然な合成の全対象の弱同値から元の実降下 | 分裂した自己底変換と局所化後の正規化を使用 |
+| `BaseChangeTransfer.cechDescent_of_rankCharts`、`.cechDescent_of_finiteFreeChartRanks` | chart ごとに異なる正 rank の合成公式から元の指定 Čech 降下 | 射影公式からの局所 rank の式は明示した入力 |
 
 | 宣言（§97） | 内容 | 状態 |
 | --- | --- | --- |
@@ -3612,3 +3623,42 @@ blowup の自然な全次数列、(3.6)・TT・最小公理全体・E の実現�
 `InfinityCategories.F1.RelativeFunctorVertices` と `InfinityCategories.F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` が重複している。13598 ジョブ中、ルートで終了コード 1。
 ログは `/tmp/l8-zariski-family-full-build.log`。L8 の import 閉包・集約ビルド・監査は成功しており、回避策は作らない。
+
+
+## 98. Over 上の変動 rank の transfer と元の実 Čech 降下
+
+論文 公理 (1)・(4)、補題 3.2 のため、有限 wide pullback を保つ関手で
+元の多重交叉の幾何を移す指定同型を構成した。各座標・基底の射影を保ち、
+単体射について両方向の自然性を持つ。同型を反変前層で写して有限積に束ね、
+指定増強を保つ実際の余単体・増強つき図式の同型を構成した。
+スライス圏の忘却は connected な wide pullback を保つので、
+元の被覆族とその同じ構造射での Over 内への持ち上げの指定空間図式を同定した。
+Over の忘却による終対象や非連結な有限極限の保存は仮定しない。
+
+元の有限 Zariski 被覆族を任意の構造射へ、実際の finiteTypePullback で底変換した。
+各包含の開埋め込み性は底変換で保たれ、点の持ち上げは元の点の持ち上げと
+スキームの引き戻しの実際の点から構成した。同じ有限添字と各 chart の正 rank を保持する。
+第一射影を元の基底上の Over 射に束ね、底変換した chart 上の対象から元の chart への射を得た。
+
+Over 上の自然な作用について、各 chart 上の対象の rank 公式を、
+Over 内の各多重交叉の零番目の指定射影に適用した。元の前層の公理 (1) の実降下を Over へ移し、
+chart ごとの正 rank の作用の弱同値を元の構造射の対象へ反映した。
+同じ chart を各構造射へ底変換し、Over 上の全ての成分で合成が弱同値となることを証明した。
+作用を元の圏上の自然変換へ任意に延長することはない。
+
+元の pullback と transfer の二つの自然変換を、元の Čech の指定増強つき図式の関手で写した。
+その合成が全対象で弱同値なら、増強元と全段でも合成は弱同値となる。
+局所化後に合成を正規化する証明済みの retract と、実際の底変換被覆の分裂降下を使い、
+元の被覆の実 Čech 降下を戻した。自身による底変換では対角切断を内部構成する。
+
+これらを合わせ、元の有限 chart ごとに異なる正 rank の合成公式から
+元の射の実際の指定 Čech 比較の弱同値を証明した。
+構成済みの有限平坦全射の有限自由 chart と元の正基底の本数へも接続した。
+大域で共通の rank、有限非交和保存、単一 Zariski 被覆射の降下は前提にしない。
+局所 rank の式は公理 (4) の射影公式と自由基底から供給すべき入力に残す。
+この法則の実現、Sp への実現、blowup の自然な全次数列、
+(3.6)・TT・最小公理全体・E の実現・主定理は引き続き未完。
+原典の τ 位相の層論を Čech 計算で置換する方針は同じ。
+
+§98 の保存検証：集約対象ビルドと公理監査が成功。248 モジュール・2620 宣言、標準三公理のみ。
+全体ビルドは §97 の工程区切りの所有範囲外の宣言重複を記録したまま。

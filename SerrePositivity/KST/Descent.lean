@@ -1,5 +1,13 @@
 module
 
+public import SerrePositivity.KST.Descent.FamilyCechFunctorComparison
+public import SerrePositivity.KST.Descent.FamilyCechPresheafComparison
+public import SerrePositivity.KST.Descent.FamilyCechOver
+public import SerrePositivity.KST.Descent.FamilyCechOverRanks
+public import SerrePositivity.KST.Descent.FiniteZariskiBaseChange
+public import SerrePositivity.KST.Descent.OverRankCharts
+public import SerrePositivity.KST.Descent.TransferWeakCechDescent
+public import SerrePositivity.KST.Descent.TransferRankChartDescent
 public import SerrePositivity.KST.Descent.CechProductRestriction
 public import SerrePositivity.KST.Descent.DisjointFamilyCechWeak
 public import SerrePositivity.KST.Descent.FiniteCoproductZariskiCover
