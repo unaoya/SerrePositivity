@@ -408,7 +408,19 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.released_value_mem_extended_take,
       `SerrePositivity.EInfinity.TableReduction.before_last_excess,
       `SerrePositivity.EInfinity.TableReduction.last_row_available_length,
-      `SerrePositivity.EInfinity.TableReduction.final_prefix_saturated] do
+      `SerrePositivity.EInfinity.TableReduction.final_prefix_saturated,
+      `SerrePositivity.EInfinity.TableReduction.CompleteRows,
+      `SerrePositivity.EInfinity.TableReduction.completeRows_rows,
+      `SerrePositivity.EInfinity.TableReduction.released_state_step,
+      `SerrePositivity.EInfinity.TableReduction.ReleaseSearch,
+      `SerrePositivity.EInfinity.TableReduction.releaseSearch_exists,
+      `SerrePositivity.EInfinity.TableReduction.ReleaseSearch.toPrefix,
+      `SerrePositivity.EInfinity.TableReduction.ReleaseSearch.unique,
+      `SerrePositivity.EInfinity.TableReduction.released_suffix_budget,
+      `SerrePositivity.EInfinity.TableReduction.releaseSearch_on_schedule_suffix,
+      `SerrePositivity.EInfinity.TableReduction.releaseSearch_constructs_extension,
+      `SerrePositivity.EInfinity.TableReduction.receiver_release,
+      `SerrePositivity.EInfinity.TableReduction.reverse_block_extraction] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -513,3 +525,17 @@ example : listDeletionTerm ℤ (d := 0) ([0, 1, 0] : List (Fin 2)) ⟨2, by deci
       ⟨1, by decide⟩ = 1 := by decide
   simp only [listDeletionTerm, hc, one_zsmul]
   exact neg_add_cancel _
+
+-- 逆探索の通過・内部停止・最終延長停止を具体的な行で照合する。
+private def releaseSkipRows : List (List (Fin 3) × ℕ) := [([1, 0, 2], 1), ([2, 0, 1], 2)]
+example : ReleaseSearch (0 : Fin 3) releaseSkipRows [] [([1, 0, 2], 1)] [[1]] []
+    ([2, 0, 1], 2) [] := by
+  exact .skip (by decide) (by decide) (by decide) (.hit (by decide))
+example : reduceRows releaseSkipRows [0] = some [1, 2, 1] := by decide
+example : reduceRows [([1, 0, 2], 1), ([2, 0, 1], 3)] ([] : List (Fin 3)) =
+    some [1, 2, 0, 1] := by decide
+example : ([1, 2, 0, 1] : List (Fin 3)).eraseIdx 2 = [1, 2, 1] := by decide
+example : ReleaseSearch (0 : Fin 2) [([1, 0], 1)] [] [] [] [] ([1, 0], 1) [] := by
+  exact .terminal (by decide) (by decide)
+example : reduceRows [([1, 0], 1)] ([0] : List (Fin 2)) = some [1] := by decide
+example : reduceRows [([1, 0], 2)] ([] : List (Fin 2)) = some [1, 0] := by decide

@@ -196,3 +196,4 @@ public import SerrePositivity.EInfinity.TableReduction.FinalDeletionCases
 public import SerrePositivity.EInfinity.TableReduction.FinalDeletionPair
 public import SerrePositivity.EInfinity.TableReduction.ReleasedDonorStep
 public import SerrePositivity.EInfinity.TableReduction.LastRowSaturation
+public import SerrePositivity.EInfinity.TableReduction.ReverseBlock

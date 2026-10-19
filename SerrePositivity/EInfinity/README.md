@@ -190,8 +190,14 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `ExtractionPrefix.finish_length` と `finish_nodup` は除外状態の実際の長さと重複のなさを与える。
 `available_vertexRow_length_add` は利用可能長＋除外長＝arity、解放時は利用可能長が一つ増える。
 `final_prefix_saturated` は元の成功 table の最終行が利用可能値を取り尽くすことを保証する。
-解放値はその最終行の延長選択に入る。最初に影響を受ける後続行の逆探索は未構成。
-行末側からの逆対応と一意性、全残余項の有限和の相殺は未完成。
+解放値はその最終行の延長選択に入る。
+`ReleaseSearch` は影響しない行を通過し、内部出現または最終延長で最初に停止する探索の証跡。
+`releaseSearch_exists` は元の成功と除外予算から停止行の存在を導き、`ReleaseSearch.unique` は全分割・選択・終端状態の一意性。
+`released_suffix_budget` は実際の Schedule から探索の予算を供給する。
+`receiver_release` は現在行を一文字短くして直前値を解放し、初期の重複のなさと不所属を保証する。
+`releaseSearch_constructs_extension` は停止行の延長による成功抽出と、一文字だけを挿入した後続出力を構成する。
+`reverse_block_extraction` は現在行の短縮も連結し、二つの削除後出力の一致を与える。
+逆の行リストを実際の Schedule と同定する接続、順方向との一致・全単射・全残余項の有限和の相殺は未完成。
 TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
