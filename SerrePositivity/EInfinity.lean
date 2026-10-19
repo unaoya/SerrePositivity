@@ -292,3 +292,4 @@ public import SerrePositivity.EInfinity.IntervalCuts.CochainPermutation
 public import SerrePositivity.EInfinity.IntervalCuts.NestedCuts
 public import SerrePositivity.EInfinity.IntervalCuts.CompositionCutPositions
 public import SerrePositivity.EInfinity.IntervalCuts.NestedCutPositions
+public import SerrePositivity.EInfinity.IntervalCuts.NestedCutInjective

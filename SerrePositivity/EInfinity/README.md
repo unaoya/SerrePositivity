@@ -564,7 +564,11 @@ nullary を含む TR の部分合成保存は完了。
 `composite_single_slot_cut_nondegenerate` は切断点色への一出現挿入の合成切断の非退化性。
 `NestedEdgeCut.compositePosition` は二段切断の全分岐で実際の合成位置を返し、切断点の文字も比較済み。
 `compositePosition_pivot_nondegenerate` はその切断点色分岐の非退化性を供給する。
-具体的な Δ¹ の余代数構造は未完成。非切断点色分岐の非退化性、全単射・全出力と符号の一致、
+`substitute_nodup_of_parts` は外側と各挿入部分語が Nodup なら代入後も Nodup であること。
+`composite_non_slot_cut_nondegenerate` は同じ条件で非切断点色の切断を保つ。
+`partition_segments_nodup_of_nonpivot` は二段切断で選んだ一・二部分割がその条件を満たすこと。
+`NestedEdgeCut.toCompositeCut` は全分岐で実際の非零合成切断へ送る写像で、`toCompositeCut_injective` が単射性。
+具体的な Δ¹ の余代数構造は未完成。逆方向の復元・全射性・全出力と符号の一致、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 

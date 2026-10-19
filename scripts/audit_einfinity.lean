@@ -1090,6 +1090,27 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_nonpivot_value,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_value,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_nondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_of_no_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_disjoint_inserted_no_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.remaining_mem_substitute_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_nodup_of_parts,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_take_at_non_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_drop_at_non_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_prefix,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_suffix,
+      `SerrePositivity.EInfinity.IntervalCuts.composite_non_slot_cut_nondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.segments_cast_count,
+      `SerrePositivity.EInfinity.IntervalCuts.two_partition_segments_nodup,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.partition_of_some_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.partition_segments_nodup_of_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_nonpivot_nondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_nondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.CompositeEdgeCut,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.toCompositeCut,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.exists_some_of_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_val,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.toCompositeCut_outer_injective,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.toCompositeCut_injective,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3209,3 +3230,31 @@ example : EdgeNondegenerate compositionInner.val 1 ↔
     ((List.ofFn compositionInner.val).take 2).Nodup ∧
       ((List.ofFn compositionInner.val).drop 1).Nodup :=
   edgeNondegenerate_iff_list_nodup compositionInner.val 1
+
+-- 二出現色0へ内側010の中央切断を代入しても非零合成切断となる。
+private def nestedRepeatedExample : NestedEdgeCut (m := 1) compositionInner compositionInner 0 :=
+  NestedEdgeCut.ofEdge 1 (by decide) (by decide) 1 (by decide)
+example : EdgeNondegenerate
+    (compositeBasisWord compositionInner compositionInner 0 nestedRepeatedExample.partition
+      (by decide)).val nestedRepeatedExample.compositePosition :=
+  NestedEdgeCut.compositePosition_nondegenerate nestedRepeatedExample (by decide)
+example : nestedRepeatedExample.compositePosition.val = 2 := by decide
+-- 頂点出力への零語次数の挿入も同じ写像で非零切断へ送る。
+private def nestedVertexExample : NestedEdgeCut (m := 2) zeroPermutationWord
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0 :=
+  NestedEdgeCut.ofVertex 0 (by decide) (by decide) rfl
+example : nestedVertexExample.compositePosition.val = 0 := by decide
+example : EdgeNondegenerate
+    (compositeBasisWord zeroPermutationWord (permutationWord (1 : Equiv.Perm (Fin 2))) 0
+      nestedVertexExample.partition (by decide)).val nestedVertexExample.compositePosition :=
+  NestedEdgeCut.compositePosition_nondegenerate nestedVertexExample (by decide)
+-- 対応は型全体で単射。両側の有限個数も二出現例では1、零語次数例では4。
+example : Function.Injective (NestedEdgeCut.toCompositeCut (u := compositionInner)
+    (v := compositionInner) (k := 0) (by decide)) :=
+  NestedEdgeCut.toCompositeCut_injective (by decide)
+example : Fintype.card (CompositeEdgeCut (m := 1) compositionInner compositionInner 0
+    (by decide)) = 1 := by decide
+example : Fintype.card (NestedEdgeCut (m := 2) zeroPermutationWord
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0) = 4 := by decide
+example : Fintype.card (CompositeEdgeCut (m := 2) zeroPermutationWord
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0 (by decide)) = 4 := by decide
