@@ -5425,3 +5425,42 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @coconeComparison_pointHomFamily_homotopy
 #print axioms coconeComparison_pointHomFamily_homotopy
+
+#check @exists_compStruct_over_innerFibration
+#print axioms exists_compStruct_over_innerFibration
+
+#check @exists_edge_of_transport_point
+#print axioms exists_edge_of_transport_point
+
+#check @exists_edge_over_of_transport_component
+#print axioms exists_edge_over_of_transport_component
+
+#check @exists_edge_over_of_edgeTransport_component
+#print axioms exists_edge_over_of_edgeTransport_component
+
+#check @exists_cocone_edge_of_transport_component
+#print axioms exists_cocone_edge_of_transport_component
+
+#check @exists_cocone_glue_with_branch_edges
+#print axioms exists_cocone_glue_with_branch_edges
+
+#check @exists_partialColimitPushout_cocone_with_branch_edges
+#print axioms exists_partialColimitPushout_cocone_with_branch_edges
+
+#check @coconeApexHomPrecomposition
+#print axioms coconeApexHomPrecomposition
+
+#check @coconeBranchHomPrecomposition_eq
+#print axioms coconeBranchHomPrecomposition_eq
+
+#check @coconePointHomFamily_branch_homotopy
+#print axioms coconePointHomFamily_branch_homotopy
+
+#check @coconeRestrictionEdgeApex
+#print axioms coconeRestrictionEdgeApex
+
+#check @coconePointHomFamily_rawBranch_homotopy
+#print axioms coconePointHomFamily_rawBranch_homotopy
+
+#check @exists_partialColimitPushout_cocone_with_branch_homotopies
+#print axioms exists_partialColimitPushout_cocone_with_branch_homotopies
