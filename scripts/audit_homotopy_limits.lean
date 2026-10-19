@@ -7111,3 +7111,84 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeLeftNativeHomotopy_hom
 #print axioms specifiedCoconeLeftNativeHomotopy_hom
+
+#check @trivialKanFibration_homotopy_homMk_eq
+#print axioms trivialKanFibration_homotopy_homMk_eq
+
+#check @FixedBaseTerminalTriangle
+#print axioms FixedBaseTerminalTriangle
+
+#check @fixedBaseTerminalTriangle
+#print axioms fixedBaseTerminalTriangle
+
+#check @fixedBaseTerminalTriangleFirst
+#print axioms fixedBaseTerminalTriangleFirst
+
+#check @fixedBaseTerminalTriangleFirst_base
+#print axioms fixedBaseTerminalTriangleFirst_base
+
+#check @fixedBaseTerminalTriangle_homMk_comp
+#print axioms fixedBaseTerminalTriangle_homMk_comp
+
+#check @cosliceEdgeFamilySecondCylinder
+#print axioms cosliceEdgeFamilySecondCylinder
+
+#check @cosliceEdgeFamilyTriangle
+#print axioms cosliceEdgeFamilyTriangle
+
+#check @cosliceEdgeFamilyComparison
+#print axioms cosliceEdgeFamilyComparison
+
+#check @cosliceEdgeFamilyComparison_target
+#print axioms cosliceEdgeFamilyComparison_target
+
+#check @cosliceEdgeFamilyTriangle_second
+#print axioms cosliceEdgeFamilyTriangle_second
+
+#check @cosliceEdgeFamilyTriangle_homMk_comp
+#print axioms cosliceEdgeFamilyTriangle_homMk_comp
+
+#check @cosliceEdgeFamilyComparison_homMk_unique
+#print axioms cosliceEdgeFamilyComparison_homMk_unique
+
+#check @specifiedCoconeRootFamilies_target
+#print axioms specifiedCoconeRootFamilies_target
+
+#check @specifiedCoconeRootFamilyTriangle
+#print axioms specifiedCoconeRootFamilyTriangle
+
+#check @specifiedCoconeRootFamilyComparison
+#print axioms specifiedCoconeRootFamilyComparison
+
+#check @specifiedCoconeRootFamilyComparison_target
+#print axioms specifiedCoconeRootFamilyComparison_target
+
+#check @specifiedCoconeRootInitialProjectionComparison
+#print axioms specifiedCoconeRootInitialProjectionComparison
+
+#check @specifiedCoconeRootFamilyTriangle_second_projection
+#print axioms specifiedCoconeRootFamilyTriangle_second_projection
+
+#check @specifiedCoconeRootFamilyTriangle_diagonal_projection
+#print axioms specifiedCoconeRootFamilyTriangle_diagonal_projection
+
+#check @specifiedCoconeRootFamilyTriangle_homMk_comp
+#print axioms specifiedCoconeRootFamilyTriangle_homMk_comp
+
+#check @specifiedCoconeRootFamilyComparison_homMk_unique
+#print axioms specifiedCoconeRootFamilyComparison_homMk_unique
+
+#check @FixedBaseTerminalTriangle.mk
+#print axioms FixedBaseTerminalTriangle.mk
+
+#check @FixedBaseTerminalTriangle.family
+#print axioms FixedBaseTerminalTriangle.family
+
+#check @FixedBaseTerminalTriangle.diagonal
+#print axioms FixedBaseTerminalTriangle.diagonal
+
+#check @FixedBaseTerminalTriangle.second
+#print axioms FixedBaseTerminalTriangle.second
+
+#check @FixedBaseTerminalTriangle.base
+#print axioms FixedBaseTerminalTriangle.base

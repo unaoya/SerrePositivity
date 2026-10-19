@@ -20,7 +20,7 @@
   end の HR/HL は評価固定データから構成。任意の単射境界から同じ評価を保つ族の延長と、二つの指定円柱を二辺として保つ比較三角形を構成。
   右 HR と元の指定四面体の円柱を同じ三角形で接続。第三辺の始点の射影を既存の右 Hom 係数と同定し、終点固定円柱から native な共通脚の前合成へ接続。三辺の類の合成等式も証明。
   左は標準 prism 自身の輸送辺と実際の付加辺を保持し、native な左二単体上の実際の三角形と、終端辺・底を厳密に保つ全 Hom 族を構成。共通族との評価の一致、左 HL との二辺固定比較三角形、三辺の類の合成を証明。
-  左の長辺も同じ native な共通脚の上で両端係数を厳密に照合し、終点固定円柱から既存の左 Hom 係数を接続。元の指定経路の end 内の整合性は未完了。一般の γ4、F2-lite 第 2 部も未完了。分担と工程は `infinity-core-F2.md` §3。
+  左の長辺も同じ native な共通脚の上で両端係数を厳密に照合し、終点固定円柱から既存の左 Hom 係数を接続。左右の全辺族は終点を固定した三角形で比較し、二面の射影を既存の native 円柱と厳密に同定。第一辺の合成等式と同じ終点を固定する比較の類の一意性も証明。元の指定経路の end 内の整合性は未完了。一般の γ4、F2-lite 第 2 部も未完了。分担と工程は `infinity-core-F2.md` §3。
 - **残り**（依存順・時間は再開後の概算）：
   1. γ3c：通常の小圏上の Kan 値図式の coend 余極限から、任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
   2. γ4：具体例を一般の simplicial Quillen 随伴の cofibrant-fibrant 置換・frame へ拡張する。HTT 5.2.4.6、8〜20時間。
@@ -55,11 +55,11 @@
   `nativeSpanUniversalFamilyToPathEnd_homotopyEquivalence`、`specifiedPathCocone_isColimit_of_pathFamily_homotopy`、
   `partialColimitSpanLeftTransportHomComparison`、`partialColimitSpanRightTransportHomComparison`、
   `specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy`、
-  `partialColimitSpanTransportHomPathComparison`、`specifiedCoconeRightNativeIso`、`specifiedCoconeLeftRootedHomFamily_base`、`specifiedCoconeLeftRestrictionTriangle_homMk_comp`、`specifiedCoconeLeftNativeIso`。
+  `partialColimitSpanTransportHomPathComparison`、`specifiedCoconeRightNativeIso`、`specifiedCoconeLeftRootedHomFamily_base`、`specifiedCoconeLeftRestrictionTriangle_homMk_comp`、`specifiedCoconeLeftNativeIso`、`specifiedCoconeRootFamilyTriangle_homMk_comp`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は左長辺の全 Hom 族・終点固定円柱・既存の左 Hom 係数から native 共通脚への比較3新規モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
+- **未コミット**：今回の保存単位は底固定円柱の類の一意性・終端二円柱の三角形・全辺族の比較・左右の共通脚への適用4新規モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -73,7 +73,7 @@
 - **次の一手**：`specifiedPathCocone_isColimit_of_pathFamily_homotopy` の全終点の族のホモトピー入力を構成する。
   元の族は `partialColimitHomFamilyToPathEnd`、同じ頂点で表示した比較先は `specifiedCoconeNativeFamilyToPathEnd`。
   後者の同値性は無条件に証明済み。前者とのホモトピーを仮定した定理は、余極限性の完成とは数えない。
-  `partialColimitSpanTransportHomPathComparison` で同じ指定 fiber 経路に沿う既存の左右の全 Hom 族の比較を構成済み。右 HR と元の四面体の比較も `specifiedCoconeRightRestrictionRootedTriangle` で構成済み。第三辺の始点の射影を既存の右係数と同定し、`specifiedCoconeRightNativeIso` で native な共通脚へ接続済み。左 HL の比較も `specifiedCoconeLeftRestrictionTriangle_homMk_comp` まで構成済み。同じ左三角形の長辺の底・両端係数も照合し、`specifiedCoconeLeftNativeIso` で同じ native 共通脚へ接続済み。次は、元の指定輸送経路の作用と左右の合成比較の辺の類を照合する。両端の一致だけから経路の一致は仮定しない。
+  `partialColimitSpanTransportHomPathComparison` で同じ指定 fiber 経路に沿う既存の左右の全 Hom 族の比較を構成済み。右 HR と元の四面体の比較も `specifiedCoconeRightRestrictionRootedTriangle` で構成済み。第三辺の始点の射影を既存の右係数と同定し、`specifiedCoconeRightNativeIso` で native な共通脚へ接続済み。左 HL の比較も `specifiedCoconeLeftRestrictionTriangle_homMk_comp` まで構成済み。同じ左三角形の長辺の底・両端係数も照合し、`specifiedCoconeLeftNativeIso` で同じ native 共通脚へ接続済み。左右の native 円柱を同じ終点固定三角形の二面に保つ `specifiedCoconeRootFamilyTriangle` と、第一辺の類の合成・一意性も構成済み。次は元の指定輸送経路の作用を、この全辺族の比較と照合する。特に、指定経路から得る全辺族が同じ終点を全時刻で固定することを示せば類の一意性を使える。両端の一致だけでは適用しない。
   同じ経路の持ち上げの相対ホモトピーを共通 end に移して入力を閉じる。その後、骨格の無限段階とセルの添字の小ささを処理。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
