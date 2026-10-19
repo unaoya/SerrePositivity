@@ -473,6 +473,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedYoneda
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFunctorLiftedExact
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFunctorExact
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctor
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalizingEdges
 
 /-! # Semifree 複体による導来圏の dg 表示
 

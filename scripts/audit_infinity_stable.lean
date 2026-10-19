@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalizingEdges
 import SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctor
 import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYoneda
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorExact
@@ -1581,6 +1582,18 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgQuotientNerveProjection_isExactFunctor
 #print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientFunctor_isExactFunctor
 
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.map
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.map_isInvertible_iff_zero
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.cofiberIsoOfZeroSource
+#print axioms SerrePositivity.InfinityCategories.inverts_cofiberLocalizingEdges_iff_kills
+#print axioms SerrePositivity.InfinityCategories.kills_stableVertexClosure
+#print axioms SerrePositivity.InfinityCategories.inverts_stableVertexClosureEdges_iff_kills
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_mem_iff
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_inverts_iff_kills
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientFunctor_invertsVerdierEdges
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientLocalizationPrecomposition
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientLocalizationPrecomposition_ι
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1734,6 +1747,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.CofiberFunctorMapping,
+    `SerrePositivity.InfinityCategories.Stable.CofiberZeroSource,
+    `SerrePositivity.InfinityCategories.Stable.CofiberLocalizingEdges,
+    `SerrePositivity.InfinityCategories.Stable.StableVertexClosure,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientLocalizingEdges,
     `SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTrans,
     `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYonedaStrict,
     `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransVertex,

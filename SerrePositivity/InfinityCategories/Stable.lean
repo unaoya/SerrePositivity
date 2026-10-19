@@ -335,6 +335,10 @@ public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
 public import SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorChoice
 public import SerrePositivity.InfinityCategories.Stable.UniverseExactFunctor
+public import SerrePositivity.InfinityCategories.Stable.CofiberFunctorMapping
+public import SerrePositivity.InfinityCategories.Stable.CofiberZeroSource
+public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingEdges
+public import SerrePositivity.InfinityCategories.Stable.StableVertexClosure
 
 /-! # 安定 ∞ 圏の基盤
 
