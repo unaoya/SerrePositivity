@@ -11904,3 +11904,93 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.monicKPrismCompatibilityInterchangeSquares_glue
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismCompatibilityInterchangeSquares_glue
+
+#check @SerrePositivity.KST.SConstruction.enriched_left_compatible_comp
+#print axioms SerrePositivity.KST.SConstruction.enriched_left_compatible_comp
+
+#check @SerrePositivity.KST.SConstruction.enriched_functor_comp_post
+#print axioms SerrePositivity.KST.SConstruction.enriched_functor_comp_post
+
+#check @SerrePositivity.KST.SConstruction.compatibleFamilyCompositionPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.compatibleFamilyCompositionPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.familyDiagonal_tensorHom
+#print axioms SerrePositivity.KST.SConstruction.familyDiagonal_tensorHom
+
+#check @SerrePositivity.KST.SConstruction.pointed_left_compatible_lift
+#print axioms SerrePositivity.KST.SConstruction.pointed_left_compatible_lift
+
+#check @SerrePositivity.KST.SConstruction.pointed_suspension_comp_lift
+#print axioms SerrePositivity.KST.SConstruction.pointed_suspension_comp_lift
+
+#check @SerrePositivity.KST.SConstruction.spectrumCylinderCompositionPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.spectrumCylinderCompositionPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.spectrumCylinderComposite
+#print axioms SerrePositivity.KST.SConstruction.spectrumCylinderComposite
+
+#check @SerrePositivity.KST.SConstruction.spectrumSuspendedCylinderComposite
+#print axioms SerrePositivity.KST.SConstruction.spectrumSuspendedCylinderComposite
+
+#check @SerrePositivity.KST.SConstruction.spectrumCylinderComposite_projection
+#print axioms SerrePositivity.KST.SConstruction.spectrumCylinderComposite_projection
+
+#check @SerrePositivity.KST.SConstruction.spectrumSuspendedCylinderComposite_step
+#print axioms SerrePositivity.KST.SConstruction.spectrumSuspendedCylinderComposite_step
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondTrace_cylinders
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondTrace_cylinders
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibility
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibility
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondTrace_projection
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondTrace_projection
+
+#check @SerrePositivity.KST.SConstruction.suspendedMiddleTransferPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.suspendedMiddleTransferPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.pointed_middle_comp_lift
+#print axioms SerrePositivity.KST.SConstruction.pointed_middle_comp_lift
+
+#check @SerrePositivity.KST.SConstruction.pointed_suspension_middle_lift
+#print axioms SerrePositivity.KST.SConstruction.pointed_suspension_middle_lift
+
+#check @SerrePositivity.KST.SConstruction.familyInterchangeCylinderHomotopy
+#print axioms SerrePositivity.KST.SConstruction.familyInterchangeCylinderHomotopy
+
+#check @SerrePositivity.KST.SConstruction.familyInterchangeCylinderChain
+#print axioms SerrePositivity.KST.SConstruction.familyInterchangeCylinderChain
+
+#check @SerrePositivity.KST.SConstruction.familyInterchangeCylinderChain_trace
+#print axioms SerrePositivity.KST.SConstruction.familyInterchangeCylinderChain_trace
+
+#check @SerrePositivity.KST.SConstruction.compositeCylinderTransportPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.compositeCylinderTransportPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeCompatibilityAt
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeCompatibilityAt
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeCompatibilityTransportChain
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeCompatibilityTransportChain
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibility_at_stage
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibility_at_stage
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibilityTransport
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibilityTransport
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibilityTransport_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibilityTransport_trace
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeFirstCompatibility
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeFirstCompatibility
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismTracedCompositeCorrectionChain_projection_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismTracedCompositeCorrectionChain_projection_trace
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibilityTransport_zero_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibilityTransport_zero_trace
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibility_zero
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibility_zero

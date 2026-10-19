@@ -766,4 +766,10 @@ public import SerrePositivity.KST.SConstruction.FamilyChainInterchangeGluing
 public import SerrePositivity.KST.SConstruction.PointedCompatibilityInterchange
 public import SerrePositivity.KST.SConstruction.MonicKPrismCompatibilityInterchange
 public import SerrePositivity.KST.SConstruction.MonicKPrismProjectedCompositionTrace
+public import SerrePositivity.KST.SConstruction.CompatibleFamilyComposition
+public import SerrePositivity.KST.SConstruction.SpectrumCylinderComposition
+public import SerrePositivity.KST.SConstruction.MonicKPrismProjectedSecondTrace
+public import SerrePositivity.KST.SConstruction.SuspendedFamilyMiddleTransfer
+public import SerrePositivity.KST.SConstruction.FamilyInterchangeCylinderChains
+public import SerrePositivity.KST.SConstruction.MonicKPrismCompositeCylinderTransport
 /-! # ∞-S• 構成と連結 K 理論 -/
