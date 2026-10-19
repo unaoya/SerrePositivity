@@ -199,6 +199,21 @@ public import SerrePositivity.InfinityCategories.Derived.ComplexSquareEdgeEvalua
 public import SerrePositivity.InfinityCategories.Derived.ComplexSquareHomEvaluation
 public import SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyFaithful
 
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquareComparison
+public import SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyObjects
+public import SerrePositivity.InfinityCategories.Derived.HomotopyChainMapSurjectivity
+public import SerrePositivity.InfinityCategories.Derived.StableHomotopyChainMap
+public import SerrePositivity.InfinityCategories.Derived.SuspensionObjectNaturality
+public import SerrePositivity.InfinityCategories.Derived.SuspensionSquareAmbientComponents
+public import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomComponents
+public import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomProjection
+public import SerrePositivity.InfinityCategories.Derived.SuspensionVertexNaturality
+public import SerrePositivity.InfinityCategories.Derived.SuspensionShiftObjectComparison
+
+public import SerrePositivity.InfinityCategories.Derived.SuspensionShiftNaturalIso
+
+public import SerrePositivity.InfinityCategories.Derived.StableHomotopyShiftComparison
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

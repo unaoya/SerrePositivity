@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeEdge
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquareComparison
 public import SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeEdge
 public import SerrePositivity.InfinityCategories.Derived.StandardSuspensionSquare
 
@@ -78,11 +78,7 @@ def suspensionComplexSquareHom {X Y : Semifree S} (a : X.val ⟶ Y.val) :
     (SSet.HomotopyCategory.mk (functorVertex (suspensionComplexSquareData X).square) :
       hoFunctor.obj ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj (dgNerve S (Complex S)))) ⟶
         SSet.HomotopyCategory.mk (functorVertex (suspensionComplexSquareData Y).square) :=
-  SSet.Truncated.HomotopyCategory.homMk
-      ((suspensionComplexSquareData X).postcomposeSquareEdge (semifreeSuspensionComplexMap a)) ≫
-    eqToHom (congrArg (fun s : ComplexSquareData X.val 0 0
-        (semifreeSuspensionObject Y).val => SSet.HomotopyCategory.mk (functorVertex s.square))
-      (suspensionComplexSquareData_middle a)) ≫
-    SSet.Truncated.HomotopyCategory.homMk ((suspensionComplexSquareData Y).precomposeSquareEdge a)
+  (suspensionComplexSquareData X).comparisonHom (suspensionComplexSquareData Y)
+    a (semifreeSuspensionComplexMap a) (suspensionComplexSquareData_middle a)
 
 end SerrePositivity.InfinityCategories

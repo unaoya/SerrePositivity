@@ -89,6 +89,21 @@ import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy
 import SerrePositivity.InfinityCategories.Derived.ComplexSquareEdgeEvaluation
 import SerrePositivity.InfinityCategories.Derived.ComplexSquareHomEvaluation
 import SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyFaithful
+import SerrePositivity.InfinityCategories.Derived.ComplexSquareComparison
+import SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyObjects
+import SerrePositivity.InfinityCategories.Derived.HomotopyChainMapSurjectivity
+import SerrePositivity.InfinityCategories.Derived.StableHomotopyChainMap
+import SerrePositivity.InfinityCategories.Derived.SuspensionObjectNaturality
+import SerrePositivity.InfinityCategories.Derived.SuspensionSquareAmbientComponents
+import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomComponents
+import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomProjection
+import SerrePositivity.InfinityCategories.Derived.SuspensionVertexNaturality
+import SerrePositivity.InfinityCategories.Derived.SuspensionShiftObjectComparison
+
+import SerrePositivity.InfinityCategories.Derived.SuspensionShiftNaturalIso
+
+import SerrePositivity.InfinityCategories.Derived.StableHomotopyShiftComparison
+
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1796,6 +1811,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.ComplexSquareEdgeEvaluation,
     `SerrePositivity.InfinityCategories.Derived.ComplexSquareHomEvaluation,
     `SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyFaithful,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareComparison,
+    `SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyObjects,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyChainMapSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.StableHomotopyChainMap,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionObjectNaturality,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionSquareAmbientComponents,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomComponents,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomProjection,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionVertexNaturality,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionShiftObjectComparison,
+    `SerrePositivity.InfinityCategories.Derived.StableHomotopyShiftComparison,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionShiftNaturalIso,
+    `SerrePositivity.InfinityCategories.Stable.ArrowFaithfulReflection,
+    `SerrePositivity.InfinityCategories.Stable.ObjectEqualityTransport,
+    `SerrePositivity.InfinityCategories.Stable.SquareEvaluationPostcomposition,
     `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0

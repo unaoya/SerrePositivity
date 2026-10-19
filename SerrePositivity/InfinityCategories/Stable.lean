@@ -285,6 +285,10 @@ public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvalua
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramFixed
 public import SerrePositivity.InfinityCategories.Stable.ArrowIdentityComposition
 
+public import SerrePositivity.InfinityCategories.Stable.ArrowFaithfulReflection
+public import SerrePositivity.InfinityCategories.Stable.ObjectEqualityTransport
+public import SerrePositivity.InfinityCategories.Stable.SquareEvaluationPostcomposition
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

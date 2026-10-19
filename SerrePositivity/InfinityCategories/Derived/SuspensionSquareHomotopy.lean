@@ -31,10 +31,12 @@ def suspensionComplexSquareHomOnInclusion {X Y : Semifree S} (a : X.val ⟶ Y.va
         (functorVertex ((semifreeSuspensionSquare X).square ≫ derivedInfinityInclusion)) :
       hoFunctor.obj ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj (dgNerve S (Complex S)))) ⟶
         SSet.HomotopyCategory.mk
-          (functorVertex ((semifreeSuspensionSquare Y).square ≫ derivedInfinityInclusion)) := by
-  have h := suspensionComplexSquareHom a
-  rw [← semifreeSuspensionSquare_inclusion X, ← semifreeSuspensionSquare_inclusion Y] at h
-  exact h
+          (functorVertex ((semifreeSuspensionSquare Y).square ≫ derivedInfinityInclusion)) :=
+  chosenEqToHom (congrArg (fun F => SSet.HomotopyCategory.mk (functorVertex F))
+      (semifreeSuspensionSquare_inclusion X)) ≫
+    suspensionComplexSquareHom a ≫
+      chosenEqToHom (congrArg (fun F => SSet.HomotopyCategory.mk (functorVertex F))
+        (semifreeSuspensionSquare_inclusion Y).symm)
 
 /-- 周囲の suspension 比較の射を表す実際の辺。 -/
 def suspensionComplexSquareEdge {X Y : Semifree S} (a : X.val ⟶ Y.val) :
