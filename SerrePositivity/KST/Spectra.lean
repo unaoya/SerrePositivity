@@ -651,3 +651,6 @@ public import SerrePositivity.KST.Spectra.PointedVerticalChainCompression
 public import SerrePositivity.KST.Spectra.PointedRelativeTransposeHomotopy
 public import SerrePositivity.KST.Spectra.SequenceParameterRelativeHomotopy
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryRelativeHomotopy
+public import SerrePositivity.KST.Spectra.PointedRelativeCofiberHomotopy
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCofiberComparison
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCofiberSphereClasses
