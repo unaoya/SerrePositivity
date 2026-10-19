@@ -35,8 +35,8 @@
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
   任意の底・小さい次数 fiber の分類図式と比較を構成。指定した単位変換の実際の射は余単位の逆であり、両者の底変換の自然性と普遍比較の実際の成分との一致を証明済み。族の制限の自然性と余単位の整合性も全高次パラメーターで証明済み。
-  任意の相対射の collage は区間と底の積上の left fibration。一般の二表現の相対射の族の復元と一意性、相対関手空間全体から分類図式の変換空間への実際の比較射を構成済み。底が ∞ 圏の場合、一般の比較射の同値性を実際の前後合成との可換同型から証明済み。標準表現上では元の unstraightening 比較射が明示的な逆。元の unstraightening の写像空間比較の同値性は任意の底で証明済み（区間・pinched 模型、小さい場合は宇宙縮小後とも）。
-- 対象ビルド3172 jobs、公理監査6773宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  任意の相対射の collage は区間と底の積上の left fibration。一般の二表現の相対射の族の復元と一意性、相対関手空間全体から分類図式の変換空間への実際の比較射を構成済み。底が ∞ 圏の場合、一般の比較射の同値性を実際の前後合成との可換同型から証明済み。任意の底で、恒等射の族を恒等変換の族へ送る関手同型と、恒等変換のパラメーター制限の厳密な可換性も証明済み。標準表現上では元の unstraightening 比較射が明示的な逆。元の unstraightening の写像空間比較の同値性は任意の底で証明済み（区間・pinched 模型、小さい場合は宇宙縮小後とも）。
+- 対象ビルド3173 jobs、公理監査6783宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -96,8 +96,8 @@
 
 ### 次の一手
 
-一般の表現間の写像空間比較について、恒等射・合成との整合性を構成する。
-TransportRepresentationFamilyWitness の族の一意性、前後合成との比較同型、既存の leftUnstraighteningEdgeMap_identityIso・compositionIso を使い、選択分類の作用を coherent な関手へ束ねる工程へ進む。
+一般の表現間の写像空間比較について、合成との整合性を構成する。恒等射の族の単位則は TransportRepresentationIdentityFamily で証明済み。
+TransportRepresentationFamilyWitness の族の一意性、前後合成との比較同型、既存の leftUnstraighteningEdgeMap_compositionIso を使い、選択分類の作用を coherent な関手へ束ねる工程へ進む。
 全対象での自然性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
