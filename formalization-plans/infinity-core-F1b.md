@@ -36,13 +36,16 @@
   指定された二関手と矢印の族を厳密に保つ lift と一意性、定義式と同じ引き戻し順序への同型も公開。
   元の両端評価・p × q の cospan の native な極限錐と候補の頂点・両脚の一致を証明。
   任意 K の関手 core の厳密な引き戻し表示と二射影の一致、第一写像の Kan fibration 性を証明。
-  Tamme Remark 6 の対象の三つ組表示と対象間写像空間の具体式は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6450 jobs）、F2 の公理監査成功（923 宣言、標準三公理のみ）。
+  laxPullbackVertexEquiv で頂点と二対象・指定矢印の三つ組の厳密な全単射を証明。
+  任意の単体集合の引き戻しと右 pinched Hom の交換を極限錐・標準同型へまとめ、両射影の一致を証明。
+  laxPullbackMappingIso に適用し、両端評価の右写像空間の射の Kan fibration 性も証明。
+  直積の右写像空間の自然な分解も構成。矢印圏の部分を指定矢印の前後合成で表す Remark 6 の式は未完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6457 jobs）、F2 の公理監査成功（985 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-3 残り：対象の三つ組表示、対象間の右写像空間の具体的な homotopy pullback 式。Tamme §1 Remark 6。12〜30 時間。
+- F2L-3 残り：矢印圏の右写像空間を指定矢印の前後合成で表し、Tamme §1 Remark 6 の式へ簡約。12〜30 時間。
 - F2L-4：同値辺上の全部分圏による引き戻しとの比較、安定性・exact 関手への接続。Tamme §1 Remark 7・Lemma 8。24〜60 時間。
 - Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
 
@@ -66,6 +69,7 @@
 - `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackCone_projection_commutativity`
 - `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
 - `F2.laxPullbackLift` / `F2.laxPullbackFunctorCoreIso` / `F2.arrowEndpointPair_internalHom_core_fibration`
+- `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingIso` / `F2.pinchedHomTensorIso`
 
 ### 依存と提供
 
@@ -76,7 +80,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：両端評価・lax pullback・native 極限錐・全試験関手 core の比較、集約・監査と本書。
+  本保存単位：頂点の三つ組表示、右写像空間の引き戻し・直積との交換、lax pullback への適用、集約・監査と本書。
 
 ### 既知の問題
 
@@ -89,8 +93,8 @@
 
 ### 次の一手
 
-- laxPullback の頂点を (a,b,p(a) → q(b)) の三つ組として同定する。
-  MappingSpacePullback の全単体の lift を使い、対象間の右 pinched Hom の引き戻し表示と Kan 充填性を構成する。
+- pinchedHomTensorIso を laxPullbackMappingIso の入力側と両端側へ適用し、各因子の写像空間へ分解する。
+  矢印圏の右写像空間を指定矢印との前後合成の二経路を結ぶ空間として比較し、Tamme Remark 6 の式へ簡約する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

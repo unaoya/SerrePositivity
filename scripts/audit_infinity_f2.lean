@@ -342,3 +342,27 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackFormulaIso
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackFormulaIso_arrow
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackFormulaIso_inputs
+
+#check @SerrePositivity.InfinityCategories.F2.intervalFunctorVertexEdgeEquiv
+#check @SerrePositivity.InfinityCategories.F2.LaxPullbackVertexData
+#check @SerrePositivity.InfinityCategories.F2.LaxPullbackVertexData.ext
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackVertexData
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackVertexOfData
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackVertexOfData_data
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackVertexData_ofData
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackVertexEquiv
+#check @SerrePositivity.InfinityCategories.F2.pinchedPullbackCone
+#check @SerrePositivity.InfinityCategories.F2.pinchedPullbackConeLift
+#check @SerrePositivity.InfinityCategories.F2.pinchedPullbackCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.pinchedHom_pullback_isPullback
+#check @SerrePositivity.InfinityCategories.F2.pinchedHomPullbackIso
+#check @SerrePositivity.InfinityCategories.F2.pinchedHomPullbackIso_fst
+#check @SerrePositivity.InfinityCategories.F2.pinchedHomPullbackIso_snd
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackMappingIso
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackMappingIso_arrow
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackMappingIso_inputs
+#check @SerrePositivity.InfinityCategories.F2.arrowEndpointPair_pinchedHom_fibration
+#check @SerrePositivity.InfinityCategories.F2.pinchedHomTensorMap
+#check @SerrePositivity.InfinityCategories.F2.pinchedHomTensorInv
+#check @SerrePositivity.InfinityCategories.F2.pinchedHomTensorIso
+#check @SerrePositivity.InfinityCategories.F2.pinchedHomTensorIso_naturality

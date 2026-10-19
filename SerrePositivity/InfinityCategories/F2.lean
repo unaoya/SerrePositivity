@@ -14,6 +14,9 @@ public import SerrePositivity.InfinityCategories.F2.CatPullbackConePathCompatibi
 public import SerrePositivity.InfinityCategories.F2.LaxPullbackLift
 public import SerrePositivity.InfinityCategories.F2.LaxPullbackFunctorCore
 public import SerrePositivity.InfinityCategories.F2.LaxPullbackConeProjections
+public import SerrePositivity.InfinityCategories.F2.LaxPullbackVertexEquiv
+public import SerrePositivity.InfinityCategories.F2.LaxPullbackMapping
+public import SerrePositivity.InfinityCategories.F2.PinchedHomTensorIso
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
