@@ -738,6 +738,14 @@ public import SerrePositivity.InfinityCategories.Derived.DGVerdierConeEdgeBounda
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramVertexCone
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeHorn
 
+public import SerrePositivity.InfinityCategories.Derived.DGTetrahedronEquations
+public import SerrePositivity.InfinityCategories.Derived.DGTetrahedronQReplacement
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornCochains
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornCochainFiller
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornSolution
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornFinalEdge
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramCochainFiller
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

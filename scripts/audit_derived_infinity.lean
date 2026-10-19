@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramCochainFiller
+import SerrePositivity.InfinityCategories.Derived.DGLastHornFinalEdge
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeHorn
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofTransportedFillers
 import SerrePositivity.InfinityCategories.Derived.DGRoofFillerTransportCompatibility
@@ -1774,10 +1776,48 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdgeHorn
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdgeCompStructOfFiller
 
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedronMissingResidual
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedronTopResidual
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedron_rhs_missing
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedron_rhs_top
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedronWithQ
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedronWithQ_component
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedronWithQ_lastEdge
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedronWithQ_topResidual
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedronWithQ_rhs_top
+#print axioms SerrePositivity.InfinityCategories.dgLastHornMissingResidual
+#print axioms SerrePositivity.InfinityCategories.dgLastHornTopResidual
+#print axioms SerrePositivity.InfinityCategories.dgLastHornMissingResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgLastHornQData
+#print axioms SerrePositivity.InfinityCategories.dgLastHornQData_face
+#print axioms SerrePositivity.InfinityCategories.dgLastHornQData_missingEquation
+#print axioms SerrePositivity.InfinityCategories.dgLastHornQData_properEquations
+#print axioms SerrePositivity.InfinityCategories.dgLastHornTopResidual_closed_of_Q
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFillerSimplex
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFillerSimplex_face
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFiller_extension
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFillerSimplex_Q
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFillerSimplex_A
+#print axioms SerrePositivity.InfinityCategories.DGLastHornSolution
+#print axioms SerrePositivity.InfinityCategories.DGLastHornSolution.simplex
+#print axioms SerrePositivity.InfinityCategories.DGLastHornSolution.extension
+#print axioms SerrePositivity.InfinityCategories.DGLastHornSolution.fac
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFinalEdge_closed
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFinalCycle
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFinalClosed
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdgeCompStructOfCochains
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGTetrahedronEquations,
+    `SerrePositivity.InfinityCategories.Derived.DGTetrahedronQReplacement,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornCochains,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornCochainFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornSolution,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornFinalEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramCochainFiller,
     `SerrePositivity.InfinityCategories.Derived.RoofSliceTriangleInverse,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierOverTriangleEdge,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteVertexCones,
