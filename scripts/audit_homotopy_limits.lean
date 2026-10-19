@@ -6844,3 +6844,60 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @InitialEvaluationHomotopyTriangle.evaluation
 #print axioms InitialEvaluationHomotopyTriangle.evaluation
+
+#check @CosliceEdgeFamilyCylinder
+#print axioms CosliceEdgeFamilyCylinder
+
+#check @cosliceEdgeFamilyCylinder
+#print axioms cosliceEdgeFamilyCylinder
+
+#check @cosliceEdgeFamilyPrecompositionCylinder
+#print axioms cosliceEdgeFamilyPrecompositionCylinder
+
+#check @cosliceEdgeFamilyPrecompositionCylinder_projection
+#print axioms cosliceEdgeFamilyPrecompositionCylinder_projection
+
+#check @homotopyTriangleCompStruct
+#print axioms homotopyTriangleCompStruct
+
+#check @homotopyTriangle_homMk_comp
+#print axioms homotopyTriangle_homMk_comp
+
+#check @specifiedCoconeRootNativeCylinderData
+#print axioms specifiedCoconeRootNativeCylinderData
+
+#check @specifiedCoconeRootNativeCylinder
+#print axioms specifiedCoconeRootNativeCylinder
+
+#check @specifiedCoconeRootNativeCylinder_projection
+#print axioms specifiedCoconeRootNativeCylinder_projection
+
+#check @specifiedCoconeRightProjectedCylinder
+#print axioms specifiedCoconeRightProjectedCylinder
+
+#check @specifiedCoconeRightProjectedCylinder_raw
+#print axioms specifiedCoconeRightProjectedCylinder_raw
+
+#check @specifiedCoconeRightRestrictionInitialHomFamily_projection
+#print axioms specifiedCoconeRightRestrictionInitialHomFamily_projection
+
+#check @specifiedCoconeRightRootedTriangle_homMk_comp
+#print axioms specifiedCoconeRightRootedTriangle_homMk_comp
+
+#check @specifiedCoconeRightNativeIso
+#print axioms specifiedCoconeRightNativeIso
+
+#check @specifiedCoconeRightNativeHomotopy
+#print axioms specifiedCoconeRightNativeHomotopy
+
+#check @specifiedCoconeRightNativeHomotopy_hom
+#print axioms specifiedCoconeRightNativeHomotopy_hom
+
+#check @CosliceEdgeFamilyCylinder.mk
+#print axioms CosliceEdgeFamilyCylinder.mk
+
+#check @CosliceEdgeFamilyCylinder.homotopy
+#print axioms CosliceEdgeFamilyCylinder.homotopy
+
+#check @CosliceEdgeFamilyCylinder.target
+#print axioms CosliceEdgeFamilyCylinder.target
