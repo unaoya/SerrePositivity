@@ -647,3 +647,8 @@ public import SerrePositivity.InfinityCategories.F1B.KanPinchedHomPullbackLift
 public import SerrePositivity.InfinityCategories.F1B.KanPinchedHomPullback
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeMappingPullback
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeMappingPullbackComponents
+public import SerrePositivity.InfinityCategories.F1B.KanNerveFunctorCategory
+public import SerrePositivity.InfinityCategories.F1B.KanNerveFunctorHomCategory
+public import SerrePositivity.InfinityCategories.F1B.KanNerveFunctorVertex
+public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTrans
+public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransCell

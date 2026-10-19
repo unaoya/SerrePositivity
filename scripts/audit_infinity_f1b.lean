@@ -2705,3 +2705,33 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullbackComparison_fst
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullbackComparison_snd
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctor_monoidalClosed
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorCategoryIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorCategoryIso_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorCategoryIso_uncurry
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorHomCategoryEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorCategoryIso_precomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorCategoryIso_vertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorVertexIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHom_id
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHom_comp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorHomEmbedding
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransCell
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransCell_id
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransCell_comp
