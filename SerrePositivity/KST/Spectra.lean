@@ -211,3 +211,9 @@ public import SerrePositivity.KST.Spectra.OverChainCoordinates
 public import SerrePositivity.KST.Spectra.OverChainCoproduct
 public import SerrePositivity.KST.Spectra.LatchingCoproductMono
 public import SerrePositivity.KST.Spectra.BousfieldKanWeightLatching
+public import SerrePositivity.KST.Spectra.NerveTerminalPointAnodyne
+public import SerrePositivity.KST.Spectra.AnodynePointMappingComparison
+public import SerrePositivity.KST.Spectra.LastVertexMappingComparison
+public import SerrePositivity.KST.Spectra.LastVertexKanWeightComparison
+public import SerrePositivity.KST.Spectra.LastVertexWeightProjections
+public import SerrePositivity.KST.Spectra.ReedyWeightCofibrancy

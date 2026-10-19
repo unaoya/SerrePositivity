@@ -13,6 +13,12 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.NerveTerminalPointAnodyne,
+    `SerrePositivity.KST.Spectra.AnodynePointMappingComparison,
+    `SerrePositivity.KST.Spectra.LastVertexMappingComparison,
+    `SerrePositivity.KST.Spectra.LastVertexKanWeightComparison,
+    `SerrePositivity.KST.Spectra.LastVertexWeightProjections,
+    `SerrePositivity.KST.Spectra.ReedyWeightCofibrancy,
     `SerrePositivity.KST.Spectra.ReedyWeightedRestriction,
     `SerrePositivity.KST.Spectra.TotalizationWeightedReindex,
     `SerrePositivity.KST.Spectra.OverChainCoordinates,
