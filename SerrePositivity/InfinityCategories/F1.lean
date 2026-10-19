@@ -1005,3 +1005,5 @@ public import SerrePositivity.InfinityCategories.F1.InnerPrismBoundaryExtension
 public import SerrePositivity.InfinityCategories.F1.ReplacementEndCornerInner
 public import SerrePositivity.InfinityCategories.F1.FullSubcomplexEquivalenceLifting
 public import SerrePositivity.InfinityCategories.F1.EquivalenceLiftingTrivial
+public import SerrePositivity.InfinityCategories.F1.SpanPullbackLifting
+public import SerrePositivity.InfinityCategories.F1.ReplacementSpanComparison
