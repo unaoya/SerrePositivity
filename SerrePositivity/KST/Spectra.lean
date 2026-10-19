@@ -574,3 +574,5 @@ public import SerrePositivity.KST.Spectra.LoopEdgewiseSectionFaces
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseSection
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseTetrahedra
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionReflectedTriangles
+public import SerrePositivity.KST.Spectra.BousfieldKanPointSectionCoefficients
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKCoherentCone

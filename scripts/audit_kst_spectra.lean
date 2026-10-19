@@ -33,6 +33,8 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseSection,
     `SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseTetrahedra,
     `SerrePositivity.KST.Spectra.SpectrumCircleCompanionReflectedTriangles,
+    `SerrePositivity.KST.Spectra.BousfieldKanPointSectionCoefficients,
+    `SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKCoherentCone,
     `SerrePositivity.KST.Spectra.SpectrumCircleCompanionConePoint,
     `SerrePositivity.KST.Spectra.SpectrumNativeCircleConeSection,
     `SerrePositivity.KST.Spectra.IntervalSquareSweeps,
