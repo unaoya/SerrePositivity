@@ -1111,6 +1111,18 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_val,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.toCompositeCut_outer_injective,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.toCompositeCut_injective,
+      `SerrePositivity.EInfinity.IntervalCuts.remaining_count_substitute,
+      `SerrePositivity.EInfinity.IntervalCuts.composite_remaining_occurrenceCount,
+      `SerrePositivity.EInfinity.IntervalCuts.outer_remaining_occurrenceCount_le_two,
+      `SerrePositivity.EInfinity.IntervalCuts.outer_pivot_occurrenceCount_eq_one,
+      `SerrePositivity.EInfinity.IntervalCuts.composite_pivot_eq_outerPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.exists_unique_outer_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.nodup_of_substitute_nodup,
+      `SerrePositivity.EInfinity.IntervalCuts.outer_cut_nondegenerate_of_slot_counts,
+      `SerrePositivity.EInfinity.IntervalCuts.outer_cut_nondegenerate_of_single_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.single_slot_cuts_nondegenerate_of_composite,
+      `SerrePositivity.EInfinity.IntervalCuts.composite_single_slot_cut_nondegenerate_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.exists_single_slot_cuts_of_inserted_pivot,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3258,3 +3270,28 @@ example : Fintype.card (NestedEdgeCut (m := 2) zeroPermutationWord
     (permutationWord (1 : Equiv.Perm (Fin 2))) 0) = 4 := by decide
 example : Fintype.card (CompositeEdgeCut (m := 2) zeroPermutationWord
     (permutationWord (1 : Equiv.Perm (Fin 2))) 0 (by decide)) = 4 := by decide
+
+-- 残り色の count は零 arity・部分語不足でも保存される。
+example : (substitute (m := 1) (n := 0) 0 [1, 0, 1, 0] []).count
+    (BarrattEccles.remainingPosition 1 0 0 ⟨1, by decide⟩) = 2 := by
+  simpa only using! remaining_count_substitute (n := 0) 0 ⟨1, by decide⟩ [1, 0, 1, 0] []
+-- 外側010の色1は、色0への二部分割代入後も一出現。
+example : occurrenceCount
+    (compositeBasisWord compositionInner compositionInner 0 nestedRepeatedExample.partition
+      (by decide)).val (BarrattEccles.remainingPosition 1 2 0 ⟨1, by decide⟩) = 1 := by
+  simpa only using! composite_remaining_occurrenceCount compositionInner compositionInner 0
+    nestedRepeatedExample.partition (by decide) ⟨1, by decide⟩
+-- 一出現挿入の内側切断は、元の二つの非零切断と同値。
+example : EdgeNondegenerate
+    (compositeBasisWord compositionInner compositionInner 1 nestedPivotExample.partition
+      (by decide)).val
+      (compositeInnerPosition compositionInner compositionInner 1 nestedPivotExample.partition
+        (by decide) 1 rfl 1) ↔
+    EdgeNondegenerate compositionInner.val 1 ∧ EdgeNondegenerate compositionInner.val 1 :=
+  composite_single_slot_cut_nondegenerate_iff compositionInner compositionInner 1
+    nestedPivotExample.partition (by decide) 1 rfl 1 (by decide)
+-- 非切断点色への一出現挿入からも外側の非零性を戻せる。
+example : EdgeNondegenerate zeroPermutationWord.val 0 :=
+  outer_cut_nondegenerate_of_single_slot zeroPermutationWord
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0 nestedVertexExample.partition (by decide)
+    0 (by decide) (by decide) (by decide)

@@ -293,3 +293,6 @@ public import SerrePositivity.EInfinity.IntervalCuts.NestedCuts
 public import SerrePositivity.EInfinity.IntervalCuts.CompositionCutPositions
 public import SerrePositivity.EInfinity.IntervalCuts.NestedCutPositions
 public import SerrePositivity.EInfinity.IntervalCuts.NestedCutInjective
+public import SerrePositivity.EInfinity.IntervalCuts.SubstitutionCounts
+public import SerrePositivity.EInfinity.IntervalCuts.NonSlotCutRecovery
+public import SerrePositivity.EInfinity.IntervalCuts.SingleSlotCutRecovery

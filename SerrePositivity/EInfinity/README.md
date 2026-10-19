@@ -568,6 +568,10 @@ nullary を含む TR の部分合成保存は完了。
 `composite_non_slot_cut_nondegenerate` は同じ条件で非切断点色の切断を保つ。
 `partition_segments_nodup_of_nonpivot` は二段切断で選んだ一・二部分割がその条件を満たすこと。
 `NestedEdgeCut.toCompositeCut` は全分岐で実際の非零合成切断へ送る写像で、`toCompositeCut_injective` が単射性。
+`remaining_count_substitute` は零 arity を含む残り色の出現数保存で、`exists_unique_outer_pivot` が残り色の切断位置を戻す。
+`outer_cut_nondegenerate_of_slot_counts` は外側の非零性の復元を指定色の左右一出現条件へ帰着する。
+`composite_single_slot_cut_nondegenerate_iff` は一出現挿入の内側位置で外側・内側の非零性を復元する。
+`exists_single_slot_cuts_of_inserted_pivot` は一出現性の下で挿入ラベル切断点から両非零切断を戻す。
 具体的な Δ¹ の余代数構造は未完成。逆方向の復元・全射性・全出力と符号の一致、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
