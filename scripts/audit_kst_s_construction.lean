@@ -7760,3 +7760,69 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.triangulatedKZeroPiZeroIso
 #print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroPiZeroIso
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingTransport
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingTransport
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingTransport_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingTransport_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingTransport_id
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingTransport_id
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingTransport_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingTransport_comp
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingTransport_restriction
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingTransport_restriction
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionTransport
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionTransport
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionTransport_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionTransport_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionTransport_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionTransport_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionTransport_id
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionTransport_id
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionTransport_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionTransport_comp
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedFromSource
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedFromSource
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedFromTarget
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedFromTarget
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedMap
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedMap
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedFromSource_map
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedFromSource_map
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedFromTarget_map
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedFromTarget_map
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedPost
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedPost
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedPre
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedPre
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_nonempty_edge
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_nonempty_edge
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_fill_boundary
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_fill_boundary

@@ -524,4 +524,9 @@ public import SerrePositivity.KST.SConstruction.KZeroObjectRecovery
 public import SerrePositivity.KST.SConstruction.TriangulatedKZeroEquiv
 public import SerrePositivity.KST.SConstruction.TriangulatedKZeroNatIso
 
+public import SerrePositivity.KST.SConstruction.PointedExtensionTransport
+public import SerrePositivity.KST.SConstruction.PointedExtensionTransportLaws
+public import SerrePositivity.KST.SConstruction.KanAssemblyMixedChoices
+public import SerrePositivity.KST.SConstruction.KanAssemblyMixedWhiskering
+
 /-! # ∞-S• 構成と連結 K 理論 -/
