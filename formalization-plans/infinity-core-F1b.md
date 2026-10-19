@@ -48,16 +48,16 @@
 - 通常の錐の圏と拡張関手の fiber の同値から、native な錐の族への比較射の同値性を証明。
   錐・余錐の頂点を保つ全単射、指定錐・余錐の普遍性、極限・余極限の存在を双方向に比較。
   左右 comma の局所極限・余極限の存在、および nerve 上の Kan 拡張の存在と通常の pointwise Kan の存在を双方向に比較。
-- 指定自然変換の実ホモトピー表示、元の h Fun の類の保持、前後合成の厳密な自然性、恒等・各点の成分公式を証明。
-  錐の脚の後合成を join の錐のホモトピーへ移し、両端・図式の指定変換・全時間での頂点の固定を証明。
-- 最終検証：F1・F1B 同時ビルド成功（4060 jobs）、同時 import 検査成功（F1 7451・F1B 5091 宣言）。
-  公理監査成功（5097 宣言、標準三公理のみ、1407 モジュールに straightening なし）。ソース名衝突 0。
+- 指定自然変換の実ホモトピー表示・自然性・成分公式と、頂点を固定した錐の脚の後合成ホモトピーを構成。
+  Under・comma の標準錐の厳密な一致から指定余単位の右輸送を構成し、通常の pointwise 右 Kan 条件との同値を証明。
+- 最終検証：F1・F1B 同時ビルド成功（4067 jobs）、同時 import 検査成功（F1 7451・F1B 5116 宣言）。
+  公理監査成功（5122 宣言、標準三公理のみ、1414 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。6〜18 時間。
-  残り：指定単位・余単位を伴う pointwise Kan の局所錐の双方向比較。自然変換の全単射・随伴の双方向比較・通常の Kan の大域的普遍性の比較は完了。
+  残り：指定単位を伴う pointwise 左 Kan の局所余錐の双方向比較（指定余単位の右側は完了）。自然変換の全単射・随伴の双方向比較・通常の Kan の大域的普遍性の比較は完了。
   pointwise な古典 Kan 拡張と一般の普遍写像性だけによる Kan 拡張を区別して回収する。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
 
@@ -76,7 +76,7 @@
 - `F1B.IsRelativeRightKanExtendedFrom` / `F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left`
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
-- `F1B.kanNerve_exists_leftKan_iff_pointwise` / `F1B.kanNerve_exists_rightKan_iff_pointwise`
+- `F1B.kanNerve_exists_leftKan_iff_pointwise` / `F1B.kanNerve_isRightKanExtensionHom_iff_pointwise`
 - `F1B.kanNerveConeFamilyMap_isQCatEquivalence` / `F1B.kanNerveCone_isLimit_iff` / `F1B.kanNerveConePostcomposeHomotopy`
 
 ### 依存と提供
@@ -87,7 +87,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：指定自然変換の実ホモトピーと自然性・成分、頂点を固定した錐の後合成、集約・監査・本書）。
+- なし（本保存単位：錐の脚・自然性、右の標準錐・指定余単位の輸送・pointwise 条件の同値、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -99,8 +99,8 @@
 
 ### 次の一手
 
-- `kanNerveUnderMap c` の uncurry と、通常の Under の忘却関手上の標準錐の `kanNerveCone` を比較する。
-  comma 添字同型で右 Kan の標準錐と同定し、構成した錐の後合成を `RightKanConeTransport` に接続する。
+- 左側：`kanNerveCoconeEquiv` の脚・自然性と `kanNerveOverIso` の uncurry を比較し、標準余錐を同定する。
+  指定単位から `LeftKanCoconeTransport` を構成し、通常の `LeftExtension.coconeAt` の余極限性と双方向に比較する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

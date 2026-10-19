@@ -2962,3 +2962,15 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveConePostcomposeHomotopy
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveConePostcomposeHomotopy_diagram
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveConePostcomposeHomotopy_fixedVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_hom_ext_one
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_joinPoint_hom_ext
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCone_leg
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderMap_uncurry
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCone_whisker
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCone_mapCone
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanCanonicalCone
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightConeTransport
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightConeTransport_cone
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightConeTransport_isLimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_isRightKanExtensionHom_iff_pointwise
