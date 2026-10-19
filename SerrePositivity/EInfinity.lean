@@ -188,3 +188,5 @@ public import SerrePositivity.EInfinity.TableReduction.SingletonSum
 public import SerrePositivity.EInfinity.TableReduction.BoundaryRemainderIdentity
 public import SerrePositivity.EInfinity.TableReduction.FinalDeletionRows
 public import SerrePositivity.EInfinity.TableReduction.DonorStep
+public import SerrePositivity.EInfinity.TableReduction.TransferBlock
+public import SerrePositivity.EInfinity.Surjection.PreviousOccurrenceGap

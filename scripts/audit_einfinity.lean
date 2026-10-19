@@ -367,7 +367,18 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.reduceRows_congr_removed,
       `SerrePositivity.EInfinity.TableReduction.donor_selected_split,
       `SerrePositivity.EInfinity.TableReduction.donor_exclusion_equiv,
-      `SerrePositivity.EInfinity.TableReduction.reduceRows_donor_step] do
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_donor_step,
+      `SerrePositivity.EInfinity.TableReduction.intermediate_selected_eq,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix,
+      `SerrePositivity.EInfinity.TableReduction.extractionPrefix_of_reduceRows,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.early_exclusion,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.append_early_exclusion,
+      `SerrePositivity.EInfinity.TableReduction.receiver_capacity_of_tail,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_receiver_step,
+      `SerrePositivity.EInfinity.TableReduction.transfer_block_extraction,
+      `SerrePositivity.EInfinity.TableReduction.transfer_block_deleted_outputs,
+      `SerrePositivity.EInfinity.Surjection.previousOccurrence_no_between,
+      `SerrePositivity.EInfinity.Surjection.previousOccurrence_not_mem_slice] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

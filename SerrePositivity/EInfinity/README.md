@@ -168,7 +168,14 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `deletionScheduleTransfer` は受け取り側の余裕を全体の行長から導き、逆移動が元へ戻ることも保証する。
 `reduceRows_congr_removed` は除外の順序によらない抽出の一致。
 `reduceRows_donor_step` は削除値を早く除外して短くした行の出力を計算し、元の後続抽出へ合流させる。
-受け取り行と中間行の抽出、対の削除後出力の一致・逆符号・逆対応、残余和の零性は未完成。
+`ExtractionPrefix` は元の抽出の先行部分の選択行と終端の除外状態を保持する。
+`ExtractionPrefix.append_early_exclusion` は削除値のない任意個の中間行を、早い除外を保って通過する。
+`receiver_capacity_of_tail` は後続の別の値から、受け取り行の利用可能長の実際の余裕を導く。
+`reduceRows_receiver_step` は長くした受け取り行の出力と削除値の早い除外を計算する。
+`transfer_block_deleted_outputs` は三部分の抽出を連結し、指定した一文字の削除後出力の一致を証明する。
+`previousOccurrence_not_mem_slice` は直前の同値の出現と削除位置の間に削除値がないことを示す。
+一般の成功 Schedule からこのブロック比較の全入力を取り出す接続は未完成。
+実際の対の添字・逆符号・逆対応、残余和の零性は未完成。
 TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
