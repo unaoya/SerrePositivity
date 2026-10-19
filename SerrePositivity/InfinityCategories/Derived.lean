@@ -875,6 +875,14 @@ public import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedThreeSi
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleRefinement
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleCommonApex
 
+public import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementTriangle
+public import SerrePositivity.InfinityCategories.Derived.DGOverTwoSimplexInitialRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGOverTwoSimplexInitialApex
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierTwoSimplexInitialRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierTwoSimplexRefinementCongruence
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedThreeConeFaces
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleConeFaces
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
