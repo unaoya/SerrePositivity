@@ -6,7 +6,7 @@
 
 ### 現在地
 
-- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1・F2L-2 も完了。F2L-3・F2L-4 は未完了。
+- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1〜F2L-3 も完了。F2L-4 は未完了。
 - B1：全単体集合パラメータの族の集合値前層による自然性の模型。双圏の単位・余単位・三角恒等式と自然な Hom 対応を比較。
 - B2：同じ宇宙の標的に対する反射的局所化。一般の局所化の存在は F2 の範囲。
 - B3：左右の Quillen A、弱可縮な comma 条件、二宇宙版の始対象による極限計算を回収。
@@ -31,21 +31,19 @@
   三つの比較三単体の四面の合成則と strict な面の定値性から各脚の整合式を証明。
   可縮 fiber の射の一意性で、元の path 置換の同型を切断上で標準同型へ簡約。
   catPullbackCone_projection_commutativity で二射影の指定比較と候補の元の指定 path の最終整合を証明。
-- F2L-3 進行中：両端評価を二点への制限と厳密な評価同型で表示し、単射な前合成同値の右持ち上げ性を証明。
-  Fun(Δ¹,C) の両端評価による lax pullback 対象、quasicategory 性、二射影と矢印の族の端点を構成。
-  指定された二関手と矢印の族を厳密に保つ lift と一意性、定義式と同じ引き戻し順序への同型も公開。
-  元の両端評価・p × q の cospan の native な極限錐と候補の頂点・両脚の一致を証明。
-  任意 K の関手 core の厳密な引き戻し表示と二射影の一致、第一写像の Kan fibration 性を証明。
+- F2L-3 完了：Fun(Δ¹,C) の両端評価を二点への制限として表示し、inner 性と単射な前合成同値の右持ち上げ性を証明。
+  lax pullback 対象と quasicategory 性、二射影・矢印の族の端点、指定データを保つ全パラメータの lift と一意性を構成。
+  定義式と同じ順序の引き戻しへの同型、native な極限錐と候補の頂点・両脚の一致を証明。
+  任意 K の関手 core の引き戻し表示・二成分の一致・両端評価の全内部 Hom の core の Kan fibration 性を証明。
   laxPullbackVertexEquiv で頂点と二対象・指定矢印の三つ組の厳密な全単射を証明。
-  任意の単体集合の引き戻しと右 pinched Hom の交換を極限錐・標準同型へまとめ、両射影の一致を証明。
-  laxPullbackMappingIso に適用し、両端評価の右写像空間の射の Kan fibration 性も証明。
-  直積の右写像空間の自然な分解も構成。矢印圏の部分を指定矢印の前後合成で表す Remark 6 の式は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6457 jobs）、F2 の公理監査成功（985 宣言、標準三公理のみ）。
+  右 pinched Hom と引き戻し・直積との交換を構成。両端の等式を輸送し下辺を p_* × q_* と厳密に同定。
+  Tamme Remark 6 の正方形の IsPullback と右辺の Kan fibration 性を証明。
+  γ3 の既存の空間の極限判定を使い、元の対象間写像空間を頂点とする 𝒮 の native な極限錐と元の両脚の一致を証明。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6472 jobs）、F2 の公理監査成功（1027 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-3 残り：矢印圏の右写像空間を指定矢印の前後合成で表し、Tamme §1 Remark 6 の式へ簡約。12〜30 時間。
 - F2L-4：同値辺上の全部分圏による引き戻しとの比較、安定性・exact 関手への接続。Tamme §1 Remark 7・Lemma 8。24〜60 時間。
 - Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
 
@@ -69,7 +67,8 @@
 - `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackCone_projection_commutativity`
 - `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
 - `F2.laxPullbackLift` / `F2.laxPullbackFunctorCoreIso` / `F2.arrowEndpointPair_internalHom_core_fibration`
-- `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingIso` / `F2.pinchedHomTensorIso`
+- `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
+- `F2.laxPullbackMappingSpaceCone_isLimit` / `F2.laxPullbackMappingSpaceCone_vertex` / `F2.laxPullbackMappingSpaceCone_arrow`
 
 ### 依存と提供
 
@@ -80,7 +79,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：頂点の三つ組表示、右写像空間の引き戻し・直積との交換、lax pullback への適用、集約・監査と本書。
+  本保存単位：Remark 6 の正方形の直積表示・Kan fibration 性・𝒮 の native な極限性、集約・監査と本書。
 
 ### 既知の問題
 
@@ -93,8 +92,8 @@
 
 ### 次の一手
 
-- pinchedHomTensorIso を laxPullbackMappingIso の入力側と両端側へ適用し、各因子の写像空間へ分解する。
-  矢印圏の右写像空間を指定矢印との前後合成の二経路を結ぶ空間として比較し、Tamme Remark 6 の式へ簡約する。
+- F2L-4：laxPullback の矢印射影に沿う equivalencePath C の引き戻しを、同値辺条件の全部分複体と厳密に比較する。
+  catPullback p q の二重引き戻しと同型を構成し、二射影と元の指定 path を保つことを証明する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
