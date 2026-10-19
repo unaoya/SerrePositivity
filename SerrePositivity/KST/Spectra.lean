@@ -133,3 +133,11 @@ public import SerrePositivity.KST.Spectra.FiberTriangleReduction
 public import SerrePositivity.KST.Spectra.FiberTriangleConnecting
 public import SerrePositivity.KST.Spectra.PathTriangleBoundary
 public import SerrePositivity.KST.Spectra.LoopFundamentalCommutativity
+public import SerrePositivity.KST.Spectra.SkeletalMapSimplex
+public import SerrePositivity.KST.Spectra.SkeletalEdgeCochain
+public import SerrePositivity.KST.Spectra.SkeletalEdgePath
+public import SerrePositivity.KST.Spectra.SkeletalEdgeConnecting
+public import SerrePositivity.KST.Spectra.SkeletalEdgeAlternating
+public import SerrePositivity.KST.Spectra.SkeletalEdgeDoubleLoop
+public import SerrePositivity.KST.Spectra.SkeletalCoefficientAlternatingAll
+public import SerrePositivity.KST.Spectra.SkeletalPositiveAdditiveDifferential

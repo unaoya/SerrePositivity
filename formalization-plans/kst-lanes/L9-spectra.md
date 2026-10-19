@@ -5,7 +5,7 @@
 ## 引き継ぎ（2026-10-19）
 
 ### 現在地
-- L9a・L9b・改訂 L9c・L9d 完了。L9e は未完。
+- L9a・L9b・改訂 L9c・L9d、Sp-1d（係数微分の値・符号・像の同定、10-19 14:07）完了。L9e 全体は未完。
 - Sp の quasicategory 性、全整数次数の群、置換、homotopy fiber の長完全列、有理 telescope とテンソル表示を構成済み。
 - hG と homotopy Tot の段ごとの Kan 構成・BF 置換・比較射、および自明作用の標準射の全整数次数 π の単射性まで証明済み。
 - 有理化各段の高次群係数で BG の通常の正規化 cochain の正次数 cohomology が消滅することを証明済み。
@@ -22,15 +22,12 @@
 - 標準の零次数接続写像とその厳密な正方形への自然性を構成し、正次数・零次数の塔の微分の loop 反可換式を証明済み。
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
-- cochain 次数 d ≥ 2 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4075 jobs、専用監査 603 モジュール・5681 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14483 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
+- 検証：対象ビルド 4083 jobs、専用監査 611 モジュール・5738 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14509 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
-- cochain 次数一の係数微分を通常の交代微分と同定する。次数二以上は全高次数で値・符号・核・像の比較まで証明済み。
-  三角形の相対 fiber 境界公式・path 三角形の交代式・loop 値の基本群の可換性は証明済み。次数一の骨格 cochain の実現と path 延長への合成が残る。
-  原典：Goerss–Jardine I §7、VIII §§1–2、Kerodon §3.2.3。12–32 時間。
 - 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。
   原典：Goerss–Jardine VIII §§1–2。24–80 時間。E₂ の消滅だけで収束を仮定しない。
 - 有限群の有理自明作用について標準射の全射性を証明し、既証の単射性と合わせて全整数次数の有理 Shapiro を完成させる。
@@ -60,11 +57,11 @@
 - `SkeletalCellAttachment.exists_cellDifferential_boundaryRepresentative`
 - `FiberTriangle.connecting_product`
 - `PathTriangleBoundary.alternating_loopPositive`
-- `SkeletalCellAttachment.coefficientDifferential_alternating`
-- `SkeletalCellAttachment.additiveCoefficientDifferential_eq`
+- `SkeletalCellAttachment.coefficientDifferential_all_alternating`
+- `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_eq`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_loopZero`
-- `SkeletalCellAttachment.additiveCoefficientDifferential_ker`
-- `SkeletalCellAttachment.additiveCoefficientDifferential_range`
+- `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_ker`
+- `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_range`
 - `SkeletalCellAttachment.coefficientDifferential_loopPositive`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv`
 - `SkeletalCellAttachment.coefficientDifferential`
@@ -92,12 +89,12 @@
 - 公理監査は私有宣言・推移的な公理依存と、宣言型の ModelCategory 定数を検査する。
 - BF cofibrant–fibrant 仕様を承認済み。構造射は単射、随伴は全基点 π_* 同型。厳密 Ω 同型は要求しない。
 - 厳密 Ω 同型と厳密極限だけからの局所 Kan 性は未解決だったため改訂した。現仕様では単射の指数版・引き戻し・塔の RLP 閉性で証明する。
-- cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
+- coefficientDifferential の交代式・符号・核・像は全添字で証明済み。cohomology の消滅だけで有理 Shapiro の全射性・収束を完了扱いにしない。
 
 ### 次の一手
-- 次数一の骨格 cochain の代表を作る。`f : K.skeleton 2 → Y` と頂点骨格での定数条件から境界定数の辺を構成し、`cellRestriction_simplex_map` と既存の `skeletalFiberVertex` の係数へ照合する。任意の次数一 cochain の厳密な実現は `SkeletalSphericalRealization.exists_map` を使う。
-- loop 値のこの射を `K.skeleton 3 → basedPathSpace Y` へ延長し、`PathTriangleBoundary.alternating_loopPositive` に各二単体を入れる。三角形の簡約・連結像の積・path への移送・loop 基本群の可換性は再構成しない。`stageComponentDifferential_loop_vertex` は全骨格添字で使える。
-- 次数一を含む全係数微分の同定、Sp-1d、塔の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。cohomology の消滅だけで収束を主張しない。
+- 塔の収束へ進む。Kan fibration の下で、downstairs のホモトピー類が一致する代表を相対充填で厳密に一致する代表へ調整する補題を作る。`KanHomotopyGroup.mk_eq_iff`・`simplexRel_iff_relStruct`・既存のホーン持ち上げを使う。
+- `FibrationTower.limit` の成分表示で整合する代表と零ホモトピーを組み立て、π と極限の比較・lim¹ の曖昧さを解析する。`SkeletalMapping.coneIsLimit` と `SkeletalWeightedEnd.limitIso` の厳密な復元は既証だが、それだけで π と極限を交換しない。
+- 全係数微分の同定は再構成しない。Sp-2 の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。cohomology の消滅だけで収束を主張しない。
 
 ## 範囲と所有
 
