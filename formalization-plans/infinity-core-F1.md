@@ -33,9 +33,9 @@
   境界固定 lift 族、四角形の二条件同時 fiber、実際の境界制限の fiber を厳密な同型で結んだ。
   全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
-  積上の表現空間と元の表現空間への内部 Hom は厳密に同型で、任意のパラメーター制限に自然。
-  全空間の同型を介し、実際の底変換制限とも厳密に可換。両射影・頂点評価も回収済み。
-- 対象ビルド3027 jobs、公理監査5946宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
+  各次数で小さい全空間の点上の表現空間は可縮 Kan（Lemma 5.6.9.2 の空間値版）。非空性も構成済み。
+- 対象ビルド3037 jobs、公理監査6011宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -65,10 +65,7 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `pointedPrismEquivalenceEndpoints_trivialKanFibration`、`pointedCylinderPrismEndpoints_trivialKanFibration`
-- `pointedCylinderEquivalenceSquareIso`、`cylinderEquivalenceSquareEndpoints_trivialKanFibration`
-- `relativeBoundaryFamilyPre_isQCatEquivalence`、`intervalTransportCylinder_boundaryFamily_isQCatEquivalence`
-- `intervalWitnessRestriction_trivialKanFibration`、`transportWitnessTensorIso_restriction_naturality`
+- `intervalWitnessRestriction_trivialKanFibration`、`pointTransportWitnessSpace_isContractibleKan`
 
 ### 依存と提供
 
@@ -98,10 +95,10 @@
 
 ### 次の一手
 
-`transportWitnessTensorIso_restriction_naturality` を使い、点上の可縮性へ進む（Lemma 5.6.9.2）。
-Δ⁰×Δ¹ ≅ Δ¹ の底の同型も表現空間へ移し、実際の区間境界制限を対角写像の比較へ結ぶ。
-非空性は小ささを満たす実際の表現から供給し、存在仮定として主経路へ隠さない。
-その後、単体の表現空間の可縮性と一般の境界固定延長（Theorem 5.6.8.3、§5.6.5）へ進む。
+点上の可縮性を零次元の入力に、表現空間の底の貼り合わせ（pushout→pullback）を証明する。
+非交和から積への比較も全高次で構成し、区間と内ホーンの制限定理を単体・骨格の帰納法へ結ぶ。
+小ささは各次数での条件まで検証済み。任意の essentially small な fiber への一般化は残る。
+その後、一般の表現空間の可縮性と境界固定延長（Theorem 5.6.8.3、§5.6.5）へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
