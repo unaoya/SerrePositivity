@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1478宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1510宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1136,3 +1136,17 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `monoidBarReverseOppositeHomologyIso` は実符号付き鎖反転から、既存の H_* の模型だけを用いて得る実ホモロジー同型。反転不変性を追加の仮定にしない。
 - `reverseOppositeHatGLBarIso`・`reverseOppositeHatGLHomologyIso` は非単位 ĜL の実 bar・ホモロジー比較。行側半直積の全体の同型・安定比較・整数作用の移送は未完了。
 - 対象ビルド・1478宣言の公理監査は標準三公理のみで成功。L6d 全体の完了はまだ主張しない。
+
+
+### L6d の行側半直積と実相対同型（2026-10-19）
+
+- `idealRowMatrixVecHom`・`idealRowMatrixAction` は両側イデアル内の行ベクトルの実右行列積と反対行列モノイドの実左作用。係数準同型に自然。
+- `hatGLRowAction` と `rowAffine` は反対 ĜL の実右行列作用から構成する独立な実行側模型。`rowAffine_mul_fiber` は実積の行成分が v h+w であることを証明する。
+- `integerUnitizationIdealOpAddEquiv`・`integerUnitizationIdealOpVectorMulEquiv` は実核イデアル・ベクトルの同型。周囲の単位化の反対環同型と整合し、係数射に自然。
+- `integerUnitizationIdealOpVector_equivariant` は反対係数の列への左行列積が元の行への右行列積になることを、有限和と順序逆転から証明する。係数の可換性を使わない。
+- `reverseOppositeColumnRowMulEquiv`・`reverseOppositeAffineMulEquiv` は基底とファイバーの同型を実同変性で合わせた実半直積の同型。
+- `reverseOppositeAffineIso`・`reverseOppositeAffineBarIso`・`reverseOppositeAffineHomologyIso` は全ての面・退化を含む実単体的同型、実対角 bar 同型、借用する H_* への実同型。
+- `rowAffineSection` は行成分が零の実 ĜL 包含。`reverseOppositeAffineIso_section` と対応する bar・H_* の補題で、列側の標準包含との実可換性を証明した。
+- `relativeModuleIso` は実可換な加群同型の正方形を実通常商へ降ろす。`reverseOppositeRelativeAffineIso` は反対係数の列側と元の行側の実相対 bar 同型。反転不変性・相対同型を仮定に隠さない。
+- 行側右・左乗法の零化への自然性、安定 H_* と有限 rank 余極限の比較、実置換共役と整数作用への移送が残る。L6d 全体の完了はまだ主張しない。
+- 対象ビルド・1510宣言の公理監査は標準三公理のみで成功。
