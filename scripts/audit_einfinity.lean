@@ -891,6 +891,13 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.residualCutBasisWord,
       `SerrePositivity.EInfinity.IntervalCuts.residualCut_output_family,
       `SerrePositivity.EInfinity.IntervalCuts.residualCut_tensor_eq,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionSign_erase_same_color,
+      `SerrePositivity.EInfinity.IntervalCuts.caesura_erase_final,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_erase_final,
+      `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut.pivot_not_caesura,
+      `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut.swap_coefficient,
+      `SerrePositivity.EInfinity.IntervalCuts.nonpivotResidualCut_weighted_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.residualCut_tensor_sum_eq_zero,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2612,3 +2619,68 @@ example :
           residualFixture.swap.pivot)
         (edgeOutput_tupleDegree _ _ residualFixture.swap.nondegenerate) :=
   residualCut_tensor_eq ℤ residualWord residualFixture
+
+-- 010210 は二つの区切りの削除係数が同じでも、切断符号が反転する三出現例。
+private def residualTripleWord : BasisWord 3 3 := ⟨![0, 1, 0, 2, 1, 0], by decide⟩
+private def residualTripleFixture : NonpivotResidualCut residualTripleWord.val where
+  deleted := 0
+  pivot := 2
+  defect := 2
+  nondegenerate := by decide
+  defect_spec := by decide
+  defect_ne_pivot := by decide
+example : deletionCoefficient residualTripleWord.val 0 = 1 ∧
+    deletionCoefficient residualTripleWord.val 2 = 1 ∧
+    edgeSign (erase residualTripleWord.val 0) 2 = -1 ∧
+    edgeSign (erase residualTripleWord.val 2) 2 = 1 := by decide
+example : deletionCoefficient residualTripleWord.val residualTripleFixture.deleted *
+      edgeSign (erase residualTripleWord.val residualTripleFixture.deleted)
+        residualTripleFixture.pivot =
+    -(deletionCoefficient residualTripleWord.val residualTripleFixture.swap.deleted *
+      edgeSign (erase residualTripleWord.val residualTripleFixture.swap.deleted)
+        residualTripleFixture.swap.pivot) := residualTripleFixture.swap_coefficient
+
+-- 左側の最終出現との交換。切断符号は等しく、削除係数が反対になる。
+private def residualFinalWord : BasisWord 3 2 := ⟨![0, 1, 0, 2, 1], by decide⟩
+private def residualFinalFixture : NonpivotResidualCut residualFinalWord.val where
+  deleted := 0
+  pivot := 2
+  defect := 2
+  nondegenerate := by decide
+  defect_spec := by decide
+  defect_ne_pivot := by decide
+example : ¬ Caesura residualFinalWord.val 2 := by decide
+example : deletionCoefficient residualFinalWord.val residualFinalFixture.deleted *
+      edgeSign (erase residualFinalWord.val residualFinalFixture.deleted)
+        residualFinalFixture.pivot =
+    -(deletionCoefficient residualFinalWord.val residualFinalFixture.swap.deleted *
+      edgeSign (erase residualFinalWord.val residualFinalFixture.swap.deleted)
+        residualFinalFixture.swap.pivot) := residualFinalFixture.swap_coefficient
+
+-- 同じ最終出現交換の右側版と、その逆順も一般定理から得る。
+private def residualRightFixture : NonpivotResidualCut residualWord.val where
+  deleted := 2
+  pivot := 1
+  defect := 4
+  nondegenerate := by decide
+  defect_spec := by decide
+  defect_ne_pivot := by decide
+example : deletionCoefficient residualWord.val residualRightFixture.deleted *
+      edgeSign (erase residualWord.val residualRightFixture.deleted) residualRightFixture.pivot =
+    -(deletionCoefficient residualWord.val residualRightFixture.swap.deleted *
+      edgeSign (erase residualWord.val residualRightFixture.swap.deleted)
+        residualRightFixture.swap.pivot) := residualRightFixture.swap_coefficient
+example : deletionCoefficient residualWord.val residualRightFixture.swap.deleted *
+      edgeSign (erase residualWord.val residualRightFixture.swap.deleted)
+        residualRightFixture.swap.pivot =
+    -(deletionCoefficient residualWord.val residualRightFixture.deleted *
+      edgeSign (erase residualWord.val residualRightFixture.deleted) residualRightFixture.pivot) := by
+  simpa only [NonpivotResidualCut.swap_swap] using residualRightFixture.swap.swap_coefficient
+
+-- 全添字の和も実際の ℤ 上の区間テンソルで零となる。
+example : ∑ c : NonpivotResidualCut residualTripleWord.val,
+    (deletionCoefficient residualTripleWord.val c.deleted *
+      edgeSign (erase residualTripleWord.val c.deleted) c.pivot) •
+      tensorVectorOfDegree ℤ 3 3 (edgeOutput (residualCutBasisWord residualTripleWord c) c.pivot)
+        (edgeOutput_tupleDegree _ _ c.nondegenerate) = 0 :=
+  residualCut_tensor_sum_eq_zero ℤ residualTripleWord

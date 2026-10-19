@@ -498,8 +498,9 @@ nullary を含む TR の部分合成保存は完了。
 障害が切断点以外なら削除位置と障害位置を交換でき、`NonpivotResidualCut.swap` は
 同じ元切断点を保つ有限型上の固定点なし対合。`swapEquiv` はその自己同値。
 `residualCut_output_family`・`residualCut_tensor_eq` は交換対の実際の削除基底語の出力族・テンソル値の一致。
-具体的な Δ¹ の余代数構造は未完成。この対合の一般の係数反対性、切断点障害と切断点色の境界項の
-相殺を含む全有限和の比較が残る。
+`NonpivotResidualCut.swap_coefficient` は同色三出現も含む一般の削除・切断係数の反対性。
+`residualCut_tensor_sum_eq_zero` は全非切断点障害項の実際のテンソル値の有限和が零であること。
+具体的な Δ¹ の余代数構造は未完成。切断点障害と切断点色の境界項の相殺、全有限和の比較が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
