@@ -474,3 +474,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.isColimitCone_laxPullback_iff_components
 #check @SerrePositivity.InfinityCategories.F2.hasFiniteColimits_laxPullback_of_preservation
 #check @SerrePositivity.InfinityCategories.F2.isColimitCone_laxPullback_iff_finite_components
+
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_map_pullbackCone_iff
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_post_pushoutCocone_iff
+#check @SerrePositivity.InfinityCategories.F2.exactFunctor_preserves_cospan_limit
+#check @SerrePositivity.InfinityCategories.F2.exactFunctor_preserves_span_colimit
+#check @SerrePositivity.InfinityCategories.F2.isPullbackSquare_laxPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isPushoutSquare_laxPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isPullbackSquare_laxPullback_iff_of_input_limits
+#check @SerrePositivity.InfinityCategories.F2.isPushoutSquare_laxPullback_iff_of_input_colimits
+#check @SerrePositivity.InfinityCategories.F2.hasColimit_laxPullback_span_of_zero_second
+#check @SerrePositivity.InfinityCategories.F2.isPushoutSquare_laxPullback_iff_of_zero_corner
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackFst_isExactFunctor
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackSnd_isExactFunctor
+#check @SerrePositivity.InfinityCategories.F2.laxPullback_cofiber_exists

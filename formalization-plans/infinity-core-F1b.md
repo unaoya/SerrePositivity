@@ -39,20 +39,20 @@
   右 pinched Hom と引き戻し・直積との交換を構成。両端の等式を輸送し下辺を p_* × q_* と厳密に同定。
   Tamme Remark 6 の正方形の IsPullback と右辺の Kan fibration 性を証明。
   γ3 の既存の空間の極限判定を使い、元の対象間写像空間を頂点とする 𝒮 の native な極限錐と元の両脚の一致を証明。
-- F2L-4：Remark 7 の同値矢印の全部分複体と元の catPullback の厳密な同型、二射影・指定 path の保持を証明。
-  可逆 path の包含と lax pullback の矢印射影の引き戻しも元の catPullback で表示。
-  零保存二関手から零頂点を構成。両射影の全零頂点の保存、成分ごとの零対象判定、完全二関手の HasZeroVertex を証明。
-  錐族の後合成・指定錐の像の頂点・充填性、引き戻しと直積の交換・指定両脚の一致を証明。
-  反転同型と指定評価の一致、点ごとの余極限を使い、両入力と像から極限・余極限の十分条件を証明。
-  錐族・余錐族の同値持ち上げで、像も普遍である錐・余錐の像を指定された普遍錐・余錐へ全次数で厳密に合わせる。
-  錐・余錐の貼り合わせと関手圏の点ごとの存在から、選んだ両入力の全錐・全余錐を保つ lax pullback の極限・余極限を構成。
-  入力の存在と元の二関手の保存の下で極限・余極限の成分判定は同値。有限版で HasFiniteLimits・HasFiniteColimits と両射影の判定を供給。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6642 jobs）、F2 公理監査成功（1181 宣言、標準三公理のみ）。
+- F2L-4：Remark 7 の同値矢印の全部分複体と catPullback の同型・厳密な引き戻し表示は二射影と元の指定 path を保持。
+  零保存二関手から零頂点を構成し、両射影の零保存・成分ごとの零対象判定を証明。
+  錐族の引き戻し・直積表示、反転同型と指定評価の一致から、元の指定錐・余錐の成分による十分条件を証明。
+  錐族・余錐族の同値持ち上げと貼り合わせで、選んだ両入力の全錐・全余錐を保つ極限・余極限の存在を構成。
+  入力の存在と保存の下で成分判定は同値。有限版で HasFiniteLimits・HasFiniteColimits と両射影の判定を供給。
+  元の IsStable・IsExactFunctor から実際の span 余極限・cospan 極限の保存を導き、四角形と全錐の一致で成分判定へ接続。
+  零枝の span の入力の存在から零角の押し出し性を成分で判定し、両射影の IsExactFunctor を証明。始域の安定性は仮定しない。
+  元の指定射と零対象への辺を保つ span の余極限から、全ての射の cofiber 四角形の存在を構成。fiber と安定性の最終条件は残る。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6649 jobs）、F2 公理監査成功（1195 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-4：元の安定圏・完全関手から必要な有限図式の存在と保存を導き、安定性・射影の完全性へ接続。Tamme §1 Lemma 8(i)(iv)。24〜60 時間。
+- F2L-4：零源の cospan の極限の存在を安定性から導き、fiber の存在と零角四角形の fiber/cofiber 条件の一致を証明。Tamme §1 Lemma 8(i)(iv)。24〜60 時間。
 - Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
 
 ### 主要宣言（名前のみ）
@@ -76,7 +76,7 @@
 - `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
 - `F2.laxPullbackLift` / `F2.laxPullbackFunctorCoreIso` / `F2.arrowEndpointPair_internalHom_core_fibration`
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
-- `F2.exists_colimitCone_laxPullback_with_components` / `F2.isLimitCone_laxPullback_iff_components` / `F2.isColimitCone_laxPullback_iff_components`
+- `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_cofiber_exists`
 
 ### 依存と提供
 
@@ -87,7 +87,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：選んだ両入力の全余錐を保つ余極限の存在、逆方向の成分判定と有限余極限の界面、集約・監査と本書。
+  本保存単位：元の完全関手の span・cospan 保存、四角形の成分判定、両射影の完全性と全 cofiber の存在、集約・監査と本書。
 
 ### 既知の問題
 
@@ -100,8 +100,8 @@
 
 ### 次の一手
 
-- F2L-4：pullbackCone・pushoutCocone と射影後の四角形の全錐の一致を使い、成分ごとの四角形判定を構成する。
-  元の IsStable・IsExactFunctor から必要な存在・保存を導き、零対象と有限版を安定性・両射影の完全性へ合成する。
+- F2L-4：F1B.kanHasLimit_iff_hasColimit_op と kanHasColimit_iff_restrict_of_isIso、hornReverseIso 2 2 を再利用する。
+  hasColimit_span_of_terminal_second を反転して零源の cospan の極限を導き、fiber の存在と零角の条件の一致から IsStable を構成する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
