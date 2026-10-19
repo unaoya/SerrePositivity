@@ -6752,3 +6752,57 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.zeroRowKanLoopComparison_unit
 #print axioms SerrePositivity.KST.SConstruction.zeroRowKanLoopComparison_unit
+
+#check @SerrePositivity.KST.SConstruction.loop_interval_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.loop_interval_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.loopOfCylinder_unique
+#print axioms SerrePositivity.KST.SConstruction.loopOfCylinder_unique
+
+#check @SerrePositivity.KST.SConstruction.adjoinTensorMap_first
+#print axioms SerrePositivity.KST.SConstruction.adjoinTensorMap_first
+
+#check @SerrePositivity.KST.SConstruction.cofiberSmashProjection_first
+#print axioms SerrePositivity.KST.SConstruction.cofiberSmashProjection_first
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberTensorDesc_evaluation
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberTensorDesc_evaluation
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopEquiv_eq_smashCurry
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopEquiv_eq_smashCurry
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopEquiv_interval
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopEquiv_interval
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_evaluation
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_evaluation
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint_interval
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint_interval
+
+#check @SerrePositivity.KST.SConstruction.loop_interval_postcomp
+#print axioms SerrePositivity.KST.SConstruction.loop_interval_postcomp
+
+#check @SerrePositivity.KST.SConstruction.kanTargetAssemblyAdjoint_interval
+#print axioms SerrePositivity.KST.SConstruction.kanTargetAssemblyAdjoint_interval
+
+#check @SerrePositivity.KST.SConstruction.loop_interval_precomp
+#print axioms SerrePositivity.KST.SConstruction.loop_interval_precomp
+
+#check @SerrePositivity.KST.SConstruction.iteratedRealizationToKan_cyclic
+#print axioms SerrePositivity.KST.SConstruction.iteratedRealizationToKan_cyclic
+
+#check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison_assemblyAdjoint
+#print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison_assemblyAdjoint
+
+#check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison_reducedAssemblyAdjoint
+#print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison_reducedAssemblyAdjoint
+
+#check @SerrePositivity.KST.SConstruction.zeroRowReducedLoopComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowReducedLoopComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowReducedLoopComparison_quotient
+#print axioms SerrePositivity.KST.SConstruction.zeroRowReducedLoopComparison_quotient
+
+#check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison_fatBoundary
+#print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison_fatBoundary

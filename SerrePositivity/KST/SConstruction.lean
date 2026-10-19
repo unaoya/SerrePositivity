@@ -440,4 +440,10 @@ public import SerrePositivity.KST.SConstruction.LoopOfCylinder
 public import SerrePositivity.KST.SConstruction.ZeroRowLoopComparison
 public import SerrePositivity.KST.SConstruction.ZeroRowPointedLoopComparison
 
+public import SerrePositivity.KST.SConstruction.LoopIntervalExt
+public import SerrePositivity.KST.SConstruction.RawSmashEvaluation
+public import SerrePositivity.KST.SConstruction.SuspensionAdjointInterval
+public import SerrePositivity.KST.SConstruction.AssemblyAdjointEvaluation
+public import SerrePositivity.KST.SConstruction.ZeroRowAssemblyAdjoint
+
 /-! # ∞-S• 構成と連結 K 理論 -/

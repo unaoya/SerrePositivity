@@ -7,7 +7,7 @@
 ### 現在地
 - K-L1（∞-S• 構成、連結 K）。L1a・L1b 完了。L1c・L1d 進行中、L1e–f 未完了。後続は L3・K-基盤 1・2（v2 の担当範囲）。
 - 全 gapped S• と第一行制限そのものの trivial Kan fibration を証明済み。core・対角実現・Kan 置換・Ω、反復 S の段と単射な構造射への置換、零方向の境界比較を構成済み。
-- Ω から既存の path homotopy fiber への全基点 π_* 同型は証明済み。前段の Kan 実現と同じ fiber は共通 Kan 模型からの全基点 π_* 同型で比較済み。元の構造射との照合は未証明。
+- Ω から既存の path homotopy fiber への全基点 π_* 同型は証明済み。前段の Kan 実現と同じ fiber は共通 Kan 模型からの全基点 π_* 同型で比較済み。元の構造射の随伴と零行 loop 射の照合は証明済み。fiber 比較とのホモトピーは未証明。
 - raw ρ の cofiber・gapped 性と、同じ C 内の選択を保つ `mcCarthyRho` を構成済み。面・退化、時刻零、subobject・quotient の strict 回収を証明済み。
 - McCarthy の ρ・θ の二つの実ホモトピーと厳密な切断から、全 C 内の `cofiberLeftFiberQuotient_localized_isIso` を証明済み。θ の可変時刻の gapped 性は点ごとの可逆性で保証する。
 - strict 左 fiber の二重単体解消と augmentation の局所化同型、反対圏のラベル付き射列による余積表示、対象ごとの局所化同型を解消の対角へ移す定理を証明済み。
@@ -30,14 +30,14 @@
 - `edgeSegalMap_localized_isIso`：全連続辺への元の評価を n 個の S₁ の積へ束ね、正の全反復実現で局所化同型を証明済み。射影の式と最初の辺での厳密な分解式を含む。
 - `iteratedPathBoundary_homotopyPullback`：元の経路境界の全単体作用素の自然性四角形は正の全反復実現で homotopy pullback。δ₀ は σ₀ の面条件・厳密な退縮・正の実現の連結性から検出し、他の面・退化と合成して全作用素へ拡張した。
 - `localized_isIso_of_connected_baseChange`：連結な Kan 基底上の二つの Kan fibration の間の射は、非空な任意の基底変換で局所化同型を検出できる。境界 RLP・全単体全射性・right properness から証明済み。
-- `iteratedPathBoundary_realization_homotopyPullback`：証明済みの全ての面条件を既存の Segal 実現定理に適用し、各行と全対角の四角形の homotopy pullback 性まで接続済み。零行の既存 fiber との比較は次項。元の構造射との照合は未完。
+- `iteratedPathBoundary_realization_homotopyPullback`：証明済みの全ての面条件を既存の Segal 実現定理に適用し、各行と全対角の四角形の homotopy pullback 性まで接続済み。零行の既存 fiber との比較は次項。元の構造射の随伴と具体的 loop 射の照合は証明済み。
 - `sInterchangeStableIso`：全 gapped 図式を保つ二重 S の厳密な交換と完全関手・両添字・評価の自然性を証明済み。全多次数で固定方向も動かす `multiMovingSCoreIso` は既存の巡回実現を回収する。独立な全零方向の境界と商の比較、座標置換の全零境界保存も証明済み。旧座標比較の全多単体的な自然性と対角での一致を証明し、標準の全零境界と既存の商上の `cyclicBoundaryIso` を構成済み。
-- `sOneInnerOuterRealizationIso_comparison`：経路零行 F_r(S₁ X) と元の一方向実現の交換同型と、二つの元の前段比較の厳密な可換性を証明済み。固定方向も動かす自然性と `iteratedSRealizationCyclicIso` を構成し、`sOneInnerOuterRealizationIso_assembly` で元の区間族の厳密な可換性まで照合済み。全多次数の交換と自然性も構成し、源の既存の全零境界の対応、元の境界商の `sOneInnerOuterReducedIso` と前段比較の可換性まで証明済み。標的の標準境界商の巡回自己同型も構成済み。`simplicialPathDiagonalCylinder_zeroRow_boundary` は元の経路収縮の零行への制限と元の区間組み立ての厳密な等号。元の点つき経路商の基点固定収縮、既存の Kan 経路全空間への零行制限と両端・境界の回収、零段の全退化像の全時刻での基点固定まで証明済み。`zeroRowLoopComparison` を元の円の商と既存の点つき curry で構成し、評価で元の区間組み立てを厳密に回収済み。任意の零段頂点を使う点つき射と既存の Kan 単位への厳密な延長も構成済み。fiber 比較とのホモトピー・π_* 同型は未証明。
+- `sOneInnerOuterRealizationIso_comparison`：経路零行 F_r(S₁ X) と元の一方向実現の交換同型と、二つの元の前段比較の厳密な可換性を証明済み。固定方向も動かす自然性と `iteratedSRealizationCyclicIso` を構成し、`sOneInnerOuterRealizationIso_assembly` で元の区間族の厳密な可換性まで照合済み。全多次数の交換と自然性も構成し、源の既存の全零境界の対応、元の境界商の `sOneInnerOuterReducedIso` と前段比較の可換性まで証明済み。標的の標準境界商の巡回自己同型も構成済み。`simplicialPathDiagonalCylinder_zeroRow_boundary` は元の経路収縮の零行への制限と元の区間組み立ての厳密な等号。元の点つき経路商の基点固定収縮、既存の Kan 経路全空間への零行制限と両端・境界の回収、零段の全退化像の全時刻での基点固定まで証明済み。`zeroRowLoopComparison` を元の円の商と既存の点つき curry で構成し、評価で元の区間組み立てを厳密に回収済み。任意の零段頂点を使う点つき射と既存の Kan 単位への厳密な延長も構成済み。`zeroRowLoopComparison_assemblyAdjoint` と源の境界商上の同式で、元の `kanTargetAssemblyAdjointNat` と具体的 loop 射の厳密な一致を証明済み。`zeroRowReducedLoopComparison` は元の全零境界商へ降り、商射で元の loop 射を回収する。全零境界の定数 loop への像も厳密に証明済み。fiber 比較とのホモトピー・π_* 同型は未証明。
 - `zeroRowPathFiberComparison_localized_isIso`：元の経路零行から既存の `iteratedPathHomotopyFiber` への定数 path による実際の比較と局所化同型を証明済み。Δ[0] の積を外した零列写像、商・Kan 比較の厳密な可換性、標的の零列の厳密な零化を含む。
 - `exists_previousStage_pathFiber_comparison`：任意の零段基点の退化を基点にした零行の同じ Kan 模型から、前段の既存の全零境界 Kan 実現と既存 fiber へ全基点 π_* 同型を構成済み。Kan 単位に沿う延長は元の射を厳密に回収する。
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
-- 証明済みの前段・既存 fiber の共通 Kan 比較を元の suspension 構造射の随伴と照合：HTT 5.1.2.2、
+- 証明済みの元の suspension 随伴と零行 loop 射の同定を使い、既存 fiber 比較とのホモトピーを証明：HTT 5.1.2.2、
   L11 §11・Fiore–Pieper Theorem 4.35、16–40時間。L2 の実現定理に面条件を追加仮定で渡さない。
 - 正の Ω 条件・delooping・負次数消滅と BF 連結スペクトル関手：BGT Definition 7.1、経路正本 §10-5、
   §13 決定2・5・12、L9c の BF 界面、16–48時間。
@@ -70,13 +70,13 @@
 - `relativeCofiberStableModel`、`relativeCofiberSubobject`、`relativeCofiberQuotient`
 - `objectSClosedIso`、`relativeCofiberLeftFiberLift`、`relativeMcCarthyRhoHomotopy`、`relativeMcCarthyThetaHomotopy`
 - `relativeCofiberLeftFiberQuotient_localized_isIso`、`relativeCoreSAdditivityMap_localized_isIso`
-- `sClosedStableIso`、`sRelativeCofiberStableIso`、`relativeMultiRealizationAdditivityLocalizedIso`、`cutStableComparison`、`cutRelativeEquivalence`、`cutRelativeSegalPair`、`cutLeftIntervalEquivalence`、`cutRightIntervalEquivalence`、`StableModelEquivalence`、`multiRealization_map_localized_isIso_of_equivalence`、`cutSegalMap_localized_isIso`、`cutSegalLocalizedIso`、`edgeSegalMap_localized_isIso`、`edgeSegalMap_projection`、`pathHeadSegalMap`、`iteratedPathBoundary_headPreserving_homotopyPullback`、`iteratedPathBoundary_homotopyPullback`、`iteratedPathBoundary_realization_homotopyPullback`、`localized_isIso_of_connected_baseChange`、`zeroRowPathFiberComparison_localized_isIso`、`zeroRowKanFiberComparison_piIsomorphism`、`zeroRowKanPreviousComparison_piIsomorphism`、`exists_previousStage_pathFiber_comparison`、`sInterchangeStableIso`、`diagonalFixedSInterchangeNatIso`、`sOneInnerOuterRealizationIso`、`sOneInnerOuterRealizationIso_comparison`、`diagonalFixedSInterchangeNatIso_index`、`iteratedSRealizationCyclicIso`、`sOneInnerOuterRealizationIso_assembly`、`multiFixedSEndofunctorIso`、`multiSOneSlideCoreIso`、`coordinateZeroBoundary_image_iso`、`sOneInnerOuterReducedIso`、`sOneInnerOuterReducedIso_comparison`、`multiFixedSEndofunctorIso_index`、`multiMovingSCoreIso`、`multiMovingSBoundaryIso`、`coordinateZeroBoundary_permutation`、`innerVariableSComparisonIso_outer_naturality`、`multiInnerSCoordinateNatIso`、`multiInnerSCoordinateCoreIso_realization`、`cyclicBoundaryIso`、`cyclicBoundaryIso_coordinate_quotient`、`simplicialPathDiagonalCylinder_zeroRow_boundary`、`reducedPathDiagonalBasedContraction`、`zeroRowPathContractionHomotopy`、`zeroRowPathContraction_boundary`、`zeroRowPathContraction_degeneracy`、`loopOfCylinder`、`loopOfCylinder_constant_parameter`、`zeroRowLoopComparison`、`zeroRowLoopComparison_assembly`、`zeroRowPointedLoopComparison`、`zeroRowKanLoopComparison`
+- `sClosedStableIso`、`sRelativeCofiberStableIso`、`relativeMultiRealizationAdditivityLocalizedIso`、`cutStableComparison`、`cutRelativeEquivalence`、`cutRelativeSegalPair`、`cutLeftIntervalEquivalence`、`cutRightIntervalEquivalence`、`StableModelEquivalence`、`multiRealization_map_localized_isIso_of_equivalence`、`cutSegalMap_localized_isIso`、`cutSegalLocalizedIso`、`edgeSegalMap_localized_isIso`、`edgeSegalMap_projection`、`pathHeadSegalMap`、`iteratedPathBoundary_headPreserving_homotopyPullback`、`iteratedPathBoundary_homotopyPullback`、`iteratedPathBoundary_realization_homotopyPullback`、`localized_isIso_of_connected_baseChange`、`zeroRowPathFiberComparison_localized_isIso`、`zeroRowKanFiberComparison_piIsomorphism`、`zeroRowKanPreviousComparison_piIsomorphism`、`exists_previousStage_pathFiber_comparison`、`sInterchangeStableIso`、`diagonalFixedSInterchangeNatIso`、`sOneInnerOuterRealizationIso`、`sOneInnerOuterRealizationIso_comparison`、`diagonalFixedSInterchangeNatIso_index`、`iteratedSRealizationCyclicIso`、`sOneInnerOuterRealizationIso_assembly`、`multiFixedSEndofunctorIso`、`multiSOneSlideCoreIso`、`coordinateZeroBoundary_image_iso`、`sOneInnerOuterReducedIso`、`sOneInnerOuterReducedIso_comparison`、`multiFixedSEndofunctorIso_index`、`multiMovingSCoreIso`、`multiMovingSBoundaryIso`、`coordinateZeroBoundary_permutation`、`innerVariableSComparisonIso_outer_naturality`、`multiInnerSCoordinateNatIso`、`multiInnerSCoordinateCoreIso_realization`、`cyclicBoundaryIso`、`cyclicBoundaryIso_coordinate_quotient`、`simplicialPathDiagonalCylinder_zeroRow_boundary`、`reducedPathDiagonalBasedContraction`、`zeroRowPathContractionHomotopy`、`zeroRowPathContraction_boundary`、`zeroRowPathContraction_degeneracy`、`loopOfCylinder`、`loopOfCylinder_constant_parameter`、`zeroRowLoopComparison`、`zeroRowLoopComparison_assembly`、`zeroRowPointedLoopComparison`、`zeroRowKanLoopComparison`、`loop_interval_hom_ext`、`suspensionLoopEquiv_interval`、`kanTargetAssemblyAdjoint_interval`、`zeroRowLoopComparison_assemblyAdjoint`、`zeroRowReducedLoopComparison`、`zeroRowReducedLoopComparison_quotient`、`zeroRowLoopComparison_fatBoundary`
 
 ### 依存と提供
 - 所有は `SerrePositivity/KST/SConstruction/`、集約、監査スクリプト、本計画。namespace は同名。
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）。
-- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解、閉じた全部分圏と相対 E(A,C,B) の安定性・完全な評価、相対 object/core 単回実現と全正有限反復 core S• 実現の加法性、S_n と全部分圏・相対図式の厳密な交換同型、相対入力に関する全正反復加法性の自然同型、切断の左右支持部分圏と短い区間の S 構成の実際の同値、左右支持の相対 E と S_n C の実際の同値、元の Segal 射対の厳密な比較式、全正有限反復実現による完全な同値の保存、任意の切断位置の元の Segal 射の自然な局所化同型、全連続辺への Segal 同値、全単体作用素の元の経路境界の homotopy pullback、全ての行と全対角の homotopy pullback 比較、元の零行から既存 fiber への局所化同型、前段の既存 Kan 実現と既存 fiber への同じ Kan 模型からの全基点 π_* 比較、S/S の厳密な交換、全反復 S₁ の内外比較と元の区間族の可換性、独立な全多次数の交換と自然性、源の全零境界と既存の境界商の比較同型、全方向を動かす巡回交換と独立な全零方向の境界商の比較、座標置換の全零境界保存、標準の既存境界商の巡回自己同型、元の収縮の零行への制限と区間組み立ての厳密な式、元の点つき経路商の基点固定収縮、既存 Kan 経路への零行収縮と退化像の全時刻の固定、元の円の商からの具体的な loop 射と評価の回収式、任意の零段基点に関する点つき射と厳密な Kan 延長。
+- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解、閉じた全部分圏と相対 E(A,C,B) の安定性・完全な評価、相対 object/core 単回実現と全正有限反復 core S• 実現の加法性、S_n と全部分圏・相対図式の厳密な交換同型、相対入力に関する全正反復加法性の自然同型、切断の左右支持部分圏と短い区間の S 構成の実際の同値、左右支持の相対 E と S_n C の実際の同値、元の Segal 射対の厳密な比較式、全正有限反復実現による完全な同値の保存、任意の切断位置の元の Segal 射の自然な局所化同型、全連続辺への Segal 同値、全単体作用素の元の経路境界の homotopy pullback、全ての行と全対角の homotopy pullback 比較、元の零行から既存 fiber への局所化同型、前段の既存 Kan 実現と既存 fiber への同じ Kan 模型からの全基点 π_* 比較、S/S の厳密な交換、全反復 S₁ の内外比較と元の区間族の可換性、独立な全多次数の交換と自然性、源の全零境界と既存の境界商の比較同型、全方向を動かす巡回交換と独立な全零方向の境界商の比較、座標置換の全零境界保存、標準の既存境界商の巡回自己同型、元の収縮の零行への制限と区間組み立ての厳密な式、元の点つき経路商の基点固定収縮、既存 Kan 経路への零行収縮と退化像の全時刻の固定、元の円の商からの具体的な loop 射と評価の回収式、任意の零段基点に関する点つき射と厳密な Kan 延長、元の構造射の随伴との厳密な照合、元の全零境界商への降下と商射による回収。
 - K スペクトル・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
@@ -85,11 +85,11 @@
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
-- 対象ビルド3787 jobs、公理監査2545宣言が成功。全体 lake build は今回再実行していない。
+- 対象ビルド3792 jobs、公理監査2563宣言が成功。全体 lake build は今回再実行していない。
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 2545宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- 2563宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
 - raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。二つの実ホモトピーと quotient 射の局所化同型まで証明済み。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - homotopy fiber 比較を既存の構造射と形式的に合成するだけでは正の Ω 条件の証明にならない。
@@ -97,7 +97,7 @@
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- `zeroRowLoopComparison` と元の区間組み立ての評価の等号、退化像の定数 loop への固定、任意の零段基点の点つき loop 射と厳密な Kan 延長は完成。次は元の `kanTargetAssemblyAdjointNat` の射を、源の `sOneInnerOuterReducedIso` と標的の `cyclicBoundaryIso` を介してこの具体的な loop 射と照合する（円の商射・curry・随伴の評価で検出）。並行して収縮による loop 射と定数 path の fiber 射のホモトピーを構成する。収縮は定数→元の射、既存の path fiber は基点始点なので、向きと逆 loop の関与を明示して π_* 同型を移す。
+- 元の `kanTargetAssemblyAdjointNat` と零行の具体的 loop 射の厳密な照合、元の全零境界商への降下まで完成。次は収縮による loop 射と定数 path の fiber 射のホモトピーを構成する。収縮は定数→元の射、既存の path fiber は基点始点なので、向きと逆 loop の関与を明示する。`zeroRowLoopComparison_assemblyAdjoint`・`zeroRowReducedLoopComparison_quotient` で実際の構造射へ π_* 同型を移す。
 - 元の構造射の随伴が、前段から fiber への比較と既証の loop–fiber 比較を通した射にホモトピックであることを示し、全基点 π_* 同型を移す。単に共通 Kan 比較の存在だけで Ω 条件を結論しない。正の Ω 条件・BF 連結 K、π₀・dg・L3・K-基盤は未完。
 - 検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
 
