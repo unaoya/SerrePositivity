@@ -1773,3 +1773,15 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftExtension_of_local_colimits
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftExtension_iff_local_colimits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHasLimit_iff_hasColimit_op
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHasColimit_iff_hasLimit_op
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLocalColimit_iff_oppositeLocalLimit
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLocalConeOppositeIso_canonical
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeTransportOpposite
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeTransportOpposite_cone_val

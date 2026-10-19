@@ -421,3 +421,6 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinFiberLift
 public import SerrePositivity.InfinityCategories.F1B.KanLocalRelativeJoinConeEndpoint
 public import SerrePositivity.InfinityCategories.F1B.KanJoinPrismFixed
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaCoconeColimit
+public import SerrePositivity.InfinityCategories.F1B.KanLimitColimitOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanLocalCanonicalConeOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanCoconeTransportOpposite

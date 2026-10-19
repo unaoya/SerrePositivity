@@ -20,16 +20,22 @@
 - 右端から候補と指定変換を抽出。候補の標準局所輸送の余錐と、fiber の普遍余錐を
   標準比較へ制限した余錐を、図式・頂点を固定する比較円柱で結ぶ。
   始端・終端を厳密に同定し、全余錐の関手同型による余極限性の移送で左 Kan 条件を得る。
+- 双対化：図式の極限の存在と反転後の余極限の存在、その双対を任意の単体集合で証明。
+  左の局所余極限と反転後の右の局所極限の存在の同値も証明。
+  標準左比較余錐の反転を、局所添字と零単体の同型で標準右比較錐と厳密に同定。
+  `kanCoconeTransportOpposite` は指定変換を反転した実際の右輸送を構成する。
+  始端・図式・全時間の頂点固定・終端の余錐の反転との一致まで証明。普遍性の移送は次工程。
 - F1 の scaffold 比較は straightening に依存するため import しない。
   再構成した補題は `F1B.kanScaffoldBaseChange_overPullbackMap`。新規宣言も F1B 名前空間。
-- 最終検証：F1・F1B 同時ビルド成功（3550 jobs）、同時 import 検査成功（F1 6115・F1B 3829 宣言）。
-  公理監査成功（3833 宣言、標準三公理のみ、1035 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3588 jobs）、同時 import 検査成功（F1 6158・F1B 3850 宣言）。
+  公理監査成功（3854 宣言、標準三公理のみ、1055 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - 1. 右 Kan 拡張の存在を、左の存在定理と反転の双対性から構成する。
   Kerodon §7.3.4–5・Prop 7.3.5.5／HTT §4.3。8〜24 時間。
-  左の点ごとの余極限から関手全体への組み立ては完了。右の局所極限との対応を接続する。
+  左の組み立てと反転した局所形の極限条件の対応、指定変換に両立する輸送の反転は完了。
+  輸送の終端で普遍性を移し、二重反転を元のデータへ戻す。
 - 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
   原典は相対 Kan 拡張の存在（Prop 7.3.5.5）を使う。局所境界充填から直接は結論しない。
@@ -50,7 +56,8 @@
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
-- `F1B.exists_kanLeftExtension_of_local_colimits` / `F1B.exists_kanLeftExtension_iff_local_colimits`
+- `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.kanLocalColimit_iff_oppositeLocalLimit`
+- `F1B.kanCoconeTransportOpposite` / `F1B.kanCoconeTransportOpposite_cone_val`
 
 ### 依存と提供
 
@@ -61,7 +68,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：比較の終端の同定、全余錐の関手同型、余極限性の移送、左 Kan 拡張の存在の必要十分条件、集約・監査・本書）。
+- なし（本保存単位：局所極限・余極限の存在の双対性、標準比較錐の反転、指定変換に沿う輸送の反転、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -76,9 +83,11 @@
 
 ### 次の一手
 
-- `exists_kanLeftExtension_iff_local_colimits` を反転へ適用する。
-  `kanHomotopyOpposite`、左右局所形の反転同型、極限と反転後の余極限の対応を確認し、
-  指定変換つきの右 Kan 拡張の存在へ戻す。大域的 Hom 普遍性は別工程として残す。
+- `kanCoconeTransportOpposite_cone_val` で右輸送の終端の錐の射を元の余錐の反転と同定済み。
+  次はこの同定で余極限性を極限性へ移す。既存の `isLimitCone_iff_reverseCocone` は逆向きの
+  cone→cocone の判定なので、二重反転の添字・標的の同型も含めて適用する。
+  その後、左存在定理を δ.op へ適用し、指定変換つきの右拡張を元のデータへ戻す。
+  大域的 Hom 普遍性は別工程として残す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
