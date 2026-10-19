@@ -133,3 +133,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_face_one
 #check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_face_two
 #check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_face_three
+
+#check @SerrePositivity.InfinityCategories.F2.coherentEdgeHom_heq
+#check @SerrePositivity.InfinityCategories.F2.functorPrecomposition_simplex
+#check @SerrePositivity.InfinityCategories.F2.functorPostcomposition_simplex
+#check @SerrePositivity.InfinityCategories.F2.homMk_square_of_edge_eq
+#check @SerrePositivity.InfinityCategories.F2.edgeOfSimplexWithEndpoints
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_hom_simplex
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_triangle_square
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedronIso_square
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron
+#check @SerrePositivity.InfinityCategories.F2.trianglePrismTime_first
+#check @SerrePositivity.InfinityCategories.F2.trianglePrismTime_last
+#check @SerrePositivity.InfinityCategories.F2.trianglePrismTime_glue_first
+#check @SerrePositivity.InfinityCategories.F2.trianglePrismTime_glue_last
