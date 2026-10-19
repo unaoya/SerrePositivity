@@ -1,22 +1,23 @@
-# K-L1：∞-S• 構成と連結 K
+# K-S• → K-基盤 1・2：∞-S• と局所化不変量
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の K-S• → K-基盤。L1c〜f の後、L3 は非連結 K を BGT (a) のみで（暫定 (b) は使わない）、続けて局所化不変量・Tamme・Land–Tamme（K-基盤 1・2）。
 
 ## 引き継ぎ（2026-10-19）
 
 ### 現在地
-- K-L1（∞-S• 構成、連結 K）。L1a・L1b 完了。L1c 進行中、L1d–f 未完了。L1g は別途指示待ち。
+- K-L1（∞-S• 構成、連結 K）。L1a・L1b 完了。L1c 進行中、L1d–f 未完了。後続は L3・K-基盤 1・2（v2 の担当範囲）。
 - 全 gapped S• と第一行制限そのものの trivial Kan fibration を証明済み。
 - core・対角実現・Kan 置換・Ω、反復 S の段と単射な構造射への置換、零方向の境界比較を構成済み。
 - Ω から既存の path homotopy fiber への全基点 π_* 同型は証明済み。直前の S 実現との比較は未証明。
 - 元の object/core 実現比較の弱同値、McCarthy の左 fiber の切断、λ→μ・λ→ν の両枝を証明済み。
-- 停止の区切りは §6.59：両枝の span、C 内で点ごとに選ぶ raw ρ、面・退化との自然性、恒等端点。
-- raw ρ の cofiber 性・gapped 性・左 fiber 条件は未証明。実ホモトピーや加法性の完成ではない。
-- Lean 保存単位は 1dab0347。対象ビルド3218 jobs、公理監査1652宣言が成功、標準三公理のみ。
+- raw ρ の全頂点の cofiber 性、A・E が gapped のときの gapped 性を証明済み。
+- 同じ C 内の選択を保つ cofiber 値の `mcCarthyRho`、面・退化の自然性、時刻零の E の厳密回収を構成済み。
+- subobject・quotient の strict 回収と左 fiber 条件は未証明。実ホモトピー・加法性は未完。
+- 対象ビルド3225 jobs、公理監査1677宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
 
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
-- ρ の cofiber・gapped 性と subobject・quotient の厳密な回収：Fiore–Pieper Lemma 4.24、(4.26)、8–24時間。
+- ρ の subobject・quotient の厳密な回収と左 fiber 条件：Fiore–Pieper Lemma 4.24、(4.26)、8–24時間。
 - ρ と第二の θ を左 fiber の実ホモトピーにし、切断との変形収縮を完成：同 Lemma 4.24・Example 9.14、24–72時間。
 - 単体積版 Quillen A と object 加法性：同 Theorem 1.15・Lemma 4.24、16–40時間。
 - object/core 比較を使った実現の加法性と有限反復への自然性：同 Proposition 4.27・Theorem 4.35、8–24時間。
@@ -26,7 +27,7 @@
   §13 決定2・5・12、L9c の BF 界面、16–48時間。
 - π₀ K と TriangulatedK0(h C) の対象類を保つ自然同型：経路正本 §5 K0 界面欄6、L11 型草案 S1、16–40時間。
 - dg 関手性・Morita 不変性：経路正本 §4 D1・§5 K1b、U16・A3e、8–24時間（依存 API の照合を含む）。
-- L1g（fibration、filtered 余極限、Bass、非連結化）は今回の実装対象に拡張しない。
+- L3・K-基盤 1・2 は §6・7 の依存順に続行。非連結化は F2-lite の Ind を待つ。
 
 ### 主要宣言（名前のみ）
 - `sConstruction`、`simplicialSConstruction`、`firstRowRestriction_trivialKanFibration`、`firstRowEquivalence`
@@ -36,17 +37,19 @@
 - `objectToCoreSRealization_localized_isIso`、`objectCoreRowIso`
 - `cofiberStableSubobject`、`cofiberStableQuotient`、`mcCarthyFiberSection_quotient`
 - `mcCarthyLambdaMu`、`mcCarthyLambdaNu`、`mcCarthySpan`、`mcCarthyRhoRaw_pre`、`mcCarthyRhoRaw_timeZero`
+- `mcCarthyRhoRaw_isCofiber`、`mcCarthyRhoRaw_isGapped`、`mcCarthyRho`、`mcCarthyRho_isGapped`
+- `mcCarthyRho_ι`、`mcCarthyRho_pre`、`mcCarthyRho_timeZero`、`pointwiseDiagramPushoutApex_postcompIso`
 
 ### 依存と提供
 - 所有は `SerrePositivity/KST/SConstruction/`、集約、監査スクリプト、本計画。namespace は同名。
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）。
-- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較。
+- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性。
 - K スペクトル・加法性・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
-- 将来接続：L9 の Ω・π_*・BF、L2 の実現と plus 比較、α-S の h C の三角構造、N の dg nerve、D の Perf。
+- 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 担当ファイルの未コミット差分なし。本節も担当計画だけの `git commit --only` で保存して停止する。
+- 担当差分は本保存単位（新規6モジュール、集約、監査スクリプト、本計画）にまとめて保存する。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
@@ -54,19 +57,19 @@
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 1652宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
-- raw ρ の型は Ar→Fun(正方形,C)。cofiber・gapped・fiber への持ち上げをまだ要求していない点が主な未完。
+- 1677宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げと gapped 性は証明済み。左 fiber 条件は未完。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - homotopy fiber 比較を既存の構造射と形式的に合成するだけでは正の Ω 条件の証明にならない。
 - C×C と S₂C の ∞ 圏の同値は主張しない。加法性は S• と実現の後の定理。
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- raw ρ の cofiber・gapped 性を証明する一工程から再開する。
-- 方針：S_n(cofiberDiagrams C) の安定性と包含の完全性を使い、同じ span の押し出しとの関手同型で
-  C 内で点ごとに選んだ raw ρ を比較して条件を移す。`ihomCurryIso` で二重内部 Hom と積形状を照合する。
-- その後に各角の正規化を使う subobject・quotient の strict 回収へ進む。未証明条件を仮定にしない。
-- 再開時の検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
+- C 内の同じ選択の各角の正規化を使い、ρ の subobject を μ の subobject、quotient を E の quotient と厳密に回収する。
+- `pointwiseDiagramPushoutApex` の角での評価を `pointwisePushoutApex` に直し、subobject の span は左枝恒等、quotient の span は上枝恒等であることを示す。
+- `pointwisePushoutApex_identity` の両向きの正規化で等号を得る。cofiber 図式内で選び直した押し出しの同型だけでは strict 回収を結論しない。
+- その後、ρ と第二の θ を左 fiber の実ホモトピーにする。未証明の fiber 条件を仮定にしない。
+- 検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
 
 ## 1. 目標・担当範囲
 
@@ -80,7 +83,7 @@ Core 公開名・型を変更しない。Stable（α-S）、F1 の core（α2）
 ## 2. 原典・正本
 
 - `k-theory-kst-route.md` §4 D1、§5 K1・K0、§6、§10-5・11・12・13、§13 決定2・5・9・12。
-- `foundations.md`。非連結化の最終定義は BGT、暫定実装は Schlichting。非連結化は今回の範囲外。
+- `foundations.md` §8 と経路正本 §13 決定16を優先。非連結化は BGT (a) のみ。
 - `L11-paper.md` §5・11・12・13・S1。特に以下の文言補正を採用する。
 - BGT v4 Definition 7.1、Lemma 7.3、Remark 7.4（gapped と第一行）。
 - Fiore–Pieper Lemma 4.24、Proposition 4.27、Theorem 4.35、Corollary 3.35（McCarthy 型加法性）。
@@ -96,7 +99,8 @@ Core 公開名・型を変更しない。Stable（α-S）、F1 の core（α2）
 | L1d | Additivity.lean | McCarthy 型ホモトピーによる実現後の加法性 |
 | L1e | PiZero.lean | π₀ K(C) ≃+ TriangulatedK0(h C)、対象類と自然性 |
 | L1f | DGApplication.lean | K(N_dg(Perf_dg D))、dg 関手性、Morita 不変性 |
-| L1g | 別途指示 | fibration 定理、filtered 余極限、Bass、非連結化 |
+| L3 | §6 | fibration 定理、BGT (a) の非連結化、局所化不変量 |
+| K-基盤 2 | §7 | Tamme の分裂、dg 増強流の ⊙ と Land–Tamme 主定理 |
 
 ## 4. 設計と実装前の文言
 
@@ -136,13 +140,13 @@ Fiore–Pieper の McCarthy 型の経路を用い、普遍的 cocartesian comple
 ファイブレーションでパラメータ付き pushout を選び、単体ホモトピー、単体積版 Quillen A、
 対角実現、object/core 比較を証明する。Waldhausen の元の証明からの経路変更を明記する。
 
-### §10-12：最小 fibration 定理（後続 L1g の仕様）
+### §10-12：最小 fibration 定理（後続 L3 の仕様）
 
 C 安定、D thick、W={f | cofib(f)∈D}。W の2-out-of-3・pushout・extension 安定性が必要。
 ∞ 局所化と dg 商の比較には mapping 空間の比較まで要求し、H⁰ の Verdier 普遍性で代用しない。
 冪等完備化は K₀ を変えるため、連結 K の局所化を全冪等完備 Verdier 列に無条件では課さない。
 最終的な非連結 K(D)→K(C)→K((C/D)^idem) の fiber 列へは、必要な cofinality 条件を明示した
-連結版と Schlichting suspension を経由する。L11 では ∞ 版全体は未検証である。
+連結版と BGT §9 の非連結化を経由する。L11 では ∞ 版全体は未検証である。
 今回の L1a–f の成果としてこの定理を完成扱いしない。
 
 ### K と界面
@@ -161,6 +165,21 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 公開宣言を #check / #print axioms で監査し、許可するのは propext、Classical.choice、Quot.sound のみ。
 全体ビルドは工程の区切りで行う。自分の import 閉包外の並行作業の失敗は記録して続ける。
 自分の検証済みファイルだけを保存し、経緯はコミットメッセージに記す。
+
+## 6. L3・K-基盤 1（L1c〜f の後）
+
+- **担当境界**：K の fibration・局所化定理は本レーン。Drinfeld 商の dg nerve と ∞ 圏的 Verdier 商の比較・Verdier 列の供給は D レーン β3。H⁰ の普遍性だけで mapping 空間の比較を代用しない。
+- **Ind を待つ間**：小さい安定 ∞ 圏の完全関手を基礎に、冪等完備性の述語、Cat^perf の対象・射、Verdier 列、半直交分解、Sp 値の局所化不変量の定義と分裂列の帰結を整える。Cat^perf の ∞ 圏としての構成・極限は α2b の Cat_∞ に接続する。冪等完備化の存在を未証明の仮定で完成扱いしない。
+- **fibration**：W の2-out-of-3・pushout・extension 安定性、S• の相対構成と加法性から連結版を証明し、必要な cofinality を明示する（Waldhausen 1985 §1.6、BGT §7–9、80–160時間）。β3 の商との比較は到着後に接続する。
+- **非連結化は BGT (a) のみ**：N の Ind・κ-compact・冪等完備化と α2b の F2-lite を待ち、BGT §9 の suspension と反復 colimit により定義する（80–160時間）。Schlichting 暫定版 (b)・Bass による定義は導入しない。
+- **完了条件**：冪等完備 Verdier 列を fiber 列に送る非連結 K、Morita 不変性、filtered 余極限との可換、連結 K との比較を証明する。値域の ∞ 圏 Sp は Sp レーンの供給を使い、局所化不変量の構造体にモデル圏 instance を要求しない（BGT §8–9、40–100時間）。
+
+## 7. K-基盤 2（dg 増強流）
+
+- **Tamme**：完全関手の lax pullback、標準包含・射影、半直交分解と分裂列を構成し、任意の局所化不変量で分裂を証明する（Tamme 2018 §1、60–120時間）。Cat_∞ の極限は α2b、dg gluing との比較は D の β4 を読み取り専用で使う。
+- **Land–Tamme の ⊙**：dg 代数の Milnor 四角形から Perf の lax pullback と対角像の Verdier 商を作り、生成元の dg 自己準同型代数として A′ ⊙_A B を構成する。D の β3・β4・β5（非可換 D(A)・相対テンソル・Morita）を使う（Land–Tamme 2019 §1–2、100–200時間）。E₁ 環スペクトル・HA §2–4 の構成には進まない。
+- **主定理**：Tamme の分裂と上の Verdier 列から、B′ を ⊙ に置き換えた四角形を全ての局所化不変量が引き戻しに送ると証明する。dg の対象供給と ∞ 圏の形式的議論を接続する（Land–Tamme §2、60–120時間）。
+- **pro 版**：Tor の pro 消滅から ⊙→B′ の比較を経て pro 切除へ。Tor の環論は L7 の入力を待つ（Land–Tamme §3、80–160時間）。第 II 段のスキーム応用は基盤 I-a・I-b が閉じるまで起動しない。
 
 ## 記録の所在
 

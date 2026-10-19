@@ -204,4 +204,11 @@ public import SerrePositivity.KST.SConstruction.SpanCoordinateExchange
 public import SerrePositivity.KST.SConstruction.PointwisePushoutApex
 public import SerrePositivity.KST.SConstruction.McCarthyRhoRaw
 
+public import SerrePositivity.KST.SConstruction.PointwiseDiagramPushout
+public import SerrePositivity.KST.SConstruction.PointwiseCofiberPushout
+public import SerrePositivity.KST.SConstruction.PointwiseGappedPushout
+public import SerrePositivity.KST.SConstruction.CofiberGappedPushout
+public import SerrePositivity.KST.SConstruction.McCarthySpanGapped
+public import SerrePositivity.KST.SConstruction.McCarthyRho
+
 /-! # ∞-S• 構成と連結 K 理論 -/

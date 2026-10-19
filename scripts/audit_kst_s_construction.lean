@@ -4189,3 +4189,54 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_pre
 #check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_timeZero
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_timeZero
+
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushout
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushout
+#check @SerrePositivity.KST.SConstruction.ihomCurry_evaluate_pair
+#print axioms SerrePositivity.KST.SConstruction.ihomCurry_evaluate_pair
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushout_evaluate
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushout_evaluate
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushout_isPushout
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushout_isPushout
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushout_span
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushout_span
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushout_apex
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushout_apex
+#check @SerrePositivity.KST.SConstruction.chosenDiagramPushout_apex
+#print axioms SerrePositivity.KST.SConstruction.chosenDiagramPushout_apex
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex_postcompIso
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex_postcompIso
+#check @SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex.of_vertexIso
+#print axioms SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex.of_vertexIso
+#check @SerrePositivity.KST.SConstruction.pointwiseCofiberPushout_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointwiseCofiberPushout_vertex
+#check @SerrePositivity.KST.SConstruction.pointwiseCofiberPushout
+#print axioms SerrePositivity.KST.SConstruction.pointwiseCofiberPushout
+#check @SerrePositivity.KST.SConstruction.pointwiseCofiberPushout_ι
+#print axioms SerrePositivity.KST.SConstruction.pointwiseCofiberPushout_ι
+#check @SerrePositivity.KST.SConstruction.pointwisePushoutApex_isGapped
+#print axioms SerrePositivity.KST.SConstruction.pointwisePushoutApex_isGapped
+#check @SerrePositivity.KST.SConstruction.pointwiseCofiberPushout_iso
+#print axioms SerrePositivity.KST.SConstruction.pointwiseCofiberPushout_iso
+#check @SerrePositivity.KST.SConstruction.pointwiseCofiberPushout_isGapped
+#print axioms SerrePositivity.KST.SConstruction.pointwiseCofiberPushout_isGapped
+#check @SerrePositivity.KST.SConstruction.transposeFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.transposeFamily_vertex
+#check @SerrePositivity.KST.SConstruction.transposeFamily_interval_vertex
+#print axioms SerrePositivity.KST.SConstruction.transposeFamily_interval_vertex
+#check @SerrePositivity.KST.SConstruction.mcCarthySpan_isGapped_vertex
+#print axioms SerrePositivity.KST.SConstruction.mcCarthySpan_isGapped_vertex
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_isCofiber
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_isCofiber
+#check @SerrePositivity.KST.SConstruction.mcCarthyRho
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRho
+#check @SerrePositivity.KST.SConstruction.mcCarthyRho_ι
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRho_ι
+#check @SerrePositivity.KST.SConstruction.mcCarthyRho_timeZero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRho_timeZero
+#check @SerrePositivity.KST.SConstruction.mcCarthyRho_pre
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRho_pre
+#check @SerrePositivity.KST.SConstruction.mcCarthyRho_isGapped
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRho_isGapped
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_isGapped
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_isGapped
