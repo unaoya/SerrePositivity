@@ -18,19 +18,19 @@
 - 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
 - 球面的な相対境界の交代和と、path の loop 群同型での符号を相対 Kan 充填で照合済み。
-- 源の単射と標的の fibration の corner、および path と終点を同時に指定する相対 fibration を構成済み。
-- 二方向の連結射の共通ホーン充填と、その最後の面の境界定数単体を構成し、二射影を厳密に計算済み。
-- 球面的持ち上げと終端正規化を面次数一へ一般化し、最後から二番目の面の連結射はその面の類の逆元と証明済み。
-- 隣接比較ホーンを構成し、その出力の非定数面を loop 側の連結射の境界代表そのものと厳密に照合済み。
-- 比較ホーン全体を fiber に持ち上げ、境界 loop の値が共通 path の終点の類の逆元となる式を、比較ホーンの選択を残さず全正次数で証明済み。
-- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、4018 jobs、終了コード 0。
-- 停止前の全体ビルド：`lake build`、14073 jobs、終了コード 0。
-- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、550 モジュール・5431 宣言、標準三公理のみ、終了コード 0。
+- corner の相対 fibration と二方向の共通ホーン充填を構成し、最後の面の境界定数単体の二射影を厳密に計算済み。
+- 面次数一からの球面的持ち上げ・逆元公式と隣接比較ホーンを構成し、出力の非定数面を loop 側の境界代表と照合済み。
+- 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
+- 零 loop 成分の基本段も、成分集合に群を置かず、元の fiber の基本群の逆元として標準接続写像と比較済み。
+- これらを fibration の塔の微分へ合成し、正次数・零 loop 成分の双方で次数移動の反可換式を証明済み。
+- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、4027 jobs、終了コード 0。
+- 全体ビルド：共有 F1/F1B の同名宣言の import 衝突で失敗。対象と専用監査は成功。
+- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、559 モジュール・5472 宣言、標準三公理のみ、終了コード 0。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - セル境界の局所的な連結準同型を反復 loop の成分代表で計算し、球面的境界の向きと整合させる。
-  代表での逆元公式と fiber 内の終点の一致まで証明済み。標準の連結準同型の群の式への移送と、零 loop 成分の基本段が未完。
+  標準の反可換式と零 loop 成分の基本段、塔の微分の次数移動まで証明済み。写像空間の交換同型との合成が残る。
   原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
 - 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
   原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
@@ -64,9 +64,10 @@
 - `SphericalFiberLift.alternatingClass_connecting`
 - `SphericalPathBoundary.alternating_loopPositive`
 - `RelativePath.common_boundary_simplex`
-- `connectingHom_penultimate`
-- `loopPositive_penultimate`
-- `LoopConnectingComparison.boundaryLoop_inverse_common`
+- `pointedConnectingHom_loopPositive`
+- `pointedConnectingZero_loopZero`
+- `PointedFibrationTower.differential_loopPositive`
+- `PointedFibrationTower.differential_loopZero`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv`
 - `SkeletalCellAttachment.coefficientDifferential`
 - `RationalLevelNormalizedCochains.positive_cohomology_isZero`
@@ -87,7 +88,7 @@
 - 共有ルート `SerrePositivity.lean` および他レーンの既存差分は触らず、今回のコミット対象にも含めない。
 
 ### 既知の問題
-- 自分の import 閉包・対象ビルド・公理監査・全体ビルドは成功。以前の F1 の未定義名の失敗は今回再現しない。
+- 自分の import 閉包・対象ビルド・公理監査は成功。共有ルートの全体ビルドは F1/F1B の `leftScaffoldBaseChange_overPullbackMap` 重複で失敗。
 - 所有ソースの sorry・追加 axiom はなし。所有宣言の型に `HomotopicalAlgebra.ModelCategory` 定数がないことも Lean 環境を走査して確認済み。
 - import 閉包に KanQuillen モジュールなし。`SSet.modelCategoryQuillen` 名前空間は Mathlib のホーン生成射・Fibration の既存 API に使うが、`ModelCategory SSet` は仮定しない。
 - 公理監査は私有宣言・推移的な公理依存と、宣言型の ModelCategory 定数を検査する。
@@ -96,10 +97,10 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- `boundaryLoop_inverse_common` を、`common_boundary_simplex` から得る U と loop 側の BoundaryLift V へ適用し、`pointedConnectingHom` と `loopPositiveHomotopyEquiv` の反可換式へ移す。幾何的な充填と逆符号の再構成は不要。
-- 正次数の群の移送の後、`boundaryLiftNullhomotopy` と `loopZeroHomotopyEquiv` による零 loop 成分の基本段を照合する。現在の逆元公式を零次数の式と混同しない。
+- `PointedFibrationTower.differential_loopPositive` と `differential_loopZero` を骨格の制限写像へ適用する。共通ホーン・標準接続写像の反可換式の再構成は不要。
+- `PointedMapping.loopSwap` の源への自然性と fiber 同型を用い、loop 値の骨格の塔と元の塔の loop の比較を作る。
 - その交換式を反復 loop の係数比較へ合成し、`skeletalFiberVertex_normalizedDifferential` と実際の `coefficientDifferential` の像・符号を照合する。
-- Sp-1c・Sp-1d は未完。代表での逆元の計算だけから、骨格微分の同定・塔の収束を主張しない。
+- Sp-1d は未完。骨格微分の同定・塔の収束・Shapiro 全射性は主張しない。
 
 ## 範囲と所有
 

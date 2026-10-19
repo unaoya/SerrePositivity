@@ -80,3 +80,12 @@ public import SerrePositivity.KST.Spectra.MappingFiberPaths
 public import SerrePositivity.KST.Spectra.LoopConnectingPathLift
 public import SerrePositivity.KST.Spectra.LoopConnectingPathOutput
 public import SerrePositivity.KST.Spectra.LoopConnectingFiberEndpoint
+public import SerrePositivity.KST.Spectra.LoopBoundaryRepresentatives
+public import SerrePositivity.KST.Spectra.LoopConnectingStandardRepresentatives
+public import SerrePositivity.KST.Spectra.LoopConnectingAnticommutation
+public import SerrePositivity.KST.Spectra.ReverseBoundaryEdge
+public import SerrePositivity.KST.Spectra.LoopZeroPenultimate
+public import SerrePositivity.KST.Spectra.PointedZeroConnecting
+public import SerrePositivity.KST.Spectra.LoopConnectingZeroFiber
+public import SerrePositivity.KST.Spectra.LoopConnectingZeroAnticommutation
+public import SerrePositivity.KST.Spectra.PointedTowerLoopDifferential

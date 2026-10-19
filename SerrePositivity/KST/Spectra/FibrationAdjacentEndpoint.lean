@@ -21,23 +21,23 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B Y : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
-  {s : B.PtSimplex (n + 2) (p.app _ e)}
-  (U : E.PtSimplex (n + 2) e) (V : BoundaryLift p e s)
+  {s : B.PtSimplex (n + 1) (p.app _ e)}
+  (U : E.PtSimplex (n + 1) e) (V : BoundaryLift p e s)
   {y : Y _⦋0⦌} (h : E ⟶ Y) (hpoint : h.app _ e = y)
   (hV : V.map ≫ h = SSet.const y)
-  (φ : (Δ[n + 3] : SSet.{u}) ⟶ E)
-  (hface : ∀ j, j ≠ Fin.last (n + 3) → stdSimplex.δ j ≫ φ = face U V j)
+  (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
+  (hface : ∀ j, j ≠ Fin.last (n + 2) → stdSimplex.δ j ≫ φ = face U V j)
 
 /-- 概要：最後の面の終点は境界定数単体になる。
 方針：各境界を既知の面へ移し、U の境界定数性と V の終点定数性を使う。
 規約：基点の移送だけを明示する。
 使われ方：Goerss–Jardine I §8。fiber 内の path の終点の群の代表。 -/
-def endpointSimplex (U : E.PtSimplex (n + 2) e) (V : BoundaryLift p e s)
+def endpointSimplex (U : E.PtSimplex (n + 1) e) (V : BoundaryLift p e s)
     (h : E ⟶ Y) (hpoint : h.app _ e = y) (hV : V.map ≫ h = SSet.const y)
-    (φ : (Δ[n + 3] : SSet.{u}) ⟶ E)
-    (hface : ∀ j, j ≠ Fin.last (n + 3) → stdSimplex.δ j ≫ φ = face U V j) :
-    Y.PtSimplex (n + 2) y where
-  map := stdSimplex.δ (Fin.last (n + 3)) ≫ φ ≫ h
+    (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
+    (hface : ∀ j, j ≠ Fin.last (n + 2) → stdSimplex.δ j ≫ φ = face U V j) :
+    Y.PtSimplex (n + 1) y where
+  map := stdSimplex.δ (Fin.last (n + 2)) ≫ φ ≫ h
   comm := by
     ext j : 1
     simp only [boundary.ι_ι_assoc, Subcomplex.ofSimplex_ι, comp_const]
@@ -55,7 +55,7 @@ def endpointSimplex (U : E.PtSimplex (n + 2) e) (V : BoundaryLift p e s)
 規約：元の U の終点から出力の終点への向き。
 使われ方：Goerss–Jardine I §8。終点のホモトピー類の一致。 -/
 def endpointRel : PtSimplex.RelStruct (mapSimplex h hpoint U)
-    (endpointSimplex U V h hpoint hV φ hface) (Fin.last (n + 2)) where
+    (endpointSimplex U V h hpoint hV φ hface) (Fin.last (n + 1)) where
   map := φ ≫ h
   δ_castSucc_map := by
     rw [← Category.assoc, hface _ (Fin.castSucc_ne_last _)]
@@ -64,8 +64,8 @@ def endpointRel : PtSimplex.RelStruct (mapSimplex h hpoint U)
     rfl
   δ_succ_map := rfl
   δ_map_of_lt j hj := by
-    have hj' : j.val < n + 2 := hj
-    have hn : j ≠ Fin.last (n + 3) := by
+    have hj' : j.val < n + 1 := hj
+    have hn : j ≠ Fin.last (n + 2) := by
       intro he; have := congrArg Fin.val he; simp only [Fin.val_last] at this; omega
     rw [← Category.assoc, hface j hn]
     simp only [face]

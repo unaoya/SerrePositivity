@@ -87,13 +87,18 @@ theorem boundaryLoop_inverse_endpoint [Fibration p.right]
   exact hout.trans (congrArg Inv.inv hc)
 
 omit hφ
+section Source
+variable {m : ℕ}
+  {w : (loopSpace B).right.PtSimplex (m + 1)
+    ((PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right.app _
+      (loopSpace E).basepoint)}
 /-- 概要：底の loop を覆う path の境界定数単体の終点は fiber に入る。
 方針：終点の自然性と底の loop の終点の定数性を使う。
 規約：比較ホーンの選択を使わない。
 使われ方：Goerss–Jardine I §8。連結射の元の終点の代表。 -/
 lemma sourceEndpoint_comp_of_projection
-    (U : (basedPathSpace E).right.PtSimplex (n + 2) (basedPathSpace E).basepoint)
-    (hU : U.map ≫ (basedPathMap p).right = (pathSimplex p (v := v)).map) :
+    (U : (basedPathSpace E).right.PtSimplex (m + 1) (basedPathSpace E).basepoint)
+    (hU : U.map ≫ (basedPathMap p).right = (pathSimplex p (v := w)).map) :
     (mapSimplex (pathEndpoint E).right
       (OmegaSpectrum.pointedMap_basepoint (pathEndpoint E)) U).map ≫ p.right =
         SSet.const (p.right.app _ E.basepoint) := by
@@ -106,13 +111,15 @@ lemma sourceEndpoint_comp_of_projection
 
 /-- 底の loop を覆う path の境界定数単体の終点を fiber 内の単体にする。 -/
 def sourceFiberSimplex
-    (U : (basedPathSpace E).right.PtSimplex (n + 2) (basedPathSpace E).basepoint)
-    (hU : U.map ≫ (basedPathMap p).right = (pathSimplex p (v := v)).map) :
-    (KanFiber p.right (p.right.app _ E.basepoint)).PtSimplex (n + 2)
+    (U : (basedPathSpace E).right.PtSimplex (m + 1) (basedPathSpace E).basepoint)
+    (hU : U.map ≫ (basedPathMap p).right = (pathSimplex p (v := w)).map) :
+    (KanFiber p.right (p.right.app _ E.basepoint)).PtSimplex (m + 1)
       (fiberPoint p.right E.basepoint) :=
   KanFiber.liftSimplex p.right E.basepoint
     (mapSimplex (pathEndpoint E).right (OmegaSpectrum.pointedMap_basepoint (pathEndpoint E)) U)
     (sourceEndpoint_comp_of_projection p U hU)
+
+end Source
 
 /-- 概要：loop 側の境界と、同じ loop を覆う path の終点は逆元の関係にある。
 方針：比較ホーンを実際に充填し、fiber 内の終点の比較と負符号の計算を適用する。

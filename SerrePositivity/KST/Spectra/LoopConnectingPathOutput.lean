@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopConnectingPathLift
+public import SerrePositivity.KST.Spectra.LoopZeroPenultimate
 
 /-!
 概要：連結射の比較ホーンの出力を fiber 内の path 族とし、その逆符号を計算する。
@@ -22,29 +23,29 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) {n : ℕ}
-  {v : (loopSpace B).right.PtSimplex (n + 2)
+  {v : (loopSpace B).right.PtSimplex (n + 1)
     ((PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right.app _
       (loopSpace E).basepoint)}
   (V : BoundaryLift (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
     (loopSpace E).basepoint v)
-  (φ : (Δ[n + 3] : SSet.{u}) ⟶ (basedPathSpace E).right)
+  (φ : (Δ[n + 2] : SSet.{u}) ⟶ (basedPathSpace E).right)
   (hφ : φ ≫ (basedPathMap p).right =
-    stdSimplex.σ (Fin.last (n + 1)).castSucc ≫ (pathSimplex p (v := v)).map)
+    stdSimplex.σ (Fin.last (n)).castSucc ≫ (pathSimplex p (v := v)).map)
 
 /-- 比較ホーンの最後の面を fiber 内の path として読む。 -/
-def outputFamily : (Δ[n + 2] : SSet.{u}) ⟶ (basedPathSpace (pointedFiber p)).right :=
+def outputFamily : (Δ[n + 1] : SSet.{u}) ⟶ (basedPathSpace (pointedFiber p)).right :=
   AdjacentLiftComparison.output φ hφ ≫ (PointedMapping.fiberIso pointedInterval.{u} p).inv.right
 
 /-- 概要：出力の path 族の非定数面は loop の連結射の境界の path 表示。
 方針：比較ホーンの面の公式と、構成済みの境界 loop の厳密な同定を合成する。
 規約：最後から二番目の面だけが非定数。
 使われ方：Goerss–Jardine I §8。逆元公式への幾何的入力。 -/
-lemma outputFamily_face (U : (basedPathSpace E).right.PtSimplex (n + 2)
+lemma outputFamily_face (U : (basedPathSpace E).right.PtSimplex (n + 1)
     (basedPathSpace E).basepoint)
-    (hface : ∀ j, j ≠ Fin.last (n + 3) →
+    (hface : ∀ j, j ≠ Fin.last (n + 2) →
       stdSimplex.δ j ≫ φ = AdjacentLiftComparison.face U (pathLift p V) j)
-    (j : Fin (n + 3)) :
-    stdSimplex.δ j ≫ outputFamily p φ hφ = if j.val = n + 1 then
+    (j : Fin (n + 2)) :
+    stdSimplex.δ j ≫ outputFamily p φ hφ = if j.val = n then
       (boundaryLoop p V).map ≫ (PointedMapping.loopToPath (pointedFiber p)).right
       else SSet.const (basedPathSpace (pointedFiber p)).basepoint := by
   change stdSimplex.δ j ≫ AdjacentLiftComparison.output φ hφ ≫ _ = _
@@ -55,7 +56,7 @@ lemma outputFamily_face (U : (basedPathSpace E).right.PtSimplex (n + 2)
     have hb : (pointedFiber (basedPathMap p)).basepoint =
         fiberPoint (basedPathMap p).right (basedPathSpace E).basepoint :=
       PointedSimplicialSet.basepoint_ofVertex _ _
-    exact congrArg (fun z ↦ SSet.const (X := (Δ[n + 1] : SSet.{u})) z)
+    exact congrArg (fun z ↦ SSet.const (X := (Δ[n] : SSet.{u})) z)
       ((congrArg ((PointedMapping.fiberIso pointedInterval.{u} p).inv.right.app _) hb.symm).trans
         (OmegaSpectrum.pointedMap_basepoint (PointedMapping.fiberIso pointedInterval.{u} p).inv))
 
@@ -67,7 +68,7 @@ lemma outputFamily_face (U : (basedPathSpace E).right.PtSimplex (n + 2)
 lemma outputFamily_endpoint_include :
     (outputFamily p φ hφ ≫ (pathEndpoint (pointedFiber p)).right) ≫
         (pointedFiberι p).right =
-      stdSimplex.δ (Fin.last (n + 3)) ≫ φ ≫ (pathEndpoint E).right := by
+      stdSimplex.δ (Fin.last (n + 2)) ≫ φ ≫ (pathEndpoint E).right := by
   have he := congrArg Under.Hom.right (PointedMapping.pathFiber_endpoint p)
   simp only [Under.comp_right] at he
   change (AdjacentLiftComparison.output φ hφ ≫
@@ -84,11 +85,11 @@ lemma outputFamily_endpoint_include :
 方針：loop の path 表示の終点は定数なので、出力の全ての境界の終点が定数。
 規約：基点は path の終点評価の像のまま保持する。
 使われ方：Goerss–Jardine I §8。比較出力の終点の群の代表。 -/
-def outputEndpointSimplex (U : (basedPathSpace E).right.PtSimplex (n + 2)
+def outputEndpointSimplex (U : (basedPathSpace E).right.PtSimplex (n + 1)
     (basedPathSpace E).basepoint)
-    (hface : ∀ j, j ≠ Fin.last (n + 3) →
+    (hface : ∀ j, j ≠ Fin.last (n + 2) →
       stdSimplex.δ j ≫ φ = AdjacentLiftComparison.face U (pathLift p V) j) :
-    (pointedFiber p).right.PtSimplex (n + 2)
+    (pointedFiber p).right.PtSimplex (n + 1)
       ((pathEndpoint (pointedFiber p)).right.app _
         (basedPathSpace (pointedFiber p)).basepoint) where
   map := outputFamily p φ hφ ≫ (pathEndpoint (pointedFiber p)).right
@@ -105,18 +106,51 @@ def outputEndpointSimplex (U : (basedPathSpace E).right.PtSimplex (n + 2)
 規約：標準基点への移送以外の符号補正は行わない。
 使われ方：Goerss–Jardine I §8。loop と連結射の交換の負符号。 -/
 theorem output_boundary_inverse [Fibration p.right]
+    {w : (loopSpace B).right.PtSimplex (n + 2)
+      ((PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right.app _
+        (loopSpace E).basepoint)}
+    (W : BoundaryLift (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
+      (loopSpace E).basepoint w)
+    (ψ : (Δ[n + 3] : SSet.{u}) ⟶ (basedPathSpace E).right)
+    (hψ : ψ ≫ (basedPathMap p).right =
+      stdSimplex.σ (Fin.last (n + 1)).castSucc ≫ (pathSimplex p (v := w)).map)
     (U : (basedPathSpace E).right.PtSimplex (n + 2) (basedPathSpace E).basepoint)
     (hface : ∀ j, j ≠ Fin.last (n + 3) →
-      stdSimplex.δ j ≫ φ = AdjacentLiftComparison.face U (pathLift p V) j) :
-    loopPositiveHomotopyEquiv (pointedFiber p) n (KanHomotopyGroup.mk (boundaryLoop p V)) =
+      stdSimplex.δ j ≫ ψ = AdjacentLiftComparison.face U (pathLift p W) j) :
+    loopPositiveHomotopyEquiv (pointedFiber p) n (KanHomotopyGroup.mk (boundaryLoop p W)) =
       (KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl (pointedFiber p).right)
         (pathEndpoint_basepoint (pointedFiber p))
-        (KanHomotopyGroup.mk (outputEndpointSimplex p V φ hφ U hface)))⁻¹ := by
+        (KanHomotopyGroup.mk (outputEndpointSimplex p W ψ hψ U hface)))⁻¹ := by
   exact loopPositive_penultimate (pointedFiber p) n
-    (outputEndpointSimplex p V φ hφ U hface) (boundaryLoop p V) (outputFamily p φ hφ)
+    (outputEndpointSimplex p W ψ hψ U hface) (boundaryLoop p W) (outputFamily p ψ hψ)
     rfl (fun j ↦ by
       simpa only [Category.assoc, PointedMapping.loopToPath_fiber] using
-        outputFamily_face p V φ hφ U hface j)
+        outputFamily_face p W ψ hψ U hface j)
+
+/-- 概要：比較ホーンの零 loop 成分は、出力の終点の基本群の逆元を表す。
+方針：零次元の非定数な loop 面に、零 loop の逆元公式を適用する。
+規約：fiber の零次数は成分集合。逆元は終点の基本群で取る。
+使われ方：Goerss–Jardine I §8。連結射の交換の基本段の符号。 -/
+theorem output_zero_boundary_inverse [Fibration p.right]
+    {w : (loopSpace B).right.PtSimplex 1
+      ((PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right.app _
+        (loopSpace E).basepoint)}
+    (W : BoundaryLift (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
+      (loopSpace E).basepoint w)
+    (ψ : (Δ[2] : SSet.{u}) ⟶ (basedPathSpace E).right)
+    (hψ : ψ ≫ (basedPathMap p).right =
+      stdSimplex.σ (0 : Fin 2) ≫ (pathSimplex p (v := w)).map)
+    (U : (basedPathSpace E).right.PtSimplex 1 (basedPathSpace E).basepoint)
+    (hface : ∀ j, j ≠ (2 : Fin 3) →
+      stdSimplex.δ j ≫ ψ = AdjacentLiftComparison.face U (pathLift p W) j) :
+    loopZeroHomotopyEquiv (pointedFiber p) (KanHomotopy.mk 0 (boundaryLoop p W)) =
+      (KanHomotopyGroup.equivOfIso 0 (Iso.refl (pointedFiber p).right)
+        (pathEndpoint_basepoint (pointedFiber p))
+        (KanHomotopyGroup.mk (outputEndpointSimplex p W ψ hψ U hface)))⁻¹ := by
+  exact loopZero_penultimate (pointedFiber p)
+    (outputEndpointSimplex p W ψ hψ U hface) (boundaryLoop p W) (outputFamily p ψ hψ) rfl
+    (by simpa only [Fin.val_zero, ite_true] using outputFamily_face p W ψ hψ U hface 0)
+    (by simpa using outputFamily_face p W ψ hψ U hface 1)
 
 end
 end SerrePositivity.KST.Spectra.LoopConnectingComparison

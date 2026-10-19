@@ -23,7 +23,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) {n : ℕ}
-  {v : (loopSpace B).right.PtSimplex (n + 2)
+  {v : (loopSpace B).right.PtSimplex (n + 1)
     ((PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right.app _
       (loopSpace E).basepoint)}
   (V : BoundaryLift (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
@@ -39,7 +39,7 @@ lemma sourcePoint :
     OmegaSpectrum.pointedMap_basepoint]
 
 /-- loop の底の単体を path の底の単体へ含める。 -/
-def pathSimplex : (basedPathSpace B).right.PtSimplex (n + 2)
+def pathSimplex : (basedPathSpace B).right.PtSimplex (n + 1)
     ((basedPathMap p).right.app _ (basedPathSpace E).basepoint) :=
   mapSimplex (PointedMapping.loopToPath B).right (sourcePoint p) v
 
@@ -70,9 +70,9 @@ lemma pathLift_endpoint : (pathLift p V).map ≫ (pathEndpoint E).right = SSet.c
 
 /-- 概要：loop の連結射の境界を、元の fiber の loop の単体として表示する。
 方針：標準基点の境界を既存 loop–fiber 同型の逆で移す。
-規約：面の実際の次数は n+1。
+規約：面の実際の次数は n。
 使われ方：Goerss–Jardine I §8。負符号を持つ loop の代表。 -/
-def boundaryLoop : (loopSpace (pointedFiber p)).right.PtSimplex (n + 1)
+def boundaryLoop : (loopSpace (pointedFiber p)).right.PtSimplex (n)
     (loopSpace (pointedFiber p)).basepoint :=
   mapSimplex (loopPointedFiberIso p).inv.right
     (OmegaSpectrum.pointedMap_basepoint (loopPointedFiberIso p).inv) V.pointedBoundary

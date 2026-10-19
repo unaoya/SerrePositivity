@@ -23,12 +23,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B Y Z : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
-  {s : B.PtSimplex (n + 2) (p.app _ e)}
-  (U : E.PtSimplex (n + 2) e) (V : BoundaryLift p e s)
+  {s : B.PtSimplex (n + 1) (p.app _ e)}
+  (U : E.PtSimplex (n + 1) e) (V : BoundaryLift p e s)
   {y : Y _⦋0⦌} (h : E ⟶ Y) (hpoint : h.app _ e = y)
   (hV : V.map ≫ h = SSet.const y)
-  (φ : (Δ[n + 3] : SSet.{u}) ⟶ E)
-  (hface : ∀ j, j ≠ Fin.last (n + 3) → stdSimplex.δ j ≫ φ = face U V j)
+  (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
+  (hface : ∀ j, j ≠ Fin.last (n + 2) → stdSimplex.δ j ≫ φ = face U V j)
   (r : Y ⟶ Z) (hr : (φ ≫ h) ≫ r = SSet.const (r.app _ y))
 
 include hr hface
@@ -38,7 +38,7 @@ include hr hface
 規約：射影が定数なホモトピー全体から導く。
 使われ方：Goerss–Jardine I §8。fiber の中での始点の代表。 -/
 lemma sourceEndpoint_comp : (mapSimplex h hpoint U).map ≫ r = SSet.const (r.app _ y) := by
-  have hf := hface (Fin.last (n + 2)).castSucc (Fin.castSucc_ne_last _)
+  have hf := hface (Fin.last (n + 1)).castSucc (Fin.castSucc_ne_last _)
   simp only [face, Fin.val_castSucc, Fin.val_last] at hf
   rw [ite_eq_right (by omega), ite_true] at hf
   change (U.map ≫ h) ≫ r = _
@@ -51,7 +51,7 @@ include hV in
 使われ方：Goerss–Jardine I §8。fiber の中での終点の代表。 -/
 lemma targetEndpoint_comp :
     (endpointSimplex U V h hpoint hV φ hface).map ≫ r = SSet.const (r.app _ y) := by
-  change (stdSimplex.δ (Fin.last (n + 3)) ≫ φ ≫ h) ≫ r = _
+  change (stdSimplex.δ (Fin.last (n + 2)) ≫ φ ≫ h) ≫ r = _
   rw [Category.assoc, Category.assoc, ← Category.assoc φ h r, hr, comp_const]
 
 include hV in
