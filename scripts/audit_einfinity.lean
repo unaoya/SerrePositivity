@@ -602,6 +602,13 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.available_block_next_head_mem_middle,
       `SerrePositivity.EInfinity.Surjection.permutationComposition_vertical_endpoint_inserted,
       `SerrePositivity.EInfinity.Surjection.permutationComposition_vertical_next_head_inserted,
+      `SerrePositivity.EInfinity.TableReduction.available_filterMap,
+      `SerrePositivity.EInfinity.TableReduction.filterMap_selection_retained_last,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.filterMap,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.innerLabel_available_composition_row,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_vertical_inner_step,
+      `SerrePositivity.EInfinity.Surjection.vertical_prefix_inner_projection,
+      `SerrePositivity.EInfinity.Surjection.vertical_prefix_inner_rows,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1373,3 +1380,20 @@ example : ∃ b : Fin 2, (2 : Fin 4) = BarrattEccles.insertedPosition 2 2 1 b :=
   exact permutationComposition_vertical_next_head_inserted
     (1 : Equiv.Perm (Fin 3)) (1 : Equiv.Perm (Fin 2)) (Equiv.swap 0 1)
     1 [] [0, 1, 2, 1, 3] 1 2 2 3 [] (by decide) (by decide) (by decide) (by decide)
+
+-- 最終行直前までの二行を、実際の合成成功から元の内側抽出へ射影する。
+private def reverseVerticalEntries : List (Equiv.Perm (Fin 2) × ℕ) :=
+  [(1, 2), (Equiv.swap 0 1, 1)]
+private lemma reverseVerticalPrefix :
+    ExtractionPrefix (verticalTable (1 : Equiv.Perm (Fin 3)) 1 reverseVerticalEntries)
+      [] [[0, 1], [2]] [0] := by
+  have he : verticalTable (1 : Equiv.Perm (Fin 3)) 1 reverseVerticalEntries =
+      [([0, 1, 2, 3], 2), ([0, 2, 1, 3], 1)] := by decide
+  rw [he]
+  exact .cons (by decide) (by decide) (.cons (by decide) (by decide) (.nil _))
+example : ExtractionPrefix ([([0, 1], 1), ([1, 0], 1)] : List (List (Fin 2) × ℕ))
+    [] [[0], [1]] [] := by
+  have hp := vertical_prefix_inner_projection (1 : Equiv.Perm (Fin 3)) 1
+    reverseVerticalEntries (1 : Equiv.Perm (Fin 2)) 3 [] [] [0] [1, 2, 3] [[0, 1], [2]]
+    reverseVerticalPrefix (by decide) (by decide)
+  convert hp using 1 <;> decide

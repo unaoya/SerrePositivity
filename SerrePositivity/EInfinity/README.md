@@ -324,7 +324,13 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `permutationComposition_vertical_endpoint_inserted` と
 `permutationComposition_vertical_next_head_inserted` は実際の逆合成置換行へ適用する。
 除外状態・後続 table は任意、内側 arity 零も扱う。
-任意の成功経路表から元の成功二表を構成する逆方向、全項の全単射と空語の挿入は未完成。
+`available_filterMap` は部分単射の行と任意の除外状態の射影を同時に扱う。
+`ExtractionPrefix.filterMap` は選択末尾を残す場合に選択語と終状態を保つ実際の抽出証跡の射影。
+`innerLabel_available_composition_row` は任意の除外状態の合成可用行を元の可用内側逆置換行へ戻す。
+`permutationComposition_vertical_inner_step` は非退化な成功垂直二行から元の内側一行を復元する。
+`vertical_prefix_inner_projection` は垂直成分の最終行直前までの有限先行部分全体の抽出を射影する。
+各行末の保持は元の成功と非退化性から導く。`vertical_prefix_inner_rows` は全行が元の内側逆置換列と一致。
+垂直成分の最終行と成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

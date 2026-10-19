@@ -235,3 +235,4 @@ public import SerrePositivity.EInfinity.Surjection.CompositeInnerRecovery
 public import SerrePositivity.EInfinity.Surjection.CompositePartitionRecovery
 public import SerrePositivity.EInfinity.TableReduction.ScheduleOutputUniqueness
 public import SerrePositivity.EInfinity.Surjection.VerticalBoundary
+public import SerrePositivity.EInfinity.Surjection.VerticalInnerPrefix
