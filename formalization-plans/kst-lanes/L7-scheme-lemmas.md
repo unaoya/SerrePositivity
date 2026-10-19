@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1827 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1868 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -35,6 +35,7 @@
 - 大域第二段中心への支配射を元の基礎環上の一つの有限生成中心の blowup から構成済み。中心外はちょうど D(f)、元の基底への可換式も保持する。
 - 指定アフィン被覆に付随する第二段チャート被覆と構造射を構成済み。各固定階数チャートの自由化を全 Noether アフィン試験対象で使う述語と、その前合成保存を証明済み。
 - 実分裂の下で、元の基礎環上の一つの有限生成中心の通常 blowup に全 Noether アフィン引き戻しでの自由化基本開を構成済み。中心外は D(f)。射影代数を入力する系も証明済み。一般の L7b は未完了。
+- 完備な Noether 環上の任意の自由加群の完備化について、係数環の積への普遍単射な実際の埋め込みと Mittag–Leffler 性を証明済み（Stacks 05DJ）。平坦性は読み取り専用の既存の完備化定理から得る。剰余が射影的な一般の平坦加群の場合（05DK）は未完了。
 - 射影性の原典経路の準備として、Mittag–Leffler 性の積比較による定義、普遍単射部分加群への降下、自由・射影加群の場合を証明済み。Noether 基底での可算生成平坦 Mittag–Leffler 判定は証明済み。完備化による Mittag–Leffler 性の存在は未完了。
 - 有限型代数上の有限加群の基礎環上の可算生成性を証明済み。基礎環の集合としての可算性は不要。
 - Noether 基底で可算生成性を任意の部分加群へ継承し、可算自由全射の核から可算個の関係式を持つ実際の自由表示を構成済み。
@@ -1397,6 +1398,18 @@ N=R が I 進完備なら係数の完備化を元の R へ戻し、自由加群�
 `CommutativeAlgebra/AdicCompletionTensor.lean` の `adicCompletionTensorComparison_injective` と
 右因子の自由基底による有限台表示の同型を使い、上の完備化座標比較へ接続する。
 Artin–Rees に基づくこの既存の比較の証明を複製しない。K への依存は導入しない。
+次の文言で有限試験を任意の試験へ広げる。e:L→P の終域 P が平坦で、
+全ての有限生成 N について N⊗e が単射なら、任意の N について N⊗e は単射。
+核の一元を N の有限生成部分 N′ から持ち上げ、P の平坦性で N′⊗P→N⊗P の零を戻す。
+有限試験で零となった持ち上げを元のテンソルへ戻す。
+P=R^A と自由完備化の埋め込みへ適用し、普遍単射部分加群への降下で 05DJ の
+自由完備化の Mittag–Leffler 性を得る。平坦性には既存の
+`CommutativeAlgebra/AdicCompletionFlat.lean` の `flat_adicCompletion_of_flat` を利用する。
+`CompletedFinsuppCoordinates.lean` と `CompletedFreeEmbedding.lean` で座標比較と実際の積埋め込みを構成済み。
+`CompletedFreeFiniteTensor.lean` で有限生成な試験加群とのテンソルの単射性を証明済み。
+`FiniteTensorTest.lean` で平坦な終域への有限生成試験の判定を証明済み。
+`CompletedFreeMittagLeffler.lean` で積埋め込みの任意のテンソルでの単射性と、
+自由加群の完備化の Mittag–Leffler 性（05DJ）を証明済み。05DK の完備化の分裂は未完了。
 
 
 
@@ -1550,6 +1563,12 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | --- | --- | --- |
 | `BoundaryFreeNeighborhoodsAtCenterOver` | 中間環上の中心の自由化を元の基礎環・加群で述べる条件 | 定義済み |
 | `boundaryFreeNeighborhoodsAtCenterOver_of_baseChanged_center` | 固定中心の全チャートの自由化の元のデータへの統一 | 証明済み |
+| `completedFinsuppCoordinates_injective` | 完備化した有限台関数の座標比較の単射性 | 証明済み |
+| `completedFreeEmbedding` / `completedFreeEmbedding_injective` | 完備な環での自由完備化の係数環の積への実際の埋め込み | 構成済み |
+| `completedFreeEmbedding_lTensor_injective_of_finite` | 有限生成加群とのテンソルの単射性 | 証明済み |
+| `lTensor_injective_of_finite_tests` | 平坦な終域へのテンソル単射性の有限生成試験 | 証明済み |
+| `completedFreeEmbedding_rTensor_injective` | 積埋め込みの普遍単射性 | 証明済み |
+| `isModuleMittagLeffler_completedFree` / `flat_completedFree` | 自由完備化の平坦 Mittag–Leffler 性（05DJ） | 証明済み |
 | `piScalarRightEquivOfFinitePresentation` | 有限表示加群と係数環の任意の積の実際のテンソル比較同型 | 構成済み |
 | `piScalarRightHom_injective_of_noetherian` | Noether 基底で任意の加群の係数積比較の単射性 | 証明済み |
 | `flat_pi_of_noetherian` | Noether 環の任意のコピーの積の平坦性 | 証明済み |
