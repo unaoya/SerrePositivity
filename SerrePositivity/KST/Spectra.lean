@@ -329,3 +329,8 @@ public import SerrePositivity.KST.Spectra.CospanNerveHornIso
 public import SerrePositivity.KST.Spectra.StrictCospanHorn
 public import SerrePositivity.KST.Spectra.CoherentCospanPresentation
 public import SerrePositivity.KST.Spectra.CoherentCospanLimits
+public import SerrePositivity.KST.Spectra.PointedZeroMapping
+public import SerrePositivity.KST.Spectra.SpectrumZeroObject
+public import SerrePositivity.KST.Spectra.SpectrumFiberSquares
+public import SerrePositivity.KST.Spectra.SpectrumLoopSquares
+public import SerrePositivity.KST.Spectra.SpectrumLoopEquivalences

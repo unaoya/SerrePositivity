@@ -816,7 +816,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.CospanNerveHornIso,
     `SerrePositivity.KST.Spectra.StrictCospanHorn,
     `SerrePositivity.KST.Spectra.CoherentCospanPresentation,
-    `SerrePositivity.KST.Spectra.CoherentCospanLimits]
+    `SerrePositivity.KST.Spectra.CoherentCospanLimits,
+    `SerrePositivity.KST.Spectra.PointedZeroMapping,
+    `SerrePositivity.KST.Spectra.SpectrumZeroObject,
+    `SerrePositivity.KST.Spectra.SpectrumFiberSquares,
+    `SerrePositivity.KST.Spectra.SpectrumLoopSquares,
+    `SerrePositivity.KST.Spectra.SpectrumLoopEquivalences]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
