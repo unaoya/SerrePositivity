@@ -313,3 +313,4 @@ public import SerrePositivity.KST.SchemeLemmas.CountableProjectiveFaithfullyFlat
 public import SerrePositivity.KST.SchemeLemmas.LocalizationCompletionCover
 public import SerrePositivity.KST.SchemeLemmas.LocalizationCompletionProjectivity
 public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralCompletionBaseChange
+public import SerrePositivity.KST.SchemeLemmas.GenericFreePolynomialQuotient

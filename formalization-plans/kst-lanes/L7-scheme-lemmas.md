@@ -9,9 +9,11 @@
 
 ## 1. 現在地
 
+- 整域の有限変数多項式商は、先頭係数の非零な積を反転すると自由となることを証明済み（Stacks 051R の代数の場合の多項式表示）。標準単項式の実際の基底も構成済み。有限型代数へのテンソル基底変更による移送と Noether 帰納法は未完了。
+
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1984 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 2003 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -1752,6 +1754,20 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | --- | --- | --- |
 | `BoundaryFreeNeighborhoodsAtCenterOver` | 中間環上の中心の自由化を元の基礎環・加群で述べる条件 | 定義済み |
 | `boundaryFreeNeighborhoodsAtCenterOver_of_baseChanged_center` | 固定中心の全チャートの自由化の元のデータへの統一 | 証明済み |
+| `exists_finite_lower_cover` | 良準順序集合の任意の部分集合の有限な下被覆 | 証明済み |
+| `exists_finite_leading_degree_cover` | イデアルの有限な先頭次数被覆 | 証明済み |
+| `prod_leadingCoeff_ne_zero` | 整域での先頭係数の積の非零性 | 証明済み |
+| `isUnit_leadingCoeff_in_prod_localization` | 積を反転した後の各先頭係数の単元性 | 証明済み |
+| `monomialOrder_degree_map_of_injective` | 単射な係数変更による先頭次数の保存 | 証明済み |
+| `monomialOrder_leadingCoeff_map_of_injective` | 同じ係数変更による先頭係数の保存 | 証明済み |
+| `leading_degree_cover_localization` | 局所化後のイデアル全体への先頭次数被覆の移送 | 証明済み |
+| `standardMonomialDegrees` | 標準単項式の添字集合 | 構成済み |
+| `standardMonomialQuotientMap` | 標準台の部分加群からイデアル商への線形写像 | 構成済み |
+| `standardMonomialQuotientMap_injective` | 先頭次数の被覆から標準商写像の単射性 | 証明済み |
+| `standardMonomialQuotientMap_surjective` | 単元先頭係数から標準商写像の全射性 | 証明済み |
+| `standardMonomialQuotientEquiv` | 標準台の部分加群とイデアル商の線形同型 | 構成済み |
+| `standardMonomialQuotientBasis` | イデアル商の実際の標準単項式基底 | 構成済み |
+| `exists_nonzero_free_polynomial_quotient_localization` | 整域の有限変数多項式商の一つの非零係数の局所化後の自由性 | 証明済み |
 | `projective_reduction_baseChange` | 射影的な剰余の任意の係数変更による保存 | 証明済み |
 | `projective_geometricallyIntegral_completion_baseChange` | 元の剰余から完備化した基底上の代数の射影性 | 証明済み |
 | `projective_geometricallyIntegral_of_free_localization_of_projective_reduction` | 局所化の自由性と主イデアル剰余の射影性から代数の射影性 | 証明済み |
