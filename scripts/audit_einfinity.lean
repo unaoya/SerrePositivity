@@ -80,7 +80,13 @@ run_cmd do
       `SerrePositivity.EInfinity.Shuffle.chainMap,
       `SerrePositivity.EInfinity.Shuffle.ι_chainMap,
       `SerrePositivity.EInfinity.Shuffle.chainMap_natural,
-      `SerrePositivity.EInfinity.Shuffle.chainMap_generators] do
+      `SerrePositivity.EInfinity.Shuffle.chainMap_generators,
+      `SerrePositivity.EInfinity.NatTensor.shapeSymmetry,
+      `SerrePositivity.EInfinity.NatTensor.symmetry,
+      `SerrePositivity.EInfinity.NatTensor.interchange,
+      `SerrePositivity.EInfinity.NatTensor.inclusion_interchange,
+      `SerrePositivity.EInfinity.Shuffle.chainMap_diagonal,
+      `SerrePositivity.EInfinity.NegativeTensor.comparison_symmetry] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

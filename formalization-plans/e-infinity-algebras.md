@@ -85,13 +85,15 @@
   自然性、前半・後半経路の構成と全単射、切断の符号公式を検証済み。
   有限和の添字替えから `diagonal_value` と加群射の等式 `component_diagonal` まで検証済み。
   一般 shuffle の微分可換性を零次数も含めて検証し、自然な鎖写像 `Shuffle.chainMap` を構成。
-  複体上の余代数射性と Hopf オペラッド射は未完成。
+  `chainMap_diagonal` で実際の鎖写像の AW 余積適合性を検証。自然数鎖の四因子交換と、
+  負次数比較の braiding 適合性も検証済み。整数模型への余積適合性の移送・BE 部分合成との
+  接続、Hopf オペラッド射は未完成。
   E2a-3 の転送モデル構造、E2a-4・5 は未完成。現在地のコードと検証は本節と
   同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. `Shuffle.chainMap` と `component_diagonal` をテンソル複体の包含・交換の成分公式へ接続し、
-     複体上の AW 余代数射性を閉じる。負次数テンソル比較の braiding 適合性も接続する。
-     Berger–Fresse（BF）2004 §1.1.3–§1.1.4、24〜60 時間。
+  1. 自然数鎖で検証済みの `chainMap_diagonal` を整数模型へ移し、既存の BE 部分合成へ
+     接続する。負次数比較は結合子・左右単位子・braiding に適合済み。
+     Berger–Fresse（BF）2004 §1.1.3–§1.1.4、16〜32 時間。
   2. arity ごとのテンソルオペラッドと AW の自然性を使い、E → E ⊗ E の
      オペラッド射性・余結合性・余単位・Σ_n 同変性を閉じる。BF §1.1.4、16〜32 時間。
   3. E-coalgebra 区間の抽象 structure から全代数の functorial path object、
@@ -145,7 +147,9 @@
   `SerrePositivity.EInfinity.Shuffle.pathCutEquiv`、
   `SerrePositivity.EInfinity.Shuffle.pathCut_sign`、
   `SerrePositivity.EInfinity.Shuffle.diagonal_value`、
-  `SerrePositivity.EInfinity.Shuffle.component_diagonal`。
+  `SerrePositivity.EInfinity.Shuffle.chainMap_diagonal`、
+  `SerrePositivity.EInfinity.NatTensor.interchange`、
+  `SerrePositivity.EInfinity.NegativeTensor.comparison_symmetry`。
 - **依存と提供**：HomotopicalAlgebra の Transfer/Recognition・Transfer/Right・
   HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
   Cells・複体のテンソル・HomComplex を読み取り専用で使う。
@@ -153,8 +157,8 @@
   Alg_E のモデル構造、右 Quillen 忘却関手、E2b 用 CAlg はまだ提供していない。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：停止時の対象ビルドは成功（2683 jobs）、公理監査は成功
-  （4731 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
+- **既知の問題**：停止時の対象ビルドは成功（2690 jobs）、公理監査は成功
+  （4863 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
   今回の AW 宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -162,10 +166,10 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：`Shuffle.component_diagonal` を `Shuffle.chainMap` の余代数射性へ束ねる。
-  自然数鎖テンソルの `tensorμ` の斉次包含上の公式と Koszul 符号を証明し、
-  二つの AW 対角の有限和を同じ切断座標で展開する。既存の BE 部分合成との接続、
-  負次数比較の braiding 適合性を閉じる。まだ区間・path object には着手しない。
+- **次の一手**：負次数比較の四因子交換の可換性を結合子・braiding の適合性から証明し、
+  `Shuffle.chainMap_diagonal` を整数模型へ移す。一般 shuffle と単体的部分合成の合成が
+  既存の BE 部分合成に一致することを生成元で示し、余積適合性を接続する。
+  その後に arity ごとのテンソルオペラッドへ進む。まだ区間・path object には着手しない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。
