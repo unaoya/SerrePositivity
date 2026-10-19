@@ -692,4 +692,10 @@ public import SerrePositivity.KST.SConstruction.KanSpanSpecifiedPasting
 public import SerrePositivity.KST.SConstruction.KanSpanPastingFamilies
 public import SerrePositivity.KST.SConstruction.KSuspensionSpecifiedPasting
 public import SerrePositivity.KST.SConstruction.MonicKSpanPasting
+public import SerrePositivity.KST.SConstruction.RelativeAnodyneFamilyExtension
+public import SerrePositivity.KST.SConstruction.VaryingKanSpanHornFamilies
+public import SerrePositivity.KST.SConstruction.RelativeKanOuterSpanFamilies
+public import SerrePositivity.KST.SConstruction.CoincidentKanSpanFamilies
+public import SerrePositivity.KST.SConstruction.RelativeCoincidentSequenceSpanFamilies
+public import SerrePositivity.KST.SConstruction.KCoincidentSpanFamilies
 /-! # ∞-S• 構成と連結 K 理論 -/
