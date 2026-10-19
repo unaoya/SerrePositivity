@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.NerveTransportRepresentation
-public import SerrePositivity.InfinityCategories.F1.KanDiagramOppositeComparison
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningOppositeComparison
 public import SerrePositivity.InfinityCategories.F1.SmallFiberStraighteningCounit
 public import SerrePositivity.InfinityCategories.F1.TransportRepresentationCartesianRestriction
 
@@ -19,17 +19,23 @@ universe u
 open CategoryTheory Limits SSet
 namespace SerrePositivity.InfinityCategories
 
-/-- 通常の nerve 上の strict transport は、同じ射影の任意の表現の図式と同型。 -/
-def nerveStraighteningRepresentationIso {C : Type u} [Category.{u} C]
+/-- 通常の nerve 上の反転係数の transport は、同じ射影の任意の表現の図式と同型。 -/
+def nerveCoherentTransportRepresentationIso {C : Type u} [Category.{u} C]
     {E : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
     (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)) :
-    FunctorIso (leftStraighteningCandidate p) R.diagram := by
+    FunctorIso (leftCoherentTransport p) R.diagram := by
   have (n : SimplexCategoryᵒᵖ) : Small.{u} ((SSet.uliftFunctor.{u + 1, u}).obj E |>.obj n) := by
     change Small.{u} (ULift.{u + 1} (E.obj n))
     infer_instance
-  exact leftStraighteningCandidateCoherentTransportIso p ≪≫
-    smallFiberTransportRepresentationDiagramIso _
-      (hasSmallSimplexFibers_of_small_total _) (nerveLeftTransportRepresentation p) R
+  exact smallFiberTransportRepresentationDiagramIso _
+    (hasSmallSimplexFibers_of_small_total _) (nerveLeftTransportRepresentation p) R
+
+/-- 通常の nerve 上の strict transport と任意の表現を同じ共同係数比較から比較する。 -/
+def nerveStraighteningRepresentationIso {C : Type u} [Category.{u} C]
+    {E : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)) :
+    FunctorIso (leftStraighteningCandidate p) R.diagram :=
+  leftStraighteningCoherentMap_oppositeVertexIso p ≪≫ nerveCoherentTransportRepresentationIso p R
 
 /-- 宇宙の持ち上げは pullback を保つ。表現の制限に使う局所的な構造定理。 -/
 lemma ulift_isPullback {E B D : SSet.{u}} (p : E ⟶ B) (g : D ⟶ B) :

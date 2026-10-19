@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.NerveStraighteningRepresentation
 public import SerrePositivity.InfinityCategories.F1.TransportSimplexUnderBaseChange
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningVertices
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningOppositeRestriction
 
 /-!
 概要：実際の straightening の対象での図式と相対表現の比較。
@@ -70,13 +71,41 @@ def leftStraighteningInfinityDiagram_firstVertexIso {E B : SSet.{u}}
     (leftStraighteningInfinityMap_firstVertexRestrictionIso B).app
       (leftFibrationInfinityVertex p) ≪≫ eqToIso (congrArg HomotopyCategory.mk h₂)
 
+/-- 初頂点制限と反転 transport の比較を、全対象の共同関手同型の成分として得る。 -/
+def leftStraighteningInfinityDiagram_firstVertexTransportIso {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] :
+    FunctorIso
+      ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B) ≫
+        leftStraighteningInfinityDiagram p)
+      (leftCoherentTransport (pullback.snd p (transportSimplexFirstVertexMap B))) := by
+  let X : EdgewiseEnrichedObject (LeftFibrationObject B) :=
+    ⟨leftFibrationObjectOf p, trivial⟩
+  let k := transportSimplexFirstVertexMap B
+  let P := (pre ((SSet.uliftFunctor.{u + 1, u}).map k)).app SpaceInfinity.{u}
+  have h₁ : (edgewiseEnrichedInfinityMap (LeftFibrationObject B) ≫
+      leftStraighteningInfinityMap B ≫ P).app (Opposite.op ⦋0⦌) (coherentNerveVertex X) =
+        functorVertex ((SSet.uliftFunctor.map k) ≫ leftStraighteningInfinityDiagram p) :=
+    (congrArg ((leftStraighteningInfinityMap B ≫ P).app (Opposite.op ⦋0⦌))
+      (coherentNerveMap_vertex (edgewiseEnrichedRight (LeftFibrationObject B)) X)).trans
+        (congrArg (P.app (Opposite.op ⦋0⦌)) (leftStraighteningInfinityDiagram_vertex p).symm)
+  have h₂ : (leftFibrationEdgewiseFirstVertexBaseChange B ≫
+      leftStraighteningOppositeCoherentMap (TransportSimplexCategory B)).app (Opposite.op ⦋0⦌)
+        (coherentNerveVertex X) = functorVertex (leftCoherentTransport (pullback.snd p k)) :=
+    (congrArg ((leftStraighteningOppositeCoherentMap (TransportSimplexCategory B)).app
+      (Opposite.op ⦋0⦌)) (leftFibrationEdgewiseFirstVertexBaseChange_vertex B
+        (leftFibrationObjectOf p))).trans
+          (leftStraighteningOppositeCoherentMap_vertex (pullback.snd p k))
+  exact (eqToIso (congrArg HomotopyCategory.mk h₁)).symm ≪≫
+    (leftStraighteningInfinityMap_firstVertexOppositeIso B).app (coherentNerveVertex X) ≪≫
+      eqToIso (congrArg HomotopyCategory.mk h₂)
+
 /-- 任意の相対表現の分類図式は、実際の straightening の対象図式と関手同型。 -/
 def leftStraighteningInfinityDiagram_representationIso {E B : SSet.{u}}
     (p : E ⟶ B) [LeftFibration p]
     (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)) :
     FunctorIso (leftStraighteningInfinityDiagram p) R.diagram := by
-  have e := leftStraighteningInfinityDiagram_firstVertexIso p ≪≫
-    nerveStraighteningRepresentationIso (pullback.snd p (transportSimplexFirstVertexMap B))
+  have e := leftStraighteningInfinityDiagram_firstVertexTransportIso p ≪≫
+    nerveCoherentTransportRepresentationIso (pullback.snd p (transportSimplexFirstVertexMap B))
       (R.nativeRestrict (transportSimplexFirstVertexMap B))
   exact (localization_pre_isFullyFaithful
     (transportSimplexFirstVertexMap_ulift_isLocalization.{u, u + 1} B)
