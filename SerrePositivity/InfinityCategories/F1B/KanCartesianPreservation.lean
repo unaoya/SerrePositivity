@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanCartesianComparison
 /-!
 概要：終点指定の cartesian な持ち上げの保存からすべての cartesian 辺の保存を導く。
 方針：任意の辺を保存される持ち上げと三角形で比較し、垂直な可逆辺を使う。
-規約：始域・標的・底は quasicategory、両射影は inner fibration。
+規約：始域・標的・二つの底は quasicategory、両射影は inner fibration。
 使われ方：相対 join の図式の制限と任意の cartesian 輸送との両立。
 -/
 
@@ -20,11 +20,11 @@ namespace SerrePositivity.InfinityCategories.F1B
 
 /-- 概要：同じ終点と底の辺を持つ保存される輸送との比較により cartesian 性を保存できる。
 方針：比較三角形の最初の辺を可逆にし、その像と後半の cartesian 辺を合成する。
-規約：u は可逆辺を保存する任意の単体集合の射。
+規約：二つの射影の底は異なってよく、u は任意の単体集合の射。
 使われ方：構成した特殊な輸送の保存を一般の辺へ拡張する。 -/
-lemma kanCartesianEdge_map_of_comparison {E F B : SSet.{u}}
-    [Quasicategory E] [Quasicategory F] [Quasicategory B]
-    (p : E ⟶ B) (q : F ⟶ B) [InnerFibration p] [InnerFibration q]
+lemma kanCartesianEdge_map_of_comparison {E F B C : SSet.{u}}
+    [Quasicategory E] [Quasicategory F] [Quasicategory B] [Quasicategory C]
+    (p : E ⟶ B) (q : F ⟶ C) [InnerFibration p] [InnerFibration q]
     (u : E ⟶ F) (e f : (Δ[1] : SSet.{u}) ⟶ E)
     (hb : e ≫ p = f ≫ p)
     (ht : stdSimplex.δ (0 : Fin 2) ≫ e = stdSimplex.δ (0 : Fin 2) ≫ f)
@@ -54,9 +54,9 @@ lemma kanCartesianEdge_map_of_comparison {E F B : SSet.{u}}
 方針：任意の辺の終点に対する指定持ち上げを選び、比較による保存を適用する。
 規約：持ち上げの存在を仮定し、選択した cleavage 自体はデータに持たない。
 使われ方：相対指数の特殊な図式の延長から cartesian 関手の性質を得る。 -/
-lemma kanCartesianEdges_preserved_of_target_lifts {E F B : SSet.{u}}
-    [Quasicategory E] [Quasicategory F] [Quasicategory B]
-    (p : E ⟶ B) (q : F ⟶ B) [InnerFibration p] [InnerFibration q]
+lemma kanCartesianEdges_preserved_of_target_lifts {E F B C : SSet.{u}}
+    [Quasicategory E] [Quasicategory F] [Quasicategory B] [Quasicategory C]
+    (p : E ⟶ B) (q : F ⟶ C) [InnerFibration p] [InnerFibration q]
     (u : E ⟶ F)
     (hlift : ∀ (x : E _⦋0⦌) (b : (Δ[1] : SSet.{u}) ⟶ B),
       stdSimplex.δ (0 : Fin 2) ≫ b = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) →

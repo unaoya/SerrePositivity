@@ -2057,3 +2057,19 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_family_relativeInitial
 
 #check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_family_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanCoconeLift_apexInvertible
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconePostcomp_preservesCartesianEdges
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsCartesianEdge_pullback_fst
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeTargetFiberIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeRestriction_fiber_comparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeRestriction_preservesCartesianEdges
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_of_isRelativeColimitCone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_iff_isRelativeColimitCone
