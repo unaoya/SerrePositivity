@@ -9,9 +9,9 @@
 特に KST 経路 §2.2、§3、§5 E、§13 の決定 4・5 を優先する。
 本計画は L8 の設計、工程、現在地、宣言の対応を管理する。
 実施の経緯はコミットメッセージに記録する。
-現在の判断（§100）：模型圏に依存する Čech エンジンを主経路へ接続する設計は正本 §13 の決定 1・3 に合わない。
-L9 の実 Bousfield–Kan end/Tot と全次数 π_* の検査を使う主経路への切り替えを提案し、ユーザーの判断を待つ。
-§99 までの検証済み結果は保持するが、主定理への接続済みとは数えない。
+現在の判断（§100–101）：§100 の提案 1–7 は 2026-10-19 に承認され、正本 §13 決定 15 に記録された。
+主経路と条件付き補助を分離し、L9 の実 Tot への乗せ替えを開始する。
+既存56モジュールは内容を変更せず、比較用補助として保持する。
 
 状態：L8a の次数付き前層、指定比較、図式上の transfer による比較の retract、
 有理不変部分の完全性とホモロジー保存、底変換後の Čech nerve の分裂を実装。
@@ -3764,3 +3764,55 @@ L9 の π_* 同型の判定を使う主経路にしなければならない。
 
 §100 の提案保存時の確認：集約対象ビルド成功、公理監査は 251 モジュール・2627 宣言で標準三公理のみ。
 Lean の宣言は変更していない。ログは `/tmp/l8-bk-design-review-target.log` と `/tmp/l8-bk-design-review-audit.log`。
+
+
+## 101. 承認された主経路と条件付き補助の分離
+
+§100 の提案 1–7 はユーザーが承認し、正本 §13 決定 15 に記録済み。
+判断待ちの状態は終了。指定された順で主経路を組み直す。
+`Descent.Auxiliary` は従来の全 import を保持し、既存56ファイルは変更しない。
+`Descent.Main` とルートの `Descent` は模型圏に条件づけた56モジュールを import しない。
+全体の公理監査は Auxiliary も明示的に import して従来の結果を検査し、
+別の主経路監査は実際の import 閉包に56モジュールがないことを検査する。
+
+| 工程 | 補助（条件付き） | 主経路 |
+| --- | --- | --- |
+| 幾何・作用・次元帰納 | 保存 | 既存の模型圏に依存しない部分を再利用 |
+| 指定 Čech 比較 | §70–99 の比較を保存 | L9 の実点つき Tot へ乗せ替え中 |
+| Fubini・分裂・添字変更・細分 | 条件付きの既存結果を保存 | 実 Tot/BK end の指定比較に対して証明予定 |
+| transfer・局所 rank | ℚ 線形な補助値域の結果を保存 | 元の Sp の自然変換、各整数次数の観測で検査予定 |
+| 最小公理 (1)(2) | 旧模型圏側の法則を保存 | 実 Tot・実 fiber の指定比較で構築予定 |
+| 最小公理全体・定理 3.1 | 未完成 | 全体の構造体・主定理の #check を完成時に監査へ追加 |
+| 監査 | 全補助の標準三公理監査 | 56モジュールの import 排除と公開型の記録 |
+
+API の確認：`ContractibleTotalSequence` は全空間のホモトピー群が自明な fiber 列の次数移動で、
+extra degeneracy の降下を直接述べるものではない。
+Tot の段ごとの π_* 同型保存は `TotalizationHomotopyInvariance` にあり、
+`CosimplicialKanMapEquivalence` は Reedy 置換の各段の π_* 同型を述べる。
+`PointedTotalization`・`ReplacedTotalization` に点つき対象・基点・置換した Tot の API があるので再利用する。
+この名前の相違は設計変更を要さず、実際の宣言を用いる。
+
+### §101 の主要宣言と検証
+
+| 宣言／入口 | 現在の意味 |
+| --- | --- |
+| `Descent.Main` | 条件付き56モジュールを含まない主経路の集約 |
+| `Descent.Auxiliary` | 従来の import をそのまま保持する比較用入口 |
+| `Main.AugmentedTotDiagram` | 点つきの増強元と実余単体図式の comma 圏 |
+| `Main.rawTotComparison` | 指定増強から L9 の通常の実 Tot への基点保存射 |
+| `Main.totComparison` | Reedy 置換の実際の単位を合成した Kan Tot への指定射 |
+| `Main.HasTotDescent` | この指定射の全基点・全自然数次数の空間側の π_* 同型 |
+| `Main.rawTotComparison_naturality` | 増強元と図式を同時に動かす指定比較の自然性 |
+| `Main.totComparison_naturality` | 置換した Tot まで含む指定比較の自然性 |
+
+上記の空間側の条件を Sp の全整数次数の条件に読み替えない。
+最小公理全体・定理 3.1 全体の型はまだ宣言しておらず、最終的な `#check` は未実装である。
+現存する前層・全次数比較・sectioned 降下・実 Tot の公開型を主経路監査に記録した。
+そのログに `ModelCategory`・`CofibrantlyGenerated`・`IsQuillenBifunctor` が無いことを確認した。
+56 モジュールの定義ファイルは無変更で、import 閉包による排除検査も成功した。
+
+保存単位の検証：対象ビルドは 4622 jobs 成功。
+主経路監査は 1470 宣言、補助を含む監査は 252 モジュール・2637 宣言で標準三公理のみ。
+ログは `/tmp/l8-main-separation-target.log`、`/tmp/l8-main-separation-main-audit.log`、
+`/tmp/l8-main-separation-full-audit.log`。
+次は一般形状の実点つき homotopy limit の指定比較、および実 Tot の分裂・細分へ進む。

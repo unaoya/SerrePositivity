@@ -1,4 +1,5 @@
 import SerrePositivity.KST.Descent
+import SerrePositivity.KST.Descent.Auxiliary
 import Lean.Util.CollectAxioms
 
 /-!
