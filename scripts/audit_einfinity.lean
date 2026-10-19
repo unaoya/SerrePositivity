@@ -809,6 +809,20 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.vertexLinear,
       `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_total_degree,
       `SerrePositivity.EInfinity.IntervalCuts.edgeValue_eq_zero_of_degree,
+      `SerrePositivity.EInfinity.IntervalCuts.interval,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalXIso,
+      `SerrePositivity.EInfinity.IntervalCuts.faceChain,
+      `SerrePositivity.EInfinity.IntervalCuts.faceVector,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeChain_d,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVector,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorOfDegree,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_tupleDegree,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_basis,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalChains_isZero,
+      `SerrePositivity.EInfinity.IntervalCuts.interval_isZero_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.faceVector_edge_d,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2378,3 +2392,25 @@ example : edgeOutput (permutationWord (1 : Equiv.Perm (Fin 2))) 1 0 = IntervalCu
 example : edgeOutput (permutationWord (1 : Equiv.Perm (Fin 2))) 1 1 = IntervalCuts.edge := by
   apply Subtype.ext
   decide
+
+-- 同じ 010 の切断が、実際の N_*(Δ¹) の反復テンソルの次数 −2 に入る。
+example : edgeComponent ℤ 2 1 (basis ℤ 2 1 (ULift.up compositionInner)) =
+    tensorVectorOfDegree ℤ 2 2 (fun _ : Fin 2 => IntervalCuts.edge) (by decide) := by
+  rw [edgeComponent_basis]
+  have h0 : ¬ EdgeNondegenerate compositionInner.val 0 := by decide
+  have h1 : EdgeNondegenerate compositionInner.val 1 := by decide
+  have h2 : ¬ EdgeNondegenerate compositionInner.val 2 := by decide
+  have hs : edgeSign compositionInner.val 1 = 1 := by decide
+  have ho : edgeOutput compositionInner 1 = (fun _ : Fin 2 => IntervalCuts.edge) := by
+    funext k
+    fin_cases k <;> apply Subtype.ext <;> decide
+  simp [edgeComponentOnWord, Fin.sum_univ_three, h0, h1, h2, hs, ho]
+-- 実際の正規化区間の高次は退化によって零になる。
+example : CategoryTheory.Limits.IsZero ((intervalChains ℤ).X 2) :=
+  intervalChains_isZero ℤ 2 (by decide)
+example : CategoryTheory.Limits.IsZero ((IntervalCuts.interval ℤ).X 1) :=
+  interval_isZero_positive ℤ 1 (by decide)
+-- 頂点への正次数の実際の成分も零。
+example : vertexComponent ℤ 2 1 1 (basis ℤ 2 1 (ULift.up compositionInner)) = 0 := by
+  rw [vertexComponent_basis]
+  exact vertexComponentOnWord_eq_zero_of_positive ℤ compositionInner (by decide) 1
