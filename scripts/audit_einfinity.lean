@@ -921,6 +921,13 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.pivotDeletion_weighted_before,
       `SerrePositivity.EInfinity.IntervalCuts.pivotDeletion_weighted_after,
       `SerrePositivity.EInfinity.IntervalCuts.pivotDeletion_weighted_pair,
+      `SerrePositivity.EInfinity.IntervalCuts.PivotResidualCut,
+      `SerrePositivity.EInfinity.IntervalCuts.PivotResidualCut.sum_split,
+      `SerrePositivity.EInfinity.IntervalCuts.PivotResidualCut.beforeEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.PivotResidualCut.afterEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotResidualValue_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.gap_sum_complement,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotResidualValue_sum_eq_boundary,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2796,3 +2803,28 @@ example : deletionCoefficient gapOddWord.val 4 * edgeSign (erase gapOddWord.val 
       (-1 : ℤ) ^ positionInversionCount gapOddWord.val
         (Finset.univ.filter (Caesura gapOddWord.val)) = -1 := by decide
   simpa only [hc] using h
+
+-- 01202 の全左右削除添字は、それぞれ一つの隙間隣接退化切断へ対応する。
+example : Fintype.card (PivotResidualCut.Before gapOnlyWord.val) = 1 := by
+  rw [Fintype.card_congr (PivotResidualCut.beforeEquiv (u := gapOnlyWord.val))]
+  decide
+example : Fintype.card (PivotResidualCut.After gapOnlyWord.val) = 1 := by
+  rw [Fintype.card_congr (PivotResidualCut.afterEquiv (u := gapOnlyWord.val))]
+  decide
+-- 二つの既知項だけでなく、実際の全切断点障害削除和も零になる。
+example : ∑ c, pivotResidualValue ℤ gapOnlyWord c = 0 := by
+  rw [pivotResidualValue_sum_eq_boundary]
+  apply Finset.sum_eq_zero
+  intro p _
+  have hn : ¬ EdgeNondegenerate gapOnlyWord.val p := by fin_cases p <;> decide
+  simp only [pivotBoundaryValue, dite_eq_right hn]
+-- 非零元切断が二つある01203でも、全削除和は同じ実際の両端隙間差へ一致する。
+example : ∑ c, pivotResidualValue ℤ pivotIntervalWord c =
+    -(gapTensor ℤ pivotIntervalWord 1 - gapTensor ℤ pivotIntervalWord 3) := by
+  rw [pivotResidualValue_sum_eq_boundary]
+  have h := pivotBoundaryValue_sum_of_endpoints ℤ pivotIntervalWord 1 2
+    (by decide) (by decide) (by decide)
+  have hs : (-1 : ℤ) ^ (Finset.univ.filter (Caesura pivotIntervalWord.val)).card *
+      (-1 : ℤ) ^ positionInversionCount pivotIntervalWord.val
+        (Finset.univ.filter (Caesura pivotIntervalWord.val)) = -1 := by decide
+  simpa only [hs, neg_one_zsmul] using! h

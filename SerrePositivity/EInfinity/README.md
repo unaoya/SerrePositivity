@@ -512,7 +512,11 @@ nullary を含む TR の部分合成保存は完了。
 `pivotDeletion_coefficient_before`・`after` は左・右削除係数を共通係数の負・正へ同定する。
 `pivotDeletion_weighted_pair` は同じ隙間へ戻る二つの実際の符号付き削除テンソルの相殺。
 区切り色の逆転数が奇数の `20121` でも一般係数公式を監査済み。
-具体的な Δ¹ の余代数構造は未完成。切断点障害の全削除和の添字替えと隙間ごとの比較が残る。
+`PivotResidualCut` は切断点障害の有限添字、`beforeEquiv`・`afterEquiv` は隙間の隣接退化切断との有限同値。
+`pivotResidualValue_sum` は実際の全削除和の隙間への添字替え。
+`pivotResidualValue_sum_eq_boundary` は正次数の全切断点障害削除和と全切断点色因子境界和の一致。
+元の非零切断がない `01202` と、二つある `01203` の全削除和も監査済み。
+具体的な Δ¹ の余代数構造は未完成。三種類の削除項を統合した正規化全微分の比較が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
