@@ -555,6 +555,14 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.fused_success_blockWord,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedWord_eq_blockWord,
       `SerrePositivity.EInfinity.Surjection.substitute_append,
+      `SerrePositivity.EInfinity.Surjection.substitute_at_occurrence,
+      `SerrePositivity.EInfinity.Surjection.compositeWord_at_occurrence,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.firstHorizontal_dropLast,
+      `SerrePositivity.EInfinity.Surjection.substitute_horizontal_no_slot,
+      `SerrePositivity.EInfinity.Surjection.occurrenceAt_complete,
+      `SerrePositivity.EInfinity.Surjection.occurrenceAt_none_between,
+      `SerrePositivity.EInfinity.Surjection.occurrenceAt_count_take,
+      `SerrePositivity.EInfinity.Surjection.occurrenceAt_count_take_succ,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_in_context,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.horizontal_vertical_join,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.vertical_horizontal_join,
@@ -1159,3 +1167,41 @@ example : substitute (m := 1) (n := 2) 0 ([0, 1, 0] ++ [0, 1]) [[0], [1], [0, 1]
   have h := substitute_append (m := 1) (n := 2) 0 [0, 1, 0] [0, 1] [[0], [1], [0, 1]]
   rw [hc] at h
   exact h
+
+-- 二番目の指定値以前に一個、自身まで含めると二個の部分語を消費する。
+example : ((List.ofFn canonicalFixture.val).take 3).count 1 = 1 := by
+  have hp : (occurrenceAt canonicalFixture.val 1 ⟨1, by decide⟩).val = 3 := by decide
+  simpa only [hp] using occurrenceAt_count_take canonicalFixture.val 1 ⟨1, by decide⟩
+example : ((List.ofFn canonicalFixture.val).take 4).count 1 = 2 := by
+  have hp : (occurrenceAt canonicalFixture.val 1 ⟨1, by decide⟩).val = 3 := by decide
+  simpa only [hp] using occurrenceAt_count_take_succ canonicalFixture.val 1 ⟨1, by decide⟩
+-- 隣接する出現の間の水平文字は指定値と異なる。
+example : canonicalFixture.val 2 ≠ 1 :=
+  occurrenceAt_none_between canonicalFixture.val 1 ⟨0, by decide⟩ ⟨1, by decide⟩ rfl 2
+    (by decide) (by decide)
+-- 第二出現の代入では第二部分語を使い、その後へ残りの部分語を渡す。
+example : substitute (n := 2) 1 (List.ofFn canonicalFixture.val) [[0, 1], [1, 0]] =
+    substitute (n := 2) 1 ((List.ofFn canonicalFixture.val).take 3) [[0, 1], [1, 0]] ++
+      [2, 1] ++ substitute (n := 2) 1 ((List.ofFn canonicalFixture.val).drop 4) [] := by
+  have hp : (occurrenceAt canonicalFixture.val 1 ⟨1, by decide⟩).val = 3 := by decide
+  have h := substitute_at_occurrence (n := 2) canonicalFixture.val 1 ⟨1, by decide⟩
+    [[0, 1], [1, 0]]
+  rw [hp] at h
+  exact h
+
+-- 実際の重なる分割でも、第二出現の挿入部分は同じ番号の垂直語になる。
+example : compositeWord canonicalFixture compositionInner 1 verticalCuts =
+    substitute (n := 2) 1 ((List.ofFn canonicalFixture.val).take 3)
+      (verticalCuts.segments compositionInner.val) ++
+        (verticalCuts.segment compositionInner.val ⟨1, by decide⟩).map
+          (BarrattEccles.insertedPosition 3 2 1) ++
+            substitute (n := 2) 1 ((List.ofFn canonicalFixture.val).drop 4) [] := by
+  have hp : (occurrenceAt canonicalFixture.val 1 ⟨1, by decide⟩).val = 3 := by decide
+  have h := compositeWord_at_occurrence canonicalFixture compositionInner 1 verticalCuts
+    ⟨1, by decide⟩
+  rw [hp] at h
+  exact h
+
+-- 最初の融合水平部分は、最初の指定値以前の実際の代入と一致する。
+example : (fullCompositionFixture.horizontalWord 0).dropLast = [0] := by
+  exact fullCompositionFixture.firstHorizontal_dropLast.trans (by decide)

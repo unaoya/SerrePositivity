@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Surjection.Substitution
+public import SerrePositivity.EInfinity.Surjection.OccurrencePrefixCounts
 
 /-!
 # 出現順の代入と外側語の連結
@@ -30,5 +31,39 @@ lemma substitute_append {m n : ℕ} (k : Fin (m + 1))
     · subst a
       cases parts <;> simp [substitute, ih, List.drop_succ_cons, List.append_assoc]
     · simp [substitute, ha, ih]
+
+/-- 概要：第 j 出現での代入を前半・挿入語・後半へ厳密に分解（BF §1.5.7）。
+方針：その出現で元の語を分割し、前半の出現回数を j に戻す。
+規約：内側部分語が不足する場合も同じ分解が成立する。
+使われ方：融合表の各垂直語と同じ出現に代入した部分語を照合する。 -/
+lemma substitute_at_occurrence {m n l : ℕ} (v : Fin l → Fin (m + 1)) (k : Fin (m + 1))
+    (j : Fin (occurrenceCount v k)) (parts : List (List (Fin n))) :
+    substitute k (List.ofFn v) parts =
+      substitute k ((List.ofFn v).take (occurrenceAt v k j).val) parts ++
+        ((parts.drop j.val).headD []).map (BarrattEccles.insertedPosition m n k) ++
+          substitute k ((List.ofFn v).drop ((occurrenceAt v k j).val + 1))
+            (parts.drop (j.val + 1)) := by
+  have hp : (occurrenceAt v k j).val < (List.ofFn v).length := by
+    simpa only [List.length_ofFn] using (occurrenceAt v k j).isLt
+  have hv : (List.ofFn v)[(occurrenceAt v k j).val] = k := by
+    simpa only [List.getElem_ofFn] using occurrenceAt_value v k j
+  have hs : (List.ofFn v).take (occurrenceAt v k j).val ++
+      k :: (List.ofFn v).drop ((occurrenceAt v k j).val + 1) = List.ofFn v := by
+    calc
+      _ = (List.ofFn v).take (occurrenceAt v k j).val ++
+          (List.ofFn v)[(occurrenceAt v k j).val] ::
+            (List.ofFn v).drop ((occurrenceAt v k j).val + 1) := by rw [hv]
+      _ = List.ofFn v := by rw [List.getElem_cons_drop hp, List.take_append_drop]
+  have h := substitute_append k ((List.ofFn v).take (occurrenceAt v k j).val)
+    (k :: (List.ofFn v).drop ((occurrenceAt v k j).val + 1)) parts
+  rw [hs, occurrenceAt_count_take] at h
+  have hc : substitute k (k :: (List.ofFn v).drop ((occurrenceAt v k j).val + 1))
+      (parts.drop j.val) =
+      ((parts.drop j.val).headD []).map (BarrattEccles.insertedPosition m n k) ++
+        substitute k ((List.ofFn v).drop ((occurrenceAt v k j).val + 1))
+          (parts.drop (j.val + 1)) := by
+    rw [substitute, dite_eq_left rfl, List.tail_drop]
+  rw [hc] at h
+  simpa only [List.append_assoc] using h
 
 end SerrePositivity.EInfinity.Surjection
