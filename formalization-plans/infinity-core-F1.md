@@ -16,8 +16,7 @@
   `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を得た。
 - 表現を `LeftTransportRepresentation` に束ねた。任意の底変換は底側と全空間側の両射を厳密に保ち、
   両射の一致は表現の一致と同値。通常の nerve 上の小さい left fibration の実際の表現も構成済み。
-- 正次元の標準単体上で、比較の全 fiber の同値性は境界上の同値性と同値。
-  可換四角形そのものの境界固定延長は未証明。
+- 正次元の標準単体上の全 fiber の同値性は境界上で判定できる。境界固定延長は未証明。
 - 可換四角形全体を関手空間の引き戻し `transportSquareSpace p` として構成。
   分類図式への射影は left fibration、固定図式上の fiber は相対関手空間と同型。
   表現を表す頂点の全部分複体 `transportWitnessSpace p` は Kan 複体。
@@ -27,7 +26,10 @@
   全頂点を被覆する制限は表現条件を反映する。一般の底上の表現空間の可縮性は未証明。
 - left fibration に沿う inner anodyne 射の逆像は前合成同値（Lemma 5.3.6.6 の空間値版）。
   replacement のホーン逆像の pushout 分解、任意の底変換後の scaffold 比較、依存積の随伴で証明。
-- 対象ビルド2841 jobs、公理監査5067宣言が成功。依存公理は標準3公理のみ。
+- 固定端点の写像空間全体から fiber 間の関手空間への `parametrizedFiberTransport` を構成。
+  選択独立性・パラメーター制限・始点の係数変更を族全体で証明し、各辺で既存の transport を回収する。
+  unstraightening の写像空間比較の fiber 作用と、対象評価後の普遍輸送を関手同型で結んだ。
+- 対象ビルド2847 jobs、公理監査5155宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
@@ -50,17 +52,14 @@
 - `IsCartesianEdge`、`IsCocartesianEdge`、`SpaceInfinity`、`CatInfinity`
 - `leftStraighteningCoherentMap`、`smallLeftUnstraighteningObject`
 - `leftStrictTransportInfinityEquivalence`、`leftUnstraighteningMappingSpaceMap`
-- `strictDiagramScaffoldHomEquiv`、`strictDiagramMappingPre_trivialKanFibration`
 - `weightedNerveStraighteningCoherentUnitIso`、`weightedNerveStraighteningCoherentFamilyUnitIso`
-- `weightedNerveTransportUnit_extensionSpace_isContractibleKan`、`exists_weightedNerveTransportUnit_retraction`
 - `LeftTransportRepresentation`、`LeftTransportRepresentation.restrict`
-- `LeftTransportRepresentation.restrict_eq_iff`、`nerveLeftTransportRepresentation`
-- `transportSquareSpace`、`transportSquareRestriction_innerFibration`
 - `transportWitnessSpace`、`transportWitnessVertexEquiv`、`transportWitnessSpace_kanComplex`
-- `transportWitnessRestriction_liftEdge_source`、`transportWitnessRestriction_fibration`
 - `leftFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
 - `transportWitnessRestriction_trivialKanFibration_of_innerAnodyne`
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
+- `FiberTransportFamily`、`parametrizedFiberTransport`
+- `leftUnstraighteningMappingFiberHom_parametrizedIso`
 
 ### 依存と提供
 
@@ -92,10 +91,12 @@
 
 ### 次の一手
 
-[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の区間上の境界制限の trivial Kan 性を示す。
-両端の分類対象を固定した fiber を表示し、普遍 pointed-space fibration のパラメーター付き
-transport の写像空間比較を使う。指定した両端の fiber 同値を保つ高次パラメーターも含める。
-その後、点・標準単体上の表現空間の可縮性から一般の境界固定延長と貼り合わせへ進む。
+`parametrizedFiberTransport pointedSpaceProjection s t` の同値性を、全パラメーターで証明する。
+標準 coherent 頂点へ揃え、`coherentHomComparison` から区間写像空間への比較で前合成して、
+豊穣な一点 Hom の作用と比較する標準 prism を作る。`FiberTransportFamily.mapIso_parametrized` が
+任意の持ち上げを選択済みの輸送へ戻す。頂点ごとの同型だけでは代用しない。これを
+[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の両端固定の境界制限の trivial Kan 性へ渡し、
+点・標準単体上の表現空間の可縮性、一般の境界固定延長と貼り合わせへ進む。
 
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
