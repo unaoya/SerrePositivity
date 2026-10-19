@@ -580,4 +580,14 @@ public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityData
 public import SerrePositivity.KST.SConstruction.AssemblyCompositionEdgeEvaluation
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCompositionTriangle
 
+public import SerrePositivity.KST.SConstruction.AssemblyInputArrows
+public import SerrePositivity.KST.SConstruction.PointedExtensionArrowDiagram
+public import SerrePositivity.KST.SConstruction.PointedLiftArrowDiagram
+public import SerrePositivity.KST.SConstruction.ContractibleDiagramSelections
+public import SerrePositivity.KST.SConstruction.ContractibleWeightedDiagramLifting
+public import SerrePositivity.KST.SConstruction.AssemblyFactorArrowDiagrams
+public import SerrePositivity.KST.SConstruction.AssemblyCoherentFactorSelections
+public import SerrePositivity.KST.SConstruction.PointedArrowEvaluation
+public import SerrePositivity.KST.SConstruction.AssemblyCoherentFactorEvaluation
+
 /-! # ∞-S• 構成と連結 K 理論 -/
