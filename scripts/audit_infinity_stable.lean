@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGLastHornConePrimitive
+import SerrePositivity.InfinityCategories.Derived.DGVerdierLastHornDenominator
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramCochainFiller
 import SerrePositivity.InfinityCategories.Derived.DGLastHornFinalEdge
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeHorn
@@ -2232,6 +2234,27 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgLastHornFinalClosed
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdgeCompStructOfCochains
 
+#print axioms SerrePositivity.InfinityCategories.dgOneSimplex_ext
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFinalClosed_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeLastClosed_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeLastClosed_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramLastClosed_mem
+#print axioms SerrePositivity.InfinityCategories.dgDataTriangle_differential
+#print axioms SerrePositivity.InfinityCategories.dgLastHornKnownFace_differential
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFirstEdge_closed
+#print axioms SerrePositivity.InfinityCategories.dgTriangleResidual_differential
+#print axioms SerrePositivity.InfinityCategories.dgLastHornTopResidual_differential
+#print axioms SerrePositivity.InfinityCategories.dgCyclePostcomposition
+#print axioms SerrePositivity.InfinityCategories.dgLastHornPostcomposition_f
+#print axioms SerrePositivity.InfinityCategories.dgLastHornConeResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSolutionOfConePrimitive
+#print axioms SerrePositivity.InfinityCategories.dgLastHornConePrimitiveOfSolution_differential
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSolution_nonempty_iff_coneResidual_boundary
+
+#print axioms SerrePositivity.InfinityCategories.dgComplexConePrimitive_fst
+#print axioms SerrePositivity.InfinityCategories.dgComplexConePrimitive_snd
+#print axioms SerrePositivity.InfinityCategories.dgComplexConeElementMk_differential
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2385,6 +2408,16 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGOneSimplexComponentExt,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornFinalSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierLastHornDenominator,
+    `SerrePositivity.InfinityCategories.Derived.DGDataTriangleDifferential,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornFaceDifferentials,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornResidualCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.DGCyclePostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornConeResidual,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornConePrimitive,
+
     `SerrePositivity.InfinityCategories.Derived.DGTetrahedronEquations,
     `SerrePositivity.InfinityCategories.Derived.DGTetrahedronQReplacement,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornCochains,
