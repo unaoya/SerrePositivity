@@ -381,3 +381,7 @@ public import SerrePositivity.KST.Spectra.RawSpectrumWeightedDiagram
 public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitEvaluation
 public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitWedge
 public import SerrePositivity.KST.Spectra.KanSequenceLevelLimits
+public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitUniversal
+public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitEnd
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingLimitFamilies
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingLimits
