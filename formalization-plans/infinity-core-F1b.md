@@ -6,7 +6,7 @@
 
 ### 現在地
 
-- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1 も完了。F2L-2 進行中。
+- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1・F2L-2 も完了。F2L-3・F2L-4 は未完了。
 - B1：全単体集合パラメータの族の集合値前層による自然性の模型。双圏の単位・余単位・三角恒等式と自然な Hom 対応を比較。
 - B2：同じ宇宙の標的に対する反射的局所化。一般の局所化の存在は F2 の範囲。
 - B3：左右の Quillen A、弱可縮な comma 条件、二宇宙版の始対象による極限計算を回収。
@@ -21,37 +21,21 @@
 - F2L-1：F1 の既存 coherent nerve の頂点・辺・coherent Hom 比較を再利用。
   任意の頂点・辺の往復、端点固定の関手の全単射、恒等・合成三角形、Cat_∞ の写像空間と ULift した core Fun の同値を整備。
   比較の零単体と豊穣自然性、辺の類の一致と関手同型の存在、可逆辺と関手の同値の双方向判定を証明。
-  Cat_∞ 内の引き戻しの指定可換性との照合・lax pullback は未完了。
-- F2L-2：可逆 path による引き戻し候補と quasicategory 性、二射影・可換関手同型、指定 path を保つ全パラメータの lift を構成。
-  任意 K の Fun との交換、inner fibration の引き戻しと core の交換を厳密な同型で証明。
-  全 K の関手 core の置換後の厳密な引き戻し表示と元の二射影の一致まで完了。
-  置換の始域射影の core の同値性、終点写像とその全内部 Hom の core の Kan fibration 性を証明。
-  QCat の実際の豊穣後合成を core Fun の後合成と同定し、全豊穣 Hom の極限性で
-  置換後の cospan の Cat_∞ の native な極限錐を証明。頂点は catPullbackObject p q と厳密に一致。
-  自然変換の二宇宙の coherent 円柱と成分を構成し、定値 path の切断で元と置換後の図式の同型を証明。
-  同値な形状への slice 制限の充填性を使い、元の p、q の cospan の native な極限錐を構成。
-  頂点は catPullbackObject p q と厳密に一致。指定可逆辺・ホモトピーの厳密な持ち上げも構成。
-  元の錐を追跡可能な相対輸送から選び直し、全錐の可逆ホモトピーを公開。頂点側は定値、
-  図式側は切断の coherent 円柱と全時刻で厳密に一致。native な各脚と指定対角辺を関手へ読み戻し、
-  共通の対角関手を通る上下の指定三角形から catPullbackConeLegSectionIso を構成。
-  二射影の比較同型もこの構成へ更新し、存在命題からの個別選択を除いた。
-  coherent 二単体を指定辺と同型へ読み、native な錐の三角形から catPullbackConeNativeCommutativity を構成。
-  coherent 三単体の精密化の合成を共通の Hom で揃え、四面の指定同型の前後合成則を証明。
-  任意の指定境界関手への輸送が元の同型を保つことも証明し、strict な錐の三つの境界射を回収。
-  図式側の共通の対角関手と上下の指定同型を構成し、三つの比較三単体の六辺と四面の合成関係を証明。
-  二つの共有面の同型を消去し、catPullbackConeLegSectionIso_naturality で各脚の比較の射に沿う整合式を証明。
-  三角形の円柱の全側面と三つの比較三単体を同定。通常の nerve から来る三角形の豊穣辺の定値性と、
-  定値辺の指定同型が関手の等式による標準同型と一致する判定を証明。逆・合成・前後合成での保存も証明。
-  置換後の錐の三角形と図式円柱の上下三角形へ適用し、catPullbackConeLegSectionIso_strict_naturality で
-  strict な二面を可換等式と自然性等式からの標準同型へ簡約。左右の脚を置換後の中心へ比較する指定同型を構成。
-  左右の三角形の整合から中心の比較を消去し、catPullbackConeImageIso_commutativity を証明。
-  指定同型の前後合成の交換、恒等後合成、後合成の結合則も証明。二射影と指定 path の最終整合は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6427 jobs）、F2 の公理監査成功（816 宣言、標準三公理のみ）。
+  Cat_∞ 内の引き戻しへの接続は F2L-2 で完了。lax pullback は未完了。
+- F2L-2 完了：可逆 path による引き戻し対象と quasicategory 性、二射影・指定可換同型を構成。
+  全パラメータの指定 path を保つ lift と一意性、任意 K の Fun との交換を証明。
+  全 K の関手 core を置換後の core の厳密な引き戻しとして表示し、元の二射影との一致を証明。
+  置換の始域射影の core の同値性と終点・全内部 Hom の core の Kan fibration 性を証明。
+  全豊穣 Hom の極限性から元の cospan の Cat_∞ 内の native な極限錐を構成。頂点は候補と厳密に一致。
+  頂点固定・図式側で切断の coherent 円柱と全時刻で一致する全錐の比較と、同じ円柱から二射影の指定比較を構成。
+  三つの比較三単体の四面の合成則と strict な面の定値性から各脚の整合式を証明。
+  可縮 fiber の射の一意性で、元の path 置換の同型を切断上で標準同型へ簡約。
+  catPullbackCone_projection_commutativity で二射影の指定比較と候補の元の指定 path の最終整合を証明。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6440 jobs）、F2 の公理監査成功（857 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-2：Cat_∞ の引き戻しと全試験 ∞ 圏からの写像空間による普遍性。Kerodon §5.5.3、HTT §3.3.3。40〜100 時間。
 - F2L-3：Fun(Δ¹,−) と端点評価による lax pullback と普遍性。Tamme §1 Definition 5・Remark 6。24〜60 時間。
 - F2L-4：同値辺上の全部分圏による引き戻しとの比較、安定性・exact 関手への接続。Tamme §1 Remark 7・Lemma 8。24〜60 時間。
 - Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
@@ -73,7 +57,7 @@
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
-- `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackConeLegSectionIso_naturality`
+- `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackCone_projection_commutativity`
 
 ### 依存と提供
 
@@ -84,7 +68,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：左右の像の指定比較と整合式、前後合成の交換・結合・単位則、集約・監査と本書。
+  本保存単位：可縮 fiber の同型の制限、切断上の指定同型の簡約、二射影と指定 path の最終整合、集約・監査と本書。
 
 ### 既知の問題
 
@@ -97,8 +81,8 @@
 
 ### 次の一手
 
-- equivalencePathReplacementFunctorIso の切断への前合成を、構成元の可縮 fiber の一意性から標準同型へ簡約する。
-  catPullbackConeImageIso_commutativity と前後合成の交換則で、二射影の指定比較と指定 path の整合式を閉じる。
+- F2L-3：Fun(Δ¹,C) の両端評価から (A × B) ×_(C × C) Fun(Δ¹,C) を構成する。
+  端点評価の inner fibration・同値持ち上げ性を既存の制限 API で証明し、Cat_∞ 内の普遍性へ接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
