@@ -1621,3 +1621,9 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRestriction_preservesCartesianEdges
 #check @SerrePositivity.InfinityCategories.F1B.kanCartesianFibration_op_toCocartesianHornFibration
 #check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_of_isInitialVertex_fiber
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanPrecompositionSquare_extension
+#check @SerrePositivity.InfinityCategories.F1B.kanOverPullbackMap_isPullback
+#check @SerrePositivity.InfinityCategories.F1B.kanOverPullbackMap_naturality_isPullback
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeHomDiagram_extension
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseHomPre_innerFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRestriction_innerFibration
