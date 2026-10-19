@@ -678,3 +678,8 @@ public import SerrePositivity.KST.Spectra.ThreeEdgeTransportRelabel
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCanonicalStageTransport
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCanonicalRelativeComparison
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCanonicalBFComparison
+public import SerrePositivity.KST.Spectra.FibrationCompositionTriangleLift
+public import SerrePositivity.KST.Spectra.FibrationEdgeComposition
+public import SerrePositivity.KST.Spectra.PointedRestrictionPathComposition
+public import SerrePositivity.KST.Spectra.SequenceParameterForwardInterval
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCanonicalCoordinateHomotopy

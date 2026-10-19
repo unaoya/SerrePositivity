@@ -40,6 +40,17 @@ lemma path_restriction_eq_of_homotopy {A B E : PointedSimplicialSet.{u}}
   rw [uncurry_pre_app, ← homotopy_h, ← homotopy_h]
   exact h
 
+/-- 非定数な区間族の制限一致を評価すると、元のホモトピーの区間全体が一致する。 -/
+lemma homotopy_restriction_eq_of_path {A B E : PointedSimplicialSet.{u}}
+    {f g : A ⟶ E} {f' g' : B ⟶ E}
+    (P : VerticalPath (PointedObject.toPoint E) f g)
+    (Q : VerticalPath (PointedObject.toPoint E) f' g') (j : B ⟶ A)
+    (h : P.path ≫ (prePointed j E).right = Q.path) :
+    j.right ▷ (Δ[1] : SSet.{u}) ≫ P.homotopy.h = Q.homotopy.h := by
+  rw [homotopy_h, ← uncurry_pre_app, Category.assoc, ← pre_ι, ← Category.assoc]
+  change uncurry ((P.path ≫ (prePointed j E).right) ≫ PointedObject.basedHomι B E) = _
+  rw [h, ← homotopy_h]
+
 /-- 二度転置した同じ区間族は、元の区間族そのものに戻る。 -/
 lemma basedTranspose_twice_path {A U V : PointedSimplicialSet.{u}}
     {f g : A ⟶ (ihom U).obj V}
