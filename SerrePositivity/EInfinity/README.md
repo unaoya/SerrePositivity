@@ -304,8 +304,15 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `rows_pathSequence` と `pathSequence_success` は構成した Schedule で実際の経路表の合成語抽出を証明する。
 `pathSequence_eq_shuffleSimplex` は元の置換列が既存の実際の shuffle 合成単体の頂点列であることを示す。
 `term_shuffleSimplex` と `signed_term_shuffleSimplex` は任意の可換環で実際の正規化項と符号付き合成項を照合する。
-正の内側語長での正方向の成功表と各項の構成は完了。逆構成・一意性・全項の全単射と空語の挿入は未完成。
-候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
+正の内側語長での正方向の成功表と各項の構成は完了。
+`AdjacentCollapse.collapse` は連続重複だけを縮め、非退化語では元の語を保つ。
+`CompositeRecovery.outerLabel`・`innerLabel` は既存の挿入ラベル直和分解で元のラベルを復元する。
+`outerWord_compositeWord` は非空な分割成分の指定値の反復を縮約し、元の外側語を返す。
+`inner_compositeWord` は内側射影を元の全分割成分の連結へ同定する。
+`OverlapPartition.collapse_segments` は共有端点の重複を除いて元の内側語へ戻す。
+`innerWord_compositeWord` は出力だけから元の内側語を復元する。
+`input_words_unique` と `input_degrees_unique` は同じ合成語を与える両語・両次数の一意性。
+分割自体の一意性、任意の成功経路表から元の成功二表を構成する逆方向、全項の全単射と空語は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

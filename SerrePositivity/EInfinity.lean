@@ -231,3 +231,4 @@ public import SerrePositivity.EInfinity.Surjection.TableCompositionRowProjection
 public import SerrePositivity.EInfinity.Surjection.ComponentVertices
 public import SerrePositivity.EInfinity.Surjection.CompositionPathRows
 public import SerrePositivity.EInfinity.Surjection.TableCompositionPathSuccess
+public import SerrePositivity.EInfinity.Surjection.CompositeInnerRecovery

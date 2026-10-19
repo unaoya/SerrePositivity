@@ -588,6 +588,12 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.pathSequence_success,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.term_shuffleSimplex,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.signed_term_shuffleSimplex,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerWord_compositeWord,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.inner_compositeWord,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.innerWord_compositeWord,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_words_unique,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
       `SerrePositivity.EInfinity.TableReduction.reduceRows_row_bounds,
       `SerrePositivity.EInfinity.Surjection.substitute_horizontal_no_slot,
@@ -1313,3 +1319,20 @@ example : term ℤ fullCompositionFixture.pathSequence fullCompositionFixture.fu
     listGenerator ℤ (compositeWord canonicalFixture compositionInner 1 verticalCuts) at h
   rw [hw] at h
   exact h
+
+-- 連続重複だけを縮め、離れた同じ値は残す。
+example : AdjacentCollapse.collapse ([0, 0, 1, 1, 0, 0] : List (Fin 2)) = [0, 1, 0] := by
+  decide
+-- 反復出現を含む実際の合成語から元の両語を一般定理で復元する。
+example : CompositeRecovery.outerWord 1
+    (compositeWord canonicalFixture compositionInner 1 verticalCuts) = [0, 1, 3, 1, 3, 2] := by
+  exact (CompositeRecovery.outerWord_compositeWord canonicalFixture compositionInner 1
+    verticalCuts (by decide)).trans (by decide)
+example : (compositeWord canonicalFixture compositionInner 1 verticalCuts).filterMap
+    (CompositeRecovery.innerLabel 1) = [0, 1, 1, 0] := by
+  exact (CompositeRecovery.inner_compositeWord canonicalFixture compositionInner 1
+    verticalCuts).trans (by decide)
+example : CompositeRecovery.innerWord 1
+    (compositeWord canonicalFixture compositionInner 1 verticalCuts) = [0, 1, 0] := by
+  exact (CompositeRecovery.innerWord_compositeWord canonicalFixture compositionInner 1
+    verticalCuts (by decide)).trans (by decide)
