@@ -463,6 +463,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `exceptionalChartGeneratorInclusion`・`exceptionalTransitionEquiv_chart` | ExceptionalTransitionChart | 例外因子の遷移が既存のチャート基底変換を延長する可換式 |
 | `exceptionalTransitionDGFunctor`・全 Hom 同型・cocycle・恒等律・共通表示との比較 | ExceptionalTransitionDG | 同一重なり係数環上の例外因子の指定 dg 遷移 |
 | `exceptionalChartInclusionDGFunctor`・`exceptionalChartInclusionDGFunctor_transition` | ExceptionalChartDGInclusion | blowup チャートから例外因子への局所 dg 係数射と遷移の可換四角形 |
+| 関係式・自己逆基底変換・遷移・包含の係数自然性 | ExceptionalBasisScalarNaturality | 実際の環射に沿う自由生成加群の半線形計算 |
+| `exceptionalScalarDGFunctor`・包含公式・共通表示比較／遷移の dg 係数自然性 | ExceptionalScalarDGFunctor | 写した係数と座標の実際の例外因子表示への係数変更 |
+| `exceptionalSemilinearDGFunctor`・包含公式・共通表示との比較 | ExceptionalSemilinearTransition | 係数環と pivot を同時に変える指定 dg 遷移 |
+| `FiniteOverlapExceptionalKoszulObject`・`finiteOverlapExceptionalInclusionDGFunctor`・`finiteOverlapExceptionalDGTransition`・包含公式 | FiniteOverlapExceptionalTransition | 実際の有限重なり環に沿う例外因子の局所対象・包含・遷移 |
+| `exceptionalSemilinearDGFunctor_chart_square` | ExceptionalSemilinearChartSquare | 係数と規格化座標を移す局所 dg 射の可換四角形 |
+| `finiteOverlapExceptionalInclusionDGFunctor_transition` | FiniteOverlapExceptionalChartSquare | 既存の指定有限重なりチャート遷移と例外因子の局所射の整合性 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -530,7 +536,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全3083定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3112定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -605,7 +611,17 @@ Cartier 生成元を追加するチャート生成加群の包含と実際の局
 例外因子の遷移が既存チャート遷移を延長する可換四角形を証明済み。
 原典は KST v4 Def 3.1・Lemma 3.6（pp.11–14）。共通 Koszul 表示を経由して
 遷移の整合性を再構成する経路であり、係数環間の移送を省略した大域降下の主張ではない。
-次の実装単位は例外因子の基底変換の係数自然性と実際の有限重なり環への接続、
+例外因子の関係式、自己逆基底変換、遷移、チャート生成元の包含は
+自由加群の係数変更と可換であることを証明済み。写した係数・座標への
+標準微分移送を含む dg 係数変更、その総外積上の公式、共通表示比較と
+指定遷移の dg 係数自然性を証明済み。係数環と pivot を同時に変える
+半線形 dg 遷移と、共通の全 a_j 表示への比較式を構成済み。
+実際の `finiteOverlapChartMap` に適用して、有限重なり環上の例外因子の
+局所 Koszul 対象・包含・遷移を構成し、既存の指定 blowup チャート遷移と
+例外因子への局所 dg 射の可換四角形も証明済み。
+原典は KST v4 Def 3.1・Lemma 3.6（pp.11–14）。係数・座標の移送を
+明示した dg 外積計算による再構成であり、通常の商による置換は行わない。
+次の実装単位は実際の例外因子遷移の恒等・合成則と共通基底環上の係数図式、
 および coherent な降下との比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
