@@ -5968,3 +5968,69 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRootedHomComparison_homotopy
 #print axioms specifiedCoconeRootedHomComparison_homotopy
+
+#check @tetrahedronRootEdge
+#print axioms tetrahedronRootEdge
+
+#check @tetrahedronRootEdge_degeneracy
+#print axioms tetrahedronRootEdge_degeneracy
+
+#check @tetrahedronRootEdge_source
+#print axioms tetrahedronRootEdge_source
+
+#check @tetrahedronRootEdge_target_terminalFace
+#print axioms tetrahedronRootEdge_target_terminalFace
+
+#check @triangleTip_longEdge
+#print axioms triangleTip_longEdge
+
+#check @specifiedCoconeNativeRootEdge
+#print axioms specifiedCoconeNativeRootEdge
+
+#check @specifiedCoconeRootedTetrahedron_rootEdge
+#print axioms specifiedCoconeRootedTetrahedron_rootEdge
+
+#check @specifiedCoconeNativeRootEdge_source
+#print axioms specifiedCoconeNativeRootEdge_source
+
+#check @specifiedCoconeNativeRootEdge_target
+#print axioms specifiedCoconeNativeRootEdge_target
+
+#check @pointRestrictionFullEdgeFamily_tip_uncurry
+#print axioms pointRestrictionFullEdgeFamily_tip_uncurry
+
+#check @cosliceEdgeFamily_section_homotopy
+#print axioms cosliceEdgeFamily_section_homotopy
+
+#check @cosliceEdgeFamily_precomposition_homotopy
+#print axioms cosliceEdgeFamily_precomposition_homotopy
+
+#check @specifiedCoconeRootBaseEdgeFamily
+#print axioms specifiedCoconeRootBaseEdgeFamily
+
+#check @specifiedCoconeRootBaseEdgeFamily_fixed
+#print axioms specifiedCoconeRootBaseEdgeFamily_fixed
+
+#check @specifiedCoconeRootBaseEdgeFiberFamily
+#print axioms specifiedCoconeRootBaseEdgeFiberFamily
+
+#check @specifiedCoconeRootBaseEdgeFamily_source
+#print axioms specifiedCoconeRootBaseEdgeFamily_source
+
+#check @specifiedCoconeRootBaseEdgeFiberFamily_source
+#print axioms specifiedCoconeRootBaseEdgeFiberFamily_source
+
+#check @specifiedCoconeRootBaseEdgeFamily_target
+#print axioms specifiedCoconeRootBaseEdgeFamily_target
+
+#check @specifiedCoconeRootBaseEdgeFiberFamily_target
+#print axioms specifiedCoconeRootBaseEdgeFiberFamily_target
+
+#check @specifiedCoconeNativeRootHomPrecomposition
+#print axioms specifiedCoconeNativeRootHomPrecomposition
+
+#check @specifiedCoconeRootedHomFamily_precomposition_homotopy
+#print axioms specifiedCoconeRootedHomFamily_precomposition_homotopy
+
+#check @specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy
+#print axioms specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy
