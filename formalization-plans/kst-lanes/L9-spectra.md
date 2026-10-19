@@ -19,19 +19,19 @@
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
 - loop 交換の頂点を円の射と標準区間の辺で厳密に照合済み。骨格 fiber の通常の零 loop 比較の包含は明示した逆辺の類と一致し、実際の成分微分の係数を次数二以上の正規化交代微分と (-1)^(セル次元) で計算済み。
 - Kan fibration の下で同じ downstairs の類を持つ代表を、射影が指定した単体と厳密に一致する upstairs の代表へ調整済み。整合する類の族を厳密に整合する代表へ直し、極限の群から段ごとの群の逆極限への比較準同型の全射性を証明済み。
-- 整合する RelStruct を極限の RelStruct へ組み立てる式と、比較の核が各段で零となる類であることを証明済み。非可換 lim¹ を twisted 作用の軌道集合で構成し、全射な遷移のときの消滅を証明済み。固定した核の球面代表から lim¹ の障害を構成し、零ホモトピーの選択変更が twisted 作用になること、極限で零な代表の障害が基点となることを証明済み。球面代表変更への不変性、核から lim¹ への基点を保つ写像を証明済み。零障害から厳密に整合する零ホモトピーを逐次構成し、核上の障害が零であることと極限の類の零性の同値を証明済み。lim¹ 消滅時の比較の単射性、非可換群の Mittag–Leffler 条件での lim¹ 消滅と比較群同型まで完了。有限群 BG から有理化各段への実際の骨格の塔の高次群で像を安定化し、lim¹ 消滅まで証明済み。具体的な塔の極限と通常の写像空間を基点を保って同型にし、高次群の比較を通常の骨格への制限へ移送済み。H¹ と δ⁰ の零性で最初の fiber を計算し、整合族と通常の写像空間の高次群を零骨格・頂点評価で検出済み。定数写像の全射性を BF 比較と高い段の自然性で全整数次数へ移送済み。任意の高次群の族を零ホモトピーの隣接差で実現し、核から lim¹ への障害写像の全射性を証明済み。同じ障害から隣接差を揃え、三角形を保持した相対ホーン持ち上げで整合する相対ホモトピーを構成し、任意の二つの核の元を比較する単射性も証明済み。核と lim¹ の基点を保つ全単射、Milnor の単射・像が核に一致すること、一般の極限比較の全単射性と lim¹ 消滅の同値まで完了。通常 Tot の実際の骨格の塔への一般の接続は未完。
+- 整合する RelStruct を極限の RelStruct へ組み立てる式と、比較の核が各段で零となる類であることを証明済み。非可換 lim¹ を twisted 作用の軌道集合で構成し、全射な遷移のときの消滅を証明済み。固定した核の球面代表から lim¹ の障害を構成し、零ホモトピーの選択変更が twisted 作用になること、極限で零な代表の障害が基点となることを証明済み。球面代表変更への不変性、核から lim¹ への基点を保つ写像を証明済み。零障害から厳密に整合する零ホモトピーを逐次構成し、核上の障害が零であることと極限の類の零性の同値を証明済み。lim¹ 消滅時の比較の単射性、非可換群の Mittag–Leffler 条件での lim¹ 消滅と比較群同型まで完了。有限群 BG から有理化各段への実際の骨格の塔の高次群で像を安定化し、lim¹ 消滅まで証明済み。具体的な塔の極限と通常の写像空間を基点を保って同型にし、高次群の比較を通常の骨格への制限へ移送済み。H¹ と δ⁰ の零性で最初の fiber を計算し、整合族と通常の写像空間の高次群を零骨格・頂点評価で検出済み。定数写像の全射性を BF 比較と高い段の自然性で全整数次数へ移送済み。任意の高次群の族を零ホモトピーの隣接差で実現し、核から lim¹ への障害写像の全射性を証明済み。同じ障害から隣接差を揃え、三角形を保持した相対ホーン持ち上げで整合する相対ホモトピーを構成し、任意の二つの核の元を比較する単射性も証明済み。核と lim¹ の基点を保つ全単射、Milnor の単射・像が核に一致すること、一般の極限比較の全単射性と lim¹ 消滅の同値まで完了。通常 Tot の有限骨格の重みの Reedy cofibrancy と骨格間の包含の Reedy 単射性も証明済み。各段を Kan、制限を fibration とし、通常 Tot と具体的な整合族の極限との基点を保つ同型を構成済み。比較の各座標は元の骨格への制限。通常 Tot の正次数の比較の全射性、全単射性と次次数 lim¹ 消滅の同値まで移送済み。
 - 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
 - 標準の零次数接続写像とその厳密な正方形への自然性を構成し、正次数・零次数の塔の微分の loop 反可換式を証明済み。
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4207 jobs、専用監査 733 モジュール・6890 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：15282 jobs、終了コード 0。共有レーンの既存警告は残るがビルド失敗なし。
+- 検証：対象ビルド 4218 jobs、専用監査 744 モジュール・6941 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：今回の 15347 jobs は共有 F1 の未生成 .olean で終了コード 1。初回はルートから `RelativeArrowSpecifiedRealization`、再試行は `SmallCoherentFamilyUniqueness` から `BoundaryRepresentationTransformationIso` の .olean が見つからない。両ソースには他レーンの並行差分あり。直前の全体成功は 15282 jobs。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
-- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。正次数の比較の全射性、lim¹ 消滅からの単射性、Mittag–Leffler 条件での非可換 lim¹ 消滅と比較同型は証明済み。有理 BG の実際の骨格の塔では高次群の像の安定化と lim¹ 消滅まで証明済み。通常の写像空間の高次群との比較と段一での検出も証明済み。有理有限群の自明作用では初段の検出と全整数次数への移送も完了。核と lim¹ の基点を保つ全単射、一般の Kan fibration の塔の Milnor 完全性、比較が全単射となることと lim¹ 消滅の同値も完了。通常 Tot の実際の骨格の塔への一般の接続は残る。
-  原典：Goerss–Jardine VIII §§1–2。16–48 時間。E₂ の消滅だけで収束を仮定しない。
+- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。正次数の比較の全射性、lim¹ 消滅からの単射性、Mittag–Leffler 条件での非可換 lim¹ 消滅と比較同型は証明済み。有理 BG の実際の骨格の塔では高次群の像の安定化と lim¹ 消滅まで証明済み。通常の写像空間の高次群との比較と段一での検出も証明済み。有理有限群の自明作用では初段の検出と全整数次数への移送も完了。核と lim¹ の基点を保つ全単射、一般の Kan fibration の塔の Milnor 完全性、比較が全単射となることと lim¹ 消滅の同値も完了。通常 Tot の骨格の塔の各段の Kan 性と遷移の fibration 性、具体的な整合族との基点を保つ同型、実際の制限族による比較の全射性と lim¹ による全単射判定まで完了。核と lim¹ の全単射の通常 Tot の界面、BF 全整数次数への移送・既存の cohomology の適用との合流確認は残る。
+  原典：Goerss–Jardine VIII §§1–2。合流確認 4–12 時間。E₂ の消滅だけで収束を仮定しない。
 - 段ごとの Reedy 条件を持つ余単体 Ω スペクトルでは、通常 Tot の BF 模型から既存の homotopy Tot への実際の BF 射と全整数次数の π 同型まで完了。任意の図式の Reedy 置換・BF 界面と既存の置換不変性の合流を確認する。
   原典：Goerss–Jardine VII §4、VIII §1、HTT A.3.3。合流確認 4–12 時間。
 - γ3 後の導来写像空間を持つ正しい Sp との比較、Sp の ∞ 極限と安定性、局所化不変量の値域としての界面を完成させる。
@@ -57,7 +57,7 @@
 - `PointedFibrationTower.kernelLimOneEquiv`
 - `PointedFibrationTower.kernelObstruction`
 - `PointedFibrationTower.limitGroupComparison`
-- `PointedFibrationTower.limitGroupComparison_bijective_iff`
+- `PartialTotalizationTower.groupComparison_bijective_iff`
 - `SkeletalCellAttachment.coefficientDifferential_all_alternating`
 - `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_eq`
 - `TowerLimOne.subsingleton_of_mittagLeffler`
@@ -71,7 +71,7 @@
 - `rationalShapiroEquiv`
 - `PointedTotalization.weightedEndComparison`
 - `BousfieldKanWeightLatching.reedyCofibrant`
-- `CosimplicialTotalization.smallEndIso`
+- `PartialTotalizationTower.limitIso`
 - `OmegaSpectrum.ordinaryTotalizationComparison_piIsomorphism`
 
 ### 依存と提供
@@ -87,7 +87,7 @@
 - 共有ルート `SerrePositivity.lean` および他レーンの既存差分は触らず、今回のコミット対象にも含めない。
 
 ### 既知の問題
-- 自分の import 閉包・対象ビルド・公理監査・全体ビルドは成功。既報の共有 F1/F1B の重複は今回再現しない。
+- 自分の対象ビルドと公理監査は成功。今回の全体ビルドは共有 F1 の生成物が見つからず失敗し、再試行でも別の F1 生成物が見つからない。所有ソースの Lean エラーはなし。共有 F1 のソース・ルートを変更して迂回しない。
 - 所有ソースの sorry・追加 axiom はなし。所有宣言の型に `HomotopicalAlgebra.ModelCategory` 定数がないことも Lean 環境を走査して確認済み。
 - import 閉包に KanQuillen モジュールなし。`SSet.modelCategoryQuillen` 名前空間は Mathlib のホーン生成射・Fibration の既存 API に使うが、`ModelCategory SSet` は仮定しない。
 - 公理監査は私有宣言・推移的な公理依存と、宣言型の ModelCategory 定数を検査する。
@@ -96,9 +96,9 @@
 - Sp-3 は cohomology 消滅だけで仮定せず、実際の障害補正・lim¹ 消滅・写像空間の検出・BF 比較を通して証明済み。一般の Tot の収束・∞ 極限性は未完。
 
 ### 次の一手
-- Sp-2：次は `SkeletalWeightedEnd.weight` の標準単体重みの有限骨格の latching 射を具体的に計算する。`SkeletonFiltrationMono.preimage_skeleton`・`image_skeleton` は単射での骨格の逆像と共通部分を計算済み。latching の各固有 coface は単射なので、標準単体の latching 錐を骨格へ引き戻し、単体次数ごとの余極限の安定性から骨格の latching を同定する経路を進める。`weightTransition` の相対 latching の単射性も必要。その後、構成済みの `PointedWeightedEnd.preMap_fibration`、`SkeletalWeightedEnd.limitIso` と明示的な `FibrationTower.limit` を接続し、通常 Tot への射影公式を保持して Milnor 判定を移す。
+- Sp-2：通常 Tot の実際の骨格の塔と正次数の Milnor 判定は `PartialTotalizationMilnorComparison` まで既証。次は `groupComparison` が具体的な塔の比較と `KanHomotopyGroup.equivOfIso` の合成であることを使い、その核を塔の核へ移す全単射を構成し、既存の `PointedFibrationTower.kernelLimOneEquiv` へ合成する。通常 Tot の lim¹ 項の基点・像の公式まで移送する。Sp-4 の任意の図式への Reedy 置換の合流では、元の Ω 図式の各段を置換した後の随伴構造を Reedy anodyne な単位に沿って loop 値へ延長し、自然変換として組み立てる界面が必要。
 - Sp-4 の主比較は `OmegaSpectrum.ordinaryTotalizationComparison`。元の余単体 Ω スペクトルの各段の Reedy 条件だけから、通常 Tot の Ω 列・BF 置換・既存 homotopy Tot への射・全整数次数 π 同型まで既証。任意の図式に Reedy 置換を施す界面の合流は確認する。γ3 の ∞ 極限性・Sp の安定性は別工程。
-- `kernelLimOneEquiv` の順写像は既存の `kernelObstruction` そのもの。逆を核の包含へ合成した `limOneBoundary` は単射で、その像は比較準同型の核。単射性には零障害判定だけを用いず、任意の二つの元の整合する相対ホモトピーを `TowerCompatibleHomotopies` で構成し、`limitRelStruct` へまとめた。一般の塔の Milnor 判定だけで通常 Tot の具体的な骨格の塔との接続を済んだ扱いにしない。 Mathlib の部分複体骨格と圏論的 `SSet.sk` の同型は TODO のままなので、骨格関手の余極限保存を既存の定理として扱わない。
+- 有限骨格の Reedy cofibrancy は、latching 図式の全ての射で骨格の所属を保存・反映し、その部分図式の余極限の包含を単射とする `CartesianSubfunctorColimit` から証明した。骨格間の latching 正方形は次数ごとの pullback とし、その pushout の比較を単射と証明済み。Mathlib の部分複体骨格と `SSet.sk` の同型や、骨格関手全体の余極限保存を仮定しない。`PartialTotalizationTower.limitIso_hom_projection` と `groupComparison_apply` が通常 Tot の元の制限を計算する。
 - Sp-2 全体、Sp-4 の置換界面の合流、Sp-5 の ∞ 圏 Sp は未完。Sp-3 と Reedy 条件下の通常 Tot の BF 比較は実際の標準射の全整数次数 π 同型として完了。一般の Tot 塔の収束や ∞ 極限性をここから仮定しない。
 
 ## 範囲と所有

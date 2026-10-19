@@ -758,7 +758,18 @@ run_cmd do
     `SerrePositivity.KST.Spectra.ReedyWeightCornerLifting,
     `SerrePositivity.KST.Spectra.ReedyWeightRestrictionFibration,
     `SerrePositivity.KST.Spectra.PointedReedyWeightRestriction,
-    `SerrePositivity.KST.Spectra.SkeletonFiltrationMono]
+    `SerrePositivity.KST.Spectra.SkeletonFiltrationMono,
+    `SerrePositivity.KST.Spectra.CartesianSubfunctorColimit,
+    `SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor,
+    `SerrePositivity.KST.Spectra.SkeletalStandardLatching,
+    `SerrePositivity.KST.Spectra.PartialTotalizationKan,
+    `SerrePositivity.KST.Spectra.TypesColimitPullback,
+    `SerrePositivity.KST.Spectra.SkeletonTransitionPullback,
+    `SerrePositivity.KST.Spectra.SkeletalTransitionLatchingPullback,
+    `SerrePositivity.KST.Spectra.SkeletalTransitionReedyMono,
+    `SerrePositivity.KST.Spectra.PartialTotalizationTower,
+    `SerrePositivity.KST.Spectra.PartialTotalizationLimit,
+    `SerrePositivity.KST.Spectra.PartialTotalizationMilnorComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
