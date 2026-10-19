@@ -652,4 +652,9 @@ public import SerrePositivity.KST.SConstruction.BoundaryAssemblySuspensionPrisms
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblySuspensionSquares
 public import SerrePositivity.KST.SConstruction.KOriginalSuspensionDiagrams
 public import SerrePositivity.KST.SConstruction.KOriginalSuspensionPrisms
+public import SerrePositivity.KST.SConstruction.RelativeFamilyRectification
+public import SerrePositivity.KST.SConstruction.RelativeFamilyChains
+public import SerrePositivity.KST.SConstruction.RelativeSequenceFamilyRectification
+public import SerrePositivity.KST.SConstruction.KRelativeFamilyLifting
+public import SerrePositivity.KST.SConstruction.KRelativeFamilyRectification
 /-! # ∞-S• 構成と連結 K 理論 -/

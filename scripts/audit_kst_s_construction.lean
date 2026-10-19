@@ -9857,3 +9857,99 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram_inclusion
 #print axioms SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram_inclusion
+
+#check @SerrePositivity.KST.SConstruction.exists_relative_fibration_family_transport
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_fibration_family_transport
+
+#check @SerrePositivity.KST.SConstruction.exists_relative_pointed_family_adjustment
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_pointed_family_adjustment
+
+#check @SerrePositivity.KST.SConstruction.RelativeFamilyChain
+#print axioms SerrePositivity.KST.SConstruction.RelativeFamilyChain
+
+#check @SerrePositivity.KST.SConstruction.relativeFamilyChainSingle
+#print axioms SerrePositivity.KST.SConstruction.relativeFamilyChainSingle
+
+#check @SerrePositivity.KST.SConstruction.relativeFamilyChainAppend
+#print axioms SerrePositivity.KST.SConstruction.relativeFamilyChainAppend
+
+#check @SerrePositivity.KST.SConstruction.relativeFamilyChainMap
+#print axioms SerrePositivity.KST.SConstruction.relativeFamilyChainMap
+
+#check @SerrePositivity.KST.SConstruction.relativeFamilyChain_boundary
+#print axioms SerrePositivity.KST.SConstruction.relativeFamilyChain_boundary
+
+#check @SerrePositivity.KST.SConstruction.exists_relativeFamilyChain_lift
+#print axioms SerrePositivity.KST.SConstruction.exists_relativeFamilyChain_lift
+
+#check @SerrePositivity.KST.SConstruction.RelativeSequenceFamilyStage
+#print axioms SerrePositivity.KST.SConstruction.RelativeSequenceFamilyStage
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyNext
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyNext
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyStage
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyStage
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification_evaluation
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification_evaluation
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification_boundary
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification_boundary
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification_chain
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification_chain
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification_zero
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyRectification_zero
+
+#check @SerrePositivity.KST.SConstruction.kRawMappingProjection
+#print axioms SerrePositivity.KST.SConstruction.kRawMappingProjection
+
+#check @SerrePositivity.KST.SConstruction.kRawMappingProjection_rlp
+#print axioms SerrePositivity.KST.SConstruction.kRawMappingProjection_rlp
+
+#check @SerrePositivity.KST.SConstruction.kRawMappingProjection_evaluation
+#print axioms SerrePositivity.KST.SConstruction.kRawMappingProjection_evaluation
+
+#check @SerrePositivity.KST.SConstruction.kRelativeFamilyLiftData
+#print axioms SerrePositivity.KST.SConstruction.kRelativeFamilyLiftData
+
+#check @SerrePositivity.KST.SConstruction.kRelativeFamilyLiftData_evaluation
+#print axioms SerrePositivity.KST.SConstruction.kRelativeFamilyLiftData_evaluation
+
+#check @SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData
+#print axioms SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData
+
+#check @SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData_boundary
+#print axioms SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData_boundary
+
+#check @SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData_projection
+#print axioms SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData_projection
+
+#check @SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData_chain
+#print axioms SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData_chain
+
+#check @SerrePositivity.KST.SConstruction.RelativeFamilyChain.nil
+#print axioms SerrePositivity.KST.SConstruction.RelativeFamilyChain.nil
+
+#check @SerrePositivity.KST.SConstruction.RelativeFamilyChain.cons
+#print axioms SerrePositivity.KST.SConstruction.RelativeFamilyChain.cons
+
+#check @SerrePositivity.KST.SConstruction.relativeFamilyChainTrace
+#print axioms SerrePositivity.KST.SConstruction.relativeFamilyChainTrace
+
+#check @SerrePositivity.KST.SConstruction.exists_relativeFamilyChain_lift_with_trace
+#print axioms SerrePositivity.KST.SConstruction.exists_relativeFamilyChain_lift_with_trace
+
+#check @SerrePositivity.KST.SConstruction.RelativeSequenceFamilyStage.val
+#print axioms SerrePositivity.KST.SConstruction.RelativeSequenceFamilyStage.val
+
+#check @SerrePositivity.KST.SConstruction.RelativeSequenceFamilyStage.chain
+#print axioms SerrePositivity.KST.SConstruction.RelativeSequenceFamilyStage.chain
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyNext_trace
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyNext_trace
