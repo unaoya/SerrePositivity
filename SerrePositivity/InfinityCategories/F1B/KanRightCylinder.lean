@@ -46,6 +46,30 @@ def kanRightCylinderBase {K C : SSet.{u}} (δ : K ⟶ C) : C ⟶ KanRightCylinde
   (SSet.opFunctorCompOpFunctorIso.app C).inv ≫
     SSet.opFunctor.map (pushout.inr (prismEndpoint 1 K.op) (SSet.opFunctor.map δ))
 
+/-- 概要：右円柱の prism の始点は δ に沿う底の包含に等しい。
+方針：反転した左円柱の終点の貼り合わせと二重反転同型の自然性を使う。
+規約：時間は第二因子。
+使われ方：一つの円柱比較の始端を両端図式の左成分へ移す。 -/
+lemma kanRightCylinderPrism_zero {K C : SSet.{u}} (δ : K ⟶ C) :
+    SSet.ι₀ ≫ kanRightCylinderPrism δ = δ ≫ kanRightCylinderBase δ := by
+  change prismEndpoint 0 K ≫
+    ((Δ[1] : SSet.{u}) ◁ (SSet.opFunctorCompOpFunctorIso.app K).inv) ≫
+    reversePrism (pushout.inl (prismEndpoint 1 K.op) (SSet.opFunctor.map δ)) = _
+  rw [← Category.assoc, prismEndpoint_naturality, Category.assoc]
+  change (SSet.opFunctorCompOpFunctorIso.app K).inv ≫
+    (prismEndpoint 0 K.op.op ≫
+      reversePrism (pushout.inl (prismEndpoint 1 K.op) (SSet.opFunctor.map δ))) = _
+  rw [reversePrism_endpoint]
+  change (SSet.opFunctorCompOpFunctorIso.app K).inv ≫
+    SSet.opFunctor.map (prismEndpoint 1 K.op ≫ pushout.inl _ _) = _
+  rw [pushout.condition, CategoryTheory.Functor.map_comp]
+  have hn : (SSet.opFunctorCompOpFunctorIso.app K).inv ≫
+      SSet.opFunctor.map (SSet.opFunctor.map δ) =
+      δ ≫ (SSet.opFunctorCompOpFunctorIso.app C).inv :=
+    SSet.opFunctorCompOpFunctorIso.inv.naturality δ
+  rw [← Category.assoc, hn]
+  rfl
+
 /-- 概要：右指定変換を反転した左指定変換を、合成の表示も含めて型付けする。
 方針：反転ホモトピーの raw な射を保ち、終端で関手の合成保存を使う。
 規約：終端を δop≫Fop と明示する。
