@@ -997,3 +997,7 @@ public import SerrePositivity.InfinityCategories.F1.InvertingFunctorIsoInvarianc
 public import SerrePositivity.InfinityCategories.F1.FullSubcomplexPathLift
 public import SerrePositivity.InfinityCategories.F1.RelativePathSquare
 public import SerrePositivity.InfinityCategories.F1.InvertingRestrictionRelativePath
+public import SerrePositivity.InfinityCategories.F1.RelativePathEquivalenceFibration
+public import SerrePositivity.InfinityCategories.F1.ReplacementSquareResolution
+public import SerrePositivity.InfinityCategories.F1.RelativePathEndpointCorner
+public import SerrePositivity.InfinityCategories.F1.ReplacementSquareStartCorner
