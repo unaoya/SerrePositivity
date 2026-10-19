@@ -8380,3 +8380,63 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRootVerticalHomotopy_terminal
 #print axioms specifiedCoconeRootVerticalHomotopy_terminal
+
+#check @relativeRetractCosliceFamily_compatible
+#print axioms relativeRetractCosliceFamily_compatible
+
+#check @relativeRetractCosliceFamily
+#print axioms relativeRetractCosliceFamily
+
+#check @relativeRetractCosliceFamily_terminal
+#print axioms relativeRetractCosliceFamily_terminal
+
+#check @relativeRetractCosliceFamily_base
+#print axioms relativeRetractCosliceFamily_base
+
+#check @relativeRetractCosliceFamily_projection
+#print axioms relativeRetractCosliceFamily_projection
+
+#check @terminalPrism_initialTime
+#print axioms terminalPrism_initialTime
+
+#check @fixedTerminalHomotopyFamily_terminal_diagram
+#print axioms fixedTerminalHomotopyFamily_terminal_diagram
+
+#check @fixedTerminalHomotopyFamily
+#print axioms fixedTerminalHomotopyFamily
+
+#check @fixedTerminalHomotopyFamily_terminal
+#print axioms fixedTerminalHomotopyFamily_terminal
+
+#check @fixedTerminalHomotopyFamily_base
+#print axioms fixedTerminalHomotopyFamily_base
+
+#check @fixedTerminalHomotopyFamily_projection
+#print axioms fixedTerminalHomotopyFamily_projection
+
+#check @specifiedCoconeLeftRootTotalFamily
+#print axioms specifiedCoconeLeftRootTotalFamily
+
+#check @specifiedCoconeLeftRootTotalFamily_base
+#print axioms specifiedCoconeLeftRootTotalFamily_base
+
+#check @specifiedCoconeRootVerticalFamily_base_diagram
+#print axioms specifiedCoconeRootVerticalFamily_base_diagram
+
+#check @specifiedCoconeRootVerticalFamily
+#print axioms specifiedCoconeRootVerticalFamily
+
+#check @specifiedCoconeRootVerticalFamily_terminal
+#print axioms specifiedCoconeRootVerticalFamily_terminal
+
+#check @specifiedCoconeRootVerticalFamily_base
+#print axioms specifiedCoconeRootVerticalFamily_base
+
+#check @specifiedCoconeRootVerticalFamily_projection
+#print axioms specifiedCoconeRootVerticalFamily_projection
+
+#check @specifiedCoconeRootVerticalFamily_fixed
+#print axioms specifiedCoconeRootVerticalFamily_fixed
+
+#check @exists_relativeCosliceFamilyHomotopy
+#print axioms exists_relativeCosliceFamilyHomotopy
