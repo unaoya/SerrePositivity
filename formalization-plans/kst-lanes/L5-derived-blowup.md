@@ -1,5 +1,86 @@
 # K-L5：導来 blowup と半直交分解
 
+## 引き継ぎ（2026-10-19）
+
+### 現在地
+
+- L5a の設計を固定。全図式 dg 加群の射影的模型と、canonical な導来係数拡大比較の
+  可逆性・局所 perfect 性による充満 dg 候補を構成済み。層の Perf との比較は未完了。
+- L5b は部分完了。普遍チャート、実際の有限重なり・pivot 変更、O(m)、Koszul 外積模型、
+  導来底変更、E・D(n) の局所模型、指定遷移と cocycle を証明済み。
+- 例外因子の実際の係数図式と共通 Ko(A;a) 表示の図式同型、canonical な比較の保存反映、
+  元の例外因子 Koszul 表示の cartesian perfect dg 候補と指定 H⁰ 比較を構成済み。
+- 例外因子の構造加群の cartesian perfect 性、指定 dg 代表と導来像への同型まで検証済み。
+- L5c〜L5f は未実装。紙の検証や H⁰ 比較を、層の降下・dg 商の普遍性の証明とは扱わない。
+- 最終検証：`lake build SerrePositivity.KST.DerivedBlowup` 成功（4800 jobs）。
+  `lake env lean scripts/audit_kst_derived_blowup.lean` 成功（3750 宣言、標準三公理のみ）。
+
+### 残り（依存順、原典番号と時間見積もり）
+
+見積もりは実装・検証の粗い範囲。依存レーンの供給待ち時間を除き、大きな不確実性がある。
+
+1. L5b：例外因子の整数捻り O_E(m)、平坦中央 H 係数化、閉埋め込み・射影の指定局所関手。
+   KST v4 §3.1・Def 3.1・Lemma 3.6、pp.11–14。40〜120 時間。
+2. L5a/b：図式 dg 候補と coherent homotopy-cartesian section／層の Perf の比較。
+   dg 商・高次降下の整合性を含む。KST §3.1・Def 3.1、pp.11–14、L4 T3 が入力。
+   80〜240 時間。古典 truncation の D_qc と導来 D_qc の同一視はしない。
+3. L5c：負捻りの消滅と Rp′_*O=A′。KST Lemma 3.10・3.11、pp.15–16、
+   Thomason 1993 Lemme 2.3、p.200。射影空間の有限 Čech 計算による別経路。80〜160 時間。
+4. L5d：H 係数版の生成・充満忠実性・j*j_* の分解・部分商同値。
+   KST Lemma 3.8〜3.15、pp.14–18、式 (3.4)、Neeman 9.1.5（局所化は L4）。160〜320 時間。
+5. L5e：S1 の K0 界面に対する導来 blowup 降下。KST Thm 3.7、p.14・証明 p.18。
+   上記半直交分解と S1 確定後、16〜48 時間。
+6. L5f：射影束公式・Bass 基本定理と自然な分裂。KST Thm 3.16・3.17、p.19、
+   TT 4.1、pp.329–330；6.1、pp.351–354；6.6、p.361；7.5、pp.365–366。40〜120 時間。
+
+### 主要宣言（名前のみ）
+
+- `finiteOverlapDGAlgebraDiagram`
+- `finiteOverlapExceptionalDGAlgebraDiagram`
+- `finiteOverlapExceptionalDGAlgebraInclusionNatTrans`
+- `finiteOverlapExceptionalProductDiagramIso`
+- `finiteOverlapExceptionalBaseNatTrans`
+- `CartesianPerfectDiagramDGModel`
+- `blowupDerivedTwistEquivalence`
+- `diagramCoefficientDerivedComparison_square`
+- `diagramCoefficientCartesianPerfectEquivalence`
+- `finiteOverlapExceptionalAlgebraDerivedExtensionComparison_isIso_iff`
+- `ExceptionalCartesianPerfectDiagramDGModel`
+- `exceptionalCartesianPerfectDiagramHomotopyEquivalence`
+- `exceptionalCartesianPerfectDiagramProductEquivalence`
+- `derivedExceptionalStructureModule_cartesianPerfect`
+- `exceptionalStructureDGObject`
+- `exceptionalStructureDGObjectDerivedIso`
+
+### 依存と提供
+
+- 読取専用入力：`DifferentialGraded/` の DGCategory・加群・graph 導来随伴・Morita、
+  L6 の Koszul、L7 の `KST/SchemeLemmas/`、L4 の `KST/DerivedGeometry/`。
+- L4 の T1〜T3・Perf・RHom は未供給部分を残す。S1 の K0 界面確定は L5e/f の前提。
+- 提供：実際のチャート／例外因子 dg 係数図式、基底射・閉埋め込みの係数自然変換、
+  指定比較射、cartesian perfect dg 候補、捻り、元の E と共通 Koszul 表示の H⁰ 比較。
+- 所有：`SerrePositivity/KST/DerivedBlowup/`、同名集約、当計画、専用公理監査スクリプト。
+
+### 未コミット
+
+- 本レーン所有の未コミット差分なし（引き継ぎ節も専用コミットに保存）。
+- 共有ルート `SerrePositivity.lean` その他の他レーン差分はコミット対象外。変更・整理しない。
+
+### 既知の問題
+
+- 対象ビルド失敗・検出済みの名前衝突なし。共有ルート全体の最終ビルドは今回未実施。
+- 所有ソースの検索で `ModelCategory`・`SSet`・`sorry`・`axiom` は一致なし。
+  一般図式 API は `Small`、添字の順序・決定可能性などの仮定を持つ。型は Lean を正本とする。
+- H⁰ の圏同値や係数圏の準同値だけで、coherent な降下・dg 商の普遍性・層の Perf の同値を
+  結論しない。平坦中央 H 係数版および層の j・p・q との整合性も未完了。
+- L11 記録では Thomason の全証明の直接照合は未確認。有限 Čech 再証明は別経路と明記する。
+- 共有 Git に gc 警告あり。掃除・amend・rebase・reset は実施していない。
+
+### 次の一手
+
+例外因子の実際の有限重なり推移単元から O_E(m) を構成し、上記の元の dg 候補内で
+canonical な比較の可逆性と局所 perfect 性を証明する。その後 H 係数化・層比較へ進む。
+
 ## 現在地
 
 L5a の模型を固定。L5b の多項式チャート、実際の Away 重なり、O(m) の可逆推移射、
