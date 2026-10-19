@@ -1,5 +1,79 @@
 # K-L4：導来圏と幾何の基盤
 
+## 引き継ぎ（2026-10-19）
+
+### 現在地
+
+- K-L4（導来圏と幾何の基盤）。§26 採用の一般 dg 半自由分解・Hom の K-flat 性・準同値の移送・商の H⁰ 比較は実装済み。
+- 実際の全係数加群層の導来圏を用いた bounded below アフィン Dqc 同値まで完了。
+- 任意の Grothendieck アーベル圏の非有界 K-injective 分解の存在を証明済み。
+- 非有界 RΓ と tilde の導来随伴、RΓ のシフト両立・三角性・積保存を構成済み。
+- 現工程の区切り：複体・ホモトピー圏・導来圏の積、K-injective な積による導来積の計算。
+- 完全な積の下のコホモロジー比較と射影の両立、差分のファイバー三角、全射加群逆系の差分の全射性、前次数の全射性からのファイバーの核の計算まで検証済み。
+- 非有界の単位・余単位の同型性とアフィン Dqc 同値は未完。T1 以降も未完。
+- 最終検証：対象ビルド 4126 jobs 成功。公理監査 2636 宣言、propext・Classical.choice・Quot.sound のみ、KTheory import なし。
+- 実装保存：27fd68df、0aeecdfc、d7fe08b4。最後の区切りは d7fe08b4。
+
+### 残り（依存順、原典番号と時間見積もり）
+
+- 非有界アフィン比較：導来積のコホモロジーの射影との両立と Milnor 型核計算を接続し、基本開上の消滅から E → Rlim τ≥−n E を証明。有界下方比較との両立、単位・余単位の同型性。Stacks 20.37.5–20.37.9・36.3.3–36.3.5、TT §3。目安 16–40 時間。
+- T1・T1′：係数付きコンパクト生成、局所有限射影有限複体と perfect 性の一致。Bondal–van den Bergh Thm 3.1.1、TT §3、Toën §3.2。目安 16–40 時間。
+- T2：台つき部分圏の生成と局所化、D(X;H)/D_Z ≃ D(U;H) の完全忠実性・本質的全射性。Neeman 1992 Thm 2.1・Cor 3.2.3、TT §3。目安 24–60 時間。
+- T3：係数付き切除・Zariski MV、有限アフィン被覆の Čech 降下。TT 3.19・8.1、正本 §10-7。目安 24–60 時間。
+- Perf：層の有限アフィン降下模型と Dqc の compact／局所 perfect の同一視・増強。TT §3・§8、Toën §3.2、正本 D4。目安 16–40 時間。
+- RHom 比較：平坦 H に対し Čech 複体のテンソルと RHom を比較。TT §3・§8、Toën §3.2。目安 12–32 時間。
+- 見積もりは Lean 実装の作業時間の幅であり、未実装の収束基盤の規模次第で増える。
+
+### 主要宣言（名前のみ）
+
+- `DGResolution.quotientTriaEquivalence`
+- `DGResolution.perfectQuotientEquivalence`
+- `dqcDGHomotopyEquivalence`
+- `affineDqcPlusEquivalence`
+- `exists_unbounded_kInjective_resolution`
+- `kInjectiveDerivedFunctor_isEquivalence`
+- `kInjectiveLocalizationAdjunction`
+- `unboundedDerivedAdjunction`
+- `affineDerivedΓ`
+- `affineDerivedAdjunction`
+- `affineDerivedΓ_isTriangulated`
+- `affineDerivedΓ_preservesLimits`
+- `derivedKInjectiveProductIsLimit`
+- `complexProductHomologyIso_hom_π`
+- `complexProductHomologyIsLimit`
+- `sequentialLimitTriangle_distinguished`
+- `exists_lift_sequentialLimitTriangle`
+- `sequentialDifference_epi_of_surjective`
+- `derivedTriangleHomologyKernel`
+
+### 依存と提供
+
+- 読み取り専用：Mathlib AlgebraicGeometry／SheafOfModules／DerivedCategory、既存 DifferentialGraded の dg 商・perfect・Yoneda、CategoryTheory.VerdierLift。
+- K-L1b・L3 へ：DGResolution 内の任意の DGCategory に対する半自由分解、フィルトレーションによる K-flat 性、準同値と商の移送。
+- K-L5・後継 K-導来幾何へ：実際の係数 Dqc と dg 増強、bounded below アフィン同値、非有界分解・導来随伴・積計算の基盤。
+- Dqc／Perf の局所化・降下は本レーンの提供予定。非有界アフィン同値と T1–T3 を既提供として使わない。
+
+### 未コミット
+
+- 実装の未コミットはなし。この引き継ぎ節も計画ファイルだけを別コミットで保存する。
+- 他レーンの変更・ルート集約の変更は編集もコミットもしていない。
+
+### 既知の問題
+
+- 現在、自分の import 閉包のビルド失敗・名前衝突はない。先の工程区切りの全体ビルドも 13722 jobs 成功。
+- 古い root build の relativeFunctorVertex 重複は最終の全体ビルドでは再現しなかった。他レーンの将来の状態は未保証。
+- `ModelCategory SSet` の instance 仮定は本レーンにない。一般定理には明示的な `HasDerivedCategory` 等の Mathlib の型・圏の仮定が残る。
+- 全層の導来圏一般の左完備性と層の積の完全性は仮定できない。§62 の準連接コホモロジーとアフィン基本開の消滅を使って収束を証明する必要がある。
+- D(QCoh) のアフィン同値を、全層の導来圏内の Dqc の非有界同値の代用にしない。
+- H は非可換も許し、平坦性は RHom 比較まで追加していない。分解・収束の存在を構造体の未証明フィールドにしない。
+- 既存・今回の Lean ファイルに style／unusedSectionVars の警告はある。エラーと追加公理はない。
+
+### 次の一手
+
+- §62 と Stacks 20.37.5–20.37.9・36.3.3–36.3.5 を読み、検証済みの積コホモロジーの射影公式とファイバー核計算から Milnor 型比較を接続する。次にアフィン基本開上の局所判定で切断塔の収束を閉じる。
+- 非有界アフィン比較を閉じるまでは T1 を開始しない。所有範囲、対象ビルド、公理監査、git commit --only を維持する。
+
+
 作成日：2026-10-18。状態：L4a 途中。§26 の設計変更に基づく一般 dg 圏の半自由分解・K-flat 性・準同値の移送・層導来圏との比較は実装済み（§27–33）。
 
 ## 0. 目的と所有範囲
