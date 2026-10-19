@@ -739,4 +739,10 @@ public import SerrePositivity.KST.SConstruction.KPrismBoundaryLegs
 public import SerrePositivity.KST.SConstruction.SpecifiedPointSpanBoundary
 public import SerrePositivity.KST.SConstruction.SpecifiedPointSpanFamilies
 public import SerrePositivity.KST.SConstruction.KPrismSpecifiedSpanFamilies
+public import SerrePositivity.KST.SConstruction.SequenceCompatibilityFamilyTransport
+public import SerrePositivity.KST.SConstruction.MonicKPrismSpecifiedFamilies
+public import SerrePositivity.KST.SConstruction.PrescribedFamilyTransport
+public import SerrePositivity.KST.SConstruction.FamilyHomotopyChains
+public import SerrePositivity.KST.SConstruction.PrescribedFamilyChainLifting
+public import SerrePositivity.KST.SConstruction.MonicKPrismSequenceFamilies
 /-! # ∞-S• 構成と連結 K 理論 -/

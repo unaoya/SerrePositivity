@@ -11411,3 +11411,108 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_compatibility
 #print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_compatibility
+
+#check @SerrePositivity.KST.SConstruction.sequenceCompatibilityFamily_precompose
+#print axioms SerrePositivity.KST.SConstruction.sequenceCompatibilityFamily_precompose
+
+#check @SerrePositivity.KST.SConstruction.sequenceCompatibilityFamily_precompose_h
+#print axioms SerrePositivity.KST.SConstruction.sequenceCompatibilityFamily_precompose_h
+
+#check @SerrePositivity.KST.SConstruction.sequenceCompatibilityFamily_precompose_boundary
+#print axioms SerrePositivity.KST.SConstruction.sequenceCompatibilityFamily_precompose_boundary
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismSpecifiedCompatibilityFamily
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismSpecifiedCompatibilityFamily
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismSpecifiedCompatibilityFamily_h
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismSpecifiedCompatibilityFamily_h
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismSpecifiedCompatibilityFamily_boundary
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismSpecifiedCompatibilityFamily_boundary
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily_boundary
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily_boundary
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily_compatibility
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily_compatibility
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily_upper
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily_upper
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily_lower
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismSpecifiedTriangleFamily_lower
+
+#check @SerrePositivity.KST.SConstruction.exists_prescribed_fibration_family_transport
+#print axioms SerrePositivity.KST.SConstruction.exists_prescribed_fibration_family_transport
+
+#check @SerrePositivity.KST.SConstruction.exists_prescribed_pointed_family_adjustment
+#print axioms SerrePositivity.KST.SConstruction.exists_prescribed_pointed_family_adjustment
+
+#check @SerrePositivity.KST.SConstruction.FamilyHomotopyChain
+#print axioms SerrePositivity.KST.SConstruction.FamilyHomotopyChain
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainTrace
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainTrace
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainSourceTransport
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainSourceTransport
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainSourceTransport_trace
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainSourceTransport_trace
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainAppend
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainAppend
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainMap
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainMap
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainMap_trace
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainMap_trace
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainPrecomp
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainPrecomp
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainPrecomp_trace
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainPrecomp_trace
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainSingle
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainSingle
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainSingle_trace
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainSingle_trace
+
+#check @SerrePositivity.KST.SConstruction.familyHomotopyChainAppend_trace
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyChainAppend_trace
+
+#check @SerrePositivity.KST.SConstruction.FamilyHomotopyChain.nil
+#print axioms SerrePositivity.KST.SConstruction.FamilyHomotopyChain.nil
+
+#check @SerrePositivity.KST.SConstruction.FamilyHomotopyChain.cons
+#print axioms SerrePositivity.KST.SConstruction.FamilyHomotopyChain.cons
+
+#check @SerrePositivity.KST.SConstruction.exists_prescribedFamilyChain_lift_with_traces
+#print axioms SerrePositivity.KST.SConstruction.exists_prescribedFamilyChain_lift_with_traces
+
+#check @SerrePositivity.KST.SConstruction.prescribedFamilyChainLiftData
+#print axioms SerrePositivity.KST.SConstruction.prescribedFamilyChainLiftData
+
+#check @SerrePositivity.KST.SConstruction.exists_prescribed_pointedFamilyChain_lift_with_traces
+#print axioms SerrePositivity.KST.SConstruction.exists_prescribed_pointedFamilyChain_lift_with_traces
+
+#check @SerrePositivity.KST.SConstruction.rawSequenceStep_familyVertex
+#print axioms SerrePositivity.KST.SConstruction.rawSequenceStep_familyVertex
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismRawLevelFamily
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismRawLevelFamily
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismRawSequenceCompatibility
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismRawSequenceCompatibility
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismRawSequenceCompatibility_h
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismRawSequenceCompatibility_h
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismRawSequenceCompatibility_boundary
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismRawSequenceCompatibility_boundary
