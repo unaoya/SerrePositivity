@@ -22522,3 +22522,323 @@ SerrePositivity.InfinityCategories.cofiberBoundaryDegree : ℕ → ℤ
 Derived 監査128モジュール・2008宣言。全定数を監査し標準三公理のみ。
 公開50宣言の universe 付き型抽出も終了コード0。今回の8モジュールに警告なし。
 import 閉包の破損はない。
+
+## D7：cochain 座標での共通右辺と全微分整合条件
+
+2026-10-19。共通面から後続右辺と A 側右辺の左右の異種等号を直接回収した。
+符号スカラーの異種等号の保存と、脚側・三角形側の一般の移送定理を構成する。
+これを標準 cofiber の実際の境界に適用し、
+`cofiberBoundaryRhsB_differential`・`RhsC_differential`・`RhsA_differential`、
+`cofiberBoundaryRhsAB_differential`・`RhsAC_differential` を証明した。
+右側の三角形では零ホモトピーの項が消える。
+任意の可換環・非有界複体・全次元で成立し、実際の定理の仮定は境界と最初の頂点の指定だけ。
+従前の `cofiberBoundaryRhs0_closed` と合わせ、cochain 座標の全残差整合条件が揃った。
+六未知成分の明示解、coslice の充填・初期性、D(S) の安定性と三角構造の比較は未完了。
+
+公開12宣言の universe 付き正確な型：
+
+```lean
+@SerrePositivity.InfinityCategories.spanBoundaryZeroData_suffixRhs_heq.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (F :
+    Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+      (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D)),
+  HEq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_2}
+      (SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData.{u_1, u_2} F))
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_2}
+      (SerrePositivity.InfinityCategories.spanBoundaryRightZeroData.{u_1, u_2} F))
+@SerrePositivity.InfinityCategories.spanBoundaryZeroData_A_rhs_heq.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (F :
+    Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+      (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D)),
+  HEq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2}
+      (SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData.{u_1, u_2} F) 0 ⋯)
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2}
+      (SerrePositivity.InfinityCategories.spanBoundaryRightZeroData.{u_1, u_2} F) 0 ⋯)
+@SerrePositivity.InfinityCategories.cofiberBoundaryRhs0_heq_right.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} {n : ℕ} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C)
+  (b :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.boundary.{u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.pushoutSpan.{u_1 + 1}
+          (SerrePositivity.InfinityCategories.standardCofiberSquare.{u_1} f g))))
+  (hb :
+    Eq.{u_1 + 2}
+      (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2}
+        (SerrePositivity.InfinityCategories.boundaryVertex.{u_1 + 1} n 0) b)
+      ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+        (SerrePositivity.InfinityCategories.standardCofiberCocone.{u_1} f g))),
+  HEq.{u_1 + 1} (SerrePositivity.InfinityCategories.cofiberBoundaryRhs0.{u_1} f g b hb)
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cofiberBoundaryRightBase.{u_1} f g b))
+@SerrePositivity.InfinityCategories.cofiberBoundaryRhsA_heq_right.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} {n : ℕ} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C)
+  (b :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.boundary.{u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.pushoutSpan.{u_1 + 1}
+          (SerrePositivity.InfinityCategories.standardCofiberSquare.{u_1} f g))))
+  (hb :
+    Eq.{u_1 + 2}
+      (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2}
+        (SerrePositivity.InfinityCategories.boundaryVertex.{u_1 + 1} n 0) b)
+      ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+        (SerrePositivity.InfinityCategories.standardCofiberCocone.{u_1} f g))),
+  HEq.{u_1 + 1} (SerrePositivity.InfinityCategories.cofiberBoundaryRhsA.{u_1} f g b hb)
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.cofiberBoundaryRightBase.{u_1} f g b) 0 ⋯)
+@SerrePositivity.InfinityCategories.DGNerve.span_gradedHom_units_smul_heq.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {x y x' y' : D} {k l : ℤ},
+  Eq.{u_2 + 1} x x' →
+    Eq.{u_2 + 1} y y' →
+      Eq.{1} k l →
+        ∀ (c : Units.{0} ℤ) (f : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A x y k))
+          (g : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A x' y' l)),
+          HEq.{u_1 + 1} f g → HEq.{u_1 + 1} (HSMul.hSMul.{0, u_1, u_1} c f) (HSMul.hSMul.{0, u_1, u_1} c g)
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.span_onePrefix_differential_of_heq.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixHom.{u_1, u_2} s) 0 →
+      ∀ (a : Fin (HAdd.hAdd.{0, 0, 0} n 4)) (ha : LT.lt.{0} a (SerrePositivity.InfinityCategories.spanApex n))
+        {X P Y : D},
+        Eq.{u_2 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s a) X →
+          Eq.{u_2 + 1}
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s
+                (SerrePositivity.InfinityCategories.spanApex n))
+              P →
+            Eq.{u_2 + 1}
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s
+                  (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)))
+                Y →
+              ∀ {l : ℤ},
+                Eq.{1} (HAdd.hAdd.{0, 0, 0} (HSub.hSub.{0, 0, 0} (Neg.neg.{0} ↑n) 1) 1) l →
+                  ∀ (r0 : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A P Y (HAdd.hAdd.{0, 0, 0} l 1)))
+                    (rB : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A X Y l))
+                    (g : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A X P 0)),
+                    HEq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_2} s)
+                        r0 →
+                      HEq.{u_1 + 1}
+                          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2} s a ha)
+                          rB →
+                        HEq.{u_1 + 1}
+                            (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2} s a
+                              (SerrePositivity.InfinityCategories.spanApex n) ha)
+                            g →
+                          Eq.{u_1 + 1} (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A rB)
+                            (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+                              (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A r0 g ⋯))
+@SerrePositivity.InfinityCategories.cofiberBoundaryRhsB_differential.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} {n : ℕ} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C)
+  (b :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.boundary.{u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.pushoutSpan.{u_1 + 1}
+          (SerrePositivity.InfinityCategories.standardCofiberSquare.{u_1} f g))))
+  (hb :
+    Eq.{u_1 + 2}
+      (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2}
+        (SerrePositivity.InfinityCategories.boundaryVertex.{u_1 + 1} n 0) b)
+      ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+        (SerrePositivity.InfinityCategories.standardCofiberCocone.{u_1} f g))),
+  Eq.{u_1 + 1}
+    (CochainComplex.HomComplex.δ.{u_1, u_1 + 1}
+      (HAdd.hAdd.{0, 0, 0} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n) 1)
+      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n) 1) 1)
+      (SerrePositivity.InfinityCategories.cofiberBoundaryRhsB.{u_1} f g b hb))
+    (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+      (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1}
+        (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.pushoutInclusionB.{u_1} f g))
+        (SerrePositivity.InfinityCategories.cofiberBoundaryRhs0.{u_1} f g b hb) ⋯))
+@SerrePositivity.InfinityCategories.cofiberBoundaryRhsC_differential.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} {n : ℕ} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C)
+  (b :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.boundary.{u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.pushoutSpan.{u_1 + 1}
+          (SerrePositivity.InfinityCategories.standardCofiberSquare.{u_1} f g))))
+  (hb :
+    Eq.{u_1 + 2}
+      (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2}
+        (SerrePositivity.InfinityCategories.boundaryVertex.{u_1 + 1} n 0) b)
+      ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+        (SerrePositivity.InfinityCategories.standardCofiberCocone.{u_1} f g))),
+  Eq.{u_1 + 1}
+    (CochainComplex.HomComplex.δ.{u_1, u_1 + 1}
+      (HAdd.hAdd.{0, 0, 0} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n) 1)
+      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n) 1) 1)
+      (SerrePositivity.InfinityCategories.cofiberBoundaryRhsC.{u_1} f g b hb))
+    (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+      (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1}
+        (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.pushoutInclusionC.{u_1} f g))
+        (SerrePositivity.InfinityCategories.cofiberBoundaryRhs0.{u_1} f g b hb) ⋯))
+@SerrePositivity.InfinityCategories.cofiberBoundaryRhsA_differential.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} {n : ℕ} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C)
+  (b :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.boundary.{u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.pushoutSpan.{u_1 + 1}
+          (SerrePositivity.InfinityCategories.standardCofiberSquare.{u_1} f g))))
+  (hb :
+    Eq.{u_1 + 2}
+      (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2}
+        (SerrePositivity.InfinityCategories.boundaryVertex.{u_1 + 1} n 0) b)
+      ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+        (SerrePositivity.InfinityCategories.standardCofiberCocone.{u_1} f g))),
+  Eq.{u_1 + 1}
+    (CochainComplex.HomComplex.δ.{u_1, u_1 + 1}
+      (HAdd.hAdd.{0, 0, 0} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n) 1)
+      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n) 1) 1)
+      (SerrePositivity.InfinityCategories.cofiberBoundaryRhsA.{u_1} f g b hb))
+    (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+      (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1}
+        (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.pushoutDiagonal.{u_1} f g))
+        (SerrePositivity.InfinityCategories.cofiberBoundaryRhs0.{u_1} f g b hb) ⋯))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.span_twoPrefix_differential_of_heq.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+        SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+          ∀ (a b : Fin (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n 3) 1)) (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} I))
+            (ha : Eq.{1} a (Finset.min'.{0} I ⋯)) (hb : Eq.{1} b (Finset.max'.{0} I ⋯))
+            (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} I))),
+            Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom.{u_1, u_2} s I a b k hI ha hb hk)
+              0) →
+      ∀ {X P B Y : D},
+        Eq.{u_2 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s 0) X →
+          Eq.{u_2 + 1}
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s
+                (SerrePositivity.InfinityCategories.spanApex n))
+              P →
+            Eq.{u_2 + 1}
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s
+                  (SerrePositivity.InfinityCategories.spanSecondPrefix n))
+                B →
+              Eq.{u_2 + 1}
+                  (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s
+                    (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)))
+                  Y →
+                ∀ {l : ℤ},
+                  Eq.{1} (HAdd.hAdd.{0, 0, 0} (HSub.hSub.{0, 0, 0} (Neg.neg.{0} ↑n) 2) 1) l →
+                    ∀
+                      (r0 :
+                        ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A P Y
+                            (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} l 1) 1)))
+                      (rB : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A B Y (HAdd.hAdd.{0, 0, 0} l 1)))
+                      (rA : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A X Y (HAdd.hAdd.{0, 0, 0} l 1)))
+                      (rT : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A X Y l))
+                      (g : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A X B 0))
+                      (u : ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A X P (-1))),
+                      HEq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_2} s)
+                          r0 →
+                        HEq.{u_1 + 1}
+                            (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2} s
+                              (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+                            rB →
+                          HEq.{u_1 + 1}
+                              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixFirstRhs.{u_1, u_2}
+                                s)
+                              rA →
+                            HEq.{u_1 + 1}
+                                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixRhs.{u_1, u_2} s)
+                                rT →
+                              HEq.{u_1 + 1}
+                                  (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2} s 0
+                                    (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+                                  g →
+                                HEq.{u_1 + 1}
+                                    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.tripleHom.{u_1, u_2} s 0
+                                      (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                                      (SerrePositivity.InfinityCategories.spanApex n) ⋯ ⋯)
+                                    u →
+                                  Eq.{u_1 + 1} (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A rT)
+                                    (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+                                      (HSub.hSub.{u_1, u_1, u_1}
+                                        (HAdd.hAdd.{u_1, u_1, u_1}
+                                          (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A r0 u ⋯) rA)
+                                        (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A rB g ⋯)))
+@SerrePositivity.InfinityCategories.cofiberBoundaryRhsAB_differential.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} {n : ℕ} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C)
+  (b :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.boundary.{u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.pushoutSpan.{u_1 + 1}
+          (SerrePositivity.InfinityCategories.standardCofiberSquare.{u_1} f g))))
+  (hb :
+    Eq.{u_1 + 2}
+      (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2}
+        (SerrePositivity.InfinityCategories.boundaryVertex.{u_1 + 1} n 0) b)
+      ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+        (SerrePositivity.InfinityCategories.standardCofiberCocone.{u_1} f g))),
+  Eq.{u_1 + 1}
+    (CochainComplex.HomComplex.δ.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n)
+      (HAdd.hAdd.{0, 0, 0} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n) 1)
+      (SerrePositivity.InfinityCategories.cofiberBoundaryRhsAB.{u_1} f g b hb))
+    (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+      (HSub.hSub.{u_1, u_1, u_1}
+        (HAdd.hAdd.{u_1, u_1, u_1}
+          (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1}
+            (CochainComplex.mappingCone.inl.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.cofiberDifference.{u_1} f g))
+            (SerrePositivity.InfinityCategories.cofiberBoundaryRhs0.{u_1} f g b hb) ⋯)
+          (SerrePositivity.InfinityCategories.cofiberBoundaryRhsA.{u_1} f g b hb))
+        (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1}
+          (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1} f)
+          (SerrePositivity.InfinityCategories.cofiberBoundaryRhsB.{u_1} f g b hb) ⋯)))
+@SerrePositivity.InfinityCategories.cofiberBoundaryRhsAC_differential.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} {n : ℕ} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C)
+  (b :
+    Quiver.Hom.{u_1 + 1, u_1 + 2} (SSet.Subcomplex.toSSet.{u_1 + 1} (SSet.boundary.{u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (SerrePositivity.InfinityCategories.sliceUnder.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.pushoutSpan.{u_1 + 1}
+          (SerrePositivity.InfinityCategories.standardCofiberSquare.{u_1} f g))))
+  (hb :
+    Eq.{u_1 + 2}
+      (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2}
+        (SerrePositivity.InfinityCategories.boundaryVertex.{u_1 + 1} n 0) b)
+      ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+        (SerrePositivity.InfinityCategories.standardCofiberCocone.{u_1} f g))),
+  Eq.{u_1 + 1}
+    (CochainComplex.HomComplex.δ.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n)
+      (HAdd.hAdd.{0, 0, 0} (SerrePositivity.InfinityCategories.cofiberBoundaryDegree n) 1)
+      (SerrePositivity.InfinityCategories.cofiberBoundaryRhsAC.{u_1} f g b hb))
+    (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+      (HSub.hSub.{u_1, u_1, u_1} (SerrePositivity.InfinityCategories.cofiberBoundaryRhsA.{u_1} f g b hb)
+        (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1}
+          (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1} g)
+          (SerrePositivity.InfinityCategories.cofiberBoundaryRhsC.{u_1} f g b hb) ⋯)))
+```
+
+検証：対象・Stable・Derived 集約ビルド5707 jobs 成功。Stable 監査403モジュール・3148宣言、
+Derived 監査134モジュール・2041宣言。全定数を監査し標準三公理のみ。
+公開12宣言の universe 付き型抽出も終了コード0。今回の6モジュールに警告なし。
+import 閉包の破損はない。

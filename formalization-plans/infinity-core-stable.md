@@ -819,8 +819,14 @@ D7 の現在地：零対象・任意の cospan の極限・全辺の fiber は�
 零未知データの共通面の一致、後続・脚側・三角形側の全残差整合条件まで証明した。
 指定された最初の余錐から固定三角形・対象・三辺・ホモトピー成分を回収し、
 六つの右辺を共通終点への cochain 座標に移した。移送後の後続右辺 r₀ の閉性も証明済み。
-次は脚側・三角形側の微分条件をこの座標へ移し、六未知成分を解く。coslice 初期性・D(S) の安定性・
+脚側・三角形側の微分条件も cochain 座標へ移し、共通の r₀・r_A で全ての整合条件を証明した。
+次は標準 cofiber の Hom 座標の逆を使って六未知成分の明示解を構成する。coslice 初期性・D(S) の安定性・
 D3 を通じた三角構造の一致は未完了であり、これらを既証明として使わない。
+
+
+明示解の未検証の候補：q=−n−1、ε=(-1)^q とし、R を r_B・r_C から B⊕C を始点として作る
+cochain とする。cofiber Hom 座標の逆で (ε(r_AB−r_AC), εR) を持つ成分を作り、
+A 側未知成分は εr_AC、他の四成分は零とする。候補の微分・変更後の右辺・境界一致はまだ未証明。
 
 ## 目標と原典
 
@@ -998,8 +1004,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | D7 の span 境界データと未知集合 | `spanSuffixFaces`・被覆と既知成分の判定、`spanUnknown_cases`、`spanBoundaryLeft`・`spanBoundaryRight` と面の復元、`spanBoundaryLeftData`・`spanBoundaryRightData` と既知面・既知方程式（任意の可換環・dg 圏、任意の次元） | 境界から左右の候補を組み立て、未知集合を各四種類に分類。後続全頂点を含まない集合の方程式は境界から従う。未知成分を解くことは未完了。零未知データの共通面は下記で一致を証明済み |
 | D7 の共通面と最初の残差整合 | `spanBoundaryLeftZeroData`・`spanBoundaryRightZeroData` と未知成分の零、`spanCommonFaces` と像・面合成式、`spanBoundaryZeroData_common`、`differential_rhs_spanSuffix` と境界データへの適用、`differential_rhs_span_onePrefix_single`（任意の可換環・dg 圏） | 零未知データの共通面の一致、可変頂点集合の右辺の閉性、固定一点追加の Bianchi が余錐頂点の単一寄与となることを証明済み。脚側の寄与の展開・符号は下記で完成。二固定点追加の残差も下記で完成。未知成分の可解性と cofiber の普遍性は未完了 |
 | D7 の脚側の符号付き残差条件 | `spanSuffix_insert_leftCut`・`rightCut`・`sign`、`differential_rhs_span_onePrefix`、`spanSuffixHom`・`Rhs`・`Residual`、`spanOnePrefixRhs_differential`・`of_suffix_zero`、左右の `ZeroData_onePrefix_differential`、共通対象・右辺の比較（任意の可換環・dg 圏、全次元） | 脚側右辺の微分は後続残差と脚の合成の (-1)^(n+1) 倍の負。零未知データでは後続右辺と脚の符号付き合成。左右の全可変対象・始点 A・共通右辺も比較済み。二固定点追加の方程式の微分は下記で完成。六成分の解は未完了 |
-| D7 の三角形側残差と二寄与 | `spanUniv_*` の切断・削除・符号、`differential_rhs_span_twoPrefix_pair`、二寄与の展開、`differential_rhs_span_twoPrefix`・`of_unknown_zero`、`spanTwoPrefixRhs`・`FirstRhs`、`spanTwoPrefixRhs_differential_of_unknown_zero_normalized`、左右の `ZeroData_twoPrefix_differential`（任意の可換環・dg 圏、全次元） | 一般の境界の残差整合条件が揃った。三角形側の微分は (-1)^(n+1) を共通係数として、後続右辺と三角形成分の合成、A 側右辺、脚側右辺と脚の合成の負の三項。標準 cofiber の対象・成分の回収と六つの右辺の座標は下記で定義済み。脚側・三角形側の微分条件の移送、六成分の解、coslice 初期性は未完了 |
-| D7 の標準余錐の成分回収と cochain 座標 | `firstTriangleOrderHom`、最初の三角形の join・境界・coslice 制限、`cofiberCosliceBoundary_left_triangle` と右版、左右の対象と三辺・ホモトピーの回収、`cofiberBoundaryRhs0`・`RhsA`・`RhsB`・`RhsC`・`RhsAB`・`RhsAC` と異種等号、`cofiberBoundaryRhs0_closed`（任意の可換環、非有界複体、全次元） | 指定最初の頂点から標準余錐を回収し、左のホモトピーを mappingCone.inl、右を零と同定。六つの右辺を共通終点への cochain に移し r₀ の閉性を証明。脚側・三角形側の座標での微分条件、六成分系の解、coslice 初期性は未完了 |
+| D7 の三角形側残差と二寄与 | `spanUniv_*` の切断・削除・符号、`differential_rhs_span_twoPrefix_pair`、二寄与の展開、`differential_rhs_span_twoPrefix`・`of_unknown_zero`、`spanTwoPrefixRhs`・`FirstRhs`、`spanTwoPrefixRhs_differential_of_unknown_zero_normalized`、左右の `ZeroData_twoPrefix_differential`（任意の可換環・dg 圏、全次元） | 一般の境界の残差整合条件が揃った。三角形側の微分は (-1)^(n+1) を共通係数として、後続右辺と三角形成分の合成、A 側右辺、脚側右辺と脚の合成の負の三項。標準 cofiber の対象・成分の回収と六つの右辺の座標は下記で定義済み。脚側・三角形側の微分条件の移送も下記で完成。六成分の解と coslice 初期性は未完了 |
+| D7 の標準余錐の成分回収と cochain 座標 | `firstTriangleOrderHom`、最初の三角形の join・境界・coslice 制限、`cofiberCosliceBoundary_left_triangle` と右版、左右の対象と三辺・ホモトピーの回収、`cofiberBoundaryRhs0`・`RhsA`・`RhsB`・`RhsC`・`RhsAB`・`RhsAC` と異種等号、`cofiberBoundaryRhs0_closed`（任意の可換環、非有界複体、全次元） | 指定最初の頂点から標準余錐を回収し、左のホモトピーを mappingCone.inl、右を零と同定。六つの右辺を共通終点への cochain に移し r₀ の閉性を証明。脚側・三角形側の座標での微分条件も下記で完成。六成分系の解と coslice 初期性は未完了 |
+| D7 の cochain 座標での全残差整合条件 | `spanBoundaryZeroData_suffixRhs_heq`・`A_rhs_heq`、`cofiberBoundaryRhs0_heq_right`・`RhsA_heq_right`、`span_onePrefix_differential_of_heq`・`span_twoPrefix_differential_of_heq`、`cofiberBoundaryRhsB_differential`・`RhsC_differential`・`RhsA_differential`・`RhsAB_differential`・`RhsAC_differential`（任意の可換環、非有界複体、全次元） | 六つの右辺を共通の r₀・r_A と同じ終点で扱い、閉性・三脚・二三角形の全条件を実際の境界から証明済み。六未知成分の解、coslice 初期性、D(S) の安定性は未完了 |
 | S7 | D7 | 零対象・任意の cospan の極限・全ての指定辺の fiber の存在まで完成。cofiber の普遍性・安定性・三角構造の比較は未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

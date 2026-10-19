@@ -926,7 +926,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CosliceBoundaryTriangleData,
     `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangles,
     `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryComponents,
-    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryResiduals]
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryResiduals,
+    `SerrePositivity.InfinityCategories.Derived.SpanSharedRhs,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundarySharedResiduals,
+    `SerrePositivity.InfinityCategories.Derived.SpanOnePrefixTransport,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLegCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixTransport,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangleCompatibility]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -108,6 +108,12 @@ public import SerrePositivity.InfinityCategories.Derived.CosliceBoundaryTriangle
 public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangles
 public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryComponents
 public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryResiduals
+public import SerrePositivity.InfinityCategories.Derived.SpanSharedRhs
+public import SerrePositivity.InfinityCategories.Derived.CofiberBoundarySharedResiduals
+public import SerrePositivity.InfinityCategories.Derived.SpanOnePrefixTransport
+public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLegCompatibility
+public import SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixTransport
+public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangleCompatibility
 
 /-! # Semifree 複体による導来圏の dg 表示
 
