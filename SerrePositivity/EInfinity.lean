@@ -280,3 +280,4 @@ public import SerrePositivity.EInfinity.IntervalCuts.PivotDeletionOutputs
 public import SerrePositivity.EInfinity.IntervalCuts.PivotDeletionValues
 public import SerrePositivity.EInfinity.IntervalCuts.PivotBoundaryComparison
 public import SerrePositivity.EInfinity.IntervalCuts.DeletedCutSums
+public import SerrePositivity.EInfinity.IntervalCuts.EdgeDifferentialExpansion

@@ -520,7 +520,12 @@ nullary を含む TR の部分合成保存は完了。
 `NormalizedDeletedCut.sum_three` は元切断非零・非切断点障害・切断点障害の三部分分割。
 `normalizedDeletedValue_sum_reduce` は二障害部分を処理し、元切断非零部分と切断点色全境界和へ帰着する。
 元の非零切断がなければ `normalizedDeletedValue_sum_eq_zero_of_no_cut` により正規化全削除和も零。
-具体的な Δ¹ の余代数構造は未完成。元切断非零部分の反復色境界比較と実際の全微分への接続が残る。
+`NormalizedDeletedCut.fiberEquiv` は削除位置ごとの非零切断和と共通有限添字を結ぶ。
+`edgeComponent_generator` は任意の語の生成元の実際の辺成分を非全射・退化も含めて展開する。
+`edgeComponent_differentialOnWord` は実際の削除微分の辺成分と正規化全削除和の一致。
+`edgeComponent_differentialOnWord_reduce` は元切断非零部分と切断点色全境界和へ帰着する。
+元の非零切断がなければ、実際の削除微分の辺成分も零となる。
+具体的な Δ¹ の余代数構造は未完成。元切断非零部分の反復色因子境界比較と全微分保存が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

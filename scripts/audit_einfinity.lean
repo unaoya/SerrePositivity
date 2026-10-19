@@ -937,6 +937,13 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.normalizedDeletedValue_sum_pivot,
       `SerrePositivity.EInfinity.IntervalCuts.normalizedDeletedValue_sum_reduce,
       `SerrePositivity.EInfinity.IntervalCuts.normalizedDeletedValue_sum_eq_zero_of_no_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.NormalizedDeletedCut.fiberEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.NormalizedDeletedCut.sum_fibers,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_sum_subtype,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_generator,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_differentialOnWord,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_differentialOnWord_reduce,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_differentialOnWord_eq_zero_of_no_cut,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2850,3 +2857,26 @@ example : ∑ c, normalizedDeletedValue ℤ compositionInner c =
       normalizedDeletedValue ℤ compositionInner c.val) +
         ∑ p, pivotBoundaryValue ℤ compositionInner p :=
   normalizedDeletedValue_sum_reduce ℤ compositionInner
+
+-- 非全射な00と、全射だが退化する001は、生成元上の実際の辺成分でも零。
+example : edgeComponent ℤ 2 0 (generator ℤ (n := 2) (d := 0) (![0, 0] : Fin 2 → Fin 2)) = 0 := by
+  have hn : ¬ Function.Surjective (![0, 0] : Fin 2 → Fin 2) := by decide
+  simpa only [dite_eq_right hn] using!
+    edgeComponent_generator ℤ (n := 2) (d := 0) (![0, 0] : Fin 2 → Fin 2)
+example : edgeComponent ℤ 2 1 (generator ℤ (n := 2) (d := 1) (![0, 0, 1] : Fin 3 → Fin 2)) = 0 := by
+  rw [edgeComponent_generator, dite_eq_left (by decide)]
+  apply Finset.sum_eq_zero
+  intro p _
+  have hn : ∀ q : Fin 3, ¬ EdgeNondegenerate (![0, 0, 1] : Fin 3 → Fin 2) q := by decide
+  exact False.elim (hn p.val p.property)
+-- 正規化和だけでなく、01202と01020の実際の削除微分の辺成分も全体として零。
+example : edgeComponent ℤ 3 1 (differentialOnWord ℤ gapOnlyWord) = 0 :=
+  edgeComponent_differentialOnWord_eq_zero_of_no_cut ℤ gapOnlyWord (by decide)
+example : edgeComponent ℤ 3 1 (differentialOnWord ℤ residualWord) = 0 :=
+  edgeComponent_differentialOnWord_eq_zero_of_no_cut ℤ residualWord (by decide)
+-- 010の非零元切断部分も、同じ実際の微分成分から直接取り出せる。
+example : edgeComponent ℤ 2 0 (differentialOnWord ℤ compositionInner) =
+    (∑ c : NormalizedDeletedCut.Regular compositionInner.val,
+      normalizedDeletedValue ℤ compositionInner c.val) +
+        ∑ p, pivotBoundaryValue ℤ compositionInner p :=
+  edgeComponent_differentialOnWord_reduce ℤ compositionInner
