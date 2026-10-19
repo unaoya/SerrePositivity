@@ -399,3 +399,10 @@ public import SerrePositivity.KST.Spectra.RawSpectrumMappingSourceFunctor
 public import SerrePositivity.KST.Spectra.RawSpectrumCotensorSourceNaturality
 public import SerrePositivity.KST.Spectra.RawSpectrumSourceCotensorIso
 public import SerrePositivity.KST.Spectra.RawSpectrumHomotopyLimitSourceNaturality
+public import SerrePositivity.KST.Spectra.HomTensorStrengthNaturality
+public import SerrePositivity.KST.Spectra.InternalHomExchangeComposition
+public import SerrePositivity.KST.Spectra.RawSpectrumPointedCompositionNaturality
+public import SerrePositivity.KST.Spectra.RawSpectrumCotensorComposition
+public import SerrePositivity.KST.Spectra.RawSpectrumWeightedComposition
+public import SerrePositivity.KST.Spectra.RawSpectrumHomotopyLimitComposition
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitComposition

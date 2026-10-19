@@ -34,4 +34,27 @@ lemma exchange_tensor_left (S X A E : C) :
     SymmetricCategory.symmetry, id_whiskerRight, Category.id_comp]
   monoidal
 
+/-- 二つの左因子を続けて交換すると元に戻る。 -/
+@[reassoc]
+lemma exchange_involution (A P Q : C) :
+    (HomTensorStrength.exchange A P Q).hom ≫ (HomTensorStrength.exchange P A Q).hom = 𝟙 _ := by
+  simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom,
+    Functor.mapIso_hom, tensorRight, Functor.flip, curriedTensor, Category.assoc,
+    Iso.hom_inv_id_assoc, ← comp_whiskerRight_assoc, SymmetricCategory.symmetry,
+    id_whiskerRight, Category.id_comp, Iso.inv_hom_id]
+
+/-- 左テンソルの中での交換と、二因子全体の交換の整合性。 -/
+lemma exchange_tensor_left_reordered (X P A Q : C) :
+    X ◁ (HomTensorStrength.exchange A P Q).hom ≫
+        (α_ X P (A ⊗ Q)).inv ≫ (HomTensorStrength.exchange (X ⊗ P) A Q).hom =
+      (HomTensorStrength.exchange X A (P ⊗ Q)).hom ≫ A ◁ (α_ X P Q).inv := by
+  apply (cancel_mono (A ◁ (α_ X P Q).hom ≫
+    (HomTensorStrength.exchange A X (P ⊗ Q)).hom)).mp
+  simp only [Category.assoc]
+  rw [HomTensorStrength.exchange_tensor_left]
+  simp only [Iso.inv_hom_id_assoc, ← whiskerLeft_comp_assoc,
+    exchange_involution, whiskerLeft_id, Category.id_comp,
+    Iso.inv_hom_id]
+  rw [← whiskerLeft_comp, exchange_involution, whiskerLeft_id]
+
 end SerrePositivity.KST.Spectra.HomTensorStrength
