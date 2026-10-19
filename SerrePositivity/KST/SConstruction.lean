@@ -364,4 +364,17 @@ public import SerrePositivity.KST.SConstruction.EdgeSegalEquivalence
 public import SerrePositivity.KST.SConstruction.PathHeadSegalComparison
 public import SerrePositivity.KST.SConstruction.PathHeadHomotopyPullback
 
+public import SerrePositivity.KST.SConstruction.SurjectiveBaseChangeLifting
+public import SerrePositivity.KST.SConstruction.ConnectedFibrationSurjectivity
+public import SerrePositivity.KST.SConstruction.SurjectiveBaseChangeDetection
+public import SerrePositivity.KST.SConstruction.BaseChangeMapNaturality
+public import SerrePositivity.KST.SConstruction.ConnectedBaseChangeDetection
+public import SerrePositivity.KST.SConstruction.SplitBasePullbackIso
+public import SerrePositivity.KST.SConstruction.SplitFibrationPullback
+public import SerrePositivity.KST.SConstruction.ConnectedDiagramRetractions
+public import SerrePositivity.KST.SConstruction.PathFirstFaceHomotopyPullback
+public import SerrePositivity.KST.SConstruction.SimplicialCartesianNaturality
+public import SerrePositivity.KST.SConstruction.PathBoundaryCartesian
+public import SerrePositivity.KST.SConstruction.PathBoundaryRealizationPullback
+
 /-! # ∞-S• 構成と連結 K 理論 -/

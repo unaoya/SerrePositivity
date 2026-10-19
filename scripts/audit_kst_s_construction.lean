@@ -6101,3 +6101,69 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_headPreserving_homotopyPullback
 #print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_headPreserving_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.trivialKanFibration_of_simplexSurjective_baseChange
+#print axioms SerrePositivity.KST.SConstruction.trivialKanFibration_of_simplexSurjective_baseChange
+
+#check @SerrePositivity.KST.SConstruction.fibration_vertex_surjective_of_connected
+#print axioms SerrePositivity.KST.SConstruction.fibration_vertex_surjective_of_connected
+
+#check @SerrePositivity.KST.SConstruction.fibration_simplex_surjective_of_vertex_surjective
+#print axioms SerrePositivity.KST.SConstruction.fibration_simplex_surjective_of_vertex_surjective
+
+#check @SerrePositivity.KST.SConstruction.fibration_simplex_surjective_of_connected
+#print axioms SerrePositivity.KST.SConstruction.fibration_simplex_surjective_of_connected
+
+#check @SerrePositivity.KST.SConstruction.localized_isIso_of_simplexSurjective_fibration_baseChange
+#print axioms SerrePositivity.KST.SConstruction.localized_isIso_of_simplexSurjective_fibration_baseChange
+
+#check @SerrePositivity.KST.SConstruction.localized_isIso_of_connected_fibration_baseChange
+#print axioms SerrePositivity.KST.SConstruction.localized_isIso_of_connected_fibration_baseChange
+
+#check @SerrePositivity.KST.SConstruction.pullbackMapBase_slice_naturality
+#print axioms SerrePositivity.KST.SConstruction.pullbackMapBase_slice_naturality
+
+#check @SerrePositivity.KST.SConstruction.localized_isIso_of_connected_baseChange
+#print axioms SerrePositivity.KST.SConstruction.localized_isIso_of_connected_baseChange
+
+#check @SerrePositivity.KST.SConstruction.splitBasePullback_projection
+#print axioms SerrePositivity.KST.SConstruction.splitBasePullback_projection
+
+#check @SerrePositivity.KST.SConstruction.splitBasePullbackIso
+#print axioms SerrePositivity.KST.SConstruction.splitBasePullbackIso
+
+#check @SerrePositivity.KST.SConstruction.homotopyPullback_retraction_of_section
+#print axioms SerrePositivity.KST.SConstruction.homotopyPullback_retraction_of_section
+
+#check @SerrePositivity.KST.SConstruction.naturality_homotopyPullback_retraction_of_section_of_kan
+#print axioms SerrePositivity.KST.SConstruction.naturality_homotopyPullback_retraction_of_section_of_kan
+
+#check @SerrePositivity.KST.SConstruction.naturality_homotopyPullback_retraction_of_section
+#print axioms SerrePositivity.KST.SConstruction.naturality_homotopyPullback_retraction_of_section
+
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationDiagram_positive_isConnected
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationDiagram_positive_isConnected
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_firstFace_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_firstFace_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.naturality_homotopyPullback_id
+#print axioms SerrePositivity.KST.SConstruction.naturality_homotopyPullback_id
+
+#check @SerrePositivity.KST.SConstruction.naturality_homotopyPullback_comp
+#print axioms SerrePositivity.KST.SConstruction.naturality_homotopyPullback_comp
+
+#check @SerrePositivity.KST.SConstruction.simplicial_naturality_homotopyPullback_of_generators
+#print axioms SerrePositivity.KST.SConstruction.simplicial_naturality_homotopyPullback_of_generators
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_face_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_face_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_degeneracy_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_degeneracy_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_realization_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_realization_homotopyPullback
