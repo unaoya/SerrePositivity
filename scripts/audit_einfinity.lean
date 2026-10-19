@@ -713,6 +713,20 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.onSequence_partialComposition_of_pos,
       `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffle_generators_of_pos,
       `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffleBilinear_of_pos,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_shuffle_nullary_succ,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffleBilinear_nullary_succ,
+      `SerrePositivity.EInfinity.Surjection.substitute_nullary,
+      `SerrePositivity.EInfinity.Surjection.eraseSlotLabel_partial_injective,
+      `SerrePositivity.EInfinity.Surjection.eraseSlotWord_length,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_inverse_row_nullary,
+      `SerrePositivity.EInfinity.Surjection.compositionOnWords_nullary_of_count_eq_one,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_filterMap_of_discarded_mem,
+      `SerrePositivity.EInfinity.TableReduction.permutationComposition_nullary_available,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_eraseSlotWord_of_mem,
+      `SerrePositivity.EInfinity.TableReduction.rows_nullary,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_nullary,
+      `SerrePositivity.EInfinity.TableReduction.completeRows_nullarySourceRows,
+      `SerrePositivity.EInfinity.TableReduction.nullary_success_extension,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2016,3 +2030,57 @@ example (x : (BarrattEccles.normalizedChains ℤ 4).X 2)
       Surjection.partialComposition ℤ 3 2 2 1 1 (normalizedMap ℤ 4 2 x)
         (normalizedMap ℤ 2 1 y) :=
   normalizedMap_shuffleBilinear_of_pos ℤ (by decide) 1 x y
+
+-- 零 arity の正の内側次数でも、全正規化鎖に対する合成保存が成立する。
+example (x : (BarrattEccles.normalizedChains ℤ 4).X 2)
+    (y : (BarrattEccles.normalizedChains ℤ 0).X 1) :
+    normalizedMap ℤ 3 3 (BarrattEccles.shuffleBilinear ℤ 3 0 1 2 1 x y) =
+      Surjection.partialComposition ℤ 3 0 2 1 1 (normalizedMap ℤ 4 2 x)
+        (normalizedMap ℤ 0 1 y) :=
+  normalizedMap_shuffleBilinear_nullary_succ ℤ 1 x y
+-- 外側出力 arity も零になる境界を含め、実際の各 shuffle 項が零となる。
+example (s : BarrattEccles.ShufflePath 2 1)
+    (outer : Fin 3 → Equiv.Perm (Fin 1)) (inner : Fin 2 → Equiv.Perm (Fin 0)) :
+    onSequence ℤ (fun j => BarrattEccles.permutationComposition 0 0 0
+      (outer (s.horizontal j)) (inner (s.vertical j))) = 0 :=
+  onSequence_shuffle_nullary_succ ℤ 0 2 0 0 outer inner s
+-- 空語挿入は一出現だけを残し、二出現の場合は分割が存在せず零になる。
+private def emptyNullaryWord : BasisWord 0 0 := permutationWord 1
+example : eraseSlotWord (0 : Fin 4) (List.ofFn canonicalFixture.val) = [0, 2, 0, 2, 1] := by
+  decide
+example : compositionOnWords ℤ canonicalFixture emptyNullaryWord 0 =
+    listGenerator ℤ (d := 2) [0, 2, 0, 2, 1] := by
+  rw [compositionOnWords_nullary_of_count_eq_one ℤ _ _ _ (by decide)]
+  rfl
+example : compositionOnWords ℤ canonicalFixture emptyNullaryWord 1 = 0 :=
+  compositionOnWords_nullary_of_count_ne_one ℤ _ _ _ (by decide)
+-- 反転した実際の置換行でも、指定値削除は既存 BE の空語挿入に一致する。
+example : List.ofFn
+    (BarrattEccles.permutationComposition 2 0 1 rowOuter (1 : Equiv.Perm (Fin 0))).symm =
+      [1, 0] := by
+  rw [permutationComposition_inverse_row_nullary]
+  decide
+-- 早期除外した元の二行の成功と削除後の成功を、全抽出の公式で結ぶ。
+example :
+    reduceRows [([0, 1], 1), ([0, 1], 2)] ([] : List (Fin 2)) =
+      (reduceRows [([0, 1, 2], 1), ([0, 1, 2], 2)] [0]).map
+        (eraseSlotWord (0 : Fin 3)) := by
+  have h := reduceRows_eraseSlotWord_of_mem (0 : Fin 3)
+    [([0, 1, 2], 1), ([0, 1, 2], 2)] [0] (by decide)
+  exact h
+example : reduceRows [([0, 1], 1), ([0, 1], 2)] ([] : List (Fin 2)) =
+    some [0, 0, 1] := by decide
+
+-- 非退化の nullary 成功表から、一回だけ指定値を挿入する実際の逆構成。
+private def nullaryOuter : Fin 2 → Equiv.Perm (Fin 3) := ![1, Equiv.swap 1 2]
+example : reduceRows (rows (fun j => BarrattEccles.permutationComposition 2 0 0
+    (nullaryOuter j) (1 : Equiv.Perm (Fin 0))) terminalSchedule) [] = some [0, 1, 0] := by
+  decide
+example : reduceRows (nullarySourceRows nullaryOuter terminalSchedule) [0] =
+    some [1, 2, 1] := by decide
+example : ∃ before chosen after pre post,
+    nullarySourceRows nullaryOuter terminalSchedule = before ++ chosen :: after ∧
+    (0 : Fin 3) ∉ pre ∧ 0 ∉ post ∧ [0, 1, 0] = eraseSlotWord 0 (pre ++ post) ∧
+    reduceRows (before ++ (chosen.1, chosen.2 + 1) :: after) [] =
+      some (pre ++ 0 :: post) :=
+  nullary_success_extension nullaryOuter 1 0 terminalSchedule [0, 1, 0] (by decide)

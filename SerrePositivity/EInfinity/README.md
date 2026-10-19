@@ -425,7 +425,15 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `onSequence_partialComposition_of_pos` は任意の可換環・全次数・正の内側 arity の全 shuffle 和の合成保存。
 `normalizedMap_shuffleBilinear_of_pos` は正規化生成元の一致を全正規化鎖の双線形合成へ延長する。
 正の内側 arity の実際の TR の部分合成保存は完了。
-空語挿入の nullary 合成との照合も未完成。
+`normalizedMap_shuffleBilinear_nullary_succ` は零 arity・正の内側次数の合成保存。
+各実際の shuffle の垂直辺で隣接頂点が一致するため、TR は零となる。
+`eraseSlotWord` は指定値の削除とラベルの詰め直し。空語代入と実際の BE 逆置換行に一致する。
+`compositionOnWords_nullary_of_count_eq_one` は一出現の空語合成を削除語の正規化へ同定する。
+`permutationComposition_nullary_available` は元の除外状態と実際の合成行の可用語を比較する。
+`reduceRows_eraseSlotWord_of_mem` は指定値を早期除外した全抽出と削除の可換性。
+`reduceRows_nullary` は実際の全合成表を元の早期除外表へ同定する。
+`nullary_success_extension` は解放値探索により一行を延長し、指定値を一回だけ挿入した成功表を構成。
+次数零の空語挿入について、元の Schedule への包装・成功項の一意な全単射と有限和の一致は未完成。
 nullary を含む TR の合成保存と、それを用いた χ の部分合成の微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

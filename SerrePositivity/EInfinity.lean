@@ -252,3 +252,6 @@ public import SerrePositivity.EInfinity.Surjection.RecoveredPartitionExistence
 public import SerrePositivity.EInfinity.Surjection.ShuffleReconstruction
 public import SerrePositivity.EInfinity.Surjection.CompositionSuccessSums
 public import SerrePositivity.EInfinity.TableReduction.CompositionPositive
+public import SerrePositivity.EInfinity.TableReduction.CompositionNullaryPositiveDegree
+public import SerrePositivity.EInfinity.TableReduction.NullaryAvailable
+public import SerrePositivity.EInfinity.TableReduction.NullaryEarlyExclusion
