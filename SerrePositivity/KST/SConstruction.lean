@@ -797,4 +797,14 @@ public import SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityOfMaps
 public import SerrePositivity.KST.SConstruction.KCompositionCompatibilityData
 public import SerrePositivity.KST.SConstruction.KCompositionCompatibilityTriangle
 public import SerrePositivity.KST.SConstruction.MonicKPrismOriginalCompositionTriangle
+public import SerrePositivity.KST.SConstruction.TriangleBoundaryMaps
+public import SerrePositivity.KST.SConstruction.TrivialKanTriangleLifting
+public import SerrePositivity.KST.SConstruction.RelativeSpecifiedTriangleFamilies
+public import SerrePositivity.KST.SConstruction.CompositionStringParameters
+public import SerrePositivity.KST.SConstruction.RelativeSpecifiedTriangleMaps
+public import SerrePositivity.KST.SConstruction.SpecifiedPointConstantHomotopies
+public import SerrePositivity.KST.SConstruction.KCompositionNativeCylinders
+public import SerrePositivity.KST.SConstruction.KCompositionNativeFamilies
+public import SerrePositivity.KST.SConstruction.KCompositionNativeTriangles
+public import SerrePositivity.KST.SConstruction.MonicKPrismCompositionNativeTriangles
 /-! # ∞-S• 構成と連結 K 理論 -/
