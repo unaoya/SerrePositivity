@@ -719,3 +719,9 @@ public import SerrePositivity.KST.Spectra.RelativeTracedPathFormulas
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointPastingFaces
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointSpecifiedPasting
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointPastedBoundary
+public import SerrePositivity.KST.Spectra.KanLoopCounitCoordinates
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCounitCoordinates
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedCounitInterval
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureCounit
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureCounitTrace
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointPastedCounitSquare
