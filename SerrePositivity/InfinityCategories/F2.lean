@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeNativeCommutativity
+public import SerrePositivity.InfinityCategories.F2.CatTetrahedronLastFace
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。

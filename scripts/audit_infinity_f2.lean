@@ -121,3 +121,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catPullbackConeTriangle_two
 #check @SerrePositivity.InfinityCategories.F2.catPullbackConeLegTriangleIso
 #check @SerrePositivity.InfinityCategories.F2.catPullbackConeNativeCommutativity
+
+#check @SerrePositivity.InfinityCategories.F2.coherentPathHom_ext
+#check @SerrePositivity.InfinityCategories.F2.coherentTetrahedronHom_square
+#check @SerrePositivity.InfinityCategories.F2.coherentTetrahedronHom_face_zero
+#check @SerrePositivity.InfinityCategories.F2.coherentTetrahedronHom_face_one
+#check @SerrePositivity.InfinityCategories.F2.coherentTetrahedronHom_face_two
+#check @SerrePositivity.InfinityCategories.F2.coherentTetrahedronHom_face_three
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_square
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_face_zero
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_face_one
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_face_two
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedron_face_three
