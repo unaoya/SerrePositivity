@@ -493,6 +493,16 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | 局所 perfect 判定・`diagramCoefficientDerivedRestriction_locallyPerfect_iff`・局所 perfect 部分圏の同値 | DiagramCoefficientLocallyPerfect | 任意の係数図式同型の導来表示比較での局所 perfect 性の保存・反映 |
 | `exceptionalDiagramDerivedRestriction_locallyPerfect_iff`・`exceptionalDiagramLocallyPerfectEquivalence` | ExceptionalDiagramLocallyPerfect | 実際の例外因子と共通 Koszul 表示の局所 perfect 導来部分圏の指定同値 |
 
+| 指定局所加群／導来制限四角形 | DiagramCoefficientTransitionSquare | 係数図式射に沿う局所遷移の二経路を標準合成同型で比較 |
+| 評価同型と遷移同型の恒等成分・underlying 遷移の保存 | DiagramCoefficientModuleComponents | 指定可換式の局所点での計算 |
+| `diagramCoefficientModuleComparison_square` | DiagramCoefficientModuleComparisonSquare | canonical な通常加群比較の可換式 |
+| 指定導来同型の実加群上の局所化公式 | DiagramCoefficientDerivedComputation | 通常の指定同型との計算経路を保持 |
+| `diagramCoefficientDerivedComparison_square`・随伴像の比較 | DiagramCoefficientDerivedComparisonSquare・DiagramCoefficientAdjunctSquare | 全導来対象の canonical な制限比較と指定局所同型の可換性 |
+| `diagramCoefficientDerivedExtensionComparison_isIso_iff`・cartesian 条件の iff | DiagramCoefficientCartesianComparison | 局所 Morita 同値と随伴四角形による指定射の可逆性の保存反映 |
+| cartesian・cartesian perfect 条件の同型不変性 | DiagramAlgebraCartesianIsomorphism | 一般の正規係数図式で対象条件を同型に沿って移す |
+| cartesian perfect 条件の iff・`diagramCoefficientCartesianPerfectEquivalence` | DiagramCoefficientCartesianPerfect | 全導来表示同値を canonical な二条件で制限 |
+| `exceptionalDiagramDerivedRestriction_cartesianPerfect_iff`・`exceptionalDiagramCartesianPerfectEquivalence` | ExceptionalDiagramCartesianPerfect | 実際の例外因子と共通 Koszul 表示の cartesian perfect 導来部分圏の指定同値 |
+
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
 モノイダル圏での左右単位則・結合則を証明済みで、一対象 dg 圏を構成済み。
@@ -677,8 +687,7 @@ Lemma 3.6（pp.11–14）、射影 q を係数 dg 代数の反変な自然変換
 H⁰ の本質的全射性から係数 dg 準同値を証明済み。opposite の準同値に既存の指定
 graph 導来延長–制限同値を適用し、全図式加群の導来表示同値を構成済み。
 実際の例外因子の指定図式同型に適用して `exceptionalDiagramDerivedEquivalence` を
-構成済み。これは全図式加群の同値であり、cartesian・局所 perfect 条件の保存は
-まだ別義務として残す。正規表示の指定局所頂点の埋め込み、局所遷移、canonical な
+構成済み。正規表示の指定局所頂点の埋め込み、局所遷移、canonical な
 包含単位矢と係数 dg 関手の可換式も証明済み。原典は KST v4 §3.1・Lemma 3.6
 （pp.11–14）、通常の厳密な加群貼り合わせではなく係数 dg 関手を用いる再構成。
 任意の係数図式射に沿う全図式加群の制限と、指定局所埋め込みの可換式に
@@ -689,9 +698,21 @@ graph 導来延長–制限同値を適用し、全図式加群の導来表示�
 局所 perfect 性の保存・反映、および元の導来同値を局所 perfect 部分圏へ
 制限した指定同値を構成済み。実際の例外因子の二つの表示にも適用済み。
 原典は KST v4 §3.1・Lemma 3.6（pp.11–14）、係数 dg 図式の表示変更による
-再構成であり、層の Perf や cartesian perfect 部分圏の比較の完了とはしない。
-次の実装単位は指定局所比較射の整合性から canonical な cartesian 条件を
-この表示同値で比較すること、および coherent な降下・層の閉埋め込み／射影との比較。
+再構成であり、層の Perf との比較の完了とはしない。
+任意の係数図式射について、指定局所評価比較と局所遷移制限の標準同型を
+各局所点で評価し、canonical な通常加群比較の可換式を証明済み。
+指定自然同型の成分が通常比較の局所化像に一致することを経由して、
+全導来対象での canonical な制限比較の可換式も証明済み。
+この式を指定延長–制限随伴へ送り、係数図式同型の各局所 Morita 同値の
+余単位と左随伴の同型反映により、canonical な係数拡大比較の可逆性の iff を得た。
+全包含での cartesian 性と局所 perfect 性の保存・反映、および
+`diagramCoefficientCartesianPerfectEquivalence` を構成済み。
+実際の例外因子の図式同型へ適用して
+`exceptionalDiagramCartesianPerfectEquivalence` を構成済み。
+原典は KST v4 §3.1・Lemma 3.6（pp.11–14）。これは指定比較射を保持した
+係数 dg 図式模型による再構成であり、層の降下や dg 商の普遍性を結論しない。
+次の実装単位は coherent な降下・層の閉埋め込み／射影との比較、および
+例外因子の正規表示と元の有限列 Koszul 模型の指定比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
