@@ -4162,3 +4162,81 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @bousfieldKanCoherentOppositeCone_isLimit_of_comparison_lifts
 #print axioms bousfieldKanCoherentOppositeCone_isLimit_of_comparison_lifts
+
+#check @internalHom_id_pre
+#print axioms internalHom_id_pre
+
+#check @internalHom_curry_comp
+#print axioms internalHom_curry_comp
+
+#check @internalHom_tensorMap_comp
+#print axioms internalHom_tensorMap_comp
+
+#check @internalHom_comp_pre
+#print axioms internalHom_comp_pre
+
+#check @internalHom_comp_pre_parameter
+#print axioms internalHom_comp_pre_parameter
+
+#check @weightedHomPostSection
+#print axioms weightedHomPostSection
+
+#check @weightedHomPostcomposition
+#print axioms weightedHomPostcomposition
+
+#check @weightedHomPostcomposition_π
+#print axioms weightedHomPostcomposition_π
+
+#check @weightedColimitHomComparison_enriched_naturality
+#print axioms weightedColimitHomComparison_enriched_naturality
+
+#check @weightedColimitHomComparison_pre_enriched_naturality
+#print axioms weightedColimitHomComparison_pre_enriched_naturality
+
+#check @weightedColimitUniversalHomPoint
+#print axioms weightedColimitUniversalHomPoint
+
+#check @weightedColimitHomComparison_of_universal_point
+#print axioms weightedColimitHomComparison_of_universal_point
+
+#check @weightedColimitHomComparison_pre_of_point
+#print axioms weightedColimitHomComparison_pre_of_point
+
+#check @reflectedWeightedHomPostcomposition
+#print axioms reflectedWeightedHomPostcomposition
+
+#check @reflectedWeightedColimitHomIso_enriched_naturality
+#print axioms reflectedWeightedColimitHomIso_enriched_naturality
+
+#check @reflectedWeightedColimitHomComparison_pre_enriched_naturality
+#print axioms reflectedWeightedColimitHomComparison_pre_enriched_naturality
+
+#check @reflectedWeightedColimitHomPointOfMap
+#print axioms reflectedWeightedColimitHomPointOfMap
+
+#check @reflectedWeightedColimitHomComparison_pre_of_point
+#print axioms reflectedWeightedColimitHomComparison_pre_of_point
+
+#check @kanReflectedBousfieldKanEndIso
+#print axioms kanReflectedBousfieldKanEndIso
+
+#check @kanReflectedBousfieldKanEndPostcomposition
+#print axioms kanReflectedBousfieldKanEndPostcomposition
+
+#check @kanReflectedBousfieldKanColimitHomComparison_enriched_naturality
+#print axioms kanReflectedBousfieldKanColimitHomComparison_enriched_naturality
+
+#check @kanReflectedBousfieldKanColimitHomPoint
+#print axioms kanReflectedBousfieldKanColimitHomPoint
+
+#check @kanReflectedBousfieldKanColimitHomComparison_of_point
+#print axioms kanReflectedBousfieldKanColimitHomComparison_of_point
+
+#check @kanReflectedBousfieldKanColimitHomPoint_eq
+#print axioms kanReflectedBousfieldKanColimitHomPoint_eq
+
+#check @reflectedKanIdentity_vertex
+#print axioms reflectedKanIdentity_vertex
+
+#check @bousfieldKanCoherentConePoint_of_end_point
+#print axioms bousfieldKanCoherentConePoint_of_end_point
