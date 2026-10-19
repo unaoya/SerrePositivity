@@ -10,8 +10,7 @@
 - hG と homotopy Tot の段ごとの Kan 構成・BF 置換・比較射、および自明作用の標準射の全整数次数 π の単射性まで証明済み。
 - 有理化各段の高次群係数で BG の通常の正規化 cochain の正次数 cohomology が消滅することを証明済み。
 - 球面的境界の交代関係と充填判定、骨格の一段の厳密な延長と通常の cocycle 条件の同値、任意の cochain・cocycle の骨格の射による実現まで完了。
-- 関数複体の π₀ ≃ 座標ごとの π₀ を Kan 充填で構成し、骨格 fiber の成分係数表示へ合成済み。
-- 元の骨格射の相対商が定める fiber 頂点と、指定したセル単体から復元する頂点の厳密な一致を証明済み。
+- 関数複体の π₀ の座標表示を Kan 充填で構成し、骨格 fiber の係数へ合成済み。相対商の fiber 頂点とセル単体から復元する頂点も厳密に一致する。
 - その頂点を写像空間へ含めると元の射に戻る。実際の成分係数は既存 cochain と一致し、正規化微分の交代式も保持する。
 - 成分と正次数群の係数は同一のセル球面への制限射で計算できる。
 - 反復 loop 値の fiber の π₀ と元の fiber の全正次数群を比較し、既存係数表示との正符号の可換式を証明済み。
@@ -23,14 +22,14 @@
 - 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
 - 零 loop 成分の基本段も、成分集合に群を置かず、元の fiber の基本群の逆元として標準接続写像と比較済み。
 - これらを fibration の塔の微分へ合成し、正次数・零 loop 成分の双方で次数移動の反可換式を証明済み。
-- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、4027 jobs、終了コード 0。
+- 通常の写像空間・制限 fiber の loop 交換をセル商の表示と厳密に照合し、実際の `coefficientDifferential` の正次数の loop 反可換式まで証明済み。
+- 検証：対象ビルド 4032 jobs、専用公理監査 564 モジュール・5494 宣言、標準三公理のみ。ともに終了コード 0。
 - 全体ビルド：共有 F1/F1B の同名宣言の import 衝突で失敗。対象と専用監査は成功。
-- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、559 モジュール・5472 宣言、標準三公理のみ、終了コード 0。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - セル境界の局所的な連結準同型を反復 loop の成分代表で計算し、球面的境界の向きと整合させる。
-  標準の反可換式と零 loop 成分の基本段、塔の微分の次数移動まで証明済み。写像空間の交換同型との合成が残る。
+  標準の反可換式、写像空間とセル商の交換、係数微分の正次数の loop 比較まで証明済み。零次数の成分表示との照合が残る。
   原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
 - 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
   原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
@@ -66,8 +65,9 @@
 - `RelativePath.common_boundary_simplex`
 - `pointedConnectingHom_loopPositive`
 - `pointedConnectingZero_loopZero`
-- `PointedFibrationTower.differential_loopPositive`
-- `PointedFibrationTower.differential_loopZero`
+- `SkeletalCellAttachment.stageFiberLoopPositiveEquiv_eq`
+- `SkeletalCellAttachment.stageDifferential_loopPositive`
+- `SkeletalCellAttachment.coefficientDifferential_loopPositive`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv`
 - `SkeletalCellAttachment.coefficientDifferential`
 - `RationalLevelNormalizedCochains.positive_cohomology_isZero`
@@ -97,9 +97,9 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- `PointedFibrationTower.differential_loopPositive` と `differential_loopZero` を骨格の制限写像へ適用する。共通ホーン・標準接続写像の反可換式の再構成は不要。
-- `PointedMapping.loopSwap` の源への自然性と fiber 同型を用い、loop 値の骨格の塔と元の塔の loop の比較を作る。
-- その交換式を反復 loop の係数比較へ合成し、`skeletalFiberVertex_normalizedDifferential` と実際の `coefficientDifferential` の像・符号を照合する。
+- `pointedConnectingZero` の厳密な可換正方形への自然性を `FibrationSquare.connecting_natural` から標準基点へ移し、`restrictionLoopIso` と `differential_loopZero` を骨格の塔へ合成する。
+- `KanHomotopyZero.equivPiZero` を介して通常の loop 値の零次数比較を `stageFiberComponentEquiv` へ接続する。`CirclePower.space` の loop 写像類との比較と通常の circle の比較を混同しない。
+- `coefficientDifferential_loopPositive` が任意の係数の各セルの値と逆符号を計算済み。零次数の式を `skeletalFiberVertex_normalizedDifferential` と照合し、正規化微分の像・符号の同定を完成させる。
 - Sp-1d は未完。骨格微分の同定・塔の収束・Shapiro 全射性は主張しない。
 
 ## 範囲と所有
