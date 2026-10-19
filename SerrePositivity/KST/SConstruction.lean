@@ -358,4 +358,10 @@ public import SerrePositivity.KST.SConstruction.CutStableEquivalences
 public import SerrePositivity.KST.SConstruction.CutSegalEquivalence
 public import SerrePositivity.KST.SConstruction.CutSegalNaturality
 
+public import SerrePositivity.KST.SConstruction.EdgeSegalEvaluations
+public import SerrePositivity.KST.SConstruction.NonemptySSetPowers
+public import SerrePositivity.KST.SConstruction.EdgeSegalEquivalence
+public import SerrePositivity.KST.SConstruction.PathHeadSegalComparison
+public import SerrePositivity.KST.SConstruction.PathHeadHomotopyPullback
+
 /-! # ∞-S• 構成と連結 K 理論 -/

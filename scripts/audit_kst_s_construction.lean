@@ -6038,3 +6038,66 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.cutSegalLocalizedIso_app
 #print axioms SerrePositivity.KST.SConstruction.cutSegalLocalizedIso_app
+
+#check @SerrePositivity.KST.SConstruction.edgeIntervalInclusion
+#print axioms SerrePositivity.KST.SConstruction.edgeIntervalInclusion
+
+#check @SerrePositivity.KST.SConstruction.edgeSegalEvaluation
+#print axioms SerrePositivity.KST.SConstruction.edgeSegalEvaluation
+
+#check @SerrePositivity.KST.SConstruction.edgeSegalEvaluation_one
+#print axioms SerrePositivity.KST.SConstruction.edgeSegalEvaluation_one
+
+#check @SerrePositivity.KST.SConstruction.cutLeftSegalEvaluation_first
+#print axioms SerrePositivity.KST.SConstruction.cutLeftSegalEvaluation_first
+
+#check @SerrePositivity.KST.SConstruction.cutRightSegalEvaluation_edge
+#print axioms SerrePositivity.KST.SConstruction.cutRightSegalEvaluation_edge
+
+#check @SerrePositivity.KST.SConstruction.nonemptySSetPower
+#print axioms SerrePositivity.KST.SConstruction.nonemptySSetPower
+
+#check @SerrePositivity.KST.SConstruction.nonemptySSetPowerProjection
+#print axioms SerrePositivity.KST.SConstruction.nonemptySSetPowerProjection
+
+#check @SerrePositivity.KST.SConstruction.nonemptySSetPowerLift
+#print axioms SerrePositivity.KST.SConstruction.nonemptySSetPowerLift
+
+#check @SerrePositivity.KST.SConstruction.nonemptySSetPowerLift_projection
+#print axioms SerrePositivity.KST.SConstruction.nonemptySSetPowerLift_projection
+
+#check @SerrePositivity.KST.SConstruction.nonemptySSetPowerLift_comp
+#print axioms SerrePositivity.KST.SConstruction.nonemptySSetPowerLift_comp
+
+#check @SerrePositivity.KST.SConstruction.edgeSegalMap
+#print axioms SerrePositivity.KST.SConstruction.edgeSegalMap
+
+#check @SerrePositivity.KST.SConstruction.edgeSegalMap_projection
+#print axioms SerrePositivity.KST.SConstruction.edgeSegalMap_projection
+
+#check @SerrePositivity.KST.SConstruction.edgeSegalMap_zero
+#print axioms SerrePositivity.KST.SConstruction.edgeSegalMap_zero
+
+#check @SerrePositivity.KST.SConstruction.edgeSegalMap_succ
+#print axioms SerrePositivity.KST.SConstruction.edgeSegalMap_succ
+
+#check @SerrePositivity.KST.SConstruction.edgeSegalMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.edgeSegalMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.pathFirstEdge_naturality
+#print axioms SerrePositivity.KST.SConstruction.pathFirstEdge_naturality
+
+#check @SerrePositivity.KST.SConstruction.pathHeadSegalMap
+#print axioms SerrePositivity.KST.SConstruction.pathHeadSegalMap
+
+#check @SerrePositivity.KST.SConstruction.pathHeadSegalMap_fst
+#print axioms SerrePositivity.KST.SConstruction.pathHeadSegalMap_fst
+
+#check @SerrePositivity.KST.SConstruction.pathHeadSegalMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pathHeadSegalMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.pathHeadSegalMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.pathHeadSegalMap_naturality
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_headPreserving_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_headPreserving_homotopyPullback
