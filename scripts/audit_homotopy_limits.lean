@@ -6169,3 +6169,81 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @exists_fixedExtensionFamily_of_mono
 #print axioms exists_fixedExtensionFamily_of_mono
+
+#check @fixedExtensionHomotopyEdge
+#print axioms fixedExtensionHomotopyEdge
+
+#check @fixedExtensionHomotopyEdge_uncurry
+#print axioms fixedExtensionHomotopyEdge_uncurry
+
+#check @fixedExtensionHomotopyEdge_projection
+#print axioms fixedExtensionHomotopyEdge_projection
+
+#check @relativeFunctorConstFiberHom_uncurry
+#print axioms relativeFunctorConstFiberHom_uncurry
+
+#check @relativeExtensionFiberEndpoint_uncurry
+#print axioms relativeExtensionFiberEndpoint_uncurry
+
+#check @fixedExtensionCurry_endpoint_uncurry
+#print axioms fixedExtensionCurry_endpoint_uncurry
+
+#check @transportPrismBase
+#print axioms transportPrismBase
+
+#check @transportPrismInitial
+#print axioms transportPrismInitial
+
+#check @transportPrism_initial_restriction
+#print axioms transportPrism_initial_restriction
+
+#check @transportPrismInitial_projection
+#print axioms transportPrismInitial_projection
+
+#check @transportPrismExtensionSpace
+#print axioms transportPrismExtensionSpace
+
+#check @transportPrismExtensionSpace_isContractibleKan
+#print axioms transportPrismExtensionSpace_isContractibleKan
+
+#check @transportPrismBase_endpoint
+#print axioms transportPrismBase_endpoint
+
+#check @transportPrismExtensionEndpoint
+#print axioms transportPrismExtensionEndpoint
+
+#check @coherentTransportLongPrismVertex
+#print axioms coherentTransportLongPrismVertex
+
+#check @standardTransportPrismVertex
+#print axioms standardTransportPrismVertex
+
+#check @coherentTransportComparisonEdge
+#print axioms coherentTransportComparisonEdge
+
+#check @coherentTransportComparisonEdge_uncurry
+#print axioms coherentTransportComparisonEdge_uncurry
+
+#check @coherentTransportComparisonEdge_endpoint_uncurry
+#print axioms coherentTransportComparisonEdge_endpoint_uncurry
+
+#check @coherentTransportLongPrismVertex_endpoint
+#print axioms coherentTransportLongPrismVertex_endpoint
+
+#check @standardTransportPrismVertex_endpoint
+#print axioms standardTransportPrismVertex_endpoint
+
+#check @coherentTransportComparisonEndpointEdge
+#print axioms coherentTransportComparisonEndpointEdge
+
+#check @coherentTransportComparisonEndpointEdge_eq
+#print axioms coherentTransportComparisonEndpointEdge_eq
+
+#check @coherentTransportComparisonEndpointEdge_homMk
+#print axioms coherentTransportComparisonEndpointEdge_homMk
+
+#check @transportPrismExtensionEdge_homMk_eq
+#print axioms transportPrismExtensionEdge_homMk_eq
+
+#check @transportPrismExtensionEdge_endpoint_homMk_eq
+#print axioms transportPrismExtensionEdge_endpoint_homMk_eq

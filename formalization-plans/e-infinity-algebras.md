@@ -46,8 +46,8 @@
   共通部分の Hom 比較は、同じ指定余錐の頂点からの Hom 上で元の共通脚の前合成とホモトピック。元の余錐の余極限性は不要。
   元の二単体・標準二辺の三角形 prism と、底・始点を固定した長辺比較をデータ化。span の境界経路をこの比較へ差し替えた。
   同じ二辺の三角形を底と二辺を固定する円柱で比較し、長辺の両端の固定も証明。底・初期値を保つ任意の単射パラメータ境界の族を厳密に延長できる。end 内の整合性は未完了。
+  指定比較円柱を可縮な延長空間の実際の辺として保持し、終点評価が元の合成ホモトピーの辺と厳密に一致することを証明。同じ二頂点を結ぶ比較辺の類と終点での像の一意性も公開。
   γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
-  詳細な実施記録はコミットメッセージを参照。
 - **残り**（依存順・時間は再開後の概算）：
   1. γ3c：通常の小圏上の Kan 値図式の coend 余極限から、任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
   2. γ4：具体例を一般の simplicial Quillen 随伴の cofibrant-fibrant 置換・frame へ拡張する。HTT 5.2.4.6、8〜20時間。
@@ -82,11 +82,11 @@
   `nativeSpanUniversalFamilyToPathEnd_homotopyEquivalence`、`specifiedPathCocone_isColimit_of_pathFamily_homotopy`、
   `exists_specifiedPathCocone_branch_comparisons`、`specifiedCoconeRightHomTriangleFamily`、
   `specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy`、
-  `coherentTransportTriangleCompositionHomotopy_projection`、`exists_fixedExtensionFamily_of_mono`。
+  `coherentTransportComparisonEndpointEdge_eq`、`transportPrismExtensionEdge_endpoint_homMk_eq`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は二辺固定三角形の比較・長辺の相対比較・固定延長の curry・任意のパラメータ境界の持ち上げ4新規モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
+- **未コミット**：今回の保存単位は固定延長円柱の辺・終点評価・指定比較円柱の延長空間・比較辺の類の一意性4新規モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -100,7 +100,7 @@
 - **次の一手**：`specifiedPathCocone_isColimit_of_pathFamily_homotopy` の全終点の族のホモトピー入力を構成する。
   元の族は `partialColimitHomFamilyToPathEnd`、同じ頂点で表示した比較先は `specifiedCoconeNativeFamilyToPathEnd`。
   後者の同値性は無条件に証明済み。前者とのホモトピーを仮定した定理は、余極限性の完成とは数えない。
-  `fixedExtensionCurry` で指定比較円柱を同じ延長空間に戻す。両枝と共通脚の Hom 係数から境界族を組み、`exists_fixedExtensionFamily_of_mono` で全単体の整合する族へ延長する。
+  まず `sliceUnderProjection` の三角形 prism を c の始対象の fiber 頂点で評価する。`pointRestrictionFullEdgeFamily` と元の共通脚の全 Hom 族を、その実際の三角形・指定辺 `coherentTransportComparisonEdge` と同時に照合し、境界族を組む。
   同じ経路の持ち上げの相対ホモトピーを共通 end に移して入力を閉じる。その後、骨格の無限段階とセルの添字の小ささを処理。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
