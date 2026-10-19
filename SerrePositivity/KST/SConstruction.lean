@@ -709,4 +709,8 @@ public import SerrePositivity.KST.SConstruction.CoherentStringFullPaths
 public import SerrePositivity.KST.SConstruction.CoherentArrowNativeFamilies
 public import SerrePositivity.KST.SConstruction.CoherentOrdinaryPrism
 public import SerrePositivity.KST.SConstruction.KPrismNativeStringFamilies
+public import SerrePositivity.KST.SConstruction.CoherentStringPrismOrders
+public import SerrePositivity.KST.SConstruction.CoherentStringPrismChains
+public import SerrePositivity.KST.SConstruction.CoherentPrismNativeFamilies
+public import SerrePositivity.KST.SConstruction.KPrismNativeSpanFamilies
 /-! # ∞-S• 構成と連結 K 理論 -/

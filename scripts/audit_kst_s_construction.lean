@@ -10841,3 +10841,165 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kKanOriginalPrismNativeContraction
 #print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismNativeContraction
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringIndex
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringIndex
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringIndex
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringIndex
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringTime
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringTime
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringTime
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringTime
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringExtend
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringExtend
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringExtend
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringExtend
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringExtend_castSucc
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringExtend_castSucc
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringExtend_last
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringExtend_last
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringExtend_zero
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringExtend_zero
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringExtend_succ
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringExtend_succ
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringExtend_index
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringExtend_index
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringExtend_index
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringExtend_index
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringExtend_time
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringExtend_time
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringExtend_time
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringExtend_time
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringIndex_first
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringIndex_first
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringIndex_last
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringIndex_last
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringTime_first
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringTime_first
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringTime_last
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringTime_last
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringExtend_id
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringExtend_id
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringExtend_comp
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringExtend_comp
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringIndex_first
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringIndex_first
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringIndex_last
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringIndex_last
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringTime_first
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringTime_first
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringTime_last
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringTime_last
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringExtend_id
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringExtend_id
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringExtend_comp
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringExtend_comp
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerStringExtend_first
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerStringExtend_first
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperStringExtend_last
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperStringExtend_last
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPrismChain
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPrismChain
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPrismChain_reindex
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPrismChain_reindex
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPrismChain_longEdge
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPrismChain_longEdge
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPrismChain_refinement
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPrismChain_refinement
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerPrismString
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerPrismString
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerPrismStringMap
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerPrismStringMap
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerPrismStringFunctor
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerPrismStringFunctor
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperPrismString
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperPrismString
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperPrismStringMap
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperPrismStringMap
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperPrismStringFunctor
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperPrismStringFunctor
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismArrow
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismArrow
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismLowerNativeFamily
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismLowerNativeFamily
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismLowerNativeContraction
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismLowerNativeContraction
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismLowerNativeContraction_h
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismLowerNativeContraction_h
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismLowerNativeFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismLowerNativeFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismUpperNativeFamily
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismUpperNativeFamily
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismUpperNativeContraction
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismUpperNativeContraction
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismUpperNativeContraction_h
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismUpperNativeContraction_h
+
+#check @SerrePositivity.KST.SConstruction.coherentPrismUpperNativeFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.coherentPrismUpperNativeFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.kPrismNativeSpanFamilies_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kPrismNativeSpanFamilies_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerNativeFamily
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerNativeFamily
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerNativeContraction
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerNativeContraction
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerNativeContraction_h
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerNativeContraction_h
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperNativeFamily
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperNativeFamily
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperNativeContraction
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperNativeContraction
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperNativeContraction_h
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperNativeContraction_h
