@@ -848,6 +848,22 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.edgeOutputVertices_erase_of_ne,
       `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_eraseCut_left,
       `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_eraseCut_right,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount,
+      `SerrePositivity.EInfinity.IntervalCuts.edgePermutationExponent_eq_inversionCount,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_eq_inversionCount,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_erase_balance,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionSign_erase,
+      `SerrePositivity.EInfinity.IntervalCuts.positionRank_active_caesura,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_prefix_degree,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_caesura_boundary,
+      `SerrePositivity.EInfinity.IntervalCuts.deletionCoefficient_repeat_pair,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_final_boundary,
+      `SerrePositivity.EInfinity.IntervalCuts.caesura_erase_iff_of_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.activePositions_erase_image_eq_erase,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_image,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_erase_eq_removed,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_erase_left_boundary,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_erase_right_boundary,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2486,3 +2502,25 @@ example :
   have hs : activePositions compositionOuter.val 1 = {0, 1} := by decide
   simpa only [hs, Finset.sum_pair (by decide : (0 : Fin 4) ≠ (1 : Fin 4))]
     using! edgeOutput_tensorVector_d ℤ compositionOuter 1 (by decide)
+
+-- 三つの活動色 2,0,1 を持つ語。最初の色0の削除係数と残りの交換符号はともに負。
+private def cutSignWord : BasisWord 3 2 := ⟨![2, 0, 1, 2, 0], by decide⟩
+example : deletionCoefficient cutSignWord.val 1 = -1 ∧
+    edgeSign (erase cutSignWord.val 1) 1 = -1 := by decide
+-- 左出現の削除は、元の実際の切断と削除語の実際の切断の係数を保つ。
+example : edgeSign cutSignWord.val 2 =
+    deletionCoefficient cutSignWord.val 1 * edgeSign (erase cutSignWord.val 1) 1 := by
+  have h := edgeSign_erase_left_boundary cutSignWord 1 1 (by decide) (by decide)
+  rw [show (1 : Fin 5).succAbove (1 : Fin 4) = 2 by decide] at h
+  have hp : (∑ k ∈ Finset.univ.filter (fun k : Fin 3 => k < cutSignWord.val 1),
+      simplexDegree (edgeOutput cutSignWord 2 k)) = 0 := by decide
+  simpa only [hp, pow_zero, mul_one] using h
+-- 同じ色の右出現を削除する場合は、始点側の負の境界係数になる。
+example : -edgeSign cutSignWord.val 2 =
+    deletionCoefficient cutSignWord.val 4 * edgeSign (erase cutSignWord.val 4) 2 := by
+  have h := edgeSign_erase_right_boundary cutSignWord 4 1 2
+    (by decide) (by decide) (by decide)
+  rw [show (4 : Fin 5).succAbove (2 : Fin 4) = 2 by decide] at h
+  have hp : (∑ k ∈ Finset.univ.filter (fun k : Fin 3 => k < cutSignWord.val 1),
+      simplexDegree (edgeOutput cutSignWord 2 k)) = 0 := by decide
+  simpa only [hp, pow_zero, mul_one] using h

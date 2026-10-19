@@ -485,7 +485,12 @@ nullary を含む TR の部分合成保存は完了。
 `edgeOutput_tensorVector_d` は実際の境界を元の活動位置の和へ添字替えする。
 `eraseCutBasisWord` は切断点以外の反復文字の削除後の実際の非退化基底語。
 `edgeOutput_eraseCut_left`・`right` は削除後の全出力族を、その色の終点・始点への置換と同定する。
-具体的な Δ¹ の余代数構造は未完成。符号一致・逆対応・退化する元切断からの項の相殺が残る。
+`edgeSign_eq_inversionCount` は非零切断の符号を活動位置の色の逆転数へ同定する。
+`positionInversionSign_erase` は一位置削除で元位置順位と色順位の符号が交換する公式。
+`activePositions_erase_image_eq_erase` は削除後の活動集合を元の一位置削除へ同定する。
+`edgeSign_erase_left_boundary`・`right_boundary` は切断点を残す左右削除で実際のスカラー係数を一致させる。
+具体的な Δ¹ の余代数構造は未完成。因子境界の再帰符号の明示、逆対応・退化元切断由来の項と
+切断点色の境界項の相殺を含む全有限和の比較が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
