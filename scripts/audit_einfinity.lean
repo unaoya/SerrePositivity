@@ -913,6 +913,14 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.pivotEraseBasisWord,
       `SerrePositivity.EInfinity.IntervalCuts.pivotErase_tensor_before,
       `SerrePositivity.EInfinity.IntervalCuts.pivotErase_tensor_after,
+      `SerrePositivity.EInfinity.IntervalCuts.positionRank_gap_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.caesuraRank_gap_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.activePositions_erase_final_pivot_image,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotDeletion_coefficient_before,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotDeletion_coefficient_after,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotDeletion_weighted_before,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotDeletion_weighted_after,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotDeletion_weighted_pair,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2756,6 +2764,35 @@ example : tensorVectorOfDegree ℤ 3 2 (edgeOutput gapOnlyLeft 2)
 example : tensorVectorOfDegree ℤ 3 2 (edgeOutput gapOnlyRight 2)
       (edgeOutput_tupleDegree _ _ (by decide)) = gapTensor ℤ gapOnlyWord 3 :=
   pivotErase_tensor_after ℤ gapOnlyWord 4 2 (by decide) (by decide) (by decide)
--- この空の元切断区間の例では、二削除の係数は反対。一般の係数公式は次工程。
+-- この空の元切断区間の例の具体的な二係数。一般公式による同じ相殺は下で検証。
 example : deletionCoefficient gapOnlyWord.val 0 * edgeSign (erase gapOnlyWord.val 0) 2 = -1 ∧
     deletionCoefficient gapOnlyWord.val 4 * edgeSign (erase gapOnlyWord.val 4) 2 = 1 := by decide
+
+-- 01202 の二削除の相殺を一般の係数・実際のテンソル公式で検証する。
+example : (deletionCoefficient gapOnlyWord.val 0 * edgeSign (erase gapOnlyWord.val 0) 2) •
+      tensorVectorOfDegree ℤ 3 2 (edgeOutput gapOnlyLeft 2)
+        (edgeOutput_tupleDegree _ _ (by decide)) +
+    (deletionCoefficient gapOnlyWord.val 4 * edgeSign (erase gapOnlyWord.val 4) 2) •
+      tensorVectorOfDegree ℤ 3 2 (edgeOutput gapOnlyRight 2)
+        (edgeOutput_tupleDegree _ _ (by decide)) = 0 :=
+  pivotDeletion_weighted_pair ℤ gapOnlyWord 0 4 2 2 (by decide) (by decide)
+    (by decide) (by decide) (by decide) (by decide) (by decide)
+-- 色を置換した20121では区切り色の逆転数が奇数なので、両係数の符号が反転する。
+private def gapOddWord : BasisWord 3 2 := ⟨![2, 0, 1, 2, 1], by decide⟩
+example : (-1 : ℤ) ^ (Finset.univ.filter (Caesura gapOddWord.val)).card *
+    (-1 : ℤ) ^ positionInversionCount gapOddWord.val
+      (Finset.univ.filter (Caesura gapOddWord.val)) = -1 := by decide
+example : deletionCoefficient gapOddWord.val 0 * edgeSign (erase gapOddWord.val 0) 2 = 1 := by
+  have h := pivotDeletion_coefficient_before gapOddWord.val 0 2
+    (by decide) (by decide) (by decide)
+  have hc : (-1 : ℤ) ^ (Finset.univ.filter (Caesura gapOddWord.val)).card *
+      (-1 : ℤ) ^ positionInversionCount gapOddWord.val
+        (Finset.univ.filter (Caesura gapOddWord.val)) = -1 := by decide
+  simpa only [hc, neg_neg] using h
+example : deletionCoefficient gapOddWord.val 4 * edgeSign (erase gapOddWord.val 4) 2 = -1 := by
+  have h := pivotDeletion_coefficient_after gapOddWord.val 4 2
+    (by decide) (by decide) (by decide)
+  have hc : (-1 : ℤ) ^ (Finset.univ.filter (Caesura gapOddWord.val)).card *
+      (-1 : ℤ) ^ positionInversionCount gapOddWord.val
+        (Finset.univ.filter (Caesura gapOddWord.val)) = -1 := by decide
+  simpa only [hc] using h
