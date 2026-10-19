@@ -576,6 +576,13 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.DegreePath.vertices_append,
       `SerrePositivity.EInfinity.Surjection.DegreePath.vertices_blocks,
       `SerrePositivity.EInfinity.Surjection.compositionPath_vertices,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.rowAtGrid_valid,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.horizontalRows_eq_grid,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.verticalRows_eq_grid,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedRows_eq_grid,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.pathSequence_rows_grid,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.pathSequence_success_of_vertices,
+      `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
       `SerrePositivity.EInfinity.TableReduction.reduceRows_row_bounds,
       `SerrePositivity.EInfinity.Surjection.substitute_horizontal_no_slot,
       `SerrePositivity.EInfinity.Surjection.occurrenceAt_complete,
@@ -1259,8 +1266,9 @@ example : DegreePath.vertices (DegreePath.append (DegreePath.horizontal 1)
 example : DegreePath.vertices (DegreePath.corner 0 0) = [(0, 0)] := by
   exact (DegreePath.vertices_corner 0 0).trans (by decide)
 -- 最初の水平次数零・後の垂直次数零を含む実際の compositionPath の全頂点。
-example : DegreePath.vertices (compositionPath canonicalFixture compositionInner 1 verticalCuts) =
-    [(0, 0), (0, 1), (1, 1), (2, 1)] := by
+private lemma compositionFixture_vertices :
+    DegreePath.vertices (compositionPath canonicalFixture compositionInner 1 verticalCuts) =
+      [(0, 0), (0, 1), (1, 1), (2, 1)] := by
   have hh : outerSegmentDegree canonicalFixture.val 1 0 = 0 := by decide
   have hp : compositionDegreePairs canonicalFixture compositionInner 1 verticalCuts =
       [(1, 2), (0, 0)] := by decide
@@ -1269,3 +1277,19 @@ example : DegreePath.vertices (compositionPath canonicalFixture compositionInner
   apply h.trans
   simp only [DegreePath.blockVertices]
   decide
+
+-- 元の所属行から作った融合格子列は同じ全頂点列を持つ。
+private lemma fusedFixture_vertices : fullCompositionFixture.fusedGridVertices 0 =
+    [(0, 0), (0, 1), (1, 1), (2, 1)] := by
+  rw [TableCompositionData.fusedGridVertices,
+    dite_eq_left (show 0 < fullCompositionFixture.count by decide),
+    TableCompositionData.fusedGridVertices,
+    dite_eq_left (show 1 < fullCompositionFixture.count by decide),
+    TableCompositionData.fusedGridVertices,
+    dite_eq_right (show ¬2 < fullCompositionFixture.count by decide)]
+  decide
+-- 具体例では元の実際の経路置換列と構成済み Schedule で抽出成功する。
+example : reduceRows (rows fullCompositionFixture.pathSequence fullCompositionFixture.fusedSchedule)
+    [] = some (compositeWord canonicalFixture compositionInner 1 verticalCuts) := by
+  apply fullCompositionFixture.pathSequence_success_of_vertices
+  exact compositionFixture_vertices.trans fusedFixture_vertices.symm

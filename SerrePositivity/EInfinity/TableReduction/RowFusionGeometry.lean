@@ -64,4 +64,33 @@ lemma fuseBoundary_all_rows (P : List α → Prop) (left right : List (List α �
   · exact hleft row hm
   · exact hright row (List.mem_of_mem_tail hm)
 
+/-- 概要：同じ頂点を共有する二語の連結では前後どちらのコピーも省ける（BF §1.5.7）。
+方針：左末尾と右先頭を分離し、同じ共有要素を付け直す。
+規約：両側の語は非空。
+使われ方：融合表の右先頭削除を経路頂点列の左末尾削除へ移す。 -/
+lemma overlap_append {β : Type*} (left right : List β) (hl : left ≠ []) (hr : right ≠ [])
+    (hj : left.getLast? = right.head?) : left ++ right.tail = left.dropLast ++ right := by
+  obtain ⟨pre, he⟩ := List.getLast?_eq_some_iff.mp (List.getLast?_eq_some_getLast hl)
+  have hs : ∃ pre a, left = pre ++ [a] := ⟨pre, left.getLast hl, he⟩
+  obtain ⟨pre, a, rfl⟩ := hs
+  cases right with
+  | nil => exact (hr rfl).elim
+  | cons b tail =>
+    have he : a = b := by simpa using hj
+    subst b
+    simp only [List.tail_cons, List.dropLast_concat, List.append_assoc, List.singleton_append]
+
+/-- 概要：境界融合の行列を共有左末尾を省く形でも表示できる（BF §1.5.7）。
+方針：元の右先頭削除表示を共有行の一致で移す。
+規約：行長を忘れた行列の表示。
+使われ方：全融合表を実際の経路頂点列と同じ連結規則へ直す。 -/
+lemma fuseBoundary_fst_dropLast (left right : List (List α × ℕ))
+    (hl : left ≠ []) (hr : right ≠ [])
+    (hj : (left.map Prod.fst).getLast? = (right.map Prod.fst).head?) :
+    (fuseBoundary left right).map Prod.fst =
+      (left.map Prod.fst).dropLast ++ right.map Prod.fst := by
+  rw [fuseBoundary_fst left right hl hr]
+  exact overlap_append _ _ (fun he => hl (List.map_eq_nil_iff.mp he))
+    (fun he => hr (List.map_eq_nil_iff.mp he)) hj
+
 end SerrePositivity.EInfinity.TableReduction

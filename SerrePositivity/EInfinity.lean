@@ -229,3 +229,4 @@ public import SerrePositivity.EInfinity.Surjection.HorizontalWordSubstitution
 public import SerrePositivity.EInfinity.Surjection.TableCompositionOutput
 public import SerrePositivity.EInfinity.Surjection.TableCompositionRowProjection
 public import SerrePositivity.EInfinity.Surjection.ComponentVertices
+public import SerrePositivity.EInfinity.Surjection.CompositionPathRows

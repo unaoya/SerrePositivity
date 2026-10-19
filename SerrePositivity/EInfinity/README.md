@@ -291,7 +291,15 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `vertices_horizontal`・`vertices_vertical`・`vertices_corner` は各純粋成分の連続座標列。
 `DegreePath.blockVertices` は計算可能な成分次数からの座標列で、`vertices_blocks` が実際の経路と同定する。
 `compositionPath_vertices` は実際の全経路の頂点列を同じ成分座標列へ戻す。
-融合後の実際の行列と、経路座標列に元の置換部分合成を適用した全行列の一致は未完成。
+`overlap_append`・`fuseBoundary_fst_dropLast` は共有右先頭の削除を左末尾の削除へ移す。
+`outerGrid`・`innerGrid` は元の有限所属行と一致する自然数座標で、上界と次数による更新を証明する。
+`rowAtGrid_valid` は元の有限座標で実際の置換部分合成の行を返すことを保証する。
+`horizontalRows_eq_grid`・`verticalRows_eq_grid` は範囲内の成分格子座標へ元の行列を同定する。
+`fusedRows_eq_grid` は実際の全融合行列を計算可能な `fusedGridVertices` の座標評価へ同定する。
+`pathSequence_rows_grid` は実際の compositionPath 上の元の置換合成列も同じ評価へ戻す。
+`pathSequence_success_of_vertices` は両座標列の全体一致を入力に実際の経路表の抽出成功を与える。
+一般の `compositionPath_vertices` と `fusedGridVertices 0` の一致は未完成であり、経路表の一般の成功とは数えない。
+反復出現・零次数成分を含む監査例では両座標列を直接同定し、実際の経路表の抽出成功を検証する。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
