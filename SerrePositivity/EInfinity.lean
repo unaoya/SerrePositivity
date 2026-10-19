@@ -240,3 +240,4 @@ public import SerrePositivity.EInfinity.Surjection.VerticalInnerInterval
 public import SerrePositivity.EInfinity.Surjection.OuterRowProjection
 public import SerrePositivity.EInfinity.Surjection.OuterTableRecovery
 public import SerrePositivity.EInfinity.Surjection.CompressedOuterRecovery
+public import SerrePositivity.EInfinity.Surjection.HorizontalOuterSelections

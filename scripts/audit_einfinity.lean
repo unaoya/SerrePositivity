@@ -631,6 +631,11 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.compressRows_success,
       `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.collapse_flatten,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.compressed_outer_table_success,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_boundary_ne,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_horizontal_inner_boundary_eq,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_horizontal_outer_boundary_ne,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerSelection_nodup,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.horizontal_outer_selections_isChain,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1511,3 +1516,22 @@ example : ∃ picked finish out',
     CompositeRecovery.compressed_outer_table_success 1 outerRecoveryEntries [] _ hs
   refine ⟨picked, finish, out', hp, ho, ?_, hc.trans (by decide)⟩
   simpa only [CompositeRecovery.outerRemoved_nil (m := 2) (n := 2) 1 (by decide)] using ht
+
+-- 前行末が内側、次行頭が外側の水平移動でも外側選択語の連結は非退化。
+example : ([0, 1, 2, 1] : List (Fin 3)).IsChain (· ≠ ·) := by
+  have hp := CompositeRecovery.horizontal_outer_selections_isChain 1
+    (1 : Equiv.Perm (Fin 3)) (Equiv.swap 0 2) (1 : Equiv.Perm (Fin 2))
+    [] [0, 1, 3, 1, 2] 2 3 [] (by decide) (by decide)
+  convert hp using 1; decide
+-- 前行末が外側、次行頭が内側の場合も同じ一般定理を使う。
+example : ([0, 1, 0, 2] : List (Fin 3)).IsChain (· ≠ ·) := by
+  have hp := CompositeRecovery.horizontal_outer_selections_isChain 1
+    (1 : Equiv.Perm (Fin 3)) (Equiv.swap 0 1) (1 : Equiv.Perm (Fin 2))
+    [] [0, 1, 2, 0, 3] 1 4 [] (by decide) (by decide)
+  convert hp using 1; decide
+-- 内側 arity 零も元の指定値を消した外側語の同じ境界定理に含む。
+example : ([0, 2, 0] : List (Fin 3)).IsChain (· ≠ ·) := by
+  have hp := CompositeRecovery.horizontal_outer_selections_isChain 1
+    (1 : Equiv.Perm (Fin 3)) (Equiv.swap 0 2) (1 : Equiv.Perm (Fin 0))
+    [] [0, 1, 0] 1 2 [] (by decide) (by decide)
+  convert hp using 1; decide

@@ -351,7 +351,11 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `compressRows_fst` は圧縮後の行列を元の行列の連続重複縮約へ同定する。
 `compressRows_success` は元の各行が非重複なら圧縮後も成功し、縮約出力が変わらないことを示す。
 `compressed_outer_table_success` は合成表から圧縮外側表を作り、その縮約出力を元の外側復元語へ戻す。
-shuffle の元の外側行列・行数との一致と、圧縮出力自体の非退化性は未完成。
+`permutationComposition_horizontal_inner_boundary_eq` は同じ内側置換の両内側境界文字を一致させる。
+`permutationComposition_horizontal_outer_boundary_ne` は非退化な成功の水平境界の外側値の非一致。
+縮約の先頭・末尾保存と `outerSelection_nodup` を合わせ、
+`horizontal_outer_selections_isChain` で水平二行の外側選択語の連結が非退化となる。
+shuffle の元の外側行列・行数との一致と、圧縮出力全体への非退化性の反映は未完成。
 零歩成分の切り出し、成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
