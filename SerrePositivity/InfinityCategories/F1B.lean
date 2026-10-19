@@ -652,3 +652,6 @@ public import SerrePositivity.InfinityCategories.F1B.KanNerveFunctorHomCategory
 public import SerrePositivity.InfinityCategories.F1B.KanNerveFunctorVertex
 public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTrans
 public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransCell
+public import SerrePositivity.InfinityCategories.F1B.KanNerveEdgeHom
+public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransWhiskering
+public import SerrePositivity.InfinityCategories.F1B.KanNerveAdjunction

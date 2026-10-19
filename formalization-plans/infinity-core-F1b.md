@@ -43,15 +43,15 @@
 - 像の類が恒等な単位の相対厳密化、像固定の局所余錐の添字変更、標準底余錐上の局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
 - 左右の標準相対 Kan 条件は path 置換の射影・切断で保存・反映。任意 U の元の相対制限の片側 pinched 同値を、四つの写像空間の引き戻しへの比較同値として表示。右の射は Kan、絶対的な左右の制限は自明 Kan。
 - B5：`nerve (C ⥤ D) ≅ Fun(nerve C, nerve D)`、h Fun と通常の関手圏の同値、前後合成の自然性と関手頂点の公式を構成。
-  指定された通常の自然変換を元の h Fun の射・QCat の二胞体へ写し、恒等射・垂直合成の保存を証明。
-- 最終検証：F1・F1B 同時ビルド成功（3996 jobs）、同時 import 検査成功（F1 7451・F1B 4764 宣言）。
-  公理監査成功（4770 宣言、標準三公理のみ、1286 モジュールに straightening なし）。ソース名衝突 0。
+  指定された自然変換を元の h Fun の射・QCat 二胞体へ写し、恒等・垂直合成・左右 whiskering の保存を証明。古典随伴の指定単位・余単位と両三角恒等式から元の nerve 間の QCatAdjunction を構成。
+- 最終検証：F1・F1B 同時ビルド成功（3999 jobs）、同時 import 検査成功（F1 7451・F1B 4780 宣言）。
+  公理監査成功（4786 宣言、標準三公理のみ、1289 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
-  Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
-  残り：自然変換の左右 whiskering、単位・余単位と三角恒等式、随伴の双方向比較、pointwise Kan の局所錐の比較。
+  Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。8〜24 時間。
+  残り：自然変換の復元と随伴の逆方向の比較、pointwise Kan の局所錐の比較。順方向の随伴と指定単位・余単位の保存は完了。
   pointwise な古典 Kan 拡張と一般の普遍写像性だけによる Kan 拡張を区別して回収する。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
 
@@ -76,7 +76,7 @@
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
 
 - `F1B.kanNerveFunctorCategoryIso` / `F1B.kanNerveFunctorHomCategoryEquivalence`
-- `F1B.kanNerveFunctorCategoryIso_vertex` / `F1B.kanNerveNatTransCell`
+- `F1B.kanNerveNatTransCell_whiskerLeft` / `F1B.kanNerveAdjunctionOfAdjunction`
 
 ### 依存と提供
 
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：通常の関手圏の nerve の同型・前後合成の自然性・頂点公式・自然変換の h Fun と QCat 二胞体への関手的な表示、集約・監査・本書）。
+- なし（本保存単位：辺の類の端点輸送・自然変換の左右 whiskering・古典随伴から nerve の随伴の構成と指定単位・余単位の保存、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `kanNerveFunctorCategoryIso_precomp`・`_postcomp` を使い、`kanNerveNatTransHom` と
-  左右 whiskering の可換性を示す。`kanNerveNatTransCell` で古典随伴の単位・余単位を与え、三角恒等式を移す。
-  対象の表示と nerveMap の恒等・合成の等式の輸送を明示し、随伴を双方向に比較してから pointwise Kan へ進む。
+- Mathlib `SSet.Truncated.descOfTruncation (𝟙 _)` と `nerve.homEquiv` で h(nerve C) の射を
+  通常の射へ評価し、`kanNerveFunctorHomEmbedding` の充満忠実性と自然変換の復元を示す。
+  nerve の随伴の単位・余単位を復元し、証明済みの whiskering 公式で三角恒等式を反映してから pointwise Kan へ。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
@@ -123,7 +123,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 完了（同じ宇宙の quasicategory に対する局所判定・存在・Hom 普遍性と一意性。充満忠実 inner 単射に沿う相対厳密存在・制限定理、任意 U の写像空間の homotopy pullback を右 Kan fibration 上の厳密な引き戻しへの実際の比較同値で実現） |
-| B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 進行中（関手圏の nerve の同型・h Fun の比較同値・指定自然変換の二胞体表示と恒等・垂直合成保存は完了） |
+| B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 進行中（関手圏の nerve の同型・h Fun の比較・自然変換の二胞体表示と左右 whiskering 保存、古典随伴から nerve の随伴と指定単位・余単位の保存は完了。随伴の逆方向と pointwise Kan 比較が残る） |
 
 ## 2. 設計上の決定
 

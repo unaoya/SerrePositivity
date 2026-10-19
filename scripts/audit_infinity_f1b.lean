@@ -2735,3 +2735,21 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransCell_id
 
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransCell_comp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomMk_congr
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveEdgeHom_map
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHom_whiskerRight
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHom_whiskerLeft
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransCell_whiskerRight
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransCell_whiskerLeft
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveAdjunctionOfAdjunction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveAdjunctionOfAdjunction_unitHom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveAdjunctionOfAdjunction_counitHom
