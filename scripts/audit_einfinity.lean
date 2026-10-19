@@ -636,6 +636,12 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.permutationComposition_horizontal_outer_boundary_ne,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerSelection_nodup,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.horizontal_outer_selections_isChain,
+      `SerrePositivity.EInfinity.TableReduction.rowFusion_isChain_of_tail,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionTrace.compress_isChain,
+      `SerrePositivity.EInfinity.TableReduction.extractionTrace_of_lengths,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.recoveredOuterTable_trace,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.recoveredOuterTable_separated,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.compressed_outer_table_nondegenerate,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1535,3 +1541,31 @@ example : ([0, 2, 0] : List (Fin 3)).IsChain (· ≠ ·) := by
     (1 : Equiv.Perm (Fin 3)) (Equiv.swap 0 2) (1 : Equiv.Perm (Fin 0))
     [] [0, 1, 0] 1 2 [] (by decide) (by decide)
   convert hp using 1; decide
+
+-- 垂直・水平を交互に持つ実際の合成表から元の bfTable の Schedule まで戻す。
+private def gridRecoveryEntries :
+    List (Equiv.Perm (Fin 4) × Equiv.Perm (Fin 2) × ℕ) :=
+  [(1, 1, 2), (1, Equiv.swap 0 1, 1),
+    (Equiv.swap 1 3, Equiv.swap 0 1, 1), (Equiv.swap 2 3, Equiv.swap 0 1, 4)]
+private lemma gridRecoveryPrefix : ExtractionPrefix
+    (CompositeRecovery.mixedTable 1 gridRecoveryEntries) []
+    [[0, 1], [2], [4], [2, 1, 4, 3]] [0, 2, 1, 4] := by
+  have he : CompositeRecovery.mixedTable 1 gridRecoveryEntries =
+      [([0, 1, 2, 3, 4], 2), ([0, 2, 1, 3, 4], 1),
+        ([0, 4, 3, 2, 1], 1), ([0, 2, 1, 4, 3], 4)] := by decide
+  rw [he]
+  exact .cons (by decide) (by decide) (.cons (by decide) (by decide)
+    (.cons (by decide) (by decide) (.cons (by decide) (by decide) (.nil _))))
+example : reduceRows (rows bfTable bfSchedule₁) [] = some [0, 1, 3, 1, 3, 2] := by
+  have hsuccess : reduceRows (CompositeRecovery.mixedTable 1 gridRecoveryEntries) [] =
+      some [0, 1, 2, 4, 2, 1, 4, 3] := by
+    simpa using gridRecoveryPrefix.append [] [] rfl
+  obtain ⟨picked, finish, hp, _, hs, _⟩ :=
+    CompositeRecovery.compressed_outer_table_nondegenerate 1 gridRecoveryEntries [] _
+      hsuccess (by decide) (by decide)
+  obtain ⟨hwords, _⟩ := hp.unique gridRecoveryPrefix
+  rw [hwords] at hs
+  have htable : compressRows (CompositeRecovery.recoveredOuterTable 1 gridRecoveryEntries
+      [[0, 1], [2], [4], [2, 1, 4, 3]]) = rows bfTable bfSchedule₁ := by decide
+  rw [htable, CompositeRecovery.outerRemoved_nil (m := 3) (n := 2) 1 (by decide)] at hs
+  convert hs using 1; decide

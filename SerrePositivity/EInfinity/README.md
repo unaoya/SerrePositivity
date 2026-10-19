@@ -355,7 +355,12 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `permutationComposition_horizontal_outer_boundary_ne` は非退化な成功の水平境界の外側値の非一致。
 縮約の先頭・末尾保存と `outerSelection_nodup` を合わせ、
 `horizontal_outer_selections_isChain` で水平二行の外側選択語の連結が非退化となる。
-shuffle の元の外側行列・行数との一致と、圧縮出力全体への非退化性の反映は未完成。
+`SeparatedBoundaries` は元の抽出証跡で異なる行の境界の非一致を指定する。
+`ExtractionTrace.compress_isChain` はこの条件から圧縮後の実際の出力全体を非退化にする。
+`recoveredOuterTable_trace` は元の行ごとの外側復元語を実際の抽出証跡に固定する。
+`recoveredOuterTable_separated` は隣接行で内側か外側の一方を固定する非退化成功から境界条件を得る。
+`compressed_outer_table_nondegenerate` はその条件下で圧縮外側表の実際の出力を外側復元語そのものへ戻す。
+shuffle の元の外側行列・行数との一般の一致と、実際の経路の上記隣接条件の接続は未完成。
 零歩成分の切り出し、成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
