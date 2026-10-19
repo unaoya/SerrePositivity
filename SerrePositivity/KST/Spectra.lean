@@ -434,3 +434,8 @@ public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitNativeConeCompari
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitConeSourceRestriction
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitIsLimit
 public import SerrePositivity.KST.Spectra.FixedPointInfinityLimits
+public import SerrePositivity.KST.Spectra.SpectrumCotensorPointedComparison
+public import SerrePositivity.KST.Spectra.RawSpectrumPointedUnits
+public import SerrePositivity.KST.Spectra.HomTensorStrengthPoint
+public import SerrePositivity.KST.Spectra.SpectrumCotensorEvaluation
+public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleMaps

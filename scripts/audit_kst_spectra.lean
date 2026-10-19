@@ -921,7 +921,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitNativeConeComparison,
     `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitConeSourceRestriction,
     `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitIsLimit,
-    `SerrePositivity.KST.Spectra.FixedPointInfinityLimits]
+    `SerrePositivity.KST.Spectra.FixedPointInfinityLimits,
+    `SerrePositivity.KST.Spectra.SpectrumCotensorPointedComparison,
+    `SerrePositivity.KST.Spectra.RawSpectrumPointedUnits,
+    `SerrePositivity.KST.Spectra.HomTensorStrengthPoint,
+    `SerrePositivity.KST.Spectra.SpectrumCotensorEvaluation,
+    `SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleMaps]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
