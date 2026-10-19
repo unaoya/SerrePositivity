@@ -542,7 +542,14 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.horizontalExtraction_success,
       `SerrePositivity.EInfinity.TableReduction.reductionRemoved_available_head,
       `SerrePositivity.EInfinity.TableReduction.reductionRemoved_not_mem,
-      `SerrePositivity.EInfinity.Surjection.componentHorizontalExtraction_success] do
+      `SerrePositivity.EInfinity.Surjection.componentHorizontalExtraction_success,
+      `SerrePositivity.EInfinity.TableReduction.reductionRemoved_last_singleton,
+      `SerrePositivity.EInfinity.Surjection.horizontalLabel_injective,
+      `SerrePositivity.EInfinity.Surjection.substitute_singleton_nodup,
+      `SerrePositivity.EInfinity.Surjection.horizontalLabel_singleton_state_update,
+      `SerrePositivity.EInfinity.Surjection.singletonHorizontalExtraction_success,
+      `SerrePositivity.EInfinity.Surjection.finalHorizontalExtraction_success,
+      `SerrePositivity.EInfinity.TableReduction.rowFusion_in_context] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -1028,3 +1035,48 @@ example : reduceRows (horizontalFixtureBlock ⟨1, by decide⟩)
   have hw : (outerComponentWord canonicalFixture.val 1 1).map
       (horizontalLabel (m := 3) (n := 2) 1 (compositionInner.val 0)) = [1, 4, 1] := by decide
   simpa only [horizontalFixtureBlock, horizontalFixtureInitial, List.append_nil, hw] using h
+
+-- 元の内側成功表の最終位置では未選択の内側文字がなく、末尾一文字だけが残る。
+example : available
+    (reductionRemoved terminalTable terminalSchedule compositionInner.val verticalInner_success 2)
+    (List.ofFn (terminalTable (reductionRow terminalTable terminalSchedule compositionInner.val
+      verticalInner_success 2)).symm) = [0] := by
+  have h := reductionRemoved_last_singleton terminalTable terminalSchedule compositionInner
+    verticalInner_success 2 (by decide)
+  have hv : compositionInner.val 2 = 0 := by decide
+  rw [hv] at h
+  exact h
+private noncomputable def finalHorizontalBlock : List (List (Fin 5) × ℕ) :=
+  fixedInnerRows (m := 3) (n := 2)
+    (terminalTable (reductionRow terminalTable terminalSchedule compositionInner.val
+      verticalInner_success 2)) 1
+    (outerComponentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+      1 (by decide) (occurrenceCount canonicalFixture.val 1)).weightedVertices
+private noncomputable def finalHorizontalInitial : List (Fin 5) :=
+  compositionStateRemoved (m := 3) (n := 2) 1
+    (reductionRemoved bfTable bfSchedule₁ canonicalFixture.val rankFixture_success
+      (occurrenceBoundaryPosition canonicalFixture.val 1 (by decide)
+        (occurrenceCount canonicalFixture.val 1)))
+    (reductionRemoved terminalTable terminalSchedule compositionInner.val verticalInner_success 2)
+example : reduceRows finalHorizontalBlock finalHorizontalInitial = some [1, 4, 3] := by
+  have h := finalHorizontalExtraction_success (m := 3) (n := 2)
+    bfTable bfSchedule₁ canonicalFixture rankFixture_success 1
+    terminalTable terminalSchedule compositionInner verticalInner_success 2 (by decide) [] [] rfl
+  have hw : (outerComponentWord canonicalFixture.val 1 (occurrenceCount canonicalFixture.val 1)).map
+      (horizontalLabel (m := 3) (n := 2) 1 (compositionInner.val 2)) = [1, 4, 3] := by decide
+  simpa only [finalHorizontalBlock, finalHorizontalInitial, List.append_nil, hw] using h
+-- 指定値を行内部で最終除外し、最後の内側文字も除外した状態で後続へ接続する。
+example : reduceRows
+    [(List.ofFn (BarrattEccles.permutationComposition 2 2 1 1 rowInner).symm, 3), ([1, 3], 1)]
+    (compositionStateRemoved (m := 2) (n := 2) 1 [] [1]) = some [0, 1, 3, 3] := by
+  have h := singletonHorizontalStep_success (m := 2) (n := 2)
+    1 rowInner 1 [] [1] 0 (by decide) 3 (by decide) (by decide) [([1, 3], 1)] [3] (by decide)
+  exact h
+-- 元の表の途中の共有行も同じ位置計算で融合し、先行出力は保つ。
+example : reduceRows [([4], 1), ([0, 1, 2, 3], 4), ([3], 1)] ([] : List (Fin 5)) =
+    some [4, 0, 1, 2, 3, 3] := by
+  have h : reduceRows ([([4], 1)] ++
+      ([0, 1, 2, 3], 2) :: ([0, 1, 2, 3], 3) :: [([3], 1)]) ([] : List (Fin 5)) =
+        some [4, 0, 1, 1, 2, 3, 3] := by decide
+  exact rowFusion_in_context [([4], 1)] [] [0, 1, 2, 3] (by decide) 2 3 [([3], 1)]
+    [4, 0, 1, 1, 2, 3, 3] h

@@ -216,4 +216,6 @@ public import SerrePositivity.EInfinity.Surjection.ComponentExtraction
 public import SerrePositivity.EInfinity.Surjection.OuterComponentExtraction
 public import SerrePositivity.EInfinity.Surjection.ComponentVerticalExtraction
 public import SerrePositivity.EInfinity.Surjection.ComponentHorizontalExtraction
+public import SerrePositivity.EInfinity.Surjection.FinalHorizontalExtraction
+public import SerrePositivity.EInfinity.TableReduction.RowFusionContext
 public import SerrePositivity.EInfinity.TableReduction.RowFusion
