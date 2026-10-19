@@ -298,8 +298,13 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `fusedRows_eq_grid` は実際の全融合行列を計算可能な `fusedGridVertices` の座標評価へ同定する。
 `pathSequence_rows_grid` は実際の compositionPath 上の元の置換合成列も同じ評価へ戻す。
 `pathSequence_success_of_vertices` は両座標列の全体一致を入力に実際の経路表の抽出成功を与える。
-一般の `compositionPath_vertices` と `fusedGridVertices 0` の一致は未完成であり、経路表の一般の成功とは数えない。
-反復出現・零次数成分を含む監査例では両座標列を直接同定し、実際の経路表の抽出成功を検証する。
+`DegreePath.walkVertices_eq_blocks` は任意の始点からの交互歩行を実際の成分経路へ同定する。
+`fusedGrid_eq_walk` は元の境界座標の更新と未消費次数対を使って同じ歩行を構成する。
+`compositionPath_vertices_eq_grid` は実際の全経路と全融合格子列の一般の一致であり、追加仮定を残さない。
+`rows_pathSequence` と `pathSequence_success` は構成した Schedule で実際の経路表の合成語抽出を証明する。
+`pathSequence_eq_shuffleSimplex` は元の置換列が既存の実際の shuffle 合成単体の頂点列であることを示す。
+`term_shuffleSimplex` と `signed_term_shuffleSimplex` は任意の可換環で実際の正規化項と符号付き合成項を照合する。
+正の内側語長での正方向の成功表と各項の構成は完了。逆構成・一意性・全項の全単射と空語の挿入は未完成。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

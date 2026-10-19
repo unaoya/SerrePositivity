@@ -582,6 +582,12 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedRows_eq_grid,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.pathSequence_rows_grid,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.pathSequence_success_of_vertices,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.walkVertices_eq_blocks,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.compositionPath_vertices_eq_grid,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.rows_pathSequence,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.pathSequence_success,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.term_shuffleSimplex,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.signed_term_shuffleSimplex,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
       `SerrePositivity.EInfinity.TableReduction.reduceRows_row_bounds,
       `SerrePositivity.EInfinity.Surjection.substitute_horizontal_no_slot,
@@ -1291,5 +1297,19 @@ private lemma fusedFixture_vertices : fullCompositionFixture.fusedGridVertices 0
 -- 具体例では元の実際の経路置換列と構成済み Schedule で抽出成功する。
 example : reduceRows (rows fullCompositionFixture.pathSequence fullCompositionFixture.fusedSchedule)
     [] = some (compositeWord canonicalFixture compositionInner 1 verticalCuts) := by
-  apply fullCompositionFixture.pathSequence_success_of_vertices
-  exact compositionFixture_vertices.trans fusedFixture_vertices.symm
+  exact fullCompositionFixture.pathSequence_success
+
+-- 座標の一致は具体例の有限計算に頼らず一般定理からも得られる。
+example : DegreePath.vertices (compositionPath canonicalFixture compositionInner 1 verticalCuts) =
+    fullCompositionFixture.fusedGridVertices 0 :=
+  fullCompositionFixture.compositionPath_vertices_eq_grid
+-- 実際の構成済み経路 Schedule の正規化項は、期待した非退化合成語の生成元。
+example : term ℤ fullCompositionFixture.pathSequence fullCompositionFixture.fusedSchedule =
+    listGenerator ℤ [0, 1, 2, 4, 2, 1, 4, 3] := by
+  have h := fullCompositionFixture.term_pathSequence ℤ
+  have hw : compositeWord canonicalFixture compositionInner 1 verticalCuts =
+      [0, 1, 2, 4, 2, 1, 4, 3] := by decide
+  change term ℤ fullCompositionFixture.pathSequence fullCompositionFixture.fusedSchedule =
+    listGenerator ℤ (compositeWord canonicalFixture compositionInner 1 verticalCuts) at h
+  rw [hw] at h
+  exact h
