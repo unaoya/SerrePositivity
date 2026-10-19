@@ -1341,6 +1341,17 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_vertex_inner_positive,
       `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_vertex_zero,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_vertex_eq_iterated,
+      `SerrePositivity.EInfinity.IntervalCuts.complex_basis_linear_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInput_linear_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.faceVector_edge_eq,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeInput_linear_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.coefficient_vertex_linear_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.coefficient_edge_linear_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.wordPairVertexInput,
+      `SerrePositivity.EInfinity.IntervalCuts.wordPairEdgeInput,
+      `SerrePositivity.EInfinity.IntervalCuts.coefficient_interval_hom_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_comp_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_operad_comp_positive,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3861,3 +3872,13 @@ example (b : Fin 2) :
           tensorVectorAt ℤ 3 (fun _ => vertex b) 0 (by rw [vertex_tupleDegree]; rfl))) =
       tensorVectorAt ℤ 2 (fun _ => vertex b) 0 (by rw [vertex_tupleDegree]; rfl) :=
   tensorCoInsertionAction_basis_vertex_zero_degree ℤ zeroEmptyWord 1 b
+
+-- 基底以外の任意の同次数二元の線形結合でも、実際の全複体射の合成則を使える。
+example (z : ℤ) (x y : ((complex ℤ 3 ⊗ complex ℤ 3) ⊗ interval ℤ).X z)
+    (a b : ℤ) :
+    ((complexPartialComposition ℤ 2 3 1 ▷ interval ℤ) ≫ cochainAction ℤ 5).f z
+      (a • x + b • y) =
+        a • (iteratedCochainAction ℤ 2 3 1).f z x +
+          b • (iteratedCochainAction ℤ 2 3 1).f z y := by
+  rw [cochainAction_comp_positive ℤ 2 3 1 (by decide)]
+  simp only [map_add, map_zsmul]

@@ -361,3 +361,6 @@ public import SerrePositivity.EInfinity.IntervalCuts.VertexFaceCuts
 public import SerrePositivity.EInfinity.IntervalCuts.InsertionVertexValues
 public import SerrePositivity.EInfinity.IntervalCuts.IteratedVertexAction
 public import SerrePositivity.EInfinity.IntervalCuts.CompositionVertexGenerators
+public import SerrePositivity.EInfinity.IntervalCuts.GeneratorLinearExt
+public import SerrePositivity.EInfinity.IntervalCuts.TripleGeneratorExt
+public import SerrePositivity.EInfinity.IntervalCuts.CochainCompositionPositive
