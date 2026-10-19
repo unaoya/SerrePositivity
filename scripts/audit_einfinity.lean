@@ -1041,6 +1041,38 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.cochainActionBilinear_permutation,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_permutation,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_equivariance,
+      `SerrePositivity.EInfinity.IntervalCuts.occurrenceCount_le_two_of_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.occurrenceCount_pivot_eq_one,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_eq_edge_of_two_occurrences,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_eq_edge_iff_pivot_or_two,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_ne_edge_iff_single_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_compositionOnWords,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_compositionOnWords_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.compositionEdgeCutTerm,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_cut_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_partialComposition_edge_tmul,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCutValid,
+      `SerrePositivity.EInfinity.IntervalCuts.decidableNestedEdgeCutValid,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.ofVertex,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.ofEdge,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.occurrenceCount_eq_one_or_two,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.occurrenceCount_eq_one_of_none,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.occurrenceCount_eq_two_of_some_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.partition,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.partition_of_none,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeWord_at_non_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_value,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeBasisWord_outerPosition,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.two_twoCut,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoEquiv,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.two_start_one,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.two_segment_zero,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.two_segment_one,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -3105,3 +3137,30 @@ example : edgeSign
 -- 活動色が一つだけなら隣接交換の逆転対の対称差は空となる。
 example : (colorCrossPairs (fun i : Fin 1 => (i.castSucc : Fin 2)) Finset.univ 0 1).card = 0 := by
   decide
+
+-- 非零の010切断では指定色0は二出現、切断点色1は一出現。
+example : occurrenceCount compositionInner.val (compositionInner.val 1) = 1 :=
+  occurrenceCount_pivot_eq_one compositionInner 1 (by decide)
+example : edgeOutput compositionInner 1 0 = edge ↔
+    (0 : Fin 2) = compositionInner.val 1 ∨ occurrenceCount compositionInner.val 0 = 2 :=
+  edgeOutput_eq_edge_iff_pivot_or_two compositionInner 1 (by decide) 0
+-- 長さ3の二部分割は三つの共有位置と同値で、中央では部分長2・2。
+example : Fintype.card (OverlapPartition 2 3) = 3 := by
+  simpa only [Fintype.card_fin] using
+    Fintype.card_congr (OverlapPartition.twoEquiv (by decide : 0 < 3))
+example : (OverlapPartition.two (1 : Fin 3)).val 0 = 2 := by decide
+example : (OverlapPartition.two (1 : Fin 3)).val 1 = 2 := by decide
+-- 内側の辺切断は一つ。nullaryは辺入力で消え、頂点入力の二つの項だけが残る。
+example : Fintype.card (NestedEdgeCut (m := 1) compositionInner compositionInner 0) = 1 := by
+  decide
+example : Fintype.card (NestedEdgeCut (m := 1) compositionInner zeroEmptyWord 0) = 0 := by
+  decide
+example : Fintype.card (NestedEdgeCut (m := 2) zeroPermutationWord zeroEmptyWord 0) = 2 := by
+  decide
+-- 010の二つの0へ内側010を中央で分けて代入すると01210。元の中央は位置2へ移る。
+example : (compositeOuterPosition compositionInner compositionInner 0
+    (OverlapPartition.two (1 : Fin 3)) 1 (by decide)).val = 2 := by decide
+example : (compositeBasisWord compositionInner compositionInner 0
+      (OverlapPartition.two (1 : Fin 3)) (by decide)).val
+    (compositeOuterPosition compositionInner compositionInner 0
+      (OverlapPartition.two (1 : Fin 3)) 1 (by decide)) = 2 := by decide

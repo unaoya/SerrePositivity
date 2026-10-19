@@ -552,7 +552,13 @@ nullary を含む TR の部分合成保存は完了。
 `edgeComponentOnWord_permutation`・`vertexComponentOnWord_permutation` は全語基底の任意置換の公式で、
 `ComponentPermutation`・`InputPermutation` は全語加群と区間の任意の入力へ線形に延長する。
 `cochainAction_equivariance` は全 arity・全整数次数の複体射としての対称群等変性。
-具体的な Δ¹ の余代数構造は未完成。部分合成の余代数法則と区間条件が残る。
+`CompositionSlotGeometry` は非零外側切断の指定色の一・二出現と辺・頂点出力の分類。
+`OverlapPartition.twoEquiv` は正長語の二部分割と共有位置の有限同値。
+`NestedEdgeCut` は内側辺切断または零語次数の頂点入力からなる有限添字で、`partition` は合成分割を構成する。
+`edgeComponent_composition_cut_sum` は合成係数の実際の辺成分を分割・合成語切断の二重和へ展開する。
+`cochainAction_partialComposition_edge_tmul` は実際の複体射の左辺を自然数次数の双線形成分へ戻す。
+`compositeOuterPosition` は指定色以外の外側位置の実際の合成位置で、値も元の残りラベルと一致する。
+具体的な Δ¹ の余代数構造は未完成。二段切断との全単射・出力と符号の一致、部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

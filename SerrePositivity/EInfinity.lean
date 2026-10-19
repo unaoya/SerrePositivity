@@ -289,3 +289,5 @@ public import SerrePositivity.EInfinity.IntervalCuts.CochainUnit
 public import SerrePositivity.EInfinity.IntervalCuts.CutRenaming
 public import SerrePositivity.EInfinity.IntervalCuts.TensorFirstSwap
 public import SerrePositivity.EInfinity.IntervalCuts.CochainPermutation
+public import SerrePositivity.EInfinity.IntervalCuts.NestedCuts
+public import SerrePositivity.EInfinity.IntervalCuts.CompositionCutPositions
