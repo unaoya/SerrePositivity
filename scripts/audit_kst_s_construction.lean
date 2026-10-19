@@ -8024,3 +8024,114 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionTriangle_nonempty
 #print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionTriangle_nonempty
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingComposition
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingComposition
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingComposition_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingComposition_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingComposition_pre
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingComposition_pre
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingComposition_post
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingComposition_post
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingComposition_middle
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingComposition_middle
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingComposition_families_middle
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingComposition_families_middle
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingComposition_families_post
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingComposition_families_post
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingComposition_families_pre
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingComposition_families_pre
+
+#check @SerrePositivity.KST.SConstruction.contractibleKan_tensor
+#print axioms SerrePositivity.KST.SConstruction.contractibleKan_tensor
+
+#check @SerrePositivity.KST.SConstruction.contractibleKan_tensor_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.contractibleKan_tensor_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointFamily
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointFamily
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyChoices
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyChoices
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointAt
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointAt
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointFamily
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointFamily
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointAt_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointAt_component
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointAt_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjointAt_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingTransport_source_id
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingTransport_source_id
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingTransport_target_id
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingTransport_target_id
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedFamily
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedFamily
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedFamily_source
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedFamily_source
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedFamily_target
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedFamily_target
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftTransport_evaluation
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftTransport_evaluation
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFamily_source
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFamily_source
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFamily_target
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFamily_target
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionFamily
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionFamily
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyInverseFamily
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyInverseFamily
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionMiddle
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionMiddle
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyInverseMiddle
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyInverseMiddle
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityFamilies_middle
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityFamilies_middle
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionSource
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionSource
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyInverseTarget
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyInverseTarget
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityFamilies_source
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityFamilies_source
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityFamilies_target
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityFamilies_target

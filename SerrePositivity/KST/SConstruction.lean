@@ -545,4 +545,12 @@ public import SerrePositivity.KST.SConstruction.OneDirectionInverseMixedNaturali
 public import SerrePositivity.KST.SConstruction.OneDirectionInverseMixedWhiskering
 public import SerrePositivity.KST.SConstruction.OneDirectionInverseCompositionTriangle
 
+public import SerrePositivity.KST.SConstruction.PointedMappingCompositionFamilies
+public import SerrePositivity.KST.SConstruction.ContractibleKanProducts
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyChoices
+public import SerrePositivity.KST.SConstruction.PointedMappingTransportUnits
+public import SerrePositivity.KST.SConstruction.KanAssemblyMixedFamily
+public import SerrePositivity.KST.SConstruction.InverseMixedFamilyTransport
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityFamilies
+
 /-! # ∞-S• 構成と連結 K 理論 -/
