@@ -45,14 +45,15 @@
 - **現在地**：E2a-0（Ch(A) の射影モデル構造）、E2a-1（オペラッド・自由代数随伴）、
   E2a-2（Barratt–Eccles オペラッド・augmentation）まで完了。
   E2a-3 は承認済みの Hopf オペラッド＋区間＋path object 経路の工程 (1) の途中。
-  一般の小さい単体集合の正規化 AW 次数成分を構成し、生成元公式、自然性、
-  余結合性、左右余単位、微分との可換性 `component_d` まで検証済み。
-  全成分を束ねた鎖写像、shuffle の余代数射性、Hopf オペラッド射は未完成。
-  E2a-3 の転送モデル構造、E2a-4・5 は未完成。直近のコードは `0c0fb566`、
-  AW 成分と採用方針は `3a6c5934`。E2a-2 完了は `60541ccb`。
+  一般の小さい単体集合の正規化 AW 成分を自然数次数のテンソル複体への鎖写像
+  `diagonal` に束ね、次数分割の有限和公式、成分との一致、自然性、余結合性、
+  augmentation 鎖写像 `counit` と左右余単位・その自然性まで検証済み。
+  整数コチェイン模型への移送、shuffle の余代数射性、Hopf オペラッド射は未完成。
+  E2a-3 の転送モデル構造、E2a-4・5 は未完成。現在地のコードと検証は本節と
+  同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. AW 次数成分をテンソル複体への鎖写像へ束ね、法則を複体上へ移す。
-     Berger–Fresse（BF）2004 §1.1.4、8〜16 時間。
+  1. 自然数鎖模型の AW 対角を負の整数コチェイン次数へ移し、既存の E(n) の
+     テンソル・augmentation と接続する。Berger–Fresse（BF）2004 §1.1.4、8〜16 時間。
   2. 一般の shuffle が AW 余代数の射であることを、切断による shuffle の分割と
      Koszul 符号で証明する。BF §1.1.3–§1.1.4、24〜60 時間。
   3. arity ごとのテンソルオペラッドと AW の自然性を使い、E → E ⊗ E の
@@ -83,25 +84,36 @@
   `SerrePositivity.EInfinity.AlexanderWhitney.component_coassoc`、
   `SerrePositivity.EInfinity.AlexanderWhitney.component_left_counit`、
   `SerrePositivity.EInfinity.AlexanderWhitney.component_right_counit`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.component_d`。
+  `SerrePositivity.EInfinity.AlexanderWhitney.component_d`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.diagonalDegree_eq_sum`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_projection`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_natural`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_coassoc`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.counit`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_left_counit`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_right_counit`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.counit_natural`。
 - **依存と提供**：HomotopicalAlgebra の Transfer/Recognition・Transfer/Right・
   HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
   Cells・複体のテンソル・HomComplex を読み取り専用で使う。
   提供済みは局所選択する Ch(A) のモデル構造、自由代数随伴、実際の E と E → Com。
   Alg_E のモデル構造、右 Quillen 忘却関手、E2b 用 CAlg はまだ提供していない。
-- **未コミット**：本レーンのコードは全てコミット済み。この節も引き継ぎコミットに保存する。
+- **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：停止時の対象ビルドは成功（2612 jobs）、公理監査は成功
-  （3974 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
-  今回の AW 補題に `ModelCategory SSet` 仮定はない。
+- **既知の問題**：停止時の対象ビルドは成功（2617 jobs）、公理監査は成功
+  （4078 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
+  今回の AW 宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
   正規化モデルは商表示ではなく Moore 部分複体であり、降下補題を使う。
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：`AlexanderWhitney.DifferentialComponents.component_d` を使い、
-  有限個の次数分割の和から AW 鎖写像を構成する。まだ区間・path object には着手しない。
+- **次の一手**：`AlexanderWhitney.ChainDiagonal` と BarrattEccles の
+  `NormalizedDegreeTransport`・`ShuffleCochainDegrees` を照合し、負の整数次数での
+  テンソルの有限成分を接続する。既存の E(n) への移送後、一般の shuffle の
+  AW 余代数射性へ進む。まだ区間・path object には着手しない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。

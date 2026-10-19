@@ -56,6 +56,12 @@ cofibrant な始域の結論を述べている。これらから任意の始域�
 始域の cofibrancy は追加せず、任意の可換環上の完全なモデル構造を構成する。
 Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-split でないためである。
 
+工程 1 の現在地：一般の小さい単体集合について、自然数鎖模型の AW 鎖写像
+`AlexanderWhitney.diagonal`、次数分割の有限和公式、自然性・余結合性、
+`counit` と左右余単位則を構成済み。次数成分との接続は `diagonal_projection`。
+次は既存の負の整数コチェイン模型 E(n) への移送と、一般の shuffle の余代数射性。
+Hopf オペラッド射と転送モデル構造は未完成。
+
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
 [Berger–Fresse 2004](https://arxiv.org/pdf/math/0109158)。

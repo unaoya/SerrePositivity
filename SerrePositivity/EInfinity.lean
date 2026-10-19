@@ -131,3 +131,6 @@ public import SerrePositivity.EInfinity.BarrattEccles
 public import SerrePositivity.EInfinity.AlexanderWhitney.ComponentLaws
 public import SerrePositivity.EInfinity.AlexanderWhitney.FaceCuts
 public import SerrePositivity.EInfinity.AlexanderWhitney.DifferentialComponents
+public import SerrePositivity.EInfinity.AlexanderWhitney.ChainDiagonal
+public import SerrePositivity.EInfinity.AlexanderWhitney.ChainCoassociativity
+public import SerrePositivity.EInfinity.AlexanderWhitney.ChainCounit

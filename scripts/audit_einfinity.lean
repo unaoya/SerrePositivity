@@ -24,7 +24,16 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.augmentation,
       `SerrePositivity.EInfinity.BarrattEccles.augmentation_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.complexContraction,
-      `SerrePositivity.EInfinity.BarrattEccles.equivariantBasis_rightAction] do
+      `SerrePositivity.EInfinity.BarrattEccles.equivariantBasis_rightAction,
+      `SerrePositivity.EInfinity.AlexanderWhitney.diagonal,
+      `SerrePositivity.EInfinity.AlexanderWhitney.diagonalDegree_eq_sum,
+      `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_projection,
+      `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_natural,
+      `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_coassoc,
+      `SerrePositivity.EInfinity.AlexanderWhitney.counit,
+      `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_left_counit,
+      `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_right_counit,
+      `SerrePositivity.EInfinity.AlexanderWhitney.counit_natural] do
     unless env.contains required do
-      throwError "Barratt–Eccles の必要な宣言がありません: {required}"
+      throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
