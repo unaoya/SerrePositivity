@@ -304,3 +304,13 @@ public import SerrePositivity.KST.Spectra.HomotopyTotalizationMilnorComparison
 public import SerrePositivity.KST.Spectra.HomotopyTotalizationMilnorExactness
 public import SerrePositivity.KST.Spectra.HomotopyFiberVanishing
 public import SerrePositivity.KST.Spectra.RationalShapiroFiberVanishing
+public import SerrePositivity.KST.Spectra.SimplicialDependentProduct
+public import SerrePositivity.KST.Spectra.DependentProductPointedSimplex
+public import SerrePositivity.KST.Spectra.DependentProductHomotopy
+public import SerrePositivity.KST.Spectra.PointedSmallProduct
+public import SerrePositivity.KST.Spectra.SmashSmallProductSimplex
+public import SerrePositivity.KST.Spectra.SmashSmallProductMono
+public import SerrePositivity.KST.Spectra.SmallProductKanSequence
+public import SerrePositivity.KST.Spectra.SmallProductSequenceStructure
+public import SerrePositivity.KST.Spectra.SpectrumSmallProduct
+public import SerrePositivity.KST.Spectra.SmallProductInfinityLimit
