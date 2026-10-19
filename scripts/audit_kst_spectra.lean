@@ -744,7 +744,17 @@ run_cmd do
     `SerrePositivity.KST.Spectra.TowerDifferenceRealizationStep,
     `SerrePositivity.KST.Spectra.TowerDifferenceRealization,
     `SerrePositivity.KST.Spectra.TowerKernelRealization,
-    `SerrePositivity.KST.Spectra.TowerKernelObstructionSurjective]
+    `SerrePositivity.KST.Spectra.TowerKernelObstructionSurjective,
+    `SerrePositivity.KST.Spectra.NullHomotopyTriangleHorn,
+    `SerrePositivity.KST.Spectra.NullHomotopyTriangleAdjustment,
+    `SerrePositivity.KST.Spectra.NullHomotopyTriangleLifting,
+    `SerrePositivity.KST.Spectra.TowerHomotopyTriangleStep,
+    `SerrePositivity.KST.Spectra.TowerObstructionAlignment,
+    `SerrePositivity.KST.Spectra.TowerCompatibleHomotopies,
+    `SerrePositivity.KST.Spectra.TowerKernelObstructionInjective,
+    `SerrePositivity.KST.Spectra.TowerKernelLimOneEquiv,
+    `SerrePositivity.KST.Spectra.TowerMilnorExactness,
+    `SerrePositivity.KST.Spectra.TowerMilnorConvergence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
