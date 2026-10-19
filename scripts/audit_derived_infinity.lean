@@ -2,6 +2,25 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberHomCoordinates_symm
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberHomCoordinates_symm_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberHomCoordinates_fst
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberHomCoordinates_snd
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryLift_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundary_left_projection_heq
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRhs0_closed
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRhsM_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRhsMN_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRhsZeroN_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryUnknownA
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryUnknownN
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryUnknownA_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryUnknownN_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryUnknown_left_triangle
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryUnknown_M_leg
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryUnknown_zero_leg
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryUnknown_right_triangle
+
 #print axioms SerrePositivity.InfinityCategories.dgModuleConeSndElement_d
 #print axioms SerrePositivity.InfinityCategories.dgModuleFiberProjectionElement_closed
 #print axioms SerrePositivity.InfinityCategories.dgModuleFiberProjection_cycle
@@ -928,6 +947,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomInverse,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomDifferential,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeLiftProjections,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomProjections,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryLift,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryTriangles,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryResiduals,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundarySharedResiduals,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryRawComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundarySolution,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeProjectionDifferential,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberObject,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberNullHomotopy,
