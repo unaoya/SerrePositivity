@@ -1668,3 +1668,11 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaToLeftMappingArrow
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaToLeftMappingArrow_source
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaToLeftMappingArrow_projection
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaLift
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaLift_source
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaLift_projection
+#check @SerrePositivity.InfinityCategories.F1B.kanPointSliceHomotopy
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeHomotopy
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiber
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiber_source
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiber_diagram

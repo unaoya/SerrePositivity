@@ -35,14 +35,13 @@
   終点指定の特殊持ち上げと合わせ、`kanFiberwiseHomProjection` の cartesian fibration 性まで証明。
 - join の inner fibration 性に加え、cocartesian な p の相対 join の底への cocartesian fibration 性を証明。
   左包含は任意の底変換後も cocartesian 辺を保存。相対指数の制限は任意の cartesian 辺を保存する。
-- cocartesian fibration 間の単射による相対指数の制限は inner fibration。相対 join の制限 V にも適用済み。
-- 余錐制限と相対 join 制限の各 fiber の cartesian fibration 性を証明。縦合成の比較射の pullback 分解も証明。
+- 相対指数の単射制限は inner fibration。余錐・相対 join 制限の各 fiber の cartesian 性と縦比較の分解も証明。
 - 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。
 - 対象の族の各頂点に必要な余極限だけで、普遍余錐全体からの引き戻しは自明 Kan fibration。図式を延長できる。
 - 任意の関手 δ に対し、既存 comma の反転 `F1B.kanLeftComma δ` を構成。底への射影は cocartesian fibration。
-  恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示と既存の矢印空間への比較を証明。
-- 最終検証：F1・F1B 同時ビルド成功（3430 jobs）、同時 import 検査成功（F1 5684・F1B 3571 宣言）。
-  公理監査成功（3575 宣言、標準三公理のみ、974 モジュールに straightening なし）。ソース名衝突 0。
+  恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示、局所添字からの図式を保つ比較射を証明。同値性は未完。
+- 最終検証：F1・F1B 同時ビルド成功（3439 jobs）、同時 import 検査成功（F1 5730・F1B 3589 宣言）。
+  公理監査成功（3593 宣言、標準三公理のみ、977 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -83,7 +82,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：反転 comma の cocartesian な置き換え、fiber と指定変換の比較、集約・監査・本書）。
+- なし（本保存単位：指定変換の comma への持ち上げ、slice の区間表示、局所添字の比較射、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -99,8 +98,9 @@
 ### 次の一手
 
 - `kanLeftCommaProjection δ` は既存 comma の反転による cocartesian な射影。元の K の包含は射影すると δ。
-  次は `kanLeftCommaFiberIso` の反転 comma の fiber と `leftKanShape δ c` の図式を比較する。
-  余極限を移して点ごとの存在定理へ渡し、指定変換を元の K へ制限する（Kerodon 7.3.4–5）。
+  `kanLeftKanShapeToCommaFiber` は K への射影と図式を保つ。次はこの比較の同値性を証明する。
+  `Core.SliceLaxEquivalence` は安全。F1 の MappingSpaceIntervalComparison・LeftFibrationFiberComparison は
+  straightening を含み直接 import 不可。安全な fat join 比較を底変換後に適用し余極限を移す（Kerodon 7.3.4–5）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
