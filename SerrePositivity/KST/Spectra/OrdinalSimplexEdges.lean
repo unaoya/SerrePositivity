@@ -24,6 +24,13 @@ def edge {n : ℕ} (i j : Fin (n + 1)) (h : i ≤ j) :
     (by apply stdSimplex.obj₀Equiv.injective; rfl)
     (by apply stdSimplex.obj₀Equiv.injective; rfl)
 
+/-- 標準の順序辺の二頂点の像は、指定した始点と終点。 -/
+lemma edgeMap_vertex {n : ℕ} (i j : Fin (n + 1)) (hij : i ≤ j) (t : Fin 2) :
+    (SSet.yonedaEquiv.symm (stdSimplex.edge.{u} n i j hij)).app (Opposite.op ⦋0⦌)
+      (stdSimplex.obj₀Equiv.symm t) = stdSimplex.obj₀Equiv.symm (if t = 0 then i else j) := by
+  apply stdSimplex.obj₀Equiv.injective
+  fin_cases t <;> rfl
+
 /-- 三つの順序付き頂点の標準三角形は、元の三辺の合成を与える。 -/
 def compStruct {n : ℕ} (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
     SSet.Edge.CompStruct (edge.{u} i j hij) (edge j k hjk) (edge i k (hij.trans hjk)) :=

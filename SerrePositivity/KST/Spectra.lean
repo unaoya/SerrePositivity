@@ -571,3 +571,6 @@ public import SerrePositivity.KST.Spectra.FramedTetrahedronDifference
 public import SerrePositivity.KST.Spectra.CospanPrefixCoordinates
 public import SerrePositivity.KST.Spectra.EdgewisePrefixFaces
 public import SerrePositivity.KST.Spectra.LoopEdgewiseSectionFaces
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseSection
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseTetrahedra
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionReflectedTriangles

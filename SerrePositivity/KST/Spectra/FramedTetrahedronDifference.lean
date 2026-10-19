@@ -19,35 +19,36 @@ namespace SerrePositivity.KST.Spectra.FramedTetrahedron
 variable {X : SSet.{u}} (f g : (Δ[3] : SSet.{u}) ⟶ X) (p x : X _⦋0⦌)
     (hf : ∀ i : Fin 4, f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = vertex p x i)
     (hg : ∀ i : Fin 4, g.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = vertex p x i)
-    (hiF : f.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 1 2 (by decide)) = (X.σ 0) x)
-    (hiG : g.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 1 2 (by decide)) = (X.σ 0) x)
-    (hrG : g.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 2 3 (by decide)) = (X.σ 0) x)
-    (ho : f.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 0 3 (by decide)) =
-      g.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 0 3 (by decide)))
+    (hiF : f.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 1 2 (of_decide_eq_true rfl)) = (X.σ 0) x)
+    (hiG : g.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 1 2 (of_decide_eq_true rfl)) = (X.σ 0) x)
+    (hrG : g.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 2 3 (of_decide_eq_true rfl)) = (X.σ 0) x)
+    (ho : f.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 0 3 (of_decide_eq_true rfl)) =
+      g.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 0 3 (of_decide_eq_true rfl)))
 
 include hiF hiG hrG ho
 
 /-- 二つの内辺と参照の右辺が定値なら、元の左辺と右辺の合成は参照の左辺。 -/
 lemma comparison :
-    SSet.HomotopyCategory.homMk (edge f p x hf 0 1 (by decide)) ≫
-        SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (by decide)) =
-      SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (by decide)) := by
+    SSet.HomotopyCategory.homMk (edge f p x hf 0 1 (of_decide_eq_true rfl)) ≫
+        SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl)) =
+      SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (of_decide_eq_true rfl)) := by
   have hF := left_comp_right f p x hf hiF
   have hG := left_comp_right g p x hg hiG
-  have hr : edge g p x hg 2 3 (by decide) = SSet.Edge.id x := SSet.Edge.ext hrG
-  have houter : edge f p x hf 0 3 (by decide) = edge g p x hg 0 3 (by decide) :=
+  have hr : edge g p x hg 2 3 (of_decide_eq_true rfl) = SSet.Edge.id x := SSet.Edge.ext hrG
+  have houter : edge f p x hf 0 3 (of_decide_eq_true rfl) =
+      edge g p x hg 0 3 (of_decide_eq_true rfl) :=
     SSet.Edge.ext ho
   erw [hr, SSet.HomotopyCategory.homMk_id, Category.comp_id] at hG
   exact hF.trans ((congrArg SSet.HomotopyCategory.homMk houter).trans hG.symm)
 
 /-- 参照経路に対する差は、元の右辺の逆の類である。 -/
 lemma difference_inverse
-    [IsIso (SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (by decide)))]
-    [IsIso (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (by decide)))] :
-    inv (SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (by decide))) ≫
-        SSet.HomotopyCategory.homMk (edge f p x hf 0 1 (by decide)) =
-      inv (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (by decide))) := by
-  apply (cancel_mono (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (by decide)))).mp
+    [IsIso (SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (of_decide_eq_true rfl)))]
+    [IsIso (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl)))] :
+    inv (SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (of_decide_eq_true rfl))) ≫
+        SSet.HomotopyCategory.homMk (edge f p x hf 0 1 (of_decide_eq_true rfl)) =
+      inv (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl))) := by
+  apply (cancel_mono (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl)))).mp
   simp only [Category.assoc, comparison f g p x hf hg hiF hiG hrG ho, IsIso.inv_hom_id]
 
 end SerrePositivity.KST.Spectra.FramedTetrahedron
