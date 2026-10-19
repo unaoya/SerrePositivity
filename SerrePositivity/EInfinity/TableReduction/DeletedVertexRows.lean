@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.TableReduction.ScheduleDeletion
 public import SerrePositivity.EInfinity.TableReduction.SingletonRows
+public import SerrePositivity.EInfinity.Surjection.ListErasure
 
 /-!
 # 頂点削除後の table と元の一文字行の削除
@@ -22,23 +23,7 @@ namespace SerrePositivity.EInfinity.TableReduction
 使われ方：頂点を一つ削除した table の行リストを計算する。 -/
 lemma ofFn_succAbove_eq_eraseIdx {α : Type*} {m : ℕ} (f : Fin (m + 1) → α)
     (i : Fin (m + 1)) : List.ofFn (fun j => f (i.succAbove j)) =
-      (List.ofFn f).eraseIdx i.val := by
-  apply List.ext_getElem
-  · simp [List.length_eraseIdx, i.isLt]
-  · intro j hj hk
-    simp only [List.length_ofFn] at hj
-    rw [List.getElem_ofFn, List.getElem_eraseIdx]
-    split
-    · rename_i hji
-      rw [List.getElem_ofFn]
-      congr 1
-      apply Fin.ext
-      simp [Fin.succAbove, Fin.lt_def, hji]
-    · rename_i hji
-      rw [List.getElem_ofFn]
-      congr 1
-      apply Fin.ext
-      simp [Fin.succAbove, Fin.lt_def, hji]
+      (List.ofFn f).eraseIdx i.val := Surjection.ofFn_succAbove_eraseIdx f i
 
 /-- 概要：一文字行を削除した Schedule の table は頂点削除の table（BF §1.4.4）。
 方針：ofFn の一成分を除く一般公式を適用する。

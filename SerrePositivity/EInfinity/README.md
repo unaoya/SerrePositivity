@@ -157,7 +157,12 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `singleton_reduction_none_iff` は元の table と頂点削除後の抽出の失敗が同値であることを示す。
 `singleton_deletion_term` は任意の可換環で符号付き削除項と頂点境界項の値を同定する。
 `sum_singletonSchedules_vertexBoundary` は Schedule の全単射による有限和を頂点境界と同定する。
-残りの削除項の相殺対の出力一致・逆符号・Schedule の対応は未完成。
+`rawListDifferential_eq_sum` は退化・非全射な出力も実際のリスト位置の削除項の和にする。
+`scheduleOffset_strictMono` は行の開始位置の単射性を与える。
+`singletonPositions` で一文字行の削除位置を取り出し、補集合を `remainderTerm` と定義した。
+`differential_onSequence_vertexBoundary_add_remainder` は TR の微分を頂点境界とその残余和に分ける。
+`normalizedMap_comm_iff_remainder_zero` は実際の BE 正規化写像の微分保存と残余和の零性の同値。
+残余和の零性と、削除項の相殺対の出力一致・逆符号・Schedule の対応は未完成。
 TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

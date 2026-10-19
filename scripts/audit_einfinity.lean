@@ -339,7 +339,20 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.reduceRows_inserted_vertex,
       `SerrePositivity.EInfinity.TableReduction.singleton_reduction_none_iff,
       `SerrePositivity.EInfinity.TableReduction.singleton_deletion_term,
-      `SerrePositivity.EInfinity.TableReduction.sum_singletonSchedules_vertexBoundary] do
+      `SerrePositivity.EInfinity.TableReduction.sum_singletonSchedules_vertexBoundary,
+      `SerrePositivity.EInfinity.Surjection.listDeletionTerm,
+      `SerrePositivity.EInfinity.Surjection.rawListDifferential_eq_sum,
+      `SerrePositivity.EInfinity.TableReduction.scheduleOffset_strictMono,
+      `SerrePositivity.EInfinity.TableReduction.outputPosition_injective,
+      `SerrePositivity.EInfinity.TableReduction.singletonPositions,
+      `SerrePositivity.EInfinity.TableReduction.sum_singletonPositions,
+      `SerrePositivity.EInfinity.TableReduction.rawListDifferential_partition,
+      `SerrePositivity.EInfinity.TableReduction.remainderTerm,
+      `SerrePositivity.EInfinity.TableReduction.differential_term_partition,
+      `SerrePositivity.EInfinity.TableReduction.sum_singleton_terms_vertexBoundary,
+      `SerrePositivity.EInfinity.TableReduction.differential_onSequence_vertexBoundary_add_remainder,
+      `SerrePositivity.EInfinity.TableReduction.vertexBoundary_identity_iff_remainder_zero,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_comm_iff_remainder_zero] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
