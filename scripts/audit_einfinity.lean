@@ -774,6 +774,23 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.cochainMap,
       `SerrePositivity.EInfinity.TableReduction.cochainMap_f_surjective,
       `SerrePositivity.EInfinity.TableReduction.sequenceMap,
+      `SerrePositivity.EInfinity.Surjection.cochainCompositionBilinear,
+      `SerrePositivity.EInfinity.TableReduction.cochainMap_f_surjective_int,
+      `SerrePositivity.EInfinity.TableReduction.cochainMap_compositionBilinear,
+      `SerrePositivity.EInfinity.Surjection.cochainCompositionBilinear_d,
+      `SerrePositivity.EInfinity.Surjection.complexPartialComposition,
+      `SerrePositivity.EInfinity.Surjection.ι_complexPartialComposition,
+      `SerrePositivity.EInfinity.Surjection.complexPartialComposition_neg_tmul,
+      `SerrePositivity.EInfinity.TableReduction.complexPartialComposition_comm,
+      `SerrePositivity.EInfinity.Surjection.complexUnit,
+      `SerrePositivity.EInfinity.Surjection.complexUnit_comm,
+      `SerrePositivity.EInfinity.Surjection.complexUnit_zero_apply,
+      `SerrePositivity.EInfinity.TableReduction.cochainMap_epi,
+      `SerrePositivity.EInfinity.TableReduction.tensor_epi_of_epi,
+      `SerrePositivity.EInfinity.Surjection.complexPartialComposition_left_unit,
+      `SerrePositivity.EInfinity.Surjection.complexPartialComposition_right_unit,
+      `SerrePositivity.EInfinity.Surjection.complexPartialComposition_inner_rightAction,
+      `SerrePositivity.EInfinity.Surjection.complexPartialComposition_outer_rightAction,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2261,3 +2278,35 @@ example (x : degreeModule ℤ 3 1) (y z : degreeModule ℤ 2 1) :
 example : SerrePositivity.SymmetricSequence.level (Surjection.sequence ℤ) 2 = Surjection.complex ℤ 2 := rfl
 example : (TableReduction.sequenceMap ℤ).app (SerrePositivity.FiniteBijection.of 2) = cochainMap ℤ 2 := rfl
 example : Function.Surjective ((cochainMap ℤ 2).f (-2)).hom := cochainMap_f_surjective ℤ 2 2
+
+open CategoryTheory CategoryTheory.MonoidalCategory
+
+-- 非自明な二つの負次数の純粋テンソルで、整数部分合成は元の全射語合成になる。
+open SerrePositivity.DifferentialGraded HomologicalComplex in
+example (x : (Surjection.complex ℤ 3).X (-1)) (y : (Surjection.complex ℤ 2).X (-1)) :
+    (Surjection.complexPartialComposition ℤ 2 2 0).f (-2)
+        (ιTensorObj (Surjection.complex ℤ 3) (Surjection.complex ℤ 2) (-1) (-1) (-2)
+          (by decide) (x ⊗ₜ[ℤ] y)) =
+      (Surjection.complexXIso ℤ 4 2).inv
+        (Surjection.partialComposition ℤ 2 2 1 1 0
+          ((Surjection.complexXIso ℤ 3 1).hom x) ((Surjection.complexXIso ℤ 2 1).hom y)) :=
+  Surjection.complexPartialComposition_neg_tmul ℤ 2 2 0 1 1 x y
+-- 空語を含む実際の整数複体の射の合成保存。
+example : BarrattEccles.partialComposition ℤ 2 0 1 ≫ cochainMap ℤ 2 =
+    (cochainMap ℤ 3 ⊗ₘ cochainMap ℤ 0) ≫ Surjection.complexPartialComposition ℤ 2 0 1 :=
+  complexPartialComposition_comm ℤ 2 0 1
+-- 正次数の零成分も含めて整数 TR の全射性とテンソル消去が使える。
+example : Function.Surjective ((cochainMap ℤ 0).f 1).hom := cochainMap_f_surjective_int ℤ 0 1
+example : Epi (cochainMap ℤ 2 ⊗ₘ cochainMap ℤ 0) := tensor_cochainMap_epi ℤ 2 0
+-- 複体射の単位の保存と、全整数次数を同時に扱う右単位則。
+example : BarrattEccles.unit ℤ ≫ cochainMap ℤ 1 = Surjection.complexUnit ℤ := rfl
+example : (Surjection.complex ℤ 3 ◁ Surjection.complexUnit ℤ) ≫
+    Surjection.complexPartialComposition ℤ 2 1 2 = (ρ_ (Surjection.complex ℤ 3)).hom :=
+  Surjection.complexPartialComposition_right_unit ℤ 2 2
+-- 内側の非自明な置換も複体射の段階で同変。
+example : (Surjection.complex ℤ 3 ◁ Surjection.complexRename ℤ 2 (Equiv.swap 0 1)⁻¹) ≫
+    Surjection.complexPartialComposition ℤ 2 2 0 =
+      Surjection.complexPartialComposition ℤ 2 2 0 ≫
+        Surjection.complexRename ℤ 4
+          (operadInnerPermutation 2 2 0 (Equiv.swap 0 1))⁻¹ :=
+  Surjection.complexPartialComposition_inner_rightAction ℤ 2 2 0 (Equiv.swap 0 1)

@@ -262,3 +262,5 @@ public import SerrePositivity.EInfinity.Surjection.CompositionAssociativity
 public import SerrePositivity.EInfinity.Surjection.CompositionUnit
 public import SerrePositivity.EInfinity.Surjection.CompositionEquivariance
 public import SerrePositivity.EInfinity.TableReduction.SequenceMap
+public import SerrePositivity.EInfinity.Surjection.ComplexUnitLaws
+public import SerrePositivity.EInfinity.Surjection.ComplexEquivariance

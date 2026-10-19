@@ -454,7 +454,15 @@ nullary を含む TR の部分合成保存は完了。
 `complexRename` と `Surjection.sequence` は値の左置換を持つ複体の対称列。
 `TableReduction.cochainMap` は実際の整数複体の TR、全非正次数で全射。
 `TableReduction.sequenceMap` は整数複体の対称列の TR 自然変換。
-χ の成分法則は揃ったが、部分合成・単位を整数複体の射へ束ねた Operad と TR オペラッド射は未完成。
+`Surjection.cochainCompositionBilinear` は全整数次数の双線形部分合成。
+`cochainMap_compositionBilinear` は整数 TR の合成保存、`cochainMap_f_surjective_int` は全整数次数の全射性。
+`Surjection.complexPartialComposition` は全整数 Leibniz 則を `tensorLift` で束ねた実際の部分合成射。
+`complexPartialComposition_neg_tmul` は元の全射語の合成による負次数の評価。
+`TableReduction.complexPartialComposition_comm` は整数複体の射としての TR の部分合成保存。
+`Surjection.complexUnit` は BE の単位と TR の合成で、零次数では一文字単位と一致する。
+複体射の左右単位則と内外同変性も TR の全射テンソルで消去して証明済み。
+`tensor_epi_of_epi` は整数加群複体の全射のテンソルの全射性。平坦性・cofibrancy は仮定しない。
+χ の複体射の二つの結合則、Operad への束ねと TR オペラッド射は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：
