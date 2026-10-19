@@ -7055,3 +7055,78 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.boundaryOmegaSpectrum
 #print axioms SerrePositivity.KST.SConstruction.boundaryOmegaSpectrum
+
+#check @SerrePositivity.KST.SConstruction.kKanSequence_omegaCondition
+#print axioms SerrePositivity.KST.SConstruction.kKanSequence_omegaCondition
+
+#check @SerrePositivity.KST.SConstruction.monicKKanSequence_omegaCondition
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequence_omegaCondition
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum_zero
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum_zero
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum_positive_isConnected
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum_positive_isConnected
+
+#check @SerrePositivity.KST.SConstruction.kSpaceSpectrumComparison
+#print axioms SerrePositivity.KST.SConstruction.kSpaceSpectrumComparison
+
+#check @SerrePositivity.KST.SConstruction.kSpaceSpectrumComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.kSpaceSpectrumComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum_negative_subsingleton
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum_negative_subsingleton
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum_negative_eq_one
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum_negative_eq_one
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum_zeroGroupEquiv
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum_zeroGroupEquiv
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum_zeroEquivPiZero
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum_zeroEquivPiZero
+
+#check @SerrePositivity.KST.SConstruction.kSpectrumMap
+#print axioms SerrePositivity.KST.SConstruction.kSpectrumMap
+
+#check @SerrePositivity.KST.SConstruction.kSpectrumMap_app
+#print axioms SerrePositivity.KST.SConstruction.kSpectrumMap_app
+
+#check @SerrePositivity.KST.SConstruction.kSpectrumMap_id_component
+#print axioms SerrePositivity.KST.SConstruction.kSpectrumMap_id_component
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyMap
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyMap
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyMap_id
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyMap_id
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyMap_comp
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyMap_comp
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyFunctor
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyStageIso
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyStageIso
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyRawStageIso
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyRawStageIso
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum_zeroEquivKSpaceHomotopy
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum_zeroEquivKSpaceHomotopy
+
+#check @SerrePositivity.KST.SConstruction.kOmegaSpectrum_zeroEquivKSpacePiZero
+#print axioms SerrePositivity.KST.SConstruction.kOmegaSpectrum_zeroEquivKSpacePiZero
+
+#check @SerrePositivity.KST.SConstruction.boundaryKPiZeroFunctor
+#print axioms SerrePositivity.KST.SConstruction.boundaryKPiZeroFunctor
+
+#check @SerrePositivity.KST.SConstruction.rawKZeroHomotopyPiZeroIso
+#print axioms SerrePositivity.KST.SConstruction.rawKZeroHomotopyPiZeroIso
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroIso
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroIso

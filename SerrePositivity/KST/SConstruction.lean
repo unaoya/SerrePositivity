@@ -466,4 +466,12 @@ public import SerrePositivity.KST.SConstruction.ZeroRowLoopLocalized
 public import SerrePositivity.KST.SConstruction.KanAssemblyEquivalence
 public import SerrePositivity.KST.SConstruction.BoundaryOmegaSpectrum
 
+public import SerrePositivity.KST.SConstruction.KOmegaSpectrum
+public import SerrePositivity.KST.SConstruction.KSpectrumConnectivity
+public import SerrePositivity.KST.SConstruction.KSpectrumMaps
+public import SerrePositivity.KST.SConstruction.KHomotopyFunctor
+public import SerrePositivity.KST.SConstruction.KHomotopyStageIso
+public import SerrePositivity.KST.SConstruction.KSpectrumZeroComparison
+public import SerrePositivity.KST.SConstruction.KHomotopyZeroPiZero
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -7,7 +7,8 @@ public import SerrePositivity.KST.Spectra.CofibrantKanSequence
 /-! # 反復 S の同一の Kan 列への接続
 概要：一次方向の比較のホモトピー逆を使い、全零境界商の各 Kan 段を接続する。
 方針：既証の π 同型に L9 の Whitehead を適用し、随伴射を前合成して uncurry する。
-規約：第 r 段は r+1 重 S。Ω 条件は未証明。使われ方：BF 模型への接続。
+規約：第 r 段は r+1 重 S。Ω 条件は KanAssemblyEquivalence で証明する。
+使われ方：BF 模型への接続。
 -/
 @[expose] public section
 noncomputable section

@@ -5,7 +5,8 @@ public import SerrePositivity.KST.SConstruction.BoundaryKComparison
 /-! # K 空間を零段とする反復 S の Kan 列
 概要：零段を Ω|ιS•C| とし、正の段を反復 S の Kan 実現とする列を構成する。
 方針：零段の構造射は随伴の余単位、正の段は境界商の列の構造射を使う。
-規約：正の段の Ω 条件と連結性は未証明。使われ方：連結 K スペクトルの候補列。
+規約：Ω 条件は KOmegaSpectrum、連結性は MultiStageConnected で証明する。
+使われ方：連結 K スペクトルの元の列。
 -/
 @[expose] public section
 noncomputable section
