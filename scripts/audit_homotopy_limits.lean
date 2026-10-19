@@ -6247,3 +6247,141 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @transportPrismExtensionEdge_endpoint_homMk_eq
 #print axioms transportPrismExtensionEdge_endpoint_homMk_eq
+
+#check @prismVertexEvaluation
+#print axioms prismVertexEvaluation
+
+#check @prismVertexEvaluation_shape
+#print axioms prismVertexEvaluation_shape
+
+#check @prismVertexEvaluation_coefficient
+#print axioms prismVertexEvaluation_coefficient
+
+#check @prismVertexEvaluation_projection
+#print axioms prismVertexEvaluation_projection
+
+#check @prismVertexEvaluation_vertex
+#print axioms prismVertexEvaluation_vertex
+
+#check @prismPointEdge
+#print axioms prismPointEdge
+
+#check @prismPointEdge_diagram
+#print axioms prismPointEdge_diagram
+
+#check @prismPointEdge_projection
+#print axioms prismPointEdge_projection
+
+#check @standardTransportPointEdge
+#print axioms standardTransportPointEdge
+
+#check @standardTransportPointEdge_diagram
+#print axioms standardTransportPointEdge_diagram
+
+#check @standardTransportPointEdge_projection
+#print axioms standardTransportPointEdge_projection
+
+#check @coherentTransportTriangleVertex
+#print axioms coherentTransportTriangleVertex
+
+#check @coherentTransportTriangleVertex_projection
+#print axioms coherentTransportTriangleVertex_projection
+
+#check @coherentTransportTriangleVertex_first
+#print axioms coherentTransportTriangleVertex_first
+
+#check @coherentTransportTriangleVertex_initial
+#print axioms coherentTransportTriangleVertex_initial
+
+#check @coherentTransportTriangleVertex_second
+#print axioms coherentTransportTriangleVertex_second
+
+#check @coherentTransportTriangleDiagonalPointEdge
+#print axioms coherentTransportTriangleDiagonalPointEdge
+
+#check @coherentTransportTriangleVertex_long
+#print axioms coherentTransportTriangleVertex_long
+
+#check @coherentTransportTriangleDiagonalPointEdge_projection
+#print axioms coherentTransportTriangleDiagonalPointEdge_projection
+
+#check @coherentTransportTrianglePointCompStruct
+#print axioms coherentTransportTrianglePointCompStruct
+
+#check @coherentTransportTrianglePointCompStruct_projection
+#print axioms coherentTransportTrianglePointCompStruct_projection
+
+#check @triangleLongCosliceSection
+#print axioms triangleLongCosliceSection
+
+#check @triangleLongCosliceSection_long
+#print axioms triangleLongCosliceSection_long
+
+#check @exists_relativeTriangleLongFamily
+#print axioms exists_relativeTriangleLongFamily
+
+#check @relativeTriangleLongSection
+#print axioms relativeTriangleLongSection
+
+#check @relativeTriangleLongSection_long
+#print axioms relativeTriangleLongSection_long
+
+#check @relativeTriangleLongSection_base
+#print axioms relativeTriangleLongSection_base
+
+#check @relativeTriangleLongSection_projection
+#print axioms relativeTriangleLongSection_projection
+
+#check @transportTriangleTerminalVertex
+#print axioms transportTriangleTerminalVertex
+
+#check @transportTriangleTerminalVertex_projection
+#print axioms transportTriangleTerminalVertex_projection
+
+#check @transportTriangleHomLongFamily
+#print axioms transportTriangleHomLongFamily
+
+#check @transportTriangleHomFamily
+#print axioms transportTriangleHomFamily
+
+#check @transportTriangleHomFamily_long
+#print axioms transportTriangleHomFamily_long
+
+#check @transportTriangleHomFamily_base
+#print axioms transportTriangleHomFamily_base
+
+#check @transportTriangleHomFamily_endpoint
+#print axioms transportTriangleHomFamily_endpoint
+
+#check @transportTriangleHomFamily_fixed
+#print axioms transportTriangleHomFamily_fixed
+
+#check @transportTriangleInitialHomFamily
+#print axioms transportTriangleInitialHomFamily
+
+#check @transportTriangleInitialHomFamily_evaluation
+#print axioms transportTriangleInitialHomFamily_evaluation
+
+#check @transportTriangleInitialHomComparison_homotopy
+#print axioms transportTriangleInitialHomComparison_homotopy
+
+#check @TransportTriangleInitialHomComparison
+#print axioms TransportTriangleInitialHomComparison
+
+#check @transportTriangleInitialHomComparison
+#print axioms transportTriangleInitialHomComparison
+
+#check @transportTriangleInitialHomComparisonHomotopy
+#print axioms transportTriangleInitialHomComparisonHomotopy
+
+#check @transportTriangleInitialHomComparisonHomotopy_projection
+#print axioms transportTriangleInitialHomComparisonHomotopy_projection
+
+#check @TransportTriangleInitialHomComparison.mk
+#print axioms TransportTriangleInitialHomComparison.mk
+
+#check @TransportTriangleInitialHomComparison.homotopy
+#print axioms TransportTriangleInitialHomComparison.homotopy
+
+#check @TransportTriangleInitialHomComparison.evaluation
+#print axioms TransportTriangleInitialHomComparison.evaluation
