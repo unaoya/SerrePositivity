@@ -492,7 +492,16 @@ J=A⋆B、τ=`V ≫ joinIntervalProjection J B` として
 終端の錐は `kanRelativeJoinDiagramCone` と厳密に同じであり、
 `isRightKanExtension_relativeJoin_iff_local_limits` により標準右指定変換の右 Kan 条件を局所極限性で判定する。
 構成には δ の単射性や C・D の quasicategory 性は不要。同値の判定には D の quasicategory 性を使う。
+`KanJoinDiagonalOpposite` は切断の補数と先頭・末尾の交換を計算し、
+`reversePrism (joinDiagonal K) ≫ (stableJoinReverseIso K K).hom = joinDiagonal K.op`
+を全単体で証明する。
+`KanRelativeJoinOpposite` はこの式、反転による pullback の保存、join の反転同型から、
+`(relativeJoin f g).op ≅ relativeJoin (op.map g) (op.map f)` を構成する。
+join と区間付き係数への両射影の式、および左右の包含を交換する式を保持する。
+`KanRelativeJoinPrismOpposite` は反転した左の標準 prism が、braiding で時間を直した
+右の標準 prism に厳密に一致することを証明する。
 任意の元の α を標準右指定変換へ移す相対 join 表示とその類の保存は、右側ではまだ未完了。
+上記はそのための反転の幾何であり、右の円柱比較の前合成同値や表示の存在そのものとは区別する。
 
 **B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
 極限からの点ごとの存在と大域的組み立てが残る。
@@ -500,7 +509,8 @@ J=A⋆B、τ=`V ≫ joinIntervalProjection J B` として
 
 ### 次の工程
 
-左右の標準指定変換の局所錐との同定は済。右側の任意の指定変換 α の相対 join 表示と類の保存を整える。
+左右の標準指定変換の局所錐との同定、relative join と標準 prism の反転両立は済。
+右の円柱比較を左側の比較の反転から導き、任意の指定変換 α の相対 join 表示と類の保存を整える。
 指定変換の類を保存する相対 join 表示を用い、全部分 ∞ 圏からの相対 Kan 拡張の
 写像空間の制限定理（Kerodon Prop 7.3.6.7・Cor 7.3.6.9）を整える。
 点ごとの Kan 条件から h Fun 全体の普遍写像性（Kerodon Prop 7.3.6.1 の左右版）を導き、
@@ -513,8 +523,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2406 jobs、公理監査2683宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内735モジュールに straightening 依存なし。
+対象ビルド2409 jobs、公理監査2717宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内738モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -729,3 +739,8 @@ B5 の古典 nerve に戻る検査も未完了。
 | `kanRelativeJoinRightShiftPrism/fst/snd/zero/one/left/right` | 右 relative join へ持ち上げた prism と四境界 | 済 |
 | `kanRelativeJoinRightTransformation/kanRelativeJoinConeTransport`・`..._cone_val/..._cone` | 標準右指定変換と局所錐に厳密に一致する実際の輸送 | 済 |
 | `isRightKanExtension_relativeJoin_iff_local_limits` | 標準右指定変換の右 Kan 条件と局所錐の極限性の同値 | 済・元の任意の α への還元は未完了 |
+
+| `kanJoin_reverse_prefix/kanAugJoinSplit_reverse/kanJoin_interval_cut_reverse`・`kanJoinDiagonal_reverse` | 切断の補数による先頭・末尾の交換と対角の反転両立 | 済 |
+| `kanPrismOppositeIso/kanJoinDiagonal_opposite_square`・`kanRelativeJoinOppositeIso/fst/snd` | 区間付き係数と relative join の反転同型、および両射影との両立 | 済 |
+| `kanPrismOppositeIso_endpoint`・`kanRelativeJoinOppositeIso_inl/inr` | 区間の端点と relative join の両包含の交換 | 済 |
+| `kanRelativeJoinPrism_reverse` | 反転した左標準 prism と右標準 prism の厳密な一致 | 済・右円柱比較の同値性と任意の α の表示は未完了 |

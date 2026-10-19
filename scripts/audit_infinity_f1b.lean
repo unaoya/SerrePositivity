@@ -1366,3 +1366,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.kanRelativeJoinConeTransport_cone_val
 #check @SerrePositivity.InfinityCategories.kanRelativeJoinConeTransport_cone
 #check @SerrePositivity.InfinityCategories.isRightKanExtension_relativeJoin_iff_local_limits
+
+#check @SerrePositivity.InfinityCategories.kanJoin_reverse_prefix
+#check @SerrePositivity.InfinityCategories.kanAugJoinSplit_reverse
+#check @SerrePositivity.InfinityCategories.kanJoin_interval_cut_reverse
+#check @SerrePositivity.InfinityCategories.kanJoinDiagonal_reverse
+#check @SerrePositivity.InfinityCategories.kanPrismOppositeIso
+#check @SerrePositivity.InfinityCategories.kanJoinDiagonal_opposite_square
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinOppositeIso
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinOppositeIso_fst
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinOppositeIso_snd
+#check @SerrePositivity.InfinityCategories.kanPrismOppositeIso_endpoint
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinOppositeIso_inl
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinOppositeIso_inr
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinPrism_reverse
