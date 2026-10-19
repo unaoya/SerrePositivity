@@ -708,3 +708,14 @@ public import SerrePositivity.KST.Spectra.ExponentialHomotopyEdges
 public import SerrePositivity.KST.Spectra.ExponentialRelativeComposition
 public import SerrePositivity.KST.Spectra.SquareRightAdjustment
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointAdjustedTransport
+public import SerrePositivity.KST.Spectra.IntervalBoundaryFamilies
+public import SerrePositivity.KST.Spectra.ExponentialSpecifiedComposition
+public import SerrePositivity.KST.Spectra.SquareBoundaryFamilies
+public import SerrePositivity.KST.Spectra.SpecifiedSquarePasting
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedEvaluationComposite
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedStageTriangles
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedTriangleFaces
+public import SerrePositivity.KST.Spectra.RelativeTracedPathFormulas
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointPastingFaces
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointSpecifiedPasting
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointPastedBoundary

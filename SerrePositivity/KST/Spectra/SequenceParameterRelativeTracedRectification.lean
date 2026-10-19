@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SequenceRelativeTracedTriangles
 public import SerrePositivity.KST.Spectra.SequenceParameterRelativeRectification
 public import SerrePositivity.KST.Spectra.PointedRelativeTransposeHomotopy
+public import SerrePositivity.KST.Spectra.PointedTransposeIntervalRestriction
 
 /-!
 概要：実垂直区間と構造三角形を保持する相対列厳密化を、元の全パラメータ族へ戻す。
@@ -87,5 +88,17 @@ def relativeTracedParameterEvaluationInterval (n : ℕ) :
     (j := j) (V := (Y.level n).space) P
   rw [hB] at hp
   exact ⟨R, hp⟩
+
+/-- 相対段評価区間を再び転置すると、元の同じ実垂直区間の族へ戻る。 -/
+lemma relativeTracedParameterEvaluationInterval_transpose_path (n : ℕ) :
+    (relativeTracedParameterEvaluationInterval X Y j c f hb h n).val.basedTranspose.path =
+      (relativeTracedParameterComparison X Y j c f hb h n).path := by
+  let P := relativeTracedParameterComparison X Y j c f hb h n
+  let Q := P.forgetProjection.basedTranspose
+  have he : (relativeTracedParameterEvaluationInterval X Y j c f hb h n).val.basedTranspose.path =
+      Q.basedTranspose.path :=
+    PointedMapping.VerticalPath.changeEndpoints_basedTranspose_path Q rfl
+      (rectifyParameterRelativeTraced_evaluation X Y j c f hb h n)
+  exact he.trans P.forgetProjection.basedTranspose_twice_path
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

@@ -26,6 +26,17 @@ lemma changeEndpoints_edge_value {T E B : PointedSimplicialSet.{u}} {p : E ⟶ B
     (P.changeEndpoints_homotopy_h hf hg)
   exact congrArg SSet.yonedaEquiv h
 
+/-- 端点表示の変更後も、転置した区間の同じパラメータ族を保つ。 -/
+lemma changeEndpoints_basedTranspose_path {A U V : PointedSimplicialSet.{u}}
+    {f g f' g' : A ⟶ (ihom U).obj V}
+    (P : VerticalPath (PointedObject.toPoint ((ihom U).obj V)) f g)
+    (hf : f' = f) (hg : g' = g) :
+    (P.changeEndpoints hf hg).basedTranspose.path = P.basedTranspose.path := by
+  cases hf
+  cases hg
+  have he : P.changeEndpoints rfl rfl = P := by cases P; rfl
+  exact congrArg (fun Q ↦ Q.basedTranspose.path) he
+
 /-- 評価した区間の制限が一致すれば、内部 Hom の非定数な区間族の制限も一致する。 -/
 lemma path_restriction_eq_of_homotopy {A B E : PointedSimplicialSet.{u}}
     {f g : A ⟶ E} {f' g' : B ⟶ E}
