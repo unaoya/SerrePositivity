@@ -7,12 +7,10 @@
 ### 現在地
 
 - F1a〜F1c の fibration・transport・coherent nerve の基盤を提供済み。F1d は未完了。
-- left fibrations と strict transport の像の coherent nerve の同値は構成済み。
-  strict Kan 図式の復元、および有限鎖の nerve 上の coherent 図式の復元は関手同型まで証明済み。
+- left fibrations と strict transport の像の coherent nerve の同値、strict Kan 図式と有限鎖の nerve 上の coherent 図式の復元は関手同型まで構成済み。
 - weighted nerve の豊穣な標準単位は各成分で単射かつ同値。単位に沿う strict な比較の制限は
   trivial Kan fibration、延長空間は可縮。strict transport の像で同値な厳密な左逆も存在する。
-- 底と図式の共同実現で、`kanDiagramRealization C` と
-  `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を構成済み。
+- 底と図式の共同実現で、`kanDiagramRealization C` と `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を構成済み。
 - 表現を `LeftTransportRepresentation` に束ねた。任意の底変換は底側と全空間側の両射を厳密に保ち、
   両射の一致は表現の一致と同値。通常の nerve 上の小さい left fibration の実際の表現も構成済み。
 - 射影の各次数の fiber が小さい場合、任意の底・パラメーターで単射に沿う境界固定延長と延長空間の可縮性を証明済み。任意の cartesian な全空間表示への厳密な延長にも適用済み。
@@ -39,7 +37,9 @@
 - 全 left fibrations 上で切断の頂点評価・部分図式への制限を豊穣比較から coherent な辺に実現。left anodyne な始点評価・制限は大域的な関手同型。
   底の一本の辺に沿う全対象の実際の transport の辺・prism と厳密な両端、切断の始点・終点評価による特徴づけを構成済み。
 - 任意の小圏で添字付けた豊穣比較の図式を KanEnrichedDiagram として coherent に実現。任意の添字関手の制限（面・退化を含む）と厳密に可換。合成三点図式の三面は既存の比較の族と厳密に一致。既存の比較の辺そのものの合成三角形と合成等式を証明済み。全対象の transport も底の三角形の合成則・既存三辺の二単体・退化辺の単位則を証明済み。
-- 対象ビルド3188 jobs、公理監査6954宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+- 相対切断の制限の系を全対象上の豊穣比較図式へ束ね、底の全単体の圏上の共同切断評価 `transportSimplexSectionInfinity` を構成済み。
+  任意の添字関手の制限と厳密に可換。始点を保つ非単射も含む制限の像は大域的に可逆。元の底への降下は未証明。
+- 対象ビルド3193 jobs、公理監査6993宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -69,7 +69,7 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`
+- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`
 
 ### 依存と提供
 
@@ -99,8 +99,8 @@
 
 ### 次の一手
 
-KanEnrichedDiagram の任意添字図式の実現を切断制限の系へ適用し、全対象の transport の高次の選択を面・退化と整合させて束ねる。
-LeftFibrationNaturalTransportComposition で既存三辺の二単体と退化辺の単位則を証明済み。ただし二単体は個別の選択であり、三単体以上の境界整合性と全関手の組立ては未構成。退化辺の単位則は射の類の等式であり、辺そのものの正規化と高次の厳密な退化整合も残る。
+TransportSimplexCategory の nerve から底への初頂点写像を構成し、TransportSimplexPreservesFirst を反転する共同切断評価の降下を証明する。
+transportSimplexSectionInfinity は単体圏上では全次数の単体的作用を持つ。元の底 B 上の一つの関手への降下、その選択の高次一意性と構成済み transport との比較は未証明。LeftFibrationNaturalTransportComposition の個別二単体選択を全関手の完成とは扱わない。
 全対象での高次整合性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
