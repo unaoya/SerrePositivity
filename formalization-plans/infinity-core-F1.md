@@ -13595,5 +13595,42 @@ lemma weightedNerveTensorMap_projection {C : Type u} [Category.{u} C]
     weightedNerveTensorMap F T ≫ weightedNerveProjection (F ⋙ tensorRight T) =
       fst (weightedNerve F) T ≫ weightedNerveProjection F
 
+def weightedNerveMappingFamily {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    weightedNerve F ⊗ strictDiagramMappingSpace F G ⟶ weightedNerve G
+
+lemma weightedNerveMappingFamily_projection {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    weightedNerveMappingFamily F G ≫ weightedNerveProjection G =
+      CartesianMonoidalCategory.fst (weightedNerve F) (strictDiagramMappingSpace F G) ≫
+        weightedNerveProjection F
+
+def weightedNerveMappingSpaceMap {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    strictDiagramMappingSpace F G ⟶
+      relativeFunctorSpace (weightedNerveProjection G) (weightedNerveProjection F)
+
+lemma weightedNerveMappingSpaceMap_uncurry {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    relativeFunctorUncurry (weightedNerveMappingSpaceMap F G) = weightedNerveMappingFamily F G
+
+lemma weightedNerveMappingSpaceMap_identity {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) :
+    strictDiagramMappingIdentity F ≫ weightedNerveMappingSpaceMap F F =
+      relativeFunctorIdentity (Over.mk (weightedNerveProjection F))
+
+lemma weightedNerveMappingSpaceMap_composition {C : Type u} [Category.{u} C]
+    (F G H : C ⥤ SSet.{u}) :
+    strictDiagramMappingComposition F G H ≫ weightedNerveMappingSpaceMap F H =
+      (weightedNerveMappingSpaceMap F G ⊗ₘ weightedNerveMappingSpaceMap G H) ≫
+        relativeFunctorComposition (Over.mk (weightedNerveProjection F))
+          (Over.mk (weightedNerveProjection G)) (Over.mk (weightedNerveProjection H))
+
+def weightedNerveKanEnriched (C : Type u) [Category.{u} C] :
+    EnrichedFunctor SSet.{u} (KanDiagramObject C) (LeftFibrationObject (nerve C))
+
+noncomputable def weightedNerveInfinityMap (C : Type u) [Category.{u} C] :
+    KanDiagramNerve C ⟶ LeftFibrationInfinity (nerve C)
+
 end SerrePositivity.InfinityCategories
 ```

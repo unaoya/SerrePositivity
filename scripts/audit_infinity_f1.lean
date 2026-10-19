@@ -2779,3 +2779,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.weightedNerveTensorDiagram
 #check @SerrePositivity.InfinityCategories.weightedNerveTensorMap
 #check @SerrePositivity.InfinityCategories.weightedNerveTensorMap_projection
+#check @SerrePositivity.InfinityCategories.weightedNerveMappingFamily
+#check @SerrePositivity.InfinityCategories.weightedNerveMappingFamily_projection
+#check @SerrePositivity.InfinityCategories.weightedNerveMappingSpaceMap
+#check @SerrePositivity.InfinityCategories.weightedNerveMappingSpaceMap_uncurry
+#check @SerrePositivity.InfinityCategories.weightedNerveMappingSpaceMap_identity
+#check @SerrePositivity.InfinityCategories.weightedNerveMappingSpaceMap_composition
+#check @SerrePositivity.InfinityCategories.weightedNerveKanEnriched
+#check @SerrePositivity.InfinityCategories.weightedNerveInfinityMap
