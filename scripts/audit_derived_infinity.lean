@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGRoofSimplicialReplacement
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofVerdierMap
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofSliceMap
 import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofComparison
@@ -1484,10 +1485,73 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap_source
 #print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap_vertex
 
+#print axioms SerrePositivity.InfinityCategories.dgOverVertexSource
+#print axioms SerrePositivity.InfinityCategories.dgOverVertexEdge
+#print axioms SerrePositivity.InfinityCategories.dgOverVertexClosed
+#print axioms SerrePositivity.InfinityCategories.dgOverVertexClosed_edge
+#print axioms SerrePositivity.InfinityCategories.dgOverVertexClosed_vertex
+#print axioms SerrePositivity.InfinityCategories.dgClosedNerveOverMap_vertex_surjective
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverVertex_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverVertexClosed
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverVertexClosed_vertex
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap_vertex_rightInverse
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap_vertex_surjective
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTriangle
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTriangle_base
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTriangle_leg
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverSource_edge_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverSource_inverts_of_inverts
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverSource_quotient_inverts
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverSource_resolvedQuotient_inverts
+#print axioms SerrePositivity.InfinityCategories.closedNerveInclusion_mk₁
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofNerveSourceMap_edge
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap_edge_source
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefinement_mem
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefine
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefineHom
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecomposition_quasiIso_of_homotopyIso
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecomposition_quasiIso_of_invertible
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedPrecomposition_equivalence_of_invertible
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosedDenominator_isInvertible
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofRefinement_isInvertible
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofDiagram_map_equivalence
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofConstant
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofConstantComparison
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofConstantComparison_refine
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofConstantComparison_app_equivalence
+#print axioms SerrePositivity.InfinityCategories.RoofBoundaryFixedHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofFinite_relative_fillers
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofRefinement_relative_fillers
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofRefinement_vertex_lifts
+#print axioms SerrePositivity.InfinityCategories.DGCommonRoofIndex
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofOriginal
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofQuotient
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofConstant
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofComparison
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofConstantComparison
+#print axioms SerrePositivity.InfinityCategories.dgRoofReplacementComparison
+#print axioms SerrePositivity.InfinityCategories.dgRoofReplacementConstantComparison
+#print axioms SerrePositivity.InfinityCategories.dgRoofReplacementComparison_projection
+#print axioms SerrePositivity.InfinityCategories.dgRoofReplacementConstantComparison_projection
+#print axioms SerrePositivity.InfinityCategories.dgRoofReplacementConstantComparison_isPrecompositionEquivalence
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGOverVertexInverse,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOverVertexInverse,
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceTriangle,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOverRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofRefinements,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofRefinementEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofConstantComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofFiniteFillers,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofRefinementFillers,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofRefinementVertices,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofSimplicialReplacement,
+
     `SerrePositivity.InfinityCategories.Derived.RoofSliceTransport,
     `SerrePositivity.InfinityCategories.Derived.RoofJoinReverseEdge,
     `SerrePositivity.InfinityCategories.Derived.RoofReverseVertexEdge,
