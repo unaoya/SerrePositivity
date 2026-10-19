@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModulePropertyStability
 import SerrePositivity.InfinityCategories.Derived.DGYonedaModuleNerve
 import SerrePositivity.InfinityCategories.Derived.DGModuleStability
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberPushout
@@ -148,6 +149,30 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomotopyProperty_zero
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomotopyProperty_shift
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomotopyProperty_cone
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomotopyProperty_fiber
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableHomotopyProperty_iff
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableHomotopyProperty_representable
+#print axioms SerrePositivity.InfinityCategories.dgHomotopyRepresentable_representable
+#print axioms SerrePositivity.InfinityCategories.dgFullSquareLift_inclusion
+#print axioms SerrePositivity.InfinityCategories.dgFullSquareLift_zero_corner
+#print axioms SerrePositivity.InfinityCategories.dgFullSquareLift_isPushout
+#print axioms SerrePositivity.InfinityCategories.dgFullSquareLift_isPullback
+#print axioms SerrePositivity.InfinityCategories.dgFullSquareLift_edge
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyConeVertices
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyFiberVertices
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyConeSquare_isPushout
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyConeSquare_isPullback
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyFiberSquare_isPullback
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyFiberSquare_isPushout
+#print axioms SerrePositivity.InfinityCategories.dgModuleProperty_bicartesian_cofiber_exists
+#print axioms SerrePositivity.InfinityCategories.dgModuleProperty_bicartesian_fiber_exists
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyNerve_hasZeroVertex
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyNerve_isStable
+#print axioms SerrePositivity.InfinityCategories.dgHomotopyRepresentableNerve_isStable
 
 #print axioms SerrePositivity.InfinityCategories.dgUniverseLiftUp_comp_down
 #print axioms SerrePositivity.InfinityCategories.dgUniverseLiftDown_comp_up
@@ -1628,6 +1653,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleHomotopyProperty,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulated,
+    `SerrePositivity.InfinityCategories.Derived.DGFullSquareLift,
+    `SerrePositivity.InfinityCategories.Derived.DGModulePropertySquares,
+    `SerrePositivity.InfinityCategories.Derived.DGModulePropertyChoices,
+    `SerrePositivity.InfinityCategories.Derived.DGModulePropertyStability,
+
     `SerrePositivity.InfinityCategories.Derived.DGUniverseLift,
     `SerrePositivity.InfinityCategories.Derived.DGNerveUniverseLift,
     `SerrePositivity.InfinityCategories.Derived.DGUniverseLiftFunctor,
