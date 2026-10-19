@@ -8849,3 +8849,126 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.diagramSelectionCompositionTriangle_nonempty
 #print axioms SerrePositivity.KST.SConstruction.diagramSelectionCompositionTriangle_nonempty
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionTransportEdge_edge
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionTransportEdge_edge
+
+#check @SerrePositivity.KST.SConstruction.kanCospanHorn
+#print axioms SerrePositivity.KST.SConstruction.kanCospanHorn
+
+#check @SerrePositivity.KST.SConstruction.kanCospanHorn_source
+#print axioms SerrePositivity.KST.SConstruction.kanCospanHorn_source
+
+#check @SerrePositivity.KST.SConstruction.kanCospanHorn_target
+#print axioms SerrePositivity.KST.SConstruction.kanCospanHorn_target
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastingChoices
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastingChoices
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastingChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastingChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastingChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastingChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastingAt
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastingAt
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastingAt_source
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastingAt_source
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastingAt_target
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastingAt_target
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastedEdge
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastedEdge
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastedTriangle
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastedTriangle
+
+#check @SerrePositivity.KST.SConstruction.diagramFamilyTranspose
+#print axioms SerrePositivity.KST.SConstruction.diagramFamilyTranspose
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalFamily
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalFamily
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalFamily_evaluation
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalFamily_evaluation
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalFamily_edge_evaluation
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalFamily_edge_evaluation
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalFamily_transportEdge_evaluation
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalFamily_transportEdge_evaluation
+
+#check @SerrePositivity.KST.SConstruction.diagramFamilyCospanPastingChoices
+#print axioms SerrePositivity.KST.SConstruction.diagramFamilyCospanPastingChoices
+
+#check @SerrePositivity.KST.SConstruction.diagramFamilyCospanPastingChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.diagramFamilyCospanPastingChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingChoices
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingChoices
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingFamily
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingFamily
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingFamily_source
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingFamily_source
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingFamily_target
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingFamily_target
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastedEdge
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastedEdge
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastedTriangle
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastedTriangle
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastingChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastingChoices
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastingChoices
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastingChoices
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastingChoices
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastingChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastingChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastingChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastingChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastingFamily
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastingFamily
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastingFamily
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastingFamily
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastingChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastingChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastingChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastingChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.kanCospanPastedTriangle_map
+#print axioms SerrePositivity.KST.SConstruction.kanCospanPastedTriangle_map
+
+#check @SerrePositivity.KST.SConstruction.diagramUniversalCospanPastedTriangle_evaluation
+#print axioms SerrePositivity.KST.SConstruction.diagramUniversalCospanPastedTriangle_evaluation
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastedEdge
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastedEdge
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastedTriangle
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentPastedTriangle
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastedEdge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastedEdge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastedTriangle
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentPastedTriangle

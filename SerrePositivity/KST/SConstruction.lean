@@ -600,4 +600,7 @@ public import SerrePositivity.KST.SConstruction.AssemblyInputIdentityTransport
 public import SerrePositivity.KST.SConstruction.AssemblyCoherentFactorLegs
 public import SerrePositivity.KST.SConstruction.CoherentDiagramOverComposition
 
+public import SerrePositivity.KST.SConstruction.KanCospanPastingChoices
+public import SerrePositivity.KST.SConstruction.CoherentDiagramFamilyPasting
+public import SerrePositivity.KST.SConstruction.AssemblyCoherentFactorPasting
 /-! # ∞-S• 構成と連結 K 理論 -/

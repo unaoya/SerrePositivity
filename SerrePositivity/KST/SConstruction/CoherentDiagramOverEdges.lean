@@ -74,4 +74,13 @@ def diagramSelectionTransportEdge {I : Type u} [SmallCategory I] {D : I ⥤ SSet
     (ConcreteCategory.congr_hom (NatTrans.congr_app ht (Opposite.op ⦋0⦌))
       (diagramSelectionVertex s i)).symm rfl
 
+/-- 恒等成分の表示を戻しても、比較辺の元の一単体は変わらない。 -/
+lemma diagramSelectionTransportEdge_edge {I : Type u} [SmallCategory I]
+    {D : I ⥤ SSet.{u}} (s : bousfieldKanWeight I ⟶ D)
+    {i j : I} (h : i ⟶ j) {E : SSet.{u}} (e : D.obj i ≅ E)
+    (t : E ⟶ D.obj j) (ht : e.hom ≫ t = D.map h) :
+    (diagramSelectionTransportEdge s h e t ht).edge = (diagramSelectionEdge s h).edge := by
+  dsimp only [diagramSelectionTransportEdge, SSet.Edge.ofEq,
+    SSet.Edge.edge, SSet.Edge.toTruncated]
+
 end SerrePositivity.KST.SConstruction
