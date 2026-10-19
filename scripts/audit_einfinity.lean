@@ -928,6 +928,15 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.pivotResidualValue_sum,
       `SerrePositivity.EInfinity.IntervalCuts.gap_sum_complement,
       `SerrePositivity.EInfinity.IntervalCuts.pivotResidualValue_sum_eq_boundary,
+      `SerrePositivity.EInfinity.IntervalCuts.NormalizedDeletedCut,
+      `SerrePositivity.EInfinity.IntervalCuts.NormalizedDeletedCut.word,
+      `SerrePositivity.EInfinity.IntervalCuts.NormalizedDeletedCut.nonpivotEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.NormalizedDeletedCut.pivotEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.NormalizedDeletedCut.sum_three,
+      `SerrePositivity.EInfinity.IntervalCuts.normalizedDeletedValue_sum_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.normalizedDeletedValue_sum_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.normalizedDeletedValue_sum_reduce,
+      `SerrePositivity.EInfinity.IntervalCuts.normalizedDeletedValue_sum_eq_zero_of_no_cut,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2828,3 +2837,16 @@ example : ∑ c, pivotResidualValue ℤ pivotIntervalWord c =
       (-1 : ℤ) ^ positionInversionCount pivotIntervalWord.val
         (Finset.univ.filter (Caesura pivotIntervalWord.val)) = -1 := by decide
   simpa only [hs, neg_one_zsmul] using! h
+
+-- 01202 では非切断点・切断点障害を全て含む正規化全削除和が相殺する。
+example : ∑ c, normalizedDeletedValue ℤ gapOnlyWord c = 0 :=
+  normalizedDeletedValue_sum_eq_zero_of_no_cut ℤ gapOnlyWord (by decide)
+-- 三出現の01020でも正規化全削除和が零となる。
+example : ∑ c, normalizedDeletedValue ℤ residualWord c = 0 :=
+  normalizedDeletedValue_sum_eq_zero_of_no_cut ℤ residualWord (by decide)
+-- 元切断が非零の010では、実際の全削除和は元切断非零部分と切断点境界部分へ分かれる。
+example : ∑ c, normalizedDeletedValue ℤ compositionInner c =
+    (∑ c : NormalizedDeletedCut.Regular compositionInner.val,
+      normalizedDeletedValue ℤ compositionInner c.val) +
+        ∑ p, pivotBoundaryValue ℤ compositionInner p :=
+  normalizedDeletedValue_sum_reduce ℤ compositionInner

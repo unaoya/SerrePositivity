@@ -516,7 +516,11 @@ nullary を含む TR の部分合成保存は完了。
 `pivotResidualValue_sum` は実際の全削除和の隙間への添字替え。
 `pivotResidualValue_sum_eq_boundary` は正次数の全切断点障害削除和と全切断点色因子境界和の一致。
 元の非零切断がない `01202` と、二つある `01203` の全削除和も監査済み。
-具体的な Δ¹ の余代数構造は未完成。三種類の削除項を統合した正規化全微分の比較が残る。
+`NormalizedDeletedCut` は全射な削除語と非零切断の共通有限添字、`word` は実際の削除基底語。
+`NormalizedDeletedCut.sum_three` は元切断非零・非切断点障害・切断点障害の三部分分割。
+`normalizedDeletedValue_sum_reduce` は二障害部分を処理し、元切断非零部分と切断点色全境界和へ帰着する。
+元の非零切断がなければ `normalizedDeletedValue_sum_eq_zero_of_no_cut` により正規化全削除和も零。
+具体的な Δ¹ の余代数構造は未完成。元切断非零部分の反復色境界比較と実際の全微分への接続が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
