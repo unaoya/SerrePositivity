@@ -432,6 +432,12 @@ public import SerrePositivity.InfinityCategories.Derived.DGVertexIsoOfH0
 public import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
+public import SerrePositivity.InfinityCategories.Derived.DGHomotopyFiniteCellGeneration
+public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFiniteCells
+public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientPretriangulated
+public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedQuasiEquivalence
+public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability
 
 /-! # Semifree 複体による導来圏の dg 表示
 

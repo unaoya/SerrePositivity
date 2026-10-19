@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability
 import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
 import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability
@@ -1705,6 +1706,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGHomotopyFiniteCellGeneration,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFiniteCells,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientPretriangulated,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedQuasiEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability,
     `SerrePositivity.InfinityCategories.Stable.UniverseHorns,
     `SerrePositivity.InfinityCategories.Stable.ReindexSliceOver,
     `SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder,
