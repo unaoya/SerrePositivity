@@ -654,3 +654,7 @@ public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryRelative
 public import SerrePositivity.KST.Spectra.PointedRelativeCofiberHomotopy
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCofiberComparison
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCofiberSphereClasses
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryCoordinates
+public import SerrePositivity.KST.Spectra.PointedPathProjectionContraction
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryStructure
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryRectification
