@@ -1,0 +1,37 @@
+module
+
+public import SerrePositivity.KST.Spectra.NormalizedValueCochains
+
+/-!
+概要：元を値とする正規化微分の係数に関する自然性。
+方針：零延長・交代和・整数倍が加法準同型と交換することを使う。
+規約：係数は任意の可換加法群。
+使われ方：Goerss–Jardine III §2、VIII §1。loop の係数同型による微分の移送。
+-/
+
+@[expose] public section
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+
+namespace SerrePositivity.KST.Spectra.NormalizedValueCochains
+
+noncomputable section
+
+/-- 係数の加法準同型は退化単体での零延長と可換。 -/
+lemma zeroExtend_map (K : SSet.{u}) {M N : AddCommGrpCat.{u}} (f : M →+ N)
+    (n : ℕ) (a : K.nonDegenerate n → M) (s : K _⦋n⦌) :
+    zeroExtend K N n (fun t ↦ f (a t)) s = f (zeroExtend K M n a s) := by
+  classical
+  dsimp only [zeroExtend]
+  split_ifs <;> simp only [map_zero]
+
+/-- 通常の正規化交代微分は任意の係数準同型と可換。 -/
+lemma differential_map (K : SSet.{u}) {M N : AddCommGrpCat.{u}} (f : M →+ N)
+    (n : ℕ) (a : K.nonDegenerate n → M) (s : K.nonDegenerate (n + 1)) :
+    differential K N n (fun t ↦ f (a t)) s = f (differential K M n a s) := by
+  rw [differential_apply, differential_apply, map_sum]
+  simp only [zeroExtend_map, map_zsmul]
+
+end
+end SerrePositivity.KST.Spectra.NormalizedValueCochains
