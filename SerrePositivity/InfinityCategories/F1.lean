@@ -1032,3 +1032,4 @@ public import SerrePositivity.InfinityCategories.F1.LeftStraighteningAllBases
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningAllBasesEvaluation
 
 public import SerrePositivity.InfinityCategories.F1.KanEnrichedDiagramArrow
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningSectionNaturality

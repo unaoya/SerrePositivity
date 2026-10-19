@@ -4275,3 +4275,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.realizationEdge_eq
 
 #check @SerrePositivity.InfinityCategories.relativeSectionDiagramInfinity_edge
+
+#check @SerrePositivity.InfinityCategories.functorIso_app_edge_naturality
+#check @SerrePositivity.InfinityCategories.transportSimplexSectionInfinity_edge
+#check @SerrePositivity.InfinityCategories.leftStraighteningSectionJointDiagram_restrictIso_naturality
+
+#check @SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_terminalRestriction
+#check @SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_initialRestriction
