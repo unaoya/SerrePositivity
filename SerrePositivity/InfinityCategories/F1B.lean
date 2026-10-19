@@ -663,3 +663,9 @@ public import SerrePositivity.InfinityCategories.F1B.KanClassicalHomUniversal
 public import SerrePositivity.InfinityCategories.F1B.KanNerveKanHomMap
 public import SerrePositivity.InfinityCategories.F1B.KanNerveKanHomBijective
 public import SerrePositivity.InfinityCategories.F1B.KanNerveKanUniversal
+public import SerrePositivity.InfinityCategories.F1B.KanNerveUnderChain
+public import SerrePositivity.InfinityCategories.F1B.KanNerveUnderChainInverse
+public import SerrePositivity.InfinityCategories.F1B.KanNerveUnderMap
+public import SerrePositivity.InfinityCategories.F1B.KanNerveUnderReadChain
+public import SerrePositivity.InfinityCategories.F1B.KanNerveUnderIso
+public import SerrePositivity.InfinityCategories.F1B.KanNerveRightKanShape

@@ -45,8 +45,10 @@
 - B5：`nerve (C ⥤ D) ≅ Fun(nerve C, nerve D)`、h Fun と通常の関手圏の同値、前後合成の自然性と関手頂点の公式を構成。
   指定自然変換と元の h Fun の射の全単射、恒等・合成・左右 whiskering の保存、古典随伴の双方向比較を証明。
   nerve の左右 Hom 普遍性と通常の Kan 拡張の同値、native な pointwise Kan から通常の Kan 拡張への含意も証明。
-- 最終検証：F1・F1B 同時ビルド成功（4007 jobs）、同時 import 検査成功（F1 7451・F1B 4824 宣言）。
-  公理監査成功（4830 宣言、標準三公理のみ、1297 モジュールに straightening なし）。ソース名衝突 0。
+- B5 局所比較：`nerve (Under c) ≅ sliceUnder (nervePoint c)` と忘却関手への射影の厳密な一致を証明。
+  通常の右 comma の nerve から native な右 Kan 添字への比較射、K への射影・局所図式との可換性を構成。比較射の同型性は未証明。
+- 最終検証：F1・F1B 同時ビルド成功（4013 jobs）、同時 import 検査成功（F1 7451・F1B 4866 宣言）。
+  公理監査成功（4872 宣言、標準三公理のみ、1303 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -66,16 +68,14 @@
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
-- `F1B.kanIsRelativeColimitCone_equivalencePathReplacement_iff` / `F1B.exists_kanGlobalRelative_diagram_with_equivalencePath`
 - `F1B.kanEquivalenceLifting_iff_inner_and_invertibleTargetLifting` / `F1B.KanEquivalenceLifting.relativeInternalHom`
 - `F1B.kanRelativeJoinRelativeColimitRestriction_isFullyFaithful` / `F1B.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration`
-- `F1B.kanLeftCanonical_pinchedHomMap_equivalence` / `F1B.kanLeftCanonical_pre_initialBoundary`
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
 - `F1B.IsRelativeRightKanExtendedFrom` / `F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left`
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
-- `F1B.kanNerve_leftKanHomUniversal_iff` / `F1B.kanNerve_rightKanHomUniversal_iff`
+- `F1B.kanNerveUnderIso` / `F1B.kanNerveRightKanShapeMap_diagram`
 - `F1B.kanNerveNatTransHomEquiv` / `F1B.kanNonempty_adjunction_iff_nerveAdjunction`
 
 ### 依存と提供
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：左右 Kan の比較写像の表示・大域的 Hom 普遍性の古典比較・pointwise から通常の Kan への含意、集約・監査・本書）。
+- なし（本保存単位：Under の nerve と native な coslice の同型・右 Kan の comma 比較射と局所図式の照合、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `leftKanShape (nerveMap L) (ComposableArrows.mk₀ c)` と `nerve (CostructuredArrow L c)` を比較し、
-  射影・局所図式を照合する。Mathlib `LeftExtension.coconeAt` の余極限性と native な局所余錐の
-  余極限性の同値を示し、右版も双対に回収する。一般の普遍写像性から pointwise 性を推論しない。
+- `StructuredArrow.toUnder c L`・`StructuredArrow.proj c L`・`Under.forget c`・L の通常の四角形の
+  引き戻し性を証明し、nerve の極限保存と `kanNerveUnderIso` で `kanNerveRightKanShapeMap` の同型性を示す。
+  その後左版と局所錐の極限・余極限性を比較する。一般の普遍写像性から pointwise 性を推論しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

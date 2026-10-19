@@ -2797,3 +2797,33 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerve_isLeftKanExtension_of_pointwise
 
 #check @SerrePositivity.InfinityCategories.F1B.kanNerve_isRightKanExtension_of_pointwise
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderChain
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderChain_map_zero_succ
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderChain_naturality
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderChainInverse
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderChainInverse_chain
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderChain_chainInverse
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderMap_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderUnderlyingChain_first
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderObjEquiv
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnderIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeMap_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeMap_under
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeMap_diagram
