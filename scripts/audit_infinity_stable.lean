@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientNerve
 import SerrePositivity.InfinityCategories.Derived.StableTriangulatedEquivalence
 import SerrePositivity.InfinityCategories.Stable
 import SerrePositivity.InfinityCategories.Derived.StableLimits
@@ -125,6 +126,13 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgNerve_contractingElement_id_homotopic_zero
+#print axioms SerrePositivity.InfinityCategories.dgNerve_contractingElement_id_eq_zeroEdge
+#print axioms SerrePositivity.InfinityCategories.dgQuotientNerve
+#print axioms SerrePositivity.InfinityCategories.dgQuotientNerveProjection
+#print axioms SerrePositivity.InfinityCategories.dgQuotientNerve_id_homotopic_zero
+#print axioms SerrePositivity.InfinityCategories.dgQuotientNerveExtension_projection
 
 #print axioms SerrePositivity.InfinityCategories.derivedStandardCofiberTriangleImageIso
 #print axioms SerrePositivity.InfinityCategories.derivedStandardCofiberTriangle_distinguished
@@ -1346,6 +1354,9 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ContractingElementNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientNerve,
+
     `SerrePositivity.InfinityCategories.Derived.ChainMapHomotopyReflection,
     `SerrePositivity.InfinityCategories.Derived.CofiberConnectingSourceTransport,
     `SerrePositivity.InfinityCategories.Derived.CofiberTriangleImageMorphism,

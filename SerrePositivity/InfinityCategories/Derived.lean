@@ -247,6 +247,9 @@ public import SerrePositivity.InfinityCategories.Derived.StandardCofiberVertexCo
 public import SerrePositivity.InfinityCategories.Derived.StandardConeTriangleDistinguished
 public import SerrePositivity.InfinityCategories.Derived.SuspensionShiftVertexTransport
 
+public import SerrePositivity.InfinityCategories.Derived.ContractingElementNerve
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientNerve
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

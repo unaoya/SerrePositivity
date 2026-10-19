@@ -17,9 +17,9 @@
 - 任意の h の射の鎖写像代表と source の TR3 から、全 distinguished triangle の標準 cofiber 表示を証明。D3 の distinguished triangle の保存・反映、逆関手の保存を証明済み。
 - `derivedStableHomotopyEquivalenceIsTriangulated` を公開。両関手の整数シフト比較と単位・余単位の整合性も含む。通常の導来圏から三角構造を引き戻して済ませていない。
 - 今回の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- Stable・Derived 集約ビルド：5,853 jobs 成功。今回の保存単位は新規 15 モジュール。
-- 公理監査：Derived 277 modules／3,235 宣言、Stable 547 modules／4,350 宣言。標準三公理のみ。
-- β3 の入口 F1B/Localization と、archive/L4-derived-geometry-log.md §26〜27 を読了。β3 の実装は未着手。
+- Stable・Derived 集約ビルド：5,853 jobs 成功。D7 の保存単位は新規 15 モジュール（`dfa5b50d`）。β3 の入口の二モジュールを加えた最新集約ビルドは 5,966 jobs 成功。
+- 最新公理監査：Derived 279 modules／3,242 宣言、Stable 549 modules／4,357 宣言。標準三公理のみ。
+- β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。一般の収縮元による恒等辺と零辺の左ホモトピー・h の等式、商の nerve と包含、ε 収縮への適用、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。局所化の普遍性は未証明。
 
 ### 残り（依存順、時間は推定）
 
@@ -41,6 +41,8 @@
 - `derivedDistinguishedTriangle_standard_presentation`、`derivedStableHomotopyEquivalenceFunctorIsTriangulated`。
 - `derivedStableHomotopyEquivalenceInverseCommShift`、`derivedStableHomotopyEquivalenceCommShiftCompatible`。
 - `derivedStableHomotopyEquivalenceIsTriangulated`、`derivedStableHomotopyInverse_map_distinguished`。
+- `dgNerve_contractingElement_id_homotopic_zero`、`dgNerve_contractingElement_id_eq_zeroEdge`。
+- `dgQuotientNerve`、`dgQuotientNerveProjection`、`dgQuotientNerve_id_homotopic_zero`、`dgQuotientNerveExtension_projection`。
 
 ### 依存と提供
 
@@ -61,7 +63,7 @@
 
 ### 次の一手
 
-- β3 の最初の実装：`DGQuotient.differential_epsilonElement` を dg nerve の辺ホモトピー判定へ渡し、殺す対象の恒等辺が零辺とホモトピックになることを証明する。汎用の収縮元付き dg 対象の補題を Derived に置き、商包含の nerve と指定対象への適用を構成する。次に局所 K-flat な模型／半自由分解後の商を固定し、反転すべき辺を cofiber が指定部分圏に入る条件で定義して F1B `IsLocalization` の関手圏普遍性へ進む。L4 の `DGResolution/Construction`・`Quotient` は読み取り専用。∞ 関手圏の普遍性を dg 関手だけの普遍性へ置換しない。
+- β3：収縮元を持つ対象へ入る／出る Hom の全次数の閉元を、収縮元との合成で境界にする公式を証明する。次数輸送を避けるには閉元を次数 n+1、原始元を次数 n とする。`differential_compose` と `unit_compose`／`compose_unit` を使い、始点側の符号を確認する。これを dg nerve の mapping space の収縮へ進め、指定部分圏の零化を証明する。続いて局所 K-flat な模型／半自由分解後の商を固定し、cofiber 条件の辺を反転することと F1B `IsLocalization` の全 ∞ 関手圏の普遍性を証明する。L4 の `DGResolution/Construction`・`Quotient` は読み取り専用。指定収縮付き dg 関手だけの延長を全 ∞ 関手の普遍性と扱わない。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
