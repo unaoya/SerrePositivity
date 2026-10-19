@@ -1979,3 +1979,33 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtensionIso_hom_fac
 
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtensionIso_hom_unique
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyCategoryOpHomEquiv_homMk
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFunctorOppositeHomEquiv
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFunctorOppositeHomEquiv_homotopy
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFunctorOppositeHomEquiv_comp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFunctorOppositeHomEquiv_precomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeTransportOpposite_isLimit_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsLeftKanExtension_iff_opposite
+
+#check @SerrePositivity.InfinityCategories.F1B.kanOpposite_map_map_heq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyOpposite_double_h_heq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRightKanExtension_opposite
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanHomMap_opposite
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanExtension_homUniversal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanExtensionHom_homUniversal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanExtensionIso_hom_fac
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanExtensionIso_hom_unique

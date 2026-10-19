@@ -501,3 +501,8 @@ public import SerrePositivity.InfinityCategories.F1B.KanLeftTransportHom
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalHom
 public import SerrePositivity.InfinityCategories.F1B.KanLeftComparisonComponent
 public import SerrePositivity.InfinityCategories.F1B.KanLeftHomUniversal
+public import SerrePositivity.InfinityCategories.F1B.KanFunctorOppositeHom
+public import SerrePositivity.InfinityCategories.F1B.KanTransportOppositeReflection
+public import SerrePositivity.InfinityCategories.F1B.KanOppositeHomotopyInvolution
+public import SerrePositivity.InfinityCategories.F1B.KanRightOppositeCriterion
+public import SerrePositivity.InfinityCategories.F1B.KanRightHomUniversal
