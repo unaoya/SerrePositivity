@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementAvoidingFaces
+import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementComponents
 import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCommonSource
 import SerrePositivity.InfinityCategories.Derived.DGFourLastHornConePrimitive
 import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCochainFiller
@@ -2507,6 +2509,19 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgVerdierTriangleHorn_target
 #print axioms SerrePositivity.InfinityCategories.dgVerdierTrianglesResidualRefinement_nonempty
 
+#print axioms SerrePositivity.InfinityCategories.dgSourceRefinementHomLinear_differential
+#print axioms SerrePositivity.InfinityCategories.dgSourceRefinementHomLinear_compose
+#print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_rhs
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_obj_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexData_ext_of_components
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_pullback_avoids_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_hom_from_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_hom_ne_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_rhs_from_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_rhs_ne_zero
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2660,6 +2675,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSourceRefinementLinear,
+    `SerrePositivity.InfinityCategories.Derived.DGSourceRefinementComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplexDataInitialRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplexInitialRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementAvoidingFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementComponents,
+
     `SerrePositivity.InfinityCategories.Derived.DGFourLastHornYonedaResidual,
     `SerrePositivity.InfinityCategories.Derived.DGFourLastHornResidualRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGFourLastHornYonedaCoordinates,

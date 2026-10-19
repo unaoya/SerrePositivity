@@ -846,6 +846,13 @@ public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornCanonical
 public import SerrePositivity.InfinityCategories.Derived.RoofTetrahedronInitialDiagonal
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCommonSource
 
+public import SerrePositivity.InfinityCategories.Derived.DGSourceRefinementLinear
+public import SerrePositivity.InfinityCategories.Derived.DGSourceRefinementComposition
+public import SerrePositivity.InfinityCategories.Derived.DGSimplexDataInitialRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGSimplexInitialRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementAvoidingFaces
+public import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementComponents
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
