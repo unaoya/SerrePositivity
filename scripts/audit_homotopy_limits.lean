@@ -6115,3 +6115,57 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @CoherentTransportComparison.initial
 #print axioms CoherentTransportComparison.initial
+
+#check @trianglePrism_hornRestriction_eq
+#print axioms trianglePrism_hornRestriction_eq
+
+#check @exists_trianglePrism_homotopy_relative_spine
+#print axioms exists_trianglePrism_homotopy_relative_spine
+
+#check @CoherentTransportTriangleHomotopy
+#print axioms CoherentTransportTriangleHomotopy
+
+#check @coherentTransportTriangleHomotopy
+#print axioms coherentTransportTriangleHomotopy
+
+#check @coherentTransportTriangleLongHomotopy
+#print axioms coherentTransportTriangleLongHomotopy
+
+#check @coherentTransportTriangleLongHomotopy_projection
+#print axioms coherentTransportTriangleLongHomotopy_projection
+
+#check @coherentTransportTriangleLongHomotopy_zero
+#print axioms coherentTransportTriangleLongHomotopy_zero
+
+#check @coherentTransportTriangleLongHomotopy_one
+#print axioms coherentTransportTriangleLongHomotopy_one
+
+#check @CoherentTransportTriangleHomotopy.mk
+#print axioms CoherentTransportTriangleHomotopy.mk
+
+#check @CoherentTransportTriangleHomotopy.homotopy
+#print axioms CoherentTransportTriangleHomotopy.homotopy
+
+#check @CoherentTransportTriangleHomotopy.projection
+#print axioms CoherentTransportTriangleHomotopy.projection
+
+#check @CoherentTransportTriangleHomotopy.first
+#print axioms CoherentTransportTriangleHomotopy.first
+
+#check @CoherentTransportTriangleHomotopy.second
+#print axioms CoherentTransportTriangleHomotopy.second
+
+#check @fixedExtensionCurry
+#print axioms fixedExtensionCurry
+
+#check @fixedExtensionCurry_ι
+#print axioms fixedExtensionCurry_ι
+
+#check @fixedExtensionCurry_uncurry
+#print axioms fixedExtensionCurry_uncurry
+
+#check @fixedExtensionCurry_vertex
+#print axioms fixedExtensionCurry_vertex
+
+#check @exists_fixedExtensionFamily_of_mono
+#print axioms exists_fixedExtensionFamily_of_mono
