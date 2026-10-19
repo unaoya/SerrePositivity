@@ -1380,3 +1380,24 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.kanRelativeJoinOppositeIso_inl
 #check @SerrePositivity.InfinityCategories.kanRelativeJoinOppositeIso_inr
 #check @SerrePositivity.InfinityCategories.kanRelativeJoinPrism_reverse
+
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinRightPrism_reverse
+#check @SerrePositivity.InfinityCategories.kanHomotopyOpposite
+#check @SerrePositivity.InfinityCategories.kanFunctorIso_prism_vertical_isInvertible
+#check @SerrePositivity.InfinityCategories.kanFunctorIsoOpposite
+#check @SerrePositivity.InfinityCategories.KanRightCylinder
+#check @SerrePositivity.InfinityCategories.kanRightCylinderPrism
+#check @SerrePositivity.InfinityCategories.kanRightCylinderBase
+#check @SerrePositivity.InfinityCategories.rightKanOppositeTransformation
+#check @SerrePositivity.InfinityCategories.rightKanCylinderDiagram
+#check @SerrePositivity.InfinityCategories.kanRightCylinderPrism_diagram
+#check @SerrePositivity.InfinityCategories.kanRightCylinderBase_diagram
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinRightDualIso
+#check @SerrePositivity.InfinityCategories.kanRightRelativeJoinCylinderComparison
+#check @SerrePositivity.InfinityCategories.kanRightCylinderPrism_comparison
+#check @SerrePositivity.InfinityCategories.kanRightCylinderBase_comparison
+#check @SerrePositivity.InfinityCategories.RightKanRelativeJoinRealization
+#check @SerrePositivity.InfinityCategories.rightKanRelativeJoinRealization_nonempty
+#check @SerrePositivity.InfinityCategories.RightKanRelativeJoinRealization.prismIso
+#check @SerrePositivity.InfinityCategories.RightKanRelativeJoinRealization.leftIso
+#check @SerrePositivity.InfinityCategories.RightKanRelativeJoinRealization.rightIso

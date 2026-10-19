@@ -20,7 +20,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、指定変換の類の保存、部分パラメータを固定した相対充填、slice の相対 join への局所比較、左条件の局所余極限表示への還元、標準右指定変換の局所極限表示との同値） |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、指定変換の類の保存、部分パラメータを固定した相対充填、slice の相対 join への局所比較、左条件の局所余極限表示への還元、標準右指定変換の局所極限表示との同値、任意の右指定変換の円柱比較つき相対 join 表示） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定
@@ -500,8 +500,19 @@ J=A⋆B、τ=`V ≫ joinIntervalProjection J B` として
 join と区間付き係数への両射影の式、および左右の包含を交換する式を保持する。
 `KanRelativeJoinPrismOpposite` は反転した左の標準 prism が、braiding で時間を直した
 右の標準 prism に厳密に一致することを証明する。
-任意の元の α を標準右指定変換へ移す相対 join 表示とその類の保存は、右側ではまだ未完了。
-上記はそのための反転の幾何であり、右の円柱比較の前合成同値や表示の存在そのものとは区別する。
+`KanRelativeJoinPrismOpposite` の逆向きの式も証明済みで、反転した右標準 prism は左標準 prism に一致する。
+`KanFunctorOpposite` は指定ホモトピーを反転し、可逆な代表の垂直辺を使って逆向きの関手の同型を作る。
+この同型の存在は、h Fun の全ての射に対する反変関手や類の写像を構成したという主張とは区別する。
+`KanRightCylinder` は δop の左写像円柱を反転したものを右円柱の模型とする。
+`kanRightCylinderPrism_diagram`・`kanRightCylinderBase_diagram` はその図式から元の α の raw な射全体と F を厳密に回収する。
+`kanRightRelativeJoinCylinderComparison` は左比較の反転と右 relative join の二重反転同型の合成であり、
+prism 部分は標準右 prism、底 C の包含は右 relative join の左包含に厳密に一致する。
+`RightKanRelativeJoinRealization` はこの円柱全体との一つの比較同型を持つ図式。
+`rightKanRelativeJoinRealization_nonempty` は左側の表示の存在とその比較同型の反転から、
+任意の δ と α についてこの表示が存在することを示す。D のみ quasicategory を要求する。
+同じ円柱比較を制限した `prismIso/leftIso/rightIso` で元の α 全体と両端の図式を保持する。
+右の両端の同時の厳密化と、その補正後の指定変換が α と同じ類を持つことは未完了。
+右円柱比較の前合成同値そのものも未証明であり、表示の存在の証明にはその追加命題を使っていない。
 
 **B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
 極限からの点ごとの存在と大域的組み立てが残る。
@@ -509,8 +520,8 @@ join と区間付き係数への両射影の式、および左右の包含を交
 
 ### 次の工程
 
-左右の標準指定変換の局所錐との同定、relative join と標準 prism の反転両立は済。
-右の円柱比較を左側の比較の反転から導き、任意の指定変換 α の相対 join 表示と類の保存を整える。
+左右の標準指定変換の局所錐との同定と、任意の α の円柱比較つき右相対 join 表示の存在は済。
+右の端点の同時の厳密化を構成し、元の指定変換 α の類を保つことを証明する。
 指定変換の類を保存する相対 join 表示を用い、全部分 ∞ 圏からの相対 Kan 拡張の
 写像空間の制限定理（Kerodon Prop 7.3.6.7・Cor 7.3.6.9）を整える。
 点ごとの Kan 条件から h Fun 全体の普遍写像性（Kerodon Prop 7.3.6.1 の左右版）を導き、
@@ -523,8 +534,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2409 jobs、公理監査2717宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内738モジュールに straightening 依存なし。
+対象ビルド2412 jobs、公理監査2774宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内741モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -743,4 +754,10 @@ B5 の古典 nerve に戻る検査も未完了。
 | `kanJoin_reverse_prefix/kanAugJoinSplit_reverse/kanJoin_interval_cut_reverse`・`kanJoinDiagonal_reverse` | 切断の補数による先頭・末尾の交換と対角の反転両立 | 済 |
 | `kanPrismOppositeIso/kanJoinDiagonal_opposite_square`・`kanRelativeJoinOppositeIso/fst/snd` | 区間付き係数と relative join の反転同型、および両射影との両立 | 済 |
 | `kanPrismOppositeIso_endpoint`・`kanRelativeJoinOppositeIso_inl/inr` | 区間の端点と relative join の両包含の交換 | 済 |
-| `kanRelativeJoinPrism_reverse` | 反転した左標準 prism と右標準 prism の厳密な一致 | 済・右円柱比較の同値性と任意の α の表示は未完了 |
+| `kanRelativeJoinPrism_reverse` | 反転した左標準 prism と右標準 prism の厳密な一致 | 済・任意の α の表示は下記で済、右円柱比較の前合成同値そのものは未証明 |
+
+| `kanHomotopyOpposite/kanFunctorIso_prism_vertical_isInvertible/kanFunctorIsoOpposite` | 指定ホモトピーの反転と可逆代表から得る逆向きの関手の同型 | 済 |
+| `KanRightCylinder/kanRightCylinderPrism/kanRightCylinderBase`・`rightKanOppositeTransformation/rightKanCylinderDiagram` | 反転した左円柱による右円柱模型と元の α の図式 | 済 |
+| `kanRightCylinderPrism_diagram/kanRightCylinderBase_diagram` | 元の α 全体と F の厳密な回収 | 済 |
+| `kanRelativeJoinRightPrism_reverse/kanRelativeJoinRightDualIso/kanRightRelativeJoinCylinderComparison`・`kanRightCylinderPrism_comparison/kanRightCylinderBase_comparison` | 反転から構成した右円柱比較と prism・底への厳密な制限 | 済・前合成同値そのものは未証明 |
+| `RightKanRelativeJoinRealization/rightKanRelativeJoinRealization_nonempty`・`...prismIso/leftIso/rightIso` | 任意の δ と α の一つの円柱比較つき右相対 join 表示の存在と制限同型 | 済・端点の厳密化と類の保存は未完了 |

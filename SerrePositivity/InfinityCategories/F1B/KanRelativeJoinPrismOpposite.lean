@@ -57,4 +57,41 @@ lemma kanRelativeJoinPrism_reverse {K C : SSet.{u}} (δ : K ⟶ C) :
       simp
     · rfl
 
+/-- 概要：反転した右標準 prism は反対側の左標準 prism に一致する。
+方針：左右を交換した対角の反転を、二つの pullback 射影で計算する。
+規約：右 prism の時間を第一因子へ直してから反転する。
+使われ方：右円柱比較の prism 部分の同定。 -/
+lemma kanRelativeJoinRightPrism_reverse {K C : SSet.{u}} (δ : K ⟶ C) :
+    reversePrism ((β_ (Δ[1] : SSet.{u}) K).hom ≫ kanRelativeJoinRightPrism δ) ≫
+      (kanRelativeJoinOppositeIso (𝟙 C) δ).hom =
+      relativeJoinPrism (SSet.opFunctor.map δ) := by
+  apply pullback.hom_ext
+  · rw [Category.assoc, kanRelativeJoinOppositeIso_fst, ← Category.assoc,
+      ← reversePrism_postcomp]
+    simp only [Category.assoc, kanRelativeJoinRightPrism, pullback.lift_fst]
+    change reversePrism (joinDiagonal K ≫ joinMap δ (𝟙 K)) ≫
+      (stableJoinReverseIso C K).hom =
+      relativeJoinPrism (SSet.opFunctor.map δ) ≫
+        pullback.fst (joinMap (SSet.opFunctor.map δ) (𝟙 C.op)) (joinDiagonal C.op)
+    rw [reversePrism_postcomp, Category.assoc, stableJoinReverse_naturality,
+      ← Category.assoc, kanJoinDiagonal_reverse]
+    simp only [relativeJoinPrism, pullback.lift_fst, CategoryTheory.Functor.map_id]
+  · rw [Category.assoc, kanRelativeJoinOppositeIso_snd, ← Category.assoc,
+      ← reversePrism_postcomp]
+    simp only [Category.assoc, kanRelativeJoinRightPrism, pullback.lift_snd]
+    change reversePrism ((Δ[1] : SSet.{u}) ◁ δ) ≫ (kanPrismOppositeIso C).hom =
+      relativeJoinPrism (SSet.opFunctor.map δ) ≫
+        pullback.snd (joinMap (SSet.opFunctor.map δ) (𝟙 C.op)) (joinDiagonal C.op)
+    simp only [relativeJoinPrism, pullback.lift_snd]
+    apply SSet.hom_ext
+    rintro ⟨⟨n⟩⟩
+    apply ConcreteCategory.hom_ext
+    rintro ⟨t, a⟩
+    apply Prod.ext
+    · apply stdSimplex.ext
+      intro i
+      change ((t i.rev.rev).rev).rev = t i
+      simp
+    · rfl
+
 end SerrePositivity.InfinityCategories
