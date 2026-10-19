@@ -40,7 +40,10 @@
   任意の底上の通常の余極限に対し、相対関手空間が各部分の相対関手空間の極限になることを構成。
   既存の相対骨格列とセル付加へ適用し、任意の coherent 図式の切断空間の骨格の塔による極限表示と、
   後続段階の境界・単体の押し出しによる極限表示を検証。left fibration では塔の各値は Kan、制限は Kan fibration。
-  切断空間の表示から余極限の頂点・余錐を構成する接続は未完了。詳細はコミットメッセージを参照。
+  部分余極限頂点を付加した実際の形状・図式と、指定した余錐を頂点ごと保つ延長を構成。余極限性も保存・反映。
+  部分余極限からの比較を全ての脚を含む coherent な余錐で構成し、元の部分図式への制限を厳密に照合。
+  比較辺を実際の Kan 対象の射へ戻し、部分余極限対象の span と、その小さい Kan 押し出し候補・native な余極限余錐を構成。
+  共通部分で一致する二つの余錐の一意な貼り合わせも公開。span の余錐を元の図式へ戻す接続は未完了。詳細はコミットメッセージを参照。
   F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3 に記載。
 - **残り**（依存順・時間は再開後の概算）：
   1. γ3c：通常の小圏上の Kan 値図式の coend 余極限から、任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
@@ -70,11 +73,13 @@
   `bousfieldKanCoherentConeSourceFamily_restrict`、`bousfieldKanCoherentOppositeCone_isLimit`、
   `bousfieldKanCoherentCocone_isColimit`、`kanDiagramCoherentNerve_hasColimit`、
   `relativeFunctorOverPre_pushoutIso`、`relativeFunctorOverColimitCone_isLimit`、
-  `skeletalSectionCone_isLimit`、`skeletalSectionDiagram_map_fibration`、`skeletalCellSectionCone_isLimit`。
+  `skeletalSectionCone_isLimit`、`skeletalSectionDiagram_map_fibration`、`skeletalCellSectionCone_isLimit`、
+  `colimitAttachedCocone`、`colimitAttachmentComparison_restrict`、`colimitAttachmentApexHom`、
+  `coherentShapePushoutCocone`、`partialColimitApexSpan`、`partialColimitPushoutCocone_isColimit`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は SectionShapePushout・SectionShapeColimit・SectionShapeOverDiagram・SectionShapeFibration・SkeletalConeSections・SkeletalCellSections、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
+- **未コミット**：今回の保存単位は ColimitAttachmentDiagram・ColimitAttachedCocone・ColimitAttachmentComparison・ColimitAttachmentHom・CoherentShapeCoconeGluing・PartialColimitApexSpan、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -83,13 +88,14 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：骨格の切断空間の表示から、実際の余極限の頂点と余錐を構成する。
-  `SkeletalCellSections` の後続段階と `SkeletalConeSections` の極限段階は、任意の coherent な図式で検証済み。
-  `Stable/ColimitAttachment`・`ColimitFamilyExtension` と、`SpaceArbitraryPushouts`・
-  `SpaceArbitrarySequentialColimits` を読み取り専用で照合し、部分図式の余極限を付加して
-  後続段階を余極限対象の span、全体を余極限対象の列へ還元する。部分余錐の高次の整合性を保持する。
-  小さい `K` と `p : ulift K → SpaceInfinity` では、セルの添字と頂点の宇宙を u に戻すことも検証する。
-  切断空間の通常の極限表示だけでは、∞ 余極限の存在や普遍性を済ませたと数えない。
+- **次の一手**：`partialColimitPushoutCocone` を元の押し出し形状の図式の余錐へ戻す。
+  `colimitAttachmentComparison` は共通部分の余極限錐から両部分余錐の頂点への全単体の比較を与え、
+  `colimitAttachmentApexHom_edge` が span の射と比較辺そのものを同定する。
+  最初に `Stable/CoconeMappingHomComparison`・`LeftFibrationInitialFiberPiZeroEquiv_evaluation` と比較辺の π₀ の作用を照合する。
+  span の余錐の脚に沿って部分余錐を輸送し、共通部分での比較を保って単射側の切断の制限で厳密に揃え、
+  `coherentShapePushoutCocone` へ渡す。余極限性は付加による制限の同値と切断空間の押し出し表示で照合する。
+  その後、余極限対象の列と骨格の切断空間の塔を照合して無限段階を処理する。
+  小さい `K` と `p : ulift K → SpaceInfinity` ではセルの添字を u に戻すことも検証する。span 自体の余極限性だけで元の図式の余極限性を済ませたと数えない。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
 ### E2a（既存の引き継ぎ）

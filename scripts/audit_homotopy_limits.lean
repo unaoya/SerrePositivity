@@ -4615,3 +4615,90 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @skeletalCellSectionCone_isLimit
 #print axioms skeletalCellSectionCone_isLimit
+
+#check @colimitAttachedShape
+#print axioms colimitAttachedShape
+
+#check @colimitAttachedDiagram
+#print axioms colimitAttachedDiagram
+
+#check @colimitAttachedDiagram_left
+#print axioms colimitAttachedDiagram_left
+
+#check @colimitAttachedDiagram_right
+#print axioms colimitAttachedDiagram_right
+
+#check @colimitAttachedApex
+#print axioms colimitAttachedApex
+
+#check @colimitAttachedApex_diagram
+#print axioms colimitAttachedApex_diagram
+
+#check @colimitAttachedDiagram_restriction_trivialKanFibration
+#print axioms colimitAttachedDiagram_restriction_trivialKanFibration
+
+#check @exists_colimitAttachedCocone
+#print axioms exists_colimitAttachedCocone
+
+#check @colimitAttachedCocone
+#print axioms colimitAttachedCocone
+
+#check @colimitAttachedCocone_restrict
+#print axioms colimitAttachedCocone_restrict
+
+#check @colimitAttachedCocone_vertex
+#print axioms colimitAttachedCocone_vertex
+
+#check @colimitAttachedCocone_isColimit_iff
+#print axioms colimitAttachedCocone_isColimit_iff
+
+#check @colimitAttachmentComparison
+#print axioms colimitAttachmentComparison
+
+#check @colimitAttachmentComparison_vertex
+#print axioms colimitAttachmentComparison_vertex
+
+#check @colimitAttachmentComparison_restrict
+#print axioms colimitAttachmentComparison_restrict
+
+#check @colimitAttachmentApexEdge
+#print axioms colimitAttachmentApexEdge
+
+#check @colimitAttachmentNormalizedEdge
+#print axioms colimitAttachmentNormalizedEdge
+
+#check @colimitAttachmentApexHom
+#print axioms colimitAttachmentApexHom
+
+#check @colimitAttachmentApexHom_edge
+#print axioms colimitAttachmentApexHom_edge
+
+#check @coherentShapePushoutCocone
+#print axioms coherentShapePushoutCocone
+
+#check @coherentShapePushoutCocone_left
+#print axioms coherentShapePushoutCocone_left
+
+#check @coherentShapePushoutCocone_right
+#print axioms coherentShapePushoutCocone_right
+
+#check @coherentShapePushoutCocone_vertex
+#print axioms coherentShapePushoutCocone_vertex
+
+#check @coherentShapePushoutCocone_unique
+#print axioms coherentShapePushoutCocone_unique
+
+#check @partialColimitApexSpan
+#print axioms partialColimitApexSpan
+
+#check @partialColimitPushoutObject
+#print axioms partialColimitPushoutObject
+
+#check @partialColimitPushoutCocone
+#print axioms partialColimitPushoutCocone
+
+#check @partialColimitPushoutCocone_vertex
+#print axioms partialColimitPushoutCocone_vertex
+
+#check @partialColimitPushoutCocone_isColimit
+#print axioms partialColimitPushoutCocone_isColimit
