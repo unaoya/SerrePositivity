@@ -275,8 +275,12 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `substitute_at_occurrence` は任意の出現での代入を前半・挿入語・後半へ分解する。
 `compositeWord_at_occurrence` はその挿入語を重なる分割の実際の同じ番号の成分へ照合する。
 `firstHorizontal_dropLast` は最初の水平語の末尾を除いた部分を最初の出現以前の実際の代入へ戻す。
-融合後の実際の行列と経路の頂点列、中間・最終の水平語と垂直端点の接続、
-`blockWord` と `compositeWord` の一般の全体の一致は未完成。
+`middleHorizontal_dropLast`・`finalHorizontal_word` は中間・最終水平語も実際の代入へ分解する。
+`verticalWord_append_endpoint` は垂直末尾を次の水平先頭で一度だけ復元する接続式。
+`blockWord_after_occurrence` は共有先頭文字と元の未消費代入を後ろから全成分で照合する。
+`blockWord_eq_compositeWord` は全成分語の実際の合成語との一般の一致。
+`fused_success_compositeWord` は元の二表の成功と分割から、全共有行融合表の実際の合成語抽出を証明する。
+融合後の実際の行列と経路の元の置換頂点列の一致・行長 Schedule の構成は未完成。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

@@ -226,3 +226,4 @@ public import SerrePositivity.EInfinity.Surjection.TableCompositionWord
 public import SerrePositivity.EInfinity.Surjection.SubstitutionConcatenation
 public import SerrePositivity.EInfinity.Surjection.CompositeWordOccurrence
 public import SerrePositivity.EInfinity.Surjection.HorizontalWordSubstitution
+public import SerrePositivity.EInfinity.Surjection.TableCompositionOutput

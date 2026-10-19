@@ -558,6 +558,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.substitute_at_occurrence,
       `SerrePositivity.EInfinity.Surjection.compositeWord_at_occurrence,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.firstHorizontal_dropLast,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.middleHorizontal_dropLast,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.finalHorizontal_word,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.verticalWord_append_endpoint,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.blockWord_eq_compositeWord,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fused_success_compositeWord,
       `SerrePositivity.EInfinity.Surjection.substitute_horizontal_no_slot,
       `SerrePositivity.EInfinity.Surjection.occurrenceAt_complete,
       `SerrePositivity.EInfinity.Surjection.occurrenceAt_none_between,
@@ -1205,3 +1210,17 @@ example : compositeWord canonicalFixture compositionInner 1 verticalCuts =
 -- 最初の融合水平部分は、最初の指定値以前の実際の代入と一致する。
 example : (fullCompositionFixture.horizontalWord 0).dropLast = [0] := by
   exact fullCompositionFixture.firstHorizontal_dropLast.trans (by decide)
+
+-- 中間・最終水平語と共有垂直末尾を、元の成分から一般定理で計算する。
+example : (fullCompositionFixture.horizontalWord 1).dropLast = [2, 4] := by
+  exact (fullCompositionFixture.middleHorizontal_dropLast ⟨0, by decide⟩ ⟨1, by decide⟩ rfl).trans
+    (by decide)
+example : fullCompositionFixture.horizontalWord 2 = [1, 4, 3] := by
+  exact (fullCompositionFixture.finalHorizontal_word ⟨1, by decide⟩ (by decide)).trans (by decide)
+-- 共有境界を全部融合した実際の表が、元のリスト代入による合成語を返す。
+example : fullCompositionFixture.blockWord 0 =
+    compositeWord canonicalFixture compositionInner 1 verticalCuts :=
+  fullCompositionFixture.blockWord_eq_compositeWord
+example : reduceRows (fullCompositionFixture.fusedRows 0) [] =
+    some (compositeWord canonicalFixture compositionInner 1 verticalCuts) :=
+  fullCompositionFixture.fused_success_compositeWord
