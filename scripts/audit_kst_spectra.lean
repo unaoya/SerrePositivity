@@ -807,7 +807,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SkeletalTransitionReedyMono,
     `SerrePositivity.KST.Spectra.PartialTotalizationTower,
     `SerrePositivity.KST.Spectra.PartialTotalizationLimit,
-    `SerrePositivity.KST.Spectra.PartialTotalizationMilnorComparison]
+    `SerrePositivity.KST.Spectra.PartialTotalizationMilnorComparison,
+    `SerrePositivity.KST.Spectra.LimitRestrictionEquivalence,
+    `SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport,
+    `SerrePositivity.KST.Spectra.StrictDiagramTransformation,
+    `SerrePositivity.KST.Spectra.SpectrumCospanReplacement]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -320,3 +320,7 @@ public import SerrePositivity.KST.Spectra.SpectrumMappingWhitehead
 public import SerrePositivity.KST.Spectra.SpectrumMappingComponents
 public import SerrePositivity.KST.Spectra.SpectrumWhiteheadEquivalence
 public import SerrePositivity.KST.Spectra.SpectrumReplacementEquivalences
+public import SerrePositivity.KST.Spectra.LimitRestrictionEquivalence
+public import SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport
+public import SerrePositivity.KST.Spectra.StrictDiagramTransformation
+public import SerrePositivity.KST.Spectra.SpectrumCospanReplacement
