@@ -345,6 +345,16 @@ public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingBaseCha
 public import SerrePositivity.InfinityCategories.Stable.StableVertexExtension
 public import SerrePositivity.InfinityCategories.Stable.CofiberOctahedronSquares
 public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingComposition
+public import SerrePositivity.InfinityCategories.Stable.StableHoClosure
+public import SerrePositivity.InfinityCategories.Stable.StableHoTriangulated
+public import SerrePositivity.InfinityCategories.Stable.StableHoGeneration
+public import SerrePositivity.InfinityCategories.Stable.CofiberHoDenominators
+public import SerrePositivity.InfinityCategories.Stable.CofiberCompositionEdges
+public import SerrePositivity.InfinityCategories.Stable.FiniteHoDenominators
+public import SerrePositivity.InfinityCategories.Stable.FiniteCofiberDenominators
+public import SerrePositivity.InfinityCategories.Stable.FiniteHoEqualization
+public import SerrePositivity.InfinityCategories.Stable.FiniteCofiberEqualization
+
 
 /-! # 安定 ∞ 圏の基盤
 

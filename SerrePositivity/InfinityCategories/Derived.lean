@@ -486,6 +486,8 @@ public import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalMappingSpaces
 
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierDenominators
+public import SerrePositivity.InfinityCategories.Derived.DGFiniteVerdierDenominators
+
 
 /-! # Semifree 複体による導来圏の dg 表示
 

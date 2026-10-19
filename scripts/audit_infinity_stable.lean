@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGFiniteVerdierDenominators
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDenominators
 import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalMappingSpaces
 import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
@@ -1629,6 +1630,21 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_pushout_iff
 #print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_pullback_iff
 
+#print axioms SerrePositivity.InfinityCategories.stableHoClosure
+#print axioms SerrePositivity.InfinityCategories.stableHoClosure_isTriangulated
+#print axioms SerrePositivity.InfinityCategories.stableHoClosure_shift
+#print axioms SerrePositivity.InfinityCategories.stableHoClosure_le_iff
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.triangle_first_arrow
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_iff_trW
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_compStruct_twoOfThree
+#print axioms SerrePositivity.InfinityCategories.stableHoClosure_commonDenominator
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_commonDenominator
+#print axioms SerrePositivity.InfinityCategories.stableHoClosure_equalizeFinite
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_equalizeFinite
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_iff_trW
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_commonDenominator
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_equalizeFinite
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1782,6 +1798,16 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.StableHoClosure,
+    `SerrePositivity.InfinityCategories.Stable.StableHoTriangulated,
+    `SerrePositivity.InfinityCategories.Stable.StableHoGeneration,
+    `SerrePositivity.InfinityCategories.Stable.CofiberHoDenominators,
+    `SerrePositivity.InfinityCategories.Stable.CofiberCompositionEdges,
+    `SerrePositivity.InfinityCategories.Stable.FiniteHoDenominators,
+    `SerrePositivity.InfinityCategories.Stable.FiniteCofiberDenominators,
+    `SerrePositivity.InfinityCategories.Stable.FiniteHoEqualization,
+    `SerrePositivity.InfinityCategories.Stable.FiniteCofiberEqualization,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteVerdierDenominators,
     `SerrePositivity.InfinityCategories.Stable.CofiberPushoutComparison,
     `SerrePositivity.InfinityCategories.Stable.CofiberLocalizingBaseChange,
     `SerrePositivity.InfinityCategories.Stable.StableVertexExtension,
