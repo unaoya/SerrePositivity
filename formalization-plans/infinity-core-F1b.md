@@ -39,8 +39,9 @@
 - 同じ底と終点の cartesian な持ち上げを可逆辺で比較し、特殊な輸送から任意の輸送の保存を導いた。
   一般の cartesian fibration では、fiber の始対象から全空間の相対始点境界充填を導ける。
 - cocartesian fibration 間の単射による相対指数の制限は inner fibration。相対 join の制限 V にも適用済み。
-- 最終検証：F1・F1B 同時ビルド成功（3381 jobs）、同時 import 検査成功（F1 5543・F1B 3502 宣言）。
-  公理監査成功（3506 宣言、標準三公理のみ、947 モジュールに straightening なし）。
+- 余錐制限と相対 join 制限の各 fiber の cartesian fibration 性を証明。縦合成の比較射の pullback 分解も証明。
+- 最終検証：F1・F1B 同時ビルド成功（3389 jobs）、同時 import 検査成功（F1 5569・F1B 3516 宣言）。
+  公理監査成功（3520 宣言、標準三公理のみ、950 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -61,7 +62,6 @@
 ### 主要宣言（名前のみ）
 
 - `QCatAdjunction` / `qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison`
-- `IsRightKanExtension` / `IsLeftKanExtension` / `RightKanHomUniversal` / `LeftKanHomUniversal`
 - `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
 - `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
 - `kanFiberwiseFunctorHomEquiv` / `exists_kanFiberwise_extension_of_initialBoundary`
@@ -82,7 +82,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：二部分を固定した延長、逆像の交わり、相対指数の制限の inner fibration 性、集約・監査・本書）。
+- なし（本保存単位：余錐制限と相対 join 制限の fiber の cartesian 性、縦比較の pullback 分解、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -97,9 +97,9 @@
 
 ### 次の一手
 
-- V は inner fibration で cartesian 辺を保存する。fiber の余錐制限の cartesian 輸送を F1 の型へ接続する。
-  `CocartesianHornFibration (opFunctor.map (coconeRestriction K D))` の既存 API を使える。
-  両側の底への射影の輸送と fiber の輸送から V の cartesian fibration 性を導き、fiber の始対象を全空間へ移す。
+- V は inner fibration で cartesian 辺を保存し、各 fiber の制限も cartesian fibration。
+  `kanSquareComparisonVertical_factor` とその後半の自明 Kan fibration 性を相対 coslice 比較に適用し、
+  合成射影に関する cartesian 辺から中間の射の cartesian 性を導き、V 自体の cartesian 性と全空間の充填へ進む。
   最後に `exists_kanFiberwise_extension_of_initialBoundary` へ渡す（Kerodon 7.3.4.5–6）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と

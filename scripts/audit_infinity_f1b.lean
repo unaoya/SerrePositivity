@@ -1627,3 +1627,9 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeHomDiagram_extension
 #check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseHomPre_innerFibration
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRestriction_innerFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeRestriction_cartesianFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanCartesianFibration_of_iso_square
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRestrictionFiber_cartesianFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanSquareComparisonVertical_isPullback
+#check @SerrePositivity.InfinityCategories.F1B.kanSquareComparisonVertical_factor
+#check @SerrePositivity.InfinityCategories.F1B.kanSquareComparisonVerticalMap_trivialKanFibration
