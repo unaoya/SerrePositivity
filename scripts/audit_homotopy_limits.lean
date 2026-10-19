@@ -7981,3 +7981,96 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRightCorrectionExtensionEdge_canonical_hom_arrow
 #print axioms specifiedCoconeRightCorrectionExtensionEdge_canonical_hom_arrow
+
+#check @fixedExtensionBaseIso
+#print axioms fixedExtensionBaseIso
+
+#check @fixedExtensionBaseIso_vertex
+#print axioms fixedExtensionBaseIso_vertex
+
+#check @fixedExtensionBaseIso_uncurry
+#print axioms fixedExtensionBaseIso_uncurry
+
+#check @fixedExtensionBaseIso_endpoint
+#print axioms fixedExtensionBaseIso_endpoint
+
+#check @fixedExtensionBaseIso_homotopyEdge
+#print axioms fixedExtensionBaseIso_homotopyEdge
+
+#check @fixedExtensionBaseIso_vertexIso
+#print axioms fixedExtensionBaseIso_vertexIso
+
+#check @fixedExtensionEdgeTarget_parameter
+#print axioms fixedExtensionEdgeTarget_parameter
+
+#check @fixedExtensionEdgeTarget_eq_of_vertex
+#print axioms fixedExtensionEdgeTarget_eq_of_vertex
+
+#check @fixedExtensionBaseIso_edgeTarget
+#print axioms fixedExtensionBaseIso_edgeTarget
+
+#check @fixedExtensionRestriction_edgeTarget
+#print axioms fixedExtensionRestriction_edgeTarget
+
+#check @specifiedCoconeLeftTriangleLongBase
+#print axioms specifiedCoconeLeftTriangleLongBase
+
+#check @specifiedCoconeRightPrefixTriangleLongBase
+#print axioms specifiedCoconeRightPrefixTriangleLongBase
+
+#check @specifiedCoconeLeftCommonRootRestriction
+#print axioms specifiedCoconeLeftCommonRootRestriction
+
+#check @specifiedCoconeRightPrefixCommonRootRestriction
+#print axioms specifiedCoconeRightPrefixCommonRootRestriction
+
+#check @specifiedCoconeLeftCommonRootRestriction_uncurry
+#print axioms specifiedCoconeLeftCommonRootRestriction_uncurry
+
+#check @specifiedCoconeRightPrefixCommonRootRestriction_uncurry
+#print axioms specifiedCoconeRightPrefixCommonRootRestriction_uncurry
+
+#check @specifiedCoconeLeftCommonRootRestriction_actual
+#print axioms specifiedCoconeLeftCommonRootRestriction_actual
+
+#check @specifiedCoconeRightPrefixCommonRootRestriction_actual
+#print axioms specifiedCoconeRightPrefixCommonRootRestriction_actual
+
+#check @specifiedCoconeLeftCommonRootRestriction_endpoint
+#print axioms specifiedCoconeLeftCommonRootRestriction_endpoint
+
+#check @specifiedCoconeLeftCommonRootRestriction_endpoint_edge
+#print axioms specifiedCoconeLeftCommonRootRestriction_endpoint_edge
+
+#check @specifiedCoconeRightPrefixCommonRootRestriction_endpoint
+#print axioms specifiedCoconeRightPrefixCommonRootRestriction_endpoint
+
+#check @specifiedCoconeRightPrefixCommonRootRestriction_endpoint_edge
+#print axioms specifiedCoconeRightPrefixCommonRootRestriction_endpoint_edge
+
+#check @specifiedCoconeLeftCommonRootComparisonIso
+#print axioms specifiedCoconeLeftCommonRootComparisonIso
+
+#check @specifiedCoconeLeftCommonRootComparisonIso_map
+#print axioms specifiedCoconeLeftCommonRootComparisonIso_map
+
+#check @specifiedCoconeLeftCommonRootComparisonIso_endpoint_hom_arrow
+#print axioms specifiedCoconeLeftCommonRootComparisonIso_endpoint_hom_arrow
+
+#check @specifiedCoconeLeftCommonRootComparisonIso_boundary_hom_arrow
+#print axioms specifiedCoconeLeftCommonRootComparisonIso_boundary_hom_arrow
+
+#check @specifiedCoconeRightPrefixCommonRootComparisonIso
+#print axioms specifiedCoconeRightPrefixCommonRootComparisonIso
+
+#check @specifiedCoconeRightPrefixCommonRootComparisonIso_map
+#print axioms specifiedCoconeRightPrefixCommonRootComparisonIso_map
+
+#check @specifiedCoconeRightPrefixCommonRootComparisonIso_endpoint_hom_arrow
+#print axioms specifiedCoconeRightPrefixCommonRootComparisonIso_endpoint_hom_arrow
+
+#check @specifiedCoconeRightPrefixCommonRootComparisonIso_boundary_hom_arrow
+#print axioms specifiedCoconeRightPrefixCommonRootComparisonIso_boundary_hom_arrow
+
+#check @edgeEvaluation_composition_hom_arrow
+#print axioms edgeEvaluation_composition_hom_arrow
