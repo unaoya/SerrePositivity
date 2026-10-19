@@ -6517,3 +6517,174 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @partialColimitSpanTransportCoconePath_one
 #print axioms partialColimitSpanTransportCoconePath_one
+
+#check @pointHomBaseCone
+#print axioms pointHomBaseCone
+
+#check @pointHomBaseCone_source
+#print axioms pointHomBaseCone_source
+
+#check @pointHomBaseCone_target
+#print axioms pointHomBaseCone_target
+
+#check @pointHomBasePrism
+#print axioms pointHomBasePrism
+
+#check @pointHomBasePrism_zero
+#print axioms pointHomBasePrism_zero
+
+#check @pointHomBasePrism_one
+#print axioms pointHomBasePrism_one
+
+#check @pointHomFiberTransport
+#print axioms pointHomFiberTransport
+
+#check @pointHomTransportAction
+#print axioms pointHomTransportAction
+
+#check @pointHomTransportPrism
+#print axioms pointHomTransportPrism
+
+#check @pointHomTransportPrism_zero
+#print axioms pointHomTransportPrism_zero
+
+#check @pointHomTransportPrism_one
+#print axioms pointHomTransportPrism_one
+
+#check @pointHomTransportPrism_projection
+#print axioms pointHomTransportPrism_projection
+
+#check @pointHomTransportActionAt
+#print axioms pointHomTransportActionAt
+
+#check @pointHomTransportPrismAt
+#print axioms pointHomTransportPrismAt
+
+#check @pointHomTransportPrismAt_zero
+#print axioms pointHomTransportPrismAt_zero
+
+#check @pointHomTransportPrismAt_one
+#print axioms pointHomTransportPrismAt_one
+
+#check @pointHomTransportPrismAt_projection
+#print axioms pointHomTransportPrismAt_projection
+
+#check @pointHomTransportMap
+#print axioms pointHomTransportMap
+
+#check @pointHomTransportMap_vertex
+#print axioms pointHomTransportMap_vertex
+
+#check @leftFibrationInitialBaseIso_inv_uncurry
+#print axioms leftFibrationInitialBaseIso_inv_uncurry
+
+#check @pointHomLiftCone
+#print axioms pointHomLiftCone
+
+#check @pointHomLiftCone_source
+#print axioms pointHomLiftCone_source
+
+#check @pointHomLiftCone_target
+#print axioms pointHomLiftCone_target
+
+#check @pointHomLiftCone_projection
+#print axioms pointHomLiftCone_projection
+
+#check @pointHomLiftPrism
+#print axioms pointHomLiftPrism
+
+#check @pointHomLiftPrism_zero
+#print axioms pointHomLiftPrism_zero
+
+#check @pointHomLiftPrism_one
+#print axioms pointHomLiftPrism_one
+
+#check @pointHomLiftPrism_projection
+#print axioms pointHomLiftPrism_projection
+
+#check @pointHomTransportEdge
+#print axioms pointHomTransportEdge
+
+#check @pointHomTransportPathHomotopy
+#print axioms pointHomTransportPathHomotopy
+
+#check @pointHomTransportPathHomotopy_projection
+#print axioms pointHomTransportPathHomotopy_projection
+
+#check @pointHomSourceVertex
+#print axioms pointHomSourceVertex
+
+#check @PointHomActionComparison
+#print axioms PointHomActionComparison
+
+#check @pointHomActionComparison
+#print axioms pointHomActionComparison
+
+#check @pointHomActionComparisonHomotopy
+#print axioms pointHomActionComparisonHomotopy
+
+#check @pointHomActionComparisonHomotopy_projection
+#print axioms pointHomActionComparisonHomotopy_projection
+
+#check @PointHomActionComparison.mk
+#print axioms PointHomActionComparison.mk
+
+#check @PointHomActionComparison.homotopy
+#print axioms PointHomActionComparison.homotopy
+
+#check @PointHomActionComparison.projection
+#print axioms PointHomActionComparison.projection
+
+#check @PointHomActionComparison.initial
+#print axioms PointHomActionComparison.initial
+
+#check @fiberPointHomParameterIso
+#print axioms fiberPointHomParameterIso
+
+#check @fiberPointHomFamily
+#print axioms fiberPointHomFamily
+
+#check @fiberPointHomActionComparison
+#print axioms fiberPointHomActionComparison
+
+#check @fiberPointHomPathIso
+#print axioms fiberPointHomPathIso
+
+#check @fiberPointHomPathHomotopy
+#print axioms fiberPointHomPathHomotopy
+
+#check @fiberPointHomPathHomotopy_hom
+#print axioms fiberPointHomPathHomotopy_hom
+
+#check @partialColimitSpanLeftTransportFiberPoint
+#print axioms partialColimitSpanLeftTransportFiberPoint
+
+#check @partialColimitSpanRightTransportFiberPoint
+#print axioms partialColimitSpanRightTransportFiberPoint
+
+#check @partialColimitSpanTransportCoconePath_source
+#print axioms partialColimitSpanTransportCoconePath_source
+
+#check @partialColimitSpanTransportCoconePath_target
+#print axioms partialColimitSpanTransportCoconePath_target
+
+#check @partialColimitSpanTransportCoconeEdge
+#print axioms partialColimitSpanTransportCoconeEdge
+
+#check @partialColimitSpanTransportCoconeEdge_projection
+#print axioms partialColimitSpanTransportCoconeEdge_projection
+
+#check @partialColimitSpanLeftTransportHomFamily_fiberPoint
+#print axioms partialColimitSpanLeftTransportHomFamily_fiberPoint
+
+#check @partialColimitSpanRightTransportHomFamily_fiberPoint
+#print axioms partialColimitSpanRightTransportHomFamily_fiberPoint
+
+#check @partialColimitSpanTransportHomPathComparison
+#print axioms partialColimitSpanTransportHomPathComparison
+
+#check @partialColimitSpanTransportHomPathComparison_hom
+#print axioms partialColimitSpanTransportHomPathComparison_hom
+
+#check @partialColimitSpanTransportHomPathIso
+#print axioms partialColimitSpanTransportHomPathIso
