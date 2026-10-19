@@ -9,21 +9,22 @@
 - F1a〜F1c の fibration・transport・coherent nerve の基盤を提供済み。F1d は未完了。
 - left fibrations と strict transport の像の coherent nerve の同値は構成済み。
   strict Kan 図式の復元、および有限鎖の nerve 上の coherent 図式の復元は関手同型まで証明済み。
-- weighted nerve の標準単位を、底の対象で評価した `KanEnrichedComparison` と coherent な
-  関手同型へ実現済み。任意の coherent な strict 図式の族へ引き戻せる。実現した辺は元の単位を回収する。
-- 一図式を固定した場合は、標準単位を底全体の coherent な関手同型へ実現済み。
-  単位の各成分は単射。単位に沿う strict な比較の制限は trivial Kan fibration で、
-  延長空間は可縮。strict transport の像では図式全体で同値な厳密な左逆も存在する。
+- weighted nerve の豊穣な標準単位は各成分で単射かつ同値。単位に沿う strict な比較の制限は
+  trivial Kan fibration、延長空間は可縮。strict transport の像で同値な厳密な左逆も存在する。
 - 底と図式の族を同時に動かした二点図式の共同実現を構成済み。面・退化との整合性と
   比較の辺の成分公式・可逆性を証明し、curry により `kanDiagramRealization C` と
   `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を得た。
-- `LeftTransportRepresentation` に分類図式・底上の比較・fiber の同値を束ね、pointed space
-  への射を回収した。任意の底変換への制限は底側と全空間側の両射を厳密に保つ。
-  両射の一致と表現そのものの一致の同値も証明済み。通常の nerve 上の小さい left fibration
-  には、既存の直接比較から実際の表現を構成済み。
+- 表現を `LeftTransportRepresentation` に束ねた。任意の底変換は底側と全空間側の両射を厳密に保ち、
+  両射の一致は表現の一致と同値。通常の nerve 上の小さい left fibration の実際の表現も構成済み。
 - 正次元の標準単体上で、比較の全 fiber の同値性は境界上の同値性と同値。
   可換四角形そのものの境界固定延長は未証明。
-- 対象ビルド2805 jobs、公理監査4901宣言が成功。依存公理は標準3公理のみ。
+- 可換四角形全体を関手空間の引き戻し `transportSquareSpace p` として構成。
+  分類図式への射影は left fibration、固定図式上の fiber は相対関手空間と同型。
+  表現を表す頂点の全部分複体 `transportWitnessSpace p` は Kan 複体。
+  実際の表現との頂点全単射、任意の底変換への制限、頂点での厳密な制限の回収を証明済み。
+- 単射な底変換では、四角形と表現空間の制限はともに inner fibration。
+  可逆な一次の辺の持ち上げ、全ホーン持ち上げ、可縮性はまだ未証明。
+- 対象ビルド2815 jobs、公理監査4989宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
@@ -50,38 +51,34 @@
 - `strictKanStraighteningUnitIso`、`finiteStraighteningUnitIso`
 - `weightedNerveKanEnriched`、`weightedNerveInfinityMap`
 - `weightedNerveTransportUnit`、`weightedNerveTransportUnit_isQCatEquivalence`
-- `weightedNerveTransportUnit_enrichedNaturality`
-- `weightedNerveTransportKanComparison`、`weightedNerveStraighteningEvaluationIso`
-- `weightedNerveStraighteningFamilyEvaluationIso`、`weightedNerveStraighteningUnitIso`
-- `weightedNerveJointComparisonEdge`、`weightedNerveJointComparisonIso`
+- `weightedNerveTransportUnit_enrichedNaturality`、`weightedNerveJointComparisonIso`
 - `weightedNerveStraighteningCoherentUnitIso`、`weightedNerveStraighteningCoherentFamilyUnitIso`
-- `weightedNerveTransportUnit_restriction_trivialKanFibration`
-- `weightedNerveTransportUnit_extensionSpace_isContractibleKan`
-- `exists_weightedNerveTransportUnit_retraction`
+- `weightedNerveTransportUnit_extensionSpace_isContractibleKan`、`exists_weightedNerveTransportUnit_retraction`
 - `LeftTransportRepresentation`、`LeftTransportRepresentation.restrict`
 - `LeftTransportRepresentation.restrict_eq_iff`、`nerveLeftTransportRepresentation`
 - `leftFibration_fiberEquivalence_iff_boundary`
+- `transportSquareSpace`、`transportSquareRestriction_innerFibration`
+- `transportWitnessSpace`、`transportWitnessVertexEquiv`、`transportWitnessSpace_kanComplex`
+- `transportWitnessRestriction_vertex`、`transportWitnessRestriction_innerFibration`
 - `coherentLeftResolutionInfinityComparisonIso`
 
 ### 依存と提供
 
 - Core の left/right fibration、相対写像空間、同値・関手同型を読み取り専用で使用する。
   Coherent/Quasicategory の γ1 と HomotopyLimits/WeightedConstantSimplex も使用する。
+  F1B/FullSubcomplexMapping の全部分複体の包含の充満忠実性を読み取り専用で使用する。
 - 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
   𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
 - 再開時は F1/README.md の原典照合と方針を維持し、他レーンのファイルは編集しない。
 
 ### 未コミット
 
-- 担当する F1/、F1.lean、監査スクリプトに未コミットの実装なし。
-  現在地の更新も所有ファイルだけを指定して同時にコミットする。
+- F1/、F1.lean、監査スクリプト、計画の変更は所有ファイルのみ指定して保存する。未コミット実装なし。
 - 共有作業ツリーの他レーンの変更は引き継ぎ対象外であり、保存・巻き戻しを行わない。
 
 ### 既知の問題
 
 - F1 の対象ビルド・公理監査に失敗なし。ルート全体のビルドは今回の検査対象外。
-- F1B の `relativeFunctorVertex` 衝突は `relativeExtensionVertex` への改名で修正済み。
-  両集約の同時ビルドと同時 import は成功。修正コミット `1132823f` は並行追加の監査29行を含む。
 - F1 のソースに明示的な `ModelCategory SSet` 仮定はない。モデル構造は使わない。
   `Fibration`・`TrivialKanFibration` はホーン・境界に対する持ち上げ性として用いる。
 - strict Kan 図式の strict な Hom が一般に Kan とは主張しない。
@@ -91,16 +88,18 @@
 - 標準単位に沿う可縮な延長は同じ通常圏上での係数図式の変更に関するもの。
   底の包含 C₀ ⊆ C に対し、指定した表現の底への射と全空間の射をともに厳密に保つ
   相対表現の延長（Theorem 5.6.5.12）は未証明。高次パラメーターの境界上でも両方を保つ必要がある。
+- Kan 複体間の inner fibration 性だけから全ホーン持ち上げは従わない。
+  表現空間の制限で一次の可逆な辺を持ち上げる工程を省略しない。
 
 ### 次の一手
 
-底の包含とパラメーターの境界をともに固定する表現の延長へ進む（§5.6.5）。
-表現の頂点データは `LeftTransportRepresentation` として定式化済み。次はこれを
-二つの関手空間の引き戻しの部分単体集合（transport witnesses）へ束ね、底の包含に沿う
-制限の持ち上げ性を示す（[Lemma 5.6.8.10](https://kerodon.net/tag/02SK)）。
-標準単体上での境界固定延長は、既存の局所 strictification だけからは従わない。
-正次元では `leftFibration_fiberEquivalence_iff_boundary` により fiber 条件を境界から回収できるので、
-底・全空間の両射を固定した可換四角形の延長を構成する。
+`transportWitnessRestriction` の可逆な一次の辺の持ち上げを示し、既証明の inner fibration 性と
+合わせて全ホーン持ち上げへ進む（[Lemma 5.6.8.10](https://kerodon.net/tag/02SK)）。
+分類図式の辺は `Core/EquivalencePathLifting.equivalenceHomotopy_extend` で単射に沿って延長し、
+全空間側は `hasLiftingProperty_transportSquareRestriction` と同じ相対内部 Hom の持ち上げを使う。
+新しい終点が表現を表すことは、`TransportWitnessEdges` の fiber prism の比較を片端だけの
+表現条件へ一般化し、分類図式の辺の可逆性から証明する。次いで標準単体上の選択空間の可縮性と
+境界固定延長へ進む。局所 strictification だけではこの延長は得られない。
 
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
