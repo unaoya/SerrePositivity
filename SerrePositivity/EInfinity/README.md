@@ -596,7 +596,11 @@ nullary を含む TR の部分合成保存は完了。
 `NestedEdgeCut.outputFamily_eq_blocks`・`innerOutputFamily_tupleDegree` は二段出力族と内側次数をこの表示へ接続する。
 `tensorVectorAt_family_blocks` は元の面テンソルを実際のブロック評価の入力へ分ける。
 `tensorCoInsertionAction_face_apply` は内側の指定面テンソル値から元の族上の実際の余代入と prefixDegree の交換符号を評価する。
-具体的な Δ¹ の余代数構造は未完成。二段作用のテンソル評価と符号の一致・右辺の有限和・nullary、
+`FaceCut` は辺・頂点入力の非零項を統一し、正次数の頂点入力は空、次数零は一項となる。
+`cochainAction_basis_face_cut_sum` は全入力面での実際の複体射の値をその有限和へ移す。
+`tensorCoInsertionAction_cochain_basis_sum` は全 arity の実際の内側作用の余代入を評価する。
+`NestedEdgeCut.faceCutEquiv`・`sum_faceCuts` は外側切断上の内側面切断和を二段切断上へ移す。
+具体的な Δ¹ の余代数構造は未完成。係数交換・外側余演算を含む全右辺の評価と符号の一致・nullary、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 

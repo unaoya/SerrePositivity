@@ -1218,6 +1218,26 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.innerOutputFamily_tupleDegree,
       `SerrePositivity.EInfinity.IntervalCuts.tensorVectorAt_family_blocks,
       `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_face_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.coInsertionBlocks_face_sum_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_face_sum_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCutValid,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.output,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.coefficient,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.output_tupleDegree,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.edgeEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.vertexEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.isEmpty_of_nonedge_of_degree_ne_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.faceCutSum,
+      `SerrePositivity.EInfinity.IntervalCuts.faceCutSum_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.faceCutSum_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_basis_vertex_cut_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_basis_edge_cut_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_basis_face_cut_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_cochain_basis_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.faceCutEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.outputFamily_eq_faceCut,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.sum_faceCuts,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3544,3 +3564,19 @@ example (C : Complex ℤ) (θ : C ⊗ interval ℤ ⟶ power (interval ℤ) 2) (
   simpa only [hs, Units.smul_def, Units.coe_neg_one, neg_one_zsmul] using!
     tensorCoInsertionAction_face_apply ℤ C 2 2 1 θ (-1) (-3) outerFaceFixture
       innerFaceFixture (by decide) a (by decide) r hθ
+
+-- 正次数の頂点入力は空、空語の頂点入力と語010の辺入力は各一項。
+example : Fintype.card (FaceCut compositionInner (vertex 0)) = 0 := by decide
+example : Fintype.card (FaceCut zeroEmptyWord (vertex 1)) = 1 := by decide
+example : Fintype.card (FaceCut zeroEmptyWord edge) = 0 := by decide
+example : Fintype.card (FaceCut compositionInner edge) = 1 := by decide
+-- 同じ二段切断の内側面出力・符号を、依存対表示で保持する。
+example : (NestedEdgeCut.faceCutEquiv compositionInner compositionInner 0
+    nestedRepeatedExample).2.coefficient = 1 := by decide
+example : List.ofFn (NestedEdgeCut.faceCutEquiv compositionInner compositionInner 0
+    nestedRepeatedExample).2.output = [edge, edge] := by decide
+example : nestedRepeatedExample.outputFamily = insertionFamily
+    (edgeOutput compositionInner nestedRepeatedExample.val.1)
+    (NestedEdgeCut.faceCutEquiv compositionInner compositionInner 0
+      nestedRepeatedExample).2.output 0 :=
+  NestedEdgeCut.outputFamily_eq_faceCut nestedRepeatedExample

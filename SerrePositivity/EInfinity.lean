@@ -327,3 +327,10 @@ public import SerrePositivity.EInfinity.IntervalCuts.FamilyBlocks
 public import SerrePositivity.EInfinity.IntervalCuts.NestedFamilyBlocks
 public import SerrePositivity.EInfinity.IntervalCuts.TensorFamilyBlocks
 public import SerrePositivity.EInfinity.IntervalCuts.CoInsertionActionEvaluation
+public import SerrePositivity.EInfinity.IntervalCuts.CoInsertionFaceSums
+public import SerrePositivity.EInfinity.IntervalCuts.CoInsertionActionSums
+public import SerrePositivity.EInfinity.IntervalCuts.FaceCuts
+public import SerrePositivity.EInfinity.IntervalCuts.FaceCutSums
+public import SerrePositivity.EInfinity.IntervalCuts.CochainFaceCutSums
+public import SerrePositivity.EInfinity.IntervalCuts.CochainInsertionSums
+public import SerrePositivity.EInfinity.IntervalCuts.NestedFaceCutEquiv
