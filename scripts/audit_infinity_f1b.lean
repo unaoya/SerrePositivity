@@ -2613,3 +2613,47 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightFunctor_relative_terminal
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightFunctor_relative_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceOverPostcomp_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_pathReplacement_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_pathSection_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeTerminalVertex_comp_iff_of_fullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeTerminalVertex_comp_iff_of_surjective_fullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLimitCone_comp_iff_of_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLimitCone_precomp_iff_of_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLimitCone_equivalencePathReplacement_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightCanonicalCone_postcomp_val
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeRightKanExtendedFrom_pathReplacement_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeRightKanExtendedFrom_pathSection_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHomTarget_quasicategory_of_mono
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPathRelativeFunctorRestriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPathRelativeLeftFunctor_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPathRelativeRightFunctor_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPathRelativeTargetComparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPathRelativeTargetComparison_fst
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPathRelativeTargetComparison_snd
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPathRelativeTargetComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPathRelativeTargetComparison_square
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftFunctor_relative_pinchedHomMap_equivalence_general
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightFunctor_relative_pinchedHomMap_equivalence_general
