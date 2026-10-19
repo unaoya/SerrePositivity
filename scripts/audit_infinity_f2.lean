@@ -451,3 +451,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.isColimitCone_functor_of_pointwise
 #check @SerrePositivity.InfinityCategories.F2.isColimitCone_arrow_of_endpoints
 #check @SerrePositivity.InfinityCategories.F2.isColimitCone_laxPullback_of_components
+
+#check @SerrePositivity.InfinityCategories.F2.exists_limitCone_with_specified_image
+#check @SerrePositivity.InfinityCategories.F2.exists_limitCone_tensor_with_components
+#check @SerrePositivity.InfinityCategories.F2.exists_cone_pullback_with_components
+#check @SerrePositivity.InfinityCategories.F2.exists_limitCone_pullback_with_snd
+#check @SerrePositivity.InfinityCategories.F2.exists_limitCone_arrow_with_limit_image
+#check @SerrePositivity.InfinityCategories.F2.exists_limitCone_laxPullback_with_components
+#check @SerrePositivity.InfinityCategories.F2.hasLimit_laxPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_laxPullback_iff_components
+#check @SerrePositivity.InfinityCategories.F2.hasFiniteLimits_laxPullback_of_preservation
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_laxPullback_iff_finite_components
