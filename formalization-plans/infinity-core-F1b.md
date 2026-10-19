@@ -30,19 +30,19 @@
 - 境界の最初の頂点の標準 U 余極限性から、元・境界・標的の図式を固定して相対境界を延長。
 - 相対 join の通常の関手圏の相対制限について、始点境界充填・右 pinched 写像空間の同値を証明。
   局所 U 余極限図式の全部分 ∞ 圏からの制限は充満忠実で、必要な局所相対余極限が存在すれば自明 Kan。
-- 円柱の変形で右端への制限と底射影による前合成の h Fun 上の随伴・相対 join の Hom 全単射を構成。
-  円柱の quasicategory 性は不要。実際の制限の公式・後合成自然性・逆対応の単位との合成公式も証明。
-- 右端の単位と標準 prism の指定変換の h Fun の類の一致を証明し、標準変換の Hom 普遍性へ接続。
-  comma 上の Hom と元の添字上の Hom の全単射、両逆、後合成自然性、候補の指定変換の類を同定。
+- 円柱の変形から右端への h Fun の随伴・相対 join の Hom 全単射・自然性・単位の合成公式を構成。
+- 標準 prism と右端の単位の類を比較し、comma と元の添字の Hom 全単射・自然性を標準変換の Hom 普遍性へ接続。
 - 局所余極限から左 Kan 条件と Hom 普遍性を同時に持つ候補を構成し、任意の指定 β 自身へ移送済み。
   同じ宇宙の quasicategory K・C・D と任意の δ に対し、`IsLeftKanExtension` から `LeftKanHomUniversal`。
 - 局所普遍余錐の Hom 全単射から、指定変換に両立する比較射の各点での可逆性・大域的同型・一意性を証明。
 - 反転 Hom 全単射と指定変換・合成・前合成との両立から、右側も Hom 普遍性と大域的一意性を証明。
 - 相対左 Kan 条件を標準 U 余極限で定義し、輸送の選択・指定変換の h Fun の類に対する不変性を証明。
   comma 候補の条件は全 fiber の相対余極限性と同値。任意の指定変換も厳密化後の局所 U 余極限性で判定。
+- 底 C 内で一度だけ選んだ普遍図式への前合成により、元の関手の族を comma の図式の族へ写す。
+  標準相対左 Kan 条件の保存・反映、右端の厳密な回収、U の後合成自然性、元の相対制限との可換正方形を証明。
 - F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3842 jobs）、同時 import 検査成功（F1 7018・F1B 4351 宣言）。
-  公理監査成功（4355 宣言、標準三公理のみ、1184 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3851 jobs）、同時 import 検査成功（F1 7072・F1B 4392 宣言）。
+  公理監査成功（4396 宣言、標準三公理のみ、1191 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -50,10 +50,10 @@
   Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。24〜60 時間。
   絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
   V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。標準 U 余極限との同値も U が inner なら証明済み。
-  相対的な組み立ては `KanEquivalenceLifting U` を持つ一般の U に拡張済み。任意の U の path 置換はこの条件を持つ。
-  局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
+  右持ち上げ条件下の組み立て・任意の U の path 置換・相対 join の関手の制限の相対始点境界充填は証明済み。
   任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
-  相対 join の全部分圏の制限は充満忠実、局所存在の下で自明 Kan。局所 Kan 条件の比較は完了し、元の制限への移送が残る。
+  相対 join の制限は充満忠実、局所存在の下で自明 Kan。元の全部分圏からの制限と族の可換正方形を構成済み。
+  その比較の写像空間での同値性と右側への移送は未完。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
@@ -72,8 +72,8 @@
 - `F1B.kanEquivalenceLifting_iff_inner_and_invertibleTargetLifting` / `F1B.KanEquivalenceLifting.relativeInternalHom`
 - `F1B.kanRelativeJoinRelativeColimitRestriction_isFullyFaithful` / `F1B.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration`
 - `F1B.kanRelativeJoinRightHomEquiv` / `F1B.kanRelativeJoinTransformation_homUniversal`
-- `F1B.kanLeftCommaCandidate_isRelativeLeftKanExtension_iff`
-- `F1B.IsRelativeLeftKanExtendedFrom` / `F1B.kanRelativeLeftStrictification_iff_local_relativeColimits`
+- `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
+- `F1B.kanRelativeLeftKanRestriction` / `F1B.kanRelativeLeftKanRestriction_comma_square`
 - `F1B.kanRightKanExtension_homUniversal` / `F1B.kanRightKanExtensionIso`
 - `F1B.kanRelativeInitialVertex_iff_initialBoundary` / `F1B.kanRelativeCoconeLifting_iff_isRelativeColimitCone`
 
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：相対余極限の添字・同型移送、相対左 Kan 条件、comma・厳密化の局所判定、集約・監査・本書）。
+- なし（本保存単位：普遍 comma 図式・全次数の族・標準相対 Kan 条件との比較・元の相対制限の可換正方形、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `IsRelativeLeftKanExtendedFrom U δ F` から元の関手圏の相対制限の始点境界充填を証明する。
-  comma 候補・厳密化の局所条件との比較は実装済み。次は図式の族として比較し、F と δ による制限を保って戻す。
-  全部分圏包含 δ の通常の相対写像空間と右側へ移送し、原典 7.3.6.7・7.3.6.9 を閉じる。
+- `kanRelativeLeftKanRestriction_comma_square` から元の相対制限の写像空間の同値を導く。
+  普遍前合成・comma 射影への前合成の族の写像空間を比較する。既存の h Fun の Hom 全単射だけでは不足。
+  全部分圏包含 δ の境界固定の充填と右側への移送を証明し、原典 7.3.6.7・7.3.6.9 を閉じる。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

@@ -2199,3 +2199,57 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtension_relativeJoin_iff_local_relativeColimits
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftStrictification_iff_local_relativeColimits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalHomotopy
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalStrictification
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalDiagram
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalDiagram_inl
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalDiagram_inr
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalFamily_inr
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalFamily_inl
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalFamily_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalFamily_candidate
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalFamily_diagram
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalIdentityHomotopy
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalIdentityHomotopy_hom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalIdentityHomotopy_postcomp_hom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers
+
+#check @SerrePositivity.InfinityCategories.F1B.KanRelativeLeftKanVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanDiagrams
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanToCommaDiagrams
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanToCommaDiagrams_ι
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanToCommaDiagrams_inr
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaRelativeTargetMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaRelativeTargetMap_fst
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaRelativeTargetMap_snd
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalFamily_relativeRestriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_comma_square
