@@ -499,3 +499,8 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleSquareCospan
 public import SerrePositivity.KST.Spectra.SpectrumPointLoopReference
 public import SerrePositivity.KST.Spectra.SpectrumCirclePointLoopComparison
 public import SerrePositivity.KST.Spectra.SpectrumCirclePointLoopCriterion
+public import SerrePositivity.KST.Spectra.CospanCentralWeightExtension
+public import SerrePositivity.KST.Spectra.CospanCentralWeightRestriction
+public import SerrePositivity.KST.Spectra.CospanLoopWeights
+public import SerrePositivity.KST.Spectra.SplitTrivialSpanHomotopy
+public import SerrePositivity.KST.Spectra.CospanLoopWeightComparison

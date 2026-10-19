@@ -986,7 +986,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumCircleSquareCospan,
     `SerrePositivity.KST.Spectra.SpectrumPointLoopReference,
     `SerrePositivity.KST.Spectra.SpectrumCirclePointLoopComparison,
-    `SerrePositivity.KST.Spectra.SpectrumCirclePointLoopCriterion]
+    `SerrePositivity.KST.Spectra.SpectrumCirclePointLoopCriterion,
+    `SerrePositivity.KST.Spectra.CospanCentralWeightExtension,
+    `SerrePositivity.KST.Spectra.CospanCentralWeightRestriction,
+    `SerrePositivity.KST.Spectra.CospanLoopWeights,
+    `SerrePositivity.KST.Spectra.SplitTrivialSpanHomotopy,
+    `SerrePositivity.KST.Spectra.CospanLoopWeightComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
