@@ -4913,3 +4913,165 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.sTwoRealizationAdditivityMap_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.sTwoRealizationAdditivityMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.terminalBoundaryLifting_reflect_of_boundary_lifting
+#print axioms SerrePositivity.KST.SConstruction.terminalBoundaryLifting_reflect_of_boundary_lifting
+
+#check @SerrePositivity.KST.SConstruction.isLimitCone_fullSubcomplex_of_ambient
+#print axioms SerrePositivity.KST.SConstruction.isLimitCone_fullSubcomplex_of_ambient
+
+#check @SerrePositivity.KST.SConstruction.isPullbackSquare_fullSubcomplex_of_ambient
+#print axioms SerrePositivity.KST.SConstruction.isPullbackSquare_fullSubcomplex_of_ambient
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategory
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategory
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategory_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategory_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategory_vertex
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategory_vertex
+
+#check @SerrePositivity.KST.SConstruction.square_vertices_of_corners
+#print axioms SerrePositivity.KST.SConstruction.square_vertices_of_corners
+
+#check @SerrePositivity.KST.SConstruction.fullSubcategoryVertex
+#print axioms SerrePositivity.KST.SConstruction.fullSubcategoryVertex
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategory_hasZeroVertex
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategory_hasZeroVertex
+
+#check @SerrePositivity.KST.SConstruction.squareBottomEdge_eq_of_pushoutSpan_eq
+#print axioms SerrePositivity.KST.SConstruction.squareBottomEdge_eq_of_pushoutSpan_eq
+
+#check @SerrePositivity.KST.SConstruction.squareLeftEdge_eq_of_pushoutSpan_eq
+#print axioms SerrePositivity.KST.SConstruction.squareLeftEdge_eq_of_pushoutSpan_eq
+
+#check @SerrePositivity.KST.SConstruction.square_initial_corners_of_span
+#print axioms SerrePositivity.KST.SConstruction.square_initial_corners_of_span
+
+#check @SerrePositivity.KST.SConstruction.exists_closedSubcategory_pushoutSquare
+#print axioms SerrePositivity.KST.SConstruction.exists_closedSubcategory_pushoutSquare
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategoryInclusion_preservesPushout
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategoryInclusion_preservesPushout
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategoryInclusion_preservesZero
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategoryInclusion_preservesZero
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategoryInclusion_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategoryInclusion_preservesSConstructionData
+
+#check @SerrePositivity.KST.SConstruction.exists_pullbackSquare_of_zero_corner
+#print axioms SerrePositivity.KST.SConstruction.exists_pullbackSquare_of_zero_corner
+
+#check @SerrePositivity.KST.SConstruction.square_final_corners_of_cospan
+#print axioms SerrePositivity.KST.SConstruction.square_final_corners_of_cospan
+
+#check @SerrePositivity.KST.SConstruction.exists_closedSubcategory_pullbackSquare
+#print axioms SerrePositivity.KST.SConstruction.exists_closedSubcategory_pullbackSquare
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategoryInclusion_preservesFiber
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategoryInclusion_preservesFiber
+
+#check @SerrePositivity.KST.SConstruction.yonedaEdge_source
+#print axioms SerrePositivity.KST.SConstruction.yonedaEdge_source
+
+#check @SerrePositivity.KST.SConstruction.yonedaEdge_target
+#print axioms SerrePositivity.KST.SConstruction.yonedaEdge_target
+
+#check @SerrePositivity.KST.SConstruction.square_bottom_vertices
+#print axioms SerrePositivity.KST.SConstruction.square_bottom_vertices
+
+#check @SerrePositivity.KST.SConstruction.square_right_vertices
+#print axioms SerrePositivity.KST.SConstruction.square_right_vertices
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategory_cofiber_nonempty
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategory_cofiber_nonempty
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategory_fiber_nonempty
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategory_fiber_nonempty
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategory_isStable
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategory_isStable
+
+#check @SerrePositivity.KST.SConstruction.closedStableModel
+#print axioms SerrePositivity.KST.SConstruction.closedStableModel
+
+#check @SerrePositivity.KST.SConstruction.closedStableInclusion
+#print axioms SerrePositivity.KST.SConstruction.closedStableInclusion
+
+#check @SerrePositivity.KST.SConstruction.PreservesCofiberData.isExactFunctor
+#print axioms SerrePositivity.KST.SConstruction.PreservesCofiberData.isExactFunctor
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.comap
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.comap
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.inter
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.inter
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.top
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.top
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberPredicate
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberPredicate
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberDiagrams
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberDiagrams
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberDiagrams_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberDiagrams_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberDiagrams_isStable
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberDiagrams_isStable
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberStableModel
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberStableModel
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberInclusion
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberInclusion
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiber_vertex
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiber_vertex
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberSubobjectMap
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberSubobjectMap
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberQuotientMap
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberQuotientMap
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberSubobjectMap_ι
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberSubobjectMap_ι
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberQuotientMap_ι
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberQuotientMap_ι
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberSubobject
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberSubobject
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberQuotient
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberQuotient
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberSubobject_inclusion
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberSubobject_inclusion
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberQuotient_inclusion
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberQuotient_inclusion
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.predicate
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.predicate
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.of_iso
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.of_iso
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.zero_mem
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.zero_mem
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.pushout_mem
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.pushout_mem
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.pullback_mem
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.pullback_mem

@@ -26,7 +26,9 @@
 - `coreSRowAdditivityMap_localized_isIso`・`objectSRowAdditivityMap_localized_isIso`：任意の S_n 行の加法性を証明済み。元の射対の単体的自然変換を対角に移して全反復へ接続済み。
 - `multiRealizationAdditivityMap_localized_isIso`：全ての正の有限反復 core S• 実現の加法性を証明済み。単回の座標同型を基底に、S/cofiber 交換・行ごとの加法性・対角・既存の自然な反復座標同型で帰納した。r=0 は主張しない。
 - `cofiberEndofunctor` と各角の自然変換を構成し、加法性を完全関手について自然な `multiRealizationAdditivityLocalizedIso` に束ねた。S₂ の元の中央四角形の二つの区間への射対も正の反復実現で局所化同型。
-- 対象ビルド3320 jobs、公理監査1932宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
+- `ClosedStablePredicate` と `closedSubcategory_isStable`：零対象・押し出し・引き戻しに閉じた replete な頂点条件から、全部分圏の安定性と包含の完全性を証明済み。部分圏の安定性を入力の仮定には置いていない。
+- `relativeCofiberStableModel`：評価による逆像条件の交わりとして相対 E(A,C,B) を構成済み。subobject・quotient は A/B への完全関手で、元の評価との包含後の厳密な等号を証明済み。相対加法性自体は未完。
+- 対象ビルド3371 jobs、公理監査1986宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
 
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
@@ -61,17 +63,19 @@
 - `coreSRowAdditivityMap_localized_isIso`、`objectSRowAdditivityMap_localized_isIso`
 - `multiRealizationAdditivityMap_localized_isIso`、`multiRealizationAdditivityLocalizedIso`
 - `cofiberEndofunctor`、`cofiberEvaluationNat`、`sTwoRealizationAdditivityMap_localized_isIso`
+- `ClosedStablePredicate`、`closedSubcategory_isStable`、`closedStableInclusion`
+- `relativeCofiberStableModel`、`relativeCofiberSubobject`、`relativeCofiberQuotient`
 
 ### 依存と提供
 - 所有は `SerrePositivity/KST/SConstruction/`、集約、監査スクリプト、本計画。namespace は同名。
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）。
-- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解。
+- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解、閉じた全部分圏と相対 E(A,C,B) の安定性・完全な評価。
 - K スペクトル・相対版の加法性・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 担当ファイルは検証済み保存単位（新規8モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
+- 担当ファイルは検証済み保存単位（新規9モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
@@ -79,7 +83,7 @@
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 1932宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- 1986宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
 - raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。二つの実ホモトピーと quotient 射の局所化同型まで証明済み。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - homotopy fiber 比較を既存の構造射と形式的に合成するだけでは正の Ω 条件の証明にならない。
@@ -87,8 +91,8 @@
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- 相対 E(A,C,B) の加法性へ進む。C の replete な安定全部分複体 A/B（包含は完全）と、subobject が A・quotient が B に属す全 cofiber 図式の部分複体を定義する。零対象と cofiber の閉性、包含の完全性を証明し、安定な入力として束ねる。
-- `mcCarthyRho_source`・`mcCarthyRho_quotient` による strict 回収と、θ の quotient の点ごとの同型を使い、同じ相対左 fiber に二つのホモトピーを制限する。replete 性で同型の輸送を処理する。Quillen A の弱同値を単なる部分複体への制限だけで結論しない。
+- 相対 E(A,C,B) の加法性へ進む。構成済みの `relativeCofiberSubobject`・`relativeCofiberQuotient` の object S に strict 左 fiber を定義する。S_n(closedSubcategory P) の包含を、全 Ar 成分が P に入る gapped 図式として特徴づけ、相対 fiber の全高次単体の所属条件を照合する。
+- `mcCarthyRho_source`・`mcCarthyRho_quotient` の strict 回収と、θ の quotient の点ごとの同型を使い、相対 fiber に二つのホモトピーを制限する。`ClosedStablePredicate.of_iso` と `zero_mem` で同型の輸送・切断の零対象を処理する。元の弱同値を部分複体へ単に制限しただけで相対加法性を結論しない。
 - 全有限反復へは既証明の `sCofiberStableIso_pair`・`iteratedSAdditivityDiagram`・`iteratedSRealizationCoordinateIso_additivity` を参考に相対版を接続する。
 - 次に S_n の全連続区間への Segal 分解と、経路境界の面の homotopy pullback 条件を実証明する。`sTwoRealizationAdditivityMap_localized_isIso` は n=2 の具体的な入力。S 実現と既存の homotopy fiber・元の構造射の比較を経て正の Ω 条件・BF 連結 K スペクトルへ進む。
 - 検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
