@@ -265,7 +265,16 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.onSequence_eq_zero_of_adjacent_eq,
       `SerrePositivity.EInfinity.TableReduction.onSequence_eq_zero_of_degenerate,
       `SerrePositivity.EInfinity.TableReduction.normalizedMap_generator,
-      `SerrePositivity.EInfinity.TableReduction.degreeMap_action] do
+      `SerrePositivity.EInfinity.TableReduction.degreeMap_action,
+      `SerrePositivity.EInfinity.Surjection.firstOccurrences_nodup,
+      `SerrePositivity.EInfinity.Surjection.caesuraList_eq_sort,
+      `SerrePositivity.EInfinity.Surjection.rowStart_strictMono,
+      `SerrePositivity.EInfinity.Surjection.rowStart_lt_length,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRow_nodup,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRow_word_length,
+      `SerrePositivity.EInfinity.TableReduction.canonicalPermutation_inv_list,
+      `SerrePositivity.EInfinity.TableReduction.canonicalSimplex,
+      `SerrePositivity.EInfinity.TableReduction.rows_canonicalVertices] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -317,3 +326,23 @@ example : Fintype.card {r : Schedule 4 2 //
     reduceRows (rows bfTable r) [] = some [0, 1, 3, 1, 3, 2]} = 1 := by decide
 example : Fintype.card {r : Schedule 4 2 //
     reduceRows (rows bfTable r) [] = some [0, 1, 3, 2, 1, 2]} = 1 := by decide
+
+-- BF §1.4.2 の復元候補の具体例と table の唯一の非退化出力を照合する。
+open SerrePositivity.EInfinity.Surjection SerrePositivity.EInfinity.TableReduction
+private def canonicalFixture : BasisWord 4 2 := ⟨![0, 1, 3, 1, 3, 2], by decide⟩
+example : rowStarts canonicalFixture = [0, 2, 3] := by decide
+example : List.ofFn (fun i : Fin 3 =>
+    List.ofFn (fun j => (canonicalVertices canonicalFixture i)⁻¹ j)) =
+      [[0, 1, 3, 2], [0, 3, 1, 2], [0, 1, 3, 2]] := by
+  simp only [canonicalVertices, canonicalPermutation_inv_list]
+  decide
+private def canonicalFixtureRows (r : Schedule 4 2) : List (List (Fin 4) × ℕ) :=
+  List.ofFn (fun i =>
+    (canonicalRow (List.ofFn canonicalFixture.val) (rowStart canonicalFixture i), (r.val i).val))
+example : ∀ r : Schedule 4 2,
+    (match reduceRows (canonicalFixtureRows r) [] with
+    | none => true
+    | some xs => !((xs.zip xs.tail).all (fun p => p.1 != p.2)) ||
+        xs == [0, 1, 3, 1, 3, 2]) = true := by decide
+example : Fintype.card {r : Schedule 4 2 //
+    reduceRows (canonicalFixtureRows r) [] = some [0, 1, 3, 1, 3, 2]} = 1 := by decide

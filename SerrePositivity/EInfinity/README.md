@@ -122,6 +122,11 @@ reflexive coequalizer の形の sifted 性を検証し、図式圏へのモナ�
 `onSequence_eq_zero_of_degenerate` は実際の BE 退化単体の消滅を与える。
 `normalizedMap_generator` は退化単体も含む全ての正規化生成元の像を table の和と同定する。
 `degreeMap_action` は実際の BE 各次数の線形写像の置換同変性。
+`canonicalRow` は確定した最終出現と残りの最初の出現を連結し、全値を一度ずつ含む。
+`canonicalPermutation` はその行を BE の頂点置換に変換する。
+`rowStart` は区切りから得る d+1 個の開始位置で、狭義単調かつ正の arity では終端より前。
+`canonicalVertices` と `canonicalSimplex` は指定した全射語の逆像候補を構成する。
+具体例の復元行と唯一の非退化出力は監査済み。一般の TR の値の同定は未証明。
 TR の全射性・微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
