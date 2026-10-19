@@ -369,3 +369,7 @@ public import SerrePositivity.KST.Spectra.SpectrumLoopEssentialSurjectivity
 public import SerrePositivity.KST.Spectra.SpectrumTailEnriched
 public import SerrePositivity.KST.Spectra.SpectrumLoopTailComparison
 public import SerrePositivity.KST.Spectra.SpectrumTailMappingPullback
+public import SerrePositivity.KST.Spectra.InternalHomTensorAdjointAction
+public import SerrePositivity.KST.Spectra.SpectrumMappingStepEquivalence
+public import SerrePositivity.KST.Spectra.SpectrumTailMappingEquivalence
+public import SerrePositivity.KST.Spectra.SpectrumTailEquivalence

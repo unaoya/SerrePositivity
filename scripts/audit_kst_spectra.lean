@@ -856,7 +856,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumLoopEssentialSurjectivity,
     `SerrePositivity.KST.Spectra.SpectrumTailEnriched,
     `SerrePositivity.KST.Spectra.SpectrumLoopTailComparison,
-    `SerrePositivity.KST.Spectra.SpectrumTailMappingPullback]
+    `SerrePositivity.KST.Spectra.SpectrumTailMappingPullback,
+    `SerrePositivity.KST.Spectra.InternalHomTensorAdjointAction,
+    `SerrePositivity.KST.Spectra.SpectrumMappingStepEquivalence,
+    `SerrePositivity.KST.Spectra.SpectrumTailMappingEquivalence,
+    `SerrePositivity.KST.Spectra.SpectrumTailEquivalence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
