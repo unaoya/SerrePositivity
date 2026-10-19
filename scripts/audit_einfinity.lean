@@ -642,6 +642,14 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.recoveredOuterTable_trace,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.recoveredOuterTable_separated,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.compressed_outer_table_nondegenerate,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.collapse_ofFn_orderHom,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffleTableEntries_axis,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_recovery,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_compressed_outer_rows,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_isChain_of_success,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_inner_isChain_of_success,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_recovery_with_rows,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffleSimplex_outer_recovery,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1569,3 +1577,25 @@ example : reduceRows (rows bfTable bfSchedule₁) [] = some [0, 1, 3, 1, 3, 2] :
       [[0, 1], [2], [4], [2, 1, 4, 3]]) = rows bfTable bfSchedule₁ := by decide
   rw [htable, CompositeRecovery.outerRemoved_nil (m := 3) (n := 2) 1 (by decide)] at hs
   convert hs using 1; decide
+
+-- 同じ四行の例を実際の ShufflePath と Schedule から生成する。
+private def gridRecoveryPath : BarrattEccles.ShufflePath 2 1 := ⟨{1, 2}, by decide⟩
+private def gridRecoverySchedule : Schedule 5 3 := ⟨![2, 1, 1, 4], by decide⟩
+example : AdjacentCollapse.collapse (List.ofFn (fun i =>
+    (![0, 1, 0] : Fin 3 → Fin 2) (gridRecoveryPath.horizontal i))) = [0, 1, 0] := by
+  exact (CompositeRecovery.collapse_horizontal_ofFn gridRecoveryPath _).trans (by decide)
+example : ∃ table : List (List (Fin 4) × ℕ),
+    reduceRows table [] = some [0, 1, 3, 1, 3, 2] ∧
+      table.map Prod.fst = List.ofFn (fun j => List.ofFn (bfTable j).symm) ∧ table.length = 3 := by
+  have hentries : CompositeRecovery.shuffleTableEntries gridRecoveryPath bfTable terminalTable
+      gridRecoverySchedule = gridRecoveryEntries := by decide
+  have hsuccess : reduceRows (rows (fun i => BarrattEccles.permutationComposition 3 2 1
+      (bfTable (gridRecoveryPath.horizontal i)) (terminalTable (gridRecoveryPath.vertical i)))
+      gridRecoverySchedule) [] = some [0, 1, 2, 4, 2, 1, 4, 3] := by
+    rw [← CompositeRecovery.shuffleTableEntries_rows 1 gridRecoveryPath bfTable terminalTable
+      gridRecoverySchedule, hentries]
+    simpa using gridRecoveryPrefix.append [] [] rfl
+  obtain ⟨picked, finish, _, _, hs, _, hrows, hlen⟩ :=
+    CompositeRecovery.shuffle_outer_recovery_with_rows (by decide) 1 gridRecoveryPath
+      bfTable terminalTable gridRecoverySchedule _ hsuccess (by decide)
+  exact ⟨_, by convert hs using 1; decide, hrows, hlen⟩

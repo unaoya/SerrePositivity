@@ -360,7 +360,14 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `recoveredOuterTable_trace` は元の行ごとの外側復元語を実際の抽出証跡に固定する。
 `recoveredOuterTable_separated` は隣接行で内側か外側の一方を固定する非退化成功から境界条件を得る。
 `compressed_outer_table_nondegenerate` はその条件下で圧縮外側表の実際の出力を外側復元語そのものへ戻す。
-shuffle の元の外側行列・行数との一般の一致と、実際の経路の上記隣接条件の接続は未完成。
+`shuffleTableEntries_axis` は実際の ShufflePath の隣接条件を単位ステップから無条件に供給する。
+`shuffle_outer_recovery` は任意の実際の成功経路表へ非退化な外側復元を適用する。
+`collapse_ofFn_orderHom` は端点を保つ単位歩幅の単調写像の繰り返しを縮め、元の列へ戻す。
+`shuffle_compressed_outer_rows` は経路の圧縮外側行列を元の外側行列の縮約へ同定する。
+`shuffle_outer_isChain_of_success`・`shuffle_inner_isChain_of_success` は元の両置換列の非退化性を成功から導く。
+`shuffle_outer_recovery_with_rows` は正の内側 arity で空の初期状態・元の外側行列と行数を持つ成功を返す。
+`shuffleSimplex_outer_recovery` は既存の実際の shuffle 合成単体への直接の適用。
+外側 Schedule の総和条件・全射性、元の内側表全体の復元、全項の全単射は未完成。
 零歩成分の切り出し、成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
