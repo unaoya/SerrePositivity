@@ -186,3 +186,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catPullbackConeLowerComparisonIso
 #check @SerrePositivity.InfinityCategories.F2.catPullbackConeUpperComparisonIso
 #check @SerrePositivity.InfinityCategories.F2.catPullbackConeLegSectionIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentEdgeHom_of_edge_eq
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_heq
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTriangleIso_heq
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTriangleIso_of_faces_heq
+#check @SerrePositivity.InfinityCategories.F2.catInfinityTetrahedronIso_square_of_edges
+#check @SerrePositivity.InfinityCategories.F2.nativeConeTriangle_strict_zero
+#check @SerrePositivity.InfinityCategories.F2.nativeConeTriangle_strict_one
+#check @SerrePositivity.InfinityCategories.F2.nativeConeTriangle_strict_two
+#check @SerrePositivity.InfinityCategories.F2.coneDomainTriangle_face
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyTetrahedron_upper_long
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyTetrahedron_lower_long
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeTetrahedron_upper_long
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeTetrahedron_lower_long
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeUpperComparisonIso_heq
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeLowerComparisonIso_heq
+#check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementTriangleIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackFirstInteriorIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackFirstTetrahedron_relation

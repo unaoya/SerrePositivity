@@ -35,15 +35,15 @@
   図式側は切断の coherent 円柱と全時刻で厳密に一致。native な各脚と指定対角辺を関手へ読み戻し、
   共通の対角関手を通る上下の指定三角形から catPullbackConeLegSectionIso を構成。
   二射影の比較同型もこの構成へ更新し、存在命題からの個別選択を除いた。
-  coherent 二単体を core Fun の指定辺と関手同型へ読み戻し、両端と strict な三角形での定値性を証明。
-  native な錐の三角形と三辺を取り出し、左右の三角形から catPullbackConeNativeCommutativity を構成。
-  coherent 三単体の二通りの精密化の合成が豊穣 Hom のホモトピー圏で一致することを証明。
-  四面の指定辺を同じ Hom へ揃え、関手空間の合成関係と端の二面の前後合成を一次単体で照合。
-  同じ六関手で四面の指定関手同型を記述し、catInfinityTetrahedronIso_square で前後合成の等式を証明。
+  coherent 二単体を指定辺と同型へ読み、native な錐の三角形から catPullbackConeNativeCommutativity を構成。
+  coherent 三単体の精密化の合成を共通の Hom で揃え、四面の指定同型の前後合成則を証明。
+  任意の指定境界関手への輸送が元の同型を保つことも証明し、strict な錐の三つの境界射を回収。
+  最初の比較三単体の六辺を固定し、catPullbackFirstTetrahedron_relation で上側の比較の整合を証明。
+  残り二つの比較三単体の合成関係は未完了。共有面の最初の指定内部同型は構成済み。
   三角形の円柱の共有面・上下の面・六つの側面を二単体として厳密に同定。
   全錐と引き戻し錐の指定円柱の実際の三単体を構成し、元と置換後の錐の三角形を上下の面から回収。
   各辺の比較正方形の上下の三角形の三辺も同定。二脚の指定比較同型と指定 path の整合式は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6375 jobs）、F2 の公理監査成功（646 宣言、標準三公理のみ）。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6391 jobs）、F2 の公理監査成功（699 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -70,7 +70,7 @@
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
-- `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity`
+- `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackFirstTetrahedron_relation`
 
 ### 依存と提供
 
@@ -81,7 +81,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：指定対角関手、上下の三角形の比較同型、二射影の比較の更新、集約・監査と本書。
+  本保存単位：同型の輸送・側面の同定、最初の比較三単体の指定合成関係、集約・監査と本書。
 
 ### 既知の問題
 
@@ -94,8 +94,8 @@
 
 ### 次の一手
 
-- 三つの比較三単体の四面の合成則を合わせ、catPullbackConeLegSectionIso の形状の射に沿う整合式を導く。
-  strict な比較先の錐・切断の円柱の三角形を簡約し、二射影の指定比較同型と指定 path の整合を証明する。
+- 中央と最後の比較三単体の図式側の共通の対角関手と上下の指定同型を構成し、残り二つの合成関係を証明する。
+  catPullbackFirstTetrahedron_relation と合わせて各脚の整合式を導き、strict な面を簡約して指定 path と照合する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

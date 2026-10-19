@@ -27,6 +27,16 @@ def functorIsoOfEq {X Y : SSet.{u}} {f g f' g' : X ⟶ Y}
   subst f' g'
   exact e
 
+/-- 概要：両端を輸送しても元の指定関手同型と型を含めて等しい。
+方針：二つの端点の関手の等式を消去する。
+規約：指定同型の値を保持する。
+使われ方：四面の指定同型の共通の境界への移行。 -/
+lemma functorIsoOfEq_heq {X Y : SSet.{u}} {f g f' g' : X ⟶ Y}
+    (e : FunctorIso f g) (hf : f = f') (hg : g = g') :
+    HEq (functorIsoOfEq e hf hg) e := by
+  subst f' g'
+  rfl
+
 /-- 概要：射の等式による輸送は指定辺の類との対応を保つ。
 方針：関手の等式を消去し、元の類との一致を使う。
 規約：辺の代表を変更せず両端だけを輸送する。
