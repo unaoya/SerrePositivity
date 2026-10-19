@@ -1327,3 +1327,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.isLeftKanExtension_iff_of_diagram_eq_of_h_eq
 #check @SerrePositivity.InfinityCategories.LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits
 #check @SerrePositivity.InfinityCategories.IsLeftKanExtension.exists_relativeJoin_local_colimits
+
+#check @SerrePositivity.InfinityCategories.kanJoinTensorRight_ι₁
+#check @SerrePositivity.InfinityCategories.kanJoinRightShiftPrism
+#check @SerrePositivity.InfinityCategories.kanJoinRightShiftPrism_zero
+#check @SerrePositivity.InfinityCategories.kanJoinRightShiftPrism_one
+#check @SerrePositivity.InfinityCategories.kanJoinRightShiftPrism_left
+#check @SerrePositivity.InfinityCategories.kanJoinRightShiftPrism_right
+#check @SerrePositivity.InfinityCategories.kanJoinTensorRight_factors
+#check @SerrePositivity.InfinityCategories.kanJoinRightShiftPrism_naturality
+#check @SerrePositivity.InfinityCategories.kanJoinRightShiftHomotopy
+#check @SerrePositivity.InfinityCategories.kanJoin_pullCut_prefix_after
+#check @SerrePositivity.InfinityCategories.kanJoin_pullCut_suffix_after
+#check @SerrePositivity.InfinityCategories.kanAugJoin_suffix_after
+#check @SerrePositivity.InfinityCategories.kanAugJoin_prefix_after

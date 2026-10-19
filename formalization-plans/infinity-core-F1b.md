@@ -474,13 +474,23 @@ J=A⋆B、τ=`U ≫ joinIntervalProjection A J` として
 `IsLeftKanExtension.exists_relativeJoin_local_colimits` は左 Kan 条件を仮定した相対 join 表示の存在。
 これは slice の極限の存在から左 Kan 拡張を構成する逆方向ではない。
 
+`KanJoinRightShiftPrism` は時間を第二因子とする右側の prism
+`V : (A⋆B) × Δ¹ → (A⋆B)⋆B` を、右直積比較・右因子の対角・逆結合同型で構成する。
+始点は `joinInl (A⋆B) B`、終点は `joinMap (joinInl A B) (𝟙 B)`。
+左境界は時間によらず A を固定し、右境界は B の対角に左 join の右包含を入れた射。
+両係数に関する自然性と型付き `kanJoinRightShiftHomotopy` も証明済み。
+`KanJoinRightCutRestriction` は元の切断以後での先頭・末尾制限を空次数込みで計算する。
+先頭制限は左因子全体と右因子の先頭制限、末尾制限は右因子の末尾制限の右包含となる。
+右 prism の全単体での係数の可換性、relative join への持ち上げ、右比較錐の輸送との同定は未完了。
+
 **B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
 極限からの点ごとの存在と大域的組み立てが残る。
 各点の `valueIso` を大域的な同型の証明とは扱わない。
 
 ### 次の工程
 
-右の局所比較錐と指定変換の輸送の同定を双対的に整える。左側の還元は上記で済。
+右移動 prism の係数の可換性を全単体で証明し、relative join へ持ち上げる。
+その後、右の局所比較錐と指定変換の輸送を同定する。左側の還元は上記で済。
 指定変換の類を保存する相対 join 表示を用い、全部分 ∞ 圏からの相対 Kan 拡張の
 写像空間の制限定理（Kerodon Prop 7.3.6.7・Cor 7.3.6.9）を整える。
 点ごとの Kan 条件から h Fun 全体の普遍写像性（Kerodon Prop 7.3.6.1 の左右版）を導き、
@@ -493,8 +503,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2401 jobs、公理監査2584宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内730モジュールに straightening 依存なし。
+対象ビルド2403 jobs、公理監査2611宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内732モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -699,3 +709,7 @@ B5 の古典 nerve に戻る検査も未完了。
 | `isLeftKanExtension_relativeJoin_iff_local_colimits` | 標準指定変換の左 Kan 条件と相対 join の局所余極限性の同値 | 済 |
 | `isLeftKanExtension_iff_of_diagram_eq_of_h_eq` | 端点の図式の表示変更の下で同じ raw な変換の左 Kan 条件の同値 | 済 |
 | `Strictification.isLeftKanExtension_iff_local_colimits`・`IsLeftKanExtension.exists_relativeJoin_local_colimits` | 元の β の左 Kan 条件を保った相対 join の局所余極限表示への還元 | 済・大域的普遍写像性と存在の逆方向は未完了 |
+
+| `kanJoinTensorRight_ι₁`・`kanJoinTensorRight_factors` | 右直積比較の終点と両係数に関する自然性 | 済 |
+| `kanJoinRightShiftPrism/zero/one/left/right/naturality`・`kanJoinRightShiftHomotopy` | 時間を第二因子とする右移動 prism、四境界、自然性と型付きホモトピー | 済・相対 join への持ち上げは未完了 |
+| `kanJoin_pullCut_prefix_after/suffix_after`・`kanAugJoin_prefix_after/suffix_after` | 元の切断以後での先頭・末尾制限と両係数の復元 | 済 |
