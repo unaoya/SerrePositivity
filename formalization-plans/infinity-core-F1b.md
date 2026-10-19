@@ -451,6 +451,17 @@ joinDiagonal C に入れた射が、H の左右の制限の join と一致する
 原典との対応は [Kerodon §7.3.5](https://kerodon.net/tag/02ZZ) の slice の普遍図式と
 relative join への比較であり、Prop 7.3.5.1 の存在や Prop 7.3.6.7 の制限定理自体の証明ではない。
 
+`KanJoinShiftPrism` は通常の join について
+`U : Δ¹ × (A⋆B) → A⋆(A⋆B)` を、`joinTensorLeft`・`joinDiagonal A`・結合同型の合成で構成する。
+始点は `joinMap (𝟙 A) (joinInr A B)`、終点は `joinInr A (A⋆B)`。
+左境界は `joinDiagonal A` に内側の左包含を入れた射、右境界は時間によらず B の包含。
+両係数の射に関する自然性と型付き `kanJoinShiftHomotopy` も証明済み。
+**これはまだ relative join 上の補正ホモトピーではない。** 次に全単体で必要な式は、
+J=A⋆B、τ=`U ≫ joinIntervalProjection A J` として
+`U ≫ joinMap (joinInl A B) (𝟙 J) = lift τ (snd Δ¹ J) ≫ joinDiagonal J`。
+この係数の可換性から局所図式を相対 join へ持ち上げ、四境界の式を
+`LeftKanCoconeTransport` の `family/start/diagram/fixedVertex` へ接続する工程が残る。
+
 **B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
 極限からの点ごとの存在と大域的組み立てが残る。
 各点の `valueIso` を大域的な同型の証明とは扱わない。
@@ -469,8 +480,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2394 jobs、公理監査2506宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内723モジュールに straightening 依存なし。
+対象ビルド2396 jobs、公理監査2518宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内725モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -663,3 +674,7 @@ B5 の古典 nerve に戻る検査も未完了。
 | `kanRelativeJoinSliceOver/Under`・両者の `_base` | 任意の固定図式の slice/coslice の普遍図式の relative join への比較 | 済 |
 | `kanRelativeJoinLocalCocone/Cone`・両者の `_inl/_inr` | Kan の点ごとの slice の形に対する局所余錐・錐の射と両端 | 済 |
 | `kanRelativeJoinDiagramCocone/Cone`・両者の `_vertex` | relative join 上の図式から得る局所比較余錐・錐とその頂点 | 構成済・指定変換の輸送の比較との同定は未完了 |
+
+| `kanJoinShiftPrism/zero/one/left/right` | 通常の join の左因子を移す prism と四境界 | 済・relative join への持ち上げの係数の式は未完了 |
+| `kanJoinTensorLeft_factors/kanJoinShiftPrism_naturality` | 直積比較と prism の両係数に関する自然性 | 済 |
+| `kanJoinShiftHomotopy` | 通常の join 上の型付き単体的ホモトピー | 済・局所比較余錐の輸送との同定は未完了 |

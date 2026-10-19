@@ -221,3 +221,4 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinCorrectionSq
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinTransformationClass
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeConeFamilies
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinLocalCone
+public import SerrePositivity.InfinityCategories.F1B.KanJoinShiftPrism

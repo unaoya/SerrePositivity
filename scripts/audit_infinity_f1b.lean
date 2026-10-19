@@ -1289,3 +1289,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.kanRelativeJoinDiagramCone_vertex
 #check @SerrePositivity.InfinityCategories.kanRelativeJoinSliceOver_base
 #check @SerrePositivity.InfinityCategories.kanRelativeJoinSliceUnder_base
+
+#check @SerrePositivity.InfinityCategories.kanJoinShiftPrism
+#check @SerrePositivity.InfinityCategories.kanJoinShiftPrism_zero
+#check @SerrePositivity.InfinityCategories.kanJoinShiftPrism_one
+#check @SerrePositivity.InfinityCategories.kanJoinShiftPrism_left
+#check @SerrePositivity.InfinityCategories.kanJoinShiftPrism_right
+#check @SerrePositivity.InfinityCategories.kanJoinTensorLeft_factors
+#check @SerrePositivity.InfinityCategories.kanJoinShiftPrism_naturality
+#check @SerrePositivity.InfinityCategories.kanJoinShiftHomotopy
