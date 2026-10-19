@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Stable.UniverseSlices
+import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
@@ -1130,6 +1130,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.UniverseBoundary,
+    `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom,
+    `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling,
+    `SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects,
+    `SerrePositivity.InfinityCategories.Stable.UniverseLimits,
     `SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation,
     `SerrePositivity.InfinityCategories.Stable.UniverseJoin,
     `SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality,

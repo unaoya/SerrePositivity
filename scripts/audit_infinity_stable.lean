@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Stable.UniverseSlices
+import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability
 import SerrePositivity.InfinityCategories.Derived.DGModulePropertyStability
 import SerrePositivity.InfinityCategories.Derived.DGYonedaModuleNerve
@@ -1704,6 +1704,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.UniverseBoundary,
+    `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom,
+    `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling,
+    `SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects,
+    `SerrePositivity.InfinityCategories.Stable.UniverseLimits,
     `SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation,
     `SerrePositivity.InfinityCategories.Stable.UniverseJoin,
     `SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality,

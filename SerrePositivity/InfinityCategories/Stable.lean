@@ -317,6 +317,11 @@ public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShape
 public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexNaturality
 public import SerrePositivity.InfinityCategories.Stable.UniverseConeHom
 public import SerrePositivity.InfinityCategories.Stable.UniverseSlices
+public import SerrePositivity.InfinityCategories.Stable.UniverseBoundary
+public import SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom
+public import SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling
+public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 
 /-! # 安定 ∞ 圏の基盤
 
