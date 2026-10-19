@@ -7904,3 +7904,123 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.oneDirectionKanInverseChoices_relative_lifting
 #print axioms SerrePositivity.KST.SConstruction.oneDirectionKanInverseChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.freePathMap_endpoint
+#print axioms SerrePositivity.KST.SConstruction.freePathMap_endpoint
+
+#check @SerrePositivity.KST.SConstruction.mappingPathTransport
+#print axioms SerrePositivity.KST.SConstruction.mappingPathTransport
+
+#check @SerrePositivity.KST.SConstruction.mappingPathTransport_path
+#print axioms SerrePositivity.KST.SConstruction.mappingPathTransport_path
+
+#check @SerrePositivity.KST.SConstruction.mappingPathTransport_retraction
+#print axioms SerrePositivity.KST.SConstruction.mappingPathTransport_retraction
+
+#check @SerrePositivity.KST.SConstruction.mappingPathTransport_projection
+#print axioms SerrePositivity.KST.SConstruction.mappingPathTransport_projection
+
+#check @SerrePositivity.KST.SConstruction.mappingPathTransport_id
+#print axioms SerrePositivity.KST.SConstruction.mappingPathTransport_id
+
+#check @SerrePositivity.KST.SConstruction.mappingPathTransport_comp
+#print axioms SerrePositivity.KST.SConstruction.mappingPathTransport_comp
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingTransport_post
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingTransport_post
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftTransport
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftTransport
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftTransport_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftTransport_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftTransport_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftTransport_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftTransport_id
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftTransport_id
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftTransport_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftTransport_comp
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap_id
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap_id
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap_comp
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap_comp
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionMappingPathFunctor
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionMappingPathFunctor
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap_projection
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap_projection
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap_retraction
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionMappingPathMap_retraction
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedChoices
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedChoices
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFromSource
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFromSource
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFromTarget
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFromTarget
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedMap
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedMap
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFamily
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFamily
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFromSource_map
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFromSource_map
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFromTarget_map
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFromTarget_map
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedChoices_nonempty_edge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedChoices_nonempty_edge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanInverseAt_naturality_edge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanInverseAt_naturality_edge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanInverseAt_naturality_homotopy
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanInverseAt_naturality_homotopy
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedPost
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedPost
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedPre
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedPre
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedPost_source
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedPost_source
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixedPre_target
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixedPre_target
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseMixed_middle
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseMixed_middle
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionFirstEdge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionFirstEdge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionSecondEdge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionSecondEdge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionTriangle_nonempty

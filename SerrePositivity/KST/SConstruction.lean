@@ -536,4 +536,13 @@ public import SerrePositivity.KST.SConstruction.PointedLiftSpace
 public import SerrePositivity.KST.SConstruction.PointedMappingPathSections
 public import SerrePositivity.KST.SConstruction.OneDirectionInverseChoices
 
+public import SerrePositivity.KST.SConstruction.MappingPathTransport
+public import SerrePositivity.KST.SConstruction.PointedLiftTransport
+public import SerrePositivity.KST.SConstruction.PointedLiftTransportLaws
+public import SerrePositivity.KST.SConstruction.OneDirectionMappingPath
+public import SerrePositivity.KST.SConstruction.OneDirectionInverseMixedChoices
+public import SerrePositivity.KST.SConstruction.OneDirectionInverseMixedNaturality
+public import SerrePositivity.KST.SConstruction.OneDirectionInverseMixedWhiskering
+public import SerrePositivity.KST.SConstruction.OneDirectionInverseCompositionTriangle
+
 /-! # ∞-S• 構成と連結 K 理論 -/
