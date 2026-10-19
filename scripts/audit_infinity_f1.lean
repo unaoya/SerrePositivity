@@ -3853,3 +3853,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentStraighteningCurriedCounit_naturality
 #check @SerrePositivity.InfinityCategories.universalCoherentReconstructionCounitIso_eq
 #check @SerrePositivity.InfinityCategories.coherentStraighteningCurriedCounit_universal
+#check @SerrePositivity.InfinityCategories.coherentFamilyCurryMap_evaluate
+#check @SerrePositivity.InfinityCategories.coherentFamilyCurryMap_evaluate_vertex
+#check @SerrePositivity.InfinityCategories.coherentFamilyCurryIso_evaluate
+#check @SerrePositivity.InfinityCategories.functorHomotopyEvaluation_evaluate
+#check @SerrePositivity.InfinityCategories.FunctorIso.app_eq_evaluate
+#check @SerrePositivity.InfinityCategories.universalCoherentReconstructionCounitIso_app
