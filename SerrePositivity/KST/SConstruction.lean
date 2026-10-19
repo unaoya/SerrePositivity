@@ -751,4 +751,8 @@ public import SerrePositivity.KST.SConstruction.TracedSequenceBoundaryData
 public import SerrePositivity.KST.SConstruction.PrescribedSequenceFamilyRectification
 public import SerrePositivity.KST.SConstruction.KTracedFamilyLifting
 public import SerrePositivity.KST.SConstruction.MonicKPrismTracedRectification
+public import SerrePositivity.KST.SConstruction.TracedSequenceBoundaryExtension
+public import SerrePositivity.KST.SConstruction.KIteratedTracedFamilyLifting
+public import SerrePositivity.KST.SConstruction.KRawFamilyComparison
+public import SerrePositivity.KST.SConstruction.KIteratedTracedFamilyComparison
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -11676,3 +11676,57 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.monicKPrismTracedRawFamily_zero
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismTracedRawFamily_zero
+
+#check @SerrePositivity.KST.SConstruction.extendedTracedSequenceBoundaryData
+#print axioms SerrePositivity.KST.SConstruction.extendedTracedSequenceBoundaryData
+
+#check @SerrePositivity.KST.SConstruction.extendedTracedSequenceBoundaryData_map
+#print axioms SerrePositivity.KST.SConstruction.extendedTracedSequenceBoundaryData_map
+
+#check @SerrePositivity.KST.SConstruction.prescribedSequenceFamilyRectification_extension
+#print axioms SerrePositivity.KST.SConstruction.prescribedSequenceFamilyRectification_extension
+
+#check @SerrePositivity.KST.SConstruction.prescribedSequenceFamilyStage_extension_trace
+#print axioms SerrePositivity.KST.SConstruction.prescribedSequenceFamilyStage_extension_trace
+
+#check @SerrePositivity.KST.SConstruction.kIteratedTracedFamilyLiftData
+#print axioms SerrePositivity.KST.SConstruction.kIteratedTracedFamilyLiftData
+
+#check @SerrePositivity.KST.SConstruction.kIteratedTracedFamilyLiftData_intermediate
+#print axioms SerrePositivity.KST.SConstruction.kIteratedTracedFamilyLiftData_intermediate
+
+#check @SerrePositivity.KST.SConstruction.kIteratedTracedFamilyLiftData_boundary
+#print axioms SerrePositivity.KST.SConstruction.kIteratedTracedFamilyLiftData_boundary
+
+#check @SerrePositivity.KST.SConstruction.kIteratedTracedFamilyLiftData_projection
+#print axioms SerrePositivity.KST.SConstruction.kIteratedTracedFamilyLiftData_projection
+
+#check @SerrePositivity.KST.SConstruction.kRawFamilyComparison
+#print axioms SerrePositivity.KST.SConstruction.kRawFamilyComparison
+
+#check @SerrePositivity.KST.SConstruction.kRawFamilyComparison_projection
+#print axioms SerrePositivity.KST.SConstruction.kRawFamilyComparison_projection
+
+#check @SerrePositivity.KST.SConstruction.kRawFamilyComparison_boundary
+#print axioms SerrePositivity.KST.SConstruction.kRawFamilyComparison_boundary
+
+#check @SerrePositivity.KST.SConstruction.kDirectTracedFamilyLiftData
+#print axioms SerrePositivity.KST.SConstruction.kDirectTracedFamilyLiftData
+
+#check @SerrePositivity.KST.SConstruction.kIteratedTracedFamilyComparison
+#print axioms SerrePositivity.KST.SConstruction.kIteratedTracedFamilyComparison
+
+#check @SerrePositivity.KST.SConstruction.kIteratedTracedFamilyComparison_projection
+#print axioms SerrePositivity.KST.SConstruction.kIteratedTracedFamilyComparison_projection
+
+#check @SerrePositivity.KST.SConstruction.kIteratedTracedFamilyComparison_boundary
+#print axioms SerrePositivity.KST.SConstruction.kIteratedTracedFamilyComparison_boundary
+
+#check @SerrePositivity.KST.SConstruction.kPrescribedRawFamilyComparisonData
+#print axioms SerrePositivity.KST.SConstruction.kPrescribedRawFamilyComparisonData
+
+#check @SerrePositivity.KST.SConstruction.kPrescribedRawFamilyComparisonData_projection
+#print axioms SerrePositivity.KST.SConstruction.kPrescribedRawFamilyComparisonData_projection
+
+#check @SerrePositivity.KST.SConstruction.kPrescribedRawFamilyComparisonData_boundary
+#print axioms SerrePositivity.KST.SConstruction.kPrescribedRawFamilyComparisonData_boundary
