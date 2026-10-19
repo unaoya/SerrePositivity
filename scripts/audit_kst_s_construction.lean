@@ -8381,3 +8381,105 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.assemblyCrossedFamily_extension_target
 #print axioms SerrePositivity.KST.SConstruction.assemblyCrossedFamily_extension_target
+
+#check @SerrePositivity.KST.SConstruction.edge_source_eq_of_edge_eq
+#print axioms SerrePositivity.KST.SConstruction.edge_source_eq_of_edge_eq
+
+#check @SerrePositivity.KST.SConstruction.edge_target_eq_of_edge_eq
+#print axioms SerrePositivity.KST.SConstruction.edge_target_eq_of_edge_eq
+
+#check @SerrePositivity.KST.SConstruction.contractibleKan_mapped_three_edge_triangle
+#print axioms SerrePositivity.KST.SConstruction.contractibleKan_mapped_three_edge_triangle
+
+#check @SerrePositivity.KST.SConstruction.exists_mapped_factorization
+#print axioms SerrePositivity.KST.SConstruction.exists_mapped_factorization
+
+#check @SerrePositivity.KST.SConstruction.nonemptyCompStruct_paste_factorizations
+#print axioms SerrePositivity.KST.SConstruction.nonemptyCompStruct_paste_factorizations
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyIntermediateVertex
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyIntermediateVertex
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionEdgeAt
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionEdgeAt
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyInverseEdgeAt
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyInverseEdgeAt
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionEdgeAt_evaluation
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionEdgeAt_evaluation
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyInverseEdgeAt_evaluation
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyInverseEdgeAt_evaluation
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityFactorizationTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityFactorizationTriangle_nonempty
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionFamily_post
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyExtensionFamily_post
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyInverseFamily_pre
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyInverseFamily_pre
+
+#check @SerrePositivity.KST.SConstruction.mappedEdge_square
+#print axioms SerrePositivity.KST.SConstruction.mappedEdge_square
+
+#check @SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_square
+#print axioms SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_square
+
+#check @SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_square
+#print axioms SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_square
+
+#check @SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_parameter
+#print axioms SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_parameter
+
+#check @SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_parameter
+#print axioms SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_parameter
+
+#check @SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_moving
+#print axioms SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_moving
+
+#check @SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_moving
+#print axioms SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_moving
+
+#check @SerrePositivity.KST.SConstruction.mappedEdge_family_congr
+#print axioms SerrePositivity.KST.SConstruction.mappedEdge_family_congr
+
+#check @SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_congr
+#print axioms SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_congr
+
+#check @SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_congr
+#print axioms SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_congr
+
+#check @SerrePositivity.KST.SConstruction.pointedNaturalityCompositionFirstEdge
+#print axioms SerrePositivity.KST.SConstruction.pointedNaturalityCompositionFirstEdge
+
+#check @SerrePositivity.KST.SConstruction.pointedNaturalityCompositionSecondEdge
+#print axioms SerrePositivity.KST.SConstruction.pointedNaturalityCompositionSecondEdge
+
+#check @SerrePositivity.KST.SConstruction.nonemptyCompStruct_paste_factorization_diagram
+#print axioms SerrePositivity.KST.SConstruction.nonemptyCompStruct_paste_factorization_diagram
+
+#check @SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityData
+#print axioms SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityData
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityData_nonempty
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNaturalityData_nonempty
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyChosenNaturalityEdge
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyChosenNaturalityEdge
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCompositionFirstEdge_edge
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCompositionFirstEdge_edge
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCompositionSecondEdge_edge
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCompositionSecondEdge_edge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionFirstEdge_edge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionFirstEdge_edge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionSecondEdge_edge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCompositionSecondEdge_edge
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCompositionTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCompositionTriangle_nonempty
