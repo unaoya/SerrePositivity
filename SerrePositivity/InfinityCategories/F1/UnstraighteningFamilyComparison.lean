@@ -20,18 +20,6 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCate
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
-/-- 概要：prism の端点制限は追加パラメーターの制限と可換。
-方針：三成分の積を計算する。
-規約：両方の端点を扱う。
-使われ方：普遍的な lift の任意の族への制限。 -/
-lemma prismEndpoint_parameter_naturality {K L : SSet.{u}} (E : SSet.{u})
-    (i : Fin 2) (t : K ⟶ L) :
-    (prismEndpoint i E ▷ K) ≫ ((Δ[1] ⊗ E) ◁ t) =
-      (E ◁ t) ≫ (prismEndpoint i E ▷ L) := by
-  apply SSet.hom_ext
-  intro n
-  rfl
-
 /-- 概要：普遍的な変換のパラメーター制限は指定した変換の族の評価。
 方針：prism のパラメーター自然性と区間模型の uncurry を使う。
 規約：パラメーターは任意。

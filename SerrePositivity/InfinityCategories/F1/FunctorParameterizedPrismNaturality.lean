@@ -13,6 +13,7 @@ public import SerrePositivity.InfinityCategories.F1.FunctorParameterizedPrism
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- 概要：図式の定義域への前合成はパラメーター付き prism の制限になる。
@@ -42,5 +43,18 @@ lemma functorParameterizedPrism_parameter {K B L M X : SSet.{u}}
   apply ConcreteCategory.hom_ext
   rintro ⟨⟨a, b⟩, l⟩
   rfl
+
+/-- 概要：prism の端点制限は追加パラメーターの制限と可換。
+方針：三成分の積を計算する。
+規約：両方の端点を扱う。
+使われ方：普遍的な lift の任意の族への制限。 -/
+lemma prismEndpoint_parameter_naturality {K L : SSet.{u}} (E : SSet.{u})
+    (i : Fin 2) (t : K ⟶ L) :
+    (prismEndpoint i E ▷ K) ≫ ((Δ[1] ⊗ E) ◁ t) =
+      (E ◁ t) ≫ (prismEndpoint i E ▷ L) := by
+  apply SSet.hom_ext
+  intro n
+  rfl
+
 
 end SerrePositivity.InfinityCategories

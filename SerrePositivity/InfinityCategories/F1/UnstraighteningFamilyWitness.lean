@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.CoherentTransformationFamilyDiagram
 public import SerrePositivity.InfinityCategories.F1.SmallCoherentFamilyUniqueness
+public import SerrePositivity.InfinityCategories.F1.TransportRepresentationFamilyUniqueness
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningSmallness
 
 /-!
@@ -34,6 +35,25 @@ structure UnstraighteningFamilyWitness {B K : SSet.{u + 1}}
   projection : prism ≫ pointedSpaceProjection =
     ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ K) ≫
       functorParameterizedPrism (intervalMappingUncurry t)
+
+/-- 概要：標準の unstraightening の証拠を一般の表現の証拠へ移す。
+方針：標準表現の恒等比較を pointed な射の条件へ戻す。
+規約：元の prism と変換の族を保持する。
+使われ方：一般の相対射の族の一意性を標準比較へ適用する。 -/
+def UnstraighteningFamilyWitness.toRepresentationWitness {B K : SSet.{u + 1}}
+    {F G : B ⟶ SpaceInfinity.{u}} {t : K ⟶ leftUnstraighteningTransformationSpace F G}
+    {f : leftUnstraightening F ⊗ K ⟶ leftUnstraightening G}
+    (w : UnstraighteningFamilyWitness F G t f) :
+    TransportRepresentationFamilyWitness (unstraighteningTransportRepresentation F)
+      (unstraighteningTransportRepresentation G) t f where
+  prism := w.prism
+  source := by
+    simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
+      Category.id_comp] using w.source
+  target := by
+    simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
+      Category.id_comp] using w.target
+  projection := w.projection
 
 /-- 概要：証拠の prism を区間を左に出した積の表示にする。
 方針：結合子の逆で前合成する。
@@ -74,43 +94,14 @@ lemma UnstraighteningFamilyWitness.unique {B K : SSet.{u + 1}}
     (hf : f ≫ leftUnstraighteningProjection G =
       fst (leftUnstraightening F) K ≫ leftUnstraighteningProjection F)
     (w : UnstraighteningFamilyWitness F G t f) (w' : UnstraighteningFamilyWitness F G t' f) :
-    Nonempty (FunctorIso t t') := by
-  have hsource : prismEndpoint 0 (leftUnstraightening F ⊗ K) ≫ w.leftPrism =
-      fst (leftUnstraightening F) K ≫ pullback.fst pointedSpaceProjection F := by
-    rw [UnstraighteningFamilyWitness.leftPrism, ← Category.assoc, prismEndpoint_associator_inv]
-    exact w.source
-  have htarget : prismEndpoint 1 (leftUnstraightening F ⊗ K) ≫ w.leftPrism =
-      f ≫ pullback.fst pointedSpaceProjection G := by
-    rw [UnstraighteningFamilyWitness.leftPrism, ← Category.assoc, prismEndpoint_associator_inv]
-    exact w.target
-  have hsource' : prismEndpoint 0 (leftUnstraightening F ⊗ K) ≫ w'.leftPrism =
-      fst (leftUnstraightening F) K ≫ pullback.fst pointedSpaceProjection F := by
-    rw [UnstraighteningFamilyWitness.leftPrism, ← Category.assoc, prismEndpoint_associator_inv]
-    exact w'.source
-  have htarget' : prismEndpoint 1 (leftUnstraightening F ⊗ K) ≫ w'.leftPrism =
-      f ≫ pullback.fst pointedSpaceProjection G := by
-    rw [UnstraighteningFamilyWitness.leftPrism, ← Category.assoc, prismEndpoint_associator_inv]
-    exact w'.target
-  obtain ⟨e⟩ := coherentFamily_uniqueness_of_small_fibers (leftUnstraighteningProjection F)
-    (leftUnstraighteningProjection G) f hf
+    Nonempty (FunctorIso t t') :=
+  TransportRepresentationFamilyWitness.unique
+    (p := leftUnstraighteningProjection F) (q := leftUnstraighteningProjection G)
+    (R := unstraighteningTransportRepresentation F) (S := unstraighteningTransportRepresentation G)
+    (t := t) (t' := t') (f := f)
     (leftUnstraighteningProjection_hasSmallSimplexFibers F)
-    (leftUnstraighteningProjection_hasSmallSimplexFibers G)
-    (unstraighteningTransportRepresentation F)
-    (unstraighteningTransportRepresentation G)
-    (coherentTransformationFamilyDiagram t) (coherentTransformationFamilyDiagram t')
-    (coherentTransformationFamilyDiagram_zero t) (coherentTransformationFamilyDiagram_one t)
-    (coherentTransformationFamilyDiagram_zero t') (coherentTransformationFamilyDiagram_one t')
-    w.leftPrism w'.leftPrism
-    (by simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
-      Category.id_comp] using hsource)
-    (by simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
-      Category.id_comp] using htarget)
-    (by simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
-      Category.id_comp] using hsource')
-    (by simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
-      Category.id_comp] using htarget') w.leftPrism_projection w'.leftPrism_projection
-  rw [coherentTransformationFamilyDiagram_curry, coherentTransformationFamilyDiagram_curry] at e
-  exact ⟨e⟩
+    (leftUnstraighteningProjection_hasSmallSimplexFibers G) hf
+    w.toRepresentationWitness w'.toRepresentationWitness
 
 /-- 小さい底とパラメーターの場合の従来の界面。 -/
 lemma UnstraighteningFamilyWitness.small_unique {B K : SSet.{u + 1}}
