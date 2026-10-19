@@ -1016,6 +1016,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CofiberSquareComparisonData,
     `SerrePositivity.InfinityCategories.Derived.FullHomotopyLift,
     `SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramFixed,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareEdgeEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareHomEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyFaithful,
     `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0

@@ -20,9 +20,11 @@
 - この複体同型は標準 cone 写像に対して自然。suspension の選択比較・Qh/Q 比較・Q の CommShift を通じ、`derivedSuspensionObjectIso` を対象ごとに構成済み。h D(S) の射への自然性は未証明。
 - 二つの三角形のデータを持つ `ComplexSquareData` と、始点への前合成／終点への後合成の実際の slice/coslice 辺を構成。join の両端面・共通面・指定した鎖写像への射影、四角形全体の辺への変換まで証明済み。
 - cone 写像の inl との合成式で suspension の二つの中央四角形の全データを同定し、周囲の四角形関手圏の射を合成済み。両端が充満部分圏に入るホモトピーの持ち上げを証明し、Semifree 内の suspension 四角形比較ホモトピー・h の射も構成済み。
-- 今回の入口は `Derived/SuspensionSquareHomotopy.lean`、`Derived/CofiberSquareComparisonData.lean`、`Stable/SuspensionAmbientHom.lean`。
-- 対象＋Stable・Derived 集約ビルド：5,794 jobs 成功。今回の保存単位は新規 11 モジュール。
-- 公理監査：Derived 219 modules／2,947 宣言、Stable 488 modules／4,054 宣言。標準三公理のみ。
+- slice の四角形関手の始点評価・終点の定値性を証明。前合成・後合成の四角形の辺について、両端の実一次単体と h の Arrow の計四成分を同定済み。
+- 充満 dg 包含が通常の道の商による h 上でも忠実であることを、辺の代表と H⁰ 比較から証明。対象の閉性の仮定は不要。
+- 今回の入口は `Derived/ComplexSquareHomEvaluation.lean`、`Derived/FullInclusionHomotopyFaithful.lean`、`Derived/SuspensionSquareHomotopy.lean`、`Stable/SuspensionAmbientHom.lean`。
+- 対象＋Stable・Derived 集約ビルド：5,800 jobs 成功。今回の保存単位は新規 6 モジュール。
+- 公理監査：Derived 224 modules／2,975 宣言、Stable 494 modules／4,089 宣言。標準三公理のみ。
 
 ### 残り（依存順、時間は推定）
 
@@ -50,6 +52,8 @@
 - `ComplexSquareData.postcomposeSquareEdge`、`ComplexSquareData.precomposeSquareEdge`、`sliceSquareDiagramMap`。
 - `suspensionComplexSquareData_middle`、`suspensionComplexSquareHom`、`exists_fullInclusion_homotopy`。
 - `suspensionComplexSquareEdge_homMk`、`semifreeSuspensionSquareHomotopy_inclusion`、`semifreeSuspensionSquareHom`。
+- `sliceSquareDiagramMap_sourceEvaluation`、`sliceSquareDiagramMap_targetEvaluation`、`fullInclusionHo_faithful`。
+- `ComplexSquareData.postcomposeHom_source_arrow`、`ComplexSquareData.postcomposeHom_target_arrow`、`ComplexSquareData.precomposeHom_source_arrow`、`ComplexSquareData.precomposeHom_target_arrow`。
 
 ### 依存と提供
 
@@ -65,13 +69,14 @@
 ### 既知の問題
 
 - 対象・集約ビルドと両公理監査は成功。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
-- h D(S) の Stable のシフトは suspension に由来し、D3 の二切断のシフトは複体シフトからの誘導。対象ごとの比較は完成。四角形全体の比較射は構成済みだが、その始点・終点評価と関手の作用・接続射の照合は未完了。
+- h D(S) の Stable のシフトは suspension に由来し、D3 の二切断のシフトは複体シフトからの誘導。対象ごとの比較は完成。四角形比較の各因子の両端評価まで証明済み。合成後の評価と関手の作用・接続射の照合は未完了。
+- 具体的な `suspensionComplexSquareHom` に Arrow の輸送打消しを直接適用すると、mapping cone や零複体の定義照合で決定的タイムアウトが起きる。未検証の成分等式・包含への射影の草稿は `/tmp/d-lane-evaluation-drafts/` に退避し、集約には含めていない。
 - 通常の導来圏の三角構造の引き戻しだけで三角比較を完了とはしない。実際の cofiber 列の像との一致を要する。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- `semifreeSuspensionSquareHom a` の始点・終点成分を、それぞれ `a` と `semifreeSuspensionComplexMap a` の h の射に同定する。cosliceSquareDiagramMap の終点評価と始点の定値性、および双対の sliceSquareDiagramMap の評価を使う。周囲の辺の類は `suspensionComplexSquareEdge_homMk`、持ち上げは `semifreeSuspensionSquareHomotopy_inclusion` で追跡できる。`SuspensionSquare.ambientHom_target` を適用し、対象比較の自然性、CommShift・接続射の像へ進む。
+- 任意の `ComplexSquareData` の二つの因子と中央の同定を引数に取る合成比較補題を先に作り、検証済みの四つの `*_arrow` で両端を計算する。具体的な零複体の展開を抑えて suspension へ特殊化する。`semifreeSuspensionSquareHom a` の包含像を `semifreeSuspensionSquareHomotopy_inclusion` と `suspensionComplexSquareEdge_homMk` で追跡し、`fullInclusionHo_faithful` で両端成分を反映する。次に `SuspensionSquare.ambientHom_target` から対象比較の自然性、CommShift・接続射の像へ進む。
 
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。

@@ -281,6 +281,9 @@ public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
 public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram
+public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation
+public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramFixed
+public import SerrePositivity.InfinityCategories.Stable.ArrowIdentityComposition
 
 /-! # 安定 ∞ 圏の基盤
 

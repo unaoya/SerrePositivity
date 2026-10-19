@@ -86,6 +86,9 @@ import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeEdge
 import SerrePositivity.InfinityCategories.Derived.CofiberSquareComparisonData
 import SerrePositivity.InfinityCategories.Derived.FullHomotopyLift
 import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy
+import SerrePositivity.InfinityCategories.Derived.ComplexSquareEdgeEvaluation
+import SerrePositivity.InfinityCategories.Derived.ComplexSquareHomEvaluation
+import SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyFaithful
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1787,6 +1790,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CofiberSquareComparisonData,
     `SerrePositivity.InfinityCategories.Derived.FullHomotopyLift,
     `SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramFixed,
+    `SerrePositivity.InfinityCategories.Stable.ArrowIdentityComposition,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareEdgeEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareHomEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyFaithful,
     `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0

@@ -195,6 +195,9 @@ public import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecompose
 public import SerrePositivity.InfinityCategories.Derived.CofiberSquareComparisonData
 public import SerrePositivity.InfinityCategories.Derived.FullHomotopyLift
 public import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquareEdgeEvaluation
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquareHomEvaluation
+public import SerrePositivity.InfinityCategories.Derived.FullInclusionHomotopyFaithful
 
 /-! # Semifree 複体による導来圏の dg 表示
 
