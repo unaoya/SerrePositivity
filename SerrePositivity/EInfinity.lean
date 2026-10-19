@@ -339,3 +339,7 @@ public import SerrePositivity.EInfinity.IntervalCuts.IteratedCochainAction
 public import SerrePositivity.EInfinity.IntervalCuts.IteratedEdgeCutSums
 public import SerrePositivity.EInfinity.IntervalCuts.IteratedNestedSum
 public import SerrePositivity.EInfinity.IntervalCuts.CompositeCochainAction
+public import SerrePositivity.EInfinity.IntervalCuts.InversionReindex
+public import SerrePositivity.EInfinity.IntervalCuts.RemainingPositionOrder
+public import SerrePositivity.EInfinity.IntervalCuts.RemainingActivePositions
+public import SerrePositivity.EInfinity.IntervalCuts.VertexCompositionSigns

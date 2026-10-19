@@ -605,7 +605,10 @@ nullary を含む TR の部分合成保存は完了。
 `NestedEdgeCut.actionCoefficient` は二交換の符号を `(-1)^(d*e + e*prefixDegree)` にまとめた整数係数。
 `outputFamily_tupleDegree_all` は内側 arity 零も含む全出力次数の公式。
 `cochainAction_composition_basis_edge` は実際の左辺を既存の合成語加群の辺成分へ戻す。
-具体的な Δ¹ の余代数構造は未完成。合成側と二段作用の一般係数の一致・頂点入力・nullary 左辺、
+`remainingPositionMap_image_of_degree_zero` は非辺への次数零代入が全活動位置を順序を保って移すこと。
+`NestedEdgeCut.compositionCoefficient_vertex` は内側が頂点へ作用する全分岐で一般係数が一致すること。
+`compositionEdgeCutTerm_vertex` はその分岐の実際の合成切断項と二段作用の面テンソル項を同定する。
+具体的な Δ¹ の余代数構造は未完成。内側が辺へ作用する二分岐の一般係数の一致・頂点入力・nullary 左辺、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 

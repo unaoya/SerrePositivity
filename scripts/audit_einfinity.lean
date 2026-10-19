@@ -1249,6 +1249,25 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.actionCoefficient_eq,
       `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_edge_nested_sum,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_image_of_terms,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_prefix_length_at_non_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_lt,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_lt_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.remainingPosition_lt_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.mem_activePositions_iff_output_and_le,
+      `SerrePositivity.EInfinity.IntervalCuts.activePosition_color_ne_of_nonedge,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_of_ne,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_lt_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_injOn,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_mem_active,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_image_of_degree_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_inversionTerm,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.inversionCount_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.edgeSign_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.actionCoefficient_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionCoefficient_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionEdgeCutTerm_vertex,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3616,3 +3635,37 @@ example : (iteratedCochainAction ℤ 1 2 0).f (-3)
     (by simp)] at H
   have hc : nestedRepeatedExample.actionCoefficient = -1 := by decide
   simpa only [hc, neg_one_zsmul] using! H
+
+-- 内側の両頂点入力で、外側の逆転による負符号を保つ。外側次数は一。
+private def vertexSignOuterRight : BasisWord 3 1 := ⟨![2, 1, 2, 0], by decide⟩
+private def vertexSignOuterLeft : BasisWord 3 1 := ⟨![0, 2, 1, 2], by decide⟩
+private def vertexSignRightCut : NestedEdgeCut (m := 2) vertexSignOuterRight
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0 :=
+  NestedEdgeCut.ofVertex 1 (by decide) (by decide) rfl
+private def vertexSignLeftCut : NestedEdgeCut (m := 2) vertexSignOuterLeft
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0 :=
+  NestedEdgeCut.ofVertex 2 (by decide) (by decide) rfl
+example : edgeOutput vertexSignOuterRight vertexSignRightCut.val.1 0 = vertex 1 := by decide
+example : edgeOutput vertexSignOuterLeft vertexSignLeftCut.val.1 0 = vertex 0 := by decide
+example : vertexSignRightCut.actionCoefficient = -1 := by decide
+example : vertexSignLeftCut.actionCoefficient = -1 := by decide
+example : List.ofFn vertexSignRightCut.outputFamily =
+    [vertex 1, vertex 1, edge, edge] := by decide
+example : List.ofFn vertexSignLeftCut.outputFamily =
+    [vertex 0, vertex 0, edge, edge] := by decide
+example : (activePositions vertexSignOuterLeft.val vertexSignLeftCut.val.1).image
+    vertexSignLeftCut.remainingPositionMap =
+      activePositions (compositeBasisWord vertexSignOuterLeft
+        (permutationWord (1 : Equiv.Perm (Fin 2))) 0 vertexSignLeftCut.partition
+          (by decide)).val vertexSignLeftCut.compositePosition := by decide
+example : compositionSign vertexSignOuterRight (permutationWord (1 : Equiv.Perm (Fin 2)))
+    0 vertexSignRightCut.partition * edgeSign (compositeBasisWord vertexSignOuterRight
+      (permutationWord (1 : Equiv.Perm (Fin 2))) 0 vertexSignRightCut.partition
+        (by decide)).val vertexSignRightCut.compositePosition = vertexSignRightCut.actionCoefficient :=
+  NestedEdgeCut.compositionCoefficient_vertex vertexSignRightCut (by decide) rfl
+example : compositionEdgeCutTerm ℤ vertexSignOuterLeft
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0 vertexSignLeftCut.partition (by decide)
+      vertexSignLeftCut.compositePosition =
+    vertexSignLeftCut.actionCoefficient • tensorVectorOfDegree ℤ 4 2
+      vertexSignLeftCut.outputFamily vertexSignLeftCut.outputFamily_tupleDegree_all :=
+  NestedEdgeCut.compositionEdgeCutTerm_vertex ℤ vertexSignLeftCut (by decide) rfl
