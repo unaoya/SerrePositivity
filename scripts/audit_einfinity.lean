@@ -284,7 +284,16 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.canonicalRows_adjacent_exists_move,
       `SerrePositivity.EInfinity.TableReduction.canonicalVertices_ne_adjacent,
       `SerrePositivity.EInfinity.TableReduction.canonicalSimplex_mem_nonDegenerate,
-      `SerrePositivity.EInfinity.TableReduction.canonicalNondegenerateSimplex] do
+      `SerrePositivity.EInfinity.TableReduction.canonicalNondegenerateSimplex,
+      `SerrePositivity.EInfinity.TableReduction.available_moved_wrong_cut_head,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_forces_move_length,
+      `SerrePositivity.EInfinity.TableReduction.pastFinals_eq_append_segment,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRows_force_length,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRows_extract_original_segment,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRows_exclusion_update,
+      `SerrePositivity.EInfinity.Surjection.not_caesura_after_last_start,
+      `SerrePositivity.EInfinity.TableReduction.available_canonicalRow_last,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_canonical_last] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

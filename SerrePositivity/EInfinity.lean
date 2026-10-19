@@ -175,3 +175,6 @@ public import SerrePositivity.EInfinity.TableReduction.DegreeMap
 public import SerrePositivity.EInfinity.TableReduction.NormalizedMap
 public import SerrePositivity.EInfinity.TableReduction.CanonicalSequence
 public import SerrePositivity.EInfinity.TableReduction.CanonicalAdjacentVertices
+public import SerrePositivity.EInfinity.TableReduction.CanonicalForcedLength
+public import SerrePositivity.EInfinity.TableReduction.CanonicalExtraction
+public import SerrePositivity.EInfinity.TableReduction.CanonicalLastRow

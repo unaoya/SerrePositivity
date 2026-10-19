@@ -130,6 +130,11 @@ reflexive coequalizer の形の sifted 性を検証し、図式圏へのモナ�
 開始位置と次の区切りの間には別の区切りがないことを証明し、実際の隣接頂点へ適用済み。
 `canonicalSimplex_mem_nonDegenerate` は候補単体の非退化性、
 `canonicalNondegenerateSimplex` は正規化 BE 基底の実際の添字を与える。
+`canonicalRows_force_length` は正しい先行除外から非退化に抽出できる行長を cut−start+1 に強制する。
+`canonicalRows_extract_original_segment` と `canonicalRows_exclusion_update` は、
+その長さで元の語の一行を抽出し、次の正しい除外状態へ移ることを保証する。
+最後の行の尾部は重複せず、`reduceRows_canonical_last` で残りの語全体を抽出する。
+全行の Schedule・reduceRows の反復と一般の和の一意性は未完成。
 具体例の復元行と唯一の非退化出力は監査済み。一般の TR の値の同定は未証明。
 TR の全射性・微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
