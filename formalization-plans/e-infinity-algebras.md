@@ -8,27 +8,37 @@
 
 - **現在地**：γ1.5 完了。γ3b は任意の小圏で元の非反転 q_x の同値性・全導来 fiber の可縮性による両向き判定と、pinched Hom の直接 fiber 模型まで公開。
   γ3c の 𝒮 の小積・Sp の有限積（空積含む）、一脚 fibration の引き戻し、fibration の塔の実際の ∞ 極限を公開。𝒮 の小余積・任意の span・任意の列の ∞ 余極限も公開。
-  現工程は通常の随伴と整合する自然な単体的 Hom 同型からの極限保存まで。豊穣右関手の coherent nerve による像と厳密に一致し、同図式の全 coherent 極限錐にも拡張。
-  検証：HomotopyLimits 対象ビルド5131 jobs、公理監査1682宣言（標準3公理のみ）。コード保存：`2d3eb636`。
+  通常の随伴と整合する自然な単体的 Hom 同型からの極限保存、豊穣右関手の coherent nerve による像との一致、同図式の全 coherent 極限錐への拡張まで公開。
+  今回は Kan 複体の `K × − ⊣ Map(K,−)` の通常の随伴・豊穣 Hom 同型・零単体の一致と strict 図式の ∞ 極限保存を構成。
+  両対象の anodyne Kan 置換（全対象 cofibrant）を代入し、`AdjunctionHom` の frame 同型との可換性を全単体で検証。
+  固定した単射・anodyne・Kan fibration・trivial Kan fibration の保存も公開。γ3c 全体・一般の γ4 は未完了。
+  検証：HomotopyLimits 対象ビルド5248 jobs、公理監査1707宣言（標準3公理のみ）。保存は今回のコミットメッセージを参照。
+  F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3 に記載。
 - **残り**（依存順・時間は再開後の概算）：
-  1. simplicial Quillen 随伴の cofibrant-fibrant 置換・frame から Hom 同型を具体化する。HTT 4.2.4.1・5.2.4.6、8〜20時間。
-  2. 1 と F1b の随伴 API から導来 ∞ 随伴の単位・余単位・整合性を構成する。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
-  3. 𝒮 の一般の小さい余極限と任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
+  1. γ3c：𝒮 の一般の小さい余極限と任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
+  2. γ4：具体例を一般の simplicial Quillen 随伴の cofibrant-fibrant 置換・frame へ拡張する。HTT 5.2.4.6、8〜20時間。
+  3. 2 と F1b の随伴 API から導来 ∞ 随伴の単位・余単位・整合性と一般の右導来関手の極限保存を構成する。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
   4. E2a-3・4 と γ2 の豊穣化の確定後、Alg_E と忘却関手へ適用する。HTT 1.1.5.10・4.2.4.1・5.2.4.6、16〜40時間。E2a の現状は下記参照。
 - **主要宣言**（名前のみ。名前空間 SerrePositivity.InfinityCategories.HomotopyLimits）：
   `strictCoherentCone_isLimit_iff_general_comparisonFiber`、`strictConePinched_generalOriginalEnd_equivalence`、
   `spaceProductCone_isLimitCone`、`spacePullbackCone_isLimitCone`、`spaceTowerCone_isLimitCone`、
   `spaceArbitraryPushoutCocone_isColimitCone`、`spaceArbitrarySequentialColimitCocone_isColimitCone`、
-  `SimplicialAdjunctionHomIso`、`strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso`。
+  `SimplicialAdjunctionHomIso`、`strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso`、
+  `kanTensorAdjunctionHomIso`、`kanInternalHom_map_isLimit`、`kanReplacedTensorFrameAdjunction_square`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
-  提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean、型・規約は InfinityCategories/README.md の γ3 節。
-- **未コミット**：N のコード・監査・README は全てコミット済み。この引き継ぎも別コミットに保存。他レーンの変更は温存。
+  提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
+  型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
+- **未コミット**：今回の保存単位は KanTensorAdjunction・KanTensorFrameAdjunction、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
+  root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
-  今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性は Mathlib の明示的な Quillen instance を使用。root 全体は未検証。
+  今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
+  完全なモデル構造の存在を与える `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので主経路へ import しない。
+  今回はその存在命題を使わず固定類の保存と Hom 比較を証明しており、一般のモデル圏からの導出を済ませたとは数えない。
   Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
-  他担当の再帰的依存1230ソースは追跡済み・コミット済み・変更なしを確認。依存が壊れたら回避せず停止する。
-- **次の一手**：AdjunctionHomLimits.lean と HomotopicalAlgebra/HomotopyFunctionComplex/AdjunctionHom.lean を照合し、実際の simplicial Quillen 随伴一例で cf 置換を含む Hom 同型の入力を構成する。
+  依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
+- **次の一手**：γ3c を優先し、HomotopicalAlgebra/Diagram/ColimitFrame・WeightedHomotopyColimitFrame と
+  HomotopyLimits の weighted Hom・strict cocone 判定を照合する。一般の小図式の台の構成に ModelCategory SSet の存在仮定を持ち込まない経路を確定する。
 
 ### E2a（既存の引き継ぎ）
 

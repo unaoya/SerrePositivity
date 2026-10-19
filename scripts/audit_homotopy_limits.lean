@@ -3832,3 +3832,78 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.strictCoherentCone_postcomp_isLimit_of_adjunctionHomIso
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso
+
+#check @kanTensor_isKan
+#print axioms kanTensor_isKan
+
+#check @kanTensorLeft
+#print axioms kanTensorLeft
+
+#check @kanInternalHom
+#print axioms kanInternalHom
+
+#check @kanTensorAdjunction
+#print axioms kanTensorAdjunction
+
+#check @kanIhomCurry_naturality
+#print axioms kanIhomCurry_naturality
+
+#check @kanIhomCurry_zero
+#print axioms kanIhomCurry_zero
+
+#check @kanTensorHomNatIso
+#print axioms kanTensorHomNatIso
+
+#check @kanTensorAdjunctionHomIso
+#print axioms kanTensorAdjunctionHomIso
+
+#check @kanInternalHom_map_isLimit
+#print axioms kanInternalHom_map_isLimit
+
+#check @kanTensorFrame
+#print axioms kanTensorFrame
+
+#check @kanTensorFrameHomIso
+#print axioms kanTensorFrameHomIso
+
+#check @kanTensorFrameAssocIso
+#print axioms kanTensorFrameAssocIso
+
+#check @kanTensorFrameAdjunctionIso
+#print axioms kanTensorFrameAdjunctionIso
+
+#check @kanIhomCurry_parameter
+#print axioms kanIhomCurry_parameter
+
+#check @kanTensorFrameAdjunction_square
+#print axioms kanTensorFrameAdjunction_square
+
+#check @kanTensor_preserves_cofibration
+#print axioms kanTensor_preserves_cofibration
+
+#check @kanTensor_preserves_anodyne
+#print axioms kanTensor_preserves_anodyne
+
+#check @kanInternalHom_preserves_fibration
+#print axioms kanInternalHom_preserves_fibration
+
+#check @kanInternalHom_preserves_trivialKanFibration
+#print axioms kanInternalHom_preserves_trivialKanFibration
+
+#check @kanTensorReplacement_leftComparison_anodyne
+#print axioms kanTensorReplacement_leftComparison_anodyne
+
+#check @kanTensorReplacement_isCofibrant
+#print axioms kanTensorReplacement_isCofibrant
+
+#check @kanTensorReplacement_isFibrant
+#print axioms kanTensorReplacement_isFibrant
+
+#check @kanTensorReplacement_left_isFibrant
+#print axioms kanTensorReplacement_left_isFibrant
+
+#check @kanReplacedTensorFrameAdjunctionIso
+#print axioms kanReplacedTensorFrameAdjunctionIso
+
+#check @kanReplacedTensorFrameAdjunction_square
+#print axioms kanReplacedTensorFrameAdjunction_square

@@ -28,8 +28,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   Tamme §1 Definition 5・Remark 6。24〜60 時間。
 - F2L-4：引き戻しを lax pullback の同値辺上の全部分 ∞ 圏と同定し、
   安定性・exact 関手への接続界面を整備。Tamme §1 Remark 7・Lemma 8(i)(iv)。24〜60 時間。
-- N：filtered 余極限、Ind、compact、冪等完備化、Ind の安定性・compact 生成。
-  HTT §5.1.4・§5.3、Kerodon 9。細分化・見積もりは N の着手時に確定する。
+- N：γ3c → γ4 の後、下記 §3 の第 2 部（F2N-1〜5）を担当。
+  filtered 余極限、Ind、compact、冪等完備化、Ind の安定性・compact 生成。
 - I-b：presentable・随伴関手定理を F1b、Bousfield 局所化・P_Σ を N と分担。
   HTT §5.5、Kerodon 9。F2-lite の後に細分化する。
 
@@ -108,5 +108,35 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - [Kerodon Proposition 5.5.3.3](https://kerodon.net/tag/020B)：局所 Kan 性からの quasicategory 性。
 - [Tamme 2018 §1](https://arxiv.org/html/1703.03331v3#S1)：Definition 5、Remarks 6–7、Lemma 8。
 - HTT §3.3.3（∞ 圏の極限）、§5.3（Ind・compact）、§5.5（presentable）。
+
+## 3. F2-lite 第 2 部（N）
+
+### 引き継ぎ（N、2026-10-19）
+
+- 現在地：計画と分担を確定。F2 固有の実装は未着手。N は γ3c・γ4 を先行する。
+  γ4 の具体例 `K × − ⊣ Map(K,−)` は cf 置換を含む frame Hom と豊穣 Hom を照合済み。
+  一般の随伴・任意の coherent 図式の余極限はまだ完了していない。
+- 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
+- 主要宣言：F2N 固有の公開宣言はまだない。
+- 依存と提供：F1 の Yoneda・前層と F1b の随伴・Kan 拡張・cofinality を読み取り専用で使用。
+  第 1 部の Cat_∞・lax pullback は F1b が担当し、N は再定義しない。
+  K-基盤へ Ind の κ 版・compact・冪等完備化、D へ安定性の界面を提供する。
+- 未コミット：N の実装は HomotopyLimits 側。本節は N の保存単位に含める。
+- 既知の問題：𝒮 の小積・任意の span と列の余極限だけでは一般の filtered 図式を扱えない。
+  前層や Ind の存在・普遍性を構造のフィールドに仮定して完了と数えない。
+- 次の一手：γ3c・γ4 の完了後、F1 の前層・Yoneda と一般の余極限の公開界面を照合して F2N-1。
+
+| 工程 | 内容と受入条件 | 原典 | 見積もり |
+| --- | --- | --- | --- |
+| F2N-1 | filtered ∞ 圏と κ-filtered の定義、cofinality、𝒮 の filtered 余極限と有限極限の交換。一般の coherent な図式で証明する | HTT §5.3.1–3 | 40〜100 時間 |
+| F2N-2 | 前層の全部分 ∞ 圏として Indκ(C) を構成。filtered 余極限による生成と、保存関手の延長の普遍性を証明する | HTT 5.3.5.1–10 | 50〜120 時間 |
+| F2N-3 | κ-compact、Yoneda 像の compact 性、retract による閉性、Ind の compact 対象の比較 | HTT §5.3.4、5.3.5.5・11 | 30〜80 時間 |
+| F2N-4 | coherent な冪等図式と分裂、前層内の retract 閉包、冪等完備化の普遍性、compact 部分との同定 | HTT §5.1.4、5.3.4.17 | 40〜100 時間 |
+| F2N-5 | C が小安定なら Ind(C) は安定。有限図式の filtered 表示と極限余極限の交換から証明し、冪等完備 C の compact 生成を公開 | HTT 5.3.3・5.3.5.15、HA §1.1.3 | 40〜100 時間 |
+
+宇宙は第 1 部と共通。κ の正則性・図式の小ささを明示し、Indω と非連結 K 用の大きい κ を混同しない。
+有限図式を C 内の図式の filtered 余極限で表示する際は、HTT 5.3.5.15 の有限半順序集合という条件を保持する。
+presentable の一般論・随伴関手定理は F1b、Bousfield 局所化・P_Σ は N が I-b で分担する。
+原典：[HTT](https://www.math.ias.edu/~lurie/papers/HTT.pdf) §5.1.4・§5.3。
 
 実施記録はコミットメッセージ。本書には現在地と設計を置き、長い型一覧を追記しない。
