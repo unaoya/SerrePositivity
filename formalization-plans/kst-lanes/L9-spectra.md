@@ -15,21 +15,21 @@
 - 反復 loop 値の fiber の π₀ と元の fiber の全正次数群を比較し、既存係数表示との正符号の可換式を証明済み。
 - 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
-- 球面的な相対境界の交代和と、path の loop 群同型での符号を相対 Kan 充填で照合済み。
-- corner の相対 fibration と二方向の共通ホーン充填を構成し、最後の面の境界定数単体の二射影を厳密に計算済み。
+- loop 値の骨格射を path 空間で一段延長し、その終点の実際の fiber 成分の係数を正規化交代微分と (-1)^(セル次元) で計算済み。実際の接続写像の出力との一致は別途残る。
+- corner の共通ホーン充填と二射影を計算済み。path 族の写像空間の辺への転置・両端・制限、および逆 loop の接続写像の辺による計算も構成済み。
 - 面次数一からの球面的持ち上げ・逆元公式と隣接比較ホーンを構成し、出力の非定数面を loop 側の境界代表と照合済み。
 - 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
 - 標準の零次数接続写像とその厳密な正方形への自然性を構成し、正次数・零次数の塔の微分の loop 反可換式を証明済み。
-- 骨格の零次数微分を通常の circle の loop–fiber 同型で比較し、基点に依存しない π₀ へ移した実際の成分微分も基本群の微分と逆符号で交換すると証明済み。
+- 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - `coefficientDifferential` の正次数の loop 反可換式に加え、基本段を loop 値の実際の成分微分の係数で正符号で計算する式を証明済み。
-- 検証：対象ビルド 4049 jobs、専用監査 577 モジュール・5548 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：共有 F1/F1B の同名宣言の import 衝突で失敗。対象と専用監査は成功。
+- 検証：対象ビルド 4056 jobs、専用監査 584 モジュール・5588 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14341 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - セル境界の局所的な連結準同型を反復 loop の成分代表で計算し、球面的境界の向きと整合させる。
-  標準の反可換式と係数の全次数の loop 比較の向きを照合済み。実際の群の係数微分の基本段を、loop 値の成分微分の係数へ正符号で帰着済み。成分微分そのものの交代式の計算が残る。
+  標準の反可換式と係数の全次数の loop 比較の向きを照合済み。実際の群の係数微分の基本段を、loop 値の成分微分の係数へ正符号で帰着済み。path 延長の終点には交代式を証明済み。これを実際の成分微分の出力と同定する工程が残る。
   原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
 - 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
   原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
@@ -60,9 +60,9 @@
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_iteratedLoopComponent`
 - `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
 - `SkeletalCellAttachment.exists_cellDifferential_boundaryRepresentative`
-- `SphericalFiberLift.alternatingClass_connecting`
-- `SphericalPathBoundary.alternating_loopPositive`
-- `loopZeroHomotopyEquiv_eq_inv_component`
+- `SkeletalPathCoboundary.exists_extension`
+- `SkeletalPathCoboundary.normalizedDifferential_endpointFiber`
+- `SkeletalCellAttachment.exists_cellComponentDifferential_boundaryRepresentative`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_loopZero`
 - `SkeletalCellAttachment.coefficientDifferential_zero_component`
 - `SkeletalCellAttachment.stageFiberLoopPositiveEquiv_eq`
@@ -88,7 +88,7 @@
 - 共有ルート `SerrePositivity.lean` および他レーンの既存差分は触らず、今回のコミット対象にも含めない。
 
 ### 既知の問題
-- 自分の import 閉包・対象ビルド・公理監査は成功。共有ルートの全体ビルドは F1/F1B の `leftScaffoldBaseChange_overPullbackMap` 重複で失敗。
+- 自分の import 閉包・対象ビルド・公理監査・全体ビルドは成功。既報の共有 F1/F1B の重複は今回再現しない。
 - 所有ソースの sorry・追加 axiom はなし。所有宣言の型に `HomotopicalAlgebra.ModelCategory` 定数がないことも Lean 環境を走査して確認済み。
 - import 閉包に KanQuillen モジュールなし。`SSet.modelCategoryQuillen` 名前空間は Mathlib のホーン生成射・Fibration の既存 API に使うが、`ModelCategory SSet` は仮定しない。
 - 公理監査は私有宣言・推移的な公理依存と、宣言型の ModelCategory 定数を検査する。
@@ -97,10 +97,10 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- 零 loop と円の成分表示の向きは逆元で確定し、置換円・セル球面・骨格の全てで照合済み。収縮や向きの比較を再構成しない。
-- `coefficientDifferential_zero_component` は実際の群の微分の基本段を、loop 値の `stageComponentDifferential` の各セルの成分係数へ正符号で帰着する。まずこの実際の成分微分を相対充填・cofiber の代表で計算する。
-- `skeletalFiberVertex_normalizedDifferential` の交代和と上の成分係数を同じ代表で比較し、`coefficientDifferential_loopPositive` で高次数へ移す。値と符号を保持し、零性だけへ弱めない。
-- Sp-1d、塔の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。
+- `SkeletalPathCoboundary.exists_extension` の H を `UnbasedPointedMapping.pathFamilyEdge` で写像空間の辺に移し、`pointedConnectingZero_inverse_edge` で終点を成分接続写像の出力として同定する。転置の両端と源制限は証明済み。
+- 底の辺の逆元の入力を、元の loop 値の `skeletalFiberVertex` の成分からの `stageFiberOrdinaryLoopComponentEquiv` と照合する。零 loop と通常の円の逆元関係は既証なので再構成しない。
+- 上を `normalizedDifferential_endpointFiber` と `coefficientDifferential_zero_component` へ合成し、高次数は `coefficientDifferential_loopPositive` で運ぶ。今回の交代式は cochain 次数二以上。次数一の別処理も残る。
+- Sp-1d、塔の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。path 延長の交代式だけで微分の同定を完了扱いにしない。
 
 ## 範囲と所有
 

@@ -107,3 +107,10 @@ public import SerrePositivity.KST.Spectra.LoopMappingZeroOrientation
 public import SerrePositivity.KST.Spectra.SimplexCellZeroLoop
 public import SerrePositivity.KST.Spectra.SkeletalFiberLoopZero
 public import SerrePositivity.KST.Spectra.SkeletalZeroCoefficientDifferential
+public import SerrePositivity.KST.Spectra.RestrictionZeroConnecting
+public import SerrePositivity.KST.Spectra.SkeletalZeroCellConnecting
+public import SerrePositivity.KST.Spectra.SkeletalZeroCellRepresentatives
+public import SerrePositivity.KST.Spectra.SkeletalPathCoboundary
+public import SerrePositivity.KST.Spectra.SkeletalPathAlternating
+public import SerrePositivity.KST.Spectra.ReverseComponentConnecting
+public import SerrePositivity.KST.Spectra.UnbasedPathFamilies
