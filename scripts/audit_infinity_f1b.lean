@@ -1705,3 +1705,13 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiberViaOpposite_projection
 
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaFiber_hasColimit_iff_local
+
+#check @SerrePositivity.InfinityCategories.F1B.kanGlobalDiagramFamily_fiber_vertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanGlobalDiagramFamilyEquiv
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalColimit_initial_family
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalColimit_diagram
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftComma_colimit_diagram

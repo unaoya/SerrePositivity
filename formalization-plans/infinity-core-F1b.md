@@ -38,20 +38,20 @@
 - left fibrations の各 fiber の同値から全空間と任意の底変換後の前合成同値を導く安全な判定を証明。
   固定始域の comma の標的射影も left fibration。その fiber を区間写像空間と厳密に同定。
   coslice の局所添字から comma fiber への比較は、任意の底変換後も前合成同値と証明。
-- 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。
-- 対象の族の各頂点に必要な余極限だけで、普遍余錐全体からの引き戻しは自明 Kan fibration。図式を延長できる。
+- 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。対象の族の各頂点に必要な余極限だけで、普遍余錐全体からの引き戻しは自明 Kan fibration。
+  全空間の指定図式の fiber 制限と族の頂点を同定し、実際の相対 join の普遍な図式へ厳密に延長できる。
 - 任意の関手 δ に対し、既存 comma の反転 `F1B.kanLeftComma δ` を構成。底への射影は cocartesian fibration。
   恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示を証明。反転から作った局所添字の比較は
-  図式を保つ単射な前合成同値。comma fiber と元の左 Kan 局所図式の余極限の存在は同値。
-- 最終検証：F1・F1B 同時ビルド成功（3480 jobs）、同時 import 検査成功（F1 5852・F1B 3667 宣言）。
-  公理監査成功（3671 宣言、標準三公理のみ、1002 モジュールに straightening なし）。ソース名衝突 0。
+  図式を保つ単射な前合成同値。局所余極限の仮定から、comma の相対 join の図式を coherent に構成済み。
+- 最終検証：F1・F1B 同時ビルド成功（3491 jobs）、同時 import 検査成功（F1 5888・F1B 3684 宣言）。
+  公理監査成功（3688 宣言、標準三公理のみ、1007 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - 1. 点ごとの余極限からの相対 join の図式の存在を、一般の δ と Kan 条件へ接続する。
   Kerodon Lemma 7.3.4.5–6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
   fiber の充填の全空間への移送、実際の図式の延長、対象の族の点ごとの余極限だけによる存在は証明済み。
-  oriented fiber product の fiber と局所添字の余極限の比較は証明済み。任意の δ に沿う存在へ接続する。
+  任意の δ の局所余極限から comma の相対 join の図式の存在まで接続済み。点ごとの Kan 条件へ戻す。
 - 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
   原典は相対 Kan 拡張の存在（Prop 7.3.5.5）を使う。局所境界充填から直接は結論しない。
@@ -72,7 +72,7 @@
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftCommaFiber_hasColimit_iff_local`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
-- `F1B.kanRelativeJoinRestriction_preservesCartesianEdges` / `F1B.kanRelativeJoinRestriction_innerFibration`
+- `F1B.exists_kanLeftComma_colimit_diagram` / `F1B.exists_kanGlobalColimit_diagram`
 
 ### 依存と提供
 
@@ -83,7 +83,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：局所添字の比較の反転・射影保存・単射性、余極限の移送、集約・監査・本書）。
+- なし（本保存単位：全空間の図式の族と fiber の比較、局所余極限から comma の相対 join の図式、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,10 +98,10 @@
 
 ### 次の一手
 
-- `kanLeftCommaFiber_hasColimit_iff_local` で局所余極限の仮定を comma fiber へ移せる。
-  次は `kanFiberwiseHomVertexDiagram` で curry した図式を元の図式の fiber 制限と同定し、
-  `exists_kanRelativeJoin_diagram_of_pointwise_colimits` に適用する。
-  元の δ へ制限して指定変換を取り出し、点ごとの Kan 条件へ接続する（Kerodon 7.3.4–5）。
+- `exists_kanLeftComma_colimit_diagram` で一般の δ から相対 join の図式 H を構成済み。
+  次は `InitialBoundaryLifting` を底の fiber へ制限し、余錐制限の fiber 同型を通して
+  H の各 fiber の余錐の余極限性を回収する。右端の図式と標準変換を元の K へ制限し、
+  点ごとの左 Kan 条件へ接続する（Kerodon 7.3.4–5）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
