@@ -6,101 +6,63 @@
 
 ### 現在地
 
-- B1〜B4 は明示した模型・宇宙で完了。B5 進行中。B5 の後は [F2 計画](infinity-core-F2.md) 第 1 部。
-- B4：任意の指定変換の相対 join 表示、両端の同時厳密化、h Fun の類の保存、
-  元の左右 Kan 条件と厳密化後の局所極限・余極限性の同値まで証明。
-- 同じ宇宙の quasicategory K・C・D と任意の δ : K→C、F₀ : K→D に対し、左右 Kan 拡張の存在を
-  全頂点 c の標準局所図式の余極限・極限の存在と同定。指定変換つきの関手全体を構成する。
-- 構成経路：`F1B.kanLeftComma δ` の cocartesian 射影、標準局所形から fiber への単射な前合成同値、
-  相対指数の cartesian 性で普遍余錐を組み立て、図式・頂点を固定する円柱比較で局所輸送へ移す。
-- 右の存在：coslice と反転図式の slice の同型、反転関手の二乗の恒等性で対象・射・普遍性を戻す。
-- `kanRelativeCoconeRestriction` の持ち上げは部分余錐・元の図式・U による像を保つ延長と同値。
-  U が inner／自明 Kan fibration なら比較も同じ性質。`KanRelativeCoconeLifting` は比較の始点境界充填条件。
-  終対象上では通常の余極限性と同値。底の余錐が余極限なら、この相対条件から元の余極限性を回収。
-- 標準の `IsRelativeColimitCone`（通常の coslice の相対始対象性）と操作的な相対余錐充填は U が inner なら同値。
-  余錐頂点で可逆な輸送の後合成による保存と、標的の fiber 同型で固定図式の条件を全空間へ移送。
-- inner fibration の相対始対象性と厳密な始点境界充填は同値。底変換と最初の頂点の始対象性の反映で証明。
-- 指定可逆辺の可逆区間への厳密な延長と終点・像固定の持ち上げ、相対内部 Hom の順序交換から、
-  V′ の局所余錐の境界固定の延長と相対普遍性を構成済み。
-- `KanEquivalenceLifting U` は inner 性と終点・像指定の可逆辺の持ち上げと同値。相対 path 比較の自明 Kan 性で証明。
-  この右持ち上げ条件は任意の単射による相対内部 Hom へ移る。
-- 上の isofibration の二条件の下で、局所の標準 U 余極限から元・標的の図式を厳密に保つ大域図式を構成。
-- 任意の U の path 置換は右持ち上げを持ち、定値 path の切断は同値。coslice の自明 Kan 性で相対余極限性を比較。
-  任意の U 上で指定部分を保つ大域図式・そこで定値な可逆 path・全 fiber の U 余極限性を構成。
-- 境界の最初の頂点の標準 U 余極限性から、元・境界・標的の図式を固定して相対境界を延長。
-- 相対 join の通常の関手圏の相対制限について、始点境界充填・右 pinched 写像空間の同値を証明。
-  局所 U 余極限図式の全部分 ∞ 圏からの制限は充満忠実で、必要な局所相対余極限が存在すれば自明 Kan。
-- 円柱の変形・標準 prism から右端への h Fun の随伴・Hom 全単射・自然性・単位公式・元の指定変換の Hom 普遍性を構成。
-- 局所余極限から左 Kan 条件と Hom 普遍性を同時に持つ候補を構成し、任意の指定 β 自身へ移送済み。
-  同じ宇宙の quasicategory K・C・D と任意の δ に対し、`IsLeftKanExtension` から `LeftKanHomUniversal`。
-- 局所普遍余錐の Hom 全単射から、指定変換に両立する比較射の各点での可逆性・大域的同型・一意性を証明。
-- 反転 Hom 全単射と指定変換・合成・前合成との両立から、右側も Hom 普遍性と大域的一意性を証明。
-- 相対左 Kan 条件を標準 U 余極限で定義し、輸送・h Fun の類への不変性、comma 候補・指定変換の局所判定を証明。
-- 底 C 内で一度だけ選んだ普遍図式への前合成により、元の関手の族を comma の図式の族へ写す。
-  標準相対左 Kan 条件の保存・反映、右端の厳密な回収、U の後合成自然性、元の相対制限との可換正方形を証明。
-- 充満忠実な inner 単射に沿う指定左単位の可逆性、元の図式の厳密な延長を証明。局所余極限の存在の下で終対象上の元の制限は自明 Kan。
-- 右：標準 U 極限・元の相対右 Kan 条件と制限、左右の双対判定を構成。全部分圏と相対標的の反転同型・制限の可換正方形から、元の右制限の正次元境界充填・充満忠実性を証明。標準局所 U 極限から元と底を保つ右の厳密な存在・頂点全射性・自明 Kan 性、右 Kan 関手へ任意の始点から入る片側の相対 pinched 比較も証明。
-- 像の類が恒等な単位の相対厳密化、像固定の局所余錐の添字変更、標準底余錐上の局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
-- 左右の標準相対 Kan 条件は path 置換の射影・切断で保存・反映。任意 U の元の相対制限の片側 pinched 同値を、四つの写像空間の引き戻しへの比較同値として表示。右の射は Kan、絶対的な左右の制限は自明 Kan。
-- B5：通常の関手圏の nerve と元の Fun の同型、h Fun との同値、指定自然変換の全単射・whiskering の保存、古典随伴の双方向比較を証明。
-  nerve の左右 Hom 普遍性と通常の Kan 拡張の同値、native な pointwise Kan から通常の Kan 拡張への含意も証明。
-- B5 局所比較：Under・Over の nerve と native な coslice・slice、左右 comma と元の Kan 添字の同型、射影・局所図式の厳密な一致を証明。
-- 通常の錐の圏と拡張関手の fiber の同値から、native な錐の族への比較射の同値性を証明。
-  錐・余錐の頂点を保つ全単射、指定錐・余錐の普遍性、極限・余極限の存在を双方向に比較。
-  左右 comma の局所極限・余極限の存在、および nerve 上の Kan 拡張の存在と通常の pointwise Kan の存在を双方向に比較。
-- 指定自然変換の実ホモトピー表示・自然性・成分公式と、頂点を固定した錐の脚の後合成ホモトピーを構成。
-  Under・comma の標準錐の厳密な一致から指定余単位の右輸送を構成し、通常の pointwise 右 Kan 条件との同値を証明。
-- 最終検証：F1・F1B 同時ビルド成功（4067 jobs）、同時 import 検査成功（F1 7451・F1B 5116 宣言）。
-  公理監査成功（5122 宣言、標準三公理のみ、1414 モジュールに straightening なし）。ソース名衝突 0。
+- B1〜B5 は明示した模型・宇宙で完了。次は [F2 計画](infinity-core-F2.md) 第 1 部。
+- B1：全単体集合パラメータの族の集合値前層による自然性の模型。双圏の単位・余単位・三角恒等式と自然な Hom 対応を比較。
+- B2：同じ宇宙の標的に対する反射的局所化。一般の局所化の存在は F2 の範囲。
+- B3：左右の Quillen A、弱可縮な comma 条件、二宇宙版の始対象による極限計算を回収。
+- B4：元の指定左右変換の相対 join 表示と両端の厳密化、局所普遍性、各点の存在からの組み立て、Hom 普遍性と一意性を証明。
+  充満忠実な inner 単射に沿う標準相対 Kan 制限、像・元の図式を保つ厳密な存在、任意 U の path 置換と写像空間の引き戻し比較も構成。
+- B5：通常の関手圏の nerve と元の Fun の同型、自然変換の全単射と前後合成、指定単位・余単位を保つ古典随伴の双方向比較を証明。
+  通常の Kan の大域的な Hom 普遍性と、指定単位・余単位の pointwise 条件を区別し、それぞれ左右とも双方向に比較。
+  Under・Over と左右 comma の添字同型、錐・余錐の頂点と脚・普遍性・存在の双方向比較、標準局所錐の厳密な一致を構成。
+  指定自然変換の実ホモトピーと頂点を固定した錐・余錐の族から、通常の指定局所錐そのものを native な左右の輸送で表示。
+- 最終検証：F1・F1B 同時ビルド成功（4081 jobs）、同時 import 検査成功（F1 7451・F1B 5169 宣言）。
+  公理監査成功（5175 宣言、標準三公理のみ、1428 モジュールに straightening なし）。ソース名衝突 0。
+- F2 の既存入力を再確認：F1 の `CatInfinity = SimplicialNerve QCat`、QCat の Hom は Fun の core、γ1 による quasicategory 性。
+  F2L-1 の頂点・辺・写像空間の比較 API と、Cat_∞ 内の引き戻し・lax pullback の普遍性は未完了。
 
 ### 残り（依存順、実作業時間の概算）
 
-- B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
-  Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。6〜18 時間。
-  残り：指定単位を伴う pointwise 左 Kan の局所余錐の双方向比較（指定余単位の右側は完了）。自然変換の全単射・随伴の双方向比較・通常の Kan の大域的普遍性の比較は完了。
-  pointwise な古典 Kan 拡張と一般の普遍写像性だけによる Kan 拡張を区別して回収する。
-- 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
+- F2L-1：既存 Cat_∞ の対象・辺、写像空間と Fun の core の比較 API。Kerodon §5.5.3。8〜24 時間。
+- F2L-2：Cat_∞ の引き戻しと全試験 ∞ 圏からの写像空間による普遍性。Kerodon §5.5.3、HTT §3.3.3。40〜100 時間。
+- F2L-3：Fun(Δ¹,−) と端点評価による lax pullback と普遍性。Tamme §1 Definition 5・Remark 6。24〜60 時間。
+- F2L-4：同値辺上の全部分圏による引き戻しとの比較、安定性・exact 関手への接続。Tamme §1 Remark 7・Lemma 8。24〜60 時間。
+- Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
 
 ### 主要宣言（名前のみ）
 
-- `QCatAdjunction` / `qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison`
+- `QCatAdjunction` / `F1B.kanNonempty_adjunction_iff_nerveAdjunction`
 - `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
 - `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
-- `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
-- `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
-- `F1B.kanEquivalenceLifting_iff_inner_and_invertibleTargetLifting` / `F1B.KanEquivalenceLifting.relativeInternalHom`
-- `F1B.kanRelativeJoinRelativeColimitRestriction_isFullyFaithful` / `F1B.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration`
-- `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
-- `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
-- `F1B.IsRelativeRightKanExtendedFrom` / `F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left`
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
-- `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
-- `F1B.kanNerve_exists_leftKan_iff_pointwise` / `F1B.kanNerve_isRightKanExtensionHom_iff_pointwise`
-- `F1B.kanNerveConeFamilyMap_isQCatEquivalence` / `F1B.kanNerveCone_isLimit_iff` / `F1B.kanNerveConePostcomposeHomotopy`
+- `F1B.kanNerve_leftKanHomUniversal_iff` / `F1B.kanNerve_rightKanHomUniversal_iff`
+- `F1B.kanNerve_isLeftKanExtensionHom_iff_pointwise` / `F1B.kanNerve_isRightKanExtensionHom_iff_pointwise`
+- `F1B.kanNerveLeftCoconeTransport_cocone` / `F1B.kanNerveRightConeTransport_cone`
 
 ### 依存と提供
 
-- Core/・F1/・Stable/ と HomotopyLimits/InitialJoinFaces の閉包を読み取り専用で使う。
-  pullback、join・slice、h Fun、相対骨格・充填、反転、錐の輸送を使う。straightening に推移的にも依存しない。
-- 提供：F1B 集約、随伴・反射的局所化・Quillen A、Kan の点ごとの条件・相対 join 還元・族の普遍性と組み立て。一般の局所化は F2、Hom 関手は F1h。
+- Core/・F1/・Stable/・HomotopyLimits/ の必要な閉包を読み取り専用で使用。F1B は推移的にも straightening に依存しない。
+- 提供：F1B 集約、随伴・反射的局所化・Quillen A、左右 Kan の局所判定・相対制限・組み立て・一意性・古典比較。
+- F2 は F1 の CatInfinity と γ1 を再利用し、N の Ind・compact・冪等完備化と分担。既存 Cat_∞ を再定義しない。
 
 ### 未コミット
 
-- なし（本保存単位：錐の脚・自然性、右の標準錐・指定余単位の輸送・pointwise 条件の同値、集約・監査・本書）。
+- なし（本保存単位：余錐の脚・自然性、Over の標準余錐、指定単位の左輸送と pointwise 条件の同値、集約・監査・本書）。
 
 ### 既知の問題
 
-- F1 側の import 循環・timeout は修正済み。同時ビルドと同時 import の検査を保存前に実行する。
 - 保存 `43c25ad6` は D レーンの 9 ファイルも同梱。履歴は変更せず、以後 `git commit --only` で所有パスを限定。
-- F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
-- cocartesian な p の `kanFiberwiseHom` は cartesian。制限 V 自体は未証明だが B4 では Kerodon 7.1.5.19 で迂回。
-- B1 は全パラメータの集合値前層の模型。空間値二変数比較は未形式化。B2 は同じ宇宙で、一般の局所化の存在は含まない。
+- F1/F1B の同名宣言衝突は `efdd0fb3` で修正済み。保存前に同時ビルド・同時 import・ソースの衝突検査を行う。
+- 新規・再構成は F1B 名前空間。F1B のソースに `ModelCategory` 仮定なし。前提は Lean が正本。
+- B1 の空間値二変数 Hom 関手との比較は F1h の範囲で未形式化。B2 は一般の局所化の存在を含まない。
+- 右円柱の前合成同値は未証明だが B4・B5 の局所判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で構成する。
+- F2 の共有計画の N 節を保持し、Cat_∞ の strict pullback と ∞ 圏内の引き戻しを区別する。
 
 ### 次の一手
 
-- 左側：`kanNerveCoconeEquiv` の脚・自然性と `kanNerveOverIso` の uncurry を比較し、標準余錐を同定する。
-  指定単位から `LeftKanCoconeTransport` を構成し、通常の `LeftExtension.coconeAt` の余極限性と双方向に比較する。
+- F1/CatInfinity・QCatSimplicial と Mathlib の SimplicialNerve の零・一次単体を読み、対象・関手との往復 API を F2 に構成する。
+  続いて γ1 の写像空間比較を確認し、Fun の core との同値を整備する。詳細と受入条件は F2 計画を正本にする。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
@@ -123,7 +85,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 完了（同じ宇宙の quasicategory に対する局所判定・存在・Hom 普遍性と一意性。充満忠実 inner 単射に沿う相対厳密存在・制限定理、任意 U の写像空間の homotopy pullback を右 Kan fibration 上の厳密な引き戻しへの実際の比較同値で実現） |
-| B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 進行中（関手圏の nerve の同型・h Fun の比較・自然変換の二胞体表示と左右 whiskering 保存、古典随伴から nerve の随伴と指定単位・余単位の保存は完了。随伴の逆方向と pointwise Kan 比較が残る） |
+| B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 完了（同じ宇宙の小さい圏。指定単位・余単位を保つ随伴、通常の Kan の大域的普遍性、pointwise な左右 Kan 条件を区別して双方向に比較。集約・公理・import・名前衝突を監査） |
 
 ## 2. 設計上の決定
 

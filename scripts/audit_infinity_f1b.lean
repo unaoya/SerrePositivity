@@ -2974,3 +2974,18 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveRightConeTransport_cone
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveRightConeTransport_isLimit_iff
 #check @SerrePositivity.InfinityCategories.F1B.kanNerve_isRightKanExtensionHom_iff_pointwise
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeReverseCone_leg
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceDiagramIso_hom_val
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCocone_leg
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCocone_whisker
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCocone_mapCocone
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveOverIso_uncurry
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCocone_withTerminal
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCoconePrecomposeHomotopy
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCoconePrecomposeHomotopy_fixedVertex
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanCanonicalCocone
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftCoconeTransport
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftCoconeTransport_cocone
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftCoconeTransport_isColimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_isLeftKanExtensionHom_iff_pointwise
