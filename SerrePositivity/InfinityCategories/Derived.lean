@@ -573,6 +573,13 @@ public import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedBounda
 public import SerrePositivity.InfinityCategories.Derived.PinchedBoundaryFromProperComponents
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientActualBoundaryFillers
 
+public import SerrePositivity.InfinityCategories.Derived.PinchedMappedBoundaryComparison
+public import SerrePositivity.InfinityCategories.Derived.PinchedTopComparison
+public import SerrePositivity.InfinityCategories.Derived.PinchedLinearBoundaryEdge
+public import SerrePositivity.InfinityCategories.Derived.PinchedLinearBoundaryEdgeEndpoints
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedTopComparisons
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedVertexEdges
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

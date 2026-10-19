@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedVertexEdges
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualBoundaryFillers
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativePrimitives
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualGradedFractions
@@ -1799,6 +1800,20 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.pinchedBoundary_eq_of_proper_components
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_actualBoundaryFillers
 
+#print axioms SerrePositivity.InfinityCategories.pinchedMappedBoundaryComparison_proper
+#print axioms SerrePositivity.InfinityCategories.pinchedLinearSimplex_sub_proper_zero
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.difference_proper_zero
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.difference_full
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_pinchedTopComparisons
+#print axioms SerrePositivity.InfinityCategories.pinchedLinearBoundaryEdge
+#print axioms SerrePositivity.InfinityCategories.pinchedLinearBoundaryEdge_pullback
+#print axioms SerrePositivity.InfinityCategories.pinchedBoundaryPrimitiveEdge
+#print axioms SerrePositivity.InfinityCategories.pinchedBoundaryPrimitiveEdge_top
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.edge_zero
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.homotopy_zero
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_pinchedVertexEdges
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1952,6 +1967,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.PinchedMappedBoundaryComparison,
+    `SerrePositivity.InfinityCategories.Derived.PinchedTopComparison,
+    `SerrePositivity.InfinityCategories.Derived.PinchedLinearBoundaryEdge,
+    `SerrePositivity.InfinityCategories.Derived.PinchedLinearBoundaryEdgeEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedTopComparisons,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedVertexEdges,
     `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionChainMap,
     `SerrePositivity.InfinityCategories.Derived.PinchedClosedPrecomposition,
     `SerrePositivity.InfinityCategories.Derived.PinchedCompleteTop,
