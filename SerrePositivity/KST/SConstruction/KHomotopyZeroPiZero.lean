@@ -33,4 +33,10 @@ def kHomotopyZeroPiZeroIso :
     kHomotopyFunctor.{u} 0 ⋙ forget CommGrpCat.{u} ≅ boundaryKPiZeroFunctor :=
   kHomotopyRawStageIso 0 0 (by omega) ≪≫ rawKZeroHomotopyPiZeroIso
 
+/-- 零次 K 群と元の K 空間の π₀ の自然同型の各成分を集合の同値として使う。 -/
+def kHomotopyZeroPiZeroEquiv (X : StableModel.{u}) :
+    OmegaSpectrum.homotopyGroup (kOmegaSpectrum X) 0 ≃
+      SSet.π₀ (boundaryKSpaceFunctor.obj X).right :=
+  (kHomotopyZeroPiZeroIso.{u}.app X).toEquiv
+
 end SerrePositivity.KST.SConstruction

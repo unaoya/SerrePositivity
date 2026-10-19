@@ -7130,3 +7130,84 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroIso
 #print axioms SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroIso
+
+#check @SerrePositivity.KST.SConstruction.coreSOneComparison_piZero_bijective
+#print axioms SerrePositivity.KST.SConstruction.coreSOneComparison_piZero_bijective
+
+#check @SerrePositivity.KST.SConstruction.coreSOnePiZeroEquiv
+#print axioms SerrePositivity.KST.SConstruction.coreSOnePiZeroEquiv
+
+#check @SerrePositivity.KST.SConstruction.objectCoreVertex
+#print axioms SerrePositivity.KST.SConstruction.objectCoreVertex
+
+#check @SerrePositivity.KST.SConstruction.objectKPiZeroClass
+#print axioms SerrePositivity.KST.SConstruction.objectKPiZeroClass
+
+#check @SerrePositivity.KST.SConstruction.objectKPiZeroClass_sOne
+#print axioms SerrePositivity.KST.SConstruction.objectKPiZeroClass_sOne
+
+#check @SerrePositivity.KST.SConstruction.sOneLoopClass_eq_of_evaluation_eq
+#print axioms SerrePositivity.KST.SConstruction.sOneLoopClass_eq_of_evaluation_eq
+
+#check @SerrePositivity.KST.SConstruction.objectKClass
+#print axioms SerrePositivity.KST.SConstruction.objectKClass
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_piZero
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_piZero
+
+#check @SerrePositivity.KST.SConstruction.objectKPiZeroClass_eq_of_coreClass_eq
+#print axioms SerrePositivity.KST.SConstruction.objectKPiZeroClass_eq_of_coreClass_eq
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_eq_of_coreClass_eq
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_eq_of_coreClass_eq
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_invertibleSimplex
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_invertibleSimplex
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_invertibleEdge
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_invertibleEdge
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_iso
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_iso
+
+#check @SerrePositivity.KST.SConstruction.homotopyObjectKClass
+#print axioms SerrePositivity.KST.SConstruction.homotopyObjectKClass
+
+#check @SerrePositivity.KST.SConstruction.homotopyObjectKClass_mk
+#print axioms SerrePositivity.KST.SConstruction.homotopyObjectKClass_mk
+
+#check @SerrePositivity.KST.SConstruction.homotopyObjectKClass_iso
+#print axioms SerrePositivity.KST.SConstruction.homotopyObjectKClass_iso
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv_one
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv_one
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison_zeroVertex
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison_zeroVertex
+
+#check @SerrePositivity.KST.SConstruction.objectKPiZeroClass_of_isZero
+#print axioms SerrePositivity.KST.SConstruction.objectKPiZeroClass_of_isZero
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_of_isZero
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_of_isZero
+
+#check @SerrePositivity.KST.SConstruction.iteratedRealizationToKan_naturality
+#print axioms SerrePositivity.KST.SConstruction.iteratedRealizationToKan_naturality
+
+#check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.coreSOnePiZeroEquiv_symm_naturality
+#print axioms SerrePositivity.KST.SConstruction.coreSOnePiZeroEquiv_symm_naturality
+
+#check @SerrePositivity.KST.SConstruction.objectKPiZeroClass_naturality
+#print axioms SerrePositivity.KST.SConstruction.objectKPiZeroClass_naturality
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv_naturality
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv_naturality
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_naturality
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_naturality
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv
