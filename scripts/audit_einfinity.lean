@@ -1352,6 +1352,45 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.coefficient_interval_hom_ext,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_comp_positive,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_operad_comp_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_compositeGenerator_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_composition_zero_all,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_vertex_eq_iterated_all,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nullary_eq_none,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nullary_occurrenceCount,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nullary_slot_nonedge,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nullary_pivot_ne_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_edge_nullary_of_count_ne_one,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_edge_nullary_of_count_ne_one,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_edge_nullary_eq_iterated_of_count_ne_one,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord_list,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord_surjective,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeGenerator_nullaryRawWord,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord_outerPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord_prefix,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord_suffix,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord_cut_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord_cut_preimage,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawCutEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryOuterCutEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryNestedCutEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawCutWord,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryRawWord_outputVertices,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryNestedCutEquiv_outputFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.nullaryNestedCutEquiv_remaining_output,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nullaryPositionMap,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nullaryPositionMap_image,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nullaryPositionMap_inversionTerm,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nullary_edgeSign,
+      `SerrePositivity.EInfinity.IntervalCuts.overlapPartition_empty_eq,
+      `SerrePositivity.EInfinity.IntervalCuts.compositionOnWords_nullary_eq_generator,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_nullary_action_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_edge_nullary_eq_iterated,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_comp,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_operad_comp,
+      `SerrePositivity.EInfinity.IntervalCuts.surjectionCoalgebra,
+      `SerrePositivity.EInfinity.IntervalCuts.barrattEcclesCoalgebra,
+      `SerrePositivity.EInfinity.IntervalCuts.barrattEcclesCoalgebra_coaction,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3882,3 +3921,50 @@ example (z : ℤ) (x y : ((complex ℤ 3 ⊗ complex ℤ 3) ⊗ interval ℤ).X 
           b • (iteratedCochainAction ℤ 2 3 1).f z y := by
   rw [cochainAction_comp_positive ℤ 2 3 1 (by decide)]
   simp only [map_add, map_zsmul]
+
+-- 内側が空語でも負の切断符号と残り二辺を保持する。
+private def nullaryNegativeCut : NestedEdgeCut (m := 2) vertexSignOuterRight zeroEmptyWord 0 :=
+  NestedEdgeCut.ofVertex 1 (by decide) (by decide) rfl
+private def nullaryNegativePartition :
+    OverlapPartition (occurrenceCount vertexSignOuterRight.val 0) 0 :=
+  OverlapPartition.single 0
+example : nullaryNegativeCut.actionCoefficient = -1 := by decide
+example : List.ofFn nullaryNegativeCut.outputFamily = [edge, edge] := by decide
+example : List.ofFn (nullaryRawWord vertexSignOuterRight zeroEmptyWord 0
+    nullaryNegativePartition) = [1, 0, 1] := by decide
+
+-- 左辺そのものの空語合成も同じ負の二辺テンソルを与える。
+example : ((complexPartialComposition ℤ 2 0 0 ▷ interval ℤ) ≫ cochainAction ℤ 2).f (-2)
+    (wordPairEdgeInput ℤ vertexSignOuterRight zeroEmptyWord) =
+      -(tensorVectorAt ℤ 2 nullaryNegativeCut.outputFamily (-2) (by decide)) := by
+  refine (cochainAction_composition_basis_edge ℤ vertexSignOuterRight zeroEmptyWord 0).trans ?_
+  rw [edgeComponent_composition_nullary_action_sum ℤ vertexSignOuterRight zeroEmptyWord 0
+    nullaryNegativePartition]
+  have hu : ∀ a : NestedEdgeCut (m := 2) vertexSignOuterRight zeroEmptyWord 0,
+      a = nullaryNegativeCut := by decide
+  rw [Finset.sum_eq_single nullaryNegativeCut (fun a _ ha => False.elim (ha (hu a))) (by simp)]
+  have hc : nullaryNegativeCut.actionCoefficient = -1 := by decide
+  simp only [hc, neg_one_zsmul]
+  rfl
+
+-- 唯一出現を削除して隣接退化する語は、正規化前の切断型も空。
+private def nullaryDegeneratePartition :
+    OverlapPartition (occurrenceCount compositionInner.val 1) 0 := OverlapPartition.single 0
+example : List.ofFn (nullaryRawWord compositionInner zeroEmptyWord 1
+    nullaryDegeneratePartition) = [0, 0] := by decide
+example : Fintype.card {q : Fin 2 // EdgeNondegenerate
+    (nullaryRawWord compositionInner zeroEmptyWord 1 nullaryDegeneratePartition) q} = 0 :=
+  by decide
+
+-- 反復する色への空語代入は実際の合成射で零。
+example : ((complexPartialComposition ℤ 1 0 0 ▷ interval ℤ) ≫ cochainAction ℤ 1).f (-2)
+    (wordPairEdgeInput ℤ compositionInner zeroEmptyWord) = 0 :=
+  cochainAction_composition_basis_edge_nullary_of_count_ne_one ℤ compositionInner zeroEmptyWord 0
+    (by decide)
+
+-- 出力 arity 零も含む合成則を任意の整数次数・任意の元で使える。
+example (z : ℤ) (x : ((complex ℤ 1 ⊗ complex ℤ 0) ⊗ interval ℤ).X z) :
+    ((complexPartialComposition ℤ 0 0 0 ▷ interval ℤ) ≫ cochainAction ℤ 0).f z x =
+      (iteratedCochainAction ℤ 0 0 0).f z x :=
+  congrArg (fun f => f.f z x) (cochainAction_comp ℤ 0 0 0)
+example : (barrattEcclesCoalgebra ℤ).carrier = interval ℤ := rfl

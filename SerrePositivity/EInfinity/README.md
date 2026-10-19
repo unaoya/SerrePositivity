@@ -622,8 +622,17 @@ nullary を含む TR の部分合成保存は完了。
 `coefficient_interval_hom_ext` は全整数三重斉次成分を語基底と区間の三生成元へ帰着する。
 `cochainAction_comp_positive` は正の内側 arity の部分合成則を全整数複体射として証明する。
 `cochainAction_operad_comp_positive` は実際の χ オペラッドの comp と二段作用の四射での表示。
-具体的な Δ¹ の余代数構造は未完成。nullary の部分合成則と区間条件が残る。
-その後の代入、E2a-4・5、E2b・G1′ も未完成。
+`vertexComponent_composition_zero_all` と `cochainAction_composition_basis_vertex_eq_iterated_all` は nullary を含む両頂点の合成則。
+`NestedEdgeCut.nullary_occurrenceCount` は空語の非零二段切断の指定色が一出現であること。
+`cochainAction_composition_basis_edge_nullary_eq_iterated_of_count_ne_one` はそれ以外の実際の左右の零性。
+`nullaryRawWord` は退化し得る削除語を保持し、`nullaryRawWord_cut_iff`・`nullaryNestedCutEquiv` が全非零切断を対応させる。
+`nullaryNestedCutEquiv_outputFamily` と `NestedEdgeCut.nullary_edgeSign` は全出力族・活動位置の逆転数・切断符号の保存。
+`edgeComponent_composition_nullary_action_sum` は実際の左辺を右辺と同じ整数係数の和へ移す。
+`cochainAction_composition_basis_edge_nullary_eq_iterated` は空語の辺入力の全外側語次数の合成則。
+`cochainAction_comp` は nullary・出力 arity 零を含む全整数複体射の部分合成則。
+`surjectionCoalgebra` は実際の区間切断作用の χ-coalgebra、`barrattEcclesCoalgebra` は一般 TR に沿う E への制限。
+具体的な E-coalgebra 区間の端点・余単位・収縮・境界包含の条件と、抽象転送への代入が残る。
+その後の E2a-4・5、E2b・G1′ も未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
