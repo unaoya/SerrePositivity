@@ -609,6 +609,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.permutationComposition_vertical_inner_step,
       `SerrePositivity.EInfinity.Surjection.vertical_prefix_inner_projection,
       `SerrePositivity.EInfinity.Surjection.vertical_prefix_inner_rows,
+      `SerrePositivity.EInfinity.TableReduction.filterMap_selection_discarded_last,
+      `SerrePositivity.EInfinity.TableReduction.filterMap_final_prefix,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_vertical_inner_pair,
+      `SerrePositivity.EInfinity.Surjection.vertical_interval_final_inner_nonempty,
+      `SerrePositivity.EInfinity.Surjection.vertical_interval_inner_projection,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1397,3 +1402,19 @@ example : ExtractionPrefix ([([0, 1], 1), ([1, 0], 1)] : List (List (Fin 2) × �
     reverseVerticalEntries (1 : Equiv.Perm (Fin 2)) 3 [] [] [0] [1, 2, 3] [[0, 1], [2]]
     reverseVerticalPrefix (by decide) (by decide)
   convert hp using 1 <;> decide
+
+-- 外側文字で終わる最終行も内側末尾を残し、垂直成分全体を復元する。
+example : ExtractionPrefix
+    ([([0, 1], 1), ([1, 0], 1), ([0, 1], 2)] : List (List (Fin 2) × ℕ))
+    [] [[0], [1], [0, 1]] [0] := by
+  have hp := vertical_interval_inner_projection (1 : Equiv.Perm (Fin 3)) 1
+    reverseVerticalEntries (1 : Equiv.Perm (Fin 2)) 3 [] [] [0] [1, 2, 3] [[0, 1], [2]]
+    reverseVerticalPrefix (by decide) (by decide) (by decide)
+  convert hp using 1 <;> decide
+-- 同じ最終行の元の除外更新は内側選択語全体を除く。復元状態では末尾を残す。
+example : (([1, 2, 3] : List (Fin 4)).take 2).filterMap
+    (CompositeRecovery.innerLabel (m := 2) (n := 2) 1) =
+    (([1, 2, 3] : List (Fin 4)).take 3).filterMap
+      (CompositeRecovery.innerLabel (m := 2) (n := 2) 1) := by
+  exact filterMap_selection_discarded_last (CompositeRecovery.innerLabel (m := 2) (n := 2) 1)
+    [1, 2, 3] 3 (by decide) 3 (by decide) (by decide)

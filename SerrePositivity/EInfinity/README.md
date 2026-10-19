@@ -330,7 +330,12 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `permutationComposition_vertical_inner_step` は非退化な成功垂直二行から元の内側一行を復元する。
 `vertical_prefix_inner_projection` は垂直成分の最終行直前までの有限先行部分全体の抽出を射影する。
 各行末の保持は元の成功と非退化性から導く。`vertical_prefix_inner_rows` は全行が元の内側逆置換列と一致。
-垂直成分の最終行と成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
+`filterMap_final_prefix` は合成行が外側文字で終わっても、射影後の末尾を残す一行の抽出を構成する。
+`filterMap_selection_discarded_last` はその場合に元の除外更新が内側選択語全体を除くことを示す。
+`permutationComposition_vertical_inner_pair` は元の非退化成功二行から、内側末尾を残す内側二行を復元する。
+`vertical_interval_inner_projection` は一歩以上の垂直成分全体を端点付きの内側抽出として復元する。
+最終行の内側非空性は直前の行と非退化成功から導き、各行と選択語は実際の元の内側射影を保つ。
+零歩成分の切り出し、成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
