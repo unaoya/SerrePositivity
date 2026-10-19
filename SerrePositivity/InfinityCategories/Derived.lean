@@ -474,6 +474,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFuncto
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFunctorExact
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctor
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalizingEdges
+public import SerrePositivity.InfinityCategories.Derived.ComplexQuasiIsoSpan
+public import SerrePositivity.InfinityCategories.Derived.ComplexUnitHomIso
+public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapComposition
+public import SerrePositivity.InfinityCategories.Derived.ComplexPinchedModel
+public import SerrePositivity.InfinityCategories.Derived.ComplexPinchedQuasiIso
+public import SerrePositivity.InfinityCategories.Derived.PinchedComplexModelComparison
+public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapQuasiIso
+public import SerrePositivity.InfinityCategories.Derived.DGFunctorQuasiIsoFullyFaithful
+public import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalMappingSpaces
 
 /-! # Semifree 複体による導来圏の dg 表示
 

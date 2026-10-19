@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalMappingSpaces
+import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
 import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalizingEdges
 import SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctor
 import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYoneda
@@ -1169,10 +1171,34 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientLocalizationPrecomposition
 #print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientLocalizationPrecomposition_ι
 
+#print axioms SerrePositivity.InfinityCategories.complexQuasiIsoSpanLeftHomotopyEquiv
+#print axioms SerrePositivity.InfinityCategories.complexQuasiIsoSpanRight_surjective
+#print axioms SerrePositivity.InfinityCategories.complexQuasiIsoSpanRight_quasiIso
+#print axioms SerrePositivity.InfinityCategories.complexUnitHomIso
+#print axioms SerrePositivity.InfinityCategories.pinchedHomChainMap_comp
+#print axioms SerrePositivity.InfinityCategories.complexPinchedMap_quasiIso_equivalence
+#print axioms SerrePositivity.InfinityCategories.pinchedComplexModelIso_naturality
+#print axioms SerrePositivity.InfinityCategories.pinchedHomChainMap_quasiIso_equivalence
+#print axioms SerrePositivity.InfinityCategories.dgNerve_map_isFullyFaithful_of_quasiIso
+#print axioms SerrePositivity.InfinityCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgQuotient_pinchedHomMap_equivalence_into
+#print axioms SerrePositivity.InfinityCategories.dgQuotient_pinchedHomMap_equivalence_outOf
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRightLocalNerve_isFullyFaithful
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ComplexQuasiIsoSpan,
+    `SerrePositivity.InfinityCategories.Derived.ComplexUnitHomIso,
+    `SerrePositivity.InfinityCategories.Derived.PinchedChainMapComposition,
+    `SerrePositivity.InfinityCategories.Derived.ComplexPinchedModel,
+    `SerrePositivity.InfinityCategories.Derived.ComplexPinchedQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.PinchedComplexModelComparison,
+    `SerrePositivity.InfinityCategories.Derived.PinchedChainMapQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorQuasiIsoFullyFaithful,
+    `SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientLocalMappingSpaces,
     `SerrePositivity.InfinityCategories.Stable.CofiberFunctorMapping,
     `SerrePositivity.InfinityCategories.Stable.CofiberZeroSource,
     `SerrePositivity.InfinityCategories.Stable.CofiberLocalizingEdges,
