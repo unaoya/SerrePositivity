@@ -2137,3 +2137,31 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHom_lifting_of_inner_of_targetLifting
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_with_relative_colimits_of_isofibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHomTarget_quasicategory
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFunctorTranspose_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanBoundaryRelativeColimit_of_first_relativeColimit
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelativeBoundary_diagram_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoin_functor_relative_boundary_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinFunctor_relative_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinFunctor_relative_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRelativeColimitVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitDiagrams
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitRestriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitRestriction_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitRestriction_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitRestriction_surjective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration

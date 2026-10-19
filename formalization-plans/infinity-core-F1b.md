@@ -29,9 +29,9 @@
   定値 path の切断は圏論的同値で、置換された関手との合成は U。
 - 任意の図式の coslice で自明 Kan 性を保存し、path 置換と元の関手の相対余極限性を同定。
   任意の U 上で、指定部分を厳密に保つ大域図式・そこで定値な可逆 path・全 fiber の U 余極限性を構成。
-- 境界の最初の頂点の局所余極限性で関手の族を境界固定で延長し、普遍な H の左端の制限の始点境界を充填。
-- 相対始点境界充填から固定終点の coslice の後合成の自明 Kan 性、右 pinched 写像空間の同値、
-  h Fun の Hom 全単射を証明。普遍図式の全部分 ∞ 圏の制限は充満忠実で、局所余極限があれば自明 Kan。
+- 境界の最初の頂点の標準 U 余極限性から、元・境界・標的の図式を固定して相対境界を延長。
+- 相対 join の通常の関手圏の相対制限について、始点境界充填・右 pinched 写像空間の同値を証明。
+  局所 U 余極限図式の全部分 ∞ 圏からの制限は充満忠実で、必要な局所相対余極限が存在すれば自明 Kan。
 - 円柱の変形で右端への制限と底射影による前合成の h Fun 上の随伴・相対 join の Hom 全単射を構成。
   円柱の quasicategory 性は不要。実際の制限の公式・後合成自然性・逆対応の単位との合成公式も証明。
 - 右端の単位と標準 prism の指定変換の h Fun の類の一致を証明し、標準変換の Hom 普遍性へ接続。
@@ -41,8 +41,8 @@
 - 局所普遍余錐の Hom 全単射から、指定変換に両立する比較射の各点での可逆性・大域的同型・一意性を証明。
 - 反転 Hom 全単射と指定変換・合成・前合成との両立から、右側も Hom 普遍性と大域的一意性を証明。
 - F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3822 jobs）、同時 import 検査成功（F1 6973・F1B 4304 宣言）。
-  公理監査成功（4308 宣言、標準三公理のみ、1170 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3832 jobs）、同時 import 検査成功（F1 6993・F1B 4327 宣言）。
+  公理監査成功（4331 宣言、標準三公理のみ、1177 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -53,7 +53,7 @@
   相対的な組み立ては `KanEquivalenceLifting U` を持つ一般の U に拡張済み。任意の U の path 置換はこの条件を持つ。
   局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
   任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
-  左右とも任意の指定変換自身の Hom 普遍性と大域的一意性まで接続済み。相対的な写像空間の結論が残る。
+  相対 join の全部分圏からの相対制限は充満忠実、局所存在の下で自明 Kan。元の包含への移送が残る。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
@@ -70,7 +70,7 @@
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
 - `F1B.kanIsRelativeColimitCone_equivalencePathReplacement_iff` / `F1B.exists_kanGlobalRelative_diagram_with_equivalencePath`
 - `F1B.kanEquivalenceLifting_iff_inner_and_invertibleTargetLifting` / `F1B.KanEquivalenceLifting.relativeInternalHom`
-- `F1B.kanRelativeJoinFunctor_homMap_bijective` / `F1B.kanRelativeJoinColimitRestriction_isFullyFaithful`
+- `F1B.kanRelativeJoinRelativeColimitRestriction_isFullyFaithful` / `F1B.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration`
 - `F1B.kanRelativeJoinRightHomEquiv` / `F1B.kanRelativeJoinTransformation_homUniversal`
 - `F1B.kanLeftCommaHomEquiv` / `F1B.exists_kanLeftExtension_with_homUniversal_of_local_colimits`
 - `F1B.kanLeftKanExtension_homUniversal` / `F1B.kanLeftKanExtensionIso`
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：相対 path 比較の自明 Kan 性、isofibration 判定、相対内部 Hom の保存、厳密な相対図式、集約・監査・本書）。
+- なし（本保存単位：相対境界延長、相対写像空間、相対普遍図式の全部分圏の制限の充満忠実性・自明 Kan 性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `KanRelativeJoinFunctorBoundary` の境界延長を相対内部 Hom の標的 U も固定する形へ一般化する。
-  境界の最初の頂点の標準 U 余極限性から相対始点境界を充填し、普遍図式の全部分圏の制限へ移す。
-  原典 7.3.6.7 の相対写像空間の制限定理と全部分圏からの自明 Kan 性を閉じる。
+- `KanRelativeJoinRelativeUniversalRestriction`・`KanRelativeJoinRelativeUniversalExistence` を元の包含 δ へ移す。
+  全部分複体の包含について `kanLeftComma`・相対円柱表示と、通常の関手の制限の局所 U Kan 条件を比較する。
+  左右への移送を含め原典 7.3.6.7・7.3.6.9 の相対写像空間の制限定理を閉じる。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
