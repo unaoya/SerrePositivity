@@ -3,10 +3,11 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeRightRestrictionOpposite
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeLeftRestrictionTheorem
 public import SerrePositivity.InfinityCategories.F1B.KanOppositeLifting
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeRightRestrictionExistence
 
 /-!
-概要：元の相対右 Kan 関手の全部分圏からの制限の充満忠実性。
-方針：反転の可換正方形で左の正次元境界充填を移し、指定 pinched 比較を判定する。
+概要：元の相対右 Kan 関手の全部分圏からの制限の充満忠実性と自明 Kan 性。
+方針：左の正次元境界充填を反転で移し、厳密な相対存在による頂点全射性を合わせる。
 規約：局所相対極限の存在は充満忠実性の仮定に含めない。
 使われ方：元の右 Kan 関手の coherent な選択の制限定理。
 -/
@@ -81,5 +82,28 @@ lemma kanRelativeRightKanRestriction_isFullyFaithful {K C D E : SSet.{u}}
   intro n a b _ sq
   have := kanRelativeRightKanRestriction_boundary_succ U hU δ hδ s n
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
+
+/-- 概要：標準局所相対極限が存在すれば元の相対右 Kan 制限は自明 Kan。
+方針：充満忠実性と inner 性に、元と底を厳密に保つ存在による頂点全射性を合わせる。
+規約：δ は充満忠実な inner 単射、U は同値を持ち上げる。
+使われ方：元の相対 Kan 関手の coherent な選択と制限の可縮な fiber。 -/
+lemma kanRelativeRightKanRestriction_trivialKanFibration {K C D E : SSet.{u}}
+    [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E]
+    (U : D ⟶ E) (hU : KanEquivalenceLifting U)
+    (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ)
+    (s : internalHom.PullbackObjObj δ U)
+    (hlocal : ∀ (F₀ : K ⟶ D) (H₀ : C ⟶ E), F₀ ≫ U = δ ≫ H₀ →
+      ∀ c : C _⦋0⦌, ∃ z : JoinCone (rightKanDiagram δ F₀ c),
+        IsRelativeLimitCone U z ∧ z.val ≫ U = (rightKanCanonicalCone δ H₀ c).val) :
+    TrivialKanFibration (kanRelativeRightKanRestriction U δ s) := by
+  have : InnerFibration U := hU.innerFibration
+  have := kanRelativeRightKanRestriction_innerFibration U hU δ s
+  have : Quasicategory s.pt := kanRelativeInternalHomTarget_quasicategory U _ s
+  have : Quasicategory (kanRelativeRightKanDiagrams U δ : SSet.{u}) :=
+    inferInstanceAs (Quasicategory
+      (fullSubcomplexOnVertices _ (KanRelativeRightKanVertex U δ) : SSet.{u}))
+  have hf := kanRelativeRightKanRestriction_isFullyFaithful U hU δ hδ s
+  exact hf.trivialKanFibration_of_surjective
+    (kanRelativeRightKanRestriction_surjective U hU δ hδ s hlocal)
 
 end SerrePositivity.InfinityCategories.F1B

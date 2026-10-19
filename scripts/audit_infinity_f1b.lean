@@ -2585,3 +2585,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_boundary_succ
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeReverseCone_surjective
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeColimit_of_op_relative_limit
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftLocalColimit_of_op_rightLimit
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeRightCanonical_op_strict_extension_of_local_relative_limits
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeRightCanonical_strict_extension_of_local_relative_limits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_surjective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_trivialKanFibration
