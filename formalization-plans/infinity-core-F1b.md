@@ -6,7 +6,7 @@
 
 ### 現在地
 
-- B1〜B5 は明示した模型・宇宙で完了。次は [F2 計画](infinity-core-F2.md) 第 1 部。
+- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1 も完了。次は F2L-2。
 - B1：全単体集合パラメータの族の集合値前層による自然性の模型。双圏の単位・余単位・三角恒等式と自然な Hom 対応を比較。
 - B2：同じ宇宙の標的に対する反射的局所化。一般の局所化の存在は F2 の範囲。
 - B3：左右の Quillen A、弱可縮な comma 条件、二宇宙版の始対象による極限計算を回収。
@@ -18,15 +18,15 @@
   指定自然変換の実ホモトピーと頂点を固定した錐・余錐の族から、通常の指定局所錐そのものを native な左右の輸送で表示。
 - 最終検証：F1・F1B 同時ビルド成功（4081 jobs）、同時 import 検査成功（F1 7451・F1B 5169 宣言）。
   公理監査成功（5175 宣言、標準三公理のみ、1428 モジュールに straightening なし）。ソース名衝突 0。
-- F2 の既存入力を再確認：F1 の `CatInfinity = SimplicialNerve QCat`、QCat の Hom は Fun の core、γ1 による quasicategory 性。
-  F2L-1 の頂点の全単射、通常の順序図式の豊穣化、指定射の辺・両端点・元の射の回収を構成。
-  任意の辺の再構成と写像空間比較、Cat_∞ 内の引き戻し・lax pullback の普遍性は未完了。
-- F2 の初回検証：F1・F1B・F2 同時ビルド成功（4085 jobs）、F2 の公理監査成功（26 宣言、標準三公理のみ）。
+- F2L-1：F1 の既存 coherent nerve の頂点・辺・coherent Hom 比較を再利用。
+  任意の頂点・辺の往復、端点固定の関手の全単射、恒等・合成三角形、Cat_∞ の写像空間と ULift した core Fun の同値を整備。
+  比較の零単体と豊穣自然性、辺の類の一致と関手同型の存在、可逆辺と関手の同値の双方向判定を証明。
+  Cat_∞ 内の引き戻し・lax pullback の普遍性は未完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（4091 jobs）、F2 の公理監査成功（46 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-1：既存 Cat_∞ の対象・辺、写像空間と Fun の core の比較 API。Kerodon §5.5.3。8〜24 時間。
 - F2L-2：Cat_∞ の引き戻しと全試験 ∞ 圏からの写像空間による普遍性。Kerodon §5.5.3、HTT §3.3.3。40〜100 時間。
 - F2L-3：Fun(Δ¹,−) と端点評価による lax pullback と普遍性。Tamme §1 Definition 5・Remark 6。24〜60 時間。
 - F2L-4：同値辺上の全部分圏による引き戻しとの比較、安定性・exact 関手への接続。Tamme §1 Remark 7・Lemma 8。24〜60 時間。
@@ -43,6 +43,7 @@
 - `F1B.kanNerve_isLeftKanExtensionHom_iff_pointwise` / `F1B.kanNerve_isRightKanExtensionHom_iff_pointwise`
 - `F1B.kanNerveLeftCoconeTransport_cocone` / `F1B.kanNerveRightConeTransport_cone`
 - `F2.catInfinityVertexEquiv` / `F2.coherentEdgeHom_edge`
+- `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
 
 ### 依存と提供
 
@@ -53,7 +54,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：F2 の頂点・順序図式・指定辺の構成、集約・監査と本書。
+  本保存単位：F1 の既存頂点・辺の再利用、F2 の全写像空間比較・自然性・同値判定、集約・監査と本書。
 
 ### 既知の問題
 
@@ -66,8 +67,8 @@
 
 ### 次の一手
 
-- F2 の `coherentEdgeHom` から任意の native な辺を再構成し、元の豊穣関手に一致することを証明する。
-  続いて恒等・合成を照合し、γ1 の写像空間と Fun の core の同値を整備する。詳細と受入条件は F2 計画を正本にする。
+- Core の equivalencePathReplacementMap と InnerPullback により、可逆 path による引き戻し候補と射影・可換関手同型を構成する。
+  続いて全試験 ∞ 圏からの関手 core の比較を証明する。単体集合の strict pullback だけで F2L-2 完了とはしない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

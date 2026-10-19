@@ -29,3 +29,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentEdgeHom_edge
 #check @SerrePositivity.InfinityCategories.F2.coherentEdge_source
 #check @SerrePositivity.InfinityCategories.F2.coherentEdge_target
+#check @SerrePositivity.InfinityCategories.F2.coherentEdge_recover
+#check @SerrePositivity.InfinityCategories.F2.coherentEdgeEquiv
+#check @SerrePositivity.InfinityCategories.F2.catInfinityEdgeEquiv
+#check @SerrePositivity.InfinityCategories.F2.coherentEdge_id
+#check @SerrePositivity.InfinityCategories.F2.coherentCompStruct
+#check @SerrePositivity.InfinityCategories.F2.catInfinityMappingEquivalence
+#check @SerrePositivity.InfinityCategories.F2.catInfinityMappingEquivalence_hom
+#check @SerrePositivity.InfinityCategories.F2.catInfinityMappingComparison_ordinary
+#check @SerrePositivity.InfinityCategories.F2.catInfinityMappingComparison_enriched_naturality
+#check @SerrePositivity.InfinityCategories.F2.catInfinity_homMk_eq_iff_functorIso
+#check @SerrePositivity.InfinityCategories.F2.catInfinityEdge_isInvertible_iff

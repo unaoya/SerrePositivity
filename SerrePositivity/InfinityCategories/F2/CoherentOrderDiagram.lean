@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentVertices
+public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
 
 /-!
 概要：通常の順序圏上の図式を simplicial thickening 上の豊穣関手へ送る。
@@ -26,48 +27,13 @@ variable {J : Type v} [LinearOrder J]
 使われ方：順序図式の豊穣化の Hom 成分。 -/
 def coherentOrderHomMap (F : J ⥤ C) (a b : J) :
     nerve (SimplicialThickening.Path a b) ⟶ SimplicialCategory.sHom (F.obj a) (F.obj b) :=
-  if h : a ≤ b then toUnit _ ≫ eHomEquiv SSet (F.map (homOfLE h))
-  else Coherent.pathEmptyHom a b h _
+  orderDiagramEnrichedHom F ⟨a⟩ ⟨b⟩
 
 /-- 概要：通常の順序図式は simplicial thickening からの豊穣関手を与える。
 方針：Hom を定値に写し、元の図式の合成則と空の Hom の一意性を使う。
 規約：高次の比較は恒等であり、任意の coherent 図式の読み戻しは主張しない。
 使われ方：通常の射とその合成を coherent nerve 内で具体化する。 -/
 def coherentOrderDiagram (F : J ⥤ C) :
-    EnrichedFunctor SSet (SimplicialThickening J) C where
-  obj a := F.obj a.as
-  map a b := coherentOrderHomMap F a.as b.as
-  map_id a := by
-    simp only [coherentOrderHomMap, dite_eq_left le_rfl, homOfLE_refl, F.map_id,
-      eHomEquiv_id]
-    rw [← Category.assoc]
-    have h : eId SSet a ≫ toUnit (nerve (SimplicialThickening.Path a.as a.as)) = 𝟙 _ :=
-      toUnit_unique _ _
-    rw [h, Category.id_comp]
-  map_comp a b c := by
-    by_cases hab : a.as ≤ b.as
-    · by_cases hbc : b.as ≤ c.as
-      · have hac := hab.trans hbc
-        simp only [coherentOrderHomMap, dite_eq_left hab, dite_eq_left hbc, dite_eq_left hac]
-        rw [← tensorHom_comp_tensorHom, Category.assoc]
-        have hi :
-            (eHomEquiv SSet (F.map (homOfLE hab)) ⊗ₘ
-              eHomEquiv SSet (F.map (homOfLE hbc))) ≫
-                eComp SSet (F.obj a.as) (F.obj b.as) (F.obj c.as) =
-            (λ_ (𝟙_ SSet)).hom ≫ eHomEquiv SSet (F.map (homOfLE hac)) := by
-          apply (cancel_epi (λ_ (𝟙_ SSet)).inv).mp
-          simp only [Iso.inv_hom_id_assoc]
-          rw [← eHomEquiv_comp, ← F.map_comp]
-          rfl
-        rw [hi, ← Category.assoc]
-        have ht :
-            eComp SSet a b c ≫ toUnit (nerve (SimplicialThickening.Path a.as c.as)) =
-            (toUnit (nerve (SimplicialThickening.Path a.as b.as)) ⊗ₘ
-              toUnit (nerve (SimplicialThickening.Path b.as c.as))) ≫
-                (λ_ (𝟙_ SSet)).hom := toUnit_unique _ _
-        simpa only [Category.assoc] using
-          congrArg (fun k ↦ k ≫ eHomEquiv SSet (F.map (homOfLE hac))) ht
-      · exact Coherent.pathProduct_empty_hom_ext a.as b.as c.as (Or.inr hbc) _ _
-    · exact Coherent.pathProduct_empty_hom_ext a.as b.as c.as (Or.inl hab) _ _
+    EnrichedFunctor SSet (SimplicialThickening J) C := enrichedFunctorOfOrderDiagram F
 
 end SerrePositivity.InfinityCategories.F2

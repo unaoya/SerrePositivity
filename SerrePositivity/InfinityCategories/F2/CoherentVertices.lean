@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.CoherentVertices
 
 /-!
 概要：coherent nerve の零単体と元の単体的圏の対象との往復対応。
@@ -46,38 +47,20 @@ def coherentConstantFunctor (D : Type w) [EnrichedCategory SSet.{v} D] (X : C) :
 規約：頂点は SimplicialNerve の native な零単体。
 使われ方：Cat_∞ の対象の具体的な表示。 -/
 def coherentVertex (X : C) : (SimplicialNerve C) _⦋0⦌ :=
-  coherentConstantFunctor _ X
+  coherentNerveVertex X
 
 /-- 概要：coherent nerve の頂点は唯一の対象での評価から回収できる。
 方針：一点 thickening の対象の一意性と、単位 Hom の同型性で比較する。
 規約：元の豊穣関手そのものの等式であり、同型による商を取らない。
 使われ方：頂点と対象の対応の逆写像の検証。 -/
 lemma coherentVertex_recover (F : (SimplicialNerve C) _⦋0⦌) :
-    coherentVertex (F.obj ⟨ULift.up 0⟩) = F := by
-  have ho (a : SimplicialThickening (ULift.{v} (Fin 1))) : a = ⟨ULift.up 0⟩ := by
-    cases a with | mk a =>
-      congr 1
-      exact Subsingleton.elim _ _
-  refine EnrichedFunctor.ext SSet (fun a ↦ ?_) ?_
-  · change F.obj ⟨ULift.up 0⟩ = F.obj a
-    rw [ho a]
-  · intro a b
-    obtain rfl := ho a
-    obtain rfl := ho b
-    simp only [eqToHom_refl, Category.comp_id]
-    have := Coherent.pathUnit_isIso (ULift.up.{v} (0 : Fin 1))
-    apply (cancel_epi (eId SSet (SimplicialThickening.mk (ULift.up.{v} (0 : Fin 1))))).mp
-    exact (coherentVertex (F.obj ⟨ULift.up 0⟩)).map_id _ |>.trans (F.map_id _).symm
+    coherentVertex (F.obj ⟨ULift.up 0⟩) = F := coherentNerveVertex_object F
 
 /-- 概要：coherent nerve の頂点と元の単体的圏の対象は全単射に対応する。
 方針：唯一の対象での評価を逆写像とし、定値関手の回収補題を使う。
 規約：一般の単体的圏に適用でき、局所 Kan 性を要求しない。
 使われ方：Cat_∞ の頂点の厳密な読み戻し。 -/
-def coherentVertexEquiv : C ≃ (SimplicialNerve C) _⦋0⦌ where
-  toFun := coherentVertex
-  invFun F := F.obj ⟨ULift.up 0⟩
-  left_inv _ := rfl
-  right_inv := coherentVertex_recover
+def coherentVertexEquiv : C ≃ (SimplicialNerve C) _⦋0⦌ := coherentNerveVertexEquiv C
 
 /-- 概要：Cat_∞ の頂点は小さい quasicategory と同一の情報を持つ。
 方針：既存の CatInfinity = SimplicialNerve QCat に頂点の全単射を適用する。
