@@ -596,3 +596,13 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonLeftEdges
 public import SerrePositivity.KST.Spectra.SquareBoundaryComposition
 public import SerrePositivity.KST.Spectra.CoherentTetrahedronInitialTrace
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonInitialTrace
+public import SerrePositivity.KST.Spectra.SpectrumMappingCompositionTransport
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonRightEdges
+public import SerrePositivity.KST.Spectra.FramedSquareRelation
+public import SerrePositivity.KST.Spectra.FramedSquareDifference
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonCorners
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonBoundaryDifference
+public import SerrePositivity.KST.Spectra.PointedHomDifferenceNaturality
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonDifferenceAction
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonApexEquivalence
+public import SerrePositivity.KST.Spectra.SpectrumNativeCircleIsPullback
