@@ -626,6 +626,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerSelection_update_mem,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerSelection_step,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outer_table_success,
+      `SerrePositivity.EInfinity.TableReduction.rowFusion_collapse,
+      `SerrePositivity.EInfinity.TableReduction.compressRows_fst,
+      `SerrePositivity.EInfinity.TableReduction.compressRows_success,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.collapse_flatten,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.compressed_outer_table_success,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1482,3 +1487,27 @@ example : reduceRows
   have hp := CompositeRecovery.outer_prefix_success 1 outerRecoveryEntries [] [0, 1, 2]
     [[0, 1], [2], [1, 2, 3]] outerRecoveryPrefix [] [] rfl
   convert hp using 1 <;> decide
+
+-- 外側の三重行を一行に融合し、共有文字は一度だけ数える。
+example : compressRows
+    ([([0, 1, 2], 2), ([0, 1, 2], 1), ([0, 1, 2], 2)] : List (List (Fin 3) × ℕ)) =
+    [([0, 1, 2], 3)] := by decide
+-- 離れた同じ行は融合しない。
+example : (compressRows
+    ([([0, 1], 1), ([1, 0], 1), ([0, 1], 1)] : List (List (Fin 2) × ℕ))).map Prod.fst =
+    [[0, 1], [1, 0], [0, 1]] := by
+  exact (compressRows_fst _).trans (by decide)
+-- 実際の合成表から圧縮外側表と、その縮約出力の全体一致を得る。
+example : ∃ picked finish out',
+    ExtractionPrefix (CompositeRecovery.mixedTable 1 outerRecoveryEntries) [] picked finish ∧
+      [0, 1, 2, 1, 2, 3] = picked.flatten ∧
+      reduceRows (compressRows (CompositeRecovery.recoveredOuterTable 1
+        outerRecoveryEntries picked)) [] = some out' ∧
+      AdjacentCollapse.collapse out' = [0, 1, 2] := by
+  have hs : reduceRows (CompositeRecovery.mixedTable 1 outerRecoveryEntries) [] =
+      some [0, 1, 2, 1, 2, 3] := by
+    simpa using outerRecoveryPrefix.append [] [] rfl
+  obtain ⟨picked, finish, out', hp, ho, ht, hc⟩ :=
+    CompositeRecovery.compressed_outer_table_success 1 outerRecoveryEntries [] _ hs
+  refine ⟨picked, finish, out', hp, ho, ?_, hc.trans (by decide)⟩
+  simpa only [CompositeRecovery.outerRemoved_nil (m := 2) (n := 2) 1 (by decide)] using ht
