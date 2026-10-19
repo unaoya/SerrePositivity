@@ -1715,3 +1715,11 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalColimit_diagram
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftComma_colimit_diagram
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_fiber_of_total
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinFiberCocone_isColimit_of_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalColimit_diagram_with_colimit_fibers
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftComma_diagram_with_colimit_fibers

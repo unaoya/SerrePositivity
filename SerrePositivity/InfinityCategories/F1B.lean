@@ -395,3 +395,6 @@ public import SerrePositivity.InfinityCategories.F1B.KanGlobalDiagramFamilyEquiv
 public import SerrePositivity.InfinityCategories.F1B.KanGlobalColimitFamily
 public import SerrePositivity.InfinityCategories.F1B.KanGlobalColimitDiagram
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaColimitDiagram
+public import SerrePositivity.InfinityCategories.F1B.KanInitialBoundaryFiberRestriction
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinFiberCocone
+public import SerrePositivity.InfinityCategories.F1B.KanGlobalColimitFiberAssembly
