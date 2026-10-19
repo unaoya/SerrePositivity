@@ -2,7 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeNativeCommutativity
 public import SerrePositivity.InfinityCategories.F2.CatTetrahedronIsoSquare
-public import SerrePositivity.InfinityCategories.F2.TrianglePrismTetrahedra
+public import SerrePositivity.InfinityCategories.F2.CatPullbackConeTetrahedra
+public import SerrePositivity.InfinityCategories.F2.HomotopyEdgeTriangleLowerFaces
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。

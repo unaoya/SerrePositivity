@@ -147,3 +147,27 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.trianglePrismTime_last
 #check @SerrePositivity.InfinityCategories.F2.trianglePrismTime_glue_first
 #check @SerrePositivity.InfinityCategories.F2.trianglePrismTime_glue_last
+
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_glue_first
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_glue_last
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_first
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_last
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_upper_long
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_upper_first
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_upper_last
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_lower_long
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_lower_first
+#check @SerrePositivity.InfinityCategories.F2.triangleHomotopyTetrahedron_lower_last
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyTetrahedron
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeTetrahedron
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeTetrahedron_first
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeTetrahedron_last
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeTetrahedron_glue_first
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeTetrahedron_glue_last
+#check @SerrePositivity.InfinityCategories.F2.homotopyVertexEdge_simplex
+#check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleUpper_zero
+#check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleUpper_one
+#check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleUpper_two
+#check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleLower_zero
+#check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleLower_one
+#check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleLower_two
