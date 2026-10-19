@@ -101,7 +101,26 @@ run_cmd do
       `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_vertex,
       `SerrePositivity.EInfinity.BarrattEccles.unit_diagonal,
       `SerrePositivity.EInfinity.BarrattEccles.hopfDiagonal,
-      `SerrePositivity.EInfinity.BarrattEccles.hopf] do
+      `SerrePositivity.EInfinity.BarrattEccles.hopf,
+      `SerrePositivity.EInfinity.tensorCoInsertionAction,
+      `SerrePositivity.EInfinity.tensorCoInsertionAction_coeff,
+      `SerrePositivity.EInfinity.tensorCoComposition_coeff,
+      `SerrePositivity.EInfinity.Operad.Coalgebra,
+      `SerrePositivity.EInfinity.Operad.CoalgebraHom,
+      `SerrePositivity.EInfinity.Operad.Coalgebra.forget,
+      `SerrePositivity.EInfinity.Operad.restrictCoalgebra,
+      `SerrePositivity.EInfinity.tensorUnitPowerIso_append,
+      `SerrePositivity.EInfinity.tensorUnitPower_permutation,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.endpoint_quasiIso,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.restrict,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_post,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_pre,
+      `SerrePositivity.EInfinity.Operad.convolutionAction,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_uncurry,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathComplex,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constantNat,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationNat] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

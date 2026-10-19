@@ -164,7 +164,8 @@
   Alg_E のモデル構造・右 Quillen U・CAlg は未提供。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：対象ビルド・公理監査を実行中。新規 sorry・追加公理・名前衝突はない。
+- **既知の問題**：対象ビルド成功（2729 jobs）、公理監査成功（5220 宣言、標準 3 公理のみ）。
+  新規 sorry・追加公理・名前衝突はなく、523 モジュールの import 閉包に他レーンの未コミット依存はない。
   今回の宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。

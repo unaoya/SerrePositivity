@@ -63,7 +63,13 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 `hopfDiagonal : E → E ⊗ E` を実際のオペラッド射として構成済み。
 `BarrattEccles.hopf` はこの対角、既存の `augmentation : E → Com`、
 余結合性と左右余単位則を束ねる。余可換性は要求しない。
-工程 2 の E-coalgebra 区間の界面・convolution による path object と転送は未完成。
+工程 2 の抽象界面は `Operad.CoalgebraInterval`。余演算を保つ二端点・収縮と、
+底の複体の境界 cofibration・収縮の擬同型を持つ。区間は augmentation を保存する
+オペラッド射で制限でき、制限射の Hopf 対角保存は不要。
+`convolutionAction` は内部 Hom 上の各 arity の演算 chain map、
+`CoalgebraInterval.prepathComplex` は底の複体の定数射・両端点評価と三角形を供給する。
+定数・評価の自然性も検証済み。convolution の P 代数公理、端点・定数の代数射性、
+評価の fibration・定数射の擬同型性、転送モデル構造は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
