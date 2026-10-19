@@ -1204,6 +1204,20 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_on_blocks,
       `SerrePositivity.EInfinity.IntervalCuts.coInsertionBlocks_apply,
       `SerrePositivity.EInfinity.IntervalCuts.coInsertionBlocks_face_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.prefixFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.suffixFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.insertionFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.insertionFamily_eq_blocks,
+      `SerrePositivity.EInfinity.IntervalCuts.family_eq_blocks,
+      `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_prefixFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_family_blocks,
+      `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_insertionFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.innerOutputFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.outputFamily_eq_insertion,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.outputFamily_eq_blocks,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.innerOutputFamily_tupleDegree,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorAt_family_blocks,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_face_apply,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3498,3 +3512,35 @@ example (K C : Complex ℤ) (θ : C ⊗ K ⟶ power K 2) (a : C.X (-1))
   simpa only [show (-1 : ℤ) * (-1) = 1 by decide, Int.negOnePow_one,
     Units.smul_def, Units.coe_neg_one, neg_one_zsmul] using!
     coInsertionBlocks_apply K C 1 2 0 θ (-1) (-1) (-1) 0 (-3) rfl a x y w
+
+-- 元の族の指定因子の前後と、正・零 arity の置換を同じ順序で扱う。
+private def outerFaceFixture : Fin 3 → Simplex := ![edge, edge, vertex 1]
+private def innerFaceFixture : Fin 2 → Simplex := fun _ => edge
+example : List.ofFn (prefixFamily outerFaceFixture 1) = [edge] := by decide
+example : List.ofFn (suffixFamily outerFaceFixture 1) = [vertex 1] := by decide
+example : List.ofFn (insertionFamily outerFaceFixture innerFaceFixture 1) =
+    [edge, edge, edge, vertex 1] := by decide
+example : List.ofFn (insertionFamily outerFaceFixture (n := 0) Fin.elim0 1) =
+    [edge, vertex 1] := by decide
+example : tupleDegree 1 (prefixFamily outerFaceFixture 1) = prefixDegree 3 outerFaceFixture 1 :=
+  tupleDegree_prefixFamily outerFaceFixture 1
+-- 二段作用の内側族の次数も、内側語次数と実際の指定入力次数の和。
+example : tupleDegree 2 nestedRepeatedExample.innerOutputFamily =
+    1 + simplexDegree (edgeOutput compositionInner nestedRepeatedExample.val.1 0) :=
+  NestedEdgeCut.innerOutputFamily_tupleDegree nestedRepeatedExample
+
+-- ブロック表示を経ず、元の面テンソルへ実際の余代入を施す場合にも奇数交換は負。
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
+example (C : Complex ℤ) (θ : C ⊗ interval ℤ ⟶ power (interval ℤ) 2) (a : C.X (-1)) (r : ℤ)
+    (hθ : θ.f (-2) (ιTensorObj C (interval ℤ) (-1) (-1) (-2) rfl
+      (a ⊗ₜ[ℤ] faceVector ℤ edge)) = r • tensorVectorAt ℤ 2 innerFaceFixture (-2) (by decide)) :
+    (tensorCoInsertionAction (interval ℤ) C 2 2 1 θ).f (-3)
+      (ιTensorObj C (power (interval ℤ) 3) (-1) (-2) (-3) rfl
+        (a ⊗ₜ[ℤ] tensorVectorAt ℤ 3 outerFaceFixture (-2) (by decide))) =
+      -(r • tensorVectorAt ℤ 4 (insertionFamily outerFaceFixture innerFaceFixture 1)
+        (-3) (by decide)) := by
+  have hs : ((-1 : ℤ) * -(prefixDegree 3 outerFaceFixture 1 : ℤ)).negOnePow =
+      (-1 : ℤˣ) := by decide
+  simpa only [hs, Units.smul_def, Units.coe_neg_one, neg_one_zsmul] using!
+    tensorCoInsertionAction_face_apply ℤ C 2 2 1 θ (-1) (-3) outerFaceFixture
+      innerFaceFixture (by decide) a (by decide) r hθ

@@ -591,6 +591,11 @@ nullary を含む TR の部分合成保存は完了。
 `appendIso_tensorVectorAt`・`appendIso_inv_tensorVectorAt` は実際の面テンソルの連結・分割を全指定整数次数で評価する。
 `tensorCoInsertionAction_on_blocks` は既存の指定位置の余代入を同じ前後ブロックへ接続する。
 `coInsertionBlocks_apply`・`coInsertionBlocks_face_apply` は係数次数×前方次数の交換符号と実際の面テンソル値を評価する。
+`insertionFamily_eq_blocks`・`family_eq_blocks` は置換族・元の族の前方・指定因子・後方表示。
+`tupleDegree_prefixFamily` はブロックの次数と既存の prefixDegree の一致。
+`NestedEdgeCut.outputFamily_eq_blocks`・`innerOutputFamily_tupleDegree` は二段出力族と内側次数をこの表示へ接続する。
+`tensorVectorAt_family_blocks` は元の面テンソルを実際のブロック評価の入力へ分ける。
+`tensorCoInsertionAction_face_apply` は内側の指定面テンソル値から元の族上の実際の余代入と prefixDegree の交換符号を評価する。
 具体的な Δ¹ の余代数構造は未完成。二段作用のテンソル評価と符号の一致・右辺の有限和・nullary、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
