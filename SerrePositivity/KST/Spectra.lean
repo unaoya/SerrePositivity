@@ -94,3 +94,7 @@ public import SerrePositivity.KST.Spectra.RestrictionLoopFiber
 public import SerrePositivity.KST.Spectra.SkeletalLoopFiberIso
 public import SerrePositivity.KST.Spectra.SkeletalLoopDifferential
 public import SerrePositivity.KST.Spectra.SkeletalCoefficientLoopDifferential
+public import SerrePositivity.KST.Spectra.PointedZeroConnectingNaturality
+public import SerrePositivity.KST.Spectra.PointedTowerZeroDifferential
+public import SerrePositivity.KST.Spectra.SkeletalZeroDifferential
+public import SerrePositivity.KST.Spectra.SkeletalZeroComponents
