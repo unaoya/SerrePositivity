@@ -6385,3 +6385,135 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @TransportTriangleInitialHomComparison.evaluation
 #print axioms TransportTriangleInitialHomComparison.evaluation
+
+#check @transportTriangleHomParameterIso
+#print axioms transportTriangleHomParameterIso
+
+#check @transportTrianglePointHomNormalized
+#print axioms transportTrianglePointHomNormalized
+
+#check @transportTriangleHomNormalized
+#print axioms transportTriangleHomNormalized
+
+#check @transportTriangleHomNormalized_endpoint
+#print axioms transportTriangleHomNormalized_endpoint
+
+#check @transportTriangleInitialHomNormalized
+#print axioms transportTriangleInitialHomNormalized
+
+#check @transportTriangleInitialHomNormalized_evaluation
+#print axioms transportTriangleInitialHomNormalized_evaluation
+
+#check @transportTriangleInitialHomNormalizedComparison
+#print axioms transportTriangleInitialHomNormalizedComparison
+
+#check @transportTriangleInitialHomNormalizedComparison_evaluation
+#print axioms transportTriangleInitialHomNormalizedComparison_evaluation
+
+#check @transportTriangleInitialHomNormalizedHomotopy
+#print axioms transportTriangleInitialHomNormalizedHomotopy
+
+#check @transportTriangleInitialHomNormalizedHomotopy_projection
+#print axioms transportTriangleInitialHomNormalizedHomotopy_projection
+
+#check @partialColimitSpanLeftTransportVertex
+#print axioms partialColimitSpanLeftTransportVertex
+
+#check @partialColimitSpanRightTransportVertex
+#print axioms partialColimitSpanRightTransportVertex
+
+#check @partialColimitSpanLeftTransportTriangle
+#print axioms partialColimitSpanLeftTransportTriangle
+
+#check @partialColimitSpanRightTransportTriangle
+#print axioms partialColimitSpanRightTransportTriangle
+
+#check @partialColimitSpanLeftTransportTriangle_projection
+#print axioms partialColimitSpanLeftTransportTriangle_projection
+
+#check @partialColimitSpanRightTransportTriangle_projection
+#print axioms partialColimitSpanRightTransportTriangle_projection
+
+#check @partialColimitSpanTransportPointIso
+#print axioms partialColimitSpanTransportPointIso
+
+#check @partialColimitSpanTransportPointPath
+#print axioms partialColimitSpanTransportPointPath
+
+#check @partialColimitSpanTransportPointPath_zero
+#print axioms partialColimitSpanTransportPointPath_zero
+
+#check @partialColimitSpanTransportPointPath_one
+#print axioms partialColimitSpanTransportPointPath_one
+
+#check @coconeTransportTriangleInitialVertex
+#print axioms coconeTransportTriangleInitialVertex
+
+#check @coconeTransportTriangleTerminal
+#print axioms coconeTransportTriangleTerminal
+
+#check @coconeTransportTriangleTerminal_vertex
+#print axioms coconeTransportTriangleTerminal_vertex
+
+#check @coconeTransportTrianglePointHomFamily
+#print axioms coconeTransportTrianglePointHomFamily
+
+#check @coconeTransportTrianglePointHomFamily_eq
+#print axioms coconeTransportTrianglePointHomFamily_eq
+
+#check @coconeTransportTriangleInitialHomFamily
+#print axioms coconeTransportTriangleInitialHomFamily
+
+#check @coconeTransportTriangleInitialHomFamily_evaluation
+#print axioms coconeTransportTriangleInitialHomFamily_evaluation
+
+#check @coconeTransportTriangleInitialComparison
+#print axioms coconeTransportTriangleInitialComparison
+
+#check @coconeTransportTriangleInitialComparison_evaluation
+#print axioms coconeTransportTriangleInitialComparison_evaluation
+
+#check @coconeTransportTriangleHomComparison
+#print axioms coconeTransportTriangleHomComparison
+
+#check @coconeTransportTriangleHomComparison_projection
+#print axioms coconeTransportTriangleHomComparison_projection
+
+#check @partialColimitSpanLeftTransportCocone
+#print axioms partialColimitSpanLeftTransportCocone
+
+#check @partialColimitSpanRightTransportCocone
+#print axioms partialColimitSpanRightTransportCocone
+
+#check @partialColimitSpanLeftTransportCocone_vertex
+#print axioms partialColimitSpanLeftTransportCocone_vertex
+
+#check @partialColimitSpanRightTransportCocone_vertex
+#print axioms partialColimitSpanRightTransportCocone_vertex
+
+#check @partialColimitSpanLeftTransportHomFamily
+#print axioms partialColimitSpanLeftTransportHomFamily
+
+#check @partialColimitSpanRightTransportHomFamily
+#print axioms partialColimitSpanRightTransportHomFamily
+
+#check @partialColimitSpanLeftTransportHomComparison
+#print axioms partialColimitSpanLeftTransportHomComparison
+
+#check @partialColimitSpanRightTransportHomComparison
+#print axioms partialColimitSpanRightTransportHomComparison
+
+#check @partialColimitSpanLeftTransportHomComparison_projection
+#print axioms partialColimitSpanLeftTransportHomComparison_projection
+
+#check @partialColimitSpanRightTransportHomComparison_projection
+#print axioms partialColimitSpanRightTransportHomComparison_projection
+
+#check @partialColimitSpanTransportCoconePath
+#print axioms partialColimitSpanTransportCoconePath
+
+#check @partialColimitSpanTransportCoconePath_zero
+#print axioms partialColimitSpanTransportCoconePath_zero
+
+#check @partialColimitSpanTransportCoconePath_one
+#print axioms partialColimitSpanTransportCoconePath_one
