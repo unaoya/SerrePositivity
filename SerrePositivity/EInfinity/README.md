@@ -631,7 +631,11 @@ nullary を含む TR の部分合成保存は完了。
 `cochainAction_composition_basis_edge_nullary_eq_iterated` は空語の辺入力の全外側語次数の合成則。
 `cochainAction_comp` は nullary・出力 arity 零を含む全整数複体射の部分合成則。
 `surjectionCoalgebra` は実際の区間切断作用の χ-coalgebra、`barrattEcclesCoalgebra` は一般 TR に沿う E への制限。
-具体的な E-coalgebra 区間の端点・余単位・収縮・境界包含の条件と、抽象転送への代入が残る。
+`endpoint` は元の両頂点からの単位複体の射、`contraction` は実際の AW 余単位。
+`endpoint_contraction` は双方で恒等となる三角形。
+`contractionHomotopy` は一頂点を辺へ送る具体的な次数 −1 の鎖ホモトピー。
+`contractionHomotopyEquiv`・`contraction_quasiIso`・`endpoint_quasiIso` は収縮の鎖ホモトピー同値と、収縮・両端点の擬同型性。
+端点・収縮の余代数射性、境界包含の cofibration 性、抽象転送への代入が残る。
 その後の E2a-4・5、E2b・G1′ も未完成。
 
 原典：

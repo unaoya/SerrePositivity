@@ -373,3 +373,7 @@ public import SerrePositivity.EInfinity.IntervalCuts.NullaryCutSigns
 public import SerrePositivity.EInfinity.IntervalCuts.NullaryEdgeComposition
 public import SerrePositivity.EInfinity.IntervalCuts.CochainComposition
 public import SerrePositivity.EInfinity.IntervalCuts.Coalgebra
+public import SerrePositivity.EInfinity.AlexanderWhitney.CochainCounitValues
+public import SerrePositivity.EInfinity.IntervalCuts.Endpoints
+public import SerrePositivity.EInfinity.IntervalCuts.ContractionValues
+public import SerrePositivity.EInfinity.IntervalCuts.ContractionHomotopy

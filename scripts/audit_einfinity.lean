@@ -1391,6 +1391,23 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.surjectionCoalgebra,
       `SerrePositivity.EInfinity.IntervalCuts.barrattEcclesCoalgebra,
       `SerrePositivity.EInfinity.IntervalCuts.barrattEcclesCoalgebra_coaction,
+      `SerrePositivity.EInfinity.AlexanderWhitney.cochainCounit_zero_apply,
+      `SerrePositivity.EInfinity.AlexanderWhitney.cochainCounit_generator_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.endpointCycle,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_zero_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_contraction,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction_vertex_eq,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction_eq_zero_of_ne_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction_endpoint_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.contractionHomotopyComponent,
+      `SerrePositivity.EInfinity.IntervalCuts.contractionHomotopyComponent_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.contractionHomotopy,
+      `SerrePositivity.EInfinity.IntervalCuts.contractionHomotopyEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction_quasiIso,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_quasiIso,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3968,3 +3985,24 @@ example (z : ℤ) (x : ((complex ℤ 1 ⊗ complex ℤ 0) ⊗ interval ℤ).X z)
       (iteratedCochainAction ℤ 0 0 0).f z x :=
   congrArg (fun f => f.f z x) (cochainAction_comp ℤ 0 0 0)
 example : (barrattEcclesCoalgebra ℤ).carrier = interval ℤ := rfl
+
+-- 実際の正規化区間で、整数線形結合の収縮値とホモトピー値を確認する。
+example : contractionHomotopyComponent ℤ 0 (-1)
+    ((3 : ℤ) • (show (interval ℤ).X 0 from faceVector ℤ (vertex 1)) -
+      (2 : ℤ) • (show (interval ℤ).X 0 from faceVector ℤ (vertex 0))) =
+      (3 : ℤ) • faceVector ℤ edge := by
+  rw [map_sub, map_zsmul, map_zsmul, contractionHomotopyComponent_vertex,
+    contractionHomotopyComponent_vertex]
+  change (3 : ℤ) • (show (interval ℤ).X (-1) from faceVector ℤ edge) -
+    (2 : ℤ) • (0 : (interval ℤ).X (-1)) = (3 : ℤ) • faceVector ℤ edge
+  simp only [zsmul_zero, sub_zero]
+example : (contraction ℤ).f 0
+    ((3 : ℤ) • (show (interval ℤ).X 0 from faceVector ℤ (vertex 1)) -
+      (2 : ℤ) • (show (interval ℤ).X 0 from faceVector ℤ (vertex 0))) =
+      (HomologicalComplex.singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat ℤ))).inv (1 : ℤ) := by
+  rw [map_sub, map_zsmul, map_zsmul, contraction_vertex_eq, contraction_vertex_eq,
+    sub_eq_add_neg, ← sub_zsmul]
+  exact one_zsmul _
+example : endpoint ℤ true ≫ contraction ℤ = 𝟙 _ := endpoint_contraction ℤ true
+example : QuasiIso (endpoint ℤ true) := endpoint_quasiIso ℤ true
+example : QuasiIso (contraction ℤ) := contraction_quasiIso ℤ
