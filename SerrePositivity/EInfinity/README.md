@@ -525,7 +525,12 @@ nullary を含む TR の部分合成保存は完了。
 `edgeComponent_differentialOnWord` は実際の削除微分の辺成分と正規化全削除和の一致。
 `edgeComponent_differentialOnWord_reduce` は元切断非零部分と切断点色全境界和へ帰着する。
 元の非零切断がなければ、実際の削除微分の辺成分も零となる。
-具体的な Δ¹ の余代数構造は未完成。元切断非零部分の反復色因子境界比較と全微分保存が残る。
+`regularCutEquiv` は元切断非零削除項と反復位置対・左右側の有限同値。
+`RepeatCutPair.factorBoundary_eq_pair` は共通次数での一反復色境界と実際の二削除値の一致。
+`edgeComponentOnWord_boundary_factors` は実際の辺成分の微分を全反復色・切断点色境界へ分ける。
+`edgeComponentOnWord_d_positive` は正次数の実際の辺成分と削除微分の可換性。
+`edgeComponentOnWord_d_zero` は次数零の辺成分の微分と入力辺の二端点差の一致。arity 零も含む。
+具体的な Δ¹ の余代数構造は未完成。頂点成分の微分保存、複体射への束ね、全余代数法則が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

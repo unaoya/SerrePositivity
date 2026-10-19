@@ -944,6 +944,14 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_differentialOnWord,
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_differentialOnWord_reduce,
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_differentialOnWord_eq_zero_of_no_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.RepeatCutPair,
+      `SerrePositivity.EInfinity.IntervalCuts.regularCutEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.RepeatCutPair.factorBoundary_eq_pair,
+      `SerrePositivity.EInfinity.IntervalCuts.repeatPairFiberEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.normalizedDeletedValue_sum_regular,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_boundary_factors,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_d_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_d_zero,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2880,3 +2888,32 @@ example : edgeComponent ℤ 2 0 (differentialOnWord ℤ compositionInner) =
       normalizedDeletedValue ℤ compositionInner c.val) +
         ∑ p, pivotBoundaryValue ℤ compositionInner p :=
   edgeComponent_differentialOnWord_reduce ℤ compositionInner
+
+-- 010の反復色位置対は一つで、左右二削除が元切断非零部分の全添字となる。
+example : Fintype.card (NormalizedDeletedCut.Regular compositionInner.val) = 2 := by
+  have hc : Fintype.card (RepeatCutPair compositionInner.val) = 1 := by
+    rw [Fintype.card_congr (repeatPairFiberEquiv (u := compositionInner.val))]
+    decide
+  rw [← Fintype.card_congr (regularCutEquiv compositionInner), Fintype.card_prod, hc]
+  decide
+-- 010と、交換符号が非自明な20120の実際の辺成分が削除微分と可換する。
+example : (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 2).d (-2) (-1)
+    (edgeComponentOnWord ℤ compositionInner) =
+      edgeComponent ℤ 2 0 (differentialOnWord ℤ compositionInner) := by
+  simpa only using! edgeComponentOnWord_d_positive ℤ compositionInner
+example : (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 3).d (-3) (-2)
+    (edgeComponentOnWord ℤ cutSignWord) =
+      edgeComponent ℤ 3 1 (differentialOnWord ℤ cutSignWord) := by
+  simpa only using! edgeComponentOnWord_d_positive ℤ cutSignWord
+-- 次数零の置換語とarity零の空語も、入力辺の二頂点差へ一致する。
+private def zeroPermutationWord : BasisWord 3 0 := ⟨![2, 0, 1], by decide⟩
+private def zeroEmptyWord : BasisWord 0 0 := ⟨Fin.elim0, by decide⟩
+example : (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 3).d (-1) 0
+    (edgeComponentOnWord ℤ zeroPermutationWord) =
+      vertexComponentOnWord ℤ zeroPermutationWord 1 -
+        vertexComponentOnWord ℤ zeroPermutationWord 0 :=
+  edgeComponentOnWord_d_zero ℤ zeroPermutationWord
+example : (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 0).d (-1) 0
+    (edgeComponentOnWord ℤ zeroEmptyWord) =
+      vertexComponentOnWord ℤ zeroEmptyWord 1 - vertexComponentOnWord ℤ zeroEmptyWord 0 :=
+  edgeComponentOnWord_d_zero ℤ zeroEmptyWord
