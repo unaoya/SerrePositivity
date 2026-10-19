@@ -169,3 +169,5 @@ public import SerrePositivity.EInfinity.Operad.AlgebraReflexiveCoequalizers
 public import SerrePositivity.EInfinity.Operad.AlgebraAllColimits
 public import SerrePositivity.EInfinity.Operad.AlgebraSmallObject
 public import SerrePositivity.EInfinity.Operad.IntervalModelCategory
+public import SerrePositivity.EInfinity.Surjection.DegreeZero
+public import SerrePositivity.EInfinity.Surjection.DeletionDifferential

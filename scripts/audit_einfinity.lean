@@ -240,7 +240,45 @@ run_cmd do
       `SerrePositivity.EInfinity.Operad.intervalModelCategory_weakEquivalences,
       `SerrePositivity.EInfinity.Operad.intervalModelCategory_fibrations,
       `SerrePositivity.EInfinity.Operad.intervalModelCategory_cofibrantlyGenerated,
-      `SerrePositivity.EInfinity.Operad.intervalModelCategory_forget_isRightQuillen] do
+      `SerrePositivity.EInfinity.Operad.intervalModelCategory_forget_isRightQuillen,
+      `SerrePositivity.EInfinity.Surjection.BasisWord,
+      `SerrePositivity.EInfinity.Surjection.degreeZeroEquiv,
+      `SerrePositivity.EInfinity.Surjection.barrattEcclesWord_action,
+      `SerrePositivity.EInfinity.Surjection.card_caesuras_basisWord,
+      `SerrePositivity.EInfinity.Surjection.deletionCoefficient_final,
+      `SerrePositivity.EInfinity.Surjection.representation,
+      `SerrePositivity.EInfinity.Surjection.differential_basis,
+      `SerrePositivity.EInfinity.Surjection.differential_renameLinear] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
+
+-- BF §1.2.3 の符号・五項の削除式と零 arity の境界例を照合する。
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open SerrePositivity.EInfinity.Surjection
+
+private def bfWord : Fin 7 → Fin 4 := ![0, 2, 1, 0, 3, 1, 0]
+example : Function.Surjective bfWord ∧ Nondegenerate bfWord := by decide
+example : (fun i => deletionCoefficient bfWord i) = ![1, 0, -1, 1, 0, 1, -1] := by decide
+example : Fintype.card (BasisWord 3 0) = 6 := by decide
+example : Fintype.card (BasisWord 0 0) = 1 := by decide
+example : Fintype.card (BasisWord 0 1) = 0 := by decide
+example : Fintype.card (BasisWord 1 1) = 0 := by decide
+example : differentialOnWord ℤ (⟨bfWord, by decide⟩ : BasisWord 4 3) =
+    generator ℤ ![2, 1, 0, 3, 1, 0] - generator ℤ ![0, 2, 0, 3, 1, 0] +
+      generator ℤ ![0, 2, 1, 3, 1, 0] + generator ℤ ![0, 2, 1, 0, 3, 0] -
+      generator ℤ ![0, 2, 1, 0, 3, 1] := by
+  have hs : (fun i => deletionCoefficient bfWord i) = ![1, 0, -1, 1, 0, 1, -1] := by decide
+  have h0 : erase bfWord 0 = ![2, 1, 0, 3, 1, 0] := by decide
+  have h2 : erase bfWord 2 = ![0, 2, 0, 3, 1, 0] := by decide
+  have h3 : erase bfWord 3 = ![0, 2, 1, 3, 1, 0] := by decide
+  have h5 : erase bfWord 5 = ![0, 2, 1, 0, 3, 0] := by decide
+  have h6 : erase bfWord 6 = ![0, 2, 1, 0, 3, 1] := by decide
+  unfold differentialOnWord
+  dsimp only
+  simp_rw [congrFun hs]
+  simp only [Fin.sum_univ_succ, Matrix.cons_val_zero, Matrix.cons_val_succ,
+    Fin.sum_univ_zero, add_zero, one_zsmul, zero_zsmul, neg_one_zsmul, zero_add]
+  erw [h0, h2, h3, h5, h6]
+  simp only [sub_eq_add_neg, add_assoc]
