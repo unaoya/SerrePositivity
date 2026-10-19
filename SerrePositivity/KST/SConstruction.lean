@@ -603,4 +603,13 @@ public import SerrePositivity.KST.SConstruction.CoherentDiagramOverComposition
 public import SerrePositivity.KST.SConstruction.KanCospanPastingChoices
 public import SerrePositivity.KST.SConstruction.CoherentDiagramFamilyPasting
 public import SerrePositivity.KST.SConstruction.AssemblyCoherentFactorPasting
+public import SerrePositivity.KST.SConstruction.PointedKanEnrichedObjects
+public import SerrePositivity.KST.SConstruction.PointedKanEnrichedEquivalences
+public import SerrePositivity.KST.SConstruction.PointedKanDiagramEquivalences
+public import SerrePositivity.KST.SConstruction.OneDirectionCoherentInverseDiagram
+public import SerrePositivity.KST.SConstruction.PointedKanDiagramExtensions
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCoherentDiagram
+public import SerrePositivity.KST.SConstruction.PointedKanHomotopyComponents
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCoherentComponents
+public import SerrePositivity.KST.SConstruction.PointedKanHomotopyCategoryComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
