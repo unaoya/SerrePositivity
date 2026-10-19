@@ -61,3 +61,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.qCatPullbackInfinityCone_isLimit
 #check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementCone_isLimit
 #check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementCone_vertex
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransMap_zero
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransMap_one
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransMap_component
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackDiagram
+#check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementNatTrans_isEquivalence
+#check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementDiagramIso
+#check @SerrePositivity.InfinityCategories.F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.exists_limitCone_extension_of_precompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.exists_limitCone_of_functorIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.catPullbackCone_vertex
+#check @SerrePositivity.InfinityCategories.F2.catPullbackDiagram_hasLimit

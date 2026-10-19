@@ -28,8 +28,10 @@
   置換の始域射影の core の同値性、終点写像とその全内部 Hom の core の Kan fibration 性を証明。
   QCat の実際の豊穣後合成を core Fun の後合成と同定し、全豊穣 Hom の極限性で
   置換後の cospan の Cat_∞ の native な極限錐を証明。頂点は catPullbackObject p q と厳密に一致。
-  元の p、q の図式への輸送と射影・指定可換性の照合は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6278 jobs）、F2 の公理監査成功（166 宣言、標準三公理のみ）。
+  自然変換の二宇宙の coherent 円柱と成分を構成し、定値 path の切断で元と置換後の図式の同型を証明。
+  同値な形状への slice 制限の充填性を使い、元の p、q の cospan の native な極限錐を構成。
+  頂点は catPullbackObject p q と厳密に一致。二射影・指定可換性との照合は未完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6286 jobs）、F2 の公理監査成功（206 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -53,6 +55,7 @@
 - `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
 - `F2.catPullbackObject` / `F2.catPullbackFunctorIso` / `F2.catPullbackFunctorCoreIso`
 - `F2.qCatHom_postcomp` / `F2.catPullbackReplacementCone_isLimit`
+- `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 
 ### 依存と提供
 
@@ -63,7 +66,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：core の充填性、QCat の実際の豊穣後合成、置換後の native な極限錐、集約・監査と本書。
+  本保存単位：coherent な自然変換、slice 制限の充填性、頂点を保つ極限錐の輸送、集約・監査と本書。
 
 ### 既知の問題
 
@@ -76,8 +79,8 @@
 
 ### 次の一手
 
-- 定値 path の切断で元と置換後の cospan の図式を比較し、各成分の Cat_∞ 内の同値性を検証する。
-  `catPullbackReplacementCone_isLimit` を元の p、q の図式へ輸送し、頂点・二射影・指定可換性を照合する。
+- `catPullbackCone_isLimit` の二脚を catPullbackFst・catPullbackSnd と比較し、指定 path と照合する。
+  頂点を保つ輸送の証明で切断した円柱を公開し、全錐の比較と全試験写像空間の表示へ接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

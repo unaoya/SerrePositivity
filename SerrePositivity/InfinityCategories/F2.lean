@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatPullbackReplacementCone
+public import SerrePositivity.InfinityCategories.F2.CatPullbackCone
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
