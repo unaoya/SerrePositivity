@@ -21277,3 +21277,425 @@ Bianchi の単一寄与を明示的な合成に展開した。
 検証：対象・Stable・Derived 集約ビルド5687 jobs 成功。Stable 監査383モジュール・2927宣言、
 Derived 監査114モジュール・1820宣言。全定数を監査し標準三公理のみ。
 公開29宣言の universe 付き型抽出も終了コード0。import 閉包の破損はない。
+
+## D7：二固定頂点の二寄与と三角形側の残差整合条件
+
+2026-10-19。全体集合の削除・左右切断・二点の符号を計算し、
+Bianchi の有限和が余錐頂点と二番目の固定頂点の二寄与に等しいことを証明した。
+両寄与を後続残差と三角形成分の合成、および A 側残差と脚側残差の合成との差へ展開する。
+`differential_rhs_span_twoPrefix` は一般の残差の式。
+`spanTwoPrefixRhs_differential_of_unknown_zero_normalized` は未知成分を零としたとき、
+三角形側右辺の微分が (-1)^(n+1) を共通係数として
+「後続右辺と三角形成分の合成 ＋ A 側右辺 − 脚側右辺と脚の合成」となる式。
+`spanBoundaryLeftZeroData_twoPrefix_differential` と右側版は実際の境界への適用である。
+任意の可換環・dg 圏・全次元で成立。一般の定理は既知集合での方程式を、零未知版は
+未知集合の全成分の零も仮定する。実際の境界に対する左右の定理ではこれらを証明済み。
+標準 cofiber の座標への移送、六成分系の解、coslice の初期性と D7 全体は未完了。
+
+公開26宣言の universe 付き正確な型：
+
+```lean
+SerrePositivity.InfinityCategories.spanSuffix_insert_both : ∀ (n : ℕ),
+  Eq.{1}
+    (insert.{0, 0} (SerrePositivity.InfinityCategories.spanFirstPrefix n)
+      (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+        (SerrePositivity.InfinityCategories.spanSuffixFaces n)))
+    Finset.univ.{0}
+SerrePositivity.InfinityCategories.spanSecondPrefix_pos : ∀ (n : ℕ),
+  LT.lt.{0} 0 (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+SerrePositivity.InfinityCategories.spanSecondPrefix_lt_apex : ∀ (n : ℕ),
+  LT.lt.{0} (SerrePositivity.InfinityCategories.spanSecondPrefix n) (SerrePositivity.InfinityCategories.spanApex n)
+SerrePositivity.InfinityCategories.spanApex_pos : ∀ (n : ℕ), LT.lt.{0} 0 (SerrePositivity.InfinityCategories.spanApex n)
+SerrePositivity.InfinityCategories.spanUniv_rightCut_apex : ∀ (n : ℕ),
+  Eq.{1} {x | LE.le.{0} (SerrePositivity.InfinityCategories.spanApex n) x}
+    (SerrePositivity.InfinityCategories.spanSuffixFaces n)
+SerrePositivity.InfinityCategories.spanUniv_leftCut_apex : ∀ (n : ℕ),
+  Eq.{1} {x | LE.le.{0} x (SerrePositivity.InfinityCategories.spanApex n)}
+    (insert.{0, 0} 0
+      (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+        (singleton.{0, 0} (SerrePositivity.InfinityCategories.spanApex n))))
+SerrePositivity.InfinityCategories.spanUniv_leftCut_secondPrefix : ∀ (n : ℕ),
+  Eq.{1} {x | LE.le.{0} x (SerrePositivity.InfinityCategories.spanSecondPrefix n)}
+    (insert.{0, 0} 0 (singleton.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)))
+SerrePositivity.InfinityCategories.spanUniv_rightCut_secondPrefix : ∀ (n : ℕ),
+  Eq.{1} {x | LE.le.{0} (SerrePositivity.InfinityCategories.spanSecondPrefix n) x}
+    (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+      (SerrePositivity.InfinityCategories.spanSuffixFaces n))
+SerrePositivity.InfinityCategories.spanUniv_erase_secondPrefix : ∀ (n : ℕ),
+  Eq.{1} (Finset.erase.{0} Finset.univ.{0} (SerrePositivity.InfinityCategories.spanSecondPrefix n))
+    (insert.{0, 0} 0 (SerrePositivity.InfinityCategories.spanSuffixFaces n))
+SerrePositivity.InfinityCategories.spanUniv_above_apex : ∀ (n : ℕ),
+  Eq.{1} {x | LT.lt.{0} (SerrePositivity.InfinityCategories.spanApex n) x}
+    (Finset.erase.{0} (SerrePositivity.InfinityCategories.spanSuffixFaces n)
+      (SerrePositivity.InfinityCategories.spanApex n))
+SerrePositivity.InfinityCategories.spanUniv_above_secondPrefix : ∀ (n : ℕ),
+  Eq.{1} {x | LT.lt.{0} (SerrePositivity.InfinityCategories.spanSecondPrefix n) x}
+    (SerrePositivity.InfinityCategories.spanSuffixFaces n)
+SerrePositivity.InfinityCategories.spanUniv_sign_apex : ∀ (n : ℕ),
+  Eq.{1}
+    (SerrePositivity.InfinityCategories.DGNerve.Index.sign.{0} Finset.univ.{0}
+      (SerrePositivity.InfinityCategories.spanApex n))
+    (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+SerrePositivity.InfinityCategories.spanUniv_sign_secondPrefix : ∀ (n : ℕ),
+  Eq.{1}
+    (SerrePositivity.InfinityCategories.DGNerve.Index.sign.{0} Finset.univ.{0}
+      (SerrePositivity.InfinityCategories.spanSecondPrefix n))
+    (HAdd.hAdd.{0, 0, 0} (↑n) 2).negOnePow
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_span_twoPrefix_pair.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    ∀ (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} Finset.univ.{0})) (ha : Eq.{1} 0 (Finset.min'.{0} Finset.univ.{0} ⋯))
+      (hb : Eq.{1} (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) (Finset.max'.{0} Finset.univ.{0} ⋯))
+      (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} Finset.univ.{0}))),
+      Eq.{u_1 + 1}
+        (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs.{u_1, u_2} s Finset.univ.{0} 0
+            (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) k hI ha hb hk))
+        (HAdd.hAdd.{u_1, u_1, u_1}
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residualContribution.{u_1, u_2} s Finset.univ.{0} 0
+            (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) k hI ha hb hk (SerrePositivity.InfinityCategories.spanApex n) ⋯ ⋯ ⋯)
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residualContribution.{u_1, u_2} s Finset.univ.{0} 0
+            (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) k hI ha hb hk (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯
+            ⋯ ⋯))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.span_twoPrefix_contribution_apex.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    ∀ (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} Finset.univ.{0})) (ha : Eq.{1} 0 (Finset.min'.{0} Finset.univ.{0} ⋯))
+      (hb : Eq.{1} (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) (Finset.max'.{0} Finset.univ.{0} ⋯))
+      (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} Finset.univ.{0}))),
+      Eq.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residualContribution.{u_1, u_2} s Finset.univ.{0} 0
+          (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) k hI ha hb hk (SerrePositivity.InfinityCategories.spanApex n) ⋯ ⋯ ⋯)
+        (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+          (Neg.neg.{u_1}
+            (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual.{u_1, u_2} s
+                (SerrePositivity.InfinityCategories.spanSuffixFaces n) (SerrePositivity.InfinityCategories.spanApex n)
+                (Fin.last (HAdd.hAdd.{0, 0, 0} n 3))
+                (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} (SerrePositivity.InfinityCategories.spanSuffixFaces n))) ⋯ ⋯ ⋯
+                ⋯)
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.tripleHom.{u_1, u_2} s 0
+                (SerrePositivity.InfinityCategories.spanSecondPrefix n) (SerrePositivity.InfinityCategories.spanApex n)
+                ⋯ ⋯)
+              ⋯)))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.span_twoPrefix_contribution_secondPrefix.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    ∀ (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} Finset.univ.{0})) (ha : Eq.{1} 0 (Finset.min'.{0} Finset.univ.{0} ⋯))
+      (hb : Eq.{1} (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) (Finset.max'.{0} Finset.univ.{0} ⋯))
+      (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} Finset.univ.{0}))),
+      Eq.{u_1 + 1}
+        (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residualContribution.{u_1, u_2} s Finset.univ.{0} 0
+          (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) k hI ha hb hk (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯ ⋯
+          ⋯)
+        (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 2).negOnePow
+          (HSub.hSub.{u_1, u_1, u_1}
+            (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual.{u_1, u_2} s
+              (insert.{0, 0} 0 (SerrePositivity.InfinityCategories.spanSuffixFaces n)) 0
+              (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) (HAdd.hAdd.{0, 0, 0} k 1) ⋯ ⋯ ⋯ ⋯)
+            (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual.{u_1, u_2} s
+                (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                  (SerrePositivity.InfinityCategories.spanSuffixFaces n))
+                (SerrePositivity.InfinityCategories.spanSecondPrefix n) (Fin.last (HAdd.hAdd.{0, 0, 0} n 3))
+                (HSub.hSub.{0, 0, 0} 2
+                  ↑(Finset.card.{0}
+                      (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                        (SerrePositivity.InfinityCategories.spanSuffixFaces n))))
+                ⋯ ⋯ ⋯ ⋯)
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2} s 0
+                (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+              ⋯)))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_span_twoPrefix.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    ∀ (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} Finset.univ.{0})) (ha : Eq.{1} 0 (Finset.min'.{0} Finset.univ.{0} ⋯))
+      (hb : Eq.{1} (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) (Finset.max'.{0} Finset.univ.{0} ⋯))
+      (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} Finset.univ.{0}))),
+      Eq.{u_1 + 1}
+        (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs.{u_1, u_2} s Finset.univ.{0} 0
+            (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) k hI ha hb hk))
+        (HAdd.hAdd.{u_1, u_1, u_1}
+          (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+            (Neg.neg.{u_1}
+              (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual.{u_1, u_2} s
+                  (SerrePositivity.InfinityCategories.spanSuffixFaces n) (SerrePositivity.InfinityCategories.spanApex n)
+                  (Fin.last (HAdd.hAdd.{0, 0, 0} n 3))
+                  (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} (SerrePositivity.InfinityCategories.spanSuffixFaces n))) ⋯ ⋯
+                  ⋯ ⋯)
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.tripleHom.{u_1, u_2} s 0
+                  (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                  (SerrePositivity.InfinityCategories.spanApex n) ⋯ ⋯)
+                ⋯)))
+          (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 2).negOnePow
+            (HSub.hSub.{u_1, u_1, u_1}
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual.{u_1, u_2} s
+                (insert.{0, 0} 0 (SerrePositivity.InfinityCategories.spanSuffixFaces n)) 0
+                (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) (HAdd.hAdd.{0, 0, 0} k 1) ⋯ ⋯ ⋯ ⋯)
+              (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual.{u_1, u_2} s
+                  (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                    (SerrePositivity.InfinityCategories.spanSuffixFaces n))
+                  (SerrePositivity.InfinityCategories.spanSecondPrefix n) (Fin.last (HAdd.hAdd.{0, 0, 0} n 3))
+                  (HSub.hSub.{0, 0, 0} 2
+                    ↑(Finset.card.{0}
+                        (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                          (SerrePositivity.InfinityCategories.spanSuffixFaces n))))
+                  ⋯ ⋯ ⋯ ⋯)
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2} s 0
+                  (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+                ⋯))))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_span_twoPrefix_of_unknown_zero.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+        SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+          ∀ (a b : Fin (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n 3) 1)) (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} I))
+            (ha : Eq.{1} a (Finset.min'.{0} I ⋯)) (hb : Eq.{1} b (Finset.max'.{0} I ⋯))
+            (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} I))),
+            Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom.{u_1, u_2} s I a b k hI ha hb hk)
+              0) →
+      ∀ (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} Finset.univ.{0})) (ha : Eq.{1} 0 (Finset.min'.{0} Finset.univ.{0} ⋯))
+        (hb : Eq.{1} (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) (Finset.max'.{0} Finset.univ.{0} ⋯))
+        (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} Finset.univ.{0}))),
+        Eq.{u_1 + 1}
+          (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A
+            (SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs.{u_1, u_2} s Finset.univ.{0} 0
+              (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) k hI ha hb hk))
+          (Neg.neg.{u_1}
+            (HAdd.hAdd.{u_1, u_1, u_1}
+              (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+                (Neg.neg.{u_1}
+                  (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+                    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs.{u_1, u_2} s
+                      (SerrePositivity.InfinityCategories.spanSuffixFaces n)
+                      (SerrePositivity.InfinityCategories.spanApex n) (Fin.last (HAdd.hAdd.{0, 0, 0} n 3))
+                      (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} (SerrePositivity.InfinityCategories.spanSuffixFaces n)))
+                      ⋯ ⋯ ⋯ ⋯)
+                    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.tripleHom.{u_1, u_2} s 0
+                      (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                      (SerrePositivity.InfinityCategories.spanApex n) ⋯ ⋯)
+                    ⋯)))
+              (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 2).negOnePow
+                (HSub.hSub.{u_1, u_1, u_1}
+                  (SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs.{u_1, u_2} s
+                    (insert.{0, 0} 0 (SerrePositivity.InfinityCategories.spanSuffixFaces n)) 0
+                    (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)) (HAdd.hAdd.{0, 0, 0} k 1) ⋯ ⋯ ⋯ ⋯)
+                  (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+                    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs.{u_1, u_2} s
+                      (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                        (SerrePositivity.InfinityCategories.spanSuffixFaces n))
+                      (SerrePositivity.InfinityCategories.spanSecondPrefix n) (Fin.last (HAdd.hAdd.{0, 0, 0} n 3))
+                      (HSub.hSub.{0, 0, 0} 2
+                        ↑(Finset.card.{0}
+                            (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                              (SerrePositivity.InfinityCategories.spanSuffixFaces n))))
+                      ⋯ ⋯ ⋯ ⋯)
+                    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2} s 0
+                      (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+                    ⋯)))))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixRhs.{u_1,
+    u_2} : {A : Type u_1} →
+  [inst : CommRing.{u_1} A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] →
+        {n : ℕ} →
+          (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)) →
+            ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s 0)
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s
+                  (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)))
+                (HAdd.hAdd.{0, 0, 0} (HSub.hSub.{0, 0, 0} (Neg.neg.{0} ↑n) 2) 1))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixFirstRhs.{u_1,
+    u_2} : {A : Type u_1} →
+  [inst : CommRing.{u_1} A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] →
+        {n : ℕ} →
+          (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)) →
+            ↑(SerrePositivity.DifferentialGraded.GradedHom.{u_1, u_2} A
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s 0)
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj.{u_1, u_2} s
+                  (Fin.last (HAdd.hAdd.{0, 0, 0} n 3)))
+                (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (HSub.hSub.{0, 0, 0} (Neg.neg.{0} ↑n) 2) 1) 1))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixRhs_differential_of_unknown_zero.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+        SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+          ∀ (a b : Fin (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n 3) 1)) (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} I))
+            (ha : Eq.{1} a (Finset.min'.{0} I ⋯)) (hb : Eq.{1} b (Finset.max'.{0} I ⋯))
+            (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} I))),
+            Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom.{u_1, u_2} s I a b k hI ha hb hk)
+              0) →
+      Eq.{u_1 + 1}
+        (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixRhs.{u_1, u_2} s))
+        (Neg.neg.{u_1}
+          (HAdd.hAdd.{u_1, u_1, u_1}
+            (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+              (Neg.neg.{u_1}
+                (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+                  (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_2} s)
+                  (SerrePositivity.InfinityCategories.DGNerve.SimplexData.tripleHom.{u_1, u_2} s 0
+                    (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                    (SerrePositivity.InfinityCategories.spanApex n) ⋯ ⋯)
+                  ⋯)))
+            (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 2).negOnePow
+              (HSub.hSub.{u_1, u_1, u_1}
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixFirstRhs.{u_1, u_2} s)
+                (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+                  (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2} s
+                    (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+                  (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2} s 0
+                    (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+                  ⋯)))))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixRhs_differential_of_unknown_zero_normalized.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+      ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+        SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2} s I) →
+    (∀ (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+        SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+          ∀ (a b : Fin (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n 3) 1)) (k : ℤ) (hI : LE.le.{0} 2 (Finset.card.{0} I))
+            (ha : Eq.{1} a (Finset.min'.{0} I ⋯)) (hb : Eq.{1} b (Finset.max'.{0} I ⋯))
+            (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} I))),
+            Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom.{u_1, u_2} s I a b k hI ha hb hk)
+              0) →
+      Eq.{u_1 + 1}
+        (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixRhs.{u_1, u_2} s))
+        (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+          (HSub.hSub.{u_1, u_1, u_1}
+            (HAdd.hAdd.{u_1, u_1, u_1}
+              (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_2} s)
+                (SerrePositivity.InfinityCategories.DGNerve.SimplexData.tripleHom.{u_1, u_2} s 0
+                  (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                  (SerrePositivity.InfinityCategories.spanApex n) ⋯ ⋯)
+                ⋯)
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixFirstRhs.{u_1, u_2} s))
+            (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2} s
+                (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+              (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2} s 0
+                (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+              ⋯)))
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_span_degrees.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {m : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D m)
+  (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} m 1))) (a b : Fin (HAdd.hAdd.{0, 0, 0} m 1)) (k l : ℤ)
+  (hI : LE.le.{0} 2 (Finset.card.{0} I)) (ha : Eq.{1} a (Finset.min'.{0} I ⋯)) (hb : Eq.{1} b (Finset.max'.{0} I ⋯))
+  (hk : Eq.{1} k (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} I)))
+  (hl : Eq.{1} l (HSub.hSub.{0, 0, 0} 2 ↑(Finset.card.{0} I))),
+  HEq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs.{u_1, u_2} s I a b k hI ha hb hk)
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs.{u_1, u_2} s I a b l hI ha hb hl)
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixFirstRhs_heq.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)),
+  HEq.{u_1 + 1} (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixFirstRhs.{u_1, u_2} s)
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2} s 0 ⋯)
+@SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData_twoPrefix_differential.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (F :
+    Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+      (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A
+      (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixRhs.{u_1, u_2}
+        (SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData.{u_1, u_2} F)))
+    (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+      (HSub.hSub.{u_1, u_1, u_1}
+        (HAdd.hAdd.{u_1, u_1, u_1}
+          (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+            (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_2}
+              (SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData.{u_1, u_2} F))
+            (SerrePositivity.InfinityCategories.DGNerve.SimplexData.tripleHom.{u_1, u_2}
+              (SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData.{u_1, u_2} F) 0
+              (SerrePositivity.InfinityCategories.spanSecondPrefix n) (SerrePositivity.InfinityCategories.spanApex n) ⋯
+              ⋯)
+            ⋯)
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixFirstRhs.{u_1, u_2}
+            (SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData.{u_1, u_2} F)))
+        (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2}
+            (SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData.{u_1, u_2} F)
+            (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2}
+            (SerrePositivity.InfinityCategories.spanBoundaryLeftZeroData.{u_1, u_2} F) 0
+            (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+          ⋯)))
+@SerrePositivity.InfinityCategories.spanBoundaryRightZeroData_twoPrefix_differential.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (F :
+    Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+      (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.DifferentialGraded.differential.{u_1, u_2} A
+      (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixRhs.{u_1, u_2}
+        (SerrePositivity.InfinityCategories.spanBoundaryRightZeroData.{u_1, u_2} F)))
+    (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (↑n) 1).negOnePow
+      (HSub.hSub.{u_1, u_1, u_1}
+        (HAdd.hAdd.{u_1, u_1, u_1}
+          (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+            (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanSuffixRhs.{u_1, u_2}
+              (SerrePositivity.InfinityCategories.spanBoundaryRightZeroData.{u_1, u_2} F))
+            (SerrePositivity.InfinityCategories.DGNerve.SimplexData.tripleHom.{u_1, u_2}
+              (SerrePositivity.InfinityCategories.spanBoundaryRightZeroData.{u_1, u_2} F) 0
+              (SerrePositivity.InfinityCategories.spanSecondPrefix n) (SerrePositivity.InfinityCategories.spanApex n) ⋯
+              ⋯)
+            ⋯)
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanTwoPrefixFirstRhs.{u_1, u_2}
+            (SerrePositivity.InfinityCategories.spanBoundaryRightZeroData.{u_1, u_2} F)))
+        (SerrePositivity.DifferentialGraded.compose.{u_1, u_2} A
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.spanOnePrefixRhs.{u_1, u_2}
+            (SerrePositivity.InfinityCategories.spanBoundaryRightZeroData.{u_1, u_2} F)
+            (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+          (SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom.{u_1, u_2}
+            (SerrePositivity.InfinityCategories.spanBoundaryRightZeroData.{u_1, u_2} F) 0
+            (SerrePositivity.InfinityCategories.spanSecondPrefix n) ⋯)
+          ⋯)))
+```
+
+検証：対象・Stable・Derived 集約ビルド5693 jobs 成功。Stable 監査389モジュール・3044宣言、
+Derived 監査120モジュール・1937宣言。全定数を監査し標準三公理のみ。
+公開26宣言の universe 付き型抽出も終了コード0。今回の6モジュールに警告なし。
+import 閉包の破損はない。
