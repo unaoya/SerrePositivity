@@ -6,7 +6,7 @@
 
 ### 現在地
 
-- B1〜B3 は明示した模型・宇宙で完了。B4 進行中、B5 未着手。両工程の後は [F2 計画](infinity-core-F2.md) 第 1 部。
+- B1〜B4 は明示した模型・宇宙で完了。B5 未着手。B5 の後は [F2 計画](infinity-core-F2.md) 第 1 部。
 - B4：任意の指定変換の相対 join 表示、両端の同時厳密化、h Fun の類の保存、
   元の左右 Kan 条件と厳密化後の局所極限・余極限性の同値まで証明。
 - 同じ宇宙の quasicategory K・C・D と任意の δ : K→C、F₀ : K→D に対し、左右 Kan 拡張の存在を
@@ -41,22 +41,15 @@
 - 充満忠実な inner 単射に沿う指定左単位の可逆性、元の図式の厳密な延長を証明。局所余極限の存在の下で終対象上の元の制限は自明 Kan。
 - 右：標準 U 極限・元の相対右 Kan 条件と制限、左右の双対判定を構成。全部分圏と相対標的の反転同型・制限の可換正方形から、元の右制限の正次元境界充填・充満忠実性を証明。標準局所 U 極限から元と底を保つ右の厳密な存在・頂点全射性・自明 Kan 性、右 Kan 関手へ任意の始点から入る片側の相対 pinched 比較も証明。
 - 像の類が恒等な単位の相対厳密化、像固定の局所余錐の添字変更、標準底余錐上の局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
-- 左右の標準相対 Kan 条件は path 置換の射影・切断で保存・反映。相対標的の切断比較は関手制限に沿う同値の引き戻し。任意 U について元の相対制限の左右の片側 pinched 同値を証明。
-- 最終検証：F1・F1B 同時ビルド成功（3983 jobs）、同時 import 検査成功（F1 7437・F1B 4707 宣言）。
-  公理監査成功（4713 宣言、標準三公理のみ、1275 モジュールに straightening なし）。ソース名衝突 0。
+- 左右の標準相対 Kan 条件は path 置換の射影・切断で保存・反映。任意 U の元の相対制限の片側 pinched 同値を、四つの写像空間の引き戻しへの比較同値として表示。右の射は Kan、絶対的な左右の制限は自明 Kan。
+- 最終検証：F1・F1B 同時ビルド成功（3990 jobs）、同時 import 検査成功（F1 7446・F1B 4744 宣言）。
+  公理監査成功（4750 宣言、標準三公理のみ、1281 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
-- 1. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
-  Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。残りは一般 U の元の相対制限の写像空間から、四つの写像空間の homotopy pullback 表示への接続、4〜16 時間。
-  絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
-  V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。標準 U 余極限との同値も U が inner なら証明済み。
-  右持ち上げ条件下の組み立て・任意の U の path 置換・相対 join の関手の制限の相対始点境界充填は証明済み。
-  任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
-  相対 join の制限は充満忠実、局所存在の下で自明 Kan。元の全部分圏からの制限と族の可換正方形を構成済み。
-  元の左右 pinched 比較、左の相対厳密な存在・元の相対制限の全射性と写像空間比較・局所存在の下で自明 Kan 性は完了。右の標準局所相対条件・双対判定・反転同型・元の相対制限の充満忠実性も完了。右の標準局所相対極限から厳密な存在・頂点全射性・自明 Kan 性も完了。元の相対制限の左右の片側比較は一般 U でも完了。相対標的の写像空間を四角形の引き戻しとして同定する明示的 API は未完。
-- 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
+- B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
+  pointwise な古典 Kan 拡張と一般の普遍写像性だけによる Kan 拡張を区別して回収する。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
 
 ### 主要宣言（名前のみ）
@@ -76,7 +69,8 @@
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
 - `F1B.IsRelativeRightKanExtendedFrom` / `F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left`
-- `F1B.kanRelativeRightFunctor_relative_pinchedHomMap_equivalence_general` / `F1B.kanRelativeRightKanRestriction_trivialKanFibration`
+- `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
+- `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
 
 ### 依存と提供
 
@@ -86,7 +80,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：slice の自明 Kan 性・左右条件の path 置換不変性・相対標的の切断同値・一般 U の元の左右片側比較、集約・監査・本書）。
+- なし（本保存単位：pinched Hom の引き戻し普遍性・一般 U の四つの写像空間への比較同値と両成分・左右の絶対的な自明 Kan 表示、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +92,9 @@
 
 ### 次の一手
 
-- `Core/MappingSpacePullback` の全単体の持ち上げと一意性で、相対標的の pinched Hom を
-  四つの関手圏の写像空間からなる四角形の厳密な引き戻しと同定する。前合成の Kan 性で homotopy pullback へ移す。
-  一般 U の相対標的も δ が単射なら第一射影により quasicategory（証明済み）。7.3.6.9 の自明 Kan 表示も監査し B5 へ。
+- Mathlib の `SimplicialSet/NerveAdjunction.lean`・`Quasicategory/Nerve.lean` と
+  `Core/NerveCone.lean` を読み、通常の自然変換と nerve 間の関手圏の h の比較を構成する。
+  古典随伴の単位・余単位・三角恒等式を `QCatAdjunction` に移し、その後 pointwise Kan の比較へ進む。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
@@ -122,7 +116,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（左右の局所存在判定・指定変換の局所判定・h 不変性・Hom 普遍性と一意性、isofibration 上の左右の厳密な相対存在・制限の充満忠実性・局所存在下の自明 Kan 性は完了。一般 U の元の相対制限の左右の片側写像空間比較も完了。四つの写像空間の homotopy pullback 表示への接続が残る） |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 完了（同じ宇宙の quasicategory に対する局所判定・存在・Hom 普遍性と一意性。充満忠実 inner 単射に沿う相対厳密存在・制限定理、任意 U の写像空間の homotopy pullback を右 Kan fibration 上の厳密な引き戻しへの実際の比較同値で実現） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定

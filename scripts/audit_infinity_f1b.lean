@@ -2657,3 +2657,51 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftFunctor_relative_pinchedHomMap_equivalence_general
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightFunctor_relative_pinchedHomMap_equivalence_general
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomTransportIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomTransportIso_hom_val
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomTransportIso_uncurry
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomPullbackLift
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomPullbackLift_uncurry
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomPullbackLift_fst
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomPullbackLift_snd
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomPullback_hom_ext
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedPullbackRightMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHom_square
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHom_isPullback
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullback
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullbackIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullbackComparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullback_kanComplex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullback_right_fibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftMappingPullbackComparison_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightMappingPullbackComparison_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMapping_sourceVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMapping_baseVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullbackComparison_fst
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeMappingPullbackComparison_snd
