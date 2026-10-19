@@ -36,6 +36,46 @@ lemma parameterizedPrism_associator_naturality {E B : SSet.{u}}
 方針：指定した標準表現を両端に保つ collage を分類し curry する。
 規約：全パラメーターの始点・終点・底の条件を同時に保持する。
 使われ方：比較射の右逆を作る普遍的な族への適用。 -/
+lemma exists_coherentFamily_recovery {B K : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (f : leftUnstraightening F ⊗ K ⟶ leftUnstraightening G)
+    (hf : f ≫ leftUnstraighteningProjection G =
+      fst (leftUnstraightening F) K ≫ leftUnstraighteningProjection F) :
+    ∃ (t : K ⟶ leftUnstraighteningTransformationSpace F G)
+      (W : ((Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗ K ⟶
+        PointedSpaceInfinity.{u}),
+      (prismEndpoint 0 (leftUnstraightening F) ▷ K) ≫ W =
+        fst (leftUnstraightening F) K ≫ pullback.fst pointedSpaceProjection F ∧
+      (prismEndpoint 1 (leftUnstraightening F) ▷ K) ≫ W =
+        f ≫ pullback.fst pointedSpaceProjection G ∧
+      W ≫ pointedSpaceProjection = ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ K) ≫
+        functorParameterizedPrism (intervalMappingUncurry t) := by
+  obtain ⟨H, W, h₀, h₁, hw₀, hw₁, hwp⟩ :=
+    exists_relativeArrowFamily_specified_coherent_realization_of_small_fibers
+      (leftUnstraighteningProjection F)
+      (leftUnstraighteningProjection G) f hf
+      (leftUnstraighteningProjection_hasSmallSimplexFibers F)
+      (leftUnstraighteningProjection_hasSmallSimplexFibers G)
+    (unstraighteningTransportRepresentation F)
+      (unstraighteningTransportRepresentation G)
+  change prismEndpoint 0 (B ⊗ K) ≫ H = fst B K ≫ F at h₀
+  change prismEndpoint 1 (B ⊗ K) ≫ H = fst B K ≫ G at h₁
+  let t := coherentTransformationFamilyCurry F G H h₀ h₁
+  refine ⟨t, (α_ Δ[1] (leftUnstraightening F) K).hom ≫ W, ?_, ?_, ?_⟩
+  · rw [← Category.assoc, prismEndpoint_associator]
+    simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
+      Category.id_comp] using hw₀
+  · rw [← Category.assoc, prismEndpoint_associator]
+    simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
+      Category.id_comp] using hw₁
+  · rw [Category.assoc, hwp, ← Category.assoc, parameterizedPrism_associator_naturality,
+      Category.assoc, coherentTransformationFamilyCurry_prism]
+
+
+/-- 概要：小さい族の coherent な復元は一般の復元の特殊化。
+方針：任意の底とパラメーターの復元定理を適用する。
+規約：従来の小さい底の界面を保つ。
+使われ方：小さい写像空間の比較。 -/
 lemma exists_small_coherentFamily_recovery {B K : SSet.{u + 1}}
     [∀ n, Small.{u} (B.obj n)] [∀ n, Small.{u} (K.obj n)]
     (F G : B ⟶ SpaceInfinity.{u})
@@ -51,21 +91,6 @@ lemma exists_small_coherentFamily_recovery {B K : SSet.{u + 1}}
         f ≫ pullback.fst pointedSpaceProjection G ∧
       W ≫ pointedSpaceProjection = ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ K) ≫
         functorParameterizedPrism (intervalMappingUncurry t) := by
-  obtain ⟨H, W, h₀, h₁, hw₀, hw₁, hwp⟩ :=
-    exists_relativeArrowFamily_specified_coherent_realization (leftUnstraighteningProjection F)
-      (leftUnstraighteningProjection G) f hf (unstraighteningTransportRepresentation F)
-      (unstraighteningTransportRepresentation G)
-  change prismEndpoint 0 (B ⊗ K) ≫ H = fst B K ≫ F at h₀
-  change prismEndpoint 1 (B ⊗ K) ≫ H = fst B K ≫ G at h₁
-  let t := coherentTransformationFamilyCurry F G H h₀ h₁
-  refine ⟨t, (α_ Δ[1] (leftUnstraightening F) K).hom ≫ W, ?_, ?_, ?_⟩
-  · rw [← Category.assoc, prismEndpoint_associator]
-    simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
-      Category.id_comp] using hw₀
-  · rw [← Category.assoc, prismEndpoint_associator]
-    simpa only [unstraighteningTransportRepresentation, LeftTransportRepresentation.pointedMap,
-      Category.id_comp] using hw₁
-  · rw [Category.assoc, hwp, ← Category.assoc, parameterizedPrism_associator_naturality,
-      Category.assoc, coherentTransformationFamilyCurry_prism]
+  exact exists_coherentFamily_recovery F G f hf
 
 end SerrePositivity.InfinityCategories

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.BoundaryRepresentationTransformationIso
 public import SerrePositivity.InfinityCategories.F1.CoherentCollageRepresentationRecovery
 public import SerrePositivity.InfinityCategories.F1.RelativeArrowCollageRepresentation
+public import SerrePositivity.InfinityCategories.F1.RelativeArrowSmallFibers
 
 /-!
 概要：同じ小さい相対射を表す二つの coherent な prism は固定端点で同型。
@@ -37,12 +38,12 @@ lemma prismEndpointPair_comp_eq {B X : SSet.{u}} (F G : B ⟶ X)
 
 /-- 概要：同じ小さい相対射の二つの pointed な prism は変換空間内で同型となる。
 方針：元の両図式を指定両端の collage 表現へ戻し可縮な境界 fiber で比較する。
-規約：相対射の可逆性と底の小ささは不要。
+規約：次数 fiber の小ささのみを要求し、底と全空間は任意。
 使われ方：一般の coherent な変換の復元の一意性。 -/
-lemma small_coherentPrism_uniqueness {E F B : SSet.{u + 1}}
-    [∀ n, Small.{u} (E.obj n)] [∀ n, Small.{u} (F.obj n)]
+lemma coherentPrism_uniqueness_of_small_fibers {E F B : SSet.{u + 1}}
     (p : E ⟶ B) [LeftFibration p] (q : F ⟶ B) [LeftFibration q]
     (f : E ⟶ F) (hf : f ≫ q = p)
+    (hsmallp : HasSmallSimplexFibers p) (hsmallq : HasSmallSimplexFibers q)
     (R₀ : LeftTransportRepresentation p) (R₁ : LeftTransportRepresentation q)
     (H H' : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
     (h₀ : prismEndpoint 0 B ≫ H = R₀.diagram)
@@ -67,7 +68,8 @@ lemma small_coherentPrism_uniqueness {E F B : SSet.{u + 1}}
   subst H
   subst H'
   let r := relativeArrowCollageProjection f q
-  have : ∀ n, Small.{u} ((relativeJoin f (𝟙 F)).obj n) := relativeArrowCollage_obj_small f
+  have hsmall : HasSmallSimplexFibers r :=
+    relativeArrowCollageProjection_hasSmallSimplexFibers p q f hf hsmallp hsmallq
   let e := joinEndpointDesc (relativeJoinInl f (𝟙 F)) (relativeJoinInr f (𝟙 F))
   have hp : IsPullback e (joinEndpointMap p q) r (prismEndpointPair B) :=
     isPullback_prismEndpointPair p q r _ _
@@ -84,7 +86,32 @@ lemma small_coherentPrism_uniqueness {E F B : SSet.{u + 1}}
     constructor
     · exact prismEndpointPair_comp_eq R₀.diagram R₁.diagram T.diagram h₀' h₁'
     · exact hmT.trans (R₀.sum_pointedMap R₁).symm
-  exact ⟨smallBoundaryRepresentation_transformationIso r (joinEndpointMap p q) e hp
+  exact ⟨smallFiberBoundaryRepresentation_transformationIso r hsmall (joinEndpointMap p q) e hp
     R₀.diagram R₁.diagram (R₀.sum R₁) rfl R T hR hT h₀ h₁ h₀' h₁'⟩
+
+/-- 小さい全空間の場合は次数 fiber の比較に従う。 -/
+lemma small_coherentPrism_uniqueness {E F B : SSet.{u + 1}}
+    [∀ n, Small.{u} (E.obj n)] [∀ n, Small.{u} (F.obj n)]
+    (p : E ⟶ B) [LeftFibration p] (q : F ⟶ B) [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p)
+    (R₀ : LeftTransportRepresentation p) (R₁ : LeftTransportRepresentation q)
+    (H H' : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = R₀.diagram)
+    (h₁ : prismEndpoint 1 B ≫ H = R₁.diagram)
+    (h₀' : prismEndpoint 0 B ≫ H' = R₀.diagram)
+    (h₁' : prismEndpoint 1 B ≫ H' = R₁.diagram)
+    (W W' : (Δ[1] : SSet.{u + 1}) ⊗ E ⟶ PointedSpaceInfinity.{u})
+    (hw₀ : prismEndpoint 0 E ≫ W = R₀.pointedMap)
+    (hw₁ : prismEndpoint 1 E ≫ W = f ≫ R₁.pointedMap)
+    (hw₀' : prismEndpoint 0 E ≫ W' = R₀.pointedMap)
+    (hw₁' : prismEndpoint 1 E ≫ W' = f ≫ R₁.pointedMap)
+    (hwp : W ≫ pointedSpaceProjection = (Δ[1] ◁ p) ≫ H)
+    (hwp' : W' ≫ pointedSpaceProjection = (Δ[1] ◁ p) ≫ H') :
+    Nonempty (VertexIso
+      (intervalMappingVertexOfEdge (functorEdgeFromPrism H h₀ h₁))
+      (intervalMappingVertexOfEdge (functorEdgeFromPrism H' h₀' h₁'))) :=
+  coherentPrism_uniqueness_of_small_fibers p q f hf
+    (hasSmallSimplexFibers_of_small_total p) (hasSmallSimplexFibers_of_small_total q)
+    R₀ R₁ H H' h₀ h₁ h₀' h₁' W W' hw₀ hw₁ hw₀' hw₁' hwp hwp'
 
 end SerrePositivity.InfinityCategories

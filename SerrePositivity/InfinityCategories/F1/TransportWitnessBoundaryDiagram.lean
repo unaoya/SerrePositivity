@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TransportWitnessDiagram
 public import SerrePositivity.InfinityCategories.F1.SmallCartesianRepresentationExtension
+public import SerrePositivity.InfinityCategories.F1.SmallFiberCartesianExtension
 public import SerrePositivity.InfinityCategories.Core.FixedDiagramVertexEquiv
 
 /-!
@@ -78,6 +79,31 @@ lemma transportWitnessBoundaryDiagram_vertex {p q : Arrow SSet.{u + 1}}
 方針：制限の trivial Kan fibration の fiber の可縮性を図式射影で写す。
 規約：同型は全体の関手空間より強い固定境界の fiber 内に置く。
 使われ方：coherent な変換と復元した変換の比較。 -/
+def smallFiberTransportRepresentation_fixedDiagramIso {p q : Arrow SSet.{u + 1}}
+    [LeftFibration p.hom] [LeftFibration q.hom]
+    (hq : HasSmallSimplexFibers q.hom) (f : p ⟶ q)
+    (hf : IsPullback f.left p.hom q.hom f.right) [Mono f.right]
+    (S : LeftTransportRepresentation p.hom) (R T : LeftTransportRepresentation q.hom)
+    (hR : R.cartesianRestrict f.left f.right hf = S)
+    (hT : T.cartesianRestrict f.left f.right hf = S) :
+    VertexIso (X := vertexFiber ((pre f.right).app SpaceInfinity) (functorVertex S.diagram))
+      (fixedDiagramVertex f.right S.diagram R.diagram
+        (congrArg LeftTransportRepresentation.diagram hR))
+      (fixedDiagramVertex f.right S.diagram T.diagram
+        (congrArg LeftTransportRepresentation.diagram hT)) := by
+  have := smallFiberTransportWitnessPre_trivialKanFibration hq f hf
+  have h := (vertexFiber_isContractibleKan (transportWitnessPre f hf)
+    (transportWitnessVertex S)).vertexIso (transportWitnessBoundaryVertex f hf S R hR)
+    (transportWitnessBoundaryVertex f hf S T hT)
+  have e := VertexIso.map h (transportWitnessBoundaryDiagram f hf S)
+  rw [transportWitnessBoundaryDiagram_vertex, transportWitnessBoundaryDiagram_vertex] at e
+  exact e
+
+
+/-- 概要：小さい全空間の固定境界比較は次数 fiber の一般の比較に従う。
+方針：全空間の小ささを元の射影の次数 fiber へ渡す。
+規約：従来の小さい全空間の界面を保つ。
+使われ方：小さい底の変換の比較。 -/
 def smallTransportRepresentation_fixedDiagramIso {p q : Arrow SSet.{u + 1}}
     [LeftFibration p.hom] [LeftFibration q.hom] [∀ n, Small.{u} (q.left.obj n)]
     (f : p ⟶ q) (hf : IsPullback f.left p.hom q.hom f.right) [Mono f.right]
@@ -89,13 +115,8 @@ def smallTransportRepresentation_fixedDiagramIso {p q : Arrow SSet.{u + 1}}
         (congrArg LeftTransportRepresentation.diagram hR))
       (fixedDiagramVertex f.right S.diagram T.diagram
         (congrArg LeftTransportRepresentation.diagram hT)) := by
-  have := smallTransportWitnessPre_trivialKanFibration f hf
-  have h := (vertexFiber_isContractibleKan (transportWitnessPre f hf)
-    (transportWitnessVertex S)).vertexIso (transportWitnessBoundaryVertex f hf S R hR)
-    (transportWitnessBoundaryVertex f hf S T hT)
-  have e := VertexIso.map h (transportWitnessBoundaryDiagram f hf S)
-  rw [transportWitnessBoundaryDiagram_vertex, transportWitnessBoundaryDiagram_vertex] at e
-  exact e
+  exact smallFiberTransportRepresentation_fixedDiagramIso
+    (hasSmallSimplexFibers_of_small_total q.hom) f hf S R T hR hT
 
 /-- 概要：固定する境界図式の等式は同じ全体図式の頂点を保つ。
 方針：境界図式の等式を消去する。

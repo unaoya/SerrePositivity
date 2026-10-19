@@ -3,6 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.F1.RelativeArrowCoherentRealization
 public import SerrePositivity.InfinityCategories.F1.TransportRepresentationSum
 public import SerrePositivity.InfinityCategories.F1.SmallCartesianRepresentationExtension
+public import SerrePositivity.InfinityCategories.F1.SmallFiberCartesianExtension
+public import SerrePositivity.InfinityCategories.F1.RelativeArrowSmallFibers
 
 /-!
 概要：指定した両端表現を厳密に保ち相対射を coherent な区間図式に実現する。
@@ -23,10 +25,10 @@ namespace SerrePositivity.InfinityCategories
 方針：両端の和を単射としてまとめ小さい全空間の相対延長を適用する。
 規約：元の射と両端の分類図式・全空間側の射を厳密に保持する。
 使われ方：coherent な非可逆変換の写像空間比較。 -/
-lemma exists_relativeArrow_specified_coherent_realization {E F B : SSet.{u + 1}}
-    [∀ n, Small.{u} (E.obj n)] [∀ n, Small.{u} (F.obj n)]
+lemma exists_relativeArrow_specified_coherent_realization_of_small_fibers {E F B : SSet.{u + 1}}
     (p : E ⟶ B) [LeftFibration p] (q : F ⟶ B) [LeftFibration q]
     (f : E ⟶ F) (hf : f ≫ q = p)
+    (hsmallp : HasSmallSimplexFibers p) (hsmallq : HasSmallSimplexFibers q)
     (R₀ : LeftTransportRepresentation p) (R₁ : LeftTransportRepresentation q) :
     ∃ (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
       (K : (Δ[1] : SSet.{u + 1}) ⊗ E ⟶ PointedSpaceInfinity.{u}),
@@ -49,9 +51,11 @@ lemma exists_relativeArrow_specified_coherent_realization {E F B : SSet.{u + 1}}
   have : LeftFibration (Arrow.mk (joinEndpointMap p q)).hom := by
     change LeftFibration (joinEndpointMap p q); infer_instance
   have : LeftFibration (Arrow.mk r).hom := by change LeftFibration r; exact hr
-  have : ∀ n, Small.{u} ((Arrow.mk r).left.obj n) := relativeArrowCollage_obj_small f
+  have hs : HasSmallSimplexFibers (Arrow.mk r).hom := by
+    change HasSmallSimplexFibers r
+    exact relativeArrowCollageProjection_hasSmallSimplexFibers p q f hf hsmallp hsmallq
   have : Mono a.right := by change Mono (prismEndpointPair B); infer_instance
-  obtain ⟨R, hR⟩ := exists_small_cartesianTransportRepresentation_extension a hp (R₀.sum R₁)
+  obtain ⟨R, hR⟩ := exists_smallFiber_cartesianTransportRepresentation_extension hs a hp (R₀.sum R₁)
   change R.cartesianRestrict e (prismEndpointPair B) hp = R₀.sum R₁ at hR
   have hd : prismEndpointPair B ≫ R.diagram = joinEndpointDesc R₀.diagram R₁.diagram :=
     congrArg LeftTransportRepresentation.diagram hR
@@ -89,5 +93,25 @@ lemma exists_relativeArrow_specified_coherent_realization {E F B : SSet.{u + 1}}
   · rw [← Category.assoc, relativeJoinPrism_one, Category.assoc, h₁]
   · rw [Category.assoc, R.pointedMap_projection, ← Category.assoc]
     exact congrArg (fun k ↦ k ≫ R.diagram) (relativeArrowCollageProjection_prism p q f hf)
+
+
+/-- 概要：小さい全空間の指定両端の実現は次数 fiber の一般の定理に従う。
+方針：全空間の小ささを次数 fiber の小ささへ渡す。
+規約：従来の界面を保つ。
+使われ方：小さい底上の写像空間比較。 -/
+lemma exists_relativeArrow_specified_coherent_realization {E F B : SSet.{u + 1}}
+    [∀ n, Small.{u} (E.obj n)] [∀ n, Small.{u} (F.obj n)]
+    (p : E ⟶ B) [LeftFibration p] (q : F ⟶ B) [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p)
+    (R₀ : LeftTransportRepresentation p) (R₁ : LeftTransportRepresentation q) :
+    ∃ (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+      (K : (Δ[1] : SSet.{u + 1}) ⊗ E ⟶ PointedSpaceInfinity.{u}),
+      prismEndpoint 0 B ≫ H = R₀.diagram ∧
+      prismEndpoint 1 B ≫ H = R₁.diagram ∧
+      prismEndpoint 0 E ≫ K = R₀.pointedMap ∧
+      prismEndpoint 1 E ≫ K = f ≫ R₁.pointedMap ∧
+      K ≫ pointedSpaceProjection = (Δ[1] ◁ p) ≫ H := by
+  exact exists_relativeArrow_specified_coherent_realization_of_small_fibers p q f hf
+    (hasSmallSimplexFibers_of_small_total p) (hasSmallSimplexFibers_of_small_total q) R₀ R₁
 
 end SerrePositivity.InfinityCategories

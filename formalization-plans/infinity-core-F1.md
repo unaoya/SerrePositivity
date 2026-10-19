@@ -35,8 +35,8 @@
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
   任意の底上の小さい全空間の表現空間は可縮 Kan。単位・余単位の成分と単位の作用の整合性、復元による実際の相対写像空間の同値も構成済み。
-  任意の相対射の collage は区間と底の積上の left fibration。指定両端の表現と coherent な実現を相互に回収し、境界固定の可縮 fiber で族全体の一意性を証明済み。小さい底上の任意の coherent な図式の実際の写像空間比較は同値（区間・pinched 模型と宇宙縮小後の比較とも）。
-- 対象ビルド3138 jobs、公理監査6554宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  任意の相対射の collage は区間と底の積上の left fibration。指定両端の表現と coherent な実現を相互に回収し、境界固定の可縮 fiber で族全体の一意性を証明済み。任意の底上の coherent な図式の実際の写像空間比較は同値（区間・pinched 模型、小さい場合は宇宙縮小後の比較とも）。
+- 対象ビルド3139 jobs、公理監査6565宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -44,7 +44,7 @@
 
 1. 次数 fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱め、相対表現の延長へ一般化する。
    Kerodon Theorem 5.6.5.12、Corollary 5.6.5.15。40〜160時間。
-2. 任意の底へ非可逆変換の写像空間比較を拡張し、単位・余単位の自然性と三角恒等式を完成する（小さい底の比較は証明済み）。
+2. 任意の底上の写像空間比較の同値性を使い、単位・余単位の自然性と三角恒等式を完成する。
    Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
 3. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
    Kerodon Theorem 5.6.0.2、§5.5。80〜240時間以上。
@@ -66,7 +66,7 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `smallCoherentStraighteningUnitTransformation_comparisonIso`、`smallCoherentStraighteningCounit`、`small_leftUnstraighteningMappingSpaceMap_isQCatEquivalence`、`smallLeftUnstraighteningMappingSpaceMap_isQCatEquivalence`
+- `smallCoherentStraighteningUnitTransformation_comparisonIso`、`smallCoherentStraighteningCounit`、`leftUnstraighteningMappingSpaceMap_isQCatEquivalence`、`leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -92,12 +92,12 @@
 - 任意の単射の境界固定延長と高次パラメーターの同時持ち上げは、射影の各次数の fiber が小さい場合に証明済み。
   任意の底上の coherent 空間値図式の unstraightening にも底・パラメーターの小ささを仮定せず適用済み。
   各次数の fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱める相対延長は未証明。
-- 単位・余単位は対象ごとの成分まで。全対象にわたる自然性・三角恒等式と任意の底の非可逆変換の比較は未証明。小さい底の写像空間比較の同値性は証明済み。
+- 単位・余単位は対象ごとの成分まで。全対象にわたる自然性・三角恒等式は未証明。任意の底の非可逆変換の写像空間比較の同値性は証明済み。
 
 ### 次の一手
 
-HasSmallSimplexFibers による表現空間の延長・一意性を使い、任意の底上の写像空間比較へ進む。
-RelativeArrowSpecifiedRealization と境界固定の図式・変換の比較を smallFiberTransportWitnessPre_trivialKanFibration へ一般化する。大きい普遍パラメーターでも条件は tensor で保存されるので、既存の両側の逆の証明を再利用する。
+HasSmallSimplexFibers による分類図式・単位・余単位の成分を任意の底へ一般化する。
+表現の選択を次数 fiber の仮定で構成し、可縮な表現空間の比較を同じ証拠にそろえる。続いて全対象にわたる自然性と三角恒等式を、族の境界固定延長と写像空間の同値性から組み立てる。
 全対象での自然性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。

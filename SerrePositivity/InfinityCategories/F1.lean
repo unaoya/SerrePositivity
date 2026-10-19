@@ -922,3 +922,4 @@ public import SerrePositivity.InfinityCategories.F1.JoinSmallSimplexFibers
 public import SerrePositivity.InfinityCategories.F1.SmallFiberWitnessContractible
 public import SerrePositivity.InfinityCategories.F1.SmallFiberCartesianExtension
 public import SerrePositivity.InfinityCategories.F1.RelativeArrowSmallFibers
+public import SerrePositivity.InfinityCategories.F1.CoherentUnstraighteningMappingEquivalence

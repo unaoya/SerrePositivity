@@ -20,11 +20,12 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 概要：共通境界を持つ二表現の区間図式は固定端点の変換空間内で同型。
 方針：可縮 fiber の同型を境界図式の空間へ写し変換空間へ curry する。
-規約：全空間のみ各次数で小さく、底の小ささは不要。
+規約：射影の次数 fiber が小さく、底と全空間の小ささは不要。
 使われ方：元の変換と collage から復元した変換の比較。 -/
-def smallBoundaryRepresentation_transformationIso {E D B : SSet.{u + 1}}
-    [∀ n, Small.{u} (E.obj n)] (r : E ⟶ (Δ[1] : SSet.{u + 1}) ⊗ B)
-    [LeftFibration r] (s : D ⟶ joinEndpointDiagram B B) [LeftFibration s]
+def smallFiberBoundaryRepresentation_transformationIso {E D B : SSet.{u + 1}}
+    (r : E ⟶ (Δ[1] : SSet.{u + 1}) ⊗ B)
+    [LeftFibration r] (hsmall : HasSmallSimplexFibers r)
+    (s : D ⟶ joinEndpointDiagram B B) [LeftFibration s]
     (e : D ⟶ E) (hp : IsPullback e s r (prismEndpointPair B))
     (F G : B ⟶ SpaceInfinity.{u}) (S : LeftTransportRepresentation s)
     (hS : S.diagram = joinEndpointDesc F G) (R T : LeftTransportRepresentation r)
@@ -38,10 +39,8 @@ def smallBoundaryRepresentation_transformationIso {E D B : SSet.{u + 1}}
   let a : Arrow.mk s ⟶ Arrow.mk r := Arrow.homMk e (prismEndpointPair B) hp.w
   have : LeftFibration (Arrow.mk s).hom := by change LeftFibration s; infer_instance
   have : LeftFibration (Arrow.mk r).hom := by change LeftFibration r; infer_instance
-  have : ∀ n, Small.{u} ((Arrow.mk r).left.obj n) := by
-    change ∀ n, Small.{u} (E.obj n); infer_instance
   have : Mono a.right := by change Mono (prismEndpointPair B); infer_instance
-  have hi := smallTransportRepresentation_fixedDiagramIso a hp S R T hR hT
+  have hi := smallFiberTransportRepresentation_fixedDiagramIso hsmall a hp S R T hR hT
   change VertexIso
     (fixedDiagramVertex (prismEndpointPair B) S.diagram R.diagram
       (congrArg LeftTransportRepresentation.diagram hR))
@@ -60,5 +59,26 @@ def smallBoundaryRepresentation_transformationIso {E D B : SSet.{u + 1}}
   have et := endpointPairDiagramTransformationMap_vertex F G T.diagram ht₀ ht₁ hdT
   exact (eqToIso (congrArg SSet.HomotopyCategory.mk er)).symm ≪≫ hv ≪≫
     eqToIso (congrArg SSet.HomotopyCategory.mk et)
+
+
+/-- 概要：小さい全空間の変換の比較は一般の次数 fiber の比較に従う。
+方針：全空間の小ささを次数 fiber の条件へ渡す。
+規約：従来の小さい全空間の界面を保つ。
+使われ方：小さい底の写像空間比較。 -/
+def smallBoundaryRepresentation_transformationIso {E D B : SSet.{u + 1}}
+    [∀ n, Small.{u} (E.obj n)] (r : E ⟶ (Δ[1] : SSet.{u + 1}) ⊗ B)
+    [LeftFibration r] (s : D ⟶ joinEndpointDiagram B B) [LeftFibration s]
+    (e : D ⟶ E) (hp : IsPullback e s r (prismEndpointPair B))
+    (F G : B ⟶ SpaceInfinity.{u}) (S : LeftTransportRepresentation s)
+    (hS : S.diagram = joinEndpointDesc F G) (R T : LeftTransportRepresentation r)
+    (hR : R.cartesianRestrict e (prismEndpointPair B) hp = S)
+    (hT : T.cartesianRestrict e (prismEndpointPair B) hp = S)
+    (hr₀ : prismEndpoint 0 B ≫ R.diagram = F) (hr₁ : prismEndpoint 1 B ≫ R.diagram = G)
+    (ht₀ : prismEndpoint 0 B ≫ T.diagram = F) (ht₁ : prismEndpoint 1 B ≫ T.diagram = G) :
+    VertexIso (X := leftUnstraighteningTransformationSpace F G)
+      (intervalMappingVertexOfEdge (functorEdgeFromPrism R.diagram hr₀ hr₁))
+      (intervalMappingVertexOfEdge (functorEdgeFromPrism T.diagram ht₀ ht₁)) := by
+  exact smallFiberBoundaryRepresentation_transformationIso r
+    (hasSmallSimplexFibers_of_small_total r) s e hp F G S hS R T hR hT hr₀ hr₁ ht₀ ht₁
 
 end SerrePositivity.InfinityCategories

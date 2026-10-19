@@ -66,10 +66,9 @@ lemma UnstraighteningFamilyWitness.leftPrism_projection {B K : SSet.{u + 1}}
 
 /-- 概要：同じ小さい相対射の族を表す二つの変換の族は関手同型。
 方針：pointed な証拠を collage の比較へ渡して元の変換の射を回収する。
-規約：底とパラメーターは各次数で小さい。
+規約：底とパラメーターの小ささは不要。
 使われ方：写像空間比較の左逆の全体での検証。 -/
-lemma UnstraighteningFamilyWitness.small_unique {B K : SSet.{u + 1}}
-    [∀ n, Small.{u} (B.obj n)] [∀ n, Small.{u} (K.obj n)]
+lemma UnstraighteningFamilyWitness.unique {B K : SSet.{u + 1}}
     {F G : B ⟶ SpaceInfinity.{u}} {t t' : K ⟶ leftUnstraighteningTransformationSpace F G}
     {f : leftUnstraightening F ⊗ K ⟶ leftUnstraightening G}
     (hf : f ≫ leftUnstraighteningProjection G =
@@ -92,8 +91,11 @@ lemma UnstraighteningFamilyWitness.small_unique {B K : SSet.{u + 1}}
       f ≫ pullback.fst pointedSpaceProjection G := by
     rw [UnstraighteningFamilyWitness.leftPrism, ← Category.assoc, prismEndpoint_associator_inv]
     exact w'.target
-  obtain ⟨e⟩ := small_coherentFamily_uniqueness (leftUnstraighteningProjection F)
-    (leftUnstraighteningProjection G) f hf (unstraighteningTransportRepresentation F)
+  obtain ⟨e⟩ := coherentFamily_uniqueness_of_small_fibers (leftUnstraighteningProjection F)
+    (leftUnstraighteningProjection G) f hf
+    (leftUnstraighteningProjection_hasSmallSimplexFibers F)
+    (leftUnstraighteningProjection_hasSmallSimplexFibers G)
+    (unstraighteningTransportRepresentation F)
     (unstraighteningTransportRepresentation G)
     (coherentTransformationFamilyDiagram t) (coherentTransformationFamilyDiagram t')
     (coherentTransformationFamilyDiagram_zero t) (coherentTransformationFamilyDiagram_one t)
@@ -109,5 +111,16 @@ lemma UnstraighteningFamilyWitness.small_unique {B K : SSet.{u + 1}}
       Category.id_comp] using htarget') w.leftPrism_projection w'.leftPrism_projection
   rw [coherentTransformationFamilyDiagram_curry, coherentTransformationFamilyDiagram_curry] at e
   exact ⟨e⟩
+
+/-- 小さい底とパラメーターの場合の従来の界面。 -/
+lemma UnstraighteningFamilyWitness.small_unique {B K : SSet.{u + 1}}
+    [∀ n, Small.{u} (B.obj n)] [∀ n, Small.{u} (K.obj n)]
+    {F G : B ⟶ SpaceInfinity.{u}} {t t' : K ⟶ leftUnstraighteningTransformationSpace F G}
+    {f : leftUnstraightening F ⊗ K ⟶ leftUnstraightening G}
+    (hf : f ≫ leftUnstraighteningProjection G =
+      fst (leftUnstraightening F) K ≫ leftUnstraighteningProjection F)
+    (w : UnstraighteningFamilyWitness F G t f) (w' : UnstraighteningFamilyWitness F G t' f) :
+    Nonempty (FunctorIso t t') :=
+  UnstraighteningFamilyWitness.unique hf w w'
 
 end SerrePositivity.InfinityCategories
