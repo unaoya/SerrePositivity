@@ -60,8 +60,11 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 負の整数コチェイン模型へ移した `cochainDiagonal` を構成済み。次数成分との接続は
 `cochainDiagonal_projection_generator`。テンソルの標準比較は自然で、結合子・左右単位子を保つ。
 実際の E(n) 上の `BarrattEccles.complexDiagonal` は余結合的で Σ_n 同変、既存の
-augmentation を左右余単位に持つ。次は一般の shuffle の AW 余代数射性と
-標準比較の braiding 適合性。Hopf オペラッド射と転送モデル構造は未完成。
+augmentation を左右余単位に持つ。一般の X,Y の正規化 shuffle 成分は
+`Shuffle.component`、生成元公式は `component_generators`。経路の前後半と
+項別 AW 切断公式 `aw_component_simplex` まで構成済み。経路分割の全単射・符号公式、
+一般 shuffle の微分条件・余代数射性、標準比較の braiding 適合性は残る。
+Hopf オペラッド射と転送モデル構造は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

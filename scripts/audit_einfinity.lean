@@ -49,7 +49,18 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.cochainCounit_eq_augmentation,
       `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_coassoc,
       `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_left_counit,
-      `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit] do
+      `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit,
+      `SerrePositivity.EInfinity.Shuffle.simplex_σ_left,
+      `SerrePositivity.EInfinity.Shuffle.simplex_σ_right,
+      `SerrePositivity.EInfinity.Shuffle.normalizedBilinear_normalization,
+      `SerrePositivity.EInfinity.Shuffle.component,
+      `SerrePositivity.EInfinity.Shuffle.component_generators,
+      `SerrePositivity.EInfinity.Shuffle.component_natural,
+      `SerrePositivity.EInfinity.Shuffle.frontPath,
+      `SerrePositivity.EInfinity.Shuffle.backPath,
+      `SerrePositivity.EInfinity.Shuffle.simplex_frontCut,
+      `SerrePositivity.EInfinity.Shuffle.simplex_backCut,
+      `SerrePositivity.EInfinity.Shuffle.aw_component_simplex] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

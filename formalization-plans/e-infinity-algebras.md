@@ -68,7 +68,9 @@
   augmentation 鎖写像 `counit` と左右余単位・その自然性まで検証済み。
   自然なテンソル比較（結合子・左右単位子との適合性を含む）で整数模型へ移送し、
   実際の E(n) の `complexDiagonal`、余結合性・左右余単位・Σ_n 同変性と
-  既存 augmentation との一致まで検証済み。shuffle の余代数射性と Hopf オペラッド射は未完成。
+  既存 augmentation との一致まで検証済み。一般の X,Y の正規化 shuffle 次数成分・生成元公式・
+  自然性と、前半・後半経路の構成・座標公式・項別の AW 切断公式を検証済み。
+  一般 shuffle の微分可換性、分割の全単射・符号公式、余代数射性、Hopf オペラッド射は未完成。
   E2a-3 の転送モデル構造、E2a-4・5 は未完成。現在地のコードと検証は本節と
   同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
@@ -120,7 +122,12 @@
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_rightAction`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_coassoc`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_left_counit`、
-  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit`。
+  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit`、
+  `SerrePositivity.EInfinity.Shuffle.component`、
+  `SerrePositivity.EInfinity.Shuffle.component_generators`、
+  `SerrePositivity.EInfinity.Shuffle.frontPath`、
+  `SerrePositivity.EInfinity.Shuffle.backPath`、
+  `SerrePositivity.EInfinity.Shuffle.aw_component_simplex`。
 - **依存と提供**：HomotopicalAlgebra の Transfer/Recognition・Transfer/Right・
   HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
   Cells・複体のテンソル・HomComplex を読み取り専用で使う。
@@ -128,8 +135,8 @@
   Alg_E のモデル構造、右 Quillen 忘却関手、E2b 用 CAlg はまだ提供していない。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：停止時の対象ビルドは成功（2632 jobs）、公理監査は成功
-  （4301 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
+- **既知の問題**：停止時の対象ビルドは成功（2649 jobs）、公理監査は成功
+  （4424 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
   今回の AW 宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -137,10 +144,11 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：`BarrattEccles/ShufflePaths`・`ShuffleSign` の arity に依存しない
-  格子経路を再利用し、一般の X,Y に対する退化写像の対と shuffle 成分を構成する。
-  切断点での経路の分割・符号の積公式から AW の余代数射性を証明し、
-  既存の BE 部分合成へ接続する。まだ区間・path object には着手しない。
+- **次の一手**：`Shuffle/EdgeIntervals` の区間制限に逆な辺集合の連結を構成し、
+  `frontPath`・`backPath` による分割を全単射へ束ねる。符号は
+  (−1)^(前半の垂直辺数 × 後半の水平辺数) と二つの経路の符号の積へ分解する。
+  `aw_component_simplex` を有限和へ移し、一般 shuffle の微分条件・鎖写像化、
+  既存の BE 部分合成への接続を閉じる。まだ区間・path object には着手しない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。
