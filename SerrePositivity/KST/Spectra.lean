@@ -552,3 +552,8 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleDiagonalHomotopies
 public import SerrePositivity.KST.Spectra.BasedIntervalSimplex
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionClasses
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionMapping
+public import SerrePositivity.KST.Spectra.PointedCurryFamilyVertex
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKPoint
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKSection
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionConePoint
+public import SerrePositivity.KST.Spectra.SpectrumNativeCircleConeSection
