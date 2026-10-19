@@ -28,11 +28,11 @@
   最終 fiber への retraction と逆像上の図式の延長が cocartesian 辺を可逆辺に送ることまで証明。
 - cocartesian section の全部分単体集合を構成し、inner fibration の場合の quasicategory 性を証明。
   前合成の関手性、一般の strict transport の図式と fiber 評価射、任意パラメータの族の curry・uncurry を構成。
-  始対象の fiber の任意の図式を、評価を厳密に固定した cocartesian section の族へ延長し、評価射の切断を証明。
-  境界も同時に固定する持ち上げ性と評価射の同値性は未証明。
+  任意の部分パラメータ上の section と始対象での評価を同時に固定した延長を証明。
+  始対象の評価は自明 Kan fibration。一般の strict transport の恒等射評価も自明 Kan fibration かつ ∞ 圏同値。
 - 相対関手の充填性を仮定しない界面を `KanSection` 名前空間に置き、F1 の禁止 import 閉包から分離。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2491 jobs）。
-  公理監査成功（3090 宣言、標準三公理のみ、820 モジュールに straightening なし）。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2497 jobs）。
+  公理監査成功（3124 宣言、標準三公理のみ、826 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -67,7 +67,8 @@
 - `kanCocartesianSections` / `kanCocartesianSectionsPre`
 - `kanCocartesianStrictTransportDiagram` / `kanCocartesianStrictTransportEvaluate`
 - `kanCocartesianSectionsCurry` / `kanCocartesianSectionsUncurry`
-- `exists_kanInitialSectionTransport` / `exists_kanCocartesianSectionsEvaluate_section`
+- `exists_kanInitialSectionTransport_relative` / `kanCocartesianSectionsEvaluate_trivialKanFibration`
+- `kanCocartesianStrictTransportFiberEquivalence`
 
 ### 依存と提供
 
@@ -78,8 +79,8 @@
 
 ### 未コミット
 
-- 保存単位：`KanSectionRelative*` 3 本、`KanCocartesianSection*` 3 本、
-  `KanCocartesianStrictTransport`、`KanInitialSection*` 2 本、集約・監査・本書。保存後の所有変更はなし。
+- 保存単位：`KanCocartesianHomotopyGluing`、`KanSectionPrism`、`KanInitialSectionBoundary`、
+  同 `Lifting`、`KanNerveInitialPrism`、`KanCocartesianStrictTransportEquivalence`、集約・監査・本書。
 
 ### 既知の問題
 
@@ -96,9 +97,9 @@
 
 ### 次の一手
 
-- 始対象での cocartesian section の評価が自明 Kan fibration になることを証明し、構成済みの strict transport の fiber 評価へ適用する。
-  構成済みの固定評価の延長に境界条件を追加し、固定始点収縮と相対輸送を使って両方を同時に固定する。
-  一般の scaffold 比較を経て、内ホーン逆像の前合成同値と特殊辺の cartesian 性（Kerodon §5.3.6）を証明する。
+- 一般の strict transport の simplicial replacement から全空間への universal scaffold を構成する。
+  新しい相対 uncurry と under の標準単体で対角評価し、構成済みの評価同値を fiber 比較へ接続する。
+  次に一般の scaffold の全空間比較、内ホーン逆像の前合成同値と特殊辺の cartesian 性（Kerodon §5.3.6）を証明する。
   その後、制限の輸送との両立で fiber の境界充填を全空間へ移し、既存の骨格の組み立てに渡す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
