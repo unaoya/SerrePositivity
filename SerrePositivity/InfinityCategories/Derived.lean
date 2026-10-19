@@ -728,6 +728,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGActualRoofTransport
 public import SerrePositivity.InfinityCategories.Derived.DGActualRoofTransportedFiller
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofTransportedFillers
 
+public import SerrePositivity.InfinityCategories.Derived.RoofSliceTriangleInverse
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverTriangleEdge
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteVertexCones
+public import SerrePositivity.InfinityCategories.Derived.RoofSliceOuterHorn
+public import SerrePositivity.InfinityCategories.Derived.RoofSliceTetrahedronInverse
+public import SerrePositivity.InfinityCategories.Derived.FullSubcomplexTriangleLift
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierConeEdgeBoundary
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramVertexCone
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeHorn
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

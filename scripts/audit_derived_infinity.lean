@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeHorn
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofTransportedFillers
 import SerrePositivity.InfinityCategories.Derived.DGRoofFillerTransportCompatibility
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofRelativeFillers
@@ -1740,10 +1741,52 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.DGActualRoofTransportedFiller.homotopy_projection
 #print axioms SerrePositivity.InfinityCategories.dgQuotientRoofFinite_exists_transportedFillerData
 
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfCompStruct
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfCompStruct_triangle
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfCompStruct_source
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfCompStruct_target
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfCompStruct_projection
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceEdgeOfCompStruct
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOver_exists_edgeOfCompStruct
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverFinite_exists_commonSource
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTriangle_edge_source
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTriangle_edge_target
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceOuterHornFace
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceOuterHorn_compatible
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceOuterHorn
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceOuterHorn_face0
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceOuterHorn_face1
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceOuterHorn_face2
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTriangle_fixed
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTriangle_injective
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTwoSimplexOfTetrahedron
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTwoSimplexOfTetrahedron_face
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceCompStructOfTetrahedron
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexTriangleLift
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexTriangleLift_simplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeEdgeHorn
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeEdgeHorn_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeEdgeHorn_face1
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeEdgeHorn_face2
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeEdgeCompStructOfFiller
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramVertexCone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramVertexCone_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdgeHorn
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdgeCompStructOfFiller
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceTriangleInverse,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOverTriangleEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteVertexCones,
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceOuterHorn,
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceTetrahedronInverse,
+    `SerrePositivity.InfinityCategories.Derived.FullSubcomplexTriangleLift,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierConeEdgeBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramVertexCone,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeHorn,
     `SerrePositivity.InfinityCategories.Derived.RoofFirstHornPrism,
     `SerrePositivity.InfinityCategories.Derived.RoofRelativeFirstTriangle,
     `SerrePositivity.InfinityCategories.Derived.RoofFirstTriangleCollapse,
