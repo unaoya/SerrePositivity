@@ -2787,3 +2787,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.weightedNerveMappingSpaceMap_composition
 #check @SerrePositivity.InfinityCategories.weightedNerveKanEnriched
 #check @SerrePositivity.InfinityCategories.weightedNerveInfinityMap
+#check @SerrePositivity.InfinityCategories.weightedNerveTransportUnit
+#check @SerrePositivity.InfinityCategories.weightedNerveTransportUnit_app
+#check @SerrePositivity.InfinityCategories.weightedNerveTransportUnit_evaluate
+#check @SerrePositivity.InfinityCategories.weightedNerveTransportUnit_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.weightedNerveMappingSpaceMap_apply
+#check @SerrePositivity.InfinityCategories.weightedNerveTransportUnit_enrichedNaturality

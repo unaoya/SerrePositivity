@@ -668,3 +668,4 @@ public import SerrePositivity.InfinityCategories.F1.SmallOppositeKanTransportUni
 public import SerrePositivity.InfinityCategories.F1.LocalStraighteningUnit
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveTensor
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveEnriched
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveTransportUnit

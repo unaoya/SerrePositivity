@@ -13632,5 +13632,40 @@ def weightedNerveKanEnriched (C : Type u) [Category.{u} C] :
 noncomputable def weightedNerveInfinityMap (C : Type u) [Category.{u} C] :
     KanDiagramNerve C ⟶ LeftFibrationInfinity (nerve C)
 
+noncomputable def weightedNerveTransportUnit {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) : F ⟶ leftStrictTransportDiagram (weightedNerveProjection F)
+
+lemma weightedNerveTransportUnit_app {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) (n m : SimplexCategoryᵒᵖ)
+    (x : (F.obj c).obj n) (α : n ⟶ m) (τ : (nerve (Under c)).obj m) :
+    (((weightedNerveTransportUnit F).app c).app n x).val.app m α τ =
+      (tautScaffold F).app m
+        ((simplicialReplacementUnderEvaluation F c).app m (τ, (F.obj c).map α x))
+
+lemma weightedNerveTransportUnit_evaluate {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    (weightedNerveTransportUnit F).app c ≫
+      leftStrictTransportEvaluate (weightedNerveProjection F) c = weightedNerveFiberMap F c
+
+lemma weightedNerveTransportUnit_isQCatEquivalence {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] (c : C) :
+    IsQCatEquivalence (X := F.obj c)
+      (Y := leftStrictTransport (weightedNerveProjection F) c)
+      ((weightedNerveTransportUnit F).app c)
+
+lemma weightedNerveMappingSpaceMap_apply {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) (n m : SimplexCategoryᵒᵖ) (α : n ⟶ m)
+    (η : (strictDiagramMappingSpace F G).obj n) (s : (weightedNerve F).obj m) :
+    ((weightedNerveMappingSpaceMap F G).app n η).val.app m α s =
+      (weightedNerveMappingFamily F G).app m (s, (strictDiagramMappingSpace F G).map α η)
+
+lemma weightedNerveTransportUnit_enrichedNaturality {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    strictDiagramMappingPost (weightedNerveTransportUnit G) F =
+      weightedNerveMappingSpaceMap F G ≫
+        leftStrictTransportMappingSpaceMap (weightedNerveProjection F) (weightedNerveProjection G) ≫
+          strictDiagramMappingPre (weightedNerveTransportUnit F)
+            (leftStrictTransportDiagram (weightedNerveProjection G))
+
 end SerrePositivity.InfinityCategories
 ```
