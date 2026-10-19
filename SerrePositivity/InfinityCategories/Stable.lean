@@ -355,6 +355,9 @@ public import SerrePositivity.InfinityCategories.Stable.FiniteCofiberDenominator
 public import SerrePositivity.InfinityCategories.Stable.FiniteHoEqualization
 public import SerrePositivity.InfinityCategories.Stable.FiniteCofiberEqualization
 
+public import SerrePositivity.InfinityCategories.Stable.StableClosureFullyFaithful
+public import SerrePositivity.InfinityCategories.Stable.CofiberEdgesFullyFaithful
+
 
 /-! # 安定 ∞ 圏の基盤
 

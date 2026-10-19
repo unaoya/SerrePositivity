@@ -488,6 +488,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalMappingS
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierDenominators
 public import SerrePositivity.InfinityCategories.Derived.DGFiniteVerdierDenominators
 
+public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Derived.DGModuleVertexProperty
+public import SerrePositivity.InfinityCategories.Derived.DGModuleVertexTriangles
+public import SerrePositivity.InfinityCategories.Derived.DGModuleVertexShift
+public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleObjectPresentation
+public import SerrePositivity.InfinityCategories.Derived.DGModuleH0Property
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFiniteCellVertexClosure
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFiniteCellDenominators
+public import SerrePositivity.InfinityCategories.Derived.DGYonedaFiniteCellClosure
+
 
 /-! # Semifree 複体による導来圏の dg 表示
 

@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGYonedaFiniteCellClosure
 import SerrePositivity.InfinityCategories.Derived.DGFiniteVerdierDenominators
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDenominators
 import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalMappingSpaces
@@ -1645,6 +1646,22 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_commonDenominator
 #print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_equalizeFinite
 
+#print axioms SerrePositivity.InfinityCategories.dgStableHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgH0IsoOfVertexIso
+#print axioms SerrePositivity.InfinityCategories.dgModuleHoProperty_cofiber
+#print axioms SerrePositivity.InfinityCategories.dgModuleHoProperty_isTriangulated
+#print axioms SerrePositivity.InfinityCategories.dgModuleTriangle_objectPresentation
+#print axioms SerrePositivity.InfinityCategories.dgModuleH0Property_isTriangulated
+#print axioms SerrePositivity.InfinityCategories.dgModule_stableVertexClosure_iff_finiteCell
+#print axioms SerrePositivity.InfinityCategories.dgModule_cofiberEdges_iff_finiteCell
+#print axioms SerrePositivity.InfinityCategories.dgModule_cofiberEdges_iff_trW
+#print axioms SerrePositivity.InfinityCategories.stableVertexClosure_image_iff
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_map_iff
+#print axioms SerrePositivity.InfinityCategories.dgPretriangulatedYoneda_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.dgLiftedGeneratorVertices_yoneda_image
+#print axioms SerrePositivity.InfinityCategories.dgLifted_stableVertexClosure_iff_finiteCell
+#print axioms SerrePositivity.InfinityCategories.dgPretriangulatedYoneda_cofiberEdges_iff
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1798,6 +1815,17 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleVertexProperty,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleVertexTriangles,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleVertexShift,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleObjectPresentation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleH0Property,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiniteCellVertexClosure,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiniteCellDenominators,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaFiniteCellClosure,
+    `SerrePositivity.InfinityCategories.Stable.StableClosureFullyFaithful,
+    `SerrePositivity.InfinityCategories.Stable.CofiberEdgesFullyFaithful,
     `SerrePositivity.InfinityCategories.Stable.StableHoClosure,
     `SerrePositivity.InfinityCategories.Stable.StableHoTriangulated,
     `SerrePositivity.InfinityCategories.Stable.StableHoGeneration,
