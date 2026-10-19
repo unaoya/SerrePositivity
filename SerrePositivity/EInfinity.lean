@@ -238,3 +238,4 @@ public import SerrePositivity.EInfinity.Surjection.VerticalBoundary
 public import SerrePositivity.EInfinity.Surjection.VerticalInnerPrefix
 public import SerrePositivity.EInfinity.Surjection.VerticalInnerInterval
 public import SerrePositivity.EInfinity.Surjection.OuterRowProjection
+public import SerrePositivity.EInfinity.Surjection.OuterTableRecovery

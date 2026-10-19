@@ -340,6 +340,12 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `recovered_available_substitute` は任意の合成可用行を復元した元の二つの可用行への代入へ戻す。
 `outerLabel_available_composition_row` は合成可用行の外側射影の縮約が元の可用外側行であることを示す。
 内側 arity 零と全内側除外後も同じ一般定理で扱う。正の内側 arity では初期外側除外も空となる。
+`AdjacentCollapse.collapse_take_prefix` と `collapse_drop_rank` は選択先頭部分と共有文字からの後続の順位を保つ。
+`outerSelection_take`・`outerSelection_bounds` は縮約した実際の選択語と外側行長の正値性・上限を与える。
+`outerSelection_update_mem` は元の合成除外更新と外側の末尾を残す更新の所属集合の一致。
+`outerSelection_step` は復元した次状態での任意の後続成功を元の外側一行へ転送する。
+`outer_table_success` は任意の成功合成表から実際の外側表の成功を構成する。
+この表では垂直移動による外側置換の重複をまだ保持する。次は共有行融合で元の外側行数へ戻す。
 零歩成分の切り出し、成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

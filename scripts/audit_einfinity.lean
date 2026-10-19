@@ -619,6 +619,13 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerRemoved_nil,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerRemoved_subset,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerLabel_available_composition_row,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.collapse_take_prefix,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.collapse_drop_rank,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerSelection_take,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerSelection_bounds,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerSelection_update_mem,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerSelection_step,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outer_table_success,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1451,3 +1458,27 @@ example : AdjacentCollapse.collapse
         (CompositeRecovery.outerLabel (m := 2) (n := 0) 1)) = [0, 2] := by
   exact (CompositeRecovery.outerLabel_available_composition_row 1
     (1 : Equiv.Perm (Fin 3)) (1 : Equiv.Perm (Fin 0)) []).trans (by decide)
+
+-- 重複区間の途中で切った後続も、縮約後の対応順位へ戻る。
+example : AdjacentCollapse.collapse (([0, 0, 1, 1, 0, 0] : List (Fin 2)).drop 3) =
+    [1, 0] := by
+  exact (AdjacentCollapse.collapse_drop_rank [0, 0, 1, 1, 0, 0] 3 (by decide)).trans
+    (by decide)
+private def outerRecoveryEntries :
+    List (Equiv.Perm (Fin 3) × Equiv.Perm (Fin 2) × ℕ) :=
+  [(1, 1, 2), (1, Equiv.swap 0 1, 1), (1, 1, 3)]
+private lemma outerRecoveryPrefix : ExtractionPrefix
+    (CompositeRecovery.mixedTable 1 outerRecoveryEntries) [] [[0, 1], [2], [1, 2, 3]]
+    [0, 1, 2] := by
+  have he : CompositeRecovery.mixedTable 1 outerRecoveryEntries =
+      [([0, 1, 2, 3], 2), ([0, 2, 1, 3], 1), ([0, 1, 2, 3], 3)] := by decide
+  rw [he]
+  exact .cons (by decide) (by decide)
+    (.cons (by decide) (by decide) (.cons (by decide) (by decide) (.nil _)))
+-- 全合成抽出から復元した外側表は、垂直移動による同じ外側行をまだ保持する。
+example : reduceRows
+    ([([0, 1, 2], 2), ([0, 1, 2], 1), ([0, 1, 2], 2)] : List (List (Fin 3) × ℕ)) [] =
+    some [0, 1, 1, 1, 2] := by
+  have hp := CompositeRecovery.outer_prefix_success 1 outerRecoveryEntries [] [0, 1, 2]
+    [[0, 1], [2], [1, 2, 3]] outerRecoveryPrefix [] [] rfl
+  convert hp using 1 <;> decide
