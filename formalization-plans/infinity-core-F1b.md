@@ -38,12 +38,12 @@
   coherent 二単体を指定辺と同型へ読み、native な錐の三角形から catPullbackConeNativeCommutativity を構成。
   coherent 三単体の精密化の合成を共通の Hom で揃え、四面の指定同型の前後合成則を証明。
   任意の指定境界関手への輸送が元の同型を保つことも証明し、strict な錐の三つの境界射を回収。
-  最初の比較三単体の六辺を固定し、catPullbackFirstTetrahedron_relation で上側の比較の整合を証明。
-  残り二つの比較三単体の合成関係は未完了。共有面の最初の指定内部同型は構成済み。
+  図式側の共通の対角関手と上下の指定同型を構成し、三つの比較三単体の六辺と四面の合成関係を証明。
+  二つの共有面の同型を消去し、catPullbackConeLegSectionIso_naturality で各脚の比較の射に沿う整合式を証明。
   三角形の円柱の共有面・上下の面・六つの側面を二単体として厳密に同定。
   全錐と引き戻し錐の指定円柱の実際の三単体を構成し、元と置換後の錐の三角形を上下の面から回収。
   各辺の比較正方形の上下の三角形の三辺も同定。二脚の指定比較同型と指定 path の整合式は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6391 jobs）、F2 の公理監査成功（699 宣言、標準三公理のみ）。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6409 jobs）、F2 の公理監査成功（765 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -70,7 +70,7 @@
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
-- `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackFirstTetrahedron_relation`
+- `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackConeLegSectionIso_naturality`
 
 ### 依存と提供
 
@@ -81,7 +81,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：同型の輸送・側面の同定、最初の比較三単体の指定合成関係、集約・監査と本書。
+  本保存単位：図式側の指定比較、中央・最後の合成関係、各脚の指定比較の整合式、集約・監査と本書。
 
 ### 既知の問題
 
@@ -94,8 +94,8 @@
 
 ### 次の一手
 
-- 中央と最後の比較三単体の図式側の共通の対角関手と上下の指定同型を構成し、残り二つの合成関係を証明する。
-  catPullbackFirstTetrahedron_relation と合わせて各脚の整合式を導き、strict な面を簡約して指定 path と照合する。
+- strict な置換後の錐と切断の図式円柱の三角形が、定値の豊穣辺を与えることを証明する。
+  catPullbackConeLegSectionIso_naturality を簡約し、二射影の指定比較同型と指定 path の整合式を閉じる。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

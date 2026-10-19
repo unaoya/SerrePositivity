@@ -205,3 +205,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementTriangleIso
 #check @SerrePositivity.InfinityCategories.F2.catPullbackFirstInteriorIso
 #check @SerrePositivity.InfinityCategories.F2.catPullbackFirstTetrahedron_relation
+
+#check @SerrePositivity.InfinityCategories.F2.coneDiagramDiagonalEdge
+#check @SerrePositivity.InfinityCategories.F2.coneDiagramUpperTriangle_zero
+#check @SerrePositivity.InfinityCategories.F2.coneDiagramLowerTriangle_two
+#check @SerrePositivity.InfinityCategories.F2.catPullbackDiagramDiagonal
+#check @SerrePositivity.InfinityCategories.F2.catPullbackDiagramDiagonal_edge
+#check @SerrePositivity.InfinityCategories.F2.catPullbackDiagramUpperComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackDiagramLowerComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackDiagramComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackSecondInteriorIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackMiddleTetrahedron_relation
+#check @SerrePositivity.InfinityCategories.F2.catPullbackLastTetrahedron_relation
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_trans
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_trans
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_symm
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_symm
+#check @SerrePositivity.InfinityCategories.F2.prismIso_cancel
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeLegSectionIso_naturality

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.CatPullbackConeNativeCommuta
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeSpecifiedComparison
 public import SerrePositivity.InfinityCategories.F2.CatTetrahedronIsoSquare
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeTetrahedronLowerSides
-public import SerrePositivity.InfinityCategories.F2.CatPullbackFirstTetrahedronRelation
+public import SerrePositivity.InfinityCategories.F2.CatPullbackConeComparisonNaturality
 public import SerrePositivity.InfinityCategories.F2.HomotopyEdgeTriangleLowerFaces
 
 /-!
