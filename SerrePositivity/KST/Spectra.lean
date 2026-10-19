@@ -591,3 +591,8 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleConeComparisonCells
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonHomSquares
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonCellObjects
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonTopConstant
+public import SerrePositivity.KST.Spectra.SpectrumCircleNativeComparisonTriangles
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonLeftEdges
+public import SerrePositivity.KST.Spectra.SquareBoundaryComposition
+public import SerrePositivity.KST.Spectra.CoherentTetrahedronInitialTrace
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonInitialTrace
