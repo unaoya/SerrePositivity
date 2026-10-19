@@ -280,7 +280,13 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `blockWord_after_occurrence` は共有先頭文字と元の未消費代入を後ろから全成分で照合する。
 `blockWord_eq_compositeWord` は全成分語の実際の合成語との一般の一致。
 `fused_success_compositeWord` は元の二表の成功と分割から、全共有行融合表の実際の合成語抽出を証明する。
-融合後の実際の行列と経路の元の置換頂点列の一致・行長 Schedule の構成は未完成。
+`fusedRows_length` は全共有行融合表の行数が d+e+1であることを証明する。
+`fusedRows_row_length` と `reduceRows_row_bounds` は各実際の選択長さの正性と合成 arity 以下の上界。
+`fusedLength_sum` は実際の合成語抽出から総行長を同定し、`fusedSchedule` が既存の Schedule を構成する。
+`rows_fusedSchedule_of_fst` は元の行列の一致から、Schedule を付けた実際の表の復元を与える。
+`horizontalRows_fst`・`verticalRows_fst` は行列を元の連続する置換区間の部分合成として表示する。
+`fusedRows_fst_step` は境界一行を省く同じ行順の再帰であり、経路の頂点列の連結と比較する。
+融合後の実際の行列と経路の元の置換頂点列の全体の一致は未完成。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

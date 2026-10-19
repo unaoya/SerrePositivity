@@ -563,6 +563,13 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.verticalWord_append_endpoint,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.blockWord_eq_compositeWord,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.fused_success_compositeWord,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedRows_length,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedSchedule,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.rows_fusedSchedule_of_fst,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.horizontalRows_fst,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.verticalRows_fst,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedRows_fst_step,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_row_bounds,
       `SerrePositivity.EInfinity.Surjection.substitute_horizontal_no_slot,
       `SerrePositivity.EInfinity.Surjection.occurrenceAt_complete,
       `SerrePositivity.EInfinity.Surjection.occurrenceAt_none_between,
@@ -1224,3 +1231,15 @@ example : fullCompositionFixture.blockWord 0 =
 example : reduceRows (fullCompositionFixture.fusedRows 0) [] =
     some (compositeWord canonicalFixture compositionInner 1 verticalCuts) :=
   fullCompositionFixture.fused_success_compositeWord
+
+-- 次数 2 と次数 1 の元の二表から、融合後は四行・総選択長八の実際の Schedule を得る。
+example : (fullCompositionFixture.fusedRows 0).length = 4 :=
+  fullCompositionFixture.fusedRows_length
+example : (∑ i, fullCompositionFixture.fusedLength i) = 8 :=
+  fullCompositionFixture.fusedLength_sum
+example : (∑ i, (fullCompositionFixture.fusedSchedule.val i).val) = 8 :=
+  fullCompositionFixture.fusedSchedule.property.2
+example : ∀ i, 0 < (fullCompositionFixture.fusedSchedule.val i).val :=
+  fullCompositionFixture.fusedSchedule.property.1
+example (i : Fin 4) : fullCompositionFixture.fusedLength i ≤ 5 :=
+  (fullCompositionFixture.fusedLength_bounds i).2
