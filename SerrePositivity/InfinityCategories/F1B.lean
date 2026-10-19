@@ -228,3 +228,4 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinConeTranspor
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinPrismOpposite
 public import SerrePositivity.InfinityCategories.F1B.KanRightRelativeJoinRealization
 public import SerrePositivity.InfinityCategories.F1B.KanRightRelativeJoinTransformationClass
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRightCriterion
