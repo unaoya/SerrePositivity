@@ -789,4 +789,12 @@ public import SerrePositivity.KST.SConstruction.ThreeSquareTrianglePasting
 public import SerrePositivity.KST.SConstruction.KCompositionPastingSquares
 public import SerrePositivity.KST.SConstruction.KCompositionPastingTriangles
 public import SerrePositivity.KST.SConstruction.KCompositionSpecifiedPasting
+public import SerrePositivity.KST.SConstruction.MappingSquareBoundaryData
+public import SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData
+public import SerrePositivity.KST.SConstruction.MappingCellEdges
+public import SerrePositivity.KST.SConstruction.MappingSquareCornerIdentities
+public import SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityOfMaps
+public import SerrePositivity.KST.SConstruction.KCompositionCompatibilityData
+public import SerrePositivity.KST.SConstruction.KCompositionCompatibilityTriangle
+public import SerrePositivity.KST.SConstruction.MonicKPrismOriginalCompositionTriangle
 /-! # ∞-S• 構成と連結 K 理論 -/

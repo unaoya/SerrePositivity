@@ -12383,3 +12383,139 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionSpecifiedPasting_exterior_upper_constant
 #check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionSpecifiedPasting_exterior_lower_constant
 #print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionSpecifiedPasting_exterior_lower_constant
+
+-- 元の六セルからの端点固定の実比較三角形。
+#check @SerrePositivity.KST.SConstruction.MappingSquareBoundaryData
+#print axioms SerrePositivity.KST.SConstruction.MappingSquareBoundaryData
+#check @SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.homMk_comp
+#print axioms SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.homMk_comp
+#check @SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.mk
+#print axioms SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.mk
+#check @SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.square
+#print axioms SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.square
+#check @SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.bottom_eq
+#print axioms SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.bottom_eq
+#check @SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.top_eq
+#print axioms SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.top_eq
+#check @SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.left_eq
+#print axioms SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.left_eq
+#check @SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.right_eq
+#print axioms SerrePositivity.KST.SConstruction.MappingSquareBoundaryData.right_eq
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.whiskered_relation
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.whiskered_relation
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.comparison
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.comparison
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.mk
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.mk
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.origin
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.origin
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.left
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.left
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.bottom
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.bottom
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.upper
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.upper
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.middle
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.middle
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.lower
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.lower
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.upperLeg
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.upperLeg
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.lowerLeg
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.lowerLeg
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.leftLeg
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.leftLeg
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.bottomLeg
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.bottomLeg
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.firstUpper
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.firstUpper
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.firstLower
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.firstLower
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.secondUpper
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.secondUpper
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.secondLower
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.secondLower
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.composite
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.composite
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.first
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.first
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.second
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.second
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.firstSquare
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.firstSquare
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.middleSquare
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.middleSquare
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.lastSquare
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.lastSquare
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.compositeTriangle
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.compositeTriangle
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.firstTriangle
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.firstTriangle
+#check @SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.secondTriangle
+#print axioms SerrePositivity.KST.SConstruction.ThreeSquareCompatibilityData.secondTriangle
+#check @SerrePositivity.KST.SConstruction.mappingEdgeRetarget
+#print axioms SerrePositivity.KST.SConstruction.mappingEdgeRetarget
+#check @SerrePositivity.KST.SConstruction.mappingSquareHorizontalEdge
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareHorizontalEdge
+#check @SerrePositivity.KST.SConstruction.mappingSquareVerticalEdge
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareVerticalEdge
+#check @SerrePositivity.KST.SConstruction.mappingSquareHorizontalEdge_map
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareHorizontalEdge_map
+#check @SerrePositivity.KST.SConstruction.mappingSquareVerticalEdge_map
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareVerticalEdge_map
+#check @SerrePositivity.KST.SConstruction.mappingOuterTriangleEdge
+#print axioms SerrePositivity.KST.SConstruction.mappingOuterTriangleEdge
+#check @SerrePositivity.KST.SConstruction.mappingOuterTriangle
+#print axioms SerrePositivity.KST.SConstruction.mappingOuterTriangle
+#check @SerrePositivity.KST.SConstruction.mappingSquareVertical_shared_corner
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareVertical_shared_corner
+#check @SerrePositivity.KST.SConstruction.mappingSquareHorizontal_shared_corner
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareHorizontal_shared_corner
+#check @SerrePositivity.KST.SConstruction.mappingSquareVertical_constant_corner
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareVertical_constant_corner
+#check @SerrePositivity.KST.SConstruction.mappingSquareHorizontal_constant_corner
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareHorizontal_constant_corner
+#check @SerrePositivity.KST.SConstruction.mappingIdentityEdge_map
+#print axioms SerrePositivity.KST.SConstruction.mappingIdentityEdge_map
+#check @SerrePositivity.KST.SConstruction.mappingTriangleFaceEdge
+#print axioms SerrePositivity.KST.SConstruction.mappingTriangleFaceEdge
+#check @SerrePositivity.KST.SConstruction.threeSquareCompatibilityDataOfMaps
+#print axioms SerrePositivity.KST.SConstruction.threeSquareCompatibilityDataOfMaps
+#check @SerrePositivity.KST.SConstruction.kCompositionCompatibilityDataPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.kCompositionCompatibilityDataPointedCategory
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_squares
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_squares
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_triangles
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_triangles
+#check @SerrePositivity.KST.SConstruction.kCompositionCompatibilityTrianglePointedCategory
+#print axioms SerrePositivity.KST.SConstruction.kCompositionCompatibilityTrianglePointedCategory
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_composite
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_composite
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_first
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_first
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_second
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityData_second
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle_face_first
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle_face_first
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle_face_second
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle_face_second
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle_face_composite
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle_face_composite
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle_original_faces
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionCompatibilityTriangle_original_faces
+#check @SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTrianglePointedCategory
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTrianglePointedCategory
+#check @SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTriangle
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTriangle
+#check @SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTriangle_first
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTriangle_first
+#check @SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTriangle_second
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTriangle_second
+#check @SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTriangle_composite
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismOriginalCompositionTriangle_composite
