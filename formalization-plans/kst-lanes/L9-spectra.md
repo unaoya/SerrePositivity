@@ -36,7 +36,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・490 モジュール 4629 宣言の公理監査成功。
+対象ビルド・493 モジュール 4664 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3506,3 +3506,33 @@ Mathlib の通常の正規化鎖のホモトピー同値に適用し、生成子
 参照：Goerss–Jardine III §2、VIII §1。
 対象ビルド 3958 jobs 成功。私有宣言を含む 490 モジュール 4629 宣言で標準三公理のみ。
 L9e は進行中。幾何的微分と交代微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
+
+
+## 115. L9e の全単体の交代 cochain と正規化の同値
+
+全単体上の Hom 係数の関数群を余単体図式にした。
+面と退化の射は単体集合の作用への前合成であり、全ての functor の法則を検証している。
+その通常の交代余面複体の微分を、全単体の各面に係数を評価する交代和として明示した。
+全単体の鎖群の余積の普遍性で、通常の鎖の Hom と全単体上の関数群の加法同型を得た。
+鎖の生成子の交代微分式により、この同型は反変 Hom の cochain と通常の交代余面複体の複体同型となる。
+
+ULift ℤ からの射の係数表示を全単体の余単体図式へ適用した。
+各座標で一の像を取る式が全ての面と退化の前合成と可換なので、余単体図式の自然同型を得た。
+交代余面複体関手に送り、通常の係数の元を値とする全単体の cochain への複体同型を与えた。
+この同型と既存の正規化の鎖ホモトピー同値の比較を合成した。
+従って全単体上の通常の係数値の交代 cochain と、非退化単体上の正規化 cochain は通常の複体としてホモトピー同値である。
+
+この時点では単体集合は任意であり、BG の全単体の図式と非斉次群 cochain の比較は次に行う。
+幾何的微分からの交代式の計算および塔の収束は引き続き未完了。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SimplicialHomCochains.coefficientEquiv` / `diagram` | 全単体の鎖の Hom の関数表示と余単体図式 |
+| `SimplicialHomCochains.differential_apply` / `homComplexComparison` | 全単体の交代式と鎖の Hom の複体との同型 |
+| `SimplicialHomCochains.normalizationHomotopyEquiv` | Hom 係数の通常の交代複体と正規化複体のホモトピー同値 |
+| `SimplicialValueCochains.diagramIso` / `complexIso` | 整数の Hom 係数から元の係数への余単体自然同型と複体同型 |
+| `SimplicialValueCochains.normalizationHomotopyEquiv` | 通常の係数値の全単体 cochain と正規化 cochain のホモトピー同値 |
+
+参照：Goerss–Jardine III §2、VIII §2。
+対象ビルド 3961 jobs 成功。私有宣言を含む 493 モジュール 4664 宣言で標準三公理のみ。
+L9e は進行中。BG の非斉次群 cochain の比較、幾何的微分と交代微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。

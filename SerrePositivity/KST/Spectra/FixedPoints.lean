@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.KST.Spectra.SimplicialHomCochains
+public import SerrePositivity.KST.Spectra.SimplicialCochainNormalization
+public import SerrePositivity.KST.Spectra.SimplicialValueCochains
+
 public import SerrePositivity.KST.Spectra.NormalizedValueCochains
 public import SerrePositivity.KST.Spectra.ContravariantChainHom
 public import SerrePositivity.KST.Spectra.NormalizedCochainHomComparison
