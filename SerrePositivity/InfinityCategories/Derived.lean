@@ -719,6 +719,15 @@ public import SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismNatur
 public import SerrePositivity.InfinityCategories.Derived.DGRoofPrismComparison
 public import SerrePositivity.InfinityCategories.Derived.DGRoofFillerTransportCompatibility
 
+public import SerrePositivity.InfinityCategories.Derived.RoofFirstHornPrism
+public import SerrePositivity.InfinityCategories.Derived.RoofRelativeFirstTriangle
+public import SerrePositivity.InfinityCategories.Derived.RoofFirstTriangleCollapse
+public import SerrePositivity.InfinityCategories.Derived.RoofRelativeTransportTriangle
+public import SerrePositivity.InfinityCategories.Derived.RoofRelativeTransportHomotopy
+public import SerrePositivity.InfinityCategories.Derived.DGActualRoofTransport
+public import SerrePositivity.InfinityCategories.Derived.DGActualRoofTransportedFiller
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofTransportedFillers
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

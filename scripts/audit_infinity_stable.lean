@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofTransportedFillers
 import SerrePositivity.InfinityCategories.Derived.DGRoofFillerTransportCompatibility
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofRelativeFillers
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofRefinementPrism
@@ -2136,6 +2137,34 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgRoofFillerTransport_boundary
 #print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.transport_boundary
 
+#print axioms SerrePositivity.InfinityCategories.roofFirstHornPrism_isPushout
+#print axioms SerrePositivity.InfinityCategories.roofFirstHornPrism
+#print axioms SerrePositivity.InfinityCategories.roofFirstHornPrism_edge01
+#print axioms SerrePositivity.InfinityCategories.roofFirstHornPrism_edge02
+#print axioms SerrePositivity.InfinityCategories.roofLeftFibration_relativeFirstTriangle
+#print axioms SerrePositivity.InfinityCategories.roofFirstTriangleCollapse_edge01
+#print axioms SerrePositivity.InfinityCategories.roofFirstTriangleCollapse_edge02
+#print axioms SerrePositivity.InfinityCategories.roofFirstTriangleCollapse_edge12
+#print axioms SerrePositivity.InfinityCategories.roofIntervalReset_zero
+#print axioms SerrePositivity.InfinityCategories.roofFirstTriangle_edge12_source
+#print axioms SerrePositivity.InfinityCategories.roofFirstTriangle_edge12_target
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeTransportTriangle
+#print axioms SerrePositivity.InfinityCategories.roofRelativeTransportTriangle_nonempty
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeTransportTriangle.homotopy
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeTransportTriangle.homotopy_boundary
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeTransportTriangle.homotopy_over
+#print axioms SerrePositivity.InfinityCategories.roofHomotopy_over_constant
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.transportTriangle_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.transportTriangle
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.transportHomotopy
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.transportHomotopy_boundary
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.transportHomotopy_projection
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofTransportedFiller
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofTransportedFiller.homotopy
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofTransportedFiller.homotopy_boundary
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofTransportedFiller.homotopy_projection
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofFinite_exists_transportedFillerData
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2289,6 +2318,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofFirstHornPrism,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeFirstTriangle,
+    `SerrePositivity.InfinityCategories.Derived.RoofFirstTriangleCollapse,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeTransportTriangle,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeTransportHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofTransportedFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofTransportedFillers,
     `SerrePositivity.InfinityCategories.Derived.DGSimplexComponentExt,
     `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransWhisker,
     `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransSimplexWhisker,
