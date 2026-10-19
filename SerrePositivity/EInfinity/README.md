@@ -558,7 +558,14 @@ nullary を含む TR の部分合成保存は完了。
 `edgeComponent_composition_cut_sum` は合成係数の実際の辺成分を分割・合成語切断の二重和へ展開する。
 `cochainAction_partialComposition_edge_tmul` は実際の複体射の左辺を自然数次数の双線形成分へ戻す。
 `compositeOuterPosition` は指定色以外の外側位置の実際の合成位置で、値も元の残りラベルと一致する。
-具体的な Δ¹ の余代数構造は未完成。二段切断との全単射・出力と符号の一致、部分合成則と区間条件が残る。
+`compositeInnerPosition` は一出現挿入の内側位置で、挿入ラベルの値を実際の合成語で評価する。
+`edgeNondegenerate_iff_list_nodup` は辺切断の非退化性を左右の take・drop の重複消滅へ直す。
+`splice_cut_nodup` と `SingleSlotLists` は非交差な前後の代入像を内側の切断へ連結する。
+`composite_single_slot_cut_nondegenerate` は切断点色への一出現挿入の合成切断の非退化性。
+`NestedEdgeCut.compositePosition` は二段切断の全分岐で実際の合成位置を返し、切断点の文字も比較済み。
+`compositePosition_pivot_nondegenerate` はその切断点色分岐の非退化性を供給する。
+具体的な Δ¹ の余代数構造は未完成。非切断点色分岐の非退化性、全単射・全出力と符号の一致、
+部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

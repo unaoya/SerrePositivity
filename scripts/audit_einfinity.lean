@@ -1065,6 +1065,31 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition,
       `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_value,
       `SerrePositivity.EInfinity.IntervalCuts.compositeBasisWord_outerPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.occurrenceAt_of_count_one,
+      `SerrePositivity.EInfinity.IntervalCuts.segment_of_count_one,
+      `SerrePositivity.EInfinity.IntervalCuts.segments_of_count_one,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeWord_at_single_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeInnerPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeInnerPosition_value,
+      `SerrePositivity.EInfinity.IntervalCuts.cut_prefix_nodup,
+      `SerrePositivity.EInfinity.IntervalCuts.cut_suffix_nodup,
+      `SerrePositivity.EInfinity.IntervalCuts.cut_nondegenerate_of_nodup,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeNondegenerate_iff_list_nodup,
+      `SerrePositivity.EInfinity.IntervalCuts.splice_take_inside,
+      `SerrePositivity.EInfinity.IntervalCuts.splice_drop_inside,
+      `SerrePositivity.EInfinity.IntervalCuts.splice_cut_nodup,
+      `SerrePositivity.EInfinity.IntervalCuts.position_eq_of_count_one,
+      `SerrePositivity.EInfinity.IntervalCuts.single_slot_not_mem_prefix,
+      `SerrePositivity.EInfinity.IntervalCuts.single_slot_not_mem_suffix,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_no_slot_horizontalLabel_parts,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_nodup_of_no_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_disjoint_inserted,
+      `SerrePositivity.EInfinity.IntervalCuts.composite_single_slot_cut_nondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeBasisWord_innerPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_nonpivot_value,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_value,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_nondegenerate,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3164,3 +3189,23 @@ example : (compositeBasisWord compositionInner compositionInner 0
       (OverlapPartition.two (1 : Fin 3)) (by decide)).val
     (compositeOuterPosition compositionInner compositionInner 0
       (OverlapPartition.two (1 : Fin 3)) 1 (by decide)) = 2 := by decide
+
+-- 010の切断点色1へ内側010の中央切断を挿入する一出現の二段切断。
+private def nestedPivotExample : NestedEdgeCut (m := 1) compositionInner compositionInner 1 :=
+  NestedEdgeCut.ofEdge 1 (by decide) (by decide) 1 (by decide)
+example : nestedPivotExample.partition.val ⟨0, by decide⟩ = 3 := by decide
+example : nestedPivotExample.compositePosition.val = 2 := by decide
+-- 構成した有限位置は、実際の合成基底語01210の非零切断となる。
+example : EdgeNondegenerate
+    (compositeBasisWord compositionInner compositionInner 1 nestedPivotExample.partition
+      (by decide)).val nestedPivotExample.compositePosition :=
+  NestedEdgeCut.compositePosition_pivot_nondegenerate nestedPivotExample (by decide) 1 rfl rfl
+example : (compositeBasisWord compositionInner compositionInner 1 nestedPivotExample.partition
+      (by decide)).val nestedPivotExample.compositePosition = 2 := by
+  simpa only using! NestedEdgeCut.compositePosition_pivot_value nestedPivotExample
+    (by decide) 1 rfl rfl
+-- 左右での重複消滅は、同じ合成切断の非退化性と一致する。
+example : EdgeNondegenerate compositionInner.val 1 ↔
+    ((List.ofFn compositionInner.val).take 2).Nodup ∧
+      ((List.ofFn compositionInner.val).drop 1).Nodup :=
+  edgeNondegenerate_iff_list_nodup compositionInner.val 1
