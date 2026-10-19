@@ -6,7 +6,7 @@
 
 ### 現在地
 
-- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1〜F2L-3 も完了。F2L-4 は未完了。
+- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1〜F2L-4 も完了。担当した第 1 部の受入条件を照合済み。
 - B1：全単体集合パラメータの族の集合値前層による自然性の模型。双圏の単位・余単位・三角恒等式と自然な Hom 対応を比較。
 - B2：同じ宇宙の標的に対する反射的局所化。一般の局所化の存在は F2 の範囲。
 - B3：左右の Quillen A、弱可縮な comma 条件、二宇宙版の始対象による極限計算を回収。
@@ -16,12 +16,9 @@
   通常の Kan の大域的な Hom 普遍性と、指定単位・余単位の pointwise 条件を区別し、それぞれ左右とも双方向に比較。
   Under・Over と左右 comma の添字同型、錐・余錐の頂点と脚・普遍性・存在の双方向比較、標準局所錐の厳密な一致を構成。
   指定自然変換の実ホモトピーと頂点を固定した錐・余錐の族から、通常の指定局所錐そのものを native な左右の輸送で表示。
-- 最終検証：F1・F1B 同時ビルド成功（4081 jobs）、同時 import 検査成功（F1 7451・F1B 5169 宣言）。
-  公理監査成功（5175 宣言、標準三公理のみ、1428 モジュールに straightening なし）。ソース名衝突 0。
 - F2L-1：F1 の既存 coherent nerve の頂点・辺・coherent Hom 比較を再利用。
   任意の頂点・辺の往復、端点固定の関手の全単射、恒等・合成三角形、Cat_∞ の写像空間と ULift した core Fun の同値を整備。
   比較の零単体と豊穣自然性、辺の類の一致と関手同型の存在、可逆辺と関手の同値の双方向判定を証明。
-  Cat_∞ 内の引き戻しへの接続は F2L-2 で完了。lax pullback は未完了。
 - F2L-2 完了：可逆 path による引き戻し対象と quasicategory 性、二射影・指定可換同型を構成。
   全パラメータの指定 path を保つ lift と一意性、任意 K の Fun との交換を証明。
   全 K の関手 core を置換後の core の厳密な引き戻しとして表示し、元の二射影との一致を証明。
@@ -39,21 +36,21 @@
   右 pinched Hom と引き戻し・直積との交換を構成。両端の等式を輸送し下辺を p_* × q_* と厳密に同定。
   Tamme Remark 6 の正方形の IsPullback と右辺の Kan fibration 性を証明。
   γ3 の既存の空間の極限判定を使い、元の対象間写像空間を頂点とする 𝒮 の native な極限錐と元の両脚の一致を証明。
-- F2L-4：Remark 7 の同値矢印の全部分複体と catPullback の同型・厳密な引き戻し表示は二射影と元の指定 path を保持。
+- F2L-4 完了：Remark 7 の同値矢印の全部分複体と catPullback の同型・厳密な引き戻し表示は二射影と元の指定 path を保持。
   零保存二関手から零頂点を構成し、両射影の零保存・成分ごとの零対象判定を証明。
   錐族の引き戻し・直積表示、反転同型と指定評価の一致から、元の指定錐・余錐の成分による十分条件を証明。
   錐族・余錐族の同値持ち上げと貼り合わせで、選んだ両入力の全錐・全余錐を保つ極限・余極限の存在を構成。
   入力の存在と保存の下で成分判定は同値。有限版で HasFiniteLimits・HasFiniteColimits と両射影の判定を供給。
   元の IsStable・IsExactFunctor から実際の span 余極限・cospan 極限の保存を導き、四角形と全錐の一致で成分判定へ接続。
   零枝の span の入力の存在から零角の押し出し性を成分で判定し、両射影の IsExactFunctor を証明。始域の安定性は仮定しない。
-  元の指定射と零対象への辺を保つ span の余極限から、全ての射の cofiber 四角形の存在を構成。fiber と安定性の最終条件は残る。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6649 jobs）、F2 公理監査成功（1195 宣言、標準三公理のみ）。
-  F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
+  零源の cospan の極限を反転と枝の交換で構成。元の指定射を保つ全 fiber・cofiber の存在と零角の条件の一致を証明。
+  laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
+- 検証：三集約同時ビルド 6653 jobs、F2 1203・F1B 5175 宣言の公理監査成功。F1B 1428 モジュールに straightening なし。
+  F1/F1B 同時 import 成功。衝突・追加公理・sorry なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-4：零源の cospan の極限の存在を安定性から導き、fiber の存在と零角四角形の fiber/cofiber 条件の一致を証明。Tamme §1 Lemma 8(i)(iv)。24〜60 時間。
-- Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
+- 担当した F2-lite 第 1 部に未完項目なし。次の I-b は本工程に含めず、正本で別途細分化する。
 
 ### 主要宣言（名前のみ）
 
@@ -76,7 +73,7 @@
 - `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
 - `F2.laxPullbackLift` / `F2.laxPullbackFunctorCoreIso` / `F2.arrowEndpointPair_internalHom_core_fibration`
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
-- `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_cofiber_exists`
+- `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
 ### 依存と提供
 
@@ -87,7 +84,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：元の完全関手の span・cospan 保存、四角形の成分判定、両射影の完全性と全 cofiber の存在、集約・監査と本書。
+  本保存単位：指定零源 cospan の極限、全 fiber の存在、lax pullback の安定性、集約・監査と本書。
 
 ### 既知の問題
 
@@ -100,8 +97,7 @@
 
 ### 次の一手
 
-- F2L-4：F1B.kanHasLimit_iff_hasColimit_op と kanHasColimit_iff_restrict_of_isIso、hornReverseIso 2 2 を再利用する。
-  hasColimit_span_of_terminal_second を反転して零源の cospan の極限を導き、fiber の存在と零角の条件の一致から IsStable を構成する。
+- 第 1 部は完了。D の β4・K 側は F2 集約の laxPullback_isStable と両射影の完全性を利用できる。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
@@ -160,6 +156,19 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 - 各保存単位で集約ビルド、公理監査、推移的 import の検査を行う。
   監査は生成宣言を含む F1B の全宣言を宣言元モジュールで抽出し、
   読み込んだリポジトリ内の straightening 系モジュールを拒否する。
+
+## 第 1 部の完了監査（2026-10-20）
+
+| 受入条件 | 現在の証拠（F2 名前空間、B4・B5 は F1B 集約） |
+| --- | --- |
+| B4・B5 | 左右 Strictification の局所判定、元の変換を保つ存在・Hom 普遍性、nerve の指定随伴・Kan 比較を監査で再読込 |
+| F2L-1 | catInfinityMappingEquivalence、catInfinityEdgeEquiv、catInfinityEdge_isInvertible_iff。F1 の coherent nerve を再利用 |
+| F2L-2 | catPullbackCone_isLimit・vertex、全 K の catPullbackFunctorCoreIso、catPullbackCone_projection_commutativity |
+| F2L-3 | laxPullbackCone_isLimit・arrow・inputs、laxPullbackVertexEquiv、laxPullbackMappingSpaceCone_isLimit と両脚の式 |
+| F2L-4 | 同値矢印の全部分複体との射影・path を保つ同型、任意形状の極限・余極限の存在と成分判定、有限版、laxPullback_isStable、完全な両射影 |
+| 保存条件 | F1・F1B・F2 同時ビルド、公理・import 監査、同名ソース宣言 0、新規 4 モジュールは各 100 行・100 桁以内。sorry・追加公理・ModelCategory 仮定なし |
+
+N の第 2 部と I-b の presentable 以降は本監査の完了対象外。証明の仮定と宇宙は Lean の型が正本。
 
 ## 記録の所在
 

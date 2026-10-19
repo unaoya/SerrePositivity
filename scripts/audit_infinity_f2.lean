@@ -488,3 +488,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackFst_isExactFunctor
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackSnd_isExactFunctor
 #check @SerrePositivity.InfinityCategories.F2.laxPullback_cofiber_exists
+#check @SerrePositivity.InfinityCategories.F2.hasLimit_cospan_of_initial_second
+#check @SerrePositivity.InfinityCategories.F2.hasLimit_cospan_of_zero_second
+#check @SerrePositivity.InfinityCategories.F2.laxPullback_cospan_input_limits_of_zero_second
+#check @SerrePositivity.InfinityCategories.F2.hasLimit_laxPullback_cospan_of_zero_second
+#check @SerrePositivity.InfinityCategories.F2.laxPullback_fiber_exists
+#check @SerrePositivity.InfinityCategories.F2.isPullbackSquare_laxPullback_iff_of_zero_corner
+#check @SerrePositivity.InfinityCategories.F2.laxPullback_fiber_iff_cofiber
+#check @SerrePositivity.InfinityCategories.F2.laxPullback_isStable
