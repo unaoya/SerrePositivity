@@ -40,10 +40,10 @@
   標準相対左 Kan 条件の保存・反映、右端の厳密な回収、U の後合成自然性、元の相対制限との可換正方形を証明。
 - 充満忠実な inner 単射に沿う指定左単位の可逆性、元の図式の厳密な延長を証明。局所余極限の存在の下で終対象上の元の制限は自明 Kan。
 - 標準 U 余極限の点ごとの族・定値族への移送と保存、単位の U 像が可逆な相対左 Kan 単位の可逆性を証明。
-- 像の類が恒等な指定単位の代表修正・相対厳密化を証明。comma fiber の局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
+- 像の類が恒等な単位の相対厳密化、像固定の局所余錐の添字変更、普遍底余錐上の標準局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
 - 元の左右標準 Kan 条件から指定 pinched 制限の同値を証明。左は単射なら始点境界を充填し、終対象上の全部分圏の制限は充満忠実。
-- 最終検証：F1・F1B 同時ビルド成功（3913 jobs）、同時 import 検査成功（F1 7241・F1B 4536 宣言）。
-  公理監査成功（4542 宣言、標準三公理のみ、1232 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3918 jobs）、同時 import 検査成功（F1 7254・F1B 4543 宣言）。
+  公理監査成功（4549 宣言、標準三公理のみ、1235 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -54,7 +54,7 @@
   右持ち上げ条件下の組み立て・任意の U の path 置換・相対 join の関手の制限の相対始点境界充填は証明済み。
   任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
   相対 join の制限は充満忠実、局所存在の下で自明 Kan。元の全部分圏からの制限と族の可換正方形を構成済み。
-  元の左右 pinched 比較、左の厳密な存在と終対象上の自明 Kan 制限は完了。像の類が恒等な単位の厳密化と comma 局所存在も完了。標準局所存在への還元・一般 U 上の相対比較・右側への移送は未完。
+  元の左右 pinched 比較、左の厳密な存在と終対象上の自明 Kan 制限は完了。単位の相対厳密化と普遍底余錐上の標準局所存在も完了。標準底余錐との比較・一般 U 上の相対写像空間比較・右側への移送は未完。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
@@ -76,7 +76,7 @@
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
 - `F1B.kanLeftKanExtension_unit_isIso` / `F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits`
-- `F1B.exists_kanRelativeLeftCanonical_strictification_of_image_class` / `F1B.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits`
+- `F1B.kanRelativeCosliceRestriction_trivialKanFibration_of_precompositionEquivalence` / `F1B.exists_kanRelativeLeftCanonical_strict_extension_of_local_universal_colimits`
 
 ### 依存と提供
 
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：像と h の類を保つ代表修正・像の類が恒等な単位の厳密化・comma 局所存在、集約・監査・本書）。
+- なし（本保存単位：同値な単射の相対 coslice 制限、像固定の余錐延長、普遍底余錐上の標準局所存在、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,8 +98,8 @@
 
 ### 次の一手
 
-- 標準局所添字から comma fiber への単射な前合成同値に沿い、元の図式と U 像を保つ余錐の延長を証明する。
-  標準局所余極限の存在を `exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits` へ渡す。一般 U 上の相対写像空間比較も残る。
+- 標準底余錐と普遍 comma 底余錐の比較を図式固定の余錐の族で作り、相対内部 Hom の同型持ち上げで局所存在を移す。
+  `cosliceCoconeFamilyMap` と `KanEquivalenceLifting.relativeInternalHom` を使う。一般 U 上の相対写像空間比較も残る。
   右側への移送と原典 7.3.6.7・7.3.6.9 を閉じる。終対象上の左の厳密な存在と自明 Kan 制限は完了。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
