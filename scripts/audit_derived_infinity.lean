@@ -938,7 +938,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.PushoutHomLift,
     `SerrePositivity.InfinityCategories.Derived.PushoutResidualMatrix,
     `SerrePositivity.InfinityCategories.Derived.PushoutBoundaryEquations,
-    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLift]
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLift,
+    `SerrePositivity.InfinityCategories.Derived.SpanCandidateData,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidate,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidateComponents,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidateCommon,
+    `SerrePositivity.InfinityCategories.Derived.SpanRightCutReplacement,
+    `SerrePositivity.InfinityCategories.Derived.SpanSuffixReplacement,
+    `SerrePositivity.InfinityCategories.Derived.SpanSuffixReplacementTransport,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryFirstEquation,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLegEquations,
+    `SerrePositivity.InfinityCategories.Derived.SpanTriangleSuffixReplacement,
+    `SerrePositivity.InfinityCategories.Derived.SpanTriangleFirstReplacement]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

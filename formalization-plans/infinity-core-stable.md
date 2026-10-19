@@ -10,15 +10,17 @@
 - S7／D7 は途中。D(S) の零対象、任意の cospan の極限、指定した全辺の fiber は完成。
 - 標準 cofiber の正方形・余錐、coslice 境界の左右のデータ、共通面、六つの残差と全微分整合条件は完成。
 - 実境界から Q・A の二未知 cochain を構成。q=−n−1 の符号照合、Q・A の微分式、Q と二包含・ホモトピー・対角との合成式を検証済み。
-- 未知成分を含む SimplexData、coslice の充填、cofiber の押し出し性、D(S) の安定性・D3 の三角比較は未完了。
-- 前工程は `c371e6b6`。今回の実装入口は `Derived/CofiberBoundaryLift.lean`。
-- 対象＋Stable・Derived 集約ビルド：5,713 jobs 成功。新規公開 9 宣言（定義 2、補題 7）。
-- 公理監査：Derived 140 modules／2,105 宣言、Stable 409 modules／3,212 宣言。標準三公理のみ。
+- Q・A を挿入した左右の SimplexData を構成。既知面・既知方程式の保存、左右の共通面の一致、後続・A・B/C の未知方程式を証明済み。
+- Q と A の挿入による三角形側右辺の二つの変化も生の Hom 座標で証明済み。最上位方程式への合成は未完了。
+- coslice の充填、cofiber の押し出し性、D(S) の安定性・D3 の三角比較は未完了。
+- 前工程は `c4dbdf8a`。今回の入口は `Derived/CofiberBoundaryCandidate.lean`、`CofiberBoundaryFirstEquation.lean`、`CofiberBoundaryLegEquations.lean`。
+- 対象＋Stable・Derived 集約ビルド：5,724 jobs 成功。今回は新規 11 モジュール。
+- 公理監査：Derived 151 modules／2,250 宣言、Stable 420 modules／3,357 宣言。標準三公理のみ。
 - 本文・archive への実施記録の追記はしていない。今回の到達点はこの節を正本とする。
 
 ### 残り（依存順、時間は推定）
 
-- 未知成分を SimplexData に組み込み、既知面の保存、右辺の変化、四種類の未知集合の全方程式、左右の共通面を証明。HA Proposition 1.3.1.10：8〜16 時間。
+- 三角形側の右辺変化を共通の型付き Hom に移し、Q・A の明示解による相殺を証明。最上位方程式と四種類の分類から左右の Simplex を構成。HA Proposition 1.3.1.10：4〜8 時間。
 - coslice 境界を貼り、標準余錐の始対象性と標準 cofiber 正方形の押し出し性を証明。HTT §1.2.13、HA Proposition 1.3.1.10：4〜8 時間。
 - semifree へ移し、全辺の cofiber と fiber/cofiber 列の一致から D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
 - D3 の同値・D2f の CommShift を使い、h D(S) と Mathlib DerivedCategory の三角構造を照合。HA Theorem 1.1.2.14、§1.1.4：4〜8 時間。
@@ -34,6 +36,9 @@
 - `pushoutHomBoundaryLift`、`pushoutResidual_matrix`、`pushoutHomBoundaryLift_differential_of_residuals`、`pushoutBoundary_A_equation`。
 - `cofiberBoundaryDegree_negOnePow`、`cofiberBoundaryLiftQ`、`cofiberBoundaryLiftA`、`cofiberBoundaryLiftQ_differential`、`cofiberBoundaryLiftA_differential`。
 - `cofiberBoundaryLiftQ_inclusionB`、`cofiberBoundaryLiftQ_inclusionC`、`cofiberBoundaryLiftQ_homotopy`、`cofiberBoundaryLiftQ_diagonal`。
+- `spanInsertUnknowns`、`cofiberBoundaryLeftCandidate`、`cofiberBoundaryRightCandidate`、`cofiberBoundaryCandidate_common`。
+- `cofiberBoundaryLeftCandidate_suffix_equation`、`cofiberBoundaryRightCandidate_suffix_equation`、`cofiberBoundaryLeftCandidate_first_equation`、`cofiberBoundaryRightCandidate_first_equation`。
+- `cofiberBoundaryLeftCandidate_second_equation`、`cofiberBoundaryRightCandidate_second_equation`、`spanTwoPrefixRhs_replace_suffix`、`spanTwoPrefixRhs_replace_first`。
 
 ### 依存と提供
 
@@ -52,13 +57,13 @@
 - 今回の対象・集約ビルドと両公理監査は成功。既知の新規名前衝突なし。
 - 今回の構成は可換環上の任意の非有界複体・整数次数を扱い、`ModelCategory SSet` の追加 instance 仮定なし。
 - 一般の明示解は残差整合条件を仮定するが、実境界の Q・A の微分定理はこれらを既存 Bianchi 定理から証明し、追加仮定にしない。
-- 六未知成分のうち Q 側を逆座標、A 側を右三角形残差の符号倍、他四成分を零にする予定。単体の全方程式はまだ保証していない。
+- 六未知成分のうち Q 側は逆座標、A 側は右三角形残差の符号倍、他四成分は零として候補へ挿入済み。後続・一点追加の方程式は検証済みで、最上位方程式が残る。
 - 安定性の一般論から cofiber の普遍性を逆用しない。直接 coslice を充填して証明する設計を維持する。
 - import 閉包が再度壊れたら、他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- `CofiberBoundaryLift` の Q・A と他四成分の零を左右の `SimplexData` に組み込み、既知面の保存と右辺の変化を証明する。
+- `SpanTriangleSuffixReplacement`・`SpanTriangleFirstReplacement` の変化を型付き Hom へ移し、`cofiberBoundaryLiftQ_homotopy` と `cofiberBoundaryLiftA` により三角形右辺が零になることを証明する。
 
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。

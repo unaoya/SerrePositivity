@@ -14,6 +14,17 @@ import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryResiduals
 import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangleCompatibility
 import SerrePositivity.InfinityCategories.Derived.PushoutBoundaryEquations
 import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLift
+import SerrePositivity.InfinityCategories.Derived.SpanCandidateData
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidate
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidateComponents
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidateCommon
+import SerrePositivity.InfinityCategories.Derived.SpanRightCutReplacement
+import SerrePositivity.InfinityCategories.Derived.SpanSuffixReplacement
+import SerrePositivity.InfinityCategories.Derived.SpanSuffixReplacementTransport
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryFirstEquation
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLegEquations
+import SerrePositivity.InfinityCategories.Derived.SpanTriangleSuffixReplacement
+import SerrePositivity.InfinityCategories.Derived.SpanTriangleFirstReplacement
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1637,7 +1648,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.PushoutHomLift,
     `SerrePositivity.InfinityCategories.Derived.PushoutResidualMatrix,
     `SerrePositivity.InfinityCategories.Derived.PushoutBoundaryEquations,
-    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLift]
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLift,
+    `SerrePositivity.InfinityCategories.Derived.SpanCandidateData,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidate,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidateComponents,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryCandidateCommon,
+    `SerrePositivity.InfinityCategories.Derived.SpanRightCutReplacement,
+    `SerrePositivity.InfinityCategories.Derived.SpanSuffixReplacement,
+    `SerrePositivity.InfinityCategories.Derived.SpanSuffixReplacementTransport,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryFirstEquation,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLegEquations,
+    `SerrePositivity.InfinityCategories.Derived.SpanTriangleSuffixReplacement,
+    `SerrePositivity.InfinityCategories.Derived.SpanTriangleFirstReplacement]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
