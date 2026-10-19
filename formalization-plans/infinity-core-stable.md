@@ -21,15 +21,17 @@
 - 比較辺の可逆性から標準 cofiber 正方形の ∞ 引き戻し性を証明。充満部分 dg 圏・Semifree・任意の D(S) の span の標準 cofiber 正方形にも反映済み。
 - 双対の明示的比較 `fiberCofiberDesc` を構成。二脚・対角・ホモトピー保存、cocone-cone の明示的縮約との一致、ホモトピー同値性・擬同型性を証明済み。
 - 標準 cofiber の上下三角形を比較射で後合成した二単体が、元の標準 fiber の上下三角形に一致することも証明済み。
-- 双対の比較三単体と coslice 辺、標準 fiber の押し出し性、任意の零角四角形での双方向判定、IsStable・D3 の三角比較は未完了。
-- 今回の入口は `FiberCofiberDescEquivalence.lean`、`CoconeConeContraction.lean`、`FiberCofiberComparisonFaces.lean`。
-- 対象＋Stable・Derived 集約ビルド：5,759 jobs 成功。今回の保存単位は新規 6 モジュール。
-- 公理監査：Derived 186 modules／2,630 宣言、Stable 455 modules／3,737 宣言。標準三公理のみ。
+- `Λ[3,2]` の零最上位充填から後合成を表す三単体を構成。全四面・最後の辺を同定し、双対の具体的比較三単体を join に貼って coslice 比較辺を構成済み。
+- coslice 比較辺の射影が `fiberCofiberDesc` の辺であることと可逆性を証明し、標準 fiber 正方形の押し出し性を導出。充満部分 dg 圏・Semifree・任意の D(S) の cospan にも反映済み。
+- 任意の零角四角形での双方向判定、IsStable・D3 の三角比較は未完了。
+- 今回の入口は `StandardFiberPushout.lean`、`FiberCofiberComparisonProjection.lean`、`TriangleAppendMissingFace.lean`。
+- 対象＋Stable・Derived 集約ビルド：5,770 jobs 成功。今回の保存単位は新規 11 モジュールと低次単体外延性。
+- 公理監査：Derived 197 modules／2,725 宣言、Stable 466 modules／3,832 宣言。標準三公理のみ。
 - 本文・archive への実施記録の追記はしていない。今回の到達点はこの節を正本とする。
 
 ### 残り（依存順、時間は推定）
 
-- 標準 fiber の押し出し性を双対に証明し、任意の零角四角形へ二方向の判定を移して D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
+- 標準 fiber・cofiber の双カルテジアン性を任意の零角四角形へ移して D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
 - D3 の同値・D2f の CommShift を使い、h D(S) と Mathlib DerivedCategory の三角構造を照合。HA Theorem 1.1.2.14、§1.1.4：4〜8 時間。
 
 ### 主要宣言（名前のみ。正確な型は Lean）
@@ -58,7 +60,9 @@
 - `standardCofiberSquare_isPullback`、`fullCofiberSquare_isPullback`、`semifreeCofiberSquare_isPullback`、`derivedSpanCofiberSquare_isPullback`。
 - `fiberCofiberDesc`、`fiberCofiberDesc_inclusionB`、`fiberCofiberDesc_inclusionC`、`fiberCofiberDesc_homotopy`。
 - `coconeConeHomotopyEquiv`、`fiberCofiberHomotopyEquiv`、`fiberCofiberDesc_homotopyEquivalence`、`fiberCofiberDesc_quasiIso`。
-- `postcomposeComplexTriangle`、`fiberCofiberLower_postcompose`、`fiberCofiberUpper_postcompose`。
+- `postcomposeComplexTriangle`、`complexTriangleAppend`、`complexTriangleAppend_face_two`、`complexTriangleAppend_lastEdge`。
+- `fiberCofiberComparisonSliceEdge`、`fiberCofiberComparisonSliceEdge_projection`、`fiberCofiberComparisonSliceEdge_invertible`。
+- `standardFiberSquare_isPushout`、`fullFiberSquare_isPushout`、`semifreeFiberSquare_isPushout`、`derivedCospanFiberSquare_isPushout`。
 
 ### 依存と提供
 
@@ -78,13 +82,13 @@
 - 今回の構成は可換環上の任意の非有界複体・整数次数を扱い、`ModelCategory SSet` の追加 instance 仮定なし。
 - 一般の明示解は残差整合条件を仮定するが、実境界の Q・A の微分定理はこれらを既存 Bianchi 定理から証明し、追加仮定にしない。
 - Q 側は逆座標、A 側は右三角形残差の符号倍、他四成分は零とする明示解について、最上位を含む全方程式と共通面を検証済み。
-- 標準 cofiber 正方形の引き戻し性は実際の slice 比較辺から証明済み。任意の零角四角形での双方向判定は未証明で、これだけから IsStable を主張しない。
+- 標準 fiber・cofiber 正方形の双カルテジアン性は実際の slice/coslice 比較辺から証明済み。任意の零角四角形での双方向判定は未証明で、これだけから IsStable を主張しない。
 - 安定性の一般論から cofiber の普遍性を逆用しない。直接 coslice を充填して証明する設計を維持する。
 - import 閉包が再度壊れたら、他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- `Λ[3,2]` の面 3 に cofiber 三角形、面 0・1 に比較射と二脚／対角の厳密合成三角形を与え、既存 `dgNerve.filler` で比較三単体を作る。最上位 cochain が零であることから欠けた面 2 を後合成三角形と同定し、共通面で貼って coslice 比較辺へ渡す。
+- 同じ span/cospan の普遍余錐／錐の比較同型を四角形全体の関手同型へ写し、押し出し性・引き戻し性を輸送する。KST/SConstruction の相対境界充填の同型不変性は読み取り専用で参照できるが、基盤から K 構成への逆依存を避けて汎用界面を整理する。これで任意の零角四角形の双方向判定を閉じ、`IsStable (derivedInfinityCategory S)` を構成する。
 
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。

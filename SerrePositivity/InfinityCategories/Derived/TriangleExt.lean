@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.SourcePrecompositionFaces
 public import SerrePositivity.InfinityCategories.DGNerve.TripleHom
 
-/-! # dg nerve の二単体の外延性
+/-! # dg nerve の低次単体の外延性
 
 概要：二単体を対象・三辺・三点ホモトピーの一致で比較する。
 方針：部分集合を濃度二・三に分け、四つの指定成分へ帰着する。
@@ -55,5 +55,24 @@ lemma dgSimplex2_ext (s t : Simplex R D 2) (hobj : s.obj = t.obj)
     · exact h02
     · exact h12
 
+
+/-- 一単体は二頂点と辺の成分で定まる。 -/
+lemma dgSimplex1_ext (s t : Simplex R D 1) (hobj : s.obj = t.obj)
+    (h01 : HEq (s.toSimplexData.edgeHom 0 1 (by decide))
+      (t.toSimplexData.edgeHom 0 1 (by decide))) : s = t := by
+  apply Simplex.ext
+  apply SimplexData.ext hobj
+  apply HomFamily.heq_of_pointwise hobj
+  intro I a b k hI ha hb hk
+  have hU := two_eq_univ I hI
+  subst I
+  have ha' : a = 0 := ha.trans ((Finset.min'_eq_iff _ _ 0).2
+    ⟨by simp, fun x _ => Fin.zero_le x⟩)
+  have hb' : b = 1 := hb.trans ((Finset.max'_eq_iff _ _ 1).2
+    ⟨by simp, fun x _ => Fin.le_last x⟩)
+  have hk' : k = 0 := by simpa using hk
+  subst ha' hb' hk'
+  have hU : (Finset.univ : Finset (Fin 2)) = {0, 1} := by decide
+  simpa only [SimplexData.edgeHom, hU] using h01
 
 end SerrePositivity.InfinityCategories
