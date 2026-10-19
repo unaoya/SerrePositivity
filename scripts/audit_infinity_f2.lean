@@ -400,3 +400,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.spaceSquareCone_right
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone_arrow
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone_inputs
+
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackEquivalenceSubcomplex
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackEquivalenceSubcomplex_quasicategory
+#check @SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso_fst
+#check @SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso_snd
+#check @SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso_path
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackEquivalenceSubcomplex_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.catPullbackToLax_isPullback

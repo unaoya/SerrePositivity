@@ -39,12 +39,14 @@
   右 pinched Hom と引き戻し・直積との交換を構成。両端の等式を輸送し下辺を p_* × q_* と厳密に同定。
   Tamme Remark 6 の正方形の IsPullback と右辺の Kan fibration 性を証明。
   γ3 の既存の空間の極限判定を使い、元の対象間写像空間を頂点とする 𝒮 の native な極限錐と元の両脚の一致を証明。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6472 jobs）、F2 の公理監査成功（1027 宣言、標準三公理のみ）。
+- F2L-4：同値矢印の全部分複体と quasicategory 性・包含の充満忠実性を構成。元の catPullback との厳密な同型は二射影・指定 path を保持。
+  可逆 path の包含と lax pullback の矢印射影の引き戻しを元の catPullback で表示し IsPullback を証明。Remark 7 の比較は完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6478 jobs）、F2 の公理監査成功（1068 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-4：同値辺上の全部分圏による引き戻しとの比較、安定性・exact 関手への接続。Tamme §1 Remark 7・Lemma 8。24〜60 時間。
+- F2L-4：安定性・有限極限余極限の成分ごとの判定と保存・exact 関手への接続。Tamme §1 Lemma 8(i)(iv)。24〜60 時間。
 - Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
 
 ### 主要宣言（名前のみ）
@@ -68,7 +70,7 @@
 - `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
 - `F2.laxPullbackLift` / `F2.laxPullbackFunctorCoreIso` / `F2.arrowEndpointPair_internalHom_core_fibration`
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
-- `F2.laxPullbackMappingSpaceCone_isLimit` / `F2.laxPullbackMappingSpaceCone_vertex` / `F2.laxPullbackMappingSpaceCone_arrow`
+- `F2.laxPullbackMappingSpaceCone_isLimit` / `F2.catPullbackEquivalenceSubcomplexIso` / `F2.catPullbackToLax_isPullback`
 
 ### 依存と提供
 
@@ -79,7 +81,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：Remark 6 の正方形の直積表示・Kan fibration 性・𝒮 の native な極限性、集約・監査と本書。
+  本保存単位：Remark 7 の同値矢印の全部分圏との比較同型・射影・path 保持、厳密な引き戻し、集約・監査と本書。
 
 ### 既知の問題
 
@@ -92,8 +94,8 @@
 
 ### 次の一手
 
-- F2L-4：laxPullback の矢印射影に沿う equivalencePath C の引き戻しを、同値辺条件の全部分複体と厳密に比較する。
-  catPullback p q の二重引き戻しと同型を構成し、二射影と元の指定 path を保つことを証明する。
+- F2L-4：Core の関手圏の点ごとの極限・余極限判定と Stable の IsStable・IsExactFunctor を確認する。
+  lax pullback の錐の極限・余極限を両入力の成分ごとに判定し、有限極限余極限・零対象から安定性と射影の完全性を導く。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
