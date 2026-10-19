@@ -5075,3 +5075,207 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.pullback_mem
 #print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.pullback_mem
+
+#check @SerrePositivity.KST.SConstruction.objectSConstructionFunctor_map_injective
+#print axioms SerrePositivity.KST.SConstruction.objectSConstructionFunctor_map_injective
+
+#check @SerrePositivity.KST.SConstruction.objectSConstructionFunctor_map_mono
+#print axioms SerrePositivity.KST.SConstruction.objectSConstructionFunctor_map_mono
+
+#check @SerrePositivity.KST.SConstruction.ObjectSInClosed
+#print axioms SerrePositivity.KST.SConstruction.ObjectSInClosed
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedInclusion_mem
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedInclusion_mem
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedVertexLift
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedVertexLift
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedVertexLift_diagram
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedVertexLift_diagram
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedVertexLift_inclusion
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedVertexLift_inclusion
+
+#check @SerrePositivity.KST.SConstruction.ObjectSInClosed.map
+#print axioms SerrePositivity.KST.SConstruction.ObjectSInClosed.map
+
+#check @SerrePositivity.KST.SConstruction.closedObjectSSubcomplex
+#print axioms SerrePositivity.KST.SConstruction.closedObjectSSubcomplex
+
+#check @SerrePositivity.KST.SConstruction.closedObjectSConstruction
+#print axioms SerrePositivity.KST.SConstruction.closedObjectSConstruction
+
+#check @SerrePositivity.KST.SConstruction.closedObjectSInclusion
+#print axioms SerrePositivity.KST.SConstruction.closedObjectSInclusion
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedForward
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedForward
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedBackward
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedBackward
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedIso
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedIso
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedForward_inclusion
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedForward_inclusion
+
+#check @SerrePositivity.KST.SConstruction.closedObjectSFamily
+#print axioms SerrePositivity.KST.SConstruction.closedObjectSFamily
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedBackward_inclusion
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedBackward_inclusion
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedFamilyLift
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedFamilyLift
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedFamilyLift_inclusion
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedFamilyLift_inclusion
+
+#check @SerrePositivity.KST.SConstruction.objectSClosedFamilyLift_unique
+#print axioms SerrePositivity.KST.SConstruction.objectSClosedFamilyLift_unique
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberObjectSubobject_square
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberObjectSubobject_square
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberObjectQuotient_square
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberObjectQuotient_square
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberSubobjectLeftFiber
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberSubobjectLeftFiber
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberQuotient
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberQuotient
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberBaseSimplex
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberBaseSimplex
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_projection
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_projection
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_parameter
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_parameter
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_quotient
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_quotient
+
+#check @SerrePositivity.KST.SConstruction.objectSInRelativeCofiber_iff
+#print axioms SerrePositivity.KST.SConstruction.objectSInRelativeCofiber_iff
+
+#check @SerrePositivity.KST.SConstruction.cofiberLeftFiberSubobject_in_closed
+#print axioms SerrePositivity.KST.SConstruction.cofiberLeftFiberSubobject_in_closed
+
+#check @SerrePositivity.KST.SConstruction.cofiberLeftFiber_in_relative_iff
+#print axioms SerrePositivity.KST.SConstruction.cofiberLeftFiber_in_relative_iff
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberBaseSimplex_in_closed
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberBaseSimplex_in_closed
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_quotient_in_closed
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_quotient_in_closed
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberFiberObjectLift
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberFiberObjectLift
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberFiberObjectLift_inclusion
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberFiberObjectLift_inclusion
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberLift
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberLift
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberLift_forget
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberLift_forget
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_mono
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberForget_mono
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyRho_quotient_in_closed
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyRho_quotient_in_closed
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyRhoFiberMap
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyRhoFiberMap
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyRhoFiberMap_forget
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyRhoFiberMap_forget
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyRhoFiberMap_zero
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyRhoFiberMap_zero
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyRhoFiberMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyRhoFiberMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyRhoTerminal
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyRhoTerminal
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyRhoHomotopy
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyRhoHomotopy
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthySection_quotient_in_closed
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthySection_quotient_in_closed
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyFiberSection
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyFiberSection
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyFiberSection_forget
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyFiberSection_forget
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyFiberSection_quotient
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyFiberSection_quotient
+
+#check @SerrePositivity.KST.SConstruction.ObjectSInClosed.of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.ObjectSInClosed.of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaObject_quotient_in_closed
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaObject_quotient_in_closed
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyTheta_quotient_in_closed
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyTheta_quotient_in_closed
+
+#check @SerrePositivity.KST.SConstruction.tensorIntervalEndpoint_naturality
+#print axioms SerrePositivity.KST.SConstruction.tensorIntervalEndpoint_naturality
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyRhoTerminal_forget
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyRhoTerminal_forget
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyThetaFiberMap
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyThetaFiberMap
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyThetaFiberMap_forget
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyThetaFiberMap_forget
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyThetaFiberMap_zero
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyThetaFiberMap_zero
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyThetaFiberMap_one
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyThetaFiberMap_one
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyThetaHomotopy
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyThetaHomotopy
+
+#check @SerrePositivity.KST.SConstruction.relativeMcCarthyFiber_retraction_localized
+#print axioms SerrePositivity.KST.SConstruction.relativeMcCarthyFiber_retraction_localized
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberQuotient_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberLeftFiberQuotient_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeObjectSAdditivityMap
+#print axioms SerrePositivity.KST.SConstruction.relativeObjectSAdditivityMap
+
+#check @SerrePositivity.KST.SConstruction.relativeObjectSAdditivityMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeObjectSAdditivityMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.objectCoreComparisons_tensor_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.objectCoreComparisons_tensor_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeCoreSAdditivityMap
+#print axioms SerrePositivity.KST.SConstruction.relativeCoreSAdditivityMap
+
+#check @SerrePositivity.KST.SConstruction.relativeObjectCoreAdditivity_commute
+#print axioms SerrePositivity.KST.SConstruction.relativeObjectCoreAdditivity_commute
+
+#check @SerrePositivity.KST.SConstruction.relativeCoreSAdditivityMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeCoreSAdditivityMap_localized_isIso
