@@ -24,13 +24,17 @@
 - 充満 dg 包含の通常の h 上の忠実性・対象での単射性を証明し、Arrow 等式の反映から Semifree 内の合成比較の両端を同定済み。対象の閉性の仮定は不要。
 - 対象等式の輸送射は `chosenEqToHom` と通常の `eqToHom` の一致を使い、定義照合の過剰な展開を回避。任意の `ComplexSquareData` の合成比較と両端成分を証明済み。
 - h D(S) の射の鎖写像代表を証明し、標準 suspension の頂点比較、D3 の Q との両立から全 h の射への自然性を証明。安定構造の整数シフトに対する `derivedStableHomotopyEquivalenceCommShift` と一回比較の復元式まで完成。
-- 今回の入口は `Derived/StableHomotopyShiftComparison.lean`、`Derived/SuspensionShiftNaturalIso.lean`、`Stable/CofiberConnecting.lean`、`Derived/StandardCofiberSquare.lean`。
-- 対象＋Stable・Derived 集約ビルド：5,815 jobs 成功。今回の保存単位は新規 15 モジュール。
-- 公理監査：Derived 239 modules／3,031 宣言、Stable 509 modules／4,145 宣言。標準三公理のみ。
+- 中間対象の因子分解を表す内部三次ホーンを零最上位で充填し、欠けた面の次数 −1 成分も回収済み。三角柱から三単体への写像は両端・対角を保ち、二つの三角柱を貼って正方形全体のホモトピーを構成済み。
+- 標準 cofiber から標準 suspension への cone 写像の包含・ホモトピー保存、負の第一射影との合成式を証明。終点への後合成と右下を零にする変更を、実際の四角形比較として合成し、両端成分を同定済み。
+- 任意形状の周囲の図式の h の射を充満 dg 部分圏へ持ち上げる界面を構成。標準 cofiber 列と比較射を Semifree 内に持ち上げ、包含後の式を保持して両端成分を反映済み。
+- 始点成分の一意性で、構成した比較と普遍性で選ぶ比較を同定。実際の `cofiberConnectingToSuspension` は標準 cone 写像の類に等しい。端点を正規化した接続射の D3 像は、suspension の複体シフト同型・Q の一回シフト比較を含め、Mathlib の cone 接続射に一致する。
+- 今回の入口は `Derived/CofiberConnectingDerivedImage.lean`、`Derived/SemifreeCofiberConnecting.lean`、`Derived/StableHomotopyShiftComparison.lean`、`Stable/CofiberTriangle.lean`。
+- 対象＋Stable・Derived 集約ビルド：5,838 jobs 成功。今回の保存単位は新規 23 モジュール。
+- 公理監査：Derived 262 modules／3,182 宣言、Stable 532 modules／4,297 宣言。標準三公理のみ。
 
 ### 残り（依存順、時間は推定）
 
-- cofiber の接続射の D3 による像を通常の cone 三角形の第三射と同定し、distinguished triangle の保存から D3 を三角同値へ昇格。HA Theorem 1.1.2.14、§1.1.4：2〜6 時間。
+- 標準 cofiber の正規化した接続射の像を、CommShift を使う mapTriangle の第三射と照合。三角形全体の同型と全 distinguished triangle の保存から D3 を三角同値へ昇格。HA Theorem 1.1.2.14、§1.1.4：2〜5 時間。
 - β3 → β5 → β4。受入条件・原典・読み取り専用依存は後続の各節を正本とする。
 
 ### 主要宣言（名前のみ。正確な型は Lean）
@@ -60,6 +64,10 @@
 - `semifreeSuspensionSquareHom_source`、`semifreeSuspensionSquareHom_target`、`semifreeSuspensionVertexIso_naturality`。
 - `derivedHomotopyHom_chainMap_surjective`、`derivedStableHomotopyEquivalenceVertexIso_naturality`、`derivedSuspensionShiftIso`。
 - `derivedStableHomotopyShiftOneIso`、`derivedStableHomotopyEquivalenceCommShift`、`derivedStableHomotopyEquivalenceCommShift_one`。
+- `complexTriangleMiddle_face_two`、`complexTriangleMiddleHomotopy_diagonal`、`ComplexSquareData.changeBottomMiddleHomotopy`。
+- `cofiberToSuspensionMap_connecting`、`cofiberToSuspensionSquareHom_source_arrow`、`cofiberToSuspensionSquareHom_target_arrow`。
+- `exists_fullInclusion_functorHom`、`semifreeCofiberZeroTriangle_isCofiberSequence`、`semifreeCofiberSuspensionHom_eq_comparison`。
+- `semifreeCofiberConnectingToSuspension`、`normalizedSemifreeCofiberConnectingToSuspension_eq`、`derivedSemifreeCofiberConnecting_shift`。
 
 ### 依存と提供
 
@@ -75,13 +83,13 @@
 ### 既知の問題
 
 - 対象・集約ビルドと両公理監査は成功。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
-- h D(S) の Stable のシフトは suspension に由来する。D3 の二切断の誘導シフトと区別し、今回、実際の suspension による全 h 上の自然同型と整合的な `CommShift ℤ` を別途構成した。cofiber の接続射の像と distinguished triangle の保存は未完了。
+- h D(S) の Stable のシフトは suspension に由来する。D3 の二切断の誘導シフトと区別し、今回、実際の suspension による全 h 上の自然同型と整合的な `CommShift ℤ` を別途構成した。標準 cofiber の正規化した接続射の像までは完成。mapTriangle の第三射との照合、distinguished triangle の保存は未完了。
 - 通常の導来圏の三角構造の引き戻しだけで三角比較を完了とはしない。実際の cofiber 列の像との一致を要する。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- `a : X.val ⟶ Y.val` の標準 cofiber 四角形（span `Y ← X → 0`）から `semifreeSuspensionSquare X` への実際の比較を構成する。始点は恒等、右下は `Y → 0`、終点は標準 cone 写像とし、二つの三角形のホモトピーも保つ。`cofiberConnectingToSuspension` の一意性で接続射を同定し、`derivedSuspensionShiftIso`・`derivedStableHomotopyEquivalenceCommShift_one` と cone の負の第一射影の式から、D3 による第三射の像を計算する。その後、全 cofiber 三角形の像と Mathlib の distinguished triangle を照合する。
+- `derivedSemifreeCofiberConnecting_shift` を、`(derivedStableHomotopyEquivalence S).functor.mapTriangle` で写した `cofiberTriangle` の第三射の式へ直す。まず `SuspensionSquare.changeSource` の対象比較同型を、始点の等号を Σ で写す式として証明する（等号の消去で元の s に帰着できる）。`cofiberConnectingToSuspension_comp_objIso_inv`、`derivedStableHomotopyEquivalenceCommShift_one`、`derivedSuspensionShiftIsoApp_vertex` を使い、source/target の頂点同定を保って書き換える。標準列の最初の二射も照合し、第二対象の `Y ≅ Y ⊞ 0` を含む cone 三角形との同型を作る。最後に鎖写像代表と source の TR3・二成分が同型な三角形射から、全 distinguished triangle の保存を証明する。
 
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
@@ -110,7 +118,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 完了（貼り合わせ、TR1〜TR4、Pretriangulated・IsTriangulated instance） |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 完了（共変・反変、全整数次数、六項部分列の完全性、接続準同型の評価式） |
 | S6 | `Stable/ExactFunctor.lean` と関連モジュール | 完全関手、h の三角関手、完全関手間の自然変換 | 完了。零対象・cofiber/fiber 列・全押し出し／引き戻しの保存、CommShift ℤ、IsTriangulated、加法性、自然変換の全整数シフトとの両立・三角形の像の自然変換まで公開 |
-| S7（D7） | `Derived/Stability.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 進行中。零対象・全射の fiber/cofiber、任意四角形の双方向判定と IsStable 完成。通常の h D(S) と D3 の圏同値を接続済み。suspension と複体シフトの全 h 上の自然同型・CommShift ℤ まで完成。接続射の照合、distinguished triangle の保存、D3 の三角同値化が残る |
+| S7（D7） | `Derived/Stability.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 進行中。零対象・全射の fiber/cofiber、任意四角形の双方向判定と IsStable 完成。通常の h D(S) と D3 の圏同値を接続済み。suspension と複体シフトの全 h 上の自然同型・CommShift ℤ まで完成。標準列の正規化した接続射の像まで完成。mapTriangle の第三射との照合、distinguished triangle の保存、D3 の三角同値化が残る |
 
 ## 設計上の決定
 

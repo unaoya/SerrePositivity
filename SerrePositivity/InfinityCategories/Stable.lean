@@ -289,6 +289,12 @@ public import SerrePositivity.InfinityCategories.Stable.ArrowFaithfulReflection
 public import SerrePositivity.InfinityCategories.Stable.ObjectEqualityTransport
 public import SerrePositivity.InfinityCategories.Stable.SquareEvaluationPostcomposition
 
+public import SerrePositivity.InfinityCategories.Stable.FixedMapHomotopyEvaluation
+public import SerrePositivity.InfinityCategories.Stable.HomotopyEndpointTransport
+public import SerrePositivity.InfinityCategories.Stable.SquarePrismGluing
+public import SerrePositivity.InfinityCategories.Stable.SquareUpperCornerEvaluation
+public import SerrePositivity.InfinityCategories.Stable.TriangleMiddlePrism
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

@@ -104,6 +104,25 @@ import SerrePositivity.InfinityCategories.Derived.SuspensionShiftNaturalIso
 
 import SerrePositivity.InfinityCategories.Derived.StableHomotopyShiftComparison
 
+import SerrePositivity.InfinityCategories.Derived.CofiberConnectingDerivedImage
+import SerrePositivity.InfinityCategories.Derived.CofiberSuspensionComparisonData
+import SerrePositivity.InfinityCategories.Derived.CofiberSuspensionHomNormalization
+import SerrePositivity.InfinityCategories.Derived.CofiberSuspensionSquareComponents
+import SerrePositivity.InfinityCategories.Derived.CofiberSuspensionSquareHom
+import SerrePositivity.InfinityCategories.Derived.CofiberToSuspensionMap
+import SerrePositivity.InfinityCategories.Derived.ComplexSquareMiddleComponents
+import SerrePositivity.InfinityCategories.Derived.ComplexSquareMiddleData
+import SerrePositivity.InfinityCategories.Derived.ComplexSquareMiddleHomotopy
+import SerrePositivity.InfinityCategories.Derived.FullFunctorHomotopyLift
+import SerrePositivity.InfinityCategories.Derived.SemifreeCofiberConnecting
+import SerrePositivity.InfinityCategories.Derived.SemifreeCofiberSuspensionComponents
+import SerrePositivity.InfinityCategories.Derived.SemifreeCofiberSuspensionHom
+import SerrePositivity.InfinityCategories.Derived.SemifreeCofiberZeroTriangle
+import SerrePositivity.InfinityCategories.Derived.TriangleMiddleHomotopy
+import SerrePositivity.InfinityCategories.Derived.TriangleMiddleHorn
+import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
+import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
+
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1822,6 +1841,29 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SuspensionVertexNaturality,
     `SerrePositivity.InfinityCategories.Derived.SuspensionShiftObjectComparison,
     `SerrePositivity.InfinityCategories.Derived.StableHomotopyShiftComparison,
+    `SerrePositivity.InfinityCategories.Derived.CofiberConnectingDerivedImage,
+    `SerrePositivity.InfinityCategories.Derived.CofiberSuspensionComparisonData,
+    `SerrePositivity.InfinityCategories.Derived.CofiberSuspensionHomNormalization,
+    `SerrePositivity.InfinityCategories.Derived.CofiberSuspensionSquareComponents,
+    `SerrePositivity.InfinityCategories.Derived.CofiberSuspensionSquareHom,
+    `SerrePositivity.InfinityCategories.Derived.CofiberToSuspensionMap,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareMiddleComponents,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareMiddleData,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareMiddleHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.FullFunctorHomotopyLift,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeCofiberConnecting,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeCofiberSuspensionComponents,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeCofiberSuspensionHom,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeCofiberZeroTriangle,
+    `SerrePositivity.InfinityCategories.Derived.TriangleMiddleHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.TriangleMiddleHorn,
+    `SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces,
+    `SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace,
+    `SerrePositivity.InfinityCategories.Stable.FixedMapHomotopyEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyEndpointTransport,
+    `SerrePositivity.InfinityCategories.Stable.SquarePrismGluing,
+    `SerrePositivity.InfinityCategories.Stable.SquareUpperCornerEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.TriangleMiddlePrism,
     `SerrePositivity.InfinityCategories.Derived.SuspensionShiftNaturalIso,
     `SerrePositivity.InfinityCategories.Stable.ArrowFaithfulReflection,
     `SerrePositivity.InfinityCategories.Stable.ObjectEqualityTransport,

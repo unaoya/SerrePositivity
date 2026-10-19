@@ -13,6 +13,13 @@ namespace SerrePositivity.InfinityCategories
 open CategoryTheory
 variable {C : Type u} [Category.{v} C]
 
+/-- Arrow として恒等射に等しければ、自分の始点の恒等射とも等しい。 -/
+lemma arrowMk_eq_id_source {X Y W : C} (f : X ⟶ Y)
+    (hf : Arrow.mk f = Arrow.mk (𝟙 W)) : Arrow.mk f = Arrow.mk (𝟙 X) := by
+  have hx : X = W := congrArg Arrow.left hf
+  cases hx
+  exact hf
+
 /-- Arrow として恒等射に等しい左因子は合成から取り除ける。 -/
 lemma arrowMk_comp_of_left_identity {X Y Z W : C} (f : X ⟶ Y) (g : Y ⟶ Z)
     (hf : Arrow.mk f = Arrow.mk (𝟙 W)) : Arrow.mk (f ≫ g) = Arrow.mk g := by
