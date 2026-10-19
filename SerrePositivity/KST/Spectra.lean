@@ -114,3 +114,7 @@ public import SerrePositivity.KST.Spectra.SkeletalPathCoboundary
 public import SerrePositivity.KST.Spectra.SkeletalPathAlternating
 public import SerrePositivity.KST.Spectra.ReverseComponentConnecting
 public import SerrePositivity.KST.Spectra.UnbasedPathFamilies
+public import SerrePositivity.KST.Spectra.UnbasedMapVertices
+public import SerrePositivity.KST.Spectra.UnbasedLoopFamilies
+public import SerrePositivity.KST.Spectra.SkeletalPathConnecting
+public import SerrePositivity.KST.Spectra.SkeletalConnectingAlternating

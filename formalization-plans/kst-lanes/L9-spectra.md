@@ -15,7 +15,7 @@
 - 反復 loop 値の fiber の π₀ と元の fiber の全正次数群を比較し、既存係数表示との正符号の可換式を証明済み。
 - 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
-- loop 値の骨格射を path 空間で一段延長し、その終点の実際の fiber 成分の係数を正規化交代微分と (-1)^(セル次元) で計算済み。実際の接続写像の出力との一致は別途残る。
+- loop 値の骨格射の path 延長の終点を、明示した loop 族の逆辺の実際の成分接続写像と同定済み。充填の選択を結論に残さず、その係数を正規化交代微分と (-1)^(セル次元) で計算済み。
 - corner の共通ホーン充填と二射影を計算済み。path 族の写像空間の辺への転置・両端・制限、および逆 loop の接続写像の辺による計算も構成済み。
 - 面次数一からの球面的持ち上げ・逆元公式と隣接比較ホーンを構成し、出力の非定数面を loop 側の境界代表と照合済み。
 - 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
@@ -23,13 +23,13 @@
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - `coefficientDifferential` の正次数の loop 反可換式に加え、基本段を loop 値の実際の成分微分の係数で正符号で計算する式を証明済み。
-- 検証：対象ビルド 4056 jobs、専用監査 584 モジュール・5588 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14341 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4060 jobs、専用監査 588 モジュール・5600 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14358 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - セル境界の局所的な連結準同型を反復 loop の成分代表で計算し、球面的境界の向きと整合させる。
-  標準の反可換式と係数の全次数の loop 比較の向きを照合済み。実際の群の係数微分の基本段を、loop 値の成分微分の係数へ正符号で帰着済み。path 延長の終点には交代式を証明済み。これを実際の成分微分の出力と同定する工程が残る。
+  標準の反可換式と係数の全次数の loop 比較の向きを照合済み。実際の群の係数微分の基本段を、loop 値の成分微分の係数へ正符号で帰着済み。path 延長の終点と逆辺の接続写像を同定し、交代式まで合成済み。逆辺の入力を既存の tower fiber 群の入力と照合する工程が残る。
   原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
 - 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
   原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
@@ -60,8 +60,8 @@
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_iteratedLoopComponent`
 - `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
 - `SkeletalCellAttachment.exists_cellDifferential_boundaryRepresentative`
-- `SkeletalPathCoboundary.exists_extension`
-- `SkeletalPathCoboundary.normalizedDifferential_endpointFiber`
+- `SkeletalPathCoboundary.componentConnecting_inverse_family`
+- `SkeletalPathCoboundary.normalizedDifferential_connecting`
 - `SkeletalCellAttachment.exists_cellComponentDifferential_boundaryRepresentative`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_loopZero`
 - `SkeletalCellAttachment.coefficientDifferential_zero_component`
@@ -97,10 +97,10 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- `SkeletalPathCoboundary.exists_extension` の H を `UnbasedPointedMapping.pathFamilyEdge` で写像空間の辺に移し、`pointedConnectingZero_inverse_edge` で終点を成分接続写像の出力として同定する。転置の両端と源制限は証明済み。
-- 底の辺の逆元の入力を、元の loop 値の `skeletalFiberVertex` の成分からの `stageFiberOrdinaryLoopComponentEquiv` と照合する。零 loop と通常の円の逆元関係は既証なので再構成しない。
-- 上を `normalizedDifferential_endpointFiber` と `coefficientDifferential_zero_component` へ合成し、高次数は `coefficientDifferential_loopPositive` で運ぶ。今回の交代式は cochain 次数二以上。次数一の別処理も残る。
-- Sp-1d、塔の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。path 延長の交代式だけで微分の同定を完了扱いにしない。
+- `UnbasedPointedMapping.loopFamilySimplex Y f` の類の逆元を、`UnbasedPointedMapping.loopSwap` に沿う通常の零 loop 比較の値と同定する。頂点と円の商の評価を使う。転置・逆辺の接続写像・交代式は再構成しない。
+- 上を `stageFiberOrdinaryLoopComponentEquiv` と `skeletalFiberVertex_ι` に合成し、`normalizedDifferential_connecting` の明示した逆辺の入力を、実際の塔の fiber 包含による入力と照合する。`freeHomIso_familyVertex` と `mapVertex_pre` は証明済み。
+- `coefficientDifferential_zero_component` と交代式を合成し、高次数は `coefficientDifferential_loopPositive` で運ぶ。今回の交代式は cochain 次数二以上で、次数一の別処理も残る。
+- Sp-1d、塔の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。明示した loop 族への接続写像の交代式だけで全係数の微分の同定を完了扱いにしない。
 
 ## 範囲と所有
 
