@@ -492,4 +492,16 @@ public import SerrePositivity.KST.SConstruction.CofiberObjectKClass
 public import SerrePositivity.KST.SConstruction.TriangulatedKZeroMap
 public import SerrePositivity.KST.SConstruction.TriangulatedKZeroNaturality
 
+public import SerrePositivity.KST.SConstruction.FundamentalNerveTranspose
+public import SerrePositivity.KST.SConstruction.FundamentalNerveHomotopy
+public import SerrePositivity.KST.SConstruction.FundamentalGroupoidComparison
+public import SerrePositivity.KST.SConstruction.FundamentalGroupoidEquivalence
+public import SerrePositivity.KST.SConstruction.FundamentalGroupoidGenerators
+public import SerrePositivity.KST.SConstruction.FundamentalLoopEdges
+public import SerrePositivity.KST.SConstruction.FundamentalLoopHom
+public import SerrePositivity.KST.SConstruction.KanFundamentalPresentation
+public import SerrePositivity.KST.SConstruction.KZeroGroupoidPresentation
+public import SerrePositivity.KST.SConstruction.ObjectRawBoundaryEdges
+public import SerrePositivity.KST.SConstruction.KZeroObjectPresentation
+
 /-! # ∞-S• 構成と連結 K 理論 -/

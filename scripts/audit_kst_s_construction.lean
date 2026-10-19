@@ -7310,3 +7310,201 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.triangulatedKZeroMap_naturality
 #print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroMap_naturality
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveTranspose
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveTranspose
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_transpose
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_transpose
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_untranspose
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_untranspose
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_pre
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_pre
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_pre
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_pre
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_post
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_post
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_post
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_post
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidNerve_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidNerve_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_eq
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_eq
+
+#check @SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy
+#print axioms SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy
+
+#check @SerrePositivity.KST.SConstruction.simplicialFundamentalGroupoid
+#print axioms SerrePositivity.KST.SConstruction.simplicialFundamentalGroupoid
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidNerveUnit
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidNerveUnit
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_fac
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_fac
+
+#check @SerrePositivity.KST.SConstruction.exists_fundamentalGroupoidExtension
+#print axioms SerrePositivity.KST.SConstruction.exists_fundamentalGroupoidExtension
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidExtension
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidExtension
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidExtension_fac
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidExtension_fac
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidInverse
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidInverse
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidInverse_pre
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidInverse_pre
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_leftInverse
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_leftInverse
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_right_restriction
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_right_restriction
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_rightInverse
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_rightInverse
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidEquivalence
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidEquivalence
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_fullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_fullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_map_surjective
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_map_surjective
+
+#check @SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_map_injective
+#print axioms SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_map_injective
+
+#check @SerrePositivity.KST.SConstruction.simplicialFundamentalGroupoid_hom_rec
+#print axioms SerrePositivity.KST.SConstruction.simplicialFundamentalGroupoid_hom_rec
+
+#check @SerrePositivity.KST.SConstruction.kanAnodyne_hom_rec
+#print axioms SerrePositivity.KST.SConstruction.kanAnodyne_hom_rec
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopEdge
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopEdge
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopSimplex
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopSimplex
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopEdgeEquiv
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopEdgeEquiv
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopEdge_const
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopEdge_const
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopMulToComp
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopMulToComp
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopCompToMul
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopCompToMul
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoop_rel_iff
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoop_rel_iff
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopToEdgeHom
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopToEdgeHom
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopToEdgeHom_bijective
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopToEdgeHom_bijective
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_mk
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_mk
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_one
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_one
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_mul
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_mul
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_isIso
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_isIso
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_inv
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopHomEquiv_inv
+
+#check @SerrePositivity.KST.SConstruction.fundamentalLoopEdge_mapSimplex
+#print axioms SerrePositivity.KST.SConstruction.fundamentalLoopEdge_mapSimplex
+
+#check @SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation
+#print axioms SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation
+
+#check @SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_apply
+#print axioms SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_apply
+
+#check @SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_symm_apply
+#print axioms SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_symm_apply
+
+#check @SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_mk
+#print axioms SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_mk
+
+#check @SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_one
+#print axioms SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_one
+
+#check @SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_mul
+#print axioms SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_mul
+
+#check @SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_inv
+#print axioms SerrePositivity.KST.SConstruction.kanAnodyneLoopPresentation_inv
+
+#check @SerrePositivity.KST.SConstruction.boundaryFundamentalGroupoid
+#print axioms SerrePositivity.KST.SConstruction.boundaryFundamentalGroupoid
+
+#check @SerrePositivity.KST.SConstruction.boundaryFundamentalBasepoint
+#print axioms SerrePositivity.KST.SConstruction.boundaryFundamentalBasepoint
+
+#check @SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation
+#print axioms SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation
+
+#check @SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_one
+#print axioms SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_one
+
+#check @SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_mul
+#print axioms SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_mul
+
+#check @SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_inv
+#print axioms SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_inv
+
+#check @SerrePositivity.KST.SConstruction.objectRawBoundaryComparison
+#print axioms SerrePositivity.KST.SConstruction.objectRawBoundaryComparison
+
+#check @SerrePositivity.KST.SConstruction.objectRawBoundaryComparison_kan
+#print axioms SerrePositivity.KST.SConstruction.objectRawBoundaryComparison_kan
+
+#check @SerrePositivity.KST.SConstruction.iteratedZeroColumn_boundary_zero
+#print axioms SerrePositivity.KST.SConstruction.iteratedZeroColumn_boundary_zero
+
+#check @SerrePositivity.KST.SConstruction.objectRawBoundaryComparison_vertex
+#print axioms SerrePositivity.KST.SConstruction.objectRawBoundaryComparison_vertex
+
+#check @SerrePositivity.KST.SConstruction.objectRawBoundaryEdge
+#print axioms SerrePositivity.KST.SConstruction.objectRawBoundaryEdge
+
+#check @SerrePositivity.KST.SConstruction.objectRawBoundaryEdge_kan
+#print axioms SerrePositivity.KST.SConstruction.objectRawBoundaryEdge_kan
+
+#check @SerrePositivity.KST.SConstruction.objectBoundaryPath
+#print axioms SerrePositivity.KST.SConstruction.objectBoundaryPath
+
+#check @SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_objectKClass
+#print axioms SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_objectKClass
