@@ -824,6 +824,18 @@ public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTriangl
 
 public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochains
 
+public import SerrePositivity.InfinityCategories.Derived.DGFourSimplexTopEquation
+public import SerrePositivity.InfinityCategories.Derived.DGFourSimplexQReplacement
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochainFiller
+public import SerrePositivity.InfinityCategories.Derived.DGFourSimplexResidualCompatibility
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornSolution
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornFinalEdge
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornConeResidual
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornConePrimitive
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCochainFiller
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornFinalSimplex
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleLastDenominator
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

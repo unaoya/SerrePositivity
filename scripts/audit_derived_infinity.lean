@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGFourLastHornConePrimitive
+import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCochainFiller
+import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleLastDenominator
 import SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochains
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTriangleFiller
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegCompatibility
@@ -2050,10 +2053,35 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgFourLastHornQData_properEquations
 #print axioms SerrePositivity.InfinityCategories.dgFourLastHornQData_topRhs_closed
 
+#print axioms SerrePositivity.InfinityCategories.dgFourSimplex_rhs_top
+#print axioms SerrePositivity.InfinityCategories.dgFourSimplexWithQ_rhs_top
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornFiller_extension
+#print axioms SerrePositivity.InfinityCategories.dgFourSimplex_rhs_top_differential
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornTopResidual_differential
+#print axioms SerrePositivity.InfinityCategories.DGFourLastHornSolution.fac
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornConeResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSolution_nonempty_iff_coneResidual_boundary
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleFillerOfCochains_face_cone
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornFinalClosed_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleLastClosed_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleLastClosed_mem
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGFourSimplexTopEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGFourSimplexQReplacement,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochainFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGFourSimplexResidualCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornSolution,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornFinalEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornConeResidual,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornConePrimitive,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCochainFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornFinalSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleLastDenominator,
+
     `SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochains,
     `SerrePositivity.InfinityCategories.Derived.DiagramTriangleConeBoundary,
     `SerrePositivity.InfinityCategories.Derived.RoofSliceTetrahedronFaces,
