@@ -811,7 +811,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.LimitRestrictionEquivalence,
     `SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport,
     `SerrePositivity.KST.Spectra.StrictDiagramTransformation,
-    `SerrePositivity.KST.Spectra.SpectrumCospanReplacement]
+    `SerrePositivity.KST.Spectra.SpectrumCospanReplacement,
+    `SerrePositivity.KST.Spectra.CospanNerveCoordinates,
+    `SerrePositivity.KST.Spectra.CospanNerveHornIso,
+    `SerrePositivity.KST.Spectra.StrictCospanHorn,
+    `SerrePositivity.KST.Spectra.CoherentCospanPresentation,
+    `SerrePositivity.KST.Spectra.CoherentCospanLimits]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

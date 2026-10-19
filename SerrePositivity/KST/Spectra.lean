@@ -324,3 +324,8 @@ public import SerrePositivity.KST.Spectra.LimitRestrictionEquivalence
 public import SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport
 public import SerrePositivity.KST.Spectra.StrictDiagramTransformation
 public import SerrePositivity.KST.Spectra.SpectrumCospanReplacement
+public import SerrePositivity.KST.Spectra.CospanNerveCoordinates
+public import SerrePositivity.KST.Spectra.CospanNerveHornIso
+public import SerrePositivity.KST.Spectra.StrictCospanHorn
+public import SerrePositivity.KST.Spectra.CoherentCospanPresentation
+public import SerrePositivity.KST.Spectra.CoherentCospanLimits
