@@ -7282,3 +7282,36 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @PrismTransportCylinder.initial
 #print axioms PrismTransportCylinder.initial
+
+#check @exists_compStruct_of_lift_and_fibre_edge
+#print axioms exists_compStruct_of_lift_and_fibre_edge
+
+#check @specifiedCoconeRightStandardTransportEdge
+#print axioms specifiedCoconeRightStandardTransportEdge
+
+#check @specifiedCoconeRightStandardTransportEdge_raw
+#print axioms specifiedCoconeRightStandardTransportEdge_raw
+
+#check @specifiedCoconeRightStandardTransportEdge_diagram
+#print axioms specifiedCoconeRightStandardTransportEdge_diagram
+
+#check @specifiedCoconeRightStandardTransportEdge_projection
+#print axioms specifiedCoconeRightStandardTransportEdge_projection
+
+#check @SpecifiedCoconeBranchData.left_raw
+#print axioms SpecifiedCoconeBranchData.left_raw
+
+#check @SpecifiedCoconeBranchData.transport_raw
+#print axioms SpecifiedCoconeBranchData.transport_raw
+
+#check @specifiedCoconeRightTriangle_standardFace
+#print axioms specifiedCoconeRightTriangle_standardFace
+
+#check @specifiedCoconeCommonRightTriangle_standardFace
+#print axioms specifiedCoconeCommonRightTriangle_standardFace
+
+#check @specifiedCoconeRootedRightTetrahedron_standardEdge
+#print axioms specifiedCoconeRootedRightTetrahedron_standardEdge
+
+#check @fibreEdgeInclusion_raw
+#print axioms fibreEdgeInclusion_raw

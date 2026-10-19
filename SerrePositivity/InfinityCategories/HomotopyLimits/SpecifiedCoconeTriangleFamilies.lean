@@ -2,6 +2,10 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeBranchComparisons
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeTriangleFamilies
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedLiftFibreComposition
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeLeftTransportEdge
+public import
+  SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeRightStandardTransportEdge
 
 /-!
 概要：指定余錐の実際の右修正二単体に、長辺の全パラメータ族を保つ相対延長を付ける。
@@ -40,20 +44,62 @@ structure SpecifiedCoconeBranchData where
   right_projection : (right.map (sliceUnderProjection (j ≫ p))).edge =
     (partialColimitSpanRightLeg c hc f (i ≫ p) rfl dB
       g (j ≫ p) (coconePushoutBoundary_eq hp p) dC).edge
+  left_raw : left.edge = (specifiedCoconeLeftTransportEdge hp p c hc dB dC).edge
+  transport_raw : transport.edge =
+    (specifiedCoconeRightStandardTransportEdge hp p c hc dB dC).edge
   triangle_projection : (sliceUnderProjection (j ≫ p)).app (Opposite.op ⦋2⦌) triangle.simplex =
     (SSet.Edge.CompStruct.compId (partialColimitSpanRightLeg c hc f (i ≫ p) rfl dB
       g (j ≫ p) (coconePushoutBoundary_eq hp p) dC)).simplex
 
-/-- 既に構成した実際の比較辺と二単体を一緒に選ぶ。存在を仮定する入力はない。 -/
+set_option maxHeartbeats 800000 in
+-- 左の厳密な制限と右の修正先を、同じ標準 prism の頂点と同時に照合する。
+/-- 標準 prism 自身の二辺と元の修正辺・底の二単体を一緒に保持するデータを構成する。 -/
 def specifiedCoconeBranchData : SpecifiedCoconeBranchData hp p c hc dB dC :=
   Classical.choice (by
-    obtain ⟨kB, kC, hkB, hkC, k₀, s, hs₂, hs₀, hs₁, hq⟩ :=
-      exists_specifiedPathCocone_branch_comparisons hp p c hc dB dC
-    exact ⟨⟨kB, kC, k₀, ⟨s, hs₂, hs₀, hs₁⟩, hkB, hkC, hq⟩⟩)
+    let q := sliceUnderProjection (j ≫ p)
+    let e := partialColimitSpanRightLeg c hc f (i ≫ p) rfl dB
+      g (j ≫ p) (coconePushoutBoundary_eq hp p) dC
+    let v := initialFiberVertexAt q dC dC.vertex rfl
+    let w := (cosliceRestrictionFiberMap p j _).app (Opposite.op ⦋0⦌)
+      (partialColimitSpecifiedFiberVertex hp p c hc dB dC)
+    let k₀ := specifiedCoconeRightStandardTransportEdge hp p c hc dB dC
+    obtain ⟨k, t, hk, ht⟩ := exists_compStruct_of_lift_and_fibre_edge q e v
+      (transportedCoconeVertex dC e) w k₀
+      (specifiedCoconeRightStandardTransportEdge_projection hp p c hc dB dC)
+      (partialColimitSpecifiedCorrectionEdge hp p c hc dB dC)
+    let kC : (sliceUnder (j ≫ p)).Edge dC
+        ((partialColimitSpecifiedPathCocone hp p c hc dB dC).restrict j) :=
+      ⟨k.edge, k.src_eq, k.tgt_eq.trans (coconeRestrictionFiber_vertex_val j _
+        (partialColimitSpecifiedFiberVertex hp p c hc dB dC))⟩
+    refine ⟨{ left := specifiedCoconeLeftTransportEdge hp p c hc dB dC
+              right := kC
+              transport := k₀
+              triangle := SSet.Edge.CompStruct.mk t.simplex t.d₂ ?_ t.d₁
+              left_projection := specifiedCoconeLeftTransportEdge_projection hp p c hc dB dC
+              right_projection := hk
+              left_raw := rfl
+              transport_raw := rfl
+              triangle_projection := ht }⟩
+    have h₀ : (sliceUnder (j ≫ p)).δ 0 t.simplex =
+        (partialColimitSpecifiedCorrectionEdge hp p c hc dB dC).edge.val :=
+      t.d₀.trans (fibreEdgeInclusion_raw q _
+        (partialColimitSpecifiedCorrectionEdge hp p c hc dB dC))
+    simpa only [partialColimitSpecifiedCorrectionCosliceEdge, SSet.Edge.edge,
+      SSet.Edge.toTruncated] using h₀)
+
 
 /-- 指定した修正辺そのものを面に持つ、選んだ実際の三角形の全単体表示。 -/
 def specifiedCoconeRightTriangle : (Δ[2] : SSet.{u + 1}) ⟶ sliceUnder (j ≫ p) :=
   SSet.yonedaEquiv.symm (specifiedCoconeBranchData hp p c hc dB dC).triangle.simplex
+
+/-- 選んだ右修正三角形の初辺は、元の標準 prism 自身の輸送辺である。 -/
+lemma specifiedCoconeRightTriangle_standardFace :
+    stdSimplex.δ (2 : Fin 3) ≫ specifiedCoconeRightTriangle hp p c hc dB dC =
+      SSet.yonedaEquiv.symm
+        (specifiedCoconeRightStandardTransportEdge hp p c hc dB dC).edge := by
+  rw [specifiedCoconeRightTriangle, stdSimplex.δ_comp_yonedaEquiv_symm,
+    (specifiedCoconeBranchData hp p c hc dB dC).triangle.d₂,
+    (specifiedCoconeBranchData hp p c hc dB dC).transport_raw]
 
 /-- 右三角形の長辺は、同じデータに保持した右枝の比較辺。 -/
 lemma specifiedCoconeRightTriangle_longEdge :

@@ -29,6 +29,17 @@ def specifiedCoconeCommonRightTriangle :
   specifiedCoconeRightTriangle hp p c hc dB dC ≫
     normalizedCoconeRestriction (j ≫ p) g (coconePushoutBoundary_eq hp p)
 
+/-- 右修正三角形の共通制限も、標準 prism 自身の右辺を初辺として厳密に保持する。 -/
+lemma specifiedCoconeCommonRightTriangle_standardFace :
+    stdSimplex.δ (2 : Fin 3) ≫ specifiedCoconeCommonRightTriangle hp p c hc dB dC =
+      SSet.yonedaEquiv.symm
+          (specifiedCoconeRightStandardTransportEdge hp p c hc dB dC).edge ≫
+        normalizedCoconeRestriction (j ≫ p) g (coconePushoutBoundary_eq hp p) :=
+  (Category.assoc _ _ _).symm.trans
+    (congrArg (fun k ↦ k ≫
+      normalizedCoconeRestriction (j ≫ p) g (coconePushoutBoundary_eq hp p))
+      (specifiedCoconeRightTriangle_standardFace hp p c hc dB dC))
+
 /-- 共通部分の実際の付加比較辺を前置し、native な右三角形の右退化を底に持つ四面体が存在。 -/
 lemma exists_specifiedCoconeRootedRightTetrahedron :
     ∃ s : (Δ[3] : SSet.{u + 1}) ⟶ sliceUnder (f ≫ (i ≫ p)),
@@ -108,6 +119,18 @@ lemma specifiedCoconeRootedRightTetrahedron_terminalFace :
     stdSimplex.δ (0 : Fin 4) ≫ specifiedCoconeRootedRightTetrahedron hp p c hc dB dC =
       specifiedCoconeCommonRightTriangle hp p c hc dB dC :=
   (exists_specifiedCoconeRootedRightTetrahedron hp p c hc dB dC).choose_spec.2.1
+
+/-- 四面体の辺 12 は、同じ標準 prism の右輸送辺を共通部分へ制限したもの。 -/
+lemma specifiedCoconeRootedRightTetrahedron_standardEdge :
+    (stdSimplex.δ (2 : Fin 3) ≫ stdSimplex.δ (0 : Fin 4)) ≫
+        specifiedCoconeRootedRightTetrahedron hp p c hc dB dC =
+      SSet.yonedaEquiv.symm
+          (specifiedCoconeRightStandardTransportEdge hp p c hc dB dC).edge ≫
+        normalizedCoconeRestriction (j ≫ p) g (coconePushoutBoundary_eq hp p) :=
+  (Category.assoc _ _ _).trans
+    ((congrArg (fun k ↦ stdSimplex.δ (2 : Fin 3) ≫ k)
+      (specifiedCoconeRootedRightTetrahedron_terminalFace hp p c hc dB dC)).trans
+        (specifiedCoconeCommonRightTriangle_standardFace hp p c hc dB dC))
 
 /-- 四面体の底は、元の native な右三角形の右退化そのもの。 -/
 lemma specifiedCoconeRootedRightTetrahedron_base :
