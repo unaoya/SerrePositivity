@@ -1633,3 +1633,8 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanSquareComparisonVertical_isPullback
 #check @SerrePositivity.InfinityCategories.F1B.kanSquareComparisonVertical_factor
 #check @SerrePositivity.InfinityCategories.F1B.kanSquareComparisonVerticalMap_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCosliceMap_trivialKanFibration_cancel
+#check @SerrePositivity.InfinityCategories.F1B.kanIsCocartesianEdge_of_comp
+#check @SerrePositivity.InfinityCategories.F1B.kanIsCartesianEdge_of_comp
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRestriction_isCartesianEdge_of_projection
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoinRestriction_cartesianTransport
