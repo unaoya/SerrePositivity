@@ -524,3 +524,9 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleBKSection
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKHomFamily
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKReflectedPoints
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKReflectedFamilies
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKCoherentCone
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKPointSection
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKNativeComparison
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKConeSourceRestriction
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKIsLimit
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKPointLoopCone
