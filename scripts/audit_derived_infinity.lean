@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteGradedPrimitives
+import SerrePositivity.InfinityCategories.Derived.DGYonedaShiftedZero
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteShiftedPrimitives
 import SerrePositivity.InfinityCategories.Derived.DGQuotientShiftedRoofs
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteCancellation
@@ -1310,10 +1312,30 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFiniteShifted_exists_primitives
 #print axioms SerrePositivity.InfinityCategories.dgQuotientShifted_exists_closedRoof
 
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomRightShift_inverse
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomRightShift_closed
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomRightShift_primitive
+#print axioms SerrePositivity.InfinityCategories.dgModuleClosedRightShift_cycle
+#print axioms SerrePositivity.InfinityCategories.dgModuleClosedRightShift_precompose_cycle
+#print axioms SerrePositivity.InfinityCategories.dgYoneda_exists_gradedPrimitive_iff
+#print axioms SerrePositivity.InfinityCategories.dgYonedaClosedRightShift_precompose_cycle
+#print axioms SerrePositivity.InfinityCategories.dgYonedaRightShift_exists_primitive
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomRightShift_exists_primitive_iff
+#print axioms SerrePositivity.InfinityCategories.dgYonedaClosedRightShift_zero_iff_primitive
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFiniteGraded_exists_primitives
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleHomRightShift,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleClosedRightShift,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaGradedPrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaClosedRightShift,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleRightShiftBoundaries,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaShiftedZero,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteGradedPrimitives,
+
     `SerrePositivity.InfinityCategories.Derived.DGNativeDerivedDenominators,
     `SerrePositivity.InfinityCategories.Derived.DGDerivedEdgeComposition,
     `SerrePositivity.InfinityCategories.Derived.DGClosedPrimitives,
