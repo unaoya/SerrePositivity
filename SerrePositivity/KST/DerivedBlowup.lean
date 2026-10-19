@@ -288,3 +288,6 @@ public import SerrePositivity.KST.DerivedBlowup.ExceptionalSemilinearTransition
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapExceptionalTransition
 public import SerrePositivity.KST.DerivedBlowup.ExceptionalSemilinearChartSquare
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapExceptionalChartSquare
+public import SerrePositivity.KST.DerivedBlowup.ExceptionalSemilinearExterior
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapExceptionalComposition
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapExceptionalIdentity
