@@ -4486,3 +4486,63 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @coherentConeSourceFamily_restriction_uncurry
 #print axioms coherentConeSourceFamily_restriction_uncurry
+
+#check @coneInitialSimplex_constant
+#print axioms coneInitialSimplex_constant
+
+#check @coneIdentityCollapse_apex
+#print axioms coneIdentityCollapse_apex
+
+#check @cosliceIdentityPoint
+#print axioms cosliceIdentityPoint
+
+#check @coneIdentityCosliceSection_apex
+#print axioms coneIdentityCosliceSection_apex
+
+#check @cosliceInitialCoordinates_identity
+#print axioms cosliceInitialCoordinates_identity
+
+#check @coherentCosliceSourcePrecomposition_identity
+#print axioms coherentCosliceSourcePrecomposition_identity
+
+#check @coherentConeSourceSectionAt_apex
+#print axioms coherentConeSourceSectionAt_apex
+
+#check @coherentConeSourceFamily_evaluation
+#print axioms coherentConeSourceFamily_evaluation
+
+#check @sliceUnderCurry_vertex_transport
+#print axioms sliceUnderCurry_vertex_transport
+
+#check @fixedVertexConeSpaceEquiv_cosliceSection
+#print axioms fixedVertexConeSpaceEquiv_cosliceSection
+
+#check @bousfieldKanCoherentOppositeCone_cosliceSection
+#print axioms bousfieldKanCoherentOppositeCone_cosliceSection
+
+#check @bousfieldKanLiftedEndPoint
+#print axioms bousfieldKanLiftedEndPoint
+
+#check @bousfieldKanCoherentConePoint_yoneda
+#print axioms bousfieldKanCoherentConePoint_yoneda
+
+#check @bousfieldKanConeWeightedPointSection
+#print axioms bousfieldKanConeWeightedPointSection
+
+#check @bousfieldKanCoherentOppositeCone_cosliceSection_weighted
+#print axioms bousfieldKanCoherentOppositeCone_cosliceSection_weighted
+
+#check @coherentConeSourceFamily_restriction_weighted
+#print axioms coherentConeSourceFamily_restriction_weighted
+
+#check @bousfieldKanCoherentConeSourceFamily_restrict
+#print axioms bousfieldKanCoherentConeSourceFamily_restrict
+
+#check @bousfieldKanCoherentOppositeCone_isLimit
+#print axioms bousfieldKanCoherentOppositeCone_isLimit
+
+#check @bousfieldKanCoherentCocone_isColimit
+#print axioms bousfieldKanCoherentCocone_isColimit
+
+#check @kanDiagramCoherentNerve_hasColimit
+#print axioms kanDiagramCoherentNerve_hasColimit
