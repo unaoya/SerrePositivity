@@ -308,4 +308,10 @@ public import SerrePositivity.KST.SConstruction.RelativeSingleRealization
 public import SerrePositivity.KST.SConstruction.RelativeIteratedRows
 public import SerrePositivity.KST.SConstruction.RelativeMultiRealizationAdditivity
 
+public import SerrePositivity.KST.SConstruction.ClosedSubcategoryFunctor
+public import SerrePositivity.KST.SConstruction.RelativeStableModels
+public import SerrePositivity.KST.SConstruction.RelativeCofiberFunctor
+public import SerrePositivity.KST.SConstruction.RelativeEvaluationNaturality
+public import SerrePositivity.KST.SConstruction.RelativeAdditivityNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/

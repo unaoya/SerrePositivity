@@ -5429,3 +5429,87 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_localized_isIso_of_pos
 #print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_localized_isIso_of_pos
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategoryMap
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategoryMap
+
+#check @SerrePositivity.KST.SConstruction.closedSubcategoryMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.closedSubcategoryMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.closedStableMap
+#print axioms SerrePositivity.KST.SConstruction.closedStableMap
+
+#check @SerrePositivity.KST.SConstruction.closedStableMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.closedStableMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.closedStableMap_id
+#print axioms SerrePositivity.KST.SConstruction.closedStableMap_id
+
+#check @SerrePositivity.KST.SConstruction.closedStableMap_comp
+#print axioms SerrePositivity.KST.SConstruction.closedStableMap_comp
+
+#check @SerrePositivity.KST.SConstruction.RelativeStableModel
+#print axioms SerrePositivity.KST.SConstruction.RelativeStableModel
+
+#check @SerrePositivity.KST.SConstruction.relativeStableModelCategory
+#print axioms SerrePositivity.KST.SConstruction.relativeStableModelCategory
+
+#check @SerrePositivity.KST.SConstruction.relativeAmbientFunctor
+#print axioms SerrePositivity.KST.SConstruction.relativeAmbientFunctor
+
+#check @SerrePositivity.KST.SConstruction.relativeLeftFunctor
+#print axioms SerrePositivity.KST.SConstruction.relativeLeftFunctor
+
+#check @SerrePositivity.KST.SConstruction.relativeRightFunctor
+#print axioms SerrePositivity.KST.SConstruction.relativeRightFunctor
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberPostcomp_mem
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberPostcomp_mem
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberMap
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberMap
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberFunctor
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberFunctor
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberInclusionNat
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberInclusionNat
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberSubobject_naturality
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberSubobject_naturality
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberSubobjectNat
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberSubobjectNat
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberQuotient_naturality
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberQuotient_naturality
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberQuotientNat
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberQuotientNat
+
+#check @SerrePositivity.KST.SConstruction.relativeCofiberPair_naturality
+#print axioms SerrePositivity.KST.SConstruction.relativeCofiberPair_naturality
+
+#check @SerrePositivity.KST.SConstruction.relativeAdditivityNat
+#print axioms SerrePositivity.KST.SConstruction.relativeAdditivityNat
+
+#check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityNat
+#print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityNat
+
+#check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityLocalizedIso
+#print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityLocalizedIso
+
+#check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityLocalizedIso_app
+#print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityLocalizedIso_app
+
+#check @SerrePositivity.KST.SConstruction.RelativeStableModel.ambient
+#print axioms SerrePositivity.KST.SConstruction.RelativeStableModel.ambient
+
+#check @SerrePositivity.KST.SConstruction.RelativeStableModel.left
+#print axioms SerrePositivity.KST.SConstruction.RelativeStableModel.left
+
+#check @SerrePositivity.KST.SConstruction.RelativeStableModel.right
+#print axioms SerrePositivity.KST.SConstruction.RelativeStableModel.right
