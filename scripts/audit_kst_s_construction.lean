@@ -12180,3 +12180,102 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_composite_lower
 #print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_composite_lower
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronInitialPath_endpoint
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronInitialPath_endpoint
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronFinalPath_endpoint
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronFinalPath_endpoint
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronInitialTrace_arrow
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronInitialTrace_arrow
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronFinalTrace_arrow
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronFinalTrace_arrow
+
+#check @SerrePositivity.KST.SConstruction.enrichedFamilyConstant_eq
+#print axioms SerrePositivity.KST.SConstruction.enrichedFamilyConstant_eq
+
+#check @SerrePositivity.KST.SConstruction.enrichedFamilyComposition_const_left
+#print axioms SerrePositivity.KST.SConstruction.enrichedFamilyComposition_const_left
+
+#check @SerrePositivity.KST.SConstruction.enrichedFamilyComposition_const_right
+#print axioms SerrePositivity.KST.SConstruction.enrichedFamilyComposition_const_right
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronTrace_include_first_whisker
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronTrace_include_first_whisker
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronTrace_include_second_whisker
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronTrace_include_second_whisker
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronFirstEdgeMap
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronFirstEdgeMap
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronLastEdgeMap
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronLastEdgeMap
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronFirstEdge_of_face
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronFirstEdge_of_face
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronLastEdge_of_face
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronLastEdge_of_face
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronTrace_include_first_specified
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronTrace_include_first_specified
+
+#check @SerrePositivity.KST.SConstruction.tetrahedronTrace_include_second_specified
+#print axioms SerrePositivity.KST.SConstruction.tetrahedronTrace_include_second_specified
+
+#check @SerrePositivity.KST.SConstruction.kCompositionPrismWhiskerFacesPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.kCompositionPrismWhiskerFacesPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_first_middle
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_first_middle
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_last_middle
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_last_middle
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_first_last
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_first_last
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_last_first
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_last_first
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_first_upper_post
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_first_upper_post
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_first_lower_post
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_first_lower_post
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_second_upper_pre
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_second_upper_pre
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_second_lower_pre
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_second_lower_pre
+
+#check @SerrePositivity.KST.SConstruction.coherentTriangleTrace_strict
+#print axioms SerrePositivity.KST.SConstruction.coherentTriangleTrace_strict
+
+#check @SerrePositivity.KST.SConstruction.kCompositionPrismStrictFacesPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.kCompositionPrismStrictFacesPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_top_strict
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_top_strict
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_bottom_strict
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_bottom_strict
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_top_trace_constant
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_top_trace_constant
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_bottom_trace_constant
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_bottom_trace_constant
+
+#check @SerrePositivity.KST.SConstruction.kCompositionPrismExteriorConstantsPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.kCompositionPrismExteriorConstantsPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_exterior_upper_constant
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_exterior_upper_constant
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_exterior_lower_constant
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_exterior_lower_constant

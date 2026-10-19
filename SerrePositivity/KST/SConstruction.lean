@@ -778,4 +778,9 @@ public import SerrePositivity.KST.SConstruction.TrianglePrismMappingSquares
 public import SerrePositivity.KST.SConstruction.KCompositionPrismFaces
 public import SerrePositivity.KST.SConstruction.CoherentTriangleTraceRecovery
 public import SerrePositivity.KST.SConstruction.KCompositionPrismSquares
+public import SerrePositivity.KST.SConstruction.CoherentTetrahedronWhiskerTraces
+public import SerrePositivity.KST.SConstruction.CoherentTetrahedronSpecifiedFaces
+public import SerrePositivity.KST.SConstruction.KCompositionPrismWhiskerFaces
+public import SerrePositivity.KST.SConstruction.KCompositionPrismStrictFaces
+public import SerrePositivity.KST.SConstruction.KCompositionPrismExteriorConstants
 /-! # ∞-S• 構成と連結 K 理論 -/
