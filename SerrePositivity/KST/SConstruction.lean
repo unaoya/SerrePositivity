@@ -646,4 +646,10 @@ public import SerrePositivity.KST.SConstruction.EnrichedCollageTransportComponen
 public import SerrePositivity.KST.SConstruction.LoopCollageCrossEvaluation
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblySpecifiedCollage
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyOriginalSuspension
+public import SerrePositivity.KST.SConstruction.CoherentHomotopyPrisms
+public import SerrePositivity.KST.SConstruction.PointedSuspensionCoherentDiagram
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblySuspensionPrisms
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblySuspensionSquares
+public import SerrePositivity.KST.SConstruction.KOriginalSuspensionDiagrams
+public import SerrePositivity.KST.SConstruction.KOriginalSuspensionPrisms
 /-! # ∞-S• 構成と連結 K 理論 -/

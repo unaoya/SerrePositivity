@@ -9725,3 +9725,135 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionHomotopy_vertex_edge
 #print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionHomotopy_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.homotopySimplexPrism
+#print axioms SerrePositivity.KST.SConstruction.homotopySimplexPrism
+
+#check @SerrePositivity.KST.SConstruction.homotopySimplexPrism_zero
+#print axioms SerrePositivity.KST.SConstruction.homotopySimplexPrism_zero
+
+#check @SerrePositivity.KST.SConstruction.homotopySimplexPrism_one
+#print axioms SerrePositivity.KST.SConstruction.homotopySimplexPrism_one
+
+#check @SerrePositivity.KST.SConstruction.homotopySimplexPrism_naturality
+#print axioms SerrePositivity.KST.SConstruction.homotopySimplexPrism_naturality
+
+#check @SerrePositivity.KST.SConstruction.homotopy_vertex_restriction
+#print axioms SerrePositivity.KST.SConstruction.homotopy_vertex_restriction
+
+#check @SerrePositivity.KST.SConstruction.homotopySimplexPrism_vertex
+#print axioms SerrePositivity.KST.SConstruction.homotopySimplexPrism_vertex
+
+#check @SerrePositivity.KST.SConstruction.suspensionCoherentDiagram_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.suspensionCoherentDiagram_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.suspensionHom_vertex
+#print axioms SerrePositivity.KST.SConstruction.suspensionHom_vertex
+
+#check @SerrePositivity.KST.SConstruction.suspensionEnrichedUnderlying_map
+#print axioms SerrePositivity.KST.SConstruction.suspensionEnrichedUnderlying_map
+
+#check @SerrePositivity.KST.SConstruction.suspensionEnrichedUnderlying_eq
+#print axioms SerrePositivity.KST.SConstruction.suspensionEnrichedUnderlying_eq
+
+#check @SerrePositivity.KST.SConstruction.pointedKanInclusionUnderlying_map
+#print axioms SerrePositivity.KST.SConstruction.pointedKanInclusionUnderlying_map
+
+#check @SerrePositivity.KST.SConstruction.pointedKanInclusion_coherentDiagram
+#print axioms SerrePositivity.KST.SConstruction.pointedKanInclusion_coherentDiagram
+
+#check @SerrePositivity.KST.SConstruction.boundarySuspensionPrisms_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.boundarySuspensionPrisms_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism_zero
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism_zero
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism_one
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism_one
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism_naturality
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism_naturality
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism_vertex
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionPrism_vertex
+
+#check @SerrePositivity.KST.SConstruction.boundarySuspensionSquares_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.boundarySuspensionSquares_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_zero
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_zero
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_one
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_one
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_left
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_left
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_right
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_right
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_comp_first
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_comp_first
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_comp_second
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_comp_second
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_comp_composite
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_comp_composite
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_id
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionSquare_id
+
+#check @SerrePositivity.KST.SConstruction.kOriginalSuspension_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kOriginalSuspension_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanZeroSuspensionTransformation
+#print axioms SerrePositivity.KST.SConstruction.kKanZeroSuspensionTransformation
+
+#check @SerrePositivity.KST.SConstruction.kKanZeroSuspensionTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.kKanZeroSuspensionTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.kKanZeroSuspensionHomotopy
+#print axioms SerrePositivity.KST.SConstruction.kKanZeroSuspensionHomotopy
+
+#check @SerrePositivity.KST.SConstruction.kKanZeroSuspensionHomotopy_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.kKanZeroSuspensionHomotopy_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionHomotopy
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionHomotopy
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionHomotopy_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionHomotopy_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.kOriginalSuspensionPrisms_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kOriginalSuspensionPrisms_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_zero
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_zero
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_one
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_one
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_naturality
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_naturality
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_vertex
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_vertex
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_succ
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_succ
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_zero_stage
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionPrism_zero_stage
+
+#check @SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram_inclusion
+#print axioms SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram_inclusion
