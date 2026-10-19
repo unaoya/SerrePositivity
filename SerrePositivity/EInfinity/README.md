@@ -585,6 +585,9 @@ nullary を含む TR の部分合成保存は完了。
 `NestedEdgeCut.compositePosition_remaining_output` は全残り色、`compositePosition_inserted_output` は全挿入色の公式。
 `NestedEdgeCut.outputFamily` は二段作用の全出力族で、`compositePosition_outputFamily` が実際の合成切断の族と照合する。
 `edgeComponent_composition_nested_output_sum` は共通全次数で同じ出力族の実際の面テンソル和へ移した左辺。
+`lineRank_after_pivot_eq_degree` は非零切断点以後の行番号が語次数であること。
+`segmentDegree_two_zero/one` は非零内側切断の二部分語の行次数がそれぞれ内側全次数・零であること。
+`NestedEdgeCut.compositionSign_pivot/vertex` は合成符号が正、`compositionSign_nonpivot` は最初の出現の後続次数による公式。
 具体的な Δ¹ の余代数構造は未完成。二段作用のテンソル評価と符号の一致・右辺の有限和・nullary、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。

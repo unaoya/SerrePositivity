@@ -1182,6 +1182,18 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.outputFamily_tupleDegree,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionEdgeCutTerm_outputFamily,
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_nested_output_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.lineRank_after_pivot_eq_degree,
+      `SerrePositivity.EInfinity.IntervalCuts.caesuraRank_pivot_eq_degree,
+      `SerrePositivity.EInfinity.IntervalCuts.segmentDegree_single,
+      `SerrePositivity.EInfinity.IntervalCuts.segmentDegree_two_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.segmentDegree_two_one,
+      `SerrePositivity.EInfinity.IntervalCuts.segmentDegree_cast_count,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionExponent_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionSign_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.partition_segmentDegree_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionExponent_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionSign_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionSign_vertex,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3427,3 +3439,20 @@ example : edgeComponent ℤ 3 2 (compositionOnWords ℤ compositionInner composi
           (by decide)).val a.compositePosition) •
         tensorVectorOfDegree ℤ 3 3 a.outputFamily (a.outputFamily_tupleDegree (by decide)) :=
   edgeComponent_composition_nested_output_sum ℤ compositionInner compositionInner 0 (by decide)
+
+-- 非零切断の前半だけが内側次数を全て持ち、後半の行次数は零。
+example : segmentDegree compositionInner.val (OverlapPartition.two (1 : Fin 3)) 0 = 1 :=
+  segmentDegree_two_zero compositionInner 1 (by decide)
+example : segmentDegree compositionInner.val (OverlapPartition.two (1 : Fin 3)) 1 = 0 :=
+  segmentDegree_two_one compositionInner 1 (by decide)
+example : caesuraRank compositionInner.val 1 = 1 :=
+  caesuraRank_pivot_eq_degree compositionInner 1 (by decide)
+-- 同じ内外語でも切断点色への代入は正、二出現色への代入は負となる。
+example : compositionSign compositionInner compositionInner 1 nestedPivotExample.partition = 1 :=
+  NestedEdgeCut.compositionSign_pivot nestedPivotExample rfl
+example : compositionSign compositionInner compositionInner 0 nestedRepeatedExample.partition =
+    (-1 : ℤ) := by
+  simpa only using! NestedEdgeCut.compositionSign_nonpivot nestedRepeatedExample 1 rfl (by decide)
+example : compositionSign zeroPermutationWord (permutationWord (1 : Equiv.Perm (Fin 2))) 0
+    nestedVertexExample.partition = 1 :=
+  NestedEdgeCut.compositionSign_vertex nestedVertexExample rfl

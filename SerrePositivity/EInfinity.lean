@@ -314,3 +314,6 @@ public import SerrePositivity.EInfinity.IntervalCuts.SingleBlockInsertedOutput
 public import SerrePositivity.EInfinity.IntervalCuts.TwoBlockInsertedOutput
 public import SerrePositivity.EInfinity.IntervalCuts.NestedOutputs
 public import SerrePositivity.EInfinity.IntervalCuts.NestedOutputValues
+public import SerrePositivity.EInfinity.IntervalCuts.CutLineRanks
+public import SerrePositivity.EInfinity.IntervalCuts.CutSegmentDegrees
+public import SerrePositivity.EInfinity.IntervalCuts.NestedCompositionSigns
