@@ -481,3 +481,17 @@ public import SerrePositivity.KST.ProExcision.OppositeVectorMultiplication
 public import SerrePositivity.KST.ProExcision.ColumnRowMultiplicationSquare
 
 public import SerrePositivity.KST.ProExcision.RowRelativeLeftMultiplication
+
+public import SerrePositivity.KST.ProExcision.IdealRowBlockInclusion
+
+public import SerrePositivity.KST.ProExcision.SimplicialRowBlockInclusion
+
+public import SerrePositivity.KST.ProExcision.OppositeBlockCoherence
+
+public import SerrePositivity.KST.ProExcision.ColumnRowBlockSquare
+
+public import SerrePositivity.KST.ProExcision.RowRelativeBlockMap
+
+public import SerrePositivity.KST.ProExcision.RelativeRowAffineSequence
+
+public import SerrePositivity.KST.ProExcision.RelativeRowAffineLeftZero

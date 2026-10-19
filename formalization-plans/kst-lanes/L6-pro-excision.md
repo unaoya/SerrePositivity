@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1530宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1552宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1162,3 +1162,16 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `reverseOppositeAffineIso_multiplication` と bar・H_* の対応する正方形は全て実可換。`relativeRowAffineLeftMap` は実写像から誘導し、零を定義に含めない。
 - `reverseOppositeRelativeAffineIso_multiplication` は実相対同型と二つの実乗法写像の可換性。通常のブロック安定化との比較・行側安定零化、安定 H_* の模型比較、整数作用への移送を続ける。
 - 対象ビルド・1530宣言の公理監査は標準三公理のみで成功。L6d 全体の完了はまだ主張しない。
+
+
+### L6d の通常の行側 rank 安定化と実左乗法の安定零化（2026-10-19）
+
+- `idealRowBlockInclusion_equivariant`・`rowBlockOverHom`・`rowAffineBlockMap` は実右行列作用に同変な通常の零埋め行と単位ブロック和。標準包含との実可換性を証明する。
+- `integerUnitizationMatrixOpEquiv_block` と `integerUnitizationIdealOpVector_block` は反対転置・実核イデアル比較と通常の rank 安定化の整合。
+- `reverseOppositeAffineIso_block` と対応する bar・H_* の実正方形、`reverseOppositeRelativeAffineIso_block` により、行・列の比較が通常の実 rank 遷移と可換である。
+- `relativeRowAffineBlockMap` は実通常ブロック写像を相対商へ降ろす。`rowAffineLeft_then_block_zero` は列側 Claim 4.15 から実相対同型を介して得る行側の有限 rank 零化。中心性・乗法単射性を使わない。
+- `relativeRowAffineRankSequence` と `relativeRowAffineColimit` は通常の実一座標遷移による順序列・余極限。`relativeRowAffineComparisonNatIso` は反対係数の列側順序列との実自然同型であり、`relativeRowAffineRankSequence_map` は任意の有限遷移を一度の通常の実ブロック写像と同定する。
+- `relativeRowAffineLeftNatTrans` は列側実自然変換を実比較で移したもの。`relativeRowAffineLeftNatTrans_app` が各成分を通常の実左乗法と同定する。零性は定義に含めていない。
+- `relativeRowAffineLeftColimitMap` はこの実自然変換の実余極限への誘導射。`relativeRowAffineLeft_leg_zero` と `relativeRowAffineLeftColimitMap_zero` は有限 rank の実零化と通常の余極限の外延性から零化を証明する。
+- 行側の実 rank 余極限上の零化まで証明済み。安定モノイドの H_* との filtered 模型比較、実置換共役と整数作用への移送は残るため、L6d 全体の完了はまだ主張しない。
+- 対象ビルド・1552宣言の公理監査は標準三公理のみで成功。
