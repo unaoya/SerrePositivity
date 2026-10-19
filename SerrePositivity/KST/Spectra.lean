@@ -627,3 +627,12 @@ public import SerrePositivity.KST.Spectra.RawSpectrumPointedPostLifting
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterBFComparison
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterBFRelativeLift
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterBFUnitCoordinates
+public import SerrePositivity.KST.Spectra.PointedVerticalPaths
+public import SerrePositivity.KST.Spectra.PointedVerticalPathFunctoriality
+public import SerrePositivity.KST.Spectra.PointedVerticalChains
+public import SerrePositivity.KST.Spectra.PointedVerticalChainExtension
+public import SerrePositivity.KST.Spectra.SequenceRelativeRectification
+public import SerrePositivity.KST.Spectra.PointedTransposeRestrictions
+public import SerrePositivity.KST.Spectra.RawSpectrumHomPointInverse
+public import SerrePositivity.KST.Spectra.RawSpectrumParameterHomFamilies
+public import SerrePositivity.KST.Spectra.SequenceParameterRelativeRectification
