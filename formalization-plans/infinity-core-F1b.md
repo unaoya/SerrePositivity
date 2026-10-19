@@ -31,10 +31,13 @@
 - 変動する関手の全空間に標的の射 U による後合成を構成し、底・curry・前合成との自然性を証明。
   相対 join の制限と後合成から全空間の相対比較を構成。標的の fiber を通常の相対余錐制限の
   標的と同型で結び、比較射の厳密な一致と局所の相対始点境界充填の移送を証明。
+- 全空間の後合成と相対 join の相対比較の cartesian 辺の保存を証明。
+  単射な前合成同値に対する持ち上げを持つ U では、指定した標的の全図式を保つ内ホーン延長を構成。
+  U が単射による関手の制限ならこの条件を証明し、相対比較・後合成・標的の底射影の inner 性を得た。
 - F1 の scaffold 比較は straightening に依存するため import しない。
   再構成した補題は `F1B.kanScaffoldBaseChange_overPullbackMap`。新規宣言も F1B 名前空間。
-- 最終検証：F1・F1B 同時ビルド成功（3643 jobs）、同時 import 検査成功（F1 6323・F1B 3991 宣言）。
-  公理監査成功（3995 宣言、標準三公理のみ、1080 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3656 jobs）、同時 import 検査成功（F1 6346・F1B 4005 宣言）。
+  公理監査成功（4009 宣言、標準三公理のみ、1088 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -74,7 +77,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：全空間の後合成、相対比較、fiber の同定と相対充填性の移送、集約・監査・本書）。
+- なし（本保存単位：cartesian 辺の保存、標的の全図式を保つ延長、全空間の相対比較の inner 性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -89,12 +92,13 @@
 
 ### 次の一手
 
-- `kanRelativeJoinRelativeFiber_initialBoundary` により、通常の相対余錐の操作的な普遍性を
-  全空間の相対比較の各 fiber の始点境界充填へ移送済み。次は全空間の相対境界充填へ移す。
-  絶対的な `kanInitialBoundaryLifting_of_fiber_map` の経路を読み、U による後合成を同時に
-  指定した cartesian 輸送・底変換の自然性を整備し、相対的な組み立てを証明する。
-  そこから相対的な存在と写像空間の制限定理へ進む。標準の coslice による U-colimit との
-  比較は未証明であり、操作的な充填条件との同値を仮定しない。
+- `kanRelativeJoinRelativeRestriction_preservesCartesianEdges` と境界制限上の inner 性は証明済み。
+  次は `kanFiberwiseRelativeProjection i ((pre v).app X)` の cartesian な終点指定の持ち上げを構成する。
+  両成分の cartesian 輸送の像を `exists_kanCartesianComparisonTriangle` で比較し、最初の可逆辺を
+  後合成の fiber の射へ持ち上げて一致させる。fiber の同型と通常の関手の制限の可逆 path の
+  持ち上げを使う。`kanIsCartesianEdge_pullback_over` が一致後の辺の cartesian 性を与える。
+  これを全空間の相対始点境界充填、相対的な組み立て、写像空間の制限定理へ接続する。
+  標準の isofibration と U-colimit との比較は未証明。操作的条件との同値を仮定しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

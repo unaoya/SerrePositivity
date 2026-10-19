@@ -1853,3 +1853,19 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeFiber_restriction
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeFiber_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseHomPostcomp_preservesCartesianEdges
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanPrecompositionSquare_extension_over_pre
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeHomDiagram_extension_over
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseRelativeRestriction_pre_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseHomPostcomp_pre_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseRelativeProjection_pre_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsCartesianEdge_pullback_over
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeRestriction_preservesCartesianEdges
