@@ -308,3 +308,4 @@ public import SerrePositivity.KST.SchemeLemmas.CompletedFreeMittagLeffler
 public import SerrePositivity.KST.SchemeLemmas.NilpotentProjectivity
 public import SerrePositivity.KST.SchemeLemmas.CompletedFlatMittagLeffler
 public import SerrePositivity.KST.SchemeLemmas.ProjectivityFromCompletion
+public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralCompleteProjective
