@@ -2321,3 +2321,69 @@ trivial Kan fibration 性とホモトピー同値性、任意の単体集合の�
 全て追跡済み・コミット済み・変更なしを確認した。
 ログ：`/tmp/gamma3-space-homotopy-pushout-aggregate.log`、
 `/tmp/gamma3-space-homotopy-pushout-audit.log`。
+
+
+### E2a-2
+
+```lean
+universe u
+open CategoryTheory MonoidalCategory HomologicalComplex
+open SerrePositivity.DifferentialGraded
+open scoped Simplicial
+namespace SerrePositivity.EInfinity
+
+commutativeOperad (A : Type u) [CommRing A] : Operad A
+
+namespace BarrattEccles
+variable (A : Type u) [CommRing A]
+
+simplicial (n : ℕ) : SSet
+simplexEquiv (n q : ℕ) :
+  (simplicial n) _⦋q⦌ ≃ (Fin (q + 1) → Equiv.Perm (Fin n))
+rightAction (n : ℕ) (σ : Equiv.Perm (Fin n)) : simplicial n ⟶ simplicial n
+linearization : SSet ⥤ SimplicialObject (ModuleCat A)
+normalizedFunctor : SSet ⥤ Complex A
+complex (n : ℕ) : Complex A
+complexXIso (n q : ℕ) :
+  (complex A n).X (-(q : ℤ)) ≅
+    ((AlgebraicTopology.normalizedMooreComplex (ModuleCat A)).obj
+      ((linearization A).obj (simplicial n))).X q
+complex_isZero_positive (n : ℕ) (k : ℤ) (hk : 0 < k) :
+  Limits.IsZero ((complex A n).X k)
+complexRightAction (n : ℕ) (σ : Equiv.Perm (Fin n)) : complex A n ⟶ complex A n
+complexFreeIso (n q : ℕ) :
+  (complex A n).X (-(q : ℤ)) ≅
+    (ModuleCat.free A).obj (ULift.{u} ((simplicial n).nonDegenerate q))
+complexBasis (n q : ℕ) :
+  Module.Basis (ULift.{u} ((simplicial n).nonDegenerate q)) A
+    ((complex A n).X (-(q : ℤ)))
+equivariantBasis (n q : ℕ) :
+  Module.Basis (ULift.{u} (BasedNondegenerate n q) × Equiv.Perm (Fin n)) A
+    ((complex A n).X (-(q : ℤ)))
+equivariantBasis_rightAction (n q : ℕ)
+  (x : ULift.{u} (BasedNondegenerate n q)) (τ σ : Equiv.Perm (Fin n)) :
+  (complexRightAction A n σ).f (-(q : ℤ)) (equivariantBasis A n q (x, τ)) =
+    equivariantBasis A n q (x, τ * σ)
+complexContraction (n : ℕ) : HomotopyEquiv (complex A n) (complexSphere A 0)
+complexAugmentation (n : ℕ) : complex A n ⟶ complexSphere A 0
+complexAugmentation_quasiIso (n : ℕ) : QuasiIso (complexAugmentation A n)
+sequence : SymmetricSequence (Complex A)
+unit : 𝟙_ (Complex A) ⟶ complex A 1
+partialComposition (m n : ℕ) (i : Fin (m + 1)) :
+  complex A (m + 1) ⊗ complex A n ⟶ complex A (m + n)
+operad : Operad A
+augmentationSequence : sequence A ⟶ (commutativeOperad A).sequence
+unit_augmentation : unit A ≫ complexAugmentation A 1 = 𝟙 (𝟙_ (Complex A))
+partialComposition_augmentation (m n : ℕ) (i : Fin (m + 1)) :
+  partialComposition A m n i ≫ complexAugmentation A (m + n) =
+    (complexAugmentation A (m + 1) ⊗ₘ complexAugmentation A n) ≫
+      (λ_ (𝟙_ (Complex A))).hom
+augmentation : operad A ⟶ commutativeOperad A
+augmentation_app (n : ℕ) :
+  (augmentation A).map.app (FiniteBijection.of n) = complexAugmentation A n
+augmentation_quasiIso (n : ℕ) :
+  QuasiIso ((augmentation A).map.app (FiniteBijection.of n))
+
+end BarrattEccles
+end SerrePositivity.EInfinity
+```

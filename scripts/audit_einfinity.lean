@@ -20,4 +20,11 @@ run_cmd do
   if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
   unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
     throwError "射影モデル構造の宣言がありません"
+  for required in #[`SerrePositivity.EInfinity.BarrattEccles.operad,
+      `SerrePositivity.EInfinity.BarrattEccles.augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.augmentation_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.complexContraction,
+      `SerrePositivity.EInfinity.BarrattEccles.equivariantBasis_rightAction] do
+    unless env.contains required do
+      throwError "Barratt–Eccles の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
