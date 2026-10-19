@@ -31,11 +31,11 @@
   初期値も動く全 lift prism 空間とその普遍性、任意の底変換、実際の始点 fiber との同型を構成。
   同時端点制限は Kan fibration。始点同値への制限は trivial Kan fibration、両端固定 lift 空間は可縮。
   実際の区間族の境界固定 lift 空間は、同値な両端写像を指定すると可縮 Kan 複体。
-  円柱の境界 fiber と同時端点 fiber の同型、族全体の前合成比較で証明済み。
+  円柱比較で証明し、元の四角形の底側・全空間側の境界を同時固定した厳密な fiber とも同型。
   区間上の任意の left fibration の輸送円柱から全空間への実際の比較は前合成同値。
   底と境界が動く相対 lift 空間を構成。固定境界の fiber 同型とその自然性から、任意の quasicategory
   のパラメーター上の族全体の前合成比較も同値。輸送円柱の実際の比較にも適用済み。
-- 対象ビルド3007 jobs、公理監査5787宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+- 対象ビルド3009 jobs、公理監査5813宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -68,7 +68,7 @@
 - `pointedPrismEquivalenceEndpoints_trivialKanFibration`、`pointedCylinderPrismEndpoints_trivialKanFibration`
 - `pointedCylinderEquivalenceSquareIso`、`cylinderEquivalenceSquareEndpoints_trivialKanFibration`
 - `relativeBoundaryFamilyPre_isQCatEquivalence`、`intervalTransportCylinder_boundaryFamily_isQCatEquivalence`
-- `intervalFixedBoundaryFamilySpace_isContractibleKan`、`cylinderFixedBoundaryFamilyFiberIso`
+- `intervalFixedBoundaryFamilySpace_isContractibleKan`、`intervalFixedBoundaryFamilySquareFiberIso`
 
 ### 依存と提供
 
@@ -98,8 +98,8 @@
 
 ### 次の一手
 
-可縮性を証明した区間の境界固定 lift 族を、実際の表現空間の境界 fiber と同定する。
-分類図式の両端と全空間の両端写像を厳密に保ち、表現条件が境界から反映されることを使う。
+境界上の指定表現から両端データを取り出し、二条件同時 fiber を実際の境界制限の fiber と結ぶ。
+`intervalFixedBoundaryFamilySquareFiberIso` と境界からの表現条件の反映で、全部分複体の fiber へ移す。
 実際の境界制限の trivial Kan fibration を結ぶ（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
 その後、点・単体の表現空間の可縮性、一般の境界固定延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。

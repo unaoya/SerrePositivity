@@ -800,3 +800,5 @@ public import SerrePositivity.InfinityCategories.F1.CylinderBoundaryEndpointCond
 public import SerrePositivity.InfinityCategories.F1.CylinderBoundaryFamilyContractible
 public import SerrePositivity.InfinityCategories.F1.IntervalBoundaryFamilyComparison
 public import SerrePositivity.InfinityCategories.F1.IntervalBoundaryFamilyContractible
+public import SerrePositivity.InfinityCategories.F1.IntervalBoundaryFamilySquares
+public import SerrePositivity.InfinityCategories.F1.IntervalSquareBoundaryFiber
