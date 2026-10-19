@@ -43,7 +43,8 @@
   同じ経路と右枝を持つ持ち上げの相対ホモトピーも構成。普遍 span の実際の二単体から境界経路を抽出し、その指定経路で元の余錐を構成。
   左枝・右修正端点・修正経路の底・小さい Kan 押し出し頂点を照合。全 Hom の族から始対象性を反映し、end の同値性との余極限性の必要十分条件を証明。
   普遍 span の全 Hom の族から共通 path end への無条件の同値と、元の族の全パラメータ係数公式を公開。
-  指定右修正経路自身の辺・境界への像・合成二単体の三面を保持し、特定の指定余錐の両枝の全 Hom を脚の前合成と照合。両族の end 内のホモトピーは未完了。
+  指定右修正辺と合成二単体を保ち、特定の指定余錐の全 Hom を同じ右三角形全体の族へ延長。長辺・底・可変終点を厳密に保持。
+  同じ長辺と底を持つ延長の相対ホモトピーも証明。修正面の全 Hom の族を元の指定境界経路自身の辺上へ移し、終点評価を照合。end 内のホモトピーは未完了。
   γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
   詳細な実施記録はコミットメッセージを参照。
 - **残り**（依存順・時間は再開後の概算）：
@@ -70,8 +71,6 @@
   `colimitAttachedCocone`、`colimitAttachmentComparison_restrict`、`colimitAttachmentApexHom`、
   `coherentShapePushoutCocone`、`partialColimitApexSpan`、`partialColimitPushoutCocone_isColimit`、
   `leftFibrationInitialFiberPiZeroEquiv_edgeAt`、`coconeMappingSpacePiZeroEquiv_attachment`、
-  `coconeMappingSpacePiZeroEquiv_attachment_transport`、
-  `partialColimitSpanLegs_composites`、`exists_cocone_vertex_partialColimitPushout`、
   `cosliceShapePushoutIso`、`coconeMappingShapePushoutIso`、`coconeMappingShapeCone_isLimit`、
   `initialRestrictionHomComparison_square`、`colimitAttachmentHomPrecomposition`、
   `coconeMappingSpaceHomComparison_restrict_square`、
@@ -83,11 +82,12 @@
   `coconeBoundaryPathCorrection_unique_homotopy`、`partialColimitSpanBoundaryPath`、
   `partialColimitSpecifiedPathCocone`、`isColimitCone_iff_partialColimitHomFamilyToPathEnd`、
   `nativeSpanUniversalFamilyToPathEnd_homotopyEquivalence`、`specifiedPathCocone_isColimit_of_pathFamily_homotopy`、
-  `exists_specifiedPathCocone_branch_comparisons`、`exists_specifiedPathCocone_branch_homotopies`。
+  `exists_specifiedPathCocone_branch_comparisons`、`specifiedCoconeRightHomTriangleFamily`、
+  `relativeCosliceFamilies_homotopy`、`specifiedCoconeBoundaryCorrectionFullHomFamily`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は指定経路自身の辺・右修正の輸送合成・特定余錐の枝の比較4モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
+- **未コミット**：今回の保存単位は相対三角形族・底を保つ全 Hom の辺族・指定右三角形・境界修正族5モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -99,8 +99,8 @@
 - **次の一手**：`specifiedPathCocone_isColimit_of_pathFamily_homotopy` の全終点の族のホモトピー入力を構成する。
   元の族は `partialColimitHomFamilyToPathEnd`、同じ頂点で表示した比較先は `specifiedCoconeNativeFamilyToPathEnd`。
   後者の同値性は無条件に証明済み。前者とのホモトピーを仮定した定理は、余極限性の完成とは数えない。
-  `exists_specifiedPathCocone_branch_comparisons` の元の修正辺と合成二単体を使い、
-  `homotopyCospanFamilyComparison_uncurry` の係数を指定境界経路と照合する。枝別のホモトピーだけでは end 内の整合性は未証明。
+  `specifiedCoconeRightHomTriangleFamily` の三面と、元の指定境界辺上の `specifiedCoconeBoundaryCorrectionFullHomFamily` を使う。
+  共通部分の始対象の Hom 比較へこの族を移し、native な二枝の族とのホモトピーを重みの全係数で整合させる。三面の族だけでは end 内のホモトピーは未証明。
   同じ経路の持ち上げの相対ホモトピーを共通 end に移して入力を閉じる。その後、骨格の無限段階とセルの添字の小ささを処理。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 

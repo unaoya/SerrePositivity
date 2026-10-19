@@ -5710,3 +5710,138 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @exists_specifiedPathCocone_branch_homotopies
 #print axioms exists_specifiedPathCocone_branch_homotopies
+
+#check @retractedCosliceBaseFamily
+#print axioms retractedCosliceBaseFamily
+
+#check @retractedCosliceBaseFamily_restrict
+#print axioms retractedCosliceBaseFamily_restrict
+
+#check @exists_retractedRelativeCosliceFamily
+#print axioms exists_retractedRelativeCosliceFamily
+
+#check @relativeCosliceFamilies_homotopy
+#print axioms relativeCosliceFamilies_homotopy
+
+#check @triangleLongEdge_degeneracy_retraction
+#print axioms triangleLongEdge_degeneracy_retraction
+
+#check @triangleBase_retraction
+#print axioms triangleBase_retraction
+
+#check @exists_relativeDegenerateTriangleFamily
+#print axioms exists_relativeDegenerateTriangleFamily
+
+#check @relativeDegenerateTriangleSection
+#print axioms relativeDegenerateTriangleSection
+
+#check @relativeDegenerateTriangleSection_longEdge
+#print axioms relativeDegenerateTriangleSection_longEdge
+
+#check @relativeDegenerateTriangleSection_base
+#print axioms relativeDegenerateTriangleSection_base
+
+#check @relativeDegenerateTriangleSection_projection
+#print axioms relativeDegenerateTriangleSection_projection
+
+#check @pointRestrictionBaseEdgeFamily
+#print axioms pointRestrictionBaseEdgeFamily
+
+#check @pointRestrictionBaseEdgeFamily_target
+#print axioms pointRestrictionBaseEdgeFamily_target
+
+#check @pointRestrictionFullEdgeFamily
+#print axioms pointRestrictionFullEdgeFamily
+
+#check @pointRestrictionFullEdgeFamily_target
+#print axioms pointRestrictionFullEdgeFamily_target
+
+#check @pointRestrictionFullEdgeFamily_base
+#print axioms pointRestrictionFullEdgeFamily_base
+
+#check @pointRestrictionFullEdgeFamily_endpoint
+#print axioms pointRestrictionFullEdgeFamily_endpoint
+
+#check @SpecifiedCoconeBranchData
+#print axioms SpecifiedCoconeBranchData
+
+#check @specifiedCoconeBranchData
+#print axioms specifiedCoconeBranchData
+
+#check @specifiedCoconeRightTriangle
+#print axioms specifiedCoconeRightTriangle
+
+#check @specifiedCoconeRightTriangle_longEdge
+#print axioms specifiedCoconeRightTriangle_longEdge
+
+#check @specifiedCoconeRightTriangle_correction
+#print axioms specifiedCoconeRightTriangle_correction
+
+#check @specifiedCoconeRightTriangle_base
+#print axioms specifiedCoconeRightTriangle_base
+
+#check @specifiedCoconeRightTriangleSection
+#print axioms specifiedCoconeRightTriangleSection
+
+#check @specifiedCoconeRightTriangleSection_longEdge
+#print axioms specifiedCoconeRightTriangleSection_longEdge
+
+#check @specifiedCoconeRightTriangleSection_projection
+#print axioms specifiedCoconeRightTriangleSection_projection
+
+#check @SpecifiedCoconeBranchData.mk
+#print axioms SpecifiedCoconeBranchData.mk
+
+#check @SpecifiedCoconeBranchData.left
+#print axioms SpecifiedCoconeBranchData.left
+
+#check @SpecifiedCoconeBranchData.right
+#print axioms SpecifiedCoconeBranchData.right
+
+#check @SpecifiedCoconeBranchData.transport
+#print axioms SpecifiedCoconeBranchData.transport
+
+#check @SpecifiedCoconeBranchData.triangle
+#print axioms SpecifiedCoconeBranchData.triangle
+
+#check @SpecifiedCoconeBranchData.left_projection
+#print axioms SpecifiedCoconeBranchData.left_projection
+
+#check @SpecifiedCoconeBranchData.right_projection
+#print axioms SpecifiedCoconeBranchData.right_projection
+
+#check @SpecifiedCoconeBranchData.triangle_projection
+#print axioms SpecifiedCoconeBranchData.triangle_projection
+
+#check @specifiedCoconeRightFullHomFamily
+#print axioms specifiedCoconeRightFullHomFamily
+
+#check @specifiedCoconeRightHomLongEdgeFamily
+#print axioms specifiedCoconeRightHomLongEdgeFamily
+
+#check @specifiedCoconeRightHomTriangleFamily
+#print axioms specifiedCoconeRightHomTriangleFamily
+
+#check @specifiedCoconeRightHomTriangleFamily_longEdge
+#print axioms specifiedCoconeRightHomTriangleFamily_longEdge
+
+#check @specifiedCoconeRightHomTriangleFamily_endpoint
+#print axioms specifiedCoconeRightHomTriangleFamily_endpoint
+
+#check @specifiedCoconeRightHomTriangleFamily_base
+#print axioms specifiedCoconeRightHomTriangleFamily_base
+
+#check @specifiedCoconeCorrectionFullHomFamily
+#print axioms specifiedCoconeCorrectionFullHomFamily
+
+#check @specifiedCoconeCorrectionFullHomFamily_endpoint
+#print axioms specifiedCoconeCorrectionFullHomFamily_endpoint
+
+#check @specifiedCoconeCorrectionCoslice_boundary
+#print axioms specifiedCoconeCorrectionCoslice_boundary
+
+#check @specifiedCoconeBoundaryCorrectionFullHomFamily
+#print axioms specifiedCoconeBoundaryCorrectionFullHomFamily
+
+#check @specifiedCoconeBoundaryCorrectionFullHomFamily_endpoint
+#print axioms specifiedCoconeBoundaryCorrectionFullHomFamily_endpoint
