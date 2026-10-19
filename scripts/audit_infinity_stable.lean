@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleCofiberExists
 import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidateCommon
 import SerrePositivity.InfinityCategories.Derived.DGModuleConeSquare
 import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLift
@@ -135,6 +136,19 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLeftCandidate_first_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLeftCandidate_second_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryRightCandidate_second_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLeftCandidate_triangle_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryRightCandidate_triangle_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLeftCandidate_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryRightCandidate_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryJoinFiller_faces
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeCocone_isColimit
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeSquare_isPushout
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberSquare
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerve_cofiber_exists
 
 #print axioms SerrePositivity.InfinityCategories.dgGradedHom_eq_zero_of_closed_isZero_source
 #print axioms SerrePositivity.InfinityCategories.dgGradedHom_eq_zero_of_closed_isZero_target
@@ -1461,6 +1475,15 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryFirstEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLegEquations,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryTriangleEquations,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundarySimplices,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryJoinFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryJoinFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConePushout,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberExists,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleZeroHom,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryTriangles,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryComponents,

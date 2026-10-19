@@ -12,9 +12,9 @@
 - 通常の h D(S) と二切断の D3 を接続。実 suspension と複体シフトの自然同型・全整数 CommShift・実接続射の符号を照合し、標準 cofiber 列の D3 像を Mathlib の cone 三角形と同定済み。
 - 全 distinguished triangle の標準 cofiber 表示から保存・反映・逆関手の三角性を証明。`derivedStableHomotopyEquivalenceIsTriangulated` は単位・余単位のシフト整合性も持つ。通常の導来圏から三角構造を引き戻して済ませていない。
 - D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/DGModuleConeBoundaryCandidateCommon.lean`、`Derived/DGModuleConeBoundaryLiftData.lean`、`Derived/DGModuleConeBoundaryTriangleCompatibility.lean`、`Derived/DGModuleConeSquare.lean`。
-- D7 は `dfa5b50d`、β3 の実零対象・cone 四角形は `c01ff2d5` まで保存済み。今回の保存単位は新規 11 モジュール。最新の Stable・Derived 集約ビルドは 6,149 jobs 成功。
-- 最新公理監査：Derived 356 modules／3,783 宣言、Stable 626 modules／4,899 宣言。標準三公理のみ。
+- β3 の入口：`Derived/DGModuleCofiberExists.lean`、`Derived/DGModuleConePushout.lean`、`Derived/DGModuleConeBoundarySimplices.lean`、`Derived/DGModuleConeSquare.lean`。
+- D7 は `dfa5b50d`、β3 の実境界の残差・二未知成分は `5b234a14` まで保存済み。今回の保存単位は新規 8 モジュール。最新の Stable・Derived 集約ビルドは 6,157 jobs 成功。
+- 最新公理監査：Derived 364 modules／3,849 宣言、Stable 634 modules／4,965 宣言。標準三公理のみ。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -31,9 +31,10 @@
 - 任意対象族のラベル付き dg 充満像と評価への厳密な分解を構成。dg Yoneda の全 Hom 複体同型から、同一宇宙の代表加群の模型との明示的 ∞ 圏同値を証明済み。
 - 自明 Kan fibration の始域・基底の両方向に実 fiber/cofiber を構成し、一般の ∞ 圏同値の安定性の同値不変性と完全性を証明。Yoneda 模型と具体的 cell 分解の安定性の比較、実関手・逆関手の完全性へ適用済み。
 - 閉零圏の零対象の恒等成分の消滅から、dg nerve の実零頂点性を証明。全 Hom end を持つ `dgModuleNerve` と具体的零加群の実零対象性を公開済み。
-- dg 加群の cone から出る Hom の全次数線形同値・行列微分・二残差からの原始元を構成。実辺・二単体・cone 四角形の四頂点・四辺・零角を照合済み。押し出し性は未証明。
+- dg 加群の cone から出る Hom の全次数線形同値・行列微分・二残差からの原始元を構成。実辺・二単体・cone 四角形の四頂点・四辺・零角を照合済み。
 - 実 coslice 境界の最初の余錐から対象・三辺・ホモトピーを回収し、全 Hom end の型付き残差を定義。Bianchi から全脚・二三角形の微分条件を証明し、Q・A の二未知成分と微分式へ接続済み。
-- 共通の二成分を左右の候補に挿入。既知の全面・既知集合の全方程式・後続集合の方程式・共通面の一致を証明済み。始点・脚・最上位の未知方程式と実余錐への貼合せは未完。
+- 始点・脚・最上位も含む左右の全方程式を証明し、全面と共通面を保って実単体を貼合せ。`dgModuleConeCocone_isColimit`・`dgModuleConeSquare_isPushout` を全 coslice 境界の直接充填で証明済み。
+- 任意の nerve の辺を全 Hom end の閉加群射へ戻し、入力辺を厳密に保つ `dgModuleCofiberSquare` を構成。`dgModuleNerve_cofiber_exists` と実零対象性が揃った。fiber と安定性は未証明。
 
 ### 残り（依存順、時間は推定）
 
@@ -76,6 +77,7 @@
 - `dgModuleConeBoundaryLift_differential`、`dgModuleCompStruct_triple`、`dgModuleConeSquare`、`dgModuleConeZeroTriangle`。
 - `dgModuleConeBoundaryRhsAB_differential`、`dgModuleConeBoundaryRhsAC_differential_zero`、`dgModuleConeBoundaryLiftQ_differential`、`dgModuleConeBoundaryLiftA_differential`。
 - `dgModuleConeBoundaryLeftCandidate_suffix_equation`、`dgModuleConeBoundaryRightCandidate_suffix_equation`、`dgModuleConeBoundaryCandidate_common`。
+- `dgModuleConeCocone_isColimit`、`dgModuleConeSquare_isPushout`、`dgModuleCofiberSquare`、`dgModuleNerve_cofiber_exists`。
 
 ### 依存と提供
 
@@ -96,7 +98,7 @@
 
 ### 次の一手
 
-- β3：`dgModuleConeBoundaryCandidate` の残る三種類の未知方程式を閉じる。D7 の `CofiberBoundaryFirstEquation`・`CofiberBoundaryLegEquations`・`CofiberBoundaryTriangleEquations` を手本に、一般化済みの span 置換の Hom 輸送を使う。始点の式は対角射 0 と `dgModuleConeBoundaryLiftA_differential`、N 側の脚は `dgModuleConeBoundaryLiftQ_inr`、零側の脚は `dgModuleConeBoundaryRhsC_eq_zero`、左の最上位は `dgModuleConeBoundaryLiftQ_inl`、右の最上位は左包含 0 と A の定義で消す。`Checks.complex_compose` は使わず通常順の `compose A` のまま扱う（複体の cochain ではない）。`spanFirst_notMem_secondSuffix`・`spanFirst_insert_not_subset_second` は既存の `CofiberBoundaryLegEquations` から再利用し重複定義しない。その後 `CofiberBoundarySimplices`・`CofiberBoundaryJoinFiller`・`CofiberBoundaryJoinFaces` と同様に左右を貼り、`dgModuleConeCocone` の実始対象性・押し出し性を閉じる。fiber と双カルテジアン判定、前三角 dg 圏／平坦商の安定性・完全性、F1B の全 ∞ 関手圏の局所化普遍性と Verdier 列はその後。
+- β3：dg 加群の実 fiber を shifted cone で構成する。最初は `moduleCone f` の `shiftModule (-1)` と `Module/ShiftUnitElements.moduleShiftOutElement (-1)` を使い、`moduleConeFstElement` との合成を閉次数 0 の射影、`moduleConeSndElement` との合成の負を次数 −1 の nullhomotopy として定義・証明する。`moduleConeSndElement` の微分は未公開なので、`moduleHomElement_ext`・`moduleHomElement_d_π`・`moduleConeSndElement_π` と Mathlib `mappingCone.δ_snd` から所有側に補題を置く。shift の定数符号は実評価で照合し省略しない。Hom into cone の `Module/HomConeIso.moduleHomConeIso`、shift の `moduleShiftOutIn`・`moduleShiftInOut` を読み取り専用で使い、全次数座標と残差原始元を構成する。DGNerve の `CospanBoundaryAssembly` 等の一般部品を使い、`FiberBoundarySolution`・`FiberPullback` の複体用証明を所有 Derived 側へ一般化して実 slice 境界を充填する。次に全 fiber、零角の fiber/cofiber 判定から dg 加群模型の安定性を閉じる。前三角 dg 圏／平坦商の安定性・完全性、F1B の全 ∞ 関手圏の局所化普遍性、Verdier 列はその後。DGNerve・DifferentialGraded は変更しない。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
