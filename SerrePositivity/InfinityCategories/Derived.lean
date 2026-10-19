@@ -141,6 +141,11 @@ public import SerrePositivity.InfinityCategories.Derived.CofiberPushout
 public import SerrePositivity.InfinityCategories.Derived.FullColimitReflection
 public import SerrePositivity.InfinityCategories.Derived.FullCofiberSquare
 public import SerrePositivity.InfinityCategories.Derived.SemifreeColimits
+public import SerrePositivity.InfinityCategories.Derived.ComplexSpanPresentation
+public import SerrePositivity.InfinityCategories.Derived.StableColimits
+public import SerrePositivity.InfinityCategories.Derived.RebaseCocone
+public import SerrePositivity.InfinityCategories.Derived.PushoutComparison
+public import SerrePositivity.InfinityCategories.Derived.CofiberFiberRotation
 
 /-! # Semifree 複体による導来圏の dg 表示
 

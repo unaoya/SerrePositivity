@@ -34,6 +34,11 @@ import SerrePositivity.InfinityCategories.Derived.CofiberPushout
 import SerrePositivity.InfinityCategories.Derived.FullColimitReflection
 import SerrePositivity.InfinityCategories.Derived.FullCofiberSquare
 import SerrePositivity.InfinityCategories.Derived.SemifreeColimits
+import SerrePositivity.InfinityCategories.Derived.ComplexSpanPresentation
+import SerrePositivity.InfinityCategories.Derived.StableColimits
+import SerrePositivity.InfinityCategories.Derived.RebaseCocone
+import SerrePositivity.InfinityCategories.Derived.PushoutComparison
+import SerrePositivity.InfinityCategories.Derived.CofiberFiberRotation
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1677,7 +1682,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CofiberPushout,
     `SerrePositivity.InfinityCategories.Derived.FullColimitReflection,
     `SerrePositivity.InfinityCategories.Derived.FullCofiberSquare,
-    `SerrePositivity.InfinityCategories.Derived.SemifreeColimits]
+    `SerrePositivity.InfinityCategories.Derived.SemifreeColimits,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSpanPresentation,
+    `SerrePositivity.InfinityCategories.Derived.StableColimits,
+    `SerrePositivity.InfinityCategories.Derived.RebaseCocone,
+    `SerrePositivity.InfinityCategories.Derived.PushoutComparison,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberRotation,
+    `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
