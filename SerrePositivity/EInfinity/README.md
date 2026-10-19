@@ -286,7 +286,12 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `rows_fusedSchedule_of_fst` は元の行列の一致から、Schedule を付けた実際の表の復元を与える。
 `horizontalRows_fst`・`verticalRows_fst` は行列を元の連続する置換区間の部分合成として表示する。
 `fusedRows_fst_step` は境界一行を省く同じ行順の再帰であり、経路の頂点列の連結と比較する。
-融合後の実際の行列と経路の元の置換頂点列の全体の一致は未完成。
+`DegreePath.append_horizontal_front`・`back` と `append_vertical_front`・`back` は連結経路の実際の座標。
+`DegreePath.vertices_append` は前半末尾を省き、平行移動した後半を付ける全頂点の公式。
+`vertices_horizontal`・`vertices_vertical`・`vertices_corner` は各純粋成分の連続座標列。
+`DegreePath.blockVertices` は計算可能な成分次数からの座標列で、`vertices_blocks` が実際の経路と同定する。
+`compositionPath_vertices` は実際の全経路の頂点列を同じ成分座標列へ戻す。
+融合後の実際の行列と、経路座標列に元の置換部分合成を適用した全行列の一致は未完成。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

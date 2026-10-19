@@ -569,6 +569,13 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.horizontalRows_fst,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.verticalRows_fst,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedRows_fst_step,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.append_horizontal_front,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.append_horizontal_back,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.append_vertical_front,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.append_vertical_back,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.vertices_append,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.vertices_blocks,
+      `SerrePositivity.EInfinity.Surjection.compositionPath_vertices,
       `SerrePositivity.EInfinity.TableReduction.reduceRows_row_bounds,
       `SerrePositivity.EInfinity.Surjection.substitute_horizontal_no_slot,
       `SerrePositivity.EInfinity.Surjection.occurrenceAt_complete,
@@ -1243,3 +1250,22 @@ example : ∀ i, 0 < (fullCompositionFixture.fusedSchedule.val i).val :=
   fullCompositionFixture.fusedSchedule.property.1
 example (i : Fin 4) : fullCompositionFixture.fusedLength i ≤ 5 :=
   (fullCompositionFixture.fusedLength_bounds i).2
+
+-- 実際の経路連結の共有頂点は一度だけ残る。
+example : DegreePath.vertices (DegreePath.append (DegreePath.horizontal 1)
+    (DegreePath.vertical 2)) = [(0, 0), (1, 0), (1, 1), (1, 2)] := by
+  rw [DegreePath.vertices_append, DegreePath.vertices_horizontal, DegreePath.vertices_vertical]
+  decide
+example : DegreePath.vertices (DegreePath.corner 0 0) = [(0, 0)] := by
+  exact (DegreePath.vertices_corner 0 0).trans (by decide)
+-- 最初の水平次数零・後の垂直次数零を含む実際の compositionPath の全頂点。
+example : DegreePath.vertices (compositionPath canonicalFixture compositionInner 1 verticalCuts) =
+    [(0, 0), (0, 1), (1, 1), (2, 1)] := by
+  have hh : outerSegmentDegree canonicalFixture.val 1 0 = 0 := by decide
+  have hp : compositionDegreePairs canonicalFixture compositionInner 1 verticalCuts =
+      [(1, 2), (0, 0)] := by decide
+  have h := compositionPath_vertices canonicalFixture compositionInner 1 verticalCuts
+  rw [hh, hp] at h
+  apply h.trans
+  simp only [DegreePath.blockVertices]
+  decide
