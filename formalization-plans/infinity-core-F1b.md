@@ -24,8 +24,10 @@
 - 射影の持ち上げ問題を逆像上の図式の延長と同定し、inner fibration 性の必要十分条件を証明。
   標準単体上の cocartesian fibration の最終 fiber への厳密な retraction と、そこで固定された輸送を構成。
   射影の終点指定の辺の持ち上げ（任意次元の最後の頂点版も）を証明。辺の cartesian 性は未証明。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2472 jobs）。
-  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2982 宣言、標準三公理のみ、801 モジュールに straightening なし）。
+- 三角形の cocartesian 性の消去と、cocartesian なホモトピーによる辺の保存を証明。
+  最終 fiber への retraction と逆像上の図式の延長が cocartesian 辺を可逆辺に送ることまで証明。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2482 jobs）。
+  `lake env lean scripts/audit_infinity_f1b.lean` 成功（3020 宣言、標準三公理のみ、811 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -55,8 +57,6 @@
 - `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
 - `kanRelativeJoinSliceOver_restrict` / `kanRelativeJoinSliceUnder_restrict`
 - `kanSliceOverShapeRestrict_isPullback` / `kanSliceUnderShapeRestrict_isPullback`
-- `LeftKanRelativeJoinRealization.Strictification.exists_localBoundary_lift`
-- `RightKanRelativeJoinRealization.Strictification.exists_localBoundary_lift`
 - `kanFiberwiseFunctorHomEquiv` / `kanFiberwiseFunctorPre` / `kanFiberwiseFunctor_lift_iff`
 - `exists_kanFiberwise_extension_of_initialBoundary`
 - `kanFiberwiseHom` / `kanFiberwiseHomProjection` / `kanFiberwiseHomEquiv` / `kanFiberwiseHomPre`
@@ -65,6 +65,8 @@
 - `kanRelativeJoinCoconeFiber_initialBoundary`
 - `kanFiberwiseHomProjection_innerFibration_iff` / `exists_kanFinalFiberRetraction`
 - `kanFiberwiseHomProjection_hasLiftingProperty_target`
+- `kanIsCocartesianEdge_triangle_second_of_first_long` / `exists_kanFinalFiberRetraction_inverting`
+- `exists_kanFiberwiseHom_finalVertex_extension_inverting`
 
 ### 依存と提供
 
@@ -75,8 +77,8 @@
 
 ### 未コミット
 
-- 保存単位：`KanFiberwiseHomLifting`、同 `InnerFibration`、同 `FinalVertex`、
-  `KanCocartesianHornComparison`、`KanFinalFiberRetraction`、F1B 集約、監査、本書。必ず `git commit --only`。
+- 保存単位：`KanInitialTriangleJoin`、`KanTriangle*`、`KanCocartesianTriangleMiddle*`、
+  `KanCocartesianCancellation`、同 `HomotopyEdges`、`KanFinalFiberTransport`、`KanFiberwiseHomSpecialLifts`、集約・監査・本書。
   保存コミット後の所有変更はなし。他レーンの変更は保存・変更しない。
 
 ### 既知の問題
@@ -94,9 +96,9 @@
 
 ### 次の一手
 
-- 最終 fiber への retraction が cocartesian 辺を可逆辺に送ることを証明し、終点指定の lift の追加条件へ接続。
-  三角形の cocartesian 性の消去が必要。内ホーン逆像の前合成同値と特殊辺の cartesian 性は
-  Kerodon [§5.3.6](https://kerodon.net/tag/037W) の一般の scaffold 比較から証明する。
+- cocartesian な section の全部分 ∞ 圏を値とする一般の strict transport と、fiber 評価との比較を構成する。
+  F1 の `LeftStrictTransport` は left fibration 用であり、全 section の模型を一般の p に代用しない。
+  一般の scaffold 比較を経て、内ホーン逆像の前合成同値と特殊辺の cartesian 性（Kerodon §5.3.6）を証明する。
   その後、制限の輸送との両立で fiber の境界充填を全空間へ移し、既存の骨格の組み立てに渡す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
