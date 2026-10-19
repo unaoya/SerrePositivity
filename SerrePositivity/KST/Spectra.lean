@@ -576,3 +576,5 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseTetrahe
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionReflectedTriangles
 public import SerrePositivity.KST.Spectra.BousfieldKanPointSectionCoefficients
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKCoherentCone
+public import SerrePositivity.KST.Spectra.SectionConePointComparison
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKIsLimit
