@@ -1255,6 +1255,23 @@
 - `smallAcyclicChainCover_epi`：初期像窓から構成した全項を、生成対象だけに依存する一つの固定対象 `smallAcyclicUniformBound G` の実際の商として呈示した。
 - 整数次数への延長と小さい非輪状試験族への所属、非輪状部分複体を加えて全体を尽くす超限分解は未完了。
 
+### §59 の整数次数と試験集合の現在地
+
+- 保存検証：集約対象ビルド 4099 jobs 成功、公理監査 2448 宣言。標準3公理のみ、KTheory import なし。
+
+- `leftSmallAcyclicComplex`：非輪状な整数複体の左半分に、指定した生成対象からの射の像を含む小さい複体を構成した。境界を越える微分の零性を二乗零から証明し、零延長から元の複体への包含を定義した。
+- `leftSmallAcyclicComplex_acyclic`・`leftSmallAcyclicComplexInclusion_mono`・`leftSmallAcyclicComplex_term_cover`：非輪状性、複体の圏での単射性、上に有界な項の零性、生成対象だけから定まる固定対象による全項の商呈示を証明した。
+- `SmallAcyclicTestIndex G : Type w` と `smallAcyclicTestFamily`：上に有界な非輪状試験複体の実際の小さい族を構成した。
+- `exists_nonzero_smallAcyclicTest_subobject`：任意の非零な非輪状複体が、上の固定した試験族の元からの非零部分対象を持つことを証明した。小さい試験集合の存在を仮定していない。
+- 次の工程は、非輪状部分複体の商の中に試験部分対象を取り、その逆像を加え続けて全体を尽くす連続超限列の構成。
+
+## 60. 非輪状部分複体の超限分解（実装前記録）
+
+- Stacks 19.12.3 の後続段階：非輪状 M の真の非輪状部分対象 S に対し、商 M/S は非零かつ非輪状。証明済みの小さい試験部分対象 T → M/S を引き戻して S を真に大きな非輪状部分対象 S' へ拡大する。S → S' の余核は T と同型となる。
+- 部分対象格子上で上の拡大を選ぶ。非輪状でない部分対象には全体を割り当てることにより、格子全体で真の部分対象を真に拡大する関数とする。零からの超限反復は、後続段階の短完全列と極限段階の完全な filtered colimit から非輪状性を保つ。
+- Mathlib の `transfiniteIterate` と部分対象格子の小ささから、ある小さい整列長で全体に到達する。MonoOver の余極限の普遍性で連続性を証明する。
+- 後続商を実際の試験族の元と同定し、§58 の互換な零ホモトピーの超限閉包へ適用して試験集合判定を証明する。超限分解の存在や K-injective 性を未証明フィールドにはしない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1486,6 +1503,7 @@
 | `homotopy_orthogonal_transfinite` | DerivedGeometry/HomotopyOrthogonalTransfinite | 実装・対象ビルド済み |
 | `exists_small_exact_window_extension`・`exists_smallQuotientComplexData_iso` | DerivedGeometry/SmallExactWindowExtension・SmallQuotientComplexFamily | 実装・対象ビルド済み |
 | `smallExactChainTail_acyclic`・`smallAcyclicChainCover_epi` | DerivedGeometry/SmallAcyclicChainTail・SmallAcyclicChainBounds | 実装・対象ビルド済み |
+| `SmallAcyclicTestIndex`・`exists_nonzero_smallAcyclicTest_subobject` | DerivedGeometry/SmallAcyclicTestFamily・SmallAcyclicTestSubobject | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

@@ -172,3 +172,10 @@ public import SerrePositivity.KST.DerivedGeometry.SmallExactChainProperties
 public import SerrePositivity.KST.DerivedGeometry.InitialImageChainWindow
 public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicChainTail
 public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicChainBounds
+public import SerrePositivity.KST.DerivedGeometry.DescFromExtendedComplex
+public import SerrePositivity.KST.DerivedGeometry.LeftRestrictionAcyclic
+public import SerrePositivity.KST.DerivedGeometry.ExtendedAcyclicBounds
+public import SerrePositivity.KST.DerivedGeometry.LeftSmallAcyclicComplex
+public import SerrePositivity.KST.DerivedGeometry.LeftSmallAcyclicProperties
+public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicTestFamily
+public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicTestSubobject
