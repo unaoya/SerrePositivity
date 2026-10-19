@@ -30,6 +30,19 @@ lemma internalHomFlipHomEquiv_evaluate_vertex {A C X : SSet.{u}}
   rw [evaluateFunctorAt_functorVertex] at he
   exact he
 
+/-- straightening の初頂点の値は、共同降下の同じ頂点の値と厳密に一致する。 -/
+lemma leftStraighteningInfinityMap_simplexFirstVertex_vertex {B : SSet.{u}}
+    {n : SimplexCategory} (σ : B.obj (Opposite.op n)) :
+    functorVertex (leftStraighteningInfinityMap B ≫ evaluateFunctorAt
+      (ULift.up ((SSet.yonedaEquiv.symm σ).app (Opposite.op ⦋0⦌)
+        (stdSimplex.obj₀Equiv.symm (0 : Fin (n.len + 1)))))) =
+    (leftStraighteningSectionJointDiagram B).app (Opposite.op ⦋0⦌)
+      (((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B)).app
+        (Opposite.op ⦋0⦌) (ULift.up (nerveVertex (transportSimplexIndex σ)))) := by
+  rw [leftStraighteningInfinityMap, internalHomFlipHomEquiv_evaluate_vertex]
+  exact congrArg ((leftStraighteningSectionJointDiagram B).app (Opposite.op ⦋0⦌))
+    (congrArg ULift.up (transportSimplexFirstVertexMap_vertex σ)).symm
+
 /-- 任意の単体の初頂点での straightening は、その単体上の切断評価と関手同型。 -/
 def leftStraighteningInfinityMap_simplexFirstVertexIso {B : SSet.{u}} {n : SimplexCategory}
     (σ : B.obj (Opposite.op n)) :
@@ -38,20 +51,12 @@ def leftStraighteningInfinityMap_simplexFirstVertexIso {B : SSet.{u}} {n : Simpl
         (ULift.up ((SSet.yonedaEquiv.symm σ).app (Opposite.op ⦋0⦌)
           (stdSimplex.obj₀Equiv.symm (0 : Fin (n.len + 1))))))
       (coherentNerveMap
-        (relativeFunctorEnrichedEvaluation (Over.mk (SSet.yonedaEquiv.symm σ)))) := by
-  let v := ULift.up (nerveVertex (transportSimplexIndex σ))
-  let a := ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B)).app
-    (Opposite.op ⦋0⦌) v
-  have he := (leftStraighteningSectionJointDiagram_restrictIso B).app v
-  change VertexIso ((leftStraighteningSectionJointDiagram B).app (Opposite.op ⦋0⦌) a)
-    ((transportSimplexSectionInfinity B).app (Opposite.op ⦋0⦌) v) at he
-  rw [← internalHomFlipHomEquiv_evaluate_vertex (leftStraighteningSectionJointDiagram B) a,
-    transportSimplexSectionInfinity_vertex σ] at he
-  have ha : a = ULift.up ((SSet.yonedaEquiv.symm σ).app (Opposite.op ⦋0⦌)
-      (stdSimplex.obj₀Equiv.symm (0 : Fin (n.len + 1)))) :=
-    congrArg ULift.up (transportSimplexFirstVertexMap_vertex σ)
-  rw [ha] at he
-  exact he
+        (relativeFunctorEnrichedEvaluation (Over.mk (SSet.yonedaEquiv.symm σ)))) :=
+  eqToIso (congrArg HomotopyCategory.mk
+    (leftStraighteningInfinityMap_simplexFirstVertex_vertex σ)) ≪≫
+  (leftStraighteningSectionJointDiagram_restrictIso B).app
+    (ULift.up (nerveVertex (transportSimplexIndex σ))) ≪≫
+  eqToIso (congrArg HomotopyCategory.mk (transportSimplexSectionInfinity_vertex σ))
 
 /-- straightening の単体の初頂点での評価は、実際の fiber 評価と全対象上で関手同型。 -/
 def leftStraighteningInfinityMap_firstVertexFiberIso {B : SSet.{u}} {n : SimplexCategory}
@@ -65,6 +70,35 @@ def leftStraighteningInfinityMap_firstVertexFiberIso {B : SSet.{u}} {n : Simplex
   leftStraighteningInfinityMap_simplexFirstVertexIso σ ≪≫
     relativeFunctorEvaluationComparisonIso (SSet.yonedaEquiv.symm σ) (scaffoldFirstVertex n.len)
       (scaffoldFirstVertex_leftAnodyne n.len)
+
+/-- 最初の頂点の包含は、標準零単体の頂点を指定された最初の頂点へ送る。 -/
+lemma scaffoldFirstVertex_app_zero (n : ℕ) :
+    (scaffoldFirstVertex.{u} n).app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0) =
+      stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)) := by
+  change (stdSimplex.obj ⦋n⦌).map (stdSimplex.obj₀Equiv.symm (0 : Fin 1)).down.op
+    (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) = _
+  have hh : (stdSimplex.obj₀Equiv.symm (0 : Fin 1)).down = 𝟙 ⦋0⦌ :=
+    @Subsingleton.elim ((⦋0⦌ : SimplexCategory) ⟶ ⦋0⦌) inferInstance _ _
+  rw [hh, op_id, Functor.map_id_apply]
+
+/-- 単体の初頂点の fiber 比較の射は、既存の共同降下の成分と切断評価の合成。 -/
+lemma leftStraighteningInfinityMap_firstVertexFiberIso_hom {B : SSet.{u}}
+    {n : SimplexCategory} (σ : B.obj (Opposite.op n)) :
+    (leftStraighteningInfinityMap_firstVertexFiberIso σ).hom =
+      eqToHom (congrArg HomotopyCategory.mk
+        (leftStraighteningInfinityMap_simplexFirstVertex_vertex σ)) ≫
+      ((leftStraighteningSectionJointDiagram_restrictIso B).app
+        (ULift.up (nerveVertex (transportSimplexIndex σ)))).hom ≫
+      eqToHom (congrArg HomotopyCategory.mk (transportSimplexSectionInfinity_vertex σ)) ≫
+      SSet.Truncated.HomotopyCategory.homMk
+        (relativeFunctorEvaluationComparisonEdge (SSet.yonedaEquiv.symm σ)
+          ((scaffoldFirstVertex n.len).app (Opposite.op ⦋0⦌)
+            (stdSimplex.obj₀Equiv.symm 0))) := by
+  simp only [leftStraighteningInfinityMap_firstVertexFiberIso,
+    leftStraighteningInfinityMap_simplexFirstVertexIso, Iso.trans_hom, eqToIso.hom,
+    relativeFunctorEvaluationComparisonIso, kanEnrichedComparisonIso, asIso_hom,
+    Category.assoc, SSet.Edge.toTruncated,
+    relativeFunctorEvaluationComparisonEdge]
 
 /-- 任意の底の頂点での straightening は、全 left fibrations の実際の fiber 評価と関手同型。 -/
 def leftStraighteningInfinityMap_evaluateIso {B : SSet.{u}} (b : B _⦋0⦌) :

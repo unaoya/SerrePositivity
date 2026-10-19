@@ -1033,3 +1033,5 @@ public import SerrePositivity.InfinityCategories.F1.LeftStraighteningAllBasesEva
 
 public import SerrePositivity.InfinityCategories.F1.KanEnrichedDiagramArrow
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningSectionNaturality
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverEvaluationComparison
+public import SerrePositivity.InfinityCategories.F1.TransportSimplexSectionEvaluation
