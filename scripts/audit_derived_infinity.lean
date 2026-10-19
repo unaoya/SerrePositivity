@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeSquareModel
+import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleMiddleHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeComponents
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability
 import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
@@ -1133,6 +1135,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquareData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquarePostcomposeJoin,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquarePostcomposeEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquarePostcomposeIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquareFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeSquareData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeSquareModel,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleMiddleHorn,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleMiddleKnownFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleMiddleMissingFace,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleMiddleHomotopy,
     `SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCycles,
     `SerrePositivity.InfinityCategories.Derived.DGModuleEvaluationIso,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorCone,
