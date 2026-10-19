@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.Coalgebra
-public import SerrePositivity.EInfinity.Operad.Hopf
+public import SerrePositivity.EInfinity.Operad.HopfComponents
+public import SerrePositivity.EInfinity.Operad.ConvolutionAssembly
 public import SerrePositivity.EInfinity.Operad.ConvolutionEvaluation
 
 /-!
@@ -35,16 +36,8 @@ variable {A : Type u} [CommRing A] {P : Operad A}
 使われ方：右 tensor 転置により内部 Hom 上の演算を定義する。 -/
 def convolutionUncurriedAction (hP : Hopf P) (H : P.Coalgebra) (B : P.Algebra) (n : ℕ) :
     (P.arity n ⊗ power (homComplex A H.carrier B.carrier) n) ⊗ H.carrier ⟶ B.carrier :=
-  ((hP.diagonal.map.app (FiniteBijection.of n) ▷
-      power (homComplex A H.carrier B.carrier) n) ▷ H.carrier) ≫
-    (α_ (P.arity n ⊗ P.arity n) (power (homComplex A H.carrier B.carrier) n)
-      H.carrier).hom ≫
-    tensorμ (P.arity n) (P.arity n) (power (homComplex A H.carrier B.carrier) n)
-      H.carrier ≫
-    ((P.arity n ⊗ power (homComplex A H.carrier B.carrier) n) ◁ H.coaction n) ≫
-    (α_ (P.arity n) (power (homComplex A H.carrier B.carrier) n)
-      (power H.carrier n)).hom ≫
-    (P.arity n ◁ convolutionPowerEvaluation H.carrier B.carrier n) ≫ B.action n
+  convolutionAssembly (hP.diagonalComponent n) (H.coaction n)
+    (convolutionPowerEvaluation H.carrier B.carrier n) (B.action n)
 
 /-- 概要：内部 Hom 上の n 入力の convolution 演算（BF §3.1）。
 方針：H の点で評価した演算を符号なしの右 tensor 転置で戻す。

@@ -143,7 +143,18 @@ run_cmd do
       `SerrePositivity.EInfinity.Operad.Algebra.comp_action_of_first,
       `SerrePositivity.EInfinity.Operad.Algebra.ofFirstComposition,
       `SerrePositivity.EInfinity.Operad.convolutionAction_firstBlock_evaluation,
-      `SerrePositivity.EInfinity.Operad.convolutionAction_insertion_zero_evaluation] do
+      `SerrePositivity.EInfinity.Operad.convolutionAction_insertion_zero_evaluation,
+      `SerrePositivity.EInfinity.Operad.Hopf.diagonalComponent,
+      `SerrePositivity.EInfinity.convolutionAssembly_composition,
+      `SerrePositivity.EInfinity.convolutionAssembly_composition_of_maps,
+      `SerrePositivity.EInfinity.convolutionAssembly_pre,
+      `SerrePositivity.EInfinity.Operad.convolutionUncurriedAction_comp_zero,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_comp_zero,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_comp,
+      `SerrePositivity.EInfinity.Operad.convolutionAlgebra,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_pre,
+      `SerrePositivity.EInfinity.Operad.convolutionFunctor,
+      `SerrePositivity.EInfinity.Operad.convolutionPreNat] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

@@ -57,7 +57,7 @@ lemma convolutionAction_firstBlock_evaluation (hP : Hopf P) (H : P.Coalgebra)
         (power (homComplex A H.carrier B.carrier) m)).inv ▷ power H.carrier (m + 1)) ≫
       ((convolutionAction hP H B n ▷ power (homComplex A H.carrier B.carrier) m) ▷
         power H.carrier (m + 1)) ≫ convolutionPowerEvaluation H.carrier B.carrier (m + 1) =
-    convolutionAssembly (hP.diagonal.map.app (FiniteBijection.of n))
+    convolutionAssembly (hP.diagonalComponent n)
       ((α_ (P.arity n) H.carrier (power H.carrier m)).inv ≫
         (H.coaction n ▷ power H.carrier m))
       (tensorμ (power (homComplex A H.carrier B.carrier) n)
@@ -68,7 +68,7 @@ lemma convolutionAction_firstBlock_evaluation (hP : Hopf P) (H : P.Coalgebra)
         (B.action n ▷ power B.carrier m)) := by
   have hc : (convolutionAction hP H B n ▷ H.carrier) ≫
       convolutionEvaluation H.carrier B.carrier =
-      convolutionAssembly (hP.diagonal.map.app (FiniteBijection.of n)) (H.coaction n)
+      convolutionAssembly (hP.diagonalComponent n) (H.coaction n)
         (convolutionPowerEvaluation H.carrier B.carrier n) (B.action n) := by
     rw [← convolutionEvaluation_uncurry, convolutionAction_uncurry]
     rfl
@@ -76,7 +76,7 @@ lemma convolutionAction_firstBlock_evaluation (hP : Hopf P) (H : P.Coalgebra)
         power H.carrier (m + 1)) ≫ convolutionPowerEvaluation H.carrier B.carrier (m + 1) =
       tensorμ (P.arity n ⊗ power (homComplex A H.carrier B.carrier) n)
           (power (homComplex A H.carrier B.carrier) m) H.carrier (power H.carrier m) ≫
-        (convolutionAssembly (hP.diagonal.map.app (FiniteBijection.of n)) (H.coaction n)
+        (convolutionAssembly (hP.diagonalComponent n) (H.coaction n)
             (convolutionPowerEvaluation H.carrier B.carrier n) (B.action n) ⊗ₘ
           convolutionPowerEvaluation H.carrier B.carrier m) := by
     change _ ≫ (tensorμ _ _ _ _ ≫ (convolutionEvaluation H.carrier B.carrier ⊗ₘ
@@ -85,7 +85,7 @@ lemma convolutionAction_firstBlock_evaluation (hP : Hopf P) (H : P.Coalgebra)
       tensorμ _ _ _ _ ≫ _ = _
     rw [evaluation_head, hc]
   rw [hhead]
-  convert convolutionAssembly_tensorRight (hP.diagonal.map.app (FiniteBijection.of n))
+  convert convolutionAssembly_tensorRight (hP.diagonalComponent n)
     (H.coaction n) (convolutionPowerEvaluation H.carrier B.carrier n) (B.action n)
     (convolutionPowerEvaluation H.carrier B.carrier m) using 1 <;> rfl
 

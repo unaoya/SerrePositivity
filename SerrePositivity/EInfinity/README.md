@@ -74,8 +74,11 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 反復評価は二ブロックの連結・分割と両立する。
 `convolutionAction_insertion_zero_evaluation` は標準の先頭代入と余代入の評価を比較する。
 `Algebra.ofFirstComposition` は等変性と先頭の部分合成則から全代数公理を構成する。
-convolution 自体の部分合成則、余代数射による前合成、端点・定数の代数射性、
-評価の fibration・定数射の擬同型性、転送モデル構造は未完成。
+`convolutionAction_comp` で全位置の部分合成則を証明し、`convolutionAlgebra` を構成済み。
+余代数射の前合成も全演算を保存する。`convolutionFunctor` は固定した余代数からの
+代数の自己関手、`convolutionPreNat` は余代数射による自然な前合成を与える。
+単位余代数との比較、端点・定数の代数射性、評価の fibration・定数射の擬同型性、
+転送モデル構造は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

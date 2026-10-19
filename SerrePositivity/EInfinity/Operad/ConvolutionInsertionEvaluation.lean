@@ -75,7 +75,7 @@ lemma convolutionAction_insertion_zero_evaluation {P : Operad A}
     (tensorInsertionAction (homComplex A H.carrier B.carrier) (P.arity n) m n 0
         (convolutionAction hP H B n) ▷ power H.carrier (m + 1)) ≫
       convolutionPowerEvaluation H.carrier B.carrier (m + 1) =
-    convolutionAssembly (hP.diagonal.map.app (FiniteBijection.of n))
+    convolutionAssembly (hP.diagonalComponent n)
       (tensorCoInsertionAction H.carrier (P.arity n) m n 0 (H.coaction n))
       (convolutionPowerEvaluation H.carrier B.carrier (m + n))
       (tensorInsertionAction B.carrier (P.arity n) m n 0 (B.action n)) := by
@@ -88,7 +88,7 @@ lemma convolutionAction_insertion_zero_evaluation {P : Operad A}
     eqToHom (congrArg (power B.carrier) (Nat.add_comm n m))
   apply (cancel_epi ((P.arity n ◁ v) ▷ power H.carrier (m + 1))).1
   have h := convolutionAssembly_transport
-    (hP.diagonal.map.app (FiniteBijection.of n))
+    (hP.diagonalComponent n)
     ((α_ (P.arity n) H.carrier (power H.carrier m)).inv ≫
       (H.coaction n ▷ power H.carrier m))
     (tensorμ (power F n) (power F m) (power H.carrier n) (power H.carrier m) ≫

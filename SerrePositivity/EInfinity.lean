@@ -149,3 +149,4 @@ public import SerrePositivity.EInfinity.Operad.ConvolutionEquivariance
 public import SerrePositivity.EInfinity.Operad.ConvolutionPostcomposition
 public import SerrePositivity.EInfinity.Operad.AlgebraFirstComposition
 public import SerrePositivity.EInfinity.Operad.ConvolutionInsertionEvaluation
+public import SerrePositivity.EInfinity.Operad.ConvolutionFunctor
