@@ -772,4 +772,10 @@ public import SerrePositivity.KST.SConstruction.MonicKPrismProjectedSecondTrace
 public import SerrePositivity.KST.SConstruction.SuspendedFamilyMiddleTransfer
 public import SerrePositivity.KST.SConstruction.FamilyInterchangeCylinderChains
 public import SerrePositivity.KST.SConstruction.MonicKPrismCompositeCylinderTransport
+public import SerrePositivity.KST.SConstruction.TrianglePrismStaircase
+public import SerrePositivity.KST.SConstruction.TrianglePrismMappingImages
+public import SerrePositivity.KST.SConstruction.TrianglePrismMappingSquares
+public import SerrePositivity.KST.SConstruction.KCompositionPrismFaces
+public import SerrePositivity.KST.SConstruction.CoherentTriangleTraceRecovery
+public import SerrePositivity.KST.SConstruction.KCompositionPrismSquares
 /-! # ∞-S• 構成と連結 K 理論 -/

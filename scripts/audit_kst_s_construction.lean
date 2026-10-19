@@ -11994,3 +11994,189 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibility_zero
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibility_zero
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismHorizontal
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismHorizontal
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTime
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTime
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismEdge
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismEdge
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismUpper
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismUpper
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismLower
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismLower
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_shared_first
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_shared_first
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_shared_second
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_shared_second
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_composite_upper
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_composite_upper
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_composite_lower
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_composite_lower
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_first_upper
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_first_upper
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_first_lower
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_first_lower
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_second_upper
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_second_upper
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_second_lower
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_second_lower
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_top
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_top
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_bottom
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTetrahedron_bottom
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismImage
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismImage
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismSource
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismSource
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismTarget
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismTarget
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismImage_source
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismImage_source
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismImage_target
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismImage_target
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismImage_hom
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismImage_hom
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismImage_face
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismImage_face
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismImage_shared_first
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismImage_shared_first
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismImage_shared_second
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismImage_shared_second
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismMappingSquare
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismMappingSquare
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_skip_first
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_skip_first
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_skip_second
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_skip_second
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_include_first
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_include_first
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_include_second
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_include_second
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_shared_first
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_shared_first
+
+#check @SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_shared_second
+#print axioms SerrePositivity.KST.SConstruction.trianglePrismMappingSquare_shared_second
+
+#check @SerrePositivity.KST.SConstruction.kCompositionPrismFacesPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.kCompositionPrismFacesPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_first
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_first
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_second
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_second
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_composite
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_composite
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_composite_upper
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_composite_upper
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_composite_lower
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_composite_lower
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_first_upper
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_first_upper
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_first_lower
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_first_lower
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_second_upper
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_second_upper
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_second_lower
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionImage_second_lower
+
+#check @SerrePositivity.KST.SConstruction.triangleFlaggedPath_zero
+#print axioms SerrePositivity.KST.SConstruction.triangleFlaggedPath_zero
+
+#check @SerrePositivity.KST.SConstruction.triangleFlaggedPath_one
+#print axioms SerrePositivity.KST.SConstruction.triangleFlaggedPath_one
+
+#check @SerrePositivity.KST.SConstruction.trianglePathInterval_original_edge
+#print axioms SerrePositivity.KST.SConstruction.trianglePathInterval_original_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentTriangleTrace_composition_edge
+#print axioms SerrePositivity.KST.SConstruction.coherentTriangleTrace_composition_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentTriangleTrace_specified_edge_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentTriangleTrace_specified_edge_heq
+
+#check @SerrePositivity.KST.SConstruction.simplicialHom_post_eqToHom_heq
+#print axioms SerrePositivity.KST.SConstruction.simplicialHom_post_eqToHom_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentTriangleTrace_specified_edge
+#print axioms SerrePositivity.KST.SConstruction.coherentTriangleTrace_specified_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentTriangleTrace_specified_face
+#print axioms SerrePositivity.KST.SConstruction.coherentTriangleTrace_specified_face
+
+#check @SerrePositivity.KST.SConstruction.kCompositionPrismSquaresPointedCategory
+#print axioms SerrePositivity.KST.SConstruction.kCompositionPrismSquaresPointedCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrism_bottom_object
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrism_bottom_object
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_source
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_source
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_target
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_target
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_hom
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionPrism_hom
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_shared_first
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_shared_first
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_shared_second
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_shared_second
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_composite_upper
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_composite_upper
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_composite_lower
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalCompositionMappingSquare_composite_lower
