@@ -699,3 +699,8 @@ public import SerrePositivity.KST.Spectra.CompositionTriangleSquareProjection
 public import SerrePositivity.KST.Spectra.IdentityTriangleHomotopy
 public import SerrePositivity.KST.Spectra.SequenceRelativeTracedSquares
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointRelativeTracedSquares
+public import SerrePositivity.KST.Spectra.ThreeEdgeTransportSquare
+public import SerrePositivity.KST.Spectra.ThreeEdgeTransportSquareProjection
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureDeformation
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTransportSquares
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointSquareSeams
