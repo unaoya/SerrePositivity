@@ -9116,3 +9116,75 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.pointedKanUnderlying_simplicialCategory
 #print axioms SerrePositivity.KST.SConstruction.pointedKanUnderlying_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramHomotopyMapAt_yoneda
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramHomotopyMapAt_yoneda
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramTriangle_components
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramTriangle_components
+
+#check @SerrePositivity.KST.SConstruction.diagramFunctorEdge_homotopy_roundtrip
+#print axioms SerrePositivity.KST.SConstruction.diagramFunctorEdge_homotopy_roundtrip
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramFunctorIso_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramFunctorIso_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramInverseHomotopy_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramInverseHomotopy_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramInverse_leftTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramInverse_leftTriangle_nonempty
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramInverse_rightTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramInverse_rightTriangle_nonempty
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramHomotopyMapAt_refl
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramHomotopyMapAt_refl
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramInverse_left_component
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramInverse_left_component
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramInverse_right_component
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramInverse_right_component
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramUnitInverseMapAt
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramUnitInverseMapAt
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramUnitInverse_right_component
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramUnitInverse_right_component
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramExtensionMapAt
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramExtensionMapAt
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramExtension_post_unit_component
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramExtension_post_unit_component
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramExtensionMapAt_component
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramExtensionMapAt_component
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionCoherentInverseDiagramMapAt_component
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionCoherentInverseDiagramMapAt_component
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentDiagramMapAt_component
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentDiagramMapAt_component
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_factor_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_factor_component
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_component
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramHomotopyFunctorIso
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramHomotopyFunctorIso
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_original_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_original_component
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_original_homotopy
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_original_homotopy
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramMapAt_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramIso

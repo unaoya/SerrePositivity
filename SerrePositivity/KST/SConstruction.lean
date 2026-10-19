@@ -612,4 +612,10 @@ public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCoherentDiagram
 public import SerrePositivity.KST.SConstruction.PointedKanHomotopyComponents
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCoherentComponents
 public import SerrePositivity.KST.SConstruction.PointedKanHomotopyCategoryComparison
+public import SerrePositivity.KST.SConstruction.PointedKanDiagramTriangleComponents
+public import SerrePositivity.KST.SConstruction.PointedKanDiagramInverseTriangles
+public import SerrePositivity.KST.SConstruction.PointedKanDiagramExtensionComponents
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCoherentComparison
+public import SerrePositivity.KST.SConstruction.PointedKanDiagramComponentEquivalences
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCoherentOmegaCondition
 /-! # ∞-S• 構成と連結 K 理論 -/
