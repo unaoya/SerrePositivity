@@ -672,6 +672,12 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.inner_table_success,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.innerWord_covers,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_inner_recovery_with_rows,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.recurrent_tail,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionTrace.recurrent_of_schedule,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.InnerRunDecomposition.inner_recurrent,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.inner_recurrent_table_success,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_inner_schedule,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_inner_basis,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1745,3 +1751,45 @@ example : ∃ table : List (List (Fin 2) × ℕ),
         [0, 1, 2, 0, 3, 0] = [0, 1] := by decide
     simpa only [List.filterMap_nil, hw] using ht
   · exact hm.trans (by decide)
+
+private lemma innerGrid_success : reduceRows (rows (fun i =>
+    BarrattEccles.permutationComposition 3 2 1 (bfTable (gridRecoveryPath.horizontal i))
+      (terminalTable (gridRecoveryPath.vertical i))) gridRecoverySchedule) [] =
+    some [0, 1, 2, 4, 2, 1, 4, 3] := by
+  have he : CompositeRecovery.shuffleTableEntries gridRecoveryPath bfTable terminalTable
+      gridRecoverySchedule = gridRecoveryEntries := by decide
+  rw [← CompositeRecovery.shuffleTableEntries_rows 1 gridRecoveryPath bfTable terminalTable
+    gridRecoverySchedule, he]
+  simpa using gridRecoveryPrefix.append [] [] rfl
+private lemma innerGrid_word : CompositeRecovery.innerWord (m := 3) (n := 2) 1
+    [0, 1, 2, 4, 2, 1, 4, 3] = List.ofFn compositionInner.val := by decide
+-- 行長総和を仮定せず復元した内側 Schedule が既知の元の Schedule に一致する。
+example : ∃ r : Schedule 2 1, r = terminalSchedule ∧
+    reduceRows (rows terminalTable r) [] = some (List.ofFn compositionInner.val) := by
+  obtain ⟨r, hs, _, _⟩ := CompositeRecovery.shuffle_inner_schedule (by decide) 1 gridRecoveryPath
+    bfTable terminalTable gridRecoverySchedule _ innerGrid_success (by decide)
+  rw [innerGrid_word] at hs
+  exact ⟨r, schedule_eq_of_same_output terminalTable terminalTable r terminalSchedule
+    compositionInner.val hs verticalInner_success, hs⟩
+-- 内側基底語の元の次数と成功 Schedule の一意性も実際の shuffle 成功から得る。
+example : ∃ v : BasisWord 2 1, v = compositionInner ∧
+    ∃! r : Schedule 2 1, reduceRows (rows terminalTable r) [] = some (List.ofFn v.val) := by
+  obtain ⟨v, hv, hr⟩ := CompositeRecovery.shuffle_inner_basis (by decide) 1 gridRecoveryPath
+    bfTable terminalTable gridRecoverySchedule _ innerGrid_success (by decide)
+  refine ⟨v, ?_, hr⟩
+  apply Subtype.ext
+  exact List.ofFn_injective (hv.trans innerGrid_word)
+-- 内側次数零でも、内側を選ばない末尾行を含む全合成 Schedule から復元する。
+example : ∃ r : Schedule 2 0,
+    reduceRows (rows (fun _ : Fin 1 => (1 : Equiv.Perm (Fin 2))) r) [] = some [0, 1] := by
+  let s : BarrattEccles.ShufflePath 2 0 := ⟨{0, 1}, by decide⟩
+  let outer : Fin 3 → Equiv.Perm (Fin 3) := ![1, Equiv.swap 0 1, Equiv.swap 0 2]
+  let inner : Fin 1 → Equiv.Perm (Fin 2) := fun _ => 1
+  let r : Schedule 4 2 := ⟨![1, 3, 2], by decide⟩
+  have hs : reduceRows (rows (fun i => BarrattEccles.permutationComposition 2 2 1
+      (outer (s.horizontal i)) (inner (s.vertical i))) r) [] =
+      some [0, 1, 2, 0, 3, 0] := by decide
+  obtain ⟨q, hq, _, _⟩ := CompositeRecovery.shuffle_inner_schedule (by decide) 1 s outer inner r
+    _ hs (by decide)
+  have hw : CompositeRecovery.innerWord (m := 2) (n := 2) 1 [0, 1, 2, 0, 3, 0] = [0, 1] := by decide
+  exact ⟨q, by simpa only [hw] using hq⟩

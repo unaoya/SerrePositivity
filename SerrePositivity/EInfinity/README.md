@@ -387,9 +387,14 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `mem_innerWord`・`innerWord_covers` は復元内側語の全射性を元の出力から得る。
 `shuffle_inner_recovery_with_rows` は正の内側 arity の実際の経路から元の全内側行列・行数を復元する。
 復元語は元の出力の内側復元そのもので、非退化性・全射性も証明済み。
-内側の行長総和条件と元の次数の Schedule・全項の全単射は未完成。
+`ExtractionPrefix.recurrent_tail` は元の全行末の再出現を実際の先行抽出の後へ渡す。
+`InnerRunDecomposition.inner_recurrent` は垂直直前の保持末尾から全内側復元の行末再出現を得る。
+`shuffle_inner_schedule` は余剰総和 n−1 と元の行数から、元の内側次数の成功 Schedule を構成する。
+`shuffle_inner_basis` は合成出力だけの内側復元語から元の次数の BasisWord と一意な成功 Schedule を返す。
+正の内側 arity では実際の shuffle 成功から元の両入力語・次数・一意な成功 Schedule を復元済み。
+元の分割と経路の往復、退化・空語を含む全項の全単射は未完成。
 元の成功二表の全体の逆構成と空語の挿入は未完成。
-TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
+TR の一般の合成保存と、それを用いた χ の部分合成の微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：
