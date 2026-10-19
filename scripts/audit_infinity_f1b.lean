@@ -2923,3 +2923,16 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFamilyMap_vertex
 
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFamilyMap_bijective_vertices
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeFiberEquivalence
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorFiberIso
+#check @SerrePositivity.InfinityCategories.F1B.kanVertexFiberSquareIso
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveMap_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeRestriction_square
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFiberFamilyIso
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFamilyMap_factorization
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFamilyMap_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveVertex_isTerminal_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCone_isLimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanConeOfNerveCone_isLimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_hasLimit_iff

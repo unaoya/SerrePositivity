@@ -48,9 +48,10 @@
 - B5 局所比較：Under・Over の nerve と元の頂点上の native な coslice・slice の同型と忘却射影の一致を証明。
   左右 comma の通常の四角形の引き戻し性から、左右の元の Kan 添字の比較射の同型性と K への射影・局所図式の厳密な一致を証明。
 - 通常の錐と nerve の任意の join の錐を頂点を保つ全単射で比較。錐の射と、元の図式上で恒等な拡張関手間の自然変換も全単射。
-  通常の錐の nerve から native な固定図式上の錐の族への比較射を構成し、指定錐の表示・対象上の全単射を証明。比較射の同値性・極限性は未証明。
-- 最終検証：F1・F1B 同時ビルド成功（4035 jobs）、同時 import 検査成功（F1 7451・F1B 4979 宣言）。
-  公理監査成功（4985 宣言、標準三公理のみ、1384 モジュールに straightening なし）。ソース名衝突 0。
+  通常の錐の圏と拡張関手の fiber の同値、nerve の fiber 同型から、錐の族への指定比較射の同値性を証明。
+  通常の終対象と nerve の終頂点、指定錐・任意の native な錐の極限性、図式の極限の存在を双方向に比較。
+- 最終検証：F1・F1B 同時ビルド成功（4048 jobs）、同時 import 検査成功（F1 7451・F1B 5040 宣言）。
+  公理監査成功（5046 宣言、標準三公理のみ、1395 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -76,7 +77,7 @@
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
 - `F1B.kanNerveLeftKanShapeIso_hom_diagram` / `F1B.kanNerveRightKanShapeIso_hom_diagram`
-- `F1B.kanNerveConeEquiv` / `F1B.kanNerveConeFamilyMap`
+- `F1B.kanNerveConeFamilyMap_isQCatEquivalence` / `F1B.kanNerveCone_isLimit_iff` / `F1B.kanNerve_hasLimit_iff`
 
 ### 依存と提供
 
@@ -86,7 +87,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：通常の錐の相互復元・拡張関手の射の比較・native な錐の族への比較射と対象上の全単射、集約・監査・本書）。
+- なし（本保存単位：錐の族の同値・nerve の終対象と極限の双方向比較、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +99,8 @@
 
 ### 次の一手
 
-- p := `(Functor.whiskeringLeft I (WithInitial I) C).obj WithInitial.incl` に対し、
-  `kanConeExtensionFunctor_restrict` から `Cone F ⥤ Functor.Fiber p F` を構成し、錐と射の復元で同値性を示す。
-  nerve の fiber と native な錐の族を比較し `kanNerveConeFamilyMap` の同値性・極限性、pointwise Kan へ接続する。
+- `kanNerveCone_isLimit_iff` の余錐側を反転と nerve の反対圏同型から構成し、指定余錐と余極限の存在を比較。
+  左右 comma 添字同型で局所図式を移し、通常の pointwise Kan の指定単位・余単位の局所錐を双方向に比較する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
