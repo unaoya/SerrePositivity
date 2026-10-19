@@ -900,7 +900,14 @@ run_cmd do
     `SerrePositivity.KST.Spectra.HomTensorExchangeEvaluation,
     `SerrePositivity.KST.Spectra.RawSpectrumUnpointedWeightedComposition,
     `SerrePositivity.KST.Spectra.RawSpectrumWeightedCompositionUnderlying,
-    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitUnderlyingComposition]
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitUnderlyingComposition,
+    `SerrePositivity.KST.Spectra.WeightedParameterNaturality,
+    `SerrePositivity.KST.Spectra.WeightedParameterWeightNaturality,
+    `SerrePositivity.KST.Spectra.SpectrumHomDiagramComposition,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitHomHolimComposition,
+    `SerrePositivity.KST.Spectra.BousfieldKanEdgewiseEndLift,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitEndPoint,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitCoherentCone]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

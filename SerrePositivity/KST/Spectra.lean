@@ -413,3 +413,10 @@ public import SerrePositivity.KST.Spectra.HomTensorExchangeEvaluation
 public import SerrePositivity.KST.Spectra.RawSpectrumUnpointedWeightedComposition
 public import SerrePositivity.KST.Spectra.RawSpectrumWeightedCompositionUnderlying
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitUnderlyingComposition
+public import SerrePositivity.KST.Spectra.WeightedParameterNaturality
+public import SerrePositivity.KST.Spectra.WeightedParameterWeightNaturality
+public import SerrePositivity.KST.Spectra.SpectrumHomDiagramComposition
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitHomHolimComposition
+public import SerrePositivity.KST.Spectra.BousfieldKanEdgewiseEndLift
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitEndPoint
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitCoherentCone
