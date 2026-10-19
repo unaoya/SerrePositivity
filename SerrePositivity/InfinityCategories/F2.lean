@@ -34,10 +34,11 @@ public import SerrePositivity.InfinityCategories.F2.FilteredRetracts
 public import SerrePositivity.InfinityCategories.F2.FilteredCoslices
 public import SerrePositivity.InfinityCategories.F2.FilteredKanContractibility
 public import SerrePositivity.InfinityCategories.F2.ContinuousKanFiniteFactorization
+public import SerrePositivity.InfinityCategories.F2.FilteredWeakContractibility
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
-規約：Ind・compact・冪等完備化は別レーンと分担する。
+規約：F1b が filtered・Ind・compact・冪等完備化を担当する。
 使われ方：Cat_∞ の極限、lax pullback、安定 ∞ 圏への接続。
 -/

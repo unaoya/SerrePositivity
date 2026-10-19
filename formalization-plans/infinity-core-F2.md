@@ -17,8 +17,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   κ-small/filtered の定義・ℵ₀ 比較に加え、有限 join、有限図式の coslice の filtered 性を証明。
   有限部分複体の filtered 表示を構成し、全ホーン付加の具体的な可算反復 Q を構成。
   Q の通常の filtered 余極限保存、全ての値の Kan 性、有限境界の元の有限部分複体への因子分解を証明。
-  Q の単位の弱同値性と一般の filtered ∞ 圏の弱可縮性は未完了。
-  三集約同時ビルド 6703 jobs、F2 公理監査 1307 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
+  Q の単位の anodyne 性・弱同値性、一般の filtered ∞ 圏と有限図式の coslice の弱可縮性を証明。
+  三集約同時ビルド 6729 jobs、F2 公理監査 1327 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -36,7 +36,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.finite_join` / `F2.isFilteredInfinity_sliceUnder` / `F2.isFilteredInfinity_iff_isContractibleKan`
 - `F2.finiteSubcomplexCocone_isColimit` / `F2.continuousKanReplacement`
 - `F2.continuousKanReplacement_preservesFilteredColimits` / `F2.continuousKanReplacement_kanComplex`
-- `F2.continuousKanReplacement_boundary_factorization`
+- `F2.continuousKanReplacementUnit_isWeakHomotopyEquivalence` / `F2.isWeaklyContractible_of_isFilteredInfinity`
 - `CatInfinity` / `catInfinity_quasicategory`
 - `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
 - `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_projection_commutativity`
@@ -59,15 +59,15 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 - F1 の前層・Yoneda は F1 計画の後続工程。Ind の存在を仮定して回避しない。
 - 一般の coherent な図式の余極限と、通常の小圏による strict 図式の余極限を区別する。
-- 既存 anodyneKanObject の保存性を仮定せず、連続な Q を具体的に構成した。Q の単位の弱同値性はまだ未証明。
-  Kan 性・連続性だけで Kan 置換の全条件を満たしたとは主張しない。
+- 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
+  一般の弱可縮性は証明済みだが、対角関手の cofinality と coherent な filtered 余極限の交換は残る。
   κ-small join・κ 版 coslice の filtered 性も残る。有限版を自動的に一般化しない。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：ホーン付加の単位と反復の単位の anodyne 性を証明し、弱同値性へ接続する。
-  その後、証明済みの有限境界の因子分解と有限余錐の収縮から一般の弱可縮性を証明する。
+- F2N-1：κ-small join と κ 版 coslice の filtered 性を証明する。
+  有限図式の coslice の弱可縮性を、標準 comma の比較を通じて対角関手の cofinality へ接続する。
 
 ## 0. 目標と範囲
 
@@ -112,7 +112,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   Remark 6 の四角形は [PDF 第 5 頁](https://arxiv.org/pdf/1703.03331v3#page=5) で確認する。
 - HTT §3.3.3（∞ 圏の極限）、§5.3（Ind・compact）、§5.5（presentable）。
 - [Kerodon §4.9.4](https://kerodon.net/tag/03S1) の κ-small、[§9.1.1](https://kerodon.net/tag/02P8) の filtered ∞ 圏。
-  9.1.1.16 の有限版の coslice、9.1.1.20 の Kan 判定を証明済み。9.1.1.17 の一般の弱可縮性は残る。
+  9.1.1.16 の有限版の coslice、9.1.1.17 の一般の弱可縮性、9.1.1.20 の Kan 判定を証明済み。
 
 ## 3. F2-lite 第 2 部（F1b、旧 N から移管）
 

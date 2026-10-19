@@ -542,3 +542,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_kanComplex
 #check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_finite_factorization
 #check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_boundary_factorization
+
+#check @SerrePositivity.InfinityCategories.F2.cellCopiesMap_anodyne
+#check @SerrePositivity.InfinityCategories.F2.hornCopiesBoundary_anodyne
+#check @SerrePositivity.InfinityCategories.F2.hornCellStepUnit_anodyne
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_anodyneComposition
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_anodyne
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coconeNullHomotopy
+#check @SerrePositivity.InfinityCategories.F2.exists_nullHomotopy_of_isFilteredInfinity
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_map_null_of_cocone
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_isContractibleKan_of_filtered
+#check @SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity
+#check @SerrePositivity.InfinityCategories.F2.isWeaklyContractible_sliceUnder_of_filtered

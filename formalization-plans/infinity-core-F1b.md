@@ -45,8 +45,8 @@
   零枝の span の入力の存在から零角の押し出し性を成分で判定し、両射影の IsExactFunctor を証明。始域の安定性は仮定しない。
   零源の cospan の極限を反転と枝の交換で構成。元の指定射を保つ全 fiber・cofiber の存在と零角の条件の一致を証明。
   laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
-- 第 2 部：有限部分複体の filtered 表示、具体的な Q の連続性・値の Kan 性・有限境界の因子分解まで検証済み。
-  三集約同時ビルド 6703 jobs、公理監査 1307 宣言・同時 import 成功。Q の単位の弱同値性と一般の弱可縮性は残る。
+- 第 2 部：連続 Kan 置換 Q の単位の anodyne 性・弱同値性、一般の filtered ∞ 圏と有限 coslice の弱可縮性を証明。
+  三集約同時ビルド 6729 jobs、公理監査 1327 宣言・同時 import 成功。cofinality と κ 版 coslice は残る。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -66,7 +66,7 @@
 - `F2.catInfinityVertexEquiv` / `F2.coherentEdgeHom_edge`
 - `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
 - `F2.catPullbackObject` / `F2.catPullbackFunctorIso` / `F2.catPullbackFunctorCoreIso`
-- `F2.finiteSubcomplexCocone_isColimit` / `F2.continuousKanReplacement_boundary_factorization`
+- `F2.continuousKanReplacementUnit_isWeakHomotopyEquivalence` / `F2.isWeaklyContractible_of_isFilteredInfinity`
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
@@ -97,7 +97,7 @@
 
 ### 次の一手
 
-- F2N-1：具体的な Q の単位の anodyne 性・弱同値性を証明し、有限境界の因子分解から一般の弱可縮性へ進む。
+- F2N-1：κ-small join・κ 版 coslice の filtered 性を証明し、有限 coslice の弱可縮性を cofinality へ接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
