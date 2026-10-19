@@ -312,7 +312,13 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `OverlapPartition.collapse_segments` は共有端点の重複を除いて元の内側語へ戻す。
 `innerWord_compositeWord` は出力だけから元の内側語を復元する。
 `input_words_unique` と `input_degrees_unique` は同じ合成語を与える両語・両次数の一意性。
-分割自体の一意性、任意の成功経路表から元の成功二表を構成する逆方向、全項の全単射と空語は未完成。
+`isInserted` の takeWhile・dropWhile は挿入語を次の外側文字で切り出す。
+`splitParts_compositeWord` は元の外側語を案内に全分割成分を復元し、空部分語も扱う。
+`partsOfWord_compositeWord` は出力だけから元の外側語を復元して全分割成分を取り出す。
+`partition_unique` は分割長の一致から分割の一意性を示し、内側語長零も含む。
+`composite_data_injective` は正の内側語長で両語・分割の依存対から合成語への単射性。
+`schedule_eq_of_same_output` は元の置換列が異なる場合も成功出力の同じ Schedule を強制する。
+任意の成功経路表から元の成功二表を構成する逆方向、全項の全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

@@ -592,6 +592,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.inner_compositeWord,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.innerWord_compositeWord,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_words_unique,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.splitParts_compositeWord,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.partition_unique,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.partsOfWord_compositeWord,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.composite_data_injective,
+      `SerrePositivity.EInfinity.TableReduction.schedule_eq_of_same_output,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1336,3 +1341,19 @@ example : CompositeRecovery.innerWord 1
     (compositeWord canonicalFixture compositionInner 1 verticalCuts) = [0, 1, 0] := by
   exact (CompositeRecovery.innerWord_compositeWord canonicalFixture compositionInner 1
     verticalCuts (by decide)).trans (by decide)
+
+-- 出力だけから両分割部分語を共有端点も含めて復元する。
+example : CompositeRecovery.partsOfWord 1
+    (compositeWord canonicalFixture compositionInner 1 verticalCuts) = [[0, 1], [1, 0]] := by
+  exact (CompositeRecovery.partsOfWord_compositeWord canonicalFixture compositionInner 1
+    verticalCuts (by decide)).trans (by decide)
+-- 分割復元は空の内側部分語もそのまま扱う。
+example : CompositeRecovery.splitParts (m := 1) (n := 0) 0 [0, 1] [0] = [[]] := by
+  exact CompositeRecovery.splitParts_substitute (m := 1) (n := 0) 0 [0, 1] [[]]
+    (by decide) (by decide)
+-- 同じ成功出力を与える元の Schedule は一意。
+example (r : Schedule 4 2)
+    (h : reduceRows (rows bfTable r) [] = some (List.ofFn canonicalFixture.val)) :
+    r = bfSchedule₁ :=
+  schedule_eq_of_same_output bfTable bfTable r bfSchedule₁ canonicalFixture.val h
+    rankFixture_success
