@@ -409,3 +409,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso_path
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackEquivalenceSubcomplex_isFullyFaithful
 #check @SerrePositivity.InfinityCategories.F2.catPullbackToLax_isPullback
+
+#check @SerrePositivity.InfinityCategories.F2.isTerminalVertex_pullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isInitialVertex_pullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isTerminalVertex_tensor
+#check @SerrePositivity.InfinityCategories.F2.isInitialVertex_tensor
+#check @SerrePositivity.InfinityCategories.F2.isTerminalVertex_arrow_of_endpoints
+#check @SerrePositivity.InfinityCategories.F2.isInitialVertex_arrow_of_endpoints
+#check @SerrePositivity.InfinityCategories.F2.isTerminalVertex_laxPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isInitialVertex_laxPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isZeroVertex_laxPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.exists_zeroVertex_laxPullback_with_components
+#check @SerrePositivity.InfinityCategories.F2.hasZeroVertex_laxPullback_of_preservesZero
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackFst_preservesZero
+#check @SerrePositivity.InfinityCategories.F2.laxPullbackSnd_preservesZero
+#check @SerrePositivity.InfinityCategories.F2.isZeroVertex_laxPullback_iff
+#check @SerrePositivity.InfinityCategories.F2.laxPullback_hasZeroVertex
