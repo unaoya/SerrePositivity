@@ -120,6 +120,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1851,6 +1852,54 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.fatSkeletonRow_zero_isIso
 
 
+-- FiberCoefficientAdjunction.lean
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientHomFunctor
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientHomFunctor
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientProjection_eq
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientProjection_eq
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientLift
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientLift
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientDesc
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientDesc
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientSigmaReassemble
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientSigmaReassemble
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientHomEquiv
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientHomEquiv
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientHomEquiv_naturality
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientHomEquiv_naturality
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientFunctor
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientFunctor
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientAdjunction
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientAdjunction
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientFunctor_isLeftAdjoint
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientFunctor_isLeftAdjoint
+
+
+-- FiberCoefficientMaps.lean
+
+#check @SerrePositivity.KST.Comparison.overTypeMap_base
+#print axioms SerrePositivity.KST.Comparison.overTypeMap_base
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientFunctor_map_ι
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientFunctor_map_ι
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientFunctor_map_factorization
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientFunctor_map_factorization
+
+#check @SerrePositivity.KST.Comparison.fiberCoefficientFunctor_preservesMonomorphisms
+#print axioms SerrePositivity.KST.Comparison.fiberCoefficientFunctor_preservesMonomorphisms
+
+
 -- FiberwiseAnodyne.lean
 
 #check @SerrePositivity.KST.Comparison.pointTensorIso_fst
@@ -3307,6 +3356,48 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
 #print axioms SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
+
+
+-- LocalCoefficientColimits.lean
+
+#check @SerrePositivity.KST.Comparison.overSimplicialEvaluation_preservesColimits
+#print axioms SerrePositivity.KST.Comparison.overSimplicialEvaluation_preservesColimits
+
+#check @SerrePositivity.KST.Comparison.overSimplicialEvaluation_preservesMonomorphisms
+#print axioms SerrePositivity.KST.Comparison.overSimplicialEvaluation_preservesMonomorphisms
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialFunctor_preservesColimits
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialFunctor_preservesColimits
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialFunctor_preservesMonomorphisms
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialFunctor_preservesMonomorphisms
+
+#check @SerrePositivity.KST.Comparison.normalizedMooreComplexAb_isEquivalence
+#print axioms SerrePositivity.KST.Comparison.normalizedMooreComplexAb_isEquivalence
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientChainsFunctor_preservesColimits
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientChainsFunctor_preservesColimits
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientChainsFunctor_preservesMonomorphisms
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientChainsFunctor_preservesMonomorphisms
+
+
+-- LocalCoefficientDegreeComparison.lean
+
+#check @SerrePositivity.KST.Comparison.overSimplicialEvaluation
+#print axioms SerrePositivity.KST.Comparison.overSimplicialEvaluation
+
+#check @SerrePositivity.KST.Comparison.overSimplexCoefficientFamily
+#print axioms SerrePositivity.KST.Comparison.overSimplexCoefficientFamily
+
+#check @SerrePositivity.KST.Comparison.coefficientSimplicialObjIsoSigma_inv_ι
+#print axioms SerrePositivity.KST.Comparison.coefficientSimplicialObjIsoSigma_inv_ι
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSourceIso_app
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSourceIso_app
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientDegreeIso
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientDegreeIso
 
 
 -- LocalCoefficientFibers.lean

@@ -848,6 +848,17 @@ Over(B_d) の対象 p:X→B_d を ⊕_(x∈X) A_(p x) へ送る関手を使う�
 slice の評価と係数群の直和表示を比較して、基底上の非正規化鎖複体の余極限保存へ渡す。
 この次数ごとの議論は、全次数の余極限を仮定に置くことを避け、係数の輸送も明示できる。
 
+### slice の horn の小対象構成
+
+確認する文言：基底 B に対し、各 τ:Δ[n]→B と horn Λ[n,k]→Δ[n] を基底上の射にする。
+これらの生成射に対する右持ち上げ性は、下の単体写像が全 horn に対する右持ち上げ性を持つことと同値である。
+任意の下の horn の四角形を、その下辺と標的から B への合成で基底上の四角形へ持ち上げて示す。
+生成射の始域は下の有限 horn から有限表示可能であり、comma 圏の有限表示可能性の定理で確認する。
+従って slice でも実際の horn の小対象構成を適用できる。
+下の写像が anodyne なら、右持ち上げ性の同定と Over への持ち上げにより slice の生成射の右直交の左直交に属する。
+これを余積・pushout・超限合成・retract の表示へ移して、構成済みの局所係数関手へ適用する。
+原典の Kan 置換の局所係数保存を、基底上の小対象構成と係数鎖複体の余極限保存で証明する経路である。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a と L2b の要求された群状モノイドの比較・KST Lemma 2.13 を完了し、L2c に進む。
@@ -921,7 +932,10 @@ anodyne 局所化の同型と群状モノイドの標準群完備化写像の整
 正次元の全 horn 包含は全ての標的局所係数で正規化鎖写像の擬同型を誘導することも証明した。
 固定した基底上の局所係数の単体的群の関手と、その正規化・非正規化複体の関手を構成した。
 係数の等式からの輸送・その合成・Kan 拡張の単位・関手法則は全て証明した。
-これらの余極限保存、局所係数での anodyne 保存の拡張と plus のセル添付の計算は未完了。
+次数ごとの係数直和と準同型の族の具体的な随伴を構成し、直和の射の式と単射保存を証明した。
+基底上の局所係数の単体的群と、この次数ごとの左随伴の合成との自然同型を証明した。
+これにより単体的群の余極限・単射保存を得て、実際の Dold–Kan 同値で正規化複体の余極限・単射保存へ移した。
+slice の小対象構成による全局所係数の anodyne 保存と plus のセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -930,10 +944,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4496 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4500 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1428 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2619 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1454 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2658 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -945,6 +959,9 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `fiberCoefficientAdjunction`、`fiberCoefficientFunctor_preservesMonomorphisms` | 監査済み | 基底上の係数の直和の実際の随伴と単射保存 |
+| `overLocalCoefficientDegreeIso` | 監査済み | 各次数の係数直和の自然な比較 |
+| `overLocalCoefficientChainsFunctor_preservesColimits`、`overLocalCoefficientChainsFunctor_preservesMonomorphisms` | 監査済み | 基底上の正規化局所係数複体の余極限・単射保存 |
 | `overLocalCoefficientSourceIso`、`overLocalCoefficientSimplicialMap_unit` | 監査済み | 基底との可換性による係数輸送と単位の可換性 |
 | `overLocalCoefficientSimplicialFunctor`、`overLocalCoefficientChainsFunctor`、`overLocalCoefficientUnnormalizedChainsFunctor` | 監査済み | 基底上の実際の局所係数の関手 |
 | `standardSimplexLocalCoefficientTrivialization` | 監査済み | 初対象からの輸送による局所係数の自明化 |
