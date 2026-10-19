@@ -340,6 +340,12 @@ public import SerrePositivity.InfinityCategories.Stable.CofiberZeroSource
 public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingEdges
 public import SerrePositivity.InfinityCategories.Stable.StableVertexClosure
 
+public import SerrePositivity.InfinityCategories.Stable.CofiberPushoutComparison
+public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingBaseChange
+public import SerrePositivity.InfinityCategories.Stable.StableVertexExtension
+public import SerrePositivity.InfinityCategories.Stable.CofiberOctahedronSquares
+public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingComposition
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

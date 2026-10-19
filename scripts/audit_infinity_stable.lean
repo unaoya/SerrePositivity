@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierDenominators
 import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalMappingSpaces
 import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
 import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalizingEdges
@@ -1610,6 +1611,24 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgQuotient_pinchedHomMap_equivalence_outOf
 #print axioms SerrePositivity.InfinityCategories.dgQuotientRightLocalNerve_isFullyFaithful
 
+#print axioms SerrePositivity.InfinityCategories.cofiberPushoutComparisonIso
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_edge_mem_iff
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_pushout_iff
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_pullback_iff
+#print axioms SerrePositivity.InfinityCategories.StableVertexClosure.suspension
+#print axioms SerrePositivity.InfinityCategories.StableVertexClosure.extension
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.compositeCofiberSquare
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.nextCofiberSquare
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.last_source
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.last_middle
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.last_target
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_of_isInvertible
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_twoOfThree
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_of_isInvertible
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_twoOfThree
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_pushout_iff
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_pullback_iff
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1763,6 +1782,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.CofiberPushoutComparison,
+    `SerrePositivity.InfinityCategories.Stable.CofiberLocalizingBaseChange,
+    `SerrePositivity.InfinityCategories.Stable.StableVertexExtension,
+    `SerrePositivity.InfinityCategories.Stable.CofiberOctahedronSquares,
+    `SerrePositivity.InfinityCategories.Stable.CofiberLocalizingComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDenominators,
     `SerrePositivity.InfinityCategories.Derived.ComplexQuasiIsoSpan,
     `SerrePositivity.InfinityCategories.Derived.ComplexUnitHomIso,
     `SerrePositivity.InfinityCategories.Derived.PinchedChainMapComposition,
