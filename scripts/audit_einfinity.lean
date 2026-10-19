@@ -727,6 +727,19 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.reduceRows_nullary,
       `SerrePositivity.EInfinity.TableReduction.completeRows_nullarySourceRows,
       `SerrePositivity.EInfinity.TableReduction.nullary_success_extension,
+      `SerrePositivity.EInfinity.TableReduction.nullary_success_schedule,
+      `SerrePositivity.EInfinity.Surjection.isChain_insert_of_eraseSlotWord,
+      `SerrePositivity.EInfinity.TableReduction.nullary_successfulWord_lift_exists,
+      `SerrePositivity.EInfinity.TableReduction.nullary_successfulWord_lift_term,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionTrace.filterMap_reduceRows,
+      `SerrePositivity.EInfinity.TableReduction.recurrentEnds_eraseSlotWord_ready,
+      `SerrePositivity.EInfinity.TableReduction.nullary_forward_schedule,
+      `SerrePositivity.EInfinity.TableReduction.nullary_successfulWord_forward_exists,
+      `SerrePositivity.EInfinity.TableReduction.nullarySourceFintype,
+      `SerrePositivity.EInfinity.TableReduction.nullaryForward,
+      `SerrePositivity.EInfinity.TableReduction.nullaryForward_word,
+      `SerrePositivity.EInfinity.TableReduction.nullaryForward_surjective,
+      `SerrePositivity.EInfinity.TableReduction.nullaryForward_term,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2084,3 +2097,39 @@ example : ∃ before chosen after pre post,
     reduceRows (before ++ (chosen.1, chosen.2 + 1) :: after) [] =
       some (pre ++ 0 :: post) :=
   nullary_success_extension nullaryOuter 1 0 terminalSchedule [0, 1, 0] (by decide)
+
+-- 延長された行長は元の Schedule であり、削除後の非退化語へ戻る。
+private def nullaryLiftSchedule : Schedule 3 1 := ⟨![2, 2], by decide⟩
+private def nullaryLiftWord : BasisWord 3 1 := ⟨![0, 1, 2, 1], by decide⟩
+private def nullaryLiftSuccess : SuccessfulWord nullaryOuter :=
+  ⟨(nullaryLiftSchedule, nullaryLiftWord), by decide⟩
+private def nullaryLiftSource : NullarySource nullaryOuter 0 :=
+  ⟨nullaryLiftSuccess, by decide⟩
+private def nullaryTargetSuccess : SuccessfulWord (fun j =>
+    BarrattEccles.permutationComposition 2 0 0 (nullaryOuter j) 1) :=
+  ⟨(terminalSchedule, compositionInner), by decide⟩
+example : List.ofFn (nullaryForward (by decide) nullaryOuter 1 0 nullaryLiftSource).val.2.val =
+    [0, 1, 0] := by
+  rw [nullaryForward_word]
+  rfl
+example : nullaryForward (by decide) nullaryOuter 1 0 nullaryLiftSource =
+    nullaryTargetSuccess := by
+  apply successfulWord_eq_of_word_eq _ _ _
+  rw [nullaryForward_word]
+  rfl
+-- 空語との部分合成が実際の目標基底元へ一致することも係数環 ℤ 上で検証。
+example : compositionOnWords ℤ nullaryLiftWord emptyNullaryWord 0 =
+    basis ℤ 2 1 (ULift.up compositionInner) := by
+  have h := nullaryForward_term ℤ (by decide) nullaryOuter 1 0 nullaryLiftSource
+  rw [show nullaryForward (by decide) nullaryOuter 1 0 nullaryLiftSource =
+    nullaryTargetSuccess by
+      apply successfulWord_eq_of_word_eq _ _ _
+      rw [nullaryForward_word]
+      rfl] at h
+  exact h
+-- 各実際の成功基底語には、語の削除で元へ戻る一出現の成功基底語が存在する。
+example : ∃ p : SuccessfulWord nullaryOuter, occurrenceCount p.val.2.val 0 = 1 ∧
+    eraseSlotWord 0 (List.ofFn p.val.2.val) = [0, 1, 0] :=
+  nullary_successfulWord_lift_exists nullaryOuter 1 0 nullaryTargetSuccess
+example : Function.Surjective (nullaryForward (by decide) nullaryOuter 1 (0 : Fin 3)) :=
+  nullaryForward_surjective (by decide) nullaryOuter 1 0

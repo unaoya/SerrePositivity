@@ -433,7 +433,15 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `reduceRows_eraseSlotWord_of_mem` は指定値を早期除外した全抽出と削除の可換性。
 `reduceRows_nullary` は実際の全合成表を元の早期除外表へ同定する。
 `nullary_success_extension` は解放値探索により一行を延長し、指定値を一回だけ挿入した成功表を構成。
-次数零の空語挿入について、元の Schedule への包装・成功項の一意な全単射と有限和の一致は未完成。
+`nullary_success_schedule` は延長表を元の次数の Schedule に包装する。
+`isChain_insert_of_eraseSlotWord` は削除後の非退化性を元の語へ戻す。
+`nullary_successfulWord_lift_exists`・`lift_term` は実際の目標成功基底語から元の一出現成功項を構成し、項の値を保つ。
+`FilterMapReady` は全選択の非空性と非最終行末の保持条件。
+`recurrentEnds_eraseSlotWord_ready` は高々一出現と行末の再出現からこの条件を導く。
+`nullary_forward_schedule` は一出現の元の成功表から実際の nullary 成功 Schedule を構成する。
+`NullarySource` は一出現で削除後も非退化な元の有限成功項。
+`nullaryForward` は実際の目標成功項への全射で、`nullaryForward_term` は空語合成の項の値を保つ。
+次数零の空語挿入について、順方向の単射性・出力 arity 零の境界・有限和の一致は未完成。
 nullary を含む TR の合成保存と、それを用いた χ の部分合成の微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

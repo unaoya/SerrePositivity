@@ -255,3 +255,4 @@ public import SerrePositivity.EInfinity.TableReduction.CompositionPositive
 public import SerrePositivity.EInfinity.TableReduction.CompositionNullaryPositiveDegree
 public import SerrePositivity.EInfinity.TableReduction.NullaryAvailable
 public import SerrePositivity.EInfinity.TableReduction.NullaryEarlyExclusion
+public import SerrePositivity.EInfinity.TableReduction.NullarySuccessMap
