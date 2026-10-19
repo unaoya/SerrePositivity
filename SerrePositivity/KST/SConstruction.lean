@@ -560,4 +560,14 @@ public import SerrePositivity.KST.SConstruction.AnodyneExtensionChoices
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityFamilyChoices
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblySelectedNaturality
 
+public import SerrePositivity.KST.SConstruction.CartesianEdgeInterchange
+public import SerrePositivity.KST.SConstruction.ContractiblePathComparison
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyParameterPaths
+public import SerrePositivity.KST.SConstruction.DoubleCylinderPaths
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCanonicalPaths
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCanonicalComparison
+public import SerrePositivity.KST.SConstruction.AssemblyCrossedFamily
+public import SerrePositivity.KST.SConstruction.AssemblyMixedFamilyWhiskering
+public import SerrePositivity.KST.SConstruction.AssemblyCrossedFamilyBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
