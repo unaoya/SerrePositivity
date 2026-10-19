@@ -201,3 +201,5 @@ public import SerrePositivity.EInfinity.TableReduction.ReverseForward
 public import SerrePositivity.EInfinity.TableReduction.ChainMap
 public import SerrePositivity.EInfinity.Surjection.CompositionBoundaryCases
 public import SerrePositivity.EInfinity.Surjection.CompositeSurjectivity
+public import SerrePositivity.EInfinity.Surjection.CompositeBasis
+public import SerrePositivity.EInfinity.Surjection.CompositionPathSign

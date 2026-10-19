@@ -218,7 +218,14 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `compositionExponent` と `compositionSign` は BF §1.2.5 の成分の行次数による Koszul 符号。
 `compositionOnWords` と `Surjection.partialComposition` はその符号付き有限和の両線形延長。
 次数零の符号は正、複数出現への空語挿入は零と検証した。原典 §1.2.6 の三つの語と符号 +,−,− を監査する。
-合成語の非退化性・成分次数の総和・TR の合成保存・微分との両立・オペラッド公理は未完成。
+`substitute_isChain` と `compositeWord_nondegenerate` は正の内側 arity の全合成語の非退化性。
+`compositeBasisWord` と `compositeGenerator_eq_basis` は各正規化合成項を実際の基底に同定する。
+`sum_segmentDegree` と `sum_outerSegmentDegree` は内側・外側の成分次数の和を e・d と同定する。
+`sum_outerSegmentDegree_suffix` は後続外側次数を順位差で計算する。
+`compositionPath` はこれらの成分次数の移動を連結した実際の d×e shuffle 経路。
+`compositionPath_sign` はその実際の shuffle 符号が元の合成符号と一致することを証明する。
+候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
+TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：

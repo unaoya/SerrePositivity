@@ -466,7 +466,22 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.compositionOnWords,
       `SerrePositivity.EInfinity.Surjection.partialComposition,
       `SerrePositivity.EInfinity.Surjection.partialComposition_basis,
-      `SerrePositivity.EInfinity.Surjection.compositionOnWords_nullary_of_count_ne_one] do
+      `SerrePositivity.EInfinity.Surjection.compositionOnWords_nullary_of_count_ne_one,
+      `SerrePositivity.EInfinity.Surjection.substitute_isChain,
+      `SerrePositivity.EInfinity.Surjection.compositeWord_nondegenerate,
+      `SerrePositivity.EInfinity.Surjection.compositeBasisWord,
+      `SerrePositivity.EInfinity.Surjection.compositeGenerator_eq_basis,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.boundary_mono,
+      `SerrePositivity.EInfinity.Surjection.lineRank_last,
+      `SerrePositivity.EInfinity.Surjection.sum_segmentDegree,
+      `SerrePositivity.EInfinity.Surjection.sum_outerSegmentDegree,
+      `SerrePositivity.EInfinity.Surjection.sum_outerSegmentDegree_suffix,
+      `SerrePositivity.EInfinity.Surjection.compositionExponent_eq_component_exchanges,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.append_sign,
+      `SerrePositivity.EInfinity.Surjection.DegreePath.blocks_sign,
+      `SerrePositivity.EInfinity.Surjection.compositionPath,
+      `SerrePositivity.EInfinity.Surjection.compositionPath_blockExponent,
+      `SerrePositivity.EInfinity.Surjection.compositionPath_sign] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -637,3 +652,24 @@ example : Surjection.partialComposition ℤ 2 2 1 1 0
     (basis ℤ 2 1 (ULift.up compositionInner)) =
       compositionOnWords ℤ compositionOuter compositionInner 0 :=
   partialComposition_basis ℤ _ _ _
+
+-- BF §1.5.4–6 の候補経路が、三項の合成語と同じ符号を持つ。
+example :
+    ((compositionPath compositionOuter compositionInner 0 compositionCut₁).sign : ℤ) = 1 := by
+  rw [compositionPath_sign]
+  decide
+example :
+    ((compositionPath compositionOuter compositionInner 0 compositionCut₂).sign : ℤ) = -1 := by
+  rw [compositionPath_sign]
+  decide
+example :
+    ((compositionPath compositionOuter compositionInner 0 compositionCut₃).sign : ℤ) = -1 := by
+  rw [compositionPath_sign]
+  decide
+example : compositeGenerator ℤ compositionOuter compositionInner 0 compositionCut₁ =
+    basis ℤ 4 2 (ULift.up (compositeBasisWord compositionOuter compositionInner 0 compositionCut₁
+      (by decide))) := compositeGenerator_eq_basis ℤ _ _ _ _ (by decide)
+example : (∑ i : Fin 2, segmentDegree compositionInner.val compositionCut₂ i) = 1 :=
+  sum_segmentDegree compositionInner compositionCut₂ (by decide)
+example : (∑ i : Fin 3, outerSegmentDegree compositionOuter.val 0 i.val) = 1 :=
+  sum_outerSegmentDegree compositionOuter 0
