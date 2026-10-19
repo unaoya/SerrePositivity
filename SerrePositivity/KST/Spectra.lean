@@ -489,3 +489,10 @@ public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationTriangle
 public import SerrePositivity.KST.Spectra.SpectrumCircleEvaluationHorn
 public import SerrePositivity.KST.Spectra.SpectrumCircleEvaluationCompanion
 public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationSquare
+public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderFiber
+public import SerrePositivity.KST.Spectra.SpectrumCotensorEvaluationFiber
+public import SerrePositivity.KST.Spectra.SpectrumCircleEvaluationHom
+public import SerrePositivity.KST.Spectra.SpectrumNativeCotensorFiber
+public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationFiber
+public import SerrePositivity.KST.Spectra.SpectrumCircleSquareVertices
+public import SerrePositivity.KST.Spectra.SpectrumCircleSquareCospan

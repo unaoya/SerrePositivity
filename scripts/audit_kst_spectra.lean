@@ -976,7 +976,14 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationTriangle,
     `SerrePositivity.KST.Spectra.SpectrumCircleEvaluationHorn,
     `SerrePositivity.KST.Spectra.SpectrumCircleEvaluationCompanion,
-    `SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationSquare]
+    `SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationSquare,
+    `SerrePositivity.KST.Spectra.EnrichedParameterCylinderFiber,
+    `SerrePositivity.KST.Spectra.SpectrumCotensorEvaluationFiber,
+    `SerrePositivity.KST.Spectra.SpectrumCircleEvaluationHom,
+    `SerrePositivity.KST.Spectra.SpectrumNativeCotensorFiber,
+    `SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationFiber,
+    `SerrePositivity.KST.Spectra.SpectrumCircleSquareVertices,
+    `SerrePositivity.KST.Spectra.SpectrumCircleSquareCospan]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

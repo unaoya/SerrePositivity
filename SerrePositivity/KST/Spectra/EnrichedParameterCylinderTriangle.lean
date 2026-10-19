@@ -59,9 +59,15 @@ def parameterCompStruct {x y : A _⦋0⦌} (e : A.Edge x y) :
     (coherentHomComparison
       (⟨false, ⟨PUnit.unit⟩⟩ : Object A Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩)
   have h := PinchedHom.pathCompStruct e'
-  erw [parameterComparisonVertex.{u, v} (A := A) y,
-    parameterComparisonVertex.{u, v} (A := A) x] at h
-  exact h
+  refine SSet.Edge.CompStruct.mk h.simplex h.d₂ ?_ ?_
+  · exact h.d₀.trans (congrArg (fun z ↦ z.edge) (parameterComparisonVertex.{u, v} y))
+  · exact h.d₁.trans (congrArg (fun z ↦ z.edge) (parameterComparisonVertex.{u, v} x))
+
+/-- パラメータ三角形の単体は、元の Hom 比較の単体そのもの。 -/
+lemma parameterCompStruct_simplex {x y : A _⦋0⦌} (e : A.Edge x y) :
+    (parameterCompStruct.{u, v} e).simplex = coherentHomComparisonSimplex
+      (X := (⟨false, ⟨PUnit.unit⟩⟩ : Object A Point.{v}))
+      (Y := ⟨true, ⟨PUnit.unit⟩⟩) (e.edge, PUnit.unit) := rfl
 
 /-- パラメータの辺が与える、二対象の円柱内の標準二単体の図式。 -/
 def parameterTriangle {x y : A _⦋0⦌} (e : A.Edge x y) :
