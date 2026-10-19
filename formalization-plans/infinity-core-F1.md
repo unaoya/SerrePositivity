@@ -34,9 +34,9 @@
   全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
-  任意の底上の小さい次数 fiber の表現空間は可縮 Kan。分類図式、単位・余単位の成分、底変換の比較と単位の作用の整合性を構成済み。普遍図式の族全体の再構成と恒等関手との同型も構成済み。
+  任意の底上の小さい次数 fiber の表現空間は可縮 Kan。分類図式、単位・余単位の成分、底変換の比較と単位の作用の整合性を構成済み。普遍図式の族全体の再構成と恒等関手との同型も構成済み。任意の族の制限と個別の選択分類を接続し、余単位の制限の三角形を図式・全空間の両側で証明済み。
   任意の相対射の collage は区間と底の積上の left fibration。指定両端の表現と coherent な実現を相互に回収し、境界固定の可縮 fiber で族全体の一意性を証明済み。任意の底上の coherent な図式の実際の写像空間比較は同値（区間・pinched 模型、小さい場合は宇宙縮小後の比較とも）。
-- 対象ビルド3143 jobs、公理監査6595宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+- 対象ビルド3148 jobs、公理監査6636宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -66,7 +66,7 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningUnitTransformation_comparisonIso`、`coherentStraighteningCounit`、`universalCoherentReconstructionCounitIso`、`leftUnstraighteningMappingSpaceMap_isQCatEquivalence`、`leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence`
+- `coherentStraighteningCounit`、`universalCoherentReconstructionCounitIso`、`coherentStraighteningFamilyUniversalIso`、`coherentStraighteningCounitRestriction_diagram_triangle`、`leftUnstraighteningMappingSpaceMap_isQCatEquivalence`、`leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -92,12 +92,12 @@
 - 任意の単射の境界固定延長と高次パラメーターの同時持ち上げは、射影の各次数の fiber が小さい場合に証明済み。
   任意の底上の coherent 空間値図式の unstraightening にも底・パラメーターの小ささを仮定せず適用済み。
   各次数の fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱める相対延長は未証明。
-- 普遍図式の族全体の再構成と恒等関手との同型は証明済み。点ごとに選択した分類との接続、straightening の関手全体の自然性・三角恒等式は未証明。写像空間比較の同値性は任意の底で証明済み。
+- 普遍再構成と任意の族・個別の選択分類の接続は証明済み。余単位の制限の三角形は随伴の三角恒等式とは別。straightening の関手全体の自然性・随伴の三角恒等式は未証明。
 
 ### 次の一手
 
-普遍図式の族の再構成を点ごとに選んだ表現の分類と接続し、straightening の関手全体の比較へ進む。
-universalCoherentReconstructionCounitIso は全図式の一つの族を分類した比較であり、点ごとの分類選択が既に自然とは扱わない。制限した普遍表現と選択表現の境界固定比較を束ね、単位・余単位と三角恒等式を構成する。
+cartesian な制限の比較と通常の FunctorIso.precomp を同定し、余単位の自然性の可換式へ進む。
+transportWitnessPre_diagram と同型の合成則を使い、cartesianRestrictVertexIso を分類図式へ写す作用と FunctorIso.precomp を結ぶ。coherentStraighteningCounitRestriction_diagram_triangle を通常の前合成の自然性の式へ移し、普遍族の余単位と選択成分を同じ比較にそろえる。
 全対象での自然性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。

@@ -70,10 +70,10 @@ lemma transportWitnessDiagram_condition {E B : SSet.{u + 1}}
 def LeftTransportRepresentation.diagramIso {E B : SSet.{u + 1}}
     {p : E ⟶ B} [LeftFibration p] (R S : LeftTransportRepresentation p)
     (h : VertexIso (transportWitnessVertex R) (transportWitnessVertex S)) :
-    FunctorIso R.diagram S.diagram := by
-  have e := h.map (transportWitnessDiagram p)
-  rw [transportWitnessDiagram_vertex, transportWitnessDiagram_vertex] at e
-  exact e
+    FunctorIso R.diagram S.diagram :=
+  (eqToIso (congrArg SSet.HomotopyCategory.mk (transportWitnessDiagram_vertex R))).symm ≪≫
+    VertexIso.map h (transportWitnessDiagram p) ≪≫
+    eqToIso (congrArg SSet.HomotopyCategory.mk (transportWitnessDiagram_vertex S))
 
 /-- 概要：同じ表現空間内の頂点同型は全空間側の射の関手同型も与える。
 方針：pointed-space の族で同じ頂点同型を写す。
@@ -82,9 +82,9 @@ def LeftTransportRepresentation.diagramIso {E B : SSet.{u + 1}}
 def LeftTransportRepresentation.pointedIso {E B : SSet.{u + 1}}
     {p : E ⟶ B} [LeftFibration p] (R S : LeftTransportRepresentation p)
     (h : VertexIso (transportWitnessVertex R) (transportWitnessVertex S)) :
-    FunctorIso R.pointedMap S.pointedMap := by
-  have e := h.map (transportWitnessPointed p)
-  rw [transportWitnessPointed_vertex, transportWitnessPointed_vertex] at e
-  exact e
+    FunctorIso R.pointedMap S.pointedMap :=
+  (eqToIso (congrArg SSet.HomotopyCategory.mk (transportWitnessPointed_vertex R))).symm ≪≫
+    VertexIso.map h (transportWitnessPointed p) ≪≫
+    eqToIso (congrArg SSet.HomotopyCategory.mk (transportWitnessPointed_vertex S))
 
 end SerrePositivity.InfinityCategories
