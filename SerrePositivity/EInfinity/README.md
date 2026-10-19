@@ -404,8 +404,16 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `recovered_partition_existsUnique` は両復元語の本来の次数と出力長から一意な分割と合成語一致を得る。
 `shuffle_source_partition` は正の内側 arity の実際の成功から元の両基底語・一意な分割・
 合成語一致・元の両置換列での一意な成功 Schedule を全て返す。
-元の経路の往復、退化・空語を含む全項の全単射も未完成。
-元の成功二表の全体の逆構成と空語の挿入は未完成。
+`selected_eq_of_same_output` は左右で異なる置換列の成功出力から全選択行列を一致させる。
+`boundaryInserted_iff_notMem` は実際の選択行列の内側二端の境界と垂直辺の同値を証明する。
+`shufflePath_eq_of_same_output` は同じ非退化出力を持つ二つの成功経路を一致させる。
+`TableCompositionData.compositionPath_eq_of_success`・`fusedSchedule_eq_of_success` は
+正方向で構成した経路と Schedule を元の実際の成功へ戻す。
+`TableCompositionData.eq_of_same_output` は同じ元の置換列・挿入位置・合成出力の入力データ一意性。
+`shuffle_reconstruction_existsUnique` は正の内側 arity の実際の非退化成功から、
+元の両成功表・両語・分割を持ち、経路・Schedule・出力を全て戻すデータを一意に構成する。
+退化・空語を含む全項の全単射と有限和の一致は未完成。
+空語挿入の nullary 合成との照合も未完成。
 TR の一般の合成保存と、それを用いた χ の部分合成の微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

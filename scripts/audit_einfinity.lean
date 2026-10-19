@@ -689,6 +689,16 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.splitParts_properties,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.recovered_partition_existsUnique,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_source_partition,
+      `SerrePositivity.EInfinity.TableReduction.schedule_eq_of_same_list,
+      `SerrePositivity.EInfinity.TableReduction.selected_eq_of_same_output,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.vertical_inserted_join,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.horizontal_not_inserted_join,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.boundaryInserted_iff_notMem,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shufflePath_eq_of_same_output,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.compositionPath_eq_of_success,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedSchedule_eq_of_success,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.eq_of_same_output,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_reconstruction_existsUnique,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1872,3 +1882,39 @@ example : ([0, 1] : List (Fin 2)) = substitute (n := 0) 1 [0, 2] [] := by
   have hs : CompositeRecovery.splitParts (m := 2) (n := 0) 1 [0, 2] [0, 1] = [] := by decide
   rw [hs] at hp
   exact hp.2.2.2
+
+-- 実際の選択行列の三境界から、垂直一歩・水平二歩を元の経路なしで検出する。
+example : ∀ i : Fin 3, CompositeRecovery.BoundaryInserted (m := 3) (n := 2) 1
+    [[0, 1], [2], [4], [2, 1, 4, 3]] i.val ↔ i = 0 := by
+  have ht : ExtractionTrace (rows (fun j => BarrattEccles.permutationComposition 3 2 1
+      (bfTable (gridRecoveryPath.horizontal j)) (terminalTable (gridRecoveryPath.vertical j)))
+      gridRecoverySchedule) [] [[0, 1], [2], [4], [2, 1, 4, 3]] := by
+    apply extractionTrace_of_lengths
+    · simpa using innerGrid_success
+    · decide
+  intro i
+  exact (CompositeRecovery.boundaryInserted_iff_notMem 1 gridRecoveryPath bfTable terminalTable
+    gridRecoverySchedule _ ht (by decide) i).trans (by fin_cases i <;> decide)
+-- 一般の経路一意性から、正方向で構成した経路が元の実際の経路へ戻る。
+private lemma gridPath_roundtrip :
+    compositionPath canonicalFixture compositionInner 1 verticalCuts = gridRecoveryPath := by
+  exact fullCompositionFixture.compositionPath_eq_of_success gridRecoveryPath gridRecoverySchedule
+    _ innerGrid_success (by decide) (by decide)
+private lemma gridSchedule_roundtrip : fullCompositionFixture.fusedSchedule =
+    gridRecoverySchedule := by
+  exact fullCompositionFixture.fusedSchedule_eq_of_success gridRecoveryPath gridRecoverySchedule
+    _ innerGrid_success (by decide)
+-- 元の成功二表・分割・経路・Schedule を全て戻す入力データが一意に構成される。
+example : ∃ c : TableCompositionData 3 2 2 1, c = fullCompositionFixture ∧
+    compositionPath c.outerWord c.innerWord c.slot c.cuts = gridRecoveryPath ∧
+      c.fusedSchedule = gridRecoverySchedule := by
+  obtain ⟨c, hc, hu⟩ := CompositeRecovery.shuffle_reconstruction_existsUnique (by decide) 1
+    gridRecoveryPath bfTable terminalTable gridRecoverySchedule _ innerGrid_success (by decide)
+  have hk : fullCompositionFixture.outer = bfTable ∧ fullCompositionFixture.inner = terminalTable ∧
+      fullCompositionFixture.slot = 1 ∧ compositionPath fullCompositionFixture.outerWord
+        fullCompositionFixture.innerWord fullCompositionFixture.slot fullCompositionFixture.cuts =
+          gridRecoveryPath ∧ fullCompositionFixture.fusedSchedule = gridRecoverySchedule ∧
+      compositeWord fullCompositionFixture.outerWord fullCompositionFixture.innerWord
+        fullCompositionFixture.slot fullCompositionFixture.cuts = [0, 1, 2, 4, 2, 1, 4, 3] :=
+    ⟨rfl, rfl, rfl, gridPath_roundtrip, gridSchedule_roundtrip, by decide⟩
+  exact ⟨c, (hu fullCompositionFixture hk).symm, hc.2.2.2.1, hc.2.2.2.2.1⟩

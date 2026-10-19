@@ -249,3 +249,4 @@ public import SerrePositivity.EInfinity.Surjection.ShuffleInnerRecovery
 public import SerrePositivity.EInfinity.Surjection.InnerScheduleRecovery
 public import SerrePositivity.EInfinity.Surjection.OverlapPartitionOfRows
 public import SerrePositivity.EInfinity.Surjection.RecoveredPartitionExistence
+public import SerrePositivity.EInfinity.Surjection.ShuffleReconstruction
