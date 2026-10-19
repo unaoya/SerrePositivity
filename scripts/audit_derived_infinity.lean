@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientFixedHomRoof
 import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceMap
 import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofReplacementPiZero
 import SerrePositivity.InfinityCategories.Derived.DGRoofSimplicialReplacement
@@ -1567,10 +1568,46 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_projection
 #print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_target
 
+#print axioms SerrePositivity.InfinityCategories.roofVertexFiberTransport_ι
+#print axioms SerrePositivity.InfinityCategories.roofVertexFiberTransport_inv_ι
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceFiberIso_hom_target
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofCorrespondenceFiberIso_hom_target
+#print axioms SerrePositivity.InfinityCategories.roofPinchedSlice_postcomp
+#print axioms SerrePositivity.InfinityCategories.dgQuotientTargetSliceMap_pinched
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceFiberMap
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceFiberMap_ι
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceFiberMap_comparison
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceFiberMap_conjugate
+#print axioms SerrePositivity.InfinityCategories.roofRightFibration_kanComplex
+#print axioms SerrePositivity.InfinityCategories.roofRightFibration_leftFibration_of_kan
+#print axioms SerrePositivity.InfinityCategories.roofRightFibration_pullback_leftFibration_of_inverts
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofCorrespondenceProjection_leftFibration
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverIdentityVertex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOverIdentityVertex_isTerminal
+#print axioms SerrePositivity.InfinityCategories.roofTerminalPoint_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.roofLeftFibration_terminalFiber_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFixedHomRoofMap
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFixedHomRoofMap_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFixedHomRoofMap_isWeakHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgOriginalFixedHomRoofMap
+#print axioms SerrePositivity.InfinityCategories.dgFixedHomRoofMap_comparison
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofFiberTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofFiberProjection,
+    `SerrePositivity.InfinityCategories.Derived.RoofPinchedSlicePostcomp,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedSlice,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofFiberComparison,
+    `SerrePositivity.InfinityCategories.Derived.RoofRightFibrationKan,
+    `SerrePositivity.InfinityCategories.Derived.RoofLocallyConstantPullback,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofLocallyConstant,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOverTerminal,
+    `SerrePositivity.InfinityCategories.Derived.RoofTerminalFiberCofinality,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFixedHomRoof,
+
     `SerrePositivity.InfinityCategories.Derived.DGCommonRoofRefinementFillers,
     `SerrePositivity.InfinityCategories.Derived.DGCommonRoofComparisonFillers,
     `SerrePositivity.InfinityCategories.Derived.DGCommonRoofComparisonVertices,
