@@ -11,18 +11,18 @@
 - 標準 cofiber の正方形・余錐、coslice 境界の左右のデータ、共通面、六つの残差と全微分整合条件は完成。
 - 実境界から Q・A の二未知 cochain を構成。q=−n−1 の符号照合、Q・A の微分式、Q と二包含・ホモトピー・対角との合成式を検証済み。
 - Q・A を挿入した左右の SimplexData を構成。既知面・既知方程式の保存、左右の共通面の一致、後続・A・B/C の未知方程式を証明済み。
-- Q と A の挿入による三角形側右辺の二つの変化も生の Hom 座標で証明済み。最上位方程式への合成は未完了。
-- coslice の充填、cofiber の押し出し性、D(S) の安定性・D3 の三角比較は未完了。
-- 前工程は `c4dbdf8a`。今回の入口は `Derived/CofiberBoundaryCandidate.lean`、`CofiberBoundaryFirstEquation.lean`、`CofiberBoundaryLegEquations.lean`。
-- 対象＋Stable・Derived 集約ビルド：5,724 jobs 成功。今回は新規 11 モジュール。
-- 公理監査：Derived 151 modules／2,250 宣言、Stable 420 modules／3,357 宣言。標準三公理のみ。
+- 三角形側を含む全ての未知方程式を証明し、左右の実際の dg nerve 単体を構成。二セルの join への貼合せと全境界面の保存を検証済み。
+- 標準 cofiber 余錐の coslice 初期性と標準 cofiber 正方形の ∞ 押し出し性を直接証明。充満部分 dg 圏への反映と Semifree の標準 cofiber 押し出しも完成。
+- 任意の span の余極限と全辺の cofiber、fiber/cofiber 列の一致、D(S) の安定性・D3 の三角比較は未完了。
+- 前工程は `a8026eab`。今回の入口は `Derived/CofiberPushout.lean`、`FullCofiberSquare.lean`、`SemifreeColimits.lean`。
+- 対象＋Stable・Derived 集約ビルド：5,733 jobs 成功。今回の保存単位は新規 9 モジュール。
+- 公理監査：Derived 160 modules／2,325 宣言、Stable 429 modules／3,432 宣言。標準三公理のみ。
 - 本文・archive への実施記録の追記はしていない。今回の到達点はこの節を正本とする。
 
 ### 残り（依存順、時間は推定）
 
-- 三角形側の右辺変化を共通の型付き Hom に移し、Q・A の明示解による相殺を証明。最上位方程式と四種類の分類から左右の Simplex を構成。HA Proposition 1.3.1.10：4〜8 時間。
-- coslice 境界を貼り、標準余錐の始対象性と標準 cofiber 正方形の押し出し性を証明。HTT §1.2.13、HA Proposition 1.3.1.10：4〜8 時間。
-- semifree へ移し、全辺の cofiber と fiber/cofiber 列の一致から D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
+- 任意の span の表示を作り、Semifree の標準 cofiber を指定図式の上へ置いて全辺の cofiber を構成。HTT §1.2.13、HA Proposition 1.3.1.10：2〜4 時間。
+- 指定した四角形の fiber/cofiber 列の一致を証明し、D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
 - D3 の同値・D2f の CommShift を使い、h D(S) と Mathlib DerivedCategory の三角構造を照合。HA Theorem 1.1.2.14、§1.1.4：4〜8 時間。
 
 ### 主要宣言（名前のみ。正確な型は Lean）
@@ -39,11 +39,13 @@
 - `spanInsertUnknowns`、`cofiberBoundaryLeftCandidate`、`cofiberBoundaryRightCandidate`、`cofiberBoundaryCandidate_common`。
 - `cofiberBoundaryLeftCandidate_suffix_equation`、`cofiberBoundaryRightCandidate_suffix_equation`、`cofiberBoundaryLeftCandidate_first_equation`、`cofiberBoundaryRightCandidate_first_equation`。
 - `cofiberBoundaryLeftCandidate_second_equation`、`cofiberBoundaryRightCandidate_second_equation`、`spanTwoPrefixRhs_replace_suffix`、`spanTwoPrefixRhs_replace_first`。
+- `cofiberBoundaryLeftSimplex`、`cofiberBoundaryRightSimplex`、`cofiberBoundarySimplex_common`、`cofiberBoundaryJoinFiller`、`cofiberBoundaryJoinFiller_faces`。
+- `standardCofiberCocone_isColimit`、`standardCofiberSquare_isPushout`、`isColimitCone_of_fullInclusion`、`fullCofiberSquare_isPushout`、`semifreeCofiberSquare_isPushout`。
 
 ### 依存と提供
 
 - Core・F1・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded は読み取り専用。他レーンのファイルは編集しない。
-- fiber 側は N7 の `semifreeFiberSquare_isPullback` を利用。N7f の cofiber 押し出し性は未実施で、到着を仮定しない。
+- fiber 側は N7 の `semifreeFiberSquare_isPullback` を利用。cofiber 押し出し性は本レーンの `Derived/CofiberPushout` と `SemifreeColimits` で独立に証明済み。
 - 提供：Stable の S1〜S6、Derived/StableLimits、標準 cofiber と境界残差・Hom 座標の界面。
 - 編集対象は Stable/・Derived/、両集約と両監査、計画 `infinity-core-stable.md`。明示指示により Derived 計画の D7 状態も更新する。
 
@@ -57,13 +59,13 @@
 - 今回の対象・集約ビルドと両公理監査は成功。既知の新規名前衝突なし。
 - 今回の構成は可換環上の任意の非有界複体・整数次数を扱い、`ModelCategory SSet` の追加 instance 仮定なし。
 - 一般の明示解は残差整合条件を仮定するが、実境界の Q・A の微分定理はこれらを既存 Bianchi 定理から証明し、追加仮定にしない。
-- 六未知成分のうち Q 側は逆座標、A 側は右三角形残差の符号倍、他四成分は零として候補へ挿入済み。後続・一点追加の方程式は検証済みで、最上位方程式が残る。
+- Q 側は逆座標、A 側は右三角形残差の符号倍、他四成分は零とする明示解について、最上位を含む全方程式と共通面を検証済み。
 - 安定性の一般論から cofiber の普遍性を逆用しない。直接 coslice を充填して証明する設計を維持する。
 - import 閉包が再度壊れたら、他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- `SpanTriangleSuffixReplacement`・`SpanTriangleFirstReplacement` の変化を型付き Hom へ移し、`cofiberBoundaryLiftQ_homotopy` と `cofiberBoundaryLiftA` により三角形右辺が零になることを証明する。
+- `ComplexCospanPresentation` と `StableLimits` の双対として span の鎖写像による表示を作り、`semifreeCofiberSquare_isPushout` を任意の指定 span へ移す。
 
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
@@ -92,7 +94,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 完了（貼り合わせ、TR1〜TR4、Pretriangulated・IsTriangulated instance） |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 完了（共変・反変、全整数次数、六項部分列の完全性、接続準同型の評価式） |
 | S6 | `Stable/ExactFunctor.lean` と関連モジュール | 完全関手、h の三角関手、完全関手間の自然変換 | 完了。零対象・cofiber/fiber 列・全押し出し／引き戻しの保存、CommShift ℤ、IsTriangulated、加法性、自然変換の全整数シフトとの両立・三角形の像の自然変換まで公開 |
-| S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 進行中。零対象・fiber 完成、cofiber の普遍性を構成中 |
+| S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 進行中。零対象・fiber と標準 cofiber の普遍性完成。全辺の cofiber と安定性・三角比較は未完了 |
 
 ## 設計上の決定
 
@@ -103,7 +105,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 安定性の定義に三角圏の公理や Σ の自己同値性を入力として追加しない。
 - Σ・Ω は極限・余極限の選択から h C 上に構成し、A2f・A3d で選択の比較を証明する。
 - distinguished triangle は cofiber 列の像を条件にする。TR4 も独立に受入基準へ含める。
-- N7f（cofiber 四角形の押し出し性）は未実施。S7 で既証明として扱わず、coslice の充填を構成する。
+- N7f を既提供とせず、S7 の coslice の直接充填で標準 cofiber の押し出し性を証明した。
 - D3 の同値だけで安定性を定義したり、通常の導来圏の三角構造を無条件に移したりしない。
   実際の fiber/cofiber 列との一致を証明し、D2f の CommShift と照合する。
 - 公理監査は `scripts/audit_infinity_stable.lean`。許されるのは propext・Classical.choice・Quot.sound。

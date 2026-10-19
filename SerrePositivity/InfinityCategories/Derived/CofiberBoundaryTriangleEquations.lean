@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.FixedEquation
 
 /-! # cofiber 候補の最上位三角形方程式
 
-概要：A 側の微分式と後続置換の右辺変化を接続する。
+概要：Q・A の挿入による三角形右辺の変化を合成し、最上位の零成分の方程式を証明する。
 方針：実境界の残差と明示解の合成式を使い、挿入後の方程式を直接検証する。
 規約：HA Proposition 1.3.1.10。使われ方：coslice 充填候補の未知方程式。
 -/

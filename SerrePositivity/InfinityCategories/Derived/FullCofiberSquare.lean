@@ -99,7 +99,7 @@ lemma fullCofiberSquare_inclusion (f : A ⟶ B) (g : A ⟶ C)
     exact liftToFull_yoneda_inclusion S (Complex S) P _ _
 
 /-- 概要：cofiber が部分圏に属する標準 cofiber 四角形は部分圏の dg nerve の ∞ 押し出し。
-方針：包含像を周囲の標準四角形に同定し、N7c の押し出し性を充満部分圏へ反映する。
+方針：包含像を周囲の標準四角形に同定し、本レーンの押し出し性を充満部分圏へ反映する。
 規約：HTT §1.2.13。使われ方：cofiber と有限直和で閉じた部分圏、特に Semifree の押し出し。 -/
 lemma fullCofiberSquare_isPushout (f : A ⟶ B) (g : A ⟶ C)
     (hA : P A) (hB : P B) (hC : P C) (hP : P (pushoutCofiber f g)) :

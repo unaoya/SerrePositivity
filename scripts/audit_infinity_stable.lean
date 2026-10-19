@@ -25,6 +25,15 @@ import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryFirstEquation
 import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLegEquations
 import SerrePositivity.InfinityCategories.Derived.SpanTriangleSuffixReplacement
 import SerrePositivity.InfinityCategories.Derived.SpanTriangleFirstReplacement
+import SerrePositivity.InfinityCategories.Derived.SpanTriangleReplacementTransport
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangleEquations
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundarySimplices
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryJoinFiller
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryJoinFaces
+import SerrePositivity.InfinityCategories.Derived.CofiberPushout
+import SerrePositivity.InfinityCategories.Derived.FullColimitReflection
+import SerrePositivity.InfinityCategories.Derived.FullCofiberSquare
+import SerrePositivity.InfinityCategories.Derived.SemifreeColimits
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1659,7 +1668,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryFirstEquation,
     `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLegEquations,
     `SerrePositivity.InfinityCategories.Derived.SpanTriangleSuffixReplacement,
-    `SerrePositivity.InfinityCategories.Derived.SpanTriangleFirstReplacement]
+    `SerrePositivity.InfinityCategories.Derived.SpanTriangleFirstReplacement,
+    `SerrePositivity.InfinityCategories.Derived.SpanTriangleReplacementTransport,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangleEquations,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundarySimplices,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryJoinFiller,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryJoinFaces,
+    `SerrePositivity.InfinityCategories.Derived.CofiberPushout,
+    `SerrePositivity.InfinityCategories.Derived.FullColimitReflection,
+    `SerrePositivity.InfinityCategories.Derived.FullCofiberSquare,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeColimits]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
