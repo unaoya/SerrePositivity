@@ -212,7 +212,13 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `normalizedMap_comm` は零 arity を含む全 arity・全次数の TR の微分保存。
 `differential_comp_differential` は TR の全射性と微分保存から χ の平方零を導く。
 `Surjection.normalizedChains` は実際の χ の鎖複体、`TableReduction.chainMap` は実際の TR 鎖写像。
-TR の部分合成保存・χ の部分合成とオペラッド公理は未完成。
+`Surjection.OverlapPartition` は BF §1.2.4 の端点を重ねた部分語の長さによる有限分割型。
+空語の分割は一出現の場合だけ存在する。`position_covered` と `value_mem_segments` で内側語の被覆を証明。
+`compositeWord_length` と `compositeWord_surjective` は全合成語の正しい次数と全射性を与える。
+`compositionExponent` と `compositionSign` は BF §1.2.5 の成分の行次数による Koszul 符号。
+`compositionOnWords` と `Surjection.partialComposition` はその符号付き有限和の両線形延長。
+次数零の符号は正、複数出現への空語挿入は零と検証した。原典 §1.2.6 の三つの語と符号 +,−,− を監査する。
+合成語の非退化性・成分次数の総和・TR の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：

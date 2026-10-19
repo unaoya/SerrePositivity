@@ -199,3 +199,5 @@ public import SerrePositivity.EInfinity.TableReduction.LastRowSaturation
 public import SerrePositivity.EInfinity.TableReduction.ReverseBlock
 public import SerrePositivity.EInfinity.TableReduction.ReverseForward
 public import SerrePositivity.EInfinity.TableReduction.ChainMap
+public import SerrePositivity.EInfinity.Surjection.CompositionBoundaryCases
+public import SerrePositivity.EInfinity.Surjection.CompositeSurjectivity

@@ -452,7 +452,21 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.normalizedMap_comm,
       `SerrePositivity.EInfinity.TableReduction.differential_comp_differential,
       `SerrePositivity.EInfinity.Surjection.normalizedChains,
-      `SerrePositivity.EInfinity.TableReduction.chainMap] do
+      `SerrePositivity.EInfinity.TableReduction.chainMap,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.start_add_length_le,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.position_covered,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.value_mem_segments,
+      `SerrePositivity.EInfinity.Surjection.occurrenceAt_strictMono,
+      `SerrePositivity.EInfinity.Surjection.substitute_length,
+      `SerrePositivity.EInfinity.Surjection.compositeWord_length,
+      `SerrePositivity.EInfinity.Surjection.compositeWord_surjective,
+      `SerrePositivity.EInfinity.Surjection.compositionExponent,
+      `SerrePositivity.EInfinity.Surjection.compositionSign,
+      `SerrePositivity.EInfinity.Surjection.compositionOnWords,
+      `SerrePositivity.EInfinity.Surjection.partialComposition,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_basis,
+      `SerrePositivity.EInfinity.Surjection.compositionOnWords_nullary_of_count_ne_one] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -591,3 +605,35 @@ example : Surjection.differential ℤ 4 1 (onSequence ℤ bfTable) = vertexBound
 example : (Surjection.differential ℤ 4 0).comp (Surjection.differential ℤ 4 1) = 0 :=
   differential_comp_differential ℤ 4 0
 example : (chainMap ℤ 0).f 1 = ModuleCat.ofHom (normalizedMap ℤ 0 1) := chainMap_f ℤ 0 1
+
+-- BF §1.2.6 の三つの合成語と符号 +,−,− を零始まりで照合する。
+private def compositionOuter : BasisWord 3 1 := ⟨![0, 1, 0, 2], by decide⟩
+private def compositionInner : BasisWord 2 1 := ⟨![0, 1, 0], by decide⟩
+private def compositionCut₁ : OverlapPartition (occurrenceCount compositionOuter.val 0) 3 := by
+  change OverlapPartition 2 3
+  exact ⟨![1, 3], by decide⟩
+private def compositionCut₂ : OverlapPartition (occurrenceCount compositionOuter.val 0) 3 := by
+  change OverlapPartition 2 3
+  exact ⟨![2, 2], by decide⟩
+private def compositionCut₃ : OverlapPartition (occurrenceCount compositionOuter.val 0) 3 := by
+  change OverlapPartition 2 3
+  exact ⟨![3, 1], by decide⟩
+example : Fintype.card (OverlapPartition 2 3) = 3 := by decide
+example : compositeWord compositionOuter compositionInner 0 compositionCut₁ =
+    [0, 2, 0, 1, 0, 3] := by decide
+example : compositeWord compositionOuter compositionInner 0 compositionCut₂ =
+    [0, 1, 2, 1, 0, 3] := by decide
+example : compositeWord compositionOuter compositionInner 0 compositionCut₃ =
+    [0, 1, 0, 2, 0, 3] := by decide
+example : compositionSign compositionOuter compositionInner 0 compositionCut₁ = 1 := by decide
+example : compositionSign compositionOuter compositionInner 0 compositionCut₂ = -1 := by decide
+example : compositionSign compositionOuter compositionInner 0 compositionCut₃ = -1 := by decide
+example : Fintype.card (OverlapPartition 2 0) = 0 := by decide
+private def emptyCompositionWord : BasisWord 0 0 := ⟨Fin.elim0, by decide⟩
+example : compositionOnWords ℤ compositionInner emptyCompositionWord 0 = 0 :=
+  compositionOnWords_nullary_of_count_ne_one ℤ _ _ _ (by decide)
+example : Surjection.partialComposition ℤ 2 2 1 1 0
+    (basis ℤ 3 1 (ULift.up compositionOuter))
+    (basis ℤ 2 1 (ULift.up compositionInner)) =
+      compositionOnWords ℤ compositionOuter compositionInner 0 :=
+  partialComposition_basis ℤ _ _ _
