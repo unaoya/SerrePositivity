@@ -164,3 +164,11 @@ public import SerrePositivity.KST.DerivedGeometry.UniformGeneratorEpiCover
 public import SerrePositivity.KST.DerivedGeometry.SmallQuotientFamily
 public import SerrePositivity.KST.DerivedGeometry.SmallQuotientComplexFamily
 public import SerrePositivity.KST.DerivedGeometry.SmallExactWindowExtension
+public import SerrePositivity.KST.DerivedGeometry.EmbeddedChainWindow
+public import SerrePositivity.KST.DerivedGeometry.EmbeddedChainWindowExtension
+public import SerrePositivity.KST.DerivedGeometry.EmbeddedChainWindowSequence
+public import SerrePositivity.KST.DerivedGeometry.SmallExactChainTail
+public import SerrePositivity.KST.DerivedGeometry.SmallExactChainProperties
+public import SerrePositivity.KST.DerivedGeometry.InitialImageChainWindow
+public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicChainTail
+public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicChainBounds

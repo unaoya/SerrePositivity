@@ -1244,6 +1244,17 @@
 - `exists_smallQuotientFamily_iso` と `exists_smallQuotientComplexData_iso`：固定対象の商、ならびに次数ごとの固定対象の商を項に持つ複体を、実際の小さい代表族に同型で移すことを証明した。
 - 短い窓を整数次数の全体の非輪状部分複体へ組み立てる帰納構成、その複体を加え続ける超限分解は未完了。
 
+### §59 の自然数方向の帰納構成
+
+- 保存検証：集約対象ビルド 4091 jobs 成功、公理監査 2416 宣言。標準3公理のみ、KTheory import なし。
+
+- `embeddedChainWindowSequence`：部分窓の存在を実際に証明してから、選択した延長の列を帰納的に構成した。各段階の上界は固定した対象の列 `smallChainWindowBounds` として同時に定義した。
+- `smallExactChainTail` と `smallExactChainInclusion`：窓の列を自然数添字の鎖複体と元の複体への各項単射の鎖写像に組み立てた。
+- `initialImageChainWindow`：指定した生成対象から次数一への射の像と、その微分の像を二項とする初期窓を構成し、初期微分の全射性を証明した。
+- `smallExactChainTail_acyclic`：初期微分が全射なら、構成した鎖複体の零次数と全正次数で完全性を証明した。
+- `smallAcyclicChainCover_epi`：初期像窓から構成した全項を、生成対象だけに依存する一つの固定対象 `smallAcyclicUniformBound G` の実際の商として呈示した。
+- 整数次数への延長と小さい非輪状試験族への所属、非輪状部分複体を加えて全体を尽くす超限分解は未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1474,6 +1485,7 @@
 | `exists_mono_quasiIso_injective_test_orthogonal` | DerivedGeometry/GrothendieckInjectiveTestFamily | 実装・対象ビルド済み |
 | `homotopy_orthogonal_transfinite` | DerivedGeometry/HomotopyOrthogonalTransfinite | 実装・対象ビルド済み |
 | `exists_small_exact_window_extension`・`exists_smallQuotientComplexData_iso` | DerivedGeometry/SmallExactWindowExtension・SmallQuotientComplexFamily | 実装・対象ビルド済み |
+| `smallExactChainTail_acyclic`・`smallAcyclicChainCover_epi` | DerivedGeometry/SmallAcyclicChainTail・SmallAcyclicChainBounds | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
