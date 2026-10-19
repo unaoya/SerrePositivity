@@ -658,3 +658,7 @@ public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryCoordinates
 public import SerrePositivity.KST.Spectra.PointedPathProjectionContraction
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryStructure
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryRectification
+public import SerrePositivity.KST.Spectra.ThreeEdgeTransport
+public import SerrePositivity.KST.Spectra.PointedBasedIntervalTraces
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureIntervals
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryTrace
