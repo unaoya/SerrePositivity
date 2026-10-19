@@ -733,4 +733,10 @@ public import SerrePositivity.KST.SConstruction.CoherentNativeValueTransport
 public import SerrePositivity.KST.SConstruction.CoherentPrismDirectTriangles
 public import SerrePositivity.KST.SConstruction.CoherentNativeContractionEdges
 public import SerrePositivity.KST.SConstruction.KPrismEndpointComposites
+public import SerrePositivity.KST.SConstruction.CoherentTriangleMappingRawEdge
+public import SerrePositivity.KST.SConstruction.CoherentThreeVertexRefinementEdges
+public import SerrePositivity.KST.SConstruction.KPrismBoundaryLegs
+public import SerrePositivity.KST.SConstruction.SpecifiedPointSpanBoundary
+public import SerrePositivity.KST.SConstruction.SpecifiedPointSpanFamilies
+public import SerrePositivity.KST.SConstruction.KPrismSpecifiedSpanFamilies
 /-! # ∞-S• 構成と連結 K 理論 -/

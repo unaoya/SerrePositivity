@@ -11318,3 +11318,96 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction_vertex_edge
 #print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentTriangleMappingEdge_raw_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentTriangleMappingEdge_raw_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentTriangleEdgeValue_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentTriangleEdgeValue_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentStringRefinementPathToFull_triangle_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentStringRefinementPathToFull_triangle_heq
+
+#check @SerrePositivity.KST.SConstruction.kPrismBoundaryLegs_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kPrismBoundaryLegs_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismNativeHomIso_value_heq
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismNativeHomIso_value_heq
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerCompositeContraction_boundary_leg
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerCompositeContraction_boundary_leg
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction_boundary_leg
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction_boundary_leg
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpanInitialVertex_diagonal
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpanInitialVertex_diagonal
+
+#check @SerrePositivity.KST.SConstruction.specifiedParameterPoint_mono
+#print axioms SerrePositivity.KST.SConstruction.specifiedParameterPoint_mono
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointRestriction_edge
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointRestriction_edge
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanEdge
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanEdge
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanTriangle
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanTriangle
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSimplex_uncurry
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSimplex_uncurry
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanComposite
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanComposite
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanComposite_boundary
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanComposite_boundary
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily_boundary
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily_boundary
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily_source
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily_source
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily_target
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily_target
+
+#check @SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily_composite
+#print axioms SerrePositivity.KST.SConstruction.specifiedPointSpanTriangleFamily_composite
+
+#check @SerrePositivity.KST.SConstruction.kPrismSpecifiedSpanFamilies_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kPrismSpecifiedSpanFamilies_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kPrismSpecifiedSpanFamilies_native_kan
+#print axioms SerrePositivity.KST.SConstruction.kPrismSpecifiedSpanFamilies_native_kan
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedOuterTriangleData
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedOuterTriangleData
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedOuterTriangleData_simplex
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedOuterTriangleData_simplex
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedCompatibilityFamily
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedCompatibilityFamily
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedCompatibilityFamily_boundary
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedCompatibilityFamily_boundary
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_boundary
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_boundary
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_upper
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_upper
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_lower
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_lower
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_compatibility
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismSpecifiedTriangleFamily_compatibility
