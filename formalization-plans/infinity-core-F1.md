@@ -34,8 +34,8 @@
   全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
-  各次数で小さい全空間の点上の表現空間は可縮 Kan。底上の表現空間の小極限保存、pushout→pullback、既存の制限の充填性との比較も証明済み。
-- 対象ビルド3051 jobs、公理監査6115宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  各次数で小さい全空間の点上の表現空間は可縮 Kan。非交和・単射の pushout の可縮性保存、骨格逆極限と可縮性の還元も証明済み。
+- 対象ビルド3069 jobs、公理監査6158宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -65,11 +65,11 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `intervalWitnessRestriction_trivialKanFibration`、`pointTransportWitnessSpace_isContractibleKan`
+- `pointTransportWitnessSpace_isContractibleKan`、`transportWitnessSpace_isContractibleKan_of_skeleton`
 
 ### 依存と提供
 
-- Core、Coherent/Quasicategory、Stable/SliceOpposite、HomotopyLimits の fibration・反対・fiber 比較等は読み取り専用。
+- Core、Coherent/Quasicategory、Stable/SliceOpposite、HomotopyLimits、KST/Spectra/FibrationTower* は読み取り専用。
   F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite を読み取り専用で使う。
 - 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
   𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
@@ -95,8 +95,8 @@
 
 ### 次の一手
 
-pushout→pullback に続き、底上の余極限→表現空間の極限を非交和・骨格列に特殊化する。
-比較済みの制限の充填性と点上の可縮性を使い、区間・内ホーンから単体・骨格の帰納法へ進む。
+標準単体と境界の次元の帰納法を、実際のセル付加の pushout と非交和へ結ぶ。
+各有限骨格での可縮性を証明し、検証済みの fibration 塔の逆極限による還元へ渡す。
 小ささは各次数での条件まで検証済み。任意の essentially small な fiber への一般化は残る。
 その後、一般の表現空間の可縮性と境界固定延長（Theorem 5.6.8.3、§5.6.5）へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
