@@ -6167,3 +6167,123 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_realization_homotopyPullback
 #print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_realization_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroColumn_eq_rowEvaluation
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroColumn_eq_rowEvaluation
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroColumn_homotopyPullback_of_zeroRow
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroColumn_homotopyPullback_of_zeroRow
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathBoundary_zeroRow_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathBoundary_zeroRow_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathToKan
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathToKan
+
+#check @SerrePositivity.KST.SConstruction.iteratedRealizationToKan
+#print axioms SerrePositivity.KST.SConstruction.iteratedRealizationToKan
+
+#check @SerrePositivity.KST.SConstruction.iteratedPathToKan_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.iteratedPathToKan_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.iteratedRealizationToKan_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.iteratedRealizationToKan_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.iteratedBoundaryToKan_comm
+#print axioms SerrePositivity.KST.SConstruction.iteratedBoundaryToKan_comm
+
+#check @SerrePositivity.KST.SConstruction.iteratedRealizationToKan_zeroColumn
+#print axioms SerrePositivity.KST.SConstruction.iteratedRealizationToKan_zeroColumn
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathToKan
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathToKan
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathToKan_boundary
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathToKan_boundary
+
+#check @SerrePositivity.KST.SConstruction.zeroRowKanBoundary_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.zeroRowKanBoundary_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.basedPathBasepoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.basedPathBasepoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.strictZeroPathFiberMap
+#print axioms SerrePositivity.KST.SConstruction.strictZeroPathFiberMap
+
+#check @SerrePositivity.KST.SConstruction.strictZeroPathFiberMap_path
+#print axioms SerrePositivity.KST.SConstruction.strictZeroPathFiberMap_path
+
+#check @SerrePositivity.KST.SConstruction.strictZeroPathFiberMap_projection
+#print axioms SerrePositivity.KST.SConstruction.strictZeroPathFiberMap_projection
+
+#check @SerrePositivity.KST.SConstruction.strictZeroPathFiberMap_localized_isIso_of_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.strictZeroPathFiberMap_localized_isIso_of_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathFiberComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathFiberComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathFiberComparison_projection
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathFiberComparison_projection
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathFiberComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathFiberComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.simplicialPathZeroColumn_section
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathZeroColumn_section
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathToKan_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathToKan_degeneracy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathFiberComparison_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathFiberComparison_degeneracy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPointedModel
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPointedModel
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPointedFiberComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPointedFiberComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPointedFiberComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPointedFiberComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.exists_pointedKanStrictExtension
+#print axioms SerrePositivity.KST.SConstruction.exists_pointedKanStrictExtension
+
+#check @SerrePositivity.KST.SConstruction.pointedKanStrictExtension
+#print axioms SerrePositivity.KST.SConstruction.pointedKanStrictExtension
+
+#check @SerrePositivity.KST.SConstruction.pointedKanStrictExtension_fac
+#print axioms SerrePositivity.KST.SConstruction.pointedKanStrictExtension_fac
+
+#check @SerrePositivity.KST.SConstruction.pointedKanStrictExtension_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.pointedKanStrictExtension_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.zeroRowKanFiberComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowKanFiberComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowKanFiberComparison_fac
+#print axioms SerrePositivity.KST.SConstruction.zeroRowKanFiberComparison_fac
+
+#check @SerrePositivity.KST.SConstruction.zeroRowKanFiberComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.zeroRowKanFiberComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPreviousComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPreviousComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPreviousComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPreviousComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPointedPreviousComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPointedPreviousComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPointedPreviousComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPointedPreviousComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.zeroRowKanPreviousComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowKanPreviousComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowKanPreviousComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.zeroRowKanPreviousComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.exists_previousStage_pathFiber_comparison
+#print axioms SerrePositivity.KST.SConstruction.exists_previousStage_pathFiber_comparison

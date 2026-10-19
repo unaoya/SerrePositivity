@@ -377,4 +377,16 @@ public import SerrePositivity.KST.SConstruction.SimplicialCartesianNaturality
 public import SerrePositivity.KST.SConstruction.PathBoundaryCartesian
 public import SerrePositivity.KST.SConstruction.PathBoundaryRealizationPullback
 
+public import SerrePositivity.KST.SConstruction.ZeroRowCartesianComparison
+public import SerrePositivity.KST.SConstruction.IteratedBoundaryKanComparison
+public import SerrePositivity.KST.SConstruction.ZeroRowKanFiberSquare
+public import SerrePositivity.KST.SConstruction.StrictZeroPathFiberComparison
+public import SerrePositivity.KST.SConstruction.ZeroRowPathFiberComparison
+public import SerrePositivity.KST.SConstruction.PathZeroColumnSection
+public import SerrePositivity.KST.SConstruction.ZeroRowPointedFiberComparison
+public import SerrePositivity.KST.SConstruction.PointedKanStrictExtension
+public import SerrePositivity.KST.SConstruction.ZeroRowKanFiberComparison
+public import SerrePositivity.KST.SConstruction.ZeroRowPreviousComparison
+public import SerrePositivity.KST.SConstruction.ZeroRowDeloopingComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
