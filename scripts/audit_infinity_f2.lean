@@ -425,3 +425,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.laxPullbackSnd_preservesZero
 #check @SerrePositivity.InfinityCategories.F2.isZeroVertex_laxPullback_iff
 #check @SerrePositivity.InfinityCategories.F2.laxPullback_hasZeroVertex
+
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPostcomp
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPostcomp_vertex
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPostcomp_innerFibration
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPostcomp_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPullbackLift
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPullbackLift_fst
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPullbackLift_snd
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPullback_hom_ext
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyPullback_isPullback
+#check @SerrePositivity.InfinityCategories.F2.isTerminalVertex_of_isPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_pullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_arrow_of_endpoints

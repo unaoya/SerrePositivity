@@ -21,6 +21,8 @@ public import SerrePositivity.InfinityCategories.F2.LaxPullbackMappingSpaceProje
 public import SerrePositivity.InfinityCategories.F2.LaxPullbackEquivalenceProjections
 public import SerrePositivity.InfinityCategories.F2.CatPullbackLaxSquare
 public import SerrePositivity.InfinityCategories.F2.LaxPullbackZeroProjections
+public import SerrePositivity.InfinityCategories.F2.PullbackConeComponentCriterion
+public import SerrePositivity.InfinityCategories.F2.ArrowConeComponentCriterion
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
