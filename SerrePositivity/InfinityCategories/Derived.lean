@@ -542,6 +542,12 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleRightShiftBound
 public import SerrePositivity.InfinityCategories.Derived.DGYonedaShiftedZero
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteGradedPrimitives
 
+public import SerrePositivity.InfinityCategories.Derived.DGModuleShiftUnitNaturality
+public import SerrePositivity.InfinityCategories.Derived.DGModuleRightShiftPostcomposition
+public import SerrePositivity.InfinityCategories.Derived.DGRestrictionGradedComparison
+public import SerrePositivity.InfinityCategories.Derived.DGRestrictionShiftedBoundary
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteBoundaryCancellation
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

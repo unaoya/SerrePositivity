@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteBoundaryCancellation
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteGradedPrimitives
 import SerrePositivity.InfinityCategories.Derived.DGYonedaShiftedZero
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteShiftedPrimitives
@@ -1749,6 +1750,17 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgYonedaClosedRightShift_zero_iff_primitive
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFiniteGraded_exists_primitives
 
+#print axioms SerrePositivity.InfinityCategories.dgModuleShiftOut_naturality
+#print axioms SerrePositivity.InfinityCategories.dgModuleShiftIn_naturality
+#print axioms SerrePositivity.InfinityCategories.dgModulePostcompose_graded
+#print axioms SerrePositivity.InfinityCategories.dgModuleClosedRightShift_postcompose_cycle
+#print axioms SerrePositivity.InfinityCategories.dgModuleClosedRightShift_postcompose_zero_of_primitive
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionGradedComparison_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionGradedComparison_exists_primitive
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionShiftedComparison_zero_of_boundary
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionShiftedComparison_zero_iff_boundary
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFiniteBoundary_exists_primitives
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1902,6 +1914,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleShiftUnitNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleRightShiftPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGRestrictionGradedComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGRestrictionShiftedBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteBoundaryCancellation,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleHomRightShift,
     `SerrePositivity.InfinityCategories.Derived.DGModuleClosedRightShift,
     `SerrePositivity.InfinityCategories.Derived.DGYonedaGradedPrimitives,
