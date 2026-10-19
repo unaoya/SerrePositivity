@@ -36,7 +36,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・507 モジュール 4916 宣言の公理監査成功。
+対象ビルド・511 モジュール 4951 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3637,3 +3637,39 @@ L9e は進行中。幾何的微分と交代微分との一致、符号の写像�
 参照：Goerss–Jardine I §7、III §2、VIII §1、Kerodon §3.2.3。
 対象ビルド 3975 jobs 成功。私有宣言を含む 507 モジュール 4916 宣言で標準三公理のみ。
 L9e は進行中。骨格の延長障害、幾何的微分との一致、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
+
+
+## 119. L9e の骨格の厳密な延長障害と cochain の実現
+
+通常の n+2 骨格上の射が次数 n+1 で定数のとき、全体 K の次数 n+2 単体を骨格へ持ち上げて正規化 cochain を構成した。
+各 n+3 セルの全ての面の像は球面的な面族になる。
+退化面の零性と交代式により、このセルの境界の交代和が通常の正規化微分のそのセルでの値と一致する。
+従って、一つのセルの境界が充填できることと微分の値が零であることは同値である。
+
+Mathlib の相対セル分解の付着写像と特徴射を元の単体の Yoneda 射へ比較した。
+付着境界の各面を骨格内の面の Yoneda 射と同定し、具体的な球面的境界の貼り合わせと付着境界の像を一致させた。
+全てのセルの微分が零なら各境界充填を選択し、セルの余積と骨格の pushout に貼り合わせることで次の骨格への実際の射を構成した。
+逆に延長を各特徴射に制限すると充填が得られる。
+従って、元の骨格上の値を厳密に保つ一段の延長の存在は、係数 cochain が通常の cocycle であることと同値である。
+
+任意の次元 d と各非退化 d 単体に指定した境界定数代表について、それを各セルへ貼って骨格上の射を実現する構成も証明した。
+低い骨格では厳密に定数であり、各セルでは指定した代表そのものに一致する。
+高次ホモトピー類の商の代表を選ぶことで、任意の係数 cochain を骨格上の射で実現した。
+さらに cocycle なら一つ高い骨格まで延長された射で実現できる。
+
+これは通常の骨格の射の延長障害の計算であり、写像空間の正次数群の比較を通して coefficientDifferential 自体の式を証明したわけではない。
+その接続、収束、有理 Shapiro の全射性、通常の Tot の比較は引き続き未完了。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SkeletalSphericalCochain.cochain` / `differential_cochain_apply` | 骨格上の射の正規化 cochain と各セルの交代和の式 |
+| `SkeletalSphericalCochain.cell_filler_iff` | 次のセルの充填の通常の微分による判定 |
+| `SkeletalCellAttachment.cell_attachingMap_ι` / `cell_characteristicMap_ι` | セル付着の二射と元の単体の比較 |
+| `SkeletalSphericalCochain.cell_attaching_boundary` | 付着境界の像と球面的な境界射の一致 |
+| `SkeletalSphericalCochain.extension_iff_differential_eq_zero` | 骨格への一段の厳密な延長と cocycle 条件の同値 |
+| `SkeletalSphericalRealization.exists_map` | 任意のセル代表の骨格上の射による厳密な実現 |
+| `SkeletalSphericalRealization.exists_realization` / `exists_extended_realization` | cochain と cocycle の実際の骨格の射による実現 |
+
+参照：Goerss–Jardine I §7、III §2、VIII §1。
+対象ビルド 3979 jobs 成功。私有宣言を含む 511 モジュール 4951 宣言で標準三公理のみ。
+L9e は進行中。幾何的な塔の群の微分との比較、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。

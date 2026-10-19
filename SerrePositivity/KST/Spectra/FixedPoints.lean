@@ -1,5 +1,11 @@
 module
 
+public import SerrePositivity.KST.Spectra.SkeletalSphericalRealization
+
+public import SerrePositivity.KST.Spectra.SkeletalSphericalCochain
+public import SerrePositivity.KST.Spectra.SkeletalCellCharacteristic
+public import SerrePositivity.KST.Spectra.SkeletalCochainExtension
+
 public import SerrePositivity.KST.Spectra.SphericalCochain
 
 public import SerrePositivity.KST.Spectra.SphericalBoundaryLastFace
