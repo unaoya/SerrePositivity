@@ -17,7 +17,13 @@
 - 底と図式の族を同時に動かした二点図式の共同実現を構成済み。面・退化との整合性と
   比較の辺の成分公式・可逆性を証明し、curry により `kanDiagramRealization C` と
   `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を得た。
-- 対象ビルド2801 jobs、公理監査4845宣言が成功。依存公理は標準3公理のみ。
+- `LeftTransportRepresentation` に分類図式・底上の比較・fiber の同値を束ね、pointed space
+  への射を回収した。任意の底変換への制限は底側と全空間側の両射を厳密に保つ。
+  両射の一致と表現そのものの一致の同値も証明済み。通常の nerve 上の小さい left fibration
+  には、既存の直接比較から実際の表現を構成済み。
+- 正次元の標準単体上で、比較の全 fiber の同値性は境界上の同値性と同値。
+  可換四角形そのものの境界固定延長は未証明。
+- 対象ビルド2805 jobs、公理監査4901宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
@@ -52,6 +58,9 @@
 - `weightedNerveTransportUnit_restriction_trivialKanFibration`
 - `weightedNerveTransportUnit_extensionSpace_isContractibleKan`
 - `exists_weightedNerveTransportUnit_retraction`
+- `LeftTransportRepresentation`、`LeftTransportRepresentation.restrict`
+- `LeftTransportRepresentation.restrict_eq_iff`、`nerveLeftTransportRepresentation`
+- `leftFibration_fiberEquivalence_iff_boundary`
 - `coherentLeftResolutionInfinityComparisonIso`
 
 ### 依存と提供
@@ -86,9 +95,12 @@
 ### 次の一手
 
 底の包含とパラメーターの境界をともに固定する表現の延長へ進む（§5.6.5）。
-まず表現を「𝒮 への底の射、pointed space への全空間の射、可換性、fiber ごとの同値」として
-記述し、任意の底変換による制限を構成する。標準単体とその境界上の延長で、既存の
-局所 strictification と `weightedNerveStraighteningCoherentFamilyUnitIso` が保つデータを照合する。
+表現の頂点データは `LeftTransportRepresentation` として定式化済み。次はこれを
+二つの関手空間の引き戻しの部分単体集合（transport witnesses）へ束ね、底の包含に沿う
+制限の持ち上げ性を示す（[Lemma 5.6.8.10](https://kerodon.net/tag/02SK)）。
+標準単体上での境界固定延長は、既存の局所 strictification だけからは従わない。
+正次元では `leftFibration_fiberEquivalence_iff_boundary` により fiber 条件を境界から回収できるので、
+底・全空間の両射を固定した可換四角形の延長を構成する。
 
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
