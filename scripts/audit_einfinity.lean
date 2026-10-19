@@ -799,6 +799,16 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.operadMap,
       `SerrePositivity.EInfinity.TableReduction.operadMap_app,
       `SerrePositivity.EInfinity.TableReduction.operadMap_f_surjective,
+      `SerrePositivity.EInfinity.IntervalCuts.edge_degree_bound,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexNondegenerate_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.sum_edgeOutputDegree,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeValue,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexValue,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeLinear,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexLinear,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_total_degree,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeValue_eq_zero_of_degree,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2333,3 +2343,38 @@ example : Function.Surjective
 example : Function.Surjective
     (((TableReduction.operadMap ℤ).map.app (SerrePositivity.FiniteBijection.of 0)).f 1).hom :=
   TableReduction.operadMap_f_surjective ℤ 0 1
+
+open SerrePositivity.EInfinity.IntervalCuts
+
+-- 010 の唯一の非退化な辺の切断は、正符号の辺⊗辺を与える。
+example : edgeValue ℤ compositionInner =
+    Finsupp.single (fun _ : Fin 2 => IntervalCuts.edge) 1 := by
+  have h0 : ¬ EdgeNondegenerate compositionInner.val 0 := by decide
+  have h1 : EdgeNondegenerate compositionInner.val 1 := by decide
+  have h2 : ¬ EdgeNondegenerate compositionInner.val 2 := by decide
+  have hs : edgeSign compositionInner.val 1 = 1 := by decide
+  have ho : edgeOutput compositionInner 1 = (fun _ : Fin 2 => IntervalCuts.edge) := by
+    funext k
+    fin_cases k <;> apply Subtype.ext <;> decide
+  change (∑ p : Fin 3, edgeTerm ℤ compositionInner p) = _
+  rw [Fin.sum_univ_three]
+  simp [edgeTerm, h0, h1, h2, hs, ho]
+-- 色を逆にした 101 では、同じ辺⊗辺の切断の符号が負になる。
+example : edgeSign (![1, 0, 1] : Fin 3 → Fin 2) 1 = -1 := by decide
+-- 頂点への正次数作用は退化し、辺の非零項の総次数は語次数+1。
+example : vertexValue ℤ compositionInner 0 = 0 := rfl
+example : ∑ k : Fin 2, simplexDegree (edgeOutput compositionInner 1 k) = 2 :=
+  edgeOutput_total_degree compositionInner 1 (by decide)
+-- arity 二の標準 AW の二つの切断は辺⊗一と零⊗辺。
+example : edgeOutput (permutationWord (1 : Equiv.Perm (Fin 2))) 0 0 = IntervalCuts.edge := by
+  apply Subtype.ext
+  decide
+example : edgeOutput (permutationWord (1 : Equiv.Perm (Fin 2))) 0 1 = IntervalCuts.vertex 1 := by
+  apply Subtype.ext
+  decide
+example : edgeOutput (permutationWord (1 : Equiv.Perm (Fin 2))) 1 0 = IntervalCuts.vertex 0 := by
+  apply Subtype.ext
+  decide
+example : edgeOutput (permutationWord (1 : Equiv.Perm (Fin 2))) 1 1 = IntervalCuts.edge := by
+  apply Subtype.ext
+  decide

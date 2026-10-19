@@ -465,7 +465,13 @@ nullary を含む TR の部分合成保存は完了。
 χ の複体射の入れ子・並列結合則も三重テンソル TR で消去して証明済み。
 `Surjection.operad` は実際の全射語 dg オペラッド、`TableReduction.operadMap` は一般の TR : E → χ。
 全 arity・全整数次数・任意の可換環を扱い、nullary の合成保存も含む。
-具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
+`IntervalCuts.edgeValue`・`vertexValue` は Δ¹ の切断公式の符号付き基底値。
+`edgeLinear`・`vertexLinear` は全射語加群への線形延長。
+辺の非零項は d+1≤n、頂点の非零項は d=0。辺の出力の次数和も d+1 と証明済み。
+符号は BF §2.2.4 の区間長による交換指数と内側区間の右端点の指数を使う。
+010 の辺⊗辺の正符号、101 の負符号、通常の AW の辺⊗一・零⊗辺を監査で検証。
+具体的な Δ¹ の余代数構造は未完成。次は実際の区間テンソルへの成分射と微分保存。
+その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

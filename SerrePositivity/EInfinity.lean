@@ -265,3 +265,4 @@ public import SerrePositivity.EInfinity.TableReduction.SequenceMap
 public import SerrePositivity.EInfinity.Surjection.ComplexUnitLaws
 public import SerrePositivity.EInfinity.Surjection.ComplexEquivariance
 public import SerrePositivity.EInfinity.TableReduction.OperadMap
+public import SerrePositivity.EInfinity.IntervalCuts.Values
