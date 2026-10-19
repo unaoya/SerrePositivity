@@ -2435,3 +2435,23 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanHomotopyEquivalencePath_map_of_constant
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strictification_of_unit_over_identity
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanPinchedHomEdge_of_homMk_eq
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanPinchedHomEdge_lift_target
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanEdgeRepresentative_lift
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanHomotopyRepresentative_lift
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyOfEq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyOfEq_hom
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strictification_of_image_class
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCandidate_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCandidateTransformation_image_class
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits
