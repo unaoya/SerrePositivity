@@ -821,7 +821,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumZeroObject,
     `SerrePositivity.KST.Spectra.SpectrumFiberSquares,
     `SerrePositivity.KST.Spectra.SpectrumLoopSquares,
-    `SerrePositivity.KST.Spectra.SpectrumLoopEquivalences]
+    `SerrePositivity.KST.Spectra.SpectrumLoopEquivalences,
+    `SerrePositivity.KST.Spectra.RawSpectrumMapping,
+    `SerrePositivity.KST.Spectra.RawSpectrumMappingLaws,
+    `SerrePositivity.KST.Spectra.RawSpectrumMappingFamily,
+    `SerrePositivity.KST.Spectra.RawSpectrumMappingAcyclic,
+    `SerrePositivity.KST.Spectra.RawSpectrumMappingPointed]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

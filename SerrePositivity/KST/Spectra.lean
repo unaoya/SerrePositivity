@@ -334,3 +334,8 @@ public import SerrePositivity.KST.Spectra.SpectrumZeroObject
 public import SerrePositivity.KST.Spectra.SpectrumFiberSquares
 public import SerrePositivity.KST.Spectra.SpectrumLoopSquares
 public import SerrePositivity.KST.Spectra.SpectrumLoopEquivalences
+public import SerrePositivity.KST.Spectra.RawSpectrumMapping
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingLaws
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingFamily
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingAcyclic
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingPointed

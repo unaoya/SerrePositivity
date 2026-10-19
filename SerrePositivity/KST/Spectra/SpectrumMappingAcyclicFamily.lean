@@ -1,11 +1,13 @@
 module
 
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingLaws
+public import SerrePositivity.KST.Spectra.RawSpectrumMappingFamily
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting
 public import SerrePositivity.KST.Spectra.PushoutProductMonomorphism
 
 /-!
 概要：段ごとの全単射 RLP に沿って持ち上がるスペクトル写像の整合族。
-方針：零段は後合成の全単射 RLP、次段は単射な構造射に沿う相対充填を使う。
+方針：任意の Kan 列への相対充填を特殊化し、BF の後合成との厳密な一致で移す。
 規約：L9 の実際の各段評価と厳密な構造条件を保持する。
 使われ方：BF 1978 §2、HTT A.3.3、Sp の豊穣 Hom 写像の fibration 性。
 -/
@@ -39,58 +41,11 @@ lemma monoFamily (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
         b ≫ OmegaSpectrum.evaluation X Z n) ∧
       (∀ n, l (n + 1) ≫ PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         l n ≫ OmegaSpectrum.mappingStep X Y n) := by
-  let LiftAt (n : ℕ) := {l : U ⟶
-      (PointedObject.basedHom (X.level n).space (Y.level n).space).right //
-    j ≫ l = a ≫ OmegaSpectrum.evaluation X Y n ∧
-      l ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right =
-        b ≫ OmegaSpectrum.evaluation X Z n}
-  have h0 : Nonempty (LiftAt 0) := by
-    have : HasLiftingProperty j
-        (PointedObject.basedHomMap (X.level 0).space (p.app 0)).right :=
-      PointedMapping.post_rlp_monomorphisms _ _ (hp 0) j inferInstance
-    let sq : CommSq (a ≫ OmegaSpectrum.evaluation X Y 0) j
-        (PointedObject.basedHomMap (X.level 0).space (p.app 0)).right
-        (b ≫ OmegaSpectrum.evaluation X Z 0) := ⟨by
-      rw [Category.assoc, ← spectrumHomMap_evaluation X (Y := Y) (Z := Z) p 0,
-        ← Category.assoc, h, Category.assoc]⟩
-    exact ⟨⟨sq.lift, sq.fac_left, sq.fac_right⟩⟩
-  have hn (n : ℕ) (prev : LiftAt n) : ∃ next : LiftAt (n + 1),
-      next.val ≫ PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
-        prev.val ≫ OmegaSpectrum.mappingStep X Y n := by
-    have hc : j ≫ (prev.val ≫ OmegaSpectrum.mappingStep X Y n) =
-        (a ≫ OmegaSpectrum.evaluation X Y (n + 1)) ≫
-          PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space := by
-      rw [← Category.assoc, prev.property.1, Category.assoc,
-        ← OmegaSpectrum.evaluation_condition, ← Category.assoc]
-    have he : (a ≫ OmegaSpectrum.evaluation X Y (n + 1)) ≫
-        (PointedObject.basedHomMap (X.level (n + 1)).space (p.app (n + 1))).right =
-          j ≫ (b ≫ OmegaSpectrum.evaluation X Z (n + 1)) := by
-      rw [Category.assoc, ← spectrumHomMap_evaluation X (Y := Y) (Z := Z) p (n + 1),
-        ← Category.assoc, h, Category.assoc]
-    have ha : (prev.val ≫ OmegaSpectrum.mappingStep X Y n) ≫
-        (PointedObject.basedHomMap (suspension (X.level n).space) (p.app (n + 1))).right =
-          (b ≫ OmegaSpectrum.evaluation X Z (n + 1)) ≫
-            PointedMapping.pre (X.sigma n) (Z.level (n + 1)).space := by
-      change (prev.val ≫ OmegaSpectrum.mappingStep X Y n) ≫
-          (pointedMappingFunctor (suspension (X.level n).space)).map (p.app (n + 1)) = _
-      rw [Category.assoc, spectrumMappingStep_post X (Y := Y) (Z := Z) p n,
-        ← Category.assoc]
-      change (prev.val ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right) ≫
-        OmegaSpectrum.mappingStep X Z n = _
-      rw [prev.property.2, Category.assoc, ← OmegaSpectrum.evaluation_condition,
-        ← Category.assoc]
-    let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) (X.sigma n).right j
-    have hpp : HasLiftingProperty pp.ι (p.app (n + 1)).right :=
-      hp (n + 1) pp.ι (PushoutProductMonomorphism.mono pp)
-    obtain ⟨l, hl, hp, hb⟩ := relativePointedHom_lift (X.sigma n) (p.app (n + 1)) j hpp
-      (a ≫ OmegaSpectrum.evaluation X Y (n + 1)) (prev.val ≫ OmegaSpectrum.mappingStep X Y n)
-      (b ≫ OmegaSpectrum.evaluation X Z (n + 1)) hc he ha
-    exact ⟨⟨l, hl, hb⟩, hp⟩
-  let stage : ∀ n, LiftAt n := Nat.rec (Classical.choice h0) (fun n prev ↦ (hn n prev).choose)
-  refine ⟨fun n ↦ (stage n).val, fun n ↦ (stage n).property.1,
-    fun n ↦ (stage n).property.2, ?_⟩
-  intro n
-  exact (hn n (stage n)).choose_spec
+  let q : KanSequence.Hom Y.toKanSequence Z.toKanSequence := ⟨p.app, p.comm⟩
+  have hq : a ≫ RawSpectrumMapping.post X q = j ≫ b := by
+    rw [RawSpectrumMapping.post_spectrum]
+    exact h
+  exact RawSpectrumMapping.monoFamily X q hp j a b hq
 
 end
 end SerrePositivity.KST.Spectra.SpectrumMappingAcyclic
