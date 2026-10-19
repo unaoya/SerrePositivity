@@ -1821,3 +1821,19 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_relativeCoconeFamily_boundary
 
 #check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_relativeCoconeFamily_boundary_of_colimit
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInternalHomSwap_hom_hom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeHomInterchangeIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeHomInterchange_comparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_relativeHom_interchange
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_boundaryFunctor
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_pre_boundary_of_colimit
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeCocone_boundary_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanCocone_boundary_extension_of_first_colimit
