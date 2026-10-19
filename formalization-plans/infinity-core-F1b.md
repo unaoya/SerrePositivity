@@ -21,7 +21,7 @@
 - F2L-1：F1 の既存 coherent nerve の頂点・辺・coherent Hom 比較を再利用。
   任意の頂点・辺の往復、端点固定の関手の全単射、恒等・合成三角形、Cat_∞ の写像空間と ULift した core Fun の同値を整備。
   比較の零単体と豊穣自然性、辺の類の一致と関手同型の存在、可逆辺と関手の同値の双方向判定を証明。
-  Cat_∞ 内の引き戻し・lax pullback の普遍性は未完了。
+  Cat_∞ 内の引き戻しの指定可換性との照合・lax pullback は未完了。
 - F2L-2：可逆 path による引き戻し候補と quasicategory 性、二射影・可換関手同型、指定 path を保つ全パラメータの lift を構成。
   任意 K の Fun との交換、inner fibration の引き戻しと core の交換を厳密な同型で証明。
   全 K の関手 core の置換後の厳密な引き戻し表示と元の二射影の一致まで完了。
@@ -32,8 +32,10 @@
   同値な形状への slice 制限の充填性を使い、元の p、q の cospan の native な極限錐を構成。
   頂点は catPullbackObject p q と厳密に一致。指定可逆辺・ホモトピーの厳密な持ち上げも構成。
   元の錐を追跡可能な相対輸送から選び直し、全錐の可逆ホモトピーを公開。頂点側は定値、
-  図式側は切断の coherent 円柱と全時刻で厳密に一致。二射影・指定可換性との照合は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6307 jobs）、F2 の公理監査成功（277 宣言、標準三公理のみ）。
+  図式側は切断の coherent 円柱と全時刻で厳密に一致。native な錐の各脚を実際の関手へ読み戻し、
+  自然性の正方形から切断との合成を置換後の脚と比較。左右の脚と元の二射影の関手同型を構成。
+  二脚の比較同型は存在から選択しており、native な二次の可換性と指定 path の同時照合は未完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6318 jobs）、F2 の公理監査成功（322 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -59,6 +61,7 @@
 - `F2.qCatHom_postcomp` / `F2.catPullbackReplacementCone_isLimit`
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
+- `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
 
 ### 依存と提供
 
@@ -69,7 +72,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：指定可逆辺・ホモトピーの厳密な延長、指定円柱を保つ全錐の相対輸送、集約・監査と本書。
+  本保存単位：錐の native な脚、比較の自然性、二射影との関手同型、集約・監査と本書。
 
 ### 既知の問題
 
@@ -82,8 +85,8 @@
 
 ### 次の一手
 
-- catPullbackConeHomotopy を homotopyNatTransOfEndpoints へ送り、錐の各脚で自然性の式を読む。
-  apex・diagram の制限式で頂点の恒等射と切断の辺を同定し、二射影との関手同型と指定 path を照合する。
+- coherent 二単体を core Fun の指定辺へ読み戻し、native な錐の二つの三角形を関手同型にする。
+  全錐の比較の三次の式から二脚の比較を同時に選び、catPullbackCommutativity の指定 path と照合する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
