@@ -409,6 +409,9 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberCom
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberComparisonProjection
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberPushout
 
+public import SerrePositivity.InfinityCategories.Derived.DGModuleBicartesianChoices
+public import SerrePositivity.InfinityCategories.Derived.DGModuleStability
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

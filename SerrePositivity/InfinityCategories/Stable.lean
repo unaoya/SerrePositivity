@@ -307,6 +307,9 @@ public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationSection
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationStabilityDescent
 public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
 
+public import SerrePositivity.InfinityCategories.Stable.BicartesianChoice
+public import SerrePositivity.InfinityCategories.Stable.BicartesianCriterion
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

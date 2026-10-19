@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleStability
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberPushout
 import SerrePositivity.InfinityCategories.Derived.DGModuleConePullback
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberEquivalence
@@ -146,6 +147,15 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.isPullback_iff
+#print axioms SerrePositivity.InfinityCategories.FiberSquare.isPushout_iff
+#print axioms SerrePositivity.InfinityCategories.zeroTriangle_fiber_iff_cofiber_of_bicartesian_choices
+#print axioms SerrePositivity.InfinityCategories.isStable_of_bicartesian_choices
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerve_bicartesian_cofiber_exists
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerve_bicartesian_fiber_exists
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerve_fiber_iff_cofiber
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerve_isStable
 
 #print axioms SerrePositivity.InfinityCategories.dgModuleTriangle_postcompose_differential
 #print axioms SerrePositivity.InfinityCategories.dgModuleTriangleAppendFaces_compatible
@@ -1598,6 +1608,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.BicartesianChoice,
+    `SerrePositivity.InfinityCategories.Stable.BicartesianCriterion,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleBicartesianChoices,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleStability,
+
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleTrianglePostcomposition,
     `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendHorn,
     `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendKnownFaces,
