@@ -665,3 +665,8 @@ public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryTrace
 public import SerrePositivity.KST.Spectra.LoopTraceContraction
 public import SerrePositivity.KST.Spectra.PointedProjectionLoop
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTraceContraction
+public import SerrePositivity.KST.Spectra.PointedBasedPathComposition
+public import SerrePositivity.KST.Spectra.SequenceTracedRectification
+public import SerrePositivity.KST.Spectra.SequenceTracedRectificationTriangles
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedRectification
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedBoundaryData
