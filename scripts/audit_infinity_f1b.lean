@@ -1837,3 +1837,19 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeCocone_boundary_extension
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanCocone_boundary_extension_of_first_colimit
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseHomCurry_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseHomFiberIso_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberwiseRelativeRestriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPullbackOverFiberIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeTargetFiberIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeFiber_comparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeFiber_restriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeFiber_initialBoundary

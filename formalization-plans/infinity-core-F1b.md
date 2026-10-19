@@ -13,17 +13,11 @@
 - 同じ宇宙の quasicategory K・C・D と任意の δ : K→C、F₀ : K→D に対し、
   左右 Kan 拡張の存在と全頂点 c の標準局所図式の余極限・極限の存在との同値を証明。
   各点の余錐を独立に選ぶだけでなく、指定変換つきの関手全体を構成する。
-- 構成経路：comma の反転 `F1B.kanLeftComma δ` の射影は cocartesian fibration。
-  局所形からその fiber への標準比較は単射な前合成同値で、反転による比較と厳密に一致。
-  相対指数 `kanFiberwiseHomProjection` の cartesian 性と境界充填の移送を使い、
-  局所余極限から相対 join 上の図式と全 fiber の普遍余錐を coherent に組み立てる。
-- 右端から候補と指定変換を抽出。候補の標準局所輸送の余錐と、fiber の普遍余錐を
-  標準比較へ制限した余錐を、図式・頂点を固定する比較円柱で結ぶ。
-  始端・終端を厳密に同定し、全余錐の関手同型による余極限性の移送で左 Kan 条件を得る。
-- 双対化：coslice の反転と反転図式の slice の同型を構成し、余錐ごとの余極限性と
-  反転した錐の極限性の同値を証明。反転した右輸送の終端へ普遍性を移し、左 Kan 条件を右へ移す。
-  標準の二重反転同型の各次数の成分が恒等写像であることから、反転関手の二乗と恒等関手の
-  外延的な等式を証明。対象と射を同時に元へ戻し、一般の右 Kan 拡張の存在へ接続済み。
+- 構成経路：`F1B.kanLeftComma δ` の cocartesian 射影と標準局所形から fiber への
+  単射な前合成同値を使う。相対指数の cartesian 性で全 fiber の普遍余錐を組み立て、
+  図式・頂点を固定する円柱比較で候補の標準局所輸送へ余極限性を移す。
+- 右の存在：coslice と反転図式の slice の同型で普遍性を双対化する。
+  反転関手の二乗が恒等関手に外延的に等しいことを証明し、対象と射を元へ戻す。
 - 相対余錐制限 `kanRelativeCoconeRestriction` を構成。持ち上げは部分パラメータ上の余錐、
   元の図式、U による余錐全体の像を同時に保つ延長と同値。U が inner／自明 Kan fibration なら比較も同じ性質。
   `KanRelativeCoconeLifting` はこの比較の始点境界充填条件。終対象上では通常の余極限性と同値。
@@ -34,10 +28,13 @@
   境界を固定する関手 V′ の相対余錐条件へ移送し、最初の境界余錐だけの条件から
   境界・元の図式・底の全余錐を保つ局所延長と、その転置の相対普遍性を構成済み。
   変動する添字に対する全空間の相対的な組み立ては未完。
+- 変動する関手の全空間に標的の射 U による後合成を構成し、底・curry・前合成との自然性を証明。
+  相対 join の制限と後合成から全空間の相対比較を構成。標的の fiber を通常の相対余錐制限の
+  標的と同型で結び、比較射の厳密な一致と局所の相対始点境界充填の移送を証明。
 - F1 の scaffold 比較は straightening に依存するため import しない。
   再構成した補題は `F1B.kanScaffoldBaseChange_overPullbackMap`。新規宣言も F1B 名前空間。
-- 最終検証：F1・F1B 同時ビルド成功（3626 jobs）、同時 import 検査成功（F1 6282・F1B 3933 宣言）。
-  公理監査成功（3937 宣言、標準三公理のみ、1074 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3643 jobs）、同時 import 検査成功（F1 6323・F1B 3991 宣言）。
+  公理監査成功（3995 宣言、標準三公理のみ、1080 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -66,6 +63,7 @@
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
 - `F1B.kanRelativeCoconeRestriction` / `F1B.exists_kanRelativeCocone_extension_of_first_vertices`
 - `F1B.kanRelativeHomInterchangeIso` / `F1B.exists_kanCocone_boundary_extension_of_first_colimit`
+- `F1B.kanRelativeJoinRelativeFiber_restriction` / `F1B.kanRelativeJoinRelativeFiber_initialBoundary`
 
 ### 依存と提供
 
@@ -76,7 +74,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：相対内部 Hom の順序交換、比較射の同定、V′ の局所余錐の延長と相対普遍性、集約・監査・本書）。
+- なし（本保存単位：全空間の後合成、相対比較、fiber の同定と相対充填性の移送、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -91,12 +89,12 @@
 
 ### 次の一手
 
-- `exists_kanRelativeCocone_boundary_extension` とその絶対的な特殊例で、V′ の局所余錐の
-  境界固定の延長と相対充填性は構成済み。次は変動する Kan 添字の全空間へ組み立てる。
-  `kanFiberwiseHom` に標的の射 U による後合成を定義し、底への射影・curry・前合成との自然性を証明する。
-  相対 join の制限と後合成から相対比較を作り、その fiber を `kanRelativeCoconeRestriction` と同定する。
-  全空間の相対境界充填へ移し、相対的な存在と写像空間の制限定理へ進む。
-  標準の coslice による U-colimit との比較は未証明。操作的な充填条件との同値を仮定しない。
+- `kanRelativeJoinRelativeFiber_initialBoundary` により、通常の相対余錐の操作的な普遍性を
+  全空間の相対比較の各 fiber の始点境界充填へ移送済み。次は全空間の相対境界充填へ移す。
+  絶対的な `kanInitialBoundaryLifting_of_fiber_map` の経路を読み、U による後合成を同時に
+  指定した cartesian 輸送・底変換の自然性を整備し、相対的な組み立てを証明する。
+  そこから相対的な存在と写像空間の制限定理へ進む。標準の coslice による U-colimit との
+  比較は未証明であり、操作的な充填条件との同値を仮定しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
