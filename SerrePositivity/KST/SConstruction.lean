@@ -713,4 +713,9 @@ public import SerrePositivity.KST.SConstruction.CoherentStringPrismOrders
 public import SerrePositivity.KST.SConstruction.CoherentStringPrismChains
 public import SerrePositivity.KST.SConstruction.CoherentPrismNativeFamilies
 public import SerrePositivity.KST.SConstruction.KPrismNativeSpanFamilies
+public import SerrePositivity.KST.SConstruction.CoherentOrdinaryPrismSlices
+public import SerrePositivity.KST.SConstruction.KPrismSliceDiagrams
+public import SerrePositivity.KST.SConstruction.KPrismSliceEdges
+public import SerrePositivity.KST.SConstruction.CoherentPrismCompositionFlags
+public import SerrePositivity.KST.SConstruction.KPrismNativeSpanTargets
 /-! # ∞-S• 構成と連結 K 理論 -/
