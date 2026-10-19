@@ -809,6 +809,11 @@ public import SerrePositivity.InfinityCategories.Derived.DGTriangleSourceRefinem
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierVertexLegTriangle
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegTriangles
 
+public import SerrePositivity.InfinityCategories.Derived.RoofSliceOneSimplexOfTriangle
+public import SerrePositivity.InfinityCategories.Derived.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteVertexLegs
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegCompatibility
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

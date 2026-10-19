@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegCompatibility
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegTriangles
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeRefinement
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramHornSource
@@ -2020,10 +2021,23 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.legTriangle_face0
 #print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.legTriangle_face1
 
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceOneSimplexOfTriangle_triangle
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexEdgeLift_val
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.vertexCone
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.sourceLeg_eq_vertexLeg
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.targetLeg_eq_vertexLeg
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.vertexConeCompStruct
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramFiniteEdges_exists_vertexCone
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceOneSimplexOfTriangle,
+    `SerrePositivity.InfinityCategories.Derived.FullSubcomplexEdgeLift,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteVertexLegs,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegCompatibility,
+
     `SerrePositivity.InfinityCategories.Derived.DGRepresentableModulePrecomposeAlgebra,
     `SerrePositivity.InfinityCategories.Derived.DGClosedEqualityTransport,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteCellCommonSourcePrimitives,
