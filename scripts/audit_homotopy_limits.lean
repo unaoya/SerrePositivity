@@ -7624,3 +7624,75 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @prismTransportComponent_map_pointIso_hom_arrow
 #print axioms prismTransportComponent_map_pointIso_hom_arrow
+
+#check @pointEdgeTransportCylinder
+#print axioms pointEdgeTransportCylinder
+
+#check @pointEdgeTransportCylinder_raw
+#print axioms pointEdgeTransportCylinder_raw
+
+#check @pointEdgeTransportEndpointHomotopy
+#print axioms pointEdgeTransportEndpointHomotopy
+
+#check @pointEdgeTransportEndpointHomotopy_projection
+#print axioms pointEdgeTransportEndpointHomotopy_projection
+
+#check @pointEdgeTransportEndpointHomotopy_hom
+#print axioms pointEdgeTransportEndpointHomotopy_hom
+
+#check @fixedExtensionEdgeSource_evaluate
+#print axioms fixedExtensionEdgeSource_evaluate
+
+#check @fixedExtensionEdgeTarget_evaluate
+#print axioms fixedExtensionEdgeTarget_evaluate
+
+#check @fixedExtensionEdgeSource_map_homotopy_raw
+#print axioms fixedExtensionEdgeSource_map_homotopy_raw
+
+#check @fixedExtensionEdgeTarget_map_homotopy_raw
+#print axioms fixedExtensionEdgeTarget_map_homotopy_raw
+
+#check @functorHomotopy_evaluation_diagram
+#print axioms functorHomotopy_evaluation_diagram
+
+#check @pointHomotopy_evaluation_hom_arrow
+#print axioms pointHomotopy_evaluation_hom_arrow
+
+#check @specifiedCoconeLeftFirstHomotopy
+#print axioms specifiedCoconeLeftFirstHomotopy
+
+#check @specifiedCoconeLeftFirstHomotopy_raw
+#print axioms specifiedCoconeLeftFirstHomotopy_raw
+
+#check @specifiedCoconeLeftFirstHomotopy_projection
+#print axioms specifiedCoconeLeftFirstHomotopy_projection
+
+#check @specifiedCoconeLeftFirstHomotopy_initial
+#print axioms specifiedCoconeLeftFirstHomotopy_initial
+
+#check @specifiedCoconeLeftFirstPointCylinder
+#print axioms specifiedCoconeLeftFirstPointCylinder
+
+#check @specifiedCoconeLeftFirstEndpointHomotopy
+#print axioms specifiedCoconeLeftFirstEndpointHomotopy
+
+#check @specifiedCoconeLeftFirstEndpointHomotopy_hom
+#print axioms specifiedCoconeLeftFirstEndpointHomotopy_hom
+
+#check @specifiedCoconeLeftMiddleComparison_point_diagram
+#print axioms specifiedCoconeLeftMiddleComparison_point_diagram
+
+#check @specifiedCoconeLeftMiddleComparison_hom_arrow
+#print axioms specifiedCoconeLeftMiddleComparison_hom_arrow
+
+#check @pointFunctorEvaluation_postcomp
+#print axioms pointFunctorEvaluation_postcomp
+
+#check @pointFunctorIso_postcomp_hom_arrow
+#print axioms pointFunctorIso_postcomp_hom_arrow
+
+#check @functorIso_naturality_pointComposition
+#print axioms functorIso_naturality_pointComposition
+
+#check @specifiedCoconeLeftTerminalComparison_hom_arrow
+#print axioms specifiedCoconeLeftTerminalComparison_hom_arrow
