@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleCommonApex
 import SerrePositivity.InfinityCategories.Derived.DGFourLastHornFiniteFillers
 import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementAvoidingFaces
 import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementComponents
@@ -2545,6 +2546,29 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgFourLastHornFinite_exists_sourceRefinement_fillers
 #print axioms SerrePositivity.InfinityCategories.dgVerdierTriangles_exists_refinedFillers
 
+#print axioms SerrePositivity.InfinityCategories.dgSimplexEdge_closed_normal
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_edge_comp
+#print axioms SerrePositivity.InfinityCategories.dgTetrahedronInitialRefinement_initialDiagonal
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexSimplexApexLift
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexSimplexApexLift_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleRefinedFiller_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedOverThreeSimplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedOverThreeSimplex_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedOverThreeSimplex_face1
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedOverThreeSimplex_face2
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedOverThreeSimplex_face3
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTriangleInitialClosed_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedThreeApex_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedThreeApex_comp
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedThreeApex_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedThreeSimplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedThreeSimplex_face0
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteTriangleRefinement.simplex
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteTriangleRefinement.simplex_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierFiniteTriangleRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteTriangleRefinement.commonDenominator
+#print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteTriangleRefinement.apex_eq
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2698,6 +2722,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementDiagonal,
+    `SerrePositivity.InfinityCategories.Derived.FullSubcomplexSimplexApexLift,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedOverThreeSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedThreeFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedThreeApex,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedThreeSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleCommonApex,
     `SerrePositivity.InfinityCategories.Derived.DGSourceRefinementReindex,
     `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementFixedSourceFaces,
     `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementPositiveFaces,
