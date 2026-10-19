@@ -2469,3 +2469,29 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftComma_relativeColimit_of_local
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strict_extension_of_local_universal_colimits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeVertexFiberMap_equivalenceLifting
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeFamilyPostcomp_equivalenceLifting
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanVertexIso_lift_target
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeFamilyPrismIso
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeColimit_over_iso_image
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransportTargetEq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransportTargetEq_cocone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaUniversalLocalCocone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCanonicalFamilyIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeOfDiagramEq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeFamilyIsoOfDiagramEq
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftLocalColimit_over_universal
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits
