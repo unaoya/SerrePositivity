@@ -496,3 +496,6 @@ public import SerrePositivity.KST.Spectra.SpectrumNativeCotensorFiber
 public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationFiber
 public import SerrePositivity.KST.Spectra.SpectrumCircleSquareVertices
 public import SerrePositivity.KST.Spectra.SpectrumCircleSquareCospan
+public import SerrePositivity.KST.Spectra.SpectrumPointLoopReference
+public import SerrePositivity.KST.Spectra.SpectrumCirclePointLoopComparison
+public import SerrePositivity.KST.Spectra.SpectrumCirclePointLoopCriterion
