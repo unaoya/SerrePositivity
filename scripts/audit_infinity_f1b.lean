@@ -2009,3 +2009,25 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRightKanExtensionIso_hom_fac
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRightKanExtensionIso_hom_unique
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeVertexFiberMap_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeFamilyPostcomp_vertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeFamilyPostcomp_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeFamilyPostcomp_pinchedHom_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCosliceCoconeFamilyMap_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_slice_pinchedHom_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.KanRelativeInitialVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.IsRelativeColimitCone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInitialVertex_of_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_of_lifting
+
+#check @SerrePositivity.InfinityCategories.F1B.KanRelativeInitialVertex.comp

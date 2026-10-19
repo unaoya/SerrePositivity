@@ -18,6 +18,8 @@
 - `kanRelativeCoconeRestriction` の持ち上げは部分余錐・元の図式・U による像を保つ延長と同値。
   U が inner／自明 Kan fibration なら比較も同じ性質。`KanRelativeCoconeLifting` は比較の始点境界充填条件。
   終対象上では通常の余極限性と同値。底の余錐が余極限なら、この相対条件から元の余極限性を回収。
+- 相対充填を図式固定の余錐の族へ制限し、coslice との比較の後合成自然性で写像空間の同値を移送。
+  標準の `IsRelativeColimitCone`（通常の coslice の相対始対象性）を定義し、操作的条件からの含意を証明。
 - 相対関手の境界充填は指定部分外の単体の始点の条件だけで成立。相対内部 Hom の順序交換で、
   V′ の局所余錐の境界固定の延長と相対普遍性を構成済み。
 - 全空間の相対比較と fiber を通常の相対余錐制限と同定。制限と後合成は cartesian 辺を保つ。
@@ -38,15 +40,15 @@
 - 反転の h Fun の逆向き Hom 全単射、指定ホモトピー・合成・前合成との両立を証明。
   指定変換を保持した右条件の双対化から、右側も Hom 普遍性と大域的一意性まで証明。
 - F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3769 jobs）、同時 import 検査成功（F1 6748・F1B 4222 宣言）。
-  公理監査成功（4226 宣言、標準三公理のみ、1139 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3777 jobs）、同時 import 検査成功（F1 6773・F1B 4235 宣言）。
+  公理監査成功（4239 宣言、標準三公理のみ、1143 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - 1. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。24〜60 時間。
   絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
-  V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。
+  V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。標準 U 余極限への含意も証明済み。
   関手の境界制限上で、変動する Kan 添字の族と実際の図式の相対的な組み立ては証明済み。
   局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
   左右端の Hom 全単射、標準 prism との一致、comma による元の添字への移送は証明済み。
@@ -72,6 +74,7 @@
 - `F1B.kanLeftCommaHomEquiv` / `F1B.exists_kanLeftExtension_with_homUniversal_of_local_colimits`
 - `F1B.kanLeftKanExtension_homUniversal` / `F1B.kanLeftKanExtensionIso`
 - `F1B.kanRightKanExtension_homUniversal` / `F1B.kanRightKanExtensionIso`
+- `F1B.IsRelativeColimitCone` / `F1B.kanIsRelativeColimitCone_of_lifting`
 
 ### 依存と提供
 
@@ -82,8 +85,7 @@
 
 ### 未コミット
 
-- `F1B/KanRelativeVertexFiberInitial.lean`、`KanRelativeCoconeFamilyInitial.lean`、
-  `KanRelativeCoconeSliceMapping.lean`：図式固定の余錐と通常の coslice への相対条件の比較を作業中。
+- `KanRelativeInitialBaseChange.lean`・`KanRelativeInitialBoundaryCriterion.lean`：相対始対象の逆方向の判定を作業中。
 
 ### 既知の問題
 
@@ -98,9 +100,9 @@
 
 ### 次の一手
 
-- 最初に未コミットの coslice 比較を検証し、図式固定の写像空間の相対普遍性へ接続する。
-  次に `kanRelativeJoinColimitRestriction_isFullyFaithful` と相対始点境界充填からの Hom 比較を読む。
-  標準の isofibration・U 余極限と操作的相対条件を比較し、原典 7.3.6.7 の写像空間の結論へ接続する。
+- 標準 U 余極限から操作的条件への逆方向を、isofibration の上で証明する。
+  `kanIsRelativeColimitCone_of_lifting` と `cosliceEndpointMap_leftFibration` を読む。
+  相対始対象の写像空間判定から始点境界充填へ戻し、原典 7.3.6.7 の相対的な制限定理へ接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

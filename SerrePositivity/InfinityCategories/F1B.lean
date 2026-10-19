@@ -506,3 +506,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanTransportOppositeReflect
 public import SerrePositivity.InfinityCategories.F1B.KanOppositeHomotopyInvolution
 public import SerrePositivity.InfinityCategories.F1B.KanRightOppositeCriterion
 public import SerrePositivity.InfinityCategories.F1B.KanRightHomUniversal
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeVertexFiberInitial
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeFamilyInitial
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeSliceMapping
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeColimit
