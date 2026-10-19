@@ -17,8 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe v u
 open CategoryTheory Limits Pretriangulated
 namespace SerrePositivity.KST.DerivedGeometry
-variable {C : Type u} [Category.{v} C] [HasZeroObject C] [Preadditive C]
-  [HasShift C ℤ] [∀ n : ℤ, (shiftFunctor C n).Additive] [Pretriangulated C]
+variable {C : Type u} [Category.{v} C] [Preadditive C]
   (X : ℕ → C) (s : ∀ n, X (n + 1) ⟶ X n) [HasProduct X]
 
 /--
@@ -47,6 +46,9 @@ def sequentialDifference : (∏ᶜ X) ⟶ ∏ᶜ X := 𝟙 _ - sequentialShift X
 lemma sequentialDifference_π (n : ℕ) :
     sequentialDifference X s ≫ Pi.π X n = Pi.π X n - Pi.π X (n + 1) ≫ s n := by
   simp [sequentialDifference, sequentialShift, Preadditive.sub_comp]
+
+variable [HasZeroObject C] [HasShift C ℤ]
+  [∀ n : ℤ, (shiftFunctor C n).Additive] [Pretriangulated C]
 
 /--
 概要：差分射を含むファイバー区別三角を選ぶ。

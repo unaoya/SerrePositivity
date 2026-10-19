@@ -202,3 +202,6 @@ public import SerrePositivity.KST.DerivedGeometry.KInjectiveProductComparison
 public import SerrePositivity.KST.DerivedGeometry.AffineDerivedGammaStructure
 public import SerrePositivity.KST.DerivedGeometry.SequentialHomotopyLimit
 public import SerrePositivity.KST.DerivedGeometry.SequentialModuleDifference
+public import SerrePositivity.KST.DerivedGeometry.ComplexProductHomology
+public import SerrePositivity.KST.DerivedGeometry.DerivedFiberHomologyKernel
+public import SerrePositivity.KST.DerivedGeometry.SequentialModuleDifferenceEpi
