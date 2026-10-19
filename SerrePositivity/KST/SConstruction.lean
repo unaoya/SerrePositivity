@@ -553,4 +553,11 @@ public import SerrePositivity.KST.SConstruction.KanAssemblyMixedFamily
 public import SerrePositivity.KST.SConstruction.InverseMixedFamilyTransport
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityFamilies
 
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityCylinder
+public import SerrePositivity.KST.SConstruction.DoubleCylinderContractibility
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityKan
+public import SerrePositivity.KST.SConstruction.AnodyneExtensionChoices
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityFamilyChoices
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblySelectedNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
