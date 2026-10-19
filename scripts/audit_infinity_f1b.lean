@@ -2599,3 +2599,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_surjective
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomLeftMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCosliceFiberDiagramIso_app_val
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCosliceFiberPinchedLeftIso_naturality
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomMap_equivalence_of_leftMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeTerminalVertex_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightFunctor_relative_terminal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightFunctor_relative_pinchedHomMap_equivalence
