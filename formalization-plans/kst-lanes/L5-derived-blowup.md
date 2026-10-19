@@ -472,6 +472,11 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `exceptionalSemilinearExteriorMap`・共通表示との比較・恒等／合成則 | ExceptionalSemilinearExterior | 総外積の半線形遷移の関手性を共通表示への可逆比較で証明 |
 | `finiteOverlapExceptionalCompositionComparison`・成分公式・`finiteOverlapExceptionalDGTransition_comp` | FiniteOverlapExceptionalComposition | 標準制限比較と実際の環射の合成等式を含む例外因子 dg 遷移の合成律 |
 | `finiteOverlapExceptionalIdentityComparison`・成分公式・`finiteOverlapExceptionalDGTransition_id` | FiniteOverlapExceptionalIdentity | 実際の恒等環射と標準恒等制限比較後の例外因子 dg 遷移の単位条件 |
+| `finiteOverlapExceptionalDGTransition_comp_apply/id_apply` | FiniteOverlapExceptionalComponents | 実際の半線形例外因子遷移の全次数の合成・恒等公式 |
+| `FiniteOverlapExceptionalBaseObject`・`finiteOverlapExceptionalBaseDGTransition`・対象／Hom 成分 | FiniteOverlapExceptionalBaseTransition | 標準制限比較を含む共通基底環上の例外因子 dg 遷移 |
+| `finiteOverlapExceptionalBaseDGTransition_comp/id` | FiniteOverlapExceptionalBaseFunctoriality | 同一基底環上の実際の dg 関手としての恒等・合成則 |
+| `finiteOverlapExceptionalDGAlgebra`・射・恒等／合成律・`finiteOverlapExceptionalDGAlgebraDiagram` | FiniteOverlapExceptionalAlgebraDiagram | 全非空有限重なりの実際の例外因子の `Mon (Complex R)` 値関手 |
+| 基底制限包含・`finiteOverlapExceptionalDGAlgebraInclusion`・自然性・`finiteOverlapExceptionalDGAlgebraInclusionNatTrans` | FiniteOverlapExceptionalInclusionDiagram | 既存の blowup 係数図式から例外因子係数図式への指定自然変換 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -539,7 +544,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全3141定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3207定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -628,8 +633,16 @@ Cartier 生成元を追加するチャート生成加群の包含と実際の局
 恒等・合成則を係数変更の関手性へ帰着して証明済み。実際の有限重なり環射へ
 適用し、標準の二段制限比較と環射の合成等式による移送を挿入した dg 合成律、
 および恒等環射の移送と標準恒等制限比較を挿入した dg 恒等律を証明済み。
-次の実装単位は例外因子の共通基底環上の係数図式と、共通 Koszul 表示との
-図式としての比較、および coherent な降下との比較。
+例外因子の実際の有限重なり遷移の全次数の成分から、共通基底環への
+標準係数制限を含む dg 遷移を構成済み。その恒等・合成則を同一基底環上の
+dg 関手の等式として証明し、各一対象模型の自己 Hom を用いて全非空有限重なりの
+`Mon (Complex R)` 値関手 `finiteOverlapExceptionalDGAlgebraDiagram` を構成済み。
+既存 blowup チャートから例外因子への指定局所 dg 射も共通基底環へ制限し、
+総外積上の係数自然性・チャート基底変換の可換式から、二つの実際の係数図式の間の
+指定自然変換 `finiteOverlapExceptionalDGAlgebraInclusionNatTrans` を構成済み。
+これは係数 dg 代数図式の構成であり、加群を厳密に貼り合わせる定義にはしない。
+次の実装単位は共通 Koszul 表示との図式としての比較、および
+coherent な降下・層の閉埋め込みとの比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
