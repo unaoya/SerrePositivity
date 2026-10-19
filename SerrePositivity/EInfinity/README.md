@@ -600,7 +600,12 @@ nullary を含む TR の部分合成保存は完了。
 `cochainAction_basis_face_cut_sum` は全入力面での実際の複体射の値をその有限和へ移す。
 `tensorCoInsertionAction_cochain_basis_sum` は全 arity の実際の内側作用の余代入を評価する。
 `NestedEdgeCut.faceCutEquiv`・`sum_faceCuts` は外側切断上の内側面切断和を二段切断上へ移す。
-具体的な Δ¹ の余代数構造は未完成。係数交換・外側余演算を含む全右辺の評価と符号の一致・nullary、
+`iteratedCochainAction` は係数交換・外側作用・内側余代入を含む実際の全右辺。
+`iteratedCochainAction_basis_edge_nested_sum` はその辺入力を同じ二段切断と全出力族の和に移す。
+`NestedEdgeCut.actionCoefficient` は二交換の符号を `(-1)^(d*e + e*prefixDegree)` にまとめた整数係数。
+`outputFamily_tupleDegree_all` は内側 arity 零も含む全出力次数の公式。
+`cochainAction_composition_basis_edge` は実際の左辺を既存の合成語加群の辺成分へ戻す。
+具体的な Δ¹ の余代数構造は未完成。合成側と二段作用の一般係数の一致・頂点入力・nullary 左辺、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 

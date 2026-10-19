@@ -334,3 +334,8 @@ public import SerrePositivity.EInfinity.IntervalCuts.FaceCutSums
 public import SerrePositivity.EInfinity.IntervalCuts.CochainFaceCutSums
 public import SerrePositivity.EInfinity.IntervalCuts.CochainInsertionSums
 public import SerrePositivity.EInfinity.IntervalCuts.NestedFaceCutEquiv
+public import SerrePositivity.EInfinity.IntervalCuts.CochainInsertionDegrees
+public import SerrePositivity.EInfinity.IntervalCuts.IteratedCochainAction
+public import SerrePositivity.EInfinity.IntervalCuts.IteratedEdgeCutSums
+public import SerrePositivity.EInfinity.IntervalCuts.IteratedNestedSum
+public import SerrePositivity.EInfinity.IntervalCuts.CompositeCochainAction

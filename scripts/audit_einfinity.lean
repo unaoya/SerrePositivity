@@ -1238,6 +1238,17 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.faceCutEquiv,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.outputFamily_eq_faceCut,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.sum_faceCuts,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_cochain_basis_sum_at,
+      `SerrePositivity.EInfinity.IntervalCuts.coactionComposition_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_basis_edge_nonzero_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_edge_cut_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.outputFamily_tupleDegree_all,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.actionCoefficient,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.actionCoefficient_eq,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_edge_nested_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_edge,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3580,3 +3591,28 @@ example : nestedRepeatedExample.outputFamily = insertionFamily
     (NestedEdgeCut.faceCutEquiv compositionInner compositionInner 0
       nestedRepeatedExample).2.output 0 :=
   NestedEdgeCut.outputFamily_eq_faceCut nestedRepeatedExample
+
+-- 同じ内外語でも、指定色0では係数交換が負、切断点色1では前方交換と相殺。
+example : nestedRepeatedExample.actionCoefficient = -1 := by decide
+example : nestedPivotExample.actionCoefficient = 1 := by decide
+example : nestedVertexExample.actionCoefficient = 1 := by decide
+example : tupleDegree 3 nestedRepeatedExample.outputFamily = 3 :=
+  NestedEdgeCut.outputFamily_tupleDegree_all nestedRepeatedExample
+
+-- 二段作用の実際の全複体射でも、語010の色0への代入は負の三辺テンソル。
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
+example : (iteratedCochainAction ℤ 1 2 0).f (-3)
+    (ιTensorObj (complex ℤ 2 ⊗ complex ℤ 2) (interval ℤ) (-2) (-1) (-3) (by decide)
+      (ιTensorObj (complex ℤ 2) (complex ℤ 2) (-1) (-1) (-2) (by decide)
+        ((complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner)) ⊗ₜ[ℤ]
+          (complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner))) ⊗ₜ[ℤ]
+        faceVector ℤ edge)) =
+    -(tensorVectorAt ℤ 3 nestedRepeatedExample.outputFamily (-3) (by decide)) := by
+  have H := iteratedCochainAction_basis_edge_nested_sum ℤ compositionInner compositionInner
+    0 (-3) (by decide)
+  have hu : ∀ a : NestedEdgeCut (m := 1) compositionInner compositionInner 0,
+      a = nestedRepeatedExample := by decide
+  rw [Finset.sum_eq_single nestedRepeatedExample (fun a _ ha => False.elim (ha (hu a)))
+    (by simp)] at H
+  have hc : nestedRepeatedExample.actionCoefficient = -1 := by decide
+  simpa only [hc, neg_one_zsmul] using! H
