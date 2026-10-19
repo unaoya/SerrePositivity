@@ -507,6 +507,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | 正規表示・元の模型への指定準同値・局所埋め込みの可換式 | FiniteOverlapExceptionalAlgebraVertexComparison | 同じ自己 Hom の正規表示と元の例外因子 Koszul 模型の接続 |
 | `finiteOverlapExceptionalDerivedModuleEvaluation`・指定評価比較・`finiteOverlapExceptionalAlgebraPerfect_iff` | FiniteOverlapExceptionalAlgebraPerfectComparison | 元の例外因子局所模型への実際の導来評価と正規表示での perfect 判定の iff |
 
+| 元の例外因子の加群評価と擬同型保存・underlying 値の一致 | FiniteOverlapExceptionalModuleEvaluation | 元の Koszul 頂点への実際の通常加群制限 |
+| `finiteOverlapExceptionalTransitionGradedNatTrans` | FiniteOverlapExceptionalTransitionTransformation | 指定包含単位矢の全次数自然な作用 |
+| 局所 dg 遷移・制限合成同型・`finiteOverlapExceptionalModuleComparison` | FiniteOverlapExceptionalModuleComparison | 元の例外因子 Koszul 表示での canonical な通常加群比較 |
+| 指定加群比較の標準点／任意局所点の評価公式 | FiniteOverlapExceptionalComparisonComponents | underlying 図式の指定包含射との成分一致 |
+| `finiteOverlapExceptionalAlgebraVertexToChart_transition`・`finiteOverlapExceptionalAlgebraModuleComparison` | FiniteOverlapExceptionalAlgebraTransitionComparison・FiniteOverlapExceptionalAlgebraModuleComparison | 正規表示と元の模型の dg 遷移・canonical な通常加群比較の一致 |
+
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
 モノイダル圏での左右単位則・結合則を証明済みで、一対象 dg 圏を構成済み。
@@ -716,7 +722,7 @@ graph 導来延長–制限同値を適用し、全図式加群の導来表示�
 原典は KST v4 §3.1・Lemma 3.6（pp.11–14）。これは指定比較射を保持した
 係数 dg 図式模型による再構成であり、層の降下や dg 商の普遍性を結論しない。
 次の実装単位は coherent な降下・層の閉埋め込み／射影との比較、および
-例外因子の正規表示と元の有限列 Koszul 模型の canonical な遷移比較の整合性。
+例外因子の正規表示と元の有限列 Koszul 模型の canonical な導来遷移比較の整合性。
 元の例外因子の基底制限 Koszul 頂点から全図式係数圏への指定 dg 埋め込みと、
 同じ自己 Hom の正規表示から元の頂点への Hom 恒等 dg 準同値は構成済み。
 二つの局所埋め込みの可換式を標準導来制限合成同型へ送り、
@@ -724,6 +730,13 @@ graph 導来延長–制限同値を適用し、全図式加群の導来表示�
 この局所準同値の opposite に沿う Morita 判定により、各有限重なりで
 元の例外因子模型の perfect 性と正規表示の perfect 性の iff を証明済み。
 原典は KST v4 §3.1・Lemma 3.6（pp.11–14）、同じ dg 代数の表示変更による再構成。
+元の例外因子 Koszul 模型でも、指定包含単位矢の全次数自然変換を構成し、
+加群への作用と標準制限合成同型から canonical な通常加群比較を構成済み。
+その成分は underlying 図式の指定包含写像に一致する。正規表示との指定 dg 比較は
+実際の局所 dg 遷移と可換であり、元の指定通常加群比較を正規表示へ制限すると
+正規表示の canonical な比較に一致することを証明済み。
+この一致の主導来局所化への移送と、随伴による canonical な係数拡大比較の
+可逆性の iff は、引き続き別の検証項目として残す。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
