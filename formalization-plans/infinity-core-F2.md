@@ -14,8 +14,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - 第 1 部の最終検証：F1・F1B・F2 同時ビルド 6653 jobs、F2 1203 宣言の公理監査成功。
   受入条件ごとの完了監査表は infinity-core-F1b.md。標準三公理のみ、名前衝突なし。
 - 10-20：F2N-1〜5（旧 N）を F1b へ移管。§3 が第 2 部の正本。
-  κ-small と filtered の定義、ℵ₀ 比較、濃度の単調性、非空性、厳密な retract・同型による保存を検証済み。
-  三集約同時ビルド 6671 jobs、F2 公理監査 1230 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
+  κ-small/filtered の定義・ℵ₀ 比較に加え、有限 join、有限図式の coslice の filtered 性を証明。
+  Kan 複体での filtered 性と可縮 Kan 性の同値、Kan の場合の弱可縮性も証明。一般の弱可縮性は未完了。
+  三集約同時ビルド 6682 jobs、F2 公理監査 1248 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -30,6 +31,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 - `F2.IsKappaSmall` / `F2.IsFilteredInfinity` / `F2.IsKappaFiltered`
 - `F2.isKappaSmall_aleph0_iff` / `F2.isKappaFiltered_aleph0_iff` / `F2.isFilteredInfinity_of_retract`
+- `F2.finite_join` / `F2.isFilteredInfinity_sliceUnder` / `F2.isFilteredInfinity_iff_isContractibleKan`
 - `CatInfinity` / `catInfinity_quasicategory`
 - `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
 - `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_projection_commutativity`
@@ -52,11 +54,13 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 - F1 の前層・Yoneda は F1 計画の後続工程。Ind の存在を仮定して回避しない。
 - 一般の coherent な図式の余極限と、通常の小圏による strict 図式の余極限を区別する。
+- 既存 anodyneKanObject の filtered 余極限保存は未検証。一般の弱可縮性を Kan 仮定で代用しない。
+  κ-small join・κ 版 coslice の filtered 性も残る。有限版を自動的に一般化しない。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：coslice の filtered 性と cofinality を接続し、一般の coherent filtered 余極限の比較へ進む。
+- F2N-1：有限部分複体への境界因子分解を与える Kan 置換の比較を整備し、一般の filtered ∞ 圏の弱可縮性を証明する。
 
 ## 0. 目標と範囲
 
@@ -101,13 +105,14 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   Remark 6 の四角形は [PDF 第 5 頁](https://arxiv.org/pdf/1703.03331v3#page=5) で確認する。
 - HTT §3.3.3（∞ 圏の極限）、§5.3（Ind・compact）、§5.5（presentable）。
 - [Kerodon §4.9.4](https://kerodon.net/tag/03S1) の κ-small、[§9.1.1](https://kerodon.net/tag/02P8) の filtered ∞ 圏。
+  9.1.1.16 の有限版の coslice、9.1.1.20 の Kan 判定を証明済み。9.1.1.17 の一般の弱可縮性は残る。
 
 ## 3. F2-lite 第 2 部（F1b、旧 N から移管）
 
 ### 引き継ぎ（F1b、2026-10-20 移管）
 
 - 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
-  F2N-1 は κ-small/filtered の定義・ℵ₀ 比較、非空性、厳密な retract・同型による保存まで検証済み。
+  F2N-1 は定義・ℵ₀ 比較、有限 join、有限図式の coslice の filtered 性、Kan での可縮性判定まで検証済み。
   一般の filtered 余極限、有限極限との交換、Ind の構成は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
@@ -118,7 +123,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：coslice の filtered 性、cofinality、𝒮 の一般 filtered 余極限へ接続。
+- 次の一手：Kerodon 9.1.1.17 の有限部分複体・Kan 置換による弱可縮性を構成し、Quillen A に接続。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |

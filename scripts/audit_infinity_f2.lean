@@ -509,3 +509,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_of_retract
 #check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_iff_of_iso
 #check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_iff_of_iso
+#check @SerrePositivity.InfinityCategories.F2.simplex_in_nondegenerate_range
+#check @SerrePositivity.InfinityCategories.F2.finiteJoinPiece
+#check @SerrePositivity.InfinityCategories.F2.mkOfSum_mem_finiteJoinPiece
+#check @SerrePositivity.InfinityCategories.F2.iSup_finiteJoinPiece
+#check @SerrePositivity.InfinityCategories.F2.finite_finiteJoinPiece
+#check @SerrePositivity.InfinityCategories.F2.finite_join
+#check @SerrePositivity.InfinityCategories.F2.nonempty_cocone_in_filtered_coslice
+#check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_sliceUnder
+#check @SerrePositivity.InfinityCategories.F2.isContractibleKan_of_isFilteredInfinity
+#check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_of_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_iff_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredKan
