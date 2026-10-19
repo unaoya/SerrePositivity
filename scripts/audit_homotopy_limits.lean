@@ -5611,3 +5611,54 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @partialColimitSpecifiedPathCocone_vertex
 #print axioms partialColimitSpecifiedPathCocone_vertex
+
+#check @isInitialVertex_of_pointHomFamily_equivalence
+#print axioms isInitialVertex_of_pointHomFamily_equivalence
+
+#check @isInitialVertex_iff_pointHomFamily_homotopyEquivalence
+#print axioms isInitialVertex_iff_pointHomFamily_homotopyEquivalence
+
+#check @isColimitCone_iff_coconePointHomFamily_homotopyEquivalence
+#print axioms isColimitCone_iff_coconePointHomFamily_homotopyEquivalence
+
+#check @isColimitCone_of_pointHomFamily_comparison
+#print axioms isColimitCone_of_pointHomFamily_comparison
+
+#check @partialColimitHomFamilyToEnd
+#print axioms partialColimitHomFamilyToEnd
+
+#check @isColimitCone_iff_partialColimitHomFamilyToEnd
+#print axioms isColimitCone_iff_partialColimitHomFamilyToEnd
+
+#check @partialColimitHomFamilyToPathEnd
+#print axioms partialColimitHomFamilyToPathEnd
+
+#check @isColimitCone_iff_partialColimitHomFamilyToPathEnd
+#print axioms isColimitCone_iff_partialColimitHomFamilyToPathEnd
+
+#check @homotopyCospanConeComparison_π
+#print axioms homotopyCospanConeComparison_π
+
+#check @homotopyCospanConeComparison_uncurry
+#print axioms homotopyCospanConeComparison_uncurry
+
+#check @homotopyCospanFamilyComparison_uncurry
+#print axioms homotopyCospanFamilyComparison_uncurry
+
+#check @nativeSpanUniversalFamilyToPathEnd
+#print axioms nativeSpanUniversalFamilyToPathEnd
+
+#check @nativeSpanUniversalFamilyToPathEnd_homotopyEquivalence
+#print axioms nativeSpanUniversalFamilyToPathEnd_homotopyEquivalence
+
+#check @specifiedPathCocone_vertex_eq_strictSpan
+#print axioms specifiedPathCocone_vertex_eq_strictSpan
+
+#check @specifiedCoconeNativeFamilyToPathEnd
+#print axioms specifiedCoconeNativeFamilyToPathEnd
+
+#check @specifiedCoconeNativeFamilyToPathEnd_homotopyEquivalence
+#print axioms specifiedCoconeNativeFamilyToPathEnd_homotopyEquivalence
+
+#check @specifiedPathCocone_isColimit_of_pathFamily_homotopy
+#print axioms specifiedPathCocone_isColimit_of_pathFamily_homotopy
