@@ -6,93 +6,84 @@
 
 ### 現在地
 
-- v2 の F1b レーンとして再開。B4・B5 の後は [F2 計画](infinity-core-F2.md) の第 1 部へ進む。
-- B1・B2・B3 は本文に明示した模型・宇宙の範囲で完了。B4 は進行中、B5 は未着手。
-- B4：任意の δ と右指定変換 α の円柱比較つき相対 join 表示、両端の同時厳密化、
-  補正後の指定変換の h Fun の類と α の類の一致、右 Kan 条件の保存まで証明済み。
-- 任意の右指定変換について、厳密化・類保存を標準局所極限判定へ合成済み。
-  元の右 Kan 条件と厳密化後の全局所錐の極限性の同値、および類を保つ局所極限表示の存在を証明。
-- B4 の制限定理の準備：固定図式の任意の制限に沿う左右の局所形の射・恒等律・合成律、
-  相対 join 表示との可換性を証明。制限射の基底変換表示と anodyne 制限の充填性も証明。
-- 元の左右 Kan 条件から、各 slice の境界上の局所図式を図式部分と境界を厳密に保って
-  単体全体へ延長できる。これは局所解の存在であり、変動する slice の組み立ては未完。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2420 jobs）。
-  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2853 宣言、標準三公理のみ、749 モジュールに straightening なし）。
-- 前回の実装の保存：`a391eac8`。`relativeFunctorVertex` は `1132823f` で `relativeExtensionVertex` へ改名済み。
-  F1B と監査スクリプトに旧名は残っておらず、改名後の集約ビルド・監査も成功。
+- B1・B2・B3 は本文に明示した模型・宇宙の範囲で完了。B4 進行中、B5 未着手。
+  v2 の F1b レーンとして、B4・B5 の後は [F2 計画](infinity-core-F2.md) の第 1 部へ進む。
+- B4：任意の δ と指定変換の相対 join 表示、両端の同時厳密化、h Fun の類の保存、
+  元の左右 Kan 条件と厳密化後の局所極限・余極限性の同値まで証明。
+- 変動する固定図式の制限に沿う左右の局所形の射・恒等律・合成律、相対 join 表示との可換性、
+  制限射の基底変換表示と anodyne 制限の充填性を証明。各 slice の境界の族の局所延長も証明。
+- `kanFiberwiseFunctor`：底の単体ごとに変動する局所形 F 上の図式の族の全空間を構成。
+  全単体の通常の余極限を保つ F について、任意のパラメータ上の図式との全単射を証明。
+  実際の pullback 関手への適用 `kanFiberwiseHom` は、逆像上の図式を厳密に表現する。
+- 局所形の自然変換による制限を構成し、図式の持ち上げと族の持ち上げの同値を証明。
+  相対始点境界充填を仮定した相対骨格全体の組み立ても証明。fiber ごとの余極限性から
+  この充填条件を導く部分は未完であり、Kan 拡張の存在の完成とは扱わない。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2428 jobs）。
+  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2912 宣言、標準三公理のみ、757 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
-- 1. cocartesian fibration の fiber の普遍余錐を相対 join 上へ組み立て、
-  全部分 ∞ 圏からの相対 Kan 拡張の存在へ接続する。
-  Kerodon Lemma 7.3.4.6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
-  点ごとの極限・余極限から任意の δ に沿う存在と全関手への組み立てもこの経路で扱う。
-- 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理を証明する。
+- 1. fiber ごとの普遍余錐性から族の制限の相対始点境界充填を導き、相対 join へ組み立てる。
+  Kerodon Lemma 7.3.4.5–6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
+  `kanFiberwiseHom` の cartesian fibration 性、制限の輸送との両立、fiber の関手圏との同定が必要。
+  その後 oriented fiber product で全部分 ∞ 圏からの存在へ接続し、任意の δ に沿う存在も扱う。
+- 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
-  原典の証明は相対 Kan 拡張の存在（Prop 7.3.5.5）を使うため、局所境界充填から直接は結論しない。
-- 3. 点ごとの Kan 条件から大域的 Hom の全単射を導き、h Fun の大域的一意性へ接続する。
+  原典は相対 Kan 拡張の存在（Prop 7.3.5.5）を使う。局所境界充填から直接は結論しない。
+- 3. 点ごとの Kan 条件から大域的 Hom の全単射と h Fun の大域的一意性へ接続。
   Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。2 の後に 6〜16 時間。
-- 4. B5：通常の圏の nerve で古典随伴・Kan 拡張へ戻る検査と最終監査。
+- 4. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
-- 右円柱比較の前合成同値そのものは未証明。右表示の存在は左表示の存在の反転から直接得ており、
-  現時点ではこの追加命題を使わずに局所極限判定への合成を完了。必要なら Kerodon Prop 5.2.4.5 の双対として別途証明。
+- 右円柱比較の前合成同値そのものは未証明。局所極限判定への合成には不要だった。
+  必要なら Kerodon Prop 5.2.4.5 の双対として別途証明。
 
 ### 主要宣言（名前のみ）
 
-- `QCatAdjunction`
-- `qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison`
+- `QCatAdjunction` / `qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison`
 - `ReflectiveSubcategory`
-- `isRightCofinal_iff_weaklyContractible_coslices`
-- `initialCofinality_via_quillenA`
-- `IsRightKanExtension` / `IsLeftKanExtension`
-- `RightKanHomUniversal` / `LeftKanHomUniversal`
-- `RightKanRelativeJoinRealization`
+- `isRightCofinal_iff_weaklyContractible_coslices` / `initialCofinality_via_quillenA`
+- `IsRightKanExtension` / `IsLeftKanExtension` / `RightKanHomUniversal` / `LeftKanHomUniversal`
 - `rightKanRelativeJoinStrictification_exists`
 - `RightKanRelativeJoinRealization.Strictification.transformation_hom_eq`
-- `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff`
-- `rightKanRelativeJoin_realization_preserving_class`
-- `isRightKanExtension_relativeJoin_iff_local_limits`
 - `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
-- `IsRightKanExtension.exists_relativeJoin_local_limits`
 - `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
-- `relativeExtensionVertex`
 - `kanRelativeJoinSliceOver_restrict` / `kanRelativeJoinSliceUnder_restrict`
-- `kanSliceOverShapeRestrict_comp` / `kanSliceUnderShapeRestrict_comp`
 - `kanSliceOverShapeRestrict_isPullback` / `kanSliceUnderShapeRestrict_isPullback`
-- `kanSliceOverShapeRestrict_of_leftAnodyne` / `kanSliceUnderShapeRestrict_of_rightAnodyne`
 - `LeftKanRelativeJoinRealization.Strictification.exists_localBoundary_lift`
 - `RightKanRelativeJoinRealization.Strictification.exists_localBoundary_lift`
+- `kanFiberwiseFunctorHomEquiv` / `kanFiberwiseFunctorPre` / `kanFiberwiseFunctor_lift_iff`
+- `exists_kanFiberwise_extension_of_initialBoundary`
+- `kanFiberwiseHom` / `kanFiberwiseHomProjection` / `kanFiberwiseHomEquiv` / `kanFiberwiseHomPre`
 
 ### 依存と提供
 
-- Core/・F1/・Stable/ は読み取り専用。join・slice・h Fun・充填・反転・錐の輸送を利用。
-- A6 の `Core/FunctorPointwiseLimitExistence.lean` は到着済み。変動する slice の組み立ては別に必要。
-- 提供：F1B 集約、随伴・反射的局所化・Quillen A、左右 Kan の点ごとの型と相対 join 還元の証明部品。
-- straightening に推移的にも依存しない。一般の局所化の存在は F2、空間値二変数 Hom 関手は F1h の担当。
+- Core/・F1/・Stable/ は読み取り専用。F1 の pullback の余極限保存、join・slice、
+  h Fun、相対骨格・充填、反転、錐の輸送を使う。straightening に推移的にも依存しない。
+- 提供：F1B 集約、随伴・反射的局所化・Quillen A、Kan の点ごとの条件と相対 join 還元、
+  変動する局所形の族の普遍性・条件付き組み立て。一般の局所化の存在は F2、Hom 関手は F1h。
 
 ### 未コミット
 
-- 今回の保存単位：`KanRelativeJoinSliceRestriction.lean`、`KanSliceRestrictionFibration.lean`、
-  `KanLocalBoundaryExtension.lean`、F1B 集約、監査スクリプト、本書。
-  保存コミット後の所有ファイルの変更はなし。他レーンの変更は保存・変更しない。
+- 今回の保存単位：`KanFiberwiseFunctor*`、`KanSimplexDiagram`、`KanFiberwiseAssembly`、
+  `KanFiberwiseHom` の計 8 モジュール、F1B 集約、監査スクリプト、本書。
+  保存コミット後の所有変更はなし。他レーンの変更は保存・変更しない。
 
 ### 既知の問題
 
-- 対象ビルド・監査に失敗なし。今回の停止検証で全体 `lake build` は実行していない。
-- F1 の同名宣言との衝突は上記の改名で解消。F1B のソースに `ModelCategory` 仮定なし。
-  定理ごとの `Quasicategory`・`KanComplex`・`Mono` 等の前提は Lean を正本とする。
-- 大域的 Hom 普遍性を仮定した一意性は証明済みだが、点ごとの Kan 条件からの導出は未完了。
-  各点の `valueIso` の族や、固定形の相対充填だけを大域的一意性・変動 slice の組み立てと扱わない。
-- B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手の自然変換との比較は未形式化。
-  B2 の局所化の普遍性は同じ宇宙の標的に対するもの。一般の C[W⁻¹] の存在は主張しない。
+- 対象ビルド・監査に失敗なし。全体 `lake build` は今回実行していない。
+- F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
+- `kanFiberwiseHom` は strict な普遍性まで。射影の cartesian fibration 性・quasicategory 性、
+  fiber の関手圏との同定と、普遍余錐からの相対始点境界充填は未証明。
+- 大域的 Hom 普遍性を仮定した一意性は証明済みだが、点ごとの Kan 条件からの導出は未完。
+- B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手との比較は未形式化。
+  B2 は同じ宇宙の標的に対する普遍性。一般の C[W⁻¹] の存在は主張しない。
 
 ### 次の一手
 
-- Kerodon Lemma 7.3.4.6・Prop 7.3.4.7 を核に、cocartesian fibration の
-  fiber ごとの普遍余錐を相対 join へ延長する骨格の一段を実装する。
-  `KanLocalBoundaryExtension.lean` は局所解、`KanRelativeJoinSliceRestriction.lean` と
-  `KanSliceRestrictionFibration.lean` は局所形の制限・充填の比較に使う。
-  次に Prop 7.3.5.5 の oriented fiber product で一般の全部分 ∞ 圏へ移す。
+- `KanFiberwiseHom.lean` の射影の fiber を `Fun(K_c,D)` と同定する。
+  次に δ が cocartesian fibration の場合の射影の cartesian fibration 性と、
+  相対 join の左端包含が誘導する `kanFiberwiseHomPre` の輸送との両立を証明する。
+  Kerodon Lemma 7.3.4.5 の相対始点充填を導いて `exists_kanFiberwise_extension_of_initialBoundary` に渡す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
