@@ -2,6 +2,22 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberSectionFirst_closed
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberSectionFirst_projection
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberSectionFirst_nullHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberSectionElement_closed
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberSection_desc
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberContractionT_projection
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberContractionT_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberSectionFirst_decomposition
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeTargetHom_ext
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberHomotopyFirst_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberHomotopyElement_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberDescSectionHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberHomotopyIso
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberDesc_isIso
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberDesc_isInvertible
+
 #print axioms SerrePositivity.InfinityCategories.dgModuleMorphism_ext_cycle
 #print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberLiftElement_closed
 #print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberRetractElement_closed
@@ -981,6 +997,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberSectionFirst,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberSection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberContraction,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberDecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeTargetHomExt,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberHomotopyFirst,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberHomotopyBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberEquivalence,
     `SerrePositivity.InfinityCategories.Derived.DGModuleCycleFaithful,
     `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberLift,
     `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberRetraction,
