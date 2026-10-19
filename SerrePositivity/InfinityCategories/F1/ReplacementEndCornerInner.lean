@@ -1,6 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.InnerPrismBoundaryExtension
+public import SerrePositivity.InfinityCategories.F1.FullSubcomplexEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeInternalHomLifting
 
 /-!
 概要：比較四角形の終点側の比較の内ホーン充填。
@@ -17,12 +19,14 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
-/-- 両縦射が inner fibration なら、終点比較は内 anodyne な射を持ち上げる。 -/
-lemma hasLiftingProperty_replacementSquareEndCorner {A B X Y T U : SSet.{u}}
+/-- 射影・相対内部 Hom・可逆 path 包含の持ち上げから、終点比較を持ち上げる。 -/
+lemma hasLiftingProperty_replacementSquareEndCorner_of_lifting {A B X Y T U : SSet.{u}}
     (u : A ⟶ X) (v : B ⟶ Y) (p : A ⟶ B) (q : X ⟶ Y) (h : u ≫ q = p ≫ v)
-    [InnerFibration p] [InnerFibration q] (i : T ⟶ U) (hi : innerAnodyneExtensions i) :
+    (i : T ⟶ U) [HasLiftingProperty i p]
+    (hq : HasLiftingProperty i
+      (Functor.PullbackObjObj.ofHasPullback internalHom (boundary 1).ι q).π)
+    [HasLiftingProperty i (equivalencePathι X)] :
     HasLiftingProperty i (replacementSquareEndCorner u v p q h) := by
-  have : HasLiftingProperty i p := hi _ (mem_innerFibrations _)
   constructor
   intro a b sq
   let aPath := a ≫ pullback.fst (equivalencePathEndpoint X 0) u
@@ -106,8 +110,14 @@ lemma hasLiftingProperty_replacementSquareEndCorner {A B X Y T U : SSet.{u}}
       _ = (aPath ≫ equivalencePathι X) ≫ (ihom (Δ[1] : SSet.{u})).map q := by
         rw [Category.assoc, equivalencePathMap_ι, ← Category.assoc]
   obtain ⟨F, hF, hF₀, hF₁, hFq⟩ :=
-    exists_innerPrism_extension_over_fixed_endpoints q i hi H (f ≫ u) b₁ G hH₀ hH₁ hG hG₀ hG₁
-  obtain ⟨L, hL, hiL⟩ := exists_equivalencePathFamily_extension i hi aPath F hF
+    exists_prism_extension_over_fixed_endpoints_of_lifting q i hq
+      H (f ≫ u) b₁ G hH₀ hH₁ hG hG₀ hG₁
+  have sl : CommSq aPath i (equivalencePathι X) (curry F) := by
+    constructor
+    rw [← curry_natural_left, hF, curry_uncurry]
+  let L := sl.lift
+  have hL : L ≫ equivalencePathι X = curry F := sl.fac_right
+  have hiL : i ≫ L = aPath := sl.fac_left
   have hL₀ : L ≫ equivalencePathEndpoint X 0 = f ≫ u := by
     change L ≫ equivalencePathι X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 0) = _
     rw [← Category.assoc, hL, curry_evaluateFunctorAt_interval, hF₀]
@@ -142,6 +152,34 @@ lemma hasLiftingProperty_replacementSquareEndCorner {A B X Y T U : SSet.{u}}
           equivalencePathReplacementProjection v = _
         rw [Category.assoc, replacementSquareMap_projection, ← Category.assoc, hRs]
         exact s.fac_right
+
+/-- 両縦射が inner fibration なら、終点比較は内 anodyne な射を持ち上げる。 -/
+lemma hasLiftingProperty_replacementSquareEndCorner {A B X Y T U : SSet.{u}}
+    (u : A ⟶ X) (v : B ⟶ Y) (p : A ⟶ B) (q : X ⟶ Y) (h : u ≫ q = p ≫ v)
+    [InnerFibration p] [InnerFibration q] (i : T ⟶ U) (hi : innerAnodyneExtensions i) :
+    HasLiftingProperty i (replacementSquareEndCorner u v p q h) := by
+  have : HasLiftingProperty i p := hi _ (mem_innerFibrations _)
+  have : HasLiftingProperty i (equivalencePathι X) :=
+    hasLiftingProperty_fullSubcomplexOnVertices_ι_of_vertex_surjective
+      IsEquivalencePathVertex i (innerAnodyne_vertex_bijective i hi).surjective
+  let r := Functor.PullbackObjObj.ofHasPullback internalHom (boundary 1).ι q
+  have : InnerFibration r.π := innerFibration_pullbackObjObjπ r
+  exact hasLiftingProperty_replacementSquareEndCorner_of_lifting u v p q h i
+    (hi _ (mem_innerFibrations r.π))
+
+/-- 両縦射の前合成同値の持ち上げは、終点比較にも伝わる。 -/
+lemma kanEquivalenceLifting_replacementSquareEndCorner {A B X Y : SSet.{u}}
+    [Quasicategory X] (u : A ⟶ X) (v : B ⟶ Y) (p : A ⟶ B) (q : X ⟶ Y)
+    (h : u ≫ q = p ≫ v) (hp : F1B.KanEquivalenceLifting p)
+    (hq : F1B.KanEquivalenceLifting q) :
+    F1B.KanEquivalenceLifting (replacementSquareEndCorner u v p q h) := by
+  intro T U i hm hi
+  have : Mono i := hm
+  have := hp i hm hi
+  have := kanEquivalenceLifting_equivalencePathι X i hm hi
+  let r := Functor.PullbackObjObj.ofHasPullback internalHom (boundary 1).ι q
+  exact hasLiftingProperty_replacementSquareEndCorner_of_lifting u v p q h i
+    (F1B.KanEquivalenceLifting.relativeInternalHom hq (boundary 1).ι r i hm hi)
 
 /-- 両縦射が inner fibration の比較四角形の終点比較も inner fibration。 -/
 instance replacementSquareEndCorner_innerFibration {A B X Y : SSet.{u}}

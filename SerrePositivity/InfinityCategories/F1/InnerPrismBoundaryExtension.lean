@@ -20,9 +20,11 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
-/-- 内 anodyne な部分上の prism は、底と両端を固定したまま延長できる。 -/
-lemma exists_innerPrism_extension_over_fixed_endpoints {A B X Y : SSet.{u}}
-    (q : X ⟶ Y) [InnerFibration q] (i : A ⟶ B) (hi : innerAnodyneExtensions i)
+/-- 相対内部 Hom の持ち上げにより、底と両端を固定した prism を延長する。 -/
+lemma exists_prism_extension_over_fixed_endpoints_of_lifting {A B X Y : SSet.{u}}
+    (q : X ⟶ Y) (i : A ⟶ B)
+    (hl : HasLiftingProperty i
+      (Functor.PullbackObjObj.ofHasPullback internalHom (boundary 1).ι q).π)
     (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X) (f₀ f₁ : B ⟶ X)
     (G : (Δ[1] : SSet.{u}) ⊗ B ⟶ Y)
     (hH₀ : prismEndpoint 0 A ≫ H = i ≫ f₀)
@@ -34,8 +36,7 @@ lemma exists_innerPrism_extension_over_fixed_endpoints {A B X Y : SSet.{u}}
       (Δ[1] ◁ i) ≫ F = H ∧ prismEndpoint 0 B ≫ F = f₀ ∧
       prismEndpoint 1 B ≫ F = f₁ ∧ F ≫ q = G := by
   let r := Functor.PullbackObjObj.ofHasPullback internalHom (boundary 1).ι q
-  have : InnerFibration r.π := innerFibration_pullbackObjObjπ r
-  have : HasLiftingProperty i r.π := hi _ (mem_innerFibrations _)
+  have : HasLiftingProperty i r.π := hl
   have hc : curry (intervalBoundaryDiagram f₀ f₁) ≫ (ihom (boundary 1 : SSet.{u})).map q =
       curry G ≫ (pre (boundary 1).ι).app Y := by
     apply uncurry_injective
@@ -79,6 +80,24 @@ lemma exists_innerPrism_extension_over_fixed_endpoints {A B X Y : SSet.{u}}
         change hs.lift ≫ (ihom (Δ[1] : SSet.{u})).map q = T ≫ r.snd at ht
         exact ht.trans hTs)
     simpa only [uncurry_natural_right, uncurry_curry] using he
+
+/-- 内 anodyne な部分上の prism は、底と両端を固定したまま延長できる。 -/
+lemma exists_innerPrism_extension_over_fixed_endpoints {A B X Y : SSet.{u}}
+    (q : X ⟶ Y) [InnerFibration q] (i : A ⟶ B) (hi : innerAnodyneExtensions i)
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X) (f₀ f₁ : B ⟶ X)
+    (G : (Δ[1] : SSet.{u}) ⊗ B ⟶ Y)
+    (hH₀ : prismEndpoint 0 A ≫ H = i ≫ f₀)
+    (hH₁ : prismEndpoint 1 A ≫ H = i ≫ f₁)
+    (hG : (Δ[1] ◁ i) ≫ G = H ≫ q)
+    (hG₀ : prismEndpoint 0 B ≫ G = f₀ ≫ q)
+    (hG₁ : prismEndpoint 1 B ≫ G = f₁ ≫ q) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ B ⟶ X,
+      (Δ[1] ◁ i) ≫ F = H ∧ prismEndpoint 0 B ≫ F = f₀ ∧
+      prismEndpoint 1 B ≫ F = f₁ ∧ F ≫ q = G := by
+  let r := Functor.PullbackObjObj.ofHasPullback internalHom (boundary 1).ι q
+  have : InnerFibration r.π := innerFibration_pullbackObjObjπ r
+  exact exists_prism_extension_over_fixed_endpoints_of_lifting q i
+    (hi _ (mem_innerFibrations r.π)) H f₀ f₁ G hH₀ hH₁ hG hG₀ hG₁
 
 /-- 可逆 path の族を prism に戻すと、指定端点の評価を厳密に回収する。 -/
 lemma equivalencePathFamilyPrism_endpoint {K X : SSet.{u}}
