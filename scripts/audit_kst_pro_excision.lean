@@ -4704,3 +4704,78 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.stableRowAffineRelativeLeftMap_zero
 #print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.stableRowAffineRelativeLeftMap_zero
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.unitizationMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.unitizationMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.matrix_components
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.matrix_components
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.hatGLHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.hatGLHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.hatGLMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.hatGLMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.vertexValue_natural
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.vertexValue_natural
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdeal
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdeal
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealInclusion
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealInclusion
+
+#check @SerrePositivity.KST.ProExcision.centralMultiplicationAddHom
+#print axioms SerrePositivity.KST.ProExcision.centralMultiplicationAddHom
+
+#check @SerrePositivity.KST.ProExcision.centralMultiplicationAddEquiv
+#print axioms SerrePositivity.KST.ProExcision.centralMultiplicationAddEquiv
+
+#check @SerrePositivity.KST.ProExcision.centralMultiplicationAddEquiv_coe_right
+#print axioms SerrePositivity.KST.ProExcision.centralMultiplicationAddEquiv_coe_right
+
+#check @SerrePositivity.KST.ProExcision.centralMultiplicationAddEquiv_natural
+#print axioms SerrePositivity.KST.ProExcision.centralMultiplicationAddEquiv_natural
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.columnGroupMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.columnGroupMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.columnActionOverHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.columnActionOverHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.rowActionOverHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.rowActionOverHom
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap_injective
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap_injective
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.columnGroupMap_injective
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom.columnGroupMap_injective
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealKernelAddEquiv
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealKernelAddEquiv
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealKernelAddEquiv_inclusion
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealKernelAddEquiv_inclusion
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealKernelAddEquiv_natural
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealKernelAddEquiv_natural
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealKernelVectorAddEquiv
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealKernelVectorAddEquiv
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealColumnGroupIso
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealColumnGroupIso
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealColumnGroupIso_inclusion
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.centralIdealColumnGroupIso_inclusion
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionHom.ofInjectiveComposite
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionHom.ofInjectiveComposite
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionHom.inverseOfIso
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionHom.inverseOfIso
