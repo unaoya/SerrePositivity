@@ -139,7 +139,15 @@ reflexive coequalizer の形の sifted 性を検証し、図式圏へのモナ�
 `onSequence_canonical` は nullary を含む全 arity で標準頂点列の TR が元の語となる式。
 `degreeMap_comp_section` は各次数の線形な切断、`degreeMap_surjective` と
 `normalizedMap_surjective` は任意の可換環・全 arity・全次数での全射性を与える。
-この切断が微分や部分合成を保つとは主張しない。TR の微分保存・部分合成保存は未完成。
+この切断が微分や部分合成を保つとは主張しない。
+`differential_generator` と `differential_listGenerator` は退化・非全射な語も含む削除和の式。
+隣接同値の二つの削除は逆符号で相殺し、他の削除は退化のまま残ることを証明済み。
+TR の微分と BE 頂点境界を別々の有限和に展開し、微分保存との必要十分条件を構成。
+nullary 境界恒等式は完了。一般の微分保存そのものは未証明。
+`reduceRows_delete_singleton` は一文字行の削除による出力の一文字削除を与える。
+`scheduleTransfer` は相殺相手の行長の候補で、総和・正値性・上界と自然数値の逆移動を検証。
+成功した table の区切りの同定、実際の削除対の値・符号・対応の証明は未完成。
+TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

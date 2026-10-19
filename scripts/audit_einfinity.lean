@@ -301,7 +301,19 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.onSequence_canonical,
       `SerrePositivity.EInfinity.TableReduction.degreeMap_comp_section,
       `SerrePositivity.EInfinity.TableReduction.degreeMap_surjective,
-      `SerrePositivity.EInfinity.TableReduction.normalizedMap_surjective] do
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_surjective,
+      `SerrePositivity.EInfinity.Surjection.deletionCoefficient_adjacent_eq,
+      `SerrePositivity.EInfinity.Surjection.erase_adjacent_eq,
+      `SerrePositivity.EInfinity.Surjection.rawDifferential_eq_zero_of_not_nondegenerate,
+      `SerrePositivity.EInfinity.Surjection.differential_generator,
+      `SerrePositivity.EInfinity.Surjection.differential_listGenerator,
+      `SerrePositivity.EInfinity.TableReduction.differential_onSequence,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_d_generator,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_comm_iff_vertexBoundary,
+      `SerrePositivity.EInfinity.TableReduction.differential_onSequence_nullary,
+      `SerrePositivity.EInfinity.TableReduction.transferUnit_inverse,
+      `SerrePositivity.EInfinity.TableReduction.scheduleTransfer,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_delete_singleton] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

@@ -179,3 +179,6 @@ public import SerrePositivity.EInfinity.TableReduction.CanonicalForcedLength
 public import SerrePositivity.EInfinity.TableReduction.CanonicalExtraction
 public import SerrePositivity.EInfinity.TableReduction.CanonicalLastRow
 public import SerrePositivity.EInfinity.TableReduction.Surjectivity
+public import SerrePositivity.EInfinity.TableReduction.DifferentialCriterion
+public import SerrePositivity.EInfinity.TableReduction.ScheduleTransfer
+public import SerrePositivity.EInfinity.TableReduction.SingletonRows
