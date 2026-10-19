@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidateCommon
 import SerrePositivity.InfinityCategories.Derived.DGModuleConeSquare
 import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLift
 import SerrePositivity.InfinityCategories.Derived.DGModelStability
@@ -134,6 +135,22 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgGradedHom_eq_zero_of_closed_isZero_source
+#print axioms SerrePositivity.InfinityCategories.dgGradedHom_eq_zero_of_closed_isZero_target
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundary_left_triangle
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundary_left_homotopy_heq
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryRhs0_closed
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryRhsB_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryRhsAB_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryRhsAC_differential_zero
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLiftQ_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLiftA_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLiftQ_inl
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLiftQ_inr
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLeftCandidate_suffix_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryRightCandidate_suffix_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryCandidate_common
 
 #print axioms SerrePositivity.InfinityCategories.dgUnitElement_eq_zero_of_closed_isZero
 #print axioms SerrePositivity.InfinityCategories.dgNerve_isZeroVertex_of_closed_isZero
@@ -1444,6 +1461,18 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleZeroHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryTriangles,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryResiduals,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundarySharedResiduals,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLegCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryTriangleCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLiftData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidate,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidateComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidateCommon,
+
     `SerrePositivity.InfinityCategories.Derived.DGClosedZeroVertex,
     `SerrePositivity.InfinityCategories.Derived.DGModuleNerveZero,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeDesc,

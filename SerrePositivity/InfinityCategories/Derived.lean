@@ -315,6 +315,18 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveEdges
 public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleComponents
 public import SerrePositivity.InfinityCategories.Derived.DGModuleConeSquare
 
+public import SerrePositivity.InfinityCategories.Derived.DGModuleZeroHom
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryTriangles
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryComponents
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryResiduals
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundarySharedResiduals
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLegCompatibility
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryTriangleCompatibility
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLiftData
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidate
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidateComponents
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidateCommon
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
