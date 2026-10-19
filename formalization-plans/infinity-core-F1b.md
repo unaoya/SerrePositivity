@@ -24,10 +24,17 @@
   反転した錐の極限性の同値を証明。反転した右輸送の終端へ普遍性を移し、左 Kan 条件を右へ移す。
   標準の二重反転同型の各次数の成分が恒等写像であることから、反転関手の二乗と恒等関手の
   外延的な等式を証明。対象と射を同時に元へ戻し、一般の右 Kan 拡張の存在へ接続済み。
+- 相対余錐制限 `kanRelativeCoconeRestriction` を構成。持ち上げは部分パラメータ上の余錐、
+  元の図式、U による余錐全体の像を同時に保つ延長と同値。U が inner／自明 Kan fibration なら比較も同じ性質。
+  `KanRelativeCoconeLifting` はこの比較の始点境界充填条件。終対象上では通常の余極限性と同値。
+  底の余錐が余極限なら、この相対条件から元の余極限性を回収できる。
+- 相対関手の境界充填は、指定部分の外の単体の始点だけの相対普遍性で成立する。
+  境界を固定した標準単体上の族では最初の頂点だけで足りる。相対余錐制限へも適用済み。
+  相対内部 Hom の順序交換による V′ の局所余錐への同定と、相対的な組み立ては未完。
 - F1 の scaffold 比較は straightening に依存するため import しない。
   再構成した補題は `F1B.kanScaffoldBaseChange_overPullbackMap`。新規宣言も F1B 名前空間。
-- 最終検証：F1・F1B 同時ビルド成功（3598 jobs）、同時 import 検査成功（F1 6197・F1B 3876 宣言）。
-  公理監査成功（3880 宣言、標準三公理のみ、1059 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3613 jobs）、同時 import 検査成功（F1 6225・F1B 3901 宣言）。
+  公理監査成功（3905 宣言、標準三公理のみ、1067 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -35,7 +42,7 @@
   Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。24〜60 時間。
   絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
   境界パラメータを固定する相対関手 V′ の局所 U-colimit の充填と、相対的な組み立てを接続する。
-  `InitialBoundaryLifting` の固定添字での相対余錐の族は既存。絶対的な存在だけから結論しない。
+  始点だけの局所充填、実際の余錐の族への延長は証明済み。比較の順序交換と組み立てを接続する。
 - 2. 点ごとの Kan 条件から大域的 Hom の全単射と h Fun の大域的一意性へ接続。
   Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。1 の後に 6〜16 時間。
 - 3. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
@@ -54,7 +61,8 @@
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
-- `F1B.kanIsLeftKanExtension_opposite` / `F1B.kanOppositeFunctor_square`
+- `F1B.kanRelativeCoconeRestriction` / `F1B.exists_kanRelativeCocone_extension_of_first_vertices`
+- `F1B.kanInitialBoundaryLifting_relativeCoconeFamily_boundary`
 
 ### 依存と提供
 
@@ -65,7 +73,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：coslice の反転、輸送の普遍性の移送、二重反転の厳密な消去、一般の右 Kan 拡張の存在、集約・監査・本書）。
+- なし（本保存単位：相対余錐制限、具体的な延長、始点条件の弱化、絶対的余極限との接続、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -80,11 +88,12 @@
 
 ### 次の一手
 
-- `KanRelativeConeFamilies` と Kerodon [Prop 7.3.6.7 の証明](https://kerodon.net/tag/0308) を読む。
-  isofibration U : D→E の相対余錐制限を内部 Hom の pullback 比較として定式化し、
-  その `InitialBoundaryLifting` と U-colimit 余錐の条件を対応させる。
-  次に境界を固定する関手 V′ の局所充填、相対的な組み立て、写像空間の制限定理へ進む。
-  大域的 Hom 普遍性・B5・F2-lite はその後。左右の絶対的な存在条件は証明済み。
+- `kanInitialBoundaryLifting_relativeCoconeFamily_boundary` は、相対余錐制限に境界の相対内部 Hom
+  を取った比較の始点境界充填を、最初の余錐の条件から与える。
+  `Core.InternalHomSwap` の `internalHomSwapIso` と前合成の自然性を使い、比較を取る二つの順序を交換する。
+  始域の二重内部 Hom と標的の入れ子の引き戻しの同型、比較射との可換性を証明し、
+  境界を固定する関手 V′ の相対余錐条件へ移す。その後は相対的な組み立てと制限定理へ進む。
+  標準の coslice による U-colimit との比較は未証明。操作的な充填条件との同値を仮定しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

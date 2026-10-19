@@ -1799,3 +1799,25 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRightExtension_of_local_limits
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRightExtension_iff_local_limits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeRestriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeRestriction_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCocone_lift_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeCocone_extension_of_first_vertices
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_comp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_pullback_fst
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsColimitCone_of_relativeLifting_of_image
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_iff_isColimit_of_terminal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_relativeFunctor_boundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_relativeCoconeFamily_boundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_relativeCoconeFamily_boundary_of_colimit
