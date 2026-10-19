@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.LiftedEdgeTransp
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentTransport
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TransportedCoconeGluing
+public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
 
 /-!
 概要：付加比較辺の終点と、その辺に沿う共通余錐の輸送を指定同型で結ぶ。
@@ -59,8 +60,11 @@ def coconeBoundaryTransportPointIso {y : X _⦋0⦌} (e : X.Edge d.vertex y) :
       normalizedCoconeRestrictionFiber F i hi y))
     (SSet.yonedaEquiv.symm v ≫ (normalizedCoconeRestrictionFiber F i hi d.vertex ≫
       edgeTransport (sliceUnderProjection p) e)) at I
-  rw [← Category.assoc, ← Category.assoc, ← ht, hb] at I
-  exact I
+  exact kanFunctorIsoTransport I
+    ((Category.assoc _ _ _).symm.trans (congrArg
+      (fun z ↦ z ≫ normalizedCoconeRestrictionFiber F i hi y) ht.symm))
+    ((Category.assoc _ _ _).symm.trans (congrArg
+      (fun z ↦ z ≫ edgeTransport (sliceUnderProjection p) e) hb))
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

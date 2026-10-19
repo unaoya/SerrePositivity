@@ -7315,3 +7315,48 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @fibreEdgeInclusion_raw
 #print axioms fibreEdgeInclusion_raw
+
+#check @mapTransportPrism
+#print axioms mapTransportPrism
+
+#check @mapTransportPrism_projection
+#print axioms mapTransportPrism_projection
+
+#check @mapTransportPrism_zero
+#print axioms mapTransportPrism_zero
+
+#check @mapTransportPrism_one
+#print axioms mapTransportPrism_one
+
+#check @mapTransportCylinderData
+#print axioms mapTransportCylinderData
+
+#check @mapTransportEndpointHomotopy
+#print axioms mapTransportEndpointHomotopy
+
+#check @mapTransportEndpointHomotopy_projection
+#print axioms mapTransportEndpointHomotopy_projection
+
+#check @mapTransportEndpointHomotopy_hom
+#print axioms mapTransportEndpointHomotopy_hom
+
+#check @coconeBoundaryTransport_source
+#print axioms coconeBoundaryTransport_source
+
+#check @coconeBoundaryTransport_target
+#print axioms coconeBoundaryTransport_target
+
+#check @coconeBoundaryTransportCylinderData
+#print axioms coconeBoundaryTransportCylinderData
+
+#check @coconeBoundaryTransportHomotopy
+#print axioms coconeBoundaryTransportHomotopy
+
+#check @coconeBoundaryTransportPointIso_hom_arrow
+#print axioms coconeBoundaryTransportPointIso_hom_arrow
+
+#check @coconeBoundaryTransportHomotopy_hom
+#print axioms coconeBoundaryTransportHomotopy_hom
+
+#check @coconeBoundaryTransportHomotopy_projection
+#print axioms coconeBoundaryTransportHomotopy_projection
