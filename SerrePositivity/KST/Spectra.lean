@@ -545,3 +545,10 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleCompositionTraces
 public import SerrePositivity.KST.Spectra.SpectrumZeroTriangleTrace
 public import SerrePositivity.KST.Spectra.SpectrumNativeZeroTriangleTrace
 public import SerrePositivity.KST.Spectra.SpectrumCircleHomSquareBoundary
+public import SerrePositivity.KST.Spectra.IntervalSquareSweeps
+public import SerrePositivity.KST.Spectra.IntervalSquareHomotopies
+public import SerrePositivity.KST.Spectra.SquareConstantCorners
+public import SerrePositivity.KST.Spectra.SpectrumCircleDiagonalHomotopies
+public import SerrePositivity.KST.Spectra.BasedIntervalSimplex
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionClasses
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionMapping
