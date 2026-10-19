@@ -247,3 +247,4 @@ public import SerrePositivity.EInfinity.Surjection.OuterScheduleRecovery
 public import SerrePositivity.EInfinity.Surjection.HorizontalInnerRecovery
 public import SerrePositivity.EInfinity.Surjection.ShuffleInnerRecovery
 public import SerrePositivity.EInfinity.Surjection.InnerScheduleRecovery
+public import SerrePositivity.EInfinity.Surjection.OverlapPartitionOfRows

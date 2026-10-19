@@ -678,6 +678,12 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.inner_recurrent_table_success,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_inner_schedule,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_inner_basis,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.collapse_append_length,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.shared_endpoints_of_saturated,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.shared_rows_take,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.ofRows,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.ofRows_segments,
+      `SerrePositivity.EInfinity.Surjection.OverlapPartition.existsUnique_of_rows,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1793,3 +1799,38 @@ example : ∃ r : Schedule 2 0,
     _ hs (by decide)
   have hw : CompositeRecovery.innerWord (m := 2) (n := 2) 1 [0, 1, 2, 0, 3, 0] = [0, 1] := by decide
   exact ⟨q, by simpa only [hw] using hq⟩
+
+-- 隣接重複だけの縮約損失を数え、離れた同値を含む部分語の全共有端点を導く。
+example : ([[0, 1, 0], [0, 2], [2, 0]] : List (List (Fin 3))).IsChain
+    (fun pre post => pre.getLast? = post.head?) := by
+  exact AdjacentCollapse.shared_endpoints_of_saturated _ (by decide) (by decide) (by decide)
+-- 同じ三部分語から既存の OverlapPartition の全 segment を実際に再構成する。
+example : ∃! r : OverlapPartition 3 5,
+    r.segments (![0, 1, 0, 2, 0] : Fin 5 → Fin 3) = [[0, 1, 0], [0, 2], [2, 0]] := by
+  exact OverlapPartition.existsUnique_of_rows
+    ([[0, 1, 0], [0, 2], [2, 0]] : List (List (Fin 3))) (by decide) (by decide)
+    (![0, 1, 0, 2, 0] : Fin 5 → Fin 3) (by decide) (by decide)
+-- 実際の交互 shuffle 出力から取り出した区間が、元の既知の分割を一意に復元する。
+private def gridSplitParts : List (List (Fin 2)) :=
+  CompositeRecovery.splitParts 1 (List.ofFn canonicalFixture.val) [0, 1, 2, 4, 2, 1, 4, 3]
+private lemma gridSplitParts_value : gridSplitParts = [[0, 1], [1, 0]] := by decide
+example : ∃ r : OverlapPartition 2 3, r = verticalCuts ∧
+    r.segments compositionInner.val = gridSplitParts := by
+  have hc : ∀ row ∈ gridSplitParts, row.IsChain (· ≠ ·) := by
+    rw [gridSplitParts_value]
+    decide
+  have hn : ∀ row ∈ gridSplitParts, row ≠ [] := by rw [gridSplitParts_value]; decide
+  have hv : List.ofFn compositionInner.val = AdjacentCollapse.collapse gridSplitParts.flatten :=
+    by decide
+  have hs : gridSplitParts.flatten.length + 1 = 3 + gridSplitParts.length := by decide
+  have hp := OverlapPartition.existsUnique_of_rows gridSplitParts hc hn compositionInner.val hv hs
+  have hl : gridSplitParts.length = 2 := by decide
+  rw [hl] at hp
+  obtain ⟨r, hr, hu⟩ := hp
+  have hknown : verticalCuts.segments compositionInner.val = gridSplitParts := by decide
+  exact ⟨r, (hu verticalCuts hknown).symm, hr⟩
+-- 異なる境界の二語は一文字も失わず、飽和条件の必要性を検証する。
+example : (AdjacentCollapse.collapse ([0, 1] ++ [2, 0] : List (Fin 3))).length = 4 := by
+  have h := AdjacentCollapse.collapse_append_length ([0, 1] : List (Fin 3)) [2, 0]
+    (by decide) (by decide) (by decide) (by decide)
+  simpa using h
