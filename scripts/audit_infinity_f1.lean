@@ -2776,3 +2776,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.finiteStraighteningUnitIso
 #check @SerrePositivity.InfinityCategories.finiteFunctorIsoOfUnstraighteningEquivalence
 #check @SerrePositivity.InfinityCategories.finiteUnstraightening_equivalence_iff
+#check @SerrePositivity.InfinityCategories.weightedNerveTensorDiagram
+#check @SerrePositivity.InfinityCategories.weightedNerveTensorMap
+#check @SerrePositivity.InfinityCategories.weightedNerveTensorMap_projection

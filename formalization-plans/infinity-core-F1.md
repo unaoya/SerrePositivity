@@ -13581,5 +13581,19 @@ lemma finiteUnstraightening_equivalence_iff {n : ℕ}
         f ≫ smallLeftUnstraighteningProjection G = smallLeftUnstraighteningProjection F ∧
           IsPrecompositionEquivalence f
 
+def weightedNerveTensorDiagram {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (T : SSet.{u}) {n : ℕ}
+    (s : weightedNerveSimplex F n) (t : T _⦋n⦌) :
+    simplexPrefixWeight n ⟶ s.1 ⋙ F ⋙ tensorRight T
+
+def weightedNerveTensorMap {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (T : SSet.{u}) :
+    weightedNerve F ⊗ T ⟶ weightedNerve (F ⋙ tensorRight T)
+
+lemma weightedNerveTensorMap_projection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (T : SSet.{u}) :
+    weightedNerveTensorMap F T ≫ weightedNerveProjection (F ⋙ tensorRight T) =
+      fst (weightedNerve F) T ≫ weightedNerveProjection F
+
 end SerrePositivity.InfinityCategories
 ```

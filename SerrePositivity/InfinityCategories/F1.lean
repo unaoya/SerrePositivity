@@ -666,3 +666,4 @@ public import SerrePositivity.InfinityCategories.F1.LeftResolutionStrictExtensio
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramScaffoldAdjunction
 public import SerrePositivity.InfinityCategories.F1.SmallOppositeKanTransportUnit
 public import SerrePositivity.InfinityCategories.F1.LocalStraighteningUnit
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveTensor
