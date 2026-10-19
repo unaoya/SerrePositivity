@@ -181,7 +181,18 @@ run_cmd do
       `SerrePositivity.EInfinity.homBiprodRestriction_degreewise_surjective,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationPair_eq_boundary,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationPair_projectiveFibration,
-      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationPair_projectiveFibration] do
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationPair_projectiveFibration,
+      `SerrePositivity.EInfinity.projectiveCofibrant_sphere,
+      `SerrePositivity.EInfinity.projectiveCofibrant_unit,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.endpoint_false_cofibration,
+      `SerrePositivity.EInfinity.projectiveTrivialCofibration_llp,
+      `SerrePositivity.EInfinity.projectiveTrivialCofibration_homotopyEquiv,
+      `SerrePositivity.EInfinity.homPrecomposeHomotopy,
+      `SerrePositivity.EInfinity.homPrecomposeHomotopyEquiv,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constant_quasiIso,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluation_quasiIso,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat_quasiIso,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat_quasiIso] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

@@ -119,17 +119,18 @@
   底の Hom(H,B) の `prepathComplex`、定数射と両端点評価の自然性も検証済み。
   単位則・全置換の等変性・代数射の後合成による全演算の保存を検証済み。
   `convolutionAction_comp` で全位置の部分合成則を閉じ、`convolutionAlgebra` を構成。
-  `convolutionAction_pre` は余代数射の前合成の演算保存。前合成・後合成を実際の代数射へ束ね、
-  `convolutionFunctor` と値域について自然な `convolutionPreNat` を構成済み。
+  前合成・後合成を代数射と `convolutionFunctor`・`convolutionPreNat` へ束ねた。
   `unitCoalgebra ε` は任意の augmentation の単位余代数。`convolutionUnitNatIso` は
   Hom(単位,B) ≅ B を自然な P 代数同型にする。区間の端点・収縮も余代数射に束ねた。
   `prepathAlgebra` は全代数の自己関手と自然な定数・両端点評価を持ち、底の既存の射と厳密に一致。
   `evaluationPair_projectiveFibration` は底の二端点評価の対が射影 fibration であることを示す。
-  定数射の擬同型性・代数の積と底の直和との比較・転送は未完成。
+  `constant_quasiIso` と `evaluation_quasiIso` は任意の値域で定数射・両評価の底の擬同型性を示す。
+  単位の cofibrancy、端点の鎖ホモトピー逆、符号付き Hom 前合成の移送から導出済み。
+  代数の積と底の直和との比較・転送は未完成。
   E2a-3 の工程 (2) の転送と工程 (3)・(4)、E2a-4・5、E2b・G1′ は未完成。
   現在地のコードと検証は本節と同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. 定数射の底での擬同型性と代数の積の底での計算を証明し、functorial path object を完成。
+  1. 代数の積と終対象を底で構成し、忘却関手との比較から good functorial path object を完成。
      続いてこの path object から底のホモトピー同値性を示し、
      fibrations.llp ⊆ 弱同値、J-cell acyclicity、小対象性・極限余極限と転送の適用を閉じる。
      Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
@@ -147,19 +148,15 @@
 - **主要宣言**（名前のみ）：
   `SerrePositivity.EInfinity.projectiveModelCategory`、
   `SerrePositivity.EInfinity.Operad.freeAlgebraAdjunction`、
-  `SerrePositivity.EInfinity.Operad.hadamard`、
   `SerrePositivity.EInfinity.Operad.Hopf`、
   `SerrePositivity.EInfinity.BarrattEccles.operad`、
   `SerrePositivity.EInfinity.BarrattEccles.augmentation`、
-  `SerrePositivity.EInfinity.BarrattEccles.augmentation_quasiIso`、
-  `SerrePositivity.EInfinity.BarrattEccles.complexContraction`、
   `SerrePositivity.EInfinity.BarrattEccles.hopf`、
   `SerrePositivity.EInfinity.Operad.Coalgebra`、
   `SerrePositivity.EInfinity.Operad.CoalgebraHom`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.restrict`、
   `SerrePositivity.EInfinity.Operad.convolutionAlgebra`、
-  `SerrePositivity.EInfinity.Operad.convolutionAction_comp`、
   `SerrePositivity.EInfinity.Operad.convolutionFunctor`、
   `SerrePositivity.EInfinity.Operad.convolutionPreNat`、
   `SerrePositivity.EInfinity.Operad.unitCoalgebra`、
@@ -167,6 +164,10 @@
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathAlgebra`、
+  `SerrePositivity.EInfinity.projectiveTrivialCofibration_homotopyEquiv`、
+  `SerrePositivity.EInfinity.homPrecomposeHomotopyEquiv`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constant_quasiIso`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat_quasiIso`、
   `SerrePositivity.EInfinity.projectiveCofibration_degreewise_isSplitMono`、
   `SerrePositivity.EInfinity.homPrecompose_projectiveFibration`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationPair_projectiveFibration`、
@@ -181,8 +182,8 @@
   Alg_E のモデル構造・右 Quillen U・CAlg は未提供。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：対象ビルド成功（2764 jobs）、公理監査成功（5466 宣言、標準 3 公理のみ）。
-  新規 sorry・追加公理・名前衝突はなく、558 モジュールの import 閉包に他レーンの未コミット依存はない。
+- **既知の問題**：対象ビルド成功（2768 jobs）、公理監査成功（5505 宣言、標準 3 公理のみ）。
+  新規 sorry・追加公理・名前衝突はなく、562 モジュールの import 閉包に他レーンの未コミット依存はない。
   今回の宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -190,13 +191,13 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：工程 (2) の定数射が底の複体で擬同型であることを証明する。
-  単位の cofibrancy と境界の cofibration から端点が cofibration であることを導き、
-  `endpoint_quasiIso` と射影モデル構造の持ち上げ性を用いて端点の鎖ホモトピー逆を得る。
-  前合成への移送と `constant_evaluation` から定数射の擬同型性を導く。
-  二端点評価の底の fibration 性は `algebraEvaluationPair_projectiveFibration` まで検証済み。
-  区間のホモトピー同値性や値域代数の cofibrancy を追加仮定にしない。
-  代数の積と底の直和の比較、acyclicity と転送は未完成。TR・具体区間には着手していない。
+- **次の一手**：工程 (2) の P 代数の二項積と終対象を底の複体で構成する。
+  最初に `tensorInsertionAction` の底の複体射についての自然性を証明する。
+  積の底を二項直和とし、両射影後の作用から代数公理と普遍性を検証する。終対象は零複体。
+  忘却関手の積との比較と逆像の弱同値・fibration の類で `prepathAlgebra` を good path object にする。
+  底のモデル的性質は `algebraConstantNat_quasiIso` と `algebraEvaluationPair_projectiveFibration`。
+  続いて fibrations.llp の底の鎖ホモトピー同値性、J-cell acyclicity、小対象性と転送へ進む。
+  全極限余極限と転送は未完成。TR・具体区間には着手していない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。

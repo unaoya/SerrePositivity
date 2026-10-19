@@ -152,3 +152,4 @@ public import SerrePositivity.EInfinity.Operad.ConvolutionInsertionEvaluation
 public import SerrePositivity.EInfinity.Operad.ConvolutionFunctor
 public import SerrePositivity.EInfinity.Operad.ConvolutionPathAlgebra
 public import SerrePositivity.EInfinity.Operad.IntervalEvaluationFibration
+public import SerrePositivity.EInfinity.Operad.IntervalConstantQuasiIso

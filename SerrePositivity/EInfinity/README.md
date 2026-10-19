@@ -84,7 +84,10 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 `evaluationPair_projectiveFibration` は底の二端点評価の対の射影 fibration 性を与える。
 射影 cofibration の各次数での分裂を持ち上げ性から導き、任意の値域への Hom の
 境界制限の全次数全射性を証明した。値域の cofibrancy は不要。
-定数射の擬同型性、代数の積と底の直和の比較、転送モデル構造は未完成。
+`constant_quasiIso` と `evaluation_quasiIso` により、定数射と両端点評価は底で擬同型。
+単位の cofibrancy と端点の trivial cofibration から鎖ホモトピー逆を構成し、
+符号付き前合成によって内部 Hom へ移した。区間のホモトピー同値性を追加仮定にしていない。
+代数の積と底の直和の比較、極限余極限と小対象性、転送モデル構造は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
