@@ -36,7 +36,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・503 モジュール 4852 宣言の公理監査成功。
+対象ビルド・507 モジュール 4916 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3603,3 +3603,37 @@ L9e は進行中。幾何的微分と交代微分との一致、符号、収束�
 参照：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。
 対象ビルド 3971 jobs 成功。私有宣言を含む 503 モジュール 4852 宣言で標準三公理のみ。
 L9e は進行中。幾何的微分と交代微分との一致、符号の写像空間への適用、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
+
+
+## 118. L9e の交代和による境界充填判定と幾何的 cocycle
+
+最後の面を同じホモトピー類の代表へ変更する比較ホーンを構成した。
+元の単体と最後の添字の RelStruct を二面に置き、他の面の退化を並べる。
+互換性と欠けた面の全ての面を計算し、最後以外の面を厳密に保持することを証明した。
+
+任意の球面的な面族の最後の面を除くホーンを充填した。
+その交代和は零なので、元の族の交代和も零なら、二つの最後の面の加法的な類は同じになる。
+共通の先頭部分の和を消し、最後の交代符号が整数の単元であることで類の等式を得ている。
+比較ホーンで最後の面を元の指定へ直し、全ての面を持つ単体を実際に構成した。
+従って球面的境界の充填の存在とホモトピー類の交代和の零性は同値である。
+境界の面の余極限で面族を通常の境界射へ貼り合わせ、その射の全境界充填の同値にも移した。
+
+単体集合の射が次数 n+1 で定数であるとき、次数 n+2 の各単体の像を境界定数単体として読む構成を与えた。
+退化単体の像は代表そのものが定数であるため、そのホモトピー類の係数は正規化 cochain を与える。
+次数 n+3 の単体の実際の像に交代境界関係を適用し、この通常の正規化 cochain の微分が零であることを証明した。
+これで実際の単体的な射から交代微分の cocycle 条件を得た。
+まだ骨格からの部分的な射の延長障害や coefficientDifferential の式そのものを同定したわけではない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SimplexFaces.rel_face` | RelStruct の全ての面の式 |
+| `SphericalBoundaryLastFace.replace` / `exists_replace` | 最後以外の面を保持する代表の変更 |
+| `SphericalBoundary.exists_horn_boundary` | 最後の面を変更した族の Kan 充填 |
+| `SphericalBoundary.nonempty_iff_alternatingClass_eq_zero` | 球面的な全境界充填の交代和による判定 |
+| `SphericalBoundary.boundaryMap` / `boundary_filler_iff` | 実際の境界射とその充填判定 |
+| `SphericalCochain.simplexValue` / `simplexValue_degeneracy` | 低次元で定数の射の代表と退化での定数性 |
+| `SphericalCochain.cochain` / `zeroExtend_cochain` / `differential_cochain` | 実際の射からの正規化 cochain と cocycle 関係 |
+
+参照：Goerss–Jardine I §7、III §2、VIII §1、Kerodon §3.2.3。
+対象ビルド 3975 jobs 成功。私有宣言を含む 507 モジュール 4916 宣言で標準三公理のみ。
+L9e は進行中。骨格の延長障害、幾何的微分との一致、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。

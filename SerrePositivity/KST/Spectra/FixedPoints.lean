@@ -1,5 +1,11 @@
 module
 
+public import SerrePositivity.KST.Spectra.SphericalCochain
+
+public import SerrePositivity.KST.Spectra.SphericalBoundaryLastFace
+public import SerrePositivity.KST.Spectra.SphericalBoundaryFilling
+public import SerrePositivity.KST.Spectra.SphericalBoundaryMap
+
 public import SerrePositivity.KST.Spectra.HomotopyProductIndex
 public import SerrePositivity.KST.Spectra.SphericalBoundaryReduction
 public import SerrePositivity.KST.Spectra.SphericalBoundaryAlternating
