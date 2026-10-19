@@ -704,3 +704,7 @@ public import SerrePositivity.KST.Spectra.ThreeEdgeTransportSquareProjection
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureDeformation
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTransportSquares
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointSquareSeams
+public import SerrePositivity.KST.Spectra.ExponentialHomotopyEdges
+public import SerrePositivity.KST.Spectra.ExponentialRelativeComposition
+public import SerrePositivity.KST.Spectra.SquareRightAdjustment
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointAdjustedTransport
