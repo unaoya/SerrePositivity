@@ -703,4 +703,10 @@ public import SerrePositivity.KST.SConstruction.CoherentArrowStrings
 public import SerrePositivity.KST.SConstruction.CoherentArrowStringInitial
 public import SerrePositivity.KST.SConstruction.CoherentStringPathFlags
 public import SerrePositivity.KST.SConstruction.CoherentStringDiagramCells
+public import SerrePositivity.KST.SConstruction.CoherentPathImageEndpoints
+public import SerrePositivity.KST.SConstruction.CoherentStringNativeMaps
+public import SerrePositivity.KST.SConstruction.CoherentStringFullPaths
+public import SerrePositivity.KST.SConstruction.CoherentArrowNativeFamilies
+public import SerrePositivity.KST.SConstruction.CoherentOrdinaryPrism
+public import SerrePositivity.KST.SConstruction.KPrismNativeStringFamilies
 /-! # ∞-S• 構成と連結 K 理論 -/
