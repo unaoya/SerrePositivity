@@ -118,3 +118,8 @@ public import SerrePositivity.KST.Spectra.UnbasedMapVertices
 public import SerrePositivity.KST.Spectra.UnbasedLoopFamilies
 public import SerrePositivity.KST.Spectra.SkeletalPathConnecting
 public import SerrePositivity.KST.Spectra.SkeletalConnectingAlternating
+public import SerrePositivity.KST.Spectra.InternalHomExchangeVertices
+public import SerrePositivity.KST.Spectra.PointedExchangeVertices
+public import SerrePositivity.KST.Spectra.UnbasedLoopVertices
+public import SerrePositivity.KST.Spectra.SkeletalLoopInput
+public import SerrePositivity.KST.Spectra.SkeletalLoopAlternating

@@ -40,6 +40,17 @@ lemma restrictionLoopIso_hom_ι {K L : SSet.{u}} (f : K ⟶ L)
   rw [Category.assoc, PointedFiberComparison.map_ι, ← Category.assoc,
     loopPointedFiberIso_hom_ι]
 
+/-- 逆向きの fiber の loop 交換も全空間への包含と可換。 -/
+@[reassoc]
+lemma restrictionLoopIso_inv_ι {K L : SSet.{u}} (f : K ⟶ L)
+    (Y : PointedSimplicialSet.{u}) :
+    (restrictionLoopIso f Y).inv ≫
+        PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pointedFiberι (pre f Y)) =
+      pointedFiberι (pre f (loopSpace Y)) ≫ (loopSwap L Y).inv := by
+  apply (cancel_epi (restrictionLoopIso f Y).hom).mp
+  rw [Iso.hom_inv_id_assoc, ← Category.assoc, restrictionLoopIso_hom_ι,
+    Category.assoc, Iso.hom_inv_id, Category.comp_id]
+
 /-- 概要：相対 cofiber からの Hom による fiber 表示は loop 交換と整合する。
 方針：fiber 包含後で、商射への前合成と自由基点の Hom の loop 交換を合成する。
 規約：任意の源の射 f に対する厳密な可換式。
