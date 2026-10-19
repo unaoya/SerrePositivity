@@ -240,3 +240,9 @@ public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseFunctorEquiv
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseAssembly
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHom
+public import SerrePositivity.InfinityCategories.F1B.KanConstantPullback
+public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomFiber
+public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomFiberNaturality
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinBaseFiber
+public import SerrePositivity.InfinityCategories.F1B.KanInitialBoundaryIso
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinCoconeFiber

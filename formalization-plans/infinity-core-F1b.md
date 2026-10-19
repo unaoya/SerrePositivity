@@ -18,14 +18,17 @@
 - 局所形の自然変換による制限を構成し、図式の持ち上げと族の持ち上げの同値を証明。
   相対始点境界充填を仮定した相対骨格全体の組み立ても証明。fiber ごとの余極限性から
   この充填条件を導く部分は未完であり、Kan 拡張の存在の完成とは扱わない。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2428 jobs）。
-  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2912 宣言、標準三公理のみ、757 モジュールに straightening なし）。
+- `kanFiberwiseHom` の fiber を `Fun(K_c,D)` と厳密に同定し、元の図式の制限との自然性を証明。
+  相対 join の fiber は `K_c ⋆ Δ⁰`、その関手の族の制限は `coconeRestriction` に一致する。
+  普遍余錐から、この fiber の射に対する相対始点境界充填まで証明。全空間への移送は未完。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2467 jobs）。
+  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2968 宣言、標準三公理のみ、796 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
 - 1. fiber ごとの普遍余錐性から族の制限の相対始点境界充填を導き、相対 join へ組み立てる。
   Kerodon Lemma 7.3.4.5–6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
-  `kanFiberwiseHom` の cartesian fibration 性、制限の輸送との両立、fiber の関手圏との同定が必要。
+  `kanFiberwiseHom` の cartesian fibration 性、制限の輸送との両立、fiber 条件の全空間への移送が必要。
   その後 oriented fiber product で全部分 ∞ 圏からの存在へ接続し、任意の δ に沿う存在も扱う。
 - 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
@@ -54,6 +57,9 @@
 - `kanFiberwiseFunctorHomEquiv` / `kanFiberwiseFunctorPre` / `kanFiberwiseFunctor_lift_iff`
 - `exists_kanFiberwise_extension_of_initialBoundary`
 - `kanFiberwiseHom` / `kanFiberwiseHomProjection` / `kanFiberwiseHomEquiv` / `kanFiberwiseHomPre`
+- `kanFiberwiseHomFiberIso` / `kanFiberwiseHomFiberIso_pre`
+- `kanRelativeJoinBaseFiberIso` / `kanRelativeJoinCoconeFiberIso_restriction`
+- `kanRelativeJoinCoconeFiber_initialBoundary`
 
 ### 依存と提供
 
@@ -64,8 +70,9 @@
 
 ### 未コミット
 
-- 今回の保存単位：`KanFiberwiseFunctor*`、`KanSimplexDiagram`、`KanFiberwiseAssembly`、
-  `KanFiberwiseHom` の計 8 モジュール、F1B 集約、監査スクリプト、本書。
+- 今回の保存単位：`KanConstantPullback`、`KanFiberwiseHomFiber`、同 `Naturality`、
+  `KanRelativeJoinBaseFiber`、`KanInitialBoundaryIso`、`KanRelativeJoinCoconeFiber` の 6 モジュール、
+  F1B 集約、監査スクリプト、本書。コミットは必ず所有パスを列挙した `git commit --only`。
   保存コミット後の所有変更はなし。他レーンの変更は保存・変更しない。
 
 ### 既知の問題
@@ -74,17 +81,17 @@
 - 保存 `43c25ad6` は共有インデックスにあった D レーンの 9 ファイルも同梱。内容は変更せず保存。
   並行履歴の書き換えは行わない。以後の保存は `git commit --only` で所有パスを限定する。
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
-- `kanFiberwiseHom` は strict な普遍性まで。射影の cartesian fibration 性・quasicategory 性、
-  fiber の関手圏との同定と、普遍余錐からの相対始点境界充填は未証明。
+- `kanFiberwiseHom` は strict な普遍性と fiber の関手空間との同定まで。
+  射影の cartesian fibration 性・全空間の quasicategory 性、普遍余錐から全空間の相対始点境界充填は未証明。
 - 大域的 Hom 普遍性を仮定した一意性は証明済みだが、点ごとの Kan 条件からの導出は未完。
 - B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手との比較は未形式化。
   B2 は同じ宇宙の標的に対する普遍性。一般の C[W⁻¹] の存在は主張しない。
 
 ### 次の一手
 
-- `KanFiberwiseHom.lean` の射影の fiber を `Fun(K_c,D)` と同定する。
-  次に δ が cocartesian fibration の場合の射影の cartesian fibration 性と、
-  相対 join の左端包含が誘導する `kanFiberwiseHomPre` の輸送との両立を証明する。
+- Kerodon [Cor 5.3.6.9](https://kerodon.net/tag/0472) の射影の cartesian fibration 性と辺の判定を、
+  δ が cocartesian fibration の場合の `kanFiberwiseHomProjection` について直接証明する。
+  相対 join の左端包含が誘導する `kanFiberwiseHomPre` の輸送との両立から fiber の条件を全空間へ移す。
   Kerodon Lemma 7.3.4.5 の相対始点充填を導いて `exists_kanFiberwise_extension_of_initialBoundary` に渡す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と

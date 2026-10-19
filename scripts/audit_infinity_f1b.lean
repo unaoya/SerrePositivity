@@ -1475,3 +1475,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.kanFiberwiseHomCurry
 #check @SerrePositivity.InfinityCategories.kanFiberwiseHomEquiv
 #check @SerrePositivity.InfinityCategories.kanFiberwiseHomPre
+#check @SerrePositivity.InfinityCategories.kanConstantPullbackIso
+#check @SerrePositivity.InfinityCategories.kanConstantPullbackIso_naturality
+#check @SerrePositivity.InfinityCategories.kanFiberwiseHomFiberHomEquiv
+#check @SerrePositivity.InfinityCategories.kanFiberwiseHomFiberIso
+#check @SerrePositivity.InfinityCategories.kanFiberwiseHomPreFiber
+#check @SerrePositivity.InfinityCategories.kanFiberwiseHomFiberIso_pre
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinBaseFiberIso
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinBaseFiberIso_inl
+#check @SerrePositivity.InfinityCategories.InitialBoundaryLifting.map_iso
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinCoconeFiberIso
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinCoconeFiberIso_restriction
+#check @SerrePositivity.InfinityCategories.kanRelativeJoinCoconeFiber_initialBoundary
