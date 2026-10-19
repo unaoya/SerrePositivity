@@ -834,7 +834,23 @@ run_cmd do
     `SerrePositivity.KST.Spectra.RawSpectrumCotensorComparison,
     `SerrePositivity.KST.Spectra.RawSpectrumCotensorInverse,
     `SerrePositivity.KST.Spectra.RawSpectrumCotensorIso,
-    `SerrePositivity.KST.Spectra.SpectrumCotensorMappingEquivalence]
+    `SerrePositivity.KST.Spectra.SpectrumCotensorMappingEquivalence,
+    `SerrePositivity.KST.Spectra.BasedPathSpectrum,
+    `SerrePositivity.KST.Spectra.BasedPathSpectrumZero,
+    `SerrePositivity.KST.Spectra.SpectrumZeroMaps,
+    `SerrePositivity.KST.Spectra.BasedPathLoopRestriction,
+    `SerrePositivity.KST.Spectra.LoopConeSquareVertex,
+    `SerrePositivity.KST.Spectra.BasedLoopCone,
+    `SerrePositivity.KST.Spectra.BasedLoopSquare,
+    `SerrePositivity.KST.Spectra.EndpointLoopToPathSpectrum,
+    `SerrePositivity.KST.Spectra.EndpointLoopComparison,
+    `SerrePositivity.KST.Spectra.PointedEndpointLoopPullback,
+    `SerrePositivity.KST.Spectra.PointedPullbackChange,
+    `SerrePositivity.KST.Spectra.EndpointLoopComparisonEquivalence,
+    `SerrePositivity.KST.Spectra.CotensorSourceIso,
+    `SerrePositivity.KST.Spectra.SpectrumNativeLoopComparison,
+    `SerrePositivity.KST.Spectra.TailCotensorComparison,
+    `SerrePositivity.KST.Spectra.SpectrumDeloopingComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

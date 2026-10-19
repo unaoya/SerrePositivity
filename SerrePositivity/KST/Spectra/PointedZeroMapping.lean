@@ -16,6 +16,12 @@ universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory
 namespace SerrePositivity.KST.Spectra.PointedZeroMapping
 
+/-- 基点射が同型である点つき対象からの任意の射は零射。 -/
+lemma hom_eq_zero (Z Y : PointedSimplicialSet.{u}) [IsIso Z.hom] (f : Z ⟶ Y) : f = 0 := by
+  apply Under.UnderMorphism.ext
+  apply (cancel_epi Z.hom).mp
+  exact (Under.w f).trans (Under.w (0 : Z ⟶ Y)).symm
+
 /-- 源の基点射が同型なら、任意のパラメータを持つ点つき写像族は一意。 -/
 lemma source_hom_ext (Z Y : PointedSimplicialSet.{u}) [IsIso Z.hom]
     {A : SSet.{u}} (f g : A ⟶ (PointedObject.basedHom Z Y).right) : f = g := by
