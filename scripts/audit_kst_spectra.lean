@@ -907,7 +907,21 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitHomHolimComposition,
     `SerrePositivity.KST.Spectra.BousfieldKanEdgewiseEndLift,
     `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitEndPoint,
-    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitCoherentCone]
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitCoherentCone,
+    `SerrePositivity.KST.Spectra.EdgewiseTensor,
+    `SerrePositivity.KST.Spectra.EdgewiseParameterDiagram,
+    `SerrePositivity.KST.Spectra.WeightedParameterJointNaturality,
+    `SerrePositivity.KST.Spectra.EdgewiseHomEndPrecomposition,
+    `SerrePositivity.KST.Spectra.ParameterPoint,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitPointMaps,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitHomEndFamily,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitEdgewiseFamilies,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitReflectedFamilyEquivalence,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitConePointSection,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitNativeConeComparison,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitConeSourceRestriction,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitIsLimit,
+    `SerrePositivity.KST.Spectra.FixedPointInfinityLimits]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
