@@ -29,13 +29,17 @@
   局所条件を全空間へ移し、相対骨格で部分図式・元の図式・標的の全図式を同時に保って延長できる。
 - 各 fiber の指定された相対余錐の存在から、元の図式と標的の全図式を厳密に保つ大域図式を構成。
   相対始対象の coherent な族を選び、全空間での相対充填と全 fiber の操作的な相対普遍性を回収済み。
-- 境界の最初の頂点の各 fiber の余極限性から、標準単体上の大域的な図式と関手の族を境界固定で延長。
-  全 fiber で余極限となる相対 join 図式は、通常の関手単体集合の左端への制限に対して
-  相対始点境界を充填する。写像空間の制御を通常の内部 Hom の条件へ接続済み。
+- 境界の最初の頂点の局所余極限性から標準単体上の関手の族を境界固定で延長。
+  全 fiber で普遍な H は通常の左端への関手の制限に対して相対始点境界を充填する。
+- 相対始点境界充填から、固定終点の coslice の後合成の自明 Kan 性、右 pinched 写像空間の
+  ホモトピー同値、h Fun の Hom の全単射を証明。相手の図式には普遍性を要求しない。
+  普遍な相対 join 図式の全部分 ∞ 圏からの制限は充満忠実。各元の図式の局所余極限があれば自明 Kan。
+- 元の指定 Kan 変換の Hom 公式への比較は未完。右端への対応の準備として、写像円柱を右端へ変形する
+  自然なホモトピーを構成し、右端と係数の底への射影が変形中も固定されることを証明。
 - F1 の scaffold 比較は straightening に依存するため import しない。
   再構成した補題は `F1B.kanScaffoldBaseChange_overPullbackMap`。新規宣言も F1B 名前空間。
-- 最終検証：F1・F1B 同時ビルド成功（3697 jobs）、同時 import 検査成功（F1 6458・F1B 4049 宣言）。
-  公理監査成功（4053 宣言、標準三公理のみ、1111 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3716 jobs）、同時 import 検査成功（F1 6536・F1B 4086 宣言）。
+  公理監査成功（4090 宣言、標準三公理のみ、1118 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -45,7 +49,8 @@
   V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。
   関手の境界制限上で、変動する Kan 添字の族と実際の図式の相対的な組み立ては証明済み。
   局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
-  次は写像空間の制限定理と点ごとの Kan 条件からの大域的 Hom 普遍性へ接続する。
+  通常の左端への制限の写像空間の同値と h Fun の Hom の全単射は証明済み。
+  次は右端への Hom 対応と comma 比較で、元の指定 Kan 変換の普遍性へ接続する。
 - 2. 点ごとの Kan 条件から大域的 Hom の全単射と h Fun の大域的一意性へ接続。
   Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。1 の後に 6〜16 時間。
 - 3. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
@@ -57,17 +62,14 @@
 - `QCatAdjunction` / `qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison`
 - `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
 - `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
-- `kanFiberwiseFunctorHomEquiv` / `exists_kanFiberwise_extension_of_initialBoundary`
 - `kanFiberwiseHom` / `kanFiberwiseHomFiberIso` / `kanRelativeJoinCoconeFiber_initialBoundary`
-- `kanCocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
 - `F1B.kanRelativeCoconeRestriction` / `F1B.exists_kanRelativeCocone_extension_of_first_vertices`
-- `F1B.kanRelativeHomInterchangeIso` / `F1B.exists_kanCocone_boundary_extension_of_first_colimit`
 - `F1B.exists_kanGlobalRelative_diagram_with_relative_fibers`
-- `F1B.kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers`
+- `F1B.kanRelativeJoinFunctor_homMap_bijective` / `F1B.kanRelativeJoinColimitRestriction_isFullyFaithful`
 
 ### 依存と提供
 
@@ -78,7 +80,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：局所相対余錐からの大域図式、関手の転置、通常の制限の始点境界充填、集約・監査・本書）。
+- なし（本保存単位：写像空間の制限、Hom 全単射、普遍図式の全部分圏の制限、円柱の右端への変形、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -93,11 +95,11 @@
 
 ### 次の一手
 
-- `kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers` で、全 fiber で余極限となる図式 H は
-  通常の `pre (relativeJoinInl p (𝟙 C))` に対して相対始点境界を充填する。
-  `cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting` へ接続し、各標的図式への写像空間の
-  制限を全境界充填として取り出す。左 pinched 模型と端点 fiber の比較、および右模型との比較を確認する。
-  comma の相対 join の表示と元の Kan 変換への比較へ移し、点ごとの条件から大域的 Hom 普遍性を証明する。
+- `kanRelativeJoinFunctor_homMap_bijective` は左端への制限の Hom 全単射を与える。
+  次は `FunctorHom H (relativeJoinBaseProjection p (𝟙 C) ≫ G)` と右端への制限の Hom 対応を作る。
+  `kanMappingCylinderUnit` は円柱の恒等射から底射影・右包含の合成へのホモトピーで、右端と底射影を固定する。
+  円柱比較の前合成同値で相対 join の単位の類へ移すか、円柱上の Hom 対応を直接構成して移す。
+  左端への制限と合成し、相対 join の指定変換と元の Kan 変換の Hom 公式を照合する。
   標準の isofibration と U-colimit との比較は未証明。操作的条件との同値を仮定しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と

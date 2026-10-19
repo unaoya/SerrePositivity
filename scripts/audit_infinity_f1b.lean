@@ -1909,3 +1909,23 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoin_functor_boundary_extension
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeVertexFiberMap_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoslicePostcompFiberMap_trivialKanFibration_of_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomMap_equivalence_of_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHoFunctorMap_bijective_of_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinFunctor_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinFunctor_homMap_bijective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinColimitRestriction_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinColimitRestriction_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanMappingCylinderUnit
+
+#check @SerrePositivity.InfinityCategories.F1B.kanMappingCylinderContraction_baseProjection
