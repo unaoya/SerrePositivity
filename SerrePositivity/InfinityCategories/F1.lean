@@ -669,3 +669,5 @@ public import SerrePositivity.InfinityCategories.F1.LocalStraighteningUnit
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveTensor
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveEnriched
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveTransportUnit
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveTransportComparison
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveTransportExtension
