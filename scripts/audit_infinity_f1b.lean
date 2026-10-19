@@ -2827,3 +2827,27 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeMap_under
 
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeMap_diagram
+
+#check @SerrePositivity.InfinityCategories.F1B.kanStructuredArrowPullbackLift
+
+#check @SerrePositivity.InfinityCategories.F1B.kanStructuredArrowPullbackLift_proj
+
+#check @SerrePositivity.InfinityCategories.F1B.kanUnderFunctorTransport_eq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanStructuredArrowPullbackLift_under
+
+#check @SerrePositivity.InfinityCategories.F1B.kanStructuredArrowFunctor_ext
+
+#check @SerrePositivity.InfinityCategories.F1B.kanStructuredArrow_isPullback
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveStructuredArrow_isPullback
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShape_isPullback
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeMap_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeIso_hom_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeIso_hom_diagram

@@ -669,3 +669,6 @@ public import SerrePositivity.InfinityCategories.F1B.KanNerveUnderMap
 public import SerrePositivity.InfinityCategories.F1B.KanNerveUnderReadChain
 public import SerrePositivity.InfinityCategories.F1B.KanNerveUnderIso
 public import SerrePositivity.InfinityCategories.F1B.KanNerveRightKanShape
+public import SerrePositivity.InfinityCategories.F1B.KanStructuredArrowPullbackLift
+public import SerrePositivity.InfinityCategories.F1B.KanStructuredArrowPullback
+public import SerrePositivity.InfinityCategories.F1B.KanNerveRightKanShapeIso

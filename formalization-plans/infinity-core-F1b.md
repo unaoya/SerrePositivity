@@ -2,7 +2,7 @@
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の F1b → F2-lite。B4・B5 の後、Cat_∞ を ∞ 圏として（Kerodon 5.5）、Cat_∞ の極限、lax pullback。
 
-## 引き継ぎ（2026-10-19）
+## 引き継ぎ（2026-10-20）
 
 ### 現在地
 
@@ -46,9 +46,9 @@
   指定自然変換と元の h Fun の射の全単射、恒等・合成・左右 whiskering の保存、古典随伴の双方向比較を証明。
   nerve の左右 Hom 普遍性と通常の Kan 拡張の同値、native な pointwise Kan から通常の Kan 拡張への含意も証明。
 - B5 局所比較：`nerve (Under c) ≅ sliceUnder (nervePoint c)` と忘却関手への射影の厳密な一致を証明。
-  通常の右 comma の nerve から native な右 Kan 添字への比較射、K への射影・局所図式との可換性を構成。比較射の同型性は未証明。
-- 最終検証：F1・F1B 同時ビルド成功（4013 jobs）、同時 import 検査成功（F1 7451・F1B 4866 宣言）。
-  公理監査成功（4872 宣言、標準三公理のみ、1303 モジュールに straightening なし）。ソース名衝突 0。
+  通常の右 comma の四角形の Cat 内の引き戻し性を証明。nerve の極限保存から、元の右 Kan 添字の比較射の同型性と K への射影・局所図式の厳密な一致を証明。
+- 最終検証：F1・F1B 同時ビルド成功（4016 jobs）、同時 import 検査成功（F1 7451・F1B 4881 宣言）。
+  公理監査成功（4887 宣言、標準三公理のみ、1306 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -75,7 +75,7 @@
 - `F1B.IsRelativeRightKanExtendedFrom` / `F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left`
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
-- `F1B.kanNerveUnderIso` / `F1B.kanNerveRightKanShapeMap_diagram`
+- `F1B.kanNerveUnderIso` / `F1B.kanNerveRightKanShapeIso_hom_diagram`
 - `F1B.kanNerveNatTransHomEquiv` / `F1B.kanNonempty_adjunction_iff_nerveAdjunction`
 
 ### 依存と提供
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：Under の nerve と native な coslice の同型・右 Kan の comma 比較射と局所図式の照合、集約・監査・本書）。
+- なし（本保存単位：通常の右 comma の引き戻し性・右 Kan 添字の指定比較射の同型性と射影・局所図式の保存、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `StructuredArrow.toUnder c L`・`StructuredArrow.proj c L`・`Under.forget c`・L の通常の四角形の
-  引き戻し性を証明し、nerve の極限保存と `kanNerveUnderIso` で `kanNerveRightKanShapeMap` の同型性を示す。
-  その後左版と局所錐の極限・余極限性を比較する。一般の普遍写像性から pointwise 性を推論しない。
+- `nerve (Over c) ≅ sliceOver (nervePoint c)` を構成し、忘却射影の一致を証明する。
+  左 comma の通常の引き戻しと nerve の極限保存で左 Kan 添字を比較し、両側の局所錐の
+  極限・余極限性の比較へ進む。一般の普遍写像性から pointwise 性を推論しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
