@@ -627,4 +627,9 @@ public import SerrePositivity.KST.SConstruction.PointedKanSpecifiedComponentCorr
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyOriginalCoherentDiagram
 public import SerrePositivity.KST.SConstruction.SuspensionLoopMappingIso
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblySuspensionFamilies
+public import SerrePositivity.KST.SConstruction.SuspensionLoopEnrichedComposition
+public import SerrePositivity.KST.SConstruction.PointedLoopEnrichment
+public import SerrePositivity.KST.SConstruction.PointedKanLoopInfinity
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNativeOmega
+public import SerrePositivity.KST.SConstruction.KNativeOmegaDiagrams
 /-! # ∞-S• 構成と連結 K 理論 -/

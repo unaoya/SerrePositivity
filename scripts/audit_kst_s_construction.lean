@@ -9347,3 +9347,117 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.suspensionLoopMappingFamily_prePointed
 #print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingFamily_prePointed
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_inv_enriched_pre
+
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_inv_enriched_pre
+
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_enriched_pre
+
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_enriched_pre
+
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_enriched_pre
+
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_enriched_pre
+
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingFamilies_inv_pre
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingFamilies_inv_pre
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom_evaluation
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom_evaluation
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom_curry'
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom_curry'
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom_id
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom_id
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom_comp
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopUnderlying_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopUnderlying_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom_simplicial_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom_simplicial_comp
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom_simplicial_id
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom_simplicial_id
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedKanLoopObject
+#print axioms SerrePositivity.KST.SConstruction.pointedKanLoopObject
+
+#check @SerrePositivity.KST.SConstruction.pointedKanLoopEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedKanLoopEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedKanLoopFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedKanLoopFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedKanLoopFunctor_map_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedKanLoopFunctor_map_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedKanLoopInfinity
+#print axioms SerrePositivity.KST.SConstruction.pointedKanLoopInfinity
+
+#check @SerrePositivity.KST.SConstruction.pointedKanLoopInfinity_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedKanLoopInfinity_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedKanLoopDiagram_eq
+#print axioms SerrePositivity.KST.SConstruction.pointedKanLoopDiagram_eq
+
+#check @SerrePositivity.KST.SConstruction.pointedKanLoopInfinity_diagram
+#print axioms SerrePositivity.KST.SConstruction.pointedKanLoopInfinity_diagram
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanLoopInfinity_diagram
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanLoopInfinity_diagram
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNativeOmegaHomotopy
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNativeOmegaHomotopy
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNativeOmegaHomotopy_h
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNativeOmegaHomotopy_h
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNativeOmegaHomotopy_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNativeOmegaHomotopy_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyNativeOmegaIso
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyNativeOmegaIso
+
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevelFunctor
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevelFunctor
+
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevelFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevelFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevelFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevelFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevelFunctor_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevelFunctor_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram
+#print axioms SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram
+
+#check @SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram_succ
+#print axioms SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram_succ
+
+#check @SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram_zero
+#print axioms SerrePositivity.KST.SConstruction.kKanCoherentLevelDiagram_zero
+
+#check @SerrePositivity.KST.SConstruction.kKanNativeOmegaIso
+#print axioms SerrePositivity.KST.SConstruction.kKanNativeOmegaIso
+
+#check @SerrePositivity.KST.SConstruction.kKanNativeOmegaIso_succ
+#print axioms SerrePositivity.KST.SConstruction.kKanNativeOmegaIso_succ
