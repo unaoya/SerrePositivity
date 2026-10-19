@@ -110,6 +110,18 @@ def leftStraighteningInfinityMap_evaluateIso {B : SSet.{u}} (b : B _⦋0⦌) :
     have hh : (stdSimplex.obj₀Equiv.symm (0 : Fin 1)).down = 𝟙 ⦋0⦌ :=
       @Subsingleton.elim ((⦋0⦌ : SimplexCategory) ⟶ ⦋0⦌) inferInstance _ _
     rw [hh, op_id, Functor.map_id_apply]
-  simpa only [hb] using leftStraighteningInfinityMap_firstVertexFiberIso b
+  exact (eqToIso (congrArg (fun c ↦ HomotopyCategory.mk
+    (functorVertex (leftStraighteningInfinityMap B ≫ evaluateFunctorAt (ULift.up c)))) hb)).symm ≪≫
+    leftStraighteningInfinityMap_firstVertexFiberIso b ≪≫
+    eqToIso (congrArg (fun c ↦ HomotopyCategory.mk
+      (functorVertex (leftFibrationInfinityFiberEvaluation c))) hb)
+
+/-- 頂点の評価同型は、零単体の fiber 比較と同じホモトピー圏の射を表す。 -/
+lemma leftStraighteningInfinityMap_evaluateIso_arrow {B : SSet.{u}} (b : B _⦋0⦌) :
+    Arrow.mk (leftStraighteningInfinityMap_evaluateIso b).hom =
+      Arrow.mk (leftStraighteningInfinityMap_firstVertexFiberIso b).hom := by
+  unfold leftStraighteningInfinityMap_evaluateIso
+  simp only [Iso.trans_hom, Iso.symm_hom, eqToIso.hom, eqToIso.inv,
+    ← Category.assoc, Arrow.arrow_mk_comp_eqToHom, Arrow.arrow_mk_eqToHom_comp]
 
 end SerrePositivity.InfinityCategories
