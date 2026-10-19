@@ -932,7 +932,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SpanOnePrefixTransport,
     `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLegCompatibility,
     `SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixTransport,
-    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangleCompatibility]
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangleCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.BiproductFromHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.PushoutHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.PushoutHomLift,
+    `SerrePositivity.InfinityCategories.Derived.PushoutResidualMatrix,
+    `SerrePositivity.InfinityCategories.Derived.PushoutBoundaryEquations]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
