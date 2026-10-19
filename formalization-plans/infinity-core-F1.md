@@ -38,8 +38,8 @@
   底の一本の辺に沿う全対象の実際の transport の辺・prism と厳密な両端、切断の始点・終点評価による特徴づけを構成済み。
 - 任意の小圏で添字付けた豊穣比較の図式を KanEnrichedDiagram として coherent に実現。任意の添字関手の制限（面・退化を含む）と厳密に可換。合成三点図式の三面は既存の比較の族と厳密に一致。既存の比較の辺そのものの合成三角形と合成等式を証明済み。全対象の transport も底の三角形の合成則・既存三辺の二単体・退化辺の単位則を証明済み。
 - 全単体の共同切断評価 `transportSimplexSectionInfinity` と、単体圏の nerve から底への初頂点写像を構成済み。初頂点写像は底の射に自然で全頂点を被覆し本質的全射。
-  共同切断評価と初頂点写像は同じ指定辺を反転する。任意の底の初頂点写像は、同じ宇宙の任意の quasicategory 標的に対する局所化。標準単体での明示的な切断、空の底、小余積、単射に沿う pushout、可算骨格の余極限から証明済み。単体圏の nerve は全ての小余極限と単射を保ち、反転関手は実際の極限表示を持つ。単射への反転関手の制限は inner fibration・相対可逆 path の全境界持ち上げ・単射な前合成同値の右持ち上げを持つ。同時解像の始点と終点の相対 corner は trivial Kan fibration。指定部分と標的の像を保つ lift を逐次構成し、可算の塔の両射影の極限比較も trivial Kan fibration にした。添字の宇宙は AsSmall で係数へ合わせており、宇宙零への制限はない。局所化の逆として、反転関手全体の coherent な降下と、前合成で元の族を回収する大域的な関手同型を構成済み。ここで標的・パラメーターは底と同じ宇宙。持ち上げた初頂点写像への局所化の移送と、共同切断評価の降下への適用は未証明。
-- 対象ビルド3283 jobs、公理監査7366宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  共同切断評価と初頂点写像は同じ指定辺を反転する。任意の底の初頂点写像は、同じ宇宙の任意の quasicategory 標的に対する局所化。標準単体での明示的な切断、空の底、小余積、単射に沿う pushout、可算骨格の余極限から証明済み。単体圏の nerve は全ての小余極限と単射を保ち、反転関手は実際の極限表示を持つ。単射への反転関手の制限は inner fibration・相対可逆 path の全境界持ち上げ・単射な前合成同値の右持ち上げを持つ。同時解像の始点と終点の相対 corner は trivial Kan fibration。指定部分と標的の像を保つ lift を逐次構成し、可算の塔の両射影の極限比較も trivial Kan fibration にした。添字の宇宙は AsSmall で係数へ合わせており、宇宙零への制限はない。局所化の逆として、反転関手全体の coherent な降下と、前合成で元の族を回収する大域的な関手同型を構成済み。単体圏の上下の関手は厳密に互いに逆で、その nerve の同型は初頂点写像と指定辺の集合の像を厳密に保つ。始域の同型に沿う局所化の移送を用い、任意の宇宙へ持ち上げた初頂点写像の局所化も証明済み。共同切断評価を実際に降下し、任意の底で leftStraighteningInfinityMap を構成済み。元の単体圏上の共同評価への制限と、各頂点で実際の fiber 評価を回収する大域的な関手同型も証明済み。分類同値・既存 transport の辺と全高次の比較・単位と余単位への接続は未証明。
+- 対象ビルド3290 jobs、公理監査7437宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -47,7 +47,7 @@
 
 1. 次数 fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱め、相対表現の延長へ一般化する。
    Kerodon Theorem 5.6.5.12、Corollary 5.6.5.15。40〜160時間。
-2. 一般の left fibrations の相対射の族を一つの coherent な straightening 関手へ束ね、単位・余単位と随伴の三角恒等式を完成する。
+2. 構成済みの leftStraighteningInfinityMap を既存 transport・相対表現と比較し、単位・余単位と随伴の三角恒等式を完成する。
    Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
 3. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
    Kerodon Theorem 5.6.0.2、§5.5。80〜240時間以上。
@@ -69,7 +69,7 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`、`transportStandardFirstVertexSection_comp`、`ordinaryComparisonHomotopy`、`transportStandardInvertingDescentIso`、`transportStandardInvertingFamilyIso`、`transportSimplexFirstVertexMap_standard_isLocalization`、`transportSimplexSubcomplexIso`、`transportSimplexNerve_bicart_isPushout`、`transportSimplexLocalizationComparison`、`transportSimplexInvertsEdges_of_isPushout`、`transportSimplexInverting_bicart_isPullback`、`transportSimplexChainEquiv`、`transportSimplexNerve_isPushout`、`transportSimplexInverting_isPullback_of_isPushout`、`transportSimplexInvertingRestriction_innerFibration`、`FunctorIso.invertsEdges_iff`、`fullSubcomplexEquivalencePathLift_map`、`transportSimplexInvertingRestriction_relativePath_trivialKanFibration`、`IsQCatEquivalence.trivialKanFibration_of_relativePath`、`replacementSquareEndCorner_isQCatEquivalence`、`replacementSquareStartCorner_trivialKanFibration`、`exists_innerPrism_extension_over_fixed_endpoints`、`replacementSquareEndCorner_innerFibration`、`kanEquivalenceLifting_transportSimplexInvertingRestriction`、`IsQCatEquivalence.trivialKanFibration_of_kanEquivalenceLifting`、`trivialKanFibration_replacementSquareEndCorner`、`spanPullbackMap`、`trivialKanFibration_spanPullbackMap_of_left_corner`、`isPrecompositionEquivalence_spanPullbackMap_of_equivalenceLifting`、`transportSimplexFirstVertexMap_isLocalization_of_isPushout`、`transportSimplexNerveFunctor_preservesColimits`、`transportSimplexInvertingConeIsLimit`、`transportSimplexFirstVertexMap_isLocalization_of_isInitial`、`isPrecompositionEquivalence_discreteConeMap`、`transportSimplexFirstVertexMap_isLocalization_coproduct`、`trivialKanFibration_inverseSequenceConeMap`、`inverseSequencePathDiagram`、`isPrecompositionEquivalence_inverseSequenceConeMap`、`transportSimplexFirstVertexMap_isLocalization`、`transportSimplexInvertingDescentFamilyIso`
+- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`、`transportStandardFirstVertexSection_comp`、`ordinaryComparisonHomotopy`、`transportStandardInvertingDescentIso`、`transportStandardInvertingFamilyIso`、`transportSimplexFirstVertexMap_standard_isLocalization`、`transportSimplexSubcomplexIso`、`transportSimplexNerve_bicart_isPushout`、`transportSimplexLocalizationComparison`、`transportSimplexInvertsEdges_of_isPushout`、`transportSimplexInverting_bicart_isPullback`、`transportSimplexChainEquiv`、`transportSimplexNerve_isPushout`、`transportSimplexInverting_isPullback_of_isPushout`、`transportSimplexInvertingRestriction_innerFibration`、`FunctorIso.invertsEdges_iff`、`fullSubcomplexEquivalencePathLift_map`、`transportSimplexInvertingRestriction_relativePath_trivialKanFibration`、`IsQCatEquivalence.trivialKanFibration_of_relativePath`、`replacementSquareEndCorner_isQCatEquivalence`、`replacementSquareStartCorner_trivialKanFibration`、`exists_innerPrism_extension_over_fixed_endpoints`、`replacementSquareEndCorner_innerFibration`、`kanEquivalenceLifting_transportSimplexInvertingRestriction`、`IsQCatEquivalence.trivialKanFibration_of_kanEquivalenceLifting`、`trivialKanFibration_replacementSquareEndCorner`、`spanPullbackMap`、`trivialKanFibration_spanPullbackMap_of_left_corner`、`isPrecompositionEquivalence_spanPullbackMap_of_equivalenceLifting`、`transportSimplexFirstVertexMap_isLocalization_of_isPushout`、`transportSimplexNerveFunctor_preservesColimits`、`transportSimplexInvertingConeIsLimit`、`transportSimplexFirstVertexMap_isLocalization_of_isInitial`、`isPrecompositionEquivalence_discreteConeMap`、`transportSimplexFirstVertexMap_isLocalization_coproduct`、`trivialKanFibration_inverseSequenceConeMap`、`inverseSequencePathDiagram`、`isPrecompositionEquivalence_inverseSequenceConeMap`、`transportSimplexFirstVertexMap_isLocalization`、`transportSimplexInvertingDescentFamilyIso`、`transportSimplexNerveUliftIso`、`transportSimplexFirstVertexMap_ulift_isLocalization`、`leftStraighteningInfinityMap`、`leftStraighteningInfinityMap_restrictIso`、`leftStraighteningInfinityMap_evaluateIso`
 
 ### 依存と提供
 
@@ -89,17 +89,17 @@
 - strict Kan 図式の strict な Hom が一般に Kan とは主張しない。
   局所 strictification は任意の内面制限と可換でも、境界を固定した構成でもない。
 - 各 fiber の同値や辺での一致だけでは図式全体の同型・分類を導けない。
-  同値の反映は既証明であり、残る一般の単位・充満忠実性の代わりにはならない。反転関手の単射への制限と同時解像の終点比較の前合成同値の持ち上げは証明済み。局所化比較への適用と単射に沿う pushout での保存も証明済み。余極限の nerve と反転関手の極限表示、空の底の局所化は証明済み。小余積の局所化比較の同値性も証明済み。可算骨格の極限での比較と、任意の底・同じ宇宙の標的への局所化も証明済み。係数を合わせる宇宙持ち上げとの比較は別途証明する。
+  同値の反映は既証明であり、残る一般の単位・充満忠実性の代わりにはならない。反転関手の単射への制限と同時解像の終点比較の前合成同値の持ち上げは証明済み。局所化比較への適用と単射に沿う pushout での保存も証明済み。余極限の nerve と反転関手の極限表示、空の底の局所化は証明済み。小余積の局所化比較の同値性も証明済み。可算骨格の極限での比較と、任意の底・同じ宇宙の標的への局所化も証明済み。係数を合わせる宇宙持ち上げとの比較と、共同切断評価の降下への適用も証明済み。
 - 任意の単射の境界固定延長と高次パラメーターの同時持ち上げは、射影の各次数の fiber が小さい場合に証明済み。
   任意の底上の coherent 空間値図式の unstraightening にも底・パラメーターの小ささを仮定せず適用済み。
   各次数の fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱める相対延長は未証明。
-- 単位・余単位の成分と底変換の自然性は証明済み。一般の left fibrations 全体への coherent な straightening の組み立て・随伴の三角恒等式は未証明。
+- 単位・余単位の成分と底変換の自然性は証明済み。任意の小さい底の left fibrations の ∞ 圏から関手 ∞ 圏への leftStraighteningInfinityMap は構成済み。既存の相対表現・単位・余単位をこの射へ接続する比較と、随伴の三角恒等式は未証明。
 
 ### 次の一手
 
-まず nerve (TransportSimplexCategory ((SSet.uliftFunctor).obj B)) と (SSet.uliftFunctor).obj (nerve (TransportSimplexCategory B)) の同型を構成し、初頂点写像と指定辺の集合の一致を証明する。任意の底の同宇宙版 transportSimplexFirstVertexMap_isLocalization を持ち上げた底へ適用し、持ち上げた初頂点写像へ局所化を移す。その後、transportSimplexSectionInfinity の反転条件を使って、全 left fibrations の共同切断評価を元の底へ coherent に降下する。
-任意の底での初頂点写像の局所化、単位を持つ transportSimplexInvertingDescent、族全体で制限を回収する transportSimplexInvertingDescentFamilyIso は同じ宇宙の標的に対して証明済み。単体圏の nerve の小余極限・単射保存、反転関手の極限表示、空の底・小余積・pushout・可算骨格による局所化保存も証明済み。可算図式の path 置換は AsSmall の同値を介して宇宙を合わせる。共同切断評価の標的は元の底より一つ高い宇宙なので、同宇宙の局所化をそのまま適用しない。
-全 left fibrations での coherent な分類関手・既存 transport との全高次比較・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
+まず leftStraighteningSectionJointDiagram_restrictIso の自然性を、底の辺 e とその両端への単体の制限で評価する。leftStraighteningInfinityMap_evaluateIso を両端に用い、構成した関手の辺が既存の leftFibrationNaturalTransportEdge e に一致することを関手空間のホモトピー圏で示す。単体圏の辺の制限は relativeFunctorOverPreComparison と既存の切断評価へ厳密に戻す。次にこの比較を全単体・全パラメーターで相対表現へ接続し、coherent な単位・余単位と三角恒等式へ進む。
+任意の底の初頂点写像の局所化は、任意の宇宙への持ち上げにも移送済み。transportSimplexNerveUliftIso は初頂点写像と指定辺の像を厳密に保つ。共同切断評価を降下した leftStraighteningSectionJointDiagram と、二変数を交換した leftStraighteningInfinityMap を構成済み。元の全単体の共同評価への制限、単体の初頂点での切断評価、各頂点での実際の fiber 評価との大域的な関手同型も証明済み。辺と全高次の既存 transport との一致は未証明であり、fiber 評価の同型だけから分類同値を結論しない。
+分類同値・既存の単位と余単位への接続・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md)（レーン α）の成果を読み取り専用で使う。
 
 ## 0. 目標と範囲
