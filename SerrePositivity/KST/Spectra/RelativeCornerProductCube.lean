@@ -73,5 +73,15 @@ lemma corner_reedy_anodyne (hθ : reedyLeft simplex anodyneExtensions θ) [Mono 
   exact (anodyneExtensions.arrow_iso_iff (relativeLatchingProductArrowIso θ i j)).mpr
     (anodyneExtensions_pushoutObjObjι' (relativeProductSquare θ i j) (hθ j))
 
+/-- Reedy 単射な重みの射と anodyne パラメーターの corner は Reedy anodyne。 -/
+lemma corner_reedy_anodyne_of_mono
+    (hθ : reedyLeft simplex (MorphismProperty.monomorphisms SSet.{u}) θ)
+    (hi : anodyneExtensions i) :
+    reedyLeft simplex anodyneExtensions (corner θ i).ι := by
+  intro j
+  let : Mono (relativeLatchingMap simplex j θ) := hθ j
+  exact (anodyneExtensions.arrow_iso_iff (relativeLatchingProductArrowIso θ i j)).mpr
+    (anodyneExtensions_pushoutObjObjι (relativeProductSquare θ i j) hi)
+
 end
 end SerrePositivity.KST.Spectra.WeightCornerPushout

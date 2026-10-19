@@ -754,7 +754,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.TowerKernelObstructionInjective,
     `SerrePositivity.KST.Spectra.TowerKernelLimOneEquiv,
     `SerrePositivity.KST.Spectra.TowerMilnorExactness,
-    `SerrePositivity.KST.Spectra.TowerMilnorConvergence]
+    `SerrePositivity.KST.Spectra.TowerMilnorConvergence,
+    `SerrePositivity.KST.Spectra.ReedyWeightCornerLifting,
+    `SerrePositivity.KST.Spectra.ReedyWeightRestrictionFibration,
+    `SerrePositivity.KST.Spectra.PointedReedyWeightRestriction,
+    `SerrePositivity.KST.Spectra.SkeletonFiltrationMono]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
