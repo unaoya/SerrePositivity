@@ -126,6 +126,10 @@ reflexive coequalizer の形の sifted 性を検証し、図式圏へのモナ�
 `canonicalPermutation` はその行を BE の頂点置換に変換する。
 `rowStart` は区切りから得る d+1 個の開始位置で、狭義単調かつ正の arity では終端より前。
 `canonicalVertices` と `canonicalSimplex` は指定した全射語の逆像候補を構成する。
+復元行は最終出現だけの区間では不変で、区切りでは一文字を非自明に後方へ移す。
+開始位置と次の区切りの間には別の区切りがないことを証明し、実際の隣接頂点へ適用済み。
+`canonicalSimplex_mem_nonDegenerate` は候補単体の非退化性、
+`canonicalNondegenerateSimplex` は正規化 BE 基底の実際の添字を与える。
 具体例の復元行と唯一の非退化出力は監査済み。一般の TR の値の同定は未証明。
 TR の全射性・微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。

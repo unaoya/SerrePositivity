@@ -174,3 +174,4 @@ public import SerrePositivity.EInfinity.Surjection.DeletionDifferential
 public import SerrePositivity.EInfinity.TableReduction.DegreeMap
 public import SerrePositivity.EInfinity.TableReduction.NormalizedMap
 public import SerrePositivity.EInfinity.TableReduction.CanonicalSequence
+public import SerrePositivity.EInfinity.TableReduction.CanonicalAdjacentVertices

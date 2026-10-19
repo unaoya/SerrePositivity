@@ -274,7 +274,17 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.canonicalRow_word_length,
       `SerrePositivity.EInfinity.TableReduction.canonicalPermutation_inv_list,
       `SerrePositivity.EInfinity.TableReduction.canonicalSimplex,
-      `SerrePositivity.EInfinity.TableReduction.rows_canonicalVertices] do
+      `SerrePositivity.EInfinity.TableReduction.rows_canonicalVertices,
+      `SerrePositivity.EInfinity.Surjection.firstOccurrences_cons,
+      `SerrePositivity.EInfinity.Surjection.caesura_iff_mem_drop,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRow_succ_of_not_mem,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRow_exists_move,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRow_eq_of_final_interval,
+      `SerrePositivity.EInfinity.Surjection.not_caesura_between_start_and_cut,
+      `SerrePositivity.EInfinity.TableReduction.canonicalRows_adjacent_exists_move,
+      `SerrePositivity.EInfinity.TableReduction.canonicalVertices_ne_adjacent,
+      `SerrePositivity.EInfinity.TableReduction.canonicalSimplex_mem_nonDegenerate,
+      `SerrePositivity.EInfinity.TableReduction.canonicalNondegenerateSimplex] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
