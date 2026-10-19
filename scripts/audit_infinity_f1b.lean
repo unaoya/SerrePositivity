@@ -1614,3 +1614,10 @@ open SerrePositivity.InfinityCategories
 variable {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [SSet.Quasicategory D]
 #synth CartesianFibration (kanFiberwiseHomProjection (relativeJoinBaseProjection p (𝟙 C)) D)
 end
+#check @SerrePositivity.InfinityCategories.F1B.kanIsCartesianEdge_triangle_first_of_second_long
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanCartesianComparisonTriangle
+#check @SerrePositivity.InfinityCategories.F1B.kanCartesianComparison_first_isInvertible
+#check @SerrePositivity.InfinityCategories.F1B.kanCartesianEdges_preserved_of_target_lifts
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRestriction_preservesCartesianEdges
+#check @SerrePositivity.InfinityCategories.F1B.kanCartesianFibration_op_toCocartesianHornFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_of_isInitialVertex_fiber
