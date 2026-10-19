@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofVertexInverse
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFixedHomRoof
 import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceMap
 import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofReplacementPiZero
@@ -2017,6 +2018,30 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgOriginalFixedHomRoofMap
 #print axioms SerrePositivity.InfinityCategories.dgFixedHomRoofMap_comparison
 
+#print axioms SerrePositivity.InfinityCategories.closedNerveInclusion_dgFunctor
+#print axioms SerrePositivity.InfinityCategories.dgStrictRoofNerveMap
+#print axioms SerrePositivity.InfinityCategories.dgStrictRoofNerveMap_projection
+#print axioms SerrePositivity.InfinityCategories.dgStrictRoofNerveMap_target
+#print axioms SerrePositivity.InfinityCategories.dgStrictRoofVertex_projection
+#print axioms SerrePositivity.InfinityCategories.dgStrictRoofVertex_target
+#print axioms SerrePositivity.InfinityCategories.dgStrictRoofRefinementEdge
+#print axioms SerrePositivity.InfinityCategories.dgStrictRoofRefinementEdge_projection
+#print axioms SerrePositivity.InfinityCategories.dgStrictRoofRefinementEdge_target
+#print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofNerveMap
+#print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofMaps_source
+#print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofRefinementEdge
+#print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofRefinementEdge_projection
+#print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofRefinementEdge_target
+#print axioms SerrePositivity.InfinityCategories.dgStrictQuotientRoofVertex
+#print axioms SerrePositivity.InfinityCategories.dgStrictQuotientRoofRefinementEdge
+#print axioms SerrePositivity.InfinityCategories.dgStrictQuotientRoofRefinementEdge_projection
+#print axioms SerrePositivity.InfinityCategories.dgStrictQuotientRoofRefinementEdge_target
+#print axioms SerrePositivity.InfinityCategories.dgQuotientTargetSliceMap_closedVertex
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_strictVertex
+#print axioms SerrePositivity.InfinityCategories.dgMappedRoofVertexNumeratorEdge
+#print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofVertex_rightInverse
+#print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofNerveMap_vertex_surjective
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2170,6 +2195,18 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosedNerveFunctorNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictRoofCategory,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictRoofNerveMap,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictRoofVertices,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictRoofEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofCategory,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofNerveMap,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofVertices,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictQuotientRoofEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictRoofQuotientVertex,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofVertexInverse,
     `SerrePositivity.InfinityCategories.Derived.RoofFiberTransport,
     `SerrePositivity.InfinityCategories.Derived.DGRoofFiberProjection,
     `SerrePositivity.InfinityCategories.Derived.RoofPinchedSlicePostcomp,
