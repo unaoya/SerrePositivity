@@ -1,5 +1,81 @@
 # K-L2（比較定理）
 
+## 引き継ぎ（2026-10-19）
+
+### 現在地
+- L2a 完了：SS03 (2.9) の Γ の環構造、ĜL の群状単体的モノイド、π₀ の GL との同定。
+- L2b 完了：bar、Segal Proposition 1.5・1.6、KST Lemma 2.13 の実際の群同型。
+- L2c 途中：正規化整数・局所係数ホモロジー、相対長完全列、anodyne・Kan 置換の保存まで証明済み。
+- 相対局所係数の pushout 同型、二・三次数の可逆な境界による相殺も証明済み。
+- 非退化単体複体と Moore 正規化複体の同型・逆射の自然性までで区切った。
+- plus の存在・実際のセル添付の境界計算・π₁ の商は未証明。条件付きの相殺補題を plus と扱わない。
+- 最新の実装保存は `266ca89d`、全局所係数の anodyne 保存は `561fc5c6`。
+- 対象ビルド 4513 jobs 成功。主要 1499 宣言・名前空間 2732 宣言を標準三公理だけで監査済み。
+
+### 残り（依存順、原典番号と時間見積もり）
+見積もりは未供給の API を含む概算の実作業時間で、待機時間は含めない。
+1. 標準セル ∂Δ[d]→Δ[d] の相対局所係数複体と境界の具体計算。
+   Weibel K-book IV.1.5、Waldhausen LNM 1126 §1.7・§1.8。24–60 時間。
+2. 必要な被覆、H₁ と π₁ のアーベル化の比較、単連結の場合の H₂ の球面的持ち上げ。
+   Weibel K-book IV.1.5・Ex. IV.1.4 のセル証明で使う Hurewicz 部分。40–120 時間。
+3. 二セルで完全正規部分群を殺し、三セルで相対複体を相殺する実際の plus 構成。
+   全局所係数の acyclic 性、Kan 化、π₁ の商、KST Lemma 2.14 へ接続。
+   Weibel K-book IV.1.5–IV.1.6、KST §2。48–120 時間。
+4. K₀ 界面の S1 決定を確認し、冪等元の持ち上げと K₁ を比較。
+   KST Theorem 2.16 の n=0,1、Weibel K-book III。40–100 時間。
+5. 正本 §10-5 の紙上 Hurewicz・Künneth 型スペクトル系列の確認を完成し、実装へ移す。
+   Waldhausen Theorem 1.7.1。紙上確認 8–24 時間、必要な新規形式化 80–200 時間。
+6. K-L1 の K1a の供給を確認し、∞-S• と古典的比較を接続。
+   Waldhausen 2.3.2、KST Proposition 2.15。供給後 40–120 時間。
+7. 負の次数への接続は K-L3 の Bass 基本定理を借りる。
+   KST Theorem 2.16 の n<0。界面供給後 8–24 時間。
+
+### 主要宣言（名前のみ）
+- `stableHatGLComponentsIso`
+- `monoidGroupCompletionMap_localized_isIso`
+- `lemma_2_13_pi_one`
+- `lemma_2_13_higher`
+- `integralHomologyFunctor`
+- `LocalCoefficientSystem`
+- `localCoefficientChainsMap`
+- `localHomologyIsomorphism_of_anodyne`
+- `kanReplacementUnit_localHomologyIsomorphism`
+- `overLocalCoefficientChainsFunctor`
+- `overHornGenerators_cellPresentation`
+- `relativeOverLocalCoefficientSequence_shortExact`
+- `relativeOverLocalCoefficientBoundary`
+- `relativeOverLocalCoefficientPushoutIso`
+- `twoCellComplex_acyclic`
+- `overLocalHomologyEquivalence_of_twoCellCancellation`
+- `nondegenerateCoefficientChainsIso`
+- `nondegenerateCoefficientChainsIso_inv_naturality`
+
+### 依存と提供
+- K-L9 の `KST/Spectra/HomotopyGroups`・`LoopHomotopyGroups`・`FilteredHomotopyGroups` 等を読む。
+- `HomotopicalAlgebra/Simplicial/AnodyneKanReplacement` と既存の局所化・Kan の API を読む。
+- π_n を本レーンで再定義しない。K-L9 の群の添字 n は通常の π_(n+1) である。
+- K-L1 から ∞-S•・連結 K、K-L3 から Bass、K-L6 から pro の界面を借りる。
+- Γ・ĜL・bar・群完備化・KST Lemma 2.13・H_* と局所係数の保存を提供する。
+- plus・K₀/K₁・Proposition 2.15 の完成版はまだ提供しない。
+
+### 未コミット
+- 本レーンの未コミットなし。本引き継ぎ節も自分の計画ファイルだけをコミットして停止する。
+- 他レーンの未コミット変更には触れていない。
+
+### 既知の問題
+- 今回の対象 import 閉包はビルド・監査とも成功。追加公理・sorry は導入していない。
+- 最後の全体ビルドはルート集約で `relativeFunctorVertex` の重複により失敗した。
+  F1B.RelativeFunctorHomotopyComposition と F1.RelativeFunctorVertices の衝突（12355 jobs の最終集約）。
+  α2b の改名後の全体ビルドは未確認。比較レーンで import の回避はしていない。
+- 本レーンに `[ModelCategory SSet]` の明示的な仮定はない。実際の anodyne・Kan 模型を使う。
+- 二・三セルの相殺補題の支持次数・境界の同型性は条件であり、実際のセル添付からの導出が残る。
+- 局所係数の整数係数だけへの置換、plus の存在を仮定の構造体で代用する変更は採用していない。
+- 全体目標は未完了。L2c の完了や K 理論比較の完了として読まないこと。
+
+### 次の一手
+- `nondegenerateCoefficientChainsIso` の比較を使い、標準セルの境界包含の相対複体を計算する。
+  最初は定数係数の ∂Δ[2]→Δ[2] を扱い、その後に任意の次数・引き戻し局所係数へ拡張する。
+
 ## 所有するもの・借りるもの
 
 本レーンは単体集合の整数ホモロジー H_* を所有する。
