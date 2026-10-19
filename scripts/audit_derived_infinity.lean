@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGLastHornResidualRefinement
 import SerrePositivity.InfinityCategories.Derived.DGLastHornConePrimitive
 import SerrePositivity.InfinityCategories.Derived.DGVerdierLastHornDenominator
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramCochainFiller
@@ -1830,10 +1831,38 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgComplexConePrimitive_snd
 #print axioms SerrePositivity.InfinityCategories.dgComplexConeElementMk_differential
 
+#print axioms SerrePositivity.InfinityCategories.dgYonedaEvaluation_postcomposition
+#print axioms SerrePositivity.InfinityCategories.dgYonedaPostcompositionCone_eq
+#print axioms SerrePositivity.InfinityCategories.dgYonedaPostcompositionConeIso
+#print axioms SerrePositivity.InfinityCategories.dgYonedaPostcompositionCone_exists_primitive_iff
+#print axioms SerrePositivity.InfinityCategories.dgLastHornPostcomposition_eq_closed
+#print axioms SerrePositivity.InfinityCategories.dgLastHornYonedaConeIso
+#print axioms SerrePositivity.InfinityCategories.dgLastHornYonedaResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSolution_nonempty_iff_yonedaResidual_boundary
+#print axioms SerrePositivity.InfinityCategories.dgYonedaVerdierCone_derivedFiniteCell
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramYonedaCone_derivedFiniteCell
+#print axioms SerrePositivity.InfinityCategories.dgFiniteCellTarget_exists_closedDenominator
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableModulePrecompose
+#print axioms SerrePositivity.InfinityCategories.dgFiniteCellGraded_exists_closedPrimitive
+#print axioms SerrePositivity.InfinityCategories.dgFiniteCellTargets_exists_closedDenominator
+#print axioms SerrePositivity.InfinityCategories.dgFiniteCellGraded_exists_simultaneous_closedPrimitives
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement
+#print axioms SerrePositivity.InfinityCategories.dgLastHornResidualRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramResidualRefinement_nonempty
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaPostcompositionCone,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornYonedaResidual,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaVerdierCone,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteCellTargetDenominator,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteCellGradedPrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteCellSimultaneousPrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornResidualRefinement,
+
     `SerrePositivity.InfinityCategories.Derived.DGOneSimplexComponentExt,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornFinalSimplex,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierLastHornDenominator,
