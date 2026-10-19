@@ -25,6 +25,28 @@ local instance circleTetrahedronSpectrumSimplicialCategory :
 def circleEvaluationTetrahedronAt (z : Sp.{u} _⦋0⦌) : Sp.{u} _⦋3⦌ :=
   SSet.yonedaEquiv (circleEvaluationTetrahedron ≫ evaluateFunctorAt z)
 
+/-- 零番目の面は、元の参照零三角形の同じ頂点での評価。 -/
+lemma circleEvaluationTetrahedronAt_zero (z : Sp.{u} _⦋0⦌) :
+    Sp.{u}.δ 0 (circleEvaluationTetrahedronAt z) =
+      SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ evaluateFunctorAt z) := by
+  rw [circleEvaluationTetrahedronAt, ← stdSimplex.yonedaEquiv_δ_comp,
+    ← Category.assoc, circleEvaluationTetrahedron_zero]
+
+/-- 頂点で評価した退化零三角形も、元の初辺の始点退化そのもの。 -/
+lemma circleZeroDegenerateTriangleAt (z : Sp.{u} _⦋0⦌) :
+    SSet.yonedaEquiv (circleZeroDegenerateTriangle ≫ evaluateFunctorAt z) =
+      Sp.{u}.σ 0 (SSet.yonedaEquiv
+        ((stdSimplex.δ (2 : Fin 3) ≫ circleZeroFunctorTriangle) ≫ evaluateFunctorAt z)) := by
+  rw [circleZeroDegenerateTriangle, Category.assoc, Category.assoc,
+    stdSimplex.yonedaEquiv_σ_comp]
+
+/-- 三番目の面は、元の退化零三角形の同じ頂点での評価。 -/
+lemma circleEvaluationTetrahedronAt_three (z : Sp.{u} _⦋0⦌) :
+    Sp.{u}.δ 3 (circleEvaluationTetrahedronAt z) =
+      SSet.yonedaEquiv (circleZeroDegenerateTriangle ≫ evaluateFunctorAt z) := by
+  rw [circleEvaluationTetrahedronAt, ← stdSimplex.yonedaEquiv_δ_comp,
+    ← Category.assoc, circleEvaluationTetrahedron_three]
+
 /-- 一番目の面は、元の companion 三角形の同じ頂点での評価。 -/
 lemma circleEvaluationTetrahedronAt_one (z : Sp.{u} _⦋0⦌) :
     Sp.{u}.δ 1 (circleEvaluationTetrahedronAt z) =

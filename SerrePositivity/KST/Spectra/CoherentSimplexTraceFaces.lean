@@ -52,6 +52,12 @@ lemma triangleTrace_transport {σ τ : (SimplicialNerve C) _⦋2⦌} (h : σ = �
   cases h
   rfl
 
+/-- 二単体の厳密等式は、その Hom 経路が定値であることを保持する。 -/
+lemma triangleTrace_constant_congr {σ τ : (SimplicialNerve C) _⦋2⦌} (h : σ = τ) :
+    (∃ y, triangleTrace σ = SSet.const y) ↔ (∃ y, triangleTrace τ = SSet.const y) := by
+  cases h
+  rfl
+
 /-- 二番目の面を指定した二単体へ同定し、元の Hom 正方形の端点だけを正規化する。 -/
 def tetrahedronTraceAgainst {σ : (SimplicialNerve C) _⦋3⦌}
     {τ : (SimplicialNerve C) _⦋2⦌} (h : (SimplicialNerve C).δ 2 σ = τ) :

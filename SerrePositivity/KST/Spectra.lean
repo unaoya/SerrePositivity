@@ -538,3 +538,10 @@ public import SerrePositivity.KST.Spectra.CoherentPathParameterFaces
 public import SerrePositivity.KST.Spectra.CoherentSimplexTraceFaces
 public import SerrePositivity.KST.Spectra.SpectrumCircleTetrahedronSimplex
 public import SerrePositivity.KST.Spectra.SpectrumCircleTetrahedronTrace
+public import SerrePositivity.KST.Spectra.CoherentPathCompositionFaces
+public import SerrePositivity.KST.Spectra.CoherentSimplexCompositionFaces
+public import SerrePositivity.KST.Spectra.CoherentTriangleDegenerateTrace
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompositionTraces
+public import SerrePositivity.KST.Spectra.SpectrumZeroTriangleTrace
+public import SerrePositivity.KST.Spectra.SpectrumNativeZeroTriangleTrace
+public import SerrePositivity.KST.Spectra.SpectrumCircleHomSquareBoundary
