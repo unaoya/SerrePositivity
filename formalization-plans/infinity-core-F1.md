@@ -34,9 +34,9 @@
   全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
-  任意の底上の小さい次数 fiber の表現空間は可縮 Kan。分類図式、単位・余単位の成分、底変換の比較と単位の作用の整合性を構成済み。普遍図式の族全体の再構成と恒等関手との同型も構成済み。任意の族の制限と個別の選択分類を接続し、余単位の制限の三角形を図式・全空間の両側で証明済み。cartesian な比較の図式・pointed 側の前合成との一致、余単位の底変換の自然性も証明済み。
+  任意の底上の小さい次数 fiber の表現空間は可縮 Kan。分類図式、単位・余単位の成分、底変換の比較と単位の作用の整合性を構成済み。普遍図式の族全体の再構成と恒等関手との同型も構成済み。任意の族の制限と個別の選択分類を接続し、余単位の制限の三角形を図式・全空間の両側で証明済み。cartesian な比較の図式・pointed 側の前合成との一致、余単位の底変換の自然性も証明済み。任意の族の制限に対する自然性、普遍余単位の制限と選択した族の余単位の一致も証明済み。
   任意の相対射の collage は区間と底の積上の left fibration。指定両端の表現と coherent な実現を相互に回収し、境界固定の可縮 fiber で族全体の一意性を証明済み。任意の底上の coherent な図式の実際の写像空間比較は同値（区間・pinched 模型、小さい場合は宇宙縮小後の比較とも）。
-- 対象ビルド3152 jobs、公理監査6648宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+- 対象ビルド3156 jobs、公理監査6667宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -66,7 +66,7 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningCounit`、`universalCoherentReconstructionCounitIso`、`coherentStraighteningFamilyUniversalIso`、`coherentStraighteningCounit_baseChange_naturality`、`leftUnstraighteningMappingSpaceMap_isQCatEquivalence`、`leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence`
+- `coherentStraighteningCounit`、`universalCoherentReconstructionCounitIso`、`coherentStraighteningCurriedCounit_naturality`、`coherentStraighteningCurriedCounit_universal`、`leftUnstraighteningMappingSpaceMap_isQCatEquivalence`、`leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -96,8 +96,8 @@
 
 ### 次の一手
 
-余単位の底変換の自然性を族の内部 currying へ移し、普遍族の余単位と選択した成分の整合性へ進む。
-coherentFamilyCurryIso の合成・前合成との整合性を証明し、coherentStraighteningCounit_baseChange_naturality を任意の族の制限の可換式へ移す。coherentStraighteningFamilyUniversalIso と universalCoherentReconstructionComponentIso を介して普遍余単位と選択成分を同じ比較にそろえる。
+普遍余単位と選択した族の一致を実際の頂点成分へ移し、既存の成分比較と同定する。
+coherentFamilyCurryIso の頂点での評価と底変換を同定する。coherentStraighteningCurriedCounit_universal を評価し、universalCoherentReconstructionComponentIso と coherentStraighteningCounit の合成が普遍余単位の成分そのものになることを証明する。
 全対象での自然性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。

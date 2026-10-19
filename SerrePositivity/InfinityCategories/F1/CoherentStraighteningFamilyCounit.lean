@@ -50,8 +50,9 @@ def universalCoherentReconstructionMap (B : SSet.{u + 1}) :
 規約：全図式・非可逆変換・高次単体を一度に比較する。
 使われ方：対象ごとの余単位から全図式の比較へ進む界面。 -/
 def universalCoherentReconstructionCounitIso (B : SSet.{u + 1}) :
-    FunctorIso (universalCoherentReconstructionMap B) (𝟙 ((ihom B).obj SpaceInfinity.{u})) := by
-  have e := coherentStraighteningFamilyCounit (uncurry (𝟙 ((ihom B).obj SpaceInfinity.{u})))
-  simpa only [curry_uncurry, universalCoherentReconstructionMap] using e
+    FunctorIso (universalCoherentReconstructionMap B) (𝟙 ((ihom B).obj SpaceInfinity.{u})) :=
+  coherentStraighteningFamilyCounit (uncurry (𝟙 ((ihom B).obj SpaceInfinity.{u}))) ≪≫
+    eqToIso (congrArg (fun d ↦ SSet.HomotopyCategory.mk (functorVertex d))
+      (curry_uncurry (𝟙 ((ihom B).obj SpaceInfinity.{u}))))
 
 end SerrePositivity.InfinityCategories

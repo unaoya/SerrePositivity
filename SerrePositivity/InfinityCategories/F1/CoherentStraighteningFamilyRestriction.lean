@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.CoherentStraighteningFamilyCounit
-public import SerrePositivity.InfinityCategories.F1.CoherentStraighteningRestriction
+public import SerrePositivity.InfinityCategories.F1.CoherentStraighteningFamilyBaseChange
 
 /-!
 概要：族の選択分類と、普遍図式の再構成の実際の制限を接続する。
@@ -27,11 +27,9 @@ def coherentStraighteningFamilyRestrictionIso {B K L : SSet.{u + 1}}
       (curry (smallFiberLeftStraighteningDiagram (leftUnstraighteningProjection (uncurry (i ≫ t)))
         (leftUnstraighteningProjection_hasSmallSimplexFibers _)))
       (i ≫ curry (smallFiberLeftStraighteningDiagram (leftUnstraighteningProjection (uncurry t))
-        (leftUnstraighteningProjection_hasSmallSimplexFibers _))) := by
-  have h : (B ◁ i) ≫ uncurry t = uncurry (i ≫ t) := (uncurry_natural_left i t).symm
-  have e := coherentFamilyCurryIso (coherentStraighteningRestrictionDiagramIso
-    (uncurry (i ≫ t)) (uncurry t) (B ◁ i) h)
-  simpa only [curry_natural_left] using e
+        (leftUnstraighteningProjection_hasSmallSimplexFibers _))) :=
+  coherentStraighteningFamilyBaseChangeIso (uncurry (i ≫ t)) (uncurry t) i
+    (uncurry_natural_left i t).symm
 
 /-- 概要：指定した族の分類は普遍再構成の実際の制限と関手同型。
 方針：恒等関手が表す普遍図式にパラメーター制限の比較を適用する。
@@ -46,8 +44,6 @@ def coherentStraighteningFamilyUniversalIso {B K : SSet.{u + 1}}
   let U := uncurry (𝟙 ((ihom B).obj SpaceInfinity.{u}))
   have h : (B ◁ t) ≫ U = uncurry t := by
     rw [← uncurry_natural_left, Category.comp_id]
-  have e := coherentFamilyCurryIso
-    (coherentStraighteningRestrictionDiagramIso (uncurry t) U (B ◁ t) h)
-  simpa only [curry_natural_left, U, universalCoherentReconstructionMap] using e
+  exact coherentStraighteningFamilyBaseChangeIso (uncurry t) U t h
 
 end SerrePositivity.InfinityCategories
