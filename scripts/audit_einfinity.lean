@@ -534,7 +534,15 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.componentVerticalExtraction_success,
       `SerrePositivity.EInfinity.TableReduction.rowFusion_removed_eq,
       `SerrePositivity.EInfinity.TableReduction.rowFusion_word_eq,
-      `SerrePositivity.EInfinity.TableReduction.rowFusion_of_success] do
+      `SerrePositivity.EInfinity.TableReduction.rowFusion_of_success,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.not_mem_initial,
+      `SerrePositivity.EInfinity.Surjection.substitute_head_prefix,
+      `SerrePositivity.EInfinity.Surjection.horizontalLabel_state_update,
+      `SerrePositivity.EInfinity.Surjection.horizontalExtractionStep_success,
+      `SerrePositivity.EInfinity.Surjection.horizontalExtraction_success,
+      `SerrePositivity.EInfinity.TableReduction.reductionRemoved_available_head,
+      `SerrePositivity.EInfinity.TableReduction.reductionRemoved_not_mem,
+      `SerrePositivity.EInfinity.Surjection.componentHorizontalExtraction_success] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -988,3 +996,35 @@ example : reduceRows [([0, 1, 2, 3], 4), ([3], 1)] ([] : List (Fin 4)) =
   have h := rowFusion_success ([] : List (Fin 4)) [0, 1, 2, 3] (by decide) 2 3
     (by decide) (by decide) (by decide) (by decide) [([3], 1)] [3] (by decide)
   exact h
+
+-- 未選択の内側文字が残る状態で、元の外側の零次数・正次数の水平成分を抽出する。
+private noncomputable def horizontalFixtureBlock
+    (i : Fin (occurrenceCount canonicalFixture.val 1)) : List (List (Fin 5) × ℕ) :=
+  fixedInnerRows (m := 3) (n := 2)
+    (terminalTable (reductionRow terminalTable terminalSchedule compositionInner.val
+      verticalInner_success 0)) 1
+    (outerComponentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+      1 (by decide) i.val).weightedVertices
+private noncomputable def horizontalFixtureInitial
+    (i : Fin (occurrenceCount canonicalFixture.val 1)) : List (Fin 5) :=
+  compositionStateRemoved (m := 3) (n := 2) 1
+    (reductionRemoved bfTable bfSchedule₁ canonicalFixture.val rankFixture_success
+      (occurrenceBoundaryPosition canonicalFixture.val 1 (by decide) i.val))
+    (reductionRemoved terminalTable terminalSchedule compositionInner.val verticalInner_success 0)
+example : reduceRows (horizontalFixtureBlock ⟨0, by decide⟩)
+    (horizontalFixtureInitial ⟨0, by decide⟩) = some [0, 1] := by
+  have h := componentHorizontalExtraction_success (m := 3) (n := 2)
+    bfTable bfSchedule₁ canonicalFixture rankFixture_success 1 ⟨0, by decide⟩
+    terminalTable terminalSchedule compositionInner verticalInner_success 0 [] [] rfl
+  have hw : (outerComponentWord canonicalFixture.val 1 0).map
+      (horizontalLabel (m := 3) (n := 2) 1 (compositionInner.val 0)) = [0, 1] := by decide
+  simpa only [horizontalFixtureBlock, horizontalFixtureInitial, List.append_nil, hw] using h
+example : reduceRows (horizontalFixtureBlock ⟨1, by decide⟩)
+    (horizontalFixtureInitial ⟨1, by decide⟩) =
+    some [1, 4, 1] := by
+  have h := componentHorizontalExtraction_success (m := 3) (n := 2)
+    bfTable bfSchedule₁ canonicalFixture rankFixture_success 1 ⟨1, by decide⟩
+    terminalTable terminalSchedule compositionInner verticalInner_success 0 [] [] rfl
+  have hw : (outerComponentWord canonicalFixture.val 1 1).map
+      (horizontalLabel (m := 3) (n := 2) 1 (compositionInner.val 0)) = [1, 4, 1] := by decide
+  simpa only [horizontalFixtureBlock, horizontalFixtureInitial, List.append_nil, hw] using h
