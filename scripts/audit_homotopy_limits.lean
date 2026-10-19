@@ -7063,3 +7063,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @SpecifiedCoconeLeftTriangleData.projection
 #print axioms SpecifiedCoconeLeftTriangleData.projection
+
+#check @triangleLongEdge_sourceVertex
+#print axioms triangleLongEdge_sourceVertex
+
+#check @specifiedCoconeLeftRootDiagram_rootEdge
+#print axioms specifiedCoconeLeftRootDiagram_rootEdge
+
+#check @specifiedCoconeLeftRootBaseEdgeFamily
+#print axioms specifiedCoconeLeftRootBaseEdgeFamily
+
+#check @specifiedCoconeLeftRootBaseEdgeFamily_fixed
+#print axioms specifiedCoconeLeftRootBaseEdgeFamily_fixed
+
+#check @specifiedCoconeLeftRootBaseEdgeFiberFamily
+#print axioms specifiedCoconeLeftRootBaseEdgeFiberFamily
+
+#check @specifiedCoconeLeftRootBaseEdgeFamily_source
+#print axioms specifiedCoconeLeftRootBaseEdgeFamily_source
+
+#check @specifiedCoconeLeftRootBaseEdgeFiberFamily_source
+#print axioms specifiedCoconeLeftRootBaseEdgeFiberFamily_source
+
+#check @specifiedCoconeLeftRootBaseEdgeFamily_target
+#print axioms specifiedCoconeLeftRootBaseEdgeFamily_target
+
+#check @specifiedCoconeLeftRootBaseEdgeFiberFamily_target
+#print axioms specifiedCoconeLeftRootBaseEdgeFiberFamily_target
+
+#check @specifiedCoconeLeftRootNativeCylinderData
+#print axioms specifiedCoconeLeftRootNativeCylinderData
+
+#check @specifiedCoconeLeftRootNativeCylinder
+#print axioms specifiedCoconeLeftRootNativeCylinder
+
+#check @specifiedCoconeLeftRootNativeCylinder_projection
+#print axioms specifiedCoconeLeftRootNativeCylinder_projection
+
+#check @specifiedCoconeLeftRestrictionInitialHomFamily_projection
+#print axioms specifiedCoconeLeftRestrictionInitialHomFamily_projection
+
+#check @specifiedCoconeLeftNativeIso
+#print axioms specifiedCoconeLeftNativeIso
+
+#check @specifiedCoconeLeftNativeHomotopy
+#print axioms specifiedCoconeLeftNativeHomotopy
+
+#check @specifiedCoconeLeftNativeHomotopy_hom
+#print axioms specifiedCoconeLeftNativeHomotopy_hom
