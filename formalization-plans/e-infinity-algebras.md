@@ -2,6 +2,34 @@
 
 ## 引き継ぎ（2026-10-19）
 
+### N（γ1.5・γ3）
+
+- **現在地**：γ1.5 完了。γ3b は任意の小圏で元の非反転 q_x の同値性・全導来 fiber の可縮性による両向き判定と、pinched Hom の直接 fiber 模型まで公開。
+  γ3c の 𝒮 の小積・Sp の有限積（空積含む）、一脚 fibration の引き戻し、fibration の塔の実際の ∞ 極限を公開。𝒮 の小余積・任意の span・任意の列の ∞ 余極限も公開。
+  現工程は通常の随伴と整合する自然な単体的 Hom 同型からの極限保存まで。豊穣右関手の coherent nerve による像と厳密に一致し、同図式の全 coherent 極限錐にも拡張。
+  検証：HomotopyLimits 対象ビルド5131 jobs、公理監査1682宣言（標準3公理のみ）。コード保存：`2d3eb636`。
+- **残り**（依存順・時間は再開後の概算）：
+  1. simplicial Quillen 随伴の cofibrant-fibrant 置換・frame から Hom 同型を具体化する。HTT 4.2.4.1・5.2.4.6、8〜20時間。
+  2. 1 と F1b の随伴 API から導来 ∞ 随伴の単位・余単位・整合性を構成する。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
+  3. 𝒮 の一般の小さい余極限と任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
+  4. E2a-3・4 と γ2 の豊穣化の確定後、Alg_E と忘却関手へ適用する。HTT 1.1.5.10・4.2.4.1・5.2.4.6、16〜40時間。E2a の現状は下記参照。
+- **主要宣言**（名前のみ。名前空間 SerrePositivity.InfinityCategories.HomotopyLimits）：
+  `strictCoherentCone_isLimit_iff_general_comparisonFiber`、`strictConePinched_generalOriginalEnd_equivalence`、
+  `spaceProductCone_isLimitCone`、`spacePullbackCone_isLimitCone`、`spaceTowerCone_isLimitCone`、
+  `spaceArbitraryPushoutCocone_isColimitCone`、`spaceArbitrarySequentialColimitCocone_isColimitCone`、
+  `SimplicialAdjunctionHomIso`、`strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso`。
+- **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
+  提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean、型・規約は InfinityCategories/README.md の γ3 節。
+- **未コミット**：N のコード・監査・README は全てコミット済み。この引き継ぎも別コミットに保存。他レーンの変更は温存。
+- **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
+  今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性は Mathlib の明示的な Quillen instance を使用。root 全体は未検証。
+  Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
+  Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
+  他担当の再帰的依存1230ソースは追跡済み・コミット済み・変更なしを確認。依存が壊れたら回避せず停止する。
+- **次の一手**：AdjunctionHomLimits.lean と HomotopicalAlgebra/HomotopyFunctionComplex/AdjunctionHom.lean を照合し、実際の simplicial Quillen 随伴一例で cf 置換を含む Hom 同型の入力を構成する。
+
+### E2a（既存の引き継ぎ）
+
 - **現在地**：E2a-0（Ch(A) の射影モデル構造）、E2a-1（オペラッド・自由代数随伴）、
   E2a-2（Barratt–Eccles オペラッド・augmentation）まで完了。
   E2a-3 は承認済みの Hopf オペラッド＋区間＋path object 経路の工程 (1) の途中。
