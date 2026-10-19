@@ -8248,3 +8248,135 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRootClosingExtensionEdge_endpoint_hom_arrow
 #print axioms specifiedCoconeRootClosingExtensionEdge_endpoint_hom_arrow
+
+#check @coprodTensorGlue
+#print axioms coprodTensorGlue
+
+#check @coprodTensorGlue_inl
+#print axioms coprodTensorGlue_inl
+
+#check @coprodTensorGlue_inr
+#print axioms coprodTensorGlue_inr
+
+#check @coprodTensor_hom_ext
+#print axioms coprodTensor_hom_ext
+
+#check @relativeFunctorCoprodCurry
+#print axioms relativeFunctorCoprodCurry
+
+#check @relativeFunctorCoprodCurry_inl
+#print axioms relativeFunctorCoprodCurry_inl
+
+#check @relativeFunctorCoprodCurry_inr
+#print axioms relativeFunctorCoprodCurry_inr
+
+#check @relativeFunctorCoprod_hom_ext
+#print axioms relativeFunctorCoprod_hom_ext
+
+#check @relativeFunctorCoprodPair
+#print axioms relativeFunctorCoprodPair
+
+#check @relativeFunctorCoprodPairIso
+#print axioms relativeFunctorCoprodPairIso
+
+#check @relativeFunctorPairRestriction
+#print axioms relativeFunctorPairRestriction
+
+#check @relativeFunctorPairRestriction_hasLiftingProperty
+#print axioms relativeFunctorPairRestriction_hasLiftingProperty
+
+#check @relativeFunctorPairRestriction_leftFibration
+#print axioms relativeFunctorPairRestriction_leftFibration
+
+#check @fixedFiberSecondMap
+#print axioms fixedFiberSecondMap
+
+#check @fixedFiberSecondMap_leftFibration
+#print axioms fixedFiberSecondMap_leftFibration
+
+#check @fixedExtensionRelativeEndpoint
+#print axioms fixedExtensionRelativeEndpoint
+
+#check @fixedExtensionRelativeEndpoint_leftFibration
+#print axioms fixedExtensionRelativeEndpoint_leftFibration
+
+#check @fixedExtensionRelativeEndpoint_uncurry
+#print axioms fixedExtensionRelativeEndpoint_uncurry
+
+#check @pointDiagramValue_of_constant
+#print axioms pointDiagramValue_of_constant
+
+#check @fixedExtensionPointEndpoint
+#print axioms fixedExtensionPointEndpoint
+
+#check @fixedExtensionPointEndpoint_leftFibration
+#print axioms fixedExtensionPointEndpoint_leftFibration
+
+#check @fixedExtensionPointEndpoint_ι
+#print axioms fixedExtensionPointEndpoint_ι
+
+#check @fixedExtensionEdgeTarget_point_base
+#print axioms fixedExtensionEdgeTarget_point_base
+
+#check @fixedExtensionEdgeTarget_eq_pointEndpoint
+#print axioms fixedExtensionEdgeTarget_eq_pointEndpoint
+
+#check @fixedExtensionEdgeTarget_leftFibration
+#print axioms fixedExtensionEdgeTarget_leftFibration
+
+#check @edgeEndpointPair_mono
+#print axioms edgeEndpointPair_mono
+
+#check @pointTransportExtensionEndpoint_leftFibration
+#print axioms pointTransportExtensionEndpoint_leftFibration
+
+#check @specifiedCoconeRightRootEndpoint_leftFibration
+#print axioms specifiedCoconeRightRootEndpoint_leftFibration
+
+#check @leftFibration_correct_edge_of_null_class
+#print axioms leftFibration_correct_edge_of_null_class
+
+#check @leftFibration_correct_edge_of_identity_arrow
+#print axioms leftFibration_correct_edge_of_identity_arrow
+
+#check @fixedExtensionEdgeHomotopy
+#print axioms fixedExtensionEdgeHomotopy
+
+#check @fixedExtensionEdgeHomotopy_raw
+#print axioms fixedExtensionEdgeHomotopy_raw
+
+#check @fixedExtensionEdgeHomotopy_projection
+#print axioms fixedExtensionEdgeHomotopy_projection
+
+#check @fixedExtensionEdgeHomotopy_initial
+#print axioms fixedExtensionEdgeHomotopy_initial
+
+#check @fixedExtensionEdgeHomotopy_endpoint_raw
+#print axioms fixedExtensionEdgeHomotopy_endpoint_raw
+
+#check @fixedExtensionEdgeHomotopy_endpoint_constant
+#print axioms fixedExtensionEdgeHomotopy_endpoint_constant
+
+#check @specifiedCoconeRootVerticalEndpointVertex
+#print axioms specifiedCoconeRootVerticalEndpointVertex
+
+#check @specifiedCoconeRootVerticalExtensionEdge
+#print axioms specifiedCoconeRootVerticalExtensionEdge
+
+#check @specifiedCoconeRootVerticalExtensionEdge_endpoint
+#print axioms specifiedCoconeRootVerticalExtensionEdge_endpoint
+
+#check @specifiedCoconeRootVerticalHomotopy
+#print axioms specifiedCoconeRootVerticalHomotopy
+
+#check @specifiedCoconeRootVerticalHomotopy_raw
+#print axioms specifiedCoconeRootVerticalHomotopy_raw
+
+#check @specifiedCoconeRootVerticalHomotopy_projection
+#print axioms specifiedCoconeRootVerticalHomotopy_projection
+
+#check @specifiedCoconeRootVerticalHomotopy_initial
+#print axioms specifiedCoconeRootVerticalHomotopy_initial
+
+#check @specifiedCoconeRootVerticalHomotopy_terminal
+#print axioms specifiedCoconeRootVerticalHomotopy_terminal
