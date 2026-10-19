@@ -833,4 +833,15 @@ public import SerrePositivity.KST.SConstruction.KanMappingComposition
 public import SerrePositivity.KST.SConstruction.MappingSquareUncurry
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeCompositeCylinders
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeDirectCylinders
+public import SerrePositivity.KST.SConstruction.FamilyChainCompositeOperations
+public import SerrePositivity.KST.SConstruction.FamilyChainRectangle
+public import SerrePositivity.KST.SConstruction.FamilyChainRectangleComparison
+public import SerrePositivity.KST.SConstruction.FamilyChainTraceFaithfulness
+public import SerrePositivity.KST.SConstruction.FamilyChainTraceSplitting
+public import SerrePositivity.KST.SConstruction.FamilyCylinderClassComparison
+public import SerrePositivity.KST.SConstruction.FamilySquareCurry
+public import SerrePositivity.KST.SConstruction.FamilyTriangleFaces
+public import SerrePositivity.KST.SConstruction.FamilyTriangleStripComparison
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeDiskPaths
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeFullPathComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
