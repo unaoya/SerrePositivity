@@ -252,3 +252,8 @@ public import SerrePositivity.KST.Spectra.OrdinaryTotalizationSequence
 public import SerrePositivity.KST.Spectra.OrdinaryTotalizationSpectrum
 public import SerrePositivity.KST.Spectra.OrdinaryTotalizationSpectrumMap
 public import SerrePositivity.KST.Spectra.OmegaSpectrumTotalizationComparison
+public import SerrePositivity.KST.Spectra.NullHomotopyEndpointLifting
+public import SerrePositivity.KST.Spectra.TowerDifferenceRealizationStep
+public import SerrePositivity.KST.Spectra.TowerDifferenceRealization
+public import SerrePositivity.KST.Spectra.TowerKernelRealization
+public import SerrePositivity.KST.Spectra.TowerKernelObstructionSurjective

@@ -739,7 +739,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.OrdinaryTotalizationSequence,
     `SerrePositivity.KST.Spectra.OrdinaryTotalizationSpectrum,
     `SerrePositivity.KST.Spectra.OrdinaryTotalizationSpectrumMap,
-    `SerrePositivity.KST.Spectra.OmegaSpectrumTotalizationComparison]
+    `SerrePositivity.KST.Spectra.OmegaSpectrumTotalizationComparison,
+    `SerrePositivity.KST.Spectra.NullHomotopyEndpointLifting,
+    `SerrePositivity.KST.Spectra.TowerDifferenceRealizationStep,
+    `SerrePositivity.KST.Spectra.TowerDifferenceRealization,
+    `SerrePositivity.KST.Spectra.TowerKernelRealization,
+    `SerrePositivity.KST.Spectra.TowerKernelObstructionSurjective]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
