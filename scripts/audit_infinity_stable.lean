@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleFiberSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomCoordinates
+import SerrePositivity.InfinityCategories.Derived.DGModuleConeLiftDifferential
 import SerrePositivity.InfinityCategories.Derived.DGModuleCofiberExists
 import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryCandidateCommon
 import SerrePositivity.InfinityCategories.Derived.DGModuleConeSquare
@@ -136,6 +139,19 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeSndElement_d
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberProjectionElement_closed
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberProjection_cycle
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberNullHomotopy_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleNegativeShiftTargetHomEquiv
+#print axioms SerrePositivity.InfinityCategories.dgModuleNegativeShiftTargetHomEquiv_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleNegativeShiftTargetHomEquiv_symm_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberSquare
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberZeroTriangle
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCone
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberHomCoordinates
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeLiftElement_differential
 
 #print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLeftCandidate_first_equation
 #print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLeftCandidate_second_equation
@@ -1475,6 +1491,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeProjectionDifferential,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberObject,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberNullHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleNegativeShiftHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeLiftDifferential,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryFirstEquation,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLegEquations,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryTriangleEquations,
