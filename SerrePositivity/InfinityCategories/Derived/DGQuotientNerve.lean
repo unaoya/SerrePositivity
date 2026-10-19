@@ -21,6 +21,10 @@ variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 /-- 明示的な path 商の dg nerve。 -/
 def dgQuotientNerve (P : Set D) : SSet := dgNerve A (DGQuotient.QuotientObject D P)
 
+/-- 明示的 dg 商の nerve は quasicategory。 -/
+instance dgQuotientNerve_quasicategory (P : Set D) : Quasicategory (dgQuotientNerve A D P) :=
+  inferInstanceAs (Quasicategory (dgNerve A (DGQuotient.QuotientObject D P)))
+
 /-- 元の dg nerve から明示的商の nerve への写像。 -/
 def dgQuotientNerveProjection (P : Set D) : dgNerve A D ⟶ dgQuotientNerve A D P :=
   dgNerve.map (DGQuotient.inclusion A D P)

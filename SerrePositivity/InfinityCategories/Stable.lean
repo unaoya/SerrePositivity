@@ -298,6 +298,8 @@ public import SerrePositivity.InfinityCategories.Stable.TriangleMiddlePrism
 public import SerrePositivity.InfinityCategories.Stable.FunctorConjugationComparison
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSourceTransport
 
+public import SerrePositivity.InfinityCategories.Stable.ZeroDiagramComparison
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

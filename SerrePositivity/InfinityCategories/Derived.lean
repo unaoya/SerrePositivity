@@ -264,6 +264,18 @@ public import SerrePositivity.InfinityCategories.Derived.PinchedBoundaryRecovery
 public import SerrePositivity.InfinityCategories.Derived.PinchedPrimitiveFilling
 public import SerrePositivity.InfinityCategories.Derived.PinchedProperEquations
 
+public import SerrePositivity.InfinityCategories.Derived.ContractingElementCriterion
+public import SerrePositivity.InfinityCategories.Derived.ContractingInitialVertex
+public import SerrePositivity.InfinityCategories.Derived.ContractingZeroVertex
+public import SerrePositivity.InfinityCategories.Derived.DGBoundaryAssembly
+public import SerrePositivity.InfinityCategories.Derived.DGBoundaryOneExtension
+public import SerrePositivity.InfinityCategories.Derived.DGBoundarySourceExtension
+public import SerrePositivity.InfinityCategories.Derived.DGBoundarySourcePrimitive
+public import SerrePositivity.InfinityCategories.Derived.DGFunctorZeroObjects
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientNullification
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientZeroObjects
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientZeroingExtension
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

@@ -2,6 +2,17 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.dgBoundarySourceExtension
+#print axioms SerrePositivity.InfinityCategories.dgNerve_contractingElement_isInitialVertex
+#print axioms SerrePositivity.InfinityCategories.dgNerve_contractingElement_isZeroVertex
+#print axioms SerrePositivity.InfinityCategories.dgNerve_isZeroVertex_iff_contractingElement
+#print axioms SerrePositivity.InfinityCategories.dgFunctorNerve_preservesZeroVertices
+#print axioms SerrePositivity.InfinityCategories.dgQuotientKilledVertex_isZero
+#print axioms SerrePositivity.InfinityCategories.dgQuotientNerveProjection_kills
+#print axioms SerrePositivity.InfinityCategories.dgQuotient_exists_nerve_extension_of_zeroing
+#print axioms SerrePositivity.InfinityCategories.dgQuotientNullFunctorIsoZero
+#print axioms SerrePositivity.InfinityCategories.zeroDiagramFunctorIso
+
 #print axioms SerrePositivity.InfinityCategories.contractingTargetPrimitive_differential
 #print axioms SerrePositivity.InfinityCategories.contractingSourcePrimitive_differential
 #print axioms SerrePositivity.InfinityCategories.contractingTargetHomotopy
@@ -817,6 +828,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ContractingElementCriterion,
+    `SerrePositivity.InfinityCategories.Derived.ContractingInitialVertex,
+    `SerrePositivity.InfinityCategories.Derived.ContractingZeroVertex,
+    `SerrePositivity.InfinityCategories.Derived.DGBoundaryAssembly,
+    `SerrePositivity.InfinityCategories.Derived.DGBoundaryOneExtension,
+    `SerrePositivity.InfinityCategories.Derived.DGBoundarySourceExtension,
+    `SerrePositivity.InfinityCategories.Derived.DGBoundarySourcePrimitive,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorZeroObjects,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientNullification,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientZeroObjects,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientZeroingExtension,
+    `SerrePositivity.InfinityCategories.Stable.ZeroDiagramComparison,
+
     `SerrePositivity.InfinityCategories.Derived.ContractingElementHomBoundaries,
     `SerrePositivity.InfinityCategories.Derived.ContractingHomAcyclic,
     `SerrePositivity.InfinityCategories.Derived.ContractingPinchedHom,
