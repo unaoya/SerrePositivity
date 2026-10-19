@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1445宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1459宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1114,3 +1114,14 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `componentRingMap` と `componentRingEquiv` は既存の K-L2 の成分環を単体的環の実射・実同型に沿って移す。π₀ や成分環の定義を置き換えない。
 - `ringReversalComponentsEquiv` と `ringOppositeComponentsEquiv` は係数の rev と反対環の実成分環比較。任意の次数の成分写像との可換性も証明する。
 - 対象ビルド・1445宣言の公理監査は標準三公理のみで成功。非単位環の単位化図式と転置の実比較をこれらへ接続し、行側半直積と整数作用の移送を続行する。
+
+
+### L6d の単位化と反対転置の実 ĜL 比較（2026-10-19）
+
+- `integerUnitizationOpEquiv_natural` は任意の非単位環準同型に対する実単位化の反対環同型の自然性。
+- `unitizationOppositeIso`・`unitizationReverseIso`・`unitizationReverseOppositeIso` は全ての面・退化を含む実環図式の同型。
+- `componentRingMap_simplex`・`componentRingEquiv_simplex` は任意の次数の成分写像に自然。
+- `reverseOppositeComponentEquiv` は rev と反対環を施した係数の実成分環同型。任意の次数の単体の成分との可換性を証明した。
+- `integerUnitizationMatrixOpEquiv` と `reverseOppositeMatrixComponentsEquiv` は非可換な反対転置の実環同型。整数射影と成分行列との可換性を証明した。
+- `reverseOppositeHatGL_mem_iff` は成分での単位性と整数核条件を両方向に保存する。`reverseOppositeHatGLMulEquiv` はこれを制限した実部分モノイドの乗法同型。次数ごとの逆行列は要求しない。
+- 対象ビルド・1459宣言の公理監査は標準三公理のみで成功。自然な実単体的モノイドの比較、行側半直積と整数作用の移送は引き続き L6d の残件。

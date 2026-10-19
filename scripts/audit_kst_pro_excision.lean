@@ -4182,3 +4182,45 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.ringOppositeComponentsEquiv_simplex
 #print axioms SerrePositivity.KST.ProExcision.ringOppositeComponentsEquiv_simplex
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationOpEquiv_natural
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationOpEquiv_natural
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.unitizationOppositeIso
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.unitizationOppositeIso
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.unitizationReverseIso
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.unitizationReverseIso
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.unitizationReverseOppositeIso
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.unitizationReverseOppositeIso
+
+#check @SerrePositivity.KST.ProExcision.componentRingMap_simplex
+#print axioms SerrePositivity.KST.ProExcision.componentRingMap_simplex
+
+#check @SerrePositivity.KST.ProExcision.componentRingEquiv_simplex
+#print axioms SerrePositivity.KST.ProExcision.componentRingEquiv_simplex
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeComponentEquiv
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeComponentEquiv
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeComponentEquiv_simplex
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeComponentEquiv_simplex
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMatrixOpEquiv
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMatrixOpEquiv
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMatrixOpEquiv_fst
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMatrixOpEquiv_fst
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeMatrixComponentsEquiv
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeMatrixComponentsEquiv
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeMatrix_components
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeMatrix_components
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGL_mem_iff
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGL_mem_iff
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLMulEquiv
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeHatGLMulEquiv

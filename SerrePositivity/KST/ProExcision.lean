@@ -427,3 +427,13 @@ public import SerrePositivity.KST.ProExcision.ComponentRingMaps
 public import SerrePositivity.KST.ProExcision.RingReversalComponents
 
 public import SerrePositivity.KST.ProExcision.RingOppositeComponents
+
+public import SerrePositivity.KST.ProExcision.UnitizationOppositeDiagram
+
+public import SerrePositivity.KST.ProExcision.ComponentRingSimplex
+
+public import SerrePositivity.KST.ProExcision.UnitizationReverseOppositeComponents
+
+public import SerrePositivity.KST.ProExcision.HatGLReverseOppositeMatrix
+
+public import SerrePositivity.KST.ProExcision.HatGLReverseOppositeEquiv
