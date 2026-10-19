@@ -16,20 +16,20 @@
 - 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
 - loop 交換の頂点を円の射と標準区間の辺で厳密に照合済み。骨格 fiber の通常の零 loop 比較の包含は明示した逆辺の類と一致し、実際の成分微分の係数を次数二以上の正規化交代微分と (-1)^(セル次元) で計算済み。
-- corner の共通ホーン充填と二射影を計算済み。path 族の写像空間の辺への転置・両端・制限、および逆 loop の接続写像の辺による計算も構成済み。
-- 面次数一からの球面的持ち上げ・逆元公式と隣接比較ホーンを構成し、出力の非定数面を loop 側の境界代表と照合済み。
+- corner の共通ホーン充填と二射影、path 族の転置・両端・制限を構成済み。相対三角形の先頭辺を消す Kan 充填と、連結像 a₁⁻¹a₂a₀ の非可換な積の公式も証明済み。
+- 面次数一からの球面的持ち上げ・逆元公式と隣接比較ホーンを構成済み。path 三角形の三辺を loop 群同型で移した交代和は終点の二次類と一致し、loop 空間の既存の基本群の積の可換性も証明済み。
 - 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
 - 標準の零次数接続写像とその厳密な正方形への自然性を構成し、正次数・零次数の塔の微分の loop 反可換式を証明済み。
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 2 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4071 jobs、専用監査 599 モジュール・5651 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14449 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4075 jobs、専用監査 603 モジュール・5681 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14483 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - cochain 次数一の係数微分を通常の交代微分と同定する。次数二以上は全高次数で値・符号・核・像の比較まで証明済み。
-  三角形の相対 fiber 境界公式を作り、loop 値の基本群の可換性を使って次数一の式へ移す。
+  三角形の相対 fiber 境界公式・path 三角形の交代式・loop 値の基本群の可換性は証明済み。次数一の骨格 cochain の実現と path 延長への合成が残る。
   原典：Goerss–Jardine I §7、VIII §§1–2、Kerodon §3.2.3。12–32 時間。
 - 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。
   原典：Goerss–Jardine VIII §§1–2。24–80 時間。E₂ の消滅だけで収束を仮定しない。
@@ -58,13 +58,13 @@
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_iteratedLoopComponent`
 - `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
 - `SkeletalCellAttachment.exists_cellDifferential_boundaryRepresentative`
-- `UnbasedPointedMapping.loopZero_mapVertex`
+- `FiberTriangle.connecting_product`
+- `PathTriangleBoundary.alternating_loopPositive`
 - `SkeletalCellAttachment.coefficientDifferential_alternating`
 - `SkeletalCellAttachment.additiveCoefficientDifferential_eq`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_loopZero`
 - `SkeletalCellAttachment.additiveCoefficientDifferential_ker`
 - `SkeletalCellAttachment.additiveCoefficientDifferential_range`
-- `SkeletalCellAttachment.stageDifferential_loopPositive`
 - `SkeletalCellAttachment.coefficientDifferential_loopPositive`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv`
 - `SkeletalCellAttachment.coefficientDifferential`
@@ -95,8 +95,8 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- cochain 次数一の処理へ進む。`SphericalFiberLift` 自体は底の二単体・fiber の辺を扱えるが、その簡約・交代式の現 API は面次数二以上。三角形の相対境界の積の公式を Kan 充填で作り、`loopPositiveHomotopyEquiv` の単射性で loop 値の基本群の可換性を与えて交代和へ移す。
-- 次数一の骨格射の実現と path 延長にこの三角形の式を合成する。既証の `loopZero_mapVertex`・`stageComponentDifferential_loop_vertex` は全骨格添字で使える。次数二以上の二重 loop 合成・全高次数への帰納・核と像の比較は再構成しない。
+- 次数一の骨格 cochain の代表を作る。`f : K.skeleton 2 → Y` と頂点骨格での定数条件から境界定数の辺を構成し、`cellRestriction_simplex_map` と既存の `skeletalFiberVertex` の係数へ照合する。任意の次数一 cochain の厳密な実現は `SkeletalSphericalRealization.exists_map` を使う。
+- loop 値のこの射を `K.skeleton 3 → basedPathSpace Y` へ延長し、`PathTriangleBoundary.alternating_loopPositive` に各二単体を入れる。三角形の簡約・連結像の積・path への移送・loop 基本群の可換性は再構成しない。`stageComponentDifferential_loop_vertex` は全骨格添字で使える。
 - 次数一を含む全係数微分の同定、Sp-1d、塔の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。cohomology の消滅だけで収束を主張しない。
 
 ## 範囲と所有

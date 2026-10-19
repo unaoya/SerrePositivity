@@ -129,3 +129,7 @@ public import SerrePositivity.KST.Spectra.SkeletalDoubleLoopDifferential
 public import SerrePositivity.KST.Spectra.SkeletalCoefficientAlternatingZero
 public import SerrePositivity.KST.Spectra.SkeletalCoefficientAlternating
 public import SerrePositivity.KST.Spectra.SkeletalAdditiveCoefficientDifferential
+public import SerrePositivity.KST.Spectra.FiberTriangleReduction
+public import SerrePositivity.KST.Spectra.FiberTriangleConnecting
+public import SerrePositivity.KST.Spectra.PathTriangleBoundary
+public import SerrePositivity.KST.Spectra.LoopFundamentalCommutativity
