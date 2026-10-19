@@ -2,6 +2,13 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.derivedStandardCofiberTriangleImageIso
+#print axioms SerrePositivity.InfinityCategories.derivedStandardCofiberTriangle_distinguished
+#print axioms SerrePositivity.InfinityCategories.derivedDistinguishedTriangle_standard_presentation
+#print axioms SerrePositivity.InfinityCategories.derivedStableHomotopyEquivalenceFunctorIsTriangulated
+#print axioms SerrePositivity.InfinityCategories.derivedStableHomotopyEquivalenceIsTriangulated
+#print axioms SerrePositivity.InfinityCategories.derivedStableHomotopyInverse_map_distinguished
+
 /-!
 概要：D2 の公開宣言と実装モジュール内の全宣言の公理を監査する。
 方針：公開名を表示し、生成補題も含め依存公理を機械的に検査する。
@@ -790,6 +797,22 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ChainMapHomotopyReflection,
+    `SerrePositivity.InfinityCategories.Derived.CofiberConnectingSourceTransport,
+    `SerrePositivity.InfinityCategories.Derived.CofiberTriangleImageMorphism,
+    `SerrePositivity.InfinityCategories.Derived.StableHomotopyTriangulated,
+    `SerrePositivity.InfinityCategories.Derived.StableTriangulatedEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberEdges,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberTriangleFirstMorphisms,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberTriangleImage,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberTrianglePresentation,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberTriangleThirdMorphism,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberVertexComparison,
+    `SerrePositivity.InfinityCategories.Derived.StandardConeTriangleDistinguished,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionShiftVertexTransport,
+    `SerrePositivity.InfinityCategories.Stable.FunctorConjugationComparison,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSourceTransport,
+
     `SerrePositivity.InfinityCategories.Derived.PointedModuleSimplex,
     `SerrePositivity.InfinityCategories.Derived.ModuleSphereBoundary,
     `SerrePositivity.InfinityCategories.Derived.ModuleSphereRelation,

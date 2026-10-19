@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.StableTriangulatedEquivalence
 import SerrePositivity.InfinityCategories.Stable
 import SerrePositivity.InfinityCategories.Derived.StableLimits
 import SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare
@@ -124,6 +125,13 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.derivedStandardCofiberTriangleImageIso
+#print axioms SerrePositivity.InfinityCategories.derivedStandardCofiberTriangle_distinguished
+#print axioms SerrePositivity.InfinityCategories.derivedDistinguishedTriangle_standard_presentation
+#print axioms SerrePositivity.InfinityCategories.derivedStableHomotopyEquivalenceFunctorIsTriangulated
+#print axioms SerrePositivity.InfinityCategories.derivedStableHomotopyEquivalenceIsTriangulated
+#print axioms SerrePositivity.InfinityCategories.derivedStableHomotopyInverse_map_distinguished
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeSecond
@@ -1338,6 +1346,22 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ChainMapHomotopyReflection,
+    `SerrePositivity.InfinityCategories.Derived.CofiberConnectingSourceTransport,
+    `SerrePositivity.InfinityCategories.Derived.CofiberTriangleImageMorphism,
+    `SerrePositivity.InfinityCategories.Derived.StableHomotopyTriangulated,
+    `SerrePositivity.InfinityCategories.Derived.StableTriangulatedEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberEdges,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberTriangleFirstMorphisms,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberTriangleImage,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberTrianglePresentation,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberTriangleThirdMorphism,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberVertexComparison,
+    `SerrePositivity.InfinityCategories.Derived.StandardConeTriangleDistinguished,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionShiftVertexTransport,
+    `SerrePositivity.InfinityCategories.Stable.FunctorConjugationComparison,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSourceTransport,
+
     `SerrePositivity.InfinityCategories.Stable.Cocone,
     `SerrePositivity.InfinityCategories.Stable.PushoutShape,
     `SerrePositivity.InfinityCategories.Stable.Pointed,

@@ -6,92 +6,64 @@
 
 ### 現在地
 
-- S1〜S6 完了。安定 ∞ 圏の h の三角構造（TR1〜TR4）、完全関手の CommShift・三角性を公開済み。
-- D7 の零対象、全 cospan の極限・全辺の fiber、全 span の余極限・全辺の cofiber は完成。
-- 実境界から Q・A の二未知 cochain と全微分式・合成式を証明し、coslice を直接充填して標準 cofiber の押し出し性を証明済み。
-- 明示的な双対比較 `cofiberFiberLift`・`fiberCofiberDesc` の二脚・対角・ホモトピー保存とホモトピー同値性を証明済み。
-- 実際の slice/coslice 比較辺と射影を構成し、可逆性から標準 cofiber の引き戻し性と標準 fiber の押し出し性を証明済み。充満部分 dg 圏・Semifree に反映済み。
-- 相対始点・終点境界充填の可逆辺に沿う輸送を Stable 側で証明。KST 側の汎用証明を参照したが KST のファイルは変更せず、基盤から KST への import も追加していない。
-- 全錐／余錐と四角形全体の関手同型による極限性／余極限性の保存を証明。
-- 標準四角形と任意の同じ span/cospan の四角形の比較から、任意の D(S) の四角形の引き戻し性と押し出し性の同値を証明済み。
-- `derivedInfinityCategory_isStable` を構成済み。HA 1.1.1.9 の三条件を実際の ∞ 圏の普遍性から満たす。
-- 通常の道の商による h D(S) に既存 Stable の三角構造が入り、二切断の D3 へ接続する `derivedStableHomotopyEquivalence` も構成済み。三角関手性は未証明。
-- Semifree の明示的な suspension 四角形を標準 cofiber から構成。四頂点を同定し、終点から `X⟦1⟧` への複体同型を Mathlib の負の cone 第一射影で構成済み。
-- この複体同型は標準 cone 写像に対して自然。suspension の選択比較・Qh/Q 比較・Q の CommShift を通じた対象比較の自然性を証明し、全対象・全射での `derivedSuspensionShiftIso` を構成済み。
-- 二つの三角形のデータを持つ `ComplexSquareData` と、始点への前合成／終点への後合成の実際の slice/coslice 辺を構成。join の両端面・共通面・指定した鎖写像への射影、四角形全体の辺への変換まで証明済み。
-- cone 写像の inl との合成式で suspension の二つの中央四角形の全データを同定し、周囲の四角形関手圏の射を合成済み。両端が充満部分圏に入るホモトピーの持ち上げを証明し、Semifree 内の suspension 四角形比較ホモトピー・h の射も構成済み。
-- slice の四角形関手の始点評価・終点の定値性を証明。前合成・後合成の四角形の辺について、両端の実一次単体と h の Arrow の計四成分を同定済み。
-- 充満 dg 包含の通常の h 上の忠実性・対象での単射性を証明し、Arrow 等式の反映から Semifree 内の合成比較の両端を同定済み。対象の閉性の仮定は不要。
-- 対象等式の輸送射は `chosenEqToHom` と通常の `eqToHom` の一致を使い、定義照合の過剰な展開を回避。任意の `ComplexSquareData` の合成比較と両端成分を証明済み。
-- h D(S) の射の鎖写像代表を証明し、標準 suspension の頂点比較、D3 の Q との両立から全 h の射への自然性を証明。安定構造の整数シフトに対する `derivedStableHomotopyEquivalenceCommShift` と一回比較の復元式まで完成。
-- 中間対象の因子分解を表す内部三次ホーンを零最上位で充填し、欠けた面の次数 −1 成分も回収済み。三角柱から三単体への写像は両端・対角を保ち、二つの三角柱を貼って正方形全体のホモトピーを構成済み。
-- 標準 cofiber から標準 suspension への cone 写像の包含・ホモトピー保存、負の第一射影との合成式を証明。終点への後合成と右下を零にする変更を、実際の四角形比較として合成し、両端成分を同定済み。
-- 任意形状の周囲の図式の h の射を充満 dg 部分圏へ持ち上げる界面を構成。標準 cofiber 列と比較射を Semifree 内に持ち上げ、包含後の式を保持して両端成分を反映済み。
-- 始点成分の一意性で、構成した比較と普遍性で選ぶ比較を同定。実際の `cofiberConnectingToSuspension` は標準 cone 写像の類に等しい。端点を正規化した接続射の D3 像は、suspension の複体シフト同型・Q の一回シフト比較を含め、Mathlib の cone 接続射に一致する。
-- 今回の入口は `Derived/CofiberConnectingDerivedImage.lean`、`Derived/SemifreeCofiberConnecting.lean`、`Derived/StableHomotopyShiftComparison.lean`、`Stable/CofiberTriangle.lean`。
-- 対象＋Stable・Derived 集約ビルド：5,838 jobs 成功。今回の保存単位は新規 23 モジュール。
-- 公理監査：Derived 262 modules／3,182 宣言、Stable 532 modules／4,297 宣言。標準三公理のみ。
+- S1〜S7（D7）完了。安定 ∞ 圏の h の三角構造（TR1〜TR4）、完全関手の CommShift・三角性を公開済み。
+- D(S) の零対象、全 cospan の極限・全辺の fiber、全 span の余極限・全辺の cofiber を構成済み。
+- 実境界から Q・A の二未知 cochain と微分式を証明し、coslice を直接充填して cofiber の普遍性を証明済み。
+- 明示的な fiber/cofiber 比較の二脚・対角・ホモトピー保存と同値性、実 slice/coslice 比較辺を構成済み。
+- 同じ span/cospan の四角形の関手同型による輸送から、任意四角形の引き戻し性と押し出し性の同値を証明。`derivedInfinityCategory_isStable` を公開済み。
+- 通常の道の商による h D(S) を二切断の D3 と接続。実際の suspension と複体のシフトの自然同型、安定構造の全整数シフトとの `CommShift ℤ` を構成済み。
+- cofiber から suspension への実際の四角形比較を構成し、始点成分の一意性で普遍性の比較と同定。正規化した実接続射の D3 像を Mathlib の符号付き cone 接続射と同定済み。
+- `mapTriangle` の第三射を suspension 比較で書く一般式と始点輸送を証明。標準列の三頂点・三射を照合し、D3 の像と通常の cone 三角形の同型を構成済み。
+- 任意の h の射の鎖写像代表と source の TR3 から、全 distinguished triangle の標準 cofiber 表示を証明。D3 の distinguished triangle の保存・反映、逆関手の保存を証明済み。
+- `derivedStableHomotopyEquivalenceIsTriangulated` を公開。両関手の整数シフト比較と単位・余単位の整合性も含む。通常の導来圏から三角構造を引き戻して済ませていない。
+- 今回の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
+- Stable・Derived 集約ビルド：5,853 jobs 成功。今回の保存単位は新規 15 モジュール。
+- 公理監査：Derived 277 modules／3,235 宣言、Stable 547 modules／4,350 宣言。標準三公理のみ。
+- β3 の入口 F1B/Localization と、archive/L4-derived-geometry-log.md §26〜27 を読了。β3 の実装は未着手。
 
 ### 残り（依存順、時間は推定）
 
-- 標準 cofiber の正規化した接続射の像を、CommShift を使う mapTriangle の第三射と照合。三角形全体の同型と全 distinguished triangle の保存から D3 を三角同値へ昇格。HA Theorem 1.1.2.14、§1.1.4：2〜5 時間。
-- β3 → β5 → β4。受入条件・原典・読み取り専用依存は後続の各節を正本とする。
+- β3：Drinfeld 商の dg nerve の局所化普遍性、安定性、完全商関手、Verdier 列。Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。1〜2 万行、複数日。
+- β5：非可換 dg 代数の D(A)、相対 tensor・Hom の ∞ 関手化、Morita 不変性。L4 §26、HA §7.1.2。1〜3 万行、複数日。
+- β4：dg gluing の nerve と安定 ∞ 圏の lax pullback の同値。α2b を読み取り専用で待つ。Tamme §1、Kuznetsov–Lunts。1〜2 万行、複数日。
 
 ### 主要宣言（名前のみ。正確な型は Lean）
 
 - `IsStable`、`suspensionEquivalence`、`pretriangulated_ho`、`isTriangulated_ho`、`exactFunctor_isTriangulated`。
-- `derivedInfinityCategory_hasZeroVertex`、`derivedInfinityCategory_hasLimit_cospan`、`derivedInfinityCategory_fiber_exists`。
-- `derivedInfinityCategory_hasColimit_span`、`derivedInfinityCategory_cofiber_exists`。
+- `derivedInfinityCategory_hasZeroVertex`、`derivedInfinityCategory_fiber_exists`、`derivedInfinityCategory_cofiber_exists`。
 - `cofiberBoundaryLiftQ`、`cofiberBoundaryLiftA`、`cofiberBoundaryLiftQ_differential`、`cofiberBoundaryLiftA_differential`。
-- `cofiberBoundaryLeftSimplex`、`cofiberBoundaryRightSimplex`、`cofiberBoundaryJoinFiller_faces`、`standardCofiberCocone_isColimit`。
-- `derivedSquareCofiberComparison`、`derived_isPushoutSquare_iff_quasiIso`、`derived_isPullbackSquare_iff_quasiIso`。
-- `cofiberFiberLift`、`cofiberFiberLift_homotopyEquivalence`、`fiberCofiberDesc`、`fiberCofiberDesc_homotopyEquivalence`。
-- `cofiberFiberComparisonSliceEdge_projection`、`fiberCofiberComparisonSliceEdge_projection`。
-- `complexTriangleAppend`、`complexTriangleAppend_face_two`、`complexTriangleAppend_lastEdge`。
-- `standardCofiberSquare_isPullback`、`derivedSpanCofiberSquare_isPullback`、`standardFiberSquare_isPushout`、`derivedCospanFiberSquare_isPushout`。
-- `InitialBoundaryLifting.of_vertexIso`、`TerminalBoundaryLifting.of_vertexIso`、`IsPullbackSquare.of_functorIso`、`IsPushoutSquare.of_functorIso`。
-- `coneFunctorIsoOfVertexIso`、`coconeFunctorIsoOfVertexIso`、`derived_isPullbackSquare_iff_isPushoutSquare`。
-- `derivedInfinityCategory_isStable`、`derivedStableHomotopyBridge`、`derivedStableHomotopyEquivalence`。
-- `mappingConeZeroTargetIso`、`mappingConeZeroTargetIso_naturality`、`fullCofiberSquare_vertex00`、`fullCofiberSquare_vertex11`。
-- `semifreeSuspensionSquare`、`semifreeSuspensionComplexIso`、`semifreeSuspensionComplexMap`、`semifreeSuspensionComplexIso_naturality`。
-- `derivedStableHomotopyEquivalenceVertexIso`、`derivedSuspensionObjectIso`。
-- `ComplexSquareData.postcomposeSquareEdge`、`ComplexSquareData.precomposeSquareEdge`、`sliceSquareDiagramMap`。
-- `suspensionComplexSquareData_middle`、`suspensionComplexSquareHom`、`exists_fullInclusion_homotopy`。
-- `suspensionComplexSquareEdge_homMk`、`semifreeSuspensionSquareHomotopy_inclusion`、`semifreeSuspensionSquareHom`。
-- `sliceSquareDiagramMap_sourceEvaluation`、`sliceSquareDiagramMap_targetEvaluation`、`fullInclusionHo_faithful`、`fullInclusionHo_obj_injective`。
-- `ComplexSquareData.postcomposeHom_source_arrow`、`ComplexSquareData.postcomposeHom_target_arrow`、`ComplexSquareData.precomposeHom_source_arrow`、`ComplexSquareData.precomposeHom_target_arrow`。
-- `chosenEqToHom_eq`、`ComplexSquareData.comparisonHom`、`ComplexSquareData.comparisonHom_source_arrow`、`ComplexSquareData.comparisonHom_target_arrow`。
-- `semifreeSuspensionSquareHom_source`、`semifreeSuspensionSquareHom_target`、`semifreeSuspensionVertexIso_naturality`。
-- `derivedHomotopyHom_chainMap_surjective`、`derivedStableHomotopyEquivalenceVertexIso_naturality`、`derivedSuspensionShiftIso`。
-- `derivedStableHomotopyShiftOneIso`、`derivedStableHomotopyEquivalenceCommShift`、`derivedStableHomotopyEquivalenceCommShift_one`。
-- `complexTriangleMiddle_face_two`、`complexTriangleMiddleHomotopy_diagonal`、`ComplexSquareData.changeBottomMiddleHomotopy`。
-- `cofiberToSuspensionMap_connecting`、`cofiberToSuspensionSquareHom_source_arrow`、`cofiberToSuspensionSquareHom_target_arrow`。
-- `exists_fullInclusion_functorHom`、`semifreeCofiberZeroTriangle_isCofiberSequence`、`semifreeCofiberSuspensionHom_eq_comparison`。
-- `semifreeCofiberConnectingToSuspension`、`normalizedSemifreeCofiberConnectingToSuspension_eq`、`derivedSemifreeCofiberConnecting_shift`。
+- `standardCofiberCocone_isColimit`、`cofiberFiberLift_homotopyEquivalence`、`fiberCofiberDesc_homotopyEquivalence`。
+- `derived_isPullbackSquare_iff_isPushoutSquare`、`derivedInfinityCategory_isStable`。
+- `derivedStableHomotopyBridge`、`derivedStableHomotopyEquivalence`、`derivedHomotopyHom_chainMap_surjective`。
+- `derivedSuspensionShiftIso`、`derivedStableHomotopyEquivalenceCommShift`、`derivedStableHomotopyEquivalenceCommShift_one`。
+- `semifreeCofiberConnectingToSuspension`、`derivedSemifreeCofiberConnecting_shift`、`derivedCofiberTriangle_mor₃`。
+- `derivedStandardCofiberTriangleImageIso`、`derivedStandardCofiberTriangle_distinguished`。
+- `derivedDistinguishedTriangle_standard_presentation`、`derivedStableHomotopyEquivalenceFunctorIsTriangulated`。
+- `derivedStableHomotopyEquivalenceInverseCommShift`、`derivedStableHomotopyEquivalenceCommShiftCompatible`。
+- `derivedStableHomotopyEquivalenceIsTriangulated`、`derivedStableHomotopyInverse_map_distinguished`。
 
 ### 依存と提供
 
-- Core・F1・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded・KST は読み取り専用。他レーンのファイルは編集しない。
-- fiber 側は N7 の極限性を利用。cofiber 押し出し性は Derived/CofiberPushout の直接証明を使う。
-- 提供：Stable の S1〜S6、D(S) の安定性、任意四角形の双カルテジアン判定。
-- 編集対象は Stable/・Derived/、両集約と両監査、本計画。明示指示により Derived 計画の D7 状態も更新する。
+- Core・F1・F1B・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded・KST は読み取り専用。
+- 提供：Stable の S1〜S6、D(S) の安定性、任意四角形の双カルテジアン判定、D3 の三角同値。
+- 編集対象：Stable/・Derived/、両集約と両監査、本計画。明示指示により Derived 計画の D7 状態も更新する。
 
 ### 未コミット
 
-- 今回の所有ファイルだけを保存。自分の未コミットなし。他レーンの変更は残したまま取り込んでいない。
+- 今回の所有ファイルだけを保存。自分の未コミットなし。他レーンの変更は取り込んでいない。
 
 ### 既知の問題
 
-- 対象・集約ビルドと両公理監査は成功。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
-- h D(S) の Stable のシフトは suspension に由来する。D3 の二切断の誘導シフトと区別し、今回、実際の suspension による全 h 上の自然同型と整合的な `CommShift ℤ` を別途構成した。標準 cofiber の正規化した接続射の像までは完成。mapTriangle の第三射との照合、distinguished triangle の保存は未完了。
-- 通常の導来圏の三角構造の引き戻しだけで三角比較を完了とはしない。実際の cofiber 列の像との一致を要する。
+- D7 の対象・集約ビルドと両公理監査成功。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
+- Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
+- β3 は H⁰ の Verdier 商の同値や指定収縮データ付き dg 関手の厳密普遍性だけでは完成しない。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- `derivedSemifreeCofiberConnecting_shift` を、`(derivedStableHomotopyEquivalence S).functor.mapTriangle` で写した `cofiberTriangle` の第三射の式へ直す。まず `SuspensionSquare.changeSource` の対象比較同型を、始点の等号を Σ で写す式として証明する（等号の消去で元の s に帰着できる）。`cofiberConnectingToSuspension_comp_objIso_inv`、`derivedStableHomotopyEquivalenceCommShift_one`、`derivedSuspensionShiftIsoApp_vertex` を使い、source/target の頂点同定を保って書き換える。標準列の最初の二射も照合し、第二対象の `Y ≅ Y ⊞ 0` を含む cone 三角形との同型を作る。最後に鎖写像代表と source の TR3・二成分が同型な三角形射から、全 distinguished triangle の保存を証明する。
+- β3 の最初の実装：`DGQuotient.differential_epsilonElement` を dg nerve の辺ホモトピー判定へ渡し、殺す対象の恒等辺が零辺とホモトピックになることを証明する。汎用の収縮元付き dg 対象の補題を Derived に置き、商包含の nerve と指定対象への適用を構成する。次に局所 K-flat な模型／半自由分解後の商を固定し、反転すべき辺を cofiber が指定部分圏に入る条件で定義して F1B `IsLocalization` の関手圏普遍性へ進む。L4 の `DGResolution/Construction`・`Quotient` は読み取り専用。∞ 関手圏の普遍性を dg 関手だけの普遍性へ置換しない。
 
-作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
+作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
 担当は旧 α の A4・A5 と D7。実施経緯・検証結果は各保存単位のコミットメッセージに記す。
 
@@ -118,7 +90,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 完了（貼り合わせ、TR1〜TR4、Pretriangulated・IsTriangulated instance） |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 完了（共変・反変、全整数次数、六項部分列の完全性、接続準同型の評価式） |
 | S6 | `Stable/ExactFunctor.lean` と関連モジュール | 完全関手、h の三角関手、完全関手間の自然変換 | 完了。零対象・cofiber/fiber 列・全押し出し／引き戻しの保存、CommShift ℤ、IsTriangulated、加法性、自然変換の全整数シフトとの両立・三角形の像の自然変換まで公開 |
-| S7（D7） | `Derived/Stability.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 進行中。零対象・全射の fiber/cofiber、任意四角形の双方向判定と IsStable 完成。通常の h D(S) と D3 の圏同値を接続済み。suspension と複体シフトの全 h 上の自然同型・CommShift ℤ まで完成。標準列の正規化した接続射の像まで完成。mapTriangle の第三射との照合、distinguished triangle の保存、D3 の三角同値化が残る |
+| S7（D7） | `Derived/StableTriangulatedEquivalence.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 完了。cofiber の普遍性、任意四角形の双カルテジアン判定、IsStable、実 suspension 由来の全整数シフト、標準 cofiber 三角形の像の同型、全 distinguished triangle の保存・反映、単位・余単位と整合する三角同値 |
 
 ## 設計上の決定
 
