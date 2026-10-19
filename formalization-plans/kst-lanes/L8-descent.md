@@ -1,5 +1,80 @@
 # K-L8（論文 §3 の降下）
 
+## 引き継ぎ（2026-10-19）
+
+### 現在地
+
+- 正本 KST 経路 §13 決定15（§100 提案1–7承認）に従い、主経路と条件付き補助を分離済み。
+- `Descent.Main` は旧56モジュールを import せず、`Descent.Auxiliary` が旧 import を保持する。
+- 旧56ファイルは変更していない。ルート集約は Main のみを public import する。
+- 実 `PointedTotalization` と Reedy 置換後の Tot への指定増強比較・基点保存・自然性を証明済み。
+- 実 `PointedHomotopyLimit`・任意の `PointedWeightedEnd` の指定比較・自然性・忘却後の一致を証明済み。
+- Tot/BK の段ごとの π_* 同型と増強元の同型による、指定降下の保存・反映を証明済み。
+- 既存の軌道・閉和・次元／成分帰納は、自然な blowup 列等の明示的入力に対する結果として保持。
+- 最小公理(1)–(8)全体、一般の定理3.1、K0・Eへの実現は未完。空間側の π_* を整数次数と同一視しない。
+- 最新コミット：`ed6d33c2`（分離・実Tot）、`b4eac59f`（実end・段ごとの保存反映）。
+- 最終対象ビルド：4646 jobs 成功。主経路監査1485宣言、全補助込み255モジュール・2652宣言。
+- 許容公理は標準三公理のみ。主経路の56モジュール排除と公開型の三種の仮定の grep は成功。
+- 検証ログ：`/tmp/l8-main-weighted-{target,main-audit,full-audit}.log`。
+
+### 残り（依存順・原典番号・時間見積もり）
+
+- 実Tot/endの指定比較を保つFubini・引き戻し交換（§2.2の代替経路、論文補題3.2・3.3）：16–40時間。
+- extra degeneracyから増強→実Totのπ_*同型（補題3.2）：16–40時間。前項と併せて実構成上で証明する。
+- 随伴添字変更・細分の各段の比較と降下反映（補題3.2）：16–32時間。N/αの既存結果を読む。
+- 元のSp上の自然なtransfer、各整数次数の局所rank、有限平坦Čech降下（補題3.2）：24–48時間。
+- 実fiber・自然LESから既存NaturalBlowupSequencesへ接続し、最小公理全体を束ねる（補題3.3、定理3.1）：24–48時間。
+- 幾何の帰納と上記を結合して全整数次数の主定理を完成、最終構造体・主定理を#check監査（定理3.1、(3.8)）：16–32時間。
+- K0・T2の明示的界面で支持の同定を接続（(3.6)、TT局所化）：8–24時間＋L4/K0界面の待ち。
+- E=fib(K_ℚ→K[1/p]_ℚ)の実現、既存入力側の二定理への接続（§4の使用）：16–40時間＋L4/L10の待ち。
+- 見積もりはLean実装の概算で、外部APIの不足・他レーンの完成待ちを含まない。
+
+### 主要宣言（名前のみ）
+
+- `SerrePositivity.KST.Descent.GradedPresheaf`
+- `SerrePositivity.KST.Descent.GradedPresheaf.PiDescent`
+- `SerrePositivity.KST.Descent.NaturalBlowupSequences.sectioned_piDescent`
+- `SerrePositivity.KST.Descent.Main.AugmentedTotDiagram`
+- `SerrePositivity.KST.Descent.Main.rawTotComparison`
+- `SerrePositivity.KST.Descent.Main.totComparison`
+- `SerrePositivity.KST.Descent.Main.HasTotDescent`
+- `SerrePositivity.KST.Descent.Main.totComparison_naturality`
+- `SerrePositivity.KST.Descent.Main.hasTotDescent_iff_of_stagewise_piIsomorphism`
+- `SerrePositivity.KST.Descent.Main.AugmentedLimitDiagram`
+- `SerrePositivity.KST.Descent.Main.homotopyLimitComparison`
+- `SerrePositivity.KST.Descent.Main.HasHomotopyLimitDescent`
+- `SerrePositivity.KST.Descent.Main.hasHomotopyLimitDescent_iff_of_stagewise_piIsomorphism`
+- `SerrePositivity.KST.Descent.Main.weightedEndComparison`
+- `SerrePositivity.KST.Descent.Main.weightedEndComparison_underlying`
+- `SerrePositivity.KST.Descent.Main.weightedEndComparison_bousfieldKan`
+
+### 依存と提供
+
+- 読取専用：L9のCosimplicialTotalization、ReplacedTotalization、PointedHomotopyLimit、PointedWeightedEnd、KanCompositeCancellation。
+- 読取専用：NのHomotopyLimits（WeightedFunctor等）、αの二宇宙版Core.InitialCofinality。次工程で再利用する。
+- L4/K0/T2/L10から実fiber・局所化・K/E実現を受ける。所有外のInputs・Section4・KTheory等は編集しない。
+- 提供：主経路の実指定比較、段ごとの保存・反映、既存の有限型幾何・軌道／次元帰納と(3.6)の条件付き界面。
+
+### 未コミット
+
+- L8所有のLean・監査はすべてコミット済み。本節追加だけを別コミットで保存する。
+- ワークスペースの他レーンの未コミット差分は触らず残す。
+
+### 既知の問題
+
+- 旧56モジュールはModelCategory等を明示的に仮定する条件付き補助。instanceは供給しておらず主経路に接続しない。
+- 最小公理全体・主定理全体は未宣言なので、その最終的な型の#check監査はまだ未達。現存する公開型だけ記録済み。
+- CosimplicialKanMapEquivalenceは置換の各段のπ_*同型。Totの不変性はTotalizationHomotopyInvariance/ReplacedTotalization。
+- ContractibleTotalSequenceはfiber列の次数移動で、extra degeneracy降下の定理ではない。
+- 実Totと一般BK/endの比較、Spの全整数次数、自然LESへの接続は今後必要。通常の極限・群の同型だけで代用しない。
+- 最終L8対象ビルドは成功。過去の全体ビルドは所有外F1/F1BのrelativeFunctorVertex名衝突で失敗（現在の修正状況は未再確認）。
+- `theorem_3_1_K0`・`supportedRankK0_descent`の既存入力側は未解消。新規sorry・公理は導入していない。
+
+### 次の一手
+
+- 新チャットでMainAugmentedWeightedEndの実指定比較を起点に、実Tot/endと引き戻しのFubiniをDescent内で証明する。
+- 最初にN/L9の実APIを確認し、56モジュールを主経路へ戻さず、対象ビルドと両監査で保存する。
+
 ## 1. 目的と現在地
 
 作成日：2026-10-18。
