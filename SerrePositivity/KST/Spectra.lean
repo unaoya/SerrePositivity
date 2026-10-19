@@ -201,3 +201,7 @@ public import SerrePositivity.KST.Spectra.ZeroSkeletonPoint
 public import SerrePositivity.KST.Spectra.InitialMappingEvaluation
 public import SerrePositivity.KST.Spectra.RationalConstantMapping
 public import SerrePositivity.KST.Spectra.RationalShapiro
+
+public import SerrePositivity.KST.Spectra.CosimplicialLastVertex
+public import SerrePositivity.KST.Spectra.TotalizationBousfieldKanComparison
+public import SerrePositivity.KST.Spectra.PointedTotalizationBousfieldKan
