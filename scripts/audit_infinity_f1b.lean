@@ -2165,3 +2165,37 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitRestriction_surjective
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_restrict_of_precompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_of_functorIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanVertexIso_unop
+
+#check @SerrePositivity.InfinityCategories.F1B.IsRelativeLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransport_isRelativeColimit_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCoconeTransport_isRelativeColimit_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCandidate_isRelativeLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCandidate_isRelativeLeftKanExtension_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.IsRelativeLeftKanExtendedFrom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftReflTransport
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_iff_refl_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransport_isRelativeColimit_iff_of_homMk_eq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtension_iff_of_homMk_eq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtension_iff_of_diagram_eq_of_h_eq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtension_relativeJoin_iff_local_relativeColimits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftStrictification_iff_local_relativeColimits
