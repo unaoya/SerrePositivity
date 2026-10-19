@@ -5344,3 +5344,84 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @partialColimitOriginalToNativeSpanCocones_homotopyEquivalence
 #print axioms partialColimitOriginalToNativeSpanCocones_homotopyEquivalence
+
+#check @leftFibrationPointProjectionSection
+#print axioms leftFibrationPointProjectionSection
+
+#check @leftFibrationPointProjectionSection_projection
+#print axioms leftFibrationPointProjectionSection_projection
+
+#check @leftFibrationPointHomLift
+#print axioms leftFibrationPointHomLift
+
+#check @leftFibrationPointHomLift_projection
+#print axioms leftFibrationPointHomLift_projection
+
+#check @leftFibrationPointHomFamily
+#print axioms leftFibrationPointHomFamily
+
+#check @leftFibrationPointHomLift_homotopyEquivalence
+#print axioms leftFibrationPointHomLift_homotopyEquivalence
+
+#check @leftFibrationPointHomFamily_homotopyEquivalence
+#print axioms leftFibrationPointHomFamily_homotopyEquivalence
+
+#check @pointFamilyBaseTriangle
+#print axioms pointFamilyBaseTriangle
+
+#check @pointFamilyBaseTriangle_target
+#print axioms pointFamilyBaseTriangle_target
+
+#check @pointFamilyBaseTriangle_source
+#print axioms pointFamilyBaseTriangle_source
+
+#check @initialHomComparison_pointFamily_homotopy
+#print axioms initialHomComparison_pointFamily_homotopy
+
+#check @pointRestrictionEdgeFamily
+#print axioms pointRestrictionEdgeFamily
+
+#check @pointRestrictionEdgeFamily_endpoint
+#print axioms pointRestrictionEdgeFamily_endpoint
+
+#check @pointRestrictionEdgeFamily_fixed
+#print axioms pointRestrictionEdgeFamily_fixed
+
+#check @pointRestrictionEdgeFamily_vertexFiberLift
+#print axioms pointRestrictionEdgeFamily_vertexFiberLift
+
+#check @pointRestrictionEdgeFamily_base
+#print axioms pointRestrictionEdgeFamily_base
+
+#check @pointRestrictionBaseHom
+#print axioms pointRestrictionBaseHom
+
+#check @pointRestrictionBaseHom_ι
+#print axioms pointRestrictionBaseHom_ι
+
+#check @pointRestrictionBaseHom_precomposition
+#print axioms pointRestrictionBaseHom_precomposition
+
+#check @pointHomFamily_restriction_comparison_homotopy
+#print axioms pointHomFamily_restriction_comparison_homotopy
+
+#check @coconePointHomFamily
+#print axioms coconePointHomFamily
+
+#check @coconePointHomFamily_homotopyEquivalence
+#print axioms coconePointHomFamily_homotopyEquivalence
+
+#check @coconePointHomFamily_restriction_homotopy
+#print axioms coconePointHomFamily_restriction_homotopy
+
+#check @pointHomFamily_initialComparison_homotopy
+#print axioms pointHomFamily_initialComparison_homotopy
+
+#check @initialComparison_pointHomFamily_homotopy
+#print axioms initialComparison_pointHomFamily_homotopy
+
+#check @coconePointHomFamily_comparison_homotopy
+#print axioms coconePointHomFamily_comparison_homotopy
+
+#check @coconeComparison_pointHomFamily_homotopy
+#print axioms coconeComparison_pointHomFamily_homotopy

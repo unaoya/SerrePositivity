@@ -21,8 +21,7 @@
   left fibration では塔の各値は Kan、制限は Kan fibration。図式の底上の通常の余極限についても一般化済み。
   部分余極限頂点を付加した実際の形状と図式、指定した余錐を頂点ごと保つ延長と余極限性の保存・反映を構成。
   全ての脚を含む coherent な比較と実際の頂点間の射を抽出し、部分余極限対象の Kan 値 span とその押し出し候補を構成。
-  今回、始対象を持つ left fibration の fiber の Hom 表示を実際の辺で計算し、部分余錐の制限の π₀ の像を、
-  付加で作った比較辺そのもののホモトピー類と同定。二重 coslice の比較辺の終点と頂点への射影も厳密に検証。
+  始対象の fiber の Hom 表示と部分余錐の制限の π₀ の像を、付加比較辺そのものの類と同定。二重 coslice の比較辺の終点・射影も検証。
   共通部分で同じ連結成分にある部分余錐は、単射側を同じ成分内で直して厳密に貼れることを証明。
   fiber の Hom 表示で辺に沿う輸送が後合成になることを証明し、図式の制限との自然性を照合。
   二枝の比較辺と輸送辺の合成が一致すれば、元の図式の実際の余錐を厳密に貼れる。
@@ -37,7 +36,9 @@
   通常の span の nerve とホーンの全次数の同型・二辺の一致を構成。固定終点余錐空間を点 Hom の end と比較し、ホモトピー同値性を証明。
   持ち上げた span の二辺も付加比較辺そのものと同定。点 Hom と左 pinched Hom の cospan・end の厳密な自然同型を構成。
   元の余錐空間から native な span の余錐空間への実際のホモトピー同値と、共通 end への比較のホモトピーを公開。
-  貼った余錐の普遍点の照合と余極限性は未完了。
+  任意の余錐の全左 Hom による余錐の族を、元の余錐の余極限性を仮定せず構成。部分図式への制限を実際の付加比較辺の前合成とホモトピーで照合。
+  既知の余極限余錐では、その族と既存の Hom 比較が互いに実際のホモトピー逆となることも証明。
+  二枝の族の共通 path end での照合と、貼った余錐の余極限性は未完了。
   γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
   詳細な実施記録はコミットメッセージを参照。
 - **残り**（依存順・時間は再開後の概算）：
@@ -82,11 +83,12 @@
   `coconeMappingSpaceHomComparison_restrict_square`、
   `partialColimitCoconeToHomEnd`、`partialColimitCoconeToHomEnd_homotopyEquivalence`、
   `spanNerveHornIso`、`partialColimitSpanHomEndIso`、
-  `partialColimitOriginalToNativeSpanCocones_homotopyEquivalence`、`partialColimitOriginalToSpanCocones_end_homotopy`。
+  `partialColimitOriginalToNativeSpanCocones_homotopyEquivalence`、
+  `coconePointHomFamily_restriction_homotopy`、`coconePointHomFamily_comparison_homotopy`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は二辺の照合・点 Hom の表示変更・部分余極限余錐空間の比較6モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
+- **未コミット**：今回の保存単位は任意の点の全 Hom の族・制限との照合・始対象の比較との逆関係6モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -95,11 +97,11 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：共通の左 Hom end で普遍点を照合する。`partialColimitSpanHomEndIso` は二辺の選択を保持する。
-  `partialColimitOriginalToSpanCocones_end_homotopy` は比較の合成を追跡するが、これだけで普遍点の保存とは数えない。
-  `exists_cocone_vertex_partialColimitPushout` の余錐の全 Hom パラメータの族を、二枝の実際の脚と比較辺の三角形で計算する。
-  native な span の普遍余錐の族と、元の Hom end 比較の族を path 模型でホモトピックにし、余極限性を証明する。
-  その後、骨格の無限段階、小さい `K` と `p : ulift K → SpaceInfinity` のセルの添字を u に戻す処理。
+- **次の一手**：`coconePointHomFamily` を貼った余錐に適用し、共通の左 Hom end で二枝の族を照合する。
+  `coconePointHomFamily_restriction_homotopy` は元の余錐の余極限性なしで、制限を実際の付加比較辺の前合成と結ぶ。
+  `exists_cocone_glue_of_apex_composites` の右枝は同じ fiber 成分内で修正されている。各枝の比較辺を span の脚と照合する。
+  native な span の普遍余錐の全 Hom の族は `coconePointHomFamily_comparison_homotopy` で既存の Hom 比較の逆と確認済み。
+  二枝の三角形を共通 path end で照合して貼った余錐の余極限性を証明。その後、骨格の無限段階とセルの添字の小ささを処理。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
 ### E2a（既存の引き継ぎ）
