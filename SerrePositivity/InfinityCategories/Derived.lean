@@ -814,6 +814,16 @@ public import SerrePositivity.InfinityCategories.Derived.FullSubcomplexEdgeLift
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteVertexLegs
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegCompatibility
 
+public import SerrePositivity.InfinityCategories.Derived.DiagramTriangleConeBoundary
+public import SerrePositivity.InfinityCategories.Derived.RoofSliceTetrahedronFaces
+public import SerrePositivity.InfinityCategories.Derived.RoofSliceFourHorn
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTriangleHorn
+public import SerrePositivity.InfinityCategories.Derived.RoofSliceFourSimplexInverse
+public import SerrePositivity.InfinityCategories.Derived.FullSubcomplexThreeSimplexLift
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTriangleFiller
+
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochains
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

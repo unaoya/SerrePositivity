@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochains
+import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTriangleFiller
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegCompatibility
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteLegTriangles
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeRefinement
@@ -2454,6 +2456,25 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.DGVerdierFiniteEdgeRefinement.vertexConeCompStruct
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramFiniteEdges_exists_vertexCone
 
+#print axioms SerrePositivity.InfinityCategories.diagramTriangleConeBoundary
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTetrahedron_face
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceFourHorn_compatible
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceFourHorn_face
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleHorn_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleHorn_face_cone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedTriangleHorn
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedTriangleHorn_face0
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceFourHornOverFiller_face
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexThreeSimplexLift_val
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleFiller_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleFiller_face_cone
+
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornMissingResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornQData_face
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornQData_missingEquation
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornQData_properEquations
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornQData_topRhs_closed
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2607,6 +2628,15 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochains,
+    `SerrePositivity.InfinityCategories.Derived.DiagramTriangleConeBoundary,
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceTetrahedronFaces,
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceFourHorn,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTriangleHorn,
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceFourSimplexInverse,
+    `SerrePositivity.InfinityCategories.Derived.FullSubcomplexThreeSimplexLift,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTriangleFiller,
+
     `SerrePositivity.InfinityCategories.Derived.RoofSliceOneSimplexOfTriangle,
     `SerrePositivity.InfinityCategories.Derived.FullSubcomplexEdgeLift,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteVertexLegs,
