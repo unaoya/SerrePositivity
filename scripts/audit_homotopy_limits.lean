@@ -7465,3 +7465,108 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @SpecifiedCoconeLeftTriangleComparison.initial
 #print axioms SpecifiedCoconeLeftTriangleComparison.initial
+
+#check @prismCylinderEndpointHomotopy
+#print axioms prismCylinderEndpointHomotopy
+
+#check @prismCylinderEndpointHomotopy_projection
+#print axioms prismCylinderEndpointHomotopy_projection
+
+#check @prismCylinderEndpointHomotopy_hom
+#print axioms prismCylinderEndpointHomotopy_hom
+
+#check @prismParameterPrecomp
+#print axioms prismParameterPrecomp
+
+#check @prismTransportStandard_parameter
+#print axioms prismTransportStandard_parameter
+
+#check @prismParameterPrecomp_zero
+#print axioms prismParameterPrecomp_zero
+
+#check @prismParameterPrecomp_projection
+#print axioms prismParameterPrecomp_projection
+
+#check @prismCylinderParameter
+#print axioms prismCylinderParameter
+
+#check @prismParameterPrecomp_one
+#print axioms prismParameterPrecomp_one
+
+#check @prismCylinderEndpointHomotopy_parameter_raw
+#print axioms prismCylinderEndpointHomotopy_parameter_raw
+
+#check @prismTransportIso_parameter_hom_arrow
+#print axioms prismTransportIso_parameter_hom_arrow
+
+#check @prismTransportIdentityCylinder
+#print axioms prismTransportIdentityCylinder
+
+#check @prismTransportIdentityEndpoint_raw
+#print axioms prismTransportIdentityEndpoint_raw
+
+#check @prismTransportIso_standard_hom
+#print axioms prismTransportIso_standard_hom
+
+#check @prismTransportIso_standard
+#print axioms prismTransportIso_standard
+
+#check @fixedExtensionEdgePrism
+#print axioms fixedExtensionEdgePrism
+
+#check @fixedExtensionEdgePrism_projection
+#print axioms fixedExtensionEdgePrism_projection
+
+#check @fixedExtensionEdgePrism_zero_base
+#print axioms fixedExtensionEdgePrism_zero_base
+
+#check @fixedExtensionEdgePrism_one_base
+#print axioms fixedExtensionEdgePrism_one_base
+
+#check @fixedExtensionEdgeSource
+#print axioms fixedExtensionEdgeSource
+
+#check @fixedExtensionEdgeTarget
+#print axioms fixedExtensionEdgeTarget
+
+#check @fixedExtensionEdgeSource_ι
+#print axioms fixedExtensionEdgeSource_ι
+
+#check @fixedExtensionEdgeTarget_ι
+#print axioms fixedExtensionEdgeTarget_ι
+
+#check @fixedExtensionEdgeSource_vertex_val
+#print axioms fixedExtensionEdgeSource_vertex_val
+
+#check @fixedExtensionEdgeTarget_vertex_val
+#print axioms fixedExtensionEdgeTarget_vertex_val
+
+#check @fixedExtensionEdgeTransportIso
+#print axioms fixedExtensionEdgeTransportIso
+
+#check @fixedExtensionEdgeTransportIso_naturality
+#print axioms fixedExtensionEdgeTransportIso_naturality
+
+#check @specifiedCoconeLeftTerminalEdge_base
+#print axioms specifiedCoconeLeftTerminalEdge_base
+
+#check @specifiedCoconeLeftTerminalPrism
+#print axioms specifiedCoconeLeftTerminalPrism
+
+#check @specifiedCoconeLeftMiddleEvaluation
+#print axioms specifiedCoconeLeftMiddleEvaluation
+
+#check @specifiedCoconeLeftTerminalEvaluation
+#print axioms specifiedCoconeLeftTerminalEvaluation
+
+#check @specifiedCoconeLeftTerminalTransportIso
+#print axioms specifiedCoconeLeftTerminalTransportIso
+
+#check @specifiedCoconeLeftTerminalTransport_square
+#print axioms specifiedCoconeLeftTerminalTransport_square
+
+#check @specifiedCoconeLeftMiddleEvaluation_actual_val
+#print axioms specifiedCoconeLeftMiddleEvaluation_actual_val
+
+#check @specifiedCoconeLeftTerminalEvaluation_actual_val
+#print axioms specifiedCoconeLeftTerminalEvaluation_actual_val
