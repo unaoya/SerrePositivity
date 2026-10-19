@@ -760,4 +760,10 @@ public import SerrePositivity.KST.SConstruction.PointedFamilyConstantComposition
 public import SerrePositivity.KST.SConstruction.PointedCompositeCorrectionChains
 public import SerrePositivity.KST.SConstruction.MonicKPrismCompositionFamilies
 public import SerrePositivity.KST.SConstruction.MonicKPrismCompositionTraces
+public import SerrePositivity.KST.SConstruction.FamilyInterchangeSquares
+public import SerrePositivity.KST.SConstruction.FamilyChainInterchangeSquares
+public import SerrePositivity.KST.SConstruction.FamilyChainInterchangeGluing
+public import SerrePositivity.KST.SConstruction.PointedCompatibilityInterchange
+public import SerrePositivity.KST.SConstruction.MonicKPrismCompatibilityInterchange
+public import SerrePositivity.KST.SConstruction.MonicKPrismProjectedCompositionTrace
 /-! # ∞-S• 構成と連結 K 理論 -/
