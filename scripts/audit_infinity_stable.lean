@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability
 import SerrePositivity.InfinityCategories.Derived.DGModulePropertyStability
 import SerrePositivity.InfinityCategories.Derived.DGYonedaModuleNerve
 import SerrePositivity.InfinityCategories.Derived.DGModuleStability
@@ -149,6 +150,20 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYoneda_hom_isIso
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYonedaNerve_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYoneda_inclusion
+#print axioms SerrePositivity.InfinityCategories.dgVertexIsoOfH0
+#print axioms SerrePositivity.InfinityCategories.dgRepleteRepresentable_vertex_iso
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYonedaNerve_isEssentiallySurjective
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYonedaNerveEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYonedaNerveEquivalence_hom
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYonedaULiftEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgUniverseLiftNerve_isStable
+#print axioms SerrePositivity.InfinityCategories.dgNerveULift_isStable_of_pretriangulated
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYonedaNerve_isExactFunctor
+#print axioms SerrePositivity.InfinityCategories.dgRepleteYonedaNerveInverse_isExactFunctor
 
 #print axioms SerrePositivity.InfinityCategories.dgModuleHomotopyProperty_zero
 #print axioms SerrePositivity.InfinityCategories.dgModuleHomotopyProperty_shift
@@ -1653,6 +1668,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGRepleteYoneda,
+    `SerrePositivity.InfinityCategories.Derived.DGVertexIsoOfH0,
+    `SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleHomotopyProperty,
     `SerrePositivity.InfinityCategories.Derived.DGPretriangulated,
     `SerrePositivity.InfinityCategories.Derived.DGFullSquareLift,

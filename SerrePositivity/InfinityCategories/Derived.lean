@@ -427,6 +427,11 @@ public import SerrePositivity.InfinityCategories.Derived.DGModulePropertySquares
 public import SerrePositivity.InfinityCategories.Derived.DGModulePropertyChoices
 public import SerrePositivity.InfinityCategories.Derived.DGModulePropertyStability
 
+public import SerrePositivity.InfinityCategories.Derived.DGRepleteYoneda
+public import SerrePositivity.InfinityCategories.Derived.DGVertexIsoOfH0
+public import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaEquivalence
+public import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

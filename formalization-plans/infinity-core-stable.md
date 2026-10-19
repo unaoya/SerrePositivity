@@ -11,7 +11,7 @@
 - fiber/cofiber 比較の二脚・対角・ホモトピーと同値性、実 slice/coslice 比較辺を照合。同じ四角形の関手同型輸送から任意四角形の双カルテジアン判定と `derivedInfinityCategory_isStable` を証明済み。
 - 通常の h D(S) と二切断の D3 を接続。実 suspension と複体シフトの自然同型・全整数 CommShift・実接続射の符号を照合し、標準 cofiber 列の D3 像を Mathlib の cone 三角形と同定済み。
 - 全 distinguished triangle の標準 cofiber 表示から保存・反映・逆関手の三角性を証明。`derivedStableHomotopyEquivalenceIsTriangulated` は単位・余単位のシフト整合性も持つ。通常の導来圏から三角構造を引き戻して済ませていない。 D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/DGModulePropertyStability.lean`・`Derived/DGPretriangulated.lean`・`Derived/DGModulePropertyChoices.lean`。共通宇宙での実 Yoneda は `c5f1f8f6` まで保存済み。今回の保存単位は K(D) の三角的条件の引き戻し、ホモトピー表現可能性、実四角形の全単体の制限、全辺の双カルテジアンな選択と安定性の新規 6 モジュール。最新の Stable・Derived 集約ビルドは 6,292 jobs 成功。最新公理監査：Derived 447 modules／4,644 宣言、Stable 717 modules／5,761 宣言。標準三公理のみ。
+- β3 の入口：`Derived/DGRepleteYonedaStability.lean`・`Derived/DGRepleteYonedaEquivalence.lean`・`Derived/DGVertexIsoOfH0.lean`。ホモトピー表現可能部分の安定性は `bc6032bc` まで保存済み。今回の保存単位は実 Yoneda、H⁰ から Core の実頂点同型、本質的全射性と明示的同値、共通宇宙への安定性・完全性の輸送の新規 4 モジュール。最新の Stable・Derived 集約ビルドは 6,296 jobs 成功。最新公理監査：Derived 451 modules／4,680 宣言、Stable 721 modules／5,797 宣言。標準三公理のみ。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -34,7 +34,7 @@
 - 任意の辺を閉加群射へ戻し、入力辺を厳密に保つ `dgModuleCofiberSquare`・`dgModuleNerve_cofiber_exists` を構成済み。
 - shifted cone の射影・零ホモトピー・実四角形を構成。fiber の逆 Hom 座標の微分 `(da, f a − db)` と実射影・零ホモトピーへの一致、二残差からの原始元を証明済み。
 - 実 slice 境界の六残差から二未知成分を定義。左右の全方程式・全面・共通面を保って直接充填。`dgModuleFiberCone_isLimit`・`dgModuleFiberSquare_isPullback`・`dgModuleNerve_fiber_exists` が揃った。
-- M→fiber(inr f) と双対の cone(projection f)→N の両実比較の代数的同値性を証明。両方向を比較三単体・join・curry により実 slice/coslice 辺へ昇格し、端点・射影・span/cospan を照合。`dgModuleConeSquare_isPullback`・`dgModuleFiberSquare_isPushout` により標準 cone/fiber 四角形は双方とも双カルテジアン。各辺の双カルテジアンな選択と、実四角形の関手同型による選択独立性から任意の零角の fiber iff cofiber と `dgModuleNerve_isStable` を証明済み。元の nerve の対象宇宙だけを上げた `dgYonedaModuleNerve` を安定な全加群 nerve への実写像として構成し、単体・頂点での作用と実写像空間での充満忠実性まで照合済み。K(D) の同型で閉じた三角的対象条件の零・全整数シフト・cone・fiber の閉性から、条件付き全加群の実 nerve の安定性を証明。表現可能対象の isoClosure による `IsDGPretriangulated` の下で `dgHomotopyRepresentableNerve_isStable` が完成。元の dg nerve への同値と宇宙降下は未接続。
+- M→fiber(inr f) と双対の cone(projection f)→N の両実比較の代数的同値性を証明。両方向を比較三単体・join・curry により実 slice/coslice 辺へ昇格し、端点・射影・span/cospan を照合。`dgModuleConeSquare_isPullback`・`dgModuleFiberSquare_isPushout` により標準 cone/fiber 四角形は双方とも双カルテジアン。各辺の双カルテジアンな選択と、実四角形の関手同型による選択独立性から任意の零角の fiber iff cofiber と `dgModuleNerve_isStable` を証明済み。元の nerve の対象宇宙だけを上げた `dgYonedaModuleNerve` を安定な全加群 nerve への実写像として構成し、単体・頂点での作用と実写像空間での充満忠実性まで照合済み。K(D) の同型で閉じた三角的対象条件の零・全整数シフト・cone・fiber の閉性から、条件付き全加群の実 nerve の安定性を証明。表現可能対象の isoClosure による `IsDGPretriangulated` の下で `dgHomotopyRepresentableNerve_isStable` が完成。共通宇宙の元の dg 圏との明示的同値と両方向の完全性、元の nerve の ULift の安定性まで接続済み。元の小さい宇宙への安定性の降下は未証明。
 
 ### 残り（依存順、時間は推定）
 
@@ -74,7 +74,7 @@
 - `dgModuleConeBoundaryLeftCandidate_suffix_equation`、`dgModuleConeBoundaryRightCandidate_suffix_equation`、`dgModuleConeBoundaryCandidate_common`。
 - `dgModuleConeCocone_isColimit`、`dgModuleConeSquare_isPushout`、`dgModuleCofiberSquare`、`dgModuleNerve_cofiber_exists`。
 - `dgModuleFiberCone_isLimit`、`dgModuleFiberSquare_isPullback`、`dgModuleFiberSquareOfMorphism`、`dgModuleNerve_fiber_exists`。
-- `dgModuleCofiberFiberLift_isInvertible`、`dgModuleFiberCofiberDesc_isInvertible`、`dgModuleCofiberFiberComparisonSliceEdge_projection`、`dgModuleCofiberFiberComparisonSliceEdge_isInvertible`、`dgModuleConeSquare_isPullback`・`dgModuleFiberSquare_isPushout`・`dgModuleNerve_isStable`・`dgYonedaModuleNerve`・`dgYonedaModuleNerve_isFullyFaithful`・`dgModulePropertyNerve_isStable`・`dgHomotopyRepresentableNerve_isStable`。
+- `dgModuleCofiberFiberLift_isInvertible`、`dgModuleFiberCofiberDesc_isInvertible`、`dgModuleCofiberFiberComparisonSliceEdge_projection`、`dgModuleCofiberFiberComparisonSliceEdge_isInvertible`、`dgModuleConeSquare_isPullback`・`dgModuleFiberSquare_isPushout`・`dgModuleNerve_isStable`・`dgYonedaModuleNerve`・`dgYonedaModuleNerve_isFullyFaithful`・`dgModulePropertyNerve_isStable`・`dgHomotopyRepresentableNerve_isStable`・`dgRepleteYonedaNerveEquivalence`・`dgNerveULift_isStable_of_pretriangulated`。
 
 ### 依存と提供
 
@@ -95,7 +95,7 @@
 
 ### 次の一手
 
-- β3：次の一工程は、対象宇宙を上げた元の dg 圏とホモトピー表現可能部分との明示的 QCatEquivalence。`DGPretriangulated` で K(D) の表現可能対象の isoClosure を定義し、`IsDGPretriangulated` はその `ObjectProperty.IsTriangulated` の略記。`DGModuleHomotopyProperty` の零・全整数シフト・cone・fiber 閉性、`DGFullSquareLift` の全単体・零角・指定辺・両普遍性の反映、`DGModulePropertyChoices` の全辺の双カルテジアンな選択から `dgHomotopyRepresentableNerve_isStable` まで完成。厳密な表現可能対象だけへ狭めていない。次は `DGUniverseLift.{v, max (u+1) v} D` から `DGFullSubcategory (RightModule A D) (dgHomotopyRepresentable A D)` への dg Yoneda を作る。対象は代表加群と `dgHomotopyRepresentable_representable`、Hom は既存 `yonedaHom`。両対象宇宙が同じになるので `dgNerve.map` を使え、Hom 同型から充満忠実性が得られる。本質的全射性は、部分圏の任意の対象の `dgRepresentableHomotopyProperty_iff` から K(D) の同型を回収する。包含 `.onHomotopy` は既存 `dgFullSubcategoryInclusionHomotopyFull/Faithful` により完全忠実なので `preimageIso` で H⁰ 部分圏の同型へ戻し、`HomotopyComparison.toH0` の `preimageIso` と `edgeToPathHomotopyCategory` の `mapIso` で Core の実 `VertexIso` へ送る。Ho₂ と Core の path-h を混同しない。`qCatEquivalenceOfFullyFaithfulEssentiallySurjective` を適用して安定性を移し、`dgNerveUniverseLiftIso` で ULift した元の nerve へ戻す。最後に SSet の ULift から元の nerve への安定性の降下を証明する（まだ未実装）。K(D) の三角構造は閉性にのみ用い、実普遍性から ∞ 安定性を証明済み。前三角商の安定性・完全性、全 ∞ 関手圏の局所化普遍性、Verdier 列、β5、β4 は未完。
+- β3：次の一工程は SSet の ULift による安定性の元の小さい宇宙への降下。`dgRepleteYonedaNerveEquivalence` は対象宇宙を上げた元の dg nerve とホモトピー表現可能部分の実同値で、順方向は厳密に `dgNerve.map (dgRepleteYoneda A D)`。`dgVertexIsoOfH0` は H⁰ 比較の `preimageIso` と `edgeToPathHomotopyCategory.mapIso` を使い、二切断と Core の path-h を正しく接続する。前三角性の下で `dgUniverseLiftNerve_isStable`・`dgNerveULift_isStable_of_pretriangulated`、実 Yoneda とその選択逆写像の完全性は完成。元の `dgNerve A D` の安定性はまだ主張しない。まず一般 SSet の零対象性と四角形の普遍性を ULift と比較し、辺・四角形・零角を下げて IsStable を構成する。F1 の `UniverseKan` は `uliftSimplexHomDown` と面の可換性、`UniverseInnerFibration` は quasicategory の ULift を供給。HomotopyLimits の `UniverseSSetMaps` は ULift の完全忠実性、直積と標準単体の実同型、`UniverseInternalHom` は内部 Hom の実同型を供給する。join と slice/coslice の ULift 比較はまだ見当たらない。必要なら所有 Stable/ に `uliftAugObj`・join の比較を追加する。Core/Join の `augObj K 0 = PUnit`、`augObj K (r+1) = K_r`、join の単体は切断 ℓ と二つの augObj の組なので、零の場合と後続の場合で持ち上げ、`augMap` との可換性から join の実同型を作れる。slice/coslice の各次数を join と Δ[n] の同型で比較し、境界充填条件から零・両普遍性を保ち反映する。単に h の三角構造を元の小さい nerve へ引き戻して安定性を済ませない。前三角商の安定性・完全性、全 ∞ 関手圏の局所化普遍性、Verdier 列、β5、β4 は未完。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
