@@ -480,6 +480,8 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `FiniteOverlapExceptionalProductObject`・代数・dg 比較・`finiteOverlapExceptionalProductIso` | FiniteOverlapExceptionalProductIso | 各有限重なりでの例外因子と全 a_j の共通 Koszul 表示の指定 dg 代数同型 |
 | `finiteOverlapExceptionalProductMap`・恒等／合成律・図式・`finiteOverlapExceptionalProductDiagramIso` | FiniteOverlapExceptionalProductDiagram | 指定局所同型を共役に使って構成した全有限重なりの自然同型 |
 | `finiteOverlapExceptionalProductMap_inclusion` | FiniteOverlapExceptionalProductComponents | 共通表示の遷移が実際の環射による標準外積係数変更と一致する全次数・全ての元の式 |
+| `baseKoszulDGAlgebra`・`finiteOverlapExceptionalProductBaseDGFunctor`・係数代数射・包含公式 | FiniteOverlapExceptionalBaseMap | 基底 Ko(A;a) から各有限重なりの共通表示への標準 dg 係数射 |
+| `finiteOverlapExceptionalProductBaseMap_natural`・共通表示／元の例外因子への基底自然変換・指定図式比較との整合性 | FiniteOverlapExceptionalBaseDiagram | 基底 Ko(A;a) の定数図式から例外因子の係数図式への指定射 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -547,7 +549,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全3257定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3298定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -652,8 +654,15 @@ dg 関手の等式として証明し、各一対象模型の自己 Hom を用い
 総外積への包含後の像が実際の有限重なり環射の標準係数変更と一致する式
 `finiteOverlapExceptionalProductMap_inclusion` を証明済み。原典は KST v4
 Lemma 3.6（pp.11–14）であり、共通 Koszul 表示を介した明示 dg 計算による再構成。
-次の実装単位は基底 Ko(A;a) から共通表示図式への係数射、
-および coherent な降下・層の閉埋め込みとの比較。
+基底の全 a_j の Koszul dg 代数 `baseKoszulDGAlgebra` から各有限重なりの
+共通表示への指定 dg 係数射を構成済み。全次数の像は標準外積係数変更と一致し、
+実際の重なり環射の基底係数保存から、全有限重なり遷移との可換性を証明済み。
+基底の定数図式から共通表示図式への自然変換を構成し、指定図式同型の逆で
+元の例外因子図式への `finiteOverlapExceptionalBaseNatTrans` を構成済み。
+指定図式比較を通すと標準係数射に戻る等式も証明済み。原典は KST v4
+Lemma 3.6（pp.11–14）、射影 q を係数 dg 代数の反変な自然変換として再構成する。
+次の実装単位は係数図式の同型を図式 dg 加群模型の比較へ移すこと、および
+coherent な降下・層の閉埋め込み／射影との比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
