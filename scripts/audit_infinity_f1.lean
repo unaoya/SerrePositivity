@@ -3023,3 +3023,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentHomComposition
 #check @SerrePositivity.InfinityCategories.coherentCompositionPrism_zero
 #check @SerrePositivity.InfinityCategories.coherentCompositionPrism_one
+#check @SerrePositivity.InfinityCategories.coherentPrismCut
+#check @SerrePositivity.InfinityCategories.coherentPrismCut_zero
+#check @SerrePositivity.InfinityCategories.coherentPrismCut_one
+#check @SerrePositivity.InfinityCategories.pathCutMaximum_eq_pathLastMaximum
+#check @SerrePositivity.InfinityCategories.rightMappingSpacePrism_stdSimplex_cut
+#check @SerrePositivity.InfinityCategories.coherentPrismCut_maximumMap
+#check @SerrePositivity.InfinityCategories.coherentCompositionObj_front
+#check @SerrePositivity.InfinityCategories.coherentCompositionSimplex_front
+#check @SerrePositivity.InfinityCategories.rightMappingSpacePrism_evaluate
+#check @SerrePositivity.InfinityCategories.pinchedHomUncurry_simplex
+#check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_evaluate
+#check @SerrePositivity.InfinityCategories.coherentCompositionPrism_projection

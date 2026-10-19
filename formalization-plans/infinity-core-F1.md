@@ -31,8 +31,8 @@
 - 二つの豊穣 Hom の同時単体と二値ラベルから三対象の `coherentCompositionSimplex` を構成。
   path の切替前の最大座標、豊穣単位・合成則、全ての面・退化への自然性を証明済み。
   右 slice への `coherentCompositionPrism` に束ね、零端点は合成射、一端点は第二射の
-  Hom 比較と厳密に一致する。射影の前面と既存の区間比較の同定は未証明。
-- 対象ビルド2857 jobs、公理監査5259宣言が成功。依存公理は標準3公理のみ。
+  Hom 比較と厳密に一致する。射影も第一射の既存の区間比較と全パラメーターで一致する。
+- 対象ビルド2860 jobs、公理監査5276宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
@@ -63,7 +63,7 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentCompositionSimplex`、`pathCutMaximumMap_reindex`
+- `coherentCompositionPrism`、`coherentCompositionPrism_projection`
 
 ### 依存と提供
 
@@ -95,10 +95,10 @@
 
 ### 次の一手
 
-`coherentCompositionPrism` の射影の前面を `rightMappingSpacePrism` による右 Hom の区間比較と
-同定する。反対 nerve で左 coslice へ移し、全パラメーターの標準輸送を得る。
-`FiberTransportFamily.mapIso_parametrized` で普遍 pointed-space 輸送へ結び、その同値性、
-[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の境界制限、一般の境界固定延長へ進む。
+右 slice の反転を左 coslice へ移す比較を F1 内で構成し、`coherentCompositionPrism` に適用する。
+既存の coherent nerve の反対同型と `reversePrism_endpoint` を使い、両端・射影を保存して
+全パラメーターの標準輸送を得る。`FiberTransportFamily.mapIso_parametrized` で普遍輸送へ結び、
+その同値性、[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の境界制限、一般の境界固定延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 

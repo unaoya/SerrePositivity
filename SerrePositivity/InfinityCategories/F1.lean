@@ -722,3 +722,6 @@ public import SerrePositivity.InfinityCategories.F1.CoherentCompositionEndpoints
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionReindex
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionNaturality
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionPrism
+public import SerrePositivity.InfinityCategories.F1.CoherentPrismCutCoordinates
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionFront
+public import SerrePositivity.InfinityCategories.F1.CoherentPrismEvaluation
