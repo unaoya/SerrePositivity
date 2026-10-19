@@ -17,15 +17,17 @@
 - 反復 loop 値の fiber の π₀ と元の fiber の全正次数群を比較し、既存係数表示との正符号の可換式を証明済み。
 - 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
 - 実際の塔の微分の各セルの係数を、そのセルの境界制限の連結準同型で表す厳密な式を証明済み。
+- 任意の入力でセル境界の連結射を cofiber の単体代表にし、最後の面の族・零ホモトピーを構成済み。
+- fiber に入る球面的な面の交代和と、同じ底の単体の連結射の像との符号付き等式を相対 Kan 充填で証明済み。
 - 旧実装保存：`c5872423`。従来の詳細は [記録](../archive/L9-spectra-log.md) §116–119。
-- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、3996 jobs、終了コード 0。
-- 停止前の全体ビルド：`lake build`、13858 jobs、終了コード 0。
-- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、528 モジュール・5108 宣言、標準三公理のみ、終了コード 0。
+- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、4004 jobs、終了コード 0。
+- 停止前の全体ビルド：`lake build`、13926 jobs、終了コード 0。
+- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、536 モジュール・5280 宣言、標準三公理のみ、終了コード 0。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - セル境界の局所的な連結準同型を反復 loop の成分代表で計算し、球面的境界の向きと整合させる。
-  全正次数の係数比較と微分のセル境界への帰着は比較済みだが、局所的な連結射の符号はまだ同定していない。
+  最後の面の代表と相対交代境界の符号は構成済み。loop と連結射の交換をまだ証明していない。
   原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
 - 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
   原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
@@ -58,6 +60,8 @@
 - `SkeletalCellAttachment.stageFiberIteratedLoopComponentEquiv`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_iteratedLoopComponent`
 - `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
+- `SkeletalCellAttachment.exists_cellDifferential_boundaryRepresentative`
+- `SphericalFiberLift.alternatingClass_connecting`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv`
 - `SkeletalCellAttachment.coefficientDifferential`
 - `RationalLevelNormalizedCochains.positive_cohomology_isZero`
@@ -87,11 +91,11 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- `stageFiberDifferential_cellConnecting` の右辺のセル境界の連結射を、`BoundaryLift` の最後の面で計算する。
-- `stageFiberCoefficientEquiv_iteratedLoopComponent` でその代表を反復 loop 値の成分へ戻し、
+- `SphericalFiberLift.alternatingClass_connecting` を path fibration の相対境界へ適用し、loop と連結射の交換の符号を比較する。
+- `exists_cellDifferential_boundaryRepresentative` の代表を反復 loop 値の成分へ戻し、
   `skeletalFiberVertex_normalizedDifferential` の交代和と像・符号を照合する。
-- loop と連結射の交換の符号を証明するまでは Sp-1c・Sp-1d を完了扱いにしない。
-- 成分での延長障害や局所的な連結射への帰着だけから `coefficientDifferential` の同定・収束を主張しない。
+- 交換の符号と実際の `coefficientDifferential` を同定するまでは Sp-1c・Sp-1d を完了扱いにしない。
+- 成分の障害計算や一般の相対境界関係だけから、骨格微分の同定・塔の収束を主張しない。
 
 ## 範囲と所有
 

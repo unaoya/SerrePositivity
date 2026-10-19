@@ -58,3 +58,11 @@ public import SerrePositivity.KST.Spectra.KanSequenceForgetful
 public import SerrePositivity.KST.Spectra.FilteredKanSequenceForgetful
 public import SerrePositivity.KST.Spectra.FilteredKanSequenceMap
 public import SerrePositivity.KST.Spectra.FixedPoints
+public import SerrePositivity.KST.Spectra.PointedConnectingRepresentatives
+public import SerrePositivity.KST.Spectra.RestrictionConnectingRepresentatives
+public import SerrePositivity.KST.Spectra.RestrictionBoundaryFamilies
+public import SerrePositivity.KST.Spectra.RestrictionConnectingNullhomotopy
+public import SerrePositivity.KST.Spectra.SkeletalCellBoundaryRepresentatives
+public import SerrePositivity.KST.Spectra.SphericalFiberLift
+public import SerrePositivity.KST.Spectra.SphericalFiberNormalization
+public import SerrePositivity.KST.Spectra.SphericalFiberRelation
