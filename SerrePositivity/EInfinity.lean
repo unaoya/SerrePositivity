@@ -182,3 +182,5 @@ public import SerrePositivity.EInfinity.TableReduction.Surjectivity
 public import SerrePositivity.EInfinity.TableReduction.DifferentialCriterion
 public import SerrePositivity.EInfinity.TableReduction.ScheduleTransfer
 public import SerrePositivity.EInfinity.TableReduction.SingletonRows
+public import SerrePositivity.EInfinity.TableReduction.RawRowEndSigns
+public import SerrePositivity.EInfinity.Surjection.CaesuraBounds

@@ -313,7 +313,20 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.differential_onSequence_nullary,
       `SerrePositivity.EInfinity.TableReduction.transferUnit_inverse,
       `SerrePositivity.EInfinity.TableReduction.scheduleTransfer,
-      `SerrePositivity.EInfinity.TableReduction.reduceRows_delete_singleton] do
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_delete_singleton,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionTrace,
+      `SerrePositivity.EInfinity.TableReduction.extractionTrace_of_reduceRows,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionTrace.removed_not_mem_output,
+      `SerrePositivity.EInfinity.TableReduction.separatedRows_of_reduction,
+      `SerrePositivity.EInfinity.Surjection.card_caesuras_ge,
+      `SerrePositivity.EInfinity.TableReduction.recurrentEnds_of_reduction,
+      `SerrePositivity.EInfinity.TableReduction.rowEnds_of_reduction,
+      `SerrePositivity.EInfinity.TableReduction.rowEnds_caesura_iff,
+      `SerrePositivity.EInfinity.Surjection.caesuraRank_caesuraAt,
+      `SerrePositivity.EInfinity.TableReduction.rowEndSigns_of_reduction,
+      `SerrePositivity.EInfinity.Surjection.caesuraRank_raw_get,
+      `SerrePositivity.EInfinity.Surjection.deletionCoefficient_raw_get,
+      `SerrePositivity.EInfinity.TableReduction.rawRowEndSigns_of_reduction] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
