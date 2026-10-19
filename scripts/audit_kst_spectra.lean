@@ -872,7 +872,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitUniversal,
     `SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitEnd,
     `SerrePositivity.KST.Spectra.RawSpectrumMappingLimitFamilies,
-    `SerrePositivity.KST.Spectra.RawSpectrumMappingLimits]
+    `SerrePositivity.KST.Spectra.RawSpectrumMappingLimits,
+    `SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitLevelLimit,
+    `SerrePositivity.KST.Spectra.RawSpectrumHomotopyLimitIso,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitMappingEquivalence,
+    `SerrePositivity.KST.Spectra.SpectrumHomotopyLimitHomHolim]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

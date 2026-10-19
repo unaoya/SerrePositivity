@@ -6,7 +6,7 @@
 
 ### 現在地
 - L9a・L9b・改訂 L9c・L9d・L9e 完了（10-19）。L9e は Sp-1（係数表示・符号と像までの微分同定）、Sp-2（Tot 塔の完備性・Milnor 完全性・lim¹ 制御・cohomology 消滅の π への移送）、Sp-3（有理 Shapiro の全射性）、Sp-4（通常 Tot の比較）を含む。次は Sp-5。任意の通常の BF cospan の ∞ 極限錐と具体的な homotopy pullback の頂点の一致に加え、任意の coherent cospan（Λ[2,2]）の実際の極限錐も構成済み。一点スペクトルを実際の Sp の零対象と証明し、全ての指定辺の fiber 四角形と任意の頂点の loop 四角形も構成済み。さらに基点付き path の BF 終点 fibration から具体的な loop 極限錐を構成し、通常の円の BF cotensor との比較射が実際の Sp の同値と証明した。一段移動と cotensor の比較も構成し、各対象から一段先の対象の native loop への指定した BF 射と Sp の同値まで証明済み。安定性を仮定せず loop 図式の終点評価の全境界充填を証明し、実際の関手 `nativeLoop : Sp → Sp` と任意の loop 四角形との比較を構成した。一段移動も豊穣関手 `tailEnriched` と実際の関手 `nativeTail` にし、両関手の本質的全射性と両合成の対象ごとの同型を証明済み。`tailMapping_isPullback` と境界側の Kan fibration 性に、構造比較の curry 表示・全基点 π 同型と共有の同値の引き戻し判定を適用した。元の `tailMapping` の実際の写像空間同値と `nativeTail` の完全忠実性を証明し、順射を元の関手とする `nativeTailEquivalence` まで構成済み。loop の完全忠実性・両関手の高次自然な比較・安定性は未完。
-- Sp の quasicategory 性、全整数次数の群、置換、homotopy fiber の長完全列、有理 telescope とテンソル表示を構成済み。Sp-5：任意の小さいスペクトル族の具体的な BF 積と厳密な射影・普遍射を構成した。各段の極限性から実際の豊穣 Hom の極限性を示し、γ3 の離散判定で coherent nerve の積錐の ∞ 極限性まで証明済み。有限性は不要で空積も含む。段ごとの全基点 π 同型の BF 射が全ての実際の豊穣 Hom で π 同型を誘導することも証明した。Hom 全体の π₀ で両側の逆を作り、coherent nerve 内の元の辺の可逆性を証明済み。BF fibration 置換単位、Reedy 条件下および任意図式の通常 Tot 比較も実際の Sp の同値として公開済み。BF 源・任意の Kan 列を標的とする整合写像空間も構成し、後合成の全単射 RLP・置換前の内部 Hom 列への同値・零写像を基点とする点つき普遍性まで検証済み。内部 Hom の全整合族の厳密な点つき交換同型と、元の BF cotensor の豊穣 Hom から元の全写像空間の内部 Hom への実際の同値も構成済み。さらに一般の Kan 列への点つき Hom 関手と cotensor 交換の両変数の自然性を証明し、重み付き Hom の二変数図式全体とその end の厳密な交換同型を構成した。段ごとの homotopy end から重みの内部 Hom 列への構造可換な射影と厳密な wedge、段ごとの極限から Kan 列の極限を構成する普遍射まで検証済み。さらに任意の wedge からの厳密な普遍射と一意性を証明し、元の homotopy end の wedge の極限性と Kan 列の圏の end との同型まで構成済み。一般の Kan 列を標的とする元の点つき Hom が、指定された段ごとの極限錐を実際の極限錐へ送ることも全パラメーターで証明済み。Hom との end 交換の合成と Sp の一般の ∞ 極限性は未完。
+- Sp の quasicategory 性、全整数次数の群、置換、homotopy fiber の長完全列、有理 telescope とテンソル表示を構成済み。Sp-5：任意の小さいスペクトル族の具体的な BF 積と厳密な射影・普遍射を構成した。各段の極限性から実際の豊穣 Hom の極限性を示し、γ3 の離散判定で coherent nerve の積錐の ∞ 極限性まで証明済み。有限性は不要で空積も含む。段ごとの全基点 π 同型の BF 射が全ての実際の豊穣 Hom で π 同型を誘導することも証明した。Hom 全体の π₀ で両側の逆を作り、coherent nerve 内の元の辺の可逆性を証明済み。BF fibration 置換単位、Reedy 条件下および任意図式の通常 Tot 比較も実際の Sp の同値として公開済み。BF 源・任意の Kan 列を標的とする整合写像空間も構成し、後合成の全単射 RLP・置換前の内部 Hom 列への同値・零写像を基点とする点つき普遍性まで検証済み。内部 Hom の全整合族の厳密な点つき交換同型と、元の BF cotensor の豊穣 Hom から元の全写像空間の内部 Hom への実際の同値も構成済み。さらに一般の Kan 列への点つき Hom 関手と cotensor 交換の両変数の自然性を証明し、重み付き Hom の二変数図式全体とその end の厳密な交換同型を構成した。段ごとの homotopy end から重みの内部 Hom 列への構造可換な射影と厳密な wedge、段ごとの極限から Kan 列の極限を構成する普遍射まで検証済み。さらに任意の wedge からの厳密な普遍射と一意性を証明し、元の homotopy end の wedge の極限性と Kan 列の圏の end との同型まで構成済み。一般の Kan 列を標的とする元の点つき Hom が、指定された段ごとの極限錐を実際の極限錐へ送ることも全パラメーターで証明済み。各段で評価した wedge の点つき極限性を明示し、Hom と元の homotopy end の全単体・基点を保つ厳密な交換同型を完成した。さらに BF 射影の Hom 同値と、点つき end の忘却・実際の豊穣後合成の一致を合成し、任意の小さい通常図式で元の BF homotopy limit の豊穣 Hom と元の豊穣 Hom 図式の Bousfield–Kan end の実際の同値まで構成済み。coherent な錐の構成と Sp の一般の ∞ 極限性は未完。
 - hG と homotopy Tot の段ごとの Kan 構成・BF 置換・比較射、自明作用の標準射の全整数次数 π の単射性、有理化後の有限群の自明作用では全単射性と標準射による群同型まで証明済み。
 - Sp-4：通常 Tot と標準単体 end の点つき同型、BK end への標準比較、loop 交換との厳密可換性を証明済み。Reedy 条件下で通常 Tot の Ω 列・BF 模型から既存の `homotopyTotalization` への実際の BF 射と各段の全基点・全整数次数 π 同型を構成済み。任意の Ω 図式についても、各段の Reedy anodyne な単位に沿い loop 値へ随伴構造を延長して厳密な余単体 Ω 列を構成した。置換単位の BK 比較と BF の逆向きの射を合成し、Reedy 置換した通常 Tot から元の `homotopyTotalization` への実際の BF 射と同じ π 同型まで完了。
 - Sp-4 の重みの比較：置換後の end 比較は実際のホモトピー同値。相対 corner の実際の latching 射を立方体で計算し、重みの相対 latching とパラメーターの pushout-product に arrow 同型で同定済み。Reedy anodyne な重みと単射パラメーターから corner の Reedy anodyne 性を証明し、重みの制限の全単射 RLP を構成済み。置換単位の制限の切断により、end の非空性を仮定せず置換前の全基点 π 同型へ移送済み。 Reedy 単射な重みと anodyne パラメーターの corner の Reedy anodyne 性も証明し、重みの Reedy 単射への end の制限が実際の Kan fibration であることを証明済み。点つき enriched end の基礎単体集合にも arrow 同型で移送済み。単射による部分複体骨格の逆像・像と骨格の共通部分の公式、骨格への制限の単射性も証明済み。
@@ -25,8 +25,8 @@
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 5954 jobs、専用監査 847 モジュール・7746 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：16006 jobs、終了コード 0。対象・公理監査・全体ビルドは今回すべて成功。
+- 検証：対象ビルド 5958 jobs、専用監査 851 モジュール・7789 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：所有外 `KST/SConstruction/AssemblyCoherentFactorPasting.lean` の 88・99・110・121 行の証明タイムアウトで終了コード 1。K-Sp の対象と公理監査は成功。所有外ファイルは変更しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
@@ -41,7 +41,7 @@
 - `Sp`
 - `OmegaSpectrum.SmallProduct.obj`
 - `OmegaSpectrum.SmallProduct.infinityCone_isLimit`、`OmegaSpectrum.CoherentPullback.hasLimit`
-- `OmegaSpectrum.pointZeroVertex`、`OmegaSpectrum.sp_fiber_exists`、`OmegaSpectrum.loopSquare`、`OmegaSpectrum.cotensorMappingEquivalence`、`OmegaSpectrum.BasedLoop.circleVertexIso`、`OmegaSpectrum.deloopingVertexIso`、`OmegaSpectrum.nativeLoop`、`OmegaSpectrum.nativeTail`、`OmegaSpectrum.tailMapping_isPullback`、`OmegaSpectrum.tailMappingEquivalence`、`OmegaSpectrum.nativeTailEquivalence`、`RawSpectrumMapping.weightedDiagramEndIso`、`KanSequence.homotopyLimitWedge`、`KanSequence.isLimitOfLevelLimits`、`KanSequence.homotopyLimitWedge_isLimit`、`KanSequence.homotopyLimitEndIso`、`RawSpectrumMapping.isLimitOfLevelLimits`
+- `OmegaSpectrum.pointZeroVertex`、`OmegaSpectrum.sp_fiber_exists`、`OmegaSpectrum.loopSquare`、`OmegaSpectrum.cotensorMappingEquivalence`、`OmegaSpectrum.BasedLoop.circleVertexIso`、`OmegaSpectrum.deloopingVertexIso`、`OmegaSpectrum.nativeLoop`、`OmegaSpectrum.nativeTail`、`OmegaSpectrum.tailMapping_isPullback`、`OmegaSpectrum.tailMappingEquivalence`、`OmegaSpectrum.nativeTailEquivalence`、`RawSpectrumMapping.weightedDiagramEndIso`、`KanSequence.homotopyLimitWedge`、`KanSequence.isLimitOfLevelLimits`、`KanSequence.homotopyLimitWedge_isLimit`、`KanSequence.homotopyLimitEndIso`、`RawSpectrumMapping.isLimitOfLevelLimits`、`RawSpectrumMapping.homotopyLimitIso`、`OmegaSpectrum.homotopyLimitHomHolimEquivalence`
 - `OmegaSpectrum.homotopyGroupEquivAt`
 - `OmegaSpectrum.homotopyFiberLongExact`
 - `OmegaSpectrum.rationalization`
@@ -87,7 +87,7 @@
 - 共有ルート `SerrePositivity.lean` および他レーンの既存差分は触らず、今回のコミット対象にも含めない。
 
 ### 既知の問題
-- 対象ビルド・公理監査・全体ビルドは今回すべて成功。前回の F1 の共有ビルド失敗も今回は解消している。所有外の並行差分には触れない。
+- 対象ビルド・公理監査は成功。今回の全体ビルドは所有外の `SConstruction/AssemblyCoherentFactorPasting.lean` で証明タイムアウト。K-Sp の import 閉包では発生しない。全体 diff check も所有外 `scripts/audit_kst_s_construction.lean` の末尾空行を指摘したが、今回の所有差分の staged check は成功。所有外の並行差分には触れない。
 - 所有ソースの sorry・追加 axiom はなし。所有宣言の型に `HomotopicalAlgebra.ModelCategory` 定数がないことも Lean 環境を走査して確認済み。
 - import 閉包に KanQuillen モジュールなし。`SSet.modelCategoryQuillen` 名前空間は Mathlib のホーン生成射・Fibration の既存 API に使うが、`ModelCategory SSet` は仮定しない。
 - 公理監査は私有宣言・推移的な公理依存と、宣言型の ModelCategory 定数を検査する。
@@ -96,7 +96,7 @@
 - Sp-3 は cohomology 消滅だけで仮定せず、実際の障害補正・lim¹ 消滅・写像空間の検出・BF 比較を通して証明済み。通常 Tot と元の homotopy Tot の全整数次数の Milnor 比較・lim¹ 収束判定も証明済み。∞ 極限性・安定性は未完。
 
 ### 次の一手
-- Sp-5 の一般の小極限：`KanSequence.homotopyLimitWedge_isLimit` と `homotopyLimitEndIso` により元の homotopy end の実際の end 普遍性まで完了。`RawSpectrumMapping.isLimitOfLevelLimits` は段ごとの極限から元の点つき Hom の極限を構成する。次は重み付き wedge を各段で評価した錐が点つき end の極限であることを明示し、この保存定理と `weightedDiagramEndIso` を合成して Hom と元の homotopy end の交換同型を構成する。その後 BF 射影の Hom 同値と γ3 の一般形状の錐比較へ接続する。loop 側は `nativeTailEquivalence` が完了、高次自然な比較と `nativeLoop` の完全忠実性は未完。各段 π₀ の自然性だけから全整合族のホモトピーを推論しない。一般 coherent 図式・全整数 π 検出・安定性・局所化不変量の値域も残る。
+- Sp-5 の一般の小極限：`RawSpectrumMapping.homotopyLimitIso` は元の全点つき Hom と homotopy end の厳密な交換同型、`OmegaSpectrum.homotopyLimitHomHolimEquivalence X D` は元の BF Hom と元の豊穣 Hom 図式の BK end の実際の同値で、順射の公式も公開済み。次は比較の源変数の豊穣自然性（全 Hom パラメータとの合成則）を、段の評価と `homotopyLimitIso_hom_π` で証明する。そこから γ3 の一般形状の切断比較を使い、homotopy limit を頂点とする coherent な錐とその極限性を構成する。Hom 空間の対象ごとの同値だけから極限錐を仮定しない。loop 側は `nativeTailEquivalence` が完了、高次自然な比較と `nativeLoop` の完全忠実性は未完。一般 coherent 図式・全整数 π 検出・安定性・局所化不変量の値域も残る。
 - Sp-4 の任意の図式に対する主比較は `OmegaSpectrum.replacedOrdinaryTotalizationComparison`。Reedy 仮定なしで、実際に置換した通常 Tot の BF 模型から元の `homotopyTotalization` へ送る。各段・全整数次数 π 同型に加え、元の比較辺の Sp における同値性も証明済み。∞ 極限性・Sp の安定性は別工程。
 - 有限骨格の Reedy cofibrancy は、latching 図式の全ての射で骨格の所属を保存・反映し、その部分図式の余極限の包含を単射とする `CartesianSubfunctorColimit` から証明した。骨格間の latching 正方形は次数ごとの pullback とし、その pushout の比較を単射と証明済み。Mathlib の部分複体骨格と `SSet.sk` の同型や、骨格関手全体の余極限保存を仮定しない。`PartialTotalizationTower.limitIso_hom_projection` と `groupComparison_apply` が通常 Tot の元の制限を計算する。
 - L9e 完了。Sp-5 は任意の小積を構成済みで、一般の小 ∞ 極限・全整数 π による同値検出・安定性・局所化不変量の値域の界面は未完。共有 γ3 の現状は `e-infinity-algebras.md` 冒頭。∞ 極限性を π 同型だけから仮定しない。

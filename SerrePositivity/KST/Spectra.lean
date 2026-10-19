@@ -385,3 +385,7 @@ public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitUniversal
 public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitEnd
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingLimitFamilies
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingLimits
+public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitLevelLimit
+public import SerrePositivity.KST.Spectra.RawSpectrumHomotopyLimitIso
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitMappingEquivalence
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitHomHolim
