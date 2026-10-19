@@ -1013,3 +1013,5 @@ public import SerrePositivity.InfinityCategories.F1.TransportSimplexNerveColimit
 public import SerrePositivity.InfinityCategories.F1.TransportLocalizationInitial
 public import SerrePositivity.InfinityCategories.F1.TransportSimplexMarkedColimit
 public import SerrePositivity.InfinityCategories.F1.TransportSimplexInvertingLimit
+public import SerrePositivity.InfinityCategories.F1.DiscreteLimitComparison
+public import SerrePositivity.InfinityCategories.F1.TransportLocalizationCoproduct
