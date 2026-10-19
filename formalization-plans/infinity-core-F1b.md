@@ -26,8 +26,13 @@
   射影の終点指定の辺の持ち上げ（任意次元の最後の頂点版も）を証明。辺の cartesian 性は未証明。
 - 三角形の cocartesian 性の消去と、cocartesian なホモトピーによる辺の保存を証明。
   最終 fiber への retraction と逆像上の図式の延長が cocartesian 辺を可逆辺に送ることまで証明。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2482 jobs）。
-  `lake env lean scripts/audit_infinity_f1b.lean` 成功（3020 宣言、標準三公理のみ、811 モジュールに straightening なし）。
+- cocartesian section の全部分単体集合を構成し、inner fibration の場合の quasicategory 性を証明。
+  前合成の関手性、一般の strict transport の図式と fiber 評価射、任意パラメータの族の curry・uncurry を構成。
+  始対象の fiber の任意の図式を、評価を厳密に固定した cocartesian section の族へ延長し、評価射の切断を証明。
+  境界も同時に固定する持ち上げ性と評価射の同値性は未証明。
+- 相対関手の充填性を仮定しない界面を `KanSection` 名前空間に置き、F1 の禁止 import 閉包から分離。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2491 jobs）。
+  公理監査成功（3090 宣言、標準三公理のみ、820 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -51,22 +56,18 @@
 - `ReflectiveSubcategory`
 - `isRightCofinal_iff_weaklyContractible_coslices` / `initialCofinality_via_quillenA`
 - `IsRightKanExtension` / `IsLeftKanExtension` / `RightKanHomUniversal` / `LeftKanHomUniversal`
-- `rightKanRelativeJoinStrictification_exists`
-- `RightKanRelativeJoinRealization.Strictification.transformation_hom_eq`
 - `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
 - `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
-- `kanRelativeJoinSliceOver_restrict` / `kanRelativeJoinSliceUnder_restrict`
-- `kanSliceOverShapeRestrict_isPullback` / `kanSliceUnderShapeRestrict_isPullback`
-- `kanFiberwiseFunctorHomEquiv` / `kanFiberwiseFunctorPre` / `kanFiberwiseFunctor_lift_iff`
-- `exists_kanFiberwise_extension_of_initialBoundary`
-- `kanFiberwiseHom` / `kanFiberwiseHomProjection` / `kanFiberwiseHomEquiv` / `kanFiberwiseHomPre`
-- `kanFiberwiseHomFiberIso` / `kanFiberwiseHomFiberIso_pre`
-- `kanRelativeJoinBaseFiberIso` / `kanRelativeJoinCoconeFiberIso_restriction`
-- `kanRelativeJoinCoconeFiber_initialBoundary`
+- `kanFiberwiseFunctorHomEquiv` / `exists_kanFiberwise_extension_of_initialBoundary`
+- `kanFiberwiseHom` / `kanFiberwiseHomFiberIso` / `kanRelativeJoinCoconeFiber_initialBoundary`
 - `kanFiberwiseHomProjection_innerFibration_iff` / `exists_kanFinalFiberRetraction`
 - `kanFiberwiseHomProjection_hasLiftingProperty_target`
 - `kanIsCocartesianEdge_triangle_second_of_first_long` / `exists_kanFinalFiberRetraction_inverting`
 - `exists_kanFiberwiseHom_finalVertex_extension_inverting`
+- `kanCocartesianSections` / `kanCocartesianSectionsPre`
+- `kanCocartesianStrictTransportDiagram` / `kanCocartesianStrictTransportEvaluate`
+- `kanCocartesianSectionsCurry` / `kanCocartesianSectionsUncurry`
+- `exists_kanInitialSectionTransport` / `exists_kanCocartesianSectionsEvaluate_section`
 
 ### 依存と提供
 
@@ -77,13 +78,12 @@
 
 ### 未コミット
 
-- 保存単位：`KanInitialTriangleJoin`、`KanTriangle*`、`KanCocartesianTriangleMiddle*`、
-  `KanCocartesianCancellation`、同 `HomotopyEdges`、`KanFinalFiberTransport`、`KanFiberwiseHomSpecialLifts`、集約・監査・本書。
-  保存コミット後の所有変更はなし。他レーンの変更は保存・変更しない。
+- 保存単位：`KanSectionRelative*` 3 本、`KanCocartesianSection*` 3 本、
+  `KanCocartesianStrictTransport`、`KanInitialSection*` 2 本、集約・監査・本書。保存後の所有変更はなし。
 
 ### 既知の問題
 
-- 対象ビルド・監査に失敗なし。全体 `lake build` は今回実行していない。
+- 対象ビルドは成功。全体 `lake build` は今回実行していない。
 - 保存 `43c25ad6` は共有インデックスにあった D レーンの 9 ファイルも同梱。内容は変更せず保存。
   並行履歴の書き換えは行わない。以後の保存は `git commit --only` で所有パスを限定する。
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
@@ -96,8 +96,8 @@
 
 ### 次の一手
 
-- cocartesian な section の全部分 ∞ 圏を値とする一般の strict transport と、fiber 評価との比較を構成する。
-  F1 の `LeftStrictTransport` は left fibration 用であり、全 section の模型を一般の p に代用しない。
+- 始対象での cocartesian section の評価が自明 Kan fibration になることを証明し、構成済みの strict transport の fiber 評価へ適用する。
+  構成済みの固定評価の延長に境界条件を追加し、固定始点収縮と相対輸送を使って両方を同時に固定する。
   一般の scaffold 比較を経て、内ホーン逆像の前合成同値と特殊辺の cartesian 性（Kerodon §5.3.6）を証明する。
   その後、制限の輸送との両立で fiber の境界充填を全空間へ移し、既存の骨格の組み立てに渡す。
 
