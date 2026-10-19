@@ -71,7 +71,10 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 定数・評価の自然性も検証済み。`convolutionAction_unit` が単位則、
 `convolutionAction_equivariance` が全置換についての等変性を与える。
 `convolutionAction_post` は P 代数射による後合成の演算保存を与える。
-convolution の部分合成則、余代数射による前合成、端点・定数の代数射性、
+反復評価は二ブロックの連結・分割と両立する。
+`convolutionAction_insertion_zero_evaluation` は標準の先頭代入と余代入の評価を比較する。
+`Algebra.ofFirstComposition` は等変性と先頭の部分合成則から全代数公理を構成する。
+convolution 自体の部分合成則、余代数射による前合成、端点・定数の代数射性、
 評価の fibration・定数射の擬同型性、転送モデル構造は未完成。
 
 原典：

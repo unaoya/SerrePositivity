@@ -130,7 +130,20 @@ run_cmd do
       `SerrePositivity.EInfinity.convolutionPowerEvaluation_permutation,
       `SerrePositivity.EInfinity.convolutionAssembly_naturality,
       `SerrePositivity.EInfinity.Operad.convolutionAction_equivariance,
-      `SerrePositivity.EInfinity.Operad.convolutionAction_post] do
+      `SerrePositivity.EInfinity.Operad.convolutionAction_post,
+      `SerrePositivity.EInfinity.tensorSeparation_twice,
+      `SerrePositivity.EInfinity.tensorPowerSeparation_append,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_index,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_append,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_split,
+      `SerrePositivity.EInfinity.tensorCoInsertionAction_zero,
+      `SerrePositivity.EInfinity.tensorInsertionAction_zero_append,
+      `SerrePositivity.EInfinity.convolutionAssembly_transport,
+      `SerrePositivity.EInfinity.convolutionAssembly_tensorRight,
+      `SerrePositivity.EInfinity.Operad.Algebra.comp_action_of_first,
+      `SerrePositivity.EInfinity.Operad.Algebra.ofFirstComposition,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_firstBlock_evaluation,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_insertion_zero_evaluation] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
