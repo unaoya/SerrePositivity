@@ -1,0 +1,91 @@
+module
+
+public import SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource
+public import SerrePositivity.KST.Spectra.PositiveLoopNaturality
+public import SerrePositivity.KST.Spectra.SphereMappingHomotopyFormula
+
+/-!
+概要：loop 値の写像空間の正次数群を元の写像空間の一つ高い次数へ移す。
+方針：二つの源の交換同型と loop の群同型を合成し、源の射への自然性を証明する。
+規約：通常の円を用いる。球面の次数移動の帰納段と同じ向き。
+使われ方：Goerss–Jardine I §7、VIII §1。骨格 fiber の係数比較の高次数への反復。
+-/
+
+@[expose] public section
+universe u
+open CategoryTheory SSet
+
+namespace SerrePositivity.KST.Spectra.PointedMapping
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+/-- 概要：任意の源からの写像空間と通常の loop の順序を交換する。
+方針：内部 Hom の二つの源を交換する。
+規約：係数の Kan 性はこの厳密な同型には不要。
+使われ方：Goerss–Jardine I §7。写像空間の高次数の比較。 -/
+def loopSwap (A Y : PointedSimplicialSet.{u}) :
+    loopSpace (PointedObject.basedHom A Y) ≅ PointedObject.basedHom A (loopSpace Y) :=
+  InternalHomExchange.iso PointedSimplicialSet.circle.{u} A Y
+
+@[reassoc]
+lemma loopSwap_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
+    (Y : PointedSimplicialSet.{u}) :
+    PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
+        (Y := PointedObject.basedHom B Y) (Z := PointedObject.basedHom A Y)
+        (prePointed i Y) ≫ (loopSwap A Y).hom =
+      (loopSwap B Y).hom ≫ prePointed i (loopSpace Y) := by
+  have h := InternalHomExchange.natural_pre_right (C := PointedSimplicialSet.{u})
+    PointedSimplicialSet.circle.{u} i Y
+  simp only [← prePointed_eq_closedPre] at h
+  change PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
+      (Y := PointedObject.basedHom B Y) (Z := PointedObject.basedHom A Y)
+      (prePointed i Y) ≫ (loopSwap A Y).hom =
+    (loopSwap B Y).hom ≫ prePointed i (loopSpace Y) at h
+  exact h
+
+/-- 概要：loop 値の写像空間の π_(r+1) を元の写像空間の π_(r+2) へ移す。
+方針：交換同型の逆射と通常の loop の群同型を合成する。
+規約：全ての正次数で群同型。
+使われ方：Goerss–Jardine I §7、VIII §1。係数の次数移動の反復。 -/
+def loopPositiveEquiv (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (r : ℕ) :
+    KanHomotopyGroup (PointedObject.basedHom A (loopSpace Y)).right r
+        (PointedSimplicialSet.basepoint (PointedObject.basedHom A (loopSpace Y))) ≃*
+      KanHomotopyGroup (PointedObject.basedHom A Y).right (r + 1)
+        (PointedSimplicialSet.basepoint (PointedObject.basedHom A Y)) := by
+  let e : (PointedObject.basedHom A (loopSpace Y)).right ≅
+      (loopSpace (PointedObject.basedHom A Y)).right :=
+    PointedSimplicialSet.forget.mapIso (loopSwap A Y).symm
+  exact (KanHomotopyGroup.equivOfIso r e
+    (OmegaSpectrum.pointedMap_basepoint (loopSwap A Y).inv)).trans
+      (loopPositiveHomotopyEquiv (PointedObject.basedHom A Y) r)
+
+lemma loopPositiveEquiv_apply (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
+    (r : ℕ) (a : KanHomotopyGroup (PointedObject.basedHom A (loopSpace Y)).right r
+      (PointedSimplicialSet.basepoint (PointedObject.basedHom A (loopSpace Y)))) :
+    loopPositiveEquiv A Y r a = loopPositiveHomotopyEquiv (PointedObject.basedHom A Y) r
+      (pointedGroupMap r (loopSwap A Y).inv a) := rfl
+
+/-- 概要：loop 値の正次数比較は源の射による制限と可換。
+方針：交換同型の逆射の可換式を群へ送り、通常の loop の自然性を適用する。
+規約：源の射は任意。単射性を要求しない。
+使われ方：Goerss–Jardine VIII §1。セル球面への制限と高次数比較の交換。 -/
+theorem loopPositiveEquiv_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
+    (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (r : ℕ)
+    (a : KanHomotopyGroup (PointedObject.basedHom B (loopSpace Y)).right r
+      (PointedSimplicialSet.basepoint (PointedObject.basedHom B (loopSpace Y)))) :
+    loopPositiveEquiv A Y r (pointedGroupMap r (prePointed i (loopSpace Y)) a) =
+      pointedGroupMap (r + 1) (prePointed i Y) (loopPositiveEquiv B Y r a) := by
+  have hs := congrArg (fun t ↦ (loopSwap B Y).inv ≫ t ≫ (loopSwap A Y).inv)
+    (loopSwap_pre i Y)
+  simp only [Category.assoc, Iso.inv_hom_id_assoc, Iso.hom_inv_id, Category.comp_id] at hs
+  have hg := congrArg (fun f : PointedObject.basedHom B (loopSpace Y) ⟶
+      loopSpace (PointedObject.basedHom A Y) ↦
+      pointedGroupMap r f a) hs
+  simp only [pointedGroupMap_comp] at hg
+  rw [loopPositiveEquiv_apply, loopPositiveEquiv_apply, ← hg]
+  exact loopPositiveHomotopyEquiv_natural (prePointed i Y) r _
+
+end
+end SerrePositivity.KST.Spectra.PointedMapping

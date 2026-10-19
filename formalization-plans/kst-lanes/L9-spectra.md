@@ -14,16 +14,18 @@
 - 元の骨格射の相対商が定める fiber 頂点と、指定したセル単体から復元する頂点の厳密な一致を証明済み。
 - その頂点を写像空間へ含めると元の射に戻る。実際の成分係数は既存 cochain と一致し、正規化微分の交代式も保持する。
 - 成分と正次数群の係数は同一のセル球面への制限射で計算できる。
-- loop 値の fiber の π₀ と元の fiber の π₁ を比較し、既存の基本群係数表示と正符号で可換なことを証明済み。
+- 反復 loop 値の fiber の π₀ と元の fiber の全正次数群を比較し、既存係数表示との正符号の可換式を証明済み。
+- 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
+- 実際の塔の微分の各セルの係数を、そのセルの境界制限の連結準同型で表す厳密な式を証明済み。
 - 旧実装保存：`c5872423`。従来の詳細は [記録](../archive/L9-spectra-log.md) §116–119。
-- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、3989 jobs、終了コード 0。
-- 停止前の全体ビルド：`lake build`、13812 jobs、終了コード 0。
-- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、521 モジュール・5029 宣言、標準三公理のみ、終了コード 0。
+- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、3996 jobs、終了コード 0。
+- 停止前の全体ビルド：`lake build`、13858 jobs、終了コード 0。
+- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、528 モジュール・5108 宣言、標準三公理のみ、終了コード 0。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
-- loop 値の成分と基本群係数の比較を高い次数へ反復し、連結準同型と整合させる。
-  セル球面の制限射と基本段の向きは比較済みだが、連結準同型の符号はまだ同定していない。
+- セル境界の局所的な連結準同型を反復 loop の成分代表で計算し、球面的境界の向きと整合させる。
+  全正次数の係数比較と微分のセル境界への帰着は比較済みだが、局所的な連結射の符号はまだ同定していない。
   原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
 - 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
   原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
@@ -33,7 +35,8 @@
   原典：Goerss–Jardine VIII §2、Bousfield–Friedlander 1978 §2。上記の後で 8–24 時間。
 - 通常の余単体 Tot と一般の BF 置換した homotopy Tot の比較を完了する。
   原典：Goerss–Jardine VII §4、VIII §1、HTT A.3.3。12–32 時間。
-- γ3 後の導来写像空間を持つ正しい Sp との比較・Sp の ∞ 極限性は後続範囲であり、現段階の主張に含めない。
+- γ3 後の導来写像空間を持つ正しい Sp との比較、Sp の ∞ 極限と安定性、局所化不変量の値域としての界面を完成させる。
+  これらは後続範囲であり、現段階の主張に含めない。
   原典：HTT Theorem 4.2.4.1、HA §1.4.2。γ3 完了後 16–40 時間。
 
 ### 主要宣言（共通接頭辞 `SerrePositivity.KST.Spectra`、以下は名前のみ）
@@ -52,8 +55,9 @@
 - `SkeletalCellAttachment.stageFiberComponentEquiv_simplexVertex`
 - `SkeletalCellAttachment.skeletalFiberVertex_eq_simplexVertex`
 - `SkeletalCellAttachment.skeletalFiberVertex_cochain`
-- `SkeletalCellAttachment.stageFiberLoopComponentEquiv`
-- `SkeletalCellAttachment.stageFiberCoefficientEquiv_loopComponent`
+- `SkeletalCellAttachment.stageFiberIteratedLoopComponentEquiv`
+- `SkeletalCellAttachment.stageFiberCoefficientEquiv_iteratedLoopComponent`
+- `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv`
 - `SkeletalCellAttachment.coefficientDifferential`
 - `RationalLevelNormalizedCochains.positive_cohomology_isZero`
@@ -83,11 +87,11 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- `stageFiberCoefficientEquiv_loopComponent` と `SphereSimplex.positiveHomotopyEquiv_succ` を起点に、
-  loop と球面制限の交換を用いて高次数の係数へ比較を反復する。
-- その後 `PointedFibrationTower.differential`・`pointedConnectingHom_compute`・`BoundaryLift` の
-  代表を各セルへ制限し、`skeletalFiberVertex_normalizedDifferential` の交代和と符号を照合する。
-- 成分での延長障害や正規化微分の式だけから `coefficientDifferential` の同定・収束を主張しない。
+- `stageFiberDifferential_cellConnecting` の右辺のセル境界の連結射を、`BoundaryLift` の最後の面で計算する。
+- `stageFiberCoefficientEquiv_iteratedLoopComponent` でその代表を反復 loop 値の成分へ戻し、
+  `skeletalFiberVertex_normalizedDifferential` の交代和と像・符号を照合する。
+- loop と連結射の交換の符号を証明するまでは Sp-1c・Sp-1d を完了扱いにしない。
+- 成分での延長障害や局所的な連結射への帰着だけから `coefficientDifferential` の同定・収束を主張しない。
 
 ## 範囲と所有
 
