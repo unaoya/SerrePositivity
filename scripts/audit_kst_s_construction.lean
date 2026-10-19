@@ -10247,3 +10247,96 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.comparison_boundary
 #print axioms SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.comparison_boundary
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsert
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsert
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsertFunctor
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsertFunctor
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsertTransformation
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsertTransformation
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsert_eq
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsert_eq
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsertionHomotopy
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsertionHomotopy
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsertThrough
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsertThrough
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsertThrough_ι
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsertThrough_ι
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsertionHomotopy_relative
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsertionHomotopy_relative
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsert_map
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsert_map
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsertionHomotopy_naturality
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsertionHomotopy_naturality
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsert_endpoint
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsert_endpoint
+
+#check @SerrePositivity.KST.SConstruction.coherentPathInsertionHomotopy_endpoint_edge
+#print axioms SerrePositivity.KST.SConstruction.coherentPathInsertionHomotopy_endpoint_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentPathCutSplit
+#print axioms SerrePositivity.KST.SConstruction.coherentPathCutSplit
+
+#check @SerrePositivity.KST.SConstruction.coherentPathCutSplit_comp
+#print axioms SerrePositivity.KST.SConstruction.coherentPathCutSplit_comp
+
+#check @SerrePositivity.KST.SConstruction.coherentPathCutSplit_mapping
+#print axioms SerrePositivity.KST.SConstruction.coherentPathCutSplit_mapping
+
+#check @SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy
+#print axioms SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy
+
+#check @SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_relative
+#print axioms SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_relative
+
+#check @SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_reindex
+#print axioms SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_reindex
+
+#check @SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_vertex
+#print axioms SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_vertex
+
+#check @SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_endpoint_edge
+#print axioms SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_endpoint_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentPathMappingCutHomotopy_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentDiagramPathFamily
+#print axioms SerrePositivity.KST.SConstruction.coherentDiagramPathFamily
+
+#check @SerrePositivity.KST.SConstruction.coherentDiagramCutHomotopy
+#print axioms SerrePositivity.KST.SConstruction.coherentDiagramCutHomotopy
+
+#check @SerrePositivity.KST.SConstruction.coherentDiagramCutHomotopy_relative
+#print axioms SerrePositivity.KST.SConstruction.coherentDiagramCutHomotopy_relative
+
+#check @SerrePositivity.KST.SConstruction.coherentDiagramCutHomotopy_endpoint_edge
+#print axioms SerrePositivity.KST.SConstruction.coherentDiagramCutHomotopy_endpoint_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentDiagramCutHomotopy_naturality
+#print axioms SerrePositivity.KST.SConstruction.coherentDiagramCutHomotopy_naturality
+
+#check @SerrePositivity.KST.SConstruction.kPrismPathDecoding_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kPrismPathDecoding_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy
+#print axioms SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy
+
+#check @SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy_input_naturality
+#print axioms SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy_input_naturality
+
+#check @SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy_naturality
+#print axioms SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy_naturality
+
+#check @SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy_endpoint_edge
+#print axioms SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy_endpoint_edge

@@ -676,4 +676,8 @@ public import SerrePositivity.KST.SConstruction.EquivalenceFamilyPathRecovery
 public import SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyRecovery
 public import SerrePositivity.KST.SConstruction.CoherentIntervalFamilyRecovery
 public import SerrePositivity.KST.SConstruction.LoopCollageIntervalFamilyRecovery
+public import SerrePositivity.KST.SConstruction.CoherentPathInsertion
+public import SerrePositivity.KST.SConstruction.CoherentPathMappingHomotopy
+public import SerrePositivity.KST.SConstruction.CoherentDiagramCutDecoding
+public import SerrePositivity.KST.SConstruction.KPrismPathDecoding
 /-! # ∞-S• 構成と連結 K 理論 -/
