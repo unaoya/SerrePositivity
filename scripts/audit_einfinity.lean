@@ -257,7 +257,15 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.onSequence_degree_zero,
       `SerrePositivity.EInfinity.TableReduction.onSequence_nullary_zero,
       `SerrePositivity.EInfinity.TableReduction.onSequence_nullary_succ,
-      `SerrePositivity.EInfinity.TableReduction.degreeMap_basis] do
+      `SerrePositivity.EInfinity.TableReduction.degreeMap_basis,
+      `SerrePositivity.EInfinity.TableReduction.available_after_take,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_same_adjacent_not_isChain,
+      `SerrePositivity.EInfinity.Surjection.listGenerator_eq_zero_of_not_isChain,
+      `SerrePositivity.EInfinity.TableReduction.output_not_isChain_of_adjacent_eq,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_eq_zero_of_adjacent_eq,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_eq_zero_of_degenerate,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_generator,
+      `SerrePositivity.EInfinity.TableReduction.degreeMap_action] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
