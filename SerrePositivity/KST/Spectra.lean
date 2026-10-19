@@ -314,3 +314,9 @@ public import SerrePositivity.KST.Spectra.SmallProductKanSequence
 public import SerrePositivity.KST.Spectra.SmallProductSequenceStructure
 public import SerrePositivity.KST.Spectra.SpectrumSmallProduct
 public import SerrePositivity.KST.Spectra.SmallProductInfinityLimit
+public import SerrePositivity.KST.Spectra.SpectrumMappingAcyclicFamily
+public import SerrePositivity.KST.Spectra.SpectrumMappingAcyclic
+public import SerrePositivity.KST.Spectra.SpectrumMappingWhitehead
+public import SerrePositivity.KST.Spectra.SpectrumMappingComponents
+public import SerrePositivity.KST.Spectra.SpectrumWhiteheadEquivalence
+public import SerrePositivity.KST.Spectra.SpectrumReplacementEquivalences
