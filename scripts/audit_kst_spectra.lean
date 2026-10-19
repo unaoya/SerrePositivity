@@ -13,6 +13,22 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.PointedCotensorCoordinates,
+    `SerrePositivity.KST.Spectra.PointedCotensorCoordinateFamilies,
+    `SerrePositivity.KST.Spectra.PointedCotensorFamilyNaturality,
+    `SerrePositivity.KST.Spectra.PointedCotensorFamilyDescription,
+    `SerrePositivity.KST.Spectra.PointedCotensorStructureCoordinates,
+    `SerrePositivity.KST.Spectra.PointedCotensorFamilyStructure,
+    `SerrePositivity.KST.Spectra.PointedCotensorIntervalEndpoints,
+    `SerrePositivity.KST.Spectra.PointedFreeIntervalBoundaryMap,
+    `SerrePositivity.KST.Spectra.PointedCotensorCoordinateHomotopies,
+    `SerrePositivity.KST.Spectra.PointedCotensorRelativeHomotopies,
+    `SerrePositivity.KST.Spectra.SquareEndpointFixed,
+    `SerrePositivity.KST.Spectra.SpectrumKanAdjointStageDifferenceFreeMap,
+    `SerrePositivity.KST.Spectra.SpectrumKanAdjointStageDifferenceFreeStructure,
+    `SerrePositivity.KST.Spectra.SpectrumKanAdjointStageDifferenceStrictInterval,
+    `SerrePositivity.KST.Spectra.RawSpectrumPointedMappingWhitehead,
+    `SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedComparisonIsomorphism,
     `SerrePositivity.KST.Spectra.FibrationDifferenceTriangleLift,
     `SerrePositivity.KST.Spectra.ExponentialSpecifiedDifference,
     `SerrePositivity.KST.Spectra.SpecifiedSquareDifference,
