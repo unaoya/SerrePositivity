@@ -17,6 +17,15 @@ namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet MonoidalCategory
 open CartesianMonoidalCategory
 open scoped Simplicial
+
+/-- 全境界上で定値の実ホモトピーの二端点は、境界への制限で厳密に一致する。 -/
+lemma RoofBoundaryFixedHomotopy.boundary_eq {X : SSet.{u}} {n : ℕ} {f g : Δ[n] ⟶ X}
+    (H : RoofBoundaryFixedHomotopy f g) : (∂Δ[n]).ι ≫ f = (∂Δ[n]).ι ≫ g := by
+  have h := congrArg (fun k => SSet.ι₁ ≫ k) H.boundary
+  rw [← Category.assoc, SSet.ι₁_comp, Category.assoc, H.homotopy.h₁,
+    ← Category.assoc, SSet.ι₁_fst, Category.id_comp] at h
+  exact h.symm
+
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 
 /-- 指定閉分母の固定 fiber の境界固定比較を、元の像への実屋根比較に移す。 -/
@@ -51,5 +60,21 @@ def dgClosedRoofRelativeHomotopy (P : Set D) (x y : D)
   boundary := by
     change _ ≫ (H.homotopy.h ≫ dgQuotientClosedRoofHomInclusion A D P x y s) = _
     rw [← Category.assoc, H.boundary, Category.assoc, Category.assoc]
+
+/-- 固定 fiber から写した比較は、全ホモトピー上で指定実分母に厳密に定値。 -/
+lemma dgClosedRoofRelativeHomotopy_projection (P : Set D) (x y : D)
+    (s : DGClosedVerdierDenominators A D P x) {n : ℕ}
+    (f : Δ[n] ⟶ DGNerve.pinchedHom A (DGQuotient.QuotientObject D P)
+      ((DGQuotient.inclusion A D P).obj (ForgetEnrichment.to (Complex A) s.obj.left))
+      ((DGQuotient.inclusion A D P).obj y))
+    (g : Δ[n] ⟶ DGNerve.pinchedHom A D (ForgetEnrichment.to (Complex A) s.obj.left) y)
+    (H : RoofBoundaryFixedHomotopy f
+      (g ≫ pinchedHomChainMap ((DGQuotient.inclusion A D P).map
+        (ForgetEnrichment.to (Complex A) s.obj.left) y))) :
+    (dgClosedRoofRelativeHomotopy A D P x y s f g H).homotopy.h ≫
+      dgQuotientRoofCorrespondenceProjection A D P x y =
+      SSet.const (dgClosedVerdierDenominatorVertex A D P x s) := by
+  change (H.homotopy.h ≫ dgQuotientClosedRoofHomInclusion A D P x y s) ≫ _ = _
+  rw [Category.assoc, dgQuotientClosedRoofHomInclusion_projection, SSet.comp_const]
 
 end SerrePositivity.InfinityCategories

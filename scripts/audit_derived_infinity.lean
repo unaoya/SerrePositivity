@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofRelativeFillers
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofRefinementPrism
 import SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofRefinementPrism
 import SerrePositivity.InfinityCategories.Derived.DGRoofBoundaryHomotopy
@@ -1671,10 +1672,27 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgClosedRoofHomInclusion_comparison
 #print axioms SerrePositivity.InfinityCategories.dgClosedRoofRelativeHomotopy
 
+#print axioms SerrePositivity.InfinityCategories.RoofBoundaryFixedHomotopy.boundary_eq
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRelativeHomotopy_projection
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofFinite_exists_actualFillers
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofFiller_boundary
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofFillerBoundaryHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofFillerBoundaryHomotopy_h
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofFillerBoundaryHomotopy_projection
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofSimplexRefinementHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofSimplexRefinementHomotopy_projection
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.actual_boundary
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofFinite_exists_relativeFillerData
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofFillers,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofFillerBoundaryTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofRelativeFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofRelativeFillers,
     `SerrePositivity.InfinityCategories.Derived.DGWalkingHom,
     `SerrePositivity.InfinityCategories.Derived.DGWalkingHomEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinched,
