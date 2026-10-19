@@ -438,3 +438,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.isTerminalVertex_of_isPullback_of_components
 #check @SerrePositivity.InfinityCategories.F2.isLimitCone_pullback_of_components
 #check @SerrePositivity.InfinityCategories.F2.isLimitCone_arrow_of_endpoints
+
+#check @SerrePositivity.InfinityCategories.F2.internalHomTensorLift
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyTensorIso
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyTensorIso_vertex
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_tensor_of_components
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_laxPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_of_isPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_of_isPullback_of_components
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_tensor_of_components
+#check @SerrePositivity.InfinityCategories.F2.oppositeInternalHom_evaluate
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_functor_of_pointwise
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_arrow_of_endpoints
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_laxPullback_of_components
