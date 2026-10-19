@@ -434,4 +434,10 @@ public import SerrePositivity.KST.SConstruction.ReducedPathContraction
 public import SerrePositivity.KST.SConstruction.ZeroRowContractionDegeneracy
 public import SerrePositivity.KST.SConstruction.ZeroRowPathContraction
 
+public import SerrePositivity.KST.SConstruction.LoopCylinderBoundary
+public import SerrePositivity.KST.SConstruction.LoopCylinderConstantParameter
+public import SerrePositivity.KST.SConstruction.LoopOfCylinder
+public import SerrePositivity.KST.SConstruction.ZeroRowLoopComparison
+public import SerrePositivity.KST.SConstruction.ZeroRowPointedLoopComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -6692,3 +6692,63 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.zeroRowPathContraction_boundary
 #print axioms SerrePositivity.KST.SConstruction.zeroRowPathContraction_boundary
+
+#check @SerrePositivity.KST.SConstruction.cylinder_boundary_constant
+#print axioms SerrePositivity.KST.SConstruction.cylinder_boundary_constant
+
+#check @SerrePositivity.KST.SConstruction.circleCylinderDesc_constant_parameter
+#print axioms SerrePositivity.KST.SConstruction.circleCylinderDesc_constant_parameter
+
+#check @SerrePositivity.KST.SConstruction.loopOfCylinder_constant_parameter
+#print axioms SerrePositivity.KST.SConstruction.loopOfCylinder_constant_parameter
+
+#check @SerrePositivity.KST.SConstruction.circleCylinderDesc
+#print axioms SerrePositivity.KST.SConstruction.circleCylinderDesc
+
+#check @SerrePositivity.KST.SConstruction.circleCylinderDesc_quotient
+#print axioms SerrePositivity.KST.SConstruction.circleCylinderDesc_quotient
+
+#check @SerrePositivity.KST.SConstruction.circleCylinderDesc_point
+#print axioms SerrePositivity.KST.SConstruction.circleCylinderDesc_point
+
+#check @SerrePositivity.KST.SConstruction.loopOfCylinder
+#print axioms SerrePositivity.KST.SConstruction.loopOfCylinder
+
+#check @SerrePositivity.KST.SConstruction.loopOfCylinder_uncurry
+#print axioms SerrePositivity.KST.SConstruction.loopOfCylinder_uncurry
+
+#check @SerrePositivity.KST.SConstruction.loopOfCylinder_raw
+#print axioms SerrePositivity.KST.SConstruction.loopOfCylinder_raw
+
+#check @SerrePositivity.KST.SConstruction.zeroRowBoundaryCylinder
+#print axioms SerrePositivity.KST.SConstruction.zeroRowBoundaryCylinder
+
+#check @SerrePositivity.KST.SConstruction.zeroRowBoundaryCylinder_zero
+#print axioms SerrePositivity.KST.SConstruction.zeroRowBoundaryCylinder_zero
+
+#check @SerrePositivity.KST.SConstruction.zeroRowBoundaryCylinder_one
+#print axioms SerrePositivity.KST.SConstruction.zeroRowBoundaryCylinder_one
+
+#check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowBoundaryCylinder_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.zeroRowBoundaryCylinder_degeneracy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison_degeneracy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison_raw
+#print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison_raw
+
+#check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison_assembly
+#print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison_assembly
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPointedLoopComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPointedLoopComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowKanLoopComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowKanLoopComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowKanLoopComparison_unit
+#print axioms SerrePositivity.KST.SConstruction.zeroRowKanLoopComparison_unit
