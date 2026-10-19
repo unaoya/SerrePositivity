@@ -367,7 +367,13 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `shuffle_outer_isChain_of_success`・`shuffle_inner_isChain_of_success` は元の両置換列の非退化性を成功から導く。
 `shuffle_outer_recovery_with_rows` は正の内側 arity で空の初期状態・元の外側行列と行数を持つ成功を返す。
 `shuffleSimplex_outer_recovery` は既存の実際の shuffle 合成単体への直接の適用。
-外側 Schedule の総和条件・全射性、元の内側表全体の復元、全項の全単射は未完成。
+`output_covers` は非退化性を仮定せず、成功 Schedule の出力が全ラベルを含むことを示す。
+`recurrentEnds_outerWord` は元の非最終行末の再出現を外側へ移す。
+`recurrentRows_length` と `compressRows_positive_excess` は行長−1 総和を正しく固定し、圧縮で保存する。
+`schedule_of_table` は成功表の元の行列と総和から実際の Schedule を構成する。
+`shuffle_outer_schedule` は正の内側 arity の実際の shuffle 成功から元の外側 Schedule を復元する。
+`shuffle_outer_basis` は同じ出力から元の外側次数の BasisWord と一意な成功 Schedule を返す。
+元の内側表全体の復元、全項の全単射は未完成。
 零歩成分の切り出し、成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

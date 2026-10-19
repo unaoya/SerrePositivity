@@ -650,6 +650,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_inner_isChain_of_success,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_recovery_with_rows,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffleSimplex_outer_recovery,
+      `SerrePositivity.EInfinity.TableReduction.output_covers,
+      `SerrePositivity.EInfinity.TableReduction.schedule_of_table,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_excess,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_schedule,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_basis,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1599,3 +1604,28 @@ example : ∃ table : List (List (Fin 4) × ℕ),
     CompositeRecovery.shuffle_outer_recovery_with_rows (by decide) 1 gridRecoveryPath
       bfTable terminalTable gridRecoverySchedule _ hsuccess (by decide)
   exact ⟨_, by convert hs using 1; decide, hrows, hlen⟩
+
+-- 外側 Schedule を仮定せず実際の shuffle 成功から構成し、既知の Schedule との一致を証明する。
+example : ∃ r : Schedule 4 2, r = bfSchedule₁ ∧
+    reduceRows (rows bfTable r) [] = some (List.ofFn canonicalFixture.val) := by
+  have hentries : CompositeRecovery.shuffleTableEntries gridRecoveryPath bfTable terminalTable
+      gridRecoverySchedule = gridRecoveryEntries := by decide
+  have hsuccess : reduceRows (rows (fun i => BarrattEccles.permutationComposition 3 2 1
+      (bfTable (gridRecoveryPath.horizontal i)) (terminalTable (gridRecoveryPath.vertical i)))
+      gridRecoverySchedule) [] = some [0, 1, 2, 4, 2, 1, 4, 3] := by
+    rw [← CompositeRecovery.shuffleTableEntries_rows 1 gridRecoveryPath bfTable terminalTable
+      gridRecoverySchedule, hentries]
+    simpa using gridRecoveryPrefix.append [] [] rfl
+  obtain ⟨r, hs, _, _⟩ := CompositeRecovery.shuffle_outer_schedule (by decide) 1
+    gridRecoveryPath bfTable terminalTable gridRecoverySchedule _ hsuccess (by decide)
+  have hw : CompositeRecovery.outerWord (m := 3) (n := 2) 1
+      [0, 1, 2, 4, 2, 1, 4, 3] = List.ofFn canonicalFixture.val := by decide
+  rw [hw] at hs
+  exact ⟨r, schedule_eq_of_same_output bfTable bfTable r bfSchedule₁
+    canonicalFixture.val hs rankFixture_success, hs⟩
+
+-- 全射性の補題は隣接重複のある成功出力にも適用できる。
+example : ∀ a : Fin 2, a ∈ ([0, 0, 1] : List (Fin 2)) := by
+  let r : Schedule 2 1 := ⟨![1, 2], by decide⟩
+  apply output_covers (fun _ => (1 : Equiv.Perm (Fin 2))) r
+  decide

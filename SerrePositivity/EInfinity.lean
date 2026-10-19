@@ -243,3 +243,4 @@ public import SerrePositivity.EInfinity.Surjection.CompressedOuterRecovery
 public import SerrePositivity.EInfinity.Surjection.HorizontalOuterSelections
 public import SerrePositivity.EInfinity.Surjection.OuterTraceNondegenerate
 public import SerrePositivity.EInfinity.Surjection.ShuffleSourceNondegenerate
+public import SerrePositivity.EInfinity.Surjection.OuterScheduleRecovery
