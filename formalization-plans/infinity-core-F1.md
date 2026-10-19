@@ -1,5 +1,78 @@
 # F1：fibration・straightening・Yoneda（レーン α2）
 
+## 引き継ぎ（2026-10-19）
+
+### 現在地
+
+- F1a〜F1c の fibration・transport・coherent nerve の基盤を提供済み。F1d は未完了。
+- left fibrations と strict transport の像の coherent nerve の同値は構成済み。
+  strict Kan 図式の復元、および有限鎖の nerve 上の coherent 図式の復元は関手同型まで証明済み。
+- 現在の区切りは weighted nerve の豊穣関手と標準単位。単位は図式全体の自然変換で、
+  各成分が同値となり、変換空間の全次数について自然である。
+- 対象ビルド2795 jobs、公理監査4788宣言が成功。依存公理は標準3公理のみ。
+  実装の最終保存は `50dfe6a7`。この節以外の本文へ実施記録は追記していない。
+
+### 残り（依存順）
+
+見積もりは再開後の実作業時間の粗い幅で、研究上の障害による上振れがある。
+
+1. weighted nerve の豊穣な単位を coherent な比較へ実現する。
+   Kerodon §5.3.3、Corollary 5.6.0.6。6〜20時間。
+2. 任意の coherent 図式について、境界を固定した表現の延長と高次の貼り合わせを証明する。
+   Kerodon Proposition 5.6.5.12、Corollary 5.6.5.15。40〜160時間。
+3. unstraightening の実際の写像空間上の比較の同値性、一般の単位・余単位を完成する。
+   Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
+4. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
+   Kerodon Theorem 5.6.0.2、§5.5。80〜240時間以上。
+5. F1h：twisted arrow、Hom 関手、前層、Yoneda の充満忠実性。
+   Kerodon §§8.1〜8.3。40〜160時間。Kan 拡張は α2b の成果を使用可能。
+6. F1i：通常の圏の nerve 上で Grothendieck 構成と Yoneda を回収する。
+   Kerodon §§5.6、8.3 の通常圏への特殊化。8〜32時間。
+
+### 主要宣言（名前のみ）
+
+- `IsCartesianEdge`、`IsCocartesianEdge`、`SpaceInfinity`、`CatInfinity`
+- `leftStraighteningCoherentMap`、`smallLeftUnstraighteningObject`
+- `leftStrictTransportInfinityEquivalence`、`leftUnstraighteningMappingSpaceMap`
+- `strictDiagramScaffoldHomEquiv`、`strictDiagramMappingPre_trivialKanFibration`
+- `strictKanStraighteningUnitIso`、`finiteStraighteningUnitIso`
+- `weightedNerveKanEnriched`、`weightedNerveInfinityMap`
+- `weightedNerveTransportUnit`、`weightedNerveTransportUnit_isQCatEquivalence`
+- `weightedNerveTransportUnit_enrichedNaturality`
+- `coherentLeftResolutionInfinityComparisonIso`
+
+### 依存と提供
+
+- Core の left/right fibration、相対写像空間、同値・関手同型を読み取り専用で使用する。
+  Coherent/Quasicategory の γ1 と HomotopyLimits/WeightedConstantSimplex も使用する。
+- 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
+  𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
+- 再開時は F1/README.md の原典照合と方針を維持し、他レーンのファイルは編集しない。
+
+### 未コミット
+
+- 担当する F1/、F1.lean、監査スクリプトに未コミットの実装なし。
+  この引き継ぎ節も停止前に計画ファイルだけを指定してコミットする。
+- 共有作業ツリーの他レーンの変更は引き継ぎ対象外であり、保存・巻き戻しを行わない。
+
+### 既知の問題
+
+- F1 の対象ビルド・公理監査に失敗なし。ルート全体のビルドは今回の検査対象外。
+- F1B の `relativeFunctorVertex` 衝突は `relativeExtensionVertex` への改名で修正済み。
+  両集約の同時ビルドと同時 import は成功。修正コミット `1132823f` は並行追加の監査29行を含む。
+- F1 のソースに明示的な `ModelCategory SSet` 仮定はない。モデル構造は使わない。
+  `Fibration`・`TrivialKanFibration` はホーン・境界に対する持ち上げ性として用いる。
+- strict Kan 図式の strict な Hom が一般に Kan とは主張しない。
+  局所 strictification は任意の内面制限と可換でも、境界を固定した構成でもない。
+- 各 fiber の同値や辺での一致だけでは図式全体の同型・分類を導けない。
+  同値の反映は既証明であり、残る一般の単位・充満忠実性の代わりにはならない。
+
+### 次の一手
+
+`WeightedNerveTransportUnit.lean` の全パラメーターの自然性を、底の対象で評価した
+`KanEnrichedComparison` に束ね、`kanEnrichedComparisonIso` で coherent な比較へ実現する。
+その後、境界を固定した延長に不足する条件を明確にして §5.6.5 の主経路へ戻る。
+
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
