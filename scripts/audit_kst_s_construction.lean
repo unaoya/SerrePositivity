@@ -8675,3 +8675,177 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentEvaluation_app
 #print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentEvaluation_app
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionBaseIso
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionBaseIso
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionBaseIso_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionBaseIso_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionBaseIso_map
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionBaseIso_map
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftBaseIso
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftBaseIso
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftBaseIso_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftBaseIso_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftBaseIso_map
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftBaseIso_map
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftBaseIso_evaluation
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftBaseIso_evaluation
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftBaseIso_map_post
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftBaseIso_map_post
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyInputIdentity_constraint
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyInputIdentity_constraint
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentity_constraint
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentity_constraint
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso_family
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso_family
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso_family
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso_family
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso_map
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso_map
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso_map
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso_map
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionVertex
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionVertex
+
+#check @SerrePositivity.KST.SConstruction.bousfieldKanWeight_identity_vertex
+#print axioms SerrePositivity.KST.SConstruction.bousfieldKanWeight_identity_vertex
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionVertex_transport
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionVertex_transport
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionOverArrow
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionOverArrow
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionEdge
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionEdge
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionEdge_edge
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionEdge_edge
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionTransportEdge
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionTransportEdge
+
+#check @SerrePositivity.KST.SConstruction.assemblyArrowFromSource
+#print axioms SerrePositivity.KST.SConstruction.assemblyArrowFromSource
+
+#check @SerrePositivity.KST.SConstruction.assemblyArrowFromTarget
+#print axioms SerrePositivity.KST.SConstruction.assemblyArrowFromTarget
+
+#check @SerrePositivity.KST.SConstruction.assemblyArrowFromSource_pre
+#print axioms SerrePositivity.KST.SConstruction.assemblyArrowFromSource_pre
+
+#check @SerrePositivity.KST.SConstruction.assemblyArrowFromSource_post
+#print axioms SerrePositivity.KST.SConstruction.assemblyArrowFromSource_post
+
+#check @SerrePositivity.KST.SConstruction.assemblyArrowFromTarget_pre
+#print axioms SerrePositivity.KST.SConstruction.assemblyArrowFromTarget_pre
+
+#check @SerrePositivity.KST.SConstruction.assemblyArrowFromTarget_post
+#print axioms SerrePositivity.KST.SConstruction.assemblyArrowFromTarget_post
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionArrowIdentityIso
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionArrowIdentityIso
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionSourceTransport
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionSourceTransport
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionTargetTransport
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionTargetTransport
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionArrowIdentityIso_source
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionArrowIdentityIso_source
+
+#check @SerrePositivity.KST.SConstruction.pointedExtensionArrowIdentityIso_target
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionArrowIdentityIso_target
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftArrowIdentityIso
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftArrowIdentityIso
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftSourceTransport
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftSourceTransport
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftTargetTransport
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftTargetTransport
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftArrowIdentityIso_source
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftArrowIdentityIso_source
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftArrowIdentityIso_target
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftArrowIdentityIso_target
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentChoiceAt
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentChoiceAt
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentChoiceAt
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentChoiceAt
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyCoherentChoiceAt
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyCoherentChoiceAt
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyCoherentAdjointAt
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyCoherentAdjointAt
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyCoherentAdjointAt_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyCoherentAdjointAt_component
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyCoherentAdjointAt_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyCoherentAdjointAt_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso_source
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso_source
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso_target
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyInputIdentityChoicesIso_target
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso_source
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso_source
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso_target
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseInputIdentityChoicesIso_target
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentSourceEdge
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentSourceEdge
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentTargetEdge
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentTargetEdge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentSourceEdge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentSourceEdge
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentTargetEdge
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentTargetEdge
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCoherentLegTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCoherentLegTriangle_nonempty
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentLegTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionInverseCoherentLegTriangle_nonempty
+
+#check @SerrePositivity.KST.SConstruction.bousfieldKanWeight_overArrow_edge
+#print axioms SerrePositivity.KST.SConstruction.bousfieldKanWeight_overArrow_edge
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionCompositionFirstEdge
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionCompositionFirstEdge
+
+#check @SerrePositivity.KST.SConstruction.diagramSelectionCompositionTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.diagramSelectionCompositionTriangle_nonempty

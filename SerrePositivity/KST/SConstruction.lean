@@ -590,4 +590,14 @@ public import SerrePositivity.KST.SConstruction.AssemblyCoherentFactorSelections
 public import SerrePositivity.KST.SConstruction.PointedArrowEvaluation
 public import SerrePositivity.KST.SConstruction.AssemblyCoherentFactorEvaluation
 
+public import SerrePositivity.KST.SConstruction.PointedChoiceBaseIso
+public import SerrePositivity.KST.SConstruction.AssemblyInputIdentityChoices
+public import SerrePositivity.KST.SConstruction.CoherentDiagramOverEdges
+public import SerrePositivity.KST.SConstruction.AssemblyArrowIdentityLegs
+public import SerrePositivity.KST.SConstruction.PointedArrowIdentityTransport
+public import SerrePositivity.KST.SConstruction.AssemblyCoherentObjectChoices
+public import SerrePositivity.KST.SConstruction.AssemblyInputIdentityTransport
+public import SerrePositivity.KST.SConstruction.AssemblyCoherentFactorLegs
+public import SerrePositivity.KST.SConstruction.CoherentDiagramOverComposition
+
 /-! # ∞-S• 構成と連結 K 理論 -/
