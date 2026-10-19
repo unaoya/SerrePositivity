@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativePrimitives
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualGradedFractions
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteBoundaryCancellation
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteGradedPrimitives
@@ -1349,10 +1350,32 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgQuotientGraded_exists_fraction
 #print axioms SerrePositivity.InfinityCategories.dgQuotientGraded_exists_actualFraction
 
+#print axioms SerrePositivity.InfinityCategories.dgGradedPrecompose_d
+#print axioms SerrePositivity.InfinityCategories.dgGradedPrecompose_comp
+#print axioms SerrePositivity.InfinityCategories.dgFunctorGradedPrecompose_map
+#print axioms SerrePositivity.InfinityCategories.dgPrimitiveResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgPrimitiveCorrection_d
+#print axioms SerrePositivity.InfinityCategories.dgPrimitiveCorrection_residual
+#print axioms SerrePositivity.InfinityCategories.dgClosedVerdierDenominator_comp
+#print axioms SerrePositivity.InfinityCategories.dgQuotientBoundary_exists_closedPrimitive
+#print axioms SerrePositivity.InfinityCategories.dgQuotient_exists_relativePrimitive
+#print axioms SerrePositivity.InfinityCategories.dgRelativePrimitiveWitness_refine
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_relativePrimitives
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_actualRelativePrimitives
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGGradedClosedPrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGPrimitiveResidual,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedVerdierComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientPrimitiveDenominator,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRelativePrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativePrimitiveRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteRelativePrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativePrimitives,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleHomRightUnshift,
     `SerrePositivity.InfinityCategories.Derived.DGYonedaClosedShiftSurjective,
     `SerrePositivity.InfinityCategories.Derived.DGRestrictionGradedLift,
