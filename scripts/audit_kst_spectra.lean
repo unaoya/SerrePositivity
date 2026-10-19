@@ -953,7 +953,17 @@ run_cmd do
     `SerrePositivity.KST.Spectra.EnrichedParameterCylinderNerveRestriction,
     `SerrePositivity.KST.Spectra.SpectrumCotensorEvaluationNerveFamily,
     `SerrePositivity.KST.Spectra.SpectrumNativeCotensorEvaluation,
-    `SerrePositivity.KST.Spectra.SpectrumNativeCotensorEvaluationRestriction]
+    `SerrePositivity.KST.Spectra.SpectrumNativeCotensorEvaluationRestriction,
+    `SerrePositivity.KST.Spectra.SpectrumFunctorZero,
+    `SerrePositivity.KST.Spectra.RawSpectrumPointedBasepointComposition,
+    `SerrePositivity.KST.Spectra.SpectrumZeroGradedFactorization,
+    `SerrePositivity.KST.Spectra.EnrichedOrderedCylinder,
+    `SerrePositivity.KST.Spectra.EnrichedUnitTransformationHom,
+    `SerrePositivity.KST.Spectra.EnrichedTransformationTriangle,
+    `SerrePositivity.KST.Spectra.EnrichedOrderedCylinderNerve,
+    `SerrePositivity.KST.Spectra.EnrichedTransformationTriangleStages,
+    `SerrePositivity.KST.Spectra.SpectrumZeroEvaluationTriangle,
+    `SerrePositivity.KST.Spectra.SpectrumNativeZeroEvaluationTriangle]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
