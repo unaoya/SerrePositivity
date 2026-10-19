@@ -9,9 +9,8 @@
 - B1〜B3 は明示した模型・宇宙で完了。B4 進行中、B5 未着手。両工程の後は [F2 計画](infinity-core-F2.md) 第 1 部。
 - B4：任意の指定変換の相対 join 表示、両端の同時厳密化、h Fun の類の保存、
   元の左右 Kan 条件と厳密化後の局所極限・余極限性の同値まで証明。
-- 同じ宇宙の quasicategory K・C・D と任意の δ : K→C、F₀ : K→D に対し、
-  左右 Kan 拡張の存在と全頂点 c の標準局所図式の余極限・極限の存在との同値を証明。
-  各点の余錐を独立に選ぶだけでなく、指定変換つきの関手全体を構成する。
+- 同じ宇宙の quasicategory K・C・D と任意の δ : K→C、F₀ : K→D に対し、左右 Kan 拡張の存在を
+  全頂点 c の標準局所図式の余極限・極限の存在と同定。指定変換つきの関手全体を構成する。
 - 構成経路：`F1B.kanLeftComma δ` の cocartesian 射影、標準局所形から fiber への単射な前合成同値、
   相対指数の cartesian 性で普遍余錐を組み立て、図式・頂点を固定する円柱比較で局所輸送へ移す。
 - 右の存在：coslice と反転図式の slice の同型、反転関手の二乗の恒等性で対象・射・普遍性を戻す。
@@ -23,8 +22,9 @@
 - inner fibration の相対始対象性と厳密な始点境界充填は同値。底変換と最初の頂点の始対象性の反映で証明。
 - 指定可逆辺の可逆区間への厳密な延長と終点・像固定の持ち上げ、相対内部 Hom の順序交換から、
   V′ の局所余錐の境界固定の延長と相対普遍性を構成済み。
-- 単射な圏論的同値の右持ち上げ条件 `KanEquivalenceLifting U` の下で、相対 join の標的の cartesian 性を証明。
-  局所の標準 U 余極限から、元・標的の図式を保つ大域図式と全 fiber の標準 U 余極限性を構成。
+- `KanEquivalenceLifting U` は inner 性と終点・像指定の可逆辺の持ち上げと同値。相対 path 比較の自明 Kan 性で証明。
+  この右持ち上げ条件は任意の単射による相対内部 Hom へ移る。
+- 上の isofibration の二条件の下で、局所の標準 U 余極限から元・標的の図式を厳密に保つ大域図式を構成。
 - 任意の U の可逆 path 置換へ右持ち上げ条件を供給済み。両端固定の prism 延長と可逆性の反映を使用。
   定値 path の切断は圏論的同値で、置換された関手との合成は U。
 - 任意の図式の coslice で自明 Kan 性を保存し、path 置換と元の関手の相対余極限性を同定。
@@ -41,8 +41,8 @@
 - 局所普遍余錐の Hom 全単射から、指定変換に両立する比較射の各点での可逆性・大域的同型・一意性を証明。
 - 反転 Hom 全単射と指定変換・合成・前合成との両立から、右側も Hom 普遍性と大域的一意性を証明。
 - F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3811 jobs）、同時 import 検査成功（F1 6907・F1B 4297 宣言）。
-  公理監査成功（4301 宣言、標準三公理のみ、1165 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3822 jobs）、同時 import 検査成功（F1 6973・F1B 4304 宣言）。
+  公理監査成功（4308 宣言、標準三公理のみ、1170 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -52,7 +52,7 @@
   V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。標準 U 余極限との同値も U が inner なら証明済み。
   相対的な組み立ては `KanEquivalenceLifting U` を持つ一般の U に拡張済み。任意の U の path 置換はこの条件を持つ。
   局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
-  任意の U 上の可逆 path つき図式構成は完了。isofibration による指定部分固定の厳密化が残る。
+  任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
   左右とも任意の指定変換自身の Hom 普遍性と大域的一意性まで接続済み。相対的な写像空間の結論が残る。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
@@ -69,7 +69,7 @@
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
 - `F1B.kanIsRelativeColimitCone_equivalencePathReplacement_iff` / `F1B.exists_kanGlobalRelative_diagram_with_equivalencePath`
-- `F1B.KanEquivalenceLifting` / `F1B.kanEquivalenceLifting_equivalencePathReplacementMap`
+- `F1B.kanEquivalenceLifting_iff_inner_and_invertibleTargetLifting` / `F1B.KanEquivalenceLifting.relativeInternalHom`
 - `F1B.kanRelativeJoinFunctor_homMap_bijective` / `F1B.kanRelativeJoinColimitRestriction_isFullyFaithful`
 - `F1B.kanRelativeJoinRightHomEquiv` / `F1B.kanRelativeJoinTransformation_homUniversal`
 - `F1B.kanLeftCommaHomEquiv` / `F1B.exists_kanLeftExtension_with_homUniversal_of_local_colimits`
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：coslice の自明 Kan 性、相対余極限の移送、一般の U の path つき大域図式、集約・監査・本書）。
+- なし（本保存単位：相対 path 比較の自明 Kan 性、isofibration 判定、相対内部 Hom の保存、厳密な相対図式、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `exists_kanGlobalRelative_diagram_with_equivalencePath` の比較 path を指定部分固定で厳密化する。
-  inner fibration と可逆辺の持ち上げから相対内部 Hom の可逆辺の持ち上げを供給し、標準 isofibration と比較する。
-  原典 7.3.6.7 の相対的な写像空間の制限定理へ接続する。
+- `KanRelativeJoinFunctorBoundary` の境界延長を相対内部 Hom の標的 U も固定する形へ一般化する。
+  境界の最初の頂点の標準 U 余極限性から相対始点境界を充填し、普遍図式の全部分圏の制限へ移す。
+  原典 7.3.6.7 の相対写像空間の制限定理と全部分圏からの自明 Kan 性を閉じる。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

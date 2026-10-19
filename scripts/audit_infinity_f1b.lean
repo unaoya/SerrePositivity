@@ -2123,3 +2123,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_equivalencePathReplacement_iff
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_with_equivalencePath
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanEquivalencePathVertex_lift_of_targetLifting
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeEquivalencePathMapAt_one_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanEquivalenceLifting_of_innerFibration_of_targetLifting
+
+#check @SerrePositivity.InfinityCategories.F1B.kanEquivalenceLifting_iff_inner_and_invertibleTargetLifting
+
+#check @SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting.relativeInternalHom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHom_lifting_of_inner_of_targetLifting
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_with_relative_colimits_of_isofibration
