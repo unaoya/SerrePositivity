@@ -17,18 +17,18 @@
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
 - loop 交換の頂点を円の射と標準区間の辺で厳密に照合済み。骨格 fiber の通常の零 loop 比較の包含は明示した逆辺の類と一致し、実際の成分微分の係数を次数二以上の正規化交代微分と (-1)^(セル次元) で計算済み。
 - Kan fibration の下で同じ downstairs の類を持つ代表を、射影が指定した単体と厳密に一致する upstairs の代表へ調整済み。整合する類の族を厳密に整合する代表へ直し、極限の群から段ごとの群の逆極限への比較準同型の全射性を証明済み。
-- 整合する RelStruct を極限の RelStruct へ組み立てる式と、比較の核が各段で零となる類であることを証明済み。非可換 lim¹ を twisted 作用の軌道集合で構成し、全射な遷移のときの消滅を証明済み。固定した核の球面代表から lim¹ の障害を構成し、零ホモトピーの選択変更が twisted 作用になること、極限で零な代表の障害が基点となることを証明済み。球面代表変更への不変性、核から lim¹ への基点を保つ写像を証明済み。零障害から厳密に整合する零ホモトピーを逐次構成し、核上の障害が零であることと極限の類の零性の同値を証明済み。lim¹ 消滅時の比較の単射性、非可換群の Mittag–Leffler 条件での lim¹ 消滅と比較群同型まで完了。核と lim¹ の全単射、および必要な骨格の塔での消滅は未完。
+- 整合する RelStruct を極限の RelStruct へ組み立てる式と、比較の核が各段で零となる類であることを証明済み。非可換 lim¹ を twisted 作用の軌道集合で構成し、全射な遷移のときの消滅を証明済み。固定した核の球面代表から lim¹ の障害を構成し、零ホモトピーの選択変更が twisted 作用になること、極限で零な代表の障害が基点となることを証明済み。球面代表変更への不変性、核から lim¹ への基点を保つ写像を証明済み。零障害から厳密に整合する零ホモトピーを逐次構成し、核上の障害が零であることと極限の類の零性の同値を証明済み。lim¹ 消滅時の比較の単射性、非可換群の Mittag–Leffler 条件での lim¹ 消滅と比較群同型まで完了。有限群 BG から有理化各段への実際の骨格の塔の高次群で像を安定化し、lim¹ 消滅まで証明済み。核と lim¹ の全単射、通常の写像空間と整数次数への移送は未完。
 - 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
 - 標準の零次数接続写像とその厳密な正方形への自然性を構成し、正次数・零次数の塔の微分の loop 反可換式を証明済み。
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4116 jobs、専用監査 642 モジュール・6219 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14702 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4123 jobs、専用監査 649 モジュール・6248 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14761 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
-- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。正次数の比較の全射性、lim¹ 消滅からの単射性、Mittag–Leffler 条件での非可換 lim¹ 消滅と比較同型は証明済み。核と lim¹ の全単射、実際の骨格の塔の像の安定化と収束を残す。
+- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。正次数の比較の全射性、lim¹ 消滅からの単射性、Mittag–Leffler 条件での非可換 lim¹ 消滅と比較同型は証明済み。有理 BG の実際の骨格の塔では高次群の像の安定化と lim¹ 消滅まで証明済み。核と lim¹ の全単射、通常の写像空間への比較と整数次数への移送を残す。
   原典：Goerss–Jardine VIII §§1–2。24–80 時間。E₂ の消滅だけで収束を仮定しない。
 - 有限群の有理自明作用について標準射の全射性を証明し、既証の単射性と合わせて全整数次数の有理 Shapiro を完成させる。
   原典：Goerss–Jardine VIII §2、Bousfield–Friedlander 1978 §2。上記の後で 8–24 時間。
@@ -63,10 +63,10 @@
 - `TowerLimOne.subsingleton_of_mittagLeffler`
 - `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_ker`
 - `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_range`
-- `SkeletalCellAttachment.coefficientDifferential_loopPositive`
+- `RationalSkeletalTower.groupTower_isMittagLeffler`
 - `SkeletalCellAttachment.coefficientDifferential`
 - `RationalLevelNormalizedCochains.positive_cohomology_isZero`
-- `SphericalBoundary.boundary_filler_iff`
+- `RationalSkeletalTower.limOne_subsingleton`
 - `SkeletalSphericalCochain.extension_iff_differential_eq_zero`
 - `SkeletalSphericalRealization.exists_extended_realization`
 
@@ -92,8 +92,8 @@
 - coefficientDifferential の交代式・符号・核・像は全添字で証明済み。cohomology の消滅だけで有理 Shapiro の全射性・収束を完了扱いにしない。
 
 ### 次の一手
-- 実際の骨格の塔の合成遷移の像を、係数微分の計算と正次数 cohomology の消滅から安定化させる。`TowerLimOne.subsingleton_of_mittagLeffler` と `TowerMittagLefflerComparison` の像の安定化からの比較同型は既証なので再構成しない。
-- 一段の持ち上げの次の障害は係数微分の cocycle となり、cohomology の消滅で直前の fiber の像を引いて消せることを実際の長完全列から示す。これを逐次反復して、全体の写像空間の π へ移す。E₂ の消滅だけで収束を仮定しない。
+- 有理骨格の塔の高次群の Mittag–Leffler 条件と lim¹ 消滅を、通常の写像空間の群へ移す。`UnbasedPointedMapping.coneIsLimit` による厳密な復元と `UnbasedPointedMapping.limitGroupEquivOfCohomologyIsZero`の比較をつなぐ。
+- 係数微分と fiber 微分の完全性、障害補正、二段の像の一致、合成遷移の像の安定化は既証なので再構成しない。整合族の群を初段の係数へ同定する際、最初の fiber（cochain 次数一）では H¹ と δ⁰ の零性も別に使う。その後、十分高いスペクトル各段を使って全整数次数の Shapiro 全射性へ移す。
 - 核と lim¹ の全単射も残る。`kernelObstruction` の単位元の逆像が単位元だけとは証明済みだが、それだけで写像全体の単射性・全射性を主張しない。任意の差の類の実現と厳密な相対持ち上げは `NullDifferenceRealization`・`NullHomotopyStrictLifting` を使う。
 - Sp-2 の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。比較の全射性と整合する RelStruct の極限への組み立ては既証だが、段ごとの零性だけから整合する零ホモトピーを仮定しない。
 
