@@ -14,7 +14,7 @@
 - 三角形側を含む全ての未知方程式を証明し、左右の実際の dg nerve 単体を構成。二セルの join への貼合せと全境界面の保存を検証済み。
 - 標準 cofiber 余錐の coslice 初期性と標準 cofiber 正方形の ∞ 押し出し性を直接証明。充満部分 dg 圏への反映と Semifree の標準 cofiber 押し出しも完成。
 - 任意の span の余極限と全辺の cofiber、fiber/cofiber 列の一致、D(S) の安定性・D3 の三角比較は未完了。
-- 前工程は `a8026eab`。今回の入口は `Derived/CofiberPushout.lean`、`FullCofiberSquare.lean`、`SemifreeColimits.lean`。
+- 実装の保存先は `43c25ad6`（並行レーンの共有 index 保存）、集約・監査・計画は `4ec79296`。入口は `Derived/CofiberPushout.lean`、`FullCofiberSquare.lean`、`SemifreeColimits.lean`。
 - 対象＋Stable・Derived 集約ビルド：5,733 jobs 成功。今回の保存単位は新規 9 モジュール。
 - 公理監査：Derived 160 modules／2,325 宣言、Stable 429 modules／3,432 宣言。標準三公理のみ。
 - 本文・archive への実施記録の追記はしていない。今回の到達点はこの節を正本とする。
