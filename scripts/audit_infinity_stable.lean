@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteShiftedPrimitives
+import SerrePositivity.InfinityCategories.Derived.DGQuotientShiftedRoofs
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteCancellation
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFractionTriangles
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs
@@ -1724,6 +1726,15 @@ import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.dgQuotientEdges_exists_cancelingTriangles
 
+#print axioms SerrePositivity.InfinityCategories.dgDerivedDenominator_exists_closed
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableDerivedEdgeMap_compStruct
+#print axioms SerrePositivity.InfinityCategories.dgClosed_zero_iff_primitive
+#print axioms SerrePositivity.InfinityCategories.dgModuleProjectiveDerived_zero_iff_primitive
+#print axioms SerrePositivity.InfinityCategories.dgQuotientShiftedKernel_exists_closedDenominator
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFiniteShiftedKernel_exists_denominator
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFiniteShifted_exists_primitives
+#print axioms SerrePositivity.InfinityCategories.dgQuotientShifted_exists_closedRoof
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1877,6 +1888,15 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNativeDerivedDenominators,
+    `SerrePositivity.InfinityCategories.Derived.DGDerivedEdgeComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedPrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientShiftedKernel,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteShiftedKernel,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteShiftedPrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientShiftedRoofs,
+
     `SerrePositivity.InfinityCategories.Derived.DGQuotientRestrictionEquality,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientKernelDenominators,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientClosedCancellation,
