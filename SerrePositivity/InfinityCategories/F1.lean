@@ -725,3 +725,7 @@ public import SerrePositivity.InfinityCategories.F1.CoherentCompositionPrism
 public import SerrePositivity.InfinityCategories.F1.CoherentPrismCutCoordinates
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionFront
 public import SerrePositivity.InfinityCategories.F1.CoherentPrismEvaluation
+public import SerrePositivity.InfinityCategories.F1.PointSlicePrismReverse
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionReverse
+public import SerrePositivity.InfinityCategories.F1.FiberTransportFamilySourceComparison
+public import SerrePositivity.InfinityCategories.F1.CoherentReverseTransportComparison
