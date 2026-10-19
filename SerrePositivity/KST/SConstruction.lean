@@ -625,4 +625,6 @@ public import SerrePositivity.KST.SConstruction.VertexDiscreteEdgeClasses
 public import SerrePositivity.KST.SConstruction.VertexDiscreteHomotopyCorrection
 public import SerrePositivity.KST.SConstruction.PointedKanSpecifiedComponentCorrection
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyOriginalCoherentDiagram
+public import SerrePositivity.KST.SConstruction.SuspensionLoopMappingIso
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblySuspensionFamilies
 /-! # ∞-S• 構成と連結 K 理論 -/

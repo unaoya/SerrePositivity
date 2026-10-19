@@ -9284,3 +9284,66 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentIso
 #print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentIso
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMapping_curry'
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMapping_curry'
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_vertex
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_vertex
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_post
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_post
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_pre
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_pre
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_post
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_post
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_pre
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_pre
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_vertex
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_vertex
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_post
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_post
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_pre
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_pre
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblySigmaAt
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblySigmaAt
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblySigmaFamily
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblySigmaFamily
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblySigmaFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblySigmaFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblySigmaAt_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblySigmaAt_component
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionCylinderFamily
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionCylinderFamily
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionCylinderFamily_source
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionCylinderFamily_source
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionCylinderFamily_target
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionCylinderFamily_target
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingIhom_eq_basedHomFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingIhom_eq_basedHomFunctor
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingFamily_pre
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingFamily_pre
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingFamily_prePointed
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingFamily_prePointed
