@@ -438,6 +438,11 @@ public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientPretriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedQuasiEquivalence
 public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability
+public import SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCycles
+public import SerrePositivity.InfinityCategories.Derived.DGModuleEvaluationIso
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorCone
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeIso
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeComponents
 
 /-! # Semifree 複体による導来圏の dg 表示
 

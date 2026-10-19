@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeComponents
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability
 import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
 import SerrePositivity.InfinityCategories.Stable.UniverseLimits
@@ -1132,6 +1133,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCycles,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleEvaluationIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorCone,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeComponents,
     `SerrePositivity.InfinityCategories.Derived.DGHomotopyFiniteCellGeneration,
     `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFiniteCells,
     `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria,
