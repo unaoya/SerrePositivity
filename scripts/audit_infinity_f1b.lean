@@ -2363,3 +2363,37 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanPointColimit_leg_invertible
 
 #check @SerrePositivity.InfinityCategories.F1B.kanColimit_terminal_leg_invertible
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeHom_source_component_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_identity_restrict_val
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_identity_leg_invertible
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_isColimit_at_image
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFunctorHomEvaluate_isIso_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransport_source_component_isIso_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransport_identity_unit_component_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtension_unit_component_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtension_unit_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransport_isIso_of_unit_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtension_canonicalColimits_of_unit_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalColimits_of_functorIso
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftCanonical_strictification
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_terminal_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_terminal_surjective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_terminal_trivialKanFibration

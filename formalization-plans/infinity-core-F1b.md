@@ -38,11 +38,11 @@
 - 相対左 Kan 条件を標準 U 余極限で定義し、輸送・h Fun の類への不変性、comma 候補・指定変換の局所判定を証明。
 - 底 C 内で一度だけ選んだ普遍図式への前合成により、元の関手の族を comma の図式の族へ写す。
   標準相対左 Kan 条件の保存・反映、右端の厳密な回収、U の後合成自然性、元の相対制限との可換正方形を証明。
-- 包含の像の局所添字の恒等終対象、終対象点の right anodyne 性と相対余極限の一点制限、絶対余極限の終対象脚の可逆性を証明。
+- 充満忠実な inner 単射に沿う指定左単位の可逆性、元の図式の厳密な延長を証明。局所余極限の存在の下で終対象上の元の制限は自明 Kan。
 - 標準 U 余極限の点ごとの族・定値族への移送、相対左 Kan 条件の保存を証明。
 - 元の左右標準 Kan 条件から指定 pinched 制限の同値を証明。左は単射なら始点境界を充填し、終対象上の全部分圏の制限は充満忠実。
-- 最終検証：F1・F1B 同時ビルド成功（3884 jobs）、同時 import 検査成功（F1 7176・F1B 4463 宣言）。
-  公理監査成功（4468 宣言、標準三公理のみ、1212 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3895 jobs）、同時 import 検査成功（F1 7205・F1B 4488 宣言）。
+  公理監査成功（4493 宣言、標準三公理のみ、1219 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -53,7 +53,7 @@
   右持ち上げ条件下の組み立て・任意の U の path 置換・相対 join の関手の制限の相対始点境界充填は証明済み。
   任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
   相対 join の制限は充満忠実、局所存在の下で自明 Kan。元の全部分圏からの制限と族の可換正方形を構成済み。
-  元の制限の絶対的な左右 pinched 比較と左の全部分圏の充満忠実性は完了。一般 U 上の相対比較と右側への移送は未完。
+  元の左右 pinched 比較、左の厳密な存在と終対象上の自明 Kan 制限は完了。一般 U 上の相対比較・厳密化と右側への移送は未完。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
@@ -74,8 +74,8 @@
 - `F1B.kanLeftCanonical_pinchedHomMap_equivalence` / `F1B.kanLeftCanonical_pre_initialBoundary`
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
-- `F1B.kanLeftKanIdentityVertex_isTerminal` / `F1B.kanLeftLocalColimit_iff_restrict_identity`
-- `F1B.kanTerminalPoint_rightAnodyne` / `F1B.kanColimit_terminal_leg_invertible`
+- `F1B.kanLeftKanExtension_unit_isIso` / `F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits`
+- `F1B.kanRelativeLeftKanRestriction_terminal_trivialKanFibration` / `F1B.kanLeftCanonical_isColimit_at_image`
 
 ### 依存と提供
 
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：局所添字の恒等終対象・終対象点の right anodyne 性・相対余極限の一点判定・絶対余極限の脚、集約・監査・本書）。
+- なし（本保存単位：指定左単位の可逆性・厳密な左 Kan 延長・終対象上の元の制限の自明 Kan 性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `kanLeftLocalColimit_iff_restrict_identity` と `kanColimit_terminal_leg_invertible` を指定 Kan 変換の単位成分へ接続する。
-  全部分圏包含に沿う単位の可逆性から元の図式・境界を保つ厳密化を構成する。
-  一般 U 上の相対写像空間比較と右側への移送も証明し、原典 7.3.6.7・7.3.6.9 を閉じる。
+- `kanLeftCanonical_isColimit_at_image` と局所輸送の後合成から、単位の U 像が可逆な相対左 Kan 単位の可逆性を導く。
+  元・標的・境界を保つ相対厳密化と一般 U 上の元の制限の写像空間比較へ接続する。
+  右側への移送も証明し、原典 7.3.6.7・7.3.6.9 を閉じる。終対象上の左の厳密な存在と自明 Kan 制限は完了。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

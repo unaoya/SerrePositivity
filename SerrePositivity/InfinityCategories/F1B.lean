@@ -578,3 +578,10 @@ public import SerrePositivity.InfinityCategories.F1B.KanRightPointJoinPrism
 public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeColimitTerminalIndex
 public import SerrePositivity.InfinityCategories.F1B.KanPointColimitLeg
+public import SerrePositivity.InfinityCategories.F1B.KanCoconeHomLeg
+public import SerrePositivity.InfinityCategories.F1B.KanLeftIdentityLeg
+public import SerrePositivity.InfinityCategories.F1B.KanLeftTransportComponents
+public import SerrePositivity.InfinityCategories.F1B.KanLeftUnitInvertible
+public import SerrePositivity.InfinityCategories.F1B.KanLeftUnitCanonical
+public import SerrePositivity.InfinityCategories.F1B.KanLeftStrictExistence
+public import SerrePositivity.InfinityCategories.F1B.KanLeftTerminalRestrictionExistence
