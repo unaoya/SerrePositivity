@@ -5662,3 +5662,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedPathCocone_isColimit_of_pathFamily_homotopy
 #print axioms specifiedPathCocone_isColimit_of_pathFamily_homotopy
+
+#check @equivalencePathVertexEdge_source
+#print axioms equivalencePathVertexEdge_source
+
+#check @equivalencePathVertexEdge_target
+#print axioms equivalencePathVertexEdge_target
+
+#check @equivalencePathVertexEdge
+#print axioms equivalencePathVertexEdge
+
+#check @equivalencePathVertexEdge_map
+#print axioms equivalencePathVertexEdge_map
+
+#check @exists_transport_compStruct_of_fibre_edge
+#print axioms exists_transport_compStruct_of_fibre_edge
+
+#check @exists_transport_composition_faces_of_fibre_edge
+#print axioms exists_transport_composition_faces_of_fibre_edge
+
+#check @coconeRestrictionFiber_vertex_val
+#print axioms coconeRestrictionFiber_vertex_val
+
+#check @partialColimitSpecifiedFiberVertex
+#print axioms partialColimitSpecifiedFiberVertex
+
+#check @partialColimitSpecifiedFiberVertex_left
+#print axioms partialColimitSpecifiedFiberVertex_left
+
+#check @partialColimitSpecifiedFiberVertex_right
+#print axioms partialColimitSpecifiedFiberVertex_right
+
+#check @partialColimitSpecifiedCorrection_zero
+#print axioms partialColimitSpecifiedCorrection_zero
+
+#check @partialColimitSpecifiedCorrectionEdge
+#print axioms partialColimitSpecifiedCorrectionEdge
+
+#check @partialColimitSpecifiedCorrectionEdge_projection
+#print axioms partialColimitSpecifiedCorrectionEdge_projection
+
+#check @partialColimitSpecifiedCorrectionCosliceEdge
+#print axioms partialColimitSpecifiedCorrectionCosliceEdge
+
+#check @exists_specifiedPathCocone_branch_comparisons
+#print axioms exists_specifiedPathCocone_branch_comparisons
+
+#check @exists_specifiedPathCocone_branch_homotopies
+#print axioms exists_specifiedPathCocone_branch_homotopies
