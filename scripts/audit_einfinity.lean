@@ -552,6 +552,9 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.raw_success_zero,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.fused_success_zero,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedWord_step,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fused_success_blockWord,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedWord_eq_blockWord,
+      `SerrePositivity.EInfinity.Surjection.substitute_append,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_in_context,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.horizontal_vertical_join,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.vertical_horizontal_join,
@@ -1132,3 +1135,27 @@ private lemma fusedFixture_word : fullCompositionFixture.fusedWord 0 =
 example : reduceRows (fullCompositionFixture.fusedRows 0) [] =
     some [0, 1, 2, 4, 2, 1, 4, 3] := by
   simpa only [fusedFixture_word] using fullCompositionFixture.fused_success_zero
+
+-- 行長の古典選択を使わず、元の全成分語だけで融合出力を計算する。
+private lemma blockFixture_word : fullCompositionFixture.blockWord 0 =
+    [0, 1, 2, 4, 2, 1, 4, 3] := by
+  rw [TableCompositionData.blockWord,
+    dite_eq_left (show 0 < fullCompositionFixture.count by decide),
+    TableCompositionData.blockWord,
+    dite_eq_left (show 1 < fullCompositionFixture.count by decide),
+    TableCompositionData.blockWord,
+    dite_eq_right (show ¬2 < fullCompositionFixture.count by decide)]
+  decide
+example : reduceRows (fullCompositionFixture.fusedRows 0) [] =
+    some [0, 1, 2, 4, 2, 1, 4, 3] := by
+  simpa only [blockFixture_word] using fullCompositionFixture.fused_success_blockWord
+example : fullCompositionFixture.fusedWord 0 = fullCompositionFixture.blockWord 0 :=
+  fullCompositionFixture.fusedWord_eq_blockWord 0 (by decide)
+-- 前半が二つの指定値を含むとき、後半は実際に二つの部分語を消費して始まる。
+example : substitute (m := 1) (n := 2) 0 ([0, 1, 0] ++ [0, 1]) [[0], [1], [0, 1]] =
+    substitute (m := 1) (n := 2) 0 [0, 1, 0] [[0], [1], [0, 1]] ++
+      substitute (m := 1) (n := 2) 0 [0, 1] [[0, 1]] := by
+  have hc : ([0, 1, 0] : List (Fin 2)).count 0 = 2 := by decide
+  have h := substitute_append (m := 1) (n := 2) 0 [0, 1, 0] [0, 1] [[0], [1], [0, 1]]
+  rw [hc] at h
+  exact h

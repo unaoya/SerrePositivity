@@ -266,7 +266,11 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `fused_success_zero` は全境界を融合した行列が空の除外状態から実際に成功することを証明。
 `boundaryEraseIndex_of_success` は融合で消す位置を各成功ブロックの出力の最終位置へ同定する。
 `fusedWord_step` により融合出力は成分語だけで計算でき、成分行長の古典選択を展開しない。
-融合後の実際の行列・出力の、経路の頂点列・合成語との一般の一致は未完成。
+`blockWord` は各水平・垂直語の dropLast と最後の水平語を連結する計算可能な出力表示。
+`fusedWord_eq_blockWord` で実際の融合出力との一般の一致を証明し、
+`fused_success_blockWord` で全融合表の出力を元の成分語だけへ同定する。
+`substitute_append` は外側語の前半の指定値の出現回数だけ部分語を消費する連結公式。
+融合後の実際の行列と経路の頂点列、`blockWord` と `compositeWord` の一般の一致は未完成。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
