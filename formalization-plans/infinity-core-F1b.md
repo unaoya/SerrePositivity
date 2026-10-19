@@ -30,10 +30,11 @@
   始対象の評価は自明 Kan fibration。一般の strict transport の恒等射評価も自明 Kan fibration かつ ∞ 圏同値。
 - 相対関手の充填性を仮定しない界面を `KanSection` 名前空間に置き、F1 の禁止 import 閉包から分離。
 - 一般の universal scaffold を構成し、各 fiber の自明 Kan fibration 性と水平辺の cocartesian 性を証明。
-  一般の scaffold の条件とその底変換による保存、一点の底での全空間の前合成同値も証明。
-  任意の底の全空間比較は未完。有限鎖の帰納ステップと底についての局所性が残る。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2506 jobs）。
-  公理監査成功（3197 宣言、標準三公理のみ、835 モジュールに straightening なし）。
+  有限鎖の帰納と底についての局所性で、任意の通常の圏の nerve 上の scaffold の全空間の前合成同値を証明。
+  universal scaffold も、内ホーンを含む任意の単体集合への底変換後に前合成同値となる。
+  coslice・区間・相対 join・写像円柱の比較を `KanSection` 内で分離し、右 pinched 比較は既存の F1b を再利用。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2582 jobs）。
+  公理監査成功（3395 宣言、標準三公理のみ、908 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -63,12 +64,11 @@
 - `kanFiberwiseHom` / `kanFiberwiseHomFiberIso` / `kanRelativeJoinCoconeFiber_initialBoundary`
 - `kanFiberwiseHomProjection_innerFibration_iff` / `exists_kanFinalFiberRetraction`
 - `kanIsCocartesianEdge_triangle_second_of_first_long` / `exists_kanFinalFiberRetraction_inverting`
-- `kanCocartesianSections` / `kanCocartesianSectionsPre`
-- `kanCocartesianStrictTransportDiagram` / `kanCocartesianStrictTransportEvaluate`
 - `exists_kanInitialSectionTransport_relative` / `kanCocartesianSectionsEvaluate_trivialKanFibration`
 - `kanCocartesianStrictTransportFiberEquivalence`
 - `kanUniversalScaffold` / `kanUniversalScaffoldFiberMap_isQCatEquivalence`
-- `KanCocartesianScaffold.baseChange` / `KanCocartesianScaffold.isPrecompositionEquivalence_of_point`
+- `KanCocartesianScaffold.isPrecompositionEquivalence`
+- `kanUniversalScaffold_overPullback_isPrecompositionEquivalence`
 
 ### 依存と提供
 
@@ -79,8 +79,8 @@
 
 ### 未コミット
 
-- 保存単位：`KanScaffold*` 4 本、`KanUniversalScaffold*` 3 本、`KanCocartesianScaffold`、
-  `KanCocartesianStrictTransport` の係数値 instance、集約・監査・本書。
+- 保存単位：`KanSection` の coslice・区間・相対 join・写像円柱の比較 25 本、
+  `KanScaffold` の有限鎖・一般・任意底変換の比較 8 本、集約・監査・本書。
 
 ### 既知の問題
 
@@ -97,9 +97,9 @@
 
 ### 次の一手
 
-- 一般の scaffold の有限鎖上の全空間比較を、既存の写像円柱の一般比較で帰納的に証明する。
-  F1 の有限鎖の幾何的な分解を再利用し、水平辺の条件から円柱の垂直辺の cocartesian 性を導く。
-  底についての局所性で一般の scaffold 比較へ戻し、内ホーン逆像の前合成同値と特殊辺の cartesian 性へ進む。
+- 構成済みの任意底変換後の universal scaffold 比較を使い、cocartesian fibration の内ホーン逆像の前合成同値を証明する。
+  replacement 側の内ホーンへの制限を有限鎖の組み立てで比較し、実際の逆像へ移送する（Kerodon §5.3.6）。
+  `kanFiberwiseHomProjection_innerFibration_of_hornEquivalences` に渡した後、特殊辺の cartesian 性へ進む。
   その後、制限の輸送との両立で fiber の境界充填を全空間へ移し、既存の骨格の組み立てに渡す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
