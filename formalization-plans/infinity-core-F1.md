@@ -32,8 +32,8 @@
   同じ始点と底を持つ全 lift prism の空間を構成し、パラメーター射影は trivial Kan fibration。
   任意の prism 族を戻す普遍性と厳密な回収、終点評価と標準輸送の引き戻しの関手同型を証明した。
   始点も動く全 lift prism の空間を構成。固定始点への底変換と実際の始点 fiber を同型で結び、
-  始点が同値である各 fiber 上の終点評価の同値性を証明済み。同時終点制限の Kan 性は未完。
-- 対象ビルド2960 jobs、公理監査5506宣言が成功。依存公理は標準3公理のみ。
+  同時端点制限は Kan fibration。始点が同値なら fiber の終点射は trivial Kan fibration、両端固定 lift 空間は可縮。
+- 対象ビルド2969 jobs、公理監査5543宣言が成功。依存公理は標準3公理のみ。
 
 ### 残り（依存順）
 
@@ -63,7 +63,8 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `parametrizedPointedSpaceTransport_isQCatEquivalence`、`pointedPrismSourceFiberEndpoint_isQCatEquivalence`
+- `parametrizedPointedSpaceTransport_isQCatEquivalence`、`pointedPrismLiftEndpoints_fibration`
+- `pointedPrismSourceFiberEndpoint_trivialKanFibration`、`pointedPrismFixedEndpoints_isContractibleKan`
 
 ### 依存と提供
 
@@ -95,9 +96,9 @@
 
 ### 次の一手
 
-始点も動く全 lift prism の同時終点制限 `pointedPrismLiftEndpoints` が Kan fibration である
-ことを境界包含の相対内部 Hom から証明する。始点を同値の空間に制限し、既証明の実際の
-始点 fiber 上の終点同値性と合わせる（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
+同時端点射の頂点 fiber を反復した頂点 fiber と同型で結ぶ。始点を同値の空間に制限し、
+既証明の両端固定 lift 空間の可縮性と Kan fibration 性から、制限全体が trivial Kan
+fibration であることを示す（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
 その後 mapping cylinder の比較から区間の表現空間の境界制限、点・単体の可縮性、一般の延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
