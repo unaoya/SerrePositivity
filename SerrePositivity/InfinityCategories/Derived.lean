@@ -605,6 +605,15 @@ public import SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFille
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionIdentity
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFillerRefinement
 
+public import SerrePositivity.InfinityCategories.Derived.DGClosedPinchedRepresentable
+public import SerrePositivity.InfinityCategories.Derived.DGClosedVerdierRoofDiagram
+public import SerrePositivity.InfinityCategories.Derived.DGClosedPinchedFunctorMap
+public import SerrePositivity.InfinityCategories.Derived.DGRoofSliceVertices
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierOver
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofComparison
+public import SerrePositivity.InfinityCategories.Derived.DGClosedNerveOverMap
+public import SerrePositivity.InfinityCategories.Derived.DGClosedRoofSliceMap
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGClosedRoofSliceMap
+import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofComparison
 import SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFillerRefinement
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativeHomotopies
 import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPointed
@@ -1866,6 +1868,23 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller.refineClosed_id_h
 #print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller.refineClosed_id_simplex
 
+#print axioms SerrePositivity.InfinityCategories.dgClosedPinchedRepresentable
+#print axioms SerrePositivity.InfinityCategories.dgClosedVerdierRoofDiagram
+#print axioms SerrePositivity.InfinityCategories.dgClosedVerdierDenominatorMk
+#print axioms SerrePositivity.InfinityCategories.dgClosedPinchedFunctorMap
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceVertexEdge_injective
+#print axioms SerrePositivity.InfinityCategories.dgClosedOverVertex_projection
+#print axioms SerrePositivity.InfinityCategories.dgClosedOverVertex_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOver_quasicategory
+#print axioms SerrePositivity.InfinityCategories.dgClosedVerdierDenominatorVertex_source
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofComparison
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofComparison_naturality
+#print axioms SerrePositivity.InfinityCategories.dgCommonClosedNervePoint
+#print axioms SerrePositivity.InfinityCategories.dgClosedNerveOverMap
+#print axioms SerrePositivity.InfinityCategories.dgClosedNerveOverMap_projection
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofSliceMap
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofSliceMap_projection
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2019,6 +2038,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPinchedRepresentable,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedVerdierRoofDiagram,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPinchedFunctorMap,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofSliceVertices,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOver,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedNerveOverMap,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofSliceMap,
     `SerrePositivity.InfinityCategories.Derived.PinchedRelativeHomotopyMap,
     `SerrePositivity.InfinityCategories.Derived.PinchedLinearFunctorLaws,
     `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionNaturality,
