@@ -672,4 +672,8 @@ public import SerrePositivity.KST.SConstruction.KanSpanTriangleLifting
 public import SerrePositivity.KST.SConstruction.RelativeKanSpanFamilies
 public import SerrePositivity.KST.SConstruction.RelativeSequenceSpanFamilies
 public import SerrePositivity.KST.SConstruction.KRelativeSpanFamilies
+public import SerrePositivity.KST.SConstruction.EquivalenceFamilyPathRecovery
+public import SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyRecovery
+public import SerrePositivity.KST.SConstruction.CoherentIntervalFamilyRecovery
+public import SerrePositivity.KST.SConstruction.LoopCollageIntervalFamilyRecovery
 /-! # ∞-S• 構成と連結 K 理論 -/

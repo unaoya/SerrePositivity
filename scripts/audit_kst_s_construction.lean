@@ -10190,3 +10190,60 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.KanSpanTriangleDataOver.composition_triangle
 #print axioms SerrePositivity.KST.SConstruction.KanSpanTriangleDataOver.composition_triangle
+
+#check @SerrePositivity.KST.SConstruction.equivalenceFamilyPathHomotopy
+#print axioms SerrePositivity.KST.SConstruction.equivalenceFamilyPathHomotopy
+
+#check @SerrePositivity.KST.SConstruction.equivalenceFamilyPathHomotopy_section
+#print axioms SerrePositivity.KST.SConstruction.equivalenceFamilyPathHomotopy_section
+
+#check @SerrePositivity.KST.SConstruction.equivalenceFamilyPathHomotopy_precomp
+#print axioms SerrePositivity.KST.SConstruction.equivalenceFamilyPathHomotopy_precomp
+
+#check @SerrePositivity.KST.SConstruction.equivalenceFamilyPathHomotopy_section_pre
+#print axioms SerrePositivity.KST.SConstruction.equivalenceFamilyPathHomotopy_section_pre
+
+#check @SerrePositivity.KST.SConstruction.relativeEquivalenceFamilyPathLift
+#print axioms SerrePositivity.KST.SConstruction.relativeEquivalenceFamilyPathLift
+
+#check @SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData
+#print axioms SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData
+
+#check @SerrePositivity.KST.SConstruction.relativeEquivalenceFamilyRecovery
+#print axioms SerrePositivity.KST.SConstruction.relativeEquivalenceFamilyRecovery
+
+#check @SerrePositivity.KST.SConstruction.coherentMappingIntervalComparison
+#print axioms SerrePositivity.KST.SConstruction.coherentMappingIntervalComparison
+
+#check @SerrePositivity.KST.SConstruction.coherentMappingIntervalComparison_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.coherentMappingIntervalComparison_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.relativeCoherentIntervalFamilyRecovery
+#print axioms SerrePositivity.KST.SConstruction.relativeCoherentIntervalFamilyRecovery
+
+#check @SerrePositivity.KST.SConstruction.relativeCoherentCylinderFamilyRecovery
+#print axioms SerrePositivity.KST.SConstruction.relativeCoherentCylinderFamilyRecovery
+
+#check @SerrePositivity.KST.SConstruction.loopCollageSuspensionIntervalComparison
+#print axioms SerrePositivity.KST.SConstruction.loopCollageSuspensionIntervalComparison
+
+#check @SerrePositivity.KST.SConstruction.loopCollageSuspensionIntervalComparison_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.loopCollageSuspensionIntervalComparison_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.relativeLoopCollageSuspensionFamilyRecovery
+#print axioms SerrePositivity.KST.SConstruction.relativeLoopCollageSuspensionFamilyRecovery
+
+#check @SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.mk
+#print axioms SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.mk
+
+#check @SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.family
+#print axioms SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.family
+
+#check @SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.boundary
+#print axioms SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.boundary
+
+#check @SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.comparison
+#print axioms SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.comparison
+
+#check @SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.comparison_boundary
+#print axioms SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyData.comparison_boundary
