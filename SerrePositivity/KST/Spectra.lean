@@ -610,3 +610,7 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleLoopDiagramFamily
 public import SerrePositivity.KST.Spectra.SpectrumCircleLoopDiagramEvaluation
 public import SerrePositivity.KST.Spectra.SpectrumCotensorFullFaithfulnessCriterion
 public import SerrePositivity.KST.Spectra.SpectrumNativeLoopCircleIso
+public import SerrePositivity.KST.Spectra.SpectrumEvaluationPostCoordinates
+public import SerrePositivity.KST.Spectra.SpectrumMappingAdjointCoordinates
+public import SerrePositivity.KST.Spectra.InternalHomAdjointPreRestriction
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterNaturality
