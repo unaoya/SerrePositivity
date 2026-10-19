@@ -29,6 +29,14 @@ lemma dgClosedEdge_closed {x y : ClosedCategory A D} (f : x ⟶ y) :
     edgeClosed (dgClosedEdge A D f) = f :=
   (closedHomEquiv A D x y).symm_apply_apply f
 
+/-- 元の実辺は、その閉射から作った辺と厳密に一致する。 -/
+lemma dgClosedEdge_edgeClosed {x y : ClosedCategory A D}
+    (e : Truncated.Edge (X := (truncation 2).obj (dgNerve A D))
+      (Simplex.vertex (ForgetEnrichment.to (Complex A) x))
+      (Simplex.vertex (ForgetEnrichment.to (Complex A) y))) :
+    dgClosedEdge A D (edgeClosed e) = e :=
+  (edgeClosedEquiv _ _).symm_apply_apply e
+
 /-- dg 関手による閉射の像と実辺の一次単体の像は厳密に一致する。 -/
 lemma dgClosedEdge_map {E : Type w} [DGCategory A E] (F : DGFunctor A D E)
     {x y : ClosedCategory A D} (f : x ⟶ y) :

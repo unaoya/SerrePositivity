@@ -508,6 +508,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
 public import SerrePositivity.InfinityCategories.Derived.DGClosedVerdierDenominators
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs
 
+public import SerrePositivity.InfinityCategories.Derived.DGExtensionRepresentableClosed
+public import SerrePositivity.InfinityCategories.Derived.DGRestrictionYonedaNaturality
+public import SerrePositivity.InfinityCategories.Derived.DGRestrictionRepresentableArrows
+public import SerrePositivity.InfinityCategories.Derived.DGRestrictionArrowAdjunction
+public import SerrePositivity.InfinityCategories.Derived.DGRestrictionArrowReflection
+public import SerrePositivity.InfinityCategories.Derived.DGClosedMappedEdges
+public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEdges
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofH0
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientFractionTriangles
+
 
 /-! # Semifree 複体による導来圏の dg 表示
 

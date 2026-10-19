@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientFractionTriangles
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs
 import SerrePositivity.InfinityCategories.Derived.DGNativeDerivedFiniteCell
 import SerrePositivity.InfinityCategories.Stable.UniverseCofiberEdges
@@ -1271,10 +1272,35 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.DGQuotientActualRoof
 #print axioms SerrePositivity.InfinityCategories.dgQuotient_exists_actualRoof
 
+#print axioms SerrePositivity.InfinityCategories.dgExtensionRepresentableIso_closed_naturality
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableRestrictionMap_naturality
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionRepresentableArrow
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionRepresentableArrow_precomp
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionRepresentableArrow_homEquiv
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableDerivedMap_eq_iff
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionRepresentableArrow_derived_eq_iff
+#print axioms SerrePositivity.InfinityCategories.dgClosedEdge_edgeClosed
+#print axioms SerrePositivity.InfinityCategories.dgClosedMappedEdge_closed
+#print axioms SerrePositivity.InfinityCategories.dgStableHomotopyEquivalence_map_homMk
+#print axioms SerrePositivity.InfinityCategories.dgQuotientEdgeDerivedMap
+#print axioms SerrePositivity.InfinityCategories.DGQuotientActualRoof.h0_comparison
+#print axioms SerrePositivity.InfinityCategories.DGQuotientActualRoof.compositionSimplex
+#print axioms SerrePositivity.InfinityCategories.dgQuotientEdge_isInvertible_of_verdier
+#print axioms SerrePositivity.InfinityCategories.dgQuotientEdge_exists_fractionTriangle
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGExtensionRepresentableClosed,
+    `SerrePositivity.InfinityCategories.Derived.DGRestrictionYonedaNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGRestrictionRepresentableArrows,
+    `SerrePositivity.InfinityCategories.Derived.DGRestrictionArrowAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.DGRestrictionArrowReflection,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedMappedEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofH0,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFractionTriangles,
     `SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedMaps,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofs,
     `SerrePositivity.InfinityCategories.Derived.DGClosedEdges,
