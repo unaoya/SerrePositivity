@@ -120,7 +120,17 @@ run_cmd do
       `SerrePositivity.EInfinity.Operad.convolutionAction_uncurry,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathComplex,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constantNat,
-      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationNat] do
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationNat,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_one,
+      `SerrePositivity.EInfinity.convolutionUnitLaw,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_unit,
+      `SerrePositivity.EInfinity.tensorPowerSeparation,
+      `SerrePositivity.EInfinity.tensorPowerSeparation_permutation,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_separation,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_permutation,
+      `SerrePositivity.EInfinity.convolutionAssembly_naturality,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_equivariance,
+      `SerrePositivity.EInfinity.Operad.convolutionAction_post] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

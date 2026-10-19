@@ -144,3 +144,6 @@ public import SerrePositivity.EInfinity.BarrattEccles.Hopf
 public import SerrePositivity.EInfinity.Operad.CoalgebraIntervalRestriction
 public import SerrePositivity.EInfinity.Operad.ConvolutionOperations
 public import SerrePositivity.EInfinity.Operad.ConvolutionPathComplex
+public import SerrePositivity.EInfinity.Operad.ConvolutionUnit
+public import SerrePositivity.EInfinity.Operad.ConvolutionEquivariance
+public import SerrePositivity.EInfinity.Operad.ConvolutionPostcomposition

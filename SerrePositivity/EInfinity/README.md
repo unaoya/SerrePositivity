@@ -68,7 +68,10 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 オペラッド射で制限でき、制限射の Hopf 対角保存は不要。
 `convolutionAction` は内部 Hom 上の各 arity の演算 chain map、
 `CoalgebraInterval.prepathComplex` は底の複体の定数射・両端点評価と三角形を供給する。
-定数・評価の自然性も検証済み。convolution の P 代数公理、端点・定数の代数射性、
+定数・評価の自然性も検証済み。`convolutionAction_unit` が単位則、
+`convolutionAction_equivariance` が全置換についての等変性を与える。
+`convolutionAction_post` は P 代数射による後合成の演算保存を与える。
+convolution の部分合成則、余代数射による前合成、端点・定数の代数射性、
 評価の fibration・定数射の擬同型性、転送モデル構造は未完成。
 
 原典：
