@@ -2299,3 +2299,33 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalHomMap_bijective
 
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalHomMap_constantFamily_bijective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomMap_bijective_of_iso_square
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConstantHomPrecomposition_bijective_of_transpose
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPrecomposition_pinchedHomMap_equivalence_of_constantFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_pre_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_isColimit_of_terminal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConstantFunctorMap_evaluate
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsLimitCone_congr
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsLimitCone_constantFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightCanonicalLimits_constantFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightReflTransport
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanExtension_refl_of_canonicalLimits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightCanonicalHomMap_bijective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightCanonical_pinchedHomMap_equivalence
