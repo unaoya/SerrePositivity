@@ -33,7 +33,23 @@ run_cmd do
       `SerrePositivity.EInfinity.AlexanderWhitney.counit,
       `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_left_counit,
       `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_right_counit,
-      `SerrePositivity.EInfinity.AlexanderWhitney.counit_natural] do
+      `SerrePositivity.EInfinity.AlexanderWhitney.counit_natural,
+      `SerrePositivity.EInfinity.NegativeTensor.comparison,
+      `SerrePositivity.EInfinity.NegativeTensor.comparison_natural,
+      `SerrePositivity.EInfinity.NegativeTensor.comparison_associator,
+      `SerrePositivity.EInfinity.NegativeTensor.comparison_leftUnitor,
+      `SerrePositivity.EInfinity.NegativeTensor.comparison_rightUnitor,
+      `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal,
+      `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_projection_generator,
+      `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_coassoc,
+      `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_left_counit,
+      `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_right_counit,
+      `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal,
+      `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_rightAction,
+      `SerrePositivity.EInfinity.BarrattEccles.cochainCounit_eq_augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_coassoc,
+      `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_left_counit,
+      `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

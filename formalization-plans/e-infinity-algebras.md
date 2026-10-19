@@ -54,27 +54,28 @@
   一般の小さい単体集合の正規化 AW 成分を自然数次数のテンソル複体への鎖写像
   `diagonal` に束ね、次数分割の有限和公式、成分との一致、自然性、余結合性、
   augmentation 鎖写像 `counit` と左右余単位・その自然性まで検証済み。
-  整数コチェイン模型への移送、shuffle の余代数射性、Hopf オペラッド射は未完成。
+  自然なテンソル比較（結合子・左右単位子との適合性を含む）で整数模型へ移送し、
+  実際の E(n) の `complexDiagonal`、余結合性・左右余単位・Σ_n 同変性と
+  既存 augmentation との一致まで検証済み。shuffle の余代数射性と Hopf オペラッド射は未完成。
   E2a-3 の転送モデル構造、E2a-4・5 は未完成。現在地のコードと検証は本節と
   同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. 自然数鎖模型の AW 対角を負の整数コチェイン次数へ移し、既存の E(n) の
-     テンソル・augmentation と接続する。Berger–Fresse（BF）2004 §1.1.4、8〜16 時間。
-  2. 一般の shuffle が AW 余代数の射であることを、切断による shuffle の分割と
-     Koszul 符号で証明する。BF §1.1.3–§1.1.4、24〜60 時間。
-  3. arity ごとのテンソルオペラッドと AW の自然性を使い、E → E ⊗ E の
+  1. 一般の shuffle が AW 余代数の射であることを、切断による shuffle の分割と
+     Koszul 符号で証明する。負次数テンソル比較の braiding 適合性も接続する。
+     Berger–Fresse（BF）2004 §1.1.3–§1.1.4、24〜60 時間。
+  2. arity ごとのテンソルオペラッドと AW の自然性を使い、E → E ⊗ E の
      オペラッド射性・余結合性・余単位・Σ_n 同変性を閉じる。BF §1.1.4、16〜32 時間。
-  4. E-coalgebra 区間の抽象 structure から全代数の functorial path object、
+  3. E-coalgebra 区間の抽象 structure から全代数の functorial path object、
      fibrations.llp ⊆ 弱同値、J-cell acyclicity、小対象性・極限余極限と転送の適用を閉じる。
      Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
-  5. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
+  4. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
      BF §1.3・§3.1 と McClure–Smith の区間切断作用、80〜200 時間。
      着手前にファイル数・主要補題の見積もりを計画に一段落で記す指示が未実施。
      Δ¹ の作用は必要次数 r ≤ n に特殊化してよい。TR 自体は一般に証明する。
-  6. 具体区間を抽象界面へ代入して E2a-3 を完成。BM 命題 4.1、BF §3.1、8〜24 時間。
-  7. E2a-4：右 Quillen、全対象 fibrant、底での homotopy 引き戻し、H⁰ の可換環構造、
+  5. 具体区間を抽象界面へ代入して E2a-3 を完成。BM 命題 4.1、BF §3.1、8〜24 時間。
+  6. E2a-4：右 Quillen、全対象 fibrant、底での homotopy 引き戻し、H⁰ の可換環構造、
      離散可換代数の E 代数化。BM 命題 4.1、BF §3.1、16〜40 時間。
-  8. E2a-5：homotopy function complex と π₀ の Hom 比較。
+  7. E2a-5：homotopy function complex と π₀ の Hom 比較。
      Hovey §5・Dwyer–Kan、既存 HomotopyFunctionComplex の具体的適用、12〜24 時間。
 - **主要宣言**（名前のみ）：
   `SerrePositivity.EInfinity.projectiveModelCategory`、
@@ -99,7 +100,15 @@
   `SerrePositivity.EInfinity.AlexanderWhitney.counit`、
   `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_left_counit`、
   `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_right_counit`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.counit_natural`。
+  `SerrePositivity.EInfinity.AlexanderWhitney.counit_natural`、
+  `SerrePositivity.EInfinity.NegativeTensor.comparison`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_projection_generator`、
+  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal`、
+  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_rightAction`、
+  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_coassoc`、
+  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_left_counit`、
+  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit`。
 - **依存と提供**：HomotopicalAlgebra の Transfer/Recognition・Transfer/Right・
   HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
   Cells・複体のテンソル・HomComplex を読み取り専用で使う。
@@ -107,8 +116,8 @@
   Alg_E のモデル構造、右 Quillen 忘却関手、E2b 用 CAlg はまだ提供していない。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：停止時の対象ビルドは成功（2617 jobs）、公理監査は成功
-  （4078 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
+- **既知の問題**：停止時の対象ビルドは成功（2632 jobs）、公理監査は成功
+  （4301 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
   今回の AW 宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -116,10 +125,10 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：`AlexanderWhitney.ChainDiagonal` と BarrattEccles の
-  `NormalizedDegreeTransport`・`ShuffleCochainDegrees` を照合し、負の整数次数での
-  テンソルの有限成分を接続する。既存の E(n) への移送後、一般の shuffle の
-  AW 余代数射性へ進む。まだ区間・path object には着手しない。
+- **次の一手**：`BarrattEccles/ShufflePaths`・`ShuffleSign` の arity に依存しない
+  格子経路を再利用し、一般の X,Y に対する退化写像の対と shuffle 成分を構成する。
+  切断点での経路の分割・符号の積公式から AW の余代数射性を証明し、
+  既存の BE 部分合成へ接続する。まだ区間・path object には着手しない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。
