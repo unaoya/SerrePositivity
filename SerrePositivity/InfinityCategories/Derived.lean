@@ -635,6 +635,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofRefinemen
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofRefinementVertices
 public import SerrePositivity.InfinityCategories.Derived.DGRoofSimplicialReplacement
 
+public import SerrePositivity.InfinityCategories.Derived.DGCommonRoofRefinementFillers
+public import SerrePositivity.InfinityCategories.Derived.DGCommonRoofComparisonFillers
+public import SerrePositivity.InfinityCategories.Derived.DGCommonRoofComparisonVertices
+public import SerrePositivity.InfinityCategories.Derived.RoofReplacementTransport
+public import SerrePositivity.InfinityCategories.Derived.RoofReplacementPiZero
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofReplacementPiZero
+public import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondence
+public import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceFiber
+public import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceMap
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

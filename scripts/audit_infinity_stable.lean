@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceMap
+import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofReplacementPiZero
 import SerrePositivity.InfinityCategories.Derived.DGRoofSimplicialReplacement
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofVerdierMap
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofSliceMap
@@ -1960,6 +1962,36 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgRoofReplacementConstantComparison_projection
 #print axioms SerrePositivity.InfinityCategories.dgRoofReplacementConstantComparison_isPrecompositionEquivalence
 
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofRefinement_relative_fillers
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofRefinement_vertex_lifts
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofComparison_relative_fillers
+#print axioms SerrePositivity.InfinityCategories.dgCommonRoofComparison_vertex_lifts
+#print axioms SerrePositivity.InfinityCategories.roofReplacementVertex
+#print axioms SerrePositivity.InfinityCategories.roofReplacementTransportEdge
+#print axioms SerrePositivity.InfinityCategories.roofReplacementTransport_piZero
+#print axioms SerrePositivity.InfinityCategories.roofReplacementVertex_eta
+#print axioms SerrePositivity.InfinityCategories.roofReplacementMap_vertex
+#print axioms SerrePositivity.InfinityCategories.roofReplacementMap_piZero_surjective
+#print axioms SerrePositivity.InfinityCategories.dgRoofReplacementComparison_piZero_surjective
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondence
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceProjection
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceProjection_rightFibration
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondence_quasicategory
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofCorrespondence
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofCorrespondenceProjection
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofCorrespondenceProjection_rightFibration
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofCorrespondence_quasicategory
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondence_source_vertex
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceFiberIso
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofCorrespondence_source_vertex
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofCorrespondenceFiberIso
+#print axioms SerrePositivity.InfinityCategories.dgQuotientNervePoint
+#print axioms SerrePositivity.InfinityCategories.dgQuotientTargetSliceMap
+#print axioms SerrePositivity.InfinityCategories.dgQuotientTargetSliceMap_projection
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_projection
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_target
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2113,6 +2145,16 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGCommonRoofRefinementFillers,
+    `SerrePositivity.InfinityCategories.Derived.DGCommonRoofComparisonFillers,
+    `SerrePositivity.InfinityCategories.Derived.DGCommonRoofComparisonVertices,
+    `SerrePositivity.InfinityCategories.Derived.RoofReplacementTransport,
+    `SerrePositivity.InfinityCategories.Derived.RoofReplacementPiZero,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRoofReplacementPiZero,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondence,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceFiber,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceMap,
+
     `SerrePositivity.InfinityCategories.Derived.DGOverVertexInverse,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierOverVertexInverse,
     `SerrePositivity.InfinityCategories.Derived.RoofSliceTriangle,
