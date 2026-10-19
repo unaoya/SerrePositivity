@@ -557,3 +557,10 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKPoint
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKSection
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionConePoint
 public import SerrePositivity.KST.Spectra.SpectrumNativeCircleConeSection
+public import SerrePositivity.KST.Spectra.CoherentTrianglePathIso
+public import SerrePositivity.KST.Spectra.CoherentTrianglePathMinimum
+public import SerrePositivity.KST.Spectra.CoherentTriangleTraceRecovery
+public import SerrePositivity.KST.Spectra.WeightedConeTriangleTrace
+public import SerrePositivity.KST.Spectra.WeightedConeTriangleEdgewise
+public import SerrePositivity.KST.Spectra.WeightedEdgewiseSectionTriangle
+public import SerrePositivity.KST.Spectra.ReflectedIntervalEndpoints
