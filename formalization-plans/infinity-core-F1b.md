@@ -39,10 +39,10 @@
 - 底 C 内で一度だけ選んだ普遍図式への前合成により、元の関手の族を comma の図式の族へ写す。
   標準相対左 Kan 条件の保存・反映、右端の厳密な回収、U の後合成自然性、元の相対制限との可換正方形を証明。
 - 充満忠実な inner 単射に沿う指定左単位の可逆性、元の図式の厳密な延長を証明。局所余極限の存在の下で終対象上の元の制限は自明 Kan。
-- 標準 U 余極限の点ごとの族・定値族への移送、相対左 Kan 条件の保存を証明。
+- 標準 U 余極限の点ごとの族・定値族への移送と保存、単位の U 像が可逆な相対左 Kan 単位の可逆性を証明。
 - 元の左右標準 Kan 条件から指定 pinched 制限の同値を証明。左は単射なら始点境界を充填し、終対象上の全部分圏の制限は充満忠実。
-- 最終検証：F1・F1B 同時ビルド成功（3895 jobs）、同時 import 検査成功（F1 7205・F1B 4488 宣言）。
-  公理監査成功（4493 宣言、標準三公理のみ、1219 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3900 jobs）、同時 import 検査成功（F1 7235・F1B 4500 宣言）。
+  公理監査成功（4506 宣言、標準三公理のみ、1221 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -75,7 +75,7 @@
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
 - `F1B.kanLeftKanExtension_unit_isIso` / `F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits`
-- `F1B.kanRelativeLeftKanRestriction_terminal_trivialKanFibration` / `F1B.kanLeftCanonical_isColimit_at_image`
+- `F1B.kanRelativeLeftKanRestriction_terminal_trivialKanFibration` / `F1B.kanRelativeLeftKanExtension_unit_isIso`
 
 ### 依存と提供
 
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：指定左単位の可逆性・厳密な左 Kan 延長・終対象上の元の制限の自明 Kan 性、集約・監査・本書）。
+- なし（本保存単位：局所輸送の後合成・一般 U 上の相対左 Kan 単位の可逆性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,8 +98,8 @@
 
 ### 次の一手
 
-- `kanLeftCanonical_isColimit_at_image` と局所輸送の後合成から、単位の U 像が可逆な相対左 Kan 単位の可逆性を導く。
-  元・標的・境界を保つ相対厳密化と一般 U 上の元の制限の写像空間比較へ接続する。
+- `kanRelativeLeftKanExtension_unit_isIso` を元・標的・境界を保つ相対厳密化へ接続する。
+  一般 U 上の元の制限の写像空間比較を証明する。通常の同型延長だけでは標的の図式を固定できない点に注意。
   右側への移送も証明し、原典 7.3.6.7・7.3.6.9 を閉じる。終対象上の左の厳密な存在と自明 Kan 制限は完了。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と

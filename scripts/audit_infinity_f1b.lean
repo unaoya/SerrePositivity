@@ -2397,3 +2397,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_terminal_surjective
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_terminal_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftUnitPostcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransportPostcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransportPostcomp_cocone_val
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftUnitPostcomp_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransport_image_isColimit_at_image
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanExtension_unit_component_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanExtension_unit_isIso

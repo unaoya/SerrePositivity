@@ -585,3 +585,5 @@ public import SerrePositivity.InfinityCategories.F1B.KanLeftUnitInvertible
 public import SerrePositivity.InfinityCategories.F1B.KanLeftUnitCanonical
 public import SerrePositivity.InfinityCategories.F1B.KanLeftStrictExistence
 public import SerrePositivity.InfinityCategories.F1B.KanLeftTerminalRestrictionExistence
+public import SerrePositivity.InfinityCategories.F1B.KanLeftTransportPostcomp
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeLeftUnitInvertible
