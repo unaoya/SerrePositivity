@@ -495,3 +495,13 @@ public import SerrePositivity.KST.ProExcision.RowRelativeBlockMap
 public import SerrePositivity.KST.ProExcision.RelativeRowAffineSequence
 
 public import SerrePositivity.KST.ProExcision.RelativeRowAffineLeftZero
+
+public import SerrePositivity.KST.ProExcision.BarFinitePower
+
+public import SerrePositivity.KST.ProExcision.BarSequentialColimits
+
+public import SerrePositivity.KST.ProExcision.ModuleHomologySequentialColimits
+
+public import SerrePositivity.KST.ProExcision.IntegerLinearizationAdjunction
+
+public import SerrePositivity.KST.ProExcision.HomologyModelSequentialColimits

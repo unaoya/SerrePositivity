@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1552宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1569宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1175,3 +1175,17 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `relativeRowAffineLeftColimitMap` はこの実自然変換の実余極限への誘導射。`relativeRowAffineLeft_leg_zero` と `relativeRowAffineLeftColimitMap_zero` は有限 rank の実零化と通常の余極限の外延性から零化を証明する。
 - 行側の実 rank 余極限上の零化まで証明済み。安定モノイドの H_* との filtered 模型比較、実置換共役と整数作用への移送は残るため、L6d 全体の完了はまだ主張しない。
 - 対象ビルド・1552宣言の公理監査は標準三公理のみで成功。
+
+
+### L6d の実 bar・借用 H_* の順序余極限保存（2026-10-19）
+
+- `finitePower_preservesSequentialColimits` は有限個の座標を ULift した有限型の共変 Hom と読み、有限表示性から自然数添字の余極限保存を証明する。
+- `monoidBarFunctor` は既存の実対角 bar の関手。`monoidBarDegreeIso` は各次数を有限個の実モノイド座標と自然に同定する。
+- `monoidBarFunctor_preservesSequentialColimits` と `monoidBarSequentialColimitIso` は各次数の有限性とモノイドの忘却の filtered 保存から得る実対角 bar の順序余極限保存・比較同型。遷移の単射性は要求しない。
+- K-L2 の `Comparison.shortComplexHomology_preservesExactColimits` を読み取り専用で利用し、AB5 と最小添字宇宙への移送により自然数添字の保存を供給する。
+- `intForgetShortComplex_preservesSequentialColimits` と `moduleShortHomology_preservesSequentialColimits` は ℤ 加群とアーベル群の実同値を通じた実模型移送。`moduleChainHomology_preservesSequentialColimits` は三項評価から得る実鎖ホモロジーの保存。
+- `integerLinearizationHomEquiv`・`integerLinearizationAdjunction` は基底の宇宙と係数 ℤ を独立に保った実自由・忘却随伴。既存の非被約自由化を置き換えない。
+- `linearizedChainEvaluationIso`・`linearizedChainFunctor_preservesSequentialColimits` は実自由整数複体の次数ごとの保存。
+- `SimplicialHomologyModel.preservesSequentialColimits`・`sequentialColimitIso` は借用する自然な複体模型だけから得る H_* の実順序余極限保存・比較同型。filtered 保存を新しい構造体のフィールドや仮定にしない。
+- 相対商との交換、実置換共役と整数作用への移送は残る。L6d 全体の完了はまだ主張しない。
+- 対象ビルド・1569宣言の公理監査は標準三公理のみで成功。

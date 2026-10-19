@@ -4503,3 +4503,54 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeRowAffineLeftColimitMap_zero
 #print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeRowAffineLeftColimitMap_zero
+
+#check @SerrePositivity.KST.ProExcision.finitePower_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.finitePower_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.monoidBarFunctor
+#print axioms SerrePositivity.KST.ProExcision.monoidBarFunctor
+
+#check @SerrePositivity.KST.ProExcision.monoidBarDegreeIso
+#print axioms SerrePositivity.KST.ProExcision.monoidBarDegreeIso
+
+#check @SerrePositivity.KST.ProExcision.monoidBarFunctor_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.monoidBarFunctor_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.monoidBarSequentialColimitIso
+#print axioms SerrePositivity.KST.ProExcision.monoidBarSequentialColimitIso
+
+#check @SerrePositivity.KST.ProExcision.abelianShortHomology_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.abelianShortHomology_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.intForgetShortComplex_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.intForgetShortComplex_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.moduleShortHomology_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.moduleShortHomology_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.moduleShortComplexFunctor_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.moduleShortComplexFunctor_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.moduleChainHomology_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.moduleChainHomology_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.integerLinearizationHomEquiv
+#print axioms SerrePositivity.KST.ProExcision.integerLinearizationHomEquiv
+
+#check @SerrePositivity.KST.ProExcision.integerLinearizationAdjunction
+#print axioms SerrePositivity.KST.ProExcision.integerLinearizationAdjunction
+
+#check @SerrePositivity.KST.ProExcision.integerLinearization_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.integerLinearization_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.linearizedChainEvaluationIso
+#print axioms SerrePositivity.KST.ProExcision.linearizedChainEvaluationIso
+
+#check @SerrePositivity.KST.ProExcision.linearizedChainFunctor_preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.linearizedChainFunctor_preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.SimplicialHomologyModel.preservesSequentialColimits
+#print axioms SerrePositivity.KST.ProExcision.SimplicialHomologyModel.preservesSequentialColimits
+
+#check @SerrePositivity.KST.ProExcision.SimplicialHomologyModel.sequentialColimitIso
+#print axioms SerrePositivity.KST.ProExcision.SimplicialHomologyModel.sequentialColimitIso
