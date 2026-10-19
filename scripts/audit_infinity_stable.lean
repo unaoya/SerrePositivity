@@ -72,6 +72,10 @@ import SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonProjecti
 import SerrePositivity.InfinityCategories.Derived.StandardFiberPushout
 import SerrePositivity.InfinityCategories.Derived.Stability
 import SerrePositivity.InfinityCategories.Derived.StableHomotopyComparison
+import SerrePositivity.InfinityCategories.Derived.MappingConeZeroTarget
+import SerrePositivity.InfinityCategories.Derived.FullCofiberVertices
+import SerrePositivity.InfinityCategories.Derived.StandardSuspensionSquare
+import SerrePositivity.InfinityCategories.Derived.SuspensionObjectComparison
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1759,6 +1763,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport,
     `SerrePositivity.InfinityCategories.Derived.Stability,
     `SerrePositivity.InfinityCategories.Derived.StableHomotopyComparison,
+    `SerrePositivity.InfinityCategories.Derived.MappingConeZeroTarget,
+    `SerrePositivity.InfinityCategories.Derived.FullCofiberVertices,
+    `SerrePositivity.InfinityCategories.Derived.StandardSuspensionSquare,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionObjectComparison,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

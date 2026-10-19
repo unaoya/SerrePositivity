@@ -1002,6 +1002,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport,
     `SerrePositivity.InfinityCategories.Derived.Stability,
     `SerrePositivity.InfinityCategories.Derived.StableHomotopyComparison,
+    `SerrePositivity.InfinityCategories.Derived.MappingConeZeroTarget,
+    `SerrePositivity.InfinityCategories.Derived.FullCofiberVertices,
+    `SerrePositivity.InfinityCategories.Derived.StandardSuspensionSquare,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionObjectComparison,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
