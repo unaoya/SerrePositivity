@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleConePullback
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberEquivalence
 import SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberEquivalence
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberDesc
@@ -144,6 +145,20 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgSourceTriangle_obj
+#print axioms SerrePositivity.InfinityCategories.dgSourceTriangle_edge12
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparisonCycle_eq
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberLower_precompose
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberUpper_precompose
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparison_common
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparisonJoin_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparisonJoin_face_one
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparison_cospan
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparisonSliceEdge
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparisonSliceEdge_projection
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberComparisonSliceEdge_isInvertible
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeSquare_isPullback
 
 #print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberSectionFirst_closed
 #print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberSectionFirst_projection
@@ -1565,6 +1580,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSourceTriangleComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberComparisonTriangles,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberComparisonJoin,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberComparisonSlice,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberComparisonProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConePullback,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberSectionFirst,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberSection,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberContraction,
