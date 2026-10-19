@@ -512,3 +512,7 @@ public import SerrePositivity.KST.Spectra.LoopIntervalEndFamilies
 public import SerrePositivity.KST.Spectra.IntervalEndpointFamilies
 public import SerrePositivity.KST.Spectra.LoopIntervalEndCircleIso
 public import SerrePositivity.KST.Spectra.LoopCircleBousfieldKanComparison
+public import SerrePositivity.KST.Spectra.SpectrumPointLoopHomCoefficients
+public import SerrePositivity.KST.Spectra.SpectrumCircleHomBKComparison
+public import SerrePositivity.KST.Spectra.SpectrumCircleHomBKCentral
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKParameterEdges
