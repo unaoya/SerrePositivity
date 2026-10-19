@@ -4774,3 +4774,90 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @exists_cocone_glue_of_boundary_component
 #print axioms exists_cocone_glue_of_boundary_component
+
+#check @leftFibrationInitialFiberPiZeroEquiv_post_edge
+#print axioms leftFibrationInitialFiberPiZeroEquiv_post_edge
+
+#check @initialFiberTransportProjection
+#print axioms initialFiberTransportProjection
+
+#check @leftFibrationInitialFiberPiZeroEquiv_post_edgeAt
+#print axioms leftFibrationInitialFiberPiZeroEquiv_post_edgeAt
+
+#check @leftFibrationInitialFiberPiZeroEquiv_transport
+#print axioms leftFibrationInitialFiberPiZeroEquiv_transport
+
+#check @leftFibrationInitialFiberPiZeroEquiv_transport_component
+#print axioms leftFibrationInitialFiberPiZeroEquiv_transport_component
+
+#check @leftFibrationInitialFiberPiZeroEquiv_map_transport
+#print axioms leftFibrationInitialFiberPiZeroEquiv_map_transport
+
+#check @normalizedCoconeRestriction
+#print axioms normalizedCoconeRestriction
+
+#check @normalizedCoconeRestriction_projection
+#print axioms normalizedCoconeRestriction_projection
+
+#check @normalizedCoconeRestrictionFiber
+#print axioms normalizedCoconeRestrictionFiber
+
+#check @normalizedCoconeRestrictionFiber_eq
+#print axioms normalizedCoconeRestrictionFiber_eq
+
+#check @coconeMappingSpacePiZeroEquiv_restrict_transport
+#print axioms coconeMappingSpacePiZeroEquiv_restrict_transport
+
+#check @normalizedCoconeRestrictionFiber_vertex
+#print axioms normalizedCoconeRestrictionFiber_vertex
+
+#check @coconeMappingSpacePiZeroEquiv_attachment_transport
+#print axioms coconeMappingSpacePiZeroEquiv_attachment_transport
+
+#check @transportedCoconeVertex
+#print axioms transportedCoconeVertex
+
+#check @transportedCocone_boundaries_component
+#print axioms transportedCocone_boundaries_component
+
+#check @exists_cocone_glue_of_apex_composites
+#print axioms exists_cocone_glue_of_apex_composites
+
+#check @coconeVertexLeg
+#print axioms coconeVertexLeg
+
+#check @joinEdgePoint_face_inv
+#print axioms joinEdgePoint_face_inv
+
+#check @coconeVertexLegCompStruct
+#print axioms coconeVertexLegCompStruct
+
+#check @coconeVertexLeg_comp
+#print axioms coconeVertexLeg_comp
+
+#check @coconeVertexLegAt
+#print axioms coconeVertexLegAt
+
+#check @coconeVertexLegAt_comp
+#print axioms coconeVertexLegAt_comp
+
+#check @strictCoconeVertexLeg
+#print axioms strictCoconeVertexLeg
+
+#check @strictCoconeVertexLeg_comp
+#print axioms strictCoconeVertexLeg_comp
+
+#check @partialColimitStrictSpanCocone
+#print axioms partialColimitStrictSpanCocone
+
+#check @partialColimitSpanLeftLeg
+#print axioms partialColimitSpanLeftLeg
+
+#check @partialColimitSpanRightLeg
+#print axioms partialColimitSpanRightLeg
+
+#check @partialColimitSpanLegs_composites
+#print axioms partialColimitSpanLegs_composites
+
+#check @exists_cocone_vertex_partialColimitPushout
+#print axioms exists_cocone_vertex_partialColimitPushout

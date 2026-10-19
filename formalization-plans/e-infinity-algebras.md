@@ -24,7 +24,10 @@
   今回、始対象を持つ left fibration の fiber の Hom 表示を実際の辺で計算し、部分余錐の制限の π₀ の像を、
   付加で作った比較辺そのもののホモトピー類と同定。二重 coslice の比較辺の終点と頂点への射影も厳密に検証。
   共通部分で同じ連結成分にある部分余錐は、単射側を同じ成分内で直して厳密に貼れることを証明。
-  span の余錐に沿う輸送後の部分余錐の連結成分の照合と、貼り合わせた余錐の普遍性は未完了。
+  fiber の Hom 表示で辺に沿う輸送が後合成になることを証明し、図式の制限との自然性を照合。
+  二枝の比較辺と輸送辺の合成が一致すれば、元の図式の実際の余錐を厳密に貼れる。
+  余錐の脚の合成三角形を span の実際の二辺と照合し、元の coherent 図式の余錐を構成。
+  その頂点は部分余極限対象の span の小さい Kan 押し出し。貼った余錐の普遍性は未完了。
   γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
   詳細な実施記録はコミットメッセージを参照。
 - **残り**（依存順・時間は再開後の概算）：
@@ -59,11 +62,15 @@
   `colimitAttachedCocone`、`colimitAttachmentComparison_restrict`、`colimitAttachmentApexHom`、
   `coherentShapePushoutCocone`、`partialColimitApexSpan`、`partialColimitPushoutCocone_isColimit`、
   `leftFibrationInitialFiberPiZeroEquiv_edgeAt`、`coconeMappingSpacePiZeroEquiv_attachment`、
-  `exists_cocone_glue_of_boundary_component`。
+  `exists_cocone_glue_of_boundary_component`、
+  `leftFibrationInitialFiberPiZeroEquiv_transport_component`、
+  `coconeMappingSpacePiZeroEquiv_attachment_transport`、
+  `exists_cocone_glue_of_apex_composites`、`coconeVertexLeg_comp`、
+  `partialColimitSpanLegs_composites`、`exists_cocone_vertex_partialColimitPushout`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は InitialFiberEdgeVertex・InitialFiberEdgePiZero・CoconeComparisonEdge・CoconeComparisonPiZero・ColimitAttachmentPiZero・CoconeBoundaryRectification、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
+- **未コミット**：今回の保存単位は InitialFiberPostcomposition・InitialFiberEdgeTransport・InitialFiberMapTransport・CoconeRestrictionTransport・ColimitAttachmentTransport・TransportedCoconeGluing・CoconeVertexTriangles・CoconeVertexLegNormalization・StrictCoconeVertexLegs・PartialColimitSpanCocone、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -72,13 +79,12 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：span の余錐の脚に沿って輸送した部分余錐の、共通部分での連結成分の一致を証明する。
-  最初に始対象から選んだ辺と輸送辺の `Edge.compStruct` に今回の評価式を適用し、Hom 表示で輸送が後合成になることを示す。
-  `coconeMappingSpacePiZeroEquiv_attachment` で元の部分余錐の制限と比較辺の類は照合済み。
-  `sliceUnderProjection` の left fibration 性で部分余錐を span の終点へ輸送し、
-  `leftFibrationInitialFiberPiZeroEquiv_edgeAt` と span の余錐の合成三角形から、輸送後の両制限の π₀ の像の一致を示す。
-  `exists_cocone_glue_of_boundary_component` へ渡せば、単射側を同じ成分に保ったまま、厳密に貼った元の図式の余錐を得る。
-  その余極限性を付加による制限の同値と切断空間の押し出し表示で照合し、続いて骨格の無限段階を処理する。
+- **次の一手**：`exists_cocone_vertex_partialColimitPushout` で得た余錐の余極限性を証明する。
+  両部分余錐も余極限の場合、部分余極限の付加による制限の同値と、切断空間の押し出し表示を使い、
+  元の図式の余錐空間を部分余極限対象の span の余錐空間と比較する。
+  `partialColimitSpanLegs_composites` で二枝の実際の比較辺の合成は一致済み。
+  頂点を保つ余錐の貼り合わせと、span 自体の native な余極限性は検証済み。
+  普遍性の照合後、骨格の無限段階を処理する。
   小さい `K` と `p : ulift K → SpaceInfinity` のセルの添字を u に戻すことも検証する。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
