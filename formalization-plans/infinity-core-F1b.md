@@ -12,19 +12,26 @@
   補正後の指定変換の h Fun の類と α の類の一致、右 Kan 条件の保存まで証明済み。
 - 任意の右指定変換について、厳密化・類保存を標準局所極限判定へ合成済み。
   元の右 Kan 条件と厳密化後の全局所錐の極限性の同値、および類を保つ局所極限表示の存在を証明。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2417 jobs）。
-  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2822 宣言、標準三公理のみ、746 モジュールに straightening なし）。
+- B4 の制限定理の準備：固定図式の任意の制限に沿う左右の局所形の射・恒等律・合成律、
+  相対 join 表示との可換性を証明。制限射の基底変換表示と anodyne 制限の充填性も証明。
+- 元の左右 Kan 条件から、各 slice の境界上の局所図式を図式部分と境界を厳密に保って
+  単体全体へ延長できる。これは局所解の存在であり、変動する slice の組み立ては未完。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2420 jobs）。
+  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2853 宣言、標準三公理のみ、749 モジュールに straightening なし）。
 - 前回の実装の保存：`a391eac8`。`relativeFunctorVertex` は `1132823f` で `relativeExtensionVertex` へ改名済み。
   F1B と監査スクリプトに旧名は残っておらず、改名後の集約ビルド・監査も成功。
 
 ### 残り（依存順、実作業時間の概算）
 
-- 1. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理を証明する。
-  Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。24〜60 時間。新しい充填補題の量で変動。
-- 2. 点ごとの Kan 条件から大域的 Hom の全単射を導き、h Fun の大域的一意性へ接続する。
-  Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。1 の後に 6〜16 時間。
-- 3. 各点の極限・余極限の存在から Kan 拡張の存在と全関手への組み立てを証明する。
-  Kerodon Prop 7.3.5.1、A6 の点ごとの関手圏極限 API／HTT §4.3。24〜60 時間。
+- 1. cocartesian fibration の fiber の普遍余錐を相対 join 上へ組み立て、
+  全部分 ∞ 圏からの相対 Kan 拡張の存在へ接続する。
+  Kerodon Lemma 7.3.4.6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
+  点ごとの極限・余極限から任意の δ に沿う存在と全関手への組み立てもこの経路で扱う。
+- 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理を証明する。
+  Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
+  原典の証明は相対 Kan 拡張の存在（Prop 7.3.5.5）を使うため、局所境界充填から直接は結論しない。
+- 3. 点ごとの Kan 条件から大域的 Hom の全単射を導き、h Fun の大域的一意性へ接続する。
+  Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。2 の後に 6〜16 時間。
 - 4. B5：通常の圏の nerve で古典随伴・Kan 拡張へ戻る検査と最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値そのものは未証明。右表示の存在は左表示の存在の反転から直接得ており、
@@ -49,6 +56,12 @@
 - `IsRightKanExtension.exists_relativeJoin_local_limits`
 - `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
 - `relativeExtensionVertex`
+- `kanRelativeJoinSliceOver_restrict` / `kanRelativeJoinSliceUnder_restrict`
+- `kanSliceOverShapeRestrict_comp` / `kanSliceUnderShapeRestrict_comp`
+- `kanSliceOverShapeRestrict_isPullback` / `kanSliceUnderShapeRestrict_isPullback`
+- `kanSliceOverShapeRestrict_of_leftAnodyne` / `kanSliceUnderShapeRestrict_of_rightAnodyne`
+- `LeftKanRelativeJoinRealization.Strictification.exists_localBoundary_lift`
+- `RightKanRelativeJoinRealization.Strictification.exists_localBoundary_lift`
 
 ### 依存と提供
 
@@ -59,8 +72,9 @@
 
 ### 未コミット
 
-- 今回の保存単位：`KanRelativeJoinRightCriterion.lean`、F1B 集約、監査スクリプト、本書、F2 計画。
-  保存コミット後の所有ファイルの変更はなし。他レーンの作業ツリー変更は保存・変更しない。
+- 今回の保存単位：`KanRelativeJoinSliceRestriction.lean`、`KanSliceRestrictionFibration.lean`、
+  `KanLocalBoundaryExtension.lean`、F1B 集約、監査スクリプト、本書。
+  保存コミット後の所有ファイルの変更はなし。他レーンの変更は保存・変更しない。
 
 ### 既知の問題
 
@@ -74,9 +88,11 @@
 
 ### 次の一手
 
-- 全部分 ∞ 圏からの相対 Kan 拡張について、写像空間の制限定理の証明に着手する。
-  Kerodon Prop 7.3.6.7・Cor 7.3.6.9 を読み、`KanRelativeConeFamilies.lean` の
-  固定境界の充填と、変動するパラメータを含む制限写像の差を明確にする。
+- Kerodon Lemma 7.3.4.6・Prop 7.3.4.7 を核に、cocartesian fibration の
+  fiber ごとの普遍余錐を相対 join へ延長する骨格の一段を実装する。
+  `KanLocalBoundaryExtension.lean` は局所解、`KanRelativeJoinSliceRestriction.lean` と
+  `KanSliceRestrictionFibration.lean` は局所形の制限・充填の比較に使う。
+  次に Prop 7.3.5.5 の oriented fiber product で一般の全部分 ∞ 圏へ移す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
