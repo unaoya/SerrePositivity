@@ -16,20 +16,21 @@
 - 成分と正次数群の係数は同一のセル球面への制限射で計算できる。
 - 反復 loop 値の fiber の π₀ と元の fiber の全正次数群を比較し、既存係数表示との正符号の可換式を証明済み。
 - 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
-- 実際の塔の微分の各セルの係数を、そのセルの境界制限の連結準同型で表す厳密な式を証明済み。
-- 任意の入力でセル境界の連結射を cofiber の単体代表にし、最後の面の族・零ホモトピーを構成済み。
-- fiber に入る球面的な面の交代和と、同じ底の単体の連結射の像との符号付き等式を相対 Kan 充填で証明済み。
-- path の球面的境界の交代和を、既存の loop 群同型と標準基点で符号付きに照合済み。
+- 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
+- 球面的な相対境界の交代和と、path の loop 群同型での符号を相対 Kan 充填で照合済み。
 - 源の単射と標的の fibration の corner、および path と終点を同時に指定する相対 fibration を構成済み。
 - 二方向の連結射の共通ホーン充填と、その最後の面の境界定数単体を構成し、二射影を厳密に計算済み。
-- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、4009 jobs、終了コード 0。
-- 停止前の全体ビルド：`lake build` は他レーンの `F1.LeftUnstraighteningTransformationRestriction` で未定義名 `intervalMappingPost`・`intervalMappingPost_uncurry` により失敗（終了コード 1）。
-- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、541 モジュール・5330 宣言、標準三公理のみ、終了コード 0。
+- 球面的持ち上げと終端正規化を面次数一へ一般化し、最後から二番目の面の連結射はその面の類の逆元と証明済み。
+- 隣接比較ホーンを構成し、その出力の非定数面を loop 側の連結射の境界代表そのものと厳密に照合済み。
+- 比較ホーン全体を fiber に持ち上げ、境界 loop の値が共通 path の終点の類の逆元となる式を、比較ホーンの選択を残さず全正次数で証明済み。
+- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、4018 jobs、終了コード 0。
+- 停止前の全体ビルド：`lake build`、14073 jobs、終了コード 0。
+- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、550 モジュール・5431 宣言、標準三公理のみ、終了コード 0。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - セル境界の局所的な連結準同型を反復 loop の成分代表で計算し、球面的境界の向きと整合させる。
-  path の符号付き境界公式と二方向の共通持ち上げまで構成済み。loop と連結射の交換の最終比較は未完。
+  代表での逆元公式と fiber 内の終点の一致まで証明済み。標準の連結準同型の群の式への移送と、零 loop 成分の基本段が未完。
   原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
 - 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
   原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
@@ -56,9 +57,6 @@
 - `homotopyFixedPointsUnit_homotopyMap_injective`
 - `SimplicialFunctionComplex.componentEquiv`
 - `SkeletalCellAttachment.stageFiberComponentEquiv`
-- `SkeletalCellAttachment.stageFiberComponentEquiv_simplexVertex`
-- `SkeletalCellAttachment.skeletalFiberVertex_eq_simplexVertex`
-- `SkeletalCellAttachment.skeletalFiberVertex_cochain`
 - `SkeletalCellAttachment.stageFiberIteratedLoopComponentEquiv`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_iteratedLoopComponent`
 - `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
@@ -66,6 +64,9 @@
 - `SphericalFiberLift.alternatingClass_connecting`
 - `SphericalPathBoundary.alternating_loopPositive`
 - `RelativePath.common_boundary_simplex`
+- `connectingHom_penultimate`
+- `loopPositive_penultimate`
+- `LoopConnectingComparison.boundaryLoop_inverse_common`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv`
 - `SkeletalCellAttachment.coefficientDifferential`
 - `RationalLevelNormalizedCochains.positive_cohomology_isZero`
@@ -86,7 +87,7 @@
 - 共有ルート `SerrePositivity.lean` および他レーンの既存差分は触らず、今回のコミット対象にも含めない。
 
 ### 既知の問題
-- 自分の import 閉包・対象ビルド・公理監査は成功。全体ビルドの F1 の失敗は所有範囲外で、対象ビルドには現れない。
+- 自分の import 閉包・対象ビルド・公理監査・全体ビルドは成功。以前の F1 の未定義名の失敗は今回再現しない。
 - 所有ソースの sorry・追加 axiom はなし。所有宣言の型に `HomotopicalAlgebra.ModelCategory` 定数がないことも Lean 環境を走査して確認済み。
 - import 閉包に KanQuillen モジュールなし。`SSet.modelCategoryQuillen` 名前空間は Mathlib のホーン生成射・Fibration の既存 API に使うが、`ModelCategory SSet` は仮定しない。
 - 公理監査は私有宣言・推移的な公理依存と、宣言型の ModelCategory 定数を検査する。
@@ -95,11 +96,10 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- `common_boundary_simplex` が与える path の単体 U と、loop への連結射の持ち上げ V を同時に比較する。
-- U・V の次数を r+2 とし、`basedPathMap p` に沿う相対ホーンで面 r+1 に V、面 r+2 に U を置き、最後の面 r+3 を充填する。底は `σ_(r+1)` を元の loop 単体へ前合成したもの。
-- 出力を `PointedMapping.fiberIso pointedInterval p` で fiber 内の path と読み、`SphericalPathBoundary.alternating_loopPositive` で逆符号を計算する。面次数一の r=0 は別途扱う。
+- `boundaryLoop_inverse_common` を、`common_boundary_simplex` から得る U と loop 側の BoundaryLift V へ適用し、`pointedConnectingHom` と `loopPositiveHomotopyEquiv` の反可換式へ移す。幾何的な充填と逆符号の再構成は不要。
+- 正次数の群の移送の後、`boundaryLiftNullhomotopy` と `loopZeroHomotopyEquiv` による零 loop 成分の基本段を照合する。現在の逆元公式を零次数の式と混同しない。
 - その交換式を反復 loop の係数比較へ合成し、`skeletalFiberVertex_normalizedDifferential` と実際の `coefficientDifferential` の像・符号を照合する。
-- Sp-1c・Sp-1d は未完。一般の相対境界関係や共通持ち上げだけから、骨格微分の同定・塔の収束を主張しない。
+- Sp-1c・Sp-1d は未完。代表での逆元の計算だけから、骨格微分の同定・塔の収束を主張しない。
 
 ## 範囲と所有
 

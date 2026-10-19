@@ -71,3 +71,12 @@ public import SerrePositivity.KST.Spectra.MappingCorner
 public import SerrePositivity.KST.Spectra.MappingFiber
 public import SerrePositivity.KST.Spectra.RelativePathCorner
 public import SerrePositivity.KST.Spectra.RelativePathBoundaryLift
+public import SerrePositivity.KST.Spectra.FibrationAdjacentComparison
+public import SerrePositivity.KST.Spectra.FibrationAdjacentEndpoint
+public import SerrePositivity.KST.Spectra.FiberSimplexLifting
+public import SerrePositivity.KST.Spectra.FibrationAdjacentFiberEndpoint
+public import SerrePositivity.KST.Spectra.PenultimateConnecting
+public import SerrePositivity.KST.Spectra.MappingFiberPaths
+public import SerrePositivity.KST.Spectra.LoopConnectingPathLift
+public import SerrePositivity.KST.Spectra.LoopConnectingPathOutput
+public import SerrePositivity.KST.Spectra.LoopConnectingFiberEndpoint

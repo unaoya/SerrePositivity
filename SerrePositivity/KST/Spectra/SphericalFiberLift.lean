@@ -20,14 +20,14 @@ namespace SerrePositivity.KST.Spectra
 
 /-- 概要：底の境界定数単体の、全ての面が fiber に入る球面的な持ち上げ。
 方針：射影の等式と fiber の各代表の全空間への包含を記録する。
-規約：面の実際の次数は n+2。
+規約：面の実際の次数は n+1。
 使われ方：Goerss–Jardine I §8。相対的な交代境界関係の入力。 -/
 structure SphericalFiberLift {E B : SSet.{u}} (p : E ⟶ B) (e : E _⦋0⦌) {n : ℕ}
-    (s : B.PtSimplex (n + 3) (p.app _ e))
-    (a : Fin (n + 4) → (KanFiber p (p.app _ e)).PtSimplex (n + 2) (fiberPoint p e)) where
-  map : (Δ[n + 3] : SSet.{u}) ⟶ E
+    (s : B.PtSimplex (n + 2) (p.app _ e))
+    (a : Fin (n + 3) → (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e)) where
+  map : (Δ[n + 2] : SSet.{u}) ⟶ E
   map_comp : map ≫ p = s.map
-  face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ map = (a j).map ≫ fiberι p (p.app _ e)
+  face_eq (j : Fin (n + 3)) : stdSimplex.δ j ≫ map = (a j).map ≫ fiberι p (p.app _ e)
 
 namespace SphericalFiberLift
 
