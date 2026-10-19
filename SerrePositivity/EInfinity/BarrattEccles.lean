@@ -111,3 +111,9 @@ public import SerrePositivity.EInfinity.BarrattEccles.ParallelShuffleCoordinates
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleParallelSimplex
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleParallelGenerators
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleParallelChains
+public import SerrePositivity.EInfinity.BarrattEccles.ParallelTensor
+public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionInsertion
+public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionParallel
+public import SerrePositivity.EInfinity.BarrattEccles.InverseSlotPermutations
+public import SerrePositivity.EInfinity.BarrattEccles.OperadStructure
+public import SerrePositivity.EInfinity.Operad.Commutative
