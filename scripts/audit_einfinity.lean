@@ -1290,6 +1290,35 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.edgeSign_pivot,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionCoefficient_pivot,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionEdgeCutTerm_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_disjoint_union,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_erase_pair,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_splice_images,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_first_length,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_first_caesura,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_first_mem_active,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap_val,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap_value,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap_lt_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.remainingPosition_lt_inserted_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remaining_color_ne_of_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_lt_nonpivotInnerMap,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap_lt_remainingPositionMap,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_at_nonpivot_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_nonpivot_injOn,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap_injOn,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap_mem_active,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_nonpivot_mem_active,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_active_images_disjoint,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.activePositions_nonpivot_union,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap_inversionTerm,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_cross_inversionTerm,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.inversionCount_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionCoefficient_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionEdgeCutTerm_nonpivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionCoefficient,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_action_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_edge_eq_iterated,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3642,7 +3671,7 @@ example : tupleDegree 3 nestedRepeatedExample.outputFamily = 3 :=
 
 -- 二段作用の実際の全複体射でも、語010の色0への代入は負の三辺テンソル。
 open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
-example : (iteratedCochainAction ℤ 1 2 0).f (-3)
+private lemma iteratedRepeatedEdgeFixture : (iteratedCochainAction ℤ 1 2 0).f (-3)
     (ιTensorObj (complex ℤ 2 ⊗ complex ℤ 2) (interval ℤ) (-2) (-1) (-3) (by decide)
       (ιTensorObj (complex ℤ 2) (complex ℤ 2) (-1) (-1) (-2) (by decide)
         ((complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner)) ⊗ₜ[ℤ]
@@ -3722,3 +3751,38 @@ example : compositionEdgeCutTerm ℤ compositionInner pivotCrossOuter 1 pivotNeg
     pivotNegativeInnerCut.actionCoefficient • tensorVectorOfDegree ℤ 3 3
       pivotNegativeInnerCut.outputFamily pivotNegativeInnerCut.outputFamily_tupleDegree_all :=
   NestedEdgeCut.compositionEdgeCutTerm_pivot ℤ pivotNegativeInnerCut (by decide) 1 rfl rfl
+
+-- 第一指定出現の前後に活動位置があり、内側次数二で合成逆転数が七つになる例。
+private def nonpivotCrossOuter : BasisWord 4 2 := ⟨![3, 1, 0, 3, 1, 2], by decide⟩
+private def nonpivotCrossCut : NestedEdgeCut (m := 3) nonpivotCrossOuter pivotCrossInner 1 :=
+  NestedEdgeCut.ofEdge 2 (by decide) (by decide) 2 (by decide)
+example : nonpivotCrossCut.actionCoefficient = -1 := by decide
+example : (nonpivotCrossCut.nonpivotInnerMap 2 rfl (by decide) 2).val = 3 := by decide
+example : positionInversionCount (compositeBasisWord nonpivotCrossOuter pivotCrossInner 1
+    nonpivotCrossCut.partition (by decide)).val
+      (activePositions (compositeBasisWord nonpivotCrossOuter pivotCrossInner 1
+        nonpivotCrossCut.partition (by decide)).val nonpivotCrossCut.compositePosition) = 7 :=
+  by decide
+example : List.ofFn nonpivotCrossCut.outputFamily =
+    [edge, edge, edge, edge, vertex 1, edge] := by decide
+example : compositionSign nonpivotCrossOuter pivotCrossInner 1 nonpivotCrossCut.partition *
+    edgeSign (compositeBasisWord nonpivotCrossOuter pivotCrossInner 1 nonpivotCrossCut.partition
+      (by decide)).val nonpivotCrossCut.compositePosition = nonpivotCrossCut.actionCoefficient :=
+  NestedEdgeCut.compositionCoefficient nonpivotCrossCut (by decide)
+example : compositionEdgeCutTerm ℤ nonpivotCrossOuter pivotCrossInner 1 nonpivotCrossCut.partition
+    (by decide) nonpivotCrossCut.compositePosition =
+    nonpivotCrossCut.actionCoefficient • tensorVectorOfDegree ℤ 6 5 nonpivotCrossCut.outputFamily
+      nonpivotCrossCut.outputFamily_tupleDegree_all :=
+  NestedEdgeCut.compositionEdgeCutTerm_nonpivot ℤ nonpivotCrossCut (by decide) 2 rfl (by decide)
+
+-- 実際の部分合成射を先に施す左辺も、先に二段作用を施す右辺と同じ負の値。
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
+example : ((complexPartialComposition ℤ 1 2 0 ▷ interval ℤ) ≫ cochainAction ℤ 3).f (-3)
+    (ιTensorObj (complex ℤ 2 ⊗ complex ℤ 2) (interval ℤ) (-2) (-1) (-3) (by decide)
+      (ιTensorObj (complex ℤ 2) (complex ℤ 2) (-1) (-1) (-2) (by decide)
+        ((complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner)) ⊗ₜ[ℤ]
+          (complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner))) ⊗ₜ[ℤ]
+        faceVector ℤ edge)) =
+    -(tensorVectorAt ℤ 3 nestedRepeatedExample.outputFamily (-3) (by decide)) := by
+  exact (cochainAction_composition_basis_edge_eq_iterated ℤ compositionInner compositionInner 0
+    (by decide)).trans iteratedRepeatedEdgeFixture

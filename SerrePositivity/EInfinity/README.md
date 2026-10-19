@@ -611,7 +611,12 @@ nullary を含む TR の部分合成保存は完了。
 `activePositions_pivot_union` は切断点色への挿入の全活動集合を、外側切断点を除いた像と内側活動像へ分ける。
 `inversionCount_pivot` は内部二項と内側活動数倍の交差逆転数の公式。
 `compositionCoefficient_pivot`・`compositionEdgeCutTerm_pivot` は同分岐の一般係数と実際の項の一致。
-具体的な Δ¹ の余代数構造は未完成。二出現色への内側辺作用の一般係数の一致・頂点入力・nullary 左辺、
+`activePositions_nonpivot_union` は二出現色の最初の活動位置を内側活動列で置き換える全活動集合の公式。
+`inversionCount_nonpivot` は前後両向きの交差逆転の公式で、`compositionCoefficient_nonpivot` が同分岐を閉じる。
+`NestedEdgeCut.compositionCoefficient` は全三分岐の一般係数一致。
+`edgeComponent_composition_action_sum` は実際の合成辺成分を二段作用と同じ係数の有限和へ移す。
+`cochainAction_composition_basis_edge_eq_iterated` は正の内側 arity・全語次数の語基底と辺で実際の左右の作用が一致すること。
+具体的な Δ¹ の余代数構造は未完成。元の頂点入力・nullary・全整数複体射への線形延長、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 

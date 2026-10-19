@@ -348,3 +348,10 @@ public import SerrePositivity.EInfinity.IntervalCuts.PivotPositionOrder
 public import SerrePositivity.EInfinity.IntervalCuts.PivotActivePositions
 public import SerrePositivity.EInfinity.IntervalCuts.PivotInversionCounts
 public import SerrePositivity.EInfinity.IntervalCuts.PivotCompositionSigns
+public import SerrePositivity.EInfinity.IntervalCuts.InversionSplice
+public import SerrePositivity.EInfinity.IntervalCuts.NonpivotFirstSegment
+public import SerrePositivity.EInfinity.IntervalCuts.NonpivotPositionOrder
+public import SerrePositivity.EInfinity.IntervalCuts.NonpivotActivePositions
+public import SerrePositivity.EInfinity.IntervalCuts.NonpivotInversionCounts
+public import SerrePositivity.EInfinity.IntervalCuts.NonpivotCompositionSigns
+public import SerrePositivity.EInfinity.IntervalCuts.CompositionCoefficients
