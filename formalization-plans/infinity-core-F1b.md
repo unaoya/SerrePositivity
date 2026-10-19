@@ -26,23 +26,23 @@
 - 単射な圏論的同値の右持ち上げ条件 `KanEquivalenceLifting U` の下で、相対 join の標的の cartesian 性を証明。
   局所の標準 U 余極限から、元・標的の図式を保つ大域図式と全 fiber の標準 U 余極限性を構成。
 - 任意の U の可逆 path 置換へ右持ち上げ条件を供給済み。両端固定の prism 延長と可逆性の反映を使用。
-  定値 path の切断は圏論的同値で、置換された関手との合成は U。相対余極限の移送・制限定理は未完。
+  定値 path の切断は圏論的同値で、置換された関手との合成は U。
+- 任意の図式の coslice で自明 Kan 性を保存し、path 置換と元の関手の相対余極限性を同定。
+  任意の U 上で、指定部分を厳密に保つ大域図式・そこで定値な可逆 path・全 fiber の U 余極限性を構成。
 - 境界の最初の頂点の局所余極限性で関手の族を境界固定で延長し、普遍な H の左端の制限の始点境界を充填。
 - 相対始点境界充填から固定終点の coslice の後合成の自明 Kan 性、右 pinched 写像空間の同値、
   h Fun の Hom 全単射を証明。普遍図式の全部分 ∞ 圏の制限は充満忠実で、局所余極限があれば自明 Kan。
-- 円柱の右端への変形から、右端への制限と底射影による前合成の h Fun 上の随伴を構成。
-  円柱自身の quasicategory 性は不要。円柱比較で相対 join の右端への Hom 全単射を得て、
-  実際の制限の公式、後合成自然性、逆対応の単位との合成公式まで証明。
+- 円柱の変形で右端への制限と底射影による前合成の h Fun 上の随伴・相対 join の Hom 全単射を構成。
+  円柱の quasicategory 性は不要。実際の制限の公式・後合成自然性・逆対応の単位との合成公式も証明。
 - 右端の単位と標準 prism の指定変換の h Fun の類の一致を証明し、標準変換の Hom 普遍性へ接続。
   comma 上の Hom と元の添字上の Hom の全単射、両逆、後合成自然性、候補の指定変換の類を同定。
 - 局所余極限から左 Kan 条件と Hom 普遍性を同時に持つ候補を構成し、任意の指定 β 自身へ移送済み。
   同じ宇宙の quasicategory K・C・D と任意の δ に対し、`IsLeftKanExtension` から `LeftKanHomUniversal`。
-- 指定変換に両立する比較射の各点での可逆性を、局所普遍余錐の Hom 全単射から証明。
-  h Fun の大域的同型へ戻し、指定変換に両立する比較同型と比較射の一意性まで証明。
+- 局所普遍余錐の Hom 全単射から、指定変換に両立する比較射の各点での可逆性・大域的同型・一意性を証明。
 - 反転 Hom 全単射と指定変換・合成・前合成との両立から、右側も Hom 普遍性と大域的一意性を証明。
 - F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3807 jobs）、同時 import 検査成功（F1 6907・F1B 4289 宣言）。
-  公理監査成功（4293 宣言、標準三公理のみ、1161 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3811 jobs）、同時 import 検査成功（F1 6907・F1B 4297 宣言）。
+  公理監査成功（4301 宣言、標準三公理のみ、1165 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -52,7 +52,7 @@
   V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。標準 U 余極限との同値も U が inner なら証明済み。
   相対的な組み立ては `KanEquivalenceLifting U` を持つ一般の U に拡張済み。任意の U の path 置換はこの条件を持つ。
   局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
-  左右端の Hom 全単射、標準 prism との一致、comma による元の添字への移送は証明済み。
+  任意の U 上の可逆 path つき図式構成は完了。isofibration による指定部分固定の厳密化が残る。
   左右とも任意の指定変換自身の Hom 普遍性と大域的一意性まで接続済み。相対的な写像空間の結論が残る。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
@@ -68,7 +68,7 @@
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
-- `F1B.kanRelativeCoconeRestriction` / `F1B.exists_kanRelativeCocone_extension_of_first_vertices`
+- `F1B.kanIsRelativeColimitCone_equivalencePathReplacement_iff` / `F1B.exists_kanGlobalRelative_diagram_with_equivalencePath`
 - `F1B.KanEquivalenceLifting` / `F1B.kanEquivalenceLifting_equivalencePathReplacementMap`
 - `F1B.kanRelativeJoinFunctor_homMap_bijective` / `F1B.kanRelativeJoinColimitRestriction_isFullyFaithful`
 - `F1B.kanRelativeJoinRightHomEquiv` / `F1B.kanRelativeJoinTransformation_homUniversal`
@@ -86,22 +86,20 @@
 
 ### 未コミット
 
-- なし（本保存単位：両端固定 prism 延長、可逆性の反映、可逆 path 置換の右持ち上げ、集約・監査・本書）。
+- なし（本保存単位：coslice の自明 Kan 性、相対余極限の移送、一般の U の path つき大域図式、集約・監査・本書）。
 
 ### 既知の問題
 
 - F1 側の import 循環・timeout は修正済み。同時ビルドと同時 import の検査を保存前に実行する。
 - 保存 `43c25ad6` は D レーンの 9 ファイルも同梱。履歴は変更せず、以後 `git commit --only` で所有パスを限定。
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
-- `kanFiberwiseHom` の cartesian fibration 性は cocartesian な p について証明済み。
-  制限 V 自体の cartesian fibration 性は未証明。B4 の充填には不要で、Kerodon 7.1.5.19 の経路で移送済み。
-- B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手との比較は未形式化。
-  B2 は同じ宇宙の標的に対する普遍性。一般の C[W⁻¹] の存在は主張しない。
+- cocartesian な p の `kanFiberwiseHom` は cartesian。制限 V 自体は未証明だが B4 では Kerodon 7.1.5.19 で迂回。
+- B1 は全パラメータの集合値前層の模型。空間値二変数比較は未形式化。B2 は同じ宇宙で、一般の局所化の存在は含まない。
 
 ### 次の一手
 
-- 証明済みの path 因子分解に沿って、局所の標準 U 余極限を置換された関手へ移す。
-  右持ち上げ条件下の相対図式構成を適用し、標準 isofibration との比較と元の図式への復帰を証明する。
+- `exists_kanGlobalRelative_diagram_with_equivalencePath` の比較 path を指定部分固定で厳密化する。
+  inner fibration と可逆辺の持ち上げから相対内部 Hom の可逆辺の持ち上げを供給し、標準 isofibration と比較する。
   原典 7.3.6.7 の相対的な写像空間の制限定理へ接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と

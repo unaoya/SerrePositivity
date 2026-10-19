@@ -2107,3 +2107,19 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanEquivalenceLifting_equivalencePathReplacementMap
 
 #check @SerrePositivity.InfinityCategories.F1B.kanEquivalencePathReplacementSection_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceUnderPostcomp_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_congr
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInitialVertex_comp_iff_of_fullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInitialVertex_comp_iff_of_surjective_fullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_comp_iff_of_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_precomp_iff_of_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_equivalencePathReplacement_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_with_equivalencePath
