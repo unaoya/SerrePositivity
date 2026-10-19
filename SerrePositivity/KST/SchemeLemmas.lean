@@ -302,3 +302,5 @@ public import SerrePositivity.KST.SchemeLemmas.FiniteLiftCorrection
 public import SerrePositivity.KST.SchemeLemmas.LinearLiftInverseFunctor
 public import SerrePositivity.KST.SchemeLemmas.LinearLiftMittagLeffler
 public import SerrePositivity.KST.SchemeLemmas.CountableFlatMittagLefflerProjective
+public import SerrePositivity.KST.SchemeLemmas.ScalarProductTensorComparison
+public import SerrePositivity.KST.SchemeLemmas.NoetherianScalarProduct

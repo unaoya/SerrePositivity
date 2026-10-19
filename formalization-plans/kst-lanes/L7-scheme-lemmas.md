@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1804 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1827 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -45,6 +45,7 @@
 - Mittag–Leffler 加群を表す有限自由列の双対遷移像の安定化を証明済み。任意の値域への実際の因子化に移し、Hom 逆系の前合成像が値域によらない同じ段階から安定することまで接続済み。
 - 非空な自然数 Mittag–Leffler 逆系の整合的元の存在と、双対像の包含による持ち上げの核値補正を証明済み。
 - Noether 基底上の可算生成平坦 Mittag–Leffler 加群の射影性（Stacks 059X の特殊形）を証明済み。全射への実際の線形右逆を、有限自由列の整合的持ち上げと直極限比較から構成した。05FS の代数の射影性の存在そのものは未完了。
+- 有限表示加群と任意の係数環の積のテンソル比較同型を構成済み。Noether 環では任意の加群の比較の単射性を得て、係数環の任意の積の平坦 Mittag–Leffler 性（Stacks 05D0）を証明済み。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -1365,6 +1366,40 @@ V の有限基底を仮定し、δ=Φ-Ψt を ker(π) へ係数制限する。
 この準備を 05FS の射影性そのものの証明と呼ばない。
 `ModuleMittagLeffler.lean` に比較射の自然性、普遍単射部分加群への降下、自由加群・分裂因子・射影加群の場合を証明済み。
 
+#### 完備化の Mittag–Leffler 性への準備：有限表示と係数環の積
+
+原典：Stacks 05DJ, Lemma 38.8.1、05DK, Lemma 38.8.2、05D0, Lemma 10.91.3、Algebra Proposition 10.89.3。
+Noether 基底上の 059X 判定は完成したので、完備化から Mittag–Leffler 性を得る工程へ進む。
+原典 05DJ は自由加群の完備化から係数環の積への普遍単射性と、係数環の積の平坦 Mittag–Leffler 性を使う。
+05DK はさらに、平坦加群の剰余が射影的なら自由全射の完備化が実際に分裂すること（05D3）を使う。
+05DM の完備化への普遍単射性と 05FS の全体は引き続き未完了。
+まず必要な積比較を実際に証明する。
+文言：R 加群 Q と添字 A に対し、γ_Q:Q⊗_R R^A→Q^A、q⊗r↦(a↦r(a)q) を取る。
+Q が自由なら γ_Q は単射で、有限自由なら全射でもある。
+Q が有限生成なら γ_Q は全射。Q が有限表示なら γ_Q は単射でもある。
+有限表示 R^m→R^n→Q を選び、テンソルの元を有限自由生成元側へ持ち上げる。
+各 A 成分での零を有限関係式側へ持ち上げ、その成分を束ねて元のテンソルが関係式像にあることを示す。
+Q が任意でも R が Noether なら、各テンソルを有限生成部分加群から持ち上げ、
+その部分加群の有限表示性で γ_Q の単射性を得る。部分加群の包含は各 A 成分で単射なので零を戻せる。
+この最後の議論自体には R^A の平坦性を仮定せず、後からイデアルのテンソル単射判定で R^A の平坦性を得る。
+任意の Q に対する γ_Q の単射性と、二つの積の成分の交換式で R^A の Mittag–Leffler 性を得る。
+完備化への写像の普遍単射性と完備化の分裂はこの積比較には含めない。
+`ScalarProductTensorComparison.lean` で自由基底・有限生成・有限表示の場合の比較を証明済み。
+有限表示の場合は `piScalarRightEquivOfFinitePresentation` として実際の線形同型を構成済み。
+Noether 基底では任意の加群の比較の単射性を有限生成部分から証明済み。
+`NoetherianScalarProduct.lean` で係数環の任意の積の平坦性と Mittag–Leffler 性を証明済み。
+自由加群の完備化の次の比較は Stacks 05BC, Lemma 15.28.1 に合わせる。
+文言：任意の係数加群 N と添字 A に対し、完備化した有限台関数から各座標の完備化への写像
+AdicCompletion(I, A→₀N)→∏_A AdicCompletion(I,N) は単射。
+証明は、各段の剰余の係数が全て I^nN に属せば有限台関数自体が I^n(A→₀N) に属することから従う。
+N=R が I 進完備なら係数の完備化を元の R へ戻し、自由加群の完備化から R^A への実際の埋め込みを得る。
+有限 N とのテンソルについては、既存の読み取り専用の
+`CommutativeAlgebra/AdicCompletionTensor.lean` の `adicCompletionTensorComparison_injective` と
+右因子の自由基底による有限台表示の同型を使い、上の完備化座標比較へ接続する。
+Artin–Rees に基づくこの既存の比較の証明を複製しない。K への依存は導入しない。
+
+
+
 #### 選んだ有限表示の任意の基底変更
 
 原典：Stacks 0810, Lemma 38.30.2 の小行列式の基底変更の利用。
@@ -1515,6 +1550,10 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | --- | --- | --- |
 | `BoundaryFreeNeighborhoodsAtCenterOver` | 中間環上の中心の自由化を元の基礎環・加群で述べる条件 | 定義済み |
 | `boundaryFreeNeighborhoodsAtCenterOver_of_baseChanged_center` | 固定中心の全チャートの自由化の元のデータへの統一 | 証明済み |
+| `piScalarRightEquivOfFinitePresentation` | 有限表示加群と係数環の任意の積の実際のテンソル比較同型 | 構成済み |
+| `piScalarRightHom_injective_of_noetherian` | Noether 基底で任意の加群の係数積比較の単射性 | 証明済み |
+| `flat_pi_of_noetherian` | Noether 環の任意のコピーの積の平坦性 | 証明済み |
+| `isModuleMittagLeffler_pi_of_noetherian` | Noether 環の任意のコピーの積の Mittag–Leffler 性 | 証明済み |
 | `linearSequenceLiftFunctor` | 全射への各段階の持ち上げの実際の逆系 | 構成済み |
 | `exists_compatible_linearSequence_lifts_of_mittagLeffler` | 有限自由列から全射への整合的な持ち上げの存在 | 証明済み |
 | `exists_linearSection_of_finiteFree_sequence_mittagLeffler` | 直極限を通じて全射の実際の線形右逆を構成 | 証明済み |
