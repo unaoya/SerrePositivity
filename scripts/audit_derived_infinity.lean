@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGClosedRoofRefinementPrism
+import SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofRefinementPrism
+import SerrePositivity.InfinityCategories.Derived.DGRoofBoundaryHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondencePiZero
 import SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofVertexInverse
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFixedHomRoof
@@ -1638,10 +1641,59 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgQuotientRoofVertex_exists_image_piZero
 #print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_piZero_surjective
 
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomEvaluation_generator
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomPinched_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomPinched_precomposition
+#print axioms SerrePositivity.InfinityCategories.freeHomDegree_ext
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomDegree_ext
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomStrictNatTrans
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomPrecomposeNatTrans
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomPrism_zero
+#print axioms SerrePositivity.InfinityCategories.pinchedPrismPhase_comp
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPinchedSlice
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPinchedSlice_projection
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPointMap_edge
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecompositionSlicePrism
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecompositionSlicePrism_zero
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecompositionSlicePrism_one
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecompositionSlicePrism_source
+#print axioms SerrePositivity.InfinityCategories.dgClosedVerdierDenominatorEdge_source
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefinementPrism
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefinementPrism_projection
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefinementPrism_zero
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefinementPrism_one
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefinementHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosedRoofRefinementPrism
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosedRoofRefinementPrism_projection
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosedRoofRefinementPrism_zero
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosedRoofRefinementPrism_one
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosedRoofRefinementHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofHomInclusion_comparison
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRelativeHomotopy
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHom,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinched,
+    `SerrePositivity.InfinityCategories.Derived.FreeHomDegreeExt,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomDegreeExt,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedCompositionLinear,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomStrictNatTrans,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.PinchedPrismPhase,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransPinchedSlice,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismZero,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransPinchedSource,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransPointEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionSlicePrism,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierClosedRefinementEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofRefinementPrism,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofRefinementPrism,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofHomComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofBoundaryHomotopy,
     `SerrePositivity.InfinityCategories.Derived.DGRoofHomInclusion,
     `SerrePositivity.InfinityCategories.Derived.PinchedClosedVertexSlice,
     `SerrePositivity.InfinityCategories.Derived.DGClosedRoofHomInclusion,
