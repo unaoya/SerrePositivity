@@ -12683,3 +12683,133 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionChain_zero
 #check @SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionChain_projection_trace
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionChain_projection_trace
+
+-- 元の全三角形と全交換セルを保持する実比較複体・両側の全 trace。
+#check @SerrePositivity.KST.SConstruction.CylinderCellWalk
+#print axioms SerrePositivity.KST.SConstruction.CylinderCellWalk
+#check @SerrePositivity.KST.SConstruction.cylinderCellWalkMap
+#print axioms SerrePositivity.KST.SConstruction.cylinderCellWalkMap
+#check @SerrePositivity.KST.SConstruction.CylinderCellWalk.nil
+#print axioms SerrePositivity.KST.SConstruction.CylinderCellWalk.nil
+#check @SerrePositivity.KST.SConstruction.CylinderCellWalk.cons
+#print axioms SerrePositivity.KST.SConstruction.CylinderCellWalk.cons
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData
+#check @SerrePositivity.KST.SConstruction.familyChainPasting
+#print axioms SerrePositivity.KST.SConstruction.familyChainPasting
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.mk
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.mk
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.domain
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.domain
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.source
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.source
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.target
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.target
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.cells
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.cells
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.walk
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.walk
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.map
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.map
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.source_eq
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.source_eq
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.target_eq
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.target_eq
+#check @SerrePositivity.KST.SConstruction.FamilyChainPastingData.cells_eq
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainPastingData.cells_eq
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingDomain
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingDomain
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingTriangle
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingTriangle
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingStrip
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingStrip
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingMap
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingMap
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPasting_shared
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPasting_shared
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingMap_triangle
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingMap_triangle
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingMap_strip
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingMap_strip
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingMap_target
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingMap_target
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingCells
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingCells
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingWalk
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingWalk
+#check @SerrePositivity.KST.SConstruction.triangleCylinderPastingMap_cells
+#print axioms SerrePositivity.KST.SConstruction.triangleCylinderPastingMap_cells
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap
+#check @SerrePositivity.KST.SConstruction.familyInterchangeSquare_clockSwap
+#print axioms SerrePositivity.KST.SConstruction.familyInterchangeSquare_clockSwap
+#check @SerrePositivity.KST.SConstruction.familyInterchangeCylinderChain_trace_clockSwap
+#print axioms SerrePositivity.KST.SConstruction.familyInterchangeCylinderChain_trace_clockSwap
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_restrict
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_restrict
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_second_zero
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_second_zero
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_first_zero
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_first_zero
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_second_one
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_second_one
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_first_one
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_first_one
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_first_zero_restrict
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_first_zero_restrict
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_first_one_restrict
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_first_one_restrict
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_first_zero_restrict_assoc
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_first_zero_restrict_assoc
+#check @SerrePositivity.KST.SConstruction.familySquareClockSwap_first_one_restrict_assoc
+#print axioms SerrePositivity.KST.SConstruction.familySquareClockSwap_first_one_restrict_assoc
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibilityTransport_square_cells
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompositeSecondCompatibilityTransport_square_cells
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeSecondCompatibilityTransport_square_cells
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeSecondCompatibilityTransport_square_cells
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingDomain
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingDomain
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingTriangle
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingTriangle
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingCells
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingCells
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingWalk
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingWalk
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingTarget
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingTarget
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_triangle
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_triangle
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_target
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_target
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_first
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_first
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_composite
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_composite
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_zero_cells
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_zero_cells
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePasting_zero_cells
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePasting_zero_cells
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_zero_faces
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_zero_faces
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_zero_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_zero_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_one_faces
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_one_faces
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_one_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_one_trace
+#check @SerrePositivity.KST.SConstruction.nativePreviousTracePointedCategory
+#print axioms SerrePositivity.KST.SConstruction.nativePreviousTracePointedCategory
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompatibilityInterchangeTrace_one_step
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompatibilityInterchangeTrace_one_step
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_one_previous_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePastingMap_cells_one_previous_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePasting_previous_full_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePasting_previous_full_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePasting_projected_full_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePasting_projected_full_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativePasting_original_full_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePasting_original_full_trace

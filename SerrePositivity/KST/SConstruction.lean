@@ -815,4 +815,13 @@ public import SerrePositivity.KST.SConstruction.MonicKPrismNativeSecondTraceFace
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeCylinderTransport
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeCorrectionChains
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeCorrectionProjection
+public import SerrePositivity.KST.SConstruction.CylinderCellWalks
+public import SerrePositivity.KST.SConstruction.FamilyChainPasting
+public import SerrePositivity.KST.SConstruction.TriangleCylinderPasting
+public import SerrePositivity.KST.SConstruction.FamilySquareClockSwap
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeSquareCells
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativePasting
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativePastingBoundaries
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativePreviousTrace
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativePastingTraces
 /-! # ∞-S• 構成と連結 K 理論 -/
