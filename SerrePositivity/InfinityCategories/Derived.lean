@@ -670,6 +670,14 @@ public import SerrePositivity.InfinityCategories.Derived.DGStrictQuotientRoofEdg
 public import SerrePositivity.InfinityCategories.Derived.DGStrictRoofQuotientVertex
 public import SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofVertexInverse
 
+public import SerrePositivity.InfinityCategories.Derived.DGRoofHomInclusion
+public import SerrePositivity.InfinityCategories.Derived.PinchedClosedVertexSlice
+public import SerrePositivity.InfinityCategories.Derived.DGClosedRoofHomInclusion
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofHomInclusion
+public import SerrePositivity.InfinityCategories.Derived.PinchedClosedVertexNaturality
+public import SerrePositivity.InfinityCategories.Derived.DGStrictQuotientRoofPiZero
+public import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondencePiZero
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

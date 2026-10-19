@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondencePiZero
 import SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofVertexInverse
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFixedHomRoof
 import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceMap
@@ -1617,10 +1618,37 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofVertex_rightInverse
 #print axioms SerrePositivity.InfinityCategories.dgStrictMappedRoofNerveMap_vertex_surjective
 
+#print axioms SerrePositivity.InfinityCategories.dgRoofHomInclusion
+#print axioms SerrePositivity.InfinityCategories.dgRoofHomInclusion_projection
+#print axioms SerrePositivity.InfinityCategories.dgRoofHomInclusion_target
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofHomInclusion
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofHomInclusion_projection
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofHomInclusion_target
+#print axioms SerrePositivity.InfinityCategories.dgRoofHomInclusion_comparison
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedVertex_slice
+#print axioms SerrePositivity.InfinityCategories.dgPinchedSourceTransport_slice
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofHomInclusion
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofHomInclusion_closedVertex
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosedRoofHomInclusion
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosedRoofHomInclusion_closedVertex
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedVertex_linearValue
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedVertex_map
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedVertex_precompose
+#print axioms SerrePositivity.InfinityCategories.dgStrictQuotientRoofVertex_exists_image_piZero
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRoofVertex_exists_image_piZero
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_piZero_surjective
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGRoofHomInclusion,
+    `SerrePositivity.InfinityCategories.Derived.PinchedClosedVertexSlice,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofHomInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofHomInclusion,
+    `SerrePositivity.InfinityCategories.Derived.PinchedClosedVertexNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictQuotientRoofPiZero,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondencePiZero,
     `SerrePositivity.InfinityCategories.Derived.ClosedNerveFunctorNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGStrictRoofCategory,
     `SerrePositivity.InfinityCategories.Derived.DGStrictRoofNerveMap,

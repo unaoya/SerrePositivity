@@ -11,7 +11,7 @@
 - fiber/cofiber 比較の二脚・対角・ホモトピーと同値性、実 slice/coslice 比較辺を照合。同じ四角形の関手同型輸送から任意四角形の双カルテジアン判定と `derivedInfinityCategory_isStable` を証明済み。
 - 通常の h D(S) と二切断の D3 を接続。実 suspension と複体シフトの自然同型・全整数 CommShift・実接続射の符号を照合し、標準 cofiber 列の D3 像を Mathlib の cone 三角形と同定済み。
 - 全 distinguished triangle の標準 cofiber 表示から保存・反映・逆関手の三角性を証明。`derivedStableHomotopyEquivalenceIsTriangulated` は単位・余単位のシフト整合性も持つ。通常の導来圏から三角構造を引き戻して済ませていない。 D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/DGStrictMappedRoofVertexInverse.lean`・`Derived/DGQuotientFixedHomRoof.lean`。商の実安定性・完全性・実 Verdier 分母の反転、有限共通分母・全次数分数表示、全実境界固定ホモトピーと閉細分の恒等・合成則は完成。厳密屋根 nerve の実 over 比較は指定辺・頂点・始域射影を保ち、零単体上全射。共通添字上の任意の既存屋根と商側係数単体を固定した有限相対充填・頂点持ち上げを構成し、元の replacement 比較の π₀ 上全射性を証明。実 Verdier over ∞ 圏上の元と商側の屋根を slice 射影の pullback として構成し、両右ファイブレーション・両全空間の quasicategory 性と全 fiber の pinched Hom 同型を公開した。固定始域・終点の輸送の台と射影の不変性、pinched の slice 表示の後合成自然性を証明し、実屋根比較の任意の fiber が元の商の全 Hom 鎖写像の pinched 作用に厳密に一致することを示した。全辺を反転する基底変換は右ファイブレーションを左にもすることを、Kan な core への因子化と全ホーン充填からモデル構造なしに証明。実商屋根の射影は左右ファイブレーションであり、実恒等分母は実 over 圏の終対象。Quillen A と左ファイブレーションによる基底変換により、固定商 Hom の実商屋根全空間への包含 `dgQuotientFixedHomRoofMap` は right cofinal・弱ホモトピー同値。元の固定 Hom の包含と商の Hom 鎖写像の四角形も厳密に可換。閉 nerve の dg 関手自然性から厳密屋根の通常の comma 圏の全 nerve を実屋根へ写す構成も公開した。元と商側の指定閉細分・閉分子の実辺は全端点・分母・分子の射影を保持し、商側は持ち上がるとは限らない任意の閉商分子を扱う。元の指定頂点の実商像と包含像の分子を持つ指定頂点の一致、任意の実 mapped 屋根頂点から閉分母・閉分子を回収する明示的右逆と厳密 nerve 比較の頂点上全射性も証明済み。元の実屋根比較の弱同値性、異なる細分先の高次整合性、全 ∞ 関手圏の局所化普遍性は未証明。検証結果は保存コミットに記録する。
+- β3 の入口：`Derived/DGRoofCorrespondencePiZero.lean`・`Derived/DGQuotientFixedHomRoof.lean`。商の実安定性・完全性・実 Verdier 分母の反転、有限共通分母と全次数分数表示、全境界固定の有限相対充填・ホモトピー、閉細分の恒等・合成則は完成。実 Verdier over ∞ 圏上の元・商屋根は右ファイブレーションで、商側は左でもある。全 fiber は pinched Hom と同型で、実商比較の fiber 作用は元の商 Hom 鎖写像そのもの。実恒等分母の終対象性と Quillen A により、固定商 Hom の実商屋根全空間への包含は right cofinal・弱ホモトピー同値。閉 nerve の dg 関手自然性、厳密屋根の全 nerve の実屋根への写像、任意の商分子を持つ指定細分辺の全端点・両射影の式、元の指定頂点の実商像との一致、任意の実 mapped 屋根頂点の閉表示の明示的右逆も証明済み。任意の実分母上の Hom 包含とその全次数の商比較、閉分母の元の始域への輸送、元・商側の閉分子の pinched 頂点と指定屋根頂点の一致を公開した。有限頂点持ち上げの実辺を細分後の商 fiber に含め、実商細分辺と接続し、`dgRoofCorrespondenceMap_piZero_surjective` を証明。これは実屋根比較そのものの π₀ 上全射性。全次数の細分輸送と異なる細分先の高次整合性、実比較の弱同値性、全 ∞ 関手圏の局所化普遍性は未証明。検証結果は保存コミットに記録する。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -79,6 +79,7 @@
 - `dgCommonRoofComparison_relative_fillers`・`dgCommonRoofComparison_vertex_lifts`・`roofReplacementTransportEdge`・`roofReplacementMap_piZero_surjective`・`dgRoofReplacementComparison_piZero_surjective`・`dgRoofCorrespondence`・`dgQuotientRoofCorrespondence`・`dgRoofCorrespondenceFiberIso`・`dgQuotientRoofCorrespondenceFiberIso`・`dgRoofCorrespondenceMap`・`dgRoofCorrespondenceMap_projection`。
 - `dgRoofCorrespondenceFiberMap_comparison`・`dgRoofCorrespondenceFiberMap_conjugate`・`roofRightFibration_pullback_leftFibration_of_inverts`・`dgQuotientRoofCorrespondenceProjection_leftFibration`・`dgVerdierOverIdentityVertex_isTerminal`・`dgQuotientFixedHomRoofMap_isRightCofinal`・`dgQuotientFixedHomRoofMap_isWeakHomotopyEquivalence`・`dgFixedHomRoofMap_comparison`。
 - `closedNerveInclusion_dgFunctor`・`dgStrictRoofNerveMap`・`dgStrictRoofRefinementEdge`・`dgStrictQuotientRoofRefinementEdge`・`dgRoofCorrespondenceMap_strictVertex`・`dgStrictMappedRoofVertex_rightInverse`・`dgStrictMappedRoofNerveMap_vertex_surjective`。
+- `dgRoofHomInclusion_comparison`・`dgClosedRoofHomInclusion_closedVertex`・`dgQuotientClosedRoofHomInclusion_closedVertex`・`pinchedClosedVertex_precompose`・`dgStrictQuotientRoofVertex_exists_image_piZero`・`dgRoofCorrespondenceMap_piZero_surjective`。
 
 ### 依存と提供
 
@@ -99,7 +100,7 @@
 
 ### 次の一手
 
-- β3：次は固定 fiber の有限ホモトピーと今回の実細分辺を接続する。`dgRoofCorrespondenceFiberIso` の逆と fiber 包含で得る頂点を `dgStrictRoofVertex` と、商側も同様に照合し、閉細分の前合成との一致を示す。指定商分子の pinched ホモトピーを実商 fiber に写し、`dgStrictQuotientRoofRefinementEdge` と結んで実商屋根の任意の頂点を元の像へ接続する。任意頂点の閉表示は `dgStrictMappedRoofVertex_rightInverse`、元の像の端点照合は `dgRoofCorrespondenceMap_strictVertex` を使う。次に全次数の輸送との一致と異なる細分先の比較から実屋根比較の弱同値性を証明する。厳密添字の filteredness・実添字への cofinality は未証明。局所充填と π₀ 全射性から弱同値性を推論しない。元の実屋根比較の弱同値性、全標的の `F1B/Localization.IsLocalization`、Verdier 列、β5、β4 は未完。
+- β3：次は閉細分の全次数の前合成を、実屋根内の輸送と照合する。指定 r:s′→s に対し `pinchedClosedPrecomposition r.hom.left ≫ dgClosedRoofHomInclusion s′` と `dgClosedRoofHomInclusion s` の間に、分母側が r の実 over 辺に沿うパラメータ付き実ホモトピーを作る。商側も任意の商係数単体で同様に作り、零次元は今回の指定細分辺・閉頂点公式と照合する。固定 fiber の有限相対ホモトピーをこの輸送と接続し、異なる細分先と高次の実分母単体に沿う整合性へ進む。全次数の輸送を頂点だけの比較で代用しない。厳密添字の filteredness・実添字への cofinality は未証明。局所充填と実比較の π₀ 全射性から弱同値性を推論しない。実屋根比較の弱同値性、全標的の `F1B/Localization.IsLocalization`、Verdier 列、β5、β4 は未完。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
