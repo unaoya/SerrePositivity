@@ -718,3 +718,7 @@ public import SerrePositivity.InfinityCategories.F1.CoherentPathCutMaps
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionHom
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionCoordinates
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionSimplex
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionEndpoints
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionReindex
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionNaturality
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionPrism
