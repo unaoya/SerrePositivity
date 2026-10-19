@@ -355,3 +355,9 @@ public import SerrePositivity.EInfinity.IntervalCuts.NonpivotActivePositions
 public import SerrePositivity.EInfinity.IntervalCuts.NonpivotInversionCounts
 public import SerrePositivity.EInfinity.IntervalCuts.NonpivotCompositionSigns
 public import SerrePositivity.EInfinity.IntervalCuts.CompositionCoefficients
+public import SerrePositivity.EInfinity.IntervalCuts.VertexCompositionComponents
+public import SerrePositivity.EInfinity.IntervalCuts.VertexBasisEvaluation
+public import SerrePositivity.EInfinity.IntervalCuts.VertexFaceCuts
+public import SerrePositivity.EInfinity.IntervalCuts.InsertionVertexValues
+public import SerrePositivity.EInfinity.IntervalCuts.IteratedVertexAction
+public import SerrePositivity.EInfinity.IntervalCuts.CompositionVertexGenerators

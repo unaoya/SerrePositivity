@@ -616,7 +616,10 @@ nullary を含む TR の部分合成保存は完了。
 `NestedEdgeCut.compositionCoefficient` は全三分岐の一般係数一致。
 `edgeComponent_composition_action_sum` は実際の合成辺成分を二段作用と同じ係数の有限和へ移す。
 `cochainAction_composition_basis_edge_eq_iterated` は正の内側 arity・全語次数の語基底と辺で実際の左右の作用が一致すること。
-具体的な Δ¹ の余代数構造は未完成。元の頂点入力・nullary・全整数複体射への線形延長、
+`vertexComponent_composition_zero` は次数零の唯一分割による合成頂点値。
+`iteratedCochainAction_basis_vertex_outer_positive/inner_positive/zero` は元の頂点での全 arity の二段作用の値。
+`cochainAction_composition_basis_vertex_eq_iterated` は正の内側 arity・全語次数の語基底と両頂点で実際の左右の作用が一致すること。
+具体的な Δ¹ の余代数構造は未完成。nullary・全整数複体射への線形延長、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 

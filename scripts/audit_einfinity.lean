@@ -1319,6 +1319,28 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionCoefficient,
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_action_sum,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_edge_eq_iterated,
+      `SerrePositivity.EInfinity.IntervalCuts.occurrenceCount_degree_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.overlapPartition_card_of_count_one,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_composition_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.faceVector_vertex_eq,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_basis_vertex_component,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.vertex_not_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.val_eq_none_of_nonedge,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.output_of_nonedge,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.coefficient_of_nonedge,
+      `SerrePositivity.EInfinity.IntervalCuts.FaceCut.card_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.insertionFamily_const,
+      `SerrePositivity.EInfinity.IntervalCuts.prefixDegree_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_basis_vertex_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_basis_vertex_zero_degree,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_apply_of_sums,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_vertex_component,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_vertex_outer_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_vertex_zero_outer,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_vertex_inner_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.iteratedCochainAction_basis_vertex_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_composition_basis_vertex_eq_iterated,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3786,3 +3808,56 @@ example : ((complexPartialComposition ℤ 1 2 0 ▷ interval ℤ) ≫ cochainAct
     -(tensorVectorAt ℤ 3 nestedRepeatedExample.outputFamily (-3) (by decide)) := by
   exact (cochainAction_composition_basis_edge_eq_iterated ℤ compositionInner compositionInner 0
     (by decide)).trans iteratedRepeatedEdgeFixture
+
+-- 語基底と元の両頂点で、次数零の実際の合成は同じ一定頂点テンソル。
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
+example (b : Fin 2) : ((complexPartialComposition ℤ 2 2 2 ▷ interval ℤ) ≫
+    cochainAction ℤ 4).f 0
+    (ιTensorObj (complex ℤ 3 ⊗ complex ℤ 2) (interval ℤ) 0 0 0 rfl
+      (ιTensorObj (complex ℤ 3) (complex ℤ 2) 0 0 0 rfl
+        ((complexXIso ℤ 3 0).inv (basis ℤ 3 0 (ULift.up zeroPermutationWord)) ⊗ₜ[ℤ]
+          (complexXIso ℤ 2 0).inv (basis ℤ 2 0
+            (ULift.up (permutationWord (Equiv.swap (0 : Fin 2) 1))))) ⊗ₜ[ℤ]
+        faceVector ℤ (vertex b))) =
+    tensorVectorAt ℤ 4 (fun _ => vertex b) 0 (by rw [vertex_tupleDegree]; rfl) :=
+  (cochainAction_composition_basis_vertex_eq_iterated ℤ zeroPermutationWord
+    (permutationWord (Equiv.swap (0 : Fin 2) 1)) 2 (by decide) b).trans
+      (iteratedCochainAction_basis_vertex_zero ℤ zeroPermutationWord
+        (permutationWord (Equiv.swap (0 : Fin 2) 1)) 2 b)
+
+-- 外側だけ、内側だけが正次数の場合も、両頂点で実際の合成射の値は零。
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
+example (b : Fin 2) : ((complexPartialComposition ℤ 1 2 0 ▷ interval ℤ) ≫
+    cochainAction ℤ 3).f (-1)
+    (ιTensorObj (complex ℤ 2 ⊗ complex ℤ 2) (interval ℤ) (-1) 0 (-1) (by decide)
+      (ιTensorObj (complex ℤ 2) (complex ℤ 2) (-1) 0 (-1) (by decide)
+        ((complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner)) ⊗ₜ[ℤ]
+          (complexXIso ℤ 2 0).inv (basis ℤ 2 0
+            (ULift.up (permutationWord (1 : Equiv.Perm (Fin 2)))))) ⊗ₜ[ℤ]
+        faceVector ℤ (vertex b))) = 0 :=
+  (cochainAction_composition_basis_vertex_eq_iterated ℤ compositionInner
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0 (by decide) b).trans
+      (iteratedCochainAction_basis_vertex_outer_positive ℤ compositionInner
+        (permutationWord (1 : Equiv.Perm (Fin 2))) 0 b (by decide))
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
+example (b : Fin 2) : ((complexPartialComposition ℤ 2 2 1 ▷ interval ℤ) ≫
+    cochainAction ℤ 4).f (-1)
+    (ιTensorObj (complex ℤ 3 ⊗ complex ℤ 2) (interval ℤ) (-1) 0 (-1) (by decide)
+      (ιTensorObj (complex ℤ 3) (complex ℤ 2) 0 (-1) (-1) (by decide)
+        ((complexXIso ℤ 3 0).inv (basis ℤ 3 0 (ULift.up zeroPermutationWord)) ⊗ₜ[ℤ]
+          (complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner))) ⊗ₜ[ℤ]
+        faceVector ℤ (vertex b))) = 0 :=
+  (cochainAction_composition_basis_vertex_eq_iterated ℤ zeroPermutationWord compositionInner
+    1 (by decide) b).trans
+      (iteratedCochainAction_basis_vertex_inner_positive ℤ zeroPermutationWord compositionInner
+        1 b (by decide) (-1) (by decide))
+
+-- nullary の内側次数零余代入の右辺は、一定頂点族から指定因子を除く。
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
+example (b : Fin 2) :
+    (tensorCoInsertionAction (interval ℤ) (complex ℤ 0) 2 0 1 (cochainAction ℤ 0)).f 0
+      (ιTensorObj (complex ℤ 0) (power (interval ℤ) 3) 0 0 0 rfl
+        ((complexXIso ℤ 0 0).inv (basis ℤ 0 0 (ULift.up zeroEmptyWord)) ⊗ₜ[ℤ]
+          tensorVectorAt ℤ 3 (fun _ => vertex b) 0 (by rw [vertex_tupleDegree]; rfl))) =
+      tensorVectorAt ℤ 2 (fun _ => vertex b) 0 (by rw [vertex_tupleDegree]; rfl) :=
+  tensorCoInsertionAction_basis_vertex_zero_degree ℤ zeroEmptyWord 1 b
