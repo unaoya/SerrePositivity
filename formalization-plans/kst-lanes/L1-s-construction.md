@@ -20,8 +20,7 @@
 - `relativeCofiberStableModel`：評価による逆像条件の交わりとして相対 E(A,C,B) を構成済み。subobject・quotient は A/B への完全関手で、元の評価との包含後の厳密な等号を証明済み。相対 object/core 加法性への入力として接続済み。
 - 相対左 fiber 内の切断・ρ・θ と両端を構成済み。ρ は相対 quotient を厳密に固定、θ は replete 性で B 所属を保つ。`relativeCofiberLeftFiberQuotient_localized_isIso` を二ホモトピーから証明済み。
 - `sClosedStableIso`：S_n A を全 Ar 成分が A に入る S_n C の全部分圏と、全高次単体を保つ完全関手の同型で比較済み。
-- `sRelativeCofiberStableIso`：S_n E(A,C,B) と E(S_n A,S_n C,S_n B) の交換同型、両評価との厳密な可換性を証明済み。相対の各 S_n 行、全正有限反復実現の元の射対の加法性まで接続済み。
-- `RelativeStableModel`・`relativeCofiberFunctor`：両端を保つ完全関手の相対図式への作用と厳密な二評価の自然性を構成済み。`relativeMultiRealizationAdditivityLocalizedIso` は全正反復の元の射対を成分とする自然同型。
+- `sRelativeCofiberStableIso`：S_n E(A,C,B) と E(S_n A,S_n C,S_n B) の交換同型、両評価との厳密な可換性を証明済み。相対の各 S_n 行、全正有限反復実現の元の射対の加法性まで接続済み。`RelativeStableModel`・`relativeCofiberFunctor`：両端を保つ完全関手の相対図式への作用と厳密な二評価の自然性を構成済み。`relativeMultiRealizationAdditivityLocalizedIso` は全正反復の元の射対を成分とする自然同型。
 - `cutStableComparison`：任意の切断位置 k で S_n C 内の実際の cofiber 四角形への完全関手を構成。各角は min・恒等・定数 k・max による制限と全高次単体で厳密に一致し、中央評価は恒等関手を回収する。
 - `arCutSquareMap_naturality`：切断位置も写す任意の単調写像（面・退化を含む）で添字の全単体の切断四角形が厳密に可換。正の反復実現後の二分割 Segal 同値も証明済み。
 - `cutLeftSupport`・`cutRightSupport`：反対側の全区間成分の零性から閉じた安定部分圏を構成。切断の両端の所属、`cutRelativeComparison` の完全性と中央評価との厳密な切断を証明済み。
@@ -32,7 +31,8 @@
 - `iteratedPathBoundary_homotopyPullback`：元の経路境界の全単体作用素の自然性四角形は正の全反復実現で homotopy pullback。δ₀ は σ₀ の面条件・厳密な退縮・正の実現の連結性から検出し、他の面・退化と合成して全作用素へ拡張した。
 - `localized_isIso_of_connected_baseChange`：連結な Kan 基底上の二つの Kan fibration の間の射は、非空な任意の基底変換で局所化同型を検出できる。境界 RLP・全単体全射性・right properness から証明済み。
 - `iteratedPathBoundary_realization_homotopyPullback`：証明済みの全ての面条件を既存の Segal 実現定理に適用し、各行と全対角の四角形の homotopy pullback 性まで接続済み。零行の既存 fiber との比較は次項。元の構造射との照合は未完。
-
+- `sInterchangeStableIso`：全 gapped 図式を保つ S_m(S_n X) ≅ S_n(S_m X) を厳密な二回の転置で構成し、完全関手・両方向の面退化・各評価との自然性を証明済み。有限反復の交換も構成済み。
+- `sOneInnerOuterRealizationIso_comparison`：経路零行 F_r(S₁ X) と元の一方向実現の厳密な交換同型を構成し、二つの元の前段比較の厳密な可換性まで照合済み。区間族と境界商の照合は未完。
 - `zeroRowPathFiberComparison_localized_isIso`：元の経路零行から既存の `iteratedPathHomotopyFiber` への定数 path による実際の比較と局所化同型を証明済み。Δ[0] の積を外した零列写像、商・Kan 比較の厳密な可換性、標的の零列の厳密な零化を含む。
 - `exists_previousStage_pathFiber_comparison`：任意の零段基点の退化を基点にした零行の同じ Kan 模型から、前段の既存の全零境界 Kan 実現と既存 fiber へ全基点 π_* 同型を構成済み。Kan 単位に沿う延長は元の射を厳密に回収する。
 ### 残り（依存順、原典番号と時間見積もり）
@@ -70,26 +70,26 @@
 - `relativeCofiberStableModel`、`relativeCofiberSubobject`、`relativeCofiberQuotient`
 - `objectSClosedIso`、`relativeCofiberLeftFiberLift`、`relativeMcCarthyRhoHomotopy`、`relativeMcCarthyThetaHomotopy`
 - `relativeCofiberLeftFiberQuotient_localized_isIso`、`relativeCoreSAdditivityMap_localized_isIso`
-- `sClosedStableIso`、`sRelativeCofiberStableIso`、`relativeMultiRealizationAdditivityLocalizedIso`、`cutStableComparison`、`cutRelativeEquivalence`、`cutRelativeSegalPair`、`cutLeftIntervalEquivalence`、`cutRightIntervalEquivalence`、`StableModelEquivalence`、`multiRealization_map_localized_isIso_of_equivalence`、`cutSegalMap_localized_isIso`、`cutSegalLocalizedIso`、`edgeSegalMap_localized_isIso`、`edgeSegalMap_projection`、`pathHeadSegalMap`、`iteratedPathBoundary_headPreserving_homotopyPullback`、`iteratedPathBoundary_homotopyPullback`、`iteratedPathBoundary_realization_homotopyPullback`、`localized_isIso_of_connected_baseChange`、`zeroRowPathFiberComparison_localized_isIso`、`zeroRowKanFiberComparison_piIsomorphism`、`zeroRowKanPreviousComparison_piIsomorphism`、`exists_previousStage_pathFiber_comparison`
+- `sClosedStableIso`、`sRelativeCofiberStableIso`、`relativeMultiRealizationAdditivityLocalizedIso`、`cutStableComparison`、`cutRelativeEquivalence`、`cutRelativeSegalPair`、`cutLeftIntervalEquivalence`、`cutRightIntervalEquivalence`、`StableModelEquivalence`、`multiRealization_map_localized_isIso_of_equivalence`、`cutSegalMap_localized_isIso`、`cutSegalLocalizedIso`、`edgeSegalMap_localized_isIso`、`edgeSegalMap_projection`、`pathHeadSegalMap`、`iteratedPathBoundary_headPreserving_homotopyPullback`、`iteratedPathBoundary_homotopyPullback`、`iteratedPathBoundary_realization_homotopyPullback`、`localized_isIso_of_connected_baseChange`、`zeroRowPathFiberComparison_localized_isIso`、`zeroRowKanFiberComparison_piIsomorphism`、`zeroRowKanPreviousComparison_piIsomorphism`、`exists_previousStage_pathFiber_comparison`、`sInterchangeStableIso`、`diagonalFixedSInterchangeNatIso`、`sOneInnerOuterRealizationIso`、`sOneInnerOuterRealizationIso_comparison`
 
 ### 依存と提供
 - 所有は `SerrePositivity/KST/SConstruction/`、集約、監査スクリプト、本計画。namespace は同名。
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）。
-- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解、閉じた全部分圏と相対 E(A,C,B) の安定性・完全な評価、相対 object/core 単回実現と全正有限反復 core S• 実現の加法性、S_n と全部分圏・相対図式の厳密な交換同型、相対入力に関する全正反復加法性の自然同型、切断の左右支持部分圏と短い区間の S 構成の実際の同値、左右支持の相対 E と S_n C の実際の同値、元の Segal 射対の厳密な比較式、全正有限反復実現による完全な同値の保存、任意の切断位置の元の Segal 射の自然な局所化同型、全連続辺への Segal 同値、全単体作用素の元の経路境界の homotopy pullback、全ての行と全対角の homotopy pullback 比較、元の零行から既存 fiber への局所化同型、前段の既存 Kan 実現と既存 fiber への同じ Kan 模型からの全基点 π_* 比較。
+- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解、閉じた全部分圏と相対 E(A,C,B) の安定性・完全な評価、相対 object/core 単回実現と全正有限反復 core S• 実現の加法性、S_n と全部分圏・相対図式の厳密な交換同型、相対入力に関する全正反復加法性の自然同型、切断の左右支持部分圏と短い区間の S 構成の実際の同値、左右支持の相対 E と S_n C の実際の同値、元の Segal 射対の厳密な比較式、全正有限反復実現による完全な同値の保存、任意の切断位置の元の Segal 射の自然な局所化同型、全連続辺への Segal 同値、全単体作用素の元の経路境界の homotopy pullback、全ての行と全対角の homotopy pullback 比較、元の零行から既存 fiber への局所化同型、前段の既存 Kan 実現と既存 fiber への同じ Kan 模型からの全基点 π_* 比較、S/S の厳密な交換と全反復 S₁ の内外比較の可換性。
 - K スペクトル・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 担当分は検証済み保存単位（新規11モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
+- 担当分は検証済み保存単位（新規12モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
-- 対象ビルド3743 jobs、公理監査2390宣言が成功。全体 lake build は今回再実行していない。
+- 対象ビルド3755 jobs、公理監査2433宣言が成功。全体 lake build は今回再実行していない。
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 2390宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- 2433宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
 - raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。二つの実ホモトピーと quotient 射の局所化同型まで証明済み。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - homotopy fiber 比較を既存の構造射と形式的に合成するだけでは正の Ω 条件の証明にならない。
@@ -97,7 +97,7 @@
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- 前段と既存 fiber の点つき Kan 比較は完成。次は元の `oneDirectionSuspensionAssembly` の随伴との照合を証明する。元の一次方向は最も外側の S₁、経路零行は最も内側の S₁ なので、S_m(S_n X) の全 gapped 図式を保つ転置・自然性で両模型を厳密に比較し、区間族と商への降下を照合する。
+- S/S の転置と有限反復での S₁ の内外交換、両側の元の前段比較の可換性は完成。次は固定 S_m の交換の m 方向の自然性を有限反復へ拡張し、元の `multiDiagonalAssembly` と最内側方向の区間族を照合する。全次数が同じ標的には S 方向の巡回交換が入るので、全零境界の保存と商への降下も明示してから元の `oneDirectionSuspensionAssembly` の随伴へ接続する。
 - 元の構造射の随伴が、前段から fiber への比較と既証の loop–fiber 比較を通した射にホモトピックであることを示し、全基点 π_* 同型を移す。単に共通 Kan 比較の存在だけで Ω 条件を結論しない。正の Ω 条件・BF 連結 K、π₀・dg・L3・K-基盤は未完。
 - 検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
 

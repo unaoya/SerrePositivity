@@ -6287,3 +6287,132 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.exists_previousStage_pathFiber_comparison
 #print axioms SerrePositivity.KST.SConstruction.exists_previousStage_pathFiber_comparison
+
+#check @SerrePositivity.KST.SConstruction.simplicialFixedSInterchangeNatIso
+#print axioms SerrePositivity.KST.SConstruction.simplicialFixedSInterchangeNatIso
+
+#check @SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso
+
+#check @SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso_zero_app
+#print axioms SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso_zero_app
+
+#check @SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso_succ_app
+#print axioms SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso_succ_app
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeStableIso_sOneComparison_right
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeStableIso_sOneComparison_right
+
+#check @SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso_sOneComparison
+#print axioms SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso_sOneComparison
+
+#check @SerrePositivity.KST.SConstruction.fixedSInnerCoreDiagram
+#print axioms SerrePositivity.KST.SConstruction.fixedSInnerCoreDiagram
+
+#check @SerrePositivity.KST.SConstruction.fixedSOuterCoreDiagram
+#print axioms SerrePositivity.KST.SConstruction.fixedSOuterCoreDiagram
+
+#check @SerrePositivity.KST.SConstruction.fixedSCoreDiagramSwapIso
+#print axioms SerrePositivity.KST.SConstruction.fixedSCoreDiagramSwapIso
+
+#check @SerrePositivity.KST.SConstruction.fixedSInnerCoreDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.fixedSInnerCoreDiagramIso
+
+#check @SerrePositivity.KST.SConstruction.fixedSInnerRealizationIso
+#print axioms SerrePositivity.KST.SConstruction.fixedSInnerRealizationIso
+
+#check @SerrePositivity.KST.SConstruction.fixedSOneOuterCoreDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.fixedSOneOuterCoreDiagramIso
+
+#check @SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso
+#print axioms SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso
+
+#check @SerrePositivity.KST.SConstruction.sDoubleInclusion
+#print axioms SerrePositivity.KST.SConstruction.sDoubleInclusion
+
+#check @SerrePositivity.KST.SConstruction.sDoubleInclusion_mono
+#print axioms SerrePositivity.KST.SConstruction.sDoubleInclusion_mono
+
+#check @SerrePositivity.KST.SConstruction.sInterchange_doubleInclusion
+#print axioms SerrePositivity.KST.SConstruction.sInterchange_doubleInclusion
+
+#check @SerrePositivity.KST.SConstruction.sDoubleInclusion_postcomp
+#print axioms SerrePositivity.KST.SConstruction.sDoubleInclusion_postcomp
+
+#check @SerrePositivity.KST.SConstruction.sDoubleInclusion_outerMap
+#print axioms SerrePositivity.KST.SConstruction.sDoubleInclusion_outerMap
+
+#check @SerrePositivity.KST.SConstruction.sDoubleInclusion_innerMap
+#print axioms SerrePositivity.KST.SConstruction.sDoubleInclusion_innerMap
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeTransposeDiagram_vertex_ι
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeTransposeDiagram_vertex_ι
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeTransposeDiagram_isGapped
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeTransposeDiagram_isGapped
+
+#check @SerrePositivity.KST.SConstruction.sInterchange
+#print axioms SerrePositivity.KST.SConstruction.sInterchange
+
+#check @SerrePositivity.KST.SConstruction.sInterchange_ι
+#print axioms SerrePositivity.KST.SConstruction.sInterchange_ι
+
+#check @SerrePositivity.KST.SConstruction.sInterchange_double_ι
+#print axioms SerrePositivity.KST.SConstruction.sInterchange_double_ι
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeStableIso_evaluate_left
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeStableIso_evaluate_left
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeStableIso_evaluate_right
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeStableIso_evaluate_right
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison_eq_evaluation
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison_eq_evaluation
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeStableIso_sOneComparison
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeStableIso_sOneComparison
+
+#check @SerrePositivity.KST.SConstruction.sInterchange_twice
+#print axioms SerrePositivity.KST.SConstruction.sInterchange_twice
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeIso
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeIso
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeStableIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeStableIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeEndofunctorIso
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeEndofunctorIso
+
+#check @SerrePositivity.KST.SConstruction.sInterchange_outerMap
+#print axioms SerrePositivity.KST.SConstruction.sInterchange_outerMap
+
+#check @SerrePositivity.KST.SConstruction.sInterchange_innerMap
+#print axioms SerrePositivity.KST.SConstruction.sInterchange_innerMap
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeStableIso
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeStableIso
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeRawTranspose
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeRawTranspose
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeRawTranspose_vertex
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeRawTranspose_vertex
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeRawTranspose_gapped
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeRawTranspose_gapped
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeTransposeDiagram
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeTransposeDiagram
+
+#check @SerrePositivity.KST.SConstruction.sInterchangeTransposeDiagram_ι
+#print axioms SerrePositivity.KST.SConstruction.sInterchangeTransposeDiagram_ι
+
+#check @SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso_comparison
+#print axioms SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso_comparison
+
+#check @SerrePositivity.KST.SConstruction.internalHomSwap_postcomp
+#print axioms SerrePositivity.KST.SConstruction.internalHomSwap_postcomp
+
+#check @SerrePositivity.KST.SConstruction.internalHomSwap_pre_left
+#print axioms SerrePositivity.KST.SConstruction.internalHomSwap_pre_left

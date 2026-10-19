@@ -389,4 +389,17 @@ public import SerrePositivity.KST.SConstruction.ZeroRowKanFiberComparison
 public import SerrePositivity.KST.SConstruction.ZeroRowPreviousComparison
 public import SerrePositivity.KST.SConstruction.ZeroRowDeloopingComparison
 
+public import SerrePositivity.KST.SConstruction.DiagonalSInterchange
+public import SerrePositivity.KST.SConstruction.DiagonalSInterchangeComponents
+public import SerrePositivity.KST.SConstruction.FixedSRealizationSwap
+public import SerrePositivity.KST.SConstruction.SDoubleInclusion
+public import SerrePositivity.KST.SConstruction.SInterchangeComparison
+public import SerrePositivity.KST.SConstruction.SInterchangeEvaluations
+public import SerrePositivity.KST.SConstruction.SInterchangeIso
+public import SerrePositivity.KST.SConstruction.SInterchangeNaturality
+public import SerrePositivity.KST.SConstruction.SInterchangeStableIso
+public import SerrePositivity.KST.SConstruction.SInterchangeTranspose
+public import SerrePositivity.KST.SConstruction.SOneSlideComparison
+public import SerrePositivity.KST.SConstruction.SwapNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
