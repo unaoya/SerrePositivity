@@ -4036,3 +4036,84 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @kanBousfieldKanColimitHomComparison_homotopyEquivalence
 #print axioms kanBousfieldKanColimitHomComparison_homotopyEquivalence
+
+#check @oppositeInternalHomNatIso
+#print axioms oppositeInternalHomNatIso
+
+#check @oppositeInternalHomIso
+#print axioms oppositeInternalHomIso
+
+#check @oppositeInternalHom_post
+#print axioms oppositeInternalHom_post
+
+#check @oppositeInternalHom_pre
+#print axioms oppositeInternalHom_pre
+
+#check @oppositeWeightedSectionsDiagramIso
+#print axioms oppositeWeightedSectionsDiagramIso
+
+#check @weightedSectionsOppositeIso
+#print axioms weightedSectionsOppositeIso
+
+#check @weightedSectionsOppositeIso_π
+#print axioms weightedSectionsOppositeIso_π
+
+#check @weightedSectionsOppositeIso_naturality
+#print axioms weightedSectionsOppositeIso_naturality
+
+#check @weightedSectionsWeightIso
+#print axioms weightedSectionsWeightIso
+
+#check @diagramDoubleOppositeIso
+#print axioms diagramDoubleOppositeIso
+
+#check @weightedSectionsReflectedIso
+#print axioms weightedSectionsReflectedIso
+
+#check @weightedSectionsPre_naturality
+#print axioms weightedSectionsPre_naturality
+
+#check @weightedSectionsReflectedIso_naturality
+#print axioms weightedSectionsReflectedIso_naturality
+
+#check @reflectedWeightedColimitHomIso
+#print axioms reflectedWeightedColimitHomIso
+
+#check @reflectedWeightedColimitHomIso_naturality
+#print axioms reflectedWeightedColimitHomIso_naturality
+
+#check @reflectedBousfieldKanColimit
+#print axioms reflectedBousfieldKanColimit
+
+#check @kanReflectedBousfieldKanColimitObject
+#print axioms kanReflectedBousfieldKanColimitObject
+
+#check @kanReflectedBousfieldKanColimitUnderlyingHomIso
+#print axioms kanReflectedBousfieldKanColimitUnderlyingHomIso
+
+#check @kanReflectedBousfieldKanColimitHomComparison
+#print axioms kanReflectedBousfieldKanColimitHomComparison
+
+#check @kanReflectedBousfieldKanColimitHomComparison_homotopyEquivalence
+#print axioms kanReflectedBousfieldKanColimitHomComparison_homotopyEquivalence
+
+#check @bousfieldKanCoherentConeComparison
+#print axioms bousfieldKanCoherentConeComparison
+
+#check @bousfieldKanCoherentConeComparison_homotopyEquivalence
+#print axioms bousfieldKanCoherentConeComparison_homotopyEquivalence
+
+#check @bousfieldKanCoherentConePoint
+#print axioms bousfieldKanCoherentConePoint
+
+#check @bousfieldKanCoherentOppositeCone
+#print axioms bousfieldKanCoherentOppositeCone
+
+#check @bousfieldKanCoherentOppositeCone_vertex
+#print axioms bousfieldKanCoherentOppositeCone_vertex
+
+#check @bousfieldKanCoherentCocone
+#print axioms bousfieldKanCoherentCocone
+
+#check @bousfieldKanCoherentCocone_vertex
+#print axioms bousfieldKanCoherentCocone_vertex
