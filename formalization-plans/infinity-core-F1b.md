@@ -15,7 +15,7 @@
   実際の pullback 関手への適用 `kanFiberwiseHom` は、逆像上の図式を厳密に表現する。
 - 局所形の自然変換による制限を構成し、図式の持ち上げと族の持ち上げの同値を証明。
   相対始点境界充填を使う相対骨格の組み立てと、fiber の余極限性からの充填条件の導出を証明。
-  相対 join の関手の族の延長まで接続済み。実際の大域図式と Kan 条件への接続は未完。
+  相対 join の関手の族と実際の図式の延長まで接続済み。Kan 条件への接続と一般の存在は未完。
 - `kanFiberwiseHom` の fiber を `Fun(K_c,D)` と厳密に同定し、元の図式の制限との自然性を証明。
   相対 join の fiber は `K_c ⋆ Δ⁰`、その関手の族の制限は `coconeRestriction` に一致する。
   普遍余錐から、この fiber の射と全空間の射に対する相対始点境界充填まで証明。
@@ -40,14 +40,15 @@
 - cocartesian fibration 間の単射による相対指数の制限は inner fibration。相対 join の制限 V にも適用済み。
 - 余錐制限と相対 join 制限の各 fiber の cartesian fibration 性を証明。縦合成の比較射の pullback 分解も証明。
 - 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。
-- 最終検証：F1・F1B 同時ビルド成功（3407 jobs）、同時 import 検査成功（F1 5617・F1B 3534 宣言）。
-  公理監査成功（3538 宣言、標準三公理のみ、962 モジュールに straightening なし）。ソース名衝突 0。
+- 各 fiber の全図式に余極限があれば、普遍余錐全体からの射は自明 Kan fibration。任意の族を延長できる。
+- 最終検証：F1・F1B 同時ビルド成功（3420 jobs）、同時 import 検査成功（F1 5673・F1B 3540 宣言）。
+  公理監査成功（3544 宣言、標準三公理のみ、967 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
-- 1. 普遍余錐から構成した相対 join の族の延長を、実際の図式の延長と Kan 条件へ接続する。
+- 1. 図式の延長の存在仮定を、対象の図式に必要な点ごとの余極限へ弱め、Kan 条件へ接続する。
   Kerodon Lemma 7.3.4.5–6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
-  fiber の相対始点境界充填の全空間への移送と、族の相対骨格上の延長は証明済み。
+  fiber の充填の全空間への移送、族と実際の図式の相対骨格上の延長は証明済み。
   その後 oriented fiber product で全部分 ∞ 圏からの存在へ接続し、任意の δ に沿う存在も扱う。
 - 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
@@ -68,7 +69,7 @@
 - `kanFiberwiseHom` / `kanFiberwiseHomFiberIso` / `kanRelativeJoinCoconeFiber_initialBoundary`
 - `KanCocartesianScaffold.isPrecompositionEquivalence` / `kanUniversalScaffold_overPullback_isPrecompositionEquivalence`
 - `kanCocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
-- `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_family_extension_of_colimits`
+- `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
 - `exists_kanFinalHorn_extension_of_edgeRestriction` / `kanFiberwiseHom_isCartesianEdge_of_inverting`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.kanRelativeJoinRestriction_preservesCartesianEdges` / `F1B.kanRelativeJoinRestriction_innerFibration`
@@ -82,7 +83,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：fiber の相対境界充填の全空間への移送、相対 join の充填と族の延長、集約・監査・本書）。
+- なし（本保存単位：二部分を固定した図式の延長、余極限からの自明 Kan fibration と図式の存在、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -97,9 +98,9 @@
 
 ### 次の一手
 
-- `exists_kanRelativeJoin_family_extension_of_colimits` を `kanFiberwiseHom` の普遍性で uncurry し、
-  境界と元の図式を固定した相対 join 上の実際の図式の延長へ移す（Kerodon 7.3.4.5–6）。
-  その後、全部分 ∞ 圏からの存在と任意の δ の存在へ進む。V 自体の cartesian 性を前提にしない。
+- `exists_kanRelativeJoin_diagram_of_colimits` は各 fiber の全図式の余極限を要求する。
+  相対始対象全体からの射を対象の図式の族に沿って引き戻し、必要な各頂点の余極限だけで切断を作る。
+  その後 oriented fiber product で任意の δ と点ごとの Kan 条件へ接続する（Kerodon 7.3.4–5）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
