@@ -29,11 +29,12 @@
   選択独立性・パラメーター制限・始点の係数変更を族全体で証明し、各辺で既存の transport を回収する。
   unstraightening の写像空間比較の fiber 作用と、対象評価後の普遍輸送を関手同型で結んだ。
 - 実際の pointed-space 射影の普遍輸送は写像空間上で同値。豊穣合成・反転・底の同型で証明済み。
-  同じ始点と底を持つ全 lift prism の空間を構成し、パラメーター射影は trivial Kan fibration。
-  任意の prism 族を戻す普遍性と厳密な回収、終点評価と標準輸送の引き戻しの関手同型を証明した。
-  始点も動く全 lift prism の空間を構成。固定始点への底変換と実際の始点 fiber を同型で結び、
-  同時端点制限は Kan fibration。始点が同値なら fiber の終点射は trivial Kan fibration、両端固定 lift 空間は可縮。
-- 対象ビルド2969 jobs、公理監査5543宣言が成功。依存公理は標準3公理のみ。
+  初期値も動く全 lift prism 空間とその普遍性、任意の底変換、実際の始点 fiber との同型を構成。
+  同時端点制限は Kan fibration。始点同値への制限は trivial Kan fibration、両端固定 lift 空間は可縮。
+  円柱の両端同値と prism の厳密な貼り合わせの空間も、両端への射影が trivial Kan fibration。
+  区間上の任意の left fibration の輸送円柱から全空間への実際の比較は前合成同値、
+  分類図式を固定した相対関手空間への制限も同値。実際の表現空間との同定は未完。
+- 対象ビルド2974 jobs、公理監査5569宣言が成功。依存公理は標準3公理のみ。
 
 ### 残り（依存順）
 
@@ -63,8 +64,8 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `parametrizedPointedSpaceTransport_isQCatEquivalence`、`pointedPrismLiftEndpoints_fibration`
-- `pointedPrismSourceFiberEndpoint_trivialKanFibration`、`pointedPrismFixedEndpoints_isContractibleKan`
+- `pointedPrismEquivalenceEndpoints_trivialKanFibration`、`pointedCylinderPrismEndpoints_trivialKanFibration`
+- `intervalTransportCylinder_relativeFunctor_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -96,10 +97,10 @@
 
 ### 次の一手
 
-同時端点射の頂点 fiber を反復した頂点 fiber と同型で結ぶ。始点を同値の空間に制限し、
-既証明の両端固定 lift 空間の可縮性と Kan fibration 性から、制限全体が trivial Kan
-fibration であることを示す（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
-その後 mapping cylinder の比較から区間の表現空間の境界制限、点・単体の可縮性、一般の延長へ進む。
+`pointedCylinderPrismSpace` の高次の prism と終点の同値を貼り、輸送円柱上の
+実際の表現空間との比較を構成する。円柱から全空間への相対関手空間の同値と合わせ、
+区間の表現空間の境界制限を証明する（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
+その後、点・単体の表現空間の可縮性、一般の境界固定延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
