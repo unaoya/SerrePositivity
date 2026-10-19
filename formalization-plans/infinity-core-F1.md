@@ -28,11 +28,11 @@
 - 固定端点の写像空間全体から fiber 間の関手空間への `parametrizedFiberTransport` を構成。
   選択独立性・パラメーター制限・始点の係数変更を族全体で証明し、各辺で既存の transport を回収する。
   unstraightening の写像空間比較の fiber 作用と、対象評価後の普遍輸送を関手同型で結んだ。
-- 豊穣合成の `coherentCompositionPrism` を右 slice 上に構成し、両端・射影の式を証明済み。
-  その反転を左 coslice の `coherentCompositionReverseTransportFamily` に束ねた。
-  任意の始点係数射を持つ輸送族の普遍比較を証明し、標準合成の作用と普遍輸送を
-  全パラメーター上の関手同型で結んだ。始点・終点の fiber 比較もホモトピー同値。
-- 対象ビルド2933 jobs、公理監査5306宣言が成功。依存公理は標準3公理のみ。
+- 豊穣合成の左右の slice prism を構成し、普遍輸送と全パラメーター上の関手同型で結んだ。
+  `intervalMappingReverseIso` と、反転した底の Hom 比較の同値性を証明済み。
+  一点 Hom の反転合成作用は内部 Hom の厳密な同型。底・係数の比較を消去し、反対 Kan 圏の
+  nerve を反転した底上で普遍 coslice 輸送の同値性を証明。実際の pointed-space 射影への移送は未完。
+- 対象ビルド2943 jobs、公理監査5339宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
@@ -63,7 +63,7 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentCompositionReverseTransportFamily`、`coherentCompositionReverseTransport_parametrizedIso`
+- `intervalMappingReverseIso`、`parametrizedReverseKanPointCosliceTransport_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -95,10 +95,10 @@
 
 ### 次の一手
 
-`coherentReverseHomInterval` の curry が同値であることを、区間写像空間の反転同型から証明する。
-C=Kanᵒᵖ、Z=op(pointKanObject) の一点 Hom の反転合成作用を内部 Hom の同型で同値と示す。
-coherent nerve の反対同型で実際の pointed-space 射影へ移し、fiber 比較を消去して普遍輸送の
-同値性を得る。その後 [Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の境界制限と一般の境界固定延長へ進む。
+普遍輸送を底・全空間の同型で移す自然性を、`FiberTransportFamily` の後合成と族の比較で証明する。
+`coherentNerveOppositeIso KanObject` の逆の反転と二重反転同型で、反対 Kan 圏の nerve の反転を
+SpaceInfinity へ移す。上の普遍 coslice 輸送の同値性を実際の `pointedSpaceProjection` へ移し、
+[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の境界制限と一般の境界固定延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
