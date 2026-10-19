@@ -15,15 +15,13 @@
 - 構成経路：`F1B.kanLeftComma δ` の cocartesian 射影、標準局所形から fiber への単射な前合成同値、
   相対指数の cartesian 性で普遍余錐を組み立て、図式・頂点を固定する円柱比較で局所輸送へ移す。
 - 右の存在：coslice と反転図式の slice の同型、反転関手の二乗の恒等性で対象・射・普遍性を戻す。
-- 相対余錐制限 `kanRelativeCoconeRestriction` を構成。持ち上げは部分パラメータ上の余錐、
-  元の図式、U による余錐全体の像を同時に保つ延長と同値。U が inner／自明 Kan fibration なら比較も同じ性質。
-  `KanRelativeCoconeLifting` はこの比較の始点境界充填条件。終対象上では通常の余極限性と同値。
-  底の余錐が余極限なら、この相対条件から元の余極限性を回収できる。
+- `kanRelativeCoconeRestriction` の持ち上げは部分余錐・元の図式・U による像を保つ延長と同値。
+  U が inner／自明 Kan fibration なら比較も同じ性質。`KanRelativeCoconeLifting` は比較の始点境界充填条件。
+  終対象上では通常の余極限性と同値。底の余錐が余極限なら、この相対条件から元の余極限性を回収。
 - 相対関手の境界充填は指定部分外の単体の始点の条件だけで成立。相対内部 Hom の順序交換で、
   V′ の局所余錐の境界固定の延長と相対普遍性を構成済み。
-- 全空間の後合成・相対比較とその fiber を構成し、通常の相対余錐制限との厳密な一致を証明。
-  制限と後合成は cartesian 辺を保ち、関手の制限 U の上では相対比較・標的の cartesian 輸送も構成。
-  局所条件を全空間へ移し、相対骨格で部分図式・元の図式・標的の全図式を同時に保って延長できる。
+- 全空間の相対比較と fiber を通常の相対余錐制限と同定。制限と後合成は cartesian 辺を保つ。
+  関手の制限 U の上で相対比較・標的の cartesian 輸送を構成し、相対骨格で部分・元・標的の図式を保って延長。
 - 指定された相対余錐から元・標的の図式を保つ大域図式を構成し、全空間の充填と全 fiber の相対普遍性を回収。
 - 境界の最初の頂点の局所余極限性で関手の族を境界固定で延長し、普遍な H の左端の制限の始点境界を充填。
 - 相対始点境界充填から固定終点の coslice の後合成の自明 Kan 性、右 pinched 写像空間の同値、
@@ -33,11 +31,13 @@
   実際の制限の公式、後合成自然性、逆対応の単位との合成公式まで証明。
 - 右端の単位と標準 prism の指定変換の h Fun の類の一致を証明し、標準変換の Hom 普遍性へ接続。
   comma 上の Hom と元の添字上の Hom の全単射、両逆、後合成自然性、候補の指定変換の類を同定。
-- 任意の δ と F₀ の局所余極限があれば、同じ指定変換が左 Kan 条件と `LeftKanHomUniversal` を満たす
-  拡張を同時に構成。既存の任意の指定 Kan 変換への移送と右側への双対化は未完。
+- 局所余極限から左 Kan 条件と Hom 普遍性を同時に持つ候補を構成し、任意の指定 β 自身へ移送済み。
+  同じ宇宙の quasicategory K・C・D と任意の δ に対し、`IsLeftKanExtension` から `LeftKanHomUniversal`。
+- 指定変換に両立する比較射の各点での可逆性を、局所普遍余錐の Hom 全単射から証明。
+  h Fun の大域的同型へ戻し、指定変換に両立する比較同型と比較射の一意性まで証明。右側への双対化は未完。
 - F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3743 jobs）、同時 import 検査成功（F1 6648・F1B 4171 宣言）。
-  公理監査成功（4175 宣言、標準三公理のみ、1127 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3752 jobs）、同時 import 検査成功（F1 6667・F1B 4192 宣言）。
+  公理監査成功（4196 宣言、標準三公理のみ、1132 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -48,9 +48,9 @@
   関手の境界制限上で、変動する Kan 添字の族と実際の図式の相対的な組み立ては証明済み。
   局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
   左右端の Hom 全単射、標準 prism との一致、comma による元の添字への移送は証明済み。
-  局所余極限から同時に左 Kan 条件と Hom 普遍性を持つ候補を得る。任意の既存の指定変換への移送は未完。
-- 2. 点ごとの Kan 条件から大域的 Hom の全単射と h Fun の大域的一意性へ接続。
-  Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。1 の後に 6〜16 時間。
+  左側は任意の指定変換自身の Hom 普遍性と大域的一意性まで接続済み。右側と相対的な写像空間の結論が残る。
+- 2. 点ごとの Kan 条件から Hom 全単射・h Fun の大域的一意性：左側完了、右側への双対化が残る。
+  Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。6〜16 時間。
 - 3. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
@@ -70,6 +70,7 @@
 - `F1B.kanRelativeJoinFunctor_homMap_bijective` / `F1B.kanRelativeJoinColimitRestriction_isFullyFaithful`
 - `F1B.kanRelativeJoinRightHomEquiv` / `F1B.kanRelativeJoinTransformation_homUniversal`
 - `F1B.kanLeftCommaHomEquiv` / `F1B.exists_kanLeftExtension_with_homUniversal_of_local_colimits`
+- `F1B.kanLeftKanExtension_homUniversal` / `F1B.kanLeftKanExtensionIso`
 
 ### 依存と提供
 
@@ -80,7 +81,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：単位と標準 prism の一致、comma の Hom 全単射、候補の Hom 普遍性、集約・監査・本書）。
+- なし（本保存単位：局所比較射の可逆性、任意の指定左 Kan 変換の Hom 普遍性と大域的一意性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -89,18 +90,17 @@
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
 - `kanFiberwiseHom` の cartesian fibration 性は cocartesian な p について証明済み。
   制限 V 自体の cartesian fibration 性は未証明。B4 の充填には不要で、Kerodon 7.1.5.19 の経路で移送済み。
-- 局所余極限から構成した候補の大域的 Hom 普遍性は証明済み。任意の指定 Kan 変換への移送は未完。
+- 任意の指定左 Kan 変換の Hom 普遍性と大域的一意性は証明済み。右側への双対化は未完。
 - B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手との比較は未形式化。
   B2 は同じ宇宙の標的に対する普遍性。一般の C[W⁻¹] の存在は主張しない。
 
 ### 次の一手
 
-- `exists_kanLeftExtension_with_homUniversal_of_local_colimits` は任意の δ と F₀ について、局所余極限から
-  左 Kan 条件と大域的 Hom 普遍性を同じ指定変換が満たす候補を構成する。
-  次は既存の指定 β の左 Kan 条件から、その β 自身の `LeftKanHomUniversal` へ移す。
-  候補の普遍性で比較射を得て、β と候補の局所余錐の普遍性からその各点での可逆性を示す経路を検討する。
-  別経路は指定 β を保つ comma の相対 join 図式の構成。既存の厳密化・局所比較・自然性を使う。
-  右側への双対化も残る。標準の isofibration と操作的相対条件との同値は未証明。
+- `kanLeftKanExtension_homUniversal` は任意の指定された左 Kan 変換自身の大域的 Hom 普遍性を与える。
+  次は右側の `RightKanHomUniversal` と大域的一意性を回収する。
+  反転の h Fun の Hom 全単射・合成・前合成との両立を整え、既存の右条件から左条件への反転と合成する経路。
+  `kanLeftComparison_component_isIso` は左右の局所輸送を直接比較する経路の参考にもなる。
+  右 Hom 普遍性後も、標準の isofibration と操作的相対条件との比較、相対的な写像空間の結論は未完。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

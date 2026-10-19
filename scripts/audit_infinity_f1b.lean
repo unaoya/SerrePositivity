@@ -1959,3 +1959,23 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCandidate_homUniversal
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftExtension_with_homUniversal_of_local_colimits
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanInitialBoundaryHom_comparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransport_restriction_hom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftTransport_apex_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalHom_restriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftComparison_component_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftComparison_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtension_homUniversal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtensionHom_homUniversal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtensionIso_hom_fac
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanExtensionIso_hom_unique

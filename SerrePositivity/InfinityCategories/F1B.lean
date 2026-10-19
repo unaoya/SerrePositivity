@@ -496,3 +496,8 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinPrismHom
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaInclusionHomotopy
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaHom
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaHomUniversal
+public import SerrePositivity.InfinityCategories.F1B.KanInitialBoundaryHomComparison
+public import SerrePositivity.InfinityCategories.F1B.KanLeftTransportHom
+public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalHom
+public import SerrePositivity.InfinityCategories.F1B.KanLeftComparisonComponent
+public import SerrePositivity.InfinityCategories.F1B.KanLeftHomUniversal
