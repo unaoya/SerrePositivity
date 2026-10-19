@@ -17,15 +17,17 @@
 - 任意の正方形の標準 cofiber 比較射を構成し、押し出し性と比較射の擬同型性の同値を証明済み。
 - 標準 cofiber から二包含の fiber への明示的な比較鎖写像を構成。二脚・零ホモトピーの厳密な保存、回転同値の順射との一致と擬同型性まで証明済み。
 - 任意の dg nerve 単体の始点への閉零射の前合成と、始点を落とす面・始点を保つ単射への制限との両立を証明済み。始点を複製した比較単体とその零面・一面も構成済み。
-- 実際の錐の比較辺の組立て、fiber/cofiber 列の一致、安定性・D3 の三角比較は未完了。
-- 今回の入口は `CofiberFiberLiftEquivalence.lean`、`SourcePrecomposition.lean`、`SourcePrecompositionFaces.lean`。
-- 対象＋Stable・Derived 集約ビルド：5,746 jobs 成功。今回の保存単位は新規 7 モジュール。
-- 公理監査：Derived 173 modules／2,501 宣言、Stable 442 modules／3,608 宣言。標準三公理のみ。
+- 上下の比較三単体の全方程式・両端面・共通面を検証し、join に貼って実際の slice 比較辺を構成。射影が明示的比較の辺と一致することも証明済み。
+- 比較辺の可逆性から標準 cofiber 正方形の ∞ 引き戻し性を証明。充満部分 dg 圏・Semifree・任意の D(S) の span の標準 cofiber 正方形にも反映済み。
+- 双対の標準 fiber の押し出し性、任意の零角四角形での fiber/cofiber の一致、IsStable・D3 の三角比較は未完了。
+- 今回の入口は `CofiberFiberComparisonSlice.lean`、`CofiberFiberComparisonProjection.lean`、`StandardCofiberPullback.lean`。
+- 対象＋Stable・Derived 集約ビルド：5,753 jobs 成功。今回の保存単位は新規 7 モジュール。
+- 公理監査：Derived 180 modules／2,560 宣言、Stable 449 modules／3,667 宣言。標準三公理のみ。
 - 本文・archive への実施記録の追記はしていない。今回の到達点はこの節を正本とする。
 
 ### 残り（依存順、時間は推定）
 
-- 明示的な fiber 比較を dg nerve の錐の比較辺へ組み立て、指定した四角形の fiber/cofiber 列の一致から D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
+- 標準 fiber の押し出し性を双対に証明し、任意の零角四角形へ二方向の判定を移して D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
 - D3 の同値・D2f の CommShift を使い、h D(S) と Mathlib DerivedCategory の三角構造を照合。HA Theorem 1.1.2.14、§1.1.4：4〜8 時間。
 
 ### 主要宣言（名前のみ。正確な型は Lean）
@@ -49,6 +51,9 @@
 - `cofiberFiberLift`、`cofiberFiberLift_projectionB`、`cofiberFiberLift_projectionC`、`cofiberFiberLift_homotopy`。
 - `cofiberFiberRotation_hom_eq_lift`、`cofiberFiberLift_homotopyEquivalence`、`cofiberFiberLift_quasiIso`。
 - `SourcePrecomposition.simplex`、`SourcePrecomposition.simplex_pullback_succ`、`SourcePrecomposition.simplex_pullback_extend`、`SourcePrecomposition.prepend`。
+- `cofiberFiberComparisonLower`、`cofiberFiberComparisonUpper`、`cofiberFiberComparison_common`、`cofiberFiberComparisonJoin`。
+- `cofiberFiberComparisonSliceEdge`、`cofiberFiberComparisonSliceEdge_projection`、`cofiberFiberComparisonSliceEdge_invertible`。
+- `standardCofiberSquare_isPullback`、`fullCofiberSquare_isPullback`、`semifreeCofiberSquare_isPullback`、`derivedSpanCofiberSquare_isPullback`。
 
 ### 依存と提供
 
@@ -68,13 +73,13 @@
 - 今回の構成は可換環上の任意の非有界複体・整数次数を扱い、`ModelCategory SSet` の追加 instance 仮定なし。
 - 一般の明示解は残差整合条件を仮定するが、実境界の Q・A の微分定理はこれらを既存 Bianchi 定理から証明し、追加仮定にしない。
 - Q 側は逆座標、A 側は右三角形残差の符号倍、他四成分は零とする明示解について、最上位を含む全方程式と共通面を検証済み。
-- `cofiberFiberLift` の二脚・ホモトピー保存と擬同型性は検証済み。錐の比較辺は未構成で、これだけから正方形の引き戻し性や安定性を主張しない。
+- 標準 cofiber 正方形の引き戻し性は実際の slice 比較辺から証明済み。任意の零角四角形での双方向判定は未証明で、これだけから IsStable を主張しない。
 - 安定性の一般論から cofiber の普遍性を逆用しない。直接 coslice を充填して証明する設計を維持する。
 - import 閉包が再度壊れたら、他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- 標準 fiber の上下三角形に `SourcePrecomposition.prepend` と `cofiberFiberLift` を適用して二つの三単体を作る。二脚・対角・ホモトピーの保存で各面と共通面を同定し、錐の比較辺へ貼って擬同型性を引き戻し判定へ渡す。
+- 標準 fiber の二射影の cofiber から元の終域への明示的比較を `mappingCone.desc` で作り、二脚とホモトピーの保存・ホモトピー同値性を証明する。末頂点への後合成による比較単体を作り、標準 fiber の押し出し性へ接続する。
 
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。

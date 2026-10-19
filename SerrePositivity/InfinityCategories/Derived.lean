@@ -153,6 +153,13 @@ public import SerrePositivity.InfinityCategories.Derived.ConeRotationCoordinates
 public import SerrePositivity.InfinityCategories.Derived.CofiberFiberLiftEquivalence
 public import SerrePositivity.InfinityCategories.Derived.SourcePrecomposition
 public import SerrePositivity.InfinityCategories.Derived.SourcePrecompositionFaces
+public import SerrePositivity.InfinityCategories.Derived.TriangleExt
+public import SerrePositivity.InfinityCategories.Derived.SourceTriangleComponents
+public import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonTriangles
+public import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonJoin
+public import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonSlice
+public import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonProjection
+public import SerrePositivity.InfinityCategories.Derived.StandardCofiberPullback
 
 /-! # Semifree 複体による導来圏の dg 表示
 

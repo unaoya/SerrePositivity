@@ -971,6 +971,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CofiberFiberLiftEquivalence,
     `SerrePositivity.InfinityCategories.Derived.SourcePrecomposition,
     `SerrePositivity.InfinityCategories.Derived.SourcePrecompositionFaces,
+    `SerrePositivity.InfinityCategories.Derived.TriangleExt,
+    `SerrePositivity.InfinityCategories.Derived.SourceTriangleComponents,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonTriangles,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonJoin,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonSlice,
+    `SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonProjection,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberPullback,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
