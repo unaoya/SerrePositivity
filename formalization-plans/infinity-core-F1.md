@@ -33,9 +33,9 @@
   同時端点制限は Kan fibration。始点同値への制限は trivial Kan fibration、両端固定 lift 空間は可縮。
   円柱の両端同値と prism の厳密な貼り合わせの空間も、両端への射影が trivial Kan fibration。
   区間上の任意の left fibration の輸送円柱から全空間への実際の比較は前合成同値、
-  分類図式を固定した相対関手空間への制限も同値。高次 prism と終点の族を円柱上へ厳密に貼った。
+  分類図式と端点写像を厳密に固定した相対関手空間の比較も同値で、可縮性を保ち反映する。
   両端同値の実際の円柱上の四角形空間と中間模型は厳密に同型。実際の両端制限も trivial Kan fibration。
-- 対象ビルド2989 jobs、公理監査5673宣言が成功。依存公理は標準3公理のみ。
+- 対象ビルド2992 jobs、公理監査5684宣言が成功。依存公理は標準3公理のみ。
 
 ### 残り（依存順）
 
@@ -67,11 +67,11 @@
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
 - `pointedPrismEquivalenceEndpoints_trivialKanFibration`、`pointedCylinderPrismEndpoints_trivialKanFibration`
 - `pointedCylinderEquivalenceSquareIso`、`cylinderEquivalenceSquareEndpoints_trivialKanFibration`
+- `relativeFunctorBoundaryMap_isQCatEquivalence`、`intervalTransportCylinder_boundary_isQCatEquivalence`
 
 ### 依存と提供
 
-- Core の left/right fibration、相対写像空間、同値・関手同型を読み取り専用で使用する。
-  Coherent/Quasicategory、Stable/SliceOpposite、HomotopyLimits の反対・fiber 比較も使用する。
+- Core、Coherent/Quasicategory、Stable/SliceOpposite、HomotopyLimits の fibration・反対・fiber 比較等は読み取り専用。
   F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite を読み取り専用で使う。
 - 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
   𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-輸送円柱から区間上の全空間への比較を、端点写像を厳密に固定した制限空間へ移す。
-分類図式を固定した相対関手空間の同値だけでなく境界条件を保つ同値を証明し、円柱上の
-両端制限の可縮な fiber を区間の表現空間へ移す（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
+分類図式も両端固定の区間写像空間 I 上で動く、端点固定の相対 lift 空間を構成する。
+円柱比較を I 上の射へ束ね、固定分類図式での境界同値を fiber ごとに適用する。族全体の
+同値から円柱の可縮な両端 fiber を区間へ移す（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
 その後、点・単体の表現空間の可縮性、一般の境界固定延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
