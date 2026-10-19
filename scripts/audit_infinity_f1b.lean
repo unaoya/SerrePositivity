@@ -2851,3 +2851,35 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeIso_hom_projection
 
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveRightKanShapeIso_hom_diagram
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveOppositeIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveOppositeIso_natural
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnopIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveUnopIso_natural
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceUnderOpIso_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceOverProjection_eqTransport
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveOverIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveOverIso_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCostructuredArrowPullbackLift
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCostructuredArrow_isPullback
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanShapeMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanShapeMap_diagram
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanShapeMap_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanShapeIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanShapeIso_hom_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanShapeIso_hom_diagram
