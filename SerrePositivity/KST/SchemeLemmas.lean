@@ -312,3 +312,4 @@ public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralCompleteProj
 public import SerrePositivity.KST.SchemeLemmas.CountableProjectiveFaithfullyFlatDescent
 public import SerrePositivity.KST.SchemeLemmas.LocalizationCompletionCover
 public import SerrePositivity.KST.SchemeLemmas.LocalizationCompletionProjectivity
+public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralCompletionBaseChange
