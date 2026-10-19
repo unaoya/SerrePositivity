@@ -6757,3 +6757,90 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @partialColimitHomEndLeftCylinder_projection
 #print axioms partialColimitHomEndLeftCylinder_projection
+
+#check @InitialEvaluationCylinder
+#print axioms InitialEvaluationCylinder
+
+#check @initialEvaluationCylinder
+#print axioms initialEvaluationCylinder
+
+#check @InitialEvaluationHomotopyTriangle
+#print axioms InitialEvaluationHomotopyTriangle
+
+#check @initialEvaluationHomotopyTriangle
+#print axioms initialEvaluationHomotopyTriangle
+
+#check @initialEvaluationHomotopyTriangleThird
+#print axioms initialEvaluationHomotopyTriangleThird
+
+#check @initialEvaluationHomotopyTriangleThird_evaluation
+#print axioms initialEvaluationHomotopyTriangleThird_evaluation
+
+#check @SpecifiedCoconeRootedHomCylinder
+#print axioms SpecifiedCoconeRootedHomCylinder
+
+#check @specifiedCoconeRootedHomCylinder
+#print axioms specifiedCoconeRootedHomCylinder
+
+#check @specifiedCoconeRootedHomCylinderComparison
+#print axioms specifiedCoconeRootedHomCylinderComparison
+
+#check @specifiedCoconeRootedHomCylinderComparison_projection
+#print axioms specifiedCoconeRootedHomCylinderComparison_projection
+
+#check @specifiedCoconeRightHomRestriction
+#print axioms specifiedCoconeRightHomRestriction
+
+#check @specifiedCoconeRightRestrictionInitialHomFamily
+#print axioms specifiedCoconeRightRestrictionInitialHomFamily
+
+#check @specifiedCoconeRightRestrictionInitialHomCylinder
+#print axioms specifiedCoconeRightRestrictionInitialHomCylinder
+
+#check @specifiedCoconeRightRestrictionInitialHomCylinder_evaluation
+#print axioms specifiedCoconeRightRestrictionInitialHomCylinder_evaluation
+
+#check @specifiedCoconeRightRestrictionRootedTriangle
+#print axioms specifiedCoconeRightRestrictionRootedTriangle
+
+#check @specifiedCoconeRightRestrictionRootedHomotopy
+#print axioms specifiedCoconeRightRestrictionRootedHomotopy
+
+#check @specifiedCoconeRightRestrictionRootedHomotopy_evaluation
+#print axioms specifiedCoconeRightRestrictionRootedHomotopy_evaluation
+
+#check @specifiedCoconeRightRestrictionRootedTriangle_first_projection
+#print axioms specifiedCoconeRightRestrictionRootedTriangle_first_projection
+
+#check @specifiedCoconeRightRestrictionRootedTriangle_diagonal_projection
+#print axioms specifiedCoconeRightRestrictionRootedTriangle_diagonal_projection
+
+#check @specifiedCoconeRightRestrictionRootedHomComparison
+#print axioms specifiedCoconeRightRestrictionRootedHomComparison
+
+#check @specifiedCoconeRightRestrictionRootedHomComparison_projection
+#print axioms specifiedCoconeRightRestrictionRootedHomComparison_projection
+
+#check @InitialEvaluationCylinder.mk
+#print axioms InitialEvaluationCylinder.mk
+
+#check @InitialEvaluationCylinder.homotopy
+#print axioms InitialEvaluationCylinder.homotopy
+
+#check @InitialEvaluationCylinder.evaluation
+#print axioms InitialEvaluationCylinder.evaluation
+
+#check @InitialEvaluationHomotopyTriangle.mk
+#print axioms InitialEvaluationHomotopyTriangle.mk
+
+#check @InitialEvaluationHomotopyTriangle.family
+#print axioms InitialEvaluationHomotopyTriangle.family
+
+#check @InitialEvaluationHomotopyTriangle.first
+#print axioms InitialEvaluationHomotopyTriangle.first
+
+#check @InitialEvaluationHomotopyTriangle.diagonal
+#print axioms InitialEvaluationHomotopyTriangle.diagonal
+
+#check @InitialEvaluationHomotopyTriangle.evaluation
+#print axioms InitialEvaluationHomotopyTriangle.evaluation
