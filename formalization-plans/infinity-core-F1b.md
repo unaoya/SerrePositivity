@@ -71,6 +71,8 @@
 ### 既知の問題
 
 - 対象ビルド・監査に失敗なし。全体 `lake build` は今回実行していない。
+- 保存 `43c25ad6` は共有インデックスにあった D レーンの 9 ファイルも同梱。内容は変更せず保存。
+  並行履歴の書き換えは行わない。以後の保存は `git commit --only` で所有パスを限定する。
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
 - `kanFiberwiseHom` は strict な普遍性まで。射影の cartesian fibration 性・quasicategory 性、
   fiber の関手圏との同定と、普遍余錐からの相対始点境界充填は未証明。
