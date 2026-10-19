@@ -213,3 +213,6 @@ public import SerrePositivity.EInfinity.TableReduction.ReductionCursor
 public import SerrePositivity.EInfinity.TableReduction.RowCursorAdvance
 public import SerrePositivity.EInfinity.TableReduction.RowCursorRemainder
 public import SerrePositivity.EInfinity.Surjection.ComponentExtraction
+public import SerrePositivity.EInfinity.Surjection.OuterComponentExtraction
+public import SerrePositivity.EInfinity.Surjection.ComponentVerticalExtraction
+public import SerrePositivity.EInfinity.TableReduction.RowFusion

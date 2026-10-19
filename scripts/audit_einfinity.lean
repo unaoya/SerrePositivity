@@ -526,7 +526,15 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.componentExtraction_word,
       `SerrePositivity.EInfinity.Surjection.componentExtraction_length,
       `SerrePositivity.EInfinity.Surjection.componentExtraction_success,
-      `SerrePositivity.EInfinity.Surjection.componentExtraction_adjacent_prefix] do
+      `SerrePositivity.EInfinity.Surjection.componentExtraction_adjacent_prefix,
+      `SerrePositivity.EInfinity.Surjection.outerComponentExtraction_success,
+      `SerrePositivity.EInfinity.Surjection.verticalExtraction_success,
+      `SerrePositivity.EInfinity.TableReduction.ReductionInterval.permutationRows_eq,
+      `SerrePositivity.EInfinity.TableReduction.reductionRemoved_available_slot,
+      `SerrePositivity.EInfinity.Surjection.componentVerticalExtraction_success,
+      `SerrePositivity.EInfinity.TableReduction.rowFusion_removed_eq,
+      `SerrePositivity.EInfinity.TableReduction.rowFusion_word_eq,
+      `SerrePositivity.EInfinity.TableReduction.rowFusion_of_success] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -934,3 +942,49 @@ example : (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixtur
   have hw : (((rows bfTable bfSchedule₁).drop 0).take 2).map Prod.fst =
       [vertexRow bfTable 0, vertexRow bfTable 1] := by decide
   exact hs.trans hw
+
+-- 指定値の二出現の間の外側成分は、元の三行全てを通って実際の部分語を返す。
+example : reduceRows
+    (outerComponentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+      1 (by decide) 1).part
+    (reductionRemoved bfTable bfSchedule₁ canonicalFixture.val rankFixture_success
+      (occurrenceBoundaryPosition canonicalFixture.val 1 (by decide) 1)) = some [1, 3, 1] := by
+  have h := outerComponentExtraction_success bfTable bfSchedule₁ canonicalFixture
+    rankFixture_success 1 (by decide) 1
+  have hw : outerComponentWord canonicalFixture.val 1 1 = [1, 3, 1] := by decide
+  rw [hw] at h
+  exact h
+example : (outerComponentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    1 (by decide) 1).part.length = 3 := by
+  rw [outerComponentExtraction_length]
+  decide
+
+-- 元の内側成功表と元の外側の指定出現から、垂直成分を実際の合成行列で抽出する。
+private lemma verticalInner_success : reduceRows (rows terminalTable terminalSchedule) [] =
+    some (List.ofFn compositionInner.val) := by decide
+private def verticalCuts : OverlapPartition 2 3 := ⟨![2, 2], by decide⟩
+private noncomputable def verticalFirstBlock : List (List (Fin 5) × ℕ) :=
+  fixedOuterRows (m := 3) (n := 2)
+    (bfTable (reductionRow bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 1)) 1
+    (componentExtraction terminalTable terminalSchedule compositionInner verticalInner_success
+      verticalCuts (by decide) 0).weightedVertices
+private noncomputable def verticalFirstInitial : List (Fin 5) :=
+  compositionStateRemoved (m := 3) (n := 2) 1
+    (reductionRemoved bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 1)
+    (reductionRemoved terminalTable terminalSchedule compositionInner.val verticalInner_success
+      (verticalCuts.startPosition (by decide) 0))
+example : reduceRows verticalFirstBlock verticalFirstInitial = some [1, 2] := by
+  have h := componentVerticalExtraction_success (m := 3) (n := 2)
+    bfTable bfSchedule₁ canonicalFixture rankFixture_success 1 1 (by decide)
+    terminalTable terminalSchedule compositionInner verticalInner_success
+    verticalCuts (by decide) 0 [] [] rfl
+  have hw : (verticalCuts.segment compositionInner.val 0).map
+      (BarrattEccles.insertedPosition 3 2 1) = [1, 2] := by decide
+  simpa only [verticalFirstBlock, verticalFirstInitial, List.append_nil, hw] using h
+
+-- 共有頂点の同じ二行を融合すると、共有文字は一度だけ出力し、元の後続状態へつながる。
+example : reduceRows [([0, 1, 2, 3], 4), ([3], 1)] ([] : List (Fin 4)) =
+    some [0, 1, 2, 3, 3] := by
+  have h := rowFusion_success ([] : List (Fin 4)) [0, 1, 2, 3] (by decide) 2 3
+    (by decide) (by decide) (by decide) (by decide) [([3], 1)] [3] (by decide)
+  exact h
