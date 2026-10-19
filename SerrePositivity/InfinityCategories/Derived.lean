@@ -775,6 +775,19 @@ public import SerrePositivity.InfinityCategories.Derived.DGLastHornPrecomposeCoo
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedCochains
 public import SerrePositivity.InfinityCategories.Derived.DGTriangleResidualPrecompose
 
+public import SerrePositivity.InfinityCategories.Derived.DGTriangleSourceRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornCanonicalFaces
+public import SerrePositivity.InfinityCategories.Derived.DGTriangleRefinementComponents
+public import SerrePositivity.InfinityCategories.Derived.DGTriangleFaceNormalForms
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedFaces
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornSourceRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedVertices
+public import SerrePositivity.InfinityCategories.Derived.DGHornKnownFaceComponents
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedComponents
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedResiduals
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinementFiller
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedDiagramTriangle
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

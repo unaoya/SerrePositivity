@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedDiagramTriangle
 import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedCochains
 import SerrePositivity.InfinityCategories.Derived.DGTriangleResidualPrecompose
 import SerrePositivity.InfinityCategories.Derived.DGLastHornResidualRefinement
@@ -1883,10 +1884,78 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgTriangleMissingResidual_precompose
 #print axioms SerrePositivity.InfinityCategories.dgTriangleTopResidual_precompose
 
+#print axioms SerrePositivity.InfinityCategories.dgClosedCyclePrecompose
+#print axioms SerrePositivity.InfinityCategories.dgTriangleSourceRefinement
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement
+#print axioms SerrePositivity.InfinityCategories.dgLastHornCanonicalFace
+#print axioms SerrePositivity.InfinityCategories.dgLastHornCanonicalFace_eq
+#print axioms SerrePositivity.InfinityCategories.dgLastHornCanonicalFace_edge
+#print axioms SerrePositivity.InfinityCategories.dgLastHornCanonicalFace_triangle
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_edge01
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_edge02
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_edge12
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_triangle
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_face0
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_face1
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_face2
+#print axioms SerrePositivity.InfinityCategories.dgTriangleFace0_normal
+#print axioms SerrePositivity.InfinityCategories.dgTriangleFace1_normal
+#print axioms SerrePositivity.InfinityCategories.dgTriangleFace2_normal
+#print axioms SerrePositivity.InfinityCategories.dgLastHornRefinedFaces_overlap01
+#print axioms SerrePositivity.InfinityCategories.dgLastHornRefinedFaces_overlap02
+#print axioms SerrePositivity.InfinityCategories.dgLastHornRefinedFaces_overlap12
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_compatible
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_preserves_face0
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_value0
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_value1
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_value2
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_obj0
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_obj1
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_obj2
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_obj3
+#print axioms SerrePositivity.InfinityCategories.dgLastHornKnownEdge_heq_of_face_eq
+#print axioms SerrePositivity.InfinityCategories.dgLastHornKnownTriangle_heq_of_face_eq
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_edge01
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_edge02
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_edge12
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_edge23
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_triangle013
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_triangle023
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_triangle123
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_missingResidual
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_topResidual
+#print axioms SerrePositivity.InfinityCategories.dgGradedHomTransport
+#print axioms SerrePositivity.InfinityCategories.dgGradedHomTransport_heq
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.refinedQ
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.refinedA
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.refinedQ_differential
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.refinedA_differential
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.solution
+#print axioms SerrePositivity.InfinityCategories.dgLastHornSourceRefinement_filler_face0
+#print axioms SerrePositivity.InfinityCategories.dgLastHorn_exists_sourceRefinement_filler
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedFiller_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedOverTriangle
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedOverTriangle_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdge_exists_refinedFiller
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGTriangleSourceRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornCanonicalFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGTriangleRefinementComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGTriangleFaceNormalForms,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornSourceRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedVertices,
+    `SerrePositivity.InfinityCategories.Derived.DGHornKnownFaceComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedResiduals,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornRefinementFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedDiagramTriangle,
+
     `SerrePositivity.InfinityCategories.Derived.DGConeCoordinateTransport,
     `SerrePositivity.InfinityCategories.Derived.DGYonedaConeCoordinates,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeZeroAction,
