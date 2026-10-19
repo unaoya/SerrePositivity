@@ -19988,3 +19988,183 @@ derivedInfinityCategory_hasZeroVertex.{u_1} : ∀ (S : Type u_1) [inst : CommRin
       (Opposite.op.{1} { len := 0 })}
   (f : SSet.Truncated.Edge.{u_1 + 1} x y), Nonempty.{u_1 + 2} (FiberSquare.{u_1 + 1} f)
 ```
+
+
+## S7／D7：cofiber からの Hom の全次数座標と標準四角形（2026-10-19）
+
+`Derived/CofiberHomCoordinates.lean` に cone から出る次数 n+1 の cochain と、元の始域からの次数 n の cochain・終域からの次数 n+1 の cochain の線形同値を構成。逆は descCochain で、微分は第一成分へ (n+2).negOnePow の符号の接続項を加える。これは coslice の未知成分を解く代数的入力である。
+
+`Derived/StandardCofiberSquare.lean` には span A→B、A→C の差 (f,-g) : A→B⊕C の mapping cone を頂点とする実際の四角形を構成。B 側の三角形の次数 -1 の成分は mappingCone.inl、C 側は零であり、微分が二合成の差に一致する符号を検証。二三角形・四辺の厳密な式と join 余錐を公開する。ここでは標準候補の構成のみで、IsColimitCone と IsPushoutSquare はまだ証明・仮定していない。後続は span の join の二セルと coslice の境界成分を扱い、N7c の双対を直接証明する。
+
+対象＋Derived・Stable 統合ビルド 5667 jobs 成功。Stable 監査は 363 modules／2709 declarations、Derived 監査は 94 modules／1602 declarations で両方成功（標準 3 公理のみ）。S7 の cofiber の普遍性、安定性、D3 と Mathlib の三角構造の比較は未完了。
+
+全 23 公開宣言の正確な型：
+
+```lean
+@cofiberHomCoordinates.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {B D X : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      (f : Quiver.Hom.{u_1, u_1 + 1} B D) →
+        (n : ℤ) →
+          LinearEquiv.{u_1, u_1, u_1, u_1} (RingHom.id.{u_1} S)
+            (CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} (CochainComplex.mappingCone.{u_1, u_1 + 1} f) X
+              (HAdd.hAdd.{0, 0, 0} n 1))
+            (Prod.{u_1, u_1} (CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} B X n)
+              (CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} D X (HAdd.hAdd.{0, 0, 0} n 1)))
+@cofiberHomCoordinates_fst.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {B D X : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} B D) (n : ℤ)
+  (a :
+    CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} (CochainComplex.mappingCone.{u_1, u_1 + 1} f) X
+      (HAdd.hAdd.{0, 0, 0} n 1)),
+  Eq.{u_1 + 1} ((cofiberHomCoordinates.{u_1} f n) a).1
+    (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1} (CochainComplex.mappingCone.inl.{u_1, u_1 + 1} f) a ⋯)
+@cofiberHomCoordinates_snd.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {B D X : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} B D) (n : ℤ)
+  (a :
+    CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} (CochainComplex.mappingCone.{u_1, u_1 + 1} f) X
+      (HAdd.hAdd.{0, 0, 0} n 1)),
+  Eq.{u_1 + 1} ((cofiberHomCoordinates.{u_1} f n) a).2
+    (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1}
+      (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1} (CochainComplex.mappingCone.inr.{u_1, u_1 + 1} f)) a ⋯)
+@cofiberHomCoordinates_symm.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {B D X : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} B D) (n : ℤ)
+  (a :
+    Prod.{u_1, u_1} (CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} B X n)
+      (CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} D X (HAdd.hAdd.{0, 0, 0} n 1))),
+  Eq.{u_1 + 1} ((LinearEquiv.symm.{u_1, u_1, u_1, u_1} (cofiberHomCoordinates.{u_1} f n)) a)
+    (CochainComplex.mappingCone.descCochain.{u_1, u_1 + 1} f a.1 a.2 ⋯)
+@cofiberHomCoordinates_symm_differential.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {B D X : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} B D) (n : ℤ)
+  (a : CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} B X n)
+  (b : CochainComplex.HomComplex.Cochain.{u_1, u_1 + 1} D X (HAdd.hAdd.{0, 0, 0} n 1)),
+  Eq.{u_1 + 1}
+    (CochainComplex.HomComplex.δ.{u_1, u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)
+      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n 1) 1)
+      ((LinearEquiv.symm.{u_1, u_1, u_1, u_1} (cofiberHomCoordinates.{u_1} f n)) (Prod.mk.{u_1, u_1} a b)))
+    ((LinearEquiv.symm.{u_1, u_1, u_1, u_1} (cofiberHomCoordinates.{u_1} f (HAdd.hAdd.{0, 0, 0} n 1)))
+      (Prod.mk.{u_1, u_1}
+        (HAdd.hAdd.{u_1, u_1, u_1} (CochainComplex.HomComplex.δ.{u_1, u_1 + 1} n (HAdd.hAdd.{0, 0, 0} n 1) a)
+          (HSMul.hSMul.{0, u_1, u_1} (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n 1) 1).negOnePow
+            (CochainComplex.HomComplex.Cochain.comp.{u_1, u_1 + 1}
+              (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1} f) b ⋯)))
+        (CochainComplex.HomComplex.δ.{u_1, u_1 + 1} (HAdd.hAdd.{0, 0, 0} n 1)
+          (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n 1) 1) b)))
+cofiberSquareTriangle_bottomEdge.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) (squareTriangle.{u_1} 1))
+  squareBottomEdge.{u_1}
+cofiberSquareTriangle_leftEdge.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) (squareTriangle.{u_1} 0))
+  squareLeftEdge.{u_1}
+@cofiberDifference.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      Quiver.Hom.{u_1, u_1 + 1} A B →
+        Quiver.Hom.{u_1, u_1 + 1} A C → Quiver.Hom.{u_1, u_1 + 1} A (CategoryTheory.Limits.biprod.{u_1, u_1 + 1} B C)
+@pushoutCofiber.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      Quiver.Hom.{u_1, u_1 + 1} A B → Quiver.Hom.{u_1, u_1 + 1} A C → SerrePositivity.DifferentialGraded.Complex.{u_1} S
+@pushoutInclusionB.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      (f : Quiver.Hom.{u_1, u_1 + 1} A B) →
+        (g : Quiver.Hom.{u_1, u_1 + 1} A C) → Quiver.Hom.{u_1, u_1 + 1} B (pushoutCofiber.{u_1} f g)
+@pushoutInclusionC.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      (f : Quiver.Hom.{u_1, u_1 + 1} A B) →
+        (g : Quiver.Hom.{u_1, u_1 + 1} A C) → Quiver.Hom.{u_1, u_1 + 1} C (pushoutCofiber.{u_1} f g)
+@pushoutDiagonal.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      (f : Quiver.Hom.{u_1, u_1 + 1} A B) →
+        (g : Quiver.Hom.{u_1, u_1 + 1} A C) → Quiver.Hom.{u_1, u_1 + 1} A (pushoutCofiber.{u_1} f g)
+@pushoutHomotopy_differential.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C),
+  Eq.{u_1 + 1}
+    (CochainComplex.HomComplex.δ.{u_1, u_1 + 1} (-1) 0
+      (CochainComplex.mappingCone.inl.{u_1, u_1 + 1} (cofiberDifference.{u_1} f g)))
+    (HSub.hSub.{u_1, u_1, u_1}
+      (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f (pushoutInclusionB.{u_1} f g)))
+      (CochainComplex.HomComplex.Cochain.ofHom.{u_1, u_1 + 1} (pushoutDiagonal.{u_1} f g)))
+@cofiberLowerTriangle.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      (f : Quiver.Hom.{u_1, u_1 + 1} A B) →
+        (g : Quiver.Hom.{u_1, u_1 + 1} A C) →
+          SSet.Edge.CompStruct.{u_1 + 1} (DGNerve.complexEdge.{u_1} f)
+            (DGNerve.complexEdge.{u_1} (pushoutInclusionB.{u_1} f g))
+            (DGNerve.complexEdge.{u_1} (pushoutDiagonal.{u_1} f g))
+@cofiberUpperTriangle.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      (f : Quiver.Hom.{u_1, u_1 + 1} A B) →
+        (g : Quiver.Hom.{u_1, u_1 + 1} A C) →
+          SSet.Edge.CompStruct.{u_1 + 1} (DGNerve.complexEdge.{u_1} g)
+            (DGNerve.complexEdge.{u_1} (pushoutInclusionC.{u_1} f g))
+            (DGNerve.complexEdge.{u_1} (pushoutDiagonal.{u_1} f g))
+@standardCofiberSquare.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      Quiver.Hom.{u_1, u_1 + 1} A B →
+        Quiver.Hom.{u_1, u_1 + 1} A C →
+          Quiver.Hom.{u_1 + 1, u_1 + 2}
+            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1 + 1, u_1 + 2}
+              (CategoryTheory.Functor.obj.{0, u_1 + 1, 0, u_1 + 2} SSet.stdSimplex.{u_1 + 1} { len := 1 })
+              (CategoryTheory.Functor.obj.{0, u_1 + 1, 0, u_1 + 2} SSet.stdSimplex.{u_1 + 1} { len := 1 }))
+            (dgNerve.{u_1, u_1 + 1} S (SerrePositivity.DifferentialGraded.Complex.{u_1} S))
+@standardCofiberSquare_upper.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C),
+  Eq.{u_1 + 2}
+    (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} (squareTriangle.{u_1 + 1} 0)
+      (standardCofiberSquare.{u_1} f g))
+    ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+      (SSet.Edge.CompStruct.simplex.{u_1 + 1} (cofiberUpperTriangle.{u_1} f g)))
+@standardCofiberSquare_lower.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C),
+  Eq.{u_1 + 2}
+    (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} (squareTriangle.{u_1 + 1} 1)
+      (standardCofiberSquare.{u_1} f g))
+    ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+      (SSet.Edge.CompStruct.simplex.{u_1 + 1} (cofiberLowerTriangle.{u_1} f g)))
+@standardCofiberSquare_bottom.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C),
+  Eq.{u_1 + 2}
+    (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} squareBottomEdge.{u_1 + 1} (standardCofiberSquare.{u_1} f g))
+    ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+      (SSet.Edge.edge.{u_1 + 1} (DGNerve.complexEdge.{u_1} f)))
+@standardCofiberSquare_left.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C),
+  Eq.{u_1 + 2}
+    (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} squareLeftEdge.{u_1 + 1} (standardCofiberSquare.{u_1} f g))
+    ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+      (SSet.Edge.edge.{u_1 + 1} (DGNerve.complexEdge.{u_1} g)))
+@standardCofiberSquare_right.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C),
+  Eq.{u_1 + 2}
+    (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} squareRightEdge.{u_1 + 1} (standardCofiberSquare.{u_1} f g))
+    ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+      (SSet.Edge.edge.{u_1 + 1} (DGNerve.complexEdge.{u_1} (pushoutInclusionB.{u_1} f g))))
+@standardCofiberSquare_top.{u_1} : ∀ {S : Type u_1} [inst : CommRing.{u_1} S]
+  {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} A C),
+  Eq.{u_1 + 2}
+    (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} squareTopEdge.{u_1 + 1} (standardCofiberSquare.{u_1} f g))
+    ((Equiv.symm.{u_1 + 2, u_1 + 2} SSet.yonedaEquiv.{u_1 + 1})
+      (SSet.Edge.edge.{u_1 + 1} (DGNerve.complexEdge.{u_1} (pushoutInclusionC.{u_1} f g))))
+@standardCofiberCocone.{u_1} : {S : Type u_1} →
+  [inst : CommRing.{u_1} S] →
+    {A B C : SerrePositivity.DifferentialGraded.Complex.{u_1} S} →
+      (f : Quiver.Hom.{u_1, u_1 + 1} A B) →
+        (g : Quiver.Hom.{u_1, u_1 + 1} A C) →
+          JoinCocone.{u_1 + 1} (pushoutSpan.{u_1 + 1} (standardCofiberSquare.{u_1} f g))
+```

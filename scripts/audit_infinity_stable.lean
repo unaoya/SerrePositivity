@@ -1,5 +1,6 @@
 import SerrePositivity.InfinityCategories.Stable
 import SerrePositivity.InfinityCategories.Derived.StableLimits
+import SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1575,7 +1576,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.HomotopyNatTransPrecomposition,
     `SerrePositivity.InfinityCategories.Stable.ShiftCommutationNaturalTransformation,
     `SerrePositivity.InfinityCategories.Stable.ExactFunctorNaturalTransformation,
-    `SerrePositivity.InfinityCategories.Derived.StableLimits]
+    `SerrePositivity.InfinityCategories.Derived.StableLimits,
+    `SerrePositivity.InfinityCategories.Derived.CofiberHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

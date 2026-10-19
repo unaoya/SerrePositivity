@@ -889,7 +889,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisLayers,
     `SerrePositivity.InfinityCategories.Derived.RingGradedSplit,
     `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift,
-    `SerrePositivity.InfinityCategories.Derived.StableLimits]
+    `SerrePositivity.InfinityCategories.Derived.StableLimits,
+    `SerrePositivity.InfinityCategories.Derived.CofiberHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
