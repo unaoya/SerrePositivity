@@ -10640,3 +10640,120 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.relativeKanOuterSpanTriangleFamily_composite
 #print axioms SerrePositivity.KST.SConstruction.relativeKanOuterSpanTriangleFamily_composite
+
+#check @SerrePositivity.KST.SConstruction.coherentStringEndpointMap
+#print axioms SerrePositivity.KST.SConstruction.coherentStringEndpointMap
+
+#check @SerrePositivity.KST.SConstruction.coherentStringEndpointMap_first
+#print axioms SerrePositivity.KST.SConstruction.coherentStringEndpointMap_first
+
+#check @SerrePositivity.KST.SConstruction.coherentStringEndpointMap_last
+#print axioms SerrePositivity.KST.SConstruction.coherentStringEndpointMap_last
+
+#check @SerrePositivity.KST.SConstruction.coherentStringEndpointMap_one
+#print axioms SerrePositivity.KST.SConstruction.coherentStringEndpointMap_one
+
+#check @SerrePositivity.KST.SConstruction.coherentStringEndpointMap_comp
+#print axioms SerrePositivity.KST.SConstruction.coherentStringEndpointMap_comp
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowString
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowString
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowStringHom
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowStringHom
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowStringHom.ext
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowStringHom.ext
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowString_category
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowString_category
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowString_first
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowString_first
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowString_last
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowString_last
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowStringDirect
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowStringDirect
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowStringDirectTo
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowStringDirectTo
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowStringDirectTo_unique
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowStringDirectTo_unique
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowStringDirect_isInitial
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowStringDirect_isInitial
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowStringContractionTransformation
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowStringContractionTransformation
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowStringConstant_nerve
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowStringConstant_nerve
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowStringContraction
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowStringContraction
+
+#check @SerrePositivity.KST.SConstruction.coherentStringRefinementPath
+#print axioms SerrePositivity.KST.SConstruction.coherentStringRefinementPath
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPathReindex
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPathReindex
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPathReindexFunctor
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPathReindexFunctor
+
+#check @SerrePositivity.KST.SConstruction.coherentStringRefinementPath_comp
+#print axioms SerrePositivity.KST.SConstruction.coherentStringRefinementPath_comp
+
+#check @SerrePositivity.KST.SConstruction.coherentStringRefinementPathInclusion
+#print axioms SerrePositivity.KST.SConstruction.coherentStringRefinementPathInclusion
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPathFlag
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPathFlag
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPathFlag_naturality
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPathFlag_naturality
+
+#check @SerrePositivity.KST.SConstruction.coherentStringVertexObject
+#print axioms SerrePositivity.KST.SConstruction.coherentStringVertexObject
+
+#check @SerrePositivity.KST.SConstruction.coherentStringCell_object
+#print axioms SerrePositivity.KST.SConstruction.coherentStringCell_object
+
+#check @SerrePositivity.KST.SConstruction.coherentStringDiagramCell
+#print axioms SerrePositivity.KST.SConstruction.coherentStringDiagramCell
+
+#check @SerrePositivity.KST.SConstruction.coherentString_reobject_precomp
+#print axioms SerrePositivity.KST.SConstruction.coherentString_reobject_precomp
+
+#check @SerrePositivity.KST.SConstruction.coherentStringDiagramCell_naturality
+#print axioms SerrePositivity.KST.SConstruction.coherentStringDiagramCell_naturality
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowString.mk
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowString.mk
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowString.length
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowString.length
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowString.chain
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowString.chain
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowString.long_edge
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowString.long_edge
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowStringHom.mk
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowStringHom.mk
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowStringHom.map
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowStringHom.map
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowStringHom.first
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowStringHom.first
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowStringHom.last
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowStringHom.last
+
+#check @SerrePositivity.KST.SConstruction.CoherentArrowStringHom.comm
+#print axioms SerrePositivity.KST.SConstruction.CoherentArrowStringHom.comm

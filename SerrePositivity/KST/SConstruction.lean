@@ -698,4 +698,9 @@ public import SerrePositivity.KST.SConstruction.RelativeKanOuterSpanFamilies
 public import SerrePositivity.KST.SConstruction.CoincidentKanSpanFamilies
 public import SerrePositivity.KST.SConstruction.RelativeCoincidentSequenceSpanFamilies
 public import SerrePositivity.KST.SConstruction.KCoincidentSpanFamilies
+public import SerrePositivity.KST.SConstruction.CoherentStringEndpoints
+public import SerrePositivity.KST.SConstruction.CoherentArrowStrings
+public import SerrePositivity.KST.SConstruction.CoherentArrowStringInitial
+public import SerrePositivity.KST.SConstruction.CoherentStringPathFlags
+public import SerrePositivity.KST.SConstruction.CoherentStringDiagramCells
 /-! # ∞-S• 構成と連結 K 理論 -/
