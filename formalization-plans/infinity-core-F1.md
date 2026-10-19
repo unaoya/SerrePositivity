@@ -34,8 +34,8 @@
   円柱の両端同値と prism の厳密な貼り合わせの空間も、両端への射影が trivial Kan fibration。
   区間上の任意の left fibration の輸送円柱から全空間への実際の比較は前合成同値、
   分類図式を固定した相対関手空間への制限も同値。高次 prism と終点の族を円柱上へ厳密に貼った。
-  両端固定の実際の四角形空間への比較射は全空間側と底側をともに保つ。逆比較・同値性は未完。
-- 対象ビルド2981 jobs、公理監査5617宣言が成功。依存公理は標準3公理のみ。
+  両端同値の実際の円柱上の四角形空間と中間模型は厳密に同型。実際の両端制限も trivial Kan fibration。
+- 対象ビルド2989 jobs、公理監査5673宣言が成功。依存公理は標準3公理のみ。
 
 ### 残り（依存順）
 
@@ -66,7 +66,7 @@
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
 - `pointedPrismEquivalenceEndpoints_trivialKanFibration`、`pointedCylinderPrismEndpoints_trivialKanFibration`
-- `intervalTransportCylinder_relativeFunctor_isQCatEquivalence`、`pointedCylinderFixedSquareMap`
+- `pointedCylinderEquivalenceSquareIso`、`cylinderEquivalenceSquareEndpoints_trivialKanFibration`
 
 ### 依存と提供
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-両端固定の四角形空間から端点の fiber 写像を取り出し、両端同値の部分へ制限する。
-普遍 prism の回収から `pointedCylinderFixedSquareMap` の逆比較を作り、円柱上の
-同値性を区間の境界制限へ移す（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
+輸送円柱から区間上の全空間への比較を、端点写像を厳密に固定した制限空間へ移す。
+分類図式を固定した相対関手空間の同値だけでなく境界条件を保つ同値を証明し、円柱上の
+両端制限の可縮な fiber を区間の表現空間へ移す（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
 その後、点・単体の表現空間の可縮性、一般の境界固定延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
