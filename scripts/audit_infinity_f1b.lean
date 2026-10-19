@@ -1869,3 +1869,23 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanIsCartesianEdge_pullback_over
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeRestriction_preservesCartesianEdges
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanInvertibleEdge_lift_target
+
+#check @SerrePositivity.InfinityCategories.F1B.KanInvertibleTargetLifting.map_iso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInvertibleTargetLifting_kanFiberwiseHomPostcompFiber
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanCartesianTransport_over_cartesianEdge
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCartesianFibration_pullback_over
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeProjection_pre_cartesianFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelative_initialBoundary_of_local
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoin_relativeFamily_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeHomDiagram_lift_iff_over
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoin_relativeDiagram_extension
