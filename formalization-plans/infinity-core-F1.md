@@ -38,8 +38,8 @@
   底の一本の辺に沿う全対象の実際の transport の辺・prism と厳密な両端、切断の始点・終点評価による特徴づけを構成済み。
 - 任意の小圏で添字付けた豊穣比較の図式を KanEnrichedDiagram として coherent に実現。任意の添字関手の制限（面・退化を含む）と厳密に可換。合成三点図式の三面は既存の比較の族と厳密に一致。既存の比較の辺そのものの合成三角形と合成等式を証明済み。全対象の transport も底の三角形の合成則・既存三辺の二単体・退化辺の単位則を証明済み。
 - 全単体の共同切断評価 `transportSimplexSectionInfinity` と、単体圏の nerve から底への初頂点写像を構成済み。初頂点写像は底の射に自然で全頂点を被覆し本質的全射。
-  共同切断評価の添字制限は厳密に可換。宇宙を揃えた両写像は同じ初頂点を保つ辺の集合を反転し、初頂点写像は実際の退化辺に送る。局所化の普遍性と元の底への降下は未証明。
-- 対象ビルド3197 jobs、公理監査7018宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  共同切断評価の添字制限は厳密に可換。宇宙を揃えた両写像は同じ初頂点を保つ辺の集合を反転し、初頂点写像は実際の退化辺に送る。標準単体上の厳密な切断と始点を保つ自然比較、その全次数の prism を構成済み。指定辺を反転する任意の関手は標準単体へ実際に降下し、引き戻しは元の関手と coherent に同型。標準単体上の関手は降下で厳密に回収する。局所化の普遍性・一般の底への降下は未証明。
+- 対象ビルド3214 jobs、公理監査7072宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -69,20 +69,18 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`
+- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`、`transportStandardFirstVertexSection_comp`、`ordinaryComparisonHomotopy`、`transportStandardInvertingDescentIso`
 
 ### 依存と提供
 
-- Core、Coherent/Quasicategory、Stable/SliceOpposite、HomotopyLimits、KST/Spectra/FibrationTower* は読み取り専用。
-  F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite・Localization を読み取り専用で使う。
+- Core、Coherent/Quasicategory、Stable/SliceOpposite、HomotopyLimits、KST/Spectra/FibrationTower*、F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite・Localization・HomotopyWhiskering は読み取り専用。
 - 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
   𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
 - 再開時は F1/README.md の原典照合と方針を維持し、他レーンのファイルは編集しない。
 
 ### 未コミット
 
-- F1/、F1.lean、監査スクリプト、計画の変更は所有ファイルのみ指定して保存する。未コミット実装なし。
-- 共有作業ツリーの他レーンの変更は引き継ぎ対象外であり、保存・巻き戻しを行わない。
+- F1/、F1.lean、監査スクリプト、計画は所有ファイルのみ指定して保存する。未コミット実装なし。他レーンの変更は保存・巻き戻しを行わない。
 
 ### 既知の問題
 
@@ -99,11 +97,10 @@
 
 ### 次の一手
 
-transportSimplexFirstVertexMap の局所化普遍性を IsLocalization で証明する。まず標準単体上の切断と、始点を保つ射を成分に持つ比較を構成し、一般の底へ相対的に貼り合わせる。
-TransportSimplexLocalizationData に宇宙を揃えた両写像の反転条件を用意済み。共同切断評価の元の底 B 上の一つの関手への降下、その高次一意性と構成済み transport との比較は未証明。初頂点写像の本質的全射性と反転条件だけから局所化の普遍性は結論しない。
+transportStandardInvertingDescentIso を関手 U 自体の全パラメーターで束ね、標準単体上の localizationPrecomposition の同値性を証明する。その後、一般の底へ相対的に貼り合わせ、transportSimplexFirstVertexMap の IsLocalization を示す。
+TransportSimplexLocalizationData に宇宙を揃えた両写像の反転条件を用意済み。標準単体では任意の標的 quasicategory への反転する関手の降下と coherent な同型を構成済み。共同切断評価の一般の底 B への降下、高次一意性、既存 transport との比較は未証明。各関手の降下だけから局所化の普遍性は結論しない。
 全対象での高次整合性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
-作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
-F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
+全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md)（レーン α）の成果を読み取り専用で使う。
 
 ## 0. 目標と範囲
 
