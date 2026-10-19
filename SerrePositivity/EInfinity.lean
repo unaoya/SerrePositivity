@@ -256,3 +256,4 @@ public import SerrePositivity.EInfinity.TableReduction.CompositionNullaryPositiv
 public import SerrePositivity.EInfinity.TableReduction.NullaryAvailable
 public import SerrePositivity.EInfinity.TableReduction.NullaryEarlyExclusion
 public import SerrePositivity.EInfinity.TableReduction.NullarySuccessMap
+public import SerrePositivity.EInfinity.TableReduction.CompositionAll

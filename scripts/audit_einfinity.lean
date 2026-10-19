@@ -740,6 +740,18 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.nullaryForward_word,
       `SerrePositivity.EInfinity.TableReduction.nullaryForward_surjective,
       `SerrePositivity.EInfinity.TableReduction.nullaryForward_term,
+      `SerrePositivity.EInfinity.TableReduction.take_length_eq_of_filterMap_eq,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionTrace.eq_of_filterMap,
+      `SerrePositivity.EInfinity.TableReduction.nullary_projected_selected_eq,
+      `SerrePositivity.EInfinity.TableReduction.nullary_success_output_unique,
+      `SerrePositivity.EInfinity.TableReduction.nullaryForward_injective,
+      `SerrePositivity.EInfinity.TableReduction.nullarySuccessEquiv,
+      `SerrePositivity.EInfinity.TableReduction.sum_nullary_source_eq_target,
+      `SerrePositivity.EInfinity.TableReduction.sum_nullary_all_eq_source,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_partialComposition_nullary_zero,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_partialComposition,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffle_generators,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffleBilinear,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2133,3 +2145,55 @@ example : ∃ p : SuccessfulWord nullaryOuter, occurrenceCount p.val.2.val 0 = 1
   nullary_successfulWord_lift_exists nullaryOuter 1 0 nullaryTargetSuccess
 example : Function.Surjective (nullaryForward (by decide) nullaryOuter 1 (0 : Fin 3)) :=
   nullaryForward_surjective (by decide) nullaryOuter 1 0
+
+-- 空語合成の有限対応は全単射で、具体的な非自明な二行の成功項を往復する。
+example : nullarySuccessEquiv (by decide) nullaryOuter 1 0 nullaryLiftSource =
+    nullaryTargetSuccess := by
+  change nullaryForward (by decide) nullaryOuter 1 0 nullaryLiftSource = nullaryTargetSuccess
+  apply successfulWord_eq_of_word_eq _ _ _
+  rw [nullaryForward_word]
+  rfl
+example : (nullarySuccessEquiv (by decide) nullaryOuter 1 0).symm nullaryTargetSuccess =
+    nullaryLiftSource := by
+  apply (nullarySuccessEquiv (by decide) nullaryOuter 1 0).injective
+  rw [Equiv.apply_symm_apply]
+  symm
+  change nullaryForward (by decide) nullaryOuter 1 0 nullaryLiftSource = nullaryTargetSuccess
+  apply successfulWord_eq_of_word_eq _ _ _
+  rw [nullaryForward_word]
+  rfl
+-- 元の全成功項の空語部分合成和が、実際の削除表の TR に一致する。
+example : onSequence ℤ (fun j => BarrattEccles.permutationComposition 2 0 0
+    (nullaryOuter j) (1 : Equiv.Perm (Fin 0))) =
+      Surjection.partialComposition ℤ 2 0 1 0 0 (onSequence ℤ nullaryOuter)
+        (basis ℤ 0 0 (ULift.up emptyNullaryWord)) :=
+  onSequence_nullary_composition_of_pos ℤ (by decide) nullaryOuter 1 0
+-- 出力 arity 零・次数零の明示的な空語境界も一般公式に含まれる。
+example : onSequence ℤ (fun j : Fin 1 => BarrattEccles.permutationComposition 0 0 0
+    ((fun _ : Fin 1 => (1 : Equiv.Perm (Fin 1))) j) (1 : Equiv.Perm (Fin 0))) =
+      Surjection.partialComposition ℤ 0 0 0 0 0
+        (onSequence ℤ (fun _ : Fin 1 => (1 : Equiv.Perm (Fin 1))))
+        (basis ℤ 0 0 (ULift.up emptyNullaryWord)) :=
+  onSequence_nullary_composition_zero_output ℤ 0
+    (fun _ : Fin 1 => (1 : Equiv.Perm (Fin 1))) 1 0
+-- 内側零次数の全 shuffle 和に、退化する元列も含める。
+example :
+    (∑ s : BarrattEccles.ShufflePath 2 0, (s.sign : ℤ) • onSequence ℤ (fun j =>
+      BarrattEccles.permutationComposition 3 0 1 (bfTable (s.horizontal j))
+        ((fun _ : Fin 1 => (1 : Equiv.Perm (Fin 0))) (s.vertical j)))) =
+      Surjection.partialComposition ℤ 3 0 2 0 1 (onSequence ℤ bfTable)
+        (onSequence ℤ (fun _ : Fin 1 => (1 : Equiv.Perm (Fin 0)))) :=
+  onSequence_partialComposition ℤ 1 bfTable
+    (fun _ : Fin 1 => (1 : Equiv.Perm (Fin 0)))
+-- 任意の可換環・全 arity・全次数で、実際の正規化鎖の双線形合成を保存する。
+example (A : Type) [CommRing A] (m n d e : ℕ) (k : Fin (m + 1))
+    (x : (BarrattEccles.normalizedChains A (m + 1)).X d)
+    (y : (BarrattEccles.normalizedChains A n).X e) :
+    normalizedMap A (m + n) (d + e) (BarrattEccles.shuffleBilinear A m n k d e x y) =
+      Surjection.partialComposition A m n d e k (normalizedMap A (m + 1) d x)
+        (normalizedMap A n e y) := normalizedMap_shuffleBilinear A k x y
+example (x : (BarrattEccles.normalizedChains ℤ 1).X 2)
+    (y : (BarrattEccles.normalizedChains ℤ 0).X 0) :
+    normalizedMap ℤ 0 2 (BarrattEccles.shuffleBilinear ℤ 0 0 0 2 0 x y) =
+      Surjection.partialComposition ℤ 0 0 2 0 0 (normalizedMap ℤ 1 2 x)
+        (normalizedMap ℤ 0 0 y) := normalizedMap_shuffleBilinear ℤ 0 x y

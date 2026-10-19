@@ -441,8 +441,13 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `nullary_forward_schedule` は一出現の元の成功表から実際の nullary 成功 Schedule を構成する。
 `NullarySource` は一出現で削除後も非退化な元の有限成功項。
 `nullaryForward` は実際の目標成功項への全射で、`nullaryForward_term` は空語合成の項の値を保つ。
-次数零の空語挿入について、順方向の単射性・出力 arity 零の境界・有限和の一致は未完成。
-nullary を含む TR の合成保存と、それを用いた χ の部分合成の微分との両立・オペラッド公理は未完成。
+`nullary_success_output_unique` は同じ削除出力を持つ一出現の元の成功出力の一意性。
+`nullarySuccessEquiv` は元の非零候補と実際の目標成功項の有限全単射。
+`sum_nullary_all_eq_source` は複数出現・退化の零項を含む全成功基底語の和へ戻す。
+`onSequence_partialComposition_nullary_zero` は出力 arity 零を含む空語の全 shuffle 和の合成保存。
+`onSequence_partialComposition` は任意の可換環・全 arity・全次数の一般公式。
+`normalizedMap_shuffleBilinear` は実際の全正規化鎖に対する双線形 shuffle 合成保存。
+nullary を含む TR の部分合成保存は完了。χ の微分との両立・単位・同変性・結合則は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：
