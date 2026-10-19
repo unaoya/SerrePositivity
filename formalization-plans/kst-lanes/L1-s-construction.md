@@ -5,7 +5,7 @@
 ## 引き継ぎ（2026-10-19）
 
 ### 現在地
-- K-L1（∞-S• 構成、連結 K）。L1a・L1b 完了。L1c 進行中、L1d–f 未完了。後続は L3・K-基盤 1・2（v2 の担当範囲）。
+- K-L1（∞-S• 構成、連結 K）。L1a・L1b 完了。L1c・L1d 進行中、L1e–f 未完了。後続は L3・K-基盤 1・2（v2 の担当範囲）。
 - 全 gapped S• と第一行制限そのものの trivial Kan fibration を証明済み。
 - core・対角実現・Kan 置換・Ω、反復 S の段と単射な構造射への置換、零方向の境界比較を構成済み。
 - Ω から既存の path homotopy fiber への全基点 π_* 同型は証明済み。直前の S 実現との比較は未証明。
@@ -16,13 +16,16 @@
 - `mcCarthyRhoFiberHomotopy`：左 fiber の恒等射から `mcCarthyRhoTerminal` への実単体ホモトピーを構成済み。全時刻で quotient を厳密に固定する。
 - 終端のパラメーターと subobject の厳密な固定から、第二の `mcCarthyThetaFiberHomotopy` を構成済み。始点は ρ の終端、終点は quotient と切断の合成。
 - 固定零始点の矢印の終点射影の trivial Kan fibration と、θ の点ごとの可逆性を証明済み。可変時刻の gapped 性を関手同型で移す。
-- ρ・θ の二つの実ホモトピーと厳密な切断から `cofiberLeftFiberQuotient_localized_isIso` を証明済み。単体積版 Quillen A・加法性は未完。
-- 対象ビルド3275 jobs、公理監査1771宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
+- ρ・θ の二つの実ホモトピーと厳密な切断から `cofiberLeftFiberQuotient_localized_isIso` を証明済み。
+- 単体圏の反対圏上の strict 左 fiber 図式と二重単体解消を構成。各次数の標準因子分解による縮約から、解消の augmentation の局所化同型を証明済み。
+- 反対圏の射列を底の射列と最後のラベルに分け、転置行を実際の余積と同定。対象ごとの局所化同型を解消の対角へ移す定理を証明済み。
+- `simplicialProductQuillenA` を追加仮定なしで証明済み。恒等射の単体 fiber と固定係数の積を使い、元の射対との厳密な可換性も照合した。
+- `objectSAdditivityMap_localized_isIso`、`coreSAdditivityMap_localized_isIso` を証明済み。同じ C 内の全 cofiber 図式の subobject・quotient を対象とする。有限反復・安定部分圏 A/B の相対版は未完。
+- 対象ビルド3303 jobs、公理監査1854宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
 
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
-- 単体積版 Quillen A と object 加法性：同 Theorem 1.15・Lemma 4.24、16–40時間。
-- object/core 比較を使った実現の加法性と有限反復への自然性：同 Proposition 4.27・Theorem 4.35、8–24時間。
+- 加法性の有限反復への自然性・安定部分圏 A/B の相対版：同 Proposition 4.27・Theorem 4.35、8–24時間。単回の全 cofiber 図式の object/core 実現の加法性は証明済み。
 - 面の homotopy pullback 条件、S 実現と既存の homotopy fiber の比較、構造射との照合：HTT 5.1.2.2、
   L11 §11・Fiore–Pieper Theorem 4.35、16–40時間。L2 の実現定理に面条件を追加仮定で渡さない。
 - 正の Ω 条件・delooping・負次数消滅と BF 連結スペクトル関手：BGT Definition 7.1、経路正本 §10-5、
@@ -45,17 +48,21 @@
 - `mcCarthyRhoFiberMap_quotient`、`mcCarthyRhoTerminal_parameter`、`mcCarthyRhoTerminal_source`
 - `fixedSourceArrowsTarget_trivialKanFibration`、`zeroSourceThetaHomotopy`、`mcCarthyThetaFiberHomotopy`
 - `mcCarthyFiber_retraction_localized`、`cofiberLeftFiberQuotient_localized_isIso`
+- `simplexFiberDiagram`、`elementsResolution`、`fiberResolutionAugmentation_localized_isIso`
+- `oppositeLabelledChainEquiv`、`elementsResolutionRowIso`、`elementsResolutionMap_diagonal_localized_isIso`
+- `tensorElementsResolutionIso`、`identitySimplexFiberIso`、`simplicialProductQuillenA`
+- `objectSAdditivityMap_localized_isIso`、`objectCoreAdditivity_commute`、`coreSAdditivityMap_localized_isIso`
 
 ### 依存と提供
 - 所有は `SerrePositivity/KST/SConstruction/`、集約、監査スクリプト、本計画。namespace は同名。
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）。
-- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型。
-- K スペクトル・加法性・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
+- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性。
+- K スペクトル・有限反復および相対版の加法性・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 担当ファイルは検証済み保存単位（新規11モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
+- 担当ファイルは検証済み保存単位（新規19モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
@@ -63,7 +70,7 @@
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 1771宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- 1854宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
 - raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。二つの実ホモトピーと quotient 射の局所化同型まで証明済み。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - homotopy fiber 比較を既存の構造射と形式的に合成するだけでは正の Ω 条件の証明にならない。
@@ -71,10 +78,10 @@
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- 単体積版 Quillen A：f:X→Y、g:X→Z に対し、全 y:Δ[m]→Y の strict 左 fiber から Z への射が局所化同型なら、(f,g):X→Y×Z が局所化同型となる定理を実証明する（Fiore–Pieper Theorem 1.15）。
-- 単体圏上の左 fiber 図式とその自然な quotient 射を使う。`simplexLeftFiberMap_postcomp`・`cofiberLeftFiberQuotient_localized_isIso` が具体的な入力。所有内に一般補題を追加し、他レーンの公開名・型は変更しない。
-- 既存の `localized_diagonal_map`・単体 nerve augmentation・実現比較の API を照合し、単体圏による二重単体解消の二方向の弱同値を証明する。未証明の Quillen A を構造体の仮定にしない。
-- その定理を subobject・quotient に適用して object 加法性へ進み、object/core 比較で core 実現へ移す。
+- 単回の全 cofiber 図式の加法性を有限反復へ自然に接続する。S_n(cofiber C) と cofiber(S_n C) の図式の交換、零角・押し出し条件、subobject・quotient の照合を証明する。単回加法性の単なる反復適用だけで済んだとはしない。
+- 必要な安定部分圏 A/B の条件を明示して相対 E(A,C,B) に制限する。全 C 内の theorem を相対版まで完成したとは数えない。
+- 次に S 実現と既存の homotopy fiber の比較を、面の homotopy pullback 条件と元の構造射との照合込みで証明する。これを使って正の Ω 条件・BF 連結 K スペクトルへ進む。
+- `simplicialProductQuillenA` は任意の f:X→Y、g:X→Z に使える。モデル圏・Quillen A 自体を仮定に追加しない。
 - 検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
 
 ## 1. 目標・担当範囲

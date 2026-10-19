@@ -4430,3 +4430,252 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyFiber_retraction_localized
 #check @SerrePositivity.KST.SConstruction.cofiberLeftFiberQuotient_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.cofiberLeftFiberQuotient_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberDiagramMap
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberDiagramMap
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberDiagramMap_projection
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberDiagramMap_projection
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberDiagramMap_parameter
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberDiagramMap_parameter
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberDiagram
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberDiagram
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberProjection
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberProjection
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberPostcomp
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberPostcomp
+
+#check @SerrePositivity.KST.SConstruction.elementsResolution
+#print axioms SerrePositivity.KST.SConstruction.elementsResolution
+
+#check @SerrePositivity.KST.SConstruction.elementsResolutionMap
+#print axioms SerrePositivity.KST.SConstruction.elementsResolutionMap
+
+#check @SerrePositivity.KST.SConstruction.elementsResolution_obj
+#print axioms SerrePositivity.KST.SConstruction.elementsResolution_obj
+
+#check @SerrePositivity.KST.SConstruction.elementsResolutionMap_app
+#print axioms SerrePositivity.KST.SConstruction.elementsResolutionMap_app
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCoefficient
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCoefficient
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCategory
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCategory
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionValue
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionValue
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionParameter
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionParameter
+
+#check @SerrePositivity.KST.SConstruction.fiberResolution_condition
+#print axioms SerrePositivity.KST.SConstruction.fiberResolution_condition
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionValue_map
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionValue_map
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionParameter_map
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionParameter_map
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonicalSimplex
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonicalSimplex
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonicalSimplex_projection
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonicalSimplex_projection
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonicalSimplex_parameter
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonicalSimplex_parameter
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonical
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonical
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonical_value
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonical_value
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonical_parameter
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonical_parameter
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonicalBaseArrow
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonicalBaseArrow
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonicalBaseArrow_map
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonicalBaseArrow_map
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonicalArrow
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonicalArrow
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionCanonicalArrow_unique
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionCanonicalArrow_unique
+
+#check @SerrePositivity.KST.SConstruction.resolutionNerveMap
+#print axioms SerrePositivity.KST.SConstruction.resolutionNerveMap
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionValueFunctor
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionValueFunctor
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionSectionFunctor
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionSectionFunctor
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionContraction
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionContraction
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionSectionValueIso
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionSectionValueIso
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionValueFunctor_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionValueFunctor_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.discreteNerveConstantIso
+#print axioms SerrePositivity.KST.SConstruction.discreteNerveConstantIso
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionRowAugmentation
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionRowAugmentation
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionRowAugmentation_eq
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionRowAugmentation_eq
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionRowAugmentation_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionRowAugmentation_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionRowsAugmentation
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionRowsAugmentation
+
+#check @SerrePositivity.KST.SConstruction.constantRowsDiagonalIso
+#print axioms SerrePositivity.KST.SConstruction.constantRowsDiagonalIso
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionAugmentation
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionAugmentation
+
+#check @SerrePositivity.KST.SConstruction.fiberResolutionAugmentation_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.fiberResolutionAugmentation_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.oppositeLabelledChainLift
+#print axioms SerrePositivity.KST.SConstruction.oppositeLabelledChainLift
+
+#check @SerrePositivity.KST.SConstruction.oppositeLabelledChain_reconstruct
+#print axioms SerrePositivity.KST.SConstruction.oppositeLabelledChain_reconstruct
+
+#check @SerrePositivity.KST.SConstruction.oppositeLabelledChainEquiv
+#print axioms SerrePositivity.KST.SConstruction.oppositeLabelledChainEquiv
+
+#check @SerrePositivity.KST.SConstruction.coefficientCoproduct
+#print axioms SerrePositivity.KST.SConstruction.coefficientCoproduct
+
+#check @SerrePositivity.KST.SConstruction.coefficientCoproductInclusion
+#print axioms SerrePositivity.KST.SConstruction.coefficientCoproductInclusion
+
+#check @SerrePositivity.KST.SConstruction.coefficientCoproductCofan
+#print axioms SerrePositivity.KST.SConstruction.coefficientCoproductCofan
+
+#check @SerrePositivity.KST.SConstruction.coefficientCoproductIsColimit
+#print axioms SerrePositivity.KST.SConstruction.coefficientCoproductIsColimit
+
+#check @SerrePositivity.KST.SConstruction.coefficientCoproductMap
+#print axioms SerrePositivity.KST.SConstruction.coefficientCoproductMap
+
+#check @SerrePositivity.KST.SConstruction.coefficientCoproductMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.coefficientCoproductMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.elementsResolutionRowIso
+#print axioms SerrePositivity.KST.SConstruction.elementsResolutionRowIso
+
+#check @SerrePositivity.KST.SConstruction.elementsResolutionRowIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.elementsResolutionRowIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.elementsResolutionRowMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.elementsResolutionRowMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.elementsResolutionMap_diagonal_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.elementsResolutionMap_diagonal_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.constantElementsResolutionComparison
+#print axioms SerrePositivity.KST.SConstruction.constantElementsResolutionComparison
+
+#check @SerrePositivity.KST.SConstruction.constantElementsResolutionComparison_bijective
+#print axioms SerrePositivity.KST.SConstruction.constantElementsResolutionComparison_bijective
+
+#check @SerrePositivity.KST.SConstruction.constantElementsResolutionIso
+#print axioms SerrePositivity.KST.SConstruction.constantElementsResolutionIso
+
+#check @SerrePositivity.KST.SConstruction.tensorCoefficientDiagram
+#print axioms SerrePositivity.KST.SConstruction.tensorCoefficientDiagram
+
+#check @SerrePositivity.KST.SConstruction.tensorCoefficientProjection
+#print axioms SerrePositivity.KST.SConstruction.tensorCoefficientProjection
+
+#check @SerrePositivity.KST.SConstruction.tensorElementsResolutionComparison
+#print axioms SerrePositivity.KST.SConstruction.tensorElementsResolutionComparison
+
+#check @SerrePositivity.KST.SConstruction.tensorElementsResolutionEquiv
+#print axioms SerrePositivity.KST.SConstruction.tensorElementsResolutionEquiv
+
+#check @SerrePositivity.KST.SConstruction.tensorElementsResolutionComparison_eq
+#print axioms SerrePositivity.KST.SConstruction.tensorElementsResolutionComparison_eq
+
+#check @SerrePositivity.KST.SConstruction.tensorElementsResolutionIso
+#print axioms SerrePositivity.KST.SConstruction.tensorElementsResolutionIso
+
+#check @SerrePositivity.KST.SConstruction.identitySimplexFiberSection
+#print axioms SerrePositivity.KST.SConstruction.identitySimplexFiberSection
+
+#check @SerrePositivity.KST.SConstruction.identitySimplexFiberIso
+#print axioms SerrePositivity.KST.SConstruction.identitySimplexFiberIso
+
+#check @SerrePositivity.KST.SConstruction.identitySimplexFiber_toUnit_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.identitySimplexFiber_toUnit_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.identitySimplexFiber_snd_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.identitySimplexFiber_snd_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberIdentityMap
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberIdentityMap
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberIdentityComparison
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberIdentityComparison
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberProductComparison
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberProductComparison
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberProductComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberProductComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberResolutionProductMap
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberResolutionProductMap
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberResolutionProductMap_eq
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberResolutionProductMap_eq
+
+#check @SerrePositivity.KST.SConstruction.simplexFiberResolutionProductMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.simplexFiberResolutionProductMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.simplicialProductQuillenA
+#print axioms SerrePositivity.KST.SConstruction.simplicialProductQuillenA
+
+#check @SerrePositivity.KST.SConstruction.objectSAdditivityMap
+#print axioms SerrePositivity.KST.SConstruction.objectSAdditivityMap
+
+#check @SerrePositivity.KST.SConstruction.objectSAdditivityMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.objectSAdditivityMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.coreSRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.coreSRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.objectCoreRealizationComparison
+#print axioms SerrePositivity.KST.SConstruction.objectCoreRealizationComparison
+
+#check @SerrePositivity.KST.SConstruction.coreSAdditivityMap
+#print axioms SerrePositivity.KST.SConstruction.coreSAdditivityMap
+
+#check @SerrePositivity.KST.SConstruction.objectCoreAdditivity_commute
+#print axioms SerrePositivity.KST.SConstruction.objectCoreAdditivity_commute
+
+#check @SerrePositivity.KST.SConstruction.objectCoreComparison_tensor_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.objectCoreComparison_tensor_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.coreSAdditivityMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.coreSAdditivityMap_localized_isIso
