@@ -5669,3 +5669,159 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.arCutSquareMap_naturality
 #print axioms SerrePositivity.KST.SConstruction.arCutSquareMap_naturality
+
+#check @SerrePositivity.KST.SConstruction.zeroStablePredicate
+#print axioms SerrePositivity.KST.SConstruction.zeroStablePredicate
+
+#check @SerrePositivity.KST.SConstruction.cutLeftSupport
+#print axioms SerrePositivity.KST.SConstruction.cutLeftSupport
+
+#check @SerrePositivity.KST.SConstruction.cutRightSupport
+#print axioms SerrePositivity.KST.SConstruction.cutRightSupport
+
+#check @SerrePositivity.KST.SConstruction.cutLeftSupport_iff
+#print axioms SerrePositivity.KST.SConstruction.cutLeftSupport_iff
+
+#check @SerrePositivity.KST.SConstruction.cutRightSupport_iff
+#print axioms SerrePositivity.KST.SConstruction.cutRightSupport_iff
+
+#check @SerrePositivity.KST.SConstruction.sConstructionVertex_diagonal_isZero
+#print axioms SerrePositivity.KST.SConstruction.sConstructionVertex_diagonal_isZero
+
+#check @SerrePositivity.KST.SConstruction.sMap_evaluate_vertex
+#print axioms SerrePositivity.KST.SConstruction.sMap_evaluate_vertex
+
+#check @SerrePositivity.KST.SConstruction.cutLeftSupport_sMap
+#print axioms SerrePositivity.KST.SConstruction.cutLeftSupport_sMap
+
+#check @SerrePositivity.KST.SConstruction.cutRightSupport_sMap
+#print axioms SerrePositivity.KST.SConstruction.cutRightSupport_sMap
+
+#check @SerrePositivity.KST.SConstruction.cutStableComparison_relative_mem
+#print axioms SerrePositivity.KST.SConstruction.cutStableComparison_relative_mem
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeComparisonMap
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeComparisonMap
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeComparisonMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeComparisonMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeComparison
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeComparison
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeComparison_inclusion
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeComparison_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeMiddle
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeMiddle
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeComparison_middle
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeComparison_middle
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_corner
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_corner
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyBottomIso
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyBottomIso
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyRightIso
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyRightIso
+
+#check @SerrePositivity.KST.SConstruction.cutLeftSupport_rightCut_isZero
+#print axioms SerrePositivity.KST.SConstruction.cutLeftSupport_rightCut_isZero
+
+#check @SerrePositivity.KST.SConstruction.cutRightSupport_leftCut_isZero
+#print axioms SerrePositivity.KST.SConstruction.cutRightSupport_leftCut_isZero
+
+#check @SerrePositivity.KST.SConstruction.cutComparison_pre_evaluation
+#print axioms SerrePositivity.KST.SConstruction.cutComparison_pre_evaluation
+
+#check @SerrePositivity.KST.SConstruction.cutComparison_pre_middle
+#print axioms SerrePositivity.KST.SConstruction.cutComparison_pre_middle
+
+#check @SerrePositivity.KST.SConstruction.cutLeftSupport_normalizationIso
+#print axioms SerrePositivity.KST.SConstruction.cutLeftSupport_normalizationIso
+
+#check @SerrePositivity.KST.SConstruction.cutRightSupport_normalizationIso
+#print axioms SerrePositivity.KST.SConstruction.cutRightSupport_normalizationIso
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalInclusion
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalInclusion
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalRetraction
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalRetraction
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalInclusion
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalInclusion
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalRetraction
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalRetraction
+
+#check @SerrePositivity.KST.SConstruction.cutLeftInterval_retraction_inclusion
+#print axioms SerrePositivity.KST.SConstruction.cutLeftInterval_retraction_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cutLeftInterval_inclusion_retraction
+#print axioms SerrePositivity.KST.SConstruction.cutLeftInterval_inclusion_retraction
+
+#check @SerrePositivity.KST.SConstruction.cutRightInterval_retraction_inclusion
+#print axioms SerrePositivity.KST.SConstruction.cutRightInterval_retraction_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cutRightInterval_inclusion_retraction
+#print axioms SerrePositivity.KST.SConstruction.cutRightInterval_inclusion_retraction
+
+#check @SerrePositivity.KST.SConstruction.functorIsoOfFullSubcomplexPostcomp
+#print axioms SerrePositivity.KST.SConstruction.functorIsoOfFullSubcomplexPostcomp
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalExtension_mem
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalExtension_mem
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalExtensionMap
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalExtensionMap
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalExtensionMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalExtensionMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalExtension
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalExtension
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalRestriction
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalRestriction
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalExtension_mem
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalExtension_mem
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalExtensionMap
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalExtensionMap
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalExtensionMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalExtensionMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalExtension
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalExtension
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalRestriction
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalRestriction
+
+#check @SerrePositivity.KST.SConstruction.cutLeftInterval_extension_restriction
+#print axioms SerrePositivity.KST.SConstruction.cutLeftInterval_extension_restriction
+
+#check @SerrePositivity.KST.SConstruction.cutLeftInterval_restriction_extension_inclusion
+#print axioms SerrePositivity.KST.SConstruction.cutLeftInterval_restriction_extension_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cutLeftInterval_restriction_extensionIso
+#print axioms SerrePositivity.KST.SConstruction.cutLeftInterval_restriction_extensionIso
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalEquivalence
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalEquivalence
+
+#check @SerrePositivity.KST.SConstruction.cutRightInterval_extension_restriction
+#print axioms SerrePositivity.KST.SConstruction.cutRightInterval_extension_restriction
+
+#check @SerrePositivity.KST.SConstruction.cutRightInterval_restriction_extension_inclusion
+#print axioms SerrePositivity.KST.SConstruction.cutRightInterval_restriction_extension_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cutRightInterval_restriction_extensionIso
+#print axioms SerrePositivity.KST.SConstruction.cutRightInterval_restriction_extensionIso
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalEquivalence
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalEquivalence
