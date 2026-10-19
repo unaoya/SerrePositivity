@@ -2,6 +2,19 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.dgFunctor_relative_top_lift
+#print axioms SerrePositivity.InfinityCategories.dgFunctor_relative_simplex_lift
+#print axioms SerrePositivity.InfinityCategories.dgFunctor_relative_boundary_lift
+#print axioms SerrePositivity.InfinityCategories.dgNerve_map_trivialKanFibration_of_surjective_quasiIso
+#print axioms SerrePositivity.InfinityCategories.dgNerve_map_isQCatEquivalence_of_surjective_quasiIso
+#print axioms SerrePositivity.InfinityCategories.dgCellAugmentationNerve_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.dgCellResolutionNerveEquivalence
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientFunctor
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientRoofIso
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotient_localKFlat
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientFunctor_kills
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientNullFunctorIsoZero
+
 #print axioms SerrePositivity.InfinityCategories.dgBoundarySourceExtension
 #print axioms SerrePositivity.InfinityCategories.dgNerve_contractingElement_isInitialVertex
 #print axioms SerrePositivity.InfinityCategories.dgNerve_contractingElement_isZeroVertex
@@ -828,6 +841,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.CellDGResolutionNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGBoundaryTopCompletion,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorBoundaryFaceCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorRelativeBoundaryLifting,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorRelativeSimplexLifting,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorRelativeTopLifting,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorTrivialFibration,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplexFaceExtensionality,
+    `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientNerve,
+    `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientZeroObjects,
+
     `SerrePositivity.InfinityCategories.Derived.ContractingElementCriterion,
     `SerrePositivity.InfinityCategories.Derived.ContractingInitialVertex,
     `SerrePositivity.InfinityCategories.Derived.ContractingZeroVertex,

@@ -17,9 +17,9 @@
 - 任意の h の射の鎖写像代表と source の TR3 から、全 distinguished triangle の標準 cofiber 表示を証明。D3 の distinguished triangle の保存・反映、逆関手の保存を証明済み。
 - `derivedStableHomotopyEquivalenceIsTriangulated` を公開。両関手の整数シフト比較と単位・余単位の整合性も含む。通常の導来圏から三角構造を引き戻して済ませていない。
 - D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/DGQuotientNullification.lean`、`Derived/DGQuotientZeroingExtension.lean`、`Derived/ContractingElementCriterion.lean`、`Derived/DGBoundarySourceExtension.lean`。
-- D7 は `dfa5b50d`、β3 の nerve の入口は `7e948153`、写像空間の収縮は `e03ab28a` に保存済み。今回の保存単位は新規 12 モジュール。最新の Stable・Derived 集約ビルドは 5,991 jobs 成功。
-- 最新公理監査：Derived 304 modules／3,383 宣言、Stable 574 modules／4,498 宣言。標準三公理のみ。
+- β3 の入口：`Derived/ResolvedDGQuotientZeroObjects.lean`、`Derived/ResolvedDGQuotientNerve.lean`、`Derived/CellDGResolutionNerve.lean`、`Derived/DGFunctorTrivialFibration.lean`。
+- D7 は `dfa5b50d`、β3 の実零化は `18920238` まで保存済み。今回の保存単位は新規 10 モジュール。最新の Stable・Derived 集約ビルドは 6,106 jobs 成功。
+- 最新公理監査：Derived 314 modules／3,431 宣言、Stable 584 modules／4,547 宣言。標準三公理のみ。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -27,6 +27,10 @@
 - 収縮元を持つ任意の dg 対象の実始対象性・零対象性、商包含の指定対象の実零化を公開済み。零対象性から収縮元を回収する逆向きも証明し、任意 dg 関手の `PreservesZeroVertices` を証明済み。
 - 商包含の指定充満部分圏上の制限は零対象の定値関手と、関手 ∞ 圏の可逆二胞体で比較済み。任意形状の零図式の比較とその一意性も Stable に公開した。
 - 指定対象を実零頂点へ送る dg 関手から、収縮データを回収して商からの dg 関手へ延長し、nerve の射影との厳密な一致を証明済み。全 ∞ 関手圏の普遍性は未証明。この段階の零化・延長は K-flat 性を要求しない。
+- 全面の一致から最上位の右辺を同定する補題、全射 Hom 準同型に沿う境界・目標原始元の同時持ち上げを構成。全面を保つ実相対充填を、一次元・零次元も含めて証明済み。
+- 対象上全射・全 Hom 上次数ごと全射な準同型の dg 関手の nerve は `TrivialKanFibration`。逆写像・可逆二胞体を持つ `QCatEquivalence` まで公開済み。
+- 具体的な cell 分解の第一添加と余極限から増大の各次数全射性を証明し、増大の nerve の明示的 ∞ 圏同値に適用済み。一般部品は DifferentialGraded の公開 API を使用し、KST の import は追加していない。
+- 平坦分解後の path 商の nerve、元の nerve からの関手、屋根の比較同型を構成。証明済み K-flat 条件を供給し、元の指定対象の零化・指定部分圏上の定値零関手との可逆二胞体も構成済み。
 
 ### 残り（依存順、時間は推定）
 
@@ -57,6 +61,10 @@
 - `dgBoundaryZeroData_proper_equation`、`dgBoundarySourceExtension`、`dgNerve_contractingElement_isInitialVertex`。
 - `dgNerve_isZeroVertex_iff_contractingElement`、`dgFunctorNerve_preservesZeroVertices`、`dgQuotientNerveProjection_kills`。
 - `zeroDiagramFunctorIso`、`dgQuotientNullFunctorIsoZero`、`dgQuotient_exists_nerve_extension_of_zeroing`。
+- `dgFunctor_relative_top_lift`、`dgFunctor_relative_simplex_lift`、`dgFunctor_relative_boundary_lift`。
+- `dgNerve_map_trivialKanFibration_of_surjective_quasiIso`、`dgCellAugmentationNerve_trivialKanFibration`、`dgCellResolutionNerveEquivalence`。
+- `resolvedDGQuotientNerve`、`resolvedDGQuotientFunctor`、`resolvedDGQuotientRoofIso`、`resolvedDGQuotient_localKFlat`。
+- `resolvedDGQuotientFunctor_kills`、`resolvedDGQuotientNullFunctorIsoZero`。
 
 ### 依存と提供
 
@@ -70,14 +78,14 @@
 
 ### 既知の問題
 
-- D7・β3 の零化の対象・集約ビルドと両公理監査成功。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルドと両公理監査成功。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
-- β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零対象性・整合的な制限の零化は完成。分解の nerve の同値、全 ∞ 関手圏の普遍性、商の安定性、完全性と Verdier 列は未完。
+- β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零対象性・整合的な制限の零化は完成。分解の nerve の同値と平坦商への関手は完成。全 ∞ 関手圏の普遍性、商の安定性、完全性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：平坦分解の増大関手の nerve の同値を先行する。まず対象上全射・全 Hom 上次数ごと全射な準同型である dg 関手の nerve が `TrivialKanFibration` となることを、相対全境界充填で証明する。今回の `DGBoundaryAssembly` と最上位だけの置換を再利用し、目標の最上位成分も保つ原始元には `DifferentialGraded/Complexes/CellCriterion.complex_boundary_lifting_of_surjective_quasiIso` を使う（閉元 z と目標原始元 y を同時に持ち上げる既存定理）。相対一次元も同じ定理の n=0、零次元は対象上全射性で処理する。`SimplexData.map_rhs` で右辺の像を同定する。`DGCategoryCellResolution.augmentation_homQuasiIso`、L4 `DGResolution/Surjectivity.augmentation_surjective` が具体的増大の入力。Core `trivialKanFibration_iff_boundary` と自明 Kan fibration の同値性へ接続する。その後、局所 K-flat な商の模型を固定し、cofiber 条件の辺の反転・F1B `IsLocalization` の全 ∞ 関手圏の普遍性・商の安定性・Verdier 列へ進む。他レーンのファイルは読み取り専用。
+- β3：前三角化・表現可能部分への比較に必要な dg nerve の充満忠実性を整備する。まず Hom 上次数ごと全射な準同型の dg 関手について、対象上全射性を外した `IsFullyFaithful (dgNerve.map F)` を証明する。固定二対象の Hom 複体の chain map に沿う pinched 線形単体の後合成を定義し、相対全境界充填を `CellCriterion.complex_boundary_lifting_of_surjective_quasiIso` で行う。対応する `pinchedHomMap` が自明 Kan fibration となることを示し、Core の `IsFullyFaithful` へ渡す。これで Hom 複体同型の場合、特に dg Yoneda に適用できる。既存 `Module/YonedaFunctor.dgYoneda`・`Module/Yoneda.dgYonedaIso` は読み取り専用で使う。対象の宇宙は現 `dgNerve.map` と同様共通（異なる場合の持ち上げは別途必要）。その後、前三角 dg 圏／平坦商の安定性と商関手の完全性、cofiber 条件の辺の反転、F1B `IsLocalization` の全 ∞ 関手圏の普遍性、Verdier 列へ進む。H⁰ の比較や dg 関手だけの延長で普遍性を済ませない。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
@@ -127,7 +135,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
-D7 の後に着手済み。実零対象性・指定部分圏上の整合的な零化と dg 関手から来る延長まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
+D7 の後に着手済み。実零対象性・整合的な零化、平坦分解の nerve の同値と平坦商への関手まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
 F1b の `Localization.lean` の `IsLocalization` を入口とし、同じ宇宙の標的への
 `localizationPrecomposition` が反転関手の全部分 ∞ 圏との同値になることを証明する。
 
