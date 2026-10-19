@@ -7885,3 +7885,99 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRightCorrectionFace_initial
 #print axioms specifiedCoconeRightCorrectionFace_initial
+
+#check @sourceFixedTriangleShape_target
+#print axioms sourceFixedTriangleShape_target
+
+#check @sourceFixedTriangleShape_base
+#print axioms sourceFixedTriangleShape_base
+
+#check @sourceFixedTriangleShape_initial
+#print axioms sourceFixedTriangleShape_initial
+
+#check @sourceFixedTriangleHomotopy
+#print axioms sourceFixedTriangleHomotopy
+
+#check @sourceFixedTriangleHomotopy_raw
+#print axioms sourceFixedTriangleHomotopy_raw
+
+#check @sourceFixedTriangleHomotopy_target
+#print axioms sourceFixedTriangleHomotopy_target
+
+#check @sourceFixedTriangleHomotopy_projection
+#print axioms sourceFixedTriangleHomotopy_projection
+
+#check @sourceFixedTriangleHomotopy_initial
+#print axioms sourceFixedTriangleHomotopy_initial
+
+#check @contractibleEdgeEvaluation_hom
+#print axioms contractibleEdgeEvaluation_hom
+
+#check @contractibleEdgeEvaluation_hom_arrow
+#print axioms contractibleEdgeEvaluation_hom_arrow
+
+#check @specifiedCoconeRightCorrectionHomotopy
+#print axioms specifiedCoconeRightCorrectionHomotopy
+
+#check @specifiedCoconeRightCorrectionHomotopy_raw
+#print axioms specifiedCoconeRightCorrectionHomotopy_raw
+
+#check @specifiedCoconeRightCorrectionHomotopy_projection
+#print axioms specifiedCoconeRightCorrectionHomotopy_projection
+
+#check @specifiedCoconeRightCorrectionHomotopy_initial
+#print axioms specifiedCoconeRightCorrectionHomotopy_initial
+
+#check @specifiedCoconeRightCorrectionHomotopy_target
+#print axioms specifiedCoconeRightCorrectionHomotopy_target
+
+#check @specifiedCoconeRightCorrectionHomotopy_source_projection
+#print axioms specifiedCoconeRightCorrectionHomotopy_source_projection
+
+#check @specifiedCoconeRightCorrectionHomotopy_target_projection
+#print axioms specifiedCoconeRightCorrectionHomotopy_target_projection
+
+#check @specifiedCoconeRightCorrectionHomotopy_source_initial
+#print axioms specifiedCoconeRightCorrectionHomotopy_source_initial
+
+#check @specifiedCoconeRightCorrectionHomotopy_target_initial
+#print axioms specifiedCoconeRightCorrectionHomotopy_target_initial
+
+#check @specifiedCoconeRightRootExtension_initial_base
+#print axioms specifiedCoconeRightRootExtension_initial_base
+
+#check @specifiedCoconeRightRootExtensionSpace
+#print axioms specifiedCoconeRightRootExtensionSpace
+
+#check @specifiedCoconeRightRootExtensionSpace_isContractibleKan
+#print axioms specifiedCoconeRightRootExtensionSpace_isContractibleKan
+
+#check @specifiedCoconeRightCorrectionExtensionEdge
+#print axioms specifiedCoconeRightCorrectionExtensionEdge
+
+#check @specifiedCoconeRightCorrectionExtensionEdge_uncurry
+#print axioms specifiedCoconeRightCorrectionExtensionEdge_uncurry
+
+#check @specifiedCoconeRightRootEndpoint
+#print axioms specifiedCoconeRightRootEndpoint
+
+#check @specifiedCoconeRightCommonCorrectionEdge
+#print axioms specifiedCoconeRightCommonCorrectionEdge
+
+#check @specifiedCoconeRightCommonCorrectionEdge_projection
+#print axioms specifiedCoconeRightCommonCorrectionEdge_projection
+
+#check @specifiedCoconeRightCorrectionExtensionEdge_endpoint_raw
+#print axioms specifiedCoconeRightCorrectionExtensionEdge_endpoint_raw
+
+#check @specifiedCoconeRightCorrectionExtensionEdge_endpoint_edge
+#print axioms specifiedCoconeRightCorrectionExtensionEdge_endpoint_edge
+
+#check @specifiedCoconeRightCorrectionExtensionEdge_endpoint_hom_arrow
+#print axioms specifiedCoconeRightCorrectionExtensionEdge_endpoint_hom_arrow
+
+#check @specifiedCoconeRightCorrectionExtensionEdge_boundary_edge
+#print axioms specifiedCoconeRightCorrectionExtensionEdge_boundary_edge
+
+#check @specifiedCoconeRightCorrectionExtensionEdge_canonical_hom_arrow
+#print axioms specifiedCoconeRightCorrectionExtensionEdge_canonical_hom_arrow

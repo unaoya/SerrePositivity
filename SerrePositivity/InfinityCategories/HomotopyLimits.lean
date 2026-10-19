@@ -567,3 +567,9 @@ public import
 public import
   SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeRightPrefixTerminalComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeRightCorrectionFace
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SourceFixedTriangleHomotopy
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ContractibleEdgeEvaluation
+public import
+  SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeRightCorrectionHomotopy
+public import
+  SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeRightCorrectionEndpoint
