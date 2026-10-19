@@ -19,15 +19,27 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F1B
 
-/-- 概要：各 fiber の余極限の存在から、任意の図式の族の頂点に相対始対象の逆像を選べる。
-方針：fiber の関手空間の同型で図式を取り出し、その余極限余錐を戻す。
-規約：余極限の存在は全ての c と K_c 上の図式について仮定する。
-使われ方：普遍余錐全体からの射の零次元の持ち上げ。 -/
-lemma exists_kanRelativeJoin_initial_vertex_of_colimits {K C D : SSet.{u}}
-    [Quasicategory C] [Quasicategory D] (p : K ⟶ C) [CocartesianFibration p]
-    (hcol : ∀ (c : C _⦋0⦌) (d : vertexFiber p c ⟶ D),
-      ∃ z : JoinCocone d, IsColimitCone z)
+/-- 概要：関手の族の頂点が表す、その射影の fiber 上の図式。
+方針：fiber の関手空間の同型の逆で取り出し、関手の頂点を射に戻す。
+規約：元の射と値域の充填性は不要。
+使われ方：対象の族の各頂点だけに余極限の存在を課す。 -/
+def kanFiberwiseHomVertexDiagram {K C D : SSet.{u}} (p : K ⟶ C)
     (y : (kanFiberwiseHom p D) _⦋0⦌) :
+    vertexFiber p ((kanFiberwiseHomProjection p D).app (Opposite.op ⦋0⦌) y) ⟶ D :=
+  let c := (kanFiberwiseHomProjection p D).app (Opposite.op ⦋0⦌) y
+  let yf : (vertexFiber (kanFiberwiseHomProjection p D) c) _⦋0⦌ :=
+    ⟨y, by rw [pinchedConstant_zero]⟩
+  (functorVertexEquiv (vertexFiber p c) D).symm
+    ((kanFiberwiseHomFiberIso p c D).inv.app (Opposite.op ⦋0⦌) yf)
+
+/-- 概要：指定した図式の余極限から、対応する族の頂点に相対始対象の逆像を選べる。
+方針：fiber の関手空間の同型で図式を取り出し、その余極限余錐を戻す。
+規約：指定された y が表す fiber の図式だけに余極限を要求する。
+使われ方：普遍余錐全体からの射の零次元の持ち上げ。 -/
+lemma exists_kanRelativeJoin_initial_vertex_of_colimit {K C D : SSet.{u}}
+    [Quasicategory C] [Quasicategory D] (p : K ⟶ C) [CocartesianFibration p]
+    (y : (kanFiberwiseHom p D) _⦋0⦌)
+    (hcol : ∃ z : JoinCocone (kanFiberwiseHomVertexDiagram p y), IsColimitCone z) :
     ∃ x : (kanFiberwiseHom (relativeJoinBaseProjection p (𝟙 C)) D) _⦋0⦌,
       (kanFiberwiseHomPre (D := D) (kanRelativeJoinInlOver p)).app (Opposite.op ⦋0⦌) x = y ∧
         InitialBoundaryLifting (kanFiberwiseHomPre (D := D) (kanRelativeJoinInlOver p)) x := by
@@ -35,9 +47,9 @@ lemma exists_kanRelativeJoin_initial_vertex_of_colimits {K C D : SSet.{u}}
   let yf : (vertexFiber (kanFiberwiseHomProjection p D) c) _⦋0⦌ :=
     ⟨y, by rw [pinchedConstant_zero]⟩
   let v := (kanFiberwiseHomFiberIso p c D).inv.app (Opposite.op ⦋0⦌) yf
-  let d := (functorVertexEquiv (vertexFiber p c) D).symm v
+  let d := kanFiberwiseHomVertexDiagram p y
   have hd : functorVertex d = v := (functorVertexEquiv (vertexFiber p c) D).apply_symm_apply v
-  obtain ⟨z, hz⟩ := hcol c d
+  obtain ⟨z, hz⟩ := hcol
   let x := (kanRelativeJoinCoconeFiberIso p c D).hom.app (Opposite.op ⦋0⦌)
     (functorVertex z.val)
   refine ⟨x.val, ?_, kanRelativeJoinCocone_initialBoundary p c hz⟩
@@ -58,6 +70,20 @@ lemma exists_kanRelativeJoin_initial_vertex_of_colimits {K C D : SSet.{u}}
   change (kanFiberwiseHomFiberIso p c D).hom.app (Opposite.op ⦋0⦌) v = yf at hi
   have he := congrArg Subtype.val (h.trans hi)
   exact he
+
+/-- 概要：各 fiber の全図式に余極限があれば、任意の族の頂点に相対始対象が存在する。
+方針：頂点が表す一つの図式に仮定を適用する。
+規約：一つの図式への弱い仮定は単数形の補題で扱う。
+使われ方：普遍余錐全体からの射の零次元の持ち上げ。 -/
+lemma exists_kanRelativeJoin_initial_vertex_of_colimits {K C D : SSet.{u}}
+    [Quasicategory C] [Quasicategory D] (p : K ⟶ C) [CocartesianFibration p]
+    (hcol : ∀ (c : C _⦋0⦌) (d : vertexFiber p c ⟶ D),
+      ∃ z : JoinCocone d, IsColimitCone z)
+    (y : (kanFiberwiseHom p D) _⦋0⦌) :
+    ∃ x : (kanFiberwiseHom (relativeJoinBaseProjection p (𝟙 C)) D) _⦋0⦌,
+      (kanFiberwiseHomPre (D := D) (kanRelativeJoinInlOver p)).app (Opposite.op ⦋0⦌) x = y ∧
+        InitialBoundaryLifting (kanFiberwiseHomPre (D := D) (kanRelativeJoinInlOver p)) x :=
+  exists_kanRelativeJoin_initial_vertex_of_colimit p y (hcol _ (kanFiberwiseHomVertexDiagram p y))
 
 /-- 概要：各 fiber に必要な余極限があれば、相対始対象全体からの制限射は自明 Kan fibration。
 方針：頂点での全射性と正次元の相対始点境界充填を合わせる。

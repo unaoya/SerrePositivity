@@ -40,15 +40,15 @@
 - cocartesian fibration 間の単射による相対指数の制限は inner fibration。相対 join の制限 V にも適用済み。
 - 余錐制限と相対 join 制限の各 fiber の cartesian fibration 性を証明。縦合成の比較射の pullback 分解も証明。
 - 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。
-- 各 fiber の全図式に余極限があれば、普遍余錐全体からの射は自明 Kan fibration。任意の族を延長できる。
-- 最終検証：F1・F1B 同時ビルド成功（3420 jobs）、同時 import 検査成功（F1 5673・F1B 3540 宣言）。
-  公理監査成功（3544 宣言、標準三公理のみ、967 モジュールに straightening なし）。ソース名衝突 0。
+- 対象の族の各頂点に必要な余極限だけで、普遍余錐全体からの引き戻しは自明 Kan fibration。図式を延長できる。
+- 最終検証：F1・F1B 同時ビルド成功（3425 jobs）、同時 import 検査成功（F1 5684・F1B 3548 宣言）。
+  公理監査成功（3552 宣言、標準三公理のみ、969 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
-- 1. 図式の延長の存在仮定を、対象の図式に必要な点ごとの余極限へ弱め、Kan 条件へ接続する。
+- 1. 点ごとの余極限からの相対 join の図式の存在を、一般の δ と Kan 条件へ接続する。
   Kerodon Lemma 7.3.4.5–6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
-  fiber の充填の全空間への移送、族と実際の図式の相対骨格上の延長は証明済み。
+  fiber の充填の全空間への移送、実際の図式の延長、対象の族の点ごとの余極限だけによる存在は証明済み。
   その後 oriented fiber product で全部分 ∞ 圏からの存在へ接続し、任意の δ に沿う存在も扱う。
 - 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
@@ -83,7 +83,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：二部分を固定した図式の延長、余極限からの自明 Kan fibration と図式の存在、集約・監査・本書）。
+- なし（本保存単位：相対始対象全体の引き戻し、単一頂点の余極限、点ごとの図式の存在、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `exists_kanRelativeJoin_diagram_of_colimits` は各 fiber の全図式の余極限を要求する。
-  相対始対象全体からの射を対象の図式の族に沿って引き戻し、必要な各頂点の余極限だけで切断を作る。
-  その後 oriented fiber product で任意の δ と点ごとの Kan 条件へ接続する（Kerodon 7.3.4–5）。
+- `exists_kanRelativeJoin_diagram_of_pointwise_colimits` は対象の図式の各頂点の余極限だけを要求する。
+  次は既存 `leftMappingArrow δ` を oriented fiber product として再利用し、その標的射影の cocartesian 性を示す。
+  fiber と `leftKanShape δ c` の比較を構成して一般の δ と点ごとの Kan 条件へ接続する（Kerodon 7.3.4–5）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

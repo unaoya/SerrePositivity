@@ -365,3 +365,5 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeHomLiftingEquiv
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinDiagramAssembly
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinColimitProjection
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinDiagramExistence
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialPullback
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinPointwiseExistence
