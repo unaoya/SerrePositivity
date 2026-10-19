@@ -447,7 +447,14 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `onSequence_partialComposition_nullary_zero` は出力 arity 零を含む空語の全 shuffle 和の合成保存。
 `onSequence_partialComposition` は任意の可換環・全 arity・全次数の一般公式。
 `normalizedMap_shuffleBilinear` は実際の全正規化鎖に対する双線形 shuffle 合成保存。
-nullary を含む TR の部分合成保存は完了。χ の微分との両立・単位・同変性・結合則は未完成。
+nullary を含む TR の部分合成保存は完了。
+`Surjection.partialComposition_d_positive`・`d_leftZero`・`d_rightZero` は χ の Leibniz 則の全分岐。
+`unitElement` と左右の単位則、内外右作用の同変性、入れ子と Koszul 符号付き並列結合則も全射 TR から証明。
+`Surjection.complex` は実際の非有界整数コチェイン複体。`complexXIso` は負次数と全射語加群の比較。
+`complexRename` と `Surjection.sequence` は値の左置換を持つ複体の対称列。
+`TableReduction.cochainMap` は実際の整数複体の TR、全非正次数で全射。
+`TableReduction.sequenceMap` は整数複体の対称列の TR 自然変換。
+χ の成分法則は揃ったが、部分合成・単位を整数複体の射へ束ねた Operad と TR オペラッド射は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：

@@ -257,3 +257,8 @@ public import SerrePositivity.EInfinity.TableReduction.NullaryAvailable
 public import SerrePositivity.EInfinity.TableReduction.NullaryEarlyExclusion
 public import SerrePositivity.EInfinity.TableReduction.NullarySuccessMap
 public import SerrePositivity.EInfinity.TableReduction.CompositionAll
+public import SerrePositivity.EInfinity.Surjection.CompositionLeibniz
+public import SerrePositivity.EInfinity.Surjection.CompositionAssociativity
+public import SerrePositivity.EInfinity.Surjection.CompositionUnit
+public import SerrePositivity.EInfinity.Surjection.CompositionEquivariance
+public import SerrePositivity.EInfinity.TableReduction.SequenceMap

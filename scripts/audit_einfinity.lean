@@ -752,6 +752,28 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.onSequence_partialComposition,
       `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffle_generators,
       `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffleBilinear,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_degreeTransport,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_arityTransport,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_d_positive,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_d_leftZero,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_d_rightZero,
+      `SerrePositivity.EInfinity.Surjection.unitElement,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_left_unit,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_right_unit,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_nested_assoc,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_parallel_assoc,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_rightAction,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_inner_rightAction,
+      `SerrePositivity.EInfinity.Surjection.partialComposition_outer_rightAction,
+      `SerrePositivity.EInfinity.Surjection.complex,
+      `SerrePositivity.EInfinity.Surjection.complexXIso,
+      `SerrePositivity.EInfinity.Surjection.complex_isZero_positive,
+      `SerrePositivity.EInfinity.Surjection.normalizedRename,
+      `SerrePositivity.EInfinity.Surjection.complexRename,
+      `SerrePositivity.EInfinity.Surjection.sequence,
+      `SerrePositivity.EInfinity.TableReduction.cochainMap,
+      `SerrePositivity.EInfinity.TableReduction.cochainMap_f_surjective,
+      `SerrePositivity.EInfinity.TableReduction.sequenceMap,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2197,3 +2219,45 @@ example (x : (BarrattEccles.normalizedChains ℤ 1).X 2)
     normalizedMap ℤ 0 2 (BarrattEccles.shuffleBilinear ℤ 0 0 0 2 0 x y) =
       Surjection.partialComposition ℤ 0 0 2 0 0 (normalizedMap ℤ 1 2 x)
         (normalizedMap ℤ 0 0 y) := normalizedMap_shuffleBilinear ℤ 0 x y
+
+-- 全射語の二つの正次数の合成の微分には、外側が奇次数の場合に負符号が付く。
+example (x : degreeModule ℤ 3 1) (y : degreeModule ℤ 2 1) :
+    differential ℤ 4 1 (Surjection.partialComposition ℤ 2 2 1 1 0 x y) =
+      Surjection.partialComposition ℤ 2 2 0 1 0 (differential ℤ 3 0 x) y -
+        Surjection.partialComposition ℤ 2 2 1 0 0 x (differential ℤ 2 0 y) := by
+  have h := Surjection.partialComposition_d_positive ℤ 2 2 0 0 0 x y
+  rw [show (-1 : ℤ) ^ (0 + 1) = -1 by decide, neg_one_zsmul] at h
+  simpa only [Surjection.degreeTransport_refl, sub_eq_add_neg] using h
+-- 空語挿入の場合も外側微分との可換性を保つ。
+example (x : degreeModule ℤ 3 2) :
+    differential ℤ 2 1 (Surjection.partialComposition ℤ 2 0 2 0 1 x
+      (basis ℤ 0 0 (ULift.up emptyNullaryWord))) =
+      Surjection.partialComposition ℤ 2 0 1 0 1 (differential ℤ 3 1 x)
+        (basis ℤ 0 0 (ULift.up emptyNullaryWord)) :=
+  Surjection.partialComposition_d_rightZero ℤ 2 0 1 1 x _
+-- 一文字単位と空語への左単位、正次数への右単位。
+example : Surjection.unitElement ℤ = basis ℤ 1 0 (ULift.up (permutationWord 1)) := rfl
+example : Surjection.degreeTransport ℤ 0 (Nat.zero_add 0)
+    (Surjection.arityTransport ℤ (Nat.zero_add 0) 0
+      (Surjection.partialComposition ℤ 0 0 0 0 0 (Surjection.unitElement ℤ)
+        (basis ℤ 0 0 (ULift.up emptyNullaryWord)))) =
+      basis ℤ 0 0 (ULift.up emptyNullaryWord) :=
+  Surjection.partialComposition_left_unit ℤ 0 0 _
+example : Surjection.partialComposition ℤ 2 1 1 0 2
+    (basis ℤ 3 1 (ULift.up compositionOuter)) (Surjection.unitElement ℤ) =
+      basis ℤ 3 1 (ULift.up compositionOuter) :=
+  Surjection.partialComposition_right_unit ℤ 2 2 1 _
+-- 交換する二つの内側演算がともに奇次数なら並列交換の符号は負。
+example (x : degreeModule ℤ 3 1) (y z : degreeModule ℤ 2 1) :
+    Surjection.partialComposition ℤ 3 2 2 1 (BarrattEccles.parallelSlot 1 2 0 2 (by decide))
+      (Surjection.partialComposition ℤ 2 2 1 1 0 x y) z =
+      -Surjection.partialComposition ℤ 3 2 2 1
+        (BarrattEccles.parallelSlot 1 2 2 0 (by decide))
+        (Surjection.partialComposition ℤ 2 2 1 1 2 x z) y := by
+  have h := Surjection.partialComposition_parallel_assoc ℤ 1 2 2 0 2 (by decide) 1 1 1 x y z
+  rw [show (-1 : ℤ) ^ (1 * 1) = -1 by decide, neg_one_zsmul] at h
+  simpa only [Surjection.degreeTransport_refl, Surjection.arityTransport_refl] using h
+-- 整数複体の対称列と、その全射 TR の成分を検証する。
+example : SerrePositivity.SymmetricSequence.level (Surjection.sequence ℤ) 2 = Surjection.complex ℤ 2 := rfl
+example : (TableReduction.sequenceMap ℤ).app (SerrePositivity.FiniteBijection.of 2) = cochainMap ℤ 2 := rfl
+example : Function.Surjective ((cochainMap ℤ 2).f (-2)).hom := cochainMap_f_surjective ℤ 2 2
