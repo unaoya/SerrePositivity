@@ -482,3 +482,10 @@ public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEdge
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderEvaluation
 public import SerrePositivity.KST.Spectra.EnrichedTransformationTriangleOuter
 public import SerrePositivity.KST.Spectra.SpectrumZeroEvaluationTriangleOuter
+public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEdgeOrdinary
+public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderTriangle
+public import SerrePositivity.KST.Spectra.CircleParameterTriangle
+public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationTriangle
+public import SerrePositivity.KST.Spectra.SpectrumCircleEvaluationHorn
+public import SerrePositivity.KST.Spectra.SpectrumCircleEvaluationCompanion
+public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationSquare
