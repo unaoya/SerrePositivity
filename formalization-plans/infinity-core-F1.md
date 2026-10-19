@@ -28,14 +28,14 @@
 - `parametrizedFiberTransport` は固定端点の写像空間全体で選択独立性・パラメーター制限・係数変更を保ち、各辺で既存の transport を回収する。
   unstraightening の写像空間比較の fiber 作用と、対象評価後の普遍輸送を関手同型で結んだ。
 - 実際の pointed-space 射影の普遍輸送は写像空間上で同値。豊穣合成・反転・底の同型で証明済み。
-  初期値も動く全 lift prism 空間とその普遍性、任意の底変換、実際の始点 fiber との同型を構成。
-  同時端点制限は Kan fibration。始点同値への制限は trivial Kan fibration、両端固定 lift 空間は可縮。
-  実際の区間族の境界固定 lift 空間は、同値な両端写像を指定すると可縮 Kan 複体。
-  円柱比較で証明し、元の四角形の底側・全空間側の境界を同時固定した厳密な fiber とも同型。
-  区間上の任意の left fibration の輸送円柱から全空間への実際の比較は前合成同値。
-  底と境界が動く相対 lift 空間を構成。固定境界の fiber 同型とその自然性から、任意の quasicategory
-  のパラメーター上の族全体の前合成比較も同値。輸送円柱の実際の比較にも適用済み。
-- 対象ビルド3009 jobs、公理監査5813宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  始点同値に制限した同時端点制限、両端同値の円柱四角形の端点制限は trivial Kan fibration。
+  元の区間の境界上の全空間を両端 fiber の直和と同定。指定境界表現から実際の両端同値を回収した。
+  境界固定 lift 族、四角形の二条件同時 fiber、実際の境界制限の fiber を厳密な同型で結んだ。
+  全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
+  実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
+  区間上の任意の left fibration の輸送円柱から全空間への比較は前合成同値。
+  底・境界が動く相対 lift 族全体の前合成比較も同値であり、実際の輸送円柱にも適用済み。
+- 対象ビルド3014 jobs、公理監査5852宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -68,7 +68,7 @@
 - `pointedPrismEquivalenceEndpoints_trivialKanFibration`、`pointedCylinderPrismEndpoints_trivialKanFibration`
 - `pointedCylinderEquivalenceSquareIso`、`cylinderEquivalenceSquareEndpoints_trivialKanFibration`
 - `relativeBoundaryFamilyPre_isQCatEquivalence`、`intervalTransportCylinder_boundaryFamily_isQCatEquivalence`
-- `intervalFixedBoundaryFamilySpace_isContractibleKan`、`intervalFixedBoundaryFamilySquareFiberIso`
+- `intervalWitnessRestriction_trivialKanFibration`、`transportWitnessRestrictionFiberIso`
 
 ### 依存と提供
 
@@ -98,10 +98,10 @@
 
 ### 次の一手
 
-境界上の指定表現から両端データを取り出し、二条件同時 fiber を実際の境界制限の fiber と結ぶ。
-`intervalFixedBoundaryFamilySquareFiberIso` と境界からの表現条件の反映で、全部分複体の fiber へ移す。
-実際の境界制限の trivial Kan fibration を結ぶ（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
-その後、点・単体の表現空間の可縮性、一般の境界固定延長へ進む。
+実際の区間境界制限の結論から、点上の表現空間の可縮性を証明する（Lemma 5.6.9.2）。
+区間との直積上の表現と点上の表現の区間族を結び、境界制限を対角写像の比較へ移す。
+非空性は小ささを満たす実際の表現から供給し、存在仮定として主経路へ隠さない。
+その後、単体の表現空間の可縮性と一般の境界固定延長（Theorem 5.6.8.3、§5.6.5）へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
