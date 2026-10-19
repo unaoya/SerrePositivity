@@ -1268,6 +1268,28 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.actionCoefficient_vertex,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionCoefficient_vertex,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionEdgeCutTerm_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_ordered_union,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_ordered_images,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_last,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_lt_inner,
+      `SerrePositivity.EInfinity.IntervalCuts.insertedPosition_lt_remaining_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.pivotInnerMap,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.pivotInnerMap_lt_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.pivotInnerMap_value,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.pivotInnerMap_at_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remaining_color_ne_of_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.pivotInnerMap_injective,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_pivot_order,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_pivot_injOn,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.pivotInnerMap_mem_active,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_pivot_mem_active,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.activePositions_pivot_union,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.remainingPositionMap_inversionTerm_of_ne,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.pivotInnerMap_inversionTerm,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.inversionCount_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.edgeSign_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionCoefficient_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionEdgeCutTerm_pivot,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3669,3 +3691,34 @@ example : compositionEdgeCutTerm ℤ vertexSignOuterLeft
     vertexSignLeftCut.actionCoefficient • tensorVectorOfDegree ℤ 4 2
       vertexSignLeftCut.outputFamily vertexSignLeftCut.outputFamily_tupleDegree_all :=
   NestedEdgeCut.compositionEdgeCutTerm_vertex ℤ vertexSignLeftCut (by decide) rfl
+
+-- 切断点色への挿入で交差逆転が三つある次数二の内側語と、負の内側切断符号。
+private def pivotCrossOuter : BasisWord 2 1 := ⟨![1, 0, 1], by decide⟩
+private def pivotCrossInner : BasisWord 3 2 := ⟨![0, 1, 2, 0, 1], by decide⟩
+private def pivotCrossCut : NestedEdgeCut (m := 1) pivotCrossOuter pivotCrossInner 0 :=
+  NestedEdgeCut.ofEdge 1 (by decide) (by decide) 2 (by decide)
+private def pivotNegativeInnerCut : NestedEdgeCut (m := 1) compositionInner pivotCrossOuter 1 :=
+  NestedEdgeCut.ofEdge 1 (by decide) (by decide) 1 (by decide)
+example : pivotCrossCut.actionCoefficient = -1 := by decide
+example : positionInversionCount (compositeBasisWord pivotCrossOuter pivotCrossInner 0
+    pivotCrossCut.partition (by decide)).val
+      (activePositions (compositeBasisWord pivotCrossOuter pivotCrossInner 0
+        pivotCrossCut.partition (by decide)).val pivotCrossCut.compositePosition) = 3 := by decide
+example : ((activePositions pivotCrossOuter.val pivotCrossCut.val.1).erase
+    pivotCrossCut.val.1).image pivotCrossCut.remainingPositionMap ∪
+      (activePositions pivotCrossInner.val 2).image (pivotCrossCut.pivotInnerMap rfl) =
+    activePositions (compositeBasisWord pivotCrossOuter pivotCrossInner 0 pivotCrossCut.partition
+      (by decide)).val pivotCrossCut.compositePosition := by decide
+example : compositionSign pivotCrossOuter pivotCrossInner 0 pivotCrossCut.partition *
+    edgeSign (compositeBasisWord pivotCrossOuter pivotCrossInner 0 pivotCrossCut.partition
+      (by decide)).val pivotCrossCut.compositePosition = pivotCrossCut.actionCoefficient :=
+  NestedEdgeCut.compositionCoefficient_pivot pivotCrossCut (by decide) 2 rfl rfl
+example : pivotNegativeInnerCut.actionCoefficient = -1 := by decide
+example : edgeSign (compositeBasisWord compositionInner pivotCrossOuter 1
+    pivotNegativeInnerCut.partition (by decide)).val pivotNegativeInnerCut.compositePosition = -1 :=
+  by decide
+example : compositionEdgeCutTerm ℤ compositionInner pivotCrossOuter 1 pivotNegativeInnerCut.partition
+    (by decide) pivotNegativeInnerCut.compositePosition =
+    pivotNegativeInnerCut.actionCoefficient • tensorVectorOfDegree ℤ 3 3
+      pivotNegativeInnerCut.outputFamily pivotNegativeInnerCut.outputFamily_tupleDegree_all :=
+  NestedEdgeCut.compositionEdgeCutTerm_pivot ℤ pivotNegativeInnerCut (by decide) 1 rfl rfl

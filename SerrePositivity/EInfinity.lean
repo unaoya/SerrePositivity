@@ -343,3 +343,8 @@ public import SerrePositivity.EInfinity.IntervalCuts.InversionReindex
 public import SerrePositivity.EInfinity.IntervalCuts.RemainingPositionOrder
 public import SerrePositivity.EInfinity.IntervalCuts.RemainingActivePositions
 public import SerrePositivity.EInfinity.IntervalCuts.VertexCompositionSigns
+public import SerrePositivity.EInfinity.IntervalCuts.InversionBlocks
+public import SerrePositivity.EInfinity.IntervalCuts.PivotPositionOrder
+public import SerrePositivity.EInfinity.IntervalCuts.PivotActivePositions
+public import SerrePositivity.EInfinity.IntervalCuts.PivotInversionCounts
+public import SerrePositivity.EInfinity.IntervalCuts.PivotCompositionSigns

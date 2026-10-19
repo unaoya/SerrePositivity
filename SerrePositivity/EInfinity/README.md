@@ -608,7 +608,10 @@ nullary を含む TR の部分合成保存は完了。
 `remainingPositionMap_image_of_degree_zero` は非辺への次数零代入が全活動位置を順序を保って移すこと。
 `NestedEdgeCut.compositionCoefficient_vertex` は内側が頂点へ作用する全分岐で一般係数が一致すること。
 `compositionEdgeCutTerm_vertex` はその分岐の実際の合成切断項と二段作用の面テンソル項を同定する。
-具体的な Δ¹ の余代数構造は未完成。内側が辺へ作用する二分岐の一般係数の一致・頂点入力・nullary 左辺、
+`activePositions_pivot_union` は切断点色への挿入の全活動集合を、外側切断点を除いた像と内側活動像へ分ける。
+`inversionCount_pivot` は内部二項と内側活動数倍の交差逆転数の公式。
+`compositionCoefficient_pivot`・`compositionEdgeCutTerm_pivot` は同分岐の一般係数と実際の項の一致。
+具体的な Δ¹ の余代数構造は未完成。二出現色への内側辺作用の一般係数の一致・頂点入力・nullary 左辺、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
