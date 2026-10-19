@@ -50,6 +50,21 @@ lemma strictCoherentNatTransMap_component {F G : I ⥤ C} (η : F ⟶ G) (i : I)
   change (nerveToCoherent C).app _ ((resizedNatTransMap η).app _ _) = _
   rw [resizedNatTransMap_component]
   rfl
+/-- 概要：各成分が可逆な自然変換の coherent 円柱は全頂点で可逆。
+方針：全頂点を元の対象の定値零単体として表示し、垂直辺の式を使う。
+規約：元の円柱の一単体自体の可逆性を返す。
+使われ方：指定された図式の prism を保つ錐の輸送。 -/
+lemma strictCoherentNatTransMap_vertical_isInvertible {F G : I ⥤ C}
+    (η : F ⟶ G) (hη : ∀ i, IsInvertibleEdge (coherentNerveEdge (η.app i)))
+    (x : ((SSet.uliftFunctor.{v, u}).obj (nerve I)) _⦋0⦌) :
+    IsInvertibleEdge (edgeOfSimplex ((strictCoherentNatTransMap η).app (Opposite.op ⦋1⦌)
+      (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{max u v})), PinchedHom.constant x 1))) := by
+  have hx : x = ULift.up (ComposableArrows.mk₀ (x.down.obj 0)) := by
+    apply ULift.ext
+    exact ComposableArrows.ext₀ rfl
+  rw [hx, strictCoherentNatTransMap_component]
+  exact (isInvertibleEdge_congr (e := edgeOfSimplex _)
+    (f := coherentNerveEdge (η.app (x.down.obj 0))) rfl).mpr (hη _)
 /-- 概要：各成分が可逆な自然変換は strict coherent 図式の同型を与える。
 方針：全頂点を通常の対象として表示し、円柱の垂直辺の可逆性を検証する。
 規約：標的 coherent nerve の quasicategory 性を明示する。
@@ -58,14 +73,8 @@ def strictCoherentNatTransIso [Quasicategory (SimplicialNerve C)] {F G : I ⥤ C
     (η : F ⟶ G) (hη : ∀ i, IsInvertibleEdge (coherentNerveEdge (η.app i))) :
     FunctorIso (HomotopyLimits.strictCoherentDiagram F)
       (HomotopyLimits.strictCoherentDiagram G) := by
-  have e := functorIsoOfEquivalenceHomotopy (strictCoherentNatTransMap η) (by
-    intro x
-    have hx : x = ULift.up (ComposableArrows.mk₀ (x.down.obj 0)) := by
-      apply ULift.ext
-      exact ComposableArrows.ext₀ rfl
-    rw [hx, strictCoherentNatTransMap_component]
-    exact (isInvertibleEdge_congr (e := edgeOfSimplex _)
-      (f := coherentNerveEdge (η.app (x.down.obj 0))) rfl).mpr (hη _))
+  have e := functorIsoOfEquivalenceHomotopy (strictCoherentNatTransMap η)
+    (strictCoherentNatTransMap_vertical_isInvertible η hη)
   rw [strictCoherentNatTransMap_zero, strictCoherentNatTransMap_one] at e
   exact e
 
