@@ -117,18 +117,18 @@
   底の Hom(H,B) の `prepathComplex`、定数射と両端点評価の自然性も検証済み。
   `convolutionAction_unit` と `convolutionAction_equivariance` で単位則・全置換の等変性を検証。
   `convolutionAction_post` で P 代数射の後合成が各演算を保つことも検証済み。
-  反復評価の二ブロックの連結・分割との整合性と、先頭の代入・余代入の評価の一致を検証。
-  `convolutionAction_insertion_zero_evaluation` は標準の代入射・余代入射での等式を与える。
-  `Algebra.ofFirstComposition` は等変性と先頭の合成則から全位置の代数公理を構成する。
   `convolutionAction_comp` で全位置の部分合成則を閉じ、`convolutionAlgebra` を構成。
   `convolutionAction_pre` は余代数射の前合成の演算保存。前合成・後合成を実際の代数射へ束ね、
   `convolutionFunctor` と値域について自然な `convolutionPreNat` を構成済み。
-  単位余代数との比較、端点・定数の代数射性とモデル的性質は未完成。
+  `unitCoalgebra ε` は任意の augmentation の単位余代数。`convolutionUnitNatIso` は
+  Hom(単位,B) ≅ B を自然な P 代数同型にする。区間の端点・収縮も余代数射に束ねた。
+  `prepathAlgebra` は全代数の自己関手と自然な定数・両端点評価を持ち、底の既存の射と厳密に一致。
+  評価の fibration・定数射の擬同型性と転送は未完成。
   E2a-3 の工程 (2) の転送と工程 (3)・(4)、E2a-4・5、E2b・G1′ は未完成。
   現在地のコードと検証は本節と同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. 単位余代数と Hom(単位,B) ≅ B の代数としての比較、定数・端点の代数射性を証明し、
-     全代数の functorial path object を構成。底の評価の fibration・定数射の擬同型、
+  1. 底の評価の fibration・定数射の擬同型を証明し、全代数の functorial path object を完成。
+     続いてこの path object から底のホモトピー同値性を示し、
      fibrations.llp ⊆ 弱同値、J-cell acyclicity、小対象性・極限余極限と転送の適用を閉じる。
      Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
   2. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
@@ -151,23 +151,23 @@
   `SerrePositivity.EInfinity.BarrattEccles.augmentation`、
   `SerrePositivity.EInfinity.BarrattEccles.augmentation_quasiIso`、
   `SerrePositivity.EInfinity.BarrattEccles.complexContraction`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal`、
   `SerrePositivity.EInfinity.BarrattEccles.partialComposition_diagonal_tensorμ`、
   `SerrePositivity.EInfinity.BarrattEccles.hopfDiagonal`、
   `SerrePositivity.EInfinity.BarrattEccles.hopf`、
   `SerrePositivity.EInfinity.Operad.Coalgebra`、
   `SerrePositivity.EInfinity.Operad.CoalgebraHom`、
-  `SerrePositivity.EInfinity.Operad.restrictCoalgebra`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.restrict`、
   `SerrePositivity.EInfinity.Operad.convolutionAction`、
-  `SerrePositivity.EInfinity.Operad.convolutionAction_unit`、
-  `SerrePositivity.EInfinity.Operad.convolutionAction_equivariance`、
-  `SerrePositivity.EInfinity.Operad.convolutionAction_post`、
   `SerrePositivity.EInfinity.Operad.convolutionAlgebra`、
   `SerrePositivity.EInfinity.Operad.convolutionAction_comp`、
   `SerrePositivity.EInfinity.Operad.convolutionFunctor`、
   `SerrePositivity.EInfinity.Operad.convolutionPreNat`、
+  `SerrePositivity.EInfinity.Operad.unitCoalgebra`、
+  `SerrePositivity.EInfinity.Operad.convolutionUnitNatIso`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathAlgebra`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathComplex`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constantNat`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationNat`。
@@ -175,12 +175,12 @@
   HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
   Cells・複体のテンソル・HomComplex を読み取り専用で使う。
   提供済みは局所選択する Ch(A) のモデル構造、自由代数随伴、実際の E と E → Com、
-  テンソルオペラッドと E の Hopf 構造、余代数区間の界面と底の prepath object。
+  テンソルオペラッドと E の Hopf 構造、余代数区間の界面と自然な代数の prepath object。
   Alg_E のモデル構造・右 Quillen U・CAlg は未提供。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：対象ビルド成功（2753 jobs）、公理監査成功（5352 宣言、標準 3 公理のみ）。
-  新規 sorry・追加公理・名前衝突はなく、547 モジュールの import 閉包に他レーンの未コミット依存はない。
+- **既知の問題**：対象ビルド成功（2760 jobs）、公理監査成功（5448 宣言、標準 3 公理のみ）。
+  新規 sorry・追加公理・名前衝突はなく、554 モジュールの import 閉包に他レーンの未コミット依存はない。
   今回の宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -188,12 +188,12 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：工程 (2) の単位余代数と、その convolution 代数と B の比較を構成する。
-  `unitCoaction ε` の等変性・単位・合成則を `UnitPowers` と余代入の式から証明し、
-  `unitCoalgebra ε` に束ねる。`Hom(単位,B) ≅ B` が Hopf 余単位で演算を保つことを示す。
-  区間の端点・収縮をこの単位余代数との余代数射にし、`convolutionPreNat` と上の比較で
-  自然な評価・定数の代数射を得る。底の射を既存の `evaluation`・`constant` と厳密に照合する。
-  `prepathComplex` は底の複体の三角形と関手性だけで、まだ代数の path object ではない。
+- **次の一手**：工程 (2) の底の二端点評価の fibration 性を証明する。
+  `I.boundary_cofibration` から境界が各次数で分裂単射であることを導き、
+  境界の前合成による内部 Hom の各次数の全射性を示す。これを両評価の対へ照合する。
+  底の射は `algebraEvaluationNat_hom`・`algebraConstantNat_hom` で既存の射と厳密に照合済み。
+  次に区間と単位の cofibrancy と収縮の擬同型から、定数射が底での擬同型であることを示す。
+  区間のホモトピー同値性を追加仮定にしない。転送先のモデル構造はまだ選択しない。
   TR・具体区間には着手していない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。

@@ -77,8 +77,11 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 `convolutionAction_comp` で全位置の部分合成則を証明し、`convolutionAlgebra` を構成済み。
 余代数射の前合成も全演算を保存する。`convolutionFunctor` は固定した余代数からの
 代数の自己関手、`convolutionPreNat` は余代数射による自然な前合成を与える。
-単位余代数との比較、端点・定数の代数射性、評価の fibration・定数射の擬同型性、
-転送モデル構造は未完成。
+`unitCoalgebra ε` は任意の augmentation からの単位余代数。
+`convolutionUnitNatIso` は Hom(単位,B) ≅ B を自然な代数同型にする。
+`CoalgebraInterval.prepathAlgebra` は自然な代数射である定数射・両端点評価を持ち、
+底の射は既存の `constant`・`evaluation` と厳密に一致する。
+評価の fibration・定数射の擬同型性と、転送モデル構造は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

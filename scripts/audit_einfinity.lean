@@ -154,7 +154,26 @@ run_cmd do
       `SerrePositivity.EInfinity.Operad.convolutionAlgebra,
       `SerrePositivity.EInfinity.Operad.convolutionAction_pre,
       `SerrePositivity.EInfinity.Operad.convolutionFunctor,
-      `SerrePositivity.EInfinity.Operad.convolutionPreNat] do
+      `SerrePositivity.EInfinity.Operad.convolutionPreNat,
+      `SerrePositivity.EInfinity.tensorUnitPowerIso_split,
+      `SerrePositivity.EInfinity.tensorCoInsertionAction_unit,
+      `SerrePositivity.EInfinity.Operad.unitCoaction_equivariance,
+      `SerrePositivity.EInfinity.Operad.unitCoaction_unit,
+      `SerrePositivity.EInfinity.Operad.unitCoaction_partialComposition,
+      `SerrePositivity.EInfinity.Operad.unitCoalgebra,
+      `SerrePositivity.EInfinity.Operad.Algebra.isoOfCarrierIso,
+      `SerrePositivity.EInfinity.convolutionEvaluation_unit_source,
+      `SerrePositivity.EInfinity.convolutionPowerEvaluation_unit_source,
+      `SerrePositivity.EInfinity.Operad.convolutionUnitIso,
+      `SerrePositivity.EInfinity.Operad.convolutionUnitNatIso,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.endpointHom,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.contractionHom,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraPathFunctor,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat_hom,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat_hom,
+      `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathAlgebra] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
