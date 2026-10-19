@@ -516,7 +516,17 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.reductionCursor_composite_row,
       `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.unique,
       `SerrePositivity.EInfinity.TableReduction.ScheduleRowCursor.next_state,
-      `SerrePositivity.EInfinity.TableReduction.ScheduleRowCursor.remainder_success_eq_drop] do
+      `SerrePositivity.EInfinity.TableReduction.ScheduleRowCursor.remainder_success_eq_drop,
+      `SerrePositivity.EInfinity.TableReduction.rowInterval_prefix,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.interval_prefix_word,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.interval_source_rows,
+      `SerrePositivity.EInfinity.TableReduction.cursorInterval_nonempty,
+      `SerrePositivity.EInfinity.TableReduction.reductionInterval_nonempty,
+      `SerrePositivity.EInfinity.TableReduction.ReductionInterval.success,
+      `SerrePositivity.EInfinity.Surjection.componentExtraction_word,
+      `SerrePositivity.EInfinity.Surjection.componentExtraction_length,
+      `SerrePositivity.EInfinity.Surjection.componentExtraction_success,
+      `SerrePositivity.EInfinity.Surjection.componentExtraction_adjacent_prefix] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -855,3 +865,72 @@ example : reduceRows ((vertexRow bfTable 2, 1) :: cursorRowTwo.after)
 example : canonicalFixture.val 4 ∉
     (reductionCursor bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 4).removed :=
   reductionCursor_value_not_removed bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 4
+
+-- BF の元の成功表から、二つの重なる複数行成分を追加の成功仮定なしに抽出する。
+example : reduceRows
+    (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+      rankFixtureCuts (by decide) 0).part
+    (reductionRemoved bfTable bfSchedule₁ canonicalFixture.val rankFixture_success
+      (rankFixtureCuts.startPosition (by decide) 0)) = some [0, 1, 3] := by
+  have h := componentExtraction_success bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    rankFixtureCuts (by decide) 0
+  have hw : rankFixtureCuts.segment canonicalFixture.val 0 = [0, 1, 3] := by decide
+  rw [hw] at h
+  exact h
+example : reduceRows
+    (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+      rankFixtureCuts (by decide) 1).part
+    (reductionRemoved bfTable bfSchedule₁ canonicalFixture.val rankFixture_success
+      (rankFixtureCuts.startPosition (by decide) 1)) = some [3, 1, 3, 2] := by
+  have h := componentExtraction_success bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    rankFixtureCuts (by decide) 1
+  have hw : rankFixtureCuts.segment canonicalFixture.val 1 = [3, 1, 3, 2] := by decide
+  rw [hw] at h
+  exact h
+example : (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    rankFixtureCuts (by decide) 0).part.length = 2 := by
+  rw [componentExtraction_length]
+  decide
+-- 終成分が同じ元の最終行内に入る切断も、同じ構成で一行の成功証跡になる。
+private def sameRowCuts : OverlapPartition 2 6 := ⟨![5, 2], by decide⟩
+example : reduceRows
+    (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+      sameRowCuts (by decide) 1).part
+    (reductionRemoved bfTable bfSchedule₁ canonicalFixture.val rankFixture_success
+      (sameRowCuts.startPosition (by decide) 1)) = some [3, 2] := by
+  have h := componentExtraction_success bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    sameRowCuts (by decide) 1
+  have hw : sameRowCuts.segment canonicalFixture.val 1 = [3, 2] := by decide
+  rw [hw] at h
+  exact h
+example : (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    sameRowCuts (by decide) 1).part.length = 1 := by
+  rw [componentExtraction_length]
+  decide
+-- 共有端点の状態を厳密に引き継ぎ、共有文字を両成分に含めたまま連結する。
+example : reduceRows
+    ((componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+      rankFixtureCuts (by decide) 0).part ++
+    (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+      rankFixtureCuts (by decide) 1).part)
+    (reductionRemoved bfTable bfSchedule₁ canonicalFixture.val rankFixture_success
+      (rankFixtureCuts.startPosition (by decide) 0)) = some [0, 1, 3, 3, 1, 3, 2] := by
+  have ht := componentExtraction_adjacent_prefix bfTable bfSchedule₁ canonicalFixture
+    rankFixture_success rankFixtureCuts (by decide) 0 1 (by decide)
+  have hs := ht.append [] [] rfl
+  simp only [List.append_nil, List.flatten_append, componentExtraction_word] at hs
+  have hw : rankFixtureCuts.segment canonicalFixture.val 0 ++
+      rankFixtureCuts.segment canonicalFixture.val 1 = [0, 1, 3, 3, 1, 3, 2] := by decide
+  rw [hw] at hs
+  exact hs
+example : (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    rankFixtureCuts (by decide) 0).part.map Prod.fst =
+      [vertexRow bfTable 0, vertexRow bfTable 1] := by
+  have hs := (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    rankFixtureCuts (by decide) 0).source
+  change (componentExtraction bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    rankFixtureCuts (by decide) 0).part.map Prod.fst =
+      (((rows bfTable bfSchedule₁).drop 0).take 2).map Prod.fst at hs
+  have hw : (((rows bfTable bfSchedule₁).drop 0).take 2).map Prod.fst =
+      [vertexRow bfTable 0, vertexRow bfTable 1] := by decide
+  exact hs.trans hw
