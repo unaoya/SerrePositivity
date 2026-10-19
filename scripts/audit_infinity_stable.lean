@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleFiberExists
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundarySolution
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberSquare
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomCoordinates
@@ -140,6 +141,23 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryLeftCandidate_prefix_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRightCandidate_prefix_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryLeftCandidate_first_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRightCandidate_first_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryLeftCandidate_last_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRightCandidate_last_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryLeftCandidate_full_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRightCandidate_full_equation
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryLeftCandidate_all_equations
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRightCandidate_all_equations
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryCandidate_common
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryJoinFiller_faces
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberSquare_isPullback
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberSquareOfMorphism
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerve_fiber_exists
 
 #print axioms SerrePositivity.InfinityCategories.dgModuleFiberHomCoordinates_symm
 #print axioms SerrePositivity.InfinityCategories.dgModuleFiberHomCoordinates_symm_differential
@@ -1511,6 +1529,19 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryCandidate,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryCandidateKnown,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryPrefixEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryLegEquations,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryDEquations,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryTriangleEquations,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundarySimplices,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryCandidateComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryCommonFace,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryJoinFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryJoinFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberPullback,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberExists,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomInverse,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomDifferential,
     `SerrePositivity.InfinityCategories.Derived.DGModuleConeLiftProjections,
