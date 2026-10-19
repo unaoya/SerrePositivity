@@ -272,3 +272,4 @@ public import SerrePositivity.EInfinity.IntervalCuts.TensorBoundaryValues
 public import SerrePositivity.EInfinity.IntervalCuts.BoundaryPositions
 public import SerrePositivity.EInfinity.IntervalCuts.DeletedOutputVertices
 public import SerrePositivity.EInfinity.IntervalCuts.CutDeletionSigns
+public import SerrePositivity.EInfinity.IntervalCuts.CutFactorBoundary

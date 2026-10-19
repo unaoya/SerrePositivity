@@ -489,8 +489,12 @@ nullary を含む TR の部分合成保存は完了。
 `positionInversionSign_erase` は一位置削除で元位置順位と色順位の符号が交換する公式。
 `activePositions_erase_image_eq_erase` は削除後の活動集合を元の一位置削除へ同定する。
 `edgeSign_erase_left_boundary`・`right_boundary` は切断点を残す左右削除で実際のスカラー係数を一致させる。
-具体的な Δ¹ の余代数構造は未完成。因子境界の再帰符号の明示、逆対応・退化元切断由来の項と
-切断点色の境界項の相殺を含む全有限和の比較が残る。
+`tensorBoundaryTerm_eq_endpoints` は任意の辺因子の境界を前方次数符号付きの二端点置換の差で表す。
+`endpointTensor` は置換後の出力族の実際のテンソルで、`endpointTensor_eraseCut_left`・`right` は
+それを左右の実際の削除語の切断出力へ同定する。
+`cut_factor_boundary` は切断符号付きの反復色一因子の境界を、両削除係数で重み付けした和へ同定する。
+具体的な Δ¹ の余代数構造は未完成。逆対応・退化元切断由来の項と切断点色の境界項の相殺を含む
+全有限和の比較が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

@@ -864,6 +864,18 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.edgeSign_erase_eq_removed,
       `SerrePositivity.EInfinity.IntervalCuts.edgeSign_erase_left_boundary,
       `SerrePositivity.EInfinity.IntervalCuts.edgeSign_erase_right_boundary,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorAt,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorAt_succ,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorAt_natDegree,
+      `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_update_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.prefixDegree_succ,
+      `SerrePositivity.EInfinity.IntervalCuts.endpointTensor,
+      `SerrePositivity.EInfinity.IntervalCuts.endpointTensor_zero_cons,
+      `SerrePositivity.EInfinity.IntervalCuts.endpointTensor_succ_cons,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorBoundaryTerm_eq_endpoints,
+      `SerrePositivity.EInfinity.IntervalCuts.endpointTensor_eraseCut_left,
+      `SerrePositivity.EInfinity.IntervalCuts.endpointTensor_eraseCut_right,
+      `SerrePositivity.EInfinity.IntervalCuts.cut_factor_boundary,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2524,3 +2536,29 @@ example : -edgeSign cutSignWord.val 2 =
   have hp : (∑ k ∈ Finset.univ.filter (fun k : Fin 3 => k < cutSignWord.val 1),
       simplexDegree (edgeOutput cutSignWord 2 k)) = 0 := by decide
   simpa only [hp, pow_zero, mul_one] using h
+
+-- 010 の辺を端点に置換した実際のテンソルが、削除語の切断テンソルになる。
+example : endpointTensor ℤ 2 (edgeOutput compositionInner 1) 0 (by decide) 1 =
+    tensorVectorAt ℤ 2 (edgeOutput cutEraseLeft 0) (-1) (by decide) := by
+  simpa only [show (0 : Fin 3).succAbove (0 : Fin 2) = 1 by decide]
+    using! endpointTensor_eraseCut_left ℤ compositionInner 0 0
+      (by decide) (by decide) ⟨2, by decide⟩
+example : endpointTensor ℤ 2 (edgeOutput compositionInner 1) 0 (by decide) 0 =
+    tensorVectorAt ℤ 2 (edgeOutput cutEraseRight 1) (-1) (by decide) := by
+  simpa only [show (2 : Fin 3).succAbove (1 : Fin 2) = 1 by decide]
+    using! endpointTensor_eraseCut_right ℤ compositionInner 2 1
+      (by decide) (by decide) ⟨0, by decide⟩
+-- 三つの辺の真ん中の色を微分すると、奇数の前方次数で終点側が負になる。
+private def factorSignWord : BasisWord 3 2 := ⟨![1, 2, 0, 1, 2], by decide⟩
+example : tensorBoundaryTerm ℤ 3 (edgeOutput factorSignWord 2) 1 =
+    -endpointTensor ℤ 3 (edgeOutput factorSignWord 2) 1 (by decide) 1 +
+      endpointTensor ℤ 3 (edgeOutput factorSignWord 2) 1 (by decide) 0 := by
+  have h := cut_factor_boundary ℤ factorSignWord 0 3 1 2
+    (by decide) (by decide) (by decide) (by decide)
+  have hp : (0 : Fin 5).succAbove (1 : Fin 4) = 2 := by decide
+  have hs : edgeSign factorSignWord.val 2 = 1 := by decide
+  have hL : deletionCoefficient factorSignWord.val 0 *
+      edgeSign (erase factorSignWord.val 0) 1 = -1 := by decide
+  have hR : deletionCoefficient factorSignWord.val 3 *
+      edgeSign (erase factorSignWord.val 3) 2 = 1 := by decide
+  simpa only [hp, hs, hL, hR, one_smul, neg_one_zsmul] using! h
