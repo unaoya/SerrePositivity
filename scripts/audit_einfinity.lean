@@ -481,7 +481,12 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.DegreePath.blocks_sign,
       `SerrePositivity.EInfinity.Surjection.compositionPath,
       `SerrePositivity.EInfinity.Surjection.compositionPath_blockExponent,
-      `SerrePositivity.EInfinity.Surjection.compositionPath_sign] do
+      `SerrePositivity.EInfinity.Surjection.compositionPath_sign,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_inverse_row,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_inverse_row_substitute,
+      `SerrePositivity.EInfinity.Surjection.remaining_mem_compositionRemoved,
+      `SerrePositivity.EInfinity.Surjection.inserted_mem_compositionRemoved,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_available_substitute] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -673,3 +678,21 @@ example : (∑ i : Fin 2, segmentDegree compositionInner.val compositionCut₂ i
   sum_segmentDegree compositionInner compositionCut₂ (by decide)
 example : (∑ i : Fin 3, outerSegmentDegree compositionOuter.val 0 i.val) = 1 :=
   sum_outerSegmentDegree compositionOuter 0
+
+-- 内外の非自明な逆置換行と除外文字、および空の内側行を照合する。
+private def rowOuter : Equiv.Perm (Fin 3) := Equiv.swap 0 2
+private def rowInner : Equiv.Perm (Fin 2) := Equiv.swap 0 1
+example : List.ofFn rowOuter.symm = [2, 1, 0] := by decide
+example : List.ofFn rowInner.symm = [1, 0] := by decide
+example : substitute (n := 2) (1 : Fin 3) [2, 1, 0] [[1, 0]] = [3, 2, 1, 0] := by
+  decide
+example : available (compositionRemoved (1 : Fin 3) [2] [1])
+    (List.ofFn (BarrattEccles.permutationComposition 2 2 1 rowOuter rowInner).symm) =
+      [1, 0] := by
+  rw [permutationComposition_available_substitute rowOuter rowInner 1 [2] [1] (by decide)]
+  decide
+example : List.ofFn
+    (BarrattEccles.permutationComposition 2 0 1 rowOuter (1 : Equiv.Perm (Fin 0))).symm =
+      [1, 0] := by
+  rw [permutationComposition_inverse_row_substitute rowOuter (1 : Equiv.Perm (Fin 0)) 1]
+  decide

@@ -203,3 +203,4 @@ public import SerrePositivity.EInfinity.Surjection.CompositionBoundaryCases
 public import SerrePositivity.EInfinity.Surjection.CompositeSurjectivity
 public import SerrePositivity.EInfinity.Surjection.CompositeBasis
 public import SerrePositivity.EInfinity.Surjection.CompositionPathSign
+public import SerrePositivity.EInfinity.Surjection.PermutationAvailableSubstitution

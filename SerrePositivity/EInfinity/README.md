@@ -224,6 +224,10 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `sum_outerSegmentDegree_suffix` は後続外側次数を順位差で計算する。
 `compositionPath` はこれらの成分次数の移動を連結した実際の d×e shuffle 経路。
 `compositionPath_sign` はその実際の shuffle 符号が元の合成符号と一致することを証明する。
+`permutationComposition_inverse_row_substitute` は実際の合成置換の逆置換行を一出現への代入に同定する。
+`compositionRemoved` は内外ラベルの像から合成表の除外状態を作る。
+`permutationComposition_available_substitute` は、指定値が未除外なら利用可能行も同じ代入と一致する。
+内側 arity 零を含み、内外に除外文字がある非自明な置換行も監査する。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
