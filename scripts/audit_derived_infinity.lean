@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativeHomotopies
 import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPointed
 import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedVertexEdges
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualBoundaryFillers
@@ -1404,10 +1405,35 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.pinchedNormalizedPointed
 #print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.normalizedRelStruct
 
+#print axioms SerrePositivity.InfinityCategories.pinchedConeIntervalMap
+#print axioms SerrePositivity.InfinityCategories.pinchedConeIntervalMap_zero
+#print axioms SerrePositivity.InfinityCategories.pinchedConeIntervalMap_one
+#print axioms SerrePositivity.InfinityCategories.pinchedLinearData_component_zero_of_face
+#print axioms SerrePositivity.InfinityCategories.pinchedSimplex_pullback_zero_of_avoids
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.normalizedPrism_boundary
+#print axioms SerrePositivity.InfinityCategories.pinchedPointwiseAdd
+#print axioms SerrePositivity.InfinityCategories.pinchedPointwiseAdd_precomp
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.relativePrism_one
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.relativePrism_boundary
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.homotopy
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.homotopy_boundary
+#print axioms SerrePositivity.InfinityCategories.PinchedRelativeHomotopy
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.relativeHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_pinchedRelativeHomotopies
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_actualRelativeHomotopies
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.PinchedConeInterval,
+    `SerrePositivity.InfinityCategories.Derived.PinchedMissingFaceZero,
+    `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPrism,
+    `SerrePositivity.InfinityCategories.Derived.PinchedPointwiseAddition,
+    `SerrePositivity.InfinityCategories.Derived.PinchedRelativePrism,
+    `SerrePositivity.InfinityCategories.Derived.PinchedRelativeHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedRelativeHomotopies,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativeHomotopies,
     `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedFaces,
     `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedBoundary,
     `SerrePositivity.InfinityCategories.Derived.PinchedTopRhsFaces,

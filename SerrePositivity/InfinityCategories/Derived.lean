@@ -588,6 +588,15 @@ public import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedFiller
 public import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedFillerFaces
 public import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPointed
 
+public import SerrePositivity.InfinityCategories.Derived.PinchedConeInterval
+public import SerrePositivity.InfinityCategories.Derived.PinchedMissingFaceZero
+public import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPrism
+public import SerrePositivity.InfinityCategories.Derived.PinchedPointwiseAddition
+public import SerrePositivity.InfinityCategories.Derived.PinchedRelativePrism
+public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeHomotopy
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedRelativeHomotopies
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativeHomotopies
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
