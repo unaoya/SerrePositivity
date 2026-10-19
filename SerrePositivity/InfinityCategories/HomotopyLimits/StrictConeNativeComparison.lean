@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeApexEvaluation
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentConeNativeComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedRepresentableComparison
 
 /-!
@@ -28,10 +28,7 @@ noncomputable def strictConeApexEvaluation {F : I ⥤ C} (c : Cone F) (x : C) :
     coherentConeSectionSpace (strictCoherentCone c).val (coherentNerveVertex x) ⟶
       vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
         (coherentNerveVertex c.pt) :=
-  coneApexSectionEvaluation (strictCoherentCone c) (coherentNerveVertex x) ≫
-    eqToHom (congrArg (fun y : (SimplicialNerve C) _⦋0⦌ ↦
-      vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x))) y)
-      (strictCoherentCone_vertex c))
+  coherentConeApexEvaluation (strictCoherentCone c) c.pt (strictCoherentCone_vertex c) x
 
 variable [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
 
@@ -54,8 +51,7 @@ noncomputable def strictConeApexSection {F : I ⥤ C} (c : Cone F) (x : C) :
     vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
         (coherentNerveVertex c.pt) ⟶
       coherentConeSectionSpace (strictCoherentCone c).val (coherentNerveVertex x) := by
-  have := strictConeApexEvaluation_trivialKanFibration c x
-  exact Classical.choose (trivialKanFibration_exists_section (strictConeApexEvaluation c x))
+  exact coherentConeApexSection (strictCoherentCone c) c.pt (strictCoherentCone_vertex c) x
 
 /-- 概要：選んだ切断に続く頂点評価は元の coslice fiber の恒等射。
 方針：切断を選んだ存在命題の等式を回収する。

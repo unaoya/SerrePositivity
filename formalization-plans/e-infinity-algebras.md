@@ -18,7 +18,10 @@
   重み付き end の反転を成分公式・係数自然性つきの厳密な同型として構成。反転重みの coend の反転 Hom から、
   `reflectedHomHolimConeComparison` の係数の end への同型を公開し、Kan 置換後の比較も同値と検証。
   一般の Kan 値図式の native な coherent 余錐を元の図式上に構成し、頂点が反転 coend の Kan 置換そのものと証明。
-  余極限性はまだ未証明。最新の検証・保存は今回のコミットメッセージを参照。
+  豊穣 Hom の族・頂点評価・native な極限判定を任意の coherent 錐へ拡張。
+  頂点評価を固定した持ち上げの相対ホモトピーと、制限後の関手同型を公開。
+  構成済みの coend の錐の極限性を、頂点評価と制限を満たす実際の族の構成へ還元。
+  その族はまだ未構成で、余極限性は未証明。検証・保存の詳細はコミットメッセージを参照。
   F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3 に記載。
 - **残り**（依存順・時間は再開後の概算）：
   1. γ3c：𝒮 の一般の小さい余極限と任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
@@ -34,11 +37,13 @@
   `weightedColimitFunctor`、`weightedColimitHomNatIso`、`kanBousfieldKanColimitObject`、
   `kanBousfieldKanColimitHomComparison_homotopyEquivalence`、`weightedSectionsReflectedIso`、
   `reflectedWeightedColimitHomIso`、`bousfieldKanCoherentConeComparison_homotopyEquivalence`、
-  `bousfieldKanCoherentCocone`、`bousfieldKanCoherentCocone_vertex`。
-- **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
+  `bousfieldKanCoherentCocone`、`bousfieldKanCoherentCocone_vertex`、
+  `coherentCone_isLimit_iff_reflectedNativeComparison`、`coherentConeFamily_homotopy_over_apex`、
+  `coherentCone_isLimit_of_family_lifts`、`bousfieldKanCoherentOppositeCone_isLimit_of_comparison_lifts`。
+- **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は OppositeInternalHom・WeightedSectionsOpposite・ReflectedBousfieldKanColimit・BousfieldKanCoherentCocone、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
+- **未コミット**：今回の保存単位は CoherentConeNativeComparison・CoherentConeFamilyHomotopy・BousfieldKanColimitCriterion、strict 版の共通化、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -47,11 +52,11 @@
   Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：`bousfieldKanCoherentOppositeCone` の極限性を証明する。
-  `ConeApexEvaluation` と `isLimitCone_iff_coneSectionRestriction_homotopyEquivalence` は任意の coherent 錐を扱うが、
-  `StrictConeNativeComparison` の豊穣 Hom 族は通常の strict 錐専用。これを構成済みの錐に拡張し、
-  実際の切断の制限を `bousfieldKanCoherentConeComparison` とホモトピーまで照合する。
-  同値な射が同じ始域・終域を持つことだけで実際の余錐の普遍性を結論しない。その後、任意の coherent 図式への接続。
+- **次の一手**：`bousfieldKanCoherentOppositeCone_isLimit_of_comparison_lifts` の実際の族 `a` を構成する。
+  頂点評価 `ha` と制限 `hr` の二つの等式を全 Hom パラメータで証明する。
+  任意の coherent 錐への拡張と持ち上げの選択独立性は実装済み。残るのは coend 比較を錐全体へ持ち上げる幾何的構成。
+  必要なら `hr` は関手同型による比較へ弱める。同じ始域・終域を持つ同値性だけでは代用しない。
+  その後、反対の極限錐から元の余極限性を戻し、任意の coherent 図式へ接続する。
 
 ### E2a（既存の引き継ぎ）
 

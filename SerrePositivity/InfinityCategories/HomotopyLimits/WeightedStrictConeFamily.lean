@@ -124,11 +124,7 @@ lemma strictConeApexEvaluation_ι {F : I ⥤ C} (c : Cone F) (x : C) :
           (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x))))
         (functorVertex (strictCoherentCone c).val) ≫
           evaluateFunctorAt (joinApexVertex ((SSet.uliftFunctor.{v, u}).obj (nerve I))) := by
-  have ht {E B : SSet.{max u v}} (q : E ⟶ B) {y z : B _⦋0⦌} (h : y = z) :
-      eqToHom (congrArg (fun b : B _⦋0⦌ ↦ vertexFiber q b) h) ≫ vertexFiberι q z =
-        vertexFiberι q y := by cases h; exact Category.id_comp _
-  rw [strictConeApexEvaluation, Category.assoc, ht _ (strictCoherentCone_vertex c),
-    coneApexSectionEvaluation_ι]
+  exact coherentConeApexEvaluation_ι (strictCoherentCone c) c.pt (strictCoherentCone_vertex c) x
 
 /-- 概要：相対関手のパラメータの族を一点で評価する式。
 方針：内部 Hom の評価と curry の往復を使う。

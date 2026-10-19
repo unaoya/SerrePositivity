@@ -4117,3 +4117,48 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @bousfieldKanCoherentCocone_vertex
 #print axioms bousfieldKanCoherentCocone_vertex
+
+#check @coherentConeApexEvaluation
+#print axioms coherentConeApexEvaluation
+
+#check @coherentConeApexEvaluation_ι
+#print axioms coherentConeApexEvaluation_ι
+
+#check @coherentConeApexEvaluation_trivialKanFibration
+#print axioms coherentConeApexEvaluation_trivialKanFibration
+
+#check @coherentConeApexSection
+#print axioms coherentConeApexSection
+
+#check @coherentConeApexSection_evaluation
+#print axioms coherentConeApexSection_evaluation
+
+#check @reflectedCoherentConeFamilyComparison
+#print axioms reflectedCoherentConeFamilyComparison
+
+#check @reflectedCoherentConeFamilyComparison_evaluation
+#print axioms reflectedCoherentConeFamilyComparison_evaluation
+
+#check @reflectedCoherentConeFamilyComparison_homotopyEquivalence
+#print axioms reflectedCoherentConeFamilyComparison_homotopyEquivalence
+
+#check @reflectedCoherentNativeConeComparison
+#print axioms reflectedCoherentNativeConeComparison
+
+#check @coherentCone_isLimit_iff_reflectedNativeComparison
+#print axioms coherentCone_isLimit_iff_reflectedNativeComparison
+
+#check @coherentConeFamily_homotopy_over_apex
+#print axioms coherentConeFamily_homotopy_over_apex
+
+#check @reflectedCoherentConeFamilyComparison_homotopy
+#print axioms reflectedCoherentConeFamilyComparison_homotopy
+
+#check @reflectedCoherentNativeConeComparison_functorIso
+#print axioms reflectedCoherentNativeConeComparison_functorIso
+
+#check @coherentCone_isLimit_of_family_lifts
+#print axioms coherentCone_isLimit_of_family_lifts
+
+#check @bousfieldKanCoherentOppositeCone_isLimit_of_comparison_lifts
+#print axioms bousfieldKanCoherentOppositeCone_isLimit_of_comparison_lifts
