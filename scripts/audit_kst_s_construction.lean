@@ -6806,3 +6806,132 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.zeroRowLoopComparison_fatBoundary
 #print axioms SerrePositivity.KST.SConstruction.zeroRowLoopComparison_fatBoundary
+
+#check @SerrePositivity.KST.SConstruction.terminalPointedInterval
+#print axioms SerrePositivity.KST.SConstruction.terminalPointedInterval
+
+#check @SerrePositivity.KST.SConstruction.terminalIntervalStart
+#print axioms SerrePositivity.KST.SConstruction.terminalIntervalStart
+
+#check @SerrePositivity.KST.SConstruction.terminalIntervalStart_right
+#print axioms SerrePositivity.KST.SConstruction.terminalIntervalStart_right
+
+#check @SerrePositivity.KST.SConstruction.terminalIntervalStart_mono
+#print axioms SerrePositivity.KST.SConstruction.terminalIntervalStart_mono
+
+#check @SerrePositivity.KST.SConstruction.terminalIntervalStart_inl
+#print axioms SerrePositivity.KST.SConstruction.terminalIntervalStart_inl
+
+#check @SerrePositivity.KST.SConstruction.terminalPathSpace
+#print axioms SerrePositivity.KST.SConstruction.terminalPathSpace
+
+#check @SerrePositivity.KST.SConstruction.terminalPathSpace_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.terminalPathSpace_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.terminalPathStart
+#print axioms SerrePositivity.KST.SConstruction.terminalPathStart
+
+#check @SerrePositivity.KST.SConstruction.terminalPathStart_fibration
+#print axioms SerrePositivity.KST.SConstruction.terminalPathStart_fibration
+
+#check @SerrePositivity.KST.SConstruction.terminalPathStart_evaluation
+#print axioms SerrePositivity.KST.SConstruction.terminalPathStart_evaluation
+
+#check @SerrePositivity.KST.SConstruction.terminalPathFamily_basepoint
+#print axioms SerrePositivity.KST.SConstruction.terminalPathFamily_basepoint
+
+#check @SerrePositivity.KST.SConstruction.terminalPathFamily
+#print axioms SerrePositivity.KST.SConstruction.terminalPathFamily
+
+#check @SerrePositivity.KST.SConstruction.terminalPathFamily_ι
+#print axioms SerrePositivity.KST.SConstruction.terminalPathFamily_ι
+
+#check @SerrePositivity.KST.SConstruction.terminalPathFamily_start
+#print axioms SerrePositivity.KST.SConstruction.terminalPathFamily_start
+
+#check @SerrePositivity.KST.SConstruction.terminalPointedInterval_basepoint_anodyne
+#print axioms SerrePositivity.KST.SConstruction.terminalPointedInterval_basepoint_anodyne
+
+#check @SerrePositivity.KST.SConstruction.terminalPathSpace_terminal_rlp
+#print axioms SerrePositivity.KST.SConstruction.terminalPathSpace_terminal_rlp
+
+#check @SerrePositivity.KST.SConstruction.terminalPathSpace_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.terminalPathSpace_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixReparametrization
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixReparametrization
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixReparametrization_start
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixReparametrization_start
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixReparametrization_end
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixReparametrization_end
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixReparametrization_zero
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixReparametrization_zero
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixReparametrization_one
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixReparametrization_one
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixFamily_basepoint
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixFamily_basepoint
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixFamily
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixFamily
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixFamily_start
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixFamily_start
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixFamily_zero
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixFamily_zero
+
+#check @SerrePositivity.KST.SConstruction.terminalSuffixFamily_one
+#print axioms SerrePositivity.KST.SConstruction.terminalSuffixFamily_one
+
+#check @SerrePositivity.KST.SConstruction.terminalPathHomotopyFiber
+#print axioms SerrePositivity.KST.SConstruction.terminalPathHomotopyFiber
+
+#check @SerrePositivity.KST.SConstruction.terminalPathFamilyFiberMap
+#print axioms SerrePositivity.KST.SConstruction.terminalPathFamilyFiberMap
+
+#check @SerrePositivity.KST.SConstruction.terminalStrictZeroFiberMap
+#print axioms SerrePositivity.KST.SConstruction.terminalStrictZeroFiberMap
+
+#check @SerrePositivity.KST.SConstruction.terminalFiberCylinder
+#print axioms SerrePositivity.KST.SConstruction.terminalFiberCylinder
+
+#check @SerrePositivity.KST.SConstruction.terminalFiberCylinder_zero
+#print axioms SerrePositivity.KST.SConstruction.terminalFiberCylinder_zero
+
+#check @SerrePositivity.KST.SConstruction.terminalFiberCylinder_one
+#print axioms SerrePositivity.KST.SConstruction.terminalFiberCylinder_one
+
+#check @SerrePositivity.KST.SConstruction.terminalFiberHomotopy
+#print axioms SerrePositivity.KST.SConstruction.terminalFiberHomotopy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathContraction_terminalBoundary
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathContraction_terminalBoundary
+
+#check @SerrePositivity.KST.SConstruction.zeroRowTerminalFiberComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowTerminalFiberComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowTerminalLoopFiberComparison
+#print axioms SerrePositivity.KST.SConstruction.zeroRowTerminalLoopFiberComparison
+
+#check @SerrePositivity.KST.SConstruction.zeroRowTerminalFiberHomotopy
+#print axioms SerrePositivity.KST.SConstruction.zeroRowTerminalFiberHomotopy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowTerminalLoopFiberComparison_projection
+#print axioms SerrePositivity.KST.SConstruction.zeroRowTerminalLoopFiberComparison_projection
+
+#check @SerrePositivity.KST.SConstruction.terminalPathBasepoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.terminalPathBasepoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.terminalStrictZeroFiberMap_localized_isIso_of_homotopyPullback
+#print axioms SerrePositivity.KST.SConstruction.terminalStrictZeroFiberMap_localized_isIso_of_homotopyPullback
+
+#check @SerrePositivity.KST.SConstruction.zeroRowTerminalFiberComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroRowTerminalFiberComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.zeroRowTerminalLoopFiberComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroRowTerminalLoopFiberComparison_localized_isIso

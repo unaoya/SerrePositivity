@@ -446,4 +446,13 @@ public import SerrePositivity.KST.SConstruction.SuspensionAdjointInterval
 public import SerrePositivity.KST.SConstruction.AssemblyAdjointEvaluation
 public import SerrePositivity.KST.SConstruction.ZeroRowAssemblyAdjoint
 
+public import SerrePositivity.KST.SConstruction.TerminalPathSpace
+public import SerrePositivity.KST.SConstruction.TerminalPathEvaluation
+public import SerrePositivity.KST.SConstruction.TerminalPathContractibility
+public import SerrePositivity.KST.SConstruction.TerminalPathSuffix
+public import SerrePositivity.KST.SConstruction.TerminalSuffixFamily
+public import SerrePositivity.KST.SConstruction.TerminalFiberContraction
+public import SerrePositivity.KST.SConstruction.ZeroRowTerminalFiberHomotopy
+public import SerrePositivity.KST.SConstruction.TerminalFiberEquivalence
+
 /-! # ∞-S• 構成と連結 K 理論 -/
