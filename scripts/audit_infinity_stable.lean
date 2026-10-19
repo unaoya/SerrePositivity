@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPointed
 import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedVertexEdges
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualBoundaryFillers
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativePrimitives
@@ -1814,6 +1815,20 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.homotopy_zero
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_pinchedVertexEdges
 
+#print axioms SerrePositivity.InfinityCategories.pinchedNormalizedSimplex_face_zero
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.difference_face_zero
+#print axioms SerrePositivity.InfinityCategories.pinchedNormalizedBoundary
+#print axioms SerrePositivity.InfinityCategories.pinchedNormalizedBoundary_faceData
+#print axioms SerrePositivity.InfinityCategories.pinchedLinearData_rhs_full_faces
+#print axioms SerrePositivity.InfinityCategories.pinchedNormalizedBoundary_rhs
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.normalized_primitive_equation
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.normalizedFiller
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.normalizedFiller_face
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.normalizedFiller_full
+#print axioms SerrePositivity.InfinityCategories.pinchedZeroSimplex_constant
+#print axioms SerrePositivity.InfinityCategories.pinchedNormalizedPointed
+#print axioms SerrePositivity.InfinityCategories.PinchedTopComparison.normalizedRelStruct
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1967,6 +1982,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedFaces,
+    `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedBoundary,
+    `SerrePositivity.InfinityCategories.Derived.PinchedTopRhsFaces,
+    `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedBoundaryRhs,
+    `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedFiller,
+    `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedFillerFaces,
+    `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPointed,
     `SerrePositivity.InfinityCategories.Derived.PinchedMappedBoundaryComparison,
     `SerrePositivity.InfinityCategories.Derived.PinchedTopComparison,
     `SerrePositivity.InfinityCategories.Derived.PinchedLinearBoundaryEdge,
