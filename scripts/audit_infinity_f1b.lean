@@ -2950,3 +2950,15 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerve_rightKanDiagram_hasLimit_iff
 #check @SerrePositivity.InfinityCategories.F1B.kanNerve_exists_leftKan_iff_pointwise
 #check @SerrePositivity.InfinityCategories.F1B.kanNerve_exists_rightKan_iff_pointwise
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomotopy
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomotopy_hom
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomotopy_whiskerRight
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomotopy_whiskerLeft
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomotopy_id
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomotopy_component
+#check @SerrePositivity.InfinityCategories.F1B.kanConePostcomposeNatTrans
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomotopy_fixedPoint
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConePostcomposeHomotopy
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConePostcomposeHomotopy_diagram
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConePostcomposeHomotopy_fixedVertex

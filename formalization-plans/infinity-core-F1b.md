@@ -42,16 +42,16 @@
 - 右：標準 U 極限・元の相対右 Kan 条件と制限、左右の双対判定を構成。全部分圏と相対標的の反転同型・制限の可換正方形から、元の右制限の正次元境界充填・充満忠実性を証明。標準局所 U 極限から元と底を保つ右の厳密な存在・頂点全射性・自明 Kan 性、右 Kan 関手へ任意の始点から入る片側の相対 pinched 比較も証明。
 - 像の類が恒等な単位の相対厳密化、像固定の局所余錐の添字変更、標準底余錐上の局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
 - 左右の標準相対 Kan 条件は path 置換の射影・切断で保存・反映。任意 U の元の相対制限の片側 pinched 同値を、四つの写像空間の引き戻しへの比較同値として表示。右の射は Kan、絶対的な左右の制限は自明 Kan。
-- B5：`nerve (C ⥤ D) ≅ Fun(nerve C, nerve D)`、h Fun と通常の関手圏の同値、前後合成の自然性と関手頂点の公式を構成。
-  指定自然変換と元の h Fun の射の全単射、恒等・合成・左右 whiskering の保存、古典随伴の双方向比較を証明。
+- B5：通常の関手圏の nerve と元の Fun の同型、h Fun との同値、指定自然変換の全単射・whiskering の保存、古典随伴の双方向比較を証明。
   nerve の左右 Hom 普遍性と通常の Kan 拡張の同値、native な pointwise Kan から通常の Kan 拡張への含意も証明。
-- B5 局所比較：Under・Over の nerve と元の頂点上の native な coslice・slice の同型と忘却射影の一致を証明。
-  左右 comma の通常の四角形の引き戻し性から、左右の元の Kan 添字の比較射の同型性と K への射影・局所図式の厳密な一致を証明。
+- B5 局所比較：Under・Over の nerve と native な coslice・slice、左右 comma と元の Kan 添字の同型、射影・局所図式の厳密な一致を証明。
 - 通常の錐の圏と拡張関手の fiber の同値から、native な錐の族への比較射の同値性を証明。
   錐・余錐の頂点を保つ全単射、指定錐・余錐の普遍性、極限・余極限の存在を双方向に比較。
   左右 comma の局所極限・余極限の存在、および nerve 上の Kan 拡張の存在と通常の pointwise Kan の存在を双方向に比較。
-- 最終検証：F1・F1B 同時ビルド成功（4054 jobs）、同時 import 検査成功（F1 7451・F1B 5066 宣言）。
-  公理監査成功（5072 宣言、標準三公理のみ、1401 モジュールに straightening なし）。ソース名衝突 0。
+- 指定自然変換の実ホモトピー表示、元の h Fun の類の保持、前後合成の厳密な自然性、恒等・各点の成分公式を証明。
+  錐の脚の後合成を join の錐のホモトピーへ移し、両端・図式の指定変換・全時間での頂点の固定を証明。
+- 最終検証：F1・F1B 同時ビルド成功（4060 jobs）、同時 import 検査成功（F1 7451・F1B 5091 宣言）。
+  公理監査成功（5097 宣言、標準三公理のみ、1407 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -77,7 +77,7 @@
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
 - `F1B.kanNerve_exists_leftKan_iff_pointwise` / `F1B.kanNerve_exists_rightKan_iff_pointwise`
-- `F1B.kanNerveConeFamilyMap_isQCatEquivalence` / `F1B.kanNerveCone_isLimit_iff` / `F1B.kanNerve_hasLimit_iff`
+- `F1B.kanNerveConeFamilyMap_isQCatEquivalence` / `F1B.kanNerveCone_isLimit_iff` / `F1B.kanNerveConePostcomposeHomotopy`
 
 ### 依存と提供
 
@@ -87,7 +87,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：余錐・余極限の双方向比較、左右の pointwise Kan の存在判定、集約・監査・本書）。
+- なし（本保存単位：指定自然変換の実ホモトピーと自然性・成分、頂点を固定した錐の後合成、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -99,8 +99,8 @@
 
 ### 次の一手
 
-- Mathlib `RightExtension.coneAt` の nerve と、指定余単位の native な右局所輸送の錐を添字同型で比較する。
-  指定変換の局所普遍性の双方向判定を得て、左 `LeftExtension.coconeAt` も同様に接続する。
+- `kanNerveUnderMap c` の uncurry と、通常の Under の忘却関手上の標準錐の `kanNerveCone` を比較する。
+  comma 添字同型で右 Kan の標準錐と同定し、構成した錐の後合成を `RightKanConeTransport` に接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
