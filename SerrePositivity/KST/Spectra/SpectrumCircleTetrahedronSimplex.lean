@@ -1,0 +1,45 @@
+module
+
+public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationFiber
+public import SerrePositivity.KST.Spectra.SpectrumCircleEvaluationCompanion
+
+/-!
+概要：元の関手三単体を各 Sp 頂点で評価し、その元の二面を厳密に保持する。
+方針：頂点評価と形状の前合成を交換し、元の円の普遍評価の比較二単体を回収する。
+規約：三単体や充填を選び直さない。使われ方：元の円評価錐の Hom 正方形による比較。
+-/
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+noncomputable section
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+namespace SerrePositivity.KST.Spectra.OmegaSpectrum
+local instance circleTetrahedronSpectrumSimplicialCategory :
+    SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
+
+/-- 元の関手三単体を、元の Sp 頂点で評価した同じ三単体。 -/
+def circleEvaluationTetrahedronAt (z : Sp.{u} _⦋0⦌) : Sp.{u} _⦋3⦌ :=
+  SSet.yonedaEquiv (circleEvaluationTetrahedron ≫ evaluateFunctorAt z)
+
+/-- 一番目の面は、元の companion 三角形の同じ頂点での評価。 -/
+lemma circleEvaluationTetrahedronAt_one (z : Sp.{u} _⦋0⦌) :
+    Sp.{u}.δ 1 (circleEvaluationTetrahedronAt z) =
+      SSet.yonedaEquiv (circleZeroCompanionTriangle ≫ evaluateFunctorAt z) := by
+  rw [circleEvaluationTetrahedronAt, ← stdSimplex.yonedaEquiv_δ_comp, ← Category.assoc]
+  rfl
+
+/-- 二番目の面は、元の普遍評価の生成 loop の coherent Hom 比較二単体そのもの。 -/
+lemma circleEvaluationTetrahedronAt_two (z : Sp.{u} _⦋0⦌) :
+    Sp.{u}.δ 2 (circleEvaluationTetrahedronAt z) = coherentHomComparisonSimplex
+      ((circleEvaluationHomEdge (nativeCotensorInput PointedSimplicialSet.circle z).val).edge) := by
+  rw [circleEvaluationTetrahedronAt, ← stdSimplex.yonedaEquiv_δ_comp,
+    ← Category.assoc, circleEvaluationTetrahedron_two,
+    circleEvaluationFunctorTriangle, curry_evaluateFunctorAt_vertex,
+    nativeCircleEvaluationTriangleFamily_fiber]
+  exact Equiv.apply_symm_apply _ _
+
+end SerrePositivity.KST.Spectra.OmegaSpectrum

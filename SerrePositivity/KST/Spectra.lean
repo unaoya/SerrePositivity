@@ -530,3 +530,11 @@ public import SerrePositivity.KST.Spectra.SpectrumCircleBKNativeComparison
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKConeSourceRestriction
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKIsLimit
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKPointLoopCone
+public import SerrePositivity.KST.Spectra.CoherentFlaggedPaths
+public import SerrePositivity.KST.Spectra.CoherentPathParameters
+public import SerrePositivity.KST.Spectra.CoherentTrianglePathMaximum
+public import SerrePositivity.KST.Spectra.CoherentSimplexTraces
+public import SerrePositivity.KST.Spectra.CoherentPathParameterFaces
+public import SerrePositivity.KST.Spectra.CoherentSimplexTraceFaces
+public import SerrePositivity.KST.Spectra.SpectrumCircleTetrahedronSimplex
+public import SerrePositivity.KST.Spectra.SpectrumCircleTetrahedronTrace
