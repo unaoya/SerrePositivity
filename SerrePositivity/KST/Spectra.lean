@@ -191,3 +191,13 @@ public import SerrePositivity.KST.Spectra.SkeletalMappingGroupComparison
 public import SerrePositivity.KST.Spectra.TowerCompatibleDetection
 public import SerrePositivity.KST.Spectra.SkeletalMappingDetection
 public import SerrePositivity.KST.Spectra.RationalSkeletalMappingComparison
+
+public import SerrePositivity.KST.Spectra.NormalizedFirstCocycles
+public import SerrePositivity.KST.Spectra.SkeletalFirstFiber
+public import SerrePositivity.KST.Spectra.TowerInitialDetection
+public import SerrePositivity.KST.Spectra.SkeletalInitialDetection
+public import SerrePositivity.KST.Spectra.RationalInitialDetection
+public import SerrePositivity.KST.Spectra.ZeroSkeletonPoint
+public import SerrePositivity.KST.Spectra.InitialMappingEvaluation
+public import SerrePositivity.KST.Spectra.RationalConstantMapping
+public import SerrePositivity.KST.Spectra.RationalShapiro
