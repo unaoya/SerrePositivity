@@ -14,24 +14,25 @@
 - 一図式を固定した場合は、標準単位を底全体の coherent な関手同型へ実現済み。
   単位の各成分は単射。単位に沿う strict な比較の制限は trivial Kan fibration で、
   延長空間は可縮。strict transport の像では図式全体で同値な厳密な左逆も存在する。
-- 対象ビルド2797 jobs、公理監査4811宣言が成功。依存公理は標準3公理のみ。
+- 底と図式の族を同時に動かした二点図式の共同実現を構成済み。面・退化との整合性と
+  比較の辺の成分公式・可逆性を証明し、curry により `kanDiagramRealization C` と
+  `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を得た。
+- 対象ビルド2801 jobs、公理監査4845宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
 
 見積もりは再開後の実作業時間の粗い幅で、研究上の障害による上振れがある。
 
-1. 底と図式の族を同時に動かした標準単位を、関手空間に値を取る二写像の関手同型へ束ねる。
-   Kerodon §5.3.3、Corollary 5.6.0.6。4〜16時間。値ごとの比較からの推論ではなく共同実現を構成する。
-2. 任意の coherent 図式について、境界を固定した表現の延長と高次の貼り合わせを証明する。
+1. 任意の coherent 図式について、境界を固定した表現の延長と高次の貼り合わせを証明する。
    Kerodon Theorem 5.6.5.12、Corollary 5.6.5.15。40〜160時間。
-3. unstraightening の実際の写像空間上の比較の同値性、一般の単位・余単位を完成する。
+2. unstraightening の実際の写像空間上の比較の同値性、一般の単位・余単位を完成する。
    Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
-4. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
+3. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
    Kerodon Theorem 5.6.0.2、§5.5。80〜240時間以上。
-5. F1h：twisted arrow、Hom 関手、前層、Yoneda の充満忠実性。
+4. F1h：twisted arrow、Hom 関手、前層、Yoneda の充満忠実性。
    Kerodon §§8.1〜8.3。40〜160時間。Kan 拡張は α2b の成果を使用可能。
-6. F1i：通常の圏の nerve 上で Grothendieck 構成と Yoneda を回収する。
+5. F1i：通常の圏の nerve 上で Grothendieck 構成と Yoneda を回収する。
    Kerodon §§5.6、8.3 の通常圏への特殊化。8〜32時間。
 
 ### 主要宣言（名前のみ）
@@ -46,6 +47,8 @@
 - `weightedNerveTransportUnit_enrichedNaturality`
 - `weightedNerveTransportKanComparison`、`weightedNerveStraighteningEvaluationIso`
 - `weightedNerveStraighteningFamilyEvaluationIso`、`weightedNerveStraighteningUnitIso`
+- `weightedNerveJointComparisonEdge`、`weightedNerveJointComparisonIso`
+- `weightedNerveStraighteningCoherentUnitIso`、`weightedNerveStraighteningCoherentFamilyUnitIso`
 - `weightedNerveTransportUnit_restriction_trivialKanFibration`
 - `weightedNerveTransportUnit_extensionSpace_isContractibleKan`
 - `exists_weightedNerveTransportUnit_retraction`
@@ -82,10 +85,10 @@
 
 ### 次の一手
 
-`WeightedNerveTransportComparison.lean` の評価比較と固定図式の単位を共同実現へ束ねる。
-二点図式を C 全体で同時に作り、`kanDiagramRealization C` と
-`weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の間の実際の比較の辺を構成する。
-次に底の包含とパラメーターの境界をともに固定する表現の延長へ進む（§5.6.5）。
+底の包含とパラメーターの境界をともに固定する表現の延長へ進む（§5.6.5）。
+まず表現を「𝒮 への底の射、pointed space への全空間の射、可換性、fiber ごとの同値」として
+記述し、任意の底変換による制限を構成する。標準単体とその境界上の延長で、既存の
+局所 strictification と `weightedNerveStraighteningCoherentFamilyUnitIso` が保つデータを照合する。
 
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
