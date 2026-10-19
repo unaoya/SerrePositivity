@@ -606,3 +606,7 @@ public import SerrePositivity.KST.Spectra.PointedHomDifferenceNaturality
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonDifferenceAction
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonApexEquivalence
 public import SerrePositivity.KST.Spectra.SpectrumNativeCircleIsPullback
+public import SerrePositivity.KST.Spectra.SpectrumCircleLoopDiagramFamily
+public import SerrePositivity.KST.Spectra.SpectrumCircleLoopDiagramEvaluation
+public import SerrePositivity.KST.Spectra.SpectrumCotensorFullFaithfulnessCriterion
+public import SerrePositivity.KST.Spectra.SpectrumNativeLoopCircleIso
