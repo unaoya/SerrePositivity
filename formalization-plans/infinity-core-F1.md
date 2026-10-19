@@ -36,7 +36,9 @@
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
   任意の底・小さい次数 fiber の分類図式と比較を構成。指定した単位変換の実際の射は余単位の逆であり、両者の底変換の自然性と普遍比較の実際の成分との一致を証明済み。族の制限の自然性と余単位の整合性も全高次パラメーターで証明済み。
   任意の相対射の collage は区間と底の積上の left fibration。一般の二表現の相対射の族の復元と一意性、相対関手空間全体から分類図式の変換空間への実際の比較射を構成済み。底が ∞ 圏の場合、一般の比較射の同値性を実際の前後合成との可換同型から証明済み。任意の底で、恒等射の族を恒等変換の族へ送る関手同型と、恒等変換のパラメーター制限の厳密な可換性も証明済み。全高次パラメーターで合成三角形を構成し、実際の相対豊穣合成の像を長辺と関手同型で比較した。指定三角形を保った同じ比較も証明済み。任意の inner anodyne な面で、空間値図式と pointed 比較を共同で延長し、部分パラメーター上の既存の両図式を厳密に保つ定理も証明済み。固定図式の面の lift 射影は trivial Kan fibration、各 fiber は可縮。標準表現上では元の unstraightening 比較射が明示的な逆。元の unstraightening の写像空間比較の同値性は任意の底で証明済み（区間・pinched 模型、小さい場合は宇宙縮小後とも）。
-- 対象ビルド3178 jobs、公理監査6817宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+- 全 left fibrations 上で切断の頂点評価・部分図式への制限を豊穣比較から coherent な辺に実現。left anodyne な始点評価・制限は大域的な関手同型。
+  底の一本の辺に沿う全対象の実際の transport の辺・prism と厳密な両端、切断の始点・終点評価による特徴づけを構成済み。
+- 対象ビルド3181 jobs、公理監査6843宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -96,9 +98,9 @@
 
 ### 次の一手
 
-PointedTransportHigherExtension の共同延長を選択した表現の合成比較の面データへ適用し、全対象の coherent な関手へ束ねる。
-TransportRepresentationMappingComposition の指定三角形の比較と同じ面を保って、高次単体を構成する。任意の inner anodyne な面の共同延長は証明済みだが、具体的な全対象の単体的作用とその面・退化の整合性は未構成。恒等射の族の単位則は TransportRepresentationIdentityFamily で証明済み。
-全対象での自然性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
+KanEnrichedComparison の合成の実現と切断制限の可換式を接続し、LeftFibrationNaturalTransport の全対象の辺を底の合成三角形へ延長する。
+PointedTransportHigherExtension の共同延長は証明済み。全対象の一単体の作用は実際の prism まで構成したが、高次単体と面・退化の整合性、全関手の組立ては未構成。TransportRepresentationMappingComposition の指定三角形の比較と同じ面を保って接続する。
+全対象での高次整合性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
