@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories
 方針：pullback の両射影へ合成し、replacement の底変換と元の比較の式を照合する。
 規約：元の射影の可換性 h を Over 圏の射の条件に用いる。
 使われ方：Kerodon Theorem 5.3.5.7、各単体での比較射の同定。 -/
-lemma leftScaffoldBaseChange_overPullbackMap
+lemma F1B.kanScaffoldBaseChange_overPullbackMap
     {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
     (p : E ⟶ nerve C) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
     (h : l ≫ p = simplicialReplacementProjection F) (H : D ⥤ C) :
@@ -56,7 +56,7 @@ lemma KanCocartesianScaffold.overPullback_finiteComparison
     inferInstanceAs (Quasicategory (F.obj (H.obj c)))
   have hb := hs.baseChange H
   have hc := hb.finiteComparison n _ _ _
-  have he := leftScaffoldBaseChange_overPullbackMap p F l h H
+  have he := F1B.kanScaffoldBaseChange_overPullbackMap p F l h H
   change IsPrecompositionEquivalence (kanScaffoldBaseChange p F l h H) at hc
   rw [← he] at hc
   exact (isPrecompositionEquivalence_of_iso

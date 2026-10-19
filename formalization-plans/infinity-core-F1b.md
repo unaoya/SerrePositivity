@@ -37,7 +37,7 @@
   終点指定の特殊持ち上げと合わせ、`kanFiberwiseHomProjection` の cartesian fibration 性まで証明。
 - 二つの inner fibration の join と相対 join の底への射影の inner fibration 性を証明。
   右因子を保つ joinMap の単体の持ち上げ、単体・混合外ホーンの最後の面による像の検出も証明。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2605 jobs）。
+- 最終検証：F1・F1B 同時ビルド成功（3348 jobs）、同時 import 検査成功（F1 5421・F1B 3461 宣言）。
   公理監査成功（3465 宣言、標準三公理のみ、931 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
@@ -81,13 +81,13 @@
 
 ### 未コミット
 
-- なし（本保存単位：join と相対 join の inner fibration 性、最後の面による検出、集約・監査・本書）。
+- `KanJoinMixedInitialHorn`・`KanJoinMapCocartesianEdges`・`KanCocartesianProductProjection` は証明作業中。
+  F1/F1B の衝突修正を優先して保存対象から外し、名前空間を F1B に移した。
 
 ### 既知の問題
 
-- 対象ビルドは成功。全体 `lake build` は今回実行していない。
-- 保存 `43c25ad6` は共有インデックスにあった D レーンの 9 ファイルも同梱。内容は変更せず保存。
-  並行履歴の書き換えは行わない。以後の保存は `git commit --only` で所有パスを限定する。
+- F1/F1B の同時ビルドと同時 import の検査を保存前に実行する。全体 `lake build` は未実行。
+- 保存 `43c25ad6` は D レーンの 9 ファイルも同梱。履歴は変更せず、以後 `git commit --only` で所有パスを限定。
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
 - `kanFiberwiseHom` の cartesian fibration 性は cocartesian な p について証明済み。
   相対 join の底への射影への適用と、普遍余錐から全空間の相対始点境界充填は未完。
@@ -153,6 +153,9 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
   Kan 性や ∞ 圏としての可縮性へ強めない。
 - Kan 拡張では点ごとの slice 極限と関手全体への組み立てを区別する。
   後者は A6 の関手 ∞ 圏の極限 API を確認してから接続する。
+- F1 からの再構成は `SerrePositivity.InfinityCategories.F1B` 名前空間に置く。
+  保存前に `lake build SerrePositivity.InfinityCategories.F1 SerrePositivity.InfinityCategories.F1B` と
+  `lake env lean scripts/audit_infinity_f1_f1b.lean` で同名宣言の衝突がないことを確認する。
 - 各保存単位で集約ビルド、公理監査、推移的 import の検査を行う。
   監査は生成宣言を含む F1B の全宣言を宣言元モジュールで抽出し、
   読み込んだリポジトリ内の straightening 系モジュールを拒否する。
