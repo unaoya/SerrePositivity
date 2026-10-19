@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.KST.Spectra.HomotopyProductIndex
+public import SerrePositivity.KST.Spectra.SphericalBoundaryReduction
+public import SerrePositivity.KST.Spectra.SphericalBoundaryAlternating
+public import SerrePositivity.KST.Spectra.SphericalBoundaryRelation
+
 public import SerrePositivity.KST.Spectra.GroupNerveCoordinates
 public import SerrePositivity.KST.Spectra.GroupNerveFaces
 public import SerrePositivity.KST.Spectra.SimplicialValueFaces
