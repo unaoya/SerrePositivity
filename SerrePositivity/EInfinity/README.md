@@ -500,7 +500,12 @@ nullary を含む TR の部分合成保存は完了。
 `residualCut_output_family`・`residualCut_tensor_eq` は交換対の実際の削除基底語の出力族・テンソル値の一致。
 `NonpivotResidualCut.swap_coefficient` は同色三出現も含む一般の削除・切断係数の反対性。
 `residualCut_tensor_sum_eq_zero` は全非切断点障害項の実際のテンソル値の有限和が零であること。
-具体的な Δ¹ の余代数構造は未完成。切断点障害と切断点色の境界項の相殺、全有限和の比較が残る。
+`edgeNondegenerate_between` は非零切断集合の凸性、`edgeSign_pivot_boundary` は切断点色の共通係数。
+`gapOutput`・`gapTensor` は語の隙間で二分した出力族・実際のテンソル値。
+`pivotBoundary_gap_difference` は実際の切断点色の因子境界を共通係数付き隙間差へ移す。
+`pivotBoundaryValue_sum` は全有限和を非零切断区間の両端へ集約し、非零切断がなければ零とする。
+`pivotBoundaryValue_sum_zeroDegree` は arity 零を含め、次数零の全和を入力辺の二端点差へ同定する。
+具体的な Δ¹ の余代数構造は未完成。正次数の両端と切断点障害の削除項の一致、全有限和の比較が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

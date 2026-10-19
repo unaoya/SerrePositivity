@@ -898,6 +898,13 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut.swap_coefficient,
       `SerrePositivity.EInfinity.IntervalCuts.nonpivotResidualCut_weighted_sum,
       `SerrePositivity.EInfinity.IntervalCuts.residualCut_tensor_sum_eq_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeNondegenerate_between,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_pivot_boundary,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_pivot_endpoint_one,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_pivot_endpoint_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotBoundary_gap_difference,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotBoundaryValue_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotBoundaryValue_sum_zeroDegree,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2684,3 +2691,31 @@ example : ∑ c : NonpivotResidualCut residualTripleWord.val,
       tensorVectorOfDegree ℤ 3 3 (edgeOutput (residualCutBasisWord residualTripleWord c) c.pivot)
         (edgeOutput_tupleDegree _ _ c.nondegenerate) = 0 :=
   residualCut_tensor_sum_eq_zero ℤ residualTripleWord
+
+-- 01203 の非零切断は隣接する1,2の二つ。内部の端点置換は同じ隙間値。
+private def pivotIntervalWord : BasisWord 4 1 := ⟨![0, 1, 2, 0, 3], by decide⟩
+example : Function.update (edgeOutput pivotIntervalWord 1) 1 (IntervalCuts.vertex 0) =
+    Function.update (edgeOutput pivotIntervalWord 2) 2 (IntervalCuts.vertex 1) := by
+  rw [show (1 : Fin 4) = pivotIntervalWord.val 1 by rfl,
+    show (2 : Fin 4) = pivotIntervalWord.val 2 by rfl,
+    edgeOutput_pivot_endpoint_zero pivotIntervalWord 1 (by decide),
+    edgeOutput_pivot_endpoint_one pivotIntervalWord 2 (by decide)]
+  rfl
+-- 共通係数は負で、実際の全因子境界和では内部項が消え、二端点だけが残る。
+example : ∑ p, pivotBoundaryValue ℤ pivotIntervalWord p =
+    -(gapTensor ℤ pivotIntervalWord 1 - gapTensor ℤ pivotIntervalWord 3) := by
+  have h := pivotBoundaryValue_sum_of_endpoints ℤ pivotIntervalWord 1 2
+    (by decide) (by decide) (by decide)
+  have hs : (-1 : ℤ) ^ (Finset.univ.filter (Caesura pivotIntervalWord.val)).card *
+      (-1 : ℤ) ^ positionInversionCount pivotIntervalWord.val
+        (Finset.univ.filter (Caesura pivotIntervalWord.val)) = -1 := by decide
+  simpa only [hs, neg_one_zsmul] using! h
+-- 同色三出現の語には非零切断がなく、全和も実際に零。
+example : ∑ p, pivotBoundaryValue ℤ residualWord p = 0 := by
+  have hs : ¬ (Finset.univ.filter (EdgeNondegenerate residualWord.val)).Nonempty := by decide
+  simpa only [dite_eq_right hs] using! pivotBoundaryValue_sum ℤ residualWord
+-- 次数零では全 arity・全置換語について入力辺の境界へ一致する。
+example {n : ℕ} (u : BasisWord n 0) : ∑ p, pivotBoundaryValue ℤ u p =
+    tensorVectorOfDegree ℤ n 0 (fun _ => IntervalCuts.vertex 1) (vertex_tupleDegree n 1) -
+      tensorVectorOfDegree ℤ n 0 (fun _ => IntervalCuts.vertex 0) (vertex_tupleDegree n 0) :=
+  pivotBoundaryValue_sum_zeroDegree ℤ u
