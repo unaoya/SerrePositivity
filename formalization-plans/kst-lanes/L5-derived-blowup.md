@@ -488,6 +488,10 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramCoefficientDerivedRestriction`・`diagramCoefficientDerivedEquivalence`・指定順逆関手 | DiagramCoefficientDerivedEquivalence | 既存の graph 導来延長・制限を用いた全図式加群の表示同値 |
 | 例外因子の係数対象・dg 準同値・`exceptionalDiagramDerivedEquivalence` | ExceptionalDiagramDerivedComparison | 元の例外因子と共通 Koszul 表示の全図式加群の指定導来同値 |
 | `diagramCoefficientDGFunctor_vertex/transition/unit` | DiagramCoefficientLocalSquares | 指定局所埋め込み・局所遷移・canonical な単位矢の可換式 |
+| 係数制限・局所導来制限・`diagramCoefficientModuleEvaluationIso`・`diagramCoefficientDerivedEvaluationIso` | DiagramCoefficientEvaluation | 標準の指定制限合成同型による全対象で自然な局所評価比較 |
+| `algebraVertexMap_hom_inv`・`algebraVertexMap_quasiEquivalence` | AlgebraVertexIso | 局所係数代数同型の指定一対象 dg 準同値 |
+| 局所 perfect 判定・`diagramCoefficientDerivedRestriction_locallyPerfect_iff`・局所 perfect 部分圏の同値 | DiagramCoefficientLocallyPerfect | 任意の係数図式同型の導来表示比較での局所 perfect 性の保存・反映 |
+| `exceptionalDiagramDerivedRestriction_locallyPerfect_iff`・`exceptionalDiagramLocallyPerfectEquivalence` | ExceptionalDiagramLocallyPerfect | 実際の例外因子と共通 Koszul 表示の局所 perfect 導来部分圏の指定同値 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -555,7 +559,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全3363定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3403定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -677,7 +681,16 @@ graph 導来延長–制限同値を適用し、全図式加群の導来表示�
 まだ別義務として残す。正規表示の指定局所頂点の埋め込み、局所遷移、canonical な
 包含単位矢と係数 dg 関手の可換式も証明済み。原典は KST v4 §3.1・Lemma 3.6
 （pp.11–14）、通常の厳密な加群貼り合わせではなく係数 dg 関手を用いる再構成。
-次の実装単位は指定局所評価・比較射の整合性から cartesian・局所 perfect 条件を
+任意の係数図式射に沿う全図式加群の制限と、指定局所埋め込みの可換式に
+標準の加群制限・導来制限の合成同型を適用した自然な局所評価比較を構成済み。
+局所係数代数同型の一対象表示の dg 準同値を証明し、その opposite に沿う
+既存の導来 Morita 比較を使って perfect 性の保存・反映を得た。
+指定局所評価の自然同型に沿って、任意の係数図式同型の全導来対象について
+局所 perfect 性の保存・反映、および元の導来同値を局所 perfect 部分圏へ
+制限した指定同値を構成済み。実際の例外因子の二つの表示にも適用済み。
+原典は KST v4 §3.1・Lemma 3.6（pp.11–14）、係数 dg 図式の表示変更による
+再構成であり、層の Perf や cartesian perfect 部分圏の比較の完了とはしない。
+次の実装単位は指定局所比較射の整合性から canonical な cartesian 条件を
 この表示同値で比較すること、および coherent な降下・層の閉埋め込み／射影との比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。

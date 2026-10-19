@@ -307,3 +307,7 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramCoefficientQuasiEquivalen
 public import SerrePositivity.KST.DerivedBlowup.DiagramCoefficientDerivedEquivalence
 public import SerrePositivity.KST.DerivedBlowup.ExceptionalDiagramDerivedComparison
 public import SerrePositivity.KST.DerivedBlowup.DiagramCoefficientLocalSquares
+public import SerrePositivity.KST.DerivedBlowup.DiagramCoefficientEvaluation
+public import SerrePositivity.KST.DerivedBlowup.AlgebraVertexIso
+public import SerrePositivity.KST.DerivedBlowup.DiagramCoefficientLocallyPerfect
+public import SerrePositivity.KST.DerivedBlowup.ExceptionalDiagramLocallyPerfect
