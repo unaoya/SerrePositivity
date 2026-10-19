@@ -6,7 +6,7 @@
 
 ### 現在地
 
-- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1 も完了。次は F2L-2。
+- B1〜B5 は明示した模型・宇宙で完了。[F2 計画](infinity-core-F2.md) 第 1 部の F2L-1 も完了。F2L-2 進行中。
 - B1：全単体集合パラメータの族の集合値前層による自然性の模型。双圏の単位・余単位・三角恒等式と自然な Hom 対応を比較。
 - B2：同じ宇宙の標的に対する反射的局所化。一般の局所化の存在は F2 の範囲。
 - B3：左右の Quillen A、弱可縮な comma 条件、二宇宙版の始対象による極限計算を回収。
@@ -22,7 +22,11 @@
   任意の頂点・辺の往復、端点固定の関手の全単射、恒等・合成三角形、Cat_∞ の写像空間と ULift した core Fun の同値を整備。
   比較の零単体と豊穣自然性、辺の類の一致と関手同型の存在、可逆辺と関手の同値の双方向判定を証明。
   Cat_∞ 内の引き戻し・lax pullback の普遍性は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（4091 jobs）、F2 の公理監査成功（46 宣言、標準三公理のみ）。
+- F2L-2：可逆 path による引き戻し候補と quasicategory 性、二射影・可換関手同型、指定 path を保つ全パラメータの lift を構成。
+  任意 K の Fun との交換、inner fibration の引き戻しと core の交換を厳密な同型で証明。
+  全 K の関手 core の置換後の厳密な引き戻し表示と元の二射影の一致まで完了。
+  空間の homotopy pullback との比較、Cat_∞ の native な極限錐の普遍性は未完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（4100 jobs）、F2 の公理監査成功（123 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -44,6 +48,7 @@
 - `F1B.kanNerveLeftCoconeTransport_cocone` / `F1B.kanNerveRightConeTransport_cone`
 - `F2.catInfinityVertexEquiv` / `F2.coherentEdgeHom_edge`
 - `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
+- `F2.catPullbackObject` / `F2.catPullbackFunctorIso` / `F2.catPullbackFunctorCoreIso`
 
 ### 依存と提供
 
@@ -54,7 +59,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：F1 の既存頂点・辺の再利用、F2 の全写像空間比較・自然性・同値判定、集約・監査と本書。
+  本保存単位：可逆 path の引き戻し候補、全試験の Fun・core との比較、可逆辺の同時反映、集約・監査と本書。
 
 ### 既知の問題
 
@@ -67,8 +72,8 @@
 
 ### 次の一手
 
-- Core の equivalencePathReplacementMap と InnerPullback により、可逆 path による引き戻し候補と射影・可換関手同型を構成する。
-  続いて全試験 ∞ 圏からの関手 core の比較を証明する。単体集合の strict pullback だけで F2L-2 完了とはしない。
+- 可逆 path 置換の終点写像の core の Kan fibration 性と、始域射影の core の同値性を証明する。
+  全 K の `catPullbackFunctorCoreIso` を空間の homotopy pullback、Cat_∞ の native な極限錐の普遍性へ接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

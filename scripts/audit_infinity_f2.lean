@@ -40,3 +40,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catInfinityMappingComparison_enriched_naturality
 #check @SerrePositivity.InfinityCategories.F2.catInfinity_homMk_eq_iff_functorIso
 #check @SerrePositivity.InfinityCategories.F2.catInfinityEdge_isInvertible_iff
+#check @SerrePositivity.InfinityCategories.F2.catPullbackObject
+#check @SerrePositivity.InfinityCategories.F2.catPullbackCommutativity
+#check @SerrePositivity.InfinityCategories.F2.catPullbackLift
+#check @SerrePositivity.InfinityCategories.F2.catPullback_hom_ext
+#check @SerrePositivity.InfinityCategories.F2.catPullbackFunctorIso
+#check @SerrePositivity.InfinityCategories.F2.pullback_isInvertibleEdge_iff
+#check @SerrePositivity.InfinityCategories.F2.corePullbackIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackFunctorCoreIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackFunctorCoreIso_fst
+#check @SerrePositivity.InfinityCategories.F2.catPullbackFunctorCoreIso_snd
