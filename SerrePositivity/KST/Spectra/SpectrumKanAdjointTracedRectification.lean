@@ -34,12 +34,27 @@ def kanAdjointTracedStructureInterval (n : ℕ) :
     (φ ≫ kanAdjointParameterLeft X Y n)
   exact P.changeEndpoints hr.symm hl.symm
 
+/-- 列の構造区間族は、元の普遍係数区間から作った族の同じ転置。 -/
+lemma kanAdjointTracedStructureInterval_path (n : ℕ) :
+    (kanAdjointTracedStructureInterval X Y φ n).path =
+      (kanAdjointParameterStructureInterval X Y φ n).basedTranspose.path := rfl
+
 /-- 比較区間を全段に保持して厳密化した、実際の cotensor 値の列射。 -/
 def kanAdjointTracedParameterHom :
     KanSequence.Hom X.toKanSequence
       (KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)) :=
   KanSequence.tracedRectify X.sigma_mono (kanAdjointParameterStage X Y φ)
     (kanAdjointTracedStructureInterval X Y φ)
+
+/-- 元の帰納構成で保存した、cotensor 値の段射の比較区間。 -/
+def kanAdjointTracedStageComparison (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
+    (φ : A ⟶ pointedSpace X Y.toKanSequence) (n : ℕ) :
+    PointedMapping.VerticalPath (PointedObject.toPoint
+      ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).level n).space)
+      (kanAdjointParameterStage X Y φ n) ((kanAdjointTracedParameterHom X Y φ).app n) :=
+  KanSequence.tracedRectifyComparison (X := X.toKanSequence)
+    (Y := KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence))
+    X.sigma_mono (kanAdjointParameterStage X Y φ) (kanAdjointTracedStructureInterval X Y φ) n
 
 /-- 構造三角形を保持する帰納構成から得た、元の全パラメータの Kan 随伴比較。 -/
 def kanAdjointTracedComparison :
@@ -53,15 +68,18 @@ def kanAdjointTracedEvaluationInterval (n : ℕ) :
       (φ ≫ kanAdjointParameterLeft X Y n)
       (kanAdjointTracedComparison X Y φ ≫
         pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) n) := by
-  let Q := KanSequence.tracedRectifyComparison (X := X.toKanSequence)
-    (Y := KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence))
-    X.sigma_mono (kanAdjointParameterStage X Y φ) (kanAdjointTracedStructureInterval X Y φ) n
+  let Q := kanAdjointTracedStageComparison X Y φ n
   let P := PointedMapping.VerticalPath.basedTranspose (A := (X.level n).space) (U := A)
     (V := ((KanSequence.signedLoopTail Y.toKanSequence).level n).space) Q
   exact P.changeEndpoints (PointedMapping.transpose_transpose
     (φ ≫ kanAdjointParameterLeft X Y n)).symm
     (parameterFamily_evaluation X (KanSequence.signedLoopTail Y.toKanSequence) A
       (kanAdjointTracedParameterHom X Y φ) n)
+
+/-- 全パラメータの比較区間族は、保存した段比較の同じ転置区間族。 -/
+lemma kanAdjointTracedEvaluationInterval_path (n : ℕ) :
+    (kanAdjointTracedEvaluationInterval X Y φ n).path =
+      (kanAdjointTracedStageComparison X Y φ n).basedTranspose.path := rfl
 
 /-- 零段の元の Kan 随伴座標は、全列の厳密化後も厳密に保持する。 -/
 lemma kanAdjointTracedComparison_zero :
