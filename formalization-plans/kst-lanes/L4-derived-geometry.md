@@ -1272,6 +1272,17 @@
 - Mathlib の `transfiniteIterate` と部分対象格子の小ささから、ある小さい整列長で全体に到達する。MonoOver の余極限の普遍性で連続性を証明する。
 - 後続商を実際の試験族の元と同定し、§58 の互換な零ホモトピーの超限閉包へ適用して試験集合判定を証明する。超限分解の存在や K-injective 性を未証明フィールドにはしない。
 
+### §60 の実装の現在地
+
+- 保存検証：集約対象ビルド 4107 jobs 成功、公理監査 2479 宣言。標準3公理のみ、KTheory import なし。
+
+- `exists_larger_acyclic_subobject`：商の小さい非輪状部分対象の pullback による真の拡大と、包含の余核の試験対象との同型を構成した。
+- `subobjectIteration_exists_ordinal` と `subobjectIterationFunctor_isWellOrderContinuous`：部分対象格子上の反復を元の圏の連続な単射図式として実現し、小さい整列長で全体へ到達することを証明した。
+- `acyclic_subobject_transfiniteIterate`：後続と極限の両方で、全反復段階の非輪状性を証明した。
+- `isKInjective_of_smallAcyclicTests`：構成した小さい試験族と各項 injectivity から、任意の非輪状始域の射の零ホモトピーを超限閉包で実際に構成し、非有界 K-injectivity を証明した。
+- `exists_unbounded_kInjective_resolution`：任意の非有界複体から、各項 injective な K-injective 複体への単射準同型の存在を証明した。存在・判定・分解を未証明フィールドや追加公理にしていない。
+- 次の工程：この非有界分解を実際のアフィン係数層の導来随伴へ接続する。下に有界なアフィン Dqc 同値は既に証明済みであり、非有界アフィン同値と T1 以降はまだ完了していない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1504,6 +1515,7 @@
 | `exists_small_exact_window_extension`・`exists_smallQuotientComplexData_iso` | DerivedGeometry/SmallExactWindowExtension・SmallQuotientComplexFamily | 実装・対象ビルド済み |
 | `smallExactChainTail_acyclic`・`smallAcyclicChainCover_epi` | DerivedGeometry/SmallAcyclicChainTail・SmallAcyclicChainBounds | 実装・対象ビルド済み |
 | `SmallAcyclicTestIndex`・`exists_nonzero_smallAcyclicTest_subobject` | DerivedGeometry/SmallAcyclicTestFamily・SmallAcyclicTestSubobject | 実装・対象ビルド済み |
+| `isKInjective_of_smallAcyclicTests`・`exists_unbounded_kInjective_resolution` | DerivedGeometry/SmallAcyclicTestCriterion・UnboundedKInjectiveResolution | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

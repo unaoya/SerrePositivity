@@ -179,3 +179,11 @@ public import SerrePositivity.KST.DerivedGeometry.LeftSmallAcyclicComplex
 public import SerrePositivity.KST.DerivedGeometry.LeftSmallAcyclicProperties
 public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicTestFamily
 public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicTestSubobject
+public import SerrePositivity.KST.DerivedGeometry.AcyclicSubobjectExtension
+public import SerrePositivity.KST.DerivedGeometry.LargerAcyclicSubobject
+public import SerrePositivity.KST.DerivedGeometry.LargerAcyclicCokernel
+public import SerrePositivity.KST.DerivedGeometry.SubobjectIteration
+public import SerrePositivity.KST.DerivedGeometry.AcyclicSubobjectIteration
+public import SerrePositivity.KST.DerivedGeometry.HomotopyOrthogonalIso
+public import SerrePositivity.KST.DerivedGeometry.SmallAcyclicTestCriterion
+public import SerrePositivity.KST.DerivedGeometry.UnboundedKInjectiveResolution
