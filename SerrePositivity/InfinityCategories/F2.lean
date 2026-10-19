@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeNativeCommutativity
+public import SerrePositivity.InfinityCategories.F2.CatPullbackConeSpecifiedComparison
 public import SerrePositivity.InfinityCategories.F2.CatTetrahedronIsoSquare
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeTetrahedra
 public import SerrePositivity.InfinityCategories.F2.HomotopyEdgeTriangleLowerFaces

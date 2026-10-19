@@ -32,18 +32,18 @@
   同値な形状への slice 制限の充填性を使い、元の p、q の cospan の native な極限錐を構成。
   頂点は catPullbackObject p q と厳密に一致。指定可逆辺・ホモトピーの厳密な持ち上げも構成。
   元の錐を追跡可能な相対輸送から選び直し、全錐の可逆ホモトピーを公開。頂点側は定値、
-  図式側は切断の coherent 円柱と全時刻で厳密に一致。native な錐の各脚を実際の関手へ読み戻し、
-  自然性の正方形から切断との合成を置換後の脚と比較。左右の脚と元の二射影の関手同型を構成。
-  任意の coherent 二単体を長辺から二辺の合成への豊穣辺として読み戻し、両端を厳密に証明。
-  QCat の core Fun の指定辺の類から関手同型を構成し、strict な三角形では辺が定値になることも証明。
+  図式側は切断の coherent 円柱と全時刻で厳密に一致。native な各脚と指定対角辺を関手へ読み戻し、
+  共通の対角関手を通る上下の指定三角形から catPullbackConeLegSectionIso を構成。
+  二射影の比較同型もこの構成へ更新し、存在命題からの個別選択を除いた。
+  coherent 二単体を core Fun の指定辺と関手同型へ読み戻し、両端と strict な三角形での定値性を証明。
   native な錐の三角形と三辺を取り出し、左右の三角形から catPullbackConeNativeCommutativity を構成。
   coherent 三単体の二通りの精密化の合成が豊穣 Hom のホモトピー圏で一致することを証明。
   四面の指定辺を同じ Hom へ揃え、関手空間の合成関係と端の二面の前後合成を一次単体で照合。
   同じ六関手で四面の指定関手同型を記述し、catInfinityTetrahedronIso_square で前後合成の等式を証明。
   三角形の円柱の共有面・上下の面・六つの側面を二単体として厳密に同定。
   全錐と引き戻し錐の指定円柱の実際の三単体を構成し、元と置換後の錐の三角形を上下の面から回収。
-  各辺の比較正方形の上下の三角形の三辺も同定。二脚の比較と指定 path の整合は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6367 jobs）、F2 の公理監査成功（613 宣言、標準三公理のみ）。
+  各辺の比較正方形の上下の三角形の三辺も同定。二脚の指定比較同型と指定 path の整合式は未完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6375 jobs）、F2 の公理監査成功（646 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -69,7 +69,7 @@
 - `F2.qCatHom_postcomp` / `F2.catPullbackReplacementCone_isLimit`
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
-- `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
+- `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
 - `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity`
 
 ### 依存と提供
@@ -81,7 +81,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：三角形・全錐・引き戻し錐の比較円柱の三単体と全ての面、集約・監査と本書。
+  本保存単位：指定対角関手、上下の三角形の比較同型、二射影の比較の更新、集約・監査と本書。
 
 ### 既知の問題
 
@@ -94,8 +94,8 @@
 
 ### 次の一手
 
-- 円柱の共通の対角辺を端点固定で関手へ読み、上下の三角形の同型から各脚の指定比較同型を構成する。
-  三つの catPullbackConeTetrahedron の四面の合成則を合わせ、二脚の比較と指定 path の整合を証明する。
+- 三つの比較三単体の四面の合成則を合わせ、catPullbackConeLegSectionIso の形状の射に沿う整合式を導く。
+  strict な比較先の錐・切断の円柱の三角形を簡約し、二射影の指定比較同型と指定 path の整合を証明する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

@@ -171,3 +171,18 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleLower_zero
 #check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleLower_one
 #check @SerrePositivity.InfinityCategories.F2.homotopyEdgeTriangleLower_two
+
+#check @SerrePositivity.InfinityCategories.F2.homotopyDiagonalEdge
+#check @SerrePositivity.InfinityCategories.F2.homotopyDiagonalEdge_simplex
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyDiagonalEdge
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyUpperTriangle_zero
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyUpperTriangle_one
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyUpperTriangle_two
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyLowerTriangle_zero
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyLowerTriangle_one
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyLowerTriangle_two
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeDiagonal
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeDiagonal_edge
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeLowerComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeUpperComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.catPullbackConeLegSectionIso

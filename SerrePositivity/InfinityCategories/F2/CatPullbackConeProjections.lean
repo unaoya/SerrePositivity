@@ -1,10 +1,11 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeLegComparison
+public import SerrePositivity.InfinityCategories.F2.CatPullbackConeSpecifiedComparison
 
 /-!
 概要：Cat_∞ の引き戻し錐の二脚と候補の二射影の関手同型。
-方針：各脚と切断の合成の比較を元の二始域へ戻す。
+方針：同じ指定円柱の三角形からの比較を元の二始域へ戻す。
 規約：指定 path と native な二次の可換性との照合は別工程。
 使われ方：Cat_∞ の極限錐と全試験関手による引き戻し表示の接続。
 -/
@@ -37,8 +38,7 @@ def catPullbackConeSnd (p : A ⟶ C) (q : B ⟶ C) : catPullback p q ⟶ B :=
 使われ方：native な Cat_∞ の極限錐と全試験関手の第一射影の接続。 -/
 def catPullbackConeFstIso (p : A ⟶ C) (q : B ⟶ C) :
     FunctorIso (catPullbackConeFst p q) (catPullbackFst p q) := by
-  let e := Classical.choice (catPullbackConeFunctorLeg_section p q
-    (AsSmall.up.obj WalkingCospan.left))
+  let e := catPullbackConeLegSectionIso p q (AsSmall.up.obj WalkingCospan.left)
   change FunctorIso (catPullbackConeFst p q ≫ equivalencePathReplacementSection p)
     (pullback.fst (equivalencePathReplacementMap p) q) at e
   have h := e.postcomp (equivalencePathReplacementProjection p)
@@ -52,8 +52,7 @@ def catPullbackConeFstIso (p : A ⟶ C) (q : B ⟶ C) :
 使われ方：native な Cat_∞ の極限錐と全試験関手の第二射影の接続。 -/
 def catPullbackConeSndIso (p : A ⟶ C) (q : B ⟶ C) :
     FunctorIso (catPullbackConeSnd p q) (catPullbackSnd p q) := by
-  let e := Classical.choice (catPullbackConeFunctorLeg_section p q
-    (AsSmall.up.obj WalkingCospan.right))
+  let e := catPullbackConeLegSectionIso p q (AsSmall.up.obj WalkingCospan.right)
   change FunctorIso (catPullbackConeSnd p q ≫ 𝟙 B) (catPullbackSnd p q) at e
   rw [Category.comp_id] at e
   exact e
