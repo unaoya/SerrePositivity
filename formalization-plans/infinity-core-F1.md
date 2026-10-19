@@ -28,11 +28,11 @@
 - 固定端点の写像空間全体から fiber 間の関手空間への `parametrizedFiberTransport` を構成。
   選択独立性・パラメーター制限・始点の係数変更を族全体で証明し、各辺で既存の transport を回収する。
   unstraightening の写像空間比較の fiber 作用と、対象評価後の普遍輸送を関手同型で結んだ。
-- 豊穣合成の左右の slice prism を構成し、普遍輸送と全パラメーター上の関手同型で結んだ。
-  区間写像空間の反転同型と一点 Hom の合成作用の同型から、反転底上の普遍輸送の同値性を証明。
-  底も動かす正方形への輸送族の後合成と、普遍輸送の全パラメーター付き自然性を証明した。
-  底・全空間の同型で移し、実際の pointed-space 射影の普遍輸送の写像空間上の同値性を証明済み。
-- 対象ビルド2948 jobs、公理監査5382宣言が成功。依存公理は標準3公理のみ。
+- 実際の pointed-space 射影の普遍輸送は写像空間上で同値。豊穣合成・反転・底の同型で証明済み。
+  同じ始点と底を持つ全 lift prism の空間を構成し、パラメーター射影は trivial Kan fibration。
+  任意の prism 族を戻す普遍性と厳密な回収、終点評価と標準輸送の引き戻しの関手同型を証明した。
+  始点 fiber 同値を固定した pointed-space の普遍 lift prism の終点評価も同値。始点も動く族は未完。
+- 対象ビルド2952 jobs、公理監査5421宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
@@ -63,7 +63,7 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `parametrizedFiberTransport_squareIso`、`parametrizedPointedSpaceTransport_isQCatEquivalence`
+- `parametrizedPointedSpaceTransport_isQCatEquivalence`、`pointedUniversalPrismLiftEndpoint_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -95,10 +95,10 @@
 
 ### 次の一手
 
-固定した分類頂点 s,t と始点 fiber 同値 F に対し、pointed-space への lift prism 全体の
-終点評価を普遍輸送と F による前合成で比較し、同値性を示す。F も動かした族を構成し、
-区間上の表現空間の境界制限を trivial Kan fibration と示す（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
-mapping cylinder による比較、点・単体の表現空間の可縮性、一般の境界固定延長へ進む。
+全 lift prism の空間を、固定した始点 f:K→fiber だけでなく、初期値 K⊗M→fiber が M とともに
+動く族へ広げる。始点同値の空間上の fiber を固定始点の lift 空間と同定し、終点制限の Kan
+fibration 性と fiber ごとの同値性を合わせる（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
+その後 mapping cylinder の比較から区間の表現空間の境界制限、点・単体の可縮性、一般の延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 

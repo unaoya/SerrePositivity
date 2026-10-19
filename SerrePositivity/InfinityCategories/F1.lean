@@ -741,3 +741,7 @@ public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostIso
 public import SerrePositivity.InfinityCategories.F1.ParametrizedTransportSquare
 public import SerrePositivity.InfinityCategories.F1.PointCoslicePostIso
 public import SerrePositivity.InfinityCategories.F1.PointedSpaceParametrizedEquivalence
+public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftEvaluation
+public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftUniversal
+public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftEquivalence
