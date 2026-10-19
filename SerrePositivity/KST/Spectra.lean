@@ -504,3 +504,6 @@ public import SerrePositivity.KST.Spectra.CospanCentralWeightRestriction
 public import SerrePositivity.KST.Spectra.CospanLoopWeights
 public import SerrePositivity.KST.Spectra.SplitTrivialSpanHomotopy
 public import SerrePositivity.KST.Spectra.CospanLoopWeightComparison
+public import SerrePositivity.KST.Spectra.CospanOverWeightObjects
+public import SerrePositivity.KST.Spectra.CospanBousfieldKanWeight
+public import SerrePositivity.KST.Spectra.CospanBousfieldKanLoopComparison
