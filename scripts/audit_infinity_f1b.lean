@@ -2511,3 +2511,49 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_isFullyFaithful
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsPrecompositionEquivalence_op
+
+#check @SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting.op
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsFullyFaithful_op
+
+#check @SerrePositivity.InfinityCategories.F1B.KanRelativeTerminalVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.IsRelativeLimitCone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceOverOpIso_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLimitCone_iff_reverseCocone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIso_app_surjective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInitialVertex_iff_terminal_op
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeTerminalVertex_iff_of_iso_square
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceUnderOpIso_postcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_reverseCone
+
+#check @SerrePositivity.InfinityCategories.F1B.IsRelativeRightKanExtendedFrom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLimitCone_iff_restrict_of_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLimitCone_congr
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_relativeColimit_iff_op_rightLimit
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_iff_op_right
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeRightKanExtendedFrom_iff_of_heq_data
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left
+
+#check @SerrePositivity.InfinityCategories.F1B.KanRelativeRightKanVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanDiagrams
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_innerFibration
