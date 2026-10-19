@@ -27,7 +27,10 @@
   反転 end の同型の評価を各係数の実際の評価へ戻し、豊穣後合成の係数公式を証明。
   weighted nerve に全反転 Hom パラメータで前合成する射を構成し、path の最小点による係数の合成公式を検証。
   この射から実際の coslice の族・coherent 錐の全空間への族を構成し、底の図式を保つことを証明。
-  これは元の図式上の族。構成済みの錐の図式全体上の族はまだ未構成で、余極限性は未証明。詳細はコミットメッセージを参照。
+  end のパラメータ付き係数の射と weighted nerve の普遍評価が射として厳密に可換と証明。
+  一般の Hom の end の作用を既存の Kan end の作用と同定し、既存の coherent 錐の比較の全パラメータの評価を、
+  普遍点と実際の coslice の前合成族から得る射と同定。
+  元の図式上の照合は完了。構成済みの錐の図式全体上の族はまだ未構成で、余極限性は未証明。詳細はコミットメッセージを参照。
   F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3 に記載。
 - **残り**（依存順・時間は再開後の概算）：
   1. γ3c：𝒮 の一般の小さい余極限と任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
@@ -49,11 +52,13 @@
   `weightedColimitHomComparison_enriched_naturality`、
   `kanReflectedBousfieldKanColimitHomComparison_of_point`、`bousfieldKanCoherentConePoint_of_end_point`、
   `reflectedWeightedHomPostcomposition_evaluation`、`weightedCoherentCoefficient_precomposition`、
-  `weightedCoslicePrecompositionFamily`、`weightedCoherentConePrecompositionFamily_over`。
+  `weightedCoslicePrecompositionFamily`、`weightedCoherentConePrecompositionFamily_over`、
+  `bousfieldKanWeightedNerveEvaluation_parameter_map`、`kanReflectedBousfieldKanEndPostcomposition_eq`、
+  `bousfieldKanCoherentConeComparison_uncurry`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は ReflectedWeightedSectionsEvaluation・ReflectedWeightedHomCoefficients・WeightedConePrecomposition・WeightedCoslicePrecomposition、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
+- **未コミット**：今回の保存単位は WeightedSectionsParameters・WeightedNerveParameterEvaluation・WeightedConeEndPrecomposition・KanConeEndPrecomposition・BousfieldKanColimitConeComposition、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -62,13 +67,12 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：end のパラメータ付き係数の射と weighted nerve の評価の可換式を証明する。
-  `reflectedWeightedHomPostcomposition_evaluation` は end の係数での実際の合成を、
-  `weightedCoherentCoefficient_precomposition` は cone simplex の path 座標での実際の合成を与える。
-  両者を `bousfieldKanWeightedNerveEvaluation` で照合し、`reflectedHomHolimConeComparison` の全体での整合性へ進む。
-  `weightedCoslicePrecompositionFamily` は元の図式上の族を既に与える。次に構成済みの錐の図式全体の族 `a` を延長し、
-  頂点評価 `ha`・制限 `hr` を満たして `comparison_lifts` 判定へ渡す。
-  必要なら `hr` は関手同型による比較へ弱める。同じ始域・終域を持つ同値性だけでは代用しない。
+- **次の一手**：構成済みの反対錐 `c := bousfieldKanCoherentOppositeCone F` の図式全体上の族を構成する。
+  元の図式上の end と weighted nerve の全体の照合は `bousfieldKanCoherentConeComparison_uncurry` で完了。
+  F1 の `CoherentCompositionSimplex`（二つの Hom の同時パラメータと切替ラベル）と既存の `WeightedConeSimplex` を読み取り専用で照合し、
+  始点・中間点・F の tail を持つ cone simplex に拡張する。F1 の新規 API は現物とビルドを確認してから import する。
+  その simplex の整合性で錐全体の族 `a` を作り、頂点評価 `ha`・元の図式への制限 `hr` を満たして `comparison_lifts` 判定へ渡す。
+  `hr` は関手同型による比較でもよい。同じ始域・終域を持つ同値性だけでは代用しない。
   その後、反対の極限錐から元の余極限性を戻し、任意の coherent 図式へ接続する。
 
 ### E2a（既存の引き継ぎ）

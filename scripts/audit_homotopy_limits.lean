@@ -4288,3 +4288,60 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @weightedCoherentConePrecompositionFamily_over
 #print axioms weightedCoherentConePrecompositionFamily_over
+
+#check @weightedSectionParameterTransform
+#print axioms weightedSectionParameterTransform
+
+#check @weightedSectionsParameterMap
+#print axioms weightedSectionsParameterMap
+
+#check @weightedSectionsParameterMap_uncurry
+#print axioms weightedSectionsParameterMap_uncurry
+
+#check @weightedSectionsParameterMap_evaluation
+#print axioms weightedSectionsParameterMap_evaluation
+
+#check @weightedSections_diagram_eq_evaluation
+#print axioms weightedSections_diagram_eq_evaluation
+
+#check @weightedNerveCoefficients_parameter_transform
+#print axioms weightedNerveCoefficients_parameter_transform
+
+#check @weightedNerveSectionFromTransform_parameter_transform
+#print axioms weightedNerveSectionFromTransform_parameter_transform
+
+#check @bousfieldKanWeightedNerveEvaluation_parameter_map
+#print axioms bousfieldKanWeightedNerveEvaluation_parameter_map
+
+#check @weightedConeEndPrecomposition
+#print axioms weightedConeEndPrecomposition
+
+#check @weightedConeEndPrecomposition_evaluation
+#print axioms weightedConeEndPrecomposition_evaluation
+
+#check @weightedCosliceEndPrecompositionEvaluation
+#print axioms weightedCosliceEndPrecompositionEvaluation
+
+#check @weightedCosliceEndPrecompositionEvaluation_eq_family
+#print axioms weightedCosliceEndPrecompositionEvaluation_eq_family
+
+#check @reflectedHomHolimConeComparison_precomposition_uncurry
+#print axioms reflectedHomHolimConeComparison_precomposition_uncurry
+
+#check @kanReflectedHomPrecompositionDiagram_app
+#print axioms kanReflectedHomPrecompositionDiagram_app
+
+#check @kanReflectedBousfieldKanEndIso_evaluation
+#print axioms kanReflectedBousfieldKanEndIso_evaluation
+
+#check @kanReflectedBousfieldKanEndPostcomposition_eq
+#print axioms kanReflectedBousfieldKanEndPostcomposition_eq
+
+#check @bousfieldKanColimitPointParameter
+#print axioms bousfieldKanColimitPointParameter
+
+#check @bousfieldKanCoherentConeComparison_of_point_action
+#print axioms bousfieldKanCoherentConeComparison_of_point_action
+
+#check @bousfieldKanCoherentConeComparison_uncurry
+#print axioms bousfieldKanCoherentConeComparison_uncurry
