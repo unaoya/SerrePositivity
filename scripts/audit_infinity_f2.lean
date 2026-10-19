@@ -50,3 +50,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catPullbackFunctorCoreIso
 #check @SerrePositivity.InfinityCategories.F2.catPullbackFunctorCoreIso_fst
 #check @SerrePositivity.InfinityCategories.F2.catPullbackFunctorCoreIso_snd
+#check @SerrePositivity.InfinityCategories.F2.coreMap_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.corePathReplacementProjection_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coreMap_rightFibration_of_invertibleTargetLifting
+#check @SerrePositivity.InfinityCategories.F2.corePathReplacementMap_fibration
+#check @SerrePositivity.InfinityCategories.F2.corePathReplacementMap_internalHom_fibration
+#check @SerrePositivity.InfinityCategories.F2.qCatHom_postcomp
+#check @SerrePositivity.InfinityCategories.F2.qCatPullbackHomIso
+#check @SerrePositivity.InfinityCategories.F2.qCatPullbackHomCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.qCatPullbackInfinityCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementCone_vertex
