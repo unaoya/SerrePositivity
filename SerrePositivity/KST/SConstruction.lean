@@ -455,4 +455,15 @@ public import SerrePositivity.KST.SConstruction.TerminalFiberContraction
 public import SerrePositivity.KST.SConstruction.ZeroRowTerminalFiberHomotopy
 public import SerrePositivity.KST.SConstruction.TerminalFiberEquivalence
 
+public import SerrePositivity.KST.SConstruction.TerminalEndpointCircle
+public import SerrePositivity.KST.SConstruction.TerminalLoopPathFiber
+public import SerrePositivity.KST.SConstruction.TerminalLoopHomotopyFiber
+public import SerrePositivity.KST.SConstruction.TerminalLoopRestriction
+public import SerrePositivity.KST.SConstruction.ZeroRowLoopTerminalFactor
+public import SerrePositivity.KST.SConstruction.ZeroRowKanLoopEquivalence
+public import SerrePositivity.KST.SConstruction.PointedPiLocalized
+public import SerrePositivity.KST.SConstruction.ZeroRowLoopLocalized
+public import SerrePositivity.KST.SConstruction.KanAssemblyEquivalence
+public import SerrePositivity.KST.SConstruction.BoundaryOmegaSpectrum
+
 /-! # ∞-S• 構成と連結 K 理論 -/
