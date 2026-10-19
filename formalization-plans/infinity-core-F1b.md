@@ -32,8 +32,7 @@
 - 終端辺上の cocartesian 辺を可逆化する図式の外ホーン逆像からの延長を、任意の pullback 表示で証明。
   終端辺の逆像への制限で条件を確認し、可逆化する図式の表す相対指数の辺の cartesian 性を証明。
   終点指定の特殊持ち上げと合わせ、`kanFiberwiseHomProjection` の cartesian fibration 性まで証明。
-- join の inner fibration 性に加え、cocartesian な p の相対 join の底への cocartesian fibration 性を証明。
-  左包含は任意の底変換後も cocartesian 辺を保存。相対指数の制限は任意の cartesian 辺を保存する。
+- cocartesian な p の相対 join の底への cocartesian 性、左包含の底変換後の輸送の保存、相対指数の制限の cartesian 辺の保存を証明。
 - left fibrations の各 fiber の同値から全空間と任意の底変換後の前合成同値を導く安全な判定を証明。
   固定始域の comma の標的射影は left fibration。fiber は区間写像空間と同型、coslice 比較は底変換後も前合成同値。
 - 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。対象の族の各頂点に必要な余極限だけで、普遍余錐全体からの引き戻しは自明 Kan fibration。
@@ -43,8 +42,9 @@
   恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示を証明。標準余錐からの局所比較は単射な前合成同値。
   局所余極限から、comma の相対 join の図式を各 fiber で普遍な余錐として coherent に構成済み。
   右端の候補と指定変換を抽出済み。反転による局所比較と標準余錐からの比較は厳密に一致。
-- 最終検証：F1・F1B 同時ビルド成功（3508 jobs）、同時 import 検査成功（F1 5946・F1B 3717 宣言）。
-  公理監査成功（3721 宣言、標準三公理のみ、1017 モジュールに straightening なし）。ソース名衝突 0。
+  comma の恒等矢印から各矢印への比較も構成。元の K を固定し、底への射影は標準の指定変換と一致。
+- 最終検証：F1・F1B 同時ビルド成功（3525 jobs）、同時 import 検査成功（F1 6011・F1B 3764 宣言）。
+  公理監査成功（3768 宣言、標準三公理のみ、1024 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -72,7 +72,7 @@
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
-- `F1B.exists_kanLeftComma_diagram_with_colimit_fibers` / `F1B.kanRelativeJoinFiberCocone`
+- `F1B.exists_kanLeftComma_diagram_with_colimit_fibers` / `F1B.kanLocalCommaIdentityComparison`
 
 ### 依存と提供
 
@@ -83,7 +83,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：候補と指定変換、slice と円柱の反転、標準局所比較の同値、集約・監査・本書）。
+- なし（本保存単位：指定変換の回収、comma の最大値による変形、恒等矢印からの大域・局所比較、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,10 +98,10 @@
 
 ### 次の一手
 
-- `exists_kanLeftComma_candidate` で候補と指定変換を抽出済み。標準局所比較の同値性も証明済み。
-  次は `kanLeftCommaLift` による指定変換の回収と、恒等矢印の包含からの comma 内の比較を構成する。
-  `kanRelativeJoinFiberCocone` の標準局所比較への制限を `LeftKanCoconeTransport` の余錐と同定し、
-  `IsLeftKanExtension` の存在へ接続する（Kerodon 7.3.4–5）。
+- `kanLocalCommaIdentityComparison` は元の K を固定し、底では slice の標準変換を表す。
+  次はこの比較と `kanRelativeJoinShiftPrism` を使い、相対 join 内の局所余錐間の輸送の全体を構成。
+  `kanRelativeJoinFiberCocone` の標準局所比較への制限を `LeftKanCoconeTransport` の余錐と比較し、
+  `IsLeftKanExtension` の存在へ接続する（Kerodon 7.3.4–5）。四境界の一致だけで存在を仮定しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

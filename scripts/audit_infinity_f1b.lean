@@ -1735,3 +1735,15 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiberViaOpposite_eq
 
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyOpposite_double_h
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaLift_homotopy_h
+
+#check @SerrePositivity.InfinityCategories.F1B.kanUnitCommaContraction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaIdentityComparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLocalCommaIdentityComparison_source
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLocalCommaIdentityComparison_projection
