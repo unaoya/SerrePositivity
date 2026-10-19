@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctor
 import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYoneda
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorExact
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeSquareModel
@@ -1142,10 +1143,35 @@ example : SSet.Quasicategory
 
 #print axioms SerrePositivity.InfinityCategories.dgModuleExtensionRepresentableIso_naturality
 
+#print axioms SerrePositivity.InfinityCategories.dgModuleStrictNatTransOfHomNaturality
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTrans_homotopy_vertex_edge
+#print axioms SerrePositivity.InfinityCategories.dgModuleFunctorIsoOfStrictNatTrans
+#print axioms SerrePositivity.InfinityCategories.dgModuleExtensionYonedaCompositeIso
+#print axioms SerrePositivity.InfinityCategories.isExactFunctor_of_preserves_chosen_cofibers
+#print axioms SerrePositivity.InfinityCategories.isExactFunctor_of_functorIso
+#print axioms SerrePositivity.InfinityCategories.dgModulePropertyInclusion_isExactFunctor
+#print axioms SerrePositivity.InfinityCategories.dgPretriangulatedYoneda_reflectsPushoutSquare
+#print axioms SerrePositivity.InfinityCategories.isExactFunctor_of_ulift
+#print axioms SerrePositivity.InfinityCategories.dgPretriangulatedFunctor_isExactFunctor
+#print axioms SerrePositivity.InfinityCategories.dgQuotientNerveProjection_isExactFunctor
+#print axioms SerrePositivity.InfinityCategories.resolvedDGQuotientFunctor_isExactFunctor
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTrans,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYonedaStrict,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransVertex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYonedaNerveIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModulePropertyExactInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedYonedaExact,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFunctorLiftedExact,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFunctorExact,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctor,
+    `SerrePositivity.InfinityCategories.Stable.ExactFunctorChoice,
+    `SerrePositivity.InfinityCategories.Stable.UniverseExactFunctor,
     `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYoneda,
     `SerrePositivity.InfinityCategories.Derived.DGModuleSquareTopMiddleData,
     `SerrePositivity.InfinityCategories.Derived.DGModuleSquareTopMiddleHomotopy,

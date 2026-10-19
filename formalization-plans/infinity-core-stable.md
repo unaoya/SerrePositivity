@@ -11,7 +11,7 @@
 - fiber/cofiber 比較の二脚・対角・ホモトピーと同値性、実 slice/coslice 比較辺を照合。同じ四角形の関手同型輸送から任意四角形の双カルテジアン判定と `derivedInfinityCategory_isStable` を証明済み。
 - 通常の h D(S) と二切断の D3 を接続。実 suspension と複体シフトの自然同型・全整数 CommShift・実接続射の符号を照合し、標準 cofiber 列の D3 像を Mathlib の cone 三角形と同定済み。
 - 全 distinguished triangle の標準 cofiber 表示から保存・反映・逆関手の三角性を証明。`derivedStableHomotopyEquivalenceIsTriangulated` は単位・余単位のシフト整合性も持つ。通常の導来圏から三角構造を引き戻して済ませていない。 D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/DGModuleFunctorExact.lean`・`Derived/DGModuleFunctorConePreservation.lean`・`Derived/DGModuleExtensionYoneda.lean`。零角変更の全四角形ホモトピーと対角固定、下側三角形固定、四頂点の可逆性から FunctorIso を構成。終点 cone 同型と合成し、標準 cone 四角形の native 関手像の実押し出し性を証明。同じ実辺の cofiber 四角形の選択独立性で全 cofiber 保存へ拡張し、任意の全 dg 加群間の dg 関手の完全性 `dgModuleFunctorNerve_isExactFunctor` を追加仮定なしで証明。表現可能加群の延長同型について全 Hom 複体上の自然性 `dgModuleExtensionRepresentableIso_naturality` も証明済み。検証結果は保存コミットに記録する。
+- β3 の入口：`Derived/DGQuotientExactFunctor.lean`・`Derived/DGPretriangulatedFunctorExact.lean`。全次数の閉加群射族の厳密 dg 自然変換、ホモトピーの実頂点辺の同定、加群同型成分から実関手同型への昇格を構成。延長・Yoneda 比較を共通宇宙の全 FunctorIso へ束ねた。三角的対象条件の包含の完全性、前三角 dg Yoneda の完全性と押し出し反映、全加群延長の完全性から、任意の前三角 dg 圏間の関手の native nerve の完全性を証明。実宇宙同型と ULift の cofiber 保存の降下を通して元の宇宙でも公開。局所 K-flat な商射影と、元の Hom の平坦性を要求しない `resolvedDGQuotientProjection`・`resolvedDGQuotientFunctor` の完全性まで完成。局所化の全 ∞ 関手圏での普遍性は未証明。検証結果は保存コミットに記録する。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -38,7 +38,7 @@
 
 ### 残り（依存順、時間は推定）
 
-- β3：Drinfeld 商の dg nerve の局所化普遍性、完全商関手、Verdier 列。平坦分解後の商の安定性は完成。Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。残り 1〜2 万行、複数日。
+- β3：Drinfeld 商の dg nerve の局所化普遍性と Verdier 列。平坦分解後の商の安定性と商関手の完全性は完成。Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。残り 1〜2 万行、複数日。
 - β5：非可換 dg 代数の D(A)、相対 tensor・Hom の ∞ 関手化、Morita 不変性。L4 §26、HA §7.1.2。1〜3 万行、複数日。
 - β4：dg gluing の nerve と安定 ∞ 圏の lax pullback の同値。α2b を読み取り専用で待つ。Tamme §1、Kuznetsov–Lunts。1〜2 万行、複数日。
 
@@ -74,7 +74,7 @@
 - `dgModuleConeBoundaryLeftCandidate_suffix_equation`、`dgModuleConeBoundaryRightCandidate_suffix_equation`、`dgModuleConeBoundaryCandidate_common`。
 - `dgModuleConeCocone_isColimit`、`dgModuleConeSquare_isPushout`、`dgModuleCofiberSquare`、`dgModuleNerve_cofiber_exists`。
 - `dgModuleFiberCone_isLimit`、`dgModuleFiberSquare_isPullback`、`dgModuleFiberSquareOfMorphism`、`dgModuleNerve_fiber_exists`。
-- `dgModuleCofiberFiberLift_isInvertible`、`dgModuleFiberCofiberDesc_isInvertible`、`dgModuleCofiberFiberComparisonSliceEdge_projection`、`dgModuleCofiberFiberComparisonSliceEdge_isInvertible`、`dgModuleConeSquare_isPullback`・`dgModuleFiberSquare_isPushout`・`dgModuleNerve_isStable`・`dgYonedaModuleNerve`・`dgYonedaModuleNerve_isFullyFaithful`・`dgModulePropertyNerve_isStable`・`dgHomotopyRepresentableNerve_isStable`・`dgRepleteYonedaNerveEquivalence`・`dgNerveULift_isStable_of_pretriangulated`・`uliftJoinIso`・`uliftSliceOverIso`・`uliftSliceUnderIso`。 `isTerminalVertex_iff_ulift`・`isInitialVertex_iff_ulift`・`hasZeroVertex_iff_ulift`・`isLimitCone_iff_ulift`・`isColimitCone_iff_ulift`・`hasLimit_iff_ulift`・`hasColimit_iff_ulift`。 `isPullbackSquare_iff_ulift`・`isPushoutSquare_iff_ulift`・`isStable_of_ulift`・`dgNerve_isStable_of_pretriangulated`。 `dgQuotient_isDGPretriangulated`・`dgQuotientNerve_isStable`・`isDGPretriangulated_of_quasiEquivalence`・`resolvedDGQuotientNerve_isStable`。 `dgModuleFunctorConeIso`・`dgModuleFunctorConeComparison_inl`・`dgModuleFunctorZeroIso`。 `DGModuleSquareData.postcomposeFunctorIso`・`DGModuleSquareData.map_square`・`dgModuleFunctorConeSquareModel_isPushout`・`dgModuleFunctorConeSquareModel_lower`・`dgModuleTriangleMiddleHomotopy_diagonal`。 `dgModuleFunctorConeSquare_isPushout`・`dgModuleFunctorNerve_preservesCofiber`・`dgModuleFunctorNerve_isExactFunctor`・`dgModuleExtensionRepresentableIso_naturality`。
+- `dgModuleCofiberFiberLift_isInvertible`、`dgModuleFiberCofiberDesc_isInvertible`、`dgModuleCofiberFiberComparisonSliceEdge_projection`、`dgModuleCofiberFiberComparisonSliceEdge_isInvertible`、`dgModuleConeSquare_isPullback`・`dgModuleFiberSquare_isPushout`・`dgModuleNerve_isStable`・`dgYonedaModuleNerve`・`dgYonedaModuleNerve_isFullyFaithful`・`dgModulePropertyNerve_isStable`・`dgHomotopyRepresentableNerve_isStable`・`dgRepleteYonedaNerveEquivalence`・`dgNerveULift_isStable_of_pretriangulated`・`uliftJoinIso`・`uliftSliceOverIso`・`uliftSliceUnderIso`。 `isTerminalVertex_iff_ulift`・`isInitialVertex_iff_ulift`・`hasZeroVertex_iff_ulift`・`isLimitCone_iff_ulift`・`isColimitCone_iff_ulift`・`hasLimit_iff_ulift`・`hasColimit_iff_ulift`。 `isPullbackSquare_iff_ulift`・`isPushoutSquare_iff_ulift`・`isStable_of_ulift`・`dgNerve_isStable_of_pretriangulated`。 `dgQuotient_isDGPretriangulated`・`dgQuotientNerve_isStable`・`isDGPretriangulated_of_quasiEquivalence`・`resolvedDGQuotientNerve_isStable`。 `dgModuleFunctorConeIso`・`dgModuleFunctorConeComparison_inl`・`dgModuleFunctorZeroIso`。 `DGModuleSquareData.postcomposeFunctorIso`・`DGModuleSquareData.map_square`・`dgModuleFunctorConeSquareModel_isPushout`・`dgModuleFunctorConeSquareModel_lower`・`dgModuleTriangleMiddleHomotopy_diagonal`。 `dgModuleFunctorConeSquare_isPushout`・`dgModuleFunctorNerve_preservesCofiber`・`dgModuleFunctorNerve_isExactFunctor`・`dgModuleExtensionRepresentableIso_naturality`。 `dgModuleExtensionYonedaCompositeIso`・`dgModulePropertyInclusion_isExactFunctor`・`dgPretriangulatedYoneda_reflectsPushoutSquare`・`isExactFunctor_of_ulift`・`dgPretriangulatedFunctor_isExactFunctor`・`dgQuotientNerveProjection_isExactFunctor`・`resolvedDGQuotientFunctor_isExactFunctor`。
 
 ### 依存と提供
 
@@ -90,12 +90,12 @@
 
 - D7・β3 の零化・平坦模型の対象・集約ビルドと両公理監査成功。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
-- β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性は完成。全 ∞ 関手圏の局所化普遍性、商関手の完全性と Verdier 列は未完。
+- β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：次は全 Hom 複体上の延長・Yoneda 比較を実関手同型へ束ねる。`DGModuleExtensionYoneda` の `dgModuleExtension_yoneda_map` は代表入力の延長 Hom 写像を対角 bimodule との tensor の左作用と同定し、`dgModuleExtensionRepresentableIso_naturality` は全 Hom の後合成／前合成による厳密自然性を供給。`DGNerve.StrictNatTrans` の閉零成分を `dgModuleExtensionRepresentableIso` の順射の cycle とし、この式を各次数の斉次元で評価して自然性を得る。`StrictNatTrans.homotopy` を使うには始域も全加群と共通宇宙へ上げる（`DGUniverseLift`）。成分は実加群同型なので pointwise 可逆性から全 FunctorIso を構成する。三角的対象条件の包含の完全性は、`DGModulePropertyChoices` の標準 cofiber と `dgFullSquareLift_inclusion`、`nonempty_cofiberSquareFunctorIso` で示せる。`DGModuleFunctorExact` は全加群間の任意 dg 関手の native nerve の完全性を供給済み。包含と Yoneda 同値を介して前三角 dg 圏間の関手・実商射影・resolved 関手の完全性へ進む。部分圏への余極限性の反映は `FullColimitReflection.isColimitCone_of_fullInclusion`。全 ∞ 関手圏の局所化普遍性、Verdier 列、β5、β4 は未完。
+- β3：次は実商関手が反転する辺のクラスを cofiber から指定し、F1B の局所化界面へ接続する。`dgPretriangulatedFunctor_isExactFunctor` は任意の前三角 dg 関手の元の宇宙の完全性を供給し、`resolvedDGQuotientFunctor_isExactFunctor` は平坦分解後の実商関手に適用済み。`ResolvedDGQuotientZeroObjects.resolvedDGQuotientFunctor_kills` と、`Stable/ZeroCofiberIso` の `CofiberSquare.homMk_isIso_of_zero` を使い、cofiber が指定零化対象と実同型になる辺の反転を証明できる。全加群の cone の二包含や次数 −1 ホモトピーは保持済み。`F1B/Localization` の `InvertsEdges`・`localizationPrecomposition`・`IsLocalization` を使い、同じ宇宙の任意の標的について前合成の完全忠実性・本質的全射性を実際の関手圏で証明する必要がある。dg 関手への延長や H⁰ の商の同値だけで済ませない。原典の dg 商の局所化の証明を、既存の pinched Hom と F1B の界面で実装する。続いて零化する完全関手への前合成同値と Verdier 列。β5、β4 は未完。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
@@ -145,13 +145,13 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
-D7 の後に着手済み。実零化、平坦模型、Hom 準同型による充満忠実性、Yoneda 模型との同値、前三角 dg 圏と平坦分解後の商の実 dg nerve の安定性まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
+D7 の後に着手済み。実零化、平坦模型、Hom 準同型による充満忠実性、Yoneda 模型との同値、前三角 dg 圏と平坦分解後の商の実 dg nerve の安定性、商関手の完全性まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
 F1b の `Localization.lean` の `IsLocalization` を入口とし、同じ宇宙の標的への
 `localizationPrecomposition` が反転関手の全部分 ∞ 圏との同値になることを証明する。
 
 - L4 §26（archive に移管）の半自由 dg 圏分解・Hom の K-flat 性・商の H⁰ 比較を読むだけで使う。
 - 必要な平坦分解を先行し、未分解の path 商が無条件に Verdier 商であるとはしない。
-- 前三角 dg 圏の平坦分解後の商の実安定性は完成。商関手の完全性、
+- 前三角 dg 圏の平坦分解後の商の実安定性と商関手の完全性は完成。
   零化する完全関手への前合成の同値、Verdier 列を構成する（見積もり 1〜2 万行）。
 - H⁰ の Verdier 商の同値だけで ∞ 関手圏の普遍性を済ませない。
 

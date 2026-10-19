@@ -333,6 +333,8 @@ public import SerrePositivity.InfinityCategories.Stable.UniverseSquareCompatibil
 public import SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares
 public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
 public import SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorChoice
+public import SerrePositivity.InfinityCategories.Stable.UniverseExactFunctor
 
 /-! # 安定 ∞ 圏の基盤
 
