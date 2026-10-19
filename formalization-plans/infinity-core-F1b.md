@@ -35,16 +35,16 @@
 - 終端辺上の cocartesian 辺を可逆化する図式の外ホーン逆像からの延長を、任意の pullback 表示で証明。
   終端辺の逆像への制限で条件を確認し、可逆化する図式の表す相対指数の辺の cartesian 性を証明。
   終点指定の特殊持ち上げと合わせ、`kanFiberwiseHomProjection` の cartesian fibration 性まで証明。
-- 二つの inner fibration の join と相対 join の底への射影の inner fibration 性を証明。
-  右因子を保つ joinMap の単体の持ち上げ、単体・混合外ホーンの最後の面による像の検出も証明。
-- 最終検証：F1・F1B 同時ビルド成功（3348 jobs）、同時 import 検査成功（F1 5421・F1B 3461 宣言）。
-  公理監査成功（3465 宣言、標準三公理のみ、931 モジュールに straightening なし）。
+- join の inner fibration 性に加え、cocartesian な p の相対 join の底への cocartesian fibration 性を証明。
+  左包含は任意の底変換後も cocartesian 辺を保存。可逆化する図式の制限は相対指数の cartesian 辺になる。
+- 最終検証：F1・F1B 同時ビルド成功（3355 jobs）、同時 import 検査成功（F1 5421・F1B 3481 宣言）。
+  公理監査成功（3485 宣言、標準三公理のみ、938 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
 - 1. fiber ごとの普遍余錐性から族の制限の相対始点境界充填を導き、相対 join へ組み立てる。
   Kerodon Lemma 7.3.4.5–6・Prop 7.3.4.7・Prop 7.3.5.5／HTT §4.3。24〜60 時間。
-  相対 join の底への射影の cocartesian 性、制限の輸送との両立、fiber 条件の全空間への移送が必要。
+  制限の全体の cartesian 輸送との両立と、fiber 条件の全空間への移送が必要。
   その後 oriented fiber product で全部分 ∞ 圏からの存在へ接続し、任意の δ に沿う存在も扱う。
 - 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
   Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
@@ -70,7 +70,7 @@
 - `kanCocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_innerFibration` / `kanFiberwiseHom_quasicategory`
 - `exists_kanFinalHorn_extension_of_edgeRestriction` / `kanFiberwiseHom_isCartesianEdge_of_inverting`
-- `kanFiberwiseHomProjection_cartesianFibration` / `kanRelativeJoinBaseProjection_innerFibration`
+- `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 
 ### 依存と提供
 
@@ -81,8 +81,7 @@
 
 ### 未コミット
 
-- `KanJoinMixedInitialHorn`・`KanJoinMapCocartesianEdges`・`KanCocartesianProductProjection` は証明作業中。
-  F1/F1B の衝突修正を優先して保存対象から外し、名前空間を F1B に移した。
+- なし（本保存単位：混合外ホーン、相対 join の底への輸送、底変換と制限との両立、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -90,17 +89,17 @@
 - 保存 `43c25ad6` は D レーンの 9 ファイルも同梱。履歴は変更せず、以後 `git commit --only` で所有パスを限定。
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
 - `kanFiberwiseHom` の cartesian fibration 性は cocartesian な p について証明済み。
-  相対 join の底への射影への適用と、普遍余錐から全空間の相対始点境界充填は未完。
+  相対 join の底への射影にも適用可能。普遍余錐から全空間の相対始点境界充填は未完。
 - 大域的 Hom 普遍性を仮定した一意性は証明済みだが、点ごとの Kan 条件からの導出は未完。
 - B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手との比較は未形式化。
   B2 は同じ宇宙の標的に対する普遍性。一般の C[W⁻¹] の存在は主張しない。
 
 ### 次の一手
 
-- `kanJoinSimplex_exists_preimage_of_left` に最後の面の左係数を入れ、混合外ホーンの充填候補を作る。
-  `kanJoinInitialHorn_ext_of_last_face_joinMap` で境界を検証し、純粋な左因子の充填と合わせ cocartesian 性を得る。
-  底変換と prism の第二射影との合成で相対 join の底への cocartesian 性、左包含の保存を得る。
-  続いて制限の輸送との両立、fiber の境界充填の全空間への移送へ進む（Kerodon 7.3.4.5–6）。
+- `F1B.kanRelativeJoinCurry_pre_isCartesianEdge` により、制限は構成済みの特殊な輸送を cartesian 辺へ送る。
+  任意の cartesian 輸送との両立と、制限の fiber の始点境界充填の全空間への移送を証明する。
+  `kanRelativeJoinCoconeFiber_initialBoundary` の fiber の入力を使い、
+  `exists_kanFiberwise_extension_of_initialBoundary` の仮定を満たす（Kerodon 7.3.4.5–6）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

@@ -1596,3 +1596,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.kanJoinHom_ext_of_last_face_joinMap
 #check @SerrePositivity.InfinityCategories.kanJoinInitialHorn_ext_of_last_face_joinMap
 #check @SerrePositivity.InfinityCategories.F1B.kanScaffoldBaseChange_overPullbackMap
+#check @SerrePositivity.InfinityCategories.F1B.kanJoinMap_right_id_initialHorn_hasLift_of_mixed
+#check @SerrePositivity.InfinityCategories.F1B.kanJoinMap_right_id_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.F1B.kanJoinMap_right_id_inl_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.F1B.kanJoinMap_right_id_inr_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.F1B.kanPrismEndpoint_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinInl_base_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinInr_base_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinBaseProjection_cocartesianFibration
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinInl_overPullback_preservesCocartesian
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinCurry_pre_isCartesianEdge
+
+section
+universe u
+open CategoryTheory
+open SerrePositivity.InfinityCategories
+variable {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [SSet.Quasicategory D]
+#synth CartesianFibration (kanFiberwiseHomProjection (relativeJoinBaseProjection p (𝟙 C)) D)
+end
