@@ -73,4 +73,14 @@ lemma FunctorIso.app_eq_evaluate {K X : SSet.{u}}
   apply Iso.ext
   simpa [FunctorIso.app, FunctorIso.toNatIso, VertexIso.map, eqToHom_app] using h
 
+/-- 概要：関手同型の実際の頂点成分は逆同型を保つ。
+方針：頂点評価による同型の像の反転を使う。
+規約：既存の成分の選択を保持する。
+使われ方：普遍単位の成分と余単位の逆を結ぶ。 -/
+lemma FunctorIso.app_symm {K X : SSet.{u}} [Quasicategory K] [Quasicategory X]
+    {f g : K ⟶ X} (e : FunctorIso f g) (k : K _⦋0⦌) :
+    FunctorIso.app e.symm k = (e.app k).symm := by
+  rw [FunctorIso.app_eq_evaluate, FunctorIso.app_eq_evaluate]
+  simp [vertexIso_map_symm, Iso.trans_symm, Iso.trans_assoc]
+
 end SerrePositivity.InfinityCategories

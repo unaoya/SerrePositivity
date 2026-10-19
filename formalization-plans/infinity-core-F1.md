@@ -34,9 +34,9 @@
   全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
-  任意の底上の小さい次数 fiber の表現空間は可縮 Kan。分類図式、単位・余単位の成分、底変換の比較と単位の作用の整合性を構成済み。普遍図式の族全体の再構成と恒等関手との同型も構成済み。任意の族の制限と個別の選択分類を接続し、余単位の制限の三角形を図式・全空間の両側で証明済み。cartesian な比較の図式・pointed 側の前合成との一致、余単位の底変換の自然性も証明済み。任意の族の制限に対する自然性、普遍余単位の制限と選択した族の余単位の一致も証明済み。実際の頂点成分は普遍再構成の成分比較と個別の余単位の合成そのものと証明済み。
+  任意の底・小さい次数 fiber の分類図式と比較を構成。指定した単位変換の実際の射は余単位の逆であり、両者の底変換の自然性と普遍比較の実際の成分との一致を証明済み。族の制限の自然性と余単位の整合性も全高次パラメーターで証明済み。
   任意の相対射の collage は区間と底の積上の left fibration。指定両端の表現と coherent な実現を相互に回収し、境界固定の可縮 fiber で族全体の一意性を証明済み。任意の底上の coherent な図式の実際の写像空間比較は同値（区間・pinched 模型、小さい場合は宇宙縮小後の比較とも）。
-- 対象ビルド3159 jobs、公理監査6676宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+- 対象ビルド3162 jobs、公理監査6695宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -44,7 +44,7 @@
 
 1. 次数 fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱め、相対表現の延長へ一般化する。
    Kerodon Theorem 5.6.5.12、Corollary 5.6.5.15。40〜160時間。
-2. 任意の底上の写像空間比較の同値性を使い、単位・余単位の自然性と三角恒等式を完成する。
+2. 一般の left fibrations の相対射の族を一つの coherent な straightening 関手へ束ね、単位・余単位と随伴の三角恒等式を完成する。
    Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
 3. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
    Kerodon Theorem 5.6.0.2、§5.5。80〜240時間以上。
@@ -66,7 +66,7 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningCounit`、`universalCoherentReconstructionCounitIso`、`coherentStraighteningCurriedCounit_universal`、`universalCoherentReconstructionCounitIso_app`、`leftUnstraighteningMappingSpaceMap_isQCatEquivalence`、`leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence`
+- `coherentStraighteningCounit`、`universalCoherentReconstructionCounitIso`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`coherentStraighteningUnit_baseChange_naturality`、`universalCoherentReconstructionUnitIso_app`、`leftUnstraighteningMappingSpaceMap_isQCatEquivalence`、`leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -92,12 +92,12 @@
 - 任意の単射の境界固定延長と高次パラメーターの同時持ち上げは、射影の各次数の fiber が小さい場合に証明済み。
   任意の底上の coherent 空間値図式の unstraightening にも底・パラメーターの小ささを仮定せず適用済み。
   各次数の fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱める相対延長は未証明。
-- 普遍再構成と任意の族・個別の選択分類の接続は証明済み。余単位の制限の三角形は随伴の三角恒等式とは別。straightening の関手全体の自然性・随伴の三角恒等式は未証明。
+- 単位・余単位の成分と底変換の自然性は証明済み。一般の left fibrations 全体への coherent な straightening の組み立て・随伴の三角恒等式は未証明。
 
 ### 次の一手
 
-選択した単位変換を表現空間内で余単位の逆と同定し、単位・余単位の同じ比較による整合性へ進む。
-coherentStraighteningUnitWitnessEdge を可縮な transportWitnessSpace 内の頂点同型へ戻す。同じ二表現の頂点同型の一意性を使い、その像の単位変換が coherentStraighteningCounit の逆と一致することを証明する。普遍余単位の成分の一致と組み合わせ、自然性と随伴の三角恒等式への入力をそろえる。
+一般の選択表現の間の相対射の族を、分類図式の変換空間への射として束ねる。
+exists_coherentFamily_recovery と UnstraighteningFamilyWitness を一般の p・q の選択表現へ拡張する。指定端点の collage の実現と一意性を使い、relativeFunctorSpace q p 全体をパラメーターとして straightening の変換空間への比較を構成し、その恒等・合成との整合性を束ねる。
 全対象での自然性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。

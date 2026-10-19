@@ -40,4 +40,14 @@ lemma FunctorIso.precomp_eqToIso {A B X : SSet.{u}} {f g : B ⟶ X}
   change VertexIso.map (Iso.refl _) ((pre i).app X) = Iso.refl _
   simp [VertexIso.map]
 
+/-- 概要：関手同型の前合成は逆同型を保つ。
+方針：前合成を同じ頂点同型の像として計算する。
+規約：逆向きの比較を独立に選ばない。
+使われ方：余単位の自然性を単位側へ移す。 -/
+lemma FunctorIso.precomp_symm {A B X : SSet.{u}} {f g : B ⟶ X}
+    (e : FunctorIso f g) (i : A ⟶ B) :
+    FunctorIso.precomp e.symm i = (e.precomp i).symm := by
+  change VertexIso.map e.symm ((pre i).app X) = (VertexIso.map e ((pre i).app X)).symm
+  exact vertexIso_map_symm e ((pre i).app X)
+
 end SerrePositivity.InfinityCategories

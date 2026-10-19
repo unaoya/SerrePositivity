@@ -102,4 +102,15 @@ lemma LeftTransportRepresentation.diagramIso_eqToIso {E B : SSet.{u + 1}}
   apply Iso.ext
   simp [LeftTransportRepresentation.diagramIso, VertexIso.map]
 
+/-- 概要：表現の比較を逆にすると分類図式の同型も逆になる。
+方針：同じ射影による同型の像の反転を計算する。
+規約：逆向きの比較を独立に選ばない。
+使われ方：単位の辺の比較を余単位の逆へ写す。 -/
+lemma LeftTransportRepresentation.diagramIso_symm {E B : SSet.{u + 1}}
+    {p : E ⟶ B} [LeftFibration p] (R S : LeftTransportRepresentation p)
+    (a : VertexIso (transportWitnessVertex R) (transportWitnessVertex S)) :
+    S.diagramIso R a.symm = (R.diagramIso S a).symm := by
+  apply Iso.ext
+  simp [LeftTransportRepresentation.diagramIso, VertexIso.map]
+
 end SerrePositivity.InfinityCategories
