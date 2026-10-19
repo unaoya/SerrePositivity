@@ -427,4 +427,11 @@ public import SerrePositivity.KST.SConstruction.MultiInnerSCoordinateCore
 public import SerrePositivity.KST.SConstruction.MultiInnerSCoordinates
 public import SerrePositivity.KST.SConstruction.PathContractionAssembly
 
+public import SerrePositivity.KST.SConstruction.PathContractionSection
+public import SerrePositivity.KST.SConstruction.RawCofiberCylinderDesc
+public import SerrePositivity.KST.SConstruction.ReducedPathBasedContraction
+public import SerrePositivity.KST.SConstruction.ReducedPathContraction
+public import SerrePositivity.KST.SConstruction.ZeroRowContractionDegeneracy
+public import SerrePositivity.KST.SConstruction.ZeroRowPathContraction
+
 /-! # ∞-S• 構成と連結 K 理論 -/

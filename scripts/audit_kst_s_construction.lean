@@ -6623,3 +6623,72 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_zeroRow_boundary
 #print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_zeroRow_boundary
+
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_section
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_section
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberCylinderSquare
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberCylinderSquare
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberCylinderDesc
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberCylinderDesc
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberCylinderDesc_quotient
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberCylinderDesc_quotient
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberCylinderDesc_point
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberCylinderDesc_point
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberCylinder_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberCylinder_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalBasedContraction
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalBasedContraction
+
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_section_quotient
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_section_quotient
+
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder
+
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder_quotient
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder_quotient
+
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder_point
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder_point
+
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder_zero
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder_zero
+
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder_one
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalCylinder_one
+
+#check @SerrePositivity.KST.SConstruction.reducedPathDiagonalContraction
+#print axioms SerrePositivity.KST.SConstruction.reducedPathDiagonalContraction
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathToQuotient_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathToQuotient_degeneracy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathContraction_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathContraction_degeneracy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathToQuotient
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathToQuotient
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathContraction
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathContraction
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathContraction_raw
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathContraction_raw
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathContraction_zero
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathContraction_zero
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathContraction_one
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathContraction_one
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathContractionHomotopy
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathContractionHomotopy
+
+#check @SerrePositivity.KST.SConstruction.zeroRowPathContraction_boundary
+#print axioms SerrePositivity.KST.SConstruction.zeroRowPathContraction_boundary
