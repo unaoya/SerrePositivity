@@ -293,3 +293,14 @@ public import SerrePositivity.KST.Spectra.CosimplicialSequenceReedyAdjoint
 public import SerrePositivity.KST.Spectra.CosimplicialSequenceReedyReplacement
 public import SerrePositivity.KST.Spectra.ReplacedOrdinaryTotalization
 public import SerrePositivity.KST.Spectra.OmegaSpectrumReplacedTotalization
+public import SerrePositivity.KST.Spectra.StableTotalizationEvaluation
+public import SerrePositivity.KST.Spectra.StableTotalizationComparison
+public import SerrePositivity.KST.Spectra.StableTotalizationMilnorKernel
+public import SerrePositivity.KST.Spectra.StableTotalizationMilnorExactness
+public import SerrePositivity.KST.Spectra.StableTotalizationConvergence
+public import SerrePositivity.KST.Spectra.HomotopyTotalizationEvaluation
+public import SerrePositivity.KST.Spectra.HomotopyTotalizationTower
+public import SerrePositivity.KST.Spectra.HomotopyTotalizationMilnorComparison
+public import SerrePositivity.KST.Spectra.HomotopyTotalizationMilnorExactness
+public import SerrePositivity.KST.Spectra.HomotopyFiberVanishing
+public import SerrePositivity.KST.Spectra.RationalShapiroFiberVanishing
