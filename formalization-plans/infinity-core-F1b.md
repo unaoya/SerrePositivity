@@ -10,8 +10,6 @@
   v2 の F1b レーンとして、B4・B5 の後は [F2 計画](infinity-core-F2.md) の第 1 部へ進む。
 - B4：任意の δ と指定変換の相対 join 表示、両端の同時厳密化、h Fun の類の保存、
   元の左右 Kan 条件と厳密化後の局所極限・余極限性の同値まで証明。
-- 変動する固定図式の制限に沿う左右の局所形の射・恒等律・合成律、相対 join 表示との可換性、
-  制限射の基底変換表示と anodyne 制限の充填性を証明。各 slice の境界の族の局所延長も証明。
 - `kanFiberwiseFunctor`：底の単体ごとに変動する局所形 F 上の図式の族の全空間を構成。
   全単体の通常の余極限を保つ F について、任意のパラメータ上の図式との全単射を証明。
   実際の pullback 関手への適用 `kanFiberwiseHom` は、逆像上の図式を厳密に表現する。
@@ -31,8 +29,11 @@
   任意の部分パラメータ上の section と始対象での評価を同時に固定した延長を証明。
   始対象の評価は自明 Kan fibration。一般の strict transport の恒等射評価も自明 Kan fibration かつ ∞ 圏同値。
 - 相対関手の充填性を仮定しない界面を `KanSection` 名前空間に置き、F1 の禁止 import 閉包から分離。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2497 jobs）。
-  公理監査成功（3124 宣言、標準三公理のみ、826 モジュールに straightening なし）。
+- 一般の universal scaffold を構成し、各 fiber の自明 Kan fibration 性と水平辺の cocartesian 性を証明。
+  一般の scaffold の条件とその底変換による保存、一点の底での全空間の前合成同値も証明。
+  任意の底の全空間比較は未完。有限鎖の帰納ステップと底についての局所性が残る。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2506 jobs）。
+  公理監査成功（3197 宣言、標準三公理のみ、835 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -61,14 +62,13 @@
 - `kanFiberwiseFunctorHomEquiv` / `exists_kanFiberwise_extension_of_initialBoundary`
 - `kanFiberwiseHom` / `kanFiberwiseHomFiberIso` / `kanRelativeJoinCoconeFiber_initialBoundary`
 - `kanFiberwiseHomProjection_innerFibration_iff` / `exists_kanFinalFiberRetraction`
-- `kanFiberwiseHomProjection_hasLiftingProperty_target`
 - `kanIsCocartesianEdge_triangle_second_of_first_long` / `exists_kanFinalFiberRetraction_inverting`
-- `exists_kanFiberwiseHom_finalVertex_extension_inverting`
 - `kanCocartesianSections` / `kanCocartesianSectionsPre`
 - `kanCocartesianStrictTransportDiagram` / `kanCocartesianStrictTransportEvaluate`
-- `kanCocartesianSectionsCurry` / `kanCocartesianSectionsUncurry`
 - `exists_kanInitialSectionTransport_relative` / `kanCocartesianSectionsEvaluate_trivialKanFibration`
 - `kanCocartesianStrictTransportFiberEquivalence`
+- `kanUniversalScaffold` / `kanUniversalScaffoldFiberMap_isQCatEquivalence`
+- `KanCocartesianScaffold.baseChange` / `KanCocartesianScaffold.isPrecompositionEquivalence_of_point`
 
 ### 依存と提供
 
@@ -79,8 +79,8 @@
 
 ### 未コミット
 
-- 保存単位：`KanCocartesianHomotopyGluing`、`KanSectionPrism`、`KanInitialSectionBoundary`、
-  同 `Lifting`、`KanNerveInitialPrism`、`KanCocartesianStrictTransportEquivalence`、集約・監査・本書。
+- 保存単位：`KanScaffold*` 4 本、`KanUniversalScaffold*` 3 本、`KanCocartesianScaffold`、
+  `KanCocartesianStrictTransport` の係数値 instance、集約・監査・本書。
 
 ### 既知の問題
 
@@ -97,9 +97,9 @@
 
 ### 次の一手
 
-- 一般の strict transport の simplicial replacement から全空間への universal scaffold を構成する。
-  新しい相対 uncurry と under の標準単体で対角評価し、構成済みの評価同値を fiber 比較へ接続する。
-  次に一般の scaffold の全空間比較、内ホーン逆像の前合成同値と特殊辺の cartesian 性（Kerodon §5.3.6）を証明する。
+- 一般の scaffold の有限鎖上の全空間比較を、既存の写像円柱の一般比較で帰納的に証明する。
+  F1 の有限鎖の幾何的な分解を再利用し、水平辺の条件から円柱の垂直辺の cocartesian 性を導く。
+  底についての局所性で一般の scaffold 比較へ戻し、内ホーン逆像の前合成同値と特殊辺の cartesian 性へ進む。
   その後、制限の輸送との両立で fiber の境界充填を全空間へ移し、既存の骨格の組み立てに渡す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と

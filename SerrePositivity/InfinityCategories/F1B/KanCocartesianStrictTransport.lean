@@ -132,6 +132,16 @@ instance kanCocartesianStrictTransport_quasicategory
     Quasicategory (kanCocartesianStrictTransport p c) :=
   kanCocartesianSections_quasicategory p _
 
+/-- 概要：strict transport の係数図式は quasicategory 値。
+方針：各値の cocartesian section の quasicategory 性を図式の型へ渡す。
+規約：必要な仮定は inner fibration 性だけ。
+使われ方：一般の scaffold の係数条件。 -/
+instance kanCocartesianStrictTransportDiagram_quasicategory
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [InnerFibration p] (c : C) :
+    Quasicategory ((kanCocartesianStrictTransportDiagram p).obj c) :=
+  kanCocartesianStrictTransport_quasicategory p c
+
 /-- 概要：cocartesian な section を undercategory の恒等射で評価する。
 方針：元の全 section の評価へ全部分複体の包含を合成する。
 規約：この段階では比較射を構成するだけで、同値性は主張しない。
