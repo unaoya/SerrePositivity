@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.KST.Descent.TransferBaseChangeComposite
+public import SerrePositivity.KST.Descent.TransferRankChartBaseChangeDescent
+public import SerrePositivity.KST.Descent.TransferRankRefinementDescent
 public import SerrePositivity.KST.Descent.FamilyCechFunctorComparison
 public import SerrePositivity.KST.Descent.FamilyCechPresheafComparison
 public import SerrePositivity.KST.Descent.FamilyCechOver
