@@ -13,6 +13,17 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.MonoidKernelTransport,
+    `SerrePositivity.KST.Spectra.PartialTotalizationMilnorKernel,
+    `SerrePositivity.KST.Spectra.PartialTotalizationMilnorExactness,
+    `SerrePositivity.KST.Spectra.CosimplicialMatchingFunctor,
+    `SerrePositivity.KST.Spectra.CosimplicialTerminalMatching,
+    `SerrePositivity.KST.Spectra.CosimplicialCotensorReedyKan,
+    `SerrePositivity.KST.Spectra.ReedyPointedExtension,
+    `SerrePositivity.KST.Spectra.CosimplicialSequenceReedyAdjoint,
+    `SerrePositivity.KST.Spectra.CosimplicialSequenceReedyReplacement,
+    `SerrePositivity.KST.Spectra.ReplacedOrdinaryTotalization,
+    `SerrePositivity.KST.Spectra.OmegaSpectrumReplacedTotalization,
     `SerrePositivity.KST.Spectra.PushoutCubePresentations,
     `SerrePositivity.KST.Spectra.PushoutCubeInterchange,
     `SerrePositivity.KST.Spectra.RelativeWeightTensorLatching,

@@ -282,3 +282,14 @@ public import SerrePositivity.KST.Spectra.SkeletalTransitionReedyMono
 public import SerrePositivity.KST.Spectra.PartialTotalizationTower
 public import SerrePositivity.KST.Spectra.PartialTotalizationLimit
 public import SerrePositivity.KST.Spectra.PartialTotalizationMilnorComparison
+public import SerrePositivity.KST.Spectra.MonoidKernelTransport
+public import SerrePositivity.KST.Spectra.PartialTotalizationMilnorKernel
+public import SerrePositivity.KST.Spectra.PartialTotalizationMilnorExactness
+public import SerrePositivity.KST.Spectra.CosimplicialMatchingFunctor
+public import SerrePositivity.KST.Spectra.CosimplicialTerminalMatching
+public import SerrePositivity.KST.Spectra.CosimplicialCotensorReedyKan
+public import SerrePositivity.KST.Spectra.ReedyPointedExtension
+public import SerrePositivity.KST.Spectra.CosimplicialSequenceReedyAdjoint
+public import SerrePositivity.KST.Spectra.CosimplicialSequenceReedyReplacement
+public import SerrePositivity.KST.Spectra.ReplacedOrdinaryTotalization
+public import SerrePositivity.KST.Spectra.OmegaSpectrumReplacedTotalization
