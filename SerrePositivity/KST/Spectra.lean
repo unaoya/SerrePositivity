@@ -662,3 +662,6 @@ public import SerrePositivity.KST.Spectra.ThreeEdgeTransport
 public import SerrePositivity.KST.Spectra.PointedBasedIntervalTraces
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureIntervals
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryTrace
+public import SerrePositivity.KST.Spectra.LoopTraceContraction
+public import SerrePositivity.KST.Spectra.PointedProjectionLoop
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTraceContraction
