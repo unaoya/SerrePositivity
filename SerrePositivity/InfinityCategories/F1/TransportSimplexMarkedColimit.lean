@@ -13,14 +13,14 @@ public import Mathlib.CategoryTheory.Limits.Types.Colimits
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
-universe u
+universe u v
 open CategoryTheory Limits MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- 余極限上で指定辺を反転する条件は、図式の各対象への全ての制限で検出できる。 -/
-lemma transportSimplexInvertsEdges_of_isColimit {J : Type u} [SmallCategory J]
-    {F : J ⥤ SSet.{u}} {c : Cocone F} (hc : IsColimit c) {E : SSet.{u}}
+lemma transportSimplexInvertsEdges_of_isColimit {J : Type v} [SmallCategory J]
+    {F : J ⥤ SSet.{max u v}} {c : Cocone F} (hc : IsColimit c) {E : SSet.{max u v}}
     (U : nerve (TransportSimplexCategory c.pt) ⟶ E) :
     InvertsEdges U (transportSimplexInitialEdges c.pt) ↔
       ∀ j, InvertsEdges (nerveMap (transportSimplexFunctor (c.ι.app j)) ≫ U)
@@ -29,7 +29,7 @@ lemma transportSimplexInvertsEdges_of_isColimit {J : Type u} [SmallCategory J]
   · intro h j
     exact transportSimplexInvertsEdges_restrict (c.ι.app j) U h
   · intro h s hs
-    let e := (evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋1⦌)
+    let e := (evaluation SimplexCategoryᵒᵖ (Type (max u v))).obj (Opposite.op ⦋1⦌)
     have ht := isColimitOfPreserves e (transportSimplexNerveCoconeIsColimit hc)
     obtain ⟨j, t, he⟩ := Types.jointly_surjective _ ht s
     change (nerveMap (transportSimplexFunctor (c.ι.app j))).app (Opposite.op ⦋1⦌) t = s at he
@@ -50,8 +50,8 @@ def transportSimplexInvertingInclusion (E : SSet.{u}) :
   naturality {_B _D} f := transportSimplexInvertingRestriction_ι f.unop E
 
 /-- 反転関手の全部分複体の頂点条件も、余極限の各対象で検出できる。 -/
-lemma isInvertingFunctorVertex_iff_of_isColimit {J : Type u} [SmallCategory J]
-    {F : J ⥤ SSet.{u}} {c : Cocone F} (hc : IsColimit c) {E : SSet.{u}}
+lemma isInvertingFunctorVertex_iff_of_isColimit {J : Type v} [SmallCategory J]
+    {F : J ⥤ SSet.{max u v}} {c : Cocone F} (hc : IsColimit c) {E : SSet.{max u v}}
     (v : ((ihom (nerve (TransportSimplexCategory c.pt))).obj E) _⦋0⦌) :
     IsInvertingFunctorVertex _ E (transportSimplexInitialEdges c.pt) v ↔
       ∀ j, IsInvertingFunctorVertex _ E (transportSimplexInitialEdges (F.obj j))

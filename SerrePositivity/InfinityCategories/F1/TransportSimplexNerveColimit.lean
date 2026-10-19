@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.F1.TransportSimplexNervePushout
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
-universe u
+universe u v
 open CategoryTheory Limits SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
@@ -55,18 +55,18 @@ def transportSimplexNerveDegreeIso (n : ℕ) :
     rfl)
 
 /-- 任意の小さい余極限 cocone は、単体圏の nerve で再び余極限 cocone となる。 -/
-def transportSimplexNerveCoconeIsColimit {J : Type u} [SmallCategory J]
-    {F : J ⥤ SSet.{u}} {c : Cocone F} (hc : IsColimit c) :
+def transportSimplexNerveCoconeIsColimit {J : Type v} [SmallCategory J]
+    {F : J ⥤ SSet.{max u v}} {c : Cocone F} (hc : IsColimit c) :
     IsColimit (transportSimplexNerveFunctor.mapCocone c) := by
   apply evaluationJointlyReflectsColimits
   rintro ⟨⟨n⟩⟩
   have hf : IsColimit ((transportSimplexNerveDegreeFamily n).mapCocone c) :=
     simplexShapeFamilyCoconeIsColimit
       (F := fun τ : ComposableArrows SimplexCategoryᵒᵖ n ↦
-        F ⋙ (evaluation SimplexCategoryᵒᵖ (Type u)).obj (τ.obj 0))
-      (c := fun τ ↦ ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (τ.obj 0)).mapCocone c)
+        F ⋙ (evaluation SimplexCategoryᵒᵖ (Type (max u v))).obj (τ.obj 0))
+      (c := fun τ ↦ ((evaluation SimplexCategoryᵒᵖ (Type (max u v))).obj (τ.obj 0)).mapCocone c)
       (fun τ ↦
-      isColimitOfPreserves ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (τ.obj 0)) hc)
+      isColimitOfPreserves ((evaluation SimplexCategoryᵒᵖ (Type (max u v))).obj (τ.obj 0)) hc)
   exact IsColimit.mapCoconeEquiv (transportSimplexNerveDegreeIso n).symm hf
 
 /-- 単体圏の nerve 関手は、小余積・transfinite な付加を含む全ての小余極限を保つ。 -/

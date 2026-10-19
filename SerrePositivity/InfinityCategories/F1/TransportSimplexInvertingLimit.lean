@@ -12,14 +12,14 @@ public import SerrePositivity.InfinityCategories.F1.TransportSimplexMarkedColimi
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
-universe u
+universe u v
 open CategoryTheory Limits MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- 任意の小さい余極限に沿う反転関手の制限は、実際の極限錐をなす。 -/
-def transportSimplexInvertingConeIsLimit {J : Type u} [SmallCategory J]
-    {F : J ⥤ SSet.{u}} {c : Cocone F} (hc : IsColimit c) (E : SSet.{u}) :
+def transportSimplexInvertingConeIsLimit {J : Type v} [SmallCategory J]
+    {F : J ⥤ SSet.{max u v}} {c : Cocone F} (hc : IsColimit c) (E : SSet.{max u v}) :
     IsLimit ((transportSimplexInvertingDiagram E).mapCone c.op) := by
   let H := internalHom.flip.obj E
   let a := H.mapCone (transportSimplexNerveFunctor.mapCocone c).op
