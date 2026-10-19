@@ -25,17 +25,17 @@
   全頂点を被覆する制限は表現条件を反映する。一般の底上の表現空間の可縮性は未証明。
 - left fibration に沿う inner anodyne 射の逆像は前合成同値（Lemma 5.3.6.6 の空間値版）。
   replacement のホーン逆像の pushout 分解、任意の底変換後の scaffold 比較、依存積の随伴で証明。
-- 固定端点の写像空間全体から fiber 間の関手空間への `parametrizedFiberTransport` を構成。
-  選択独立性・パラメーター制限・始点の係数変更を族全体で証明し、各辺で既存の transport を回収する。
+- `parametrizedFiberTransport` は固定端点の写像空間全体で選択独立性・パラメーター制限・係数変更を保ち、各辺で既存の transport を回収する。
   unstraightening の写像空間比較の fiber 作用と、対象評価後の普遍輸送を関手同型で結んだ。
 - 実際の pointed-space 射影の普遍輸送は写像空間上で同値。豊穣合成・反転・底の同型で証明済み。
   初期値も動く全 lift prism 空間とその普遍性、任意の底変換、実際の始点 fiber との同型を構成。
   同時端点制限は Kan fibration。始点同値への制限は trivial Kan fibration、両端固定 lift 空間は可縮。
   円柱の両端同値と prism の厳密な貼り合わせの空間も、両端への射影が trivial Kan fibration。
-  区間上の任意の left fibration の輸送円柱から全空間への実際の比較は前合成同値、
-  分類図式と端点写像を厳密に固定した相対関手空間の比較も同値で、可縮性を保ち反映する。
+  区間上の任意の left fibration の輸送円柱から全空間への実際の比較は前合成同値。
+  底と境界が動く相対 lift 空間を構成。固定境界の fiber 同型とその自然性から、任意の quasicategory
+  のパラメーター上の族全体の前合成比較も同値。輸送円柱の実際の比較にも適用済み。
   両端同値の実際の円柱上の四角形空間と中間模型は厳密に同型。実際の両端制限も trivial Kan fibration。
-- 対象ビルド2992 jobs、公理監査5684宣言が成功。依存公理は標準3公理のみ。
+- 対象ビルド2998 jobs、公理監査5730宣言が成功。依存公理は標準3公理のみ。
 
 ### 残り（依存順）
 
@@ -67,7 +67,7 @@
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
 - `pointedPrismEquivalenceEndpoints_trivialKanFibration`、`pointedCylinderPrismEndpoints_trivialKanFibration`
 - `pointedCylinderEquivalenceSquareIso`、`cylinderEquivalenceSquareEndpoints_trivialKanFibration`
-- `relativeFunctorBoundaryMap_isQCatEquivalence`、`intervalTransportCylinder_boundary_isQCatEquivalence`
+- `relativeBoundaryFamilyPre_isQCatEquivalence`、`intervalTransportCylinder_boundaryFamily_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-分類図式も両端固定の区間写像空間 I 上で動く、端点固定の相対 lift 空間を構成する。
-円柱比較を I 上の射へ束ね、固定分類図式での境界同値を fiber ごとに適用する。族全体の
-同値から円柱の可縮な両端 fiber を区間へ移す（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
+両端の表現を固定し、区間写像空間 I 上の分類図式と定値な境界写像から実際のデータ d を作る。
+その相対 lift 空間を円柱の両端制限の fiber と同定し、族全体の比較で区間側へ可縮性を移す。
+表現空間の境界 fiber との同定を結ぶ（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
 その後、点・単体の表現空間の可縮性、一般の境界固定延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
