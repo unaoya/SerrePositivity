@@ -694,3 +694,8 @@ public import SerrePositivity.KST.Spectra.RawSpectrumParameterRestriction
 public import SerrePositivity.KST.Spectra.SequenceIntervalRectification
 public import SerrePositivity.KST.Spectra.RawSpectrumStrictInterval
 public import SerrePositivity.KST.Spectra.RawSpectrumStrictParameterHomotopy
+public import SerrePositivity.KST.Spectra.CompositionTriangleSquare
+public import SerrePositivity.KST.Spectra.CompositionTriangleSquareProjection
+public import SerrePositivity.KST.Spectra.IdentityTriangleHomotopy
+public import SerrePositivity.KST.Spectra.SequenceRelativeTracedSquares
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointRelativeTracedSquares
