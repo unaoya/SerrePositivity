@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleConeSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLift
 import SerrePositivity.InfinityCategories.Derived.DGModelStability
 import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientZeroObjects
@@ -132,6 +134,20 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgUnitElement_eq_zero_of_closed_isZero
+#print axioms SerrePositivity.InfinityCategories.dgNerve_isZeroVertex_of_closed_isZero
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerveZeroVertex_isZero
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerve_isZeroVertex_of_objectwise_zero
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeDescElement
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeHomCoordinates
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeDescElement_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeBoundaryLift_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleCompStruct
+#print axioms SerrePositivity.InfinityCategories.dgModuleCompStruct_triple
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeZeroTriangle
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeSquare_bottom
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeSquare_vertex01
 
 #print axioms SerrePositivity.InfinityCategories.dgFunctorToObjectImage_evaluation
 #print axioms SerrePositivity.InfinityCategories.dgObjectImageNerveEquivalence
@@ -1428,6 +1444,17 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGClosedZeroVertex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleNerveZero,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeDesc,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeHomDifferential,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleHomPrecompose,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeBoundaryLift,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleNerveEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleTriangleComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeSquare,
+
     `SerrePositivity.InfinityCategories.Derived.DGObjectImage,
     `SerrePositivity.InfinityCategories.Derived.DGObjectImageNerve,
     `SerrePositivity.InfinityCategories.Derived.DGYonedaRepresentableNerve,

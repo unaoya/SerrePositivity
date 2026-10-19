@@ -7,19 +7,14 @@
 ### 現在地
 
 - S1〜S7（D7）完了。安定 ∞ 圏の h の三角構造（TR1〜TR4）、完全関手の CommShift・三角性を公開済み。
-- D(S) の零対象、全 cospan の極限・全辺の fiber、全 span の余極限・全辺の cofiber を構成済み。
-- 実境界から Q・A の二未知 cochain と微分式を証明し、coslice を直接充填して cofiber の普遍性を証明済み。
-- 明示的な fiber/cofiber 比較の二脚・対角・ホモトピー保存と同値性、実 slice/coslice 比較辺を構成済み。
-- 同じ span/cospan の四角形の関手同型による輸送から、任意四角形の引き戻し性と押し出し性の同値を証明。`derivedInfinityCategory_isStable` を公開済み。
-- 通常の道の商による h D(S) を二切断の D3 と接続。実際の suspension と複体のシフトの自然同型、安定構造の全整数シフトとの `CommShift ℤ` を構成済み。
-- cofiber から suspension への実際の四角形比較を構成し、始点成分の一意性で普遍性の比較と同定。正規化した実接続射の D3 像を Mathlib の符号付き cone 接続射と同定済み。
-- `mapTriangle` の第三射を suspension 比較で書く一般式と始点輸送を証明。標準列の三頂点・三射を照合し、D3 の像と通常の cone 三角形の同型を構成済み。
-- 任意の h の射の鎖写像代表と source の TR3 から、全 distinguished triangle の標準 cofiber 表示を証明。D3 の distinguished triangle の保存・反映、逆関手の保存を証明済み。
-- `derivedStableHomotopyEquivalenceIsTriangulated` を公開。両関手の整数シフト比較と単位・余単位の整合性も含む。通常の導来圏から三角構造を引き戻して済ませていない。
+- D(S) の実零対象・全 fiber/cofiber・cospan の極限と span の余極限を構成。実境界の Q・A の二未知 cochain と微分式から coslice を充填し、cofiber の普遍性を証明済み。
+- fiber/cofiber 比較の二脚・対角・ホモトピーと同値性、実 slice/coslice 比較辺を照合。同じ四角形の関手同型輸送から任意四角形の双カルテジアン判定と `derivedInfinityCategory_isStable` を証明済み。
+- 通常の h D(S) と二切断の D3 を接続。実 suspension と複体シフトの自然同型・全整数 CommShift・実接続射の符号を照合し、標準 cofiber 列の D3 像を Mathlib の cone 三角形と同定済み。
+- 全 distinguished triangle の標準 cofiber 表示から保存・反映・逆関手の三角性を証明。`derivedStableHomotopyEquivalenceIsTriangulated` は単位・余単位のシフト整合性も持つ。通常の導来圏から三角構造を引き戻して済ませていない。
 - D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- β3 の入口：`Derived/DGModelStability.lean`、`Derived/DGYonedaRepresentableNerve.lean`、`Stable/EquivalenceStability.lean`、`Derived/ResolvedDGQuotientNerve.lean`。
-- D7 は `dfa5b50d`、β3 の充満忠実性は `656fd9ca` まで保存済み。今回の保存単位は新規 10 モジュール。最新の Stable・Derived 集約ビルドは 6,127 jobs 成功。
-- 最新公理監査：Derived 335 modules／3,562 宣言、Stable 605 modules／4,678 宣言。標準三公理のみ。
+- β3 の入口：`Derived/DGModuleConeSquare.lean`、`Derived/DGModuleConeBoundaryLift.lean`、`Derived/DGModuleNerveZero.lean`、`Derived/DGModelStability.lean`。
+- D7 は `dfa5b50d`、β3 の Yoneda 比較・安定性輸送は `8f443dc6` まで保存済み。今回の保存単位は新規 10 モジュール。最新の Stable・Derived 集約ビルドは 6,138 jobs 成功。
+- 最新公理監査：Derived 345 modules／3,647 宣言、Stable 615 modules／4,763 宣言。標準三公理のみ。
 - β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
 - 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
 - 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
@@ -35,6 +30,8 @@
 - 実際の `pinchedHomMap (dgNerve.map F)` を端点の等式による同型込みで線形写像と同定。対象上全射性を外した充満忠実性、Hom 複体同型の場合、dg 充満部分圏の包含への適用を公開済み。
 - 任意対象族のラベル付き dg 充満像と評価への厳密な分解を構成。dg Yoneda の全 Hom 複体同型から、同一宇宙の代表加群の模型との明示的 ∞ 圏同値を証明済み。
 - 自明 Kan fibration の始域・基底の両方向に実 fiber/cofiber を構成し、一般の ∞ 圏同値の安定性の同値不変性と完全性を証明。Yoneda 模型と具体的 cell 分解の安定性の比較、実関手・逆関手の完全性へ適用済み。
+- 閉零圏の零対象の恒等成分の消滅から、dg nerve の実零頂点性を証明。全 Hom end を持つ `dgModuleNerve` と具体的零加群の実零対象性を公開済み。
+- dg 加群の cone から出る Hom の全次数線形同値・行列微分・二残差からの原始元を構成。実辺・二単体・cone 四角形の四頂点・四辺・零角を照合済み。押し出し性は未証明。
 
 ### 残り（依存順、時間は推定）
 
@@ -73,6 +70,8 @@
 - `dgNerve_map_isFullyFaithful_of_surjective_quasiIso`、`dgNerve_map_isFullyFaithful_of_homIso`、`dgFullSubcategoryInclusionNerve_isFullyFaithful`。
 - `dgYonedaRepresentableNerveEquivalence`、`representableDGYoneda_evaluation`、`IsQCatEquivalence.isStable_iff`、`isExactFunctor_of_isQCatEquivalence`。
 - `dgYonedaRepresentableNerve_isStable_iff`、`dgCellResolutionNerve_isStable_iff`、`dgCellAugmentationNerve_isExactFunctor`。
+- `dgNerve_isZeroVertex_of_closed_isZero`、`dgModuleNerveZeroVertex_isZero`、`dgModuleConeHomCoordinates`、`dgModuleConeDescElement_differential`。
+- `dgModuleConeBoundaryLift_differential`、`dgModuleCompStruct_triple`、`dgModuleConeSquare`、`dgModuleConeZeroTriangle`。
 
 ### 依存と提供
 
@@ -93,7 +92,7 @@
 
 ### 次の一手
 
-- β3：dg 加群圏の nerve の実際の零対象・cone の普遍性へ進む。最初に、閉零圏で零対象となる dg 対象について恒等閉元が零なので収縮元 0 を持つことを証明し、既存 `Module/Zero.zeroModule`・`moduleZero_isZero` を `dgNerve_contractingElement_isZeroVertex` へ接続する。次に `Module/HomConeIso.moduleHomConeIso`（cone への全 Hom 複体の同型）と `Module/ConeLift`・`ConeElements` の全次数成分を読み取り専用で使い、実境界の fiber/cofiber 充填を dg 加群へ一般化する。`Module/Pretriangulated` は h の三角構造だけであり安定性の証明には代用しない。表現可能閉包や平坦商の安定性を得たら `dgYonedaRepresentableNerve_isStable_iff` などで輸送する。その後、商関手の完全性、cofiber 条件の辺の反転、F1B `IsLocalization` の全 ∞ 関手圏の普遍性、Verdier 列へ進む。全加群圏への包含の宇宙持ち上げは未実装。現在のラベル付き代表模型は D と同じ対象宇宙で実 Hom 複体を持つ。
+- β3：`dgModuleConeCocone` の実始対象性を直接充填で証明する。`SpanBoundaryAssembly`・`SpanResidualCoordinates`・`SpanTwoPrefixTransport` は dg 圏に一般化済みなのでそのまま使う。実 coslice 境界 b の頂点 0 を標準余錐に固定し、`sliceUnderUncurry b` から左右の零未知データを回収する。まず零加群を始点・終点とする全次数 Hom の消滅を証明して零側の脚の残差を消す。`DGModuleTriangleComponents` の標準三辺・左包含ホモトピーを代入して型付き残差 r0,rN,rM,rAB,rAC の微分条件を得る。二三角形残差の差 rAB−rAC と rN を `dgModuleConeBoundaryLift_differential` に渡し、Q 側未知成分を構成する。M 側未知成分は共通符号倍の rAC とする（D7 の `PushoutBoundaryEquations` と同じ消去）。残りの四未知成分を 0 とし、`spanInsertUnknowns` で全面を保って実単体に戻す。現段階の cone 四角形は零角と入力辺を持つだけで押し出し性未証明。これを閉じた後、fiber と双カルテジアン判定、前三角 dg 圏／平坦商の安定性・完全性、F1B の全 ∞ 関手圏の局所化普遍性と Verdier 列へ進む。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
