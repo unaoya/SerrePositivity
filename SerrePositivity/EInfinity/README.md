@@ -412,7 +412,14 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `TableCompositionData.eq_of_same_output` は同じ元の置換列・挿入位置・合成出力の入力データ一意性。
 `shuffle_reconstruction_existsUnique` は正の内側 arity の実際の非退化成功から、
 元の両成功表・両語・分割を持ち、経路・Schedule・出力を全て戻すデータを一意に構成する。
-退化・空語を含む全項の全単射と有限和の一致は未完成。
+`CompositionSuccess.Source` は元の両置換列と挿入位置を固定した全成功二表・分割。
+`Target` は実際の非退化成功を持つ全経路・Schedule の有限な部分型。
+`CompositionSuccess.equiv` は正の内側 arity で両者の全単射を構成する。
+`sourceFintype` はこの全単射で元データの有限型構造を構成し、和の中だけで局所的に選ぶ。
+`forward_term` は各項の値と既存の経路符号を保つ。
+`sum_all_eq_source` は失敗・退化出力項を零として全経路・全 Schedule の和へ戻す。
+`sum_onSequence_eq_source` は全 shuffle 符号付き onSequence の和を元の全成功二表・分割の和へ同定する。
+元の側の有限和を二つの onSequence の部分合成へ展開する部分は未完成。
 空語挿入の nullary 合成との照合も未完成。
 TR の一般の合成保存と、それを用いた χ の部分合成の微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

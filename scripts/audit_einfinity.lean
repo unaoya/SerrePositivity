@@ -699,6 +699,12 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.fusedSchedule_eq_of_success,
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.eq_of_same_output,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_reconstruction_existsUnique,
+      `SerrePositivity.EInfinity.Surjection.CompositionSuccess.equiv,
+      `SerrePositivity.EInfinity.Surjection.CompositionSuccess.sourceFintype,
+      `SerrePositivity.EInfinity.Surjection.CompositionSuccess.forward_term,
+      `SerrePositivity.EInfinity.Surjection.CompositionSuccess.signedTerm_eq_zero_of_not_successful,
+      `SerrePositivity.EInfinity.Surjection.CompositionSuccess.sum_all_eq_source,
+      `SerrePositivity.EInfinity.Surjection.CompositionSuccess.sum_onSequence_eq_source,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1918,3 +1924,46 @@ example : ∃ c : TableCompositionData 3 2 2 1, c = fullCompositionFixture ∧
         fullCompositionFixture.slot fullCompositionFixture.cuts = [0, 1, 2, 4, 2, 1, 4, 3] :=
     ⟨rfl, rfl, rfl, gridPath_roundtrip, gridSchedule_roundtrip, by decide⟩
   exact ⟨c, (hu fullCompositionFixture hk).symm, hc.2.2.2.1, hc.2.2.2.2.1⟩
+
+private def fullSuccessSource : CompositionSuccess.Source bfTable terminalTable (1 : Fin 4) :=
+  ⟨fullCompositionFixture, rfl, rfl, rfl⟩
+private def gridSuccessTarget : CompositionSuccess.Target bfTable terminalTable (1 : Fin 4) :=
+  ⟨(gridRecoveryPath, gridRecoverySchedule), _, innerGrid_success, by decide⟩
+-- 有限成功項全単射の正方向は実際の既知の混合経路・Schedule を返す。
+private lemma successForward_grid : CompositionSuccess.forward (by decide) fullSuccessSource =
+    gridSuccessTarget := by
+  apply Subtype.ext
+  exact Prod.ext gridPath_roundtrip gridSchedule_roundtrip
+-- 選んだ逆写像も元の成功二表と分割へ厳密に戻る。
+example : (CompositionSuccess.equiv (by decide) bfTable terminalTable (1 : Fin 4)).symm
+    gridSuccessTarget = fullSuccessSource := by
+  have he : (CompositionSuccess.equiv (by decide) bfTable terminalTable (1 : Fin 4))
+      fullSuccessSource = gridSuccessTarget := successForward_grid
+  have hh := congrArg (CompositionSuccess.equiv (by decide) bfTable terminalTable (1 : Fin 4)).symm he
+  simpa only [Equiv.symm_apply_apply] using hh.symm
+-- 正方向の項の一致には経路の符号も含む。
+example : CompositionSuccess.signedTerm ℤ bfTable terminalTable (1 : Fin 4)
+    gridSuccessTarget.val = CompositionSuccess.sourceTerm ℤ fullSuccessSource := by
+  rw [← successForward_grid]
+  exact CompositionSuccess.forward_term ℤ (by decide) fullSuccessSource
+-- 退化出力となる別の実際の Schedule は全経路和に含めても零。
+private def degenerateGridSchedule : Schedule 5 3 := ⟨![5, 1, 1, 1], by decide⟩
+example : CompositionSuccess.signedTerm ℤ bfTable terminalTable (1 : Fin 4)
+    (gridRecoveryPath, degenerateGridSchedule) = 0 := by
+  apply CompositionSuccess.signedTerm_eq_zero_of_not_successful
+  rintro ⟨out, ho, hc⟩
+  have hz : reduceRows (rows (fun j => BarrattEccles.permutationComposition 3 2 1
+      (bfTable (gridRecoveryPath.horizontal j)) (terminalTable (gridRecoveryPath.vertical j)))
+      degenerateGridSchedule) [] = some [0, 1, 2, 3, 4, 4, 4, 4] := by decide
+  have he : out = [0, 1, 2, 3, 4, 4, 4, 4] := Option.some.inj (ho.symm.trans hz)
+  rw [he] at hc
+  exact (by decide : ¬ ([0, 1, 2, 3, 4, 4, 4, 4] : List (Fin 5)).IsChain (· ≠ ·)) hc
+-- 全経路・全 Schedule を含む和が元の全成功二表と分割の符号付き和に一致する。
+example :
+    letI := CompositionSuccess.sourceFintype (by decide) bfTable terminalTable (1 : Fin 4)
+    (∑ s : BarrattEccles.ShufflePath 2 1, (s.sign : ℤ) • onSequence ℤ (fun j =>
+      BarrattEccles.permutationComposition 3 2 1 (bfTable (s.horizontal j))
+        (terminalTable (s.vertical j)))) =
+      ∑ c : CompositionSuccess.Source bfTable terminalTable (1 : Fin 4),
+        CompositionSuccess.sourceTerm ℤ c :=
+  CompositionSuccess.sum_onSequence_eq_source ℤ (by decide) bfTable terminalTable 1
