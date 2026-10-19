@@ -288,3 +288,4 @@ public import SerrePositivity.EInfinity.IntervalCuts.CochainAction
 public import SerrePositivity.EInfinity.IntervalCuts.CochainUnit
 public import SerrePositivity.EInfinity.IntervalCuts.CutRenaming
 public import SerrePositivity.EInfinity.IntervalCuts.TensorFirstSwap
+public import SerrePositivity.EInfinity.IntervalCuts.CochainPermutation

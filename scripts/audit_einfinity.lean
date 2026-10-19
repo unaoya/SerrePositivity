@@ -1010,6 +1010,37 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.edgePositionExponent_rename,
       `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_permutation,
       `SerrePositivity.EInfinity.IntervalCuts.swapFirstIso_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_cons,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorAt_cons,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorAt_cons_cons,
+      `SerrePositivity.EInfinity.IntervalCuts.swapFirstIso_tensorVectorAt,
+      `SerrePositivity.EInfinity.IntervalCuts.cons_comp_shiftPerm,
+      `SerrePositivity.EInfinity.IntervalCuts.adjacentIso_tensorVectorAt,
+      `SerrePositivity.EInfinity.IntervalCuts.adjacentTransposition_val,
+      `SerrePositivity.EInfinity.IntervalCuts.adjacentTransposition_order_change,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversions,
+      `SerrePositivity.EInfinity.IntervalCuts.card_positionInversions,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversions_symmDiff_adjacent,
+      `SerrePositivity.EInfinity.IntervalCuts.colorCrossPairs,
+      `SerrePositivity.EInfinity.IntervalCuts.colorCrossPairs_subsingleton,
+      `SerrePositivity.EInfinity.IntervalCuts.colorCrossPairs_nonempty_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.card_colorCrossPairs,
+      `SerrePositivity.EInfinity.IntervalCuts.neg_one_pow_card_symmDiff,
+      `SerrePositivity.EInfinity.IntervalCuts.positionInversionSign_adjacent,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_adjacent,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeCut_tensor_adjacent,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_adjacent,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexTensor_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponentOnWord_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInputBilinear_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeInputBilinear_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.complexRename_neg_hom_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainActionBilinear_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_equivariance,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -3056,3 +3087,21 @@ example : edgeOutput (Word.rename (Equiv.swap (0 : Fin 2) 1) compositionInner) 1
   edgeOutput_rename _ _ _
 example : EdgeNondegenerate (Word.rename (Equiv.swap (0 : Fin 2) 1) compositionInner).val 1 :=
   (edgeNondegenerate_rename_iff _ _ _).mpr (by decide)
+
+-- 実際の非有界複体射として χ の対称列の置換と区間余演算が可換する。
+example : ((SerrePositivity.EInfinity.Surjection.sequence ℤ).map
+      (SerrePositivity.FiniteBijection.permutation 2 (Equiv.swap (0 : Fin 2) 1)) ▷ interval ℤ) ≫
+      cochainAction ℤ 2 =
+    cochainAction ℤ 2 ≫ (SerrePositivity.TensorPowers.permutationAction (interval ℤ) 2
+      (Equiv.swap (0 : Fin 2) 1)).asIso.hom :=
+  cochainAction_equivariance ℤ 2 _
+-- 010 の二活動色の中央切断は、隣接色交換で符号を反転する。
+example : edgeSign
+      (SerrePositivity.Coxeter.adjacentTransposition (0 : Fin 1) ∘ compositionInner.val) 1 =
+    edgeSign compositionInner.val 1 * (-1 : ℤ) ^
+      (simplexDegree (edgeOutput compositionInner 1 0) *
+        simplexDegree (edgeOutput compositionInner 1 1)) :=
+  edgeSign_adjacent 0 compositionInner 1 (by decide)
+-- 活動色が一つだけなら隣接交換の逆転対の対称差は空となる。
+example : (colorCrossPairs (fun i : Fin 1 => (i.castSucc : Fin 2)) Finset.univ 0 1).card = 0 := by
+  decide

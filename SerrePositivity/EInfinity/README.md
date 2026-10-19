@@ -547,7 +547,12 @@ nullary を含む TR の部分合成保存は完了。
 `edgeOutput_rename` は色を置換した全出力族の逆置換公式。
 `edgeNondegenerate_rename_iff`・`activePositions_rename` は非零性と活動位置を保存する。
 `swapFirstIso_apply` は実際の複体の先頭二因子交換の Koszul 符号を評価する。
-具体的な Δ¹ の余代数構造は未完成。置換・部分合成の余代数法則と区間条件が残る。
+`adjacentIso_tensorVectorAt` は任意位置の実際の面テンソルの隣接交換公式。
+`edgeSign_adjacent` はその二出力次数の積と切断符号の変化が一致すること。
+`edgeComponentOnWord_permutation`・`vertexComponentOnWord_permutation` は全語基底の任意置換の公式で、
+`ComponentPermutation`・`InputPermutation` は全語加群と区間の任意の入力へ線形に延長する。
+`cochainAction_equivariance` は全 arity・全整数次数の複体射としての対称群等変性。
+具体的な Δ¹ の余代数構造は未完成。部分合成の余代数法則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
