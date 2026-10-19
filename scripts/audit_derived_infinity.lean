@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs
 import SerrePositivity.InfinityCategories.Derived.DGNativeDerivedFiniteCell
 import SerrePositivity.InfinityCategories.Stable.UniverseCofiberEdges
 import SerrePositivity.InfinityCategories.Derived.DGYonedaFiniteCellClosure
@@ -1260,10 +1261,25 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgNative_stableVertexClosure_iff_derivedFiniteCell
 #print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_mem_iff_derivedFiniteCell
 
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableDerivedMap
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableDerivedMap_surjective
+#print axioms SerrePositivity.InfinityCategories.dgQuotient_exists_closedRoof
+#print axioms SerrePositivity.InfinityCategories.dgClosedEdge
+#print axioms SerrePositivity.InfinityCategories.dgClosedEdge_closed
+#print axioms SerrePositivity.InfinityCategories.dgClosedEdge_map
+#print axioms SerrePositivity.InfinityCategories.dgClosedEdge_mem_iff_derived_trW
+#print axioms SerrePositivity.InfinityCategories.DGQuotientActualRoof
+#print axioms SerrePositivity.InfinityCategories.dgQuotient_exists_actualRoof
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofs,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedVerdierDenominators,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs,
     `SerrePositivity.InfinityCategories.Stable.UniverseVertexIso,
     `SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle,
     `SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure,

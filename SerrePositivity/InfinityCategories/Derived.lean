@@ -502,6 +502,12 @@ public import SerrePositivity.InfinityCategories.Derived.DGNativeFiniteCellClosu
 public import SerrePositivity.InfinityCategories.Derived.DGFiniteCellLocalizationReflection
 public import SerrePositivity.InfinityCategories.Derived.DGNativeDerivedFiniteCell
 
+public import SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedMaps
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofs
+public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Derived.DGClosedVerdierDenominators
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs
+
 
 /-! # Semifree 複体による導来圏の dg 表示
 
