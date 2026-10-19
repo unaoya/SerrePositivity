@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGYonedaModuleNerve
 import SerrePositivity.InfinityCategories.Derived.DGModuleStability
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberPushout
 import SerrePositivity.InfinityCategories.Derived.DGModuleConePullback
@@ -147,6 +148,25 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgUniverseLiftUp_comp_down
+#print axioms SerrePositivity.InfinityCategories.dgUniverseLiftDown_comp_up
+#print axioms SerrePositivity.InfinityCategories.dgNerveUniverseLiftIso
+#print axioms SerrePositivity.InfinityCategories.dgUniverseLiftFunctor_comp_down
+#print axioms SerrePositivity.InfinityCategories.dgUniverseLiftUp_comp_functor
+#print axioms SerrePositivity.InfinityCategories.dgUniverseLiftFunctor_id
+#print axioms SerrePositivity.InfinityCategories.dgUniverseLiftFunctor_comp
+#print axioms SerrePositivity.InfinityCategories.dgNerveUniverseMap
+#print axioms SerrePositivity.InfinityCategories.dgNerveUniverseMap_lift
+#print axioms SerrePositivity.InfinityCategories.dgNerveUniverseMap_factor
+#print axioms SerrePositivity.InfinityCategories.dgNerveUniverseMap_isFullyFaithful_of_homIso
+#print axioms SerrePositivity.InfinityCategories.dgYonedaUniverseNerve
+#print axioms SerrePositivity.InfinityCategories.dgYonedaUniverseNerve_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.dgModuleNerveULiftIso
+#print axioms SerrePositivity.InfinityCategories.dgYonedaModuleNerve
+#print axioms SerrePositivity.InfinityCategories.dgYonedaModuleNerve_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.dgYonedaModuleNerve_app
+#print axioms SerrePositivity.InfinityCategories.dgYonedaModuleNerve_vertex
 
 #print axioms SerrePositivity.InfinityCategories.CofiberSquare.isPullback_iff
 #print axioms SerrePositivity.InfinityCategories.FiberSquare.isPushout_iff
@@ -1608,6 +1628,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGUniverseLift,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveUniverseLift,
+    `SerrePositivity.InfinityCategories.Derived.DGUniverseLiftFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveUniverseMap,
+    `SerrePositivity.InfinityCategories.Derived.DGUniverseNerveFullyFaithful,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaUniverseNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaModuleNerve,
+
     `SerrePositivity.InfinityCategories.Stable.BicartesianChoice,
     `SerrePositivity.InfinityCategories.Stable.BicartesianCriterion,
     `SerrePositivity.InfinityCategories.Derived.DGModuleBicartesianChoices,
