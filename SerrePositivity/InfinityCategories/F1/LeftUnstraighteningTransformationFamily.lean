@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorParameterizedPrism
+public import SerrePositivity.InfinityCategories.F1.FunctorParameterizedPrismNaturality
 public import SerrePositivity.InfinityCategories.F1.IntervalFatDiagram
 public import SerrePositivity.InfinityCategories.F1.PreFiberKan
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraightening
@@ -64,5 +65,17 @@ lemma leftUnstraighteningTransformationFamily_one {B : SSet.{u + 1}}
       leftUnstraighteningTransformationFamily F G =
         fst B (leftUnstraighteningTransformationSpace F G) ≫ G :=
   functorParameterizedPrism_vertex_of_const 1 _ 1 G (intervalMappingUncurry_one (𝟙 _))
+
+/-- 概要：普遍的な変換のパラメーター制限は指定した変換の族の評価。
+方針：prism のパラメーター自然性と区間模型の uncurry を使う。
+規約：パラメーターは任意。
+使われ方：任意の族の底を普遍的な lift の底と同一視する。 -/
+lemma leftUnstraighteningTransformationFamily_parameter {B K : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (t : K ⟶ leftUnstraighteningTransformationSpace F G) :
+    ((Δ[1] ⊗ B) ◁ t) ≫ leftUnstraighteningTransformationFamily F G =
+      functorParameterizedPrism (intervalMappingUncurry t) := by
+  rw [leftUnstraighteningTransformationFamily, ← functorParameterizedPrism_parameter,
+    ← intervalMappingUncurry_precomp, Category.comp_id]
+
 
 end SerrePositivity.InfinityCategories
