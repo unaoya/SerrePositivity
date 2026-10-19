@@ -2083,7 +2083,9 @@ Kan 複体の余錐では台の余極限性からこの Hom 条件を検証す�
 通常の余錐の各脚と元の射の厳密な一致、および余積の成分包含との一致も検証した。
 単射な遷移を持つ Kan 複体列の実際の逐次余極限は、対象・余錐・各脚とともに公開した。
 左脚の台が単射な span の通常の押し出しを Kan 置換した実際の ∞ 押し出しも公開した。
-一般の列と、単射性を仮定しない span への置換・比較は後続工程。
+任意の span は左脚を単射と trivial Kan fibration に分解して置換し、成分ごとの同値で
+元の図式へ余極限余錐を輸送した。元の両脚に条件なく、実際の ∞ 押し出しと頂点を公開した。
+一般の遷移を持つ列の置換・比較は後続工程。
 任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
 この一般形状では q′ の全導来 fiber の可縮性による両向き判定も証明済み。
 任意の coherent な錐から strict な錐への pinched Hom は、標準点から回収した反転 end の
@@ -10484,3 +10486,178 @@ lemma spaceHomotopyPushoutCocone_isColimitCone (F : AsSmall.{u} WalkingSpan ⥤ 
 全て追跡済み・コミット済み・変更なしを確認した。
 ログ：`/tmp/gamma3-space-homotopy-pushout-aggregate.log`、
 `/tmp/gamma3-space-homotopy-pushout-audit.log`。
+
+### γ3：任意の Kan 値 span の実際の ∞ 押し出しと頂点を保持する図式の輸送
+
+Kan 複体間の任意の射 f を、境界の小対象論法による単射 i と trivial Kan fibration p に
+分解した。p の終域の Kan 性から中間対象も Kan となる。`kanMonoArrow_fac` は i ≫ p = f
+という厳密な等号で、p の単体的ホモトピー同値性も証明した。
+
+任意の Kan 値 span F の中心と右端を保持し、左端をこの中間対象に替えた
+`kanSpanMonoReplacement F` を構成した。元の図式への比較は中心と右端で恒等、左端で p。
+厳密な自然性と全成分の同値性を証明した。元の両脚の単射性は仮定しない。
+
+別途、任意の quasicategory の同型な図式の間で、余極限余錐を頂点の等号を保持して
+輸送する一般補題を証明した。図式の同型を可逆円柱へ延長し、一端から余錐を延長して
+他端へ制限する。Kan 値図式では、成分ごとの同値な厳密自然変換から F1 の関手同型を作り、
+この輸送に渡す。添字は任意の小圏で、strict 自然変換空間の Kan 性は仮定しない。
+
+単射に替えた span の台の通常の押し出しを anodyne に Kan 置換した対象を
+`spaceArbitraryPushoutObject F` とした。その余極限余錐を上記の比較に沿って輸送し、
+**元の `kanDiagramCoherentNerve F` 上の** `spaceArbitraryPushoutCocone F` と
+その native な `IsColimitCone` を構成した。頂点はこの Kan 置換対象の標準頂点に厳密に一致する。
+脚の単射性、追加の Hom 条件、比較同値は前提にない。
+
+この一般の span の余錐は coherent な輸送で得る。置換前の通常の押し出しの脚を使った
+厳密な式は主張しておらず、輸送された各脚の詳細な比較式はここには含めない。
+一般の遷移を持つ列の置換と比較、一般形状の非反転 q_x への移送、E2a 後の E2b 適用は残る。
+γ3 全体は継続中。原典：HTT 4.2.4.1、Kerodon 7.5.4.6、境界の小対象論法。
+
+公開二十四宣言の正確な型は以下。全て名前空間
+`SerrePositivity.InfinityCategories.HomotopyLimits` 内。
+`KanMonoArrowFactorization` の後半七宣言は `{A B : KanObject.{u}}` を共通前提とする。
+他の前提は各型に明記した。
+
+`KanMonoArrowFactorization.lean`：
+
+```lean
+lemma kanComplex_of_trivialKanFibration_target {A B : SSet.{u}} [KanComplex B]
+    (p : A ⟶ B) [TrivialKanFibration p] : KanComplex A
+```
+
+```lean
+def kanMonoArrowObject (f : A ⟶ B) : KanObject.{u}
+```
+
+```lean
+def kanMonoArrowLeft (f : A ⟶ B) : A ⟶ kanMonoArrowObject f
+```
+
+```lean
+def kanMonoArrowRight (f : A ⟶ B) : kanMonoArrowObject f ⟶ B
+```
+
+```lean
+instance kanMonoArrowLeft_mono (f : A ⟶ B) : Mono (kanObjectForget.map (kanMonoArrowLeft f))
+```
+
+```lean
+instance kanMonoArrowRight_trivialKanFibration (f : A ⟶ B) :
+    TrivialKanFibration (kanObjectForget.map (kanMonoArrowRight f))
+```
+
+```lean
+lemma kanMonoArrow_fac (f : A ⟶ B) : kanMonoArrowLeft f ≫ kanMonoArrowRight f = f
+```
+
+```lean
+lemma kanMonoArrowRight_homotopyEquivalence (f : A ⟶ B) :
+    IsSimplicialHomotopyEquivalence (kanObjectForget.map (kanMonoArrowRight f))
+```
+
+`KanDiagramColimitTransport.lean`：
+
+```lean
+lemma exists_colimitCocone_functorIso_sameVertex {K X : SSet.{u}} [Quasicategory X]
+    {p q : K ⟶ X} (e : FunctorIso p q) (c : JoinCocone p) (hc : IsColimitCone c) :
+    ∃ d : JoinCocone q, IsColimitCone d ∧ d.vertex = c.vertex
+```
+
+```lean
+def colimitCoconeOfFunctorIso {K X : SSet.{u}} [Quasicategory X]
+    {p q : K ⟶ X} (e : FunctorIso p q) (c : JoinCocone p) (hc : IsColimitCone c) : JoinCocone q
+```
+
+```lean
+lemma colimitCoconeOfFunctorIso_isColimit {K X : SSet.{u}} [Quasicategory X]
+    {p q : K ⟶ X} (e : FunctorIso p q) (c : JoinCocone p) (hc : IsColimitCone c) :
+    IsColimitCone (colimitCoconeOfFunctorIso e c hc)
+```
+
+```lean
+lemma colimitCoconeOfFunctorIso_vertex {K X : SSet.{u}} [Quasicategory X]
+    {p q : K ⟶ X} (e : FunctorIso p q) (c : JoinCocone p) (hc : IsColimitCone c) :
+    (colimitCoconeOfFunctorIso e c hc).vertex = c.vertex
+```
+
+```lean
+def kanDiagramColimitTransport {I : Type u} [SmallCategory I]
+    {F G : I ⥤ KanObject.{u}} (η : F ⋙ kanObjectForget ⟶ G ⋙ kanObjectForget)
+    (hη : ∀ i, IsQCatEquivalence (X := (F.obj i).obj) (Y := (G.obj i).obj) (η.app i))
+    (c : JoinCocone (kanDiagramCoherentNerve F)) (hc : IsColimitCone c) :
+    JoinCocone (kanDiagramCoherentNerve G)
+```
+
+```lean
+lemma kanDiagramColimitTransport_isColimit {I : Type u} [SmallCategory I]
+    {F G : I ⥤ KanObject.{u}} (η : F ⋙ kanObjectForget ⟶ G ⋙ kanObjectForget)
+    (hη : ∀ i, IsQCatEquivalence (X := (F.obj i).obj) (Y := (G.obj i).obj) (η.app i))
+    (c : JoinCocone (kanDiagramCoherentNerve F)) (hc : IsColimitCone c) :
+    IsColimitCone (kanDiagramColimitTransport η hη c hc)
+```
+
+```lean
+lemma kanDiagramColimitTransport_vertex {I : Type u} [SmallCategory I]
+    {F G : I ⥤ KanObject.{u}} (η : F ⋙ kanObjectForget ⟶ G ⋙ kanObjectForget)
+    (hη : ∀ i, IsQCatEquivalence (X := (F.obj i).obj) (Y := (G.obj i).obj) (η.app i))
+    (c : JoinCocone (kanDiagramCoherentNerve F)) (hc : IsColimitCone c) :
+    (kanDiagramColimitTransport η hη c hc).vertex = c.vertex
+```
+
+`SpaceArbitraryPushouts.lean`：
+
+```lean
+def kanSpanMonoReplacement (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    AsSmall.{u} WalkingSpan ⥤ KanObject.{u}
+```
+
+```lean
+def kanSpanMonoReplacementComparison (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    kanSpanMonoReplacement F ⋙ kanObjectForget ⟶ F ⋙ kanObjectForget
+```
+
+```lean
+instance kanSpanMonoReplacement_left_mono (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    Mono ((kanSpanMonoReplacement F ⋙ kanObjectForget).map
+      (AsSmall.up.map WalkingSpan.Hom.fst))
+```
+
+```lean
+lemma kanSpanMonoReplacementComparison_isQCatEquivalence
+    (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) (i : AsSmall.{u} WalkingSpan) :
+    IsQCatEquivalence (X := ((kanSpanMonoReplacement F).obj i).obj) (Y := (F.obj i).obj)
+      ((kanSpanMonoReplacementComparison F).app i)
+```
+
+```lean
+def spaceArbitraryPushoutObject (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) : KanObject.{u}
+```
+
+```lean
+def spaceArbitraryPushoutCocone (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    JoinCocone (kanDiagramCoherentNerve F)
+```
+
+```lean
+lemma spaceArbitraryPushoutCocone_vertex (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    (spaceArbitraryPushoutCocone F).vertex =
+      spaceInfinityVertex (spaceArbitraryPushoutObject F)
+```
+
+```lean
+lemma spaceArbitraryPushoutCocone_isColimitCone
+    (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    IsColimitCone (spaceArbitraryPushoutCocone F)
+```
+
+```lean
+lemma spaceInfinity_hasColimit_span (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    SerrePositivity.InfinityCategories.HasColimit (kanDiagramCoherentNerve F)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（5121 jobs）、公開1639宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルの24宣言を監査に追加した。
+新規ファイルに警告・sorry・追加公理はない。再帰的な他担当の依存1229ソースは全て
+追跡済み・コミット済み・変更なしを確認した。
+ログ：`/tmp/gamma3-arbitrary-pushout-aggregate.log`、
+`/tmp/gamma3-arbitrary-pushout-audit.log`。
