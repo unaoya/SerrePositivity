@@ -219,3 +219,5 @@ public import SerrePositivity.EInfinity.Surjection.ComponentHorizontalExtraction
 public import SerrePositivity.EInfinity.Surjection.FinalHorizontalExtraction
 public import SerrePositivity.EInfinity.TableReduction.RowFusionContext
 public import SerrePositivity.EInfinity.TableReduction.RowFusion
+public import SerrePositivity.EInfinity.Surjection.TableCompositionRaw
+public import SerrePositivity.EInfinity.Surjection.TableCompositionJoins

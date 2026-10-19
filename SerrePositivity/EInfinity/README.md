@@ -143,7 +143,7 @@ reflexive coequalizer の形の sifted 性を検証し、図式圏へのモナ�
 `differential_generator` と `differential_listGenerator` は退化・非全射な語も含む削除和の式。
 隣接同値の二つの削除は逆符号で相殺し、他の削除は退化のまま残ることを証明済み。
 TR の微分と BE 頂点境界を別々の有限和に展開し、微分保存との必要十分条件を構成。
-nullary 境界恒等式は完了。一般の微分保存そのものは未証明。
+nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` で証明済み。
 `reduceRows_delete_singleton` は一文字行の削除による出力の一文字削除を与える。
 `scheduleTransfer` は相殺相手の行長の候補で、総和・正値性・上界と自然数値の逆移動を検証。
 `ExtractionTrace` は成功した抽出の各行と除外状態を保持する。
@@ -256,7 +256,13 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `finalHorizontalExtraction_success` はこの状態で指定値の最終除外を跨ぐ最終外側成分を転送する。
 これにより正の内側語長で全種類の水平・垂直成分の実際の合成ブロック転送がそろう。
 `rowFusion_in_context` は任意の先行部分の後でも共有行を融合し、正しい全出力の一文字削除へ移す。
-経路の共有頂点の照合と、全成分を連結した経路全体の成功抽出は未完成。
+`TableCompositionData` は元の二つの成功と重なる分割だけを保持し、合成成功を入力にしない。
+`state_zero` で空の初期状態を確認し、`raw_success_zero` で全成分連結表の実際の成功を構成する。
+この段階では各ブロック境界の共有行と共有文字をそれぞれ二つ残す。
+`weightedVertices_vertex` は成分の全置換を元の連続頂点で評価し、始終置換も同定する。
+`horizontal_vertical_join`・`vertical_horizontal_join` は両種類の境界での実際の共有行の一致。
+各ブロックの行数は成分次数＋1であり、各行の非重複性も元の合成置換から得る。
+共有行を融合した経路表の成功と、その行列・出力の経路・合成語への照合は未完成。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

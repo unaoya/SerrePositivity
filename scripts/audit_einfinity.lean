@@ -549,6 +549,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.horizontalLabel_singleton_state_update,
       `SerrePositivity.EInfinity.Surjection.singletonHorizontalExtraction_success,
       `SerrePositivity.EInfinity.Surjection.finalHorizontalExtraction_success,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.raw_success_zero,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.horizontal_vertical_join,
+      `SerrePositivity.EInfinity.Surjection.TableCompositionData.vertical_horizontal_join,
+      `SerrePositivity.EInfinity.TableReduction.ReductionInterval.weightedVertices_vertex,
+      `SerrePositivity.EInfinity.TableReduction.reductionRemoved_first_eq_nil,
       `SerrePositivity.EInfinity.TableReduction.rowFusion_in_context] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
@@ -1080,3 +1085,35 @@ example : reduceRows [([4], 1), ([0, 1, 2, 3], 4), ([3], 1)] ([] : List (Fin 5))
         some [4, 0, 1, 1, 2, 3, 3] := by decide
   exact rowFusion_in_context [([4], 1)] [] [0, 1, 2, 3] (by decide) 2 3 [([3], 1)]
     [4, 0, 1, 1, 2, 3, 3] h
+
+-- 元の二つの成功だけから、全ての水平・垂直成分を含む表の成功を導く。
+private def fullCompositionFixture : TableCompositionData 3 2 2 1 where
+  outer := bfTable
+  outerSchedule := bfSchedule₁
+  outerWord := canonicalFixture
+  outer_success := rankFixture_success
+  inner := terminalTable
+  innerSchedule := terminalSchedule
+  innerWord := compositionInner
+  inner_success := verticalInner_success
+  slot := 1
+  cuts := by change OverlapPartition 2 3; exact verticalCuts
+  inner_positive := by decide
+example : reduceRows (fullCompositionFixture.rawRows 0) [] =
+    some [0, 1, 1, 2, 2, 4, 2, 2, 1, 1, 4, 3] := by
+  have hw : fullCompositionFixture.rawWord 0 = [0, 1, 1, 2, 2, 4, 2, 2, 1, 1, 4, 3] := by
+    rw [TableCompositionData.rawWord,
+      dite_eq_left (show 0 < fullCompositionFixture.count by decide),
+      TableCompositionData.rawWord, dite_eq_left (show 1 < fullCompositionFixture.count by decide),
+      TableCompositionData.rawWord,
+      dite_eq_right (show ¬2 < fullCompositionFixture.count by decide)]
+    decide
+  simpa only [hw] using fullCompositionFixture.raw_success_zero
+
+-- 全表の両種類の共有境界は、元の成功表の同じ実際の置換行を共有する。
+example : ((fullCompositionFixture.horizontalRows 0).map Prod.fst).getLast? =
+    ((fullCompositionFixture.verticalRows ⟨0, by decide⟩).map Prod.fst).head? :=
+  fullCompositionFixture.horizontal_vertical_join ⟨0, by decide⟩
+example : ((fullCompositionFixture.verticalRows ⟨1, by decide⟩).map Prod.fst).getLast? =
+    ((fullCompositionFixture.horizontalRows 2).map Prod.fst).head? :=
+  fullCompositionFixture.vertical_horizontal_join ⟨1, by decide⟩
