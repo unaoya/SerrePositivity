@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCommonSource
 import SerrePositivity.InfinityCategories.Derived.DGFourLastHornConePrimitive
 import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCochainFiller
 import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleLastDenominator
@@ -2066,10 +2067,35 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleLastClosed_edge
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTriangleLastClosed_mem
 
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornYonedaConeIso
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornYonedaResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSolution_nonempty_iff_yonedaResidual_boundary
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornResidualRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTriangleResidualRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGFourLastHornResidualRefinement.Q_differential
+#print axioms SerrePositivity.InfinityCategories.DGFourLastHornResidualRefinement.a_differential
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornFiniteRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornCanonicalFace_eq
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTetrahedron_initialDiagonal
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTriangleInitialDiagonal_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTriangleHorn_source
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTriangleHorn_target
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTrianglesResidualRefinement_nonempty
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornYonedaResidual,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornResidualRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornYonedaCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornPrecomposeCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedCochains,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornFiniteRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornCanonicalFaces,
+    `SerrePositivity.InfinityCategories.Derived.RoofTetrahedronInitialDiagonal,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCommonSource,
+
     `SerrePositivity.InfinityCategories.Derived.DGFourSimplexTopEquation,
     `SerrePositivity.InfinityCategories.Derived.DGFourSimplexQReplacement,
     `SerrePositivity.InfinityCategories.Derived.DGFourLastHornCochainFiller,

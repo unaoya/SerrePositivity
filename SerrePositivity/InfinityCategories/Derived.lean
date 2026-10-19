@@ -836,6 +836,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCochai
 public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornFinalSimplex
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleLastDenominator
 
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornYonedaResidual
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornResidualRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornYonedaCoordinates
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornPrecomposeCoordinates
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedCochains
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornFiniteRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornCanonicalFaces
+public import SerrePositivity.InfinityCategories.Derived.RoofTetrahedronInitialDiagonal
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCommonSource
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
