@@ -61,6 +61,13 @@ def kanAdjointTracedUnitEvaluationInterval (n : ℕ) :
     rfl
   exact P.changeEndpoints hs ht
 
+/-- 同じ延長区間の内部 Hom 像と評価だけで、段比較の辺そのものを計算する。 -/
+lemma kanAdjointTracedUnitEvaluationInterval_path (n : ℕ) :
+    (kanAdjointTracedUnitEvaluationInterval X Y φ n).path =
+      ((PointedMapping.VerticalPath.basedIhomMap (X.level n).space
+        (OmegaSpectrum.tracedSignedLoopUnitComparison Y n)).pre
+          (φ ≫ pointedEvaluation X Y.toKanSequence n)).path := rfl
+
 /-- 元の単位の同じ延長区間全体を評価した式。全 Hom パラメータでも区間を選び直さない。 -/
 lemma kanAdjointTracedUnitEvaluationInterval_h (n : ℕ) :
     (kanAdjointTracedUnitEvaluationInterval X Y φ n).homotopy.h =

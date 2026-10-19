@@ -47,6 +47,20 @@ def tracedSignedLoopUnitComparison (n : ℕ) :
     (KanSequence.signedLoopTail_omegaCondition X.toKanSequence_omega)
     (KanSequence.kanAdjoint X.toKanSequence) (signedLoopUnitStructurePath X) n
 
+/-- 同じ前段の比較区間を懸垂と標的構造射で移した、実三角形の第二辺。 -/
+def tracedSignedLoopUnitStepInterval (n : ℕ) :=
+  KanSequence.tracedRectificationStepPath (X := X.toKanSequence)
+    (Y := KanSequence.signedLoopTail X.toKanSequence) (KanSequence.kanAdjoint X.toKanSequence) n
+    (KanSequence.tracedRectificationStage (X := X.toKanSequence)
+      (Y := KanSequence.signedLoopTail X.toKanSequence) X.sigma_mono
+      (KanSequence.kanAdjoint X.toKanSequence) (signedLoopUnitStructurePath X) n)
+
+/-- 同じ次段の比較区間を構造射へ制限した、実三角形の対角辺。 -/
+def tracedSignedLoopUnitRestrictionInterval (n : ℕ) :=
+  KanSequence.tracedRectifyRestrictionPath (X := X.toKanSequence)
+    (Y := KanSequence.signedLoopTail X.toKanSequence) X.sigma_mono
+    (KanSequence.kanAdjoint X.toKanSequence) (signedLoopUnitStructurePath X) n
+
 /-- 次段延長の制限として保持された対角区間と、同じ二辺を持つ実構造三角形。 -/
 def tracedSignedLoopUnitTriangle (n : ℕ) :=
   KanSequence.tracedRectifyComparison_triangle (X := X.toKanSequence)

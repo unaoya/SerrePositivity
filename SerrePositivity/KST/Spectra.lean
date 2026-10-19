@@ -749,3 +749,10 @@ public import SerrePositivity.KST.Spectra.SpectrumTracedRectification
 public import SerrePositivity.KST.Spectra.SignedLoopUnitStructurePath
 public import SerrePositivity.KST.Spectra.TracedSignedLoopUnit
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedUnitCoordinates
+public import SerrePositivity.KST.Spectra.PointedIhomIntervalAction
+public import SerrePositivity.KST.Spectra.PointedIhomActionNaturality
+public import SerrePositivity.KST.Spectra.PointedIhomParameterRestriction
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedUnitTriangle
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedUnitRestriction
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedUnitSquare
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedUnitSquareBoundary
