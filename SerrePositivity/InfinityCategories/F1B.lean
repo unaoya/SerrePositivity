@@ -525,3 +525,6 @@ public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLiftingInvert
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinLiftingCartesian
 public import SerrePositivity.InfinityCategories.F1B.KanGlobalLiftingInitialFamily
 public import SerrePositivity.InfinityCategories.F1B.KanGlobalLiftingDiagram
+public import SerrePositivity.InfinityCategories.F1B.KanEquivalencePrismExtension
+public import SerrePositivity.InfinityCategories.F1B.KanEquivalencePrismInverting
+public import SerrePositivity.InfinityCategories.F1B.KanPathReplacementLifting

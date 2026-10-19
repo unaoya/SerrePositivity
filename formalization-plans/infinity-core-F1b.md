@@ -21,12 +21,12 @@
 - 標準の `IsRelativeColimitCone`（通常の coslice の相対始対象性）と操作的な相対余錐充填は U が inner なら同値。
   余錐頂点で可逆な輸送の後合成による保存と、標的の fiber 同型で固定図式の条件を全空間へ移送。
 - inner fibration の相対始対象性と厳密な始点境界充填は同値。底変換と最初の頂点の始対象性の反映で証明。
-- 指定された可逆辺を可逆区間全体へ厳密に延長し、右持ち上げから終点・像固定の可逆辺の持ち上げを得る。
-- 相対関手の境界充填は指定部分外の単体の始点の条件だけで成立。相対内部 Hom の順序交換で、
+- 指定可逆辺の可逆区間への厳密な延長と終点・像固定の持ち上げ、相対内部 Hom の順序交換から、
   V′ の局所余錐の境界固定の延長と相対普遍性を構成済み。
 - 単射な圏論的同値の右持ち上げ条件 `KanEquivalenceLifting U` の下で、相対 join の標的の cartesian 性を証明。
   局所の標準 U 余極限から、元・標的の図式を保つ大域図式と全 fiber の標準 U 余極限性を構成。
-- 関手の制限 U に限定した組み立ては一般化済み。標準 isofibration との比較・任意の U の因子分解への供給は未完。
+- 任意の U の可逆 path 置換へ右持ち上げ条件を供給済み。両端固定の prism 延長と可逆性の反映を使用。
+  定値 path の切断は圏論的同値で、置換された関手との合成は U。相対余極限の移送・制限定理は未完。
 - 境界の最初の頂点の局所余極限性で関手の族を境界固定で延長し、普遍な H の左端の制限の始点境界を充填。
 - 相対始点境界充填から固定終点の coslice の後合成の自明 Kan 性、右 pinched 写像空間の同値、
   h Fun の Hom 全単射を証明。普遍図式の全部分 ∞ 圏の制限は充満忠実で、局所余極限があれば自明 Kan。
@@ -41,8 +41,8 @@
   h Fun の大域的同型へ戻し、指定変換に両立する比較同型と比較射の一意性まで証明。
 - 反転 Hom 全単射と指定変換・合成・前合成との両立から、右側も Hom 普遍性と大域的一意性を証明。
 - F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3803 jobs）、同時 import 検査成功（F1 6883・F1B 4283 宣言）。
-  公理監査成功（4287 宣言、標準三公理のみ、1158 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3807 jobs）、同時 import 検査成功（F1 6907・F1B 4289 宣言）。
+  公理監査成功（4293 宣言、標準三公理のみ、1161 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -50,7 +50,7 @@
   Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。24〜60 時間。
   絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
   V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。標準 U 余極限との同値も U が inner なら証明済み。
-  相対的な組み立ては `KanEquivalenceLifting U` を持つ一般の U に拡張済み。標準 isofibration との比較が残る。
+  相対的な組み立ては `KanEquivalenceLifting U` を持つ一般の U に拡張済み。任意の U の path 置換はこの条件を持つ。
   局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
   左右端の Hom 全単射、標準 prism との一致、comma による元の添字への移送は証明済み。
   左右とも任意の指定変換自身の Hom 普遍性と大域的一意性まで接続済み。相対的な写像空間の結論が残る。
@@ -69,7 +69,7 @@
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
 - `F1B.kanRelativeCoconeRestriction` / `F1B.exists_kanRelativeCocone_extension_of_first_vertices`
-- `F1B.KanEquivalenceLifting` / `F1B.exists_kanGlobalRelative_diagram_with_relative_colimits_of_lifting`
+- `F1B.KanEquivalenceLifting` / `F1B.kanEquivalenceLifting_equivalencePathReplacementMap`
 - `F1B.kanRelativeJoinFunctor_homMap_bijective` / `F1B.kanRelativeJoinColimitRestriction_isFullyFaithful`
 - `F1B.kanRelativeJoinRightHomEquiv` / `F1B.kanRelativeJoinTransformation_homUniversal`
 - `F1B.kanLeftCommaHomEquiv` / `F1B.exists_kanLeftExtension_with_homUniversal_of_local_colimits`
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：圏論的同値の右持ち上げ、可逆辺の厳密な延長、右持ち上げ条件下の相対図式、集約・監査・本書）。
+- なし（本保存単位：両端固定 prism 延長、可逆性の反映、可逆 path 置換の右持ち上げ、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -100,9 +100,9 @@
 
 ### 次の一手
 
-- `equivalencePathReplacementMap U` に `KanEquivalenceLifting` を供給する。
-  元の図式と指定部分上の可逆 path を、単射な前合成同値に沿い端点を保って延長する。
-  因子分解による任意の U への還元と、原典 7.3.6.7 の相対的な写像空間の制限定理を閉じる。
+- 証明済みの path 因子分解に沿って、局所の標準 U 余極限を置換された関手へ移す。
+  右持ち上げ条件下の相対図式構成を適用し、標準 isofibration との比較と元の図式への復帰を証明する。
+  原典 7.3.6.7 の相対的な写像空間の制限定理へ接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

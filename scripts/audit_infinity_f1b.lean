@@ -2097,3 +2097,13 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_of_lifting
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_with_relative_colimits_of_lifting
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanPrism_extension_of_precompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPrism_pointwiseInvertible_of_restriction
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanEquivalencePath_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanEquivalenceLifting_equivalencePathReplacementMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanEquivalencePathReplacementSection_isQCatEquivalence
