@@ -476,3 +476,9 @@ public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderNerve
 public import SerrePositivity.KST.Spectra.EnrichedTransformationTriangleStages
 public import SerrePositivity.KST.Spectra.SpectrumZeroEvaluationTriangle
 public import SerrePositivity.KST.Spectra.SpectrumNativeZeroEvaluationTriangle
+public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderReindex
+public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderBridge
+public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEdge
+public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderEvaluation
+public import SerrePositivity.KST.Spectra.EnrichedTransformationTriangleOuter
+public import SerrePositivity.KST.Spectra.SpectrumZeroEvaluationTriangleOuter

@@ -963,7 +963,13 @@ run_cmd do
     `SerrePositivity.KST.Spectra.EnrichedOrderedCylinderNerve,
     `SerrePositivity.KST.Spectra.EnrichedTransformationTriangleStages,
     `SerrePositivity.KST.Spectra.SpectrumZeroEvaluationTriangle,
-    `SerrePositivity.KST.Spectra.SpectrumNativeZeroEvaluationTriangle]
+    `SerrePositivity.KST.Spectra.SpectrumNativeZeroEvaluationTriangle,
+    `SerrePositivity.KST.Spectra.EnrichedOrderedCylinderReindex,
+    `SerrePositivity.KST.Spectra.EnrichedOrderedCylinderBridge,
+    `SerrePositivity.KST.Spectra.EnrichedParameterCylinderEdge,
+    `SerrePositivity.KST.Spectra.EnrichedOrderedCylinderEvaluation,
+    `SerrePositivity.KST.Spectra.EnrichedTransformationTriangleOuter,
+    `SerrePositivity.KST.Spectra.SpectrumZeroEvaluationTriangleOuter]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
