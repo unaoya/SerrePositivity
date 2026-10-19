@@ -1234,6 +1234,16 @@
 - 非輪状複体では、G → Mⁿ の像とその微分の像から始め、下の次数を順に、既構成部分複体の核を覆う上の小さい部分対象として構成する。部分対象と直和の添字集合の上界を併せて記録し、全体で一つの小さい試験集合を得る。
 - 濃度の上界は未証明のフィールドとして渡さない。固定した対象の直和の商とその部分対象を使う小さい添字模型で上界を構成することも、同じ試験集合の実装方法として用いる。これは Dqc や dg 商の定義の変更ではない。
 
+### §59 の実装の現在地
+
+- 保存検証：集約対象ビルド 4083 jobs 成功、公理監査 2329 宣言。標準3公理のみ、KTheory import なし。
+
+- `exists_small_generator_epi_subobject`：全射 M → N に対し、N の部分対象集合で添字付けた生成対象の直和の像として、N へ全射となる M の部分対象を実際に構成した。
+- `subobjectEpiEmbedding` と `smallSubquotientEmbedding`：全射やその商の部分対象に対する部分対象集合の埋め込みを構成し、固定された添字集合へ上界を統一した。
+- `exists_small_exact_window_extension`：完全な短複体に埋め込まれた隣接二項を、核への全射の pullback と小さい全射部分対象を使って先行項で完全に延長した。先行項は固定した直和の実際の商となる。
+- `exists_smallQuotientFamily_iso` と `exists_smallQuotientComplexData_iso`：固定対象の商、ならびに次数ごとの固定対象の商を項に持つ複体を、実際の小さい代表族に同型で移すことを証明した。
+- 短い窓を整数次数の全体の非輪状部分複体へ組み立てる帰納構成、その複体を加え続ける超限分解は未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1463,6 +1473,7 @@
 | `exists_mono_quasiIso_test_homotopy_orthogonal` | DerivedGeometry/GrothendieckTestQuasiIso | 実装・対象ビルド済み |
 | `exists_mono_quasiIso_injective_test_orthogonal` | DerivedGeometry/GrothendieckInjectiveTestFamily | 実装・対象ビルド済み |
 | `homotopy_orthogonal_transfinite` | DerivedGeometry/HomotopyOrthogonalTransfinite | 実装・対象ビルド済み |
+| `exists_small_exact_window_extension`・`exists_smallQuotientComplexData_iso` | DerivedGeometry/SmallExactWindowExtension・SmallQuotientComplexFamily | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

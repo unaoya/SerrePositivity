@@ -156,3 +156,11 @@ public import SerrePositivity.KST.DerivedGeometry.CompatibleHomotopyColimit
 public import SerrePositivity.KST.DerivedGeometry.NullHomotopyFunctor
 public import SerrePositivity.KST.DerivedGeometry.NullHomotopyWellOrder
 public import SerrePositivity.KST.DerivedGeometry.HomotopyOrthogonalTransfinite
+public import SerrePositivity.KST.DerivedGeometry.GeneratorEpiWitness
+public import SerrePositivity.KST.DerivedGeometry.SmallGeneratorEpiCover
+public import SerrePositivity.KST.DerivedGeometry.SubobjectEpiEmbedding
+public import SerrePositivity.KST.DerivedGeometry.CoproductEmbeddingRetraction
+public import SerrePositivity.KST.DerivedGeometry.UniformGeneratorEpiCover
+public import SerrePositivity.KST.DerivedGeometry.SmallQuotientFamily
+public import SerrePositivity.KST.DerivedGeometry.SmallQuotientComplexFamily
+public import SerrePositivity.KST.DerivedGeometry.SmallExactWindowExtension
