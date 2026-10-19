@@ -572,3 +572,9 @@ public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalMapping
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalRestriction
 public import SerrePositivity.InfinityCategories.F1B.KanRightConstantFamily
 public import SerrePositivity.InfinityCategories.F1B.KanRightCanonicalMapping
+public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.KanLeftKanIdentityVertex
+public import SerrePositivity.InfinityCategories.F1B.KanRightPointJoinPrism
+public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeColimitTerminalIndex
+public import SerrePositivity.InfinityCategories.F1B.KanPointColimitLeg

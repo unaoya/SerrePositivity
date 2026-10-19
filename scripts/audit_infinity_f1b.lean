@@ -2329,3 +2329,37 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRightCanonicalHomMap_bijective
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRightCanonical_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceIdentityCone_isTerminalVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanIdentityVertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanIdentityVertex_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanIdentityVertex_slice
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanIdentityVertex_isTerminal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightPointJoinPrism
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightPointJoinPrism_zero
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightPointJoinPrism_one
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightPointJoinPrism_naturality
+
+#check @SerrePositivity.InfinityCategories.F1B.kanExists_fixed_slice_section
+
+#check @SerrePositivity.InfinityCategories.F1B.kanExists_fixed_terminal_prism
+
+#check @SerrePositivity.InfinityCategories.F1B.kanTerminalPoint_rightAnodyne
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_restrict_terminal
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftLocalColimit_iff_restrict_identity
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPointColimit_leg_invertible
+
+#check @SerrePositivity.InfinityCategories.F1B.kanColimit_terminal_leg_invertible
