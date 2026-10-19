@@ -36,7 +36,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・493 モジュール 4664 宣言の公理監査成功。
+対象ビルド・499 モジュール 4718 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3536,3 +3536,37 @@ ULift ℤ からの射の係数表示を全単体の余単体図式へ適用し�
 参照：Goerss–Jardine III §2、VIII §2。
 対象ビルド 3961 jobs 成功。私有宣言を含む 493 モジュール 4664 宣言で標準三公理のみ。
 L9e は進行中。BG の非斉次群 cochain の比較、幾何的微分と交代微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
+
+
+## 116. L9e の BG の正規化 cochain の有理消滅
+
+AsSmall した一対象群圏の nerve の単体を、隣接射の逆元の列へ送る同値を構成した。
+SingleObj の合成は逆順の積なので、この逆元により通常の非斉次群 cochain の積の順序に合わせている。
+隣接射の指定から functor を復元する Mathlib の構成を使い、全対象が一意であることと隣接射の一致で往復則を証明した。
+面の頂点を飛ばす式を各隣接辺で計算し、最初の面は Fin.tail、残りの面は Fin.contractNth の積になることを証明した。
+飛ばされた頂点を挟む場合は二辺の合成と積の逆元の式を使っている。
+
+全単体上の係数の元の cochain の微分を最初の面と残りの面に分けた。
+群座標での加法同型がこの微分と、自明係数の非斉次群 cochain の微分を交換することを証明した。
+これにより BG の通常の全単体の cochain と、加法群へ忘却した線形群 cochain の実際の複体同型を得た。
+正規化のホモトピー同値、群座標の複体同型、忘却の homology 比較を合成した。
+その結果 BG の非退化単体上の正規化 cochain の cohomology は自明係数の群 cochain の cohomology と同型となる。
+零次数は元の係数に同型であり、有限群の標数零の体の係数では正次数は零である。
+
+実際の有理化スペクトルの各段の高次群の有理作用を入力し、正規化された BG の cochain に対する零次数の表示と正次数の消滅を得た。
+この正規化 cochain は通常の交代微分で定義されている。
+骨格の幾何的微分から移した coefficientDifferential と同定したわけではなく、その式と符号の照合は引き続き必要である。
+塔の収束と有理 Shapiro の全射性もまだ未証明。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `GroupNerve.coordinatesEquiv` | BG の全単体と非斉次群座標の同値 |
+| `GroupNerve.coordinates_face_zero` / `coordinates_face_succ` | 面が tail と contraction になる式 |
+| `GroupNerve.linearComplexIso` | BG の全単体の cochain と自明係数の線形群 cochain の複体同型 |
+| `GroupNerve.normalizedCohomologyIso` / `normalizedZeroCohomologyIso` | BG の正規化 cochain の群 cohomology による表示と零次数 |
+| `GroupNerve.normalized_positive_cohomology_isZero` | 有限群と標数零の体で正規化 cochain の正次数が消滅 |
+| `RationalLevelNormalizedCochains.zeroCohomologyIso` / `positive_cohomology_isZero` | 実際の有理化各段の高次群係数での正規化 cochain の計算 |
+
+参照：Goerss–Jardine III §2、VIII §2、BF 1978 §2。
+対象ビルド 3967 jobs 成功。私有宣言を含む 499 モジュール 4718 宣言で標準三公理のみ。
+L9e は進行中。幾何的微分と交代微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
