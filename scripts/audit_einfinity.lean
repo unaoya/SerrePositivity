@@ -60,7 +60,15 @@ run_cmd do
       `SerrePositivity.EInfinity.Shuffle.backPath,
       `SerrePositivity.EInfinity.Shuffle.simplex_frontCut,
       `SerrePositivity.EInfinity.Shuffle.simplex_backCut,
-      `SerrePositivity.EInfinity.Shuffle.aw_component_simplex] do
+      `SerrePositivity.EInfinity.Shuffle.aw_component_simplex,
+      `SerrePositivity.EInfinity.Shuffle.pathCutEquiv,
+      `SerrePositivity.EInfinity.Shuffle.sign_eq_pow_inversionNumber,
+      `SerrePositivity.EInfinity.Shuffle.inversionNumber_edgeJoin,
+      `SerrePositivity.EInfinity.Shuffle.pathCut_sign,
+      `SerrePositivity.EInfinity.Shuffle.signed_sum_pathCut,
+      `SerrePositivity.EInfinity.Shuffle.diagonal_value_split_sum,
+      `SerrePositivity.EInfinity.Shuffle.diagonal_value,
+      `SerrePositivity.EInfinity.Shuffle.component_diagonal] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

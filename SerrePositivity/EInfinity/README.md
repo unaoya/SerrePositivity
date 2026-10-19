@@ -62,8 +62,10 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 実際の E(n) 上の `BarrattEccles.complexDiagonal` は余結合的で Σ_n 同変、既存の
 augmentation を左右余単位に持つ。一般の X,Y の正規化 shuffle 成分は
 `Shuffle.component`、生成元公式は `component_generators`。経路の前後半と
-項別 AW 切断公式 `aw_component_simplex` まで構成済み。経路分割の全単射・符号公式、
-一般 shuffle の微分条件・余代数射性、標準比較の braiding 適合性は残る。
+項別 AW 切断公式 `aw_component_simplex`、経路分割の全単射 `pathCutEquiv` と符号公式
+`pathCut_sign` を構成済み。有限和の添字替えから `diagonal_value` と加群射の等式
+`component_diagonal` を検証済み。一般 shuffle の微分条件・鎖写像化と、
+複体上での余代数射性、標準比較の braiding 適合性は残る。
 Hopf オペラッド射と転送モデル構造は未完成。
 
 原典：
