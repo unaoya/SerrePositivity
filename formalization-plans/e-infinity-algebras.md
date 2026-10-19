@@ -15,7 +15,6 @@
   一般の小図式の重み付き coend、tensor と内部 Hom の普遍性、反転係数の end との自然な同型を構成。
   Kan 置換後の Hom 比較は全 Hom パラメータの豊穣合成を保ち、恒等射の普遍切断点から復元できる。
   実際の coherent な余錐を構成し、頂点を Kan 置換した反転 coend と同定。
-  任意の coherent 錐全体の明示的な Hom の族を構成し、頂点評価・元の図式への制限を標準比較と厳密に照合。
   通常の任意の小圏上の Kan 値図式では、構成した反対錐の ∞ 極限性・元の native な余錐の ∞ 余極限性を無条件に証明。
   任意の coherent な図式の切断空間は、形状の押し出しの引き戻し・セル付加・相対骨格の塔の厳密な極限で表示。
   left fibration では塔の各値は Kan、制限は Kan fibration。図式の底上の通常の余極限についても一般化済み。
@@ -39,7 +38,9 @@
   任意の余錐の全左 Hom による余錐の族を、元の余錐の余極限性を仮定せず構成。部分図式への制限を実際の付加比較辺の前合成とホモトピーで照合。
   既知の余極限余錐では、その族と既存の Hom 比較が互いに実際のホモトピー逆となることも証明。
   fiber の同じ成分への修正を、底の辺を一単体として保つ輸送辺へ織り込んだ。貼った余錐の両枝に span の実際の脚を被覆する比較辺を構成。
-  その二枝の全 Hom の族と脚の前合成のホモトピーを同時に公開。共通部分の指定ホモトピーの保持と path end での余極限性は未完了。
+  その二枝の全 Hom の族と脚の前合成のホモトピーを同時に公開。
+  指定境界経路の全パラメータ族を保つ右枝の修正と厳密な余錐族の貼り合わせを構成。パラメータ変更に厳密に自然。
+  同じ経路と右枝を持つ持ち上げの相対ホモトピーも構成。span の普遍余錐からの指定経路の抽出と共通 end での余極限性は未完了。
   γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
   詳細な実施記録はコミットメッセージを参照。
 - **残り**（依存順・時間は再開後の概算）：
@@ -61,8 +62,6 @@
   `coherentCone_isLimit_of_family_lifts`、`bousfieldKanCoherentOppositeCone_isLimit_of_comparison_lifts`、
   `weightedColimitHomComparison_enriched_naturality`、
   `kanReflectedBousfieldKanColimitHomComparison_of_point`、`bousfieldKanCoherentConePoint_of_end_point`、
-  `reflectedWeightedHomPostcomposition_evaluation`、`weightedCoherentCoefficient_precomposition`、
-  `bousfieldKanWeightedNerveEvaluation_parameter_map`、`kanReflectedBousfieldKanEndPostcomposition_eq`、
   `bousfieldKanCoherentConeComparison_uncurry`、`coherentCosliceSourcePrecomposition`、
   `coherentCosliceSourcePrecomposition_weighted`、`coneIdentityCosliceSection`、
   `bousfieldKanCoherentConeSourceFamily_restrict`、`bousfieldKanCoherentOppositeCone_isLimit`、
@@ -84,11 +83,12 @@
   `spanNerveHornIso`、`partialColimitSpanHomEndIso`、
   `partialColimitOriginalToNativeSpanCocones_homotopyEquivalence`、
   `coconePointHomFamily_restriction_homotopy`、`coconePointHomFamily_comparison_homotopy`、
-  `exists_partialColimitPushout_cocone_with_branch_homotopies`。
+  `exists_partialColimitPushout_cocone_with_branch_homotopies`、`coconeBoundaryPathRectifiedFamily`、
+  `coconeBoundaryPathCorrection_unique_homotopy`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は底の三角形の相対合成・輸送辺・修正後の枝と全 Hom の比較7モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
+- **未コミット**：今回の保存単位は指定経路の持ち上げ・cospan の修正・余錐族の貼り合わせ3モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -97,11 +97,11 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：span の普遍余錐が指定する共通部分のホモトピーを保持して、共通 path end で全 Hom の族を照合する。
-  `exists_partialColimitPushout_cocone_with_branch_homotopies` は両枝の実際の脚と各枝の全 Hom の比較を保持する。
-  ただし枝だけの一致では end の経路データの一致を保証しない。π₀ の任意の一致や任意の二枝の比較で普遍性を代用しない。
-  native な span の余錐の二単体から境界の指定経路を作り、`relativeEquivalencePathMapAt_trivialKanFibration_of_fibration` で右枝へ持ち上げる。
-  その指定経路で二枝の族の path end の像を照合し余極限性を証明。その後、骨格の無限段階とセルの添字の小ささを処理。
+- **次の一手**：native な span の普遍余錐の二単体から、共通部分の余錐空間の指定経路を抽出する。
+  両枝の実際の脚と全 Hom の比較は `exists_partialColimitPushout_cocone_with_branch_homotopies` が保持する。
+  枝だけの一致では end の経路データを保証しない。`coconeVertexLegCompStruct` と `edgeTransport_composition_iso` で二単体の経路全体を追跡する。
+  得た経路を `coconeBoundaryPathRectifiedFamily` へ入力し、同じ経路の持ち上げを `coconeBoundaryPathCorrection_unique_homotopy` で比較する。
+  全パラメータの自然性で Hom の族を共通 path end へ移し余極限性を証明。その後、骨格の無限段階とセルの添字の小ささを処理。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
 ### E2a（既存の引き継ぎ）

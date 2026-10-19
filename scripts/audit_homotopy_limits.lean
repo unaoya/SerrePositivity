@@ -5464,3 +5464,81 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @exists_partialColimitPushout_cocone_with_branch_homotopies
 #print axioms exists_partialColimitPushout_cocone_with_branch_homotopies
+
+#check @kanRelativePathSection
+#print axioms kanRelativePathSection
+
+#check @kanRelativePathSection_map
+#print axioms kanRelativePathSection_map
+
+#check @kanSpecifiedPathLift
+#print axioms kanSpecifiedPathLift
+
+#check @kanSpecifiedPathLift_projection
+#print axioms kanSpecifiedPathLift_projection
+
+#check @kanSpecifiedPathLift_endpoint
+#print axioms kanSpecifiedPathLift_endpoint
+
+#check @kanSpecifiedPathLift_other_endpoint
+#print axioms kanSpecifiedPathLift_other_endpoint
+
+#check @kanSpecifiedPathLift_precomp
+#print axioms kanSpecifiedPathLift_precomp
+
+#check @kanSpecifiedPathLift_unique_homotopy
+#print axioms kanSpecifiedPathLift_unique_homotopy
+
+#check @cospanRectificationPath
+#print axioms cospanRectificationPath
+
+#check @cospanRectificationPath_zero
+#print axioms cospanRectificationPath_zero
+
+#check @cospanRectificationPath_projection
+#print axioms cospanRectificationPath_projection
+
+#check @cospanPathCorrectedRight
+#print axioms cospanPathCorrectedRight
+
+#check @cospanPathCorrectedRight_boundary
+#print axioms cospanPathCorrectedRight_boundary
+
+#check @cospanPathRectifiedLift
+#print axioms cospanPathRectifiedLift
+
+#check @cospanPathRectifiedLift_left
+#print axioms cospanPathRectifiedLift_left
+
+#check @cospanPathRectifiedLift_right
+#print axioms cospanPathRectifiedLift_right
+
+#check @coconeBoundaryPathCorrection
+#print axioms coconeBoundaryPathCorrection
+
+#check @coconeBoundaryPathCorrection_zero
+#print axioms coconeBoundaryPathCorrection_zero
+
+#check @coconeBoundaryPathCorrection_projection
+#print axioms coconeBoundaryPathCorrection_projection
+
+#check @coconeBoundaryPathCorrection_boundary
+#print axioms coconeBoundaryPathCorrection_boundary
+
+#check @coconeBoundaryPathRectifiedFamily
+#print axioms coconeBoundaryPathRectifiedFamily
+
+#check @coconeBoundaryPathRectifiedFamily_left
+#print axioms coconeBoundaryPathRectifiedFamily_left
+
+#check @coconeBoundaryPathRectifiedFamily_right
+#print axioms coconeBoundaryPathRectifiedFamily_right
+
+#check @coconeBoundaryPathCorrection_precomp
+#print axioms coconeBoundaryPathCorrection_precomp
+
+#check @coconeBoundaryPathRectifiedFamily_precomp
+#print axioms coconeBoundaryPathRectifiedFamily_precomp
+
+#check @coconeBoundaryPathCorrection_unique_homotopy
+#print axioms coconeBoundaryPathCorrection_unique_homotopy
