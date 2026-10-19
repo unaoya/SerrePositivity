@@ -26,6 +26,7 @@
 | [K理論：KST 経路と現代的な K](k-theory-kst-route.md) | KST Thm A（係数つき）＋離散冪零不変性で cdh 降下を得て定理 3.1 を証明し、F5 で補題 4.6 を迂回する。K は安定 ∞ 圏の ∞-S• 構成（dg nerve 経由）、非連結化は dg 側 Schlichting、Sp は γ-B | 2026-10-18 採用。決定事項は §13。L11・L2・L4・L6・L7・L8・L9 を起動 |
 | [K理論：任意モデル源への一般化の棚卸し](k-theory-generalization-inventory.md) | 中断した一般化のモジュール索引（docstring からアンカーで参照） | 中断 |
 | [Stage 4 の依存監査](stage4-dependency-audit.md) | 指定分解版に限った段階4の依存の監査 | 2026-10-17 監査 |
+| [基盤の統合計画](foundations.md) | v2（2026-10-19）：基盤優先、K は Land–Tamme（dg 増強流）。∞ 圏・dg 圏・E∞ 代数・K 理論の層の構成、依存関係、現在のレーンとの対応、マイルストーン。基盤全体の正本 | 2026-10-18 採用。α2（F1、[infinity-core-F1.md](infinity-core-F1.md)）を新設、α3（F2、[infinity-core-F2.md](infinity-core-F2.md)）は α2 の straightening と γ3 の後 |
 | [∞ 圏の基盤（α〜ε・Π）](infinity-categories.md) | BS §7–§8 と K 理論を quasicategory の基盤に載せる。一旦の目標 G1：perfectoid 化の定義と Cor 8.12 の証明だけを「界面」の存在として保留し、他をすべて証明する | G1 達成（2026-10-18）。E3 の型・二入力への橋・引用の集約と旧公開型での供給は完了。界面の具体的構成と E2 は別工程 |
 | [E∞ 代数のモデル圏（レーン E2）](e-infinity-algebras.md) | Ch(R) 上の Barratt–Eccles オペラッドの代数のモデル圏（E2a）、その ∞ 圏化 γ（E2b）、BS の続きに要る Tot と単体的可換環（E2c） | 計画。E2a-0（Ch(A) の射影モデル構造）から着手可能（2026-10-18） |
 | [dg nerve（∞ 圏基盤 N）](dg-nerve.md) | 任意の dg 圏の dg nerve を定義し、quasicategory・H⁰ との比較・pinched 写像空間・関手性を証明する。D(S) := N_dg(Semifree(S)) の前段 | N0〜N6 完了（2026-10-18、571 宣言）。続けて N7（dg の錐が ∞ 極限であること、D4 の核） |

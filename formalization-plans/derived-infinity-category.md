@@ -152,7 +152,9 @@ dg 加群層（`SerrePositivity/DifferentialGraded/`）は一点 dg 圏 `PUnit` 
 | D2e | `Derived/DerivedComparison.lean` | 関手 `HomotopyCategory S (Semifree S) ⥤ DerivedCategory (ModuleCat S)` := D2d ⋙ `Qh`。充満忠実は `Qh_map_bijective`、本質的全射は D2c と「`Q` は擬同型を同型に送る」。`semifreeDerivedEquivalence` |
 | D2f | `Derived/DerivedComparisonShift.lean` | 同値のシフトとの両立（`CommShift`）。D4 の三角構造の一致に使う。任意 |
 | D2g | `Derived/Checks.lean`、`scripts/audit_derived_infinity.lean` | `HasDerivedCategory.standard` での具体化と公理監査 |
-| D1 | `Derived/InfinityCategory.lean` | N1・N2 の後。`derivedInfinityCategory S := dgNerve S (Semifree S)`、quasicategory |
+| D2h | `Derived/SemifreeClosure.lean` | `complexSemifree` の閉性：零複体、`complexSphere S n`、シフト、semifree 間の射の mapping cone、余積（有限・任意）。D4 の fiber・cofiber と Perf ⊆ D(S) に使う（2026-10-17 追加） |
+| D2i | `Derived/SemifreeTensor.lean` | 任意：semifree ⊗_S semifree は semifree、底変更 − ⊗_S T は semifree を保つ。δ・底変更の関手性に使う（2026-10-17 追加） |
+| D1 | `Derived/InfinityCategory.lean` | N1 の完了が dg-nerve.md §5 に記録された後。`derivedInfinityCategory S := dgNerve S (Semifree S)`。quasicategory は N2 の後 |
 | D3 | `Derived/HomotopyCategoryComparison.lean` | N3 の後。`HomotopyCategory₂` の同値と D2e の合成 |
 | D4 | `Derived/PullbackCriterion.lean` | 標準 fiber 比較射による引き戻し判定。完了 |
 | D5a〜d | `Derived/NerveInclusion.lean`、`DiscreteEmbedding.lean`、`BaseChange.lean`、`HZero.lean` | 通常の nerve、離散入力、底変更と H⁰。完了 |
