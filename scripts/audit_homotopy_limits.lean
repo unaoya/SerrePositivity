@@ -7192,3 +7192,93 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @FixedBaseTerminalTriangle.base
 #print axioms FixedBaseTerminalTriangle.base
+
+#check @relativeExtensionFiberEndpoint_witnessIso_hom_arrow
+#print axioms relativeExtensionFiberEndpoint_witnessIso_hom_arrow
+
+#check @relativeExtensionFiberEndpoint_edge_hom_arrow
+#print axioms relativeExtensionFiberEndpoint_edge_hom_arrow
+
+#check @fixedExtensionEndpointHomotopy_edge
+#print axioms fixedExtensionEndpointHomotopy_edge
+
+#check @fixedExtensionEndpointHomotopy_hom
+#print axioms fixedExtensionEndpointHomotopy_hom
+
+#check @prismTransportStandard
+#print axioms prismTransportStandard
+
+#check @prismTransportStandard_projection
+#print axioms prismTransportStandard_projection
+
+#check @prismTransportStandard_zero
+#print axioms prismTransportStandard_zero
+
+#check @prismTransportStandard_one
+#print axioms prismTransportStandard_one
+
+#check @PrismTransportCylinder
+#print axioms PrismTransportCylinder
+
+#check @prismTransportCylinder
+#print axioms prismTransportCylinder
+
+#check @prismTransportEndpointHomotopy
+#print axioms prismTransportEndpointHomotopy
+
+#check @prismTransportEndpointHomotopy_projection
+#print axioms prismTransportEndpointHomotopy_projection
+
+#check @prismTransportEndpointHomotopy_hom
+#print axioms prismTransportEndpointHomotopy_hom
+
+#check @liftedEdgePointPrism
+#print axioms liftedEdgePointPrism
+
+#check @liftedEdgePointPrism_zero
+#print axioms liftedEdgePointPrism_zero
+
+#check @liftedEdgePointPrism_one
+#print axioms liftedEdgePointPrism_one
+
+#check @liftedEdgePointPrism_projection
+#print axioms liftedEdgePointPrism_projection
+
+#check @liftedEdgeTransportCylinderData
+#print axioms liftedEdgeTransportCylinderData
+
+#check @liftedEdgeTransportEndpointHomotopy
+#print axioms liftedEdgeTransportEndpointHomotopy
+
+#check @liftedEdgeTransportEndpointHomotopy_projection
+#print axioms liftedEdgeTransportEndpointHomotopy_projection
+
+#check @liftedEdgeTransportEndpointHomotopy_hom
+#print axioms liftedEdgeTransportEndpointHomotopy_hom
+
+#check @colimitAttachmentTransportCylinder_edge_projection
+#print axioms colimitAttachmentTransportCylinder_edge_projection
+
+#check @colimitAttachmentTransportCylinderData
+#print axioms colimitAttachmentTransportCylinderData
+
+#check @colimitAttachmentTransportHomotopy
+#print axioms colimitAttachmentTransportHomotopy
+
+#check @colimitAttachmentTransportHomotopy_projection
+#print axioms colimitAttachmentTransportHomotopy_projection
+
+#check @colimitAttachmentTransportHomotopy_hom
+#print axioms colimitAttachmentTransportHomotopy_hom
+
+#check @PrismTransportCylinder.mk
+#print axioms PrismTransportCylinder.mk
+
+#check @PrismTransportCylinder.homotopy
+#print axioms PrismTransportCylinder.homotopy
+
+#check @PrismTransportCylinder.projection
+#print axioms PrismTransportCylinder.projection
+
+#check @PrismTransportCylinder.initial
+#print axioms PrismTransportCylinder.initial
