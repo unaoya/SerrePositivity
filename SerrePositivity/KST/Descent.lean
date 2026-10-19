@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Descent.CechProductRestriction
+public import SerrePositivity.KST.Descent.DisjointFamilyCechWeak
+public import SerrePositivity.KST.Descent.FiniteCoproductZariskiCover
+public import SerrePositivity.KST.Descent.ZariskiCoproductDescent
+public import SerrePositivity.KST.Descent.FamilyCechMapLocality
+public import SerrePositivity.KST.Descent.FamilyCechLocalRanks
+public import SerrePositivity.KST.Descent.FiniteFreeChartFamilyRanks
 public import SerrePositivity.KST.Descent.DisjointFamilyCechGeometry
 public import SerrePositivity.KST.Descent.FamilyCechDiagonalComparison
 public import SerrePositivity.KST.Descent.FiniteProductTensor
