@@ -38,8 +38,8 @@
   底の一本の辺に沿う全対象の実際の transport の辺・prism と厳密な両端、切断の始点・終点評価による特徴づけを構成済み。
 - 任意の小圏で添字付けた豊穣比較の図式を KanEnrichedDiagram として coherent に実現。任意の添字関手の制限（面・退化を含む）と厳密に可換。合成三点図式の三面は既存の比較の族と厳密に一致。既存の比較の辺そのものの合成三角形と合成等式を証明済み。全対象の transport も底の三角形の合成則・既存三辺の二単体・退化辺の単位則を証明済み。
 - 全単体の共同切断評価 `transportSimplexSectionInfinity` と、単体圏の nerve から底への初頂点写像を構成済み。初頂点写像は底の射に自然で全頂点を被覆し本質的全射。
-  共同切断評価の添字制限は厳密に可換。宇宙を揃えた両写像は同じ初頂点を保つ辺の集合を反転し、初頂点写像は実際の退化辺に送る。標準単体上の厳密な切断と始点を保つ自然比較、その全次数の prism を構成済み。指定辺を反転する任意の関手は標準単体へ実際に降下し、引き戻しは元の関手と coherent に同型。標準単体上の関手は降下で厳密に回収する。反転関手の全パラメーターで比較を同型へ束ね、標準単体上の初頂点写像の IsLocalization を明示的な逆で証明済み。一般の底への局所化・降下は未証明。
-- 対象ビルド3218 jobs、公理監査7091宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  共同切断評価の添字制限は厳密に可換。宇宙を揃えた両写像の指定辺の反転条件と、標準単体上の厳密な切断・自然比較・全次数の prism を構成済み。反転関手の全パラメーターで比較を同型へ束ね、標準単体上の IsLocalization を明示的な逆で証明済み。底の部分複体の単体圏の nerve を初単体の所属で記述した部分複体と厳密に同定。共通部分・合併・逆像と可換で、部分複体の bicartesian な分解は実際の nerve の pushout となる。反転関手の底への制限は厳密な反変図式をなし、局所化比較は全ての底・面・退化に自然。一般の底への局所化・降下は未証明。
+- 対象ビルド3220 jobs、公理監査7140宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -69,7 +69,7 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`、`transportStandardFirstVertexSection_comp`、`ordinaryComparisonHomotopy`、`transportStandardInvertingDescentIso`、`transportStandardInvertingFamilyIso`、`transportSimplexFirstVertexMap_standard_isLocalization`
+- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`、`transportStandardFirstVertexSection_comp`、`ordinaryComparisonHomotopy`、`transportStandardInvertingDescentIso`、`transportStandardInvertingFamilyIso`、`transportSimplexFirstVertexMap_standard_isLocalization`、`transportSimplexSubcomplexIso`、`transportSimplexNerve_bicart_isPushout`、`transportSimplexLocalizationComparison`
 
 ### 依存と提供
 
@@ -97,8 +97,8 @@
 
 ### 次の一手
 
-標準単体上の transportStandardLocalizationEquivalence を、境界と単体作用素に両立する相対的な局所化へ強め、一般の底へ貼り合わせる。宇宙を揃えた初頂点写像の IsLocalization と、共同切断評価の降下へ進む。
-TransportSimplexLocalizationData に宇宙を揃えた両写像の反転条件を用意済み。標準単体では任意の同じ宇宙の標的 quasicategory に対する局所化普遍性を証明済み。共同切断評価の一般の底 B への降下、高次一意性、既存 transport との比較は未証明。標準単体上の普遍性だけから一般の底の結論は導かない。
+transportSimplexInvertingDiagram の部分複体分解に対する pullback を、指定辺の合併条件とともに証明する。標準単体上の同値から一般の底への貼り合わせに必要な相対充填性・セル付加への拡張を整え、宇宙を揃えた初頂点写像の IsLocalization と共同切断評価の降下へ進む。
+TransportSimplexLocalizationData に宇宙を揃えた両写像の反転条件を用意済み。標準単体では任意の同じ宇宙の標的 quasicategory に対する局所化普遍性を証明済み。共同切断評価の一般の底 B への降下、高次一意性、既存 transport との比較は未証明。部分複体の nerve の pushout と標準単体上の普遍性だけから一般の底の結論は導かない。一般のセル付加での比較は未証明。
 全対象での高次整合性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md)（レーン α）の成果を読み取り専用で使う。
 

@@ -984,3 +984,5 @@ public import SerrePositivity.InfinityCategories.F1.TransportSimplexStandardSect
 public import SerrePositivity.InfinityCategories.F1.OrdinaryComparisonPrism
 public import SerrePositivity.InfinityCategories.F1.TransportStandardInvertingComparison
 public import SerrePositivity.InfinityCategories.F1.TransportStandardLocalization
+public import SerrePositivity.InfinityCategories.F1.TransportSimplexSubcomplex
+public import SerrePositivity.InfinityCategories.F1.TransportSimplexInvertingRestriction
