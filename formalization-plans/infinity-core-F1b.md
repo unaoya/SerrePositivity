@@ -47,17 +47,17 @@
   nerve の左右 Hom 普遍性と通常の Kan 拡張の同値、native な pointwise Kan から通常の Kan 拡張への含意も証明。
 - B5 局所比較：Under・Over の nerve と元の頂点上の native な coslice・slice の同型と忘却射影の一致を証明。
   左右 comma の通常の四角形の引き戻し性から、左右の元の Kan 添字の比較射の同型性と K への射影・局所図式の厳密な一致を証明。
-- 通常の錐と nerve の任意の join の錐を頂点を保つ全単射で比較。錐の射と、元の図式上で恒等な拡張関手間の自然変換も全単射。
-  通常の錐の圏と拡張関手の fiber の同値、nerve の fiber 同型から、錐の族への指定比較射の同値性を証明。
-  通常の終対象と nerve の終頂点、指定錐・任意の native な錐の極限性、図式の極限の存在を双方向に比較。
-- 最終検証：F1・F1B 同時ビルド成功（4048 jobs）、同時 import 検査成功（F1 7451・F1B 5040 宣言）。
-  公理監査成功（5046 宣言、標準三公理のみ、1395 モジュールに straightening なし）。ソース名衝突 0。
+- 通常の錐の圏と拡張関手の fiber の同値から、native な錐の族への比較射の同値性を証明。
+  錐・余錐の頂点を保つ全単射、指定錐・余錐の普遍性、極限・余極限の存在を双方向に比較。
+  左右 comma の局所極限・余極限の存在、および nerve 上の Kan 拡張の存在と通常の pointwise Kan の存在を双方向に比較。
+- 最終検証：F1・F1B 同時ビルド成功（4054 jobs）、同時 import 検査成功（F1 7451・F1B 5066 宣言）。
+  公理監査成功（5072 宣言、標準三公理のみ、1401 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。6〜18 時間。
-  残り：pointwise Kan の局所錐の双方向比較。自然変換の全単射・随伴の双方向比較・通常の Kan の大域的普遍性の比較は完了。
+  残り：指定単位・余単位を伴う pointwise Kan の局所錐の双方向比較。自然変換の全単射・随伴の双方向比較・通常の Kan の大域的普遍性の比較は完了。
   pointwise な古典 Kan 拡張と一般の普遍写像性だけによる Kan 拡張を区別して回収する。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
 
@@ -76,7 +76,7 @@
 - `F1B.IsRelativeRightKanExtendedFrom` / `F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left`
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
-- `F1B.kanNerveLeftKanShapeIso_hom_diagram` / `F1B.kanNerveRightKanShapeIso_hom_diagram`
+- `F1B.kanNerve_exists_leftKan_iff_pointwise` / `F1B.kanNerve_exists_rightKan_iff_pointwise`
 - `F1B.kanNerveConeFamilyMap_isQCatEquivalence` / `F1B.kanNerveCone_isLimit_iff` / `F1B.kanNerve_hasLimit_iff`
 
 ### 依存と提供
@@ -87,7 +87,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：錐の族の同値・nerve の終対象と極限の双方向比較、集約・監査・本書）。
+- なし（本保存単位：余錐・余極限の双方向比較、左右の pointwise Kan の存在判定、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -99,8 +99,8 @@
 
 ### 次の一手
 
-- `kanNerveCone_isLimit_iff` の余錐側を反転と nerve の反対圏同型から構成し、指定余錐と余極限の存在を比較。
-  左右 comma 添字同型で局所図式を移し、通常の pointwise Kan の指定単位・余単位の局所錐を双方向に比較する。
+- Mathlib `RightExtension.coneAt` の nerve と、指定余単位の native な右局所輸送の錐を添字同型で比較する。
+  指定変換の局所普遍性の双方向判定を得て、左 `LeftExtension.coconeAt` も同様に接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

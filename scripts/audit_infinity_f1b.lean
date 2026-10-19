@@ -2936,3 +2936,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveCone_isLimit_iff
 #check @SerrePositivity.InfinityCategories.F1B.kanConeOfNerveCone_isLimit_iff
 #check @SerrePositivity.InfinityCategories.F1B.kanNerve_hasLimit_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceDiagramIso
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceDiagramIso_projection
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeReverseConeEquiv
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCoconeEquiv
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCocone_isColimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCoconeEquiv_symm_isColimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_hasColimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCocone_vertex
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCoconeEquiv_symm_vertex
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_leftKanDiagram_hasColimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_rightKanDiagram_hasLimit_iff
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_exists_leftKan_iff_pointwise
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_exists_rightKan_iff_pointwise

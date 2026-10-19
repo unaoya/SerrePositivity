@@ -702,3 +702,9 @@ public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFiberFamilyIso
 public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamilyEquivalence
 public import SerrePositivity.InfinityCategories.F1B.KanNerveTerminal
 public import SerrePositivity.InfinityCategories.F1B.KanNerveLimit
+public import SerrePositivity.InfinityCategories.F1B.KanSliceDiagramIso
+public import SerrePositivity.InfinityCategories.F1B.KanNerveCoconeEquiv
+public import SerrePositivity.InfinityCategories.F1B.KanNerveColimit
+public import SerrePositivity.InfinityCategories.F1B.KanNerveCoconeVertex
+public import SerrePositivity.InfinityCategories.F1B.KanNerveKanLocalExistence
+public import SerrePositivity.InfinityCategories.F1B.KanNervePointwiseExistence
