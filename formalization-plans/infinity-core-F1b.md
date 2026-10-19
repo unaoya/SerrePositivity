@@ -34,8 +34,11 @@
   元の錐を追跡可能な相対輸送から選び直し、全錐の可逆ホモトピーを公開。頂点側は定値、
   図式側は切断の coherent 円柱と全時刻で厳密に一致。native な錐の各脚を実際の関手へ読み戻し、
   自然性の正方形から切断との合成を置換後の脚と比較。左右の脚と元の二射影の関手同型を構成。
-  二脚の比較同型は存在から選択しており、native な二次の可換性と指定 path の同時照合は未完了。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6318 jobs）、F2 の公理監査成功（322 宣言、標準三公理のみ）。
+  任意の coherent 二単体を長辺から二辺の合成への豊穣辺として読み戻し、両端を厳密に証明。
+  QCat の core Fun の指定辺の類から関手同型を構成し、strict な三角形では辺が定値になることも証明。
+  native な錐の三角形と三辺を取り出し、左右の三角形から catPullbackConeNativeCommutativity を構成。
+  二脚の比較同型は存在から個別に選択しており、native な可換性と指定 path の同時照合は未完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6327 jobs）、F2 の公理監査成功（380 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -62,6 +65,7 @@
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
+- `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity`
 
 ### 依存と提供
 
@@ -72,7 +76,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：錐の native な脚、比較の自然性、二射影との関手同型、集約・監査と本書。
+  本保存単位：coherent 二単体の指定辺・関手同型、錐の native な三角形と可換性、集約・監査と本書。
 
 ### 既知の問題
 
@@ -85,8 +89,8 @@
 
 ### 次の一手
 
-- coherent 二単体を core Fun の指定辺へ読み戻し、native な錐の二つの三角形を関手同型にする。
-  全錐の比較の三次の式から二脚の比較を同時に選び、catPullbackCommutativity の指定 path と照合する。
+- coherent 三単体の四面から得る指定関手同型の合成則を core Fun で証明する。
+  全錐の比較円柱に適用し、二脚の比較同型を同時に選んで native な可換性と指定 path の比較図式を閉じる。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
