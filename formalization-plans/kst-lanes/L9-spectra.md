@@ -36,7 +36,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・486 モジュール 4598 宣言の公理監査成功。
+対象ビルド・490 モジュール 4629 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3476,4 +3476,33 @@ H_* の理論や定理を所有範囲に追加するものではなく、正規�
 
 参照：Goerss–Jardine III §2、VIII §1。Mathlib SimplicialSet/Homology/Nondegenerate の通常の構成を借用。
 対象ビルド 3954 jobs 成功。私有宣言を含む 486 モジュール 4598 宣言で標準三公理のみ。
+L9e は進行中。幾何的微分と交代微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
+
+
+## 114. L9e の係数の元を値とする cochain と正規化のホモトピー比較
+
+Mathlib の ULift ℤ から係数群への射を一の像に送る加法同型を各座標へ適用した。
+これにより正規化 cochain を係数の元を値とする関数群へ移し、退化面を零とする交代和の式と二乗の零性を証明した。
+この群の族を複体へ束ね、Hom 係数の正規化 cochain からの複体同型を与えた。
+
+通常の鎖複体の反対を加法的 Yoneda へ送る反変 Hom の cochain 関手を構成した。
+鎖ホモトピー同値の順逆を交換して反対を取る構成と、加法関手のホモトピー保存を合成した。
+従って係数が入射的であることを仮定せず、通常の鎖ホモトピー同値がこの cochain のホモトピー同値を与える。
+Mathlib の通常の正規化鎖のホモトピー同値に適用し、生成子の二つの複体同型へ合成した。
+これにより通常の全単体の整数鎖からの Hom の cochain と、非退化単体上の係数の元を値とする cochain はホモトピー同値である。
+借用した鎖のホモトピー同値を cochain の比較へ使うだけであり、H_* の結果は追加していない。
+
+群 cohomology の計算に接続するには、全単体の Hom の cochain を BG の通常の非正規化群 cochain と同定する必要が残る。
+幾何的な骨格の微分との比較と収束も引き続き未完了。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `NormalizedValueCochains.coefficientEquiv` / `differential_apply` | 係数の元を値とする表示と退化面を零とする交代式 |
+| `NormalizedValueCochains.complex` / `complexIso` | 通常の係数の正規化複体と Hom 係数からの同型 |
+| `ContravariantChainHom.obj` / `map` / `homotopyEquiv` | 反変 Hom の cochain と鎖ホモトピー同値の保存 |
+| `NormalizedSimplicialCochains.homComplexComparison` / `normalizationHomotopyEquiv` | 正規化の Hom の複体への比較と通常の鎖からの同値 |
+| `NormalizedValueCochains.normalizationHomotopyEquiv` | 全単体の鎖の Hom と係数の元を値とする正規化 cochain のホモトピー同値 |
+
+参照：Goerss–Jardine III §2、VIII §1。
+対象ビルド 3958 jobs 成功。私有宣言を含む 490 モジュール 4629 宣言で標準三公理のみ。
 L9e は進行中。幾何的微分と交代微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
