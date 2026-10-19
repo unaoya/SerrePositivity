@@ -6563,3 +6563,63 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.multiMovingSInterchangeNatIso
 #print axioms SerrePositivity.KST.SConstruction.multiMovingSInterchangeNatIso
+
+#check @SerrePositivity.KST.SConstruction.multiInnerSCoordinateRealizationIso_fatBoundary
+#print axioms SerrePositivity.KST.SConstruction.multiInnerSCoordinateRealizationIso_fatBoundary
+
+#check @SerrePositivity.KST.SConstruction.cyclicRealizationIso
+#print axioms SerrePositivity.KST.SConstruction.cyclicRealizationIso
+
+#check @SerrePositivity.KST.SConstruction.cyclicRealizationIso_hom
+#print axioms SerrePositivity.KST.SConstruction.cyclicRealizationIso_hom
+
+#check @SerrePositivity.KST.SConstruction.cyclicRealizationIso_fatBoundary
+#print axioms SerrePositivity.KST.SConstruction.cyclicRealizationIso_fatBoundary
+
+#check @SerrePositivity.KST.SConstruction.cyclicBoundaryIso
+#print axioms SerrePositivity.KST.SConstruction.cyclicBoundaryIso
+
+#check @SerrePositivity.KST.SConstruction.cyclicBoundaryIso_quotient
+#print axioms SerrePositivity.KST.SConstruction.cyclicBoundaryIso_quotient
+
+#check @SerrePositivity.KST.SConstruction.cyclicBoundaryIso_coordinate_quotient
+#print axioms SerrePositivity.KST.SConstruction.cyclicBoundaryIso_coordinate_quotient
+
+#check @SerrePositivity.KST.SConstruction.innerVariableOuterMap_last
+#print axioms SerrePositivity.KST.SConstruction.innerVariableOuterMap_last
+
+#check @SerrePositivity.KST.SConstruction.innerVariableOuterMap_castSucc
+#print axioms SerrePositivity.KST.SConstruction.innerVariableOuterMap_castSucc
+
+#check @SerrePositivity.KST.SConstruction.finRotate_castSucc
+#print axioms SerrePositivity.KST.SConstruction.finRotate_castSucc
+
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_obj_permutation
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_obj_permutation
+
+#check @SerrePositivity.KST.SConstruction.innerVariableIndex_map_permutation
+#print axioms SerrePositivity.KST.SConstruction.innerVariableIndex_map_permutation
+
+#check @SerrePositivity.KST.SConstruction.multiInnerSCoordinateCoreIso
+#print axioms SerrePositivity.KST.SConstruction.multiInnerSCoordinateCoreIso
+
+#check @SerrePositivity.KST.SConstruction.multiInnerSCoordinateRealizationIso
+#print axioms SerrePositivity.KST.SConstruction.multiInnerSCoordinateRealizationIso
+
+#check @SerrePositivity.KST.SConstruction.multiInnerSCoordinateCoreIso_realization
+#print axioms SerrePositivity.KST.SConstruction.multiInnerSCoordinateCoreIso_realization
+
+#check @SerrePositivity.KST.SConstruction.multiInnerSCoordinateAt
+#print axioms SerrePositivity.KST.SConstruction.multiInnerSCoordinateAt
+
+#check @SerrePositivity.KST.SConstruction.multiInnerSCoordinateAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.multiInnerSCoordinateAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.multiInnerSCoordinateNatIso
+#print axioms SerrePositivity.KST.SConstruction.multiInnerSCoordinateNatIso
+
+#check @SerrePositivity.KST.SConstruction.simplicialPathCut_zeroRow_boundary
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathCut_zeroRow_boundary
+
+#check @SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_zeroRow_boundary
+#print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalCylinder_zeroRow_boundary
