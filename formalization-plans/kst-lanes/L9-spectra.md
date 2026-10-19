@@ -16,19 +16,19 @@
 - 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
 - loop 交換の頂点を円の射と標準区間の辺で厳密に照合済み。骨格 fiber の通常の零 loop 比較の包含は明示した逆辺の類と一致し、実際の成分微分の係数を次数二以上の正規化交代微分と (-1)^(セル次元) で計算済み。
-- corner の共通ホーン充填と二射影、path 族の転置・両端・制限を構成済み。相対三角形の先頭辺を消す Kan 充填と、連結像 a₁⁻¹a₂a₀ の非可換な積の公式も証明済み。
-- 面次数一からの球面的持ち上げ・逆元公式と隣接比較ホーンを構成済み。path 三角形の三辺を loop 群同型で移した交代和は終点の二次類と一致し、loop 空間の既存の基本群の積の可換性も証明済み。
+- Kan fibration の下で同じ downstairs の類を持つ代表を、射影が指定した単体と厳密に一致する upstairs の代表へ調整済み。整合する類の族を厳密に整合する代表へ直し、極限の群から段ごとの群の逆極限への比較準同型の全射性を証明済み。
+- 整合する RelStruct を極限の RelStruct へ組み立てる式と、比較の核が各段で零となる類であることを証明済み。非可換 lim¹ を twisted 作用の軌道集合で構成し、全射な遷移のときの消滅を証明済み。比較の核と lim¹ の同定は未完。
 - 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
 - 標準の零次数接続写像とその厳密な正方形への自然性を構成し、正次数・零次数の塔の微分の loop 反可換式を証明済み。
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4083 jobs、専用監査 611 モジュール・5738 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14509 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4089 jobs、専用監査 617 モジュール・5814 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14547 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
-- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。
+- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。正次数の比較の全射性と全射遷移の代数的 lim¹ 消滅は証明済み。比較の核の lim¹ による同定と、必要な塔での消滅を残す。
   原典：Goerss–Jardine VIII §§1–2。24–80 時間。E₂ の消滅だけで収束を仮定しない。
 - 有限群の有理自明作用について標準射の全射性を証明し、既証の単射性と合わせて全整数次数の有理 Shapiro を完成させる。
   原典：Goerss–Jardine VIII §2、Bousfield–Friedlander 1978 §2。上記の後で 8–24 時間。
@@ -55,11 +55,11 @@
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv_iteratedLoopComponent`
 - `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
 - `SkeletalCellAttachment.exists_cellDifferential_boundaryRepresentative`
-- `FiberTriangle.connecting_product`
-- `PathTriangleBoundary.alternating_loopPositive`
+- `PointedFibrationTower.limitGroupComparison`
+- `PointedFibrationTower.limitGroupComparison_surjective`
 - `SkeletalCellAttachment.coefficientDifferential_all_alternating`
 - `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_eq`
-- `SkeletalCellAttachment.stageFiberCoefficientEquiv_loopZero`
+- `TowerLimOne.subsingleton_of_surjective`
 - `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_ker`
 - `SkeletalCellAttachment.positiveAdditiveCoefficientDifferential_range`
 - `SkeletalCellAttachment.coefficientDifferential_loopPositive`
@@ -92,9 +92,9 @@
 - coefficientDifferential の交代式・符号・核・像は全添字で証明済み。cohomology の消滅だけで有理 Shapiro の全射性・収束を完了扱いにしない。
 
 ### 次の一手
-- 塔の収束へ進む。Kan fibration の下で、downstairs のホモトピー類が一致する代表を相対充填で厳密に一致する代表へ調整する補題を作る。`KanHomotopyGroup.mk_eq_iff`・`simplexRel_iff_relStruct`・既存のホーン持ち上げを使う。
-- `FibrationTower.limit` の成分表示で整合する代表と零ホモトピーを組み立て、π と極限の比較・lim¹ の曖昧さを解析する。`SkeletalMapping.coneIsLimit` と `SkeletalWeightedEnd.limitIso` の厳密な復元は既証だが、それだけで π と極限を交換しない。
-- 全係数微分の同定は再構成しない。Sp-2 の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。cohomology の消滅だけで収束を主張しない。
+- 比較の核と lim¹ の同定へ進む。各段で零となる極限の代表の RelStruct を選び、隣接段に射影した二つの RelStruct の差を一つ高いホモトピー群で計算する。差の族を `TowerLimOne.limOne` へ送り、選択変更が twisted 作用になることを証明する。
+- `limitGroupComparison_surjective` と `class_eq_of_compatible_relations` は証明済み。整合する類や RelStruct を極限へ組み立てる部分を再構成しない。`TowerLimOne.subsingleton_of_surjective` は群の遷移の全射性を要し、現時点では比較の核の消滅の結論に使わない。
+- Sp-2 の収束と必要な塔での lim¹ の制御、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。cohomology の消滅だけで収束を主張しない。
 
 ## 範囲と所有
 
