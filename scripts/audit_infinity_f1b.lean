@@ -2073,3 +2073,27 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_of_isRelativeColimitCone
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_iff_isRelativeColimitCone
+
+#check @SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting
+
+#check @SerrePositivity.InfinityCategories.F1B.kanEquivalenceLifting_pre
+
+#check @SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting.innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting.internalHom
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanEquivalenceInterval_extension_of_invertibleEdge
+
+#check @SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting.invertibleTargetLifting
+
+#check @SerrePositivity.InfinityCategories.F1B.kanInvertibleTargetLifting_fiberPostcomp_of_lifting
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeProjection_cartesianFibration_of_lifting
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelative_initialBoundary_of_relativeColimit
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_initial_family_of_lifting
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_of_lifting
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_with_relative_colimits_of_lifting
