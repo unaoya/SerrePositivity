@@ -24,13 +24,14 @@ open RawSpectrumMapping
 variable (A : OmegaSpectrum.{u}) {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
   (hf : ∀ n, KanPiIsomorphism (f.app n).right)
 
-/-- 同じ選択済み逆射の右合成は、任意の BF 源の元の全 Hom で恒等射へ実際に変形する。 -/
-def levelwiseInverse_post_right_interval :
-    PointedMapping.VerticalPath (PointedObject.toPoint (pointedSpace A Y.toKanSequence))
-      (pointedPost A (sequenceHom (levelwiseInverse f hf)) ≫ pointedPost A (sequenceHom f))
-      (𝟙 (pointedSpace A Y.toKanSequence)) := by
+/-- 選択済み逆射の右逆区間の元になる、mapping path の源射影上の同じ実垂直区間。 -/
+def levelwiseInverse_post_right_lift_interval :
+    PointedMapping.VerticalPath
+      (pointedPost A (KanSequence.mappingPathSource (sequenceHom f)))
+      (pointedPost A (sequenceHom (levelwiseInverse f hf)) ≫
+        pointedPost A (KanSequence.mappingPathComparison (sequenceHom f)))
+      (pointedPost A (inversePathSection f hf)) := by
   let r := KanSequence.mappingPathSource (sequenceHom f)
-  let p := KanSequence.mappingPathTarget (sequenceHom f)
   let u := KanSequence.mappingPathComparison (sequenceHom f)
   let s := inversePathSection f hf
   let g := sequenceHom (levelwiseInverse f hf)
@@ -41,9 +42,19 @@ def levelwiseInverse_post_right_interval :
   have h : (pointedPost A g ≫ pointedPost A u) ≫ pointedPost A r =
       pointedPost A s ≫ pointedPost A r := by
     rw [Category.assoc, hur, Category.comp_id, hsr]
-  let H := PointedMapping.verticalPathOfRlp (pointedPost A r)
+  exact PointedMapping.verticalPathOfRlp (pointedPost A r)
     (pointedPost_rlp A r (KanSequence.mappingPathSource_rlp (sequenceHom f)))
     (pointedPost A g ≫ pointedPost A u) (pointedPost A s) h
+
+/-- 同じ選択済み逆射の右合成は、任意の BF 源の元の全 Hom で恒等射へ実際に変形する。 -/
+def levelwiseInverse_post_right_interval :
+    PointedMapping.VerticalPath (PointedObject.toPoint (pointedSpace A Y.toKanSequence))
+      (pointedPost A (sequenceHom (levelwiseInverse f hf)) ≫ pointedPost A (sequenceHom f))
+      (𝟙 (pointedSpace A Y.toKanSequence)) := by
+  let p := KanSequence.mappingPathTarget (sequenceHom f)
+  let u := KanSequence.mappingPathComparison (sequenceHom f)
+  let s := inversePathSection f hf
+  let g := sequenceHom (levelwiseInverse f hf)
   have hup : pointedPost A u ≫ pointedPost A p = pointedPost A (sequenceHom f) :=
     pointedPost_comp_eq A u p (sequenceHom f)
       (KanSequence.mappingPathComparison_target (sequenceHom f))
@@ -51,7 +62,19 @@ def levelwiseInverse_post_right_interval :
     pointedPost_comp_id A s p (inversePathSection_target f hf)
   have ha : (pointedPost A g ≫ pointedPost A u) ≫ pointedPost A p =
       pointedPost A g ≫ pointedPost A (sequenceHom f) := by rw [Category.assoc, hup]
-  exact (H.forgetProjection.basedPost (pointedPost A p)).changeEndpoints ha.symm hsp.symm
+  exact ((levelwiseInverse_post_right_lift_interval A f hf).forgetProjection.basedPost
+    (pointedPost A p)).changeEndpoints ha.symm hsp.symm
+
+/-- 右逆区間全体は、同じ垂直持ち上げ区間への元の mapping path 終点射の後合成。 -/
+lemma levelwiseInverse_post_right_interval_h :
+    (levelwiseInverse_post_right_interval A f hf).homotopy.h =
+      (levelwiseInverse_post_right_lift_interval A f hf).homotopy.h ≫
+        (pointedPost A (KanSequence.mappingPathTarget (sequenceHom f))).right := by
+  rw [levelwiseInverse_post_right_interval,
+    PointedMapping.VerticalPath.changeEndpoints_homotopy_h,
+    PointedMapping.VerticalPath.basedPost_homotopy_h]
+  rw [PointedMapping.VerticalPath.homotopy_h, PointedMapping.VerticalPath.homotopy_h]
+  rfl
 
 /-- 同じ選択済み逆射の左合成も、元の全 Hom の恒等射へ基点固定で実際に変形する。 -/
 def levelwiseInverse_post_left_interval :

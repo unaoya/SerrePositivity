@@ -742,3 +742,6 @@ public import SerrePositivity.KST.Spectra.SignedLoopSourcePostComparison
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedPostComposition
 public import SerrePositivity.KST.Spectra.SpectrumLevelwiseInversePostInterval
 public import SerrePositivity.KST.Spectra.SignedLoopUnitPostFactor
+public import SerrePositivity.KST.Spectra.LeftVerticalBasedComposition
+public import SerrePositivity.KST.Spectra.SignedLoopUnitPostTrace
+public import SerrePositivity.KST.Spectra.SignedLoopUnitCounitCoordinates
