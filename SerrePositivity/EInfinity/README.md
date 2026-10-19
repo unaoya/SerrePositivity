@@ -581,7 +581,12 @@ nullary を含む TR の部分合成保存は完了。
 `segment_nodup_of_same_side` は片側の部分語の Nodup を戻し、一部分割の内側次数零と二部分割の非零切断を供給する。
 `NestedEdgeCut.toCompositeCut_surjective` は両分岐の全射性で、`compositeCutEquiv` は正 arity の有限同値。
 `edgeComponent_composition_nested_cut_sum` は実際の合成辺成分をこの有限同値で二段切断上の和へ移す。
-具体的な Δ¹ の余代数構造は未完成。全出力と符号の一致・有限和の比較・nullary、部分合成則と区間条件が残る。
+`OutputListMembership` と `InsertedMembership` は出力頂点を左右のリストと消費済み部分語への所属で特徴付ける。
+`NestedEdgeCut.compositePosition_remaining_output` は全残り色、`compositePosition_inserted_output` は全挿入色の公式。
+`NestedEdgeCut.outputFamily` は二段作用の全出力族で、`compositePosition_outputFamily` が実際の合成切断の族と照合する。
+`edgeComponent_composition_nested_output_sum` は共通全次数で同じ出力族の実際の面テンソル和へ移した左辺。
+具体的な Δ¹ の余代数構造は未完成。二段作用のテンソル評価と符号の一致・右辺の有限和・nullary、
+部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

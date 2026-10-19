@@ -1152,6 +1152,36 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositeCutEquiv,
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_nonzero_cut_sum,
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_nested_cut_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.zero_mem_edgeOutputVertices_iff_mem_take,
+      `SerrePositivity.EInfinity.IntervalCuts.one_mem_edgeOutputVertices_iff_mem_drop,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutputVertices_eq_of_list_membership,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_remaining_output,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_nonpivot_eq_outer,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_nonpivot_remaining_output,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeInnerPosition_prefix,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeInnerPosition_suffix,
+      `SerrePositivity.EInfinity.IntervalCuts.remaining_not_mem_inserted_map,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeInnerPosition_remaining_output,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_eq_inner,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_remaining_output,
+      `SerrePositivity.EInfinity.IntervalCuts.inserted_not_mem_substitute_of_no_slot,
+      `SerrePositivity.EInfinity.IntervalCuts.inserted_mem_substitute_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeInnerPosition_inserted_output,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_inserted_output,
+      `SerrePositivity.EInfinity.IntervalCuts.inserted_mem_substitute_single_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.inserted_mem_substitute_single_tail_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_single_inserted_output,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_vertex_inserted_output,
+      `SerrePositivity.EInfinity.IntervalCuts.edge_slot_list_counts,
+      `SerrePositivity.EInfinity.IntervalCuts.two_partition_segments,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_two_inserted_output,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_nonpivot_inserted_output,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_inserted_output,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.outputFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_outputFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.outputFamily_tupleDegree,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionEdgeCutTerm_outputFamily,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_nested_output_sum,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3370,3 +3400,30 @@ example : edgeComponent ℤ 3 2 (compositionOnWords ℤ compositionInner composi
       compositionEdgeCutTerm ℤ compositionInner compositionInner 0 a.partition
         (by decide) a.compositePosition :=
   edgeComponent_composition_nested_cut_sum ℤ compositionInner compositionInner 0 (by decide)
+
+-- 一出現の切断点色・二出現の非切断点色の両分岐で全出力は三本の辺。
+example : List.ofFn nestedPivotExample.outputFamily = [edge, edge, edge] := by decide
+example : List.ofFn nestedRepeatedExample.outputFamily = [edge, edge, edge] := by decide
+-- 頂点入力の右側・左側の双方を確認する。
+example : List.ofFn nestedVertexExample.outputFamily = [vertex 1, vertex 1, vertex 1, edge] :=
+  by decide
+private def nestedVertexLeftExample : NestedEdgeCut (m := 2) zeroPermutationWord
+    (permutationWord (1 : Equiv.Perm (Fin 2))) 0 :=
+  NestedEdgeCut.ofVertex 2 (by decide) (by decide) rfl
+example : List.ofFn nestedVertexLeftExample.outputFamily = [vertex 0, vertex 0, edge, vertex 0] :=
+  by decide
+-- 合成語での全色の出力と、二段作用の指定した全出力族の一致。
+example : edgeOutput
+    (compositeBasisWord compositionInner compositionInner 0 nestedRepeatedExample.partition
+      (by decide)) nestedRepeatedExample.compositePosition = nestedRepeatedExample.outputFamily :=
+  NestedEdgeCut.compositePosition_outputFamily nestedRepeatedExample (by decide)
+example : tupleDegree 3 nestedPivotExample.outputFamily = 3 :=
+  NestedEdgeCut.outputFamily_tupleDegree nestedPivotExample (by decide)
+-- 元の合成符号を保った実際の面テンソル和としても同じ出力族へ移る。
+example : edgeComponent ℤ 3 2 (compositionOnWords ℤ compositionInner compositionInner 0) =
+    ∑ a : NestedEdgeCut (m := 1) compositionInner compositionInner 0,
+      (compositionSign compositionInner compositionInner 0 a.partition *
+        edgeSign (compositeBasisWord compositionInner compositionInner 0 a.partition
+          (by decide)).val a.compositePosition) •
+        tensorVectorOfDegree ℤ 3 3 a.outputFamily (a.outputFamily_tupleDegree (by decide)) :=
+  edgeComponent_composition_nested_output_sum ℤ compositionInner compositionInner 0 (by decide)
