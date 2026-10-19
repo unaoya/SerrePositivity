@@ -47,8 +47,10 @@
   nerve の左右 Hom 普遍性と通常の Kan 拡張の同値、native な pointwise Kan から通常の Kan 拡張への含意も証明。
 - B5 局所比較：Under・Over の nerve と元の頂点上の native な coslice・slice の同型と忘却射影の一致を証明。
   左右 comma の通常の四角形の引き戻し性から、左右の元の Kan 添字の比較射の同型性と K への射影・局所図式の厳密な一致を証明。
-- 最終検証：F1・F1B 同時ビルド成功（4027 jobs）、同時 import 検査成功（F1 7451・F1B 4939 宣言）。
-  公理監査成功（4945 宣言、標準三公理のみ、1317 モジュールに straightening なし）。ソース名衝突 0。
+- 通常の錐と nerve の任意の join の錐を頂点を保つ全単射で比較。錐の射と、元の図式上で恒等な拡張関手間の自然変換も全単射。
+  通常の錐の nerve から native な固定図式上の錐の族への比較射を構成し、指定錐の表示・対象上の全単射を証明。比較射の同値性・極限性は未証明。
+- 最終検証：F1・F1B 同時ビルド成功（4035 jobs）、同時 import 検査成功（F1 7451・F1B 4979 宣言）。
+  公理監査成功（4985 宣言、標準三公理のみ、1384 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -63,10 +65,8 @@
 - `QCatAdjunction` / `qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison`
 - `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
 - `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
-- `kanFiberwiseHom` / `kanFiberwiseHomFiberIso` / `kanRelativeJoinCoconeFiber_initialBoundary`
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
-- `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
 - `F1B.kanEquivalenceLifting_iff_inner_and_invertibleTargetLifting` / `F1B.KanEquivalenceLifting.relativeInternalHom`
 - `F1B.kanRelativeJoinRelativeColimitRestriction_isFullyFaithful` / `F1B.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration`
@@ -76,17 +76,17 @@
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
 - `F1B.kanNerveLeftKanShapeIso_hom_diagram` / `F1B.kanNerveRightKanShapeIso_hom_diagram`
-- `F1B.kanNerveNatTransHomEquiv` / `F1B.kanNonempty_adjunction_iff_nerveAdjunction`
+- `F1B.kanNerveConeEquiv` / `F1B.kanNerveConeFamilyMap`
 
 ### 依存と提供
 
-- Core/・F1/・Stable/ は読み取り専用。pullback の余極限保存、join・slice、h Fun、相対骨格・充填、
-  反転、錐の輸送を使う。straightening に推移的にも依存しない。
+- Core/・F1/・Stable/ と HomotopyLimits/InitialJoinFaces の閉包を読み取り専用で使う。
+  pullback、join・slice、h Fun、相対骨格・充填、反転、錐の輸送を使う。straightening に推移的にも依存しない。
 - 提供：F1B 集約、随伴・反射的局所化・Quillen A、Kan の点ごとの条件・相対 join 還元・族の普遍性と組み立て。一般の局所化は F2、Hom 関手は F1h。
 
 ### 未コミット
 
-- なし（本保存単位：反対 nerve の同型・Over の native な slice 表示・左 Kan 添字の比較同型と射影・局所図式の保存、集約・監査・本書）。
+- なし（本保存単位：通常の錐の相互復元・拡張関手の射の比較・native な錐の族への比較射と対象上の全単射、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `HomotopyLimits/InitialJoinIso` の `initialJoinNerveIso`（143 リポジトリ import、straightening なし）と
-  Core の `SliceConeFamilyEquivalence` を読む。WithInitial.lift で通常の錐を join の錐へ写し、
-  図式・頂点と普遍性を比較する。comma の同型を通し pointwise Kan の元の指定変換まで照合する。
+- p := `(Functor.whiskeringLeft I (WithInitial I) C).obj WithInitial.incl` に対し、
+  `kanConeExtensionFunctor_restrict` から `Cone F ⥤ Functor.Fiber p F` を構成し、錐と射の復元で同値性を示す。
+  nerve の fiber と native な錐の族を比較し `kanNerveConeFamilyMap` の同値性・極限性、pointwise Kan へ接続する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

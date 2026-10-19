@@ -2883,3 +2883,43 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanShapeIso_hom_projection
 
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveLeftKanShapeIso_hom_diagram
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeWithInitialFunctor
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveCone_vertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeReadFunctor
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeReadFunctor_restrict
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeFromWithInitialFunctor
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeOfNerveCone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeReadFunctor_of_cone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeWithInitialFunctor_of_functor
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeEquiv
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeOfNerveCone_vertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeExtensionFunctor
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeExtensionFunctor_restrict
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeWithInitialNatTrans_restrict
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeExtensionHomEquiv
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveMap_const
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFamilyUnderlying_fixed
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFamilyMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFamilyMap_vertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveConeFamilyMap_bijective_vertices

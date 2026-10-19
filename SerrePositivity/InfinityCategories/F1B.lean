@@ -683,3 +683,11 @@ public import SerrePositivity.InfinityCategories.F1B.KanCostructuredArrowPullbac
 public import SerrePositivity.InfinityCategories.F1B.KanCostructuredArrowPullback
 public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShape
 public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.KanNerveCone
+public import SerrePositivity.InfinityCategories.F1B.KanNerveConeRead
+public import SerrePositivity.InfinityCategories.F1B.KanNerveConeRecovery
+public import SerrePositivity.InfinityCategories.F1B.KanNerveConeEquiv
+public import SerrePositivity.InfinityCategories.F1B.KanConeExtensionFunctor
+public import SerrePositivity.InfinityCategories.F1B.KanConeExtensionHom
+public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamilyUnderlying
+public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamily
