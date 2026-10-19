@@ -2082,7 +2082,8 @@ Kan 複体の余錐では台の余極限性からこの Hom 条件を検証す�
 𝒮 の実際の小さい余積を、空余積を含めて Kan 性・台の普遍性とともに公開した。
 通常の余錐の各脚と元の射の厳密な一致、および余積の成分包含との一致も検証した。
 単射な遷移を持つ Kan 複体列の実際の逐次余極限は、対象・余錐・各脚とともに公開した。
-一般の列の homotopy 余極限と homotopy 押し出しは後続工程。
+左脚の台が単射な span の通常の押し出しを Kan 置換した実際の ∞ 押し出しも公開した。
+一般の列と、単射性を仮定しない span への置換・比較は後続工程。
 任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
 この一般形状では q′ の全導来 fiber の可縮性による両向き判定も証明済み。
 任意の coherent な錐から strict な錐への pinched Hom は、標準点から回収した反転 end の
@@ -10244,3 +10245,242 @@ L9 の確定済みの filtered colimit の Kan 性を再利用し、他担当の
 全て追跡済み・コミット済み・変更なしを確認した。
 ログ：`/tmp/gamma3-space-sequential-colimit-aggregate.log`、
 `/tmp/gamma3-space-sequential-colimit-audit.log`。
+
+### γ3：非 Kan な台の anodyne 置換と一脚が単射な span の実際の homotopy 押し出し
+
+任意の anodyne 射 i : A → B と Kan 対象 X に対して、内部 Hom の前合成
+`(pre i).app X` は trivial Kan fibration、したがって単体的ホモトピー同値である。
+全境界との pushout-product の anodyne 性を内部 Hom の二変数随伴で移して証明した。
+A と B の Kan 性は不要。既存のホーンの小対象論法の関手と単位から、任意の単体集合 P の
+実際の Kan 置換対象 `anodyneKanObject P` と anodyne な単位射を構成した。
+新しいモデル構造や弱同値の一致を仮定しない。
+
+Kan 複体の図式 F の台の余錐 c の頂点をこの置換に替え、各脚を単位で後合成することで、
+元の F からの Kan な余錐 `anodyneKanCocone c` を構成する。
+その反変 Hom 錐から置換前の内部 Hom 錐への実際の射はホモトピー同値。
+反転した Bousfield–Kan 比較 q′ はこの同値の反転と置換前の比較の合成に厳密に分解する。
+添字の nerve の持ち上げが同型な再表示を許し、native な余極限性を置換前の比較で判定できる。
+台の通常の余極限の場合には、置換前の全反変内部 Hom の錐の厳密な極限性も検証した。
+
+F : AsSmall.{u} WalkingSpan → KanObject.{u} の通常の台の押し出し P を取り、
+`kanHomotopyPushoutObject F := anodyneKanObject P` を頂点とする余錐を作った。
+標準 span の反対の添字を標準 cospan の添字に、圏同値と nerve の厳密な同型で移す。
+左脚の台が単射なら、その前合成による各反変 Hom の左脚は Kan fibration。
+通常の押し出しの Hom の普遍性と一脚 fibration の cospan の end 比較から、置換前の比較が
+同値になる。単位による Hom の同値を消去し、F1 の元の図式上の実際の余錐
+`spaceHomotopyPushoutCocone F` が native な `IsColimitCone` を満たすと証明した。
+
+要求する条件は `Mono ((F ⋙ kanObjectForget).map (AsSmall.up.map WalkingSpan.Hom.fst))`。
+右脚の単射性も P 自体の Kan 性も追加の比較同値も要求しない。
+頂点は使用した Kan 置換対象に厳密に一致し、三つの脚はいずれも元の colimit の包含と
+anodyne な単位の合成の coherent 表示に厳密に一致する。
+
+単射性を仮定しない span の置換と元の図式への比較、一般の遷移の列の cofibrant 置換と比較、
+一般形状の非反転 q_x への移送、E2a 後の E2b は未完了。
+原典：HTT 4.2.4.1、Kerodon 7.5.3.12・7.5.4.6、Goerss–Jardine I §7。
+
+公開する二十五宣言の正確な型は以下。`AnodyneKanCocones` は
+`I J : Type u [SmallCategory I] [SmallCategory J]`、`F : I → KanObject.{u}` を共通前提とする。
+その他は各宣言内の前提のみで、既存の Kan 複体の宇宙に従う。
+
+`KanSourceReplacement.lean`：
+
+```lean
+lemma trivialKanFibration_pre_of_anodyne {A B : SSet.{u}} (i : A ⟶ B)
+    (hi : SSet.anodyneExtensions i) (X : SSet.{u}) [KanComplex X] :
+    TrivialKanFibration ((pre i).app X)
+```
+
+`KanSourceReplacement.lean`：
+
+```lean
+lemma homotopyEquivalence_pre_of_anodyne {A B : SSet.{u}} (i : A ⟶ B)
+    (hi : SSet.anodyneExtensions i) (X : SSet.{u}) [KanComplex X] :
+    IsSimplicialHomotopyEquivalence ((pre i).app X)
+```
+
+`KanSourceReplacement.lean`：
+
+```lean
+def anodyneKanObject (A : SSet.{u}) : KanObject.{u}
+```
+
+`KanSourceReplacement.lean`：
+
+```lean
+def anodyneKanObjectUnit (A : SSet.{u}) : A ⟶ (anodyneKanObject A).obj
+```
+
+`KanSourceReplacement.lean`：
+
+```lean
+lemma anodyneKanObjectUnit_anodyne (A : SSet.{u}) :
+    SSet.anodyneExtensions (anodyneKanObjectUnit A)
+```
+
+`KanSourceReplacement.lean`：
+
+```lean
+instance anodyneKanObjectUnit_pre_trivialKanFibration (A : SSet.{u})
+    (X : SSet.{u}) [KanComplex X] :
+    TrivialKanFibration ((pre (anodyneKanObjectUnit A)).app X)
+```
+
+`AnodyneKanCocones.lean`：
+
+```lean
+def underlyingKanCoconeHomCone (c : Cocone (F ⋙ kanObjectForget)) (X : KanObject.{u}ᵒᵖ) :
+    Cone (simplicialHomDiagram F.op X)
+```
+
+`AnodyneKanCocones.lean`：
+
+```lean
+def underlyingKanCoconeHomCone_isLimit (c : Cocone (F ⋙ kanObjectForget))
+    (hc : IsColimit c) (X : KanObject.{u}ᵒᵖ) : IsLimit (underlyingKanCoconeHomCone c X)
+```
+
+`AnodyneKanCocones.lean`：
+
+```lean
+def anodyneKanCocone (c : Cocone (F ⋙ kanObjectForget)) : Cocone F
+```
+
+`AnodyneKanCocones.lean`：
+
+```lean
+def anodyneKanCoconeHomComparison (c : Cocone (F ⋙ kanObjectForget)) (X : KanObject.{u}ᵒᵖ) :
+    simplicialHomCone (anodyneKanCocone c).op X ⟶ underlyingKanCoconeHomCone c X
+```
+
+`AnodyneKanCocones.lean`：
+
+```lean
+lemma anodyneKanCoconeHomComparison_homotopyEquivalence
+    (c : Cocone (F ⋙ kanObjectForget)) (X : KanObject.{u}ᵒᵖ) :
+    IsSimplicialHomotopyEquivalence (anodyneKanCoconeHomComparison c X).hom
+```
+
+`AnodyneKanCocones.lean`：
+
+```lean
+lemma anodyneKanCocone_reflectedComparison_factorization
+    (c : Cocone (F ⋙ kanObjectForget)) (G : J ⥤ Iᵒᵖ) (X : KanObject.{u}ᵒᵖ) :
+    reflectedRepresentableComparison ((anodyneKanCocone c).op.whisker G) X =
+      SSet.opFunctor.map (anodyneKanCoconeHomComparison c X).hom ≫
+        bousfieldKanConeComparison
+          (SSet.opFunctor.mapCone ((underlyingKanCoconeHomCone c X).whisker G))
+```
+
+`AnodyneKanCocones.lean`：
+
+```lean
+lemma anodyneKanCocone_isColimit_iff_reflectedHomComparison
+    (c : Cocone (F ⋙ kanObjectForget)) (G : J ⥤ Iᵒᵖ)
+    [IsIso ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap G))] :
+    IsColimitCone (strictNativeCocone (anodyneKanCocone c)) ↔ ∀ X : KanObject.{u}ᵒᵖ,
+      IsSimplicialHomotopyEquivalence (bousfieldKanConeComparison
+        (SSet.opFunctor.mapCone ((underlyingKanCoconeHomCone c X).whisker G)))
+```
+
+`OppositeSpanIndex.lean`：
+
+```lean
+def oppositeSpanIndex : AsSmall.{u} WalkingCospan ⥤ (AsSmall.{u} WalkingSpan)ᵒᵖ
+```
+
+`OppositeSpanIndex.lean`：
+
+```lean
+def oppositeSpanIndexEquivalence :
+    AsSmall.{u} WalkingCospan ≌ (AsSmall.{u} WalkingSpan)ᵒᵖ
+```
+
+`OppositeSpanIndex.lean`：
+
+```lean
+instance nerveMap_oppositeSpanIndex_isIso : IsIso (nerveMap oppositeSpanIndex.{u})
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+def kanHomotopyPushoutObject (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) : KanObject.{u}
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+def kanHomotopyPushoutCocone (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) : Cocone F
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+def underlyingPushoutHomCospan_isLimit
+    (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) (X : KanObject.{u}ᵒᵖ) :
+    IsLimit ((underlyingKanCoconeHomCone (colimit.cocone (F ⋙ kanObjectForget)) X).whisker
+      oppositeSpanIndex)
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+lemma underlyingPushoutHomCospanComparison_homotopyEquivalence
+    (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u})
+    [Mono ((F ⋙ kanObjectForget).map (AsSmall.up.map WalkingSpan.Hom.fst))]
+    (X : KanObject.{u}ᵒᵖ) :
+    IsSimplicialHomotopyEquivalence (bousfieldKanConeComparison
+      (SSet.opFunctor.mapCone
+        ((underlyingKanCoconeHomCone (colimit.cocone (F ⋙ kanObjectForget)) X).whisker
+          oppositeSpanIndex)))
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+def spaceHomotopyPushoutCocone (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    JoinCocone (kanDiagramCoherentNerve F)
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+lemma spaceHomotopyPushoutCocone_vertex (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u}) :
+    (spaceHomotopyPushoutCocone F).vertex = spaceInfinityVertex (kanHomotopyPushoutObject F)
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+def spaceHomotopyPushoutCoconeLeg (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u})
+    (i : WalkingSpan) : (Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+lemma spaceHomotopyPushoutCoconeLeg_eq (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u})
+    (i : WalkingSpan) :
+    spaceHomotopyPushoutCoconeLeg F i = SSet.yonedaEquiv.symm
+      ((nerveToCoherent KanObject.{u}).app (Opposite.op ⦋1⦌)
+        (ComposableArrows.mk₁ (show F.obj (AsSmall.up.obj i) ⟶ kanHomotopyPushoutObject F from
+          (show (F.obj (AsSmall.up.obj i)).obj ⟶ (kanHomotopyPushoutObject F).obj from
+            colimit.ι (F ⋙ kanObjectForget) (AsSmall.up.obj i) ≫
+              anodyneKanObjectUnit (colimit (F ⋙ kanObjectForget))))))
+```
+
+`SpaceHomotopyPushouts.lean`：
+
+```lean
+lemma spaceHomotopyPushoutCocone_isColimitCone (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{u})
+    [Mono ((F ⋙ kanObjectForget).map (AsSmall.up.map WalkingSpan.Hom.fst))] :
+    IsColimitCone (spaceHomotopyPushoutCocone F)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（5005 jobs）、公開1615宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルに警告・sorry・追加公理はない。
+ホーンの小対象論法の確定済みの関手的 anodyne 置換を再利用し、他担当の依存は1116ソース。
+全て追跡済み・コミット済み・変更なしを確認した。
+ログ：`/tmp/gamma3-space-homotopy-pushout-aggregate.log`、
+`/tmp/gamma3-space-homotopy-pushout-audit.log`。

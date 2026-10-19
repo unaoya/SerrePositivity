@@ -217,7 +217,7 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
 | γ3b | 指定三形状で元の非反転 q_x の同値性・全導来 fiber の可縮性と native な極限性の両向き判定、pinched Hom との反転なしの直接比較を公開。任意の小圏では反転係数の end の切断比較、全導来 fiber の可縮性による極限・余極限判定、pinched Hom の具体的な反転 fiber 模型を公開。一般形状の非反転 q_x への移送は未完了 |
-| γ3c | 𝒮 の任意の小さい積と Sp の有限積（双方空積を含む）、一脚 fibration の引き戻し、fibration の可算塔の実際の対象と native な極限錐を公開。Sp の Kan・Ω 条件と全 Hom 条件も検証済み。𝒮 の空余積を含む小さい余積も公開。単射な遷移の Kan 複体列の実際の逐次余極限も公開。一般の列・homotopy 押し出し等は未完了 |
+| γ3c | 𝒮 の任意の小さい積と Sp の有限積（双方空積を含む）、一脚 fibration の引き戻し、fibration の可算塔の実際の対象と native な極限錐を公開。Sp の Kan・Ω 条件と全 Hom 条件も検証済み。𝒮 の空余積を含む小さい余積も公開。単射な遷移の Kan 複体列の実際の逐次余極限も公開。左脚の台が単射な span の Kan 置換した実際の ∞ 押し出しも公開。一般の列・span の置換と比較等は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
@@ -2299,3 +2299,25 @@ L9 の確定済みの filtered colimit の Kan 性を再利用し、他担当の
 全て追跡済み・コミット済み・変更なしを確認した。
 ログ：`/tmp/gamma3-space-sequential-colimit-aggregate.log`、
 `/tmp/gamma3-space-sequential-colimit-audit.log`。
+
+### γ3：anodyne な Kan 置換と一脚が単射な span の実際の homotopy 押し出し
+
+`KanSourceReplacement.lean` の六宣言で anodyne 射による Kan 対象への内部 Hom の前合成の
+trivial Kan fibration 性とホモトピー同値性、任意の単体集合の実際の Kan 置換と単位を公開。
+`AnodyneKanCocones.lean` の七宣言で台の余錐の Kan 置換、全反変 Hom の実際の比較、
+通常の余極限の Hom の普遍性、反転 end 比較の厳密な分解と native な余極限性の判定を証明。
+`OppositeSpanIndex.lean` の三宣言で標準 cospan と span の反対の添字の圏同値と nerve の同型。
+`SpaceHomotopyPushouts.lean` の九宣言で台の押し出しの Kan 置換対象、通常の余錐、
+全反変 Hom の cospan の極限性と比較の同値性、元の図式上の native な余錐、頂点・各脚の一致、
+`spaceHomotopyPushoutCocone_isColimitCone` を公開。
+前提は左脚の台の `Mono ((F ⋙ kanObjectForget).map (AsSmall.up.map WalkingSpan.Hom.fst))`。
+右脚の単射性、台の押し出しの Kan 性、追加の Hom 条件や比較同値は要求しない。
+二十五宣言の正確な型・全前提は README の同名節と専用監査に記録する。
+一般の span・列の置換と元の図式への比較、一般形状の非反転 q_x、E2a 後の E2b は未完了。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（5005 jobs）、公開1615宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルに警告・sorry・追加公理はない。
+ホーンの小対象論法の確定済みの関手的 anodyne 置換を再利用し、他担当の依存は1116ソース。
+全て追跡済み・コミット済み・変更なしを確認した。
+ログ：`/tmp/gamma3-space-homotopy-pushout-aggregate.log`、
+`/tmp/gamma3-space-homotopy-pushout-audit.log`。
