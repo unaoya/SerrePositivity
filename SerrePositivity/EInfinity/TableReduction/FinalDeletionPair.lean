@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.TableReduction.FinalDeletionTransfer
+public import SerrePositivity.EInfinity.TableReduction.ResidualRowEnds
 
 /-!
 # 最終出現削除と相手の行末削除の逆符号
@@ -55,7 +56,11 @@ lemma final_deletion_pair (A : Type u) [CommRing A] {n d : ℕ}
       out.eraseIdx k.val = new.eraseIdx q.val ∧
       deletionCoefficient (fun j : Fin out.length => out[j.val]) k +
         deletionCoefficient (fun j : Fin new.length => new[j.val]) q = 0 ∧
-      listDeletionTerm A (d := d - 1) out k + listDeletionTerm A (d := d - 1) new q = 0 := by
+      listDeletionTerm A (d := d - 1) out k + listDeletionTerm A (d := d - 1) new q = 0 ∧
+      ∃ hl : new.length = n + d,
+        q ∉ singletonPositions
+          (deletionScheduleTransfer r donor receiver.castSucc (ne_of_gt ho) hd) new hl ∧
+        Caesura (fun j : Fin new.length => new[j.val]) q := by
   obtain ⟨donor, receiver, ho, hd, new, _, _, _, hcoeff, hnew, hwords⟩ :=
     final_deletion_transfer w r out h k hx hf hp
   let r' := deletionScheduleTransfer r donor receiver.castSucc (ne_of_gt ho) hd
@@ -71,7 +76,16 @@ lemma final_deletion_pair (A : Type u) [CommRing A] {n d : ℕ}
       (-1 : ℤ) ^ receiver.val :=
     deletionCoefficient_schedule_rowEnd w r' new hnew receiver q
       (scheduleEnd_eq_prefix r' receiver).symm
-  refine ⟨donor, receiver, ho, hd, new, q, hnew, hq, hdeleted, ?_, ?_⟩
+  have hlong : 1 < (r'.val receiver.castSucc).val := by
+    change 1 < ((deletionScheduleTransfer r donor receiver.castSucc (ne_of_gt ho) hd).val
+      receiver.castSucc).val
+    rw [deletionScheduleTransfer_receiver]
+    have := r.property.1 receiver.castSucc
+    omega
+  have hremaining := scheduleEnd_not_singleton r' receiver hlong new hlen q rfl
+  have hcaesura := caesura_of_scheduleEnd w r' new hnew receiver q rfl
+  refine ⟨donor, receiver, ho, hd, new, q, hnew, hq, hdeleted, ?_, ?_,
+    hlen, hremaining, hcaesura⟩
   · rw [hcoeff, hqcoeff, neg_add_cancel]
   · simp only [listDeletionTerm, hcoeff, hqcoeff, hdeleted, neg_zsmul, neg_add_cancel]
 

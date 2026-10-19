@@ -396,7 +396,19 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.receiver_capacity,
       `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.lift_transfer,
       `SerrePositivity.EInfinity.TableReduction.final_deletion_transfer,
-      `SerrePositivity.EInfinity.TableReduction.final_deletion_pair] do
+      `SerrePositivity.EInfinity.TableReduction.final_deletion_pair,
+      `SerrePositivity.EInfinity.TableReduction.scheduleEnd_not_singleton,
+      `SerrePositivity.EInfinity.TableReduction.residual_caesura_row,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_released_donor_step,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.finish_length,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.finish_nodup,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.trans,
+      `SerrePositivity.EInfinity.TableReduction.available_vertexRow_length_add,
+      `SerrePositivity.EInfinity.TableReduction.available_vertexRow_release_length,
+      `SerrePositivity.EInfinity.TableReduction.released_value_mem_extended_take,
+      `SerrePositivity.EInfinity.TableReduction.before_last_excess,
+      `SerrePositivity.EInfinity.TableReduction.last_row_available_length,
+      `SerrePositivity.EInfinity.TableReduction.final_prefix_saturated] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
