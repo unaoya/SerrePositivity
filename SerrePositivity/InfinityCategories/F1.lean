@@ -993,3 +993,7 @@ public import SerrePositivity.InfinityCategories.F1.TransportSimplexChainShape
 public import SerrePositivity.InfinityCategories.F1.SimplexShapeFamilyPushout
 public import SerrePositivity.InfinityCategories.F1.TransportSimplexNervePushout
 public import SerrePositivity.InfinityCategories.F1.TransportSimplexRestrictionInner
+public import SerrePositivity.InfinityCategories.F1.InvertingFunctorIsoInvariance
+public import SerrePositivity.InfinityCategories.F1.FullSubcomplexPathLift
+public import SerrePositivity.InfinityCategories.F1.RelativePathSquare
+public import SerrePositivity.InfinityCategories.F1.InvertingRestrictionRelativePath
