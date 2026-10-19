@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGNativeDerivedFiniteCell
+import SerrePositivity.InfinityCategories.Stable.UniverseCofiberEdges
 import SerrePositivity.InfinityCategories.Derived.DGYonedaFiniteCellClosure
 import SerrePositivity.InfinityCategories.Derived.DGFiniteVerdierDenominators
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDenominators
@@ -1237,10 +1239,38 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgLifted_stableVertexClosure_iff_finiteCell
 #print axioms SerrePositivity.InfinityCategories.dgPretriangulatedYoneda_cofiberEdges_iff
 
+#print axioms SerrePositivity.InfinityCategories.downTruncatedEdge
+#print axioms SerrePositivity.InfinityCategories.downTruncatedCompStruct
+#print axioms SerrePositivity.InfinityCategories.IsInvertibleEdge.down
+#print axioms SerrePositivity.InfinityCategories.uliftVertexIso
+#print axioms SerrePositivity.InfinityCategories.downVertexIso
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.down
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.down_vertex
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.isCofiber_down
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.isFiber_down
+#print axioms SerrePositivity.InfinityCategories.StableVertexClosure.ulift
+#print axioms SerrePositivity.InfinityCategories.StableVertexClosure.down
+#print axioms SerrePositivity.InfinityCategories.stableVertexClosure_ulift_iff
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.ulift
+#print axioms SerrePositivity.InfinityCategories.cofiberStableEdges_ulift_iff
+#print axioms SerrePositivity.InfinityCategories.dgLiftedGeneratorVertices_universe_image
+#print axioms SerrePositivity.InfinityCategories.dgNative_stableVertexClosure_iff_finiteCell
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_mem_iff_finiteCell
+#print axioms SerrePositivity.InfinityCategories.dgHomotopyFiniteCell_iff_derivedFiniteCell
+#print axioms SerrePositivity.InfinityCategories.dgNative_stableVertexClosure_iff_derivedFiniteCell
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdges_mem_iff_derivedFiniteCell
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.UniverseVertexIso,
+    `SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle,
+    `SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure,
+    `SerrePositivity.InfinityCategories.Stable.UniverseCofiberEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGNativeFiniteCellClosure,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteCellLocalizationReflection,
+    `SerrePositivity.InfinityCategories.Derived.DGNativeDerivedFiniteCell,
     `SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence,
     `SerrePositivity.InfinityCategories.Derived.DGModuleVertexProperty,
     `SerrePositivity.InfinityCategories.Derived.DGModuleVertexTriangles,

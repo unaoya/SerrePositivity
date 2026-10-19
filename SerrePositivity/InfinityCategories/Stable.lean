@@ -358,6 +358,11 @@ public import SerrePositivity.InfinityCategories.Stable.FiniteCofiberEqualizatio
 public import SerrePositivity.InfinityCategories.Stable.StableClosureFullyFaithful
 public import SerrePositivity.InfinityCategories.Stable.CofiberEdgesFullyFaithful
 
+public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle
+public import SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure
+public import SerrePositivity.InfinityCategories.Stable.UniverseCofiberEdges
+
 
 /-! # 安定 ∞ 圏の基盤
 
