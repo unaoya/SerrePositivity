@@ -6901,3 +6901,165 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @CosliceEdgeFamilyCylinder.target
 #print axioms CosliceEdgeFamilyCylinder.target
+
+#check @joinEdgePoint_terminalFace
+#print axioms joinEdgePoint_terminalFace
+
+#check @triangleTerminalFace_rightAnodyne
+#print axioms triangleTerminalFace_rightAnodyne
+
+#check @exists_prefixTriangle_over_innerFibration
+#print axioms exists_prefixTriangle_over_innerFibration
+
+#check @specifiedCoconeLeftTransportEdge
+#print axioms specifiedCoconeLeftTransportEdge
+
+#check @specifiedCoconeLeftTransportEdge_raw
+#print axioms specifiedCoconeLeftTransportEdge_raw
+
+#check @specifiedCoconeLeftTransportEdge_diagram
+#print axioms specifiedCoconeLeftTransportEdge_diagram
+
+#check @specifiedCoconeLeftTransportEdge_projection
+#print axioms specifiedCoconeLeftTransportEdge_projection
+
+#check @relativeCosliceRestriction_of_rightAnodyne
+#print axioms relativeCosliceRestriction_of_rightAnodyne
+
+#check @rightCosliceSection
+#print axioms rightCosliceSection
+
+#check @rightCosliceSection_boundary
+#print axioms rightCosliceSection_boundary
+
+#check @exists_relativeRightCosliceFamily
+#print axioms exists_relativeRightCosliceFamily
+
+#check @relativeRightCosliceSection
+#print axioms relativeRightCosliceSection
+
+#check @relativeRightCosliceSection_boundary
+#print axioms relativeRightCosliceSection_boundary
+
+#check @relativeRightCosliceSection_base
+#print axioms relativeRightCosliceSection_base
+
+#check @relativeRightCosliceSection_projection
+#print axioms relativeRightCosliceSection_projection
+
+#check @SpecifiedCoconeLeftTriangleData
+#print axioms SpecifiedCoconeLeftTriangleData
+
+#check @specifiedCoconeLeftTriangleData
+#print axioms specifiedCoconeLeftTriangleData
+
+#check @specifiedCoconeLeftRootedTriangle
+#print axioms specifiedCoconeLeftRootedTriangle
+
+#check @specifiedCoconeLeftRootedTriangle_first
+#print axioms specifiedCoconeLeftRootedTriangle_first
+
+#check @specifiedCoconeLeftRootedTriangle_second
+#print axioms specifiedCoconeLeftRootedTriangle_second
+
+#check @specifiedCoconeLeftRootedTriangle_projection
+#print axioms specifiedCoconeLeftRootedTriangle_projection
+
+#check @specifiedCoconeLeftRootedTriangle_initial
+#print axioms specifiedCoconeLeftRootedTriangle_initial
+
+#check @specifiedCoconeLeftRootedTriangle_rootProjection
+#print axioms specifiedCoconeLeftRootedTriangle_rootProjection
+
+#check @specifiedCoconeLeftFullHomFamily
+#print axioms specifiedCoconeLeftFullHomFamily
+
+#check @specifiedCoconeLeftFullHomFamily_endpoint
+#print axioms specifiedCoconeLeftFullHomFamily_endpoint
+
+#check @specifiedCoconeLeftCommonEdgeFamily
+#print axioms specifiedCoconeLeftCommonEdgeFamily
+
+#check @specifiedCoconeLeftCommonEdgeFamily_endpoint
+#print axioms specifiedCoconeLeftCommonEdgeFamily_endpoint
+
+#check @specifiedCoconeLeftCommonHomFamily_eq
+#print axioms specifiedCoconeLeftCommonHomFamily_eq
+
+#check @specifiedCoconeLeftTerminalHomFamily
+#print axioms specifiedCoconeLeftTerminalHomFamily
+
+#check @specifiedCoconeLeftRootedHomFamily
+#print axioms specifiedCoconeLeftRootedHomFamily
+
+#check @specifiedCoconeLeftRootedHomFamily_terminal
+#print axioms specifiedCoconeLeftRootedHomFamily_terminal
+
+#check @specifiedCoconeLeftRootedHomFamily_endpoint
+#print axioms specifiedCoconeLeftRootedHomFamily_endpoint
+
+#check @specifiedCoconeLeftRootedHomFamily_base
+#print axioms specifiedCoconeLeftRootedHomFamily_base
+
+#check @specifiedCoconeLeftRootedHomFamily_fixed
+#print axioms specifiedCoconeLeftRootedHomFamily_fixed
+
+#check @specifiedCoconeLeftInitialHomFamily
+#print axioms specifiedCoconeLeftInitialHomFamily
+
+#check @specifiedCoconeLeftInitialHomFamily_evaluation
+#print axioms specifiedCoconeLeftInitialHomFamily_evaluation
+
+#check @specifiedCoconeLeftHomRestriction_common
+#print axioms specifiedCoconeLeftHomRestriction_common
+
+#check @specifiedCoconeLeftRestrictionInitialHomFamily
+#print axioms specifiedCoconeLeftRestrictionInitialHomFamily
+
+#check @specifiedCoconeLeftRestrictionInitialHomCylinder
+#print axioms specifiedCoconeLeftRestrictionInitialHomCylinder
+
+#check @specifiedCoconeLeftRestrictionInitialHomCylinder_evaluation
+#print axioms specifiedCoconeLeftRestrictionInitialHomCylinder_evaluation
+
+#check @specifiedCoconeLeftHomCylinderData
+#print axioms specifiedCoconeLeftHomCylinderData
+
+#check @specifiedCoconeLeftRestrictionTriangle
+#print axioms specifiedCoconeLeftRestrictionTriangle
+
+#check @specifiedCoconeLeftRestrictionHomotopy
+#print axioms specifiedCoconeLeftRestrictionHomotopy
+
+#check @specifiedCoconeLeftRestrictionHomotopy_evaluation
+#print axioms specifiedCoconeLeftRestrictionHomotopy_evaluation
+
+#check @specifiedCoconeLeftProjectedCylinder
+#print axioms specifiedCoconeLeftProjectedCylinder
+
+#check @specifiedCoconeLeftProjectedCylinder_raw
+#print axioms specifiedCoconeLeftProjectedCylinder_raw
+
+#check @specifiedCoconeLeftHomCylinderComparison
+#print axioms specifiedCoconeLeftHomCylinderComparison
+
+#check @specifiedCoconeLeftRestrictionHomComparison
+#print axioms specifiedCoconeLeftRestrictionHomComparison
+
+#check @specifiedCoconeLeftRestrictionTriangle_homMk_comp
+#print axioms specifiedCoconeLeftRestrictionTriangle_homMk_comp
+
+#check @SpecifiedCoconeLeftTriangleData.mk
+#print axioms SpecifiedCoconeLeftTriangleData.mk
+
+#check @SpecifiedCoconeLeftTriangleData.simplex
+#print axioms SpecifiedCoconeLeftTriangleData.simplex
+
+#check @SpecifiedCoconeLeftTriangleData.first
+#print axioms SpecifiedCoconeLeftTriangleData.first
+
+#check @SpecifiedCoconeLeftTriangleData.second
+#print axioms SpecifiedCoconeLeftTriangleData.second
+
+#check @SpecifiedCoconeLeftTriangleData.projection
+#print axioms SpecifiedCoconeLeftTriangleData.projection

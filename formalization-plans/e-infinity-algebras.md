@@ -6,48 +6,21 @@
 
 ### N（γ1.5・γ3）
 - **現在地**：γ1.5 完了。γ3b は任意の小圏で元の非反転 q_x の同値性・全導来 fiber の可縮性による両向き判定と、pinched Hom の直接 fiber 模型まで公開。
-  γ3c は 𝒮 の小積・Sp の有限積（空積含む）、一脚 fibration の引き戻し、fibration の塔の実際の ∞ 極限を公開。
-  𝒮 の小余積・任意の span・任意の列の ∞ 余極限も公開。
-  通常の随伴と整合する単体的 Hom 同型からの極限保存と、豊穣右関手の coherent nerve による像との一致を証明。
-  任意の coherent な極限錐にも適用できる。γ4 の具体例 `K × − ⊣ Map(K,−)` は通常の随伴・豊穣 Hom 同型・零単体を照合。
-  両対象の anodyne Kan 置換を含む frame Hom の可換性を全単体で検証し、固定した Quillen 類の保存も公開。
-  一般の小図式の重み付き coend、tensor と内部 Hom の普遍性、反転係数の end との自然な同型を構成。
-  Kan 置換後の Hom 比較は全 Hom パラメータの豊穣合成を保ち、恒等射の普遍切断点から復元できる。
-  実際の coherent な余錐を構成し、頂点を Kan 置換した反転 coend と同定。
-  通常の任意の小圏上の Kan 値図式では、構成した反対錐の ∞ 極限性・元の native な余錐の ∞ 余極限性を無条件に証明。
-  任意の coherent な図式の切断空間は、形状の押し出しの引き戻し・セル付加・相対骨格の塔の厳密な極限で表示。
-  left fibration では塔の各値は Kan、制限は Kan fibration。図式の底上の通常の余極限についても一般化済み。
-  部分余極限頂点を付加した実際の形状と図式、指定した余錐を頂点ごと保つ延長と余極限性の保存・反映を構成。
-  全ての脚を含む coherent な比較と実際の頂点間の射を抽出し、部分余極限対象の Kan 値 span とその押し出し候補を構成。
-  始対象の fiber の Hom 表示と部分余錐の制限の π₀ の像を、付加比較辺そのものの類と同定。二重 coslice の比較辺の終点・射影も検証。
-  共通部分で同じ連結成分にある部分余錐は、単射側を同じ成分内で直して厳密に貼れることを証明。
-  fiber の Hom 表示で辺に沿う輸送が後合成になることを証明し、図式の制限との自然性を照合。
-  二枝の比較辺と輸送辺の合成が一致すれば、元の図式の実際の余錐を厳密に貼れる。
-  余錐の脚の合成三角形を span の実際の二辺と照合し、元の coherent 図式の余錐を構成。
-  その頂点は部分余極限対象の span の小さい Kan 押し出し。
-  形状の押し出しに対し、余錐全体の coslice と固定頂点の余錐空間の厳密な引き戻し表示を構成。
-  単射な境界側の制限は Kan fibration。固定頂点の余錐空間自体を頂点とする native な ∞ 極限錐も公開。
-  始対象の Hom 比較と底上の関手の作用を、実際の比較辺の合成三角形の族で全単体において照合。
-  固定終点の左 pinched Hom の前合成を構成し、部分余錐の制限の Hom 比較の正方形を単体的ホモトピーで結ぶ。
-  底に使う辺は既存の付加比較辺そのもの。二枝のホモトピーを path 置換への厳密な自然変換へ束ねた。
-  元の余錐空間から部分余極限頂点の Hom の Bousfield–Kan end への実際の比較射とホモトピー同値性を証明。
-  通常の span の nerve とホーンの全次数の同型・二辺の一致を構成。固定終点余錐空間を点 Hom の end と比較し、ホモトピー同値性を証明。
-  持ち上げた span の二辺も付加比較辺そのものと同定。点 Hom と左 pinched Hom の cospan・end の厳密な自然同型を構成。
-  元の余錐空間から native な span の余錐空間への実際のホモトピー同値と、共通 end への比較のホモトピーを公開。
-  任意の余錐の全左 Hom による余錐の族を、元の余錐の余極限性を仮定せず構成。部分図式への制限を実際の付加比較辺の前合成とホモトピーで照合。
-  既知の余極限余錐では、その族と既存の Hom 比較が互いに実際のホモトピー逆となることも証明。
-  fiber の同じ成分への修正を、底の辺を一単体として保つ輸送辺へ織り込んだ。貼った余錐の両枝に span の実際の脚を被覆する比較辺を構成。
-  その二枝の全 Hom の族と脚の前合成のホモトピーを同時に公開。
-  指定境界経路の全パラメータ族を保つ右枝の修正と厳密な余錐族の貼り合わせを構成。パラメータ変更に厳密に自然。
-  同じ経路と右枝を持つ持ち上げの相対ホモトピーも構成。普遍 span の実際の二単体から境界経路を抽出し、その指定経路で元の余錐を構成。
-  左枝・右修正端点・修正経路の底・小さい Kan 押し出し頂点を照合。全 Hom の族から始対象性を反映し、end の同値性との余極限性の必要十分条件を証明。
-  普遍 span の全 Hom の族から共通 path end への無条件の同値と、元の族の全パラメータ係数公式を公開。
-  始対象を前置した指定四面体の底の辺 03 を、元の native な共通脚そのものと同定。全 Hom の族をその脚へ制限し、両端の係数を厳密に計算。
-  共通部分の Hom 比較は、同じ指定余錐の頂点からの Hom 上で元の共通脚の前合成とホモトピック。元の余錐の余極限性は不要。
-  元の二単体・標準二辺・対角辺・可変終点を保つ輸送三角形と全 Hom 族、底・始点・評価固定の比較円柱をデータ化済み。比較円柱の実際の辺と終点の辺の一致・一意性も公開。
-  左右の実際の輸送余錐と Hom 比較を同じ native な span 頂点上に揃え、元の指定経路を保持。全始点・全 Hom の同時輸送作用から、指定経路に沿う既存の左右の族のホモトピーと辺の類を公開。
-  end の HR/HL は評価固定データから構成。任意の単射境界から同じ評価を保つ族の延長と、二つの指定円柱を二辺として保つ三角形を構成。右 HR に全 Hom を前合成した円柱と元の指定四面体の円柱を、その同じ三角形で接続。両辺の raw な射影と第三辺の評価固定も検証。第三辺の始点の射影を既存の右 Hom 係数と同定し、終点固定円柱から native な共通脚の前合成へ接続。三辺の類の合成等式も同じ実際の三角形から証明。左側と指定経路の end 内の整合性は未完了。
-  γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
+  γ3c は 𝒮 の小積・Sp の有限積（空積含む）、一脚 fibration の引き戻し、fibration の塔の ∞ 極限を公開。𝒮 の小余積・任意の span と列の ∞ 余極限も公開。
+  通常の随伴と整合する単体的 Hom 同型から、任意の coherent な極限錐の極限保存を証明。豊穣右関手の coherent nerve の像との一致も公開。
+  γ4 の具体例 `K × − ⊣ Map(K,−)` は通常の随伴・豊穣 Hom 同型・零単体と、両対象の anodyne Kan 置換を含む frame Hom を全単体で照合。固定した Quillen 類の保存も公開。
+  一般の小図式の重み付き coend と内部 Hom の普遍性、反転係数の end との自然同型、Kan 置換後の豊穣合成を保つ Hom 比較・普遍切断点・実際の coherent 余錐を構成。
+  通常の任意の小圏上の Kan 値図式では、反対錐の ∞ 極限性と元の native な余錐の ∞ 余極限性を無条件に証明。
+  任意の coherent 図式の切断空間は、形状の押し出し・セル付加・骨格の塔の厳密な極限で表示。left fibration では各値は Kan、制限は Kan fibration。
+  部分余極限頂点の付加・指定余錐の延長・余極限性の保存と反映、元の図式の固定頂点余錐空間の厳密な引き戻しを構成。全 Hom の制限と実際の付加比較辺の前合成の自然性も公開。
+  部分余極限対象の native な Kan 値 span とその小さい Kan 押し出し候補を構成。元の三角形による指定境界経路を保つ右枝の修正・全パラメータでの厳密な貼り合わせで、元の図式の実際の余錐を構成。
+  元の余錐空間と native な span の余錐空間を、それぞれ Hom の end・共通 path end と実際のホモトピー同値で比較。全 Hom 族の同値性と余極限性の必要十分条件も公開。
+  比較先の native な全 Hom 族の同値性は無条件に証明済み。元の族との end 内のホモトピー入力は未構成で、指定余錐の余極限性・γ3c 全体の完了とは数えない。
+  元の二単体・標準二辺・長辺・可変終点を保つ輸送三角形と全 Hom 族、底・始点・評価固定の比較円柱をデータ化。指定経路に沿う既存の左右の全 Hom 族のホモトピーと辺の類も公開。
+  end の HR/HL は評価固定データから構成。任意の単射境界から同じ評価を保つ族の延長と、二つの指定円柱を二辺として保つ比較三角形を構成。
+  右 HR と元の指定四面体の円柱を同じ三角形で接続。第三辺の始点の射影を既存の右 Hom 係数と同定し、終点固定円柱から native な共通脚の前合成へ接続。三辺の類の合成等式も証明。
+  左は標準 prism 自身の輸送辺と実際の付加辺を保持し、native な左二単体上の実際の三角形と、終端辺・底を厳密に保つ全 Hom 族を構成。共通族との評価の一致、左 HL との二辺固定比較三角形、三辺の類の合成を証明。
+  左の第三辺から native な共通脚への接続と、元の指定経路の end 内の整合性は未完了。一般の γ4、F2-lite 第 2 部も未完了。分担と工程は `infinity-core-F2.md` §3。
 - **残り**（依存順・時間は再開後の概算）：
   1. γ3c：通常の小圏上の Kan 値図式の coend 余極限から、任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
   2. γ4：具体例を一般の simplicial Quillen 随伴の cofibrant-fibrant 置換・frame へ拡張する。HTT 5.2.4.6、8〜20時間。
@@ -82,11 +55,11 @@
   `nativeSpanUniversalFamilyToPathEnd_homotopyEquivalence`、`specifiedPathCocone_isColimit_of_pathFamily_homotopy`、
   `partialColimitSpanLeftTransportHomComparison`、`partialColimitSpanRightTransportHomComparison`、
   `specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy`、
-  `partialColimitSpanTransportHomPathComparison`、`specifiedCoconeRightNativeIso`、`specifiedCoconeRightRootedTriangle_homMk_comp`。
+  `partialColimitSpanTransportHomPathComparison`、`specifiedCoconeRightNativeIso`、`specifiedCoconeLeftRootedHomFamily_base`、`specifiedCoconeLeftRestrictionTriangle_homMk_comp`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は終点固定の辺の円柱・三辺の類・元の共通脚の円柱・既存の右 Hom 係数と native 前合成の比較4新規モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
+- **未コミット**：今回の保存単位は標準左輸送辺・実際の左三角形・相対延長・全 Hom 族・左 HL の比較6新規モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -95,12 +68,12 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   `(edgeTransport_composition_iso p σ).some` は同じ三辺の異なる σ でも同じ値となることを Lean の rfl で確認。選択した同型だけでは元の二単体の高次情報が残らない。
-  `partialColimitSpanTransportIso` は実際の三角形 prism・相対円柱から作る同型へ差し替え済み。end 比較の HR/HL は評価固定の中間円柱データから構成する形へ差し替え済み。右 HR と元の四面体の比較円柱は、二辺を固定した実際の三角形で接続し、その辺の類の合成を証明済み。既存の右 Hom 係数から native な共通脚への接続も構成。左側と指定経路の高次照合は未完了。
+  `partialColimitSpanTransportIso` は実際の三角形 prism・相対円柱から作る同型へ差し替え済み。end 比較の HR/HL は評価固定の中間円柱データから構成する形へ差し替え済み。右 HR と元の四面体の比較円柱は、二辺を固定した実際の三角形で接続し、その辺の類の合成を証明済み。既存の右 Hom 係数から native な共通脚への接続も構成。左 HL と実際の左二単体の全 Hom 族も二辺固定三角形で接続済み。左側の native な共通脚への接続と指定経路の高次照合は未完了。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
 - **次の一手**：`specifiedPathCocone_isColimit_of_pathFamily_homotopy` の全終点の族のホモトピー入力を構成する。
   元の族は `partialColimitHomFamilyToPathEnd`、同じ頂点で表示した比較先は `specifiedCoconeNativeFamilyToPathEnd`。
   後者の同値性は無条件に証明済み。前者とのホモトピーを仮定した定理は、余極限性の完成とは数えない。
-  `partialColimitSpanTransportHomPathComparison` で同じ指定 fiber 経路に沿う既存の左右の全 Hom 族の比較を構成済み。右 HR と元の四面体の比較も `specifiedCoconeRightRestrictionRootedTriangle` で構成済み。第三辺の始点の射影を既存の右係数と同定し、`specifiedCoconeRightNativeIso` で native な共通脚へ接続済み。左 HL と実際の左輸送三角形の全 Hom 族の同じ評価上の比較を構成し、元の指定輸送経路との整合性へ移す。
+  `partialColimitSpanTransportHomPathComparison` で同じ指定 fiber 経路に沿う既存の左右の全 Hom 族の比較を構成済み。右 HR と元の四面体の比較も `specifiedCoconeRightRestrictionRootedTriangle` で構成済み。第三辺の始点の射影を既存の右係数と同定し、`specifiedCoconeRightNativeIso` で native な共通脚へ接続済み。左 HL の比較も `specifiedCoconeLeftRestrictionTriangle_homMk_comp` まで構成済み。同じ左三角形の長辺の底・終点係数を native な共通脚の表示と照合し、終点固定円柱で第三辺を接続する。その後、元の指定輸送経路との整合性へ移す。
   同じ経路の持ち上げの相対ホモトピーを共通 end に移して入力を閉じる。その後、骨格の無限段階とセルの添字の小ささを処理。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
