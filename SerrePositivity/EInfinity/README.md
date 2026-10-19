@@ -373,8 +373,15 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `schedule_of_table` は成功表の元の行列と総和から実際の Schedule を構成する。
 `shuffle_outer_schedule` は正の内側 arity の実際の shuffle 成功から元の外側 Schedule を復元する。
 `shuffle_outer_basis` は同じ出力から元の外側次数の BasisWord と一意な成功 Schedule を返す。
-元の内側表全体の復元、全項の全単射は未完成。
-零歩成分の切り出し、成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
+`ConsumptionPrefix` は同じ行の選択長と消費長を分け、空選択・全消費・末尾保持を扱う。
+`normalize` はその全区間を一つの先頭部分と厳密な終状態へ融合する。
+`ExtractionPrefix.filterMap_consumption` は同じ行へ射影される抽出全体の消費証跡を作る。
+`horizontal_inner_before_vertical` は実際の非退化成功から水平区間全体を元の内側一行へ戻す。
+水平零歩も含み、内側の非空性・末尾保持を次の垂直移動から導いて実際の終状態を保つ。
+`horizontal_inner_close` は最終射影末尾を残し、`horizontal_inner_success` は最後の水平区間を閉じる。
+末尾の合成行の内側選択が空でも、区間全体が非空なら最終一行の成功を返す。
+実際の経路の成分切り出し・全水平区間の接続、元の内側表全体の復元と全項の全単射は未完成。
+元の成功二表の全体の逆構成と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 

@@ -655,6 +655,14 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_excess,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_schedule,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_basis,
+      `SerrePositivity.EInfinity.TableReduction.ConsumptionPrefix.normalize,
+      `SerrePositivity.EInfinity.TableReduction.ConsumptionPrefix.close_of_prefix,
+      `SerrePositivity.EInfinity.TableReduction.ConsumptionPrefix.reduction,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.filterMap_consumption,
+      `SerrePositivity.EInfinity.Surjection.horizontal_inner_consumption,
+      `SerrePositivity.EInfinity.Surjection.horizontal_inner_close,
+      `SerrePositivity.EInfinity.Surjection.horizontal_inner_before_vertical,
+      `SerrePositivity.EInfinity.Surjection.horizontal_inner_success,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1629,3 +1637,56 @@ example : ∀ a : Fin 2, a ∈ ([0, 0, 1] : List (Fin 2)) := by
   let r : Schedule 2 1 := ⟨![1, 2], by decide⟩
   apply output_covers (fun _ => (1 : Equiv.Perm (Fin 2))) r
   decide
+
+private lemma innerIdentityInverseRow :
+    List.ofFn (1 : Equiv.Perm (Fin 2)).symm = [0, 1] := by decide
+-- 内側射影が空の先頭・末尾行と、全消費する中間行を同時に融合する。
+private def innerHorizontalEntries : List (Equiv.Perm (Fin 3) × ℕ) :=
+  [(1, 1), (Equiv.swap 0 1, 3), (Equiv.swap 0 2, 2)]
+private lemma innerHorizontalPrefix : ExtractionPrefix
+    (fixedInnerRows (1 : Equiv.Perm (Fin 2)) 1 innerHorizontalEntries) []
+    [[0], [1, 2, 0], [3, 0]] [1, 2, 3] := by
+  have he : fixedInnerRows (1 : Equiv.Perm (Fin 2)) 1 innerHorizontalEntries =
+      [([0, 1, 2, 3], 1), ([1, 2, 0, 3], 3), ([3, 1, 2, 0], 2)] := by decide
+  rw [he]
+  exact .cons (by decide) (by decide) (.cons (by decide) (by decide)
+    (.cons (by decide) (by decide) (.nil _)))
+example : ∃ r : ℕ, reduceRows [([0, 1], r)] ([] : List (Fin 2)) = some [0, 1] := by
+  obtain ⟨r, hr⟩ := horizontal_inner_success (1 : Equiv.Perm (Fin 2)) 1
+    innerHorizontalEntries [] [1, 2, 3] [[0], [1, 2, 0], [3, 0]] innerHorizontalPrefix
+    (by decide)
+  rw [innerIdentityInverseRow, List.filterMap_nil] at hr
+  exact ⟨r, by convert hr using 1; decide⟩
+-- 元の末尾が外側でも、復元した内側末尾一文字は共有端点として残す。
+example : ∃ r : ℕ, ExtractionPrefix [([0, 1], r)] ([] : List (Fin 2)) [[0, 1]] [0] := by
+  obtain ⟨r, hr⟩ := horizontal_inner_close (1 : Equiv.Perm (Fin 2)) (m := 2) 1
+    [] 1 4 [] [] [] (.nil _) (by decide)
+  rw [innerIdentityInverseRow] at hr
+  exact ⟨r, by convert hr using 1 <;> decide⟩
+-- 水平一歩の後の垂直移動から、内側非空性と末尾保持を追加仮定なしで得る。
+example : ∃ r : ℕ, ExtractionPrefix [([0, 1], r)] ([] : List (Fin 2)) [[0]] [] := by
+  have hp : ExtractionPrefix (fixedInnerRows (1 : Equiv.Perm (Fin 2)) (m := 2) 1 [(1, 1)])
+      [] [[0]] [] := by
+    have he : fixedInnerRows (1 : Equiv.Perm (Fin 2)) (m := 2) 1 [(1, 1)] =
+        [([0, 1, 2, 3], 1)] := by decide
+    rw [he]
+    exact .cons (by decide) (by decide) (.nil _)
+  have ht : reduceRows
+      [(List.ofFn (BarrattEccles.permutationComposition 2 2 1 (Equiv.swap 0 1) 1).symm, 1),
+        (List.ofFn (BarrattEccles.permutationComposition 2 2 1 (Equiv.swap 0 1)
+          (Equiv.swap 0 1)).symm, 4)] [] = some [1, 2, 1, 0, 3] := by decide
+  obtain ⟨r, hr⟩ := horizontal_inner_before_vertical (1 : Equiv.Perm (Fin 2))
+    (Equiv.swap 0 1) (m := 2) 1 [(1, 1)] (Equiv.swap 0 1) 1 4 [] [] _ [[0]] [] hp ht
+    (by decide)
+  rw [innerIdentityInverseRow] at hr
+  exact ⟨r, by convert hr using 1 <;> decide⟩
+-- 水平零歩も同じ規則に含み、次の垂直移動の前の実際の除外状態を保持する。
+example : ∃ r : ℕ, ExtractionPrefix [([0, 1], r)] ([] : List (Fin 2)) [[0]] [] := by
+  have ht : reduceRows
+      [(List.ofFn (BarrattEccles.permutationComposition 2 2 1 1 1).symm, 2),
+        (List.ofFn (BarrattEccles.permutationComposition 2 2 1 1 (Equiv.swap 0 1)).symm, 3)] [] =
+      some [0, 1, 2, 1, 3] := by decide
+  obtain ⟨r, hr⟩ := horizontal_inner_before_vertical (1 : Equiv.Perm (Fin 2))
+    (Equiv.swap 0 1) (m := 2) 1 [] 1 2 3 [] [] _ [] [] (.nil _) ht (by decide)
+  rw [innerIdentityInverseRow] at hr
+  exact ⟨r, by convert hr using 1 <;> decide⟩
