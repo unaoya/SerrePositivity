@@ -1676,3 +1676,10 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiber
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiber_source
 #check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiber_diagram
+#check @SerrePositivity.InfinityCategories.F1B.kanScaffoldFiberMap_postcomp
+#check @SerrePositivity.InfinityCategories.F1B.kanIsPrecompositionEquivalence_of_leftFibration_nerve_fibers
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberComparisonBaseChange
+#check @SerrePositivity.InfinityCategories.F1B.kanFiberComparisonBaseChange_fiber
+#check @SerrePositivity.InfinityCategories.F1B.kanIsPrecompositionEquivalence_of_leftFibration_fibers
+#check @SerrePositivity.InfinityCategories.F1B.kanIsQCatEquivalence_of_leftFibration_fibers
+#check @SerrePositivity.InfinityCategories.F1B.kanIsPrecompositionEquivalence_leftFibration_baseChange

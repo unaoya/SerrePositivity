@@ -375,3 +375,6 @@ public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaHomotopy
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaLift
 public import SerrePositivity.InfinityCategories.F1B.KanPointSliceHomotopy
 public import SerrePositivity.InfinityCategories.F1B.KanLeftKanShapeCommaComparison
+public import SerrePositivity.InfinityCategories.F1B.KanLeftFibrationNerveComparison
+public import SerrePositivity.InfinityCategories.F1B.KanFiberComparisonBaseChange
+public import SerrePositivity.InfinityCategories.F1B.KanLeftFibrationFiberComparison
