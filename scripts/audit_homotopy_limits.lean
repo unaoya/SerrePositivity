@@ -8074,3 +8074,99 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @edgeEvaluation_composition_hom_arrow
 #print axioms edgeEvaluation_composition_hom_arrow
+
+#check @coherentTransportPointComparisonHomotopy
+#print axioms coherentTransportPointComparisonHomotopy
+
+#check @coherentTransportPointComparisonHomotopy_projection
+#print axioms coherentTransportPointComparisonHomotopy_projection
+
+#check @coherentTransportPointComparisonHomotopy_initial
+#print axioms coherentTransportPointComparisonHomotopy_initial
+
+#check @coherentTransportPointComparisonHomotopy_raw
+#print axioms coherentTransportPointComparisonHomotopy_raw
+
+#check @functorHomotopy_component_hom_arrow
+#print axioms functorHomotopy_component_hom_arrow
+
+#check @standardTransportPoint_initial
+#print axioms standardTransportPoint_initial
+
+#check @standardTransportPoint_projection
+#print axioms standardTransportPoint_projection
+
+#check @pointTransportExtension_initial_base
+#print axioms pointTransportExtension_initial_base
+
+#check @pointTransportExtensionSpace
+#print axioms pointTransportExtensionSpace
+
+#check @pointTransportExtensionSpace_isContractibleKan
+#print axioms pointTransportExtensionSpace_isContractibleKan
+
+#check @standardTransportPointExtensionVertex
+#print axioms standardTransportPointExtensionVertex
+
+#check @pointTransportExtensionEndpoint
+#print axioms pointTransportExtensionEndpoint
+
+#check @coherentTransportLongPoint_initial
+#print axioms coherentTransportLongPoint_initial
+
+#check @coherentTransportLongPoint_projection
+#print axioms coherentTransportLongPoint_projection
+
+#check @coherentTransportLongPointExtensionVertex
+#print axioms coherentTransportLongPointExtensionVertex
+
+#check @coherentTransportPointComparisonHomotopy_initial_face
+#print axioms coherentTransportPointComparisonHomotopy_initial_face
+
+#check @coherentTransportPointComparisonExtensionEdge
+#print axioms coherentTransportPointComparisonExtensionEdge
+
+#check @coherentTransportPointComparisonExtensionEdge_uncurry
+#print axioms coherentTransportPointComparisonExtensionEdge_uncurry
+
+#check @coherentTransportPointComparisonExtensionEdge_endpoint_projection
+#print axioms coherentTransportPointComparisonExtensionEdge_endpoint_projection
+
+#check @coherentTransportPointComparisonExtensionEdge_endpoint_hom_arrow
+#print axioms coherentTransportPointComparisonExtensionEdge_endpoint_hom_arrow
+
+#check @coherentTransportPointCanonicalComparison_endpoint_hom_arrow
+#print axioms coherentTransportPointCanonicalComparison_endpoint_hom_arrow
+
+#check @contractibleVertexIso_endpoint_factor
+#print axioms contractibleVertexIso_endpoint_factor
+
+#check @coherentTransportStandardLongComparisonIso
+#print axioms coherentTransportStandardLongComparisonIso
+
+#check @coherentTransportStandardLongComparisonIso_endpoint_hom_arrow
+#print axioms coherentTransportStandardLongComparisonIso_endpoint_hom_arrow
+
+#check @specifiedCoconeLeftCommonRootRestriction_standard
+#print axioms specifiedCoconeLeftCommonRootRestriction_standard
+
+#check @specifiedCoconeRightPrefixCommonRootRestriction_standard
+#print axioms specifiedCoconeRightPrefixCommonRootRestriction_standard
+
+#check @specifiedCoconeStandardRootComparisonIso
+#print axioms specifiedCoconeStandardRootComparisonIso
+
+#check @specifiedCoconeStandardRootComparisonIso_endpoint_hom_arrow
+#print axioms specifiedCoconeStandardRootComparisonIso_endpoint_hom_arrow
+
+#check @homotopyEquivalencePath_point_diagram
+#print axioms homotopyEquivalencePath_point_diagram
+
+#check @homotopyEquivalencePath_point_hom_arrow
+#print axioms homotopyEquivalencePath_point_hom_arrow
+
+#check @specifiedCoconeCorrectionEndpoint_boundary_hom_arrow
+#print axioms specifiedCoconeCorrectionEndpoint_boundary_hom_arrow
+
+#check @specifiedCoconeCorrectionCanonical_boundary_hom_arrow
+#print axioms specifiedCoconeCorrectionCanonical_boundary_hom_arrow
