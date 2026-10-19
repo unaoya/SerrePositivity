@@ -22,8 +22,7 @@
 - 射影の持ち上げ問題を逆像上の図式の延長と同定し、inner fibration 性の必要十分条件を証明。
   標準単体上の cocartesian fibration の最終 fiber への厳密な retraction と、そこで固定された輸送を構成。
   射影の終点指定の辺の持ち上げ（任意次元の最後の頂点版も）を証明。
-- 三角形の cocartesian 性の消去と、cocartesian なホモトピーによる辺の保存を証明。
-  最終 fiber への retraction と逆像上の図式の延長が cocartesian 辺を可逆辺に送ることまで証明。
+- 最終 fiber への retraction と逆像上の図式の延長が cocartesian 辺を可逆辺に送ることまで証明。
 - cocartesian section の全部分単体集合を構成し、inner fibration の場合の quasicategory 性を証明。
   前合成の関手性、一般の strict transport の図式と fiber 評価射、任意パラメータの族の curry・uncurry を構成。
   任意の部分パラメータ上の section と始対象での評価を同時に固定した延長を証明。
@@ -36,8 +35,10 @@
 - 終端辺上の cocartesian 辺を可逆化する図式の外ホーン逆像からの延長を、任意の pullback 表示で証明。
   終端辺の逆像への制限で条件を確認し、可逆化する図式の表す相対指数の辺の cartesian 性を証明。
   終点指定の特殊持ち上げと合わせ、`kanFiberwiseHomProjection` の cartesian fibration 性まで証明。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2601 jobs）。
-  公理監査成功（3453 宣言、標準三公理のみ、927 モジュールに straightening なし）。
+- 二つの inner fibration の join と相対 join の底への射影の inner fibration 性を証明。
+  右因子を保つ joinMap の単体の持ち上げ、単体・混合外ホーンの最後の面による像の検出も証明。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2605 jobs）。
+  公理監査成功（3465 宣言、標準三公理のみ、931 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -58,7 +59,6 @@
 ### 主要宣言（名前のみ）
 
 - `QCatAdjunction` / `qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison`
-- `ReflectiveSubcategory`
 - `isRightCofinal_iff_weaklyContractible_coslices` / `initialCofinality_via_quillenA`
 - `IsRightKanExtension` / `IsLeftKanExtension` / `RightKanHomUniversal` / `LeftKanHomUniversal`
 - `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
@@ -70,7 +70,7 @@
 - `kanCocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_innerFibration` / `kanFiberwiseHom_quasicategory`
 - `exists_kanFinalHorn_extension_of_edgeRestriction` / `kanFiberwiseHom_isCartesianEdge_of_inverting`
-- `kanFiberwiseHomProjection_cartesianFibration`
+- `kanFiberwiseHomProjection_cartesianFibration` / `kanRelativeJoinBaseProjection_innerFibration`
 
 ### 依存と提供
 
@@ -81,7 +81,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：外ホーン逆像の延長、終端辺での判定、相対指数の cartesian fibration 性、集約・監査・本書）。
+- なし（本保存単位：join と相対 join の inner fibration 性、最後の面による検出、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -97,10 +97,10 @@
 
 ### 次の一手
 
-- `relativeJoinBaseProjection p (𝟙 C)` の cocartesian 性と、左包含による cocartesian 辺の保存を証明する。
-  区間への `relativeJoinProjection` の既存定理とは異なる射なので、混同せず底 C 上で扱う。
-  相対指数の制限が cartesian 輸送と両立することを可逆化する図式で確認し、
-  `kanRelativeJoinCoconeFiber_initialBoundary` の fiber の充填を全空間へ移す（Kerodon 7.3.4.5–6）。
+- `kanJoinSimplex_exists_preimage_of_left` に最後の面の左係数を入れ、混合外ホーンの充填候補を作る。
+  `kanJoinInitialHorn_ext_of_last_face_joinMap` で境界を検証し、純粋な左因子の充填と合わせ cocartesian 性を得る。
+  底変換と prism の第二射影との合成で相対 join の底への cocartesian 性、左包含の保存を得る。
+  続いて制限の輸送との両立、fiber の境界充填の全空間への移送へ進む（Kerodon 7.3.4.5–6）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
