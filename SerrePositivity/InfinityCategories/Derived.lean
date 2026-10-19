@@ -614,6 +614,14 @@ public import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofCompariso
 public import SerrePositivity.InfinityCategories.Derived.DGClosedNerveOverMap
 public import SerrePositivity.InfinityCategories.Derived.DGClosedRoofSliceMap
 
+public import SerrePositivity.InfinityCategories.Derived.RoofSliceTransport
+public import SerrePositivity.InfinityCategories.Derived.RoofJoinReverseEdge
+public import SerrePositivity.InfinityCategories.Derived.RoofReverseVertexEdge
+public import SerrePositivity.InfinityCategories.Derived.OrdinaryRoofVertexData
+public import SerrePositivity.InfinityCategories.Derived.OrdinaryRoofVertexEdge
+public import SerrePositivity.InfinityCategories.Derived.DGClosedOverMapVertex
+public import SerrePositivity.InfinityCategories.Derived.DGClosedRoofVerdierMap
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

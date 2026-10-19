@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGClosedRoofVerdierMap
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofSliceMap
 import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofComparison
 import SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFillerRefinement
@@ -1885,6 +1886,29 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgClosedRoofSliceMap
 #print axioms SerrePositivity.InfinityCategories.dgClosedRoofSliceMap_projection
 
+#print axioms SerrePositivity.InfinityCategories.roofSliceTransport_val
+#print axioms SerrePositivity.InfinityCategories.roofSliceTransport_edge
+#print axioms SerrePositivity.InfinityCategories.roofSlicePostRestrict_edge
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceVertexEdge_postcomp
+#print axioms SerrePositivity.InfinityCategories.roofJoinReverseEdge_hom
+#print axioms SerrePositivity.InfinityCategories.roofJoinReverseEdge
+#print axioms SerrePositivity.InfinityCategories.roofReverseVertexEdge
+#print axioms SerrePositivity.InfinityCategories.ordinaryRoofOppositeVertex
+#print axioms SerrePositivity.InfinityCategories.ordinaryUnderVertexEdge
+#print axioms SerrePositivity.InfinityCategories.ordinaryRoofRawVertex
+#print axioms SerrePositivity.InfinityCategories.ordinaryRoofRawVertexEdge
+#print axioms SerrePositivity.InfinityCategories.ordinaryRoofUnopEdge
+#print axioms SerrePositivity.InfinityCategories.ordinaryRoofVertexEdge
+#print axioms SerrePositivity.InfinityCategories.dgCommonClosedNerveDown_edge
+#print axioms SerrePositivity.InfinityCategories.dgClosedNerveOverMap_edge
+#print axioms SerrePositivity.InfinityCategories.dgClosedNerveOverMap_vertex
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofSliceMap_vertex
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofSliceMap_mem
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap_ι
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap_source
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofVerdierMap_vertex
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2038,6 +2062,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofSliceTransport,
+    `SerrePositivity.InfinityCategories.Derived.RoofJoinReverseEdge,
+    `SerrePositivity.InfinityCategories.Derived.RoofReverseVertexEdge,
+    `SerrePositivity.InfinityCategories.Derived.OrdinaryRoofVertexData,
+    `SerrePositivity.InfinityCategories.Derived.OrdinaryRoofVertexEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedOverMapVertex,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofVerdierMap,
+
     `SerrePositivity.InfinityCategories.Derived.DGClosedPinchedRepresentable,
     `SerrePositivity.InfinityCategories.Derived.DGClosedVerdierRoofDiagram,
     `SerrePositivity.InfinityCategories.Derived.DGClosedPinchedFunctorMap,
