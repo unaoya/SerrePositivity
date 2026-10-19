@@ -4240,3 +4240,78 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyRho_isGapped
 #check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_isGapped
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_isGapped
+
+#check @SerrePositivity.KST.SConstruction.exchangeDiagramFamily_evaluate
+#print axioms SerrePositivity.KST.SConstruction.exchangeDiagramFamily_evaluate
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex_evaluate
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex_evaluate
+#check @SerrePositivity.KST.SConstruction.curry_identitySpan
+#print axioms SerrePositivity.KST.SConstruction.curry_identitySpan
+#check @SerrePositivity.KST.SConstruction.spanFamily_constant_right
+#print axioms SerrePositivity.KST.SConstruction.spanFamily_constant_right
+#check @SerrePositivity.KST.SConstruction.spanFamily_constant_left
+#print axioms SerrePositivity.KST.SConstruction.spanFamily_constant_left
+#check @SerrePositivity.KST.SConstruction.cofiberProjection_source
+#print axioms SerrePositivity.KST.SConstruction.cofiberProjection_source
+#check @SerrePositivity.KST.SConstruction.mcCarthySpan_source
+#print axioms SerrePositivity.KST.SConstruction.mcCarthySpan_source
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_quotient
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_quotient
+#check @SerrePositivity.KST.SConstruction.mcCarthySpan_quotient
+#print axioms SerrePositivity.KST.SConstruction.mcCarthySpan_quotient
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_source
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_source
+#check @SerrePositivity.KST.SConstruction.mcCarthyRho_source
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRho_source
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_quotient
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_quotient
+#check @SerrePositivity.KST.SConstruction.mcCarthyRho_quotient
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRho_quotient
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberDiagram
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberDiagram
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberParameter
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberParameter
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberDiagram_source
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberDiagram_source
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberDiagram_map
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberDiagram_map
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiberParameter_map
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiberParameter_map
+#check @SerrePositivity.KST.SConstruction.simplexOrder_map
+#print axioms SerrePositivity.KST.SConstruction.simplexOrder_map
+#check @SerrePositivity.KST.SConstruction.mcCarthyRho_congr
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRho_congr
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberObjectVertex
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberObjectVertex
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberObjectVertex_diagram
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberObjectVertex_diagram
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberObjectMap
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberObjectMap
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberParameterMap
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberParameterMap
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiber_condition
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiber_condition
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap_projection
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap_projection
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap_parameter
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap_parameter
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberObjectMap_zero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberObjectMap_zero
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberParameterMap_endpoint
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberParameterMap_endpoint
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap_zero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap_zero
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberHomotopy
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberHomotopy
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoFiberMap_quotient
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_parameter
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_parameter
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_quotient
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_quotient
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_source
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_source

@@ -12,13 +12,14 @@
 - 元の object/core 実現比較の弱同値、McCarthy の左 fiber の切断、λ→μ・λ→ν の両枝を証明済み。
 - raw ρ の全頂点の cofiber 性、A・E が gapped のときの gapped 性を証明済み。
 - 同じ C 内の選択を保つ cofiber 値の `mcCarthyRho`、面・退化の自然性、時刻零の E の厳密回収を構成済み。
-- subobject・quotient の strict 回収と左 fiber 条件は未証明。実ホモトピー・加法性は未完。
-- 対象ビルド3225 jobs、公理監査1677宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
+- subobject は動かした添字の A、quotient は元の E という strict 回収と左 fiber 条件を証明済み。
+- `mcCarthyRhoFiberHomotopy`：左 fiber の恒等射から `mcCarthyRhoTerminal` への実単体ホモトピーを構成済み。全時刻で quotient を厳密に固定する。
+- 終端のパラメーターは最後の頂点、実図式の subobject は最後の対角零対象に厳密に一定。第二の θ・変形収縮・加法性は未完。
+- 対象ビルド3233 jobs、公理監査1714宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
 
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
-- ρ の subobject・quotient の厳密な回収と左 fiber 条件：Fiore–Pieper Lemma 4.24、(4.26)、8–24時間。
-- ρ と第二の θ を左 fiber の実ホモトピーにし、切断との変形収縮を完成：同 Lemma 4.24・Example 9.14、24–72時間。
+- 第二の θ を左 fiber の実ホモトピーにし、ρ の終端と切断との比較・変形収縮を完成：Fiore–Pieper Lemma 4.24・Example 9.14、24–72時間。
 - 単体積版 Quillen A と object 加法性：同 Theorem 1.15・Lemma 4.24、16–40時間。
 - object/core 比較を使った実現の加法性と有限反復への自然性：同 Proposition 4.27・Theorem 4.35、8–24時間。
 - 面の homotopy pullback 条件、S 実現と既存の homotopy fiber の比較、構造射との照合：HTT 5.1.2.2、
@@ -39,17 +40,19 @@
 - `mcCarthyLambdaMu`、`mcCarthyLambdaNu`、`mcCarthySpan`、`mcCarthyRhoRaw_pre`、`mcCarthyRhoRaw_timeZero`
 - `mcCarthyRhoRaw_isCofiber`、`mcCarthyRhoRaw_isGapped`、`mcCarthyRho`、`mcCarthyRho_isGapped`
 - `mcCarthyRho_ι`、`mcCarthyRho_pre`、`mcCarthyRho_timeZero`、`pointwiseDiagramPushoutApex_postcompIso`
+- `mcCarthyRho_source`、`mcCarthyRho_quotient`、`mcCarthyRhoFiberMap`、`mcCarthyRhoFiberHomotopy`
+- `mcCarthyRhoFiberMap_quotient`、`mcCarthyRhoTerminal_parameter`、`mcCarthyRhoTerminal_source`
 
 ### 依存と提供
 - 所有は `SerrePositivity/KST/SConstruction/`、集約、監査スクリプト、本計画。namespace は同名。
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）。
-- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性。
+- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性と左 fiber 内の第一ホモトピー。
 - K スペクトル・加法性・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 担当差分は本保存単位（新規6モジュール、集約、監査スクリプト、本計画）にまとめて保存する。
+- 担当ファイルは検証済み保存単位（新規8モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
@@ -57,18 +60,18 @@
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 1677宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
-- raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げと gapped 性は証明済み。左 fiber 条件は未完。
+- 1714宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。第二の θ が未完。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - homotopy fiber 比較を既存の構造射と形式的に合成するだけでは正の Ω 条件の証明にならない。
 - C×C と S₂C の ∞ 圏の同値は主張しない。加法性は S• と実現の後の定理。
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- C 内の同じ選択の各角の正規化を使い、ρ の subobject を μ の subobject、quotient を E の quotient と厳密に回収する。
-- `pointwiseDiagramPushoutApex` の角での評価を `pointwisePushoutApex` に直し、subobject の span は左枝恒等、quotient の span は上枝恒等であることを示す。
-- `pointwisePushoutApex_identity` の両向きの正規化で等号を得る。cofiber 図式内で選び直した押し出しの同型だけでは strict 回収を結論しない。
-- その後、ρ と第二の θ を左 fiber の実ホモトピーにする。未証明の fiber 条件を仮定にしない。
+- 第二の θ：`mcCarthyRhoTerminal` と `cofiberLeftFiberQuotient ≫ mcCarthyFiberSection` を左 fiber 内で実ホモトピーにより比較する。
+- 終端の各図式の subobject は `objectSLastDiagonalZeroVertex a` に厳密に一定で、quotient は元の E。`mcCarthyRhoTerminal_source`・`mcCarthyRhoTerminal_quotient` を入力に使う。
+- 零 subobject を持つ cofiber 図式から標準 ι 型の cofiber への比較を coherent に構成し、各単体の gapped 性と面・退化を確認する。頂点ごとの任意の同型の寄せ集めにしない。
+- θ の後、切断との二つのホモトピーから quotient 射の弱同値、単体積版 Quillen A、object 加法性へ進む。
 - 検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
 
 ## 1. 目標・担当範囲
