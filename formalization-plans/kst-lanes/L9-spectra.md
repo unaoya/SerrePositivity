@@ -13,7 +13,7 @@
 - 関数複体の π₀ の座標表示を Kan 充填で構成し、骨格 fiber の係数へ合成済み。相対商の fiber 頂点とセル単体から復元する頂点も厳密に一致する。
 - 復元した頂点を含めると元の射に戻り、成分係数は既存 cochain と一致する。成分と正次数群の係数は同じセル球面への制限で計算され、正規化微分の交代式も保持する。
 - 反復 loop 値の fiber の π₀ と元の fiber の全正次数群を比較し、既存係数表示との正符号の可換式を証明済み。
-- 源の正方形による相対商・fiber・連結射の自然性と、セル境界 fiber への制限を構成済み。
+- 同じ境界の二つの零ホモトピーの差を、一つ高いホモトピー群の類として Kan 充填から構成済み。充填選択からの独立性、基点を保つ射への自然性、同じ零ホモトピー同士の差が単位元であることを証明済み。
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
 - loop 交換の頂点を円の射と標準区間の辺で厳密に照合済み。骨格 fiber の通常の零 loop 比較の包含は明示した逆辺の類と一致し、実際の成分微分の係数を次数二以上の正規化交代微分と (-1)^(セル次元) で計算済み。
 - Kan fibration の下で同じ downstairs の類を持つ代表を、射影が指定した単体と厳密に一致する upstairs の代表へ調整済み。整合する類の族を厳密に整合する代表へ直し、極限の群から段ごとの群の逆極限への比較準同型の全射性を証明済み。
@@ -23,8 +23,8 @@
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4089 jobs、専用監査 617 モジュール・5814 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14547 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4096 jobs、専用監査 624 モジュール・5863 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14584 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
@@ -52,9 +52,9 @@
 - `SimplicialFunctionComplex.componentEquiv`
 - `SkeletalCellAttachment.stageFiberComponentEquiv`
 - `SkeletalCellAttachment.stageFiberIteratedLoopComponentEquiv`
-- `SkeletalCellAttachment.stageFiberCoefficientEquiv_iteratedLoopComponent`
-- `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
-- `SkeletalCellAttachment.exists_cellDifferential_boundaryRepresentative`
+- `NullHomotopyDifference.difference`
+- `NullHomotopyDifference.difference_map`
+- `NullHomotopyDifference.difference_self`
 - `PointedFibrationTower.limitGroupComparison`
 - `PointedFibrationTower.limitGroupComparison_surjective`
 - `SkeletalCellAttachment.coefficientDifferential_all_alternating`
@@ -92,9 +92,9 @@
 - coefficientDifferential の交代式・符号・核・像は全添字で証明済み。cohomology の消滅だけで有理 Shapiro の全射性・収束を完了扱いにしない。
 
 ### 次の一手
-- 比較の核と lim¹ の同定へ進む。各段で零となる極限の代表の RelStruct を選び、隣接段に射影した二つの RelStruct の差を一つ高いホモトピー群で計算する。差の族を `TowerLimOne.limOne` へ送り、選択変更が twisted 作用になることを証明する。
-- `limitGroupComparison_surjective` と `class_eq_of_compatible_relations` は証明済み。整合する類や RelStruct を極限へ組み立てる部分を再構成しない。`TowerLimOne.subsingleton_of_surjective` は群の遷移の全射性を要し、現時点では比較の核の消滅の結論に使わない。
-- Sp-2 の収束と必要な塔での lim¹ の制御、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。cohomology の消滅だけで収束を主張しない。
+- 三つの零ホモトピー R・S・T の差の合成則を作る。差の充填 RS・RT・ST を最後の三面へ置いた一つ高いホーンを充填し、欠ける面を `MulStruct (simplex S T) (simplex R S) (simplex R T)` と読む。差の構成・選択独立性・自然性・自己差の単位元は再構成しない。
+- 比較の核の各段の零ホモトピー Rₙ を選び、`difference Rₙ (pₙ Rₙ₊₁)` を `TowerLimOne.limOne` へ送る。合成則を使って選択変更が twisted 作用になることを証明する。核と lim¹ の同定、必要な塔の lim¹ の消滅は未完。
+- Sp-2 の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。比較の全射性と整合する RelStruct の極限への組み立ては既証だが、段ごとの零性だけから整合する零ホモトピーを仮定しない。
 
 ## 範囲と所有
 

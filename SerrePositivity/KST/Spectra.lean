@@ -147,3 +147,10 @@ public import SerrePositivity.KST.Spectra.TowerHomotopyComparison
 public import SerrePositivity.KST.Spectra.TowerGroupLimitComparison
 public import SerrePositivity.KST.Spectra.TowerRelativeHomotopyLimit
 public import SerrePositivity.KST.Spectra.TowerLimOne
+public import SerrePositivity.KST.Spectra.NullHomotopyDifference
+public import SerrePositivity.KST.Spectra.HornBoundaryFactor
+public import SerrePositivity.KST.Spectra.AnodyneRelativeComparison
+public import SerrePositivity.KST.Spectra.HornMissingFaceComparison
+public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceClass
+public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceNaturality
+public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceIdentity
