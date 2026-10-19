@@ -163,3 +163,9 @@ public import SerrePositivity.EInfinity.Operad.IntervalAcyclicity
 public import SerrePositivity.EInfinity.Operad.IntervalJCellAcyclicity
 public import SerrePositivity.EInfinity.Operad.AlgebraLimits
 public import SerrePositivity.EInfinity.Operad.FreeAlgebraColimits
+public import SerrePositivity.EInfinity.Operad.AlgebraSiftedColimits
+public import SerrePositivity.EInfinity.Operad.AlgebraMonadic
+public import SerrePositivity.EInfinity.Operad.AlgebraReflexiveCoequalizers
+public import SerrePositivity.EInfinity.Operad.AlgebraAllColimits
+public import SerrePositivity.EInfinity.Operad.AlgebraSmallObject
+public import SerrePositivity.EInfinity.Operad.IntervalModelCategory

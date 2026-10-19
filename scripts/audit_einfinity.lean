@@ -221,7 +221,26 @@ run_cmd do
       `SerrePositivity.EInfinity.schurFunctor_preservesSiftedColimits,
       `SerrePositivity.EInfinity.schurFunctor_preservesFilteredColimits,
       `SerrePositivity.EInfinity.Operad.freeAlgebraForget_preservesSiftedColimits,
-      `SerrePositivity.EInfinity.Operad.freeAlgebraForget_preservesFilteredColimits] do
+      `SerrePositivity.EInfinity.Operad.freeAlgebraForget_preservesFilteredColimits,
+      `SerrePositivity.EInfinity.Operad.Algebra.ofJointlyEpicActions,
+      `SerrePositivity.EInfinity.Operad.Algebra.ofColimitCocone,
+      `SerrePositivity.EInfinity.Operad.Algebra.algebraColimitIsColimit,
+      `SerrePositivity.EInfinity.Operad.Algebra.forget_createsColimit,
+      `SerrePositivity.EInfinity.Operad.Algebra.forget_createsSiftedColimitsOfShape,
+      `SerrePositivity.EInfinity.Operad.Algebra.forget_createsFilteredColimitsOfShape,
+      `SerrePositivity.EInfinity.Operad.Algebra.forget_monadic,
+      `SerrePositivity.EInfinity.walkingReflexivePair_isSifted,
+      `SerrePositivity.EInfinity.Operad.Algebra.hasReflexiveCoequalizers,
+      `SerrePositivity.EInfinity.Operad.Algebra.diagramForget_monadic,
+      `SerrePositivity.EInfinity.Operad.Algebra.forget_isCardinalAccessible,
+      `SerrePositivity.EInfinity.Operad.freeAlgebra_finitelyPresentable,
+      `SerrePositivity.EInfinity.Operad.freeGeneratingCofibrations_smallObjectArgument,
+      `SerrePositivity.EInfinity.Operad.freeGeneratingTrivialCofibrations_smallObjectArgument,
+      `SerrePositivity.EInfinity.Operad.intervalModelCategory,
+      `SerrePositivity.EInfinity.Operad.intervalModelCategory_weakEquivalences,
+      `SerrePositivity.EInfinity.Operad.intervalModelCategory_fibrations,
+      `SerrePositivity.EInfinity.Operad.intervalModelCategory_cofibrantlyGenerated,
+      `SerrePositivity.EInfinity.Operad.intervalModelCategory_forget_isRightQuillen] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

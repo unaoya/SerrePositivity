@@ -100,7 +100,15 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 `tensorPower_preservesSiftedColimits_of_tensor` は一般のモノイダル圏で両変数の保存から
 有限テンソル冪の sifted 余極限保存を導く。複体の閉モノイダル構造へ適用済み。
 Schur 関手と自由・忘却の合成の sifted・filtered 余極限保存も検証済み。
-一般の余極限と自由像の小対象性、転送モデル構造は未完成。
+工程 2 は完了。`Algebra.forget_createsColimit` はテンソル冪で保存される底の余極限を作る。
+sifted・filtered 余極限の創出・保存と忘却のモナド性を証明済み。
+reflexive coequalizer の形の sifted 性を検証し、図式圏へのモナド性の拡張と随伴持ち上げで
+代数の全小余極限を構成した。一般の余極限を忘却が保つとは仮定しない。
+自由代数による有限表示性の保存から、自由像の I・J が ℵ₀ の小対象論法を許すことを証明。
+`Operad.intervalModelCategory` は任意の Hopf オペラッドと余代数区間からの完全な転送モデル構造。
+弱同値と fibration は忘却の逆像であり、自由像で生成され、忘却関手は右 Quillen。
+モデル構造は局所的に選び、始域の cofibrancy は要求しない。
+具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
