@@ -43,15 +43,16 @@
 - 像の類が恒等な単位の相対厳密化、像固定の局所余錐の添字変更、標準底余錐上の局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
 - 左右の標準相対 Kan 条件は path 置換の射影・切断で保存・反映。任意 U の元の相対制限の片側 pinched 同値を、四つの写像空間の引き戻しへの比較同値として表示。右の射は Kan、絶対的な左右の制限は自明 Kan。
 - B5：`nerve (C ⥤ D) ≅ Fun(nerve C, nerve D)`、h Fun と通常の関手圏の同値、前後合成の自然性と関手頂点の公式を構成。
-  指定自然変換と元の h Fun の射の全単射・QCat 二胞体への表示、恒等・合成・左右 whiskering の保存を証明。古典随伴と元の nerve 間の随伴を、指定単位・余単位を保って双方向に構成。
-- 最終検証：F1・F1B 同時ビルド成功（4003 jobs）、同時 import 検査成功（F1 7451・F1B 4814 宣言）。
-  公理監査成功（4820 宣言、標準三公理のみ、1293 モジュールに straightening なし）。ソース名衝突 0。
+  指定自然変換と元の h Fun の射の全単射、恒等・合成・左右 whiskering の保存、古典随伴の双方向比較を証明。
+  nerve の左右 Hom 普遍性と通常の Kan 拡張の同値、native な pointwise Kan から通常の Kan 拡張への含意も証明。
+- 最終検証：F1・F1B 同時ビルド成功（4007 jobs）、同時 import 検査成功（F1 7451・F1B 4824 宣言）。
+  公理監査成功（4830 宣言、標準三公理のみ、1297 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。6〜18 時間。
-  残り：大域的 Hom 普遍性による通常の Kan との比較、pointwise Kan の局所錐の比較。自然変換の全単射・随伴の双方向比較は完了。
+  残り：pointwise Kan の局所錐の双方向比較。自然変換の全単射・随伴の双方向比較・通常の Kan の大域的普遍性の比較は完了。
   pointwise な古典 Kan 拡張と一般の普遍写像性だけによる Kan 拡張を区別して回収する。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
 
@@ -74,8 +75,7 @@
 - `F1B.IsRelativeRightKanExtendedFrom` / `F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left`
 - `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
 - `F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration` / `F1B.kanRightCanonical_pinchedHomMap_trivialKanFibration`
-
-- `F1B.kanNerveFunctorCategoryIso` / `F1B.kanNerveFunctorHomCategoryEquivalence`
+- `F1B.kanNerve_leftKanHomUniversal_iff` / `F1B.kanNerve_rightKanHomUniversal_iff`
 - `F1B.kanNerveNatTransHomEquiv` / `F1B.kanNonempty_adjunction_iff_nerveAdjunction`
 
 ### 依存と提供
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：nerve の h からの射の評価・自然変換の復元・nerve 随伴から古典随伴の回収と指定単位・余単位の保存、集約・監査・本書）。
+- なし（本保存単位：左右 Kan の比較写像の表示・大域的 Hom 普遍性の古典比較・pointwise から通常の Kan への含意、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `KanUniversalProperty` の左右の Hom 比較写像を `kanNerveNatTransHomEquiv` で通常の自然変換の
-  比較写像へ移す。Mathlib `Functor.IsLeftKanExtension`・右版との大域的普遍性の比較を示し、
-  comma 上の局所錐と pointwise Kan の比較へ進む。一般の普遍写像性と pointwise 条件を混同しない。
+- `leftKanShape (nerveMap L) (ComposableArrows.mk₀ c)` と `nerve (CostructuredArrow L c)` を比較し、
+  射影・局所図式を照合する。Mathlib `LeftExtension.coconeAt` の余極限性と native な局所余錐の
+  余極限性の同値を示し、右版も双対に回収する。一般の普遍写像性から pointwise 性を推論しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

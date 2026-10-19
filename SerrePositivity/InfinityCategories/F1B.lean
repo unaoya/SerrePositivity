@@ -659,3 +659,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanNerveHomotopyRecovery
 public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransRecovery
 public import SerrePositivity.InfinityCategories.F1B.KanAdjunctionHomTriangles
 public import SerrePositivity.InfinityCategories.F1B.KanNerveAdjunctionReflection
+public import SerrePositivity.InfinityCategories.F1B.KanClassicalHomUniversal
+public import SerrePositivity.InfinityCategories.F1B.KanNerveKanHomMap
+public import SerrePositivity.InfinityCategories.F1B.KanNerveKanHomBijective
+public import SerrePositivity.InfinityCategories.F1B.KanNerveKanUniversal

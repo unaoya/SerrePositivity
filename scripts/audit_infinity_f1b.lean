@@ -2777,3 +2777,23 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanAdjunctionOfNerveAdjunction_counitHom
 
 #check @SerrePositivity.InfinityCategories.F1B.kanNonempty_adjunction_iff_nerveAdjunction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanClassical_isLeftKanExtension_iff_bijective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanClassical_isRightKanExtension_iff_bijective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_leftKanHomMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_rightKanHomMap
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_leftKanHomMap_bijective_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_rightKanHomMap_bijective_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_leftKanHomUniversal_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_rightKanHomUniversal_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_isLeftKanExtension_of_pointwise
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerve_isRightKanExtension_of_pointwise
