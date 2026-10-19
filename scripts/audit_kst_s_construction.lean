@@ -7211,3 +7211,102 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv
 #print axioms SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv
+
+#check @SerrePositivity.KST.SConstruction.kZeroLevelFundamentalGroupEquiv
+#print axioms SerrePositivity.KST.SConstruction.kZeroLevelFundamentalGroupEquiv
+
+#check @SerrePositivity.KST.SConstruction.kZeroFundamentalGroupEquiv
+#print axioms SerrePositivity.KST.SConstruction.kZeroFundamentalGroupEquiv
+
+#check @SerrePositivity.KST.SConstruction.boundaryFundamentalGroup_mul_comm
+#print axioms SerrePositivity.KST.SConstruction.boundaryFundamentalGroup_mul_comm
+
+#check @SerrePositivity.KST.SConstruction.monicKZeroAdjoint_projection
+#print axioms SerrePositivity.KST.SConstruction.monicKZeroAdjoint_projection
+
+#check @SerrePositivity.KST.SConstruction.kZeroLevelFundamentalGroupEquiv_apply
+#print axioms SerrePositivity.KST.SConstruction.kZeroLevelFundamentalGroupEquiv_apply
+
+#check @SerrePositivity.KST.SConstruction.kZeroFundamentalGroupEquiv_apply
+#print axioms SerrePositivity.KST.SConstruction.kZeroFundamentalGroupEquiv_apply
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv_formula
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyZeroPiZeroEquiv_formula
+
+#check @SerrePositivity.KST.SConstruction.kZeroFundamentalGroupEquiv_objectKClass
+#print axioms SerrePositivity.KST.SConstruction.kZeroFundamentalGroupEquiv_objectKClass
+
+#check @SerrePositivity.KST.SConstruction.objectBoundaryKanComparison
+#print axioms SerrePositivity.KST.SConstruction.objectBoundaryKanComparison
+
+#check @SerrePositivity.KST.SConstruction.objectBoundaryKanComparison_vertex
+#print axioms SerrePositivity.KST.SConstruction.objectBoundaryKanComparison_vertex
+
+#check @SerrePositivity.KST.SConstruction.objectBoundaryEdge
+#print axioms SerrePositivity.KST.SConstruction.objectBoundaryEdge
+
+#check @SerrePositivity.KST.SConstruction.objectBoundaryTriangle
+#print axioms SerrePositivity.KST.SConstruction.objectBoundaryTriangle
+
+#check @SerrePositivity.KST.SConstruction.objectBoundaryTriangle_mul
+#print axioms SerrePositivity.KST.SConstruction.objectBoundaryTriangle_mul
+
+#check @SerrePositivity.KST.SConstruction.diagonalObjectInclusion_simplex
+#print axioms SerrePositivity.KST.SConstruction.diagonalObjectInclusion_simplex
+
+#check @SerrePositivity.KST.SConstruction.objectToCoreSRealization_simplex
+#print axioms SerrePositivity.KST.SConstruction.objectToCoreSRealization_simplex
+
+#check @SerrePositivity.KST.SConstruction.objectBoundaryEdge_loop
+#print axioms SerrePositivity.KST.SConstruction.objectBoundaryEdge_loop
+
+#check @SerrePositivity.KST.SConstruction.objectBoundaryEdge_objectKClass
+#print axioms SerrePositivity.KST.SConstruction.objectBoundaryEdge_objectKClass
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_sTwo
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_sTwo
+
+#check @SerrePositivity.KST.SConstruction.sTwoFace_middle
+#print axioms SerrePositivity.KST.SConstruction.sTwoFace_middle
+
+#check @SerrePositivity.KST.SConstruction.sTwoFace_subobject
+#print axioms SerrePositivity.KST.SConstruction.sTwoFace_subobject
+
+#check @SerrePositivity.KST.SConstruction.sTwoFace_quotient
+#print axioms SerrePositivity.KST.SConstruction.sTwoFace_quotient
+
+#check @SerrePositivity.KST.SConstruction.objectKClass_cofiber
+#print axioms SerrePositivity.KST.SConstruction.objectKClass_cofiber
+
+#check @SerrePositivity.KST.SConstruction.cofiberDiagramOfZeroTriangle
+#print axioms SerrePositivity.KST.SConstruction.cofiberDiagramOfZeroTriangle
+
+#check @SerrePositivity.KST.SConstruction.homotopyObjectKClass_cofiberTriangle
+#print axioms SerrePositivity.KST.SConstruction.homotopyObjectKClass_cofiberTriangle
+
+#check @SerrePositivity.KST.SConstruction.homotopyObjectKClass_triangle
+#print axioms SerrePositivity.KST.SConstruction.homotopyObjectKClass_triangle
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroMap
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroMap
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroMap_mk
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroMap_mk
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroMap_vertex
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroMap_vertex
+
+#check @SerrePositivity.KST.SConstruction.stableModelHom_exact
+#print axioms SerrePositivity.KST.SConstruction.stableModelHom_exact
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroSourceMap
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroSourceMap
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroSourceMap_mk
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroSourceMap_mk
+
+#check @SerrePositivity.KST.SConstruction.homotopyObjectKClass_naturality
+#print axioms SerrePositivity.KST.SConstruction.homotopyObjectKClass_naturality
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroMap_naturality
