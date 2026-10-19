@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeRefinement
+import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramHornSource
 import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedDiagramTriangle
 import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedCochains
 import SerrePositivity.InfinityCategories.Derived.DGTriangleResidualPrecompose
@@ -2364,6 +2366,46 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedOverTriangle_face0
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdge_exists_refinedFiller
 
+#print axioms SerrePositivity.InfinityCategories.dgClosedCyclePrecompose_comp
+#print axioms SerrePositivity.InfinityCategories.dgClosedCycle_symm_edge
+#print axioms SerrePositivity.InfinityCategories.dgClosedCyclePrecompose_edge
+#print axioms SerrePositivity.InfinityCategories.dgSimplexClosedDiagonal
+#print axioms SerrePositivity.InfinityCategories.dgSimplexClosedDiagonal_edge
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_face1_comp
+#print axioms SerrePositivity.InfinityCategories.dgSimplexSourceRefinement_face1_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeInitialDiagonal_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeInitialDiagonal_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramInitialDiagonal_mem
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTwoSimplexOfTetrahedron_apex_edge
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexTriangleApexLift
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexTriangleApexLift_val
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexTriangleApexLift_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedApex_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedApex_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedTriangle
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedTriangle_val
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramRefinedTriangle_face0
+#print axioms SerrePositivity.InfinityCategories.triangleConeApex
+#print axioms SerrePositivity.InfinityCategories.triangleConeLegSource
+#print axioms SerrePositivity.InfinityCategories.triangleConeLegTarget
+#print axioms SerrePositivity.InfinityCategories.triangleConeCompStruct
+#print axioms SerrePositivity.InfinityCategories.triangleConeCompStruct_simplex
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.triangle
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.triangle_face0
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.apex
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.apex_edge
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.sourceLeg
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.targetLeg
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.compStruct
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.compStruct_simplex
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.sourceLeg_mem
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramEdgeRefinement.targetLeg_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramEdgeRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramInitialDiagonal_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramHorn_source
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramHorn_target
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2517,6 +2559,16 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGTriangleRefinementClosedDiagonal,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierInitialDiagonal,
+    `SerrePositivity.InfinityCategories.Derived.RoofTetrahedronApexEdge,
+    `SerrePositivity.InfinityCategories.Derived.FullSubcomplexTriangleApexLift,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedApex,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedTriangle,
+    `SerrePositivity.InfinityCategories.Derived.TriangleConeOfFace,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramHornSource,
+
     `SerrePositivity.InfinityCategories.Derived.DGTriangleSourceRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornCanonicalFaces,
     `SerrePositivity.InfinityCategories.Derived.DGTriangleRefinementComponents,

@@ -788,6 +788,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedResidu
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinementFiller
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedDiagramTriangle
 
+public import SerrePositivity.InfinityCategories.Derived.DGTriangleRefinementClosedDiagonal
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierInitialDiagonal
+public import SerrePositivity.InfinityCategories.Derived.RoofTetrahedronApexEdge
+public import SerrePositivity.InfinityCategories.Derived.FullSubcomplexTriangleApexLift
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedApex
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierRefinedTriangle
+public import SerrePositivity.InfinityCategories.Derived.TriangleConeOfFace
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramEdgeRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramHornSource
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
