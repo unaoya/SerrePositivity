@@ -4240,3 +4240,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @bousfieldKanCoherentConePoint_of_end_point
 #print axioms bousfieldKanCoherentConePoint_of_end_point
+
+#check @oppositeInternalHomIso_uncurry
+#print axioms oppositeInternalHomIso_uncurry
+
+#check @weightedSectionsReflectedIso_π
+#print axioms weightedSectionsReflectedIso_π
+
+#check @weightedSectionsReflectedIso_evaluation
+#print axioms weightedSectionsReflectedIso_evaluation
+
+#check @weightedHomPostcomposition_evaluation
+#print axioms weightedHomPostcomposition_evaluation
+
+#check @reflectedWeightedHomPostcomposition_evaluation
+#print axioms reflectedWeightedHomPostcomposition_evaluation
+
+#check @reflectedSimplexMap_pair_comp
+#print axioms reflectedSimplexMap_pair_comp
+
+#check @simplicialHomPrecompositionDiagram
+#print axioms simplicialHomPrecompositionDiagram
+
+#check @reflectedHomPrecompositionDiagram
+#print axioms reflectedHomPrecompositionDiagram
+
+#check @weightedConePrecompositionMap
+#print axioms weightedConePrecompositionMap
+
+#check @weightedConePrecompositionMap_projection
+#print axioms weightedConePrecompositionMap_projection
+
+#check @weightedConePrecompositionMap_coefficient
+#print axioms weightedConePrecompositionMap_coefficient
+
+#check @weightedCoherentCoefficient_precomposition
+#print axioms weightedCoherentCoefficient_precomposition
+
+#check @weightedCoslicePrecompositionFamily
+#print axioms weightedCoslicePrecompositionFamily
+
+#check @weightedCoslicePrecompositionFamily_over
+#print axioms weightedCoslicePrecompositionFamily_over
+
+#check @weightedCoherentConePrecompositionFamily
+#print axioms weightedCoherentConePrecompositionFamily
+
+#check @weightedCoherentConePrecompositionFamily_over
+#print axioms weightedCoherentConePrecompositionFamily_over
