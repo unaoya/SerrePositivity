@@ -6034,3 +6034,84 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy
 #print axioms specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy
+
+#check @transportEdgePrism
+#print axioms transportEdgePrism
+
+#check @transportEdgePrism_zero
+#print axioms transportEdgePrism_zero
+
+#check @transportEdgePrism_one
+#print axioms transportEdgePrism_one
+
+#check @transportEdgePrism_projection
+#print axioms transportEdgePrism_projection
+
+#check @CoherentTransportTriangle
+#print axioms CoherentTransportTriangle
+
+#check @coherentTransportTriangle
+#print axioms coherentTransportTriangle
+
+#check @coherentTransportTriangleLongPrism
+#print axioms coherentTransportTriangleLongPrism
+
+#check @coherentTransportTriangleLongPrism_zero
+#print axioms coherentTransportTriangleLongPrism_zero
+
+#check @coherentTransportTriangleLongPrism_one
+#print axioms coherentTransportTriangleLongPrism_one
+
+#check @coherentTransportTriangleLongPrism_projection
+#print axioms coherentTransportTriangleLongPrism_projection
+
+#check @exists_homotopy_over_fixed_extension
+#print axioms exists_homotopy_over_fixed_extension
+
+#check @constantBaseEndpointHomotopy
+#print axioms constantBaseEndpointHomotopy
+
+#check @constantBaseEndpointHomotopy_projection
+#print axioms constantBaseEndpointHomotopy_projection
+
+#check @CoherentTransportComparison
+#print axioms CoherentTransportComparison
+
+#check @coherentTransportComparison
+#print axioms coherentTransportComparison
+
+#check @coherentTransportTriangleCompositionHomotopy
+#print axioms coherentTransportTriangleCompositionHomotopy
+
+#check @coherentTransportTriangleCompositionHomotopy_projection
+#print axioms coherentTransportTriangleCompositionHomotopy_projection
+
+#check @coherentTransportTriangleCompositionIso
+#print axioms coherentTransportTriangleCompositionIso
+
+#check @CoherentTransportTriangle.mk
+#print axioms CoherentTransportTriangle.mk
+
+#check @CoherentTransportTriangle.prism
+#print axioms CoherentTransportTriangle.prism
+
+#check @CoherentTransportTriangle.first
+#print axioms CoherentTransportTriangle.first
+
+#check @CoherentTransportTriangle.second
+#print axioms CoherentTransportTriangle.second
+
+#check @CoherentTransportTriangle.projection
+#print axioms CoherentTransportTriangle.projection
+
+#check @CoherentTransportComparison.mk
+#print axioms CoherentTransportComparison.mk
+
+#check @CoherentTransportComparison.homotopy
+#print axioms CoherentTransportComparison.homotopy
+
+#check @CoherentTransportComparison.projection
+#print axioms CoherentTransportComparison.projection
+
+#check @CoherentTransportComparison.initial
+#print axioms CoherentTransportComparison.initial

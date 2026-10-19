@@ -5,7 +5,6 @@
 ## 引き継ぎ（2026-10-19）
 
 ### N（γ1.5・γ3）
-
 - **現在地**：γ1.5 完了。γ3b は任意の小圏で元の非反転 q_x の同値性・全導来 fiber の可縮性による両向き判定と、pinched Hom の直接 fiber 模型まで公開。
   γ3c は 𝒮 の小積・Sp の有限積（空積含む）、一脚 fibration の引き戻し、fibration の塔の実際の ∞ 極限を公開。
   𝒮 の小余積・任意の span・任意の列の ∞ 余極限も公開。
@@ -44,7 +43,8 @@
   左枝・右修正端点・修正経路の底・小さい Kan 押し出し頂点を照合。全 Hom の族から始対象性を反映し、end の同値性との余極限性の必要十分条件を証明。
   普遍 span の全 Hom の族から共通 path end への無条件の同値と、元の族の全パラメータ係数公式を公開。
   始対象を前置した指定四面体の底の辺 03 を、元の native な共通脚そのものと同定。全 Hom の族をその脚へ制限し、両端の係数を厳密に計算。
-  共通部分の Hom 比較は、同じ指定余錐の頂点からの Hom 上で元の共通脚の前合成とホモトピック。元の余錐の余極限性は不要。重み付き end 内の整合性は未完了。
+  共通部分の Hom 比較は、同じ指定余錐の頂点からの Hom 上で元の共通脚の前合成とホモトピック。元の余錐の余極限性は不要。
+  元の二単体・標準二辺の三角形 prism と、底・始点を固定した長辺比較をデータ化。span の境界経路をこの比較へ差し替えた。重み付き end 内の整合性は未完了。
   γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
   詳細な実施記録はコミットメッセージを参照。
 - **残り**（依存順・時間は再開後の概算）：
@@ -81,11 +81,11 @@
   `nativeSpanUniversalFamilyToPathEnd_homotopyEquivalence`、`specifiedPathCocone_isColimit_of_pathFamily_homotopy`、
   `exists_specifiedPathCocone_branch_comparisons`、`specifiedCoconeRightHomTriangleFamily`、
   `specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy`、
-  `specifiedCoconeRootBaseEdgeFamily_target`、`cosliceEdgeFamily_section_homotopy`。
+  `specifiedCoconeRootBaseEdgeFamily_target`、`coherentTransportTriangleCompositionHomotopy_projection`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は共通脚座標・全 Hom 終点係数・辺族の相対ホモトピー・共通脚族と前合成5モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
+- **未コミット**：今回の保存単位は三角形 prism・相対延長比較・終点評価・合成比較4新規モジュール、既存の span 境界経路、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -94,13 +94,12 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   `(edgeTransport_composition_iso p σ).some` は同じ三辺の異なる σ でも同じ値となることを Lean の rfl で確認。選択した同型だけでは元の二単体の高次情報が残らない。
-  `PartialColimitSpanTransportIso` はこの選択を使用中。N 側で三角形 prism・二辺・底の式を保持するデータを構成し、この箇所の選択を置き換える。
+  `partialColimitSpanTransportIso` は実際の三角形 prism と相対ホモトピーから作る同型へ差し替え済み。元の比較円柱への射影も公開。end 内での高次整合性の証明は残る。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
 - **次の一手**：`specifiedPathCocone_isColimit_of_pathFamily_homotopy` の全終点の族のホモトピー入力を構成する。
   元の族は `partialColimitHomFamilyToPathEnd`、同じ頂点で表示した比較先は `specifiedCoconeNativeFamilyToPathEnd`。
   後者の同値性は無条件に証明済み。前者とのホモトピーを仮定した定理は、余極限性の完成とは数えない。
-  まず `PartialColimitSpanTransportIso` の `.some` を、元の二単体を底として保持する N 所有の三角形 prism と、その長辺と標準輸送を結ぶ相対ホモトピーへ置き換える。
-  F1 の `IsEdgeTransport.comp` の構成をデータ化し、実際の二辺・底・比較の境界を保持する。共通脚の計算を再利用し、native な重み付き係数と両枝の境界を全単体で整合させる。
+  `coherentTransportTriangleCompositionHomotopy_projection` で同じ相対円柱を追跡し、共通脚の計算と組み合わせる。native な重み付き係数と両枝の境界を全単体で整合させる。
   同じ経路の持ち上げの相対ホモトピーを共通 end に移して入力を閉じる。その後、骨格の無限段階とセルの添字の小ささを処理。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 

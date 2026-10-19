@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCoconeLegTriangles
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PartialColimitSpanCocone
-public import SerrePositivity.InfinityCategories.F1.TransportComposition
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransportComparison
 public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
@@ -60,10 +60,10 @@ def partialColimitSpanTransportIso :
         edgeTransport q (partialColimitSpanLeftLeg c hc i F hi dB j G hj dC))
       (edgeTransport q (colimitAttachmentApexEdge c hc j G hj dC) ≫
         edgeTransport q (partialColimitSpanRightLeg c hc i F hi dB j G hj dC)) :=
-  (edgeTransport_composition_iso q
-    (partialColimitSpanLeftTriangle c hc i F hi dB j G hj dC)).some.symm ≪≫
-      (edgeTransport_composition_iso q
-        (partialColimitSpanRightTriangle c hc i F hi dB j G hj dC)).some
+  coherentTransportTriangleCompositionIso q
+    (partialColimitSpanLeftTriangle c hc i F hi dB j G hj dC) ≪≫
+      (coherentTransportTriangleCompositionIso q
+        (partialColimitSpanRightTriangle c hc i F hi dB j G hj dC)).symm
 
 /-- span の元の二単体により指定された、共通始点の fiber の全パラメータの境界経路族。 -/
 def partialColimitSpanTransportPath :
