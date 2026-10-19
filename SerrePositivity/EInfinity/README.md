@@ -572,6 +572,11 @@ nullary を含む TR の部分合成保存は完了。
 `outer_cut_nondegenerate_of_slot_counts` は外側の非零性の復元を指定色の左右一出現条件へ帰着する。
 `composite_single_slot_cut_nondegenerate_iff` は一出現挿入の内側位置で外側・内側の非零性を復元する。
 `exists_single_slot_cuts_of_inserted_pivot` は一出現性の下で挿入ラベル切断点から両非零切断を戻す。
+`compositeSegmentPosition` は全挿入部分語の実際の位置を構成し、異なる部分語の順序も保存する。
+`compositeSegment_boundary_straddles` は隣接部分語の共有端点の二出現が非零切断点を厳密に跨ぐこと。
+`slot_occurrenceCount_le_two_of_composite_cut` は外側指定色の出現数を高々二へ制限する。
+`slot_occurrenceCount_eq_one_of_inserted_pivot` は挿入ラベル切断点の場合に一出現性を導出する。
+`exists_preimage_of_inserted_pivot` はその合成切断が二段切断からの写像の像に入ることを示す。
 具体的な Δ¹ の余代数構造は未完成。逆方向の復元・全射性・全出力と符号の一致、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。

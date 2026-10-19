@@ -1123,6 +1123,20 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.single_slot_cuts_nondegenerate_of_composite,
       `SerrePositivity.EInfinity.IntervalCuts.composite_single_slot_cut_nondegenerate_iff,
       `SerrePositivity.EInfinity.IntervalCuts.exists_single_slot_cuts_of_inserted_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_prefix_length_mono,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeSegmentPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeSegmentPosition_value,
+      `SerrePositivity.EInfinity.IntervalCuts.substitute_prefix_length_at_occurrence,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeSegmentPosition_lt,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeSegmentFirst,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeSegmentLast,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeSegment_boundary_value,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeSegment_boundary_straddles,
+      `SerrePositivity.EInfinity.IntervalCuts.slot_occurrenceCount_le_two_of_composite_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.exists_segmentPosition_of_inserted_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.slot_occurrenceCount_eq_one_of_inserted_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.exists_cuts_of_inserted_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.exists_preimage_of_inserted_pivot,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3295,3 +3309,23 @@ example : EdgeNondegenerate zeroPermutationWord.val 0 :=
   outer_cut_nondegenerate_of_single_slot zeroPermutationWord
     (permutationWord (1 : Equiv.Perm (Fin 2))) 0 nestedVertexExample.partition (by decide)
     0 (by decide) (by decide) (by decide)
+
+-- 二部分割の共有端点は合成語01210の位置1と3にあり、非零切断2を跨ぐ。
+example : (compositeSegmentLast compositionInner compositionInner 0
+    nestedRepeatedExample.partition (by decide) ⟨0, by decide⟩).val = 1 := by decide
+example : (compositeSegmentFirst compositionInner compositionInner 0
+    nestedRepeatedExample.partition (by decide) ⟨1, by decide⟩).val = 3 := by decide
+example : compositeSegmentLast compositionInner compositionInner 0
+      nestedRepeatedExample.partition (by decide) ⟨0, by decide⟩ <
+      nestedRepeatedExample.compositePosition ∧
+    nestedRepeatedExample.compositePosition < compositeSegmentFirst compositionInner
+      compositionInner 0 nestedRepeatedExample.partition (by decide) ⟨1, by decide⟩ :=
+  compositeSegment_boundary_straddles compositionInner compositionInner 0
+    nestedRepeatedExample.partition (by decide) _
+    (NestedEdgeCut.compositePosition_nondegenerate nestedRepeatedExample (by decide))
+    ⟨0, by decide⟩ ⟨1, by decide⟩ rfl
+-- 挿入ラベル切断点は、実際の有限対応の像に戻る。
+example : ∃ a : NestedEdgeCut (m := 1) compositionInner compositionInner 1,
+    a.toCompositeCut (by decide) = nestedPivotExample.toCompositeCut (by decide) :=
+  exists_preimage_of_inserted_pivot compositionInner compositionInner 1 (by decide)
+    (nestedPivotExample.toCompositeCut (by decide)) 1 (by decide)

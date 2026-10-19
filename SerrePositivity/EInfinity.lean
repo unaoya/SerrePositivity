@@ -296,3 +296,6 @@ public import SerrePositivity.EInfinity.IntervalCuts.NestedCutInjective
 public import SerrePositivity.EInfinity.IntervalCuts.SubstitutionCounts
 public import SerrePositivity.EInfinity.IntervalCuts.NonSlotCutRecovery
 public import SerrePositivity.EInfinity.IntervalCuts.SingleSlotCutRecovery
+public import SerrePositivity.EInfinity.IntervalCuts.SegmentPositions
+public import SerrePositivity.EInfinity.IntervalCuts.SegmentBoundaryCuts
+public import SerrePositivity.EInfinity.IntervalCuts.InsertedPivotRecovery
