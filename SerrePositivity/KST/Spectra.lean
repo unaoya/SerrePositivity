@@ -585,3 +585,9 @@ public import SerrePositivity.KST.Spectra.FundamentalLoopEdges
 public import SerrePositivity.KST.Spectra.FundamentalLoopHomotopyCategory
 public import SerrePositivity.KST.Spectra.FundamentalLoopNaturality
 public import SerrePositivity.KST.Spectra.SpectrumCircleEdgewiseDifferenceHom
+public import SerrePositivity.KST.Spectra.ConeEdgeIntervalCells
+public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionConeComparison
+public import SerrePositivity.KST.Spectra.SpectrumCircleConeComparisonCells
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonHomSquares
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonCellObjects
+public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonTopConstant
