@@ -765,6 +765,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGFiniteCellGradedPrimi
 public import SerrePositivity.InfinityCategories.Derived.DGFiniteCellSimultaneousPrimitives
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornResidualRefinement
 
+public import SerrePositivity.InfinityCategories.Derived.DGConeCoordinateTransport
+public import SerrePositivity.InfinityCategories.Derived.DGYonedaConeCoordinates
+public import SerrePositivity.InfinityCategories.Derived.DGModuleConeZeroAction
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornYonedaCoordinates
+public import SerrePositivity.InfinityCategories.Derived.DGYonedaPrecomposeEvaluation
+public import SerrePositivity.InfinityCategories.Derived.DGYonedaConePrecompose
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornPrecomposeCoordinates
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedCochains
+public import SerrePositivity.InfinityCategories.Derived.DGTriangleResidualPrecompose
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

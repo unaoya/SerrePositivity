@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedCochains
+import SerrePositivity.InfinityCategories.Derived.DGTriangleResidualPrecompose
 import SerrePositivity.InfinityCategories.Derived.DGLastHornResidualRefinement
 import SerrePositivity.InfinityCategories.Derived.DGLastHornConePrimitive
 import SerrePositivity.InfinityCategories.Derived.DGVerdierLastHornDenominator
@@ -2275,6 +2277,37 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgLastHornResidualRefinement_nonempty
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramResidualRefinement_nonempty
 
+#print axioms SerrePositivity.InfinityCategories.dgConeEqToHom_fst
+#print axioms SerrePositivity.InfinityCategories.dgConeEqToHom_snd
+#print axioms SerrePositivity.InfinityCategories.dgConeZeroAction_fst
+#print axioms SerrePositivity.InfinityCategories.dgConeZeroAction_snd
+#print axioms SerrePositivity.InfinityCategories.dgYonedaPostcompositionConeIso_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgYonedaPostcompositionConeIso_fst
+#print axioms SerrePositivity.InfinityCategories.dgYonedaPostcompositionConeIso_snd
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeZeroAction_fst
+#print axioms SerrePositivity.InfinityCategories.dgModuleConeZeroAction_snd
+#print axioms SerrePositivity.InfinityCategories.dgLastHornPostcomposition_eq_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgLastHornYonedaConeIso_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgLastHornYonedaConeIso_fst
+#print axioms SerrePositivity.InfinityCategories.dgLastHornYonedaConeIso_snd
+#print axioms SerrePositivity.InfinityCategories.dgLastHornYonedaResidual_fst
+#print axioms SerrePositivity.InfinityCategories.dgLastHornYonedaResidual_snd
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableZeroAction
+#print axioms SerrePositivity.InfinityCategories.dgRepresentableModulePrecompose_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgYonedaConePrecompose_fst
+#print axioms SerrePositivity.InfinityCategories.dgYonedaConePrecompose_snd
+#print axioms SerrePositivity.InfinityCategories.dgLastHornPrecomposedResidual_fst
+#print axioms SerrePositivity.InfinityCategories.dgLastHornPrecomposedResidual_snd
+#print axioms SerrePositivity.InfinityCategories.dgLastHornEvaluatedFinal_f
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.evaluatedPrimitive
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.evaluatedPrimitive_differential
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.Q
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.a
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.Q_differential
+#print axioms SerrePositivity.InfinityCategories.DGLastHornResidualRefinement.a_differential
+#print axioms SerrePositivity.InfinityCategories.dgTriangleMissingResidual_precompose
+#print axioms SerrePositivity.InfinityCategories.dgTriangleTopResidual_precompose
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2428,6 +2461,16 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGConeCoordinateTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaConeCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeZeroAction,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornYonedaCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaPrecomposeEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaConePrecompose,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornPrecomposeCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornRefinedCochains,
+    `SerrePositivity.InfinityCategories.Derived.DGTriangleResidualPrecompose,
+
     `SerrePositivity.InfinityCategories.Derived.DGYonedaPostcomposition,
     `SerrePositivity.InfinityCategories.Derived.DGYonedaPostcompositionCone,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornYonedaResidual,
