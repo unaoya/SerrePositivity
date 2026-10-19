@@ -807,4 +807,12 @@ public import SerrePositivity.KST.SConstruction.KCompositionNativeCylinders
 public import SerrePositivity.KST.SConstruction.KCompositionNativeFamilies
 public import SerrePositivity.KST.SConstruction.KCompositionNativeTriangles
 public import SerrePositivity.KST.SConstruction.MonicKPrismCompositionNativeTriangles
+public import SerrePositivity.KST.SConstruction.CompositionStringPairParameters
+public import SerrePositivity.KST.SConstruction.PointedMappingSourceWhiskers
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeTraceFaces
+public import SerrePositivity.KST.SConstruction.MonicKPrismOriginalCompatibilityCylinder
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeSecondTraceFace
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeCylinderTransport
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeCorrectionChains
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeCorrectionProjection
 /-! # ∞-S• 構成と連結 K 理論 -/
