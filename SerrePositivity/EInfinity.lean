@@ -303,3 +303,4 @@ public import SerrePositivity.EInfinity.IntervalCuts.OuterCutRecovery
 public import SerrePositivity.EInfinity.IntervalCuts.SegmentCutRecovery
 public import SerrePositivity.EInfinity.IntervalCuts.InnerCutRecovery
 public import SerrePositivity.EInfinity.IntervalCuts.NestedCutSurjective
+public import SerrePositivity.EInfinity.IntervalCuts.CompositionNestedSum

@@ -1150,6 +1150,8 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.exists_preimage_of_remaining_pivot,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.toCompositeCut_surjective,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositeCutEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_nonzero_cut_sum,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_composition_nested_cut_sum,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3361,3 +3363,10 @@ example : EdgeNondegenerate compositionInner.val
   inner_two_cut_nondegenerate_of_composite compositionInner compositionInner 0
     nestedRepeatedExample.partition (by decide) (by decide) _
     (NestedEdgeCut.compositePosition_nondegenerate nestedRepeatedExample (by decide))
+
+-- 実際の整数係数の合成辺成分も同じ二段切断で添字変更できる。
+example : edgeComponent ℤ 3 2 (compositionOnWords ℤ compositionInner compositionInner 0) =
+    ∑ a : NestedEdgeCut (m := 1) compositionInner compositionInner 0,
+      compositionEdgeCutTerm ℤ compositionInner compositionInner 0 a.partition
+        (by decide) a.compositePosition :=
+  edgeComponent_composition_nested_cut_sum ℤ compositionInner compositionInner 0 (by decide)

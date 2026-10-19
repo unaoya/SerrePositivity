@@ -580,6 +580,7 @@ nullary を含む TR の部分合成保存は完了。
 `outer_cut_nondegenerate_of_compositeOuterPosition` は残りラベル切断点の外側非零性を復元する。
 `segment_nodup_of_same_side` は片側の部分語の Nodup を戻し、一部分割の内側次数零と二部分割の非零切断を供給する。
 `NestedEdgeCut.toCompositeCut_surjective` は両分岐の全射性で、`compositeCutEquiv` は正 arity の有限同値。
+`edgeComponent_composition_nested_cut_sum` は実際の合成辺成分をこの有限同値で二段切断上の和へ移す。
 具体的な Δ¹ の余代数構造は未完成。全出力と符号の一致・有限和の比較・nullary、部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
