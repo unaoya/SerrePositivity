@@ -1,5 +1,62 @@
 # α-S：安定 ∞ 圏と D(S) の安定性
 
+## 引き継ぎ（2026-10-19）
+
+### 現在地
+
+- α-S。S1〜S6 完了。安定 ∞ 圏の h の三角構造（TR1〜TR4）と完全関手の三角性を公開済み。
+- S7／D7 は途中。D(S) の零対象、任意の cospan の極限、指定した全辺の fiber は完成。
+- 標準 cofiber の正方形・余錐、coslice 境界の左右のデータ、共通面、六つの残差と全微分整合条件は完成。
+- 今回は Hom の三成分座標・逆座標と微分、整合条件を仮定した明示的持ち上げ、二包含・ホモトピー・対角との合成、二つの微分方程式まで検証した。
+- 実際の境界残差への代入、未知成分を含む SimplexData、coslice の充填、cofiber の押し出し性、D(S) の安定性は未完了。
+- 実装・集約・監査は `c371e6b6` に保存済み。
+- 対象＋Stable・Derived 集約ビルド：5,712 jobs 成功。新規公開 20 宣言の型検査も成功。
+- 公理監査：Stable 408 modules／3,197 宣言。Derived 139 modules／2,090 宣言。標準三公理のみ。
+- 本文・archive への実施記録の追記はしていない。今回の到達点はこの節を正本とする。
+
+### 残り（依存順、時間は推定）
+
+- 実境界の六残差を明示解へ代入し、q=−n−1 の符号を照合。HA Proposition 1.3.1.10、HTT §1.2.13：1〜3 時間。
+- 未知成分を SimplexData に組み込み、既知面の保存、右辺の変化、四種類の未知集合の全方程式、左右の共通面を証明。HA Proposition 1.3.1.10：8〜16 時間。
+- coslice 境界を貼り、標準余錐の始対象性と標準 cofiber 正方形の押し出し性を証明。HTT §1.2.13、HA Proposition 1.3.1.10：4〜8 時間。
+- semifree へ移し、全辺の cofiber と fiber/cofiber 列の一致から D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
+- D3 の同値・D2f の CommShift を使い、h D(S) と Mathlib DerivedCategory の三角構造を照合。HA Theorem 1.1.2.14、§1.1.4：4〜8 時間。
+
+### 主要宣言（名前のみ。正確な型は Lean）
+
+- `IsStable`、`suspensionEquivalence`、`pretriangulated_ho`、`isTriangulated_ho`、`exactFunctor_isTriangulated`。
+- `derivedInfinityCategory_hasZeroVertex`、`derivedInfinityCategory_hasLimit_cospan`、`derivedInfinityCategory_fiber_exists`。
+- `standardCofiberSquare`、`standardCofiberCocone`、`cofiberBoundaryDegree`。
+- `cofiberBoundaryRhs0`、`cofiberBoundaryRhsA`、`cofiberBoundaryRhsB`、`cofiberBoundaryRhsC`、`cofiberBoundaryRhsAB`、`cofiberBoundaryRhsAC`。
+- `cofiberBoundaryRhsB_differential`、`cofiberBoundaryRhsC_differential`、`cofiberBoundaryRhsAB_differential`、`cofiberBoundaryRhsAC_differential`。
+- `biproductFromHomCoordinates`、`pushoutHomCoordinates`、`pushoutHomCoordinates_symm_differential`。
+- `pushoutHomBoundaryLift`、`pushoutResidual_matrix`、`pushoutHomBoundaryLift_differential_of_residuals`、`pushoutBoundary_A_equation`。
+
+### 依存と提供
+
+- Core・F1・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded は読み取り専用。他レーンのファイルは編集しない。
+- fiber 側は N7 の `semifreeFiberSquare_isPullback` を利用。N7f の cofiber 押し出し性は未実施で、到着を仮定しない。
+- 提供：Stable の S1〜S6、Derived/StableLimits、標準 cofiber と境界残差・Hom 座標の界面。
+- 編集対象は Stable/・Derived/、両集約と両監査、計画 `infinity-core-stable.md`。Derived 計画は他レーン所有。
+
+### 未コミット
+
+- 自分のファイルは実装・監査と本引き継ぎ節をそれぞれ `git commit --only` で保存し、未コミットなし。
+- 他レーンの変更・未追跡ファイルは残したまま。本節には列挙せず、それらを取り込んでいない。
+
+### 既知の問題
+
+- 今回の対象・集約ビルドおよび監査に失敗なし。既知の新規名前衝突なし。
+- 今回の五ファイルは可換環上の任意の非有界複体・整数次数を扱い、`ModelCategory SSet` の追加 instance 仮定なし。
+- 明示解の微分定理は四つの残差整合条件を仮定する。実境界が条件を満たす既存定理との接続は未実装。
+- 六未知成分のうち Q 側を逆座標、A 側を右三角形残差の符号倍、他四成分を零にする予定。単体の全方程式はまだ保証していない。
+- 安定性の一般論から cofiber の普遍性を逆用しない。直接 coslice を充填して証明する設計を維持する。
+- import 閉包が再度壊れたら、他レーンを変更して迂回せず停止して報告する。
+
+### 次の一手
+
+- `CofiberBoundaryTriangleCompatibility` と `PushoutBoundaryEquations` を接続し、実際の境界から Q・A の二未知 cochain と微分式を定義・証明する一工程から再開する。
+
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
 担当は旧 α の A4・A5 と D7。実施経緯・検証結果は各保存単位のコミットメッセージに記す。
