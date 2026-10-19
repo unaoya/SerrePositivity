@@ -725,3 +725,6 @@ public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedCounitInterval
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureCounit
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureCounitTrace
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointPastedCounitSquare
+public import SerrePositivity.KST.Spectra.SignedLoopCounitCoordinates
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCounitEndpoint
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointDoubleCounitInterval
