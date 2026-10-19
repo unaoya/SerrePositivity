@@ -529,4 +529,11 @@ public import SerrePositivity.KST.SConstruction.PointedExtensionTransportLaws
 public import SerrePositivity.KST.SConstruction.KanAssemblyMixedChoices
 public import SerrePositivity.KST.SConstruction.KanAssemblyMixedWhiskering
 
+public import SerrePositivity.KST.SConstruction.KanAssemblyMixedEndpoints
+public import SerrePositivity.KST.SConstruction.ContractibleKanTriangles
+public import SerrePositivity.KST.SConstruction.KanAssemblyCompositionTriangle
+public import SerrePositivity.KST.SConstruction.PointedLiftSpace
+public import SerrePositivity.KST.SConstruction.PointedMappingPathSections
+public import SerrePositivity.KST.SConstruction.OneDirectionInverseChoices
+
 /-! # ∞-S• 構成と連結 K 理論 -/

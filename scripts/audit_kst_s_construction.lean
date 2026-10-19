@@ -7826,3 +7826,81 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_fill_boundary
 #print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedChoices_fill_boundary
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedPost_source
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedPost_source
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixedPre_target
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixedPre_target
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyMixed_middle
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyMixed_middle
+
+#check @SerrePositivity.KST.SConstruction.triangleEdgeFaces_compatible
+#print axioms SerrePositivity.KST.SConstruction.triangleEdgeFaces_compatible
+
+#check @SerrePositivity.KST.SConstruction.contractibleKan_nonempty_compStruct
+#print axioms SerrePositivity.KST.SConstruction.contractibleKan_nonempty_compStruct
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCompositionFirstEdge
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCompositionFirstEdge
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCompositionSecondEdge
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCompositionSecondEdge
+
+#check @SerrePositivity.KST.SConstruction.kanAssemblyCompositionTriangle_nonempty
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyCompositionTriangle_nonempty
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftSpace
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftSpace
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftSpace_projection_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftSpace_projection_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftSpace_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftSpace_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftSpace_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftSpace_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftMap
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftMap
+
+#check @SerrePositivity.KST.SConstruction.pointedLiftMap_fac
+#print axioms SerrePositivity.KST.SConstruction.pointedLiftMap_fac
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingPathSectionSpace
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingPathSectionSpace
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingPathSectionSpace_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingPathSectionSpace_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingPathInverseAt
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingPathInverseAt
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingPathInverseFamily
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingPathInverseFamily
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingPathInverseFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingPathInverseFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingPathInverseAt_homotopy
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingPathInverseAt_homotopy
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingPathSectionSpace_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingPathSectionSpace_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanInverseChoices
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanInverseChoices
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanInverseChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanInverseChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanInverseAt
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanInverseAt
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanInverseAt_component
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanInverseAt_component
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanInverseChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanInverseChoices_relative_lifting
