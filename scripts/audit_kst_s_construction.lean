@@ -10418,3 +10418,132 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.relativeSequenceFixedSpanRectification
 #print axioms SerrePositivity.KST.SConstruction.relativeSequenceFixedSpanRectification
+
+#check @SerrePositivity.KST.SConstruction.kanSpanHorn
+#print axioms SerrePositivity.KST.SConstruction.kanSpanHorn
+
+#check @SerrePositivity.KST.SConstruction.kanSpanHorn_source
+#print axioms SerrePositivity.KST.SConstruction.kanSpanHorn_source
+
+#check @SerrePositivity.KST.SConstruction.kanSpanHorn_target
+#print axioms SerrePositivity.KST.SConstruction.kanSpanHorn_target
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingChoices
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingChoices
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingAt
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingAt
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingAt_source
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingAt_source
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingAt_target
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingAt_target
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastedEdge
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastedEdge
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastedTriangle
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastedTriangle
+
+#check @SerrePositivity.KST.SConstruction.anodyneExtensionVertex
+#print axioms SerrePositivity.KST.SConstruction.anodyneExtensionVertex
+
+#check @SerrePositivity.KST.SConstruction.anodyneExtensionAt_vertex
+#print axioms SerrePositivity.KST.SConstruction.anodyneExtensionAt_vertex
+
+#check @SerrePositivity.KST.SConstruction.anodyneExtensionFamily
+#print axioms SerrePositivity.KST.SConstruction.anodyneExtensionFamily
+
+#check @SerrePositivity.KST.SConstruction.anodyneExtensionFamily_fac
+#print axioms SerrePositivity.KST.SConstruction.anodyneExtensionFamily_fac
+
+#check @SerrePositivity.KST.SConstruction.kanSpanTriangle_restrict
+#print axioms SerrePositivity.KST.SConstruction.kanSpanTriangle_restrict
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingVertex
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingVertex
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingAt_vertex
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingAt_vertex
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastedEdge_vertex
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastedEdge_vertex
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastedTriangle_vertex_simplex
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastedTriangle_vertex_simplex
+
+#check @SerrePositivity.KST.SConstruction.kanMappingSpanOuterTriangle
+#print axioms SerrePositivity.KST.SConstruction.kanMappingSpanOuterTriangle
+
+#check @SerrePositivity.KST.SConstruction.kanMappingSpanPastingVertex
+#print axioms SerrePositivity.KST.SConstruction.kanMappingSpanPastingVertex
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastedEdge_mappingSpanVertex
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastedEdge_mappingSpanVertex
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingFamily
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingFamily
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingFamily_source
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingFamily_source
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastingFamily_target
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastingFamily_target
+
+#check @SerrePositivity.KST.SConstruction.kanSpanPastedEdgeFamily
+#print axioms SerrePositivity.KST.SConstruction.kanSpanPastedEdgeFamily
+
+#check @SerrePositivity.KST.SConstruction.kSuspensionSpecifiedPasting_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kSuspensionSpecifiedPasting_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingChoices
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingChoices
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingChoices_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionSpecifiedPastingVertex
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionSpecifiedPastingVertex
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionSpecifiedPastingVertex_edge
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionSpecifiedPastingVertex_edge
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingChoices_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingFamily
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingFamily
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingEdge
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingEdge
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingEdge_specified
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingEdge_specified
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingHomotopy
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingHomotopy
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingHomotopy_specified
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingHomotopy_specified
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionPastingFamily_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionPastingFamily_relative_lifting
+
+#check @SerrePositivity.KST.SConstruction.monicKSpanPastingEdge
+#print axioms SerrePositivity.KST.SConstruction.monicKSpanPastingEdge
+
+#check @SerrePositivity.KST.SConstruction.monicKSpanPastingEdge_specified
+#print axioms SerrePositivity.KST.SConstruction.monicKSpanPastingEdge_specified
+
+#check @SerrePositivity.KST.SConstruction.monicKSpanPastingHomotopy
+#print axioms SerrePositivity.KST.SConstruction.monicKSpanPastingHomotopy
+
+#check @SerrePositivity.KST.SConstruction.monicKSpanPastingHomotopy_specified
+#print axioms SerrePositivity.KST.SConstruction.monicKSpanPastingHomotopy_specified
