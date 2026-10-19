@@ -5825,3 +5825,144 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.cutRightIntervalEquivalence
 #print axioms SerrePositivity.KST.SConstruction.cutRightIntervalEquivalence
+
+#check @SerrePositivity.KST.SConstruction.arrowSquareDiagonal
+#print axioms SerrePositivity.KST.SConstruction.arrowSquareDiagonal
+
+#check @SerrePositivity.KST.SConstruction.arrowTrianglePrism
+#print axioms SerrePositivity.KST.SConstruction.arrowTrianglePrism
+
+#check @SerrePositivity.KST.SConstruction.arrowTrianglePrism_zero
+#print axioms SerrePositivity.KST.SConstruction.arrowTrianglePrism_zero
+
+#check @SerrePositivity.KST.SConstruction.arrowTrianglePrism_one
+#print axioms SerrePositivity.KST.SConstruction.arrowTrianglePrism_one
+
+#check @SerrePositivity.KST.SConstruction.arrowTrianglePrism_source
+#print axioms SerrePositivity.KST.SConstruction.arrowTrianglePrism_source
+
+#check @SerrePositivity.KST.SConstruction.arrowTrianglePrism_target
+#print axioms SerrePositivity.KST.SConstruction.arrowTrianglePrism_target
+
+#check @SerrePositivity.KST.SConstruction.arrowTrianglePrismIso
+#print axioms SerrePositivity.KST.SConstruction.arrowTrianglePrismIso
+
+#check @SerrePositivity.KST.SConstruction.arrowSquareTopRightIso
+#print axioms SerrePositivity.KST.SConstruction.arrowSquareTopRightIso
+
+#check @SerrePositivity.KST.SConstruction.evaluateFunctorAt_as_ev
+#print axioms SerrePositivity.KST.SConstruction.evaluateFunctorAt_as_ev
+
+#check @SerrePositivity.KST.SConstruction.ihomUncurry_pre_row
+#print axioms SerrePositivity.KST.SConstruction.ihomUncurry_pre_row
+
+#check @SerrePositivity.KST.SConstruction.ihomUncurry_pre_column
+#print axioms SerrePositivity.KST.SConstruction.ihomUncurry_pre_column
+
+#check @SerrePositivity.KST.SConstruction.cofiberBottomEvaluationMap
+#print axioms SerrePositivity.KST.SConstruction.cofiberBottomEvaluationMap
+
+#check @SerrePositivity.KST.SConstruction.cofiberProjection_evaluation
+#print axioms SerrePositivity.KST.SConstruction.cofiberProjection_evaluation
+
+#check @SerrePositivity.KST.SConstruction.cofiberPostcomp_projection
+#print axioms SerrePositivity.KST.SConstruction.cofiberPostcomp_projection
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberGrid
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberGrid
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberRow
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberRow
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberColumn
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberColumn
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberGrid_row
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberGrid_row
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberGrid_column
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberGrid_column
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_input
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_input
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyInput_edge_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyInput_edge_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberGrid_bottom
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberGrid_bottom
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberGrid_left
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberGrid_left
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberGrid_top
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberGrid_top
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberGrid_right
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberGrid_right
+
+#check @SerrePositivity.KST.SConstruction.functorIsoFlip
+#print axioms SerrePositivity.KST.SConstruction.functorIsoFlip
+
+#check @SerrePositivity.KST.SConstruction.functorIsoOfFlip
+#print axioms SerrePositivity.KST.SConstruction.functorIsoOfFlip
+
+#check @SerrePositivity.KST.SConstruction.doubleCofiberInputIso
+#print axioms SerrePositivity.KST.SConstruction.doubleCofiberInputIso
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_row
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_row
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_column
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_column
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_row_one
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_row_one
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_column_one
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_column_one
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_row_zero_quotient
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_row_zero_quotient
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_column_zero_quotient
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_column_zero_quotient
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_row_zero_isZero
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_row_zero_isZero
+
+#check @SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_column_zero_isZero
+#print axioms SerrePositivity.KST.SConstruction.cutDoubleCofiberFamily_column_zero_isZero
+
+#check @SerrePositivity.KST.SConstruction.functorIsoOfTrivialKanFibrationPostcomp
+#print axioms SerrePositivity.KST.SConstruction.functorIsoOfTrivialKanFibrationPostcomp
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeInputIso
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeInputIso
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeAmbientIso
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeAmbientIso
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeMiddle_comparisonIso
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeMiddle_comparisonIso
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeEquivalence
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeEquivalence
+
+#check @SerrePositivity.KST.SConstruction.cutLeftSegalEvaluation
+#print axioms SerrePositivity.KST.SConstruction.cutLeftSegalEvaluation
+
+#check @SerrePositivity.KST.SConstruction.cutRightSegalEvaluation
+#print axioms SerrePositivity.KST.SConstruction.cutRightSegalEvaluation
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeComparison_leftSegal
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeComparison_leftSegal
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeComparison_rightSegal
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeComparison_rightSegal
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeSegalPair
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeSegalPair
