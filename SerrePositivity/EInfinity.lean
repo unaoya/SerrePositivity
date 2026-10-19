@@ -251,3 +251,4 @@ public import SerrePositivity.EInfinity.Surjection.OverlapPartitionOfRows
 public import SerrePositivity.EInfinity.Surjection.RecoveredPartitionExistence
 public import SerrePositivity.EInfinity.Surjection.ShuffleReconstruction
 public import SerrePositivity.EInfinity.Surjection.CompositionSuccessSums
+public import SerrePositivity.EInfinity.TableReduction.CompositionPositive

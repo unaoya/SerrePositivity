@@ -705,6 +705,14 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositionSuccess.signedTerm_eq_zero_of_not_successful,
       `SerrePositivity.EInfinity.Surjection.CompositionSuccess.sum_all_eq_source,
       `SerrePositivity.EInfinity.Surjection.CompositionSuccess.sum_onSequence_eq_source,
+      `SerrePositivity.EInfinity.TableReduction.word_exists_of_success,
+      `SerrePositivity.EInfinity.TableReduction.term_eq_sum_words,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_eq_sum_successfulWords,
+      `SerrePositivity.EInfinity.Surjection.CompositionSuccess.wordsEquiv,
+      `SerrePositivity.EInfinity.Surjection.CompositionSuccess.sum_source_eq_partialComposition,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_partialComposition_of_pos,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffle_generators_of_pos,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_shuffleBilinear_of_pos,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1967,3 +1975,44 @@ example :
       ∑ c : CompositionSuccess.Source bfTable terminalTable (1 : Fin 4),
         CompositionSuccess.sourceTerm ℤ c :=
   CompositionSuccess.sum_onSequence_eq_source ℤ (by decide) bfTable terminalTable 1
+
+private def outerSuccessfulWord : SuccessfulWord bfTable :=
+  ⟨(bfSchedule₁, canonicalFixture), rankFixture_success⟩
+private def innerSuccessfulWord : SuccessfulWord terminalTable :=
+  ⟨(terminalSchedule, compositionInner), verticalInner_success⟩
+-- 元の入力データを二列の実際の成功と分割へ、添字の移送を含めて分ける。
+example : (CompositionSuccess.wordsEquiv (by decide) bfTable terminalTable (1 : Fin 4))
+    fullSuccessSource = ⟨outerSuccessfulWord, innerSuccessfulWord, verticalCuts⟩ := rfl
+-- 各元列の TR を、実際の成功基底語の有限和へ展開する。
+example : onSequence ℤ bfTable =
+    ∑ p : SuccessfulWord bfTable, basis ℤ 4 2 (ULift.up p.val.2) :=
+  onSequence_eq_sum_successfulWords ℤ (by decide) bfTable
+-- 混合する全 shuffle と全 Schedule の和が、元の二つの TR の実際の部分合成に一致する。
+example :
+    (∑ s : BarrattEccles.ShufflePath 2 1, (s.sign : ℤ) • onSequence ℤ (fun j =>
+      BarrattEccles.permutationComposition 3 2 1 (bfTable (s.horizontal j))
+        (terminalTable (s.vertical j)))) =
+      Surjection.partialComposition ℤ 3 2 2 1 1 (onSequence ℤ bfTable)
+        (onSequence ℤ terminalTable) :=
+  onSequence_partialComposition_of_pos ℤ (by decide) bfTable terminalTable 1
+-- 一方の元列が退化している場合も一般公式に含まれ、全 shuffle 側が零へ戻る。
+example :
+    (∑ s : BarrattEccles.ShufflePath 1 0, (s.sign : ℤ) • onSequence ℤ (fun j =>
+      BarrattEccles.permutationComposition 1 2 0
+        ((fun _ : Fin 2 => (1 : Equiv.Perm (Fin 2))) (s.horizontal j))
+        ((fun _ : Fin 1 => (1 : Equiv.Perm (Fin 2))) (s.vertical j)))) = 0 := by
+  let outer : Fin 2 → Equiv.Perm (Fin 2) := fun _ => 1
+  let inner : Fin 1 → Equiv.Perm (Fin 2) := fun _ => 1
+  have h := onSequence_partialComposition_of_pos ℤ (by decide) outer inner (0 : Fin 2)
+  have ho : onSequence ℤ outer = 0 :=
+    onSequence_eq_zero_of_adjacent_eq ℤ outer 0 1 (by decide) rfl
+  rw [ho] at h
+  simpa only [map_zero, LinearMap.zero_apply] using h
+
+-- 生成元上の有限和の一致を、実際の正規化鎖の任意の元の双線形合成まで延長する。
+example (x : (BarrattEccles.normalizedChains ℤ 4).X 2)
+    (y : (BarrattEccles.normalizedChains ℤ 2).X 1) :
+    normalizedMap ℤ 5 3 (BarrattEccles.shuffleBilinear ℤ 3 2 1 2 1 x y) =
+      Surjection.partialComposition ℤ 3 2 2 1 1 (normalizedMap ℤ 4 2 x)
+        (normalizedMap ℤ 2 1 y) :=
+  normalizedMap_shuffleBilinear_of_pos ℤ (by decide) 1 x y

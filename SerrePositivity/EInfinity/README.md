@@ -419,9 +419,14 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `forward_term` は各項の値と既存の経路符号を保つ。
 `sum_all_eq_source` は失敗・退化出力項を零として全経路・全 Schedule の和へ戻す。
 `sum_onSequence_eq_source` は全 shuffle 符号付き onSequence の和を元の全成功二表・分割の和へ同定する。
-元の側の有限和を二つの onSequence の部分合成へ展開する部分は未完成。
+`SuccessfulWord` と `onSequence_eq_sum_successfulWords` は各元列の TR を成功基底語の有限和へ展開する。
+`wordsEquiv` は元データを二列の成功基底語と分割の依存直和へ移す。
+`sum_source_eq_partialComposition` は元の側の全有限和を二つの onSequence の部分合成へ同定する。
+`onSequence_partialComposition_of_pos` は任意の可換環・全次数・正の内側 arity の全 shuffle 和の合成保存。
+`normalizedMap_shuffleBilinear_of_pos` は正規化生成元の一致を全正規化鎖の双線形合成へ延長する。
+正の内側 arity の実際の TR の部分合成保存は完了。
 空語挿入の nullary 合成との照合も未完成。
-TR の一般の合成保存と、それを用いた χ の部分合成の微分との両立・オペラッド公理は未完成。
+nullary を含む TR の合成保存と、それを用いた χ の部分合成の微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：
