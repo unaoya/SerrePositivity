@@ -642,3 +642,7 @@ public import SerrePositivity.KST.Spectra.UniversalLoopExchangePaths
 public import SerrePositivity.KST.Spectra.SignedAdjointCompositionPaths
 public import SerrePositivity.KST.Spectra.SignedLoopStructurePaths
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterStructurePaths
+public import SerrePositivity.KST.Spectra.PointedRelativeTransposePaths
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryStructure
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryRectification
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointZeroBoundaryBFComparison
