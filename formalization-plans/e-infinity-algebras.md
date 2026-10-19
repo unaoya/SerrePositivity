@@ -216,18 +216,19 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | 指定三形状で元の非反転 q_x の同値性・全導来 fiber の可縮性と native な極限性の両向き判定、pinched Hom との反転なしの直接比較を公開。任意の小圏では反転係数の end の切断比較、全導来 fiber の可縮性による極限・余極限判定、pinched Hom の具体的な反転 fiber 模型を公開。一般形状の非反転 q_x への移送は未完了 |
-| γ3c | 𝒮 の任意の小さい積と Sp の有限積（双方空積を含む）、一脚 fibration の引き戻し、fibration の可算塔の実際の対象と native な極限錐を公開。Sp の Kan・Ω 条件と全 Hom 条件も検証済み。𝒮 の空余積を含む小さい余積も公開。単射な遷移の Kan 複体列の実際の逐次余極限も公開。左脚の台が単射な span の Kan 置換した実際の ∞ 押し出しも公開。任意の span への単射な置換と元の図式への頂点を保つ輸送を公開し、元の両脚の条件を外した。一般の列も各段の境界分解で単射な列に置換して元の図式へ輸送し、実際の homotopy 逐次余極限を公開。一般形状の非反転比較と E2b 適用等は未完了 |
+| γ3b | 任意の小圏で元の非反転 q_x の同値性・全導来 fiber の可縮性と native な極限・余極限性の両向き判定を公開。edgewise 共通解像により反転係数を元へ移し、任意の coherent な錐からの pinched Hom と標準点から回収した元の end の点の q_x の導来 fiber 全体の ULift の反転なしの直接比較まで公開。形状・Hom の厳密極限性・遷移の fibration 性・追加の比較同値は仮定しない |
+| γ3c | 𝒮 の任意の小さい積と Sp の有限積（双方空積を含む）、一脚 fibration の引き戻し、fibration の可算塔の実際の対象と native な極限錐を公開。Sp の Kan・Ω 条件と全 Hom 条件も検証済み。𝒮 の空余積を含む小さい余積も公開。単射な遷移の Kan 複体列の実際の逐次余極限も公開。左脚の台が単射な span の Kan 置換した実際の ∞ 押し出しも公開。任意の span への単射な置換と元の図式への頂点を保つ輸送を公開し、元の両脚の条件を外した。一般の列も各段の境界分解で単射な列に置換して元の図式へ輸送し、実際の homotopy 逐次余極限を公開。E2b の具体的適用と一般の小さい余極限の構成・Quillen 随伴への適用等は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
-γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開844宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+γ3 の公開 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
+公開1669宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
 `representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
 `representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
 重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
-coherent な錐から end の点への対応と pinched Hom の fiber 比較が未完了なので、γ3b は未完了。
+任意の小圏で coherent な錐から元の end の点への対応と pinched Hom の反転なしの直接 fiber 比較を公開した。
+以下の過去の各段階の未完了記録に対し、現在地は上表と末尾の一般形状の記録を優先する。
 
 離散図式では実際の κ_x と、豊穣積の Hom の極限性を前提とする q_x の同型性を証明済み。
 `spaceEmptyProductCone_isLimitCone : IsLimitCone spaceEmptyProductCone` は追加の比較仮定なし。
@@ -2667,3 +2668,190 @@ lemma spaceInfinity_hasColimit_sequence (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) 
 追跡済み・コミット済み・変更なしを再確認した。
 ログ：`/tmp/gamma3-arbitrary-sequence-aggregate.log`、
 `/tmp/gamma3-arbitrary-sequence-audit.log`。
+
+### γ3b：任意の小圏上の元の非反転 q_x による判定と pinched Hom の直接 fiber 模型
+
+局所 Kan な単体的圏 C、任意の小圏 I、F : I → C と通常の錐 c に対し、実際の
+`strictCoherentCone c` が ∞ 極限錐であることと、全ての x に対する元の非反転比較
+`representableHomotopyLimitComparison c x` が同値であることの両向きの判定を証明した。
+さらに、元の end の全ての点 b でこの q_x の導来 fiber が可縮 Kan であることとも同値。
+添字の形状・Hom 錐の厳密極限性・遷移や q_x の fibration 性の仮定を付けない。
+通常の余錐でも、元の図式上の `strictNativeCocone c` に対して反対圏の非反転比較による
+余極限性と全導来 fiber の可縮性の両向き判定を公開した。
+
+まず一般の Kan 値図式 H の錐 c に edgewise 解像を適用した。
+左右の自然変換 `diagramEdgewiseRight H` と `diagramEdgewiseLeft H` の全成分は
+trivial Kan fibration。それが誘導する Bousfield–Kan end の二つの実際の射も同値になる。
+錐の比較の自然性から、edgewise な頂点の左右の射影と end の左右の誘導射の二つの
+厳密な可換正方形を構成した。四つの同値の消去により q と反転比較 q′ を照合した。
+厳密極限を経由しないので、その Kan 性や極限標準比較 κ の同値性は不要である。
+
+判定だけでなく、反転比較の導来 fiber と元の比較の導来 fiber の実際の同値
+`bousfieldKanConeFiber_generalReflection_equivalence` も構成した。
+反転 end の指定点 b を左 end 射影の逆で共通 end に戻し、右 end 射影で元の end の点に移す。
+左の頂点射影による源の移送、左の end 射影の後合成の逆の fiber 比較、右の end 射影による
+後合成、右の頂点射影による源の移送を順に合成する。
+左の end 射影の逆像の像と b のずれは path による固定点の移送で照合する。
+この同値は fiber 全体の反転を残さず、元の宇宙の実際の比較射 q を用いる。
+
+任意の coherent な錐 d の標準切断点から回収した反転 end の点を同じ手順で移し、
+`generalStrictConeOriginalEndPoint d` を定めた。既存の反転 fiber 模型と上述の同値の ULift を
+合成することで、全 coherent な d について
+`pinchedHom d (strictCoherentCone c)` と、この点上の元の非反転 q_x の導来 fiber 全体の
+ULift の直接の同値 `strictConePinched_generalOriginalEnd_equivalence c d` を証明した。
+反転した fiber、Hom の厳密極限性、追加の比較同値の入力はいずれも残らない。
+A3d により、その全 d における模型の可縮性と native な極限性の同値も得た。
+
+これにより、指定三形状での元の q_x の判定・直接模型を任意の小圏へ拡張した。
+E2a 後の E2b への具体的適用、一般の空間値図式の実際の小さい余極限の構成と
+Quillen 随伴への適用等はこの保存単位に含めず、γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 7.4.1.6・7.5.4.6・8.1.1。
+
+公開十八宣言の正確な型は以下。全て名前空間
+`SerrePositivity.InfinityCategories.HomotopyLimits` 内で、
+`I : Type u [SmallCategory I]` を共通前提とする。
+`GeneralOriginalCriterion` と `GeneralOriginalConeFiberModel` はさらに
+`C : Type v [Category.{u} C] [SimplicialCategory C]` と
+`[∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]` を共通前提とする。
+それ以外の全前提は各型に明記した。
+
+`GeneralConeComparisonReflection.lean`：
+
+```lean
+def diagramEdgewiseRight (H : I ⥤ SSet.{u}) : H ⋙ edgewiseSubdivisionFunctor ⟶ H
+```
+
+```lean
+def diagramEdgewiseLeft (H : I ⥤ SSet.{u}) :
+    H ⋙ edgewiseSubdivisionFunctor ⟶ H ⋙ SSet.opFunctor
+```
+
+```lean
+lemma bousfieldKanConeComparison_edgewiseRight {H : I ⥤ SSet.{u}} (c : Cone H) :
+    edgewiseRight c.pt ≫ bousfieldKanConeComparison c =
+      bousfieldKanConeComparison (edgewiseSubdivisionFunctor.mapCone c) ≫
+        weightedSectionsMap (bousfieldKanWeight I) (diagramEdgewiseRight H)
+```
+
+```lean
+lemma bousfieldKanConeComparison_edgewiseLeft {H : I ⥤ SSet.{u}} (c : Cone H) :
+    edgewiseLeft c.pt ≫ bousfieldKanConeComparison (SSet.opFunctor.mapCone c) =
+      bousfieldKanConeComparison (edgewiseSubdivisionFunctor.mapCone c) ≫
+        weightedSectionsMap (bousfieldKanWeight I) (diagramEdgewiseLeft H)
+```
+
+```lean
+lemma bousfieldKanEdgewiseRight_homotopyEquivalence (H : I ⥤ SSet.{u})
+    [∀ i, KanComplex (H.obj i)] :
+    IsSimplicialHomotopyEquivalence
+      (weightedSectionsMap (bousfieldKanWeight I) (diagramEdgewiseRight H))
+```
+
+```lean
+lemma bousfieldKanEdgewiseLeft_homotopyEquivalence (H : I ⥤ SSet.{u})
+    [∀ i, KanComplex (H.obj i)] :
+    IsSimplicialHomotopyEquivalence
+      (weightedSectionsMap (bousfieldKanWeight I) (diagramEdgewiseLeft H))
+```
+
+```lean
+lemma bousfieldKanConeComparison_reflection_general_iff
+    {H : I ⥤ SSet.{u}} (c : Cone H) [KanComplex c.pt] [∀ i, KanComplex (H.obj i)] :
+    IsSimplicialHomotopyEquivalence (bousfieldKanConeComparison c) ↔
+      IsSimplicialHomotopyEquivalence (bousfieldKanConeComparison (SSet.opFunctor.mapCone c))
+```
+
+`GeneralOriginalCriterion.lean`：
+
+```lean
+lemma representableComparison_reflection_general_iff {F : I ⥤ C} (c : Cone F) (x : C) :
+    IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c x) ↔
+      IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c x)
+```
+
+```lean
+lemma strictCoherentCone_isLimit_iff_general_representableComparison {F : I ⥤ C}
+    (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,
+      IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c x)
+```
+
+```lean
+lemma strictNativeCocone_isColimit_iff_general_representableComparison {F : I ⥤ C}
+    (c : Cocone F) :
+    IsColimitCone (strictNativeCocone c) ↔ ∀ x : Cᵒᵖ,
+      IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c.op x)
+```
+
+```lean
+lemma strictCoherentCone_isLimit_iff_general_comparisonFiber {F : I ⥤ C} (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ (x : C)
+      (b : (bousfieldKanHolim (simplicialHomDiagram F x)) _⦋0⦌),
+        IsContractibleKan (comparisonFiber (representableHomotopyLimitComparison c x) b)
+```
+
+```lean
+lemma strictNativeCocone_isColimit_iff_general_comparisonFiber {F : I ⥤ C} (c : Cocone F) :
+    IsColimitCone (strictNativeCocone c) ↔ ∀ (x : Cᵒᵖ)
+      (b : (bousfieldKanHolim (simplicialHomDiagram F.op x)) _⦋0⦌),
+        IsContractibleKan (comparisonFiber (representableHomotopyLimitComparison c.op x) b)
+```
+
+`GeneralConeFiberReflection.lean`：
+
+```lean
+def bousfieldKanGeneralReflectedFiberPoint (H : I ⥤ SSet.{u}) [∀ i, KanComplex (H.obj i)]
+    (b : (bousfieldKanHolim (H ⋙ SSet.opFunctor)) _⦋0⦌) :
+    (bousfieldKanHolim H) _⦋0⦌
+```
+
+```lean
+def bousfieldKanConeFiber_generalReflection_equivalence {H : I ⥤ SSet.{u}} (c : Cone H)
+    [KanComplex c.pt] [∀ i, KanComplex (H.obj i)]
+    (b : (bousfieldKanHolim (H ⋙ SSet.opFunctor)) _⦋0⦌) :
+    QCatEquivalence (comparisonFiber (bousfieldKanConeComparison (SSet.opFunctor.mapCone c)) b)
+      (comparisonFiber (bousfieldKanConeComparison c)
+        (bousfieldKanGeneralReflectedFiberPoint H b))
+```
+
+`GeneralOriginalConeFiberModel.lean`：
+
+```lean
+def generalStrictConeOriginalEndPoint {F : I ⥤ C} (d : JoinCone (strictCoherentDiagram F)) :
+    (bousfieldKanHolim (simplicialHomDiagram F (coherentNerveObject d.vertex))) _⦋0⦌
+```
+
+```lean
+def strictConePinched_generalOriginalEnd_equivalence {F : I ⥤ C}
+    (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
+    QCatEquivalence
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c))
+      ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (representableHomotopyLimitComparison c (coherentNerveObject d.vertex))
+          (generalStrictConeOriginalEndPoint d)))
+```
+
+```lean
+lemma strictConePinched_isContractibleKan_iff_generalOriginalEnd {F : I ⥤ C}
+    (c : Cone F) (d : JoinCone (strictCoherentDiagram F)) :
+    IsContractibleKan
+      (pinchedHom (X := sliceOver (strictCoherentDiagram F)) d (strictCoherentCone c)) ↔
+    IsContractibleKan ((SSet.uliftFunctor.{v, u}).obj
+      (comparisonFiber (representableHomotopyLimitComparison c (coherentNerveObject d.vertex))
+        (generalStrictConeOriginalEndPoint d)))
+```
+
+```lean
+lemma strictCoherentCone_isLimit_iff_generalOriginalEndPointFibers {F : I ⥤ C}
+    (c : Cone F) :
+    IsLimitCone (strictCoherentCone c) ↔ ∀ d : JoinCone (strictCoherentDiagram F),
+      IsContractibleKan ((SSet.uliftFunctor.{v, u}).obj
+        (comparisonFiber (representableHomotopyLimitComparison c (coherentNerveObject d.vertex))
+          (generalStrictConeOriginalEndPoint d)))
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（5127 jobs）、公開1669宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規4ファイルの18宣言を監査に追加した。
+新規ファイルに警告・sorry・追加公理はない。edgewise 解像を含む他担当の再帰的な依存
+1229ソースは全て追跡済み・コミット済み・変更なしを再確認した。
+ログ：`/tmp/gamma3-general-original-aggregate.log`、`/tmp/gamma3-general-original-audit.log`。
