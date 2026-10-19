@@ -33,6 +33,7 @@ public import SerrePositivity.InfinityCategories.F2.LaxPullbackStable
 public import SerrePositivity.InfinityCategories.F2.FilteredRetracts
 public import SerrePositivity.InfinityCategories.F2.FilteredCoslices
 public import SerrePositivity.InfinityCategories.F2.FilteredKanContractibility
+public import SerrePositivity.InfinityCategories.F2.ContinuousKanFiniteFactorization
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
