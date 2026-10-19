@@ -4179,3 +4179,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.replacementSquareMap_section
 #check @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_spanPullbackMap_of_equivalenceLifting
 #check @SerrePositivity.InfinityCategories.trivialKanFibration_spanPullbackMap_of_left_corner
+#check @SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout

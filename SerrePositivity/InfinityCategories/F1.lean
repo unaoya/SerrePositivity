@@ -1007,3 +1007,4 @@ public import SerrePositivity.InfinityCategories.F1.FullSubcomplexEquivalenceLif
 public import SerrePositivity.InfinityCategories.F1.EquivalenceLiftingTrivial
 public import SerrePositivity.InfinityCategories.F1.SpanPullbackLifting
 public import SerrePositivity.InfinityCategories.F1.ReplacementSpanComparison
+public import SerrePositivity.InfinityCategories.F1.TransportLocalizationPushout
