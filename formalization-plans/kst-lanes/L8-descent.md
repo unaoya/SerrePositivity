@@ -3816,3 +3816,32 @@ Tot の段ごとの π_* 同型保存は `TotalizationHomotopyInvariance` にあ
 ログは `/tmp/l8-main-separation-target.log`、`/tmp/l8-main-separation-main-audit.log`、
 `/tmp/l8-main-separation-full-audit.log`。
 次は一般形状の実点つき homotopy limit の指定比較、および実 Tot の分裂・細分へ進む。
+
+
+## 102. 実 end の指定比較と段ごとの不変性
+
+| 宣言 | 主経路で証明した内容 |
+| --- | --- |
+| `Main.underlyingAugmentationCone` | 元の指定増強の基礎の実錐 |
+| `Main.homotopyLimitComparison` | 実 `PointedHomotopyLimit` への基点保存比較 |
+| `Main.homotopyLimitComparison_naturality` | 元と図式を同時に動かす指定比較の自然性 |
+| `Main.HasHomotopyLimitDescent` | 実 BK 比較による空間側の π_* 判定 |
+| `Main.hasHomotopyLimitDescent_iff_of_stagewise_piIsomorphism` | 段ごとの同型と元の同型による保存・反映 |
+| `Main.hasTotDescent_iff_of_stagewise_piIsomorphism` | 実 Reedy Tot の同型保存と指定比較の正方形による保存・反映 |
+| `Main.augmentationCone` | 増強を元の点つき錐として保持 |
+| `Main.weightedEndComparison` | 任意の実 `PointedWeightedEnd` への指定比較 |
+| `Main.weightedEndComparison_naturality` | 指定 end 比較の自然性 |
+| `Main.weightedEndComparison_underlying` | 忘却後も N の元の指定比較と一致 |
+| `Main.weightedEndComparison_bousfieldKan` | BK 重みで一般形状の指定比較と一致 |
+
+細分射の各段が同型であるという幾何・添字側の結論は、これらの不変性だけでは証明していない。
+Fubini・extra degeneracy 降下・随伴添字変更は引き続き未完。
+Sp の整数次数の接続と最小公理全体の構造体・主定理も未完である。
+L9 の `PointedWeightedConeUnderlying` の基点を含む既存の実比較を読み取りで再利用した。
+N・L9 のファイルは変更していない。
+
+対象ビルドは 4646 jobs 成功。主経路は 1485 宣言、補助を含む監査は
+255 モジュール・2652 宣言で標準三公理のみ。56 条件付きモジュールの排除も成功。
+公開型のログに模型圏・cofibrant generation・Quillen bifunctor の三仮定はない。
+ログは `/tmp/l8-main-weighted-target.log`、`/tmp/l8-main-weighted-main-audit.log`、
+`/tmp/l8-main-weighted-full-audit.log`。

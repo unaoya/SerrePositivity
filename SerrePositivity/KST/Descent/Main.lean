@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.Descent.Axioms
 public import SerrePositivity.KST.Descent.MainAugmentedTot
+public import SerrePositivity.KST.Descent.MainAugmentedHomotopyLimit
+public import SerrePositivity.KST.Descent.MainAugmentedWeightedEnd
+public import SerrePositivity.KST.Descent.MainTotRefinement
 public import SerrePositivity.KST.Descent.Theorem31
 public import SerrePositivity.KST.Descent.FiniteZariskiCover
 public import SerrePositivity.KST.Descent.FiniteZariskiBaseChange

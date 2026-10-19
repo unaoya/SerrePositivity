@@ -19,6 +19,9 @@ set_option pp.universes true in
 #check SerrePositivity.KST.Descent.NaturalBlowupSequences.sectioned_piDescent
 #check SerrePositivity.KST.Descent.Main.totComparison
 #check SerrePositivity.KST.Descent.Main.HasTotDescent
+#check SerrePositivity.KST.Descent.Main.homotopyLimitComparison
+#check SerrePositivity.KST.Descent.Main.weightedEndComparison
+#check SerrePositivity.KST.Descent.Main.hasTotDescent_iff_of_stagewise_piIsomorphism
 
 open Lean in
 set_option maxHeartbeats 0 in
