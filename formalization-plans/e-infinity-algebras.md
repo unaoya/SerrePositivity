@@ -115,19 +115,19 @@
   底の境界 cofibration・収縮の擬同型からなる。区間の制限も構成済み。
   convolution の反復評価とその両変数自然性、各 arity の演算 chain map は構成済み。
   底の Hom(H,B) の `prepathComplex`、定数射と両端点評価の自然性も検証済み。
-  `convolutionAction_unit` と `convolutionAction_equivariance` で単位則・全置換の等変性を検証。
-  `convolutionAction_post` で P 代数射の後合成が各演算を保つことも検証済み。
+  単位則・全置換の等変性・代数射の後合成による全演算の保存を検証済み。
   `convolutionAction_comp` で全位置の部分合成則を閉じ、`convolutionAlgebra` を構成。
   `convolutionAction_pre` は余代数射の前合成の演算保存。前合成・後合成を実際の代数射へ束ね、
   `convolutionFunctor` と値域について自然な `convolutionPreNat` を構成済み。
   `unitCoalgebra ε` は任意の augmentation の単位余代数。`convolutionUnitNatIso` は
   Hom(単位,B) ≅ B を自然な P 代数同型にする。区間の端点・収縮も余代数射に束ねた。
   `prepathAlgebra` は全代数の自己関手と自然な定数・両端点評価を持ち、底の既存の射と厳密に一致。
-  評価の fibration・定数射の擬同型性と転送は未完成。
+  `evaluationPair_projectiveFibration` は底の二端点評価の対が射影 fibration であることを示す。
+  定数射の擬同型性・代数の積と底の直和との比較・転送は未完成。
   E2a-3 の工程 (2) の転送と工程 (3)・(4)、E2a-4・5、E2b・G1′ は未完成。
   現在地のコードと検証は本節と同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. 底の評価の fibration・定数射の擬同型を証明し、全代数の functorial path object を完成。
+  1. 定数射の底での擬同型性と代数の積の底での計算を証明し、functorial path object を完成。
      続いてこの path object から底のホモトピー同値性を示し、
      fibrations.llp ⊆ 弱同値、J-cell acyclicity、小対象性・極限余極限と転送の適用を閉じる。
      Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
@@ -151,14 +151,11 @@
   `SerrePositivity.EInfinity.BarrattEccles.augmentation`、
   `SerrePositivity.EInfinity.BarrattEccles.augmentation_quasiIso`、
   `SerrePositivity.EInfinity.BarrattEccles.complexContraction`、
-  `SerrePositivity.EInfinity.BarrattEccles.partialComposition_diagonal_tensorμ`、
-  `SerrePositivity.EInfinity.BarrattEccles.hopfDiagonal`、
   `SerrePositivity.EInfinity.BarrattEccles.hopf`、
   `SerrePositivity.EInfinity.Operad.Coalgebra`、
   `SerrePositivity.EInfinity.Operad.CoalgebraHom`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.restrict`、
-  `SerrePositivity.EInfinity.Operad.convolutionAction`、
   `SerrePositivity.EInfinity.Operad.convolutionAlgebra`、
   `SerrePositivity.EInfinity.Operad.convolutionAction_comp`、
   `SerrePositivity.EInfinity.Operad.convolutionFunctor`、
@@ -168,6 +165,9 @@
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathAlgebra`、
+  `SerrePositivity.EInfinity.projectiveCofibration_degreewise_isSplitMono`、
+  `SerrePositivity.EInfinity.homPrecompose_projectiveFibration`、
+  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationPair_projectiveFibration`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathComplex`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constantNat`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationNat`。
@@ -179,8 +179,8 @@
   Alg_E のモデル構造・右 Quillen U・CAlg は未提供。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：対象ビルド成功（2760 jobs）、公理監査成功（5448 宣言、標準 3 公理のみ）。
-  新規 sorry・追加公理・名前衝突はなく、554 モジュールの import 閉包に他レーンの未コミット依存はない。
+- **既知の問題**：対象ビルド成功（2764 jobs）、公理監査成功（5466 宣言、標準 3 公理のみ）。
+  新規 sorry・追加公理・名前衝突はなく、558 モジュールの import 閉包に他レーンの未コミット依存はない。
   今回の宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -188,13 +188,13 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：工程 (2) の底の二端点評価の fibration 性を証明する。
-  `I.boundary_cofibration` から境界が各次数で分裂単射であることを導き、
-  境界の前合成による内部 Hom の各次数の全射性を示す。これを両評価の対へ照合する。
-  底の射は `algebraEvaluationNat_hom`・`algebraConstantNat_hom` で既存の射と厳密に照合済み。
-  次に区間と単位の cofibrancy と収縮の擬同型から、定数射が底での擬同型であることを示す。
-  区間のホモトピー同値性を追加仮定にしない。転送先のモデル構造はまだ選択しない。
-  TR・具体区間には着手していない。
+- **次の一手**：工程 (2) の定数射が底の複体で擬同型であることを証明する。
+  単位の cofibrancy と境界の cofibration から端点が cofibration であることを導き、
+  `endpoint_quasiIso` と射影モデル構造の持ち上げ性を用いて端点の鎖ホモトピー逆を得る。
+  前合成への移送と `constant_evaluation` から定数射の擬同型性を導く。
+  二端点評価の底の fibration 性は `algebraEvaluationPair_projectiveFibration` まで検証済み。
+  区間のホモトピー同値性や値域代数の cofibrancy を追加仮定にしない。
+  代数の積と底の直和の比較、acyclicity と転送は未完成。TR・具体区間には着手していない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。
