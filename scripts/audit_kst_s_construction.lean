@@ -9608,3 +9608,57 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.loopCollageCrossMap_evaluation
 #print axioms SerrePositivity.KST.SConstruction.loopCollageCrossMap_evaluation
+
+#check @SerrePositivity.KST.SConstruction.enrichedCollageUnderlying_map_unit
+#print axioms SerrePositivity.KST.SConstruction.enrichedCollageUnderlying_map_unit
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottom_map
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottom_map
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageTop_map
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageTop_map
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross_pre
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross_pre
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross_post
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross_post
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageComparison
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageComparison
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageComparisonHomotopy
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageComparisonHomotopy
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageComparisonHomotopy_h
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageComparisonHomotopy_h
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageComparisonHomotopy_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageComparisonHomotopy_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageInputHomotopy
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageInputHomotopy
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageTransportHomotopy
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageTransportHomotopy
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageTransportTriangle
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageTransportTriangle
+
+#check @SerrePositivity.KST.SConstruction.boundaryCollageTransport_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.boundaryCollageTransport_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCollageHomotopy
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCollageHomotopy
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCollageTriangle
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCollageTriangle
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionTransportHomotopy
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionTransportHomotopy
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionTransportHomotopy_h
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionTransportHomotopy_h

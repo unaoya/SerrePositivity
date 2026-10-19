@@ -636,4 +636,8 @@ public import SerrePositivity.KST.SConstruction.SuspensionLoopEnrichedPostcompos
 public import SerrePositivity.KST.SConstruction.EnrichedFunctorCollage
 public import SerrePositivity.KST.SConstruction.EnrichedFunctorCollageNerve
 public import SerrePositivity.KST.SConstruction.LoopCollageEvaluation
+public import SerrePositivity.KST.SConstruction.EnrichedFunctorCollageCrossMaps
+public import SerrePositivity.KST.SConstruction.EnrichedCollageComparisonDiagram
+public import SerrePositivity.KST.SConstruction.EnrichedCollageTransport
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCollageTransport
 /-! # ∞-S• 構成と連結 K 理論 -/
