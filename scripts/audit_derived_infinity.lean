@@ -1006,6 +1006,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.FullCofiberVertices,
     `SerrePositivity.InfinityCategories.Derived.StandardSuspensionSquare,
     `SerrePositivity.InfinityCategories.Derived.SuspensionObjectComparison,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareData,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeJoin,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeEdge,
+    `SerrePositivity.InfinityCategories.Derived.ComplexTrianglePrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeData,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeJoin,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeEdge,
+    `SerrePositivity.InfinityCategories.Derived.CofiberSquareComparisonData,
+    `SerrePositivity.InfinityCategories.Derived.FullHomotopyLift,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

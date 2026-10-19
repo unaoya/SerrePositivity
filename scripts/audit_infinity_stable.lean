@@ -76,6 +76,16 @@ import SerrePositivity.InfinityCategories.Derived.MappingConeZeroTarget
 import SerrePositivity.InfinityCategories.Derived.FullCofiberVertices
 import SerrePositivity.InfinityCategories.Derived.StandardSuspensionSquare
 import SerrePositivity.InfinityCategories.Derived.SuspensionObjectComparison
+import SerrePositivity.InfinityCategories.Derived.ComplexSquareData
+import SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeJoin
+import SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeEdge
+import SerrePositivity.InfinityCategories.Derived.ComplexTrianglePrecomposition
+import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeData
+import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeJoin
+import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeEdge
+import SerrePositivity.InfinityCategories.Derived.CofiberSquareComparisonData
+import SerrePositivity.InfinityCategories.Derived.FullHomotopyLift
+import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1767,6 +1777,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.FullCofiberVertices,
     `SerrePositivity.InfinityCategories.Derived.StandardSuspensionSquare,
     `SerrePositivity.InfinityCategories.Derived.SuspensionObjectComparison,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquareData,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeJoin,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeEdge,
+    `SerrePositivity.InfinityCategories.Derived.ComplexTrianglePrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeData,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeJoin,
+    `SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeEdge,
+    `SerrePositivity.InfinityCategories.Derived.CofiberSquareComparisonData,
+    `SerrePositivity.InfinityCategories.Derived.FullHomotopyLift,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

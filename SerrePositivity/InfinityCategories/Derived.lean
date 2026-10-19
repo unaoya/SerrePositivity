@@ -185,6 +185,16 @@ public import SerrePositivity.InfinityCategories.Derived.MappingConeZeroTarget
 public import SerrePositivity.InfinityCategories.Derived.FullCofiberVertices
 public import SerrePositivity.InfinityCategories.Derived.StandardSuspensionSquare
 public import SerrePositivity.InfinityCategories.Derived.SuspensionObjectComparison
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquareData
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeJoin
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquarePostcomposeEdge
+public import SerrePositivity.InfinityCategories.Derived.ComplexTrianglePrecomposition
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeData
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeJoin
+public import SerrePositivity.InfinityCategories.Derived.ComplexSquarePrecomposeEdge
+public import SerrePositivity.InfinityCategories.Derived.CofiberSquareComparisonData
+public import SerrePositivity.InfinityCategories.Derived.FullHomotopyLift
+public import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy
 
 /-! # Semifree 複体による導来圏の dg 表示
 
