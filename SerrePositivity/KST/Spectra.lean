@@ -154,3 +154,8 @@ public import SerrePositivity.KST.Spectra.HornMissingFaceComparison
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceClass
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceNaturality
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceIdentity
+
+public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceComposition
+public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceChange
+public import SerrePositivity.KST.Spectra.TowerNullHomotopyObstruction
+public import SerrePositivity.KST.Spectra.TowerKernelRepresentativeObstruction
