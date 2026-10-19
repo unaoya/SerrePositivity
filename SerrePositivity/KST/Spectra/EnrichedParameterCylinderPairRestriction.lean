@@ -1,0 +1,64 @@
+module
+
+public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderPairFunctor
+public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderRestriction
+
+/-!
+概要：円柱の pairing とパラメータ制限の両立。
+方針：端ごとの Hom の変更を明示し、同じパラメータを両側で計算する。
+規約：対象・元の Hom の族は変えない。使われ方：評価の族の基点への制限。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u v w
+open CategoryTheory MonoidalCategory SSet
+namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+variable {A B : SSet.{u}} (i : A ⟶ B)
+
+/-- 端ごとの Hom でパラメータだけを変える射。 -/
+def changeBySide : (s t : Bool) → (H : SSet.{u}) → homBySide A s t H ⟶ homBySide B s t H
+  | false, false, _ => 𝟙 _
+  | false, true, _ => i ⊗ₘ 𝟙 _
+  | true, false, _ => 𝟙 _
+  | true, true, _ => 𝟙 _
+
+/-- 元の円柱の制限射は端ごとの変更で計算される。 -/
+lemma restrictionMap_eq_change {C : Type v} [EnrichedCategory SSet.{u} C] (X Y : Object A C) :
+    restrictionMap i X Y = changeBySide i X.side Y.side (X.val ⟶[SSet] Y.val) := by
+  rcases X with ⟨s, x⟩
+  rcases Y with ⟨t, y⟩
+  cases s <;> cases t <;> rfl
+
+/-- Hom の pairing はパラメータ変更と厳密に可換。 -/
+lemma pairBySide_change (s t : Bool) {U H : SSet.{u}}
+    (k : U ⟶ homBySide A s t (𝟙_ SSet.{u})) (f : U ⟶ H) :
+    pairBySide B s t (k ≫ changeBySide i s t (𝟙_ SSet.{u})) f =
+      pairBySide A s t k f ≫ changeBySide i s t H := by
+  cases s <;> cases t
+  all_goals
+    apply SSet.hom_ext
+    intro d
+    rfl
+
+/-- 二つの豊穣図式の pairing は、二対象の円柱のパラメータ制限と可換。 -/
+lemma pairFunctor_restriction {C : Type v} {T : Type w}
+    [EnrichedCategory SSet.{u} C] [EnrichedCategory SSet.{u} T]
+    (F : EnrichedFunctor SSet.{u} T C)
+    (G : EnrichedFunctor SSet.{u} T (Object A Point.{v})) :
+    pairFunctor B F (G.comp SSet (restriction (C := Point.{v}) i)) =
+      (pairFunctor A F G).comp SSet (restriction (C := C) i) := by
+  apply EnrichedFunctor.ext SSet
+    (F := pairFunctor B F (G.comp SSet (restriction (C := Point.{v}) i)))
+    (G := (pairFunctor A F G).comp SSet (restriction (C := C) i)) (fun _ ↦ rfl)
+  intro X Y
+  change pairBySide B (G.obj X).side (G.obj Y).side
+      (G.map X Y ≫ restrictionMap i (G.obj X) (G.obj Y)) (F.map X Y) ≫ 𝟙 _ =
+    pairBySide A (G.obj X).side (G.obj Y).side (G.map X Y) (F.map X Y) ≫
+      restrictionMap i (pairObject A F G X) (pairObject A F G Y)
+  rw [Category.comp_id, restrictionMap_eq_change, restrictionMap_eq_change]
+  exact pairBySide_change i (G.obj X).side (G.obj Y).side (G.map X Y) (F.map X Y)
+
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
