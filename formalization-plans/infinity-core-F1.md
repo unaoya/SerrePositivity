@@ -38,8 +38,8 @@
   底の一本の辺に沿う全対象の実際の transport の辺・prism と厳密な両端、切断の始点・終点評価による特徴づけを構成済み。
 - 任意の小圏で添字付けた豊穣比較の図式を KanEnrichedDiagram として coherent に実現。任意の添字関手の制限（面・退化を含む）と厳密に可換。合成三点図式の三面は既存の比較の族と厳密に一致。既存の比較の辺そのものの合成三角形と合成等式を証明済み。全対象の transport も底の三角形の合成則・既存三辺の二単体・退化辺の単位則を証明済み。
 - 全単体の共同切断評価 `transportSimplexSectionInfinity` と、単体圏の nerve から底への初頂点写像を構成済み。初頂点写像は底の射に自然で全頂点を被覆し本質的全射。
-  共同切断評価と初頂点写像は同じ指定辺を反転し、標準単体上の局所化普遍性を明示的な切断・全パラメーターの同型で証明済み。制限図式と局所化比較は全ての底・面・退化に厳密に自然。射列の形と初単体による座標により、任意の底の pushout は単体圏の nerve の pushout へ写り、反転関手の制限は全次数の pullback をなす。底の単射は nerve でも単射。反転条件は関手同型で不変で、単射への制限は inner fibration かつ両端の相対可逆 path 写像が trivial Kan fibration。同値の引き戻しも保つ。相対 path を持ち上げる同値の厳密な切断と、inner fibration の場合の全境界持ち上げを証明済み。比較四角形の同時解像は始点側の比較が trivial Kan fibration、終点側の比較は横射が同値なら同値。立方体全体と一般の底への局所化・降下は未証明。
-- 対象ビルド3235 jobs、公理監査7235宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  共同切断評価と初頂点写像は同じ指定辺を反転し、標準単体上の局所化普遍性を明示的な切断・全パラメーターの同型で証明済み。制限図式と局所化比較は全ての底・面・退化に厳密に自然。射列の形と初単体による座標により、任意の底の pushout は単体圏の nerve の pushout へ写り、反転関手の制限は全次数の pullback をなす。底の単射は nerve でも単射。反転条件は関手同型で不変で、単射への制限は inner fibration かつ両端の相対可逆 path 写像が trivial Kan fibration。同値の引き戻しも保つ。相対 path を持ち上げる同値の厳密な切断と、inner fibration の場合の全境界持ち上げを証明済み。比較四角形の同時解像は始点側の比較が trivial Kan fibration。終点側の比較は横射が同値なら同値であり、両縦射が inner fibration なら inner fibration。底・両端・指定部分を固定した prism の内 anodyne な延長と、可逆 path の族への厳密な復元も証明済み。立方体全体と一般の底への局所化・降下は未証明。
+- 対象ビルド3237 jobs、公理監査7241宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -69,11 +69,11 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`、`transportStandardFirstVertexSection_comp`、`ordinaryComparisonHomotopy`、`transportStandardInvertingDescentIso`、`transportStandardInvertingFamilyIso`、`transportSimplexFirstVertexMap_standard_isLocalization`、`transportSimplexSubcomplexIso`、`transportSimplexNerve_bicart_isPushout`、`transportSimplexLocalizationComparison`、`transportSimplexInvertsEdges_of_isPushout`、`transportSimplexInverting_bicart_isPullback`、`transportSimplexChainEquiv`、`transportSimplexNerve_isPushout`、`transportSimplexInverting_isPullback_of_isPushout`、`transportSimplexInvertingRestriction_innerFibration`、`FunctorIso.invertsEdges_iff`、`fullSubcomplexEquivalencePathLift_map`、`transportSimplexInvertingRestriction_relativePath_trivialKanFibration`、`IsQCatEquivalence.trivialKanFibration_of_relativePath`、`replacementSquareEndCorner_isQCatEquivalence`、`replacementSquareStartCorner_trivialKanFibration`
+- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`、`transportStandardFirstVertexSection_comp`、`ordinaryComparisonHomotopy`、`transportStandardInvertingDescentIso`、`transportStandardInvertingFamilyIso`、`transportSimplexFirstVertexMap_standard_isLocalization`、`transportSimplexSubcomplexIso`、`transportSimplexNerve_bicart_isPushout`、`transportSimplexLocalizationComparison`、`transportSimplexInvertsEdges_of_isPushout`、`transportSimplexInverting_bicart_isPullback`、`transportSimplexChainEquiv`、`transportSimplexNerve_isPushout`、`transportSimplexInverting_isPullback_of_isPushout`、`transportSimplexInvertingRestriction_innerFibration`、`FunctorIso.invertsEdges_iff`、`fullSubcomplexEquivalencePathLift_map`、`transportSimplexInvertingRestriction_relativePath_trivialKanFibration`、`IsQCatEquivalence.trivialKanFibration_of_relativePath`、`replacementSquareEndCorner_isQCatEquivalence`、`replacementSquareStartCorner_trivialKanFibration`、`exists_innerPrism_extension_over_fixed_endpoints`、`replacementSquareEndCorner_innerFibration`
 
 ### 依存と提供
 
-- Core、Coherent/Quasicategory、Stable/SliceOpposite、HomotopyLimits、KST/Spectra/FibrationTower*、F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite・Localization・HomotopyWhiskering・RestrictedPrecomposition・FullSubcomplexFunctorFaithful は読み取り専用。
+- Core、Coherent/Quasicategory、Stable/SliceOpposite、HomotopyLimits、KST/Spectra/FibrationTower*、F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite・Localization・HomotopyWhiskering・RestrictedPrecomposition・FullSubcomplexFunctorFaithful・KanEquivalenceLifting・KanRelativeInternalHomLifting は読み取り専用。
 - 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
   𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
 - 再開時は F1/README.md の原典照合と方針を維持し、他レーンのファイルは編集しない。
@@ -97,8 +97,8 @@
 
 ### 次の一手
 
-replacementSquareEndCorner の inner fibration と相対可逆 path の持ち上げを、元の四角形の両縦射の持ち上げ性から証明する。既証明の終点側の同値性を全境界持ち上げへ強め、始点側との共通解像で span の三対象の同時置換を証明する。セル付加、transfinite な付加、宇宙を揃えた局所化・共同切断評価の降下へ進む。
-TransportSimplexLocalizationData に宇宙を揃えた両写像の反転条件を用意済み。標準単体では任意の同じ宇宙の標的 quasicategory に対する局所化普遍性を証明済み。共同切断評価の一般の底 B への降下、高次一意性、既存 transport との比較は未証明。部分複体の nerve の pushout と標準単体上の普遍性だけから一般の底の結論は導かない。一般のセル付加での厳密な pullback は証明済み。可逆比較の相対持ち上げと単射への制限に沿う同値の引き戻しは証明済み。同時解像の始点側は全境界持ち上げ、終点側は同値性まで証明済み。終点側の相対持ち上げ、局所化比較の立方体全体、transfinite な付加への拡張は未証明。
+まず同型不変な全部分複体への所属を前合成同値から反映し、その包含が単射な前合成同値を右に持ち上げることを証明する。F1B.KanEquivalenceLifting と相対内部 Hom の保存を使い、境界固定の prism 延長と replacementSquareEndCorner の持ち上げを強める。終点側の同値・inner 性を全境界充填へ結び、比較立方体、セル付加、transfinite な付加、宇宙を揃えた局所化へ進む。
+TransportSimplexLocalizationData に宇宙を揃えた両写像の反転条件を用意済み。標準単体では任意の同じ宇宙の標的 quasicategory に対する局所化普遍性を証明済み。共同切断評価の一般の底 B への降下、高次一意性、既存 transport との比較は未証明。部分複体の nerve の pushout と標準単体上の普遍性だけから一般の底の結論は導かない。一般のセル付加での厳密な pullback は証明済み。可逆比較の相対持ち上げと単射への制限に沿う同値の引き戻しは証明済み。同時解像の始点側は全境界持ち上げ、終点側は同値性と inner fibration 性まで証明済み。終点側の相対持ち上げ、局所化比較の立方体全体、transfinite な付加への拡張は未証明。
 全対象での高次整合性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md)（レーン α）の成果を読み取り専用で使う。
 

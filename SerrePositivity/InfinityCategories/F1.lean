@@ -1001,3 +1001,5 @@ public import SerrePositivity.InfinityCategories.F1.RelativePathEquivalenceFibra
 public import SerrePositivity.InfinityCategories.F1.ReplacementSquareResolution
 public import SerrePositivity.InfinityCategories.F1.RelativePathEndpointCorner
 public import SerrePositivity.InfinityCategories.F1.ReplacementSquareStartCorner
+public import SerrePositivity.InfinityCategories.F1.InnerPrismBoundaryExtension
+public import SerrePositivity.InfinityCategories.F1.ReplacementEndCornerInner
