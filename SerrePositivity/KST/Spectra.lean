@@ -159,3 +159,8 @@ public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceComposition
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceChange
 public import SerrePositivity.KST.Spectra.TowerNullHomotopyObstruction
 public import SerrePositivity.KST.Spectra.TowerKernelRepresentativeObstruction
+
+public import SerrePositivity.KST.Spectra.NullHomotopyTransport
+public import SerrePositivity.KST.Spectra.NullTransportDifference
+public import SerrePositivity.KST.Spectra.TowerObstructionTransport
+public import SerrePositivity.KST.Spectra.TowerKernelObstruction
