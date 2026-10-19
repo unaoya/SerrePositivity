@@ -496,3 +496,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.isPullbackSquare_laxPullback_iff_of_zero_corner
 #check @SerrePositivity.InfinityCategories.F2.laxPullback_fiber_iff_cofiber
 #check @SerrePositivity.InfinityCategories.F2.laxPullback_isStable
+#check @SerrePositivity.InfinityCategories.F2.IsKappaSmall
+#check @SerrePositivity.InfinityCategories.F2.isKappaSmall_aleph0_iff
+#check @SerrePositivity.InfinityCategories.F2.isKappaSmall_of_finite
+#check @SerrePositivity.InfinityCategories.F2.IsFilteredInfinity
+#check @SerrePositivity.InfinityCategories.F2.IsKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_of_le
+#check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_aleph0_iff
+#check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_of_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.nonempty_vertices_of_isFilteredInfinity
+#check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_of_retract
+#check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_of_retract
+#check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_iff_of_iso
+#check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_iff_of_iso

@@ -2,7 +2,7 @@
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の F1b → F2-lite。B4・B5 の後、Cat_∞ を ∞ 圏として（Kerodon 5.5）、Cat_∞ の極限、lax pullback。
 
-## 引き継ぎ（2026-10-20）
+## 引き継ぎ（2026-10-20、第 2 部へ移行）
 
 ### 現在地
 
@@ -45,12 +45,13 @@
   零枝の span の入力の存在から零角の押し出し性を成分で判定し、両射影の IsExactFunctor を証明。始域の安定性は仮定しない。
   零源の cospan の極限を反転と枝の交換で構成。元の指定射を保つ全 fiber・cofiber の存在と零角の条件の一致を証明。
   laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
-- 検証：三集約同時ビルド 6653 jobs、F2 1203・F1B 5175 宣言の公理監査成功。F1B 1428 モジュールに straightening なし。
-  F1/F1B 同時 import 成功。衝突・追加公理・sorry なし。
+- 第 2 部：κ-small/filtered の定義・ℵ₀ 比較・非空性・厳密な retract/同型での保存を検証済み。一般の余極限は未完了。
+  三集約同時ビルド 6671 jobs、F2 1230 宣言の公理監査と F1/F1B 同時 import 成功。衝突・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- 担当した F2-lite 第 1 部に未完項目なし。次の I-b は本工程に含めず、正本で別途細分化する。
+- 第 1 部は完了。10-20 に旧 N の F2N-1〜5 を引き取り、正本 F2 計画 §3 の順に進める。
+  filtered・Ind・compact・冪等完備化・Ind の安定性と compact 生成。その後 presentable・随伴関手定理。
 
 ### 主要宣言（名前のみ）
 
@@ -79,12 +80,11 @@
 
 - Core/・F1/・Stable/・HomotopyLimits/ の必要な閉包を読み取り専用で使用。F1B は推移的にも straightening に依存しない。
 - 提供：F1B 集約、随伴・反射的局所化・Quillen A、左右 Kan の局所判定・相対制限・組み立て・一意性・古典比較。
-- F2 は F1 の CatInfinity と γ1 を再利用し、N の Ind・compact・冪等完備化と分担。既存 Cat_∞ を再定義しない。
+- F2N-1〜5 は F1b へ移管。N の HomotopyLimits と F1 の成果を読み取り専用で再利用する。
 
 ### 未コミット
 
-- F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：指定零源 cospan の極限、全 fiber の存在、lax pullback の安定性、集約・監査と本書。
+- 所有パスの未コミットなし（本保存後）。他レーンの変更は保存対象外。
 
 ### 既知の問題
 
@@ -93,11 +93,11 @@
 - 新規・再構成は F1B 名前空間。F1B のソースに `ModelCategory` 仮定なし。前提は Lean が正本。
 - B1 の空間値二変数 Hom 関手との比較は F1h の範囲で未形式化。B2 は一般の局所化の存在を含まない。
 - 右円柱の前合成同値は未証明だが B4・B5 の局所判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で構成する。
-- F2 の共有計画の N 節を保持し、Cat_∞ の strict pullback と ∞ 圏内の引き戻しを区別する。
+- 旧 N の詳細は F2 の archive へ保持。Cat_∞ の strict pullback と ∞ 圏内の引き戻しを区別する。
 
 ### 次の一手
 
-- 第 1 部は完了。D の β4・K 側は F2 集約の laxPullback_isStable と両射影の完全性を利用できる。
+- F2N-1：coslice の filtered 性と cofinality、𝒮 の一般 coherent filtered 余極限へ進む。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

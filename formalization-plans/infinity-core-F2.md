@@ -1,82 +1,73 @@
-# F2：F2-lite と presentable ∞ 圏（v2、F1b・N 分担）
+# F2：F2-lite と presentable ∞ 圏（v2、F1b）
 
-作成日：2026-10-18。更新日：2026-10-19。
+作成日：2026-10-18。更新日：2026-10-20。
 正本は [foundations.md](foundations.md)。本書は F2-lite と F2 後半の正本。
 F1b の前提工程は [infinity-core-F1b.md](infinity-core-F1b.md)、
 N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照する。
 
-## 引き継ぎ（2026-10-19）
+## 引き継ぎ（2026-10-20）
 
 ### 現在地
 
-- v2 の F2-lite 第 1 部を F1b が担当する。実装の順序は B4 → B5 → F2-lite 第 1 部。
-- F2 固有の Lean モジュールは未着手。
-- Cat_∞ の構成は F1 に既存：`F1/QCatSimplicial.lean` と `F1/CatInfinity.lean`。
-  関手 ∞ 圏の core を Hom とする QCat は局所 Kan、γ1 を用いた coherent nerve は quasicategory。
-  再定義せず、F2 の入力として再利用する。対象ビルド成功（1671 jobs）。
-- Cat_∞ の引き戻しの普遍性・lax pullback の構成と普遍性は未完了。
-  これらは Cat_∞ の quasicategory 性だけから完了とは扱わない。
+- 第 1 部（B4・B5、F2L-1〜4）は完了。coherent nerve の Cat_∞、引き戻しと lax pullback、
+  写像空間の普遍性、同値矢印の全部分圏との比較、安定性と完全な両射影まで証明済み。
+- 第 1 部の最終検証：F1・F1B・F2 同時ビルド 6653 jobs、F2 1203 宣言の公理監査成功。
+  受入条件ごとの完了監査表は infinity-core-F1b.md。標準三公理のみ、名前衝突なし。
+- 10-20：F2N-1〜5（旧 N）を F1b へ移管。§3 が第 2 部の正本。
+  κ-small と filtered の定義、ℵ₀ 比較、濃度の単調性、非空性、厳密な retract・同型による保存を検証済み。
+  三集約同時ビルド 6671 jobs、F2 公理監査 1230 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F1b：B4・B5（残りと見積もりは F1b 計画が正本）。
-- F2L-1：既存 Cat_∞ の対象・辺と QCat、写像空間と Fun の core の比較 API を確認・整備。
-  Kerodon Construction 5.5.3.1、Proposition 5.5.3.3・§5.5.3。8〜24 時間。
-- F2L-2：Cat_∞ の引き戻しを実際に構成し、写像空間の普遍性を証明。
-  Kerodon §5.5.3、HTT §3.3.3、Tamme §1 Remark 7。40〜100 時間。
-- F2L-3：Fun(Δ¹,C) と端点評価から lax pullback を構成し、quasicategory 性と普遍性を証明。
-  Tamme §1 Definition 5・Remark 6。24〜60 時間。
-- F2L-4：引き戻しを lax pullback の同値辺上の全部分 ∞ 圏と同定し、
-  安定性・exact 関手への接続界面を整備。Tamme §1 Remark 7・Lemma 8(i)(iv)。24〜60 時間。
-- N：γ3c → γ4 の後、下記 §3 の第 2 部（F2N-1〜5）を担当。
-  filtered 余極限、Ind、compact、冪等完備化、Ind の安定性・compact 生成。
-- I-b：presentable・随伴関手定理を F1b、Bousfield 局所化・P_Σ を N と分担。
-  HTT §5.5、Kerodon 9。F2-lite の後に細分化する。
+- F2N-1：filtered と κ-filtered、cofinality、𝒮 の一般 filtered 余極限と有限極限の交換。40〜100 時間。
+- F2N-2：前層内の Indκ、生成と保存関手の延長の普遍性。50〜120 時間。
+- F2N-3・4：compact・retract、coherent 冪等図式と完備化の普遍性。各 30〜100 時間。
+- F2N-5：Ind(C) の安定性、冪等完備 C の compact 生成。40〜100 時間。
+- その後 F2 後半：presentable と随伴関手定理（F1b）。HTT §5.5、Kerodon 9。細分化は §4。
+  Bousfield 局所化・P_Σ は従来どおり N の I-b の範囲。
 
-### 主要宣言（実装済みの名前のみ）
+### 主要宣言（検証済みのみ）
 
-- `QCat`
-- `qCat_sHom`
-- `qCat_sHom_kanComplex`
-- `CatInfinity`
-- `catInfinity_quasicategory`
-- `CatInfinityFunctor`
-- `catInfinityFunctor_quasicategory`
-- `SpaceInfinity`
-- `spaceInfinity_quasicategory`
+- `F2.IsKappaSmall` / `F2.IsFilteredInfinity` / `F2.IsKappaFiltered`
+- `F2.isKappaSmall_aleph0_iff` / `F2.isKappaFiltered_aleph0_iff` / `F2.isFilteredInfinity_of_retract`
+- `CatInfinity` / `catInfinity_quasicategory`
+- `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
+- `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_projection_commutativity`
+- `F2.laxPullbackCone_isLimit` / `F2.laxPullbackVertexEquiv`
+- `F2.laxPullbackMappingSpaceCone_isLimit`
+- `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
 ### 依存と提供
 
-- F1 の QCat・CatInfinity、Core の関手 ∞ 圏・core・写像空間・極限、γ1 を読み取り専用で使う。
-- γ3・γ4 は N が提供。𝒮 の極限・余極限の比較を重複実装しない。
-- 提供先：D の β4（dg gluing と lax pullback の比較）、K-基盤の Cat^perf・Tamme。
-- N と共有：宇宙、Cat_∞ の極限の界面、Ind・冪等完備化と接続する普遍性。
+- N の HomotopyLimits（γ3c の 𝒮 の余極限）と F1 の straightening は読み取り専用。
+  γ4 は前提として一括仮定せず、必要な公開界面と提供済みの範囲を確認する。
+- D の β4 と K-基盤へ第 1 部の界面を提供。第 2 部の Ind・compact・冪等完備化は F1b が提供する。
 
 ### 未コミット
 
-- 本書は F1b の今回の保存単位に含める。保存コミット後の F2 所有ファイルの変更はなし。
+- 所有パスの未コミットなし（本保存後）。移管前の N の記載は archive に保持。
+- HomotopyLimits 側の未コミット変更は N の作業であり、このレーンの保存対象外。
 
 ### 既知の問題
 
-- 既存の単体集合としての strict pullback と、Cat_∞ 内の引き戻しを区別する必要がある。
-- Tamme のモデル構造を用いた説明は原典の参照にとどめ、主経路は内ホーン充填・
-  categorical fibration の直接的 API と写像空間の普遍性で証明する。
+- F1 の前層・Yoneda は F1 計画の後続工程。Ind の存在を仮定して回避しない。
+- 一般の coherent な図式の余極限と、通常の小圏による strict 図式の余極限を区別する。
+- 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- B4・B5 の完了後、`F1/CatInfinity.lean`・`F1/QCatSimplicial.lean` と
-  coherent nerve の頂点・辺・写像空間比較を読み、F2L-1 の不足分を決める。
+- F2N-1：coslice の filtered 性と cofinality を接続し、一般の coherent filtered 余極限の比較へ進む。
 
 ## 0. 目標と範囲
 
 | 工程 | 担当 | 到達点 | 原典 |
 | --- | --- | --- | --- |
-| F2L-1 | F1b | Cat_∞ の既存 coherent nerve 模型と比較 API | Kerodon §5.5.3 |
-| F2L-2 | F1b | Cat_∞ の引き戻しと写像空間による普遍性 | Kerodon §5.5.3、HTT §3.3.3 |
-| F2L-3 | F1b | 矢印 ∞ 圏を使う lax pullback | Tamme §1 Definition 5・Remark 6 |
-| F2L-4 | F1b（D と接続） | 通常の引き戻しとの比較、安定性・exact 関手の界面 | Tamme §1 Remark 7・Lemma 8 |
-| F2L-N | N | filtered、Ind、compact、冪等完備化、Ind の安定性 | HTT §5.1.4・§5.3、Kerodon 9 |
-| F2 後半 | F1b・N | presentable、随伴関手定理、Bousfield 局所化、P_Σ | HTT §5.5、Kerodon 9 |
+| F2L-1 | F1b | 完了：Cat_∞ の対象・辺・関手 core との写像空間比較、関手の同値の判定 | Kerodon §5.5.3 |
+| F2L-2 | F1b | 完了：Cat_∞ の引き戻し、全試験写像空間の普遍性、二射影と指定 path の同時比較 | Kerodon §5.5.3、HTT §3.3.3 |
+| F2L-3 | F1b | 完了：lax pullback、対象三つ組、native 極限錐、全試験関手 core、Remark 6 の写像空間の 𝒮 内の極限性 | Tamme §1 Definition 5・Remark 6 |
+| F2L-4 | F1b（D と接続） | 完了：通常の引き戻しとの比較、安定性・完全な両射影、極限・余極限の成分判定 | Tamme §1 Remark 7・Lemma 8 |
+| F2N-1〜5 | F1b（10-20 に N から移管） | filtered、Ind、compact、冪等完備化、Ind の安定性 | HTT §5.1.4・§5.3、Kerodon 9 |
+| F2 後半 | F1b（presentable・随伴関手定理）／N（Bousfield・P_Σ） | presentable、随伴関手定理、Bousfield 局所化、P_Σ | HTT §5.5、Kerodon 9 |
 
 F2-lite の範囲に presentable・Pr^L のテンソル積・HA §4.8 は含めない。
 Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg gluing との比較は D の β4。
@@ -107,68 +98,48 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - [Kerodon §5.5.3](https://kerodon.net/tag/0208)：QCat の coherent nerve と ∞ 圏の ∞ 圏。
 - [Kerodon Proposition 5.5.3.3](https://kerodon.net/tag/020B)：局所 Kan 性からの quasicategory 性。
 - [Tamme 2018 §1](https://arxiv.org/html/1703.03331v3#S1)：Definition 5、Remarks 6–7、Lemma 8。
+  Remark 6 の四角形は [PDF 第 5 頁](https://arxiv.org/pdf/1703.03331v3#page=5) で確認する。
 - HTT §3.3.3（∞ 圏の極限）、§5.3（Ind・compact）、§5.5（presentable）。
+- [Kerodon §4.9.4](https://kerodon.net/tag/03S1) の κ-small、[§9.1.1](https://kerodon.net/tag/02P8) の filtered ∞ 圏。
 
-## 3. F2-lite 第 2 部（N）
+## 3. F2-lite 第 2 部（F1b、旧 N から移管）
 
-### 引き継ぎ（N、2026-10-19）
+### 引き継ぎ（F1b、2026-10-20 移管）
 
-- 現在地：計画と分担を確定。F2 固有の実装は未着手。N は γ3c・γ4 を先行する。
-  γ4 の具体例 `K × − ⊣ Map(K,−)` は cf 置換を含む frame Hom と豊穣 Hom を照合済み。
-  γ3c の一般の小図式については重み付き coend・写像空間の end 表示・Kan 置換後の Hom 比較まで実装。
-  反転重みの coend から実際の coherent 余錐と頂点の同定を構成。
-  任意の coherent 錐の豊穣 Hom の族・頂点評価・持ち上げの相対ホモトピーを構成。
-  Kan 置換後の反転 Hom 比較は全 Hom パラメータの豊穣後合成を保ち、普遍切断点から復元できる。
-  この点と実際の coherent 余錐の普遍点も照合。end の作用の係数公式と cone simplex の合成公式を証明。
-  元の図式上の実際の coslice の前合成族を構成し、end の評価・既存の coherent 錐の比較との全体での一致を証明。
-  任意の coherent な tail を保つ始点置換を全ての面・退化に自然に構成し、coslice 全体の前合成へ束ねた。
-  join の標準切断から錐の図式全体の Hom の族とその制限の評価式を構成。
-  頂点での標準 Hom 比較・制限での coend 比較との厳密な一致を証明。
-  一般の通常の小圏上の Kan 値図式について、Kan coend の実際の coherent 余錐の ∞ 余極限性を公開。
-  任意の coherent 図式の切断空間を、セル付加の押し出しと骨格の塔の厳密な極限で表示。
-  left fibration では骨格の制限は Kan fibration。部分余極限の付加と余錐の厳密な延長・比較を構成。
-  部分余極限対象の実際の Kan 値 span とその押し出し候補を構成。部分余錐の制限の π₀ と比較辺の類を照合。
-  境界で同じ成分なら単射側を直して厳密な貼り合わせを構成。輸送を Hom の後合成と同定。
-  二枝の頂点での合成の一致から、輸送した余錐の境界の成分の一致と元の図式の余錐の存在を証明。
-  span の実際の二辺の三角形も照合し、その小さい Kan 押し出しを頂点とする元の図式の余錐を構成。
-  形状の押し出しによる coslice・固定頂点余錐空間の厳密な引き戻しと、余錐空間自体を頂点とする native な極限も構成。
-  実際の付加比較辺による固定終点の左 Hom の前合成を構成し、余錐の制限の Hom 比較の正方形を単体的ホモトピーで照合。
-  二枝のホモトピーを path 置換へ厳密化し、元の余錐空間から部分余極限頂点の Hom の end への実際のホモトピー同値を構成。
-  通常の span の nerve とホーンの全次数の同型・二辺の一致、固定終点余錐空間から点 Hom の end へのホモトピー同値を構成。
-  点 Hom と左 pinched Hom の cospan・end の厳密な同型を構成し、元の図式から native な span の余錐空間への実際のホモトピー同値を公開。
-  共通 end への比較の合成も全単体のホモトピーで照合。任意の余錐の全 Hom による族とその制限を、元の余錐の余極限性なしで比較。
-  既知の余極限余錐では、その族と Hom 比較の互いのホモトピー逆を証明。修正後の右枝にも span の実際の脚を被覆する比較辺を構成。
-  貼った余錐の二枝の全 Hom の族を実際の脚の前合成と同時に照合。指定境界経路の全パラメータを保つ右枝の修正と厳密な貼り合わせを構成。
-  パラメータ変更の自然性と同じ経路の持ち上げの相対ホモトピーも証明。普遍 span の実際の二単体から指定境界経路を抽出し、その経路で元の余錐を構成。
-  両枝・経路の底・小さい Kan 押し出し頂点を照合。全 Hom の族の同値性から余極限性を反映する必要十分条件を証明。
-  普遍 span 側の族から共通 path end への無条件の同値と、元の族の係数評価を構成。両族のホモトピーの構成と元の余錐の余極限性は未完了。
-  四面体の底の共通脚を native な元の脚と同定し、全 Hom の族の両端の係数を厳密に計算。共通部分の Hom 比較を、元の共通脚の前合成と全 Hom パラメータで照合。
-  輸送の合成同型の `.some` が元の二単体への依存を失う点を rfl で確認。元の二単体・二辺の prism と底・始点を固定する比較円柱を保持した合成同型へ差し替えた。
-  二辺固定の三角形比較と長辺の両端固定、同じ底・初期値・境界族を保つ任意の単射パラメータ境界の延長を構成。
-  指定円柱を可縮な延長空間の辺として保持し、終点評価の円柱・辺が元の合成比較そのものと照合。同じ二頂点を結ぶ辺の類と終点の像の一意性も証明。
-  元の三角形 prism の点での三角形を二辺・底の二単体と厳密に照合。非退化な三角形全体に対角辺・可変終点を保つ全 Hom の族を構成し、始対象 Hom 比較も評価を固定する同じ実際の中間円柱として保持。
-  共通余錐に適用し、左右の実際の輸送余錐と Hom 比較を同じ native な span 頂点の Hom 上で構成。全始点と全 Hom の同時輸送作用・元の点の族との底と初期値固定の比較から、元の指定経路に沿う既存の左右の Hom 族のホモトピーとその辺の類を公開。共通 end の HR/HL も評価固定の実際の中間円柱から作る形へ変更し、同じ評価を保つ任意の単射パラメータ境界の族の延長を構成。右 HR の全 Hom 上の円柱と元の指定四面体の円柱を、両辺を厳密に保つ評価固定三角形で接続し、二辺の raw な射影と第三辺の評価固定も検証。第三辺の始点の射影を既存の右 Hom 係数と同定し、終点固定円柱から native な共通脚の前合成へ接続。元の三角形の三辺の類の合成も証明。左側も標準 prism 自身の辺と付加辺を保つ native 左二単体上の三角形・全 Hom 族を構成し、左 HL と二辺固定比較三角形で接続。三辺の類の合成も証明。左長辺の底と両端係数を同じ native な共通脚の表示と厳密に照合し、終点固定円柱から左係数も接続済み。左右の全辺族を終点固定三角形で比較し、二面の射影が既存の native 円柱であること、第一辺の合成等式と固定終点比較の類の一意性も証明。相対延長の既存比較同型と、底・初期値固定の実際の円柱の終点の類を照合。指定経路の付加比較辺も同じ円柱データで実現し、既存の付加輸送比較同型の射と照合。指定枝データは左右の標準 prism 自身の辺を一単体で保持する構成へ強化し、右修正三角形の初辺・共通制限・四面体の辺 12 を照合。制限の輸送自然性を、底・初期値固定の標準 prism 比較円柱と元の余錐の点評価で実現し、既存の一般自然性同型・境界自然性同型の射とそれぞれ終点の類を照合。固定延長の制限が全族の射・終点評価・比較の類を保つことを証明。実際の左三角形と標準輸送三角形を同じ可縮な延長空間へ置き、底・始点固定の比較円柱と長辺制限の raw な式・類を照合。指定 prism 円柱の係数変更で raw な終点比較と既存輸送同型の射が保たれること、標準 prism 自身の比較同型が恒等であることを証明。固定延長の全終端辺から評価間の輸送同型と自然性の正方形を構成し、実際の左三角形の中間・終点評価を照合。全族の関手同型の成分を同じ一点への係数制限と評価で照合し、左三角形の実際の成分を既存の境界自然性、標準側の成分を恒等射へ同定。全辺 prism の一点制限も元の図式の同じ辺を保持する。同じ左三角形比較円柱の初辺制限を一点 prism の円柱に移し、その終点の類を既存の付加辺輸送と同定。中間評価との raw な一致・点評価の類、終点の像が境界自然性と付加辺輸送の合成の点評価であることを証明。同じ右四面体の δ₃ 面で、元の付加辺・標準右辺・native な右二単体を回収し、固定延長の比較円柱と長辺制限を構成。中間評価・二成分を照合し、同じ右初面比較辺の終点の類が右境界自然性・付加辺輸送の合成の点評価であることを証明。δ₁ 修正面も元の修正辺、修正前後の長辺、共通根辺の右退化と始点を保持して回収。同じ修正面から、底・始点固定で修正前後の長辺を結ぶ円柱を構成し、共通根辺の可縮な固定延長空間の同じ実際の辺として保持。終点の一単体を元の指定境界経路そのものと厳密に照合し、正準比較同型の終点の類も元の修正辺へ同定。底の等式による固定延長空間の同型で、左右の長辺を同じ共通根辺空間へ移送。実際の長辺・右修正円柱の始点・全パラメータの raw な族を保持し、終点評価も元の終端辺の評価と厳密に一致。共通根辺上の左右の正準比較の終点の類を、元の境界自然性と付加輸送の合成の点評価へ同定。元の二単体の比較円柱の点評価を同じ根辺の延長空間へ戻し、その終点の類を元の合成同型の成分へ同定。左右の標準長辺間の正準比較も、同じ native な span の合成同型の成分へ同定。修正辺の終点の類も、元の指定境界同型の一点評価へ接続。共通根辺での四因子の相殺、指定経路の共通 end 内の整合性、一般の γ4 は未完了。
+- 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
+  F2N-1 は κ-small/filtered の定義・ℵ₀ 比較、非空性、厳密な retract・同型による保存まで検証済み。
+  一般の filtered 余極限、有限極限との交換、Ind の構成は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
-- 主要宣言：F2N 固有の公開宣言はまだない。
-- 依存と提供：F1 の Yoneda・前層と F1b の随伴・Kan 拡張・cofinality を読み取り専用で使用。
-  第 1 部の Cat_∞・lax pullback は F1b が担当し、N は再定義しない。
-  K-基盤へ Ind の κ 版・compact・冪等完備化、D へ安定性の界面を提供する。
-- 未コミット：N の実装は HomotopyLimits 側。本節は N の保存単位に含める。
-- 既知の問題：𝒮 の小積・任意の span と列の余極限だけでは一般の filtered 図式を扱えない。
-  前層や Ind の存在・普遍性を構造のフィールドに仮定して完了と数えない。
-- 次の一手：γ3c・γ4 の完了後、F1 の前層・Yoneda と一般の余極限の公開界面を照合して F2N-1。
+- 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
+  F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
+  N の一般の coherent 図式の余極限・γ4 の最新状況は e-infinity-algebras.md を参照。
+  移管前の詳細は [archive/infinity-core-F2-N-handoff-2026-10-20.md](archive/infinity-core-F2-N-handoff-2026-10-20.md)。
+- 提供：K-基盤へ Ind の κ 版・compact・冪等完備化、D へ安定性の界面。
+- 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
+- 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
+  Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
+- 次の一手：coslice の filtered 性、cofinality、𝒮 の一般 filtered 余極限へ接続。
 
-| 工程 | 内容と受入条件 | 原典 | 見積もり |
-| --- | --- | --- | --- |
-| F2N-1 | filtered ∞ 圏と κ-filtered の定義、cofinality、𝒮 の filtered 余極限と有限極限の交換。一般の coherent な図式で証明する | HTT §5.3.1–3 | 40〜100 時間 |
-| F2N-2 | 前層の全部分 ∞ 圏として Indκ(C) を構成。filtered 余極限による生成と、保存関手の延長の普遍性を証明する | HTT 5.3.5.1–10 | 50〜120 時間 |
-| F2N-3 | κ-compact、Yoneda 像の compact 性、retract による閉性、Ind の compact 対象の比較 | HTT §5.3.4、5.3.5.5・11 | 30〜80 時間 |
-| F2N-4 | coherent な冪等図式と分裂、前層内の retract 閉包、冪等完備化の普遍性、compact 部分との同定 | HTT §5.1.4、5.3.4.17 | 40〜100 時間 |
-| F2N-5 | C が小安定なら Ind(C) は安定。有限図式の filtered 表示と極限余極限の交換から証明し、冪等完備 C の compact 生成を公開 | HTT 5.3.3・5.3.5.15、HA §1.1.3 | 40〜100 時間 |
+| 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
+| --- | --- | --- | --- | --- |
+| F2N-1 | F1b | filtered ∞ 圏と κ-filtered の定義、cofinality、𝒮 の filtered 余極限と有限極限の交換。一般の coherent な図式で証明する | HTT §5.3.1–3 | 40〜100 時間 |
+| F2N-2 | F1b | 前層の全部分 ∞ 圏として Indκ(C) を構成。filtered 余極限による生成と、保存関手の延長の普遍性を証明する | HTT 5.3.5.1–10 | 50〜120 時間 |
+| F2N-3 | F1b | κ-compact、Yoneda 像の compact 性、retract による閉性、Ind の compact 対象の比較 | HTT §5.3.4、5.3.5.5・11 | 30〜80 時間 |
+| F2N-4 | F1b | coherent な冪等図式と分裂、前層内の retract 閉包、冪等完備化の普遍性、compact 部分との同定 | HTT §5.1.4、5.3.4.17 | 40〜100 時間 |
+| F2N-5 | F1b | C が小安定なら Ind(C) は安定。有限図式の filtered 表示と極限余極限の交換から証明し、冪等完備 C の compact 生成を公開 | HTT 5.3.3・5.3.5.15、HA §1.1.3 | 40〜100 時間 |
 
 宇宙は第 1 部と共通。κ の正則性・図式の小ささを明示し、Indω と非連結 K 用の大きい κ を混同しない。
 有限図式を C 内の図式の filtered 余極限で表示する際は、HTT 5.3.5.15 の有限半順序集合という条件を保持する。
 presentable の一般論・随伴関手定理は F1b、Bousfield 局所化・P_Σ は N が I-b で分担する。
 原典：[HTT](https://www.math.ias.edu/~lurie/papers/HTT.pdf) §5.1.4・§5.3。
 
+## 4. F2 後半（第 2 部の後、F1b）
+
+| 工程 | 内容と受入条件 | 原典 |
+| --- | --- | --- |
+| F2P-1 | accessible ∞ 圏・accessible 関手、κ-compact 生成の濃度変更と Ind の比較 | HTT §5.4 |
+| F2P-2 | presentable ∞ 圏の構成と特徴づけ、小余極限と accessible 局所化の接続 | HTT §5.5.1 |
+| F2P-3 | presentable 間の随伴関手定理、余極限保存と左随伴、accessible な極限保存と右随伴の判定 | HTT §5.5.2 |
+
+Bousfield 局所化・P_Σ は N の分担。上表の定理の結論を構造のフィールドに仮定しない。
 実施記録はコミットメッセージ。本書には現在地と設計を置き、長い型一覧を追記しない。
