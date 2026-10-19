@@ -2495,3 +2495,19 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftLocalColimit_over_universal
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_surjective
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftBoundary_diagram_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCanonicalCocone_transpose_familyAt_val
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeft_functor_relative_boundary_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftFunctor_relative_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftFunctor_relative_pinchedHomMap_equivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_trivialKanFibration

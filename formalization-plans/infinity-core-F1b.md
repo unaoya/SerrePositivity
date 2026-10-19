@@ -41,20 +41,20 @@
 - 充満忠実な inner 単射に沿う指定左単位の可逆性、元の図式の厳密な延長を証明。局所余極限の存在の下で終対象上の元の制限は自明 Kan。
 - 標準 U 余極限の点ごとの族・定値族への移送と保存、単位の U 像が可逆な相対左 Kan 単位の可逆性を証明。
 - 像の類が恒等な単位の相対厳密化、像固定の局所余錐の添字変更、標準底余錐上の局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
-- 底の標準・普遍 comma 余錐を図式固定の族で同型にし、その同型を U 上で持ち上げて局所存在を移送。元の左右 pinched 比較と終対象上の制限の充満忠実性も証明。
-- 最終検証：F1・F1B 同時ビルド成功（3929 jobs）、同時 import 検査成功（F1 7273・F1B 4586 宣言）。
-  公理監査成功（4592 宣言、標準三公理のみ、1243 モジュールに straightening なし）。ソース名衝突 0。
+- 底余錐の図式固定の同型を持ち上げて局所存在を移送。充満忠実な inner 単射と isofibration U の上で、元の相対左制限の始点境界充填・指定 pinched 同値・充満忠実性・局所存在の下で自明 Kan 性を証明。
+- 最終検証：F1・F1B 同時ビルド成功（3934 jobs）、同時 import 検査成功（F1 7296・F1B 4599 宣言）。
+  公理監査成功（4605 宣言、標準三公理のみ、1248 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - 1. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
-  Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。24〜60 時間。
+  Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。残りは右の相対厳密な双対、12〜32 時間。
   絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
   V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。標準 U 余極限との同値も U が inner なら証明済み。
   右持ち上げ条件下の組み立て・任意の U の path 置換・相対 join の関手の制限の相対始点境界充填は証明済み。
   任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
   相対 join の制限は充満忠実、局所存在の下で自明 Kan。元の全部分圏からの制限と族の可換正方形を構成済み。
-  元の左右 pinched 比較、左の厳密な存在と終対象上の自明 Kan 制限は完了。単位の相対厳密化と標準底余錐上の局所存在からの厳密な存在も完了。一般 U 上の元の制限の全射性・相対写像空間比較・右側への移送は未完。
+  元の左右 pinched 比較、左の相対厳密な存在・元の相対制限の全射性と写像空間比較・局所存在の下で自明 Kan 性は完了。右の相対標準条件と厳密な制限定理への移送が残る。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
@@ -76,7 +76,7 @@
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
 - `F1B.kanLeftKanExtension_unit_isIso` / `F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits`
-- `F1B.kanLeftCommaCanonicalFamilyIso` / `F1B.exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits`
+- `F1B.kanRelativeLeftKanRestriction_isFullyFaithful` / `F1B.kanRelativeLeftKanRestriction_trivialKanFibration`
 
 ### 依存と提供
 
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：図式固定の底余錐の同型・持ち上げ・標準局所相対余極限からの厳密な存在、集約・監査・本書）。
+- なし（本保存単位：元の相対左制限の頂点全射性・始点境界充填・指定写像空間比較・充満忠実性・自明 Kan 性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- 一般 U の `kanRelativeLeftKanRestriction` の標的頂点を F₀・H₀・制限の等式で表し、今回の厳密な存在から頂点全射性を導く。
-  `KanLeftCanonicalRestrictionHom` と相対余極限の写像空間判定を使い、一般 U 上の相対 pinched 比較と始点境界充填を証明する。
-  右側への移送と原典 7.3.6.7・7.3.6.9 を閉じる。終対象上の左の厳密な存在と自明 Kan 制限は完了。
+- 右の相対標準 Kan 条件を定義し、反転内部 Hom と `KanFunctorOpposite` で左の元の制限の定理を移す。
+  標準局所相対極限からの元・底固定の存在と、元の右関手の全部分圏からの指定写像空間比較を得る。
+  原典 7.3.6.7・7.3.6.9 の右側も閉じて B5 へ進む。左側の元の相対制限は完了。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
