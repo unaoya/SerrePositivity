@@ -262,4 +262,13 @@ public import SerrePositivity.KST.SConstruction.SCofiberIso
 public import SerrePositivity.KST.SConstruction.SCofiberStableIso
 public import SerrePositivity.KST.SConstruction.SRowAdditivity
 
+public import SerrePositivity.KST.SConstruction.DiagonalProducts
+public import SerrePositivity.KST.SConstruction.SingleRealizationAdditivity
+public import SerrePositivity.KST.SConstruction.IteratedAdditivityRows
+public import SerrePositivity.KST.SConstruction.MultiRealizationAdditivity
+public import SerrePositivity.KST.SConstruction.CofiberPostcomposition
+public import SerrePositivity.KST.SConstruction.CofiberEndofunctor
+public import SerrePositivity.KST.SConstruction.AdditivityNaturality
+public import SerrePositivity.KST.SConstruction.STwoAdditivity
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -20,15 +20,17 @@
 - 単体圏の反対圏上の strict 左 fiber 図式と二重単体解消を構成。各次数の標準因子分解による縮約から、解消の augmentation の局所化同型を証明済み。
 - 反対圏の射列を底の射列と最後のラベルに分け、転置行を実際の余積と同定。対象ごとの局所化同型を解消の対角へ移す定理を証明済み。
 - `simplicialProductQuillenA` を追加仮定なしで証明済み。恒等射の単体 fiber と固定係数の積を使い、元の射対との厳密な可換性も照合した。
-- `objectSAdditivityMap_localized_isIso`、`coreSAdditivityMap_localized_isIso` を証明済み。同じ C 内の全 cofiber 図式の subobject・quotient を対象とする。有限反復・安定部分圏 A/B の相対版は未完。
+- `objectSAdditivityMap_localized_isIso`、`coreSAdditivityMap_localized_isIso` を証明済み。同じ C 内の全 cofiber 図式の subobject・quotient を対象とする。安定部分圏 A/B の相対版は未完。
 - `sCofiberIso`：S_n(cofiber C) ≅ cofiber(S_n C) の厳密な同型を証明済み。零角と押し出しを全 Ar 成分で判定し、全 gapped・全 cofiber の選択を保った二回の転置で逆律を得た。
 - `sCofiberStableIso` は完全関手としての同型で、全ての角・subobject・quotient の評価と厳密に可換。
-- `coreSRowAdditivityMap_localized_isIso`・`objectSRowAdditivityMap_localized_isIso`：任意の S_n 行の加法性を証明済み。面・退化との自然性、全多重対角への帰納移行は未完。
-- 対象ビルド3312 jobs、公理監査1895宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
+- `coreSRowAdditivityMap_localized_isIso`・`objectSRowAdditivityMap_localized_isIso`：任意の S_n 行の加法性を証明済み。元の射対の単体的自然変換を対角に移して全反復へ接続済み。
+- `multiRealizationAdditivityMap_localized_isIso`：全ての正の有限反復 core S• 実現の加法性を証明済み。単回の座標同型を基底に、S/cofiber 交換・行ごとの加法性・対角・既存の自然な反復座標同型で帰納した。r=0 は主張しない。
+- `cofiberEndofunctor` と各角の自然変換を構成し、加法性を完全関手について自然な `multiRealizationAdditivityLocalizedIso` に束ねた。S₂ の元の中央四角形の二つの区間への射対も正の反復実現で局所化同型。
+- 対象ビルド3320 jobs、公理監査1932宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
 
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
-- 加法性の全多重対角への帰納移行・安定部分圏 A/B の相対版：同 Proposition 4.27・Theorem 4.35、8–24時間。単回の全 cofiber 図式の object/core 実現および各 S_n 行の加法性は証明済み。
+- 安定部分圏 A/B の相対 E(A,C,B) の加法性：同 Proposition 4.27・Theorem 4.35、8–24時間。全 C 内の全 cofiber 図式の正の全有限反復実現の加法性と完全関手についての自然性は証明済み。
 - 面の homotopy pullback 条件、S 実現と既存の homotopy fiber の比較、構造射との照合：HTT 5.1.2.2、
   L11 §11・Fiore–Pieper Theorem 4.35、16–40時間。L2 の実現定理に面条件を追加仮定で渡さない。
 - 正の Ω 条件・delooping・負次数消滅と BF 連結スペクトル関手：BGT Definition 7.1、経路正本 §10-5、
@@ -57,17 +59,19 @@
 - `objectSAdditivityMap_localized_isIso`、`objectCoreAdditivity_commute`、`coreSAdditivityMap_localized_isIso`
 - `sCofiberIso`、`sCofiberStableIso`、`sCofiberStableIso_subobject`、`sCofiberStableIso_quotient`
 - `coreSRowAdditivityMap_localized_isIso`、`objectSRowAdditivityMap_localized_isIso`
+- `multiRealizationAdditivityMap_localized_isIso`、`multiRealizationAdditivityLocalizedIso`
+- `cofiberEndofunctor`、`cofiberEvaluationNat`、`sTwoRealizationAdditivityMap_localized_isIso`
 
 ### 依存と提供
 - 所有は `SerrePositivity/KST/SConstruction/`、集約、監査スクリプト、本計画。namespace は同名。
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）。
-- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、任意の S_n 行の加法性。
-- K スペクトル・有限反復および相対版の加法性・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
+- 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解。
+- K スペクトル・相対版の加法性・TriangulatedK0 比較・Morita 不変性は未提供。条件付きの段を完成品に数えない。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 担当ファイルは検証済み保存単位（新規9モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
+- 担当ファイルは検証済み保存単位（新規8モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
@@ -75,7 +79,7 @@
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 1895宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- 1932宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
 - raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。二つの実ホモトピーと quotient 射の局所化同型まで証明済み。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - homotopy fiber 比較を既存の構造射と形式的に合成するだけでは正の Ω 条件の証明にならない。
@@ -83,11 +87,10 @@
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- `sCofiberStableIso_pair` と各 S_n 行の加法性を、全多重対角へ帰納的に移す。最内側の S 図式には `iteratedSRealizationDiagramMap`、多重実現への移行には `iteratedSRealizationCoordinateIso_naturality` を使い、元の subobject・quotient の射対との可換性を証明する。
-- 基底は単回の `coreSAdditivityMap_localized_isIso` と `multiRealizationFunctor 1` の自然な同定。帰納段では各 S_n C に仮定を適用し、交換同型を前合成して行の弱同値を得て、`localized_diagonal_map` と既存の反復座標比較で全対角へ移す。r=0 の core 自体の加法性は主張しない。
-- 必要な安定部分圏 A/B の条件を明示して相対 E(A,C,B) に制限する。全 C 内の theorem を相対版まで完成したとは数えない。
-- 次に S 実現と既存の homotopy fiber の比較を、面の homotopy pullback 条件と元の構造射との照合込みで証明する。これを使って正の Ω 条件・BF 連結 K スペクトルへ進む。
-- `simplicialProductQuillenA` は任意の f:X→Y、g:X→Z に使える。モデル圏・Quillen A 自体を仮定に追加しない。
+- 相対 E(A,C,B) の加法性へ進む。C の replete な安定全部分複体 A/B（包含は完全）と、subobject が A・quotient が B に属す全 cofiber 図式の部分複体を定義する。零対象と cofiber の閉性、包含の完全性を証明し、安定な入力として束ねる。
+- `mcCarthyRho_source`・`mcCarthyRho_quotient` による strict 回収と、θ の quotient の点ごとの同型を使い、同じ相対左 fiber に二つのホモトピーを制限する。replete 性で同型の輸送を処理する。Quillen A の弱同値を単なる部分複体への制限だけで結論しない。
+- 全有限反復へは既証明の `sCofiberStableIso_pair`・`iteratedSAdditivityDiagram`・`iteratedSRealizationCoordinateIso_additivity` を参考に相対版を接続する。
+- 次に S_n の全連続区間への Segal 分解と、経路境界の面の homotopy pullback 条件を実証明する。`sTwoRealizationAdditivityMap_localized_isIso` は n=2 の具体的な入力。S 実現と既存の homotopy fiber・元の構造射の比較を経て正の Ω 条件・BF 連結 K スペクトルへ進む。
 - 検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
 
 ## 1. 目標・担当範囲
