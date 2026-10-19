@@ -10340,3 +10340,81 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy_endpoint_edge
 #print axioms SerrePositivity.KST.SConstruction.kKanPrismCutHomotopy_endpoint_edge
+
+#check @SerrePositivity.KST.SConstruction.fixedHomotopySpanEdge
+#print axioms SerrePositivity.KST.SConstruction.fixedHomotopySpanEdge
+
+#check @SerrePositivity.KST.SConstruction.fixedKanSpanTriangleData
+#print axioms SerrePositivity.KST.SConstruction.fixedKanSpanTriangleData
+
+#check @SerrePositivity.KST.SConstruction.fixedKanHomotopySpanBoundary
+#print axioms SerrePositivity.KST.SConstruction.fixedKanHomotopySpanBoundary
+
+#check @SerrePositivity.KST.SConstruction.fixedHomotopySpanBoundary_precomp
+#print axioms SerrePositivity.KST.SConstruction.fixedHomotopySpanBoundary_precomp
+
+#check @SerrePositivity.KST.SConstruction.fixedHomotopySpanBoundary_target
+#print axioms SerrePositivity.KST.SConstruction.fixedHomotopySpanBoundary_target
+
+#check @SerrePositivity.KST.SConstruction.fixedKanHomotopySpanComposite
+#print axioms SerrePositivity.KST.SConstruction.fixedKanHomotopySpanComposite
+
+#check @SerrePositivity.KST.SConstruction.fixedKanHomotopySpanComposite_relative
+#print axioms SerrePositivity.KST.SConstruction.fixedKanHomotopySpanComposite_relative
+
+#check @SerrePositivity.KST.SConstruction.fixedKanHomotopySpanComposite_relative_source
+#print axioms SerrePositivity.KST.SConstruction.fixedKanHomotopySpanComposite_relative_source
+
+#check @SerrePositivity.KST.SConstruction.coherentDoubleCutBoundary
+#print axioms SerrePositivity.KST.SConstruction.coherentDoubleCutBoundary
+
+#check @SerrePositivity.KST.SConstruction.coherentDoubleCutHomotopy_left_relative
+#print axioms SerrePositivity.KST.SConstruction.coherentDoubleCutHomotopy_left_relative
+
+#check @SerrePositivity.KST.SConstruction.coherentDoubleCutHomotopy_right_relative
+#print axioms SerrePositivity.KST.SConstruction.coherentDoubleCutHomotopy_right_relative
+
+#check @SerrePositivity.KST.SConstruction.coherentCutSpanComposite
+#print axioms SerrePositivity.KST.SConstruction.coherentCutSpanComposite
+
+#check @SerrePositivity.KST.SConstruction.coherentCutSpanComposite_relative
+#print axioms SerrePositivity.KST.SConstruction.coherentCutSpanComposite_relative
+
+#check @SerrePositivity.KST.SConstruction.coherentCutSpanComposite_relative_original
+#print axioms SerrePositivity.KST.SConstruction.coherentCutSpanComposite_relative_original
+
+#check @SerrePositivity.KST.SConstruction.kPrismCutSpanFamilies_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kPrismCutSpanFamilies_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrism_top_object
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrism_top_object
+
+#check @SerrePositivity.KST.SConstruction.kKanPrism_top_simplex_object
+#print axioms SerrePositivity.KST.SConstruction.kKanPrism_top_simplex_object
+
+#check @SerrePositivity.KST.SConstruction.kKanPrism_top_hom_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.kKanPrism_top_hom_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.kKanPrismCutSpanComposite
+#print axioms SerrePositivity.KST.SConstruction.kKanPrismCutSpanComposite
+
+#check @SerrePositivity.KST.SConstruction.kKanPrismCutSpanComposite_relative
+#print axioms SerrePositivity.KST.SConstruction.kKanPrismCutSpanComposite_relative
+
+#check @SerrePositivity.KST.SConstruction.relativeKFixedSpanFamilyRectificationData
+#print axioms SerrePositivity.KST.SConstruction.relativeKFixedSpanFamilyRectificationData
+
+#check @SerrePositivity.KST.SConstruction.relativeKFixedSpanFamilyRectificationData_boundary
+#print axioms SerrePositivity.KST.SConstruction.relativeKFixedSpanFamilyRectificationData_boundary
+
+#check @SerrePositivity.KST.SConstruction.relativeKFixedSpanFamilyRectificationData_projection
+#print axioms SerrePositivity.KST.SConstruction.relativeKFixedSpanFamilyRectificationData_projection
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFixedSpanHomotopy
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFixedSpanHomotopy
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFixedSpanHomotopy_boundary
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFixedSpanHomotopy_boundary
+
+#check @SerrePositivity.KST.SConstruction.relativeSequenceFixedSpanRectification
+#print axioms SerrePositivity.KST.SConstruction.relativeSequenceFixedSpanRectification

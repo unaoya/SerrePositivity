@@ -680,4 +680,10 @@ public import SerrePositivity.KST.SConstruction.CoherentPathInsertion
 public import SerrePositivity.KST.SConstruction.CoherentPathMappingHomotopy
 public import SerrePositivity.KST.SConstruction.CoherentDiagramCutDecoding
 public import SerrePositivity.KST.SConstruction.KPrismPathDecoding
+public import SerrePositivity.KST.SConstruction.FixedKanSpanBoundary
+public import SerrePositivity.KST.SConstruction.FixedKanSpanFamilies
+public import SerrePositivity.KST.SConstruction.CoherentCutSpanFamilies
+public import SerrePositivity.KST.SConstruction.KPrismCutSpanFamilies
+public import SerrePositivity.KST.SConstruction.RelativeFixedSequenceSpanFamilies
+public import SerrePositivity.KST.SConstruction.KFixedSpanFamilies
 /-! # ∞-S• 構成と連結 K 理論 -/
