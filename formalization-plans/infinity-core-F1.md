@@ -34,8 +34,8 @@
   全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   区間上の任意の left fibration の輸送円柱から全空間への比較は前合成同値。
-  底・境界が動く相対 lift 族全体の前合成比較も同値であり、実際の輸送円柱にも適用済み。
-- 対象ビルド3014 jobs、公理監査5852宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  積上の表現空間と元の表現空間への内部 Hom は厳密に同型。両射影・頂点評価も回収済み。
+- 対象ビルド3020 jobs、公理監査5888宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -68,7 +68,7 @@
 - `pointedPrismEquivalenceEndpoints_trivialKanFibration`、`pointedCylinderPrismEndpoints_trivialKanFibration`
 - `pointedCylinderEquivalenceSquareIso`、`cylinderEquivalenceSquareEndpoints_trivialKanFibration`
 - `relativeBoundaryFamilyPre_isQCatEquivalence`、`intervalTransportCylinder_boundaryFamily_isQCatEquivalence`
-- `intervalWitnessRestriction_trivialKanFibration`、`transportWitnessRestrictionFiberIso`
+- `intervalWitnessRestriction_trivialKanFibration`、`transportWitnessTensorIso`
 
 ### 依存と提供
 
@@ -98,8 +98,8 @@
 
 ### 次の一手
 
-実際の区間境界制限の結論から、点上の表現空間の可縮性を証明する（Lemma 5.6.9.2）。
-区間との直積上の表現と点上の表現の区間族を結び、境界制限を対角写像の比較へ移す。
+`transportWitnessTensorIso` とパラメーターの境界制限の自然性を証明し、点上の可縮性へ進む。
+点の積を区間へ移す底の同型も保ち、区間境界制限を対角写像の比較へ結ぶ（Lemma 5.6.9.2）。
 非空性は小ささを満たす実際の表現から供給し、存在仮定として主経路へ隠さない。
 その後、単体の表現空間の可縮性と一般の境界固定延長（Theorem 5.6.8.3、§5.6.5）へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
