@@ -6434,3 +6434,69 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso_assembly
 #print axioms SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso_assembly
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroInclusion_naturality
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroInclusion_naturality
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroRange_image_iso
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroRange_image_iso
+
+#check @SerrePositivity.KST.SConstruction.coordinateZeroBoundary_image_iso
+#print axioms SerrePositivity.KST.SConstruction.coordinateZeroBoundary_image_iso
+
+#check @SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso
+#print axioms SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso
+
+#check @SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso_zero_app
+#print axioms SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso_zero_app
+
+#check @SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso_succ_app
+#print axioms SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso_succ_app
+
+#check @SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso_diagonal_app
+#print axioms SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso_diagonal_app
+
+#check @SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.multiFixedSEndofunctorIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSOne_map
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSOne_map
+
+#check @SerrePositivity.KST.SConstruction.multiSOneSlideCoreAt
+#print axioms SerrePositivity.KST.SConstruction.multiSOneSlideCoreAt
+
+#check @SerrePositivity.KST.SConstruction.multiSOneSlideCoreAt_hom
+#print axioms SerrePositivity.KST.SConstruction.multiSOneSlideCoreAt_hom
+
+#check @SerrePositivity.KST.SConstruction.multiSOneSlideCoreAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.multiSOneSlideCoreAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.multiSOneSlideCoreIso
+#print axioms SerrePositivity.KST.SConstruction.multiSOneSlideCoreIso
+
+#check @SerrePositivity.KST.SConstruction.multiSOneSlideCoreIso_realization
+#print axioms SerrePositivity.KST.SConstruction.multiSOneSlideCoreIso_realization
+
+#check @SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso_fatBoundary
+#print axioms SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso_fatBoundary
+
+#check @SerrePositivity.KST.SConstruction.sOneInnerOuterReducedIso
+#print axioms SerrePositivity.KST.SConstruction.sOneInnerOuterReducedIso
+
+#check @SerrePositivity.KST.SConstruction.sOneInnerOuterReducedIso_quotient
+#print axioms SerrePositivity.KST.SConstruction.sOneInnerOuterReducedIso_quotient
+
+#check @SerrePositivity.KST.SConstruction.sOneInnerOuterReducedIso_comparison
+#print axioms SerrePositivity.KST.SConstruction.sOneInnerOuterReducedIso_comparison
+
+#check @SerrePositivity.KST.SConstruction.subcomplexCofiberMap
+#print axioms SerrePositivity.KST.SConstruction.subcomplexCofiberMap
+
+#check @SerrePositivity.KST.SConstruction.subcomplexCofiberMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.subcomplexCofiberMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.subcomplex_image_iso_inv
+#print axioms SerrePositivity.KST.SConstruction.subcomplex_image_iso_inv
+
+#check @SerrePositivity.KST.SConstruction.subcomplexCofiberIso
+#print axioms SerrePositivity.KST.SConstruction.subcomplexCofiberIso
