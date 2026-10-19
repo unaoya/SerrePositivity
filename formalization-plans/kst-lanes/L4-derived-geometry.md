@@ -1283,6 +1283,19 @@
 - `exists_unbounded_kInjective_resolution`：任意の非有界複体から、各項 injective な K-injective 複体への単射準同型の存在を証明した。存在・判定・分解を未証明フィールドや追加公理にしていない。
 - 次の工程：この非有界分解を実際のアフィン係数層の導来随伴へ接続する。下に有界なアフィン Dqc 同値は既に証明済みであり、非有界アフィン同値と T1 以降はまだ完了していない。
 
+## 61. 非有界の導来模型・随伴の現在地
+
+- 保存前検証：集約対象ビルド 4116 jobs 成功、公理監査 2548 宣言、標準 3 公理のみ、KTheory import なし。
+
+- `kInjectiveDerivedFunctor_isEquivalence`：非輪状部分圏に右直交するホモトピー対象の充満部分圏から、Mathlib の元の非有界導来圏への完全忠実性と本質的全射性を証明した。
+- `kInjectiveLocalizationAdjunction`：実際の非有界導来局所化 Qh の右随伴を、自然な Hom 全単射から構成した。余単位の同型性、単位の準同型性も証明した。
+- `kInjectiveLocalizerMorphism_isRightDerivabilityStructure`：上の単位から関手的な分解を構成して、非有界右導来構造を証明した。射の圏での右分解も構成した。
+- `unboundedRightDerivedHomotopy_isRightDerivedFunctor` と `unboundedRightDerivedHomotopy_postcomp`：任意のホモトピー圏上の関手の右導来関手と、任意の後合成後の普遍性を証明した。
+- `unboundedDerivedAdjunction`：完全な左随伴と加法的右随伴の非有界導来随伴を、普遍性を使って実際に構成した。
+- `affineDerivedΓ` と `affineDerivedAdjunction`：元の全係数加群層の非有界右導来大域切断と、既存の `affineDerivedTilde` との随伴を構成した。H の可換性・平坦性を追加していない。
+- 単位と Dqc 上の余単位の非有界での同型性は次の残件。非有界アフィン同値と T1・T1′以降を、この段階で完了とは報告しない。
+- 工程の区切りの全体ビルド：13722 jobs 成功。以前の他レーンの重複宣言による root build 失敗は今回再現しなかった。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1516,6 +1529,7 @@
 | `smallExactChainTail_acyclic`・`smallAcyclicChainCover_epi` | DerivedGeometry/SmallAcyclicChainTail・SmallAcyclicChainBounds | 実装・対象ビルド済み |
 | `SmallAcyclicTestIndex`・`exists_nonzero_smallAcyclicTest_subobject` | DerivedGeometry/SmallAcyclicTestFamily・SmallAcyclicTestSubobject | 実装・対象ビルド済み |
 | `isKInjective_of_smallAcyclicTests`・`exists_unbounded_kInjective_resolution` | DerivedGeometry/SmallAcyclicTestCriterion・UnboundedKInjectiveResolution | 実装・対象ビルド済み |
+| `affineDerivedΓ`・`affineDerivedAdjunction` | DerivedGeometry/AffineDerivedAdjunction | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
