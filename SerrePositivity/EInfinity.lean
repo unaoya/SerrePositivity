@@ -285,3 +285,6 @@ public import SerrePositivity.EInfinity.IntervalCuts.EdgeChainIdentity
 public import SerrePositivity.EInfinity.IntervalCuts.ComponentLinearIdentities
 public import SerrePositivity.EInfinity.IntervalCuts.IntervalInputComponents
 public import SerrePositivity.EInfinity.IntervalCuts.CochainAction
+public import SerrePositivity.EInfinity.IntervalCuts.CochainUnit
+public import SerrePositivity.EInfinity.IntervalCuts.CutRenaming
+public import SerrePositivity.EInfinity.IntervalCuts.TensorFirstSwap

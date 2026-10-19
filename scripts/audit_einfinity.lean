@@ -993,6 +993,23 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.ι_cochainAction,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_neg_vertex,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_neg_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorOfDegree_one,
+      `SerrePositivity.EInfinity.IntervalCuts.unitWord_edgeNondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.unitWord_edgeOutput,
+      `SerrePositivity.EInfinity.IntervalCuts.unitWord_edgeSign,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_unitElement,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_unitElement,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_unit_input,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_unit_inv,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_unit,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeNondegenerate_rename_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeFiber_rename,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutputVertices_rename,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_rename,
+      `SerrePositivity.EInfinity.IntervalCuts.activePositions_rename,
+      `SerrePositivity.EInfinity.IntervalCuts.edgePositionExponent_rename,
+      `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.swapFirstIso_apply,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -3023,3 +3040,19 @@ example (y : (interval ℤ).X (-2)) : y = 0 :=
   interval_eq_zero_of_other ℤ (-2) (by decide) (by decide) y
 example (y : (interval ℤ).X 1) : y = 0 :=
   interval_eq_zero_of_other ℤ 1 (by decide) (by decide) y
+
+-- 一文字単位の作用は全整数複体の射として単位子と一致する。
+example : (complexUnit ℤ ▷ interval ℤ) ≫ cochainAction ℤ 1 ≫
+    (SerrePositivity.TensorPowers.oneIso (interval ℤ)).hom = (λ_ (interval ℤ)).hom :=
+  cochainAction_unit ℤ
+-- 010 の辺の切断は色を交換すると 101 になり、出力の二辺は交換される。
+example : Word.rename (Equiv.swap (0 : Fin 2) 1) compositionInner =
+    (⟨![1, 0, 1], by decide⟩ : BasisWord 2 1) := by decide
+example : edgeSign compositionInner.val 1 = 1 := by decide
+example : edgeSign (Word.rename (Equiv.swap (0 : Fin 2) 1) compositionInner).val 1 = -1 := by
+  decide
+example : edgeOutput (Word.rename (Equiv.swap (0 : Fin 2) 1) compositionInner) 1 =
+    edgeOutput compositionInner 1 ∘ (Equiv.swap (0 : Fin 2) 1).symm :=
+  edgeOutput_rename _ _ _
+example : EdgeNondegenerate (Word.rename (Equiv.swap (0 : Fin 2) 1) compositionInner).val 1 :=
+  (edgeNondegenerate_rename_iff _ _ _).mpr (by decide)

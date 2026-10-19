@@ -543,7 +543,11 @@ nullary を含む TR の部分合成保存は完了。
 `cochainActionBilinear_d` は零成分を含む全整数次数の Koszul Leibniz 則。
 `cochainAction` は実際の複体射 `χ(n) ⊗ interval → interval^{⊗n}` であり、
 `cochainAction_neg_vertex`・`neg_edge` はその値を構成済みの有限切断へ戻す。
-具体的な Δ¹ の余代数構造は未完成。置換・単位・部分合成の全余代数法則が残る。
+`cochainAction_unit` は χ の一文字単位の作用と単位子の一致を全整数複体の射として証明する。
+`edgeOutput_rename` は色を置換した全出力族の逆置換公式。
+`edgeNondegenerate_rename_iff`・`activePositions_rename` は非零性と活動位置を保存する。
+`swapFirstIso_apply` は実際の複体の先頭二因子交換の Koszul 符号を評価する。
+具体的な Δ¹ の余代数構造は未完成。置換・部分合成の余代数法則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
