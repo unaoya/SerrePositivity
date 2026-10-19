@@ -588,6 +588,9 @@ nullary を含む TR の部分合成保存は完了。
 `lineRank_after_pivot_eq_degree` は非零切断点以後の行番号が語次数であること。
 `segmentDegree_two_zero/one` は非零内側切断の二部分語の行次数がそれぞれ内側全次数・零であること。
 `NestedEdgeCut.compositionSign_pivot/vertex` は合成符号が正、`compositionSign_nonpivot` は最初の出現の後続次数による公式。
+`appendIso_tensorVectorAt`・`appendIso_inv_tensorVectorAt` は実際の面テンソルの連結・分割を全指定整数次数で評価する。
+`tensorCoInsertionAction_on_blocks` は既存の指定位置の余代入を同じ前後ブロックへ接続する。
+`coInsertionBlocks_apply`・`coInsertionBlocks_face_apply` は係数次数×前方次数の交換符号と実際の面テンソル値を評価する。
 具体的な Δ¹ の余代数構造は未完成。二段作用のテンソル評価と符号の一致・右辺の有限和・nullary、
 部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。

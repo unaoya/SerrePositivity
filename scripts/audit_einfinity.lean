@@ -1194,6 +1194,16 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionExponent_nonpivot,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionSign_nonpivot,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositionSign_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_append,
+      `SerrePositivity.EInfinity.IntervalCuts.tupleDegree_arity_transport,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorVectorAt_arity_transport,
+      `SerrePositivity.EInfinity.IntervalCuts.appendIso_tensorVector,
+      `SerrePositivity.EInfinity.IntervalCuts.appendIso_tensorVectorAt,
+      `SerrePositivity.EInfinity.IntervalCuts.appendIso_inv_tensorVectorAt,
+      `SerrePositivity.EInfinity.IntervalCuts.coInsertionBlocks,
+      `SerrePositivity.EInfinity.IntervalCuts.tensorCoInsertionAction_on_blocks,
+      `SerrePositivity.EInfinity.IntervalCuts.coInsertionBlocks_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.coInsertionBlocks_face_apply,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3456,3 +3466,35 @@ example : compositionSign compositionInner compositionInner 0 nestedRepeatedExam
 example : compositionSign zeroPermutationWord (permutationWord (1 : Equiv.Perm (Fin 2))) 0
     nestedVertexExample.partition = 1 :=
   NestedEdgeCut.compositionSign_vertex nestedVertexExample rfl
+
+-- 実際の面テンソルの連結は、空の前方列と二つの辺を含む。
+example : (SerrePositivity.TensorPowers.appendIso (interval ℤ) 0 1).hom.f (-1)
+    (HomologicalComplex.ιTensorObj (SerrePositivity.TensorPowers.power (interval ℤ) 0)
+      (SerrePositivity.TensorPowers.power (interval ℤ) 1) 0 (-1) (-1) rfl
+      (tensorVector ℤ 0 Fin.elim0 ⊗ₜ[ℤ] tensorVector ℤ 1 (fun _ => edge))) =
+    tensorVectorAt ℤ 1 (Fin.append Fin.elim0 (fun _ : Fin 1 => edge)) (-1) (by decide) :=
+  appendIso_tensorVector ℤ 0 1 Fin.elim0 (fun _ => edge) (-1) (by decide)
+example : (SerrePositivity.TensorPowers.appendIso (interval ℤ) 1 1).hom.f (-2)
+    (HomologicalComplex.ιTensorObj (SerrePositivity.TensorPowers.power (interval ℤ) 1)
+      (SerrePositivity.TensorPowers.power (interval ℤ) 1) (-1) (-1) (-2) rfl
+      (tensorVector ℤ 1 (fun _ => edge) ⊗ₜ[ℤ] tensorVector ℤ 1 (fun _ => edge))) =
+    tensorVectorAt ℤ 2 (Fin.append (fun _ : Fin 1 => edge) (fun _ : Fin 1 => edge))
+      (-2) (by decide) :=
+  appendIso_tensorVector ℤ 1 1 (fun _ => edge) (fun _ => edge) (-2) (by decide)
+
+-- 係数と前方の次数がともに−1なら、実際のブロック余代入には負符号が付く。
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers HomologicalComplex in
+example (K C : Complex ℤ) (θ : C ⊗ K ⟶ power K 2) (a : C.X (-1))
+    (x : (power K 1).X (-1)) (y : K.X (-1)) (w : (power K 0).X 0) :
+    (coInsertionBlocks K C 1 2 0 θ).f (-3)
+      (ιTensorObj C (power K 1 ⊗ (K ⊗ power K 0)) (-1) (-2) (-3) rfl
+        (a ⊗ₜ[ℤ] ιTensorObj (power K 1) (K ⊗ power K 0) (-1) (-1) (-2) rfl
+          (x ⊗ₜ[ℤ] ιTensorObj K (power K 0) (-1) 0 (-1) rfl (y ⊗ₜ[ℤ] w)))) =
+      -(appendIso K 1 2).hom.f (-3)
+        (ιTensorObj (power K 1) (power K 2) (-1) (-2) (-3) rfl
+          (x ⊗ₜ[ℤ] (appendIso K 2 0).hom.f (-2)
+            (ιTensorObj (power K 2) (power K 0) (-2) 0 (-2) rfl
+              (θ.f (-2) (ιTensorObj C K (-1) (-1) (-2) rfl (a ⊗ₜ[ℤ] y)) ⊗ₜ[ℤ] w)))) := by
+  simpa only [show (-1 : ℤ) * (-1) = 1 by decide, Int.negOnePow_one,
+    Units.smul_def, Units.coe_neg_one, neg_one_zsmul] using!
+    coInsertionBlocks_apply K C 1 2 0 θ (-1) (-1) (-1) 0 (-3) rfl a x y w

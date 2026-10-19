@@ -317,3 +317,8 @@ public import SerrePositivity.EInfinity.IntervalCuts.NestedOutputValues
 public import SerrePositivity.EInfinity.IntervalCuts.CutLineRanks
 public import SerrePositivity.EInfinity.IntervalCuts.CutSegmentDegrees
 public import SerrePositivity.EInfinity.IntervalCuts.NestedCompositionSigns
+public import SerrePositivity.EInfinity.IntervalCuts.TupleAppend
+public import SerrePositivity.EInfinity.IntervalCuts.TensorAppend
+public import SerrePositivity.EInfinity.IntervalCuts.CoInsertionBlocks
+public import SerrePositivity.EInfinity.IntervalCuts.CoInsertionBlockEvaluation
+public import SerrePositivity.EInfinity.IntervalCuts.CoInsertionFaceEvaluation
