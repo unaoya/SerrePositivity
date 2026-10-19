@@ -22,8 +22,7 @@
   標準単体上の cocartesian fibration の最終 fiber への厳密な retraction と、そこで固定された輸送を構成。
   射影の終点指定の辺の持ち上げ（任意次元の最後の頂点版も）を証明。
 - cocartesian section の全部分単体集合を構成し、inner fibration の場合の quasicategory 性を証明。
-  前合成の関手性、一般の strict transport の図式と fiber 評価射、任意パラメータの族の curry・uncurry を構成。
-  部分パラメータと始対象の評価を同時に固定した延長、評価の自明 Kan fibration 性と ∞ 圏同値を証明。
+  前合成・strict transport・パラメータ付き curry を構成。部分パラメータと始対象の評価を固定した延長、評価の自明 Kan fibration 性と同値を証明。
 - 一般の universal scaffold を構成し、各 fiber の自明 Kan fibration 性と水平辺の cocartesian 性を証明。
   有限鎖の帰納と底についての局所性で、任意の通常の圏の nerve 上の scaffold の全空間の前合成同値を証明。
   universal scaffold も、内ホーンを含む任意の単体集合への底変換後に前合成同値となる。
@@ -43,8 +42,9 @@
   局所余極限から、comma の相対 join の図式を各 fiber で普遍な余錐として coherent に構成済み。
   右端の候補と指定変換を抽出済み。反転による局所比較と標準余錐からの比較は厳密に一致。
   comma の恒等矢印から各矢印への比較も構成。元の K を固定し、底への射影は標準の指定変換と一致。
-- 最終検証：F1・F1B 同時ビルド成功（3525 jobs）、同時 import 検査成功（F1 6011・F1B 3764 宣言）。
-  公理監査成功（3768 宣言、標準三公理のみ、1024 モジュールに straightening なし）。ソース名衝突 0。
+  候補の標準局所輸送と、その余錐を始端に持つ相対 join 内の比較を構成。図式と頂点は比較中も固定。
+- 最終検証：F1・F1B 同時ビルド成功（3530 jobs）、同時 import 検査成功（F1 6011・F1B 3806 宣言）。
+  公理監査成功（3810 宣言、標準三公理のみ、1029 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -72,7 +72,7 @@
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
-- `F1B.exists_kanLeftComma_diagram_with_colimit_fibers` / `F1B.kanLocalCommaIdentityComparison`
+- `F1B.exists_kanLeftComma_diagram_with_colimit_fibers` / `F1B.kanLeftCommaCoconeTransport`
 
 ### 依存と提供
 
@@ -83,7 +83,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：指定変換の回収、comma の最大値による変形、恒等矢印からの大域・局所比較、集約・監査・本書）。
+- なし（本保存単位：錐の収縮、相対 join 内の錐の比較、候補の局所輸送と始端の同定、図式・頂点固定、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,10 +98,10 @@
 
 ### 次の一手
 
-- `kanLocalCommaIdentityComparison` は元の K を固定し、底では slice の標準変換を表す。
-  次はこの比較と `kanRelativeJoinShiftPrism` を使い、相対 join 内の局所余錐間の輸送の全体を構成。
-  `kanRelativeJoinFiberCocone` の標準局所比較への制限を `LeftKanCoconeTransport` の余錐と比較し、
-  `IsLeftKanExtension` の存在へ接続する（Kerodon 7.3.4–5）。四境界の一致だけで存在を仮定しない。
+- `kanLeftCommaCoconeTransport` と `kanLocalRelativeJoinConeComparison` は構成済み。
+  次は比較の終端を `kanRelativeJoinBaseFiberIso` を通した fiber の余錐の標準局所比較への制限と同定。
+  図式と頂点を固定した比較に沿って始端へ余極限性を移し、構成済みの局所輸送に適用する。
+  `IsLeftKanExtension` の存在へ接続する（Kerodon 7.3.4–5）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、

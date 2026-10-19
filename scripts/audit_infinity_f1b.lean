@@ -1747,3 +1747,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLocalCommaIdentityComparison_source
 
 #check @SerrePositivity.InfinityCategories.F1B.kanLocalCommaIdentityComparison_projection
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConeContraction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinConeComparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinConeComparison_one
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCoconeTransport
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLocalRelativeJoinConeComparison_zero
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLocalRelativeJoinConeComparison_diagram
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLocalRelativeJoinConeComparison_vertex
