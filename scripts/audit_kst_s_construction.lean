@@ -12813,3 +12813,109 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePasting_projected_full_trace
 #check @SerrePositivity.KST.SConstruction.monicKPrismNativePasting_original_full_trace
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismNativePasting_original_full_trace
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeTransport
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeTransport
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_zero
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_zero
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_one
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_one
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_source
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_source
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_target
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_target
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_triangle
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_triangle
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_vertical_zero
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_vertical_zero
+#check @SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_vertical_one
+#print axioms SerrePositivity.KST.SConstruction.endpointFixedEdgeSquare_vertical_one
+#check @SerrePositivity.KST.SConstruction.familyChainCompositeClass
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositeClass
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionWitness_class
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionWitness_class
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionWitness_class_eq
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionWitness_class_eq
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionComparisonTriangle
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionComparisonTriangle
+#check @SerrePositivity.KST.SConstruction.FamilyChainCompositeData
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainCompositeData
+#check @SerrePositivity.KST.SConstruction.familyChainCompositeData
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositeData
+#check @SerrePositivity.KST.SConstruction.familyChainCompositeData_trace
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositeData_trace
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionWitness_constant_of_trace_nil
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionWitness_constant_of_trace_nil
+#check @SerrePositivity.KST.SConstruction.familyChainCompositeData_constant_of_trace_nil
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositeData_constant_of_trace_nil
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionComparisonSquare
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionComparisonSquare
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionComparison
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionComparison
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionComparison_source
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionComparison_source
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionComparison_target
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionComparison_target
+#check @SerrePositivity.KST.SConstruction.FamilyChainCompositionWitness
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainCompositionWitness
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionInputTrace
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionInputTrace
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionInputTrace_eq
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionInputTrace_eq
+#check @SerrePositivity.KST.SConstruction.familyChainCompositionTriangles
+#print axioms SerrePositivity.KST.SConstruction.familyChainCompositionTriangles
+#check @SerrePositivity.KST.SConstruction.KanMappingComposition
+#print axioms SerrePositivity.KST.SConstruction.KanMappingComposition
+#check @SerrePositivity.KST.SConstruction.kanMappingComposition
+#print axioms SerrePositivity.KST.SConstruction.kanMappingComposition
+#check @SerrePositivity.KST.SConstruction.mappingSquareUncurry
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareUncurry
+#check @SerrePositivity.KST.SConstruction.mappingSquareUncurry_zero
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareUncurry_zero
+#check @SerrePositivity.KST.SConstruction.mappingSquareUncurry_one
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareUncurry_one
+#check @SerrePositivity.KST.SConstruction.mappingSquareUncurry_source
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareUncurry_source
+#check @SerrePositivity.KST.SConstruction.mappingSquareUncurry_target
+#print axioms SerrePositivity.KST.SConstruction.mappingSquareUncurry_target
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionData
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionData
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionData_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionData_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionData_zero
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeCorrectionData_zero
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeSecondCompatibilityData
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeSecondCompatibilityData
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeSecondCompatibilityData_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeSecondCompatibilityData_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeSecondCompatibilityData_zero
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeSecondCompatibilityData_zero
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionChain
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionChain
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionChain_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionChain_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionChain_zero_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionChain_zero_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData_trace
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData_trace
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData_zero
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData_zero
+#check @SerrePositivity.KST.SConstruction.KanMappingComposition.mk
+#print axioms SerrePositivity.KST.SConstruction.KanMappingComposition.mk
+#check @SerrePositivity.KST.SConstruction.KanMappingComposition.edge
+#print axioms SerrePositivity.KST.SConstruction.KanMappingComposition.edge
+#check @SerrePositivity.KST.SConstruction.KanMappingComposition.triangle
+#print axioms SerrePositivity.KST.SConstruction.KanMappingComposition.triangle
+#check @SerrePositivity.KST.SConstruction.FamilyChainCompositionWitness.nil
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainCompositionWitness.nil
+#check @SerrePositivity.KST.SConstruction.FamilyChainCompositionWitness.cons
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainCompositionWitness.cons
+#check @SerrePositivity.KST.SConstruction.FamilyChainCompositeData.mk
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainCompositeData.mk
+#check @SerrePositivity.KST.SConstruction.FamilyChainCompositeData.homotopy
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainCompositeData.homotopy
+#check @SerrePositivity.KST.SConstruction.FamilyChainCompositeData.witness
+#print axioms SerrePositivity.KST.SConstruction.FamilyChainCompositeData.witness
