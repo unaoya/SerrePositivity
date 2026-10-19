@@ -2411,3 +2411,27 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanExtension_unit_component_isIso
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanExtension_unit_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeEquivalencePath_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanEquivalencePath_functorIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanExtension_canonical_of_unit_isIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_of_functorIso
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strictification_of_path
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopy_isInvertible_of_constant
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyEquivalencePath
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyEquivalencePath_ι
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyEquivalencePath_zero
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyEquivalencePath_one
+
+#check @SerrePositivity.InfinityCategories.F1B.kanHomotopyEquivalencePath_map_of_constant
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strictification_of_unit_over_identity

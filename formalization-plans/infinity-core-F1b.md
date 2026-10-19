@@ -40,9 +40,10 @@
   標準相対左 Kan 条件の保存・反映、右端の厳密な回収、U の後合成自然性、元の相対制限との可換正方形を証明。
 - 充満忠実な inner 単射に沿う指定左単位の可逆性、元の図式の厳密な延長を証明。局所余極限の存在の下で終対象上の元の制限は自明 Kan。
 - 標準 U 余極限の点ごとの族・定値族への移送と保存、単位の U 像が可逆な相対左 Kan 単位の可逆性を証明。
+- 底で定値な指定単位・可逆 path の延長から、元と標的の図式を等式で保つ相対左 Kan 厳密化を証明。
 - 元の左右標準 Kan 条件から指定 pinched 制限の同値を証明。左は単射なら始点境界を充填し、終対象上の全部分圏の制限は充満忠実。
-- 最終検証：F1・F1B 同時ビルド成功（3900 jobs）、同時 import 検査成功（F1 7235・F1B 4500 宣言）。
-  公理監査成功（4506 宣言、標準三公理のみ、1221 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3906 jobs）、同時 import 検査成功（F1 7238・F1B 4520 宣言）。
+  公理監査成功（4526 宣言、標準三公理のみ、1226 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -53,7 +54,7 @@
   右持ち上げ条件下の組み立て・任意の U の path 置換・相対 join の関手の制限の相対始点境界充填は証明済み。
   任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
   相対 join の制限は充満忠実、局所存在の下で自明 Kan。元の全部分圏からの制限と族の可換正方形を構成済み。
-  元の左右 pinched 比較、左の厳密な存在と終対象上の自明 Kan 制限は完了。一般 U 上の相対比較・厳密化と右側への移送は未完。
+  元の左右 pinched 比較、左の厳密な存在と終対象上の自明 Kan 制限は完了。底で定値な単位からの厳密化も完了。一般 U 上の相対比較・代表の修正と右側への移送は未完。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
@@ -75,18 +76,17 @@
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
 - `F1B.kanLeftKanExtension_unit_isIso` / `F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits`
-- `F1B.kanRelativeLeftKanRestriction_terminal_trivialKanFibration` / `F1B.kanRelativeLeftKanExtension_unit_isIso`
+- `F1B.kanRelativeLeftKanExtension_unit_isIso` / `F1B.exists_kanRelativeLeftCanonical_strictification_of_unit_over_identity`
 
 ### 依存と提供
 
 - Core/・F1/・Stable/ は読み取り専用。pullback の余極限保存、join・slice、h Fun、相対骨格・充填、
   反転、錐の輸送を使う。straightening に推移的にも依存しない。
-- 提供：F1B 集約、随伴・反射的局所化・Quillen A、Kan の点ごとの条件と相対 join 還元、
-  変動する局所形の族の普遍性・条件付き組み立て。一般の局所化の存在は F2、Hom 関手は F1h。
+- 提供：F1B 集約、随伴・反射的局所化・Quillen A、Kan の点ごとの条件・相対 join 還元・族の普遍性と組み立て。一般の局所化は F2、Hom 関手は F1h。
 
 ### 未コミット
 
-- なし（本保存単位：局所輸送の後合成・一般 U 上の相対左 Kan 単位の可逆性、集約・監査・本書）。
+- なし（本保存単位：指定部分・底・終点固定の path 延長、底で恒等な単位の相対左 Kan 厳密化、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `kanRelativeLeftKanExtension_unit_isIso` を元・標的・境界を保つ相対厳密化へ接続する。
-  一般 U 上の元の制限の写像空間比較を証明する。通常の同型延長だけでは標的の図式を固定できない点に注意。
-  右側への移送も証明し、原典 7.3.6.7・7.3.6.9 を閉じる。終対象上の左の厳密な存在と自明 Kan 制限は完了。
+- inner 射の `pinchedHomMap_hasLiftingProperty_horn` と右ホモトピーから、像の辺を指定し元の h の類を保つ代表修正を作る。
+  U 像の類が恒等な単位を底で定値な代表へ直し、元・標的固定の厳密化へ接続する。一般 U 上の相対写像空間比較も残る。
+  右側への移送と原典 7.3.6.7・7.3.6.9 を閉じる。終対象上の左の厳密な存在と自明 Kan 制限は完了。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
