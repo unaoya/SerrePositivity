@@ -906,7 +906,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SpanCommonData,
     `SerrePositivity.InfinityCategories.Derived.SpanIndexGeometry,
     `SerrePositivity.InfinityCategories.Derived.SpanSuffixBianchi,
-    `SerrePositivity.InfinityCategories.Derived.SpanOnePrefixBianchi]
+    `SerrePositivity.InfinityCategories.Derived.SpanOnePrefixBianchi,
+    `SerrePositivity.InfinityCategories.Derived.SpanOnePrefixIndex,
+    `SerrePositivity.InfinityCategories.Derived.SpanOnePrefixResidual,
+    `SerrePositivity.InfinityCategories.Derived.SpanResidualCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryResidualConsistency,
+    `SerrePositivity.InfinityCategories.Derived.SpanCommonRhs,
+    `SerrePositivity.InfinityCategories.Derived.SpanSuffixObjects]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

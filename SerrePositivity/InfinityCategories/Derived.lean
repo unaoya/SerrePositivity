@@ -88,6 +88,12 @@ public import SerrePositivity.InfinityCategories.Derived.SpanCommonData
 public import SerrePositivity.InfinityCategories.Derived.SpanIndexGeometry
 public import SerrePositivity.InfinityCategories.Derived.SpanSuffixBianchi
 public import SerrePositivity.InfinityCategories.Derived.SpanOnePrefixBianchi
+public import SerrePositivity.InfinityCategories.Derived.SpanOnePrefixIndex
+public import SerrePositivity.InfinityCategories.Derived.SpanOnePrefixResidual
+public import SerrePositivity.InfinityCategories.Derived.SpanResidualCoordinates
+public import SerrePositivity.InfinityCategories.Derived.SpanBoundaryResidualConsistency
+public import SerrePositivity.InfinityCategories.Derived.SpanCommonRhs
+public import SerrePositivity.InfinityCategories.Derived.SpanSuffixObjects
 
 /-! # Semifree 複体による導来圏の dg 表示
 
