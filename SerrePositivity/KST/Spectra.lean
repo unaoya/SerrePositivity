@@ -224,3 +224,7 @@ public import SerrePositivity.KST.Spectra.WeightCylinderBoundary
 public import SerrePositivity.KST.Spectra.WeightCylinderLifting
 public import SerrePositivity.KST.Spectra.WeightCylinderFunctor
 public import SerrePositivity.KST.Spectra.LastVertexWeightHomotopy
+public import SerrePositivity.KST.Spectra.WeightedPreHomotopy
+public import SerrePositivity.KST.Spectra.LastVertexWeightedEndHomotopy
+public import SerrePositivity.KST.Spectra.WeightedEndReedyKan
+public import SerrePositivity.KST.Spectra.ReplacedWeightEndComparison

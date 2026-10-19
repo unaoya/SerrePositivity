@@ -9,7 +9,7 @@
 - Sp の quasicategory 性、全整数次数の群、置換、homotopy fiber の長完全列、有理 telescope とテンソル表示を構成済み。
 - hG と homotopy Tot の段ごとの Kan 構成・BF 置換・比較射、自明作用の標準射の全整数次数 π の単射性、有理化後の有限群の自明作用では全単射性と標準射による群同型まで証明済み。
 - Sp-4：終頂点から通常 Tot → BK end の比較射・射影公式・自然性・基点保存・点つき end への移送を構成済み。通常 Tot と AsSmall 上の標準単体 end の厳密な同型を作り、比較が重みへの前合成そのものであることを証明済み。相対 tensor の Reedy 充填から end の境界充填・π 同型への転置も完了。BK 重みの各単体次数を representable の余積として自然に表示し、全 latching 射の単射性・Reedy cofibrancy を証明済み。比較射自体の π 同型性は未完。
-- Sp-4 の重みの比較：終頂点射への前合成は全 Kan 標的で全基点 π 同型。実際の Reedy Kan 置換の終頂点射も各段で全基点 π 同型。任意の重みとパラメーターの相対 latching を pushout-product に同定し、cofibrant な重みで単射・anodyne なパラメーターが Reedy 左類に入ることを証明済み。二射影の切断を全次数で自然な垂直 cylinder で結び、置換した終頂点射の実際の図式ホモトピー逆まで構成済み。
+- Sp-4 の重みの比較：任意の重みとパラメーターの相対 latching を pushout-product に同定し、cofibrant な重みで単射・anodyne なパラメーターが Reedy 左類に入ることを証明済み。置換した終頂点射の実際の図式ホモトピー逆を weighted end の前合成へ移し、全係数で実際の単体的ホモトピー同値まで証明済み。さらに Reedy cofibrant な重みと Reedy fibrant な係数の end の Kan 性を horn 充填で構成し、置換後の二重みの end 比較の全基点 π 同型性まで完了。置換単位に沿って置換前へ戻す工程は未完。
 - 有理化各段の高次群係数で BG の通常の正規化 cochain の正次数 cohomology が消滅することを証明済み。
 - 球面的境界の交代関係と充填判定、骨格の一段の厳密な延長と通常の cocycle 条件の同値、任意の cochain・cocycle の骨格の射による実現まで完了。
 - 関数複体の π₀ の座標表示を Kan 充填で構成し、骨格 fiber の係数へ合成済み。相対商の fiber 頂点とセル単体から復元する頂点も厳密に一致する。
@@ -25,8 +25,8 @@
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4160 jobs、専用監査 686 モジュール・6496 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14986 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4164 jobs、専用監査 690 モジュール・6514 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：15010 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
@@ -72,7 +72,7 @@
 - `PointedTotalization.weightedEndComparison`
 - `BousfieldKanWeightLatching.reedyCofibrant`
 - `CosimplicialTotalization.smallEndIso`
-- `CosimplicialLastVertex.kanWeightMap_homotopyInverse`
+- `CosimplicialLastVertex.kanWeightPre_piIsomorphism`
 
 ### 依存と提供
 - 読取専用：Mathlib の PtSimplex・RelStruct・MulStruct、pushout-product、骨格の相対セル分解、正規化鎖、群 cochain。
@@ -96,7 +96,7 @@
 - Sp-3 は cohomology 消滅だけで仮定せず、実際の障害補正・lim¹ 消滅・写像空間の検出・BF 比較を通して証明済み。一般の Tot の収束・∞ 極限性は未完。
 
 ### 次の一手
-- Sp-4：`WeightTensorLatching`・`WeightTensorCofibrancy` の一般の相対 latching 計算と境界 cylinder の充填、`LastVertexWeightHomotopy.kanWeightMap_homotopyInverse` の自然な両逆ホモトピーまで既証。次は重みの図式ホモトピーを weighted end の前合成のホモトピーへ移し、置換後の重みの比較を end 上で同値にする。さらに Reedy anodyne な置換単位 θ とパラメーター境界 i の pushout-product の相対 latching を、θ の相対 latching と i の積に同定して置換前へ戻し、`weightedEndComparison` の π 同型性を示す。後者は単一重み F のパラメーターの射の計算より強いので区別する。終頂点射自体を単射や Reedy anodyne と仮定しない。Sp-3 は再構成しない。
+- Sp-4：`WeightedPreHomotopy` の図式 cylinder の end への移送、`LastVertexWeightedEndHomotopy` の置換後の前合成のホモトピー同値、`WeightedEndReedyKan` の Reedy 条件からの Kan 性、`ReplacedWeightEndComparison.kanWeightPre_piIsomorphism` の全基点 π 同型まで既証。次は Reedy anodyne な置換単位 θ とパラメーター境界 i の pushout-product の相対 latching を、θ の相対 latching と i の積に同定する。その Reedy anodyne 性と `ReedyWeightedRestriction` の充填を使って置換前へ戻し、`smallEndIso` を通じて `weightedEndComparison` の π 同型性を示す。この相対計算は `WeightTensorLatching` の単一重み F のパラメーターの射の計算より強い。終頂点射自体を単射や Reedy anodyne と仮定しない。Sp-3 は再構成しない。
 - Sp-2 の一般の Tot 塔の収束・π 消滅も残る。H¹・最初の fiber・零骨格の一点同型・頂点評価の検出、有限群の有理化各段と BF 置換後の高次群の全射性、全整数次数への移送は完了済み。
 - 核と lim¹ の全単射も残る。`kernelObstruction` の単位元の逆像が単位元だけとは証明済みだが、それだけで写像全体の単射性・全射性を主張しない。任意の差の類の実現と厳密な相対持ち上げは `NullDifferenceRealization`・`NullHomotopyStrictLifting` を使う。
 - Sp-2 全体、Sp-4 の通常 Tot 比較、Sp-5 の ∞ 圏 Sp は未完。Sp-3 は実際の標準射の全整数次数 π 同型として完了。一般の Tot の収束や ∞ 極限性をここから仮定しない。
