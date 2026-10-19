@@ -968,6 +968,31 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.edgeInputBilinear,
       `SerrePositivity.EInfinity.IntervalCuts.vertexInputBilinear_vertex,
       `SerrePositivity.EInfinity.IntervalCuts.edgeInputBilinear_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.zeroSimplex_eq_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.monoOneSimplex_eq_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.interval_generator_one_eq_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexChain_hom_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeChain_hom_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInput_hom_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeInput_hom_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainActionBilinear,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainActionComponent,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainActionBilinear_neg_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainActionBilinear_neg_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalInput_edge_d,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInputBilinear_d_eq_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInputBilinear_differential,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeInputBilinear_d_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeInputBilinear_d_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInputBilinear_eq_zero_of_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.surjection_d_neg_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.interval_eq_zero_of_other,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainActionBilinear_d,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainActionComponent_d,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction,
+      `SerrePositivity.EInfinity.IntervalCuts.ι_cochainAction,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_neg_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_neg_edge,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2973,3 +2998,28 @@ example (b : Fin 2) : vertexInputBilinear ℤ 2 1
 example : edgeInputBilinear ℤ 2 1 (basis ℤ 2 1 (ULift.up compositionInner))
     ((intervalXIso ℤ 1).inv (edgeChain ℤ)) = edgeComponentOnWord ℤ compositionInner := by
   rw [edgeInputBilinear_edge, edgeComponent_basis]
+
+-- 整数複体射を実際の区間辺で評価すると、010 の有限切断値を返す。
+example : (cochainAction ℤ 2).f (-2)
+    (HomologicalComplex.ιTensorObj (Surjection.complex ℤ 2) (interval ℤ)
+      (-1) (-1) (-2) (by omega)
+      ((Surjection.complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner)) ⊗ₜ[ℤ]
+        (intervalXIso ℤ 1).inv (edgeChain ℤ))) =
+      edgeComponentOnWord ℤ compositionInner := by
+  simpa only [edgeInputBilinear_edge, ModuleCat.hom_inv_apply, edgeComponent_basis] using!
+    cochainAction_neg_edge ℤ 2 1
+      ((Surjection.complexXIso ℤ 2 1).inv (basis ℤ 2 1 (ULift.up compositionInner)))
+      ((intervalXIso ℤ 1).inv (edgeChain ℤ))
+-- 同じ正次数語の頂点入力の値は、複体射への組み立て後も零。
+example (b : Fin 2) (x : (Surjection.complex ℤ 2).X (-1)) :
+    (cochainAction ℤ 2).f (-1)
+      (HomologicalComplex.ιTensorObj (Surjection.complex ℤ 2) (interval ℤ)
+        (-1) 0 (-1) (by omega) (x ⊗ₜ[ℤ] (intervalXIso ℤ 0).inv (vertexChain ℤ b))) = 0 := by
+  simpa only [vertexInputBilinear_eq_zero_of_positive ℤ 2 1 (by decide),
+    LinearMap.zero_apply] using!
+      cochainAction_neg_vertex ℤ 2 1 x ((intervalXIso ℤ 0).inv (vertexChain ℤ b))
+-- 零・−1 以外の区間次数を実際の元について除去できる。
+example (y : (interval ℤ).X (-2)) : y = 0 :=
+  interval_eq_zero_of_other ℤ (-2) (by decide) (by decide) y
+example (y : (interval ℤ).X 1) : y = 0 :=
+  interval_eq_zero_of_other ℤ 1 (by decide) (by decide) y

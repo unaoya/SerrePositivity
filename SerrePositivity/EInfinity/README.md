@@ -538,7 +538,12 @@ nullary を含む TR の部分合成保存は完了。
 `rawEdgeLift_degeneracies_zero` が実際の退化消滅を供給し、生成元での評価も証明済み。
 `vertexInputBilinear`・`edgeInputBilinear` は全射語加群と実際の整数区間成分の双線形余演算。
 頂点・辺生成元では既存の `vertexComponent`・`edgeComponent` の値と一致する。
-具体的な Δ¹ の余代数構造は未完成。全整数次数の双線形 Leibniz 条件と複体射への束ね、全余代数法則が残る。
+`vertexInput_hom_ext`・`edgeInput_hom_ext` は実際の区間上の射を二頂点・一辺で比較する外延性。
+`InputLinearIdentities` は区間の任意の入力に対する微分の線形等式を与える。
+`cochainActionBilinear_d` は零成分を含む全整数次数の Koszul Leibniz 則。
+`cochainAction` は実際の複体射 `χ(n) ⊗ interval → interval^{⊗n}` であり、
+`cochainAction_neg_vertex`・`neg_edge` はその値を構成済みの有限切断へ戻す。
+具体的な Δ¹ の余代数構造は未完成。置換・単位・部分合成の全余代数法則が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

@@ -284,3 +284,4 @@ public import SerrePositivity.EInfinity.IntervalCuts.EdgeDifferentialExpansion
 public import SerrePositivity.EInfinity.IntervalCuts.EdgeChainIdentity
 public import SerrePositivity.EInfinity.IntervalCuts.ComponentLinearIdentities
 public import SerrePositivity.EInfinity.IntervalCuts.IntervalInputComponents
+public import SerrePositivity.EInfinity.IntervalCuts.CochainAction
