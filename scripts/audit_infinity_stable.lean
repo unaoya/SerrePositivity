@@ -53,6 +53,12 @@ import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonJoin
 import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonSlice
 import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonProjection
 import SerrePositivity.InfinityCategories.Derived.StandardCofiberPullback
+import SerrePositivity.InfinityCategories.Derived.FiberCofiberDesc
+import SerrePositivity.InfinityCategories.Derived.FiberCofiberConeIso
+import SerrePositivity.InfinityCategories.Derived.CoconeConeContraction
+import SerrePositivity.InfinityCategories.Derived.FiberCofiberDescEquivalence
+import SerrePositivity.InfinityCategories.Derived.ComplexTrianglePostcomposition
+import SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonFaces
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1716,6 +1722,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonSlice,
     `SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonProjection,
     `SerrePositivity.InfinityCategories.Derived.StandardCofiberPullback,
+    `SerrePositivity.InfinityCategories.Derived.FiberCofiberDesc,
+    `SerrePositivity.InfinityCategories.Derived.FiberCofiberConeIso,
+    `SerrePositivity.InfinityCategories.Derived.CoconeConeContraction,
+    `SerrePositivity.InfinityCategories.Derived.FiberCofiberDescEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.ComplexTrianglePostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonFaces,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

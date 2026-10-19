@@ -160,6 +160,12 @@ public import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonJ
 public import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonSlice
 public import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonProjection
 public import SerrePositivity.InfinityCategories.Derived.StandardCofiberPullback
+public import SerrePositivity.InfinityCategories.Derived.FiberCofiberDesc
+public import SerrePositivity.InfinityCategories.Derived.FiberCofiberConeIso
+public import SerrePositivity.InfinityCategories.Derived.CoconeConeContraction
+public import SerrePositivity.InfinityCategories.Derived.FiberCofiberDescEquivalence
+public import SerrePositivity.InfinityCategories.Derived.ComplexTrianglePostcomposition
+public import SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonFaces
 
 /-! # Semifree 複体による導来圏の dg 表示
 

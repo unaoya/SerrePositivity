@@ -19,10 +19,12 @@
 - 任意の dg nerve 単体の始点への閉零射の前合成と、始点を落とす面・始点を保つ単射への制限との両立を証明済み。始点を複製した比較単体とその零面・一面も構成済み。
 - 上下の比較三単体の全方程式・両端面・共通面を検証し、join に貼って実際の slice 比較辺を構成。射影が明示的比較の辺と一致することも証明済み。
 - 比較辺の可逆性から標準 cofiber 正方形の ∞ 引き戻し性を証明。充満部分 dg 圏・Semifree・任意の D(S) の span の標準 cofiber 正方形にも反映済み。
-- 双対の標準 fiber の押し出し性、任意の零角四角形での fiber/cofiber の一致、IsStable・D3 の三角比較は未完了。
-- 今回の入口は `CofiberFiberComparisonSlice.lean`、`CofiberFiberComparisonProjection.lean`、`StandardCofiberPullback.lean`。
-- 対象＋Stable・Derived 集約ビルド：5,753 jobs 成功。今回の保存単位は新規 7 モジュール。
-- 公理監査：Derived 180 modules／2,560 宣言、Stable 449 modules／3,667 宣言。標準三公理のみ。
+- 双対の明示的比較 `fiberCofiberDesc` を構成。二脚・対角・ホモトピー保存、cocone-cone の明示的縮約との一致、ホモトピー同値性・擬同型性を証明済み。
+- 標準 cofiber の上下三角形を比較射で後合成した二単体が、元の標準 fiber の上下三角形に一致することも証明済み。
+- 双対の比較三単体と coslice 辺、標準 fiber の押し出し性、任意の零角四角形での双方向判定、IsStable・D3 の三角比較は未完了。
+- 今回の入口は `FiberCofiberDescEquivalence.lean`、`CoconeConeContraction.lean`、`FiberCofiberComparisonFaces.lean`。
+- 対象＋Stable・Derived 集約ビルド：5,759 jobs 成功。今回の保存単位は新規 6 モジュール。
+- 公理監査：Derived 186 modules／2,630 宣言、Stable 455 modules／3,737 宣言。標準三公理のみ。
 - 本文・archive への実施記録の追記はしていない。今回の到達点はこの節を正本とする。
 
 ### 残り（依存順、時間は推定）
@@ -54,6 +56,9 @@
 - `cofiberFiberComparisonLower`、`cofiberFiberComparisonUpper`、`cofiberFiberComparison_common`、`cofiberFiberComparisonJoin`。
 - `cofiberFiberComparisonSliceEdge`、`cofiberFiberComparisonSliceEdge_projection`、`cofiberFiberComparisonSliceEdge_invertible`。
 - `standardCofiberSquare_isPullback`、`fullCofiberSquare_isPullback`、`semifreeCofiberSquare_isPullback`、`derivedSpanCofiberSquare_isPullback`。
+- `fiberCofiberDesc`、`fiberCofiberDesc_inclusionB`、`fiberCofiberDesc_inclusionC`、`fiberCofiberDesc_homotopy`。
+- `coconeConeHomotopyEquiv`、`fiberCofiberHomotopyEquiv`、`fiberCofiberDesc_homotopyEquivalence`、`fiberCofiberDesc_quasiIso`。
+- `postcomposeComplexTriangle`、`fiberCofiberLower_postcompose`、`fiberCofiberUpper_postcompose`。
 
 ### 依存と提供
 
@@ -79,7 +84,7 @@
 
 ### 次の一手
 
-- 標準 fiber の二射影の cofiber から元の終域への明示的比較を `mappingCone.desc` で作り、二脚とホモトピーの保存・ホモトピー同値性を証明する。末頂点への後合成による比較単体を作り、標準 fiber の押し出し性へ接続する。
+- `Λ[3,2]` の面 3 に cofiber 三角形、面 0・1 に比較射と二脚／対角の厳密合成三角形を与え、既存 `dgNerve.filler` で比較三単体を作る。最上位 cochain が零であることから欠けた面 2 を後合成三角形と同定し、共通面で貼って coslice 比較辺へ渡す。
 
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
