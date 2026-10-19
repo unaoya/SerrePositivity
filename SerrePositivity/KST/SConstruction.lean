@@ -632,4 +632,8 @@ public import SerrePositivity.KST.SConstruction.PointedLoopEnrichment
 public import SerrePositivity.KST.SConstruction.PointedKanLoopInfinity
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNativeOmega
 public import SerrePositivity.KST.SConstruction.KNativeOmegaDiagrams
+public import SerrePositivity.KST.SConstruction.SuspensionLoopEnrichedPostcomposition
+public import SerrePositivity.KST.SConstruction.EnrichedFunctorCollage
+public import SerrePositivity.KST.SConstruction.EnrichedFunctorCollageNerve
+public import SerrePositivity.KST.SConstruction.LoopCollageEvaluation
 /-! # ∞-S• 構成と連結 K 理論 -/

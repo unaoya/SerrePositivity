@@ -9461,3 +9461,150 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kKanNativeOmegaIso_succ
 #print axioms SerrePositivity.KST.SConstruction.kKanNativeOmegaIso_succ
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_inv_factor
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_inv_factor
+
+#check @SerrePositivity.KST.SConstruction.pointedLoopHom_uncurry
+#print axioms SerrePositivity.KST.SConstruction.pointedLoopHom_uncurry
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_inv_enriched_post
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_inv_enriched_post
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_enriched_post
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopPointedMappingIso_enriched_post
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_enriched_post
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingIso_inv_enriched_post
+
+#check @SerrePositivity.KST.SConstruction.suspensionLoopMappingFamilies_inv_post
+#print axioms SerrePositivity.KST.SConstruction.suspensionLoopMappingFamilies_inv_post
+
+#check @SerrePositivity.KST.SConstruction.enrichedCollageEmpty
+#print axioms SerrePositivity.KST.SConstruction.enrichedCollageEmpty
+
+#check @SerrePositivity.KST.SConstruction.enrichedCollageEmpty_isEmpty
+#print axioms SerrePositivity.KST.SConstruction.enrichedCollageEmpty_isEmpty
+
+#check @SerrePositivity.KST.SConstruction.enrichedCollageEmptyMap
+#print axioms SerrePositivity.KST.SConstruction.enrichedCollageEmptyMap
+
+#check @SerrePositivity.KST.SConstruction.enrichedCollageEmpty_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.enrichedCollageEmpty_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.EnrichedFunctorCollage
+#print axioms SerrePositivity.KST.SConstruction.EnrichedFunctorCollage
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageHom
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageHom
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageId
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageId
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageComp
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageComp
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollage_id_comp
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollage_id_comp
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollage_comp_id
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollage_comp_id
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollage_assoc
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollage_assoc
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollage_enrichedCategory
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollage_enrichedCategory
+
+#check @SerrePositivity.KST.SConstruction.EnrichedFunctorCollageCategory
+#print axioms SerrePositivity.KST.SConstruction.EnrichedFunctorCollageCategory
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollage_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollage_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollage_sHom_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollage_sHom_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.EnrichedFunctorCollageInfinity
+#print axioms SerrePositivity.KST.SConstruction.EnrichedFunctorCollageInfinity
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageInfinity_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageInfinity_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottom
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottom
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageTop
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageTop
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageProjectionObj
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageProjectionObj
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageProjectionMap
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageProjectionMap
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageProjection
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageProjection
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottom_projection
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottom_projection
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageTop_projection
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageTop_projection
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottomInfinity
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottomInfinity
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageTopInfinity
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageTopInfinity
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageProjectionInfinity
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageProjectionInfinity
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottomInfinity_projection
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageBottomInfinity_projection
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageTopInfinity_projection
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageTopInfinity_projection
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluation_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluation_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.pointedKanInclusionEnriched
+#print axioms SerrePositivity.KST.SConstruction.pointedKanInclusionEnriched
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluationObj
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluationObj
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluationMap
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluationMap
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluation
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluation
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluation_bottom
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluation_bottom
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluation_top
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluation_top
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluationNerve
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluationNerve
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluationNerve_bottom
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluationNerve_bottom
+
+#check @SerrePositivity.KST.SConstruction.loopCollageEvaluationNerve_top
+#print axioms SerrePositivity.KST.SConstruction.loopCollageEvaluationNerve_top
+
+#check @SerrePositivity.KST.SConstruction.loopCollageCrossMap
+#print axioms SerrePositivity.KST.SConstruction.loopCollageCrossMap
+
+#check @SerrePositivity.KST.SConstruction.loopCollageCrossMap_vertex
+#print axioms SerrePositivity.KST.SConstruction.loopCollageCrossMap_vertex
+
+#check @SerrePositivity.KST.SConstruction.loopCollageCrossMap_projection
+#print axioms SerrePositivity.KST.SConstruction.loopCollageCrossMap_projection
+
+#check @SerrePositivity.KST.SConstruction.loopCollageCrossMap_evaluation
+#print axioms SerrePositivity.KST.SConstruction.loopCollageCrossMap_evaluation
