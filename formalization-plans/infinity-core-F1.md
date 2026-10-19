@@ -31,9 +31,9 @@
 - 実際の pointed-space 射影の普遍輸送は写像空間上で同値。豊穣合成・反転・底の同型で証明済み。
   同じ始点と底を持つ全 lift prism の空間を構成し、パラメーター射影は trivial Kan fibration。
   任意の prism 族を戻す普遍性と厳密な回収、終点評価と標準輸送の引き戻しの関手同型を証明した。
-  始点 fiber 同値を固定した pointed-space の普遍 lift prism の終点評価も同値。始点も動く族は未完。
-- 対象ビルド2952 jobs、公理監査5421宣言が成功。依存公理は標準3公理のみ。
-  主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
+  始点も動く全 lift prism の空間を構成。固定始点への底変換と実際の始点 fiber を同型で結び、
+  始点が同値である各 fiber 上の終点評価の同値性を証明済み。同時終点制限の Kan 性は未完。
+- 対象ビルド2960 jobs、公理監査5506宣言が成功。依存公理は標準3公理のみ。
 
 ### 残り（依存順）
 
@@ -63,7 +63,7 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `parametrizedPointedSpaceTransport_isQCatEquivalence`、`pointedUniversalPrismLiftEndpoint_isQCatEquivalence`
+- `parametrizedPointedSpaceTransport_isQCatEquivalence`、`pointedPrismSourceFiberEndpoint_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -95,9 +95,9 @@
 
 ### 次の一手
 
-全 lift prism の空間を、固定した始点 f:K→fiber だけでなく、初期値 K⊗M→fiber が M とともに
-動く族へ広げる。始点同値の空間上の fiber を固定始点の lift 空間と同定し、終点制限の Kan
-fibration 性と fiber ごとの同値性を合わせる（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
+始点も動く全 lift prism の同時終点制限 `pointedPrismLiftEndpoints` が Kan fibration である
+ことを境界包含の相対内部 Hom から証明する。始点を同値の空間に制限し、既証明の実際の
+始点 fiber 上の終点同値性と合わせる（[Lemma 5.6.9.1](https://kerodon.net/tag/02SM)）。
 その後 mapping cylinder の比較から区間の表現空間の境界制限、点・単体の可縮性、一般の延長へ進む。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
