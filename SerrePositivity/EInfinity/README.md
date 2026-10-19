@@ -179,8 +179,12 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `final_deletion_location` は削除行の指定に実際の削除位置の所属範囲も保持する。
 `final_deletion_row_cases` は最終出現の削除を行内部か最後の行末に分類する。
 `terminal_transfer_block_deleted_outputs` は最終末尾の削除にも成功抽出と削除後出力の一致を与える。
-一般の成功 Schedule から二つのブロック比較の語・位置・不出現の全入力を取り出す接続は未完成。
-実際の対の添字・逆符号・逆対応、残余和の零性は未完成。
+`ScheduleBlock` は一般の成功 Schedule の分割・状態・出力と開始位置を一つの証明書にまとめる。
+`receiver_selected_end`・`donor_split`・`previousOccurrence_not_mem_middle` はその実際の語と不出現を導く。
+`final_deletion_transfer` は前の同値出現を持つ残余の最終出現削除から、相手の Schedule の成功と削除後出力一致を構成する。
+`final_deletion_pair` は相手の位置を新しい行末と同定し、逆符号と削除後次数 d−1 の正規化二項の相殺を与える。
+最終末尾の例は、元の削除項が削除後次数零で非零であることも監査で照合する。
+相手位置の残余所属、行末側からの逆対応と一意性、全残余項の有限和の相殺は未完成。
 TR の微分保存・部分合成保存は未完成。
 χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

@@ -387,7 +387,16 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.final_deletion_location,
       `SerrePositivity.EInfinity.TableReduction.final_deletion_row_cases,
       `SerrePositivity.EInfinity.TableReduction.reduceRows_terminal_donor_step,
-      `SerrePositivity.EInfinity.TableReduction.terminal_transfer_block_deleted_outputs] do
+      `SerrePositivity.EInfinity.TableReduction.terminal_transfer_block_deleted_outputs,
+      `SerrePositivity.EInfinity.TableReduction.scheduleBlock_nonempty,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.receiver_end_value,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.donor_value,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.previousOccurrence_not_mem_middle,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.donor_split,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.receiver_capacity,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.lift_transfer,
+      `SerrePositivity.EInfinity.TableReduction.final_deletion_transfer,
+      `SerrePositivity.EInfinity.TableReduction.final_deletion_pair] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -459,3 +468,36 @@ example : ∀ r : Schedule 4 2,
         xs == [0, 1, 3, 1, 3, 2]) = true := by decide
 example : Fintype.card {r : Schedule 4 2 //
     reduceRows (canonicalFixtureRows r) [] = some [0, 1, 3, 1, 3, 2]} = 1 := by decide
+
+-- 最終末尾の相殺例。正しい削除後次数で元の項が非零であることも照合する。
+private def terminalWord : BasisWord 2 0 := ⟨![0, 1], by decide⟩
+private def terminalTable : Fin 2 → Equiv.Perm (Fin 2) := ![1, Equiv.swap 0 1]
+private def terminalSchedule : Schedule 2 1 := ⟨![1, 2], by decide⟩
+example : reduceRows (rows terminalTable terminalSchedule) [] = some [0, 1, 0] := by decide
+example : reduceRows (rows terminalTable
+    (deletionScheduleTransfer terminalSchedule 1 0 (by decide) (by decide))) [] =
+      some [0, 1, 1] := by decide
+private theorem terminalDeletionTerm_eq_neg :
+    listDeletionTerm ℤ (d := 0) ([0, 1, 0] : List (Fin 2)) ⟨2, by decide⟩ =
+    -listGenerator ℤ (d := 0) [0, 1] := by
+  unfold listDeletionTerm
+  have hc : deletionCoefficient
+      (fun j : Fin ([0, 1, 0] : List (Fin 2)).length => ([0, 1, 0] : List (Fin 2))[j.val])
+      ⟨2, by decide⟩ = -1 := by decide
+  rw [hc]
+  exact neg_one_zsmul _
+example : listDeletionTerm ℤ (d := 0) ([0, 1, 0] : List (Fin 2)) ⟨2, by decide⟩ ≠ 0 := by
+  have hv : List.ofFn terminalWord.val = ([0, 1] : List (Fin 2)) := by decide
+  have hg : listGenerator ℤ (d := 0) [0, 1] = basis ℤ 2 0 (ULift.up terminalWord) := by
+    rw [← hv, listGenerator_ofFn, generator_word]
+  rw [terminalDeletionTerm_eq_neg, hg]
+  exact neg_ne_zero.mpr ((basis ℤ 2 0).ne_zero _)
+
+example : listDeletionTerm ℤ (d := 0) ([0, 1, 0] : List (Fin 2)) ⟨2, by decide⟩ +
+    listDeletionTerm ℤ (d := 0) ([0, 1, 1] : List (Fin 2)) ⟨1, by decide⟩ = 0 := by
+  rw [terminalDeletionTerm_eq_neg]
+  have hc : deletionCoefficient
+      (fun j : Fin ([0, 1, 1] : List (Fin 2)).length => ([0, 1, 1] : List (Fin 2))[j.val])
+      ⟨1, by decide⟩ = 1 := by decide
+  simp only [listDeletionTerm, hc, one_zsmul]
+  exact neg_add_cancel _
