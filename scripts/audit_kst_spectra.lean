@@ -13,6 +13,11 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.SequentialMittagLeffler,
+    `SerrePositivity.KST.Spectra.TowerAffineMaps,
+    `SerrePositivity.KST.Spectra.TowerLimOneMittagLeffler,
+    `SerrePositivity.KST.Spectra.TowerMittagLefflerComparison,
+
     `SerrePositivity.KST.Spectra.NullDifferenceZeroFiller,
     `SerrePositivity.KST.Spectra.NullHomotopyStrictLifting,
     `SerrePositivity.KST.Spectra.NullDifferenceRealization,
