@@ -35,8 +35,8 @@
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
   任意の底上の小さい全空間の表現空間は可縮 Kan。単位・余単位の成分と単位の作用の整合性、復元による実際の相対写像空間の同値も構成済み。
-  任意の相対射の collage は区間と底の積上の left fibration。小さい全空間の場合、元の射と両端の表現に整合する coherent な区間図式を構成済み。
-- 対象ビルド3099 jobs、公理監査6323宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  任意の相対射の collage は区間と底の積上の left fibration。小さい全空間の場合、指定両端の表現を厳密に保つ coherent な区間図式を構成済み。小さい底上の写像空間比較の本質的全射性も証明済み。
+- 対象ビルド3104 jobs、公理監査6346宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -66,7 +66,7 @@
 - `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `smallCoherentStraighteningUnitTransformation_comparisonIso`、`smallCoherentStraighteningCounit`
+- `smallCoherentStraighteningUnitTransformation_comparisonIso`、`smallCoherentStraighteningCounit`、`small_leftUnstraighteningMappingSpaceMap_isEssentiallySurjective`
 
 ### 依存と提供
 
@@ -96,8 +96,8 @@
 
 ### 次の一手
 
-exists_relativeArrow_coherent_realization の両端を指定済みの表現に一致させる。
-両端の和への制限と境界固定延長を使い、パラメーター族と leftUnstraighteningMappingSpaceMap の同値へ戻す。
+small_leftUnstraighteningMappingSpaceMap_isEssentiallySurjective を高次の相対境界へ進める。
+指定両端の collage をパラメーター族と境界固定で組み立て、比較の fiber の可縮性と写像空間全体の同値を証明する。
 全対象での自然性・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
