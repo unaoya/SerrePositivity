@@ -518,4 +518,10 @@ public import SerrePositivity.KST.SConstruction.ObjectBoundaryWeakEquivalence
 public import SerrePositivity.KST.SConstruction.TriangulatedNerveDescent
 public import SerrePositivity.KST.SConstruction.KZeroToTriangulatedMap
 
+public import SerrePositivity.KST.SConstruction.StrictZeroSOne
+public import SerrePositivity.KST.SConstruction.SingleObjLoopNaturality
+public import SerrePositivity.KST.SConstruction.KZeroObjectRecovery
+public import SerrePositivity.KST.SConstruction.TriangulatedKZeroEquiv
+public import SerrePositivity.KST.SConstruction.TriangulatedKZeroNatIso
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -7700,3 +7700,63 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_object_formula
 #print axioms SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_object_formula
+
+#check @SerrePositivity.KST.SConstruction.arOne_isFrame
+#print axioms SerrePositivity.KST.SConstruction.arOne_isFrame
+
+#check @SerrePositivity.KST.SConstruction.exists_strictZeroSOneDiagram
+#print axioms SerrePositivity.KST.SConstruction.exists_strictZeroSOneDiagram
+
+#check @SerrePositivity.KST.SConstruction.arZero_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.arZero_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.exists_closedObjectSOne
+#print axioms SerrePositivity.KST.SConstruction.exists_closedObjectSOne
+
+#check @SerrePositivity.KST.SConstruction.singleObj_loop_naturality
+#print axioms SerrePositivity.KST.SConstruction.singleObj_loop_naturality
+
+#check @SerrePositivity.KST.SConstruction.singleObj_edge_value_congr
+#print axioms SerrePositivity.KST.SConstruction.singleObj_edge_value_congr
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanTriangulatedMap_closed_edge
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanTriangulatedMap_closed_edge
+
+#check @SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_object
+#print axioms SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_object
+
+#check @SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_left_inverse
+#print axioms SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_left_inverse
+
+#check @SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_right_inverse
+#print axioms SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_right_inverse
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroEquiv
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroEquiv
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroEquiv_vertex
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroEquiv_vertex
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroEquiv_naturality
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroEquiv_naturality
+
+#check @SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_naturality
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroSourceMap_id
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroSourceMap_id
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroSourceMap_comp
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroSourceMap_comp
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroFunctor
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroFunctor
+
+#check @SerrePositivity.KST.SConstruction.kZeroAdditiveFunctor
+#print axioms SerrePositivity.KST.SConstruction.kZeroAdditiveFunctor
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroNatIso
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroNatIso
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroPiZeroIso
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroPiZeroIso
