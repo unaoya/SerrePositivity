@@ -275,6 +275,12 @@ public import SerrePositivity.InfinityCategories.Stable.HomotopyNatTransPrecompo
 public import SerrePositivity.InfinityCategories.Stable.ShiftCommutationNaturalTransformation
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorNaturalTransformation
 
+public import SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison
+public import SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint
+public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

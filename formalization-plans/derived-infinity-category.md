@@ -1,6 +1,6 @@
 # D(S)：semifree 複体の dg nerve としての導来 ∞ 圏（レーン D）
 
-作成日：2026-10-17。更新：2026-10-19。状態：D1〜D6・D8〜D10 完了。D7 は D レーンで cofiber の普遍性を構成中。
+作成日：2026-10-17。更新：2026-10-19。状態：D1〜D6・D8〜D10 完了。D7 は安定性まで完成、D3 の三角同値化を D レーンで実装中。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§3。
 dg nerve（レーン N）は [dg-nerve.md](dg-nerve.md)。
 
@@ -12,7 +12,7 @@ D6a は完了。指定四辺による distinguished triangle と全整数次数�
 零次の射は D5d の H⁰ に一致する。接続射は D3 のシフト比較を通じて持ち上がる。
 D6b は完了。加群の離散埋め込み J は充満忠実で、H⁰ の自然同型は D5b の増大射を使う。
 D6c は完了。Hⁱ(x)=0（i≠0）と h D(S) での x≅J(H⁰x) の同値を持ち、
-比較同型を表す可逆な辺も公開する。D7（D(S) の安定性）は D レーンで実装中。coslice の直接充填から標準 cofiber の普遍性を証明し、Semifree 内へ反映済み。全 span の余極限・全辺の cofiber も完成。標準 cofiber から fiber への実際の slice 比較辺を構成し、その可逆性から標準 cofiber 正方形の引き戻し性も証明済み。双対の実際の coslice 比較辺を構成し、明示的 cofiber 比較との射影の一致と可逆性から標準 fiber の押し出し性も証明済み。任意の零角四角形への移送、安定性と三角比較が残る。
+比較同型を表す可逆な辺も公開する。D7 は安定性まで完成。直接 coslice 充填による cofiber の普遍性と実際の slice/coslice 比較から標準四角形の双カルテジアン性を証明し、同じ span/cospan の全図式の比較同型で任意四角形へ移送した。`derivedInfinityCategory_isStable` を公開し、通常の h D(S) の三角構造と D3 の圏同値も接続済み。suspension と複体シフト・接続射の照合による D3 の三角同値化が残る。
 
 D8 は完了。Perf(S) は D(S) の実際の充満部分単体集合で、quasicategory・零対象を持つ。
 シフト・cone・fiber・有限直和を正本の頂点上に構成し、D4 の擬同型判定を双方向に制限した。
@@ -100,7 +100,7 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | D5 | 通常の nerve からの射、関手的離散埋め込み、底変更、H⁰ | D1〜D4・N5 |
 | D6 | 指定四辺の長完全列、heart の充満忠実性、離散対象の特徴づけ | D3〜D5・Mathlib の三角構造 |
 | D8 | 完全導来 ∞ 圏 Perf(S) と閉性・引き戻し判定・ホモトピー圏の像 | D2・D3・D4、strictlyPerfectComplex |
-| D7 | D(S) の cofiber の普遍性・安定性、D3 の三角同値への昇格 | D レーンで進行中。全 span の余極限・全辺の cofiber と押し出しの擬同型判定が完成。実際の slice 比較辺を介した標準 cofiber 正方形の引き戻し性も完成。双対の coslice 比較辺・射影・可逆性と標準 fiber の押し出し性も完成。充満部分圏・Semifree・任意 cospan の標準 fiber に反映済み。零角への移送、安定性・三角比較が残る |
+| D7 | D(S) の cofiber の普遍性・安定性、D3 の三角同値への昇格 | cofiber の普遍性・任意四角形の双カルテジアン判定と IsStable 完成。通常の h D(S) の三角構造と D3 の圏同値を接続済み。suspension／複体シフトと接続射を照合して三角同値へ昇格する工程が残る |
 
 semifree を K-projective より優先する理由：cone・シフト・直和・テンソル積・底変更で閉じ、
 D(S)^⊗ を対称モノイダル dg 圏の dg nerve として作れる。K-projective 版との同値は後の項目。

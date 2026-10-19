@@ -70,6 +70,8 @@ import SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonJoin
 import SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonSlice
 import SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonProjection
 import SerrePositivity.InfinityCategories.Derived.StandardFiberPushout
+import SerrePositivity.InfinityCategories.Derived.Stability
+import SerrePositivity.InfinityCategories.Derived.StableHomotopyComparison
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1750,6 +1752,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonSlice,
     `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonProjection,
     `SerrePositivity.InfinityCategories.Derived.StandardFiberPushout,
+    `SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison,
+    `SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint,
+    `SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport,
+    `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport,
+    `SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport,
+    `SerrePositivity.InfinityCategories.Derived.Stability,
+    `SerrePositivity.InfinityCategories.Derived.StableHomotopyComparison,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

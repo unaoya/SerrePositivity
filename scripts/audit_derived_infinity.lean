@@ -995,6 +995,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonSlice,
     `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonProjection,
     `SerrePositivity.InfinityCategories.Derived.StandardFiberPushout,
+    `SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison,
+    `SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint,
+    `SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport,
+    `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport,
+    `SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport,
+    `SerrePositivity.InfinityCategories.Derived.Stability,
+    `SerrePositivity.InfinityCategories.Derived.StableHomotopyComparison,
     `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
