@@ -534,7 +534,11 @@ nullary を含む TR の部分合成保存は完了。
 `vertexComponent_differentialOnWord` は実際の頂点成分に送った全削除微分の零性。
 `vertexComponentOnWord_d_positive`・`d_eq_zero` は頂点入力の微分保存と出力の閉性。
 `ComponentLinearIdentities` は頂点・辺の全微分条件を全射語加群全体の線形等式として公開する。
-具体的な Δ¹ の余代数構造は未完成。複体射への束ね、全余代数法則が残る。
+`vertexChainLift`・`edgeChainLift` は任意の二頂点値・一辺値を実際の正規化区間へ線形延長する。
+`rawEdgeLift_degeneracies_zero` が実際の退化消滅を供給し、生成元での評価も証明済み。
+`vertexInputBilinear`・`edgeInputBilinear` は全射語加群と実際の整数区間成分の双線形余演算。
+頂点・辺生成元では既存の `vertexComponent`・`edgeComponent` の値と一致する。
+具体的な Δ¹ の余代数構造は未完成。全整数次数の双線形 Leibniz 条件と複体射への束ね、全余代数法則が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

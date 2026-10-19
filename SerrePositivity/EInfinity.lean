@@ -283,3 +283,4 @@ public import SerrePositivity.EInfinity.IntervalCuts.DeletedCutSums
 public import SerrePositivity.EInfinity.IntervalCuts.EdgeDifferentialExpansion
 public import SerrePositivity.EInfinity.IntervalCuts.EdgeChainIdentity
 public import SerrePositivity.EInfinity.IntervalCuts.ComponentLinearIdentities
+public import SerrePositivity.EInfinity.IntervalCuts.IntervalInputComponents

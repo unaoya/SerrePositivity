@@ -961,6 +961,13 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_d_zero,
       `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_d_eq_zero,
       `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_differential,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexChainLift,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeChainLift,
+      `SerrePositivity.EInfinity.IntervalCuts.rawEdgeLift_degeneracies_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInputBilinear,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeInputBilinear,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInputBilinear_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeInputBilinear_edge,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2945,3 +2952,24 @@ example (b : Fin 2) : (SerrePositivity.TensorPowers.power (IntervalCuts.interval
     (vertexComponentOnWord ℤ cutSignWord b) =
       vertexComponent ℤ 3 1 b (differentialOnWord ℤ cutSignWord) := by
   simpa only using! vertexComponentOnWord_d_positive ℤ cutSignWord b
+
+-- 任意の二頂点値・一辺値を実際の正規化区間へ延長して評価できる。
+example (a b : ℤ) : vertexChainLift ℤ (ModuleCat.of ℤ ℤ)
+    (fun i => if i = 0 then a else b) (vertexChain ℤ 0) = a := by
+  simpa using! vertexChainLift_vertex ℤ (ModuleCat.of ℤ ℤ)
+    (fun i => if i = 0 then a else b) 0
+example (a b : ℤ) : vertexChainLift ℤ (ModuleCat.of ℤ ℤ)
+    (fun i => if i = 0 then a else b) (vertexChain ℤ 1) = b := by
+  simpa using! vertexChainLift_vertex ℤ (ModuleCat.of ℤ ℤ)
+    (fun i => if i = 0 then a else b) 1
+example (e : ℤ) : edgeChainLift ℤ (ModuleCat.of ℤ ℤ) e (edgeChain ℤ) = e := by
+  simpa only using! edgeChainLift_edge ℤ (ModuleCat.of ℤ ℤ) e
+-- 実際の整数区間を入力にした双線形成分が、既存の切断値を返す。
+example (b : Fin 2) : vertexInputBilinear ℤ 2 1
+    (basis ℤ 2 1 (ULift.up compositionInner))
+    ((intervalXIso ℤ 0).inv (vertexChain ℤ b)) = 0 := by
+  rw [vertexInputBilinear_vertex, vertexComponent_basis]
+  exact vertexComponentOnWord_eq_zero_of_positive ℤ compositionInner (by decide) b
+example : edgeInputBilinear ℤ 2 1 (basis ℤ 2 1 (ULift.up compositionInner))
+    ((intervalXIso ℤ 1).inv (edgeChain ℤ)) = edgeComponentOnWord ℤ compositionInner := by
+  rw [edgeInputBilinear_edge, edgeComponent_basis]
