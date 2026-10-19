@@ -614,3 +614,7 @@ public import SerrePositivity.KST.Spectra.SpectrumEvaluationPostCoordinates
 public import SerrePositivity.KST.Spectra.SpectrumMappingAdjointCoordinates
 public import SerrePositivity.KST.Spectra.InternalHomAdjointPreRestriction
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterNaturality
+public import SerrePositivity.KST.Spectra.RawSpectrumHomPoints
+public import SerrePositivity.KST.Spectra.PointedHomTransposeComponents
+public import SerrePositivity.KST.Spectra.SequenceParameterRectification
+public import SerrePositivity.KST.Spectra.PointedRelativeHomotopyAdjustment
