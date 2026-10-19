@@ -20168,3 +20168,158 @@ cofiberSquareTriangle_leftEdge.{u_1} : Eq.{u_1 + 1}
         (g : Quiver.Hom.{u_1, u_1 + 1} A C) →
           JoinCocone.{u_1 + 1} (pushoutSpan.{u_1 + 1} (standardCofiberSquare.{u_1} f g))
 ```
+
+
+## S7／D7：span の join の二セルと coslice 境界への変換（2026-10-19）
+
+`SpanJoinCells` で標準 join 同型の次元を明示的に正規化し、頂点の値を保つ左右包含の式を公開。Λ[2,0]⋆Δ[n] を A,B と A,C を先頭に持つ二つの Δ[n+2] の pushout として構成した。共通面は第二頂点を除く面である。`SpanJoinFaces` では右の可変因子の面 j が標準セルの j.succ.succ へ移ること、両セルの面の可換式を証明。`CosliceBoundaryFromJoinFaces` では指定最初の余錐の回収、全 join 面の一致から図式の固定条件を導く補題、curry が元の coslice 境界を延長する補題を構成。これらには値域の quasicategory 性すら不要である。
+
+対象＋Derived・Stable 統合ビルド 5670 jobs 成功。Stable 監査 366 modules／2753 declarations、Derived 監査 97 modules／1646 declarations が成功（標準 3 公理のみ）。coslice の二セル内の dg nerve の未知成分・残差方程式の解、標準 cofiber の余極限性、安定性と三角構造の比較は未完了。
+
+全 16 公開宣言の正確な型：
+
+```lean
+cofiberJoinStdSimplexIso.{u_1} : (p q r : ℕ) →
+  Eq.{1} (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} p q) 1) r →
+    CategoryTheory.Iso.{u_1, u_1 + 1}
+      (join.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := p })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := q }))
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := r })
+cofiberJoinLeftOrderHom : (p q r : ℕ) →
+  Eq.{1} (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} p q) 1) r →
+    OrderHom.{0, 0} (Fin (HAdd.hAdd.{0, 0, 0} p 1)) (Fin (HAdd.hAdd.{0, 0, 0} r 1))
+cofiberJoinRightOrderHom : (p q r : ℕ) →
+  Eq.{1} (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} p q) 1) r →
+    OrderHom.{0, 0} (Fin (HAdd.hAdd.{0, 0, 0} q 1)) (Fin (HAdd.hAdd.{0, 0, 0} r 1))
+cofiberJoinStdSimplexIso_inl.{u_1} : ∀ (p q r : ℕ) (h : Eq.{1} (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} p q) 1) r),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinInl.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := p })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := q }))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (cofiberJoinStdSimplexIso.{u_1} p q r h)))
+    (CategoryTheory.Functor.map.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1}
+      (SimplexCategory.mkHom (cofiberJoinLeftOrderHom p q r h)))
+cofiberJoinStdSimplexIso_inr.{u_1} : ∀ (p q r : ℕ) (h : Eq.{1} (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} p q) 1) r),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinInr.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := p })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := q }))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (cofiberJoinStdSimplexIso.{u_1} p q r h)))
+    (CategoryTheory.Functor.map.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1}
+      (SimplexCategory.mkHom (cofiberJoinRightOrderHom p q r h)))
+spanJoinCommonFace : (n : ℕ) → Fin (HAdd.hAdd.{0, 0, 0} n 3)
+spanJoinLeft.{u_1} : (n : ℕ) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 2 })
+    (join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n }))
+spanJoinRight.{u_1} : (n : ℕ) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 2 })
+    (join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n }))
+cofiberJoinStdSimplexIso_left_first.{u_1} : ∀ (n : ℕ),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1} (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n })))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (cofiberJoinStdSimplexIso.{u_1} 1 n (HAdd.hAdd.{0, 0, 0} n 2) ⋯)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (cofiberJoinStdSimplexIso.{u_1} 0 n (HAdd.hAdd.{0, 0, 0} n 1) ⋯))
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} (spanJoinCommonFace n)))
+spanJoin_isPushout.{u_1} : ∀ (n : ℕ),
+  CategoryTheory.IsPushout.{u_1, u_1 + 1}
+    (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} (spanJoinCommonFace n))
+    (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} (spanJoinCommonFace n))
+    (spanJoinLeft.{u_1} n) (spanJoinRight.{u_1} n)
+cofiberJoinStdSimplexIso_right_face.{u_1} : ∀ (n : ℕ) (j : Fin (HAdd.hAdd.{0, 0, 0} n 2)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (cofiberJoinStdSimplexIso.{u_1} 1 (HAdd.hAdd.{0, 0, 0} n 1) (HAdd.hAdd.{0, 0, 0} n 3) ⋯)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (cofiberJoinStdSimplexIso.{u_1} 1 n (HAdd.hAdd.{0, 0, 0} n 2) ⋯))
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j.succ.succ))
+spanJoinLeft_face.{u_1} : ∀ (n : ℕ) (j : Fin (HAdd.hAdd.{0, 0, 0} n 2)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j.succ.succ)
+      (spanJoinLeft.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (spanJoinLeft.{u_1} n)
+      (joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)))
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j)))
+spanJoinRight_face.{u_1} : ∀ (n : ℕ) (j : Fin (HAdd.hAdd.{0, 0, 0} n 2)),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j.succ.succ)
+      (spanJoinRight.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (spanJoinRight.{u_1} n)
+      (joinMap.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)))
+        (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j)))
+@cosliceBoundary_first_cocone.{u_1} : ∀ {K X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X} {n : ℕ}
+  (b :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (sliceUnder.{u_1} p))
+  (c : JoinCocone.{u_1} p),
+  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (boundaryVertex.{u_1} n 0) b)
+      ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) c) →
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) (boundaryVertex.{u_1} n 0))
+        (sliceUnderUncurry.{u_1} b))
+      ↑c
+@cosliceJoinBoundaryFaces_fixed.{u_1} : ∀ {n : ℕ} {K X : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} K X)
+  (b :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (sliceUnder.{u_1} p))
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (join.{u_1} K
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 1 }))
+      X),
+  (∀ (j : Fin (HAdd.hAdd.{0, 0, 0} n 2)),
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j))
+          F)
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) (SSet.boundary.ι.{u_1} j))
+          (sliceUnderUncurry.{u_1} b))) →
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (joinInl.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 1 }))
+        F)
+      p
+@sliceUnderCurry_boundary_of_joinFaces.{u_1} : ∀ {n : ℕ} {K X : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} K X)
+  (b :
+    Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+      (sliceUnder.{u_1} p))
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (join.{u_1} K
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 1 }))
+      X)
+  (hfaces :
+    ∀ (j : Fin (HAdd.hAdd.{0, 0, 0} n 2)),
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j))
+          F)
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) (SSet.boundary.ι.{u_1} j))
+          (sliceUnderUncurry.{u_1} b))),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))) (sliceUnderCurry.{u_1} F ⋯))
+    b
+```

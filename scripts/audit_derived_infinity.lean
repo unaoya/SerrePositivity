@@ -891,7 +891,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift,
     `SerrePositivity.InfinityCategories.Derived.StableLimits,
     `SerrePositivity.InfinityCategories.Derived.CofiberHomCoordinates,
-    `SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare]
+    `SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare,
+    `SerrePositivity.InfinityCategories.Derived.SpanJoinCells,
+    `SerrePositivity.InfinityCategories.Derived.SpanJoinFaces,
+    `SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

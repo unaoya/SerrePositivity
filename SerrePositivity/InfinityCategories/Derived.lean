@@ -74,6 +74,10 @@ public import SerrePositivity.InfinityCategories.Derived.StableLimits
 public import SerrePositivity.InfinityCategories.Derived.CofiberHomCoordinates
 public import SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare
 
+public import SerrePositivity.InfinityCategories.Derived.SpanJoinCells
+public import SerrePositivity.InfinityCategories.Derived.SpanJoinFaces
+public import SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
