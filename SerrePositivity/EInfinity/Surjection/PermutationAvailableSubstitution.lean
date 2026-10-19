@@ -18,6 +18,20 @@ namespace SerrePositivity.EInfinity.Surjection
 
 open BarrattEccles TableReduction
 
+/-- 概要：未除外の指定値で元の利用可能な逆置換行を分ける（BF §1.5.7）。
+方針：逆置換行の前後分割を外側の除外でフィルターする。
+規約：前後の部分は指定値以外の部分型を保持する。
+使われ方：合成行の代入表示を具体的な三つの利用可能ブロックに直す。 -/
+lemma available_permutation_inverse_row_split {m : ℕ}
+    (σ : Equiv.Perm (Fin (m + 1))) (k : Fin (m + 1))
+    (outer : List (Fin (m + 1))) (hk : k ∉ outer) :
+    available outer (List.ofFn σ.symm) =
+      ((permutationBefore σ k).filter (fun a => a.val ∉ outer)).map Subtype.val ++
+        k :: ((permutationAfter σ k).filter (fun a => a.val ∉ outer)).map Subtype.val := by
+  rw [permutation_inverse_row_split σ k]
+  simp only [available, List.filter_append, List.filter_cons, decide_eq_true hk, ite_true,
+    List.filter_map, Function.comp_def]
+
 /-- 概要：利用可能な合成行は元の利用可能行への代入（BF §1.5.7）。
 方針：内外の除外所属で三ブロックを別々にフィルターし、一出現代入を評価する。
 規約：指定値 k が外側の除外リストに含まれないことだけを要求する。
@@ -40,14 +54,6 @@ lemma permutationComposition_available_substitute {m n : ℕ}
       substitute k (available outer (List.ofFn σ.symm))
         [available inner (List.ofFn τ.symm)]
   rw [available_remaining_block, available_inserted_block, available_remaining_block,
-    permutation_inverse_row_split σ k]
-  have hout : available outer
-      ((permutationBefore σ k).map Subtype.val ++ k ::
-        (permutationAfter σ k).map Subtype.val) =
-      ((permutationBefore σ k).filter (fun a => a.val ∉ outer)).map Subtype.val ++
-        k :: ((permutationAfter σ k).filter (fun a => a.val ∉ outer)).map Subtype.val := by
-    simp only [available, List.filter_append, List.filter_cons, decide_eq_true hk, ite_true,
-      List.filter_map, Function.comp_def]
-  rw [hout, substitute_one_slot]
+    available_permutation_inverse_row_split σ k outer hk, substitute_one_slot]
 
 end SerrePositivity.EInfinity.Surjection

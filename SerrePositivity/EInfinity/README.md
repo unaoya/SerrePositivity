@@ -227,7 +227,11 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `permutationComposition_inverse_row_substitute` は実際の合成置換の逆置換行を一出現への代入に同定する。
 `compositionRemoved` は内外ラベルの像から合成表の除外状態を作る。
 `permutationComposition_available_substitute` は、指定値が未除外なら利用可能行も同じ代入と一致する。
-内側 arity 零を含み、内外に除外文字がある非自明な置換行も監査する。
+`compositionStateRemoved` は指定値の最終除外後に全内側ラベルを除く状態へ拡張する。
+`permutationComposition_state_available_substitute` は全段階で利用可能行と代入の一致を与える。
+`compositionSelectedUpdate_before`・`inside`・`after` は選択語の末尾を残す実際の除外更新。
+`compositionExtractionStep_before`・`inside`・`after` はこれを既存の `reduceRows` の成功分岐へ接続する。
+内側 arity 零を含み、実際の合成置換の二行抽出で選択行末が次行にも残ることを監査する。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

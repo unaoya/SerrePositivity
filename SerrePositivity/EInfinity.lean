@@ -204,3 +204,5 @@ public import SerrePositivity.EInfinity.Surjection.CompositeSurjectivity
 public import SerrePositivity.EInfinity.Surjection.CompositeBasis
 public import SerrePositivity.EInfinity.Surjection.CompositionPathSign
 public import SerrePositivity.EInfinity.Surjection.PermutationAvailableSubstitution
+public import SerrePositivity.EInfinity.Surjection.PermutationStateSubstitution
+public import SerrePositivity.EInfinity.Surjection.CompositionExtractionStep

@@ -486,7 +486,17 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.permutationComposition_inverse_row_substitute,
       `SerrePositivity.EInfinity.Surjection.remaining_mem_compositionRemoved,
       `SerrePositivity.EInfinity.Surjection.inserted_mem_compositionRemoved,
-      `SerrePositivity.EInfinity.Surjection.permutationComposition_available_substitute] do
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_available_substitute,
+      `SerrePositivity.EInfinity.Surjection.compositionStateRemoved,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_state_available_substitute,
+      `SerrePositivity.EInfinity.Surjection.compositionStateRemoved_update,
+      `SerrePositivity.EInfinity.Surjection.compositionStateRemoved_finalize,
+      `SerrePositivity.EInfinity.Surjection.compositionSelectedUpdate_before,
+      `SerrePositivity.EInfinity.Surjection.compositionSelectedUpdate_inside,
+      `SerrePositivity.EInfinity.Surjection.compositionSelectedUpdate_after,
+      `SerrePositivity.EInfinity.Surjection.compositionExtractionStep_before,
+      `SerrePositivity.EInfinity.Surjection.compositionExtractionStep_inside,
+      `SerrePositivity.EInfinity.Surjection.compositionExtractionStep_after] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -695,4 +705,35 @@ example : List.ofFn
     (BarrattEccles.permutationComposition 2 0 1 rowOuter (1 : Equiv.Perm (Fin 0))).symm =
       [1, 0] := by
   rw [permutationComposition_inverse_row_substitute rowOuter (1 : Equiv.Perm (Fin 0)) 1]
+  decide
+
+-- 三種類の実際の二行抽出で、選択行の末尾を次行に残すことを確認する。
+private def rowPre : List {a : Fin 3 // a ≠ 1} := [⟨2, by decide⟩]
+private def rowPost : List {a : Fin 3 // a ≠ 1} := [⟨0, by decide⟩]
+private def rowComposite : List (Fin 4) :=
+  List.ofFn (BarrattEccles.permutationComposition 2 2 1 rowOuter rowInner).symm
+private lemma rowComposite_available :
+    available (compositionStateRemoved (1 : Fin 3) [] ([] : List (Fin 2))) rowComposite =
+      substitute 1 (rowPre.map Subtype.val ++ 1 :: rowPost.map Subtype.val) [[1, 0]] := by
+  rw [rowComposite, permutationComposition_state_available_substitute]
+  decide
+example : reduceRows [(rowComposite, 1), (rowComposite, 1)]
+    (compositionStateRemoved (1 : Fin 3) [] ([] : List (Fin 2))) = some [3, 3] := by
+  exact compositionExtractionStep_before (m := 2) (n := 2)
+    1 [] [] [1, 0] rowPre rowPost rowComposite 1
+    [(rowComposite, 1)] [3] rowComposite_available (by decide) (by decide) (by decide)
+example : reduceRows [(rowComposite, rowPre.length + 2), (rowComposite, 1)]
+    (compositionStateRemoved (1 : Fin 3) [] ([] : List (Fin 2))) = some [3, 2, 1, 1] := by
+  exact compositionExtractionStep_inside (m := 2) (n := 2)
+    1 [] [] [1, 0] rowPre rowPost rowComposite 2
+    [(rowComposite, 1)] [1] rowComposite_available (by decide) (by decide) (by decide)
+example : reduceRows [(rowComposite, rowPre.length + 2 + 1), (rowComposite, 1)]
+    (compositionStateRemoved (1 : Fin 3) [] ([] : List (Fin 2))) = some [3, 2, 1, 0, 0] := by
+  exact compositionExtractionStep_after (m := 2) (n := 2)
+    1 [] [] [1, 0] rowPre rowPost rowComposite 1
+    [(rowComposite, 1)] [0] rowComposite_available (by decide) (by decide)
+    (by intro b; fin_cases b <;> decide) (by decide)
+example : available (compositionStateRemoved (1 : Fin 3) [1] ([] : List (Fin 2)))
+    rowComposite = [3, 0] := by
+  rw [rowComposite, permutationComposition_state_available_substitute]
   decide

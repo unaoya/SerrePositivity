@@ -30,6 +30,16 @@ lemma substitute_remaining_prefix {m n : ℕ} (k : Fin (m + 1))
     rw [List.map_cons, List.cons_append, substitute, dite_eq_right a.property, ih,
       List.map_cons, List.cons_append]
 
+/-- 概要：指定値のない語は内側部分語列に依存せずラベルを移す（BF §1.5.7）。
+方針：前半通過の公式を空の後続語に適用する。
+規約：部分語列が残っていても消費しない。
+使われ方：外側の指定値の最終除外後の行を評価する。 -/
+lemma substitute_remaining_word {m n : ℕ} (k : Fin (m + 1))
+    (xs : List {a : Fin (m + 1) // a ≠ k}) (parts : List (List (Fin n))) :
+    substitute k (xs.map Subtype.val) parts =
+      xs.map (BarrattEccles.remainingPosition m n k) := by
+  simpa only [List.append_nil, substitute] using substitute_remaining_prefix k xs [] parts
+
 /-- 概要：指定値を含まない残りの語へ空の部分語列を渡すとラベル移動だけ（BF §1.5.7）。
 方針：前半通過の式を空の後続語に適用する。
 規約：元の語の長さは任意。
