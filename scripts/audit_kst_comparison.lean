@@ -122,6 +122,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -4046,6 +4047,21 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.groupNerveFundamentalHom
 
 
+-- NondegenerateCoefficientChains.lean
+
+#check @SerrePositivity.KST.Comparison.nondegenerateCoefficientChainsIso
+#print axioms SerrePositivity.KST.Comparison.nondegenerateCoefficientChainsIso
+
+#check @SerrePositivity.KST.Comparison.nondegenerateCoefficientChainsIso_inv
+#print axioms SerrePositivity.KST.Comparison.nondegenerateCoefficientChainsIso_inv
+
+#check @SerrePositivity.KST.Comparison.nondegenerateCoefficientChainsIso_inv_naturality
+#print axioms SerrePositivity.KST.Comparison.nondegenerateCoefficientChainsIso_inv_naturality
+
+#check @SerrePositivity.KST.Comparison.constantLocalCoefficientNondegenerateIso
+#print axioms SerrePositivity.KST.Comparison.constantLocalCoefficientNondegenerateIso
+
+
 -- OrderNerveContraction.lean
 
 #check @SerrePositivity.KST.Comparison.orderNerveSubcomplex
@@ -4485,6 +4501,48 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.regularBarFiberMap_projection
 #print axioms SerrePositivity.KST.Comparison.regularBarFiberMap_projection
+
+
+-- RelativeLocalCoefficients.lean
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficientChains
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficientChains
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficientChainsFunctor
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficientChainsFunctor
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficientHomology
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficientHomology
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficientSequence
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficientSequence
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficientSequence_shortExact
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficientSequence_shortExact
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficientBoundary
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficientBoundary
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_exact_at_target
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_exact_at_target
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_boundary_comp
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_boundary_comp
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_exact_at_source
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_exact_at_source
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_comp_boundary
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_comp_boundary
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_exact_at_relative
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficient_exact_at_relative
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalence_iff_relative_acyclic
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalence_iff_relative_acyclic
+
+#check @SerrePositivity.KST.Comparison.relativeOverLocalCoefficientPushoutIso
+#print axioms SerrePositivity.KST.Comparison.relativeOverLocalCoefficientPushoutIso
 
 
 -- ReplacementComparison.lean
@@ -5640,6 +5698,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.trivialFibrationExtension
 #print axioms SerrePositivity.KST.Comparison.trivialFibrationExtension
+
+
+-- TwoCellCancellation.lean
+
+#check @SerrePositivity.KST.Comparison.twoCellComplex_acyclic
+#print axioms SerrePositivity.KST.Comparison.twoCellComplex_acyclic
+
+#check @SerrePositivity.KST.Comparison.overLocalHomologyEquivalence_of_twoCellCancellation
+#print axioms SerrePositivity.KST.Comparison.overLocalHomologyEquivalence_of_twoCellCancellation
 
 
 -- UniqueFaceNondegenerate.lean

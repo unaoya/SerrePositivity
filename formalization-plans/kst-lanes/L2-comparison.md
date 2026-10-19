@@ -859,6 +859,16 @@ slice の評価と係数群の直和表示を比較して、基底上の非正�
 これを余積・pushout・超限合成・retract の表示へ移して、構成済みの局所係数関手へ適用する。
 原典の Kan 置換の局所係数保存を、基底上の小対象構成と係数鎖複体の余極限保存で証明する経路である。
 
+### 相対二・三セル複体の相殺
+
+確認する文言：相対複体が次数 2 と 3 のみに支持され、その微分 d₃₂ が同型なら非輪状である。
+次数 2 では d₃₂ の全射性、次数 3 では単射性により完全となる。
+他次数は対象が零であるため完全となる。これは係数群や自由性によらないアーベル圏の計算である。
+基底上の単射の相対局所係数複体に適用すれば、その包含の局所係数ホモロジー同型を得る。
+Weibel K-book IV.1.5 の二・三セルの境界行列の相殺を扱う中間補題であり、
+実際のセル添付がこの複体を与えることや、その添付射の存在は別に証明する。
+plus の存在をこの条件の仮定で代用しない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a と L2b の要求された群状モノイドの比較・KST Lemma 2.13 を完了し、L2c に進む。
@@ -938,7 +948,10 @@ anodyne 局所化の同型と群状モノイドの標準群完備化写像の整
 slice の horn 生成射の有限表示性・小対象構成・台の右持ち上げ条件との同値を証明した。
 台が anodyne な基底上の射のセル表示を構成し、余積・単射の pushout・超限合成・retract の閉性で
 全ての anodyne map と Kan 置換の単位の全局所係数ホモロジー同型を証明した。
-plus のセル添付の計算は未完了。
+相対局所係数複体の余核模型、短完全列、連結射と三箇所の完全性を証明した。
+相対複体の pushout 同型と、次数 2・3 だけに支持され境界が同型の場合の非輪状性も証明した。
+任意の定数係数について非退化単体複体と Moore 正規化複体の実際の同型・逆射の自然性を証明した。
+実際のセル添付の相対複体の計算と plus の存在は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -947,10 +960,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4507 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4513 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1480 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2692 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1499 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2732 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -962,6 +975,9 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `relativeOverLocalCoefficientSequence_shortExact`、`relativeOverLocalCoefficientBoundary`、`relativeOverLocalCoefficientPushoutIso` | 監査済み | 相対局所係数の短完全列・連結射・pushout 比較 |
+| `twoCellComplex_acyclic`、`overLocalHomologyEquivalence_of_twoCellCancellation` | 監査済み | 相対二・三次数の可逆な境界による相殺 |
+| `nondegenerateCoefficientChainsIso`、`nondegenerateCoefficientChainsIso_inv_naturality` | 監査済み | 非退化単体複体との実際の同型と逆射の自然性 |
 | `over_isFinitelyPresentable_of_left`、`overHornGenerators_rlp_iff`、`overHornGenerators_cellPresentation` | 監査済み | slice の horn の小対象構成と実際のセル表示 |
 | `localHomologyIsomorphism_of_anodyne`、`kanReplacementUnit_localHomologyIsomorphism` | 監査済み | anodyne map と Kan 置換の全局所係数ホモロジー同型 |
 | `fiberCoefficientAdjunction`、`fiberCoefficientFunctor_preservesMonomorphisms` | 監査済み | 基底上の係数の直和の実際の随伴と単射保存 |
