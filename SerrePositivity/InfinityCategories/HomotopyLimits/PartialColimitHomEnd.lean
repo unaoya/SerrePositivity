@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyCospanConeComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentHomNaturality
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentHomCylinder
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeMappingShapePushout
 
 /-!
@@ -54,6 +54,52 @@ def partialColimitHomPathEnd : SSet.{u} :=
       (colimitAttachmentHomPrecomposition c hc g (j ≫ p) (coconePushoutBoundary_eq hp p) dC y)
       (colimitAttachmentHomPrecomposition c hc f (i ≫ p) rfl dB y))
 
+/-- 右制限の比較は、底の族と評価を保持した同じ中間円柱から構成する。 -/
+def partialColimitHomEndRightCylinder : SSet.Homotopy
+    (normalizedCoconeRestrictionFiber (j ≫ p) g (coconePushoutBoundary_eq hp p) y ≫
+      coconeMappingSpaceHomComparison c hc y)
+    (coconeMappingSpaceHomComparison dC hC y ≫
+      colimitAttachmentHomPrecomposition c hc g (j ≫ p) (coconePushoutBoundary_eq hp p) dC y) :=
+  colimitAttachmentRestrictionHomCylinder c hc g (j ≫ p) (coconePushoutBoundary_eq hp p) dC hC y
+
+/-- 左制限も、同じ円柱の raw な射を保持して通常の制限の表示へ移す。 -/
+def partialColimitHomEndLeftCylinder : SSet.Homotopy
+    (cosliceRestrictionFiberMap (i ≫ p) f y ≫ coconeMappingSpaceHomComparison c hc y)
+    (coconeMappingSpaceHomComparison dB hB y ≫
+      colimitAttachmentHomPrecomposition c hc f (i ≫ p) rfl dB y) := by
+  let H := colimitAttachmentRestrictionHomCylinder c hc f (i ≫ p) rfl dB hB y
+  exact
+    { h := H.h
+      h₀ := by
+        change SSet.ι₀ ≫ H.h = cosliceRestrictionFiberMap (i ≫ p) f y ≫
+          coconeMappingSpaceHomComparison c hc y
+        simpa only [normalizedCoconeRestrictionFiber_eq, eqToHom_refl, Category.comp_id] using H.h₀
+      h₁ := by
+        change SSet.ι₁ ≫ H.h = coconeMappingSpaceHomComparison dB hB y ≫
+          colimitAttachmentHomPrecomposition c hc f (i ≫ p) rfl dB y
+        exact H.h₁
+      rel := by
+        apply SSet.hom_ext
+        intro n
+        apply ConcreteCategory.hom_ext
+        intro z
+        exact False.elim z.1.property }
+
+/-- 右比較円柱は評価固定中間円柱の射影そのものである。 -/
+lemma partialColimitHomEndRightCylinder_projection :
+    (partialColimitHomEndRightCylinder hp p y c hc dC hC).h =
+      (colimitAttachmentRestrictionCylinderData c hc g (j ≫ p)
+        (coconePushoutBoundary_eq hp p) dC hC y).homotopy.h ≫
+        leftFibrationInitialProjection (sliceUnderProjection (f ≫ (i ≫ p))) c y ≫
+          (leftFibrationInitialBaseIso (sliceUnderProjection (f ≫ (i ≫ p))) c y).hom := rfl
+
+/-- 左比較円柱も表示の移送で raw な中間円柱を変えない。 -/
+lemma partialColimitHomEndLeftCylinder_projection :
+    (partialColimitHomEndLeftCylinder p y c hc dB hB).h =
+      (colimitAttachmentRestrictionCylinderData c hc f (i ≫ p) rfl dB hB y).homotopy.h ≫
+        leftFibrationInitialProjection (sliceUnderProjection (f ≫ (i ≫ p))) c y ≫
+          (leftFibrationInitialBaseIso (sliceUnderProjection (f ≫ (i ≫ p))) c y).hom := rfl
+
 /-- 元の余錐空間から Hom の共通 end への実際の比較射。 -/
 def partialColimitCoconeHomEndComparison :
     coconeMappingSpace p y ⟶ partialColimitHomPathEnd hp p y c hc dB dC := by
@@ -63,17 +109,11 @@ def partialColimitCoconeHomEndComparison :
     coconeMappingSpace_kanComplex _ _
   have : KanComplex (vertexFiber (sliceUnderProjection (f ≫ (i ≫ p))) y) :=
     coconeMappingSpace_kanComplex _ _
-  let HR := (coconeMappingSpaceHomComparison_restrict_square c hc g (j ≫ p)
-    (coconePushoutBoundary_eq hp p) dC hC y).some
-  have HL : Nonempty (SSet.Homotopy
-      (cosliceRestrictionFiberMap (i ≫ p) f y ≫ coconeMappingSpaceHomComparison c hc y)
-      (coconeMappingSpaceHomComparison dB hB y ≫
-        colimitAttachmentHomPrecomposition c hc f (i ≫ p) rfl dB y)) := by
-    simpa only [normalizedCoconeRestrictionFiber_eq, eqToHom_refl, Category.comp_id] using
-      coconeMappingSpaceHomComparison_restrict_square c hc f (i ≫ p) rfl dB hB y
   exact homotopyCospanConeComparison _ _ _ _
     (coconeMappingSpaceHomComparison dC hC y) (coconeMappingSpaceHomComparison c hc y)
-    (coconeMappingSpaceHomComparison dB hB y) HR HL.some (coconeMappingShapeCospanCone hp p y)
+    (coconeMappingSpaceHomComparison dB hB y)
+    (partialColimitHomEndRightCylinder hp p y c hc dC hC)
+    (partialColimitHomEndLeftCylinder p y c hc dB hB) (coconeMappingShapeCospanCone hp p y)
 
 /-- 一脚が単射なら、元の図式の余錐空間から Hom の共通 end への比較はホモトピー同値。 -/
 lemma partialColimitCoconeHomEndComparison_homotopyEquivalence [Mono g] :

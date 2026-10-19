@@ -6688,3 +6688,72 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @partialColimitSpanTransportHomPathIso
 #print axioms partialColimitSpanTransportHomPathIso
+
+#check @InitialHomEdgeCylinder
+#print axioms InitialHomEdgeCylinder
+
+#check @initialHomEdgeCylinder
+#print axioms initialHomEdgeCylinder
+
+#check @initialHomEdgePinchedCylinder
+#print axioms initialHomEdgePinchedCylinder
+
+#check @initialHomEdgePinchedCylinder_projection
+#print axioms initialHomEdgePinchedCylinder_projection
+
+#check @initialRestrictionHomCylinderData
+#print axioms initialRestrictionHomCylinderData
+
+#check @initialRestrictionHomCylinder
+#print axioms initialRestrictionHomCylinder
+
+#check @initialRestrictionHomCylinder_projection
+#print axioms initialRestrictionHomCylinder_projection
+
+#check @initialRestrictionHomCylinderData_evaluation
+#print axioms initialRestrictionHomCylinderData_evaluation
+
+#check @colimitAttachmentRestrictionCylinderData
+#print axioms colimitAttachmentRestrictionCylinderData
+
+#check @colimitAttachmentRestrictionHomCylinder
+#print axioms colimitAttachmentRestrictionHomCylinder
+
+#check @colimitAttachmentRestrictionHomCylinder_projection
+#print axioms colimitAttachmentRestrictionHomCylinder_projection
+
+#check @colimitAttachmentRestrictionCylinderData_evaluation
+#print axioms colimitAttachmentRestrictionCylinderData_evaluation
+
+#check @exists_initialEvaluationFamily_of_mono
+#print axioms exists_initialEvaluationFamily_of_mono
+
+#check @InitialHomEdgeCylinder.mk
+#print axioms InitialHomEdgeCylinder.mk
+
+#check @InitialHomEdgeCylinder.lift
+#print axioms InitialHomEdgeCylinder.lift
+
+#check @InitialHomEdgeCylinder.evaluation
+#print axioms InitialHomEdgeCylinder.evaluation
+
+#check @InitialHomEdgeCylinder.projection
+#print axioms InitialHomEdgeCylinder.projection
+
+#check @InitialHomEdgeCylinder.homotopy
+#print axioms InitialHomEdgeCylinder.homotopy
+
+#check @InitialHomEdgeCylinder.fixedEvaluation
+#print axioms InitialHomEdgeCylinder.fixedEvaluation
+
+#check @partialColimitHomEndRightCylinder
+#print axioms partialColimitHomEndRightCylinder
+
+#check @partialColimitHomEndLeftCylinder
+#print axioms partialColimitHomEndLeftCylinder
+
+#check @partialColimitHomEndRightCylinder_projection
+#print axioms partialColimitHomEndRightCylinder_projection
+
+#check @partialColimitHomEndLeftCylinder_projection
+#print axioms partialColimitHomEndLeftCylinder_projection
