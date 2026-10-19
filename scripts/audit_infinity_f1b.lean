@@ -1761,3 +1761,15 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanLocalRelativeJoinConeComparison_diagram
 
 #check @SerrePositivity.InfinityCategories.F1B.kanLocalRelativeJoinConeComparison_vertex
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinBaseFiberIso_lift
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLocalRelativeJoinConeComparison_one
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCoconeTransport_isColimit
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaCandidate_isLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftExtension_of_local_colimits
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftExtension_iff_local_colimits
