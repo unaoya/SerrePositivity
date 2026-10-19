@@ -8170,3 +8170,81 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeCorrectionCanonical_boundary_hom_arrow
 #print axioms specifiedCoconeCorrectionCanonical_boundary_hom_arrow
+
+#check @partialColimitSpanLeftAttachmentBoundaryFactor
+#print axioms partialColimitSpanLeftAttachmentBoundaryFactor
+
+#check @partialColimitSpanRightAttachmentBoundaryFactor
+#print axioms partialColimitSpanRightAttachmentBoundaryFactor
+
+#check @partialColimitSpanLeftBoundaryFactor
+#print axioms partialColimitSpanLeftBoundaryFactor
+
+#check @partialColimitSpanRightBoundaryFactor
+#print axioms partialColimitSpanRightBoundaryFactor
+
+#check @partialColimitSpanMiddleBoundaryFactor
+#print axioms partialColimitSpanMiddleBoundaryFactor
+
+#check @partialColimitSpanBoundaryIso_factors
+#print axioms partialColimitSpanBoundaryIso_factors
+
+#check @partialColimitSpanLeftBoundaryFactor_hom_arrow
+#print axioms partialColimitSpanLeftBoundaryFactor_hom_arrow
+
+#check @partialColimitSpanRightBoundaryFactor_hom_arrow
+#print axioms partialColimitSpanRightBoundaryFactor_hom_arrow
+
+#check @vertexIso_map_hom_arrow
+#print axioms vertexIso_map_hom_arrow
+
+#check @vertexIso_map_inverse_threeFactors
+#print axioms vertexIso_map_inverse_threeFactors
+
+#check @contractibleVertexIso_endpoint_fourFactors
+#print axioms contractibleVertexIso_endpoint_fourFactors
+
+#check @contractibleVertexIso_endpoint_cancel
+#print axioms contractibleVertexIso_endpoint_cancel
+
+#check @specifiedCoconeRootLeftFactor_hom_arrow
+#print axioms specifiedCoconeRootLeftFactor_hom_arrow
+
+#check @specifiedCoconeRootMiddleFactor_hom_arrow
+#print axioms specifiedCoconeRootMiddleFactor_hom_arrow
+
+#check @specifiedCoconeRootRightFactor_hom_arrow
+#print axioms specifiedCoconeRootRightFactor_hom_arrow
+
+#check @specifiedCoconeCorrectedRootVertex
+#print axioms specifiedCoconeCorrectedRootVertex
+
+#check @specifiedCoconeRootCorrectionFactor_hom_arrow
+#print axioms specifiedCoconeRootCorrectionFactor_hom_arrow
+
+#check @specifiedCoconeRootClosingComparisonIso
+#print axioms specifiedCoconeRootClosingComparisonIso
+
+#check @specifiedCoconeRootClosingComparisonIso_endpoint_hom_arrow
+#print axioms specifiedCoconeRootClosingComparisonIso_endpoint_hom_arrow
+
+#check @specifiedCoconeRootClosingLeft_initial
+#print axioms specifiedCoconeRootClosingLeft_initial
+
+#check @specifiedCoconeRootClosingHomotopy
+#print axioms specifiedCoconeRootClosingHomotopy
+
+#check @specifiedCoconeRootClosingHomotopy_projection
+#print axioms specifiedCoconeRootClosingHomotopy_projection
+
+#check @specifiedCoconeRootClosingHomotopy_initial
+#print axioms specifiedCoconeRootClosingHomotopy_initial
+
+#check @specifiedCoconeRootClosingExtensionEdge
+#print axioms specifiedCoconeRootClosingExtensionEdge
+
+#check @specifiedCoconeRootClosingExtensionEdge_uncurry
+#print axioms specifiedCoconeRootClosingExtensionEdge_uncurry
+
+#check @specifiedCoconeRootClosingExtensionEdge_endpoint_hom_arrow
+#print axioms specifiedCoconeRootClosingExtensionEdge_endpoint_hom_arrow
