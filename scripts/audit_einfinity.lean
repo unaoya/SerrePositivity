@@ -952,6 +952,15 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_boundary_factors,
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_d_positive,
       `SerrePositivity.EInfinity.IntervalCuts.edgeComponentOnWord_d_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.degreeOne_deletion_pair,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_generator_zero_degree,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_differentialOnWord,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponentOnWord_d_eq_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponentOnWord_d_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_d_positive,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeComponent_d_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_d_eq_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_differential,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2917,3 +2926,22 @@ example : (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 0).d (
     (edgeComponentOnWord ℤ zeroEmptyWord) =
       vertexComponentOnWord ℤ zeroEmptyWord 1 - vertexComponentOnWord ℤ zeroEmptyWord 0 :=
   edgeComponentOnWord_d_zero ℤ zeroEmptyWord
+
+-- 0102の二削除係数の総和は零。全ての頂点へ送った実際の微分も零。
+example : ∑ i : Fin 4, deletionCoefficient compositionOuter.val i = 0 := by decide
+example (b : Fin 2) : vertexComponent ℤ 2 0 b (differentialOnWord ℤ compositionInner) = 0 :=
+  vertexComponent_differentialOnWord ℤ compositionInner b
+example (b : Fin 2) : vertexComponent ℤ 3 0 b (differentialOnWord ℤ compositionOuter) = 0 :=
+  vertexComponent_differentialOnWord ℤ compositionOuter b
+-- 零次数の置換語・空語の実際の頂点出力は閉じている。
+example (b : Fin 2) : (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 3).d 0 1
+    (vertexComponentOnWord ℤ zeroPermutationWord b) = 0 := by
+  simpa only using! vertexComponentOnWord_d_eq_zero ℤ zeroPermutationWord b
+example (b : Fin 2) : (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 0).d 0 1
+    (vertexComponentOnWord ℤ zeroEmptyWord b) = 0 := by
+  simpa only using! vertexComponentOnWord_d_eq_zero ℤ zeroEmptyWord b
+-- 高い次数でも、実際の頂点微分の両辺は一致する。
+example (b : Fin 2) : (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 3).d (-2) (-1)
+    (vertexComponentOnWord ℤ cutSignWord b) =
+      vertexComponent ℤ 3 1 b (differentialOnWord ℤ cutSignWord) := by
+  simpa only using! vertexComponentOnWord_d_positive ℤ cutSignWord b

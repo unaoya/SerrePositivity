@@ -530,7 +530,11 @@ nullary を含む TR の部分合成保存は完了。
 `edgeComponentOnWord_boundary_factors` は実際の辺成分の微分を全反復色・切断点色境界へ分ける。
 `edgeComponentOnWord_d_positive` は正次数の実際の辺成分と削除微分の可換性。
 `edgeComponentOnWord_d_zero` は次数零の辺成分の微分と入力辺の二端点差の一致。arity 零も含む。
-具体的な Δ¹ の余代数構造は未完成。頂点成分の微分保存、複体射への束ね、全余代数法則が残る。
+`degreeOne_deletion_pair` は次数一の唯一の反復色の削除係数 +1・−1 と他係数零。
+`vertexComponent_differentialOnWord` は実際の頂点成分に送った全削除微分の零性。
+`vertexComponentOnWord_d_positive`・`d_eq_zero` は頂点入力の微分保存と出力の閉性。
+`ComponentLinearIdentities` は頂点・辺の全微分条件を全射語加群全体の線形等式として公開する。
+具体的な Δ¹ の余代数構造は未完成。複体射への束ね、全余代数法則が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
