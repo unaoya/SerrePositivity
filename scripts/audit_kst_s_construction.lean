@@ -11234,3 +11234,87 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperEndpointContraction_h
 #print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperEndpointContraction_h
+
+#check @SerrePositivity.KST.SConstruction.coherentTrianglePath_eq_composite
+#print axioms SerrePositivity.KST.SConstruction.coherentTrianglePath_eq_composite
+
+#check @SerrePositivity.KST.SConstruction.coherentTrianglePath_composite_value
+#print axioms SerrePositivity.KST.SConstruction.coherentTrianglePath_composite_value
+
+#check @SerrePositivity.KST.SConstruction.coherentTrianglePath_specified_composite_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentTrianglePath_specified_composite_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentTrianglePath_value_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentTrianglePath_value_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentEqToHom_value_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentEqToHom_value_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentStringNativeMap_value_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentStringNativeMap_value_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentLowerPrismDirect_forward
+#print axioms SerrePositivity.KST.SConstruction.coherentLowerPrismDirect_forward
+
+#check @SerrePositivity.KST.SConstruction.coherentUpperPrismDirect_forward
+#print axioms SerrePositivity.KST.SConstruction.coherentUpperPrismDirect_forward
+
+#check @SerrePositivity.KST.SConstruction.coherentStringRefinementPathToFull
+#print axioms SerrePositivity.KST.SConstruction.coherentStringRefinementPathToFull
+
+#check @SerrePositivity.KST.SConstruction.coherentStringPathFlag_arrow
+#print axioms SerrePositivity.KST.SConstruction.coherentStringPathFlag_arrow
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowNativeContraction_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowNativeContraction_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentHomotopyVertexEdge_precomp
+#print axioms SerrePositivity.KST.SConstruction.coherentHomotopyVertexEdge_precomp
+
+#check @SerrePositivity.KST.SConstruction.coherentArrowNativeContraction_prepost_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.coherentArrowNativeContraction_prepost_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.kPrismEndpointComposites_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kPrismEndpointComposites_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerDirect_cell
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerDirect_cell
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerEndpointVertex_raw_heq
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerEndpointVertex_raw_heq
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperDirect_cell
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperDirect_cell
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperEndpointVertex_raw_heq
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperEndpointVertex_raw_heq
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerEndpointVertex_composite
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerEndpointVertex_composite
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperEndpointVertex_composite
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperEndpointVertex_composite
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerSuspensionFamily_composite
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerSuspensionFamily_composite
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerCompositeContraction
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerCompositeContraction
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerCompositeContraction_h
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerCompositeContraction_h
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperSuspensionFamily_composite
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperSuspensionFamily_composite
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction_h
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction_h
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerCompositeContraction_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerCompositeContraction_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalPrismUpperCompositeContraction_vertex_edge

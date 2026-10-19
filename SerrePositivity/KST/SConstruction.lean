@@ -728,4 +728,9 @@ public import SerrePositivity.KST.SConstruction.CoherentCompositionFaceConstancy
 public import SerrePositivity.KST.SConstruction.KPrismCompositionFaceValues
 public import SerrePositivity.KST.SConstruction.CoherentRefinementPathVertices
 public import SerrePositivity.KST.SConstruction.KPrismSpanEndpointsConstant
+public import SerrePositivity.KST.SConstruction.CoherentTriangleFullPathValues
+public import SerrePositivity.KST.SConstruction.CoherentNativeValueTransport
+public import SerrePositivity.KST.SConstruction.CoherentPrismDirectTriangles
+public import SerrePositivity.KST.SConstruction.CoherentNativeContractionEdges
+public import SerrePositivity.KST.SConstruction.KPrismEndpointComposites
 /-! # ∞-S• 構成と連結 K 理論 -/
