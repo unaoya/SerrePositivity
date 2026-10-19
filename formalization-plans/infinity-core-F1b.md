@@ -21,8 +21,11 @@
 - `kanFiberwiseHom` の fiber を `Fun(K_c,D)` と厳密に同定し、元の図式の制限との自然性を証明。
   相対 join の fiber は `K_c ⋆ Δ⁰`、その関手の族の制限は `coconeRestriction` に一致する。
   普遍余錐から、この fiber の射に対する相対始点境界充填まで証明。全空間への移送は未完。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2467 jobs）。
-  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2968 宣言、標準三公理のみ、796 モジュールに straightening なし）。
+- 射影の持ち上げ問題を逆像上の図式の延長と同定し、inner fibration 性の必要十分条件を証明。
+  標準単体上の cocartesian fibration の最終 fiber への厳密な retraction と、そこで固定された輸送を構成。
+  射影の終点指定の辺の持ち上げ（任意次元の最後の頂点版も）を証明。辺の cartesian 性は未証明。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2472 jobs）。
+  `lake env lean scripts/audit_infinity_f1b.lean` 成功（2982 宣言、標準三公理のみ、801 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -60,6 +63,8 @@
 - `kanFiberwiseHomFiberIso` / `kanFiberwiseHomFiberIso_pre`
 - `kanRelativeJoinBaseFiberIso` / `kanRelativeJoinCoconeFiberIso_restriction`
 - `kanRelativeJoinCoconeFiber_initialBoundary`
+- `kanFiberwiseHomProjection_innerFibration_iff` / `exists_kanFinalFiberRetraction`
+- `kanFiberwiseHomProjection_hasLiftingProperty_target`
 
 ### 依存と提供
 
@@ -70,9 +75,8 @@
 
 ### 未コミット
 
-- 今回の保存単位：`KanConstantPullback`、`KanFiberwiseHomFiber`、同 `Naturality`、
-  `KanRelativeJoinBaseFiber`、`KanInitialBoundaryIso`、`KanRelativeJoinCoconeFiber` の 6 モジュール、
-  F1B 集約、監査スクリプト、本書。コミットは必ず所有パスを列挙した `git commit --only`。
+- 保存単位：`KanFiberwiseHomLifting`、同 `InnerFibration`、同 `FinalVertex`、
+  `KanCocartesianHornComparison`、`KanFinalFiberRetraction`、F1B 集約、監査、本書。必ず `git commit --only`。
   保存コミット後の所有変更はなし。他レーンの変更は保存・変更しない。
 
 ### 既知の問題
@@ -81,18 +85,19 @@
 - 保存 `43c25ad6` は共有インデックスにあった D レーンの 9 ファイルも同梱。内容は変更せず保存。
   並行履歴の書き換えは行わない。以後の保存は `git commit --only` で所有パスを限定する。
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
-- `kanFiberwiseHom` は strict な普遍性と fiber の関手空間との同定まで。
+- `kanFiberwiseHom` の strict な普遍性、fiber の同定、終点を指定した持ち上げは証明済み。
   射影の cartesian fibration 性・全空間の quasicategory 性、普遍余錐から全空間の相対始点境界充填は未証明。
+- 内ホーンの逆像の前合成同値からの inner fibration 性は条件付き。F1 の既存 scaffold は left fibration 用。
 - 大域的 Hom 普遍性を仮定した一意性は証明済みだが、点ごとの Kan 条件からの導出は未完。
 - B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手との比較は未形式化。
   B2 は同じ宇宙の標的に対する普遍性。一般の C[W⁻¹] の存在は主張しない。
 
 ### 次の一手
 
-- Kerodon [Cor 5.3.6.9](https://kerodon.net/tag/0472) の射影の cartesian fibration 性と辺の判定を、
-  δ が cocartesian fibration の場合の `kanFiberwiseHomProjection` について直接証明する。
-  相対 join の左端包含が誘導する `kanFiberwiseHomPre` の輸送との両立から fiber の条件を全空間へ移す。
-  Kerodon Lemma 7.3.4.5 の相対始点充填を導いて `exists_kanFiberwise_extension_of_initialBoundary` に渡す。
+- 最終 fiber への retraction が cocartesian 辺を可逆辺に送ることを証明し、終点指定の lift の追加条件へ接続。
+  三角形の cocartesian 性の消去が必要。内ホーン逆像の前合成同値と特殊辺の cartesian 性は
+  Kerodon [§5.3.6](https://kerodon.net/tag/037W) の一般の scaffold 比較から証明する。
+  その後、制限の輸送との両立で fiber の境界充填を全空間へ移し、既存の骨格の組み立てに渡す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
