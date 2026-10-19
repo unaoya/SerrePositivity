@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.VertexDiscreteHomotopyCorrection
+public import SerrePositivity.KST.SConstruction.HomotopySpecifiedVertexCorrection
 public import SerrePositivity.KST.SConstruction.PointedKanHomotopyComponents
 public import SerrePositivity.KST.SConstruction.PointedKanHomotopyCategoryComparison
 
@@ -19,17 +19,6 @@ open CategoryTheory MonoidalClosed SSet
 open Spectra Spectra.PointedMapping
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
 open scoped Simplicial
-
-/-- 両端の表示を同時に変えても、指定した二辺の射の類の等号は同値。 -/
-lemma diagramEdge_homMk_ofEq_iff {X : SSet.{u}} {x y x' y' : X _⦋0⦌}
-    (e f : X.Edge x y) (hx : x = x') (hy : y = y') :
-    SSet.Truncated.HomotopyCategory.homMk (e.ofEq hx hy).toTruncated =
-      SSet.Truncated.HomotopyCategory.homMk (f.ofEq hx hy).toTruncated ↔
-    SSet.Truncated.HomotopyCategory.homMk e.toTruncated =
-      SSet.Truncated.HomotopyCategory.homMk f.toTruncated := by
-  cases hx
-  cases hy
-  rfl
 
 /-- 任意の底の頂点で coherent な図式は元の Kan 対象を回収する。 -/
 lemma pointedKanCoherentDiagram_vertex_any {I : Type u} [SmallCategory I]

@@ -640,4 +640,10 @@ public import SerrePositivity.KST.SConstruction.EnrichedFunctorCollageCrossMaps
 public import SerrePositivity.KST.SConstruction.EnrichedCollageComparisonDiagram
 public import SerrePositivity.KST.SConstruction.EnrichedCollageTransport
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCollageTransport
+public import SerrePositivity.KST.SConstruction.CoherentHomotopyComponentCalculus
+public import SerrePositivity.KST.SConstruction.HomotopySpecifiedVertexCorrection
+public import SerrePositivity.KST.SConstruction.EnrichedCollageTransportComponents
+public import SerrePositivity.KST.SConstruction.LoopCollageCrossEvaluation
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblySpecifiedCollage
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyOriginalSuspension
 /-! # ∞-S• 構成と連結 K 理論 -/

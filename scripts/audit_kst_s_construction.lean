@@ -9662,3 +9662,66 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionTransportHomotopy_h
 #print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySuspensionTransportHomotopy_h
+
+#check @SerrePositivity.KST.SConstruction.enrichedNerveMap_edge
+#print axioms SerrePositivity.KST.SConstruction.enrichedNerveMap_edge
+
+#check @SerrePositivity.KST.SConstruction.strictCoherentDiagram_postcomp_vertex
+#print axioms SerrePositivity.KST.SConstruction.strictCoherentDiagram_postcomp_vertex
+
+#check @SerrePositivity.KST.SConstruction.homotopyVertexEdge_postcomp
+#print axioms SerrePositivity.KST.SConstruction.homotopyVertexEdge_postcomp
+
+#check @SerrePositivity.KST.SConstruction.homotopyVertexEdge_yoneda
+#print axioms SerrePositivity.KST.SConstruction.homotopyVertexEdge_yoneda
+
+#check @SerrePositivity.KST.SConstruction.homotopyCompositionTriangle_vertex
+#print axioms SerrePositivity.KST.SConstruction.homotopyCompositionTriangle_vertex
+
+#check @SerrePositivity.KST.SConstruction.homotopyCompositionTriangle_vertex_hom
+#print axioms SerrePositivity.KST.SConstruction.homotopyCompositionTriangle_vertex_hom
+
+#check @SerrePositivity.KST.SConstruction.exists_homotopy_specified_vertex_edges
+#print axioms SerrePositivity.KST.SConstruction.exists_homotopy_specified_vertex_edges
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageCrossVertexEdge
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageCrossVertexEdge
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageTransport_vertex_hom
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageTransport_vertex_hom
+
+#check @SerrePositivity.KST.SConstruction.exists_enrichedFunctorCollageTransport_specified_components
+#print axioms SerrePositivity.KST.SConstruction.exists_enrichedFunctorCollageTransport_specified_components
+
+#check @SerrePositivity.KST.SConstruction.loopCollageCrossEvaluation_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.loopCollageCrossEvaluation_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross_loop
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross_loop
+
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross_loop_evaluation
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorCollageCross_loop_evaluation
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyCollageCorrection
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCollageCorrection
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblySpecifiedCollageHomotopy
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySpecifiedCollageHomotopy
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblySpecifiedCollageHomotopy_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySpecifiedCollageHomotopy_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblySpecifiedCollageHomotopy_hom
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblySpecifiedCollageHomotopy_hom
+
+#check @SerrePositivity.KST.SConstruction.boundaryOriginalSuspension_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.boundaryOriginalSuspension_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionHomotopy
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionHomotopy
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionHomotopy_h
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionHomotopy_h
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionHomotopy_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalSuspensionHomotopy_vertex_edge
