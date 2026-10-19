@@ -1689,3 +1689,11 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanUnitCommaFiberProjection_innerFibration
 #check @SerrePositivity.InfinityCategories.F1B.kanUnitCommaFiberProjection_hasLiftingProperty_initialHorn
 #check @SerrePositivity.InfinityCategories.F1B.kanUnitCommaFiberProjection_leftFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanUnitCommaFiberIntervalIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanShapeToUnitCommaFiber_fiber
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanShapeToUnitCommaFiber_isPrecompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightKanShapeToUnitCommaFiber_baseChange_isPrecompositionEquivalence

@@ -36,13 +36,14 @@
 - join の inner fibration 性に加え、cocartesian な p の相対 join の底への cocartesian fibration 性を証明。
   左包含は任意の底変換後も cocartesian 辺を保存。相対指数の制限は任意の cartesian 辺を保存する。
 - left fibrations の各 fiber の同値から全空間と任意の底変換後の前合成同値を導く安全な判定を証明。
-  固定始域の comma の標的射影も left fibration と証明。必要な仮定は矢印の値域の quasicategory 性だけ。
+  固定始域の comma の標的射影も left fibration。その fiber を区間写像空間と厳密に同定。
+  coslice の局所添字から comma fiber への比較は、任意の底変換後も前合成同値と証明。
 - 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。
 - 対象の族の各頂点に必要な余極限だけで、普遍余錐全体からの引き戻しは自明 Kan fibration。図式を延長できる。
 - 任意の関手 δ に対し、既存 comma の反転 `F1B.kanLeftComma δ` を構成。底への射影は cocartesian fibration。
-  恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示、局所添字からの図式を保つ比較射を証明。同値性は未完。
-- 最終検証：F1・F1B 同時ビルド成功（3458 jobs）、同時 import 検査成功（F1 5813・F1B 3621 宣言）。
-  公理監査成功（3625 宣言、標準三公理のみ、985 モジュールに straightening なし）。ソース名衝突 0。
+  恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示、局所添字からの図式を保つ比較射を証明。反転前の比較の同値は証明済み、左側への移送は未完。
+- 最終検証：F1・F1B 同時ビルド成功（3466 jobs）、同時 import 検査成功（F1 5852・F1B 3653 宣言）。
+  公理監査成功（3657 宣言、標準三公理のみ、988 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -82,7 +83,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：固定始域の comma の辺の持ち上げと全ての左ホーンの充填、集約・監査・本書）。
+- なし（本保存単位：comma の fiber の区間表示、coslice 比較の同値性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -97,10 +98,10 @@
 
 ### 次の一手
 
-- `kanUnitCommaFiberProjection` は left fibration。次はその y 上の fiber を `intervalMappingSpace x (G y)` と同定。
-  局所添字の比較の各 fiber を `KanSection.cosliceFiberToIntervalMappingSpace_isQCatEquivalence` と比較する。
-  `F1B.kanIsPrecompositionEquivalence_leftFibration_baseChange` で全体と底変換を比較して余極限を移す。
-  F1 の同名比較は straightening を含み直接 import 不可。一般の δ の存在へ接続する（Kerodon 7.3.4–5）。
+- `kanRightKanShapeToUnitCommaFiber_isPrecompositionEquivalence` は証明済み。
+  次は `kanFunctorIsoOpposite` から quasicategory の同値の反転を構成し、
+  `cofinalSlicePullbackOpIso` と `kanLeftCommaFiberIso` で左の局所添字と comma fiber の比較へ移す。
+  K への射影との両立を確認し余極限を移送、一般の δ の存在へ接続する（Kerodon 7.3.4–5）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
@@ -110,7 +111,7 @@
 
 quasicategory の随伴、反射的局所化、cofinality、点ごとの左右 Kan 拡張を構成する。
 Lean は `SerrePositivity/InfinityCategories/F1B/`、namespace は
-`SerrePositivity.InfinityCategories`、集約は `InfinityCategories/F1B.lean`。
+新規・再構成は `SerrePositivity.InfinityCategories.F1B`、既存の親名前空間 API は保持。集約は `InfinityCategories/F1B.lean`。
 Core/・F1/・Stable/ は読むだけ。straightening に推移的にも依存しない。
 sorry・追加公理・文献入力を使わず、監査で許す公理は
 `propext`・`Classical.choice`・`Quot.sound` のみ。
