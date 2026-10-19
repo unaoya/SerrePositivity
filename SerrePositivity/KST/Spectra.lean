@@ -205,3 +205,9 @@ public import SerrePositivity.KST.Spectra.RationalShapiro
 public import SerrePositivity.KST.Spectra.CosimplicialLastVertex
 public import SerrePositivity.KST.Spectra.TotalizationBousfieldKanComparison
 public import SerrePositivity.KST.Spectra.PointedTotalizationBousfieldKan
+public import SerrePositivity.KST.Spectra.ReedyWeightedRestriction
+public import SerrePositivity.KST.Spectra.TotalizationWeightedReindex
+public import SerrePositivity.KST.Spectra.OverChainCoordinates
+public import SerrePositivity.KST.Spectra.OverChainCoproduct
+public import SerrePositivity.KST.Spectra.LatchingCoproductMono
+public import SerrePositivity.KST.Spectra.BousfieldKanWeightLatching

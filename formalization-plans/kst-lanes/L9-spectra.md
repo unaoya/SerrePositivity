@@ -8,7 +8,7 @@
 - L9a・L9b・改訂 L9c・L9d、Sp-1d（係数微分の値・符号・像の同定、10-19 14:07）、Sp-3（有理 Shapiro の全射性、10-19）完了。L9e 全体は未完。
 - Sp の quasicategory 性、全整数次数の群、置換、homotopy fiber の長完全列、有理 telescope とテンソル表示を構成済み。
 - hG と homotopy Tot の段ごとの Kan 構成・BF 置換・比較射、自明作用の標準射の全整数次数 π の単射性、有理化後の有限群の自明作用では全単射性と標準射による群同型まで証明済み。
-- Sp-4：over 圏の終頂点から BK 重み → 標準単体の自然変換を構成し、通常 Tot → BK end の実際の比較射・各射影での前合成公式・係数への自然性を証明済み。基点保存と点つき enriched end への移送・自然性も完了。比較射の π 同型性は未完。
+- Sp-4：終頂点から通常 Tot → BK end の比較射・射影公式・自然性・基点保存・点つき end への移送を構成済み。通常 Tot と AsSmall 上の標準単体 end の厳密な同型を作り、比較が重みへの前合成そのものであることを証明済み。相対 tensor の Reedy 充填から end の境界充填・π 同型への転置も完了。BK 重みの各単体次数を representable の余積として自然に表示し、全 latching 射の単射性・Reedy cofibrancy を証明済み。比較射自体の π 同型性は未完。
 - 有理化各段の高次群係数で BG の通常の正規化 cochain の正次数 cohomology が消滅することを証明済み。
 - 球面的境界の交代関係と充填判定、骨格の一段の厳密な延長と通常の cocycle 条件の同値、任意の cochain・cocycle の骨格の射による実現まで完了。
 - 関数複体の π₀ の座標表示を Kan 充填で構成し、骨格 fiber の係数へ合成済み。相対商の fiber 頂点とセル単体から復元する頂点も厳密に一致する。
@@ -24,8 +24,8 @@
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4141 jobs、専用監査 667 モジュール・6341 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14862 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4147 jobs、専用監査 673 モジュール・6407 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14910 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
@@ -69,6 +69,8 @@
 - `rational_homotopyFixedPointsUnit_homotopyMap_bijective`
 - `rationalShapiroEquiv`
 - `PointedTotalization.weightedEndComparison`
+- `BousfieldKanWeightLatching.reedyCofibrant`
+- `CosimplicialTotalization.smallEndIso`
 
 ### 依存と提供
 - 読取専用：Mathlib の PtSimplex・RelStruct・MulStruct、pushout-product、骨格の相対セル分解、正規化鎖、群 cochain。
@@ -92,7 +94,7 @@
 - Sp-3 は cohomology 消滅だけで仮定せず、実際の障害補正・lim¹ 消滅・写像空間の検出・BF 比較を通して証明済み。一般の Tot の収束・∞ 極限性は未完。
 
 ### 次の一手
-- Sp-4 の比較射は `CosimplicialLastVertex` → `TotalizationBousfieldKanComparison` → `PointedTotalizationBousfieldKan` まで既証。次は Reedy fibrant な係数に対して `weightedEndComparison` の π 同型性を証明し、BF 射影へ合成する。各段の Kan 性だけから end の重みの弱同値保存を仮定しない。標準単体と BK 重みの Reedy cofibrancy、および相対 tensor の持ち上げを用いる。Sp-3 は再構成しない。
+- Sp-4：比較射・`smallEndIso` による重みの前合成との同定・BK 重みの Reedy cofibrancy は既証。次は終頂点射の各段のホモトピー同値性と、Reedy cofibrant な二重みの比較を end に移す相対 tensor の計算へ進む。終頂点射自体は単射ではないので Reedy anodyne として扱わず、因子分解を使う。`ReedyWeightedRestriction` は実際の相対 tensor の Reedy 左類が証明できた射に適用する。係数の Reedy 条件の下で `weightedEndComparison` の π 同型性を示し、BF 射影へ合成する。Sp-3 は再構成しない。
 - Sp-2 の一般の Tot 塔の収束・π 消滅も残る。H¹・最初の fiber・零骨格の一点同型・頂点評価の検出、有限群の有理化各段と BF 置換後の高次群の全射性、全整数次数への移送は完了済み。
 - 核と lim¹ の全単射も残る。`kernelObstruction` の単位元の逆像が単位元だけとは証明済みだが、それだけで写像全体の単射性・全射性を主張しない。任意の差の類の実現と厳密な相対持ち上げは `NullDifferenceRealization`・`NullHomotopyStrictLifting` を使う。
 - Sp-2 全体、Sp-4 の通常 Tot 比較、Sp-5 の ∞ 圏 Sp は未完。Sp-3 は実際の標準射の全整数次数 π 同型として完了。一般の Tot の収束や ∞ 極限性をここから仮定しない。
