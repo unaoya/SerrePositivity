@@ -833,6 +833,21 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.tensorVector_d_eq_zero_of_vertices,
       `SerrePositivity.EInfinity.IntervalCuts.tensorVector_d_eq_sum_edges,
       `SerrePositivity.EInfinity.IntervalCuts.tensorBoundaryTerm_zero_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeNondegenerate_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.repeated_straddles,
+      `SerrePositivity.EInfinity.IntervalCuts.caesura_before_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.edgePositionExponent_eq_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeSign_of_nondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.activePositions,
+      `SerrePositivity.EInfinity.IntervalCuts.activePositions_card,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_eq_edge_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_tensorVector_d,
+      `SerrePositivity.EInfinity.IntervalCuts.erase_edgeNondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.eraseCutBasisWord,
+      `SerrePositivity.EInfinity.IntervalCuts.generator_erase_of_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutputVertices_erase_of_ne,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_eraseCut_left,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeOutput_eraseCut_right,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2445,3 +2460,29 @@ example (b : Fin 3 → Fin 2) :
       (tensorVectorOfDegree ℤ 3 0 (fun i => IntervalCuts.vertex (b i))
         (by rw [tupleDegree_eq_sum]; simp)) = 0 :=
   tensorVectorOfDegree_d_eq_zero ℤ 3 0 _ _ (tensorVector_d_eq_zero_of_vertices ℤ 3 b)
+
+-- 010 の左右の反復文字の削除は、それぞれ実際の語 10 と 01 を返す。
+private def cutEraseLeft : BasisWord 2 0 :=
+  eraseCutBasisWord compositionInner 1 0 (by decide) (by decide) ⟨2, by decide⟩
+private def cutEraseRight : BasisWord 2 0 :=
+  eraseCutBasisWord compositionInner 1 2 (by decide) (by decide) ⟨0, by decide⟩
+example : cutEraseLeft.val = ![1, 0] := by funext i; fin_cases i <;> rfl
+example : cutEraseRight.val = ![0, 1] := by funext i; fin_cases i <;> rfl
+-- 残した切断点での全出力族は、元の辺を終点・始点へ置換したもの。
+example : edgeOutput cutEraseLeft 0 =
+    Function.update (edgeOutput compositionInner 1) 0 (IntervalCuts.vertex 1) :=
+  edgeOutput_eraseCut_left compositionInner 0 0 (by decide) (by decide) ⟨2, by decide⟩
+example : edgeOutput cutEraseRight 1 =
+    Function.update (edgeOutput compositionInner 1) 0 (IntervalCuts.vertex 0) :=
+  edgeOutput_eraseCut_right compositionInner 2 1 (by decide) (by decide) ⟨0, by decide⟩
+-- 0102 の切断では第三の色は頂点なので、実際の境界和は二つの活動位置だけ。
+example :
+    (SerrePositivity.TensorPowers.power (IntervalCuts.interval ℤ) 3).d
+        (-(tupleDegree 3 (edgeOutput compositionOuter 1) : ℤ))
+        (-(tupleDegree 3 (edgeOutput compositionOuter 1) : ℤ) + 1)
+        (tensorVector ℤ 3 (edgeOutput compositionOuter 1)) =
+      tensorBoundaryTerm ℤ 3 (edgeOutput compositionOuter 1) 0 +
+        tensorBoundaryTerm ℤ 3 (edgeOutput compositionOuter 1) 1 := by
+  have hs : activePositions compositionOuter.val 1 = {0, 1} := by decide
+  simpa only [hs, Finset.sum_pair (by decide : (0 : Fin 4) ≠ (1 : Fin 4))]
+    using! edgeOutput_tensorVector_d ℤ compositionOuter 1 (by decide)

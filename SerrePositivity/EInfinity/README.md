@@ -479,7 +479,13 @@ nullary を含む TR の部分合成保存は完了。
 `tensorBoundaryTerm_eq_zero_of_vertex` で頂点因子を消し、`tensorVector_d_eq_sum_edges` で辺だけへ制限。
 `tensorBoundaryTerm_zero_edge` は先頭辺の境界を二端点のテンソルの差として明示する。
 頂点だけの任意の出力族が閉じることも証明済み。
-具体的な Δ¹ の余代数構造は未完成。次はこの境界和と全射語の削除による切断和の対応・符号一致。
+`edgeNondegenerate_iff` は非零切断を左右の語の単射性で特徴付ける。
+同じ色の反復は切断点を跨ぎ、`edgePositionExponent_eq_zero` で非零切断の位置指数は零。
+活動位置（区切りと切断点）は d+1 個で、互いに異なる色の出力辺と対応する。
+`edgeOutput_tensorVector_d` は実際の境界を元の活動位置の和へ添字替えする。
+`eraseCutBasisWord` は切断点以外の反復文字の削除後の実際の非退化基底語。
+`edgeOutput_eraseCut_left`・`right` は削除後の全出力族を、その色の終点・始点への置換と同定する。
+具体的な Δ¹ の余代数構造は未完成。符号一致・逆対応・退化する元切断からの項の相殺が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
