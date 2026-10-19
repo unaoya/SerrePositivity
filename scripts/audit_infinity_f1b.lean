@@ -1889,3 +1889,23 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeHomDiagram_lift_iff_over
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoin_relativeDiagram_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanGlobalRelativeCocone_vertex_images
+
+#check @SerrePositivity.InfinityCategories.F1B.kanGlobalRelativeDiagramFamily
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_initial_family
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalRelative_diagram_with_relative_fibers
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinFiberCocone_relative_of_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFunctorTranspose_transpose
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanBoundaryRelativeCocone_of_first_colimit
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalBoundary_diagram_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRelativeJoin_functor_boundary_extension
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers

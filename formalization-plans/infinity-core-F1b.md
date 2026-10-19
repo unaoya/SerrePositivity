@@ -25,16 +25,17 @@
 - 相対関手の境界充填は指定部分の外の単体の始点の条件だけから成立。
   二段階の相対内部 Hom の順序交換で、V′ の局所余錐の境界固定の延長と相対普遍性を構成済み。
 - 全空間の後合成・相対比較とその fiber を構成し、通常の相対余錐制限との厳密な一致を証明。
-  制限と後合成は cartesian 辺を保つ。単射な前合成同値に対する持ち上げ条件を満たす U では
-  指定された標的の全図式を保つ内ホーン延長を構成。U が関手の制限ならこの条件を証明済み。
-- U が単射 v による関手の制限なら、後合成の各 fiber の可逆辺を終点指定で持ち上げられる。
-  比較三角形の可逆辺を持ち上げ、二つの輸送の像を厳密化。相対比較の標的の cartesian 性を証明。
-  局所余錐の相対始点境界充填を全空間へ移し、相対骨格で変動する添字の族と実際の図式を延長。
-  部分上の図式・元の図式・標的の全図式を同時に固定する。各始点の局所条件は明示した仮定。
+  制限と後合成は cartesian 辺を保ち、関手の制限 U の上では相対比較・標的の cartesian 輸送も構成。
+  局所条件を全空間へ移し、相対骨格で部分図式・元の図式・標的の全図式を同時に保って延長できる。
+- 各 fiber の指定された相対余錐の存在から、元の図式と標的の全図式を厳密に保つ大域図式を構成。
+  相対始対象の coherent な族を選び、全空間での相対充填と全 fiber の操作的な相対普遍性を回収済み。
+- 境界の最初の頂点の各 fiber の余極限性から、標準単体上の大域的な図式と関手の族を境界固定で延長。
+  全 fiber で余極限となる相対 join 図式は、通常の関手単体集合の左端への制限に対して
+  相対始点境界を充填する。写像空間の制御を通常の内部 Hom の条件へ接続済み。
 - F1 の scaffold 比較は straightening に依存するため import しない。
   再構成した補題は `F1B.kanScaffoldBaseChange_overPullbackMap`。新規宣言も F1B 名前空間。
-- 最終検証：F1・F1B 同時ビルド成功（3680 jobs）、同時 import 検査成功（F1 6408・F1B 4026 宣言）。
-  公理監査成功（4030 宣言、標準三公理のみ、1099 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3697 jobs）、同時 import 検査成功（F1 6458・F1B 4049 宣言）。
+  公理監査成功（4053 宣言、標準三公理のみ、1111 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -43,7 +44,8 @@
   絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
   V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。
   関手の境界制限上で、変動する Kan 添字の族と実際の図式の相対的な組み立ては証明済み。
-  局所余錐の存在から頂点を選び、指定された大域図式に適用して写像空間の制限定理へ接続する。
+  局所余錐から指定された大域図式上の相対図式を構成し、通常の関手の制限の相対始点境界充填も証明。
+  次は写像空間の制限定理と点ごとの Kan 条件からの大域的 Hom 普遍性へ接続する。
 - 2. 点ごとの Kan 条件から大域的 Hom の全単射と h Fun の大域的一意性へ接続。
   Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。1 の後に 6〜16 時間。
 - 3. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
@@ -64,7 +66,8 @@
 - `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
 - `F1B.kanRelativeCoconeRestriction` / `F1B.exists_kanRelativeCocone_extension_of_first_vertices`
 - `F1B.kanRelativeHomInterchangeIso` / `F1B.exists_kanCocone_boundary_extension_of_first_colimit`
-- `F1B.kanRelativeJoinRelative_initialBoundary_of_local` / `F1B.exists_kanRelativeJoin_relativeDiagram_extension`
+- `F1B.exists_kanGlobalRelative_diagram_with_relative_fibers`
+- `F1B.kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers`
 
 ### 依存と提供
 
@@ -75,7 +78,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：可逆辺の持ち上げ、標的の cartesian 性、全空間の相対充填と図式の組み立て、集約・監査・本書）。
+- なし（本保存単位：局所相対余錐からの大域図式、関手の転置、通常の制限の始点境界充填、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -90,12 +93,11 @@
 
 ### 次の一手
 
-- `exists_kanRelativeJoin_relativeDiagram_extension` により、全頂点を含む部分上の図式を、
-  関手の制限 U の上で元の図式・標的の全図式を保って延長できる。次は局所余錐の存在から頂点を選ぶ。
-  `exists_kanGlobalColimit_initial_vertex` の計算を相対化し、fiber の同型の制限・後合成との自然性で
-  二つの頂点の像を同定する。`exists_kanRelativeInitial_family_of_vertices` を全空間の相対比較に適用し、
-  `kanGlobalDiagramFamilyEquiv` で指定された大域図式の上の相対 join 図式へ戻す。
-  V′ の局所入力には `exists_kanCocone_boundary_extension_of_first_colimit` を使い、写像空間の制限定理へ進む。
+- `kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers` で、全 fiber で余極限となる図式 H は
+  通常の `pre (relativeJoinInl p (𝟙 C))` に対して相対始点境界を充填する。
+  `cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting` へ接続し、各標的図式への写像空間の
+  制限を全境界充填として取り出す。左 pinched 模型と端点 fiber の比較、および右模型との比較を確認する。
+  comma の相対 join の表示と元の Kan 変換への比較へ移し、点ごとの条件から大域的 Hom 普遍性を証明する。
   標準の isofibration と U-colimit との比較は未証明。操作的条件との同値を仮定しない。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
