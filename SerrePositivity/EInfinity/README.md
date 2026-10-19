@@ -493,8 +493,13 @@ nullary を含む TR の部分合成保存は完了。
 `endpointTensor` は置換後の出力族の実際のテンソルで、`endpointTensor_eraseCut_left`・`right` は
 それを左右の実際の削除語の切断出力へ同定する。
 `cut_factor_boundary` は切断符号付きの反復色一因子の境界を、両削除係数で重み付けした和へ同定する。
-具体的な Δ¹ の余代数構造は未完成。逆対応・退化元切断由来の項と切断点色の境界項の相殺を含む
-全有限和の比較が残る。
+`original_cut_iff_no_same_side_repeat` は削除後だけ非零となる原因を削除文字の同側重複へ限定する。
+`CutDeletionDefect` はその障害位置で、存在と一意性を証明済み。
+障害が切断点以外なら削除位置と障害位置を交換でき、`NonpivotResidualCut.swap` は
+同じ元切断点を保つ有限型上の固定点なし対合。`swapEquiv` はその自己同値。
+`residualCut_output_family`・`residualCut_tensor_eq` は交換対の実際の削除基底語の出力族・テンソル値の一致。
+具体的な Δ¹ の余代数構造は未完成。この対合の一般の係数反対性、切断点障害と切断点色の境界項の
+相殺を含む全有限和の比較が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：

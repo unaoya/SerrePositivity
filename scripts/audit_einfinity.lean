@@ -876,6 +876,21 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.endpointTensor_eraseCut_left,
       `SerrePositivity.EInfinity.IntervalCuts.endpointTensor_eraseCut_right,
       `SerrePositivity.EInfinity.IntervalCuts.cut_factor_boundary,
+      `SerrePositivity.EInfinity.IntervalCuts.original_cut_iff_no_same_side_repeat,
+      `SerrePositivity.EInfinity.IntervalCuts.CutDeletionDefect,
+      `SerrePositivity.EInfinity.IntervalCuts.cutDeletionDefect_exists_iff,
+      `SerrePositivity.EInfinity.IntervalCuts.cutDeletionDefect_unique,
+      `SerrePositivity.EInfinity.IntervalCuts.erase_partner_edgeNondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.residual_partner_existsUnique,
+      `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut,
+      `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut.swap,
+      `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut.swap_swap,
+      `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut.swap_ne,
+      `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut.swapEquiv,
+      `SerrePositivity.EInfinity.IntervalCuts.NonpivotResidualCut.swap_output,
+      `SerrePositivity.EInfinity.IntervalCuts.residualCutBasisWord,
+      `SerrePositivity.EInfinity.IntervalCuts.residualCut_output_family,
+      `SerrePositivity.EInfinity.IntervalCuts.residualCut_tensor_eq,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2562,3 +2577,38 @@ example : tensorBoundaryTerm ℤ 3 (edgeOutput factorSignWord 2) 1 =
   have hR : deletionCoefficient factorSignWord.val 3 *
       edgeSign (erase factorSignWord.val 3) 2 = 1 := by decide
   simpa only [hp, hs, hL, hR, one_smul, neg_one_zsmul] using! h
+
+-- 01020 の最初の0を削除すると非零だが、元の切断は左側の重複で退化する。
+private def residualWord : BasisWord 3 2 := ⟨![0, 1, 0, 2, 0], by decide⟩
+private def residualFixture : NonpivotResidualCut residualWord.val where
+  deleted := 0
+  pivot := 2
+  defect := 2
+  nondegenerate := by decide
+  defect_spec := by decide
+  defect_ne_pivot := by decide
+example : ¬ EdgeNondegenerate residualWord.val 3 := by decide
+-- 交換相手は中央の0の削除で、同じ元切断点に戻る。二回交換すると厳密に元へ戻る。
+example : residualFixture.swap.pivot = 2 := by
+  apply (Fin.succAbove_right_injective (p := (2 : Fin 5)))
+  exact residualFixture.partnerPosition_spec.1
+example : residualFixture.swap.swap = residualFixture := residualFixture.swap_swap
+example : residualFixture.swap ≠ residualFixture := residualFixture.swap_ne
+example : (residualCutBasisWord residualWord residualFixture).val = ![1, 0, 2, 0] := by
+  funext i
+  fin_cases i <;> rfl
+example : (residualCutBasisWord residualWord residualFixture.swap).val = ![0, 1, 2, 0] := by
+  funext i
+  fin_cases i <;> rfl
+-- この相殺対の削除係数と切断符号の積は互いに反対。
+example : deletionCoefficient residualWord.val 0 * edgeSign (erase residualWord.val 0) 2 =
+    -(deletionCoefficient residualWord.val 2 * edgeSign (erase residualWord.val 2) 2) := by decide
+-- 語は異なっても、実際の正規化区間テンソルでの切断値は同じ。
+example :
+    tensorVectorOfDegree ℤ 3 2 (edgeOutput (residualCutBasisWord residualWord residualFixture) 2)
+        (edgeOutput_tupleDegree _ _ residualFixture.nondegenerate) =
+      tensorVectorOfDegree ℤ 3 2
+        (edgeOutput (residualCutBasisWord residualWord residualFixture.swap)
+          residualFixture.swap.pivot)
+        (edgeOutput_tupleDegree _ _ residualFixture.swap.nondegenerate) :=
+  residualCut_tensor_eq ℤ residualWord residualFixture
