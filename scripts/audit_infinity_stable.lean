@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientActualGradedFractions
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteBoundaryCancellation
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteGradedPrimitives
 import SerrePositivity.InfinityCategories.Derived.DGYonedaShiftedZero
@@ -1761,6 +1762,18 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgRestrictionShiftedComparison_zero_iff_boundary
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFiniteBoundary_exists_primitives
 
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomRightShift_unshift
+#print axioms SerrePositivity.InfinityCategories.dgModuleHomRightUnshift_closed
+#print axioms SerrePositivity.InfinityCategories.dgYonedaClosedRightShift_surjective
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionGradedLift_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionGradedLift_closed
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionGradedLiftClosed
+#print axioms SerrePositivity.InfinityCategories.dgYonedaInverse_precompose_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgModuleShiftedComparison_exists_primitive
+#print axioms SerrePositivity.InfinityCategories.dgRestrictionGradedLift_precompose_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgQuotientGraded_exists_fraction
+#print axioms SerrePositivity.InfinityCategories.dgQuotientGraded_exists_actualFraction
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1914,6 +1927,15 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleHomRightUnshift,
+    `SerrePositivity.InfinityCategories.Derived.DGYonedaClosedShiftSurjective,
+    `SerrePositivity.InfinityCategories.Derived.DGRestrictionGradedLift,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleYonedaPrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleShiftedComparisonBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGRestrictionLiftPrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientGradedFractions,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientActualGradedFractions,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleShiftUnitNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGModuleRightShiftPostcomposition,
     `SerrePositivity.InfinityCategories.Derived.DGRestrictionGradedComparison,

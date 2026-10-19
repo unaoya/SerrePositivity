@@ -548,6 +548,15 @@ public import SerrePositivity.InfinityCategories.Derived.DGRestrictionGradedComp
 public import SerrePositivity.InfinityCategories.Derived.DGRestrictionShiftedBoundary
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteBoundaryCancellation
 
+public import SerrePositivity.InfinityCategories.Derived.DGModuleHomRightUnshift
+public import SerrePositivity.InfinityCategories.Derived.DGYonedaClosedShiftSurjective
+public import SerrePositivity.InfinityCategories.Derived.DGRestrictionGradedLift
+public import SerrePositivity.InfinityCategories.Derived.DGModuleYonedaPrecomposition
+public import SerrePositivity.InfinityCategories.Derived.DGModuleShiftedComparisonBoundary
+public import SerrePositivity.InfinityCategories.Derived.DGRestrictionLiftPrecomposition
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientGradedFractions
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientActualGradedFractions
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
