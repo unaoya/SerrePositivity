@@ -17,18 +17,18 @@
 - 実際の塔の微分の各セルの係数を、セル境界の連結射とその cofiber 単体・零ホモトピーで計算済み。
 - loop 交換の頂点を円の射と標準区間の辺で厳密に照合済み。骨格 fiber の通常の零 loop 比較の包含は明示した逆辺の類と一致し、実際の成分微分の係数を次数二以上の正規化交代微分と (-1)^(セル次元) で計算済み。
 - Kan fibration の下で同じ downstairs の類を持つ代表を、射影が指定した単体と厳密に一致する upstairs の代表へ調整済み。整合する類の族を厳密に整合する代表へ直し、極限の群から段ごとの群の逆極限への比較準同型の全射性を証明済み。
-- 整合する RelStruct を極限の RelStruct へ組み立てる式と、比較の核が各段で零となる類であることを証明済み。非可換 lim¹ を twisted 作用の軌道集合で構成し、全射な遷移のときの消滅を証明済み。固定した核の球面代表から lim¹ の障害を構成し、零ホモトピーの選択変更が twisted 作用になること、極限で零な代表の障害が基点となることを証明済み。球面代表変更への不変性、核から lim¹ への基点を保つ写像を証明済み。零障害からの充填と核・lim¹ の同定は未完。
+- 整合する RelStruct を極限の RelStruct へ組み立てる式と、比較の核が各段で零となる類であることを証明済み。非可換 lim¹ を twisted 作用の軌道集合で構成し、全射な遷移のときの消滅を証明済み。固定した核の球面代表から lim¹ の障害を構成し、零ホモトピーの選択変更が twisted 作用になること、極限で零な代表の障害が基点となることを証明済み。球面代表変更への不変性、核から lim¹ への基点を保つ写像を証明済み。零障害から厳密に整合する零ホモトピーを逐次構成し、核上の障害が零であることと極限の類の零性の同値を証明済み。lim¹ 消滅時の比較の単射性、次の次数の遷移が全射な塔の比較群同型まで完了。核と lim¹ の全単射、および必要な骨格の塔での消滅は未完。
 - 比較ホーンの fiber 内の終点を比較し、標準の接続準同型と loop 同型の反可換式を全正次数で証明済み。
 - 標準の零次数接続写像とその厳密な正方形への自然性を構成し、正次数・零次数の塔の微分の loop 反可換式を証明済み。
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4104 jobs、専用監査 632 モジュール・6079 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：14635 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4110 jobs、専用監査 638 モジュール・6185 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：14658 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
-- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。正次数の比較の全射性と全射遷移の代数的 lim¹ 消滅は証明済み。比較の核の lim¹ による同定と、必要な塔での消滅を残す。
+- 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。正次数の比較の全射性、lim¹ 消滅からの単射性、全射遷移の lim¹ 消滅は証明済み。Mittag–Leffler 条件での lim¹ 消滅、核と lim¹ の全単射、必要な骨格の塔での収束を残す。
   原典：Goerss–Jardine VIII §§1–2。24–80 時間。E₂ の消滅だけで収束を仮定しない。
 - 有限群の有理自明作用について標準射の全射性を証明し、既証の単射性と合わせて全整数次数の有理 Shapiro を完成させる。
   原典：Goerss–Jardine VIII §2、Bousfield–Friedlander 1978 §2。上記の後で 8–24 時間。
@@ -51,10 +51,10 @@
 - `homotopyFixedPointsUnit_homotopyMap_injective`
 - `SimplicialFunctionComplex.componentEquiv`
 - `SkeletalCellAttachment.stageFiberComponentEquiv`
-- `SkeletalCellAttachment.stageFiberIteratedLoopComponentEquiv`
+- `PointedFibrationTower.limitGroupEquivOfSurjective`
 - `NullHomotopyDifference.difference`
 - `NullHomotopyDifference.difference_map`
-- `NullHomotopyDifference.difference_comp`
+- `PointedFibrationTower.kernelObstruction_eq_point_iff`
 - `PointedFibrationTower.kernelObstruction`
 - `PointedFibrationTower.limitGroupComparison`
 - `PointedFibrationTower.limitGroupComparison_surjective`
@@ -92,8 +92,8 @@
 - coefficientDifferential の交代式・符号・核・像は全添字で証明済み。cohomology の消滅だけで有理 Shapiro の全射性・収束を完了扱いにしない。
 
 ### 次の一手
-- 零障害から整合する零ホモトピーを逐次構成する。`kernelObstruction` は球面代表変更から独立な核上の写像として構成済み。移送ホーン・任意の二つの移送充填による差の不変性・塔での移送不変性を再構成しない。
-- 零ホモトピーの差が零なら適切な相対充填が存在すること、および任意の差の類を実現できることを Kan 充填で作る。これを fibration の相対持ち上げと合わせて零ホモトピーを調整し、核と lim¹ の同定、必要な塔での消滅へ進む。差の類の零性と単体の厳密な等式を混同しない。
+- lim¹ の消滅を全射遷移から Mittag–Leffler 条件へ拡張し、実際の骨格の塔の遷移の像を係数微分の計算から制御する。零障害の判定・整合する零ホモトピー・比較の単射性は `TowerKernelNullCriterion` まで既証なので再構成しない。
+- 核と lim¹ の全単射も残る。`kernelObstruction` の単位元の逆像が単位元だけとは証明済みだが、それだけで写像全体の単射性・全射性を主張しない。任意の差の類の実現と厳密な相対持ち上げは `NullDifferenceRealization`・`NullHomotopyStrictLifting` を使う。
 - Sp-2 の収束、Shapiro 全射性、通常の Tot 比較、∞ 圏 Sp は未完。比較の全射性と整合する RelStruct の極限への組み立ては既証だが、段ごとの零性だけから整合する零ホモトピーを仮定しない。
 
 ## 範囲と所有
