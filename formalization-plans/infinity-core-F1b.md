@@ -21,20 +21,23 @@
   普遍余錐から、この fiber の射に対する相対始点境界充填まで証明。全空間への移送は未完。
 - 射影の持ち上げ問題を逆像上の図式の延長と同定し、inner fibration 性の必要十分条件を証明。
   標準単体上の cocartesian fibration の最終 fiber への厳密な retraction と、そこで固定された輸送を構成。
-  射影の終点指定の辺の持ち上げ（任意次元の最後の頂点版も）を証明。辺の cartesian 性は未証明。
+  射影の終点指定の辺の持ち上げ（任意次元の最後の頂点版も）を証明。cartesian 性は未証明。
 - 三角形の cocartesian 性の消去と、cocartesian なホモトピーによる辺の保存を証明。
   最終 fiber への retraction と逆像上の図式の延長が cocartesian 辺を可逆辺に送ることまで証明。
 - cocartesian section の全部分単体集合を構成し、inner fibration の場合の quasicategory 性を証明。
   前合成の関手性、一般の strict transport の図式と fiber 評価射、任意パラメータの族の curry・uncurry を構成。
   任意の部分パラメータ上の section と始対象での評価を同時に固定した延長を証明。
   始対象の評価は自明 Kan fibration。一般の strict transport の恒等射評価も自明 Kan fibration かつ ∞ 圏同値。
-- 相対関手の充填性を仮定しない界面を `KanSection` 名前空間に置き、F1 の禁止 import 閉包から分離。
 - 一般の universal scaffold を構成し、各 fiber の自明 Kan fibration 性と水平辺の cocartesian 性を証明。
   有限鎖の帰納と底についての局所性で、任意の通常の圏の nerve 上の scaffold の全空間の前合成同値を証明。
   universal scaffold も、内ホーンを含む任意の単体集合への底変換後に前合成同値となる。
   coslice・区間・相対 join・写像円柱の比較を `KanSection` 内で分離し、右 pinched 比較は既存の F1b を再利用。
-- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2582 jobs）。
-  公理監査成功（3395 宣言、標準三公理のみ、908 モジュールに straightening なし）。
+- cocartesian fibration に沿う内ホーンと任意の inner anodyne 射の引き戻しの前合成同値を証明。
+  `kanFiberwiseHom` の射影は inner fibration、底と標的が quasicategory なら全空間も quasicategory。
+- 可逆な終端辺を持つ外ホーンの族を充填し、replacement 上の延長を実際の逆像へ移送。
+  辺の cartesian 性を外ホーン逆像上の延長で判定する必要十分条件も証明。
+- 最終検証：`lake build SerrePositivity.InfinityCategories.F1B` 成功（2595 jobs）。
+  公理監査成功（3430 宣言、標準三公理のみ、921 モジュールに straightening なし）。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -64,11 +67,10 @@
 - `kanFiberwiseHom` / `kanFiberwiseHomFiberIso` / `kanRelativeJoinCoconeFiber_initialBoundary`
 - `kanFiberwiseHomProjection_innerFibration_iff` / `exists_kanFinalFiberRetraction`
 - `kanIsCocartesianEdge_triangle_second_of_first_long` / `exists_kanFinalFiberRetraction_inverting`
-- `exists_kanInitialSectionTransport_relative` / `kanCocartesianSectionsEvaluate_trivialKanFibration`
-- `kanCocartesianStrictTransportFiberEquivalence`
-- `kanUniversalScaffold` / `kanUniversalScaffoldFiberMap_isQCatEquivalence`
-- `KanCocartesianScaffold.isPrecompositionEquivalence`
-- `kanUniversalScaffold_overPullback_isPrecompositionEquivalence`
+- `KanCocartesianScaffold.isPrecompositionEquivalence` / `kanUniversalScaffold_overPullback_isPrecompositionEquivalence`
+- `kanCocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
+- `kanFiberwiseHomProjection_innerFibration` / `kanFiberwiseHom_quasicategory`
+- `exists_kanCocartesianFinalHorn_extension_of_model` / `kanFiberwiseHom_isCartesianEdge_iff`
 
 ### 依存と提供
 
@@ -79,8 +81,7 @@
 
 ### 未コミット
 
-- 保存単位：`KanSection` の coslice・区間・相対 join・写像円柱の比較 25 本、
-  `KanScaffold` の有限鎖・一般・任意底変換の比較 8 本、集約・監査・本書。
+- なし（本保存単位：内ホーン・inner anodyne の逆像、相対指数の充填性、外ホーンの延長と比較、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -89,18 +90,17 @@
   並行履歴の書き換えは行わない。以後の保存は `git commit --only` で所有パスを限定する。
 - F1B のソースに `ModelCategory` 仮定なし。各定理の前提は Lean を正本とする。
 - `kanFiberwiseHom` の strict な普遍性、fiber の同定、終点を指定した持ち上げは証明済み。
-  射影の cartesian fibration 性・全空間の quasicategory 性、普遍余錐から全空間の相対始点境界充填は未証明。
-- 内ホーンの逆像の前合成同値からの inner fibration 性は条件付き。F1 の既存 scaffold は left fibration 用。
+  射影の cartesian fibration 性と、普遍余錐から全空間の相対始点境界充填は未証明。
 - 大域的 Hom 普遍性を仮定した一意性は証明済みだが、点ごとの Kan 条件からの導出は未完。
 - B1 の自然性は全パラメータの集合値前層の模型。空間値二変数 ∞ 関手との比較は未形式化。
   B2 は同じ宇宙の標的に対する普遍性。一般の C[W⁻¹] の存在は主張しない。
 
 ### 次の一手
 
-- 構成済みの任意底変換後の universal scaffold 比較を使い、cocartesian fibration の内ホーン逆像の前合成同値を証明する。
-  replacement 側の内ホーンへの制限を有限鎖の組み立てで比較し、実際の逆像へ移送する（Kerodon §5.3.6）。
-  `kanFiberwiseHomProjection_innerFibration_of_hornEquivalences` に渡した後、特殊辺の cartesian 性へ進む。
-  その後、制限の輸送との両立で fiber の境界充填を全空間へ移し、既存の骨格の組み立てに渡す。
+- `kanSimplicialReplacementAssembly_horizontal` で模型の終端辺の族を実際の cocartesian 辺と同定する。
+  `exists_kanCocartesianFinalHorn_extension_of_model` の可逆化条件を特殊辺の図式から導き、
+  `kanFiberwiseHom_isCartesianEdge_iff` で cartesian 性を証明する（Kerodon §5.3.6）。
+  底変換と逆像の同型との両立も必要。その後 fiber の境界充填を全空間へ移す。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
