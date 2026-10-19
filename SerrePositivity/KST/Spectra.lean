@@ -578,3 +578,6 @@ public import SerrePositivity.KST.Spectra.BousfieldKanPointSectionCoefficients
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKCoherentCone
 public import SerrePositivity.KST.Spectra.SectionConePointComparison
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKIsLimit
+public import SerrePositivity.KST.Spectra.SpectrumCircleCotensorComponents
+public import SerrePositivity.KST.Spectra.SpectrumCircleCotensorReversal
+public import SerrePositivity.KST.Spectra.SpectrumCircleCotensorReversalEvaluation
