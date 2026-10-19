@@ -718,4 +718,14 @@ public import SerrePositivity.KST.SConstruction.KPrismSliceDiagrams
 public import SerrePositivity.KST.SConstruction.KPrismSliceEdges
 public import SerrePositivity.KST.SConstruction.CoherentPrismCompositionFlags
 public import SerrePositivity.KST.SConstruction.KPrismNativeSpanTargets
+public import SerrePositivity.KST.SConstruction.CoherentStrictPathEvaluation
+public import SerrePositivity.KST.SConstruction.CoherentOuterFacePaths
+public import SerrePositivity.KST.SConstruction.CoherentPrismHorizontalFaces
+public import SerrePositivity.KST.SConstruction.CoherentPathActionConstancy
+public import SerrePositivity.KST.SConstruction.CoherentAdjacentPathEvaluation
+public import SerrePositivity.KST.SConstruction.KPrismHorizontalPathEvaluation
+public import SerrePositivity.KST.SConstruction.CoherentCompositionFaceConstancy
+public import SerrePositivity.KST.SConstruction.KPrismCompositionFaceValues
+public import SerrePositivity.KST.SConstruction.CoherentRefinementPathVertices
+public import SerrePositivity.KST.SConstruction.KPrismSpanEndpointsConstant
 /-! # ∞-S• 構成と連結 K 理論 -/
