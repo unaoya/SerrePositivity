@@ -9,6 +9,7 @@
 - 所有：有理化、hG、Tot の Kan 複体による実構成。
 - 借用：Mathlib の EG の自由 G 集合の単体的図式と、斉次・非斉次座標の作用の同型。
 - 借用：H_* は K-L2 が所有する。
+- 借用：Mathlib の正規化鎖複体、非退化単体の余積表示、生成子の交代微分式。ここでは Hom による cochain の比較先の構成だけに使い、H_* の結果を追加しない。
 - 借用：pro 形式は K-L6 が所有する。
 - 借用：γ1 は N レーンの局所 Kan coherent nerve 定理。
 - 借用：γ3 は N レーンのホモトピー極限と ∞ 極限の比較。
@@ -35,7 +36,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・483 モジュール 4563 宣言の公理監査成功。
+対象ビルド・486 モジュール 4598 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3446,3 +3447,33 @@ cofiber の Hom の fiber 表示の包含後の式を界面にし、係数射と
 参照：Goerss–Jardine I §§7–8、VIII §1。
 対象ビルド 3934 jobs 成功。私有宣言を含む 483 モジュール 4563 宣言で標準三公理のみ。
 L9e は進行中。通常の交代 cochain 微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。
+
+
+## 113. L9e の比較先の通常の正規化 cochain
+
+Mathlib の normalizedChainComplex と、各鎖群が非退化単体を添字とする余積である普遍性を借りた。
+この既存の通常の鎖複体を前加法圏の係数への Hom に送り、正規化 cochain 微分を構成した。
+余積の生成子への制限と延長が加法同型であることを証明し、非退化単体上の係数の関数群へ微分を移した。
+任意の単体への生成子の射は退化単体で零となるため、関数の表示では退化面を零とする延長になる。
+Mathlib の正規化鎖の生成子の微分式を適用し、移された微分が面の交代和である明示式を得た。
+微分の二乗の零性は、通常の鎖複体の零合成から共役により移した。
+
+二つの加法群の族を cochain 複体に束ね、Hom の複体と関数の複体の同型を構成した。
+係数の Hom の後合成を各非退化単体で施す射と、その延長の可換性を証明した。
+この射と通常の微分の自然性を検証し、cochain 複体の係数射を与えた。
+H_* の理論や定理を所有範囲に追加するものではなく、正規化 cochain の比較先として Mathlib の鎖複体を借りるだけである。
+
+この通常の交代微分と、実際の骨格の幾何的微分から移した coefficientDifferential はまだ別の構成である。
+両者が一致することと球面の向きの符号は引き続き証明が必要である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `NormalizedSimplicialCochains.extend` / `coefficientEquiv` | 正規化鎖群の Hom と非退化単体上の関数の加法同型 |
+| `NormalizedSimplicialCochains.zeroExtend` / `inclusion_extend_all` | 退化単体で零となる全単体上の表示 |
+| `NormalizedSimplicialCochains.differential_apply` / `differential_comp` | 通常の交代面の和の式と二乗の零性 |
+| `NormalizedSimplicialCochains.homComplex` / `complex` / `complexIso` | Hom の複体と関数の複体の同型 |
+| `NormalizedSimplicialCochains.post` / `differential_natural` / `complexMap` | 係数の後合成と通常の微分の自然性 |
+
+参照：Goerss–Jardine III §2、VIII §1。Mathlib SimplicialSet/Homology/Nondegenerate の通常の構成を借用。
+対象ビルド 3954 jobs 成功。私有宣言を含む 486 モジュール 4598 宣言で標準三公理のみ。
+L9e は進行中。幾何的微分と交代微分との一致、符号、収束、有理 Shapiro の全射性、通常の Tot の比較は未完了。

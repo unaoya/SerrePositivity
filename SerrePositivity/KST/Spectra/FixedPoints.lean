@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+public import SerrePositivity.KST.Spectra.NormalizedCochainComplex
+public import SerrePositivity.KST.Spectra.NormalizedCochainCoefficientMaps
+
 public import SerrePositivity.KST.Spectra.FibrationBoundaryOverNaturality
 public import SerrePositivity.KST.Spectra.PointedFibrationNaturality
 public import SerrePositivity.KST.Spectra.PointedTowerDifferentialNaturality
