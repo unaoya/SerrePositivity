@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientActualBoundaryFillers
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativePrimitives
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualGradedFractions
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteBoundaryCancellation
@@ -1788,6 +1789,16 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_relativePrimitives
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_actualRelativePrimitives
 
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecomposition
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecomposition_f
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecomposition_comp
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedPrecomposeData_proper_equations
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedPrecomposition
+#print axioms SerrePositivity.InfinityCategories.pinchedCompleteTop
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_pinchedBoundaryFillers
+#print axioms SerrePositivity.InfinityCategories.pinchedBoundary_eq_of_proper_components
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_actualBoundaryFillers
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1941,6 +1952,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionChainMap,
+    `SerrePositivity.InfinityCategories.Derived.PinchedClosedPrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.PinchedCompleteTop,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedBoundaryFillers,
+    `SerrePositivity.InfinityCategories.Derived.PinchedBoundaryFromProperComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientActualBoundaryFillers,
     `SerrePositivity.InfinityCategories.Derived.DGGradedClosedPrecomposition,
     `SerrePositivity.InfinityCategories.Derived.DGPrimitiveResidual,
     `SerrePositivity.InfinityCategories.Derived.DGClosedVerdierComposition,
