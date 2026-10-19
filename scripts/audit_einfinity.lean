@@ -905,6 +905,14 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.pivotBoundary_gap_difference,
       `SerrePositivity.EInfinity.IntervalCuts.pivotBoundaryValue_sum,
       `SerrePositivity.EInfinity.IntervalCuts.pivotBoundaryValue_sum_zeroDegree,
+      `SerrePositivity.EInfinity.IntervalCuts.GapNondegenerate,
+      `SerrePositivity.EInfinity.IntervalCuts.gap_before_defect_existsUnique,
+      `SerrePositivity.EInfinity.IntervalCuts.gap_after_defect_existsUnique,
+      `SerrePositivity.EInfinity.IntervalCuts.erase_pivot_iff_gap_before,
+      `SerrePositivity.EInfinity.IntervalCuts.erase_pivot_iff_gap_after,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotEraseBasisWord,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotErase_tensor_before,
+      `SerrePositivity.EInfinity.IntervalCuts.pivotErase_tensor_after,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2719,3 +2727,35 @@ example {n : ℕ} (u : BasisWord n 0) : ∑ p, pivotBoundaryValue ℤ u p =
     tensorVectorOfDegree ℤ n 0 (fun _ => IntervalCuts.vertex 1) (vertex_tupleDegree n 1) -
       tensorVectorOfDegree ℤ n 0 (fun _ => IntervalCuts.vertex 0) (vertex_tupleDegree n 0) :=
   pivotBoundaryValue_sum_zeroDegree ℤ u
+
+-- 01202 の元の辺切断は全て退化するが、隙間3は非退化。
+private def gapOnlyWord : BasisWord 3 2 := ⟨![0, 1, 2, 0, 2], by decide⟩
+example : ∀ p, ¬ EdgeNondegenerate gapOnlyWord.val p := by decide
+example : GapNondegenerate gapOnlyWord.val 3 := by decide
+-- 隙間の右隣3には左の0、左隣2には右の2が一意な削除相手となる。
+example : ∃! i, i < (3 : Fin 5) ∧ gapOnlyWord.val i = gapOnlyWord.val 3 :=
+  gap_before_defect_existsUnique gapOnlyWord.val 3 (by decide) (by decide)
+example : ∃! i, (2 : Fin 5) < i ∧ gapOnlyWord.val i = gapOnlyWord.val 2 :=
+  gap_after_defect_existsUnique gapOnlyWord.val 2 (by decide) (by decide)
+example : EdgeNondegenerate (erase gapOnlyWord.val 0) 2 :=
+  erase_edgeNondegenerate_of_gap_before gapOnlyWord.val 0 2
+    (by decide) (by decide) (by decide)
+example : EdgeNondegenerate (erase gapOnlyWord.val 4) 2 :=
+  erase_edgeNondegenerate_of_gap_after gapOnlyWord.val 4 2
+    (by decide) (by decide) (by decide)
+-- 二つの異なる実際の削除語は、それぞれ同じ隙間3のテンソル値へ戻る。
+private def gapOnlyLeft : BasisWord 3 1 :=
+  pivotEraseBasisWord gapOnlyWord 0 2 (by decide) (by decide)
+private def gapOnlyRight : BasisWord 3 1 :=
+  pivotEraseBasisWord gapOnlyWord 4 2 (by decide) (by decide)
+example : gapOnlyLeft.val = ![1, 2, 0, 2] := by funext i; fin_cases i <;> rfl
+example : gapOnlyRight.val = ![0, 1, 2, 0] := by funext i; fin_cases i <;> rfl
+example : tensorVectorOfDegree ℤ 3 2 (edgeOutput gapOnlyLeft 2)
+      (edgeOutput_tupleDegree _ _ (by decide)) = gapTensor ℤ gapOnlyWord 3 :=
+  pivotErase_tensor_before ℤ gapOnlyWord 0 2 (by decide) (by decide) (by decide)
+example : tensorVectorOfDegree ℤ 3 2 (edgeOutput gapOnlyRight 2)
+      (edgeOutput_tupleDegree _ _ (by decide)) = gapTensor ℤ gapOnlyWord 3 :=
+  pivotErase_tensor_after ℤ gapOnlyWord 4 2 (by decide) (by decide) (by decide)
+-- この空の元切断区間の例では、二削除の係数は反対。一般の係数公式は次工程。
+example : deletionCoefficient gapOnlyWord.val 0 * edgeSign (erase gapOnlyWord.val 0) 2 = -1 ∧
+    deletionCoefficient gapOnlyWord.val 4 * edgeSign (erase gapOnlyWord.val 4) 2 = 1 := by decide

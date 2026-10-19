@@ -505,7 +505,11 @@ nullary を含む TR の部分合成保存は完了。
 `pivotBoundary_gap_difference` は実際の切断点色の因子境界を共通係数付き隙間差へ移す。
 `pivotBoundaryValue_sum` は全有限和を非零切断区間の両端へ集約し、非零切断がなければ零とする。
 `pivotBoundaryValue_sum_zeroDegree` は arity 零を含め、次数零の全和を入力辺の二端点差へ同定する。
-具体的な Δ¹ の余代数構造は未完成。正次数の両端と切断点障害の削除項の一致、全有限和の比較が残る。
+`GapNondegenerate` は隙間の左右単射性。隣接退化辺切断の反対側の同色位置は一意。
+`erase_pivot_iff_gap_before`・`after` は切断点同色削除後の非零性と隙間の非退化性の同値。
+`pivotEraseBasisWord` は実際の削除基底語、`pivotErase_tensor_before`・`after` はその値と隙間値の一致。
+監査の `01202` は元の非零切断がないが、左右の異なる削除項が同じ隙間へ戻る例。
+具体的な Δ¹ の余代数構造は未完成。切断点障害の一般係数公式と全削除和の隙間ごとの比較が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
