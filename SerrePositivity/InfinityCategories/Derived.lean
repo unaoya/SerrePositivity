@@ -250,6 +250,20 @@ public import SerrePositivity.InfinityCategories.Derived.SuspensionShiftVertexTr
 public import SerrePositivity.InfinityCategories.Derived.ContractingElementNerve
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientNerve
 
+public import SerrePositivity.InfinityCategories.Derived.ContractingElementHomBoundaries
+public import SerrePositivity.InfinityCategories.Derived.ContractingHomAcyclic
+public import SerrePositivity.InfinityCategories.Derived.ContractingPinchedHom
+public import SerrePositivity.InfinityCategories.Derived.ContractingSourceHomotopy
+public import SerrePositivity.InfinityCategories.Derived.ContractingTargetHomotopy
+public import SerrePositivity.InfinityCategories.Derived.ContractingTerminalVertex
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientContractingHoms
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientMappingSpaces
+public import SerrePositivity.InfinityCategories.Derived.PinchedBoundaryData
+public import SerrePositivity.InfinityCategories.Derived.PinchedBoundaryFilling
+public import SerrePositivity.InfinityCategories.Derived.PinchedBoundaryRecovery
+public import SerrePositivity.InfinityCategories.Derived.PinchedPrimitiveFilling
+public import SerrePositivity.InfinityCategories.Derived.PinchedProperEquations
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

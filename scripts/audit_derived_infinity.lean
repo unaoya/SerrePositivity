@@ -2,6 +2,19 @@ import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.contractingTargetPrimitive_differential
+#print axioms SerrePositivity.InfinityCategories.contractingSourcePrimitive_differential
+#print axioms SerrePositivity.InfinityCategories.contractingTargetHomotopy
+#print axioms SerrePositivity.InfinityCategories.contractingSourceHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgQuotientTargetHom_acyclic
+#print axioms SerrePositivity.InfinityCategories.dgQuotientSourceHom_acyclic
+#print axioms SerrePositivity.InfinityCategories.pinchedBoundaryFilling
+#print axioms SerrePositivity.InfinityCategories.contractingTargetPinchedHom_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.contractingSourcePinchedHom_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.dgQuotientTargetPinchedHom_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.dgQuotientSourcePinchedHom_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.dgQuotientKilledVertex_isTerminal
+
 #print axioms SerrePositivity.InfinityCategories.dgNerve_contractingElement_id_homotopic_zero
 #print axioms SerrePositivity.InfinityCategories.dgNerve_contractingElement_id_eq_zeroEdge
 #print axioms SerrePositivity.InfinityCategories.dgQuotientNerve
@@ -804,6 +817,20 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ContractingElementHomBoundaries,
+    `SerrePositivity.InfinityCategories.Derived.ContractingHomAcyclic,
+    `SerrePositivity.InfinityCategories.Derived.ContractingPinchedHom,
+    `SerrePositivity.InfinityCategories.Derived.ContractingSourceHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.ContractingTargetHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.ContractingTerminalVertex,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientContractingHoms,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientMappingSpaces,
+    `SerrePositivity.InfinityCategories.Derived.PinchedBoundaryData,
+    `SerrePositivity.InfinityCategories.Derived.PinchedBoundaryFilling,
+    `SerrePositivity.InfinityCategories.Derived.PinchedBoundaryRecovery,
+    `SerrePositivity.InfinityCategories.Derived.PinchedPrimitiveFilling,
+    `SerrePositivity.InfinityCategories.Derived.PinchedProperEquations,
+
     `SerrePositivity.InfinityCategories.Derived.ContractingElementNerve,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientNerve,
 

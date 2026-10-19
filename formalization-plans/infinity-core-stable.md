@@ -16,10 +16,14 @@
 - `mapTriangle` の第三射を suspension 比較で書く一般式と始点輸送を証明。標準列の三頂点・三射を照合し、D3 の像と通常の cone 三角形の同型を構成済み。
 - 任意の h の射の鎖写像代表と source の TR3 から、全 distinguished triangle の標準 cofiber 表示を証明。D3 の distinguished triangle の保存・反映、逆関手の保存を証明済み。
 - `derivedStableHomotopyEquivalenceIsTriangulated` を公開。両関手の整数シフト比較と単位・余単位の整合性も含む。通常の導来圏から三角構造を引き戻して済ませていない。
-- 今回の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
-- Stable・Derived 集約ビルド：5,853 jobs 成功。D7 の保存単位は新規 15 モジュール（`dfa5b50d`）。β3 の入口の二モジュールを加えた最新集約ビルドは 5,966 jobs 成功。
-- 最新公理監査：Derived 279 modules／3,242 宣言、Stable 549 modules／4,357 宣言。標準三公理のみ。
-- β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。一般の収縮元による恒等辺と零辺の左ホモトピー・h の等式、商の nerve と包含、ε 収縮への適用、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。局所化の普遍性は未証明。
+- D7 の入口：`Derived/StableTriangulatedEquivalence.lean`、`Derived/StableHomotopyTriangulated.lean`、`Derived/StandardCofiberTriangleImage.lean`。
+- β3 の入口：`Derived/DGQuotientMappingSpaces.lean`、`Derived/ContractingPinchedHom.lean`、`Derived/PinchedBoundaryFilling.lean`。
+- D7 は `dfa5b50d`、β3 の nerve の入口は `7e948153` に保存済み。今回の保存単位は新規 13 モジュール。最新の Stable・Derived 集約ビルドは 5,979 jobs 成功。
+- 最新公理監査：Derived 292 modules／3,320 宣言、Stable 562 modules／4,435 宣言。標準三公理のみ。
+- β3 の入口 F1B/Localization と archive/L4-derived-geometry-log.md §26〜27 を読了。商の nerve・包含・ε による恒等辺の零ホモトピー、指定収縮付き dg 関手の延長と射影の厳密一致を構成済み。
+- 収縮対象に入る／出る Hom の全次数の閉元の原始元、Hom 複体の恒等写像の零ホモトピーと非輪状性を証明済み。始点側の次数符号も検証済み。
+- 実際の pinched Hom の全境界から真部分集合の成分を回収し、削除右辺の閉性・最上位の原始元による置換で全境界を厳密に充填。零次元も含む `IsContractibleKan` を両方向で証明済み。
+- 商の指定対象に入る／出る写像空間の可縮性と実際の終対象性を公開済み。この段階は K-flat 性を要求しない。始対象性・零対象性の界面、局所化普遍性、商の安定性は未完。
 
 ### 残り（依存順、時間は推定）
 
@@ -43,6 +47,10 @@
 - `derivedStableHomotopyEquivalenceIsTriangulated`、`derivedStableHomotopyInverse_map_distinguished`。
 - `dgNerve_contractingElement_id_homotopic_zero`、`dgNerve_contractingElement_id_eq_zeroEdge`。
 - `dgQuotientNerve`、`dgQuotientNerveProjection`、`dgQuotientNerve_id_homotopic_zero`、`dgQuotientNerveExtension_projection`。
+- `contractingTargetPrimitive_differential`、`contractingSourcePrimitive_differential`、`contractingTargetHomotopy`、`contractingSourceHomotopy`。
+- `pinchedBoundaryKnownData_equation`、`pinchedBoundaryFiller_face`、`pinchedBoundaryFilling`。
+- `contractingTargetPinchedHom_isContractibleKan`、`contractingSourcePinchedHom_isContractibleKan`。
+- `dgQuotientTargetPinchedHom_isContractibleKan`、`dgQuotientSourcePinchedHom_isContractibleKan`、`dgQuotientKilledVertex_isTerminal`。
 
 ### 依存と提供
 
@@ -58,12 +66,12 @@
 
 - D7 の対象・集約ビルドと両公理監査成功。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
-- β3 は H⁰ の Verdier 商の同値や指定収縮データ付き dg 関手の厳密普遍性だけでは完成しない。
+- β3 は H⁰ の Verdier 商の同値や指定収縮データ付き dg 関手の厳密普遍性だけでは完成しない。右 pinched Hom の両方向の可縮性は証明済みだが、始対象性を判定する一般 API はまだ接続していない。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：収縮元を持つ対象へ入る／出る Hom の全次数の閉元を、収縮元との合成で境界にする公式を証明する。次数輸送を避けるには閉元を次数 n+1、原始元を次数 n とする。`differential_compose` と `unit_compose`／`compose_unit` を使い、始点側の符号を確認する。これを dg nerve の mapping space の収縮へ進め、指定部分圏の零化を証明する。続いて局所 K-flat な模型／半自由分解後の商を固定し、cofiber 条件の辺を反転することと F1B `IsLocalization` の全 ∞ 関手圏の普遍性を証明する。L4 の `DGResolution/Construction`・`Quotient` は読み取り専用。指定収縮付き dg 関手だけの延長を全 ∞ 関手の普遍性と扱わない。
+- β3：収縮元を持つ dg 対象の始対象性を、最初の頂点を固定した dg nerve の全境界の直接充填で証明する。`DGNerve/HornData`・`HornResidual`・`Residual` の対象／真部分集合の回収と残差の微分恒等式を読む。pinched 境界回収では「I 内の頂点を欠くホーン」に制限することで任意の面との一致を既存 HornData から得た。同じ手法で全 dg nerve 境界の既知成分を回収し、唯一の最上位の右辺が閉じていることを示し、`contractingSourcePrimitive` で解く。次数一の境界は零辺で直接充填できる。これを ε に適用して指定対象の零対象性を公開する。その後、局所 K-flat な模型／半自由分解後の商を固定し、cofiber 条件の辺の反転・F1B `IsLocalization` の全 ∞ 関手圏の普遍性・商の安定性・Verdier 列へ進む。L4 は読み取り専用。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
