@@ -11,6 +11,9 @@ public import SerrePositivity.InfinityCategories.F2.CatPullbackConeImageCommutat
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerExchange
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConePathCompatibility
+public import SerrePositivity.InfinityCategories.F2.LaxPullbackLift
+public import SerrePositivity.InfinityCategories.F2.LaxPullbackFunctorCore
+public import SerrePositivity.InfinityCategories.F2.LaxPullbackConeProjections
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。

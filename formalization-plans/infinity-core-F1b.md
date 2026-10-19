@@ -31,12 +31,18 @@
   三つの比較三単体の四面の合成則と strict な面の定値性から各脚の整合式を証明。
   可縮 fiber の射の一意性で、元の path 置換の同型を切断上で標準同型へ簡約。
   catPullbackCone_projection_commutativity で二射影の指定比較と候補の元の指定 path の最終整合を証明。
-- F2 の検証：F1・F1B・F2 同時ビルド成功（6440 jobs）、F2 の公理監査成功（857 宣言、標準三公理のみ）。
+- F2L-3 進行中：両端評価を二点への制限と厳密な評価同型で表示し、単射な前合成同値の右持ち上げ性を証明。
+  Fun(Δ¹,C) の両端評価による lax pullback 対象、quasicategory 性、二射影と矢印の族の端点を構成。
+  指定された二関手と矢印の族を厳密に保つ lift と一意性、定義式と同じ引き戻し順序への同型も公開。
+  元の両端評価・p × q の cospan の native な極限錐と候補の頂点・両脚の一致を証明。
+  任意 K の関手 core の厳密な引き戻し表示と二射影の一致、第一写像の Kan fibration 性を証明。
+  Tamme Remark 6 の対象の三つ組表示と対象間写像空間の具体式は未完了。
+- F2 の検証：F1・F1B・F2 同時ビルド成功（6450 jobs）、F2 の公理監査成功（923 宣言、標準三公理のみ）。
   F1/F1B 同時 import とソース名衝突 0 を再確認。F2 の主経路に ModelCategory・sorry・追加公理なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2L-3：Fun(Δ¹,−) と端点評価による lax pullback と普遍性。Tamme §1 Definition 5・Remark 6。24〜60 時間。
+- F2L-3 残り：対象の三つ組表示、対象間の右写像空間の具体的な homotopy pullback 式。Tamme §1 Remark 6。12〜30 時間。
 - F2L-4：同値辺上の全部分圏による引き戻しとの比較、安定性・exact 関手への接続。Tamme §1 Remark 7・Lemma 8。24〜60 時間。
 - Ind・compact・冪等完備化は N、presentable 以降は I-b の分担。F2 の正本を参照する。
 
@@ -58,6 +64,8 @@
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
 - `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackCone_projection_commutativity`
+- `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
+- `F2.laxPullbackLift` / `F2.laxPullbackFunctorCoreIso` / `F2.arrowEndpointPair_internalHom_core_fibration`
 
 ### 依存と提供
 
@@ -68,7 +76,7 @@
 ### 未コミット
 
 - F2 共有計画の第 1 部の進捗更新。N 節の既存未コミット変更を巻き込まないため保存対象外。
-  本保存単位：可縮 fiber の同型の制限、切断上の指定同型の簡約、二射影と指定 path の最終整合、集約・監査と本書。
+  本保存単位：両端評価・lax pullback・native 極限錐・全試験関手 core の比較、集約・監査と本書。
 
 ### 既知の問題
 
@@ -81,8 +89,8 @@
 
 ### 次の一手
 
-- F2L-3：Fun(Δ¹,C) の両端評価から (A × B) ×_(C × C) Fun(Δ¹,C) を構成する。
-  端点評価の inner fibration・同値持ち上げ性を既存の制限 API で証明し、Cat_∞ 内の普遍性へ接続する。
+- laxPullback の頂点を (a,b,p(a) → q(b)) の三つ組として同定する。
+  MappingSpacePullback の全単体の lift を使い、対象間の右 pinched Hom の引き戻し表示と Kan 充填性を構成する。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
