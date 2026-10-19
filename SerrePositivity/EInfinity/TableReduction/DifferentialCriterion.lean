@@ -7,7 +7,7 @@ public import SerrePositivity.EInfinity.TableReduction.BoundaryExpressions
 
 概要：Berger–Fresse §1.4.4 の組合せ的恒等式が必要十分な条件であることを証明する。
 方針：全正規化生成元で検査し、単体と置換列の同値を使う。
-規約：一般の恒等式自体は未証明。nullary 分岐だけはここで完了する。
+規約：一般の恒等式の相殺は DifferentialPreservation で証明し、この界面へ渡す。
 使われ方：行長と削除位置の相殺の証明を実際の線形写像の等式へ渡す。
 -/
 

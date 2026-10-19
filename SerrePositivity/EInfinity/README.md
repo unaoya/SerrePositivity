@@ -202,9 +202,17 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `point_in_late_row` と `point_not_singleton` により挿入点は長い延長行内の残余位置。
 `point_coefficient` と `pair_cancel` はその負符号と次数 d−1 の正規化二項の相殺を与える。
 `forward_rows`・`forward_schedule`・`forward_position` は逆から順へ戻した二行・Schedule・位置の一致。
-順から逆の一致・全単射・全残余項の有限和の相殺は未完成。
-TR の微分保存・部分合成保存は未完成。
-χ の平方零とオペラッド公理は、TR の全射性と保存則から導く原典の順に進む。
+`ScheduleBlock.forward_release_search` は元の中間行を通って元の削除行で停止する逆探索を構成する。
+`ScheduleBlock.reverse_search` と `reverse_result` は順から逆の解放値・二行・成功出力・削除位置を復元する。
+`DeletionPoint` は退化出力も含む実際の成功削除点の有限型。
+`deletionEquiv` は残余最終出現削除と残余区切り削除の全単射。
+`sum_remainingValue_zero` は全単射と逆符号で全成功削除点の残余和を相殺する。
+`sum_remainderTerm_eq_points` はその和を元の Schedule の残余和と同定し、
+`sum_remainderTerm_zero` で全残余和の零性を追加仮定なしに証明した。
+`normalizedMap_comm` は零 arity を含む全 arity・全次数の TR の微分保存。
+`differential_comp_differential` は TR の全射性と微分保存から χ の平方零を導く。
+`Surjection.normalizedChains` は実際の χ の鎖複体、`TableReduction.chainMap` は実際の TR 鎖写像。
+TR の部分合成保存・χ の部分合成とオペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：

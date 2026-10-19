@@ -198,3 +198,4 @@ public import SerrePositivity.EInfinity.TableReduction.ReleasedDonorStep
 public import SerrePositivity.EInfinity.TableReduction.LastRowSaturation
 public import SerrePositivity.EInfinity.TableReduction.ReverseBlock
 public import SerrePositivity.EInfinity.TableReduction.ReverseForward
+public import SerrePositivity.EInfinity.TableReduction.ChainMap

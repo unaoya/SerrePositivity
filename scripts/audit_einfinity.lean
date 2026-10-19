@@ -435,7 +435,24 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.point_not_singleton,
       `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.forward_rows,
       `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.forward_schedule,
-      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.forward_position] do
+      `SerrePositivity.EInfinity.TableReduction.ReverseTransferData.forward_position,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.unique,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.prepend_releaseSearch,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.forward_release_search,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.reverse_search,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.reverse_result,
+      `SerrePositivity.EInfinity.TableReduction.DeletionPoint,
+      `SerrePositivity.EInfinity.TableReduction.deletionEquiv,
+      `SerrePositivity.EInfinity.TableReduction.backward_forwardDeletion,
+      `SerrePositivity.EInfinity.TableReduction.forward_backwardDeletion,
+      `SerrePositivity.EInfinity.TableReduction.sum_remainingValue_zero,
+      `SerrePositivity.EInfinity.TableReduction.sum_remainderTerm_eq_points,
+      `SerrePositivity.EInfinity.TableReduction.sum_remainderTerm_zero,
+      `SerrePositivity.EInfinity.TableReduction.differential_onSequence_eq_vertexBoundary,
+      `SerrePositivity.EInfinity.TableReduction.normalizedMap_comm,
+      `SerrePositivity.EInfinity.TableReduction.differential_comp_differential,
+      `SerrePositivity.EInfinity.Surjection.normalizedChains,
+      `SerrePositivity.EInfinity.TableReduction.chainMap] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -564,3 +581,13 @@ example : Nonempty (ReverseTransferData terminalTable reverseTerminalSchedule
 example : reduceRows (rows terminalTable
     (deletionScheduleTransfer reverseTerminalSchedule 0 1 (by decide) (by decide))) [] =
       some [0, 1, 0] := by decide
+
+-- 一般の全単射・全残余相殺・微分保存・平方零を具体例でも元の型で適用する。
+noncomputable example : FinalDeletion bfTable ≃ CaesuraDeletion bfTable := deletionEquiv bfTable
+example : (∑ r : Schedule 4 2, remainderTerm ℤ bfTable r) = 0 :=
+  sum_remainderTerm_zero ℤ bfTable
+example : Surjection.differential ℤ 4 1 (onSequence ℤ bfTable) = vertexBoundary ℤ bfTable :=
+  differential_onSequence_eq_vertexBoundary ℤ bfTable
+example : (Surjection.differential ℤ 4 0).comp (Surjection.differential ℤ 4 1) = 0 :=
+  differential_comp_differential ℤ 4 0
+example : (chainMap ℤ 0).f 1 = ModuleCat.ofHom (normalizedMap ℤ 0 1) := chainMap_f ℤ 0 1
