@@ -34,8 +34,8 @@
   全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
-  各次数で小さい全空間の点上の表現空間は可縮 Kan。非交和・単射の pushout の可縮性保存、骨格逆極限と可縮性の還元も証明済み。
-- 対象ビルド3069 jobs、公理監査6158宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  各次数で小さい全空間の点上の表現空間は可縮 Kan。実際のセル帰納法で一般底・有限次元底の可縮性を標準単体と境界の局所入力へ還元済み。
+- 対象ビルド3075 jobs、公理監査6197宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
@@ -65,7 +65,7 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `pointTransportWitnessSpace_isContractibleKan`、`transportWitnessSpace_isContractibleKan_of_skeleton`
+- `pointTransportWitnessSpace_isContractibleKan`、`transportWitnessSpace_isContractibleKan_of_finiteDimension`
 
 ### 依存と提供
 
@@ -95,10 +95,10 @@
 
 ### 次の一手
 
-標準単体と境界の次元の帰納法を、実際のセル付加の pushout と非交和へ結ぶ。
-各有限骨格での可縮性を証明し、検証済みの fibration 塔の逆極限による還元へ渡す。
-小ささは各次数での条件まで検証済み。任意の essentially small な fiber への一般化は残る。
-その後、一般の表現空間の可縮性と境界固定延長（Theorem 5.6.8.3、§5.6.5）へ進む。
+有限次元の底について全空間の次数ごとの小ささを保ち、次元の強い帰納法で局所入力を閉じる。
+Δ⁰ は点上の定理、Δ¹ は境界制限、Δⁿ（n≥2）は内ホーン制限と低次元の可縮性を使う。
+標準単体・境界への pullback の小ささを検証し、任意の底上の可縮性へ既証明のセル帰納法で進む。
+essentially small な fiber への一般化と境界固定延長（Theorem 5.6.8.3、§5.6.5）は残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
