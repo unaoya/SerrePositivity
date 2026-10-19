@@ -684,6 +684,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.ofRows,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.ofRows_segments,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.existsUnique_of_rows,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerWord_remaining_cons,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.exists_nonempty_parts,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.splitParts_properties,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.recovered_partition_existsUnique,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_source_partition,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1834,3 +1839,36 @@ example : (AdjacentCollapse.collapse ([0, 1] ++ [2, 0] : List (Fin 3))).length =
   have h := AdjacentCollapse.collapse_append_length ([0, 1] : List (Fin 3)) [2, 0]
     (by decide) (by decide) (by decide) (by decide)
   simpa using h
+
+-- 共有端点を入力せず、一般の代入分解と復元両語長から実際の分割を一意に構成する。
+example : ∃ p : OverlapPartition 2 3, p = verticalCuts ∧
+    compositeWord canonicalFixture compositionInner 1 p = [0, 1, 2, 4, 2, 1, 4, 3] := by
+  have ho : List.ofFn canonicalFixture.val = CompositeRecovery.outerWord (m := 3) (n := 2) 1
+      [0, 1, 2, 4, 2, 1, 4, 3] := by decide
+  obtain ⟨p, hp, hu⟩ := CompositeRecovery.recovered_partition_existsUnique canonicalFixture
+    compositionInner 1 [0, 1, 2, 4, 2, 1, 4, 3] (by decide) (by decide) ho innerGrid_word.symm
+  have hk : compositeWord canonicalFixture compositionInner 1 verticalCuts =
+      [0, 1, 2, 4, 2, 1, 4, 3] := by decide
+  exact ⟨p, (hu verticalCuts hk).symm, hp⟩
+-- 実際の成功から元の両語・一意な分割・一意な両成功 Schedule を全て得る。
+example : ∃ u : BasisWord 4 2, ∃ v : BasisWord 2 1,
+    u = canonicalFixture ∧ v = compositionInner ∧
+      (∃! p : OverlapPartition (occurrenceCount u.val 1) 3,
+        compositeWord u v 1 p = [0, 1, 2, 4, 2, 1, 4, 3]) ∧
+      (∃! su : Schedule 4 2, reduceRows (rows bfTable su) [] = some (List.ofFn u.val)) ∧
+      (∃! sv : Schedule 2 1, reduceRows (rows terminalTable sv) [] = some (List.ofFn v.val)) := by
+  obtain ⟨u, v, hp, hu, hv, hsu, hsv⟩ := CompositeRecovery.shuffle_source_partition (by decide) 1
+    gridRecoveryPath bfTable terminalTable gridRecoverySchedule _ innerGrid_success (by decide)
+  have ho : CompositeRecovery.outerWord (m := 3) (n := 2) 1 [0, 1, 2, 4, 2, 1, 4, 3] =
+      List.ofFn canonicalFixture.val := by decide
+  refine ⟨u, v, ?_, ?_, hp, hsu, hsv⟩
+  · exact Subtype.ext (List.ofFn_injective (hu.trans ho))
+  · exact Subtype.ext (List.ofFn_injective (hv.trans innerGrid_word))
+-- 部分語分解自体は内側 arity 零にも適用でき、指定値のない復元外側語へ戻る。
+example : ([0, 1] : List (Fin 2)) = substitute (n := 0) 1 [0, 2] [] := by
+  have hp := CompositeRecovery.splitParts_properties (m := 2) (n := 0) 1 [0, 1] (by decide)
+  have ho : CompositeRecovery.outerWord (m := 2) (n := 0) 1 [0, 1] = [0, 2] := by decide
+  rw [ho] at hp
+  have hs : CompositeRecovery.splitParts (m := 2) (n := 0) 1 [0, 2] [0, 1] = [] := by decide
+  rw [hs] at hp
+  exact hp.2.2.2
