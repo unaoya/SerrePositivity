@@ -4912,3 +4912,117 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @coconeMappingShapeCone_isLimit
 #print axioms coconeMappingShapeCone_isLimit
+
+#check @cosliceEdgeSection
+#print axioms cosliceEdgeSection
+
+#check @cosliceEdgeSection_target
+#print axioms cosliceEdgeSection_target
+
+#check @cosliceEdgePrecomposition
+#print axioms cosliceEdgePrecomposition
+
+#check @cosliceEdgePrecomposition_projection
+#print axioms cosliceEdgePrecomposition_projection
+
+#check @relativeCosliceRestriction_target_trivialKanFibration
+#print axioms relativeCosliceRestriction_target_trivialKanFibration
+
+#check @exists_relativeEdgeCosliceLift
+#print axioms exists_relativeEdgeCosliceLift
+
+#check @normalizedCoconeRestriction_postcomp_family
+#print axioms normalizedCoconeRestriction_postcomp_family
+
+#check @relativeEdgeCosliceFamily_projection
+#print axioms relativeEdgeCosliceFamily_projection
+
+#check @exists_initialHomEdgeFamily
+#print axioms exists_initialHomEdgeFamily
+
+#check @initialEdgeBaseSource
+#print axioms initialEdgeBaseSource
+
+#check @initialHomComparison_edge_family_homotopy
+#print axioms initialHomComparison_edge_family_homotopy
+
+#check @initialHomComparison_edge_family_pinched_homotopy
+#print axioms initialHomComparison_edge_family_pinched_homotopy
+
+#check @initialRestrictionEdgeFamily
+#print axioms initialRestrictionEdgeFamily
+
+#check @initialRestrictionEdgeFamily_endpoint
+#print axioms initialRestrictionEdgeFamily_endpoint
+
+#check @initialRestrictionEdgeFamily_fixed
+#print axioms initialRestrictionEdgeFamily_fixed
+
+#check @initialRestrictionEdgeFamily_vertexFiberLift
+#print axioms initialRestrictionEdgeFamily_vertexFiberLift
+
+#check @initialRestrictionBaseTriangle
+#print axioms initialRestrictionBaseTriangle
+
+#check @initialRestrictionBaseTriangle_target
+#print axioms initialRestrictionBaseTriangle_target
+
+#check @initialRestrictionEdgeHomFamily
+#print axioms initialRestrictionEdgeHomFamily
+
+#check @initialRestrictionHomComparison_homotopy
+#print axioms initialRestrictionHomComparison_homotopy
+
+#check @sliceUnderUncurry_eqToHom
+#print axioms sliceUnderUncurry_eqToHom
+
+#check @initialRestrictionEdgeBase_eq
+#print axioms initialRestrictionEdgeBase_eq
+
+#check @initialRestrictionEdgeFamily_base
+#print axioms initialRestrictionEdgeFamily_base
+
+#check @cosliceEdgePrecompositionAt
+#print axioms cosliceEdgePrecompositionAt
+
+#check @cosliceEdgePrecompositionAt_projection
+#print axioms cosliceEdgePrecompositionAt_projection
+
+#check @cosliceEdgeFiberPrecomposition
+#print axioms cosliceEdgeFiberPrecomposition
+
+#check @cosliceEdgeFiberPrecomposition_ι
+#print axioms cosliceEdgeFiberPrecomposition_ι
+
+#check @initialRestrictionHomPrecomposition
+#print axioms initialRestrictionHomPrecomposition
+
+#check @initialRestrictionEdgeBaseSource_eq
+#print axioms initialRestrictionEdgeBaseSource_eq
+
+#check @initialRestrictionEdgeHomFamily_eq
+#print axioms initialRestrictionEdgeHomFamily_eq
+
+#check @initialRestrictionHomComparison_square
+#print axioms initialRestrictionHomComparison_square
+
+#check @colimitAttachmentRestrictionEdge
+#print axioms colimitAttachmentRestrictionEdge
+
+#check @colimitAttachmentRestrictionEdge_projection
+#print axioms colimitAttachmentRestrictionEdge_projection
+
+#check @colimitAttachmentRestrictionEdge_projection_map
+#print axioms colimitAttachmentRestrictionEdge_projection_map
+
+#check @colimitAttachmentRestrictionHomFamily
+#print axioms colimitAttachmentRestrictionHomFamily
+
+#check @coconeMappingSpaceHomComparison_restrict_homotopy
+#print axioms coconeMappingSpaceHomComparison_restrict_homotopy
+
+#check @colimitAttachmentHomPrecomposition
+#print axioms colimitAttachmentHomPrecomposition
+
+#check @coconeMappingSpaceHomComparison_restrict_square
+#print axioms coconeMappingSpaceHomComparison_restrict_square
