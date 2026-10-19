@@ -234,3 +234,4 @@ public import SerrePositivity.EInfinity.Surjection.TableCompositionPathSuccess
 public import SerrePositivity.EInfinity.Surjection.CompositeInnerRecovery
 public import SerrePositivity.EInfinity.Surjection.CompositePartitionRecovery
 public import SerrePositivity.EInfinity.TableReduction.ScheduleOutputUniqueness
+public import SerrePositivity.EInfinity.Surjection.VerticalBoundary

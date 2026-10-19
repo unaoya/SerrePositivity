@@ -318,6 +318,12 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `partition_unique` は分割長の一致から分割の一意性を示し、内側語長零も含む。
 `composite_data_injective` は正の内側語長で両語・分割の依存対から合成語への単射性。
 `schedule_eq_of_same_output` は元の置換列が異なる場合も成功出力の同じ Schedule を強制する。
+`reduceRows_reordered_endpoint_not_isChain` は前半集合が一致する隣接行の境界重複を示す。
+`reduceRows_block_endpoint_mem_middle` は中央だけを並べ替えた非退化成功二行の前行末を中央へ制限する。
+`available_block_next_head_mem_middle` はその除外更新後の次行先頭も中央に属すことを示す。
+`permutationComposition_vertical_endpoint_inserted` と
+`permutationComposition_vertical_next_head_inserted` は実際の逆合成置換行へ適用する。
+除外状態・後続 table は任意、内側 arity 零も扱う。
 任意の成功経路表から元の成功二表を構成する逆方向、全項の全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。

@@ -597,6 +597,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.partsOfWord_compositeWord,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.composite_data_injective,
       `SerrePositivity.EInfinity.TableReduction.schedule_eq_of_same_output,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_reordered_endpoint_not_isChain,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_block_endpoint_mem_middle,
+      `SerrePositivity.EInfinity.TableReduction.available_block_next_head_mem_middle,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_vertical_endpoint_inserted,
+      `SerrePositivity.EInfinity.Surjection.permutationComposition_vertical_next_head_inserted,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1357,3 +1362,14 @@ example (r : Schedule 4 2)
     r = bfSchedule₁ :=
   schedule_eq_of_same_output bfTable bfTable r bfSchedule₁ canonicalFixture.val h
     rankFixture_success
+
+-- 実際の内側置換が変化する二行でも、非退化成功の前行末は内側にある。
+example : ∃ b : Fin 2, (1 : Fin 4) = BarrattEccles.insertedPosition 2 2 1 b := by
+  exact permutationComposition_vertical_endpoint_inserted
+    (1 : Equiv.Perm (Fin 3)) (1 : Equiv.Perm (Fin 2)) (Equiv.swap 0 1)
+    1 [] [0, 1, 2, 1, 3] 1 2 3 [] (by decide) (by decide) (by decide)
+-- 同じ成功の更新後の次行先頭も内側にある。
+example : ∃ b : Fin 2, (2 : Fin 4) = BarrattEccles.insertedPosition 2 2 1 b := by
+  exact permutationComposition_vertical_next_head_inserted
+    (1 : Equiv.Perm (Fin 3)) (1 : Equiv.Perm (Fin 2)) (Equiv.swap 0 1)
+    1 [] [0, 1, 2, 1, 3] 1 2 2 3 [] (by decide) (by decide) (by decide) (by decide)
