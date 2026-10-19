@@ -2557,3 +2557,31 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFullSubcomplex_op_mem_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFullSubcomplexOppositeIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanFullSubcomplexOppositeIso_hom_ι
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHom_op_isPullback
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHomOppositeIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHomOppositeIso_hom_fst
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHomOppositeIso_hom_snd
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInternalHomOppositeIso_comparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanVertex_op_iff
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanDiagramsOppositeIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanDiagramsOppositeIso_hom_ι
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_opposite_square
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_boundary_succ
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_isFullyFaithful

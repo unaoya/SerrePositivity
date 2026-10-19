@@ -39,22 +39,22 @@
 - 底 C 内で一度だけ選んだ普遍図式への前合成により、元の関手の族を comma の図式の族へ写す。
   標準相対左 Kan 条件の保存・反映、右端の厳密な回収、U の後合成自然性、元の相対制限との可換正方形を証明。
 - 充満忠実な inner 単射に沿う指定左単位の可逆性、元の図式の厳密な延長を証明。局所余極限の存在の下で終対象上の元の制限は自明 Kan。
-- 右：通常の slice の標準 U 極限、元の相対右 Kan 条件・全部分圏・制限と inner 性を構成。左条件との双方向の反転判定、同値持ち上げと充満忠実 inner 射の反転保存を証明。
+- 右：標準 U 極限・元の相対右 Kan 条件と制限、左右の双対判定を構成。全部分圏と相対標的の反転同型・制限の可換正方形から、元の右制限の正次元境界充填・充満忠実性を証明。
 - 像の類が恒等な単位の相対厳密化、像固定の局所余錐の添字変更、標準底余錐上の局所 U 余極限から元と底を保つ相対左 Kan 関手を構成。
 - 底余錐の図式固定の同型を持ち上げて局所存在を移送。充満忠実な inner 単射と isofibration U の上で、元の相対左制限の始点境界充填・指定 pinched 同値・充満忠実性・局所存在の下で自明 Kan 性を証明。
-- 最終検証：F1・F1B 同時ビルド成功（3948 jobs）、同時 import 検査成功（F1 7313・F1B 4627 宣言）。
-  公理監査成功（4633 宣言、標準三公理のみ、1255 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3952 jobs）、同時 import 検査成功（F1 7313・F1B 4656 宣言）。
+  公理監査成功（4662 宣言、標準三公理のみ、1259 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
 - 1. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
-  Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。残りは右の相対厳密な双対、12〜32 時間。
+  Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。残りは右の標準局所相対極限からの厳密な存在・自明 Kan 性、8〜24 時間。
   絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
   V′ の局所余錐の充填と相対普遍性は操作的な境界条件で証明済み。標準 U 余極限との同値も U が inner なら証明済み。
   右持ち上げ条件下の組み立て・任意の U の path 置換・相対 join の関手の制限の相対始点境界充填は証明済み。
   任意の U 上の可逆 path つき図式構成と、isofibration の二条件の下での厳密な図式構成は完了。
   相対 join の制限は充満忠実、局所存在の下で自明 Kan。元の全部分圏からの制限と族の可換正方形を構成済み。
-  元の左右 pinched 比較、左の相対厳密な存在・元の相対制限の全射性と写像空間比較・局所存在の下で自明 Kan 性は完了。右の標準局所相対条件と左右の双対判定も完了。右の全部分圏と相対標的の反転同型を作り、充満忠実性・局所存在・自明 Kan 性へ移す工程が残る。
+  元の左右 pinched 比較、左の相対厳密な存在・元の相対制限の全射性と写像空間比較・局所存在の下で自明 Kan 性は完了。右の標準局所相対条件・双対判定・反転同型・元の相対制限の充満忠実性も完了。右の標準局所相対極限から厳密な存在・頂点全射性・自明 Kan 性へ移す工程が残る。
 - 2. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
@@ -76,7 +76,7 @@
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful` / `F1B.kanRightCanonical_pinchedHomMap_equivalence`
 - `F1B.IsRelativeRightKanExtendedFrom` / `F1B.kanIsRelativeRightKanExtendedFrom_iff_op_left`
-- `F1B.kanRelativeLeftKanRestriction_isFullyFaithful` / `F1B.kanRelativeLeftKanRestriction_trivialKanFibration`
+- `F1B.kanRelativeLeftKanRestriction_trivialKanFibration` / `F1B.kanRelativeRightKanRestriction_isFullyFaithful`
 
 ### 依存と提供
 
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：反転による前提の保存・標準相対極限・右の標準条件の双対判定・元の右制限と inner 性、集約・監査・本書）。
+- なし（本保存単位：全部分圏と相対標的の反転同型・制限の可換正方形・右の正次元境界充填と充満忠実性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `fullSubcomplexIso` と反転した全部分複体の同型で、元の右関手の全部分圏の反転を左の全部分圏と同定する。
-  相対内部 Hom の標的も反転同型で比較し、`kanRelativeRightKanRestriction` の可換正方形から左の制限定理を移す。
-  原典 7.3.6.7・7.3.6.9 の右側も閉じて B5 へ進む。左側の元の相対制限は完了。
+- 右の標準局所 U 極限錐を `reverseCocone` と局所添字の同型で左の標準 U 余極限へ移す。
+  元と底の図式を保つ局所存在を反転後の左の存在定理に渡し、右制限の頂点全射性を回収する。
+  証明済みの右の正次元境界充填と合わせて自明 Kan 性を示し、原典 7.3.6.7・7.3.6.9 の右も閉じて B5 へ。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
