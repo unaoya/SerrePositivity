@@ -2045,3 +2045,15 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanInitialBoundaryLifting_of_relativeInitial
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeInitialVertex_iff_initialBoundary
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeVertexFiberMap_hasLiftingProperty
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeVertexFiberMap_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRelativeInitialVertex_iff_of_comparison
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeFamilyPostcomp_innerFibration
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_family_relativeInitial
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_family_initialBoundary

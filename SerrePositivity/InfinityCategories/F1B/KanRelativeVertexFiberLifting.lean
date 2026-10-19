@@ -40,6 +40,57 @@ lemma kanRelativeVertexFiberMap_ι {E F B C : SSet.{u}}
     kanRelativeVertexFiberMap p q f u h b ≫ vertexFiberι q (u.app (Opposite.op ⦋0⦌) b) =
       vertexFiberι p b ≫ f := vertexFiberLift_ι _ _ _ _
 
+/-- 概要：引き戻しへの比較の持ち上げ性は対応する頂点 fiber の比較へ移る。
+方針：始域の底を定値とする持ち上げを作り、その延長を同じ fiber へ戻す。
+規約：左の射と四つの単体集合は任意。
+使われ方：相対余錐制限の内ホーン充填を図式固定の余錐の族へ移す。 -/
+lemma kanRelativeVertexFiberMap_hasLiftingProperty {E F B C A T : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ C) (f : E ⟶ F) (u : B ⟶ C)
+    (h : p ≫ u = f ≫ q) (i : A ⟶ T) [HasLiftingProperty i (pullback.lift p f h)]
+    (b : B _⦋0⦌) : HasLiftingProperty i (kanRelativeVertexFiberMap p q f u h b) := by
+  constructor
+  intro a d sq
+  let t := pullback.lift (f := u) (g := q) (SSet.const b : T ⟶ B)
+    (d ≫ vertexFiberι q (u.app (Opposite.op ⦋0⦌) b)) (by
+      rw [Category.assoc, vertexFiberι_comp, SSet.comp_const, SSet.const_comp])
+  have sq' : CommSq (a ≫ vertexFiberι p b) i (pullback.lift p f h) t := by
+    constructor
+    apply pullback.hom_ext
+    · simp only [t, Category.assoc, pullback.lift_fst, vertexFiberι_comp, SSet.comp_const]
+    · simp only [t, Category.assoc, pullback.lift_snd]
+      have hs := congrArg (fun z ↦ z ≫ vertexFiberι q (u.app (Opposite.op ⦋0⦌) b)) sq.w
+      simp only [Category.assoc, kanRelativeVertexFiberMap_ι] at hs
+      exact hs
+  have hlp : sq'.lift ≫ p = SSet.const b := by
+    have hs := congrArg (fun z ↦ z ≫ pullback.fst u q) sq'.fac_right
+    simpa only [t, Category.assoc, pullback.lift_fst] using hs
+  have hlf : sq'.lift ≫ f = d ≫ vertexFiberι q (u.app (Opposite.op ⦋0⦌) b) := by
+    have hs := congrArg (fun z ↦ z ≫ pullback.snd u q) sq'.fac_right
+    simpa only [t, Category.assoc, pullback.lift_snd] using hs
+  refine CommSq.HasLift.mk' {
+    l := vertexFiberLift p b sq'.lift hlp
+    fac_left := ?_
+    fac_right := ?_ }
+  · apply vertexFiber_hom_ext p b
+    rw [Category.assoc, vertexFiberLift_ι]
+    exact sq'.fac_left
+  · apply vertexFiber_hom_ext q (u.app (Opposite.op ⦋0⦌) b)
+    rw [Category.assoc, kanRelativeVertexFiberMap_ι, ← Category.assoc, vertexFiberLift_ι]
+    exact hlf
+
+/-- 概要：引き戻しへの比較が inner fibration なら各頂点 fiber の比較もそうである。
+方針：任意の inner anodyne な射の持ち上げ性を fiber へ制限する。
+規約：二つの底は異なってよい。
+使われ方：図式固定の余錐の族の後合成の inner fibration 性。 -/
+instance kanRelativeVertexFiberMap_innerFibration {E F B C : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ C) (f : E ⟶ F) (u : B ⟶ C)
+    (h : p ≫ u = f ≫ q) [InnerFibration (pullback.lift p f h)] (b : B _⦋0⦌) :
+    InnerFibration (kanRelativeVertexFiberMap p q f u h b) where
+  mem := by
+    intro A T i hi
+    have := InnerFibration.mem (q := pullback.lift p f h) i hi
+    exact kanRelativeVertexFiberMap_hasLiftingProperty p q f u h i b
+
 /-- 概要：引き戻しへの比較が自明 Kan fibration なら各頂点の fiber の比較もそうである。
 方針：始域の底を定値とする引き戻しへの持ち上げ問題を充填し、同じ fiber に戻す。
 規約：四つの単体集合は任意で充填性を別途要求しない。

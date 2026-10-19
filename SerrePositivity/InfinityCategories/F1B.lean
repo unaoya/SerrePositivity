@@ -512,3 +512,5 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeSliceMappi
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeColimit
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBaseChange
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialComparison
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeColimitFamilyCriterion
