@@ -4861,3 +4861,54 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @exists_cocone_vertex_partialColimitPushout
 #print axioms exists_cocone_vertex_partialColimitPushout
+
+#check @normalizedCoconeRestriction_uncurry
+#print axioms normalizedCoconeRestriction_uncurry
+
+#check @cosliceShapePushout_comm
+#print axioms cosliceShapePushout_comm
+
+#check @cosliceShapePushout_lift
+#print axioms cosliceShapePushout_lift
+
+#check @cosliceShapePushout_isPullback
+#print axioms cosliceShapePushout_isPullback
+
+#check @cosliceShapePushoutIso
+#print axioms cosliceShapePushoutIso
+
+#check @vertexFiberMap_isPullback
+#print axioms vertexFiberMap_isPullback
+
+#check @coconeMappingShapePushout_isPullback
+#print axioms coconeMappingShapePushout_isPullback
+
+#check @coconeMappingShapePushoutIso
+#print axioms coconeMappingShapePushoutIso
+
+#check @coconeMappingShapePushout_right_fibration
+#print axioms coconeMappingShapePushout_right_fibration
+
+#check @coconeMappingKanObject
+#print axioms coconeMappingKanObject
+
+#check @coconeMappingShapeDiagram
+#print axioms coconeMappingShapeDiagram
+
+#check @coconeMappingShapeUnderlyingCone
+#print axioms coconeMappingShapeUnderlyingCone
+
+#check @coconeMappingShapeUnderlyingCone_isLimit
+#print axioms coconeMappingShapeUnderlyingCone_isLimit
+
+#check @coconeMappingShapeKanCone
+#print axioms coconeMappingShapeKanCone
+
+#check @coconeMappingShapeCone
+#print axioms coconeMappingShapeCone
+
+#check @coconeMappingShapeCone_vertex
+#print axioms coconeMappingShapeCone_vertex
+
+#check @coconeMappingShapeCone_isLimit
+#print axioms coconeMappingShapeCone_isLimit
