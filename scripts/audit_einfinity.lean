@@ -663,6 +663,15 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.horizontal_inner_close,
       `SerrePositivity.EInfinity.Surjection.horizontal_inner_before_vertical,
       `SerrePositivity.EInfinity.Surjection.horizontal_inner_success,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.collapse_isChain,
+      `SerrePositivity.EInfinity.Surjection.AdjacentCollapse.collapse_append_of_separated,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.innerWord_append_of_retained,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.innerRunDecomposition_exists,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.InnerRunDecomposition.sources_eq,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.vertical_inner_join,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.inner_table_success,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.innerWord_covers,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_inner_recovery_with_rows,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1690,3 +1699,49 @@ example : ∃ r : ℕ, ExtractionPrefix [([0, 1], r)] ([] : List (Fin 2)) [[0]] 
     (Equiv.swap 0 1) (m := 2) 1 [] 1 2 3 [] [] _ [] [] (.nil _) ht (by decide)
   rw [innerIdentityInverseRow] at hr
   exact ⟨r, by convert hr using 1 <;> decide⟩
+
+-- 実際の軸方向条件から全水平区間を分割し、元の内側置換列へ戻す。
+example : CompositeRecovery.InnerRunDecomposition gridRecoveryEntries
+    [1, Equiv.swap 0 1] := by
+  obtain ⟨sources, hd⟩ := CompositeRecovery.innerRunDecomposition_exists
+    (1 : Equiv.Perm (Fin 4)) (1 : Equiv.Perm (Fin 2)) 2 gridRecoveryEntries.tail (by decide)
+  have hm := hd.sources_eq
+  have he : (1 : Equiv.Perm (Fin 2)) :: sources = [1, Equiv.swap 0 1] :=
+    hm.symm.trans (by decide)
+  rw [he] at hd
+  exact hd
+-- 水平・垂直が交互に現れる合成成功から、元の全内側行列の成功を得る。
+example : ∃ table : List (List (Fin 2) × ℕ),
+    reduceRows table [] = some [0, 1, 0] ∧
+      table.map Prod.fst = List.ofFn (fun j => List.ofFn (terminalTable j).symm) ∧
+      table.length = 2 := by
+  have hentries : CompositeRecovery.shuffleTableEntries gridRecoveryPath bfTable terminalTable
+      gridRecoverySchedule = gridRecoveryEntries := by decide
+  have hs : reduceRows (rows (fun i => BarrattEccles.permutationComposition 3 2 1
+      (bfTable (gridRecoveryPath.horizontal i)) (terminalTable (gridRecoveryPath.vertical i)))
+      gridRecoverySchedule) [] = some [0, 1, 2, 4, 2, 1, 4, 3] := by
+    rw [← CompositeRecovery.shuffleTableEntries_rows 1 gridRecoveryPath bfTable terminalTable
+      gridRecoverySchedule, hentries]
+    simpa using gridRecoveryPrefix.append [] [] rfl
+  obtain ⟨table, ht, _, hm, hl, _⟩ := CompositeRecovery.shuffle_inner_recovery_with_rows
+    (by decide) 1 gridRecoveryPath bfTable terminalTable gridRecoverySchedule _ hs (by decide)
+  refine ⟨table, ?_, hm, hl⟩
+  have hw : CompositeRecovery.innerWord (m := 3) (n := 2) 1
+      [0, 1, 2, 4, 2, 1, 4, 3] = [0, 1, 0] := by decide
+  rwa [hw] at ht
+-- 内側次数零では、内側射影が空の最終行も全表に含めて元の一行を得る。
+example : ∃ table : List (List (Fin 2) × ℕ),
+    reduceRows table [] = some [0, 1] ∧ table.map Prod.fst = [[0, 1]] := by
+  let entries : List (Equiv.Perm (Fin 3) × Equiv.Perm (Fin 2) × ℕ) :=
+    innerHorizontalEntries.map (fun p => (p.1, 1, p.2))
+  have hs : reduceRows (CompositeRecovery.mixedTable 1 entries) [] =
+      some [0, 1, 2, 0, 3, 0] := by
+    rw [CompositeRecovery.mixedTable_horizontal]
+    simpa using innerHorizontalPrefix.append [] [] rfl
+  obtain ⟨table, hm, ht⟩ := CompositeRecovery.inner_table_success 1 entries [] _ hs
+    (by decide) (by decide) (by decide)
+  refine ⟨table, ?_, ?_⟩
+  · have hw : CompositeRecovery.innerWord (m := 2) (n := 2) 1
+        [0, 1, 2, 0, 3, 0] = [0, 1] := by decide
+    simpa only [List.filterMap_nil, hw] using ht
+  · exact hm.trans (by decide)
