@@ -22,10 +22,12 @@
   分類図式への射影は left fibration、固定図式上の fiber は相対関手空間と同型。
   表現を表す頂点の全部分複体 `transportWitnessSpace p` は Kan 複体。
   実際の表現との頂点全単射、任意の底変換への制限、頂点での厳密な制限の回収を証明済み。
-- 単射な底変換では、表現空間の制限の指定始点からの辺の持ち上げを構成し、
-  left fibration 性と全ホーン持ち上げを証明済み（Lemma 5.6.8.10 (1) の空間値版）。
-  分類図式の可逆な辺に沿う表現条件の不変性も証明済み。可縮性は未証明。
-- 対象ビルド2823 jobs、公理監査5026宣言が成功。依存公理は標準3公理のみ。
+- 単射への表現空間の制限は Kan fibration、inner anodyne なら trivial Kan fibration
+  （Lemma 5.6.8.10 の空間値版）。指定表現の厳密な延長と、その延長空間の可縮性を証明済み。
+  全頂点を被覆する制限は表現条件を反映する。一般の底上の表現空間の可縮性は未証明。
+- left fibration に沿う inner anodyne 射の逆像は前合成同値（Lemma 5.3.6.6 の空間値版）。
+  replacement のホーン逆像の pushout 分解、任意の底変換後の scaffold 比較、依存積の随伴で証明。
+- 対象ビルド2841 jobs、公理監査5067宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
@@ -49,26 +51,22 @@
 - `leftStraighteningCoherentMap`、`smallLeftUnstraighteningObject`
 - `leftStrictTransportInfinityEquivalence`、`leftUnstraighteningMappingSpaceMap`
 - `strictDiagramScaffoldHomEquiv`、`strictDiagramMappingPre_trivialKanFibration`
-- `strictKanStraighteningUnitIso`、`finiteStraighteningUnitIso`
-- `weightedNerveKanEnriched`、`weightedNerveInfinityMap`
-- `weightedNerveTransportUnit`、`weightedNerveTransportUnit_isQCatEquivalence`
-- `weightedNerveTransportUnit_enrichedNaturality`、`weightedNerveJointComparisonIso`
 - `weightedNerveStraighteningCoherentUnitIso`、`weightedNerveStraighteningCoherentFamilyUnitIso`
 - `weightedNerveTransportUnit_extensionSpace_isContractibleKan`、`exists_weightedNerveTransportUnit_retraction`
 - `LeftTransportRepresentation`、`LeftTransportRepresentation.restrict`
 - `LeftTransportRepresentation.restrict_eq_iff`、`nerveLeftTransportRepresentation`
-- `leftFibration_fiberEquivalence_iff_boundary`
 - `transportSquareSpace`、`transportSquareRestriction_innerFibration`
 - `transportWitnessSpace`、`transportWitnessVertexEquiv`、`transportWitnessSpace_kanComplex`
-- `transportWitnessRestriction_vertex`、`transportWitnessRestriction_innerFibration`
 - `transportWitnessRestriction_liftEdge_source`、`transportWitnessRestriction_fibration`
-- `coherentLeftResolutionInfinityComparisonIso`
+- `leftFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
+- `transportWitnessRestriction_trivialKanFibration_of_innerAnodyne`
+- `exists_leftTransportRepresentation_extension_innerAnodyne`
 
 ### 依存と提供
 
 - Core の left/right fibration、相対写像空間、同値・関手同型を読み取り専用で使用する。
   Coherent/Quasicategory の γ1 と HomotopyLimits/WeightedConstantSimplex も使用する。
-  F1B/FullSubcomplexMapping の全部分複体の包含の充満忠実性を読み取り専用で使用する。
+  F1B/FullSubcomplexMapping と SSetPullbackAdjoint の包含の充満忠実性・依存積を読み取り専用で使う。
 - 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
   𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
 - 再開時は F1/README.md の原典照合と方針を維持し、他レーンのファイルは編集しない。
@@ -90,16 +88,14 @@
 - 標準単位に沿う可縮な延長は同じ通常圏上での係数図式の変更に関するもの。
   底の包含 C₀ ⊆ C に対し、指定した表現の底への射と全空間の射をともに厳密に保つ
   相対表現の延長（Theorem 5.6.5.12）は未証明。高次パラメーターの境界上でも両方を保つ必要がある。
-- 全ホーン充填は一次の辺の持ち上げも証明して導いた。可縮性や境界充填はまだ従わない。
+- inner anodyne 制限の fiber の可縮性は、一般の境界制限や表現空間全体の可縮性ではない。
 
 ### 次の一手
 
-単射の制限の全ホーン充填に続き、inner anodyne な制限の trivial Kan 性を証明する
-（[Lemma 5.6.8.10 (2)](https://kerodon.net/tag/02SK)）。まず全頂点を被覆する底変換で
-`LeftTransportSquare.IsRepresentation` を反映し、四角形の制限の持ち上げを表現空間へ制限する。
-分類図式の制限は `trivialKanFibration_pre_of_innerAnodyne`、全空間側は相対内部 Hom を使う。
-その後、[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の区間上の境界制限の trivial Kan 性、
-標準単体上の選択空間の可縮性、境界固定延長へ進む。局所 strictification だけでは延長は得られない。
+[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の区間上の境界制限の trivial Kan 性を示す。
+両端の分類対象を固定した fiber を表示し、普遍 pointed-space fibration のパラメーター付き
+transport の写像空間比較を使う。指定した両端の fiber 同値を保つ高次パラメーターも含める。
+その後、点・標準単体上の表現空間の可縮性から一般の境界固定延長と貼り合わせへ進む。
 
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
