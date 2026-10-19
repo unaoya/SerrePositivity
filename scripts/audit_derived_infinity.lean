@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYoneda
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorExact
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeSquareModel
 import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleMiddleHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeComponents
@@ -1131,10 +1133,27 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityPiExtEquiv
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityPiZeroExtEquiv
 
+#print axioms SerrePositivity.InfinityCategories.DGModuleSquareData.changeTopMiddleFunctorIso
+#print axioms SerrePositivity.InfinityCategories.dgModuleFunctorConeSquareZeroFunctorIso
+#print axioms SerrePositivity.InfinityCategories.dgModuleFunctorConeSquareFunctorIso
+#print axioms SerrePositivity.InfinityCategories.dgModuleFunctorConeSquare_isPushout
+#print axioms SerrePositivity.InfinityCategories.dgModuleFunctorNerve_preservesCofiber
+#print axioms SerrePositivity.InfinityCategories.dgModuleFunctorNerve_isExactFunctor
+
+#print axioms SerrePositivity.InfinityCategories.dgModuleExtensionRepresentableIso_naturality
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYoneda,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquareTopMiddleData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquareTopMiddleHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquareVertices,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquareTopMiddleIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeZeroCorner,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConePreservation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorExact,
     `SerrePositivity.InfinityCategories.Derived.DGModuleSquareData,
     `SerrePositivity.InfinityCategories.Derived.DGModuleSquarePostcomposeJoin,
     `SerrePositivity.InfinityCategories.Derived.DGModuleSquarePostcomposeEdge,
