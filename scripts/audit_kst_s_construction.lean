@@ -7508,3 +7508,195 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_objectKClass
 #print axioms SerrePositivity.KST.SConstruction.kZeroGroupoidPresentation_objectKClass
+
+#check @SerrePositivity.KST.SConstruction.rawCofiber_simplex_cases
+#print axioms SerrePositivity.KST.SConstruction.rawCofiber_simplex_cases
+
+#check @SerrePositivity.KST.SConstruction.boundaryReducedRealization_vertex_eq
+#print axioms SerrePositivity.KST.SConstruction.boundaryReducedRealization_vertex_eq
+
+#check @SerrePositivity.KST.SConstruction.boundaryReducedRealization_vertex_subsingleton
+#print axioms SerrePositivity.KST.SConstruction.boundaryReducedRealization_vertex_subsingleton
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryLoopSimplex
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryLoopSimplex
+
+#check @SerrePositivity.KST.SConstruction.diagonalAssembly_diagonalSimplex
+#print axioms SerrePositivity.KST.SConstruction.diagonalAssembly_diagonalSimplex
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdgeParameterTriangle
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdgeParameterTriangle
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdgeParameterTriangle_face_zero
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdgeParameterTriangle_face_zero
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdgeParameterTriangle_face_one
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdgeParameterTriangle_face_one
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdgeParameterTriangle_face_two
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdgeParameterTriangle_face_two
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdgeTriangle
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdgeTriangle
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdgeTriangle_face_one
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdgeTriangle_face_one
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdge_start_constant
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdge_start_constant
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdgeTriangle_face_two
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdgeTriangle_face_two
+
+#check @SerrePositivity.KST.SConstruction.assemblyEdgeTriangle_face_zero
+#print axioms SerrePositivity.KST.SConstruction.assemblyEdgeTriangle_face_zero
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryPath
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryPath
+
+#check @SerrePositivity.KST.SConstruction.objectRawBoundaryEdge_assembly
+#print axioms SerrePositivity.KST.SConstruction.objectRawBoundaryEdge_assembly
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryDiagonalTriangle
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryDiagonalTriangle
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryPath_diagonal
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryPath_diagonal
+
+#check @SerrePositivity.KST.SConstruction.rawBoundary_point_edge
+#print axioms SerrePositivity.KST.SConstruction.rawBoundary_point_edge
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryLoopSimplex_degenerate
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryLoopSimplex_degenerate
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryPath_point
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryPath_point
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryPath_cases
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryPath_cases
+
+#check @SerrePositivity.KST.SConstruction.singletonCategoryHom
+#print axioms SerrePositivity.KST.SConstruction.singletonCategoryHom
+
+#check @SerrePositivity.KST.SConstruction.singletonCategoryHom_self
+#print axioms SerrePositivity.KST.SConstruction.singletonCategoryHom_self
+
+#check @SerrePositivity.KST.SConstruction.singletonCategoryHom_comp
+#print axioms SerrePositivity.KST.SConstruction.singletonCategoryHom_comp
+
+#check @SerrePositivity.KST.SConstruction.singletonCategoryHom_inv
+#print axioms SerrePositivity.KST.SConstruction.singletonCategoryHom_inv
+
+#check @SerrePositivity.KST.SConstruction.boundaryFundamentalGroupoid_obj_eq
+#print axioms SerrePositivity.KST.SConstruction.boundaryFundamentalGroupoid_obj_eq
+
+#check @SerrePositivity.KST.SConstruction.boundaryFundamentalGroupoid_subsingleton
+#print axioms SerrePositivity.KST.SConstruction.boundaryFundamentalGroupoid_subsingleton
+
+#check @SerrePositivity.KST.SConstruction.singletonCategoryHom_boundary_edge
+#print axioms SerrePositivity.KST.SConstruction.singletonCategoryHom_boundary_edge
+
+#check @SerrePositivity.KST.SConstruction.boundaryPathKClass
+#print axioms SerrePositivity.KST.SConstruction.boundaryPathKClass
+
+#check @SerrePositivity.KST.SConstruction.boundaryPathKClass_id
+#print axioms SerrePositivity.KST.SConstruction.boundaryPathKClass_id
+
+#check @SerrePositivity.KST.SConstruction.boundaryPathKClass_comp
+#print axioms SerrePositivity.KST.SConstruction.boundaryPathKClass_comp
+
+#check @SerrePositivity.KST.SConstruction.boundaryPathKClass_inv
+#print axioms SerrePositivity.KST.SConstruction.boundaryPathKClass_inv
+
+#check @SerrePositivity.KST.SConstruction.boundaryPathKClass_object
+#print axioms SerrePositivity.KST.SConstruction.boundaryPathKClass_object
+
+#check @SerrePositivity.KST.SConstruction.boundaryPathKClass_presentation
+#print axioms SerrePositivity.KST.SConstruction.boundaryPathKClass_presentation
+
+#check @SerrePositivity.KST.SConstruction.boundaryPathKClass_mem_triangulatedKZeroRange
+#print axioms SerrePositivity.KST.SConstruction.boundaryPathKClass_mem_triangulatedKZeroRange
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroMap_surjective
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroMap_surjective
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedClass
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedClass
+
+#check @SerrePositivity.KST.SConstruction.cofiberStableEvaluation_vertex
+#print axioms SerrePositivity.KST.SConstruction.cofiberStableEvaluation_vertex
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison_gappedDiagram_vertex
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison_gappedDiagram_vertex
+
+#check @SerrePositivity.KST.SConstruction.cofiberTriangulatedClass_additivity
+#print axioms SerrePositivity.KST.SConstruction.cofiberTriangulatedClass_additivity
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedClass_sTwo
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedClass_sTwo
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison_degenerate_isZero
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison_degenerate_isZero
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedClass_degenerate
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedClass_degenerate
+
+#check @SerrePositivity.KST.SConstruction.triangulatedKZeroDelooping
+#print axioms SerrePositivity.KST.SConstruction.triangulatedKZeroDelooping
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedFunctor
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedFunctor
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedFunctor_map_edge
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedFunctor_map_edge
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedGroupoidFunctor
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedGroupoidFunctor
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedNerveMap
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedNerveMap
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedNerveTarget_isGroupoid
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedNerveTarget_isGroupoid
+
+#check @SerrePositivity.KST.SConstruction.objectTriangulatedNerveMap_untranspose
+#print axioms SerrePositivity.KST.SConstruction.objectTriangulatedNerveMap_untranspose
+
+#check @SerrePositivity.KST.SConstruction.objectRawBoundaryComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.objectRawBoundaryComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.exists_rawBoundaryTriangulatedMap
+#print axioms SerrePositivity.KST.SConstruction.exists_rawBoundaryTriangulatedMap
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryTriangulatedMap
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryTriangulatedMap
+
+#check @SerrePositivity.KST.SConstruction.rawBoundaryTriangulatedHomotopy
+#print axioms SerrePositivity.KST.SConstruction.rawBoundaryTriangulatedHomotopy
+
+#check @SerrePositivity.KST.SConstruction.exists_boundaryKanTriangulatedMap
+#print axioms SerrePositivity.KST.SConstruction.exists_boundaryKanTriangulatedMap
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanTriangulatedMap
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanTriangulatedMap
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanTriangulatedMap_unit
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanTriangulatedMap_unit
+
+#check @SerrePositivity.KST.SConstruction.kanLoopSingleObjAddHom
+#print axioms SerrePositivity.KST.SConstruction.kanLoopSingleObjAddHom
+
+#check @SerrePositivity.KST.SConstruction.kanLoopSingleObjAddHom_mk
+#print axioms SerrePositivity.KST.SConstruction.kanLoopSingleObjAddHom_mk
+
+#check @SerrePositivity.KST.SConstruction.kanLoopSingleObjAddHom_inv_mk
+#print axioms SerrePositivity.KST.SConstruction.kanLoopSingleObjAddHom_inv_mk
+
+#check @SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap
+#print axioms SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap
+
+#check @SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_apply
+#print axioms SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_apply
+
+#check @SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_object_formula
+#print axioms SerrePositivity.KST.SConstruction.kZeroToTriangulatedMap_object_formula

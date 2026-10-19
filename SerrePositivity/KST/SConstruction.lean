@@ -504,4 +504,18 @@ public import SerrePositivity.KST.SConstruction.KZeroGroupoidPresentation
 public import SerrePositivity.KST.SConstruction.ObjectRawBoundaryEdges
 public import SerrePositivity.KST.SConstruction.KZeroObjectPresentation
 
+public import SerrePositivity.KST.SConstruction.RawBoundaryVertices
+public import SerrePositivity.KST.SConstruction.AssemblyEdgeTriangle
+public import SerrePositivity.KST.SConstruction.AssemblyEdgeFaces
+public import SerrePositivity.KST.SConstruction.RawBoundaryDiagonalEdges
+public import SerrePositivity.KST.SConstruction.RawBoundaryEdgeCases
+public import SerrePositivity.KST.SConstruction.BoundaryGroupoidSingleObject
+public import SerrePositivity.KST.SConstruction.BoundaryPathKClass
+public import SerrePositivity.KST.SConstruction.TriangulatedKZeroSurjectivity
+public import SerrePositivity.KST.SConstruction.ObjectTriangulatedKZeroRelations
+public import SerrePositivity.KST.SConstruction.ObjectTriangulatedFunctor
+public import SerrePositivity.KST.SConstruction.ObjectBoundaryWeakEquivalence
+public import SerrePositivity.KST.SConstruction.TriangulatedNerveDescent
+public import SerrePositivity.KST.SConstruction.KZeroToTriangulatedMap
+
 /-! # ∞-S• 構成と連結 K 理論 -/
