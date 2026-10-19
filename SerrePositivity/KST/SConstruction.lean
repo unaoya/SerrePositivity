@@ -667,4 +667,9 @@ public import SerrePositivity.KST.SConstruction.KanMappingSpanComposition
 public import SerrePositivity.KST.SConstruction.KSuspensionCompatibilityHomotopy
 public import SerrePositivity.KST.SConstruction.SequenceCompatibilityTransport
 public import SerrePositivity.KST.SConstruction.MonicKPrismCompatibility
+public import SerrePositivity.KST.SConstruction.KanFibrationTriangleLifting
+public import SerrePositivity.KST.SConstruction.KanSpanTriangleLifting
+public import SerrePositivity.KST.SConstruction.RelativeKanSpanFamilies
+public import SerrePositivity.KST.SConstruction.RelativeSequenceSpanFamilies
+public import SerrePositivity.KST.SConstruction.KRelativeSpanFamilies
 /-! # ∞-S• 構成と連結 K 理論 -/
