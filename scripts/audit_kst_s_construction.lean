@@ -5966,3 +5966,75 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.cutRelativeSegalPair
 #print axioms SerrePositivity.KST.SConstruction.cutRelativeSegalPair
+
+#check @SerrePositivity.KST.SConstruction.sPostcompositionFunctorIso
+#print axioms SerrePositivity.KST.SConstruction.sPostcompositionFunctorIso
+
+#check @SerrePositivity.KST.SConstruction.StableModelEquivalence
+#print axioms SerrePositivity.KST.SConstruction.StableModelEquivalence
+
+#check @SerrePositivity.KST.SConstruction.StableModelEquivalence.toQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.StableModelEquivalence.toQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.StableModelEquivalence.symm
+#print axioms SerrePositivity.KST.SConstruction.StableModelEquivalence.symm
+
+#check @SerrePositivity.KST.SConstruction.StableModelEquivalence.sConstruction
+#print axioms SerrePositivity.KST.SConstruction.StableModelEquivalence.sConstruction
+
+#check @SerrePositivity.KST.SConstruction.StableModelEquivalence.hom
+#print axioms SerrePositivity.KST.SConstruction.StableModelEquivalence.hom
+
+#check @SerrePositivity.KST.SConstruction.StableModelEquivalence.inv
+#print axioms SerrePositivity.KST.SConstruction.StableModelEquivalence.inv
+
+#check @SerrePositivity.KST.SConstruction.StableModelEquivalence.homInvIso
+#print axioms SerrePositivity.KST.SConstruction.StableModelEquivalence.homInvIso
+
+#check @SerrePositivity.KST.SConstruction.StableModelEquivalence.invHomIso
+#print axioms SerrePositivity.KST.SConstruction.StableModelEquivalence.invHomIso
+
+#check @SerrePositivity.KST.SConstruction.objectS_map_localized_isIso_of_equivalence
+#print axioms SerrePositivity.KST.SConstruction.objectS_map_localized_isIso_of_equivalence
+
+#check @SerrePositivity.KST.SConstruction.coreSRealization_map_localized_isIso_of_equivalence
+#print axioms SerrePositivity.KST.SConstruction.coreSRealization_map_localized_isIso_of_equivalence
+
+#check @SerrePositivity.KST.SConstruction.multiRealization_map_one_localized_isIso_of_equivalence
+#print axioms SerrePositivity.KST.SConstruction.multiRealization_map_one_localized_isIso_of_equivalence
+
+#check @SerrePositivity.KST.SConstruction.multiRealization_map_step_localized_isIso_of_equivalence
+#print axioms SerrePositivity.KST.SConstruction.multiRealization_map_step_localized_isIso_of_equivalence
+
+#check @SerrePositivity.KST.SConstruction.multiRealization_map_localized_isIso_of_equivalence
+#print axioms SerrePositivity.KST.SConstruction.multiRealization_map_localized_isIso_of_equivalence
+
+#check @SerrePositivity.KST.SConstruction.cutRelativeStableEquivalence
+#print axioms SerrePositivity.KST.SConstruction.cutRelativeStableEquivalence
+
+#check @SerrePositivity.KST.SConstruction.cutLeftIntervalStableEquivalence
+#print axioms SerrePositivity.KST.SConstruction.cutLeftIntervalStableEquivalence
+
+#check @SerrePositivity.KST.SConstruction.cutRightIntervalStableEquivalence
+#print axioms SerrePositivity.KST.SConstruction.cutRightIntervalStableEquivalence
+
+#check @SerrePositivity.KST.SConstruction.cutIntervalRestrictions_tensor_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.cutIntervalRestrictions_tensor_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.cutSegalMap
+#print axioms SerrePositivity.KST.SConstruction.cutSegalMap
+
+#check @SerrePositivity.KST.SConstruction.cutSegalMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.cutSegalMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.cutSegalPair_naturality
+#print axioms SerrePositivity.KST.SConstruction.cutSegalPair_naturality
+
+#check @SerrePositivity.KST.SConstruction.cutSegalNat
+#print axioms SerrePositivity.KST.SConstruction.cutSegalNat
+
+#check @SerrePositivity.KST.SConstruction.cutSegalLocalizedIso
+#print axioms SerrePositivity.KST.SConstruction.cutSegalLocalizedIso
+
+#check @SerrePositivity.KST.SConstruction.cutSegalLocalizedIso_app
+#print axioms SerrePositivity.KST.SConstruction.cutSegalLocalizedIso_app

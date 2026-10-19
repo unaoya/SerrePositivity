@@ -350,4 +350,12 @@ public import SerrePositivity.KST.SConstruction.CutRelativeEquivalence
 
 public import SerrePositivity.KST.SConstruction.CutSegalEvaluations
 
+public import SerrePositivity.KST.SConstruction.SPostcompositionFunctorIso
+public import SerrePositivity.KST.SConstruction.StableModelEquivalences
+public import SerrePositivity.KST.SConstruction.SingleRealizationEquivalence
+public import SerrePositivity.KST.SConstruction.MultiRealizationEquivalence
+public import SerrePositivity.KST.SConstruction.CutStableEquivalences
+public import SerrePositivity.KST.SConstruction.CutSegalEquivalence
+public import SerrePositivity.KST.SConstruction.CutSegalNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
