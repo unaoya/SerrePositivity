@@ -209,3 +209,6 @@ public import SerrePositivity.EInfinity.Surjection.CompositionExtractionStep
 public import SerrePositivity.EInfinity.Surjection.ComponentRowRanges
 public import SerrePositivity.EInfinity.Surjection.OccurrenceRowRanges
 public import SerrePositivity.EInfinity.TableReduction.RepeatedRowOrder
+public import SerrePositivity.EInfinity.TableReduction.ReductionCursor
+public import SerrePositivity.EInfinity.TableReduction.RowCursorAdvance
+public import SerrePositivity.EInfinity.TableReduction.RowCursorRemainder

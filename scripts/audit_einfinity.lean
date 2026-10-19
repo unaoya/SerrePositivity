@@ -508,7 +508,15 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.segmentDegree_eq_reductionRows,
       `SerrePositivity.EInfinity.Surjection.outerSegmentDegree_eq_reductionRows,
       `SerrePositivity.EInfinity.TableReduction.reductionRow_lt_of_repeat,
-      `SerrePositivity.EInfinity.TableReduction.occurrence_reductionRow_strictMono] do
+      `SerrePositivity.EInfinity.TableReduction.occurrence_reductionRow_strictMono,
+      `SerrePositivity.EInfinity.TableReduction.scheduleRowCursor_nonempty,
+      `SerrePositivity.EInfinity.TableReduction.reductionColumn_position,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleRowCursor.reductionColumn_value,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleRowCursor.available_slot_split,
+      `SerrePositivity.EInfinity.TableReduction.reductionCursor_composite_row,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.unique,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleRowCursor.next_state,
+      `SerrePositivity.EInfinity.TableReduction.ScheduleRowCursor.remainder_success_eq_drop] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -806,3 +814,44 @@ example : lineRank rankDegenerate 1 < lineRank rankDegenerate 2 := by
       some (List.ofFn rankDegenerate) := by decide
   exact reductionRow_lt_of_repeat terminalTable reverseTerminalSchedule rankDegenerate h
     1 2 (by decide) (by decide)
+
+-- 同じ元の成功から取り出した隣接 cursor は、実際の末尾以外の除外更新で接続する。
+private noncomputable def cursorRowOne :
+    ScheduleRowCursor bfTable bfSchedule₁ 1 (List.ofFn canonicalFixture.val) :=
+  Classical.choice (scheduleRowCursor_nonempty bfTable bfSchedule₁ 1
+    (List.ofFn canonicalFixture.val) rankFixture_success)
+private noncomputable def cursorRowTwo :
+    ScheduleRowCursor bfTable bfSchedule₁ 2 (List.ofFn canonicalFixture.val) :=
+  Classical.choice (scheduleRowCursor_nonempty bfTable bfSchedule₁ 2
+    (List.ofFn canonicalFixture.val) rankFixture_success)
+example : cursorRowTwo.removed = cursorRowOne.removed ++
+    (available cursorRowOne.removed (vertexRow bfTable 1)).take ((bfSchedule₁.val 1).val - 1) :=
+  (ScheduleRowCursor.next_state 1 cursorRowOne cursorRowTwo).2
+example : (available cursorRowTwo.removed (vertexRow bfTable 2))[1]'(by
+    have := cursorRowTwo.bound; change 3 ≤ _ at this; omega) = 3 := by
+  have h := cursorRowTwo.value (4 : Fin 6) ⟨1, by decide⟩ (by decide)
+  exact h.symm.trans (by decide)
+-- 元の第三行の内部からの再開と、同じ行の末尾からの再開を元の出力の末尾で検証する。
+example : reduceRows ((vertexRow bfTable 2, 2) :: cursorRowTwo.after)
+    (cursorRowTwo.removed ++ (available cursorRowTwo.removed (vertexRow bfTable 2)).take 1) =
+      some [3, 2] := by
+  have h := cursorRowTwo.remainder_success_eq_drop (4 : Fin 6) ⟨1, by decide⟩ (by decide)
+  change reduceRows ((vertexRow bfTable 2, 2) :: cursorRowTwo.after)
+    (cursorRowTwo.removed ++ (available cursorRowTwo.removed (vertexRow bfTable 2)).take 1) =
+      some ((List.ofFn canonicalFixture.val).drop 4) at h
+  have ho : (List.ofFn canonicalFixture.val).drop 4 = [3, 2] := by decide
+  rw [ho] at h
+  exact h
+example : reduceRows ((vertexRow bfTable 2, 1) :: cursorRowTwo.after)
+    (cursorRowTwo.removed ++ (available cursorRowTwo.removed (vertexRow bfTable 2)).take 2) =
+      some [2] := by
+  have h := cursorRowTwo.remainder_success_eq_drop (5 : Fin 6) ⟨2, by decide⟩ (by decide)
+  change reduceRows ((vertexRow bfTable 2, 1) :: cursorRowTwo.after)
+    (cursorRowTwo.removed ++ (available cursorRowTwo.removed (vertexRow bfTable 2)).take 2) =
+      some ((List.ofFn canonicalFixture.val).drop 5) at h
+  have ho : (List.ofFn canonicalFixture.val).drop 5 = [2] := by decide
+  rw [ho] at h
+  exact h
+example : canonicalFixture.val 4 ∉
+    (reductionCursor bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 4).removed :=
+  reductionCursor_value_not_removed bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 4
