@@ -66,3 +66,8 @@ public import SerrePositivity.KST.Spectra.SkeletalCellBoundaryRepresentatives
 public import SerrePositivity.KST.Spectra.SphericalFiberLift
 public import SerrePositivity.KST.Spectra.SphericalFiberNormalization
 public import SerrePositivity.KST.Spectra.SphericalFiberRelation
+public import SerrePositivity.KST.Spectra.SphericalPathBoundary
+public import SerrePositivity.KST.Spectra.MappingCorner
+public import SerrePositivity.KST.Spectra.MappingFiber
+public import SerrePositivity.KST.Spectra.RelativePathCorner
+public import SerrePositivity.KST.Spectra.RelativePathBoundaryLift

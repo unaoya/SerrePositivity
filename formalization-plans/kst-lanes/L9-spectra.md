@@ -19,15 +19,17 @@
 - 実際の塔の微分の各セルの係数を、そのセルの境界制限の連結準同型で表す厳密な式を証明済み。
 - 任意の入力でセル境界の連結射を cofiber の単体代表にし、最後の面の族・零ホモトピーを構成済み。
 - fiber に入る球面的な面の交代和と、同じ底の単体の連結射の像との符号付き等式を相対 Kan 充填で証明済み。
-- 旧実装保存：`c5872423`。従来の詳細は [記録](../archive/L9-spectra-log.md) §116–119。
-- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、4004 jobs、終了コード 0。
-- 停止前の全体ビルド：`lake build`、13926 jobs、終了コード 0。
-- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、536 モジュール・5280 宣言、標準三公理のみ、終了コード 0。
+- path の球面的境界の交代和を、既存の loop 群同型と標準基点で符号付きに照合済み。
+- 源の単射と標的の fibration の corner、および path と終点を同時に指定する相対 fibration を構成済み。
+- 二方向の連結射の共通ホーン充填と、その最後の面の境界定数単体を構成し、二射影を厳密に計算済み。
+- 停止前の対象ビルド：`lake build SerrePositivity.KST.Spectra`、4009 jobs、終了コード 0。
+- 停止前の全体ビルド：`lake build` は他レーンの `F1.LeftUnstraighteningTransformationRestriction` で未定義名 `intervalMappingPost`・`intervalMappingPost_uncurry` により失敗（終了コード 1）。
+- 停止前の公理監査：`lake env lean scripts/audit_kst_spectra.lean`、541 モジュール・5330 宣言、標準三公理のみ、終了コード 0。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - セル境界の局所的な連結準同型を反復 loop の成分代表で計算し、球面的境界の向きと整合させる。
-  最後の面の代表と相対交代境界の符号は構成済み。loop と連結射の交換をまだ証明していない。
+  path の符号付き境界公式と二方向の共通持ち上げまで構成済み。loop と連結射の交換の最終比較は未完。
   原典：Goerss–Jardine I §7、VIII §1、Kerodon §3.2.3。24–60 時間。
 - 上の比較を使い `coefficientDifferential` と通常の正規化交代微分を同定し、零性だけでなく像・係数同型の符号も照合する。
   原典：Goerss–Jardine VIII §§1–2、III §2。24–60 時間。
@@ -62,6 +64,8 @@
 - `SkeletalCellAttachment.stageFiberDifferential_cellConnecting`
 - `SkeletalCellAttachment.exists_cellDifferential_boundaryRepresentative`
 - `SphericalFiberLift.alternatingClass_connecting`
+- `SphericalPathBoundary.alternating_loopPositive`
+- `RelativePath.common_boundary_simplex`
 - `SkeletalCellAttachment.stageFiberCoefficientEquiv`
 - `SkeletalCellAttachment.coefficientDifferential`
 - `RationalLevelNormalizedCochains.positive_cohomology_isZero`
@@ -82,7 +86,7 @@
 - 共有ルート `SerrePositivity.lean` および他レーンの既存差分は触らず、今回のコミット対象にも含めない。
 
 ### 既知の問題
-- 自分の import 閉包・対象ビルド・全体ビルドは成功。以前の `relativeFunctorVertex` 重複は今回再現しない。
+- 自分の import 閉包・対象ビルド・公理監査は成功。全体ビルドの F1 の失敗は所有範囲外で、対象ビルドには現れない。
 - 所有ソースの sorry・追加 axiom はなし。所有宣言の型に `HomotopicalAlgebra.ModelCategory` 定数がないことも Lean 環境を走査して確認済み。
 - import 閉包に KanQuillen モジュールなし。`SSet.modelCategoryQuillen` 名前空間は Mathlib のホーン生成射・Fibration の既存 API に使うが、`ModelCategory SSet` は仮定しない。
 - 公理監査は私有宣言・推移的な公理依存と、宣言型の ModelCategory 定数を検査する。
@@ -91,11 +95,11 @@
 - cohomology の消滅と骨格の延長判定は証明済みだが、有理 Shapiro の全射性・収束・塔の微分の交代式を完了扱いにしない。
 
 ### 次の一手
-- `SphericalFiberLift.alternatingClass_connecting` を path fibration の相対境界へ適用し、loop と連結射の交換の符号を比較する。
-- `exists_cellDifferential_boundaryRepresentative` の代表を反復 loop 値の成分へ戻し、
-  `skeletalFiberVertex_normalizedDifferential` の交代和と像・符号を照合する。
-- 交換の符号と実際の `coefficientDifferential` を同定するまでは Sp-1c・Sp-1d を完了扱いにしない。
-- 成分の障害計算や一般の相対境界関係だけから、骨格微分の同定・塔の収束を主張しない。
+- `common_boundary_simplex` が与える path の単体 U と、loop への連結射の持ち上げ V を同時に比較する。
+- U・V の次数を r+2 とし、`basedPathMap p` に沿う相対ホーンで面 r+1 に V、面 r+2 に U を置き、最後の面 r+3 を充填する。底は `σ_(r+1)` を元の loop 単体へ前合成したもの。
+- 出力を `PointedMapping.fiberIso pointedInterval p` で fiber 内の path と読み、`SphericalPathBoundary.alternating_loopPositive` で逆符号を計算する。面次数一の r=0 は別途扱う。
+- その交換式を反復 loop の係数比較へ合成し、`skeletalFiberVertex_normalizedDifferential` と実際の `coefficientDifferential` の像・符号を照合する。
+- Sp-1c・Sp-1d は未完。一般の相対境界関係や共通持ち上げだけから、骨格微分の同定・塔の収束を主張しない。
 
 ## 範囲と所有
 

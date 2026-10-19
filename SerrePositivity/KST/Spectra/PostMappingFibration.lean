@@ -28,7 +28,7 @@ set_option backward.isDefEq.respectTransparency.types false
 方針：二つの族を pushout に貼り、指定された持ち上げ性で解く。
 規約：この補題では必要な一つの持ち上げ性を明示する。
 使われ方：Kerodon §3.1.3、Goerss–Jardine I §7。点つき Hom のホーン充填。 -/
-private theorem relative_product_lift {E B A X T U : SSet.{u}} (p : E ⟶ B)
+theorem relative_product_lift {E B A X T U : SSet.{u}} (p : E ⟶ B)
     (i : A ⟶ X) (j : T ⟶ U)
     (h : HasLiftingProperty (Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) i j).ι p)
     (earlier : X ⊗ T ⟶ E) (prescribed : A ⊗ U ⟶ E) (base : X ⊗ U ⟶ B)
