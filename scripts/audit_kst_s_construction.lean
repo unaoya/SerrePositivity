@@ -9953,3 +9953,141 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.relativeSequenceFamilyNext_trace
 #print axioms SerrePositivity.KST.SConstruction.relativeSequenceFamilyNext_trace
+
+#check @SerrePositivity.KST.SConstruction.coherentEndpointPath
+#print axioms SerrePositivity.KST.SConstruction.coherentEndpointPath
+
+#check @SerrePositivity.KST.SConstruction.coherentEndpointPath_map
+#print axioms SerrePositivity.KST.SConstruction.coherentEndpointPath_map
+
+#check @SerrePositivity.KST.SConstruction.coherentSimplexArrow
+#print axioms SerrePositivity.KST.SConstruction.coherentSimplexArrow
+
+#check @SerrePositivity.KST.SConstruction.coherentSimplexArrow_edge
+#print axioms SerrePositivity.KST.SConstruction.coherentSimplexArrow_edge
+
+#check @SerrePositivity.KST.SConstruction.coherentSimplexArrow_naturality
+#print axioms SerrePositivity.KST.SConstruction.coherentSimplexArrow_naturality
+
+#check @SerrePositivity.KST.SConstruction.coherentEndpointPathComposite
+#print axioms SerrePositivity.KST.SConstruction.coherentEndpointPathComposite
+
+#check @SerrePositivity.KST.SConstruction.coherentEndpointPathToComposite
+#print axioms SerrePositivity.KST.SConstruction.coherentEndpointPathToComposite
+
+#check @SerrePositivity.KST.SConstruction.coherentSimplexCompositionEdge
+#print axioms SerrePositivity.KST.SConstruction.coherentSimplexCompositionEdge
+
+#check @SerrePositivity.KST.SConstruction.coherentSimplexArrow_heq
+#print axioms SerrePositivity.KST.SConstruction.coherentSimplexArrow_heq
+
+#check @SerrePositivity.KST.SConstruction.coherentSimplexArrow_of_edge_face
+#print axioms SerrePositivity.KST.SConstruction.coherentSimplexArrow_of_edge_face
+
+#check @SerrePositivity.KST.SConstruction.coherentTriangleMappingEdge
+#print axioms SerrePositivity.KST.SConstruction.coherentTriangleMappingEdge
+
+#check @SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles
+#print axioms SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles
+
+#check @SerrePositivity.KST.SConstruction.coherentSquareMappingBottomRight
+#print axioms SerrePositivity.KST.SConstruction.coherentSquareMappingBottomRight
+
+#check @SerrePositivity.KST.SConstruction.coherentSquareMappingLeftTop
+#print axioms SerrePositivity.KST.SConstruction.coherentSquareMappingLeftTop
+
+#check @SerrePositivity.KST.SConstruction.coherentSquareMappingTrianglesOfEdges
+#print axioms SerrePositivity.KST.SConstruction.coherentSquareMappingTrianglesOfEdges
+
+#check @SerrePositivity.KST.SConstruction.squareHorizontalEdge_yoneda
+#print axioms SerrePositivity.KST.SConstruction.squareHorizontalEdge_yoneda
+
+#check @SerrePositivity.KST.SConstruction.squareVerticalEdge_yoneda
+#print axioms SerrePositivity.KST.SConstruction.squareVerticalEdge_yoneda
+
+#check @SerrePositivity.KST.SConstruction.coherentSquareMappingTrianglesOfBoundary
+#print axioms SerrePositivity.KST.SConstruction.coherentSquareMappingTrianglesOfBoundary
+
+#check @SerrePositivity.KST.SConstruction.kSuspensionMappingTriangles_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kSuspensionMappingTriangles_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare_zero
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare_zero
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare_one
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare_one
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare_left
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare_left
+
+#check @SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare_right
+#print axioms SerrePositivity.KST.SConstruction.kKanOriginalSuspensionSquare_right
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionMappingTriangles
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionMappingTriangles
+
+#check @SerrePositivity.KST.SConstruction.KanMappingSpanComposition
+#print axioms SerrePositivity.KST.SConstruction.KanMappingSpanComposition
+
+#check @SerrePositivity.KST.SConstruction.kanMappingSpanComposition
+#print axioms SerrePositivity.KST.SConstruction.kanMappingSpanComposition
+
+#check @SerrePositivity.KST.SConstruction.kSuspensionCompatibility_pointed_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.kSuspensionCompatibility_pointed_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionCompatibilityComposition
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionCompatibilityComposition
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionCompatibilityEdge
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionCompatibilityEdge
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionCompatibilityHomotopy
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionCompatibilityHomotopy
+
+#check @SerrePositivity.KST.SConstruction.kKanSuspensionCompatibilityHomotopy_base
+#print axioms SerrePositivity.KST.SConstruction.kKanSuspensionCompatibilityHomotopy_base
+
+#check @SerrePositivity.KST.SConstruction.sequenceCompatibilityEdge_precompose
+#print axioms SerrePositivity.KST.SConstruction.sequenceCompatibilityEdge_precompose
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompatibilityEdge
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompatibilityEdge
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompatibilityHomotopy
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompatibilityHomotopy
+
+#check @SerrePositivity.KST.SConstruction.monicKPrismCompatibilityHomotopy_base
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismCompatibilityHomotopy_base
+
+#check @SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.mk
+#print axioms SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.mk
+
+#check @SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.diagonal
+#print axioms SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.diagonal
+
+#check @SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.bottomRight
+#print axioms SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.bottomRight
+
+#check @SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.leftTop
+#print axioms SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.leftTop
+
+#check @SerrePositivity.KST.SConstruction.KanMappingSpanComposition.mk
+#print axioms SerrePositivity.KST.SConstruction.KanMappingSpanComposition.mk
+
+#check @SerrePositivity.KST.SConstruction.KanMappingSpanComposition.inverse
+#print axioms SerrePositivity.KST.SConstruction.KanMappingSpanComposition.inverse
+
+#check @SerrePositivity.KST.SConstruction.KanMappingSpanComposition.inverseLeft
+#print axioms SerrePositivity.KST.SConstruction.KanMappingSpanComposition.inverseLeft
+
+#check @SerrePositivity.KST.SConstruction.KanMappingSpanComposition.inverseRight
+#print axioms SerrePositivity.KST.SConstruction.KanMappingSpanComposition.inverseRight
+
+#check @SerrePositivity.KST.SConstruction.KanMappingSpanComposition.edge
+#print axioms SerrePositivity.KST.SConstruction.KanMappingSpanComposition.edge
+
+#check @SerrePositivity.KST.SConstruction.KanMappingSpanComposition.triangle
+#print axioms SerrePositivity.KST.SConstruction.KanMappingSpanComposition.triangle

@@ -657,4 +657,14 @@ public import SerrePositivity.KST.SConstruction.RelativeFamilyChains
 public import SerrePositivity.KST.SConstruction.RelativeSequenceFamilyRectification
 public import SerrePositivity.KST.SConstruction.KRelativeFamilyLifting
 public import SerrePositivity.KST.SConstruction.KRelativeFamilyRectification
+public import SerrePositivity.KST.SConstruction.CoherentSimplexArrows
+public import SerrePositivity.KST.SConstruction.CoherentSimplexCompositionEdge
+public import SerrePositivity.KST.SConstruction.CoherentTriangleMappingEdge
+public import SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles
+public import SerrePositivity.KST.SConstruction.SquareBoundaryEdgeCalculus
+public import SerrePositivity.KST.SConstruction.KSuspensionMappingTriangles
+public import SerrePositivity.KST.SConstruction.KanMappingSpanComposition
+public import SerrePositivity.KST.SConstruction.KSuspensionCompatibilityHomotopy
+public import SerrePositivity.KST.SConstruction.SequenceCompatibilityTransport
+public import SerrePositivity.KST.SConstruction.MonicKPrismCompatibility
 /-! # ∞-S• 構成と連結 K 理論 -/
