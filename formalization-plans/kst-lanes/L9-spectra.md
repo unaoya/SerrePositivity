@@ -8,8 +8,8 @@
 - L9a・L9b・改訂 L9c・L9d、Sp-1d（係数微分の値・符号・像の同定、10-19 14:07）、Sp-3（有理 Shapiro の全射性、10-19）完了。L9e 全体は未完。
 - Sp の quasicategory 性、全整数次数の群、置換、homotopy fiber の長完全列、有理 telescope とテンソル表示を構成済み。
 - hG と homotopy Tot の段ごとの Kan 構成・BF 置換・比較射、自明作用の標準射の全整数次数 π の単射性、有理化後の有限群の自明作用では全単射性と標準射による群同型まで証明済み。
-- Sp-4：終頂点から通常 Tot → BK end の比較射・射影公式・自然性・基点保存・点つき end への移送を構成済み。通常 Tot と AsSmall 上の標準単体 end の厳密な同型を作り、比較が重みへの前合成そのものであることを証明済み。相対 tensor の Reedy 充填から end の境界充填・π 同型への転置も完了。BK 重みの各単体次数を representable の余積として自然に表示し、全 latching 射の単射性・Reedy cofibrancy を証明済み。比較射自体の π 同型性は未完。
-- Sp-4 の重みの比較：置換後の二重みの end 比較は全係数で実際のホモトピー同値。Reedy 条件から end の Kan 性も horn 充填で構成し、全基点 π 同型性まで完了。重みの射の右 tensor と相対 latching の交換同型・Reedy anodyne 性の保存も証明済み。相対 corner の交換用の立方体を組み立て、二通りの反復 pushout の比較射を保つ arrow 同型まで構成済み。立方体表示と実際の corner の相対 latching の接続、置換前への移送は未完。
+- Sp-4：終頂点から通常 Tot → BK end の比較射・自然性・基点保存を構成済み。標準単体 end との厳密同型を通じ、係数の Reedy 条件だけから実際の通常 Tot 比較が全基点 π 同型であることを証明済み。点つき BK end と BF の各段で使う enriched end への既存の比較射も全基点 π 同型。Kan 性も Reedy 充填から供給する。Ω 列の構造射との可換性と BF 置換した列への比較は残る。
+- Sp-4 の重みの比較：置換後の end 比較は実際のホモトピー同値。相対 corner の実際の latching 射を立方体で計算し、重みの相対 latching とパラメーターの pushout-product に arrow 同型で同定済み。Reedy anodyne な重みと単射パラメーターから corner の Reedy anodyne 性を証明し、重みの制限の全単射 RLP を構成済み。置換単位の制限の切断により、end の非空性を仮定せず置換前の全基点 π 同型へ移送済み。
 - 有理化各段の高次群係数で BG の通常の正規化 cochain の正次数 cohomology が消滅することを証明済み。
 - 球面的境界の交代関係と充填判定、骨格の一段の厳密な延長と通常の cocycle 条件の同値、任意の cochain・cocycle の骨格の射による実現まで完了。
 - 関数複体の π₀ の座標表示を Kan 充填で構成し、骨格 fiber の係数へ合成済み。相対商の fiber 頂点とセル単体から復元する頂点も厳密に一致する。
@@ -25,14 +25,14 @@
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 4168 jobs、専用監査 694 モジュール・6596 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：15039 jobs、終了コード 0。以前の共有 F1/F1B の import 衝突は今回再現しない。
+- 検証：対象ビルド 4177 jobs、専用監査 703 モジュール・6678 宣言、標準三公理のみ。ともに終了コード 0。
+- 全体ビルド：15098 jobs、終了コード 0。共有レーンの既存警告は残るがビルド失敗なし。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
 - 塔の完備性、必要な逐次充填・lim¹ の制御を含む収束を証明し、cohomology の消滅を写像空間の π の消滅へ移す。正次数の比較の全射性、lim¹ 消滅からの単射性、Mittag–Leffler 条件での非可換 lim¹ 消滅と比較同型は証明済み。有理 BG の実際の骨格の塔では高次群の像の安定化と lim¹ 消滅まで証明済み。通常の写像空間の高次群との比較と段一での検出も証明済み。有理有限群の自明作用では初段の検出と全整数次数への移送も完了。核と lim¹ の全単射、一般の通常 Tot への比較・収束は残る。
   原典：Goerss–Jardine VIII §§1–2。24–80 時間。E₂ の消滅だけで収束を仮定しない。
-- 通常の余単体 Tot と一般の BF 置換した homotopy Tot の比較を完了する。
+- 通常の余単体 Tot と一般の BF 置換した homotopy Tot の比較を完了する。Reedy 条件の下で通常 Tot → BK end の各段の全基点 π 同型は完了。Ω 列の構造との可換性と BF 比較への束ね上げが残る。
   原典：Goerss–Jardine VII §4、VIII §1、HTT A.3.3。12–32 時間。
 - γ3 後の導来写像空間を持つ正しい Sp との比較、Sp の ∞ 極限と安定性、局所化不変量の値域としての界面を完成させる。
   これらは後続範囲であり、現段階の主張に含めない。
@@ -72,7 +72,7 @@
 - `PointedTotalization.weightedEndComparison`
 - `BousfieldKanWeightLatching.reedyCofibrant`
 - `CosimplicialTotalization.smallEndIso`
-- `CosimplicialLastVertex.kanWeightPre_piIsomorphism`
+- `PointedTotalization.weightedEndComparison_piIsomorphism`
 
 ### 依存と提供
 - 読取専用：Mathlib の PtSimplex・RelStruct・MulStruct、pushout-product、骨格の相対セル分解、正規化鎖、群 cochain。
@@ -96,7 +96,7 @@
 - Sp-3 は cohomology 消滅だけで仮定せず、実際の障害補正・lim¹ 消滅・写像空間の検出・BF 比較を通して証明済み。一般の Tot の収束・∞ 極限性は未完。
 
 ### 次の一手
-- Sp-4：置換後の end の π 同型は `ReplacedWeightEndComparison` まで既証。相対交換の立方体は `PushoutCubePresentations`・`PushoutCubeInterchange`、実際の重み θ とパラメーター i への適用は `RelativeWeightCornerCube.arrowIso`、重みの右 tensor の相対 latching の交換は `RelativeWeightTensorLatching` まで既証。次は latching 関手と評価の pushout 保存・`WeightTensorLatching.iso` で `latchingFirst` を corner の実際の相対 latching 射へ同定する。`productFirst` は tensor の pushout 保存と左右の交換で θ の相対 latching と i の pushout-product へ同定する。そこから Reedy anodyne 性と `ReedyWeightedRestriction` の充填を使って置換前へ戻し、`smallEndIso` を通じて `weightedEndComparison` の π 同型性を示す。立方体の arrow 同型だけで実際の相対 latching との接続を済んだ扱いにしない。Sp-3 は再構成しない。
+- Sp-4：`TotalizationComparisonPi` と `PointedTotalizationComparisonPi` で、Reedy 条件から通常 Tot の実際の比較射の全基点 π 同型まで既証。次は標準単体の点つき enriched end を通常 Tot と基点を保って厳密に同定し、`PointedWeightedEnd.preMap` と `cotensorIso` の可換性から比較を Ω 列の射へ束ねる。Ω 条件は既存の BK end と全基点 π 同型・loop の保存から証明する。その後 BF 単射置換の比較を合成する。各段の π 同型だけで列の比較を済んだ扱いにしない。Sp-3 は再構成しない。
 - Sp-2 の一般の Tot 塔の収束・π 消滅も残る。H¹・最初の fiber・零骨格の一点同型・頂点評価の検出、有限群の有理化各段と BF 置換後の高次群の全射性、全整数次数への移送は完了済み。
 - 核と lim¹ の全単射も残る。`kernelObstruction` の単位元の逆像が単位元だけとは証明済みだが、それだけで写像全体の単射性・全射性を主張しない。任意の差の類の実現と厳密な相対持ち上げは `NullDifferenceRealization`・`NullHomotopyStrictLifting` を使う。
 - Sp-2 全体、Sp-4 の通常 Tot 比較、Sp-5 の ∞ 圏 Sp は未完。Sp-3 は実際の標準射の全整数次数 π 同型として完了。一般の Tot の収束や ∞ 極限性をここから仮定しない。

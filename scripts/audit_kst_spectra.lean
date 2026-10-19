@@ -719,7 +719,16 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SquareTriangleCover,
     `SerrePositivity.KST.Spectra.SquareTriangleIntersection,
     `SerrePositivity.KST.Spectra.SquareTrianglePushout,
-    `SerrePositivity.KST.Spectra.SquareTriangleOuterFaces]
+    `SerrePositivity.KST.Spectra.SquareTriangleOuterFaces,
+    `SerrePositivity.KST.Spectra.WeightCornerPushout,
+    `SerrePositivity.KST.Spectra.WeightCornerComparison,
+    `SerrePositivity.KST.Spectra.WeightCornerLatchingCube,
+    `SerrePositivity.KST.Spectra.RelativeCornerProductSource,
+    `SerrePositivity.KST.Spectra.RelativeCornerProductCube,
+    `SerrePositivity.KST.Spectra.ReedyWeightRestrictionLifting,
+    `SerrePositivity.KST.Spectra.OriginalWeightEndComparison,
+    `SerrePositivity.KST.Spectra.TotalizationComparisonPi,
+    `SerrePositivity.KST.Spectra.PointedTotalizationComparisonPi]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
