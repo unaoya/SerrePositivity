@@ -322,6 +322,17 @@ public import SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom
 public import SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling
 public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
 public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
+public import SerrePositivity.InfinityCategories.Stable.ReindexSliceOver
+public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder
+public import SerrePositivity.InfinityCategories.Stable.UniverseStandardJoins
+public import SerrePositivity.InfinityCategories.Stable.UniverseSquareShape
+public import SerrePositivity.InfinityCategories.Stable.UniverseOuterHornJoins
+public import SerrePositivity.InfinityCategories.Stable.UniverseSquareTriangles
+public import SerrePositivity.InfinityCategories.Stable.UniverseSquareCompatibility
+public import SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent
 
 /-! # 安定 ∞ 圏の基盤
 

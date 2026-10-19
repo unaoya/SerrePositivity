@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
 import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability
 import SerrePositivity.InfinityCategories.Derived.DGModulePropertyStability
@@ -1704,6 +1705,18 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.UniverseHorns,
+    `SerrePositivity.InfinityCategories.Stable.ReindexSliceOver,
+    `SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder,
+    `SerrePositivity.InfinityCategories.Stable.UniverseStandardJoins,
+    `SerrePositivity.InfinityCategories.Stable.UniverseSquareShape,
+    `SerrePositivity.InfinityCategories.Stable.UniverseOuterHornJoins,
+    `SerrePositivity.InfinityCategories.Stable.UniverseSquareTriangles,
+    `SerrePositivity.InfinityCategories.Stable.UniverseSquareCompatibility,
+    `SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares,
+    `SerrePositivity.InfinityCategories.Stable.UniverseSquareHom,
+    `SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability,
     `SerrePositivity.InfinityCategories.Stable.UniverseBoundary,
     `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom,
     `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling,

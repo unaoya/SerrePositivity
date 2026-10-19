@@ -431,6 +431,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGRepleteYoneda
 public import SerrePositivity.InfinityCategories.Derived.DGVertexIsoOfH0
 public import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability
+public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
 
 /-! # Semifree 複体による導来圏の dg 表示
 
