@@ -33,11 +33,9 @@ def coherentStraighteningRestrictedCounitWitnessIso {B D : SSet.{u + 1}}
     (leftUnstraighteningProjection_hasSmallSimplexFibers G) R S
   have e := R.cartesianRestrictVertexIso S a (leftUnstraighteningMap F G g h) g
     (leftUnstraighteningMap_isPullback F G g h)
-  change VertexIso (transportWitnessVertex (coherentStraighteningRestrictedRepresentation F G g h))
-    (transportWitnessVertex ((unstraighteningTransportRepresentation G).cartesianRestrict
-      (leftUnstraighteningMap F G g h) g (leftUnstraighteningMap_isPullback F G g h))) at e
-  rw [unstraighteningTransportRepresentation_cartesianRestrict F G g h] at e
-  exact e
+  exact e ≪≫ eqToIso (congrArg
+    (fun T ↦ SSet.HomotopyCategory.mk (transportWitnessVertex T))
+    (unstraighteningTransportRepresentation_cartesianRestrict F G g h))
 
 /-- 概要：制限比較に続けて元の余単位を制限した経路は制限後の余単位と一致する。
 方針：同じ表現空間内で終点の終対象性による同型の一意性を使う。

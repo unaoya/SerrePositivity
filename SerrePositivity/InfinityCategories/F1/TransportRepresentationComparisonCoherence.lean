@@ -89,4 +89,17 @@ lemma LeftTransportRepresentation.pointedIso_trans {E B : SSet.{u + 1}}
   apply Iso.ext
   simp [LeftTransportRepresentation.pointedIso, VertexIso.map]
 
+/-- 概要：表現の等式による頂点同型は図式の等式による同型へ写る。
+方針：表現の等式を消去し恒等同型の像を計算する。
+規約：等式の移送を選択した比較に置き換えない。
+使われ方：標準表現の制限を回収した後の端点の同定。 -/
+lemma LeftTransportRepresentation.diagramIso_eqToIso {E B : SSet.{u + 1}}
+    {p : E ⟶ B} [LeftFibration p] (R S : LeftTransportRepresentation p) (h : R = S) :
+    R.diagramIso S
+      (eqToIso (congrArg (fun T ↦ SSet.HomotopyCategory.mk (transportWitnessVertex T)) h)) =
+      eqToIso (congrArg (fun T ↦ SSet.HomotopyCategory.mk (functorVertex T.diagram)) h) := by
+  subst S
+  apply Iso.ext
+  simp [LeftTransportRepresentation.diagramIso, VertexIso.map]
+
 end SerrePositivity.InfinityCategories
