@@ -564,3 +564,10 @@ public import SerrePositivity.KST.Spectra.WeightedConeTriangleTrace
 public import SerrePositivity.KST.Spectra.WeightedConeTriangleEdgewise
 public import SerrePositivity.KST.Spectra.WeightedEdgewiseSectionTriangle
 public import SerrePositivity.KST.Spectra.ReflectedIntervalEndpoints
+public import SerrePositivity.KST.Spectra.OrdinalSimplexEdges
+public import SerrePositivity.KST.Spectra.EdgewiseTetrahedronCoordinates
+public import SerrePositivity.KST.Spectra.FramedTetrahedronRelation
+public import SerrePositivity.KST.Spectra.FramedTetrahedronDifference
+public import SerrePositivity.KST.Spectra.CospanPrefixCoordinates
+public import SerrePositivity.KST.Spectra.EdgewisePrefixFaces
+public import SerrePositivity.KST.Spectra.LoopEdgewiseSectionFaces
