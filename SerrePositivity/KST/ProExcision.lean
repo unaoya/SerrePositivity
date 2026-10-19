@@ -469,3 +469,15 @@ public import SerrePositivity.KST.ProExcision.RowAffineSection
 public import SerrePositivity.KST.ProExcision.RelativeModuleIso
 
 public import SerrePositivity.KST.ProExcision.ColumnRowRelativeIso
+
+public import SerrePositivity.KST.ProExcision.IdealLeftMultiplication
+
+public import SerrePositivity.KST.ProExcision.NonUnitalVertexReverse
+
+public import SerrePositivity.KST.ProExcision.SimplicialRowLeftMultiplication
+
+public import SerrePositivity.KST.ProExcision.OppositeVectorMultiplication
+
+public import SerrePositivity.KST.ProExcision.ColumnRowMultiplicationSquare
+
+public import SerrePositivity.KST.ProExcision.RowRelativeLeftMultiplication

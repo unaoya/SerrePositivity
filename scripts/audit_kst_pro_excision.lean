@@ -4377,3 +4377,63 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeRelativeAffineIso
 #print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeRelativeAffineIso
+
+#check @SerrePositivity.KST.ProExcision.idealLeftMultiplication
+#print axioms SerrePositivity.KST.ProExcision.idealLeftMultiplication
+
+#check @SerrePositivity.KST.ProExcision.idealVectorLeftHom
+#print axioms SerrePositivity.KST.ProExcision.idealVectorLeftHom
+
+#check @SerrePositivity.KST.ProExcision.idealVectorLeftHom_equivariant
+#print axioms SerrePositivity.KST.ProExcision.idealVectorLeftHom_equivariant
+
+#check @SerrePositivity.KST.ProExcision.idealVectorLeftHom_functorial
+#print axioms SerrePositivity.KST.ProExcision.idealVectorLeftHom_functorial
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.vertexValue
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.vertexValue
+
+#check @SerrePositivity.KST.ProExcision.simplexVertexMap_rev
+#print axioms SerrePositivity.KST.ProExcision.simplexVertexMap_rev
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOpposite_vertexValue
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOpposite_vertexValue
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.standardVertexElement_coe
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.standardVertexElement_coe
+
+#check @SerrePositivity.KST.ProExcision.isCentralElement_op
+#print axioms SerrePositivity.KST.ProExcision.isCentralElement_op
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.rowLeftMap
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.rowLeftMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.rowLeftActionHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.rowLeftActionHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.rowAffineLeftMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.rowAffineLeftMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.rowAffineLeftMap_section
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.rowAffineLeftMap_section
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationIdealOpVector_right_left
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationIdealOpVector_right_left
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeStandardVertex
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeStandardVertex
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeAffineIso_multiplication
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeAffineIso_multiplication
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeAffineBarIso_multiplication
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeAffineBarIso_multiplication
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeAffineHomologyIso_multiplication
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeAffineHomologyIso_multiplication
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeRowAffineLeftMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeRowAffineLeftMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeRelativeAffineIso_multiplication
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOppositeRelativeAffineIso_multiplication

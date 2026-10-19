@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1510宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1530宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1150,3 +1150,15 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `relativeModuleIso` は実可換な加群同型の正方形を実通常商へ降ろす。`reverseOppositeRelativeAffineIso` は反対係数の列側と元の行側の実相対 bar 同型。反転不変性・相対同型を仮定に隠さない。
 - 行側右・左乗法の零化への自然性、安定 H_* と有限 rank 余極限の比較、実置換共役と整数作用への移送が残る。L6d 全体の完了はまだ主張しない。
 - 対象ビルド・1510宣言の公理監査は標準三公理のみで成功。
+
+
+### L6d の列の右乗法と行の左乗法の実比較（2026-10-19）
+
+- `idealLeftMultiplication`・`idealVectorLeftHom` は実左乗法。右行列作用との実同変性と指定元を保つ係数射への自然性を証明した。
+- `vertexValue` と `standardVertexElement_coe` は非単位環の指定元の全次数への像と標準単位化との整合。`simplexVertexMap_rev`・`reverseOpposite_vertexValue` により、係数反転でも同じ指定元の像となる。
+- `isCentralElement_op` は非可換環の中心性の反対環への保存。行側の実写像の比較自体にはまだ中心性を課していない。
+- `rowLeftMap`・`rowLeftActionHom`・`rowAffineLeftMap` は基底を固定し行の左乗法を施す実単体的写像。標準包含を固定する。
+- `integerUnitizationIdealOpVector_right_left` と `reverseOppositeStandardVertex` は実反対比較が列の右乗法を行の左乗法に移すことと、全次数の係数の一致を証明する。
+- `reverseOppositeAffineIso_multiplication` と bar・H_* の対応する正方形は全て実可換。`relativeRowAffineLeftMap` は実写像から誘導し、零を定義に含めない。
+- `reverseOppositeRelativeAffineIso_multiplication` は実相対同型と二つの実乗法写像の可換性。通常のブロック安定化との比較・行側安定零化、安定 H_* の模型比較、整数作用への移送を続ける。
+- 対象ビルド・1530宣言の公理監査は標準三公理のみで成功。L6d 全体の完了はまだ主張しない。
