@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGFourLastHornFiniteFillers
 import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementAvoidingFaces
 import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementComponents
 import SerrePositivity.InfinityCategories.Derived.DGVerdierTriangleCommonSource
@@ -2097,10 +2098,44 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_rhs_from_zero
 #print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_rhs_ne_zero
 
+#print axioms SerrePositivity.InfinityCategories.dgSourceRefinementHomLinear_reindex
+#print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_pullback_fixed_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_pullback_fixed_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_face_positive
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_congr
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornCanonicalFaces_overlap
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSourceRefinement
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSourceRefinement_compatible
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSourceRefinement_preserves_face0
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSourceRefinement_knownData
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSourceRefinement_missingResidual
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSourceRefinement_topResidual
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornSourceRefinement_lastEdge
+#print axioms SerrePositivity.InfinityCategories.DGFourLastHornResidualRefinement.refinedQ_differential
+#print axioms SerrePositivity.InfinityCategories.DGFourLastHornResidualRefinement.refinedA_differential
+#print axioms SerrePositivity.InfinityCategories.DGFourLastHornResidualRefinement.solution
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHorn_exists_sourceRefinement_filler
+#print axioms SerrePositivity.InfinityCategories.DGFourLastHornFiniteRefinement.filler_fac
+#print axioms SerrePositivity.InfinityCategories.DGFourLastHornFiniteRefinement.filler_face0
+#print axioms SerrePositivity.InfinityCategories.dgFourLastHornFinite_exists_sourceRefinement_fillers
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTriangles_exists_refinedFillers
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSourceRefinementReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementFixedSourceFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementPositiveFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementCongruence,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornFaceOverlaps,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornSourceRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedVertices,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedData,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedResiduals,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinementFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGFourLastHornFiniteFillers,
     `SerrePositivity.InfinityCategories.Derived.DGSourceRefinementLinear,
     `SerrePositivity.InfinityCategories.Derived.DGSourceRefinementComposition,
     `SerrePositivity.InfinityCategories.Derived.DGSimplexDataInitialRefinement,

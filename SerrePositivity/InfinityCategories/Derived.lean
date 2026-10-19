@@ -853,6 +853,19 @@ public import SerrePositivity.InfinityCategories.Derived.DGSimplexInitialRefinem
 public import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementAvoidingFaces
 public import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementComponents
 
+public import SerrePositivity.InfinityCategories.Derived.DGSourceRefinementReindex
+public import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementFixedSourceFaces
+public import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementPositiveFaces
+public import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementCongruence
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornFaceOverlaps
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedFaces
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornSourceRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedVertices
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedData
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinedResiduals
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornRefinementFiller
+public import SerrePositivity.InfinityCategories.Derived.DGFourLastHornFiniteFillers
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
