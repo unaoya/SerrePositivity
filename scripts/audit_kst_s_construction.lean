@@ -6416,3 +6416,21 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.internalHomSwap_pre_left
 #print axioms SerrePositivity.KST.SConstruction.internalHomSwap_pre_left
+
+#check @SerrePositivity.KST.SConstruction.diagonalSCyclicInterchangeNatIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalSCyclicInterchangeNatIso
+
+#check @SerrePositivity.KST.SConstruction.diagonalSCyclicCoreIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalSCyclicCoreIso
+
+#check @SerrePositivity.KST.SConstruction.diagonalOuterSCoreDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalOuterSCoreDiagramIso
+
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationCyclicIso
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationCyclicIso
+
+#check @SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso_index
+#print axioms SerrePositivity.KST.SConstruction.diagonalFixedSInterchangeNatIso_index
+
+#check @SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso_assembly
+#print axioms SerrePositivity.KST.SConstruction.sOneInnerOuterRealizationIso_assembly

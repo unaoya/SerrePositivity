@@ -402,4 +402,8 @@ public import SerrePositivity.KST.SConstruction.SInterchangeTranspose
 public import SerrePositivity.KST.SConstruction.SOneSlideComparison
 public import SerrePositivity.KST.SConstruction.SwapNaturality
 
+public import SerrePositivity.KST.SConstruction.DiagonalSCyclicInterchange
+public import SerrePositivity.KST.SConstruction.DiagonalSInterchangeIndex
+public import SerrePositivity.KST.SConstruction.SOneSlideAssembly
+
 /-! # ∞-S• 構成と連結 K 理論 -/
