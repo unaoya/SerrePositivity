@@ -5116,3 +5116,135 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @partialColimitCoconeToHomEnd_homotopyEquivalence
 #print axioms partialColimitCoconeToHomEnd_homotopyEquivalence
+
+#check @cosliceEdgeSection_projection
+#print axioms cosliceEdgeSection_projection
+
+#check @cosliceEdgeSectionFiber
+#print axioms cosliceEdgeSectionFiber
+
+#check @cosliceEdgeSectionFiber_ι
+#print axioms cosliceEdgeSectionFiber_ι
+
+#check @cosliceEdgeSectionFiber_target
+#print axioms cosliceEdgeSectionFiber_target
+
+#check @cosliceEdgeSectionFiber_homotopyEquivalence
+#print axioms cosliceEdgeSectionFiber_homotopyEquivalence
+
+#check @cosliceEdgeSectionFiber_source
+#print axioms cosliceEdgeSectionFiber_source
+
+#check @cosliceEdgeRestriction_precomposition_homotopy
+#print axioms cosliceEdgeRestriction_precomposition_homotopy
+
+#check @spanPointHomWalkingCospan
+#print axioms spanPointHomWalkingCospan
+
+#check @spanPointHomCospan
+#print axioms spanPointHomCospan
+
+#check @spanEdgeCoconeWalkingCospan
+#print axioms spanEdgeCoconeWalkingCospan
+
+#check @spanEdgeCoconeCospan
+#print axioms spanEdgeCoconeCospan
+
+#check @spanPointHomToEdgeCocones
+#print axioms spanPointHomToEdgeCocones
+
+#check @spanPointHomToEdgeCocones_app_homotopyEquivalence
+#print axioms spanPointHomToEdgeCocones_app_homotopyEquivalence
+
+#check @spanPointHomCospan_obj_kanComplex
+#print axioms spanPointHomCospan_obj_kanComplex
+
+#check @spanEdgeCoconeCospan_obj_kanComplex
+#print axioms spanEdgeCoconeCospan_obj_kanComplex
+
+#check @spanPointHomToEdgeEnd
+#print axioms spanPointHomToEdgeEnd
+
+#check @spanPointHomToEdgeEnd_homotopyEquivalence
+#print axioms spanPointHomToEdgeEnd_homotopyEquivalence
+
+#check @spanCoconeToEdgeEnd
+#print axioms spanCoconeToEdgeEnd
+
+#check @spanCoconeToEdgeEnd_homotopyEquivalence
+#print axioms spanCoconeToEdgeEnd_homotopyEquivalence
+
+#check @spanEdgeEndToPointHomEnd
+#print axioms spanEdgeEndToPointHomEnd
+
+#check @spanEdgeEndToPointHomEnd_homotopyEquivalence
+#print axioms spanEdgeEndToPointHomEnd_homotopyEquivalence
+
+#check @spanCoconeToPointHomEnd
+#print axioms spanCoconeToPointHomEnd
+
+#check @spanCoconeToPointHomEnd_homotopyEquivalence
+#print axioms spanCoconeToPointHomEnd_homotopyEquivalence
+
+#check @spanVertexIndex
+#print axioms spanVertexIndex
+
+#check @spanIndexVertex
+#print axioms spanIndexVertex
+
+#check @spanVertexIndex_indexVertex
+#print axioms spanVertexIndex_indexVertex
+
+#check @spanIndexVertex_vertexIndex
+#print axioms spanIndexVertex_vertexIndex
+
+#check @spanVertexIndex_hom_condition
+#print axioms spanVertexIndex_hom_condition
+
+#check @spanIndexVertex_nonempty_hom
+#print axioms spanIndexVertex_nonempty_hom
+
+#check @hornSpanSimplex_not_both
+#print axioms hornSpanSimplex_not_both
+
+#check @hornSpanSimplexChain
+#print axioms hornSpanSimplexChain
+
+#check @hornToSpanNerve
+#print axioms hornToSpanNerve
+
+#check @spanNerveSimplex_not_both
+#print axioms spanNerveSimplex_not_both
+
+#check @spanNerveHornSimplex
+#print axioms spanNerveHornSimplex
+
+#check @spanNerveToHorn
+#print axioms spanNerveToHorn
+
+#check @spanNerveHornIso
+#print axioms spanNerveHornIso
+
+#check @hornToSpanNerve_left_edge
+#print axioms hornToSpanNerve_left_edge
+
+#check @hornToSpanNerve_right_edge
+#print axioms hornToSpanNerve_right_edge
+
+#check @vertexFiberMap_isIso
+#print axioms vertexFiberMap_isIso
+
+#check @strictSpanHornIso
+#print axioms strictSpanHornIso
+
+#check @cosliceRestrictionFiberMap_isIso
+#print axioms cosliceRestrictionFiberMap_isIso
+
+#check @strictSpanHornDiagram
+#print axioms strictSpanHornDiagram
+
+#check @strictSpanCoconeToPointHomEnd
+#print axioms strictSpanCoconeToPointHomEnd
+
+#check @strictSpanCoconeToPointHomEnd_homotopyEquivalence
+#print axioms strictSpanCoconeToPointHomEnd_homotopyEquivalence

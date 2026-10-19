@@ -34,7 +34,8 @@
   固定終点の左 pinched Hom の前合成を構成し、部分余錐の制限の Hom 比較の正方形を単体的ホモトピーで結ぶ。
   底に使う辺は既存の付加比較辺そのもの。二枝のホモトピーを path 置換への厳密な自然変換へ束ねた。
   元の余錐空間から部分余極限頂点の Hom の Bousfield–Kan end への実際の比較射とホモトピー同値性を証明。
-  native な span の余錐空間との比較と、貼った余錐の普遍性は未完了。
+  通常の span の nerve とホーンの全次数の同型・二辺の一致を構成。固定終点余錐空間を点 Hom の end と比較し、ホモトピー同値性を証明。
+  左 pinched Hom の end との照合と、貼った余錐の普遍性は未完了。
   γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
   詳細な実施記録はコミットメッセージを参照。
 - **残り**（依存順・時間は再開後の概算）：
@@ -77,11 +78,12 @@
   `cosliceShapePushoutIso`、`coconeMappingShapePushoutIso`、`coconeMappingShapeCone_isLimit`、
   `initialRestrictionHomComparison_square`、`colimitAttachmentHomPrecomposition`、
   `coconeMappingSpaceHomComparison_restrict_square`、
-  `partialColimitCoconeToHomEnd`、`partialColimitCoconeToHomEnd_homotopyEquivalence`。
+  `partialColimitCoconeToHomEnd`、`partialColimitCoconeToHomEnd_homotopyEquivalence`、
+  `spanNerveHornIso`、`strictSpanCoconeToPointHomEnd_homotopyEquivalence`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は HomotopyCospanPathDiagram・HomotopyCospanEndComparison・HomotopyCospanConeComparison・PartialColimitHomEnd、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
+- **未コミット**：今回の保存単位は span の点 Hom end 比較7モジュール、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。共有計画は N 節だけをステージする。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -90,11 +92,9 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：native な span の固定終点余錐空間を、二つの辺の coslice の引き戻しで表す。
-  `horn₂₀.isPushout` と `coconeMappingShapeCospanCone` を利用し、通常の span の nerve との表示も照合する。
-  各辺の終点への制限は `cosliceTriangleTarget_trivialKanFibration`、その切断と始点への制限の合成が Hom の前合成。
-  二つの切断の比較を自明 fibration 上のホモトピーとして構成し、native な span の余錐空間を同じ Hom の end と比較する。
-  元の図式側は `partialColimitCoconeToHomEnd_homotopyEquivalence` で比較済み。
+- **次の一手**：`strictSpanCoconeToPointHomEnd` の点 Hom と `partialColimitHomCospan` の左 pinched Hom を照合する。
+  `strictSpanHornIso.inv` の二辺を持ち上げた nerve の実際の構造射と同定し、部分余極限 span の付加比較辺へ接続する。
+  `cosliceEdgeFiberPrecomposition` と左 Hom の前合成の比較を、点 coslice の fiber 同型を通して全パラメータで示す。
   共通の end で普遍点と `exists_cocone_vertex_partialColimitPushout` の余錐を照合し、余極限性を証明する。
   その後、骨格の無限段階、小さい `K` と `p : ulift K → SpaceInfinity` のセルの添字を u に戻す処理。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
