@@ -503,6 +503,10 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | cartesian perfect 条件の iff・`diagramCoefficientCartesianPerfectEquivalence` | DiagramCoefficientCartesianPerfect | 全導来表示同値を canonical な二条件で制限 |
 | `exceptionalDiagramDerivedRestriction_cartesianPerfect_iff`・`exceptionalDiagramCartesianPerfectEquivalence` | ExceptionalDiagramCartesianPerfect | 実際の例外因子と共通 Koszul 表示の cartesian perfect 導来部分圏の指定同値 |
 
+| 元の例外因子の局所頂点・`finiteOverlapExceptionalVertexDGFunctor` | FiniteOverlapExceptionalVertex | 元の基底制限 Koszul 模型を全図式係数圏へ埋め込む指定 dg 関手 |
+| 正規表示・元の模型への指定準同値・局所埋め込みの可換式 | FiniteOverlapExceptionalAlgebraVertexComparison | 同じ自己 Hom の正規表示と元の例外因子 Koszul 模型の接続 |
+| `finiteOverlapExceptionalDerivedModuleEvaluation`・指定評価比較・`finiteOverlapExceptionalAlgebraPerfect_iff` | FiniteOverlapExceptionalAlgebraPerfectComparison | 元の例外因子局所模型への実際の導来評価と正規表示での perfect 判定の iff |
+
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
 モノイダル圏での左右単位則・結合則を証明済みで、一対象 dg 圏を構成済み。
@@ -712,7 +716,14 @@ graph 導来延長–制限同値を適用し、全図式加群の導来表示�
 原典は KST v4 §3.1・Lemma 3.6（pp.11–14）。これは指定比較射を保持した
 係数 dg 図式模型による再構成であり、層の降下や dg 商の普遍性を結論しない。
 次の実装単位は coherent な降下・層の閉埋め込み／射影との比較、および
-例外因子の正規表示と元の有限列 Koszul 模型の指定比較。
+例外因子の正規表示と元の有限列 Koszul 模型の canonical な遷移比較の整合性。
+元の例外因子の基底制限 Koszul 頂点から全図式係数圏への指定 dg 埋め込みと、
+同じ自己 Hom の正規表示から元の頂点への Hom 恒等 dg 準同値は構成済み。
+二つの局所埋め込みの可換式を標準導来制限合成同型へ送り、
+元の模型への実際の導来評価と正規表示の評価の指定比較を構成済み。
+この局所準同値の opposite に沿う Morita 判定により、各有限重なりで
+元の例外因子模型の perfect 性と正規表示の perfect 性の iff を証明済み。
+原典は KST v4 §3.1・Lemma 3.6（pp.11–14）、同じ dg 代数の表示変更による再構成。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
