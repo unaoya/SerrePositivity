@@ -94,4 +94,25 @@ def endpointPairTransformationIso {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.
   hom_inv_id := endpointPairDiagramTransformationMap_comp F G
   inv_hom_id := transformationEndpointPairDiagramMap_comp F G
 
+/-- 概要：実際の prism の変換頂点を固定境界図式へ戻すと元の図式の頂点。
+方針：順方向の頂点公式と厳密な往復を使う。
+規約：元の図式と境界条件を厳密に回収する。
+使われ方：積の底上の変換をパラメーター族へ戻す。 -/
+lemma transformationEndpointPairDiagramMap_vertex {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G)
+    (hH : prismEndpointPair B ≫ H = joinEndpointDesc F G) :
+    (transformationEndpointPairDiagramMap F G).app _
+      (intervalMappingVertexOfEdge (functorEdgeFromPrism H h₀ h₁)) =
+      fixedDiagramVertex (prismEndpointPair B) (joinEndpointDesc F G) H hH := by
+  let x := fixedDiagramVertex (prismEndpointPair B) (joinEndpointDesc F G) H hH
+  have he := endpointPairDiagramTransformationMap_vertex F G H h₀ h₁ hH
+  have h := congrArg (fun y ↦ (transformationEndpointPairDiagramMap F G).app
+    (Opposite.op ⦋0⦌) y) he
+  have hr : (transformationEndpointPairDiagramMap F G).app _
+      ((endpointPairDiagramTransformationMap F G).app _ x) = x :=
+    congrArg (fun f ↦ f.app (Opposite.op ⦋0⦌) x) (endpointPairDiagramTransformationMap_comp F G)
+  exact h.symm.trans hr
+
 end SerrePositivity.InfinityCategories

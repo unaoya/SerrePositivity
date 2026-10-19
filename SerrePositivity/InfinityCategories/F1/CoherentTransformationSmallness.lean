@@ -31,18 +31,16 @@ lemma functorParameterizedPrism_injective {K B L X : SSet.{u}} :
 方針：区間の両端が全頂点を覆う prism の写像の型へ単射で入れる。
 規約：変換は両端固定の区間模型を使い、全次数で小ささを述べる。
 使われ方：Kerodon Corollary 5.6.0.6、小さい Kan 複体としての変換空間の縮小。 -/
-instance leftUnstraighteningTransformationSpace_obj_small {B : SSet.{u}}
-    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (n : SimplexCategoryᵒᵖ) :
+instance leftUnstraighteningTransformationSpace_obj_small_of_small_base {B : SSet.{u + 1}}
+    [∀ n, Small.{u} (B.obj n)] (F G : B ⟶ SpaceInfinity.{u}) (n : SimplexCategoryᵒᵖ) :
     Small.{u} ((leftUnstraighteningTransformationSpace F G).obj n) := by
-  let D := (SSet.uliftFunctor.{u + 1, u}).obj B
   let L : SSet.{u + 1} := stdSimplex.obj n.unop
-  let X := ((Δ[1] : SSet.{u + 1}) ⊗ D) ⊗ L
+  let X := ((Δ[1] : SSet.{u + 1}) ⊗ B) ⊗ L
   have (d : SimplexCategoryᵒᵖ) : Small.{u} (X.obj d) := by
-    change Small.{u} (((Δ[1] : SSet.{u + 1}).obj d × D.obj d) × L.obj d)
-    have : Small.{u} (D.obj d) := inferInstanceAs (Small.{u} (ULift.{u + 1} (B.obj d)))
+    change Small.{u} (((Δ[1] : SSet.{u + 1}).obj d × B.obj d) × L.obj d)
     infer_instance
-  let j := simplexPrismVertex 1 0 D ▷ L
-  let k := simplexPrismVertex 1 1 D ▷ L
+  let j := simplexPrismVertex 1 0 B ▷ L
+  let k := simplexPrismVertex 1 1 B ▷ L
   have hcover : ∀ x : X _⦋0⦌,
       (∃ y, j.app (Opposite.op ⦋0⦌) y = x) ∨
         (∃ z, k.app (Opposite.op ⦋0⦌) z = x) := by
@@ -52,9 +50,9 @@ instance leftUnstraighteningTransformationSpace_obj_small {B : SSet.{u}}
     · exact Or.inl ⟨(b, s), rfl⟩
     · exact Or.inr ⟨(b, s), rfl⟩
   let T := {H : X ⟶ SpaceInfinity.{u} //
-    j ≫ H = fst D L ≫ F ∧ k ≫ H = fst D L ≫ G}
+    j ≫ H = fst B L ≫ F ∧ k ≫ H = fst B L ≫ G}
   have : Small.{u} T := coherentMap_fixedRestrictions_small j k
-    (fst D L ≫ F) (fst D L ≫ G) hcover
+    (fst B L ≫ F) (fst B L ≫ G) hcover
   let code : (leftUnstraighteningTransformationSpace F G).obj n → T := fun s ↦
     ⟨functorParameterizedPrism (intervalMappingUncurry (SSet.yonedaEquiv.symm s)),
       functorParameterizedPrism_vertex_of_const 1 _ 0 F
@@ -67,5 +65,16 @@ instance leftUnstraighteningTransformationSpace_obj_small {B : SSet.{u}}
   apply intervalMappingUncurry_injective (functorVertex F) (functorVertex G)
   apply functorParameterizedPrism_injective
   exact congrArg Subtype.val h
+
+/-- 概要：宇宙を持ち上げた小さい底の変換空間は各次数で小さい。
+方針：次数ごとの小ささを明示して一般化した小ささの定理を適用する。
+規約：従来の持ち上げた底の instance の界面を保つ。
+使われ方：小さい変換空間を元の宇宙へ縮小する。 -/
+instance leftUnstraighteningTransformationSpace_obj_small {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (n : SimplexCategoryᵒᵖ) :
+    Small.{u} ((leftUnstraighteningTransformationSpace F G).obj n) := by
+  have : ∀ m, Small.{u} (((SSet.uliftFunctor.{u + 1, u}).obj B).obj m) :=
+    fun m ↦ inferInstanceAs (Small.{u} (ULift.{u + 1} (B.obj m)))
+  exact leftUnstraighteningTransformationSpace_obj_small_of_small_base F G n
 
 end SerrePositivity.InfinityCategories
