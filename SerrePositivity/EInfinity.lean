@@ -171,3 +171,4 @@ public import SerrePositivity.EInfinity.Operad.AlgebraSmallObject
 public import SerrePositivity.EInfinity.Operad.IntervalModelCategory
 public import SerrePositivity.EInfinity.Surjection.DegreeZero
 public import SerrePositivity.EInfinity.Surjection.DeletionDifferential
+public import SerrePositivity.EInfinity.TableReduction.DegreeMap

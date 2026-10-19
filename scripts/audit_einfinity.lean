@@ -248,7 +248,16 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.deletionCoefficient_final,
       `SerrePositivity.EInfinity.Surjection.representation,
       `SerrePositivity.EInfinity.Surjection.differential_basis,
-      `SerrePositivity.EInfinity.Surjection.differential_renameLinear] do
+      `SerrePositivity.EInfinity.Surjection.differential_renameLinear,
+      `SerrePositivity.EInfinity.Surjection.listGenerator_ofFn,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_length,
+      `SerrePositivity.EInfinity.TableReduction.reduceRows_map,
+      `SerrePositivity.EInfinity.TableReduction.output_length,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_action,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_degree_zero,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_nullary_zero,
+      `SerrePositivity.EInfinity.TableReduction.onSequence_nullary_succ,
+      `SerrePositivity.EInfinity.TableReduction.degreeMap_basis] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -282,3 +291,21 @@ example : differentialOnWord ℤ (⟨bfWord, by decide⟩ : BasisWord 4 3) =
     Fin.sum_univ_zero, add_zero, one_zsmul, zero_zsmul, neg_one_zsmul, zero_add]
   erw [h0, h2, h3, h5, h6]
   simp only [sub_eq_add_neg, add_assoc]
+
+-- BF §1.3.1 の table の二項と他の行長の選択の退化を照合する。
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.TableReduction
+private def bfTable : Fin 3 → Equiv.Perm (Fin 4) :=
+  ![1, Equiv.swap 1 3, Equiv.swap 2 3]
+private def bfSchedule₁ : Schedule 4 2 := ⟨![2, 1, 3], by decide⟩
+private def bfSchedule₂ : Schedule 4 2 := ⟨![2, 2, 2], by decide⟩
+example : reduceRows (rows bfTable bfSchedule₁) [] = some [0, 1, 3, 1, 3, 2] := by decide
+example : reduceRows (rows bfTable bfSchedule₂) [] = some [0, 1, 3, 2, 1, 2] := by decide
+example : ∀ r : Schedule 4 2,
+    (match reduceRows (rows bfTable r) [] with
+    | none => true
+    | some xs => !((xs.zip xs.tail).all (fun p => p.1 != p.2)) ||
+        xs == [0, 1, 3, 1, 3, 2] || xs == [0, 1, 3, 2, 1, 2]) = true := by decide
+example : Fintype.card {r : Schedule 4 2 //
+    reduceRows (rows bfTable r) [] = some [0, 1, 3, 1, 3, 2]} = 1 := by decide
+example : Fintype.card {r : Schedule 4 2 //
+    reduceRows (rows bfTable r) [] = some [0, 1, 3, 2, 1, 2]} = 1 := by decide
