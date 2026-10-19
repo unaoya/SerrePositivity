@@ -13,6 +13,9 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.FunctionComplexComponents,
+    `SerrePositivity.KST.Spectra.SkeletalFiberComponents,
+    `SerrePositivity.KST.Spectra.SkeletalSphericalComponents,
     `SerrePositivity.KST.Spectra.SkeletalSphericalRealization,
     `SerrePositivity.KST.Spectra.SkeletalSphericalCochain,
     `SerrePositivity.KST.Spectra.SkeletalCellCharacteristic,
@@ -526,10 +529,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SquareTriangleOuterFaces]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
-  for (name, _) in env.constants.toList do
+  for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless (`SerrePositivity.KST.Spectra).isPrefixOf mod do continue
+    if info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
+      throwError "K-L9: ModelCategory assumption in type of {name}"
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "K-L9: unexpected axioms in {name}: {axioms}"
