@@ -899,7 +899,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SpanSuffixIndex,
     `SerrePositivity.InfinityCategories.Derived.SpanUnknownIndex,
     `SerrePositivity.InfinityCategories.Derived.SpanBoundaryData,
-    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly]
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly,
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryZeroData,
+    `SerrePositivity.InfinityCategories.Derived.SpanCommonIndex,
+    `SerrePositivity.InfinityCategories.Derived.SpanCommonBoundaryFaces,
+    `SerrePositivity.InfinityCategories.Derived.SpanCommonData,
+    `SerrePositivity.InfinityCategories.Derived.SpanIndexGeometry,
+    `SerrePositivity.InfinityCategories.Derived.SpanSuffixBianchi,
+    `SerrePositivity.InfinityCategories.Derived.SpanOnePrefixBianchi]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

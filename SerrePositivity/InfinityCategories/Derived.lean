@@ -81,6 +81,13 @@ public import SerrePositivity.InfinityCategories.Derived.SpanSuffixIndex
 public import SerrePositivity.InfinityCategories.Derived.SpanUnknownIndex
 public import SerrePositivity.InfinityCategories.Derived.SpanBoundaryData
 public import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
+public import SerrePositivity.InfinityCategories.Derived.SpanBoundaryZeroData
+public import SerrePositivity.InfinityCategories.Derived.SpanCommonIndex
+public import SerrePositivity.InfinityCategories.Derived.SpanCommonBoundaryFaces
+public import SerrePositivity.InfinityCategories.Derived.SpanCommonData
+public import SerrePositivity.InfinityCategories.Derived.SpanIndexGeometry
+public import SerrePositivity.InfinityCategories.Derived.SpanSuffixBianchi
+public import SerrePositivity.InfinityCategories.Derived.SpanOnePrefixBianchi
 
 /-! # Semifree 複体による導来圏の dg 表示
 
