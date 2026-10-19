@@ -5513,3 +5513,159 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.RelativeStableModel.right
 #print axioms SerrePositivity.KST.SConstruction.RelativeStableModel.right
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint_mono
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint_mono
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint_zero_zero
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint_zero_zero
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint_one_zero
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint_one_zero
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint_zero_one
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint_zero_one
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint_one_one
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint_one_one
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareOrder
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareOrder
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareChain
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareChain
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareMap
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareMap
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareAt
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareAt
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint_of_le
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint_of_le
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint_of_ge
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint_of_ge
+
+#check @SerrePositivity.KST.SConstruction.arIntervalOrder
+#print axioms SerrePositivity.KST.SConstruction.arIntervalOrder
+
+#check @SerrePositivity.KST.SConstruction.arIntervalEdge
+#print axioms SerrePositivity.KST.SConstruction.arIntervalEdge
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareAt_crossing
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareAt_crossing
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareAt_left
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareAt_left
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareAt_right
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareAt_right
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareAt_zero_corner
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareAt_zero_corner
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareAt_isPushout
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareAt_isPushout
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareAt_isCofiber
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareAt_isCofiber
+
+#check @SerrePositivity.KST.SConstruction.arCutFamily
+#print axioms SerrePositivity.KST.SConstruction.arCutFamily
+
+#check @SerrePositivity.KST.SConstruction.arCutFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.arCutFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.gappedCutCofiberFamily
+#print axioms SerrePositivity.KST.SConstruction.gappedCutCofiberFamily
+
+#check @SerrePositivity.KST.SConstruction.gappedCutCofiberFamily_ι
+#print axioms SerrePositivity.KST.SConstruction.gappedCutCofiberFamily_ι
+
+#check @SerrePositivity.KST.SConstruction.cutCornerOrder
+#print axioms SerrePositivity.KST.SConstruction.cutCornerOrder
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareMap_corner
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareMap_corner
+
+#check @SerrePositivity.KST.SConstruction.arCutFamily_evaluation
+#print axioms SerrePositivity.KST.SConstruction.arCutFamily_evaluation
+
+#check @SerrePositivity.KST.SConstruction.gappedCutCofiberFamily_evaluation
+#print axioms SerrePositivity.KST.SConstruction.gappedCutCofiberFamily_evaluation
+
+#check @SerrePositivity.KST.SConstruction.gappedCutCofiberFamily_isGapped
+#print axioms SerrePositivity.KST.SConstruction.gappedCutCofiberFamily_isGapped
+
+#check @SerrePositivity.KST.SConstruction.cutDiagramFamilyOperator
+#print axioms SerrePositivity.KST.SConstruction.cutDiagramFamilyOperator
+
+#check @SerrePositivity.KST.SConstruction.cutRawFamilyOperator
+#print axioms SerrePositivity.KST.SConstruction.cutRawFamilyOperator
+
+#check @SerrePositivity.KST.SConstruction.cutRawFamilyOperator_vertex
+#print axioms SerrePositivity.KST.SConstruction.cutRawFamilyOperator_vertex
+
+#check @SerrePositivity.KST.SConstruction.cutRawFamilyOperator_isCofiber
+#print axioms SerrePositivity.KST.SConstruction.cutRawFamilyOperator_isCofiber
+
+#check @SerrePositivity.KST.SConstruction.cutCofiberFamilyOperator
+#print axioms SerrePositivity.KST.SConstruction.cutCofiberFamilyOperator
+
+#check @SerrePositivity.KST.SConstruction.cutCofiberFamilyOperator_ι
+#print axioms SerrePositivity.KST.SConstruction.cutCofiberFamilyOperator_ι
+
+#check @SerrePositivity.KST.SConstruction.cutCofiberFamilyOperator_vertex_ι
+#print axioms SerrePositivity.KST.SConstruction.cutCofiberFamilyOperator_vertex_ι
+
+#check @SerrePositivity.KST.SConstruction.cutCofiberFamilyOperator_isGapped
+#print axioms SerrePositivity.KST.SConstruction.cutCofiberFamilyOperator_isGapped
+
+#check @SerrePositivity.KST.SConstruction.cutSConstructionMap
+#print axioms SerrePositivity.KST.SConstruction.cutSConstructionMap
+
+#check @SerrePositivity.KST.SConstruction.cutSConstructionMap_ι
+#print axioms SerrePositivity.KST.SConstruction.cutSConstructionMap_ι
+
+#check @SerrePositivity.KST.SConstruction.cutCofiberComparison
+#print axioms SerrePositivity.KST.SConstruction.cutCofiberComparison
+
+#check @SerrePositivity.KST.SConstruction.cutDiagramFamilyOperator_evaluation
+#print axioms SerrePositivity.KST.SConstruction.cutDiagramFamilyOperator_evaluation
+
+#check @SerrePositivity.KST.SConstruction.cutRawFamilyOperator_evaluation
+#print axioms SerrePositivity.KST.SConstruction.cutRawFamilyOperator_evaluation
+
+#check @SerrePositivity.KST.SConstruction.cutSConstructionMap_evaluation
+#print axioms SerrePositivity.KST.SConstruction.cutSConstructionMap_evaluation
+
+#check @SerrePositivity.KST.SConstruction.cutCofiberComparison_evaluation
+#print axioms SerrePositivity.KST.SConstruction.cutCofiberComparison_evaluation
+
+#check @SerrePositivity.KST.SConstruction.cutCofiberComparison_preservesCofiberData
+#print axioms SerrePositivity.KST.SConstruction.cutCofiberComparison_preservesCofiberData
+
+#check @SerrePositivity.KST.SConstruction.cutStableComparison
+#print axioms SerrePositivity.KST.SConstruction.cutStableComparison
+
+#check @SerrePositivity.KST.SConstruction.cutStableComparison_evaluation
+#print axioms SerrePositivity.KST.SConstruction.cutStableComparison_evaluation
+
+#check @SerrePositivity.KST.SConstruction.cutCornerOrder_one_zero
+#print axioms SerrePositivity.KST.SConstruction.cutCornerOrder_one_zero
+
+#check @SerrePositivity.KST.SConstruction.cutStableComparison_middle
+#print axioms SerrePositivity.KST.SConstruction.cutStableComparison_middle
+
+#check @SerrePositivity.KST.SConstruction.cutEndpoint_naturality
+#print axioms SerrePositivity.KST.SConstruction.cutEndpoint_naturality
+
+#check @SerrePositivity.KST.SConstruction.cutCornerOrder_naturality
+#print axioms SerrePositivity.KST.SConstruction.cutCornerOrder_naturality
+
+#check @SerrePositivity.KST.SConstruction.arCutSquareMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.arCutSquareMap_naturality

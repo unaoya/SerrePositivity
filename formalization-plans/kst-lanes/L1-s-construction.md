@@ -8,7 +8,6 @@
 - K-L1（∞-S• 構成、連結 K）。L1a・L1b 完了。L1c・L1d 進行中、L1e–f 未完了。後続は L3・K-基盤 1・2（v2 の担当範囲）。
 - 全 gapped S• と第一行制限そのものの trivial Kan fibration を証明済み。core・対角実現・Kan 置換・Ω、反復 S の段と単射な構造射への置換、零方向の境界比較を構成済み。
 - Ω から既存の path homotopy fiber への全基点 π_* 同型は証明済み。直前の S 実現との比較は未証明。
-- 元の object/core 実現比較の弱同値、McCarthy の左 fiber の切断、λ→μ・λ→ν の両枝を証明済み。
 - raw ρ の cofiber・gapped 性と、同じ C 内の選択を保つ `mcCarthyRho` を構成済み。面・退化、時刻零、subobject・quotient の strict 回収を証明済み。
 - McCarthy の ρ・θ の二つの実ホモトピーと厳密な切断から、全 C 内の `cofiberLeftFiberQuotient_localized_isIso` を証明済み。θ の可変時刻の gapped 性は点ごとの可逆性で保証する。
 - 単体圏の反対圏上の strict 左 fiber 図式と二重単体解消を構成。各次数の標準因子分解による縮約から、解消の augmentation の局所化同型を証明済み。
@@ -28,7 +27,9 @@
 - `sClosedStableIso`：S_n A を全 Ar 成分が A に入る S_n C の全部分圏と、全高次単体を保つ完全関手の同型で比較済み。
 - `sRelativeCofiberStableIso`：S_n E(A,C,B) と E(S_n A,S_n C,S_n B) の交換同型、両評価との厳密な可換性を証明済み。相対の各 S_n 行、全正有限反復実現の元の射対の加法性まで接続済み。
 - `RelativeStableModel`・`relativeCofiberFunctor`：両端を保つ完全関手の相対図式への作用と厳密な二評価の自然性を構成済み。`relativeMultiRealizationAdditivityLocalizedIso` は全正反復の元の射対を成分とする自然同型。
-- 対象ビルド3401 jobs、公理監査2132宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
+- `cutStableComparison`：任意の切断位置 k で S_n C 内の実際の cofiber 四角形への完全関手を構成。各角は min・恒等・定数 k・max による制限と全高次単体で厳密に一致し、中央評価は恒等関手を回収する。
+- `arCutSquareMap_naturality`：切断位置も写す任意の単調写像（面・退化を含む）で添字の全単体の切断四角形が厳密に可換。左右の支持部分圏との比較と Segal 同値は未証明。
+- 対象ビルド3411 jobs、公理監査2184宣言が成功。標準三公理のみ。保存単位の詳細はコミットメッセージ。
 
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
@@ -45,8 +46,7 @@
 - `StableModel`、`PreservesCofiberData`、`sEndofunctor`、`multiRealizationFunctor`
 - `kSpace`、`kKanSequence`、`monicKKanSequence`、`monicKKanSequenceProjection_piIsomorphism`
 - `iteratedPathHomotopyFiber`、`iteratedPathLoopComparison_piIsomorphism`
-- `objectToCoreSRealization_localized_isIso`、`objectCoreRowIso`
-- `cofiberStableSubobject`、`cofiberStableQuotient`、`mcCarthyFiberSection_quotient`
+- `objectToCoreSRealization_localized_isIso`、`objectCoreRowIso`、`cofiberStableSubobject`、`cofiberStableQuotient`
 - `mcCarthyLambdaMu`、`mcCarthyLambdaNu`、`mcCarthySpan`、`mcCarthyRhoRaw_pre`、`mcCarthyRhoRaw_timeZero`
 - `mcCarthyRhoRaw_isCofiber`、`mcCarthyRhoRaw_isGapped`、`mcCarthyRho`、`mcCarthyRho_isGapped`
 - `mcCarthyRho_ι`、`mcCarthyRho_pre`、`mcCarthyRho_timeZero`、`pointwiseDiagramPushoutApex_postcompIso`
@@ -66,7 +66,7 @@
 - `relativeCofiberStableModel`、`relativeCofiberSubobject`、`relativeCofiberQuotient`
 - `objectSClosedIso`、`relativeCofiberLeftFiberLift`、`relativeMcCarthyRhoHomotopy`、`relativeMcCarthyThetaHomotopy`
 - `relativeCofiberLeftFiberQuotient_localized_isIso`、`relativeCoreSAdditivityMap_localized_isIso`
-- `sClosedStableIso`、`sRelativeCofiberStableIso`、`relativeMultiRealizationAdditivityLocalizedIso`
+- `sClosedStableIso`、`sRelativeCofiberStableIso`、`relativeMultiRealizationAdditivityLocalizedIso`、`cutStableComparison`
 
 ### 依存と提供
 - 所有は `SerrePositivity/KST/SConstruction/`、集約、監査スクリプト、本計画。namespace は同名。
@@ -77,7 +77,7 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 担当分は検証済み保存単位（新規5モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
+- 担当分は検証済み保存単位（新規10モジュール、集約、監査スクリプト、本計画）にコミット。未保存の担当差分なし。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
@@ -85,7 +85,7 @@
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 2132宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- 2184宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
 - raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。二つの実ホモトピーと quotient 射の局所化同型まで証明済み。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - homotopy fiber 比較を既存の構造射と形式的に合成するだけでは正の Ω 条件の証明にならない。
@@ -93,7 +93,7 @@
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- S_n の全連続区間への Segal 分解を実証明する。`firstRowRestriction` の相対補完と `sTwoCofiberRestriction` の中央四角形を一般の切断位置へ拡張し、元の連続区間評価の射対を全正反復実現で比較する。その後、経路境界の面の homotopy pullback 条件を実証明する。`sTwoRealizationAdditivityMap_localized_isIso` は n=2 の具体的な入力。S 実現と既存の homotopy fiber・元の構造射の比較を経て正の Ω 条件・BF 連結 K スペクトルへ進む。
+- 切断 k の左・右に支持を持つ S_n C の閉じた安定頂点条件を作る（それぞれ i≥k・j≤k の区間成分が零）。`cutStableComparison` が対応する相対 E に入ることを示し、中央評価との実際の同値を証明する。左右の支持部分圏を S_k C・S_(n−k) C と比較し、相対加法性から元の連続区間評価の Segal 射の局所化同型を得る。経路境界の面の homotopy pullback 条件はその後。`sTwoRealizationAdditivityMap_localized_isIso` は n=2 の具体的な入力。S 実現と既存の homotopy fiber・元の構造射の比較を経て正の Ω 条件・BF 連結 K スペクトルへ進む。
 - 検証は対象ビルドと `lake env lean scripts/audit_kst_s_construction.lean`。他レーンは編集しない。
 
 ## 1. 目標・担当範囲
