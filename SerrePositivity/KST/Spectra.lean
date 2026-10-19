@@ -363,3 +363,9 @@ public import SerrePositivity.KST.Spectra.CotensorSourceIso
 public import SerrePositivity.KST.Spectra.SpectrumNativeLoopComparison
 public import SerrePositivity.KST.Spectra.TailCotensorComparison
 public import SerrePositivity.KST.Spectra.SpectrumDeloopingComparison
+public import SerrePositivity.KST.Spectra.SpectrumLoopEvaluationLifting
+public import SerrePositivity.KST.Spectra.SpectrumNativeLoopFunctor
+public import SerrePositivity.KST.Spectra.SpectrumLoopEssentialSurjectivity
+public import SerrePositivity.KST.Spectra.SpectrumTailEnriched
+public import SerrePositivity.KST.Spectra.SpectrumLoopTailComparison
+public import SerrePositivity.KST.Spectra.SpectrumTailMappingPullback

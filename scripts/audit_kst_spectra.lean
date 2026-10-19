@@ -850,7 +850,13 @@ run_cmd do
     `SerrePositivity.KST.Spectra.CotensorSourceIso,
     `SerrePositivity.KST.Spectra.SpectrumNativeLoopComparison,
     `SerrePositivity.KST.Spectra.TailCotensorComparison,
-    `SerrePositivity.KST.Spectra.SpectrumDeloopingComparison]
+    `SerrePositivity.KST.Spectra.SpectrumDeloopingComparison,
+    `SerrePositivity.KST.Spectra.SpectrumLoopEvaluationLifting,
+    `SerrePositivity.KST.Spectra.SpectrumNativeLoopFunctor,
+    `SerrePositivity.KST.Spectra.SpectrumLoopEssentialSurjectivity,
+    `SerrePositivity.KST.Spectra.SpectrumTailEnriched,
+    `SerrePositivity.KST.Spectra.SpectrumLoopTailComparison,
+    `SerrePositivity.KST.Spectra.SpectrumTailMappingPullback]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
