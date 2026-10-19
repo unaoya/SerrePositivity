@@ -10,6 +10,7 @@ import SerrePositivity.InfinityCategories.Derived.SpanOnePrefixBianchi
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryResidualConsistency
 import SerrePositivity.InfinityCategories.Derived.SpanSuffixObjects
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryTwoPrefixConsistency
+import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryResiduals
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1613,7 +1614,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixContributions,
     `SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixResidual,
     `SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixCoordinates,
-    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryTwoPrefixConsistency]
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryTwoPrefixConsistency,
+    `SerrePositivity.InfinityCategories.Derived.FirstTriangleIndex,
+    `SerrePositivity.InfinityCategories.Derived.JoinFirstTriangle,
+    `SerrePositivity.InfinityCategories.Derived.BoundaryFirstTriangles,
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryFirstTriangleData,
+    `SerrePositivity.InfinityCategories.Derived.CosliceBoundaryTriangleData,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangles,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryComponents,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryResiduals]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

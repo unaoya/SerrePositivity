@@ -100,6 +100,14 @@ public import SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixContributi
 public import SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixResidual
 public import SerrePositivity.InfinityCategories.Derived.SpanTwoPrefixCoordinates
 public import SerrePositivity.InfinityCategories.Derived.SpanBoundaryTwoPrefixConsistency
+public import SerrePositivity.InfinityCategories.Derived.FirstTriangleIndex
+public import SerrePositivity.InfinityCategories.Derived.JoinFirstTriangle
+public import SerrePositivity.InfinityCategories.Derived.BoundaryFirstTriangles
+public import SerrePositivity.InfinityCategories.Derived.SpanBoundaryFirstTriangleData
+public import SerrePositivity.InfinityCategories.Derived.CosliceBoundaryTriangleData
+public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryTriangles
+public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryComponents
+public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryResiduals
 
 /-! # Semifree 複体による導来圏の dg 表示
 
