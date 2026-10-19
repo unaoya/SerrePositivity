@@ -7570,3 +7570,57 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeLeftTerminalEvaluation_actual_val
 #print axioms specifiedCoconeLeftTerminalEvaluation_actual_val
+
+#check @functorIsoComponent_hom_arrow
+#print axioms functorIsoComponent_hom_arrow
+
+#check @pointPrecomp_evaluation
+#print axioms pointPrecomp_evaluation
+
+#check @functorIsoComponent_point_hom_arrow
+#print axioms functorIsoComponent_point_hom_arrow
+
+#check @prismParameterPrecomp_point
+#print axioms prismParameterPrecomp_point
+
+#check @prismTransportComponent_hom_arrow
+#print axioms prismTransportComponent_hom_arrow
+
+#check @prismTransportIso_raw_hom_arrow
+#print axioms prismTransportIso_raw_hom_arrow
+
+#check @prismTransportComponent_standard_hom_arrow
+#print axioms prismTransportComponent_standard_hom_arrow
+
+#check @fixedExtensionEdgePrism_point
+#print axioms fixedExtensionEdgePrism_point
+
+#check @fixedExtensionEdgeTransportComponent_hom_arrow
+#print axioms fixedExtensionEdgeTransportComponent_hom_arrow
+
+#check @specifiedCoconeLeftTerminalPrism_actual_point
+#print axioms specifiedCoconeLeftTerminalPrism_actual_point
+
+#check @specifiedCoconeLeftTerminalPrism_standard_point
+#print axioms specifiedCoconeLeftTerminalPrism_standard_point
+
+#check @mapTransportPrism_transportIso_hom
+#print axioms mapTransportPrism_transportIso_hom
+
+#check @prismTransportComponent_map_hom_arrow
+#print axioms prismTransportComponent_map_hom_arrow
+
+#check @specifiedCoconeLeftTerminalPrism_actual_map
+#print axioms specifiedCoconeLeftTerminalPrism_actual_map
+
+#check @specifiedCoconeLeftTerminalTransport_actual_hom_arrow
+#print axioms specifiedCoconeLeftTerminalTransport_actual_hom_arrow
+
+#check @specifiedCoconeLeftTerminalPrism_standard_map
+#print axioms specifiedCoconeLeftTerminalPrism_standard_map
+
+#check @specifiedCoconeLeftTerminalTransport_standard_hom_arrow
+#print axioms specifiedCoconeLeftTerminalTransport_standard_hom_arrow
+
+#check @prismTransportComponent_map_pointIso_hom_arrow
+#print axioms prismTransportComponent_map_pointIso_hom_arrow
