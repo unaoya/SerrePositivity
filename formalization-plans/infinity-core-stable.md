@@ -836,7 +836,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 完了（貼り合わせ、TR1〜TR4、Pretriangulated・IsTriangulated instance） |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 完了（共変・反変、全整数次数、六項部分列の完全性、接続準同型の評価式） |
 | S6 | `Stable/ExactFunctor.lean` と関連モジュール | 完全関手、h の三角関手、完全関手間の自然変換 | 完了。零対象・cofiber/fiber 列・全押し出し／引き戻しの保存、CommShift ℤ、IsTriangulated、加法性、自然変換の全整数シフトとの両立・三角形の像の自然変換まで公開 |
-| S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 未着手 |
+| S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 進行中。零対象・fiber 完成、cofiber の普遍性を構成中 |
 
 ## 設計上の決定
 
@@ -986,6 +986,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | D7 の零対象・fiber の存在 | `derivedInfinityZeroVertex_isZeroVertex`、`derivedInfinityCategory_hasZeroVertex`、`derivedCospanPresentation`・各頂点の所属、`derivedCospanFiberSquare` と普遍性・cospan 一致、`derivedInfinityCategory_hasLimit_cospan`、`derivedInfinityCategory_fiber_exists`（任意の可換環） | IsStable を仮定せず実際の零頂点・cospan 極限・全辺の fiber 四角形を構成済み。cofiber と安定性は未完了 |
 | D7 の cofiber の全次数座標と標準四角形 | `cofiberHomCoordinates` と二成分・逆写像・`symm_differential`、`cofiberDifference`・`pushoutCofiber` と二包含、`pushoutHomotopy_differential`、`standardCofiberSquare` と二三角形・四辺、`standardCofiberCocone`（任意の可換環と非有界複体） | 全次数の座標・微分・符号・標準余錐を構成済み。`IsColimitCone`／`IsPushoutSquare` はまだ主張せず、coslice の境界充填が未完了 |
 | D7 の span の join と coslice 境界 | 正規化した `cofiberJoinStdSimplexIso` と包含式、`spanJoinLeft`・`spanJoinRight`・`spanJoin_isPushout`、両セルの可変面の式、`cosliceBoundary_first_cocone`・`cosliceJoinBoundaryFaces_fixed`・`sliceUnderCurry_boundary_of_joinFaces`（値域の充填性は不要） | 二セルの pushout、全可変面、指定最初の余錐の回収、全 join 面からの coslice 境界充填への変換まで完成。dg nerve の未知成分・残差方程式の解は未完了 |
+| D7 の span 境界データと未知集合 | `spanSuffixFaces`・被覆と既知成分の判定、`spanUnknown_cases`、`spanBoundaryLeft`・`spanBoundaryRight` と面の復元、`spanBoundaryLeftData`・`spanBoundaryRightData` と既知面・既知方程式（任意の可換環・dg 圏、任意の次元） | 境界から左右の候補を組み立て、未知集合を各四種類に分類。後続全頂点を含まない集合の方程式は境界から従う。未知成分を解くことと左右の共通面の一致は未完了 |
 | S7 | D7 | 零対象・任意の cospan の極限・全ての指定辺の fiber の存在まで完成。cofiber の普遍性・安定性・三角構造の比較は未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

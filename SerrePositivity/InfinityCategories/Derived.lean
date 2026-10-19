@@ -77,6 +77,10 @@ public import SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare
 public import SerrePositivity.InfinityCategories.Derived.SpanJoinCells
 public import SerrePositivity.InfinityCategories.Derived.SpanJoinFaces
 public import SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces
+public import SerrePositivity.InfinityCategories.Derived.SpanSuffixIndex
+public import SerrePositivity.InfinityCategories.Derived.SpanUnknownIndex
+public import SerrePositivity.InfinityCategories.Derived.SpanBoundaryData
+public import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 
 /-! # Semifree 複体による導来圏の dg 表示
 

@@ -20323,3 +20323,273 @@ spanJoinRight_face.{u_1} : ∀ (n : ℕ) (j : Fin (HAdd.hAdd.{0, 0, 0} n 2)),
       (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))) (sliceUnderCurry.{u_1} F ⋯))
     b
 ```
+
+## D7：span の既知面・四未知集合・境界データ
+
+2026-10-19。`SpanSuffixIndex`・`SpanUnknownIndex`・`SpanBoundaryData`・
+`SpanBoundaryAssembly` を追加。任意の次元で、固定二頂点の後の全頂点を含む集合だけが未知であり、
+各セルの未知集合は四種類。境界写像から左右の候補データを組み立て、
+既知面への制限と既知集合の dg nerve 方程式を回収する。
+添字と境界制限は任意の単体集合で使え、組み立てと方程式には可換環と dg 圏だけを仮定する。
+`IsStable`・cofiber の普遍性・未知方程式の可解性を仮定していない。
+左右の未知成分の解と共通面の一致、標準 cofiber 余錐の初期性は未完了。
+
+公開26宣言を `#check @...` と `pp.universes true` で抽出：
+
+```lean
+SerrePositivity.InfinityCategories.spanSuffixFaces : (n : ℕ) → Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))
+@SerrePositivity.InfinityCategories.mem_spanSuffixFaces : ∀ {n : ℕ} (j : Fin (HAdd.hAdd.{0, 0, 0} n 4)),
+  Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j ↔ LE.le.{0} 2 ↑j
+@SerrePositivity.InfinityCategories.spanSuffixFaceIndex : {n : ℕ} →
+  (j : Fin (HAdd.hAdd.{0, 0, 0} n 4)) →
+    Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j → Fin (HAdd.hAdd.{0, 0, 0} n 2)
+@SerrePositivity.InfinityCategories.spanSuffixFaceIndex_succ_succ : ∀ {n : ℕ} (j : Fin (HAdd.hAdd.{0, 0, 0} n 4))
+  (hj : Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j),
+  Eq.{1} (SerrePositivity.InfinityCategories.spanSuffixFaceIndex j hj).succ.succ j
+SerrePositivity.InfinityCategories.spanSuffixFaces_covers : ∀ (n : ℕ),
+  SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.CoversVertices
+    (SerrePositivity.InfinityCategories.spanSuffixFaces n)
+@SerrePositivity.InfinityCategories.spanSuffixFaces_known_iff : ∀ {n : ℕ}
+  (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+  (∃ j, Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j ∧ j ∉ I) ↔
+    ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I
+SerrePositivity.InfinityCategories.spanFirstPrefix : (n : ℕ) → Fin (HAdd.hAdd.{0, 0, 0} n 4)
+SerrePositivity.InfinityCategories.spanSecondPrefix : (n : ℕ) → Fin (HAdd.hAdd.{0, 0, 0} n 4)
+@SerrePositivity.InfinityCategories.spanVertex_cases : ∀ {n : ℕ} (i : Fin (HAdd.hAdd.{0, 0, 0} n 4)),
+  Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) i ∨
+    Eq.{1} i (SerrePositivity.InfinityCategories.spanFirstPrefix n) ∨
+      Eq.{1} i (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+@SerrePositivity.InfinityCategories.spanUnknown_cases : ∀ {n : ℕ} (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+  SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+    Eq.{1} I (SerrePositivity.InfinityCategories.spanSuffixFaces n) ∨
+      Eq.{1} I
+          (insert.{0, 0} (SerrePositivity.InfinityCategories.spanFirstPrefix n)
+            (SerrePositivity.InfinityCategories.spanSuffixFaces n)) ∨
+        Eq.{1} I
+            (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+              (SerrePositivity.InfinityCategories.spanSuffixFaces n)) ∨
+          Eq.{1} I
+            (insert.{0, 0} (SerrePositivity.InfinityCategories.spanFirstPrefix n)
+              (insert.{0, 0} (SerrePositivity.InfinityCategories.spanSecondPrefix n)
+                (SerrePositivity.InfinityCategories.spanSuffixFaces n)))
+SerrePositivity.InfinityCategories.spanBoundaryInclusion.{u_1} : (n : ℕ) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+      (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+    (SerrePositivity.InfinityCategories.join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 1 }))
+SerrePositivity.InfinityCategories.spanBoundaryInclusion_mono.{u_1} : ∀ (n : ℕ),
+  CategoryTheory.Mono.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.spanBoundaryInclusion.{u_1} n)
+SerrePositivity.InfinityCategories.spanBoundaryLeftLift.{u_1} : (n : ℕ) →
+  (j : Fin (HAdd.hAdd.{0, 0, 0} n 4)) →
+    Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j →
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 2 })
+        (SerrePositivity.InfinityCategories.join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+          (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+SerrePositivity.InfinityCategories.spanBoundaryRightLift.{u_1} : (n : ℕ) →
+  (j : Fin (HAdd.hAdd.{0, 0, 0} n 4)) →
+    Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j →
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 2 })
+        (SerrePositivity.InfinityCategories.join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+          (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+SerrePositivity.InfinityCategories.spanBoundaryLeftLift_inclusion.{u_1} : ∀ (n : ℕ) (j : Fin (HAdd.hAdd.{0, 0, 0} n 4))
+  (hj : Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.spanBoundaryLeftLift.{u_1} n j hj)
+      (SerrePositivity.InfinityCategories.spanBoundaryInclusion.{u_1} n))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j)
+      (SerrePositivity.InfinityCategories.spanJoinLeft.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+SerrePositivity.InfinityCategories.spanBoundaryRightLift_inclusion.{u_1} : ∀ (n : ℕ) (j : Fin (HAdd.hAdd.{0, 0, 0} n 4))
+  (hj : Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.spanBoundaryRightLift.{u_1} n j hj)
+      (SerrePositivity.InfinityCategories.spanBoundaryInclusion.{u_1} n))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} j)
+      (SerrePositivity.InfinityCategories.spanJoinRight.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+@SerrePositivity.InfinityCategories.spanBoundaryLeft.{u_1} : {n : ℕ} →
+  {X : SSet.{u_1}} →
+    Quiver.Hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+          (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+        X →
+      Quiver.Hom.{u_1, u_1 + 1}
+        (SSet.Subcomplex.toSSet.{u_1}
+          (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.region.{u_1}
+            (SerrePositivity.InfinityCategories.spanSuffixFaces n)))
+        X
+@SerrePositivity.InfinityCategories.spanBoundaryRight.{u_1} : {n : ℕ} →
+  {X : SSet.{u_1}} →
+    Quiver.Hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+          (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+        X →
+      Quiver.Hom.{u_1, u_1 + 1}
+        (SSet.Subcomplex.toSSet.{u_1}
+          (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.region.{u_1}
+            (SerrePositivity.InfinityCategories.spanSuffixFaces n)))
+        X
+@SerrePositivity.InfinityCategories.spanBoundaryLeft_face.{u_1} : ∀ {n : ℕ} {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+        (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+      X)
+  (j : Fin (HAdd.hAdd.{0, 0, 0} n 4))
+  (hj : Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.spanBoundaryLeft.{u_1} F)
+          (Opposite.op.{1} { len := HAdd.hAdd.{0, 0, 0} n 2 })))
+      (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face.{u_1}
+        (SerrePositivity.InfinityCategories.spanSuffixFaces n) j hj))
+    (SSet.yonedaEquiv.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.spanBoundaryLeftLift.{u_1} n j hj) F))
+@SerrePositivity.InfinityCategories.spanBoundaryRight_face.{u_1} : ∀ {n : ℕ} {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.join.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+        (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))
+      X)
+  (j : Fin (HAdd.hAdd.{0, 0, 0} n 4))
+  (hj : Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.spanBoundaryRight.{u_1} F)
+          (Opposite.op.{1} { len := HAdd.hAdd.{0, 0, 0} n 2 })))
+      (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face.{u_1}
+        (SerrePositivity.InfinityCategories.spanSuffixFaces n) j hj))
+    (SSet.yonedaEquiv.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.spanBoundaryRightLift.{u_1} n j hj) F))
+@SerrePositivity.InfinityCategories.spanBoundaryLeftData.{u_1,
+    u_2} : {A : Type u_1} →
+  [inst : CommRing.{u_1} A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] →
+        {n : ℕ} →
+          (F :
+              Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+                (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+                  (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+                  (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+                (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D)) →
+            SerrePositivity.InfinityCategories.DGNerve.HomFamily.{u_1, u_2} A D
+                (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj.{u_1, u_2}
+                  (SerrePositivity.InfinityCategories.spanSuffixFaces n) ⋯
+                  (SerrePositivity.InfinityCategories.spanBoundaryLeft.{max u_2 u_1} F)) →
+              SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)
+@SerrePositivity.InfinityCategories.spanBoundaryRightData.{u_1,
+    u_2} : {A : Type u_1} →
+  [inst : CommRing.{u_1} A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] →
+        {n : ℕ} →
+          (F :
+              Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+                (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+                  (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+                  (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+                (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D)) →
+            SerrePositivity.InfinityCategories.DGNerve.HomFamily.{u_1, u_2} A D
+                (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj.{u_1, u_2}
+                  (SerrePositivity.InfinityCategories.spanSuffixFaces n) ⋯
+                  (SerrePositivity.InfinityCategories.spanBoundaryRight.{max u_2 u_1} F)) →
+              SerrePositivity.InfinityCategories.DGNerve.SimplexData.{u_1, u_2} A D (HAdd.hAdd.{0, 0, 0} n 3)
+@SerrePositivity.InfinityCategories.spanBoundaryLeftData_pullback_face.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (F :
+    Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+      (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D))
+  (unknown :
+    SerrePositivity.InfinityCategories.DGNerve.HomFamily.{u_1, u_2} A D
+      (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj.{u_1, u_2}
+        (SerrePositivity.InfinityCategories.spanSuffixFaces n) ⋯
+        (SerrePositivity.InfinityCategories.spanBoundaryLeft.{max u_2 u_1} F)))
+  (j : Fin (HAdd.hAdd.{0, 0, 0} n 4))
+  (hj : Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j),
+  Eq.{max (u_1 + 1) (u_2 + 1)}
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback.{u_1, u_2}
+      (SerrePositivity.InfinityCategories.spanBoundaryLeftData.{u_1, u_2} F unknown)
+      (OrderEmbedding.toOrderHom.{0, 0} j.succAboveOrderEmb))
+    (SerrePositivity.InfinityCategories.DGNerve.Simplex.toSimplexData.{u_1, u_2}
+      (SSet.yonedaEquiv.{max u_1 u_2}
+        (CategoryTheory.CategoryStruct.comp.{max u_1 u_2, (max u_1 u_2) + 1}
+          (SerrePositivity.InfinityCategories.spanBoundaryLeftLift.{max u_1 u_2} n j hj) F)))
+@SerrePositivity.InfinityCategories.spanBoundaryRightData_pullback_face.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (F :
+    Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+      (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D))
+  (unknown :
+    SerrePositivity.InfinityCategories.DGNerve.HomFamily.{u_1, u_2} A D
+      (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj.{u_1, u_2}
+        (SerrePositivity.InfinityCategories.spanSuffixFaces n) ⋯
+        (SerrePositivity.InfinityCategories.spanBoundaryRight.{max u_2 u_1} F)))
+  (j : Fin (HAdd.hAdd.{0, 0, 0} n 4))
+  (hj : Membership.mem.{0, 0} (SerrePositivity.InfinityCategories.spanSuffixFaces n) j),
+  Eq.{max (u_1 + 1) (u_2 + 1)}
+    (SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback.{u_1, u_2}
+      (SerrePositivity.InfinityCategories.spanBoundaryRightData.{u_1, u_2} F unknown)
+      (OrderEmbedding.toOrderHom.{0, 0} j.succAboveOrderEmb))
+    (SerrePositivity.InfinityCategories.DGNerve.Simplex.toSimplexData.{u_1, u_2}
+      (SSet.yonedaEquiv.{max u_1 u_2}
+        (CategoryTheory.CategoryStruct.comp.{max u_1 u_2, (max u_1 u_2) + 1}
+          (SerrePositivity.InfinityCategories.spanBoundaryRightLift.{max u_1 u_2} n j hj) F)))
+@SerrePositivity.InfinityCategories.spanBoundaryLeftData_equation.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (F :
+    Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+      (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D))
+  (unknown :
+    SerrePositivity.InfinityCategories.DGNerve.HomFamily.{u_1, u_2} A D
+      (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj.{u_1, u_2}
+        (SerrePositivity.InfinityCategories.spanSuffixFaces n) ⋯
+        (SerrePositivity.InfinityCategories.spanBoundaryLeft.{max u_2 u_1} F)))
+  (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+  ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+    SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2}
+      (SerrePositivity.InfinityCategories.spanBoundaryLeftData.{u_1, u_2} F unknown) I
+@SerrePositivity.InfinityCategories.spanBoundaryRightData_equation.{u_1,
+    u_2} : ∀ {A : Type u_1} [inst : CommRing.{u_1} A] {D : Type u_2}
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ}
+  (F :
+    Quiver.Hom.{max u_1 u_2, (max u_1 u_2) + 1}
+      (SerrePositivity.InfinityCategories.join.{max u_1 u_2}
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} 2 0))
+        (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.boundary.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 1))))
+      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D))
+  (unknown :
+    SerrePositivity.InfinityCategories.DGNerve.HomFamily.{u_1, u_2} A D
+      (SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj.{u_1, u_2}
+        (SerrePositivity.InfinityCategories.spanSuffixFaces n) ⋯
+        (SerrePositivity.InfinityCategories.spanBoundaryRight.{max u_2 u_1} F)))
+  (I : Finset.{0} (Fin (HAdd.hAdd.{0, 0, 0} n 4))),
+  ¬SerrePositivity.InfinityCategories.spanSuffixFaces n ⊆ I →
+    SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation.{u_1, u_2}
+      (SerrePositivity.InfinityCategories.spanBoundaryRightData.{u_1, u_2} F unknown) I
+```
+
+検証：対象・Stable・Derived 集約ビルド5674 jobs 成功。Stable 監査370モジュール・2804宣言、
+Derived 監査101モジュール・1697宣言。標準三公理のみ。
+今回の再検証前にも既存集約5670 jobs と Stable 366モジュール・2753宣言、
+Derived 97モジュール・1646宣言の監査が成功。TR2 の四ファイルと逆回転・回転同値は
+`bb528017` に保存済みであることを確認した。import 閉包に破損はない。

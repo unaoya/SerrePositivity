@@ -1,4 +1,5 @@
 import SerrePositivity.InfinityCategories.Derived
+import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
 /-!
@@ -894,7 +895,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare,
     `SerrePositivity.InfinityCategories.Derived.SpanJoinCells,
     `SerrePositivity.InfinityCategories.Derived.SpanJoinFaces,
-    `SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces]
+    `SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces,
+    `SerrePositivity.InfinityCategories.Derived.SpanSuffixIndex,
+    `SerrePositivity.InfinityCategories.Derived.SpanUnknownIndex,
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryData,
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

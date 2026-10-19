@@ -3,6 +3,7 @@ import SerrePositivity.InfinityCategories.Derived.StableLimits
 import SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare
 import SerrePositivity.InfinityCategories.Derived.SpanJoinFaces
 import SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces
+import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
@@ -1583,7 +1584,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare,
     `SerrePositivity.InfinityCategories.Derived.SpanJoinCells,
     `SerrePositivity.InfinityCategories.Derived.SpanJoinFaces,
-    `SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces]
+    `SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces,
+    `SerrePositivity.InfinityCategories.Derived.SpanSuffixIndex,
+    `SerrePositivity.InfinityCategories.Derived.SpanUnknownIndex,
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryData,
+    `SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
