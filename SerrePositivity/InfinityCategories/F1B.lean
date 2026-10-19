@@ -655,3 +655,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransCell
 public import SerrePositivity.InfinityCategories.F1B.KanNerveEdgeHom
 public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransWhiskering
 public import SerrePositivity.InfinityCategories.F1B.KanNerveAdjunction
+public import SerrePositivity.InfinityCategories.F1B.KanNerveHomotopyRecovery
+public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransRecovery
+public import SerrePositivity.InfinityCategories.F1B.KanAdjunctionHomTriangles
+public import SerrePositivity.InfinityCategories.F1B.KanNerveAdjunctionReflection

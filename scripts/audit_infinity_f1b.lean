@@ -2753,3 +2753,27 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveAdjunctionOfAdjunction_unitHom
 
 #check @SerrePositivity.InfinityCategories.F1B.kanNerveAdjunctionOfAdjunction_counitHom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveHomotopyEvaluation
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveHomotopyEvaluation_map_homMk
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveHomotopyEvaluation_comp_inclusion
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveHomotopyInclusion_fullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveFunctorHomEmbedding_fullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomEquiv
+
+#check @SerrePositivity.InfinityCategories.F1B.kanAdjunction_leftTriangleHom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanAdjunction_rightTriangleHom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanAdjunctionOfNerveAdjunction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanAdjunctionOfNerveAdjunction_unitHom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanAdjunctionOfNerveAdjunction_counitHom
+
+#check @SerrePositivity.InfinityCategories.F1B.kanNonempty_adjunction_iff_nerveAdjunction
