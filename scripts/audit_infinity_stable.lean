@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.UniverseSlices
 import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaStability
 import SerrePositivity.InfinityCategories.Derived.DGModulePropertyStability
 import SerrePositivity.InfinityCategories.Derived.DGYonedaModuleNerve
@@ -150,6 +151,41 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.uliftSliceOverIso_hom_val
+#print axioms SerrePositivity.InfinityCategories.uliftSliceUnderIso_hom_val
+#print axioms SerrePositivity.InfinityCategories.uliftSliceOverIso_inv_val
+#print axioms SerrePositivity.InfinityCategories.uliftSliceUnderIso_inv_val
+
+#print axioms SerrePositivity.InfinityCategories.uliftJoinAug_down_up
+#print axioms SerrePositivity.InfinityCategories.uliftJoinAug_up_down
+#print axioms SerrePositivity.InfinityCategories.uliftJoinAugUp_map
+#print axioms SerrePositivity.InfinityCategories.uliftJoinAugDown_map
+#print axioms SerrePositivity.InfinityCategories.uliftJoinAugUp_hom
+#print axioms SerrePositivity.InfinityCategories.uliftJoinAugDown_hom
+#print axioms SerrePositivity.InfinityCategories.uliftJoinSimplexUp_map
+#print axioms SerrePositivity.InfinityCategories.uliftJoinSimplexDown_map
+#print axioms SerrePositivity.InfinityCategories.uliftJoinIso
+#print axioms SerrePositivity.InfinityCategories.uliftJoinIso_hom_naturality
+#print axioms SerrePositivity.InfinityCategories.uliftJoinIso_inv_naturality
+#print axioms SerrePositivity.InfinityCategories.uliftJoinIso_inl
+#print axioms SerrePositivity.InfinityCategories.uliftJoinIso_inr
+#print axioms SerrePositivity.InfinityCategories.uliftConeShapeIso
+#print axioms SerrePositivity.InfinityCategories.uliftCoconeShapeIso
+#print axioms SerrePositivity.InfinityCategories.uliftConeShapeIso_inr
+#print axioms SerrePositivity.InfinityCategories.uliftCoconeShapeIso_inl
+#print axioms SerrePositivity.InfinityCategories.uliftConeShapeIso_hom_map
+#print axioms SerrePositivity.InfinityCategories.uliftCoconeShapeIso_hom_map
+#print axioms SerrePositivity.InfinityCategories.uliftConeShapeIso_inv_map
+#print axioms SerrePositivity.InfinityCategories.uliftCoconeShapeIso_inv_map
+#print axioms SerrePositivity.InfinityCategories.uliftConeHomEquiv
+#print axioms SerrePositivity.InfinityCategories.uliftCoconeHomEquiv
+#print axioms SerrePositivity.InfinityCategories.uliftConeHomEquiv_precomp
+#print axioms SerrePositivity.InfinityCategories.uliftCoconeHomEquiv_precomp
+#print axioms SerrePositivity.InfinityCategories.uliftSliceOverSimplexEquiv
+#print axioms SerrePositivity.InfinityCategories.uliftSliceUnderSimplexEquiv
+#print axioms SerrePositivity.InfinityCategories.uliftSliceOverIso
+#print axioms SerrePositivity.InfinityCategories.uliftSliceUnderIso
 
 #print axioms SerrePositivity.InfinityCategories.dgRepleteYoneda_hom_isIso
 #print axioms SerrePositivity.InfinityCategories.dgRepleteYonedaNerve_isFullyFaithful
@@ -1668,6 +1704,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation,
+    `SerrePositivity.InfinityCategories.Stable.UniverseJoin,
+    `SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality,
+    `SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes,
+    `SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexNaturality,
+    `SerrePositivity.InfinityCategories.Stable.UniverseConeHom,
+    `SerrePositivity.InfinityCategories.Stable.UniverseSlices,
+
     `SerrePositivity.InfinityCategories.Derived.DGRepleteYoneda,
     `SerrePositivity.InfinityCategories.Derived.DGVertexIsoOfH0,
     `SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaEquivalence,

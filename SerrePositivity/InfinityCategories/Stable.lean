@@ -310,6 +310,14 @@ public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
 public import SerrePositivity.InfinityCategories.Stable.BicartesianChoice
 public import SerrePositivity.InfinityCategories.Stable.BicartesianCriterion
 
+public import SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation
+public import SerrePositivity.InfinityCategories.Stable.UniverseJoin
+public import SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality
+public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexNaturality
+public import SerrePositivity.InfinityCategories.Stable.UniverseConeHom
+public import SerrePositivity.InfinityCategories.Stable.UniverseSlices
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
