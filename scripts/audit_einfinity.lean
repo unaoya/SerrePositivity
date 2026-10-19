@@ -614,6 +614,11 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.permutationComposition_vertical_inner_pair,
       `SerrePositivity.EInfinity.Surjection.vertical_interval_final_inner_nonempty,
       `SerrePositivity.EInfinity.Surjection.vertical_interval_inner_projection,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.recovered_state_mem,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.recovered_available_substitute,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerRemoved_nil,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerRemoved_subset,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.outerLabel_available_composition_row,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -1418,3 +1423,31 @@ example : (([1, 2, 3] : List (Fin 4)).take 2).filterMap
       (CompositeRecovery.innerLabel (m := 2) (n := 2) 1) := by
   exact filterMap_selection_discarded_last (CompositeRecovery.innerLabel (m := 2) (n := 2) 1)
     [1, 2, 3] 3 (by decide) 3 (by decide) (by decide)
+
+-- 内側文字が一つだけ除外されても、外側指定値はまだ可用である。
+example : CompositeRecovery.outerRemoved (m := 2) (n := 2) 1 [1] = [] := by decide
+-- 内側文字を全て除外した時点で、外側指定値も除外される。
+example : CompositeRecovery.outerRemoved (m := 2) (n := 2) 1 [1, 2] = [1] := by decide
+example : AdjacentCollapse.collapse
+    ((available [1] (List.ofFn
+      (BarrattEccles.permutationComposition 2 2 1 (1 : Equiv.Perm (Fin 3))
+        (Equiv.swap 0 1)).symm)).map
+        (CompositeRecovery.outerLabel (m := 2) (n := 2) 1)) = [0, 1, 2] := by
+  exact (CompositeRecovery.outerLabel_available_composition_row 1
+    (1 : Equiv.Perm (Fin 3)) (Equiv.swap 0 1) [1]).trans (by decide)
+example : AdjacentCollapse.collapse
+    ((available [1, 2] (List.ofFn
+      (BarrattEccles.permutationComposition 2 2 1 (1 : Equiv.Perm (Fin 3))
+        (Equiv.swap 0 1)).symm)).map
+        (CompositeRecovery.outerLabel (m := 2) (n := 2) 1)) = [0, 2] := by
+  exact (CompositeRecovery.outerLabel_available_composition_row 1
+    (1 : Equiv.Perm (Fin 3)) (Equiv.swap 0 1) [1, 2]).trans (by decide)
+-- 内側 arity 零では初期状態から指定値が消える。同じ一般定理を適用する。
+example : CompositeRecovery.outerRemoved (m := 2) (n := 0) 1 [] = [1] := by decide
+example : AdjacentCollapse.collapse
+    ((available [] (List.ofFn
+      (BarrattEccles.permutationComposition 2 0 1 (1 : Equiv.Perm (Fin 3))
+        (1 : Equiv.Perm (Fin 0))).symm)).map
+        (CompositeRecovery.outerLabel (m := 2) (n := 0) 1)) = [0, 2] := by
+  exact (CompositeRecovery.outerLabel_available_composition_row 1
+    (1 : Equiv.Perm (Fin 3)) (1 : Equiv.Perm (Fin 0)) []).trans (by decide)

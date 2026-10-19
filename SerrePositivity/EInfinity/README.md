@@ -335,6 +335,11 @@ nullary 境界恒等式を含む一般の微分保存は `normalizedMap_comm` �
 `permutationComposition_vertical_inner_pair` は元の非退化成功二行から、内側末尾を残す内側二行を復元する。
 `vertical_interval_inner_projection` は一歩以上の垂直成分全体を端点付きの内側抽出として復元する。
 最終行の内側非空性は直前の行と非退化成功から導き、各行と選択語は実際の元の内側射影を保つ。
+`CompositeRecovery.outerRemoved` は任意の合成除外から外側除外を復元し、全内側除外で指定値を除く。
+`recovered_state_mem` は内外の復元状態の合成が元と同じ文字を除外することを示す。
+`recovered_available_substitute` は任意の合成可用行を復元した元の二つの可用行への代入へ戻す。
+`outerLabel_available_composition_row` は合成可用行の外側射影の縮約が元の可用外側行であることを示す。
+内側 arity 零と全内側除外後も同じ一般定理で扱う。正の内側 arity では初期外側除外も空となる。
 零歩成分の切り出し、成分間の接続、元の成功二表の全体の逆構成・全単射と空語の挿入は未完成。
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
