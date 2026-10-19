@@ -791,6 +791,14 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.complexPartialComposition_right_unit,
       `SerrePositivity.EInfinity.Surjection.complexPartialComposition_inner_rightAction,
       `SerrePositivity.EInfinity.Surjection.complexPartialComposition_outer_rightAction,
+      `SerrePositivity.EInfinity.TableReduction.triple_cochainMap_epi,
+      `SerrePositivity.EInfinity.TableReduction.exchangeLastFactors_naturality,
+      `SerrePositivity.EInfinity.Surjection.complexPartialComposition_nested_assoc,
+      `SerrePositivity.EInfinity.Surjection.complexPartialComposition_parallel_assoc,
+      `SerrePositivity.EInfinity.Surjection.operad,
+      `SerrePositivity.EInfinity.TableReduction.operadMap,
+      `SerrePositivity.EInfinity.TableReduction.operadMap_app,
+      `SerrePositivity.EInfinity.TableReduction.operadMap_f_surjective,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.input_degrees_unique,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.collapse_segments,
       `SerrePositivity.EInfinity.TableReduction.fuseBoundary_fst_dropLast,
@@ -2310,3 +2318,18 @@ example : (Surjection.complex ℤ 3 ◁ Surjection.complexRename ℤ 2 (Equiv.sw
         Surjection.complexRename ℤ 4
           (operadInnerPermutation 2 2 0 (Equiv.swap 0 1))⁻¹ :=
   Surjection.complexPartialComposition_inner_rightAction ℤ 2 2 0 (Equiv.swap 0 1)
+
+-- 束ねた TR オペラッド射は nullary の代入にも構成済みの合成保存を使う。
+example : BarrattEccles.partialComposition ℤ 2 0 1 ≫
+    (TableReduction.operadMap ℤ).map.app (SerrePositivity.FiniteBijection.of 2) =
+      ((TableReduction.operadMap ℤ).map.app (SerrePositivity.FiniteBijection.of 3) ⊗ₘ
+        (TableReduction.operadMap ℤ).map.app (SerrePositivity.FiniteBijection.of 0)) ≫
+          (Surjection.operad ℤ).comp 2 0 1 :=
+  (TableReduction.operadMap ℤ).comp 2 0 1
+-- 出力 arity 零の負次数と正次数の零成分も、同じオペラッド射の全射性が扱う。
+example : Function.Surjective
+    (((TableReduction.operadMap ℤ).map.app (SerrePositivity.FiniteBijection.of 0)).f (-2)).hom :=
+  TableReduction.operadMap_f_surjective ℤ 0 (-2)
+example : Function.Surjective
+    (((TableReduction.operadMap ℤ).map.app (SerrePositivity.FiniteBijection.of 0)).f 1).hom :=
+  TableReduction.operadMap_f_surjective ℤ 0 1

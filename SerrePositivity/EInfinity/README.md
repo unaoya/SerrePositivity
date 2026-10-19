@@ -462,7 +462,9 @@ nullary を含む TR の部分合成保存は完了。
 `Surjection.complexUnit` は BE の単位と TR の合成で、零次数では一文字単位と一致する。
 複体射の左右単位則と内外同変性も TR の全射テンソルで消去して証明済み。
 `tensor_epi_of_epi` は整数加群複体の全射のテンソルの全射性。平坦性・cofibrancy は仮定しない。
-χ の複体射の二つの結合則、Operad への束ねと TR オペラッド射は未完成。
+χ の複体射の入れ子・並列結合則も三重テンソル TR で消去して証明済み。
+`Surjection.operad` は実際の全射語 dg オペラッド、`TableReduction.operadMap` は一般の TR : E → χ。
+全 arity・全整数次数・任意の可換環を扱い、nullary の合成保存も含む。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
 
 原典：

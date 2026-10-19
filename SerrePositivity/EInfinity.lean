@@ -264,3 +264,4 @@ public import SerrePositivity.EInfinity.Surjection.CompositionEquivariance
 public import SerrePositivity.EInfinity.TableReduction.SequenceMap
 public import SerrePositivity.EInfinity.Surjection.ComplexUnitLaws
 public import SerrePositivity.EInfinity.Surjection.ComplexEquivariance
+public import SerrePositivity.EInfinity.TableReduction.OperadMap
