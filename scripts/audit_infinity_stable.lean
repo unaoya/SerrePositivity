@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteCancellation
 import SerrePositivity.InfinityCategories.Derived.DGQuotientFractionTriangles
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs
 import SerrePositivity.InfinityCategories.Derived.DGNativeDerivedFiniteCell
@@ -1713,6 +1714,16 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.dgQuotientEdge_isInvertible_of_verdier
 #print axioms SerrePositivity.InfinityCategories.dgQuotientEdge_exists_fractionTriangle
 
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosed_eq_iff_restriction
+
+#print axioms SerrePositivity.InfinityCategories.dgQuotientKernel_exists_closedDenominator
+
+#print axioms SerrePositivity.InfinityCategories.dgQuotientClosed_exists_cancelingDenominator
+
+#print axioms SerrePositivity.InfinityCategories.dgQuotientEdge_exists_cancelingTriangles
+
+#print axioms SerrePositivity.InfinityCategories.dgQuotientEdges_exists_cancelingTriangles
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -1866,6 +1877,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRestrictionEquality,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientKernelDenominators,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientClosedCancellation,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeCancellation,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteCancellation,
+
     `SerrePositivity.InfinityCategories.Derived.DGExtensionRepresentableClosed,
     `SerrePositivity.InfinityCategories.Derived.DGRestrictionYonedaNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGRestrictionRepresentableArrows,

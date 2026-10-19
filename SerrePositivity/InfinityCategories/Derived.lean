@@ -519,6 +519,12 @@ public import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofH0
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientFractionTriangles
 
 
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientRestrictionEquality
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientKernelDenominators
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientClosedCancellation
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeCancellation
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteCancellation
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
