@@ -130,3 +130,4 @@ public import SerrePositivity.EInfinity.Operad.FreeAlgebraAdjunction
 public import SerrePositivity.EInfinity.BarrattEccles
 public import SerrePositivity.EInfinity.AlexanderWhitney.ComponentLaws
 public import SerrePositivity.EInfinity.AlexanderWhitney.FaceCuts
+public import SerrePositivity.EInfinity.AlexanderWhitney.DifferentialComponents
