@@ -30,6 +30,13 @@ def familyHomotopyChainTrace {U E : SSet.{u}} {f g : U ⟶ E} (c : FamilyHomotop
   | .nil _ => []
   | .cons H tail => H.h :: familyHomotopyChainTrace tail
 
+/-- 実区間が空の補正列の両端は厳密に等しい。 -/
+lemma familyHomotopyChain_eq_of_trace_nil {U E : SSet.{u}} {f g : U ⟶ E}
+    (c : FamilyHomotopyChain f g) (h : familyHomotopyChainTrace c = []) : f = g := by
+  cases c with
+  | nil => rfl
+  | cons H tail => cases h
+
 /-- 同じ始点の表示だけを移し、元の全区間を保持する。 -/
 def familyHomotopyChainSourceTransport {U E : SSet.{u}} {f g h : U ⟶ E}
     (c : FamilyHomotopyChain g h) (e : f = g) : FamilyHomotopyChain f h := by
@@ -40,6 +47,20 @@ def familyHomotopyChainSourceTransport {U E : SSet.{u}} {f g h : U ⟶ E}
 lemma familyHomotopyChainSourceTransport_trace {U E : SSet.{u}} {f g h : U ⟶ E}
     (c : FamilyHomotopyChain g h) (e : f = g) :
     familyHomotopyChainTrace (familyHomotopyChainSourceTransport c e) =
+      familyHomotopyChainTrace c := by
+  cases e
+  rfl
+
+/-- 同じ終点の表示だけを移し、元の全区間を保持する。 -/
+def familyHomotopyChainTargetTransport {U E : SSet.{u}} {f g h : U ⟶ E}
+    (c : FamilyHomotopyChain f g) (e : g = h) : FamilyHomotopyChain f h := by
+  cases e
+  exact c
+
+/-- 終点の表示を移しても、元の全区間の trace は変わらない。 -/
+lemma familyHomotopyChainTargetTransport_trace {U E : SSet.{u}} {f g h : U ⟶ E}
+    (c : FamilyHomotopyChain f g) (e : g = h) :
+    familyHomotopyChainTrace (familyHomotopyChainTargetTransport c e) =
       familyHomotopyChainTrace c := by
   cases e
   rfl
