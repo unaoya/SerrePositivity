@@ -3933,3 +3933,25 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.leftFibrationNaturalTransportPrism
 #check @SerrePositivity.InfinityCategories.leftFibrationNaturalTransportPrism_zero
 #check @SerrePositivity.InfinityCategories.leftFibrationNaturalTransportPrism_one
+
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.evaluate
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.mappingSimplex
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.mappingSpaceMap
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.toEnrichedFunctor
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.realization
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.reindex
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.toEnrichedFunctor_evaluate
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.realization_evaluate
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.reindex_diagonal
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.realization_reindex
+#check @SerrePositivity.InfinityCategories.KanEnrichedComparison.identity
+#check @SerrePositivity.InfinityCategories.KanEnrichedComparison.trans
+#check @SerrePositivity.InfinityCategories.kanEnrichedComparisonTriangle
+#check @SerrePositivity.InfinityCategories.kanEnrichedComparisonTriangle_first
+#check @SerrePositivity.InfinityCategories.kanEnrichedComparisonTriangle_second
+#check @SerrePositivity.InfinityCategories.kanEnrichedComparisonTriangle_long
+#check @SerrePositivity.InfinityCategories.kanEnrichedComparisonTriangleFamily
+#check @SerrePositivity.InfinityCategories.kanEnrichedComparisonTriangleFamily_zero
+#check @SerrePositivity.InfinityCategories.kanEnrichedComparisonTriangleFamily_one
+#check @SerrePositivity.InfinityCategories.kanEnrichedComparisonTriangleFamily_two
