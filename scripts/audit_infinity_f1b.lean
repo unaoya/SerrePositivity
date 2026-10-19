@@ -1723,3 +1723,15 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanGlobalColimit_diagram_with_colimit_fibers
 
 #check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftComma_diagram_with_colimit_fibers
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanLeftComma_candidate
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceOverOpIso_uncurry
+
+#check @SerrePositivity.InfinityCategories.F1B.kanRightMappingSpacePrism_reverse
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeOpIso_homotopy
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiberViaOpposite_eq
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence

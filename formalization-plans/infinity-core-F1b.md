@@ -35,16 +35,16 @@
 - join の inner fibration 性に加え、cocartesian な p の相対 join の底への cocartesian fibration 性を証明。
   左包含は任意の底変換後も cocartesian 辺を保存。相対指数の制限は任意の cartesian 辺を保存する。
 - left fibrations の各 fiber の同値から全空間と任意の底変換後の前合成同値を導く安全な判定を証明。
-  固定始域の comma の標的射影も left fibration。その fiber を区間写像空間と厳密に同定。
-  coslice の局所添字から comma fiber への比較は、任意の底変換後も前合成同値と証明。
+  固定始域の comma の標的射影は left fibration。fiber は区間写像空間と同型、coslice 比較は底変換後も前合成同値。
 - 両射影の輸送を保つ inner fibration では、fiber の相対始点・終点境界充填を全空間へ移せる。対象の族の各頂点に必要な余極限だけで、普遍余錐全体からの引き戻しは自明 Kan fibration。
   全空間の指定図式の fiber 制限と族の頂点を同定し、実際の相対 join の図式へ厳密に延長できる。
   全空間の始点境界充填を fiber に制限し、構成した各 fiber の余錐の余極限性も回収済み。
 - 任意の関手 δ に対し、既存 comma の反転 `F1B.kanLeftComma δ` を構成。底への射影は cocartesian fibration。
-  恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示を証明。局所比較は図式を保つ単射な前合成同値。
+  恒等矢印の包含、指定変換 δ(k)→c、fiber の反転表示を証明。標準余錐からの局所比較は単射な前合成同値。
   局所余極限から、comma の相対 join の図式を各 fiber で普遍な余錐として coherent に構成済み。
-- 最終検証：F1・F1B 同時ビルド成功（3501 jobs）、同時 import 検査成功（F1 5946・F1B 3691 宣言）。
-  公理監査成功（3695 宣言、標準三公理のみ、1010 モジュールに straightening なし）。ソース名衝突 0。
+  右端の候補と指定変換を抽出済み。反転による局所比較と標準余錐からの比較は厳密に一致。
+- 最終検証：F1・F1B 同時ビルド成功（3508 jobs）、同時 import 検査成功（F1 5946・F1B 3717 宣言）。
+  公理監査成功（3721 宣言、標準三公理のみ、1017 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -70,7 +70,7 @@
 - `kanFiberwiseHom` / `kanFiberwiseHomFiberIso` / `kanRelativeJoinCoconeFiber_initialBoundary`
 - `kanCocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
-- `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftCommaFiber_hasColimit_iff_local`
+- `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
 - `F1B.exists_kanLeftComma_diagram_with_colimit_fibers` / `F1B.kanRelativeJoinFiberCocone`
 
@@ -83,7 +83,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：始点境界充填の fiber への制限、相対 join の各 fiber の余錐の余極限性、集約・監査・本書）。
+- なし（本保存単位：候補と指定変換、slice と円柱の反転、標準局所比較の同値、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -98,9 +98,9 @@
 
 ### 次の一手
 
-- `exists_kanLeftComma_diagram_with_colimit_fibers` は一般の δ から各 fiber で普遍な H を返す。
-  次は H の右端と `kanRelativeJoinTransformation` を `kanLeftCommaInclusion` で元の K へ制限。
-  反転で作った局所比較が slice の標準の指定変換を保つことを確認し、制限余錐を局所 Kan 余錐と比較する。
+- `exists_kanLeftComma_candidate` で候補と指定変換を抽出済み。標準局所比較の同値性も証明済み。
+  次は `kanLeftCommaLift` による指定変換の回収と、恒等矢印の包含からの comma 内の比較を構成する。
+  `kanRelativeJoinFiberCocone` の標準局所比較への制限を `LeftKanCoconeTransport` の余錐と同定し、
   `IsLeftKanExtension` の存在へ接続する（Kerodon 7.3.4–5）。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
