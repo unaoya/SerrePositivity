@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberEquivalence
+import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberDesc
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberExists
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundarySolution
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiberSquare
@@ -141,6 +143,23 @@ import SerrePositivity.InfinityCategories.Derived.TriangleMiddleKnownFaces
 import SerrePositivity.InfinityCategories.Derived.TriangleMiddleMissingFace
 
 import Lean.Util.CollectAxioms
+
+#print axioms SerrePositivity.InfinityCategories.dgModuleMorphism_ext_cycle
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberLiftElement_closed
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberRetractElement_closed
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberLift_retract
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberContractionN_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberContractionN_decomposition
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberHomotopyElement_differential
+#print axioms SerrePositivity.InfinityCategories.dgModuleEdge_isIso_of_inverse
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberHomotopyIso
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberLift_isIso
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberLift_isInvertible
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberLift_projection
+#print axioms SerrePositivity.InfinityCategories.dgModuleCofiberFiberLift_nullHomotopy
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberDesc
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberDesc_inr
+#print axioms SerrePositivity.InfinityCategories.dgModuleFiberCofiberDesc_inl
 
 #print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryLeftCandidate_prefix_equation
 #print axioms SerrePositivity.InfinityCategories.dgModuleFiberBoundaryRightCandidate_prefix_equation
@@ -1529,6 +1548,15 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCycleFaithful,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberLift,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberRetraction,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberContraction,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberHomotopyBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleNerveHomotopyEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberDesc,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryCandidate,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryCandidateKnown,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiberBoundaryPrefixEquation,
