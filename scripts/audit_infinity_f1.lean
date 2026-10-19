@@ -4265,3 +4265,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.leftStraighteningInfinityMap_simplexFirstVertexIso
 #check @SerrePositivity.InfinityCategories.leftStraighteningInfinityMap_firstVertexFiberIso
 #check @SerrePositivity.InfinityCategories.leftStraighteningInfinityMap_evaluateIso
+
+#check @SerrePositivity.InfinityCategories.kanEnrichedDiagramArrowIndex
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.arrow_object
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.arrow_mixedHom
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.arrow_diagonal
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.realization_arrow
+#check @SerrePositivity.InfinityCategories.kanEnrichedDiagramArrowIndex_edge
+#check @SerrePositivity.InfinityCategories.KanEnrichedDiagram.realizationEdge_eq
+
+#check @SerrePositivity.InfinityCategories.relativeSectionDiagramInfinity_edge

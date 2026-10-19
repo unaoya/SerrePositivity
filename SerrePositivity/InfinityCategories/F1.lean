@@ -1030,3 +1030,5 @@ public import SerrePositivity.InfinityCategories.F1.TransportLocalizationUlift
 public import SerrePositivity.InfinityCategories.F1.TransportUliftFunctorDescent
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningAllBases
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningAllBasesEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.KanEnrichedDiagramArrow
