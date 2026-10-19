@@ -618,4 +618,11 @@ public import SerrePositivity.KST.SConstruction.PointedKanDiagramExtensionCompon
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCoherentComparison
 public import SerrePositivity.KST.SConstruction.PointedKanDiagramComponentEquivalences
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyCoherentOmegaCondition
+public import SerrePositivity.KST.SConstruction.FixedEndpointRestrictionCorrection
+public import SerrePositivity.KST.SConstruction.VertexDiscreteFunctionSimplices
+public import SerrePositivity.KST.SConstruction.VertexDiscretePinchedFamilies
+public import SerrePositivity.KST.SConstruction.VertexDiscreteEdgeClasses
+public import SerrePositivity.KST.SConstruction.VertexDiscreteHomotopyCorrection
+public import SerrePositivity.KST.SConstruction.PointedKanSpecifiedComponentCorrection
+public import SerrePositivity.KST.SConstruction.BoundaryAssemblyOriginalCoherentDiagram
 /-! # ∞-S• 構成と連結 K 理論 -/

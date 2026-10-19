@@ -9188,3 +9188,99 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramIso
 #print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyCoherentDiagramIso
+
+#check @SerrePositivity.KST.SConstruction.diagramPinchedVertex_map
+#print axioms SerrePositivity.KST.SConstruction.diagramPinchedVertex_map
+
+#check @SerrePositivity.KST.SConstruction.exists_fixedEndpoint_restriction_correction
+#print axioms SerrePositivity.KST.SConstruction.exists_fixedEndpoint_restriction_correction
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_evaluate
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_evaluate
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_reconstruct
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_reconstruct
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_map
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_map
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate_functorVertex
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate_functorVertex
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscretePinchedSimplex
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscretePinchedSimplex
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscretePinchedSimplex_map
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscretePinchedSimplex_map
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscretePinchedSimplex_reconstruct
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscretePinchedSimplex_reconstruct
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscretePinched_nonempty_edge
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscretePinched_nonempty_edge
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscretePinched_piZero_injective
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscretePinched_piZero_injective
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_vertex
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_vertex
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteSpecifiedEdge
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteSpecifiedEdge
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteSpecifiedEdge_evaluate
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteSpecifiedEdge_evaluate
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscreteFunctorEdge_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscreteFunctorEdge_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.vertexDiscrete_restriction_edge_evaluate
+#print axioms SerrePositivity.KST.SConstruction.vertexDiscrete_restriction_edge_evaluate
+
+#check @SerrePositivity.KST.SConstruction.exists_vertexDiscrete_homotopy_correction
+#print axioms SerrePositivity.KST.SConstruction.exists_vertexDiscrete_homotopy_correction
+
+#check @SerrePositivity.KST.SConstruction.diagramEdge_homMk_ofEq_iff
+#print axioms SerrePositivity.KST.SConstruction.diagramEdge_homMk_ofEq_iff
+
+#check @SerrePositivity.KST.SConstruction.pointedKanCoherentDiagram_vertex_any
+#print axioms SerrePositivity.KST.SConstruction.pointedKanCoherentDiagram_vertex_any
+
+#check @SerrePositivity.KST.SConstruction.pointedKanCoherentDiagram_discrete_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedKanCoherentDiagram_discrete_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramSpecifiedVertexEdge
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramSpecifiedVertexEdge
+
+#check @SerrePositivity.KST.SConstruction.pointedKanDiagramSpecifiedVertexEdge_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedKanDiagramSpecifiedVertexEdge_hom
+
+#check @SerrePositivity.KST.SConstruction.exists_pointedKanDiagram_specified_components
+#print axioms SerrePositivity.KST.SConstruction.exists_pointedKanDiagram_specified_components
+
+#check @SerrePositivity.KST.SConstruction.exists_boundaryAssemblySpecifiedCoherentHomotopy
+#print axioms SerrePositivity.KST.SConstruction.exists_boundaryAssemblySpecifiedCoherentHomotopy
+
+#check @SerrePositivity.KST.SConstruction.exists_boundaryAssemblyOriginalCoherentHomotopy
+#print axioms SerrePositivity.KST.SConstruction.exists_boundaryAssemblyOriginalCoherentHomotopy
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentHomotopy
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentHomotopy
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentHomotopy_component
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentHomotopy_component
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentHomotopy_hom
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentHomotopy_hom
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentHomotopy_vertex_edge
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentHomotopy_vertex_edge
+
+#check @SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentIso
+#print axioms SerrePositivity.KST.SConstruction.boundaryAssemblyOriginalCoherentIso
