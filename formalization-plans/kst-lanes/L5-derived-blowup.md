@@ -477,6 +477,9 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `finiteOverlapExceptionalBaseDGTransition_comp/id` | FiniteOverlapExceptionalBaseFunctoriality | 同一基底環上の実際の dg 関手としての恒等・合成則 |
 | `finiteOverlapExceptionalDGAlgebra`・射・恒等／合成律・`finiteOverlapExceptionalDGAlgebraDiagram` | FiniteOverlapExceptionalAlgebraDiagram | 全非空有限重なりの実際の例外因子の `Mon (Complex R)` 値関手 |
 | 基底制限包含・`finiteOverlapExceptionalDGAlgebraInclusion`・自然性・`finiteOverlapExceptionalDGAlgebraInclusionNatTrans` | FiniteOverlapExceptionalInclusionDiagram | 既存の blowup 係数図式から例外因子係数図式への指定自然変換 |
+| `FiniteOverlapExceptionalProductObject`・代数・dg 比較・`finiteOverlapExceptionalProductIso` | FiniteOverlapExceptionalProductIso | 各有限重なりでの例外因子と全 a_j の共通 Koszul 表示の指定 dg 代数同型 |
+| `finiteOverlapExceptionalProductMap`・恒等／合成律・図式・`finiteOverlapExceptionalProductDiagramIso` | FiniteOverlapExceptionalProductDiagram | 指定局所同型を共役に使って構成した全有限重なりの自然同型 |
+| `finiteOverlapExceptionalProductMap_inclusion` | FiniteOverlapExceptionalProductComponents | 共通表示の遷移が実際の環射による標準外積係数変更と一致する全次数・全ての元の式 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -544,7 +547,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全3207定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3257定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -641,8 +644,16 @@ dg 関手の等式として証明し、各一対象模型の自己 Hom を用い
 総外積上の係数自然性・チャート基底変換の可換式から、二つの実際の係数図式の間の
 指定自然変換 `finiteOverlapExceptionalDGAlgebraInclusionNatTrans` を構成済み。
 これは係数 dg 代数図式の構成であり、加群を厳密に貼り合わせる定義にはしない。
-次の実装単位は共通 Koszul 表示との図式としての比較、および
-coherent な降下・層の閉埋め込みとの比較。
+各有限重なりの全 a_j を微分とする共通 Koszul dg 模型を共通基底環へ制限し、
+例外因子からの指定 dg 比較と、単位・積を保つ指定 dg 代数同型を構成済み。
+この同型で実際の例外因子遷移を共役して共通表示の係数図式を構成し、
+元の例外因子図式との指定自然同型 `finiteOverlapExceptionalProductDiagramIso` を構成済み。
+共役という定義だけでは標準係数変更との同定とせず、任意の次数・任意の元について
+総外積への包含後の像が実際の有限重なり環射の標準係数変更と一致する式
+`finiteOverlapExceptionalProductMap_inclusion` を証明済み。原典は KST v4
+Lemma 3.6（pp.11–14）であり、共通 Koszul 表示を介した明示 dg 計算による再構成。
+次の実装単位は基底 Ko(A;a) から共通表示図式への係数射、
+および coherent な降下・層の閉埋め込みとの比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
