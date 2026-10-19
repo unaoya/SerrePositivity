@@ -597,6 +597,14 @@ public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeHomotopy
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedRelativeHomotopies
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativeHomotopies
 
+public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeHomotopyMap
+public import SerrePositivity.InfinityCategories.Derived.PinchedLinearFunctorLaws
+public import SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionNaturality
+public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeClosedRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFiller
+public import SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionIdentity
+public import SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFillerRefinement
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

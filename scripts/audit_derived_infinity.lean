@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFillerRefinement
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRelativeHomotopies
 import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPointed
 import SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedVertexEdges
@@ -1422,10 +1423,35 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_pinchedRelativeHomotopies
 #print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_actualRelativeHomotopies
 
+#print axioms SerrePositivity.InfinityCategories.PinchedRelativeHomotopy.map
+#print axioms SerrePositivity.InfinityCategories.PinchedRelativeHomotopy.map_comp_h
+#print axioms SerrePositivity.InfinityCategories.PinchedRelativeHomotopy.map_id_h
+#print axioms SerrePositivity.InfinityCategories.pinchedLinearSimplexMap_comp
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecomposition_naturality
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecomposition_map_comp
+#print axioms SerrePositivity.InfinityCategories.PinchedRelativeHomotopy.refineClosed
+#print axioms SerrePositivity.InfinityCategories.PinchedRelativeHomotopy.refineClosed_h
+#print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller
+#print axioms SerrePositivity.InfinityCategories.dgQuotientRelativeFiller_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller.actual_boundary
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecomposition_id
+#print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller.refineClosed
+#print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller.refineClosed_comp_h
+#print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller.refineClosed_comp_simplex
+#print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller.refineClosed_id_h
+#print axioms SerrePositivity.InfinityCategories.DGQuotientRelativeFiller.refineClosed_id_simplex
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.PinchedRelativeHomotopyMap,
+    `SerrePositivity.InfinityCategories.Derived.PinchedLinearFunctorLaws,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionNaturality,
+    `SerrePositivity.InfinityCategories.Derived.PinchedRelativeClosedRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionIdentity,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientRelativeFillerRefinement,
     `SerrePositivity.InfinityCategories.Derived.PinchedConeInterval,
     `SerrePositivity.InfinityCategories.Derived.PinchedMissingFaceZero,
     `SerrePositivity.InfinityCategories.Derived.PinchedNormalizedPrism,
