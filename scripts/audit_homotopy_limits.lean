@@ -7360,3 +7360,108 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @coconeBoundaryTransportHomotopy_projection
 #print axioms coconeBoundaryTransportHomotopy_projection
+
+#check @fixedExtensionRestriction
+#print axioms fixedExtensionRestriction
+
+#check @fixedExtensionRestriction_ι
+#print axioms fixedExtensionRestriction_ι
+
+#check @fixedExtensionRestriction_vertex
+#print axioms fixedExtensionRestriction_vertex
+
+#check @fixedExtensionRestriction_uncurry
+#print axioms fixedExtensionRestriction_uncurry
+
+#check @fixedExtensionRestriction_endpoint
+#print axioms fixedExtensionRestriction_endpoint
+
+#check @contractibleVertexIso_map
+#print axioms contractibleVertexIso_map
+
+#check @fixedExtensionRestriction_vertexIso_map
+#print axioms fixedExtensionRestriction_vertexIso_map
+
+#check @fixedExtensionRestriction_edge_homMk
+#print axioms fixedExtensionRestriction_edge_homMk
+
+#check @triangleLongInitial_firstVertex
+#print axioms triangleLongInitial_firstVertex
+
+#check @triangleFirstInitial_firstVertex
+#print axioms triangleFirstInitial_firstVertex
+
+#check @edgeInitial_firstVertex
+#print axioms edgeInitial_firstVertex
+
+#check @triangleLongInitial_leftAnodyne
+#print axioms triangleLongInitial_leftAnodyne
+
+#check @edgeInitial_leftAnodyne
+#print axioms edgeInitial_leftAnodyne
+
+#check @specifiedCoconeLeftTriangleExtension_initial
+#print axioms specifiedCoconeLeftTriangleExtension_initial
+
+#check @specifiedCoconeLeftTriangleExtension_initial_base
+#print axioms specifiedCoconeLeftTriangleExtension_initial_base
+
+#check @specifiedCoconeLeftTriangleExtensionSpace
+#print axioms specifiedCoconeLeftTriangleExtensionSpace
+
+#check @specifiedCoconeLeftTriangleExtensionSpace_isContractibleKan
+#print axioms specifiedCoconeLeftTriangleExtensionSpace_isContractibleKan
+
+#check @specifiedCoconeLeftActualTriangleExtensionVertex
+#print axioms specifiedCoconeLeftActualTriangleExtensionVertex
+
+#check @specifiedCoconeLeftStandardTriangleExtension_initial
+#print axioms specifiedCoconeLeftStandardTriangleExtension_initial
+
+#check @specifiedCoconeLeftStandardTriangleExtensionVertex
+#print axioms specifiedCoconeLeftStandardTriangleExtensionVertex
+
+#check @specifiedCoconeLeftTriangleLongRestriction
+#print axioms specifiedCoconeLeftTriangleLongRestriction
+
+#check @specifiedCoconeLeftActualTriangleExtensionVertex_long
+#print axioms specifiedCoconeLeftActualTriangleExtensionVertex_long
+
+#check @specifiedCoconeLeftStandardTriangleExtensionVertex_long
+#print axioms specifiedCoconeLeftStandardTriangleExtensionVertex_long
+
+#check @specifiedCoconeLeftTriangleLongComparisonIso
+#print axioms specifiedCoconeLeftTriangleLongComparisonIso
+
+#check @specifiedCoconeLeftTriangleLongComparisonIso_eq
+#print axioms specifiedCoconeLeftTriangleLongComparisonIso_eq
+
+#check @SpecifiedCoconeLeftTriangleComparison
+#print axioms SpecifiedCoconeLeftTriangleComparison
+
+#check @specifiedCoconeLeftTriangleComparison
+#print axioms specifiedCoconeLeftTriangleComparison
+
+#check @specifiedCoconeLeftTriangleComparisonExtensionEdge
+#print axioms specifiedCoconeLeftTriangleComparisonExtensionEdge
+
+#check @specifiedCoconeLeftTriangleComparisonExtensionEdge_uncurry
+#print axioms specifiedCoconeLeftTriangleComparisonExtensionEdge_uncurry
+
+#check @specifiedCoconeLeftTriangleComparisonExtensionEdge_long_uncurry
+#print axioms specifiedCoconeLeftTriangleComparisonExtensionEdge_long_uncurry
+
+#check @specifiedCoconeLeftTriangleComparisonExtensionEdge_long_homMk
+#print axioms specifiedCoconeLeftTriangleComparisonExtensionEdge_long_homMk
+
+#check @SpecifiedCoconeLeftTriangleComparison.mk
+#print axioms SpecifiedCoconeLeftTriangleComparison.mk
+
+#check @SpecifiedCoconeLeftTriangleComparison.homotopy
+#print axioms SpecifiedCoconeLeftTriangleComparison.homotopy
+
+#check @SpecifiedCoconeLeftTriangleComparison.projection
+#print axioms SpecifiedCoconeLeftTriangleComparison.projection
+
+#check @SpecifiedCoconeLeftTriangleComparison.initial
+#print axioms SpecifiedCoconeLeftTriangleComparison.initial
