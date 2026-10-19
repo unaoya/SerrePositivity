@@ -125,7 +125,9 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   join の標準切断から錐の図式全体の Hom の族とその制限の評価式を構成。
   頂点での標準 Hom 比較・制限での coend 比較との厳密な一致を証明。
   一般の通常の小圏上の Kan 値図式について、Kan coend の実際の coherent 余錐の ∞ 余極限性を公開。
-  一般の γ4 と任意の coherent 図式の余極限も未完了。
+  任意の coherent 図式の切断空間を、セル付加の押し出しと骨格の塔の厳密な極限で表示。
+  left fibration では骨格の制限は Kan fibration。切断空間の表示からの余極限の構成は未完了。
+  一般の γ4 も未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 主要宣言：F2N 固有の公開宣言はまだない。
 - 依存と提供：F1 の Yoneda・前層と F1b の随伴・Kan 拡張・cofinality を読み取り専用で使用。

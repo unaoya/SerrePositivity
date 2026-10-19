@@ -36,7 +36,11 @@
   定値単体への始点置換と恒等射の coslice 点を照合し、任意の coherent な錐の族の頂点評価を標準 Hom 比較と同定。
   切断空間の点から作った錐の切断を普遍点の weighted な評価へ戻し、coend の比較と制限で厳密に一致すると証明。
   両条件を極限判定へ渡し、一般の通常の小圏上の Kan 値図式の反対錐の ∞ 極限性と、元の余錐の ∞ 余極限性を公開。
-  任意の coherent 図式への接続は未完了。詳細はコミットメッセージを参照。
+  図式の形状の押し出しに沿う切断の全パラメータの一意な貼り合わせと、切断空間の厳密な引き戻し同型を公開。
+  任意の底上の通常の余極限に対し、相対関手空間が各部分の相対関手空間の極限になることを構成。
+  既存の相対骨格列とセル付加へ適用し、任意の coherent 図式の切断空間の骨格の塔による極限表示と、
+  後続段階の境界・単体の押し出しによる極限表示を検証。left fibration では塔の各値は Kan、制限は Kan fibration。
+  切断空間の表示から余極限の頂点・余錐を構成する接続は未完了。詳細はコミットメッセージを参照。
   F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3 に記載。
 - **残り**（依存順・時間は再開後の概算）：
   1. γ3c：通常の小圏上の Kan 値図式の coend 余極限から、任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
@@ -64,11 +68,13 @@
   `coherentCosliceSourcePrecomposition_weighted`、`coneIdentityCosliceSection`、
   `coherentConeSourceFamily`、`coherentConeSourceFamily_evaluation`、
   `bousfieldKanCoherentConeSourceFamily_restrict`、`bousfieldKanCoherentOppositeCone_isLimit`、
-  `bousfieldKanCoherentCocone_isColimit`、`kanDiagramCoherentNerve_hasColimit`。
+  `bousfieldKanCoherentCocone_isColimit`、`kanDiagramCoherentNerve_hasColimit`、
+  `relativeFunctorOverPre_pushoutIso`、`relativeFunctorOverColimitCone_isLimit`、
+  `skeletalSectionCone_isLimit`、`skeletalSectionDiagram_map_fibration`、`skeletalCellSectionCone_isLimit`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は ConeInitialConstant・ConeIdentityApex・CosliceSourceIdentity・CoherentConeSourceApex・CoherentConePointSection・BousfieldKanConePointSection・CoherentConeSourceWeightedRestriction・BousfieldKanConeSourceRestriction・BousfieldKanCoherentColimit、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
+- **未コミット**：今回の保存単位は SectionShapePushout・SectionShapeColimit・SectionShapeOverDiagram・SectionShapeFibration・SkeletalConeSections・SkeletalCellSections、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -77,12 +83,13 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：一般の小さい単体集合 `K` と `p : ulift K → SpaceInfinity` の余極限へ拡張する。
-  通常の小圏の strict 図式は `bousfieldKanCoherentCocone_isColimit` で無条件に完了。
-  F1 の `LocalKanDiagramStrictification` と Core の `SkeletalLifting`・`SkeletalExtension`、
-  Stable の余極限付加・制限の API を読み取り専用で照合する。
-  単体ごとの strict 化だけでは大域的な図式の strict 化にならない。境界との整合性を明示して、
-  骨格の押し出しと余積・逐次余極限による構成、または通常の添字圏への cofinal な表示を実装する。
+- **次の一手**：骨格の切断空間の表示から、実際の余極限の頂点と余錐を構成する。
+  `SkeletalCellSections` の後続段階と `SkeletalConeSections` の極限段階は、任意の coherent な図式で検証済み。
+  `Stable/ColimitAttachment`・`ColimitFamilyExtension` と、`SpaceArbitraryPushouts`・
+  `SpaceArbitrarySequentialColimits` を読み取り専用で照合し、部分図式の余極限を付加して
+  後続段階を余極限対象の span、全体を余極限対象の列へ還元する。部分余錐の高次の整合性を保持する。
+  小さい `K` と `p : ulift K → SpaceInfinity` では、セルの添字と頂点の宇宙を u に戻すことも検証する。
+  切断空間の通常の極限表示だけでは、∞ 余極限の存在や普遍性を済ませたと数えない。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
 ### E2a（既存の引き継ぎ）
@@ -103,11 +110,13 @@
   底の境界 cofibration・収縮の擬同型からなる。区間の制限も構成済み。
   convolution の反復評価とその両変数自然性、各 arity の演算 chain map は構成済み。
   底の Hom(H,B) の `prepathComplex`、定数射と両端点評価の自然性も検証済み。
-  convolution の P 代数公理・代数射性・モデル的性質はまだ証明していない。
+  `convolutionAction_unit` と `convolutionAction_equivariance` で単位則・全置換の等変性を検証。
+  `convolutionAction_post` で P 代数射の後合成が各演算を保つことも検証済み。
+  部分合成則、余代数射の前合成、端点・定数の代数射性・モデル的性質は未完成。
   E2a-3 の工程 (2) の転送と工程 (3)・(4)、E2a-4・5、E2b・G1′ は未完成。
   現在地のコードと検証は本節と同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. convolution の単位・等変性・部分合成則、定数・端点の代数射性を証明し、
+  1. convolution の部分合成則、余代数射の前合成、定数・端点の代数射性を証明し、
      全代数の functorial path object を構成。底の評価の fibration・定数射の擬同型、
      fibrations.llp ⊆ 弱同値、J-cell acyclicity、小対象性・極限余極限と転送の適用を閉じる。
      Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
@@ -133,16 +142,10 @@
   `SerrePositivity.EInfinity.BarrattEccles.complexContraction`、
   `SerrePositivity.EInfinity.BarrattEccles.equivariantBasis_rightAction`、
   `SerrePositivity.EInfinity.AlexanderWhitney.diagonal`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_natural`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_coassoc`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.counit`、
   `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_vertex`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_rightAction`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_coassoc`、
-  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_left_counit`、
-  `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit`、
   `SerrePositivity.EInfinity.BarrattEccles.partialComposition_diagonal_tensorμ`、
   `SerrePositivity.EInfinity.BarrattEccles.unit_diagonal`、
   `SerrePositivity.EInfinity.BarrattEccles.hopfDiagonal`、
@@ -153,6 +156,10 @@
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.restrict`、
   `SerrePositivity.EInfinity.Operad.convolutionAction`、
+  `SerrePositivity.EInfinity.Operad.convolutionAction_unit`、
+  `SerrePositivity.EInfinity.Operad.convolutionAction_equivariance`、
+  `SerrePositivity.EInfinity.Operad.convolutionAction_post`、
+  `SerrePositivity.EInfinity.convolutionPowerEvaluation_permutation`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.prepathComplex`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constantNat`、
   `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationNat`。
@@ -164,8 +171,8 @@
   Alg_E のモデル構造・右 Quillen U・CAlg は未提供。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：対象ビルド成功（2729 jobs）、公理監査成功（5220 宣言、標準 3 公理のみ）。
-  新規 sorry・追加公理・名前衝突はなく、523 モジュールの import 閉包に他レーンの未コミット依存はない。
+- **既知の問題**：対象ビルド成功（2737 jobs）。公理監査を実行中。
+  新規 sorry・追加公理・名前衝突はなく、531 モジュールの import 閉包に他レーンの未コミット依存はない。
   今回の宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -173,10 +180,11 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：工程 (2) の convolution の P 代数公理を証明する。
-  `convolutionPowerEvaluation` の一次冪での公式を単位子と通常の評価へ直し、
-  Hopf 対角の単位保存、`Coalgebra.unit_coaction`、`Algebra.unit_action` から
-  `convolutionAction` の単位則を閉じる。その後に等変性・部分合成則と端点・定数射の保存則。
+- **次の一手**：工程 (2) の convolution の部分合成則を証明する。
+  反復評価の二ブロックの連結との適合性を証明し、入力への代入と出力への余代入を
+  評価で比較する。Hopf 対角の部分合成保存、`Coalgebra.comp_coaction` と
+  `Algebra.comp_action` から `convolutionAction` の部分合成則を閉じる。
+  その後に余代数射の前合成・端点・定数射の保存則を証明し P 代数へ束ねる。
   `prepathComplex` は底の複体の三角形と関手性だけで、まだ代数の path object ではない。
   TR・具体区間には着手していない。
 

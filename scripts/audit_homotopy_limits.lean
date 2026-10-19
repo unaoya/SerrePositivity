@@ -4546,3 +4546,72 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @kanDiagramCoherentNerve_hasColimit
 #print axioms kanDiagramCoherentNerve_hasColimit
+
+#check @relativeFunctorOverPre_pushout_lift
+#print axioms relativeFunctorOverPre_pushout_lift
+
+#check @relativeFunctorOverPre_isPullback_of_pushout
+#print axioms relativeFunctorOverPre_isPullback_of_pushout
+
+#check @relativeFunctorOverPre_pushoutIso
+#print axioms relativeFunctorOverPre_pushoutIso
+
+#check @relativeFunctorOverColimitCone
+#print axioms relativeFunctorOverColimitCone
+
+#check @relativeFunctorOver_colimit_lift
+#print axioms relativeFunctorOver_colimit_lift
+
+#check @relativeFunctorOverColimitCone_isLimit
+#print axioms relativeFunctorOverColimitCone_isLimit
+
+#check @sectionShapeOverDiagram
+#print axioms sectionShapeOverDiagram
+
+#check @sectionShapeOverCocone
+#print axioms sectionShapeOverCocone
+
+#check @sectionShapeOverCocone_isColimit
+#print axioms sectionShapeOverCocone_isColimit
+
+#check @sectionShapeOverCone_isLimit
+#print axioms sectionShapeOverCone_isLimit
+
+#check @relativeFunctorOverPre_eq_pre_transport
+#print axioms relativeFunctorOverPre_eq_pre_transport
+
+#check @relativeFunctorOverPre_fibration
+#print axioms relativeFunctorOverPre_fibration
+
+#check @skeletalSectionDiagram
+#print axioms skeletalSectionDiagram
+
+#check @skeletalSectionCone
+#print axioms skeletalSectionCone
+
+#check @skeletalSectionCone_isLimit
+#print axioms skeletalSectionCone_isLimit
+
+#check @skeletalSectionDiagram_obj
+#print axioms skeletalSectionDiagram_obj
+
+#check @skeletalSectionDiagram_obj_kanComplex
+#print axioms skeletalSectionDiagram_obj_kanComplex
+
+#check @skeletalSectionDiagram_map_fibration
+#print axioms skeletalSectionDiagram_map_fibration
+
+#check @skeletalCellShapeCocone
+#print axioms skeletalCellShapeCocone
+
+#check @skeletalCellShapeCocone_isColimit
+#print axioms skeletalCellShapeCocone_isColimit
+
+#check @skeletalCellOverDiagram
+#print axioms skeletalCellOverDiagram
+
+#check @skeletalCellSectionCone
+#print axioms skeletalCellSectionCone
+
+#check @skeletalCellSectionCone_isLimit
+#print axioms skeletalCellSectionCone_isLimit
