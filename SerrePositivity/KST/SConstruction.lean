@@ -198,4 +198,10 @@ public import SerrePositivity.KST.SConstruction.TrivialFibrationPrism
 public import SerrePositivity.KST.SConstruction.ArrowSourcePrism
 public import SerrePositivity.KST.SConstruction.McCarthyLambdaNu
 
+public import SerrePositivity.KST.SConstruction.SpanPrisms
+public import SerrePositivity.KST.SConstruction.McCarthySpan
+public import SerrePositivity.KST.SConstruction.SpanCoordinateExchange
+public import SerrePositivity.KST.SConstruction.PointwisePushoutApex
+public import SerrePositivity.KST.SConstruction.McCarthyRhoRaw
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -7070,3 +7070,190 @@ lemma mcCarthyLambdaNu_source {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStab
 Core と他レーンの公開名・型は変更なし。
 
 検証：対象ビルド成功（3213 jobs）、公理監査成功（1621 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.59 McCarthy の span と C 内の点ごとの ρ の候補・恒等端点
+
+共通始点を持つ任意の二つの prism を標準 span の族に貼る一般構成を証明した。
+後合成とパラメーターの前合成に厳密に自然であり、第一枝が一定なら標準恒等 span の形状を回収する。
+左 fiber の subobject の等号を用い、λ→μ と λ→ν を `mcCarthySpan` に貼った。
+二本の枝の厳密な回収、面と退化の前合成との自然性、時刻零の恒等 span の式を証明した。
+span と cofiber 正方形の座標を交換し、C 内の同じ正規化した押し出し頂点の族を適用して
+`mcCarthyRhoRaw` を構成した。全ての面と退化との自然性は厳密な等号である。
+時刻の単体が全て零のとき、点ごとの正規化によって元の cofiber 図式を正方形の族全体として厳密に回収した。
+raw な正方形の族の段階であり、cofiber の全部分複体への持ち上げ、gapped 性、左 fiber の条件はまだ未証明。
+ρ や加法性の完成とは数えない。
+
+主要公開宣言（namespace `SerrePositivity.KST.SConstruction`、宇宙 `u`）：
+
+```lean
+lemma spanPrism_source (K : SSet.{u}) :
+    stdSimplex.δ (1 : Fin 2) ▷ K = snd (Δ[0] : SSet.{u}) K ≫ prismEndpoint 0 K
+
+lemma spanPrisms_isPushout (K : SSet.{u}) :
+    IsPushout (stdSimplex.δ (1 : Fin 2) ▷ K) (stdSimplex.δ (1 : Fin 2) ▷ K)
+      (horn₂₀.ι₀₁ ▷ K) (horn₂₀.ι₀₂ ▷ K)
+
+def spanPrisms {K D : SSet.{u}} (L R : (Δ[1] : SSet.{u}) ⊗ K ⟶ D)
+    (h : prismEndpoint 0 K ≫ L = prismEndpoint 0 K ≫ R) :
+    (horn 2 0 : SSet.{u}) ⊗ K ⟶ D
+
+lemma spanPrisms_left {K D : SSet.{u}} (L R : (Δ[1] : SSet.{u}) ⊗ K ⟶ D)
+    (h : prismEndpoint 0 K ≫ L = prismEndpoint 0 K ≫ R) :
+    (horn₂₀.ι₀₁ ▷ K) ≫ spanPrisms L R h = L
+
+lemma spanPrisms_right {K D : SSet.{u}} (L R : (Δ[1] : SSet.{u}) ⊗ K ⟶ D)
+    (h : prismEndpoint 0 K ≫ L = prismEndpoint 0 K ≫ R) :
+    (horn₂₀.ι₀₂ ▷ K) ≫ spanPrisms L R h = R
+
+lemma spanPrisms_hom_ext {K D : SSet.{u}} {F G : (horn 2 0 : SSet.{u}) ⊗ K ⟶ D}
+    (h₁ : (horn₂₀.ι₀₁ ▷ K) ≫ F = (horn₂₀.ι₀₁ ▷ K) ≫ G)
+    (h₂ : (horn₂₀.ι₀₂ ▷ K) ≫ F = (horn₂₀.ι₀₂ ▷ K) ≫ G) : F = G
+
+lemma spanPrisms_post {K D E : SSet.{u}} (L R : (Δ[1] : SSet.{u}) ⊗ K ⟶ D)
+    (h : prismEndpoint 0 K ≫ L = prismEndpoint 0 K ≫ R) (q : D ⟶ E)
+    (h' : prismEndpoint 0 K ≫ (L ≫ q) = prismEndpoint 0 K ≫ (R ≫ q)) :
+    spanPrisms L R h ≫ q = spanPrisms (L ≫ q) (R ≫ q) h'
+
+lemma spanPrisms_pre {K K' D : SSet.{u}} (L R : (Δ[1] : SSet.{u}) ⊗ K ⟶ D)
+    (h : prismEndpoint 0 K ≫ L = prismEndpoint 0 K ≫ R) (i : K' ⟶ K)
+    (h' : prismEndpoint 0 K' ≫ ((Δ[1] ◁ i) ≫ L) =
+      prismEndpoint 0 K' ≫ ((Δ[1] ◁ i) ≫ R)) :
+    ((horn 2 0 : SSet.{u}) ◁ i) ≫ spanPrisms L R h =
+      spanPrisms ((Δ[1] ◁ i) ≫ L) ((Δ[1] ◁ i) ≫ R) h'
+
+lemma spanPrisms_constant_left {K D : SSet.{u}} (L R : (Δ[1] : SSet.{u}) ⊗ K ⟶ D)
+    (h : prismEndpoint 0 K ≫ L = prismEndpoint 0 K ≫ R) (f : K ⟶ D)
+    (hL : L = snd (Δ[1] : SSet.{u}) K ≫ f) (hR : prismEndpoint 0 K ≫ R = f) :
+    spanPrisms L R h = (identitySpanShape false ▷ K) ≫ R
+
+def mcCarthySpan {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
+    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      arNerveMap α ≫ A) : (horn 2 0 : SSet.{u}) ⊗ arNerve n ⟶ cofiberDiagrams C
+
+lemma mcCarthySpan_upper {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
+    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      arNerveMap α ≫ A) :
+    (horn₂₀.ι₀₁ ▷ arNerve n) ≫ mcCarthySpan z A α τ E h = mcCarthyLambdaMu z A α τ
+
+lemma mcCarthySpan_left {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
+    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      arNerveMap α ≫ A) :
+    (horn₂₀.ι₀₂ ▷ arNerve n) ≫ mcCarthySpan z A α τ E h = mcCarthyLambdaNu z E
+
+lemma mcCarthySpan_pre {l n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
+    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      arNerveMap α ≫ A) (σ : Fin (l + 1) →o Fin (n + 1))
+    (h' : (arNerveMap σ ≫ E) ≫ cofiberProjection C ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = arNerveMap (α.comp σ) ≫ A) :
+    ((horn 2 0 : SSet.{u}) ◁ arNerveMap σ) ≫ mcCarthySpan z A α τ E h =
+      mcCarthySpan z A (α.comp σ) (τ.comp σ) (arNerveMap σ ≫ E) h'
+
+lemma mcCarthyLambdaMu_source {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) :
+    mcCarthyLambdaMu z A α τ ≫ cofiberProjection C ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = mcCarthyArMotion α τ ≫ A
+
+lemma mcCarthySpan_timeZero {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (E : arNerve n ⟶ cofiberDiagrams C)
+    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      arNerveMap α ≫ A) :
+    mcCarthySpan z A α (OrderHom.const _ 0) E h =
+      (identitySpanShape false ▷ arNerve n) ≫ mcCarthyLambdaNu z E
+
+def exchangeFirstTwo (A B K : SSet.{u}) : A ⊗ (B ⊗ K) ⟶ B ⊗ (A ⊗ K)
+
+lemma exchangeFirstTwo_naturality (A B : SSet.{u}) {L K : SSet.{u}} (i : L ⟶ K) :
+    (A ◁ (B ◁ i)) ≫ exchangeFirstTwo A B K =
+      exchangeFirstTwo A B L ≫ (B ◁ (A ◁ i))
+
+def exchangeDiagramFamily {A B K C : SSet.{u}} (F : A ⊗ K ⟶ (ihom B).obj C) :
+    B ⊗ K ⟶ (ihom A).obj C
+
+lemma exchangeDiagramFamily_pre {A B K L C : SSet.{u}}
+    (F : A ⊗ K ⟶ (ihom B).obj C) (i : L ⟶ K) :
+    exchangeDiagramFamily ((A ◁ i) ≫ F) = (B ◁ i) ≫ exchangeDiagramFamily F
+
+lemma exchangeFirstTwo_naturality_left {A A' : SSet.{u}} (i : A' ⟶ A) (B K : SSet.{u}) :
+    (i ▷ (B ⊗ K)) ≫ exchangeFirstTwo A B K =
+      exchangeFirstTwo A' B K ≫ (B ◁ (i ▷ K))
+
+lemma exchangeDiagramFamily_pre_left {A A' B K C : SSet.{u}}
+    (F : A ⊗ K ⟶ (ihom B).obj C) (i : A' ⟶ A) :
+    exchangeDiagramFamily ((i ▷ K) ≫ F) = exchangeDiagramFamily F ≫ (pre i).app C
+
+lemma exchangeDiagramFamily_evaluation_interval {B K C : SSet.{u}}
+    (F : (Δ[1] : SSet.{u}) ⊗ K ⟶ (ihom B).obj C) (i : Fin 2) :
+    exchangeDiagramFamily F ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i) =
+      uncurry (prismEndpoint i K ≫ F)
+
+def pointwisePushoutApex {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (d : K ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) : K ⟶ C
+
+lemma pointwisePushoutApex_pre {K L C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (d : K ⟶ (ihom (horn 2 0 : SSet.{u})).obj C) (i : L ⟶ K) :
+    pointwisePushoutApex (i ≫ d) = i ≫ pointwisePushoutApex d
+
+def pointwiseDiagramPushoutApex {B K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (F : (horn 2 0 : SSet.{u}) ⊗ K ⟶ (ihom B).obj C) : K ⟶ (ihom B).obj C
+
+lemma pointwiseDiagramPushoutApex_pre {B K L C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (F : (horn 2 0 : SSet.{u}) ⊗ K ⟶ (ihom B).obj C) (i : L ⟶ K) :
+    pointwiseDiagramPushoutApex (((horn 2 0 : SSet.{u}) ◁ i) ≫ F) =
+      i ≫ pointwiseDiagramPushoutApex F
+
+lemma pointwisePushoutApex_identity {K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (b : Bool) (g : K ⟶ (ihom (Δ[1] : SSet.{u})).obj C) :
+    pointwisePushoutApex (g ≫ identitySpanFamily b C) =
+      g ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma pointwiseDiagramPushoutApex_identity {B K C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (b : Bool) (F : (Δ[1] : SSet.{u}) ⊗ K ⟶ (ihom B).obj C) :
+    pointwiseDiagramPushoutApex ((identitySpanShape b ▷ K) ≫ F) = prismEndpoint 1 K ≫ F
+
+def mcCarthyRhoRaw {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
+    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      arNerveMap α ≫ A) : arNerve n ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C
+
+lemma mcCarthyRhoRaw_pre {l n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
+    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      arNerveMap α ≫ A) (σ : Fin (l + 1) →o Fin (n + 1))
+    (h' : (arNerveMap σ ≫ E) ≫ cofiberProjection C ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = arNerveMap (α.comp σ) ≫ A) :
+    mcCarthyRhoRaw z A (α.comp σ) (τ.comp σ) (arNerveMap σ ≫ E) h' =
+      arNerveMap σ ≫ mcCarthyRhoRaw z A α τ E h
+
+lemma mcCarthyRhoRaw_timeZero {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
+    (z : ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (E : arNerve n ⟶ cofiberDiagrams C)
+    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      arNerveMap α ≫ A) :
+    mcCarthyRhoRaw z A α (OrderHom.const _ 0) E h =
+      E ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι
+```
+
+前提：一般の span の貼り合わせと座標交換は任意の単体集合。押し出し頂点の選択と McCarthy の構成は
+`[Quasicategory C] [IsStable C]`、指定零対象 z、型に記した subobject の厳密な一致条件を要求する。
+この条件は左 fiber の pullback 条件に対応する。入力の図式の IsGapped は raw の構成や時刻零の式には要求しない。
+
+現在地：L1a・L1b 完了、L1c 継続中。McCarthy の span と C 内の点ごとの ρ の候補、
+面・退化との自然性、恒等射側の厳密な端点まで証明済み。cofiber 性・gapped 性・左 fiber 条件、
+ρ のもう一方の端点と第二のホモトピー、単体積 Quillen A、加法性比較の弱同値性は未完了。
+面のホモトピー引き戻し条件、反復 S 実現と §6.43 の homotopy fiber の比較、構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトルとスペクトル関手も未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core と他レーンの公開名・型は変更なし。
+
+検証：対象ビルド成功（3218 jobs）、公理監査成功（1652 宣言、標準三公理のみ）。追加公理・sorry なし。

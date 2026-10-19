@@ -4127,3 +4127,65 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_one
 #check @SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_source
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaNu_source
+#check @SerrePositivity.KST.SConstruction.spanPrism_source
+#print axioms SerrePositivity.KST.SConstruction.spanPrism_source
+#check @SerrePositivity.KST.SConstruction.spanPrisms_isPushout
+#print axioms SerrePositivity.KST.SConstruction.spanPrisms_isPushout
+#check @SerrePositivity.KST.SConstruction.spanPrisms
+#print axioms SerrePositivity.KST.SConstruction.spanPrisms
+#check @SerrePositivity.KST.SConstruction.spanPrisms_left
+#print axioms SerrePositivity.KST.SConstruction.spanPrisms_left
+#check @SerrePositivity.KST.SConstruction.spanPrisms_right
+#print axioms SerrePositivity.KST.SConstruction.spanPrisms_right
+#check @SerrePositivity.KST.SConstruction.spanPrisms_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.spanPrisms_hom_ext
+#check @SerrePositivity.KST.SConstruction.spanPrisms_post
+#print axioms SerrePositivity.KST.SConstruction.spanPrisms_post
+#check @SerrePositivity.KST.SConstruction.spanPrisms_pre
+#print axioms SerrePositivity.KST.SConstruction.spanPrisms_pre
+#check @SerrePositivity.KST.SConstruction.spanPrisms_constant_left
+#print axioms SerrePositivity.KST.SConstruction.spanPrisms_constant_left
+#check @SerrePositivity.KST.SConstruction.mcCarthySpan
+#print axioms SerrePositivity.KST.SConstruction.mcCarthySpan
+#check @SerrePositivity.KST.SConstruction.mcCarthySpan_upper
+#print axioms SerrePositivity.KST.SConstruction.mcCarthySpan_upper
+#check @SerrePositivity.KST.SConstruction.mcCarthySpan_left
+#print axioms SerrePositivity.KST.SConstruction.mcCarthySpan_left
+#check @SerrePositivity.KST.SConstruction.mcCarthySpan_pre
+#print axioms SerrePositivity.KST.SConstruction.mcCarthySpan_pre
+#check @SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_source
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyLambdaMu_source
+#check @SerrePositivity.KST.SConstruction.mcCarthySpan_timeZero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthySpan_timeZero
+#check @SerrePositivity.KST.SConstruction.exchangeFirstTwo
+#print axioms SerrePositivity.KST.SConstruction.exchangeFirstTwo
+#check @SerrePositivity.KST.SConstruction.exchangeFirstTwo_naturality
+#print axioms SerrePositivity.KST.SConstruction.exchangeFirstTwo_naturality
+#check @SerrePositivity.KST.SConstruction.exchangeDiagramFamily
+#print axioms SerrePositivity.KST.SConstruction.exchangeDiagramFamily
+#check @SerrePositivity.KST.SConstruction.exchangeDiagramFamily_pre
+#print axioms SerrePositivity.KST.SConstruction.exchangeDiagramFamily_pre
+#check @SerrePositivity.KST.SConstruction.exchangeFirstTwo_naturality_left
+#print axioms SerrePositivity.KST.SConstruction.exchangeFirstTwo_naturality_left
+#check @SerrePositivity.KST.SConstruction.exchangeDiagramFamily_pre_left
+#print axioms SerrePositivity.KST.SConstruction.exchangeDiagramFamily_pre_left
+#check @SerrePositivity.KST.SConstruction.exchangeDiagramFamily_evaluation_interval
+#print axioms SerrePositivity.KST.SConstruction.exchangeDiagramFamily_evaluation_interval
+#check @SerrePositivity.KST.SConstruction.pointwisePushoutApex
+#print axioms SerrePositivity.KST.SConstruction.pointwisePushoutApex
+#check @SerrePositivity.KST.SConstruction.pointwisePushoutApex_pre
+#print axioms SerrePositivity.KST.SConstruction.pointwisePushoutApex_pre
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex_pre
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex_pre
+#check @SerrePositivity.KST.SConstruction.pointwisePushoutApex_identity
+#print axioms SerrePositivity.KST.SConstruction.pointwisePushoutApex_identity
+#check @SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex_identity
+#print axioms SerrePositivity.KST.SConstruction.pointwiseDiagramPushoutApex_identity
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_pre
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_pre
+#check @SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_timeZero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoRaw_timeZero
