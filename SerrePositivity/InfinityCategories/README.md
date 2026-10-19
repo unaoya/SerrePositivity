@@ -2085,7 +2085,8 @@ Kan 複体の余錐では台の余極限性からこの Hom 条件を検証す�
 左脚の台が単射な span の通常の押し出しを Kan 置換した実際の ∞ 押し出しも公開した。
 任意の span は左脚を単射と trivial Kan fibration に分解して置換し、成分ごとの同値で
 元の図式へ余極限余錐を輸送した。元の両脚に条件なく、実際の ∞ 押し出しと頂点を公開した。
-一般の遷移を持つ列の置換・比較は後続工程。
+一般の遷移を持つ列も、各段の境界分解で単射な列へ置換し、元の図式へ輸送することで
+実際の homotopy 逐次余極限・native な余極限余錐・頂点の等号を構成した。
 任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
 この一般形状では q′ の全導来 fiber の可縮性による両向き判定も証明済み。
 任意の coherent な錐から strict な錐への pinched Hom は、標準点から回収した反転 end の
@@ -10661,3 +10662,108 @@ lemma spaceInfinity_hasColimit_span (F : AsSmall.{u} WalkingSpan ⥤ KanObject.{
 追跡済み・コミット済み・変更なしを確認した。
 ログ：`/tmp/gamma3-arbitrary-pushout-aggregate.log`、
 `/tmp/gamma3-arbitrary-pushout-audit.log`。
+
+### γ3：一般の遷移を持つ Kan 複体列の実際の homotopy 逐次余極限
+
+任意の F : AsSmall.{u} ℕ → KanObject.{u} に対し、全隣接遷移が台で単射な
+`kanSequenceMonoReplacement F` と、元の台の図式への厳密自然変換
+`kanSequenceMonoComparison F` を構成した。
+零段を元の F₀ として比較を恒等にし、置換済みの Rₙ から Fₙ₊₁ への合成
+pₙ ≫ F(n → n+1) を、Kan な中間対象 Rₙ₊₁ への単射 iₙ と trivial Kan fibration
+pₙ₊₁ に境界分解する。iₙ ≫ pₙ₊₁ = pₙ ≫ F(n → n+1) は厳密な等号。
+隣接射の列を ℕ 上の関手に延長し、この可換性から全ての射に対する自然性を得る。
+比較成分は零段で恒等、後続段で trivial Kan fibration なので、全て同値である。
+元の列の遷移の単射性・fibration 性は仮定しない。
+
+この置換した列 R の台の通常の逐次余極限は既存の定理で Kan。
+それを `spaceArbitrarySequentialColimitObject F` として取った。
+R の実際の ∞ 余極限余錐を、成分ごとの同値な自然変換に沿う図式の同型によって輸送し、
+**元の `kanDiagramCoherentNerve F` 上の** `spaceArbitrarySequentialColimitCocone F` を構成した。
+この余錐の native な `IsColimitCone` と、頂点が構成した対象の標準頂点に厳密に一致することを
+証明した。`spaceInfinity_hasColimit_sequence` が元の図式の ∞ 余極限の存在を公開する。
+脚の単射性、追加の Hom 条件、比較同値は前提にない。
+
+元の F の通常の余極限自体が homotopy 余極限であるとは主張しない。
+輸送した各脚の詳細な比較式も今回の型には含めない。
+一般形状の非反転 q_x への移送、E2a 完了後の E2b 適用は未完了で、γ3 全体は継続中。
+原典：HTT 4.2.4.1、Kerodon 7.5.3.12・7.5.4.6、境界の小対象論法。
+
+公開十二宣言の正確な型は以下。全て名前空間
+`SerrePositivity.InfinityCategories.HomotopyLimits` 内。宇宙は u、前提は各型に明記した。
+
+`KanSequenceMonoReplacement.lean`：
+
+```lean
+def kanSequenceMonoStage (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    (n : ℕ) → Σ X : KanObject.{u}, X ⟶ F.obj (AsSmall.up.obj n)
+```
+
+```lean
+def kanSequenceMonoStep (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) (n : ℕ) :
+    (kanSequenceMonoStage F n).1 ⟶ (kanSequenceMonoStage F (n + 1)).1
+```
+
+```lean
+lemma kanSequenceMonoStep_comparison (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) (n : ℕ) :
+    kanSequenceMonoStep F n ≫ (kanSequenceMonoStage F (n + 1)).2 =
+      (kanSequenceMonoStage F n).2 ≫ F.map (AsSmall.up.map (homOfLE (Nat.le_succ n)))
+```
+
+```lean
+def kanSequenceMonoReplacement (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    AsSmall.{u} ℕ ⥤ KanObject.{u}
+```
+
+```lean
+def kanSequenceMonoComparison (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    kanSequenceMonoReplacement F ⋙ kanObjectForget ⟶ F ⋙ kanObjectForget
+```
+
+```lean
+instance kanSequenceMonoReplacement_step_mono (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) (n : ℕ) :
+    Mono ((kanSequenceMonoReplacement F ⋙ kanObjectForget).map
+      (AsSmall.up.map (homOfLE (Nat.le_succ n))))
+```
+
+```lean
+lemma kanSequenceMonoComparison_isQCatEquivalence
+    (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) (i : AsSmall.{u} ℕ) :
+    IsQCatEquivalence (X := ((kanSequenceMonoReplacement F).obj i).obj) (Y := (F.obj i).obj)
+      ((kanSequenceMonoComparison F).app i)
+```
+
+`SpaceArbitrarySequentialColimits.lean`：
+
+```lean
+def spaceArbitrarySequentialColimitObject (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    KanObject.{u}
+```
+
+```lean
+def spaceArbitrarySequentialColimitCocone (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    JoinCocone (kanDiagramCoherentNerve F)
+```
+
+```lean
+lemma spaceArbitrarySequentialColimitCocone_vertex (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    (spaceArbitrarySequentialColimitCocone F).vertex =
+      spaceInfinityVertex (spaceArbitrarySequentialColimitObject F)
+```
+
+```lean
+lemma spaceArbitrarySequentialColimitCocone_isColimitCone
+    (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    IsColimitCone (spaceArbitrarySequentialColimitCocone F)
+```
+
+```lean
+lemma spaceInfinity_hasColimit_sequence (F : AsSmall.{u} ℕ ⥤ KanObject.{u}) :
+    SerrePositivity.InfinityCategories.HasColimit (kanDiagramCoherentNerve F)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（5123 jobs）、公開1651宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルの12宣言を監査に追加した。
+新規ファイルに警告・sorry・追加公理はない。他担当の再帰的な依存1229ソースは全て
+追跡済み・コミット済み・変更なしを再確認した。
+ログ：`/tmp/gamma3-arbitrary-sequence-aggregate.log`、
+`/tmp/gamma3-arbitrary-sequence-audit.log`。
