@@ -1785,3 +1785,17 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanCoconeTransportOpposite
 
 #check @SerrePositivity.InfinityCategories.F1B.kanCoconeTransportOpposite_cone_val
+
+#check @SerrePositivity.InfinityCategories.F1B.kanSliceUnderOpIso
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsColimitCone_iff_reverseCone
+
+#check @SerrePositivity.InfinityCategories.F1B.kanCoconeTransportOpposite_isLimit
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsLeftKanExtension_opposite
+
+#check @SerrePositivity.InfinityCategories.F1B.kanOppositeFunctor_square
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRightExtension_of_local_limits
+
+#check @SerrePositivity.InfinityCategories.F1B.exists_kanRightExtension_iff_local_limits

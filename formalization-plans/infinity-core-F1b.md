@@ -11,7 +11,7 @@
 - B4：任意の指定変換の相対 join 表示、両端の同時厳密化、h Fun の類の保存、
   元の左右 Kan 条件と厳密化後の局所極限・余極限性の同値まで証明。
 - 同じ宇宙の quasicategory K・C・D と任意の δ : K→C、F₀ : K→D に対し、
-  左 Kan 拡張の存在と全頂点 c の標準局所図式の余極限の存在との同値を証明。
+  左右 Kan 拡張の存在と全頂点 c の標準局所図式の余極限・極限の存在との同値を証明。
   各点の余錐を独立に選ぶだけでなく、指定変換つきの関手全体を構成する。
 - 構成経路：comma の反転 `F1B.kanLeftComma δ` の射影は cocartesian fibration。
   局所形からその fiber への標準比較は単射な前合成同値で、反転による比較と厳密に一致。
@@ -20,28 +20,25 @@
 - 右端から候補と指定変換を抽出。候補の標準局所輸送の余錐と、fiber の普遍余錐を
   標準比較へ制限した余錐を、図式・頂点を固定する比較円柱で結ぶ。
   始端・終端を厳密に同定し、全余錐の関手同型による余極限性の移送で左 Kan 条件を得る。
-- 双対化：図式の極限の存在と反転後の余極限の存在、その双対を任意の単体集合で証明。
-  左の局所余極限と反転後の右の局所極限の存在の同値も証明。
-  標準左比較余錐の反転を、局所添字と零単体の同型で標準右比較錐と厳密に同定。
-  `kanCoconeTransportOpposite` は指定変換を反転した実際の右輸送を構成する。
-  始端・図式・全時間の頂点固定・終端の余錐の反転との一致まで証明。普遍性の移送は次工程。
+- 双対化：coslice の反転と反転図式の slice の同型を構成し、余錐ごとの余極限性と
+  反転した錐の極限性の同値を証明。反転した右輸送の終端へ普遍性を移し、左 Kan 条件を右へ移す。
+  標準の二重反転同型の各次数の成分が恒等写像であることから、反転関手の二乗と恒等関手の
+  外延的な等式を証明。対象と射を同時に元へ戻し、一般の右 Kan 拡張の存在へ接続済み。
 - F1 の scaffold 比較は straightening に依存するため import しない。
   再構成した補題は `F1B.kanScaffoldBaseChange_overPullbackMap`。新規宣言も F1B 名前空間。
-- 最終検証：F1・F1B 同時ビルド成功（3588 jobs）、同時 import 検査成功（F1 6158・F1B 3850 宣言）。
-  公理監査成功（3854 宣言、標準三公理のみ、1055 モジュールに straightening なし）。ソース名衝突 0。
+- 最終検証：F1・F1B 同時ビルド成功（3598 jobs）、同時 import 検査成功（F1 6197・F1B 3876 宣言）。
+  公理監査成功（3880 宣言、標準三公理のみ、1059 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
-- 1. 右 Kan 拡張の存在を、左の存在定理と反転の双対性から構成する。
-  Kerodon §7.3.4–5・Prop 7.3.5.5／HTT §4.3。8〜24 時間。
-  左の組み立てと反転した局所形の極限条件の対応、指定変換に両立する輸送の反転は完了。
-  輸送の終端で普遍性を移し、二重反転を元のデータへ戻す。
-- 2. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
-  Kerodon Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。1 の後に 16〜40 時間。
-  原典は相対 Kan 拡張の存在（Prop 7.3.5.5）を使う。局所境界充填から直接は結論しない。
-- 3. 点ごとの Kan 条件から大域的 Hom の全単射と h Fun の大域的一意性へ接続。
-  Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。2 の後に 6〜16 時間。
-- 4. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
+- 1. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理。
+  Kerodon Prop 7.3.5.5・Prop 7.3.6.7・Cor 7.3.6.9／HTT §4.3。24〜60 時間。
+  絶対的な左右の存在は完了。原典 7.3.6.7 は isofibration U の上の相対的な存在を使う。
+  境界パラメータを固定する相対関手 V′ の局所 U-colimit の充填と、相対的な組み立てを接続する。
+  `InitialBoundaryLifting` の固定添字での相対余錐の族は既存。絶対的な存在だけから結論しない。
+- 2. 点ごとの Kan 条件から大域的 Hom の全単射と h Fun の大域的一意性へ接続。
+  Kerodon Prop 7.3.6.1・Remark 7.3.6.6／HTT §4.3。1 の後に 6〜16 時間。
+- 3. B5：通常の圏の nerve で古典随伴・Kan 拡張を回収し最終監査。
   Kerodon §6.1.1・Def 7.3.1.2・Variant 7.3.1.5／HTT §5.2・§4.3。12〜32 時間。
 - 右円柱比較の前合成同値は未証明。局所極限判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で証明。
 
@@ -56,8 +53,8 @@
 - `F1B.kanInitialBoundaryLifting_of_fiber_map` / `F1B.exists_kanRelativeJoin_diagram_extension_of_colimits`
 - `F1B.kanLeftCommaProjection_cocartesianFibration` / `F1B.kanLeftKanShapeToCommaFiber_isPrecompositionEquivalence`
 - `kanFiberwiseHomProjection_cartesianFibration` / `F1B.kanRelativeJoinBaseProjection_cocartesianFibration`
-- `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.kanLocalColimit_iff_oppositeLocalLimit`
-- `F1B.kanCoconeTransportOpposite` / `F1B.kanCoconeTransportOpposite_cone_val`
+- `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
+- `F1B.kanIsLeftKanExtension_opposite` / `F1B.kanOppositeFunctor_square`
 
 ### 依存と提供
 
@@ -68,7 +65,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：局所極限・余極限の存在の双対性、標準比較錐の反転、指定変換に沿う輸送の反転、集約・監査・本書）。
+- なし（本保存単位：coslice の反転、輸送の普遍性の移送、二重反転の厳密な消去、一般の右 Kan 拡張の存在、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -83,11 +80,11 @@
 
 ### 次の一手
 
-- `kanCoconeTransportOpposite_cone_val` で右輸送の終端の錐の射を元の余錐の反転と同定済み。
-  次はこの同定で余極限性を極限性へ移す。既存の `isLimitCone_iff_reverseCocone` は逆向きの
-  cone→cocone の判定なので、二重反転の添字・標的の同型も含めて適用する。
-  その後、左存在定理を δ.op へ適用し、指定変換つきの右拡張を元のデータへ戻す。
-  大域的 Hom 普遍性は別工程として残す。
+- `KanRelativeConeFamilies` と Kerodon [Prop 7.3.6.7 の証明](https://kerodon.net/tag/0308) を読む。
+  isofibration U : D→E の相対余錐制限を内部 Hom の pullback 比較として定式化し、
+  その `InitialBoundaryLifting` と U-colimit 余錐の条件を対応させる。
+  次に境界を固定する関手 V′ の局所充填、相対的な組み立て、写像空間の制限定理へ進む。
+  大域的 Hom 普遍性・B5・F2-lite はその後。左右の絶対的な存在条件は証明済み。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
 [foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
@@ -109,7 +106,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、指定変換の類の保存、部分パラメータを固定した相対充填、slice の相対 join への局所比較、左条件の局所余極限表示への還元、標準右指定変換の局所極限表示との同値、任意の右指定変換の円柱比較つき相対 join 表示、厳密化後の局所極限判定への合成、左 Kan 拡張の存在と局所余極限の存在の同値） |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、指定変換の類の保存、部分パラメータを固定した相対充填、slice の相対 join への局所比較、左条件の局所余極限表示への還元、標準右指定変換の局所極限表示との同値、任意の右指定変換の円柱比較つき相対 join 表示、厳密化後の局所極限判定への合成、左右 Kan 拡張の存在と局所余極限・極限の存在の同値） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定

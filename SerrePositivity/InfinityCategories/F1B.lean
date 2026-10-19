@@ -424,3 +424,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaCoconeColimit
 public import SerrePositivity.InfinityCategories.F1B.KanLimitColimitOpposite
 public import SerrePositivity.InfinityCategories.F1B.KanLocalCanonicalConeOpposite
 public import SerrePositivity.InfinityCategories.F1B.KanCoconeTransportOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanCosliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanTransportOppositeUniversality
+public import SerrePositivity.InfinityCategories.F1B.KanOppositeInvolution
+public import SerrePositivity.InfinityCategories.F1B.KanRightExistence
