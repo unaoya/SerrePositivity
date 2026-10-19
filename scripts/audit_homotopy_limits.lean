@@ -5542,3 +5542,72 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @coconeBoundaryPathCorrection_unique_homotopy
 #print axioms coconeBoundaryPathCorrection_unique_homotopy
+
+#check @coconeVertexLegAtCompStruct
+#print axioms coconeVertexLegAtCompStruct
+
+#check @strictCoconeVertexLegCompStruct
+#print axioms strictCoconeVertexLegCompStruct
+
+#check @partialColimitSpanRootLeg
+#print axioms partialColimitSpanRootLeg
+
+#check @partialColimitSpanLeftTriangle
+#print axioms partialColimitSpanLeftTriangle
+
+#check @partialColimitSpanRightTriangle
+#print axioms partialColimitSpanRightTriangle
+
+#check @partialColimitSpanTransportIso
+#print axioms partialColimitSpanTransportIso
+
+#check @partialColimitSpanTransportPath
+#print axioms partialColimitSpanTransportPath
+
+#check @partialColimitSpanTransportPath_zero
+#print axioms partialColimitSpanTransportPath_zero
+
+#check @partialColimitSpanTransportPath_one
+#print axioms partialColimitSpanTransportPath_one
+
+#check @liftedEdgeTransportPointIso
+#print axioms liftedEdgeTransportPointIso
+
+#check @colimitAttachmentTransportPointIso
+#print axioms colimitAttachmentTransportPointIso
+
+#check @coconeBoundaryTransportPointIso
+#print axioms coconeBoundaryTransportPointIso
+
+#check @partialColimitSpanBoundaryIso
+#print axioms partialColimitSpanBoundaryIso
+
+#check @partialColimitSpanBoundaryPath
+#print axioms partialColimitSpanBoundaryPath
+
+#check @partialColimitSpanBoundaryPath_zero
+#print axioms partialColimitSpanBoundaryPath_zero
+
+#check @partialColimitSpanBoundaryPath_one
+#print axioms partialColimitSpanBoundaryPath_one
+
+#check @partialColimitSpecifiedBoundaryCorrection
+#print axioms partialColimitSpecifiedBoundaryCorrection
+
+#check @partialColimitSpecifiedBoundaryFamily
+#print axioms partialColimitSpecifiedBoundaryFamily
+
+#check @partialColimitSpecifiedBoundaryFamily_left
+#print axioms partialColimitSpecifiedBoundaryFamily_left
+
+#check @partialColimitSpecifiedBoundaryFamily_right
+#print axioms partialColimitSpecifiedBoundaryFamily_right
+
+#check @partialColimitSpecifiedBoundaryCorrection_projection
+#print axioms partialColimitSpecifiedBoundaryCorrection_projection
+
+#check @partialColimitSpecifiedPathCocone
+#print axioms partialColimitSpecifiedPathCocone
+
+#check @partialColimitSpecifiedPathCocone_vertex
+#print axioms partialColimitSpecifiedPathCocone_vertex
