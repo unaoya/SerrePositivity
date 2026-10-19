@@ -1,6 +1,6 @@
 # D(S)：semifree 複体の dg nerve としての導来 ∞ 圏（レーン D）
 
-作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6・D8〜D10 完了。D7 は A4・別指示待ち。
+作成日：2026-10-17。更新：2026-10-19。状態：D1〜D6・D8〜D10 完了。D7 は D レーンで cofiber の普遍性を構成中。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§3。
 dg nerve（レーン N）は [dg-nerve.md](dg-nerve.md)。
 
@@ -12,7 +12,7 @@ D6a は完了。指定四辺による distinguished triangle と全整数次数�
 零次の射は D5d の H⁰ に一致する。接続射は D3 のシフト比較を通じて持ち上がる。
 D6b は完了。加群の離散埋め込み J は充満忠実で、H⁰ の自然同型は D5b の増大射を使う。
 D6c は完了。Hⁱ(x)=0（i≠0）と h D(S) での x≅J(H⁰x) の同値を持ち、
-比較同型を表す可逆な辺も公開する。D7（D(S) の安定性）は α の A4 の後の別指示を待つ。
+比較同型を表す可逆な辺も公開する。D7（D(S) の安定性）は D レーンで実装中。実境界の Q・A の cochain と微分式まで完成し、SimplexData への組み込みと cofiber の普遍性が残る。
 
 D8 は完了。Perf(S) は D(S) の実際の充満部分単体集合で、quasicategory・零対象を持つ。
 シフト・cone・fiber・有限直和を正本の頂点上に構成し、D4 の擬同型判定を双方向に制限した。
@@ -48,7 +48,7 @@ K-L9a の充填による正次数ホモトピー群を Moore ホモロジーへ�
 を群同型で公開する。零次数は π₀ Map(x,y) ≃ H⁰ Hom(x,y) ≃ Ext⁰(x,y) の全単射。
 Ext^i は通常の導来圏の Hom(X,Y[i]) と定義し、この段階だけ HasDerivedCategory を仮定する。
 可換環に有界性・Noether 性・完全性を課さず、標準導来圏での具体化も検証済み。
-D7 と dg 商の nerve 比較は従来どおり待機し、D9・D10 の主張に含めない。
+D7 と dg 商の nerve 比較（β3）は D レーンで順に進め、D9・D10 の主張に含めない。
 
 ## 主要宣言
 
@@ -100,7 +100,7 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | D5 | 通常の nerve からの射、関手的離散埋め込み、底変更、H⁰ | D1〜D4・N5 |
 | D6 | 指定四辺の長完全列、heart の充満忠実性、離散対象の特徴づけ | D3〜D5・Mathlib の三角構造 |
 | D8 | 完全導来 ∞ 圏 Perf(S) と閉性・引き戻し判定・ホモトピー圏の像 | D2・D3・D4、strictlyPerfectComplex |
-| D7 | D(S) の安定性と三角構造の整合 | α の A4、別指示待ち |
+| D7 | D(S) の cofiber の普遍性・安定性、D3 の三角同値への昇格 | D レーンで進行中。実境界の Q・A と微分式まで完成。次は SimplexData・coslice 充填 |
 
 semifree を K-projective より優先する理由：cone・シフト・直和・テンソル積・底変更で閉じ、
 D(S)^⊗ を対称モノイダル dg 圏の dg nerve として作れる。K-projective 版との同値は後の項目。

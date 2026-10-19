@@ -937,7 +937,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.PushoutHomCoordinates,
     `SerrePositivity.InfinityCategories.Derived.PushoutHomLift,
     `SerrePositivity.InfinityCategories.Derived.PushoutResidualMatrix,
-    `SerrePositivity.InfinityCategories.Derived.PushoutBoundaryEquations]
+    `SerrePositivity.InfinityCategories.Derived.PushoutBoundaryEquations,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

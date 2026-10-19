@@ -1,4 +1,4 @@
-# α-S：安定 ∞ 圏と D(S) の安定性
+# D レーン：D7 → β3 → β5 → β4
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の D。D7 の後、β3（Drinfeld 商 = Verdier 商）、β5（D(A)・⊗_A）、β4（gluing = lax pullback）。
 
@@ -9,16 +9,15 @@
 - α-S。S1〜S6 完了。安定 ∞ 圏の h の三角構造（TR1〜TR4）と完全関手の三角性を公開済み。
 - S7／D7 は途中。D(S) の零対象、任意の cospan の極限、指定した全辺の fiber は完成。
 - 標準 cofiber の正方形・余錐、coslice 境界の左右のデータ、共通面、六つの残差と全微分整合条件は完成。
-- 今回は Hom の三成分座標・逆座標と微分、整合条件を仮定した明示的持ち上げ、二包含・ホモトピー・対角との合成、二つの微分方程式まで検証した。
-- 実際の境界残差への代入、未知成分を含む SimplexData、coslice の充填、cofiber の押し出し性、D(S) の安定性は未完了。
-- 実装・集約・監査は `c371e6b6` に保存済み。
-- 対象＋Stable・Derived 集約ビルド：5,712 jobs 成功。新規公開 20 宣言の型検査も成功。
-- 公理監査：Stable 408 modules／3,197 宣言。Derived 139 modules／2,090 宣言。標準三公理のみ。
+- 実境界から Q・A の二未知 cochain を構成。q=−n−1 の符号照合、Q・A の微分式、Q と二包含・ホモトピー・対角との合成式を検証済み。
+- 未知成分を含む SimplexData、coslice の充填、cofiber の押し出し性、D(S) の安定性・D3 の三角比較は未完了。
+- 前工程は `c371e6b6`。今回の実装入口は `Derived/CofiberBoundaryLift.lean`。
+- 対象＋Stable・Derived 集約ビルド：5,713 jobs 成功。新規公開 9 宣言（定義 2、補題 7）。
+- 公理監査：Derived 140 modules／2,105 宣言、Stable 409 modules／3,212 宣言。標準三公理のみ。
 - 本文・archive への実施記録の追記はしていない。今回の到達点はこの節を正本とする。
 
 ### 残り（依存順、時間は推定）
 
-- 実境界の六残差を明示解へ代入し、q=−n−1 の符号を照合。HA Proposition 1.3.1.10、HTT §1.2.13：1〜3 時間。
 - 未知成分を SimplexData に組み込み、既知面の保存、右辺の変化、四種類の未知集合の全方程式、左右の共通面を証明。HA Proposition 1.3.1.10：8〜16 時間。
 - coslice 境界を貼り、標準余錐の始対象性と標準 cofiber 正方形の押し出し性を証明。HTT §1.2.13、HA Proposition 1.3.1.10：4〜8 時間。
 - semifree へ移し、全辺の cofiber と fiber/cofiber 列の一致から D(S) の IsStable を構成。HA Definition 1.1.1.9、Proposition 1.1.3.4：4〜8 時間。
@@ -33,31 +32,33 @@
 - `cofiberBoundaryRhsB_differential`、`cofiberBoundaryRhsC_differential`、`cofiberBoundaryRhsAB_differential`、`cofiberBoundaryRhsAC_differential`。
 - `biproductFromHomCoordinates`、`pushoutHomCoordinates`、`pushoutHomCoordinates_symm_differential`。
 - `pushoutHomBoundaryLift`、`pushoutResidual_matrix`、`pushoutHomBoundaryLift_differential_of_residuals`、`pushoutBoundary_A_equation`。
+- `cofiberBoundaryDegree_negOnePow`、`cofiberBoundaryLiftQ`、`cofiberBoundaryLiftA`、`cofiberBoundaryLiftQ_differential`、`cofiberBoundaryLiftA_differential`。
+- `cofiberBoundaryLiftQ_inclusionB`、`cofiberBoundaryLiftQ_inclusionC`、`cofiberBoundaryLiftQ_homotopy`、`cofiberBoundaryLiftQ_diagonal`。
 
 ### 依存と提供
 
 - Core・F1・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded は読み取り専用。他レーンのファイルは編集しない。
 - fiber 側は N7 の `semifreeFiberSquare_isPullback` を利用。N7f の cofiber 押し出し性は未実施で、到着を仮定しない。
 - 提供：Stable の S1〜S6、Derived/StableLimits、標準 cofiber と境界残差・Hom 座標の界面。
-- 編集対象は Stable/・Derived/、両集約と両監査、計画 `infinity-core-stable.md`。Derived 計画は他レーン所有。
+- 編集対象は Stable/・Derived/、両集約と両監査、計画 `infinity-core-stable.md`。明示指示により Derived 計画の D7 状態も更新する。
 
 ### 未コミット
 
-- 自分のファイルは実装・監査と本引き継ぎ節をそれぞれ `git commit --only` で保存し、未コミットなし。
+- 今回の新規モジュール・Derived 集約・両監査・二計画は所有ファイルだけで保存。自分の未コミットなし。
 - 他レーンの変更・未追跡ファイルは残したまま。本節には列挙せず、それらを取り込んでいない。
 
 ### 既知の問題
 
-- 今回の対象・集約ビルドおよび監査に失敗なし。既知の新規名前衝突なし。
-- 今回の五ファイルは可換環上の任意の非有界複体・整数次数を扱い、`ModelCategory SSet` の追加 instance 仮定なし。
-- 明示解の微分定理は四つの残差整合条件を仮定する。実境界が条件を満たす既存定理との接続は未実装。
+- 今回の対象・集約ビルドと両公理監査は成功。既知の新規名前衝突なし。
+- 今回の構成は可換環上の任意の非有界複体・整数次数を扱い、`ModelCategory SSet` の追加 instance 仮定なし。
+- 一般の明示解は残差整合条件を仮定するが、実境界の Q・A の微分定理はこれらを既存 Bianchi 定理から証明し、追加仮定にしない。
 - 六未知成分のうち Q 側を逆座標、A 側を右三角形残差の符号倍、他四成分を零にする予定。単体の全方程式はまだ保証していない。
 - 安定性の一般論から cofiber の普遍性を逆用しない。直接 coslice を充填して証明する設計を維持する。
 - import 閉包が再度壊れたら、他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- `CofiberBoundaryTriangleCompatibility` と `PushoutBoundaryEquations` を接続し、実際の境界から Q・A の二未知 cochain と微分式を定義・証明する一工程から再開する。
+- `CofiberBoundaryLift` の Q・A と他四成分の零を左右の `SimplexData` に組み込み、既知面の保存と右辺の変化を証明する。
 
 作成日：2026-10-18。状態：S1〜S6 完了。S7（D7）実装中。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
@@ -103,6 +104,39 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 公理監査は `scripts/audit_infinity_stable.lean`。許されるのは propext・Classical.choice・Quot.sound。
 - 集約 `InfinityCategories/Stable.lean` を作り、共有ルートへの追記はその public import 一行だけ。
   他チャットの変更・既存の未保存差分をコミットに含めない。
+
+
+## β3：Drinfeld 商と ∞ 圏的 Verdier 商
+
+D7 の後に着手。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
+F1b の `Localization.lean` の `IsLocalization` を入口とし、同じ宇宙の標的への
+`localizationPrecomposition` が反転関手の全部分 ∞ 圏との同値になることを証明する。
+
+- L4 §26（archive に移管）の半自由 dg 圏分解・Hom の K-flat 性・商の H⁰ 比較を読むだけで使う。
+- 必要な平坦分解を先行し、未分解の path 商が無条件に Verdier 商であるとはしない。
+- 前三角 dg 圏と安定な充満部分圏について、商の dg nerve の安定性、商関手の完全性、
+  零化する完全関手への前合成の同値、Verdier 列を構成する（見積もり 1〜2 万行）。
+- H⁰ の Verdier 商の同値だけで ∞ 関手圏の普遍性を済ませない。
+
+## β5：非可換 dg 代数の導来 ∞ 圏
+
+β3 の後。L4 §26 の dg 圏分解と既存の dg 加群の半自由分解を区別し、
+一般化は `InfinityCategories/Derived/` に置く（見積もり 1〜3 万行）。
+
+- 非可換 dg 代数 A の半自由 dg 加群から `D(A) := N_dg(Semifree(A))` と Perf(A) を構成する。
+- 双加群による相対テンソル・Hom に必要な分解と閉性を証明し、dg 関手を dg nerve に移す。
+- 単位・合成・随伴の整合性、Morita 同値による D(A)・Perf(A) の同値を証明する。
+- 単体環の Dold–Kan による dg 代数化を確認する。HA §7.1.2 は比較目標であり引用公理にしない。
+
+## β4：dg gluing と lax pullback
+
+β5 の後、α2b の Cat_∞ の極限・lax pullback の実装を待って接続する。
+原典は Tamme 2018 §1、Kuznetsov–Lunts。見積もり 1〜2 万行。
+
+- 双加群に沿う gluing の対象・写像複体・合成・微分を具体的に構成する。
+- dg nerve から二射影と構造変換を作り、α2b の Fun(Δ¹,−) による lax pullback への比較を作る。
+- 比較の完全忠実性・本質的全射性と ∞ 圏的普遍性を証明し、安定性・完全射影を供給する。
+- α2b の未提供の極限や h の通常の pullback を完成済みの ∞ lax pullback と扱わない。
 
 ## 記録の所在
 

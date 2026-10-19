@@ -120,6 +120,7 @@ public import SerrePositivity.InfinityCategories.Derived.PushoutHomCoordinates
 public import SerrePositivity.InfinityCategories.Derived.PushoutHomLift
 public import SerrePositivity.InfinityCategories.Derived.PushoutResidualMatrix
 public import SerrePositivity.InfinityCategories.Derived.PushoutBoundaryEquations
+public import SerrePositivity.InfinityCategories.Derived.CofiberBoundaryLift
 
 /-! # Semifree 複体による導来圏の dg 表示
 
