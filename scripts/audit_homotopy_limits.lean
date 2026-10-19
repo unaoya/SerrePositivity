@@ -4345,3 +4345,144 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @bousfieldKanCoherentConeComparison_uncurry
 #print axioms bousfieldKanCoherentConeComparison_uncurry
+
+#check @pathFirstParameterMap
+#print axioms pathFirstParameterMap
+
+#check @pathFirstParameterMap_comp
+#print axioms pathFirstParameterMap_comp
+
+#check @pathFirstParameterMap_reindex
+#print axioms pathFirstParameterMap_reindex
+
+#check @simplicialHom_assoc_elements
+#print axioms simplicialHom_assoc_elements
+
+#check @coneInitialObj
+#print axioms coneInitialObj
+
+#check @coneInitialHead
+#print axioms coneInitialHead
+
+#check @coneInitialHead_comp
+#print axioms coneInitialHead_comp
+
+#check @coneInitialHom
+#print axioms coneInitialHom
+
+#check @coneInitialSimplex
+#print axioms coneInitialSimplex
+
+#check @coneInitialSimplex_apex
+#print axioms coneInitialSimplex_apex
+
+#check @coneInitialSimplex_tail
+#print axioms coneInitialSimplex_tail
+
+#check @coneInitialHead_reindex
+#print axioms coneInitialHead_reindex
+
+#check @coneInitialSimplex_reindex
+#print axioms coneInitialSimplex_reindex
+
+#check @coneInitialSimplex_weighted
+#print axioms coneInitialSimplex_weighted
+
+#check @fixedInitialSimplex
+#print axioms fixedInitialSimplex
+
+#check @fixedInitialSimplexReindex
+#print axioms fixedInitialSimplexReindex
+
+#check @coneInitialFixedSimplex
+#print axioms coneInitialFixedSimplex
+
+#check @coneInitialFixedSimplex_apex
+#print axioms coneInitialFixedSimplex_apex
+
+#check @coneInitialFixedSimplex_tail
+#print axioms coneInitialFixedSimplex_tail
+
+#check @coneInitialFixedSimplex_reindex
+#print axioms coneInitialFixedSimplex_reindex
+
+#check @coherentCosliceSourceSimplex
+#print axioms coherentCosliceSourceSimplex
+
+#check @coherentCosliceSourceSimplex_apex
+#print axioms coherentCosliceSourceSimplex_apex
+
+#check @coherentCosliceSourceSimplex_tail
+#print axioms coherentCosliceSourceSimplex_tail
+
+#check @coherentCosliceSourceSimplex_reindex
+#print axioms coherentCosliceSourceSimplex_reindex
+
+#check @cosliceInitialCoordinates
+#print axioms cosliceInitialCoordinates
+
+#check @cosliceInitialCoordinates_reindex
+#print axioms cosliceInitialCoordinates_reindex
+
+#check @cosliceSourcePrecompositionSimplex
+#print axioms cosliceSourcePrecompositionSimplex
+
+#check @cosliceSourcePrecompositionSimplex_naturality
+#print axioms cosliceSourcePrecompositionSimplex_naturality
+
+#check @cosliceSourcePrecompositionSimplex_projection
+#print axioms cosliceSourcePrecompositionSimplex_projection
+
+#check @coherentCosliceSourcePrecomposition
+#print axioms coherentCosliceSourcePrecomposition
+
+#check @coherentCosliceSourcePrecomposition_over
+#print axioms coherentCosliceSourcePrecomposition_over
+
+#check @cosliceInitialCoordinates_weighted
+#print axioms cosliceInitialCoordinates_weighted
+
+#check @coherentCosliceSourcePrecomposition_weighted
+#print axioms coherentCosliceSourcePrecomposition_weighted
+
+#check @coneIdentityFold
+#print axioms coneIdentityFold
+
+#check @coneIdentityCollapse
+#print axioms coneIdentityCollapse
+
+#check @coneIdentityCollapse_right
+#print axioms coneIdentityCollapse_right
+
+#check @coneIdentityCollapse_left
+#print axioms coneIdentityCollapse_left
+
+#check @coneIdentityCollapse_outer
+#print axioms coneIdentityCollapse_outer
+
+#check @coneIdentityCosliceSection
+#print axioms coneIdentityCosliceSection
+
+#check @coneIdentityCosliceSection_projection
+#print axioms coneIdentityCosliceSection_projection
+
+#check @coneIdentityCosliceSection_restrict
+#print axioms coneIdentityCosliceSection_restrict
+
+#check @coherentConeSourceSectionAt
+#print axioms coherentConeSourceSectionAt
+
+#check @coherentConeSourceSectionAt_projection
+#print axioms coherentConeSourceSectionAt_projection
+
+#check @coherentConeSourceSectionAt_restrict
+#print axioms coherentConeSourceSectionAt_restrict
+
+#check @coherentConeSourceFamily
+#print axioms coherentConeSourceFamily
+
+#check @coherentConeSourceFamily_uncurry
+#print axioms coherentConeSourceFamily_uncurry
+
+#check @coherentConeSourceFamily_restriction_uncurry
+#print axioms coherentConeSourceFamily_restriction_uncurry
