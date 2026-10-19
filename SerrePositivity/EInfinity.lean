@@ -206,3 +206,6 @@ public import SerrePositivity.EInfinity.Surjection.CompositionPathSign
 public import SerrePositivity.EInfinity.Surjection.PermutationAvailableSubstitution
 public import SerrePositivity.EInfinity.Surjection.PermutationStateSubstitution
 public import SerrePositivity.EInfinity.Surjection.CompositionExtractionStep
+public import SerrePositivity.EInfinity.Surjection.ComponentRowRanges
+public import SerrePositivity.EInfinity.Surjection.OccurrenceRowRanges
+public import SerrePositivity.EInfinity.TableReduction.RepeatedRowOrder

@@ -496,7 +496,19 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.compositionSelectedUpdate_after,
       `SerrePositivity.EInfinity.Surjection.compositionExtractionStep_before,
       `SerrePositivity.EInfinity.Surjection.compositionExtractionStep_inside,
-      `SerrePositivity.EInfinity.Surjection.compositionExtractionStep_after] do
+      `SerrePositivity.EInfinity.Surjection.compositionExtractionStep_after,
+      `SerrePositivity.EInfinity.Surjection.lineRank_eq_rawCaesura_count,
+      `SerrePositivity.EInfinity.TableReduction.rowEndPositions_count_before_in_row,
+      `SerrePositivity.EInfinity.TableReduction.ExtractionTrace.lineRank_in_row,
+      `SerrePositivity.EInfinity.TableReduction.lineRank_schedule_of_reduction,
+      `SerrePositivity.EInfinity.TableReduction.reductionRow,
+      `SerrePositivity.EInfinity.TableReduction.reductionRow_bounds,
+      `SerrePositivity.EInfinity.TableReduction.reductionRow_eq_iff,
+      `SerrePositivity.EInfinity.TableReduction.reductionRow_mono,
+      `SerrePositivity.EInfinity.Surjection.segmentDegree_eq_reductionRows,
+      `SerrePositivity.EInfinity.Surjection.outerSegmentDegree_eq_reductionRows,
+      `SerrePositivity.EInfinity.TableReduction.reductionRow_lt_of_repeat,
+      `SerrePositivity.EInfinity.TableReduction.occurrence_reductionRow_strictMono] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
@@ -737,3 +749,60 @@ example : available (compositionStateRemoved (1 : Fin 3) [1] ([] : List (Fin 2))
     rowComposite = [3, 0] := by
   rw [rowComposite, permutationComposition_state_available_substitute]
   decide
+
+-- BF の実際の成功表の行末・一文字行・最終行と、同じ行を共有する成分端点を照合する。
+private lemma rankFixture_success :
+    reduceRows (rows bfTable bfSchedule₁) [] = some (List.ofFn canonicalFixture.val) := by
+  decide
+example : lineRank canonicalFixture.val (scheduleOffset bfSchedule₁ 0 + 1) = 0 :=
+  lineRank_schedule_of_reduction bfTable bfSchedule₁ canonicalFixture.val
+    rankFixture_success 0 1 (by decide)
+example : lineRank canonicalFixture.val (scheduleOffset bfSchedule₁ 1 + 0) = 1 :=
+  lineRank_schedule_of_reduction bfTable bfSchedule₁ canonicalFixture.val
+    rankFixture_success 1 0 (by decide)
+example : lineRank canonicalFixture.val (scheduleOffset bfSchedule₁ 2 + 2) = 2 :=
+  lineRank_schedule_of_reduction bfTable bfSchedule₁ canonicalFixture.val
+    rankFixture_success 2 2 (by decide)
+example : reductionRow bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 2 = 1 := by
+  apply (reductionRow_eq_iff bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 2 1).mpr
+  decide
+private def rankFixtureCuts : OverlapPartition 2 6 := ⟨![3, 4], by decide⟩
+example : segmentDegree canonicalFixture.val rankFixtureCuts 0 = 1 := by
+  rw [segmentDegree_eq_reductionRows bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    rankFixtureCuts (by decide) 0]
+  decide
+example : segmentDegree canonicalFixture.val rankFixtureCuts 1 = 1 := by
+  rw [segmentDegree_eq_reductionRows bfTable bfSchedule₁ canonicalFixture rankFixture_success
+    rankFixtureCuts (by decide) 1]
+  decide
+-- 隣接重複を含む成功出力でも行内位置の番号は同じ定理で計算する。
+private def rankDegenerate : Fin 3 → Fin 2 := ![0, 1, 1]
+example : lineRank rankDegenerate (scheduleOffset reverseTerminalSchedule 0 + 1) = 0 := by
+  exact lineRank_schedule_of_reduction terminalTable reverseTerminalSchedule rankDegenerate
+    (by decide) 0 1 (by decide)
+example : lineRank rankDegenerate (scheduleOffset reverseTerminalSchedule 1 + 0) = 1 := by
+  exact lineRank_schedule_of_reduction terminalTable reverseTerminalSchedule rankDegenerate
+    (by decide) 1 0 (by decide)
+
+example : outerSegmentDegree canonicalFixture.val 1 0 = 0 := by
+  rw [outerSegmentDegree_eq_reductionRows bfTable bfSchedule₁ canonicalFixture
+    rankFixture_success 1 (by decide) 0]
+  decide
+example : outerSegmentDegree canonicalFixture.val 1 1 = 2 := by
+  rw [outerSegmentDegree_eq_reductionRows bfTable bfSchedule₁ canonicalFixture
+    rankFixture_success 1 (by decide) 1]
+  decide
+example : outerSegmentDegree canonicalFixture.val 1 2 = 0 := by
+  rw [outerSegmentDegree_eq_reductionRows bfTable bfSchedule₁ canonicalFixture
+    rankFixture_success 1 (by decide) 2]
+  decide
+
+example : StrictMono (fun j : Fin (occurrenceCount canonicalFixture.val 1) =>
+    reductionRow bfTable bfSchedule₁ canonicalFixture.val rankFixture_success
+      (occurrenceAt canonicalFixture.val 1 j)) :=
+  occurrence_reductionRow_strictMono bfTable bfSchedule₁ canonicalFixture.val rankFixture_success 1
+example : lineRank rankDegenerate 1 < lineRank rankDegenerate 2 := by
+  have h : reduceRows (rows terminalTable reverseTerminalSchedule) [] =
+      some (List.ofFn rankDegenerate) := by decide
+  exact reductionRow_lt_of_repeat terminalTable reverseTerminalSchedule rankDegenerate h
+    1 2 (by decide) (by decide)

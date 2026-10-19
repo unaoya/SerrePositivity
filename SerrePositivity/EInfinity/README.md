@@ -232,6 +232,11 @@ nullary 境界恒等式は完了。一般の微分保存そのものは未証明
 `compositionSelectedUpdate_before`・`inside`・`after` は選択語の末尾を残す実際の除外更新。
 `compositionExtractionStep_before`・`inside`・`after` はこれを既存の `reduceRows` の成功分岐へ接続する。
 内側 arity 零を含み、実際の合成置換の二行抽出で選択行末が次行にも残ることを監査する。
+`ExtractionTrace.lineRank_schedule` は元の成功証跡の各行内で lineRank を行添字に同定する。
+`reductionRow` は語の位置の実際の有限所属行。元の Schedule の行内区間で特徴付けられる。
+内外成分次数は元の成功表の終行・始行番号の差と一致する。
+`occurrence_reductionRow_strictMono` は同じ指定値の各出現が狭義に異なる行へ進むことを与える。
+これらは退化した成功出力にも適用する。経路全体の成功抽出の組み立ては未完成。
 候補経路上の置換合成の table reduction の成功・合成語との一致・一意性、
 TR の一般の合成保存・微分との両立・オペラッド公理は未完成。
 具体的な Δ¹ の余代数構造とその代入、E2a-4・5、E2b・G1′ は未完成。
