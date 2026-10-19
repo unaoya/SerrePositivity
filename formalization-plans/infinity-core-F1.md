@@ -15,14 +15,14 @@
   `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を構成済み。
 - 表現を `LeftTransportRepresentation` に束ねた。任意の底変換は底側と全空間側の両射を厳密に保ち、
   両射の一致は表現の一致と同値。通常の nerve 上の小さい left fibration の実際の表現も構成済み。
-- 正次元の標準単体上の全 fiber の同値性は境界上で判定できる。境界固定延長は未証明。
+- 全空間が各次数で小さい場合、任意の単射に沿う境界固定延長と延長空間の可縮性を証明済み。
 - 可換四角形全体を関手空間の引き戻し `transportSquareSpace p` として構成。
   分類図式への射影は left fibration、固定図式上の fiber は相対関手空間と同型。
   表現を表す頂点の全部分複体 `transportWitnessSpace p` は Kan 複体。
   実際の表現との頂点全単射、任意の底変換への制限、頂点での厳密な制限の回収を証明済み。
 - 単射への表現空間の制限は Kan fibration、inner anodyne なら trivial Kan fibration
   （Lemma 5.6.8.10 の空間値版）。指定表現の厳密な延長と、その延長空間の可縮性を証明済み。
-  全頂点を被覆する制限は表現条件を反映する。一般の底上の表現空間の可縮性は未証明。
+  全頂点を被覆する制限は表現条件を反映する。小さい全空間の一般の底上の表現空間は可縮。
 - left fibration に沿う inner anodyne 射の逆像は前合成同値（Lemma 5.3.6.6 の空間値版）。
   replacement のホーン逆像の pushout 分解、任意の底変換後の scaffold 比較、依存積の随伴で証明。
 - `parametrizedFiberTransport` は固定端点の写像空間全体で選択独立性・パラメーター制限・係数変更を保ち、各辺で既存の transport を回収する。
@@ -34,14 +34,14 @@
   全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
   実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
   積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
-  各次数で小さい全空間の点上の表現空間は可縮 Kan。実際のセル帰納法で一般底・有限次元底の可縮性を標準単体と境界の局所入力へ還元済み。
-- 対象ビルド3075 jobs、公理監査6197宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+  任意の底上の小さい全空間の表現空間は可縮 Kan。coherent な分類図式と全空間比較、任意の小さい底の coherent 図式での相対延長も構成済み。
+- 対象ビルド3082 jobs、公理監査6225宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
 
 ### 残り（依存順）
 
 見積もりは再開後の実作業時間の粗い幅で、研究上の障害による上振れがある。
 
-1. 任意の coherent 図式について、境界を固定した表現の延長と高次の貼り合わせを証明する。
+1. 全空間の次数ごとの小ささを外し、essentially small な fiber の相対表現の延長へ一般化する。
    Kerodon Theorem 5.6.5.12、Corollary 5.6.5.15。40〜160時間。
 2. unstraightening の実際の写像空間上の比較の同値性、一般の単位・余単位を完成する。
    Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
@@ -61,11 +61,11 @@
 - `LeftTransportRepresentation`、`LeftTransportRepresentation.restrict`
 - `transportWitnessSpace`、`transportWitnessVertexEquiv`、`transportWitnessSpace_kanComplex`
 - `leftFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
-- `transportWitnessRestriction_trivialKanFibration_of_innerAnodyne`
-- `exists_leftTransportRepresentation_extension_innerAnodyne`
+- `smallTransportWitnessSpace_isContractibleKan`、`smallTransportWitnessRestriction_trivialKanFibration`
+- `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `pointTransportWitnessSpace_isContractibleKan`、`transportWitnessSpace_isContractibleKan_of_finiteDimension`
+- `smallLeftStraighteningDiagram`、`smallLeftStraighteningComparison_isPrecompositionEquivalence`
 
 ### 依存と提供
 
@@ -88,17 +88,17 @@
   局所 strictification は任意の内面制限と可換でも、境界を固定した構成でもない。
 - 各 fiber の同値や辺での一致だけでは図式全体の同型・分類を導けない。
   同値の反映は既証明であり、残る一般の単位・充満忠実性の代わりにはならない。
-- 標準単位に沿う可縮な延長は同じ通常圏上での係数図式の変更に関するもの。
-  底の包含 C₀ ⊆ C に対し、指定した表現の底への射と全空間の射をともに厳密に保つ
-  相対表現の延長（Theorem 5.6.5.12）は未証明。高次パラメーターの境界上でも両方を保つ必要がある。
-- inner anodyne 制限の fiber の可縮性は、一般の境界制限や表現空間全体の可縮性ではない。
+- 任意の単射の境界固定延長と高次パラメーターの同時持ち上げは、全空間が各次数で小さい場合に証明済み。
+  小さい底上の任意の coherent 空間値図式の unstraightening にも適用済み。
+  全空間の小ささを外し essentially small な fiber のみを仮定する相対延長は未証明。
+- 分類図式と比較射の対象ごとの選択は、関手性や一般の単位・余単位の証明ではない。
 
 ### 次の一手
 
-有限次元の底について全空間の次数ごとの小ささを保ち、次元の強い帰納法で局所入力を閉じる。
-Δ⁰ は点上の定理、Δ¹ は境界制限、Δⁿ（n≥2）は内ホーン制限と低次元の可縮性を使う。
-標準単体・境界への pullback の小ささを検証し、任意の底上の可縮性へ既証明のセル帰納法で進む。
-essentially small な fiber への一般化と境界固定延長（Theorem 5.6.8.3、§5.6.5）は残る。
+smallLeftStraighteningDiagram と比較射の対象ごとの構成を、実際の写像空間の比較へ接続する。
+SmallRepresentationExtension の全パラメーター延長を使い、一般の単位・余単位を組み立てる。
+既存の leftUnstraighteningMappingSpaceMap と coherent な unstraightening の相対延長を使う。
+essentially small な fiber への宇宙の一般化と cocartesian・Cat_∞ 値版は引き続き残る。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
