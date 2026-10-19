@@ -2253,3 +2253,23 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_innerFibration
 
 #check @SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_comma_square
+
+#check @SerrePositivity.InfinityCategories.F1B.kanConstantHomPostcomp
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIntervalFunctorMap_equivalence_of_constantHom_bijective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPinchedHomMap_equivalence_of_constantHom_bijective
+
+#check @SerrePositivity.InfinityCategories.F1B.kanIsFullyFaithful_of_parameterized_hoFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanPrecomposition_isFullyFaithful_of_hoFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaSourceHomRestriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaSourceHomRestriction_map
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaSourceHom_map_restriction
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaSource_hoFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F1B.kanLeftCommaSource_pre_isFullyFaithful

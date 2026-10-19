@@ -40,9 +40,9 @@
   comma 候補の条件は全 fiber の相対余極限性と同値。任意の指定変換も厳密化後の局所 U 余極限性で判定。
 - 底 C 内で一度だけ選んだ普遍図式への前合成により、元の関手の族を comma の図式の族へ写す。
   標準相対左 Kan 条件の保存・反映、右端の厳密な回収、U の後合成自然性、元の相対制限との可換正方形を証明。
-- F1 の scaffold 比較は straightening に依存。再構成は `F1B.kanScaffoldBaseChange_overPullbackMap`。
-- 最終検証：F1・F1B 同時ビルド成功（3851 jobs）、同時 import 検査成功（F1 7072・F1B 4392 宣言）。
-  公理監査成功（4396 宣言、標準三公理のみ、1191 モジュールに straightening なし）。ソース名衝突 0。
+- 全パラメータの Hom 判定から、comma の元の添字への射影による前合成の写像空間での充満忠実性を証明。
+- 最終検証：F1・F1B 同時ビルド成功（3856 jobs）、同時 import 検査成功（F1 7091・F1B 4407 宣言）。
+  公理監査成功（4412 宣言、標準三公理のみ、1194 モジュールに straightening なし）。ソース名衝突 0。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -74,7 +74,7 @@
 - `F1B.kanRelativeJoinRightHomEquiv` / `F1B.kanRelativeJoinTransformation_homUniversal`
 - `F1B.kanLeftCommaUniversalFamily` / `F1B.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 - `F1B.kanRelativeLeftKanRestriction` / `F1B.kanRelativeLeftKanRestriction_comma_square`
-- `F1B.kanRightKanExtension_homUniversal` / `F1B.kanRightKanExtensionIso`
+- `F1B.kanLeftCommaSource_pre_isFullyFaithful` / `F1B.kanPrecomposition_isFullyFaithful_of_hoFullyFaithful`
 - `F1B.kanRelativeInitialVertex_iff_initialBoundary` / `F1B.kanRelativeCoconeLifting_iff_isRelativeColimitCone`
 
 ### 依存と提供
@@ -86,7 +86,7 @@
 
 ### 未コミット
 
-- なし（本保存単位：普遍 comma 図式・全次数の族・標準相対 Kan 条件との比較・元の相対制限の可換正方形、集約・監査・本書）。
+- なし（本保存単位：全パラメータ Hom 判定・前合成への移送・comma 射影の写像空間での充満忠実性、集約・監査・本書）。
 
 ### 既知の問題
 
@@ -99,7 +99,7 @@
 ### 次の一手
 
 - `kanRelativeLeftKanRestriction_comma_square` から元の相対制限の写像空間の同値を導く。
-  普遍前合成・comma 射影への前合成の族の写像空間を比較する。既存の h Fun の Hom 全単射だけでは不足。
+  comma 射影への前合成の充満忠実性は証明済み。普遍前合成と相対標的比較の写像空間の同値を証明する。
   全部分圏包含 δ の境界固定の充填と右側への移送を証明し、原典 7.3.6.7・7.3.6.9 を閉じる。
 
 作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
