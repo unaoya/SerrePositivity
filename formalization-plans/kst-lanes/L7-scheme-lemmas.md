@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1876 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1926 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -36,8 +36,8 @@
 - 指定アフィン被覆に付随する第二段チャート被覆と構造射を構成済み。各固定階数チャートの自由化を全 Noether アフィン試験対象で使う述語と、その前合成保存を証明済み。
 - 実分裂の下で、元の基礎環上の一つの有限生成中心の通常 blowup に全 Noether アフィン引き戻しでの自由化基本開を構成済み。中心外は D(f)。射影代数を入力する系も証明済み。一般の L7b は未完了。
 - 冪零剰余が射影的な平坦加群の射影性（Stacks 05CG）を、Noether 性・有限性なしで証明済み。射影的な始域の全射への実際の右逆も構成する。
-- 完備な Noether 環上の任意の自由加群の完備化について、係数環の積への普遍単射な実際の埋め込みと Mittag–Leffler 性を証明済み（Stacks 05DJ）。平坦性は読み取り専用の既存の完備化定理から得る。剰余が射影的な一般の平坦加群の場合（05DK）は未完了。
-- 射影性の原典経路の準備として、Mittag–Leffler 性の積比較による定義、普遍単射部分加群への降下、自由・射影加群の場合を証明済み。Noether 基底での可算生成平坦 Mittag–Leffler 判定は証明済み。完備化による Mittag–Leffler 性の存在は未完了。
+- 完備な Noether 環上の任意の自由加群の完備化について、係数環の積への普遍単射な実際の埋め込みと Mittag–Leffler 性を証明済み（Stacks 05DJ）。平坦性は読み取り専用の既存の完備化定理から得る。剰余が射影的な一般の平坦加群の完備化の平坦 Mittag–Leffler 性（05DK）も証明済み。
+- 射影性の原典経路の準備として、Mittag–Leffler 性の積比較による定義、普遍単射部分加群への降下、自由・射影加群の場合を証明済み。Noether 基底での可算生成平坦 Mittag–Leffler 判定は証明済み。完備な Noether 基底で射影的な剰余を持つ平坦加群の完備化の Mittag–Leffler 性（05DK）は証明済み。元の加群から完備化への普遍単射性（05DM）は未完了。
 - 有限型代数上の有限加群の基礎環上の可算生成性を証明済み。基礎環の集合としての可算性は不要。
 - Noether 基底で可算生成性を任意の部分加群へ継承し、可算自由全射の核から可算個の関係式を持つ実際の自由表示を構成済み。
 - Noether 基底上の平坦加群について、有限生成部分加群の有限自由単射因子化と、核を保ち指定元を追加する有限自由近似の一段を証明済み。
@@ -1243,7 +1243,7 @@ Mathlib の現版には当該 Mittag–Leffler 加群の述語と一般の可算
 より一般に e:M→N が任意の加群との右テンソル積で単射なら、
 N の比較射の単射性から自然性の可換正方形によって M の比較射の単射性を得る。
 これは 05DP で完備化から元の加群へ戻す工程の一つである。
-Noether 基底での可算生成平坦 Mittag–Leffler 判定は後述の 059X 特殊形で証明済み。完備化への普遍単射性、完備化の Mittag–Leffler 性、05FS の全体は別途証明が必要。
+Noether 基底での可算生成平坦 Mittag–Leffler 判定は後述の 059X 特殊形で証明済み。射影的な剰余を持つ平坦加群の完備化の Mittag–Leffler 性（05DK）も後述の通り証明済み。完備化への普遍単射性と 05FS の全体は別途証明が必要。
 次に 05DP・059X で必要な可算生成性を、有限型代数上の有限加群について用意する。
 文言：有限型 R 代数 B 上の有限加群 M は、R 上で可算な集合により生成される。
 証明は、有限変数多項式環の単項式基底と有限型代数への実際の全射で B の可算生成性を得て、
@@ -1410,7 +1410,7 @@ P=R^A と自由完備化の埋め込みへ適用し、普遍単射部分加群�
 `CompletedFreeFiniteTensor.lean` で有限生成な試験加群とのテンソルの単射性を証明済み。
 `FiniteTensorTest.lean` で平坦な終域への有限生成試験の判定を証明済み。
 `CompletedFreeMittagLeffler.lean` で積埋め込みの任意のテンソルでの単射性と、
-自由加群の完備化の Mittag–Leffler 性（05DJ）を証明済み。05DK の完備化の分裂は未完了。
+自由加群の完備化の Mittag–Leffler 性（05DJ）を証明済み。05DK で使う完備化の分裂（05D3）も後述の通り構成済み。
 
 
 
@@ -1433,6 +1433,26 @@ e^n を π の商同型で M へ降ろせば π の実際の右逆が得られ�
 `ProjectiveReductionLift.lean` で補正した実際の自己準同型を構成済み。
 `NilpotentKernelSection.lean` で冪による核の消去と全射への右逆を構成済み。
 `NilpotentProjectivity.lean` で上記を接続し、05CG を有限性・Noether 性なしで証明済み。
+05D3 の整合的な右逆の一段は、一般の J≤I について述べる。
+π:F→M が全射で M/JM が R/J 上射影的なら、F/IF→M/IM の R 線形右逆 s は、
+F/JF→M/JM の右逆 s′ で遷移写像と可換なものへ持ち上がる。
+F/JF の中で τ_F(p)=s(τ_M(π_J(p))) となる元の部分加群 T を取る。
+この条件は R 線形で、R→R/J の全射性により T は R/J 部分加群となる。
+π_J:T→M/JM は全射。任意の持ち上げの誤差は π_I の核に入り、
+元の ker π の元で補正できる。核の元の持ち上げは、代表元の像を IF の中で引き戻して示す。
+M/JM の射影性で π_J:T→M/JM に右逆を選び、T の包含と合成すればよい。
+J=I^(n+1) に反復し、完備化の普遍性で整合的な右逆から実際の完備化の右逆を作る。
+`QuotientModuleBaseChange.lean` で商環線形の基底変更同型と二重剰余の比較を構成済み。
+`ProjectivePowerReduction.lean` で半線形の二重剰余比較と各正の冪剰余の射影性を証明済み。
+`QuotientKernelLift.lean` と `CompatibleReductionSection.lean` で誤差の核からの持ち上げと
+整合的な右逆の一段を証明済み。
+`CompatiblePowerSections.lean` で全ての冪剰余の実際の整合的な右逆の列を構成済み。
+`AdicCompletionSection.lean` で完備化の実際の R 線形右逆を構成済み（05D3）。
+`CompletedFlatMittagLeffler.lean` で自由全射に適用し、自由完備化の直和因子として
+剰余が射影的な平坦加群の完備化の平坦 Mittag–Leffler 性（05DK）を証明済み。
+元の加群から完備化への普遍単射性（05DM）と 05DP・05FS の全体は引き続き未完了。
+
+
 
 #### 選んだ有限表示の任意の基底変更
 
@@ -1584,6 +1604,13 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | --- | --- | --- |
 | `BoundaryFreeNeighborhoodsAtCenterOver` | 中間環上の中心の自由化を元の基礎環・加群で述べる条件 | 定義済み |
 | `boundaryFreeNeighborhoodsAtCenterOver_of_baseChanged_center` | 固定中心の全チャートの自由化の元のデータへの統一 | 証明済み |
+| `quotientModuleTensorEquiv` / `flat_quotientModule` | 商環線形の基底変更同型と商加群の平坦性 | 証明済み |
+| `nestedQuotientModuleSemilinearEquiv` | 商環の第三同型に沿う二重剰余の半線形比較 | 構成済み |
+| `projective_powerQuotientModule` | 射影的な最初の剰余を持つ平坦加群の全ての正の冪剰余の射影性 | 証明済み |
+| `exists_compatible_reduction_section` | 入れ子のイデアルによる剰余の整合的な右逆の一段 | 構成済み |
+| `exists_compatible_power_reduction_sections` | 全ての冪剰余の整合的な右逆の列 | 構成済み |
+| `exists_adicCompletion_section_of_flat_of_projective_reduction` | 平坦終域と射影的な剰余から完備化の実際の右逆（05D3） | 構成済み |
+| `flat_mittagLeffler_adicCompletion_of_projective_reduction` | 剰余が射影的な平坦加群の完備化の平坦 Mittag–Leffler 性（05DK） | 証明済み |
 | `smul_top_comap_kernel_subtype_of_flat` | 平坦終域を持つ全射の核とイデアル倍の正確な交わり | 証明済み |
 | `exists_endomorphism_lifting_reduction_section` | 剰余右逆から元の全射を保つ自己準同型への補正持ち上げ | 構成済み |
 | `exists_section_of_nilpotent_kernel_endomorphism` | 核を冪零イデアル倍へ送る自己準同型からの右逆 | 構成済み |

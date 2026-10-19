@@ -306,3 +306,4 @@ public import SerrePositivity.KST.SchemeLemmas.ScalarProductTensorComparison
 public import SerrePositivity.KST.SchemeLemmas.NoetherianScalarProduct
 public import SerrePositivity.KST.SchemeLemmas.CompletedFreeMittagLeffler
 public import SerrePositivity.KST.SchemeLemmas.NilpotentProjectivity
+public import SerrePositivity.KST.SchemeLemmas.CompletedFlatMittagLeffler
