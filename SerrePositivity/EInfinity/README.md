@@ -56,23 +56,14 @@ cofibrant な始域の結論を述べている。これらから任意の始域�
 始域の cofibrancy は追加せず、任意の可換環上の完全なモデル構造を構成する。
 Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-split でないためである。
 
-工程 1 の現在地：一般の小さい単体集合の AW 鎖写像 `AlexanderWhitney.diagonal` を
-負の整数コチェイン模型へ移した `cochainDiagonal` を構成済み。次数成分との接続は
-`cochainDiagonal_projection_generator`。テンソルの標準比較は自然で、結合子・左右単位子を保つ。
-実際の E(n) 上の `BarrattEccles.complexDiagonal` は余結合的で Σ_n 同変、既存の
-augmentation を左右余単位に持つ。一般の X,Y の正規化 shuffle 成分は
-`Shuffle.component`、生成元公式は `component_generators`。経路の前後半と
-項別 AW 切断公式 `aw_component_simplex`、経路分割の全単射 `pathCutEquiv` と符号公式
-`pathCut_sign` を構成済み。有限和の添字替えから `diagonal_value` と加群射の等式
-`component_diagonal` を検証済み。一般 shuffle の微分条件を零次数も含めて証明し、
-自然な鎖写像 `Shuffle.chainMap` と生成元公式 `chainMap_generators` を構成済み。
-`Shuffle.chainMap_diagonal` が実際の鎖写像の AW 余積適合性を与える。自然数鎖の
-四因子交換 `NatTensor.interchange` と、負次数比較の braiding 適合性
-`NegativeTensor.comparison_symmetry` も構成済み。四因子比較の
-`comparison_interchange` と二入力写像の移送から `Shuffle.cochainMap_diagonal` を証明済み。
-`BarrattEccles.partialComposition_eq_generalShuffle` が既存 BE 合成との一致を与え、
-`partialComposition_diagonal_tensorμ` が標準 tensorμ を使う実際の部分合成の余積適合性を与える。
-Hopf オペラッド射と転送モデル構造は未完成。
+工程 1 は完了。一般の正規化 AW 鎖対角と shuffle の余代数射性を整数模型へ移し、
+`BarrattEccles.partialComposition_diagonal_tensorμ` で既存 BE 部分合成との両立を検証した。
+`Operad.hadamard` は arity ごとのテンソルオペラッドであり、単位・内外等変性・
+入れ子と独立な代入の結合則を含む。`BarrattEccles.unit_diagonal` と自然性を合わせ、
+`hopfDiagonal : E → E ⊗ E` を実際のオペラッド射として構成済み。
+`BarrattEccles.hopf` はこの対角、既存の `augmentation : E → Com`、
+余結合性と左右余単位則を束ねる。余可換性は要求しない。
+工程 2 の E-coalgebra 区間の界面・convolution による path object と転送は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

@@ -92,7 +92,16 @@ run_cmd do
       `SerrePositivity.EInfinity.Shuffle.cochainMap_diagonal,
       `SerrePositivity.EInfinity.BarrattEccles.simplicialPartialComposition,
       `SerrePositivity.EInfinity.BarrattEccles.partialComposition_eq_generalShuffle,
-      `SerrePositivity.EInfinity.BarrattEccles.partialComposition_diagonal_tensorμ] do
+      `SerrePositivity.EInfinity.BarrattEccles.partialComposition_diagonal_tensorμ,
+      `SerrePositivity.EInfinity.Operad.hadamard,
+      `SerrePositivity.EInfinity.Operad.Hadamard.separate_swap,
+      `SerrePositivity.EInfinity.Operad.Hadamard.nested_assoc,
+      `SerrePositivity.EInfinity.Operad.Hadamard.parallel_assoc,
+      `SerrePositivity.EInfinity.Operad.Hopf,
+      `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_vertex,
+      `SerrePositivity.EInfinity.BarrattEccles.unit_diagonal,
+      `SerrePositivity.EInfinity.BarrattEccles.hopfDiagonal,
+      `SerrePositivity.EInfinity.BarrattEccles.hopf] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

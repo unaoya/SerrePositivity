@@ -79,99 +79,82 @@
 
 - **現在地**：E2a-0（Ch(A) の射影モデル構造）、E2a-1（オペラッド・自由代数随伴）、
   E2a-2（Barratt–Eccles オペラッド・augmentation）まで完了。
-  E2a-3 は承認済みの Hopf オペラッド＋区間＋path object 経路の工程 (1) の途中。
-  一般の小さい単体集合の正規化 AW 成分を自然数次数のテンソル複体への鎖写像
-  `diagonal` に束ね、次数分割の有限和公式、成分との一致、自然性、余結合性、
-  augmentation 鎖写像 `counit` と左右余単位・その自然性まで検証済み。
-  自然なテンソル比較（結合子・左右単位子との適合性を含む）で整数模型へ移送し、
-  実際の E(n) の `complexDiagonal`、余結合性・左右余単位・Σ_n 同変性と
-  既存 augmentation との一致まで検証済み。一般の X,Y の正規化 shuffle 次数成分・生成元公式・
-  自然性、前半・後半経路の構成と全単射、切断の符号公式を検証済み。
-  有限和の添字替えから `diagonal_value` と加群射の等式 `component_diagonal` まで検証済み。
-  一般 shuffle の微分可換性を零次数も含めて検証し、自然な鎖写像 `Shuffle.chainMap` を構成。
-  `chainMap_diagonal` で実際の鎖写像の AW 余積適合性を検証。自然数鎖の四因子交換と、
-  負次数比較の braiding・四因子交換の適合性と整数模型への移送も検証済み。
-  `partialComposition_diagonal_tensorμ` で既存 BE 部分合成への余積適合性の接続まで完了。
-  arity ごとのテンソルオペラッドと Hopf オペラッド射は未完成。
-  E2a-3 の転送モデル構造、E2a-4・5 は未完成。現在地のコードと検証は本節と
-  同じコミットに保存。E2a-2 完了は `60541ccb`。
+  E2a-3 は承認済みの Hopf オペラッド＋区間＋path object 経路で、工程 (1) が完了。
+  一般の小さい単体集合の正規化 AW 対角の鎖写像・自然性・余結合性・左右余単位と、
+  一般 shuffle 鎖写像の AW 余代数射性を検証し、整数模型へ移送済み。
+  `partialComposition_diagonal_tensorμ` が既存 BE 部分合成の余積適合性を与える。
+  arity ごとのテンソルオペラッド `Operad.hadamard` を、両単位則・内外等変性・
+  入れ子と独立な代入の結合則を含めて構成。頂点の群状元公式から単位保存を証明し、
+  `hopfDiagonal` を実際の E → E ⊗ E のオペラッド射に束ねた。
+  `BarrattEccles.hopf` はこの対角、既存の E → Com、余結合性・左右余単位則を持つ。
+  Σ_n 同変性は対称列の自然性に含まれ、余可換性は要求しない。
+  E2a-3 の工程 (2)〜(4)、E2a-4・5、E2b・G1′ は未完成。
+  現在地のコードと検証は本節と同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. arity ごとのテンソルオペラッドと AW の自然性を使い、E → E ⊗ E の
-     オペラッド射性・余結合性・余単位・Σ_n 同変性を閉じる。BF §1.1.4、16〜32 時間。
-  2. E-coalgebra 区間の抽象 structure から全代数の functorial path object、
+  1. E-coalgebra 区間の抽象 structure から全代数の functorial path object、
      fibrations.llp ⊆ 弱同値、J-cell acyclicity、小対象性・極限余極限と転送の適用を閉じる。
      Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
-  3. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
+  2. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
      BF §1.3・§3.1 と McClure–Smith の区間切断作用、80〜200 時間。
      着手前にファイル数・主要補題の見積もりを計画に一段落で記す指示が未実施。
      Δ¹ の作用は必要次数 r ≤ n に特殊化してよい。TR 自体は一般に証明する。
-  4. 具体区間を抽象界面へ代入して E2a-3 を完成。BM 命題 4.1、BF §3.1、8〜24 時間。
-  5. E2a-4：右 Quillen、全対象 fibrant、底での homotopy 引き戻し、H⁰ の可換環構造、
+  3. 具体区間を抽象界面へ代入して E2a-3 を完成。BM 命題 4.1、BF §3.1、8〜24 時間。
+  4. E2a-4：右 Quillen、全対象 fibrant、底での homotopy 引き戻し、H⁰ の可換環構造、
      離散可換代数の E 代数化。BM 命題 4.1、BF §3.1、16〜40 時間。
-  6. E2a-5：homotopy function complex と π₀ の Hom 比較。
+  5. E2a-5：homotopy function complex と π₀ の Hom 比較。
      Hovey §5・Dwyer–Kan、既存 HomotopyFunctionComplex の具体的適用、12〜24 時間。
+  6. E2b：CAlg_R := N^hc と U : CAlg_R → D(R)、離散対象と極限。
+     HTT §1.1.5・§5.2.4、γ2・γ4 の適用、16〜40 時間。その後 G1′（界面の述べ直し）。
 - **主要宣言**（名前のみ）：
   `SerrePositivity.EInfinity.projectiveModelCategory`、
   `SerrePositivity.EInfinity.Operad.freeAlgebraAdjunction`、
+  `SerrePositivity.EInfinity.Operad.hadamard`、
+  `SerrePositivity.EInfinity.Operad.Hopf`、
   `SerrePositivity.EInfinity.BarrattEccles.operad`、
   `SerrePositivity.EInfinity.BarrattEccles.augmentation`、
   `SerrePositivity.EInfinity.BarrattEccles.augmentation_quasiIso`、
   `SerrePositivity.EInfinity.BarrattEccles.complexContraction`、
   `SerrePositivity.EInfinity.BarrattEccles.equivariantBasis_rightAction`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.component`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.component_generator`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.component_natural`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.component_coassoc`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.component_left_counit`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.component_right_counit`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.component_d`、
   `SerrePositivity.EInfinity.AlexanderWhitney.diagonal`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.diagonalDegree_eq_sum`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_projection`、
   `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_natural`、
   `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_coassoc`、
   `SerrePositivity.EInfinity.AlexanderWhitney.counit`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_left_counit`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.diagonal_right_counit`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.counit_natural`、
-  `SerrePositivity.EInfinity.NegativeTensor.comparison`、
   `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal`、
-  `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_projection_generator`、
+  `SerrePositivity.EInfinity.AlexanderWhitney.cochainDiagonal_vertex`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_rightAction`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_coassoc`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_left_counit`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit`、
-  `SerrePositivity.EInfinity.Shuffle.component`、
   `SerrePositivity.EInfinity.BarrattEccles.partialComposition_diagonal_tensorμ`、
+  `SerrePositivity.EInfinity.BarrattEccles.unit_diagonal`、
+  `SerrePositivity.EInfinity.BarrattEccles.hopfDiagonal`、
+  `SerrePositivity.EInfinity.BarrattEccles.hopf`、
   `SerrePositivity.EInfinity.Shuffle.chainMap`、
-  `SerrePositivity.EInfinity.Shuffle.chainMap_natural`、
-  `SerrePositivity.EInfinity.BarrattEccles.partialComposition_eq_generalShuffle`、
-  `SerrePositivity.EInfinity.Shuffle.pathCut_sign`、
-  `SerrePositivity.EInfinity.NegativeTensor.binaryMap_comultiplication`、
+  `SerrePositivity.EInfinity.Shuffle.chainMap_diagonal`、
   `SerrePositivity.EInfinity.Shuffle.cochainMap_diagonal`、
-  `SerrePositivity.EInfinity.NatTensor.interchange`、
   `SerrePositivity.EInfinity.NegativeTensor.comparison_interchange`。
 - **依存と提供**：HomotopicalAlgebra の Transfer/Recognition・Transfer/Right・
   HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
   Cells・複体のテンソル・HomComplex を読み取り専用で使う。
-  提供済みは局所選択する Ch(A) のモデル構造、自由代数随伴、実際の E と E → Com。
-  Alg_E のモデル構造、右 Quillen 忘却関手、E2b 用 CAlg はまだ提供していない。
+  提供済みは局所選択する Ch(A) のモデル構造、自由代数随伴、実際の E と E → Com、
+  テンソルオペラッドと E の Hopf 構造。Alg_E のモデル構造・右 Quillen U・CAlg は未提供。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：停止時の対象ビルドは成功（2698 jobs）、公理監査は成功
-  （4904 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
-  今回の AW 宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
+- **既知の問題**：対象ビルド成功（2706 jobs）、公理監査成功（4997 宣言、標準 3 公理のみ）。
+  新規 sorry・追加公理・名前衝突はなく、508 モジュールの import 閉包に他レーンの未コミット依存はない。
+  今回の Hopf 宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
   正規化モデルは商表示ではなく Moore 部分複体であり、降下補題を使う。
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：arity ごとのテンソルオペラッドを構成する。部分合成は標準の tensorμ に
-  続けて二つの部分合成をテンソルし、単位・等変性・二種類の結合則を検証する。
-  `partialComposition_diagonal_tensorμ`、対角の右作用・余結合性・余単位の既存定理から
-  E → E ⊗ E のオペラッド射を束ねる。まだ区間・path object には着手しない。
+- **次の一手**：工程 (2)。P-coalgebra とその射を定義し、構成済み `Operad.Hopf` を使う
+  E-coalgebra 区間の抽象界面を作る。区間のデータは実際の複体・余演算・端点・収縮とし、
+  転送モデル構造や path object の存在を仮定として入れない。
+  convolution により Hom(H,B) の E 代数構造と functorial path object を構成する。
+  まだ TR・具体区間には着手しない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。
