@@ -413,4 +413,11 @@ public import SerrePositivity.KST.SConstruction.MultiSOneSlideCore
 public import SerrePositivity.KST.SConstruction.SOneSlideBoundary
 public import SerrePositivity.KST.SConstruction.SubcomplexCofiberIso
 
+public import SerrePositivity.KST.SConstruction.CoordinateZeroPermutation
+public import SerrePositivity.KST.SConstruction.InnerVariableOuterMap
+public import SerrePositivity.KST.SConstruction.MultiFixedSInterchangeIndex
+public import SerrePositivity.KST.SConstruction.MultiMovingSBoundary
+public import SerrePositivity.KST.SConstruction.MultiMovingSCore
+public import SerrePositivity.KST.SConstruction.MultiMovingSInterchange
+
 /-! # ∞-S• 構成と連結 K 理論 -/
