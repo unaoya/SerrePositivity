@@ -5026,3 +5026,93 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @coconeMappingSpaceHomComparison_restrict_square
 #print axioms coconeMappingSpaceHomComparison_restrict_square
+
+#check @cospanPathDiagram
+#print axioms cospanPathDiagram
+
+#check @cospanPathSection
+#print axioms cospanPathSection
+
+#check @homotopyCospanMap
+#print axioms homotopyCospanMap
+
+#check @homotopyCospanMap_left_projection
+#print axioms homotopyCospanMap_left_projection
+
+#check @homotopyCospanMap_right_projection
+#print axioms homotopyCospanMap_right_projection
+
+#check @resizedCospan_obj_kanComplex
+#print axioms resizedCospan_obj_kanComplex
+
+#check @cospanPathDiagram_obj_kanComplex
+#print axioms cospanPathDiagram_obj_kanComplex
+
+#check @kanPathReplacementSection_homotopyEquivalence
+#print axioms kanPathReplacementSection_homotopyEquivalence
+
+#check @cospanPathSection_app_homotopyEquivalence
+#print axioms cospanPathSection_app_homotopyEquivalence
+
+#check @cospanPathSectionEnd
+#print axioms cospanPathSectionEnd
+
+#check @cospanPathSectionEnd_homotopyEquivalence
+#print axioms cospanPathSectionEnd_homotopyEquivalence
+
+#check @homotopyCospanMap_app_homotopyEquivalence
+#print axioms homotopyCospanMap_app_homotopyEquivalence
+
+#check @homotopyCospanMapEnd
+#print axioms homotopyCospanMapEnd
+
+#check @homotopyCospanMapEnd_homotopyEquivalence
+#print axioms homotopyCospanMapEnd_homotopyEquivalence
+
+#check @homotopyCospanConeComparison
+#print axioms homotopyCospanConeComparison
+
+#check @homotopyCospanConeComparison_homotopyEquivalence
+#print axioms homotopyCospanConeComparison_homotopyEquivalence
+
+#check @coconeMappingShapeCospanCone
+#print axioms coconeMappingShapeCospanCone
+
+#check @coconeMappingShapeCospanCone_isLimit
+#print axioms coconeMappingShapeCospanCone_isLimit
+
+#check @partialColimitHomCospan
+#print axioms partialColimitHomCospan
+
+#check @partialColimitHomPathEnd
+#print axioms partialColimitHomPathEnd
+
+#check @partialColimitCoconeHomEndComparison
+#print axioms partialColimitCoconeHomEndComparison
+
+#check @partialColimitCoconeHomEndComparison_homotopyEquivalence
+#print axioms partialColimitCoconeHomEndComparison_homotopyEquivalence
+
+#check @partialColimitHomEndToPathEnd
+#print axioms partialColimitHomEndToPathEnd
+
+#check @partialColimitHomEndToPathEnd_homotopyEquivalence
+#print axioms partialColimitHomEndToPathEnd_homotopyEquivalence
+
+#check @partialColimitHomPathEnd_kanComplex
+#print axioms partialColimitHomPathEnd_kanComplex
+
+#check @partialColimitHomCospan_obj_kanComplex
+#print axioms partialColimitHomCospan_obj_kanComplex
+
+#check @partialColimitHomEndRetraction
+#print axioms partialColimitHomEndRetraction
+
+#check @partialColimitHomEndRetraction_homotopyEquivalence
+#print axioms partialColimitHomEndRetraction_homotopyEquivalence
+
+#check @partialColimitCoconeToHomEnd
+#print axioms partialColimitCoconeToHomEnd
+
+#check @partialColimitCoconeToHomEnd_homotopyEquivalence
+#print axioms partialColimitCoconeToHomEnd_homotopyEquivalence
