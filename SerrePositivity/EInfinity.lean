@@ -139,3 +139,4 @@ public import SerrePositivity.EInfinity.Shuffle.CoalgebraComponents
 public import SerrePositivity.EInfinity.Shuffle.ChainNaturality
 public import SerrePositivity.EInfinity.Shuffle.ChainCoalgebra
 public import SerrePositivity.EInfinity.NegativeTensor.Symmetry
+public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionDiagonal

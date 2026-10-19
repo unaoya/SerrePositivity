@@ -68,8 +68,10 @@ augmentation を左右余単位に持つ。一般の X,Y の正規化 shuffle �
 自然な鎖写像 `Shuffle.chainMap` と生成元公式 `chainMap_generators` を構成済み。
 `Shuffle.chainMap_diagonal` が実際の鎖写像の AW 余積適合性を与える。自然数鎖の
 四因子交換 `NatTensor.interchange` と、負次数比較の braiding 適合性
-`NegativeTensor.comparison_symmetry` も構成済み。整数模型への余積適合性の移送と
-既存 BE 部分合成への接続は残る。
+`NegativeTensor.comparison_symmetry` も構成済み。四因子比較の
+`comparison_interchange` と二入力写像の移送から `Shuffle.cochainMap_diagonal` を証明済み。
+`BarrattEccles.partialComposition_eq_generalShuffle` が既存 BE 合成との一致を与え、
+`partialComposition_diagonal_tensorμ` が標準 tensorμ を使う実際の部分合成の余積適合性を与える。
 Hopf オペラッド射と転送モデル構造は未完成。
 
 原典：

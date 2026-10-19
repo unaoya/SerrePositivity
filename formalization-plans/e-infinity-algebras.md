@@ -90,27 +90,25 @@
   有限和の添字替えから `diagonal_value` と加群射の等式 `component_diagonal` まで検証済み。
   一般 shuffle の微分可換性を零次数も含めて検証し、自然な鎖写像 `Shuffle.chainMap` を構成。
   `chainMap_diagonal` で実際の鎖写像の AW 余積適合性を検証。自然数鎖の四因子交換と、
-  負次数比較の braiding 適合性も検証済み。整数模型への余積適合性の移送・BE 部分合成との
-  接続、Hopf オペラッド射は未完成。
+  負次数比較の braiding・四因子交換の適合性と整数模型への移送も検証済み。
+  `partialComposition_diagonal_tensorμ` で既存 BE 部分合成への余積適合性の接続まで完了。
+  arity ごとのテンソルオペラッドと Hopf オペラッド射は未完成。
   E2a-3 の転送モデル構造、E2a-4・5 は未完成。現在地のコードと検証は本節と
   同じコミットに保存。E2a-2 完了は `60541ccb`。
 - **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. 自然数鎖で検証済みの `chainMap_diagonal` を整数模型へ移し、既存の BE 部分合成へ
-     接続する。負次数比較は結合子・左右単位子・braiding に適合済み。
-     Berger–Fresse（BF）2004 §1.1.3–§1.1.4、16〜32 時間。
-  2. arity ごとのテンソルオペラッドと AW の自然性を使い、E → E ⊗ E の
+  1. arity ごとのテンソルオペラッドと AW の自然性を使い、E → E ⊗ E の
      オペラッド射性・余結合性・余単位・Σ_n 同変性を閉じる。BF §1.1.4、16〜32 時間。
-  3. E-coalgebra 区間の抽象 structure から全代数の functorial path object、
+  2. E-coalgebra 区間の抽象 structure から全代数の functorial path object、
      fibrations.llp ⊆ 弱同値、J-cell acyclicity、小対象性・極限余極限と転送の適用を閉じる。
      Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
-  4. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
+  3. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
      BF §1.3・§3.1 と McClure–Smith の区間切断作用、80〜200 時間。
      着手前にファイル数・主要補題の見積もりを計画に一段落で記す指示が未実施。
      Δ¹ の作用は必要次数 r ≤ n に特殊化してよい。TR 自体は一般に証明する。
-  5. 具体区間を抽象界面へ代入して E2a-3 を完成。BM 命題 4.1、BF §3.1、8〜24 時間。
-  6. E2a-4：右 Quillen、全対象 fibrant、底での homotopy 引き戻し、H⁰ の可換環構造、
+  4. 具体区間を抽象界面へ代入して E2a-3 を完成。BM 命題 4.1、BF §3.1、8〜24 時間。
+  5. E2a-4：右 Quillen、全対象 fibrant、底での homotopy 引き戻し、H⁰ の可換環構造、
      離散可換代数の E 代数化。BM 命題 4.1、BF §3.1、16〜40 時間。
-  7. E2a-5：homotopy function complex と π₀ の Hom 比較。
+  6. E2a-5：homotopy function complex と π₀ の Hom 比較。
      Hovey §5・Dwyer–Kan、既存 HomotopyFunctionComplex の具体的適用、12〜24 時間。
 - **主要宣言**（名前のみ）：
   `SerrePositivity.EInfinity.projectiveModelCategory`、
@@ -145,15 +143,15 @@
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_left_counit`、
   `SerrePositivity.EInfinity.BarrattEccles.complexDiagonal_right_counit`、
   `SerrePositivity.EInfinity.Shuffle.component`、
-  `SerrePositivity.EInfinity.Shuffle.component_generators`、
+  `SerrePositivity.EInfinity.BarrattEccles.partialComposition_diagonal_tensorμ`、
   `SerrePositivity.EInfinity.Shuffle.chainMap`、
   `SerrePositivity.EInfinity.Shuffle.chainMap_natural`、
-  `SerrePositivity.EInfinity.Shuffle.pathCutEquiv`、
+  `SerrePositivity.EInfinity.BarrattEccles.partialComposition_eq_generalShuffle`、
   `SerrePositivity.EInfinity.Shuffle.pathCut_sign`、
-  `SerrePositivity.EInfinity.Shuffle.diagonal_value`、
-  `SerrePositivity.EInfinity.Shuffle.chainMap_diagonal`、
+  `SerrePositivity.EInfinity.NegativeTensor.binaryMap_comultiplication`、
+  `SerrePositivity.EInfinity.Shuffle.cochainMap_diagonal`、
   `SerrePositivity.EInfinity.NatTensor.interchange`、
-  `SerrePositivity.EInfinity.NegativeTensor.comparison_symmetry`。
+  `SerrePositivity.EInfinity.NegativeTensor.comparison_interchange`。
 - **依存と提供**：HomotopicalAlgebra の Transfer/Recognition・Transfer/Right・
   HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
   Cells・複体のテンソル・HomComplex を読み取り専用で使う。
@@ -161,8 +159,8 @@
   Alg_E のモデル構造、右 Quillen 忘却関手、E2b 用 CAlg はまだ提供していない。
 - **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
   他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：停止時の対象ビルドは成功（2690 jobs）、公理監査は成功
-  （4863 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
+- **既知の問題**：停止時の対象ビルドは成功（2698 jobs）、公理監査は成功
+  （4904 宣言、標準 3 公理のみ）。新規 sorry・追加公理・名前衝突はない。
   今回の AW 宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
   Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
   一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
@@ -170,10 +168,10 @@
   始域の cofibrancy は追加せず、完全なモデル構造を維持する。
   Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
   全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：負次数比較の四因子交換の可換性を結合子・braiding の適合性から証明し、
-  `Shuffle.chainMap_diagonal` を整数模型へ移す。一般 shuffle と単体的部分合成の合成が
-  既存の BE 部分合成に一致することを生成元で示し、余積適合性を接続する。
-  その後に arity ごとのテンソルオペラッドへ進む。まだ区間・path object には着手しない。
+- **次の一手**：arity ごとのテンソルオペラッドを構成する。部分合成は標準の tensorμ に
+  続けて二つの部分合成をテンソルし、単位・等変性・二種類の結合則を検証する。
+  `partialComposition_diagonal_tensorμ`、対角の右作用・余結合性・余単位の既存定理から
+  E → E ⊗ E のオペラッド射を束ねる。まだ区間・path object には着手しない。
 
 作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
 全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。
