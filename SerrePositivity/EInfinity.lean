@@ -136,3 +136,4 @@ public import SerrePositivity.EInfinity.AlexanderWhitney.ChainCoassociativity
 public import SerrePositivity.EInfinity.AlexanderWhitney.ChainCounit
 public import SerrePositivity.EInfinity.BarrattEccles.ComplexDiagonal
 public import SerrePositivity.EInfinity.Shuffle.CoalgebraComponents
+public import SerrePositivity.EInfinity.Shuffle.ChainNaturality

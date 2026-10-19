@@ -68,7 +68,19 @@ run_cmd do
       `SerrePositivity.EInfinity.Shuffle.signed_sum_pathCut,
       `SerrePositivity.EInfinity.Shuffle.diagonal_value_split_sum,
       `SerrePositivity.EInfinity.Shuffle.diagonal_value,
-      `SerrePositivity.EInfinity.Shuffle.component_diagonal] do
+      `SerrePositivity.EInfinity.Shuffle.component_diagonal,
+      `SerrePositivity.EInfinity.Shuffle.simplex_horizontal_face,
+      `SerrePositivity.EInfinity.Shuffle.simplex_vertical_face,
+      `SerrePositivity.EInfinity.Shuffle.sum_mixedBoundary_eq_zero,
+      `SerrePositivity.EInfinity.Shuffle.shuffleBilinear_d_positive,
+      `SerrePositivity.EInfinity.Shuffle.shuffleBilinear_d_leftZero,
+      `SerrePositivity.EInfinity.Shuffle.shuffleBilinear_d_rightZero,
+      `SerrePositivity.EInfinity.Shuffle.component_d_positive,
+      `SerrePositivity.EInfinity.Shuffle.degreeMap_d,
+      `SerrePositivity.EInfinity.Shuffle.chainMap,
+      `SerrePositivity.EInfinity.Shuffle.ι_chainMap,
+      `SerrePositivity.EInfinity.Shuffle.chainMap_natural,
+      `SerrePositivity.EInfinity.Shuffle.chainMap_generators] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
