@@ -516,3 +516,11 @@ public import SerrePositivity.KST.Spectra.SpectrumPointLoopHomCoefficients
 public import SerrePositivity.KST.Spectra.SpectrumCircleHomBKComparison
 public import SerrePositivity.KST.Spectra.SpectrumCircleHomBKCentral
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKParameterEdges
+public import SerrePositivity.KST.Spectra.PointedUnitMappingFamily
+public import SerrePositivity.KST.Spectra.WeightedParameterPointEvaluation
+public import SerrePositivity.KST.Spectra.SpectrumCotensorEvaluationUnderlying
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKEndPoint
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKSection
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKHomFamily
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKReflectedPoints
+public import SerrePositivity.KST.Spectra.SpectrumCircleBKReflectedFamilies
