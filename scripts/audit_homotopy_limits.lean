@@ -4702,3 +4702,75 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @partialColimitPushoutCocone_isColimit
 #print axioms partialColimitPushoutCocone_isColimit
+
+#check @initialFiberEdgeEndpoint
+#print axioms initialFiberEdgeEndpoint
+
+#check @initialFiberEdgeTotalVertex
+#print axioms initialFiberEdgeTotalVertex
+
+#check @initialFiberEdgeTotalVertex_evaluation
+#print axioms initialFiberEdgeTotalVertex_evaluation
+
+#check @initialFiberEdgeBaseVertex
+#print axioms initialFiberEdgeBaseVertex
+
+#check @initialFiberEdgeBaseVertex_edge
+#print axioms initialFiberEdgeBaseVertex_edge
+
+#check @initialFiberVertexAt
+#print axioms initialFiberVertexAt
+
+#check @initialFiberEdgeProjectionAt
+#print axioms initialFiberEdgeProjectionAt
+
+#check @leftFibrationInitialFiberPiZeroEquiv_edge
+#print axioms leftFibrationInitialFiberPiZeroEquiv_edge
+
+#check @leftFibrationInitialFiberPiZeroEquiv_edgeAt
+#print axioms leftFibrationInitialFiberPiZeroEquiv_edgeAt
+
+#check @nestedCosliceIso_hom_comp
+#print axioms nestedCosliceIso_hom_comp
+
+#check @coconeComparisonTarget
+#print axioms coconeComparisonTarget
+
+#check @coconeComparisonEdge
+#print axioms coconeComparisonEdge
+
+#check @coconeComparisonTarget_eq
+#print axioms coconeComparisonTarget_eq
+
+#check @coconeComparisonTarget_vertex
+#print axioms coconeComparisonTarget_vertex
+
+#check @coconeComparisonEdge_projection
+#print axioms coconeComparisonEdge_projection
+
+#check @coconeComparisonFiberVertex
+#print axioms coconeComparisonFiberVertex
+
+#check @coconeMappingSpacePiZeroEquiv_comparison
+#print axioms coconeMappingSpacePiZeroEquiv_comparison
+
+#check @colimitAttachmentComparison_leg_edge
+#print axioms colimitAttachmentComparison_leg_edge
+
+#check @colimitAttachmentCoconeEdge
+#print axioms colimitAttachmentCoconeEdge
+
+#check @colimitAttachmentFiberVertex
+#print axioms colimitAttachmentFiberVertex
+
+#check @coconeMappingSpacePiZeroEquiv_attachment
+#print axioms coconeMappingSpacePiZeroEquiv_attachment
+
+#check @coconePushoutBoundary_eq
+#print axioms coconePushoutBoundary_eq
+
+#check @coconePushoutRightBoundary
+#print axioms coconePushoutRightBoundary
+
+#check @exists_cocone_glue_of_boundary_component
+#print axioms exists_cocone_glue_of_boundary_component

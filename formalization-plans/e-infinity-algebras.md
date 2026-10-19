@@ -7,44 +7,26 @@
 ### N（γ1.5・γ3）
 
 - **現在地**：γ1.5 完了。γ3b は任意の小圏で元の非反転 q_x の同値性・全導来 fiber の可縮性による両向き判定と、pinched Hom の直接 fiber 模型まで公開。
-  γ3c の 𝒮 の小積・Sp の有限積（空積含む）、一脚 fibration の引き戻し、fibration の塔の実際の ∞ 極限を公開。𝒮 の小余積・任意の span・任意の列の ∞ 余極限も公開。
-  通常の随伴と整合する自然な単体的 Hom 同型からの極限保存、豊穣右関手の coherent nerve による像との一致、同図式の全 coherent 極限錐への拡張まで公開。
-  今回は Kan 複体の `K × − ⊣ Map(K,−)` の通常の随伴・豊穣 Hom 同型・零単体の一致と strict 図式の ∞ 極限保存を構成。
-  両対象の anodyne Kan 置換（全対象 cofibrant）を代入し、`AdjunctionHom` の frame 同型との可換性を全単体で検証。
-  固定した単射・anodyne・Kan fibration・trivial Kan fibration の保存も公開。γ3c 全体・一般の γ4 は未完了。
-  一般の小図式の重み付き coend を実際に構成。通常の Hom 普遍性・図式の関手性・tensor による普遍性の保存と、
-  coend の内部 Hom = 反変 Hom の重み付き end の同型（終域に自然、全単体）を公開。
-  Bousfield–Kan 重みに特殊化し、Kan 置換した対象からの Hom と既存の反変豊穣 Hom の end のホモトピー同値を構成。
-  重み付き end の反転を成分公式・係数自然性つきの厳密な同型として構成。反転重みの coend の反転 Hom から、
-  `reflectedHomHolimConeComparison` の係数の end への同型を公開し、Kan 置換後の比較も同値と検証。
-  一般の Kan 値図式の native な coherent 余錐を元の図式上に構成し、頂点が反転 coend の Kan 置換そのものと証明。
-  豊穣 Hom の族・頂点評価・native な極限判定を任意の coherent 錐へ拡張。
-  頂点評価を固定した持ち上げの相対ホモトピーと、制限後の関手同型を公開。
-  構成済みの coend の錐の極限性を、頂点評価と制限を満たす実際の族の構成へ還元。
-  coend の Hom 比較の豊穣自然性を全 Hom パラメータで証明し、恒等射の普遍切断点からの復元公式を構成。
-  反転係数の end に作用を移し、Kan 置換後の既存の Hom 比較についても同じ公式を検証。
-  その普遍切断点の像が構成済みの coherent 余錐の普遍点と一致することを証明。
-  反転 end の同型の評価を各係数の実際の評価へ戻し、豊穣後合成の係数公式を証明。
-  weighted nerve に全反転 Hom パラメータで前合成する射を構成し、path の最小点による係数の合成公式を検証。
-  この射から実際の coslice の族・coherent 錐の全空間への族を構成し、底の図式を保つことを証明。
-  end のパラメータ付き係数の射と weighted nerve の普遍評価が射として厳密に可換と証明。
-  一般の Hom の end の作用を既存の Kan end の作用と同定し、既存の coherent 錐の比較の全パラメータの評価を、
-  普遍点と実際の coslice の前合成族から得る射と同定。
-  任意の coherent 単体の tail を保って始点を置換し、全ての面・退化に自然な coslice 全体の前合成を構成。
-  元の weighted な前合成族との厳密な一致も検証。join の二つの左頂点を潰す標準切断から、
-  錐の図式全体上の明示的な Hom の族と、その制限の評価式を構成。
-  定値単体への始点置換と恒等射の coslice 点を照合し、任意の coherent な錐の族の頂点評価を標準 Hom 比較と同定。
-  切断空間の点から作った錐の切断を普遍点の weighted な評価へ戻し、coend の比較と制限で厳密に一致すると証明。
-  両条件を極限判定へ渡し、一般の通常の小圏上の Kan 値図式の反対錐の ∞ 極限性と、元の余錐の ∞ 余極限性を公開。
-  図式の形状の押し出しに沿う切断の全パラメータの一意な貼り合わせと、切断空間の厳密な引き戻し同型を公開。
-  任意の底上の通常の余極限に対し、相対関手空間が各部分の相対関手空間の極限になることを構成。
-  既存の相対骨格列とセル付加へ適用し、任意の coherent 図式の切断空間の骨格の塔による極限表示と、
-  後続段階の境界・単体の押し出しによる極限表示を検証。left fibration では塔の各値は Kan、制限は Kan fibration。
-  部分余極限頂点を付加した実際の形状・図式と、指定した余錐を頂点ごと保つ延長を構成。余極限性も保存・反映。
-  部分余極限からの比較を全ての脚を含む coherent な余錐で構成し、元の部分図式への制限を厳密に照合。
-  比較辺を実際の Kan 対象の射へ戻し、部分余極限対象の span と、その小さい Kan 押し出し候補・native な余極限余錐を構成。
-  共通部分で一致する二つの余錐の一意な貼り合わせも公開。span の余錐を元の図式へ戻す接続は未完了。詳細はコミットメッセージを参照。
-  F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3 に記載。
+  γ3c は 𝒮 の小積・Sp の有限積（空積含む）、一脚 fibration の引き戻し、fibration の塔の実際の ∞ 極限を公開。
+  𝒮 の小余積・任意の span・任意の列の ∞ 余極限も公開。
+  通常の随伴と整合する単体的 Hom 同型からの極限保存と、豊穣右関手の coherent nerve による像との一致を証明。
+  任意の coherent な極限錐にも適用できる。γ4 の具体例 `K × − ⊣ Map(K,−)` は通常の随伴・豊穣 Hom 同型・零単体を照合。
+  両対象の anodyne Kan 置換を含む frame Hom の可換性を全単体で検証し、固定した Quillen 類の保存も公開。
+  一般の小図式の重み付き coend、tensor と内部 Hom の普遍性、反転係数の end との自然な同型を構成。
+  Kan 置換後の Hom 比較は全 Hom パラメータの豊穣合成を保ち、恒等射の普遍切断点から復元できる。
+  実際の coherent な余錐を構成し、頂点を Kan 置換した反転 coend と同定。
+  任意の coherent 錐全体の明示的な Hom の族を構成し、頂点評価・元の図式への制限を標準比較と厳密に照合。
+  通常の任意の小圏上の Kan 値図式では、構成した反対錐の ∞ 極限性・元の native な余錐の ∞ 余極限性を無条件に証明。
+  任意の coherent な図式の切断空間は、形状の押し出しの引き戻し・セル付加・相対骨格の塔の厳密な極限で表示。
+  left fibration では塔の各値は Kan、制限は Kan fibration。図式の底上の通常の余極限についても一般化済み。
+  部分余極限頂点を付加した実際の形状と図式、指定した余錐を頂点ごと保つ延長と余極限性の保存・反映を構成。
+  全ての脚を含む coherent な比較と実際の頂点間の射を抽出し、部分余極限対象の Kan 値 span とその押し出し候補を構成。
+  今回、始対象を持つ left fibration の fiber の Hom 表示を実際の辺で計算し、部分余錐の制限の π₀ の像を、
+  付加で作った比較辺そのもののホモトピー類と同定。二重 coslice の比較辺の終点と頂点への射影も厳密に検証。
+  共通部分で同じ連結成分にある部分余錐は、単射側を同じ成分内で直して厳密に貼れることを証明。
+  span の余錐に沿う輸送後の部分余錐の連結成分の照合と、貼り合わせた余錐の普遍性は未完了。
+  γ3c 全体・一般の γ4 は未完了。F2-lite 第 2 部の分担と工程は `infinity-core-F2.md` §3。
+  詳細な実施記録はコミットメッセージを参照。
 - **残り**（依存順・時間は再開後の概算）：
   1. γ3c：通常の小圏上の Kan 値図式の coend 余極限から、任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
   2. γ4：具体例を一般の simplicial Quillen 随伴の cofibrant-fibrant 置換・frame へ拡張する。HTT 5.2.4.6、8〜20時間。
@@ -75,11 +57,13 @@
   `relativeFunctorOverPre_pushoutIso`、`relativeFunctorOverColimitCone_isLimit`、
   `skeletalSectionCone_isLimit`、`skeletalSectionDiagram_map_fibration`、`skeletalCellSectionCone_isLimit`、
   `colimitAttachedCocone`、`colimitAttachmentComparison_restrict`、`colimitAttachmentApexHom`、
-  `coherentShapePushoutCocone`、`partialColimitApexSpan`、`partialColimitPushoutCocone_isColimit`。
+  `coherentShapePushoutCocone`、`partialColimitApexSpan`、`partialColimitPushoutCocone_isColimit`、
+  `leftFibrationInitialFiberPiZeroEquiv_edgeAt`、`coconeMappingSpacePiZeroEquiv_attachment`、
+  `exists_cocone_glue_of_boundary_component`。
 - **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
   提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
   型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は ColimitAttachmentDiagram・ColimitAttachedCocone・ColimitAttachmentComparison・ColimitAttachmentHom・CoherentShapeCoconeGluing・PartialColimitApexSpan、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
+- **未コミット**：今回の保存単位は InitialFiberEdgeVertex・InitialFiberEdgePiZero・CoconeComparisonEdge・CoconeComparisonPiZero・ColimitAttachmentPiZero・CoconeBoundaryRectification、集約・監査、本 N 節、F2 計画 §3。保存後は N 所有の変更なし。他レーンの変更は温存。
   root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
   今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
@@ -88,14 +72,14 @@
   γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
   Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
   依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：`partialColimitPushoutCocone` を元の押し出し形状の図式の余錐へ戻す。
-  `colimitAttachmentComparison` は共通部分の余極限錐から両部分余錐の頂点への全単体の比較を与え、
-  `colimitAttachmentApexHom_edge` が span の射と比較辺そのものを同定する。
-  最初に `Stable/CoconeMappingHomComparison`・`LeftFibrationInitialFiberPiZeroEquiv_evaluation` と比較辺の π₀ の作用を照合する。
-  span の余錐の脚に沿って部分余錐を輸送し、共通部分での比較を保って単射側の切断の制限で厳密に揃え、
-  `coherentShapePushoutCocone` へ渡す。余極限性は付加による制限の同値と切断空間の押し出し表示で照合する。
-  その後、余極限対象の列と骨格の切断空間の塔を照合して無限段階を処理する。
-  小さい `K` と `p : ulift K → SpaceInfinity` ではセルの添字を u に戻すことも検証する。span 自体の余極限性だけで元の図式の余極限性を済ませたと数えない。
+- **次の一手**：span の余錐の脚に沿って輸送した部分余錐の、共通部分での連結成分の一致を証明する。
+  最初に始対象から選んだ辺と輸送辺の `Edge.compStruct` に今回の評価式を適用し、Hom 表示で輸送が後合成になることを示す。
+  `coconeMappingSpacePiZeroEquiv_attachment` で元の部分余錐の制限と比較辺の類は照合済み。
+  `sliceUnderProjection` の left fibration 性で部分余錐を span の終点へ輸送し、
+  `leftFibrationInitialFiberPiZeroEquiv_edgeAt` と span の余錐の合成三角形から、輸送後の両制限の π₀ の像の一致を示す。
+  `exists_cocone_glue_of_boundary_component` へ渡せば、単射側を同じ成分に保ったまま、厳密に貼った元の図式の余錐を得る。
+  その余極限性を付加による制限の同値と切断空間の押し出し表示で照合し、続いて骨格の無限段階を処理する。
+  小さい `K` と `p : ulift K → SpaceInfinity` のセルの添字を u に戻すことも検証する。
   任意の coherent 図式の余極限性を閉じてから γ4、F2-lite 第 2 部へ進む。
 
 ### E2a（既存の引き継ぎ）
