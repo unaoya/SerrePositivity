@@ -745,3 +745,7 @@ public import SerrePositivity.KST.Spectra.SignedLoopUnitPostFactor
 public import SerrePositivity.KST.Spectra.LeftVerticalBasedComposition
 public import SerrePositivity.KST.Spectra.SignedLoopUnitPostTrace
 public import SerrePositivity.KST.Spectra.SignedLoopUnitCounitCoordinates
+public import SerrePositivity.KST.Spectra.SpectrumTracedRectification
+public import SerrePositivity.KST.Spectra.SignedLoopUnitStructurePath
+public import SerrePositivity.KST.Spectra.TracedSignedLoopUnit
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedUnitCoordinates

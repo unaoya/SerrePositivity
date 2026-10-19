@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.KST.Spectra.SignedLoopUnitStructurePath
 public import SerrePositivity.KST.Spectra.PointedRelativeTransposePaths
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterStructurePaths
 public import SerrePositivity.KST.Spectra.SequenceParameterRelativeRectification
@@ -44,10 +45,9 @@ def kanAdjointCoefficientReversePath (X Y : OmegaSpectrum.{u}) (n : ℕ) :
         (Y.sigma n ≫ KanSequence.kanAdjoint Y.toKanSequence (n + 1)))
       ((ihom (suspension (X.level n).space)).map
         (PointedSimplicialSet.circle.{u} ◁ KanSequence.kanAdjoint Y.toKanSequence n ≫
-          (KanSequence.signedLoopTail Y.toKanSequence).sigma n)) := by
-  have h := PointedMapping.VerticalChain.basedIhomMap (suspension (X.level n).space)
-    (KanSequence.kanAdjoint_signedLoopTail_basedChain Y.toKanSequence_omega n)
-  exact PointedMapping.basedPathOfComponent h.component.symm
+          (KanSequence.signedLoopTail Y.toKanSequence).sigma n)) :=
+  PointedMapping.VerticalPath.basedIhomMap (suspension (X.level n).space)
+    (OmegaSpectrum.signedLoopUnitStructurePath Y n)
 
 /-- 零境界を持つ元の族の転置した段射は、同じ指定部分への制限でも厳密に零。 -/
 lemma kanAdjointParameterStage_zero_boundary (X Y : OmegaSpectrum.{u})
