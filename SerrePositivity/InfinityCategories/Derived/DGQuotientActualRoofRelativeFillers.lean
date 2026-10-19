@@ -45,6 +45,8 @@ theorem dgQuotientRoofFinite_exists_relativeFillerData (P : Set D) (hP : localKF
       dgClosedRoofFillerBoundaryHomotopy_projection A D P x (y i) R (b i) (t i) (ht i)
     target_transport := dgQuotientRoofSimplexRefinementHomotopy A D P x (y i) R (g i)
     target_over := dgQuotientRoofSimplexRefinementHomotopy_projection A D P x (y i) R (g i)
+    transport_boundary := fun h =>
+      dgRoofFillerTransport_boundary A D P x (y i) R (b i) (g i) h (t i) (ht i)
     comparison := H
     comparison_over := hH }⟩
 

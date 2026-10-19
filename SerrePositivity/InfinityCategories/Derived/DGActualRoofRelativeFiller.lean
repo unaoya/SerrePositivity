@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGRoofFillerTransportCompatibility
 public import SerrePositivity.InfinityCategories.Derived.DGRoofFillerBoundaryTransport
 public import SerrePositivity.InfinityCategories.Derived.DGRoofBoundaryHomotopy
 
@@ -6,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGRoofBoundaryHomotopy
 
 概要：係数の厳密な境界、元の境界への輸送、商目標への比較を一つの実データに保持する。
 方針：二つの輸送は元の実分母辺を被覆し、相対比較は細分後の分母に定値と要求する。
-規約：境界の厳密一致と輸送を区別し、二重 prism の整合性は別に証明する。
+規約：二輸送の境界整合性を保持し、二重 prism 全体の充填は別に証明する。
 使われ方：有限充填の受入界面。
 -/
 @[expose] public section
@@ -50,6 +51,13 @@ structure DGActualRoofRelativeFiller (P : Set D) (x y : D)
   target_over : target_transport.h ≫ dgQuotientRoofCorrespondenceProjection A D P x y =
     snd (Δ[n] : SSet.{max u v}) Δ[1] ≫
       SSet.yonedaEquiv.symm (dgClosedVerdierDenominatorEdge A D P x R).edge
+  /-- 入力境界が商単体の境界なら、二輸送はその全境界・全時刻で一致する。 -/
+  transport_boundary :
+    b ≫ pinchedHomChainMap ((inclusion A D P).map
+      (ForgetEnrichment.to (Complex A) s.obj.left) y) =
+        (∂Δ[n]).ι ≫ SSet.yonedaEquiv.symm g →
+      ((∂Δ[n]).ι ▷ (Δ[1] : SSet.{max u v})) ≫ target_transport.h =
+        boundary_transport.h ≫ dgRoofCorrespondenceMap A D P x y
   /-- 細分後の商目標と実充填の商像を、全境界上で厳密に定値の比較で結ぶ。 -/
   comparison : RoofBoundaryFixedHomotopy
     (SSet.yonedaEquiv.symm g ≫ pinchedClosedPrecomposition A (QuotientObject D P)

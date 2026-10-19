@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGRoofFillerTransportCompatibility
 import SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofRelativeFillers
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofRefinementPrism
 import SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofRefinementPrism
@@ -1685,10 +1686,50 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.actual_boundary
 #print axioms SerrePositivity.InfinityCategories.dgQuotientRoofFinite_exists_relativeFillerData
 
+#print axioms SerrePositivity.InfinityCategories.dgSimplexData_ext_of_components
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPostcomp
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPostcomp_simplex
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPrecomp_simplex
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPostcomp_homotopyMap
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPrecomp_homotopyMap
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPostcomp_pinchedSlice
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTransPrecomp_pinchedSlice
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomMap
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomMap_pinched
+#print axioms SerrePositivity.InfinityCategories.dgFreeLift_postcomp
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomEvaluation_postcomp
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomMap_evaluation
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomOriginalEvaluation_naturality
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomRefinedEvaluation_naturality
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTrans_hext
+#print axioms SerrePositivity.InfinityCategories.dgStrictNatTrans_simplex_eq_of_heq
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomPrecomposeNatTrans_naturality
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomPrecompose_simplex_naturality
+#print axioms SerrePositivity.InfinityCategories.dgWalkingHomPrecompose_coefficient_naturality
+#print axioms SerrePositivity.InfinityCategories.dgClosedPrecompositionSlicePrism_naturality
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofRefinementPrism_comparison
+#print axioms SerrePositivity.InfinityCategories.dgRoofFillerTransport_boundary
+#print axioms SerrePositivity.InfinityCategories.DGActualRoofRelativeFiller.transport_boundary
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSimplexComponentExt,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransWhisker,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransSimplexWhisker,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransHomotopyWhisker,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransSliceWhisker,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomMap,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomMapPinched,
+    `SerrePositivity.InfinityCategories.Derived.DGFreeLiftPostcomp,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomEvaluationWhisker,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomRefinementNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransComponentExt,
+    `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofPrismComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGRoofFillerTransportCompatibility,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofFillers,
     `SerrePositivity.InfinityCategories.Derived.DGRoofFillerBoundaryTransport,
     `SerrePositivity.InfinityCategories.Derived.DGActualRoofRelativeFiller,
