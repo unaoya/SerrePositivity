@@ -513,6 +513,17 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | 指定加群比較の標準点／任意局所点の評価公式 | FiniteOverlapExceptionalComparisonComponents | underlying 図式の指定包含射との成分一致 |
 | `finiteOverlapExceptionalAlgebraVertexToChart_transition`・`finiteOverlapExceptionalAlgebraModuleComparison` | FiniteOverlapExceptionalAlgebraTransitionComparison・FiniteOverlapExceptionalAlgebraModuleComparison | 正規表示と元の模型の dg 遷移・canonical な通常加群比較の一致 |
 
+| 元の例外因子の指定通常加群比較の自然変換 | FiniteOverlapExceptionalModuleComparisonNaturality | 単位矢の全次数作用と標準制限同型の自然性を保持 |
+| 標準計算同型・指定制限比較・`finiteOverlapExceptionalDerivedExtensionComparison` | FiniteOverlapExceptionalDerivedComparison | 元の Koszul 局所模型の canonical な導来比較射 |
+| 指定導来制限比較の延長・全導来射への自然性 | FiniteOverlapExceptionalDerivedNaturality | 元の指定射と成分が一致する自然変換 |
+| 標準計算同型の恒等成分・通常比較の局所化公式 | FiniteOverlapExceptionalDerivedComputation | 主局所化上の指定射を元の加群比較へ戻す計算 |
+| `finiteOverlapExceptionalAlgebraDerivedRestrictionComparison` | FiniteOverlapExceptionalAlgebraDerivedComparison | 正規表示と元の例外因子模型の canonical な導来制限比較の一致 |
+| 標準導来制限四角形・その恒等成分 | FiniteOverlapExceptionalAlgebraDerivedSquare | 元の局所遷移と正規表示の二経路を指定比較する |
+| `finiteOverlapExceptionalAlgebraDerivedExtensionComparison_isIso_iff` | FiniteOverlapExceptionalAlgebraCartesianComparison | 局所 dg 準同値の余単位と随伴四角形で canonical な比較の可逆性を比較 |
+| 元の例外因子の cartesian／局所 perfect 条件・正規表示との iff／等号・射影的 dg 候補 | FiniteOverlapExceptionalCartesianConditions | 元の Koszul 模型で定義した対象条件と正規表示の対象条件の一致 |
+| 指定 dg 包含・主導来比較・`exceptionalCartesianPerfectDiagramHomotopyEquivalence` | ExceptionalDiagramCartesianEnhancement | 元の例外因子の射影的 dg 候補の H⁰ と指定導来部分圏の同値 |
+| `exceptionalCartesianPerfectDiagramNormalizedEquivalence/ProductEquivalence` | ExceptionalDiagramProductEnhancementComparison | 元の dg 候補の H⁰ と正規表示／共通 Koszul 表示の cartesian perfect 導来部分圏の同値 |
+
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
 モノイダル圏での左右単位則・結合則を証明済みで、一対象 dg 圏を構成済み。
@@ -722,7 +733,7 @@ graph 導来延長–制限同値を適用し、全図式加群の導来表示�
 原典は KST v4 §3.1・Lemma 3.6（pp.11–14）。これは指定比較射を保持した
 係数 dg 図式模型による再構成であり、層の降下や dg 商の普遍性を結論しない。
 次の実装単位は coherent な降下・層の閉埋め込み／射影との比較、および
-例外因子の正規表示と元の有限列 Koszul 模型の canonical な導来遷移比較の整合性。
+例外因子の dg 候補の高次降下、および層の閉埋め込み／射影との整合性。
 元の例外因子の基底制限 Koszul 頂点から全図式係数圏への指定 dg 埋め込みと、
 同じ自己 Hom の正規表示から元の頂点への Hom 恒等 dg 準同値は構成済み。
 二つの局所埋め込みの可換式を標準導来制限合成同型へ送り、
@@ -735,8 +746,20 @@ graph 導来延長–制限同値を適用し、全図式加群の導来表示�
 その成分は underlying 図式の指定包含写像に一致する。正規表示との指定 dg 比較は
 実際の局所 dg 遷移と可換であり、元の指定通常加群比較を正規表示へ制限すると
 正規表示の canonical な比較に一致することを証明済み。
-この一致の主導来局所化への移送と、随伴による canonical な係数拡大比較の
-可逆性の iff は、引き続き別の検証項目として残す。
+通常加群の指定比較の自然変換と主局所化の標準計算同型を使い、元の例外因子
+Koszul 模型での canonical な導来制限比較・導来係数拡大比較を構成済み。
+局所化前の指定射の像に一致する計算を経由して、全導来対象で正規表示への
+制限が canonical な正規表示の比較と一致することを証明済み。
+指定局所 dg 可換四角形に標準導来制限合成同型を適用し、その成分を恒等へ戻す。
+局所 dg 準同値の opposite に沿う graph 延長–制限同値と指定随伴四角形により、
+元の指定係数拡大比較と正規表示の指定比較の可逆性の iff を証明済み。
+元の例外因子 Koszul 表示で cartesian・局所 perfect 条件を定義し、正規表示との
+対象性質の等号を証明済み。その条件による射影的 dg 候補と主導来比較を構成し、
+完全忠実性・標準半自由分解による本質的全射性から指定 H⁰ 同値を構成済み。
+指定正規表示比較を経由し、元の例外因子 dg 候補の H⁰ と共通 Koszul 表示の
+cartesian perfect 導来部分圏の指定同値も構成済み。
+原典は KST v4 §3.1・Lemma 3.6（pp.11–14）。図式 dg 加群による再構成であり、
+この H⁰ 同値を層の Perf・dg 商の普遍性・高次降下の同値とは扱わない。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
