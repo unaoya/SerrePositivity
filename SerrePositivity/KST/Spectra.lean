@@ -636,3 +636,9 @@ public import SerrePositivity.KST.Spectra.PointedTransposeRestrictions
 public import SerrePositivity.KST.Spectra.RawSpectrumHomPointInverse
 public import SerrePositivity.KST.Spectra.RawSpectrumParameterHomFamilies
 public import SerrePositivity.KST.Spectra.SequenceParameterRelativeRectification
+public import SerrePositivity.KST.Spectra.PointedBasedPathCalculus
+public import SerrePositivity.KST.Spectra.PointedBasedPathClosed
+public import SerrePositivity.KST.Spectra.UniversalLoopExchangePaths
+public import SerrePositivity.KST.Spectra.SignedAdjointCompositionPaths
+public import SerrePositivity.KST.Spectra.SignedLoopStructurePaths
+public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterStructurePaths
