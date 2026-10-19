@@ -482,6 +482,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `finiteOverlapExceptionalProductMap_inclusion` | FiniteOverlapExceptionalProductComponents | 共通表示の遷移が実際の環射による標準外積係数変更と一致する全次数・全ての元の式 |
 | `baseKoszulDGAlgebra`・`finiteOverlapExceptionalProductBaseDGFunctor`・係数代数射・包含公式 | FiniteOverlapExceptionalBaseMap | 基底 Ko(A;a) から各有限重なりの共通表示への標準 dg 係数射 |
 | `finiteOverlapExceptionalProductBaseMap_natural`・共通表示／元の例外因子への基底自然変換・指定図式比較との整合性 | FiniteOverlapExceptionalBaseDiagram | 基底 Ko(A;a) の定数図式から例外因子の係数図式への指定射 |
+| `diagramAlgebraMul_square`・`diagramCoefficientHomMap`・包含公式・`diagramCoefficientDGFunctor` | DiagramCoefficientDGFunctor | 任意の係数図式の自然変換が誘導する実際の係数 dg 関手 |
+| Hom／dg 関手の恒等・合成則・図式同型の順逆合成 | DiagramCoefficientFunctoriality | 係数図式の射の関手性と指定逆を dg 関手の等式として保持 |
+| 全 Hom 同型・H⁰ 本質的全射・`diagramCoefficientDGFunctor_quasiEquivalence` | DiagramCoefficientQuasiEquivalence | 係数図式同型から得る係数 dg 圏の準同値 |
+| `diagramCoefficientDerivedRestriction`・`diagramCoefficientDerivedEquivalence`・指定順逆関手 | DiagramCoefficientDerivedEquivalence | 既存の graph 導来延長・制限を用いた全図式加群の表示同値 |
+| 例外因子の係数対象・dg 準同値・`exceptionalDiagramDerivedEquivalence` | ExceptionalDiagramDerivedComparison | 元の例外因子と共通 Koszul 表示の全図式加群の指定導来同値 |
+| `diagramCoefficientDGFunctor_vertex/transition/unit` | DiagramCoefficientLocalSquares | 指定局所埋め込み・局所遷移・canonical な単位矢の可換式 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -549,7 +555,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全3298定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3363定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -661,8 +667,18 @@ Lemma 3.6（pp.11–14）であり、共通 Koszul 表示を介した明示 dg �
 元の例外因子図式への `finiteOverlapExceptionalBaseNatTrans` を構成済み。
 指定図式比較を通すと標準係数射に戻る等式も証明済み。原典は KST v4
 Lemma 3.6（pp.11–14）、射影 q を係数 dg 代数の反変な自然変換として再構成する。
-次の実装単位は係数図式の同型を図式 dg 加群模型の比較へ移すこと、および
-coherent な降下・層の閉埋め込み／射影との比較。
+任意の係数 dg 代数図式の自然変換から、添字を固定する実際の係数 dg 関手を
+構成済み。単位・積保存と自然性から圏法則を証明し、恒等・合成および図式同型の
+順逆合成を dg 関手の等式として保持する。図式同型の場合は全 Hom の複体同型性と
+H⁰ の本質的全射性から係数 dg 準同値を証明済み。opposite の準同値に既存の指定
+graph 導来延長–制限同値を適用し、全図式加群の導来表示同値を構成済み。
+実際の例外因子の指定図式同型に適用して `exceptionalDiagramDerivedEquivalence` を
+構成済み。これは全図式加群の同値であり、cartesian・局所 perfect 条件の保存は
+まだ別義務として残す。正規表示の指定局所頂点の埋め込み、局所遷移、canonical な
+包含単位矢と係数 dg 関手の可換式も証明済み。原典は KST v4 §3.1・Lemma 3.6
+（pp.11–14）、通常の厳密な加群貼り合わせではなく係数 dg 関手を用いる再構成。
+次の実装単位は指定局所評価・比較射の整合性から cartesian・局所 perfect 条件を
+この表示同値で比較すること、および coherent な降下・層の閉埋め込み／射影との比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
