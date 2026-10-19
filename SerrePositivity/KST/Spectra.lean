@@ -439,3 +439,13 @@ public import SerrePositivity.KST.Spectra.RawSpectrumPointedUnits
 public import SerrePositivity.KST.Spectra.HomTensorStrengthPoint
 public import SerrePositivity.KST.Spectra.SpectrumCotensorEvaluation
 public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleMaps
+public import SerrePositivity.KST.Spectra.RawSpectrumPointedAssociativity
+public import SerrePositivity.KST.Spectra.SpectrumPointedEnrichment
+public import SerrePositivity.KST.Spectra.EnrichedParameterSquares
+public import SerrePositivity.KST.Spectra.EnrichedParameterUnits
+public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleComposition
+public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleLaws
+public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleEnrichment
+public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleFunctors
+public import SerrePositivity.KST.Spectra.SpectrumNativeCotensor
+public import SerrePositivity.KST.Spectra.SpectrumCotensorGradedEvaluation
