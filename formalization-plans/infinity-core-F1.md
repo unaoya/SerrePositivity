@@ -11,9 +11,8 @@
   strict Kan 図式の復元、および有限鎖の nerve 上の coherent 図式の復元は関手同型まで証明済み。
 - weighted nerve の豊穣な標準単位は各成分で単射かつ同値。単位に沿う strict な比較の制限は
   trivial Kan fibration、延長空間は可縮。strict transport の像で同値な厳密な左逆も存在する。
-- 底と図式の族を同時に動かした二点図式の共同実現を構成済み。面・退化との整合性と
-  比較の辺の成分公式・可逆性を証明し、curry により `kanDiagramRealization C` と
-  `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を得た。
+- 底と図式の共同実現で、`kanDiagramRealization C` と
+  `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を構成済み。
 - 表現を `LeftTransportRepresentation` に束ねた。任意の底変換は底側と全空間側の両射を厳密に保ち、
   両射の一致は表現の一致と同値。通常の nerve 上の小さい left fibration の実際の表現も構成済み。
 - 正次元の標準単体上の全 fiber の同値性は境界上で判定できる。境界固定延長は未証明。
@@ -29,7 +28,9 @@
 - 固定端点の写像空間全体から fiber 間の関手空間への `parametrizedFiberTransport` を構成。
   選択独立性・パラメーター制限・始点の係数変更を族全体で証明し、各辺で既存の transport を回収する。
   unstraightening の写像空間比較の fiber 作用と、対象評価後の普遍輸送を関手同型で結んだ。
-- 対象ビルド2847 jobs、公理監査5155宣言が成功。依存公理は標準3公理のみ。
+- 二つの豊穣 Hom の同時単体と二値ラベルから三対象の `coherentCompositionSimplex` を構成。
+  path の切替前の最大座標、座標の面・退化の自然性、図式の豊穣単位・合成則を証明済み。
+- 対象ビルド2853 jobs、公理監査5227宣言が成功。依存公理は標準3公理のみ。
   主経路にモデル構造の instance 仮定なし。実施記録はコミットメッセージ。
 
 ### 残り（依存順）
@@ -60,6 +61,7 @@
 - `exists_leftTransportRepresentation_extension_innerAnodyne`
 - `FiberTransportFamily`、`parametrizedFiberTransport`
 - `leftUnstraighteningMappingFiberHom_parametrizedIso`
+- `coherentCompositionSimplex`、`pathCutMaximumMap_reindex`
 
 ### 依存と提供
 
@@ -91,13 +93,12 @@
 
 ### 次の一手
 
-`parametrizedFiberTransport pointedSpaceProjection s t` の同値性を、全パラメーターで証明する。
-標準 coherent 頂点へ揃え、`coherentHomComparison` から区間写像空間への比較で前合成して、
-豊穣な一点 Hom の作用と比較する標準 prism を作る。`FiberTransportFamily.mapIso_parametrized` が
-任意の持ち上げを選択済みの輸送へ戻す。頂点ごとの同型だけでは代用しない。これを
-[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の両端固定の境界制限の trivial Kan 性へ渡し、
-点・標準単体上の表現空間の可縮性、一般の境界固定延長と貼り合わせへ進む。
-
+`coherentCompositionSimplex σ τ t` の最後の頂点固定の面・退化の自然性と両端を証明する。
+`t=0` は豊穣合成 σ≫τ の右 Hom 比較、`t=1` は τ の右 Hom 比較となる。前面の図式を
+`rightMappingSpacePrism` と同定し、右 slice への prism に束ねる。反対 nerve で左 coslice へ移し、
+全パラメーターの標準輸送を得る。これを `FiberTransportFamily.mapIso_parametrized` で選択済みの
+普遍 pointed-space 輸送へ結び、その同値性、[Lemma 5.6.9.1](https://kerodon.net/tag/02SM) の
+境界制限、一般の境界固定延長へ進む。頂点ごとの同型だけでは代用しない。
 作成日：2026-10-18。状態：着手可能。全体の正本は [foundations.md](foundations.md)。
 F0 の一般論は [infinity-core.md](infinity-core.md)（レーン α）が担当し、α2 はその成果を読むだけで編集しない。
 
