@@ -4315,3 +4315,118 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_quotient
 #check @SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_source
 #print axioms SerrePositivity.KST.SConstruction.mcCarthyRhoTerminal_source
+
+#check @SerrePositivity.KST.SConstruction.exists_relative_initialPrism
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_initialPrism
+#check @SerrePositivity.KST.SConstruction.fixedSourceArrows
+#print axioms SerrePositivity.KST.SConstruction.fixedSourceArrows
+#check @SerrePositivity.KST.SConstruction.fixedSourceArrowsι
+#print axioms SerrePositivity.KST.SConstruction.fixedSourceArrowsι
+#check @SerrePositivity.KST.SConstruction.fixedSourceArrowsTarget
+#print axioms SerrePositivity.KST.SConstruction.fixedSourceArrowsTarget
+#check @SerrePositivity.KST.SConstruction.fixedSourceArrowsι_source
+#print axioms SerrePositivity.KST.SConstruction.fixedSourceArrowsι_source
+#check @SerrePositivity.KST.SConstruction.fixedSourceArrowsTarget_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.fixedSourceArrowsTarget_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibers
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibers
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersι
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersι
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersι_source
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersι_source
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersQuotient
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersQuotient
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersInput
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersInput
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersInput_ι
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersInput_ι
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersCanonical
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersCanonical
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersCanonical_source
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersCanonical_source
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersCanonicalInput
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersCanonicalInput
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersCanonicalInput_ι
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersCanonicalInput_ι
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism_zero
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism_zero
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism_one
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism_one
+#check @SerrePositivity.KST.SConstruction.zeroSourceThetaInput
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceThetaInput
+#check @SerrePositivity.KST.SConstruction.zeroSourceThetaInput_zero
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceThetaInput_zero
+#check @SerrePositivity.KST.SConstruction.zeroSourceThetaInput_one
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceThetaInput_one
+#check @SerrePositivity.KST.SConstruction.zeroSourceThetaInput_target
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceThetaInput_target
+#check @SerrePositivity.KST.SConstruction.zeroSourceTheta
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceTheta
+#check @SerrePositivity.KST.SConstruction.zeroSourceTheta_zero
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceTheta_zero
+#check @SerrePositivity.KST.SConstruction.zeroSourceTheta_one
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceTheta_one
+#check @SerrePositivity.KST.SConstruction.zeroSourceTheta_projection
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceTheta_projection
+#check @SerrePositivity.KST.SConstruction.zeroSourceTheta_source
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceTheta_source
+#check @SerrePositivity.KST.SConstruction.uncurry_vertex_restriction
+#print axioms SerrePositivity.KST.SConstruction.uncurry_vertex_restriction
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism_vertex
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism_vertex
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersRight_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersRight_isIso
+#check @SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceCofibersRightPrism_isInvertible
+#check @SerrePositivity.KST.SConstruction.zeroSourceThetaInput_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceThetaInput_isInvertible
+#check @SerrePositivity.KST.SConstruction.zeroSourceTheta_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceTheta_isInvertible
+#check @SerrePositivity.KST.SConstruction.zeroSourceThetaHomotopy
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceThetaHomotopy
+#check @SerrePositivity.KST.SConstruction.zeroSourceThetaHomotopy_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceThetaHomotopy_isInvertible
+#check @SerrePositivity.KST.SConstruction.zeroSourceTheta_variableTime_isGapped
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceTheta_variableTime_isGapped
+#check @SerrePositivity.KST.SConstruction.zeroSourceTheta_variableTime_source
+#print axioms SerrePositivity.KST.SConstruction.zeroSourceTheta_variableTime_source
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram_ι
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram_ι
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram_map
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram_map
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram_isGapped
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram_isGapped
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaObjectVertex
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaObjectVertex
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaObjectVertex_diagram
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaObjectVertex_diagram
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaObjectMap
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaObjectMap
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaFiber_condition
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaFiber_condition
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap_projection
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap_projection
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap_parameter
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap_parameter
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram_quotient
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaDiagram_quotient
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaObjectMap_zero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaObjectMap_zero
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaObjectMap_one
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaObjectMap_one
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap_zero
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap_zero
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap_one
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaFiberMap_one
+#check @SerrePositivity.KST.SConstruction.mcCarthyThetaFiberHomotopy
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyThetaFiberHomotopy
+#check @SerrePositivity.KST.SConstruction.mcCarthyFiber_retraction_localized
+#print axioms SerrePositivity.KST.SConstruction.mcCarthyFiber_retraction_localized
+#check @SerrePositivity.KST.SConstruction.cofiberLeftFiberQuotient_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.cofiberLeftFiberQuotient_localized_isIso
