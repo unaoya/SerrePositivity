@@ -161,3 +161,5 @@ public import SerrePositivity.EInfinity.Operad.AlgebraModelClasses
 public import SerrePositivity.EInfinity.Operad.IntervalPathObject
 public import SerrePositivity.EInfinity.Operad.IntervalAcyclicity
 public import SerrePositivity.EInfinity.Operad.IntervalJCellAcyclicity
+public import SerrePositivity.EInfinity.Operad.AlgebraLimits
+public import SerrePositivity.EInfinity.Operad.FreeAlgebraColimits

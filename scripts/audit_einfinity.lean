@@ -211,7 +211,17 @@ run_cmd do
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.freeGeneratingTrivialCofibrations_rlp,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.freeGeneratingTrivialCofibrations_llp_le,
       Name.str `SerrePositivity.EInfinity.Operad.CoalgebraInterval
-        "freeGeneratingTrivialCofibrations_cell_acyclicity"] do
+        "freeGeneratingTrivialCofibrations_cell_acyclicity",
+      `SerrePositivity.EInfinity.Operad.Algebra.forget_reflectsIsomorphisms,
+      `SerrePositivity.EInfinity.Operad.Algebra.ofLimitCone,
+      `SerrePositivity.EInfinity.Operad.Algebra.algebraLimitIsLimit,
+      `SerrePositivity.EInfinity.Operad.Algebra.forget_createsLimit,
+      `SerrePositivity.EInfinity.tensorPower_preservesSiftedColimits_of_tensor,
+      `SerrePositivity.EInfinity.tensorPower_preservesSiftedColimits,
+      `SerrePositivity.EInfinity.schurFunctor_preservesSiftedColimits,
+      `SerrePositivity.EInfinity.schurFunctor_preservesFilteredColimits,
+      `SerrePositivity.EInfinity.Operad.freeAlgebraForget_preservesSiftedColimits,
+      `SerrePositivity.EInfinity.Operad.freeAlgebraForget_preservesFilteredColimits] do
     unless env.contains required do
       throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"

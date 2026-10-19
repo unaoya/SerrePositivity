@@ -95,7 +95,12 @@ Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-
 `fibrations_llp_quasiIso` は終対象と二端点評価への持ち上げから retraction と逆合成の path を取り、
 底の擬同型性を示す。`freeGeneratingTrivialCofibrations_cell_acyclicity` は自由・忘却随伴と
 左持ち上げ類の閉性を使い、任意の始域に対する相対 J-cell 射の acyclicity を与える。
-一般の極限余極限と自由像の小対象性、転送モデル構造は未完成。
+`Algebra.forget_createsLimit` は任意の底の極限錐を頂点ごと持ち上げる。
+代数の圏は全ての小極限を持ち、忘却は底に存在する形の極限を作り、保存する。
+`tensorPower_preservesSiftedColimits_of_tensor` は一般のモノイダル圏で両変数の保存から
+有限テンソル冪の sifted 余極限保存を導く。複体の閉モノイダル構造へ適用済み。
+Schur 関手と自由・忘却の合成の sifted・filtered 余極限保存も検証済み。
+一般の余極限と自由像の小対象性、転送モデル構造は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
