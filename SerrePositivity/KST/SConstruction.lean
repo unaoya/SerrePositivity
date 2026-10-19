@@ -296,4 +296,16 @@ public import SerrePositivity.KST.SConstruction.RelativeMcCarthyTheta
 public import SerrePositivity.KST.SConstruction.RelativeFiberEquivalence
 public import SerrePositivity.KST.SConstruction.RelativeAdditivity
 
+public import SerrePositivity.KST.SConstruction.SClosedPredicates
+public import SerrePositivity.KST.SConstruction.SClosedFamilies
+public import SerrePositivity.KST.SConstruction.SClosedIso
+public import SerrePositivity.KST.SConstruction.SClosedStableIso
+public import SerrePositivity.KST.SConstruction.SRelativePredicate
+public import SerrePositivity.KST.SConstruction.SRelativeCofiberIso
+public import SerrePositivity.KST.SConstruction.SRelativeEvaluation
+public import SerrePositivity.KST.SConstruction.SRelativeRowAdditivity
+public import SerrePositivity.KST.SConstruction.RelativeSingleRealization
+public import SerrePositivity.KST.SConstruction.RelativeIteratedRows
+public import SerrePositivity.KST.SConstruction.RelativeMultiRealizationAdditivity
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -5279,3 +5279,153 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.relativeCoreSAdditivityMap_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.relativeCoreSAdditivityMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.ClosedStablePredicate.iInter
+#print axioms SerrePositivity.KST.SConstruction.ClosedStablePredicate.iInter
+
+#check @SerrePositivity.KST.SConstruction.sStableEvaluation
+#print axioms SerrePositivity.KST.SConstruction.sStableEvaluation
+
+#check @SerrePositivity.KST.SConstruction.sClosedPredicate
+#print axioms SerrePositivity.KST.SConstruction.sClosedPredicate
+
+#check @SerrePositivity.KST.SConstruction.sClosedPredicate_iff
+#print axioms SerrePositivity.KST.SConstruction.sClosedPredicate_iff
+
+#check @SerrePositivity.KST.SConstruction.diagramVertex_postcomp
+#print axioms SerrePositivity.KST.SConstruction.diagramVertex_postcomp
+
+#check @SerrePositivity.KST.SConstruction.sClosedDiagramLift
+#print axioms SerrePositivity.KST.SConstruction.sClosedDiagramLift
+
+#check @SerrePositivity.KST.SConstruction.sClosedDiagramLift_ι
+#print axioms SerrePositivity.KST.SConstruction.sClosedDiagramLift_ι
+
+#check @SerrePositivity.KST.SConstruction.sClosedDiagramLift_vertex_ι
+#print axioms SerrePositivity.KST.SConstruction.sClosedDiagramLift_vertex_ι
+
+#check @SerrePositivity.KST.SConstruction.sClosedFamilyLift
+#print axioms SerrePositivity.KST.SConstruction.sClosedFamilyLift
+
+#check @SerrePositivity.KST.SConstruction.sClosedFamilyLift_inclusion
+#print axioms SerrePositivity.KST.SConstruction.sClosedFamilyLift_inclusion
+
+#check @SerrePositivity.KST.SConstruction.sPostcompCofiber_mono
+#print axioms SerrePositivity.KST.SConstruction.sPostcompCofiber_mono
+
+#check @SerrePositivity.KST.SConstruction.sClosedInclusion_vertex
+#print axioms SerrePositivity.KST.SConstruction.sClosedInclusion_vertex
+
+#check @SerrePositivity.KST.SConstruction.sClosedComparison
+#print axioms SerrePositivity.KST.SConstruction.sClosedComparison
+
+#check @SerrePositivity.KST.SConstruction.sClosedComparison_inclusion
+#print axioms SerrePositivity.KST.SConstruction.sClosedComparison_inclusion
+
+#check @SerrePositivity.KST.SConstruction.sClosedInverse
+#print axioms SerrePositivity.KST.SConstruction.sClosedInverse
+
+#check @SerrePositivity.KST.SConstruction.sClosedInverse_inclusion
+#print axioms SerrePositivity.KST.SConstruction.sClosedInverse_inclusion
+
+#check @SerrePositivity.KST.SConstruction.sClosedIso
+#print axioms SerrePositivity.KST.SConstruction.sClosedIso
+
+#check @SerrePositivity.KST.SConstruction.sClosedStableIso
+#print axioms SerrePositivity.KST.SConstruction.sClosedStableIso
+
+#check @SerrePositivity.KST.SConstruction.sClosedStableIso_inclusion
+#print axioms SerrePositivity.KST.SConstruction.sClosedStableIso_inclusion
+
+#check @SerrePositivity.KST.SConstruction.sStableEvaluation_naturality
+#print axioms SerrePositivity.KST.SConstruction.sStableEvaluation_naturality
+
+#check @SerrePositivity.KST.SConstruction.closedStableInclusion_cancel
+#print axioms SerrePositivity.KST.SConstruction.closedStableInclusion_cancel
+
+#check @SerrePositivity.KST.SConstruction.sCofiberStableIso_subobject_component
+#print axioms SerrePositivity.KST.SConstruction.sCofiberStableIso_subobject_component
+
+#check @SerrePositivity.KST.SConstruction.sCofiberStableIso_quotient_component
+#print axioms SerrePositivity.KST.SConstruction.sCofiberStableIso_quotient_component
+
+#check @SerrePositivity.KST.SConstruction.sCofiber_relativePredicate_iff
+#print axioms SerrePositivity.KST.SConstruction.sCofiber_relativePredicate_iff
+
+#check @SerrePositivity.KST.SConstruction.sRelativeRestrictionIso
+#print axioms SerrePositivity.KST.SConstruction.sRelativeRestrictionIso
+
+#check @SerrePositivity.KST.SConstruction.sRelativeRestrictionIso_inclusion
+#print axioms SerrePositivity.KST.SConstruction.sRelativeRestrictionIso_inclusion
+
+#check @SerrePositivity.KST.SConstruction.sRelativeCofiberIso
+#print axioms SerrePositivity.KST.SConstruction.sRelativeCofiberIso
+
+#check @SerrePositivity.KST.SConstruction.sRelativeCofiberIso_inclusion
+#print axioms SerrePositivity.KST.SConstruction.sRelativeCofiberIso_inclusion
+
+#check @SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso
+#print axioms SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso
+
+#check @SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso_inclusion
+#print axioms SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso_inclusion
+
+#check @SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso_subobject
+#print axioms SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso_subobject
+
+#check @SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso_quotient
+#print axioms SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso_quotient
+
+#check @SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso_pair
+#print axioms SerrePositivity.KST.SConstruction.sRelativeCofiberStableIso_pair
+
+#check @SerrePositivity.KST.SConstruction.relativeRowAdditivity_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeRowAdditivity_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeCoreSRowAdditivityMap
+#print axioms SerrePositivity.KST.SConstruction.relativeCoreSRowAdditivityMap
+
+#check @SerrePositivity.KST.SConstruction.relativeCoreSRowAdditivityMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeCoreSRowAdditivityMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeObjectSRowAdditivityMap
+#print axioms SerrePositivity.KST.SConstruction.relativeObjectSRowAdditivityMap
+
+#check @SerrePositivity.KST.SConstruction.relativeObjectSRowAdditivityMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeObjectSRowAdditivityMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap
+#print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap
+
+#check @SerrePositivity.KST.SConstruction.coreSingleRealizationIso_relativeAdditivity
+#print axioms SerrePositivity.KST.SConstruction.coreSingleRealizationIso_relativeAdditivity
+
+#check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_one_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_one_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityDiagram
+#print axioms SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityDiagram
+
+#check @SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityDiagram_app_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityDiagram_app_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityMap
+#print axioms SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityMap
+
+#check @SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityMap_eq
+#print axioms SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityMap_eq
+
+#check @SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeIteratedSAdditivityMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.iteratedSRealizationCoordinateIso_relativeAdditivity
+#print axioms SerrePositivity.KST.SConstruction.iteratedSRealizationCoordinateIso_relativeAdditivity
+
+#check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_step_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_step_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_localized_isIso_of_pos
+#print axioms SerrePositivity.KST.SConstruction.relativeMultiRealizationAdditivityMap_localized_isIso_of_pos
