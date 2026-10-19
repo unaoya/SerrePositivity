@@ -1137,6 +1137,19 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.slot_occurrenceCount_eq_one_of_inserted_pivot,
       `SerrePositivity.EInfinity.IntervalCuts.exists_cuts_of_inserted_pivot,
       `SerrePositivity.EInfinity.IntervalCuts.exists_preimage_of_inserted_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeOuterPosition_lt_segmentFirst,
+      `SerrePositivity.EInfinity.IntervalCuts.compositeSegmentLast_lt_outerPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.slot_counts_of_compositeOuterPosition_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.outer_cut_nondegenerate_of_compositeOuterPosition,
+      `SerrePositivity.EInfinity.IntervalCuts.segment_nodup_of_same_side,
+      `SerrePositivity.EInfinity.IntervalCuts.segment_nodup_of_last_le_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.segment_nodup_of_cut_le_first,
+      `SerrePositivity.EInfinity.IntervalCuts.segment_cast_count,
+      `SerrePositivity.EInfinity.IntervalCuts.inner_two_cut_nondegenerate_of_composite,
+      `SerrePositivity.EInfinity.IntervalCuts.inner_degree_zero_of_single_slot_outer_cut,
+      `SerrePositivity.EInfinity.IntervalCuts.exists_preimage_of_remaining_pivot,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.toCompositeCut_surjective,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositeCutEquiv,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -3329,3 +3342,22 @@ example : ∃ a : NestedEdgeCut (m := 1) compositionInner compositionInner 1,
     a.toCompositeCut (by decide) = nestedPivotExample.toCompositeCut (by decide) :=
   exists_preimage_of_inserted_pivot compositionInner compositionInner 1 (by decide)
     (nestedPivotExample.toCompositeCut (by decide)) 1 (by decide)
+
+-- 全射性は切断点の色を指定せずに型全体で成立する。
+example : Function.Surjective (NestedEdgeCut.toCompositeCut (u := compositionInner)
+    (v := compositionInner) (k := 0) (by decide)) :=
+  NestedEdgeCut.toCompositeCut_surjective (by decide)
+-- 有限同値の順方向は以前構成した実際の切断位置への写像そのもの。
+example : NestedEdgeCut.compositeCutEquiv (by decide) nestedRepeatedExample =
+    nestedRepeatedExample.toCompositeCut (by decide) := rfl
+example : (NestedEdgeCut.compositeCutEquiv (by decide)).symm
+    (nestedVertexExample.toCompositeCut (by decide)) = nestedVertexExample :=
+  (NestedEdgeCut.compositeCutEquiv (by decide)).symm_apply_apply nestedVertexExample
+-- 元の二部分割の共有位置は内側010の非零切断となる。
+example : EdgeNondegenerate compositionInner.val
+    (OverlapPartition.twoCut (by decide)
+      (cast (congrArg (fun t => OverlapPartition t 3) (by decide :
+        occurrenceCount compositionInner.val (0 : Fin 2) = 2)) nestedRepeatedExample.partition)) :=
+  inner_two_cut_nondegenerate_of_composite compositionInner compositionInner 0
+    nestedRepeatedExample.partition (by decide) (by decide) _
+    (NestedEdgeCut.compositePosition_nondegenerate nestedRepeatedExample (by decide))

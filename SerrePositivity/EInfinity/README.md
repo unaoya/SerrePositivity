@@ -577,8 +577,10 @@ nullary を含む TR の部分合成保存は完了。
 `slot_occurrenceCount_le_two_of_composite_cut` は外側指定色の出現数を高々二へ制限する。
 `slot_occurrenceCount_eq_one_of_inserted_pivot` は挿入ラベル切断点の場合に一出現性を導出する。
 `exists_preimage_of_inserted_pivot` はその合成切断が二段切断からの写像の像に入ることを示す。
-具体的な Δ¹ の余代数構造は未完成。逆方向の復元・全射性・全出力と符号の一致、
-部分合成則と区間条件が残る。
+`outer_cut_nondegenerate_of_compositeOuterPosition` は残りラベル切断点の外側非零性を復元する。
+`segment_nodup_of_same_side` は片側の部分語の Nodup を戻し、一部分割の内側次数零と二部分割の非零切断を供給する。
+`NestedEdgeCut.toCompositeCut_surjective` は両分岐の全射性で、`compositeCutEquiv` は正 arity の有限同値。
+具体的な Δ¹ の余代数構造は未完成。全出力と符号の一致・有限和の比較・nullary、部分合成則と区間条件が残る。
 その後の代入、E2a-4・5、E2b・G1′ も未完成。
 
 原典：
