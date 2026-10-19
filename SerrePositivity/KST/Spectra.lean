@@ -406,3 +406,10 @@ public import SerrePositivity.KST.Spectra.RawSpectrumCotensorComposition
 public import SerrePositivity.KST.Spectra.RawSpectrumWeightedComposition
 public import SerrePositivity.KST.Spectra.RawSpectrumHomotopyLimitComposition
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitComposition
+public import SerrePositivity.KST.Spectra.FreePointedHomEvaluation
+public import SerrePositivity.KST.Spectra.PointedSmashExchange
+public import SerrePositivity.KST.Spectra.FreePointedHomStrength
+public import SerrePositivity.KST.Spectra.HomTensorExchangeEvaluation
+public import SerrePositivity.KST.Spectra.RawSpectrumUnpointedWeightedComposition
+public import SerrePositivity.KST.Spectra.RawSpectrumWeightedCompositionUnderlying
+public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitUnderlyingComposition
