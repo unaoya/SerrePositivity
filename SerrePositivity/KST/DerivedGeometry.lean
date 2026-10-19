@@ -195,3 +195,10 @@ public import SerrePositivity.KST.DerivedGeometry.UnboundedRightDerivedHomotopy
 public import SerrePositivity.KST.DerivedGeometry.HomotopyAdjunction
 public import SerrePositivity.KST.DerivedGeometry.UnboundedDerivedAdjunction
 public import SerrePositivity.KST.DerivedGeometry.AffineDerivedAdjunction
+public import SerrePositivity.KST.DerivedGeometry.ComplexProductHomotopy
+public import SerrePositivity.KST.DerivedGeometry.HomotopyProducts
+public import SerrePositivity.KST.DerivedGeometry.DerivedProducts
+public import SerrePositivity.KST.DerivedGeometry.KInjectiveProductComparison
+public import SerrePositivity.KST.DerivedGeometry.AffineDerivedGammaStructure
+public import SerrePositivity.KST.DerivedGeometry.SequentialHomotopyLimit
+public import SerrePositivity.KST.DerivedGeometry.SequentialModuleDifference

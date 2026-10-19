@@ -14,6 +14,17 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.homotopyIntoComplexProduct,
+    `SerrePositivity.KST.DerivedGeometry.complexProduct_isKInjective,
+    `SerrePositivity.KST.DerivedGeometry.homotopyProductIsLimit,
+    `SerrePositivity.KST.DerivedGeometry.unboundedDerivedCategory_hasProducts,
+    `SerrePositivity.KST.DerivedGeometry.derivedKInjectiveProductIsLimit,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedΓ_isTriangulated,
+    `SerrePositivity.KST.DerivedGeometry.affineDerivedΓ_preservesLimits,
+    `SerrePositivity.KST.DerivedGeometry.sequentialLimitTriangle_distinguished,
+    `SerrePositivity.KST.DerivedGeometry.exists_lift_sequentialLimitTriangle,
+    `SerrePositivity.KST.DerivedGeometry.moduleSequenceDifference_surjective,
+
     `SerrePositivity.KST.DerivedGeometry.kInjectiveDerivedFunctor_isEquivalence,
     `SerrePositivity.KST.DerivedGeometry.kInjectiveLocalizationAdjunction,
     `SerrePositivity.KST.DerivedGeometry.kInjectiveReplacementUnit_mem_quasiIso,
