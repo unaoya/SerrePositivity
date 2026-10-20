@@ -11,8 +11,6 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 - 第 1 部（B4・B5、F2L-1〜4）は完了。coherent nerve の Cat_∞、引き戻しと lax pullback、
   写像空間の普遍性、同値矢印の全部分圏との比較、安定性と完全な両射影まで証明済み。
-- 第 1 部の最終検証：F1・F1B・F2 同時ビルド 6653 jobs、F2 1203 宣言の公理監査成功。
-  受入条件ごとの完了監査表は infinity-core-F1b.md。標準三公理のみ、名前衝突なし。
 - 10-20：F2N-1〜5（旧 N）を F1b へ移管。§3 が第 2 部の正本。
   κ-small/filtered の定義・ℵ₀ 比較、正則 κ の κ-small join と coslice の κ-filtered 性を証明。
   有限部分複体の filtered 表示を構成し、全ホーン付加の具体的な可算反復 Q を構成。
@@ -30,10 +28,11 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   反転 augmentation の前合成を元の余錐の reflectedRepresentableComparison と全単体で同定。
   通常の指定余錐自体の native な普遍性を証明し、filteredKanColimitCocone もこの標準余錐へ揃えた。
   単体集合の filtered 余極限の有限極限保存を証明。Fun(Δ¹,−) の交換は両端評価を保つ。
-  path 置換と二段の path 引き戻しの余極限の標準同型を構成し、元の二入力への射影を保持。
+  path 置換と二段の path 引き戻しの余極限の標準同型を構成し、元の二入力・全 path 座標への射影を保持。
   Kan 標的で既存の可逆 path 置換と同型にし、終点の fibration 性・二段の模型の Kan 性を証明。
-  一脚が各段で fibration の strict Kan 図式では、native な両普遍性と比較辺の可逆性を証明。
-  三集約同時ビルド 7022 jobs、F2 公理監査 1765 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
+  定値 path の切断の指定円柱に沿って全錐を輸送し、任意の二射の元の cospan の native な極限錐を構成。
+  任意の strict Kan cospan 図式で、fibration 仮定なしの native な両普遍性と比較辺の可逆性を証明。
+  三集約同時ビルド 7035 jobs、F2 公理監査 1830 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -62,7 +61,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.kanCoconeAugmentationComparison_factor` / `F2.filteredKanColimitOrdinaryCocone_isColimit`
 - `F2.intervalReplacementColimitIso` / `F2.intervalPullbackColimitIso`
 - `F2.intervalPullbackColimitIso_left` / `F2.intervalReplacementEndpoint_fibration`
-- `F2.filteredFibrationPullbackExchange`
+- `F2.intervalPullbackCone_isLimit` / `F2.filteredIntervalPullbackExchange`
 - `F2.bousfieldKanAugmentation` / `F2.bousfieldKanAugmentation_lifts_finite`
 - `F2.terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence`
 - `F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_terminal`
@@ -96,14 +95,14 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   一般の弱可縮性と正則 κ の対角関手の判定は証明済み。coherent な filtered 余極限の交換は残る。
   通常の filtered 図式の augmentation の弱同値性は、Over 図式の表示同型を介して証明済み。
   通常の指定余錐の全脚・高次の整合性を保持した native な普遍性まで証明済み。
-  任意の二射の path 模型を元の native な cospan 極限へ接続する工程と、一般 coherent filtered 図式の交換は残る。
+  任意の二射の元の cospan の native な極限との比較は証明済み。一般 coherent filtered 図式の交換は残る。
   N の一般 coherent 余極限への接続は未完了の部分があり、無条件の存在・γ4 を一括仮定しない。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：path の切断で元の cospan と置換 cospan を結び、strictCoherentNatTransIso で図式の同型を作る。
-  exists_limitCone_of_functorIso で頂点 intervalPullback の native な錐を作り、filtered 比較へ接続する。
+- F2N-1：一般 coherent な空間値図式の total left fibration と余極限模型の公開界面を確認する。
+  有限境界の因子分解・filtered coslice の可縮性を使い、strict Kan 図式から一般 coherent 図式への交換を構成する。
 
 ## 0. 目標と範囲
 
@@ -156,7 +155,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 
 - 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
   F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
-  通常の指定 filtered 余錐の native な普遍性、path 模型の交換同型、一脚 fibration の native な引き戻し比較を証明。
+  通常の指定 filtered 余錐の native な普遍性、path 座標を保つ交換同型、任意の strict Kan cospan の native な比較を証明。
   一般の filtered 余極限、有限極限との交換、Ind の構成は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
@@ -167,7 +166,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：intervalPullback を元の二射の native な引き戻し錐にし、交換から fibration 仮定を外す。
+- 次の一手：一般 coherent 図式の小さい left unstraightening と余極限模型の比較を、有限境界の因子分解へ接続する。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |

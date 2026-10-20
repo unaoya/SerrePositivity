@@ -45,6 +45,7 @@ public import SerrePositivity.InfinityCategories.F2.FilteredKanColimitNative
 public import SerrePositivity.InfinityCategories.F2.FilteredIntervalPullback
 public import SerrePositivity.InfinityCategories.F2.IntervalReplacementKan
 public import SerrePositivity.InfinityCategories.F2.FilteredPullbackNative
+public import SerrePositivity.InfinityCategories.F2.FilteredIntervalPullbackNative
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。

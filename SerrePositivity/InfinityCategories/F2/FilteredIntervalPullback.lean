@@ -63,4 +63,16 @@ lemma intervalPullbackColimitIso_left (η : F ⟶ G) (θ : H ⟶ G) :
   rw [← Category.assoc, intervalPullbackColimitIso_fst, Category.assoc,
     intervalReplacementColimitIso_snd, ← CategoryTheory.Functor.map_comp]
 
+/-- 概要：二段の比較は path 座標全体も区間関手の比較へ送る。
+方針：二段目と一段目の第一射影の式を合成する。
+規約：両端点だけでなく全ての高次の path を保持する。使われ方：指定円柱との整合。 -/
+lemma intervalPullbackColimitIso_path (η : F ⟶ G) (θ : H ⟶ G) :
+    (intervalPullbackColimitIso η θ).hom ≫
+        pullback.fst (intervalReplacementEndpoint (colim.map η)) (colim.map θ) ≫
+          pullback.fst ((intervalEndpointNatTrans 0).app (colimit G)) (colim.map η) =
+      colim.map (pullback.fst (intervalReplacementDiagramEndpoint η) θ ≫
+        pullback.fst (diagramIntervalEndpoint G 0) η) ≫ (intervalColimitIso G).hom := by
+  rw [← Category.assoc, intervalPullbackColimitIso_fst, Category.assoc,
+    intervalReplacementColimitIso_fst, ← Category.assoc, ← CategoryTheory.Functor.map_comp]
+
 end SerrePositivity.InfinityCategories.F2

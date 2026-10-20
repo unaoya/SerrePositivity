@@ -45,8 +45,8 @@
   零枝の span の入力の存在から零角の押し出し性を成分で判定し、両射影の IsExactFunctor を証明。始域の安定性は仮定しない。
   零源の cospan の極限を反転と枝の交換で構成。元の指定射を保つ全 fiber・cofiber の存在と零角の条件の一致を証明。
   laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
-- 第 2 部：path 模型と filtered 余極限の標準同型、一脚 fibration の strict Kan 図式の native な引き戻し比較まで証明。
-  三集約同時ビルド 7022 jobs、公理監査 1765 宣言・同時 import 成功。一般 coherent 図式と有限極限の交換は残る。
+- 第 2 部：全 path 座標を保つ標準同型、任意の strict Kan cospan の native な引き戻し・filtered 比較を証明。
+  三集約同時ビルド 7035 jobs、公理監査 1830 宣言・同時 import 成功。一般 coherent 図式と有限極限の交換は残る。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -97,7 +97,7 @@
 
 ### 次の一手
 
-- F2N-1：intervalPullback を元の二射の native な引き戻し錐にし、fibration 仮定を外して一般 coherent 図式へ進む。
+- F2N-1：一般 coherent な空間値図式の total left fibration と余極限模型を確認し、有限境界の因子分解を接続する。
 
 正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と [foundations.md](foundations.md) §6・§8。
 本計画は目標・設計・現在地・主要宣言を管理し、実施記録はコミットメッセージに置く。

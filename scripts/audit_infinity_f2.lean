@@ -688,3 +688,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.intervalPullback_kanComplex
 #check @SerrePositivity.InfinityCategories.F2.filteredKanPullbackColimitIso
 #check @SerrePositivity.InfinityCategories.F2.filteredFibrationPullbackExchange
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementSection_endpoint
+#check @SerrePositivity.InfinityCategories.F2.kanIntervalCospanDiagramIso
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackStrictConeTransport
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackCone_vertex
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackObjIso_fst
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackColimitIso_path
+#check @SerrePositivity.InfinityCategories.F2.filteredIntervalPullbackKanIso
+#check @SerrePositivity.InfinityCategories.F2.filteredIntervalPullbackComparisonEdge_isInvertible
+#check @SerrePositivity.InfinityCategories.F2.filteredIntervalPullbackExchange
