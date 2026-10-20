@@ -10885,3 +10885,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfRightDerived_transport
 #print axioms quillenCfRightDerived_transport
+
+#check @reversePrism_vertical_isCocartesian
+#print axioms reversePrism_vertical_isCocartesian
+
+#check @cartesianHomotopy_extend
+#print axioms cartesianHomotopy_extend
+
+#check @comparisonBoundaryExchange
+#print axioms comparisonBoundaryExchange
+
+#check @cartesianComparisonBoundary
+#print axioms cartesianComparisonBoundary
+
+#check @cartesianComparisonBoundary_zero
+#print axioms cartesianComparisonBoundary_zero
+
+#check @cartesianComparisonBoundary_one
+#print axioms cartesianComparisonBoundary_one
+
+#check @cartesianComparisonBoundary_target
+#print axioms cartesianComparisonBoundary_target
+
+#check @cartesianComparisonBoundary_base
+#print axioms cartesianComparisonBoundary_base
+
+#check @isCartesianEdge_constant
+#print axioms isCartesianEdge_constant
+
+#check @cartesianComparisonBoundary_vertical
+#print axioms cartesianComparisonBoundary_vertical
+
+#check @cartesianComparisonBoundary_source
+#print axioms cartesianComparisonBoundary_source
+
+#check @exists_cartesianPrismComparison
+#print axioms exists_cartesianPrismComparison
+
+#check @cartesianPrismComparison_unit_boundary
+#print axioms cartesianPrismComparison_unit_boundary
+
+#check @cartesianPrismComparison_unit_base
+#print axioms cartesianPrismComparison_unit_base
+
+#check @quillenCfDerivedUnitPrism_exists
+#print axioms quillenCfDerivedUnitPrism_exists
+
+#check @quillenCfDerivedUnitHomotopy_nonempty
+#print axioms quillenCfDerivedUnitHomotopy_nonempty

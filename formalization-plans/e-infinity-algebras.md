@@ -41,7 +41,10 @@
   `IntervalCartesianCriterion`・`QuillenCfBifibration` は標準辺と全定値辺の持ち上げを構成。元の cf 区間射影は CartesianFibration かつ CocartesianFibration。
   `CartesianPrismOpposite`・`CartesianEdgeTransport` は反対の輸送を元の底と両端・全垂直辺の Cartesian 性を保持して回収。
   `QuillenCfDerivedTransport` は元の cf nerve 間の左右導来関手と、元の両包含を両端とする輸送 prism を構成。左は全垂直辺 coCartesian、右は Cartesian、両者の底は標準区間に一致。
-  **未完了**：元の cf 置換との比較、導来 ∞ 随伴・単位/余単位・三角整合性、一般 coherent 極限保存。
+  `CartesianHomotopyExtension` は終点・底・単射上の指定輸送を固定し、Cartesian な垂直辺を保って相対延長。
+  `CartesianComparisonBoundary`・`CartesianPrismComparison` は左右の輸送の比較正方形を構成。始点側は底の零頂点に入り、境界は元の二つの輸送の始点に一致。
+  `QuillenCfUnitPrism` は元の左右輸送を比較正方形へ代入し、下段 cf nerve 上で恒等から右左合成への自然な単位候補を構成。元の二輸送・比較正方形・全垂直辺の性質も同じ証人として保持。
+  **未完了**：元の cf 置換との比較、指定単位の写像空間条件、導来 ∞ 随伴・余単位・三角整合性、一般 coherent 極限保存。
 - **残り**（依存順、時間は再開後の概算）：
   1. N-2：F1b の随伴 API へ接続し、導来 ∞ 随伴・単位/余単位・三角整合性と一般 coherent 極限保存。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
   2. N-3：Sp へ適用し、Tot・hG・fiber 列を Sp の ∞ 極限と照合（Sp レーンと共同）。BF §3、HA §1.4、16〜40時間。
@@ -79,26 +82,27 @@
   `HomotopyLimits.quillenCfCollageProjection_cocartesianFibration`、`HomotopyLimits.quillenCfCollageProjection_cartesianFibration`、
   `HomotopyLimits.cartesianEdgeTransport`、`HomotopyLimits.cartesianEdgeTransport_witness`、
   `HomotopyLimits.quillenCfLeftDerived`、`HomotopyLimits.quillenCfRightDerived`、
-  `HomotopyLimits.quillenCfLeftDerived_transport`、`HomotopyLimits.quillenCfRightDerived_transport`。
+  `HomotopyLimits.quillenCfLeftDerived_transport`、`HomotopyLimits.quillenCfRightDerived_transport`、
+  `HomotopyLimits.cartesianHomotopy_extend`、`HomotopyLimits.exists_cartesianPrismComparison`、
+  `HomotopyLimits.cartesianPrismComparison_unit_boundary`、`HomotopyLimits.cartesianPrismComparison_unit_base`、
+  `HomotopyLimits.quillenCfDerivedUnitPrism_exists`、`HomotopyLimits.quillenCfDerivedUnitHomotopy_nonempty`。
 - **依存と提供**：F1・F1b（coherent Hom・随伴）、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけ。実施記録はコミットメッセージ。
-- **未コミット**：今回の反転 prism・Cartesian transport・両側の導来関手と輸送 prism の3モジュール9宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンの差分は保存対象外。
+- **未コミット**：今回の Cartesian 相対延長・二側面の境界・比較正方形・元の cf 単位候補の4モジュール16宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンの差分は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は修正版を正しい場所へ保存済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：N の対象ビルド・全監査に失敗なし。新規モジュールの警告・新規 sorry・追加公理なし。import 閉包に他レーンの未コミット差分なし。一般 γ4 は未完了。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定せず、固定 Quillen 類を使う。
   `FixedSimplicialPushoutProduct` と豊穣随伴の合成互換は標準 simplicial model/adjunction の明示入力であり、通常の Quillen 随伴だけから導いたとは扱わない。Sp・E2b への適用時に構成・証明する。
   元の Hom 同型の終域への通常の自然性だけで ∞ 随伴を完成と数えない。Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。
   他レーンの import 閉包が壊れたら回避せず停止。他レーンの作業中変更を保存しない。
-- **次の一手**：N-2。両導来関手と輸送 prism を元の cf 置換と照合し、自然な単位の族を構成する。右の輸送を終点固定で相対延長する Cartesian 版 `cocartesianHomotopy_extend` を反転から構成し、左の輸送との比較正方形を持ち上げる経路を照合する。
-  `/tmp/CartesianHomotopyExtension.lean` の終点固定・単射上の指定輸送・底・全 Cartesian 垂直辺を保持した延長は検証済み試作。まず正式化する。比較正方形の境界は `/tmp/CartesianComparisonBoundary.lean` で照合中。
+- **次の一手**：N-2。`quillenCfDerivedUnitPrism_exists` の全証人を一度選び、その同じ η を F1b の `UnitMappingSpaceCondition` で認識する。元の左右の輸送と比較正方形を使い、各点の標準単位比較が同値であることを証明する。単独の Homotopy の非空性から独立に η を選ばない。
   原典は [HTT 5.2.4.4〜6・Remark 5.2.4.7](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=371)（閲覧・本文照合済み）。5.2.4.6 は simplicial model categories と simplicial Quillen adjunction の命題。
   `F1/CartesianEdge` の述語は指定最終/先頭辺を固定した外側ホーンの相対持ち上げ。Hom の trivial Kan 射だけで満たしたとは扱わない。
   元の左右候補辺の外側ホーン充填と全基底辺の持ち上げは完了。`QuillenCfRightCartesian`・`QuillenCfLeftCocartesian`・`QuillenCfBifibration` を再利用し、二つの未知 Hom の復元や全境界可換性を再実装しない。
   左の Hom 条件は `e : EnrichedAdjunctionHomComposition R adj` を保持。反対豊穣圏にモデル構造を追加仮定せず、右候補辺の op を元の左候補辺と同一視しない。
-  `F1/CocartesianCosliceConverse.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration` と `CartesianOpposite` も使用可能。ただし相対 coslice と通常の豊穣 Hom の射を混同しない。
+  各点では coCartesian な左辺の前合成と Cartesian な右辺の後合成を混合写像空間へ比較する。`cosliceTriangleSource_trivialKanFibration`・`cosliceTriangleTarget_trivialKanFibration` の span と `intervalPrecompose_family`・`intervalPostcompose_family`・`intervalFamilyHom_eq_imp_homotopy` の照合が次の候補経路。通常の Hom の全単射だけで写像空間の同値としない。
   F1b の随伴 API への接続では、`QCatFunctorHomCorrespondence` なら任意の quasicategory パラメータ A の整合が必要。`Localization.IsLocalization` は普遍性の定義で、任意 W の局所化の存在定理ではない。
-  N-1 の部分余極限・共通 path end 比較、`/tmp/NativeAttachmentShape.lean` 等の草稿は継続しない。
 
 ### E2a（既存の引き継ぎ）
 
