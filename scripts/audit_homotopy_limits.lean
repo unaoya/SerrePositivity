@@ -10000,3 +10000,72 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @frameHom_target_homotopyEquivalence
 #print axioms frameHom_target_homotopyEquivalence
+
+#check @quillenLeftFrameAugmentation
+#print axioms quillenLeftFrameAugmentation
+
+#check @quillenLeftFrameAugmentation_weak
+#print axioms quillenLeftFrameAugmentation_weak
+
+#check @quillenLeftFrameCommon_left_homotopyEquivalence
+#print axioms quillenLeftFrameCommon_left_homotopyEquivalence
+
+#check @quillenLeftFrameCommon_right_homotopyEquivalence
+#print axioms quillenLeftFrameCommon_right_homotopyEquivalence
+
+#check @quillenDerivedHomMiddle
+#print axioms quillenDerivedHomMiddle
+
+#check @quillenDerivedHomFromLeft
+#print axioms quillenDerivedHomFromLeft
+
+#check @quillenDerivedHomFromRight
+#print axioms quillenDerivedHomFromRight
+
+#check @quillenDerivedHomMiddle_kanComplex
+#print axioms quillenDerivedHomMiddle_kanComplex
+
+#check @quillenDerivedHomFromLeft_homotopyEquivalence
+#print axioms quillenDerivedHomFromLeft_homotopyEquivalence
+
+#check @quillenDerivedHomFromRight_homotopyEquivalence
+#print axioms quillenDerivedHomFromRight_homotopyEquivalence
+
+#check @resolutionHomSourceRestriction
+#print axioms resolutionHomSourceRestriction
+
+#check @resolutionHomSourceRestriction_apply
+#print axioms resolutionHomSourceRestriction_apply
+
+#check @resolutionHomSourceRestriction_homotopyEquivalence
+#print axioms resolutionHomSourceRestriction_homotopyEquivalence
+
+#check @resolutionHomTargetReplacement
+#print axioms resolutionHomTargetReplacement
+
+#check @resolutionHomTargetReplacement_apply
+#print axioms resolutionHomTargetReplacement_apply
+
+#check @resolutionHomTargetReplacement_homotopyEquivalence
+#print axioms resolutionHomTargetReplacement_homotopyEquivalence
+
+#check @chosenQuillenDerivedHomMiddle
+#print axioms chosenQuillenDerivedHomMiddle
+
+#check @chosenQuillenDerivedHomFromLeft
+#print axioms chosenQuillenDerivedHomFromLeft
+
+#check @chosenQuillenDerivedHomFromRight
+#print axioms chosenQuillenDerivedHomFromRight
+
+#check @chosenQuillenDerivedHomFromLeft_homotopyEquivalence
+#print axioms chosenQuillenDerivedHomFromLeft_homotopyEquivalence
+
+#check @chosenQuillenDerivedHomFromRight_homotopyEquivalence
+#print axioms chosenQuillenDerivedHomFromRight_homotopyEquivalence
+
+#check @chosenQuillenRightTargetReplacement
+#print axioms chosenQuillenRightTargetReplacement
+
+#check @chosenQuillenRightTargetReplacement_homotopyEquivalence
+#print axioms chosenQuillenRightTargetReplacement_homotopyEquivalence
