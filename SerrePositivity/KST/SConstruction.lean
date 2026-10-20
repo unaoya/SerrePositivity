@@ -1160,4 +1160,9 @@ public import SerrePositivity.KST.SConstruction.DGTensorLeftUnitAssociativity
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionRightUnitTensor
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionRightUnitEvaluation
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionRightUnit
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphActions
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphActionAssociativity
+public import SerrePositivity.KST.SConstruction.DGGraphGeneratorPasting
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphTripleGenerators
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphAssociativity
 /-! # ∞-S• 構成と連結 K 理論 -/

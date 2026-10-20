@@ -16875,4 +16875,28 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms dgModuleExtensionCompositionAt_comp_id
 #check @perfectDGExtensionCompositionAt_comp_id
 #print axioms perfectDGExtensionCompositionAt_comp_id
+#check @dgFunctorGraph_leftAt_map
+#print axioms dgFunctorGraph_leftAt_map
+#check @dgYoneda_action_chain
+#print axioms dgYoneda_action_chain
+#check @dgFunctorGraph_leftAction_chain
+#print axioms dgFunctorGraph_leftAction_chain
+#check @dgFunctorGraphComposition_iota
+#print axioms dgFunctorGraphComposition_iota
+#check @dgFunctorGraph_leftAction_comp
+#print axioms dgFunctorGraph_leftAction_comp
+#check @dgFunctorGraph_leftAction_assoc
+#print axioms dgFunctorGraph_leftAction_assoc
+#check @dgTensorLeft_generator_comp
+#print axioms dgTensorLeft_generator_comp
+#check @dgFunctorGraphTriple_left_generator
+#print axioms dgFunctorGraphTriple_left_generator
+#check @dgFunctorGraphTriple_right_generator
+#print axioms dgFunctorGraphTriple_right_generator
+#check @dgFunctorGraphComposition_assoc_value
+#print axioms dgFunctorGraphComposition_assoc_value
+#check @dgFunctorGraphInputIso_assoc_value
+#print axioms dgFunctorGraphInputIso_assoc_value
+#check @dgFunctorGraphCompositionIso_assoc
+#print axioms dgFunctorGraphCompositionIso_assoc
 end SerrePositivity.KST.SConstruction
