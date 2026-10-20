@@ -419,3 +419,15 @@ public import SerrePositivity.EInfinity.BarrattEccles.HomologyOperations
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCoefficientAction
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCommutativeComparison
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyDiscreteComparison
+public import SerrePositivity.EInfinity.HomologyZero.BinaryInput
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyPermutation
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyCommutativity
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyUnary
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyComposition
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyCompositeHomotopy
+public import SerrePositivity.EInfinity.HomologyZero.NullaryInput
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyUnit
+public import SerrePositivity.EInfinity.HomologyZero.TernaryInput
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyAssociativity
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyRing
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyAlgebra

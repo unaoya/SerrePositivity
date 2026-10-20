@@ -1,5 +1,6 @@
 import SerrePositivity.EInfinity
 import Lean.Util.CollectAxioms
+import Mathlib.Tactic.Ring
 
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
@@ -1555,6 +1556,34 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.homologyNullary_commutative,
       `SerrePositivity.EInfinity.BarrattEccles.homologyBinary_discrete,
       `SerrePositivity.EInfinity.BarrattEccles.homologyNullary_discrete,
+      `SerrePositivity.EInfinity.HomologyZero.binaryInput_braiding,
+      `SerrePositivity.EInfinity.BarrattEccles.permutationHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.actionPermutationHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyBinaryCommutativityHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyProduct_comm,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyUnaryHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyUnary_class,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientOperation,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientComposite,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientOperation_comp,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientComposite_augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientOperationHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyCompositionHomotopy,
+      `SerrePositivity.EInfinity.HomologyZero.nullaryBinaryInsertion,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyBinaryLeftUnitHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyProduct_one_left,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyProduct_one_right,
+      `SerrePositivity.EInfinity.HomologyZero.ternaryInput,
+      `SerrePositivity.EInfinity.HomologyZero.binaryAssociativityLeftInput,
+      `SerrePositivity.EInfinity.HomologyZero.binaryAssociativityRightInput,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyBinaryAssociativityHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyProduct_assoc,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyCommRing,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyCommRing_mul,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyCommRing_one,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyAlgebra,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyAlgebra_algebraMap,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyCommAlgebra,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4305,3 +4334,27 @@ example (X : (BarrattEccles.operad ℤ).Algebra) (a b c : X.carrier.homology 0) 
       (3 : ℤ) • homologyProduct X a c + homologyProduct X b c := by
   rw [map_add, map_zsmul]
   rfl
+
+
+-- H⁰ の局所的な環構造で二項展開を計算でき、積は元の演算と一致する。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type) [CommRing A] (X : (BarrattEccles.operad A).Algebra)
+    (x y : X.carrier.homology 0) :
+    let := homologyCommRing X
+    (x + y) * (x + y) = homologyProduct X x x +
+      (2 : X.carrier.homology 0) * homologyProduct X x y + homologyProduct X y y := by
+  let := homologyCommRing X
+  change (x + y) * (x + y) = x * x + 2 * (x * y) + y * y
+  ring
+
+-- 基礎環の像による積は、元のホモロジー加群のスカラー作用そのものである。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type) [CommRing A] (X : (BarrattEccles.operad A).Algebra)
+    (a : A) (x : X.carrier.homology 0) :
+    let := homologyCommRing X
+    let := homologyAlgebra X
+    homologyProduct X (a • homologyOne X) x = a • x := by
+  let := homologyCommRing X
+  let := homologyAlgebra X
+  change (a • (1 : X.carrier.homology 0)) * x = a • x
+  rw [smul_mul_assoc, one_mul]

@@ -671,10 +671,14 @@ nullary を含む TR の部分合成保存は完了。
 `unitHomLinearEquiv` は実際の H⁰ と単位からの鎖ホモトピー類の線形同値。
 `HomologyZero.pairing` は任意の二入力複体射から実際の H⁰ の双線形作用を作り、
 代表元独立性・ホモトピー不変性・Koszul 交換との両立まで証明する。
-`BarrattEccles.homologyProduct` と `homologyOne` は E の arity 2・0 から積と単位の候補を作る。
+`BarrattEccles.homologyProduct` と `homologyOne` は E の arity 2・0 から積と単位を作る。
 `homologyProduct_eq_pairing` は augmentation が一である任意の係数で同じ積を計算できること。
 `homologyBinary_discrete`・`homologyNullary_discrete` は離散 E 代数の射が元の積・単位に厳密に一致すること。
-H⁰ の環公理（結合則・単位則・可換性）と一般図式の homotopy 極限は未完成。
+`homologyCompositionHomotopy` は零入力を含む全位置の部分合成と選んだ演算を鎖ホモトピーで比較する。
+`homologyProduct_assoc`・`homologyProduct_one_left/right`・`homologyProduct_comm` は実際の H⁰ の環公理。
+`homologyCommRing` は元の加法を保つ可換環、`homologyAlgebra` は元の A 加群作用と両立する代数構造。
+`homologyCommAlgebra` は実際の H⁰ を可換 A 代数として束ねる。環・代数構造は局所的に選ぶ。
+一般図式の homotopy 極限とその忘却後の比較は未完成。
 E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：
