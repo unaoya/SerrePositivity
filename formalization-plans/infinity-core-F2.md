@@ -44,8 +44,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   定値底の形状制限は相対内部 Hom の底変換。両端評価と path 引き戻しの二入力射・底射の left fibration 性を証明。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含、元の値による境界固定の相対有限検出を証明。
   全境界正方形と端点固定反映を元の比較へ合成。任意の有限標的射を、元の一値の実際の引き戻し比較像で検出。
-  有限持ち上げと有限写像空間の π₀ の全射性を証明。元の境界引き戻し射・二入力・有限模型の底を、全境界円柱を保って同時輸送。標的有限模型本体への延長・相対検出・弱同値性は残る。
-  三集約同時ビルド 7402 jobs、公理監査 2766 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  有限持ち上げと有限写像空間の π₀ の全射性を証明。全相対境界を保つ模型本体の同時輸送と元の値への反映を構成。反映後の射は元の境界値と厳密に一致。相対比較の合成・弱同値性は残る。
+  三集約同時ビルド 7422 jobs、公理監査 2822 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -76,7 +76,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
 - `F2.unstraighteningMappingTriangleIso` / `F2.coherentTotalUnitHomComparison_homotopyEquivalence`
 - `F2.coherentDiagramTotalCocone_isColimit` / `F2.hasColimit_coherentSpaceDiagram`
-- `F2.fiberwisePullbackKanComparison_finite_value_detection` / `F2.exists_relativePathInputTransportData`
+- `F2.exists_relativePathFiniteModelTransport` / `F2.relativePath_model_reflection`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
 ### 依存と提供
@@ -102,7 +102,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：元の境界の全 path 正方形と二入力の円柱を相対境界上で貼り、単射な相対境界から標的有限模型本体へ延長する。
+- F2N-1：全相対境界の近似・輸送・反映を標的 Kan 引き戻し内で合成し、指定部分上の比較円柱を元の境界輸送と厳密に一致させる。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
@@ -162,8 +162,8 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   始点評価の底上の逆と両端固定の Kan path 比較のホモトピー逆、二入力・単位上の全 path を保つ Kan 引き戻し比較を構成。
   形状制限の相対内部 Hom による底変換、元の両端評価と二入力射・引き戻し底射の left fibration 性を証明。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による相対有限検出を証明。
-  有限写像円柱による単射な新境界への補正、指定 path の両端を全円柱で固定する有限近似を証明。
-  標的の三座標・指定 path の共通値での同時検出、比較の弱同値性・一般の交換・Ind は未完了。
+  任意の有限標的射を元の一値で検出し、元の Kan 比較への有限持ち上げと有限写像空間の π₀ の全射性を証明。
+  全相対境界の単射有限近似、模型本体までの同時輸送と元の値への反映を構成。反映後の境界は厳密に保持。相対比較の合成・弱同値性・一般の交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -173,7 +173,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：単射境界の有限 path 近似に二入力の指定輸送を与えて相対輸送し、元の比較円柱を保つ同時有限検出へ進む。
+- 次の一手：全相対境界の近似・輸送・反映を標的 Kan 引き戻し内で合成し、指定部分上の円柱を元の境界輸送と厳密に一致させる。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
