@@ -168,7 +168,7 @@ public import SerrePositivity.InfinityCategories.F2.PrismExtensionPullbackCompar
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryEvaluation
 
-public import SerrePositivity.InfinityCategories.F2.PrismExtensionCurryWitnessRestriction
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningSourceComparisonRestriction
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。

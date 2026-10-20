@@ -32,6 +32,11 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.prismExtensionWitnessIso_restrict
 #check @SerrePositivity.InfinityCategories.F2.prismExtensionCurryWitnessIso_restrict
 
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_heq_of_heq
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningSourceComparison_curry_source
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningSourceComparisonIso_heq_endpoint
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningSourceComparisonIso_app_pre
+
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
 方針：宣言元モジュールを判別し、各宣言の公理を再帰的に収集する。
