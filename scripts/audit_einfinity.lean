@@ -2038,6 +2038,28 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierNatIso,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv_target,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_target,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourceBifunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourceBifunctor_obj,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourceMap,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourceMap_app,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameHomIso_source,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourcePiZeroEquiv_source,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeBifunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeBifunctor_obj,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeSourceMap,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeSourceMap_app,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightSimplicialHomSourceMap,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightSimplicialHomDiagramIso_source,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightSimplicialConeIso_source,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitProbeLocalizedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierConstantProbeLocalizedNatIso,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierConstantProbeLocalizedNatIso_app,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierSourceRightConeComparisonIso_source,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierSourceRightConeComparisonIso_source_inv,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConePiZeroEquiv_source,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv_source,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_source,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_both,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5559,3 +5581,47 @@ example {Y : Complex ℤ} {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g 
   dsimp only
   rw [carrierFramedLimitHomPiZeroEquiv_target, carrierFramedLimitHomPiZeroEquiv_mapClass]
   exact (Q.map_comp _ _).symm
+
+-- 任意の元の複体射の前合成は、実際の計算対象の底への同じ射の局所化になる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example {Y Z : Complex ℤ} (f : Y ⟶ Z) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    (h : Z ⟶ ((framedLimitFunctor ℤ ℕ).obj F).carrier) :
+    let := projectiveModelCategory ℤ
+    let Q := (weakEquivalences (Complex ℤ)).Q
+    carrierFramedLimitHomPiZeroEquiv ℤ ℕ F Y
+        (SSet.mapπ₀ ((carrierFramedLimitConeSourceMap ℤ ℕ f).app F)
+          (carrierFramedLimitMapClass ℤ ℕ F h)) = Q.map (f ≫ h) := by
+  let := projectiveModelCategory ℤ
+  let Q := (weakEquivalences (Complex ℤ)).Q
+  dsimp only
+  rw [carrierFramedLimitHomPiZeroEquiv_source, carrierFramedLimitHomPiZeroEquiv_mapClass]
+  exact (Q.map_comp _ _).symm
+
+-- 底の同じ右錐の類の前合成は、元の定値複体図式の局所化射による前合成。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example {Y Z : Complex ℤ} (f : Y ⟶ Z) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    (z : SSet.π₀ ((carrierFramedLimitConeSpace ℤ ℕ Z).obj F)) :
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    let QD := (weakEquivalences (ℕ ⥤ Complex ℤ)).Q
+    carrierFramedLimitConePiZeroEquiv ℤ ℕ Y F
+        (SSet.mapπ₀ ((carrierFramedLimitConeSourceMap ℤ ℕ f).app F) z) =
+      QD.map ((Functor.const ℕ).map f) ≫ carrierFramedLimitConePiZeroEquiv ℤ ℕ Z F z := by
+  exact carrierFramedLimitConePiZeroEquiv_source ℤ ℕ f F z
+
+-- 局所化 Hom の任意の射に対し、元の始域・終域の射の両方に同時に自然。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example {Y Z : Complex ℤ} (f : Y ⟶ Z)
+    {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G) :
+    let := projectiveModelCategory ℤ
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (Complex ℤ)).Q
+    let QD := (weakEquivalences (ℕ ⥤ Complex ℤ)).Q
+    ∀ x : QD.obj ((Functor.const ℕ).obj Z) ⟶ QD.obj ((Diagram.forget ℤ ℕ).obj F),
+      carrierFramedLimitDerivedHomEquiv ℤ ℕ Y G
+        (QD.map ((Functor.const ℕ).map f) ≫ x ≫ QD.map ((Diagram.forget ℤ ℕ).map g)) =
+      Q.map f ≫ carrierFramedLimitDerivedHomEquiv ℤ ℕ Z F x ≫
+        Q.map ((framedLimitFunctor ℤ ℕ).map g).hom := by
+  exact carrierFramedLimitDerivedHomEquiv_both ℤ ℕ f g
