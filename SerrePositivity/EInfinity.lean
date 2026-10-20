@@ -890,3 +890,9 @@ public import SerrePositivity.EInfinity.Hammock.WordTopFinal
 public import SerrePositivity.EInfinity.Hammock.TopStageColimit
 public import SerrePositivity.EInfinity.Hammock.WordImageFactorization
 public import SerrePositivity.EInfinity.BarrattEccles.HammockTopStage
+public import SerrePositivity.EInfinity.Hammock.LengthBoundaryLift
+public import SerrePositivity.EInfinity.Hammock.WordMaximal
+public import SerrePositivity.EInfinity.Hammock.StageAttachmentData
+public import SerrePositivity.EInfinity.Hammock.StageAttachmentDesc
+public import SerrePositivity.EInfinity.Hammock.LengthStagePushout
+public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthPushout

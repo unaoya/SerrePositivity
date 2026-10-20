@@ -1229,8 +1229,19 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `Word.toImage`・`imageInclusion`・`toImage_fac` は元の列の像への全射と元の包含への分解。
 `imageWord_length_le` は短い語から最大語への任意の射を境界で扱うための長さの上限。
 `BarrattEccles.algebraHammockTopStageColimitIso`・`_fac`・`_toColimit_fac` は任意可換環上で完成。
-段階の pushout の普遍性、proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、
-既存 DK Hom への高次比較は後続。
+`lengthBoundaryLift`・`_ι`・`_toStage` は元の短い語の包含の境界を経由する射と回収。
+`Word.MaximalAlternating` は元の長さ n+1 の交互方向語の部分型で、
+`maximalAlternatingEquiv` は二つの初期方向との同値、`maximalAlternating_finite` は有限性。
+`StageAttachmentData` は前段階と元の最大語の射の境界上の整合条件。
+`stageAttachmentComponent_naturality` は元の全射を含む全写像への整合を証明する。
+`stageAttachmentDesc`・`_lower`・`_upper`・`_unique` は同じ元の次段階からの一意な延長。
+`stageBoundarySum`・`stageTopSum` は元の境界と最大語の余積。
+`stageBoundaryAttach`・`stageBoundarySumInclusion`・`stageTopInclusion` は元の標準射。
+`lengthStagePushout_isColimit`・`lengthStage_isPushout` は proper 図式の元の次段階の
+境界による pushout の普遍性（Dwyer–Kan §4.3 の適用に要る形）。
+`BarrattEccles.algebraHammockLengthStage_isPushout`・`algebraHammockStageBoundaryAttach_fac`・
+`algebraHammockStageTopInclusion_fac` は任意可換環上で同じ元の標準射への代入。
+proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

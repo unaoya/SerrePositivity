@@ -3573,6 +3573,53 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTopStageColimitIso_fac,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTopStageColimitIso_toColimit_fac]
 
+@[noinline] private def e2RequiredBatch34 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.lengthBoundaryLift,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryLift_ι,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryLift_toStage,
+      `SerrePositivity.EInfinity.Hammock.Word.MaximalAlternating,
+      `SerrePositivity.EInfinity.Hammock.Word.maximalAlternating,
+      `SerrePositivity.EInfinity.Hammock.Word.maximalAlternating_bijective,
+      `SerrePositivity.EInfinity.Hammock.Word.maximalAlternatingEquiv,
+      `SerrePositivity.EInfinity.Hammock.Word.maximalAlternating_finite,
+      `SerrePositivity.EInfinity.Hammock.StageAttachmentData,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentComponent,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentComponent_short,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentComponent_top,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentComponent_naturality,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentCocone,
+      `SerrePositivity.EInfinity.Hammock.topStageColimitIso_inv_fac,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentDesc,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentDesc_fac,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentDesc_lower,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentDesc_upper,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentDesc_unique,
+      `SerrePositivity.EInfinity.Hammock.stageBoundarySum,
+      `SerrePositivity.EInfinity.Hammock.stageTopSum,
+      `SerrePositivity.EInfinity.Hammock.stageBoundarySumInclusion,
+      `SerrePositivity.EInfinity.Hammock.stageTopInclusion,
+      `SerrePositivity.EInfinity.Hammock.stageBoundarySumInclusion_fac,
+      `SerrePositivity.EInfinity.Hammock.stageTopInclusion_fac,
+      `SerrePositivity.EInfinity.Hammock.stageBoundaryAttach,
+      `SerrePositivity.EInfinity.Hammock.stageBoundaryAttach_fac,
+      `SerrePositivity.EInfinity.Hammock.lengthStagePushout_condition,
+      `SerrePositivity.EInfinity.Hammock.lengthStagePushoutCocone,
+      `SerrePositivity.EInfinity.Hammock.stageAttachmentDataOfPushoutCocone,
+      `SerrePositivity.EInfinity.Hammock.lengthStagePushout_isColimit,
+      `SerrePositivity.EInfinity.Hammock.lengthStage_isPushout,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockStageBoundarySum,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockStageTopSum,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockStageBoundarySumInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockStageBoundaryAttach,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockStageTopInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockStageBoundaryAttach_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockStageTopInclusion_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthStage_isPushout,
+      `SerrePositivity.EInfinity.Hammock.StageAttachmentData.mk,
+      `SerrePositivity.EInfinity.Hammock.StageAttachmentData.lower,
+      `SerrePositivity.EInfinity.Hammock.StageAttachmentData.upper,
+      `SerrePositivity.EInfinity.Hammock.StageAttachmentData.boundary]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3601,7 +3648,7 @@ run_cmd do
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
-      e2RequiredBatch32, e2RequiredBatch33] do
+      e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8566,3 +8613,45 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
           BarrattEccles.algebraHammockLengthStageToColimit A X Y n =
       BarrattEccles.algebraHammockGraphInclusion A a.obj.obj X Y :=
   BarrattEccles.algebraHammockTopStageColimitIso_toColimit_fac A X Y n a
+
+-- 元の最大交互語の型は有限。追加の有限性やモデル構造の仮定は不要。
+open SerrePositivity.EInfinity.Hammock in
+example (n : ℕ) : Finite (Word.MaximalAlternating n) := Word.maximalAlternating_finite n
+
+-- 整合する元のデータの延長は、前段階と元の各最大語の標準射を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {F : Word ⥤ SSet.{e2ComplexLimitUniverse}} {hF : ProperDiagram F} {n : ℕ}
+    {Z : SSet.{e2ComplexLimitUniverse}} (d : StageAttachmentData hF n Z) :
+    lengthStageTransition F (Nat.le_succ n) ≫ stageAttachmentDesc d = d.lower ∧
+      ∀ a : Word.MaximalAlternating n,
+        lengthStageInclusion F (n + 1) a.val a.property.1.le ≫ stageAttachmentDesc d = d.upper a :=
+  ⟨stageAttachmentDesc_lower d, stageAttachmentDesc_upper d⟩
+
+-- 元の全ての貼り合わせデータへの普遍性。値だけの一致では代用しない。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {F : Word ⥤ SSet.{e2ComplexLimitUniverse}} {hF : ProperDiagram F} {n : ℕ}
+    {Z : SSet.{e2ComplexLimitUniverse}} (d : StageAttachmentData hF n Z)
+    (f : lengthStage F (n + 1) ⟶ Z)
+    (hl : lengthStageTransition F (Nat.le_succ n) ≫ f = d.lower)
+    (hu : ∀ a : Word.MaximalAlternating n,
+      lengthStageInclusion F (n + 1) a.val a.property.1.le ≫ f = d.upper a) :
+    f = stageAttachmentDesc d := stageAttachmentDesc_unique d f hl hu
+
+-- 境界への同じ持ち上げは元の包含と元の前段階の標準射を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {F : Word ⥤ SSet.{e2ComplexLimitUniverse}} (hF : ProperDiagram F)
+    (n : ℕ) {a c : Word} (ha : a.length ≤ n) (f : a ⟶ c) (hf : Function.Injective f.orderHom) :
+    lengthBoundaryLift F n ha f hf ≫ (lengthBoundary F n c).ι = F.map f ∧
+      lengthBoundaryLift F n ha f hf ≫ lengthBoundaryToStage hF n c =
+        lengthStageInclusion F n a ha :=
+  ⟨lengthBoundaryLift_ι F n ha f hf, lengthBoundaryLift_toStage F n ha f hf hF⟩
+
+-- 任意の可換環上の実際の元の次段階の pushout。追加入力はない。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (n : ℕ) :
+    IsPushout (BarrattEccles.algebraHammockStageBoundaryAttach A X Y n)
+      (BarrattEccles.algebraHammockStageBoundarySumInclusion A X Y n)
+      (BarrattEccles.algebraHammockLengthTransition A X Y (Nat.le_succ n))
+      (BarrattEccles.algebraHammockStageTopInclusion A X Y n) :=
+  BarrattEccles.algebraHammockLengthStage_isPushout A X Y n
