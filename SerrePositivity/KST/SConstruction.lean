@@ -1060,4 +1060,10 @@ public import SerrePositivity.KST.SConstruction.TracedTriplePairDiamonds
 public import SerrePositivity.KST.SConstruction.TracedTripleTypedNormalizations
 public import SerrePositivity.KST.SConstruction.TriangleLongEdgeData
 public import SerrePositivity.KST.SConstruction.TriangleTwoEdgeData
+public import SerrePositivity.KST.SConstruction.FullCylinderBoundaryTensor
+public import SerrePositivity.KST.SConstruction.SquareTriangleFixedHomotopy
+public import SerrePositivity.KST.SConstruction.SquareTriangleHomotopy
+public import SerrePositivity.KST.SConstruction.TracedTripleGeometricPrefixComparison
+public import SerrePositivity.KST.SConstruction.TracedTripleGeometricRawComparisonStages
+public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationCylinderComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
