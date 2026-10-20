@@ -1642,6 +1642,41 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrameDiagram,
       `SerrePositivity.EInfinity.BarrattEccles.carrierWeightedCotensor,
       `SerrePositivity.EInfinity.BarrattEccles.weightedCotensorCarrierIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.free,
+      `SerrePositivity.EInfinity.HomotopyWeight.evaluation,
+      `SerrePositivity.EInfinity.HomotopyWeight.adjunction,
+      `SerrePositivity.EInfinity.HomotopyWeight.boundaries,
+      `SerrePositivity.EInfinity.HomotopyWeight.boundaries_smallObjectArgument,
+      `SerrePositivity.EInfinity.HomotopyWeight.boundaries_rlp,
+      `SerrePositivity.EInfinity.HomotopyWeight.point,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointFactorization,
+      `SerrePositivity.EInfinity.HomotopyWeight.weight,
+      `SerrePositivity.EInfinity.HomotopyWeight.comparison,
+      `SerrePositivity.EInfinity.HomotopyWeight.weight_cofibrant,
+      `SerrePositivity.EInfinity.HomotopyWeight.comparison_rlp,
+      `SerrePositivity.EInfinity.HomotopyWeight.reindex_cofibration,
+      `SerrePositivity.EInfinity.HomotopyWeight.realization_map_cofibration,
+      `SerrePositivity.EInfinity.HomotopyWeight.comparison_mono_rlp,
+      `SerrePositivity.EInfinity.HomotopyWeight.weight_kanComplex,
+      `SerrePositivity.EInfinity.HomotopyWeight.valueSection,
+      `SerrePositivity.EInfinity.HomotopyWeight.valueSection_comparison,
+      `SerrePositivity.EInfinity.HomotopyWeight.valueContraction,
+      `SerrePositivity.EInfinity.BarrattEccles.weightedCotensor_map_fibration,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitWeight,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitOpFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor_obj,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierIso,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrameAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.strictConeWeightedFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.coneToFramedLimit,
+      `SerrePositivity.EInfinity.BarrattEccles.weightedCotensorHomEquiv_precomp,
+      `SerrePositivity.EInfinity.BarrattEccles.coneToFramedLimit_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.limitComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrameDiagramFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitHomEquiv_map,
+      `SerrePositivity.EInfinity.BarrattEccles.limitComparison_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.limitComparisonNatTrans,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4479,3 +4514,32 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (W : ℕ ⥤ SSet)
   apply NatTrans.ext
   funext n
   exact h k n
+
+
+-- 選んだ重みの各値への任意の部分写像は、すべての単射に沿って延長できる。
+open SerrePositivity.EInfinity.HomotopyWeight in
+example (k : ℕ) {X Y : SSet} (i : X ⟶ Y) [Mono i]
+    (a : X ⟶ (weight ℕ).obj k) : ∃ b : Y ⟶ (weight ℕ).obj k, i ≫ b = a := by
+  have : HasLiftingProperty i ((comparison ℕ).app k) := comparison_mono_rlp ℕ k i inferInstance
+  let sq : CommSq a i ((comparison ℕ).app k) (CategoryTheory.Limits.terminal.from Y) :=
+    ⟨CategoryTheory.Limits.terminal.hom_ext _ _⟩
+  exact ⟨sq.lift, sq.fac_left⟩
+
+-- 空図式の実際の計算対象は終対象であり、空の homotopy 極限の値を回収する。
+open CategoryTheory.Limits SerrePositivity.EInfinity.BarrattEccles in
+example (F : PEmpty ⥤ (BarrattEccles.operad ℤ).Algebra) :
+    IsTerminal ((framedLimitFunctor ℤ PEmpty).obj F) := by
+  let a (Y : (BarrattEccles.operad ℤ).Algebra) :
+      (doubleOpWeights PEmpty).obj (HomotopyWeight.weight PEmpty) ⟶
+        (SerrePositivity.DiagramModel.FrameWeightRealization.hom PEmptyᵒᵖ
+          (rightFrameDiagram ℤ PEmpty F)).obj (Opposite.op Y) :=
+    { app k := PEmpty.elim k.unop.unop
+      naturality := by intro k l f; cases k.unop.unop }
+  refine IsTerminal.ofUniqueHom
+    (fun Y => (weightedCotensorHomEquiv ℤ PEmpty F (HomotopyWeight.weight PEmpty) Y).symm
+      (a Y)) ?_
+  intro Y m
+  apply (weightedCotensorHomEquiv ℤ PEmpty F (HomotopyWeight.weight PEmpty) Y).injective
+  apply NatTrans.ext
+  funext k
+  exact PEmpty.elim k.unop.unop

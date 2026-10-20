@@ -444,3 +444,12 @@ public import SerrePositivity.EInfinity.BarrattEccles.CotensorLifting
 public import SerrePositivity.EInfinity.BarrattEccles.CotensorCarrier
 public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensor
 public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorCarrier
+public import SerrePositivity.EInfinity.HomotopyWeight.Generators
+public import SerrePositivity.EInfinity.HomotopyWeight.PointReplacement
+public import SerrePositivity.EInfinity.HomotopyWeight.Reindex
+public import SerrePositivity.EInfinity.HomotopyWeight.FrameLifting
+public import SerrePositivity.EInfinity.HomotopyWeight.Values
+public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorLifting
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimit
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitComparison
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitNaturality

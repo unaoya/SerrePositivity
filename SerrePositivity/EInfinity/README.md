@@ -692,7 +692,14 @@ nullary を含む TR の部分合成保存は完了。
 `weightedCotensorHomEquiv` は全単体の実際の重み付き錐の普遍性。
 `weightedCotensorCarrierIso` は同じ図式・重み・frame を用いた底の複体の end との同型。
 これらに単体集合の完全なモデル構造は使わず、未証明項目を含む既存 Kan–Quillen 入力も import しない。
-定値一点重みの射影 cofibrant 置換、その重みでのホモトピー不変性・右導来極限の普遍性は未完成。
+`HomotopyWeight.weight` は自由境界の小対象分解による実際の射影 cofibrant な一点重み。
+`comparison_rlp` は各値の境界右持ち上げ性で、各値の Kan 性・切断・実際の収縮も構成済み。
+切断と収縮は各頂点ごとのもので、添字圏に自然な切断は主張しない。
+`weightedCotensor_map_fibration` は重みの射影 cofibration に沿う制限が fibration となること。
+`framedLimitFunctor` はこの重みで計算する実際の小図式上の関手、`framedLimitCarrierIso` は同じ底の計算との同型。
+`coneToFramedLimit` は通常の錐からの射で、固定した図式の錐の射に自然。
+`limitComparisonNatTrans` は通常の極限から計算関手への実際の自然変換。
+計算関手のホモトピー不変性・右導来極限の普遍性は未完成。
 E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：
