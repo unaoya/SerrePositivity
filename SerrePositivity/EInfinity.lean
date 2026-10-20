@@ -392,3 +392,4 @@ public import SerrePositivity.EInfinity.IntervalCuts.PositiveVertexValues
 public import SerrePositivity.EInfinity.IntervalCuts.EndpointCoaction
 public import SerrePositivity.EInfinity.IntervalCuts.CoalgebraInterval
 public import SerrePositivity.EInfinity.BarrattEccles.ModelCategory
+public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy

@@ -650,7 +650,9 @@ nullary を含む TR の部分合成保存は完了。
 `BarrattEccles.modelCategory` は AW Hopf 構造とこの区間を完全な抽象転送へ代入する。
 弱同値は底の擬同型、fibration は全次数全射で、自由像の生成類で生成される。
 `BarrattEccles.forget_isRightQuillen` により E2a-4 の右 Quillen 性も完了。
-次は全 E 代数の fibrancy、底での homotopy 引き戻し、H⁰ の可換環構造と離散可換代数。
+`BarrattEccles.isFibrant` は局所モデル構造ですべての E 代数の fibrancy を与える。
+`fibration_iff`・`weakEquivalence_iff` で底の全射性・擬同型を直接使える。
+次は底での homotopy 引き戻し、H⁰ の可換環構造と離散可換代数。
 E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：

@@ -1461,6 +1461,9 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.modelCategory_fibrations,
       `SerrePositivity.EInfinity.BarrattEccles.modelCategory_cofibrantlyGenerated,
       `SerrePositivity.EInfinity.BarrattEccles.forget_isRightQuillen,
+      `SerrePositivity.EInfinity.BarrattEccles.fibration_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.weakEquivalence_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.isFibrant,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4130,3 +4133,10 @@ example : SerrePositivity.EInfinity.Surjection.zeroAugmentation ℤ 0
   rw [map_sub, map_zsmul, map_zsmul,
     SerrePositivity.EInfinity.Surjection.zeroAugmentation_empty]
   decide
+
+-- fibrancy は対象にも基礎環にも追加の仮定を課さない。
+example (A : Type) [CommRing A]
+    (X : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra) :
+    let := SerrePositivity.EInfinity.BarrattEccles.modelCategory A
+    HomotopicalAlgebra.IsFibrant X :=
+  SerrePositivity.EInfinity.BarrattEccles.isFibrant A X
