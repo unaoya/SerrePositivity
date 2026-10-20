@@ -1,3 +1,19 @@
+import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOrePrecomp
+import SerrePositivity.InfinityCategories.Derived.DGConstantFamilyInvertible
+import SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGInvertingFamilyEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGInvertingPinchedFamilyEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGInvertingFiniteRoofComposition
+import SerrePositivity.InfinityCategories.Derived.ConstantFunctorImageInvertible
+import SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy
+import SerrePositivity.InfinityCategories.Derived.FunctorRightConstantSquare
+import SerrePositivity.InfinityCategories.Derived.PrismFunctorSquare
+import SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition
+import SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition
+import SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyComposition
+import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofFunctorRelations
+import SerrePositivity.InfinityCategories.Derived.RoofEvaluationComposition
+import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
 import SerrePositivity.InfinityCategories.Derived.KanPrecompositionHomotopyIso
 import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentFamilyEvaluation
 import SerrePositivity.InfinityCategories.Derived.RoofLeftPrismLift
@@ -3364,6 +3380,22 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.RoofTerminalEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingRoofTerminalEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingHomFamilyEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.FunctorRightConstantSquare,
+    `SerrePositivity.InfinityCategories.Derived.PrismFunctorSquare,
+    `SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition,
+    `SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofFunctorRelations,
+    `SerrePositivity.InfinityCategories.Derived.RoofEvaluationComposition,
+    `SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily,
+    `SerrePositivity.InfinityCategories.Derived.ConstantFunctorImageInvertible,
+    `SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGConstantFamilyInvertible,
+    `SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingFamilyEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingPinchedFamilyEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingFiniteRoofComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOrePrecomp,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositionPrisms,
     `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyPrism,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteOreCompositionHomotopy,
