@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.LeftScaffoldComparison
 public import SerrePositivity.InfinityCategories.F1.OverComparisonResolution
+public import SerrePositivity.InfinityCategories.F1.ScaffoldEnrichedSpan
 
 /-!
 概要：left fibration の strict transport の weighted nerve と元の全空間の比較。
@@ -27,14 +28,17 @@ lemma exists_leftStrictTransport_reconstruction_span
       (b : Z ⟶ leftStrictTransportWeightedNerve p),
       InnerFibration t ∧ a ≫ p = t ∧ b ≫ leftStrictTransportWeightedProjection p = t ∧
       IsPrecompositionEquivalence a ∧ IsPrecompositionEquivalence b := by
+  let P : LeftFibrationObject (nerve C) := ⟨Over.mk p, inferInstanceAs (LeftFibration p)⟩
   obtain ⟨Z, i, t, a, b, _, ht, _, _, _, ha, hb, ea, eb⟩ :=
     exists_innerFibration_comparison_span
       (simplicialReplacementProjection (leftStrictTransportDiagram p)) p
-      (leftStrictTransportWeightedProjection p) (universalScaffold p)
-      (tautScaffold (leftStrictTransportDiagram p))
-      (universalScaffold_projection p) (tautScaffold_projection (leftStrictTransportDiagram p))
-      (universalScaffold_isPrecompositionEquivalence p)
-      (tautScaffold_isPrecompositionEquivalence (leftStrictTransportDiagram p))
+      (leftStrictTransportWeightedProjection p)
+      (((universalScaffoldOverComparison C).val P).left)
+      (((tautScaffoldOverComparison C).val P).left)
+      ((universalScaffoldOverComparison C).val P).w
+      ((tautScaffoldOverComparison C).val P).w
+      (universalScaffoldOverComparison_isPrecompositionEquivalence C P)
+      (tautScaffoldOverComparison_isPrecompositionEquivalence C P)
   exact ⟨Z, t, a, b, ht, ha, hb, ea, eb⟩
 
 /-- 概要：strict transport の weighted nerve と元の全空間の間に quasicategory の同値が存在する。

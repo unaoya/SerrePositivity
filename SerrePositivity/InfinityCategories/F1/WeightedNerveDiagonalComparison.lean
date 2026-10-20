@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.StrictTransportKanDiagramInclusion
+
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveTransportComparison
 public import SerrePositivity.InfinityCategories.F1.DiagonalKanDiagramReindex
 
@@ -15,19 +17,6 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：strict transport の像の図式を全 strict Kan 図式へ含める。
-方針：対象の像条件を忘れ、変換空間には恒等写像を作用させる。
-規約：Hom の Kan 性を全図式へ移す主張は含まない。
-使われ方：Kerodon §5.3.1、weighted nerve 後の図式の共同実現。 -/
-def strictTransportKanDiagramEnriched {C : Type u} [Category.{u} C] :
-    EnrichedFunctor SSet.{u} (StrictTransportDiagramObject C) (KanDiagramObject C) where
-  obj F := ⟨F.val, trivial⟩
-  map _ _ := 𝟙 _
-  map_id _ := Category.comp_id _
-  map_comp _ _ _ := by
-    simp only [Category.comp_id, tensorHom_id]
-    rfl
 
 /-- 概要：weighted nerve 後の strict transport を全 strict Kan 図式の自己作用にする。
 方針：構成済みの二つの豊穣関手と像の包含を合成する。
