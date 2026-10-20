@@ -18,15 +18,31 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
+/-- 任意の共通解像の左端を反転し、元のパラメーターへ戻す射。 -/
+def edgewiseReflectedParameter (H : SSet.{u}) :
+    ((SSet.uliftFunctor.{u + 1, u}).obj (edgewiseSubdivision H)).op ⟶
+      (SSet.uliftFunctor.{u + 1, u}).obj H :=
+  (HomotopyLimits.uliftOppositeIso (edgewiseSubdivision H)).inv ≫
+    (SSet.uliftFunctor.{u + 1, u}).map
+      (SSet.opFunctor.map (edgewiseLeft H) ≫ (SSet.opFunctorCompOpFunctorIso.app H).hom)
+
+/-- 同じ反転した左端射影は、任意のパラメーター射に厳密に自然。 -/
+lemma edgewiseReflectedParameter_naturality {H K : SSet.{u}} (g : H ⟶ K) :
+    SSet.opFunctor.map ((SSet.uliftFunctor.{u + 1, u}).map (edgewiseSubdivisionMap g)) ≫
+      edgewiseReflectedParameter K =
+    edgewiseReflectedParameter H ≫ (SSet.uliftFunctor.{u + 1, u}).map g := by
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro a
+  rfl
+
 /-- 共通 Hom 解像の左端を反転して、元の直接の Hom のパラメーターへ戻す射。 -/
 def edgewiseReflectedHomParameter (X Y : SSet.{u}) :
     ((SSet.uliftFunctor.{u + 1, u}).obj
       (edgewiseSubdivision ((ihom X).obj Y))).op ⟶
         (SSet.uliftFunctor.{u + 1, u}).obj ((ihom X).obj Y) :=
-  (HomotopyLimits.uliftOppositeIso (edgewiseSubdivision ((ihom X).obj Y))).inv ≫
-    (SSet.uliftFunctor.{u + 1, u}).map
-      (SSet.opFunctor.map (edgewiseLeft ((ihom X).obj Y)) ≫
-        (SSet.opFunctorCompOpFunctorIso.app ((ihom X).obj Y)).hom)
+  edgewiseReflectedParameter ((ihom X).obj Y)
 
 /-- 同じパラメーターからの直接の作用は、共通解像の反転した豊穣作用そのもの。 -/
 lemma edgewiseReflectedHomParameter_reverse (X Y : SSet.{u}) :

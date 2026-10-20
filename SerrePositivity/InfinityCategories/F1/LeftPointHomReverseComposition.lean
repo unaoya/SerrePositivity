@@ -28,6 +28,26 @@ def leftPointHomReverseParameter {X Y T : SSet.{u}} (f : X ⊗ T ⟶ Y) :
         ((HomotopyLimits.oppositeTensorIso X T).inv ≫ SSet.opFunctor.map f))) ≫
     (HomotopyLimits.uliftOppositeIso ((ihom X.op).obj Y.op)).hom
 
+/-- 元の内部 Hom への射で評価を制限しても、同じ反転 Hom のパラメーターを回収する。 -/
+lemma leftPointHomReverseParameter_uncurry {X Y H : SSet.{u}}
+    (g : H ⟶ (ihom X).obj Y) :
+    (SSet.uliftFunctor.{u + 1, u}).map g ≫
+      leftPointHomReverseParameter (uncurry (𝟙 ((ihom X).obj Y))) =
+        leftPointHomReverseParameter (uncurry g) := by
+  have h (A : SSet.{u}) (k : A ⟶ (ihom X).obj Y) :
+      curry ((HomotopyLimits.oppositeTensorIso X A).inv ≫
+        SSet.opFunctor.map (uncurry k)) =
+      SSet.opFunctor.map k ≫ (HomotopyLimits.oppositeInternalHomIso X Y).hom := by
+    apply uncurry_injective
+    rw [uncurry_curry, oppositeInternalHom_map_uncurry]
+    rfl
+  rw [leftPointHomReverseParameter, leftPointHomReverseParameter, h, h]
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro a
+  rfl
+
 /-- 反転した一点 Hom の直接の作用は、同じパラメーターでの豊穣合成と厳密に一致する。 -/
 lemma leftPointHomParameterizedMap_reverseComposition {X Y : KanObject.{u}} {T : SSet.{u}}
     (f : X.obj ⊗ T ⟶ Y.obj) :

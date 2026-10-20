@@ -1113,3 +1113,5 @@ public import SerrePositivity.InfinityCategories.F1.PointedKanParameterizedActio
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftIntervalNaturality
 public import SerrePositivity.InfinityCategories.F1.EdgewiseReflectedHomParameter
 public import SerrePositivity.InfinityCategories.F1.EdgewiseKanActionTransport
+public import SerrePositivity.InfinityCategories.F1.EdgewiseEnrichedKanAction
+public import SerrePositivity.InfinityCategories.F1.SimplicialOverJointOppositeTransport
