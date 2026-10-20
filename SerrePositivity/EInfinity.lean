@@ -801,3 +801,9 @@ public import SerrePositivity.EInfinity.Hammock.ZigzagAppendNaturalityVertices
 public import SerrePositivity.EInfinity.Hammock.ZigzagAppendSegments
 public import SerrePositivity.EInfinity.Hammock.ColimitComposition
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitComposition
+public import SerrePositivity.EInfinity.Hammock.WordUnit
+public import SerrePositivity.EInfinity.Hammock.ZigzagWordTransport
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendUnit
+public import SerrePositivity.EInfinity.Hammock.GraphCompositionUnit
+public import SerrePositivity.EInfinity.Hammock.ColimitCompositionUnit
+public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitUnit

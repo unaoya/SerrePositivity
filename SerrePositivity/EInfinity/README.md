@@ -1089,7 +1089,14 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `BarrattEccles.algebraHammockColimitComposition` と `_fac`・
 `algebraHammockTensorPairColimitIso`・`_fac`・`_comp`・`algebraHammockTensorPair_hom_ext` は
 任意の可換環上の同じ元の E 代数への代入。単体集合のモデル構造は不要。
-余極限上の全結合・単位則、proper 性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.empty_append`・`append_empty` は元の列の方向を保つ語の単位等式。
+`ZigzagAppend.empty_left_functor`・`empty_right_functor` は元の全対象・全縦射での
+連結と単位遷移の合成の厳密な恒等則。`graphComposition_left_unit`・`_right_unit` は
+全単体での単位則。`colimitComposition_left_unit`・`_right_unit` は同じ元の空語の
+`colimitUnit` と実際の余極限上の合成の左右単位則で、`_fac` は全固定語の回収。
+`BarrattEccles.algebraHammockColimitComposition_left_unit`・`_right_unit` と各 `_fac` は
+任意の可換環上で同じ元の合成と単位に対して成り立つ。
+余極限上の全結合則、proper 性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

@@ -22,7 +22,30 @@ run_cmd do
   if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
   unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
     throwError "射影モデル構造の宣言がありません"
-  for required in #[`SerrePositivity.EInfinity.Hammock.tensorPairCocone,
+  for required in #[`SerrePositivity.EInfinity.Hammock.Word.object_ext,
+      `SerrePositivity.EInfinity.Hammock.Word.empty_append,
+      `SerrePositivity.EInfinity.Hammock.Word.append_empty,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.object_word_hext,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.hom_word_hext,
+      `SerrePositivity.EInfinity.Hammock.WordAction.obj_eqToHom_heq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.map_eqToHom_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.empty_left_obj_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.empty_right_obj_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.empty_left_map_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.empty_right_map_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.empty_left_functor,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.empty_right_functor,
+      `SerrePositivity.EInfinity.Hammock.graphComposition_left_unit,
+      `SerrePositivity.EInfinity.Hammock.graphComposition_right_unit,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition_left_unit_fac,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition_right_unit_fac,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition_left_unit,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition_right_unit,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitComposition_left_unit,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitComposition_right_unit,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitComposition_left_unit_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitComposition_right_unit_fac,
+      `SerrePositivity.EInfinity.Hammock.tensorPairCocone,
       `SerrePositivity.EInfinity.Hammock.tensorPairCocone_isColimit,
       `SerrePositivity.EInfinity.Hammock.tensorPairCocone_ι,
       `SerrePositivity.EInfinity.Hammock.tensorPairColimitIso,
@@ -7500,3 +7523,42 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       (BarrattEccles.algebraHammockGraphInclusion A a X Y ⊗ₘ
         BarrattEccles.algebraHammockGraphInclusion A b Y Z) ≫ g) : f = g :=
   BarrattEccles.algebraHammockTensorPair_hom_ext A X Y Z f g h
+
+-- 任意の可換環上の元の空語の単位は、実際の余極限上で左単位則を満たす。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockColimitUnit A X ⊗ₘ
+        𝟙 (BarrattEccles.algebraHammockColimitGraph A X Y)) ≫
+        BarrattEccles.algebraHammockColimitComposition A X X Y =
+      (λ_ (BarrattEccles.algebraHammockColimitGraph A X Y)).hom :=
+  BarrattEccles.algebraHammockColimitComposition_left_unit A X Y
+
+-- 右単位則も同じ任意の環・元の単位・元の合成に対して成り立つ。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    (𝟙 (BarrattEccles.algebraHammockColimitGraph A X Y) ⊗ₘ
+        BarrattEccles.algebraHammockColimitUnit A Y) ≫
+        BarrattEccles.algebraHammockColimitComposition A X Y Y =
+      (ρ_ (BarrattEccles.algebraHammockColimitGraph A X Y)).hom :=
+  BarrattEccles.algebraHammockColimitComposition_right_unit A X Y
+
+-- 全固定語の標準射に制限した左単位則は、同じ元の単位同型を回収する。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (a : Hammock.Word)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockColimitUnit A X ⊗ₘ
+        BarrattEccles.algebraHammockGraphInclusion A a X Y) ≫
+        BarrattEccles.algebraHammockColimitComposition A X X Y =
+      (λ_ (BarrattEccles.algebraHammockGraph A a X Y)).hom ≫
+        BarrattEccles.algebraHammockGraphInclusion A a X Y :=
+  BarrattEccles.algebraHammockColimitComposition_left_unit_fac A a X Y
+
+-- 元の連結関手の単位則は、対象だけでなく全縦射を含む厳密な関手の一致。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category C] (W : MorphismProperty C)
+    [W.IsMultiplicative] (a : Word) (X Y : C) :
+    ((Functor.const (Zigzag W a X Y)).obj (emptyObj W X)).prod' (𝟭 _) ⋙
+        ZigzagAppend.functor ⋙ WordAction.functor (eqToHom (Word.empty_append a)) =
+      𝟭 (Zigzag W a X Y) := ZigzagAppend.empty_left_functor
