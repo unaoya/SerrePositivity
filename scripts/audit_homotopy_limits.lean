@@ -8440,3 +8440,117 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @exists_relativeCosliceFamilyHomotopy
 #print axioms exists_relativeCosliceFamilyHomotopy
+
+#check @terminalPrism_initialVertex
+#print axioms terminalPrism_initialVertex
+
+#check @initialTime_fst
+#print axioms initialTime_fst
+
+#check @initialVertex_terminalPrism_fst
+#print axioms initialVertex_terminalPrism_fst
+
+#check @fixedTerminalHomotopyStartFamily
+#print axioms fixedTerminalHomotopyStartFamily
+
+#check @fixedTerminalHomotopyStartFamily_base
+#print axioms fixedTerminalHomotopyStartFamily_base
+
+#check @fixedTerminalHomotopyStartFamily_terminal
+#print axioms fixedTerminalHomotopyStartFamily_terminal
+
+#check @fixedTerminalHomotopyStartFamily_projection
+#print axioms fixedTerminalHomotopyStartFamily_projection
+
+#check @exists_fixedTerminalHomotopyStartComparison
+#print axioms exists_fixedTerminalHomotopyStartComparison
+
+#check @fixedTerminalHomotopyStartComparison
+#print axioms fixedTerminalHomotopyStartComparison
+
+#check @fixedTerminalHomotopyStartComparison_terminal
+#print axioms fixedTerminalHomotopyStartComparison_terminal
+
+#check @fixedTerminalHomotopyStartComparison_base
+#print axioms fixedTerminalHomotopyStartComparison_base
+
+#check @fixedTerminalHomotopyStartComparison_projection
+#print axioms fixedTerminalHomotopyStartComparison_projection
+
+#check @specifiedCoconeRootVerticalStartFamily
+#print axioms specifiedCoconeRootVerticalStartFamily
+
+#check @specifiedCoconeRootVerticalStartComparison
+#print axioms specifiedCoconeRootVerticalStartComparison
+
+#check @specifiedCoconeRootVerticalStartComparison_terminal
+#print axioms specifiedCoconeRootVerticalStartComparison_terminal
+
+#check @specifiedCoconeRootVerticalStartComparison_base
+#print axioms specifiedCoconeRootVerticalStartComparison_base
+
+#check @specifiedCoconeRootVerticalStartComparison_projection
+#print axioms specifiedCoconeRootVerticalStartComparison_projection
+
+#check @specifiedCoconeRootVerticalStartComparison_fixed
+#print axioms specifiedCoconeRootVerticalStartComparison_fixed
+
+#check @terminalPrism_finalVertex
+#print axioms terminalPrism_finalVertex
+
+#check @finalTime_fst
+#print axioms finalTime_fst
+
+#check @fixedTerminalHomotopy_end_terminal_diagram
+#print axioms fixedTerminalHomotopy_end_terminal_diagram
+
+#check @fixedTerminalHomotopy_end_base_diagram
+#print axioms fixedTerminalHomotopy_end_base_diagram
+
+#check @fixedTerminalHomotopyEndFamily
+#print axioms fixedTerminalHomotopyEndFamily
+
+#check @fixedTerminalHomotopyEndFamily_base
+#print axioms fixedTerminalHomotopyEndFamily_base
+
+#check @fixedTerminalHomotopyEndFamily_terminal
+#print axioms fixedTerminalHomotopyEndFamily_terminal
+
+#check @fixedTerminalHomotopyEndFamily_projection
+#print axioms fixedTerminalHomotopyEndFamily_projection
+
+#check @specifiedCoconeRootVerticalEndFamily
+#print axioms specifiedCoconeRootVerticalEndFamily
+
+#check @specifiedCoconeRootVerticalEndFamily_base
+#print axioms specifiedCoconeRootVerticalEndFamily_base
+
+#check @specifiedCoconeRootVerticalEndFamily_terminal
+#print axioms specifiedCoconeRootVerticalEndFamily_terminal
+
+#check @specifiedCoconeRootVerticalEndFamily_projection
+#print axioms specifiedCoconeRootVerticalEndFamily_projection
+
+#check @specifiedCoconeRightRootTotalFamily
+#print axioms specifiedCoconeRightRootTotalFamily
+
+#check @specifiedCoconeRightRootTotalFamily_base
+#print axioms specifiedCoconeRightRootTotalFamily_base
+
+#check @pointRestrictionEdgeFamily_uncurry
+#print axioms pointRestrictionEdgeFamily_uncurry
+
+#check @pointRestrictionFullEdgeFamily_tip_total_uncurry
+#print axioms pointRestrictionFullEdgeFamily_tip_total_uncurry
+
+#check @specifiedCoconeLeftRootTotalFamily_tip_uncurry
+#print axioms specifiedCoconeLeftRootTotalFamily_tip_uncurry
+
+#check @specifiedCoconeRightRootTotalFamily_tip_uncurry
+#print axioms specifiedCoconeRightRootTotalFamily_tip_uncurry
+
+#check @specifiedCoconeRootTotalFamilies_tip_uncurry
+#print axioms specifiedCoconeRootTotalFamilies_tip_uncurry
+
+#check @specifiedCoconeRootVerticalEndFamily_right_terminal
+#print axioms specifiedCoconeRootVerticalEndFamily_right_terminal
