@@ -9274,3 +9274,141 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRightUniversalHomotopy_hom_arrow
 #print axioms specifiedCoconeRightUniversalHomotopy_hom_arrow
+
+#check @relativeEdgeFamilyBase_fixed
+#print axioms relativeEdgeFamilyBase_fixed
+
+#check @relativeEdgeFamilyBase
+#print axioms relativeEdgeFamilyBase
+
+#check @relativeEdgeFamilyBase_ι
+#print axioms relativeEdgeFamilyBase_ι
+
+#check @relativeEdgeFamilyBase_section
+#print axioms relativeEdgeFamilyBase_section
+
+#check @relativeEdgeFamilyBaseCylinder
+#print axioms relativeEdgeFamilyBaseCylinder
+
+#check @relativeEdgeFamilyBaseCylinder_raw
+#print axioms relativeEdgeFamilyBaseCylinder_raw
+
+#check @relativeEdgeFamilyBaseCylinder_target
+#print axioms relativeEdgeFamilyBaseCylinder_target
+
+#check @exists_relativeEdgeFamilyRetraction
+#print axioms exists_relativeEdgeFamilyRetraction
+
+#check @relativeEdgeFamilyRetraction
+#print axioms relativeEdgeFamilyRetraction
+
+#check @relativeEdgeFamilyRetraction_target
+#print axioms relativeEdgeFamilyRetraction_target
+
+#check @relativeEdgeFamilyRetraction_base
+#print axioms relativeEdgeFamilyRetraction_base
+
+#check @relativeEdgeFamilyRetraction_projection
+#print axioms relativeEdgeFamilyRetraction_projection
+
+#check @relativeEdgeFamilyRetraction_fixed
+#print axioms relativeEdgeFamilyRetraction_fixed
+
+#check @initialEdgeFamilyRetraction_section_fixed
+#print axioms initialEdgeFamilyRetraction_section_fixed
+
+#check @initialEdgeFamilyRetraction
+#print axioms initialEdgeFamilyRetraction
+
+#check @initialEdgeFamilyRetraction_ι
+#print axioms initialEdgeFamilyRetraction_ι
+
+#check @initialEdgeFamilyRetraction_evaluation
+#print axioms initialEdgeFamilyRetraction_evaluation
+
+#check @initialEdgeFamilyRetraction_base
+#print axioms initialEdgeFamilyRetraction_base
+
+#check @initialTotalEdgeFamily_terminal_initial
+#print axioms initialTotalEdgeFamily_terminal_initial
+
+#check @initialTotalEdgePrecomposition_family
+#print axioms initialTotalEdgePrecomposition_family
+
+#check @initialEdgeFamilyRetraction_baseCylinder
+#print axioms initialEdgeFamilyRetraction_baseCylinder
+
+#check @initialDiagramNormalizedRestriction_fixed
+#print axioms initialDiagramNormalizedRestriction_fixed
+
+#check @initialDiagramHomFamily_normalized_restrict
+#print axioms initialDiagramHomFamily_normalized_restrict
+
+#check @specifiedCoconeLeftAttachmentFaceFamily
+#print axioms specifiedCoconeLeftAttachmentFaceFamily
+
+#check @specifiedCoconeLeftAttachmentFaceFamily_fixed
+#print axioms specifiedCoconeLeftAttachmentFaceFamily_fixed
+
+#check @specifiedCoconeLeftAttachmentFaceFamily_source
+#print axioms specifiedCoconeLeftAttachmentFaceFamily_source
+
+#check @specifiedCoconeLeftAttachmentFaceFamily_target
+#print axioms specifiedCoconeLeftAttachmentFaceFamily_target
+
+#check @specifiedCoconeRightAttachmentFaceFamily
+#print axioms specifiedCoconeRightAttachmentFaceFamily
+
+#check @specifiedCoconeRightAttachmentFaceFamily_fixed
+#print axioms specifiedCoconeRightAttachmentFaceFamily_fixed
+
+#check @specifiedCoconeRightAttachmentFaceFamily_source
+#print axioms specifiedCoconeRightAttachmentFaceFamily_source
+
+#check @specifiedCoconeRightAttachmentFaceFamily_target
+#print axioms specifiedCoconeRightAttachmentFaceFamily_target
+
+#check @specifiedCoconeLeftAttachmentPrecomposition
+#print axioms specifiedCoconeLeftAttachmentPrecomposition
+
+#check @specifiedCoconeLeftAttachmentInitialHomotopy
+#print axioms specifiedCoconeLeftAttachmentInitialHomotopy
+
+#check @specifiedCoconeLeftAttachmentInitialHomotopy_raw
+#print axioms specifiedCoconeLeftAttachmentInitialHomotopy_raw
+
+#check @specifiedCoconeLeftAttachmentInitialHomotopy_evaluation
+#print axioms specifiedCoconeLeftAttachmentInitialHomotopy_evaluation
+
+#check @specifiedCoconeLeftAttachmentInitialHomotopy_projection
+#print axioms specifiedCoconeLeftAttachmentInitialHomotopy_projection
+
+#check @specifiedCoconeRightAttachmentPrecomposition
+#print axioms specifiedCoconeRightAttachmentPrecomposition
+
+#check @specifiedCoconeRightAttachmentInitialHomotopy
+#print axioms specifiedCoconeRightAttachmentInitialHomotopy
+
+#check @specifiedCoconeRightAttachmentInitialHomotopy_raw
+#print axioms specifiedCoconeRightAttachmentInitialHomotopy_raw
+
+#check @specifiedCoconeRightAttachmentInitialHomotopy_evaluation
+#print axioms specifiedCoconeRightAttachmentInitialHomotopy_evaluation
+
+#check @specifiedCoconeRightAttachmentInitialHomotopy_projection
+#print axioms specifiedCoconeRightAttachmentInitialHomotopy_projection
+
+#check @evaluationFixedHomotopySquare_homMk_comp
+#print axioms evaluationFixedHomotopySquare_homMk_comp
+
+#check @specifiedCoconeLeftAttachment_initial_homMk_comp
+#print axioms specifiedCoconeLeftAttachment_initial_homMk_comp
+
+#check @specifiedCoconeLeftAttachment_projection_homMk_comp
+#print axioms specifiedCoconeLeftAttachment_projection_homMk_comp
+
+#check @specifiedCoconeRightAttachment_initial_homMk_comp
+#print axioms specifiedCoconeRightAttachment_initial_homMk_comp
+
+#check @specifiedCoconeRightAttachment_projection_homMk_comp
+#print axioms specifiedCoconeRightAttachment_projection_homMk_comp
