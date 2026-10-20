@@ -393,3 +393,7 @@ public import SerrePositivity.EInfinity.IntervalCuts.EndpointCoaction
 public import SerrePositivity.EInfinity.IntervalCuts.CoalgebraInterval
 public import SerrePositivity.EInfinity.BarrattEccles.ModelCategory
 public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
+public import SerrePositivity.EInfinity.BarrattEccles.PullbackQuillen
+public import SerrePositivity.EInfinity.BarrattEccles.CospanReplacement
+public import SerrePositivity.EInfinity.BarrattEccles.DerivedPullback
+public import SerrePositivity.EInfinity.BarrattEccles.UnderlyingPullback

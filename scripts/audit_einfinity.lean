@@ -1464,6 +1464,28 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.fibration_iff,
       `SerrePositivity.EInfinity.BarrattEccles.weakEquivalence_iff,
       `SerrePositivity.EInfinity.BarrattEccles.isFibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.overPullback_isRightQuillen,
+      `SerrePositivity.EInfinity.BarrattEccles.overForget_isRightQuillen,
+      `SerrePositivity.EInfinity.BarrattEccles.pullbackFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.pullbackFunctor_isRightQuillen,
+      `SerrePositivity.EInfinity.BarrattEccles.pullbackFunctor_hasPointwiseRightDerivedFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.fibrationReplacement,
+      `SerrePositivity.EInfinity.BarrattEccles.fibrationReplacement_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.fibrationReplacement_surjective,
+      `SerrePositivity.EInfinity.BarrattEccles.replacementOver,
+      `SerrePositivity.EInfinity.BarrattEccles.replacementInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.replacementInclusion_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.replacementOver_isFibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.homotopyPullback,
+      `SerrePositivity.EInfinity.BarrattEccles.homotopyPullbackCarrierIso,
+      `SerrePositivity.EInfinity.BarrattEccles.homotopyPullbackDerivedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierPullbackFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierPullbackFunctor_isRightQuillen,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierReplacementOver,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierReplacementInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierReplacementInclusion_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierReplacementOver_isFibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.homotopyPullbackCarrierDerivedIso,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4140,3 +4162,23 @@ example (A : Type) [CommRing A]
     let := SerrePositivity.EInfinity.BarrattEccles.modelCategory A
     HomotopicalAlgebra.IsFibrant X :=
   SerrePositivity.EInfinity.BarrattEccles.isFibrant A X
+
+-- 任意の可換環上の任意の cospan で、同じ置換を底の複体の引き戻しに使える。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type) [CommRing A] {X Y Z : (BarrattEccles.operad A).Algebra}
+    (f : X ⟶ Z) (g : Y ⟶ Z) :
+    (homotopyPullback A f g).carrier ≅
+      CategoryTheory.Limits.pullback (fibrationReplacement A f).p.hom g.hom :=
+  homotopyPullbackCarrierIso A f g
+
+-- 値の局所化に標準の局所化を取っても、導来引き戻しの存在に追加仮定は要らない。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type) [CommRing A] {Y Z : (BarrattEccles.operad A).Algebra} (g : Y ⟶ Z) :
+    let := modelCategory A
+    (pullbackFunctor A g ⋙
+      (HomotopicalAlgebra.weakEquivalences
+        (BarrattEccles.operad A).Algebra).Q).HasPointwiseRightDerivedFunctor
+      (HomotopicalAlgebra.weakEquivalences (Over Z)) := by
+  let := modelCategory A
+  change (pullbackFunctor A g ⋙ _).HasPointwiseRightDerivedFunctor _
+  exact pullbackFunctor_hasPointwiseRightDerivedFunctor A g _ inferInstance

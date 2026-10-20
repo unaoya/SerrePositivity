@@ -652,7 +652,14 @@ nullary を含む TR の部分合成保存は完了。
 `BarrattEccles.forget_isRightQuillen` により E2a-4 の右 Quillen 性も完了。
 `BarrattEccles.isFibrant` は局所モデル構造ですべての E 代数の fibrancy を与える。
 `fibration_iff`・`weakEquivalence_iff` で底の全射性・擬同型を直接使える。
-次は底での homotopy 引き戻し、H⁰ の可換環構造と離散可換代数。
+`pullbackFunctor_isRightQuillen` は slice で底を固定した引き戻しの二つの右類の保存を示す。
+`pullbackFunctor_hasPointwiseRightDerivedFunctor` により、その右導来関手が存在する。
+`fibrationReplacement` は任意の左脚の実際の分解で、包含は擬同型、射影は全次数全射。
+`homotopyPullback` はその射影と元の右脚との引き戻し。
+`homotopyPullbackDerivedIso` はこれが右導来引き戻しの値であることを任意の局所化で証明する。
+`homotopyPullbackCarrierIso` は忘却後を同じ置換の複体の引き戻しに同定する。
+`homotopyPullbackCarrierDerivedIso` は底でも実際に右導来引き戻しを計算することを保証する。
+次は一般図式の homotopy 極限、H⁰ の可換環構造と離散可換代数。
 E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：
