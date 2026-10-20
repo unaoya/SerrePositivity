@@ -16525,3 +16525,98 @@ namespace SerrePositivity.KST.SConstruction
 #check @dgFunctorMappingVertexEquiv
 #print axioms dgFunctorMappingVertexEquiv
 end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @serreInterval
+#print axioms serreInterval
+#check @serreIntervalZero
+#print axioms serreIntervalZero
+#check @serreIntervalEdge
+#print axioms serreIntervalEdge
+#check @serreIntervalBoundary
+#print axioms serreIntervalBoundary
+#check @serreIntervalOne
+#print axioms serreIntervalOne
+#check @serreInterval_hom_ext
+#print axioms serreInterval_hom_ext
+#check @serreIntervalLift
+#print axioms serreIntervalLift
+#check @serreIntervalLift_zero
+#print axioms serreIntervalLift_zero
+#check @serreIntervalLift_edge
+#print axioms serreIntervalLift_edge
+#check @serreIntervalEdge_d
+#print axioms serreIntervalEdge_d
+#check @serreIntervalLift_one_cycle
+#print axioms serreIntervalLift_one_cycle
+#check @serreIntervalLift_post
+#print axioms serreIntervalLift_post
+#check @serreIntervalLift_self
+#print axioms serreIntervalLift_self
+#check @serreIntervalAugmentation
+#print axioms serreIntervalAugmentation
+#check @serreIntervalAugmentation_zero
+#print axioms serreIntervalAugmentation_zero
+#check @serreIntervalAugmentation_edge
+#print axioms serreIntervalAugmentation_edge
+#check @serreIntervalAugmentation_one
+#print axioms serreIntervalAugmentation_one
+#check @serreIntervalDiagonalEdge
+#print axioms serreIntervalDiagonalEdge
+#check @serreIntervalDiagonal
+#print axioms serreIntervalDiagonal
+#check @serreIntervalDiagonal_zero
+#print axioms serreIntervalDiagonal_zero
+#check @serreIntervalDiagonal_edge
+#print axioms serreIntervalDiagonal_edge
+#check @serreIntervalDiagonalEdge_d
+#print axioms serreIntervalDiagonalEdge_d
+#check @serreIntervalDiagonal_one
+#print axioms serreIntervalDiagonal_one
+#check @serreIntervalDiagonal_zero_value
+#print axioms serreIntervalDiagonal_zero_value
+#check @serreIntervalDiagonal_one_value
+#print axioms serreIntervalDiagonal_one_value
+#check @serreIntervalDiagonal_coassoc
+#print axioms serreIntervalDiagonal_coassoc
+#check @serreIntervalAugmentation_zero_value
+#print axioms serreIntervalAugmentation_zero_value
+#check @serreIntervalAugmentation_one_value
+#print axioms serreIntervalAugmentation_one_value
+#check @serreIntervalDiagonal_left_counit
+#print axioms serreIntervalDiagonal_left_counit
+#check @serreIntervalDiagonal_right_counit
+#print axioms serreIntervalDiagonal_right_counit
+#check @serreIntervalComonObj
+#print axioms serreIntervalComonObj
+#check @serreIntervalComonoid
+#print axioms serreIntervalComonoid
+#check @serreCubeComonoid
+#print axioms serreCubeComonoid
+#check @serreCubeComplex
+#print axioms serreCubeComplex
+#check @serreCubeDiagonal
+#print axioms serreCubeDiagonal
+#check @serreCubeAugmentation
+#print axioms serreCubeAugmentation
+#check @serreCubeDiagonal_coassoc
+#print axioms serreCubeDiagonal_coassoc
+#check @serreCubeDiagonal_left_counit
+#print axioms serreCubeDiagonal_left_counit
+#check @serreCubeDiagonal_right_counit
+#print axioms serreCubeDiagonal_right_counit
+#check @serreCubeDiagonal_succ
+#print axioms serreCubeDiagonal_succ
+#check @serreIntervalZeroComonHom
+#print axioms serreIntervalZeroComonHom
+#check @serreIntervalOneComonHom
+#print axioms serreIntervalOneComonHom
+#check @serreIntervalAugmentationComonHom
+#print axioms serreIntervalAugmentationComonHom
+#check @serreIntervalZeroComonHom_hom
+#print axioms serreIntervalZeroComonHom_hom
+#check @serreIntervalOneComonHom_hom
+#print axioms serreIntervalOneComonHom_hom
+#check @serreIntervalAugmentationComonHom_hom
+#print axioms serreIntervalAugmentationComonHom_hom
+end SerrePositivity.KST.SConstruction

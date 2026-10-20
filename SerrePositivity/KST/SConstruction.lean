@@ -1120,4 +1120,12 @@ public import SerrePositivity.KST.SConstruction.DGStandardHomComposition
 public import SerrePositivity.KST.SConstruction.DGStandardEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.DGStandardCoherentMap
 public import SerrePositivity.KST.SConstruction.DGFunctorMappingSpace
+public import SerrePositivity.KST.SConstruction.SerreInterval
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaps
+public import SerrePositivity.KST.SConstruction.SerreIntervalDiagonal
+public import SerrePositivity.KST.SConstruction.SerreIntervalDiagonalEndpoints
+public import SerrePositivity.KST.SConstruction.SerreIntervalCoassociativity
+public import SerrePositivity.KST.SConstruction.SerreIntervalCounit
+public import SerrePositivity.KST.SConstruction.SerreCubeComonoid
+public import SerrePositivity.KST.SConstruction.SerreIntervalComonoidMaps
 /-! # ∞-S• 構成と連結 K 理論 -/
