@@ -13587,3 +13587,87 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleFirstUpper_heq
 #check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleSecondUpper_heq
 #print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleSecondUpper_heq
+#check @SerrePositivity.KST.SConstruction.simplicialEqualityTransport_app_heq
+#print axioms SerrePositivity.KST.SConstruction.simplicialEqualityTransport_app_heq
+#check @SerrePositivity.KST.SConstruction.simplicialEqualityTransport_app_of_heq
+#print axioms SerrePositivity.KST.SConstruction.simplicialEqualityTransport_app_of_heq
+#check @SerrePositivity.KST.SConstruction.simplicialEqualityTransport_face
+#print axioms SerrePositivity.KST.SConstruction.simplicialEqualityTransport_face
+#check @SerrePositivity.KST.SConstruction.simplicialEqualityTransport_face_of_heq
+#print axioms SerrePositivity.KST.SConstruction.simplicialEqualityTransport_face_of_heq
+#check @SerrePositivity.KST.SConstruction.simplicialEqualityTransport_common_face
+#print axioms SerrePositivity.KST.SConstruction.simplicialEqualityTransport_common_face
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.mk
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.mk
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.first
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.first
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.second
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.second
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.first_lower
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.first_lower
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.second_lower
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.second_lower
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.first_upper
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.first_upper
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.second_upper
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.second_upper
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.diagonal
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.diagonal
+#check @SerrePositivity.KST.SConstruction.triangleDiamondTransportData
+#print axioms SerrePositivity.KST.SConstruction.triangleDiamondTransportData
+#check @SerrePositivity.KST.SConstruction.tracedTripleMappingSpectrumSimplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.tracedTripleMappingSpectrumSimplicialCategory
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleMappingSpace_eq
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleMappingSpace_eq
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTriplePathTriangles_diagonal
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTriplePathTriangles_diagonal
+#check @SerrePositivity.KST.SConstruction.tracedTripleDiamondSpectrumSimplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.tracedTripleDiamondSpectrumSimplicialCategory
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleDiamondData
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleDiamondData
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleDiamond
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleDiamond
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleDiamond_first_image
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleDiamond_first_image
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleDiamond_second_image
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleDiamond_second_image
+#check @SerrePositivity.KST.SConstruction.CompositionDiamond.mk
+#print axioms SerrePositivity.KST.SConstruction.CompositionDiamond.mk
+#check @SerrePositivity.KST.SConstruction.CompositionDiamond.diagonal
+#print axioms SerrePositivity.KST.SConstruction.CompositionDiamond.diagonal
+#check @SerrePositivity.KST.SConstruction.CompositionDiamond.first
+#print axioms SerrePositivity.KST.SConstruction.CompositionDiamond.first
+#check @SerrePositivity.KST.SConstruction.CompositionDiamond.second
+#print axioms SerrePositivity.KST.SConstruction.CompositionDiamond.second
+#check @SerrePositivity.KST.SConstruction.triangleDiamondCompositionData
+#print axioms SerrePositivity.KST.SConstruction.triangleDiamondCompositionData
+#check @SerrePositivity.KST.SConstruction.TriangleDiamondData.ofEq
+#print axioms SerrePositivity.KST.SConstruction.TriangleDiamondData.ofEq
+#check @SerrePositivity.KST.SConstruction.enrichedComparisonLeftWhisker
+#print axioms SerrePositivity.KST.SConstruction.enrichedComparisonLeftWhisker
+#check @SerrePositivity.KST.SConstruction.enrichedComparisonLeftWhisker_edge
+#print axioms SerrePositivity.KST.SConstruction.enrichedComparisonLeftWhisker_edge
+#check @SerrePositivity.KST.SConstruction.enrichedComparisonRightWhisker
+#print axioms SerrePositivity.KST.SConstruction.enrichedComparisonRightWhisker
+#check @SerrePositivity.KST.SConstruction.enrichedComparisonRightWhisker_edge
+#print axioms SerrePositivity.KST.SConstruction.enrichedComparisonRightWhisker_edge
+#check @SerrePositivity.KST.SConstruction.tracedTripleWhiskerSpectrumSimplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.tracedTripleWhiskerSpectrumSimplicialCategory
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleFirstWhisker
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleFirstWhisker
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleSecondWhisker
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleSecondWhisker
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleEdgeDiamond
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleEdgeDiamond
+#check @SerrePositivity.KST.SConstruction.tracedTripleCompositionSpectrumSimplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.tracedTripleCompositionSpectrumSimplicialCategory
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamondData
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamondData
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamond
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamond
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamond_first_image
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamond_first_image
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamond_second_image
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamond_second_image
+#check @SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamond_diagonal
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedCoherentTripleCompositionDiamond_diagonal
