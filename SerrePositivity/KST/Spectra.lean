@@ -932,3 +932,8 @@ public import SerrePositivity.KST.Spectra.PointedParametricPost
 public import SerrePositivity.KST.Spectra.PointedParametricPostExchange
 public import SerrePositivity.KST.Spectra.UniversalSourceParametricSections
 public import SerrePositivity.KST.Spectra.UniversalSourceParametricInput
+public import SerrePositivity.KST.Spectra.PointedPreActionComposition
+public import SerrePositivity.KST.Spectra.InternalHomExchangeCurriedComposition
+public import SerrePositivity.KST.Spectra.PointedPreActionCotensor
+public import SerrePositivity.KST.Spectra.PointedPrecompositionParametricNaturality
+public import SerrePositivity.KST.Spectra.UniversalSourceParametricNaturality

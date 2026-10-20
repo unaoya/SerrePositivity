@@ -13,6 +13,11 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.PointedPreActionComposition,
+    `SerrePositivity.KST.Spectra.InternalHomExchangeCurriedComposition,
+    `SerrePositivity.KST.Spectra.PointedPreActionCotensor,
+    `SerrePositivity.KST.Spectra.PointedPrecompositionParametricNaturality,
+    `SerrePositivity.KST.Spectra.UniversalSourceParametricNaturality,
     `SerrePositivity.KST.Spectra.PointedParametricPost,
     `SerrePositivity.KST.Spectra.PointedParametricPostExchange,
     `SerrePositivity.KST.Spectra.UniversalSourceParametricSections,
