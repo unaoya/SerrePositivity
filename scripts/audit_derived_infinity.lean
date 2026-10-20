@@ -1,3 +1,20 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionComparisonNaturality
+import SerrePositivity.InfinityCategories.Derived.EnrichedParameterizedUnit
+import SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainUnit
+import SerrePositivity.InfinityCategories.Derived.EnrichedCochainUnit
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionUnitComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionUnitLaws
+import SerrePositivity.InfinityCategories.Derived.EnrichedParameterizedAssociativity
+import SerrePositivity.InfinityCategories.Derived.ComplexCochainLeftActionAssociativity
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionAssociativityMaps
+import SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainSubstitution
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionMapAssociativity
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionAssociativityPrimitiveTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionAssociativityComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCategory
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionProjections
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionNerve
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionInfinity
 import SerrePositivity.InfinityCategories.Derived.ComplexTensorComparisonCochain
 import SerrePositivity.InfinityCategories.Derived.EnrichedMiddleComposition
 import SerrePositivity.InfinityCategories.Derived.EnrichedCompositionBoundary
@@ -2952,6 +2969,24 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionComparisonNaturality,
+    `SerrePositivity.InfinityCategories.Derived.EnrichedParameterizedUnit,
+    `SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainUnit,
+    `SerrePositivity.InfinityCategories.Derived.EnrichedCochainUnit,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionUnitComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionUnitLaws,
+    `SerrePositivity.InfinityCategories.Derived.EnrichedParameterizedAssociativity,
+    `SerrePositivity.InfinityCategories.Derived.ComplexCochainLeftActionAssociativity,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionAssociativityMaps,
+    `SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainSubstitution,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionMapAssociativity,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionAssociativityPrimitiveTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionAssociativityComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCategory,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionProjections,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionInfinity,
+
     `SerrePositivity.InfinityCategories.Derived.ComplexTensorComparisonCochain,
     `SerrePositivity.InfinityCategories.Derived.EnrichedMiddleComposition,
     `SerrePositivity.InfinityCategories.Derived.EnrichedCompositionBoundary,
