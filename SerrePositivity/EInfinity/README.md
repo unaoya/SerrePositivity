@@ -1286,7 +1286,15 @@ backward 一列ずつを両端に付け、`paddingInclusionNat` は元の中央�
 `paddedThreeComparison`・`_fac`・`_retraction`・`paddedForwardColimit_comparison_recovery` は
 同じ元の比較から元の全語の三列の標準射を厳密に回収する。
 一般の値の圏での `colimMap` は、単体集合で同じ元の `colim.map` に一致する。
-比較ホモトピー、成分と三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`ThreeArrow.Padding.outerFunctor`・`innerFunctor`・`middleFunctor` は元の5列の三配置。
+`toOuterNat`・`toInnerNat` は元の左右の弱同値の脚を一頂点で使う二つの自然変換。
+`outer_action_functor`・`inner_action_functor` は元の WordAction との厳密な一致。
+元の列と切断位置の表から、全頂点・全列・全縦射を照合する。
+`toOuterHomotopy`・`toInnerHomotopy` は同じ nerve のホモトピー。
+`original_maps_image_eq` は anodyne を反転する関手の下で元の graph の二写像を同定する。
+`colimit_comparison_image_eq` は同じ元の三列の標準射の後の padding 比較と、
+`paddedThreeComparison` の像の一致。単体集合モデルや元の nerve の Kan 性は不要。
+成分と三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

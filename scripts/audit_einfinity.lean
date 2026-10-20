@@ -3764,6 +3764,52 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.paddedThreeComparison_retraction,
       `SerrePositivity.EInfinity.Hammock.paddedForwardColimit_comparison_recovery]
 
+@[noinline] private def e2RequiredBatch40 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.word,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outer,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.inner,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.middle,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outerMap,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.innerMap,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.middleMap,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outerFunctor,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.innerFunctor,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.middleFunctor,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toOuter,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toInner,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toOuter_naturality_app,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toInner_naturality_app,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toOuter_naturality,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toInner_naturality,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toOuterNat,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toInnerNat,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toOuterHomotopy,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.toInnerHomotopy,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outer_inner_image_eq,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.centerInclusion,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outerWordMap,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.innerWordMap,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outerWordMap_columns,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.innerWordMap_columns,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outerWordMap_cut,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.innerWordMap_cut,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outerWordMap_injective,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.innerWordMap_injective,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outer_action_vertices,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.inner_action_vertices,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.identityColumn_arrow_heq_id,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outer_action_arrows,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.inner_action_arrows,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outer_action_obj,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.inner_action_obj,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.outer_action_functor,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.inner_action_functor,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.original_maps_after_threeArrow_image_eq,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.original_maps_image_eq,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.paddedThreeComparison_as_outer,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.paddingColimitMap_threeArrow,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding.colimit_comparison_image_eq]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3793,7 +3839,8 @@ run_cmd do
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
-      e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39] do
+      e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
+      e2RequiredBatch40] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8964,3 +9011,45 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] (W : MorphismPropert
         colim.map (paddedForwardDiagramMap (graphDiagram W X Y)) ≫
           paddingColimitRetraction (graphDiagram W X Y) = graphInclusion W X Y Word.threeArrow :=
   paddedForwardColimit_comparison_recovery (graphDiagram W X Y)
+
+-- 中間配置の動く縦射は同じ元の右脚と左脚である。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.FrameHom
+    SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {X Y : C} (S : WeakThreeArrow X Y) :
+    (toOuter S).app (4 : Fin 6) = S.rightMap ∧ (toInner S).app (1 : Fin 6) = S.leftMap :=
+  ⟨rfl, rfl⟩
+
+-- 元の外側の語の作用は全対象・全縦射で同じ配置関手に一致する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C) :
+    ThreeArrow.functor (X := X) (Y := Y) ⋙ WordAction.functor outerWordMap = outerFunctor :=
+  outer_action_functor
+
+-- 二つの自然変換からのホモトピー。nerve の Kan 性は不要。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C) :
+    SSet.Homotopy (nerveMap (middleFunctor (X := X) (Y := Y))) (nerveMap innerFunctor) :=
+  toInnerHomotopy
+
+-- 元の graph の二つの語の写像自身を比較する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C)
+    {D : Type e2ComplexLimitUniverse} [SmallCategory D] (L : SSet.{e2ComplexLimitUniverse} ⥤ D)
+    (hL : SSet.anodyneExtensions.IsInvertedBy L) :
+    L.map ((graphDiagram (weakEquivalences C) X Y).map outerWordMap) =
+      L.map ((graphDiagram (weakEquivalences C) X Y).map innerWordMap) :=
+  original_maps_image_eq X Y L hL
+
+-- 元の全語の標準射と元の padding 比較の anodyne 反転後の一致。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C)
+    {D : Type e2ComplexLimitUniverse} [SmallCategory D] (L : SSet.{e2ComplexLimitUniverse} ⥤ D)
+    (hL : SSet.anodyneExtensions.IsInvertedBy L) :
+    L.map (paddedThreeComparison (graphDiagram (weakEquivalences C) X Y)) =
+      L.map (graphInclusion (weakEquivalences C) X Y Word.threeArrow ≫
+        paddingColimitMap (graphDiagram (weakEquivalences C) X Y)) :=
+  colimit_comparison_image_eq X Y L hL

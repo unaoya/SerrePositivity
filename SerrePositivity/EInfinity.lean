@@ -927,3 +927,13 @@ public import SerrePositivity.EInfinity.Hammock.WordPaddedCollapse
 public import SerrePositivity.EInfinity.Hammock.PaddedForwardColimit
 public import SerrePositivity.EInfinity.Hammock.PaddingColimitRetraction
 public import SerrePositivity.EInfinity.Hammock.PaddedComparisonRecovery
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingObjects
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingMaps
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingSpan
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingNerve
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingWordMaps
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingVertices
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingActionObjects
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingAction
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowPaddingComparison
+public import SerrePositivity.EInfinity.Hammock.PaddingColimitComparison
