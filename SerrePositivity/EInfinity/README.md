@@ -1061,8 +1061,17 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `algebraHammockGraphCocone_isColimit` は元の全標準射の余錐の実際の余極限性。
 `mappingSpaceHammockColimitNerveMap` と `mappingSpaceHammockColimitComparison_fac` は
 元の同じ Map^h の共通始域・左射・三列の比較を保持した、全語の余極限への比較。
-余極限上の合成・単位、proper 性、縮約 hammock との同型、三列の包含の弱同値性、
-既存 DK Hom への高次比較は後続。
+`Word.appendFunctor` は全語と全単調写像の連結関手。`cut_append_left`・`cut_append_right` は
+左右の全頂点の切断を、元の二つの切断と照合する。
+`ZigzagAppend.obj`・`map`・`functor` は共有端点を一つにする全対象・全縦弱同値の連結。
+`joint_app_heq` は元の固定端点の条件から接合点の縦射の整合を導く。
+`NerveProduct.iso` は元の射列の積と射影を全作用素で使う、明示的な nerve の二項積同型。
+`graphComposition` は二つの固定語の graph の積から連結語の graph への単体的射。
+`BarrattEccles.algebraHammockGraphComposition` は任意の可換環上で同じ元の全頂点・全縦射を保持。
+`emptyObj`・`graphUnit`・`colimitUnit` は元の空語から固定語の graph と全語の余極限への単位射。
+`algebraHammockGraphUnit`・`algebraHammockColimitUnit` は同じ実際の E 代数への代入。
+連結の語の遷移への自然性、余極限への合成の降下と全結合・単位則、proper 性、
+縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

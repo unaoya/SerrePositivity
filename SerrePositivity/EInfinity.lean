@@ -772,3 +772,16 @@ public import SerrePositivity.EInfinity.Hammock.WordIdentity
 public import SerrePositivity.EInfinity.Hammock.WordInterval
 public import SerrePositivity.EInfinity.Hammock.WordSegmentComparison
 public import SerrePositivity.EInfinity.Hammock.ZigzagExt
+public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphComposition
+public import SerrePositivity.EInfinity.BarrattEccles.HammockUnit
+public import SerrePositivity.EInfinity.Hammock.GraphComposition
+public import SerrePositivity.EInfinity.Hammock.NerveProduct
+public import SerrePositivity.EInfinity.Hammock.Unit
+public import SerrePositivity.EInfinity.Hammock.WordAppend
+public import SerrePositivity.EInfinity.Hammock.WordAppendCut
+public import SerrePositivity.EInfinity.Hammock.WordAppendIndices
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendFunctor
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendMorphisms
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendObjects
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendVertical
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendVertices

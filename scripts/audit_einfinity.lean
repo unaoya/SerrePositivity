@@ -22,7 +22,74 @@ run_cmd do
   if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
   unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
     throwError "射影モデル構造の宣言がありません"
-  for required in #[`SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphDiagram,
+  for required in #[`SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphComposition,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphComposition_vertex,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphComposition_map,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphUnit,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitUnit,
+      `SerrePositivity.EInfinity.Hammock.graphComposition,
+      `SerrePositivity.EInfinity.Hammock.graphComposition_app,
+      `SerrePositivity.EInfinity.Hammock.graphComposition_vertex,
+      `SerrePositivity.EInfinity.Hammock.graphComposition_map,
+      `SerrePositivity.EInfinity.Hammock.NerveProduct.pair,
+      `SerrePositivity.EInfinity.Hammock.NerveProduct.unpair,
+      `SerrePositivity.EInfinity.Hammock.NerveProduct.iso,
+      `SerrePositivity.EInfinity.Hammock.NerveProduct.pair_natural,
+      `SerrePositivity.EInfinity.Hammock.emptyObj,
+      `SerrePositivity.EInfinity.Hammock.graphUnit,
+      `SerrePositivity.EInfinity.Hammock.colimitUnit,
+      `SerrePositivity.EInfinity.Hammock.graphUnit_vertex,
+      `SerrePositivity.EInfinity.Hammock.Word.append,
+      `SerrePositivity.EInfinity.Hammock.Word.append_direction_left,
+      `SerrePositivity.EInfinity.Hammock.Word.append_direction_right,
+      `SerrePositivity.EInfinity.Hammock.Word.appendMap,
+      `SerrePositivity.EInfinity.Hammock.Word.appendMap_left,
+      `SerrePositivity.EInfinity.Hammock.Word.appendMap_right,
+      `SerrePositivity.EInfinity.Hammock.Word.appendMap_id,
+      `SerrePositivity.EInfinity.Hammock.Word.appendMap_comp,
+      `SerrePositivity.EInfinity.Hammock.Word.appendFunctor,
+      `SerrePositivity.EInfinity.Hammock.Word.cut_append_left,
+      `SerrePositivity.EInfinity.Hammock.Word.cut_append_right,
+      `SerrePositivity.EInfinity.Hammock.Word.leftVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.rightVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.leftVertex_zero,
+      `SerrePositivity.EInfinity.Hammock.Word.rightVertex_last,
+      `SerrePositivity.EInfinity.Hammock.Word.jointVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.source_left,
+      `SerrePositivity.EInfinity.Hammock.Word.target_left,
+      `SerrePositivity.EInfinity.Hammock.Word.source_right,
+      `SerrePositivity.EInfinity.Hammock.Word.target_right,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.app_id,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.app_comp,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.functor,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.left_comm,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.right_comm,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.map,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.source_left_eq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.target_left_eq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.source_right_eq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.target_right_eq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.leftArrow,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.rightArrow,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.leftArrow_mem,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.rightArrow_mem,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.obj,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.arrow_left_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.arrow_right_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.app,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.app_mem,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.app_index_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.app_left_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.joint_app_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.app_right_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.leftIndex,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.rightIndex,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.vertex,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.vertex_le,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.vertex_gt,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.vertex_left,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.vertex_right,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphDiagram,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphDiagram_obj,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphDiagram_map,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitGraph,
@@ -7229,3 +7296,46 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.ope
       SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
         (mappingSpaceHammockColimitNerveMap A X Y) :=
   mappingSpaceHammockColimitComparison_fac A X Y
+
+-- 語の連結関手の射は、元の二つの語の写像の合成を厳密に保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b a' b' a'' b'' : Word} (f : a ⟶ a') (g : b ⟶ b')
+    (f' : a' ⟶ a'') (g' : b' ⟶ b'') :
+    Word.appendMap (f ≫ f') (g ≫ g') = Word.appendMap f g ≫ Word.appendMap f' g' :=
+  Word.appendMap_comp f g f' g'
+
+-- 連結した写像の左側の全切断は元の左の切断。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b a' b' : Word} (f : a ⟶ a') (g : b ⟶ b') (j : Fin (a'.length + 1)) :
+    (Word.appendMap f g).cut (Word.leftVertex a' b' j) = Word.leftVertex a b (f.cut j) :=
+  Word.cut_append_left f g j
+
+-- 右側も接合点を含めて元の同じ切断を回収。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b a' b' : Word} (f : a ⟶ a') (g : b ⟶ b') (j : Fin (b'.length + 1)) :
+    (Word.appendMap f g).cut (Word.rightVertex a' b' j) = Word.rightVertex a b (g.cut j) :=
+  Word.cut_append_right f g j
+
+-- 接合点の縦射の整合は元の固定端点から従い、モデル構造や乗法性を入力しない。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category C] {W : MorphismProperty C}
+    {a b : Word} {X Y Z : C} {S S' : Zigzag W a X Y} {T T' : Zigzag W b Y Z}
+    (f : Zigzag.Hom S S') (g : Zigzag.Hom T T') :
+    HEq (f.app (Fin.last a.length)) (g.app 0) := ZigzagAppend.joint_app_heq f g
+
+-- 任意の可換環上の同じ graph の合成は、全単体の全縦射を厳密に保持する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (a b : Hammock.Word)
+    (X Y Z : (BarrattEccles.operad A).Algebra) (n : SimplexCategoryᵒᵖ)
+    (σ : (BarrattEccles.algebraHammockGraph A a X Y).obj n)
+    (τ : (BarrattEccles.algebraHammockGraph A b Y Z).obj n)
+    {i j : Fin (n.unop.len + 1)} (h : i ⟶ j) :
+    ((BarrattEccles.algebraHammockGraphComposition A a b X Y Z).app n (σ, τ)).map h =
+      Hammock.ZigzagAppend.map (σ.map h) (τ.map h) :=
+  BarrattEccles.algebraHammockGraphComposition_map A a b X Y Z n σ τ h
+
+-- 同じ元の空語から全語の余極限への単位射を、モデル instance の入力なしで構成。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : (BarrattEccles.operad A).Algebra) :
+    Nonempty (𝟙_ SSet.{e2ComplexLimitUniverse + 1} ⟶ algebraHammockColimitGraph A X X) :=
+  ⟨algebraHammockColimitUnit A X⟩
