@@ -29,7 +29,6 @@
 - 表現可能射影と rep(y) の right unstraightening は、両端固定の coslice 比較で底上の同値を構成済み。
 - 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
   を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
-- Tw の同じ恒等点と評価を両固定方向・宇宙移送後まで照合し、全パラメーターの輸送と比較済み。
 - `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
   実際の区間 Hom 作用と標準 pinched Hom 作用の同値性を、同じ恒等点評価と輸送から回収した。
   空間値の essentially small Kan fiber への相対延長も閉じた。Cat∞ 値版が残り、F1 全体は未完了。
@@ -78,11 +77,11 @@
 - 一般の小さい quasicategory 上の空間値分類同値は `e987f35af` に保存済み。
 - 前層の分類は `56dd08ad4`、essentially small Kan fiber の相対延長は `bf56a0416` に保存済み。
 - cocartesian fibration の ∞ 圏と通常 nerve 上の Cat∞ 値図式は `733a24a2b` に保存済み。
-- 全相対作用と通常 nerve 上の coherent 分類写像は `87acb9df5` に保存済み。
-- inner fibration 性は `24a9eb957`、係数辺・水平辺の cocartesian 性は `6ed7eecf5`。
+- coherent 分類写像は `87acb9df5`、inner fibration 性は `24a9eb957`、水平辺は `6ed7eecf5`。
 - quasicategory 値 weighted nerve の cocartesian fibration 性と scaffold 比較は `9d911c9c1`。
 - cocartesian section への自然な比較と全成分の同値性は `3a02c7fb8`。
-- 同じ比較の coherent な実現と、strict 図式と同じ分類写像による weighted nerve の像の頂点同型を証明。
+- coherent な実現と strict 図式の同じ分類写像の像との頂点同型は `8efb9919a`。
+- Cat∞ 値単体の局所 strict 化と有限 nerve 上の本質的全射性を証明（4544 jobs・監査10329宣言）。
 
 ### 既知の問題
 
@@ -97,8 +96,9 @@
 Cat∞ 値版では通常 nerve 上の全 fibration の分類写像に加え、strict 図式の unstraightening を構成済み。
 `weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
 比較は元の自然変換の prism を使い、各対象で成分の coherent 辺に一致する。
-次は任意の coherent な Cat∞ 値図式の strict 化を調べ、全対象の本質的全射性へ進む。
-同じ主写像の充満忠実性・本質的全射性と、一般の底への帰着は別に残る。
+局所 strict 化から有限順序 nerve 上の本質的全射性まで完了。
+次は cocartesian 相対関手の写像空間比較と境界固定延長を調べ、一般の底へ貼り合わせる。
+同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 

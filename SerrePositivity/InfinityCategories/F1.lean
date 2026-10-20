@@ -1526,3 +1526,7 @@ public import SerrePositivity.InfinityCategories.F1.QCatDiagramPrism
 public import SerrePositivity.InfinityCategories.F1.QCatDiagramNaturalTransformation
 
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianCoherentUnit
+
+public import SerrePositivity.InfinityCategories.F1.LocalQCatDiagramStrictification
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFiniteEssentialSurjectivity
