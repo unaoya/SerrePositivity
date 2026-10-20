@@ -9934,3 +9934,69 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeNativePointHomEndReturn_raw
 #print axioms specifiedCoconeNativePointHomEndReturn_raw
+
+#check @adjunctionLeftFrameHom
+#print axioms adjunctionLeftFrameHom
+
+#check @adjunctionRightFrameHom
+#print axioms adjunctionRightFrameHom
+
+#check @adjunctionFrameHomBifunctorIso
+#print axioms adjunctionFrameHomBifunctorIso
+
+#check @adjunctionFrameHomBifunctorIso_apply
+#print axioms adjunctionFrameHomBifunctorIso_apply
+
+#check @adjunctionFrameHomBifunctorIso_augmentation
+#print axioms adjunctionFrameHomBifunctorIso_augmentation
+
+#check @quillenReplacedFrameHomIso
+#print axioms quillenReplacedFrameHomIso
+
+#check @quillenReplacedFrame_reedyCofibrant
+#print axioms quillenReplacedFrame_reedyCofibrant
+
+#check @quillenReplacedFrame_homotopicallyConstant
+#print axioms quillenReplacedFrame_homotopicallyConstant
+
+#check @quillenReplacedFrame_augmentation_weakEquivalence
+#print axioms quillenReplacedFrame_augmentation_weakEquivalence
+
+#check @quillenReplacedFrame_rightTarget_isFibrant
+#print axioms quillenReplacedFrame_rightTarget_isFibrant
+
+#check @quillenReplacedFrame_leftHom_kanComplex
+#print axioms quillenReplacedFrame_leftHom_kanComplex
+
+#check @quillenReplacedFrame_rightHom_kanComplex
+#print axioms quillenReplacedFrame_rightHom_kanComplex
+
+#check @chosenQuillenFrameHomIso
+#print axioms chosenQuillenFrameHomIso
+
+#check @chosenQuillenFrameHom_leftKan
+#print axioms chosenQuillenFrameHom_leftKan
+
+#check @chosenQuillenFrameHom_rightKan
+#print axioms chosenQuillenFrameHom_rightKan
+
+#check @chosenQuillenFrame_augmentation_weakEquivalence
+#print axioms chosenQuillenFrame_augmentation_weakEquivalence
+
+#check @frameHomMap_trivialKanFibration
+#print axioms frameHomMap_trivialKanFibration
+
+#check @frameHomMap_homotopyEquivalence
+#print axioms frameHomMap_homotopyEquivalence
+
+#check @fixedFrameOverFunctor_homLeft_homotopyEquivalence
+#print axioms fixedFrameOverFunctor_homLeft_homotopyEquivalence
+
+#check @fixedFrameOverFunctor_homRight_homotopyEquivalence
+#print axioms fixedFrameOverFunctor_homRight_homotopyEquivalence
+
+#check @frameHom_trivialKanFibration
+#print axioms frameHom_trivialKanFibration
+
+#check @frameHom_target_homotopyEquivalence
+#print axioms frameHom_target_homotopyEquivalence

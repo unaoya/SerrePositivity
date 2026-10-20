@@ -17,9 +17,13 @@
   最終保存単位は共通 native 根辺の厳密な一致・元の比較との三角形・選択済み end 逆の戻しの8モジュール33宣言。
   **次は N-2（γ4）**。通常の随伴と整合する単体的 Hom 同型から、任意の小圏上の strict 表示の native 極限保存を証明済み。
   γ4 の具体例 `K × − ⊣ Map(K,−)` は通常の随伴・豊穣 Hom 同型・零単体と、両対象の anodyne Kan 置換を含む frame Hom を全単体で照合済み。
-  一般の Quillen 随伴からの導来 ∞ 随伴、cf 置換・frame を含む高次自然性、右導来関手の一般 coherent 極限保存は未完了。
+  N-2：`AdjunctionFrameHomBifunctor` は独立な始域・終域パラメータの双方に自然な全次数の Hom 同型と、元の augmentation との厳密な両立を構成。
+  `QuillenReplacedFrameHom`・`ChosenQuillenFrameHom` は一般の左 Quillen 随伴と元の関手的因子分解を代入し、左像 frame の Reedy cofibrancy・定値性・augmentation の弱同値性と左右の Hom の Kan 性を証明。
+  `FixedQuillenFrameInvariance`・`FixedQuillenTargetInvariance` は元の frame の弱比較と fibrant 終域の弱比較を、SSet のモデル構造を仮定せず実際の Hom のホモトピー同値へ移す。相対 latching の境界持ち上げと Reedy/Brown 分解を使用。
+  `FixedQuillenFrameComparison` は元の関手上の共通 frame の二つの Hom 自然変換を同じ射でホモトピー同値と証明。現在の Hom 同型は同じ Hom 宇宙の二モデル圏で構成。
+  一般の Quillen 随伴からの導来 ∞ 随伴、cf 模型への比較・coherent な自然性、右導来関手の一般 coherent 極限保存は未完了。
 - **残り**（依存順、時間は再開後の概算）：
-  1. N-2：一般の simplicial Quillen 随伴の cf 置換・frame から導来 Hom 比較を構成。HTT 5.2.4.6、8〜20時間。
+  1. N-2：Quillen 左像 frame の全族を標準の導来 Hom へ接続し、cf 模型・局所化の Hom 比較と照合。両変数の弱同値不変性と高次比較を束ねる。HTT 5.2.4.6、8〜20時間。
   2. N-2：F1b の随伴 API へ比較を入力し、導来 ∞ 随伴の単位・余単位・三角整合性と右 Quillen 関手の ∞ 極限保存。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
   3. N-3：Sp へ適用し、Tot・hG・fiber 列を Sp の ∞ 極限と照合（Sp レーンと共同）。BF §3、HA §1.4、16〜40時間。
   4. E2b へ γ4 を提供し、Alg_E と忘却関手へ適用。E2a の現状は下記、HTT 1.1.5.10・5.2.4.6、16〜40時間。
@@ -32,23 +36,30 @@
   `HomotopyLimits.strictCoherentCone_map_isLimit_of_adjunctionHomIso`、
   `HomotopyLimits.strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso`、
   `HomotopyLimits.kanTensorAdjunctionHomIso`、`HomotopyLimits.kanInternalHom_map_isLimit`、
-  `HomotopyLimits.kanReplacedTensorFrameAdjunction_square`。
+  `HomotopyLimits.kanReplacedTensorFrameAdjunction_square`、`HomotopyLimits.adjunctionFrameHomBifunctorIso`、
+  `HomotopyLimits.adjunctionFrameHomBifunctorIso_augmentation`、`HomotopyLimits.chosenQuillenFrameHomIso`、
+  `HomotopyLimits.chosenQuillenFrameHom_leftKan`、`HomotopyLimits.chosenQuillenFrameHom_rightKan`、
+  `HomotopyLimits.frameHomMap_trivialKanFibration`、`HomotopyLimits.frameHomMap_homotopyEquivalence`、
+  `HomotopyLimits.frameHom_target_homotopyEquivalence`、
+  `HomotopyLimits.fixedFrameOverFunctor_homLeft_homotopyEquivalence`、
+  `HomotopyLimits.fixedFrameOverFunctor_homRight_homotopyEquivalence`。
 - **依存と提供**：F1・F1b（coherent Hom・随伴）、F2 の coherent 余極限、HomotopyFunctionComplex の frame・局所化、Stable、KST/Spectra を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけとし、実施記録はコミットメッセージ。
-- **未コミット**：今回の検証済み8モジュール、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンのファイルと共有計画の他節は保存対象外。
+- **未コミット**：今回の一般 Quillen frame Hom の二変数同型、元の置換の代入、固定 Quillen 類での両変数不変性・共通 frame 比較の6モジュール22宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンのファイルと共有計画の他節は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は修正版が正しい場所にコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：N の対象ビルド・監査に失敗なし。新規 sorry・追加公理なし。一般 γ4 の構成が未完了。
   `AdjunctionHomLimits.SimplicialAdjunctionHomIso` は y に全単体で自然だが、x の高次豊穣自然性は要求しない。これだけで一般の ∞ 随伴の完成と数えない。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。SSet の固定 Quillen 類を使い、`ModelCategory SSet` の存在を主経路に仮定しない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。一般モデル圏・一般図式の cf 置換と高次整合性は別途証明する。
   他レーンの import 閉包が壊れたら回避せず停止し、他レーンの作業中変更は保存しない。
-- **次の一手**：N-2。`AdjunctionHomLimits.lean` と `HomotopyFunctionComplex/AdjunctionHom.lean` を照合する。
-  前者の入力は終域で全単体に自然な通常の豊穣 Hom 同型、後者はモデル圏の tensor/Hom frame の Hom 同型。
-  既存の Kan tensor 具体例の cf 置換比較を足場に、一般の simplicial Quillen 随伴でどの frame と置換を選び、どの導来 Hom 比較を得るかを確定する。
-  調査済み：`HomotopyFunctionComplex/FramePreservation.lean` は左 Quillen による Reedy cofibrancy・homotopically constant・cofibrant 始点の augmentation の保存を提供。
-  `AdjunctionWeakEquivalence.lean` は `ModelCategory SSet` と類の一致を仮定するため、そのまま主経路に使わず固定 Quillen 類での比較を用意する。
-  F1b の `KanAdjunctionHomTriangles` 等の随伴 API の正確な入力を読み、必要な両変数自然性・単位余単位の整合性を証明する。
+- **次の一手**：N-2。元の左像 frame と標準導来 Hom の二変数の自然な比較を公開・監査へ接続する。
+  検証済み草稿は `/tmp/QuillenLeftFrameAugmentation.lean`、ログ `/tmp/n-quillen-left-frame-augmentation-test.log` は終了0・警告なし。augmentation と元の共通 frame の左右の Hom ホモトピー同値まで代入済み。まだ集約・公開監査の対象外なので次に適切なモジュールへ移す。
+  `ChosenQuillenFrameHom` の始域置換 Q と元の frame P を使い、全族 `(Q ⋙ P.obj) ⋙ (Functor.whiskeringRight SimplexCategory C D).obj L` を関手 `Q ⋙ L` 上へ augment する。
+  augmentation の次数成分は `L.map ((P.augmentation.app (Q.obj X)).app n)`。`chosenQuillenFrame_augmentation_weakEquivalence` で各成分は弱同値。
+  D 側の解消 qD と `HomotopyFunctionComplex/FrameOverFunctor` の共通族・二つの比較を構成し、`FixedQuillenFrameComparison` の両ホモトピー同値を元の fibrant 終域置換に適用する。
+  その後、得た自然な Hom 比較を cf 模型の写像空間・局所化と照合する。F1b の `QCatFunctorHomCorrespondence` は任意の quasicategory パラメータ A と関手 U,V に対する対応と前後合成・パラメータ制限の整合を要求する。通常の対象ごとの Hom 同型だけで随伴完成とは数えない。
+  `AdjunctionWeakEquivalence.lean`・`SourceInvariance.lean`・`TargetInvariance.lean` の `ModelCategory SSet` 仮定を主経路へ持ち込まない。今回の固定 Quillen 類の API を使う。
   N-1 の部分余極限・共通 path end 比較、`/tmp/NativeAttachmentShape.lean` 等の草稿は継続しない。
 
 ### E2a（既存の引き継ぎ）
