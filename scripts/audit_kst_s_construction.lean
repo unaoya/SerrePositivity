@@ -16986,4 +16986,113 @@ namespace SerrePositivity.KST.SConstruction
 #check perfectDGExtensionCompositionAt_pentagon
 #print axioms perfectDGExtensionCompositionAt_pentagon
 
+
+-- ラベル付き Perf 模型・評価準同値・実 dg 作用。
+#check enrichedClosedIsoConjugation
+#print axioms enrichedClosedIsoConjugation
+#check enrichedClosedIsoConjugation_id
+#print axioms enrichedClosedIsoConjugation_id
+#check enrichedClosedIsoConjugation_comp
+#print axioms enrichedClosedIsoConjugation_comp
+#check enrichedClosedIsoConjugation_naturality
+#print axioms enrichedClosedIsoConjugation_naturality
+#check enrichedFunctorClosedConjugate
+#print axioms enrichedFunctorClosedConjugate
+#check dgFunctorClosedTarget
+#print axioms dgFunctorClosedTarget
+#check dgFunctorClosedConjugate
+#print axioms dgFunctorClosedConjugate
+#check dgFunctorClosedConjugate_naturality
+#print axioms dgFunctorClosedConjugate_naturality
+#check enrichedClosedIsoConjugation_refl
+#print axioms enrichedClosedIsoConjugation_refl
+#check enrichedClosedIsoConjugation_trans
+#print axioms enrichedClosedIsoConjugation_trans
+#check enrichedClosedIsoHomIso
+#print axioms enrichedClosedIsoHomIso
+#check dgFunctorClosedComparisonIso
+#print axioms dgFunctorClosedComparisonIso
+#check PresentedPerfectDGObject
+#print axioms PresentedPerfectDGObject
+#check presentedPerfectDGValue
+#print axioms presentedPerfectDGValue
+#check presentedPerfectDGEnrichment
+#print axioms presentedPerfectDGEnrichment
+#check presentedPerfectDGEvaluation
+#print axioms presentedPerfectDGEvaluation
+#check presentedPerfectDGEvaluation_map
+#print axioms presentedPerfectDGEvaluation_map
+#check presentedPerfectDGEvaluation_quasiIso
+#print axioms presentedPerfectDGEvaluation_quasiIso
+#check presentedPerfectDGSeed
+#print axioms presentedPerfectDGSeed
+#check presentedPerfectDGSeedIso
+#print axioms presentedPerfectDGSeedIso
+#check presentedPerfectDGEvaluationHomotopyEssSurj
+#print axioms presentedPerfectDGEvaluationHomotopyEssSurj
+#check presentedPerfectDGEvaluation_quasiEquivalence
+#print axioms presentedPerfectDGEvaluation_quasiEquivalence
+#check presentedPerfectDGNerveEquivalence
+#print axioms presentedPerfectDGNerveEquivalence
+#check presentedPerfectDGNerve_isStable
+#print axioms presentedPerfectDGNerve_isStable
+#check presentedPerfectDGStableModel
+#print axioms presentedPerfectDGStableModel
+#check presentedPerfectDGActionObject
+#print axioms presentedPerfectDGActionObject
+#check presentedPerfectDGActionIso
+#print axioms presentedPerfectDGActionIso
+#check presentedPerfectDGActionEvaluated
+#print axioms presentedPerfectDGActionEvaluated
+#check presentedPerfectDGAction
+#print axioms presentedPerfectDGAction
+#check presentedPerfectDGAction_obj
+#print axioms presentedPerfectDGAction_obj
+#check presentedPerfectDGAction_map
+#print axioms presentedPerfectDGAction_map
+#check presentedPerfectDGAction_evaluation_map
+#print axioms presentedPerfectDGAction_evaluation_map
+#check presentedPerfectDGAction_naturality
+#print axioms presentedPerfectDGAction_naturality
+#check presentedPerfectDGActionComparison
+#print axioms presentedPerfectDGActionComparison
+#check presentedPerfectDGActionClosedIso
+#print axioms presentedPerfectDGActionClosedIso
+#check presentedPerfectDGActionObject_id
+#print axioms presentedPerfectDGActionObject_id
+#check presentedPerfectDGActionObject_id_valueIso
+#print axioms presentedPerfectDGActionObject_id_valueIso
+#check presentedPerfectDGActionObject_comp
+#print axioms presentedPerfectDGActionObject_comp
+#check presentedPerfectDGActionObject_comp_valueIso
+#print axioms presentedPerfectDGActionObject_comp_valueIso
+#check PresentedPerfectDGObject.mk
+#print axioms PresentedPerfectDGObject.mk
+#check PresentedPerfectDGObject.source
+#print axioms PresentedPerfectDGObject.source
+#check PresentedPerfectDGObject.enrichment
+#print axioms PresentedPerfectDGObject.enrichment
+#check PresentedPerfectDGObject.seed
+#print axioms PresentedPerfectDGObject.seed
+#check PresentedPerfectDGObject.arrow
+#print axioms PresentedPerfectDGObject.arrow
+
+
+-- 異なる対象宇宙の小さい dg 入力表示。
+#check SmallDGInput
+#print axioms SmallDGInput
+#check smallDGInputValue
+#print axioms smallDGInputValue
+#check smallDGInputEnrichment
+#print axioms smallDGInputEnrichment
+#check smallDGInputEvaluation
+#print axioms smallDGInputEvaluation
+#check smallDGInputEvaluationHomotopyEssSurj
+#print axioms smallDGInputEvaluationHomotopyEssSurj
+#check smallDGInputEvaluation_quasiEquivalence
+#print axioms smallDGInputEvaluation_quasiEquivalence
+
+#check presentedPerfectDGEvaluationEssSurj_of_extension
+#print axioms presentedPerfectDGEvaluationEssSurj_of_extension
+
 end SerrePositivity.KST.SConstruction

@@ -10,10 +10,11 @@ public import SerrePositivity.KST.SConstruction.DGKTheory
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u v
+universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SerrePositivity.DifferentialGraded Spectra
-variable (A : Type u) [CommRing A] (D E : Type v)
+section Perfect
+variable (A : Type u) [CommRing A] (D : Type v) (E : Type w)
   [DGCategory A D] [Small.{u} D] [DGCategory A E] [Small.{u} E]
   (F : DGFunctor A D E) (hF : QuasiEquivalence F)
 
@@ -25,6 +26,14 @@ lemma perfectDGExtension_quasiEquivalence_of_quasiEquivalence :
   let : (quasiEquivalencePerfectExtension A D E F).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence A D E F hF).isEquivalence_functor
   exact perfectDGExtension_quasiEquivalence A D E F
+
+end Perfect
+
+variable (A : Type u) [CommRing A] (D E : Type v)
+  [DGCategory A D] [Small.{u} D] [DGCategory A E] [Small.{u} E]
+  (F : DGFunctor A D E) (hF : QuasiEquivalence F)
+
+include hF
 
 /-- 任意の厳密 dg 準同値の元の BF K 射は全整数次数で π_* 同型。 -/
 lemma dgKMap_piIsomorphism_of_quasiEquivalence :

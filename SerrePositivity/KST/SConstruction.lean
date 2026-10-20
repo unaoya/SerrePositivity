@@ -1181,4 +1181,12 @@ public import SerrePositivity.KST.SConstruction.DGModuleExtensionPentagon
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionClosedNaturality
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionFourfold
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionPentagon
+public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
+public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugationLaws
+public import SerrePositivity.KST.SConstruction.DGClosedComparisonIso
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGModel
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGComparison
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAction
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGLabelCoherence
+public import SerrePositivity.KST.SConstruction.SmallDGInput
 /-! # ∞-S• 構成と連結 K 理論 -/
