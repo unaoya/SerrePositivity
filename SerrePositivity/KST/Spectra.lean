@@ -854,3 +854,9 @@ public import SerrePositivity.KST.Spectra.SignedLoopStructureCoordinates
 public import SerrePositivity.KST.Spectra.SignedLoopTracedStructureInterval
 public import SerrePositivity.KST.Spectra.SignedLoopStructureTriangleFaces
 public import SerrePositivity.KST.Spectra.SignedLoopUnitStructureTriangles
+public import SerrePositivity.KST.Spectra.LoopExchangeOperators
+public import SerrePositivity.KST.Spectra.TripleCircleCoordinates
+public import SerrePositivity.KST.Spectra.TripleCircleUniversalExchange
+public import SerrePositivity.KST.Spectra.PointedRlpSection
+public import SerrePositivity.KST.Spectra.TripleCircleIntervalTransport
+public import SerrePositivity.KST.Spectra.TripleCircleLoopExchange

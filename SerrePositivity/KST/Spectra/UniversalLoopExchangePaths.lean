@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.KST.Spectra.LoopExchangeOperators
+
 public import SerrePositivity.KST.Spectra.PointedBasedPathCalculus
 public import SerrePositivity.KST.Spectra.ParameterizedExchangeSign
 public import SerrePositivity.KST.Spectra.LoopSignComponents
@@ -19,21 +21,6 @@ universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.KST.Spectra.LoopExchangePaths
-
-/-- 元の同じ Kan 円による二重 loop 空間。 -/
-abbrev doubleLoop (Y : PointedSimplicialSet.{u}) : PointedSimplicialSet.{u} :=
-  PointedObject.basedHom CirclePower.space.{u} (PointedObject.basedHom CirclePower.space.{u} Y)
-
-/-- 元の二つの Kan 円の交換射。 -/
-def swap (Y : PointedSimplicialSet.{u}) : doubleLoop Y ⟶ doubleLoop Y :=
-  (InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom
-
-/-- 元の内側の Kan 円の符号反転。 -/
-def reversal (Y : PointedSimplicialSet.{u}) : doubleLoop Y ⟶ doubleLoop Y :=
-  PointedObject.basedHomMap CirclePower.space.{u}
-    (Y := PointedObject.basedHom CirclePower.space.{u} Y)
-    (Z := PointedObject.basedHom CirclePower.space.{u} Y)
-    (PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Y)
 
 /-- 二重 loop 空間全体で一度選んだ、交換と符号反転の基点固定区間族。 -/
 def exchange {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
