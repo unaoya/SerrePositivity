@@ -8554,3 +8554,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRootVerticalEndFamily_right_terminal
 #print axioms specifiedCoconeRootVerticalEndFamily_right_terminal
+
+#check @exists_specifiedHomotopyLift
+#print axioms exists_specifiedHomotopyLift
+
+#check @exists_relativeCosliceSpecifiedHomotopy
+#print axioms exists_relativeCosliceSpecifiedHomotopy
+
+#check @cosliceDiagramChange_restriction_eq
+#print axioms cosliceDiagramChange_restriction_eq
+
+#check @specifiedCoconeRootBaseFamilyComparison
+#print axioms specifiedCoconeRootBaseFamilyComparison
+
+#check @specifiedCoconeRootBaseFamilyComparison_raw
+#print axioms specifiedCoconeRootBaseFamilyComparison_raw
+
+#check @specifiedCoconeRootBaseFamilyComparison_terminal
+#print axioms specifiedCoconeRootBaseFamilyComparison_terminal
+
+#check @specifiedCoconeRightRootBaseComparison
+#print axioms specifiedCoconeRightRootBaseComparison
+
+#check @specifiedCoconeRightRootBaseComparison_raw
+#print axioms specifiedCoconeRightRootBaseComparison_raw
+
+#check @specifiedCoconeRightRootBaseComparison_terminal
+#print axioms specifiedCoconeRightRootBaseComparison_terminal
+
+#check @exists_specifiedCoconeRootVerticalEndComparison
+#print axioms exists_specifiedCoconeRootVerticalEndComparison
+
+#check @specifiedCoconeRootVerticalEndComparison
+#print axioms specifiedCoconeRootVerticalEndComparison
+
+#check @specifiedCoconeRootVerticalEndComparison_terminal
+#print axioms specifiedCoconeRootVerticalEndComparison_terminal
+
+#check @specifiedCoconeRootVerticalEndComparison_base
+#print axioms specifiedCoconeRootVerticalEndComparison_base
+
+#check @specifiedCoconeRootVerticalEndComparison_projection
+#print axioms specifiedCoconeRootVerticalEndComparison_projection
+
+#check @specifiedCoconeRootVerticalEndComparison_fixed
+#print axioms specifiedCoconeRootVerticalEndComparison_fixed
+
+#check @specifiedCoconeRootVerticalEndComparison_native_base
+#print axioms specifiedCoconeRootVerticalEndComparison_native_base
