@@ -1320,3 +1320,13 @@ public import SerrePositivity.InfinityCategories.F1.CosliceTwistedArrowMap
 public import SerrePositivity.InfinityCategories.F1.CosliceTwistedArrowTarget
 
 public import SerrePositivity.InfinityCategories.F1.RightRepresentableTwistedArrowComparison
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowHomSpace
+
+public import SerrePositivity.InfinityCategories.F1.CosliceTwistedHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowHomSwap
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowTargetFiber
+
+public import SerrePositivity.InfinityCategories.F1.RightRepresentableTwistedArrowFiberComparison
