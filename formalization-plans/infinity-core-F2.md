@@ -19,7 +19,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   Q の通常の filtered 余極限保存、全ての値の Kan 性、有限境界の元の有限部分複体への因子分解を証明。
   Q の単位の anodyne 性・弱同値性、一般の filtered ∞ 圏と有限図式の coslice の弱可縮性を証明。
   有限図式の coslice の頂点射影は right cofinal。標準 comma を図式の和の coslice と厳密に比較。
-  三集約同時ビルド 6863 jobs、F2 公理監査 1358 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
+  対角関手の標準 comma を太い coslice と比較し、有限形状・正則 κ の小さい形状について
+  filtered 性 ↔ coslice の弱可縮性 ↔ 対角関手の right cofinality を双方向に証明。
+  三集約同時ビルド 6874 jobs、F2 公理監査 1410 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -36,6 +38,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.isKappaSmall_aleph0_iff` / `F2.isKappaFiltered_aleph0_iff` / `F2.isFilteredInfinity_of_retract`
 - `F2.isKappaSmall_join` / `F2.isKappaFiltered_sliceUnder` / `F2.isFilteredInfinity_iff_isContractibleKan`
 - `F2.cosliceCoproduct_isPullback` / `F2.isRightCofinal_sliceUnderProjection_of_filtered`
+- `F2.laxCosliceDiagonalCommaIso` / `F2.weaklyContractible_diagonalStandardComma_iff`
+- `F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` / `F2.isKappaFiltered_iff_constantDiagram_rightCofinal`
 - `F2.finiteSubcomplexCocone_isColimit` / `F2.continuousKanReplacement`
 - `F2.continuousKanReplacement_preservesFilteredColimits` / `F2.continuousKanReplacement_kanComplex`
 - `F2.continuousKanReplacementUnit_isWeakHomotopyEquivalence` / `F2.isWeaklyContractible_of_isFilteredInfinity`
@@ -62,14 +66,14 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - F1 の前層・Yoneda は F1 計画の後続工程。Ind の存在を仮定して回避しない。
 - 一般の coherent な図式の余極限と、通常の小圏による strict 図式の余極限を区別する。
 - 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
-  一般の弱可縮性は証明済みだが、対角関手の cofinality と coherent な filtered 余極限の交換は残る。
-  κ 版 coslice の弱可縮性も証明済み。対角関手の comma 比較は有限射影の cofinality と区別する。
+  一般の弱可縮性と正則 κ の対角関手の判定は証明済み。coherent な filtered 余極限の交換は残る。
+  N の一般 coherent 余極限への接続は未完了の部分があり、無条件の存在・γ4 を一括仮定しない。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：対角関手 C → Fun(K,C) を構成し、標準 comma を太い coslice と比較する。
-  cosliceLaxMap の同値と有限 coslice の弱可縮性を通じて対角関手の cofinality へ接続する。
+- F2N-1：cofinality の保存則を確認し、filtered・κ-filtered 性の同値不変性（Kerodon 9.1.1.19）を証明。
+  その後、一般の coherent な filtered 余極限と有限極限の交換へ進む。strict 図式だけに制限しない。
 
 ## 0. 目標と範囲
 
@@ -114,14 +118,14 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   Remark 6 の四角形は [PDF 第 5 頁](https://arxiv.org/pdf/1703.03331v3#page=5) で確認する。
 - HTT §3.3.3（∞ 圏の極限）、§5.3（Ind・compact）、§5.5（presentable）。
 - [Kerodon §4.9.4](https://kerodon.net/tag/03S1) の κ-small、[§9.1.1](https://kerodon.net/tag/02P8) の filtered ∞ 圏。
-  9.1.1.16 の正則 κ 版 coslice、9.1.1.17 の一般の弱可縮性、9.1.1.20 の Kan 判定を証明済み。
+  9.1.1.16 の正則 κ 版 coslice、9.1.1.17 の弱可縮性、9.1.1.18 の対角判定、9.1.1.20 の Kan 判定を証明済み。
 
 ## 3. F2-lite 第 2 部（F1b、旧 N から移管）
 
 ### 引き継ぎ（F1b、2026-10-20 移管）
 
 - 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
-  F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、有限 coslice の射影の right cofinality まで証明。
+  F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
   Q の通常の filtered 余極限保存・Kan 性・単位の弱同値性・有限境界の因子分解も証明済み。
   一般の filtered 余極限、有限極限との交換、Ind の構成は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
@@ -133,7 +137,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：対角関手の標準 comma と太い coslice の比較を作り、有限図式について right cofinality を証明。
+- 次の一手：cofinality の保存則から filtered・κ-filtered 性の同値不変性を証明し、余極限の交換へ進む。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |

@@ -573,3 +573,23 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.cosliceCoproduct_isPullback
 #check @SerrePositivity.InfinityCategories.F2.isWeaklyContractible_pullback_cosliceProjections
 #check @SerrePositivity.InfinityCategories.F2.isRightCofinal_sliceUnderProjection_of_filtered
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagram
+#check @SerrePositivity.InfinityCategories.F2.uncurry_comp_constantDiagram
+#check @SerrePositivity.InfinityCategories.F2.fatCoconeHomotopy
+#check @SerrePositivity.InfinityCategories.F2.fatCoconeFromHomotopy
+#check @SerrePositivity.InfinityCategories.F2.fatCoconeHomotopyEquiv
+#check @SerrePositivity.InfinityCategories.F2.fatCoconeHomotopy_precomp_h
+#check @SerrePositivity.InfinityCategories.F2.laxCosliceDiagonalCommaHomEquiv
+#check @SerrePositivity.InfinityCategories.F2.laxCosliceDiagonalCommaHomEquiv_naturality
+#check @SerrePositivity.InfinityCategories.F2.laxCosliceDiagonalCommaIso
+#check @SerrePositivity.InfinityCategories.F2.weaklyContractible_diagonalUnitComma_iff
+#check @SerrePositivity.InfinityCategories.F2.weaklyContractible_diagonalStandardComma_iff
+#check @SerrePositivity.InfinityCategories.F2.isRightCofinal_constantDiagram_iff
+#check @SerrePositivity.InfinityCategories.F2.isRightCofinal_constantDiagram_of_filtered
+#check @SerrePositivity.InfinityCategories.F2.isRightCofinal_constantDiagram_of_kappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.nonempty_of_isWeaklyContractible
+#check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_iff_weaklyContractible_coslices
+#check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_iff_weaklyContractible_coslices
+#check @SerrePositivity.InfinityCategories.F2.isFilteredInfinity_iff_constantDiagram_rightCofinal
+#check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_iff_constantDiagram_rightCofinal
