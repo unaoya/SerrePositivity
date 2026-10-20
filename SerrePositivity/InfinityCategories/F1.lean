@@ -1584,3 +1584,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramI
 public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportEnriched
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportInfinityEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramMixedHom
+
+public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianTransportDiagramHom
+
+public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianTransportDiagramEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianTransportDiagramReindex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramRealization
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramRealizationComparison

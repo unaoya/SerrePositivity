@@ -14,6 +14,7 @@
   同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
   各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
   core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
+  像の Cat∞ 値関手への実現を構成し、その比較との合成は元の主写像と厳密に一致する。
   Cat∞ 値関手への主写像の充満忠実性と本質的全射性はまだ証明していない。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
@@ -25,7 +26,6 @@
   元の全相対 Hom を Hom とする `RightFibrationInfinity B` と `PresheafInfinity B` の実際の分類同値
   `rightStraighteningInfinityEquivalence` を、小さい quasicategory B 上で構成した。逆の ∞ 関手も同値で、
   その F での値は既存の `smallRightUnstraighteningProjection F` と頂点の同型で一致する。
-- twisted arrow の両端射影の left fibration 性と、同じ射影による `yonedaInfinityMap` を構成済み。
 - 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
   を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
 - `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
@@ -82,7 +82,8 @@
 - 水平辺の検出と元の制限との厳密な pullback は `c0caa1ce1`。
 - 一般の cocartesian 標的で終点指定の可逆辺 lift と全相対 Hom の制限同値は `767961448`。
 - 同型不変な水平辺条件への制限と strict transport の全相対 Hom 作用の同値は `aece542ae`。
-- core の同値性、中間の strict transport の像への豊穣比較とその coherent nerve の同値を証明。
+- core の同値性と中間の像への coherent 比較の同値は `8c5d49f2d`。
+- 図式の core 上の混合作用と対角評価、Cat∞ 値関手への実現と元の主写像との分解等式を証明。
 
 ### 既知の問題
 
@@ -91,15 +92,14 @@
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
 - 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
 - 元の cocartesian Hom の scaffold 制限と strict transport の写像空間比較は同値。
-  coherent な主写像への接続、Cat∞ 分類と非 Kan fiber の相対延長は残る。
+  主写像への分解等式も証明済み。実現の Hom 比較、Cat∞ 分類と非 Kan fiber の相対延長は残る。
 
 ### 次の一手
 
-`weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
-`cocartesianStrictTransportInfinityMap_isQCatEquivalence` まで完了。
-次は中間の strict transport 図式の ∞ 圏から Cat∞ 値関手への実現を構成する。
-その実現と中間比較の合成が、元の `cocartesianStraighteningCoherentMap` と一致することを示す。
-同じ実現の Hom 作用を比較し、主写像の充満忠実性を閉じる。
+`cocartesianStrictTransportInfinityMap_realization` まで完了。
+次は `cocartesianTransportDiagramRealization` の実際の Hom 作用の同値性を証明する。
+左 fibration 版の区間模型を参考に、strict transport を標的とする全変換の core と比較する。
+中間比較の同値と同じ分解等式を経由し、元の主写像の充満忠実性を閉じる。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
