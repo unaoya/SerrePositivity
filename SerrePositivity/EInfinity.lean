@@ -896,3 +896,9 @@ public import SerrePositivity.EInfinity.Hammock.StageAttachmentData
 public import SerrePositivity.EInfinity.Hammock.StageAttachmentDesc
 public import SerrePositivity.EInfinity.Hammock.LengthStagePushout
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthPushout
+public import SerrePositivity.EInfinity.Hammock.WeakPushout
+public import SerrePositivity.EInfinity.Hammock.WeakUnderPushout
+public import SerrePositivity.EInfinity.Hammock.WeakPushoutGluing
+public import SerrePositivity.EInfinity.Hammock.WeakUnionGluing
+public import SerrePositivity.EInfinity.Hammock.WeakFiniteUnion
+public import SerrePositivity.EInfinity.Hammock.LengthBoundaryNaturality

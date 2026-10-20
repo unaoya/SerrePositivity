@@ -1241,6 +1241,18 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 境界による pushout の普遍性（Dwyer–Kan §4.3 の適用に要る形）。
 `BarrattEccles.algebraHammockLengthStage_isPushout`・`algebraHammockStageBoundaryAttach_fac`・
 `algebraHammockStageTopInclusion_fac` は任意可換環上で同じ元の標準射への代入。
+`trivialKanFibration_pre_of_mono_weak` は単射の弱同値の Kan 標的への前合成を反転する。
+`weakPushout_mono`・`weakPushout_other_mono` は元の弱同値または相手側が単射の
+元の pushout による弱同値保存。元の対象に Kan 性は課さない。
+`weak_underPushout_map`・`weakPushout_fixed_base` は相対写像円柱による元の固定境界の比較。
+`weakPushout_gluing` は二つの元の pushout の三成分の比較から残りの弱同値を得る。
+`mapSubcomplex` は元の全体の射の制限。`weakUnion_gluing`・`weakFiniteUnion` は
+交わりを保つ部分複体族の元の有限和の弱同値の貼り合わせ。全体の射の弱同値性は不要。
+`BoundaryPresentation.map`・`lengthBoundaryMap`・`_ι`・`_lift`・`_attach` は
+元の自然変換を境界へ制限し、元の包含と貼り合わせ射・段階の比較を回収する。
+これらは単体集合のモデル構造を入力にしない。Kan 標的への前合成の反転を使用し、
+任意の弱同値が全 quasicategory 標的への前合成同値を満たすとは扱わない。
+proper 性から境界の比較の弱同値性を得る適用、段階0と全有限段階の帰納、
 proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。

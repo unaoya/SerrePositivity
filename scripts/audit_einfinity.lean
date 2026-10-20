@@ -3620,6 +3620,33 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.StageAttachmentData.upper,
       `SerrePositivity.EInfinity.Hammock.StageAttachmentData.boundary]
 
+@[noinline] private def e2RequiredBatch35 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.trivialKanFibration_pre_of_mono_weak,
+      `SerrePositivity.EInfinity.Hammock.weakPushout_mono,
+      `SerrePositivity.EInfinity.Hammock.weakPushout_other_mono,
+      `SerrePositivity.EInfinity.Hammock.weak_map_under_of_mono,
+      `SerrePositivity.EInfinity.Hammock.monoWeakHomotopyEquivalences,
+      `SerrePositivity.EInfinity.Hammock.monoWeakHomotopyEquivalences_cobase,
+      `SerrePositivity.EInfinity.Hammock.weak_underPushout_map,
+      `SerrePositivity.EInfinity.Hammock.weakPushout_fixed_base,
+      `SerrePositivity.EInfinity.Hammock.weakPushout_gluing,
+      `SerrePositivity.EInfinity.Hammock.mapSubcomplex,
+      `SerrePositivity.EInfinity.Hammock.mapSubcomplex_ι,
+      `SerrePositivity.EInfinity.Hammock.mapSubcomplex_inclusion,
+      `SerrePositivity.EInfinity.Hammock.mapsToSubcomplexInf,
+      `SerrePositivity.EInfinity.Hammock.mapsToSubcomplexSup,
+      `SerrePositivity.EInfinity.Hammock.weakUnion_gluing,
+      `SerrePositivity.EInfinity.Hammock.mapsToSubcomplexFinsetSup,
+      `SerrePositivity.EInfinity.Hammock.weakMapSubcomplex_of_eq,
+      `SerrePositivity.EInfinity.Hammock.weakMapSubcomplex_bottom,
+      `SerrePositivity.EInfinity.Hammock.subcomplex_inf_finsetSup,
+      `SerrePositivity.EInfinity.Hammock.weakFiniteUnion,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.map,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryMap,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryMap_ι,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryMap_lift,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryMap_attach]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3648,7 +3675,7 @@ run_cmd do
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
-      e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34] do
+      e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8655,3 +8682,47 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       (BarrattEccles.algebraHammockLengthTransition A X Y (Nat.le_succ n))
       (BarrattEccles.algebraHammockStageTopInclusion A X Y n) :=
   BarrattEccles.algebraHammockLengthStage_isPushout A X Y n
+
+-- 単射でもある弱同値の任意の pushout。元の対象に Kan 性を課さない。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {A B C D : SSet.{e2ComplexLimitUniverse}} {i : A ⟶ B} [Mono i]
+    {g : A ⟶ C} {k : B ⟶ D} {j : C ⟶ D}
+    (hi : IsWeakHomotopyEquivalence i) (h : IsPushout i g k j) :
+    IsWeakHomotopyEquivalence j := weakPushout_mono hi h
+
+-- 相手側だけが単射でも元の弱同値は保存され、比較射の単射性を要求しない。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {A B C D : SSet.{e2ComplexLimitUniverse}} {i : A ⟶ B} {g : A ⟶ C} [Mono g]
+    {k : B ⟶ D} {j : C ⟶ D} (hi : IsWeakHomotopyEquivalence i)
+    (h : IsPushout i g k j) : IsWeakHomotopyEquivalence j := weakPushout_other_mono hi h
+
+-- 同じ側が単射な二つの元の pushout の比較。モデル構造の追加入力はない。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {A B C D A' B' C' D' : SSet.{e2ComplexLimitUniverse}}
+    {i : A ⟶ B} {i' : A' ⟶ B'} [Mono i] [Mono i'] {g : A ⟶ C} {g' : A' ⟶ C'}
+    {r : B ⟶ D} {s : C ⟶ D} {r' : B' ⟶ D'} {s' : C' ⟶ D'}
+    (hP : IsPushout i g r s) (hP' : IsPushout i' g' r' s')
+    (a : A ⟶ A') (b : B ⟶ B') (c : C ⟶ C') (d : D ⟶ D')
+    (hi : i ≫ b = a ≫ i') (hg : g ≫ c = a ≫ g')
+    (hr : r ≫ d = b ≫ r') (hs : s ≫ d = c ≫ s')
+    (ha : IsWeakHomotopyEquivalence a) (hb : IsWeakHomotopyEquivalence b)
+    (hc : IsWeakHomotopyEquivalence c) : IsWeakHomotopyEquivalence d :=
+  weakPushout_gluing hP hP' a b c d hi hg hr hs ha hb hc
+
+-- 交わりを保つ族の有限和。全体の射 f 自身の弱同値性は仮定しない。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {X Y : SSet.{e2ComplexLimitUniverse}} (f : X ⟶ Y)
+    {I : Type} [SemilatticeInf I] (s : Finset I)
+    (A : I → X.Subcomplex) (B : I → Y.Subcomplex)
+    (hA : ∀ i j, A (i ⊓ j) = A i ⊓ A j) (hB : ∀ i j, B (i ⊓ j) = B i ⊓ B j)
+    (hm : ∀ i k, Set.MapsTo (f.app k) ((A i).obj k) ((B i).obj k))
+    (hw : ∀ i, IsWeakHomotopyEquivalence (mapSubcomplex f (hm i))) :
+    IsWeakHomotopyEquivalence (mapSubcomplex f (mapsToSubcomplexFinsetSup f s hm)) :=
+  weakFiniteUnion f s A B hA hB hm hw
+
+-- 元の境界の比較は、同じ貼り合わせ射と元の段階の比較射に整合する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {F G : Word ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
+    (hF : ProperDiagram F) (hG : ProperDiagram G) (n : ℕ) (c : Word) :
+    lengthBoundaryMap η n c ≫ lengthBoundaryToStage hG n c =
+      lengthBoundaryToStage hF n c ≫ lengthStageMap η n := lengthBoundaryMap_attach η hF hG n c
