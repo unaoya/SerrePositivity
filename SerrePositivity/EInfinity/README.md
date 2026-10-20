@@ -757,8 +757,15 @@ augmentation は元の代数の射にも自然。Reedy 自明 fibration であ�
 `framedLimitAdjunction` は両者の局所化圏全体での実際の随伴。
 `framedLimitAdjunction_homEquiv_comparison` は元の両対象の像へ戻すと
 既存の `framedLimitDerivedHomEquiv` を回収することを保証する。
-通常の錐からの `coneToFramedLimit` の局所化像との整合性と、
-`limitComparisonNatTrans` の右導来普遍性の確認が残る。
+`HomotopyWeight.conePoint`・`coneClass` は元の重み付き族から同じ錐の零単体と類を作る。
+`constantDiagramSourceClass_eq_coneClass` は既存の始域の類を同じ随伴族で表示し、
+`constantDiagramHomEquiv_comparison_app` は全単体で元の augmentation の後合成を回収する。
+`framedLimitConeClass` は同じ通常の錐の右族から作る既存の右錐空間の類。
+`framedLimitHomPiZeroEquiv_coneClass` はその像が元の `coneToFramedLimit` の局所化像となる式。
+`strictConeFamilies_mixed` は元の両族の混合 Hom 内での厳密な一致。
+`sourceRightConeComparisonIso_strictClass` はその同じ類を右の単体図式表示の錐へ移す。
+二重反対圏への添字移送がこの零単体の類を保つ式をつなぎ、
+元の錐の全体の正規化と `limitComparisonNatTrans` の右導来普遍性を閉じる作業が残る。
 計算関手の右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。

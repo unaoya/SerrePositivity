@@ -523,3 +523,12 @@ public import SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitLocalization
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomIso
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitAdjunction
+public import SerrePositivity.EInfinity.HomotopyWeight.ConePoints
+public import SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses
+public import SerrePositivity.EInfinity.HomotopyWeight.RealizationAugmentation
+public import SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints
+public import SerrePositivity.EInfinity.HomotopyWeight.KanConeClasses
+public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramConeClasses
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitConeClasses
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitStrictFamilies
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitMixedClasses

@@ -1905,6 +1905,25 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv_comparison,
+      `SerrePositivity.EInfinity.HomotopyWeight.conePoint,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneClass,
+      `SerrePositivity.EInfinity.HomotopyWeight.conePoint_map,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneClass_map,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso_point,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_class,
+      `SerrePositivity.EInfinity.HomotopyWeight.realizationAugmentation_homEquiv,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrameHomIso_point,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagramUnit_naturality,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow_class,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso_class,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramSourceClass_eq_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramHomEquiv_comparison_app,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeClass,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitHomPiZeroEquiv_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.strictSimplicialConeFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.strictSimplicialConeFamily_app,
+      `SerrePositivity.EInfinity.BarrattEccles.strictConeFamilies_mixed,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonIso_strictClass,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5161,3 +5180,39 @@ example :
   refine ⟨e.symm f, e.apply_symm_apply _, ?_⟩
   intro g hg
   exact (e.symm_apply_apply g).symm.trans (congrArg e.symm hg)
+
+-- 元の錐の射で右錐の類を前合成すると、元の同じ錐の普遍射を回収する。
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) {c d : Cone F} (h : c ⟶ d) :
+    let := BarrattEccles.modelCategory ℤ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    framedLimitHomPiZeroEquiv ℤ ℕ c.pt F
+        (SSet.mapπ₀ ((framedLimitConeSourceMap ℤ ℕ h.hom).app F)
+          (framedLimitConeClass ℤ ℕ F d)) = Q.map (coneToFramedLimit ℤ ℕ F c) := by
+  let := BarrattEccles.modelCategory ℤ
+  dsimp only
+  let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+  have hs := framedLimitHomPiZeroEquiv_source ℤ ℕ h.hom F (framedLimitConeClass ℤ ℕ F d)
+  have hd := framedLimitHomPiZeroEquiv_coneClass ℤ ℕ F d
+  have he := hs.trans (congrArg (fun x => Q.map h.hom ≫ x) hd)
+  have hc : Q.map h.hom ≫ Q.map (coneToFramedLimit ℤ ℕ F d) =
+      Q.map (coneToFramedLimit ℤ ℕ F c) :=
+    (Q.map_comp _ _).symm.trans (congrArg Q.map (coneToFramedLimit_naturality ℤ ℕ F h))
+  exact he.trans hc
+
+-- 同じ定値図式比較の随伴族で作る零単体も元の図式射の局所化像となる。
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example {Y : (BarrattEccles.operad ℤ).Algebra} {F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra}
+    (f : (Functor.const ℕ).obj Y ⟶ F) :
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+    constantDiagramSourcePiZeroEquiv ℤ ℕ Y F
+        (HomotopyWeight.coneClass ℕ (HomotopyWeight.weight ℕ)
+          ((constantDiagramHomEquiv ℤ ℕ Y F) ((constantDiagramComparison ℤ ℕ).app Y ≫ f))) =
+      QD.map f := by
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  exact (congrArg (constantDiagramSourcePiZeroEquiv ℤ ℕ Y F)
+    (constantDiagramSourceClass_eq_coneClass ℤ ℕ f)).symm.trans
+      (constantDiagramSourcePiZeroEquiv_class ℤ ℕ f)
