@@ -946,7 +946,7 @@ left cofinality を与え、各 `_isWeakHomotopyEquivalence` は同じ射の弱�
 `mappingSpaceSpecialHammockNerveMap_localized_isIso_iff` により同じ中間射へ帰着される。
 `mappingRightHomDiagram_map_localized_isIso` は全 E 代数の fibrancy を使い、
 全右脚の全遷移に対する元の frame Hom の不変性を証明する。
-分解の余終性とこの不変性の全図式への適用は未証明であり、右射全体の反転性は残る。
+右脚の Hom の不変性と分解の比較を合わせる工程は後続で、右射全体の反転性は残る。
 `costructuredArrowProjection_rightFibration` と `costructuredArrowPre_isPullback` は
 固定右対象の元の比較が分解図式の right fibration に沿う引き戻しであることを証明する。
 `resolutionFixedRightComparison_isLeftCofinal` と
@@ -964,7 +964,13 @@ left cofinality を与え、各 `_isWeakHomotopyEquivalence` は同じ射の弱�
 `fixedRightGrothendieckComparison_toComma` は元の Grothendieck の比較との厳密な整合で、
 `BarrattEccles.mappingFixedRightGrothendieckComparison_localized_isIso` は同じ全図式の
 比較そのものを anodyne 反転後に可逆とする。成分ごとの結論だけからは推論しない。
-固定右脚から全図式への中間射の反転性と、元の右射全体の反転性は後続。
+`FrameHom.BarRows.isColimit` は元の `BarConstruction.rows` の転置した各行を、
+同じ基底射列の最初の値の余積として表示する。`map_localized_isIso` はこの余積と
+モデル構造不要の対角比較を使い、成分ごとの反転性を元の bar 関手の射へ移す。
+`BarrattEccles.mappingRightHomFromIdentity` の各成分は元の指定右脚による後合成。
+`mappingRightHomFromIdentity_bar_localized_isIso` は恒等右脚の始対象性と全遷移の
+不変性から、同じ定値図式から全 Hom 図式への bar 比較の反転性を与える。
+固定右脚の nerve と bar の比較、その比較を経由する元の右射の因子分解は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。

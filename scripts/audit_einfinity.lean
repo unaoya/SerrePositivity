@@ -2208,6 +2208,22 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.row,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.inclusion,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.cofan,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.desc,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.isColimit,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.rowMap,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.inclusion_rowMap,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.rowMap_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.diagonalFlipIso,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.diagonalFlipIso_naturality,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.map_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.fromInitial,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.fromInitial_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomFromIdentity,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomFromIdentity_app,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomFromIdentity_bar_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightGrothendieckComparison_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightGrothendieckComparison_isWeakHomotopyEquivalence,
       `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.projection_localized_isIso,
@@ -6488,3 +6504,23 @@ example {K L C J : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUnivers
     fixedRightGrothendieckComparison P Q R ⋙ CommaGrothendieck.toComma Q R =
       CommaGrothendieck.toComma (P ⋙ Q) R ⋙ Comma.preLeft P Q R :=
   fixedRightGrothendieckComparison_toComma P Q R
+
+-- 元の全右脚の bar 比較は、任意の可換環で同じ自然変換そのものに適用される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      ((SerrePositivity.SimplicialModel.BarConstruction.functor
+        (algebraRightSpanBase A Y)).map (mappingRightHomFromIdentity A X Y))) :=
+  mappingRightHomFromIdentity_bar_localized_isIso A X Y
+
+-- 図式の比較の成分は、元の指定右脚による実際の後合成に厳密に一致する。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (t : algebraRightSpanBase A Y) :
+    let := modelCategory A
+    (mappingRightHomFromIdentity A X Y).app t =
+      (SerrePositivity.HomotopyFunctionComplex.cosimplicialHom
+        ((SerrePositivity.Reedy.cosimplicialResolutionFamily
+          (mappingCofibrantFactorization A)).obj.obj X)).map t.hom :=
+  mappingRightHomFromIdentity_app A X Y t

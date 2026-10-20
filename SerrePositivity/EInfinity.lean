@@ -706,3 +706,7 @@ public import SerrePositivity.EInfinity.FrameHom.RightFibrationCofinalPullback
 public import SerrePositivity.EInfinity.FrameHom.CommaPreLeftCofinality
 public import SerrePositivity.EInfinity.FrameHom.CommaPreLeftRetraction
 public import SerrePositivity.EInfinity.FrameHom.FixedRightGrothendieckInversion
+public import SerrePositivity.EInfinity.FrameHom.BarRowsCoproduct
+public import SerrePositivity.EInfinity.FrameHom.BarPointwiseInvariance
+public import SerrePositivity.EInfinity.FrameHom.BarInitialComparison
+public import SerrePositivity.EInfinity.BarrattEccles.MappingRightHomBarComparison
