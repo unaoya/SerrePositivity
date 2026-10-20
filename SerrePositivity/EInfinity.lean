@@ -815,3 +815,9 @@ public import SerrePositivity.EInfinity.Hammock.TripleColimit
 public import SerrePositivity.EInfinity.Hammock.ColimitCompositionAssociativity
 public import SerrePositivity.EInfinity.Hammock.EnrichedCategory
 public import SerrePositivity.EInfinity.BarrattEccles.HammockEnrichedCategory
+public import SerrePositivity.EInfinity.Hammock.WordEmbeddingCut
+public import SerrePositivity.EInfinity.Hammock.WordEmbeddingObjects
+public import SerrePositivity.EInfinity.Hammock.NerveEmbedding
+public import SerrePositivity.EInfinity.Hammock.GraphEmbedding
+public import SerrePositivity.EInfinity.Hammock.WordEmptyFiber
+public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbedding

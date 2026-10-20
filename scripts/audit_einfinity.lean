@@ -22,7 +22,28 @@ run_cmd do
   if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
   unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
     throwError "射影モデル構造の宣言がありません"
-  for required in #[`SerrePositivity.EInfinity.Hammock.Word.append_assoc,
+  for required in #[`SerrePositivity.EInfinity.Hammock.Word.Hom.cut_image_castSucc,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_image_succ,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_surjective,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_image_source,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_image_target,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.arrow_heq_of_eq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.vertex_image_castSucc,
+      `SerrePositivity.EInfinity.Hammock.WordAction.vertex_image_succ,
+      `SerrePositivity.EInfinity.Hammock.WordAction.arrow_image_heq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.obj_injective,
+      `SerrePositivity.EInfinity.Hammock.WordAction.functor_faithful,
+      `SerrePositivity.EInfinity.Hammock.nerveMap_mono_of_faithful,
+      `SerrePositivity.EInfinity.Hammock.graphDiagram_map_mono,
+      `SerrePositivity.EInfinity.Hammock.graphDiagram_map_app_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_empty_fiber,
+      `SerrePositivity.EInfinity.Hammock.WordAction.empty_fiber_arrow_heq,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTransition_obj_injective,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTransition_faithful,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphMap_mono,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphMap_app_injective,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTransition_image_arrow_heq,
+      `SerrePositivity.EInfinity.Hammock.Word.append_assoc,
       `SerrePositivity.EInfinity.Hammock.ZigzagAppend.vertex_assoc,
       `SerrePositivity.EInfinity.Hammock.ZigzagAppend.arrow_assoc_heq,
       `SerrePositivity.EInfinity.Hammock.ZigzagAppend.obj_assoc_heq,
@@ -7640,3 +7661,43 @@ example {C : Type e2ComplexLimitUniverse} [Category C] (W : MorphismProperty C)
       CategoryTheory.prod.associator (Zigzag W a X Y) (Zigzag W b Y Z) (Zigzag W c Z V) ⋙
         (𝟭 (Zigzag W a X Y)).prod ZigzagAppend.functor ⋙ ZigzagAppend.functor :=
   ZigzagAppend.functor_assoc
+
+-- 元の包含の各列の両端は、元の同じ切断を厳密に回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b : Word} (f : a ⟶ b) (hf : Function.Injective f.orderHom) (i : Fin a.length) :
+    f.cut (f.orderHom i).castSucc = i.castSucc ∧ f.cut (f.orderHom i).succ = i.succ :=
+  ⟨f.cut_image_castSucc hf i, f.cut_image_succ hf i⟩
+
+-- 任意の可換環上で、元の語の包含による全単体の遷移は単射。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    Mono (BarrattEccles.algebraHammockGraphMap A f X Y) :=
+  BarrattEccles.algebraHammockGraphMap_mono A f hf X Y
+
+-- 元の各列は、同じ実際の E 代数の包含の像の位置から回収する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) (S : BarrattEccles.algebraHammockZigzag A a X Y)
+    (i : Fin a.length) :
+    HEq (((BarrattEccles.algebraHammockTransition A f X Y).obj S).arrow (f.orderHom i))
+      (S.arrow i) := BarrattEccles.algebraHammockTransition_image_arrow_heq A f hf X Y S i
+
+-- 元の遷移関手は縦射を同一視せず、忠実性に追加のモデル入力は不要。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockTransition A f X Y).Faithful :=
+  BarrattEccles.algebraHammockTransition_faithful A f hf X Y
+
+-- 像の外の列は、元の同じ切断頂点の恒等射。単射性も不要。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category C] {W : MorphismProperty C}
+    [W.IsMultiplicative] {a b : Word} {X Y : C} (f : a ⟶ b) (S : Zigzag W a X Y)
+    (j : Fin b.length) (hj : ∀ i : Fin a.length, f.orderHom i ≠ j) :
+    HEq (Direction.arrow (b.direction j) (WordAction.obj f S) j rfl)
+      (𝟙 (Direction.vertex (b.direction j) (S.vertex (f.cut j.castSucc)))) :=
+  WordAction.empty_fiber_arrow_heq f S j hj

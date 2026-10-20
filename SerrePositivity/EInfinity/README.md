@@ -1106,7 +1106,18 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `BarrattEccles.algebraHammockEnrichedCategory`・各 `_hom`・`_id`・`_comp` と
 `algebraHammockColimitComposition_assoc` は任意の可換環上の同じ元の E 代数への代入。
 大域モデル instance や単体集合のモデル構造は追加しない。
-proper 性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.Hom.cut_image_castSucc`・`cut_image_succ`・`cut_surjective` は単射な語の射の
+元の列の両端と全頂点の回収。`WordAction.arrow_image_heq`・`obj_injective`・
+`functor_faithful` は元の列の回収・対象単射性・全縦射の忠実性。
+`NerveEmbedding` は N の小圏版の nerve の単射性を `AsSmall` と同じ元の射列で
+異なる対象・射の宇宙へ移す。`graphDiagram_map_mono`・`_app_injective` は
+元の全語の図式の単射な遷移が全次数で単射であることを示す。
+`BarrattEccles.algebraHammockGraphMap_mono`・`_app_injective` と
+`algebraHammockTransition_obj_injective`・`_faithful`・`_image_arrow_heq` は
+任意の可換環上で同じ元の E 代数への代入。
+`Word.Hom.cut_empty_fiber`・`WordAction.empty_fiber_arrow_heq` は像の外の列が
+同じ元の頂点の恒等列であることを示す。この二つには語の単射性も不要。
+proper 性の像の交わりの条件、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
