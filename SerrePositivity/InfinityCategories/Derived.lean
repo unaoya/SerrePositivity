@@ -900,6 +900,11 @@ public import SerrePositivity.InfinityCategories.Derived.DGVerdierIdentityEdgeCo
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierNormalizedEdgeCones
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteUnitalTwoCones
 
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDegenerateTriangleCones
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDegenerateTriangleOverlap
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierNormalizeTriangleCones
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTwoCones
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

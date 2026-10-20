@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteUnitalTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteDiagramTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleConeFaces
@@ -2210,10 +2211,33 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.normalizedIdentityEdgeCone_simplex
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramFiniteTriangles_exists_unitalVertexCone
 
+#print axioms SerrePositivity.InfinityCategories.DGVerdierTriangleConeBoundary
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDegenerateTriangleCone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDegenerateTriangleCone_face0
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDegenerateTriangleCone_face_cone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDegenerateTriangleCone_boundary
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDegenerateTriangleCone_overlap
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDegenerateTriangleCone_congr
+#print axioms SerrePositivity.InfinityCategories.dgVerdierNormalizeTriangleCone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierNormalizeTriangleCone_of_nondegenerate
+#print axioms SerrePositivity.InfinityCategories.dgVerdierNormalizeTriangleCone_boundary
+#print axioms SerrePositivity.InfinityCategories.dgVerdierNormalizeTriangleCone_degeneracy_zero
+#print axioms SerrePositivity.InfinityCategories.dgVerdierNormalizeTriangleCone_degeneracy_one
+#print axioms SerrePositivity.InfinityCategories.dgVerdierNormalizeTriangleCone_degeneracy
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramTwoCone
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramTwoCone.triangle_face0
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramTwoCone.triangle_face_cone
+#print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramTwoCone.triangle_degeneracy
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTwoCone_nonempty
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDegenerateTriangleCones,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDegenerateTriangleOverlap,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierNormalizeTriangleCones,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTwoCones,
     `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementInitialMaps,
     `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementPositiveDegeneracies,
     `SerrePositivity.InfinityCategories.Derived.RoofTetrahedronDegeneracy,
