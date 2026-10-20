@@ -1,3 +1,21 @@
+import SerrePositivity.InfinityCategories.Derived.DGFiniteBinaryEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedIdentity
+import SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryAction
+import SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGInvertingUnitAction
+import SerrePositivity.InfinityCategories.Derived.DGQuotientCompositeRealization
+import SerrePositivity.InfinityCategories.Derived.DGQuotientFamilyEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteRoofComposition
+import SerrePositivity.InfinityCategories.Derived.DGQuotientInvertingRoofIdentification
+import SerrePositivity.InfinityCategories.Derived.FunctorFamilyHomotopyUncurry
+import SerrePositivity.InfinityCategories.Derived.FunctorRestrictionFamilyIso
+import SerrePositivity.InfinityCategories.Derived.PinchedFamilyCompositionEvaluation
+import SerrePositivity.InfinityCategories.Derived.PinchedFamilyCompositionParameters
+import SerrePositivity.InfinityCategories.Derived.PinchedFamilyCompositionTransport
+import SerrePositivity.InfinityCategories.Derived.PinchedIdentityFamily
+import SerrePositivity.InfinityCategories.Derived.RoofEndpointTransport
+import SerrePositivity.InfinityCategories.Derived.RoofHomotopyComposition
+import SerrePositivity.InfinityCategories.Derived.WeakRoofFamilySpanComparison
 import SerrePositivity.InfinityCategories.Derived.PinchedSliceTransport
 import SerrePositivity.InfinityCategories.Derived.PinchedSliceCompositionRealization
 import SerrePositivity.InfinityCategories.Derived.PinchedFamilyPostcomposition
@@ -2868,6 +2886,24 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGInvertingRoofFamilyRealization,
     `SerrePositivity.InfinityCategories.Derived.WeakRoofDescentTransportEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGPresentedFamilyEvaluationIso,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteBinaryEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedIdentity,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryAction,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingUnitAction,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientCompositeRealization,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFamilyEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteRoofComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientInvertingRoofIdentification,
+    `SerrePositivity.InfinityCategories.Derived.FunctorFamilyHomotopyUncurry,
+    `SerrePositivity.InfinityCategories.Derived.FunctorRestrictionFamilyIso,
+    `SerrePositivity.InfinityCategories.Derived.PinchedFamilyCompositionEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.PinchedFamilyCompositionParameters,
+    `SerrePositivity.InfinityCategories.Derived.PinchedFamilyCompositionTransport,
+    `SerrePositivity.InfinityCategories.Derived.PinchedIdentityFamily,
+    `SerrePositivity.InfinityCategories.Derived.RoofEndpointTransport,
+    `SerrePositivity.InfinityCategories.Derived.RoofHomotopyComposition,
+    `SerrePositivity.InfinityCategories.Derived.WeakRoofFamilySpanComparison,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositionPrisms,
     `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyPrism,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteOreCompositionHomotopy,
