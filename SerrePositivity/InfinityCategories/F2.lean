@@ -39,6 +39,7 @@ public import SerrePositivity.InfinityCategories.F2.FilteredDiagonalCriterion
 public import SerrePositivity.InfinityCategories.F2.FilteredEquivalence
 public import SerrePositivity.InfinityCategories.F2.FilteredHomotopyClasses
 public import SerrePositivity.InfinityCategories.F2.FilteredWeakEquivalences
+public import SerrePositivity.InfinityCategories.F2.BousfieldKanTerminalAugmentation
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。

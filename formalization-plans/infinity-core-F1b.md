@@ -45,8 +45,8 @@
   零枝の span の入力の存在から零角の押し出し性を成分で判定し、両射影の IsExactFunctor を証明。始域の安定性は仮定しない。
   零源の cospan の極限を反転と枝の交換で構成。元の指定射を保つ全 fiber・cofiber の存在と零角の条件の一致を証明。
   laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
-- 第 2 部：対角判定・同値不変性、通常の filtered 図式の有限内部 Hom の連続性・Kan 性・fibration・弱同値の保存を証明。
-  三集約同時ビルド 6895 jobs、公理監査 1436 宣言・同時 import 成功。native な余極限との比較と coherent な交換は残る。
+- 第 2 部：対角判定・同値不変性と filtered 図式の保存性、BK augmentation、終対象を持つ場合のホモトピー逆まで証明。
+  三集約同時ビルド 6913 jobs、公理監査 1493 宣言・同時 import 成功。一般 filtered 比較と coherent な交換は残る。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -97,7 +97,7 @@
 
 ### 次の一手
 
-- F2N-1：filtered Kan 図式の Bousfield–Kan coend と通常の colimit の比較射と弱同値性を構成する。
+- F2N-1：coend の添字変更と Over.map に沿う図式を構成し、一般 filtered augmentation の弱同値性へ進む。
 
 正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と [foundations.md](foundations.md) §6・§8。
 本計画は目標・設計・現在地・主要宣言を管理し、実施記録はコミットメッセージに置く。

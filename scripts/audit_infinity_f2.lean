@@ -615,3 +615,25 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.trivialKanFibration_of_filtered_isColimit
 #check @SerrePositivity.InfinityCategories.F2.filteredColimitMap_trivialKanFibration
 #check @SerrePositivity.InfinityCategories.F2.filteredColimitMap_isWeakHomotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitAugmentation
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitι_augmentation
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitAugmentation_naturality
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanι_augmentation
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_naturality
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanStage
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanStage_augmentation
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_lifts_finite
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitFamily
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitHomotopy
+#check @SerrePositivity.InfinityCategories.F2.terminalWeightPoint_isInitial
+#check @SerrePositivity.InfinityCategories.F2.terminalWeightHomotopy
+#check @SerrePositivity.InfinityCategories.F2.terminalWeightHomotopy_naturality
+#check @SerrePositivity.InfinityCategories.F2.terminalWeightStage_naturality
+#check @SerrePositivity.InfinityCategories.F2.terminalWeightLegHomotopy_naturality
+#check @SerrePositivity.InfinityCategories.F2.terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.terminalIndexCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.terminalIndexColimitIso
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_terminal_factor
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_terminal
