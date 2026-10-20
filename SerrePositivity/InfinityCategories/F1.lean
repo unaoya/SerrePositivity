@@ -1614,3 +1614,23 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsRestricti
 public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsCoreRestriction
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreFunctor
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionInvertibleDetection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreLift
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreVertexDescent
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreVertexDescentLaws
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionColimitFamily
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionColimitLift
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionColimitDescent
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreColimitLift
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreColimitDescent
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreColimitCone
