@@ -26,7 +26,9 @@
   恒等点からの実際の全 Hom 輸送 `twistedArrowIdentityHomTransport` も同値。
 - 先の評価で使った unstraightening 内の恒等点も始対象。その同じ点での直接評価と、
   元の `representableUnstraighteningEvaluation` の全パラメーターでの厳密な一致も証明済み。
-- 同じ Yoneda 写像の充満忠実性は未証明。評価後の自己写像の同値性を別途証明する必要がある。
+- Tw 全体の同じ復元射を終点固定で制限し、rep(y) の unstraightening への底上の前合成同値を
+  構成済み。この同じ全体からの恒等点は始対象で、その直接評価は自明 Kan fibration。
+- 同じ Yoneda 写像の充満忠実性は未証明。全体からの恒等点で c1 の作用と輸送を照合する。
 
 ### 残り（依存順）
 
@@ -62,10 +64,10 @@
 
 ### 未コミット
 
-- 値の同値・宇宙移送・同じ Yoneda Hom 作用は `3cdde3b95` に保存済み。
-  F1 全体ビルド4250 jobs、公理監査9801宣言が成功（標準3公理のみ）。
-- 始点固定の射影・恒等点の始対象性と輸送・同じ unstraightening 恒等点の所有3モジュール、
-  集約・監査・計画が今回の保存単位。F1 全体ビルド4403 jobs、公理監査9833宣言が成功。
+- 始点固定の恒等点輸送と以前の評価の点の照合は `15dfacbc0` に保存済み。
+  F1 全体ビルド4403 jobs、公理監査9833宣言が成功（標準3公理のみ）。
+- 底変換の比較同値の保存・全体の復元射の制限・同じ全体からの恒等点評価の所有3モジュール、
+  集約・監査・計画が今回の保存単位。F1 全体ビルド4406 jobs、公理監査9863宣言が成功。
   標準3公理のみ。通る所有ファイルだけを早めに `git commit --only` で保存する。
 - N が読む指定の2ファイルと集約は `a12f7e9f4` で保存済み。
 
@@ -79,13 +81,13 @@
 
 ### 次の一手
 
-F1-2：TwistedArrowSourceInitial の実際の恒等点輸送の同値まで通った。
-次は twistedArrowProjection C 全体の `leftStraighteningInfinityReconstruction` を、終点固定の
-底の包含に沿って制限する。`smallLeftUnstraighteningMap_isPullback` と
-`representablePresheafInfinity_eq_targetRestriction` により、Tw の同じ恒等点から rep(y) の
-unstraightening 内の評価点を取る。既存の別々に選んだ評価点との一致を仮定しない。
-その評価が c1 の `leftUnstraighteningMappingFiberHom_parametrizedIso` を通して、始点固定の
-`twistedArrowIdentityHomTransport` を回収することを全パラメーターで照合する。
+F1-2：Tw 全体の復元射の終点固定の制限 `twistedArrowTargetReconstruction` は底上の前合成同値。
+`canonicalYonedaUnstraighteningIdentity` は同じ全体の復元射から取る始対象で、直接評価は自明 Kan。
+次は、反転 coslice から終点固定で取った Tw の恒等点と、始点固定の `twistedArrowSourceIdentity`
+の元の Tw 全空間内の一致を証明する。続いて、その同じ全体からの評価を c1 の
+`leftUnstraighteningMappingFiberHom_parametrizedIso` と結び、始点固定の
+`twistedArrowIdentityHomTransport` を全パラメーターで回収する。
+以前の別々に選んだ評価点との一致は仮定しない。
 F1-1c2：別途、初頂点引き戻しの全相対 Hom 作用の同値性を証明し、同じ S に F0 を適用する。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。

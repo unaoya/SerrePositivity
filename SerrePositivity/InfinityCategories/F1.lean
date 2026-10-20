@@ -1366,3 +1366,9 @@ public import SerrePositivity.InfinityCategories.F1.TwistedArrowSource
 public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourceInitial
 
 public import SerrePositivity.InfinityCategories.F1.RepresentableUnstraighteningIdentity
+
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationComparisonBaseChange
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowTargetReconstruction
+
+public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaUnstraighteningIdentity
