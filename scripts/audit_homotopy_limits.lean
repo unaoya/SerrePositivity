@@ -10933,3 +10933,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfDerivedUnitHomotopy_nonempty
 #print axioms quillenCfDerivedUnitHomotopy_nonempty
+
+#check @edgeCosliceUncurry
+#print axioms edgeCosliceUncurry
+
+#check @edgeCosliceUncurry_inl
+#print axioms edgeCosliceUncurry_inl
+
+#check @edgeCosliceUncurry_inr
+#print axioms edgeCosliceUncurry_inr
+
+#check @edgeCosliceIntervalMap
+#print axioms edgeCosliceIntervalMap
+
+#check @edgeCosliceIntervalMap_uncurry
+#print axioms edgeCosliceIntervalMap_uncurry
+
+#check @edgeCosliceEdge
+#print axioms edgeCosliceEdge
+
+#check @edgeCosliceFamilySquare
+#print axioms edgeCosliceFamilySquare
+
+#check @edgeCosliceFamilySquare_bottom
+#print axioms edgeCosliceFamilySquare_bottom
+
+#check @edgeCosliceFamilySquare_top
+#print axioms edgeCosliceFamilySquare_top
+
+#check @edgeCosliceFamilySquare_side
+#print axioms edgeCosliceFamilySquare_side
+
+#check @edgeCosliceIntervalMap_composition
+#print axioms edgeCosliceIntervalMap_composition
+
+#check @edgeCosliceIntervalMap_precompose
+#print axioms edgeCosliceIntervalMap_precompose
+
+#check @edgeCosliceIntervalMap_isQCatEquivalence
+#print axioms edgeCosliceIntervalMap_isQCatEquivalence
+
+#check @edgeCosliceIntervalMap_target_isQCatEquivalence
+#print axioms edgeCosliceIntervalMap_target_isQCatEquivalence
+
+#check @edgeCosliceIntervalMap_source_isQCatEquivalence
+#print axioms edgeCosliceIntervalMap_source_isQCatEquivalence
+
+#check @intervalPrecompose_isSimplicialHomotopyEquivalence_of_cocartesian
+#print axioms intervalPrecompose_isSimplicialHomotopyEquivalence_of_cocartesian
