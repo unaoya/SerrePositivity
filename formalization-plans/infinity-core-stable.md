@@ -18,8 +18,8 @@
 - 出力の射影性を仮定しない分解の実対象、実比較差、全 Hom の mapping cocone、全パラメータからの二射と比較 cochain の実持ち上げ・一意性、入力 Hom 射影の全準同型性を監査済み。実合成・実単位に加え、全 cochain 上の左右単位律・三重合成の結合律を証明し、実分解 dg 圏と実入力・半自由出力への dg 射影を構成した。
 - 実入力射影は対象上全射、全 Hom の各次数で全射な準同型。対象だけを共通宇宙へ上げた実 nerve は自明 Kan fibration、したがって実 ∞ 圏同値。逆と実半自由出力射影から、任意の dg 加群値関手の実出力を半自由模型の全 ∞ 関手へ移し、実分解圏上の全関手比較同型も証明した。今回までの実分解 dg 圏と二射影は統合・監査済み。逆を実自明 Kan fibration の厳密切断へ統一し、各値から元の同じ入力像への次数別全射な準同型を回収した。
 - 固定始域・固定終域の実 D(R) 値共変・反変 Hom を構成し、各頂点値が同じ厳密切断の半自由分解であることを証明した。実 augmentation は元の全 Hom end 複体への全射準同型。両分解複体の pinched 模型から元の実導来 ∞ 圏の写像空間への全空間同値も証明し、統合・公理監査済み。関手族としての比較の自然性と二変数の統合は未証明。
-- augmentation の実比較 cochain を全整数次数の斉次作用へ移し、全微分式、単位零、豊穣順・通常順の符号付き二合成則を証明した。同じ次数 −1 成分の切断和から全候補 `SimplexData` を構成し、定値二相での実端点回収と二点混合係数の閉性、相 011・001 の実候補係数の同定と同じ係数の微分式まで証明した。全域切断補正と候補微分の分解を構成し、比較 cochain に元の実単体の HA 方程式を代入して、全削除係数・左右切断補正の有限和まで展開した。さらに同じ切断微分の生の中間次数を正規化し、実内部切断の左右双方へ元の HA 方程式を代入した微分式を証明した。全候補の HA 方程式・単体作用は未証明。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionProjection`・`DGModuleFunctorResolutionCategory`・`DGModuleFunctorResolutionNerve`・`DGModuleOutputResolutionInfinity`・`DGSemifreeDerivedHomInfinity`・`DGSemifreeDerivedHomValue`・`DGSemifreeDerivedHomMappingSpace`・`DGModuleAugmentationPrismData`・`DGModuleAugmentationTriangleEquation`・`DGModuleAugmentationTriangleCoefficient`・`DGModuleAugmentationTriangle001`・`DGModuleAugmentationSimplexHomotopy`・`DGModuleAugmentationCutBoundary`（すべて `Derived/`）。
+- augmentation の実比較 cochain を全整数次数の斉次作用へ移し、全微分式、単位零、豊穣順・通常順の符号付き二合成則を証明した。同じ次数 −1 成分の切断和から全候補 `SimplexData` を構成し、定値二相での実端点回収と二点混合係数の閉性、相 011・001 の実候補係数の同定と同じ係数の微分式まで証明した。全域切断補正と候補微分の分解を構成し、比較 cochain に元の実単体の HA 方程式を代入して、全削除係数・左右切断補正の有限和まで展開した。さらに同じ切断微分の生の中間次数を正規化し、実内部切断の左右双方へ元の HA 方程式を代入した微分式を証明した。削除後の同じ実切断を左右の削除合成へ同定し、候補補正の全削除和と左右線形境界の符号和を相殺した。実候補補正と実混合係数の微分を、基底微分・全削除補正・二次切断和・比較差へ還元した。全候補の HA 方程式・単体作用は未証明。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionProjection`・`DGModuleFunctorResolutionCategory`・`DGModuleFunctorResolutionNerve`・`DGModuleOutputResolutionInfinity`・`DGSemifreeDerivedHomInfinity`・`DGSemifreeDerivedHomValue`・`DGSemifreeDerivedHomMappingSpace`・`DGModuleAugmentationPrismData`・`DGModuleAugmentationTriangleEquation`・`DGModuleAugmentationTriangleCoefficient`・`DGModuleAugmentationTriangle001`・`DGModuleAugmentationSimplexHomotopy`・`DGModuleAugmentationCutBoundary`・`DGModuleAugmentationLinearCancellation`・`DGModuleAugmentationCorrectionDifferential`（すべて `Derived/`）。
 
 ### 残り（依存順、時間は推定）
 
@@ -64,18 +64,18 @@
 
 ### 未コミット
 
-- なし。同じ実切断微分の次数正規化・左右の元の HA の代入を `DGModuleAugmentationCutBoundary` に実装し、集約ビルド・両公理監査後に保存した。先の10モジュールは `350fe3dae`。
+- なし。今回の4モジュールは、同じ実切断の左右削除の同定、全削除補正と左右線形境界の相殺、実候補微分の削除補正・二次切断和・比較差への還元を証明し、集約ビルド・両公理監査後に保存した。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9297 jobs）。公理監査は Derived 12340 宣言／1373 モジュール、Stable 13455／1643。許容三公理のみ。今回までの保存対象304新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9301 jobs）。公理監査は Derived 12397 宣言／1377 モジュール、Stable 13512／1647。許容三公理のみ。今回までの保存対象308新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5：相 011・001 の候補混合係数の同定・実微分式を閉じた。`dgModuleAugmentationPrismMixedHom_differential_decomposition` は同じ候補を実基底項と全域切断補正へ分解し、`dgModuleAugmentationHomotopyAt_simplex_expansion` は元の実単体の HA を同じ比較微分式へ代入して削除和・左右切断和へ展開する。`dgModuleAugmentationHomotopyCut_simplex_boundary` は切断微分の中間次数を正規化し、左右の部分集合の元の HA を同じ係数へ代入した。一点削除後の実切断の左右の同定、左右の線形境界合成の削除和への展開、相の指示関数付き混合符号相殺の5補題は予備草稿 `/tmp/d-beta5-augmentation-cut-erasure.lean` が単独 Lean 検査済み（未統合・未公理監査、提供数には含めない）。次はこれを正式モジュールへ移し、相一の切断集合と削除の可換性を使って候補補正の全削除和と同じ左右線形境界の相殺を証明する。任意 I の削除・二重切断和を既存 `DGNerve/NestedCut` の添字比較と同じ実合成の結合律で相殺し、候補全体の HA 方程式を証明する。
+- β5：相 011・001 の候補混合係数の同定・実微分式を閉じた。`dgModuleAugmentationPrismMixedHom_differential_decomposition` は同じ候補を実基底項と全域切断補正へ分解し、`dgModuleAugmentationHomotopyAt_simplex_expansion` は元の実単体の HA を同じ比較微分式へ代入して削除和・左右切断和へ展開する。`dgModuleAugmentationHomotopyCut_simplex_boundary` は切断微分の中間次数を正規化し、左右の部分集合の元の HA を同じ係数へ代入した。一点削除後の実切断の左右の同定を正式化し、`dgModuleAugmentationPrismCorrection_linear_cancel` で全削除補正と同じ左右線形境界の符号和を相殺した。`dgModuleAugmentationPrismMixedHom_differential_reduction` は実混合候補の微分を基底微分・全削除補正・二次切断和・比較差へ還元する。次は基底の後合成微分を元の HA の像へ移し、二次切断の左右展開を同じ三重合成へそろえる。予備草稿 `/tmp/d-beta5-augmentation-base-boundary.lean`（基底の実 Hom chain map・合成成分・元の HA の像への微分）、`/tmp/d-beta5-phase-double-cut.lean`（単調な切断支持の二重切断相殺と異相項の分離）、`/tmp/d-beta5-prism-phase-coefficients.lean`（実候補の混合端点係数の回収）は単独 Lean 検査済み。これらは未統合・未公理監査で提供数には含めない。相の単調性と切断順序の符号を使って二重和を整理し、基底の二次境界・比較差・二次切断和を候補の同じ二次境界へ一致させ、全 HA 方程式を証明する。
 - 全 HA 後、単射な添字変更での切断和の自然性、潰れる辺と高次退化の零を同じ単位零式で証明し、`N_dg(Resolution) × Δ¹ → N_dg(RightModule)` の実写像・実両端を構成する。`SimplexData` の存在や各混合辺の閉性を、全単体の自然変換の完成とは数えない。入力と全加群の対象宇宙が異なる場合は `DGUniverseLift` を使う。
 - この実 augmentation の族を用いて D(R) 値 Hom と空間値 Hom の比較の自然性を証明し、二変数へ統合する。`DGSemifreeDerivedHomValue` の頂点等式・各 augmentation の準同型性、`DGSemifreeDerivedHomMappingSpace` の各対の全空間同値は証明済みだが、関手族の比較や一般 tensor–Hom 随伴を結論しない。対象宇宙の相違は `DGUniverseLift` で扱い、全加群型の Small.{u} や元の出力の射影性を仮定しない。
 - その後一般 tensor–Hom 随伴・全 coherence、一般双加群の作用と Morita 不変性、Perf の冪等完備性を閉じて β4 へ進む。β4 は提供済み F2 の実 lax pullback を読み取り専用で使う。β3 は局所化・Verdier 列とも完了しており、再実装や承認待ちは不要。

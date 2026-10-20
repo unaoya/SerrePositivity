@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutErasure
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationLinearCancellation
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutDifferentialExpansion
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutBoundary
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleCoefficient
 import SerrePositivity.InfinityCategories.Derived.DGClosedPostcomposeTriangle
@@ -2996,6 +3000,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutErasure,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationLinearCancellation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutDifferentialExpansion,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleCoefficient,
     `SerrePositivity.InfinityCategories.Derived.DGClosedPostcomposeTriangle,
