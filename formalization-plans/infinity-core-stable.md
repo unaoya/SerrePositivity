@@ -35,6 +35,7 @@
 - 任意の K・quasicategory X に対し、`Fun(K, X_/z)` から `Fun(K,X)_/const z` への実比較同値を、終対象への全切断と底への厳密な可換性付きで構成。普遍 slice 評価の実ホモトピー・恒等錐上の全時刻固定・全後合成の各成分を照合した。`roofFunctorSliceRepresentation_pinched_vertex_arrow` は、どの全切断を選んでも実 pinched Hom 族が元の同じ関手圏の射を表すことを証明する。評価方程式から元の実屋根内の族比較への復元と全関手への組み立ては未完。
 - 任意の評価方程式から、指定分母の像を全時刻の底とする実 slice 比較を回収し、始点補正の実三角形を保持した。`dgInvertingRoofFamilyRealization_nonempty` は、元の閉分母から恒等分母への実細分辺と組にして、任意パラメータの実屋根内の比較を構成する。`dgPresentedFamilyEvaluationIso_nonempty` は表示の輸送も含め、指定した同じ実評価族を全降下選択空間上の商 Hom 作用族と一つの関手同型で比較する。商の実合成との照合と全関手への組み立ては未完。
 - 商関手自身の任意標的屋根を実商屋根と、標準頂点の輸送・両射影・固定 Hom 包含ごと同定。指定した商内の三評価族を元の商 Hom 二族の実 AW 合成に実ホモトピーで照合し、実屋根の合成候補から同じ AW 合成への二比較と実三角形を構成した。`dgInvertingBinaryAction_comp`・`dgInvertingBinaryAction_triangle_nonempty` は、任意有限二商 Hom 族と任意反転標的について、三対象対の降下選択を独立に動かす任意共通パラメータ上の作用族の合成関係・実三角形を与える。`dgInvertingUnitActionIso`・`dgInvertingUnitAction_id` は任意パラメータの実恒等族の保存を全選択空間上で与える。指定部分の全高次境界を保持する相対整合性と実 ∞ 関手への組み立ては未完。
+- `dgRelativeRoofEvaluation_nonempty` は任意単射上の実評価値・比較の全時刻を固定し、指定実分母の同じ全底上で評価を延長する。`dgClosedRoofEvaluationSpace_isContractibleKan` は同じ初期族と全底を持つ全実評価 prism の空間の全境界充填を与える。`dgClosedRoofUniversalFiberEvaluation` はその全空間上で、同じ全円柱・全底を保持する一つの普遍実評価を構成する。部分 prism を指定した全選択空間と全関手への組み立ては未完。
 - 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofHomotopyFillers.lean`・`Derived/RoofCompatibleTransportComposite.lean`・`Derived/DGActualRoofFiberReduction.lean`・`Derived/DGCoefficientFinitePairs.lean`・`Derived/DGActualRoofFinitePairs.lean`・`Derived/DGActualRoofWeakEquivalence.lean`。
 
 ### 残り（依存順、時間は推定）
@@ -80,18 +81,18 @@
 
 ### 未コミット
 
-- `RoofRelativeEvaluation.lean`・`RoofRelativeEvaluationIso.lean`・`DGRelativeRoofEvaluation.lean` を検証中。任意単射上の値と全比較を固定する相対評価。ほかの所有ファイルは保存済み。
+- `RoofRelativePrismLiftSpace.lean` と `SliceEvaluationVertex.lean` を検証中。指定部分の全 prism の選択空間と、実 slice 評価の元の実辺への成分照合。ほかの所有ファイルは保存済み。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7833 jobs）。公理監査は Derived 10802 宣言／1189 モジュール、Stable 11917／1459。許容三公理のみ。今回の新規120モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7851 jobs）。公理監査は Derived 10911 宣言／1196 モジュール、Stable 12026／1466。許容三公理のみ。今回の新規127モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏での普遍性を続ける。実合成候補と商の実 AW 合成の比較、全降下選択空間上の二入力合成・単位まで完成。次は任意単射上で指定した実評価と比較の全時刻を保つ相対評価を構成する。`leftFibration_lift_fixed_prism` を任意反転標的の実屋根射影に適用し、終端を恒等分母の実 fiber に戻す。既存の二入力関係だけから相対高次境界の充填を推論しない。指定部分の三評価族・実三角形を保つ同時細分、全高次境界の整合性と実 ∞ 関手への組み立ては未完。
+- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏での普遍性を続ける。全選択空間上の二入力合成・単位、任意単射上の値と全比較を固定する相対実評価、その全 prism の可縮な選択空間と普遍実評価まで完成。次は部分 prism 全体を固定する `relativeFunctorExtensionSpace` の可縮性と、実 slice 評価の成分を同じ元の実 over 辺へ照合する。全関手の組み立てには F1B の右 Kan 拡張による経路も検討する。実分母の像の逆を coherent な coslice 図式へ戻し、`rightKanShape q (q x)` への left cofinal 比較から各点の極限を供給する部分は未証明。既存の二入力関係だけから相対高次境界の充填を推論しない。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。普遍性の後、平坦分解への移送、Verdier 列、β5、β4。全計画は未完。
 

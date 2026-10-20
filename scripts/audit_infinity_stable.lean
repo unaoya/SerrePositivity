@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGClosedRoofEvaluationSpace
+import SerrePositivity.InfinityCategories.Derived.DGRelativeRoofEvaluation
+import SerrePositivity.InfinityCategories.Derived.RoofEvaluationLiftSpace
+import SerrePositivity.InfinityCategories.Derived.RoofEvaluationUniversalFiber
+import SerrePositivity.InfinityCategories.Derived.RoofEvaluationUniversalPrism
+import SerrePositivity.InfinityCategories.Derived.RoofRelativeEvaluation
+import SerrePositivity.InfinityCategories.Derived.RoofRelativeEvaluationIso
 import SerrePositivity.InfinityCategories.Derived.DGFiniteBinaryEvaluation
 import SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedIdentity
 import SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryAction
@@ -3465,6 +3472,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryAction,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingUnitAction,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofEvaluationSpace,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeRoofEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.RoofEvaluationLiftSpace,
+    `SerrePositivity.InfinityCategories.Derived.RoofEvaluationUniversalFiber,
+    `SerrePositivity.InfinityCategories.Derived.RoofEvaluationUniversalPrism,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeEvaluationIso,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientCompositeRealization,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientFamilyEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientFiniteRoofComposition,
