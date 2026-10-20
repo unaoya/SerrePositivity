@@ -656,3 +656,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.overBousfieldKanDegreeSection_leftInverse
 #check @SerrePositivity.InfinityCategories.F2.overBousfieldKanColimitIso
 #check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered
+#check @SerrePositivity.InfinityCategories.F2.anodyne_opFunctor_map
+#check @SerrePositivity.InfinityCategories.F2.opposite_map_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitOppositeIso
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitAugmentation_op_factor
+#check @SerrePositivity.InfinityCategories.F2.reflectedBousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitComparison_factor
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitComparison_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.exists_colimitCone_vertex_of_invertible
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitCocone_vertex
