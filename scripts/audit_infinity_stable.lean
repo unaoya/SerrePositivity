@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.ComplexTensorComparisonCochain
+import SerrePositivity.InfinityCategories.Derived.EnrichedMiddleComposition
+import SerrePositivity.InfinityCategories.Derived.EnrichedCompositionBoundary
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionMaps
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionBoundary
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionPrimitives
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionComposition
+import SerrePositivity.InfinityCategories.Derived.EnrichedIdentityWhiskering
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionIdentity
 import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprod
 import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprodExact
 import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprodQuasiIso
@@ -3516,6 +3526,17 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ComplexTensorComparisonCochain,
+    `SerrePositivity.InfinityCategories.Derived.EnrichedMiddleComposition,
+    `SerrePositivity.InfinityCategories.Derived.EnrichedCompositionBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionPrimitives,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionComposition,
+    `SerrePositivity.InfinityCategories.Derived.EnrichedIdentityWhiskering,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionIdentity,
+
     `SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprod,
     `SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprodExact,
     `SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprodQuasiIso,
