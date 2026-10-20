@@ -1257,8 +1257,18 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `lengthBoundary_eq_finsetSup` は元の長さ境界と card≤n の列部分集合の有限和の等式。
 `weakLengthBoundaryMap` は proper 図式間の成分ごとの弱同値から、
 同じ `lengthBoundaryMap` 自身の弱同値性を導く。境界の Kan 性・比較の単射性は不要。
-段階0と全有限段階の帰納、
-proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`stageBoundarySumMap`・`stageTopSumMap` は元の余積の比較。
+`stageBoundarySumMap_inclusion`・`_attach`・`stageTopSumMap_inclusion` は四辺の自然性。
+`stageBoundarySumInclusion_mono` は境界包含側の単射性。
+`weakTwoIndexCoproduct` は二つの初期方向で添字づけた元の余積の比較の弱同値性。
+`weakLengthStageMap_succ` は境界包含側を単射として `.flip` した pushout を貼り、
+前段階への貼り合わせ射の単射性を要求しない。
+`lengthZeroIso` の逆射は元の空語の標準包含。`weakLengthStageMap` は全有限段階の帰納。
+`weakSequentialColimitMap` は対象・射の宇宙を持ち上げて F2 の filtered 補題を適用し、
+同じ元の Nat 図式の `colim.map` の弱同値性を証明する。
+`weakProperColimitMap` は proper 図式間の成分ごとの弱同値を元の全語の余極限へ移す
+（Dwyer–Kan §4.5）。Π の filtered 性・元の値の Kan 性・単体集合のモデル構造は不要。
+三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

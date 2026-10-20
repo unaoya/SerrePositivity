@@ -3666,6 +3666,30 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.lengthBoundaryMapsTo,
       `SerrePositivity.EInfinity.Hammock.weakLengthBoundaryMap]
 
+@[noinline] private def e2RequiredBatch37 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.twoIndexBinaryCofan,
+      `SerrePositivity.EInfinity.Hammock.twoIndexBinaryCofan_isColimit,
+      `SerrePositivity.EInfinity.Hammock.weakTwoIndexCoproduct,
+      `SerrePositivity.EInfinity.Hammock.stageBoundarySumMap,
+      `SerrePositivity.EInfinity.Hammock.stageTopSumMap,
+      `SerrePositivity.EInfinity.Hammock.stageBoundarySumMap_fac,
+      `SerrePositivity.EInfinity.Hammock.stageTopSumMap_fac,
+      `SerrePositivity.EInfinity.Hammock.stageBoundarySumMap_inclusion,
+      `SerrePositivity.EInfinity.Hammock.stageBoundarySumMap_attach,
+      `SerrePositivity.EInfinity.Hammock.stageTopSumMap_inclusion,
+      `SerrePositivity.EInfinity.Hammock.stageBoundarySumInclusion_mono,
+      `SerrePositivity.EInfinity.Hammock.weakStageBoundarySumMap,
+      `SerrePositivity.EInfinity.Hammock.weakStageTopSumMap,
+      `SerrePositivity.EInfinity.Hammock.weakLengthStageMap_succ,
+      `SerrePositivity.EInfinity.Hammock.Word.eq_empty_of_length_zero,
+      `SerrePositivity.EInfinity.Hammock.lengthZeroCocone,
+      `SerrePositivity.EInfinity.Hammock.lengthZeroIso,
+      `SerrePositivity.EInfinity.Hammock.lengthZeroIso_inv,
+      `SerrePositivity.EInfinity.Hammock.weakLengthStageMap_zero,
+      `SerrePositivity.EInfinity.Hammock.weakLengthStageMap,
+      `SerrePositivity.EInfinity.Hammock.weakSequentialColimitMap,
+      `SerrePositivity.EInfinity.Hammock.weakProperColimitMap]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3695,7 +3719,7 @@ run_cmd do
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
-      e2RequiredBatch36] do
+      e2RequiredBatch36, e2RequiredBatch37] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8759,3 +8783,36 @@ example {F G : Word ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
     (hF : ProperDiagram F) (hG : ProperDiagram G)
     (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) (n : ℕ) (c : Word) :
     IsWeakHomotopyEquivalence (lengthBoundaryMap η n c) := weakLengthBoundaryMap η hF hG hη n c
+
+-- 元の境界余積の包含は単射。前段階への貼り合わせ射には仮定しない。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (F : Word ⥤ SSet.{e2ComplexLimitUniverse}) (n : ℕ) :
+    Mono (stageBoundarySumInclusion F n) := stageBoundarySumInclusion_mono n
+
+-- 長さ零の逆射は元の空語の標準包含そのものである。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (F : Word ⥤ SSet.{e2ComplexLimitUniverse}) :
+    (lengthZeroIso F).inv = lengthStageInclusion F 0 Word.empty (le_refl 0) :=
+  lengthZeroIso_inv F
+
+-- proper 図式の元の全有限段階。Kan 性・比較射の単射性は不要。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {F G : Word ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
+    (hF : ProperDiagram F) (hG : ProperDiagram G)
+    (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) (n : ℕ) :
+    IsWeakHomotopyEquivalence (lengthStageMap η n) := weakLengthStageMap η hF hG hη n
+
+-- 任意の宇宙の元の Nat 図式と元の colim.map への比較。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock in
+example {F G : ℕ ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
+    (hη : ∀ n, IsWeakHomotopyEquivalence (η.app n)) :
+    IsWeakHomotopyEquivalence (colim.map η) := weakSequentialColimitMap η hη
+
+-- DK 4.5 の元の全語の余極限。Π の filtered 性やモデル構造を入力にしない。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock in
+example {F G : Word ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
+    (hF : ProperDiagram F) (hG : ProperDiagram G)
+    (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) :
+    IsWeakHomotopyEquivalence (colim.map η) := weakProperColimitMap η hF hG hη
