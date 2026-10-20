@@ -114,7 +114,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams,
     `SerrePositivity.KST.LocalizingInvariants.CofiberRightLifting,
     `SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact,
-    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact]
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact,
+    `SerrePositivity.KST.LocalizingInvariants.RetractionHomotopyAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowTargetContraction,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowTargetAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.TrivialFibrationSectionAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberRotationAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointTarget,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberDiagramFibers,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointZero,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointFaithful,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberAdjunctionCounit,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberFamilyComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
