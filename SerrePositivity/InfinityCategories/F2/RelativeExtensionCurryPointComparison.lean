@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryIsoPointComparison
+public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryIsoFiberRestriction
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionCurryComparison
 public import SerrePositivity.InfinityCategories.F1.PullbackTransport
 
@@ -42,5 +42,20 @@ lemma relativeExtensionEndpoint_curryIso_app (l : L _⦋0⦌) :
         (relativeFunctorPre (pullback.snd p q) (fst C L ≫ a)
           (lift (𝟙 C) (SSet.const l)))) :=
   relativeFunctorCurryIso_app (pullback.snd p q) a g g' hg hg' _ l
+
+/-- 元の指定 curry 終点比較の成分を始域へ制限しても同じ指定比較の直接制限。 -/
+lemma relativeExtensionEndpoint_curryIso_app_pre {C' : SSet.{u}}
+    (l : L _⦋0⦌) (s : C' ⟶ C) :
+    HEq
+      (VertexIso.map
+        ((relativeFunctorExtensionEndpoint_curryIso p d i hi v hv j q a hj
+          W W' hW hW' hWi hWi' g g' hg hg' hWj hWj').app l)
+        (relativeFunctorPre (pullback.snd p q) a s))
+      (VertexIso.map
+        (relativeFunctorExtensionEndpoint_witnessIso p d i hi v hv j q (fst C L ≫ a) hj
+          W W' hW hW' hWi hWi' g g' hg hg' hWj hWj')
+        (relativeFunctorPre (pullback.snd p q) (fst C L ≫ a)
+          (s ≫ lift (𝟙 C) (SSet.const l)))) :=
+  relativeFunctorCurryIso_app_pre (pullback.snd p q) a g g' hg hg' _ l s
 
 end SerrePositivity.InfinityCategories.F2

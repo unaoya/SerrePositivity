@@ -17,6 +17,21 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_evaluate
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_vertexIso_evaluate
 
+#check @SerrePositivity.InfinityCategories.F2.iso_endpoints_heq
+#check @SerrePositivity.InfinityCategories.F2.mapIso_heq_of_heq
+#check @SerrePositivity.InfinityCategories.F2.functorHomotopyEvaluation_evaluate
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_heq_evaluate
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_heq_map
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_heq_of_heq
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_app
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionEndpoint_curryIso_app
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurry_vertex_restriction
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_app_pre
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionEndpoint_curryIso_app_pre
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionEndpoint_witnessIso_heq_map
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionWitnessIso_restrict
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionCurryWitnessIso_restrict
+
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
 方針：宣言元モジュールを判別し、各宣言の公理を再帰的に収集する。
