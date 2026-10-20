@@ -1191,3 +1191,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeHomotopy_apexEdge
 #check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeHomotopy_diagramEdge
 #check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeCone_leg_naturality
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinity_homotopy_of_homMk_eq
+#check @SerrePositivity.InfinityCategories.F2.kanNativeConeLeg
+#check @SerrePositivity.InfinityCategories.F2.kanNativeConeLeg_edge
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeHomotopy_apexEdge
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeHomotopy_diagramEdge
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeKanLeg_section
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeKanLeg_left
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeKanLeg_right
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeKanLeg
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeKanLeg_comparison
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeKanLeg_left
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeKanLeg_right
