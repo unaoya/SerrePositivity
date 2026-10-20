@@ -17543,4 +17543,72 @@ namespace SerrePositivity.KST.SConstruction
 #check presentedPerfectDGTensorAction_comp
 #print axioms presentedPerfectDGTensorAction_comp
 
+#check tensorInterchangeMap_apply
+#print axioms tensorInterchangeMap_apply
+#check tensorInterchangeMap_apply_of_sums
+#print axioms tensorInterchangeMap_apply_of_sums
+#check serreIntervalMax_diagonal
+#print axioms serreIntervalMax_diagonal
+#check serreIntervalMaxComonHom
+#print axioms serreIntervalMaxComonHom
+#check serreIntervalMaxComonHom_hom
+#print axioms serreIntervalMaxComonHom_hom
+#check serreIntervalEndpointComonHom
+#print axioms serreIntervalEndpointComonHom
+#check serreCubeFace
+#print axioms serreCubeFace
+#check serreCubeDegeneracy
+#print axioms serreCubeDegeneracy
+#check serreCubeConnection
+#print axioms serreCubeConnection
+#check serreCubeFace_zero
+#print axioms serreCubeFace_zero
+#check serreCubeFace_succ
+#print axioms serreCubeFace_succ
+#check serreCubeDegeneracy_zero
+#print axioms serreCubeDegeneracy_zero
+#check serreCubeDegeneracy_succ
+#print axioms serreCubeDegeneracy_succ
+#check serreCubeConnection_zero
+#print axioms serreCubeConnection_zero
+#check serreCubeConnection_succ
+#print axioms serreCubeConnection_succ
+#check serreCubeFace_diagonal
+#print axioms serreCubeFace_diagonal
+#check serreCubeDegeneracy_diagonal
+#print axioms serreCubeDegeneracy_diagonal
+#check serreCubeConnection_diagonal
+#print axioms serreCubeConnection_diagonal
+#check serreCubeFace_augmentation
+#print axioms serreCubeFace_augmentation
+#check serreCubeDegeneracy_augmentation
+#print axioms serreCubeDegeneracy_augmentation
+#check serreCubeConnection_augmentation
+#print axioms serreCubeConnection_augmentation
+#check serreIntervalEndpointComonHom_augmentation
+#print axioms serreIntervalEndpointComonHom_augmentation
+#check serreCubeFace_zero_degeneracy
+#print axioms serreCubeFace_zero_degeneracy
+#check serreCubeFace_degeneracy
+#print axioms serreCubeFace_degeneracy
+#check serreCubeFace_zero_hom
+#print axioms serreCubeFace_zero_hom
+#check serreCubeFace_succ_hom
+#print axioms serreCubeFace_succ_hom
+#check serreCubeDegeneracy_zero_hom
+#print axioms serreCubeDegeneracy_zero_hom
+#check serreCubeDegeneracy_succ_hom
+#print axioms serreCubeDegeneracy_succ_hom
+#check serreCubeConnection_zero_hom
+#print axioms serreCubeConnection_zero_hom
+#check serreCubeConnection_succ_hom
+#print axioms serreCubeConnection_succ_hom
+
+#check comonoidRightUnitorHom
+#print axioms comonoidRightUnitorHom
+#check comonoidRightUnitorInvHom
+#print axioms comonoidRightUnitorInvHom
+#check comonoidAssociatorHom
+#print axioms comonoidAssociatorHom
+
 end SerrePositivity.KST.SConstruction

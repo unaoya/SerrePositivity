@@ -1270,4 +1270,12 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorComposit
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorIterationHom
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorIterationTransport
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorActionComposition
+public import SerrePositivity.KST.SConstruction.TensorInterchangeMapValues
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxDiagonal
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxComonoid
+public import SerrePositivity.KST.SConstruction.SerreCubeCoordinateMaps
+public import SerrePositivity.KST.SConstruction.SerreCubeCoordinateLaws
+public import SerrePositivity.KST.SConstruction.SerreCubeCoordinateRetractions
+public import SerrePositivity.KST.SConstruction.ComonoidStructureMaps
+public import SerrePositivity.KST.SConstruction.SerreCubeCoordinateValues
 /-! # ∞-S• 構成と連結 K 理論 -/
