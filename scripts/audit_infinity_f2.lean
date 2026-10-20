@@ -785,3 +785,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coconePointHomNativeCompositionIso
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalRelativeComparison_factor
 #check @SerrePositivity.InfinityCategories.F2.coherentCoconeCompositionIso
+#check @SerrePositivity.InfinityCategories.F2.relativeConstFiberIso_uncurry
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_uncurry
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_coordinates
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningComposite_coordinates
+#check @SerrePositivity.InfinityCategories.F2.coconeFiberMap
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomRelativeComposite_coordinates
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransportWitness
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramMappingTransportIso
+#check @SerrePositivity.InfinityCategories.F2.coconeFiberTransportIso
+#check @SerrePositivity.InfinityCategories.F2.pointedHomTransport_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coconeFiberHomComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_of_coconeFiberMap_weakEquivalence
