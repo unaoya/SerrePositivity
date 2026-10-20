@@ -1606,3 +1606,11 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramR
 public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramHomInterval
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramHomCriterion
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeRestrictionLifting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsRestrictionLifting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsCoreRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreFunctor

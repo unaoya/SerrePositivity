@@ -8,14 +8,14 @@
 
 - F1a〜F1c の基盤は提供済み。F1d の Cat∞ 値 cocartesian 分類は未完了。
 - `CocartesianFibrationInfinity B` の Hom は元の cocartesian な相対関手 ∞ 圏の core。
-  通常の射との対応・豊穣単位・合成・全 Hom の Kan 性と右写像空間比較も証明済み。
 - 通常圏の nerve 上の実際の全 fibration の分類写像 `cocartesianStraighteningCoherentMap` を構成済み。
   元の全相対 Hom の作用を section へ制限し、core の混合作用・対角評価で全対象と全高次を束ねた。
   同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
   各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
   core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
   像の Cat∞ 値関手への実現と元の主写像との分解等式、実際の区間 Hom 作用を構成済み。
-  区間作用の端点・各対象での評価と主写像への接続を証明。その作用の同値性は未証明。
+  区間作用の端点・成分評価と主写像への接続は証明済み。その作用の同値性は未証明。
+  境界に沿う降下の準備として、section の core の任意の単射による制限は Kan fibration と証明済み。
   Cat∞ 値関手への主写像の充満忠実性と本質的全射性はまだ証明していない。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
@@ -63,7 +63,7 @@
 
 ### 依存と提供
 
-- F0・Coherent・Stable・F1B・HomotopyLimits の既存の一般論は読み取り専用。
+- F0・Coherent・Stable・F1B・HomotopyLimits と F2 の core の充填性の一般論は読み取り専用。
 - 一般道具 KanTestDetection・DiagonalAdjunction・DiagonalLocalizedEquivalence は読み取り専用。
 - F1/、F1.lean、audit_infinity_f1.lean、本計画だけを所有する。他レーンは変更しない。
 - 新規 sorry・公理・未証明引用なし。公開主経路に ModelCategory SSet 等の追加 instance 仮定なし。
@@ -75,7 +75,6 @@
 - cocartesian ∞ 圏は `733a24a2b`、分類写像は `87acb9df5`、weighted nerve は `9d911c9c1`。
 - cocartesian section への比較は `3a02c7fb8`、coherent な同型は `8efb9919a`。
 - 局所 strict 化と有限 nerve 上の本質的全射性は `e8f0b2913`。
-- weighted nerve の全 cocartesian 辺保存と全相対作用は `a361804cc`。
 - 全相対 Hom 作用と scaffold 制限との可換三角形は `7529aa808`。
 - scaffold 評価の厳密な同型と strict transport への変換空間の quasicategory 性は `a75ee4512`。
 - 水平辺の検出と元の制限との厳密な pullback は `c0caa1ce1`。
@@ -83,7 +82,8 @@
 - 同型不変な水平辺条件への制限と strict transport の全相対 Hom 作用の同値は `aece542ae`。
 - core の同値性と中間の像への coherent 比較の同値は `8c5d49f2d`。
 - core 上の混合対角評価、Cat∞ 値関手への実現と元の主写像との分解等式は `c89a910c5`。
-- 実現の頂点・各対象での評価と、同じ区間 Hom 作用の展開・評価・主写像への接続を証明。
+- 実現の頂点・成分評価、区間 Hom 作用の展開・評価と主写像への接続は `145575290`。
+- 全相対 Hom と cocartesian section の任意の単射による同値持ち上げと core の制限の Kan 性を証明。
 
 ### 既知の問題
 
@@ -96,10 +96,10 @@
 
 ### 次の一手
 
-`cocartesianTransportDiagramHomInterval` の展開と各底対象での評価まで完了。
-次はこの同じ区間作用の同値性を、元の全 strict 変換の core から証明する。
-空間値版の Kan 図式用 unstraightening は直接適用できない。Cat∞ 値の高次の比較が必要。
-`cocartesianStraighteningCoherentMap_isFullyFaithful_of_homInterval` の入力を実際に証明して主写像へ戻す。
+`cocartesianSectionCoreFunctor` の任意の単射による遷移の Kan fibration 性まで完了。
+次はこの core の制限図式の境界・セルの厳密な降下を証明し、区間 Hom 比較の貼り合わせに使う。
+空間値版の Kan 図式用 unstraightening は直接適用できない。同じ区間作用の同値性が未証明。
+`cocartesianStraighteningCoherentMap_isFullyFaithful_of_homInterval` の入力を証明して主写像へ戻す。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
