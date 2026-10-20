@@ -860,3 +860,10 @@ public import SerrePositivity.KST.Spectra.TripleCircleUniversalExchange
 public import SerrePositivity.KST.Spectra.PointedRlpSection
 public import SerrePositivity.KST.Spectra.TripleCircleIntervalTransport
 public import SerrePositivity.KST.Spectra.TripleCircleLoopExchange
+public import SerrePositivity.KST.Spectra.PointedPrecompositionSourceNaturality
+public import SerrePositivity.KST.Spectra.PointedIntervalInputSquare
+public import SerrePositivity.KST.Spectra.PointedPrecompositionConstants
+public import SerrePositivity.KST.Spectra.PointedIntervalInputBoundary
+public import SerrePositivity.KST.Spectra.PointedIntervalCoordinateNaturality
+public import SerrePositivity.KST.Spectra.TripleCircleExchangeNaturality
+public import SerrePositivity.KST.Spectra.TripleCircleLoopExchangeNaturality

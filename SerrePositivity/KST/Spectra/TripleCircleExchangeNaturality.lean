@@ -1,0 +1,135 @@
+module
+
+public import SerrePositivity.KST.Spectra.TripleCircleIntervalTransport
+public import SerrePositivity.KST.Spectra.PointedIntervalInputBoundary
+public import SerrePositivity.KST.Spectra.PointedIntervalNaturality
+
+/-!
+概要：同じ普遍交換区間の全標的への移送に、両端境界を固定する自然性正方形を与える。
+方針：射影固定の切断比較を同じ普遍区間へ作用させ、前後合成の座標をそろえる。
+規約：区間や切断を再選択しない。使われ方：loop 値の交換符号区間の高次自然性。
+-/
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+noncomputable section
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open scoped Simplicial
+namespace SerrePositivity.KST.Spectra.TripleCircle
+
+/-- 普遍区間の両端を、同じ単位への制限を経由する厳密な族で表示する。 -/
+def factoredUniversalInterval (Z : PointedSimplicialSet.{u}) :
+    PointedMapping.VerticalPath (PointedObject.toPoint (PointedObject.basedHom source.{u} Z))
+      (PointedMapping.prePointed universalUnit.{u} Z ≫ PointedMapping.prePointed swap.{u} Z)
+      (PointedMapping.prePointed universalUnit.{u} Z ≫
+        PointedMapping.prePointed reversal.{u} Z) :=
+  (universalExchangePath.{u}.basedPre Z).changeEndpoints
+    (PointedMapping.prePointed_comp swap.{u} universalUnit.{u} Z)
+    (PointedMapping.prePointed_comp reversal.{u} universalUnit.{u} Z)
+
+/-- 因子表示に直しても、元の同じ普遍区間の辺全体を保持する。 -/
+lemma factoredUniversalInterval_path (Z : PointedSimplicialSet.{u}) :
+    (factoredUniversalInterval Z).path = (universalExchangePath.{u}.basedPre Z).path := rfl
+
+variable {Z Z' : PointedSimplicialSet.{u}} [KanComplex Z.right] [KanComplex Z'.right]
+  (v : Z ⟶ Z')
+
+/-- 同じ切断比較を同じ普遍区間へ作用させた、元の二次元正方形。 -/
+def exchangeNaturalityInputSquare :=
+  PointedMapping.VerticalPath.inputSquare (extensionSectionNaturalityInterval v)
+    (factoredUniversalInterval Z')
+
+omit [KanComplex Z'.right] in
+/-- 始辺は元の標的後合成を施した全族交換区間に厳密一致する。 -/
+lemma exchangeNaturalityInput_zero :
+    ((exchangeInterval Z).basedPost (PointedObject.basedHomMap source.{u} v)).path =
+      ((factoredUniversalInterval Z').pre
+        (extensionSection Z ≫ PointedObject.basedHomMap universalTarget.{u} v)).path := by
+  let P := universalExchangePath.{u}.basedPre Z
+  let P' := universalExchangePath.{u}.basedPre Z'
+  let s := extensionSection Z
+  let r := PointedObject.basedHomMap universalTarget.{u} v
+  let t := PointedObject.basedHomMap source.{u} v
+  change (exchangeInterval Z).path ≫
+      (PointedObject.basedHomMap (PointedObject.basedHom source.{u} Z) t).right =
+    (factoredUniversalInterval Z').path ≫
+      (PointedMapping.prePointed (s ≫ r) (PointedObject.basedHom source.{u} Z')).right
+  rw [exchangeInterval_path, factoredUniversalInterval_path]
+  change (P.path ≫ (PointedMapping.prePointed s
+      (PointedObject.basedHom source.{u} Z)).right) ≫ _ = _
+  have hs := (MonoidalClosed.pre s).naturality t
+  simp only [← PointedMapping.prePointed_eq_closedPre] at hs
+  change PointedObject.basedHomMap (PointedObject.basedHom universalTarget.{u} Z) t ≫
+      PointedMapping.prePointed s (PointedObject.basedHom source.{u} Z') =
+    PointedMapping.prePointed s (PointedObject.basedHom source.{u} Z) ≫
+      PointedObject.basedHomMap (PointedObject.basedHom source.{u} Z) t at hs
+  have h₀ := congrArg (fun q => P.path ≫ q.right) hs.symm
+  have hn := universalExchangePath.{u}.basedPre_post_path v
+  change P.path ≫
+      (PointedObject.basedHomMap (PointedObject.basedHom universalTarget.{u} Z) t).right =
+    P'.path ≫ (PointedMapping.prePointed r (PointedObject.basedHom source.{u} Z')).right at hn
+  have h₁ := congrArg (· ≫ (PointedMapping.prePointed s
+    (PointedObject.basedHom source.{u} Z')).right) hn
+  have h₂ := congrArg (fun q => P'.path ≫ q.right)
+    (PointedMapping.prePointed_comp s r (PointedObject.basedHom source.{u} Z'))
+  simpa only [Under.comp_right, Category.assoc] using h₀.trans (h₁.trans h₂)
+
+omit [KanComplex Z.right] in
+/-- 終辺も、元の入力への前合成を施した同じ全族交換区間に厳密一致する。 -/
+lemma exchangeNaturalityInput_one :
+    ((exchangeInterval Z').pre (PointedObject.basedHomMap source.{u} v)).path =
+      ((factoredUniversalInterval Z').pre
+        (PointedObject.basedHomMap source.{u} v ≫ extensionSection Z')).path := by
+  change (exchangeInterval Z').path ≫ _ = (factoredUniversalInterval Z').path ≫ _
+  rw [exchangeInterval_path, factoredUniversalInterval_path]
+  change ((universalExchangePath.{u}.basedPre Z').path ≫
+    (PointedMapping.prePointed (extensionSection Z')
+      (PointedObject.basedHom source.{u} Z')).right) ≫ _ = _
+  simpa only [Under.comp_right, Category.assoc] using
+    congrArg (fun q => (universalExchangePath.{u}.basedPre Z').path ≫ q.right)
+      (PointedMapping.prePointed_comp (PointedObject.basedHomMap source.{u} v)
+        (extensionSection Z') (PointedObject.basedHom source.{u} Z'))
+
+/-- 全写像族の交換区間の、同じ二次元自然性正方形。 -/
+def exchangeNaturalitySquare :
+    SSet.Homotopy
+      (((exchangeInterval Z).basedPost (PointedObject.basedHomMap source.{u} v)).path)
+      (((exchangeInterval Z').pre (PointedObject.basedHomMap source.{u} v)).path) where
+  h := (exchangeNaturalityInputSquare v).h
+  h₀ := (exchangeNaturalityInputSquare v).h₀.trans (exchangeNaturalityInput_zero v).symm
+  h₁ := (exchangeNaturalityInputSquare v).h₁.trans (exchangeNaturalityInput_one v).symm
+  rel := by ext m ⟨⟨s, hs⟩, t⟩; exact hs.elim
+
+omit [KanComplex Z'.right] in
+/-- 元の切断比較の始点射影は、同じ標的後合成に厳密一致する。 -/
+lemma extensionSectionNaturality_source_projection :
+    (extensionSection Z ≫ PointedObject.basedHomMap universalTarget.{u} v) ≫
+      PointedMapping.prePointed universalUnit.{u} Z' = PointedObject.basedHomMap source.{u} v := by
+  rw [Category.assoc, universalRestriction_post, ← Category.assoc,
+    extensionSection_condition, Category.id_comp]
+
+/-- 自然性正方形の左辺全体は、交換後の同じ厳密な頂点で一定。 -/
+lemma exchangeNaturalitySquare_start :
+    SquareAdjustment.leftSide ≫ (exchangeNaturalitySquare v).h =
+      SSet.const (PointedMapping.familyVertex (PointedObject.basedHomMap source.{u} v ≫
+        PointedMapping.prePointed swap.{u} Z')) := by
+  change SquareAdjustment.leftSide ≫
+    (PointedMapping.VerticalPath.inputSquare (extensionSectionNaturalityInterval v)
+      (factoredUniversalInterval Z')).h = _
+  rw [PointedMapping.VerticalPath.inputSquare_start_factored,
+    extensionSectionNaturality_source_projection]
+
+/-- 自然性正方形の右辺全体も、反転後の同じ厳密な頂点で一定。 -/
+lemma exchangeNaturalitySquare_finish :
+    SquareAdjustment.rightSide ≫ (exchangeNaturalitySquare v).h =
+      SSet.const (PointedMapping.familyVertex (PointedObject.basedHomMap source.{u} v ≫
+        PointedMapping.prePointed reversal.{u} Z')) := by
+  change SquareAdjustment.rightSide ≫
+    (PointedMapping.VerticalPath.inputSquare (extensionSectionNaturalityInterval v)
+      (factoredUniversalInterval Z')).h = _
+  rw [PointedMapping.VerticalPath.inputSquare_finish_factored,
+    extensionSectionNaturality_source_projection]
+
+end SerrePositivity.KST.Spectra.TripleCircle
