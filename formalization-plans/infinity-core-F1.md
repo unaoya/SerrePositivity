@@ -6,136 +6,89 @@
 
 ### 現在地
 
-- F1a〜F1c の fibration・transport・coherent nerve の基盤を提供済み。F1d は未完了。実際の分類写像は、その pinchedHomMap の同値性だけを前提に F0 で同値と結論する定理まで構成済み。通常の圏の nerve 上の元の `leftStraighteningCoherentMap` は充満忠実かつ本質的全射で、F0 による分類同値まで証明済み。任意の底の S の同値性は初頂点引き戻しの充満忠実性と同値であることまで還元済み。その条件自体の証明が残る。
-- F1-2 に着手。`PresheafInfinity C = Fun(ULift C.op, SpaceInfinity)`、quasicategory 性、制限・評価・定値前層、底の同値による制限同値を構成済み。各前層の小さい right unstraightening は元の底上の right fibration で、反転と底変換の射影が厳密に可換。`rightFibrationSlicePointEvaluate` は任意の right fibration への表現可能な相対射を恒等点で評価する自明 Kan fibration。後合成への厳密な自然性と、二つの表現可能 right fibrations 間の相対 Hom から元の pinchedHom への自明 Kan 比較も証明済み。`TwistedArrow C` と両端射影、その厳密な自然性、射影のホーン充填と左右固定の重みの延長との同値を構成済み。固定領域の有限頂点集合を内部点の挿入・削除で対にし、辞書式順位の減少を証明済み。非退化単体への移送・正則性・inner 条件も証明し、延長領域の包含の inner anodyne 性と任意の quasicategory への元の重み上の厳密な延長を構成済み。左右の半分とホーンの各面の像による延長領域の被覆、および任意の二面の共通部分の一致も証明済み。実際の `twistedArrowProjection` の left fibration 性と `TwistedArrow C` の quasicategory 性も証明済み。この射影を実際に straighten した `twistedArrowHomInfinity`、共同評価 `homInfinityJointEvaluation`、curry による一つの写像 `yonedaInfinityMap` を構成し、指定対象への制限 `representablePresheafInfinity` と実際の頂点の一致を証明済み。`representablePresheafInfinity_targetIso` で同じ対象前層を終点固定の実際の射影の分類図式と比較済み。元の `sliceOverProjection` の反転からの `rightRepresentableTwistedArrowMap` を構成し、射影との厳密な可換性と単射性を証明済み。`twistedArrowHomSpace` は元の両端固定の fiber で Kan。左右定値の join 図式との次数ごとの全単射、反転の厳密な fiber 同型、元の表現可能射影の実際の fiber 写像と `cosliceTwistedHomMap` の可換式・同値性の必要十分条件を証明済み。主比較 `cosliceTwistedHomMap_isQCatEquivalence` は、各行の coslice fiber 比較と二重単体図式の対角局所化から証明済み。元の `rightRepresentableTwistedArrowMap` の全空間の同値性と、同じ前層の小さい right unstraightening への底上の実際の比較の同値性も証明済み。`yonedaPresheafEvaluation_isQCatEquivalence` により、同じ対象前層 rep(y) から任意の前層 F への実際の pinched Hom は F(y) と同値であることも証明済み。`representablePresheafValueEquivalence` は rep(z)(y) と元の pinchedHom y z の同値。宇宙移送と端点正規化を含む元の Yoneda Hom 作用を構成し、評価後の具体的な自己写像 `yonedaInfinityEvaluatedMappingSpaceMap` の同値性が充満忠実性と必要十分であることまで証明済み。この自己写像自体の同値性は未証明。
-- left fibrations と strict transport の像の coherent nerve の同値、strict Kan 図式と有限鎖の nerve 上の coherent 図式の復元は関手同型まで構成済み。
-- weighted nerve の豊穣な標準単位は各成分で単射かつ同値。単位に沿う strict な比較の制限は
-  trivial Kan fibration、延長空間は可縮。strict transport の像で同値な厳密な左逆も存在する。
-- 底と図式の共同実現で、`kanDiagramRealization C` と `weightedNerveInfinityMap C ≫ leftStraighteningCoherentMap C` の大域的な関手同型を構成済み。
-- 表現を `LeftTransportRepresentation` に束ねた。任意の底変換は底側と全空間側の両射を厳密に保ち、
-  両射の一致は表現の一致と同値。通常の nerve 上の小さい left fibration の実際の表現も構成済み。
-- 射影の各次数の fiber が小さい場合、任意の底・パラメーターで単射に沿う境界固定延長と延長空間の可縮性を証明済み。任意の cartesian な全空間表示への厳密な延長にも適用済み。
-- 可換四角形全体を関手空間の引き戻し `transportSquareSpace p` として構成。
-  分類図式への射影は left fibration、固定図式上の fiber は相対関手空間と同型。
-  表現を表す頂点の全部分複体 `transportWitnessSpace p` は Kan 複体。
-  実際の表現との頂点全単射、任意の底変換への制限、頂点での厳密な制限の回収を証明済み。
-- 単射への表現空間の制限は Kan fibration、inner anodyne なら trivial Kan fibration
-  （Lemma 5.6.8.10 の空間値版）。指定表現の厳密な延長と、その延長空間の可縮性を証明済み。
-  全頂点を被覆する制限は表現条件を反映する。小さい次数 fiber の一般の底上の表現空間は可縮。
-- left fibration に沿う inner anodyne 射の逆像は前合成同値（Lemma 5.3.6.6 の空間値版）。
-  replacement のホーン逆像の pushout 分解、任意の底変換後の scaffold 比較、依存積の随伴で証明。
-- `parametrizedFiberTransport` は固定端点の写像空間全体で選択独立性・パラメーター制限・係数変更を保ち、各辺で既存の transport を回収する。
-  unstraightening の写像空間比較の fiber 作用と、対象評価後の普遍輸送を関手同型で結んだ。
-- 実際の pointed-space 射影の普遍輸送は写像空間上で同値。豊穣合成・反転・底の同型で証明済み。
-  始点同値に制限した同時端点制限、両端同値の円柱四角形の端点制限は trivial Kan fibration。
-  元の区間の境界上の全空間を両端 fiber の直和と同定。指定境界表現から実際の両端同値を回収した。
-  境界固定 lift 族、四角形の二条件同時 fiber、実際の境界制限の fiber を厳密な同型で結んだ。
-  全頂点を被覆する制限では、表現空間の fiber と周囲の四角形の fiber は厳密に同型。
-  実際の区間上の表現空間の境界制限は trivial Kan fibration（Lemma 5.6.9.1 の空間値版）。
-  積上の表現空間と内部 Hom の同型は実際の底変換制限に自然。底の同型でも表現空間は厳密に同型。
-  任意の底・小さい次数 fiber の分類図式と比較を構成。指定した単位変換の実際の射は余単位の逆であり、両者の底変換の自然性と普遍比較の実際の成分との一致を証明済み。族の制限の自然性と余単位の整合性も全高次パラメーターで証明済み。
-  任意の相対射の collage は区間と底の積上の left fibration。一般の二表現の相対射の族の復元と一意性、相対関手空間全体から分類図式の変換空間への実際の比較射を構成済み。底が ∞ 圏の場合、一般の比較射の同値性を実際の前後合成との可換同型から証明済み。任意の底で、恒等射の族を恒等変換の族へ送る関手同型と、恒等変換のパラメーター制限の厳密な可換性も証明済み。全高次パラメーターで合成三角形を構成し、実際の相対豊穣合成の像を長辺と関手同型で比較した。指定三角形を保った同じ比較も証明済み。任意の inner anodyne な面で、空間値図式と pointed 比較を共同で延長し、部分パラメーター上の既存の両図式を厳密に保つ定理も証明済み。固定図式の面の lift 射影は trivial Kan fibration、各 fiber は可縮。標準表現上では元の unstraightening 比較射が明示的な逆。元の unstraightening の写像空間比較の同値性は任意の底で証明済み（区間・pinched 模型、小さい場合は宇宙縮小後とも）。
-- 全 left fibrations 上で切断の頂点評価・部分図式への制限を豊穣比較から coherent な辺に実現。left anodyne な始点評価・制限は大域的な関手同型。
-  底の一本の辺に沿う全対象の実際の transport の辺・prism と厳密な両端、切断の始点・終点評価による特徴づけを構成済み。
-- 任意の小圏で添字付けた豊穣比較の図式を KanEnrichedDiagram として coherent に実現。任意の添字関手の制限（面・退化を含む）と厳密に可換。合成三点図式の三面は既存の比較の族と厳密に一致。既存の比較の辺そのものの合成三角形と合成等式を証明済み。全対象の transport も底の三角形の合成則・既存三辺の二単体・退化辺の単位則を証明済み。任意の豊穣図式を一本の射へ制限した族は、既存の比較の族と全高次で厳密に一致する。実現の辺そのものの一致と、共同切断評価への特殊化も証明済み。共同降下で選んだ同型の単体圏の任意の辺に対する自然性も証明済み。一単体から終点への制限の辺は初頂点写像で元の辺へ、始点への制限の辺は始点の退化辺へ写る。底上の可換三角形の制限と fiber 評価の合成則を、評価点の等式による輸送を含めて証明済み。任意の単体作用素と評価点で共同切断の制限と fiber 評価は可換で、同じ降下同型の自然性にも合成済み。初頂点の fiber 比較の射は、同じ降下同型の成分・端点の等式・実際の切断評価の合成として明示済み。
-- 全単体の共同切断評価と、底に自然な初頂点写像 λ を構成済み。λ は任意の底で、同じ宇宙および任意の宇宙へ持ち上げた quasicategory 標的への局所化。単体圏の nerve は全ての小余極限と単射を保ち、反転関手は実際の極限表示を持つ。単射上の反転関手の制限の inner fibration、相対可逆 path と同時解像の両端の trivial Kan fibration、可算の塔の比較を使って、単射 pushout と可算骨格で証明済み。共同降下で任意の底の leftStraighteningInfinityMap を構成し、初頂点制限と各頂点の fiber 評価への大域的な関手同型を構成済み。実際の辺は両端の指定 evaluateIso による既存 transport の共役とホモトピー圏で一致する。Kan 値豊穣図式の比較・豊穣関手での前合成・共同対角評価・比較の二点図式・実際の共同族を構成済み。単体の共同切断と under の切断は全対象・全添字・全高次で一つの関手同型を持つ。相対関手空間の底変換同型は前合成・高次の後合成と自然で、同じ共同実現により under の切断と初頂点写像の引き戻しの strict transport を同定済み。leftStraighteningInfinityMap_firstVertexRestrictionIso は、一般の射の初頂点制限を leftFibrationInfinityBaseChange λ ≫ leftStraighteningCoherentMap に接続する。任意の小さい底で、実際の対象図式と任意の相対表現の図式の関手同型を、通常の nerve 上の表現と局所化の充満忠実性から構成済み。小さい unstraightening への余単位成分と実際の分類写像の本質的全射性も証明済み。底が ∞ 圏なら、実際の図式からの底上の復元射・その前合成同値性・left fibrations の coherent nerve 内の単位同型成分も構成済み。任意の底変換について、共同切断の豊穣比較を初頂点局所化で降下し、実際の分類写像と引き戻しを全対象・全高次で比較済み。一点上では実際の分類写像を順方向とする分類同値も証明済み。底が ∞ 圏なら、実際の復元射から元の写像空間と実際の対象図式の変換空間の比較同値を構成済み。Hom 自体の edgewise 解像へ任意の豊穣関手・比較・添字付き図式を移す構成と、係数の左右の射影の共同実現を構成済み。直値と反転係数の strict transport の全対象の関手同型を得た。反転側は各 fibration で既存の leftCoherentTransport の図式全体を厳密に回収する。任意の底の初頂点制限も、この同じ反転 transport の族へ全高次で接続済み。対象ごとの相対表現との主比較は、この同じ共同関手同型の成分を使う。strict transport の replacement の豊穣な Hom の作用・単位と合成、taut と universal scaffold の全相対 Hom に関する自然性を証明済み。充填性を仮定しない底上の豊穣圏に復元 span を束ね、両脚の前合成同値性を保持した。同じ span の成分を既存の復元定理の主経路で使用する。始域に反変・標的に共変な相対 Hom の豊穣双関手を構成し、自然な span の両脚とその逆の合成を一つの二変数の共同関手同型へ実現済み。始域を固定すると既存の全標的の coherent 評価を厳密に回収する。豊穣積の nerve と実際の積の同型で curry し、関手圏値の反変な族へ移した。left fibration 値では標準 Hom の族の前合成そのものであり、復元自己関手の前合成と標準族の関手同型を得た。表現可能な相対 Hom の strict な豊穣比較は、恒等射で実際の底上の射へ回収でき、前合成との全単射・全成分の厳密な回収を証明済み。任意の小さいパラメーターの比較の族にも回収を拡張し、全パラメーター射の制限と厳密に可換。strict 比較の全単体を束ねた空間は相対 Hom の宇宙持ち上げと厳密に同型で Kan。指定ホーンを保つ比較の族の延長も証明済み。標準 Hom の族そのものの pinchedHomMap から実際の coherent 変換空間への主比較を構成し、各標的での評価が相対 Hom の実際の豊穣作用の比較と全次数で厳密に一致することを証明済み。coherent 変換を表現対象の恒等射で評価する回収射を構成。主比較の後に回収する往復は相対 Hom および strict 比較空間の全体で恒等と関手同型であり、実際の単体的ホモトピーも得た。任意の coherent 変換と全相対射の自然性の四角形を構成し、四辺を実際の評価と作用に同定した。両パラメーターの制限を保ち、二つの合成順序を同じ長辺を持つ三角形の族として得た。自己 Hom の実際の恒等射を表す pointed 頂点を固定し、自然性の四角形全体を持ち上げる空間の可縮性と実際の持ち上げとの頂点全単射を証明した。同じ可縮な空間から一つの pointed 四角形と同じ長辺を持つ二つの pointed 三角形を得る。動く始点と辺の対角輸送を構成し、四短辺を実際の普遍輸送の評価へ全パラメーターで比較した。四角形を両端の式から消去し、標準の二段輸送の二順序の関手同型を得た。対角輸送の可換四角形に沿う自然性を証明し、任意の輸送族の動く係数と辺への同時制限と比較した。反対 Kan nerve の一点 coslice 全体を実際の PointedSpaceInfinity へ移す射影を保つ同型を構成。同じ豊穣合成 prism の始点・終点・底を保って移送し、実際の pointedSpaceProjection の普遍輸送との全パラメーターの関手同型と対角評価の比較、移送した fiber 比較の同値性を証明した。標準単体への同型の一意性から点と任意の標準単体の join の反転を全次数で計算し、正規化した slice の反転を同じ錐の射として表示した。移送した fiber 比較は、宇宙・係数反転・端点表示を揃えると既存の coherentCosliceFiberComparison に厳密に一致する。標準の一点 Hom 係数を通すと pointedSpaceLeftResolutionComparison そのものを回収する。左の区間比較を元の coslice 単体の切断制限として全次数で計算した。左切断は反転した時刻での右切断の反転に等しい。一般の豊穣圏で反対圏の右 Hom の区間族を反転して戻すと既存の左 Hom の区間族そのものとなることを証明。実際の pointedReverseKanHomInterval と、固定端点の写像空間への射も、標準頂点の表示変更だけでこの同じ左 Hom 比較と厳密に一致する。任意のパラメーター付き Kan 値の射を同じ反転 Hom のパラメーターへ入れ、反転した豊穣合成の終点を leftPointHomParameterizedMap と全次数で厳密に同定した。標準係数を通すと元の Kan 値の射そのものを回収する。動く始点と任意の同じ大きいパラメーター上で、元の作用と実際の pointedSpaceProjection の対角輸送との関手同型を構成済み。左 Hom の全区間族と任意の豊穣関手の coherent nerve の作用の厳密な自然性を証明した。共通 Hom 解像の左端を反転して戻すパラメーターを構成し、その直接の Kan 作用は edgewiseOppositeKanEnrichedMap の反転した作用そのものと同定した。同じ辺の区間族は共同反転図式の実際の coherent 左 Hom と厳密に一致し、任意の豊穣 Kan 値図式への後合成とも全次数で可換。直接の評価と、この同じ coherent な辺に沿う pointed 輸送の関手同型も得た。反転した左端パラメーターを任意の Hom へ一般化し、その自然性と内部 Hom への射による作用の制限との一致を証明した。任意の豊穣 Kan 値図式の実際の Hom 作用が同じ共同反転図式の辺に一致し、図式全体は既存の全対象の反転比較との合成で元の図式へ戻る。相対 Hom の双関手へ適用し、始域とテスト標的を同時に動かす共同反転図式・一つの関手同型・実際の三つの相対射の合成と同じ辺の輸送の関手同型を構成した。Kan な Hom の反転した共通パラメーター射の同値性を証明し、任意の追加パラメーター全体を保って制限上の関手同型を元の Hom 全体へ戻す構成を得た。left fibration では cocartesian 切断の包含は相対 Hom 全体との同型。任意の始対象での実際の相対評価と coslice の恒等錐での評価は自明 Kan fibration。指定 fiber の全ての点を coslice 全体へ一つの底上の族として同時に延長し、恒等錐での制限が元の fiber 包含と全次数で厳密に一致することを証明した。恒等射の pointed 頂点を unstraightening の始点 fiber へ戻し、coslice 全体から Hom 関手の unstraightening への一つの大域比較を構成した。射影との可換性・恒等錐での値・各 fiber の包含後の式を厳密に証明した。任意のパラメーターで同じ大域比較を相対関手空間へ束ね、恒等錐で評価後の関手同型を全対象上へ戻す一意性と接続した。coslice 全体の標準左区間族を恒等錐上で定値に保って持ち上げ、その終点と同じ始点を持つ大域射の相対頂点同型を構成した。同じ同型を各 fiber に制限し、元の大域比較の実際の作用を恒等点からの標準 coslice 輸送に移した。引き戻し正方形と標準 Kan 頂点での端点正規化により、実際の pointed-space 輸送へ接続済み。同じ反転 Hom 上で豊穣 Kan 評価の作用の輸送と関手同型を得た。右 Hom 比較と反転した左 Hom 比較の零単体が元の通常の射の辺そのものと一致することを証明し、pointed fiber の頂点評価と同じ標準一点 Hom 係数を照合した。恒等係数の像は元の relativeHomPointedIdentity に厳密に一致する。その係数への全反転 Hom の作用は一点評価の逆同型と厳密に一致し、元の大域比較の各 fiber と全空間の同値性を証明した。同じ大域同値による前合成と恒等錐評価を合成し、任意の同じ底上の left fibration への実際の相対関手空間の恒等点評価が同値であることも証明した。既存の実際の unstraightening の写像空間比較と合成した relativeHomCoherentPointedRecovery は全 coherent 変換空間から pointed fiber への一つの同値。同じ pointed 回収を、既存の unstraightening の全変換の普遍的な持ち上げの恒等点での制限として厳密に表示した。この同じ prism の始点・終点・底の全区間族を同定し、元の relativeHomCoherentEvaluationMap を標準 Kan 頂点で展開した区間族に沿う恒等点輸送と一つの関手同型で比較した。pointedRightHomEvaluate により、元の coherent 評価に続く右 Hom の点評価へ分解済み。一点 coslice の恒等射から、元の全区間族の恒等点評価と元の Kan 空間から同じ pointed fiber への pointedRightFiberComparison の同値性も証明した。既存の右 Hom の合成 prism を同じ slice の uncurry と右区間比較で四角形へ展開し、四辺を元の第一射・第二射・豊穣合成・定値辺へ厳密に同定した。一般の left fibration で同じ四辺を保つ四角形の二通りの対角輸送を一つの関手同型で比較し、定値な最終辺の輸送を消去した。標準 Kan 頂点で元の同じ合成四角形を正規化し、元の二つの右 Hom 全体と任意の同じパラメーターの固定始点で、二段の pointed 輸送と実際の豊穣合成に沿う輸送の関手同型を証明した。pointedRightIntervalEvaluate_cosliceIso は元の coslice fiber 全体で右区間評価と恒等射を結ぶ。一点の左右の prism と区間比較の零単体を同じ辺へ厳密に同定し、元の pointed 頂点を右 fiber 比較で頂点同型まで回収した。同じ右 Hom の合成輸送を一点係数へ制限し、内部 Hom の点評価との厳密な等式を用いて、全右 Hom 上の pointedRightHomEvaluate_nativeIso を証明した。恒等射の指定点へ適用し、元の relativeHomCoherentRecovery 自体と実際の主比較の同値性を証明した。relativeHomCoherentEquivalence は元の主比較と回収を両方向に持ち、反対向きの往復にも全 coherent 変換空間上の関手同型と実際の単体的ホモトピーを構成した。標的を動かす共同の自然性との接続は残る。元の標準 Hom の族の実際の pinchedHomMap の同値性を消去則で取り出し、全写像空間での充満忠実性を証明した。一般の充満忠実な射を頂点像の全部分複体へ分解し、任意のパラメーターの関手空間への後合成も充満忠実となることを証明した。同じ標準 Hom の族への後合成で leftStrictTransportReconstructionHomFamilyIso を全空間側へ回収した。反変表示を coherent nerve と単体集合の標準反転同型で戻し、leftStrictTransportReconstructionNaturalIso は元の全 left fibrations の恒等関手と実際の weighted nerve の復元自己関手を一つの関手同型・単体的ホモトピーで結ぶ。終域は元の strict transport・図式の包含・weighted nerve の三写像の合成そのものであり、同じ自己関手の同値性も証明した。充満忠実な後合成での同型回収の両逆則を証明し、回収した反変の全空間の同型を標準 Hom の族へ写し戻すと元の scaffold の同型そのものに一致することを証明した。strict transport の像からの実際の weighted nerve を逆射に固定し、前合成の充満忠実性で像側の往復も恒等へ結んだ。leftStrictTransportWeightedNerveEquivalence は実際の strict transport と weighted nerve を両方向に持つ。元の weighted 係数を豊穣関手の全 Hom の作用で写す自然変換を構成し、weighted cone simplex の初点・係数・空の Hom・正頂点の四分岐で後合成との厳密な一致を証明した。同じ coherent coslice の始点を標準表示へ正規化し、実際の weightedCosliceComparison の全単体の後合成自然性を証明した。coherentConeTotalFunctorImage は同じ底上の pullback の射であり、元の weightedCoherentConeComparison そのものと豊穣関手の像の比較の可換式を全空間で証明した。局所 Kan な任意の豊穣圏で元の weighted cone 比較自体が前合成同値であることを証明し、始点から図式値への Hom が同値なら元の全空間の後合成も前合成同値と示した。共通 Hom 解像から反転 Hom への実際の作用を左端射影と標準内部 Hom 反転同型の合成へ厳密に分解し、同値性を証明した。共通解像の一点 cone から直値・反転値の実際の unstraightening への底を保つ二脚を構成し、双方の前合成同値性を証明した。標準一点の反転だけは厳密に同じ一点であることを証明して正規化した。通常の射を重み全体で定値にした標準持ち上げは恒等・合成を保ち、右は元の図式、左は元の strict 反転図式そのものへ戻る。strictKanCommonUnstraighteningRight と Opposite は、この同じ共通全空間から元の二つの unstraightening への実際の底上の前合成同値。図式と始点の等号に沿う weighted 係数・cone 全空間・標準 unstraightening の表示変更を、元の同じ比較射に保って照合した。共通係数の反転 Hom の作用から元の weighted nerve への strictKanCommonWeightedParameterMap を構成し、この射に元の oppositeKanUnstraighteningComparison を続けた合成が、共通 weighted cone 比較と同じ左脚の合成に全単体で厳密に一致することを証明した。同じパラメーター射は底を保つ前合成同値。任意の同じ底上の left fibration への相対射の空間の制限も同値であり、追加パラメーター全体の関手同型を元の weighted nerve の相対射の族へ降下する strictKanCommonWeightedDescendIso も構成した。全 strict Kan 図式の評価を KanEnrichedDiagram に束ね、反転図式間の区間変換を全 Hom の共通解像上に構成した。同じ相対関手空間への元の weighted 作用側と反転 unstraightening 作用側の二つの族を構成し、後者の実際の pointed prism を元の共通 weighted 係数へ制限した。始点は同じ cone 比較と左脚、終点は右側の全相対射、底は同じ反転変換の全区間族と厳密に一致する。weighted 側の共通始域からの全 Hom の実際の評価を strictKanCommonWeightedHomFamily として展開し、係数射と右端射影を保持する同時評価式・底への射影・元の HomLeft の制限との一致を証明した。同じ始点・底からこの weighted 側へ終わる prism を与えれば、元の全相対 Hom の比較同型へ降下する oppositeUnstraighteningHomComparisonIsoOfPrism も証明した。混合 prism の交差 Hom のため、同じ path の最後の零頂点と最初の一頂点を構成した。包含の単調性・反単調性、同じラベル側での四つの合成則、任意の単調な添字変換との整合性を証明した。同じ edgewise 重み内で左座標から右座標へ移る pathCutEdgewisePrism と、任意の Hom 単体での評価・両端・後合成自然性を構成した。段階を最後の零頂点で読み取る pathCutEdgewiseStageMap は合成則を保ち、coherentTwoSidedHomSimplex は全段階で豊穣恒等・合成を保つ実際の二対象の coherent 単体となる。実際の edgewise 重みの添字変換を標準単体の左右の頂点で照合し、段階ごとの Hom 評価と元の thickening の射の可換性を証明した。混合 coherent 単体の面・退化自然性を証明し、二つの区間と全 Hom の共通解像を保持する coherentTwoSidedHomFamily へ束ねた。主区間の両端は全補間段階・全 Hom 上で元の二頂点に厳密に定値で、同じ正方形から固定端点の区間変換空間への coherentTwoSidedHomIntervalFamily とその展開式も構成した。補間の右端の Hom 評価は、元の右射影を最後の零頂点で評価する射に厳密に一致する。最後の零頂点の射を元の前面の path と既存の切断最大座標の合成へ戻し、coherentTwoSidedHomSimplex_one_front・one_cut と coherentTwoSidedHomIntervalFamily_one により、補間段階の右端が元の右 Hom 比較の区間族への右射影の前合成そのものに一致すると証明した。path の実際の反転を coherentReverseThickening の Hom 作用と同定し、最初の一頂点の反転が反転 path の最後の零頂点に一致すると証明した。左端の Hom 評価を元の左射影と反転 path の最大座標へ戻し、coherentTwoSidedHomSimplex_zero_model・zero_cut と coherentTwoSidedHomIntervalFamily_zero により左端も既存の左 Hom 区間族に厳密に同定した。同じ全 Hom の共通解像上の固定端点ホモトピーを構成し、任意の KanEnrichedDiagram の共同実現後にも、実際の strict 図式間の変換空間で左右を結ぶ kanEnrichedDiagramTwoSidedHomIntervalIso を構成した。始域の局所 Kan 性は要求しない。元の反転 strict 図式の Hom パラメーターへの適用、全 weighted source 上の pointed prism の存在、元の HomLeft と HomRight の自然同型、全相対 Hom に関する共同実現、分類写像自体の pinchedHomMap との全高次の照合は未証明。相対表現との比較の全対象の自然性・一般の底の充満忠実性・三角恒等式は残る。
-  共同切断評価と λ は同じ指定辺を反転する。局所化の降下は対象ごとの選択ではなく、反転関手全体の coherent な逆と大域的な関手同型として構成済み。
-- 対象ビルド4250 jobs、公理監査9801宣言が成功。依存公理は標準3公理のみ。ルート全体は検査対象外。
+- F1a〜F1c の fibration・transport・coherent nerve の基盤は提供済み。F1d は未完了。
+- 小さい単体 fiber について、任意の底・境界固定の相対表現の延長と表現空間の可縮性を証明済み。
+  weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
+- c1 の実際の unstraightening の写像空間比較は、区間・pinched・宇宙縮小後とも同値。
+  通常の圏の nerve 上の元の S は充満忠実かつ本質的全射で、F0 により分類同値を閉じた。
+- 一般の底の実際の S は構成済みで本質的全射。復元射・単位成分・底変換比較も構成済み。
+  ただし、その同じ S の充満忠実性は未証明。初頂点 λ に沿う実際の全相対 Hom の引き戻し作用の
+  同値性と厳密に同値である。独立な c1 の比較と S の本質的全射性を直接合わせない。
+- F1-2：前層 ∞ 圏、制限・評価・定値前層、底の同値による制限同値、right unstraightening を構成済み。
+  right fibration 版の恒等点評価は自明 Kan fibration。後合成の自然性も証明済み。
+- twisted arrow の両端射影は実際の left fibration。固定領域の inner anodyne 性から全ホーンを充填済み。
+  この同じ射影の分類図式を curry して `yonedaInfinityMap` を構成し、対象前層 rep(y) も同定済み。
+- coslice の両端固定の主比較は、行ごとの比較と二重単体図式の対角局所化により同値。
+  元の表現可能射影と rep(y) の小さい right unstraightening の間の、底上の実際の同値を構成済み。
+- 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
+  を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
+- 始点固定の twisted arrow 全空間への元の coslice 比較は同値。同じ恒等点は始対象であり、
+  恒等点からの実際の全 Hom 輸送 `twistedArrowIdentityHomTransport` も同値。
+- 先の評価で使った unstraightening 内の恒等点も始対象。その同じ点での直接評価と、
+  元の `representableUnstraighteningEvaluation` の全パラメーターでの厳密な一致も証明済み。
+- 同じ Yoneda 写像の充満忠実性は未証明。評価後の自己写像の同値性を別途証明する必要がある。
 
 ### 残り（依存順）
 
-見積もりは再開後の実作業時間の粗い幅で、研究上の障害による上振れがある。
+見積もりは粗い幅で、研究上の障害による上振れがある。
 
-1. 次数 fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱め、相対表現の延長へ一般化する。
-   Kerodon Theorem 5.6.5.12、Corollary 5.6.5.15。40〜160時間。
-2. 実際の分類写像の pinchedHomMap と既存の写像空間比較を照合し、充満忠実性を証明する。本質的全射性と F0 の判定で空間値の分類同値を結論する。明示的な単位・余単位と三角恒等式は同値の証明後の任意の追加結果とする。
-   Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
-3. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
-   Kerodon Theorem 5.6.0.2、§5.5。80〜240時間以上。
-4. F1-2：実際の Yoneda 写像・元の表現可能射影との底上の同値・前層 ∞ 圏内の Map(rep(y),F) ≃ F(y) は証明済み。次は F=rep(z) の評価が同じ Yoneda 写像の Hom 作用を回収することを照合して充満忠実性を証明する。twisted arrow・Hom 関手は α2b と分担する。
-   Kerodon §§8.1〜8.3。40〜160時間。Kan 拡張は α2b の成果を使用可能。
-5. F1i：通常の圏の nerve 上で Grothendieck 構成と Yoneda を回収する。
-   Kerodon §§5.6、8.3 の通常圏への特殊化。8〜32時間。
+1. F1-1c2：一般の S の Hom 作用と復元比較の照合。Kerodon Cor 5.6.0.6、§5.6.5。24〜100時間。
+   同じ関手の充満忠実性・本質的全射性で F0 を使う。明示的な単位・余単位と三角恒等式は任意。
+2. essentially small な ∞ 圏的 fiber への相対延長。Thm 5.6.5.12、Cor 5.6.5.15。40〜160時間。
+3. cocartesian・Cat∞ 値の分類と必要な宇宙の一般化。Thm 5.6.0.2、§5.5。80〜240時間以上。
+4. F1-2：同じ Yoneda 写像の実際の Hom 作用を恒等点からの輸送と照合し、充満忠実性を閉じる。
+   Kerodon §§8.1〜8.3。40〜160時間。twisted arrow・Hom 関手は α2b と分担する。
+5. 通常圏の nerve 上で Grothendieck 構成と Yoneda を回収する。§§5.6、8.3。8〜32時間。
 
 ### 主要宣言（名前のみ）
 
-- `IsCartesianEdge`、`IsCocartesianEdge`、`SpaceInfinity`、`CatInfinity`、`PresheafInfinity`、`rightFibrationYonedaEquivalence`、`rightFibrationRepresentableMappingComparison_isQCatEquivalence`
-- `leftStraighteningCoherentMap`、`smallLeftUnstraighteningObject`
-- `leftStrictTransportInfinityEquivalence`、`leftUnstraighteningMappingSpaceMap`
-- `weightedNerveStraighteningCoherentUnitIso`、`weightedNerveStraighteningCoherentFamilyUnitIso`
-- `LeftTransportRepresentation`、`LeftTransportRepresentation.restrict`
-- `transportWitnessSpace`、`transportWitnessVertexEquiv`、`transportWitnessSpace_kanComplex`
-- `leftFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
-- `HasSmallSimplexFibers`、`smallFiberTransportWitnessSpace_isContractibleKan`、`smallFiberTransportWitnessRestriction_trivialKanFibration`
-- `exists_small_leftTransportRepresentation_extension`、`exists_small_transportWitnessFamily_lift`
-- `FiberTransportFamily`、`parametrizedFiberTransport`
-- `leftUnstraighteningMappingFiberHom_parametrizedIso`
-- `coherentStraighteningCounit`、`coherentStraighteningUnitTransformation_eq_counit_inv`、`transportRepresentationMappingSpaceMap`、`smallFiberLeftStraighteningMappingSpaceMap`、`transportRepresentationUnstraighteningMappingEquivalence`、`kanEnrichedComparisonEdge_compStruct`、`leftFibrationNaturalTransportCompStruct`、`transportSimplexSectionInfinity`、`relativeSectionFirstVertexRestrictionIso`、`transportSimplexFirstVertexMap`、`transportSimplexInitialEdgesLifted`、`transportStandardFirstVertexSection_comp`、`ordinaryComparisonHomotopy`、`transportStandardInvertingDescentIso`、`transportStandardInvertingFamilyIso`、`transportSimplexFirstVertexMap_standard_isLocalization`、`transportSimplexSubcomplexIso`、`transportSimplexNerve_bicart_isPushout`、`transportSimplexLocalizationComparison`、`transportSimplexInvertsEdges_of_isPushout`、`transportSimplexInverting_bicart_isPullback`、`transportSimplexChainEquiv`、`transportSimplexNerve_isPushout`、`transportSimplexInverting_isPullback_of_isPushout`、`transportSimplexInvertingRestriction_innerFibration`、`FunctorIso.invertsEdges_iff`、`fullSubcomplexEquivalencePathLift_map`、`transportSimplexInvertingRestriction_relativePath_trivialKanFibration`、`IsQCatEquivalence.trivialKanFibration_of_relativePath`、`replacementSquareEndCorner_isQCatEquivalence`、`replacementSquareStartCorner_trivialKanFibration`、`exists_innerPrism_extension_over_fixed_endpoints`、`replacementSquareEndCorner_innerFibration`、`kanEquivalenceLifting_transportSimplexInvertingRestriction`、`IsQCatEquivalence.trivialKanFibration_of_kanEquivalenceLifting`、`trivialKanFibration_replacementSquareEndCorner`、`spanPullbackMap`、`trivialKanFibration_spanPullbackMap_of_left_corner`、`isPrecompositionEquivalence_spanPullbackMap_of_equivalenceLifting`、`transportSimplexFirstVertexMap_isLocalization_of_isPushout`、`transportSimplexNerveFunctor_preservesColimits`、`transportSimplexInvertingConeIsLimit`、`transportSimplexFirstVertexMap_isLocalization_of_isInitial`、`isPrecompositionEquivalence_discreteConeMap`、`transportSimplexFirstVertexMap_isLocalization_coproduct`、`trivialKanFibration_inverseSequenceConeMap`、`inverseSequencePathDiagram`、`isPrecompositionEquivalence_inverseSequenceConeMap`、`transportSimplexFirstVertexMap_isLocalization`、`transportSimplexInvertingDescentFamilyIso`、`transportSimplexNerveUliftIso`、`transportSimplexFirstVertexMap_ulift_isLocalization`、`leftStraighteningInfinityMap`、`leftStraighteningInfinityMap_restrictIso`、`leftStraighteningInfinityMap_evaluateIso`、`KanEnrichedDiagram.realization_arrow`、`KanEnrichedDiagram.realizationEdge_eq`、`relativeSectionDiagramInfinity_edge`、`leftStraighteningSectionJointDiagram_restrictIso_naturality`、`transportSimplexFirstVertexMap_terminalRestriction`、`transportSimplexFirstVertexMap_initialRestriction`、`relativeFunctorOverPreComparisonEdge_evaluate`、`transportSimplexSectionInfinity_restriction_evaluate`、`leftStraighteningSectionJointDiagram_restriction_evaluate`、`leftStraighteningInfinityMap_firstVertexFiberIso_hom`、`leftStraighteningInfinityMap_edge`、`leftStraighteningInfinityMap_edge_evaluateIso`、`leftStraighteningInfinityMap_edge_hom`、`transportSimplexUnderDomainTransformation`、`relativeSectionRealizationComparisonIso`、`transportSimplexUnderJointIso`、`leftStraighteningInfinityMap_underRealizationIso`、`relativeSectionBaseChangeRealizationIso`、`KanEnrichedDiagramComparison.realizationIso`、`leftStraighteningInfinityMap_firstVertexRestrictionIso`、`leftStraighteningInfinityDiagram_representationIso`、`leftStraighteningInfinityCounit`、`leftStraighteningInfinityMap_isEssentiallySurjective`、`leftStraighteningInfinityReconstruction`、`leftStraighteningInfinityUnitVertex`、`leftStraighteningInfinityMap_baseChangeIso`、`leftStraighteningInfinityPointEquivalence`、`leftStraighteningInfinityMappingComparisonEquivalence`、`leftStraighteningInfinityPinchedHomMap`、`KanEnrichedDiagram.oppositeRealizationIso`、`leftStraighteningCoherentMap_oppositeIso`、`leftStraighteningInfinityMap_firstVertexOppositeIso`、`leftStraighteningInfinityDiagram_firstVertexTransportIso`、`simplicialReplacementMappingSpaceMap`、`universalScaffoldOverComparison`、`tautScaffoldOverComparison`、`leftStrictTransportReconstructionTestIso`、`simplicialOverTestBifunctor`、`SimplicialOverComparison.jointTestIso`、`leftStrictTransportReconstructionJointTestIso`、`simplicialPairNerveIso`、`simplicialOverTestFamily`、`leftFibrationHomTestFamily`、`leftStrictTransportReconstructionHomFamilyIso`、`relativeHomComparisonEquiv`、`relativeHomComparisonHom_component`、`relativeHomComparisonFamilyEquiv`、`relativeHomComparisonSpaceIso`、`exists_relativeHomComparisonFamily_horn_extension`、`leftFibrationHomTestFamily_evaluate`、`relativeHomCoherentComparison`、`relativeHomComparisonSpaceCoherentMap`、`relativeHomCoherentComparison_evaluate`、`relativeHomCoherentRecovery`、`relativeHomCoherentComparisonRecoveryIso`、`relativeHomComparisonSpaceRecoveryMap`、`relativeHomComparisonSpaceRecoveryHomotopy`、`relativeHomCoherentNaturalitySquare`、`relativeHomCoherentNaturalitySquare_evaluation_one`、`relativeHomCoherentNaturalityTriangle_longEdge`、`relativeHomPointedIdentity_value`、`relativeHomPointedNaturalitySpace_isContractibleKan`、`relativeHomPointedNaturalitySpaceVertexEquiv`、`exists_relativeHomPointedNaturalityTriangles`、`diagonalFiberTransport_evaluate`、`leftFibrationPrism_diagonalTransportIso`、`diagonalFiberTransport_sourceIso`、`relativeHomPointedCanonicalTransportSquareIso`、`FiberTransportFamily.diagonalIso`、`diagonalFiberTransport_squareIso`、`reverseKanPointCosliceIso`、`pointedReverseKanCompositionTransport_parametrizedIso`、`pointedReverseKanCompositionTransport_diagonalIso`、`pointedReverseKanFiberComparison_isQCatEquivalence`、`pointJoinReverseIso_inv_coordinates`、`pointSliceReverseFiberIso_pinched_app_val`、`pointedReverseKanFiberComparison_coordinates`、`pointedReverseKanFiberComparison_resolution`、`coherentLeftPrismCut_eq_reverse`、`cosliceFiberToIntervalMappingSpace_evaluate`、`coherentLeftHomInterval_eq_reverse`、`pointedReverseKanHomInterval_eq_left`、`pointedReverseKanHomIntervalMap_eq_left`、`leftPointHomReverseParameter`、`leftPointHomParameterizedMap_reverseComposition`、`leftPointHomReverseComposition_coefficient`、`kanParameterizedLeftHomInterval`、`pointedSpaceLeftResolution_parametrizedTransportIso`、`coherentLeftHomInterval_enriched_naturality`、`edgewiseReflectedHomParameter_reverse`、`edgewiseKanActionInterval_uncurry`、`edgewiseKanActionInterval_enriched_uncurry`、`edgewiseKanAction_transportIso`、`edgewiseReflectedParameter_naturality`、`leftPointHomReverseParameter_uncurry`、`edgewiseEnrichedKanDiagramIso`、`edgewiseEnrichedKanAction_transportIso`、`simplicialOverJointOppositeTestIso`、`simplicialOverJointActionInterval_uncurry`、`simplicialOverTestBifunctor_action_apply`、`simplicialOverJointAction_transportIso`、`edgewiseReflectedParameter_isQCatEquivalence`、`edgewiseReflectedParameter_tensorDescendIso`、`relativeFunctorEvaluate_initial_trivialKanFibration`、`leftFibrationCoslicePointEvaluate_trivialKanFibration`、`leftFibrationCoslicePointFamily`、`leftFibrationCoslicePointFamily_identity`、`relativeHomCosliceComparison`、`relativeHomCosliceComparisonFiber_ι`、`leftFibrationCoslicePointEvaluate_reflectIso`、`relativeHomCosliceComparisonSectionFamily_uniqueIso`、`leftFibrationCosliceMap_transportIso`、`relativeHomCosliceComparisonFiber_pointedTransportIso`、`coherentKanLeftHomIntervalMap_naturality`、`relativeHomCosliceComparisonFiber_enrichedActionIso`、`pointedReverseKanFiberComparison_vertex`、`relativeHomIdentityCoefficient_pointed`、`relativeHomIdentityAction_eq`、`relativeHomCosliceComparison_isQCatEquivalence`、`relativeHomIdentityEvaluate_isQCatEquivalence`、`relativeHomCoherentPointedRecovery_isQCatEquivalence`、`relativeHomPointedRecoveryPrism_projection`、`relativeHomPointedEvaluationInterval_uncurry`、`relativeHomCoherentPointedRecovery_evaluateIso`、`pointedRightIntervalEvaluate_isQCatEquivalence`、`pointedRightFiberComparison_isQCatEquivalence`、`coherentCompositionSquare`、`TransportIntervalSquare.transportIso`、`TransportIntervalSquare.constantTopIso`、`coherentKanRightCompositionTransportIso`、`coherentKanRightCompositionTransport_diagonalIso`、`pointedRightIntervalEvaluate_cosliceIso`、`relativeHomCoherentEquivalence`、`relativeHomCoherentRecovery_pointedIso`、`relativeHomCoherentRecoveryComparisonHomotopy`、`leftFibrationHomTestFamily_isFullyFaithful`、`leftStrictTransportReconstructionNaturalIso`、`leftStrictTransportWeightedNerveNaturalIso`、`leftStrictTransportWeightedNerveEquivalence`、`leftStrictTransportReconstructionOppositeIso_testFamily`、`weightedHomFunctorImage`、`weightedCosliceComparison_functorImage`、`weightedCoherentConeComparison_functorImage`、`strictKanCommonUnstraighteningRight`、`strictKanCommonUnstraighteningOpposite`、`strictKanCommonWeightedParameterMap_compare`、`strictKanCommonWeightedDescendIso`、`weightedKanLeftCutConeSimplex_reindex`、`weightedKanLeftCutCoslicePrism`、`weightedKanLeftCutCoslicePrism_projection`、`weightedKanLeftCutCoslicePrism_zero`、`weightedKanLeftCutCoslicePrism_one`、`weightedKanHomCompositeDiagram_app`、`commonWeightedNativePointedPrism`、`commonWeightedNativePointedPrism_zero`、`commonWeightedNativePointedPrism_one`、`commonWeightedNativePointedPrism_projection`、`commonWeightedNativePointedPrism_one_eq`、`oppositeUnstraighteningHomComparisonIso`、`strictTransportOppositeHomInterval_isQCatEquivalence`、`leftStraighteningCoherentMap_isFullyFaithful`
+- `leftStraighteningInfinityMap`、`leftStraighteningInfinityMap_isEssentiallySurjective`
+- `leftStraighteningCoherentEquivalence`、`leftStraighteningInfinityReconstruction`
+- `leftStraighteningInfinityMap_isQCatEquivalence_iff_relativeFunctorPullback`
+- `yonedaInfinityMap`、`representablePresheafInfinity`、`representablePresheafInfinity_sliceIso`
+- `representableRightUnstraighteningComparison_isQCatEquivalence`
+- `yonedaPresheafEvaluation_isQCatEquivalence`、`representablePresheafValueEquivalence`
+- `yonedaInfinityEvaluatedMappingSpaceMap`、`yonedaInfinityMap_isFullyFaithful_iff_evaluatedMappingSpace`
+- `twistedArrowSourceIdentity_isInitialVertex`、`twistedArrowIdentityHomTransport_isQCatEquivalence`
+- `representableUnstraighteningEvaluation_eq_identityEvaluation`
 
 ### 依存と提供
 
-- 一般の証明済み道具 `HomotopicalAlgebra/Simplicial/` の KanTestDetection・DiagonalAdjunction・DiagonalLocalizedEquivalence を読み取り専用で使う。
-
-- Core、Coherent/Quasicategory、Stable/SliceOpposite・IdentityCocone、HomotopyLimits（ConeInitialParameter・ConeInitialHom・ConeInitialSimplex を含む）、KST/Spectra/FibrationTower*、F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite・Localization・HomotopyWhiskering・RestrictedPrecomposition・FullSubcomplexFunctorFaithful・KanEquivalenceLifting・KanRelativeInternalHomLifting・RightAnodyneTensor・KanTerminalPointAnodyne・KanSliceIdentityTerminal・CofinalOppositeFibration・IntervalFamilyPathParameters・KanInitialSectionLifting は読み取り専用。
-- 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
-  𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
-- 再開時は F1/README.md の原典照合と方針を維持し、他レーンのファイルは編集しない。
+- F0・Coherent・Stable・F1B・HomotopyLimits の既存の一般論は読み取り専用。
+- 一般道具 KanTestDetection・DiagonalAdjunction・DiagonalLocalizedEquivalence は読み取り専用。
+- F1/、F1.lean、audit_infinity_f1.lean、本計画だけを所有する。他レーンは変更しない。
+- 新規 sorry・公理・未証明引用なし。公開主経路に ModelCategory SSet 等の追加 instance 仮定なし。
+  KanComplex と TrivialKanFibration は、Mathlib のホーン・境界に対する持ち上げ性を使う。
 
 ### 未コミット
 
-- 前層 ∞ 圏内の Map(rep(y),F) ≃ F(y) は `b4c937cbc` に保存済み。
-  F1 全体ビルド4247 jobs、公理監査9767宣言が成功（標準3公理のみ）。
-- 実際の表現可能前層の値、元の pinched Hom の厳密な宇宙移送、評価後の同じ Yoneda
-  Hom 作用の所有3モジュールと集約・監査・計画が今回の保存単位。
+- 値の同値・宇宙移送・同じ Yoneda Hom 作用は `3cdde3b95` に保存済み。
   F1 全体ビルド4250 jobs、公理監査9801宣言が成功（標準3公理のみ）。
-- 指定の RelativeFunctorAnodyneRestriction・RelativeFunctorRestrictionFiber と集約は
-  `a12f7e9f4` で保存済み。所有ファイルだけを `git commit --only` で保存する。
+- 始点固定の射影・恒等点の始対象性と輸送・同じ unstraightening 恒等点の所有3モジュール、
+  集約・監査・計画が今回の保存単位。F1 全体ビルド4403 jobs、公理監査9833宣言が成功。
+  標準3公理のみ。通る所有ファイルだけを早めに `git commit --only` で保存する。
+- N が読む指定の2ファイルと集約は `a12f7e9f4` で保存済み。
 
 ### 既知の問題
 
-- F1 のソースに明示的な `ModelCategory SSet` 仮定はない。モデル構造は使わない。
-  `Fibration`・`TrivialKanFibration` はホーン・境界に対する持ち上げ性として用いる。
-- strict Kan 図式の strict な Hom が一般に Kan とは主張しない。
-  局所 strictification は任意の内面制限と可換でも、境界を固定した構成でもない。
-- 各 fiber の同値や辺での一致だけでは図式全体の同型・分類を導けない。
-  同値の反映は既証明であり、残る一般の単位・充満忠実性の代わりにはならない。反転関手の単射への制限と同時解像の終点比較の前合成同値の持ち上げは証明済み。局所化比較への適用と単射に沿う pushout での保存も証明済み。余極限の nerve と反転関手の極限表示、空の底の局所化は証明済み。小余積の局所化比較の同値性も証明済み。可算骨格の極限での比較と、任意の底・同じ宇宙の標的への局所化も証明済み。係数を合わせる宇宙持ち上げとの比較と、共同切断評価の降下への適用も証明済み。
-- 任意の単射の境界固定延長と高次パラメーターの同時持ち上げは、射影の各次数の fiber が小さい場合に証明済み。
-  任意の底上の coherent 空間値図式の unstraightening にも底・パラメーターの小ささを仮定せず適用済み。
-  各次数の fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱める相対延長は未証明。
-- 単位・余単位の成分と底変換の自然性は証明済み。任意の小さい底の left fibrations の ∞ 圏から関手 ∞ 圏への leftStraighteningInfinityMap は構成済み。相対表現との対象図式全体の比較・本質的全射性・小さい unstraightening への余単位成分は証明済み。底が ∞ 圏なら実際の復元射と単位同型成分も構成済み。任意の底変換との全対象の両立と一点上の実際の分類同値は証明済み。通常の圏の nerve 上では実際の写像空間作用との照合と充満忠実性に加え、同じ写像の本質的全射性と分類同値を証明済み。任意の底の実際の S の作用との照合と充満忠実性は未証明。明示的な単位・余単位と三角恒等式は分類同値の先行条件から外す。
+- λ は局所化であり、圏同値として消去しない。一般の S の充満忠実性は依然未証明。
+- 独立な Hom 同値だけを同じ Yoneda 写像の充満忠実性と数えない。
+  比較の選択が入るため、評価後の自己写像が定義上恒等であるとは仮定しない。
+- strict Kan 図式の strict な Hom が一般に Kan とは主張しない。小さい単体 fiber の条件を
+  essentially small な ∞ 圏的 fiber だけへ弱める相対延長と、Cat∞ 値の分類も未証明。
 
 ### 次の一手
 
-F1-1c2 は同じ実際の S の本質的全射性まで証明済みで、通常の圏の nerve 上では
-充満忠実性と合わせて F0 による同値を閉じた。一般の底では c1 の独立な写像空間比較を
-そのまま S の Hom 作用とは同一視できない。
-`leftStraighteningInfinityMap_isQCatEquivalence_iff_relativeFunctorPullback` により、残件は
-全ての小さい left fibrations p,q に対する、初頂点 λ に沿う元の
-`relativeFunctorPullback p q λ` 自体の同値性である。次はこの全パラメーターの作用と
-既存の共同切断・復元比較の可換式を証明する。λ 自体は局所化であり、圏同値として消去しない。
-明示的な単位・余単位と三角恒等式は同値の証明後の任意の追加結果とし、先行条件にしない。
-この空間値版の後にも essentially small な fiber と Cat∞ 値版は別途残る。
+F1-2：TwistedArrowSourceInitial の実際の恒等点輸送の同値まで通った。
+次は twistedArrowProjection C 全体の `leftStraighteningInfinityReconstruction` を、終点固定の
+底の包含に沿って制限する。`smallLeftUnstraighteningMap_isPullback` と
+`representablePresheafInfinity_eq_targetRestriction` により、Tw の同じ恒等点から rep(y) の
+unstraightening 内の評価点を取る。既存の別々に選んだ評価点との一致を仮定しない。
+その評価が c1 の `leftUnstraighteningMappingFiberHom_parametrizedIso` を通して、始点固定の
+`twistedArrowIdentityHomTransport` を回収することを全パラメーターで照合する。
+F1-1c2：別途、初頂点引き戻しの全相対 Hom 作用の同値性を証明し、同じ S に F0 を適用する。
 
-F1-2 の主比較 `cosliceTwistedHomMap_isQCatEquivalence` は証明済み。
-各行を coslice fiber と厳密に同定し、行ごとの同値を二重単体図式の対角局所化で戻した。
-元の `rightRepresentableTwistedArrowMap` の fiber にこの同値を戻し、全空間の同値を証明済み。
-`representablePresheafInfinity_sliceIso` は同じ対象前層と元の slice の分類図式の関手同型。
-`representableRightUnstraighteningComparison` は元の slice から同じ前層の小さい right
-unstraightening への実際の底上の同値である。
-`representableUnstraighteningEvaluation_isQCatEquivalence` は、任意の標的 left fibration
-への相対射を元の coslice の恒等点で評価する同値である。
-`yonedaPresheafEvaluation_isQCatEquivalence` は c1 の実際の pinched Hom 比較とこれを合成し、
-同じ rep(y) から任意の F への前層 ∞ 圏内の写像空間を F(y) と比較する。
-F=rep(z) の評価に続く `yonedaRepresentableMappingComparison` も元の pinchedHom y z の
-持ち上げへの同値である。`uliftPinchedHomIso` は宇宙移送を元の Hom 作用に厳密に自然にする。
-`yonedaInfinityMap_isFullyFaithful_iff_evaluatedMappingSpace` により、残る実際の射は
-`yonedaInfinityEvaluatedMappingSpaceMap y z` である。
-次は始点固定の twisted arrow 射影への coslice 比較の同値と恒等点の始対象性を証明し、
-同じ恒等点からの全 Hom パラメーターの輸送として、この具体的な自己写像を照合する。
-比較の選択が入るため、自己写像が定義上恒等であるとは仮定しない。
-独立な Hom 同値だけを同じ Yoneda 写像の充満忠実性とは数えない。
-
-全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md)（レーン α）の成果を読み取り専用で使う。
+全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 
 ## 0. 目標と範囲
 

@@ -1360,3 +1360,9 @@ public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafValues
 public import SerrePositivity.InfinityCategories.F1.UniversePinchedHom
 
 public import SerrePositivity.InfinityCategories.F1.YonedaRepresentableMapping
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowSource
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourceInitial
+
+public import SerrePositivity.InfinityCategories.F1.RepresentableUnstraighteningIdentity
