@@ -717,3 +717,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_boundary_detection
 #check @SerrePositivity.InfinityCategories.F2.constantPullbackFiberIso
 #check @SerrePositivity.InfinityCategories.F2.constantPullbackFiberIso_snd
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorConstFiberIso
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTargetMap_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallConstantTargetMap_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.homotopyFatCocone_cylinder
+#check @SerrePositivity.InfinityCategories.F2.HomotopyCoconeRealization
+#check @SerrePositivity.InfinityCategories.F2.homotopyCoconeRealization
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalVertex_object
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_factor
+#check @SerrePositivity.InfinityCategories.F2.CoherentConstantRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalUnitRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeRealization
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_pre_homotopyEquivalence

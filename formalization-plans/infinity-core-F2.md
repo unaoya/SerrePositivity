@@ -34,7 +34,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   一般 coherent filtered 図式では、小さい全空間の Kan 模型への有限射を元の一つの値で検出。
   指定した底・部分図式の全円柱を保持する相対輸送、境界の厳密な一致を持つ相対有限検出を証明。
   有限ホモトピーと境界の充填を同じ fiber 内で検出。全値が可縮なら全空間模型も可縮。
-  三集約同時ビルド 7049 jobs、公理監査 1866 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  定値標的への変換と全空間からの写像空間の同値を構成。実際の単位から native 余錐を構成し、頂点を同定。
+  三集約同時ビルド 7060 jobs、公理監査 1927 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -66,8 +67,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.intervalPullbackCone_isLimit` / `F2.filteredIntervalPullbackExchange`
 - `F2.coherentFilteredTotalKan_finite_value_detection` / `F2.coherentFilteredTotalKan_isContractibleKan`
 - `F2.continuousKanLeftFibration_finite_relative_detection` / `F2.continuousKanLeftFibration_finite_boundary_detection`
+- `F2.coherentSmallConstantTargetMap_isQCatEquivalence` / `F2.coherentDiagramTotalCocone_vertex`
 - `F2.bousfieldKanAugmentation` / `F2.bousfieldKanAugmentation_lifts_finite`
-- `F2.terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence`
 - `F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` / `F2.isKappaFiltered_iff_constantDiagram_rightCofinal`
 - `F2.finiteSubcomplexCocone_isColimit` / `F2.continuousKanReplacement`
 - `F2.continuousKanReplacement_preservesFilteredColimits` / `F2.continuousKanReplacement_kanComplex`
@@ -95,16 +96,15 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - F1 の前層・Yoneda は F1 計画の後続工程。Ind の存在を仮定して回避しない。
 - 一般の coherent な図式の余極限と、通常の小圏による strict 図式の余極限を区別する。
 - 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
-  通常の filtered 図式の augmentation の弱同値性は、Over 図式の表示同型を介して証明済み。
   通常の指定余錐の全脚・高次の整合性を保持した native な普遍性まで証明済み。
   任意の二射の元の cospan の native な極限との比較は証明済み。一般 coherent filtered 図式の交換は残る。
-  全空間模型の有限射の検出は証明済み。coherent な余錐全体と余極限の普遍性は未証明。
+  全空間模型の coherent な余錐全体・頂点・単位との比較は構成済み。余極限の普遍性は未証明。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：定値 unstraightening の直積比較と F1 の任意の底上の写像空間比較の同値を使い、
-  全空間模型の coherent な余錐と普遍性を構成する。その後、一般 coherent 図式の有限極限との交換。
+- F2N-1：native な余錐空間と定値図式への変換空間の比較、及び選択した余錐への後合成との整合を証明する。
+  N の coconePointHomFamily の判定へ渡して余極限性を証明し、一般 coherent 図式の有限極限との交換へ進む。
 
 ## 0. 目標と範囲
 
@@ -158,7 +158,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
   F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
   通常の指定 filtered 余錐の native な普遍性、path 座標を保つ交換同型、任意の strict Kan cospan の native な比較を証明。
-  全空間模型の相対有限射・有限ホモトピー・境界の充填を fiber で検出。余極限性・有限極限との交換・Ind は未完了。
+  相対有限検出と全空間模型の native 余錐・頂点・単位との比較を構成。余極限性・有限極限との交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -168,7 +168,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：定値 unstraightening の直積表示と F1 の写像空間比較から coherent 余錐と普遍性を構成する。
+- 次の一手：余錐空間と定値変換空間の比較・後合成との整合を証明し、N の全 Hom による余極限判定へ渡す。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |

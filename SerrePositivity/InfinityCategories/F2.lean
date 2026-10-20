@@ -51,6 +51,7 @@ public import SerrePositivity.InfinityCategories.F2.RelativeLeftFibrationTranspo
 public import SerrePositivity.InfinityCategories.F2.FilteredLeftFibrationHomotopyDetection
 public import SerrePositivity.InfinityCategories.F2.FilteredLeftFibrationBoundaryDetection
 public import SerrePositivity.InfinityCategories.F2.ConstantPullbackFiber
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalCocone
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
