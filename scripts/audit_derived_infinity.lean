@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces
+import SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle
+import SerrePositivity.InfinityCategories.Derived.RoofCompatibleTransportComposite
+import SerrePositivity.InfinityCategories.Derived.RoofHomotopyRelativeFiller
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofHomotopyFillers
 import SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift
 import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberPrism
 import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberZero
@@ -2575,10 +2580,21 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgActualRoofClosedTargetTransport
 #print axioms SerrePositivity.InfinityCategories.dgActualRoofClosedTransport_boundary
 
+#print axioms SerrePositivity.InfinityCategories.roofCompositionTriangle_of_outerFaces
+#print axioms SerrePositivity.InfinityCategories.roofRelativeCompositionTriangle_exists
+#print axioms SerrePositivity.InfinityCategories.RoofCompatibleTransportComposite.boundary
+#print axioms SerrePositivity.InfinityCategories.roofCompatibleTransportComposite_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofHomotopyRelativeFiller_nonempty
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle,
+    `SerrePositivity.InfinityCategories.Derived.RoofCompatibleTransportComposite,
+    `SerrePositivity.InfinityCategories.Derived.RoofHomotopyRelativeFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofHomotopyFillers,
     `SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift,
     `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberPrism,
     `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberZero,
