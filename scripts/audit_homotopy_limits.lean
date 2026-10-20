@@ -8602,3 +8602,123 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRootVerticalEndComparison_native_base
 #print axioms specifiedCoconeRootVerticalEndComparison_native_base
+
+#check @cosliceRetractionFamily_diagram
+#print axioms cosliceRetractionFamily_diagram
+
+#check @cosliceRetractionFamily_section
+#print axioms cosliceRetractionFamily_section
+
+#check @cosliceRetractionFamily
+#print axioms cosliceRetractionFamily
+
+#check @cosliceRetractionFamily_boundary
+#print axioms cosliceRetractionFamily_boundary
+
+#check @cosliceRetractionFamily_other_section
+#print axioms cosliceRetractionFamily_other_section
+
+#check @cosliceRetractionFamily_projection
+#print axioms cosliceRetractionFamily_projection
+
+#check @cosliceRetractionFamily_base
+#print axioms cosliceRetractionFamily_base
+
+#check @exists_cosliceRetractionFamilyComparison
+#print axioms exists_cosliceRetractionFamilyComparison
+
+#check @cosliceRetractionFamilyComparison
+#print axioms cosliceRetractionFamilyComparison
+
+#check @cosliceRetractionFamilyComparison_boundary
+#print axioms cosliceRetractionFamilyComparison_boundary
+
+#check @cosliceRetractionFamilyComparison_base
+#print axioms cosliceRetractionFamilyComparison_base
+
+#check @cosliceRetractionFamilyComparison_projection
+#print axioms cosliceRetractionFamilyComparison_projection
+
+#check @cosliceRetractionSectionComparison
+#print axioms cosliceRetractionSectionComparison
+
+#check @cosliceRetractionSectionComparison_raw
+#print axioms cosliceRetractionSectionComparison_raw
+
+#check @cosliceRetractionSectionComparison_base
+#print axioms cosliceRetractionSectionComparison_base
+
+#check @cosliceRetractionSectionComparison_projection
+#print axioms cosliceRetractionSectionComparison_projection
+
+#check @initialPrismRetraction_vertex
+#print axioms initialPrismRetraction_vertex
+
+#check @initialPrismRetraction_fst
+#print axioms initialPrismRetraction_fst
+
+#check @intervalRetraction_endpoint
+#print axioms intervalRetraction_endpoint
+
+#check @initialPrismRetraction_zero
+#print axioms initialPrismRetraction_zero
+
+#check @initialPrismRetraction_one
+#print axioms initialPrismRetraction_one
+
+#check @specifiedCoconeRootVerticalInitial_diagram
+#print axioms specifiedCoconeRootVerticalInitial_diagram
+
+#check @specifiedCoconeRootVerticalInitialFamily
+#print axioms specifiedCoconeRootVerticalInitialFamily
+
+#check @specifiedCoconeRootVerticalInitialFamily_projection
+#print axioms specifiedCoconeRootVerticalInitialFamily_projection
+
+#check @specifiedCoconeRootVerticalInitialFamily_fixed
+#print axioms specifiedCoconeRootVerticalInitialFamily_fixed
+
+#check @specifiedCoconeRootVerticalInitialBaseFamily
+#print axioms specifiedCoconeRootVerticalInitialBaseFamily
+
+#check @specifiedCoconeRootVerticalInitialFamily_base
+#print axioms specifiedCoconeRootVerticalInitialFamily_base
+
+#check @specifiedCoconeRootVerticalInitialComparison
+#print axioms specifiedCoconeRootVerticalInitialComparison
+
+#check @specifiedCoconeRootVerticalInitialComparison_base
+#print axioms specifiedCoconeRootVerticalInitialComparison_base
+
+#check @specifiedCoconeRootVerticalInitialComparison_projection
+#print axioms specifiedCoconeRootVerticalInitialComparison_projection
+
+#check @specifiedCoconeRootVerticalInitialComparison_fixed
+#print axioms specifiedCoconeRootVerticalInitialComparison_fixed
+
+#check @specifiedCoconeRootVerticalInitialFamily_zero
+#print axioms specifiedCoconeRootVerticalInitialFamily_zero
+
+#check @specifiedCoconeRootVerticalInitialFamily_one
+#print axioms specifiedCoconeRootVerticalInitialFamily_one
+
+#check @specifiedCoconeRootVerticalInitialFaceComparison
+#print axioms specifiedCoconeRootVerticalInitialFaceComparison
+
+#check @specifiedCoconeRootVerticalInitialFaceComparison_raw
+#print axioms specifiedCoconeRootVerticalInitialFaceComparison_raw
+
+#check @specifiedCoconeRootVerticalInitialFaceComparison_base
+#print axioms specifiedCoconeRootVerticalInitialFaceComparison_base
+
+#check @initialDiagramHomFamilyHomotopy
+#print axioms initialDiagramHomFamilyHomotopy
+
+#check @initialDiagramHomFamilyHomotopy_ι
+#print axioms initialDiagramHomFamilyHomotopy_ι
+
+#check @initialDiagramHomFamilyHomotopy_evaluation
+#print axioms initialDiagramHomFamilyHomotopy_evaluation
+
+#check @initialDiagramHomFamilyHomotopy_base
+#print axioms initialDiagramHomFamilyHomotopy_base
