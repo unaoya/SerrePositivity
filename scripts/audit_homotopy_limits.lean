@@ -11410,3 +11410,69 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @reflective_isLocal_iff_unit_local
 #print axioms reflective_isLocal_iff_unit_local
+
+#check @LocalEquivalenceHom
+#print axioms LocalEquivalenceHom
+
+#check @localEquivalences
+#print axioms localEquivalences
+
+#check @LocalEquivalenceHom.of_isIso
+#print axioms LocalEquivalenceHom.of_isIso
+
+#check @LocalEquivalenceHom.comp
+#print axioms LocalEquivalenceHom.comp
+
+#check @LocalEquivalenceHom.cancel_left
+#print axioms LocalEquivalenceHom.cancel_left
+
+#check @LocalEquivalenceHom.cancel_right
+#print axioms LocalEquivalenceHom.cancel_right
+
+#check @subset_localEquivalences
+#print axioms subset_localEquivalences
+
+#check @isLocalObject_of_subset
+#print axioms isLocalObject_of_subset
+
+#check @localEquivalences_mono
+#print axioms localEquivalences_mono
+
+#check @isLocalObject_localEquivalences_iff
+#print axioms isLocalObject_localEquivalences_iff
+
+#check @localEquivalences_idempotent
+#print axioms localEquivalences_idempotent
+
+#check @reflective_invertedHom_isLocal
+#print axioms reflective_invertedHom_isLocal
+
+#check @isLocalForHom_homMk_iff_edgeOfSimplex
+#print axioms isLocalForHom_homMk_iff_edgeOfSimplex
+
+#check @reflective_isLocal_iff_invertedEdges
+#print axioms reflective_isLocal_iff_invertedEdges
+
+#check @reflective_isIso_map_iff_localHom
+#print axioms reflective_isIso_map_iff_localHom
+
+#check @reflective_localEquivalenceHom_iff
+#print axioms reflective_localEquivalenceHom_iff
+
+#check @reflective_localEquivalences_eq
+#print axioms reflective_localEquivalences_eq
+
+#check @localEquivalenceHom_iff_edge_mem
+#print axioms localEquivalenceHom_iff_edge_mem
+
+#check @localEquivalences_mem_of_isInvertibleEdge
+#print axioms localEquivalences_mem_of_isInvertibleEdge
+
+#check @localEquivalences_compStruct
+#print axioms localEquivalences_compStruct
+
+#check @localEquivalences_compStruct_cancel_left
+#print axioms localEquivalences_compStruct_cancel_left
+
+#check @localEquivalences_compStruct_cancel_right
+#print axioms localEquivalences_compStruct_cancel_right
