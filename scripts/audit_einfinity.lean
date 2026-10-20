@@ -2124,6 +2124,34 @@ run_cmd do
       `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_id,
       `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_comp,
       `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomEdgeComposition,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsComposition,
+      `SerrePositivity.EInfinity.SimplicialLocalization.LocalizationComponents,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionAugmentation_object,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomConstant,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_identity,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_composition,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_edge,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomPiZeroToHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomPiZeroToHom_mk,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationEnrichedMap_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationEnrichedMap_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomKanUnit_naturality,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject_zero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowZero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_arrow,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsAugmentation_arrow,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationFunctor,
@@ -6046,3 +6074,23 @@ open SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] :
     SSet.Quasicategory (complexLocalizationNerve A) := by
   infer_instance
+
+-- 局所化 nerve の係数作用は厳密に恒等と合成を保つ。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C D E : RelativeCategory} (F : C ⟶ D) (G : D ⟶ E) :
+    localizationNerveMap (F ≫ G) = localizationNerveMap F ≫ localizationNerveMap G := by
+  exact localizationNerveMap_comp F G
+
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory) : localizationNerveMap (𝟙 C) = 𝟙 (localizationNerve C) := by
+  exact localizationNerveMap_id C
+
+-- 元の具体的な E 代数射の DK 成分を戻すと、同じ相対圏の Q の射になる。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
+    (localizationComponentsAugmentation (cofibrantAlgebraRelativeCategory A)).map
+        (localizationArrowClass (cofibrantAlgebraRelativeCategory A) f) =
+      (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q.map f := by
+  exact localizationComponentsAugmentation_arrow (cofibrantAlgebraRelativeCategory A) f

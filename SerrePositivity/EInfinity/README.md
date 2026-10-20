@@ -876,7 +876,16 @@ E2b は Dwyer–Kan 型の自由単体的局所化で進める。
 `BarrattEccles.complexRelativeCategory` は Hom の宇宙だけを揃えた全複体と擬同型の相対圏。
 `cAlgForgetLocalization` は CAlg_R からその具体的な局所化の quasicategory への忘却射で、
 `cAlgForgetLocalization_vertex` は同じ置換の底の複体を回収する。底の cofibrancy は要求しない。
-係数射の恒等・合成の全層での整合、DK Hom と既存の Map^h の高次比較・局所化の普遍性、
+`localizationHomMap_id/comp` と `localizationEnrichedMap_id/comp` は元の係数の厳密な関手則。
+`kanLocalizationEnrichedMap_id/comp` は同じ Ex∞ での関手則、
+`localizationHomKanUnit_naturality` は元の anodyne 単位の係数自然性。
+`localizationNerveFunctor` は相対圏から同じ局所化の coherent nerve への関手。
+`localizationHomAugmentation` は全 augmentation の固定 Hom への同じ比較。
+`LocalizationComponents` は元の DK Hom の π₀ を射とする圏で、
+`localizationComponentsAugmentation` は同じ普通の局所化への比較関手。
+`localizationArrowZero`・`localizationArrowClass` は元の射の一文字の列による零単体とその類。
+`localizationComponentsAugmentation_arrow` は同じ射の Q による局所化像を回収する。
+元の射からの π₀ の類の単位・合成保存と比較の同値性、DK と既存 Map^h の高次比較・局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
 
 原典：
