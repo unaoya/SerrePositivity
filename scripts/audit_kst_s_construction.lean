@@ -16008,3 +16008,104 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms triangleLeftCancellationOutputComparison_upper
 
 end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+
+#check @compositionTripleHorn
+#print axioms compositionTripleHorn
+#check @compositionTripleHorn_zero
+#print axioms compositionTripleHorn_zero
+#check @compositionTripleHorn_two
+#print axioms compositionTripleHorn_two
+#check @compositionTripleHorn_three
+#print axioms compositionTripleHorn_three
+#check @compositionTripleRightHorn
+#print axioms compositionTripleRightHorn
+#check @compositionTripleRightHorn_zero
+#print axioms compositionTripleRightHorn_zero
+#check @compositionTripleRightHorn_one
+#print axioms compositionTripleRightHorn_one
+#check @compositionTripleRightHorn_three
+#print axioms compositionTripleRightHorn_three
+#check @compositionTripleHorn_fac
+#print axioms compositionTripleHorn_fac
+#check @compositionTripleRightHorn_fac
+#print axioms compositionTripleRightHorn_fac
+#check @compositionTripleHorn_post
+#print axioms compositionTripleHorn_post
+#check @compositionTripleRightHorn_post
+#print axioms compositionTripleRightHorn_post
+#check @compositionTripleInputTransport
+#print axioms compositionTripleInputTransport
+#check @compositionTripleRightInputTransport
+#print axioms compositionTripleRightInputTransport
+#check @compositionTripleTetrahedronLiftData
+#print axioms compositionTripleTetrahedronLiftData
+#check @compositionTripleTetrahedronLiftData_projection
+#print axioms compositionTripleTetrahedronLiftData_projection
+#check @compositionTripleTetrahedronLiftData_left
+#print axioms compositionTripleTetrahedronLiftData_left
+#check @compositionTripleRightTetrahedronLiftData
+#print axioms compositionTripleRightTetrahedronLiftData
+#check @compositionTripleRightTetrahedronLiftData_projection
+#print axioms compositionTripleRightTetrahedronLiftData_projection
+#check @compositionTripleRightTetrahedronLiftData_right
+#print axioms compositionTripleRightTetrahedronLiftData_right
+#check @compositionTripleTetrahedronLiftData_left_eq
+#print axioms compositionTripleTetrahedronLiftData_left_eq
+#check @compositionTripleRightTetrahedronLiftData_right_eq
+#print axioms compositionTripleRightTetrahedronLiftData_right_eq
+#check @hornHomExt
+#print axioms hornHomExt
+#check @SixDiamondReassociationsOver
+#print axioms SixDiamondReassociationsOver
+#check @SixDiamondReassociationsOver.mk
+#print axioms SixDiamondReassociationsOver.mk
+#check @SixDiamondReassociationsOver.pasting
+#print axioms SixDiamondReassociationsOver.pasting
+#check @SixDiamondReassociationsOver.first_projection
+#print axioms SixDiamondReassociationsOver.first_projection
+#check @SixDiamondReassociationsOver.second_projection
+#print axioms SixDiamondReassociationsOver.second_projection
+#check @SixDiamondReassociationsOver.third_projection
+#print axioms SixDiamondReassociationsOver.third_projection
+#check @SixDiamondReassociationsOver.fourth_projection
+#print axioms SixDiamondReassociationsOver.fourth_projection
+#check @SixDiamondReassociationsOver.fifth_projection
+#print axioms SixDiamondReassociationsOver.fifth_projection
+#check @SixDiamondReassociationsOver.sixth_projection
+#print axioms SixDiamondReassociationsOver.sixth_projection
+#check @SixDiamondReassociationsOver.residual_eq
+#print axioms SixDiamondReassociationsOver.residual_eq
+#check @sixDiamondReassociationsLiftData
+#print axioms sixDiamondReassociationsLiftData
+#check @SixDiamondReassociations
+#print axioms SixDiamondReassociations
+#check @SixDiamondReassociations.mk
+#print axioms SixDiamondReassociations.mk
+#check @SixDiamondReassociations.firstMove
+#print axioms SixDiamondReassociations.firstMove
+#check @SixDiamondReassociations.secondMove
+#print axioms SixDiamondReassociations.secondMove
+#check @SixDiamondReassociations.thirdMove
+#print axioms SixDiamondReassociations.thirdMove
+#check @SixDiamondReassociations.fourthMove
+#print axioms SixDiamondReassociations.fourthMove
+#check @SixDiamondReassociations.fifthMove
+#print axioms SixDiamondReassociations.fifthMove
+#check @SixDiamondReassociations.sixthMove
+#print axioms SixDiamondReassociations.sixthMove
+#check @SixDiamondGeometricPasting.reassociations
+#print axioms SixDiamondGeometricPasting.reassociations
+#check @monicKTracedTripleGeometricReassociationLiftData
+#print axioms monicKTracedTripleGeometricReassociationLiftData
+#check @monicKTracedTripleGeometricReassociationLiftData_sixth
+#print axioms monicKTracedTripleGeometricReassociationLiftData_sixth
+#check @monicKTracedTripleGeometricReassociationLiftData_residual
+#print axioms monicKTracedTripleGeometricReassociationLiftData_residual
+#check @compositionTripleTetrahedronOfMap
+#print axioms compositionTripleTetrahedronOfMap
+#check @compositionTripleRightTetrahedronOfMap
+#print axioms compositionTripleRightTetrahedronOfMap
+
+end SerrePositivity.KST.SConstruction

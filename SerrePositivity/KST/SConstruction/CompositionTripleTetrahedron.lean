@@ -43,6 +43,37 @@ structure CompositionTripleTetrahedron {E : SSet.{u}} {w x y z : E _⦋0⦌}
   /-- 第四面は新たな実三角形そのもの。 -/
   left_face : left.simplex = E.δ 1 simplex
 
+/-- 元の全三面を持つ指定済みの全三単体を、同じ実結合替えデータとして回収する。 -/
+def compositionTripleTetrahedronOfMap {E : SSet.{u}}
+    {w x y z : E _⦋0⦌} {a : E.Edge w x} {b : E.Edge x y} {c : E.Edge y z}
+    {ab : E.Edge w y} {bc : E.Edge x z} {abc : E.Edge w z}
+    (first : SSet.Edge.CompStruct a b ab)
+    (second : SSet.Edge.CompStruct b c bc)
+    (right : SSet.Edge.CompStruct a bc abc)
+    (s : (Δ[3] : SSet.{u}) ⟶ E)
+    (hs₀ : stdSimplex.δ 0 ≫ s = SSet.yonedaEquiv.symm second.simplex)
+    (hs₂ : stdSimplex.δ 2 ≫ s = SSet.yonedaEquiv.symm right.simplex)
+    (hs₃ : stdSimplex.δ 3 ≫ s = SSet.yonedaEquiv.symm first.simplex)
+    : CompositionTripleTetrahedron first second right := by
+  let σ := SSet.yonedaEquiv s
+  have h₀ : E.δ 0 σ = second.simplex := by
+    rw [← stdSimplex.yonedaEquiv_δ_comp, hs₀, Equiv.apply_symm_apply]
+  have h₂ : E.δ 2 σ = right.simplex := by
+    rw [← stdSimplex.yonedaEquiv_δ_comp, hs₂, Equiv.apply_symm_apply]
+  have h₃ : E.δ 3 σ = first.simplex := by
+    rw [← stdSimplex.yonedaEquiv_δ_comp, hs₃, Equiv.apply_symm_apply]
+  let T : SSet.Edge.CompStruct ab c abc := SSet.Edge.CompStruct.mk (E.δ 1 σ)
+    (SSet.yonedaEquiv.symm.injective (by
+      simp [σ, ← stdSimplex.δ_comp_yonedaEquiv_symm,
+        ← dsimp% stdSimplex.δ_comp_δ_assoc (n := 1) (i := 1) (j := 2) (by simp), hs₃]))
+    (SSet.yonedaEquiv.symm.injective (by
+      simp [σ, ← stdSimplex.δ_comp_yonedaEquiv_symm,
+        dsimp% stdSimplex.δ_comp_δ_assoc (n := 1) (i := 0) (j := 0) (by simp), hs₀]))
+    (SSet.yonedaEquiv.symm.injective (by
+      simp [σ, ← stdSimplex.δ_comp_yonedaEquiv_symm,
+        dsimp% stdSimplex.δ_comp_δ_self_assoc (i := 1), hs₂]))
+  exact ⟨σ, h₀, h₂, h₃, T, rfl⟩
+
 /-- 元の三つの全合成面を保つ実四面体から、左結合の実合成面を得る。 -/
 def compositionTripleTetrahedron {E : SSet.{u}} [Quasicategory E]
     {w x y z : E _⦋0⦌} {a : E.Edge w x} {b : E.Edge x y} {c : E.Edge y z}
@@ -71,23 +102,6 @@ def compositionTripleTetrahedron {E : SSet.{u}} [Quasicategory E]
     exact he.trans ((Category.assoc _ _ _).trans
       ((congrArg (SSet.horn.ι (1 : Fin 4) 3 (by decide) ≫ ·) fill.choose_spec.symm).trans
         horn.choose_spec.2.2))
-  let σ := SSet.yonedaEquiv s
-  have h₀ : E.δ 0 σ = second.simplex := by
-    rw [← stdSimplex.yonedaEquiv_δ_comp, hs₀, Equiv.apply_symm_apply]
-  have h₂ : E.δ 2 σ = right.simplex := by
-    rw [← stdSimplex.yonedaEquiv_δ_comp, hs₂, Equiv.apply_symm_apply]
-  have h₃ : E.δ 3 σ = first.simplex := by
-    rw [← stdSimplex.yonedaEquiv_δ_comp, hs₃, Equiv.apply_symm_apply]
-  let T : SSet.Edge.CompStruct ab c abc := SSet.Edge.CompStruct.mk (E.δ 1 σ)
-    (SSet.yonedaEquiv.symm.injective (by
-      simp [σ, ← stdSimplex.δ_comp_yonedaEquiv_symm,
-        ← dsimp% stdSimplex.δ_comp_δ_assoc (n := 1) (i := 1) (j := 2) (by simp), hs₃]))
-    (SSet.yonedaEquiv.symm.injective (by
-      simp [σ, ← stdSimplex.δ_comp_yonedaEquiv_symm,
-        dsimp% stdSimplex.δ_comp_δ_assoc (n := 1) (i := 0) (j := 0) (by simp), hs₀]))
-    (SSet.yonedaEquiv.symm.injective (by
-      simp [σ, ← stdSimplex.δ_comp_yonedaEquiv_symm,
-        dsimp% stdSimplex.δ_comp_δ_self_assoc (i := 1), hs₂]))
-  exact ⟨σ, h₀, h₂, h₃, T, rfl⟩
+  exact compositionTripleTetrahedronOfMap first second right s hs₀ hs₂ hs₃
 
 end SerrePositivity.KST.SConstruction

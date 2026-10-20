@@ -1069,4 +1069,11 @@ public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationCylinder
 public import SerrePositivity.KST.SConstruction.TracedTripleGeometricPrefixStructureComparison
 public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationCylinderComparisonOver
 public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationOutputComparison
+public import SerrePositivity.KST.SConstruction.CompositionTripleHorns
+public import SerrePositivity.KST.SConstruction.CompositionTripleInputTransport
+public import SerrePositivity.KST.SConstruction.CompositionTripleTetrahedronLifting
+public import SerrePositivity.KST.SConstruction.HornHomExt
+public import SerrePositivity.KST.SConstruction.SixDiamondReassociationLifting
+public import SerrePositivity.KST.SConstruction.SixDiamondReassociations
+public import SerrePositivity.KST.SConstruction.TracedTripleGeometricReassociationLifting
 /-! # ∞-S• 構成と連結 K 理論 -/
