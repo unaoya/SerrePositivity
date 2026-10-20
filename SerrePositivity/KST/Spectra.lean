@@ -912,3 +912,9 @@ public import SerrePositivity.KST.Spectra.TriangleEdgeDifference
 public import SerrePositivity.KST.Spectra.TrianglePairComparison
 public import SerrePositivity.KST.Spectra.SignedLoopUnitTrianglePair
 public import SerrePositivity.KST.Spectra.SignedLoopUnitTriangleComparison
+public import SerrePositivity.KST.Spectra.PointedIntervalProjectedNaturality
+public import SerrePositivity.KST.Spectra.PointedIntervalProjectedSquare
+public import SerrePositivity.KST.Spectra.SignedAdjointNaturalityCoordinates
+public import SerrePositivity.KST.Spectra.SignedAdjointSecondNaturality
+public import SerrePositivity.KST.Spectra.SignedAdjointInputComparison
+public import SerrePositivity.KST.Spectra.SignedAdjointInputBoundary
