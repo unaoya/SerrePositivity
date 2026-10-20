@@ -1924,6 +1924,14 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.strictSimplicialConeFamily_app,
       `SerrePositivity.EInfinity.BarrattEccles.strictConeFamilies_mixed,
       `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonIso_strictClass,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso_homEquiv,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso_point,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso_class,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialConeIso_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonIso_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitConePiZeroEquiv_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedHomEquiv_cone,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv_cone,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5216,3 +5224,28 @@ example {Y : (BarrattEccles.operad ℤ).Algebra} {F : ℕ ⥤ (BarrattEccles.ope
   exact (congrArg (constantDiagramSourcePiZeroEquiv ℤ ℕ Y F)
     (constantDiagramSourceClass_eq_coneClass ℤ ℕ f)).symm.trans
       (constantDiagramSourcePiZeroEquiv_class ℤ ℕ f)
+
+-- 元の通常錐の比較を、局所化圏全体の随伴の Hom 対応から回収する。
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
+    let := BarrattEccles.modelCategory ℤ
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+    (framedLimitAdjunction ℤ ℕ).homEquiv (Q.obj c.pt) (QD.obj F)
+        ((localizedConstantDiagramComparison ℤ ℕ).hom.app c.pt ≫ QD.map c.π) ≫
+      (localizedFramedLimitComparison ℤ ℕ).hom.app F = Q.map (coneToFramedLimit ℤ ℕ F c) := by
+  exact framedLimitAdjunction_homEquiv_cone ℤ ℕ F c
+
+-- 通常の極限錐を代入すると、構成済みの同じ limitComparison を得る。
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
+    let := BarrattEccles.modelCategory ℤ
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+    framedLimitDerivedHomEquiv ℤ ℕ (limit F) F (QD.map (limit.cone F).π) =
+      Q.map (limitComparison ℤ ℕ F) := by
+  exact framedLimitDerivedHomEquiv_cone ℤ ℕ F (limit.cone F)

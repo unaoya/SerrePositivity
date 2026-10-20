@@ -764,8 +764,13 @@ augmentation は元の代数の射にも自然。Reedy 自明 fibration であ�
 `framedLimitHomPiZeroEquiv_coneClass` はその像が元の `coneToFramedLimit` の局所化像となる式。
 `strictConeFamilies_mixed` は元の両族の混合 Hom 内での厳密な一致。
 `sourceRightConeComparisonIso_strictClass` はその同じ類を右の単体図式表示の錐へ移す。
-二重反対圏への添字移送がこの零単体の類を保つ式をつなぎ、
-元の錐の全体の正規化と `limitComparisonNatTrans` の右導来普遍性を閉じる作業が残る。
+`coneSpaceReindexIso_point`・`coneSpaceReindexIso_class` は元の添字移送の零単体と類の保存。
+`rightSimplicialConeIso_coneClass` と `sourceRightConeComparisonIso_coneClass` は、
+元の通常錐の類そのものの一致を保証する。
+`framedLimitDerivedHomEquiv_cone` は元の錐の射の局所化像を、
+同じ `coneToFramedLimit` の局所化像へ送る全体の正規化。
+`framedLimitAdjunction_homEquiv_cone` は局所化随伴でも同じ比較射を回収する。
+`limitComparisonNatTrans` を持つ右導来関手の普遍性を閉じる作業が残る。
 計算関手の右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
