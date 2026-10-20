@@ -1,3 +1,17 @@
+import SerrePositivity.InfinityCategories.Derived.SkeletalFiniteBound
+import SerrePositivity.InfinityCategories.Derived.DGQuotientAllRelativeHomotopies
+import SerrePositivity.InfinityCategories.Derived.DGQuotientCoefficientFillers
+import SerrePositivity.InfinityCategories.Derived.SigmaHomotopyGluing
+import SerrePositivity.InfinityCategories.Derived.SkeletalCellGluing
+import SerrePositivity.InfinityCategories.Derived.SkeletalHomotopyGluing
+import SerrePositivity.InfinityCategories.Derived.PinchedPrecompositionMaps
+import SerrePositivity.InfinityCategories.Derived.DGSkeletalCellRefinement
+import SerrePositivity.InfinityCategories.Derived.DGSkeletalSourceExtension
+import SerrePositivity.InfinityCategories.Derived.DGSkeletalComparisonPieces
+import SerrePositivity.InfinityCategories.Derived.DGSkeletalComparisonGluing
+import SerrePositivity.InfinityCategories.Derived.KanHomotopyExtension
+import SerrePositivity.InfinityCategories.Derived.DGSkeletalQuotientExtension
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalStep
 import SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces
 import SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle
 import SerrePositivity.InfinityCategories.Derived.RoofCompatibleTransportComposite
@@ -2586,10 +2600,44 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.roofCompatibleTransportComposite_nonempty
 #print axioms SerrePositivity.InfinityCategories.dgActualRoofHomotopyRelativeFiller_nonempty
 
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_allRelativeHomotopies
+#print axioms SerrePositivity.InfinityCategories.dgQuotientFinite_exists_coefficientFillers
+#print axioms SerrePositivity.InfinityCategories.sigmaHomotopyGlue_ι
+#print axioms SerrePositivity.InfinityCategories.skeletalCellGlue_previous
+#print axioms SerrePositivity.InfinityCategories.skeletalCellGlue_cell
+#print axioms SerrePositivity.InfinityCategories.skeletalHomotopyGlue_previous
+#print axioms SerrePositivity.InfinityCategories.skeletalHomotopyGlue_cell
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedPrecomposition_map_naturality
+#print axioms SerrePositivity.InfinityCategories.pinchedClosedPrecomposition_map_comp
+#print axioms SerrePositivity.InfinityCategories.dgSkeletalCellRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGSkeletalCellRefinement.sourceExtension_previous_comparison
+#print axioms SerrePositivity.InfinityCategories.DGSkeletalCellRefinement.skeletalComparison_previous
+#print axioms SerrePositivity.InfinityCategories.DGSkeletalCellRefinement.skeletalComparison_cell
+#print axioms SerrePositivity.InfinityCategories.kanHomotopyExtension_exists
+#print axioms SerrePositivity.InfinityCategories.dgSkeletalQuotientExtension_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGSkeletalQuotientExtension.homotopy_previous
+#print axioms SerrePositivity.InfinityCategories.dgCoefficientSkeletalStep_nonempty
+
+#print axioms SerrePositivity.InfinityCategories.finiteRelativeSkeleton_exists_top
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.SkeletalFiniteBound,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientAllRelativeHomotopies,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientCoefficientFillers,
+    `SerrePositivity.InfinityCategories.Derived.SigmaHomotopyGluing,
+    `SerrePositivity.InfinityCategories.Derived.SkeletalCellGluing,
+    `SerrePositivity.InfinityCategories.Derived.SkeletalHomotopyGluing,
+    `SerrePositivity.InfinityCategories.Derived.PinchedPrecompositionMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGSkeletalCellRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGSkeletalSourceExtension,
+    `SerrePositivity.InfinityCategories.Derived.DGSkeletalComparisonPieces,
+    `SerrePositivity.InfinityCategories.Derived.DGSkeletalComparisonGluing,
+    `SerrePositivity.InfinityCategories.Derived.KanHomotopyExtension,
+    `SerrePositivity.InfinityCategories.Derived.DGSkeletalQuotientExtension,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalStep,
     `SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces,
     `SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle,
     `SerrePositivity.InfinityCategories.Derived.RoofCompatibleTransportComposite,

@@ -17,7 +17,8 @@
 - 次次数の零面 f σ と既存錐の正番号面から実境界写像を貼る。有限族を一つの分母後に同時充填し、その全面・共有面・実 apex を更新済み下次数錐へ厳密に一致させた。基本退化表示の標準錐の一致・全面保存・退化正規化も完成。`dgVerdierTruncatedConeSuccessor_nonempty` は次次数有限なら N+1 の錐を、`dgVerdierTruncatedConeData_nonempty` は各次数有限なら任意有限次数の錐を供給する。
 - 次元上界までの切断写像の一意な全次数延長を標準 splitting から構成。切断錐の全順序写像への自然性、実 coslice への切断写像と射影の厳密一致、実 join 写像の左右制限・apex・全低次数単体との一致を証明。`dgVerdierFiniteJoinCone_nonempty` は任意の有限単体集合からの実分母図式に同じ部分圏内の実 join 錐を供給する。`dgVerdierOver_op_isFilteredInfinity` により実分母 over 圏の反転は filtered ∞ 圏。
 - 任意の有限商屋根図式と指定元境界を、共通の実分母 fiber 上の厳密な相対問題へ還元。元境界を先に右持ち上げし、その比較像を全境界で固定して商全体を右持ち上げする。二輸送の終端・全底・境界全時刻の一致を証明。共通頂点を同じ実辺の閉分母へ戻し、元・商の pinched Hom 係数正方形と実屋根像を同定した。正次数の還元問題は一つの追加閉分母後に実充填と全境界付き輸送を持つ。二段階輸送も実合成三角形ごと相対構成し、任意の正次数標準単体境界の比較正方形に、元の全境界・全時刻で整合するホモトピー相対充填を供給した。一般有限対への拡張と屋根比較の弱同値判定は未完。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofHomotopyFillers.lean`・`Derived/RoofCompatibleTransportComposite.lean`・`Derived/DGActualRoofFiberReduction.lean`。
+- 零次元と空族を含む全次数の有限セル族の同時係数充填を公開。相対骨格の一段更新で、一つの追加閉分母、次骨格の元係数写像、全体商写像、下骨格を全時刻固定する比較を同時に構成した。次骨格・各新セルの厳密な制限、商前合成の自然性・合成則、有限標的の骨格の有限段停止も証明済み。一般有限対全体の充填へ帰納を組み立てる段階。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofHomotopyFillers.lean`・`Derived/RoofCompatibleTransportComposite.lean`・`Derived/DGActualRoofFiberReduction.lean`・`Derived/DGCoefficientSkeletalStep.lean`。
 
 ### 残り（依存順、時間は推定）
 
@@ -52,6 +53,8 @@
 
 - `roofRelativeCompositionTriangle_exists`・`roofCompatibleTransportComposite_nonempty`・`RoofCompatibleTransportComposite.boundary`。
 - `RoofHomotopyRelativeFiller`・`dgActualRoofHomotopyRelativeFiller_nonempty`。
+- `dgQuotientFinite_exists_coefficientFillers`・`dgCoefficientSkeletalStep_nonempty`・`finiteRelativeSkeleton_exists_top`。
+- `DGSkeletalCellRefinement.skeletalComparison_cell`・`DGSkeletalQuotientExtension.homotopy_previous`。
 
 ### 依存と提供
 
@@ -65,15 +68,15 @@
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7386 jobs）。公理監査は Derived 9374 宣言／1025 モジュール、Stable 10489／1295。許容三公理のみ。今回の新規5モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7401 jobs）。公理監査は Derived 9500 宣言／1039 モジュール、Stable 10615／1309。許容三公理のみ。今回の新規14モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：正次数標準単体境界の任意の実屋根比較正方形に、元の全境界付きホモトピー相対充填を供給済み。次は零次数の局所係数充填を公開する。`DGCommonRoofComparisonVertices.lean` の頂点持ち上げ証明は、`dgQuotientFinite_exists_pinchedRelativeHomotopies` に零 `LinearData` を与え、Fin 1 の非空集合が全体であることから真部分条件を消している。同じ構成を閉分母上の実充填・輸送として回収する。
-- 一般の有限対 A⊂K の係数充填へ拡張する。共通 fiber 還元後は追加閉分母の前合成が全単体集合上の実写像なので、既構成の全下次数係数を一括更新できる。有限相対骨格で、部分元写像と全体商写像・比較ホモトピーを保持し、新セルの境界固定比較を Kan 標的の相対ホモトピー延長で全体へ移す方針。二輸送の合成は今回の `RoofCompatibleTransportComposite` を使う。
+- β3：`dgCoefficientSkeletalStep_nonempty` と `finiteRelativeSkeleton_exists_top` で一般有限対 L⊂K の係数充填を構成する。骨格段の状態には、現在の閉分母 s:q→x、元係数 f、全体商写像 g'、厳密な商比較正方形、元の商写像からの L 上全時刻固定の比較を保持する。始域係数は `skeletonBase i n` に沿って元の係数の s 前合成と厳密に一致させる。
+- 初期段は `skeletonBaseZeroIso`、恒等閉分母とその前合成で取る。一段更新の追加分母 r で元の状態全体を前合成し、分母は r≫s とする。全体比較は前合成後の既存比較と一段の比較を `relativeFunctorHomotopyComposite` で L を固定して合成する。前合成の全単体合成則は `pinchedClosedPrecomposition_map_comp`。有限次元で止め、共通 fiber の実屋根へ戻して二輸送を合成する。
 - 正次数境界の充填と π₀ 全射だけを一般の弱同値判定とはしない。必要な有限対・Kan 置換の検査範囲を実際に証明してから実屋根比較の弱同値性へ進む。その後、全標的の `F1B/Localization.IsLocalization`、Verdier 列、β5、β4。実分母添字の余 filtered 性は提供済み。厳密屋根添字との cofinality を使う場合は別に証明する。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
