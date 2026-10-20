@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectInfinity
+import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectMoritaInfinity
+import SerrePositivity.InfinityCategories.Derived.DGClosedModuleFunctorExact
+import SerrePositivity.InfinityCategories.Derived.DGModuleCompactEquivalence
+import SerrePositivity.InfinityCategories.Derived.DGPerfectExtensionCompatibility
+import SerrePositivity.InfinityCategories.Derived.DGPerfectExtensionInfinity
+import SerrePositivity.InfinityCategories.Derived.DGPerfectModulesInfinity
+import SerrePositivity.InfinityCategories.Derived.DGPerfectMoritaInfinity
 import SerrePositivity.InfinityCategories.Derived.DGAlgebraMoritaInfinity
 import SerrePositivity.InfinityCategories.Derived.DGFunctorHomologyDetection
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorHomologyDetection
@@ -2907,6 +2915,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectMoritaInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedModuleFunctorExact,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCompactEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectExtensionCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectExtensionInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectModulesInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectMoritaInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGAlgebraMoritaInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGFunctorHomologyDetection,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorHomologyDetection,
