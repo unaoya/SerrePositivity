@@ -36,7 +36,7 @@
 - `zeroRowPathFiberComparison_localized_isIso`：元の経路零行から既存の `iteratedPathHomotopyFiber` への定数 path による実際の比較と局所化同型を証明済み。Δ[0] の積を外した零列写像、商・Kan 比較の厳密な可換性、標的の零列の厳密な零化を含む。
 - `exists_previousStage_pathFiber_comparison`：任意の零段基点の退化を基点にした零行の同じ Kan 模型から、前段の既存の全零境界 Kan 実現と既存 fiber へ全基点 π_* 同型を構成済み。Kan 単位に沿う延長は元の射を厳密に回収する。
 - BF 手作業の整流は補助成果として保存して中断。全入力 prism・各段比較・六結合替えの依存した持ち上げまで検証済み。今回の `anodyneExtensionLiftVertex` と `kanMappingCompositionLiftData` で指定全基底像を保つ持ち上げを区切りとする。native な隣接段比較・全 raw 列の束ねと一般の完全関手上の coherent 関手性は未完。
-- K-4d：実 Perf dg 延長の完全性と主導来延長の H⁰ 自然比較、全 source shift による Hom 擬同型と実 dg nerve 同値を証明済み。全正反復 S 実現から境界商・Kan・零段 loop・単射置換へ渡し、`dgK`・`dgKMap` と `dgKMap_piIsomorphism` を構成済み。主 Perf 作用が同値な厳密 dg 関手の元の BF K 射は全整数 π_* 同型で、`dgKMoritaGroupEquiv` の順写像は元の作用そのもの。関手的な小宇宙の Perf と厳密豊穣 BF 関手は未完。 K-3d の入力側では `dgFunctorHom` を全次数自然性の end として構成し、`dgFunctorHomEquiv` で全パラメータの `GradedNatTrans` と対応済み。前後合成・閉単位・縦合成の全対象評価を回収し、`dgFunctorEnrichment` で全次数 Hom end の dg 圏構造、`dgFunctorEvaluationDG` で元の dg 評価関手まで構成済み。`dgFunctorPreDG`・`dgFunctorPostDG` は同じ前後合成を dg 関手へ束ねる。`dgFunctorHorizontal` は全次数の横合成で、signed braiding を含む逆順の表式との厳密な chain map の一致も証明済み。横合成の元の tensor dg 単位の保存、全斉次元の対象評価・判定・自然性、縦合成との Koszul 符号つき交換律まで証明済み。`dgFunctorHorizontalDG` は同じ横合成を tensor dg 関手圏からの dg 関手へ束ねる。全次数 Hom は保持したまま、単位・合成を厳密に保存する。
+- K-4d：実 Perf dg 延長の完全性と主導来延長の H⁰ 自然比較、全 source shift による Hom 擬同型と実 dg nerve 同値を証明済み。全正反復 S 実現から境界商・Kan・零段 loop・単射置換へ渡し、`dgK`・`dgKMap` と `dgKMap_piIsomorphism` を構成済み。主 Perf 作用が同値な厳密 dg 関手の元の BF K 射は全整数 π_* 同型で、`dgKMoritaGroupEquiv` の順写像は元の作用そのもの。関手的な小宇宙の Perf と厳密豊穣 BF 関手は未完。 K-3d の入力側では `dgFunctorHom` を全次数自然性の end として構成し、`dgFunctorHomEquiv` で全パラメータの `GradedNatTrans` と対応済み。前後合成・閉単位・縦合成の全対象評価を回収し、`dgFunctorEnrichment` で全次数 Hom end の dg 圏構造、`dgFunctorEvaluationDG` で元の dg 評価関手まで構成済み。`dgFunctorPreDG`・`dgFunctorPostDG` は同じ前後合成を dg 関手へ束ねる。`dgFunctorHorizontal` は全次数の横合成で、signed braiding を含む逆順の表式との厳密な chain map の一致も証明済み。横合成の元の tensor dg 単位の保存、全斉次元の対象評価・判定・自然性、縦合成との Koszul 符号つき交換律まで証明済み。`dgFunctorHorizontalDG` は同じ横合成を tensor dg 関手圏からの dg 関手へ束ねる。全次数 Hom は保持したまま、単位・合成を厳密に保存する。外側の結合・左右単位も、元の関手の等号による Hom end の移送を保って証明済み。`dgStandardEnrichedFunctor` は元の dg 関手を全標準 DK 単体に作用させ、面・退化・単位・AW 合成を厳密に保存する。γ1 の `dgStandardCoherentMap` とその恒等・合成保存まで接続済み。`dgFunctorMappingSpace` は関手圏の同じ DK coherent nerve の core で Kan。前後合成・tensor 横合成の core 射と、元の合成の頂点回収を構成済み。
 
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
@@ -46,7 +46,7 @@
 
 ### 主要宣言（名前のみ）
 - `sConstruction`、`simplicialSConstruction`、`firstRowRestriction_trivialKanFibration`、`firstRowEquivalence`
-- `StableModel`、`PreservesCofiberData`、`sEndofunctor`、`multiRealizationFunctor`、`perfectDGStableModel`、`smallPerfectDGNerveEquivalence`、`smallPerfectDGStableModel`、`perfectDGExtension`、`perfectDGStableMap`、`perfectDGDerivedComparison`、`perfectDGExtension_quasiEquivalence`、`perfectDGMoritaStableEquivalence`、`perfectDGMoritaRealization_localized_isIso`、`dgK`、`dgKMap`、`dgKMap_piIsomorphism`、`dgKMoritaGroupEquiv`、`dgFunctorHom`、`dgFunctorHomEquiv`、`dgFunctorHomPre`、`dgFunctorHomPost`、`dgFunctorIdentity`、`dgFunctorComposition`、`dgFunctorEnrichment`、`dgFunctorEvaluationDG`、`dgFunctorPreDG`、`dgFunctorPostDG`、`dgFunctorHorizontal`、`dgFunctorHorizontal_eq_other`、`dgFunctorHorizontalElement_interchange`、`dgFunctorHorizontal_tensor_composition`、`dgFunctorHorizontalDG`
+- `StableModel`、`PreservesCofiberData`、`sEndofunctor`、`multiRealizationFunctor`、`perfectDGStableModel`、`smallPerfectDGNerveEquivalence`、`smallPerfectDGStableModel`、`perfectDGExtension`、`perfectDGStableMap`、`perfectDGDerivedComparison`、`perfectDGExtension_quasiEquivalence`、`perfectDGMoritaStableEquivalence`、`perfectDGMoritaRealization_localized_isIso`、`dgK`、`dgKMap`、`dgKMap_piIsomorphism`、`dgKMoritaGroupEquiv`、`dgFunctorHom`、`dgFunctorHomEquiv`、`dgFunctorHomPre`、`dgFunctorHomPost`、`dgFunctorIdentity`、`dgFunctorComposition`、`dgFunctorEnrichment`、`dgFunctorEvaluationDG`、`dgFunctorPreDG`、`dgFunctorPostDG`、`dgFunctorHorizontal`、`dgFunctorHorizontal_eq_other`、`dgFunctorHorizontalElement_interchange`、`dgFunctorHorizontal_tensor_composition`、`dgFunctorHorizontalDG`、`dgFunctorHorizontal_assoc`、`dgFunctorHorizontal_left_unit`、`dgFunctorHorizontal_right_unit`、`dgStandardEnrichedFunctor`、`dgStandardCoherentMap`、`dgFunctorMappingSpace`、`dgFunctorMappingVertexEquiv`、`dgFunctorMappingPost`、`dgFunctorMappingPre`、`dgFunctorMappingHorizontal`
 - `kSpace`、`kKanSequence`、`monicKKanSequence`、`monicKKanSequenceProjection_piIsomorphism`
 - `iteratedPathHomotopyFiber`、`iteratedPathLoopComparison_piIsomorphism`
 - `objectToCoreSRealization_localized_isIso`、`objectCoreRowIso`、`cofiberStableSubobject`、`cofiberStableQuotient`
@@ -76,19 +76,19 @@
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）、D の dg nerve・前三角性・準同値比較。
 - 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解、閉じた全部分圏と相対 E(A,C,B) の安定性・完全な評価、相対 object/core 単回実現と全正有限反復 core S• 実現の加法性、S_n と全部分圏・相対図式の厳密な交換同型、相対入力に関する全正反復加法性の自然同型、切断の左右支持部分圏と短い区間の S 構成の実際の同値、左右支持の相対 E と S_n C の実際の同値、元の Segal 射対の厳密な比較式、全正有限反復実現による完全な同値の保存、任意の切断位置の元の Segal 射の自然な局所化同型、全連続辺への Segal 同値、全単体作用素の元の経路境界の homotopy pullback、全ての行と全対角の homotopy pullback 比較、元の零行から既存 fiber への局所化同型、前段の既存 Kan 実現と既存 fiber への同じ Kan 模型からの全基点 π_* 比較、S/S の厳密な交換、全反復 S₁ の内外比較と元の区間族の可換性、独立な全多次数の交換と自然性、源の全零境界と既存の境界商の比較同型、全方向を動かす巡回交換と独立な全零方向の境界商の比較、座標置換の全零境界保存、標準の既存境界商の巡回自己同型、元の収縮の零行への制限と区間組み立ての厳密な式、元の点つき経路商の基点固定収縮、既存 Kan 経路への零行収縮と退化像の全時刻の固定、元の円の商からの具体的な loop 射と評価の回収式、任意の零段基点に関する点つき射と厳密な Kan 延長、元の構造射の随伴との厳密な照合、元の全零境界商への降下と商射による回収、終点固定 fiber 内の元の収縮からの実ホモトピー、定数 path 比較と収縮境界 loop 型比較の局所化同型、元の随伴の全基点 π_* 同型と同じ境界商の BF Ω スペクトル、元の K 空間を零段に保つ連結 BF K スペクトル、全負整数次数消滅、整数 K 群の可換群への関手と任意段・零次数の自然な表示、元の対象の実際の BF K 類・S₁ 補完回収・同型不変性・零対象の零性・完全関手に関する自然性、元の S₂ の三辺と対象 loop の厳密な照合、任意の元の cofiber 正方形の加法関係、三角圏 K₀ からの対象類を保つ自然な準同型、置換前の元の辺と二単体の基本亜群による実際の零次 K 群の表示、単位・積・逆の照合と同じ object S₁ の辺の対象類の回収、任意の元の境界商の辺の対象辺への帰着と対象類による生成、比較準同型の全射性、元の object S の三角圏 K₀ 値の関手・境界商への実ホモトピーによる移送と既存の Kan 境界上の厳密な延長、実際の零次 K 群からの逆向き準同型と対象類の回収、二つの逆律、三角圏 K₀ との加法群同型と完全関手に関する自然同型、元の K 空間の π₀ との自然同型。
-- 提供：実 Perf dg 延長・Morita の実 dg nerve 同値・実 BF K 射の全整数 π_* 同型。dg 関手間の全次数自然変換 end、dg 関手圏、dg 前後合成と tensor dg 横合成。入力の単体的圏全体と Sp 値の厳密豊穣関手は未提供。
+- 提供：実 Perf dg 延長・Morita の実 dg nerve 同値・実 BF K 射の全整数 π_* 同型。dg 関手間の全次数自然変換 end、dg 関手圏、dg 前後合成と tensor dg 横合成・外側の結合単位則、標準 DK 豊穣関手と γ1、非離散な core の Kan 写像空間と前後・tensor 横合成作用。入力の単体的圏全体と Sp 値の厳密豊穣関手は未提供。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 今回の検証済み保存単位：全次数 Hom end・普遍性・dg 関手圏・dg 前後合成・横合成の単位保存と交換律・tensor dg 横合成関手の15モジュール、集約・監査・本計画。担当分だけコミットし、未保存の担当差分なし。
+- 今回の検証済み保存単位：関手の結合単位と Hom end 移送・横合成の外側結合単位・標準 DK Hom の作用と AW 保存・豊穣関手・γ1・core 写像空間の8モジュール、集約・監査・本計画。担当分だけコミットし、未保存の担当差分なし。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
-- 対象8407 jobs・新15モジュールの個別ビルド・全監査6433宣言・全体19004 jobsが成功。既存成果物の一時的な欠落は復旧後の再実行で解消。担当 import 閉包の破損はない。
+- 対象8415 jobs・新8モジュールの個別ビルド・追加45宣言限定監査・全監査6478宣言・全体19024 jobsが成功。担当 import 閉包の破損はない。
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 6433宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- 6478宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
 - raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。二つの実ホモトピーと quotient 射の局所化同型まで証明済み。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - 正の Ω 条件は元の区間商上の厳密な評価・元の収縮の fiber 内のホモトピー・loop 包含の同定から証明済み。境界列は r+1 重 S の段。既存の K の列を別に BF 模型へ束ね、元の零段の保持と負次数消滅まで証明済み。
@@ -97,10 +97,10 @@
 
 ### 次の一手
 - **厳密 dg 入力に限定**（2026-10-20 のユーザー指示）。一般の完全関手について BF 模型上で高次面を手作業で貼る整流は、検証済みの区切りで保存して中断する。既存の各段比較と六結合替え持ち上げは補助成果として保持し、native な隣接段比較や全 raw 列の完成とは数えない。
-- 次は K-3d の入力側：`dgFunctorHorizontalDG` の外側の結合・単位と既存 DK/nerve の積との整合性を証明し、関手圏の core により dg 圏間の非離散 Hom を作る。全次数 Hom end は関手圏の Hom であり、dg 圏間の写像空間そのものとは混同しない。`EnrichedNatTrans.out` の通常自然性で全次数条件を代用せず、この入力の単体的圏全体が既に完成したとは扱わない。
+- 次は K-3d の入力側：二つの `dgFunctorMappingSpace` の直積から `dgFunctorTensorMappingSpace` への比較を、元の対の頂点と全高次単体を保って構成し、`dgFunctorMappingHorizontal` に接続する。AW の切断順序・signed braiding との整合性と外側の結合・単位を証明する。tensor dg 圏の core を直積と同一視せず、全次数 Hom end を dg 圏間の写像空間とも混同しない。入力の単体的圏全体は未完。
 - 続けて関手的 Perf・S•・実現・BF 置換と、元の実 `dgK` との比較を構成し、厳密豊穣 K に γ1 を適用する。`dgKMap_piIsomorphism` で Morita π_* 条件は供給済み。各 dg 射の BF 射や整数群の同型だけを豊穣関手の完成とは数えず、離散 Hom への置換で高次入力を省略しない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind は α2b の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 検証ログは `/tmp/kst-dgfunctor-target-complete.log`・`/tmp/kst-dgfunctor-root-complete.log`・`/tmp/kst-dgfunctor-audit-complete.log`。横合成の合成保存は一般の複体・一般の tensor dg 圏で成分判定を先に証明し、具体的な Hom end の展開を抑えて既定 heartbeat で検証済み。未完工程を完成扱いせず、他レーンは編集しない。
+- 検証ログは `/tmp/kst-dg-standard-target-final.log`・`/tmp/kst-dg-standard-root.log`・`/tmp/kst-dg-standard-audit.log`。既定 heartbeat で検証済み。core の直積から tensor source への比較とその高次整合性は未供給。γ1 を関手圏へ適用しただけで K の Sp 値関手性の完成とは数えず、他レーンは編集しない。
 
 ## 1. 目標・担当範囲
 

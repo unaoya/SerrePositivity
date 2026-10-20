@@ -16432,3 +16432,96 @@ namespace SerrePositivity.KST.SConstruction
 #check @dgFunctorHorizontalDG
 #print axioms dgFunctorHorizontalDG
 end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @strictDGFunctor_comp_assoc
+#print axioms strictDGFunctor_comp_assoc
+#check @strictDGFunctor_id_comp
+#print axioms strictDGFunctor_id_comp
+#check @strictDGFunctor_comp_id
+#print axioms strictDGFunctor_comp_id
+#check @dgFunctorHomTransport
+#print axioms dgFunctorHomTransport
+#check @dgFunctorHomTransport_π
+#print axioms dgFunctorHomTransport_π
+#check @dgFunctorHomTransport_apply_π
+#print axioms dgFunctorHomTransport_apply_π
+#check @dgFunctorHorizontalElement_assoc
+#print axioms dgFunctorHorizontalElement_assoc
+#check @dgFunctorHorizontal_assoc
+#print axioms dgFunctorHorizontal_assoc
+#check @dgFunctorHorizontal_left_unit
+#print axioms dgFunctorHorizontal_left_unit
+#check @dgFunctorHorizontal_right_unit
+#print axioms dgFunctorHorizontal_right_unit
+#check @dgStandardDataMap
+#print axioms dgStandardDataMap
+#check @dgStandardDataMap_component
+#print axioms dgStandardDataMap_component
+#check @dgStandardDataMap_rhs
+#print axioms dgStandardDataMap_rhs
+#check @dgStandardSimplexMap
+#print axioms dgStandardSimplexMap
+#check @dgStandardSimplexMap_pullback
+#print axioms dgStandardSimplexMap_pullback
+#check @dgStandardHomMap
+#print axioms dgStandardHomMap
+#check @dgStandardDataMap_aw
+#print axioms dgStandardDataMap_aw
+#check @dgStandardSimplexMap_aw
+#print axioms dgStandardSimplexMap_aw
+#check @dgStandardSimplexMap_unit
+#print axioms dgStandardSimplexMap_unit
+#check @dgStandardEnrichedFunctor
+#print axioms dgStandardEnrichedFunctor
+#check @dgStandardSimplexMap_id
+#print axioms dgStandardSimplexMap_id
+#check @dgStandardSimplexMap_comp
+#print axioms dgStandardSimplexMap_comp
+#check @dgStandardEnrichedFunctor_id
+#print axioms dgStandardEnrichedFunctor_id
+#check @dgStandardEnrichedFunctor_comp
+#print axioms dgStandardEnrichedFunctor_comp
+#check @dgStandardCoherentMap
+#print axioms dgStandardCoherentMap
+#check @dgStandardCoherentMap_id
+#print axioms dgStandardCoherentMap_id
+#check @dgStandardCoherentMap_comp
+#print axioms dgStandardCoherentMap_comp
+#check @dgStandardCoherentMap_vertex
+#print axioms dgStandardCoherentMap_vertex
+#check @dgFunctorMappingSpace
+#print axioms dgFunctorMappingSpace
+#check @dgFunctorMappingSpace_kan
+#print axioms dgFunctorMappingSpace_kan
+#check @dgFunctorMappingVertex
+#print axioms dgFunctorMappingVertex
+#check @dgFunctorMappingInclusion
+#print axioms dgFunctorMappingInclusion
+#check @dgFunctorMappingPost
+#print axioms dgFunctorMappingPost
+#check @dgFunctorMappingPost_inclusion
+#print axioms dgFunctorMappingPost_inclusion
+#check @dgFunctorMappingPost_vertex
+#print axioms dgFunctorMappingPost_vertex
+#check @dgFunctorMappingPre
+#print axioms dgFunctorMappingPre
+#check @dgFunctorMappingPre_inclusion
+#print axioms dgFunctorMappingPre_inclusion
+#check @dgFunctorMappingPre_vertex
+#print axioms dgFunctorMappingPre_vertex
+#check @dgFunctorTensorMappingSpace
+#print axioms dgFunctorTensorMappingSpace
+#check @dgFunctorTensorMappingSpace_kan
+#print axioms dgFunctorTensorMappingSpace_kan
+#check @dgFunctorTensorMappingVertex
+#print axioms dgFunctorTensorMappingVertex
+#check @dgFunctorMappingHorizontal
+#print axioms dgFunctorMappingHorizontal
+#check @dgFunctorMappingHorizontal_vertex
+#print axioms dgFunctorMappingHorizontal_vertex
+#check @dgFunctorHomTransport_π_assoc
+#print axioms dgFunctorHomTransport_π_assoc
+#check @dgFunctorMappingVertexEquiv
+#print axioms dgFunctorMappingVertexEquiv
+end SerrePositivity.KST.SConstruction

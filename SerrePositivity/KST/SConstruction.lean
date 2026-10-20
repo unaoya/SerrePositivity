@@ -1112,4 +1112,12 @@ public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalElements
 public import SerrePositivity.KST.SConstruction.DGFunctorHomElements
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalInterchange
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDG
+public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalAssociativity
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalOuterUnit
+public import SerrePositivity.KST.SConstruction.DGStandardHomMap
+public import SerrePositivity.KST.SConstruction.DGStandardHomComposition
+public import SerrePositivity.KST.SConstruction.DGStandardEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.DGStandardCoherentMap
+public import SerrePositivity.KST.SConstruction.DGFunctorMappingSpace
 /-! # ∞-S• 構成と連結 K 理論 -/
