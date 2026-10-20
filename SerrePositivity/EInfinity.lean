@@ -948,3 +948,15 @@ public import SerrePositivity.EInfinity.Hammock.ForwardPathNormalizePullback
 public import SerrePositivity.EInfinity.Hammock.ForwardPathNormalizePushout
 public import SerrePositivity.EInfinity.Hammock.ForwardPathNormalizeNaturality
 public import SerrePositivity.EInfinity.Hammock.ForwardPathNormalizeModel
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingHom
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingAppendVertical
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingAppendMorphisms
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingAppendFixed
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingAppendLaws
+public import SerrePositivity.EInfinity.Hammock.BackwardZigzag
+public import SerrePositivity.EInfinity.Hammock.ForwardPathZigzag
+public import SerrePositivity.EInfinity.Hammock.ForwardPathBoundaryBlocks
+public import SerrePositivity.EInfinity.Hammock.ForwardPathBoundaryComparisons
+public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPullback
+public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPushout
+public import SerrePositivity.EInfinity.Hammock.MiddleBackwardFactorization

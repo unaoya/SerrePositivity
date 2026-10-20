@@ -3902,6 +3902,73 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackComparison_weakEquivalence,
       `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutComparison_weakEquivalence]
 
+@[noinline] private def e2RequiredBatch43 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.ext,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.ofHom,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.id_first,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.id_last,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.comp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.app_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.toHom,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.first_of_heq_id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.last_of_heq_id,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.app,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.app_mem,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.app_index_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.app_left_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.app_right_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.left_comm,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.right_comm,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.map,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.fixedMap,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.map_id,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.map_comp,
+      `SerrePositivity.EInfinity.Hammock.BackwardZigzag.obj,
+      `SerrePositivity.EInfinity.Hammock.BackwardZigzag.movingHom,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.forwardWord,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.zigzag,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.movingHom,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackZigzag,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutZigzag,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackProjectionMoving,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutInclusionMoving,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackComparisonMoving,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutComparisonMoving,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.leftBoundaryWord,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.rightBoundaryWord,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.leftBoundaryBlock,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.rightBoundaryBlock,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pullbackLeftBoundary,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pullbackLeftBoundaryProjection,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pushoutRightBoundary,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pushoutRightBoundaryInclusion,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pullbackLeftBoundaryProjection_first,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pullbackLeftBoundaryProjection_last,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pushoutRightBoundaryInclusion_first,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pushoutRightBoundaryInclusion_last,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.leftBoundaryComparison,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.rightBoundaryComparison,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pullbackLeftBoundaryComparison,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pushoutRightBoundaryComparison,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.word,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.obj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.middle_weak,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.pullbackObj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.pullbackProjection,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.pushoutInput,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.pushoutObj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.pushoutInclusion,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.intermediate,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.first,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.last,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.fac,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.first_trivialCofibration,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.input,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.obj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.projection]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3932,7 +3999,7 @@ run_cmd do
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
-      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42] do
+      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -9243,3 +9310,77 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ)
         ((normalizedPushoutInclusion s).app i) := by
   let := BarrattEccles.modelCategory A
   exact normalizedPushoutInclusion_trivialCofibration s
+
+-- 外側の端点 X は固定し、内側の射は元の置換射のまま回収する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n : ℕ} (s : TerminalReplacement C n) (hs : trivialFibrations C s.hom)
+    {X : C} (a : s.right.obj 0 ⟶ X) (ha : weakEquivalences C a) :
+    HEq ((pullbackLeftBoundaryProjection s hs a ha).app
+      (Fin.last (leftBoundaryWord n).length)) s.hom :=
+  pullbackLeftBoundaryProjection_last s hs a ha
+
+-- 動く接合点を貼っても全体の X,Y の元の縦射を構成できる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.ForwardPath
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n m : ℕ} {X Y : C} (s : TerminalReplacement C n) (hs : trivialFibrations C s.hom)
+    (R : ComposableArrows C m) (a : s.right.obj 0 ⟶ X) (ha : weakEquivalences C a)
+    (u : R.obj 0 ⟶ s.right.obj (Fin.last n)) (hu : weakEquivalences C u)
+    (c : R.obj 0 ⟶ s.left) (h : c ≫ s.hom = u)
+    (b : Y ⟶ R.obj (Fin.last m)) (hb : weakEquivalences C b) :
+    Zigzag.Hom (MiddleBackward.pullbackObj s hs R a ha u hu c h b hb)
+      (MiddleBackward.obj s.right R a ha u hu b hb) :=
+  MiddleBackward.pullbackProjection s hs R a ha u hu c h b hb
+
+-- 左右とも長さ零でも、中央の自明 cofibration を恒等列にする実際の射。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {X Y : C} (L R : ComposableArrows C 0)
+    (a : L.obj 0 ⟶ X) (ha : weakEquivalences C a)
+    (c : R.obj 0 ⟶ L.obj (Fin.last 0)) (hc : trivialCofibrations C c)
+    (b : Y ⟶ R.obj (Fin.last 0)) (hb : weakEquivalences C b) :
+    Zigzag.Hom (MiddleBackward.obj L R a ha c hc.2 b hb)
+      (MiddleBackward.pushoutObj L R a ha c hc b hb) :=
+  MiddleBackward.pushoutInclusion L R a ha c hc b hb
+
+-- 一般のモデル圏では分解を明示し、その同じ第一因子を自明 cofibration と判定。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) {B D : C} (u : D ⟶ B)
+    (hu : weakEquivalences C u) : trivialCofibrations C (Factorization.first cof u) :=
+  Factorization.first_trivialCofibration cof u hu
+
+-- 原点側も動く比較は、右の外側の backward 射まで全頂点で弱同値を保つ。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.ForwardPath in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {m : ℕ} {s t : InitialReplacement C m} (f : s ⟶ t)
+    (hs : trivialCofibrations C s.hom) (ht : trivialCofibrations C t.hom)
+    (hf : ∀ i, weakEquivalences C (f.left.app i)) {Y Y' : C}
+    (b : Y ⟶ s.left.obj (Fin.last m)) (b' : Y' ⟶ t.left.obj (Fin.last m))
+    (hb : weakEquivalences C b) (hb' : weakEquivalences C b') (y : Y ⟶ Y')
+    (hy : weakEquivalences C y) (h : b ≫ f.left.app (Fin.last m) = y ≫ b') :
+    Zigzag.MovingHom (pushoutRightBoundary s hs b hb) (pushoutRightBoundary t ht b' hb') :=
+  pushoutRightBoundaryComparison f hs ht hf b b' hb hb' y hy h
+
+-- 任意可換環の元の E 代数に、構成済みの同じ関手的分解を代入する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+    SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
+    (L : ComposableArrows (BarrattEccles.operad A).Algebra n)
+    (R : ComposableArrows (BarrattEccles.operad A).Algebra m)
+    {X Y : (BarrattEccles.operad A).Algebra}
+    (a : L.obj 0 ⟶ X) (u : R.obj 0 ⟶ L.obj (Fin.last n)) (b : Y ⟶ R.obj (Fin.last m)) :
+    let := BarrattEccles.modelCategory A
+    ∀ (ha : weakEquivalences _ a) (hu : weakEquivalences _ u) (hb : weakEquivalences _ b),
+      Zigzag.Hom
+        (Factorization.obj (BarrattEccles.mappingCofibrantFactorization A) L R a ha u hu b hb)
+        (MiddleBackward.obj L R a ha u hu b hb) := by
+  let := BarrattEccles.modelCategory A
+  dsimp only
+  intro ha hu hb
+  exact Factorization.projection (BarrattEccles.mappingCofibrantFactorization A) L R a ha u hu b hb
