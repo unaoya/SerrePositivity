@@ -8875,3 +8875,90 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeNativeHom_comp_hom_arrow
 #print axioms specifiedCoconeNativeHom_comp_hom_arrow
+
+#check @arrowIsoInverse_congr
+#print axioms arrowIsoInverse_congr
+
+#check @homotopyEndpointTransport
+#print axioms homotopyEndpointTransport
+
+#check @homotopyEndpointTransport_raw
+#print axioms homotopyEndpointTransport_raw
+
+#check @homotopyEndpointTransport_hom_arrow
+#print axioms homotopyEndpointTransport_hom_arrow
+
+#check @nonempty_functorHomSquare_of_homEq
+#print axioms nonempty_functorHomSquare_of_homEq
+
+#check @specifiedCoconeLeftEndHomotopy
+#print axioms specifiedCoconeLeftEndHomotopy
+
+#check @specifiedCoconeRightEndHomotopy
+#print axioms specifiedCoconeRightEndHomotopy
+
+#check @specifiedCoconeLeftEndHomotopy_raw
+#print axioms specifiedCoconeLeftEndHomotopy_raw
+
+#check @specifiedCoconeRightEndHomotopy_raw
+#print axioms specifiedCoconeRightEndHomotopy_raw
+
+#check @specifiedCoconeNativeEndHom_comp
+#print axioms specifiedCoconeNativeEndHom_comp
+
+#check @nonempty_specifiedCoconeNativeEndHomSquare
+#print axioms nonempty_specifiedCoconeNativeEndHomSquare
+
+#check @specifiedCoconeNativeEndHomSquare
+#print axioms specifiedCoconeNativeEndHomSquare
+
+#check @specifiedCoconeCommonNativeIso
+#print axioms specifiedCoconeCommonNativeIso
+
+#check @specifiedCoconeCommonNativeHomotopy
+#print axioms specifiedCoconeCommonNativeHomotopy
+
+#check @specifiedCoconeCommonNativeHomotopy_hom
+#print axioms specifiedCoconeCommonNativeHomotopy_hom
+
+#check @specifiedCoconeLeftCommonNativeTriangle
+#print axioms specifiedCoconeLeftCommonNativeTriangle
+
+#check @specifiedCoconeRightCommonNativeTriangle
+#print axioms specifiedCoconeRightCommonNativeTriangle
+
+#check @homotopyPrecompInverse_hom
+#print axioms homotopyPrecompInverse_hom
+
+#check @homotopyPrecompInverseTransport
+#print axioms homotopyPrecompInverseTransport
+
+#check @homotopyPrecompInverseTransport_raw
+#print axioms homotopyPrecompInverseTransport_raw
+
+#check @homotopyPrecompInverseTransport_hom
+#print axioms homotopyPrecompInverseTransport_hom
+
+#check @specifiedCoconeLeftEndInverseHomotopy
+#print axioms specifiedCoconeLeftEndInverseHomotopy
+
+#check @specifiedCoconeRightEndInverseHomotopy
+#print axioms specifiedCoconeRightEndInverseHomotopy
+
+#check @specifiedCoconeLeftEndInverseHomotopy_raw
+#print axioms specifiedCoconeLeftEndInverseHomotopy_raw
+
+#check @specifiedCoconeRightEndInverseHomotopy_raw
+#print axioms specifiedCoconeRightEndInverseHomotopy_raw
+
+#check @specifiedCoconeLeftEndInverseHomotopy_hom
+#print axioms specifiedCoconeLeftEndInverseHomotopy_hom
+
+#check @specifiedCoconeRightEndInverseHomotopy_hom
+#print axioms specifiedCoconeRightEndInverseHomotopy_hom
+
+#check @specifiedCoconeLeftInverseNativeHomSquare
+#print axioms specifiedCoconeLeftInverseNativeHomSquare
+
+#check @specifiedCoconeRightInverseNativeHomSquare
+#print axioms specifiedCoconeRightInverseNativeHomSquare

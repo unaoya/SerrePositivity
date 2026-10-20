@@ -25,7 +25,8 @@ lemma arrowComposition_congr {C : Type*} [Category* C] {a b c a' b' c' : C}
   subst f' g'
   rfl
 
-private lemma arrowIdentity_inv {C : Type*} [Category* C] {a b a' b' : C}
+/-- 同型の順方向の射が同じ Arrow なら、逆の射も同じ Arrow である。 -/
+lemma arrowIsoInverse_congr {C : Type*} [Category* C] {a b a' b' : C}
     (I : a ≅ b) (J : a' ≅ b') (h : Arrow.mk I.hom = Arrow.mk J.hom) :
     Arrow.mk I.inv = Arrow.mk J.inv := by
   obtain ⟨ha, hb, h⟩ := (Arrow.mk_eq_mk_iff _ _).mp h
@@ -51,7 +52,7 @@ lemma iso_threeFactors_identity_arrow {C : Type*} [Category* C] {a b c d : C}
     (hJ : Arrow.mk J.hom = Arrow.mk (𝟙 z))
     (hK : Arrow.mk K.hom = Arrow.mk (𝟙 z)) :
     Arrow.mk (I.symm ≪≫ J ≪≫ K).hom = Arrow.mk (𝟙 z) := by
-  have hi := arrowIdentity_inv I (Iso.refl z) hI
+  have hi := arrowIsoInverse_congr I (Iso.refl z) hI
   simpa only [Iso.refl_inv, Iso.trans_hom, Iso.symm_hom, Category.id_comp] using
     arrowComposition_congr hi (arrowComposition_congr hJ hK)
 
