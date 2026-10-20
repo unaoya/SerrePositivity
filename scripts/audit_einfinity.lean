@@ -1408,6 +1408,24 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.contractionHomotopyEquiv,
       `SerrePositivity.EInfinity.IntervalCuts.contraction_quasiIso,
       `SerrePositivity.EInfinity.IntervalCuts.endpoint_quasiIso,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexInputLift_face,
+      `SerrePositivity.EInfinity.IntervalCuts.edgeInputLift_face,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalMapComponent,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalMapComponent_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalMapComponent_negOne,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalMapComponent_other,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalMapComponent_comm,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalMap,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalMap_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.intervalMap_edge,
+      `SerrePositivity.EInfinity.IntervalCuts.interval_hom_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.unit_hom_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_intervalMap_apply,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_triangle_value,
+      `SerrePositivity.EInfinity.IntervalCuts.interval_relative_lift,
+      `SerrePositivity.EInfinity.IntervalCuts.boundary,
+      `SerrePositivity.EInfinity.IntervalCuts.boundary_contraction,
+      `SerrePositivity.EInfinity.IntervalCuts.boundary_cofibration,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4006,3 +4024,51 @@ example : (contraction ℤ).f 0
 example : endpoint ℤ true ≫ contraction ℤ = 𝟙 _ := endpoint_contraction ℤ true
 example : QuasiIso (endpoint ℤ true) := endpoint_quasiIso ℤ true
 example : QuasiIso (contraction ℤ) := contraction_quasiIso ℤ
+
+-- 区間射の普遍構成で、両頂点を交換し辺の向きを反転する鎖射を作る。
+noncomputable section
+private def reverseIntervalVertices (c : Fin 2) : (interval ℤ).X 0 :=
+  if c = 0 then faceVector ℤ (vertex 1) else faceVector ℤ (vertex 0)
+private lemma reverseIntervalVertices_closed (c : Fin 2) :
+    (interval ℤ).d 0 1 (reverseIntervalVertices c) = 0 := by
+  by_cases hc : c = 0
+  · simp only [reverseIntervalVertices, ite_eq_left hc]
+    exact faceVector_vertex_d ℤ 1
+  · simp only [reverseIntervalVertices, ite_eq_right hc]
+    exact faceVector_vertex_d ℤ 0
+private lemma reverseIntervalEdge_boundary :
+    (interval ℤ).d (-1) 0 (-(show (interval ℤ).X (-1) from faceVector ℤ edge)) =
+      reverseIntervalVertices 1 - reverseIntervalVertices 0 := by
+  rw [map_neg, faceVector_edge_d_sub]
+  change -((show (interval ℤ).X 0 from faceVector ℤ (vertex 1)) -
+    (show (interval ℤ).X 0 from faceVector ℤ (vertex 0))) = _
+  exact neg_sub _ _
+private def reverseInterval : interval ℤ ⟶ interval ℤ :=
+  intervalMap ℤ (interval ℤ) reverseIntervalVertices
+    (-(show (interval ℤ).X (-1) from faceVector ℤ edge)) reverseIntervalVertices_closed
+    reverseIntervalEdge_boundary
+private lemma reverseInterval_zero : reverseInterval.f 0 (faceVector ℤ (vertex 0)) =
+    faceVector ℤ (vertex 1) :=
+  intervalMap_vertex ℤ _ _ _ _ _ 0
+private lemma reverseInterval_one : reverseInterval.f 0 (faceVector ℤ (vertex 1)) =
+    faceVector ℤ (vertex 0) :=
+  intervalMap_vertex ℤ _ _ _ _ _ 1
+private lemma reverseInterval_edge : reverseInterval.f (-1) (faceVector ℤ edge) =
+    -(show (interval ℤ).X (-1) from faceVector ℤ edge) :=
+  intervalMap_edge ℤ _ _ _ _ _
+example : reverseInterval ≫ reverseInterval = 𝟙 (interval ℤ) := by
+  apply interval_hom_ext ℤ
+  · intro c
+    fin_cases c
+    · exact (congrArg (fun x : (interval ℤ).X 0 => reverseInterval.f 0 x)
+        reverseInterval_zero).trans reverseInterval_one
+    · exact (congrArg (fun x : (interval ℤ).X 0 => reverseInterval.f 0 x)
+        reverseInterval_one).trans reverseInterval_zero
+  · change reverseInterval.f (-1) (reverseInterval.f (-1) (faceVector ℤ edge)) =
+      faceVector ℤ edge
+    rw [reverseInterval_edge, map_neg, reverseInterval_edge, neg_neg]
+
+-- 境界包含の型は生成類の左持ち上げ性そのもので、モデル構造の仮定は要らない。
+example : (SerrePositivity.EInfinity.projectiveGeneratingCofibrations ℤ).rlp.llp
+    (CategoryTheory.Limits.biprod.desc (endpoint ℤ false) (endpoint ℤ true)) :=
+  boundary_cofibration ℤ

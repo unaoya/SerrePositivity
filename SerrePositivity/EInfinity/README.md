@@ -635,7 +635,11 @@ nullary を含む TR の部分合成保存は完了。
 `endpoint_contraction` は双方で恒等となる三角形。
 `contractionHomotopy` は一頂点を辺へ送る具体的な次数 −1 の鎖ホモトピー。
 `contractionHomotopyEquiv`・`contraction_quasiIso`・`endpoint_quasiIso` は収縮の鎖ホモトピー同値と、収縮・両端点の擬同型性。
-端点・収縮の余代数射性、境界包含の cofibration 性、抽象転送への代入が残る。
+`intervalMap` は閉じた両頂点と、その差を境界に持つ辺から任意の非有界複体への射を構成する。
+`interval_hom_ext` は全整数複体射の三生成元外延性。
+`interval_relative_lift` は全射な擬同型に沿い両端点を固定して区間射を持ち上げる。
+`boundary_cofibration` は実際の二端点包含が生成類に対する左持ち上げ性を持つこと。
+端点・収縮の余代数射性と抽象転送への代入が残る。
 その後の E2a-4・5、E2b・G1′ も未完成。
 
 原典：

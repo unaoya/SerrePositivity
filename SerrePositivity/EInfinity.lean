@@ -377,3 +377,7 @@ public import SerrePositivity.EInfinity.AlexanderWhitney.CochainCounitValues
 public import SerrePositivity.EInfinity.IntervalCuts.Endpoints
 public import SerrePositivity.EInfinity.IntervalCuts.ContractionValues
 public import SerrePositivity.EInfinity.IntervalCuts.ContractionHomotopy
+public import SerrePositivity.EInfinity.IntervalCuts.MapComponents
+public import SerrePositivity.EInfinity.IntervalCuts.Maps
+public import SerrePositivity.EInfinity.IntervalCuts.RelativeLifting
+public import SerrePositivity.EInfinity.IntervalCuts.BoundaryCofibration
