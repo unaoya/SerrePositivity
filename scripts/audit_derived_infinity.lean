@@ -1,3 +1,23 @@
+import SerrePositivity.InfinityCategories.Derived.CosliceInitialRealization
+import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCofinality
+import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLimits
+import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanSliceRoof
+import SerrePositivity.InfinityCategories.Derived.InitialDiagramSlice
+import SerrePositivity.InfinityCategories.Derived.InitialIndexSlice
+import SerrePositivity.InfinityCategories.Derived.MixedSliceFamilies
+import SerrePositivity.InfinityCategories.Derived.MixedSliceIso
+import SerrePositivity.InfinityCategories.Derived.RelativeRoofBaseChange
+import SerrePositivity.InfinityCategories.Derived.RelativeRoofCofinality
+import SerrePositivity.InfinityCategories.Derived.RelativeRoofComparisonCofinality
+import SerrePositivity.InfinityCategories.Derived.RelativeRoofPullback
+import SerrePositivity.InfinityCategories.Derived.RelativeRoofPullbackLift
+import SerrePositivity.InfinityCategories.Derived.RelativeSliceRightFibration
+import SerrePositivity.InfinityCategories.Derived.RightFibrationCofinalPullback
+import SerrePositivity.InfinityCategories.Derived.RoofComparisonTransport
+import SerrePositivity.InfinityCategories.Derived.SliceCornerRightFibration
+import SerrePositivity.InfinityCategories.Derived.SlicePullbackFamilies
+import SerrePositivity.InfinityCategories.Derived.SlicePullbackIso
+import SerrePositivity.InfinityCategories.Derived.SliceRoofCorner
 import SerrePositivity.InfinityCategories.Derived.CofinalConeRestriction
 import SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence
 import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
@@ -2915,6 +2935,26 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryAction,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingUnitAction,
+    `SerrePositivity.InfinityCategories.Derived.CosliceInitialRealization,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCofinality,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLimits,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanSliceRoof,
+    `SerrePositivity.InfinityCategories.Derived.InitialDiagramSlice,
+    `SerrePositivity.InfinityCategories.Derived.InitialIndexSlice,
+    `SerrePositivity.InfinityCategories.Derived.MixedSliceFamilies,
+    `SerrePositivity.InfinityCategories.Derived.MixedSliceIso,
+    `SerrePositivity.InfinityCategories.Derived.RelativeRoofBaseChange,
+    `SerrePositivity.InfinityCategories.Derived.RelativeRoofCofinality,
+    `SerrePositivity.InfinityCategories.Derived.RelativeRoofComparisonCofinality,
+    `SerrePositivity.InfinityCategories.Derived.RelativeRoofPullback,
+    `SerrePositivity.InfinityCategories.Derived.RelativeRoofPullbackLift,
+    `SerrePositivity.InfinityCategories.Derived.RelativeSliceRightFibration,
+    `SerrePositivity.InfinityCategories.Derived.RightFibrationCofinalPullback,
+    `SerrePositivity.InfinityCategories.Derived.RoofComparisonTransport,
+    `SerrePositivity.InfinityCategories.Derived.SliceCornerRightFibration,
+    `SerrePositivity.InfinityCategories.Derived.SlicePullbackFamilies,
+    `SerrePositivity.InfinityCategories.Derived.SlicePullbackIso,
+    `SerrePositivity.InfinityCategories.Derived.SliceRoofCorner,
     `SerrePositivity.InfinityCategories.Derived.CofinalConeRestriction,
     `SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence,
     `SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer,

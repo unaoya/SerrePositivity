@@ -81,18 +81,18 @@
 
 ### 未コミット
 
-- `DGVerdierRightKanSliceRoof.lean` を検証中。右 Kan 比較の Quillen A の実 slice を、同じ分母・分子を持つ元の実屋根へ送る。ほかの所有ファイルは保存済み。
+- `CosliceUncurryIso.lean`・`CoslicePrismIso.lean`・`CosliceRealizationLimitCone.lean` は対象ビルド済み。`DGVerdierRightKanCanonical.lean` を検証中。標準右 Kan 錐と全錐の同型の照合により前合成の全充満忠実性へ進む。ほかの所有ファイルは保存済み。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8187 jobs）。公理監査は Derived 11007 宣言／1213 モジュール、Stable 12122／1483。許容三公理のみ。今回の新規144モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8217 jobs）。公理監査は Derived 11168 宣言／1233 モジュール、Stable 12283／1503。許容三公理のみ。今回の新規164モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏の普遍性を続ける。全選択空間上の二入力合成・単位、相対実評価と全 prism の可縮性は完成。右 Kan の局所極限・標準右 Kan 条件・単位成分から任意標的の前合成の充満忠実性・本質的全射性を導く一般判定も完成。実逆分母の coherent な coslice 図式と `rightKanShape q (q x)` への実写像を構成した。任意反転関手の実分母図式の極限を、元の F(x) を厳密な頂点とし全評価 prism を保持して構成済み。次は右 Kan 比較の Quillen A の全 slice と、弱可縮性が既証明の実屋根比較の slice の高次比較を構成する。実分母→右 Kan 形状の left cofinality・右 Kan の単位成分の可逆性・標準右 Kan 条件は未証明。一般判定への仮定追加だけを局所化完成と数えない。
+- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏の普遍性を続ける。全選択空間上の二入力合成・単位、相対実評価と全 prism の可縮性、右 Kan から全前合成の充満忠実性・本質的全射性への一般判定は完成。`dgVerdierRightKanMap_isLeftCofinal` は、元の実屋根比較を商側三角形の右ファイブレーションへ基底変換し、全 Quillen A slice の厳密な pullback 表示から実際に証明した。商側三角形の全空間は始対象値図式と実添字の弱可縮性で弱可縮。`dgVerdierRightKanDiagram_hasLimit_all` と `dgVerdierInvertingFunctor_rightKanExtension_exists` により、任意反転関手の全頂点の局所極限と実右 Kan 拡張の存在も完成。次は全 prism の coslice 実現の全錐同型で標準右 Kan 錐の極限性と前合成の充満忠実性を閉じ、その後任意右 Kan 単位の実成分の可逆性を証明する。単位の可逆性・本質的全射性・実 IsLocalization 本体は未完。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。普遍性の後、平坦分解への移送、Verdier 列、β5、β4。全計画は未完。
 
