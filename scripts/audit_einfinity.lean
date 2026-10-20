@@ -2208,6 +2208,26 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.smallFunctor,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.diagram,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaDown,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaUp,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaDown_commaUp,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaUp_commaDown,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.equivalence,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.recoveryNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.recoveryNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallSpanRecoveryNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallSpanRecoveryNerveMap_middle,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallSpanRecoveryNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSmallSpanGrothendieckNerveMap_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpanGrothendieckNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockComparisonIso_fac,
       `SerrePositivity.EInfinity.FrameHom.Thomason.fiberNerveMap_localized_isIso,
       `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.toComma,
       `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.fromComma,
@@ -6786,3 +6806,38 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (((mappingSpaceSmallSpanGrothendieckNerveMap A X Y).app n c).obj j).fiber.hom.down =
       (c.obj j).unop.val :=
   mappingSpaceSmallSpanGrothendieckNerveMap_hom A X Y n c j
+
+-- 元の小さい全図式からの回収は、全単体・全作用素で元の右射そのものを返す。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    mappingSpaceSmallSpanGrothendieckNerveMap A X Y ≫ mappingSmallSpanRecoveryNerveMap A X Y =
+      mappingSpaceSpecialHammockNerveMap A X Y :=
+  mappingSpaceSmallSpanGrothendieckNerveMap_fac A X Y
+
+-- 任意の可換環上で同じ元の右比較射が反転される。単体集合モデルの仮定は不要。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (mappingSpaceSpecialHammockNerveMap A X Y)) :=
+  mappingSpaceSpecialHammockNerveMap_localized_isIso A X Y
+
+-- 同じ元の三本矢の nerve が Kan であるという入力なしに、右射は弱ホモトピー同値。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+      (mappingSpaceSpecialHammockNerveMap A X Y) :=
+  mappingSpaceSpecialHammockNerveMap_isWeakHomotopyEquivalence A X Y
+
+-- 同じ二射から定めた同型を元の左射へ合成すると、元の右射に厳密に一致する。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+        (mappingSpaceIndexAugmentation A X Y) ≫
+        (mappingSpaceSpecialHammockComparisonIso A X Y).hom =
+      SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+        (mappingSpaceSpecialHammockNerveMap A X Y) :=
+  mappingSpaceSpecialHammockComparisonIso_fac A X Y

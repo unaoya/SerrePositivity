@@ -1010,7 +1010,17 @@ nerve の不変性を移す。`SmallNerve.map_localized_isIso` で宇宙を揃�
 元の固定 fiber へ送る。`mappingSpaceResolutionGrothendieckNerveMap` と
 `mappingSpaceSmallSpanGrothendieckNerveMap` は同じ分解の全図式と全左脚・全右脚への
 比較で、それぞれ `_localized_isIso` を証明。全次数で元の中間射を保持する。
-小さい全図式から元の三本矢への回収と、元の右射との厳密な因子分解は後続。
+`SmallCommaGrothendieck.equivalence` は元の両脚・中間射・左右の射の up/down による
+明示的な同値。`BarrattEccles.mappingSmallSpanRecoveryNerveMap` は同じ小さい全図式から
+元の特殊な三本矢への回収で、局所化後に可逆。
+`mappingSpaceSmallSpanGrothendieckNerveMap_fac` は元の右比較射そのものを全単体・全作用素で
+厳密に回収する。左脚の augmentation ≫ 𝟙 と、射の恒等射を正規化して証明する。
+`mappingSpaceSpecialHammockNerveMap_localized_isIso` と `_isWeakHomotopyEquivalence` により、
+同じ元の右射の反転性と弱ホモトピー同値性は完成。三本矢の nerve の Kan 性は要求しない。
+`mappingSpaceIndexAugmentation_isWeakHomotopyEquivalence` は同じ左射の弱同値性。
+`mappingSpaceSpecialHammockComparisonIso` は同じ二射で定める Map^h の宇宙拡大と三本矢の
+anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の右射であることを照合。
+特殊な三本矢から hammock 局所化と既存 DK Hom への高次比較は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
