@@ -1161,7 +1161,15 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `erase_erase_join` は削除同士の各側0〜1段の局所合流で、同じ列と異なる列の両方を含む。
 `BarrattEccles.algebraHammockEraseSimplex_fac`・`algebraHammockEraseRaw_reduction`・
 `algebraHammockEraseErase_join` は任意の可換環上で同じ元の基本縮約への代入。
-合成同士・混合を含む基本縮約全体の局所合流と代表の一意性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.target_eq_of_surjective` は同じ列の全射から終域の色と語の等式を回収する。
+`raw_eq_of_surjections` は二重合成の結果を、元の語を含めて厳密に同定する。
+`Word.merge_left_remaining_color`・`merge_right_remaining_color` は他方の合成に必要な色を回収し、
+`merge_predAbove_comp` は元の単体圏の二重全射の合成則を照合する。
+`merge_merge_join` は同じ位置・接した位置・離れた位置とその逆順を含め、
+合成同士の各側0〜1段の元の同じ未縮約対象への合流を与える。
+`BarrattEccles.algebraHammockMergeRaw_reduction`・`algebraHammockMergeMerge_join` は
+任意の可換環上の元の基本合成と同じ合流。モデル構造は局所的に選ぶ。
+混合を含む基本縮約全体の局所合流と代表の一意性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

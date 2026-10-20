@@ -3362,6 +3362,20 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEraseRaw_reduction,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEraseErase_join]
 
+@[noinline] private def e2RequiredBatch28 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.target_eq_of_surjective,
+      `SerrePositivity.EInfinity.Hammock.raw_eq_of_surjections,
+      `SerrePositivity.EInfinity.Hammock.Word.direction_eq_of_images,
+      `SerrePositivity.EInfinity.Hammock.Word.merge_left_remaining_color,
+      `SerrePositivity.EInfinity.Hammock.Word.merge_right_remaining_color,
+      `SerrePositivity.EInfinity.Hammock.Word.merge_predAbove_comp,
+      `SerrePositivity.EInfinity.Hammock.merge_merge_join_ordered,
+      `SerrePositivity.EInfinity.Hammock.merge_merge_join_of_lt,
+      `SerrePositivity.EInfinity.Hammock.merge_merge_join,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockMergeRaw,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockMergeRaw_reduction,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockMergeMerge_join]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3388,7 +3402,8 @@ run_cmd do
       e2RequiredBatch12, e2RequiredBatch13, e2RequiredBatch14, e2RequiredBatch15,
       e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
-      e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27] do
+      e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
+      e2RequiredBatch28] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8128,3 +8143,32 @@ example {C : Type e2ComplexLimitUniverse} [Category C] {W : MorphismProperty C}
     (hf : Function.Injective f.orderHom) (S : Zigzag W a X Y) (i : Fin a.length) :
     IdentityColumn (WordAction.obj f S) (f.orderHom i) ↔ IdentityColumn S i :=
   identityColumn_obj_image_iff f hf S i
+
+-- 元の二つの全射は、終域の色と語の等式も含めて比較する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b c : Word} (f : a ⟶ b) (g : a ⟶ c)
+    (hf : Function.Surjective f.orderHom) (hn : b.length = c.length)
+    (hfg : ∀ i, Fin.cast hn (f.orderHom i) = g.orderHom i) :
+    ∃ hbc : b = c, f ≫ eqToHom hbc = g := Word.target_eq_of_surjective f g hf hn hfg
+
+-- 三列の接した合成でも、元の二重全射は同じ列の写像を与える。
+open SerrePositivity.EInfinity.Hammock in
+example (x : Fin 3) :
+    (0 : Fin 1).predAbove ((0 : Fin 2).predAbove x) =
+      (0 : Fin 1).predAbove ((1 : Fin 2).predAbove x) :=
+  Word.merge_predAbove_comp (0 : Fin 1) 0 (by decide) x
+
+-- 任意の可換環上の元の合成同士の合流。モデル構造などの追加入力は不要。
+open SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) {k : ℕ}
+    (d : Fin (k + 2) → Hammock.Direction) (p q : Fin (k + 1))
+    (hp : d p.castSucc = d p.succ) (hq : d q.castSucc = d q.succ)
+    {n : SimplexCategoryᵒᵖ}
+    (τ : (BarrattEccles.algebraHammockGraph A (⟨k + 2, d⟩ : Hammock.Word) X Y).obj n) :
+    ∃ r : BarrattEccles.algebraHammockRaw A X Y n,
+      Relation.ReflGen (BarrattEccles.algebraHammockRawReduction A X Y)
+        (BarrattEccles.algebraHammockMergeRaw A X Y d p hp τ) r ∧
+      Relation.ReflGen (BarrattEccles.algebraHammockRawReduction A X Y)
+        (BarrattEccles.algebraHammockMergeRaw A X Y d q hq τ) r :=
+  BarrattEccles.algebraHammockMergeMerge_join A X Y d p q hp hq τ

@@ -853,3 +853,8 @@ public import SerrePositivity.EInfinity.Hammock.RawEmbeddingComparison
 public import SerrePositivity.EInfinity.Hammock.EraseSimplexIdentityColumn
 public import SerrePositivity.EInfinity.Hammock.EraseEraseConfluence
 public import SerrePositivity.EInfinity.BarrattEccles.HammockErasureConfluence
+public import SerrePositivity.EInfinity.Hammock.WordSurjectionComparison
+public import SerrePositivity.EInfinity.Hammock.RawSurjectionComparison
+public import SerrePositivity.EInfinity.Hammock.WordMergeIndices
+public import SerrePositivity.EInfinity.Hammock.MergeMergeConfluence
+public import SerrePositivity.EInfinity.BarrattEccles.HammockMergeConfluence
