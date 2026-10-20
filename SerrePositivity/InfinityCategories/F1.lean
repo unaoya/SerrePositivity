@@ -1502,3 +1502,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsMixedUnit
 public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianSectionsConstant
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianStraighteningVertices
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornCandidateFiller
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornLift
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveInnerFibration
