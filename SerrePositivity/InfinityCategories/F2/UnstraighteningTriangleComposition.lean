@@ -1,12 +1,13 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningMappingTrianglePrism
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleWitness
 public import SerrePositivity.InfinityCategories.F1.UnstraighteningFamilyComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComposition
 
 /-!
 概要：指定三角形の長辺の unstraightening 比較は、二辺の実際の相対合成と同型。
-方針：普遍的な族の証拠を制限・合成し、同じ長辺を表す族の一意性を使う。
+方針：元の全三角形の持ち上げの長辺から証拠を取り、その証拠の比較を直接使う。
 規約：全 Hom のパラメータを保持し、点ごとの合成則に弱めない。
 使われ方：一般 coherent 余錐の全 Hom の比較の合成整合性。
 -/
@@ -21,7 +22,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2
 
 /-- 概要：任意の指定三角形上で比較射は二辺の合成を長辺の像へ移す。
-方針：標準 pointed な証拠を全パラメータで貼り、その終点を比較する。
+方針：元の全二単体の持ち上げを保持し、その長辺の終点を直接比較する。
 規約：三辺も三角形も選び直さない。使われ方：余錐の合成を全空間へ移す。 -/
 def unstraighteningMappingTriangleIso {B K : SSet.{u + 1}}
     (F G J : B ⟶ SpaceInfinity.{u})
@@ -40,17 +41,10 @@ def unstraighteningMappingTriangleIso {B K : SSet.{u + 1}}
         (b ≫ leftUnstraighteningMappingSpaceMap G J) ≫
           relativeFunctorComposition (Over.mk (leftUnstraighteningProjection F))
             (Over.mk (leftUnstraighteningProjection G))
-            (Over.mk (leftUnstraighteningProjection J))) := Classical.choice <| by
+            (Over.mk (leftUnstraighteningProjection J))) := by
   let f := relativeFunctorUncurry (a ≫ leftUnstraighteningMappingSpaceMap F G)
   let g := relativeFunctorUncurry (b ≫ leftUnstraighteningMappingSpaceMap G J)
-  have wf : UnstraighteningFamilyWitness F G a f := by
-    simpa only [Category.comp_id, relativeFunctorUncurry_naturality, f] using
-      (unstraighteningUniversalFamilyWitness F G).comp a
-  have wg : UnstraighteningFamilyWitness G J b g := by
-    simpa only [Category.comp_id, relativeFunctorUncurry_naturality, g] using
-      (unstraighteningUniversalFamilyWitness G J).comp b
-  have hf := relativeFunctorUncurry_projection (a ≫ leftUnstraighteningMappingSpaceMap F G)
-  obtain ⟨w⟩ := unstraighteningFamilyTriangleWitness F G J hf wf wg H h₀₁ h₁₂ h₀₂
+  let w := unstraighteningMappingTriangleLongWitness F G J a b c H h₀₁ h₁₂ h₀₂
   let d := lift (a ≫ leftUnstraighteningMappingSpaceMap F G)
     (b ≫ leftUnstraighteningMappingSpaceMap G J) ≫
       relativeFunctorComposition (Over.mk (leftUnstraighteningProjection F))
@@ -69,7 +63,7 @@ def unstraighteningMappingTriangleIso {B K : SSet.{u + 1}}
     apply relativeFunctorUncurry_injective
     exact relativeFunctorUncurry_curry _ _
   rw [hc] at e
-  exact ⟨e⟩
+  exact e
 
 /-- 概要：任意の二つの変換の族の合成は、相対写像空間の実際の合成と整合する。
 方針：全パラメータの三角形を充填し、指定三角形の比較を適用する。

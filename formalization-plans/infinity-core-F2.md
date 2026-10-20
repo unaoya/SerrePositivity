@@ -49,8 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   任意の有限標的射の二入力を、共通の元の境界円柱を保って元の fiber へ同時に輸送・反映し、実際の比較射への相対有限検出・持ち上げを構成。値の射の境界と全比較円柱の制限を厳密に保持。
   任意の Kan 境界で相対持ち上げを構成し、境界移動を除去。元の全空間 Kan 引き戻し比較の弱同値性・ホモトピー逆を全標準境界の path 置換充填から証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較の頂点辺・恒等図式辺を持つ全錐比較と各脚の h での自然性を保持。
-  元の置換 path の指定同型と切断上の簡約を証明。区間錐・全空間錐の二射影の指定比較と元の全 path・native 可換性の整合を証明。余極限頂点の射は元の単位と厳密に可換。指定全空間射を native 余錐・余極限写像に表示し、元の具体的 Kan 射との値の比較を構成。元の coherent 変換と指定単位の全合成三角形を保持し、同じ長辺の余錐を元の native 写像の表示へ比較。共通長辺の左右二全三角形から指定可換同型を構成し、単位上の全円柱を保持して値へ移送。元の宇宙の native 値の引き戻し比較候補と三座標式を構成。相対空間内で底固定代表を構成し、元の底上の interval 模型への比較と各 fiber の二脚・全 path を照合。単位上の指定類を Kan 延長・頂点表示後の指定同型の等式へ反映。元の二三角形を各点で評価し共通長辺で貼る native 錐を構成。頂点・四辺・元の両二単体を厳密に照合。
-  三集約同時ビルド 7899 jobs、公理監査 3882 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  元の置換 path の指定同型と切断上の簡約を証明。区間錐・全空間錐の二射影の指定比較と元の全 path・native 可換性の整合を証明。余極限頂点の射は元の単位と厳密に可換。指定全空間射を native 余錐・余極限写像に表示し、元の具体的 Kan 射との値の比較を構成。元の coherent 変換と指定単位の全合成三角形を保持し、同じ長辺の余錐を元の native 写像の表示へ比較。共通長辺の左右二全三角形から指定可換同型を構成し、単位上の全円柱を保持して値へ移送。元の宇宙の native 値の引き戻し比較候補と三座標式を構成。相対空間内で底固定代表を構成し、元の底上の interval 模型への比較と各 fiber の二脚・全 path を照合。単位上の指定類を Kan 延長・頂点表示後の指定同型の等式へ反映。元の二三角形を各点で評価し共通長辺で貼る native 錐を構成。頂点・四辺・元の両二単体を厳密に照合。三角形比較の同型の存在からの再選択を除去し、元の全 pointed 三角形の持ち上げの長辺から直接構成。各 fiber の全二単体の射影と二辺の円柱を照合。
+  三集約同時ビルド 7910 jobs、公理監査 3957 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -77,7 +77,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentDiagramTotalCocone_isColimit` / `F2.hasColimit_coherentSpaceDiagram`
 - `F2.exists_relativePathFiniteModelTransport` / `F2.relativePath_model_reflection`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
-- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackCone_projection_commutativity` / `F2.fiberwisePullbackTotalRawPathHomotopy_curry` / `F2.coherentTotalMapNativeFiberTransportIso` / `F2.coherentTotalMapNativeValueIso` / `F2.coherentTransformationNativeCoconeIso` / `F2.coherentCospanConeNativeComparison` / `F2.coherentCospanConeValuePathHomotopy_unit` / `F2.coherentCospanConeTotalModelComparison_over_base` / `F2.coherentCospanConeTotalModelFiberComparison_path_ι` / `F2.coherentCospanConeRelativeValuePathIso_eq` / `F2.coherentCospanConePointwiseCone_vertex` / `F2.coherentCospanConePointwiseCone_leftTriangle`
+- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackCone_projection_commutativity` / `F2.fiberwisePullbackTotalRawPathHomotopy_curry` / `F2.coherentTotalMapNativeFiberTransportIso` / `F2.coherentTotalMapNativeValueIso` / `F2.coherentTransformationNativeCoconeIso` / `F2.coherentCospanConeNativeComparison` / `F2.coherentCospanConeValuePathHomotopy_unit` / `F2.coherentCospanConeTotalModelComparison_over_base` / `F2.coherentCospanConeTotalModelFiberComparison_path_ι` / `F2.coherentCospanConeRelativeValuePathIso_eq` / `F2.coherentCospanConePointwiseCone_vertex` / `F2.coherentCospanConePointwiseCone_leftTriangle` / `F2.unstraighteningMappingTrianglePrism` / `F2.coherentTransformationTriangleLift_long` / `F2.coherentTransformationPointedTriangle_projection`
 
 ### 依存と提供
 
@@ -102,7 +102,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：底固定模型と各 fiber の三座標、Kan 延長後の指定類の反映、各点の native 錐の頂点・四辺・元の両二単体の照合は完了。各点の元の錐の普遍性から fiber 比較の同値性を証明し、native 比較候補へ接続する。
+- F2N-1：底固定模型と各 fiber の三座標、Kan 延長後の指定類の反映、各点の native 錐の頂点・四辺・元の両二単体の照合は完了。保持した全 pointed 三角形と各点の元の錐の普遍性から fiber 比較の同値性を証明し、native 比較候補へ接続する。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
@@ -169,7 +169,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   任意の Kan 始域境界への相対持ち上げと、その境界を厳密に固定する補正を構成。
   全標準境界の path 置換終点の自明 Kan 性から、元の比較の弱同値性と単体的ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成し、全錐の可逆比較・元の比較の頂点辺・恒等図式辺・各脚の自然性を保持。
-  元の二射影・全 path の指定整合を証明。全空間射を native 余錐・余極限写像に表示し、元の輸送作用を介する具体的 Kan 射への値の比較を構成。元の coherent 変換と単位の全三角形・長辺を保持する余錐比較も証明。共通長辺の二全三角形から指定可換円柱と四辺の native 値比較の整合を構成。元の宇宙の引き戻し比較候補と三座標式を証明。相対空間内の底固定代表と元の全空間模型への比較射・底の厳密な一致、各 fiber の二脚・全 path を構成。単位上の類の一致を Kan 延長・頂点表示後の指定同型の等式へ反映。元の二三角形から各点の native 錐を構成し頂点・四辺・元の両二単体を照合。各点の普遍性・候補の弱同値性・元の ∞ 錐との整合、一般の有限極限交換・Ind は未完了。
+  元の二射影・全 path の指定整合を証明。全空間射を native 余錐・余極限写像に表示し、元の輸送作用を介する具体的 Kan 射への値の比較を構成。元の coherent 変換と単位の全三角形・長辺を保持する余錐比較も証明。共通長辺の二全三角形から指定可換円柱と四辺の native 値比較の整合を構成。元の宇宙の引き戻し比較候補と三座標式を証明。相対空間内の底固定代表と元の全空間模型への比較射・底の厳密な一致、各 fiber の二脚・全 path を構成。単位上の類の一致を Kan 延長・頂点表示後の指定同型の等式へ反映。元の二三角形から各点の native 錐を構成し頂点・四辺・元の両二単体を照合。三角形比較の同型の存在からの再選択を除去し、元の全 pointed 三角形の持ち上げの長辺から直接構成。各 fiber の全二単体の射影と二辺の円柱を照合。各点の普遍性・候補の弱同値性・元の ∞ 錐との整合、一般の有限極限交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -179,7 +179,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：構成済みの各点の native 錐の普遍性から全空間模型比較の fiber 射を同定し同値性を証明。指定同型の一致を使い native 比較候補の弱同値性へ接続。
+- 次の一手：保持した全 pointed 三角形と各点の元の native 錐の普遍性から全空間模型比較の fiber 射を同定し同値性を証明。指定同型の一致を使い native 比較候補の弱同値性へ接続。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
