@@ -16109,3 +16109,36 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms compositionTripleRightTetrahedronOfMap
 
 end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @anodyneExtensionLiftVertex
+#print axioms anodyneExtensionLiftVertex
+#check @KanMappingCompositionOver
+#print axioms KanMappingCompositionOver
+#check @KanMappingCompositionOver.mk
+#print axioms KanMappingCompositionOver.mk
+#check @KanMappingCompositionOver.composition
+#print axioms KanMappingCompositionOver.composition
+#check @KanMappingCompositionOver.edge_eq
+#print axioms KanMappingCompositionOver.edge_eq
+#check @KanMappingCompositionOver.triangle_projection
+#print axioms KanMappingCompositionOver.triangle_projection
+#check @kanMappingCompositionLiftData
+#print axioms kanMappingCompositionLiftData
+#check @preservesCofiberData_of_isExactFunctor
+#print axioms preservesCofiberData_of_isExactFunctor
+#check @dgStableModel
+#print axioms dgStableModel
+#check @dgStableMap
+#print axioms dgStableMap
+#check @dgStableMap_id
+#print axioms dgStableMap_id
+#check @dgStableMap_comp
+#print axioms dgStableMap_comp
+#check @dgStableQuasiEquivalence
+#print axioms dgStableQuasiEquivalence
+#check @dgStableQuasiEquivalence_hom
+#print axioms dgStableQuasiEquivalence_hom
+#check @dgMultiRealization_map_localized_isIso
+#print axioms dgMultiRealization_map_localized_isIso
+end SerrePositivity.KST.SConstruction

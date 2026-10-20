@@ -1076,4 +1076,8 @@ public import SerrePositivity.KST.SConstruction.HornHomExt
 public import SerrePositivity.KST.SConstruction.SixDiamondReassociationLifting
 public import SerrePositivity.KST.SConstruction.SixDiamondReassociations
 public import SerrePositivity.KST.SConstruction.TracedTripleGeometricReassociationLifting
+public import SerrePositivity.KST.SConstruction.AnodyneExtensionLifting
+public import SerrePositivity.KST.SConstruction.KanMappingCompositionLifting
+public import SerrePositivity.KST.SConstruction.DGApplication
+public import SerrePositivity.KST.SConstruction.DGQuasiEquivalence
 /-! # ∞-S• 構成と連結 K 理論 -/
