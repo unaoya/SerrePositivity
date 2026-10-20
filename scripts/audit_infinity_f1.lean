@@ -5385,3 +5385,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.exists_twistedArrowExtensionDomain_extension
 #check @SerrePositivity.InfinityCategories.twistedArrowWeightDomain
 #check @SerrePositivity.InfinityCategories.exists_twistedArrowWeightDomain_extension
+#check @SerrePositivity.InfinityCategories.edgewiseLeftVerticesOrderIso
+#check @SerrePositivity.InfinityCategories.edgewiseWeightIso_inl_range
+#check @SerrePositivity.InfinityCategories.edgewiseWeightIso_left_face_preimage
+#check @SerrePositivity.InfinityCategories.twistedArrowWeightDomain_eq_face_cover
+#check @SerrePositivity.InfinityCategories.edgewiseHornFaces_compatible_of_lt
+#check @SerrePositivity.InfinityCategories.edgewiseHornFaces_compatible

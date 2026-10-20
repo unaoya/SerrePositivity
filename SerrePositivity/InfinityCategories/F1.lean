@@ -1298,3 +1298,7 @@ public import SerrePositivity.InfinityCategories.F1.StandardSimplexInnerFaceInde
 public import SerrePositivity.InfinityCategories.F1.TwistedArrowPairingInner
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrowWeightExtension
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowWeightCover
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowHornFaceCompatibility
