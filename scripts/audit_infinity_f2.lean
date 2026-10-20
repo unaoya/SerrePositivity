@@ -1488,3 +1488,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentTransformationPointedTriangle_projection
 #check @SerrePositivity.InfinityCategories.F2.coherentTransformationPointedTriangle_first
 #check @SerrePositivity.InfinityCategories.F2.coherentTransformationPointedTriangle_second
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_condition
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_ι
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_vertex
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_eq_contractible
+#check @SerrePositivity.InfinityCategories.F2.contractibleVertexIso_map
+#check @SerrePositivity.InfinityCategories.F2.prismParameterRestriction
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionRestriction
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionRestriction_vertexIso
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionEndpoint
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionEndpoint_restrict
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionComparison_restrict
