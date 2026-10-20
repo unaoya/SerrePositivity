@@ -15695,3 +15695,200 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.shared_direct
 #check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.suffix_comparison
 #print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.suffix_comparison
+
+namespace SerrePositivity.KST.SConstruction
+
+#check @FixedBoundarySourceCylinderData
+#print axioms FixedBoundarySourceCylinderData
+#check @FixedBoundarySourceCylinderData.mk
+#print axioms FixedBoundarySourceCylinderData.mk
+#check @FixedBoundarySourceCylinderData.target
+#print axioms FixedBoundarySourceCylinderData.target
+#check @FixedBoundarySourceCylinderData.target_map
+#print axioms FixedBoundarySourceCylinderData.target_map
+#check @FixedBoundarySourceCylinderData.cylinder
+#print axioms FixedBoundarySourceCylinderData.cylinder
+#check @FixedBoundarySourceCylinderData.cylinder_h
+#print axioms FixedBoundarySourceCylinderData.cylinder_h
+#check @fixedBoundarySourceCylinderData
+#print axioms fixedBoundarySourceCylinderData
+#check @monicKTracedTripleBFFirstEdgeData
+#print axioms monicKTracedTripleBFFirstEdgeData
+#check @monicKTracedTripleBFSecondEdgeData
+#print axioms monicKTracedTripleBFSecondEdgeData
+#check @monicKTracedTripleBFDiamond
+#print axioms monicKTracedTripleBFDiamond
+#check @monicKTracedTripleBFDiamond_first
+#print axioms monicKTracedTripleBFDiamond_first
+#check @monicKTracedTripleBFDiamond_second
+#print axioms monicKTracedTripleBFDiamond_second
+#check @monicKTracedTripleGeometricStageCylinder_source
+#print axioms monicKTracedTripleGeometricStageCylinder_source
+#check @monicKTracedTripleGeometricStageCylinder_target
+#print axioms monicKTracedTripleGeometricStageCylinder_target
+#check @monicKTracedTripleGeometricRawStageComparison
+#print axioms monicKTracedTripleGeometricRawStageComparison
+#check @monicKTracedTripleGeometricRawStageComparison_h
+#print axioms monicKTracedTripleGeometricRawStageComparison_h
+#check @monicKTracedTripleGeometricStagePasting_first_stage
+#print axioms monicKTracedTripleGeometricStagePasting_first_stage
+#check @monicKTracedTripleGeometricStagePasting_first_binary
+#print axioms monicKTracedTripleGeometricStagePasting_first_binary
+#check @monicKTracedTripleGeometricStagePasting_last_stage
+#print axioms monicKTracedTripleGeometricStagePasting_last_stage
+#check @monicKTracedTripleGeometricStagePasting_last_binary
+#print axioms monicKTracedTripleGeometricStagePasting_last_binary
+#check @monicKTracedTripleGeometricStagePasting_interchange_first
+#print axioms monicKTracedTripleGeometricStagePasting_interchange_first
+#check @monicKTracedTripleGeometricStagePasting_interchange_second
+#print axioms monicKTracedTripleGeometricStagePasting_interchange_second
+#check @monicKTracedTripleGeometricStagePasting_right_stage
+#print axioms monicKTracedTripleGeometricStagePasting_right_stage
+#check @monicKTracedTripleGeometricStagePasting_bf_first
+#print axioms monicKTracedTripleGeometricStagePasting_bf_first
+#check @monicKTracedTripleGeometricStagePasting_bf_second
+#print axioms monicKTracedTripleGeometricStagePasting_bf_second
+#check @monicKTracedTripleGeometricStagePasting_left_binary
+#print axioms monicKTracedTripleGeometricStagePasting_left_binary
+#check @monicKTracedTripleGeometricStagePasting_right_binary
+#print axioms monicKTracedTripleGeometricStagePasting_right_binary
+#check @monicKTracedTripleGeometricStagePasting_left_stage
+#print axioms monicKTracedTripleGeometricStagePasting_left_stage
+#check @monicKTracedTripleGeometricStagePasting_shared_direct
+#print axioms monicKTracedTripleGeometricStagePasting_shared_direct
+#check @monicKTracedTripleGeometricStagePasting
+#print axioms monicKTracedTripleGeometricStagePasting
+#check @monicKTracedTripleGeometricStageCylinder
+#print axioms monicKTracedTripleGeometricStageCylinder
+#check @monicKTracedTripleLeftBinaryEdgeData
+#print axioms monicKTracedTripleLeftBinaryEdgeData
+#check @monicKTracedTripleRightBinaryEdgeData
+#print axioms monicKTracedTripleRightBinaryEdgeData
+#check @monicKTracedTripleLeftBinaryTransport
+#print axioms monicKTracedTripleLeftBinaryTransport
+#check @monicKTracedTripleRightBinaryTransport
+#print axioms monicKTracedTripleRightBinaryTransport
+#check @monicKTracedTripleLeftBinaryTransportComparison
+#print axioms monicKTracedTripleLeftBinaryTransportComparison
+#check @monicKTracedTripleRightBinaryTransportComparison
+#print axioms monicKTracedTripleRightBinaryTransportComparison
+#check @monicKTracedTripleLeftBinaryTransportComparison_original
+#print axioms monicKTracedTripleLeftBinaryTransportComparison_original
+#check @monicKTracedTripleRightBinaryTransportComparison_original
+#print axioms monicKTracedTripleRightBinaryTransportComparison_original
+#check @monicKTracedTripleLeftBinaryTransportComparison_normalization
+#print axioms monicKTracedTripleLeftBinaryTransportComparison_normalization
+#check @monicKTracedTripleRightBinaryTransportComparison_normalization
+#print axioms monicKTracedTripleRightBinaryTransportComparison_normalization
+#check @monicKTracedTripleLeftBinaryTransportComparison_diagonal
+#print axioms monicKTracedTripleLeftBinaryTransportComparison_diagonal
+#check @monicKTracedTripleRightBinaryTransportComparison_diagonal
+#print axioms monicKTracedTripleRightBinaryTransportComparison_diagonal
+#check @monicKTracedTripleLeftStageEdgeData
+#print axioms monicKTracedTripleLeftStageEdgeData
+#check @monicKTracedTripleTypedDirectComparison
+#print axioms monicKTracedTripleTypedDirectComparison
+#check @monicKTracedTripleRightStageEdgeData
+#print axioms monicKTracedTripleRightStageEdgeData
+#check @monicKTracedTripleLeftOuterDiamond
+#print axioms monicKTracedTripleLeftOuterDiamond
+#check @monicKTracedTripleRightOuterDiamond
+#print axioms monicKTracedTripleRightOuterDiamond
+#check @monicKTracedTripleTypedDirectComparison_h
+#print axioms monicKTracedTripleTypedDirectComparison_h
+#check @monicKTracedTripleLeftOuterDiamond_stage
+#print axioms monicKTracedTripleLeftOuterDiamond_stage
+#check @monicKTracedTripleRightOuterDiamond_stage
+#print axioms monicKTracedTripleRightOuterDiamond_stage
+#check @monicKTracedTripleFirstStageEdgeData
+#print axioms monicKTracedTripleFirstStageEdgeData
+#check @monicKTracedTripleFirstBinaryEdgeData
+#print axioms monicKTracedTripleFirstBinaryEdgeData
+#check @monicKTracedTripleFirstPairDiamond
+#print axioms monicKTracedTripleFirstPairDiamond
+#check @monicKTracedTripleLastBinaryEdgeData
+#print axioms monicKTracedTripleLastBinaryEdgeData
+#check @monicKTracedTripleLastStageEdgeData
+#print axioms monicKTracedTripleLastStageEdgeData
+#check @monicKTracedTripleLastPairDiamond
+#print axioms monicKTracedTripleLastPairDiamond
+#check @monicKTracedTripleFirstPairDiamond_stage
+#print axioms monicKTracedTripleFirstPairDiamond_stage
+#check @monicKTracedTripleFirstPairDiamond_binary
+#print axioms monicKTracedTripleFirstPairDiamond_binary
+#check @monicKTracedTripleLastPairDiamond_stage
+#print axioms monicKTracedTripleLastPairDiamond_stage
+#check @monicKTracedTripleLastPairDiamond_binary
+#print axioms monicKTracedTripleLastPairDiamond_binary
+#check @monicKTracedTripleFirstTypedNormalization
+#print axioms monicKTracedTripleFirstTypedNormalization
+#check @monicKTracedTripleLastTypedNormalization
+#print axioms monicKTracedTripleLastTypedNormalization
+#check @monicKTracedTripleFirstTypedNormalization_h
+#print axioms monicKTracedTripleFirstTypedNormalization_h
+#check @monicKTracedTripleLastTypedNormalization_h
+#print axioms monicKTracedTripleLastTypedNormalization_h
+#check @TriangleLongEdgeData
+#print axioms TriangleLongEdgeData
+#check @TriangleLongEdgeData.mk
+#print axioms TriangleLongEdgeData.mk
+#check @TriangleLongEdgeData.middle
+#print axioms TriangleLongEdgeData.middle
+#check @TriangleLongEdgeData.first
+#print axioms TriangleLongEdgeData.first
+#check @TriangleLongEdgeData.second
+#print axioms TriangleLongEdgeData.second
+#check @TriangleLongEdgeData.triangle
+#print axioms TriangleLongEdgeData.triangle
+#check @TriangleLongEdgeData.realization_eq
+#print axioms TriangleLongEdgeData.realization_eq
+#check @triangleLongEdgeData
+#print axioms triangleLongEdgeData
+#check @TriangleLongEdgeData.first_map
+#print axioms TriangleLongEdgeData.first_map
+#check @TriangleLongEdgeData.second_map
+#print axioms TriangleLongEdgeData.second_map
+#check @TrianglePairEdgeData
+#print axioms TrianglePairEdgeData
+#check @TrianglePairEdgeData.mk
+#print axioms TrianglePairEdgeData.mk
+#check @TrianglePairEdgeData.direct
+#print axioms TrianglePairEdgeData.direct
+#check @TrianglePairEdgeData.triangle
+#print axioms TrianglePairEdgeData.triangle
+#check @TrianglePairEdgeData.realization_eq
+#print axioms TrianglePairEdgeData.realization_eq
+#check @trianglePairEdgeData
+#print axioms trianglePairEdgeData
+#check @TriangleLowerDirectData
+#print axioms TriangleLowerDirectData
+#check @TriangleLowerDirectData.mk
+#print axioms TriangleLowerDirectData.mk
+#check @TriangleLowerDirectData.second
+#print axioms TriangleLowerDirectData.second
+#check @TriangleLowerDirectData.triangle
+#print axioms TriangleLowerDirectData.triangle
+#check @TriangleLowerDirectData.realization_eq
+#print axioms TriangleLowerDirectData.realization_eq
+#check @triangleLowerDirectData
+#print axioms triangleLowerDirectData
+#check @TriangleUpperDirectData
+#print axioms TriangleUpperDirectData
+#check @TriangleUpperDirectData.mk
+#print axioms TriangleUpperDirectData.mk
+#check @TriangleUpperDirectData.first
+#print axioms TriangleUpperDirectData.first
+#check @TriangleUpperDirectData.triangle
+#print axioms TriangleUpperDirectData.triangle
+#check @TriangleUpperDirectData.realization_eq
+#print axioms TriangleUpperDirectData.realization_eq
+#check @triangleUpperDirectData
+#print axioms triangleUpperDirectData
+#check @TrianglePairEdgeData.direct_map
+#print axioms TrianglePairEdgeData.direct_map
+#check @TriangleLowerDirectData.second_map
+#print axioms TriangleLowerDirectData.second_map
+#check @TriangleUpperDirectData.first_map
+#print axioms TriangleUpperDirectData.first_map
+
+end SerrePositivity.KST.SConstruction
