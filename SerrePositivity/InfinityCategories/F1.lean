@@ -1772,3 +1772,23 @@ public import SerrePositivity.InfinityCategories.F1.QCatDiagramEdges
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeComparisonEvaluation
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeComparisonIso
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagram
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramFunctor
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportEnrichedDiagram
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeDiagramComparison
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramArrow
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramRealization
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeJointComparisonFamily
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportEnrichedRealization
