@@ -837,7 +837,29 @@ J-cell の非循環性は評価の余極限保存で証明する。局所表示�
 `FrameHom.frameChoiceIso` は共通 frame による比較を反転した二変数の自然同型。
 `sourceFrameHom` は元の終域への Kan な Hom、`sourceFrameHomComparisonIso` は選んだ Map^h との自然同型。
 これらにも単体集合の完全なモデル構造の入力仮定はない。
-E2a-4・5 は完了。E2b の単体的豊穣化と CAlg_R・G1′ は未完成。
+E2a-4・5 は完了。
+E2b は Dwyer–Kan 型の自由単体的局所化で進める。
+`CofibrantAlgebra` と `cofibrantAlgebraWeakEquivalences` は具体的な cofibrant 相対圏。
+`cofibrantAlgebraReplacement` は既存の関手的置換そのもので、包含と両側の自然な擬同型を持つ。
+`cofibrantAlgebraHoEquivalence` は同じ包含と置換による普通の局所化の同値。
+`cofibrantAlgebraMappingSpace` は元の Kan Map^h の制限で、その π₀ は同じ相対圏の局所化 Hom。
+`cofibrantAlgebraMappingSpacePiZeroEquiv_class` は元の代数射の局所化像を回収する。
+`SimplicialLocalization.freeRelativeComonad` は指定する矢だけからなる列の自由相対圏の
+余単位・対角・余結合性・両余単位則を束ねる。
+`freeResolutionLevel` と augmentation・外側の面・退化およびその恒等式は全次数で構成済み。
+`cofibrantAlgebraRelativeCategory` は Hom の宇宙を対象の宇宙 u+1 へ揃えた具体的な DK 入力。
+`cofibrantAlgebraDKForgetRelative` は底の cofibrancy を要求せず全複体へ忘却する相対関手。
+`discreteAlgebraDKFunctor` は元の離散 E 代数を同じ関手的置換でこの入力へ送る。
+`freeResolution` は既存の汎用 comonad 解像へ代入した、通常の単体圏上の全自由相対圏の解像。
+`cofibrantAlgebraFreeResolution` と同じ augmentation は全作用素を持つ具体的な E 代数の入力。
+`strictLocalizationMap` と `strictLocalizationFunctor` は元の構成的な局所化の厳密な
+因子化・一意性で恒等関手と合成を等式として保つ。
+`localizedFreeResolution` と `cofibrantAlgebraLocalizedFreeResolution` は全自由次数を
+局所化した単体的な圏の図式で、元の普通の局所化への augmentation を持つ。
+`localizedFreeResolutionObjectEquiv` は augmentation の対象写像の全単射性による同じ対象の表示。
+`localizedFreeResolutionObject_naturality` は全単体作用素が元の対象の表示を保つ式。
+固定対象の Hom の単体集合・豊穣合成への組み立てと Hom の Kan 化・Map^h 比較、
+CAlg_R・U の ∞ 関手化・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

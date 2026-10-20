@@ -2104,6 +2104,98 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonIso_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonNatIso,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierDerivedIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeCounit_obj_bijective,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeComonadAugmentation_obj_bijective,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionAugmentation_obj_bijective,
+      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationMap_obj_bijective,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionAugmentation_obj_bijective,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObjectEquiv,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject_naturality,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeComonadPower_eq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_obj,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_face,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_degeneracy,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionAugmentationNatTrans,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionAugmentationNatTrans_app,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolution,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationMap_fac,
+      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationMap_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationMap_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraFreeResolution,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraFreeResolutionAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraLocalizedFreeResolution,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraLocalizedFreeResolutionAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeCounit,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeDiagonal,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeComonad,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeCounit,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeDiagonal,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeMap_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeMap_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeCounit_naturality,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeDiagonal_naturality,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeDiagonal_left_counit,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeDiagonal_right_counit,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeDiagonal_coassoc,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freePower,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freePowerAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionLevel,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionOuterFace,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionOuterDegeneracy,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionOuterFace_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionOuterDegeneracy_face,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RelativeCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeCategoryCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeFunctor_ext,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHoEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraInclusionLocalizedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraInclusion_isLocalizedEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraInclusion_isLocalization,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraMappingSpacePiZeroEquiv_class,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraMappingSpace,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraMappingSpace_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraMappingSpacePiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraRelativeCategory,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraRelativeCategory_weakEquivalences_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKInclusionRelative,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKReplacement,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKReplacement_comp_inclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKReplacementRelative,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKForget,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKForgetRelative,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraFreeLevel,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraFreeAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraReplacement,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraReplacement_comp_inclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraReplacementRelative,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraReplacementComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraReplacementComparison_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraRestrictedComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraRestrictedComparison_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebra,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraWeakEquivalences,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraWeakEquivalences_isMultiplicative,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebra_isCofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebra_isFibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraWeakEquivalences_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraInclusionRelative,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteCofibrantAlgebraFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteCofibrantAlgebraComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteCofibrantAlgebraComparison_app,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteCofibrantAlgebraComparison_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteAlgebraDKFunctor,
+      `SerrePositivity.EInfinity.FrameHom.RelativeLocalization.equivalence,
+      `SerrePositivity.EInfinity.FrameHom.RelativeLocalization.equivalence_functor,
+      `SerrePositivity.EInfinity.FrameHom.RelativeLocalization.equivalence_inverse,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5755,3 +5847,69 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       (Q.obj ((framedLimitFunctor A K).obj F).carrier ≅
         RF.obj (QD.obj ((Diagram.forget A K).obj F))) := by
   exact framedLimitCarrierDerivedIso A K F
+
+
+-- 任意の E 代数に同じ具体的な cofibrant 置換と元への擬同型を供給できる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X : (BarrattEccles.operad A).Algebra) :
+    ∃ Y : CofibrantAlgebra A, ∃ f : (cofibrantAlgebraInclusion A).obj Y ⟶ X, QuasiIso f.hom := by
+  let := modelCategory A
+  exact ⟨(cofibrantAlgebraReplacement A).obj X,
+    (cofibrantAlgebraReplacementComparison A).app X,
+    cofibrantAlgebraReplacementComparison_weakEquivalence A X⟩
+
+-- 元の cofibrant 代数射の同じ Map^h の類は、その相対圏での局所化像に一致する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
+    cofibrantAlgebraMappingSpacePiZeroEquiv A X Y
+        (mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f)) =
+      (cofibrantAlgebraWeakEquivalences A).Q.map f := by
+  exact cofibrantAlgebraMappingSpacePiZeroEquiv_class A f
+
+-- 自由解像の全次数の外側の面退化則を、具体的な E 代数相対圏で評価できる。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ) :
+    (freeResolutionOuterDegeneracy n).app (cofibrantAlgebraRelativeCategory A) ≫
+        (freeResolutionOuterFace n).app (cofibrantAlgebraRelativeCategory A) =
+      𝟙 ((freeResolutionLevel n).obj (cofibrantAlgebraRelativeCategory A)) := by
+  exact congr_app (freeResolutionOuterDegeneracy_face n) (cofibrantAlgebraRelativeCategory A)
+
+-- 離散可換代数からの同じ cofibrant 模型は、元の離散 E 代数へ擬同型で比較できる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (B : CommAlgCat A) :
+    QuasiIso ((discreteCofibrantAlgebraComparison A).app B).hom := by
+  let := modelCategory A
+  exact discreteCofibrantAlgebraComparison_weakEquivalence A B
+
+
+-- 同じ構成的な局所化は全相対関手の合成を厳密に保つ。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C D E : RelativeCategory} (F : C ⟶ D) (G : D ⟶ E) :
+    strictLocalizationMap (F ≫ G) = strictLocalizationMap F ⋙ strictLocalizationMap G := by
+  exact strictLocalizationMap_comp F G
+
+-- 全単体作用素の恒等式は具体的な cofibrant E 代数の次数ごとの局所化でも厳密。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    {n m k : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (φ : m ⟶ k) :
+    ((cofibrantAlgebraLocalizedFreeResolution A).map (θ ≫ φ)).toFunctor =
+      ((cofibrantAlgebraLocalizedFreeResolution A).map θ).toFunctor ⋙
+        ((cofibrantAlgebraLocalizedFreeResolution A).map φ).toFunctor := by
+  exact congrArg Cat.Hom.toFunctor ((cofibrantAlgebraLocalizedFreeResolution A).map_comp θ φ)
+
+
+-- 対象の表示は全単体作用素で保たれ、cofibrant E 代数へそのまま代入できる。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m)
+    (X : (cofibrantAlgebraRelativeCategory A).category) :
+    ((cofibrantAlgebraLocalizedFreeResolution A).map θ).toFunctor.obj
+        (localizedFreeResolutionObject (cofibrantAlgebraRelativeCategory A) n X) =
+      localizedFreeResolutionObject (cofibrantAlgebraRelativeCategory A) m X := by
+  exact localizedFreeResolutionObject_naturality (cofibrantAlgebraRelativeCategory A) θ X
