@@ -15,7 +15,7 @@
 
 ### 残り（依存順）
 - d1 完了：PiIsomorphism と全段・全基点 KanPiIsomorphism の同値と、任意の Sp の一単体の同値検出を検証済み。BF §2、Goerss–Jardine I §§7–8。
-- d2 の宣言表固定は完了。未提供行のうち、任意 coherent 極限・全有限極限の一般界面は F1b/F2 の既存 HasColimit から Sp へ接続する後続項目（HTT 4.2.4.1、規模未再見積もり）。一般 γ4 の完成待ちや再実装へ戻らない。
+- d2 の宣言表固定は完了。未提供行の実装は今回の宣言表固定とは別の後続項目。任意 coherent 極限・全有限極限の一般界面は F1b/F2 の既存 HasColimit から Sp へ接続する（HTT 4.2.4.1、規模未再見積もり）。一般 γ4 の完成待ちや再実装へ戻らない。
 - d3：IsStable は I-b 末尾。d1・d2 の固定と他の優先項目の消化後だけ、旧経路の六段階を再開する。HA §1.4.2、従前 24–48 時間以上（上限保証なし）。現時点では着手しない。
 
 ### 主要宣言：Sp 値域界面（共通接頭辞 SerrePositivity.KST.Spectra）
@@ -44,7 +44,7 @@
 
 ### 未コミット
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
-- d1 の新規4モジュール・集約・監査・本計画だけを別の保存単位として保存。停止中4 WIP と共有ルート・他レーンの差分は含めない。
+- d1 の新規4モジュール・集約・監査・宣言表は保存済み。本計画の工程境界だけを別途保存する。停止中4 WIP と共有ルート・他レーンの差分は含めない。
 
 ### 既知の問題
 - Sp の IsStable、Ω の完全忠実性・関手同値、任意の coherent 図式への極限の移送は未完。いずれも上表で未提供と明記し、存在を仮定する構造体で完成扱いにしない。
@@ -53,9 +53,9 @@
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。公理監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。
 
 ### 次の一手
-- d1・d2 の証明・宣言表固定と対象・集約・監査・全体ビルドは成功。次の優先項目は、表の未提供行である任意 coherent 極限・全有限極限の一般界面の接続。
-- 入口は F2.hasColimit_coherentSpaceDiagram。任意 D : ulift B → Sp の実錐と HasLimit D を供給し、その後に有限形状の縮小・移送で HasFiniteLimits Sp を公開する。既存の通常小図式の極限を再実装しない。Ω/IsStable は別の未提供項目のまま保持する。
-- I-b 末尾までは evaluationPost circle・逆関手案・IsStable の実装へ戻らない。
+- 今回の d1・d2 は工程完了。整数次数による同値検出の証明・宣言表固定と対象・集約・監査・全体ビルドは成功。宣言表の未提供行まで完成したとは扱わない。
+- 一般 coherent 極限の実装を再開する際の最初の工程は、F2.hasColimit_coherentSpaceDiagram から任意 D : ulift B → Sp の実錐の構成へ至る接続の設計・見積もり。空間の HasColimit から Sp の HasLimit は直接には従わず、その接続は未構成。既存の通常小図式の極限を再実装しない。
+- d3 の再開条件は未成立：foundations.md では I-b の F1b-7・N-2・K-5〜K-8 等が未完。I-b 末尾までは evaluationPost circle・逆関手案・IsStable の実装へ戻らない。
 
 ## 範囲と所有
 
