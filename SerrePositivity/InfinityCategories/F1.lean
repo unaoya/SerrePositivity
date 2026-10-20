@@ -1276,3 +1276,15 @@ public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCoherentFul
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCoherentEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningFirstVertexCriterion
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowProjection
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowHornLifting
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowSupportPivot
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowSupportPairing
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowExtensionDomain
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowSupportRank
