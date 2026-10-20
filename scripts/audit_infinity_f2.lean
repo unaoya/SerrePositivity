@@ -666,3 +666,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.exists_colimitCone_vertex_of_invertible
 #check @SerrePositivity.InfinityCategories.F2.filteredKanColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.filteredKanColimitCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coconeHomCone_weightedComparison
+#check @SerrePositivity.InfinityCategories.F2.coconeHomCone_reflectedWeightedComparison
+#check @SerrePositivity.InfinityCategories.F2.weightedConeComparison_reflected
+#check @SerrePositivity.InfinityCategories.F2.pre_isSimplicialHomotopyEquivalence_of_weakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.kanCoconeAugmentationComparison_factor
+#check @SerrePositivity.InfinityCategories.F2.strictNativeCocone_isColimit_of_reflectedAugmentation_weak
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitOrdinaryCocone_forget
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitOrdinaryCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitCanonicalCocone_vertex
