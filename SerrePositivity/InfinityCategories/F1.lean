@@ -1312,3 +1312,11 @@ public import SerrePositivity.InfinityCategories.F1.TwistedArrowHornCover
 public import SerrePositivity.InfinityCategories.F1.TwistedArrowLeftFibration
 
 public import SerrePositivity.InfinityCategories.F1.YonedaInfinityConstruction
+
+public import SerrePositivity.InfinityCategories.F1.YonedaTargetBaseChange
+
+public import SerrePositivity.InfinityCategories.F1.CosliceTwistedArrowMap
+
+public import SerrePositivity.InfinityCategories.F1.CosliceTwistedArrowTarget
+
+public import SerrePositivity.InfinityCategories.F1.RightRepresentableTwistedArrowComparison
