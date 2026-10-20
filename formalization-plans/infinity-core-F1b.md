@@ -48,8 +48,8 @@
 - 第 2 部：全 path 座標を保つ標準同型、任意の strict Kan cospan の native な引き戻し・filtered 比較を証明。
   余錐空間から定値変換空間・小さい全空間の内部 Hom への標準比較の同値性を証明。
   元の小さい単位の比較と必要な全 fiber 標的への前合成同値から、構成済み余錐の native 余極限性を証明。
-  小さい底上の任意の coherent 空間値図式の HasColimit を公開。一般 filtered 余極限の有限極限交換・Ind は残る。
-  検証：三集約 7219 jobs、公理監査 2206 宣言、同時 import 成功。一般 coherent filtered 余極限の有限極限交換は残る。
+  一般 coherent 図式の HasColimit、同時有限検出と積比較の有限射の持ち上げ・π₀ 全射性を証明。単射側・交換・Ind は残る。
+  検証：三集約 7233 jobs、公理監査 2221 宣言、同時 import 成功。一般 coherent filtered 余極限の有限極限交換は残る。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -97,7 +97,7 @@
 
 ### 次の一手
 
-- F2N-1：標準比較の右逆ホモトピー・同値性、元の単位と圏内の辺の合成の整合を証明し、N の余極限判定へ接続する。
+- F2N-1：共通境界を pushout で貼る同時輸送から積比較の単射側を証明し、一般の有限極限交換へ進む。
 
 正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と [foundations.md](foundations.md) §6・§8。
 本計画は目標・設計・現在地・主要宣言を管理し、実施記録はコミットメッセージに置く。

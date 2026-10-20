@@ -807,3 +807,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeFiber_pre_homotopyEquivalence
 #check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.hasColimit_coherentSpaceDiagram
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_transport_along_nullHomotopy
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_pair_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_pair_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredTotalKan_pair_value_detection
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_unit
+#check @SerrePositivity.InfinityCategories.F2.fiberPairToPullback_comparison
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_finite_lifting
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_mapPiZero_surjective
