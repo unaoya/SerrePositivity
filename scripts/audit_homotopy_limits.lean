@@ -10981,3 +10981,39 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @intervalPrecompose_isSimplicialHomotopyEquivalence_of_cocartesian
 #print axioms intervalPrecompose_isSimplicialHomotopyEquivalence_of_cocartesian
+
+#check @intervalOppositeIso
+#print axioms intervalOppositeIso
+
+#check @intervalReverseFamily_hom
+#print axioms intervalReverseFamily_hom
+
+#check @constantFunctorEdge
+#print axioms constantFunctorEdge
+
+#check @constantFunctorHomMap_homMk
+#print axioms constantFunctorHomMap_homMk
+
+#check @constantFunctorHomMap_op_homMk
+#print axioms constantFunctorHomMap_op_homMk
+
+#check @intervalReverseFamily_postcompose_hom
+#print axioms intervalReverseFamily_postcompose_hom
+
+#check @intervalReverseFamily_eq
+#print axioms intervalReverseFamily_eq
+
+#check @isQCatEquivalence_of_op
+#print axioms isQCatEquivalence_of_op
+
+#check @intervalPostcompose_isSimplicialHomotopyEquivalence_of_op_precompose
+#print axioms intervalPostcompose_isSimplicialHomotopyEquivalence_of_op_precompose
+
+#check @intervalPrecompose_equivalence_transport
+#print axioms intervalPrecompose_equivalence_transport
+
+#check @intervalPrecompose_isSimplicialHomotopyEquivalence_of_cocartesianEdge
+#print axioms intervalPrecompose_isSimplicialHomotopyEquivalence_of_cocartesianEdge
+
+#check @intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian
+#print axioms intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian
