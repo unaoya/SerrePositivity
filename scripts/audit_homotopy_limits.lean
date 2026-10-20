@@ -10705,3 +10705,63 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @finalHornFrontHom_postcomposition_composition
 #print axioms finalHornFrontHom_postcomposition_composition
+
+#check @finalHornLastSimplex
+#print axioms finalHornLastSimplex
+
+#check @finalHornLastSimplex_zero
+#print axioms finalHornLastSimplex_zero
+
+#check @finalHornLastSimplex_one
+#print axioms finalHornLastSimplex_one
+
+#check @finalHornLastSimplex_avoids_zero
+#print axioms finalHornLastSimplex_avoids_zero
+
+#check @finalHornLastCell_eq
+#print axioms finalHornLastCell_eq
+
+#check @finalHornLastHom_on_edge
+#print axioms finalHornLastHom_on_edge
+
+#check @finalHornLastArrow_homEquiv
+#print axioms finalHornLastArrow_homEquiv
+
+#check @finalHornLastArrow_eq_extraction
+#print axioms finalHornLastArrow_eq_extraction
+
+#check @reobjectFunctor_eq_original
+#print axioms reobjectFunctor_eq_original
+
+#check @finalHornLastArrow_edge
+#print axioms finalHornLastArrow_edge
+
+#check @finalHornLastArrow_data_of_fixedEdge
+#print axioms finalHornLastArrow_data_of_fixedEdge
+
+#check @finalHornLastArrow_postcomposition_trivialKanFibration_of_fixedEdge
+#print axioms finalHornLastArrow_postcomposition_trivialKanFibration_of_fixedEdge
+
+#check @finalHornUnknownHom_extension_of_fixedEdge
+#print axioms finalHornUnknownHom_extension_of_fixedEdge
+
+#check @quillenCfFinalHornRight_postcomposition_trivialKanFibration
+#print axioms quillenCfFinalHornRight_postcomposition_trivialKanFibration
+
+#check @quillenCfFinalHornRight_unknownHom_extension
+#print axioms quillenCfFinalHornRight_unknownHom_extension
+
+#check @standardSimplexMap_vertex
+#print axioms standardSimplexMap_vertex
+
+#check @quillenCfFinalHorn_vertex_level
+#print axioms quillenCfFinalHorn_vertex_level
+
+#check @quillenCfCollage_exists_bottom_of_level_zero
+#print axioms quillenCfCollage_exists_bottom_of_level_zero
+
+#check @quillenCfFinalHorn_prefix_bottom
+#print axioms quillenCfFinalHorn_prefix_bottom
+
+#check @quillenCfFinalHornRight_relative_unknownHom_extension
+#print axioms quillenCfFinalHornRight_relative_unknownHom_extension
