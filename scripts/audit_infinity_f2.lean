@@ -816,3 +816,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.fiberPairToPullback_comparison
 #check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_finite_lifting
 #check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_mapPiZero_surjective
+#check @SerrePositivity.InfinityCategories.F2.finite_pushout
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_glued_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.pullbackHomotopy
+#check @SerrePositivity.InfinityCategories.F2.pullbackHomotopy_fst
+#check @SerrePositivity.InfinityCategories.F2.pullbackHomotopy_snd
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_glued_pullback_transport
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_anchored_finite_factorization
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_pair_relative_detection
+#check @SerrePositivity.InfinityCategories.F2.fiberPairHomotopy
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_cylinder
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_finite_homotopy_detection
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_unit_reflects_components
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_mapPiZero_injective
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_mapPiZero_bijective

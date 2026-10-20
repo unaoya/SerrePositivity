@@ -42,8 +42,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   定値 fiber の作用を普遍輸送へ移し、全 Hom 比較を元の余錐の fiber 写像の前合成と比較。輸送作用も同値。
   元の小さい単位の前合成同値を厳密な宇宙移送で必要な全 fiber 標的へ戻し、構成済み余錐の native 余極限性を証明。
   小さい底上の任意の coherent 空間値図式の HasColimit を公開。filtered 性・strict 図式への置換は不要。
-  二つの一般 coherent 図式の同時有限検出と、fiber ごとの積の全空間比較への有限射の持ち上げ・π₀ 全射性を証明。
-  三集約同時ビルド 7233 jobs、公理監査 2221 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  共通境界を保つ同時有限検出と引き戻し内の輸送を構成。積比較は全有限形状の写像空間の π₀ 上で全単射。
+  三集約同時ビルド 7247 jobs、公理監査 2246 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -68,7 +68,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.intervalReplacementColimitIso` / `F2.intervalPullbackColimitIso`
 - `F2.intervalPullbackColimitIso_left` / `F2.intervalReplacementEndpoint_fibration`
 - `F2.intervalPullbackCone_isLimit` / `F2.filteredIntervalPullbackExchange`
-- `F2.coherentFilteredTotalKan_pair_value_detection` / `F2.totalKanProductComparison_mapPiZero_surjective`
+- `F2.continuousKanLeftFibration_pair_relative_detection` / `F2.totalKanProductComparison_mapPiZero_bijective`
 - `F2.continuousKanLeftFibration_finite_relative_detection` / `F2.continuousKanLeftFibration_finite_boundary_detection`
 - `F2.coherentSmallConstantTargetMap_isQCatEquivalence` / `F2.coherentDiagramTotalCocone_vertex`
 - `F2.coconeTransformationMap_prism` / `F2.coconeTransformationMap_isQCatEquivalence`
@@ -102,8 +102,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：二つの有限因子分解の共通境界を pushout で貼り、底の一つの収縮を二射へ同時に持ち上げる。
-  積比較の相対検出・単射側を証明後、一般 coherent 引き戻し比較・有限極限交換、Indκ へ進む。
+- F2N-1：積比較の有限写像空間の π₀ 全単射性を弱同値判定へ接続する。
+  指定した比較ホモトピーの整合を保つ一般 coherent 引き戻し比較・有限極限交換、Indκ へ進む。
 
 ## 0. 目標と範囲
 
@@ -158,7 +158,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
   通常の指定 filtered 余錐の native な普遍性、path 座標を保つ交換同型、任意の strict Kan cospan の native な比較を証明。
   相対有限検出と全空間模型の元の余錐の native 余極限性を証明。小さい底上の一般 coherent 図式の HasColimit を公開。
-  同時有限検出と積比較の有限試験射の持ち上げ・π₀ 全射性を証明。相対検出・単射側、一般の交換・Ind は未完了。
+  共通境界付き同時相対検出、積比較の全有限写像空間の π₀ 全単射性を証明。弱同値判定・一般の交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -168,7 +168,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：共通境界の有限 pushout を用いた同時相対検出から、積比較の単射側と一般の有限極限交換を証明。
+- 次の一手：積比較の全有限写像空間の π₀ 全単射性を弱同値判定へ接続し、一般の有限極限交換を証明。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
