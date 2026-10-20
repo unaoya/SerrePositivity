@@ -5,7 +5,7 @@
 ## 引き継ぎ（2026-10-21）
 
 ### 現在地
-- **K-8 抽象部分へ着手（ユーザー指示）**：以下の K-8 節が作業の正本。(a) 選んだ随伴を持つ半直交分解の定義、写像空間の半直交性、切断付き Verdier 列の導出と局所化不変量の値の積分裂への接続が完成。F2 の元の lax pullback と完全射影も K-5 の型へ包装済み。(b) 元の lax pullback の包含・実随伴・核の生成は未完。K-8 全体は未完。
+- **K-8 抽象部分へ着手（ユーザー指示）**：以下の K-8 節が作業の正本。(a) 選んだ随伴を持つ半直交分解の定義、写像空間の半直交性、切断付き Verdier 列の導出と局所化不変量の値の積分裂への接続が完成。F2 の元の lax pullback と完全射影も K-5 の型へ包装済み。(b) 元の lax pullback の両包含は全単体上の実関手として構成し、完全性と両射影との厳密な計算まで完成。実随伴・充満忠実性・核の生成は未完。K-8 全体は未完。
 - **K-5 抽象部分へ移行（ユーザー指示）**：安定 ∞ 圏・完全関手、抽象 Verdier 列、Sp 値の局所化不変量と基本補題を担当する。K-S• の SConstruction と D の Stable/・Drinfeld 商は読み取り専用。以下の K-5 節に界面と残工程を固定する。
 - K-5：安定 ∞ 圏・完全関手の ∞ 圏、抽象 Verdier 列・四角形提示、Sp 値局所化不変量、その像の実 fiber 性と整数 π 同値検出は完成。BF fiber 四角形の下辺と元の包含の類、h Sp 上の π 関手と元の BF π の自然比較、任意の fiber 四角形の三対象と二辺の同時比較を構成済み。今回、任意の Sp fiber 四角形の全整数次数の接続射と三箇所の完全性を証明し、任意抽象 Verdier 列の元の値の群・包含・商への長完全列まで移送した。端の値の全整数 π 消滅から元の像の辺の同値性も得た。coherent な切断付き fiber 列の実 Sp 積同値も完成し、任意の fiber 四角形・抽象 Verdier 列の像へ移送した。実 ∞ 積錐、元の fiber・底から積因子への同値、元の包含・切断・射影との h Sp での整合性を全て保持する。K-5 の抽象部分は完成。
 - K-5 の今回の検証：専用対象5687 jobs、59モジュール・719宣言の専用公理監査、全体19210 jobs が終了コード0。標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
@@ -49,7 +49,7 @@
 
 ### 未コミット
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
-- K-5 の59モジュールは保存済み。K-8 の今回の6新規モジュールと専用集約・監査・本計画を所有ファイルだけで保存する。65モジュール・793宣言の専用監査、対象6095 jobs、全体19248 jobs は終了コード0。D 計画への判定要求追記は D 側の保存に含まれたことを確認済み。停止中4 WIP と共有ルート・他レーンの差分は保持する。
+- K-5 の59モジュールは保存済み。K-8 (a) の6モジュールは保存済み。今回の ZeroArrowFamily・LaxInclusions・LaxInclusionExact と専用集約・監査・本計画を所有ファイルだけで保存する。68モジュール・830宣言の専用監査、対象6099 jobs、全体19253 jobs は終了コード0。D 計画への判定要求追記は D 側の保存に含まれたことを確認済み。停止中4 WIP と共有ルート・他レーンの差分は保持する。
 
 ### 既知の問題
 - Sp の IsStable、Ω の完全忠実性・関手同値、任意の coherent 図式への極限の移送は未完。いずれも上表で未提供と明記し、存在を仮定する構造体で完成扱いにしない。
@@ -58,7 +58,7 @@
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。公理監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。
 
 ### 次の一手
-- K-8：(a) は検証済み。次は laxPullbackLift で両包含の全単体族を構成し、F2 の写像空間比較を使って実随伴を証明する。対象ごとの辺の存在だけでは包含関手や随伴の完成とみなさない。
+- K-8：(a) と (b) の両完全包含・両射影との計算は検証済み。次は F2.laxPullbackMappingProduct_isPullback を、LaxInclusion.fromD を始域とする写像空間に適用し、第二射影の標準写像が同値であることを示す。fromD_snd の恒等から単位を固定し、F1B の qcatAdjunctionOfUnitMappingSpaceCondition で実随伴を作る。包含・射影の対象ごとの比較だけでは実随伴の完成とみなさない。
 - K-5 抽象部分は完成。K-S• が具体的 K 関手の局所化条件を接続する際は IsLocalizingInvariant.abstractFiberTriangle_isFiber・connecting・exact_left/middle/right・同値検出を使用する。切断付き列には IsLocalizingInvariant.splitEquivalence と splitLeftFactorIso・splitRightFactorIso、三つの splitEquivalence_inclusion/section/projection を使う。積は NativeSplit.productCone_isLimit の実 ∞ 極限錐であり、productCone_vertex は同値の始域をその頂点に同定する。Sp の IsStable・evaluationPost・Ω の関手同値は要求しない。
 - 今回の d1・d2 は工程完了。整数次数による同値検出の証明・宣言表固定と対象・集約・監査・全体ビルドは成功。宣言表の未提供行まで完成したとは扱わない。
 - 一般 coherent 極限の実装を再開する際の最初の工程は、F2.hasColimit_coherentSpaceDiagram から任意 D : ulift B → Sp の実錐の構成へ至る接続の設計・見積もり。空間の HasColimit から Sp の HasLimit は直接には従わず、その接続は未構成。既存の通常小図式の極限を再実装しない。
@@ -85,8 +85,9 @@
 
 - **分担と順序**：本レーンが `KST/LocalizingInvariants/` と専用集約・監査を所有する。(a) 二項半直交分解と切断付き Verdier 列、(b) F2 の元の lax pullback の半直交分解、(c) 局所化不変量の実 Sp 積分裂、(d) 通常 pullback と lax pullback の値の関係・差の項の順に進める。F2・F3・D の Stable/・K-S• の SConstruction は読み取り専用。⊙ の自己準同型環としての同定は β5・β4 の後、Cat^perf への接続は F1b-6 の後に K-7 と合わせる。
 - **(a) の設計**：順序 ⟨A,B⟩ は Map(i A,j B) が可縮となる向き。完全包含 i,j、完全射影 r,q、実随伴 i ⊣ r と q ⊣ j、充満忠実性、q i の零化、q の核を i の本質像が尽くす生成条件を持つ admissible な表示を使う。選んだ右随伴の可逆余単位を明示し、商の普遍性は入力せず実関手 ∞ 圏上の局所化として導く。
-- **現在の実装**：AdjointLocalization は任意の可逆余単位の実随伴の左関手が自身の反転辺に関する局所化であることを証明する。AdjointVerdier は反転辺を cofiber が核に属する辺に同定し、充満忠実な核の包含から IsVerdierSequence を得る。SemiorthogonalDecomposition は上記のデータと kernel・sectionIso・isVerdier・verdierSequence・semiorthogonal を提供する。laxCategory・laxFst・laxSnd は F2 の元の対象と完全射影の包装。stableValueFunctor は完全関手の元の BF 値の射の類を関手にし、value_section は余単位の像が切断になることを証明する。IsLocalizingInvariant.semiorthogonalSplitEquivalence と inclusion/section/projection の整合式は K-5 の積同値へ接続済み。今回の6新規モジュールを集約・監査へ接続し、対象6095 jobs・全体19248 jobs が成功。専用監査は65モジュール・793宣言、標準三公理のみで、宣言型の ModelCategory 検査も成功。
-- **残工程**：(b) lax pullback の D 包含 (0,d,0→q d) と C 包含 (c,0,p c→0)、両射影との実随伴、包含の完全性・充満忠実性・核の生成を証明する（暫定24–48時間以上、上限未確定）。(c) (b) に一般の半直交分裂を適用し、元の包含・射影と整合する E(lax) ≃ E(D)×E(C) を得て、要求の因子順 C,D との交換も明示する（(b) 後4–8時間の暫定見積もり）。(d) 差の項を通常 pullback の lax への包含の Verdier 商として扱い、局所化不変量の fiber 列を得る。商を標的 E と同定できる局所化仮定付きの場合と、一般の場合を区別する（必要界面の調査後に再見積もり）。
+- **現在の実装**：AdjointLocalization は任意の可逆余単位の実随伴の左関手が自身の反転辺に関する局所化であることを証明する。AdjointVerdier は反転辺を cofiber が核に属する辺に同定し、充満忠実な核の包含から IsVerdierSequence を得る。SemiorthogonalDecomposition は上記のデータと kernel・sectionIso・isVerdier・verdierSequence・semiorthogonal を提供する。laxCategory・laxFst・laxSnd は F2 の元の対象と完全射影の包装。stableValueFunctor は完全関手の元の BF 値の射の類を関手にし、value_section は余単位の像が切断になることを証明する。IsLocalizingInvariant.semiorthogonalSplitEquivalence と inclusion/section/projection の整合式は K-5 の積同値へ接続済み。K-8 の9新規モジュールを集約・監査へ接続し、対象6099 jobs・全体19253 jobs が成功。専用監査は68モジュール・830宣言、標準三公理のみで、宣言型の ModelCategory 検査も成功。
+- **(b) の完成界面**：ZeroArrowFamily.ofHomotopy・fromZero・toZero は関手 ∞ 圏の始終対象から指定端点を持つ実矢印族を構成する。LaxInclusion.fromD・fromC は F2.laxPullbackLift による元の全単体上の包含。fromD_fst/snd・fromC_fst/snd は一方が恒等・他方が零関手である厳密な等式。exact_of_components は両射影の完全性から元の関手の完全性を証明し、exactFromD・exactFromC に適用済み。実随伴・充満忠実性・核の生成はこれから。
+- **残工程**：(b) 構成済みの両完全包含と両射影の実随伴、充満忠実性・核の生成を証明する（暫定24–48時間以上、上限未確定）。(c) (b) に一般の半直交分裂を適用し、元の包含・射影と整合する E(lax) ≃ E(D)×E(C) を得て、要求の因子順 C,D との交換も明示する（(b) 後4–8時間の暫定見積もり）。(d) 差の項を通常 pullback の lax への包含の Verdier 商として扱い、局所化不変量の fiber 列を得る。商を標的 E と同定できる局所化仮定付きの場合と、一般の場合を区別する（必要界面の調査後に再見積もり）。
 - **原典**：[Tamme 2018 §1、Prop. 10–11・Cor. 12](https://arxiv.org/html/1703.03331)、[Land–Tamme 2019 §1–2](https://arxiv.org/html/1808.05559)。一般の正方形に excision を無条件で課さず、差の項の商の存在・普遍性を証明せずに完成扱いしない。Sp の IsStable は全工程で使わない。
 
 ## 範囲と所有

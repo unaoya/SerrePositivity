@@ -72,7 +72,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxStableCategory,
     `SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition,
     `SerrePositivity.KST.LocalizingInvariants.StableValueFunctor,
-    `SerrePositivity.KST.LocalizingInvariants.SemiorthogonalInvariant]
+    `SerrePositivity.KST.LocalizingInvariants.SemiorthogonalInvariant,
+    `SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily,
+    `SerrePositivity.KST.LocalizingInvariants.LaxInclusions,
+    `SerrePositivity.KST.LocalizingInvariants.LaxInclusionExact]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
