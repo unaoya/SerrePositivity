@@ -940,3 +940,7 @@ public import SerrePositivity.KST.Spectra.UniversalSourceParametricNaturality
 public import SerrePositivity.KST.Spectra.PointedIntervalCotensorConjugation
 public import SerrePositivity.KST.Spectra.OrdinaryLoopParametricCoordinates
 public import SerrePositivity.KST.Spectra.OrdinaryLoopParametricNaturality
+public import SerrePositivity.KST.Spectra.InternalHomTensorCotensor
+public import SerrePositivity.KST.Spectra.PointedParametricPostCurry
+public import SerrePositivity.KST.Spectra.TwoLoopSourceParametricPost
+public import SerrePositivity.KST.Spectra.OrdinaryLoopParametricStandardAction
