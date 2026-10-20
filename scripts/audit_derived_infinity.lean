@@ -1,3 +1,18 @@
+import SerrePositivity.InfinityCategories.Derived.FiniteHomotopyRelativeFillers
+import SerrePositivity.InfinityCategories.Derived.FiniteMappingCylinder
+import SerrePositivity.InfinityCategories.Derived.FiniteDiagramSpanLifts
+import SerrePositivity.InfinityCategories.Derived.FiniteDiagramKanLifts
+import SerrePositivity.InfinityCategories.Derived.FiniteKanDiagramFactorization
+import SerrePositivity.InfinityCategories.Derived.FiniteKanHomotopyDescent
+import SerrePositivity.InfinityCategories.Derived.FiniteDiagramKanInjectivity
+import SerrePositivity.InfinityCategories.Derived.FiniteTerminalMappingCone
+import SerrePositivity.InfinityCategories.Derived.RightFibrationHomotopyLift
+import SerrePositivity.InfinityCategories.Derived.PullbackDiagramHomotopy
+import SerrePositivity.InfinityCategories.Derived.FiniteSliceDiagramApproximation
+import SerrePositivity.InfinityCategories.Derived.FiniteNullSpanWeakContractibility
+import SerrePositivity.InfinityCategories.Derived.FiniteSliceWeakContractibility
+import SerrePositivity.InfinityCategories.Derived.FiniteRelativeCofinality
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofWeakEquivalence
 import SerrePositivity.InfinityCategories.Derived.FixedDiagramHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalStage
 import SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalInitial
@@ -2653,10 +2668,45 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgClosedRoofFinitePairs_nonempty
 #print axioms SerrePositivity.InfinityCategories.dgActualRoofFinitePairs_nonempty
 
+#print axioms SerrePositivity.InfinityCategories.HasFiniteHomotopyRelativeFillers.finiteDiagramLift
+#print axioms SerrePositivity.InfinityCategories.finiteMappingCylinderSource_mono
+#print axioms SerrePositivity.InfinityCategories.finiteMappingCylinder_finite
+#print axioms SerrePositivity.InfinityCategories.HasFiniteHomotopyRelativeFillers.finiteDiagramSpanLift
+#print axioms SerrePositivity.InfinityCategories.HasFiniteHomotopyRelativeFillers.kanFiniteDiagramPiZero_bijective
+#print axioms SerrePositivity.InfinityCategories.continuousKanFiniteHomotopy_descent
+#print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.finiteCone_extension
+#print axioms SerrePositivity.InfinityCategories.rightFibration_lift_end_homotopy
+#print axioms SerrePositivity.InfinityCategories.pullbackDiagramHomotopy
+#print axioms SerrePositivity.InfinityCategories.HasFiniteHomotopyRelativeFillers.finitePullbackConeApproximation
+#print axioms SerrePositivity.InfinityCategories.isWeaklyContractible_of_finiteNullSpans
+#print axioms SerrePositivity.InfinityCategories.HasFiniteHomotopyRelativeFillers.weaklyContractiblePullback
+#print axioms SerrePositivity.InfinityCategories.HasFiniteHomotopyRelativeFillers.isLeftCofinal
+#print axioms SerrePositivity.InfinityCategories.HasFiniteHomotopyRelativeFillers.isWeakHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_hasFiniteHomotopyRelativeFillers
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_isLeftCofinal
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_isWeakHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_precompose_kan
+#print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_continuousKan_isQCatEquivalence
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FiniteHomotopyRelativeFillers,
+    `SerrePositivity.InfinityCategories.Derived.FiniteMappingCylinder,
+    `SerrePositivity.InfinityCategories.Derived.FiniteDiagramSpanLifts,
+    `SerrePositivity.InfinityCategories.Derived.FiniteDiagramKanLifts,
+    `SerrePositivity.InfinityCategories.Derived.FiniteKanDiagramFactorization,
+    `SerrePositivity.InfinityCategories.Derived.FiniteKanHomotopyDescent,
+    `SerrePositivity.InfinityCategories.Derived.FiniteDiagramKanInjectivity,
+    `SerrePositivity.InfinityCategories.Derived.FiniteTerminalMappingCone,
+    `SerrePositivity.InfinityCategories.Derived.RightFibrationHomotopyLift,
+    `SerrePositivity.InfinityCategories.Derived.PullbackDiagramHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.FiniteSliceDiagramApproximation,
+    `SerrePositivity.InfinityCategories.Derived.FiniteNullSpanWeakContractibility,
+    `SerrePositivity.InfinityCategories.Derived.FiniteSliceWeakContractibility,
+    `SerrePositivity.InfinityCategories.Derived.FiniteRelativeCofinality,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofWeakEquivalence,
     `SerrePositivity.InfinityCategories.Derived.FixedDiagramHomotopy,
     `SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalStage,
     `SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalInitial,

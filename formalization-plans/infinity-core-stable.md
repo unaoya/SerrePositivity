@@ -10,16 +10,17 @@
 - D(S) の実境界から Q・A と二微分式を構成し、coslice の直接充填で cofiber の普遍性を証明。全 fiber/cofiber・有限極限余極限、任意四角形の双カルテジアン判定と安定性まで完成。
 - 実 suspension・複体シフト・接続射の符号を照合し、標準 cofiber 三角形の D3 像を cone 三角形と同定。全 distinguished triangle の保存・反映、逆関手の三角性、単位・余単位のシフト整合性を持つ D3 の三角同値を公開済み。
 - β3：F1B の局所化と L4 §26〜27 を読了。商の実零化、平坦分解の実 ∞ 圏同値、dg 加群・前三角 dg 圏・平坦分解後の商の実安定性、商関手の完全性と実分母の反転まで完成。
-- 実 Verdier over 上の屋根対応・pinched Hom fiber・商側の両側 fibration を構成。固定商 Hom の商屋根全空間への包含の right cofinality・弱同値を証明。実屋根比較自体は π₀ 全射までで、弱同値性は未証明。境界固定の有限相対充填・prism・同時輸送は完成。
+- 実 Verdier over 上の屋根対応・pinched Hom fiber・商側の両側 fibration を構成。固定商 Hom の商屋根全空間への包含の right cofinality・弱同値を証明。実屋根比較自体の left cofinality と弱ホモトピー同値性まで証明済み。境界固定の有限相対充填・prism・同時輸送は完成。
 - 全次元の最後外ホーンから R・K を回収し、dR=0・dK=−最後辺∘R を証明。実 Hom cone の指定閉残差の原始元と Q・A の二未知解を双方向に接続。有限混合次元族に一つの追加実閉分母と全実充填を供給する。
 - 全次数の over 単体と実 Verdier 部分圏内の閉始点細分を構成。零面保存、零固定・正番号非零の全順序写像との可換性、全正番号面・退化・共有面の厳密一致を証明。
 - `TruncatedJoinConeData f N` と有限頂点からの N=0 の実初期値を構成。錐全体を一つの追加実閉分母で更新し、同じ apex・全面・全正番号退化条件を保つ操作まで完成。
 - 次次数の零面 f σ と既存錐の正番号面から実境界写像を貼る。有限族を一つの分母後に同時充填し、その全面・共有面・実 apex を更新済み下次数錐へ厳密に一致させた。基本退化表示の標準錐の一致・全面保存・退化正規化も完成。`dgVerdierTruncatedConeSuccessor_nonempty` は次次数有限なら N+1 の錐を、`dgVerdierTruncatedConeData_nonempty` は各次数有限なら任意有限次数の錐を供給する。
 - 次元上界までの切断写像の一意な全次数延長を標準 splitting から構成。切断錐の全順序写像への自然性、実 coslice への切断写像と射影の厳密一致、実 join 写像の左右制限・apex・全低次数単体との一致を証明。`dgVerdierFiniteJoinCone_nonempty` は任意の有限単体集合からの実分母図式に同じ部分圏内の実 join 錐を供給する。`dgVerdierOver_op_isFilteredInfinity` により実分母 over 圏の反転は filtered ∞ 圏。
-- 任意の有限商屋根図式と指定元境界を、共通の実分母 fiber 上の厳密な相対問題へ還元。元境界を先に右持ち上げし、その比較像を全境界で固定して商全体を右持ち上げする。二輸送の終端・全底・境界全時刻の一致を証明。共通頂点を同じ実辺の閉分母へ戻し、元・商の pinched Hom 係数正方形と実屋根像を同定した。正次数の還元問題は一つの追加閉分母後に実充填と全境界付き輸送を持つ。二段階輸送も実合成三角形ごと相対構成し、任意の正次数標準単体境界の比較正方形に、元の全境界・全時刻で整合するホモトピー相対充填を供給した。屋根比較の弱同値判定は未完。
+- 任意の有限商屋根図式と指定元境界を、共通の実分母 fiber 上の厳密な相対問題へ還元。元境界を先に右持ち上げし、その比較像を全境界で固定して商全体を右持ち上げする。二輸送の終端・全底・境界全時刻の一致を証明。共通頂点を同じ実辺の閉分母へ戻し、元・商の pinched Hom 係数正方形と実屋根像を同定した。正次数の還元問題は一つの追加閉分母後に実充填と全境界付き輸送を持つ。二段階輸送も実合成三角形ごと相対構成し、任意の正次数標準単体境界の比較正方形に、元の全境界・全時刻で整合するホモトピー相対充填を供給した。屋根比較の弱同値判定は下記の一般有限対による方法で完成。
 - 零次元と空族を含む全次数の有限セル族の同時係数充填を公開。相対骨格の一段更新で、一つの追加閉分母、次骨格の元係数写像、全体商写像、下骨格を全時刻固定する比較を同時に構成した。次骨格・各新セルの厳密な制限、商前合成の自然性・合成則、有限標的の骨格の有限段停止も証明済み。この状態の有限帰納と、一般有限対全体の係数充填まで完成。
-- 一般有限係数対の比較を実商屋根へ移し、元・商の細分輸送との全境界・全時刻の一致を証明。相対輸送三角形と共通 fiber への還元を接続し、`dgActualRoofFinitePairs_nonempty` は任意の有限単体集合対 L⊂K の実屋根比較正方形に `RoofHomotopyRelativeFiller` を供給する。弱同値性の Kan 標的による判定は未接続。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofHomotopyFillers.lean`・`Derived/RoofCompatibleTransportComposite.lean`・`Derived/DGActualRoofFiberReduction.lean`・`Derived/DGCoefficientFinitePairs.lean`・`Derived/DGActualRoofFinitePairs.lean`。
+- 一般有限係数対の比較を実商屋根へ移し、元・商の細分輸送との全境界・全時刻の一致を証明。相対輸送三角形と共通 fiber への還元を接続し、`dgActualRoofFinitePairs_nonempty` は任意の有限単体集合対 L⊂K の実屋根比較正方形に `RoofHomotopyRelativeFiller` を供給する。有限対の全時刻整合性を使う一般の cofinality 判定まで接続済み。
+- 有限対充填から、終対象付き右ファイブレーションへの引き戻し内の有限図式の零ホモトピー span を構成。連続 Kan 置換の有限因子化で全境界を充填し、弱可縮性と Quillen A により left cofinality を証明。`dgRoofCorrespondenceMap_isWeakHomotopyEquivalence`、任意の Kan 標的への前合成の実ホモトピー同値、連続 Kan 置換後の圏同値を公開した。有限パラメータの写像空間の π₀ の全単射も別に証明済み。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofHomotopyFillers.lean`・`Derived/RoofCompatibleTransportComposite.lean`・`Derived/DGActualRoofFiberReduction.lean`・`Derived/DGCoefficientFinitePairs.lean`・`Derived/DGActualRoofFinitePairs.lean`・`Derived/DGActualRoofWeakEquivalence.lean`。
 
 ### 残り（依存順、時間は推定）
 
@@ -57,6 +58,8 @@
 - `dgQuotientFinite_exists_coefficientFillers`・`dgCoefficientSkeletalStep_nonempty`・`finiteRelativeSkeleton_exists_top`。
 - `DGSkeletalCellRefinement.skeletalComparison_cell`・`DGSkeletalQuotientExtension.homotopy_previous`。
 - `dgCoefficientSkeletalStage_nonempty`・`dgCoefficientFinitePairs_nonempty`・`dgClosedRoofFinitePairs_nonempty`・`dgActualRoofFinitePairs_nonempty`。
+- `HasFiniteHomotopyRelativeFillers.isLeftCofinal`・`isWeaklyContractible_of_finiteNullSpans`。
+- `dgRoofCorrespondenceMap_isLeftCofinal`・`dgRoofCorrespondenceMap_isWeakHomotopyEquivalence`・`dgRoofCorrespondenceMap_precompose_kan`。
 
 ### 依存と提供
 
@@ -70,16 +73,16 @@
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7417 jobs）。公理監査は Derived 9600 宣言／1054 モジュール、Stable 10715／1324。許容三公理のみ。今回の新規15モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7660 jobs）。公理監査は Derived 9644 宣言／1069 モジュール、Stable 10759／1339。許容三公理のみ。今回の新規15モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：任意の有限対の厳密な屋根比較正方形に全時刻整合的充填を供給済み。次は、この有限対充填から `IsWeakHomotopyEquivalence`（`F1B/WeakHomotopy.lean` の全 Kan 標的 Z に対する π₀ Fun(-,Z) の前合成全単射）を導く一般判定を Derived に証明し、実屋根比較へ適用する。
-- Kan 置換には `F1B/RightAnodyneFactorization.lean` の `exists_rightAnodyne_rightFibration_factorization (terminal.from K)` を使える。`F1B/WeakContractibleOpposite.lean` の証明は、点への right fibration から `kanComplex_of_rightHornFillers` で Kan 性を得て、right anodyne 包含の弱同値性を使う。有限対の充填をこの置換の検査へ移す際、有限図式の因子化と相対ホモトピー条件を実際に証明する。`ModelCategory` は導入しない。
-- 正次数境界の充填と π₀ 全射だけを一般の弱同値判定とはしない。一般有限対の充填は完成したが、Kan 置換との接続を済ませてから実屋根比較の弱同値性へ進む。その後、全標的の `F1B/Localization.IsLocalization`、Verdier 列、β5、β4。実分母添字の余 filtered 性は提供済み。厳密屋根添字との cofinality を使う場合は別に証明する。
+- β3：実屋根比較の弱同値性は完成。次は `IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の普遍性本体を構成する。反転条件は `dgQuotientNerveProjection_invertsVerdierEdges` が供給済み。残る条件は任意の quasicategory 標的 Y に対する `localizationPrecomposition` の圏同値であり、Kan 標的の弱同値だけとは異なる。
+- F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の比較を証明する。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
+- 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。普遍性の後、平坦分解への移送、Verdier 列、β5、β4。全計画は未完。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
