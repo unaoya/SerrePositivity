@@ -1190,3 +1190,5 @@ public import SerrePositivity.InfinityCategories.F1.KanEnrichedHomInterval
 public import SerrePositivity.InfinityCategories.F1.OppositeUnstraighteningHomFamilies
 public import SerrePositivity.InfinityCategories.F1.OppositeUnstraighteningHomPrism
 public import SerrePositivity.InfinityCategories.F1.OppositeUnstraighteningCommonPrism
+public import SerrePositivity.InfinityCategories.F1.CommonWeightedHomAction
+public import SerrePositivity.InfinityCategories.F1.CommonWeightedPrismComparison
