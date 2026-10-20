@@ -1344,3 +1344,9 @@ public import SerrePositivity.InfinityCategories.F1.TwistedHomDiagonal
 public import SerrePositivity.InfinityCategories.F1.CosliceTwistedHomEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationBaseChangeFullyFaithful
+
+public import SerrePositivity.InfinityCategories.F1.RightRepresentableTwistedArrowEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafSliceComparison
+
+public import SerrePositivity.InfinityCategories.F1.RepresentableUnstraighteningComparison
