@@ -11236,3 +11236,27 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfRightDerived_hasLimit_postcomp
 #print axioms quillenCfRightDerived_hasLimit_postcomp
+
+#check @vertexEdgeFamily
+#print axioms vertexEdgeFamily
+
+#check @exists_cartesianPrism_prescribed_vertices
+#print axioms exists_cartesianPrism_prescribed_vertices
+
+#check @cartesianSquare_source
+#print axioms cartesianSquare_source
+
+#check @cartesianHomotopy_sourceEdge
+#print axioms cartesianHomotopy_sourceEdge
+
+#check @cartesianPrism_sourceComparison
+#print axioms cartesianPrism_sourceComparison
+
+#check @quillenCfRightReplacement_transport_exists
+#print axioms quillenCfRightReplacement_transport_exists
+
+#check @exists_cocartesianPrism_prescribed_vertices
+#print axioms exists_cocartesianPrism_prescribed_vertices
+
+#check @quillenCfLeftReplacement_transport_exists
+#print axioms quillenCfLeftReplacement_transport_exists
