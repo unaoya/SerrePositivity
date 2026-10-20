@@ -10849,3 +10849,12 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfLeftLiftEdge_isCocartesian
 #print axioms quillenCfLeftLiftEdge_isCocartesian
+
+#check @cartesianFibration_interval_of_lift
+#print axioms cartesianFibration_interval_of_lift
+
+#check @quillenCfCollageProjection_cocartesianFibration
+#print axioms quillenCfCollageProjection_cocartesianFibration
+
+#check @quillenCfCollageProjection_cartesianFibration
+#print axioms quillenCfCollageProjection_cartesianFibration

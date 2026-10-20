@@ -38,13 +38,13 @@
   `FinalHornFilledRestriction` は全既知面への制限と元のホーンへの制限を証明。`QuillenCfRightCartesian` は底 Δ¹ の薄さで射影一致を示し、元の右 Quillen 候補辺の `IsCartesianEdge` を相対外側ホーンの全次数で証明。
   `CoherentOppositeEdge`・`InitialHornFiller` は元の初期辺と反対射の辺、前合成と反対圏の後合成を照合し、元の初期ホーンを充填。
   `QuillenCfInitialHornBase` は相対ホーンの全後半頂点の上段性を導く。`QuillenCfLeftCocartesian` は元の前合成の trivial Kan 性と底の薄さから、元の左候補辺の `IsCocartesianEdge` を全次数で証明。
-  **未完了**：両 fibration 構造の全基底辺での持ち上げ、導来 ∞ 随伴・単位/余単位・三角整合性、一般 coherent 極限保存。
+  `IntervalCartesianCriterion`・`QuillenCfBifibration` は標準辺と全定値辺の持ち上げを構成。元の cf 区間射影は CartesianFibration かつ CocartesianFibration。
+  **未完了**：両端 fiber 上の導来関手・導来 ∞ 随伴・単位/余単位・三角整合性、一般 coherent 極限保存。
 - **残り**（依存順、時間は再開後の概算）：
-  1. N-2：両 fibration 構造を全基底辺の持ち上げで構成。元の左右候補辺の Cartesian/coCartesian 性は完了。HTT 5.2.4.4〜6、4〜12時間。
-  2. N-2：F1b の随伴 API へ接続し、導来 ∞ 随伴・単位/余単位・三角整合性と一般 coherent 極限保存。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
-  3. N-3：Sp へ適用し、Tot・hG・fiber 列を Sp の ∞ 極限と照合（Sp レーンと共同）。BF §3、HA §1.4、16〜40時間。
-  4. E2b へ γ4 を提供し、Alg_E と忘却関手へ適用。HTT 1.1.5.10・5.2.4.6、16〜40時間。
-  5. F2 後半の Bousfield 局所化・P_Σ は I-b。Ind・compact・冪等完備化は F1b 所有（`foundations.md` §6）。
+  1. N-2：F1b の随伴 API へ接続し、導来 ∞ 随伴・単位/余単位・三角整合性と一般 coherent 極限保存。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
+  2. N-3：Sp へ適用し、Tot・hG・fiber 列を Sp の ∞ 極限と照合（Sp レーンと共同）。BF §3、HA §1.4、16〜40時間。
+  3. E2b へ γ4 を提供し、Alg_E と忘却関手へ適用。HTT 1.1.5.10・5.2.4.6、16〜40時間。
+  4. F2 後半の Bousfield 局所化・P_Σ は I-b。Ind・compact・冪等完備化は F1b 所有（`foundations.md` §6）。
 - **主要宣言**（名前のみ）：
   `F2.coherentDiagramTotalCocone_isColimit`、`F2.hasColimit_coherentSpaceDiagram`、
   `HomotopyLimits.SimplicialAdjunctionHomIso`、`HomotopyLimits.strictCoherentCone_map_isLimit_of_adjunctionHomIso`、
@@ -72,18 +72,21 @@
   `HomotopyLimits.quillenCfFinalHornRight_hasLift`、`HomotopyLimits.quillenCfRightLiftEdge_isCartesian`、
   `HomotopyLimits.coherentNerveOppositeMap_edge`、`HomotopyLimits.initialHornFiller_of_precomposition`、
   `HomotopyLimits.quillenCfInitialHorn_suffix_top`、`HomotopyLimits.quillenCfInitialHornLeft_hasLift`、
-  `HomotopyLimits.quillenCfLeftLiftEdge_isCocartesian`。
+  `HomotopyLimits.quillenCfLeftLiftEdge_isCocartesian`、
+  `HomotopyLimits.cartesianFibration_interval_of_lift`、
+  `HomotopyLimits.quillenCfCollageProjection_cocartesianFibration`、`HomotopyLimits.quillenCfCollageProjection_cartesianFibration`。
 - **依存と提供**：F1・F1b（coherent Hom・随伴）、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけ。実施記録はコミットメッセージ。
-- **未コミット**：今回の反対辺の照合・初期ホーン充填・後半頂点の上段性・元の左候補辺の coCartesian 性の4モジュール11宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンの差分は保存対象外。
+- **未コミット**：今回の全基底辺の持ち上げによる両 fibration 構造の2モジュール3宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンの差分は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は修正版を正しい場所へ保存済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：N の対象ビルド・全監査に失敗なし。新規モジュールの警告・新規 sorry・追加公理なし。import 閉包に他レーンの未コミット差分なし。一般 γ4 は未完了。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定せず、固定 Quillen 類を使う。
   `FixedSimplicialPushoutProduct` と豊穣随伴の合成互換は標準 simplicial model/adjunction の明示入力であり、通常の Quillen 随伴だけから導いたとは扱わない。Sp・E2b への適用時に構成・証明する。
   元の Hom 同型の終域への通常の自然性だけで ∞ 随伴を完成と数えない。Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。
   他レーンの import 閉包が壊れたら回避せず停止。他レーンの作業中変更を保存しない。
-- **次の一手**：N-2。Δ¹ の全基底辺について、元の候補辺と退化辺を使って cf 対応圏の Cartesian/CocartesianFibration 構造を構成する。その後、両端 fiber の同型を通じて F1b の随伴 API へ接続する。元の左右候補辺の外側ホーン持ち上げは再実装しない。
+- **次の一手**：N-2。両 fibration 構造と両端 fiber の同型から、元の cf nerve 間の導来関手を構成し、F1b の随伴 API へ接続する。元の左右候補辺の外側ホーン持ち上げと全基底辺の lift は再実装しない。
+  `/tmp/QuillenCfDerivedTransport.lean` は両側の導来関手と左の輸送 prism の検証済み試作。まず正式化と全監査・保存、次に右の輸送 prism・通常の cf 置換との比較・随伴の単位比較を構成する。試作だけで ∞ 随伴完成と数えない。
   原典は [HTT 5.2.4.4〜6・Remark 5.2.4.7](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=371)（閲覧・本文照合済み）。5.2.4.6 は simplicial model categories と simplicial Quillen adjunction の命題。
   `F1/CartesianEdge` の述語は指定最終/先頭辺を固定した外側ホーンの相対持ち上げ。Hom の trivial Kan 射だけで満たしたとは扱わない。
   最終ホーンでは [0,n+1] と [0,n+2] の二つの Hom が未知。`i` を penultimate とし、後者を上面一つ欠く空洞から延長、その上面を候補辺の後合成に沿って持ち上げて前者を構成する。
