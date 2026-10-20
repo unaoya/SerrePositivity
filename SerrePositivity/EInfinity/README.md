@@ -1268,7 +1268,15 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 同じ元の Nat 図式の `colim.map` の弱同値性を証明する。
 `weakProperColimitMap` は proper 図式間の成分ごとの弱同値を元の全語の余極限へ移す
 （Dwyer–Kan §4.5）。Π の filtered 性・元の値の Kan 性・単体集合のモデル構造は不要。
-三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.forwardFunctor` は元の forward 列の部分語を取り、`forwardMap_fac` は
+元の包含への厳密な因子分解。`forwardInclusionNat` は同じ包含の自然変換。
+`Word.sandwichFunctor` は左右の語を固定した列追加。`paddingFunctor` は
+backward 一列ずつを両端に付け、`paddingInclusionNat` は元の中央列の包含。
+`forwardMap_intersection_range`・`sandwichMap_intersection_range` は元の列の像の交わり。
+`ProperDiagram.precomp` は単射とこの交わりを保つ語関手への proper 性の保存。
+`ProperDiagram.padding`・`paddedForward` は二つの実際の前合成への適用。
+`paddingDiagramMap`・`paddedForwardDiagramMap` の成分は元の包含の像である。
+成分の弱同値性、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

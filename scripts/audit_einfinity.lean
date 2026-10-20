@@ -3690,6 +3690,46 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.weakSequentialColimitMap,
       `SerrePositivity.EInfinity.Hammock.weakProperColimitMap]
 
+@[noinline] private def e2RequiredBatch38 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.appendMap_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.appendMap_range_left,
+      `SerrePositivity.EInfinity.Hammock.Word.appendMap_range_right,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardColumns,
+      `SerrePositivity.EInfinity.Hammock.Word.mem_forwardColumns,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardCore,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardInclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardInclusion_range,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardCore_direction,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_fac,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardInclusion_cancel,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_id,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_comp,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardFunctor,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardInclusionNat,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_apply_fac,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_range_iff,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_intersection_range,
+      `SerrePositivity.EInfinity.Hammock.Word.sandwichFunctor,
+      `SerrePositivity.EInfinity.Hammock.Word.sandwichInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.sandwichInclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.sandwichInclusionNat,
+      `SerrePositivity.EInfinity.Hammock.Word.sandwichMap_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.paddingFunctor,
+      `SerrePositivity.EInfinity.Hammock.Word.paddingInclusionNat,
+      `SerrePositivity.EInfinity.Hammock.Word.sandwichMap_intersection_range,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.precomp,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.sandwich,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.forwardCore,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.padding,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.paddedForward,
+      `SerrePositivity.EInfinity.Hammock.paddingDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.paddingDiagramMap_app,
+      `SerrePositivity.EInfinity.Hammock.paddedForwardDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.paddedForwardDiagramMap_app]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3719,7 +3759,7 @@ run_cmd do
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
-      e2RequiredBatch36, e2RequiredBatch37] do
+      e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8816,3 +8856,38 @@ example {F G : Word ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
     (hF : ProperDiagram F) (hG : ProperDiagram G)
     (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) :
     IsWeakHomotopyEquivalence (colim.map η) := weakProperColimitMap η hF hG hη
+
+-- forward 部分語の元の包含への厳密な因子分解。空語も含む。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b : Word} (f : a ⟶ b) :
+    Word.forwardMap f ≫ Word.forwardInclusion b = Word.forwardInclusion a ≫ f :=
+  Word.forwardMap_fac f
+
+-- 両端を固定した列追加は、元の列の像の交わりを保つ。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (p q : Word) {a b c : Word} (f : a ⟶ c) (g : b ⟶ c) :
+    Set.range ((Word.sandwichFunctor p q).map (Word.intersectionInclusion f g)).orderHom =
+      Set.range ((Word.sandwichFunctor p q).map f).orderHom ∩
+        Set.range ((Word.sandwichFunctor p q).map g).orderHom :=
+  Word.sandwichMap_intersection_range p q f g
+
+-- 元の図式の二つの前合成は proper。保存条件を未証明の入力にしない。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {F : Word ⥤ SSet.{e2ComplexLimitUniverse}} (hF : ProperDiagram F) :
+    ProperDiagram (Word.paddingFunctor ⋙ F) ∧
+      ProperDiagram (Word.forwardFunctor ⋙ Word.paddingFunctor ⋙ F) :=
+  ⟨hF.padding, hF.paddedForward⟩
+
+-- 元の graph への適用。追加のモデル構造や proper 性の入力は不要。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] (W : MorphismProperty C)
+    [W.IsMultiplicative] (X Y : C) :
+    ProperDiagram (Word.forwardFunctor ⋙ Word.paddingFunctor ⋙ graphDiagram W X Y) :=
+  (graphDiagram_proper W X Y).paddedForward
+
+-- 比較の成分は同じ元の forward 列の包含の像そのものである。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (F : Word ⥤ SSet.{e2ComplexLimitUniverse}) (a : Word) :
+    (paddedForwardDiagramMap F).app a =
+      F.map (Word.paddingFunctor.map (Word.forwardInclusion a)) :=
+  paddedForwardDiagramMap_app F a

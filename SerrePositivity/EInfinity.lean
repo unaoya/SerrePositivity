@@ -914,3 +914,10 @@ public import SerrePositivity.EInfinity.Hammock.LengthZero
 public import SerrePositivity.EInfinity.Hammock.WeakLengthStages
 public import SerrePositivity.EInfinity.Hammock.WeakSequentialColimit
 public import SerrePositivity.EInfinity.Hammock.WeakProperColimit
+public import SerrePositivity.EInfinity.Hammock.WordAppendImages
+public import SerrePositivity.EInfinity.Hammock.WordForwardCore
+public import SerrePositivity.EInfinity.Hammock.WordForwardImages
+public import SerrePositivity.EInfinity.Hammock.WordPadding
+public import SerrePositivity.EInfinity.Hammock.WordPaddingImages
+public import SerrePositivity.EInfinity.Hammock.ProperPrecomposition
+public import SerrePositivity.EInfinity.Hammock.ProperFractionDiagrams
