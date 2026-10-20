@@ -1232,4 +1232,14 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorHom
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorComposition
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorAction
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorRestrictions
+public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputLeft
+public import SerrePositivity.KST.SConstruction.LeftTensorYonedaParameter
+public import SerrePositivity.KST.SConstruction.BimoduleRightUnitParameter
+public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputRight
+public import SerrePositivity.KST.SConstruction.RightTensorParameterFactorization
+public import SerrePositivity.KST.SConstruction.BimoduleSecondParameterHom
+public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputNaturality
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameterComposition
+public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputHorizontal
+public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputHomHorizontal
 /-! # ∞-S• 構成と連結 K 理論 -/
