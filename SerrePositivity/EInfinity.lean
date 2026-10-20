@@ -538,3 +538,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerivedHomNorma
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitAdjunctionNormalization
 public import SerrePositivity.EInfinity.FrameHom.AdjointRightDerived
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerived
+public import SerrePositivity.EInfinity.BarrattEccles.CarrierRightFrames
+public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitProbe
+public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitHom
+public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitClasses

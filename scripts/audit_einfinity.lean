@@ -1944,6 +1944,25 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.localizedFramedLimit_isRightDerivedFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.limitFunctor_hasRightDerivedFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.forgetOp_isLeftQuillen,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrame,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrame_cofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrame_homotopicallyConstant,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrameAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrameAugmentation_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrameDiagram_obj,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierProbeFactorization,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitProbeFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitProbe,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitProbeComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitProbe_cofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitProbeComparison_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrameDiagramFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeSpace,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeSpace_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitMapClass,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv_mapClass,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5305,3 +5324,37 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
   let W := weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
   exact framedLimitDerivedIso ℤ ℕ F ((lim ⋙ Q).totalRightDerived W.Q W)
     ((lim ⋙ Q).totalRightDerivedUnit W.Q W) inferInstance
+
+-- 元の代数の底とは限らない任意の複体を試験始域に使える。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (Y : Complex ℤ) :
+    SSet.KanComplex ((carrierFramedLimitConeSpace ℤ ℕ Y).obj F) :=
+  carrierFramedLimitConeSpace_kanComplex ℤ ℕ F Y
+
+-- 元の通常錐から計算対象への射を忘却した場合にも同じ局所化像になる。
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
+    let := projectiveModelCategory ℤ
+    let Q := (weakEquivalences (Complex ℤ)).Q
+    carrierFramedLimitHomPiZeroEquiv ℤ ℕ F c.pt.carrier
+        (carrierFramedLimitMapClass ℤ ℕ F (coneToFramedLimit ℤ ℕ F c).hom) =
+      Q.map (coneToFramedLimit ℤ ℕ F c).hom := by
+  exact carrierFramedLimitHomPiZeroEquiv_mapClass ℤ ℕ F (coneToFramedLimit ℤ ℕ F c).hom
+
+-- 任意の複体から計算対象の底への局所化射は、同じ右錐の類で一意に表示される。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (Y : Complex ℤ) :
+    let := projectiveModelCategory ℤ
+    let Q := (weakEquivalences (Complex ℤ)).Q
+    ∀ x : Q.obj Y ⟶ Q.obj ((framedLimitFunctor ℤ ℕ).obj F).carrier,
+      ∃! z, carrierFramedLimitHomPiZeroEquiv ℤ ℕ F Y z = x := by
+  let := projectiveModelCategory ℤ
+  dsimp only
+  intro x
+  let e := carrierFramedLimitHomPiZeroEquiv ℤ ℕ F Y
+  refine ⟨e.symm x, e.apply_symm_apply _, ?_⟩
+  intro z hz
+  exact (e.symm_apply_apply z).symm.trans (congrArg e.symm hz)

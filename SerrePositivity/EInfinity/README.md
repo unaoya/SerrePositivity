@@ -775,7 +775,14 @@ augmentation は元の代数の射にも自然。Reedy 自明 fibration であ�
 `framedLimitDerivedComparison` は元の `limitComparisonNatTrans` を局所化して作る比較。
 `localizedFramedLimit_isRightDerivedFunctor` は同じ比較を持つ一般小図式の右導来極限性。
 `limitFunctor_hasRightDerivedFunctor` は存在、`framedLimitDerivedIso` は任意の右導来関手の値との同型。
-忘却後の一般極限について、同じ底の計算と底の右導来極限を比較する作業が残る。
+`carrierRightFrame_cofibrant`・`carrierRightFrame_homotopicallyConstant` は
+同じ右 frame の底での Reedy cofibrancy とホモトピー定値性。
+`carrierFramedLimitProbeFunctor` は任意の複体の関手的な cofibrant 試験始域で、
+`carrierFramedLimitConeSpace` は同じ右 frame と重みで作る実際の Kan 錐空間。
+`carrierFramedLimitHomPiZeroEquiv` はその π₀ と、元の任意の複体から
+`framedLimitFunctor` の実際の底への局所化 Hom の同値。
+`carrierFramedLimitHomPiZeroEquiv_mapClass` は実際の複体射から作った類で元の局所化像を回収する。
+底の定値図式からの局所化 Hom との比較と、底の一般右導来極限の普遍性への接続が残る。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
 `mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。
