@@ -995,4 +995,12 @@ public import SerrePositivity.KST.SConstruction.TriangleDiagonalPasting
 public import SerrePositivity.KST.SConstruction.TracedTriplePairCorrectionPasting
 public import SerrePositivity.KST.SConstruction.DoubleDiagonalTrianglePasting
 public import SerrePositivity.KST.SConstruction.TracedTripleCorrectionPasting
+public import SerrePositivity.KST.SConstruction.CorrectionPastingHorn
+public import SerrePositivity.KST.SConstruction.CorrectionPastingTriangleAttachment
+public import SerrePositivity.KST.SConstruction.CorrectionInterchangePasting
+public import SerrePositivity.KST.SConstruction.TracedTripleInterchangePasting
+public import SerrePositivity.KST.SConstruction.FixedCylinderBoundary
+public import SerrePositivity.KST.SConstruction.FixedCylinderAttachment
+public import SerrePositivity.KST.SConstruction.CorrectionNormalizationPasting
+public import SerrePositivity.KST.SConstruction.TracedTripleNormalizedPasting
 /-! # ∞-S• 構成と連結 K 理論 -/
