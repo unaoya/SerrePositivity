@@ -828,3 +828,11 @@ public import SerrePositivity.EInfinity.Hammock.WordEmbeddingFull
 public import SerrePositivity.EInfinity.Hammock.NerveFullRange
 public import SerrePositivity.EInfinity.Hammock.GraphEmbeddingRange
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbeddingRange
+public import SerrePositivity.EInfinity.Hammock.IdentityColumn
+public import SerrePositivity.EInfinity.Hammock.IdentityFiberVertices
+public import SerrePositivity.EInfinity.Hammock.IdentityPreimageObjects
+public import SerrePositivity.EInfinity.Hammock.IdentityPreimageRecovery
+public import SerrePositivity.EInfinity.Hammock.WordIntersection
+public import SerrePositivity.EInfinity.Hammock.GraphIntersection
+public import SerrePositivity.EInfinity.Hammock.ProperDiagram
+public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphProper

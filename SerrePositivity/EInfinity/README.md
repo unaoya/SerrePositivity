@@ -1128,7 +1128,19 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 同じ元の全語の graph 図式と任意の可換環上の E 代数への代入。
 `algebraHammockTransitionPreimage`・`_map_preimage`・`_preimage_map`・
 `algebraHammockTransition_full` は同じ元の全縦射の厳密な回収・両逆・充満性。
-対象の像を恒等列の条件から回収する逆向きと proper 性の像の交わりの条件、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`IdentityColumn`・`IdentityOutside` は元の隣接頂点の等式と元の恒等移送の条件。
+`identityFiber_vertex` は条件を満たす任意の対象の同じ切断 fiber 上の頂点を同定し、
+`IdentityPreimage.obj` は像の列を元の二端点へ移して原像を構成する。
+`IdentityPreimage.obj_image`・`WordAction.obj_range_iff` と
+`graphDiagram_map_range_iff_identityOutside` は元の対象と全単体の像の完全な特徴付け。
+`Word.subword`・`intersectionInclusion_range` は元の列の有限集合の交わりの部分語。
+`graphDiagram_intersection_range` は同じ元の部分複体の像の交わりとの等式。
+`ProperDiagram` は Dwyer–Kan §4.4 の二条件で、`graphDiagram_proper` は §5.4 の
+元の全語の図式への適用。`ProperDiagram.intersectionComparison_isIso`・`_fac` は
+元の交わりへの標準包含そのものの同型性と元の包含への一致。
+`BarrattEccles.algebraHammockGraphDiagram_proper`・`algebraHammockIdentityPreimage_image`・
+`algebraHammockGraphIntersectionComparison_isIso`・`_fac` は任意の可換環上で完成。
+縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

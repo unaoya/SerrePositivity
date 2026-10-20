@@ -3234,6 +3234,61 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.TableReduction.reductionRemoved_first_eq_nil,
       `SerrePositivity.EInfinity.TableReduction.rowFusion_in_context]
 
+@[noinline] private def e2RequiredBatch25 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Direction.endpointsEq,
+      `SerrePositivity.EInfinity.Hammock.IdentityColumn,
+      `SerrePositivity.EInfinity.Hammock.IdentityOutside,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom.no_image_of_cut_eq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.identityOutside_obj,
+      `SerrePositivity.EInfinity.Hammock.identityFiber_vertex_of_le,
+      `SerrePositivity.EInfinity.Hammock.identityFiber_vertex,
+      `SerrePositivity.EInfinity.Hammock.identityFiber_embeddingVertex,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.vertex,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.source_eq,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.target_eq,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.arrow,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.arrow_mem,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.obj,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.vertex_eq,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.arrow_heq,
+      `SerrePositivity.EInfinity.Hammock.IdentityPreimage.obj_image,
+      `SerrePositivity.EInfinity.Hammock.WordAction.obj_range_iff,
+      `SerrePositivity.EInfinity.Hammock.graphDiagram_map_range_iff_identityOutside,
+      `SerrePositivity.EInfinity.Hammock.Word.subword,
+      `SerrePositivity.EInfinity.Hammock.Word.subwordInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.subwordInclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.subwordInclusion_range,
+      `SerrePositivity.EInfinity.Hammock.Word.columnImage,
+      `SerrePositivity.EInfinity.Hammock.Word.coe_columnImage,
+      `SerrePositivity.EInfinity.Hammock.Word.intersection,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionInclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionInclusion_range,
+      `SerrePositivity.EInfinity.Hammock.identityOutside_intersection,
+      `SerrePositivity.EInfinity.Hammock.graphDiagram_intersection_range,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram,
+      `SerrePositivity.EInfinity.Hammock.imageHomOfLe_isIso,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.intersectionComparison,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.intersectionComparison_isIso,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.intersectionComparison_fac,
+      `SerrePositivity.EInfinity.Hammock.graphDiagram_proper,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockIdentityOutside,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockIdentityPreimage,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockIdentityPreimage_image,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTransition_obj_range_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphMap_range_iff_identityOutside,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphDiagram_proper,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphIntersection_range,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphIntersectionComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphIntersectionComparison_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphIntersectionComparison_fac,
+      `SerrePositivity.EInfinity.Hammock.IdentityColumn.mk,
+      `SerrePositivity.EInfinity.Hammock.IdentityColumn.vertex_eq,
+      `SerrePositivity.EInfinity.Hammock.IdentityColumn.arrow_eq,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.mk,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.map_mono,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.intersection_range]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3260,7 +3315,7 @@ run_cmd do
       e2RequiredBatch12, e2RequiredBatch13, e2RequiredBatch14, e2RequiredBatch15,
       e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
-      e2RequiredBatch24] do
+      e2RequiredBatch24, e2RequiredBatch25] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -7838,3 +7893,62 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
       ∀ j, ∃ S : BarrattEccles.algebraHammockZigzag A a X Y,
         (BarrattEccles.algebraHammockTransition A f X Y).obj S = τ.obj j :=
   BarrattEccles.algebraHammockGraphMap_range_iff A f hf X Y n τ
+
+-- 恒等列の条件からの原像は、同じ元の E 代数の zigzag を厳密に回収する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom) (X Y : (BarrattEccles.operad A).Algebra)
+    (R : BarrattEccles.algebraHammockZigzag A b X Y)
+    (hR : BarrattEccles.algebraHammockIdentityOutside A f X Y R) :
+    (BarrattEccles.algebraHammockTransition A f X Y).obj
+        (BarrattEccles.algebraHammockIdentityPreimage A f hf X Y R hR) = R :=
+  BarrattEccles.algebraHammockIdentityPreimage_image A f hf X Y R hR
+
+-- 全次数での元の像は、元の全行の恒等列の条件と同値。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom) (X Y : (BarrattEccles.operad A).Algebra)
+    (n : SimplexCategoryᵒᵖ) (τ : (BarrattEccles.algebraHammockGraph A b X Y).obj n) :
+    τ ∈ Set.range ((BarrattEccles.algebraHammockGraphMap A f X Y).app n) ↔
+      ∀ j, BarrattEccles.algebraHammockIdentityOutside A f X Y (τ.obj j) :=
+  BarrattEccles.algebraHammockGraphMap_range_iff_identityOutside A f hf X Y n τ
+
+-- proper 性は任意の可換環上で実際の同じ全語の図式に成り立つ。
+open SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra) :
+    Hammock.ProperDiagram (BarrattEccles.algebraHammockGraphDiagram A X Y) :=
+  BarrattEccles.algebraHammockGraphDiagram_proper A X Y
+
+-- 列の交わりの像は、同じ元の部分複体の交わりに一致する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b c : Hammock.Word}
+    (f : a ⟶ c) (g : b ⟶ c)
+    (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    Subfunctor.range ((BarrattEccles.algebraHammockGraphDiagram A X Y).map
+      (Hammock.Word.intersectionInclusion f g)) =
+        Subfunctor.range ((BarrattEccles.algebraHammockGraphDiagram A X Y).map f) ⊓
+          Subfunctor.range ((BarrattEccles.algebraHammockGraphDiagram A X Y).map g) :=
+  BarrattEccles.algebraHammockGraphIntersection_range A f g hf hg X Y
+
+-- 原典の交わりへの誘導射そのものが同型で、追加のモデル入力は不要。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b c : Hammock.Word}
+    (f : a ⟶ c) (g : b ⟶ c)
+    (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (BarrattEccles.algebraHammockGraphIntersectionComparison A f g hf hg X Y) :=
+  BarrattEccles.algebraHammockGraphIntersectionComparison_isIso A f g hf hg X Y
+
+-- 同じ交わりの比較は、元の標準包含に厳密に整合する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b c : Hammock.Word}
+    (f : a ⟶ c) (g : b ⟶ c)
+    (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    BarrattEccles.algebraHammockGraphIntersectionComparison A f g hf hg X Y ≫
+        (Subfunctor.range ((BarrattEccles.algebraHammockGraphDiagram A X Y).map f) ⊓
+          Subfunctor.range ((BarrattEccles.algebraHammockGraphDiagram A X Y).map g)).ι =
+      (Subfunctor.range ((BarrattEccles.algebraHammockGraphDiagram A X Y).map
+        (Hammock.Word.intersectionInclusion f g))).ι :=
+  BarrattEccles.algebraHammockGraphIntersectionComparison_fac A f g hf hg X Y
