@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.CellDGResolutionVerdierEdges
+import SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion
+import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactDescent
+import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactFunctorEquivalence
+import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientLocalization
+import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientVerdierSequence
+import SerrePositivity.InfinityCategories.Derived.SourceEquivalencePrecomposition
 import SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEdges
 import SerrePositivity.InfinityCategories.Derived.CofiberBottomIsoTransport
 import SerrePositivity.InfinityCategories.Derived.DGQuotientArrowLifts
@@ -3456,6 +3463,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.CellDGResolutionVerdierEdges,
+    `SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion,
+    `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactDescent,
+    `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactFunctorEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientLocalization,
+    `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientVerdierSequence,
+    `SerrePositivity.InfinityCategories.Derived.SourceEquivalencePrecomposition,
     `SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEdges,
     `SerrePositivity.InfinityCategories.Derived.CofiberBottomIsoTransport,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientArrowLifts,
