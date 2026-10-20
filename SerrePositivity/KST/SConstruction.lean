@@ -1029,4 +1029,10 @@ public import SerrePositivity.KST.SConstruction.TripleRawDiagramValue
 public import SerrePositivity.KST.SConstruction.TripleRawDiagramKanValue
 public import SerrePositivity.KST.SConstruction.TracedTripleRawStageComparison
 public import SerrePositivity.KST.SConstruction.TracedTripleRawStageComparisonPasting
+public import SerrePositivity.KST.SConstruction.TracedTripleRawComparisonStages
+public import SerrePositivity.KST.SConstruction.FullCylinderBoundary
+public import SerrePositivity.KST.SConstruction.FullRelativeRawComparison
+public import SerrePositivity.KST.SConstruction.RawComparisonAdjacentBoundary
+public import SerrePositivity.KST.SConstruction.EndpointFixedCylinderEvaluation
+public import SerrePositivity.KST.SConstruction.TracedTripleRawAdjacentBoundary
 /-! # ∞-S• 構成と連結 K 理論 -/
