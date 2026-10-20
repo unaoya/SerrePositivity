@@ -952,4 +952,11 @@ public import SerrePositivity.KST.SConstruction.TriangleUpperFaceTransport
 public import SerrePositivity.KST.SConstruction.TracedBFCompositionCorrectedSpans
 public import SerrePositivity.KST.SConstruction.TriangleUpperEdgeData
 public import SerrePositivity.KST.SConstruction.TracedBFCompositionStageTriangles
+public import SerrePositivity.KST.SConstruction.FamilyChainWitnessPrecomposition
+public import SerrePositivity.KST.SConstruction.FamilyChainWitnessTransport
+public import SerrePositivity.KST.SConstruction.FamilyChainCompositeDataTransport
+public import SerrePositivity.KST.SConstruction.MonicKPrismCanonicalDirectCorrection
+public import SerrePositivity.KST.SConstruction.TracedBFDirectCorrectionNormalization
+public import SerrePositivity.KST.SConstruction.TargetFixedBoundaryCospan
+public import SerrePositivity.KST.SConstruction.TracedBFTripleDirectCorrectionComparison
 /-! # ∞-S• 構成と連結 K 理論 -/

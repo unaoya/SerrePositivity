@@ -29,4 +29,19 @@ lemma pointParameterMap_naturality {P T U : SSet.{u}} (v : P _⦋0⦌) (f : T �
 lemma pointParameterMap_interval {P : SSet.{u}} (v : P _⦋0⦌) :
     pointParameterMap v (Δ[1] : SSet.{u}) = intervalParameterPoint v := rfl
 
+/-- 指定点の写像像で全パラメータを固定する写像は、元の同じ全族の後合成像。 -/
+lemma pointParameterMap_post {P Q T : SSet.{u}} (v : P _⦋0⦌) (p : P ⟶ Q) :
+    pointParameterMap v T ≫ (p ▷ T) = pointParameterMap (p.app (Opposite.op ⦋0⦌) v) T := by
+  apply CartesianMonoidalCategory.hom_ext
+  · simp only [pointParameterMap, Category.assoc, whiskerRight_fst, lift_fst]
+    rw [← Category.assoc, lift_fst, SSet.const_comp]
+  · simp only [pointParameterMap, Category.assoc, whiskerRight_snd, lift_snd]
+
+/-- 元の零単体表示で指定点を写すと、同じ全パラメータ制限が厳密に可換する。 -/
+lemma pointParameterMap_post_point {P Q T : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ P)
+    (p : P ⟶ Q) :
+    pointParameterMap (SSet.yonedaEquiv a) T ≫ (p ▷ T) =
+      pointParameterMap (SSet.yonedaEquiv (a ≫ p)) T := by
+  rw [pointParameterMap_post, SSet.yonedaEquiv_comp]
+
 end SerrePositivity.KST.SConstruction
