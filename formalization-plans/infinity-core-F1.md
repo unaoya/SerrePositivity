@@ -7,6 +7,7 @@
 ### 現在地
 
 - F1a〜F1c の fibration・transport・coherent nerve の基盤を提供済み。F1d は未完了。実際の分類写像は、その pinchedHomMap の同値性だけを前提に F0 で同値と結論する定理まで構成済み。
+- F1-2 に着手。`PresheafInfinity C = Fun(ULift C.op, SpaceInfinity)`、quasicategory 性、制限・評価・定値前層、底の同値による制限同値を構成済み。各前層の小さい right unstraightening は元の底上の right fibration で、反転と底変換の射影が厳密に可換。`rightFibrationSlicePointEvaluate` は任意の right fibration への表現可能な相対射を恒等点で評価する自明 Kan fibration。後合成への厳密な自然性と、二つの表現可能 right fibrations 間の相対 Hom から元の pinchedHom への自明 Kan 比較も証明済み。Yoneda ∞ 関手への束ねと前層 ∞ 圏内の充満忠実性は未証明。
 - left fibrations と strict transport の像の coherent nerve の同値、strict Kan 図式と有限鎖の nerve 上の coherent 図式の復元は関手同型まで構成済み。
 - weighted nerve の豊穣な標準単位は各成分で単射かつ同値。単位に沿う strict な比較の制限は
   trivial Kan fibration、延長空間は可縮。strict transport の像で同値な厳密な左逆も存在する。
@@ -51,14 +52,14 @@
    Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
 3. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
    Kerodon Theorem 5.6.0.2、§5.5。80〜240時間以上。
-4. F1h：twisted arrow、Hom 関手、前層、Yoneda の充満忠実性。
+4. F1-2：前層 ∞ 圏と right fibration 版 Yoneda 評価は構成済み。表現可能対象の族を実際の Yoneda ∞ 関手へ束ね、前層 ∞ 圏内の写像空間作用と照合して充満忠実性を証明する。twisted arrow・Hom 関手は α2b と分担する。
    Kerodon §§8.1〜8.3。40〜160時間。Kan 拡張は α2b の成果を使用可能。
 5. F1i：通常の圏の nerve 上で Grothendieck 構成と Yoneda を回収する。
    Kerodon §§5.6、8.3 の通常圏への特殊化。8〜32時間。
 
 ### 主要宣言（名前のみ）
 
-- `IsCartesianEdge`、`IsCocartesianEdge`、`SpaceInfinity`、`CatInfinity`
+- `IsCartesianEdge`、`IsCocartesianEdge`、`SpaceInfinity`、`CatInfinity`、`PresheafInfinity`、`rightFibrationYonedaEquivalence`、`rightFibrationRepresentableMappingComparison_isQCatEquivalence`
 - `leftStraighteningCoherentMap`、`smallLeftUnstraighteningObject`
 - `leftStrictTransportInfinityEquivalence`、`leftUnstraighteningMappingSpaceMap`
 - `weightedNerveStraighteningCoherentUnitIso`、`weightedNerveStraighteningCoherentFamilyUnitIso`
@@ -73,14 +74,14 @@
 
 ### 依存と提供
 
-- Core、Coherent/Quasicategory、Stable/SliceOpposite・IdentityCocone、HomotopyLimits、KST/Spectra/FibrationTower*、F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite・Localization・HomotopyWhiskering・RestrictedPrecomposition・FullSubcomplexFunctorFaithful・KanEquivalenceLifting・KanRelativeInternalHomLifting・IntervalFamilyPathParameters・KanInitialSectionLifting は読み取り専用。
+- Core、Coherent/Quasicategory、Stable/SliceOpposite・IdentityCocone、HomotopyLimits、KST/Spectra/FibrationTower*、F1B/FullSubcomplexMapping・SSetPullbackAdjoint・QuillenASliceOpposite・Localization・HomotopyWhiskering・RestrictedPrecomposition・FullSubcomplexFunctorFaithful・KanEquivalenceLifting・KanRelativeInternalHomLifting・RightAnodyneTensor・KanTerminalPointAnodyne・KanSliceIdentityTerminal・CofinalOppositeFibration・IntervalFamilyPathParameters・KanInitialSectionLifting は読み取り専用。
 - 提供界面は上記の fibration・transport、𝒮・Cat_∞、strict transport の比較。
   𝒮・Cat_∞ の極限・余極限は主張しない。F1e〜F1g は α2b/F1B の担当。
 - 再開時は F1/README.md の原典照合と方針を維持し、他レーンのファイルは編集しない。
 
 ### 未コミット
 
-- F1/、F1.lean、監査スクリプト、計画は所有ファイルのみ指定して保存する。係数反転・全 Hom の区間比較・実際の分類写像の判定は保存済み。双対後の左端と native な係数反転の所有2モジュールも集約・監査へ追加して検証済み。この保存単位のほかに未コミット実装なし。他レーンの変更は保存・巻き戻しを行わない。
+- F1/、F1.lean、監査スクリプト、計画は所有ファイルのみ指定して保存する。係数反転・全 Hom の区間比較・実際の分類写像の判定は保存済み。前層・制限同値・right unstraightening・相対制限の fiber・right fibration 版 Yoneda・その自然性の所有6モジュールと集約・監査を保存する。既存の left anodyne な相対制限は同じ fiber の共通証明を呼ぶ形に整理した。今回の対象ビルドは 2416 jobs 成功、対象 import 閉包の公理監査は 1703 宣言で標準三公理のみ。F1 全体の再ビルドは別途継続中で、その完了は未主張。共有されるモジュールは通る状態を早めに保存する。この保存単位のほかに未コミット実装なし。他レーンの変更は保存・巻き戻しを行わない。
 
 ### 既知の問題
 
@@ -97,7 +98,7 @@
 
 ### 次の一手
 
-F0 の充満忠実・本質的全射の判定を監査したが、現状では F1-1 を結論できない。c1 の `leftUnstraighteningMappingSpaceMap_isQCatEquivalence` は各対象対の区間変換空間から相対関手空間への比較の同値であり、全 coherent 図式に作用する一つの unstraightening の ∞ 関手とその `pinchedHomMap` との照合は未構成。一方、08:05 の成果に対応する `leftStraighteningInfinityMap_isEssentiallySurjective` は逆向きの実際の straightening 写像 S の本質的全射性であり、c1 とそのまま同じ関手の二仮定にはならない。既存の S の `pinchedHomMap` の同値性だけから同値を結論する `leftStraighteningInfinityMap_isQCatEquivalence_of_pinchedHomMap` と必要十分条件を構成済み。係数反転 Φ と共通パラメーター q の右端は元の反転豊穣 Hom 作用に厳密に一致し、`kanDiagramOppositeHomIntervalIso` は native な左区間族と既存の右区間族を全 Hom 上で結ぶ。`oppositeUnstraighteningHomRight_nativeIso` は同じ実際の unstraightening 作用へ後合成した比較。双対後の左端の厳密な式 `edgewiseDuality_left` と `kanDiagramOppositeLeftHomInterval_eq_native` により、左区間族も weighted 作用と同じ元の Hom の右端から表せる。native な係数反転の各成分は、元の内部 Hom の二重反転と反転同型の合成に一致する。次はこの左区間族に沿う共通 weighted 始域の pointed prism を、元の共通 cone 比較を始点・元の weighted Hom 作用後の標的比較を終点として構成する。完成した区間同型と `unstraighteningSourceFamilyComparisonIso` を合成し、`strictKanCommonWeightedDescendIso` で元の全相対 Hom 上へ戻す。その自然性四角形を共同実現と初頂点局所化で実際の S の `pinchedHomMap` に接続し、同じ S の充満忠実性を証明する。この経路では明示的な単位・余単位と三角恒等式を先行条件にせず、同値の証明後の任意の追加結果とする。strict transport の像への同値と一点上の分類同値は一般の底の同値を代替しない。また、この空間値版が閉じても F1-1b3 の essentially small な fiber への一般化と F1-1d の Cat_∞ 値版は別に残るため、F1-1 全体を完了とは記さない。
+F0 の充満忠実・本質的全射の判定を監査したが、現状では F1-1 を結論できない。c1 の `leftUnstraighteningMappingSpaceMap_isQCatEquivalence` は各対象対の区間変換空間から相対関手空間への比較の同値であり、全 coherent 図式に作用する一つの unstraightening の ∞ 関手とその `pinchedHomMap` との照合は未構成。一方、08:05 の成果に対応する `leftStraighteningInfinityMap_isEssentiallySurjective` は逆向きの実際の straightening 写像 S の本質的全射性であり、c1 とそのまま同じ関手の二仮定にはならない。既存の S の `pinchedHomMap` の同値性だけから同値を結論する `leftStraighteningInfinityMap_isQCatEquivalence_of_pinchedHomMap` と必要十分条件を構成済み。係数反転 Φ と共通パラメーター q の右端は元の反転豊穣 Hom 作用に厳密に一致し、`kanDiagramOppositeHomIntervalIso` は native な左区間族と既存の右区間族を全 Hom 上で結ぶ。`oppositeUnstraighteningHomRight_nativeIso` は同じ実際の unstraightening 作用へ後合成した比較。双対後の左端の厳密な式 `edgewiseDuality_left` と `kanDiagramOppositeLeftHomInterval_eq_native` により、左区間族も weighted 作用と同じ元の Hom の右端から表せる。native な係数反転の各成分は、元の内部 Hom の二重反転と反転同型の合成に一致する。次はこの左区間族に沿う共通 weighted 始域の pointed prism を、元の共通 cone 比較を始点・元の weighted Hom 作用後の標的比較を終点として構成する。完成した区間同型と `unstraighteningSourceFamilyComparisonIso` を合成し、`strictKanCommonWeightedDescendIso` で元の全相対 Hom 上へ戻す。その自然性四角形を共同実現と初頂点局所化で実際の S の `pinchedHomMap` に接続し、同じ S の充満忠実性を証明する。この経路では明示的な単位・余単位と三角恒等式を先行条件にせず、同値の証明後の任意の追加結果とする。strict transport の像への同値と一点上の分類同値は一般の底の同値を代替しない。また、この空間値版が閉じても F1-1b3 の essentially small な fiber への一般化と F1-1d の Cat_∞ 値版は別に残るため、F1-1 全体を完了とは記さない。F1-2 は分類同値に依存しない前層の定義と right fibration 版 Yoneda 評価まで進めた。次は表現可能 right fibrations の全対象・全高次の族を一つの ∞ 関手へ束ね、既存の評価同値が実際の Yoneda 写像の pinchedHomMap を回収することを照合する。独立な写像空間比較だけを Yoneda の充満忠実性とは数えない。
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md)（レーン α）の成果を読み取り専用で使う。
 
 ## 0. 目標と範囲
