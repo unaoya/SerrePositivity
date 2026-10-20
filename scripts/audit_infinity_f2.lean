@@ -1,6 +1,18 @@
 import SerrePositivity.InfinityCategories.F2
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtensionComparison_restrict
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtensionRestriction_long
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtension_initial
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtensionVertex
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationPointedTriangle_long
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionRestriction_vertex_value
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorBaseChangeInverse_overPre
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorBaseChangeInverse_vertexIso_overPre
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorPre_transport
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionPullbackEndpoint_restrict
+#check @SerrePositivity.InfinityCategories.F2.prismExtensionPullbackComparison_restrict
+
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
 方針：宣言元モジュールを判別し、各宣言の公理を再帰的に収集する。
