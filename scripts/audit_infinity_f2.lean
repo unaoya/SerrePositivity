@@ -698,3 +698,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.filteredIntervalPullbackKanIso
 #check @SerrePositivity.InfinityCategories.F2.filteredIntervalPullbackComparisonEdge_isInvertible
 #check @SerrePositivity.InfinityCategories.F2.filteredIntervalPullbackExchange
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_transport_to_cocone_fiber
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_map_homotopy
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_fiber_detection_unreplaced
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalKan
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramValueToTotalKan
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredTotalKan_finite_value_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredTotalKan_isContractibleKan
