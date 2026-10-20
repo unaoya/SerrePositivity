@@ -1508,3 +1508,7 @@ public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornCandidateFi
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornLift
 
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveInnerFibration
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveEdgeCoefficient
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianCriterion

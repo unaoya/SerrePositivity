@@ -77,11 +77,11 @@
 
 - N が読む指定2ファイルと集約は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd` に保存済み。
 - 一般の小さい quasicategory 上の空間値分類同値は `e987f35af` に保存済み。
-- right fibration と前層の分類は `56dd08ad4` に保存済み。
-- essentially small Kan fiber の空間値相対延長は `bf56a0416` に保存済み。
+- 前層の分類は `56dd08ad4`、essentially small Kan fiber の相対延長は `bf56a0416` に保存済み。
 - cocartesian fibration の ∞ 圏と通常 nerve 上の Cat∞ 値図式は `733a24a2b` に保存済み。
 - 全相対作用と通常 nerve 上の coherent 分類写像は `87acb9df5` に保存済み。
-- 係数充填から相対ホーン充填への一般化と、quasicategory 値 weighted nerve の inner fibration 性を追加。
+- 係数充填の一般化と quasicategory 値 weighted nerve の inner fibration 性は `24a9eb957`。
+- 可逆な最後の係数と標準水平辺の cocartesian 性を証明。F1 全体4490 jobs・監査10275宣言が成功。
 
 ### 既知の問題
 
@@ -96,10 +96,9 @@
 Cat∞ 値版は、通常圏の nerve 上の実際の全 fibration の分類写像と、既存の図式全体との一致まで。
 次は Cat∞ 値 unstraightening の全空間。既存の `weightedNerve` は任意の SSet 値図式で定義済み。
 係数が Kan でなくても、指定した係数ホーンの充填から全空間の充填を構成できる。
-inner fibration 性は証明済み。次は最後の係数が可逆な辺と標準水平辺の cocartesian 性。
-続いて F1B の一般の scaffold 比較で復元する。
+inner fibration 性と、最後の係数が可逆な辺・標準水平辺の cocartesian 性は証明済み。
+次は元の射影の cocartesian fibration 性を完成し、F1B の一般の scaffold 比較で復元する。
 同じ主写像の充満忠実性・本質的全射性と、一般の底への帰着は別に残る。
-Cat∞ の通常の coslice は left fibration しか与えず、一般の分類の代用にはしない。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 
