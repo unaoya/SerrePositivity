@@ -33,6 +33,7 @@
 - 任意標的の実屋根全空間から固定 Hom への一つの実評価と、元の屋根から評価の恒等 fiber 包含への実ホモトピーを構成。終対象への底の全錐と全時刻の射影も保持する。Kan 標的への前合成を任意ホモトピーで比較し、`dgInvertingHomFamilyEvaluation_nonempty` はこの同じ全体評価を共有して、任意有限商 Hom 図式の実屋根表示・実比較ホモトピー・全降下選択空間上の一つの評価関手同型を供給する。
 - 実 slice prism の全三境界をパラメータ関手圏へ移し、同じ共通対角を持つ四合成関係を証明。実閉辺の定数族を定値関手への像に同定し、反転条件から関手圏内の分母の可逆性を導いた。`dgInvertingFiniteRoofComposition_nonempty` は任意の有限二屋根図式と任意の quasicategory 標的への反転関手に、入力への二輸送・共通細分・四実 prism・三実 pinched Hom 評価族・関手圏内の実合成三角形を供給する。任意の pinched Hom 族と定値関手間の射を、実ホモトピーまで照合済み。任意パラメータへの共通細分の制限は二輸送と Ore 比較の全時刻・合成分母・合成分子・実合成候補を厳密に保持する。共有全体評価との比較と全関手への組み立ては未完。
 - 任意の K・quasicategory X に対し、`Fun(K, X_/z)` から `Fun(K,X)_/const z` への実比較同値を、終対象への全切断と底への厳密な可換性付きで構成。普遍 slice 評価の実ホモトピー・恒等錐上の全時刻固定・全後合成の各成分を照合した。`roofFunctorSliceRepresentation_pinched_vertex_arrow` は、どの全切断を選んでも実 pinched Hom 族が元の同じ関手圏の射を表すことを証明する。評価方程式から元の実屋根内の族比較への復元と全関手への組み立ては未完。
+- 任意の評価方程式から、指定分母の像を全時刻の底とする実 slice 比較を回収し、始点補正の実三角形を保持した。`dgInvertingRoofFamilyRealization_nonempty` は、元の閉分母から恒等分母への実細分辺と組にして、任意パラメータの実屋根内の比較を構成する。`dgPresentedFamilyEvaluationIso_nonempty` は表示の輸送も含め、指定した同じ実評価族を全降下選択空間上の商 Hom 作用族と一つの関手同型で比較する。商の実合成との照合と全関手への組み立ては未完。
 - 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofHomotopyFillers.lean`・`Derived/RoofCompatibleTransportComposite.lean`・`Derived/DGActualRoofFiberReduction.lean`・`Derived/DGCoefficientFinitePairs.lean`・`Derived/DGActualRoofFinitePairs.lean`・`Derived/DGActualRoofWeakEquivalence.lean`。
 
 ### 残り（依存順、時間は推定）
@@ -49,17 +50,12 @@
 - `dgModuleNerve_isStable`・`dgRoofCorrespondenceMap`・`dgRoofCorrespondenceFiberIso`・`dgQuotientRoofCorrespondenceProjection_leftFibration`。
 - `dgQuotientFixedHomRoofMap_isRightCofinal`・`dgQuotientFixedHomRoofMap_isWeakHomotopyEquivalence`・`dgRoofCorrespondenceMap_piZero_surjective`。
 - `dgGeneralLastHornTopResidual_differential`・`dgGeneralLastHornConeResidual_closed`・`dgGeneralLastHornSolution_nonempty_iff_coneResidual_boundary`。
-- `DGGeneralLastHornResidualRefinement.solution`・`dgGeneralLastHornFinite_exists_sourceRefinement_fillers`・`dgVerdierBoundaryFinite_exists_refinedSimplexes`。
-- `dgVerdierSimplexInitialRefinement_pullback_initial`・`dgVerdierSimplexInitialRefinement_congr`・`dgVerdierBoundaryRefinedSimplex_commonFace_eq`。
 - `dgVerdierTruncatedConeSuccessor_nonempty`・`dgVerdierTruncatedConeData_nonempty`。
 - `dgVerdierFiniteJoinCone_nonempty`・`finiteSimplicialOpposite`・`dgVerdierOver_op_isFilteredInfinity`。
-- `roofRelativeFiberPrism_nonempty`・`RoofRelativeFiberPrism.fiber_square`・`RoofRelativeFiberPrism.homotopy_boundary`。
 - `dgActualRoofFiberReduction_nonempty`・`dgActualRoofClosedCoefficient_square`・`dgActualRoofReducedFiller_exists`。
-- `dgActualRoofClosedSourceCoefficient_inclusion`・`dgActualRoofClosedTargetCoefficient_inclusion`・`dgActualRoofClosedTransport_boundary`。
 - `roofRelativeCompositionTriangle_exists`・`roofCompatibleTransportComposite_nonempty`・`RoofCompatibleTransportComposite.boundary`。
 - `RoofHomotopyRelativeFiller`・`dgActualRoofHomotopyRelativeFiller_nonempty`。
 - `dgQuotientFinite_exists_coefficientFillers`・`dgCoefficientSkeletalStep_nonempty`・`finiteRelativeSkeleton_exists_top`。
-- `DGSkeletalCellRefinement.skeletalComparison_cell`・`DGSkeletalQuotientExtension.homotopy_previous`。
 - `dgCoefficientSkeletalStage_nonempty`・`dgCoefficientFinitePairs_nonempty`・`dgClosedRoofFinitePairs_nonempty`・`dgActualRoofFinitePairs_nonempty`。
 - `HasFiniteHomotopyRelativeFillers.isLeftCofinal`・`isWeaklyContractible_of_finiteNullSpans`。
 - `dgRoofCorrespondenceMap_isLeftCofinal`・`dgRoofCorrespondenceMap_isWeakHomotopyEquivalence`・`dgRoofCorrespondenceMap_precompose_kan`。
@@ -79,22 +75,22 @@
 - Core・F1・F1B・F2・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded・KST は読み取り専用。
 - 提供：Stable の S1〜S6、D(S) の安定性、任意四角形の双カルテジアン判定、D3 の三角同値。
 - 編集対象：Stable/・Derived/、両集約と両監査、本計画。明示指示により Derived 計画の D7 状態も更新する。
-
+- **Sp から D への判定補題要求（2026-10-21、未提供）**：[HA Cor. 1.4.2.27](https://www.math.ias.edu/~lurie/papers/HA.pdf) の (3) ⇒ (1) を F3 の定義で使いたい。正確な要求は、`X : SSet.{u}`、`[Quasicategory X] [HasZeroVertex X] [HasFiniteLimits X]`、実関手 `s : X ⟶ loopDiagrams X`、`hs : s ≫ loopDiagramEvaluation X 1 1 = 𝟙 X`、`hΩ : IsQCatEquivalence (s ≫ loopDiagramEvaluation X 0 0)` から `IsStable X` を得る一般補題。s は実際の普遍 loop 四角形の全単体族であり、安定性を先取りする既存 loopFunctor の使用は避ける。有限余極限・cofiber の存在と任意 ZeroTriangle の fiber/cofiber 同値を結論として証明し、それらを追加仮定にしない。現存の isStable_of_finite_limits_colimits は有限余極限と全四角形の双カルテジアン判定も要求するので代用できない。Sp が自前で証明する場合は Spectra 配下に置き、Stable/ は編集せず後で D が取り込む。Sp への適用には有限極限の包装と実 loop 関手の同値性がなお必要で、要求の記載を証明済みとは数えない。
 
 ### 未コミット
 
-- 今回の所有ファイルだけを保存。他レーンの変更は取り込んでいない。自分の未コミットなし。
+- `RoofEndpointTransport.lean` と商関手自身の反転屋根の同定を検証中。ほかの所有ファイルは保存済み。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7791 jobs）。公理監査は Derived 10578 宣言／1159 モジュール、Stable 11693／1429。許容三公理のみ。今回の新規90モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7815 jobs）。公理監査は Derived 10683 宣言／1171 モジュール、Stable 11798／1441。許容三公理のみ。今回の新規102モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏での普遍性を続ける。次は任意標的の評価方程式を、底を全時刻で保持する実 slice・実屋根内の族ホモトピーへ戻す。終点固定の right fibration prism で一度始点係数を取り、`pinchedSliceHomotopyFamily_comp` と評価方程式から `pinchedFamilyHom_eq_iff_homotopy` で始点の fiber ホモトピーを得る。`homotopyCompositionOver_fixedLeft_exists` で二比較を貼り、同じ底を保つ。この実比較を `WeakRoofDescentFamilyEvaluation.lean` の全選択空間上の評価同型へ渡し、実三評価族の合成三角形と作用族を比較する。任意パラメータへの共通細分の制限は `DGFiniteRoofOrePrecomp.lean`、関手圏内の slice の実表示と pinched Hom 族の値の照合は `FunctorSlicePinchedValues.lean` まで完成。各対象対の可縮性だけで三対象の合成整合性を推論しない。合成・単位と全相対高次境界の整合性、実 ∞ 関手への組み立ては未完。
+- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏での普遍性を続ける。評価方程式から実屋根内の族比較を回収し、全降下選択空間への評価比較まで完成。次は商関手自身の反転屋根を実商屋根と両射影・固定 Hom 包含ごと同定する。商内の同じ実三評価族を実商 Hom の AW 合成と照合し、`DGInvertingFiniteRoofComposition` の三評価と全作用族を比較する。指定部分の全高次境界との整合性と実 ∞ 関手への組み立ては未完。各対象対の可縮性だけで三対象の合成整合性を推論しない。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。普遍性の後、平坦分解への移送、Verdier 列、β5、β4。全計画は未完。
 
