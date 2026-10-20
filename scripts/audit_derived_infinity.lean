@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation
+import SerrePositivity.InfinityCategories.Derived.HomotopyPostcomposition
+import SerrePositivity.InfinityCategories.Derived.FunctorSliceTerminal
+import SerrePositivity.InfinityCategories.Derived.FunctorSliceRepresentation
+import SerrePositivity.InfinityCategories.Derived.SliceEvaluationHomotopy
+import SerrePositivity.InfinityCategories.Derived.HomotopyPostcompositionEvaluation
+import SerrePositivity.InfinityCategories.Derived.ConstantHomotopyComponent
+import SerrePositivity.InfinityCategories.Derived.TerminalConeSectionEdges
+import SerrePositivity.InfinityCategories.Derived.FunctorSliceEvaluationComponents
+import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
+import SerrePositivity.InfinityCategories.Derived.FunctorSlicePinchedValues
 import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOrePrecomp
 import SerrePositivity.InfinityCategories.Derived.DGConstantFamilyInvertible
 import SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyEvaluation
@@ -2822,6 +2833,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGInvertingPinchedFamilyEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingFiniteRoofComposition,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOrePrecomp,
+    `SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.FunctorSliceTerminal,
+    `SerrePositivity.InfinityCategories.Derived.FunctorSliceRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.SliceEvaluationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyPostcompositionEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.ConstantHomotopyComponent,
+    `SerrePositivity.InfinityCategories.Derived.TerminalConeSectionEdges,
+    `SerrePositivity.InfinityCategories.Derived.FunctorSliceEvaluationComponents,
+    `SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched,
+    `SerrePositivity.InfinityCategories.Derived.FunctorSlicePinchedValues,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositionPrisms,
     `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyPrism,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteOreCompositionHomotopy,
