@@ -3864,6 +3864,44 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.ForwardPath.terminalBlockComparison_weakEquivalence,
       `SerrePositivity.EInfinity.Hammock.ForwardPath.initialBlockComparison_weakEquivalence]
 
+@[noinline] private def e2RequiredBatch42 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackObj,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackObj_last,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackObj_castSucc,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackObjIso,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackObjIso_last,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackPath,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pullbackNormalizationIso,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackProjection,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackProjection_app,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackProjection_last,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutObj,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutObj_zero,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutObj_succ,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutObjIso,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutObjIso_zero,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutPath,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.pushoutNormalizationIso,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutInclusion,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutInclusion_app,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutInclusion_zero,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackFunctor,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackFunctorIso,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackComparison,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackComparison_app,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackComparison_last,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackProjection_naturality,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutFunctor,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutFunctorIso,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutComparison,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutComparison_app,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutComparison_zero,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutInclusion_naturality,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackProjection_trivialFibration,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutInclusion_trivialCofibration,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPullbackComparison_weakEquivalence,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.normalizedPushoutComparison_weakEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3894,7 +3932,7 @@ run_cmd do
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
-      e2RequiredBatch40, e2RequiredBatch41] do
+      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -9158,3 +9196,50 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ)
       ∀ i, trivialCofibrations (BarrattEccles.operad A).Algebra ((pushoutInclusion s).app i) := by
   let := BarrattEccles.modelCategory A
   exact pushoutInclusion_trivialCofibration s
+
+-- 正規化した終点成分は指定置換射そのものを端点の等式で移す。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n : ℕ} (s : TerminalReplacement C n) :
+    (normalizedPullbackProjection s).app (Fin.last n) =
+      eqToHom (normalizedPullbackObj_last s) ≫ s.hom := normalizedPullbackProjection_last s
+
+-- 動く始点の比較も元の指定対象間の射に厳密に一致する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n : ℕ} {s t : InitialReplacement C n} (m : s ⟶ t) :
+    (normalizedPushoutComparison m).app 0 = m.right := normalizedPushoutComparison_zero m
+
+-- 正規化後の全縦射の自然性は、元の射影に対して成り立つ。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n : ℕ} {s t : TerminalReplacement C n} (m : s ⟶ t) :
+    normalizedPullbackComparison m ≫ normalizedPullbackProjection t =
+      normalizedPullbackProjection s ≫ m.right := normalizedPullbackProjection_naturality m
+
+-- 長さ零でも正規化した区間の包含は同じ置換射である。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (s : InitialReplacement C 0) :
+    (normalizedPushoutInclusion s).app 0 = s.hom := normalizedPushoutInclusion_zero s
+
+-- 動く端点の全縦弱同値を正規化後も保持。proper 性・cofibrancy は不要。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n : ℕ} {s t : TerminalReplacement C n} (m : s ⟶ t)
+    (hs : trivialFibrations C s.hom) (ht : trivialFibrations C t.hom)
+    (hm : ∀ i, weakEquivalences C (m.right.app i)) :
+    ∀ i, weakEquivalences C ((normalizedPullbackComparison m).app i) :=
+  normalizedPullbackComparison_weakEquivalence m hs ht hm
+
+-- 任意可換環の実際の E 代数への適用。モデル構造は既存の構成を局所的に代入。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+    SerrePositivity.EInfinity.Hammock.ForwardPath in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ)
+    (s : InitialReplacement (BarrattEccles.operad A).Algebra n) :
+    let := BarrattEccles.modelCategory A
+    trivialCofibrations (BarrattEccles.operad A).Algebra s.hom →
+      ∀ i, trivialCofibrations (BarrattEccles.operad A).Algebra
+        ((normalizedPushoutInclusion s).app i) := by
+  let := BarrattEccles.modelCategory A
+  exact normalizedPushoutInclusion_trivialCofibration s

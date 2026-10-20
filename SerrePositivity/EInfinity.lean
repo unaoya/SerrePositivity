@@ -944,3 +944,7 @@ public import SerrePositivity.EInfinity.Hammock.ForwardPathPushoutNaturality
 public import SerrePositivity.EInfinity.Hammock.ForwardPathEndpoints
 public import SerrePositivity.EInfinity.Hammock.ForwardPathModelPropagation
 public import SerrePositivity.EInfinity.Hammock.ForwardBlockReplacement
+public import SerrePositivity.EInfinity.Hammock.ForwardPathNormalizePullback
+public import SerrePositivity.EInfinity.Hammock.ForwardPathNormalizePushout
+public import SerrePositivity.EInfinity.Hammock.ForwardPathNormalizeNaturality
+public import SerrePositivity.EInfinity.Hammock.ForwardPathNormalizeModel

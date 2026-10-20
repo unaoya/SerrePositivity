@@ -1304,6 +1304,13 @@ backward 一列ずつを両端に付け、`paddingInclusionNat` は元の中央�
 元の全頂点の自明性と全縦弱同値の保存。モデル圏の left/right proper 性は不要。
 `terminalBlockInput`・`initialBlockInput` と各 `Comparison` は元の zigzag の
 同じ forward 区間・元の端点・全縦射への代入。区間の等式の移送も保持する。
+`normalizedPullbackPath`・`normalizedPushoutPath` は、元の終点・始点の同型を
+標準の `Functor.copyObj` で移し、指定対象を端点に持つ射列へ正規化する。
+`normalizedPullbackFunctor`・`normalizedPushoutFunctor` は動く端点も含めて関手的。
+正規化後の射影・包含は元の置換射を端点成分で回収し、全比較に自然である。
+`normalizedPullbackProjection_trivialFibration`・
+`normalizedPushoutInclusion_trivialCofibration` と各 `Comparison_weakEquivalence` は
+正規化後も全頂点の自明性・全縦弱同値を保持する。長さ零も含む。
 左右のブロックの貼り合わせ、成分と三列の包含の弱同値性、DK Hom の高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
