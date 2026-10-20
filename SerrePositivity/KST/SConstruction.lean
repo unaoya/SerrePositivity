@@ -959,4 +959,13 @@ public import SerrePositivity.KST.SConstruction.MonicKPrismCanonicalDirectCorrec
 public import SerrePositivity.KST.SConstruction.TracedBFDirectCorrectionNormalization
 public import SerrePositivity.KST.SConstruction.TargetFixedBoundaryCospan
 public import SerrePositivity.KST.SConstruction.TracedBFTripleDirectCorrectionComparison
+public import SerrePositivity.KST.SConstruction.TracedCompositePointTraces
+public import SerrePositivity.KST.SConstruction.TracedCompositePointData
+public import SerrePositivity.KST.SConstruction.EdgeFamilyCylinders
+public import SerrePositivity.KST.SConstruction.PointedCorrectionInterchange
+public import SerrePositivity.KST.SConstruction.CartesianInterchangeDiamond
+public import SerrePositivity.KST.SConstruction.TracedBFInterchangeInputs
+public import SerrePositivity.KST.SConstruction.TracedBFTripleInterchangeCells
+public import SerrePositivity.KST.SConstruction.TracedBFTripleInterchangeDiamond
+public import SerrePositivity.KST.SConstruction.TracedBFTripleInterchangePointSquare
 /-! # ∞-S• 構成と連結 K 理論 -/
