@@ -11338,3 +11338,21 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfRightDerived_ordinaryComparison
 #print axioms quillenCfRightDerived_ordinaryComparison
+
+#check @cocartesianPrism_targetFunctorIso
+#print axioms cocartesianPrism_targetFunctorIso
+
+#check @prism_base_constant_of_endpoints
+#print axioms prism_base_constant_of_endpoints
+
+#check @endpointFunctorIso_reflection
+#print axioms endpointFunctorIso_reflection
+
+#check @quillenCfLeftOrdinaryPrism_exists
+#print axioms quillenCfLeftOrdinaryPrism_exists
+
+#check @quillenCfLeftDerived_ordinaryComparison
+#print axioms quillenCfLeftDerived_ordinaryComparison
+
+#check @quillenCfDerivedAdjunctionWithComparisons_exists
+#print axioms quillenCfDerivedAdjunctionWithComparisons_exists
