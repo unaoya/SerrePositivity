@@ -1480,3 +1480,25 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianFibrationMappingS
 public import SerrePositivity.InfinityCategories.F1.QCatDiagramCoherentNerve
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportDiagram
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsAction
+
+public import SerrePositivity.InfinityCategories.F1.CoreEnrichedFunctor
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsEnrichedEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsMixedCoreHom
+
+public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianSectionsEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianSectionsReindex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStraighteningCoherent
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsMixedUnit
+
+public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianSectionsConstant
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStraighteningVertices

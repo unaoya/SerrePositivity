@@ -7,15 +7,16 @@
 ### 現在地
 
 - F1a〜F1c の基盤は提供済み。F1d の Cat∞ 値 cocartesian 分類は未完了。
-- 元の cocartesian 辺を保つ相対関手 ∞ 圏の core を Hom とする `CocartesianFibrationInfinity B`
-  を構成済み。通常の射との対応・豊穣単位・合成・全 Hom の Kan 性と右写像空間比較も証明済み。
-- 通常圏の nerve 上では、F1B の一般の cocartesian section の strict transport を QCat 値に束ね、
-  同じ Cat∞ 値の coherent 図式を構成済み。各頂点の値は元の fiber と恒等射評価で同値。
+- `CocartesianFibrationInfinity B` の Hom は元の cocartesian な相対関手 ∞ 圏の core。
+  通常の射との対応・豊穣単位・合成・全 Hom の Kan 性と右写像空間比較も証明済み。
+- 通常圏の nerve 上の実際の全 fibration の分類写像 `cocartesianStraighteningCoherentMap` を構成済み。
+  元の全相対 Hom の作用を section へ制限し、core の混合作用・対角評価で全対象と全高次を束ねた。
+  同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
+  各値は元の fiber と恒等射評価で同値。写像の充満忠実性と本質的全射性はまだ証明していない。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
   weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
-- c1 の実際の unstraightening の写像空間比較は、区間・pinched・宇宙縮小後とも同値。
-  通常の圏の nerve 上の元の S は充満忠実かつ本質的全射で、F0 により分類同値を閉じた。
+- c1 の実際の空間値 unstraightening の写像空間比較は、区間・pinched・宇宙縮小後とも同値。
 - **F1-1c2 の空間値版は完了**：一般の小さい quasicategory B 上の構成済みの同じ S は
   `leftStraighteningInfinityMap_isFullyFaithful` により充満忠実。既存の本質的全射性と F0 を合わせ、
   `leftStraighteningInfinityMap_isQCatEquivalence` で分類同値を閉じた。単位・余単位と三角恒等式は任意。
@@ -25,8 +26,7 @@
   元の全相対 Hom を Hom とする `RightFibrationInfinity B` と `PresheafInfinity B` の実際の分類同値
   `rightStraighteningInfinityEquivalence` を、小さい quasicategory B 上で構成した。逆の ∞ 関手も同値で、
   その F での値は既存の `smallRightUnstraighteningProjection F` と頂点の同型で一致する。
-- twisted arrow の両端射影は実際の left fibration。固定領域の inner anodyne 性から全ホーンを充填済み。
-  この同じ射影の分類図式を curry して `yonedaInfinityMap` を構成し、対象前層 rep(y) も同定済み。
+- twisted arrow の両端射影の left fibration 性と、同じ射影による `yonedaInfinityMap` を構成済み。
 - 表現可能射影と rep(y) の right unstraightening は、両端固定の coslice 比較で底上の同値を構成済み。
 - 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
   を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
@@ -62,7 +62,8 @@
 - `yonedaPresheafEvaluation_isQCatEquivalence`、`representablePresheafValueEquivalence`
 - `yonedaInfinityMap_isFullyFaithful`、`yonedaInfinityMap_pinchedHomMap_isQCatEquivalence`
 - `CocartesianFibrationInfinity`、`cocartesianFibrationInfinityMappingEquivalence`
-- `cocartesianStrictTransportCoherentDiagram`、`cocartesianStrictTransportCoherentDiagramFiberEquivalence`
+- `cocartesianStraighteningCoherentMap`、`cocartesianStraighteningCoherentMap_vertex`
+- `cocartesianSectionsCoreEnrichedEvaluation`、`cocartesianSectionsMixedCoreHom_comp`
 
 ### 依存と提供
 
@@ -78,8 +79,9 @@
 - 一般の小さい quasicategory 上の空間値分類同値は `e987f35af` に保存済み。
 - right fibration と前層の分類は `56dd08ad4` に保存済み。
 - essentially small Kan fiber の空間値相対延長は `bf56a0416` に保存済み。
-- cocartesian fibration の ∞ 圏と通常 nerve 上の Cat∞ 値図式の所有8モジュール・集約・監査が保存単位。
-  F1 全体ビルド4474 jobs、公理監査10206宣言が成功（標準3公理のみ）。
+- cocartesian fibration の ∞ 圏と通常 nerve 上の Cat∞ 値図式は `733a24a2b` に保存済み。
+- 元の section への全相対作用と、通常 nerve 上の全 fibration の coherent 分類写像の11モジュールが保存単位。
+  F1 全体ビルド4485 jobs、公理監査10262宣言が成功（標準3公理のみ）。
 
 ### 既知の問題
 
@@ -91,14 +93,12 @@
 
 ### 次の一手
 
-空間値の F1-1c2、essentially small Kan fiber の相対延長、F1-2 の分類は閉じた。
-Cat∞ 値版は `CocartesianFibrationInfinity` と通常 nerve 上の strict transport の coherent 実現まで。
-次は元の cocartesian 関手の全相対 Hom を、F1B の `kanCocartesianSections` へ後合成で作用させ、
-section の評価を QCat 値の豊穣関手へ束ねる。core を取る前の相対合成から作用を制限すれば、
-単位・合成と全パラメーターの自然性を同じ射の等式として回収できる。
-その後、対象付き quasicategory の普遍的 cocartesian fibration と再構成比較が必要。
+Cat∞ 値版は、通常圏の nerve 上の実際の全 fibration の分類写像と、既存の図式全体との一致まで。
+次は Cat∞ 値 unstraightening の全空間。既存の `weightedNerve` は任意の SSet 値図式で定義済み。
+`WeightedNerveLeftFibration.lean` とそのホーン係数の証明を読み、値が quasicategory の場合の
+inner fibration 性と標準水平辺の cocartesian 性を証明する。F1B の一般の scaffold 比較で復元する。
+同じ主写像の充満忠実性・本質的全射性と、一般の底への帰着は別に残る。
 Cat∞ の通常の coslice は left fibration しか与えず、一般の分類の代用にはしない。
-通常圏 nerve 上の古典的な回収も残る。明示的な三角恒等式は任意のまま。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 
