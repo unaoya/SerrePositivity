@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.PinchedHomComposition
+import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositeDiagram
 import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofPresentation
 import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOreData
 import SerrePositivity.InfinityCategories.Derived.HomotopyEndpointPair
@@ -3321,6 +3323,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionEquivalence,
     `SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionLaws,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofPresentation,
+    `SerrePositivity.InfinityCategories.Derived.PinchedHomComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositeDiagram,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOreData,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteOreRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingHomRoofEvaluation,

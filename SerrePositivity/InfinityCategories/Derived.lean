@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.PinchedHomComposition
+public import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositeDiagram
 public import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofPresentation
 public import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOreData
 public import SerrePositivity.InfinityCategories.Derived.HomotopyEndpointPair
