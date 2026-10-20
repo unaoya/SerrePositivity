@@ -873,3 +873,9 @@ public import SerrePositivity.EInfinity.Hammock.WordFactorization
 public import SerrePositivity.EInfinity.Hammock.NormalFormTransition
 public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 public import SerrePositivity.EInfinity.BarrattEccles.HammockReducedColimit
+public import SerrePositivity.EInfinity.Hammock.WordLength
+public import SerrePositivity.EInfinity.Hammock.LengthStage
+public import SerrePositivity.EInfinity.Hammock.LengthDiagram
+public import SerrePositivity.EInfinity.Hammock.LengthColimit
+public import SerrePositivity.EInfinity.Hammock.LengthNaturality
+public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthFiltration

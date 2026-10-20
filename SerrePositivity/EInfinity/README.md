@@ -1197,7 +1197,19 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `rawAugmentation_colimitNormalization` は既存の元の raw 正規化を回収する。
 `BarrattEccles.algebraHammockNormalForm_transition`・`algebraHammockReducedColimitIso`・
 各 `_hom_fac`・`_inv`・`algebraHammockRawAugmentation_colimitNormalization` 等は
-任意の可換環上で完成。三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+任意の可換環上で完成。
+`Word.LengthBounded`・`lengthInclusion` は元の全射も保持する長さ制限の全部分圏。
+`lengthStage`・`lengthStageTransition` は元の制限図式の余極限と上限を増やす標準射。
+`lengthDiagram`・`lengthCocone_isColimit`・`lengthColimitIso` は、長さ段階を Nat に沿って
+余極限に取ると同じ元の全語の余極限になることを証明する。proper 性は不要。
+`lengthColimitIso_fac` は元の段階の標準射への一致。
+`lengthStageMap`・`lengthDiagramMap` と `lengthColimitIso_naturality` は、元の図式の
+自然変換に対する全段階の整合と、同じ元の `colim.map` そのものの回収。
+`BarrattEccles.algebraHammockLengthColimitIso`・`_word_fac` と
+`algebraHammockLengthReducedIso`・`_word_fac` は任意可換環上の実際の長さ濾過と
+元の全語・縮約 hammock の標準射への一致。
+段階の pushout、proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、
+既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

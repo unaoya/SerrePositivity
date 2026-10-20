@@ -3456,6 +3456,47 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReducedColimitIso_inv,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawAugmentation_colimitNormalization]
 
+@[noinline] private def e2RequiredBatch31 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.lengthProperty,
+      `SerrePositivity.EInfinity.Hammock.Word.LengthBounded,
+      `SerrePositivity.EInfinity.Hammock.Word.lengthInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.lengthBoundInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.lengthBoundInclusion_comp,
+      `SerrePositivity.EInfinity.Hammock.lengthStage,
+      `SerrePositivity.EInfinity.Hammock.lengthStageInclusion,
+      `SerrePositivity.EInfinity.Hammock.lengthStageInclusion_naturality,
+      `SerrePositivity.EInfinity.Hammock.lengthStageTransition,
+      `SerrePositivity.EInfinity.Hammock.lengthStageInclusion_transition,
+      `SerrePositivity.EInfinity.Hammock.lengthStageTransition_refl,
+      `SerrePositivity.EInfinity.Hammock.lengthStageTransition_comp,
+      `SerrePositivity.EInfinity.Hammock.lengthDiagram,
+      `SerrePositivity.EInfinity.Hammock.lengthStageToColimit,
+      `SerrePositivity.EInfinity.Hammock.lengthStageInclusion_toColimit,
+      `SerrePositivity.EInfinity.Hammock.lengthStageToColimit_transition,
+      `SerrePositivity.EInfinity.Hammock.lengthCocone,
+      `SerrePositivity.EInfinity.Hammock.lengthCocone_component,
+      `SerrePositivity.EInfinity.Hammock.lengthReconstructedCocone,
+      `SerrePositivity.EInfinity.Hammock.lengthCocone_isColimit,
+      `SerrePositivity.EInfinity.Hammock.lengthColimitIso,
+      `SerrePositivity.EInfinity.Hammock.lengthColimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.lengthStageMap,
+      `SerrePositivity.EInfinity.Hammock.lengthStageInclusion_map,
+      `SerrePositivity.EInfinity.Hammock.lengthStageMap_transition,
+      `SerrePositivity.EInfinity.Hammock.lengthDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.lengthStageToColimit_map,
+      `SerrePositivity.EInfinity.Hammock.lengthColimitIso_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthStage,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthStageInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthTransition,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthStageToColimit,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthStageInclusion_toColimit,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthColimitIso,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthColimitIso_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthColimitIso_word_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthReducedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthReducedIso_word_fac]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3483,7 +3524,7 @@ run_cmd do
       e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
-      e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30] do
+      e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8342,3 +8383,36 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
         BarrattEccles.algebraHammockColimitNormalization A X Y =
       BarrattEccles.algebraHammockNormalization A X Y :=
   BarrattEccles.algebraHammockRawAugmentation_colimitNormalization A X Y
+
+-- 任意の元の語の射を保持した長さ段階の標準射。単射だけに制限しない。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (F : Word ⥤ SSet.{e2ComplexLimitUniverse}) (n : ℕ) {a b : Word}
+    (ha : a.length ≤ n) (hb : b.length ≤ n) (f : a ⟶ b) :
+    F.map f ≫ lengthStageInclusion F n b hb = lengthStageInclusion F n a ha :=
+  lengthStageInclusion_naturality F n ha hb f
+
+-- 長さ濾過の同型は、元の余極限の比較射そのものを回収する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example {F G : Word ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G) :
+    colim.map (lengthDiagramMap η) ≫ (lengthColimitIso G).hom =
+      (lengthColimitIso F).hom ≫ colim.map η := lengthColimitIso_naturality η
+
+-- 任意の可換環上で、長さ濾過の元の標準射は同じ全語の標準射になる。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (n : ℕ) (a : Hammock.Word) (ha : a.length ≤ n) :
+    BarrattEccles.algebraHammockLengthStageInclusion A X Y n a ha ≫
+        colimit.ι (BarrattEccles.algebraHammockLengthDiagram A X Y) n ≫
+          (BarrattEccles.algebraHammockLengthColimitIso A X Y).hom =
+      BarrattEccles.algebraHammockGraphInclusion A a X Y :=
+  BarrattEccles.algebraHammockLengthColimitIso_word_fac A X Y n a ha
+
+-- 同じ長さ段階から縮約 hammock への同型は、元の正規化を回収する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (n : ℕ) (a : Hammock.Word) (ha : a.length ≤ n) :
+    BarrattEccles.algebraHammockLengthStageInclusion A X Y n a ha ≫
+        colimit.ι (BarrattEccles.algebraHammockLengthDiagram A X Y) n ≫
+          (BarrattEccles.algebraHammockLengthReducedIso A X Y).hom =
+      BarrattEccles.algebraHammockGraphNormalization A X Y a :=
+  BarrattEccles.algebraHammockLengthReducedIso_word_fac A X Y n a ha
