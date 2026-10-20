@@ -436,3 +436,11 @@ public import SerrePositivity.EInfinity.BarrattEccles.DiagramAcyclicity
 public import SerrePositivity.EInfinity.BarrattEccles.DiagramModel
 public import SerrePositivity.EInfinity.BarrattEccles.DiagramForget
 public import SerrePositivity.EInfinity.BarrattEccles.Products
+public import SerrePositivity.EInfinity.OppositeFactorization
+public import SerrePositivity.EInfinity.BarrattEccles.RightFrames
+public import SerrePositivity.EInfinity.BarrattEccles.Cotensor
+public import SerrePositivity.EInfinity.FrameRealizationLifting
+public import SerrePositivity.EInfinity.BarrattEccles.CotensorLifting
+public import SerrePositivity.EInfinity.BarrattEccles.CotensorCarrier
+public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensor
+public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorCarrier

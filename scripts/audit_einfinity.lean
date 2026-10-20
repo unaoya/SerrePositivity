@@ -1614,6 +1614,34 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.productFunctor_hasPointwiseRightDerivedFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.productDerivedIso,
       `SerrePositivity.EInfinity.BarrattEccles.productCarrierIso,
+      `SerrePositivity.EInfinity.OppositeFactorization.arrowUnop,
+      `SerrePositivity.EInfinity.OppositeFactorization.opposite,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrameFactorization,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrameFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrame,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrameComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrameComparison_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrame_cofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrame_homotopicallyConstant,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrame_map_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.cotensor,
+      `SerrePositivity.EInfinity.BarrattEccles.cotensorHomEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.cotensorSimplexIso,
+      `SerrePositivity.EInfinity.FrameRealizationLifting.map_monomorphism,
+      `SerrePositivity.EInfinity.FrameRealizationLifting.map_anodyne,
+      `SerrePositivity.EInfinity.BarrattEccles.cotensor_map_fibration,
+      `SerrePositivity.EInfinity.BarrattEccles.cotensor_map_trivialFibration,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierComplex_hasLimitsOfSize,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierCotensor,
+      `SerrePositivity.EInfinity.BarrattEccles.cotensorCarrierIso,
+      `SerrePositivity.EInfinity.BarrattEccles.cotensorCarrierIso_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrameDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.doubleOpWeights,
+      `SerrePositivity.EInfinity.BarrattEccles.weightedCotensor,
+      `SerrePositivity.EInfinity.BarrattEccles.weightedCotensorHomEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrameDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierWeightedCotensor,
+      `SerrePositivity.EInfinity.BarrattEccles.weightedCotensorCarrierIso,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4420,3 +4448,34 @@ example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G) :
   let Q := W.Q
   let L := (W.inverseImage U).Q
   exact (Diagram.localizedForgetComparison ℤ ℕ Q L).hom.naturality f
+
+
+-- どの境界制限も、元の E 代数の全整数次数で全射である。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (X : (BarrattEccles.operad ℤ).Algebra) (n : ℕ) (q : ℤ) :
+    Function.Surjective
+      ((((cotensor ℤ X).map (SSet.boundary n).ι.op).hom).f q) := by
+  have h := cotensor_map_fibration ℤ X (SSet.boundary n).ι inferInstance
+  exact (BarrattEccles.fibration_iff ℤ _).mp h q
+
+-- 全次元のホーン制限は、元の底の複体で擬同型となる。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (X : (BarrattEccles.operad ℤ).Algebra) (n : ℕ) (i : Fin (n + 2)) :
+    QuasiIso (((cotensor ℤ X).map (SSet.horn (n + 1) i).ι.op).hom) := by
+  exact (cotensor_map_trivialFibration ℤ X (SSet.horn (n + 1) i).ι
+    (SSet.anodyneExtensions.horn_ι i)).2
+
+-- 非離散な小図式の重み付き end への射は、全単体の成分で決まる。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (W : ℕ ⥤ SSet)
+    (Y : (BarrattEccles.operad ℤ).Algebra)
+    (f g : Y ⟶ (weightedCotensor ℤ ℕ F).obj (Opposite.op W))
+    (h : ∀ (k : ℕᵒᵖᵒᵖ) (n : SimplexCategoryᵒᵖ),
+      (((weightedCotensorHomEquiv ℤ ℕ F W Y) f).app k).app n =
+        (((weightedCotensorHomEquiv ℤ ℕ F W Y) g).app k).app n) : f = g := by
+  apply (weightedCotensorHomEquiv ℤ ℕ F W Y).injective
+  apply NatTrans.ext
+  funext k
+  apply NatTrans.ext
+  funext n
+  exact h k n

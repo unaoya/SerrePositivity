@@ -684,7 +684,15 @@ nullary を含む TR の部分合成保存は完了。
 `Diagram.localizedForget` は同じ複体図式の局所化への右導来忘却で、元の忘却との自然同型を持つ。
 `productFunctor_isRightQuillen` と `productDerivedIso` は空積を含む小積が右導来積を計算すること。
 `product_map_weakEquivalence` は任意の小積のホモトピー不変性、`productCarrierIso` は底の積との同型。
-非離散図式の一般 homotopy 極限の構成とその忘却後の導来比較は未完成。
+`rightFrameFamily` は具体モデルの関手的分解から、すべての E 代数に関手的な右 frame を作る。
+`cotensor` は任意の単体集合に対する実際の余テンソルで、`cotensorHomEquiv` が射の普遍性を与える。
+単射に沿う制限は fibration、anodyne 射に沿う制限は自明 fibration となる。
+`cotensorCarrierIso` は同じ frame の底の複体による計算との同型で、単体集合の射にも自然。
+`weightedCotensor` は任意の小図式と任意の単体的重みの右 frame の end を E 代数として構成する。
+`weightedCotensorHomEquiv` は全単体の実際の重み付き錐の普遍性。
+`weightedCotensorCarrierIso` は同じ図式・重み・frame を用いた底の複体の end との同型。
+これらに単体集合の完全なモデル構造は使わず、未証明項目を含む既存 Kan–Quillen 入力も import しない。
+定値一点重みの射影 cofibrant 置換、その重みでのホモトピー不変性・右導来極限の普遍性は未完成。
 E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：
