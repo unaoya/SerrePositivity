@@ -1042,4 +1042,10 @@ public import SerrePositivity.KST.SConstruction.BoundaryTensorHomExt
 public import SerrePositivity.KST.SConstruction.AnodyneRelativeFibrationFamily
 public import SerrePositivity.KST.SConstruction.AnodynePrescribedComparison
 public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationComparison
+public import SerrePositivity.KST.SConstruction.TriangleRightCancellationHorn
+public import SerrePositivity.KST.SConstruction.TriangleRightCancellation
+public import SerrePositivity.KST.SConstruction.TriangleRightCancellationComparison
+public import SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron
+public import SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting
+public import SerrePositivity.KST.SConstruction.SixDiamondGeometricFaces
 /-! # ∞-S• 構成と連結 K 理論 -/

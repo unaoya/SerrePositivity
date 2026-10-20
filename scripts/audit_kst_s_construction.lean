@@ -15565,3 +15565,133 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.triangleLeftCancellationComparisonOverData_projection
 #check @SerrePositivity.KST.SConstruction.triangleLeftCancellationComparisonOverData_relative
 #print axioms SerrePositivity.KST.SConstruction.triangleLeftCancellationComparisonOverData_relative
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationFaces
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationFaces
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationFaces_compatible
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationFaces_compatible
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationHorn
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationHorn
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationHorn_face
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationHorn_face
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationChoices
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationChoices
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationChoices_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationChoices_isContractibleKan
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationChoices_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationChoices_relative_lifting
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationAt
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationAt
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationAt_face
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationAt_face
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationTriangle
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationTriangle
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationTriangle_face
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationTriangle_face
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationCylinder
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationCylinder
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationCylinder_triangle
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationCylinder_triangle
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonData
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonData
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationComparison
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationComparison
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationComparison_relative
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationComparison_relative
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationComparison_face
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationComparison_face
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationTriangleComparison
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationTriangleComparison
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationTriangleComparison_h
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationTriangleComparison_h
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationTriangleComparison_edge
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationTriangleComparison_edge
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationTriangleComparison_boundary
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationTriangleComparison_boundary
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonOverData
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonOverData
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonOverData_projection
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonOverData_projection
+#check @SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonOverData_relative
+#print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonOverData_relative
+#check @SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron
+#print axioms SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron
+#check @SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.mk
+#print axioms SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.mk
+#check @SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.simplex
+#print axioms SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.simplex
+#check @SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.second_face
+#print axioms SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.second_face
+#check @SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.left_face
+#print axioms SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.left_face
+#check @SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.first_face
+#print axioms SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.first_face
+#check @SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.right
+#print axioms SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.right
+#check @SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.right_face
+#print axioms SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.right_face
+#check @SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron
+#print axioms SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.mk
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.mk
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.top
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.top
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.firstMove
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.firstMove
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.secondMove
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.secondMove
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.thirdMove
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.thirdMove
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.fourthMove
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.fourthMove
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.fifthMove
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.fifthMove
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.bottom
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.bottom
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.sixthMove
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.sixthMove
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.suffixChoice
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.suffixChoice
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.transported
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.transported
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.transportComparison
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.transportComparison
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.transport_boundary
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.transport_boundary
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.prefixChoice
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.prefixChoice
+#check @SerrePositivity.KST.SConstruction.sixDiamondGeometricPasting
+#print axioms SerrePositivity.KST.SConstruction.sixDiamondGeometricPasting
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.comparison
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.comparison
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.comparison_triangle
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.comparison_triangle
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.left_binary
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.left_binary
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.interchange_first
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.interchange_first
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.first_stage
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.first_stage
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.interchange_second
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.interchange_second
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.first_binary
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.first_binary
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.last_binary
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.last_binary
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.right_binary
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.right_binary
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.last_stage
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.last_stage
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.right_stage
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.right_stage
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.bf_first
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.bf_first
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.bf_second
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.bf_second
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.left_stage
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.left_stage
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.shared_direct
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.shared_direct
+#check @SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.suffix_comparison
+#print axioms SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting.suffix_comparison
