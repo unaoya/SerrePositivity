@@ -879,3 +879,8 @@ public import SerrePositivity.EInfinity.Hammock.LengthDiagram
 public import SerrePositivity.EInfinity.Hammock.LengthColimit
 public import SerrePositivity.EInfinity.Hammock.LengthNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthFiltration
+public import SerrePositivity.EInfinity.Hammock.WordAlternating
+public import SerrePositivity.EInfinity.Hammock.WordIntersectionFactors
+public import SerrePositivity.EInfinity.Hammock.ProperOverlap
+public import SerrePositivity.EInfinity.Hammock.LengthBoundary
+public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthBoundary

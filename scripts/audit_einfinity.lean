@@ -3497,6 +3497,52 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthReducedIso,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthReducedIso_word_fac]
 
+@[noinline] private def e2RequiredBatch32 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Direction.other,
+      `SerrePositivity.EInfinity.Hammock.Direction.ne_other,
+      `SerrePositivity.EInfinity.Hammock.Direction.eq_other_of_ne,
+      `SerrePositivity.EInfinity.Hammock.Direction.alternatingSequence,
+      `SerrePositivity.EInfinity.Hammock.Word.IsAlternating,
+      `SerrePositivity.EInfinity.Hammock.Word.alternating,
+      `SerrePositivity.EInfinity.Hammock.Word.alternating_isAlternating,
+      `SerrePositivity.EInfinity.Hammock.Word.IsAlternating.map_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.IsAlternating.length_le,
+      `SerrePositivity.EInfinity.Hammock.Word.alternating_direction_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.exists_alternating,
+      `SerrePositivity.EInfinity.Hammock.Word.alternating_cases,
+      `SerrePositivity.EInfinity.Hammock.Word.alternating_ne,
+      `SerrePositivity.EInfinity.Hammock.Word.IsAlternating.target_eq_of_length_le,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionLeft,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionRight,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionLeft_fac,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionRight_fac,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionLeft_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.intersectionRight_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.intersection_length_le_left,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.map_app_injective,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.overlap_lift,
+      `SerrePositivity.EInfinity.Hammock.ProperDiagram.overlap_lengthStage,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundary,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundary_mem_iff,
+      `SerrePositivity.EInfinity.Hammock.boundaryPresentation,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryStageValue,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryStageValue_eq,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryToStage,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundary_square,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthBoundary,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthBoundaryToStage,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthBoundaryToStage_app,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockLengthBoundary_square,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockAlternatingGraphMap_mono,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.mk,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.source,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.bound,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.arrow,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.injective,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.simplex,
+      `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.image]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3524,7 +3570,8 @@ run_cmd do
       e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
-      e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31] do
+      e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
+      e2RequiredBatch32] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8416,3 +8463,47 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
           (BarrattEccles.algebraHammockLengthReducedIso A X Y).hom =
       BarrattEccles.algebraHammockGraphNormalization A X Y a :=
   BarrattEccles.algebraHammockLengthReducedIso_word_fac A X Y n a ha
+
+-- 正の長さの二つの交互方向語は異なり、空語を含む全交互方向語を分類する。
+open SerrePositivity.EInfinity.Hammock in
+example (n : ℕ) : Word.alternating (n + 1) .forward ≠ Word.alternating (n + 1) .backward :=
+  Word.alternating_ne n
+open SerrePositivity.EInfinity.Hammock in
+example (a : Word) (ha : Word.IsAlternating a) :
+    a = Word.alternating a.length .forward ∨ a = Word.alternating a.length .backward :=
+  Word.alternating_cases a ha
+
+-- proper の原像の重なりは、元の短い語の段階で同じ像を与える。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {F : Word ⥤ SSet.{e2ComplexLimitUniverse}} (hF : ProperDiagram F)
+    {a b c : Word} (f : a ⟶ c) (g : b ⟶ c)
+    (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
+    (n : ℕ) (ha : a.length ≤ n) (hb : b.length ≤ n) (k : SimplexCategoryᵒᵖ)
+    (σ : (F.obj a).obj k) (τ : (F.obj b).obj k)
+    (hστ : (F.map f).app k σ = (F.map g).app k τ) :
+    (lengthStageInclusion F n a ha).app k σ = (lengthStageInclusion F n b hb).app k τ :=
+  hF.overlap_lengthStage f g hf hg n ha hb k σ τ hστ
+
+-- 任意の可換環上の元の境界の射は、上の段階への元の標準射と可換。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) {n m : ℕ} (h : n ≤ m)
+    (c : Hammock.Word) (hc : c.length ≤ m) :
+    BarrattEccles.algebraHammockLengthBoundaryToStage A X Y n c ≫
+        BarrattEccles.algebraHammockLengthTransition A X Y h =
+      (BarrattEccles.algebraHammockLengthBoundary A X Y n c).ι ≫
+        BarrattEccles.algebraHammockLengthStageInclusion A X Y m c hc :=
+  BarrattEccles.algebraHammockLengthBoundary_square A X Y h c hc
+
+-- 境界の表示の選択によらず、元の短い語の同じ標準射を回収する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (n : ℕ) (c : Hammock.Word)
+    (k : SimplexCategoryᵒᵖ)
+    (x : ((BarrattEccles.algebraHammockLengthBoundary A X Y n c).toFunctor).obj k)
+    {a : Hammock.Word} (ha : a.length ≤ n) (f : a ⟶ c) (hf : Function.Injective f.orderHom)
+    (σ : (BarrattEccles.algebraHammockGraph A a X Y).obj k)
+    (hσ : (BarrattEccles.algebraHammockGraphMap A f X Y).app k σ = x.val) :
+    (BarrattEccles.algebraHammockLengthBoundaryToStage A X Y n c).app k x =
+      (BarrattEccles.algebraHammockLengthStageInclusion A X Y n a ha).app k σ :=
+  BarrattEccles.algebraHammockLengthBoundaryToStage_app A X Y n c k x ha f hf σ hσ

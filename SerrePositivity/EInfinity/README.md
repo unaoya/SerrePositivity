@@ -1208,7 +1208,20 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `BarrattEccles.algebraHammockLengthColimitIso`・`_word_fac` と
 `algebraHammockLengthReducedIso`・`_word_fac` は任意可換環上の実際の長さ濾過と
 元の全語・縮約 hammock の標準射への一致。
-段階の pushout、proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、
+`Word.IsAlternating`・`alternating_cases` は空語も含む二つの初期方向による分類。
+`alternating_ne` は正の長さの二つの語の区別。`IsAlternating.map_injective`・
+`length_le`・`target_eq_of_length_le` は交互方向語からの全写像の単射性・長さ増大と、
+同じ長さでは元の語の等式と元の射の一致まで回収する。
+`Word.intersectionLeft`・`intersectionRight` と各 `_fac` は元の列の交わりの因子分解。
+`ProperDiagram.overlap_lift` は同じ像の二つの単体を元の交わりから同時に回収する。
+`overlap_lengthStage` は短い語の元の段階でそれらの像が一致することを示す。
+`lengthBoundary` は短い語の包含の像の和。`BoundaryPresentation` は元の表示で、
+`lengthBoundaryStageValue_eq` は選択に依存しない元の段階の値を回収する。
+`lengthBoundaryToStage` は前の段階への実際の射。`lengthBoundary_square` は上の段階への
+元の標準射との可換性。境界の添字図式の余極限と像の和を無証明に同一視しない。
+`BarrattEccles.algebraHammockLengthBoundaryToStage_app`・`algebraHammockLengthBoundary_square`・
+`algebraHammockAlternatingGraphMap_mono` は任意可換環上で完成。
+段階の pushout の普遍性、proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、
 既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
