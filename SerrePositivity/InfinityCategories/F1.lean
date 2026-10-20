@@ -1396,3 +1396,13 @@ public import SerrePositivity.InfinityCategories.F1.TwistedArrowPointedIdentity
 public import SerrePositivity.InfinityCategories.F1.PointHomIntervalComparison
 
 public import SerrePositivity.InfinityCategories.F1.InitialParametrizedPointTransport
+
+public import SerrePositivity.InfinityCategories.F1.ParametrizedPointTransportSquare
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourcePointedFiber
+
+public import SerrePositivity.InfinityCategories.F1.YonedaEvaluatedTransportEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostcompositionLaws
+
+public import SerrePositivity.InfinityCategories.F1.YonedaInfinityFullyFaithful

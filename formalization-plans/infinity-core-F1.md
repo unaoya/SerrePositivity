@@ -34,7 +34,9 @@
 - Tw 全体から pointed-space への同じ比較と各 fiber の同値を構成済み。始点固定の底は同じ
   Yoneda 写像の指定点評価と厳密に一致し、その恒等点の像も c1 の同じ評価点に一致する。
 - 全空間の始対象で評価した実際の普遍輸送が同値となる一般定理も証明済み。
-  同じ Yoneda 写像の充満忠実性は未証明。正方形の輸送自然性で両作用を接続する。
+- `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
+  実際の区間 Hom 作用と標準 pinched Hom 作用の同値性を、同じ恒等点評価と輸送から回収した。
+  一般の S の同値と right fibration の分類は別に残るため、F1-1・F1-2 全体は未完了。
 
 ### 残り（依存順）
 
@@ -44,8 +46,8 @@
    同じ関手の充満忠実性・本質的全射性で F0 を使う。明示的な単位・余単位と三角恒等式は任意。
 2. essentially small な ∞ 圏的 fiber への相対延長。Thm 5.6.5.12、Cor 5.6.5.15。40〜160時間。
 3. cocartesian・Cat∞ 値の分類と必要な宇宙の一般化。Thm 5.6.0.2、§5.5。80〜240時間以上。
-4. F1-2：同じ Yoneda 写像の実際の Hom 作用を恒等点からの輸送と照合し、充満忠実性を閉じる。
-   Kerodon §§8.1〜8.3。40〜160時間。twisted arrow・Hom 関手は α2b と分担する。
+4. F1-2：同じ Yoneda 写像の充満忠実性は完了。right fibration の分類は一般の S の同値の双対として残る。
+   Kerodon §§8.1〜8.3。分類の見積もりは項目1に含む。twisted arrow・Hom 関手は α2b と分担する。
 5. 通常圏の nerve 上で Grothendieck 構成と Yoneda を回収する。§§5.6、8.3。8〜32時間。
 
 ### 主要宣言（名前のみ）
@@ -56,7 +58,7 @@
 - `yonedaInfinityMap`、`representablePresheafInfinity`、`representablePresheafInfinity_sliceIso`
 - `representableRightUnstraighteningComparison_isQCatEquivalence`
 - `yonedaPresheafEvaluation_isQCatEquivalence`、`representablePresheafValueEquivalence`
-- `yonedaInfinityEvaluatedMappingSpaceMap`、`yonedaInfinityMap_isFullyFaithful_iff_evaluatedMappingSpace`
+- `yonedaInfinityMap_isFullyFaithful`、`yonedaInfinityMap_pinchedHomMap_isQCatEquivalence`
 - `twistedArrowSourceIdentity_isInitialVertex`、`twistedArrowIdentityHomTransport_isQCatEquivalence`
 - `representableUnstraighteningEvaluation_eq_identityEvaluation`
 
@@ -70,31 +72,31 @@
 
 ### 未コミット
 
-- 同じ恒等点での c1 評価と普遍輸送への接続は `69a10638f` に保存済み。
-  F1 全体ビルド4413 jobs、公理監査9890宣言が成功（標準3公理のみ）。
-- 全体の pointed 比較と各 fiber の同値・同じ恒等点の像・元の円柱の区間比較・始対象での
-  普遍輸送評価の所有5モジュール、集約・監査・計画が今回の保存単位。
+- Tw の pointed 比較と始対象での普遍輸送評価は `3734127dc` に保存済み。
   F1 全体ビルド4418 jobs、公理監査9927宣言が成功（標準3公理のみ）。
+- 正方形の指定点輸送の自然性・始点固定の実際の fiber 同値・同じ Yoneda の Hom 作用の
+  同値と充満忠実性の所有5モジュール、集約・監査・計画が今回の保存単位。
+  F1 全体ビルド4431 jobs、公理監査9957宣言が成功（標準3公理のみ）。
 - 通る所有ファイルだけを早めに `git commit --only` で保存する。N の指定2ファイルは保存済み。
 
 ### 既知の問題
 
 - λ は局所化であり、圏同値として消去しない。一般の S の充満忠実性は依然未証明。
-- 独立な Hom 同値だけを同じ Yoneda 写像の充満忠実性と数えない。
-  比較の選択が入るため、評価後の自己写像が定義上恒等であるとは仮定しない。
+- Yoneda の充満忠実性は元の Hom 作用そのものの同値性で証明した。独立な c1 の同値だけでは
+  一般の S の充満忠実性にならない。分類の明示的な単位・余単位と三角恒等式は任意のまま。
 - strict Kan 図式の strict な Hom が一般に Kan とは主張しない。小さい単体 fiber の条件を
   essentially small な ∞ 圏的 fiber だけへ弱める相対延長と、Cat∞ 値の分類も未証明。
 
 ### 次の一手
 
-F1-2：TwistedArrowPointedDisplay の始点固定の底と、同じ Yoneda 写像の評価の一致が通った。
-TwistedArrowPointedDisplayFiber は全両端で同値。TwistedArrowPointedIdentity は同じ評価点の一致。
-次は始点固定の実際の pointed fiber 射をこれらから同値と証明する。可換正方形の
-`parametrizedFiberTransport_squareIso` を同じ始点で評価し、始対象での普遍輸送評価の同値と
-c1 の `canonicalYonedaTransformationFiberEvaluation_parametrizedIso` をつなぐ。
-端点の等式と後合成の合成則を含めて正規化し、同じ Yoneda の区間 Hom 作用の同値を消去する。
-既存の `pinchedHomMap_isQCatEquivalence_of_intervalPost` により元の Hom 作用へ戻して閉じる。
-F1-1c2：別途、初頂点引き戻しの全相対 Hom 作用の同値性を証明し、同じ S に F0 を適用する。
+F1-2 の Yoneda 充満忠実性は完了。次は F1-1 の一般の分類同値と、その双対の right fibration
+分類へ戻る。最初に RelativeHomCoherentComparison・RelativeHomCoherentNaturality と
+既存の自然な復元 span を読み、同じ実際の S の Hom 作用への接続の残件を確認する。
+`leftStraighteningInfinityMap_isQCatEquivalence_iff_relativeFunctorPullback` に残る、λ に沿う
+実際の全相対 Hom の同値性を証明する。λ 自体を圏同値として消去しない。
+新しい Yoneda 充満忠実性を LF∞ 自体に適用して全対象の自然な復元比較を回収できるかも検討するが、
+対象ごとの復元同値や独立な Hom 同値だけで結論しない。空間値版が閉じても essentially small fiber
+への相対延長と cocartesian・Cat∞ 値版は別に残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 
