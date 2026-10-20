@@ -18297,3 +18297,84 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubeConnectionPath_exists_expression
 #check @SerrePositivity.KST.SConstruction.serreCubeWordFunctor_connection_independent
 #print axioms SerrePositivity.KST.SConstruction.serreCubeWordFunctor_connection_independent
+
+#check @SerrePositivity.KST.SConstruction.CubeFaceDeletionResult
+#print axioms SerrePositivity.KST.SConstruction.CubeFaceDeletionResult
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionResultVertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionResultVertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionResultPoint
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionResultPoint
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionResultKeep
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionResultKeep
+#check @SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_cons
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_cons
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionResultPoint_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionResultPoint_vertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionResultKeep_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionResultKeep_vertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceNormalDelete
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceNormalDelete
+#check @SerrePositivity.KST.SConstruction.cubeFaceNormalDelete_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceNormalDelete_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceDeletionResult
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceDeletionResult
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceDeletionResult_point
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceDeletionResult_point
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceDeletionResult_keep
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceDeletionResult_keep
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceNormal_delete
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceNormal_delete
+#check @SerrePositivity.KST.SConstruction.CubeDeletionFaceNormal
+#print axioms SerrePositivity.KST.SConstruction.CubeDeletionFaceNormal
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalVertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalVertex
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalId
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalId
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalId_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalId_vertex
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalPoint
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalPoint
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalPoint_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalPoint_vertex
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalAfterResult
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalAfterResult
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalAfterResult_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalAfterResult_vertex
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalDelete
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalDelete
+#check @SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalDelete_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionFaceNormalDelete_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal_id
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal_id
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal_point
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal_point
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal_afterResult
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal_afterResult
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal_delete
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionFaceNormal_delete
+#check @SerrePositivity.KST.SConstruction.CubeFaceDeletionExpression
+#print axioms SerrePositivity.KST.SConstruction.CubeFaceDeletionExpression
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionVertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionVertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionNormal
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionNormal
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionNormal_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionNormal_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceDeletionExpression
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceDeletionExpression
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceDeletionExpressionNormal
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceDeletionExpressionNormal
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionPath
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionPath
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionPath_concrete
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionPath_concrete
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionPath_serre
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionExpressionPath_serre
+#check @SerrePositivity.KST.SConstruction.CubeFaceDeletionPath
+#print axioms SerrePositivity.KST.SConstruction.CubeFaceDeletionPath
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionPath_exists_expression
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionPath_exists_expression
+#check @SerrePositivity.KST.SConstruction.cubeFaceDeletionPath_normalization
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceDeletionPath_normalization
