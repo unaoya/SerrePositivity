@@ -878,4 +878,10 @@ public import SerrePositivity.KST.SConstruction.MonicKPrismNativeBFBoundaryFaces
 public import SerrePositivity.KST.SConstruction.PointFamilyHomotopyEdge
 public import SerrePositivity.KST.SConstruction.TracedBFSpectrumCompositionEdge
 public import SerrePositivity.KST.SConstruction.TracedBFCoherentComposition
+public import SerrePositivity.KST.SConstruction.CoherentPathInsertionDiamond
+public import SerrePositivity.KST.SConstruction.CoherentSimplexFaceActions
+public import SerrePositivity.KST.SConstruction.CompositionTripleTetrahedron
+public import SerrePositivity.KST.SConstruction.TracedBFCoherentTriple
+public import SerrePositivity.KST.SConstruction.TracedBFTripleFaceActions
+public import SerrePositivity.KST.SConstruction.TracedBFTriplePathDiamond
 /-! # ∞-S• 構成と連結 K 理論 -/
