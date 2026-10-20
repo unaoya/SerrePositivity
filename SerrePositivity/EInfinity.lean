@@ -869,3 +869,7 @@ public import SerrePositivity.EInfinity.Hammock.ReductionConfluence
 public import SerrePositivity.EInfinity.Hammock.NormalForm
 public import SerrePositivity.EInfinity.Hammock.ReducedSimplicialSet
 public import SerrePositivity.EInfinity.BarrattEccles.HammockNormalization
+public import SerrePositivity.EInfinity.Hammock.WordFactorization
+public import SerrePositivity.EInfinity.Hammock.NormalFormTransition
+public import SerrePositivity.EInfinity.Hammock.ReducedColimit
+public import SerrePositivity.EInfinity.BarrattEccles.HammockReducedColimit

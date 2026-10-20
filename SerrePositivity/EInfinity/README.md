@@ -1184,8 +1184,20 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `normalization_augmentation` は元の未縮約対象からの単体的正規化と同じ元の標準射の回収。
 `BarrattEccles.algebraHammockReducedRepresentative_unique`・`algebraHammockNormalForm_map`・
 `algebraHammockNormalization_augmentation` 等は任意の可換環上で完成。
-任意の語の写像の基本操作への分解と正規形の不変性、元の余極限と縮約 hammock との同型、
-三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.factorMerge` は元の隣接等像の二列の合成を先に行う厳密な分解。
+`Word.factorEmbedding` は元の包含の像への厳密な持ち上げで、欠けた一列の包含を分離する。
+`normalForm_transition` は始域・終域の長さの和での帰納により、空語も含め任意の元の語の
+遷移が同じ正規形を与えることを示す。全単射の場合も元の raw の等式で照合する。
+`graphNormalization`・`_naturality` は同じ固定語の正規化からなる元の全語の余錐。
+`colimitNormalization`・`graphInclusion_colimitNormalization` は元の余極限からの射と
+各固定語の標準射の後の回収。`colimitNormalization_augmentation`・
+`augmentation_colimitNormalization` は元の全単体の両逆。
+`reducedColimitIso` は Dwyer–Kan §5.5 の元の余極限と縮約 hammock の実同型。
+`_hom_fac` は元の固定語の標準射と正規化への一致、`_inv` は同じ元の標準射への一致。
+`rawAugmentation_colimitNormalization` は既存の元の raw 正規化を回収する。
+`BarrattEccles.algebraHammockNormalForm_transition`・`algebraHammockReducedColimitIso`・
+各 `_hom_fac`・`_inv`・`algebraHammockRawAugmentation_colimitNormalization` 等は
+任意の可換環上で完成。三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

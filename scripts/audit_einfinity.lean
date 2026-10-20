@@ -3428,6 +3428,34 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReducedAugmentation,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalization_augmentation]
 
+@[noinline] private def e2RequiredBatch30 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.factorEmbedding,
+      `SerrePositivity.EInfinity.Hammock.Word.adjacent_color_of_image_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.factorMerge,
+      `SerrePositivity.EInfinity.Hammock.normalForm_transition_bijective,
+      `SerrePositivity.EInfinity.Hammock.normalForm_transition,
+      `SerrePositivity.EInfinity.Hammock.graphNormalization,
+      `SerrePositivity.EInfinity.Hammock.graphNormalization_naturality,
+      `SerrePositivity.EInfinity.Hammock.graphNormalization_augmentation,
+      `SerrePositivity.EInfinity.Hammock.colimitNormalization,
+      `SerrePositivity.EInfinity.Hammock.graphInclusion_colimitNormalization,
+      `SerrePositivity.EInfinity.Hammock.colimitNormalization_augmentation,
+      `SerrePositivity.EInfinity.Hammock.augmentation_colimitNormalization,
+      `SerrePositivity.EInfinity.Hammock.rawAugmentation_colimitNormalization,
+      `SerrePositivity.EInfinity.Hammock.reducedColimitIso,
+      `SerrePositivity.EInfinity.Hammock.reducedColimitIso_hom_fac,
+      `SerrePositivity.EInfinity.Hammock.reducedColimitIso_inv,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalForm_transition,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphNormalization,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphNormalization_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphNormalization_augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitNormalization,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphInclusion_colimitNormalization,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReducedColimitIso,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReducedColimitIso_hom_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReducedColimitIso_inv,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawAugmentation_colimitNormalization]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3455,7 +3483,7 @@ run_cmd do
       e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
-      e2RequiredBatch28, e2RequiredBatch29] do
+      e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8278,3 +8306,39 @@ example {C : Type e2ComplexLimitUniverse} [Category C] (W : MorphismProperty C)
       RawHammock W X Y n) =
         ⟨Word.erase (⟨k + 2, d⟩ : Word) p.succ, eraseSimplex W X Y p.succ τ hτ⟩ :=
   merge_erase_overlap_eq W X Y d p hp p.succ (Or.inr rfl) τ hτ
+
+-- 任意の元の語の写像は、任意可換環上で同じ元の正規形を与える。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) {a b : Hammock.Word} (f : a ⟶ b)
+    {n : SimplexCategoryᵒᵖ} (τ : (BarrattEccles.algebraHammockGraph A a X Y).obj n) :
+    BarrattEccles.algebraHammockNormalForm A X Y
+        ⟨b, (BarrattEccles.algebraHammockGraphMap A f X Y).app n τ⟩ =
+      BarrattEccles.algebraHammockNormalForm A X Y ⟨a, τ⟩ :=
+  BarrattEccles.algebraHammockNormalForm_transition A X Y f τ
+
+-- 元の標準射の後の実同型は、同じ固定語の元の正規化そのもの。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (w : Hammock.Word) :
+    BarrattEccles.algebraHammockGraphInclusion A w X Y ≫
+        (BarrattEccles.algebraHammockReducedColimitIso A X Y).hom =
+      BarrattEccles.algebraHammockGraphNormalization A X Y w :=
+  BarrattEccles.algebraHammockReducedColimitIso_hom_fac A X Y w
+
+-- 逆射も元の縮約済み対象の同じ標準射であり、任意の同型で代用しない。
+open SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockReducedColimitIso A X Y).inv =
+      BarrattEccles.algebraHammockReducedAugmentation A X Y :=
+  BarrattEccles.algebraHammockReducedColimitIso_inv A X Y
+
+-- 元の raw 正規化は、同じ元の余極限の標準射から回収される。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    BarrattEccles.algebraHammockRawAugmentation A X Y ≫
+        BarrattEccles.algebraHammockColimitNormalization A X Y =
+      BarrattEccles.algebraHammockNormalization A X Y :=
+  BarrattEccles.algebraHammockRawAugmentation_colimitNormalization A X Y
