@@ -39,7 +39,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyClass,
     `SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyFunctor,
     `SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyComparison,
-    `SerrePositivity.KST.LocalizingInvariants.CoherentSplitFiberGroups]
+    `SerrePositivity.KST.LocalizingInvariants.CoherentSplitFiberGroups,
+    `SerrePositivity.KST.LocalizingInvariants.FiberSquareComparison,
+    `SerrePositivity.KST.LocalizingInvariants.FiberSequenceComparison,
+    `SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

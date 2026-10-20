@@ -6,8 +6,8 @@
 
 ### 現在地
 - **K-5 抽象部分へ移行（ユーザー指示）**：安定 ∞ 圏・完全関手、抽象 Verdier 列、Sp 値の局所化不変量と基本補題を担当する。K-S• の SConstruction と D の Stable/・Drinfeld 商は読み取り専用。以下の K-5 節に界面と残工程を固定する。
-- K-5：StableInfinity・抽象 Verdier 列・零安定圏・任意抽象列の coherent 四角形提示、その像の実 fiber 性と BF fiber の全整数 π による同値検出は完成。元の homotopyFiber を左下頂点、元の射を右辺に持つ Sp の実 fiber 四角形の下辺を、元の homotopyFiberInclusion の射の類まで照合した。整数 π は h Sp 上の実関手となり、元の BF 整数 π 関手との自然な比較も完成。h Sp での切断だけから fiber 群の積分解まで拡張した。任意 fiber 四角形への長完全列の移送と Sp の積同値は未完。
-- K-5 の今回の検証：専用対象5571 jobs、32モジュール・435宣言の専用公理監査、全体19116 jobs が終了コード0。標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
+- K-5：StableInfinity・抽象 Verdier 列・零安定圏・任意抽象列の coherent 四角形提示、その像の実 fiber 性と BF fiber の全整数 π による同値検出は完成。元の homotopyFiber を左下頂点、元の射を右辺に持つ Sp の実 fiber 四角形の下辺を、元の homotopyFiberInclusion の射の類まで照合した。整数 π は h Sp 上の実関手となり、元の BF 整数 π 関手との自然な比較も完成。h Sp での切断だけから fiber 群の積分解まで拡張した。同じ右辺の任意の二つの fiber 四角形の全図式同型と、三対象・二辺を保つ短複体同型も構成した。任意 fiber 四角形への長完全列の移送と Sp の積同値は未完。
+- K-5 の今回の検証：専用対象5579 jobs、35モジュール・460宣言の専用公理監査、全体19129 jobs が終了コード0。標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
 - **優先順を変更（ユーザー指示）**：d1 整数次数による同値検出 → d2 値域界面の固定。IsStable は I-b 末尾へ延期。evaluationPost circle と逆関手経路は再開しない。停止中の4 WIP は保持する。
 - L9a・L9b・改訂 L9c・L9d・L9e 完了。骨格の成分・高次係数表示、微分の符号と核・像、Milnor の全整数次数界面と lim¹、Mittag–Leffler 収束、有理有限群の標準 Shapiro 同型、通常 Tot・BF・元の homotopy Tot の比較まで完了。
 - Sp の零対象、小積、任意の coherent cospan、通常の小圏上の BF 図式の ∞ 極限、元の hG/Tot の実際の ∞ 極限錐、任意射の fiber と整数 π の長完全列は完成。
@@ -47,7 +47,7 @@
 
 ### 未コミット
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
-- d1・d2 と K-5 の32モジュールは保存単位として検証済み。今回の12新規モジュール・BFFiberInfinityCone の精密化・専用集約・監査・二つの指定計画だけを保存する。D 計画への判定要求追記は既存の他レーンの未保存差分と同居するため今回のコミットに含めない。停止中4 WIP と共有ルート・他レーンの差分は保持する。
+- d1・d2 と K-5 の35モジュールは検証済みで、専用集約・監査・二つの指定計画とともに所有ファイルだけを保存する。D 計画への判定要求追記は D 側の保存に含まれたことを確認済み。停止中4 WIP と共有ルート・他レーンの差分は保持する。
 
 ### 既知の問題
 - Sp の IsStable、Ω の完全忠実性・関手同値、任意の coherent 図式への極限の移送は未完。いずれも上表で未提供と明記し、存在を仮定する構造体で完成扱いにしない。
@@ -56,7 +56,7 @@
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。公理監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。
 
 ### 次の一手
-- K-5：次は任意の fiber 四角形を元の BF homotopyFiberSquare と比較する。安定性不要の nonempty_cofiberSquareFunctorIso を dualSquare で双対化する入口を確認済み。四角形全体の関手同型と各辺の自然性を保持し、piFunctor・piComparison_naturality で元の BF 長完全列を任意の像の fiber 四角形へ移す。最後に coherent な切断付き列の Sp 積同値を構成する。群の積同型だけで完成扱いにしない。
+- K-5：次は fiberShortComplexIso の三成分を piFunctor で写し、BF 側の fiberObjectIso・totalObjectIso・baseObjectIso と piComparison を合成した三つの群同型を構成する。bottom_naturality・right_naturality で元の包含・元の射への可換性を保持する。接続射を底と fiber の群同型で共役し、既存 group_exact_of_equivalences を全整数次数の三箇所に適用して長完全列を移す。任意の Sp の右辺は BF 射として復号し、一単体を保った FiberSquare として渡す。その後、局所化不変量の像への適用と coherent な切断付き列の Sp 積同値を構成する。群の積同型だけで完成扱いにしない。
 - 今回の d1・d2 は工程完了。整数次数による同値検出の証明・宣言表固定と対象・集約・監査・全体ビルドは成功。宣言表の未提供行まで完成したとは扱わない。
 - 一般 coherent 極限の実装を再開する際の最初の工程は、F2.hasColimit_coherentSpaceDiagram から任意 D : ulift B → Sp の実錐の構成へ至る接続の設計・見積もり。空間の HasColimit から Sp の HasLimit は直接には従わず、その接続は未構成。既存の通常小図式の極限を再実装しない。
 - d3 の再開条件は未成立：foundations.md では I-b の F1b-7・N-2・K-5〜K-8 等が未完。I-b 末尾までは evaluationPost circle・逆関手案・IsStable の実装へ戻らない。
@@ -72,6 +72,7 @@
 - **今回の提供済み宣言**：zeroCategory、zeroCategory_isZero、toZeroCategory、fromZeroCategory、isExact_of_zero_values、verdierZeroCompositeIso、exactMapCoreVertexIso、stableArrow_homMk_eq_of_functorIso、exists_verdierSquare、VerdierSequence.presentation、VerdierSequence.presentation_sequence、IsLocalizingInvariant.abstractFiberTriangle、IsLocalizingInvariant.abstractFiberTriangle_isFiber、IsLocalizingInvariant.abstractFiberTriangle_bottom、IsLocalizingInvariant.abstractFiberTriangle_right、FiberDetection.piIsomorphism_of_fiberGroups、FiberDetection.piIsomorphism_iff_fiberGroups、FiberDetection.isInvertible_of_fiberGroups。
 - **BF fiber の追加界面**（接頭辞 `FiberModel`）：obj、inclusion、comparison、comparison_inclusion、comparison_isInvertible、pointedCone_isLimit、infinityCone、infinityCone_isLimit、replacedCone、replacedCone_vertex、replacedConeComparison、replacedConeComparison_projection、homotopyFiberCone、homotopyFiberCone_isLimit、homotopyFiberCone_vertex、homotopyFiberSquare、homotopyFiberSquare_vertex。raw fiber の極限性は各段の実際の pointedFiber の普遍性から証明。置換後の図式上では、比較射上の slice の辺も保持する。
 - **今回の追加界面**：StrictConeTransport.transport・apexEdge・diagramEdge、FiberModel.homotopyFiberTransport・homotopyFiberLeg_left_hom・homotopyFiberSquare_bottom_edge・homotopyFiberSquare_bottom_hom、SpectrumHo.component_eq_of_hom_eq・homotopyMap_eq_of_hom_eq・piFunctor・piComparison・piComparison_naturality、CoherentSplitFiber.section_map・boundary_eq_one・inclusion_injective・groupEquiv。錐の輸送には元の厳密自然変換の全 prism を使い、各脚を元の BF 射へ戻す。
+- **全図式の比較界面**：FiberComparison.nonempty_functorIso・shortComplexIso・fiberShortComplexIso、FiberModel.fiberObjectIso・totalObjectIso・baseObjectIso・bottom_naturality・right_naturality。同じ右辺の fiber 四角形の比較に Sp の IsStable を使わず、三つの対象と両射への整合性を同時に保持する。
 - **未完・依存順**：一般 Sp fiber 四角形への長完全列の移送、coherent な切断付き列の Sp 積同値（暫定 8–24 時間以上、上限保証なし）。元の BF fiber 四角形の下辺の類と包含の照合、h Sp 上の π 関手と BF π との自然性は完成。CoherentSplitFiber.groupEquiv は h Sp で切断を持つ BF 射の各整数次数の群同型までで、Sp の積同値ではない。原典は HA §§1.1–1.3、BGT §§5・9。K-5 全体は未完。
 
 ## 範囲と所有
