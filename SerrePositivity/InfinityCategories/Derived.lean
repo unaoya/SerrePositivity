@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIndex
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSigns
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeData
 public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
 public import SerrePositivity.InfinityCategories.Derived.DGMoritaAdjunctionInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomComplexInfinity

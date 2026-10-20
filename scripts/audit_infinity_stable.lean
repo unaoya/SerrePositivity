@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIndex
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSigns
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeData
 import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
 import SerrePositivity.InfinityCategories.Derived.DGMoritaAdjunctionInfinity
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomComplexInfinity
@@ -3493,6 +3496,10 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIndex,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSigns,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeData,
+
     `SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction,
     `SerrePositivity.InfinityCategories.Derived.DGMoritaAdjunctionInfinity,
 
