@@ -1199,4 +1199,11 @@ public import SerrePositivity.KST.SConstruction.PerfectDGExtensionConjugation
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionComposition
 public import SerrePositivity.KST.SConstruction.BundledDGInput
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGFunctor
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameter
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionParameter
+public import SerrePositivity.KST.SConstruction.DGParameterConjugation
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionParameter
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGParameter
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionParameterValues
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHom
 /-! # ∞-S• 構成と連結 K 理論 -/

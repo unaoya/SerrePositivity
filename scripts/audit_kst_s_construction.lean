@@ -17172,4 +17172,45 @@ namespace SerrePositivity.KST.SConstruction
 #check SmallBundledDGCategory.small
 #print axioms SmallBundledDGCategory.small
 
+
+-- 元の入力の全パラメータ作用とラベルごとの全 Hom 作用。
+#check dgFunctorGraphParameter
+#print axioms dgFunctorGraphParameter
+#check dgFunctorGraphParameter_app
+#print axioms dgFunctorGraphParameter_app
+#check dgFunctorGraphParameter_value
+#print axioms dgFunctorGraphParameter_value
+#check dgFunctorGraphParameter_element
+#print axioms dgFunctorGraphParameter_element
+#check dgModuleExtensionParameter
+#print axioms dgModuleExtensionParameter
+#check dgModuleExtensionParameter_π
+#print axioms dgModuleExtensionParameter_π
+#check enrichedParameterConjugate
+#print axioms enrichedParameterConjugate
+#check dgFunctorClosedConjugateParameter
+#print axioms dgFunctorClosedConjugateParameter
+#check perfectDGExtensionParameter
+#print axioms perfectDGExtensionParameter
+#check perfectDGExtensionParameter_app
+#print axioms perfectDGExtensionParameter_app
+#check presentedPerfectDGParameterEvaluated
+#print axioms presentedPerfectDGParameterEvaluated
+#check presentedPerfectDGParameter
+#print axioms presentedPerfectDGParameter
+#check presentedPerfectDGParameter_app
+#print axioms presentedPerfectDGParameter_app
+#check dgModuleExtensionParameterValue
+#print axioms dgModuleExtensionParameterValue
+#check dgModuleExtensionParameterValue_curry
+#print axioms dgModuleExtensionParameterValue_curry
+#check dgModuleExtensionParameterValue_element
+#print axioms dgModuleExtensionParameterValue_element
+#check presentedPerfectDGInputHom
+#print axioms presentedPerfectDGInputHom
+#check presentedPerfectDGInputHom_naturality
+#print axioms presentedPerfectDGInputHom_naturality
+#check presentedPerfectDGInputHom_eq
+#print axioms presentedPerfectDGInputHom_eq
+
 end SerrePositivity.KST.SConstruction
