@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.DGInvertingRoof
+import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
+import SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence
+import SerrePositivity.InfinityCategories.Derived.DGInvertingRoofFunctor
+import SerrePositivity.InfinityCategories.Derived.WeakHomotopyDescent
+import SerrePositivity.InfinityCategories.Derived.DGInvertingHomExtension
+import SerrePositivity.InfinityCategories.Derived.DGInvertingRoofPostcomposition
+import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentNaturality
+import SerrePositivity.InfinityCategories.Derived.DGInvertingHomNaturality
+import SerrePositivity.InfinityCategories.Derived.WeakHomotopyExtensionSpace
+import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentSpace
+import SerrePositivity.InfinityCategories.Derived.DGInvertingHomDescentSpace
 import SerrePositivity.InfinityCategories.Derived.FiniteHomotopyRelativeFillers
 import SerrePositivity.InfinityCategories.Derived.FiniteMappingCylinder
 import SerrePositivity.InfinityCategories.Derived.FiniteDiagramSpanLifts
@@ -3266,6 +3278,18 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingRoof,
+    `SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor,
+    `SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingRoofFunctor,
+    `SerrePositivity.InfinityCategories.Derived.WeakHomotopyDescent,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingHomExtension,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingRoofPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.WeakRoofDescentNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.WeakHomotopyExtensionSpace,
+    `SerrePositivity.InfinityCategories.Derived.WeakRoofDescentSpace,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingHomDescentSpace,
     `SerrePositivity.InfinityCategories.Derived.FiniteHomotopyRelativeFillers,
     `SerrePositivity.InfinityCategories.Derived.FiniteMappingCylinder,
     `SerrePositivity.InfinityCategories.Derived.FiniteDiagramSpanLifts,
