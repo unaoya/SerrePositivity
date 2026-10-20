@@ -1277,3 +1277,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.intervalPullbackPathIso_hom
 #check @SerrePositivity.InfinityCategories.F2.cospanIso_cancel
 #check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackConeNativeCommutativity_comparison
+#check @SerrePositivity.InfinityCategories.F2.functorIso_chain_transport
+#check @SerrePositivity.InfinityCategories.F2.functorIso_transport_image_square_target
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeRawLegIso_naturality
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeDiagramPreIso_heq
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeTargetIso_heq
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeLegSectionIso_strict_naturality
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeCenterImageIso
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeLeftImageIso
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeRightImageIso
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeLeftImageIso_triangle
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeRightImageIso_triangle
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackConeImageIso_commutativity

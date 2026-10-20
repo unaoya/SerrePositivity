@@ -49,8 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   任意の有限標的射の二入力を、共通の元の境界円柱を保って元の fiber へ同時に輸送・反映し、実際の比較射への相対有限検出・持ち上げを構成。値の射の境界と全比較円柱の制限を厳密に保持。
   任意の Kan 境界で相対持ち上げを構成し、境界移動を除去。元の全空間 Kan 引き戻し比較の弱同値性・ホモトピー逆を全標準境界の path 置換充填から証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較の頂点辺・恒等図式辺を持つ全錐比較と各脚の h での自然性を保持。
-  恒等成分を消した脚比較の自然性と全空間・区間錐の native 可換性の整合を証明。区間錐の指定二射影同型、元の全 path 円柱・可換同型と三座標の厳密な往復も構成。
-  三集約同時ビルド 7589 jobs、公理監査 3351 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  区間錐の指定脚比較の自然性を元の切断・通常の錐の等式へ輸送。左右の像比較を同じ中心脚へ表示し、中心比較の消去で native 可換性との整合を証明。元の path 円柱と三座標の往復も保持。
+  三集約同時ビルド 7600 jobs、公理監査 3378 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -78,7 +78,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.exists_relativePathFiniteModelTransport` / `F2.relativePath_model_reflection`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
-- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackConeNativeCommutativity_comparison` / `F2.intervalPullbackConeLegSectionIso` / `F2.intervalPullbackPathIso`
+- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.intervalPullbackConeLegSectionIso_strict_naturality` / `F2.intervalPullbackConeImageIso_commutativity` / `F2.intervalPullbackPathIso`
 
 ### 依存と提供
 
@@ -103,7 +103,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：区間錐の指定脚比較の自然性を切断の自然性へ正規化し、native 可換性を元の intervalPullbackPathIso に照合。coherent 余極限錐へ接続して一般の有限極限交換へ進む。
+- F2N-1：置換の元の path 円柱を指定同型にし、切断上の等式同型を証明。交換則で左像比較・右射影比較を intervalPullbackPathIso に照合し、coherent 余極限錐・一般の有限極限交換へ接続。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
