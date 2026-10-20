@@ -1080,8 +1080,16 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 積図式と、同じ合成射に整合する余錐・その余極限からの比較・元の各成分の回収。
 `BarrattEccles.algebraHammockGraphComposition_naturality` と `algebraHammockCompositionCocone`・
 `algebraHammockColimitCompositionPairing_fac` は同じ任意の可換環上の実際の余錐への代入。
-対の図式の余極限と二つの余極限の積の同定、余極限上の合成と全結合・単位則、
-proper 性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`tensorPairCocone_isColimit` は二つの元の余錐に `IsColimit.tensor₂` を適用した余極限性。
+`tensorPairColimitIso` は対の図式の余極限と二つの余極限の積との標準同型で、
+`_fac` は全固定語の元の標準射の積を回収する。
+`colimitComposition`・`colimitComposition_fac` は実際の二つの余極限の積からの合成と
+全固定語の対上での元の合成の回収。`tensorPair_hom_ext` は同じ標準射の積による一意性。
+`tensorPairColimitIso_comp` は前工程の比較を同じ標準同型と合成に厳密に分解する。
+`BarrattEccles.algebraHammockColimitComposition` と `_fac`・
+`algebraHammockTensorPairColimitIso`・`_fac`・`_comp`・`algebraHammockTensorPair_hom_ext` は
+任意の可換環上の同じ元の E 代数への代入。単体集合のモデル構造は不要。
+余極限上の全結合・単位則、proper 性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

@@ -22,7 +22,22 @@ run_cmd do
   if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
   unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
     throwError "射影モデル構造の宣言がありません"
-  for required in #[`SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphComposition_naturality,
+  for required in #[`SerrePositivity.EInfinity.Hammock.tensorPairCocone,
+      `SerrePositivity.EInfinity.Hammock.tensorPairCocone_isColimit,
+      `SerrePositivity.EInfinity.Hammock.tensorPairCocone_ι,
+      `SerrePositivity.EInfinity.Hammock.tensorPairColimitIso,
+      `SerrePositivity.EInfinity.Hammock.tensorPairColimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition_fac,
+      `SerrePositivity.EInfinity.Hammock.tensorPairColimitIso_comp,
+      `SerrePositivity.EInfinity.Hammock.tensorPair_hom_ext,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTensorPairColimitIso,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitComposition,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitComposition_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTensorPairColimitIso_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTensorPairColimitIso_comp,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTensorPair_hom_ext,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphComposition_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockPairDiagram,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockCompositionCocone,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitCompositionPairing,
@@ -7442,3 +7457,46 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (a b : Hammock.Word)
       BarrattEccles.algebraHammockGraphComposition A a b X Y Z ≫
         BarrattEccles.algebraHammockGraphInclusion A (Hammock.Word.append a b) X Z :=
   BarrattEccles.algebraHammockColimitCompositionPairing_fac A a b X Y Z
+
+-- 単体集合のモデル構造なしで、二つの元の余極限の積から合成を回収する。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (a b : Hammock.Word)
+    (X Y Z : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockGraphInclusion A a X Y ⊗ₘ
+        BarrattEccles.algebraHammockGraphInclusion A b Y Z) ≫
+        BarrattEccles.algebraHammockColimitComposition A X Y Z =
+      BarrattEccles.algebraHammockGraphComposition A a b X Y Z ≫
+        BarrattEccles.algebraHammockGraphInclusion A (Hammock.Word.append a b) X Z :=
+  BarrattEccles.algebraHammockColimitComposition_fac A a b X Y Z
+
+-- 対の図式の余極限との標準同型は、元の全標準射を保持する。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (a b : Hammock.Word)
+    (X Y Z : (BarrattEccles.operad A).Algebra) :
+    Limits.colimit.ι (BarrattEccles.algebraHammockPairDiagram A X Y Z) (a, b) ≫
+        (BarrattEccles.algebraHammockTensorPairColimitIso A X Y Z).hom =
+      (BarrattEccles.algebraHammockGraphInclusion A a X Y ⊗ₘ
+        BarrattEccles.algebraHammockGraphInclusion A b Y Z) :=
+  BarrattEccles.algebraHammockTensorPairColimitIso_fac A a b X Y Z
+
+-- 同じ標準同型と実際の積からの合成は、前工程の比較そのもの。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y Z : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockTensorPairColimitIso A X Y Z).hom ≫
+        BarrattEccles.algebraHammockColimitComposition A X Y Z =
+      BarrattEccles.algebraHammockColimitCompositionPairing A X Y Z :=
+  BarrattEccles.algebraHammockTensorPairColimitIso_comp A X Y Z
+
+-- 元の全固定語の標準射の積は、実際の積からの射を一意に決める。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y Z : (BarrattEccles.operad A).Algebra) {K : SSet.{e2ComplexLimitUniverse + 1}}
+    (f g : BarrattEccles.algebraHammockColimitGraph A X Y ⊗
+      BarrattEccles.algebraHammockColimitGraph A Y Z ⟶ K)
+    (h : ∀ a b : Hammock.Word,
+      (BarrattEccles.algebraHammockGraphInclusion A a X Y ⊗ₘ
+        BarrattEccles.algebraHammockGraphInclusion A b Y Z) ≫ f =
+      (BarrattEccles.algebraHammockGraphInclusion A a X Y ⊗ₘ
+        BarrattEccles.algebraHammockGraphInclusion A b Y Z) ≫ g) : f = g :=
+  BarrattEccles.algebraHammockTensorPair_hom_ext A X Y Z f g h

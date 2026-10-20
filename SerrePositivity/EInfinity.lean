@@ -799,3 +799,5 @@ public import SerrePositivity.EInfinity.Hammock.ZigzagAppendNaturality
 public import SerrePositivity.EInfinity.Hammock.ZigzagAppendNaturalityArrows
 public import SerrePositivity.EInfinity.Hammock.ZigzagAppendNaturalityVertices
 public import SerrePositivity.EInfinity.Hammock.ZigzagAppendSegments
+public import SerrePositivity.EInfinity.Hammock.ColimitComposition
+public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitComposition
