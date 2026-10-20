@@ -873,3 +873,7 @@ public import SerrePositivity.KST.Spectra.DeloopedTracedExchange
 public import SerrePositivity.KST.Spectra.FreePathEvaluation
 public import SerrePositivity.KST.Spectra.PointedTracedPathSquare
 public import SerrePositivity.KST.Spectra.DeloopedExchangeProjectionSquare
+public import SerrePositivity.KST.Spectra.ConstantBoundarySquarePasting
+public import SerrePositivity.KST.Spectra.TripleCircleLoopExchangeBoundary
+public import SerrePositivity.KST.Spectra.DeloopedExchangePostSquares
+public import SerrePositivity.KST.Spectra.DeloopedExchangePostPasting
