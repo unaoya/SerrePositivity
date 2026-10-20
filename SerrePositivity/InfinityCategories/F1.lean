@@ -1090,3 +1090,6 @@ public import SerrePositivity.InfinityCategories.F1.SimplicialPairLeftInclusion
 public import SerrePositivity.InfinityCategories.F1.RelativeHomSourceEvaluation
 public import SerrePositivity.InfinityCategories.F1.RelativeHomCoherentComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeHomCoherentRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorNaturalitySquare
+public import SerrePositivity.InfinityCategories.F1.FunctorNaturalityTriangles
+public import SerrePositivity.InfinityCategories.F1.RelativeHomCoherentNaturality
