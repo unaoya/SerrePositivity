@@ -1258,3 +1258,6 @@ public import SerrePositivity.InfinityCategories.F1.KanDiagramHomPostcomposition
 public import SerrePositivity.InfinityCategories.F1.KanDiagramReflectedHomPostcomposition
 public import SerrePositivity.InfinityCategories.F1.WeightedKanHomCompositeDiagram
 public import SerrePositivity.InfinityCategories.F1.WeightedKanLeftCutConeOne
+public import SerrePositivity.InfinityCategories.F1.PointedCosliceDisplay
+public import SerrePositivity.InfinityCategories.F1.PointedPrismBaseChange
+public import SerrePositivity.InfinityCategories.F1.CommonWeightedNativePointedPrism
