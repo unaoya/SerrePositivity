@@ -11017,3 +11017,222 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian
 #print axioms intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian
+
+#check @intervalFunctorMap_isSimplicialHomotopyEquivalence_of_fullyFaithful
+#print axioms intervalFunctorMap_isSimplicialHomotopyEquivalence_of_fullyFaithful
+
+#check @quillenCfCollageBottomNerve_isFullyFaithful
+#print axioms quillenCfCollageBottomNerve_isFullyFaithful
+
+#check @quillenCfCollageTopNerve_isFullyFaithful
+#print axioms quillenCfCollageTopNerve_isFullyFaithful
+
+#check @homotopyConstantFamily
+#print axioms homotopyConstantFamily
+
+#check @homotopyConstantFamily_hom
+#print axioms homotopyConstantFamily_hom
+
+#check @homotopyFamilySquare
+#print axioms homotopyFamilySquare
+
+#check @homotopyFamilySquare_bottom
+#print axioms homotopyFamilySquare_bottom
+
+#check @homotopyFamilySquare_top
+#print axioms homotopyFamilySquare_top
+
+#check @homotopyFamilySquare_side
+#print axioms homotopyFamilySquare_side
+
+#check @homotopyFamily_composition
+#print axioms homotopyFamily_composition
+
+#check @intervalFunctorMap_homotopy_naturality
+#print axioms intervalFunctorMap_homotopy_naturality
+
+#check @intervalFunctorMap_comp
+#print axioms intervalFunctorMap_comp
+
+#check @intervalPrecompose_postcomp_family
+#print axioms intervalPrecompose_postcomp_family
+
+#check @unitIntervalMap_collage_family
+#print axioms unitIntervalMap_collage_family
+
+#check @unitIntervalMap_collage_homotopy
+#print axioms unitIntervalMap_collage_homotopy
+
+#check @unitIntervalMap_isSimplicialHomotopyEquivalence_of_collage
+#print axioms unitIntervalMap_isSimplicialHomotopyEquivalence_of_collage
+
+#check @homotopyOfPrism
+#print axioms homotopyOfPrism
+
+#check @homotopyOfPrism_vertexEdge
+#print axioms homotopyOfPrism_vertexEdge
+
+#check @homotopyOfPrism_projection
+#print axioms homotopyOfPrism_projection
+
+#check @functorHomEvaluate_homotopy_postcomp
+#print axioms functorHomEvaluate_homotopy_postcomp
+
+#check @prismSquareAt
+#print axioms prismSquareAt
+
+#check @prismSquareAt_component_comp
+#print axioms prismSquareAt_component_comp
+
+#check @cartesianComparison_component_comp
+#print axioms cartesianComparison_component_comp
+
+#check @intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesianEdge
+#print axioms intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesianEdge
+
+#check @homotopyVertexEdge_projection
+#print axioms homotopyVertexEdge_projection
+
+#check @intervalPrecompose_equivalence_of_cocartesianHomotopy
+#print axioms intervalPrecompose_equivalence_of_cocartesianHomotopy
+
+#check @intervalPostcompose_equivalence_of_cartesianHomotopy
+#print axioms intervalPostcompose_equivalence_of_cartesianHomotopy
+
+#check @quillenCfDerivedUnitMappingSpaceCondition_exists
+#print axioms quillenCfDerivedUnitMappingSpaceCondition_exists
+
+#check @quillenCfDerivedAdjunction_exists
+#print axioms quillenCfDerivedAdjunction_exists
+
+#check @parameterUnitHomMap
+#print axioms parameterUnitHomMap
+
+#check @parameterUnitHomMap_eq
+#print axioms parameterUnitHomMap_eq
+
+#check @parameterUnitHomMap_precomp
+#print axioms parameterUnitHomMap_precomp
+
+#check @parameterUnitHomMap_naturality_right
+#print axioms parameterUnitHomMap_naturality_right
+
+#check @parameterUnitHomMap_naturality_left
+#print axioms parameterUnitHomMap_naturality_left
+
+#check @functorHomPrecomp_bijective_of_innerAnodyne
+#print axioms functorHomPrecomp_bijective_of_innerAnodyne
+
+#check @exists_quasicategory_common_parameter
+#print axioms exists_quasicategory_common_parameter
+
+#check @parameterUnitHomMap_bijective
+#print axioms parameterUnitHomMap_bijective
+
+#check @parameterUnitHomEquiv
+#print axioms parameterUnitHomEquiv
+
+#check @ihomUncurry_functorVertex
+#print axioms ihomUncurry_functorVertex
+
+#check @functorHomUncurry
+#print axioms functorHomUncurry
+
+#check @functorHomUncurry_bijective
+#print axioms functorHomUncurry_bijective
+
+#check @functorHomUncurry_comp
+#print axioms functorHomUncurry_comp
+
+#check @functorHomUncurry_postcomp
+#print axioms functorHomUncurry_postcomp
+
+#check @postcompositionHomotopy
+#print axioms postcompositionHomotopy
+
+#check @postcompositionUnitHomotopy
+#print axioms postcompositionUnitHomotopy
+
+#check @functorHomUncurry_unit_precomp
+#print axioms functorHomUncurry_unit_precomp
+
+#check @parameterUnitHomMap_uncurry
+#print axioms parameterUnitHomMap_uncurry
+
+#check @parameterUnitHomMap_postcomposition_bijective
+#print axioms parameterUnitHomMap_postcomposition_bijective
+
+#check @qcatUnitHomMap_postcomposition_bijective
+#print axioms qcatUnitHomMap_postcomposition_bijective
+
+#check @postcompositionAdjunctionOfUnitHomotopy
+#print axioms postcompositionAdjunctionOfUnitHomotopy
+
+#check @postcompositionAdjunctionOfUnitHomotopy_unitHom
+#print axioms postcompositionAdjunctionOfUnitHomotopy_unitHom
+
+#check @postcompositionAdjunction
+#print axioms postcompositionAdjunction
+
+#check @rightKanHomMap_parameterUnitHomMap
+#print axioms rightKanHomMap_parameterUnitHomMap
+
+#check @rightKanHomUniversal_postcomp_of_unitCondition
+#print axioms rightKanHomUniversal_postcomp_of_unitCondition
+
+#check @intervalReverseFamily_postcomp
+#print axioms intervalReverseFamily_postcomp
+
+#check @intervalOppositeIso_naturality
+#print axioms intervalOppositeIso_naturality
+
+#check @intervalFunctorMap_op_isQCatEquivalence
+#print axioms intervalFunctorMap_op_isQCatEquivalence
+
+#check @pinchedHomMap_equivalence_of_intervalFunctorMap
+#print axioms pinchedHomMap_equivalence_of_intervalFunctorMap
+
+#check @relativeTerminal_of_intervalFunctorMap
+#print axioms relativeTerminal_of_intervalFunctorMap
+
+#check @terminalBoundaryLifting_of_parameterHom_bijective
+#print axioms terminalBoundaryLifting_of_parameterHom_bijective
+
+#check @initialBoundaryLifting_op_of_terminal
+#print axioms initialBoundaryLifting_op_of_terminal
+
+#check @relativeTerminal_of_terminalBoundaryLifting
+#print axioms relativeTerminal_of_terminalBoundaryLifting
+
+#check @homMap_bijective_of_terminalBoundaryLifting
+#print axioms homMap_bijective_of_terminalBoundaryLifting
+
+#check @ihomUncurry_precomp
+#print axioms ihomUncurry_precomp
+
+#check @parameterRightKanIdentity_of_terminalBoundary
+#print axioms parameterRightKanIdentity_of_terminalBoundary
+
+#check @rightKanIdentity_postcomp
+#print axioms rightKanIdentity_postcomp
+
+#check @functorHomUncurry_precomp
+#print axioms functorHomUncurry_precomp
+
+#check @constantHom_precomp_bijective_of_parameterRightKan
+#print axioms constantHom_precomp_bijective_of_parameterRightKan
+
+#check @terminalBoundaryLifting_pre_postcomp_of_unitCondition
+#print axioms terminalBoundaryLifting_pre_postcomp_of_unitCondition
+
+#check @mapJoinCone_isLimit_of_adjunction
+#print axioms mapJoinCone_isLimit_of_adjunction
+
+#check @hasLimit_postcomp_of_adjunction
+#print axioms hasLimit_postcomp_of_adjunction
+
+#check @quillenCfRightDerived_mapJoinCone_isLimit
+#print axioms quillenCfRightDerived_mapJoinCone_isLimit
+
+#check @quillenCfRightDerived_hasLimit_postcomp
+#print axioms quillenCfRightDerived_hasLimit_postcomp
