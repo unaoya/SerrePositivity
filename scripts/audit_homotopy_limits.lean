@@ -10201,3 +10201,117 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfCollageTop_projection
 #print axioms quillenCfCollageTop_projection
+
+#check @enrichedFullSubcategoryInclusion
+#print axioms enrichedFullSubcategoryInclusion
+
+#check @enrichedFullSubcategoryLift
+#print axioms enrichedFullSubcategoryLift
+
+#check @enrichedFullSubcategoryLift_comp
+#print axioms enrichedFullSubcategoryLift_comp
+
+#check @enrichedFullSubcategoryFunctorEquiv
+#print axioms enrichedFullSubcategoryFunctorEquiv
+
+#check @enrichedFullSubcategoryInclusion_comp_injective
+#print axioms enrichedFullSubcategoryInclusion_comp_injective
+
+#check @coherentFullSubcategoryInclusion
+#print axioms coherentFullSubcategoryInclusion
+
+#check @coherentFullSubcategoryInclusion_mono
+#print axioms coherentFullSubcategoryInclusion_mono
+
+#check @coherentFullSubcategoryLiftSimplex
+#print axioms coherentFullSubcategoryLiftSimplex
+
+#check @coherentFullSubcategoryLiftSimplex_inclusion
+#print axioms coherentFullSubcategoryLiftSimplex_inclusion
+
+#check @coherentFullSubcategoryLift
+#print axioms coherentFullSubcategoryLift
+
+#check @coherentFullSubcategoryLift_inclusion
+#print axioms coherentFullSubcategoryLift_inclusion
+
+#check @coherentFullSubcategoryFiberInverse
+#print axioms coherentFullSubcategoryFiberInverse
+
+#check @coherentFullSubcategoryFiberIso
+#print axioms coherentFullSubcategoryFiberIso
+
+#check @coherentFullSubcategoryFiberIso_hom_ι
+#print axioms coherentFullSubcategoryFiberIso_hom_ι
+
+#check @quillenCfEndpointObjects
+#print axioms quillenCfEndpointObjects
+
+#check @QuillenCfEndpointCategory
+#print axioms QuillenCfEndpointCategory
+
+#check @quillenCfCollageProjection_vertex_eq_iff
+#print axioms quillenCfCollageProjection_vertex_eq_iff
+
+#check @quillenCfEndpointInclusion_projection
+#print axioms quillenCfEndpointInclusion_projection
+
+#check @quillenCfEndpointFiberIso
+#print axioms quillenCfEndpointFiberIso
+
+#check @quillenCfEndpointFiberIso_hom_ι
+#print axioms quillenCfEndpointFiberIso_hom_ι
+
+#check @quillenCfBottomEndpoint_wrong
+#print axioms quillenCfBottomEndpoint_wrong
+
+#check @quillenCfBottomToEndpoint
+#print axioms quillenCfBottomToEndpoint
+
+#check @quillenCfBottomFromEndpoint
+#print axioms quillenCfBottomFromEndpoint
+
+#check @quillenCfBottomToFromEndpoint
+#print axioms quillenCfBottomToFromEndpoint
+
+#check @quillenCfBottomFromToEndpoint
+#print axioms quillenCfBottomFromToEndpoint
+
+#check @quillenCfBottomEndpointNerveIso
+#print axioms quillenCfBottomEndpointNerveIso
+
+#check @quillenCfBottomFiberIso
+#print axioms quillenCfBottomFiberIso
+
+#check @quillenCfTopEndpoint_wrong
+#print axioms quillenCfTopEndpoint_wrong
+
+#check @quillenCfTopToEndpoint
+#print axioms quillenCfTopToEndpoint
+
+#check @quillenCfTopFromEndpoint
+#print axioms quillenCfTopFromEndpoint
+
+#check @quillenCfTopToFromEndpoint
+#print axioms quillenCfTopToFromEndpoint
+
+#check @quillenCfTopFromToEndpoint
+#print axioms quillenCfTopFromToEndpoint
+
+#check @quillenCfTopEndpointNerveIso
+#print axioms quillenCfTopEndpointNerveIso
+
+#check @quillenCfTopFiberIso
+#print axioms quillenCfTopFiberIso
+
+#check @quillenCfBottomToEndpoint_inclusion
+#print axioms quillenCfBottomToEndpoint_inclusion
+
+#check @quillenCfBottomFiberIso_hom_ι
+#print axioms quillenCfBottomFiberIso_hom_ι
+
+#check @quillenCfTopToEndpoint_inclusion
+#print axioms quillenCfTopToEndpoint_inclusion
+
+#check @quillenCfTopFiberIso_hom_ι
+#print axioms quillenCfTopFiberIso_hom_ι

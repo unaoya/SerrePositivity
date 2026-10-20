@@ -28,9 +28,11 @@
   `QuillenCfReplacementHom` は元の右像の cofibrant 置換と左像の fibrant 置換が cf であること、および同じ比較射上の Hom の trivial Kan 性を証明。
   `QuillenCfCollage`・`QuillenCfCollageInclusions` は既存の有向豊穣 collage を cf 対象へ制限し、同段・混合・空の逆向き Hom の Kan 性、実際の nerve の quasicategory 性と両側の豊穣包含・nerve 写像を構成。ambient 全体の局所 Kan 性は仮定しない。
   `CoherentThinNerveMap`・`QuillenCfCollageProjection` は元の二段関手を全次数の coherent nerve の射へ延長し、二次切断・頂点の作用を照合。cf 対応圏の Δ¹ への射影、両包含との合成が対応する端点への定値射である厳密な式と inner fibration 性を証明。
-  一般の Quillen 随伴からの導来 ∞ 随伴、cf 対応圏の両 fiber の同定と Cartesian・coCartesian 条件、右導来関手の一般 coherent 極限保存は未完了。
+  `EnrichedFullSubcategoryRestriction`・`CoherentFullSubcategoryRestriction` は頂点条件を持つ元の coherent な写像を同じ全充満部分圏へ制限し、元の包含との厳密な一致・包含の単射性と fiber の同型を構成。
+  `QuillenCfEndpointFiber`・`QuillenCfEndpointEquivalence` は実際の区間射影の両端 fiber を元の C・D の cf 対象圏の coherent nerve と同型で同定。同型の全空間への合成は、構成済みの元の両包含に厳密に一致する。
+  一般の Quillen 随伴からの導来 ∞ 随伴、cf 対応圏の Cartesian・coCartesian 条件、右導来関手の一般 coherent 極限保存は未完了。
 - **残り**（依存順、時間は再開後の概算）：
-  1. N-2：構成済みの区間射影の両 fiber を cf nerve と同定し、Cartesian・coCartesian の持ち上げ条件を証明。HTT 5.2.4.4〜6、8〜20時間。
+  1. N-2：両 fiber を同定済みの区間射影について、Cartesian・coCartesian の持ち上げ条件を証明。HTT 5.2.4.4〜6、8〜20時間。
   2. N-2：F1b の随伴 API へ比較を入力し、導来 ∞ 随伴の単位・余単位・三角整合性と右 Quillen 関手の ∞ 極限保存。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
   3. N-3：Sp へ適用し、Tot・hG・fiber 列を Sp の ∞ 極限と照合（Sp レーンと共同）。BF §3、HA §1.4、16〜40時間。
   4. E2b へ γ4 を提供し、Alg_E と忘却関手へ適用。E2a の現状は下記、HTT 1.1.5.10・5.2.4.6、16〜40時間。
@@ -63,11 +65,13 @@
   `HomotopyLimits.quillenCfCollageBottomNerve`、`HomotopyLimits.quillenCfCollageTopNerve`、
   `HomotopyLimits.quillenCfCollageProjection`、`HomotopyLimits.quillenCfCollageProjection_vertex`、
   `HomotopyLimits.quillenCfCollageProjection_innerFibration`、
-  `HomotopyLimits.quillenCfCollageBottom_projection`、`HomotopyLimits.quillenCfCollageTop_projection`。
+  `HomotopyLimits.quillenCfCollageBottom_projection`、`HomotopyLimits.quillenCfCollageTop_projection`、
+  `HomotopyLimits.quillenCfBottomFiberIso`、`HomotopyLimits.quillenCfTopFiberIso`、
+  `HomotopyLimits.quillenCfBottomFiberIso_hom_ι`、`HomotopyLimits.quillenCfTopFiberIso_hom_ι`。
 - **依存と提供**：F1・F1b（coherent Hom・随伴）、F2 の coherent 余極限、HomotopyFunctionComplex の frame・局所化、Stable、KST/Spectra を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけとし、実施記録はコミットメッセージ。
-- **未コミット**：今回の薄い標的への coherent nerve の射・cf 対応圏の区間射影と両端の一致・inner fibration 性の2モジュール14宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンのファイルと共有計画の他節は保存対象外。
+- **未コミット**：今回の全充満部分圏への豊穣・coherent 制限と、両端 fiber と元の cf 圏の厳密な同型の4モジュール38宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンのファイルと共有計画の他節は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は修正版が正しい場所にコミット済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：N の対象ビルド・監査に失敗なし。新規 sorry・追加公理なし。一般 γ4 の構成が未完了。
   `AdjunctionHomLimits.SimplicialAdjunctionHomIso` は y に全単体で自然だが、x の高次豊穣自然性は要求しない。これだけで一般の ∞ 随伴の完成と数えない。
@@ -75,12 +79,13 @@
   `FixedSimplicialPushoutProduct` は simplicial model の標準互換条件という明示入力。通常の Quillen 随伴だけからは導かず、Sp・E2b への適用時に証明する。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。一般モデル圏・一般図式の cf 置換と高次整合性は別途証明する。
   他レーンの import 閉包が壊れたら回避せず停止し、他レーンの作業中変更は保存しない。
-- **次の一手**：N-2。構成済みの区間射影の両 fiber と cf nerve の同型を構成し、同じ包含での厳密な一致を証明する。
+- **次の一手**：N-2。元の cf 置換比較から混合辺を作り、構成済みの区間射影に関する Cartesian・coCartesian 性を外側ホーンの持ち上げへ接続する。
   原典は [HTT 5.2.4.4〜6・Remark 5.2.4.7](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=371)（閲覧・本文照合済み）。5.2.4.6 は simplicial model categories と simplicial Quillen adjunction の命題で、cf 部分対応圏の nerve が両 fibration になることを示す。
   混合 Hom は Map_C(c,Rd)。右持ち上げは Q(Rd)→Rd、左持ち上げは Lc の fibrant 置換を使う。左側の照合には Map_C(c,Rd)≅Map_D(Lc,d) の豊穣自然性・合成との整合を入力し、通常の随伴だけで代用しない。
   `KST/SConstruction/EnrichedFunctorCollage.lean`・`EnrichedFunctorCollageNerve.lean` は読み取り専用。追加コードは N 所有範囲に置く。
-  両端の正確な型は `vertexFiber quillenCfCollageProjection (stdSimplex.obj₀Equiv.symm i)`。構成済みの両包含の合成式で fiber へ制限し、元の simplex の全対象が同段であることから逆を構成する。`F1/ScaffoldFiniteTotalFibers.vertexFiber_isPullback` も使用可能。
-  `F1/CoherentMapSmallness.coherentMap_simplex_obj` で各 enriched simplex の対象を頂点へ戻せる。射影の頂点式で同段性を回収し、元の同段 Hom の恒等写像から逆を作る。
+  両端の同型は `quillenCfBottomFiberIso`・`quillenCfTopFiberIso` とその `_hom_ι` で完成済み。fiber 同定・元の包含との照合を再実装しない。
+  `F1/CartesianEdge.lean` の `IsCartesianEdge`・`IsCocartesianEdge` は指定最終・先頭辺を固定した外側ホーンの相対持ち上げの定義。Hom の trivial Kan 射だけでこの述語を満たしたとは扱わない。`Coherent/HornHollow.lean` 等の内ホーン証明の端点条件を確認し、外側ホーンへ無条件に流用しない。
+  `F1/CocartesianCosliceConverse.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration` は相対 coslice 制限の trivial Kan 性との同値を提供する。Cartesian 側は反転で使えるか確認する。これは通常の豊穣 Hom 射と別の写像なので、混同しない。
   F1b の Cartesian/coCartesian と随伴 API の接続を調べる。`QCatFunctorHomCorrespondence` を使う場合は任意の quasicategory パラメータ A の整合が必要。普通の対象ごとの Hom 同型だけで随伴完成とは数えない。
   F1b `Localization.lean` の `IsLocalization` は普遍性の定義で、任意 W の局所化の存在までは主張しない。一般モデル圏の ∞ 局所化が既存という前提で証明を進めない。
   今回の標準導来 Hom 比較列は自然変換として保持済み。cf 対応圏・混合 Hom の照合、π₀ の通常導来随伴との一致、右導来関手の coherent 極限保存へ使用する。
