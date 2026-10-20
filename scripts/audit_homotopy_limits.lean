@@ -10858,3 +10858,30 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfCollageProjection_cartesianFibration
 #print axioms quillenCfCollageProjection_cartesianFibration
+
+#check @unreversePrism_postcomp
+#print axioms unreversePrism_postcomp
+
+#check @unreversePrism_base
+#print axioms unreversePrism_base
+
+#check @unreversePrism_vertical_isCartesian
+#print axioms unreversePrism_vertical_isCartesian
+
+#check @cartesianEdgeTransport
+#print axioms cartesianEdgeTransport
+
+#check @cartesianEdgeTransport_witness
+#print axioms cartesianEdgeTransport_witness
+
+#check @quillenCfLeftDerived
+#print axioms quillenCfLeftDerived
+
+#check @quillenCfLeftDerived_transport
+#print axioms quillenCfLeftDerived_transport
+
+#check @quillenCfRightDerived
+#print axioms quillenCfRightDerived
+
+#check @quillenCfRightDerived_transport
+#print axioms quillenCfRightDerived_transport
