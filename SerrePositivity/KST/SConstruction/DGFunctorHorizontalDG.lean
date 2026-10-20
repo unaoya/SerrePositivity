@@ -48,7 +48,8 @@ private lemma tensorQuadComposition {A : Type u} [CommRing A]
       (ιTensorObj P Q p q (p + q) rfl (a ⊗ₜ[A] b))
       (ιTensorObj R S r s (r + s) rfl (c ⊗ₜ[A] d)))).symm
 
-private lemma tensorDGComposition {A : Type u} [CommRing A]
+/-- tensor dg 圏からの Hom 写像の合成保存を四つの純斉次元で判定する。 -/
+lemma dgTensorComposition_of_elements {A : Type u} [CommRing A]
     {C D E : Type*} [DGCategory A C] [DGCategory A D] [DGCategory A E]
     (x y z : DGTensorCategory A C D) (X Y Z : E)
     (f : (x ⟶[Complex A] y) ⟶ (X ⟶[Complex A] Y))
@@ -97,7 +98,7 @@ lemma dgFunctorHorizontal_tensor_composition
       (dgFunctorHorizontal A D E B x.1 y.1 x.2 y.2 ⊗ₘ
         dgFunctorHorizontal A D E B y.1 z.1 y.2 z.2) ≫
           dgFunctorComposition A D B (x.1.comp x.2) (y.1.comp y.2) (z.1.comp z.2) := by
-  exact tensorDGComposition x y z (x.1.comp x.2) (y.1.comp y.2) (z.1.comp z.2)
+  exact dgTensorComposition_of_elements x y z (x.1.comp x.2) (y.1.comp y.2) (z.1.comp z.2)
     (dgFunctorHorizontal A D E B x.1 y.1 x.2 y.2)
     (dgFunctorHorizontal A D E B y.1 z.1 y.2 z.2)
     (dgFunctorHorizontal A D E B x.1 z.1 x.2 z.2)

@@ -26,7 +26,8 @@ private lemma forward_smul_right {A : Type u} [CommRing A] {E : Type*} [DGCatego
     (hn : p + q = n) (c : ℤˣ) : forward A f (c • g) hn = c • forward A f g hn := by
   simp only [forward, Units.smul_def, TensorProduct.tmul_smul, map_zsmul]
 
-private lemma middleInterchange {A : Type u} [CommRing A] {E : Type*} [DGCategory A E]
+/-- 斉次四重合成で、中間二射の符号つき交換を全体へ移す。 -/
+lemma dgMiddleInterchange {A : Type u} [CommRing A] {E : Type*} [DGCategory A E]
     {x₀ x₁ x₂ x₁' x₃ x₄ : E} {p q r s n : ℤ}
     (a : GradedHom A x₀ x₁ p) (b : GradedHom A x₁ x₂ q)
     (c : GradedHom A x₂ x₃ r) (d : GradedHom A x₃ x₄ s)
@@ -62,7 +63,7 @@ lemma dgFunctorHorizontalElement_interchange
   intro x
   simp only [dgFunctorHomπ_forward, dgFunctorHorizontalElement_π,
     Units.smul_def, map_zsmul, DGFunctor.map_forward]
-  exact middleInterchange _ _ _ _ _ _ _
+  exact dgMiddleInterchange _ _ _ _ _ _ _
     (dgFunctorHomElement_naturality A E B b
       ((dgFunctorHomπ A D E F₁ F₂ x).f r c) rfl).symm hn
 

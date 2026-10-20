@@ -1228,4 +1228,8 @@ public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputHomComposi
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHom
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomComposition
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGLabelAction
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorHom
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorComposition
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorAction
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorRestrictions
 /-! # ∞-S• 構成と連結 K 理論 -/

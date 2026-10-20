@@ -17338,4 +17338,41 @@ namespace SerrePositivity.KST.SConstruction
 #check presentedPerfectDGLabelAction_map
 #print axioms presentedPerfectDGLabelAction_map
 
+#check dgMiddleInterchange
+#print axioms dgMiddleInterchange
+#check dgTensorComposition_of_elements
+#print axioms dgTensorComposition_of_elements
+#check dgEnrichedUnitsMultiply
+#print axioms dgEnrichedUnitsMultiply
+#check presentedPerfectDGTensorHom
+#print axioms presentedPerfectDGTensorHom
+#check presentedPerfectDGTensorHom_other
+#print axioms presentedPerfectDGTensorHom_other
+#check presentedPerfectDGTensorHom_apply
+#print axioms presentedPerfectDGTensorHom_apply
+#check presentedPerfectDGInputHom_naturality_apply
+#print axioms presentedPerfectDGInputHom_naturality_apply
+#check presentedPerfectDGTensorHom_interchange
+#print axioms presentedPerfectDGTensorHom_interchange
+#check tensorActionSourceEnrichment
+#print axioms tensorActionSourceEnrichment
+#check presentedPerfectDGTensorHom_composition
+#print axioms presentedPerfectDGTensorHom_composition
+#check tensorActionFunctorEnrichment
+#print axioms tensorActionFunctorEnrichment
+#check presentedPerfectDGTensorHom_identity
+#print axioms presentedPerfectDGTensorHom_identity
+#check presentedPerfectDGTensorAction
+#print axioms presentedPerfectDGTensorAction
+#check presentedPerfectDGTensorAction_map
+#print axioms presentedPerfectDGTensorAction_map
+#check presentedPerfectDGTensorHom_first
+#print axioms presentedPerfectDGTensorHom_first
+#check presentedPerfectDGTensorHom_second
+#print axioms presentedPerfectDGTensorHom_second
+#check presentedPerfectDGTensorAction_first
+#print axioms presentedPerfectDGTensorAction_first
+#check presentedPerfectDGTensorAction_second
+#print axioms presentedPerfectDGTensorAction_second
+
 end SerrePositivity.KST.SConstruction

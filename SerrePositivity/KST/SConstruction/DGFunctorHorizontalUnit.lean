@@ -22,7 +22,8 @@ private lemma tensorUnitCompose {A : Type u} [CommRing A] {U V X Y Z : Complex A
       (λ_ (𝟙_ (Complex A))).inv ≫ ((a ≫ r) ⊗ₘ (b ≫ s)) ≫ c := by
   simp only [tensorHom_comp_tensorHom_assoc]
 
-private lemma enrichedUnitsMultiply {A : Type u} [CommRing A]
+/-- 二つの同じ閉単位の tensor 合成は、元の豊穣単位を回収する。 -/
+lemma dgEnrichedUnitsMultiply {A : Type u} [CommRing A]
     {C : Type*} [DGCategory A C] (X : C) :
     (λ_ (𝟙_ (Complex A))).inv ≫ (eId (Complex A) X ⊗ₘ eId (Complex A) X) ≫
       eComp (Complex A) X X X = eId (Complex A) X := by
@@ -43,7 +44,7 @@ lemma dgFunctorHorizontal_identity (F : DGFunctor A D E) (G : DGFunctor A E B) :
         dgFunctorComposition A D B (F.comp G) (F.comp G) (F.comp G)) = _
   refine (tensorUnitCompose _ _ _ _ _).trans ?_
   rw [dgFunctorHomPost_identity A D E B G F, dgFunctorHomPre_identity A E B D F G]
-  exact enrichedUnitsMultiply (F.comp G)
+  exact dgEnrichedUnitsMultiply (F.comp G)
 
 local instance horizontalSourceTensorEnrichment :
     DGCategory A (DGTensorCategory A (DGFunctor A D E) (DGFunctor A E B)) :=
