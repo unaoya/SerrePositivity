@@ -10654,3 +10654,54 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @finalHornFrontThroughIso_postcomposition
 #print axioms finalHornFrontThroughIso_postcomposition
+
+#check @enrichedMap_comp_transport
+#print axioms enrichedMap_comp_transport
+
+#check @hornFaceRetractionFunctor
+#print axioms hornFaceRetractionFunctor
+
+#check @hornFaceRetractionFunctor_obj
+#print axioms hornFaceRetractionFunctor_obj
+
+#check @hornFaceRetractionFunctor_map
+#print axioms hornFaceRetractionFunctor_map
+
+#check @hornHomViaFace_comp_general
+#print axioms hornHomViaFace_comp_general
+
+#check @finalHornAppend
+#print axioms finalHornAppend
+
+#check @finalHornAppend_obj
+#print axioms finalHornAppend_obj
+
+#check @finalHornAppend_avoids
+#print axioms finalHornAppend_avoids
+
+#check @finalHornAppend_through
+#print axioms finalHornAppend_through
+
+#check @finalHornAppend_comp
+#print axioms finalHornAppend_comp
+
+#check @finalHornAppend_postcomposition_viaFace
+#print axioms finalHornAppend_postcomposition_viaFace
+
+#check @finalHornFrontZeroHom_postcomposition
+#print axioms finalHornFrontZeroHom_postcomposition
+
+#check @finalHornFrontCompositionHom_postcomposition
+#print axioms finalHornFrontCompositionHom_postcomposition
+
+#check @finalHornFrontBoundaryHom_postcomposition
+#print axioms finalHornFrontBoundaryHom_postcomposition
+
+#check @finalHornFrontHom_extension
+#print axioms finalHornFrontHom_extension
+
+#check @finalHornUnknownHom_extension
+#print axioms finalHornUnknownHom_extension
+
+#check @finalHornFrontHom_postcomposition_composition
+#print axioms finalHornFrontHom_postcomposition_composition
