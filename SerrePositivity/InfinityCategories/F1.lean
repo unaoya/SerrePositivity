@@ -1288,3 +1288,13 @@ public import SerrePositivity.InfinityCategories.F1.TwistedArrowSupportPairing
 public import SerrePositivity.InfinityCategories.F1.TwistedArrowExtensionDomain
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrowSupportRank
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowSimplexPairing
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowPairingRegular
+
+public import SerrePositivity.InfinityCategories.F1.StandardSimplexInnerFaceIndex
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowPairingInner
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowWeightExtension
