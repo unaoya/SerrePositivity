@@ -519,3 +519,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramSourcePiZer
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantProbeLocalization
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitConePiZeroSource
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerivedHomSource
+public import SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitLocalization
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomIso
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitAdjunction

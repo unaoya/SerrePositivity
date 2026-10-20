@@ -1884,6 +1884,27 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.constantProbeLocalizedNatIso_app,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConePiZeroEquiv_source,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedHomEquiv_source,
+      `SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction.leftHom,
+      `SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction.rightHom,
+      `SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction.restrict,
+      `SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction.descendHomIso,
+      `SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction.descendHomIso_hom_app,
+      `SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction.adjunctionOfHomIso,
+      `SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction.descendAdjunction,
+      `SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction.descendAdjunction_homEquiv_app,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagram_inverts,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimit_inverts,
+      `SerrePositivity.EInfinity.BarrattEccles.localizedConstantDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.localizedFramedLimit,
+      `SerrePositivity.EInfinity.BarrattEccles.localizedConstantDiagramComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.localizedFramedLimitComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitRawLeftHom,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitRawRightHom,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitRawHomIso,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitRestrictedHomIso,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv_comparison,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5102,3 +5123,41 @@ example {Y Z : (BarrattEccles.operad ℤ).Algebra} (f : Y ⟶ Z)
   let e := framedLimitConePiZeroEquiv ℤ ℕ Y F
   exact (congrArg e.symm (framedLimitConePiZeroEquiv_source ℤ ℕ f F z)).symm.trans
     (e.symm_apply_apply _)
+
+-- 元の普通の錐の局所化像を、局所化圏上の随伴の Hom 同値で同じ類へ戻せる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    (f : (Functor.const ℕ).obj Y ⟶ F) :
+    let := BarrattEccles.modelCategory ℤ
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+    (framedLimitAdjunction ℤ ℕ).homEquiv (Q.obj Y) (QD.obj F)
+        ((localizedConstantDiagramComparison ℤ ℕ).hom.app Y ≫ QD.map f) ≫
+      (localizedFramedLimitComparison ℤ ℕ).hom.app F =
+        framedLimitDerivedHomEquiv ℤ ℕ Y F (QD.map f) := by
+  let := BarrattEccles.modelCategory ℤ
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+  exact framedLimitAdjunction_homEquiv_comparison ℤ ℕ Y F (QD.map f)
+
+-- 元の対象の像に限らず、局所化圏の任意の二対象で実際の Hom の普遍性を使える。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example :
+    let := BarrattEccles.modelCategory ℤ
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    ∀ (X : (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Localization)
+      (Y : (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Localization)
+      (f : X ⟶ (localizedFramedLimit ℤ ℕ).obj Y),
+      ∃! g : (localizedConstantDiagram ℤ ℕ).obj X ⟶ Y,
+        (framedLimitAdjunction ℤ ℕ).homEquiv X Y g = f := by
+  let := BarrattEccles.modelCategory ℤ
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  dsimp only
+  intro X Y f
+  let e := (framedLimitAdjunction ℤ ℕ).homEquiv X Y
+  refine ⟨e.symm f, e.apply_symm_apply _, ?_⟩
+  intro g hg
+  exact (e.symm_apply_apply g).symm.trans (congrArg e.symm hg)
