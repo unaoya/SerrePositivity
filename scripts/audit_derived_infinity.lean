@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGCoherentSliceComparison
+import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrism
+import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrismProjection
+import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyPrism
 import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionComponents
 import SerrePositivity.InfinityCategories.Derived.PinchedHomStandardCoordinates
 import SerrePositivity.InfinityCategories.Derived.AWClosedComposition
@@ -2762,6 +2766,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.PinchedHomClosedComposition,
     `SerrePositivity.InfinityCategories.Derived.PinchedClosedStandardConstant,
     `SerrePositivity.InfinityCategories.Derived.PinchedHomCompositionHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentSliceComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrism,
+    `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrismProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyPrism,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteOreCompositionHomotopy,
     `SerrePositivity.InfinityCategories.Derived.PinchedHomComposition,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositeDiagram,
