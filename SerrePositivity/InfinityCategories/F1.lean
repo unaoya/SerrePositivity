@@ -1274,3 +1274,5 @@ public import SerrePositivity.InfinityCategories.F1.KanEnrichedHomIntervalPrecom
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCoherentFullyFaithful
 
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCoherentEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningFirstVertexCriterion
