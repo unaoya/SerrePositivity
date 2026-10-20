@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteUnitalTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteDiagramTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteTriangleConeFaces
 import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementTriangle
@@ -2190,10 +2191,36 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgVerdierTriangles_exists_closedRefinedVertexCone
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramFiniteTriangles_exists_vertexCone
 
+#print axioms SerrePositivity.InfinityCategories.dgSimplexDataInitialRefinement_pullback_initial
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_pullback_initial
+#print axioms SerrePositivity.InfinityCategories.dgDegeneracy_zero
+#print axioms SerrePositivity.InfinityCategories.dgPositiveDegeneracy_ne_zero
+#print axioms SerrePositivity.InfinityCategories.dgSimplexInitialRefinement_degeneracy_positive
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceTetrahedron_degeneracy_one
+#print axioms SerrePositivity.InfinityCategories.dgVerdierLegDegenerateTetrahedron
+#print axioms SerrePositivity.InfinityCategories.dgVerdierLegDegenerateTetrahedron_source
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.refine_degenerateLeg
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramIdentityEdgeCone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramIdentityEdgeCone_simplex
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.identityEdgeCone_simplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierEdgeConeTransport_simplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramNormalizeEdgeCone
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramNormalizeEdgeCone_identity_simplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramNormalizeEdgeCone_identity
+#print axioms SerrePositivity.InfinityCategories.DGVerdierClosedVertexRefinement.normalizedIdentityEdgeCone_simplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramFiniteTriangles_exists_unitalVertexCone
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementInitialMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementPositiveDegeneracies,
+    `SerrePositivity.InfinityCategories.Derived.RoofTetrahedronDegeneracy,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierDegenerateLegRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierIdentityEdgeCones,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierNormalizedEdgeCones,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteUnitalTwoCones,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierClosedVertexRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierClosedLegTriangles,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierClosedVertexLegs,
