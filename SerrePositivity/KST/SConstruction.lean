@@ -1292,4 +1292,9 @@ public import SerrePositivity.KST.SConstruction.SerreCubePrefixNaturality
 public import SerrePositivity.KST.SConstruction.SerreCubeFaceRelations
 public import SerrePositivity.KST.SConstruction.SerreCubeDegeneracyRelations
 public import SerrePositivity.KST.SConstruction.SerreCubeFaceDegeneracyRelations
+public import SerrePositivity.KST.SConstruction.TensorRightDeletion
+public import SerrePositivity.KST.SConstruction.SerreCubeConnectionDeletion
+public import SerrePositivity.KST.SConstruction.SerreCubeConnectionFarRelations
+public import SerrePositivity.KST.SConstruction.SerreCubeFaceConnectionFarRelations
+public import SerrePositivity.KST.SConstruction.SerreCubeConnectionDegeneracyFarRelations
 /-! # ∞-S• 構成と連結 K 理論 -/

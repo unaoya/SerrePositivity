@@ -17705,4 +17705,33 @@ namespace SerrePositivity.KST.SConstruction
 #check serreCubeFace_degeneracy_left
 #print axioms serreCubeFace_degeneracy_left
 
+#check tensorRightMultiplication_deletion
+#print axioms tensorRightMultiplication_deletion
+#check serreCubeConnection_degeneracy_zero
+#print axioms serreCubeConnection_degeneracy_zero
+#check serreCubeConnection_degeneracy
+#print axioms serreCubeConnection_degeneracy
+#check serreCubeConnection_degeneracy_other
+#print axioms serreCubeConnection_degeneracy_other
+#check serreCubeConnection_connection_far_zero
+#print axioms serreCubeConnection_connection_far_zero
+#check serreCubeConnection_connection_far
+#print axioms serreCubeConnection_connection_far
+#check serreCubeFace_connection_right_far_zero
+#print axioms serreCubeFace_connection_right_far_zero
+#check serreCubeFace_connection_right_far
+#print axioms serreCubeFace_connection_right_far
+#check serreCubeFace_connection_left_far_zero
+#print axioms serreCubeFace_connection_left_far_zero
+#check serreCubeFace_connection_left_far
+#print axioms serreCubeFace_connection_left_far
+#check serreCubeConnection_degeneracy_right_far_zero
+#print axioms serreCubeConnection_degeneracy_right_far_zero
+#check serreCubeConnection_degeneracy_right_far
+#print axioms serreCubeConnection_degeneracy_right_far
+#check serreCubeConnection_degeneracy_left_far_zero
+#print axioms serreCubeConnection_degeneracy_left_far_zero
+#check serreCubeConnection_degeneracy_left_far
+#print axioms serreCubeConnection_degeneracy_left_far
+
 end SerrePositivity.KST.SConstruction
