@@ -10315,3 +10315,81 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfTopFiberIso_hom_ι
 #print axioms quillenCfTopFiberIso_hom_ι
+
+#check @EnrichedAdjunctionHomComposition
+#print axioms EnrichedAdjunctionHomComposition
+
+#check @enrichedAdjunctionHom_precompose
+#print axioms enrichedAdjunctionHom_precompose
+
+#check @quillenCfMixedHomEquiv
+#print axioms quillenCfMixedHomEquiv
+
+#check @quillenCfMixedHomEquiv_eHom
+#print axioms quillenCfMixedHomEquiv_eHom
+
+#check @quillenCfMixedHomWhiskerLeft
+#print axioms quillenCfMixedHomWhiskerLeft
+
+#check @quillenCfMixedHomWhiskerRight
+#print axioms quillenCfMixedHomWhiskerRight
+
+#check @quillenCfMixedEdge_projection
+#print axioms quillenCfMixedEdge_projection
+
+#check @quillenCfRightLiftObject
+#print axioms quillenCfRightLiftObject
+
+#check @quillenCfRightLiftArrow
+#print axioms quillenCfRightLiftArrow
+
+#check @quillenCfRightLiftArrow_original
+#print axioms quillenCfRightLiftArrow_original
+
+#check @quillenCfRightLiftEdge
+#print axioms quillenCfRightLiftEdge
+
+#check @quillenCfRightLiftEdge_projection
+#print axioms quillenCfRightLiftEdge_projection
+
+#check @quillenCfRightLiftHom_trivialKanFibration
+#print axioms quillenCfRightLiftHom_trivialKanFibration
+
+#check @quillenCfLeftLiftObject
+#print axioms quillenCfLeftLiftObject
+
+#check @quillenCfLeftLiftArrow
+#print axioms quillenCfLeftLiftArrow
+
+#check @quillenCfLeftLiftArrow_original
+#print axioms quillenCfLeftLiftArrow_original
+
+#check @quillenCfLeftLiftEdge
+#print axioms quillenCfLeftLiftEdge
+
+#check @quillenCfLeftLiftEdge_projection
+#print axioms quillenCfLeftLiftEdge_projection
+
+#check @quillenCfLeftLiftHom_comparison
+#print axioms quillenCfLeftLiftHom_comparison
+
+#check @quillenCfLeftLiftHom_trivialKanFibration
+#print axioms quillenCfLeftLiftHom_trivialKanFibration
+
+#check @enrichedUnderlyingMap_eHom
+#print axioms enrichedUnderlyingMap_eHom
+
+#check @enrichedAdjunctionHom_postcompose
+#print axioms enrichedAdjunctionHom_postcompose
+
+#check @enrichedAdjunctionHom_toSimplicial
+#print axioms enrichedAdjunctionHom_toSimplicial
+
+#check @EnrichedAdjunctionHomComposition.homIso
+#print axioms EnrichedAdjunctionHomComposition.homIso
+
+#check @EnrichedAdjunctionHomComposition.hom_comp
+#print axioms EnrichedAdjunctionHomComposition.hom_comp
+
+#check @EnrichedAdjunctionHomComposition.hom_zero
+#print axioms EnrichedAdjunctionHomComposition.hom_zero
