@@ -555,3 +555,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_isContractibleKan_of_filtered
 #check @SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity
 #check @SerrePositivity.InfinityCategories.F2.isWeaklyContractible_sliceUnder_of_filtered
+
+#check @SerrePositivity.InfinityCategories.F2.nondegenerate_cover_cardinal_le
+#check @SerrePositivity.InfinityCategories.F2.isKappaSmall_of_cover
+#check @SerrePositivity.InfinityCategories.F2.smallJoinPiece
+#check @SerrePositivity.InfinityCategories.F2.finite_smallJoinPiece
+#check @SerrePositivity.InfinityCategories.F2.mkOfSum_mem_smallJoinPiece
+#check @SerrePositivity.InfinityCategories.F2.iSup_smallJoinPiece
+#check @SerrePositivity.InfinityCategories.F2.smallJoinPiece_index_small
+#check @SerrePositivity.InfinityCategories.F2.isKappaSmall_join
+#check @SerrePositivity.InfinityCategories.F2.nonempty_cocone_in_kappaFiltered_coslice
+#check @SerrePositivity.InfinityCategories.F2.isKappaFiltered_sliceUnder
+#check @SerrePositivity.InfinityCategories.F2.isWeaklyContractible_sliceUnder_of_kappaFiltered
+
+#check @SerrePositivity.InfinityCategories.F2.cosliceCoproductFst
+#check @SerrePositivity.InfinityCategories.F2.cosliceCoproductSnd
+#check @SerrePositivity.InfinityCategories.F2.cosliceCoproduct_isPullback
+#check @SerrePositivity.InfinityCategories.F2.isWeaklyContractible_pullback_cosliceProjections
+#check @SerrePositivity.InfinityCategories.F2.isRightCofinal_sliceUnderProjection_of_filtered

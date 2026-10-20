@@ -45,8 +45,8 @@
   零枝の span の入力の存在から零角の押し出し性を成分で判定し、両射影の IsExactFunctor を証明。始域の安定性は仮定しない。
   零源の cospan の極限を反転と枝の交換で構成。元の指定射を保つ全 fiber・cofiber の存在と零角の条件の一致を証明。
   laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
-- 第 2 部：連続 Kan 置換 Q の単位の anodyne 性・弱同値性、一般の filtered ∞ 圏と有限 coslice の弱可縮性を証明。
-  三集約同時ビルド 6729 jobs、公理監査 1327 宣言・同時 import 成功。cofinality と κ 版 coslice は残る。
+- 第 2 部：Q の単位の弱同値性、一般の弱可縮性、正則 κ の join・coslice、有限 coslice の射影の cofinality を証明。
+  三集約同時ビルド 6863 jobs、公理監査 1358 宣言・同時 import 成功。対角関手の cofinality と余極限の交換は残る。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -97,11 +97,10 @@
 
 ### 次の一手
 
-- F2N-1：κ-small join・κ 版 coslice の filtered 性を証明し、有限 coslice の弱可縮性を cofinality へ接続する。
+- F2N-1：対角関手の標準 comma と太い coslice の比較を作り、有限図式について right cofinality を証明。
 
-作成日：2026-10-18。正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と
-[foundations.md](foundations.md) §6・§8。本計画は目標・型・設計・現在地・主要宣言を管理し、
-実施の経緯はコミットメッセージに置く。
+正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と [foundations.md](foundations.md) §6・§8。
+本計画は目標・設計・現在地・主要宣言を管理し、実施記録はコミットメッセージに置く。
 
 ## 0. 目標と範囲
 
