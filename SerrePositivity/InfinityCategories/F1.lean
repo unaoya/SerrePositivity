@@ -1089,3 +1089,4 @@ public import SerrePositivity.InfinityCategories.F1.RelativeHomComparisonSpace
 public import SerrePositivity.InfinityCategories.F1.SimplicialPairLeftInclusion
 public import SerrePositivity.InfinityCategories.F1.RelativeHomSourceEvaluation
 public import SerrePositivity.InfinityCategories.F1.RelativeHomCoherentComparison
+public import SerrePositivity.InfinityCategories.F1.RelativeHomCoherentRecovery
