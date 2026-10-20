@@ -2152,6 +2152,55 @@ run_cmd do
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_arrow,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsAugmentation_arrow,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKObject,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKPiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKPiZeroEquiv_class,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraKanDKPiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraKanDKPiZeroEquiv_class,
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.liftedWeakEquivalences,
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.down,
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.up,
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.down_up,
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.up_down,
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.equivalence,
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.homEquiv,
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.homEquiv_map,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsLift_augmentation_zero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsAugmentation_comp_lift,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ_isLocalization,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomPiZeroEquiv,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomPiZeroEquiv_arrow,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ_inverts,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsLift,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsLift_fac,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ_comp_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsLift_comp_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationCounit_comp_componentsLift,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomKanUnitPiZeroEquiv,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationHomPiZeroEquiv,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationHomPiZeroEquiv_arrow,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_delta_zero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_delta_one,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorObject,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorObject_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject_generator,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_zero_arrow,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordEdge,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordClass,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor_arrow,
+      `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor_fac,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationFunctor,
@@ -6094,3 +6143,22 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
         (localizationArrowClass (cofibrantAlgebraRelativeCategory A) f) =
       (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q.map f := by
   exact localizationComponentsAugmentation_arrow (cofibrantAlgebraRelativeCategory A) f
+
+-- DK Hom の π₀ の圏は、任意の相対圏の元の指定矢の普通の局所化となる。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory) : (localizationComponentsQ C).IsLocalization C.weakEquivalences := by
+  exact localizationComponentsQ_isLocalization C
+
+-- CAlg_R の実際の Kan Hom と元の Map^h の π₀ 比較は、同じ元の代数射の類を回収する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
+    cofibrantAlgebraKanDKPiZeroEquiv A X Y
+        (SSet.mapπ₀ (SerrePositivity.KST.Comparison.exInfinityUnit.app
+          (localizationHom (cofibrantAlgebraRelativeCategory A)
+            (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
+          (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
+            ((ULiftHom.up.{e2ComplexLimitUniverse, e2ComplexLimitUniverse + 1,
+              e2ComplexLimitUniverse + 1} (C := CofibrantAlgebra A)).map f))) =
+      mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) := by
+  exact cofibrantAlgebraKanDKPiZeroEquiv_class A f

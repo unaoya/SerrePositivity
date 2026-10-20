@@ -885,7 +885,19 @@ E2b は Dwyer–Kan 型の自由単体的局所化で進める。
 `localizationComponentsAugmentation` は同じ普通の局所化への比較関手。
 `localizationArrowZero`・`localizationArrowClass` は元の射の一文字の列による零単体とその類。
 `localizationComponentsAugmentation_arrow` は同じ射の Q による局所化像を回収する。
-元の射からの π₀ の類の単位・合成保存と比較の同値性、DK と既存 Map^h の高次比較・局所化の普遍性、
+`localizationResolutionWordEdge` は元の自由な列とその合成の一文字の列を結ぶ実際の辺。
+その空列・二文字への代入から恒等・合成則を証明し、`localizationComponentsQ` を構成。
+`zeroLevelComponentsFunctor` は形式逆を含む零次の全射を同じ DK Hom の類へ送る。
+`localizationComponentsLift` は指定弱同値を反転する同じ生成関手の持ち上げ。
+`localizationComponentsEquivalence` は元の augmentation と同じ持ち上げの両逆による圏同値。
+`localizationComponentsQ_isLocalization` は普通の圏としての局所化の普遍性を与える。
+`localizationHomPiZeroEquiv` と `kanLocalizationHomPiZeroEquiv` は実際の raw・Kan Hom の π₀ を
+同じ普通の局所化 Hom と同定し、元の射の類の Q への正規化も保持する。
+`FrameHom.ULiftRelativeLocalization` は同じ up・down の厳密な局所化による Hom 宇宙の比較。
+`BarrattEccles.cofibrantAlgebraDKPiZeroEquiv` と `cofibrantAlgebraKanDKPiZeroEquiv` は
+元の cofibrant E 代数の既存 Map^h と raw・Kan DK Hom の π₀ の同値で、
+各 `_class` は元の同じ代数射・単位・零単体の類の照合を与える。
+DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
 
 原典：
