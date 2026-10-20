@@ -17830,3 +17830,52 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_eq_iff
 #check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_comp
 #print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_comp
+
+#check @SerrePositivity.KST.SConstruction.CubeActive
+#print axioms SerrePositivity.KST.SConstruction.CubeActive
+#check @SerrePositivity.KST.SConstruction.cubeVertexAtom_le
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexAtom_le
+#check @SerrePositivity.KST.SConstruction.cubeJoinMap_exists_active
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinMap_exists_active
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp
+#check @SerrePositivity.KST.SConstruction.CubeSupportOrdered
+#print axioms SerrePositivity.KST.SConstruction.CubeSupportOrdered
+#check @SerrePositivity.KST.SConstruction.cubeSupportOrdered_comp
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOrdered_comp
+#check @SerrePositivity.KST.SConstruction.cubeActive_id
+#print axioms SerrePositivity.KST.SConstruction.cubeActive_id
+#check @SerrePositivity.KST.SConstruction.cubeActive_face
+#print axioms SerrePositivity.KST.SConstruction.cubeActive_face
+#check @SerrePositivity.KST.SConstruction.cubeActive_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.cubeActive_degeneracy
+#check @SerrePositivity.KST.SConstruction.cubeActive_connection
+#print axioms SerrePositivity.KST.SConstruction.cubeActive_connection
+#check @SerrePositivity.KST.SConstruction.cubeSupportOrdered_id
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOrdered_id
+#check @SerrePositivity.KST.SConstruction.cubeSupportOrdered_face
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOrdered_face
+#check @SerrePositivity.KST.SConstruction.cubeSupportOrdered_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOrdered_degeneracy
+#check @SerrePositivity.KST.SConstruction.cubeActive_connection_bounds
+#print axioms SerrePositivity.KST.SConstruction.cubeActive_connection_bounds
+#check @SerrePositivity.KST.SConstruction.cubeSupportOrdered_connection
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOrdered_connection
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_support_ordered
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_support_ordered
+#check @SerrePositivity.KST.SConstruction.cubeSupportOrdered_output_unique
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOrdered_output_unique
+#check @SerrePositivity.KST.SConstruction.cubeJoinNormalFormSupport
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinNormalFormSupport
+#check @SerrePositivity.KST.SConstruction.mem_cubeJoinNormalFormSupport
+#print axioms SerrePositivity.KST.SConstruction.mem_cubeJoinNormalFormSupport
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_ordered
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_ordered
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_output_unique
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_output_unique
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_pairwise_disjoint
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_pairwise_disjoint
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp_iff
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp_iff
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_comp
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_comp

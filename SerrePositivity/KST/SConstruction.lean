@@ -1306,4 +1306,8 @@ public import SerrePositivity.KST.SConstruction.ConcreteCubeSignature
 public import SerrePositivity.KST.SConstruction.CubeJoinTerm
 public import SerrePositivity.KST.SConstruction.CubeJoinNormalForm
 public import SerrePositivity.KST.SConstruction.ConcreteCubeJoinNormalForm
+public import SerrePositivity.KST.SConstruction.CubeActiveSupport
+public import SerrePositivity.KST.SConstruction.CubeGeneratorSupport
+public import SerrePositivity.KST.SConstruction.CubeOrderedNormalForm
+public import SerrePositivity.KST.SConstruction.CubeSupportComposition
 /-! # ∞-S• 構成と連結 K 理論 -/
