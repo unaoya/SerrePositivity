@@ -1066,4 +1066,7 @@ public import SerrePositivity.KST.SConstruction.SquareTriangleHomotopy
 public import SerrePositivity.KST.SConstruction.TracedTripleGeometricPrefixComparison
 public import SerrePositivity.KST.SConstruction.TracedTripleGeometricRawComparisonStages
 public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationCylinderComparison
+public import SerrePositivity.KST.SConstruction.TracedTripleGeometricPrefixStructureComparison
+public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationCylinderComparisonOver
+public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationOutputComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
