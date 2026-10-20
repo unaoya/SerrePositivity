@@ -4544,3 +4544,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.strictTransportWeightedEnriched
 #check @SerrePositivity.InfinityCategories.strictTransportWeightedEnriched_over
 #check @SerrePositivity.InfinityCategories.leftStrictTransportReconstructionHomFamilyIso
+#check @SerrePositivity.InfinityCategories.relativeHomComparisonUnit
+#check @SerrePositivity.InfinityCategories.relativeHomComparisonHom
+#check @SerrePositivity.InfinityCategories.relativeHomComparison_component
+#check @SerrePositivity.InfinityCategories.relativeFunctorOverPre_eq_homComposition
+#check @SerrePositivity.InfinityCategories.relativeHomComparisonHom_component
+#check @SerrePositivity.InfinityCategories.relativeHomComparisonHom_comparison
+#check @SerrePositivity.InfinityCategories.relativeHomComparisonHom_pre
+#check @SerrePositivity.InfinityCategories.relativeHomComparisonEquiv
