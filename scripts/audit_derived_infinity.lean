@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGAlgebraMoritaInfinity
+import SerrePositivity.InfinityCategories.Derived.DGFunctorHomologyDetection
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorHomologyDetection
+import SerrePositivity.InfinityCategories.Derived.DGModuleMoritaInfinity
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveDerivedComparison
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveResolutionIso
 import SerrePositivity.InfinityCategories.Derived.DGAlgebraExtensionInfinity
 import SerrePositivity.InfinityCategories.Derived.DGFullFunctorRestriction
 import SerrePositivity.InfinityCategories.Derived.DGFullInclusionExactReflection
@@ -2901,6 +2907,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGAlgebraMoritaInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorHomologyDetection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorHomologyDetection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleMoritaInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveDerivedComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveResolutionIso,
     `SerrePositivity.InfinityCategories.Derived.DGAlgebraExtensionInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGFullFunctorRestriction,
     `SerrePositivity.InfinityCategories.Derived.DGFullInclusionExactReflection,
