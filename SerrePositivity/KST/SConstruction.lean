@@ -862,4 +862,14 @@ public import SerrePositivity.KST.SConstruction.FamilyCylinderTriangleComparison
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeComparisonAdjustment
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeComparisonCompatibility
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeComparisonImages
+public import SerrePositivity.KST.SConstruction.FamilyCylinderBoundaryAdjustment
+public import SerrePositivity.KST.SConstruction.FixedBoundaryHomotopyComposition
+public import SerrePositivity.KST.SConstruction.FixedBoundaryMappingSpace
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeBFComparison
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeRawComparison
+public import SerrePositivity.KST.SConstruction.PrescribedRawHomotopyLift
+public import SerrePositivity.KST.SConstruction.RawComparisonRectification
+public import SerrePositivity.KST.SConstruction.RawComparisonRectificationStages
+public import SerrePositivity.KST.SConstruction.RawStageComparisonImage
+public import SerrePositivity.KST.SConstruction.SourceFixedBoundaryComposition
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -13265,3 +13265,113 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.CylinderEndpointAdjustmentData.boundary
 #check @SerrePositivity.KST.SConstruction.CylinderEndpointAdjustmentData.comparison_projection
 #print axioms SerrePositivity.KST.SConstruction.CylinderEndpointAdjustmentData.comparison_projection
+#check @SerrePositivity.KST.SConstruction.cylinderBoundaryAdjustmentData
+#print axioms SerrePositivity.KST.SConstruction.cylinderBoundaryAdjustmentData
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryMappingEdge_image
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryMappingEdge_image
+#check @SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData
+#print axioms SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryCompositionData
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryCompositionData
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryMappingSpace
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryMappingSpace
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryMappingSpaceι
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryMappingSpaceι
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryMappingSpace_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryMappingSpace_kanComplex
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryMappingVertex
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryMappingVertex
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryHomotopy_curry
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryHomotopy_curry
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryMappingPath
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryMappingPath
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryMappingPath_ι
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryMappingPath_ι
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryMappingEdge
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryMappingEdge
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectBFFamily
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectBFFamily
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeBFFamily
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeBFFamily
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectBFFamily_projection
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectBFFamily_projection
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeBFFamily_projection
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeCompositeBFFamily_projection
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeProjectedRawComparison
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeProjectedRawComparison
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeProjectedRawComparison_h
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeProjectedRawComparison_h
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeBFComparisonBoundaryData
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeBFComparisonBoundaryData
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeBFComparisonData
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeBFComparisonData
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeBFComparisonData_projection
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeBFComparisonData_projection
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeBFComparisonData_boundary
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeBFComparisonData_boundary
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeRawCompatibility
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeRawCompatibility
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeRawCompatibility_h
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeRawCompatibility_h
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeRawCompatibility_boundary
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeRawCompatibility_boundary
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeCumulativeComparisonStage
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeCumulativeComparisonStage
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeRawComparison
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeRawComparison
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeRawComparison_evaluation
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeRawComparison_evaluation
+#check @SerrePositivity.KST.SConstruction.monicKPrismNativeRawComparison_zero
+#print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeRawComparison_zero
+#check @SerrePositivity.KST.SConstruction.familyBoundaryMap_post
+#print axioms SerrePositivity.KST.SConstruction.familyBoundaryMap_post
+#check @SerrePositivity.KST.SConstruction.familyHomotopyOfBoundary
+#print axioms SerrePositivity.KST.SConstruction.familyHomotopyOfBoundary
+#check @SerrePositivity.KST.SConstruction.rawHomotopyLiftData
+#print axioms SerrePositivity.KST.SConstruction.rawHomotopyLiftData
+#check @SerrePositivity.KST.SConstruction.prescribedRawHomotopyLiftData
+#print axioms SerrePositivity.KST.SConstruction.prescribedRawHomotopyLiftData
+#check @SerrePositivity.KST.SConstruction.rawComparisonRectificationMap
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonRectificationMap
+#check @SerrePositivity.KST.SConstruction.rawComparisonRectificationMap_evaluation
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonRectificationMap_evaluation
+#check @SerrePositivity.KST.SConstruction.rawComparisonRectification
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonRectification
+#check @SerrePositivity.KST.SConstruction.rawComparisonRectification_zero
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonRectification_zero
+#check @SerrePositivity.KST.SConstruction.RawComparisonStage
+#print axioms SerrePositivity.KST.SConstruction.RawComparisonStage
+#check @SerrePositivity.KST.SConstruction.rawComparisonBase
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonBase
+#check @SerrePositivity.KST.SConstruction.rawComparisonRestrictionFibration
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonRestrictionFibration
+#check @SerrePositivity.KST.SConstruction.rawComparisonNext
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonNext
+#check @SerrePositivity.KST.SConstruction.rawComparisonStage
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonStage
+#check @SerrePositivity.KST.SConstruction.rawComparisonStage_condition
+#print axioms SerrePositivity.KST.SConstruction.rawComparisonStage_condition
+#check @SerrePositivity.KST.SConstruction.rawStageFamily_condition
+#print axioms SerrePositivity.KST.SConstruction.rawStageFamily_condition
+#check @SerrePositivity.KST.SConstruction.rawStageComparisonImage
+#print axioms SerrePositivity.KST.SConstruction.rawStageComparisonImage
+#check @SerrePositivity.KST.SConstruction.fixedBoundaryHomotopy_restrictions
+#print axioms SerrePositivity.KST.SConstruction.fixedBoundaryHomotopy_restrictions
+#check @SerrePositivity.KST.SConstruction.sourceFixedBoundaryComposition
+#print axioms SerrePositivity.KST.SConstruction.sourceFixedBoundaryComposition
+#check @SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData.mk
+#print axioms SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData.mk
+#check @SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData.homotopy
+#print axioms SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData.homotopy
+#check @SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData.relative
+#print axioms SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData.relative
+#check @SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData.triangle
+#print axioms SerrePositivity.KST.SConstruction.FixedBoundaryCompositionData.triangle
+#check @SerrePositivity.KST.SConstruction.RawComparisonStage.mk
+#print axioms SerrePositivity.KST.SConstruction.RawComparisonStage.mk
+#check @SerrePositivity.KST.SConstruction.RawComparisonStage.val
+#print axioms SerrePositivity.KST.SConstruction.RawComparisonStage.val
+#check @SerrePositivity.KST.SConstruction.RawComparisonStage.correction
+#print axioms SerrePositivity.KST.SConstruction.RawComparisonStage.correction
+#check @SerrePositivity.KST.SConstruction.RawComparisonStage.boundary
+#print axioms SerrePositivity.KST.SConstruction.RawComparisonStage.boundary
