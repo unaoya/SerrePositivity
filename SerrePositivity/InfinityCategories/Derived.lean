@@ -905,6 +905,12 @@ public import SerrePositivity.InfinityCategories.Derived.DGVerdierDegenerateTria
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierNormalizeTriangleCones
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTwoCones
 
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralIndices
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralCochains
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFiller
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralComponents
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralLowDimensions
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

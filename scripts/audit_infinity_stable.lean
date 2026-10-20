@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralLowDimensions
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteUnitalTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteDiagramTwoCones
@@ -2655,6 +2656,28 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.DGVerdierDiagramTwoCone.triangle_degeneracy
 #print axioms SerrePositivity.InfinityCategories.dgVerdierDiagramTwoCone_nonempty
 
+#print axioms SerrePositivity.InfinityCategories.dgLastHornMissingIndex_card
+#print axioms SerrePositivity.InfinityCategories.dgLastHornMissingIndex_min
+#print axioms SerrePositivity.InfinityCategories.dgLastHornMissingIndex_max
+#print axioms SerrePositivity.InfinityCategories.dgLastHornMissingIndex_degree
+#print axioms SerrePositivity.InfinityCategories.dgLastHornTop_degree
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornMissingResidual
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornMissingHom_zero
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornMissingResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_face
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_missingEquation
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_properEquations
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_topRhs_closed
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornSolution
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornSolution.simplex_face
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornSolution.fac
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornSolution.simplex_Q
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornSolution.simplex_A
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornMissingResidual_three
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornMissingResidual_four
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_three
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_four
+
 open Lean in
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape
 #print axioms SerrePositivity.InfinityCategories.pastingOuterToRightShape_zero
@@ -2808,6 +2831,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralIndices,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralCochains,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralLowDimensions,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierDegenerateTriangleCones,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierDegenerateTriangleOverlap,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierNormalizeTriangleCones,
