@@ -8722,3 +8722,105 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @initialDiagramHomFamilyHomotopy_base
 #print axioms initialDiagramHomFamilyHomotopy_base
+
+#check @initialDiagramHomFamily_restrict
+#print axioms initialDiagramHomFamily_restrict
+
+#check @specifiedCoconeRootVerticalStartFamily_fixed
+#print axioms specifiedCoconeRootVerticalStartFamily_fixed
+
+#check @specifiedCoconeRootVerticalEndFamily_fixed
+#print axioms specifiedCoconeRootVerticalEndFamily_fixed
+
+#check @specifiedCoconeLeftRootTotalFamily_fixed
+#print axioms specifiedCoconeLeftRootTotalFamily_fixed
+
+#check @specifiedCoconeRightRootTotalFamily_fixed
+#print axioms specifiedCoconeRightRootTotalFamily_fixed
+
+#check @specifiedCoconeLeftRootTotalFamily_initial
+#print axioms specifiedCoconeLeftRootTotalFamily_initial
+
+#check @specifiedCoconeRightRootTotalFamily_initial
+#print axioms specifiedCoconeRightRootTotalFamily_initial
+
+#check @initialDiagramHomFamilyHomotopy_evaluation_constant
+#print axioms initialDiagramHomFamilyHomotopy_evaluation_constant
+
+#check @initialDiagramHomFamilyHomotopy_base_constant
+#print axioms initialDiagramHomFamilyHomotopy_base_constant
+
+#check @specifiedCoconeRootStartInitialFamily
+#print axioms specifiedCoconeRootStartInitialFamily
+
+#check @specifiedCoconeRootStartInitialHomotopy
+#print axioms specifiedCoconeRootStartInitialHomotopy
+
+#check @specifiedCoconeRootStartInitialHomotopy_ι
+#print axioms specifiedCoconeRootStartInitialHomotopy_ι
+
+#check @specifiedCoconeRootStartInitialHomotopy_evaluation
+#print axioms specifiedCoconeRootStartInitialHomotopy_evaluation
+
+#check @specifiedCoconeRootStartInitialHomotopy_base
+#print axioms specifiedCoconeRootStartInitialHomotopy_base
+
+#check @specifiedCoconeRootEndInitialFamily
+#print axioms specifiedCoconeRootEndInitialFamily
+
+#check @specifiedCoconeRootEndInitialHomotopy
+#print axioms specifiedCoconeRootEndInitialHomotopy
+
+#check @specifiedCoconeRootEndInitialHomotopy_ι
+#print axioms specifiedCoconeRootEndInitialHomotopy_ι
+
+#check @specifiedCoconeRootEndInitialHomotopy_evaluation
+#print axioms specifiedCoconeRootEndInitialHomotopy_evaluation
+
+#check @specifiedCoconeRootEndInitialHomotopy_base
+#print axioms specifiedCoconeRootEndInitialHomotopy_base
+
+#check @specifiedCoconeRootMiddleInitialHomotopy_fixed
+#print axioms specifiedCoconeRootMiddleInitialHomotopy_fixed
+
+#check @specifiedCoconeRootMiddleInitialHomotopy
+#print axioms specifiedCoconeRootMiddleInitialHomotopy
+
+#check @specifiedCoconeRootMiddleInitialHomotopy_ι
+#print axioms specifiedCoconeRootMiddleInitialHomotopy_ι
+
+#check @specifiedCoconeRootMiddleInitialHomotopy_evaluation
+#print axioms specifiedCoconeRootMiddleInitialHomotopy_evaluation
+
+#check @specifiedCoconeRootMiddleInitialHomotopy_base
+#print axioms specifiedCoconeRootMiddleInitialHomotopy_base
+
+#check @functorIso_postcomp_hom
+#print axioms functorIso_postcomp_hom
+
+#check @homotopyIso_postcomp_hom
+#print axioms homotopyIso_postcomp_hom
+
+#check @homotopyIso_postcomp_constant_arrow
+#print axioms homotopyIso_postcomp_constant_arrow
+
+#check @iso_threeFactors_identity_arrow
+#print axioms iso_threeFactors_identity_arrow
+
+#check @functor_threeFactors_identity_arrow
+#print axioms functor_threeFactors_identity_arrow
+
+#check @iso_threeFactors_first_two_identity_arrow
+#print axioms iso_threeFactors_first_two_identity_arrow
+
+#check @functor_threeFactors_first_two_identity_arrow
+#print axioms functor_threeFactors_first_two_identity_arrow
+
+#check @specifiedCoconeRootInitialComparisonIso
+#print axioms specifiedCoconeRootInitialComparisonIso
+
+#check @specifiedCoconeRootInitialComparisonIso_evaluation_hom_arrow
+#print axioms specifiedCoconeRootInitialComparisonIso_evaluation_hom_arrow
+
+#check @specifiedCoconeRootInitialComparisonIso_base_hom_arrow
+#print axioms specifiedCoconeRootInitialComparisonIso_base_hom_arrow
