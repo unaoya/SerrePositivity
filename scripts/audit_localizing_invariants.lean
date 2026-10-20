@@ -82,7 +82,22 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction,
     `SerrePositivity.KST.LocalizingInvariants.LaxDAdjunction,
     `SerrePositivity.KST.LocalizingInvariants.RelativeInitialVertexIso,
-    `SerrePositivity.KST.LocalizingInvariants.LaxProjectionKernel]
+    `SerrePositivity.KST.LocalizingInvariants.LaxProjectionKernel,
+    `SerrePositivity.KST.LocalizingInvariants.TerminalPrismTwoEndpoints,
+    `SerrePositivity.KST.LocalizingInvariants.LaxTerminalBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.OppositeFunctorHom,
+    `SerrePositivity.KST.LocalizingInvariants.AdjunctionHomTriangles,
+    `SerrePositivity.KST.LocalizingInvariants.OppositeAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.AdjunctionOfOpposite,
+    `SerrePositivity.KST.LocalizingInvariants.RelativeTerminalAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.OppositeFunctorIso,
+    `SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitIso,
+    `SerrePositivity.KST.LocalizingInvariants.LaxSemiorthogonal,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumProductIso,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumProductAxes,
+    `SerrePositivity.KST.LocalizingInvariants.TammeSplitting,
+    `SerrePositivity.KST.LocalizingInvariants.PullbackDifferenceVertices]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
