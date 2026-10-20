@@ -937,4 +937,11 @@ public import SerrePositivity.KST.SConstruction.SpectrumWhiskerEvaluationConstan
 public import SerrePositivity.KST.SConstruction.TracedBFWhiskerZeroEvaluation
 public import SerrePositivity.KST.SConstruction.CompositionDiamondImages
 public import SerrePositivity.KST.SConstruction.TracedBFTripleZeroComparison
+public import SerrePositivity.KST.SConstruction.FixedBoundaryPullback
+public import SerrePositivity.KST.SConstruction.RawComparisonRectificationCorrections
+public import SerrePositivity.KST.SConstruction.MonicKPrismRawStageCorrections
+public import SerrePositivity.KST.SConstruction.TracedBFCompositionStageEvaluation
+public import SerrePositivity.KST.SConstruction.TracedBFCompositionStageCorrections
+public import SerrePositivity.KST.SConstruction.PointParameterMaps
+public import SerrePositivity.KST.SConstruction.TracedBFCompositionStageSpans
 /-! # ∞-S• 構成と連結 K 理論 -/
