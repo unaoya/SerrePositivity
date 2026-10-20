@@ -10579,3 +10579,78 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfFinalHornHollow_extension
 #print axioms quillenCfFinalHornHollow_extension
+
+#check @pathCubeBoundaryFace
+#print axioms pathCubeBoundaryFace
+
+#check @iSup_pathCubeBoundaryFace
+#print axioms iSup_pathCubeBoundaryFace
+
+#check @pathCubeBoundaryCover
+#print axioms pathCubeBoundaryCover
+
+#check @pathCubeBoundaryFace_le
+#print axioms pathCubeBoundaryFace_le
+
+#check @pathCubeBoundaryGlue
+#print axioms pathCubeBoundaryGlue
+
+#check @pathCubeBoundaryGlue_on_face
+#print axioms pathCubeBoundaryGlue_on_face
+
+#check @pathCubeBoundaryFace_lift
+#print axioms pathCubeBoundaryFace_lift
+
+#check @finalHornFrontZeroHom
+#print axioms finalHornFrontZeroHom
+
+#check @finalHornFrontZeroHom_overlap
+#print axioms finalHornFrontZeroHom_overlap
+
+#check @finalHornFrontCompositionHom
+#print axioms finalHornFrontCompositionHom
+
+#check @finalHornFrontZeroHom_composition_overlap
+#print axioms finalHornFrontZeroHom_composition_overlap
+
+#check @finalHornFrontCompositionHom_overlap
+#print axioms finalHornFrontCompositionHom_overlap
+
+#check @finalHornFrontBoundaryFaceHom
+#print axioms finalHornFrontBoundaryFaceHom
+
+#check @finalHornFrontBoundaryFaceHom_compatible
+#print axioms finalHornFrontBoundaryFaceHom_compatible
+
+#check @finalHornFrontBoundaryHom
+#print axioms finalHornFrontBoundaryHom
+
+#check @finalHornFrontBoundaryHom_on_face
+#print axioms finalHornFrontBoundaryHom_on_face
+
+#check @finalHornFrontBoundaryHom_lift
+#print axioms finalHornFrontBoundaryHom_lift
+
+#check @finalHornLastInterior_isEmpty
+#print axioms finalHornLastInterior_isEmpty
+
+#check @finalHornLastPath_eq
+#print axioms finalHornLastPath_eq
+
+#check @finalHornLastPathIso
+#print axioms finalHornLastPathIso
+
+#check @finalHornFrontThroughIso
+#print axioms finalHornFrontThroughIso
+
+#check @finalHornFrontThroughIso_hom_ι
+#print axioms finalHornFrontThroughIso_hom_ι
+
+#check @finalHornLastArrow
+#print axioms finalHornLastArrow
+
+#check @finalHornLastArrow_eHom
+#print axioms finalHornLastArrow_eHom
+
+#check @finalHornFrontThroughIso_postcomposition
+#print axioms finalHornFrontThroughIso_postcomposition

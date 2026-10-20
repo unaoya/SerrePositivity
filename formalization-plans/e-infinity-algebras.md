@@ -24,7 +24,11 @@
   `FinalHornKnownIntervals`・`FinalHornIntervalHom` は実際の最終外側ホーンの既知区間を元の面から回収し、選択独立性・単位・合成・全既知面への制限を照合。
   `FinalHornComposition`・`FinalHornFaceCompatibility` は実際の零座標面と既知合成面の回収を構成し、全ての二面の交わりでの一致を証明。整合性は追加仮定にしない。
   `FinalHornHollow` は元の最終外側ホーンから上面欠損 Path の Hom 写像を貼合せ、端点 Hom の Kan 性から全既知面を固定した延長を構成。`QuillenCfFinalHornHollow` は元の cf 対応圏へ代入済み。
-  **未完了**：前半の未知 Hom の全境界の回収・持ち上げと Path 座標の照合、豊穣関手の復元、初期外側ホーンの双対、Cartesian/coCartesian 性、導来 ∞ 随伴と一般 coherent 極限保存。
+  `PathCubeBoundaryCover` は全零座標面・全合成面による全境界の被覆・貼合せ・指定底写像の trivial Kan 持ち上げ。
+  `FinalHornFrontBoundary` は元の最終ホーンから前半未知 Hom [0,penultimate] の全境界を回収。全ての面の交わりでの一致を導き、空境界の小次元も保持。
+  `FinalHornLastPath` は最後の隣接 Path の単位同型と、前半 Path から penultimate 合成面への同型を native な Path 合成で照合。
+  `FinalHornPostcomposition` は最終既知区間から通常の射を回収し、合成面の式を実際の後合成として照合。元の固定最終辺との同定と全境界可換性は未証明。
+  **未完了**：後半 Hom の上面と前半全境界の可換性、実際の候補辺との同定と持ち上げ、Path 座標の残りの照合、豊穣関手の復元、初期外側ホーンの双対、Cartesian/coCartesian 性、導来 ∞ 随伴と一般 coherent 極限保存。
 - **残り**（依存順、時間は再開後の概算）：
   1. N-2：候補辺の Cartesian・coCartesian 性を、元の外側ホーンの相対持ち上げで証明。HTT 5.2.4.4〜6、8〜20時間。
   2. N-2：F1b の随伴 API へ接続し、導来 ∞ 随伴・単位/余単位・三角整合性と一般 coherent 極限保存。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
@@ -46,26 +50,29 @@
   `HomotopyLimits.upperMissingPathFace_extension`、`HomotopyLimits.pathCubeBoundary_lift`、
   `HomotopyLimits.quillenCfRightHom_twoStageLift`、`HomotopyLimits.quillenCfLeftHom_twoStageLift`、
   `HomotopyLimits.finalHornKnownIntervalHom`、`HomotopyLimits.finalHornKnownIntervalHom_on_face`、
-  `HomotopyLimits.finalHornHollowHom_extension_components`、`HomotopyLimits.quillenCfFinalHornHollow_extension`。
+  `HomotopyLimits.finalHornHollowHom_extension_components`、`HomotopyLimits.quillenCfFinalHornHollow_extension`、
+  `HomotopyLimits.finalHornFrontBoundaryHom`、`HomotopyLimits.finalHornFrontBoundaryHom_lift`、
+  `HomotopyLimits.finalHornFrontThroughIso`、`HomotopyLimits.finalHornFrontThroughIso_hom_ι`、
+  `HomotopyLimits.finalHornLastArrow`、`HomotopyLimits.finalHornFrontThroughIso_postcomposition`。
 - **依存と提供**：F1・F1b（coherent Hom・随伴）、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけ。実施記録はコミットメッセージ。
-- **未コミット**：今回の最終外側ホーンの既知区間回収・実際の面写像と整合性・空洞の貼合せと延長・cf 対応圏への代入の6モジュール33宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンの差分は保存対象外。
+- **未コミット**：今回の前半 Hom の全境界回収と最後の隣接 Path・合成面同型の4モジュール25宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンの差分は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は修正版を正しい場所へ保存済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：N の対象ビルド・監査に失敗なし。新規 sorry・追加公理なし。一般 γ4 は未完了。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定せず、固定 Quillen 類を使う。
   `FixedSimplicialPushoutProduct` と豊穣随伴の合成互換は標準 simplicial model/adjunction の明示入力であり、通常の Quillen 随伴だけから導いたとは扱わない。Sp・E2b への適用時に構成・証明する。
   元の Hom 同型の終域への通常の自然性だけで ∞ 随伴を完成と数えない。Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。
   他レーンの import 閉包が壊れたら回避せず停止。他レーンの作業中変更を保存しない。
-- **次の一手**：N-2。前半の未知 Hom [0,penultimate] の全 Path 境界を、元の最終外側ホーンから回収する。今回の既知区間・面の整合性・後半 Hom の Kan 延長を再実装しない。
+- **次の一手**：N-2。後半 Hom の Kan 延長を `finalHornFrontThroughIso` で上面へ制限し、前半全境界と `finalHornLastArrow` による後合成の可換性を証明する。全境界回収・面整合性・後半の Kan 延長は再実装しない。
   原典は [HTT 5.2.4.4〜6・Remark 5.2.4.7](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=371)（閲覧・本文照合済み）。5.2.4.6 は simplicial model categories と simplicial Quillen adjunction の命題。
   `F1/CartesianEdge` の述語は指定最終/先頭辺を固定した外側ホーンの相対持ち上げ。Hom の trivial Kan 射だけで満たしたとは扱わない。
   最終ホーンでは [0,n+1] と [0,n+2] の二つの Hom が未知。`i` を penultimate とし、後者を上面一つ欠く空洞から延長、その上面を候補辺の後合成に沿って持ち上げて前者を構成する。
-  `PathCubeBoundary` の全境界を、全零座標面と全合成面で被覆して貼り合わせる。前半では penultimate 座標を除外するのではなく、内部点の全合成面を用いる。二次元ホーンではこの境界が空になる場合も保持する。
-  前半の零座標面は元の同じ既知面から回収し、合成面は `finalHornCompositionHom` の終点を penultimate として構成。今回の一般の混合面・合成面重なりの補題は任意端点で使える。
+  前半の全零座標面と全合成面は `finalHornFrontBoundaryFaceHom`、整合性は `_compatible`、貼合せは `finalHornFrontBoundaryHom`。全境界に対する底との可換性は未証明であり、`_lift` の入力である。
+  `finalHornFrontThroughIso_hom_ι` は後半の上面への包含を、最後の隣接 Path を付加する native 合成として同定。最終区間の Hom を元の固定最終辺と照合し、前半全境界の零座標面・合成面ごとに可換性を導く。
   既知区間の面選択は a>0 なら δ0、それ以外は δpenultimate。`finalHornKnownIntervalHom_eq_viaFace`・`_on_subinterval`・`_comp`・`_on_face` を使う。未知二区間を内ホーン用の一つの未知 Hom に置き換えない。
   元の右候補辺の Hom の trivial Kan 性は下段の試験始域についての命題。相対ホーンの底の可換正方形と、固定最終辺の底が 0→1 であることから、全ての前半頂点が下段にあることを証明して代入する。ambient の全対象に同じ Hom 条件を仮定しない。
-  次に Path の penultimate 座標分離・残りの立方体と前半 Path の同型を元の合成面で照合し、二つの Hom を含む豊穣関手を復元する。小次元も省略しない。
+  最後の隣接 Path は `finalHornLastPathIso` で単位対象と同型。残りの penultimate 座標分離を照合し、二つの未知 Hom を含む豊穣関手と全既知面への制限を復元する。小次元も省略しない。
   `F1/CocartesianCosliceConverse.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration` と `CartesianOpposite` も使用可能。ただし相対 coslice と通常の豊穣 Hom の射を混同しない。
   F1b の随伴 API への接続では、`QCatFunctorHomCorrespondence` なら任意の quasicategory パラメータ A の整合が必要。`Localization.IsLocalization` は普遍性の定義で、任意 W の局所化の存在定理ではない。
   N-1 の部分余極限・共通 path end 比較、`/tmp/NativeAttachmentShape.lean` 等の草稿は継続しない。
