@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnitPinchedModel
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceInfinity
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnitPostcomposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnitPinchedNaturality
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSpaceAugmentation
+import SerrePositivity.InfinityCategories.Derived.DGFiberTransportSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpacePointed
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismComponent
 import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomAugmentationInfinity
@@ -3034,6 +3041,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnitPinchedModel,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnitPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnitPinchedNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSpaceAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.DGFiberTransportSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpacePointed,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismComponent,
     `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionHomotopy,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomAugmentationInfinity,
