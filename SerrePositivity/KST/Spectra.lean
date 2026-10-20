@@ -848,3 +848,9 @@ public import SerrePositivity.KST.Spectra.PointedPrecompositionNaturality
 public import SerrePositivity.KST.Spectra.CircleReversalHomotopy
 public import SerrePositivity.KST.Spectra.PointedIhomIntervalNaturality
 public import SerrePositivity.KST.Spectra.NaturalLoopReversalPaths
+public import SerrePositivity.KST.Spectra.PointedBasedPathUncurry
+public import SerrePositivity.KST.Spectra.SignedAdjointCompositionTriangles
+public import SerrePositivity.KST.Spectra.SignedLoopStructureCoordinates
+public import SerrePositivity.KST.Spectra.SignedLoopTracedStructureInterval
+public import SerrePositivity.KST.Spectra.SignedLoopStructureTriangleFaces
+public import SerrePositivity.KST.Spectra.SignedLoopUnitStructureTriangles
