@@ -66,7 +66,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SplitProductEquivalence,
     `SerrePositivity.KST.LocalizingInvariants.SplitProductShear,
     `SerrePositivity.KST.LocalizingInvariants.FiberProductDecomposition,
-    `SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition]
+    `SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition,
+    `SerrePositivity.KST.LocalizingInvariants.AdjointLocalization,
+    `SerrePositivity.KST.LocalizingInvariants.AdjointVerdier,
+    `SerrePositivity.KST.LocalizingInvariants.LaxStableCategory,
+    `SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition,
+    `SerrePositivity.KST.LocalizingInvariants.StableValueFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.SemiorthogonalInvariant]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

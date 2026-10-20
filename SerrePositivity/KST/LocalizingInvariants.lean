@@ -14,4 +14,7 @@ public import SerrePositivity.KST.LocalizingInvariants.InvariantFiberDetection
 
 public import SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition
 
+public import SerrePositivity.KST.LocalizingInvariants.SemiorthogonalInvariant
+public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
