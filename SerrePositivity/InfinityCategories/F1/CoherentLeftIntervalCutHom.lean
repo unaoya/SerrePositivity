@@ -136,4 +136,101 @@ lemma coherentLeftHomIntervalMixedHom_eq_cut {I : Type u} [SmallCategory I]
     (congrArg (fun f => f ≫ reflectedSimplexMap (SSet.yonedaEquiv.symm s))
       (pathCutMinimumMap_eq_leftPrismCut (stdSimplex.objEquiv t).toOrderHom a b ha hb)).symm
 
+/-- 時刻零同士の元の左区間の Hom は、始点の豊穣単位を定値にした射。 -/
+lemma coherentLeftHomIntervalHom_zero {I : Type u} [SmallCategory I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) (x : C) (i : I) {n : ℕ}
+    (s : (SimplicialCategory.sHom x (F.obj i)).op _⦋n⦌)
+    (t : (Δ[1] : SSet.{max u v}) _⦋n⦌) (a b : Fin (n + 1))
+    (ha : (stdSimplex.objEquiv t).toOrderHom a = 0)
+    (hb : (stdSimplex.objEquiv t).toOrderHom b = 0) :
+    (((coherentLeftHomInterval x (F.obj i)).app (Opposite.op ⦋n⦌)
+      (t, (uliftOppositeIso (SimplicialCategory.sHom x (F.obj i))).hom.app _ (ULift.up s))).map
+        ⟨ULift.up a⟩ ⟨ULift.up b⟩) ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentLeftHomInterval_obj_zero F x i s t a ha)
+        (coherentLeftHomInterval_obj_zero F x i s t b hb)) =
+      SemiCartesianMonoidalCategory.toUnit _ ≫ eId SSet x := by
+  let τ := weightedNerveConstantDiagram (simplicialHomDiagram F x ⋙ SSet.opFunctor) i s
+  let c := coherentLeftPrismCut (stdSimplex.objEquiv t).toOrderHom
+  have h0 : c a = 0 := ite_eq_left ha
+  have h1 : c b = 0 := ite_eq_left hb
+  let T := (SimplicialThickening.functor c.uliftMap).comp SSet (weightedConeSimplex F x τ)
+  have hs : ((coherentLeftHomInterval x (F.obj i)).app (Opposite.op ⦋n⦌)
+      (t, (uliftOppositeIso (SimplicialCategory.sHom x (F.obj i))).hom.app _ (ULift.up s))) = T :=
+    coherentLeftHomInterval_weightedConstantCone F x i s t
+  have hT0 : T.obj ⟨ULift.up a⟩ = x := by
+    change weightedConeObj x _ (c a) = x
+    rw [h0]
+    rfl
+  have hT1 : T.obj ⟨ULift.up b⟩ = x := by
+    change weightedConeObj x _ (c b) = x
+    rw [h1]
+    rfl
+  rw [normalizedEnrichedMap_eq _ T hs _ _
+    (coherentLeftHomInterval_obj_zero F x i s t a ha)
+    (coherentLeftHomInterval_obj_zero F x i s t b hb) hT0 hT1]
+  change (((SimplicialThickening.functor c.uliftMap).map
+    (⟨ULift.up a⟩ : SimplicialThickening (ULift.{u} (Fin (n + 1)))) ⟨ULift.up b⟩) ≫
+    weightedConeHom F x τ (c a) (c b)) ≫ _ = _
+  rw [Category.assoc, weightedConeHom_transport F x τ h0 h1 rfl rfl]
+  simp only [eqToHom_refl, Category.comp_id]
+  change _ ≫ (SemiCartesianMonoidalCategory.toUnit _ ≫ eId SSet x) = _
+  simp only [← Category.assoc, SemiCartesianMonoidalCategory.comp_toUnit]
+
+/-- 時刻一同士の元の左区間の Hom は、終点の豊穣単位を定値にした射。 -/
+lemma coherentLeftHomIntervalHom_one {I : Type u} [SmallCategory I]
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) (x : C) (i : I) {n : ℕ}
+    (s : (SimplicialCategory.sHom x (F.obj i)).op _⦋n⦌)
+    (t : (Δ[1] : SSet.{max u v}) _⦋n⦌) (a b : Fin (n + 1))
+    (ha : (stdSimplex.objEquiv t).toOrderHom a = 1)
+    (hb : (stdSimplex.objEquiv t).toOrderHom b = 1) :
+    (((coherentLeftHomInterval x (F.obj i)).app (Opposite.op ⦋n⦌)
+      (t, (uliftOppositeIso (SimplicialCategory.sHom x (F.obj i))).hom.app _ (ULift.up s))).map
+        ⟨ULift.up a⟩ ⟨ULift.up b⟩) ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentLeftHomInterval_obj_one F x i s t a ha)
+        (coherentLeftHomInterval_obj_one F x i s t b hb)) =
+      SemiCartesianMonoidalCategory.toUnit _ ≫ eId SSet (F.obj i) := by
+  let τ := weightedNerveConstantDiagram (simplicialHomDiagram F x ⋙ SSet.opFunctor) i s
+  let c := coherentLeftPrismCut (stdSimplex.objEquiv t).toOrderHom
+  have h0 : c a = a.succ := ite_eq_right (by rw [ha]; decide)
+  have h1 : c b = b.succ := ite_eq_right (by rw [hb]; decide)
+  let T := (SimplicialThickening.functor c.uliftMap).comp SSet (weightedConeSimplex F x τ)
+  have hs : ((coherentLeftHomInterval x (F.obj i)).app (Opposite.op ⦋n⦌)
+      (t, (uliftOppositeIso (SimplicialCategory.sHom x (F.obj i))).hom.app _ (ULift.up s))) = T :=
+    coherentLeftHomInterval_weightedConstantCone F x i s t
+  have hT0 : T.obj ⟨ULift.up a⟩ = F.obj i := by
+    change weightedConeObj x _ (c a) = F.obj i
+    rw [h0]
+    rfl
+  have hT1 : T.obj ⟨ULift.up b⟩ = F.obj i := by
+    change weightedConeObj x _ (c b) = F.obj i
+    rw [h1]
+    rfl
+  have hTail : weightedConeHom F x τ a.succ b.succ =
+      SemiCartesianMonoidalCategory.toUnit _ ≫ eId SSet (F.obj i) := by
+    apply SSet.hom_ext
+    rintro ⟨⟨d⟩⟩
+    apply ConcreteCategory.hom_ext
+    intro P
+    change PinchedHom.constant (SimplicialCategory.homEquiv' _ _ (F.map (𝟙 i))) d =
+      (eId SSet (F.obj i)).app (Opposite.op ⦋d⦌) PUnit.unit
+    rw [F.map_id]
+    simp only [SimplicialCategory.homEquiv', Equiv.trans_apply, eHomEquiv_id]
+    exact (unitHom_app_constant (eId SSet (F.obj i)) d).symm
+  rw [normalizedEnrichedMap_eq _ T hs _ _
+    (coherentLeftHomInterval_obj_one F x i s t a ha)
+    (coherentLeftHomInterval_obj_one F x i s t b hb) hT0 hT1]
+  change (((SimplicialThickening.functor c.uliftMap).map
+    (⟨ULift.up a⟩ : SimplicialThickening (ULift.{u} (Fin (n + 1)))) ⟨ULift.up b⟩) ≫
+    weightedConeHom F x τ (c a) (c b)) ≫ _ = _
+  rw [Category.assoc, weightedConeHom_transport F x τ h0 h1 rfl rfl]
+  simp only [eqToHom_refl, Category.comp_id]
+  rw [hTail]
+  simp only [← Category.assoc]
+  apply congrArg (fun f => f ≫ eId SSet (F.obj i))
+  exact Subsingleton.elim _ _
+
 end SerrePositivity.InfinityCategories

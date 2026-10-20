@@ -5228,3 +5228,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.weightedConeCutTailHom
 #check @SerrePositivity.InfinityCategories.weightedConeCutCoefficient_comp_zero
 #check @SerrePositivity.InfinityCategories.weightedKanConeCutCoefficient_comp_one
+#check @SerrePositivity.InfinityCategories.coherentLeftHomIntervalHom_zero
+#check @SerrePositivity.InfinityCategories.coherentLeftHomIntervalHom_one
