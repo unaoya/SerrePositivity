@@ -946,6 +946,14 @@ public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFinite
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFiniteFillers
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralRefinementFaces
 
+public import SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplex
+public import SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplexInverse
+public import SerrePositivity.InfinityCategories.Derived.RoofPointBoundaryHorn
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFinalSimplex
+public import SerrePositivity.InfinityCategories.Derived.DGOverBoundaryRefinedSimplex
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryLastDenominator
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryOverFillers
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

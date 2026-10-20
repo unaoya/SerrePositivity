@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplex
+import SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplexInverse
+import SerrePositivity.InfinityCategories.Derived.RoofPointBoundaryHorn
+import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFinalSimplex
+import SerrePositivity.InfinityCategories.Derived.DGOverBoundaryRefinedSimplex
+import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryLastDenominator
+import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryOverFillers
 import SerrePositivity.InfinityCategories.Derived.DGPartialSimplexHorn
 import SerrePositivity.InfinityCategories.Derived.DGInitialRefinementEquation
 import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralSourceRefinement
@@ -2368,10 +2375,44 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornSourceRefinement_value_positive
 #print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornSourceRefinement_face_positive
 
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplex_fixed
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplex_injective
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplex_naturality
+#print axioms SerrePositivity.InfinityCategories.roofPointExtend_coface
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplex_face
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfFixed_simplex
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfFace_simplex
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfFace_face
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplexOfFace_face_zero
+#print axioms SerrePositivity.InfinityCategories.roofPointBoundaryFaceJoin
+#print axioms SerrePositivity.InfinityCategories.roofPointBoundaryHorn_face
+#print axioms SerrePositivity.InfinityCategories.roofPointBoundaryHorn_lastEdge
+#print axioms SerrePositivity.InfinityCategories.dgLastHornFinalPair_injective
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornFinalSimplex_eq_actual
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornFinalSimplex_component
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornFinalClosed_edge
+#print axioms SerrePositivity.InfinityCategories.dgOverBoundaryRefinedFiller_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgOverBoundaryRefinedSimplex_simplex
+#print axioms SerrePositivity.InfinityCategories.dgOverBoundaryRefinedSimplex_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgOverBoundaryRefinedSimplex_face_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryLastClosed_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinementOverSimplex_simplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinementOverSimplex_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinementOverSimplex_face
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryFiniteRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryFinite_exists_refinedOverSimplexes
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplex,
+    `SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplexInverse,
+    `SerrePositivity.InfinityCategories.Derived.RoofPointBoundaryHorn,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFinalSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGOverBoundaryRefinedSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryLastDenominator,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryOverFillers,
     `SerrePositivity.InfinityCategories.Derived.DGPartialSimplexHorn,
     `SerrePositivity.InfinityCategories.Derived.DGInitialRefinementEquation,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralSourceRefinement,
