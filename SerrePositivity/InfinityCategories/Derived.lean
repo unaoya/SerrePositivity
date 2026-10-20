@@ -917,6 +917,15 @@ public import SerrePositivity.InfinityCategories.Derived.DGLastHornTopRhsDiffere
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornExpandedSolution
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornTopResidualLowDimensions
 
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornOtherCutIndices
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornKnownCutEquations
+public import SerrePositivity.InfinityCategories.Derived.DGResidualIndexTransport
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornResidualCutComponents
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornLastResidualTerm
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornBianchiCompatibility
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFinalEdge
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralConeResidual
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
