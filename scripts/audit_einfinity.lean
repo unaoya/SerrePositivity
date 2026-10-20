@@ -2208,6 +2208,24 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.commaDiagram,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.transport,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.transport_naturality,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.transportComparison,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.fiberIntoComma,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.fiberIntoComma_transport,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.transportUnit,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.transport_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.commaTotalForget,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.commaTotalTransport,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.selfLiftIso,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.commaSimplex_forget,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.commaMap_forget,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.commaMap_forget_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.map_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.map_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionThomason_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpanThomason_localized_isIso,
       `SerrePositivity.EInfinity.FrameHom.Thomason.nerveDiagram,
       `SerrePositivity.EInfinity.FrameHom.Thomason.values,
       `SerrePositivity.EInfinity.FrameHom.Thomason.simplex,
@@ -6661,3 +6679,36 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       mappingResolutionBarComparison A X Y ≫
         Thomason.map (mappingSmallSpanRightDiagram A X Y) :=
   mappingResolutionThomasonSquare A X Y
+
+-- 任意の小さい Cat 値図式の元の Thomason 射に反転性を適用できる。
+-- 単体集合モデルや fiber の Kan 性の入力は不要。
+open CategoryTheory SerrePositivity.EInfinity.FrameHom in
+example {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
+    (G : D ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map (Thomason.map G)) :=
+  Thomason.map_localized_isIso G
+
+-- 同じ元の射は F1b の弱ホモトピー同値にもなる。
+open CategoryTheory SerrePositivity.EInfinity.FrameHom in
+example {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
+    (G : D ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
+    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence (Thomason.map G) :=
+  Thomason.map_isWeakHomotopyEquivalence G
+
+-- 任意の可換環で、全右脚上の元の分解の Thomason 射が反転される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
+  SerrePositivity.EInfinity.FrameHom in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (Thomason.map (mappingSmallResolutionRightDiagram A X Y))) :=
+  mappingResolutionThomason_localized_isIso A X Y
+
+-- 同じ全右脚上の全左脚側の Thomason 射も、元の代数の cofibrancy なしで反転。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
+  SerrePositivity.EInfinity.FrameHom in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (Thomason.map (mappingSmallSpanRightDiagram A X Y))) :=
+  mappingSpanThomason_localized_isIso A X Y

@@ -721,3 +721,8 @@ public import SerrePositivity.EInfinity.FrameHom.ThomasonNaturality
 public import SerrePositivity.EInfinity.FrameHom.CommaNerveContraction
 public import SerrePositivity.EInfinity.FrameHom.CommaNerveBarProjection
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionThomasonSquare
+public import SerrePositivity.EInfinity.FrameHom.GrothendieckCommaTransport
+public import SerrePositivity.EInfinity.FrameHom.GrothendieckCommaRetraction
+public import SerrePositivity.EInfinity.FrameHom.GrothendieckCommaComparison
+public import SerrePositivity.EInfinity.FrameHom.ThomasonInversion
+public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionThomasonInversion

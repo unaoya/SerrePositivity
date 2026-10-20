@@ -980,15 +980,24 @@ left cofinality を与え、各 `_isWeakHomotopyEquivalence` は同じ射の弱�
 `mappingSpaceIndexBarMap` は元の全単体の共通始域から同じ bar への比較で、反転可能。
 `FrameHom.Thomason.map` は元の nerve の bar から Grothendieck 全図式の nerve への射。
 全単体作用素と係数の自然性を証明し、`valueInclusion_map` は同じ fiber の包含を厳密に回収。
-一般のこの射の反転性は未証明。
+`map_localized_isIso` は同じ宇宙の小圏を値に持つ任意の図式で同じ射の反転性を証明。
+`map_isWeakHomotopyEquivalence` は同じ元の射を F1b の弱ホモトピー同値へ移す。
+添字・fiber の宇宙を独立にした射の構成と、反転性の同じ宇宙の仮定を区別する。
 `FrameHom.CommaNerve.contraction` は元の最後の頂点による comma 射列の復元と収縮。
 `barProjection_localized_isIso` は任意の p : E → D で、comma 図式の bar から元の
 E の nerve への射影の反転性を与える。値と添字の宇宙は独立で、モデル構造は不要。
 `BarrattEccles.mappingResolutionBarComparison_localized_isIso` は元の分解から全左脚への
 全右脚の比較を bar でも反転する。`mappingResolutionThomasonSquare` は同じ元の
 Grothendieck 比較と bar 比較が二つの Thomason 射で厳密に可換であることを示す。
-comma 図式の移送による元の一般図式への比較、Thomason 射の反転性、
-固定右脚の nerve と bar の比較と元の右射の因子分解は後続。
+`Thomason.transportComparison` は comma 図式から元の図式への厳密に自然な移送。
+`transport_localized_isIso` は各成分を元の恒等脚の包含と移送の単位で反転する。
+`commaTotalTransport` は全図式の忘却から同じ移送への自然変換で、
+`commaMap_forget` は同じ Thomason 射の後の忘却を元の comma bar 射影と照合する。
+これらと元の自然性の正方形・bar の成分不変性から、Thomason 射の反転性を導く。
+`mappingResolutionThomason_localized_isIso`・`mappingSpanThomason_localized_isIso` は
+元の全右脚の分解側・全左脚側の二つの小さい図式への実際の代入。
+元の Hom の反対要素圏と同じ分解の comma 図式の自然な比較、宇宙比較、
+固定右脚から全図式への元の右射の因子分解は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
