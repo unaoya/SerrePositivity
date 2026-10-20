@@ -1238,3 +1238,5 @@ public import SerrePositivity.InfinityCategories.F1.CoherentLeftIntervalWeighted
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftIntervalCutHom
 public import SerrePositivity.InfinityCategories.F1.WeightedConeCutHomComposition
 public import SerrePositivity.InfinityCategories.F1.WeightedKanConeCutHomComposition
+public import SerrePositivity.InfinityCategories.F1.KanDiagramLeftHomCutSimplex
+public import SerrePositivity.InfinityCategories.F1.KanDiagramLeftHomCutTail
