@@ -50,7 +50,23 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.InvariantPiComparison,
     `SerrePositivity.KST.LocalizingInvariants.InvariantLongExact,
     `SerrePositivity.KST.LocalizingInvariants.NativeFiberDetection,
-    `SerrePositivity.KST.LocalizingInvariants.InvariantFiberDetection]
+    `SerrePositivity.KST.LocalizingInvariants.InvariantFiberDetection,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryMappingExt,
+    `SerrePositivity.KST.LocalizingInvariants.CotensorAddition,
+    `SerrePositivity.KST.LocalizingInvariants.CotensorHomClasses,
+    `SerrePositivity.KST.LocalizingInvariants.CotensorMultiplication,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryGroups,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumComponentClass,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumMultiplication,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumMultiplicationGroups,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumZeroClass,
+    `SerrePositivity.KST.LocalizingInvariants.SplitProductAxes,
+    `SerrePositivity.KST.LocalizingInvariants.SplitProductComparison,
+    `SerrePositivity.KST.LocalizingInvariants.SplitProductEquivalence,
+    `SerrePositivity.KST.LocalizingInvariants.SplitProductShear,
+    `SerrePositivity.KST.LocalizingInvariants.FiberProductDecomposition,
+    `SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

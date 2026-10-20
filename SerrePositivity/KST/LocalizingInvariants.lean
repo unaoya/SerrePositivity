@@ -12,4 +12,6 @@ public import SerrePositivity.KST.LocalizingInvariants.FiberSequenceComparison
 public import SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows
 public import SerrePositivity.KST.LocalizingInvariants.InvariantFiberDetection
 
+public import SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
