@@ -126,7 +126,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointZero,
     `SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointFaithful,
     `SerrePositivity.KST.LocalizingInvariants.CofiberAdjunctionCounit,
-    `SerrePositivity.KST.LocalizingInvariants.CofiberFamilyComparison]
+    `SerrePositivity.KST.LocalizingInvariants.CofiberFamilyComparison,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberZeroSourceComparison,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceDComparison,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRho,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceUnitD,
+    `SerrePositivity.KST.LocalizingInvariants.AdjunctInverseFormula]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
