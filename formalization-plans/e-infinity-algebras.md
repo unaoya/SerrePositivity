@@ -23,6 +23,10 @@
   `homotopyFixedPointsInfinityCone_isLimit`・`homotopyTotalizationInfinityCone_isLimit` は元の作用図式・余単体図式の実 ∞ 極限錐。
   `FiberModel.homotopyFiberSquare` は元の BF fiber、`bottom_naturality`・`right_naturality` は元の包含・射の類との整合性。
   任意 coherent cospan の極限・任意辺の fiber も提供済み。Sp の任意 coherent 図式の極限・全有限極限・安定性まで完成とは扱わない。
+  **N-4 着手。** `IsLocalObject W` を元の指定辺の写像空間の前合成同値で定義し、局所対象の全部分 quasicategory を構成。
+  pinched・区間模型の局所性を照合。局所性の合成・二つから三つ目・対象同型不変性、任意単体集合パラメータの定値 Hom の全単射を証明。
+  `reflective_isLocal_iff_unit_local` は既存反射の局所対象を全単位成分への局所性で特徴づける。逆向きは元の単位の両逆を回収。
+  辺集合の小生成・強飽和性、反射の存在、Bousfield 局所化・P_Σ の構成は未完了。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
@@ -48,21 +52,26 @@
   `cocartesianPrism_targetFunctorIso`、`prism_base_constant_of_endpoints`、`endpointFunctorIso_reflection`、
   `quillenCfRightOrdinaryPrism_exists`、`quillenCfLeftOrdinaryPrism_exists`、
   `quillenCfRightDerived_ordinaryComparison`、`quillenCfLeftDerived_ordinaryComparison`、
-  `quillenCfDerivedAdjunctionWithComparisons_exists`。
+  `quillenCfDerivedAdjunctionWithComparisons_exists`、
+  `IsLocalForHom`、`isLocalForHom_iff_interval`、`isLocalForHom_constantHom_bijective`、
+  `IsLocalObject`、`localObjectsSubcomplex`、`isLocalObject_iff_of_vertexIso`、
+  `isIso_of_isLocalForHom_source_target`、`reflectiveUnit_isLocalForHom`、`reflective_isLocal_iff_unit_local`。
   Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、全監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけ、実施記録はコミットメッセージ。全体チェックリストはコーディネータが更新する。
-- **未コミット**：なし（今回の保存単位：左通常置換との比較・γ4 集約の4モジュール6宣言、集約・全監査、本 N 節）。他レーンの差分は保存対象外。
+- **未コミット**：なし（今回の保存単位：局所対象と反射単位による特徴づけの3モジュール18宣言、集約・全監査、本 N 節）。他レーンの差分は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は N 旧稿と確認し、修正版を正しい場所へ保存後に削除済み。
-- **既知の問題**：N の対象ビルド6142 jobs・全4190宣言監査は終了コード0、標準三公理のみ。新規4モジュールに警告・sorry・追加公理なし。
+- **既知の問題**：N の対象ビルド6154 jobs・全4208宣言監査は終了コード0、標準三公理のみ。新規3モジュールに警告・sorry・追加公理なし。
   Sp の既存界面は対象5366/5370 jobs と13宣言の型・公理確認が終了コード0、標準三公理のみ。両 import 閉包に他レーンの未コミット差分なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
-- **次の一手**：E2b の元の DK Hom 比較の公開範囲を照合し、γ4 への接続に必要な豊穣合成・単位互換を列挙。高次比較の完成を先取りしない。
-  並行して N-4 の入口：既存 `ReflectiveSubcategory`・`ReflectiveLocalization` と HTT 5.5.4 の辺集合に対する局所対象を照合し、反射の存在を仮定しない部分から進める。
+- **次の一手**：N-4：`reflective_isLocal_iff_unit_local` を元の `invertedEdges r.reflector` による `IsLocalObject` と照合（HTT 5.5.4.2(1)）。
+  `/tmp/ReflectiveInvertedHom.lean` は単位の自然性による反転 Hom の局所性、型付き辺と元の一次単体の照合、反転辺集合による特徴づけ・反射の Hom 反転との一致の4宣言の検証済み試作（`/tmp/n-reflective-inverted5.log`、終了コード0）。公開へ移す。
+  次に S-equivalence の元の辺集合での定義と反射による反転の一致（5.5.4.2(2)）を包装し、強飽和性・存在構成へ進む。
+  E2b の `cAlgForgetLocalization` の終域は元の全複体の具体的局所化。D(R) との比較・高次 Hom 比較・∞ 局所化の普遍性は E2 側で未提供と再確認。γ4 の入力を先取りしない。
   原典は [HTT 5.2.4.6・Remark 5.2.4.7、5.5.4・5.5.8](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）。
 
 ### E2a（既存の引き継ぎ）

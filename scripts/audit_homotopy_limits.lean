@@ -11356,3 +11356,57 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfDerivedAdjunctionWithComparisons_exists
 #print axioms quillenCfDerivedAdjunctionWithComparisons_exists
+
+#check @pinchedPrecompose_isQCatEquivalence_of_isIso
+#print axioms pinchedPrecompose_isQCatEquivalence_of_isIso
+
+#check @pinchedPostcompose_isQCatEquivalence_of_isIso
+#print axioms pinchedPostcompose_isQCatEquivalence_of_isIso
+
+#check @IsLocalForHom
+#print axioms IsLocalForHom
+
+#check @isLocalForHom_iff_interval
+#print axioms isLocalForHom_iff_interval
+
+#check @isLocalForHom_of_isIso
+#print axioms isLocalForHom_of_isIso
+
+#check @isLocalForHom_comp
+#print axioms isLocalForHom_comp
+
+#check @isLocalForHom_cancel_left
+#print axioms isLocalForHom_cancel_left
+
+#check @isLocalForHom_cancel_right
+#print axioms isLocalForHom_cancel_right
+
+#check @isLocalForHom_iff_of_vertexIso
+#print axioms isLocalForHom_iff_of_vertexIso
+
+#check @IsLocalObject
+#print axioms IsLocalObject
+
+#check @isLocalObject_iff_of_vertexIso
+#print axioms isLocalObject_iff_of_vertexIso
+
+#check @localObjectsSubcomplex
+#print axioms localObjectsSubcomplex
+
+#check @localObjectsSubcomplex_quasicategory
+#print axioms localObjectsSubcomplex_quasicategory
+
+#check @isLocalForHom_constantHom_bijective
+#print axioms isLocalForHom_constantHom_bijective
+
+#check @isIso_of_isLocalForHom_source_target
+#print axioms isIso_of_isLocalForHom_source_target
+
+#check @reflectiveUnit_isLocalForHom_inclusion
+#print axioms reflectiveUnit_isLocalForHom_inclusion
+
+#check @reflectiveUnit_isLocalForHom
+#print axioms reflectiveUnit_isLocalForHom
+
+#check @reflective_isLocal_iff_unit_local
+#print axioms reflective_isLocal_iff_unit_local
