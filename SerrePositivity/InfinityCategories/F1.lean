@@ -1079,3 +1079,7 @@ public import SerrePositivity.InfinityCategories.F1.RelativeFunctorActionEvaluat
 public import SerrePositivity.InfinityCategories.F1.SimplicialOverTestBifunctor
 public import SerrePositivity.InfinityCategories.F1.SimplicialOverTestComparison
 public import SerrePositivity.InfinityCategories.F1.ScaffoldJointTestComparison
+public import SerrePositivity.InfinityCategories.F1.SimplicialEnrichedOpposite
+public import SerrePositivity.InfinityCategories.F1.SimplicialPairNerve
+public import SerrePositivity.InfinityCategories.F1.SimplicialOverTestFamily
+public import SerrePositivity.InfinityCategories.F1.ScaffoldTestFamilyComparison
