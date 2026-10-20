@@ -5490,3 +5490,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.twistedHomDiagonalIso
 #check @SerrePositivity.InfinityCategories.cosliceTwistedHomMap_eq_diagonal
 #check @SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.leftFibrationInfinityBaseChange_isFullyFaithful_iff
+#check @SerrePositivity.InfinityCategories.leftStraighteningInfinityMap_isQCatEquivalence_iff_relativeFunctorPullback

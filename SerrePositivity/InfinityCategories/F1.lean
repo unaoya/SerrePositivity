@@ -1342,3 +1342,5 @@ public import SerrePositivity.InfinityCategories.F1.TwistedHomRows
 public import SerrePositivity.InfinityCategories.F1.TwistedHomDiagonal
 
 public import SerrePositivity.InfinityCategories.F1.CosliceTwistedHomEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationBaseChangeFullyFaithful
