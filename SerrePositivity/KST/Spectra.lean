@@ -918,3 +918,8 @@ public import SerrePositivity.KST.Spectra.SignedAdjointNaturalityCoordinates
 public import SerrePositivity.KST.Spectra.SignedAdjointSecondNaturality
 public import SerrePositivity.KST.Spectra.SignedAdjointInputComparison
 public import SerrePositivity.KST.Spectra.SignedAdjointInputBoundary
+public import SerrePositivity.KST.Spectra.ExponentialInitialRelativeComposition
+public import SerrePositivity.KST.Spectra.InitialBoundarySquarePasting
+public import SerrePositivity.KST.Spectra.SignedAdjointFirstPostNaturality
+public import SerrePositivity.KST.Spectra.SignedAdjointFirstInputCoordinates
+public import SerrePositivity.KST.Spectra.SignedAdjointFirstNaturality
