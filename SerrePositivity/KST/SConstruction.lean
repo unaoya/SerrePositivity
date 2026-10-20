@@ -917,4 +917,10 @@ public import SerrePositivity.KST.SConstruction.TracedBFFirstWhiskerRecovery
 public import SerrePositivity.KST.SConstruction.TracedBFSecondWhiskerRecovery
 public import SerrePositivity.KST.SConstruction.RelativeFaceTransportFromOne
 public import SerrePositivity.KST.SConstruction.RelativeTriangleTransport
+public import SerrePositivity.KST.SConstruction.EndpointFixedEdgeCylinders
+public import SerrePositivity.KST.SConstruction.TriangleBoundaryCylinder
+public import SerrePositivity.KST.SConstruction.TriangleBoundaryHomotopy
+public import SerrePositivity.KST.SConstruction.TriangleEdgeTransport
+public import SerrePositivity.KST.SConstruction.CompositionDiamondEdgeTransport
+public import SerrePositivity.KST.SConstruction.TracedBFTripleEdgeTransport
 /-! # ∞-S• 構成と連結 K 理論 -/
