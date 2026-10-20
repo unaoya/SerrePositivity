@@ -910,4 +910,11 @@ public import SerrePositivity.KST.SConstruction.FixedBoundaryCospanComparison
 public import SerrePositivity.KST.SConstruction.EndpointFixedTriangleHomotopy
 public import SerrePositivity.KST.SConstruction.EndpointFixedDiamondComparison
 public import SerrePositivity.KST.SConstruction.TracedBFCompositionRecoveryCylinder
+public import SerrePositivity.KST.SConstruction.EnrichedFixedCompositionMaps
+public import SerrePositivity.KST.SConstruction.FixedBoundaryPostcomposition
+public import SerrePositivity.KST.SConstruction.EnrichedWhiskerHomotopies
+public import SerrePositivity.KST.SConstruction.TracedBFFirstWhiskerRecovery
+public import SerrePositivity.KST.SConstruction.TracedBFSecondWhiskerRecovery
+public import SerrePositivity.KST.SConstruction.RelativeFaceTransportFromOne
+public import SerrePositivity.KST.SConstruction.RelativeTriangleTransport
 /-! # ∞-S• 構成と連結 K 理論 -/
