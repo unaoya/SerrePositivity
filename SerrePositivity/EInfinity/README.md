@@ -1294,7 +1294,17 @@ backward 一列ずつを両端に付け、`paddingInclusionNat` は元の中央�
 `original_maps_image_eq` は anodyne を反転する関手の下で元の graph の二写像を同定する。
 `colimit_comparison_image_eq` は同じ元の三列の標準射の後の padding 比較と、
 `paddedThreeComparison` の像の一致。単体集合モデルや元の nerve の Kan 性は不要。
-成分と三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`ForwardPath.pullbackPath`・`pushoutPath` は元の任意長の forward 射列の同時置換。
+終点・始点も動かす comma 圏を添字とし、`pullbackFunctor`・`pushoutFunctor` は
+元の全対象・全射での関手性と二つの射影・包含への一致を持つ。
+`pullbackEndpointIso`・`pushoutEndpointIso` の射は元の snd・inl であり、
+元の置換射への一致と元の全比較への自然性を証明する。
+`pullbackProjection_trivialFibration`・`pushoutInclusion_trivialCofibration` と
+`pullbackComparison_weakEquivalence`・`pushoutComparison_weakEquivalence` は
+元の全頂点の自明性と全縦弱同値の保存。モデル圏の left/right proper 性は不要。
+`terminalBlockInput`・`initialBlockInput` と各 `Comparison` は元の zigzag の
+同じ forward 区間・元の端点・全縦射への代入。区間の等式の移送も保持する。
+左右のブロックの貼り合わせ、成分と三列の包含の弱同値性、DK Hom の高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
