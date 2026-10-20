@@ -812,7 +812,15 @@ J-cell の非循環性は評価の余極限保存で証明する。局所表示�
 元の複体射の定値図式の局所化像・元の複体射の局所化像による前合成と両立する。
 `carrierFramedLimitDerivedHomEquiv_source`・`carrierFramedLimitDerivedHomEquiv_both` により、
 底の導来 Hom 同値は始域にも自然で、両変数の元の射を同時に移す式を持つ。
-元の通常錐による比較射の正規化をつなぎ、底の一般右導来極限比較を閉じる作業が残る。
+`carrierStrictConeWeightedFamily` は任意の複体を頂点とする通常錐の全単体の族。
+`carrierStrictConeFamilies_mixed` と同じ Kan 錐比較・添字移送による類の計算から、
+`carrierFramedLimitDerivedHomEquiv_cone` は元の錐の局所化像を、実際の
+`carrierConeToFramedLimit` の局所化像へ送る。
+`weightedCotensorCarrierHomEquiv_app` は同じ Kan 拡張保存同型の単位整合を使う
+随伴の全単体の計算。`carrierConeToFramedLimit_forget` は忘却した E 代数錐で
+この比較が既存の `coneToFramedLimit` の底そのものであることを示す。
+`carrierFramedLimitDerivedHomEquiv_forgetCone` は元の代数比較の底の局所化像を回収する。
+底の一般右導来極限比較の普遍性を閉じる作業が残る。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
 `mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。

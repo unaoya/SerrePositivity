@@ -2060,6 +2060,21 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv_source,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_source,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_both,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierStrictConeWeightedFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierConeToFramedLimit,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierStrictSimplicialConeFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierStrictConeFamilies_mixed,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeClass,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeClass_eq_mapClass,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierSourceRightConeComparisonIso_strictClass,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierRightSimplicialConeIso_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierSourceRightConeComparisonIso_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.weightedCotensorCarrierHomEquiv_app,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierConeToFramedLimit_forget,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConePiZeroEquiv_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_cone,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_forgetCone,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5625,3 +5640,30 @@ example {Y Z : Complex ℤ} (f : Y ⟶ Z)
       Q.map f ≫ carrierFramedLimitDerivedHomEquiv ℤ ℕ Z F x ≫
         Q.map ((framedLimitFunctor ℤ ℕ).map g).hom := by
   exact carrierFramedLimitDerivedHomEquiv_both ℤ ℕ f g
+
+
+-- 任意の複体を頂点とする通常錐は、実際の底の比較射の局所化像へ移る。
+open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    (c : Cone ((Diagram.forget ℤ ℕ).obj F)) :
+    let := projectiveModelCategory ℤ
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (Complex ℤ)).Q
+    let QD := (weakEquivalences (ℕ ⥤ Complex ℤ)).Q
+    carrierFramedLimitDerivedHomEquiv ℤ ℕ c.pt F (QD.map c.π) =
+      Q.map (carrierConeToFramedLimit ℤ ℕ F c) := by
+  exact carrierFramedLimitDerivedHomEquiv_cone ℤ ℕ F c
+
+-- 元の E 代数錐では既存の代数比較射の底そのものを回収する。
+open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
+    let := projectiveModelCategory ℤ
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (Complex ℤ)).Q
+    let QD := (weakEquivalences (ℕ ⥤ Complex ℤ)).Q
+    carrierFramedLimitDerivedHomEquiv ℤ ℕ c.pt.carrier F
+        (QD.map ((Operad.Algebra.forget (BarrattEccles.operad ℤ)).mapCone c).π) =
+      Q.map (coneToFramedLimit ℤ ℕ F c).hom := by
+  exact carrierFramedLimitDerivedHomEquiv_forgetCone ℤ ℕ F c
