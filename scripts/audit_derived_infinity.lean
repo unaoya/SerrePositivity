@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGLastHornTopResidualLowDimensions
 import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralLowDimensions
 import SerrePositivity.InfinityCategories.Derived.DGVerdierDiagramTwoCones
 import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteUnitalTwoCones
@@ -2253,10 +2254,35 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_three
 #print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_four
 
+#print axioms SerrePositivity.InfinityCategories.dgLastHornLastCut_left
+#print axioms SerrePositivity.InfinityCategories.dgLastHornLastCut_right
+#print axioms SerrePositivity.InfinityCategories.dgLastHornLastCut_upper_card
+#print axioms SerrePositivity.InfinityCategories.dgLastHornLastCut_composite
+#print axioms SerrePositivity.InfinityCategories.dgLastHornLastTerm_formula
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornTopResidual
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornRhsWithQ
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_lastEdge
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_lastErased
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_lastComposite
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornKnown_lastComposite_zero
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_rhs_difference
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornQData_rhs_top
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornSolutionOfCochains
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornSolution.differential_a_expanded
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornTopResidual_three
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornTopResidual_four
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornPostcomposeQ_three
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornPostcomposeQ_four
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornLastCutIndices,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornLastTerm,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornTopRhsDifference,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornExpandedSolution,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornTopResidualLowDimensions,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralIndices,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralCochains,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFiller,
