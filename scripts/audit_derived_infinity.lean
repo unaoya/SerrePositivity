@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift
+import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberPrism
+import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberZero
+import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberHomotopy
+import SerrePositivity.InfinityCategories.Derived.RoofConePrism
+import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberReduction
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofFiberReduction
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofFiberCoefficients
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofClosedCoefficients
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofReducedFillers
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofCoefficientTransport
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofClosedTransport
 import SerrePositivity.InfinityCategories.Derived.ConeSimplexFunctor
 import SerrePositivity.InfinityCategories.Derived.TruncatedConeNaturality
 import SerrePositivity.InfinityCategories.Derived.TruncatedConeCoslice
@@ -2539,10 +2551,46 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.isFilteredInfinity_op_of_finiteCones
 #print axioms SerrePositivity.InfinityCategories.dgVerdierOver_op_isFilteredInfinity
 
+#print axioms SerrePositivity.InfinityCategories.roofRightFibration_lift_end_prism
+#print axioms SerrePositivity.InfinityCategories.roofRelativeFiberPrism_nonempty
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeFiberPrism.fiber_square
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeFiberPrism.homotopy_boundary
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeFiberPrism.sourceHomotopy_over
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeFiberPrism.targetHomotopy_over
+#print axioms SerrePositivity.InfinityCategories.roofConePrism_zero
+#print axioms SerrePositivity.InfinityCategories.roofConePrism_one
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeFiberReduction.square
+#print axioms SerrePositivity.InfinityCategories.RoofRelativeFiberReduction.transport_boundary
+#print axioms SerrePositivity.InfinityCategories.roofRelativeFiberReduction_of_cone
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofFiberReduction_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofCoefficient_square
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofReductionDenominator_vertex
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofClosedCoefficient_square
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofReducedFiller_exists
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofReductionDenominator_inclusion
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofReductionDenominator_quotientInclusion
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofClosedSourceCoefficient_inclusion
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofClosedTargetCoefficient_inclusion
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofClosedBoundaryTransport
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofClosedTargetTransport
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofClosedTransport_boundary
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberPrism,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberZero,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.RoofConePrism,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberReduction,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofFiberReduction,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofFiberCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofClosedCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofReducedFillers,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofCoefficientTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofClosedTransport,
     `SerrePositivity.InfinityCategories.Derived.ConeSimplexFunctor,
     `SerrePositivity.InfinityCategories.Derived.TruncatedConeNaturality,
     `SerrePositivity.InfinityCategories.Derived.TruncatedConeCoslice,

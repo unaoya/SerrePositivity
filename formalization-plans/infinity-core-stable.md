@@ -16,7 +16,8 @@
 - `TruncatedJoinConeData f N` と有限頂点からの N=0 の実初期値を構成。錐全体を一つの追加実閉分母で更新し、同じ apex・全面・全正番号退化条件を保つ操作まで完成。
 - 次次数の零面 f σ と既存錐の正番号面から実境界写像を貼る。有限族を一つの分母後に同時充填し、その全面・共有面・実 apex を更新済み下次数錐へ厳密に一致させた。基本退化表示の標準錐の一致・全面保存・退化正規化も完成。`dgVerdierTruncatedConeSuccessor_nonempty` は次次数有限なら N+1 の錐を、`dgVerdierTruncatedConeData_nonempty` は各次数有限なら任意有限次数の錐を供給する。
 - 次元上界までの切断写像の一意な全次数延長を標準 splitting から構成。切断錐の全順序写像への自然性、実 coslice への切断写像と射影の厳密一致、実 join 写像の左右制限・apex・全低次数単体との一致を証明。`dgVerdierFiniteJoinCone_nonempty` は任意の有限単体集合からの実分母図式に同じ部分圏内の実 join 錐を供給する。`dgVerdierOver_op_isFilteredInfinity` により実分母 over 圏の反転は filtered ∞ 圏。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGVerdierCofiltered.lean`・`Derived/TruncatedConeJoinMap.lean`。
+- 任意の有限商屋根図式と指定元境界を、共通の実分母 fiber 上の厳密な相対問題へ還元。元境界を先に右持ち上げし、その比較像を全境界で固定して商全体を右持ち上げする。二輸送の終端・全底・境界全時刻の一致を証明。共通頂点を同じ実辺の閉分母へ戻し、元・商の pinched Hom 係数正方形と実屋根像を同定した。正次数の還元問題は一つの追加閉分母後に実充填と全境界付き輸送を持つ。元の相対問題への二段階輸送の合成と、屋根比較の弱同値判定は未完。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofReducedFillers.lean`・`Derived/DGActualRoofClosedTransport.lean`・`Derived/DGActualRoofFiberReduction.lean`。
 
 ### 残り（依存順、時間は推定）
 
@@ -45,6 +46,10 @@
 - `TruncatedJoinConeData.naturality`・`TruncatedJoinConeData.cosliceMap_projection`・`TruncatedJoinConeData.joinMap_simplex`。
 - `dgVerdierFiniteJoinCone_nonempty`・`finiteSimplicialOpposite`・`dgVerdierOver_op_isFilteredInfinity`。
 
+- `roofRelativeFiberPrism_nonempty`・`RoofRelativeFiberPrism.fiber_square`・`RoofRelativeFiberPrism.homotopy_boundary`。
+- `dgActualRoofFiberReduction_nonempty`・`dgActualRoofClosedCoefficient_square`・`dgActualRoofReducedFiller_exists`。
+- `dgActualRoofClosedSourceCoefficient_inclusion`・`dgActualRoofClosedTargetCoefficient_inclusion`・`dgActualRoofClosedTransport_boundary`。
+
 ### 依存と提供
 
 - Core・F1・F1B・F2・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded・KST は読み取り専用。
@@ -57,16 +62,16 @@
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7315 jobs）。公理監査は Derived 9222 宣言／1008 モジュール、Stable 10337／1278。許容三公理のみ。今回の新規9モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7380 jobs）。公理監査は Derived 9328 宣言／1020 モジュール、Stable 10443／1290。許容三公理のみ。今回の新規12モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：有限実分母図式の実 join 錐と、実添字の余 filtered 性は完成。次は右ファイブレーション上の有限図式を、錐の共通 apex の固定 fiber へ全境界付きで輸送する。錐から `sliceUnderCurry` と `F1B/KanRightKanShapeCommaComparison.lean` の `kanPointCosliceHomotopy` で const(apex)→元の射影の実ホモトピーを取り、`F1B/CofinalFixedRightPrism.lean` の `rightFibration_lift_fixed_prism` を使う。元の図式を円柱の終端で固定し、境界の輸送も厳密に固定する。
-- 実屋根比較の任意の相対有限充填問題を共通 fiber 上の pinched Hom の問題へ移し、`dgQuotientRoofFinite_exists_transportedFillerData` と接続する。apex の実零単体は `DGVerdierOverVertexInverse` で閉分母頂点へ戻せる。元・商の全空間の右ファイブレーション性と、商側の左ファイブレーション性を使い、比較後の輸送を全境界付きで一致させる。有限錐の存在だけで屋根比較の弱同値性を主張しない。
-- その後、実屋根比較の弱同値性、全標的の `F1B/Localization.IsLocalization` と Verdier 列、β5、β4。閉零圏の厳密屋根添字と実添字の cofinality を使う場合は別に証明する。実添字の余 filtered 性は既に利用できる。
+- β3：任意有限相対問題の共通 fiber 還元、同じ閉分母上の実係数表示、追加分母後の実充填、閉係数から元の相対問題への厳密な二輸送は完成。次は `dgActualRoofReducedFiller_exists` の充填の境界輸送・商目標輸送と、`dgActualRoofClosedBoundaryTransport`・`dgActualRoofClosedTargetTransport` を合成し、元の相対問題への一つの境界整合的な輸送へ束ねる。
+- 参考：`F1B/FunctorHomotopyComposition.lean` の `exists_functorHomotopyComposite`・`FunctorCompositionTriangle` は実二経路の合成三角形を供給する。元境界の二輸送を先に合成し、その三角形の商像を境界で指定して、商側の二輸送の合成三角形を `pre i` の内部ファイブレーション性で相対構成する方針がある。`RelativeFunctorHomotopyComposition` は境界が全時間で定値の場合用なので、今回の動く境界へそのまま使わない。
+- 全境界付きの元相対問題の充填判定から実屋根比較の弱同値性を証明する。零次数は既存 π₀ 全射性と整合させる。有限錐や係数充填だけで比較の弱同値性を主張しない。その後、全標的の `F1B/Localization.IsLocalization`、Verdier 列、β5、β4。実分母添字の余 filtered 性は提供済み。厳密屋根添字との cofinality を使う場合は別に証明する。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
