@@ -17,8 +17,9 @@
 - Morita tensor の同じ逆関手を h Fun 内の三角式付き ∞ 右随伴に昇格。Perf→D の包含との逆関手比較も公開済み。一般 RHom の構成・同定とは区別する。
 - 出力の射影性を仮定しない分解の実対象、実比較差、全 Hom の mapping cocone、全パラメータからの二射と比較 cochain の実持ち上げ・一意性、入力 Hom 射影の全準同型性を監査済み。実合成・実単位に加え、全 cochain 上の左右単位律・三重合成の結合律を証明し、実分解 dg 圏と実入力・半自由出力への dg 射影を構成した。
 - 実入力射影は対象上全射、全 Hom の各次数で全射な準同型。対象だけを共通宇宙へ上げた実 nerve は自明 Kan fibration、したがって実 ∞ 圏同値。逆と実半自由出力射影から、任意の dg 加群値関手の実出力を半自由模型の全 ∞ 関手へ移し、実分解圏上の全関手比較同型も証明した。今回までの実分解 dg 圏と二射影は統合・監査済み。逆を実自明 Kan fibration の厳密切断へ統一し、各値から元の同じ入力像への次数別全射な準同型を回収した。
-- 固定始域・固定終域の実 D(R) 値共変・反変 Hom を構成し、各頂点値が同じ厳密切断の半自由分解であることを証明した。実 augmentation は元の全 Hom end 複体への全射準同型。両分解複体の pinched 模型から元の実導来 ∞ 圏の写像空間への全空間同値も証明し、今回の6モジュールは個別・集約ビルドと両公理監査を通した。関手族としての比較の自然性と二変数の統合は未証明。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionProjection`・`DGModuleFunctorResolutionCategory`・`DGModuleFunctorResolutionNerve`・`DGModuleOutputResolutionInfinity`・`DGSemifreeDerivedHomInfinity`・`DGSemifreeDerivedHomValue`・`DGSemifreeDerivedHomMappingSpace`（すべて `Derived/`）。
+- 固定始域・固定終域の実 D(R) 値共変・反変 Hom を構成し、各頂点値が同じ厳密切断の半自由分解であることを証明した。実 augmentation は元の全 Hom end 複体への全射準同型。両分解複体の pinched 模型から元の実導来 ∞ 圏の写像空間への全空間同値も証明し、統合・公理監査済み。関手族としての比較の自然性と二変数の統合は未証明。
+- augmentation の実比較 cochain を全整数次数の斉次作用へ移し、全微分式、単位零、豊穣順・通常順の符号付き二合成則を証明した。同じ次数 −1 成分の切断和から全候補 `SimplexData` を構成し、定値二相での実端点回収と二点混合係数の閉性、同じ実二単体から構成した相 011 の補正係数の微分式まで統合・公理監査済み。候補切断和と二次補正式の同定、全 HA 方程式・単体作用は未証明。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionProjection`・`DGModuleFunctorResolutionCategory`・`DGModuleFunctorResolutionNerve`・`DGModuleOutputResolutionInfinity`・`DGSemifreeDerivedHomInfinity`・`DGSemifreeDerivedHomValue`・`DGSemifreeDerivedHomMappingSpace`・`DGModuleAugmentationPrismData`・`DGModuleAugmentationTriangleEquation`（すべて `Derived/`）。
 
 ### 残り（依存順、時間は推定）
 
@@ -63,18 +64,19 @@
 
 ### 未コミット
 
-- なし。今回の6モジュールと既存出力移送の厳密切断への統一は、各値の実 augmentation、共変・反変の D(R) 値 Hom と各対の全写像空間比較を証明し、統合・監査後に保存した。
+- なし。今回の10モジュールは、実比較 cochain の全斉次式、prism 候補切断和・実端点・混合辺と、相 011 の同じ補正係数の微分式を証明し、統合・監査後に保存した。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9276 jobs）。公理監査は Derived 12091 宣言／1352 モジュール、Stable 13206／1622。許容三公理のみ。今回までの保存対象283新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9286 jobs）。公理監査は Derived 12217 宣言／1362 モジュール、Stable 13332／1632。許容三公理のみ。今回までの保存対象293新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5：厳密切断・実値の回収、固定入力ごとの D(R) 値 Hom と実全 Hom 複体への augmentation、各対の全写像空間比較まで閉じた。次は実分解 dg 圏上の augmentation 族を、全単体の実自然変換へ束ねる。実射影 `dgModuleFunctorResolutionReplacement`（半自由包含後）と `F.comp Source` を両端とし、`dgModuleFunctorResolutionPrimitive_boundary` の実比較 cochain と、`dgModuleFunctorResolutionComposition_comparison` の二項和・単位零を使って、`N_dg(Resolution) × Δ¹ → N_dg(RightModule)` の実 prism を構成する。位相をまたぐ高次係数に同じ次数 −1 cochain の切断和を入れ、全 HA 方程式・退化・境界を照合する。
+- β5：実比較 cochain の斉次微分式・単位零・二規約での全次数合成則、`dgModuleAugmentationPrismData` の候補切断和・端点・混合辺の閉性まで閉じた。次は候補を全実 prism へ昇格する。まず n=2・相 011・I=univ の混合係数を `dgModuleAugmentationTriangle011Homotopy` と同定し、既証明の同じ補正の実微分式を候補の HA 方程式へ接続する。未完草稿 `/tmp/d-beta5-augmentation-prism-triangle-check.lean` は和を内部点 1 の一項まで簡約できている。残りは左右フィルターの濃度が 2 である等式を、斉次係数の次数・従属引数へ正しく輸送する部分（草稿は未通）。相 001 も検証し、その後任意 I の削除・二重切断和を既存 `DGNerve/NestedCut` の添字比較で整理し、`dgModuleAugmentationHomotopyComponent_compose` と全微分式を使って全 HA 方程式を証明する。
+- 全 HA 後、単射な添字変更での切断和の自然性、潰れる辺と高次退化の零を同じ単位零式で証明し、`N_dg(Resolution) × Δ¹ → N_dg(RightModule)` の実写像・実両端を構成する。`SimplexData` の存在や各混合辺の閉性を、全単体の自然変換の完成とは数えない。入力と全加群の対象宇宙が異なる場合は `DGUniverseLift` を使う。
 - この実 augmentation の族を用いて D(R) 値 Hom と空間値 Hom の比較の自然性を証明し、二変数へ統合する。`DGSemifreeDerivedHomValue` の頂点等式・各 augmentation の準同型性、`DGSemifreeDerivedHomMappingSpace` の各対の全空間同値は証明済みだが、関手族の比較や一般 tensor–Hom 随伴を結論しない。対象宇宙の相違は `DGUniverseLift` で扱い、全加群型の Small.{u} や元の出力の射影性を仮定しない。
 - その後一般 tensor–Hom 随伴・全 coherence、一般双加群の作用と Morita 不変性、Perf の冪等完備性を閉じて β4 へ進む。β4 は提供済み F2 の実 lax pullback を読み取り専用で使う。β3 は局所化・Verdier 列とも完了しており、再実装や承認待ちは不要。
 

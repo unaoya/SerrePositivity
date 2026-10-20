@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.ComplexMinusOneCochainBoundary
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyData
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyTensor
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismData
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismBoundary
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismEdges
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyNaturality
+import SerrePositivity.InfinityCategories.Derived.DGHomotopyNaturalTriangle
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleEquation
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionSection
 import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionValue
 import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionAugmentation
@@ -3549,6 +3559,17 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ComplexMinusOneCochainBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyTensor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGHomotopyNaturalTriangle,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleEquation,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionSection,
     `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionValue,
     `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionAugmentation,
