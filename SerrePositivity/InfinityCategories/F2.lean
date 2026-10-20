@@ -90,6 +90,8 @@ public import SerrePositivity.InfinityCategories.F2.FiberwiseIntervalPullbackLif
 public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackValueDetection
 public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackValueCoordinates
 
+public import SerrePositivity.InfinityCategories.F2.MonicFiniteHomotopyApproximation
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。

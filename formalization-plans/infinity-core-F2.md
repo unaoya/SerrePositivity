@@ -37,14 +37,14 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   native 余錐空間から定値変換空間への標準比較の厳密な左逆・ホモトピー右逆と同値性を証明。
   全空間内部 Hom 比較と両端固定の Kan path 比較は同値。Kan 引き戻し比較は二入力・単位上の全 path と厳密に一致。
   実現の両端固定ホモトピーを元の変換へ戻し、native 全空間余錐の比較の像と元の単位の同型を構成。
-  元の全 Hom 三角形の三辺・対角のホモトピーを追跡し、標準比較を実際の相対合成と関手同型で比較。
-  定値 fiber の作用を普遍輸送へ移し、全 Hom 比較を元の余錐の fiber 写像の前合成と比較。輸送作用も同値。
+  元の全 Hom 三角形と相対合成を比較。定値 fiber の普遍輸送作用も同値で、全 Hom 比較を fiber 写像の前合成と比較。
   元の小さい単位の前合成同値を厳密な宇宙移送で必要な全 fiber 標的へ戻し、構成済み余錐の native 余極限性を証明。
   小さい底上の任意の coherent 空間値図式の HasColimit を公開。filtered 性・strict 図式への置換は不要。
   共通境界付き同時検出を構成。対角の cofinality の底変換から、元の全空間 Kan 積比較の弱同値性・ホモトピー逆を証明。
   定値底の形状制限は相対内部 Hom の底変換。両端評価と path 引き戻しの二入力射・底射の left fibration 性を証明。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含、元の値による境界固定の相対有限検出を証明。
-  三集約同時ビルド 7322 jobs、公理監査 2534 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  有限写像円柱で境界を単射に補正。指定 path を単射境界の有限模型で近似し、比較の全円柱を両端上で時間定値に保持。
+  三集約同時ビルド 7336 jobs、公理監査 2559 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -75,7 +75,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
 - `F2.unstraighteningMappingTriangleIso` / `F2.coherentTotalUnitHomComparison_homotopyEquivalence`
 - `F2.coherentDiagramTotalCocone_isColimit` / `F2.hasColimit_coherentSpaceDiagram`
-- `F2.fiberwisePullbackFiberIso` / `F2.fiberwisePullbackValue_finite_relative_detection`
+- `F2.fiberwisePullbackFiberIso` / `F2.continuousKanReplacement_homotopy_monic_finite_approximation`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
 ### 依存と提供
@@ -102,8 +102,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：Kan 引き戻し標的の有限な三座標・指定 path を、境界を保って共通の値へ同時に移す。
-  非単射にもなる境界の有限因子分解を相対持ち上げへ接続し、比較の弱同値性、一般の有限極限交換、Indκ へ進む。
+- F2N-1：単射境界の有限 path 近似を使い、二入力の輸送を元の標的の境界へ指定して相対輸送する。
+  元の指定 path への境界固定の比較円柱も保持し、標的側の同時有限検出、比較の弱同値性、一般の有限極限交換、Indκ へ進む。
 
 ## 0. 目標と範囲
 
@@ -162,7 +162,8 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   始点評価の底上の逆と両端固定の Kan path 比較のホモトピー逆、二入力・単位上の全 path を保つ Kan 引き戻し比較を構成。
   形状制限の相対内部 Hom による底変換、元の両端評価と二入力射・引き戻し底射の left fibration 性を証明。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による相対有限検出を証明。
-  標的の三座標・指定 path の同時検出、比較の弱同値性・一般の交換・Ind は未完了。
+  有限写像円柱による単射な新境界への補正、指定 path の両端を全円柱で固定する有限近似を証明。
+  標的の三座標・指定 path の共通値での同時検出、比較の弱同値性・一般の交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -172,7 +173,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：境界の有限因子分解と相対持ち上げを接続し、Kan 引き戻し標的の三座標と指定 path を同時検出する。
+- 次の一手：単射境界の有限 path 近似に二入力の指定輸送を与えて相対輸送し、元の比較円柱を保つ同時有限検出へ進む。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
