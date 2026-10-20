@@ -1096,7 +1096,17 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `colimitUnit` と実際の余極限上の合成の左右単位則で、`_fac` は全固定語の回収。
 `BarrattEccles.algebraHammockColimitComposition_left_unit`・`_right_unit` と各 `_fac` は
 任意の可換環上で同じ元の合成と単位に対して成り立つ。
-余極限上の全結合則、proper 性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.append_assoc` は三つの元の語の全方向を保つ結合等式。
+`ZigzagAppend.obj_assoc_heq`・`map_assoc_heq` は元の三部分の全頂点・全列・全縦射を照合し、
+`functor_assoc` は元の語の等式による遷移後の厳密な関手の一致。
+`graphComposition_assoc` は全単体の結合則。`tensorTriple_hom_ext` は外部積余錐の反復で
+得る三つの実際の余極限の積からの一意性。`colimitComposition_assoc` は同じ元の合成の結合則。
+`Hammock.enrichedCategory` は全語の実際の余極限・空語の単位・元の連結の合成を持ち、
+左右単位・結合の全公理を満たす明示的な単体的豊穣圏。
+`BarrattEccles.algebraHammockEnrichedCategory`・各 `_hom`・`_id`・`_comp` と
+`algebraHammockColimitComposition_assoc` は任意の可換環上の同じ元の E 代数への代入。
+大域モデル instance や単体集合のモデル構造は追加しない。
+proper 性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

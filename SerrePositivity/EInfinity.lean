@@ -807,3 +807,11 @@ public import SerrePositivity.EInfinity.Hammock.ZigzagAppendUnit
 public import SerrePositivity.EInfinity.Hammock.GraphCompositionUnit
 public import SerrePositivity.EInfinity.Hammock.ColimitCompositionUnit
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitUnit
+public import SerrePositivity.EInfinity.Hammock.WordAssociativity
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendAssociativityObjects
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendAssociativity
+public import SerrePositivity.EInfinity.Hammock.GraphCompositionAssociativity
+public import SerrePositivity.EInfinity.Hammock.TripleColimit
+public import SerrePositivity.EInfinity.Hammock.ColimitCompositionAssociativity
+public import SerrePositivity.EInfinity.Hammock.EnrichedCategory
+public import SerrePositivity.EInfinity.BarrattEccles.HammockEnrichedCategory

@@ -22,7 +22,29 @@ run_cmd do
   if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
   unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
     throwError "射影モデル構造の宣言がありません"
-  for required in #[`SerrePositivity.EInfinity.Hammock.Word.object_ext,
+  for required in #[`SerrePositivity.EInfinity.Hammock.Word.append_assoc,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.vertex_assoc,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.arrow_assoc_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.obj_assoc_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.app_assoc_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.map_assoc_heq,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.functor_assoc,
+      `SerrePositivity.EInfinity.Hammock.graphComposition_assoc,
+      `SerrePositivity.EInfinity.Hammock.tensorTriple_hom_ext,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition_assoc_left_fac,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition_assoc_right_fac,
+      `SerrePositivity.EInfinity.Hammock.colimitComposition_assoc,
+      `SerrePositivity.EInfinity.Hammock.enrichedCategory,
+      `SerrePositivity.EInfinity.Hammock.enrichedCategory_hom,
+      `SerrePositivity.EInfinity.Hammock.enrichedCategory_id,
+      `SerrePositivity.EInfinity.Hammock.enrichedCategory_comp,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockColimitComposition_assoc,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEnrichedCategory,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEnrichedCategory_hom,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEnrichedCategory_id,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEnrichedCategory_comp,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTensorTriple_hom_ext,
+      `SerrePositivity.EInfinity.Hammock.Word.object_ext,
       `SerrePositivity.EInfinity.Hammock.Word.empty_append,
       `SerrePositivity.EInfinity.Hammock.Word.append_empty,
       `SerrePositivity.EInfinity.Hammock.Zigzag.object_word_hext,
@@ -7562,3 +7584,59 @@ example {C : Type e2ComplexLimitUniverse} [Category C] (W : MorphismProperty C)
     ((Functor.const (Zigzag W a X Y)).obj (emptyObj W X)).prod' (𝟭 _) ⋙
         ZigzagAppend.functor ⋙ WordAction.functor (eqToHom (Word.empty_append a)) =
       𝟭 (Zigzag W a X Y) := ZigzagAppend.empty_left_functor
+
+-- 任意の可換環上で、元の E 代数の全語の余極限は単体的豊穣圏をなす。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] :
+    EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} (BarrattEccles.operad A).Algebra :=
+  BarrattEccles.algebraHammockEnrichedCategory A
+
+-- 豊穣 Hom と合成は同じ元の余極限・同じ元の合成を厳密に保持する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y Z : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockEnrichedCategory A).comp X Y Z =
+      BarrattEccles.algebraHammockColimitComposition A X Y Z :=
+  BarrattEccles.algebraHammockEnrichedCategory_comp A X Y Z
+
+-- 結合則は元の三つの実際の余極限の積上で成り立つ。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y Z V : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockColimitComposition A X Y Z ⊗ₘ
+        𝟙 (BarrattEccles.algebraHammockColimitGraph A Z V)) ≫
+        BarrattEccles.algebraHammockColimitComposition A X Z V =
+      (α_ (BarrattEccles.algebraHammockColimitGraph A X Y)
+        (BarrattEccles.algebraHammockColimitGraph A Y Z)
+        (BarrattEccles.algebraHammockColimitGraph A Z V)).hom ≫
+          (𝟙 (BarrattEccles.algebraHammockColimitGraph A X Y) ⊗ₘ
+            BarrattEccles.algebraHammockColimitComposition A Y Z V) ≫
+              BarrattEccles.algebraHammockColimitComposition A X Y V :=
+  BarrattEccles.algebraHammockColimitComposition_assoc A X Y Z V
+
+-- filtered 性を使わず、全固定語の標準射の三重積が射を一意に決める。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y Z V : (BarrattEccles.operad A).Algebra) {K : SSet.{e2ComplexLimitUniverse + 1}}
+    (f g : (BarrattEccles.algebraHammockColimitGraph A X Y ⊗
+      BarrattEccles.algebraHammockColimitGraph A Y Z) ⊗
+        BarrattEccles.algebraHammockColimitGraph A Z V ⟶ K)
+    (h : ∀ a b c : Hammock.Word,
+      ((BarrattEccles.algebraHammockGraphInclusion A a X Y ⊗ₘ
+        BarrattEccles.algebraHammockGraphInclusion A b Y Z) ⊗ₘ
+          BarrattEccles.algebraHammockGraphInclusion A c Z V) ≫ f =
+      ((BarrattEccles.algebraHammockGraphInclusion A a X Y ⊗ₘ
+        BarrattEccles.algebraHammockGraphInclusion A b Y Z) ⊗ₘ
+          BarrattEccles.algebraHammockGraphInclusion A c Z V) ≫ g) : f = g :=
+  BarrattEccles.algebraHammockTensorTriple_hom_ext A X Y Z V f g h
+
+-- 元の三重連結の関手の一致は全対象・全縦射を保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category C] (W : MorphismProperty C)
+    [W.IsMultiplicative] (a b c : Word) (X Y Z V : C) :
+    (ZigzagAppend.functor (W := W) (a := a) (b := b) (X := X) (Y := Y) (Z := Z)).prod
+        (𝟭 (Zigzag W c Z V)) ⋙ ZigzagAppend.functor ⋙
+          WordAction.functor (eqToHom (Word.append_assoc a b c)) =
+      CategoryTheory.prod.associator (Zigzag W a X Y) (Zigzag W b Y Z) (Zigzag W c Z V) ⋙
+        (𝟭 (Zigzag W a X Y)).prod ZigzagAppend.functor ⋙ ZigzagAppend.functor :=
+  ZigzagAppend.functor_assoc
