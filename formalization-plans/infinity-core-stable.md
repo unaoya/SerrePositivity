@@ -81,18 +81,18 @@
 
 ### 未コミット
 
-- `CosliceUncurryIso.lean`・`CoslicePrismIso.lean`・`CosliceRealizationLimitCone.lean` は対象ビルド済み。`DGVerdierRightKanCanonical.lean` を検証中。標準右 Kan 錐と全錐の同型の照合により前合成の全充満忠実性へ進む。ほかの所有ファイルは保存済み。
+- この保存範囲に未コミットなし。局所 K-flat 商の実局所化本体と全関手圏の充満忠実性・本質的全射性まで検証済み。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8217 jobs）。公理監査は Derived 11168 宣言／1233 モジュール、Stable 12283／1503。許容三公理のみ。今回の新規164モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8248 jobs）。公理監査は Derived 11205 宣言／1245 モジュール、Stable 12320／1515。許容三公理のみ。今回の新規176モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
-- β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
+- β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。平坦分解への局所化の移送・零化完全関手圏の普遍性・Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏の普遍性を続ける。全選択空間上の二入力合成・単位、相対実評価と全 prism の可縮性、右 Kan から全前合成の充満忠実性・本質的全射性への一般判定は完成。`dgVerdierRightKanMap_isLeftCofinal` は、元の実屋根比較を商側三角形の右ファイブレーションへ基底変換し、全 Quillen A slice の厳密な pullback 表示から実際に証明した。商側三角形の全空間は始対象値図式と実添字の弱可縮性で弱可縮。`dgVerdierRightKanDiagram_hasLimit_all` と `dgVerdierInvertingFunctor_rightKanExtension_exists` により、任意反転関手の全頂点の局所極限と実右 Kan 拡張の存在も完成。次は全 prism の coslice 実現の全錐同型で標準右 Kan 錐の極限性と前合成の充満忠実性を閉じ、その後任意右 Kan 単位の実成分の可逆性を証明する。単位の可逆性・本質的全射性・実 IsLocalization 本体は未完。
+- β3：`dgQuotientNerveProjection_isLocalization` により、局所 K-flat 商の `IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` 本体は完成。実屋根比較からの右 Kan 形状の cofinality、任意反転関手の全頂点の実右 Kan 極限、標準右 Kan 条件、元の単位の全実成分の可逆性を証明し、任意 quasicategory 標的の全前合成の充満忠実性と本質的全射性へ接続した。次は Verdier 列：平坦分解後の商への移送と、零化する完全関手の全 ∞ 圏への普遍性を進める。任意商辺の既存分数三角形 `dgQuotientEdge_exists_fractionTriangle` で元の辺の像と実辺を可逆な最初の二成分で比較し、cofiber 四角形全体の同型を構成して延長関手の完全性を反映する。局所化本体の完成だけで Verdier 列・β3 全体の完成と数えない。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。普遍性の後、平坦分解への移送、Verdier 列、β5、β4。全計画は未完。
 
@@ -145,8 +145,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
 D7 の後に着手済み。実零化、平坦模型、Hom 準同型による充満忠実性、Yoneda 模型との同値、前三角 dg 圏と平坦分解後の商の実 dg nerve の安定性、商関手の完全性まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
-F1b の `Localization.lean` の `IsLocalization` を入口とし、同じ宇宙の標的への
-`localizationPrecomposition` が反転関手の全部分 ∞ 圏との同値になることを証明する。
+F1b の `Localization.lean` の `IsLocalization` を入口とし、局所 K-flat な場合は同じ宇宙の任意 quasicategory 標的への
+`localizationPrecomposition` が反転関手の全部分 ∞ 圏との同値になることを証明済み。
 
 - L4 §26（archive に移管）の半自由 dg 圏分解・Hom の K-flat 性・商の H⁰ 比較を読むだけで使う。
 - 必要な平坦分解を先行し、未分解の path 商が無条件に Verdier 商であるとはしない。

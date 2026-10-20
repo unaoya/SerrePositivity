@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.ConeLegRestriction
+import SerrePositivity.InfinityCategories.Derived.CoslicePrismIso
+import SerrePositivity.InfinityCategories.Derived.CosliceRealizationLimitCone
+import SerrePositivity.InfinityCategories.Derived.CosliceUncurryIso
+import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalization
+import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitLegs
+import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCanonical
+import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLegs
+import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanUnit
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges
+import SerrePositivity.InfinityCategories.Derived.HomotopyComponentPrecomp
+import SerrePositivity.InfinityCategories.Derived.RightKanTransportComponents
 import SerrePositivity.InfinityCategories.Derived.CosliceInitialRealization
 import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCofinality
 import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLimits
@@ -2935,6 +2947,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryAction,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingUnitAction,
+    `SerrePositivity.InfinityCategories.Derived.ConeLegRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoslicePrismIso,
+    `SerrePositivity.InfinityCategories.Derived.CosliceRealizationLimitCone,
+    `SerrePositivity.InfinityCategories.Derived.CosliceUncurryIso,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientLocalization,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitLegs,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCanonical,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLegs,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanUnit,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyComponentPrecomp,
+    `SerrePositivity.InfinityCategories.Derived.RightKanTransportComponents,
     `SerrePositivity.InfinityCategories.Derived.CosliceInitialRealization,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCofinality,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLimits,
