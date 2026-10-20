@@ -762,3 +762,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.spaceLeftHomValueEquivalence
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalUnitHomComparison
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalUnitHomComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.pointCosliceFamilyHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coconeVariablePrism_precomp
+#check @SerrePositivity.InfinityCategories.F2.pointHomTransportCosliceFamily_base
+#check @SerrePositivity.InfinityCategories.F2.pointHomTransportCylinder
+#check @SerrePositivity.InfinityCategories.F2.pointHomTransportCylinder_base
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomSquare_source
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomSquare_target
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle_first_transformation
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle_second_standard
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle_diagonal
