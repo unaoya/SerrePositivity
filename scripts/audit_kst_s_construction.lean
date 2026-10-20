@@ -17490,4 +17490,57 @@ namespace SerrePositivity.KST.SConstruction
 #check presentedPerfectDGInputHom_horizontal_eqToHom
 #print axioms presentedPerfectDGInputHom_horizontal_eqToHom
 
+#check dgTensorFunctor
+#print axioms dgTensorFunctor
+#check dgTensorFunctor_map
+#print axioms dgTensorFunctor_map
+#check dgTensorAssociator_unit
+#print axioms dgTensorAssociator_unit
+#check dgTensorAssociator_composition
+#print axioms dgTensorAssociator_composition
+#check dgTensorAssociator
+#print axioms dgTensorAssociator
+#check dgTensorAssociator_map
+#print axioms dgTensorAssociator_map
+#check dgTensorBraiding_unit
+#print axioms dgTensorBraiding_unit
+#check dgTensorBraiding_composition
+#print axioms dgTensorBraiding_composition
+#check dgTensorBraidingHom
+#print axioms dgTensorBraidingHom
+#check dgTensorBraidingHom_apply
+#print axioms dgTensorBraidingHom_apply
+#check dgTensorBraidingHom_identity
+#print axioms dgTensorBraidingHom_identity
+#check dgTensorBraidingHom_composition
+#print axioms dgTensorBraidingHom_composition
+#check dgTensorBraiding
+#print axioms dgTensorBraiding
+#check dgTensorBraiding_map
+#print axioms dgTensorBraiding_map
+#check enrichedTensorTripleComposition
+#print axioms enrichedTensorTripleComposition
+#check enrichedFunctorTensorAction_composition
+#print axioms enrichedFunctorTensorAction_composition
+#check presentedPerfectDGInputHom_cross
+#print axioms presentedPerfectDGInputHom_cross
+#check presentedPerfectDGTensorIterated
+#print axioms presentedPerfectDGTensorIterated
+#check presentedPerfectDGTensorComposite
+#print axioms presentedPerfectDGTensorComposite
+#check presentedPerfectDGTensorIterated_obj
+#print axioms presentedPerfectDGTensorIterated_obj
+#check presentedPerfectDGTensorIterated_map
+#print axioms presentedPerfectDGTensorIterated_map
+#check presentedPerfectDGTensorComposite_map
+#print axioms presentedPerfectDGTensorComposite_map
+#check presentedPerfectDGTensorIterationHom
+#print axioms presentedPerfectDGTensorIterationHom
+#check presentedPerfectDGTensorIteration_transport
+#print axioms presentedPerfectDGTensorIteration_transport
+#check presentedPerfectDGTensorIterated_map_transport
+#print axioms presentedPerfectDGTensorIterated_map_transport
+#check presentedPerfectDGTensorAction_comp
+#print axioms presentedPerfectDGTensorAction_comp
+
 end SerrePositivity.KST.SConstruction

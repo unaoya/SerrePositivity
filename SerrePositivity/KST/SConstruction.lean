@@ -1259,4 +1259,15 @@ public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHomWhiske
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGCompositionTransport
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomWhiskering
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomHorizontal
+public import SerrePositivity.KST.SConstruction.DGTensorFunctor
+public import SerrePositivity.KST.SConstruction.DGTensorAssociatorLaws
+public import SerrePositivity.KST.SConstruction.DGTensorAssociator
+public import SerrePositivity.KST.SConstruction.DGTensorBraidingLaws
+public import SerrePositivity.KST.SConstruction.DGTensorBraiding
+public import SerrePositivity.KST.SConstruction.EnrichedTensorActionComposition
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomCross
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorCompositionFunctors
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorIterationHom
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorIterationTransport
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorActionComposition
 /-! # ∞-S• 構成と連結 K 理論 -/
