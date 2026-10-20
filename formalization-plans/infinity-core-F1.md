@@ -81,7 +81,8 @@
 - 全相対作用と通常 nerve 上の coherent 分類写像は `87acb9df5` に保存済み。
 - 係数充填の一般化と quasicategory 値 weighted nerve の inner fibration 性は `24a9eb957`。
 - 可逆な係数辺・標準水平辺の cocartesian 性は `6ed7eecf5`。
-- quasicategory 値 weighted nerve は cocartesian fibration。scaffold 比較も完了（4537 jobs・監査10281宣言）。
+- quasicategory 値 weighted nerve の cocartesian fibration 性と scaffold 比較は `9d911c9c1`。
+- 同じ taut scaffold を cocartesian section の族へ転置した自然変換の全成分が同値。
 
 ### 既知の問題
 
@@ -94,10 +95,9 @@
 ### 次の一手
 
 Cat∞ 値版では通常 nerve 上の全 fibration の分類写像に加え、strict 図式の unstraightening を構成済み。
-係数が Kan でなくても、指定した係数ホーンの充填から全空間の充填を構成できる。
-inner fibration 性と、最後の係数が可逆な辺・標準水平辺の cocartesian 性は証明済み。
-射影の cocartesian fibration 性と F1B の一般の scaffold 比較の適用も完了。
-次は taut scaffold を cocartesian section の族へ転置し、元の係数図式への比較を構成する。
+`weightedNerveCocartesianTransportUnit` は元の係数図式から cocartesian strict transport への
+自然変換であり、全成分が同値。恒等射での評価は元の厳密な fiber 同型に一致する。
+次はこの同じ自然変換を coherent な Cat∞ 値図式の比較に実現する。
 同じ主写像の充満忠実性・本質的全射性と、一般の底への帰着は別に残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
