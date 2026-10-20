@@ -1165,4 +1165,12 @@ public import SerrePositivity.KST.SConstruction.DGFunctorGraphActionAssociativit
 public import SerrePositivity.KST.SConstruction.DGGraphGeneratorPasting
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphTripleGenerators
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphAssociativity
+public import SerrePositivity.KST.SConstruction.DGCoherenceInverses
+public import SerrePositivity.KST.SConstruction.DGTensorInverseCoherence
+public import SerrePositivity.KST.SConstruction.DGTripleComparisonPasting
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionTripleTensorSteps
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionTripleTensor
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionEvaluationTransport
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionTripleEvaluation
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionAssociativity
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -16899,4 +16899,54 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms dgFunctorGraphInputIso_assoc_value
 #check @dgFunctorGraphCompositionIso_assoc
 #print axioms dgFunctorGraphCompositionIso_assoc
+#check @dgIso_inverse_pentagon
+#print axioms dgIso_inverse_pentagon
+#check @dgIso_inverse_naturality
+#print axioms dgIso_inverse_naturality
+#check @dgIso_move_hom_left
+#print axioms dgIso_move_hom_left
+#check @dgBimoduleTensorMapIso
+#print axioms dgBimoduleTensorMapIso
+#check @dgBimoduleTensorMapIso_hom
+#print axioms dgBimoduleTensorMapIso_hom
+#check @dgBimoduleTensorMapIso_inv
+#print axioms dgBimoduleTensorMapIso_inv
+#check @dgBimoduleTensor_second_comp
+#print axioms dgBimoduleTensor_second_comp
+#check @dgTensor_associator_inv_pentagon
+#print axioms dgTensor_associator_inv_pentagon
+#check @dgTensor_associator_inv_naturality
+#print axioms dgTensor_associator_inv_naturality
+#check @dgTripleComparison_pasting
+#print axioms dgTripleComparison_pasting
+#check @dgModuleExtensionTriple_graph_inverse
+#print axioms dgModuleExtensionTriple_graph_inverse
+#check @dgModuleExtensionTriple_inner_naturality
+#print axioms dgModuleExtensionTriple_inner_naturality
+#check @dgModuleExtensionTriple_outer_naturality
+#print axioms dgModuleExtensionTriple_outer_naturality
+#check @dgModuleExtensionTriple_inverse_pentagon
+#print axioms dgModuleExtensionTriple_inverse_pentagon
+#check @dgModuleExtensionTriple_inner_expansion
+#print axioms dgModuleExtensionTriple_inner_expansion
+#check @dgModuleExtensionTriple_inner_naturality_assoc
+#print axioms dgModuleExtensionTriple_inner_naturality_assoc
+#check @dgModuleExtensionTriple_outer_naturality_assoc
+#print axioms dgModuleExtensionTriple_outer_naturality_assoc
+#check @dgModuleExtensionTriple_inverse_pentagon_assoc
+#print axioms dgModuleExtensionTriple_inverse_pentagon_assoc
+#check @dgModuleExtensionCompositionTensorIso_assoc
+#print axioms dgModuleExtensionCompositionTensorIso_assoc
+#check @dgModuleGraphTensorFunctor_map
+#print axioms dgModuleGraphTensorFunctor_map
+#check @dgTensor_first_value_evaluation
+#print axioms dgTensor_first_value_evaluation
+#check @dgTensor_associator_value_evaluation
+#print axioms dgTensor_associator_value_evaluation
+#check @dgModuleExtension_outer_composition_evaluation
+#print axioms dgModuleExtension_outer_composition_evaluation
+#check @dgModuleExtensionCompositionAt_assoc
+#print axioms dgModuleExtensionCompositionAt_assoc
+#check @perfectDGExtensionCompositionAt_assoc
+#print axioms perfectDGExtensionCompositionAt_assoc
 end SerrePositivity.KST.SConstruction
