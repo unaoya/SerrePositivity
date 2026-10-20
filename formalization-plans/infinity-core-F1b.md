@@ -46,8 +46,8 @@
   零源の cospan の極限を反転と枝の交換で構成。元の指定射を保つ全 fiber・cofiber の存在と零角の条件の一致を証明。
   laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
 - 第 2 部：全 path 座標を保つ標準同型、任意の strict Kan cospan の native な引き戻し・filtered 比較を証明。
-  一般 coherent filtered 図式の全空間 Kan 模型の有限射を元の値で検出。全値が可縮なら模型も可縮。
-  検証：三集約 7042 jobs、公理監査 1846 宣言、同時 import 成功。一般 coherent 余錐の普遍性・交換は残る。
+  一般 coherent filtered 図式の全空間模型で、相対有限射・有限ホモトピー・境界の充填を同じ fiber で検出。
+  検証：三集約 7049 jobs、公理監査 1866 宣言、同時 import 成功。一般 coherent 余錐の普遍性・交換は残る。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 
-- F2N-1：全空間模型の境界固定の有限検出と coherent 余錐の普遍性を構成し、有限極限との交換へ進む。
+- F2N-1：定値 unstraightening の直積表示と F1 の写像空間比較から coherent 余錐・普遍性を構成する。
 
 正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と [foundations.md](foundations.md) §6・§8。
 本計画は目標・設計・現在地・主要宣言を管理し、実施記録はコミットメッセージに置く。
