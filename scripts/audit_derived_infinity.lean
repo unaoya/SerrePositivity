@@ -1,3 +1,18 @@
+import SerrePositivity.InfinityCategories.Derived.FixedDiagramHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalStage
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalInitial
+import SerrePositivity.InfinityCategories.Derived.DGQuotientPrecompositionMaps
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientStageRefinementMaps
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientStageComparison
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalSuccessor
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalInduction
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientRelativeFiller
+import SerrePositivity.InfinityCategories.Derived.DGCoefficientFinitePairs
+import SerrePositivity.InfinityCategories.Derived.DGClosedRoofDiagramTransports
+import SerrePositivity.InfinityCategories.Derived.DGClosedRoofDiagramComparison
+import SerrePositivity.InfinityCategories.Derived.DGClosedRoofDiagramFillers
+import SerrePositivity.InfinityCategories.Derived.DGClosedRoofFinitePairs
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofFinitePairs
 import SerrePositivity.InfinityCategories.Derived.SkeletalFiniteBound
 import SerrePositivity.InfinityCategories.Derived.DGQuotientAllRelativeHomotopies
 import SerrePositivity.InfinityCategories.Derived.DGQuotientCoefficientFillers
@@ -2620,10 +2635,43 @@ example : SSet.Quasicategory
 
 #print axioms SerrePositivity.InfinityCategories.finiteRelativeSkeleton_exists_top
 
+#print axioms SerrePositivity.InfinityCategories.fixedDiagramHomotopyComposite_exists
+#print axioms SerrePositivity.InfinityCategories.fixedDiagramHomotopy_restrict
+#print axioms SerrePositivity.InfinityCategories.dgCoefficientSkeletalInitial_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgQuotientPrecomposition_comp
+#print axioms SerrePositivity.InfinityCategories.DGCoefficientSkeletalStage.refined_source_boundary
+#print axioms SerrePositivity.InfinityCategories.DGCoefficientSkeletalStage.refinedComparisonLeft_fixed
+#print axioms SerrePositivity.InfinityCategories.DGCoefficientSkeletalStage.refinedComparisonRight_fixed
+#print axioms SerrePositivity.InfinityCategories.dgCoefficientSkeletalSuccessor_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgCoefficientSkeletalStage_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGCoefficientSkeletalStage.toRelativeFiller
+#print axioms SerrePositivity.InfinityCategories.dgCoefficientFinitePairs_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofDiagramTransport_boundary
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofDiagramComparison_fixed
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofDiagramComparison_projection
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofDiagramFiller_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgClosedRoofFinitePairs_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgActualRoofFinitePairs_nonempty
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FixedDiagramHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalStage,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalInitial,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientPrecompositionMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientStageRefinementMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientStageComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalSuccessor,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalInduction,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientRelativeFiller,
+    `SerrePositivity.InfinityCategories.Derived.DGCoefficientFinitePairs,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofDiagramTransports,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofDiagramComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofDiagramFillers,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedRoofFinitePairs,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofFinitePairs,
     `SerrePositivity.InfinityCategories.Derived.SkeletalFiniteBound,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientAllRelativeHomotopies,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientCoefficientFillers,
