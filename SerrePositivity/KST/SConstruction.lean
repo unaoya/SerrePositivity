@@ -1284,4 +1284,12 @@ public import SerrePositivity.KST.SConstruction.SerreIntervalMaxAssociativity
 public import SerrePositivity.KST.SConstruction.SerreIntervalMaxMonoid
 public import SerrePositivity.KST.SConstruction.TensorRightMultiplication
 public import SerrePositivity.KST.SConstruction.SerreCubeConnectionRelations
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxAbsorption
+public import SerrePositivity.KST.SConstruction.TensorRightAbsorption
+public import SerrePositivity.KST.SConstruction.SerreCubeAbsorptionRelations
+public import SerrePositivity.KST.SConstruction.TensorRightCoordinateNaturality
+public import SerrePositivity.KST.SConstruction.SerreCubePrefixNaturality
+public import SerrePositivity.KST.SConstruction.SerreCubeFaceRelations
+public import SerrePositivity.KST.SConstruction.SerreCubeDegeneracyRelations
+public import SerrePositivity.KST.SConstruction.SerreCubeFaceDegeneracyRelations
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -17658,4 +17658,51 @@ namespace SerrePositivity.KST.SConstruction
 #check serreCubeFace_connection_left
 #print axioms serreCubeFace_connection_left
 
+#check serreIntervalMaxComonHom_left_absorption
+#print axioms serreIntervalMaxComonHom_left_absorption
+#check serreIntervalMaxComonHom_right_absorption
+#print axioms serreIntervalMaxComonHom_right_absorption
+#check serreIntervalMaxComonHom_augmentation
+#print axioms serreIntervalMaxComonHom_augmentation
+#check tensorRightMultiplication_right_absorption
+#print axioms tensorRightMultiplication_right_absorption
+#check tensorRightMultiplication_left_absorption
+#print axioms tensorRightMultiplication_left_absorption
+#check serreCubeFace_one_connection_right_zero
+#print axioms serreCubeFace_one_connection_right_zero
+#check serreCubeFace_one_connection_left_zero
+#print axioms serreCubeFace_one_connection_left_zero
+#check serreCubeFace_one_connection_right
+#print axioms serreCubeFace_one_connection_right
+#check serreCubeFace_one_connection_left
+#print axioms serreCubeFace_one_connection_left
+#check tensorRightPoint_naturality
+#print axioms tensorRightPoint_naturality
+#check tensorRightDeletion_naturality
+#print axioms tensorRightDeletion_naturality
+#check tensorRightConnection_naturality
+#print axioms tensorRightConnection_naturality
+#check serreCubeFace_zero_naturality
+#print axioms serreCubeFace_zero_naturality
+#check serreCubeDegeneracy_zero_naturality
+#print axioms serreCubeDegeneracy_zero_naturality
+#check serreCubeConnection_zero_naturality
+#print axioms serreCubeConnection_zero_naturality
+#check serreCubeFace_face_zero
+#print axioms serreCubeFace_face_zero
+#check serreCubeFace_face
+#print axioms serreCubeFace_face
+#check serreCubeDegeneracy_degeneracy_zero
+#print axioms serreCubeDegeneracy_degeneracy_zero
+#check serreCubeDegeneracy_degeneracy
+#print axioms serreCubeDegeneracy_degeneracy
+#check serreCubeFace_degeneracy_right_zero
+#print axioms serreCubeFace_degeneracy_right_zero
+#check serreCubeFace_degeneracy_left_zero
+#print axioms serreCubeFace_degeneracy_left_zero
+#check serreCubeFace_degeneracy_right
+#print axioms serreCubeFace_degeneracy_right
+#check serreCubeFace_degeneracy_left
+#print axioms serreCubeFace_degeneracy_left
+
 end SerrePositivity.KST.SConstruction
