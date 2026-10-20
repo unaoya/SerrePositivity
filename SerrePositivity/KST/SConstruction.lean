@@ -1189,4 +1189,14 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGComparison
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAction
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGLabelCoherence
 public import SerrePositivity.KST.SConstruction.SmallDGInput
+public import SerrePositivity.KST.SConstruction.DGFunctorHomWhiskering
+public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGHomTransport
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionUnit
+public import SerrePositivity.KST.SConstruction.DGFunctorHomConjugation
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionCompositionIso
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionConjugation
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionComposition
+public import SerrePositivity.KST.SConstruction.BundledDGInput
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -17095,4 +17095,81 @@ namespace SerrePositivity.KST.SConstruction
 #check presentedPerfectDGEvaluationEssSurj_of_extension
 #print axioms presentedPerfectDGEvaluationEssSurj_of_extension
 
+
+-- ラベル付き Perf の全 Hom の厳密法則と通常の関手。
+#check enrichedFunctorHom_postcompose
+#print axioms enrichedFunctorHom_postcompose
+#check enrichedFunctorHom_precompose
+#print axioms enrichedFunctorHom_precompose
+#check dgFunctorClosedBoth
+#print axioms dgFunctorClosedBoth
+#check dgFunctorHom_postcompose
+#print axioms dgFunctorHom_postcompose
+#check dgFunctorHom_precompose
+#print axioms dgFunctorHom_precompose
+#check enrichedConjugation_of_naturality
+#print axioms enrichedConjugation_of_naturality
+#check presentedPerfectDGHom_transport
+#print axioms presentedPerfectDGHom_transport
+#check presentedPerfectDGFunctor_ext
+#print axioms presentedPerfectDGFunctor_ext
+#check presentedPerfectDGAction_unitIso
+#print axioms presentedPerfectDGAction_unitIso
+#check presentedPerfectDGAction_id_map
+#print axioms presentedPerfectDGAction_id_map
+#check presentedPerfectDGAction_id
+#print axioms presentedPerfectDGAction_id
+#check dgFunctorHom_conjugation
+#print axioms dgFunctorHom_conjugation
+#check presentedPerfectDGAction_compositionIso
+#print axioms presentedPerfectDGAction_compositionIso
+#check perfectDGExtensionCompositionAt_conjugation
+#print axioms perfectDGExtensionCompositionAt_conjugation
+#check presentedPerfectDGAction_comp_map
+#print axioms presentedPerfectDGAction_comp_map
+#check presentedPerfectDGAction_comp
+#print axioms presentedPerfectDGAction_comp
+#check BundledDGCategory
+#print axioms BundledDGCategory
+#check bundledDGCategoryCoeSort
+#print axioms bundledDGCategoryCoeSort
+#check bundledDGCategoryEnrichment
+#print axioms bundledDGCategoryEnrichment
+#check bundledDGCategoryOf
+#print axioms bundledDGCategoryOf
+#check bundledDGCategoryCategory
+#print axioms bundledDGCategoryCategory
+#check SmallBundledDGCategory
+#print axioms SmallBundledDGCategory
+#check smallBundledDGCategoryCoeSort
+#print axioms smallBundledDGCategoryCoeSort
+#check smallBundledDGCategoryEnrichment
+#print axioms smallBundledDGCategoryEnrichment
+#check smallBundledDGCategorySmall
+#print axioms smallBundledDGCategorySmall
+#check smallBundledDGCategoryOf
+#print axioms smallBundledDGCategoryOf
+#check smallBundledDGCategoryCategory
+#print axioms smallBundledDGCategoryCategory
+#check presentedPerfectDGFunctor
+#print axioms presentedPerfectDGFunctor
+#check presentedPerfectDGFunctor_obj
+#print axioms presentedPerfectDGFunctor_obj
+#check presentedPerfectDGFunctor_map
+#print axioms presentedPerfectDGFunctor_map
+#check BundledDGCategory.mk
+#print axioms BundledDGCategory.mk
+#check BundledDGCategory.carrier
+#print axioms BundledDGCategory.carrier
+#check BundledDGCategory.enrichment
+#print axioms BundledDGCategory.enrichment
+#check SmallBundledDGCategory.mk
+#print axioms SmallBundledDGCategory.mk
+#check SmallBundledDGCategory.carrier
+#print axioms SmallBundledDGCategory.carrier
+#check SmallBundledDGCategory.enrichment
+#print axioms SmallBundledDGCategory.enrichment
+#check SmallBundledDGCategory.small
+#print axioms SmallBundledDGCategory.small
+
 end SerrePositivity.KST.SConstruction
