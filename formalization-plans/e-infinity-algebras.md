@@ -20,10 +20,8 @@
   左側には `EnrichedAdjunctionHomComposition` の Hom 同型・右変数の豊穣合成互換・元の通常随伴との零単体互換を明示入力。このデータから既存の `SimplicialAdjunctionHomIso` への接続も完了。
   最終外側ホーンの二つの未知 Hom は、上面欠損 Path の Kan 延長と全境界固定の trivial Kan 持ち上げで構成済み。`FinalHornUnknownHom` を再利用する。
   既知区間の選択独立性・単位・合成・全既知面への制限、前半の全境界と後半上面の後合成可換性は元のホーンから証明済み。整合性は追加仮定にしない。
-  `FinalHornLastEdge` は回収した最終区間射の coherent な辺を元の固定最終辺の像と同定。両端点を含む通常の射のデータと、元の指定辺による後合成の trivial Kan 性の移送も照合。
   `QuillenCfFinalHornBase` は元の相対ホーンの底 Δ¹ の単調性から、penultimate 以前の全頂点が下段の cf 対象であることを導く。
   `QuillenCfFinalHornFixedEdge`・`QuillenCfFinalHornUnknownHom` は元の右 Quillen 候補辺と固定 SM7 から二つの未知 Hom を構成。主定理は相対ホーンの可換正方形と固定最終辺を入力とし、先頭の下段性や ambient 全対象の Hom 条件を追加仮定にしない。
-  `FinalHornFillHom`・`FinalHornFilledFunctor` は全頂点対の Hom と単位・全三対象の合成を照合し、元の native な豊穣単体を復元。
   `FinalHornFilledRestriction` は全既知面への制限と元のホーンへの制限を証明。`QuillenCfRightCartesian` は底 Δ¹ の薄さで射影一致を示し、元の右 Quillen 候補辺の `IsCartesianEdge` を相対外側ホーンの全次数で証明。
   `CoherentOppositeEdge`・`InitialHornFiller` は元の初期辺と反対射の辺、前合成と反対圏の後合成を照合し、元の初期ホーンを充填。
   `QuillenCfInitialHornBase` は相対ホーンの全後半頂点の上段性を導く。`QuillenCfLeftCocartesian` は元の前合成の trivial Kan 性と底の薄さから、元の左候補辺の `IsCocartesianEdge` を全次数で証明。
@@ -33,7 +31,6 @@
   `CartesianHomotopyExtension` は終点・底・単射上の指定輸送を固定し、Cartesian な垂直辺を保って相対延長。
   `CartesianComparisonBoundary`・`CartesianPrismComparison` は左右の輸送の比較正方形を構成。始点側は底の零頂点に入り、境界は元の二つの輸送の始点に一致。
   `QuillenCfUnitPrism` は元の左右輸送を比較正方形へ代入し、下段 cf nerve 上で恒等から右左合成への自然な単位候補を構成。元の二輸送・比較正方形・全垂直辺の性質も同じ証人として保持。
-  `EdgeCosliceIntervalMap`・`EdgeCosliceFamilySquare` は固定辺に付く錐の族を関手単体集合内の正方形へ展開し、四辺と合成式を任意のパラメータで照合。
   `CocartesianIntervalPrecomposition` は比較 span を元の区間模型の前合成とホモトピーで同定し、coCartesian な混合辺の前合成が上段終域への写像空間のホモトピー同値であることを証明。
   `IntervalMappingOppositeComposition` は反転同型・h Fun の反対 Hom と元の標準の合成作用を照合。`CartesianIntervalPostcomposition` は元の Cartesian 辺の後合成が下段始域からの写像空間のホモトピー同値であることを証明。
   `QuillenCfFullyFaithful` は両包含の写像空間での充満忠実性を証明。`HomotopyFamilyNaturality` は指定輸送の区間族での自然性を標準の前後合成のホモトピーで表す。
@@ -42,9 +39,12 @@
   `PostcompositionAdjunction` は任意の K の関手圏の後合成の ∞ 随伴を同じ標準単位から構成。`RightKanAdjunctComparison` は元の右 Kan 変換の大域的 Hom 普遍性の保存を証明。
   `AdjunctionLimits`・`QuillenCfDerivedLimits` は任意の coherent 図式の指定極限錐の native な保存を証明。Hom の全単射から相対終点境界充填へ戻し、元の錐の像の `IsLimitCone` を得る。
   `QuillenCfRightReplacement`・`QuillenCfLeftReplacement` は元の cf 置換辺を全頂点で厳密に保持する coherent な左右関手を構成。元の導来左右関手との自然同型を、それぞれ元の cf nerve 内で得る。
-  **未完了**：元の通常の cf 置換関手の射との照合と、置換比較を含む γ4 の最終集約。cf nerve 間の ∞ 随伴と一般 coherent 極限保存は完了。一般 γ4・N-3 は未完了。
+  `QuillenCfReplacementFunctors`・`QuillenCfMixedComposition`・`QuillenCfReplacementNaturality` は元の通常の左右置換関手と、元の置換比較射の混合 Hom での厳密な自然性を構成。
+  `CoherentUnderlyingHo` は元の通常射の h への関手と豊穣関手の作用の自然同型。`OrdinaryNatTransPrism` は対象・Hom の宇宙を分離し、元の自然変換の全成分を保つ nerve 上の prism を提供。
+  `QuillenCfRightOrdinaryComparison` は元の通常の右置換比較を全指定成分を保持する Cartesian prism にし、通常の右置換関手の nerve と導来右関手の制限の `FunctorIso` を証明。右側の対象・全射・高次の整合を含む比較は完了。
+  **未完了**：左側の coherent な置換関手と元の通常の置換関手の nerve の自然同型による照合、置換比較を含む γ4 の最終集約。cf nerve 間の ∞ 随伴と一般 coherent 極限保存は完了。一般 γ4・N-3 は未完了。
 - **残り**（依存順、時間は再開後の概算）：
-  1. N-2：元の通常の cf 置換関手の射との照合、置換比較を含む γ4 の最終集約。HTT 5.2.4.6、Kerodon §6.2、4〜12時間。
+  1. N-2：左の通常の置換関手の nerve と coherent な置換関手との比較、置換比較を含む γ4 の最終集約。HTT 5.2.4.6、Kerodon §6.2、4〜12時間。
   2. N-3：Sp へ適用し、Tot・hG・fiber 列を Sp の ∞ 極限と照合（Sp レーンと共同）。BF §3、HA §1.4、16〜40時間。
   3. E2b へ γ4 を提供し、Alg_E と忘却関手へ適用。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   4. F2 後半の Bousfield 局所化・P_Σ は I-b。Ind・compact・冪等完備化は F1b 所有（`foundations.md` §6）。
@@ -61,13 +61,10 @@
   `HomotopyLimits.quillenCfRightLiftEdge`、`HomotopyLimits.quillenCfLeftLiftEdge`、
   `HomotopyLimits.quillenCfRightLiftHom_trivialKanFibration`、`HomotopyLimits.quillenCfLeftLiftHom_trivialKanFibration`、
   `HomotopyLimits.quillenCfRightHom_twoStageLift`、`HomotopyLimits.quillenCfLeftHom_twoStageLift`、
-  `HomotopyLimits.finalHornFrontBoundaryHom`、`HomotopyLimits.finalHornFrontBoundaryHom_lift`、
   `HomotopyLimits.finalHornFilledFunctor`、`HomotopyLimits.finalHornFiller_restriction`、
   `HomotopyLimits.quillenCfFinalHornRight_hasLift`、`HomotopyLimits.quillenCfRightLiftEdge_isCartesian`、
-  `HomotopyLimits.coherentNerveOppositeMap_edge`、`HomotopyLimits.initialHornFiller_of_precomposition`、
   `HomotopyLimits.quillenCfInitialHorn_suffix_top`、`HomotopyLimits.quillenCfInitialHornLeft_hasLift`、
   `HomotopyLimits.quillenCfLeftLiftEdge_isCocartesian`、
-  `HomotopyLimits.cartesianFibration_interval_of_lift`、
   `HomotopyLimits.quillenCfCollageProjection_cocartesianFibration`、`HomotopyLimits.quillenCfCollageProjection_cartesianFibration`、
   `HomotopyLimits.cartesianEdgeTransport`、`HomotopyLimits.cartesianEdgeTransport_witness`、
   `HomotopyLimits.quillenCfLeftDerived`、`HomotopyLimits.quillenCfRightDerived`、
@@ -86,18 +83,21 @@
   `HomotopyLimits.rightKanHomUniversal_postcomp_of_unitCondition`、`HomotopyLimits.mapJoinCone_isLimit_of_adjunction`、
   `HomotopyLimits.quillenCfRightDerived_mapJoinCone_isLimit`、`HomotopyLimits.quillenCfRightDerived_hasLimit_postcomp`、
   `HomotopyLimits.exists_cartesianPrism_prescribed_vertices`、`HomotopyLimits.cartesianPrism_sourceComparison`、
-  `HomotopyLimits.quillenCfRightReplacement_transport_exists`、`HomotopyLimits.quillenCfLeftReplacement_transport_exists`。
+  `HomotopyLimits.quillenCfRightReplacement_transport_exists`、`HomotopyLimits.quillenCfLeftReplacement_transport_exists`、
+  `HomotopyLimits.quillenCfRightReplacementComparison`、`HomotopyLimits.quillenCfLeftReplacementComparison`、
+  `HomotopyLimits.coherentUnderlyingHoMapIso`、`HomotopyLimits.ordinaryNatTransPrism_vertexEdge`、
+  `HomotopyLimits.quillenCfRightOrdinaryPrism_exists`、`HomotopyLimits.quillenCfRightDerived_ordinaryComparison`。
 - **依存と提供**：F1・F1b（coherent Hom・随伴）、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけ。実施記録はコミットメッセージ。
-- **未コミット**：なし（今回の保存単位：全頂点の指定辺を保持する左右輸送・元の導来関手への自然同型の5モジュール8宣言、集約・監査、本 N 節）。前回の21モジュール73宣言と極限保存は `ca8bca3e0` に保存済み。他レーンの差分は保存対象外。
+- **未コミット**：なし（今回の保存単位：右の通常の置換関手の nerve との比較の2モジュール7宣言、集約・監査、本 N 節）。元の通常置換関手・比較自然性の5モジュール19宣言は `0c1010053` にパス指定で保存済み。同コミットから持ち越した N 節も今回保存。他レーンの差分は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は修正版を正しい場所へ保存済みの N 旧稿と確認し、削除済み。
-- **既知の問題**：N の対象ビルド6131 jobs・全4158宣言監査は成功。新規モジュールの警告・新規 sorry・追加公理なし。import 閉包に他レーンの未コミット差分なし。一般 γ4 は未完了。
+- **既知の問題**：N の対象ビルド6138 jobs・全4184宣言監査は成功。新規モジュールの警告・新規 sorry・追加公理なし。import 閉包に他レーンの未コミット差分なし。一般 γ4 は未完了。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定せず、固定 Quillen 類を使う。
   `FixedSimplicialPushoutProduct` と豊穣随伴の合成互換は標準 simplicial model/adjunction の明示入力であり、通常の Quillen 随伴だけから導いたとは扱わない。Sp・E2b への適用時に構成・証明する。
   元の Hom 同型の終域への通常の自然性だけで ∞ 随伴を完成と数えない。Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。
   他レーンの import 閉包が壊れたら回避せず停止。他レーンの作業中変更を保存しない。
-- **次の一手**：N-2。構成済みの指定置換 prism の自然性と、元の通常の置換比較の自然性を使い、元の通常の cf 置換関手の射との照合を行う。`/tmp/QuillenCfUnderlyingVerified.lean` は元の通常の左右置換関手と h への関手の検証済み試作。混合 Hom の合成・射との照合は残る。`/tmp/CartesianHoCancellation.lean` は h の後合成の単射性の検証済み試作。単位・余単位と置換比較を最終集約へ束ねる。頂点だけの等式で完了としない。左右の `quillenCf...Replacement_transport_exists` と一般極限保存を再利用する。
+- **次の一手**：N-2 左側。元の通常の左置換比較を `ordinaryCoherentNatTransPrism` へ写し、元の導来左輸送と比較。`/tmp/CocartesianPrismComparison.lean` は任意パラメータの全空間内の終点 `FunctorIso`、`/tmp/EndpointFunctorIsoReflection.lean` は指定端点の fiber 内への反映の検証済み試作。両者を組み合わせ、元の左置換関手の nerve との自然同型を構成し、単位・余単位とともに γ4 を最終集約。
   原典は [HTT 5.2.4.4〜6・Remark 5.2.4.7](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=371)（閲覧・本文照合済み）。5.2.4.6 は simplicial model categories と simplicial Quillen adjunction の命題。
   `F1/CartesianEdge` の述語は指定最終/先頭辺を固定した外側ホーンの相対持ち上げ。Hom の trivial Kan 射だけで満たしたとは扱わない。
   元の左右候補辺の外側ホーン充填と全基底辺の持ち上げは完了。`QuillenCfRightCartesian`・`QuillenCfLeftCocartesian`・`QuillenCfBifibration` を再利用し、二つの未知 Hom の復元や全境界可換性を再実装しない。

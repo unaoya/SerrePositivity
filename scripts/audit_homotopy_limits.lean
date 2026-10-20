@@ -11317,3 +11317,24 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @ordinaryNatTransPrism_vertexEdge
 #print axioms ordinaryNatTransPrism_vertexEdge
+
+#check @ordinaryCoherentNatTransPrism
+#print axioms ordinaryCoherentNatTransPrism
+
+#check @ordinaryCoherentNatTransPrism_zero
+#print axioms ordinaryCoherentNatTransPrism_zero
+
+#check @ordinaryCoherentNatTransPrism_one
+#print axioms ordinaryCoherentNatTransPrism_one
+
+#check @ordinaryCoherentNatTransPrism_vertexEdge
+#print axioms ordinaryCoherentNatTransPrism_vertexEdge
+
+#check @prism_projection_of_endpoints
+#print axioms prism_projection_of_endpoints
+
+#check @quillenCfRightOrdinaryPrism_exists
+#print axioms quillenCfRightOrdinaryPrism_exists
+
+#check @quillenCfRightDerived_ordinaryComparison
+#print axioms quillenCfRightDerived_ordinaryComparison
