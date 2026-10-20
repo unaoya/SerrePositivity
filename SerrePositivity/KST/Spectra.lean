@@ -877,3 +877,8 @@ public import SerrePositivity.KST.Spectra.ConstantBoundarySquarePasting
 public import SerrePositivity.KST.Spectra.TripleCircleLoopExchangeBoundary
 public import SerrePositivity.KST.Spectra.DeloopedExchangePostSquares
 public import SerrePositivity.KST.Spectra.DeloopedExchangePostPasting
+public import SerrePositivity.KST.Spectra.ConstantBoundarySquareCodifference
+public import SerrePositivity.KST.Spectra.DeloopedExchangeSquareCoordinates
+public import SerrePositivity.KST.Spectra.DeloopedExchangePreSquare
+public import SerrePositivity.KST.Spectra.DeloopedExchangeNaturalitySides
+public import SerrePositivity.KST.Spectra.DeloopedExchangeNaturalityImage
