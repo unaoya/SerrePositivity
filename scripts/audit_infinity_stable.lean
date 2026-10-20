@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction
+import SerrePositivity.InfinityCategories.Derived.DGInvertingHomActionFamily
 import SerrePositivity.InfinityCategories.Derived.DGInvertingRoof
 import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
 import SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence
@@ -3278,6 +3280,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingHomActionFamily,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingRoof,
     `SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor,
     `SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence,

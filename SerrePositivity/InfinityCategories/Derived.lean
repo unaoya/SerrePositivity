@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction
+public import SerrePositivity.InfinityCategories.Derived.DGInvertingHomActionFamily
 public import SerrePositivity.InfinityCategories.Derived.DGInvertingRoof
 public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
 public import SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence

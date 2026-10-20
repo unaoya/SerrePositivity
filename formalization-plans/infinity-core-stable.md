@@ -22,6 +22,7 @@
 - 有限対充填から、終対象付き右ファイブレーションへの引き戻し内の有限図式の零ホモトピー span を構成。連続 Kan 置換の有限因子化で全境界を充填し、弱可縮性と Quillen A により left cofinality を証明。`dgRoofCorrespondenceMap_isWeakHomotopyEquivalence`、任意の Kan 標的への前合成の実ホモトピー同値、連続 Kan 置換後の圏同値を公開した。有限パラメータの写像空間の π₀ の全単射も別に証明済み。
 - 任意の quasicategory 標的への反転関手 F と任意頂点 z について、実屋根射影の左右 fibration 性、恒等 fiber と Hom(Fx,z) の厳密な同型、固定 Hom 包含の right cofinality・弱同値を証明。標的 slice・実屋根の恒等則・合成則、固定 Hom との厳密な可換性を全次数で公開した。
 - `DGInvertingHomDescent` は商の実 Hom 全体への実写像、元の Hom 作用との比較ホモトピー、選択によらないホモトピー一意性を持つ。標的の任意の後合成とのホモトピー自然性を証明。二段降下を可逆 path 置換で空間に束ね、`dgInvertingHomDescentSpace_isContractibleKan` により各対象対の全高次の選択空間が全境界を充填する。異なる対象対の合成との coherent な両立と全関手圏への組み立ては未完。
+- 可縮な選択空間全体上の商 Hom 作用を `dgInvertingHomActionFamily` に束ね、元の Hom 作用への制限を `dgInvertingHomActionFamilyRestrictionIso` により一つの関手同型として比較した。各選択点の比較を別々に選ばず、パラメータの全単体で整合する比較を保持する。
 - 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofHomotopyFillers.lean`・`Derived/RoofCompatibleTransportComposite.lean`・`Derived/DGActualRoofFiberReduction.lean`・`Derived/DGCoefficientFinitePairs.lean`・`Derived/DGActualRoofFinitePairs.lean`・`Derived/DGActualRoofWeakEquivalence.lean`。
 
 ### 残り（依存順、時間は推定）
@@ -64,7 +65,7 @@
 - `dgRoofCorrespondenceMap_isLeftCofinal`・`dgRoofCorrespondenceMap_isWeakHomotopyEquivalence`・`dgRoofCorrespondenceMap_precompose_kan`。
 
 - `dgInvertingFixedHomRoofMap_isRightCofinal`・`dgInvertingHomDescent_nonempty`・`DGInvertingHomDescent.homMap_restriction`。
-- `dgInvertingHomMap_postcomp`・`weakRoofDescentExtensionIso`・`dgInvertingHomDescentSpace_isContractibleKan`。
+- `dgInvertingHomMap_postcomp`・`dgInvertingHomDescentSpace_isContractibleKan`・`dgInvertingHomActionFamilyRestrictionIso`。
 
 ### 依存と提供
 
@@ -78,14 +79,14 @@
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7672 jobs）。公理監査は Derived 9757 宣言／1081 モジュール、Stable 10872／1351。許容三公理のみ。今回の新規12モジュールは警告なし。主要10宣言に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7674 jobs）。公理監査は Derived 9772 宣言／1083 モジュール、Stable 10887／1353。許容三公理のみ。今回の新規14モジュールは警告なし。主要10宣言と全高次の制限同型に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏での普遍性を続ける。任意標的の反転関手の各実 Hom への延長・ホモトピー一意性・標的後合成自然性・各対象対の可縮な高次選択空間は完成。入口は `DGInvertingHomExtension.lean`・`DGInvertingHomNaturality.lean`・`DGInvertingHomDescentSpace.lean`。次は異なる対象対の合成・単位を同時に保つ coherent な選択を構成し、対象の指定を含む実 ∞ 関手へ組み立てる。
+- β3：`IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` の全関手圏での普遍性を続ける。任意標的の反転関手の各実 Hom への延長・ホモトピー一意性・標的後合成自然性・各対象対の可縮な高次選択空間は完成。各 Hom 上の全高次の作用と制限同型まで完成。入口は `DGInvertingHomActionFamily.lean`・`DGInvertingHomNaturality.lean`。次は二つの実屋根を、`DGVerdierDenominators.lean` の `dgVerdierEdges_pullback_iff` による基底変更で共通細分し、商 Hom の実合成三角形との比較を構成する。三対象の組の比較から、異なる対象対の合成・単位を同時に保つ coherent な選択と実 ∞ 関手へ組み立てる。pinched Hom の厳密な合成写像を既提供と仮定しない。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。普遍性の後、平坦分解への移送、Verdier 列、β5、β4。全計画は未完。
 
