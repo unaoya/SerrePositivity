@@ -10393,3 +10393,90 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @EnrichedAdjunctionHomComposition.hom_zero
 #print axioms EnrichedAdjunctionHomComposition.hom_zero
+
+#check @upperMissingCylinder
+#print axioms upperMissingCylinder
+
+#check @upperMissingCylinder_anodyne
+#print axioms upperMissingCylinder_anodyne
+
+#check @upperMissingCylinder_extension
+#print axioms upperMissingCylinder_extension
+
+#check @upperMissingCylinderTopBoundary
+#print axioms upperMissingCylinderTopBoundary
+
+#check @upperMissingCylinderTopBoundary_ι
+#print axioms upperMissingCylinderTopBoundary_ι
+
+#check @upperMissingCylinder_twoStageLift
+#print axioms upperMissingCylinder_twoStageLift
+
+#check @mem_lowerEndpoint_iff
+#print axioms mem_lowerEndpoint_iff
+
+#check @upperMissingCube
+#print axioms upperMissingCube
+
+#check @mem_upperMissingCube_iff
+#print axioms mem_upperMissingCube_iff
+
+#check @upperMissingCubeIso
+#print axioms upperMissingCubeIso
+
+#check @upperMissingCube_anodyne
+#print axioms upperMissingCube_anodyne
+
+#check @mem_upperMissingCube_endpoints_iff
+#print axioms mem_upperMissingCube_endpoints_iff
+
+#check @upperMissingCube_extension
+#print axioms upperMissingCube_extension
+
+#check @upperMissingPath
+#print axioms upperMissingPath
+
+#check @mem_upperMissingPath_iff
+#print axioms mem_upperMissingPath_iff
+
+#check @upperMissingPath_anodyne
+#print axioms upperMissingPath_anodyne
+
+#check @upperMissingPath_extension
+#print axioms upperMissingPath_extension
+
+#check @upperMissingPathFace
+#print axioms upperMissingPathFace
+
+#check @iSup_upperMissingPathFace
+#print axioms iSup_upperMissingPathFace
+
+#check @upperMissingPathCover
+#print axioms upperMissingPathCover
+
+#check @upperMissingPathFace_le
+#print axioms upperMissingPathFace_le
+
+#check @upperMissingPathGlue
+#print axioms upperMissingPathGlue
+
+#check @upperMissingPathGlue_on_face
+#print axioms upperMissingPathGlue_on_face
+
+#check @upperMissingPathFace_extension
+#print axioms upperMissingPathFace_extension
+
+#check @pathCubeBoundary
+#print axioms pathCubeBoundary
+
+#check @mem_pathCubeBoundary_iff
+#print axioms mem_pathCubeBoundary_iff
+
+#check @pathCubeBoundary_lift
+#print axioms pathCubeBoundary_lift
+
+#check @quillenCfRightHom_twoStageLift
+#print axioms quillenCfRightHom_twoStageLift
+
+#check @quillenCfLeftHom_twoStageLift
+#print axioms quillenCfLeftHom_twoStageLift
