@@ -3347,6 +3347,21 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.Reduction.merge,
       `SerrePositivity.EInfinity.Hammock.Reduction.erase]
 
+@[noinline] private def e2RequiredBatch27 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.identityColumn_obj_image_iff,
+      `SerrePositivity.EInfinity.Hammock.Word.eqToHom_apply,
+      `SerrePositivity.EInfinity.Hammock.Word.embedding_eq_of_range,
+      `SerrePositivity.EInfinity.Hammock.Word.erase_composite_range,
+      `SerrePositivity.EInfinity.Hammock.raw_eq_of_embeddings,
+      `SerrePositivity.EInfinity.Hammock.eraseSimplex_identityColumn,
+      `SerrePositivity.EInfinity.Hammock.doubleErase_image,
+      `SerrePositivity.EInfinity.Hammock.erase_erase_join,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEraseSimplex,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEraseSimplex_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEraseRaw,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEraseRaw_reduction,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockEraseErase_join]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3373,7 +3388,7 @@ run_cmd do
       e2RequiredBatch12, e2RequiredBatch13, e2RequiredBatch14, e2RequiredBatch15,
       e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
-      e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26] do
+      e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8065,3 +8080,51 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.ope
     (BarrattEccles.algebraHammockRawAugmentation A X Y).app n r =
       BarrattEccles.algebraHammockRawValue A X Y r :=
   BarrattEccles.algebraHammockRawAugmentation_app A X Y n r
+
+-- 任意の可換環上・全次数で二つの削除は各側0〜1段の共通対象を持つ。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
+    {w : Hammock.Word} (n : SimplexCategoryᵒᵖ) (τ : (BarrattEccles.algebraHammockGraph A w X Y).obj n)
+    (j k : Fin w.length) (hj : ∀ r, Hammock.IdentityColumn (τ.obj r) j)
+    (hk : ∀ r, Hammock.IdentityColumn (τ.obj r) k) :
+    ∃ q : BarrattEccles.algebraHammockRaw A X Y n,
+      Relation.ReflGen (BarrattEccles.algebraHammockRawReduction A X Y)
+        (BarrattEccles.algebraHammockEraseRaw A X Y j τ hj) q ∧
+      Relation.ReflGen (BarrattEccles.algebraHammockRawReduction A X Y)
+        (BarrattEccles.algebraHammockEraseRaw A X Y k τ hk) q :=
+  BarrattEccles.algebraHammockEraseErase_join A X Y τ j k hj hk
+
+-- 元の削除そのものが、構成済みの同じ基本縮約関係に入る。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
+    {w : Hammock.Word} (j : Fin w.length) (n : SimplexCategoryᵒᵖ)
+    (τ : (BarrattEccles.algebraHammockGraph A w X Y).obj n)
+    (hτ : ∀ r, Hammock.IdentityColumn (τ.obj r) j) :
+    BarrattEccles.algebraHammockRawReduction A X Y ⟨w, τ⟩
+      (BarrattEccles.algebraHammockEraseRaw A X Y j τ hτ) :=
+  BarrattEccles.algebraHammockEraseRaw_reduction A X Y j τ hτ
+
+-- 同じ元の包含後に、同じ元の全射列を厳密に回収する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
+    {w : Hammock.Word} (j : Fin w.length) (n : SimplexCategoryᵒᵖ)
+    (τ : (BarrattEccles.algebraHammockGraph A w X Y).obj n)
+    (hτ : ∀ r, Hammock.IdentityColumn (τ.obj r) j) :
+    (BarrattEccles.algebraHammockGraphMap A (Hammock.Word.eraseInclusion w j) X Y).app n
+      (BarrattEccles.algebraHammockEraseSimplex A X Y j τ hτ) = τ :=
+  BarrattEccles.algebraHammockEraseSimplex_fac A X Y j τ hτ
+
+-- 同じ列の像を持つ二つの包含は、元の語の等式を含めて一意。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b c : Word} (f : a ⟶ c) (g : b ⟶ c)
+    (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
+    (hfg : Set.range f.orderHom = Set.range g.orderHom) :
+    ∃ hab : a = b, eqToHom hab ≫ g = f := Word.embedding_eq_of_range f g hf hg hfg
+
+-- 元の包含の像の位置での恒等列の条件は、元の列の条件と同値。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category C] {W : MorphismProperty C}
+    [W.IsMultiplicative] {a b : Word} {X Y : C} (f : a ⟶ b)
+    (hf : Function.Injective f.orderHom) (S : Zigzag W a X Y) (i : Fin a.length) :
+    IdentityColumn (WordAction.obj f S) (f.orderHom i) ↔ IdentityColumn S i :=
+  identityColumn_obj_image_iff f hf S i

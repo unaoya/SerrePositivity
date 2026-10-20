@@ -1153,7 +1153,15 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 同じ値を持つ縮約済みの代表へ到達することを示す。
 `BarrattEccles.algebraHammockRaw_existsReducedRepresentative`・`_existsReducedSameValue`・
 `algebraHammockRawReduction_map` と元の raw 単体集合・射は任意の可換環上で完成。
-縮約の合流性と代表の一意性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`identityColumn_obj_image_iff`・`eraseSimplex_identityColumn` は元の恒等列の包含による反映と
+一列を削除した後の他の恒等列の保存。
+`Word.embedding_eq_of_range` は同じ列の像を持つ包含の元の語と写像の一意性。
+`raw_eq_of_embeddings` は元の包含後に同じ全射列を与える未縮約対象を厳密に同定する。
+`Word.erase_composite_range`・`doubleErase_image` は二重削除の元の列の像と全射列の回収。
+`erase_erase_join` は削除同士の各側0〜1段の局所合流で、同じ列と異なる列の両方を含む。
+`BarrattEccles.algebraHammockEraseSimplex_fac`・`algebraHammockEraseRaw_reduction`・
+`algebraHammockEraseErase_join` は任意の可換環上で同じ元の基本縮約への代入。
+合成同士・混合を含む基本縮約全体の局所合流と代表の一意性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

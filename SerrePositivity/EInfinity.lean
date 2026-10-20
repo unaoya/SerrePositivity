@@ -846,3 +846,10 @@ public import SerrePositivity.EInfinity.Hammock.EraseSimplexNaturality
 public import SerrePositivity.EInfinity.Hammock.ReductionNaturality
 public import SerrePositivity.EInfinity.Hammock.RawSimplicialSet
 public import SerrePositivity.EInfinity.BarrattEccles.HammockReduction
+public import SerrePositivity.EInfinity.Hammock.IdentityColumnEmbedding
+public import SerrePositivity.EInfinity.Hammock.WordEmbeddingUniqueness
+public import SerrePositivity.EInfinity.Hammock.WordEraseCompositeRange
+public import SerrePositivity.EInfinity.Hammock.RawEmbeddingComparison
+public import SerrePositivity.EInfinity.Hammock.EraseSimplexIdentityColumn
+public import SerrePositivity.EInfinity.Hammock.EraseEraseConfluence
+public import SerrePositivity.EInfinity.BarrattEccles.HammockErasureConfluence
