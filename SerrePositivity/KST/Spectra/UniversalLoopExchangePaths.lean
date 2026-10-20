@@ -6,10 +6,11 @@ public import SerrePositivity.KST.Spectra.PointedBasedPathCalculus
 public import SerrePositivity.KST.Spectra.ParameterizedExchangeSign
 public import SerrePositivity.KST.Spectra.LoopSignComponents
 public import SerrePositivity.KST.Spectra.NaturalLoopReversalPaths
+public import SerrePositivity.KST.Spectra.DeloopedTracedExchange
 
 /-!
 概要：元の二重 loop 空間そのものの交換符号と二回の符号反転を、普遍的な区間族で実現する。
-方針：恒等族に既存の成分の等式を適用して区間を一度選び、全パラメータへ前合成する。
+方針：三重円の一つの普遍区間を Ω 条件へ移し、写像 path の全トレースを保持する。
 規約：指定部分への垂直性は別条件。使われ方：元の随伴構造比較の区間データの追跡。
 -/
 
@@ -22,14 +23,19 @@ open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.KST.Spectra.LoopExchangePaths
 
-/-- 二重 loop 空間全体で一度選んだ、交換と符号反転の基点固定区間族。 -/
+/-- 一つの普遍区間から Ω 条件へ移した、交換と符号反転の基点固定区間族。 -/
 def exchange {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
     (ha : KanPiIsomorphism a.right) :
-    PointedMapping.VerticalPath (PointedObject.toPoint (doubleLoop Y)) (swap Y) (reversal Y) := by
-  have h := omega_exchange_sign_component a ha (𝟙 (doubleLoop Y))
-  simp only [Category.id_comp] at h
-  exact PointedMapping.basedPathOfComponent h
+    PointedMapping.VerticalPath (PointedObject.toPoint (doubleLoop Y)) (swap Y) (reversal Y) :=
+  deloopedExchange (kanLoopLift a) (kanLoopLift_piIsomorphism a ha)
+
+/-- 既存の交換区間の辺全体は、同じ写像 path 持ち上げの源射影そのもの。 -/
+lemma exchange_path {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
+    (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
+    (ha : KanPiIsomorphism a.right) :
+    (exchange a ha).path =
+      (exchangeTrace (kanLoopLift a) (kanLoopLift_piIsomorphism a ha)).path.path := rfl
 
 /-- 円自身の一つの区間から移した、二度の符号反転を恒等射へ戻す自然な区間族。 -/
 def reversalTwice (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :

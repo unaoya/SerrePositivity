@@ -867,3 +867,6 @@ public import SerrePositivity.KST.Spectra.PointedIntervalInputBoundary
 public import SerrePositivity.KST.Spectra.PointedIntervalCoordinateNaturality
 public import SerrePositivity.KST.Spectra.TripleCircleExchangeNaturality
 public import SerrePositivity.KST.Spectra.TripleCircleLoopExchangeNaturality
+public import SerrePositivity.KST.Spectra.PointedTracedPathLift
+public import SerrePositivity.KST.Spectra.PointedTracedPathBoundary
+public import SerrePositivity.KST.Spectra.DeloopedTracedExchange
