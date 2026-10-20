@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.PointedBasedPathCalculus
 public import SerrePositivity.KST.Spectra.ParameterizedExchangeSign
 public import SerrePositivity.KST.Spectra.LoopSignComponents
+public import SerrePositivity.KST.Spectra.NaturalLoopReversalPaths
 
 /-!
 概要：元の二重 loop 空間そのものの交換符号と二回の符号反転を、普遍的な区間族で実現する。
@@ -43,13 +44,24 @@ def exchange {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z
   simp only [Category.id_comp] at h
   exact PointedMapping.basedPathOfComponent h
 
-/-- 二重 loop 空間全体で一度選んだ、二度の符号反転を恒等射へ戻す区間族。 -/
+/-- 円自身の一つの区間から移した、二度の符号反転を恒等射へ戻す自然な区間族。 -/
 def reversalTwice (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
     PointedMapping.VerticalPath (PointedObject.toPoint (doubleLoop Y))
-      (reversal Y ≫ reversal Y) (𝟙 (doubleLoop Y)) := by
-  have h := PointedMapping.componentOf_nested_neg_one_twice (𝟙 (doubleLoop Y))
-  simp only [Category.id_comp] at h
-  exact PointedMapping.basedPathOfComponent h
+      (reversal Y ≫ reversal Y) (𝟙 (doubleLoop Y)) :=
+  CirclePower.nestedReversalTwicePath Y
+
+/-- 同じ二重反転区間は、標的の後合成と辺全体で厳密に可換。 -/
+lemma reversalTwice_natural {Y Z : PointedSimplicialSet.{u}}
+    [KanComplex Y.right] [KanComplex Z.right] (v : Y ⟶ Z) :
+    ((reversalTwice Y).basedPost (PointedObject.basedHomMap CirclePower.space.{u}
+      (Y := PointedObject.basedHom CirclePower.space.{u} Y)
+      (Z := PointedObject.basedHom CirclePower.space.{u} Z)
+      (PointedObject.basedHomMap CirclePower.space.{u} (Y := Y) (Z := Z) v))).path =
+    ((reversalTwice Z).pre (PointedObject.basedHomMap CirclePower.space.{u}
+      (Y := PointedObject.basedHom CirclePower.space.{u} Y)
+      (Z := PointedObject.basedHom CirclePower.space.{u} Z)
+      (PointedObject.basedHomMap CirclePower.space.{u} (Y := Y) (Z := Z) v))).path :=
+  CirclePower.nestedReversalTwicePath_natural v
 
 /-- 元の交換符号の区間の後で、同じ内側の符号をもう一度反転する。 -/
 def cancellationFirst {Y Z : PointedSimplicialSet.{u}}

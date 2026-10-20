@@ -844,3 +844,7 @@ public import SerrePositivity.KST.Spectra.SpectrumTracedActualRightDifferenceTri
 public import SerrePositivity.KST.Spectra.PointedConstantIntervalSquare
 public import SerrePositivity.KST.Spectra.SpectrumTracedActualRightDifferenceSquare
 public import SerrePositivity.KST.Spectra.SpectrumTracedActualRightDifferenceStageSquare
+public import SerrePositivity.KST.Spectra.PointedPrecompositionNaturality
+public import SerrePositivity.KST.Spectra.CircleReversalHomotopy
+public import SerrePositivity.KST.Spectra.PointedIhomIntervalNaturality
+public import SerrePositivity.KST.Spectra.NaturalLoopReversalPaths
