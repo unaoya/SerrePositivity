@@ -16703,4 +16703,60 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms dgKQuasiEquivalenceGroupEquiv
 #check @dgKQuasiEquivalenceGroupEquiv_apply
 #print axioms dgKQuasiEquivalenceGroupEquiv_apply
+#check @functorGraph_identity
+#print axioms functorGraph_identity
+#check @dgDiagonalTensorUnitAt
+#print axioms dgDiagonalTensorUnitAt
+#check @dgDiagonalTensorUnitAt_naturality
+#print axioms dgDiagonalTensorUnitAt_naturality
+#check @dgModuleExtensionIdentityAt
+#print axioms dgModuleExtensionIdentityAt
+#check @dgModuleExtensionIdentityAt_naturality
+#print axioms dgModuleExtensionIdentityAt_naturality
+#check @dgFunctorClosedComparison
+#print axioms dgFunctorClosedComparison
+#check @dgFunctorClosedComparison_app
+#print axioms dgFunctorClosedComparison_app
+#check @dgFunctorClosedComparison_inv_naturality
+#print axioms dgFunctorClosedComparison_inv_naturality
+#check @dgFunctorClosedInverseComparison
+#print axioms dgFunctorClosedInverseComparison
+#check @perfectDGExtensionIdentityAt
+#print axioms perfectDGExtensionIdentityAt
+#check @perfectDGExtensionIdentityAt_naturality
+#print axioms perfectDGExtensionIdentityAt_naturality
+#check @perfectDGExtensionIdentityComparison
+#print axioms perfectDGExtensionIdentityComparison
+#check @perfectDGExtensionIdentityInverseComparison
+#print axioms perfectDGExtensionIdentityInverseComparison
+#check @perfectDGExtensionIdentityAt_inclusion
+#print axioms perfectDGExtensionIdentityAt_inclusion
+#check @bimoduleTensor_precompose_map
+#print axioms bimoduleTensor_precompose_map
+#check @dgFunctorGraphCompositionAt
+#print axioms dgFunctorGraphCompositionAt
+#check @dgFunctorGraphCompositionAt_naturality
+#print axioms dgFunctorGraphCompositionAt_naturality
+#check @dgFunctorGraphCompositionIso
+#print axioms dgFunctorGraphCompositionIso
+#check @dgModuleGraphTensorFunctor
+#print axioms dgModuleGraphTensorFunctor
+#check @dgModuleExtensionCompositionTensorIso
+#print axioms dgModuleExtensionCompositionTensorIso
+#check @dgModuleExtension_comp_map
+#print axioms dgModuleExtension_comp_map
+#check @dgModuleExtensionCompositionAt
+#print axioms dgModuleExtensionCompositionAt
+#check @dgModuleExtensionCompositionAt_naturality
+#print axioms dgModuleExtensionCompositionAt_naturality
+#check @perfectDGExtensionCompositionAt
+#print axioms perfectDGExtensionCompositionAt
+#check @perfectDGExtensionCompositionAt_naturality
+#print axioms perfectDGExtensionCompositionAt_naturality
+#check @perfectDGExtensionCompositionComparison
+#print axioms perfectDGExtensionCompositionComparison
+#check @perfectDGExtensionCompositionInverseComparison
+#print axioms perfectDGExtensionCompositionInverseComparison
+#check @perfectDGExtensionCompositionAt_inclusion
+#print axioms perfectDGExtensionCompositionAt_inclusion
 end SerrePositivity.KST.SConstruction

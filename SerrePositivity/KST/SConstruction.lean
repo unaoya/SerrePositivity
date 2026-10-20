@@ -1137,4 +1137,10 @@ public import SerrePositivity.KST.SConstruction.SerreIntervalTensorExt
 public import SerrePositivity.KST.SConstruction.SerreIntervalMaxSymmetry
 public import SerrePositivity.KST.SConstruction.SerreIntervalMaxAugmentation
 public import SerrePositivity.KST.SConstruction.DGKQuasiEquivalence
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionIdentity
+public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionIdentity
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphComposition
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionComposition
 /-! # ∞-S• 構成と連結 K 理論 -/
