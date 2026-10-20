@@ -746,7 +746,14 @@ augmentation は元の代数の射にも自然。Reedy 自明 fibration であ�
 `framedLimitHomPiZeroEquiv` は同じ π₀ を元の計算対象への局所化 Hom と同定する。
 `framedLimitDerivedHomEquiv` はこの二つを合成した、元の対象ごとの導来 Hom の同値。
 `framedLimitDerivedHomEquiv_target` は元の図式射による後合成との両立を与える。
-始域に関する自然性と元の錐の比較の類との整合性の確認が残る。
+`framedLimitProbeFunctor` と比較自然変換は既存の同じ試験始域を関手へ束ねる。
+`framedLimitConeBifunctor` と `constantDiagramSourceBifunctor` は元の二つの錐を
+始域に反変・終域図式に共変な関手として保持する。
+`sourceRightConeComparisonIso_source` は同じ具体的な両錐比較の始域自然性。
+`constantDiagramSourcePiZeroEquiv_source`・`framedLimitConePiZeroEquiv_source`・
+`framedLimitHomPiZeroEquiv_source` は元の始域の射の局所化像による前合成と両立する。
+`framedLimitDerivedHomEquiv_source` により導来 Hom 同値の始域自然性も成立。
+局所化圏上の随伴への降下と、元の錐の比較の類との整合性の確認が残る。
 計算関手の右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
