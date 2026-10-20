@@ -17463,4 +17463,31 @@ namespace SerrePositivity.KST.SConstruction
 #check perfectDGExtensionInputHom_horizontal
 #print axioms perfectDGExtensionInputHom_horizontal
 
+#check enrichedParameter_closed_naturality
+#print axioms enrichedParameter_closed_naturality
+#check dgFunctorParameter_closed_naturality
+#print axioms dgFunctorParameter_closed_naturality
+#check dgFunctorParameter_conjugation
+#print axioms dgFunctorParameter_conjugation
+#check perfectDGExtensionInputHom_post
+#print axioms perfectDGExtensionInputHom_post
+#check perfectDGExtensionInputHom_pre
+#print axioms perfectDGExtensionInputHom_pre
+#check perfectDGExtensionInputHom_conjugation
+#print axioms perfectDGExtensionInputHom_conjugation
+#check presentedPerfectDGCompositionTransport
+#print axioms presentedPerfectDGCompositionTransport
+#check presentedPerfectDGAction_composition_transport
+#print axioms presentedPerfectDGAction_composition_transport
+#check presentedPerfectDGInputHom_eq_perfect
+#print axioms presentedPerfectDGInputHom_eq_perfect
+#check presentedPerfectDGInputHom_post
+#print axioms presentedPerfectDGInputHom_post
+#check presentedPerfectDGInputHom_pre
+#print axioms presentedPerfectDGInputHom_pre
+#check presentedPerfectDGInputHom_horizontal
+#print axioms presentedPerfectDGInputHom_horizontal
+#check presentedPerfectDGInputHom_horizontal_eqToHom
+#print axioms presentedPerfectDGInputHom_horizontal_eqToHom
+
 end SerrePositivity.KST.SConstruction

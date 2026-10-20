@@ -1254,4 +1254,9 @@ public import SerrePositivity.KST.SConstruction.PerfectDGExtensionParameterCompo
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputHomWhiskering
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputHomHorizontal
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHomHorizontal
+public import SerrePositivity.KST.SConstruction.DGParameterClosedNaturality
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHomWhiskering
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGCompositionTransport
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomWhiskering
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomHorizontal
 /-! # ∞-S• 構成と連結 K 理論 -/
