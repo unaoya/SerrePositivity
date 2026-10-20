@@ -16246,3 +16246,34 @@ namespace SerrePositivity.KST.SConstruction
 #check @perfectDGMoritaRealization_localized_isIso
 #print axioms perfectDGMoritaRealization_localized_isIso
 end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @boundaryReducedRealizationMap_localized_isIso
+#print axioms boundaryReducedRealizationMap_localized_isIso
+#check @boundaryKanRealizationMap_piIsomorphism
+#print axioms boundaryKanRealizationMap_piIsomorphism
+#check @boundaryKSpaceMap_piIsomorphism
+#print axioms boundaryKSpaceMap_piIsomorphism
+#check @kKanSequenceLevelMap_piIsomorphism
+#print axioms kKanSequenceLevelMap_piIsomorphism
+#check @rawKStageHomotopy_map_isIso
+#print axioms rawKStageHomotopy_map_isIso
+#check @kStageHomotopy_map_isIso
+#print axioms kStageHomotopy_map_isIso
+#check @kSpectrumMap_piIsomorphism_of_realization
+#print axioms kSpectrumMap_piIsomorphism_of_realization
+#check @kSpectrumMap_piIsomorphism_of_equivalence
+#print axioms kSpectrumMap_piIsomorphism_of_equivalence
+#check @dgK
+#print axioms dgK
+#check @dgKMap
+#print axioms dgKMap
+#check @dgKGroup
+#print axioms dgKGroup
+#check @dgKMap_piIsomorphism
+#print axioms dgKMap_piIsomorphism
+#check @dgKMoritaGroupEquiv
+#print axioms dgKMoritaGroupEquiv
+#check @dgKMoritaGroupEquiv_apply
+#print axioms dgKMoritaGroupEquiv_apply
+end SerrePositivity.KST.SConstruction

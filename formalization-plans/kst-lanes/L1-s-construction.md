@@ -36,17 +36,17 @@
 - `zeroRowPathFiberComparison_localized_isIso`：元の経路零行から既存の `iteratedPathHomotopyFiber` への定数 path による実際の比較と局所化同型を証明済み。Δ[0] の積を外した零列写像、商・Kan 比較の厳密な可換性、標的の零列の厳密な零化を含む。
 - `exists_previousStage_pathFiber_comparison`：任意の零段基点の退化を基点にした零行の同じ Kan 模型から、前段の既存の全零境界 Kan 実現と既存 fiber へ全基点 π_* 同型を構成済み。Kan 単位に沿う延長は元の射を厳密に回収する。
 - BF 手作業の整流は補助成果として保存して中断。全入力 prism・各段比較・六結合替えの依存した持ち上げまで検証済み。今回の `anodyneExtensionLiftVertex` と `kanMappingCompositionLiftData` で指定全基底像を保つ持ち上げを区切りとする。native な隣接段比較・全 raw 列の束ねと一般の完全関手上の coherent 関手性は未完。
-- K-4d：実 Perf・小さい代表系の安定入力と元の graph 延長の完全性を構成済み。`perfectDGDerivedComparison` は実 dg 延長の H⁰ と主導来延長の自然比較。主 Perf 作用が同値なら、全 source shift の H⁰ 判定から `perfectDGExtension_quasiEquivalence` を証明し、`perfectDGMoritaStableEquivalence` は元の射を順方向に保つ実同値。`perfectDGMoritaRealization_localized_isIso` は全正有限反復 S 実現の Morita 不変性。BF の全整数次数への接続・関手的な小宇宙の Perf・厳密豊穣 BF 関手は未完。
+- K-4d：実 Perf dg 延長の完全性と主導来延長の H⁰ 自然比較、全 source shift による Hom 擬同型と実 dg nerve 同値を証明済み。全正反復 S 実現から境界商・Kan・零段 loop・単射置換へ渡し、`dgK`・`dgKMap` と `dgKMap_piIsomorphism` を構成済み。主 Perf 作用が同値な厳密 dg 関手の元の BF K 射は全整数 π_* 同型で、`dgKMoritaGroupEquiv` の順写像は元の作用そのもの。関手的な小宇宙の Perf と厳密豊穣 BF 関手は未完。
 
 ### 残り（依存順、原典番号と時間見積もり）
 - 以下は再開後の実装作業時間の粗い目安。未形式化の難所で増えるため納期ではない。
 - **厳密 dg 入力に限定**：dg 圏の単体的圏から BF スペクトルの単体的圏への厳密な単体的豊穣関手を構成し、γ1 の `coherentNerveMap` で Sp 値の ∞ 関手を得る。関手的 Perf 模型・BF 置換と恒等・合成の厳密な保存が未完（BGT Definition 7.1、経路正本 §13 決定9・16、16–48時間）。
-- dg 関手性・Morita 不変性：経路正本 §4 D1・§5 K1b、U16・A3e、8–24時間（依存 API の照合を含む）。
+- dg 関手性の残り：各厳密 dg 射の実 BF 射と Morita π_* 不変性は供給済み。厳密豊穣の恒等・合成則、関手的な小さい Perf 模型、元の実 K との比較（経路正本 §4 D1・§5 K1b、U16・A3e、8–24時間）。
 - L3・K-基盤 1・2 は §6・7 の依存順に続行。非連結化は F2-lite の Ind を待つ。
 
 ### 主要宣言（名前のみ）
 - `sConstruction`、`simplicialSConstruction`、`firstRowRestriction_trivialKanFibration`、`firstRowEquivalence`
-- `StableModel`、`PreservesCofiberData`、`sEndofunctor`、`multiRealizationFunctor`、`perfectDGStableModel`、`smallPerfectDGNerveEquivalence`、`smallPerfectDGStableModel`、`perfectDGExtension`、`perfectDGStableMap`、`perfectDGDerivedComparison`、`perfectDGExtension_quasiEquivalence`、`perfectDGMoritaStableEquivalence`、`perfectDGMoritaRealization_localized_isIso`
+- `StableModel`、`PreservesCofiberData`、`sEndofunctor`、`multiRealizationFunctor`、`perfectDGStableModel`、`smallPerfectDGNerveEquivalence`、`smallPerfectDGStableModel`、`perfectDGExtension`、`perfectDGStableMap`、`perfectDGDerivedComparison`、`perfectDGExtension_quasiEquivalence`、`perfectDGMoritaStableEquivalence`、`perfectDGMoritaRealization_localized_isIso`、`dgK`、`dgKMap`、`dgKMap_piIsomorphism`、`dgKMoritaGroupEquiv`
 - `kSpace`、`kKanSequence`、`monicKKanSequence`、`monicKKanSequenceProjection_piIsomorphism`
 - `iteratedPathHomotopyFiber`、`iteratedPathLoopComparison_piIsomorphism`
 - `objectToCoreSRealization_localized_isIso`、`objectCoreRowIso`、`cofiberStableSubobject`、`cofiberStableQuotient`
@@ -76,19 +76,19 @@
 - 読取専用：Core（F0、関手圏の点ごとの極限等）、Stable（α-S）、F1/F1B（core・充満包含）、
   Spectra（L9）、Comparison（L2）、HomotopicalAlgebra（具体的 Kan 置換・局所化・対角）、D の dg nerve・前三角性・準同値比較。
 - 提供：全 gapped S• と第一行の完全な比較、安定な入力の完全関手の圏、object/core 実現比較、ρ の cofiber・gapped 性、左 fiber 内の二ホモトピー、quotient 射の局所化同型、単体積版 Quillen A、全 cofiber 図式の object/core 単回実現の加法性、S/cofiber の厳密な交換同型、正の全有限反復実現の自然な加法性、S₂ の二区間への分解、閉じた全部分圏と相対 E(A,C,B) の安定性・完全な評価、相対 object/core 単回実現と全正有限反復 core S• 実現の加法性、S_n と全部分圏・相対図式の厳密な交換同型、相対入力に関する全正反復加法性の自然同型、切断の左右支持部分圏と短い区間の S 構成の実際の同値、左右支持の相対 E と S_n C の実際の同値、元の Segal 射対の厳密な比較式、全正有限反復実現による完全な同値の保存、任意の切断位置の元の Segal 射の自然な局所化同型、全連続辺への Segal 同値、全単体作用素の元の経路境界の homotopy pullback、全ての行と全対角の homotopy pullback 比較、元の零行から既存 fiber への局所化同型、前段の既存 Kan 実現と既存 fiber への同じ Kan 模型からの全基点 π_* 比較、S/S の厳密な交換、全反復 S₁ の内外比較と元の区間族の可換性、独立な全多次数の交換と自然性、源の全零境界と既存の境界商の比較同型、全方向を動かす巡回交換と独立な全零方向の境界商の比較、座標置換の全零境界保存、標準の既存境界商の巡回自己同型、元の収縮の零行への制限と区間組み立ての厳密な式、元の点つき経路商の基点固定収縮、既存 Kan 経路への零行収縮と退化像の全時刻の固定、元の円の商からの具体的な loop 射と評価の回収式、任意の零段基点に関する点つき射と厳密な Kan 延長、元の構造射の随伴との厳密な照合、元の全零境界商への降下と商射による回収、終点固定 fiber 内の元の収縮からの実ホモトピー、定数 path 比較と収縮境界 loop 型比較の局所化同型、元の随伴の全基点 π_* 同型と同じ境界商の BF Ω スペクトル、元の K 空間を零段に保つ連結 BF K スペクトル、全負整数次数消滅、整数 K 群の可換群への関手と任意段・零次数の自然な表示、元の対象の実際の BF K 類・S₁ 補完回収・同型不変性・零対象の零性・完全関手に関する自然性、元の S₂ の三辺と対象 loop の厳密な照合、任意の元の cofiber 正方形の加法関係、三角圏 K₀ からの対象類を保つ自然な準同型、置換前の元の辺と二単体の基本亜群による実際の零次 K 群の表示、単位・積・逆の照合と同じ object S₁ の辺の対象類の回収、任意の元の境界商の辺の対象辺への帰着と対象類による生成、比較準同型の全射性、元の object S の三角圏 K₀ 値の関手・境界商への実ホモトピーによる移送と既存の Kan 境界上の厳密な延長、実際の零次 K 群からの逆向き準同型と対象類の回収、二つの逆律、三角圏 K₀ との加法群同型と完全関手に関する自然同型、元の K 空間の π₀ との自然同型。
-- 提供：実 Perf dg 延長・完全性・主導来延長との H⁰ 自然比較、主 Perf 作用が同値な厳密 dg 関手の実 dg nerve 同値と全正有限反復 S 実現の Morita 不変性。BF π_* と Sp 値の厳密豊穣関手への接続は未提供。
+- 提供：実 Perf dg 延長と完全性、主導来延長との H⁰ 自然比較、Morita の実 dg nerve 同値、全正反復 S 実現不変性、実 BF dg K 射の全整数 π_* 同型。Sp 値の厳密豊穣関手への接続は未提供。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 今回の検証済み保存単位：射影的 graph 比較・Perf 自然比較・H⁰ 同値・全 shift Hom 判定・dg 準同値・実現不変性の6モジュール、集約・監査・本計画。担当分のみコミットし、未保存の担当差分なし。
+- 今回の検証済み保存単位：境界商・Kan・loop の不変性、単射置換と実 BF 射の全整数 π_* 同型、実 dg K と Morita 群同型の3モジュール、集約・監査・本計画。担当分のみコミットし、未保存の担当差分なし。
 - 他レーンの作業中の差分・未追跡ファイルは触れていない。
 
 ### 既知の問題
-- 対象ビルド8388 jobs・公理監査6349宣言・全体 lake build 18885 jobsが成功。担当 import 閉包の破損はない。
+- 対象ビルド8391 jobs・公理監査6363宣言・全体 lake build 18890 jobsが成功。担当 import 閉包の破損はない。
 - 名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
-- 6349宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
+- 6363宣言の監査は追加公理・sorry を検出しない状態。許可は propext・Classical.choice・Quot.sound のみ。
 - raw ρ の型は Ar→Fun(正方形,C)。cofiber 値への持ち上げ・gapped 性・各角の strict 回収・左 fiber 条件は証明済み。二つの実ホモトピーと quotient 射の局所化同型まで証明済み。
 - cofiber 図式の圏で任意に選んだ押し出しでは、subobject・quotient の strict な回収を結論できない。
 - 正の Ω 条件は元の区間商上の厳密な評価・元の収縮の fiber 内のホモトピー・loop 包含の同定から証明済み。境界列は r+1 重 S の段。既存の K の列を別に BF 模型へ束ね、元の零段の保持と負次数消滅まで証明済み。
@@ -97,7 +97,7 @@
 
 ### 次の一手
 - **厳密 dg 入力に限定**（2026-10-20 のユーザー指示）。一般の完全関手について BF 模型上で高次面を手作業で貼る整流は、検証済みの区切りで保存して中断する。既存の各段比較と六結合替え持ち上げは補助成果として保持し、native な隣接段比較や全 raw 列の完成とは数えない。
-- K-4d の次：`perfectDGMoritaStableEquivalence` の元の順方向について、正反復 S 実現の局所化同型を境界商・Kan・零段 loop・単射置換へ移し、実 BF K 射の全整数 π_* 同型を証明する。全整数 K 群の同型を Sp 値の coherent 関手性の代用にはしない。小さい代表への像は厳密には閉じないため、関手的な小さい dg 模型も残る。
+- 次は K-3d の厳密 dg 経路：dg 入力の単体的圏と、その非離散 Hom 上の作用を明確にし、関手的 Perf・S•・実現・BF 置換を構成する。`dgKMap_piIsomorphism` で Morita 反転の全整数 π_* 条件は供給済み。各 dg 射に実 BF 射があるだけでは恒等・合成の厳密な豊穣法則の完成と数えず、離散 Hom への置換で高次入力を省略しない。
 - K-3d の新経路：厳密な単体的豊穣 K を構成した後に γ1 を適用する。既存の選択を含む `kOmegaSpectrum` が入力制限だけで厳密豊穣関手になるとは主張しない。Perf・S•・実現・BF 置換の関手的な模型と、既存の対象ごとの K との比較を証明する。γ1 の適用だけは既存 API で可能。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind は α2b の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
 - 検証は対象ビルドと公理監査。他レーンは編集しない。

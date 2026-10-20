@@ -1094,4 +1094,7 @@ public import SerrePositivity.KST.SConstruction.PerfectDGMoritaHomotopy
 public import SerrePositivity.KST.SConstruction.DGModuleHomShiftCriterion
 public import SerrePositivity.KST.SConstruction.PerfectDGMoritaEquivalence
 public import SerrePositivity.KST.SConstruction.PerfectDGMoritaRealization
+public import SerrePositivity.KST.SConstruction.BoundaryRealizationInvariance
+public import SerrePositivity.KST.SConstruction.KSpectrumInvariance
+public import SerrePositivity.KST.SConstruction.DGKTheory
 /-! # ∞-S• 構成と連結 K 理論 -/
