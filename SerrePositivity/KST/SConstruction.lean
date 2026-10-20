@@ -1214,4 +1214,11 @@ public import SerrePositivity.KST.SConstruction.DGExtensionParameterPullback
 public import SerrePositivity.KST.SConstruction.DGParameterUniversal
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomFactorization
 public import SerrePositivity.KST.SConstruction.DGExtensionParameterValuePullback
+public import SerrePositivity.KST.SConstruction.LeftModuleParameterRepresentation
+public import SerrePositivity.KST.SConstruction.LeftTensorParameterFactorization
+public import SerrePositivity.KST.SConstruction.LeftTensorParameterUnit
+public import SerrePositivity.KST.SConstruction.BimoduleParameterUnit
+public import SerrePositivity.KST.SConstruction.DGExtensionParameterUnit
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomUnit
+public import SerrePositivity.KST.SConstruction.LeftModuleHomComparison
 /-! # ∞-S• 構成と連結 K 理論 -/

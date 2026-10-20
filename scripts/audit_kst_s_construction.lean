@@ -17258,4 +17258,45 @@ namespace SerrePositivity.KST.SConstruction
 #check dgParameterCross_naturality_assoc
 #print axioms dgParameterCross_naturality_assoc
 
+
+-- 高次入力の単位保存と既存左加群 Hom への比較。
+#check dgLeftModuleParameterHom
+#print axioms dgLeftModuleParameterHom
+#check dgLeftModuleParameterHom_π
+#print axioms dgLeftModuleParameterHom_π
+#check dgLeftModuleParameterUniversal
+#print axioms dgLeftModuleParameterUniversal
+#check dgLeftModuleParameter_factorization
+#print axioms dgLeftModuleParameter_factorization
+#check dgLeftParamHom_factorization
+#print axioms dgLeftParamHom_factorization
+#check dgLeftModuleParameterHom_identity
+#print axioms dgLeftModuleParameterHom_identity
+#check dgLeftParamHom_identity
+#print axioms dgLeftParamHom_identity
+#check dgBimoduleParamLeftAt_identity
+#print axioms dgBimoduleParamLeftAt_identity
+#check dgFirstParam_identity
+#print axioms dgFirstParam_identity
+#check dgFunctorGraphParameter_identity
+#print axioms dgFunctorGraphParameter_identity
+#check dgModuleExtensionParameter_identity
+#print axioms dgModuleExtensionParameter_identity
+#check perfectDGExtensionParameter_identity
+#print axioms perfectDGExtensionParameter_identity
+#check presentedPerfectDGParameter_identity
+#print axioms presentedPerfectDGParameter_identity
+#check presentedPerfectDGInputHom_identity
+#print axioms presentedPerfectDGInputHom_identity
+#check dgLeftModuleHomComparison
+#print axioms dgLeftModuleHomComparison
+#check dgLeftModuleHomComparison_π
+#print axioms dgLeftModuleHomComparison_π
+#check dgLeftModuleParameterHom_comparison
+#print axioms dgLeftModuleParameterHom_comparison
+#check dgLeftModuleHomComparison_identity
+#print axioms dgLeftModuleHomComparison_identity
+#check dgLeftModuleHomComparison_composition
+#print axioms dgLeftModuleHomComparison_composition
+
 end SerrePositivity.KST.SConstruction
