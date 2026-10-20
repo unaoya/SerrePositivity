@@ -40,12 +40,13 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   実現の両端固定ホモトピーを元の変換へ戻し、native 全空間余錐の比較の像と元の単位の同型を構成。
   元の全 Hom 三角形の三辺・対角のホモトピーを追跡し、標準比較を実際の相対合成と関手同型で比較。
   定値 fiber の作用を普遍輸送へ移し、全 Hom 比較を元の余錐の fiber 写像の前合成と比較。輸送作用も同値。
-  元の余錐の fiber 写像が弱同値なら native な余極限である十分条件を証明。全空間余錐の fiber 弱同値性は残る。
-  三集約同時ビルド 7204 jobs、公理監査 2183 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  元の小さい単位の前合成同値を厳密な宇宙移送で必要な全 fiber 標的へ戻し、構成済み余錐の native 余極限性を証明。
+  小さい底上の任意の coherent 空間値図式の HasColimit を公開。filtered 性・strict 図式への置換は不要。
+  三集約同時ビルド 7219 jobs、公理監査 2206 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
-- F2N-1：𝒮 の一般 coherent filtered 余極限の模型の比較と有限極限との交換。40〜100 時間。
+- F2N-1：𝒮 の一般 coherent filtered 余極限と有限極限との交換。全空間模型の native 余極限性は証明済み。
 - F2N-2：前層内の Indκ、生成と保存関手の延長の普遍性。50〜120 時間。
 - F2N-3・4：compact・retract、coherent 冪等図式と完備化の普遍性。各 30〜100 時間。
 - F2N-5：Ind(C) の安定性、冪等完備 C の compact 生成。40〜100 時間。
@@ -61,7 +62,6 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.laxCosliceDiagonalCommaIso` / `F2.weaklyContractible_diagonalStandardComma_iff`
 - `F2.isFilteredInfinity_iff_of_equivalence` / `F2.isKappaFiltered_iff_of_equivalence`
 - `F2.overBousfieldKanDiagram` / `F2.overBousfieldKanColimitComparison_augmentation`
-- `F2.overBousfieldKanColimitIso` / `F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered`
 - `F2.reflectedBousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered`
 - `F2.filteredKanColimitComparison_factor` / `F2.filteredKanColimitCocone_isColimit`
 - `F2.kanCoconeAugmentationComparison_factor` / `F2.filteredKanColimitOrdinaryCocone_isColimit`
@@ -74,7 +74,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coconeTransformationMap_prism` / `F2.coconeTransformationMap_isQCatEquivalence`
 - `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
 - `F2.unstraighteningMappingTriangleIso` / `F2.coherentTotalUnitHomComparison_homotopyEquivalence`
-- `F2.coconeFiberHomComparisonIso` / `F2.isColimitCone_of_coconeFiberMap_weakEquivalence`
+- `F2.coherentDiagramTotalCocone_isColimit` / `F2.hasColimit_coherentSpaceDiagram`
 - `F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` / `F2.isKappaFiltered_iff_constantDiagram_rightCofinal`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
@@ -97,13 +97,13 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   通常の指定余錐の全脚・高次の整合性を保持した native な普遍性まで証明済み。
   任意の二射の元の cospan の native な極限との比較は証明済み。一般 coherent filtered 図式の交換は残る。
   全空間模型の余錐全体・頂点・単位との比較は構成済み。余錐空間の比較同値と元の単位との同型は証明済み。
-  相対合成の fiber 作用・全 Hom の前合成との整合と fiber 弱同値の十分条件は証明済み。全空間余錐への適用は未完。
+  元の全空間余錐への全 Hom 判定の適用は完了。必要な fiber 標的を明示し、小さい単位の比較から証明。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：構成済みの全空間余錐の coconeFiberMap の弱同値性を、単位の比較と小さい全空間の同型で証明。
-  fiber 弱同値の十分条件で元の余錐の普遍性を閉じ、一般 coherent filtered 余極限と有限極限の交換へ進む。
+- F2N-1：一般 coherent filtered 図式の全空間 Kan 模型の有限射・境界の検出を native 余極限性へ接続。
+  有限極限の標準比較の同値性を元の図式の族で証明し、その後 Indκ の構成へ進む。
 
 ## 0. 目標と範囲
 
@@ -157,7 +157,8 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
   F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
   通常の指定 filtered 余錐の native な普遍性、path 座標を保つ交換同型、任意の strict Kan cospan の native な比較を証明。
-  相対有限検出・全空間模型の native 余錐を構成。余錐空間の標準比較は単射で厳密な左逆を持つ。余極限性・交換・Ind は未完了。
+  相対有限検出と全空間模型の元の余錐の native 余極限性を証明。小さい底上の一般 coherent 図式の HasColimit を公開。
+  一般 coherent filtered 余極限と有限極限の交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -167,7 +168,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：両端固定の fat join 回収のホモトピーを curry し、標準比較の右逆ホモトピーと同値性を証明する。
+- 次の一手：全空間 Kan 模型の相対有限検出と元の余極限性から、一般 coherent filtered 余極限の有限極限交換を証明。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |

@@ -47,9 +47,9 @@
   laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
 - 第 2 部：全 path 座標を保つ標準同型、任意の strict Kan cospan の native な引き戻し・filtered 比較を証明。
   余錐空間から定値変換空間・小さい全空間の内部 Hom への標準比較の同値性を証明。
-  全 Hom の相対合成の fiber 作用を普遍輸送へ移し、元の余錐の fiber 写像による前合成と比較。
-  fiber 写像が弱同値なら元の余錐は native な余極限。構成済み全空間余錐の fiber 弱同値性は残る。
-  検証：三集約 7204 jobs、公理監査 2183 宣言、同時 import 成功。一般 coherent 余錐の普遍性・交換は残る。
+  元の小さい単位の比較と必要な全 fiber 標的への前合成同値から、構成済み余錐の native 余極限性を証明。
+  小さい底上の任意の coherent 空間値図式の HasColimit を公開。一般 filtered 余極限の有限極限交換・Ind は残る。
+  検証：三集約 7219 jobs、公理監査 2206 宣言、同時 import 成功。一般 coherent filtered 余極限の有限極限交換は残る。
 
 ### 残り（依存順、実作業時間の概算）
 

@@ -797,3 +797,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.pointedHomTransport_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.coconeFiberHomComparisonIso
 #check @SerrePositivity.InfinityCategories.F2.isColimitCone_of_coconeFiberMap_weakEquivalence
+#check @SerrePositivity.InfinityCategories.F2.uliftFunctorSpaceIso_pre
+#check @SerrePositivity.InfinityCategories.F2.ulift_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coconeFiberValueMapAt_smallComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentLargeTotalCoconeUnitIso
+#check @SerrePositivity.InfinityCategories.F2.coherentLargeTotalUnit_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.pre_homotopyEquivalence_of_target_equivalence
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeFiber_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.hasColimit_coherentSpaceDiagram

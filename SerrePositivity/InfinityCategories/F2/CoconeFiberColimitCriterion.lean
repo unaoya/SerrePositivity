@@ -24,11 +24,13 @@ open HomotopyLimits
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 variable {B : SSet.{u + 1}} {F : B ⟶ SpaceInfinity.{u}}
 
-/-- 概要：元の余錐の実際の fiber 写像が弱同値なら元の余錐は余極限。
+/-- 概要：元の fiber 写像の全 fiber 標的への前合成が同値なら元の余錐は余極限。
 方針：元の全 Hom の族を同値な共通模型へ移し、元の fiber 写像による前合成へ比較する。
 規約：底は任意で、filtered 性も余極限性も仮定しない。 -/
-lemma isColimitCone_of_coconeFiberMap_weakEquivalence (c : JoinCocone F)
-    (hc : IsWeakHomotopyEquivalence (coconeFiberMap c)) : IsColimitCone c := by
+lemma isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (c : JoinCocone F)
+    (hc : ∀ z : SpaceInfinity.{u} _⦋0⦌, IsSimplicialHomotopyEquivalence
+      ((pre (coconeFiberMap c)).app (vertexFiber pointedSpaceProjection z))) :
+    IsColimitCone c := by
   let q (z : SpaceInfinity.{u} _⦋0⦌) := coconeTransformationMap F z ≫
     leftUnstraighteningMappingSpaceMap F (SSet.const z) ≫
       (constantUnstraighteningRelativeIso (leftUnstraighteningProjection F) z).hom
@@ -48,7 +50,16 @@ lemma isColimitCone_of_coconeFiberMap_weakEquivalence (c : JoinCocone F)
       (coconePointHomRelativeComposite c z ≫
         (constantUnstraighteningRelativeIso (leftUnstraighteningProjection F) z).hom) := by
     simpa only [q, Category.assoc] using e
-  have h := (coconeFiberHomComparison_homotopyEquivalence c hc z).isQCatEquivalence
+  have h := (coconeFiberHomComparison_of_pre c z (hc z)).isQCatEquivalence
   exact (h.ofFunctorIso he.symm).isSimplicialHomotopyEquivalence
+
+/-- 概要：元の余錐の実際の fiber 写像が弱同値なら元の余錐は余極限。
+方針：必要な fiber 標的への前合成同値を回収し、元の全 Hom の判定を使う。
+規約：元の全空間の Kan 性は不要。使われ方：弱同値による余極限の十分条件。 -/
+lemma isColimitCone_of_coconeFiberMap_weakEquivalence (c : JoinCocone F)
+    (hc : IsWeakHomotopyEquivalence (coconeFiberMap c)) : IsColimitCone c :=
+  isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence c (fun z ↦
+    pre_isSimplicialHomotopyEquivalence_of_weakHomotopyEquivalence
+      (coconeFiberMap c) hc (vertexFiber pointedSpaceProjection z))
 
 end SerrePositivity.InfinityCategories.F2

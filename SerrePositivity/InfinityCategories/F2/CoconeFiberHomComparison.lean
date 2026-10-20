@@ -48,6 +48,17 @@ def coconeFiberHomComparisonIso (c : JoinCocone F) (z : SpaceInfinity.{u} _⦋0�
   rw [h] at e
   exact e
 
+/-- 概要：必要な fiber 標的への前合成が同値なら元の全 Hom の相対合成比較も同値。
+方針：輸送作用の同値性と指定前合成を合成する。
+規約：検査する標的を明示。使われ方：小さい単位による全 Hom の判定。 -/
+lemma coconeFiberHomComparison_of_pre (c : JoinCocone F) (z : SpaceInfinity.{u} _⦋0⦌)
+    (hp : IsSimplicialHomotopyEquivalence
+      ((pre (coconeFiberMap c)).app (vertexFiber pointedSpaceProjection z))) :
+    IsSimplicialHomotopyEquivalence (coconePointHomRelativeComposite c z ≫
+      (constantUnstraighteningRelativeIso (leftUnstraighteningProjection F) z).hom) := by
+  have h := (pointedHomTransport_isQCatEquivalence c.vertex z).comp hp.isQCatEquivalence
+  exact (h.ofFunctorIso (coconeFiberHomComparisonIso c z).symm).isSimplicialHomotopyEquivalence
+
 /-- 概要：元の余錐の fiber 写像が弱同値なら、その全 Hom の相対合成比較は同値。
 方針：輸送作用の同値性と Kan 標的への弱同値の前合成同値を合成する。
 規約：元の全空間の Kan 性は要求しない。使われ方：native な余極限性の十分条件。 -/
@@ -57,7 +68,6 @@ lemma coconeFiberHomComparison_homotopyEquivalence (c : JoinCocone F)
       (constantUnstraighteningRelativeIso (leftUnstraighteningProjection F) z).hom) := by
   have hp := pre_isSimplicialHomotopyEquivalence_of_weakHomotopyEquivalence
     (coconeFiberMap c) hc (vertexFiber pointedSpaceProjection z)
-  have h := (pointedHomTransport_isQCatEquivalence c.vertex z).comp hp.isQCatEquivalence
-  exact (h.ofFunctorIso (coconeFiberHomComparisonIso c z).symm).isSimplicialHomotopyEquivalence
+  exact coconeFiberHomComparison_of_pre c z hp
 
 end SerrePositivity.InfinityCategories.F2
