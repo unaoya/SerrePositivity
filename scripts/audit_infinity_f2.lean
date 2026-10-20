@@ -637,3 +637,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.terminalIndexColimitIso
 #check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_terminal_factor
 #check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_terminal
+
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitReindex
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitWeightMap
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanReindex_comp
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanDiagram
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanAugmentation
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_map_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.continuousKanDiagramUnit_colimit_factor
+#check @SerrePositivity.InfinityCategories.F2.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanColimitComparison_augmentation
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanAugmentation_colimit_isWeakHomotopyEquivalence

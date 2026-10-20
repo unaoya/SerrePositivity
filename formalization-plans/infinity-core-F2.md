@@ -23,10 +23,12 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   filtered 性 ↔ coslice の弱可縮性 ↔ 対角関手の right cofinality を双方向に証明。
   filtered・κ-filtered 性のホモトピー retract 保存・同値不変性も証明。κ の正則性は輸送に不要。
   通常の filtered 図式では、有限内部 Hom の連続性、Kan 性・Kan fibration・自明 Kan fibration・
-  Kan 値図式の成分ごとの弱同値の保存、有限ホモトピーの段での相対検出を証明。
+  任意の値の成分ごとの弱同値の保存、有限ホモトピーの段での相対検出を証明。
   Bousfield–Kan coend → colimit の自然な augmentation と有限形状からの持ち上げを構成。
   終対象を持つ添字では、重みの自然な収縮を全脚で貼り、実際のホモトピー逆と標準比較の弱同値性を証明。
-  三集約同時ビルド 6913 jobs、F2 公理監査 1493 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
+  coend の重み・添字変更と合成則、Over.map に沿う coend 図式と自然な augmentation を構成。
+  その余極限から元の coend への標準比較と augmentation の可換性、各段の augmentation の余極限の弱同値性を証明。
+  三集約同時ビルド 6930 jobs、F2 公理監査 1545 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -47,6 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.isFilteredInfinity_iff_of_equivalence` / `F2.isKappaFiltered_iff_of_equivalence`
 - `F2.finiteInternalHom_preservesFilteredColimits` / `F2.piZero_eq_iff_exists_homotopy_at_stage`
 - `F2.filteredColimitMap_trivialKanFibration` / `F2.filteredColimitMap_isWeakHomotopyEquivalence`
+- `F2.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise` / `F2.bousfieldKanReindex_comp`
+- `F2.overBousfieldKanDiagram` / `F2.overBousfieldKanColimitComparison_augmentation`
 - `F2.bousfieldKanAugmentation` / `F2.bousfieldKanAugmentation_lifts_finite`
 - `F2.terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence`
 - `F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_terminal`
@@ -79,14 +83,15 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
   一般の弱可縮性と正則 κ の対角関手の判定は証明済み。coherent な filtered 余極限の交換は残る。
   augmentation の一般 filtered 添字での弱同値性は未完了。有限形状の持ち上げだけで弱同値とは数えない。
-  終対象を持つ場合の弱同値性は証明済み。通常の colimit の native 余極限性はまだ未証明。
+  終対象を持つ場合と Over 図式の augmentation の余極限の弱同値性は証明済み。比較射の同型性は未証明。
+  通常の colimit の native 余極限性はまだ未証明。
   N の一般 coherent 余極限への接続は未完了の部分があり、無条件の存在・γ4 を一括仮定しない。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：coend の添字変更を構成し、Over.map に沿う i ↦ Q(BK(F ⋙ Over.forget i)) を自然な図式にする。
-  元の coend のこの filtered 表示も同型で証明し、各段の弱同値と保存性を元の augmentation へ接続する。
+- F2N-1：overBousfieldKanColimitComparison の同型性を証明する。
+  各次数の重みの鎖をその終点の Over 圏へ持ち上げ、余極限の脚による逆を作り、元の augmentation へ接続する。
 
 ## 0. 目標と範囲
 
