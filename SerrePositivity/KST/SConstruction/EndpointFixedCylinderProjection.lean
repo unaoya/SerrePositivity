@@ -42,4 +42,20 @@ lemma EndpointFixedEdgeCylinder.postcomp_h {E B : SSet.{u}} {x y : E _⦋0⦌}
     (H.postcomp p).homotopy.h = H.homotopy.h ≫ p :=
   familyHomotopyEndpointTransport_h _ _ _
 
+/-- 同じ実写像の表示等号に沿い、元の全辺円柱を写像像の型だけ移す。 -/
+def endpointFixedCylinderMapTransport {E B : SSet.{u}} {x y : E _⦋0⦌}
+    (a b : E.Edge x y) {p q : E ⟶ B} (h : p = q)
+    (H : EndpointFixedEdgeCylinder (a.map q) (b.map q)) :
+    EndpointFixedEdgeCylinder (a.map p) (b.map p) := by
+  cases h
+  exact H
+
+/-- 写像の表示移送でも、元の全実円柱をそのまま保持する。 -/
+lemma endpointFixedCylinderMapTransport_h {E B : SSet.{u}} {x y : E _⦋0⦌}
+    (a b : E.Edge x y) {p q : E ⟶ B} (h : p = q)
+    (H : EndpointFixedEdgeCylinder (a.map q) (b.map q)) :
+    (endpointFixedCylinderMapTransport a b h H).homotopy.h = H.homotopy.h := by
+  cases h
+  rfl
+
 end SerrePositivity.KST.SConstruction
