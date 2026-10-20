@@ -1128,4 +1128,13 @@ public import SerrePositivity.KST.SConstruction.SerreIntervalCoassociativity
 public import SerrePositivity.KST.SConstruction.SerreIntervalCounit
 public import SerrePositivity.KST.SConstruction.SerreCubeComonoid
 public import SerrePositivity.KST.SConstruction.SerreIntervalComonoidMaps
+public import SerrePositivity.KST.SConstruction.SerreIntervalContraction
+public import SerrePositivity.KST.SConstruction.SerreIntervalMax
+public import SerrePositivity.KST.SConstruction.SerreIntervalContractionValues
+public import SerrePositivity.KST.SConstruction.SerreIntervalDegrees
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxValues
+public import SerrePositivity.KST.SConstruction.SerreIntervalTensorExt
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxSymmetry
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxAugmentation
+public import SerrePositivity.KST.SConstruction.DGKQuasiEquivalence
 /-! # ∞-S• 構成と連結 K 理論 -/

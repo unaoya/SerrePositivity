@@ -16619,4 +16619,88 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms serreIntervalOneComonHom_hom
 #check @serreIntervalAugmentationComonHom_hom
 #print axioms serreIntervalAugmentationComonHom_hom
+#check @serreIntervalAugmentation_eq_fst
+#print axioms serreIntervalAugmentation_eq_fst
+#check @serreIntervalProjection_decomposition
+#print axioms serreIntervalProjection_decomposition
+#check @serreIntervalDiskContraction
+#print axioms serreIntervalDiskContraction
+#check @serreIntervalDiskContraction_d
+#print axioms serreIntervalDiskContraction_d
+#check @serreIntervalContraction
+#print axioms serreIntervalContraction
+#check @serreIntervalContraction_d
+#print axioms serreIntervalContraction_d
+#check @serreIntervalMaxCurried
+#print axioms serreIntervalMaxCurried
+#check @serreIntervalMax
+#print axioms serreIntervalMax
+#check @serreIntervalMaxCurried_zero
+#print axioms serreIntervalMaxCurried_zero
+#check @serreIntervalMaxCurried_edge
+#print axioms serreIntervalMaxCurried_edge
+#check @serreIntervalMaxCurried_one
+#print axioms serreIntervalMaxCurried_one
+#check @serreIntervalMax_zero_left
+#print axioms serreIntervalMax_zero_left
+#check @serreIntervalMax_one_left
+#print axioms serreIntervalMax_one_left
+#check @serreIntervalMax_apply
+#print axioms serreIntervalMax_apply
+#check @serreIntervalZero_snd_value
+#print axioms serreIntervalZero_snd_value
+#check @serreIntervalOne_snd
+#print axioms serreIntervalOne_snd
+#check @serreIntervalOne_snd_value
+#print axioms serreIntervalOne_snd_value
+#check @serreIntervalDiskContraction_apply
+#print axioms serreIntervalDiskContraction_apply
+#check @serreIntervalContraction_zero
+#print axioms serreIntervalContraction_zero
+#check @serreIntervalContraction_one
+#print axioms serreIntervalContraction_one
+#check @serreInterval_isZero_X
+#print axioms serreInterval_isZero_X
+#check @serreInterval_degree_zero_ext
+#print axioms serreInterval_degree_zero_ext
+#check @serreInterval_degree_neg_one_ext
+#print axioms serreInterval_degree_neg_one_ext
+#check @serreIntervalContraction_edge
+#print axioms serreIntervalContraction_edge
+#check @serreIntervalMax_zero_apply
+#print axioms serreIntervalMax_zero_apply
+#check @serreIntervalMax_one_apply
+#print axioms serreIntervalMax_one_apply
+#check @serreIntervalMax_edge_apply
+#print axioms serreIntervalMax_edge_apply
+#check @serreIntervalMax_edge_zero
+#print axioms serreIntervalMax_edge_zero
+#check @serreIntervalMax_edge_one
+#print axioms serreIntervalMax_edge_one
+#check @serreIntervalMax_edge_edge
+#print axioms serreIntervalMax_edge_edge
+#check @serreIntervalMax_zero_right
+#print axioms serreIntervalMax_zero_right
+#check @serreIntervalMax_one_right
+#print axioms serreIntervalMax_one_right
+#check @serreIntervalGeneratorDegree
+#print axioms serreIntervalGeneratorDegree
+#check @serreIntervalGenerator
+#print axioms serreIntervalGenerator
+#check @serreInterval_degree_hom_ext
+#print axioms serreInterval_degree_hom_ext
+#check @serreIntervalTensor_hom_ext
+#print axioms serreIntervalTensor_hom_ext
+#check @serreIntervalMax_symmetric
+#print axioms serreIntervalMax_symmetric
+#check @serreIntervalMax_augmentation
+#print axioms serreIntervalMax_augmentation
+#check @perfectDGExtension_quasiEquivalence_of_quasiEquivalence
+#print axioms perfectDGExtension_quasiEquivalence_of_quasiEquivalence
+#check @dgKMap_piIsomorphism_of_quasiEquivalence
+#print axioms dgKMap_piIsomorphism_of_quasiEquivalence
+#check @dgKQuasiEquivalenceGroupEquiv
+#print axioms dgKQuasiEquivalenceGroupEquiv
+#check @dgKQuasiEquivalenceGroupEquiv_apply
+#print axioms dgKQuasiEquivalenceGroupEquiv_apply
 end SerrePositivity.KST.SConstruction
