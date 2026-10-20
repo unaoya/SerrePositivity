@@ -1464,3 +1464,19 @@ public import SerrePositivity.InfinityCategories.F1.EssentiallySmallStraightenin
 public import SerrePositivity.InfinityCategories.F1.EssentiallySmallCartesianExtension
 
 public import SerrePositivity.InfinityCategories.F1.EssentiallySmallRepresentationComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFunctor
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeFunctor
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeComposition
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeUnitHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFibrationInfinity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFibrationMappingSpaces
+
+public import SerrePositivity.InfinityCategories.F1.QCatDiagramCoherentNerve
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportDiagram

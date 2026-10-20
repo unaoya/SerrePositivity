@@ -6,7 +6,11 @@
 
 ### 現在地
 
-- F1a〜F1c の fibration・transport・coherent nerve の基盤は提供済み。F1d は未完了。
+- F1a〜F1c の基盤は提供済み。F1d の Cat∞ 値 cocartesian 分類は未完了。
+- 元の cocartesian 辺を保つ相対関手 ∞ 圏の core を Hom とする `CocartesianFibrationInfinity B`
+  を構成済み。通常の射との対応・豊穣単位・合成・全 Hom の Kan 性と右写像空間比較も証明済み。
+- 通常圏の nerve 上では、F1B の一般の cocartesian section の strict transport を QCat 値に束ね、
+  同じ Cat∞ 値の coherent 図式を構成済み。各頂点の値は元の fiber と恒等射評価で同値。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
   weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
@@ -15,9 +19,7 @@
 - **F1-1c2 の空間値版は完了**：一般の小さい quasicategory B 上の構成済みの同じ S は
   `leftStraighteningInfinityMap_isFullyFaithful` により充満忠実。既存の本質的全射性と F0 を合わせ、
   `leftStraighteningInfinityMap_isQCatEquivalence` で分類同値を閉じた。単位・余単位と三角恒等式は任意。
-- 元の coherent unstraightening 対の初頂点引き戻しの実際の相対 Hom 作用を、c1 の自然性から同値とし、
-  底上の比較の前後合成と厳密な自然性で任意の小さい left fibration 対へ移した。
-  引き戻し作用を同じ始域制限へ移す式と宇宙同型で、小さい宇宙の元の作用へ同値性を反映した。
+- 初頂点引き戻しの実際の全相対 Hom 作用を、c1 の自然性・底上の比較・宇宙同型で同値とした。
 - 底の仮定は quasicategory 性のみ。任意の単体集合 B の S の同値性は今回主張しない。
 - **F1-2 は完了**：前層 ∞ 圏、制限・評価・定値前層、Yoneda の構成・充満忠実性を証明済み。
   元の全相対 Hom を Hom とする `RightFibrationInfinity B` と `PresheafInfinity B` の実際の分類同値
@@ -25,12 +27,10 @@
   その F での値は既存の `smallRightUnstraighteningProjection F` と頂点の同型で一致する。
 - twisted arrow の両端射影は実際の left fibration。固定領域の inner anodyne 性から全ホーンを充填済み。
   この同じ射影の分類図式を curry して `yonedaInfinityMap` を構成し、対象前層 rep(y) も同定済み。
-- coslice の両端固定の主比較は、行ごとの比較と二重単体図式の対角局所化により同値。
-  元の表現可能射影と rep(y) の小さい right unstraightening の間の、底上の実際の同値を構成済み。
+- 表現可能射影と rep(y) の right unstraightening は、両端固定の coslice 比較で底上の同値を構成済み。
 - 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
   を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
-- Tw の恒等点は両固定方向で一致し、同じ評価点を全空間・宇宙移送・縮小後まで照合済み。
-  恒等点は始対象で、直接評価は自明 Kan fibration。全パラメーターの評価と輸送の比較も証明済み。
+- Tw の同じ恒等点と評価を両固定方向・宇宙移送後まで照合し、全パラメーターの輸送と比較済み。
 - `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
   実際の区間 Hom 作用と標準 pinched Hom 作用の同値性を、同じ恒等点評価と輸送から回収した。
   空間値の essentially small Kan fiber への相対延長も閉じた。Cat∞ 値版が残り、F1 全体は未完了。
@@ -61,8 +61,8 @@
 - `representableRightUnstraighteningComparison_isQCatEquivalence`
 - `yonedaPresheafEvaluation_isQCatEquivalence`、`representablePresheafValueEquivalence`
 - `yonedaInfinityMap_isFullyFaithful`、`yonedaInfinityMap_pinchedHomMap_isQCatEquivalence`
-- `twistedArrowSourceIdentity_isInitialVertex`、`twistedArrowIdentityHomTransport_isQCatEquivalence`
-- `representableUnstraighteningEvaluation_eq_identityEvaluation`
+- `CocartesianFibrationInfinity`、`cocartesianFibrationInfinityMappingEquivalence`
+- `cocartesianStrictTransportCoherentDiagram`、`cocartesianStrictTransportCoherentDiagramFiberEquivalence`
 
 ### 依存と提供
 
@@ -75,11 +75,11 @@
 ### 未コミット
 
 - N が読む指定2ファイルと集約は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd` に保存済み。
-- 相対引き戻しの自然性と比較による反映は `843708965` に保存済み。
 - 一般の小さい quasicategory 上の空間値分類同値は `e987f35af` に保存済み。
 - right fibration と前層の分類は `56dd08ad4` に保存済み。
-- essentially small Kan fiber の空間値相対延長の所有10モジュール、集約・監査・本計画が保存単位。
-  F1 全体ビルド4462 jobs、公理監査10118宣言が成功（標準3公理のみ）。
+- essentially small Kan fiber の空間値相対延長は `bf56a0416` に保存済み。
+- cocartesian fibration の ∞ 圏と通常 nerve 上の Cat∞ 値図式の所有8モジュール・集約・監査が保存単位。
+  F1 全体ビルド4474 jobs、公理監査10206宣言が成功（標準3公理のみ）。
 
 ### 既知の問題
 
@@ -92,11 +92,12 @@
 ### 次の一手
 
 空間値の F1-1c2、essentially small Kan fiber の相対延長、F1-2 の分類は閉じた。
-次は Cat∞ 値の cocartesian 分類。`QCatSimplicial.lean` の Cat∞ と、既存の cocartesian な辺・
-相対 transport の道具を読み、cocartesian 射を保つ底上の関手の相対 Hom を構成する。
-一般の fiber は Kan ではないため、その Hom の全体をそのまま豊穣 Hom に使わず可逆二胞体を取る。
-対象付き quasicategory の普遍的 cocartesian fibration も必要。Cat∞ の通常の coslice は
-left fibration しか与えず、分類の代用にはしない。Thm 5.6.0.2 と相対普遍性の一般形を進める。
+Cat∞ 値版は `CocartesianFibrationInfinity` と通常 nerve 上の strict transport の coherent 実現まで。
+次は元の cocartesian 関手の全相対 Hom を、F1B の `kanCocartesianSections` へ後合成で作用させ、
+section の評価を QCat 値の豊穣関手へ束ねる。core を取る前の相対合成から作用を制限すれば、
+単位・合成と全パラメーターの自然性を同じ射の等式として回収できる。
+その後、対象付き quasicategory の普遍的 cocartesian fibration と再構成比較が必要。
+Cat∞ の通常の coslice は left fibration しか与えず、一般の分類の代用にはしない。
 通常圏 nerve 上の古典的な回収も残る。明示的な三角恒等式は任意のまま。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
