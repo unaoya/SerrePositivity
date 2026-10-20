@@ -785,3 +785,17 @@ public import SerrePositivity.EInfinity.Hammock.ZigzagAppendMorphisms
 public import SerrePositivity.EInfinity.Hammock.ZigzagAppendObjects
 public import SerrePositivity.EInfinity.Hammock.ZigzagAppendVertical
 public import SerrePositivity.EInfinity.Hammock.ZigzagAppendVertices
+public import SerrePositivity.EInfinity.BarrattEccles.HammockCompositionPairing
+public import SerrePositivity.EInfinity.Hammock.CompositionPairing
+public import SerrePositivity.EInfinity.Hammock.DirectionArrowComparison
+public import SerrePositivity.EInfinity.Hammock.DirectionArrowReflection
+public import SerrePositivity.EInfinity.Hammock.GraphCompositionNaturality
+public import SerrePositivity.EInfinity.Hammock.SegmentBlockComparison
+public import SerrePositivity.EInfinity.Hammock.WordAppendBlocks
+public import SerrePositivity.EInfinity.Hammock.WordAppendIntervals
+public import SerrePositivity.EInfinity.Hammock.WordBlock
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendDirections
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendNaturality
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendNaturalityArrows
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendNaturalityVertices
+public import SerrePositivity.EInfinity.Hammock.ZigzagAppendSegments

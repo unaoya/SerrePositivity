@@ -1070,8 +1070,18 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `BarrattEccles.algebraHammockGraphComposition` は任意の可換環上で同じ元の全頂点・全縦射を保持。
 `emptyObj`・`graphUnit`・`colimitUnit` は元の空語から固定語の graph と全語の余極限への単位射。
 `algebraHammockGraphUnit`・`algebraHammockColimitUnit` は同じ実際の E 代数への代入。
-連結の語の遷移への自然性、余極限への合成の降下と全結合・単位則、proper 性、
-縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.Block` は一定の列番号差の連続部分、`Word.leftBlock`・`rightBlock` は実際の連結の両側。
+`Segment.chain_block`・`map_block_heq` の連続部分比較を実際に代入した
+`ZigzagAppend.map_left_heq`・`map_right_heq` は元の左右の全区間合成を回収する。
+`vertex_naturality`・`arrow_naturality`・`app_naturality` は全頂点・全列・全縦射を照合。
+`ZigzagAppend.functor_naturality` は元の連結関手と全語の遷移の厳密な自然性。
+`graphComposition_naturality` は全語の graph 図式に対する元の単体的合成の自然性。
+`pairDiagram`・`compositionPairingCocone`・`colimitCompositionPairing_fac` は全語の対の
+積図式と、同じ合成射に整合する余錐・その余極限からの比較・元の各成分の回収。
+`BarrattEccles.algebraHammockGraphComposition_naturality` と `algebraHammockCompositionCocone`・
+`algebraHammockColimitCompositionPairing_fac` は同じ任意の可換環上の実際の余錐への代入。
+対の図式の余極限と二つの余極限の積の同定、余極限上の合成と全結合・単位則、
+proper 性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
