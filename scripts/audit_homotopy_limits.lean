@@ -8962,3 +8962,108 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRightInverseNativeHomSquare
 #print axioms specifiedCoconeRightInverseNativeHomSquare
+
+#check @pointRestrictionFullEdgeFamily_fixed
+#print axioms pointRestrictionFullEdgeFamily_fixed
+
+#check @pointRestrictionInitialHomFamily
+#print axioms pointRestrictionInitialHomFamily
+
+#check @pointRestrictionInitialHomFamily_ι
+#print axioms pointRestrictionInitialHomFamily_ι
+
+#check @pointRestrictionInitialHomFamily_evaluation
+#print axioms pointRestrictionInitialHomFamily_evaluation
+
+#check @pointRestrictionInitialHomFamily_projection
+#print axioms pointRestrictionInitialHomFamily_projection
+
+#check @pointRestrictionFullHomCylinderData
+#print axioms pointRestrictionFullHomCylinderData
+
+#check @pointRestrictionFullHomCylinder
+#print axioms pointRestrictionFullHomCylinder
+
+#check @pointRestrictionFullHomCylinder_projection
+#print axioms pointRestrictionFullHomCylinder_projection
+
+#check @pointRestrictionFullHomCylinderData_evaluation
+#print axioms pointRestrictionFullHomCylinderData_evaluation
+
+#check @specifiedCoconeLeftBranchPrecomposition_eq
+#print axioms specifiedCoconeLeftBranchPrecomposition_eq
+
+#check @specifiedCoconeLeftBranchInitialHomFamily
+#print axioms specifiedCoconeLeftBranchInitialHomFamily
+
+#check @specifiedCoconeLeftBranchInitialHomFamily_ι
+#print axioms specifiedCoconeLeftBranchInitialHomFamily_ι
+
+#check @specifiedCoconeLeftBranchInitialHomFamily_evaluation
+#print axioms specifiedCoconeLeftBranchInitialHomFamily_evaluation
+
+#check @specifiedCoconeLeftBranchInitialHomFamily_projection
+#print axioms specifiedCoconeLeftBranchInitialHomFamily_projection
+
+#check @specifiedCoconeLeftBranchHomCylinderData
+#print axioms specifiedCoconeLeftBranchHomCylinderData
+
+#check @specifiedCoconeLeftBranchHomotopy
+#print axioms specifiedCoconeLeftBranchHomotopy
+
+#check @specifiedCoconeLeftBranchHomotopy_projection
+#print axioms specifiedCoconeLeftBranchHomotopy_projection
+
+#check @specifiedCoconeRightBranchPrecomposition_eq
+#print axioms specifiedCoconeRightBranchPrecomposition_eq
+
+#check @specifiedCoconeRightBranchInitialHomFamily
+#print axioms specifiedCoconeRightBranchInitialHomFamily
+
+#check @specifiedCoconeRightBranchInitialHomFamily_ι
+#print axioms specifiedCoconeRightBranchInitialHomFamily_ι
+
+#check @specifiedCoconeRightBranchInitialHomFamily_evaluation
+#print axioms specifiedCoconeRightBranchInitialHomFamily_evaluation
+
+#check @specifiedCoconeRightBranchInitialHomFamily_projection
+#print axioms specifiedCoconeRightBranchInitialHomFamily_projection
+
+#check @specifiedCoconeRightBranchHomCylinderData
+#print axioms specifiedCoconeRightBranchHomCylinderData
+
+#check @specifiedCoconeRightBranchHomotopy
+#print axioms specifiedCoconeRightBranchHomotopy
+
+#check @specifiedCoconeRightBranchHomotopy_projection
+#print axioms specifiedCoconeRightBranchHomotopy_projection
+
+#check @initialDiagramHomFamily_postcomp
+#print axioms initialDiagramHomFamily_postcomp
+
+#check @specifiedCoconeLeftRootedTriangle_middle
+#print axioms specifiedCoconeLeftRootedTriangle_middle
+
+#check @specifiedCoconeLeftBranchCommonInitialFamily
+#print axioms specifiedCoconeLeftBranchCommonInitialFamily
+
+#check @specifiedCoconeLeftRootedHomFamily_terminal_uncurry
+#print axioms specifiedCoconeLeftRootedHomFamily_terminal_uncurry
+
+#check @specifiedCoconeLeftBranchCommonInitialFamily_triangle
+#print axioms specifiedCoconeLeftBranchCommonInitialFamily_triangle
+
+#check @specifiedCoconeRootedRightTetrahedron_branchEdge
+#print axioms specifiedCoconeRootedRightTetrahedron_branchEdge
+
+#check @specifiedCoconeRootedRightTetrahedron_branchSource
+#print axioms specifiedCoconeRootedRightTetrahedron_branchSource
+
+#check @specifiedCoconeRightBranchCommonInitialFamily
+#print axioms specifiedCoconeRightBranchCommonInitialFamily
+
+#check @specifiedCoconeRootedHomTetrahedronFamily_branch_uncurry
+#print axioms specifiedCoconeRootedHomTetrahedronFamily_branch_uncurry
+
+#check @specifiedCoconeRightBranchCommonInitialFamily_tetrahedron
+#print axioms specifiedCoconeRightBranchCommonInitialFamily_tetrahedron
