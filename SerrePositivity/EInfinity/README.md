@@ -782,7 +782,16 @@ augmentation は元の代数の射にも自然。Reedy 自明 fibration であ�
 `carrierFramedLimitHomPiZeroEquiv` はその π₀ と、元の任意の複体から
 `framedLimitFunctor` の実際の底への局所化 Hom の同値。
 `carrierFramedLimitHomPiZeroEquiv_mapClass` は実際の複体射から作った類で元の局所化像を回収する。
-底の定値図式からの局所化 Hom との比較と、底の一般右導来極限の普遍性への接続が残る。
+`CarrierDiagram.projectiveModelCategory` は任意の小圏上の複体図式の具体的な射影モデル。
+I・J の自由図式像の小対象性は sphere・零複体の有限表示性から証明し、
+J-cell の非循環性は評価の余極限保存で証明する。局所表示可能性の追加仮定は不要。
+`CarrierDiagram.constantDiagramReplacement` と `constantDiagramFrame` は
+元の複体に関手的な定値図式の cofibrant 置換と全次数の frame。
+`CarrierDiagram.constantDiagramSourcePiZeroEquiv` はその重み付き錐の π₀ と
+元の定値図式からの局所化 Hom の同値で、終域図式の射に自然。
+`CarrierDiagram.constantDiagramSourcePiZeroEquiv_class` は元の図式射の局所化像を回収する。
+`Diagram.forget_isRightQuillen` は具体的な両図式モデル間の忘却の右 Quillen 性。
+底の両錐の混合 Hom 比較と、底の一般右導来極限の普遍性への接続が残る。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
 `mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。

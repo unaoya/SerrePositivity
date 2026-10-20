@@ -1963,6 +1963,52 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitMapClass,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv_mapClass,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.free,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.evaluation,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.adjunction,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.generators,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.freeFamily_smallObjectArgument,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.generatingCofibrations_smallObjectArgument,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.generatingTrivialCofibrations_smallObjectArgument,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.freeCells_acyclic,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.projectiveModelCategory,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.weakEquivalence_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.fibration_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.cofibrantlyGenerated,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.isFibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.complex_isFibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramReplacement,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramReplacement_isCofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramComparison_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramComparison_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramReplacement_map_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramHomEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramLocalizedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.trivialFibration_app,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.fibration_app,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrame,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourceHom,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameHomIso,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameZeroIso,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrame_reedyCofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrame_homotopicallyConstant,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourceHom_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameComparison_zero,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameComparison_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameZeroIso_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramFrameAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourcePiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourcePiZeroEquiv_mk,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourcePiZeroEquiv_target,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourceClass,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourcePiZeroEquiv_class,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramSourceClass_eq_coneClass,
+      `SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram.constantDiagramHomEquiv_comparison_app,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.carrierModelCategory_weakEquivalences,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.forget_isRightQuillen,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5358,3 +5404,45 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (Y : Complex ℤ) :
   refine ⟨e.symm x, e.apply_symm_apply _, ?_⟩
   intro z hz
   exact (e.symm_apply_apply z).symm.trans (congrArg e.symm hz)
+
+-- 底の任意の複体図式も実際の射影モデルで fibrant。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ Complex ℤ) :
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    IsFibrant F := CarrierDiagram.isFibrant ℤ ℕ F
+
+-- 元の定値複体図式の射は、錐の類の比較で同じ局所化像になる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity.BarrattEccles in
+example {Y : Complex ℤ} {F : ℕ ⥤ Complex ℤ} (f : (Functor.const ℕ).obj Y ⟶ F) :
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    let QD := (weakEquivalences (ℕ ⥤ Complex ℤ)).Q
+    CarrierDiagram.constantDiagramSourcePiZeroEquiv ℤ ℕ Y F
+        (CarrierDiagram.constantDiagramSourceClass ℤ ℕ f) = QD.map f := by
+  exact CarrierDiagram.constantDiagramSourcePiZeroEquiv_class ℤ ℕ f
+
+-- 元の図式射による後合成は同じ局所化射の合成と一致する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity.BarrattEccles in
+example {Y : Complex ℤ} {F G : ℕ ⥤ Complex ℤ}
+    (f : (Functor.const ℕ).obj Y ⟶ F) (g : F ⟶ G) :
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    let QD := (weakEquivalences (ℕ ⥤ Complex ℤ)).Q
+    CarrierDiagram.constantDiagramSourcePiZeroEquiv ℤ ℕ Y G
+        (SSet.mapπ₀ ((CarrierDiagram.constantDiagramSourceHom ℤ ℕ Y).map g)
+          (CarrierDiagram.constantDiagramSourceClass ℤ ℕ f)) = QD.map (f ≫ g) := by
+  let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+  let QD := (weakEquivalences (ℕ ⥤ Complex ℤ)).Q
+  dsimp only
+  rw [CarrierDiagram.constantDiagramSourcePiZeroEquiv_target,
+    CarrierDiagram.constantDiagramSourcePiZeroEquiv_class]
+  exact (QD.map_comp f g).symm
+
+-- 図式忘却の右 Quillen 性は、両図式モデルの存在を仮定せず使用できる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+example :
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    SerrePositivity.Quillen.IsRightQuillen (Diagram.forget ℤ ℕ) :=
+  Diagram.forget_isRightQuillen ℤ ℕ
