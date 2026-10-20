@@ -28,7 +28,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   終対象を持つ添字では、重みの自然な収縮を全脚で貼り、実際のホモトピー逆と標準比較の弱同値性を証明。
   coend の重み・添字変更と合成則、Over.map に沿う coend 図式と自然な augmentation を構成。
   その余極限から元の coend への標準比較と augmentation の可換性、各段の augmentation の余極限の弱同値性を証明。
-  三集約同時ビルド 6930 jobs、F2 公理監査 1545 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
+  重みの鎖を終点の Over 圏へ持ち上げ、各次数の両逆からこの標準比較の表示同型を証明。
+  任意の値の通常の filtered 図式で、元の BK augmentation の弱同値性を証明。
+  三集約同時ビルド 6944 jobs、F2 公理監査 1607 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -51,6 +53,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.filteredColimitMap_trivialKanFibration` / `F2.filteredColimitMap_isWeakHomotopyEquivalence`
 - `F2.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise` / `F2.bousfieldKanReindex_comp`
 - `F2.overBousfieldKanDiagram` / `F2.overBousfieldKanColimitComparison_augmentation`
+- `F2.overBousfieldKanColimitIso` / `F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered`
 - `F2.bousfieldKanAugmentation` / `F2.bousfieldKanAugmentation_lifts_finite`
 - `F2.terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence`
 - `F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_terminal`
@@ -82,16 +85,16 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - 一般の coherent な図式の余極限と、通常の小圏による strict 図式の余極限を区別する。
 - 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
   一般の弱可縮性と正則 κ の対角関手の判定は証明済み。coherent な filtered 余極限の交換は残る。
-  augmentation の一般 filtered 添字での弱同値性は未完了。有限形状の持ち上げだけで弱同値とは数えない。
-  終対象を持つ場合と Over 図式の augmentation の余極限の弱同値性は証明済み。比較射の同型性は未証明。
-  通常の colimit の native 余極限性はまだ未証明。
+  通常の filtered 図式の augmentation の弱同値性は、Over 図式の表示同型を介して証明済み。
+  N の native な余極限は反転重みの coend の Kan 置換を使うため、この模型との比較が必要。
+  通常の colimit の native 余極限性と一般 coherent filtered 図式での交換はまだ未証明。
   N の一般 coherent 余極限への接続は未完了の部分があり、無条件の存在・γ4 を一括仮定しない。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：overBousfieldKanColimitComparison の同型性を証明する。
-  各次数の重みの鎖をその終点の Over 圏へ持ち上げ、余極限の脚による逆を作り、元の augmentation へ接続する。
+- F2N-1：反転重みの augmentation を通常の filtered colimit と比較し、N の native な余極限へ接続する。
+  その後、一般 coherent filtered 図式の模型の比較と有限極限との交換へ進む。
 
 ## 0. 目標と範囲
 
@@ -144,7 +147,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 
 - 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
   F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
-  通常の filtered 図式の保存性に加え、BK augmentation と終対象を持つ添字でのホモトピー逆・弱同値性を証明。
+  通常の filtered 図式の保存性に加え、Over 図式の表示同型と BK augmentation の弱同値性を証明。
   一般の filtered 余極限、有限極限との交換、Ind の構成は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
@@ -155,7 +158,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：coend の添字変更と Over.map による図式を構成し、一般 filtered augmentation の弱同値性へ進む。
+- 次の一手：反転重みの filtered augmentation を比較し、N の native な余極限と通常の colimit を接続する。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
