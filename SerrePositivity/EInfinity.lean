@@ -685,3 +685,10 @@ public import SerrePositivity.EInfinity.FrameHom.FrameLiftSimplices
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 public import SerrePositivity.EInfinity.FrameHom.ResolutionAsphericity
 public import SerrePositivity.EInfinity.FrameHom.ResolutionCommaContraction
+public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionCofinality
+public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.EInfinity.FrameHom.AsSmallComma
+public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
+public import SerrePositivity.EInfinity.FrameHom.NerveQuillenA
+public import SerrePositivity.EInfinity.FrameHom.ResolutionCofinality
+public import SerrePositivity.EInfinity.FrameHom.SmallCommaContraction

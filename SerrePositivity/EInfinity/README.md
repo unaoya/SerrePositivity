@@ -926,6 +926,16 @@ anodyne 反転後の可逆性を証明する。標準単体の収縮、境界の
 `BarrattEccles.mappingResolutionCommaTerminal_localized_isIso` は任意の可換環上の
 同じ Map^h の分解への代入。単体集合モデルや元の代数の cofibrancy の入力は不要。
 この分解側の asphericity から三本矢の右射全体への余終性の適用は後続。
+`FrameHom.AnodyneWeakDetection` は元の anodyne 局所化での反転性を、全 Kan 標的への
+元の内部 Hom の π₀ の反変関手により F1b の弱同値・弱可縮性へ移す。
+`NerveAsSmall.iso` と `AsSmallComma.equivalence` は同じ元の射列と可換三角形の宇宙比較。
+`NerveQuillenA.nerveMap_isLeftCofinal` は F1b の通常の comma と native な slice の
+実同型・Quillen A を再利用する。
+`smallResolutionOverFunctor_isLeftCofinal` と
+`BarrattEccles.mappingSmallResolutionOverFunctor_isLeftCofinal` は同じ分解図式の nerve の
+left cofinality を与え、各 `_isWeakHomotopyEquivalence` は同じ射の弱同値を与える。
+対象と Hom の持ち上げの前後で、元の関手の全作用は `AsSmallComma.smallFunctor_up` と可換。
+三本矢の全図式への余終性の適用と右射そのものの反転性は未証明。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。

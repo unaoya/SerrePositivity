@@ -1,0 +1,53 @@
+module
+
+public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
+
+/-!
+# 通常の comma の元の可縮性から nerve の余終性への接続
+
+概要：元の comma 圏の終射の反転性から nerve の left cofinality を得る。
+方針：F1b の comma と slice の実同型、弱可縮性の判定、Quillen A を使う。
+規約：同じ宇宙の小圏で適用し、単体集合のモデル構造を要求しない。
+使われ方：実際の分解の asphericity を右比較の余終性へ移す。
+-/
+
+@[expose] public section
+
+noncomputable section
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+universe u
+
+namespace SerrePositivity.EInfinity.FrameHom.NerveQuillenA
+
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
+open SerrePositivity.SimplicialModel
+open scoped Simplicial
+
+variable {C D : Type u} [Category.{u} C] [Category.{u} D] (F : C ⥤ D)
+
+/-- 概要：全 comma の元の終射の反転性から nerve の left cofinality（Quillen A）。
+方針：元の comma の可縮性を native な slice の引き戻しへ実同型で移す。
+規約：標的の quasicategory 性は通常の nerve の実際の instance を使う。
+使われ方：分解図式の全対象での余終性。 -/
+lemma nerveMap_isLeftCofinal
+    (h : ∀ d : D, IsIso (AnodyneHomotopy.anodyneQ.map
+      (SSet.stdSimplex.isTerminalObj₀.from (nerve (CostructuredArrow F d))))) :
+    IsLeftCofinal (nerveMap F) := by
+  apply isLeftCofinal_of_weaklyContractible_slices
+  intro b
+  let d := b.obj 0
+  have hb : nerveVertex d = b := ComposableArrows.ext₀ rfl
+  change IsWeaklyContractible (leftKanShape (nerveMap F) b)
+  rw [← hb]
+  let e := kanNerveLeftKanShapeIso F d
+  exact (AnodyneWeakDetection.isWeakHomotopyEquivalence e.hom
+    (inferInstanceAs (IsIso (AnodyneHomotopy.anodyneQ.map e.hom)))).weaklyContractible_iff.mp
+      (AnodyneWeakDetection.isWeaklyContractible _ (h d))
+
+end SerrePositivity.EInfinity.FrameHom.NerveQuillenA

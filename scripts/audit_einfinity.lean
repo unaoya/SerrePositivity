@@ -2207,6 +2207,29 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor_isLeftCofinal,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents,
+      `SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents_inverts,
+      `SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeaklyContractible,
+      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.smallFunctor,
+      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.smallFunctor_up,
+      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.comparison,
+      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.comparison_faithful,
+      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.comparison_full,
+      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.comparison_essSurj,
+      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.equivalence,
+      `SerrePositivity.EInfinity.FrameHom.NerveAsSmall.up_down,
+      `SerrePositivity.EInfinity.FrameHom.NerveAsSmall.down_up,
+      `SerrePositivity.EInfinity.FrameHom.NerveAsSmall.iso,
+      `SerrePositivity.EInfinity.FrameHom.NerveAsSmall.terminal_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal,
+      `SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor,
+      `SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor_isLeftCofinal,
+      `SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.terminal_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.algebraTrivialFibrationOver,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionOverFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionCommaTerminal_localized_isIso,
@@ -6305,3 +6328,19 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       (SSet.stdSimplex.isTerminalObj₀.from
         (nerve (CostructuredArrow (mappingResolutionOverFunctor A X) t)))) :=
   mappingResolutionCommaTerminal_localized_isIso A X t
+
+-- 同じ写像空間に使う分解の nerve の余終性には単体集合モデルの入力が不要。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
+  SerrePositivity.InfinityCategories in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X : (BarrattEccles.operad A).Algebra) :
+    IsLeftCofinal (nerveMap (mappingSmallResolutionOverFunctor A X)) :=
+  mappingSmallResolutionOverFunctor_isLeftCofinal A X
+
+-- 分解の元の比較射の弱同値は、元の両端の Kan 性を要求しない。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
+  SerrePositivity.InfinityCategories in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X : (BarrattEccles.operad A).Algebra) :
+    IsWeakHomotopyEquivalence (nerveMap (mappingSmallResolutionOverFunctor A X)) :=
+  mappingSmallResolutionOverFunctor_isWeakHomotopyEquivalence A X
