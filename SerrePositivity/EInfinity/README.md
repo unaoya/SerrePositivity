@@ -1020,7 +1020,18 @@ nerve の不変性を移す。`SmallNerve.map_localized_isIso` で宇宙を揃�
 `mappingSpaceIndexAugmentation_isWeakHomotopyEquivalence` は同じ左射の弱同値性。
 `mappingSpaceSpecialHammockComparisonIso` は同じ二射で定める Map^h の宇宙拡大と三本矢の
 anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の右射であることを照合。
-特殊な三本矢から hammock 局所化と既存 DK Hom への高次比較は後続。
+`FrameHom.WeakThreeArrow` は元の弱同値の両脚を持つ三本矢の圏で、全縦射の弱同値性も
+元の両脚と可換性から導く。`ArrowSpan.inclusion` は脚の類を広げる充満忠実な包含。
+`WeakThreeArrow.LeftReplacement.functor` は左脚の関手的分解と中間射の pushout、
+`RightReplacement.functor` は右脚の関手的分解と pullback により元の三本矢を置換する。
+同じ `unit`・`counit` を `FullyFaithfulNerveRetraction` で包含元にも戻し、
+`WeakThreeArrow.inclusion_localized_isIso` と `_isWeakHomotopyEquivalence` により
+特殊な三本矢の元の包含の反転性・弱同値性を証明。始域の cofibrancy は要求しない。
+`BarrattEccles.algebraSpecialThreeArrowInclusionNerveMap_localized_isIso` は元の実際の
+二つの関手的分解への代入。`mappingSpaceWeakThreeArrowNerveMap` は元の同じ共通始域からの
+比較で、`_localized_isIso`・`_isWeakHomotopyEquivalence` を証明。
+`mappingSpaceWeakThreeArrowComparisonIso` と `_fac` は同じ元の二射による局所化後の同型。
+一般の三本矢から hammock 局所化と既存 DK Hom への高次比較は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。

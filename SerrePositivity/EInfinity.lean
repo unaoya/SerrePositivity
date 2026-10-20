@@ -738,3 +738,10 @@ public import SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSmallSpanRecovery
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpanNerveInversion
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpecialHammockComparison
+public import SerrePositivity.EInfinity.FrameHom.ArrowSpanInclusion
+public import SerrePositivity.EInfinity.FrameHom.WeakThreeArrow
+public import SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction
+public import SerrePositivity.EInfinity.FrameHom.ThreeArrowLeftReplacement
+public import SerrePositivity.EInfinity.FrameHom.ThreeArrowRightReplacement
+public import SerrePositivity.EInfinity.FrameHom.SpecialThreeArrowComparison
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceWeakThreeArrow

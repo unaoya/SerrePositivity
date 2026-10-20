@@ -2208,6 +2208,81 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.inclusion,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow,
+      `SerrePositivity.EInfinity.FrameHom.LeftTrivialThreeArrow,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.specialInclusion,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.leftInclusion,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.left_weakEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.right_weakEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.liftUnit,
+      `SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.liftCounit,
+      `SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_unit,
+      `SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_counit,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.arrow,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.arrowMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.arrowMap_id,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.arrowMap_comp,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.intermediate,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.first,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.last,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.intermediateMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.fac,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.map_first,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.map_last,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.first_trivialCofibration,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.right,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.inl,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.inr,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.inr_trivialCofibration,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.rightMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.inl_rightMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.inr_rightMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.rightMap_id,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.rightMap_comp,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.obj,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.map,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.functor,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.unit,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.LeftReplacement.inclusion_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.arrow,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.arrowMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.arrowMap_id,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.arrowMap_comp,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.intermediate,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.first,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.last,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.intermediateMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.fac,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.map_first,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.map_last,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.last_trivialFibration,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.left,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.fst,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.snd,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.fst_trivialFibration,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.leftMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.leftMap_fst,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.leftMap_snd,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.leftMap_id,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.leftMap_comp,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.obj,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.map,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.functor,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.counit,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacement.inclusion_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.inclusion,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.inclusion_fac,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.inclusion_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.inclusion_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraWeakThreeArrow,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraSpecialThreeArrowInclusionNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraSpecialThreeArrowInclusionNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceWeakThreeArrowNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceWeakThreeArrowNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceWeakThreeArrowNerveMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceWeakThreeArrowComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceWeakThreeArrowComparisonIso_fac,
       `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.smallFunctor,
       `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.diagram,
       `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaDown,
@@ -6841,3 +6916,38 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
         (mappingSpaceSpecialHammockNerveMap A X Y) :=
   mappingSpaceSpecialHammockComparisonIso_fac A X Y
+
+-- 実際の二つの関手的分解を使い、任意の元の代数で三本矢の包含を反転する。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (algebraSpecialThreeArrowInclusionNerveMap A X Y)) :=
+  algebraSpecialThreeArrowInclusionNerveMap_localized_isIso A X Y
+
+-- 同じ元の Map^h の共通始域から一般の三本矢へ入れる射そのものも反転される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (mappingSpaceWeakThreeArrowNerveMap A X Y)) :=
+  mappingSpaceWeakThreeArrowNerveMap_localized_isIso A X Y
+
+-- 元の比較の弱同値性は三本矢の nerve の Kan 性を入力しない。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+      (mappingSpaceWeakThreeArrowNerveMap A X Y) :=
+  mappingSpaceWeakThreeArrowNerveMap_isWeakHomotopyEquivalence A X Y
+
+-- 元の左射の後の同型は、元の一般の三本矢への右比較を回収する。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+        (mappingSpaceIndexAugmentation A X Y) ≫
+        (mappingSpaceWeakThreeArrowComparisonIso A X Y).hom =
+      SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+        (mappingSpaceWeakThreeArrowNerveMap A X Y) :=
+  mappingSpaceWeakThreeArrowComparisonIso_fac A X Y
