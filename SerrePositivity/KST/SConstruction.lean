@@ -944,4 +944,12 @@ public import SerrePositivity.KST.SConstruction.TracedBFCompositionStageEvaluati
 public import SerrePositivity.KST.SConstruction.TracedBFCompositionStageCorrections
 public import SerrePositivity.KST.SConstruction.PointParameterMaps
 public import SerrePositivity.KST.SConstruction.TracedBFCompositionStageSpans
+public import SerrePositivity.KST.SConstruction.RelativeFaceTransportFromZero
+public import SerrePositivity.KST.SConstruction.RelativeTriangleTransportFromZero
+public import SerrePositivity.KST.SConstruction.TriangleEdgeTransportFromZero
+public import SerrePositivity.KST.SConstruction.FixedBoundaryTargetEdges
+public import SerrePositivity.KST.SConstruction.TriangleUpperFaceTransport
+public import SerrePositivity.KST.SConstruction.TracedBFCompositionCorrectedSpans
+public import SerrePositivity.KST.SConstruction.TriangleUpperEdgeData
+public import SerrePositivity.KST.SConstruction.TracedBFCompositionStageTriangles
 /-! # ∞-S• 構成と連結 K 理論 -/
