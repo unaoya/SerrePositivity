@@ -17611,4 +17611,51 @@ namespace SerrePositivity.KST.SConstruction
 #check comonoidAssociatorHom
 #print axioms comonoidAssociatorHom
 
+#check comonoidLeftUnitorHom
+#print axioms comonoidLeftUnitorHom
+#check serreInterval_degree_linear_ext
+#print axioms serreInterval_degree_linear_ext
+#check serreIntervalTriple_hom_ext
+#print axioms serreIntervalTriple_hom_ext
+#check serreIntervalMax_one_zero
+#print axioms serreIntervalMax_one_zero
+#check serreIntervalMax_one_one
+#print axioms serreIntervalMax_one_one
+#check serreIntervalMax_one_edge
+#print axioms serreIntervalMax_one_edge
+#check serreIntervalMax_assoc
+#print axioms serreIntervalMax_assoc
+#check serreIntervalMaxComonHom_left_unit
+#print axioms serreIntervalMaxComonHom_left_unit
+#check serreIntervalMaxComonHom_right_unit
+#print axioms serreIntervalMaxComonHom_right_unit
+#check serreIntervalMaxComonHom_assoc
+#print axioms serreIntervalMaxComonHom_assoc
+#check serreIntervalMaxMonObj
+#print axioms serreIntervalMaxMonObj
+#check serreIntervalMaxMonoid
+#print axioms serreIntervalMaxMonoid
+#check tensorRightMultiplication
+#print axioms tensorRightMultiplication
+#check tensorRightMultiplication_assoc
+#print axioms tensorRightMultiplication_assoc
+#check tensorRightMultiplication_right_unit
+#print axioms tensorRightMultiplication_right_unit
+#check tensorRightMultiplication_left_unit
+#print axioms tensorRightMultiplication_left_unit
+#check serreCubeConnection_zero_multiplication
+#print axioms serreCubeConnection_zero_multiplication
+#check serreCubeConnection_zero_assoc
+#print axioms serreCubeConnection_zero_assoc
+#check serreCubeFace_zero_connection_right
+#print axioms serreCubeFace_zero_connection_right
+#check serreCubeFace_zero_connection_left
+#print axioms serreCubeFace_zero_connection_left
+#check serreCubeConnection_assoc
+#print axioms serreCubeConnection_assoc
+#check serreCubeFace_connection_right
+#print axioms serreCubeFace_connection_right
+#check serreCubeFace_connection_left
+#print axioms serreCubeFace_connection_left
+
 end SerrePositivity.KST.SConstruction

@@ -1278,4 +1278,10 @@ public import SerrePositivity.KST.SConstruction.SerreCubeCoordinateLaws
 public import SerrePositivity.KST.SConstruction.SerreCubeCoordinateRetractions
 public import SerrePositivity.KST.SConstruction.ComonoidStructureMaps
 public import SerrePositivity.KST.SConstruction.SerreCubeCoordinateValues
+public import SerrePositivity.KST.SConstruction.SerreIntervalTripleExt
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxVertexValues
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxAssociativity
+public import SerrePositivity.KST.SConstruction.SerreIntervalMaxMonoid
+public import SerrePositivity.KST.SConstruction.TensorRightMultiplication
+public import SerrePositivity.KST.SConstruction.SerreCubeConnectionRelations
 /-! # ∞-S• 構成と連結 K 理論 -/

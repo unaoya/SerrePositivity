@@ -12,6 +12,15 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory
 variable {V : Type u} [Category.{v} V] [MonoidalCategory V] [BraidedCategory V]
 
+/-- 余モノイドの左単位同型の順射は、基底の同じ左単位射。 -/
+lemma comonoidLeftUnitorHom (M : Comon V) :
+    ((λ_ M).hom).hom = (λ_ M.X).hom := by
+  have h := Functor.Monoidal.map_leftUnitor (Comon.forget V) M
+  simp only [Comon.forget_δ, Comon.forget_η] at h
+  change ((λ_ M).hom).hom = 𝟙 (𝟙_ V ⊗ M.X) ≫
+    (𝟙 (𝟙_ V) ▷ M.X) ≫ (λ_ M.X).hom at h
+  simpa only [id_whiskerRight, Category.id_comp] using h
+
 /-- 余モノイドの右単位同型の順射は、基底の同じ右単位射。 -/
 lemma comonoidRightUnitorHom (M : Comon V) :
     ((ρ_ M).hom).hom = (ρ_ M.X).hom := by
