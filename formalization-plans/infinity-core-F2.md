@@ -39,8 +39,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   小さい全空間の内部 Hom への実際の比較も同値。N の全 Hom の余極限判定へ接続。
   実現の両端固定ホモトピーを元の変換へ戻し、native 全空間余錐の比較の像と元の単位の同型を構成。
   指定三角形上の比較の全族の合成則と単位の全左 Hom 比較の同値性を証明。
-  元の全 Hom 輸送の円柱・正方形・三角形を構成。第一辺の標準変換・第二辺の標準左 Hom・対角を同定。
-  三集約同時ビルド 7174 jobs、公理監査 2078 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  元の全 Hom の三角形の三辺を正規化し、対角から元の余錐族の変換への両端固定ホモトピーを構成。
+  元の全 Hom の標準比較と二つの比較の実際の相対合成を関手同型で比較し、小さい全空間の内部 Hom へ移送。
+  三集約同時ビルド 7182 jobs、公理監査 2134 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -59,7 +60,6 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.cosliceCoproduct_isPullback` / `F2.isRightCofinal_sliceUnderProjection_of_filtered`
 - `F2.laxCosliceDiagonalCommaIso` / `F2.weaklyContractible_diagonalStandardComma_iff`
 - `F2.isFilteredInfinity_iff_of_equivalence` / `F2.isKappaFiltered_iff_of_equivalence`
-- `F2.finiteInternalHom_preservesFilteredColimits` / `F2.piZero_eq_iff_exists_homotopy_at_stage`
 - `F2.overBousfieldKanDiagram` / `F2.overBousfieldKanColimitComparison_augmentation`
 - `F2.overBousfieldKanColimitIso` / `F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered`
 - `F2.reflectedBousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered`
@@ -74,7 +74,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coconeTransformationMap_prism` / `F2.coconeTransformationMap_isQCatEquivalence`
 - `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
 - `F2.unstraighteningMappingTriangleIso` / `F2.coherentTotalUnitHomComparison_homotopyEquivalence`
-- `F2.pointHomTransportCylinder_base` / `F2.coconePointHomTriangle_first_transformation`
+- `F2.coconeDiagonalTransformationHomotopy` / `F2.coherentCoconeCompositionIso`
 - `F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` / `F2.isKappaFiltered_iff_constantDiagram_rightCofinal`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
@@ -97,13 +97,13 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   通常の指定余錐の全脚・高次の整合性を保持した native な普遍性まで証明済み。
   任意の二射の元の cospan の native な極限との比較は証明済み。一般 coherent filtered 図式の交換は残る。
   全空間模型の余錐全体・頂点・単位との比較は構成済み。余錐空間の比較同値と元の単位との同型は証明済み。
-  圏内の辺による合成と全 Hom の族の整合性・余極限性は未証明。
+  全 Hom 比較と相対合成の関手同型は構成済み。相対合成の値の作用・単位前合成との整合と余極限性は未証明。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：区間の最大値で、三角形の対角と元の余錐族の変換の両端固定ホモトピーを作る。
-  第二辺を定値図式の変換へ正規化し、三角形の合成則と単位の全 Hom 同値から余極限性・有限極限交換へ進む。
+- F2N-1：coconePointHomRelativeComposite の定値 fiber 作用を、元の値の写像の全族の評価と比較。
+  coherentCoconeCompositionIso と単位の全 Hom 同値から native 余極限性を導き、有限極限交換へ進む。
 
 ## 0. 目標と範囲
 

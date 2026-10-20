@@ -773,3 +773,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle_first_transformation
 #check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle_second_standard
 #check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle_diagonal
+#check @SerrePositivity.InfinityCategories.F2.timeMaximumAlong
+#check @SerrePositivity.InfinityCategories.F2.coconeDiagonalDeformationParameters_left
+#check @SerrePositivity.InfinityCategories.F2.coconeDiagonalDeformationParameters_right
+#check @SerrePositivity.InfinityCategories.F2.coconeDiagonalPrism_triangle
+#check @SerrePositivity.InfinityCategories.F2.coconeDiagonalPrismHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coconeDiagonalTransformationHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle_diagonal_transformation
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransformation
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomTriangle_second_transformation
+#check @SerrePositivity.InfinityCategories.F2.coconePointHomNativeCompositionIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalRelativeComparison_factor
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeCompositionIso
