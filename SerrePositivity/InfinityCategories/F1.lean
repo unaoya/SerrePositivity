@@ -1246,3 +1246,5 @@ public import SerrePositivity.InfinityCategories.F1.CoherentConeTailExtension
 public import SerrePositivity.InfinityCategories.F1.WeightedKanLeftCutHead
 public import SerrePositivity.InfinityCategories.F1.WeightedKanLeftCutTailMaps
 public import SerrePositivity.InfinityCategories.F1.WeightedKanLeftCutCone
+public import SerrePositivity.InfinityCategories.F1.KanDiagramLeftHomCutNaturality
+public import SerrePositivity.InfinityCategories.F1.WeightedKanLeftCutHeadNaturality

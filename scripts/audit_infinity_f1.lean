@@ -5271,3 +5271,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.weightedKanLeftCutConeSimplex_tail
 #check @SerrePositivity.InfinityCategories.weightedKanLeftCutCosliceSimplex
 #check @SerrePositivity.InfinityCategories.weightedKanLeftCutCosliceSimplex_projection
+#check @SerrePositivity.InfinityCategories.kanDiagramLeftHomCutSimplex_naturality
+#check @SerrePositivity.InfinityCategories.kanDiagramLeftHomCutSimplex_obj_reindex
+#check @SerrePositivity.InfinityCategories.weightedKanLeftCutHead_reindex
