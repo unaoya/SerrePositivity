@@ -799,3 +799,7 @@ public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationSource
 public import SerrePositivity.KST.Spectra.RawSpectrumPreWhitehead
 public import SerrePositivity.KST.Spectra.SpectrumEvaluationParameterDetection
 public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationDetection
+public import SerrePositivity.KST.Spectra.TracedOriginalLoopModelMap
+public import SerrePositivity.KST.Spectra.TracedOriginalLoopRawInterval
+public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationSourceChoice
+public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationSourceCoordinates
