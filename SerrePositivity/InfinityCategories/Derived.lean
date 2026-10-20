@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeNaturality
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIso
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeFunctor
+public import SerrePositivity.InfinityCategories.Derived.DGSemifreeContravariantHomInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponents
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeTermSigns
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeTerms
