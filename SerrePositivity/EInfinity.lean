@@ -397,3 +397,14 @@ public import SerrePositivity.EInfinity.BarrattEccles.PullbackQuillen
 public import SerrePositivity.EInfinity.BarrattEccles.CospanReplacement
 public import SerrePositivity.EInfinity.BarrattEccles.DerivedPullback
 public import SerrePositivity.EInfinity.BarrattEccles.UnderlyingPullback
+public import SerrePositivity.EInfinity.Operad.InsertionCoefficient
+public import SerrePositivity.EInfinity.Operad.AlgebraRestriction
+public import SerrePositivity.EInfinity.Operad.MonoidPowers
+public import SerrePositivity.EInfinity.Operad.CommutativePowers
+public import SerrePositivity.EInfinity.Operad.MonoidInsertion
+public import SerrePositivity.EInfinity.Operad.MonoidInsertionAction
+public import SerrePositivity.EInfinity.Operad.MonoidMaps
+public import SerrePositivity.EInfinity.Operad.CommutativeAlgebra
+public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
+public import SerrePositivity.EInfinity.Operad.DiscreteCommutative
+public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra

@@ -659,7 +659,14 @@ nullary を含む TR の部分合成保存は完了。
 `homotopyPullbackDerivedIso` はこれが右導来引き戻しの値であることを任意の局所化で証明する。
 `homotopyPullbackCarrierIso` は忘却後を同じ置換の複体の引き戻しに同定する。
 `homotopyPullbackCarrierDerivedIso` は底でも実際に右導来引き戻しを計算することを保証する。
-次は一般図式の homotopy 極限、H⁰ の可換環構造と離散可換代数。
+`Operad.restrictAlgebra` は任意のオペラッド射に沿い、底の複体と射を保って代数を制限する。
+`powerProduct` は空積を含む反復積で、連結・任意位置への代入・射の保存を証明済み。
+`powerProduct_permutation` は可換モノイド対象で全置換の不変性を与える。
+`commutativeAlgebraFunctor` は実際の可換モノイド複体から全 arity の Com 代数を作る。
+`discreteCommutativeFunctor` は既存の対称モノイダル零次埋め込みを用い、通常の積と単位を移す。
+`BarrattEccles.discreteAlgebraFunctor` は実際の augmentation E → Com に沿ってこれを制限する。
+底は元の加群の零次複体、射も元の代数射の零次埋め込みである。
+次は一般図式の homotopy 極限と H⁰ の可換環構造。
 E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：

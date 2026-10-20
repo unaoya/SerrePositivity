@@ -1486,6 +1486,31 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierReplacementInclusion_weakEquivalence,
       `SerrePositivity.EInfinity.BarrattEccles.carrierReplacementOver_isFibrant,
       `SerrePositivity.EInfinity.BarrattEccles.homotopyPullbackCarrierDerivedIso,
+      `SerrePositivity.EInfinity.tensorInsertionAction_coeff,
+      `SerrePositivity.EInfinity.tensorInsertionComposition_coeff,
+      `SerrePositivity.EInfinity.Operad.restrictAlgebraObj,
+      `SerrePositivity.EInfinity.Operad.restrictAlgebraMap,
+      `SerrePositivity.EInfinity.Operad.restrictAlgebra,
+      `SerrePositivity.EInfinity.powerProduct,
+      `SerrePositivity.EInfinity.powerProduct_index,
+      `SerrePositivity.EInfinity.powerProduct_one,
+      `SerrePositivity.EInfinity.powerProduct_append,
+      `SerrePositivity.EInfinity.powerProduct_adjacent,
+      `SerrePositivity.EInfinity.powerProduct_permutation,
+      `SerrePositivity.EInfinity.powerProduct_insertionCore,
+      `SerrePositivity.EInfinity.powerProduct_insertion,
+      `SerrePositivity.EInfinity.powerProduct_map,
+      `SerrePositivity.EInfinity.commutativeAlgebraOfMonoid,
+      `SerrePositivity.EInfinity.commutativeAlgebraMap,
+      `SerrePositivity.EInfinity.commutativeAlgebraFunctor,
+      `SerrePositivity.EInfinity.moduleCommMonoid,
+      `SerrePositivity.EInfinity.moduleCommMonoidMap,
+      `SerrePositivity.EInfinity.moduleCommMonoidFunctor,
+      `SerrePositivity.EInfinity.discreteCommutativeFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteAlgebraFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteAlgebraFunctor_carrier,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteAlgebraFunctor_map,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteAlgebraFunctor_action,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4182,3 +4207,32 @@ example (A : Type) [CommRing A] {Y Z : (BarrattEccles.operad A).Algebra} (g : Y 
   let := modelCategory A
   change (pullbackFunctor A g ⋙ _).HasPointwiseRightDerivedFunctor _
   exact pullbackFunctor_hasPointwiseRightDerivedFunctor A g _ inferInstance
+
+-- 通常の可換代数は、実際に元の加群の零次複体を持つ E 代数になる。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type) [CommRing A] (B : CommAlgCat A) :
+    ((discreteAlgebraFunctor A).obj B).carrier =
+      SerrePositivity.cochainSingleZero (ModuleCat.of A B) :=
+  discreteAlgebraFunctor_carrier A B
+
+-- 元の積を保持しており、同じ環上の任意の元で計算できる。
+example (A : Type) [CommRing A] (B : Type) [CommRing B] [Algebra A B] (x y : B) :
+    @CategoryTheory.MonObj.mul (ModuleCat A) _ _ _
+      (SerrePositivity.EInfinity.moduleCommMonoid A B).mon (x ⊗ₜ[A] y) = x * y := rfl
+
+-- E 代数射を忘却して零次を評価すると、元の代数射の値そのものになる。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type) [CommRing A] {B D : CommAlgCat A} (f : B ⟶ D) (x : B) :
+    (HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A D)).hom
+      (((discreteAlgebraFunctor A).map f).hom.f 0
+        ((HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A B)).inv x)) =
+      f.hom x := by
+  rw [discreteAlgebraFunctor_map, HomologicalComplex.single_map_f_self]
+  change (HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A D)).hom
+    ((HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A D)).inv
+      (f.hom ((HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A B)).hom
+        ((HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A B)).inv x)))) = _
+  exact (ModuleCat.hom_inv_apply
+    (HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A D)) _).trans
+    (congrArg (fun b : B => f.hom b) (ModuleCat.hom_inv_apply
+      (HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A B)) x))
