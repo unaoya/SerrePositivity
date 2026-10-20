@@ -756,3 +756,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coconeRealizationTransformationHomotopy
 #check @SerrePositivity.InfinityCategories.F2.vertexIsoOfYonedaHomotopy
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeUnitIso
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningFamilyTriangleWitness
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingCompositionFamily
+#check @SerrePositivity.InfinityCategories.F2.spaceLeftHomValueEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalUnitHomComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalUnitHomComparison_homotopyEquivalence

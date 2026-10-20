@@ -38,7 +38,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   native 余錐空間から定値変換空間への標準比較の厳密な左逆・ホモトピー右逆と同値性を証明。
   小さい全空間の内部 Hom への実際の比較も同値。N の全 Hom の余極限判定へ接続。
   実現の両端固定ホモトピーを元の変換へ戻し、native 全空間余錐の比較の像と元の単位の同型を構成。
-  三集約同時ビルド 7157 jobs、公理監査 2018 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  任意の指定三角形で unstraightening 比較の全パラメータの合成則を証明。単位の全左 Hom 比較も同値。
+  三集約同時ビルド 7161 jobs、公理監査 2034 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -73,7 +74,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentSmallConstantTargetMap_isQCatEquivalence` / `F2.coherentDiagramTotalCocone_vertex`
 - `F2.coconeTransformationMap_prism` / `F2.coconeTransformationMap_isQCatEquivalence`
 - `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
-- `F2.isColimitCone_iff_coherentCoconeTotalComparison`
+- `F2.unstraighteningMappingTriangleIso` / `F2.coherentTotalUnitHomComparison_homotopyEquivalence`
 - `F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` / `F2.isKappaFiltered_iff_constantDiagram_rightCofinal`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
@@ -101,8 +102,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：圏内の辺による余錐の合成と coherentCoconeTotalComparison の整合を、全 Hom の族で証明。
-  coherentTotalCoconeUnitIso と単位の前合成同値から native な余極限性を導き、有限極限との交換へ接続。
+- F2N-1：元の coconePointHomFamily から指定三角形を作り、unstraighteningMappingTriangleIso を適用。
+  定値標的の作用と coherentTotalUnitHomComparison との整合を証明し、native 余極限性・有限極限交換へ接続。
 
 ## 0. 目標と範囲
 
