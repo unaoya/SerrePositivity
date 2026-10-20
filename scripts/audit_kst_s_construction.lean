@@ -18132,3 +18132,58 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputCompletion_faceGenerated
 #check @SerrePositivity.KST.SConstruction.concreteCube_exists_deletion_max_face
 #print axioms SerrePositivity.KST.SConstruction.concreteCube_exists_deletion_max_face
+
+#check @SerrePositivity.KST.SConstruction.CubeDeletionNormal
+#print axioms SerrePositivity.KST.SConstruction.CubeDeletionNormal
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalEmbedding
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalEmbedding
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalId
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalId
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalId_embedding
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalId_embedding
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalErase
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalErase
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalErase_embedding
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalErase_embedding
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalEmbedding_injective
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalEmbedding_injective
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateSelect_injective
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateSelect_injective
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex_injective
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex_injective
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex_erase
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex_erase
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionNormal
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionNormal
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionNormal_id
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionNormal_id
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionNormal_erase
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionNormal_erase
+#check @SerrePositivity.KST.SConstruction.CubeDeletionExpression
+#print axioms SerrePositivity.KST.SConstruction.CubeDeletionExpression
+#check @SerrePositivity.KST.SConstruction.cubeDeletionExpressionVertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionExpressionVertex
+#check @SerrePositivity.KST.SConstruction.cubeDeletionExpressionNormal
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionExpressionNormal
+#check @SerrePositivity.KST.SConstruction.cubeDeletionExpressionNormal_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionExpressionNormal_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionExpression
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionExpression
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionExpressionNormal
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionExpressionNormal
+#check @SerrePositivity.KST.SConstruction.serreCubeDeletionExpression_eq_of_vertex_eq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDeletionExpression_eq_of_vertex_eq
+#check @SerrePositivity.KST.SConstruction.cubeDeletionExpressionPath
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionExpressionPath
+#check @SerrePositivity.KST.SConstruction.cubeDeletionExpressionPath_concrete
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionExpressionPath_concrete
+#check @SerrePositivity.KST.SConstruction.cubeDeletionExpressionPath_serre
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionExpressionPath_serre
+#check @SerrePositivity.KST.SConstruction.CubeDeletionPath
+#print axioms SerrePositivity.KST.SConstruction.CubeDeletionPath
+#check @SerrePositivity.KST.SConstruction.cubeDeletionPath_exists_expression
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionPath_exists_expression
+#check @SerrePositivity.KST.SConstruction.serreCubeWordFunctor_deletion_independent
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordFunctor_deletion_independent

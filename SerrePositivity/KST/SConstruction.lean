@@ -1330,4 +1330,10 @@ public import SerrePositivity.KST.SConstruction.CubeSupportBlockEvaluation
 public import SerrePositivity.KST.SConstruction.CubeCoordinateCompletion
 public import SerrePositivity.KST.SConstruction.CubeSupportOutputCompletion
 public import SerrePositivity.KST.SConstruction.CubeThreeStageNormalForm
+public import SerrePositivity.KST.SConstruction.CubeDeletionNormal
+public import SerrePositivity.KST.SConstruction.CubeDeletionNormalDetection
+public import SerrePositivity.KST.SConstruction.SerreCubeDeletionNormal
+public import SerrePositivity.KST.SConstruction.CubeDeletionExpression
+public import SerrePositivity.KST.SConstruction.CubeDeletionPathEvaluation
+public import SerrePositivity.KST.SConstruction.CubeDeletionPathIndependence
 /-! # ∞-S• 構成と連結 K 理論 -/
