@@ -6,7 +6,7 @@
 
 ### 現在地
 - L9a・L9b・改訂 L9c・L9d・L9e 完了（10-19）。Sp-5：零対象、任意の小積・通常の小さい BF 図式・元の hG/Tot の実際の ∞ 極限錐、fiber と loop 四角形、元の円評価四角形の極限性と指定比較の可逆性、nativeTail の ∞ 圏同値性、円 cotensor と nativeLoop の全単体の関手同型は完成。loop の完全忠実性は元の evaluationPost の全 Hom 同値性へ還元済み。BF 射の段ごとの π 同型の前後合成による元の全 Hom の π 同型、通常円と Kan 円の評価の比較、任意の源比較による検出、最終 raw 全 Hom H から元の評価の π 同型性を得る界面も完成。元の評価の無条件の全 Hom 同値性・loop の完全忠実性と高次自然性・任意の coherent 図式の極限・全整数 π 検出・安定性・局所化不変量の値域界面は未完。
-- Sp-5 の現在の核心：元の評価から源単位への実区間、右側段差の指定三角形付き構造正方形、同じ逆随伴区間の全族自然性と全境界は完成。今回、二つの実入力区間 F/G から全族二重 loop 入力の比較を合成三角形付きで構成し、保存済み kanAdjointSourceNaturalityInterval の同じ転置の両端を標準全族作用へ厳密同定した。各段で元の転置自然性・逆区間・定数辺を保持する逆三角形を作り、二段の実区間から kanAdjointParametricInputComparison を全 BF X,Y の元の全 Hom パラメータで無条件に構成。pointedEvaluation_parametric_adjoint は通常円の厳密 Ω 全族可換式を既存制限公式から証明。これらを四三角形比較へ実際に適用した kanAdjointSignedReverseParametricSquare と左右の全境界まで完成。入力 H や enriched 自然性の存在は仮定しない。構造の実区間を選び直さず、同じ実入力の逆三角形・合成三角形も保持する。uncurry・評価座標への移送と元の自然性区間への境界照合、主構造正方形、最終 raw 全 Hom H は未完。
+- Sp-5 の停止中の旧経路：元の評価から源単位への実区間、右側段差の指定三角形付き構造正方形、同じ逆随伴区間の全族自然性と全境界は完成。今回、二つの実入力区間 F/G から全族二重 loop 入力の比較を合成三角形付きで構成し、保存済み kanAdjointSourceNaturalityInterval の同じ転置の両端を標準全族作用へ厳密同定した。各段で元の転置自然性・逆区間・定数辺を保持する逆三角形を作り、二段の実区間から kanAdjointParametricInputComparison を全 BF X,Y の元の全 Hom パラメータで無条件に構成。pointedEvaluation_parametric_adjoint は通常円の厳密 Ω 全族可換式を既存制限公式から証明。これらを四三角形比較へ実際に適用した kanAdjointSignedReverseParametricSquare と左右の全境界まで完成。入力 H や enriched 自然性の存在は仮定しない。構造の実区間を選び直さず、同じ実入力の逆三角形・合成三角形も保持する。uncurry・評価座標への移送と元の自然性区間への境界照合、主構造正方形、最終 raw 全 Hom H は未完。
 - hG と homotopy Tot の段ごとの Kan 構成・BF 置換・比較射、自明作用の標準射の全整数次数 π の単射性、有理化後の有限群の自明作用では全単射性と標準射による群同型まで証明済み。
 - Sp-4：通常 Tot と標準単体 end の点つき同型、BK end への標準比較、loop 交換との厳密可換性を証明済み。Reedy 条件下で通常 Tot の Ω 列・BF 模型から既存の `homotopyTotalization` への実際の BF 射と各段の全基点・全整数次数 π 同型を構成済み。任意の Ω 図式についても、各段の Reedy anodyne な単位に沿い loop 値へ随伴構造を延長して厳密な余単体 Ω 列を構成した。置換単位の BK 比較と BF の逆向きの射を合成し、Reedy 置換した通常 Tot から元の `homotopyTotalization` への実際の BF 射と同じ π 同型まで完了。
 - Sp-4 の重みの比較：置換後の end 比較は実際のホモトピー同値。相対 corner の実際の latching 射を立方体で計算し、重みの相対 latching とパラメーターの pushout-product に arrow 同型で同定済み。Reedy anodyne な重みと単射パラメーターから corner の Reedy anodyne 性を証明し、重みの制限の全単射 RLP を構成済み。置換単位の制限の切断により、end の非空性を仮定せず置換前の全基点 π 同型へ移送済み。 Reedy 単射な重みと anodyne パラメーターの corner の Reedy anodyne 性も証明し、重みの Reedy 単射への end の制限が実際の Kan fibration であることを証明済み。点つき enriched end の基礎単体集合にも arrow 同型で移送済み。単射による部分複体骨格の逆像・像と骨格の共通部分の公式、骨格への制限の単射性も証明済み。
@@ -25,8 +25,8 @@
 - 骨格の零次数・π₀ の反可換式に加え、実際の成分微分のセルへの自然性と、入力を保持した相対商の射の代表を構成済み。
 - path の収縮の終点を厳密に計算し、`loopZeroHomotopyEquiv` は通常の円の成分表示の逆元と証明済み。置換円の写像類・セル球面・骨格の各係数でもこの向きを照合済み。
 - cochain 次数 d ≥ 1 の全高次数 r で、実際の群の `coefficientDifferential` は通常の正規化微分の (-1)^(d+2+r) 倍と証明済み。次数の標準同定を含む加法準同型の等式、および核・像の一致も証明済み。
-- 検証：対象ビルド 6610 jobs、専用監査 1440 モジュール・13079 宣言、標準三公理のみ。ともに終了コード 0。
-- 全体ビルド：18802 jobs、終了コード 0。対象ビルド・公理監査・全体 diff --check も成功。所有外ソースは変更していない。
+- 今回の検証：対象ビルド 6612 jobs、専用監査 1442 モジュール・13103 宣言、標準三公理のみ。ともに終了コード 0。新規2モジュールに sorry・追加 axiom・ModelCategory 仮定なし。
+- 全体ビルド：18862 jobs、終了コード 0。対象ビルド・公理監査・全体 diff --check も成功。Stable/・Coherent/ 等の所有外 Lean ソースは変更していない。
 
 ### 残り（依存順）
 - 以下は粗い実作業時間の見積もりであり、外部待ちと全体合流の時間を含めない。
@@ -34,7 +34,7 @@
   原典：Goerss–Jardine VII §4、VIII §§1–2、BF 1978 §2。∞ 極限性・安定性は以下の Sp-5。
 - Sp-5：任意の小積・通常の小図式の homotopy end・元の hG/Tot の実際の ∞ 極限錐は完了。残りは任意の小さい coherent 図式への接続、全整数次数の基点での π 同型からの Sp の同値検出、loop の完全忠実性・一段移動との比較の高次自然性、Sp の安定性と局所化不変量の値域としての界面。
   これらは後続範囲であり、現段階の主張に含めない。
-  原典：HTT Theorem 4.2.4.1、HA §1.4.2。γ3 完了後 16–40 時間。
+  原典：HTT Theorem 4.2.4.1、HA §1.4.2。従来の全体 16–40 時間見積もりは撤回。Sp-5d だけの再見積もりと代替経路の評価は「次の一手」。後続全体は未再見積もり。
 
 ### 主要宣言（共通接頭辞 `SerrePositivity.KST.Spectra`、以下は名前のみ）
 - `KanHomotopyGroup`、`OmegaSpectrum`
@@ -73,7 +73,7 @@
 - `SpectrumMappingAcyclic.isInvertible_of_levelwise`
 - `OmegaSpectrum.replacedOrdinaryTotalizationComparison_isInvertible`
 - `PartialTotalizationTower.limitIso`
-- `OmegaSpectrum.replacedOrdinaryTotalizationComparison_piIsomorphism`
+- `OmegaSpectrum.replacedOrdinaryTotalizationComparison_piIsomorphism`、`KanSequence.ordinaryStructureAdjoint_comm_iff`、`KanSequence.ordinaryStructureAdjoint_comm_forces_swap_piZero`、`StrictEnrichedTransformation.homotopy`、`StrictEnrichedTransformation.homotopy_component`、`StrictEnrichedTransformation.functorIso`
 
 ### 依存と提供
 - 読取専用：Mathlib の PtSimplex・RelStruct・MulStruct、pushout-product、骨格の相対セル分解、正規化鎖、群 cochain。
@@ -84,7 +84,7 @@
 - H_* は K-L2、pro 形式は K-L6、γ3 は N 所有。K 理論の主定理への合流は他レーンの仕事。
 
 ### 未コミット
-- この保存単位の後、K-Sp 所有ファイルに未コミットなし。保存内容は最新の K-Sp コミットを参照。
+- 停止中 WIP：PointedUncurryActionTensor.lean・PointedParametricUncurryAction.lean は対象ビルド成功。PointedUncurryComposition.lean は評価自然性の rewrite と未存在名 tensorHom_comp で失敗、PointedParametricUncurryPre.lean は未検証。4ファイルとも未追跡、集約・監査には未接続。今回の評価用2モジュール・集約・監査・計画だけを別の保存単位として保存。停止中の4ファイルと所有外差分は含めない。
 - 共有ルート `SerrePositivity.lean` および他レーンの既存差分は触らず、今回のコミット対象にも含めない。
 
 ### 既知の問題
@@ -97,7 +97,7 @@
 - Sp-3 は cohomology 消滅だけで仮定せず、実際の障害補正・lim¹ 消滅・写像空間の検出・BF 比較を通して証明済み。通常 Tot と元の homotopy Tot の全整数次数の Milnor 比較・lim¹ 収束判定も証明済み。通常の小図式の ∞ 極限性も完成。任意の coherent 図式への接続・安定性は未完。
 
 ### 次の一手
-- Sp-5：主残目標は全 BF X,Y の元の evaluationPost PointedSimplicialSet.circle X Y 自身の同値性。元の全 Hom 実入力 kanAdjointParametricInputComparison、厳密な pointedEvaluation_parametric_adjoint、kanAdjointSignedReverseParametricSquare と左右の全境界まで無条件に完成。次の一手はこの実正方形を同じ uncurry・評価座標へ移し、元の signedLoopUnitStructurePath X n と Y n の像の比較へ戻す。源は保存済み signedLoopStructureReverse の basedUncurry、標的は同じ Y の逆区間の内部 Hom 像への transpose (pointedEvaluation X Y n) の制限である。PointedMapping.uncurryAction とパラメータ交換を使い、同じ二次元射・四三角形を保持して全辺を照合する。kanAdjointParametricInputInverse の元の転置自然性・逆区間・定数辺の三角形、および kanAdjointParametricInputComposite の両面を保持し、左右の境界を保存済み kanAdjointSourceNaturalityInterval n/n+1 と単位構造の実区間へ照合する。逆区間を元の辺と同一視せず、未証明の enriched 自然性を入力仮定に追加しない。主構造正方形の左辺は kanAdjointTracedStructureInterval、右辺は tracedSourceUnitStructureInterval を指定。右側差との SpecifiedCodifference、標的単位との指定三角形付き貼り合わせを保持し、自由 cotensor と相対 StrictInterval で最終 raw 全 Hom H を回収して evaluationPost_circle_piIsomorphism_of_raw_traced_homotopy へ渡す。後続は loop の完全忠実性・高次自然性・安定性、任意の coherent 図式の極限、全整数 π 検出・局所化不変量の値域界面。
+- Sp-5d 逆関手経路の再評価（10-20 22:19 JST 開始、22:30 JST 評価・検証完了）：残補題は `∀ X Y : OmegaSpectrum, KanPiIsomorphism (OmegaSpectrum.CotensorCompatible.evaluationPost PointedSimplicialSet.circle X Y).right`。旧経路は①uncurry・評価への移送、②元の自然性・逆三角形との境界照合、③主構造正方形、④SpecifiedCodifference、⑤標的単位との貼合せ、⑥相対 StrictInterval から raw 全 Hom H を回収、の6段階、粗く各 4–8 時間／計 24–48 時間以上で停止を継続する。提案された短縮は現 BF 模型ではそのまま採用できない：S を通常円、aₙ : Xₙ → Hom(S,Xₙ₊₁) を構造随伴、bₙ = aₙ ≫ Hom(S,aₙ₊₁)、τ を二重内部 Hom の円交換とすると、aₙ が `X → tail (KanSequence.mapping S X)` の厳密な列の射になる条件は **bₙ ≫ τ = bₙ** である（新規 `ordinaryStructureAdjoint_comm_iff`、Lean 検証済み）。Ω 条件から bₙ の全基点 π 同型は証明できるが、この等式は別条件であり、仮に厳密可換なら `ordinaryStructureAdjoint_comm_forces_swap_piZero` により τ の π₀ 作用まで恒等になる。従って随伴をそのまま厳密なスペクトル射／単体的自然変換として γ1 に渡す段階を省略できない。現在の cotensor は raw 内部 Hom 列の BF 置換であり、置換後の `cotensorPost` を厳密な豊穣関手とする法則も未提供（既存 nativeCotensor は整合写像の共通解像を経由する）。別の「交換なしの随伴 loop」を使う場合も、BF の単射構造を保持する豊穣関手と、元の ∞ 圏的 loop 四角形との同定が必要。なお aₙ の向きは id ⇒ Ω∘tail（および可換な模型なら id ⇒ tail∘Ω）であり、tail∘Ω ⇒ id は成分の可逆性を移送してから反転する。γ1 の不足は今回の障害ではない：既存の豊穣円柱を使い `StrictEnrichedTransformation.homotopy`・`homotopy_component`・`functorIso` を Spectra 配下で証明し、厳密な全 Hom 自然性を持つ変換を、その同じ成分を持つ ∞ 自然変換へ移し、成分可逆性から関手同型を得た。N への追加要求は不要。一般判定 [HA Cor. 1.4.2.27(3) ⇒ (1)](https://www.math.ias.edu/~lurie/papers/HA.pdf) は F3 に未実装、採用時はユーザー指示どおり Spectra 配下で自前証明し D の Stable/ は編集せず、従前の D 待ち方針を撤回する（一般判定自体は今回未証明）。代替の残工程は①BF 上の厳密な豊穣 loop と両合成の実自然変換、②選んだ関手と真の loop の同定、③全有限形状の HasFiniteLimits Sp、④一般判定の自前証明・適用。①②の短縮を確認できず信頼できる全体時間は未算定、旧経路より短いとは判定しない。今回の結論は提示された厳密自然変換だけによる切替は不採用、evaluationPost circle の不要化も未証明。次に進むなら、交換なしの構造で定義する loop 候補の BF 閉性と enriched 自然性を先に検証し、真の loop との同定を独立に構成できることを確認する。
 - Sp-4 の任意の図式に対する主比較は `OmegaSpectrum.replacedOrdinaryTotalizationComparison`。Reedy 仮定なしで、実際に置換した通常 Tot の BF 模型から元の `homotopyTotalization` へ送る。各段・全整数次数 π 同型と元の比較辺の Sp の同値性に加え、元の homotopy Tot の ∞ 極限錐も完成した。Sp の安定性は別工程。
 - 有限骨格の Reedy cofibrancy は、latching 図式の全ての射で骨格の所属を保存・反映し、その部分図式の余極限の包含を単射とする `CartesianSubfunctorColimit` から証明した。骨格間の latching 正方形は次数ごとの pullback とし、その pushout の比較を単射と証明済み。Mathlib の部分複体骨格と `SSet.sk` の同型や、骨格関手全体の余極限保存を仮定しない。`PartialTotalizationTower.limitIso_hom_projection` と `groupComparison_apply` が通常 Tot の元の制限を計算する。
 - L9e 完了。Sp-5 は任意の小積・通常の小図式の ∞ 極限錐を構成済みで、任意の coherent 図式への接続・全整数 π による同値検出・安定性・局所化不変量の値域の界面は未完。共有 γ3 の現状は `e-infinity-algebras.md` 冒頭。∞ 極限性を π 同型だけから仮定しない。

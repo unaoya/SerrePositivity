@@ -978,3 +978,5 @@ public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParametricCoordinate
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParametricInput
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParametricReverse
 public import SerrePositivity.KST.Spectra.SpectrumParametricAdjointSquare
+public import SerrePositivity.KST.Spectra.OrdinaryLoopAdjointStructureCriterion
+public import SerrePositivity.KST.Spectra.StrictEnrichedTransformationNerve
