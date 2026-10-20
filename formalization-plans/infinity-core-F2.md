@@ -44,8 +44,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   定値底の形状制限は相対内部 Hom の底変換。両端評価と path 引き戻しの二入力射・底射の left fibration 性を証明。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含、元の値による境界固定の相対有限検出を証明。
   全境界正方形と端点固定反映を元の比較へ合成。任意の有限標的射を、元の一値の実際の引き戻し比較像で検出。
-  構成済み全空間 Kan 比較への有限持ち上げと有限写像空間の π₀ の全射性を証明。境界付き相対検出・弱同値性は残る。
-  三集約同時ビルド 7380 jobs、公理監査 2672 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  有限持ち上げと有限写像空間の π₀ の全射性を証明。全相対境界の有限単射模型、部分円柱固定の二入力輸送、path 定値な底の共通収縮まで構成。相対検出・弱同値性は残る。
+  三集約同時ビルド 7393 jobs、公理監査 2708 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -76,7 +76,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
 - `F2.unstraighteningMappingTriangleIso` / `F2.coherentTotalUnitHomComparison_homotopyEquivalence`
 - `F2.coherentDiagramTotalCocone_isColimit` / `F2.hasColimit_coherentSpaceDiagram`
-- `F2.fiberwisePullbackKanComparison_finite_value_detection` / `F2.fiberwisePullbackKanComparison_finite_lifting`
+- `F2.fiberwisePullbackKanComparison_finite_value_detection` / `F2.continuousKanReplacement_relative_path_finite_approximation`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
 ### 依存と提供
@@ -102,7 +102,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：指定境界付きの相対有限検出と比較の fiber の充填を構成し、元の Kan 比較の弱同値性へ接続する。
+- F2N-1：path を潰した底の共通収縮に沿い、元の境界引き戻し射と全有限模型を、全相対境界円柱を保って同時輸送する。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲

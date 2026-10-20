@@ -99,6 +99,10 @@ public import SerrePositivity.InfinityCategories.F2.KanCospanBoundarySquare
 
 public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackKanFiniteLifting
 
+public import SerrePositivity.InfinityCategories.F2.IntervalPullbackRelativeInputTransport
+public import SerrePositivity.InfinityCategories.F2.RelativePathFiniteApproximation
+public import SerrePositivity.InfinityCategories.F2.FilteredPathCollapseContraction
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
