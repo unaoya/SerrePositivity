@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutReindex
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionReindex
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationInjectiveReindex
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationDegenerateCoefficient
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationDegenerateCut
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationDegenerateReindex
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCollapsedPair
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismReindex
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNervePrism
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedLinearBoundary
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedCuts
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedQuadraticBoundary
@@ -3020,6 +3031,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationInjectiveReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationDegenerateCoefficient,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationDegenerateCut,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationDegenerateReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCollapsedPair,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNervePrism,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedLinearBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedCuts,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedQuadraticBoundary,
