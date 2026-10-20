@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutBoundary
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleCoefficient
 import SerrePositivity.InfinityCategories.Derived.DGClosedPostcomposeTriangle
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangle001
@@ -3569,6 +3570,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleCoefficient,
     `SerrePositivity.InfinityCategories.Derived.DGClosedPostcomposeTriangle,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangle001,

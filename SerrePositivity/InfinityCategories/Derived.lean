@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutBoundary
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleCoefficient
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcomposeTriangle
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangle001
