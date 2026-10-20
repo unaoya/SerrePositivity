@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.CoherentTransformationTriangleRelative
 public import SerrePositivity.InfinityCategories.F2.SmallUnstraighteningFunctorIso
 public import SerrePositivity.InfinityCategories.F2.CoherentTransformationVertexTriangle
 public import SerrePositivity.InfinityCategories.F2.CoherentTransformationTotalMap
@@ -15,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
-open CategoryTheory SSet
+open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2
 
@@ -29,9 +30,8 @@ def coherentTransformationTriangleSmallIso {B : SSet.{u}} [Quasicategory B]
     (T : CoherentTransformationVertexTriangle F G J x y) :
     FunctorIso (coherentTransformationTotalMap F J T.diagonal)
       (coherentTransformationTotalMap F G x ≫ coherentTransformationTotalMap G J y) := by
-  have e := smallUnstraighteningFunctorIso F J (unstraighteningTriangleVertexIso F G J
-    x y T.diagonal T.diagram T.first T.second T.long)
-  apply functorIsoOfEq e rfl
-  exact smallSimplicialMap_comp _ _
+  exact (coherentTransformationTriangleRelativeIso F G J x y T).map
+    (vertexFiberι ((ihom (smallLeftUnstraightening F)).map (smallLeftUnstraighteningProjection J))
+      (functorVertex (smallLeftUnstraighteningProjection F)))
 
 end SerrePositivity.InfinityCategories.F2

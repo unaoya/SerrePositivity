@@ -1,8 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleComposition
-public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCompositionVertex
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingInvertible
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleRelativeVertex
 
 /-!
 概要：指定 coherent 三角形の全空間作用を元の実際の二射の合成へ比較する。
@@ -37,39 +35,9 @@ def unstraighteningTriangleVertexIso {B : SSet.{u + 1}}
     FunctorIso (leftUnstraighteningMappingVertexMap F J z).val
       ((leftUnstraighteningMappingVertexMap F G x).val ≫
         (leftUnstraighteningMappingVertexMap G J y).val) := by
-  have e := (unstraighteningMappingTriangleIso F G J
-    (SSet.const x) (SSet.const y) (SSet.const z) H h₀₁ h₁₂ h₀₂).app
-      (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
-  simp only [SSet.const_comp] at e
-  have hconst {X A : SSet.{u + 1}} (v : X _⦋0⦌) (pt : A _⦋0⦌) :
-      (SSet.const v : A ⟶ X).app (Opposite.op ⦋0⦌) pt = v := by
-    change X.map _ v = v
-    rw [show (SimplexCategory.const ⦋0⦌ ⦋0⦌ 0).op = 𝟙 (Opposite.op ⦋0⦌) from
-      Subsingleton.elim _ _, X.map_id]
-    rfl
-  change VertexIso
-    ((SSet.const ((leftUnstraighteningMappingSpaceMap F J).app (Opposite.op ⦋0⦌) z) :
-      (Δ[0] : SSet.{u + 1}) ⟶ _).app (Opposite.op ⦋0⦌) _)
-    ((relativeFunctorComposition (Over.mk (leftUnstraighteningProjection F))
-      (Over.mk (leftUnstraighteningProjection G)) (Over.mk (leftUnstraighteningProjection J))).app
-        (Opposite.op ⦋0⦌)
-          ((SSet.const ((leftUnstraighteningMappingSpaceMap F G).app _ x) :
-            (Δ[0] : SSet.{u + 1}) ⟶ _).app (Opposite.op ⦋0⦌) _,
-           (SSet.const ((leftUnstraighteningMappingSpaceMap G J).app _ y) :
-            (Δ[0] : SSet.{u + 1}) ⟶ _).app (Opposite.op ⦋0⦌) _)) at e
-  simp only [hconst] at e
-  rw [← leftUnstraighteningMappingVertexMap_vertex F J z,
-    ← leftUnstraighteningMappingVertexMap_vertex F G x,
-    ← leftUnstraighteningMappingVertexMap_vertex G J y] at e
-  have hc := relativeFunctorComposition_vertex
-    (Over.mk (leftUnstraighteningProjection F)) (Over.mk (leftUnstraighteningProjection G))
-    (Over.mk (leftUnstraighteningProjection J))
-    (leftUnstraighteningMappingVertexMap F G x).val
-    (leftUnstraighteningMappingVertexMap F G x).property
-    (leftUnstraighteningMappingVertexMap G J y).val
-    (leftUnstraighteningMappingVertexMap G J y).property
-  have et := e ≪≫ eqToIso (congrArg SSet.HomotopyCategory.mk hc)
-  exact VertexIso.map et (vertexFiberι ((ihom (leftUnstraightening F)).map
-    (leftUnstraighteningProjection J)) (functorVertex (leftUnstraighteningProjection F)))
+  exact VertexIso.map
+    (unstraighteningTriangleRelativeVertexIso F G J x y z H h₀₁ h₁₂ h₀₂)
+    (vertexFiberι ((ihom (leftUnstraightening F)).map (leftUnstraighteningProjection J))
+      (functorVertex (leftUnstraighteningProjection F)))
 
 end SerrePositivity.InfinityCategories.F2
