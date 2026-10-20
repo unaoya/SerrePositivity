@@ -678,3 +678,10 @@ public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalEquivalence
 public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalFunctor
 public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter
 public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalStandard
+public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionAsphericity
+public import SerrePositivity.EInfinity.FrameHom.FrameLiftComma
+public import SerrePositivity.EInfinity.FrameHom.FrameLiftContraction
+public import SerrePositivity.EInfinity.FrameHom.FrameLiftSimplices
+public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
+public import SerrePositivity.EInfinity.FrameHom.ResolutionAsphericity
+public import SerrePositivity.EInfinity.FrameHom.ResolutionCommaContraction

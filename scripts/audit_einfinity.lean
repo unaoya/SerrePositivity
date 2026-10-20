@@ -2207,6 +2207,30 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraTrivialFibrationOver,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionOverFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionCommaTerminal_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.overFunctor,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.toComma,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.toComma_faithful,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.toComma_full,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.toComma_essSurj,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.commaEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.projection_mono_rlp,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.projection_image_isIso,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.elementsTerminal_image_isIso,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.evaluationPullback,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.pointSimplex_unique,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.inclusion_injective,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.simplexEquiv,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.simplexEquiv_naturality,
+      `SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage.imageIso,
+      `SerrePositivity.EInfinity.FrameHom.TrivialFibrationOver,
+      `SerrePositivity.EInfinity.FrameHom.resolutionOverFunctor,
+      `SerrePositivity.EInfinity.FrameHom.resolutionOverFunctor_forget,
+      `SerrePositivity.EInfinity.FrameHom.resolutionOverComma_image_isIso,
+      `SerrePositivity.EInfinity.FrameHom.resolutionCommaTerminal_image_isIso,
+      `SerrePositivity.EInfinity.FrameHom.FrameLift.commaTerminal_image_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation_zero,
@@ -6271,3 +6295,13 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
             (ComposableArrows.mk₀ (show ULiftHom.{e2ComplexLimitUniverse + 1}
               (((((mappingSpace A).obj (Opposite.op X)).obj Y).Elements)ᵒᵖ) from s))).down)) :=
   mappingSpaceSpanComparison_vertex A X Y s
+
+-- 元の写像空間に使う分解は、任意の自明 fibration を終点とする全 comma 圏で可縮。
+-- 単体集合モデルや元の E 代数の cofibrancy の仮定は加えない。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X : (BarrattEccles.operad A).Algebra) (t : algebraTrivialFibrationOver A X) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (SSet.stdSimplex.isTerminalObj₀.from
+        (nerve (CostructuredArrow (mappingResolutionOverFunctor A X) t)))) :=
+  mappingResolutionCommaTerminal_localized_isIso A X t

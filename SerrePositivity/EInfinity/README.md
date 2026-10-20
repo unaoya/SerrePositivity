@@ -917,6 +917,15 @@ anodyne 反転後の可逆性を証明する。標準単体の収縮、境界の
 `mappingSpaceSpanComparison_vertex` は全次数の単体を表す頂点で両射が
 元の π₀ 同値と同じ局所化射を与えることを証明する。
 特殊な三本矢への右射の反転性と、その nerve と既存 DK Hom の高次比較は未証明。
+`FrameHom.FrameLift` は既存の LiftSpace の全単体を元の持ち上げ三角形と同定し、
+その反対要素圏と分解の comma 圏の同値を構成する。
+元の fiber の射影は全単射の右持ち上げ性を持ち、その収縮と終端 augmentation から
+全 comma 圏の nerve の元の終射を anodyne 反転後に同型へ送る。
+`FrameHom.resolutionOverFunctor` は同じ分解から自明 fibration の slice への関手で、
+`resolutionCommaTerminal_image_isIso` は全ての指定終点の comma 圏の可縮性を与える。
+`BarrattEccles.mappingResolutionCommaTerminal_localized_isIso` は任意の可換環上の
+同じ Map^h の分解への代入。単体集合モデルや元の代数の cofibrancy の入力は不要。
+この分解側の asphericity から三本矢の右射全体への余終性の適用は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
