@@ -1,5 +1,4 @@
 import SerrePositivity.InfinityCategories.F1
-import SerrePositivity.InfinityCategories.F1.CommonWeightedNativePrismComparison
 import Lean.Util.CollectAxioms
 
 /-!
@@ -5180,3 +5179,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.rightFibrationRepresentableMappingComparison_isQCatEquivalence
 
 #check @SerrePositivity.InfinityCategories.oppositeUnstraighteningHomComparisonIsoOfNativePrism
+#check @SerrePositivity.InfinityCategories.kanEnrichedDiagramLeftHomInterval_uncurry
+#check @SerrePositivity.InfinityCategories.kanEnrichedDiagramLeftHomInterval_evaluate
+#check @SerrePositivity.InfinityCategories.kanEnrichedDiagramLeftHomInterval_evaluate_action
+#check @SerrePositivity.InfinityCategories.leftPointHomReverseParameter_uncurry_eq
+#check @SerrePositivity.InfinityCategories.kanDiagramNativeOppositeHomParameter_pointwise
+#check @SerrePositivity.InfinityCategories.kanDiagramOppositeLeftHomInterval_evaluate_action
