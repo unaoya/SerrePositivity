@@ -1821,6 +1821,34 @@ run_cmd do
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftDiagramComparison_isIso,
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightDiagramComparison_isIso,
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedConeComparisonIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexAuxIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrameFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrameAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrameAugmentation_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrame_fibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrame_cofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrame_homotopicallyConstant,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbeComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbeComparison_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe_cofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialHomDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialHomFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.rightFrameHomDiagramFamily,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialHomDiagramIso,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialHomComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialConeComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialConeIso,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonNatIso,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonNatIso_app,
+      `SerrePositivity.EInfinity.BarrattEccles.constantProbeLocalizedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitConePiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitConePiZeroEquiv_target,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitHomPiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedHomEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitHomPiZeroEquiv_target,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedHomEquiv_target,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -4941,3 +4969,56 @@ example {F G H : ℕ ⥤ SSet} (f : F ⟶ H) (g : G ⟶ H)
   exact ConcreteCategory.congr_hom
     (kanConeComparisonIso_fac ℕ (weight ℕ) (weight_cofibrant ℕ)
       SSet.π₀Functor PiZeroLocalization.inverts_anodyne f g hF hG hf hg) z
+
+-- 元の定値図式の局所化射は、計算した同じ極限対象への射で一意に表せる。
+open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    (f : (CategoryTheory.Functor.const ℕ).obj Y ⟶ F) :
+    let := BarrattEccles.modelCategory ℤ
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+    ∃! g : Q.obj Y ⟶ Q.obj ((framedLimitFunctor ℤ ℕ).obj F),
+      (framedLimitDerivedHomEquiv ℤ ℕ Y F).symm g = QD.map f := by
+  let := BarrattEccles.modelCategory ℤ
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  dsimp only
+  let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+  let e := framedLimitDerivedHomEquiv ℤ ℕ Y F
+  refine ⟨e (QD.map f), e.symm_apply_apply _, ?_⟩
+  intro g hg
+  exact (e.apply_symm_apply g).symm.trans (congrArg e hg)
+
+-- 右 frame の同じ錐は元の図式射の後合成を正しい局所化像へ送る。
+open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+example (Y : (BarrattEccles.operad ℤ).Algebra)
+    {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G)
+    (z : SSet.π₀ ((framedLimitConeSpace ℤ ℕ Y).obj F)) :
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+    (framedLimitConePiZeroEquiv ℤ ℕ Y G).symm
+      (framedLimitConePiZeroEquiv ℤ ℕ Y F z ≫ QD.map g) =
+        SSet.mapπ₀ ((framedLimitConeSpace ℤ ℕ Y).map g) z := by
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  dsimp only
+  let e := framedLimitConePiZeroEquiv ℤ ℕ Y G
+  exact (congrArg e.symm (framedLimitConePiZeroEquiv_target ℤ ℕ Y g z)).symm.trans
+    (e.symm_apply_apply _)
+
+-- 元の錐と図式射の合成は、計算対象への導来射の同じ後合成を回収する。
+open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+example (Y : (BarrattEccles.operad ℤ).Algebra)
+    {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra}
+    (f : (CategoryTheory.Functor.const ℕ).obj Y ⟶ F) (g : F ⟶ G) :
+    let := BarrattEccles.modelCategory ℤ
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+    framedLimitDerivedHomEquiv ℤ ℕ Y G (QD.map (f ≫ g)) =
+      framedLimitDerivedHomEquiv ℤ ℕ Y F (QD.map f) ≫ Q.map ((framedLimitFunctor ℤ ℕ).map g) := by
+  let := BarrattEccles.modelCategory ℤ
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  dsimp only
+  let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
+  exact (congrArg (framedLimitDerivedHomEquiv ℤ ℕ Y G) (QD.map_comp f g)).trans
+    (framedLimitDerivedHomEquiv_target ℤ ℕ Y g (QD.map f))

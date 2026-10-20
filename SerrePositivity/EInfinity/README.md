@@ -737,8 +737,16 @@ augmentation は元の代数の射にも自然。Reedy 自明 fibration であ�
 重み付き錐で反転し、単体集合やその図式圏の完全なモデル構造を使わない。
 `kanConeComparisonIso_fac` は同じ元の比較射の像の一致、
 `kanConeComparisonIso_naturality` は元の可換四角形に関する自然性を与える。
-具体的な `constantDiagramSourceHom` と `framedLimitConeSpace` への代入では、
-選んだ試験始域の比較と二重反対圏の添字の照合が残る。
+`rightSimplicialFrameFamily` は既存の右 frame の同じ単体図式表示で、元の代数に自然。
+`rightSimplicialConeComparisonIso` は二重反対圏の添字を照合する錐関手の自然同型。
+`framedLimitProbeComparison` は既存の試験始域から元の代数への擬同型で、
+`framedLimitProbe_cofibrant` は混合 Hom の入力条件を追加仮定なしで供給する。
+`sourceRightConeComparisonNatIso` はこの試験始域の始域錐と既存の右錐との終域自然な比較。
+`framedLimitConePiZeroEquiv` は右錐の π₀ を元の定値図式からの局所化 Hom と同定し、
+`framedLimitHomPiZeroEquiv` は同じ π₀ を元の計算対象への局所化 Hom と同定する。
+`framedLimitDerivedHomEquiv` はこの二つを合成した、元の対象ごとの導来 Hom の同値。
+`framedLimitDerivedHomEquiv_target` は元の図式射による後合成との両立を与える。
+始域に関する自然性と元の錐の比較の類との整合性の確認が残る。
 計算関手の右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
