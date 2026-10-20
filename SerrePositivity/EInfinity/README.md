@@ -1276,7 +1276,17 @@ backward 一列ずつを両端に付け、`paddingInclusionNat` は元の中央�
 `ProperDiagram.precomp` は単射とこの交わりを保つ語関手への proper 性の保存。
 `ProperDiagram.padding`・`paddedForward` は二つの実際の前合成への適用。
 `paddingDiagramMap`・`paddedForwardDiagramMap` の成分は元の包含の像である。
-成分の弱同値性、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.forwardInclusion_isIso`・`forwardMap_forwardInclusion` は全方向 forward の
+固定対象の元の同型性と冪等性。`forwardCollapseNat` は元の一列への唯一の合成。
+`forwardColimitCocone_isColimit`・`forwardColimitIso`・`_fac`・`_inv_fac` は
+任意の値の圏での元の余極限の普遍性と元の標準射への一致。
+`Word.padding_single_forward` は元の三列の語の等式。
+`paddedForwardColimitIso`・`_fac`・`_inv_comparison` は元の三列と同じ比較射を回収する。
+`paddingColimitMap_retraction` は元の padding 余極限の射の左逆。
+`paddedThreeComparison`・`_fac`・`_retraction`・`paddedForwardColimit_comparison_recovery` は
+同じ元の比較から元の全語の三列の標準射を厳密に回収する。
+一般の値の圏での `colimMap` は、単体集合で同じ元の `colim.map` に一致する。
+比較ホモトピー、成分と三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

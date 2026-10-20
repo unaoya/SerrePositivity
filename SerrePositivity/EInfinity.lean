@@ -921,3 +921,9 @@ public import SerrePositivity.EInfinity.Hammock.WordPadding
 public import SerrePositivity.EInfinity.Hammock.WordPaddingImages
 public import SerrePositivity.EInfinity.Hammock.ProperPrecomposition
 public import SerrePositivity.EInfinity.Hammock.ProperFractionDiagrams
+public import SerrePositivity.EInfinity.Hammock.WordForwardFixed
+public import SerrePositivity.EInfinity.Hammock.ForwardColimit
+public import SerrePositivity.EInfinity.Hammock.WordPaddedCollapse
+public import SerrePositivity.EInfinity.Hammock.PaddedForwardColimit
+public import SerrePositivity.EInfinity.Hammock.PaddingColimitRetraction
+public import SerrePositivity.EInfinity.Hammock.PaddedComparisonRecovery

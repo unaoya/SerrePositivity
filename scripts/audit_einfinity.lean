@@ -3730,6 +3730,40 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.paddedForwardDiagramMap,
       `SerrePositivity.EInfinity.Hammock.paddedForwardDiagramMap_app]
 
+@[noinline] private def e2RequiredBatch39 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.forwardInclusion_eqToHom,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardInclusion_isIso,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_forwardInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardMap_forwardInclusion_isIso,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardCollapse,
+      `SerrePositivity.EInfinity.Hammock.Word.toSingleForward_unique,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardCollapse_naturality,
+      `SerrePositivity.EInfinity.Hammock.Word.forwardCollapseNat,
+      `SerrePositivity.EInfinity.Hammock.forwardSingleIso,
+      `SerrePositivity.EInfinity.Hammock.forwardCollapse_fac,
+      `SerrePositivity.EInfinity.Hammock.forwardColimitCocone,
+      `SerrePositivity.EInfinity.Hammock.forwardColimitDesc,
+      `SerrePositivity.EInfinity.Hammock.forwardColimitDesc_fac,
+      `SerrePositivity.EInfinity.Hammock.forwardColimitCocone_isColimit,
+      `SerrePositivity.EInfinity.Hammock.forwardColimitIso,
+      `SerrePositivity.EInfinity.Hammock.forwardColimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.forwardColimitIso_inv_fac,
+      `SerrePositivity.EInfinity.Hammock.Word.padding_single_forward,
+      `SerrePositivity.EInfinity.Hammock.Word.paddedCollapse,
+      `SerrePositivity.EInfinity.Hammock.Word.paddedCollapse_naturality,
+      `SerrePositivity.EInfinity.Hammock.Word.paddedCollapseNat,
+      `SerrePositivity.EInfinity.Hammock.paddedForwardColimitIso,
+      `SerrePositivity.EInfinity.Hammock.paddedForwardColimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.paddedForwardColimitIso_inv_comparison,
+      `SerrePositivity.EInfinity.Hammock.paddingColimitMap,
+      `SerrePositivity.EInfinity.Hammock.paddingColimitRetraction,
+      `SerrePositivity.EInfinity.Hammock.paddingColimitRetraction_fac,
+      `SerrePositivity.EInfinity.Hammock.paddingColimitMap_retraction,
+      `SerrePositivity.EInfinity.Hammock.paddedThreeComparison,
+      `SerrePositivity.EInfinity.Hammock.paddedThreeComparison_fac,
+      `SerrePositivity.EInfinity.Hammock.paddedThreeComparison_retraction,
+      `SerrePositivity.EInfinity.Hammock.paddedForwardColimit_comparison_recovery]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3759,7 +3793,7 @@ run_cmd do
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
-      e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38] do
+      e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8891,3 +8925,42 @@ example (F : Word ⥤ SSet.{e2ComplexLimitUniverse}) (a : Word) :
     (paddedForwardDiagramMap F).app a =
       F.map (Word.paddingFunctor.map (Word.forwardInclusion a)) :=
   paddedForwardDiagramMap_app F a
+
+-- 元の一列の値の普遍性。固定語の合成の弱同値性は入力ではない。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example (H : Word ⥤ SSet.{e2ComplexLimitUniverse}) :
+    IsColimit (forwardColimitCocone H) := forwardColimitCocone_isColimit H
+
+-- forward 部分語の余極限比較は元の一列への合成を回収する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example (H : Word ⥤ SSet.{e2ComplexLimitUniverse}) (a : Word) :
+    colimit.ι (Word.forwardFunctor ⋙ H) a ≫ (forwardColimitIso H).hom =
+      H.map (Word.forwardCollapse a) := forwardColimitIso_fac H a
+
+-- padding 後には同じ元の三列への合成を回収する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example (H : Word ⥤ SSet.{e2ComplexLimitUniverse}) (a : Word) :
+    colimit.ι (Word.forwardFunctor ⋙ Word.paddingFunctor ⋙ H) a ≫
+        (paddedForwardColimitIso H).hom = H.map (Word.paddedCollapse a) :=
+  paddedForwardColimitIso_fac H a
+
+-- colimMap はここでは同じ元の colim.map。その比較に一致する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example (H : Word ⥤ SSet.{e2ComplexLimitUniverse}) :
+    (paddedForwardColimitIso H).inv ≫ colim.map (paddedForwardDiagramMap H) =
+      paddedThreeComparison H := paddedThreeComparison_fac H
+
+-- 元の padding の比較には同じ元の余錐からの左逆がある。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example (H : Word ⥤ SSet.{e2ComplexLimitUniverse}) :
+    paddingColimitMap H ≫ paddingColimitRetraction H = 𝟙 (colimit H) :=
+  paddingColimitMap_retraction H
+
+-- 実際の元の graph の標準射に厳密に一致する。モデル構造の追加入力はない。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] (W : MorphismProperty C)
+    [W.IsMultiplicative] (X Y : C) :
+    (paddedForwardColimitIso (graphDiagram W X Y)).inv ≫
+        colim.map (paddedForwardDiagramMap (graphDiagram W X Y)) ≫
+          paddingColimitRetraction (graphDiagram W X Y) = graphInclusion W X Y Word.threeArrow :=
+  paddedForwardColimit_comparison_recovery (graphDiagram W X Y)
