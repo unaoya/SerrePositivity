@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.IntervalPullbackBoundarySquare
-public import SerrePositivity.InfinityCategories.F2.ContinuousKanSpecifiedHomotopy
+public import SerrePositivity.InfinityCategories.F2.KanCospanPathEndpoints
 
 /-!
 概要：元の二入力の輸送に整合する Kan path 正方形を、Kan 引き戻し内の比較へ移す。
@@ -18,35 +18,6 @@ universe u
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2
-
-/-- 概要：元の入力からの指定 Kan path を、置換後の cospan の端点表示へ移す。
-方針：単位の自然性で両端だけを書き換え、全円柱を保持する。
-規約：h は H.h そのもの。使われ方：元の指定 path の引き戻しへの持ち上げ。 -/
-def kanCospanUnitPath {K E D X : SSet.{u}} (f : E ⟶ X) (g : D ⟶ X)
-    (u : K ⟶ E) (v : K ⟶ D)
-    (H : SSet.Homotopy (u ≫ f ≫ continuousKanReplacementUnit.app X)
-      (v ≫ g ≫ continuousKanReplacementUnit.app X)) :
-    SSet.Homotopy ((u ≫ continuousKanReplacementUnit.app E) ≫ continuousKanReplacement.map f)
-      ((v ≫ continuousKanReplacementUnit.app D) ≫ continuousKanReplacement.map g) where
-  h := H.h
-  h₀ := by
-    change SSet.ι₀ ≫ H.h = (u ≫ continuousKanReplacementUnit.app E) ≫
-      continuousKanReplacement.map f
-    rw [H.h₀]
-    simpa only [Functor.id_map, Category.assoc] using
-      congrArg (fun r ↦ u ≫ r) (continuousKanReplacementUnit.naturality f)
-  h₁ := by
-    change SSet.ι₁ ≫ H.h = (v ≫ continuousKanReplacementUnit.app D) ≫
-      continuousKanReplacement.map g
-    rw [H.h₁]
-    simpa only [Functor.id_map, Category.assoc] using
-      congrArg (fun r ↦ v ≫ r) (continuousKanReplacementUnit.naturality g)
-  rel := by
-    apply SSet.hom_ext
-    intro n
-    apply ConcreteCategory.hom_ext
-    intro x
-    exact False.elim x.1.property
 
 /-- 概要：元の境界輸送を持つ Kan 正方形を、三座標を保つ実際の引き戻し比較へ移す。
 方針：二入力の円柱を単位で写し、境界の後合成式と単位の自然性を使う。
