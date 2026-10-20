@@ -11260,3 +11260,60 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfLeftReplacement_transport_exists
 #print axioms quillenCfLeftReplacement_transport_exists
+
+#check @coherentUnderlyingHoFunctor
+#print axioms coherentUnderlyingHoFunctor
+
+#check @enrichedUnderlying_eHom_map
+#print axioms enrichedUnderlying_eHom_map
+
+#check @nerveToCoherent_enriched_naturality
+#print axioms nerveToCoherent_enriched_naturality
+
+#check @coherentNerveMap_coherentEdge
+#print axioms coherentNerveMap_coherentEdge
+
+#check @coherentUnderlyingHoMapIso
+#print axioms coherentUnderlyingHoMapIso
+
+#check @quillenCfRightReplacementFunctor
+#print axioms quillenCfRightReplacementFunctor
+
+#check @quillenCfLeftReplacementFunctor
+#print axioms quillenCfLeftReplacementFunctor
+
+#check @quillenCfTop_eHom_map
+#print axioms quillenCfTop_eHom_map
+
+#check @quillenCfBottom_eHom_map
+#print axioms quillenCfBottom_eHom_map
+
+#check @quillenCfMixedHomEquiv_bottom_comp
+#print axioms quillenCfMixedHomEquiv_bottom_comp
+
+#check @quillenCfMixedHomEquiv_comp_top
+#print axioms quillenCfMixedHomEquiv_comp_top
+
+#check @quillenCfRightLiftArrow_naturality
+#print axioms quillenCfRightLiftArrow_naturality
+
+#check @quillenCfLeftLiftArrow_naturality
+#print axioms quillenCfLeftLiftArrow_naturality
+
+#check @quillenCfRightReplacementComparison
+#print axioms quillenCfRightReplacementComparison
+
+#check @quillenCfLeftReplacementComparison
+#print axioms quillenCfLeftReplacementComparison
+
+#check @ordinaryNatTransPrism
+#print axioms ordinaryNatTransPrism
+
+#check @ordinaryNatTransPrism_zero
+#print axioms ordinaryNatTransPrism_zero
+
+#check @ordinaryNatTransPrism_one
+#print axioms ordinaryNatTransPrism_one
+
+#check @ordinaryNatTransPrism_vertexEdge
+#print axioms ordinaryNatTransPrism_vertexEdge
