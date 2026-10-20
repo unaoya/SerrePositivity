@@ -18,8 +18,10 @@
   底上の比較の前後合成と厳密な自然性で任意の小さい left fibration 対へ移した。
   引き戻し作用を同じ始域制限へ移す式と宇宙同型で、小さい宇宙の元の作用へ同値性を反映した。
 - 底の仮定は quasicategory 性のみ。任意の単体集合 B の S の同値性は今回主張しない。
-- F1-2：前層 ∞ 圏、制限・評価・定値前層、底の同値による制限同値、right unstraightening を構成済み。
-  right fibration 版の恒等点評価は自明 Kan fibration。後合成の自然性も証明済み。
+- **F1-2 は完了**：前層 ∞ 圏、制限・評価・定値前層、Yoneda の構成・充満忠実性を証明済み。
+  元の全相対 Hom を Hom とする `RightFibrationInfinity B` と `PresheafInfinity B` の実際の分類同値
+  `rightStraighteningInfinityEquivalence` を、小さい quasicategory B 上で構成した。逆の ∞ 関手も同値で、
+  その F での値は既存の `smallRightUnstraighteningProjection F` と頂点の同型で一致する。
 - twisted arrow の両端射影は実際の left fibration。固定領域の inner anodyne 性から全ホーンを充填済み。
   この同じ射影の分類図式を curry して `yonedaInfinityMap` を構成し、対象前層 rep(y) も同定済み。
 - coslice の両端固定の主比較は、行ごとの比較と二重単体図式の対角局所化により同値。
@@ -36,7 +38,7 @@
 - 全空間の始対象で評価した実際の普遍輸送が同値となる一般定理も証明済み。
 - `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
   実際の区間 Hom 作用と標準 pinched Hom 作用の同値性を、同じ恒等点評価と輸送から回収した。
-  空間値分類は閉じたが、right fibration の分類への双対化と Cat∞ 値版が残り、F1 全体は未完了。
+  空間値・前層の分類は閉じた。essentially small fiber への相対延長と Cat∞ 値版が残り、F1 全体は未完了。
 
 ### 残り（依存順）
 
@@ -46,8 +48,8 @@
    明示的な単位・余単位と三角恒等式は任意。任意の単体集合への拡張は別件。
 2. essentially small な ∞ 圏的 fiber への相対延長。Thm 5.6.5.12、Cor 5.6.5.15。40〜160時間。
 3. cocartesian・Cat∞ 値の分類と必要な宇宙の一般化。Thm 5.6.0.2、§5.5。80〜240時間以上。
-4. F1-2：同じ Yoneda 写像の充満忠実性は完了。right fibration の前層による分類を空間値分類から双対化。
-   Kerodon §§8.1〜8.3。8〜32時間。twisted arrow・Hom 関手は α2b と分担する。
+4. F1-2：Yoneda・前層と right fibration 分類は完了。Kerodon §§8.1〜8.3。
+   twisted arrow・Hom 関手と前層の極限・余極限の後続項目は、本項目と区別する。
 5. 通常圏の nerve 上で Grothendieck 構成と Yoneda を回収する。§§5.6、8.3。8〜32時間。
 
 ### 主要宣言（名前のみ）
@@ -55,6 +57,8 @@
 - `leftStraighteningInfinityMap`、`leftStraighteningInfinityMap_isEssentiallySurjective`
 - `leftStraighteningCoherentEquivalence`、`leftStraighteningInfinityReconstruction`
 - `leftStraighteningInfinityMap_isQCatEquivalence`、`leftStraighteningInfinityEquivalence`
+- `RightFibrationInfinity`、`rightStraighteningInfinityEquivalence`、`rightUnstraighteningInfinityMap`
+- `rightStraighteningInfinityCounitVertex`、`rightUnstraighteningInfinityVertexIso`
 - `yonedaInfinityMap`、`representablePresheafInfinity`、`representablePresheafInfinity_sliceIso`
 - `representableRightUnstraighteningComparison_isQCatEquivalence`
 - `yonedaPresheafEvaluation_isQCatEquivalence`、`representablePresheafValueEquivalence`
@@ -74,8 +78,9 @@
 
 - N が読む指定2ファイルと集約は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd` に保存済み。
 - 相対引き戻しの自然性と比較による反映は `843708965` に保存済み。
-- 一般の小さい quasicategory 上の空間値分類同値の所有5モジュール、集約・監査・本計画が保存単位。
-  F1 全体ビルド4443 jobs、公理監査9997宣言が成功（標準3公理のみ）。
+- 一般の小さい quasicategory 上の空間値分類同値は `e987f35af` に保存済み。
+- right fibration の元の相対 Hom と前層による分類の所有8モジュール、集約・監査・本計画が保存単位。
+  F1 全体ビルド4452 jobs、公理監査10064宣言が成功（標準3公理のみ）。
 
 ### 既知の問題
 
@@ -87,13 +92,13 @@
 
 ### 次の一手
 
-空間値の F1-1c2 は、構成済みの同じ S の充満忠実性と本質的全射性による F0 の判定で閉じた。
-次は F1-2：right fibrations の豊穣圏・coherent nerve を構成し、反転で left fibrations over C.op
-との比較を作る。`leftStraighteningInfinityEquivalence C.op` と合わせ、元の前層 ∞ 圏
-`PresheafInfinity C` への実際の分類同値を得る。既存の小さい right unstraightening とも照合する。
-Yoneda の同じ Hom 作用の充満忠実性は証明済みなので再構成しない。
-その後、通常圏 nerve 上の古典的な回収へ進む。essentially small fiber への相対延長と
-cocartesian・Cat∞ 値版は別に残る。明示的な単位・余単位と三角恒等式は任意のまま。
+空間値の F1-1c2 と、F1-2 の Yoneda・前層・right fibration 分類は閉じた。
+次は F1-1b3：次数ごとの小ささを essentially small な ∞ 圏的 fiber の条件へ弱める相対延長。
+既存の `HasSmallSimplexFibers` と `LeftTransportRepresentation` の境界固定延長の入力を読み、
+各 fiber の小さい Kan 模型の選択を、底上の同じ全空間の比較へ組み立てる。
+単なる「小さい全空間」の仮定追加では代用しない。Thm 5.6.5.12、Cor 5.6.5.15 の一般形を照合する。
+その後 cocartesian・Cat∞ 値版へ進む。通常圏 nerve 上の古典的な回収も残る。
+Yoneda の元の Hom 作用と元の right fibration 分類は再構成しない。明示的な三角恒等式は任意。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 

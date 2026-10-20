@@ -1428,3 +1428,19 @@ public import SerrePositivity.InfinityCategories.F1.UniverseRelativeOverPre
 public import SerrePositivity.InfinityCategories.F1.UniverseRelativePullbackReflection
 
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.RightFibrationInfinity
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOpposite
+
+public import SerrePositivity.InfinityCategories.F1.EdgewiseRelativeFunctorOpposite
+
+public import SerrePositivity.InfinityCategories.F1.RightFibrationOppositeEnriched
+
+public import SerrePositivity.InfinityCategories.F1.RightFibrationOppositeComparison
+
+public import SerrePositivity.InfinityCategories.F1.RightFibrationMappingSpaces
+
+public import SerrePositivity.InfinityCategories.F1.RightStraighteningInfinityEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.RightStraighteningUnstraightening
