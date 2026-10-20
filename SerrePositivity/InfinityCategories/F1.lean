@@ -1712,3 +1712,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeCor
 public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorRestrictionLifting
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackCoreFibration
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsPullbackIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsPullbackNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportBaseChange
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportUnderPost
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportBaseChangeNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportBaseChangeEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportBaseChangeEquivalence
