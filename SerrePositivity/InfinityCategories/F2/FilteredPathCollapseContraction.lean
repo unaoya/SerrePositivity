@@ -41,4 +41,18 @@ lemma exists_nullHomotopy_with_collapsed_path {A M B : SSet.{u}}
       (pathCollapseBaseParameter k ▷ (Δ[1] : SSet.{u})) ≫ L.h
   rw [← comp_whiskerRight_assoc, pathCollapseBase_condition, comp_whiskerRight, Category.assoc]
 
+/-- 概要：path 定値な底円柱の端点制限は、部分パラメータの元の円柱に一致する。
+方針：全 path の円柱式を指定端点で制限する。
+規約：全時刻で厳密に一致。使われ方：二入力の相対輸送の底条件。 -/
+lemma collapsedPathCylinder_endpoint {A K M B : SSet.{u}}
+    (k : (Δ[1] : SSet.{u}) ⊗ A ⟶ M) (i : A ⟶ K) (j : K ⟶ M) (e : Fin 2)
+    (hj : prismEndpoint e A ≫ k = i ≫ j)
+    (R : M ⊗ (Δ[1] : SSet.{u}) ⟶ B) (S : A ⊗ (Δ[1] : SSet.{u}) ⟶ B)
+    (hR : (k ▷ (Δ[1] : SSet.{u})) ≫ R =
+      (snd (Δ[1] : SSet.{u}) A ▷ (Δ[1] : SSet.{u})) ≫ S) :
+    (i ▷ (Δ[1] : SSet.{u})) ≫ (j ▷ (Δ[1] : SSet.{u})) ≫ R = S := by
+  have h := congrArg (fun r ↦ (prismEndpoint e A ▷ (Δ[1] : SSet.{u})) ≫ r) hR
+  rw [← comp_whiskerRight_assoc, hj, comp_whiskerRight_assoc] at h
+  exact h
+
 end SerrePositivity.InfinityCategories.F2

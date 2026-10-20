@@ -75,4 +75,15 @@ lemma relativePathBoundaryEndpoint_ι (e : Fin 2) :
   rw [relativePathBoundaryEndpoint, Category.assoc, relativePathBoundaryEnds_ι,
     intervalBoundaryEndpoint_ι]
 
+/-- 概要：指定部分 path の端点と全形状の端点は相対境界内で一致する。
+方針：単射な全 path への包含後に両端の式を照合する。
+規約：元の部分複体の包含。使われ方：境界輸送の二入力への制限。 -/
+lemma relativePathBoundarySide_endpoint (e : Fin 2) :
+    prismEndpoint e (A : SSet.{u}) ≫ relativePathBoundarySide A =
+      A.ι ≫ relativePathBoundaryEndpoint A e := by
+  apply (cancel_mono (relativePathBoundaryι A)).1
+  rw [Category.assoc, relativePathBoundarySide_ι, Category.assoc,
+    relativePathBoundaryEndpoint_ι]
+  rfl
+
 end SerrePositivity.InfinityCategories.F2
