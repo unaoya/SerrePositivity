@@ -17,7 +17,7 @@
   区間作用の端点・成分評価と主写像への接続は証明済み。その作用の同値性は未証明。
   元の cocartesian Hom の core は、底を覆う余極限の各底変換の元の Hom の core の厳密な極限。
   底変換の辺の保存・反映、元の辺の被覆と全空間の余極限、単射による core 制限の Kan 性も証明済み。
-  strict transport の底変換比較と coherent な同型、元の全相対 Hom の作用との厳密な可換式も証明済み。
+  元の全 Hom の底変換の ∞ 関手と、strict transport の比較・同値性・全 Hom 作用との可換式も証明済み。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
 - **F1-1c2 の空間値版は完了**：一般の小さい quasicategory B 上の構成済みの同じ S は
@@ -98,7 +98,7 @@
 
 元の Hom の core の降下・極限錐と単射による core 制限の Kan 性、strict transport の底変換比較まで完了。
 両射影を底変換した元の Hom との厳密な同型と、実際の制限の二射影の全パラメーター公式も証明済み。
-同じ coherent な比較と元の全相対 Hom の作用との可換式まで完了。次は豊穣な底変換と分類写像の制限へ束ねる。
+同じ Hom の底変換の単位・合成と ∞ 関手まで完了。次は比較を全 fibration の coherent な族へ束ねる。
 同じ区間 Hom 作用の同値性を証明し、`cocartesianStraighteningCoherentMap_isFullyFaithful_of_homInterval` へ戻す。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 

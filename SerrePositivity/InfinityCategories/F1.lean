@@ -1732,3 +1732,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportBa
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeEvaluationLaws
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportBaseChangeAction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeEnrichmentLaws
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFibrationBaseChange
