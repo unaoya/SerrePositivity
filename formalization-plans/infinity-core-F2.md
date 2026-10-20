@@ -29,7 +29,11 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   N の Kan coend から通常の Kan colimit へ実際の比較同値を構成し、augmentation との厳密な一致を証明。
   反転 augmentation の前合成を元の余錐の reflectedRepresentableComparison と全単体で同定。
   通常の指定余錐自体の native な普遍性を証明し、filteredKanColimitCocone もこの標準余錐へ揃えた。
-  三集約同時ビルド 7000 jobs、F2 公理監査 1668 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
+  単体集合の filtered 余極限の有限極限保存を証明。Fun(Δ¹,−) の交換は両端評価を保つ。
+  path 置換と二段の path 引き戻しの余極限の標準同型を構成し、元の二入力への射影を保持。
+  Kan 標的で既存の可逆 path 置換と同型にし、終点の fibration 性・二段の模型の Kan 性を証明。
+  一脚が各段で fibration の strict Kan 図式では、native な両普遍性と比較辺の可逆性を証明。
+  三集約同時ビルド 7022 jobs、F2 公理監査 1765 宣言、F1/F1B 同時 import 成功。標準三公理のみ。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -55,8 +59,10 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.overBousfieldKanColimitIso` / `F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered`
 - `F2.reflectedBousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered`
 - `F2.filteredKanColimitComparison_factor` / `F2.filteredKanColimitCocone_isColimit`
-- `F2.filteredKanColimitCocone_vertex`
 - `F2.kanCoconeAugmentationComparison_factor` / `F2.filteredKanColimitOrdinaryCocone_isColimit`
+- `F2.intervalReplacementColimitIso` / `F2.intervalPullbackColimitIso`
+- `F2.intervalPullbackColimitIso_left` / `F2.intervalReplacementEndpoint_fibration`
+- `F2.filteredFibrationPullbackExchange`
 - `F2.bousfieldKanAugmentation` / `F2.bousfieldKanAugmentation_lifts_finite`
 - `F2.terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence`
 - `F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_terminal`
@@ -89,16 +95,15 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
   一般の弱可縮性と正則 κ の対角関手の判定は証明済み。coherent な filtered 余極限の交換は残る。
   通常の filtered 図式の augmentation の弱同値性は、Over 図式の表示同型を介して証明済み。
-  N の反転重みの Kan coend と通常の colimit の比較同値、同じ頂点の native な余極限余錐は構成済み。
   通常の指定余錐の全脚・高次の整合性を保持した native な普遍性まで証明済み。
-  一般 coherent filtered 図式の模型の比較と有限極限との交換はまだ未証明。
+  任意の二射の path 模型を元の native な cospan 極限へ接続する工程と、一般 coherent filtered 図式の交換は残る。
   N の一般 coherent 余極限への接続は未完了の部分があり、無条件の存在・γ4 を一括仮定しない。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：通常の filtered Kan 図式の homotopy pullback と余極限の標準比較を構成する。
-  有限内部 Hom の連続性で path 置換を交換し、一般 coherent filtered 図式の模型の比較へ進む。
+- F2N-1：path の切断で元の cospan と置換 cospan を結び、strictCoherentNatTransIso で図式の同型を作る。
+  exists_limitCone_of_functorIso で頂点 intervalPullback の native な錐を作り、filtered 比較へ接続する。
 
 ## 0. 目標と範囲
 
@@ -151,7 +156,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 
 - 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
   F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
-  通常の filtered 図式の保存性に加え、反転 BK augmentation の弱同値性と指定余錐自体の native な普遍性を証明。
+  通常の指定 filtered 余錐の native な普遍性、path 模型の交換同型、一脚 fibration の native な引き戻し比較を証明。
   一般の filtered 余極限、有限極限との交換、Ind の構成は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
@@ -162,7 +167,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：通常の filtered Kan 図式の homotopy pullback と余極限の標準比較を構成する。
+- 次の一手：intervalPullback を元の二射の native な引き戻し錐にし、交換から fibration 仮定を外す。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |

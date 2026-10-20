@@ -675,3 +675,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.filteredKanColimitOrdinaryCocone_forget
 #check @SerrePositivity.InfinityCategories.F2.filteredKanColimitOrdinaryCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.filteredKanColimitCanonicalCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.filteredColimit_preservesFiniteLimits
+#check @SerrePositivity.InfinityCategories.F2.filteredPullbackIso
+#check @SerrePositivity.InfinityCategories.F2.intervalEndpointNatTrans
+#check @SerrePositivity.InfinityCategories.F2.intervalColimitIso_endpoint
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementColimitIso
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementColimitIso_endpoint
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackColimitIso
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackColimitIso_left
+#check @SerrePositivity.InfinityCategories.F2.equivalenceIntervalReplacementIso_endpoint
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementEndpoint_fibration
+#check @SerrePositivity.InfinityCategories.F2.intervalPullback_kanComplex
+#check @SerrePositivity.InfinityCategories.F2.filteredKanPullbackColimitIso
+#check @SerrePositivity.InfinityCategories.F2.filteredFibrationPullbackExchange
