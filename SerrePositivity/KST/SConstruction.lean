@@ -1015,4 +1015,9 @@ public import SerrePositivity.KST.SConstruction.TracedTripleOuterStagePasting
 public import SerrePositivity.KST.SConstruction.FixedCylinderComparisonAttachment
 public import SerrePositivity.KST.SConstruction.TracedTripleSharedDirectPasting
 public import SerrePositivity.KST.SConstruction.TracedTripleSharedDirectRealizationPasting
+public import SerrePositivity.KST.SConstruction.SpecifiedTriangleAttachmentFaces
+public import SerrePositivity.KST.SConstruction.OuterPastingFaceEquations
+public import SerrePositivity.KST.SConstruction.TripleRawAttachmentCorners
+public import SerrePositivity.KST.SConstruction.TripleRawDiagramPasting
+public import SerrePositivity.KST.SConstruction.TracedTripleRawDiagramPasting
 /-! # ∞-S• 構成と連結 K 理論 -/

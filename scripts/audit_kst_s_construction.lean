@@ -15259,3 +15259,99 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleSharedDirectRealizationPasting_right
 #check @SerrePositivity.KST.SConstruction.monicKTracedTripleSharedDirectRealizationPasting_relative
 #print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleSharedDirectRealizationPasting_relative
+#check @SerrePositivity.KST.SConstruction.specifiedTriangleAttachment_face
+#print axioms SerrePositivity.KST.SConstruction.specifiedTriangleAttachment_face
+#check @SerrePositivity.KST.SConstruction.outerBinaryPasting_left_first
+#print axioms SerrePositivity.KST.SConstruction.outerBinaryPasting_left_first
+#check @SerrePositivity.KST.SConstruction.outerBinaryPasting_left_second
+#print axioms SerrePositivity.KST.SConstruction.outerBinaryPasting_left_second
+#check @SerrePositivity.KST.SConstruction.outerBinaryPasting_right_first
+#print axioms SerrePositivity.KST.SConstruction.outerBinaryPasting_right_first
+#check @SerrePositivity.KST.SConstruction.outerBinaryPasting_right_second
+#print axioms SerrePositivity.KST.SConstruction.outerBinaryPasting_right_second
+#check @SerrePositivity.KST.SConstruction.outerStagePasting_left_diagonal
+#print axioms SerrePositivity.KST.SConstruction.outerStagePasting_left_diagonal
+#check @SerrePositivity.KST.SConstruction.outerStagePasting_right_diagonal
+#print axioms SerrePositivity.KST.SConstruction.outerStagePasting_right_diagonal
+#check @SerrePositivity.KST.SConstruction.outerStagePasting_right_whisker_corner
+#print axioms SerrePositivity.KST.SConstruction.outerStagePasting_right_whisker_corner
+#check @SerrePositivity.KST.SConstruction.correctionInterchangePasting_whisker_target
+#print axioms SerrePositivity.KST.SConstruction.correctionInterchangePasting_whisker_target
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstLower
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstLower
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstUpper
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstUpper
+#check @SerrePositivity.KST.SConstruction.tripleRawSecondUpper
+#print axioms SerrePositivity.KST.SConstruction.tripleRawSecondUpper
+#check @SerrePositivity.KST.SConstruction.tripleRawFirst_corner
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirst_corner
+#check @SerrePositivity.KST.SConstruction.tripleRawWhiskers_target
+#print axioms SerrePositivity.KST.SConstruction.tripleRawWhiskers_target
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstHorn
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstHorn
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstHorn_lower
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstHorn_lower
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstHorn_upper
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstHorn_upper
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstDomain
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstDomain
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstOriginal
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstOriginal
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstCell
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstCell
+#check @SerrePositivity.KST.SConstruction.tripleRawSecondAttachingUpper
+#print axioms SerrePositivity.KST.SConstruction.tripleRawSecondAttachingUpper
+#check @SerrePositivity.KST.SConstruction.tripleRawFirstCell_upper
+#print axioms SerrePositivity.KST.SConstruction.tripleRawFirstCell_upper
+#check @SerrePositivity.KST.SConstruction.tripleRawSecond_corner
+#print axioms SerrePositivity.KST.SConstruction.tripleRawSecond_corner
+#check @SerrePositivity.KST.SConstruction.tripleRawSecondHorn
+#print axioms SerrePositivity.KST.SConstruction.tripleRawSecondHorn
+#check @SerrePositivity.KST.SConstruction.tripleRawSecondHorn_diagonal
+#print axioms SerrePositivity.KST.SConstruction.tripleRawSecondHorn_diagonal
+#check @SerrePositivity.KST.SConstruction.tripleRawSecondHorn_upper
+#print axioms SerrePositivity.KST.SConstruction.tripleRawSecondHorn_upper
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPasting
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPasting
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPastingFirstOriginal
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPastingFirstOriginal
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPastingOriginal
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPastingOriginal
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPastingFirst
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPastingFirst
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPastingSecond
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPastingSecond
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_diagonal
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_diagonal
+#check @SerrePositivity.KST.SConstruction.specifiedOuterHorn_map
+#print axioms SerrePositivity.KST.SConstruction.specifiedOuterHorn_map
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstTriangle
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstTriangle
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawSecondTriangle
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawSecondTriangle
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstTriangle_lower
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstTriangle_lower
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstTriangle_upper
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstTriangle_upper
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawSecondTriangle_upper
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawSecondTriangle_upper
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawTriangles_diagonal
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawTriangles_diagonal
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstPasting
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstPasting
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstPasting_original
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstPasting_original
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstPasting_cell
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawFirstPasting_cell
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_first_original
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_first_original
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_original
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_original
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_first
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_first
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_second
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_second
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_generated
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_generated
