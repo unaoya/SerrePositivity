@@ -47,7 +47,7 @@
 
 1. 次数 fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱め、相対表現の延長へ一般化する。
    Kerodon Theorem 5.6.5.12、Corollary 5.6.5.15。40〜160時間。
-2. 実際の対象図式と相対表現の比較・単位と余単位の成分を全対象の coherent な自然性へ拡張し、充満忠実性と随伴の三角恒等式を完成する。本質的全射性は任意の小さい底で証明済み。
+2. 実際の分類写像の pinchedHomMap と既存の写像空間比較を照合し、充満忠実性を証明する。本質的全射性と F0 の判定で空間値の分類同値を結論する。明示的な単位・余単位と三角恒等式は同値の証明後の任意の追加結果とする。
    Kerodon Corollary 5.6.0.6、§5.6.5。24〜100時間。
 3. 必要な宇宙の一般化と cocartesian・Cat_∞ 値の分類へ進む。
    Kerodon Theorem 5.6.0.2、§5.5。80〜240時間以上。
@@ -80,7 +80,7 @@
 
 ### 未コミット
 
-- F1/、F1.lean、監査スクリプト、計画は所有ファイルのみ指定して保存する。未コミット実装なし。他レーンの変更は保存・巻き戻しを行わない。
+- F1/、F1.lean、監査スクリプト、計画は所有ファイルのみ指定して保存する。`StrictDiagramOppositeHom.lean` は係数反転の補助実装として未コミット（単体ビルド成功、集約・監査への追加前）。他レーンの変更は保存・巻き戻しを行わない。
 
 ### 既知の問題
 
@@ -93,13 +93,11 @@
 - 任意の単射の境界固定延長と高次パラメーターの同時持ち上げは、射影の各次数の fiber が小さい場合に証明済み。
   任意の底上の coherent 空間値図式の unstraightening にも底・パラメーターの小ささを仮定せず適用済み。
   各次数の fiber の小ささを essentially small な ∞ 圏的 fiber のみの条件へ弱める相対延長は未証明。
-- 単位・余単位の成分と底変換の自然性は証明済み。任意の小さい底の left fibrations の ∞ 圏から関手 ∞ 圏への leftStraighteningInfinityMap は構成済み。相対表現との対象図式全体の比較・本質的全射性・小さい unstraightening への余単位成分は証明済み。底が ∞ 圏なら実際の復元射と単位同型成分も構成済み。任意の底変換との全対象の両立と一点上の実際の分類同値は証明済み。写像空間の比較同値と実際の分類写像の作用の照合、相対表現との比較の自然性、一般の底の充満忠実性と三角恒等式は未証明。
+- 単位・余単位の成分と底変換の自然性は証明済み。任意の小さい底の left fibrations の ∞ 圏から関手 ∞ 圏への leftStraighteningInfinityMap は構成済み。相対表現との対象図式全体の比較・本質的全射性・小さい unstraightening への余単位成分は証明済み。底が ∞ 圏なら実際の復元射と単位同型成分も構成済み。任意の底変換との全対象の両立と一点上の実際の分類同値は証明済み。写像空間の比較同値と実際の分類写像の作用の照合、および一般の底の充満忠実性は未証明。明示的な単位・余単位と三角恒等式は分類同値の先行条件から外す。
 
 ### 次の一手
 
-次は元の反転 strict 図式の全 Hom パラメーターを、完成した左右区間の関手同型へ厳密に入れる。まず H = strictDiagramMappingSpace F G について、各成分の oppositeInternalHomIso を strict な自然性へ制限し、H.op から H′ = strictDiagramMappingSpace (F ⋙ kanObjectOpFunctor) (G ⋙ kanObjectOpFunctor) への実際の係数反転の射 Φ を構成する。H 自体の Kan 性を仮定しない。共通パラメーター q は edgewiseDuality H に edgewiseSubdivisionMap Φ を続けて作る。q に H′ の edgewiseRight を続けた射が元の反転豊穣 Hom 作用そのものに一致することを、edgewiseDuality_right と各成分の評価で照合する。kanEnrichedDiagramTwoSidedHomIntervalIso を kanDiagramUniversalEnriched I の反転後の二対象へ適用し、q で前合成する。右側は元の kanDiagramOppositeHomInterval に戻し、左側は同じ native な右射影のパラメーターを左 Hom の係数反転で表した区間族へ戻す。この両側の照合を済ませるまでは元の HomRight との比較と数えない。CoherentTwoSidedHomLeftEndpoint の HomIntervalHomotopy は全 Hom の共通解像上の元の左右 Hom 区間比較を結び、HomIntervalFamily_zero・one は選択を挟まない射の等式。KanEnrichedTwoSidedHomInterval の LeftHomInterval と TwoSidedHomIntervalHomotopy・Iso は同じ共同実現と指定した対象図式の端点正規化を保持する。左右の単体・path の再構成は再証明しない。その後、同じ共通 weighted 始域上で native な左 Hom 輸送の pointed prism を構成し、完成した右 Hom 区間との比較同型を実際の leftUnstraighteningMappingSpaceMap に後合成して元の HomRight へ接続する。始点は共通 weighted cone 比較と strictKanCommonUnstraighteningOpposite、終点は strictKanCommonWeightedHomFamily F G に元の標的比較と pullback.fst を続けた射に固定する。CommonWeightedHomAction の evaluation・projection と oppositeUnstraighteningHomLeft_common_uncurry は同じ終点と元の HomLeft の制限を厳密に照合済み。unstraighteningSourceFamilyComparisonIso と strictKanCommonWeightedDescendIso で全 Hom を保つ比較を元の weighted nerve 上へ戻す。右側と全く同じ底の prism を構成した場合の正規化・降下は oppositeUnstraighteningHomComparisonIsoOfPrism に保存済み。native な左区間を使う場合は、まず区間の関手同型を合成してから同じ降下を使い、同定理の prism の存在を仮定しない。P は持ち上げた edgewiseSubdivision H 全体であり、通常の射へ制限しない。weighted 作用は edgewiseRight、反転豊穣作用は edgewiseLeft を使うので同一視しない。WeightedConeDisplayTransport、WeightedUnstraighteningFunctorImage、weightedCoherentConeComparison_functorImage は元の比較を保つ界面。通常の図式の edgewiseOrdinaryLift は豊穣 Hom 全体の切断ではない。自然性四角形の共同実現と leftStrictTransportWeightedNerveEquivalence・元の scaffold の回収への接続は残る。leftCoherentTransportDirectComparison の対象ごとの選択の自然性は仮定しない。一般の底へは leftStraighteningInfinityMap_firstVertexOppositeIso と初頂点局所化で戻り、実際の分類写像の pinchedHomMap との全高次の照合、充満忠実性、自然な単位・余単位と三角恒等式へ進む。
-simplicialReplacementMappingSpaceMap は全 strict 変換空間を replacement 間の相対 Hom へ写し、単位・合成を厳密に保つ。tautScaffold_tensor、tautScaffold_mappingFamily、tautScaffold_mappingSpaceMap、universalScaffold_mappingFamily が全高次の可換式。SimplicialOverObject は充填性を要求しない底上の対象の豊穣圏であり、その coherent nerve が ∞ 圏とは主張しない。strictTransportReplacementOverEnriched から元の対象と weighted nerve への二つの SimplicialOverComparison を構成済み。exists_leftStrictTransport_reconstruction_span は同じ比較の成分を使用する。strictTransportKanDiagramEnriched は循環を避けて StrictTransportKanDiagramInclusion へ分離済み。係数反転の全対象の比較は前工程で完成しているので再証明しない。
-分類同値・既存の単位と余単位への接続・三角恒等式、essentially small な fiber への宇宙の一般化、Cat_∞ 値版は残る。
+F0 の充満忠実・本質的全射の判定を監査したが、現状では F1-1 を結論できない。c1 の `leftUnstraighteningMappingSpaceMap_isQCatEquivalence` は各対象対の区間変換空間から相対関手空間への比較の同値であり、全 coherent 図式に作用する一つの unstraightening の ∞ 関手とその `pinchedHomMap` との照合は未構成。一方、08:05 の成果に対応する `leftStraighteningInfinityMap_isEssentiallySurjective` は逆向きの実際の straightening 写像 S の本質的全射性であり、c1 とそのまま同じ関手の二仮定にはならない。次は既存の S の `pinchedHomMap` が既存の比較同値を回収することを全高次で照合して `IsFullyFaithful S` を証明し、`isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective S` に既証明の本質的全射性と渡す。この経路では明示的な単位・余単位と三角恒等式を先行条件にせず、同値の証明後の任意の追加結果とする。strict transport の像への同値と一点上の分類同値は一般の底の同値を代替しない。また、この空間値版が閉じても F1-1b3 の essentially small な fiber への一般化と F1-1d の Cat_∞ 値版は別に残るため、F1-1 全体を完了とは記さない。
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md)（レーン α）の成果を読み取り専用で使う。
 
 ## 0. 目標と範囲
