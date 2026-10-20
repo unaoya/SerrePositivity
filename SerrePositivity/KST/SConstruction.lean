@@ -906,4 +906,8 @@ public import SerrePositivity.KST.SConstruction.CoherentSavedConstantEdges
 public import SerrePositivity.KST.SConstruction.EnrichedReplacementEdgeFaces
 public import SerrePositivity.KST.SConstruction.EnrichedReplacementComparisonDiamond
 public import SerrePositivity.KST.SConstruction.TracedBFCompositionRecovery
+public import SerrePositivity.KST.SConstruction.FixedBoundaryCospanComparison
+public import SerrePositivity.KST.SConstruction.EndpointFixedTriangleHomotopy
+public import SerrePositivity.KST.SConstruction.EndpointFixedDiamondComparison
+public import SerrePositivity.KST.SConstruction.TracedBFCompositionRecoveryCylinder
 /-! # ∞-S• 構成と連結 K 理論 -/
