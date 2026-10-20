@@ -791,7 +791,15 @@ J-cell の非循環性は評価の余極限保存で証明する。局所表示�
 元の定値図式からの局所化 Hom の同値で、終域図式の射に自然。
 `CarrierDiagram.constantDiagramSourcePiZeroEquiv_class` は元の図式射の局所化像を回収する。
 `Diagram.forget_isRightQuillen` は具体的な両図式モデル間の忘却の右 Quillen 性。
-底の両錐の混合 Hom 比較と、底の一般右導来極限の普遍性への接続が残る。
+`carrierRightSimplicialFrameFamily` は同じ右 frame の底の単体的表示。
+`carrierRightSimplicialConeComparisonIso` はその Hom の錐と既存の底の右錐の自然同型。
+`carrierSourceRightConeComparisonIso`・`carrierSourceRightConeComparisonNatIso` は
+同じ複体の始域 frame と元の右 frame の底を混合 Hom で結ぶ比較で、元の図式射に自然。
+`carrierFramedLimitConePiZeroEquiv` は底の右錐の π₀ と元の定値複体図式からの
+忘却図式への局所化 Hom の同値で、終域図式に自然。
+`carrierFramedLimitDerivedHomEquiv` はこれを合成した、任意の複体から
+元の計算対象の底への局所化 Hom と定値複体図式の局所化 Hom の同値。
+元の錐による正規化と両変数の自然性をつなぎ、底の一般右導来極限比較を閉じる作業が残る。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
 `mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。
