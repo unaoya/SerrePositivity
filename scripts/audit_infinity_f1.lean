@@ -5214,3 +5214,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.weightedConeCutCoefficient_one
 #check @SerrePositivity.InfinityCategories.weightedConeCutCoefficient_reindex
 #check @SerrePositivity.InfinityCategories.pathCutMinimum_eq_pathFirstMinimum
+#check @SerrePositivity.InfinityCategories.pathPositiveShift
+#check @SerrePositivity.InfinityCategories.pathPositiveShiftFunctor
+#check @SerrePositivity.InfinityCategories.leftPrismCutPath
+#check @SerrePositivity.InfinityCategories.leftPrismCutPathFunctor
+#check @SerrePositivity.InfinityCategories.pathCutMinimumMap_eq_leftPrismCut
+#check @SerrePositivity.InfinityCategories.coherentLeftHomInterval_weightedConstantCone
+#check @SerrePositivity.InfinityCategories.coherentLeftHomInterval_obj_zero
+#check @SerrePositivity.InfinityCategories.coherentLeftHomInterval_obj_one
+#check @SerrePositivity.InfinityCategories.thickeningLeftPrismCut_map
+#check @SerrePositivity.InfinityCategories.coherentLeftHomIntervalMixedHom
+#check @SerrePositivity.InfinityCategories.coherentLeftHomIntervalMixedHom_eq_cut
