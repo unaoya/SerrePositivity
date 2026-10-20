@@ -7,10 +7,12 @@ public import SerrePositivity.KST.Spectra.ParameterizedExchangeSign
 public import SerrePositivity.KST.Spectra.LoopSignComponents
 public import SerrePositivity.KST.Spectra.NaturalLoopReversalPaths
 public import SerrePositivity.KST.Spectra.DeloopedTracedExchange
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyTrace
+public import SerrePositivity.KST.Spectra.OrdinaryLoopUniversalNaturality
 
 /-!
 概要：元の二重 loop 空間そのものの交換符号と二回の符号反転を、普遍的な区間族で実現する。
-方針：三重円の一つの普遍区間を Ω 条件へ移し、写像 path の全トレースを保持する。
+方針：通常円を内側にする一つの普遍区間を元の随伴へ移し、全トレースを保持する。
 規約：指定部分への垂直性は別条件。使われ方：元の随伴構造比較の区間データの追跡。
 -/
 
@@ -28,14 +30,14 @@ def exchange {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
     (ha : KanPiIsomorphism a.right) :
     PointedMapping.VerticalPath (PointedObject.toPoint (doubleLoop Y)) (swap Y) (reversal Y) :=
-  deloopedExchange (kanLoopLift a) (kanLoopLift_piIsomorphism a ha)
+  LoopExchangeFamily.exchange OrdinaryLoopSource.family.{u} a ha
 
 /-- 既存の交換区間の辺全体は、同じ写像 path 持ち上げの源射影そのもの。 -/
 lemma exchange_path {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
     (ha : KanPiIsomorphism a.right) :
     (exchange a ha).path =
-      (exchangeTrace (kanLoopLift a) (kanLoopLift_piIsomorphism a ha)).path.path := rfl
+      (LoopExchangeFamily.trace OrdinaryLoopSource.family.{u} a ha).path.path := rfl
 
 /-- 円自身の一つの区間から移した、二度の符号反転を恒等射へ戻す自然な区間族。 -/
 def reversalTwice (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :

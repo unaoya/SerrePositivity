@@ -888,3 +888,12 @@ public import SerrePositivity.KST.Spectra.PointedPathSquareReflection
 public import SerrePositivity.KST.Spectra.PointedPathSquareEndpointReflection
 public import SerrePositivity.KST.Spectra.DeloopedExchangeNaturality
 public import SerrePositivity.KST.Spectra.OrdinaryLoopExchangeSign
+public import SerrePositivity.KST.Spectra.UniversalSourceInterval
+public import SerrePositivity.KST.Spectra.UniversalSourceIntervalNaturality
+public import SerrePositivity.KST.Spectra.TwoLoopSourceCoordinates
+public import SerrePositivity.KST.Spectra.OrdinaryLoopUniversalSource
+public import SerrePositivity.KST.Spectra.OrdinaryLoopUniversalInterval
+public import SerrePositivity.KST.Spectra.PointedIntervalConjugateSquare
+public import SerrePositivity.KST.Spectra.LoopExchangeFamily
+public import SerrePositivity.KST.Spectra.OrdinaryLoopUniversalNaturality
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyTrace
