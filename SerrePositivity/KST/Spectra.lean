@@ -897,3 +897,12 @@ public import SerrePositivity.KST.Spectra.PointedIntervalConjugateSquare
 public import SerrePositivity.KST.Spectra.LoopExchangeFamily
 public import SerrePositivity.KST.Spectra.OrdinaryLoopUniversalNaturality
 public import SerrePositivity.KST.Spectra.LoopExchangeFamilyTrace
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyCoordinates
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyPostSquares
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyPostPasting
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyPreSquare
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyNaturalitySides
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyNaturalityImage
+public import SerrePositivity.KST.Spectra.LoopExchangeFamilyNaturality
+public import SerrePositivity.KST.Spectra.OrdinaryExchangeNaturality
+public import SerrePositivity.KST.Spectra.CancellationFirstNaturality
