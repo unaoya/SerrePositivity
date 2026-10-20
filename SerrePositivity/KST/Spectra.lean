@@ -906,3 +906,9 @@ public import SerrePositivity.KST.Spectra.LoopExchangeFamilyNaturalityImage
 public import SerrePositivity.KST.Spectra.LoopExchangeFamilyNaturality
 public import SerrePositivity.KST.Spectra.OrdinaryExchangeNaturality
 public import SerrePositivity.KST.Spectra.CancellationFirstNaturality
+public import SerrePositivity.KST.Spectra.SquareTransposition
+public import SerrePositivity.KST.Spectra.TriangleEdgePasting
+public import SerrePositivity.KST.Spectra.TriangleEdgeDifference
+public import SerrePositivity.KST.Spectra.TrianglePairComparison
+public import SerrePositivity.KST.Spectra.SignedLoopUnitTrianglePair
+public import SerrePositivity.KST.Spectra.SignedLoopUnitTriangleComparison
