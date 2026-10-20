@@ -1088,4 +1088,10 @@ public import SerrePositivity.KST.SConstruction.DGModuleClosedExactInclusion
 public import SerrePositivity.KST.SConstruction.PerfectDGStableModel
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionExact
+public import SerrePositivity.KST.SConstruction.ProjectiveGraphComparison
+public import SerrePositivity.KST.SConstruction.PerfectDGDerivedComparison
+public import SerrePositivity.KST.SConstruction.PerfectDGMoritaHomotopy
+public import SerrePositivity.KST.SConstruction.DGModuleHomShiftCriterion
+public import SerrePositivity.KST.SConstruction.PerfectDGMoritaEquivalence
+public import SerrePositivity.KST.SConstruction.PerfectDGMoritaRealization
 /-! # ∞-S• 構成と連結 K 理論 -/

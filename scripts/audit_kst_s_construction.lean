@@ -16207,3 +16207,42 @@ namespace SerrePositivity.KST.SConstruction
 #check @perfectDGStableMap
 #print axioms perfectDGStableMap
 end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @projectiveGraphAugmentation_isIso
+#print axioms projectiveGraphAugmentation_isIso
+#check @projectiveGraphComparison
+#print axioms projectiveGraphComparison
+#check @graphResolutionAugmentation_naturality
+#print axioms graphResolutionAugmentation_naturality
+#check @projectiveGraphComparison_naturality
+#print axioms projectiveGraphComparison_naturality
+#check @perfectDGDerivedComparisonAt
+#print axioms perfectDGDerivedComparisonAt
+#check @perfectDGDerivedComparisonAt_naturality
+#print axioms perfectDGDerivedComparisonAt_naturality
+#check @perfectDGDerivedComparison
+#print axioms perfectDGDerivedComparison
+#check @perfectDGExtensionPerfectComparison
+#print axioms perfectDGExtensionPerfectComparison
+#check @perfectDGExtensionHomotopy_isEquivalence
+#print axioms perfectDGExtensionHomotopy_isEquivalence
+#check @dgHom_quasiIsoAt_zero_of_bijective
+#print axioms dgHom_quasiIsoAt_zero_of_bijective
+#check @dgModuleHom_shift_zero_iff
+#print axioms dgModuleHom_shift_zero_iff
+#check @dgModuleHom_quasiIso_of_shift_zero
+#print axioms dgModuleHom_quasiIso_of_shift_zero
+#check @perfectDGExtension_homQuasiIso
+#print axioms perfectDGExtension_homQuasiIso
+#check @perfectDGExtension_quasiEquivalence
+#print axioms perfectDGExtension_quasiEquivalence
+#check @perfectDGMoritaNerve_isQCatEquivalence
+#print axioms perfectDGMoritaNerve_isQCatEquivalence
+#check @perfectDGMoritaStableEquivalence
+#print axioms perfectDGMoritaStableEquivalence
+#check @perfectDGMoritaStableEquivalence_hom
+#print axioms perfectDGMoritaStableEquivalence_hom
+#check @perfectDGMoritaRealization_localized_isIso
+#print axioms perfectDGMoritaRealization_localized_isIso
+end SerrePositivity.KST.SConstruction
