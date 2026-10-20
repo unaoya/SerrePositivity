@@ -55,7 +55,11 @@ def framedLimitConeSpace (Y : (operad A).Algebra) :
     (CategoryTheory.evaluation (operad A).Algebraᵒᵖ (Kᵒᵖᵒᵖ ⥤ SSet.{u})).obj
       (op (framedLimitProbe A Y)) ⋙ WeightedCones.coneSpace Kᵒᵖᵒᵖ (framedLimitWeight K)
 
-private lemma framedLimitWeight_cofibrant :
+/-- 概要：計算対象の二重反対化した一点重みは射影 cofibrant（Hovey §5.4）。
+方針：添字の同値による保存と初期図式の同型を使う。
+規約：元の自由境界の左類を保持する。
+使われ方：一般 homotopy 極限の実現と写像空間の不変性。 -/
+lemma framedLimitWeight_cofibrant :
     (HomotopyWeight.boundaries Kᵒᵖᵒᵖ).rlp.llp (initial.to (framedLimitWeight K)) := by
   have h := HomotopyWeight.reindex_cofibration (opOpEquivalence K)
     (initial.to (HomotopyWeight.weight K)) (HomotopyWeight.weight_cofibrant K)

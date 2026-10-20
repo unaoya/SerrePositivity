@@ -709,8 +709,13 @@ nullary を含む TR の部分合成保存は完了。
 頂点ごとの擬同型の anodyne 反転後の同型性。図式モデルや元の代数の cofibrancy は要求しない。
 `FrameHom.map_isIso_of_pointwise_cofibrant` の自然な Brown 分解と、
 `HomotopyWeight.frameCone_source_weakEquivalence_isIso` がこの比較を与える。
-計算対象への Map^h とこの錐空間の比較は未構成。
-計算関手のホモトピー不変性・右導来極限の普遍性は未完成。
+`HomotopyWeight.tensorFrame` は同じ重みに標準単体をテンソルして実現する Reedy cofibrant frame。
+単体作用素は弱同値で、`tensorFrameHomIso` はその実際の Hom と元の重み付き錐の自然同型。
+`frameConePiZeroLocalizationEquiv` は錐の π₀ と元の実現対象からの局所化 Hom の同値。
+零単体の計算と係数 frame の射に関する自然性も証明済み。
+`realization_map_frame_weakEquivalence` はこの比較で係数の弱同値を検出する。
+`framedLimitFunctor_map_quasiIso` は具体的な計算関手の頂点ごとの擬同型保存。
+計算関手の右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
 `mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。

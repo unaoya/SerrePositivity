@@ -1667,6 +1667,23 @@ run_cmd do
       `SerrePositivity.EInfinity.HomotopyWeight.frameCone_target_weakEquivalence_isIso,
       `SerrePositivity.EInfinity.HomotopyWeight.frameCone_source_trivialCofibration_isIso,
       `SerrePositivity.EInfinity.HomotopyWeight.frameCone_source_weakEquivalence_isIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealizationAdjunction,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization_map_mono,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization_map_anodyne,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrame,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrame_reedyCofibrant,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrame_homotopicallyConstant,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.unitTensorWeightIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.zeroTensorWeightIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameZeroIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_mk,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization_homEquiv_frame_naturality,
+      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso_source_naturality,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_source,
+      `SerrePositivity.EInfinity.HomotopyWeight.realization_map_frame_weakEquivalence,
       `SerrePositivity.EInfinity.HomotopyWeight.comparison_mono_rlp,
       `SerrePositivity.EInfinity.HomotopyWeight.weight_kanComplex,
       `SerrePositivity.EInfinity.HomotopyWeight.valueSection,
@@ -1690,11 +1707,17 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.limitComparisonNatTrans,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitWeight_cofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor_map_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_kanComplex,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_map_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_map_piZero_bijective,
       `SerrePositivity.EInfinity.FrameHom.map_isIso_of_fibrant,
       `SerrePositivity.EInfinity.FrameHom.map_isIso_of_pointwise_cofibrant,
+      `SerrePositivity.EInfinity.FrameHom.StandardFrame.reedyCofibrant,
+      `SerrePositivity.EInfinity.FrameHom.StandardFrame.homotopicallyConstant,
+      `SerrePositivity.EInfinity.FrameHom.StandardFrame.homIso,
+      `SerrePositivity.EInfinity.FrameHom.weakEquivalence_of_localized_precomposition_fibrant,
       `SerrePositivity.EInfinity.FrameHom.target_boundary_rlp,
       `SerrePositivity.EInfinity.FrameHom.target_trivialFibration_isIso,
       `SerrePositivity.EInfinity.FrameHom.target_weakEquivalence_isIso,
@@ -4677,3 +4700,29 @@ example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
   obtain ⟨hinj, hsurj⟩ := framedLimitConeSpace_map_piZero_bijective ℤ ℕ f hf Y
   obtain ⟨w, hw⟩ := hsurj z
   exact ⟨w, hw, fun w' hw' => hinj (hw'.trans hw.symm)⟩
+
+-- 実際の計算対象の擬同型は、同じ底の重み付き end の比較同型を通しても擬同型。
+open SerrePositivity.EInfinity.BarrattEccles in
+example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
+    (hf : ∀ k, QuasiIso (f.app k).hom) :
+    QuasiIso ((framedLimitCarrierIso ℤ ℕ F).inv ≫
+      ((framedLimitFunctor ℤ ℕ).map f).hom ≫ (framedLimitCarrierIso ℤ ℕ G).hom) := by
+  have := framedLimitFunctor_map_quasiIso ℤ ℕ f hf
+  infer_instance
+
+-- 元の図式の頂点ごとの擬同型は、計算対象の局所化後の実際の二側逆を持つ。
+open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
+    (hf : ∀ k, QuasiIso (f.app k).hom) :
+    let := BarrattEccles.modelCategory ℤ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    ∃ g : Q.obj ((framedLimitFunctor ℤ ℕ).obj G) ⟶
+        Q.obj ((framedLimitFunctor ℤ ℕ).obj F),
+      Q.map ((framedLimitFunctor ℤ ℕ).map f) ≫ g = 𝟙 _ ∧
+        g ≫ Q.map ((framedLimitFunctor ℤ ℕ).map f) = 𝟙 _ := by
+  let := BarrattEccles.modelCategory ℤ
+  let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+  have : IsIso (Q.map ((framedLimitFunctor ℤ ℕ).map f)) :=
+    Localization.inverts Q (weakEquivalences (BarrattEccles.operad ℤ).Algebra) _
+      (framedLimitFunctor_map_quasiIso ℤ ℕ f hf)
+  exact ⟨inv _, IsIso.hom_inv_id _, IsIso.inv_hom_id _⟩
