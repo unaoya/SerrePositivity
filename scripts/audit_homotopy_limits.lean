@@ -10480,3 +10480,102 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfLeftHom_twoStageLift
 #print axioms quillenCfLeftHom_twoStageLift
+
+#check @finalHornPenultimate
+#print axioms finalHornPenultimate
+
+#check @finalHornPenultimate_lt_last
+#print axioms finalHornPenultimate_lt_last
+
+#check @finalHornPenultimate_pos
+#print axioms finalHornPenultimate_pos
+
+#check @lt_finalHornPenultimate_of_lt_last_ne
+#print axioms lt_finalHornPenultimate_of_lt_last_ne
+
+#check @FinalHornKnownInterval
+#print axioms FinalHornKnownInterval
+
+#check @finalHornKnownIntervalFunctor
+#print axioms finalHornKnownIntervalFunctor
+
+#check @finalHornKnownIntervalFunctor_obj
+#print axioms finalHornKnownIntervalFunctor_obj
+
+#check @finalHornKnownIntervalFunctor_eq_viaFace
+#print axioms finalHornKnownIntervalFunctor_eq_viaFace
+
+#check @finalHornKnownIntervalHom
+#print axioms finalHornKnownIntervalHom
+
+#check @finalHornKnownIntervalHom_eq_interval
+#print axioms finalHornKnownIntervalHom_eq_interval
+
+#check @finalHornKnownIntervalHom_eq_viaFace
+#print axioms finalHornKnownIntervalHom_eq_viaFace
+
+#check @finalHornKnownIntervalHom_on_subinterval
+#print axioms finalHornKnownIntervalHom_on_subinterval
+
+#check @finalHornKnownIntervalHom_id
+#print axioms finalHornKnownIntervalHom_id
+
+#check @finalHornKnownIntervalHom_comp
+#print axioms finalHornKnownIntervalHom_comp
+
+#check @finalHornKnownIntervalHom_on_face
+#print axioms finalHornKnownIntervalHom_on_face
+
+#check @finalHornCompositionHom
+#print axioms finalHornCompositionHom
+
+#check @finalHornCompositionHom_on_product
+#print axioms finalHornCompositionHom_on_product
+
+#check @finalHornCompositionHom_eq_known
+#print axioms finalHornCompositionHom_eq_known
+
+#check @finalHornUpperCompositionHom
+#print axioms finalHornUpperCompositionHom
+
+#check @finalHornCompositionHom_composition_overlap
+#print axioms finalHornCompositionHom_composition_overlap
+
+#check @finalHornCompositionHom_zero_overlap
+#print axioms finalHornCompositionHom_zero_overlap
+
+#check @finalHornCompositionHom_zero_overlap_general
+#print axioms finalHornCompositionHom_zero_overlap_general
+
+#check @finalHornUpperCompositionHom_overlap
+#print axioms finalHornUpperCompositionHom_overlap
+
+#check @finalHornZeroHom_composition_overlap
+#print axioms finalHornZeroHom_composition_overlap
+
+#check @finalHornHollowPoint
+#print axioms finalHornHollowPoint
+
+#check @finalHornHollowOtherPoint_lt
+#print axioms finalHornHollowOtherPoint_lt
+
+#check @finalHornHollowFaceHom
+#print axioms finalHornHollowFaceHom
+
+#check @finalHornHollowFaceHom_compatible
+#print axioms finalHornHollowFaceHom_compatible
+
+#check @finalHornHollowHom
+#print axioms finalHornHollowHom
+
+#check @finalHornHollowHom_on_face
+#print axioms finalHornHollowHom_on_face
+
+#check @finalHornHollowHom_extension
+#print axioms finalHornHollowHom_extension
+
+#check @finalHornHollowHom_extension_components
+#print axioms finalHornHollowHom_extension_components
+
+#check @quillenCfFinalHornHollow_extension
+#print axioms quillenCfFinalHornHollow_extension

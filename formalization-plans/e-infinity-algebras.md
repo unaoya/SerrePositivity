@@ -21,7 +21,10 @@
   `UpperMissingCylinder`・`UpperMissingCube`・`UpperMissingPath` は上面一つを欠く部分の anodyne 性と Kan 延長を構成。
   `UpperMissingPathCover` は全零座標面と指定外の合成面の正確な被覆・貼り合わせ・全既知面を保持する延長。`PathCubeBoundary` は元の全境界を固定した trivial Kan 持ち上げ。
   `QuillenCfOuterHomFilling` は空洞の Kan 延長と上面の trivial Kan 持ち上げを、元の左右の候補辺の Hom 射に代入。二つの未知写像を元の境界と底の写像を保持して構成する。
-  **未完了**：実際の外側ホーンからこの入力面データ・整合性を導くこと、豊穣関手の復元、Cartesian/coCartesian 性、導来 ∞ 随伴、右導来関手の一般 coherent 極限保存。
+  `FinalHornKnownIntervals`・`FinalHornIntervalHom` は実際の最終外側ホーンの既知区間を元の面から回収し、選択独立性・単位・合成・全既知面への制限を照合。
+  `FinalHornComposition`・`FinalHornFaceCompatibility` は実際の零座標面と既知合成面の回収を構成し、全ての二面の交わりでの一致を証明。整合性は追加仮定にしない。
+  `FinalHornHollow` は元の最終外側ホーンから上面欠損 Path の Hom 写像を貼合せ、端点 Hom の Kan 性から全既知面を固定した延長を構成。`QuillenCfFinalHornHollow` は元の cf 対応圏へ代入済み。
+  **未完了**：前半の未知 Hom の全境界の回収・持ち上げと Path 座標の照合、豊穣関手の復元、初期外側ホーンの双対、Cartesian/coCartesian 性、導来 ∞ 随伴と一般 coherent 極限保存。
 - **残り**（依存順、時間は再開後の概算）：
   1. N-2：候補辺の Cartesian・coCartesian 性を、元の外側ホーンの相対持ち上げで証明。HTT 5.2.4.4〜6、8〜20時間。
   2. N-2：F1b の随伴 API へ接続し、導来 ∞ 随伴・単位/余単位・三角整合性と一般 coherent 極限保存。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
@@ -41,25 +44,27 @@
   `HomotopyLimits.quillenCfRightLiftEdge`、`HomotopyLimits.quillenCfLeftLiftEdge`、
   `HomotopyLimits.quillenCfRightLiftHom_trivialKanFibration`、`HomotopyLimits.quillenCfLeftLiftHom_trivialKanFibration`、
   `HomotopyLimits.upperMissingPathFace_extension`、`HomotopyLimits.pathCubeBoundary_lift`、
-  `HomotopyLimits.quillenCfRightHom_twoStageLift`、`HomotopyLimits.quillenCfLeftHom_twoStageLift`。
+  `HomotopyLimits.quillenCfRightHom_twoStageLift`、`HomotopyLimits.quillenCfLeftHom_twoStageLift`、
+  `HomotopyLimits.finalHornKnownIntervalHom`、`HomotopyLimits.finalHornKnownIntervalHom_on_face`、
+  `HomotopyLimits.finalHornHollowHom_extension_components`、`HomotopyLimits.quillenCfFinalHornHollow_extension`。
 - **依存と提供**：F1・F1b（coherent Hom・随伴）、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけ。実施記録はコミットメッセージ。
-- **未コミット**：今回の上面一つを欠く柱・立方体・Path、面被覆・全境界、元の左右の候補辺に沿う二段延長の6モジュール29宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンの差分は保存対象外。
+- **未コミット**：今回の最終外側ホーンの既知区間回収・実際の面写像と整合性・空洞の貼合せと延長・cf 対応圏への代入の6モジュール33宣言、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンの差分は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は修正版を正しい場所へ保存済みの N 旧稿と確認し、削除済み。
 - **既知の問題**：N の対象ビルド・監査に失敗なし。新規 sorry・追加公理なし。一般 γ4 は未完了。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定せず、固定 Quillen 類を使う。
   `FixedSimplicialPushoutProduct` と豊穣随伴の合成互換は標準 simplicial model/adjunction の明示入力であり、通常の Quillen 随伴だけから導いたとは扱わない。Sp・E2b への適用時に構成・証明する。
   元の Hom 同型の終域への通常の自然性だけで ∞ 随伴を完成と数えない。Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。
   他レーンの import 閉包が壊れたら回避せず停止。他レーンの作業中変更を保存しない。
-- **次の一手**：N-2。実際の最終外側ホーンから `upperMissingPathFace` 上の Hom 写像を回収し、二面の交わりでの一致を証明する。既存の上面欠損・二段延長を再実装しない。
+- **次の一手**：N-2。前半の未知 Hom [0,penultimate] の全 Path 境界を、元の最終外側ホーンから回収する。今回の既知区間・面の整合性・後半 Hom の Kan 延長を再実装しない。
   原典は [HTT 5.2.4.4〜6・Remark 5.2.4.7](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=371)（閲覧・本文照合済み）。5.2.4.6 は simplicial model categories と simplicial Quillen adjunction の命題。
   `F1/CartesianEdge` の述語は指定最終/先頭辺を固定した外側ホーンの相対持ち上げ。Hom の trivial Kan 射だけで満たしたとは扱わない。
   最終ホーンでは [0,n+1] と [0,n+2] の二つの Hom が未知。`i` を penultimate とし、後者を上面一つ欠く空洞から延長、その上面を候補辺の後合成に沿って持ち上げて前者を構成する。
-  `Coherent/HornData`・`HornCells` の回収は外側でも使用可能。`HornHollow`・`FilledFunctor` 等は内ホーンの二不等式を要求するため、未知 Hom が一つという仮定をそのまま流用しない。
-  `Coherent/FullFaceCompatibility.hornInnerZeroHom` とその `_overlap` はホーンの欠損頂点 i の内側性を要求しないため、最終ホーンの全零座標面に再使用可能。合成面との整合の補題は内側性を要求するので別途必要。
-  最初の補助構成案：未知二区間以外の [a,b] の Hom は、a>0 なら既知面 δ0、b<penultimate なら既知面 δpenultimate から回収する。同じ面への回収・選択独立性・三対象の合成を証明してから合成面の写像へ使う。
-  `Coherent/IntervalFunctor.hornIntervalViaFace` と `IntervalChoice.hornIntervalViaFace_independent`・`hornIntervalHom_independent` は任意の欠損頂点を扱う。区間外の既知面の選択独立性はこれらを再使用し、内ホーン専用の `hornProperIntervalFunctor` だけを置き換える。
+  `PathCubeBoundary` の全境界を、全零座標面と全合成面で被覆して貼り合わせる。前半では penultimate 座標を除外するのではなく、内部点の全合成面を用いる。二次元ホーンではこの境界が空になる場合も保持する。
+  前半の零座標面は元の同じ既知面から回収し、合成面は `finalHornCompositionHom` の終点を penultimate として構成。今回の一般の混合面・合成面重なりの補題は任意端点で使える。
+  既知区間の面選択は a>0 なら δ0、それ以外は δpenultimate。`finalHornKnownIntervalHom_eq_viaFace`・`_on_subinterval`・`_comp`・`_on_face` を使う。未知二区間を内ホーン用の一つの未知 Hom に置き換えない。
+  元の右候補辺の Hom の trivial Kan 性は下段の試験始域についての命題。相対ホーンの底の可換正方形と、固定最終辺の底が 0→1 であることから、全ての前半頂点が下段にあることを証明して代入する。ambient の全対象に同じ Hom 条件を仮定しない。
   次に Path の penultimate 座標分離・残りの立方体と前半 Path の同型を元の合成面で照合し、二つの Hom を含む豊穣関手を復元する。小次元も省略しない。
   `F1/CocartesianCosliceConverse.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration` と `CartesianOpposite` も使用可能。ただし相対 coslice と通常の豊穣 Hom の射を混同しない。
   F1b の随伴 API への接続では、`QCatFunctorHomCorrespondence` なら任意の quasicategory パラメータ A の整合が必要。`Localization.IsLocalization` は普遍性の定義で、任意 W の局所化の存在定理ではない。
