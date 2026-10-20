@@ -10069,3 +10069,93 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @chosenQuillenRightTargetReplacement_homotopyEquivalence
 #print axioms chosenQuillenRightTargetReplacement_homotopyEquivalence
+
+#check @FixedSimplicialPushoutProduct
+#print axioms FixedSimplicialPushoutProduct
+
+#check @fixedTensor_mono_cofibration
+#print axioms fixedTensor_mono_cofibration
+
+#check @fixedTensor_anodyne_trivialCofibration
+#print axioms fixedTensor_anodyne_trivialCofibration
+
+#check @fixedEnrichedHom_trivialKanFibration
+#print axioms fixedEnrichedHom_trivialKanFibration
+
+#check @fixedEnrichedHom_fibration
+#print axioms fixedEnrichedHom_fibration
+
+#check @fixedEnrichedHom_kanComplex
+#print axioms fixedEnrichedHom_kanComplex
+
+#check @fixedEnrichedHom_sourceTrivialKanFibration
+#print axioms fixedEnrichedHom_sourceTrivialKanFibration
+
+#check @quillenRightReplacement_isFibrant
+#print axioms quillenRightReplacement_isFibrant
+
+#check @quillenLeftReplacement_isCofibrant
+#print axioms quillenLeftReplacement_isCofibrant
+
+#check @quillenRightReplacementHom_trivialKanFibration
+#print axioms quillenRightReplacementHom_trivialKanFibration
+
+#check @quillenMixedHom_kanComplex
+#print axioms quillenMixedHom_kanComplex
+
+#check @quillenLeftReplacementHom_trivialKanFibration
+#print axioms quillenLeftReplacementHom_trivialKanFibration
+
+#check @quillenCfCollageObjects
+#print axioms quillenCfCollageObjects
+
+#check @QuillenCfCollage
+#print axioms QuillenCfCollage
+
+#check @quillenCfCollage_simplicialCategory
+#print axioms quillenCfCollage_simplicialCategory
+
+#check @quillenCfCollage_sHom_kanComplex
+#print axioms quillenCfCollage_sHom_kanComplex
+
+#check @QuillenCfCollageInfinity
+#print axioms QuillenCfCollageInfinity
+
+#check @quillenCfCollageInfinity_quasicategory
+#print axioms quillenCfCollageInfinity_quasicategory
+
+#check @CofibrantFibrantObjects
+#print axioms CofibrantFibrantObjects
+
+#check @cofibrantFibrantObject_isCofibrant
+#print axioms cofibrantFibrantObject_isCofibrant
+
+#check @cofibrantFibrantObject_isFibrant
+#print axioms cofibrantFibrantObject_isFibrant
+
+#check @cofibrantFibrantObjects_sHom_kanComplex
+#print axioms cofibrantFibrantObjects_sHom_kanComplex
+
+#check @cofibrantFibrantObjects_nerve_quasicategory
+#print axioms cofibrantFibrantObjects_nerve_quasicategory
+
+#check @quillenCfCollageBottom
+#print axioms quillenCfCollageBottom
+
+#check @quillenCfCollageTop
+#print axioms quillenCfCollageTop
+
+#check @quillenCfCollageBottomNerve
+#print axioms quillenCfCollageBottomNerve
+
+#check @quillenCfCollageTopNerve
+#print axioms quillenCfCollageTopNerve
+
+#check @FixedSimplicialPushoutProduct.cofibration
+#print axioms FixedSimplicialPushoutProduct.cofibration
+
+#check @FixedSimplicialPushoutProduct.anodyne
+#print axioms FixedSimplicialPushoutProduct.anodyne
+
+#check @FixedSimplicialPushoutProduct.trivial
+#print axioms FixedSimplicialPushoutProduct.trivial
