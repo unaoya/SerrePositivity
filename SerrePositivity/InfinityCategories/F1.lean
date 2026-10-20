@@ -1444,3 +1444,23 @@ public import SerrePositivity.InfinityCategories.F1.RightFibrationMappingSpaces
 public import SerrePositivity.InfinityCategories.F1.RightStraighteningInfinityEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.RightStraighteningUnstraightening
+
+public import SerrePositivity.InfinityCategories.F1.SmallKanModel
+
+public import SerrePositivity.InfinityCategories.F1.TransportRepresentationPrecompose
+
+public import SerrePositivity.InfinityCategories.F1.EssentiallySmallFibersBaseChange
+
+public import SerrePositivity.InfinityCategories.F1.EssentiallySmallPointWitness
+
+public import SerrePositivity.InfinityCategories.F1.EssentiallySmallSimplexWitness
+
+public import SerrePositivity.InfinityCategories.F1.EssentiallySmallFiniteWitness
+
+public import SerrePositivity.InfinityCategories.F1.EssentiallySmallWitnessContractible
+
+public import SerrePositivity.InfinityCategories.F1.EssentiallySmallStraightening
+
+public import SerrePositivity.InfinityCategories.F1.EssentiallySmallCartesianExtension
+
+public import SerrePositivity.InfinityCategories.F1.EssentiallySmallRepresentationComparison

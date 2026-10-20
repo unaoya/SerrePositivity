@@ -7,7 +7,8 @@
 ### 現在地
 
 - F1a〜F1c の fibration・transport・coherent nerve の基盤は提供済み。F1d は未完了。
-- 小さい単体 fiber について、任意の底・境界固定の相対表現の延長と表現空間の可縮性を証明済み。
+- 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
+  全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
   weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
 - c1 の実際の unstraightening の写像空間比較は、区間・pinched・宇宙縮小後とも同値。
   通常の圏の nerve 上の元の S は充満忠実かつ本質的全射で、F0 により分類同値を閉じた。
@@ -28,17 +29,11 @@
   元の表現可能射影と rep(y) の小さい right unstraightening の間の、底上の実際の同値を構成済み。
 - 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
   を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
-- Tw 全体の同じ復元射を終点固定で制限し、rep(y) の unstraightening への底上の前合成同値を
-  構成済み。この同じ全体からの恒等点は始対象で、その直接評価は自明 Kan fibration。
-- 始点固定・終点固定の Tw 恒等点は全空間内で厳密に一致。同じ全体からの評価点の像も照合済み。
-- fiber Hom とその指定点での評価は、全空間の同型・宇宙移送・縮小同型と全パラメーターで可換。
-  `canonicalYonedaTransformationFiberEvaluation` は同値で、c1 の実際の普遍輸送の評価と関手同型。
-- Tw 全体から pointed-space への同じ比較と各 fiber の同値を構成済み。始点固定の底は同じ
-  Yoneda 写像の指定点評価と厳密に一致し、その恒等点の像も c1 の同じ評価点に一致する。
-- 全空間の始対象で評価した実際の普遍輸送が同値となる一般定理も証明済み。
+- Tw の恒等点は両固定方向で一致し、同じ評価点を全空間・宇宙移送・縮小後まで照合済み。
+  恒等点は始対象で、直接評価は自明 Kan fibration。全パラメーターの評価と輸送の比較も証明済み。
 - `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
   実際の区間 Hom 作用と標準 pinched Hom 作用の同値性を、同じ恒等点評価と輸送から回収した。
-  空間値・前層の分類は閉じた。essentially small fiber への相対延長と Cat∞ 値版が残り、F1 全体は未完了。
+  空間値の essentially small Kan fiber への相対延長も閉じた。Cat∞ 値版が残り、F1 全体は未完了。
 
 ### 残り（依存順）
 
@@ -46,7 +41,8 @@
 
 1. F1-1c2 の小さい quasicategory 上の空間値版は完了。Kerodon Cor 5.6.0.6、§5.6.5。
    明示的な単位・余単位と三角恒等式は任意。任意の単体集合への拡張は別件。
-2. essentially small な ∞ 圏的 fiber への相対延長。Thm 5.6.5.12、Cor 5.6.5.15。40〜160時間。
+2. essentially small Kan fiber の空間値相対延長は完了。非 Kan の ∞ 圏的 fiber は次項に残る。
+   Thm 5.6.5.12、Cor 5.6.5.15 の一般の cocartesian 版と区別する。
 3. cocartesian・Cat∞ 値の分類と必要な宇宙の一般化。Thm 5.6.0.2、§5.5。80〜240時間以上。
 4. F1-2：Yoneda・前層と right fibration 分類は完了。Kerodon §§8.1〜8.3。
    twisted arrow・Hom 関手と前層の極限・余極限の後続項目は、本項目と区別する。
@@ -55,7 +51,9 @@
 ### 主要宣言（名前のみ）
 
 - `leftStraighteningInfinityMap`、`leftStraighteningInfinityMap_isEssentiallySurjective`
-- `leftStraighteningCoherentEquivalence`、`leftStraighteningInfinityReconstruction`
+- `HasEssentiallySmallFibers`、`hasEssentiallySmallFibers_iff_transportRepresentation`
+- `exists_essentiallySmall_leftTransportRepresentation_extension`
+- `essentiallySmallTransportWitnessRestriction_trivialKanFibration`
 - `leftStraighteningInfinityMap_isQCatEquivalence`、`leftStraighteningInfinityEquivalence`
 - `RightFibrationInfinity`、`rightStraighteningInfinityEquivalence`、`rightUnstraighteningInfinityMap`
 - `rightStraighteningInfinityCounitVertex`、`rightUnstraighteningInfinityVertexIso`
@@ -79,26 +77,27 @@
 - N が読む指定2ファイルと集約は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd` に保存済み。
 - 相対引き戻しの自然性と比較による反映は `843708965` に保存済み。
 - 一般の小さい quasicategory 上の空間値分類同値は `e987f35af` に保存済み。
-- right fibration の元の相対 Hom と前層による分類の所有8モジュール、集約・監査・本計画が保存単位。
-  F1 全体ビルド4452 jobs、公理監査10064宣言が成功（標準3公理のみ）。
+- right fibration と前層の分類は `56dd08ad4` に保存済み。
+- essentially small Kan fiber の空間値相対延長の所有10モジュール、集約・監査・本計画が保存単位。
+  F1 全体ビルド4462 jobs、公理監査10118宣言が成功（標準3公理のみ）。
 
 ### 既知の問題
 
 - λ は局所化であり、圏同値として消去しない。実際の初頂点引き戻しの Hom 作用を証明した。
 - Yoneda の充満忠実性は元の Hom 作用そのものの同値性で証明した。独立な c1 の同値だけでは
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
-- strict Kan 図式の strict な Hom が一般に Kan とは主張しない。小さい単体 fiber の条件を
-  essentially small な ∞ 圏的 fiber だけへ弱める相対延長と、Cat∞ 値の分類も未証明。
+- strict Kan 図式の strict な Hom が一般に Kan とは主張しない。Cat∞ 値の分類と、
+  essentially small な非 Kan の ∞ 圏的 fiber への相対延長は未証明。
 
 ### 次の一手
 
-空間値の F1-1c2 と、F1-2 の Yoneda・前層・right fibration 分類は閉じた。
-次は F1-1b3：次数ごとの小ささを essentially small な ∞ 圏的 fiber の条件へ弱める相対延長。
-既存の `HasSmallSimplexFibers` と `LeftTransportRepresentation` の境界固定延長の入力を読み、
-各 fiber の小さい Kan 模型の選択を、底上の同じ全空間の比較へ組み立てる。
-単なる「小さい全空間」の仮定追加では代用しない。Thm 5.6.5.12、Cor 5.6.5.15 の一般形を照合する。
-その後 cocartesian・Cat∞ 値版へ進む。通常圏 nerve 上の古典的な回収も残る。
-Yoneda の元の Hom 作用と元の right fibration 分類は再構成しない。明示的な三角恒等式は任意。
+空間値の F1-1c2、essentially small Kan fiber の相対延長、F1-2 の分類は閉じた。
+次は Cat∞ 値の cocartesian 分類。`QCatSimplicial.lean` の Cat∞ と、既存の cocartesian な辺・
+相対 transport の道具を読み、cocartesian 射を保つ底上の関手の相対 Hom を構成する。
+一般の fiber は Kan ではないため、その Hom の全体をそのまま豊穣 Hom に使わず可逆二胞体を取る。
+対象付き quasicategory の普遍的 cocartesian fibration も必要。Cat∞ の通常の coslice は
+left fibration しか与えず、分類の代用にはしない。Thm 5.6.0.2 と相対普遍性の一般形を進める。
+通常圏 nerve 上の古典的な回収も残る。明示的な三角恒等式は任意のまま。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 
