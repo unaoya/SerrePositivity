@@ -57,4 +57,19 @@ lemma fiberwiseIntervalPullbackPath_one :
   rw [Category.assoc]
   exact pullback.condition
 
+/-- 概要：fiber ごとの path 引き戻しへの射は元の三座標で決まる。
+方針：二段の引き戻しの射影による一意性を使う。
+規約：path は底を固定した全 path。使われ方：一段の相対両端引き戻しとの比較。 -/
+lemma fiberwiseIntervalPullback_hom_ext {T : SSet.{u}}
+    {a b : T ⟶ fiberwiseIntervalPullback p f g}
+    (hp : a ≫ fiberwiseIntervalPullbackPath p f g = b ≫ fiberwiseIntervalPullbackPath p f g)
+    (hl : a ≫ fiberwiseIntervalPullbackLeft p f g = b ≫ fiberwiseIntervalPullbackLeft p f g)
+    (hr : a ≫ fiberwiseIntervalPullbackRight p f g = b ≫ fiberwiseIntervalPullbackRight p f g) :
+    a = b := by
+  apply pullback.hom_ext (f := fiberwiseIntervalReplacementEndpoint p f) (g := g)
+  · apply pullback.hom_ext (f := fiberwiseIntervalEndpoint p 0) (g := f)
+    · simpa only [fiberwiseIntervalPullbackPath, Category.assoc] using hp
+    · simpa only [fiberwiseIntervalPullbackLeft, Category.assoc] using hl
+  · exact hr
+
 end SerrePositivity.InfinityCategories.F2
