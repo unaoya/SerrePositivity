@@ -18013,3 +18013,122 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_normalForm
 #check @SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_no_unused
 #print axioms SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_no_unused
+
+#check @SerrePositivity.KST.SConstruction.cubeFiberMax
+#print axioms SerrePositivity.KST.SConstruction.cubeFiberMax
+#check @SerrePositivity.KST.SConstruction.cubeFiberMax_true_iff
+#print axioms SerrePositivity.KST.SConstruction.cubeFiberMax_true_iff
+#check @SerrePositivity.KST.SConstruction.cubeFiberMax_id
+#print axioms SerrePositivity.KST.SConstruction.cubeFiberMax_id
+#check @SerrePositivity.KST.SConstruction.cubeFiberMax_comp
+#print axioms SerrePositivity.KST.SConstruction.cubeFiberMax_comp
+#check @SerrePositivity.KST.SConstruction.cubeAdjacent_succAbove_eq
+#print axioms SerrePositivity.KST.SConstruction.cubeAdjacent_succAbove_eq
+#check @SerrePositivity.KST.SConstruction.cubeAdjacent_fiber_true_iff
+#print axioms SerrePositivity.KST.SConstruction.cubeAdjacent_fiber_true_iff
+#check @SerrePositivity.KST.SConstruction.cubeFiberMax_predAbove
+#print axioms SerrePositivity.KST.SConstruction.cubeFiberMax_predAbove
+#check @SerrePositivity.KST.SConstruction.cubeSurjectionLower
+#print axioms SerrePositivity.KST.SConstruction.cubeSurjectionLower
+#check @SerrePositivity.KST.SConstruction.cubeSurjectionLower_factor
+#print axioms SerrePositivity.KST.SConstruction.cubeSurjectionLower_factor
+#check @SerrePositivity.KST.SConstruction.cubeSurjectionLower_monotone
+#print axioms SerrePositivity.KST.SConstruction.cubeSurjectionLower_monotone
+#check @SerrePositivity.KST.SConstruction.cubeSurjectionLower_surjective
+#print axioms SerrePositivity.KST.SConstruction.cubeSurjectionLower_surjective
+#check @SerrePositivity.KST.SConstruction.cubeMonotone_exists_adjacent_eq
+#print axioms SerrePositivity.KST.SConstruction.cubeMonotone_exists_adjacent_eq
+#check @SerrePositivity.KST.SConstruction.cubeFiberMax_lower
+#print axioms SerrePositivity.KST.SConstruction.cubeFiberMax_lower
+#check @SerrePositivity.KST.SConstruction.CubeConnectionGenerated
+#print axioms SerrePositivity.KST.SConstruction.CubeConnectionGenerated
+#check @SerrePositivity.KST.SConstruction.cubeConnectionGenerated_generated
+#print axioms SerrePositivity.KST.SConstruction.cubeConnectionGenerated_generated
+#check @SerrePositivity.KST.SConstruction.cubeFiberMax_connectionGenerated
+#print axioms SerrePositivity.KST.SConstruction.cubeFiberMax_connectionGenerated
+#check @SerrePositivity.KST.SConstruction.cubeFiberMax_generated
+#print axioms SerrePositivity.KST.SConstruction.cubeFiberMax_generated
+#check @SerrePositivity.KST.SConstruction.CubeSupportPartition
+#print axioms SerrePositivity.KST.SConstruction.CubeSupportPartition
+#check @SerrePositivity.KST.SConstruction.cubeSupportPartition_unique
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportPartition_unique
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutput
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutput
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutput_mem
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutput_mem
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutput_eq_iff
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutput_eq_iff
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutput_monotone
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutput_monotone
+#check @SerrePositivity.KST.SConstruction.cubeSupportNonemptyOutputs
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportNonemptyOutputs
+#check @SerrePositivity.KST.SConstruction.mem_cubeSupportNonemptyOutputs
+#print axioms SerrePositivity.KST.SConstruction.mem_cubeSupportNonemptyOutputs
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype_monotone
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype_monotone
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype_surjective
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype_surjective
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputEmbedding
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputEmbedding
+#check @SerrePositivity.KST.SConstruction.cubeSupportBlockMap
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportBlockMap
+#check @SerrePositivity.KST.SConstruction.cubeSupportBlockMap_output
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportBlockMap_output
+#check @SerrePositivity.KST.SConstruction.cubeSupportBlockMap_monotone
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportBlockMap_monotone
+#check @SerrePositivity.KST.SConstruction.cubeSupportBlockMap_surjective
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportBlockMap_surjective
+#check @SerrePositivity.KST.SConstruction.cubeSupportBlockMap_fiber
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportBlockMap_fiber
+#check @SerrePositivity.KST.SConstruction.cubeSupportBlockMap_interval
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportBlockMap_interval
+#check @SerrePositivity.KST.SConstruction.cubeSupportBlockMap_connectionGenerated
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportBlockMap_connectionGenerated
+#check @SerrePositivity.KST.SConstruction.cubeSupportBlockMap_eval
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportBlockMap_eval
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputSelection
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputSelection
+#check @SerrePositivity.KST.SConstruction.cubeSupportMax
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportMax
+#check @SerrePositivity.KST.SConstruction.cubeSupportMax_eq_projection
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportMax_eq_projection
+#check @SerrePositivity.KST.SConstruction.concreteCubeInputCompressedSupportPartition
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeInputCompressedSupportPartition
+#check @SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_projection_connectionGenerated
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_projection_connectionGenerated
+#check @SerrePositivity.KST.SConstruction.CubeFaceGenerated
+#print axioms SerrePositivity.KST.SConstruction.CubeFaceGenerated
+#check @SerrePositivity.KST.SConstruction.cubeFaceGenerated_generated
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceGenerated_generated
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateComplete
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateComplete
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateComplete_image
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateComplete_image
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateComplete_outside
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateComplete_outside
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateComplete_lower
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateComplete_lower
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateComplete_faceGenerated
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateComplete_faceGenerated
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateComplete_generated
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateComplete_generated
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputEmbedding_zero
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputEmbedding_zero
+#check @SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval_outside
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval_outside
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputCompletion
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputCompletion
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputCompletion_recover
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputCompletion_recover
+#check @SerrePositivity.KST.SConstruction.cubeSupportMax_completion_eval
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportMax_completion_eval
+#check @SerrePositivity.KST.SConstruction.cubeSupportMax_completion
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportMax_completion
+#check @SerrePositivity.KST.SConstruction.concreteCube_deletion_max_face_factorization
+#print axioms SerrePositivity.KST.SConstruction.concreteCube_deletion_max_face_factorization
+#check @SerrePositivity.KST.SConstruction.cubeSupportOutputCompletion_faceGenerated
+#print axioms SerrePositivity.KST.SConstruction.cubeSupportOutputCompletion_faceGenerated
+#check @SerrePositivity.KST.SConstruction.concreteCube_exists_deletion_max_face
+#print axioms SerrePositivity.KST.SConstruction.concreteCube_exists_deletion_max_face
