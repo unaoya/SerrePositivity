@@ -9067,3 +9067,138 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRightBranchCommonInitialFamily_tetrahedron
 #print axioms specifiedCoconeRightBranchCommonInitialFamily_tetrahedron
+
+#check @relativeEdgeCosliceSection_compatible
+#print axioms relativeEdgeCosliceSection_compatible
+
+#check @relativeEdgeCosliceSection
+#print axioms relativeEdgeCosliceSection
+
+#check @relativeEdgeCosliceSection_target
+#print axioms relativeEdgeCosliceSection_target
+
+#check @relativeEdgeCosliceSection_base
+#print axioms relativeEdgeCosliceSection_base
+
+#check @relativeEdgeCosliceSection_projection
+#print axioms relativeEdgeCosliceSection_projection
+
+#check @initialTotalEdgeBase_source
+#print axioms initialTotalEdgeBase_source
+
+#check @initialTotalEdgeBase_target
+#print axioms initialTotalEdgeBase_target
+
+#check @initialTotalEdgeFamily
+#print axioms initialTotalEdgeFamily
+
+#check @initialTotalEdgeFamily_target
+#print axioms initialTotalEdgeFamily_target
+
+#check @initialTotalEdgeFamily_endpoint
+#print axioms initialTotalEdgeFamily_endpoint
+
+#check @initialTotalEdgeFamily_fixed
+#print axioms initialTotalEdgeFamily_fixed
+
+#check @initialTotalEdgeFamily_baseInput
+#print axioms initialTotalEdgeFamily_baseInput
+
+#check @initialTotalEdgeFamily_base
+#print axioms initialTotalEdgeFamily_base
+
+#check @initialTotalEdgePrecomposition
+#print axioms initialTotalEdgePrecomposition
+
+#check @initialTotalEdgePrecomposition_ι
+#print axioms initialTotalEdgePrecomposition_ι
+
+#check @initialTotalEdgePrecomposition_evaluation
+#print axioms initialTotalEdgePrecomposition_evaluation
+
+#check @initialTotalEdgePrecomposition_projection
+#print axioms initialTotalEdgePrecomposition_projection
+
+#check @initialRestrictionTotalPrecomposition
+#print axioms initialRestrictionTotalPrecomposition
+
+#check @initialRestrictionTotalPrecomposition_evaluation
+#print axioms initialRestrictionTotalPrecomposition_evaluation
+
+#check @initialRestrictionTotalPrecomposition_projection
+#print axioms initialRestrictionTotalPrecomposition_projection
+
+#check @initialRestrictionTotalPrecomposition_pinched
+#print axioms initialRestrictionTotalPrecomposition_pinched
+
+#check @colimitAttachmentTotalPrecomposition
+#print axioms colimitAttachmentTotalPrecomposition
+
+#check @colimitAttachmentTotalPrecomposition_evaluation
+#print axioms colimitAttachmentTotalPrecomposition_evaluation
+
+#check @colimitAttachmentTotalPrecomposition_pinched
+#print axioms colimitAttachmentTotalPrecomposition_pinched
+
+#check @specifiedCoconeLeftBranchToInitialHomotopy
+#print axioms specifiedCoconeLeftBranchToInitialHomotopy
+
+#check @specifiedCoconeRightBranchToInitialHomotopy
+#print axioms specifiedCoconeRightBranchToInitialHomotopy
+
+#check @specifiedCoconeLeftBranchToInitialHomotopy_evaluation
+#print axioms specifiedCoconeLeftBranchToInitialHomotopy_evaluation
+
+#check @specifiedCoconeRightBranchToInitialHomotopy_evaluation
+#print axioms specifiedCoconeRightBranchToInitialHomotopy_evaluation
+
+#check @specifiedCoconeLeftBranchToInitialHomotopy_projection
+#print axioms specifiedCoconeLeftBranchToInitialHomotopy_projection
+
+#check @specifiedCoconeRightBranchToInitialHomotopy_projection
+#print axioms specifiedCoconeRightBranchToInitialHomotopy_projection
+
+#check @exists_relativeEdgeCosliceSection_comparison
+#print axioms exists_relativeEdgeCosliceSection_comparison
+
+#check @exists_initialHomEdgeSectionComparison
+#print axioms exists_initialHomEdgeSectionComparison
+
+#check @initialHomEdgeSectionComparison
+#print axioms initialHomEdgeSectionComparison
+
+#check @initialHomEdgeSectionComparison_target
+#print axioms initialHomEdgeSectionComparison_target
+
+#check @initialHomEdgeSectionComparison_base
+#print axioms initialHomEdgeSectionComparison_base
+
+#check @InitialHomEdgeCylinder.fullFamily
+#print axioms InitialHomEdgeCylinder.fullFamily
+
+#check @InitialHomEdgeCylinder.full_target
+#print axioms InitialHomEdgeCylinder.full_target
+
+#check @InitialHomEdgeCylinder.full_base
+#print axioms InitialHomEdgeCylinder.full_base
+
+#check @InitialHomEdgeCylinder.lift_ι
+#print axioms InitialHomEdgeCylinder.lift_ι
+
+#check @initialHomEdgeSectionInput_fixed
+#print axioms initialHomEdgeSectionInput_fixed
+
+#check @initialHomEdgeSectionComparison_fixed
+#print axioms initialHomEdgeSectionComparison_fixed
+
+#check @initialHomEdgeSectionInitialComparison
+#print axioms initialHomEdgeSectionInitialComparison
+
+#check @initialHomEdgeSectionInitialComparison_ι
+#print axioms initialHomEdgeSectionInitialComparison_ι
+
+#check @initialHomEdgeSectionInitialComparison_evaluation
+#print axioms initialHomEdgeSectionInitialComparison_evaluation
+
+#check @initialHomEdgeSectionInitialComparison_base
+#print axioms initialHomEdgeSectionInitialComparison_base

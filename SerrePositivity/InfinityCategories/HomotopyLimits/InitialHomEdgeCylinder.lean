@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialHomEdgeComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialDiagramHomFamily
 
 /-!
 概要：比較辺の合成三角形を通す Hom 比較を、評価固定の実際の中間円柱として保持する。
@@ -30,7 +31,16 @@ local notation "v" => vertexFiberLift q y
 
 /-- 中間の実際の持ち上げと、その評価を固定する同じ Hom 比較円柱。 -/
 structure InitialHomEdgeCylinder where
+  /-- 同じ指定された終点と底を持つ、実際に選んだ比較辺全体の余錐族。 -/
+  fullFamily : T ⟶ sliceUnder e
+  /-- 全辺族の終点制限は、入力した同じ終点側の族。 -/
+  full_target : fullFamily ≫ sliceUnderRestrict e (stdSimplex.δ (0 : Fin 2)) = a
+  /-- 全辺族の底は、入力した同じ底の合成族。 -/
+  full_base : fullFamily ≫ sliceUnderPostcomp e q = b
   lift : T ⟶ leftFibrationInitialTotal q c y
+  /-- 初期 Hom の持ち上げは、保持した同じ全辺族の初期頂点制限。 -/
+  lift_ι : lift ≫ vertexFiberι (sliceUnderProjection (SSet.yonedaEquiv.symm c) ≫ q) y =
+    fullFamily ≫ normalizedCoconeRestriction e (stdSimplex.δ (1 : Fin 2)) he
   evaluation : lift ≫ leftFibrationInitialEvaluation q c y = v
   projection : lift ≫ leftFibrationInitialProjection q c y =
     initialEdgeBaseSource q c e he y a ha b h
@@ -41,17 +51,41 @@ structure InitialHomEdgeCylinder where
 /-- 元の合成三角形の評価と底の族を保つ、評価固定の比較データを構成する。 -/
 def initialHomEdgeCylinder [InnerFibration q] : InitialHomEdgeCylinder q c hc e he y a ha b h :=
   Classical.choice (by
-    obtain ⟨l, hev, hp, _⟩ := exists_initialHomEdgeFamily q c hc e he y a ha b h
+    obtain ⟨L, hL, hq⟩ := exists_relativeEdgeCosliceLift e q a b h
+    have hfixed : (L ≫ sliceUnderProjection e) ≫ q = SSet.const y := by
+      rw [← sliceUnderRestrict_projection e (stdSimplex.δ (0 : Fin 2)),
+        ← Category.assoc, hL, ha]
+    let l := initialDiagramHomFamily q c e (stdSimplex.δ (1 : Fin 2)) he y L hfixed
+    have hι : l ≫ vertexFiberι (sliceUnderProjection (SSet.yonedaEquiv.symm c) ≫ q) y =
+        L ≫ normalizedCoconeRestriction e (stdSimplex.δ (1 : Fin 2)) he := by
+      dsimp only [l]
+      rw [initialDiagramHomFamily, vertexFiberLift_ι]
+    have hev : l ≫ leftFibrationInitialEvaluation q c y = v := by
+      dsimp only [l]
+      rw [initialDiagramHomFamily_evaluation]
+      apply vertexFiber_hom_ext q y
+      rw [vertexFiberLift_ι, vertexFiberLift_ι,
+        ← sliceUnderRestrict_projection e (stdSimplex.δ (0 : Fin 2)), ← Category.assoc, hL]
     have hl : l ≫ leftFibrationInitialProjection q c y =
         initialEdgeBaseSource q c e he y a ha b h := by
       apply vertexFiber_hom_ext
-      rw [Category.assoc]
-      exact hp
+      rw [initialEdgeBaseSource, vertexFiberLift_ι]
+      exact (initialDiagramHomFamily_base q c e (stdSimplex.δ (1 : Fin 2)) he y L hfixed).trans
+        (congrArg (fun z ↦ z ≫ normalizedCoconeRestriction (e ≫ q)
+          (stdSimplex.δ (1 : Fin 2)) (by rw [← Category.assoc, he])) hq)
     have := leftFibrationInitialEvaluation_trivialKanFibration q c hc y
     obtain ⟨H, hH⟩ := exists_homotopy_over_trivialKanFibration
       (leftFibrationInitialEvaluation q c y) (v ≫ leftFibrationInitialSection q c hc y) l
       (by rw [Category.assoc, leftFibrationInitialSection_evaluation, Category.comp_id, hev])
-    exact ⟨⟨l, hev, hl, H, by simpa only [Category.assoc, hev] using hH⟩⟩)
+    exact ⟨{ fullFamily := L
+             full_target := hL
+             full_base := hq
+             lift := l
+             lift_ι := hι
+             evaluation := hev
+             projection := hl
+             homotopy := H
+             fixedEvaluation := by simpa only [Category.assoc, hev] using hH }⟩)
 
 variable [InnerFibration q]
 
