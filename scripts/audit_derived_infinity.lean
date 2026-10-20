@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeDegeneracyFaces
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeSuccessor
+import SerrePositivity.InfinityCategories.Derived.DGVerdierTruncatedConeSuccessor
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeDegeneracyOverlap
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeNormalizeNext
 import SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinementData
 import SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinementEquations
 import SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinement
@@ -2487,10 +2492,31 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextSimplex_commonFace_eq
 #print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextFinite_exists
 
+#print axioms SerrePositivity.InfinityCategories.truncatedConeDegeneracy_overlap
+#print axioms SerrePositivity.InfinityCategories.truncatedConeDegeneracy_congr
+#print axioms SerrePositivity.InfinityCategories.truncatedConeNormalizeNext_degeneracy
+#print axioms SerrePositivity.InfinityCategories.truncatedConeNormalizeNext_of_nondegenerate
+#print axioms SerrePositivity.InfinityCategories.truncatedConeDegeneracy_face_zero
+#print axioms SerrePositivity.InfinityCategories.truncatedConeDegeneracy_first_vertex
+#print axioms SerrePositivity.InfinityCategories.truncatedConeNormalizeNext_first_vertex
+#print axioms SerrePositivity.InfinityCategories.truncatedConeNormalizeNext_face_zero
+
+#print axioms SerrePositivity.InfinityCategories.truncatedConeDegeneracy_face_positive
+#print axioms SerrePositivity.InfinityCategories.truncatedConeNormalizeNext_face_positive
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.successor
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.normalizedSuccessor
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTruncatedConeSuccessor_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTruncatedConeData_nonempty
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeDegeneracyFaces,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeSuccessor,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierTruncatedConeSuccessor,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeDegeneracyOverlap,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeNormalizeNext,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinementData,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinementEquations,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinement,

@@ -14,8 +14,8 @@
 - 全次元の最後外ホーンから R・K を回収し、dR=0・dK=−最後辺∘R を証明。実 Hom cone の指定閉残差の原始元と Q・A の二未知解を双方向に接続。有限混合次元族に一つの追加実閉分母と全実充填を供給する。
 - 全次数の over 単体と実 Verdier 部分圏内の閉始点細分を構成。零面保存、零固定・正番号非零の全順序写像との可換性、全正番号面・退化・共有面の厳密一致を証明。
 - `TruncatedJoinConeData f N` と有限頂点からの N=0 の実初期値を構成。錐全体を一つの追加実閉分母で更新し、同じ apex・全面・全正番号退化条件を保つ操作まで完成。
-- 次次数の零面 f σ と既存錐の正番号面から実境界写像を貼る。有限族を一つの分母後に同時充填し、その全面・共有面・実 apex を更新済み下次数錐へ厳密に一致させた。次次数の退化選択と N+1 の錐データへの束ねは未完。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGVerdierConeNextCoherence.lean`。
+- 次次数の零面 f σ と既存錐の正番号面から実境界写像を貼る。有限族を一つの分母後に同時充填し、その全面・共有面・実 apex を更新済み下次数錐へ厳密に一致させた。基本退化表示の標準錐の一致・全面保存・退化正規化も完成。`dgVerdierTruncatedConeSuccessor_nonempty` は次次数有限なら N+1 の錐を、`dgVerdierTruncatedConeData_nonempty` は各次数有限なら任意有限次数の錐を供給する。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGVerdierTruncatedConeSuccessor.lean`。
 
 ### 残り（依存順、時間は推定）
 
@@ -37,6 +37,9 @@
 - `BoundaryFaceCompatible`・`boundaryFaceGluing_face`・`truncatedConeNextBoundary_face_zero`・`truncatedConeNextBoundary_face_positive`。
 - `dgVerdierConeNextSimplex_face_positive`・`dgVerdierConeNextSimplex_first_vertex`・`dgVerdierConeNextSimplex_commonFace_eq`・`dgVerdierConeNextFinite_exists`。
 
+- `truncatedConeDegeneracy_congr`・`truncatedConeNormalizeNext_face_positive`・`TruncatedJoinConeData.normalizedSuccessor`。
+- `dgVerdierTruncatedConeSuccessor_nonempty`・`dgVerdierTruncatedConeData_nonempty`。
+
 ### 依存と提供
 
 - Core・F1・F1B・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded・KST は読み取り専用。
@@ -49,16 +52,17 @@
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7298 jobs）。公理監査は Derived 9119 宣言／994 モジュール、Stable 10234／1264。許容三公理のみ。今回の新規9モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7303 jobs）。公理監査は Derived 9179 宣言／999 モジュール、Stable 10294／1269。許容三公理のみ。今回の新規5モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：次次数の退化単体では既存下次数錐の標準正番号退化を選ぶ。異なる基本退化表示の値の一致と、その全面が `truncatedConeNextBoundary` に合うことを証明する。Mathlib の `SimplicialSet/Splitting.lean`・`Degenerate.lean` と既存の二次退化正規化を参照し、非退化セルの同時充填から全単体族へ拡張して `TruncatedJoinConeData f (N+1)` を束ねる。
-- 全次数の実 join 写像への組み立て、apex 自身の標準退化、有限非退化セル帰納、厳密添字の filteredness・実添字への cofinality、実屋根比較の弱同値性、全標的の `F1B/Localization.IsLocalization` と Verdier 列へ進む。`Core/SkeletalExtension` は固定下骨格用なので、追加分母で apex も更新する今回の帰納へそのまま適用しない。
-- `boundary.IsCompatible` は現 Mathlib に存在しない。今回の `BoundaryFaceCompatible`・`boundaryFaceGluing` が全面の厳密一致から境界写像を供給する。
+- β3：有限単体集合 K の非退化単体の次元上界を取り、十分高い次数の `TruncatedJoinConeData f N` から実 join 写像 `Δ[0] ⋆ K → dgVerdierOver` を構成する。Mathlib の `SimplicialSet/Splitting.lean`・`Skeleton.lean` を参照し、上界を超える退化と apex 自身の標準退化を含む自然性を照合する。基本退化の表示独立性・全面整合性と一段延長は完成しており、作り直さない。
+- 既存の `Core/NerveCone.lean` の `pointJoinStdSimplexIso`・`joinStdSimplexIso_point_naturality`・`pointJoinStdSimplexIso_inl_vertex`・`_inr` を使うと、各 Γ を `sliceUnderVertex C.apex` の単体へ移せる。切断次数内の一般順序写像への自然性は Mathlib の `SimplexCategory.Truncated.morphismProperty_eq_top`（`SimplexCategory/MorphismProperty.lean`）に全面・退化の生成元条件を与える方針がある。その後、固定済み apex の下で骨格から K 全体へ延長し、`sliceUnderUncurry` で join 写像を回収する。
+- 有限非退化セル帰納、零次元の既存厳密屋根辺との一致、厳密添字の filteredness・実添字への cofinality、実屋根比較の弱同値性、全標的の `F1B/Localization.IsLocalization` と Verdier 列へ進む。`Core/SkeletalExtension` は固定下骨格用なので、追加分母で apex も更新する帰納へそのまま適用しない。
+- `boundary.IsCompatible` は現 Mathlib に存在しない。`BoundaryFaceCompatible`・`boundaryFaceGluing` を使う。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
