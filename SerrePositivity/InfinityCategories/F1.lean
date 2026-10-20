@@ -1414,3 +1414,7 @@ public import SerrePositivity.InfinityCategories.F1.UnstraighteningSourceRestric
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverIsoUncurry
 
 public import SerrePositivity.InfinityCategories.F1.UnstraighteningPullbackEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullbackNaturality
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullbackComparison

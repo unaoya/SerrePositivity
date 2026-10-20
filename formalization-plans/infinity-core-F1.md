@@ -16,7 +16,7 @@
   同値性と厳密に同値である。独立な c1 の比較と S の本質的全射性を直接合わせない。
 - `leftUnstraighteningFirstVertexPullback_isQCatEquivalence` により、任意の底 B と coherent 図式 F,G
   の元の unstraightening 間では、初頂点引き戻しの実際の全相対 Hom 作用が同値。c1 の底変換自然性
-  と厳密な pullback 同型で証明済み。一般の left fibration 対への復元比較による移送が残る。
+  と厳密な pullback 同型で証明済み。底上の前後合成との厳密な自然性と比較による反映も証明済み。
 - F1-2：前層 ∞ 圏、制限・評価・定値前層、底の同値による制限同値、right unstraightening を構成済み。
   right fibration 版の恒等点評価は自明 Kan fibration。後合成の自然性も証明済み。
 - twisted arrow の両端射影は実際の left fibration。固定領域の inner anodyne 性から全ホーンを充填済み。
@@ -73,9 +73,9 @@
 
 - 同じ Yoneda 写像の充満忠実性は `ce29c96fd` に保存済み。
   F1 全体ビルド4431 jobs、公理監査9957宣言が成功（標準3公理のみ）。
-- 初頂点局所化に沿う、元の unstraightening 間の実際の相対 Hom 引き戻しの同値性を証明した
-  所有4モジュール、集約・監査・計画が今回の保存単位。
-  F1 全体ビルド4435 jobs、公理監査9968宣言が成功（標準3公理のみ）。
+- 初頂点局所化に沿う coherent unstraightening 対の相対 Hom 引き戻し同値は `48e7c5ca6` に保存済み。
+- 相対引き戻しの自然性・比較による反映の所有2モジュールと集約・監査・本計画が今回の保存単位。
+  F1 全体ビルド4437 jobs、公理監査9974宣言が成功（標準3公理のみ）。
 - N が読む指定2ファイルと集約は `a12f7e9f4` で保存済み。
 
 ### 既知の問題
@@ -91,9 +91,9 @@
 F1-2 の Yoneda 充満忠実性は完了。F1-1 の分類と、その双対の right fibration 分類へ戻った。
 `leftUnstraighteningFirstVertexPullback_isQCatEquivalence` は、元の coherent unstraightening 対の
 実際の初頂点引き戻し作用の同値性を、任意の底で追加仮定なしに証明する。
-次は relativeFunctorPullback が底上の前後合成と厳密に可換である式を証明し、既存の復元射で
-一般の left fibration 対をこの場合へ移す。元の底が quasicategory なら、復元射とその任意の
-底変換は前合成同値であり、底上の前後合成は相対 Hom の同値となる。
+`relativeFunctorPullback_isQCatEquivalence_of_comparison` で、底上の前合成同値による比較から
+実際の引き戻しの同値性を反映できる。次は既存の復元射を持ち上げ、一般の left fibration 対を
+coherent unstraightening 対へ移す。元の底と制限先が quasicategory なら、この反映定理が使える。
 持ち上げた元の p から元の unstraightening への比較で証明し、宇宙移送と pullback の厳密な
 同型を通して小さい relativeFunctorPullback へ反映する。λ 自体を圏同値として消去しない。
 空間値版の後にも essentially small fiber への相対延長と cocartesian・Cat∞ 値版は別に残る。
