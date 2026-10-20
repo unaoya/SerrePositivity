@@ -796,3 +796,6 @@ public import SerrePositivity.KST.Spectra.SpectrumEvaluationPostRawComparison
 public import SerrePositivity.KST.Spectra.SignedLoopTailTwistComparison
 public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationPost
 public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationSource
+public import SerrePositivity.KST.Spectra.RawSpectrumPreWhitehead
+public import SerrePositivity.KST.Spectra.SpectrumEvaluationParameterDetection
+public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationDetection
