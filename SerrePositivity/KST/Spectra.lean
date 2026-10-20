@@ -980,3 +980,7 @@ public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParametricReverse
 public import SerrePositivity.KST.Spectra.SpectrumParametricAdjointSquare
 public import SerrePositivity.KST.Spectra.OrdinaryLoopAdjointStructureCriterion
 public import SerrePositivity.KST.Spectra.StrictEnrichedTransformationNerve
+public import SerrePositivity.KST.Spectra.FibrationPointwiseComparison
+public import SerrePositivity.KST.Spectra.HomotopyIsoSquareDetection
+public import SerrePositivity.KST.Spectra.LoopMapBasedDetection
+public import SerrePositivity.KST.Spectra.SpectrumIntegerHomotopyDetection
