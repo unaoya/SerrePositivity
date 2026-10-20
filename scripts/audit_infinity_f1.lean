@@ -1,4 +1,5 @@
 import SerrePositivity.InfinityCategories.F1
+import SerrePositivity.InfinityCategories.F1.CommonWeightedNativePrismComparison
 import Lean.Util.CollectAxioms
 
 /-!
@@ -5177,3 +5178,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.rightFibrationRepresentableMappingComparison
 #check @SerrePositivity.InfinityCategories.rightFibrationRepresentableMappingComparison_trivialKanFibration
 #check @SerrePositivity.InfinityCategories.rightFibrationRepresentableMappingComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.oppositeUnstraighteningHomComparisonIsoOfNativePrism
