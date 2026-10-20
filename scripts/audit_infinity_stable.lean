@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.DGOverSimplexInitialRefinement
+import SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInjection
+import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementReindex
+import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementAvoidingFaces
+import SerrePositivity.InfinityCategories.Derived.DGOverVertexInitialDenominator
+import SerrePositivity.InfinityCategories.Derived.DGVerdierSimplexInitialRefinement
+import SerrePositivity.InfinityCategories.Derived.DGOverBoundaryRefinedFaces
+import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryRefinedSimplex
+import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryFiniteSimplexes
 import SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplex
 import SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplexInverse
 import SerrePositivity.InfinityCategories.Derived.RoofPointBoundaryHorn
@@ -2976,10 +2985,41 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryFiniteRefinement_nonempty
 #print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryFinite_exists_refinedOverSimplexes
 
+#print axioms SerrePositivity.InfinityCategories.dgOverSimplexInitialMap_fixed
+#print axioms SerrePositivity.InfinityCategories.dgOverSimplexInitialRefinement_simplex
+#print axioms SerrePositivity.InfinityCategories.roofPointExtend_injective
+#print axioms SerrePositivity.InfinityCategories.roofPointExtend_zero
+#print axioms SerrePositivity.InfinityCategories.roofPointExtend_avoids_zero
+#print axioms SerrePositivity.InfinityCategories.roofPointSliceSimplex_reindex_data
+#print axioms SerrePositivity.InfinityCategories.dgOverSimplexReindex_source
+#print axioms SerrePositivity.InfinityCategories.dgOverSimplexInitialRefinement_pullback_fixed_zero
+#print axioms SerrePositivity.InfinityCategories.dgOverSimplexInitialRefinement_pullback_avoids_zero
+#print axioms SerrePositivity.InfinityCategories.dgOverVertexInitialRefinement_edge
+#print axioms SerrePositivity.InfinityCategories.dgOverVertexInitialRefinement_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierSimplexInitialRefinement
+#print axioms SerrePositivity.InfinityCategories.dgOverBoundaryCanonicalFace
+#print axioms SerrePositivity.InfinityCategories.dgOverBoundaryFace_source
+#print axioms SerrePositivity.InfinityCategories.dgOverBoundaryRefinedSimplex_face_initial
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinedApex_mem
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinedSimplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinedSimplex_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinedSimplex_face_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinementSimplex_obj_zero
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryFinite_exists_refinedSimplexes
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGOverSimplexInitialRefinement,
+    `SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInjection,
+    `SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementAvoidingFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGOverVertexInitialDenominator,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierSimplexInitialRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGOverBoundaryRefinedFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryRefinedSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryFiniteSimplexes,
     `SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplex,
     `SerrePositivity.InfinityCategories.Derived.RoofPointSliceSimplexInverse,
     `SerrePositivity.InfinityCategories.Derived.RoofPointBoundaryHorn,

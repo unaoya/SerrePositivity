@@ -954,6 +954,16 @@ public import SerrePositivity.InfinityCategories.Derived.DGOverBoundaryRefinedSi
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryLastDenominator
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryOverFillers
 
+public import SerrePositivity.InfinityCategories.Derived.DGOverSimplexInitialRefinement
+public import SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInjection
+public import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementReindex
+public import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementAvoidingFaces
+public import SerrePositivity.InfinityCategories.Derived.DGOverVertexInitialDenominator
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierSimplexInitialRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGOverBoundaryRefinedFaces
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryRefinedSimplex
+public import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryFiniteSimplexes
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
