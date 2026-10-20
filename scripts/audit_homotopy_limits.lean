@@ -9529,3 +9529,156 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRightRootNativeCylinder_native_face_raw
 #print axioms specifiedCoconeRightRootNativeCylinder_native_face_raw
+
+#check @coconeVertexDiagram_inr
+#print axioms coconeVertexDiagram_inr
+
+#check @coconeNestedCoslice_restriction
+#print axioms coconeNestedCoslice_restriction
+
+#check @coconeNestedCoslice_inv_restriction
+#print axioms coconeNestedCoslice_inv_restriction
+
+#check @coconeNestedCoslice_inv_projection
+#print axioms coconeNestedCoslice_inv_projection
+
+#check @coconeNestedCoslice_terminal_family
+#print axioms coconeNestedCoslice_terminal_family
+
+#check @coconeNestedCoslice_inv_terminal_family
+#print axioms coconeNestedCoslice_inv_terminal_family
+
+#check @coconePointFullHomFamily
+#print axioms coconePointFullHomFamily
+
+#check @coconePointFullHomFamily_restriction
+#print axioms coconePointFullHomFamily_restriction
+
+#check @coconePointFullHomFamily_endpoint
+#print axioms coconePointFullHomFamily_endpoint
+
+#check @coconePointFullHomFamily_fixed
+#print axioms coconePointFullHomFamily_fixed
+
+#check @coconePointFullHomFamily_terminal
+#print axioms coconePointFullHomFamily_terminal
+
+#check @coconePointFullHomFiberFamily
+#print axioms coconePointFullHomFiberFamily
+
+#check @coconePointFullHomFiberFamily_ι
+#print axioms coconePointFullHomFiberFamily_ι
+
+#check @coconePointFullHomFiberFamily_restriction
+#print axioms coconePointFullHomFiberFamily_restriction
+
+#check @coconePointFullHomFiberFamily_terminal
+#print axioms coconePointFullHomFiberFamily_terminal
+
+#check @normalizedCoconeRestriction_twoStep_family
+#print axioms normalizedCoconeRestriction_twoStep_family
+
+#check @normalizedCoconeRestriction_twoStep
+#print axioms normalizedCoconeRestriction_twoStep
+
+#check @normalizedCoconeRestrictionFiber_twoStep
+#print axioms normalizedCoconeRestrictionFiber_twoStep
+
+#check @coconePointHomDiagramFamily
+#print axioms coconePointHomDiagramFamily
+
+#check @coconePointHomDiagramFamily_fixed
+#print axioms coconePointHomDiagramFamily_fixed
+
+#check @coconePointHomDiagramFiberFamily
+#print axioms coconePointHomDiagramFiberFamily
+
+#check @coconePointHomDiagramFiberFamily_ι
+#print axioms coconePointHomDiagramFiberFamily_ι
+
+#check @coconePointHomDiagramFamily_terminal
+#print axioms coconePointHomDiagramFamily_terminal
+
+#check @coconePointHomDiagramFiberFamily_terminal
+#print axioms coconePointHomDiagramFiberFamily_terminal
+
+#check @coconeLegTriangleShape
+#print axioms coconeLegTriangleShape
+
+#check @coconeLegTriangleShape_tip
+#print axioms coconeLegTriangleShape_tip
+
+#check @coconeLegTriangleShape_diagram
+#print axioms coconeLegTriangleShape_diagram
+
+#check @coconeLegTriangleShape_normalized_diagram
+#print axioms coconeLegTriangleShape_normalized_diagram
+
+#check @coconeLegTriangleDiagram
+#print axioms coconeLegTriangleDiagram
+
+#check @coconeLegTriangleDiagram_tip
+#print axioms coconeLegTriangleDiagram_tip
+
+#check @coconeLegTriangleHomFamily
+#print axioms coconeLegTriangleHomFamily
+
+#check @coconeLegTriangleHomFamily_fixed
+#print axioms coconeLegTriangleHomFamily_fixed
+
+#check @coconeLegTriangleHomFiberFamily
+#print axioms coconeLegTriangleHomFiberFamily
+
+#check @coconeLegTriangleHomFiberFamily_ι
+#print axioms coconeLegTriangleHomFiberFamily_ι
+
+#check @coconeLegTriangleHomFiberFamily_terminal
+#print axioms coconeLegTriangleHomFiberFamily_terminal
+
+#check @strictCoconeShapeEdge
+#print axioms strictCoconeShapeEdge
+
+#check @strictCoconeLegTriangleShape
+#print axioms strictCoconeLegTriangleShape
+
+#check @strictCoconeLegTriangleShape_tip
+#print axioms strictCoconeLegTriangleShape_tip
+
+#check @strictCoconeLegTriangleShape_diagram
+#print axioms strictCoconeLegTriangleShape_diagram
+
+#check @nativeSpanLeftTriangleShape
+#print axioms nativeSpanLeftTriangleShape
+
+#check @nativeSpanRightTetrahedronShape
+#print axioms nativeSpanRightTetrahedronShape
+
+#check @nativeSpanLeftTriangleShape_tip
+#print axioms nativeSpanLeftTriangleShape_tip
+
+#check @nativeSpanRightTetrahedronShape_tip
+#print axioms nativeSpanRightTetrahedronShape_tip
+
+#check @nativeSpanLeftHomDiagram_shape
+#print axioms nativeSpanLeftHomDiagram_shape
+
+#check @nativeSpanLeftHomDiagram_tip
+#print axioms nativeSpanLeftHomDiagram_tip
+
+#check @nativeSpanLeftUniversalHomDiagramFamily
+#print axioms nativeSpanLeftUniversalHomDiagramFamily
+
+#check @nativeSpanLeftUniversalHomDiagramFamily_terminal
+#print axioms nativeSpanLeftUniversalHomDiagramFamily_terminal
+
+#check @nativeSpanRightHomDiagram_shape
+#print axioms nativeSpanRightHomDiagram_shape
+
+#check @nativeSpanRightHomDiagram_tip
+#print axioms nativeSpanRightHomDiagram_tip
+
+#check @nativeSpanRightUniversalHomDiagramFamily
+#print axioms nativeSpanRightUniversalHomDiagramFamily
+
+#check @nativeSpanRightUniversalHomDiagramFamily_terminal
+#print axioms nativeSpanRightUniversalHomDiagramFamily_terminal
