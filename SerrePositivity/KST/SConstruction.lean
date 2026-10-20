@@ -1151,4 +1151,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleExtensionTriangleEvaluat
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionTriangle
 public import SerrePositivity.KST.SConstruction.DGDiagonalUnitAgreement
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphRightUnit
+public import SerrePositivity.KST.SConstruction.DGComplexIsoEvaluation
+public import SerrePositivity.KST.SConstruction.DGTensorLeftUnitElements
+public import SerrePositivity.KST.SConstruction.DGTensorLeftUnitCompositeElements
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -16809,4 +16809,34 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms dgFunctorGraphRightUnitSourceIso
 #check @dgFunctorGraphCompositionIso_comp_id
 #print axioms dgFunctorGraphCompositionIso_comp_id
+#check @dgComplexIso_inv_apply_eq
+#print axioms dgComplexIso_inv_apply_eq
+#check @dgComplexIso_hom_eq_of_inv_comp
+#print axioms dgComplexIso_hom_eq_of_inv_comp
+#check @dgComplexMap_apply_congr
+#print axioms dgComplexMap_apply_congr
+#check @dgComplexMap_triple_apply
+#print axioms dgComplexMap_triple_apply
+#check @dgComplexMap_identity_apply
+#print axioms dgComplexMap_identity_apply
+#check @dgTensorLeftUnitMapValueIso
+#print axioms dgTensorLeftUnitMapValueIso
+#check @dgTensorLeftUnit_hom_insert
+#print axioms dgTensorLeftUnit_hom_insert
+#check @dgTensorLeftUnit_inv_insert
+#print axioms dgTensorLeftUnit_inv_insert
+#check @dgTensorLeftUnit_map_element
+#print axioms dgTensorLeftUnit_map_element
+#check @dgTensorLeftUnit_inverse_map_element
+#print axioms dgTensorLeftUnit_inverse_map_element
+#check @dgBimoduleLeftUnit_hom_insert
+#print axioms dgBimoduleLeftUnit_hom_insert
+#check @dgBalancedTensor_triple_eq
+#print axioms dgBalancedTensor_triple_eq
+#check @dgBalancedTensor_triple_eq_of_source_eq
+#print axioms dgBalancedTensor_triple_eq_of_source_eq
+#check @dgTensorLeftUnit_associatorRight_insert
+#print axioms dgTensorLeftUnit_associatorRight_insert
+#check @dgTensorLeftUnit_associator_inverse_element
+#print axioms dgTensorLeftUnit_associator_inverse_element
 end SerrePositivity.KST.SConstruction
