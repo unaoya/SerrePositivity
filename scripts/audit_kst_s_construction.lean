@@ -17940,3 +17940,76 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_comparison
 #check @SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_map_eq_iff
 #print axioms SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_map_eq_iff
+
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateSelect
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateSelect
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateLower
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateLower
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateLower_spec
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateLower_spec
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateLower_strictMono
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateLower_strictMono
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateSelect_lower
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateSelect_lower
+#check @SerrePositivity.KST.SConstruction.CubeDeletionGenerated
+#print axioms SerrePositivity.KST.SConstruction.CubeDeletionGenerated
+#check @SerrePositivity.KST.SConstruction.cubeDeletionGenerated_generated
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionGenerated_generated
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateSelect_deletionGenerated
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateSelect_deletionGenerated
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateSelect_generated
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateSelect_generated
+#check @SerrePositivity.KST.SConstruction.cubeJoinNormalFormRestrict
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinNormalFormRestrict
+#check @SerrePositivity.KST.SConstruction.mem_cubeJoinNormalFormRestrict_support
+#print axioms SerrePositivity.KST.SConstruction.mem_cubeJoinNormalFormRestrict_support
+#check @SerrePositivity.KST.SConstruction.cubeJoinNormalFormRestrict_eval
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinNormalFormRestrict_eval
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormUsedInputs
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormUsedInputs
+#check @SerrePositivity.KST.SConstruction.mem_cubeNormalFormUsedInputs
+#print axioms SerrePositivity.KST.SConstruction.mem_cubeNormalFormUsedInputs
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding_covers
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding_covers
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormCompressed
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormCompressed
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormCompressed_eval
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormCompressed_eval
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding_deletionGenerated
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding_deletionGenerated
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormCompressed_no_unused
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormCompressed_no_unused
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_compressed_eval
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_compressed_eval
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_compressed_ordered
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_compressed_ordered
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateInsert
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateInsert
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateInsert_true_iff
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateInsert_true_iff
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateSelect_insert
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateSelect_insert
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateInsert_lower
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateInsert_lower
+#check @SerrePositivity.KST.SConstruction.cubeCoordinateInsert_generated
+#print axioms SerrePositivity.KST.SConstruction.cubeCoordinateInsert_generated
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormInputSelection
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormInputSelection
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormInputSection
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormInputSection
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormInputSection_selection
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormInputSection_selection
+#check @SerrePositivity.KST.SConstruction.cubeNormalFormCompressed_eval_insert
+#print axioms SerrePositivity.KST.SConstruction.cubeNormalFormCompressed_eval_insert
+#check @SerrePositivity.KST.SConstruction.concreteCubeInputCompressed
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeInputCompressed
+#check @SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_val
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_val
+#check @SerrePositivity.KST.SConstruction.concreteCubeInputSelection_compressed
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeInputSelection_compressed
+#check @SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_normalForm
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_normalForm
+#check @SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_no_unused
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_no_unused

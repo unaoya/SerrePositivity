@@ -1314,4 +1314,10 @@ public import SerrePositivity.KST.SConstruction.CubeGeneratorWords
 public import SerrePositivity.KST.SConstruction.CubeWordRealization
 public import SerrePositivity.KST.SConstruction.SerreCubeWordEvaluation
 public import SerrePositivity.KST.SConstruction.CubeWordSemanticQuotient
+public import SerrePositivity.KST.SConstruction.CubeCoordinateSelection
+public import SerrePositivity.KST.SConstruction.CubeDeletionGeneration
+public import SerrePositivity.KST.SConstruction.CubeNormalFormRestriction
+public import SerrePositivity.KST.SConstruction.CubeUsedInputCompression
+public import SerrePositivity.KST.SConstruction.CubeCoordinateInsertion
+public import SerrePositivity.KST.SConstruction.ConcreteCubeInputFactorization
 /-! # ∞-S• 構成と連結 K 理論 -/
