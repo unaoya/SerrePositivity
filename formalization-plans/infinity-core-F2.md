@@ -42,8 +42,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   元の小さい単位の前合成同値を厳密な宇宙移送で必要な全 fiber 標的へ戻し、構成済み余錐の native 余極限性を証明。
   小さい底上の任意の coherent 空間値図式の HasColimit を公開。filtered 性・strict 図式への置換は不要。
   共通境界付き同時検出を構成。対角の cofinality の底変換から、元の全空間 Kan 積比較の弱同値性・ホモトピー逆を証明。
-  定値底の形状制限は相対内部 Hom の底変換。元の両端評価と path 引き戻しの二入力射・底射の left fibration 性を証明。
-  三集約同時ビルド 7308 jobs、公理監査 2458 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  定値底の形状制限は相対内部 Hom の底変換。両端評価と path 引き戻しの二入力射・底射の left fibration 性を証明。
+  各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含、元の値による境界固定の相対有限検出を証明。
+  三集約同時ビルド 7322 jobs、公理監査 2534 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -66,7 +67,6 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.filteredKanColimitComparison_factor` / `F2.filteredKanColimitCocone_isColimit`
 - `F2.kanCoconeAugmentationComparison_factor` / `F2.filteredKanColimitOrdinaryCocone_isColimit`
 - `F2.intervalReplacementColimitIso` / `F2.intervalPullbackColimitIso`
-- `F2.intervalPullbackColimitIso_left` / `F2.intervalReplacementEndpoint_fibration`
 - `F2.intervalPullbackCone_isLimit` / `F2.filteredIntervalPullbackExchange`
 - `F2.continuousKanLeftFibration_pair_relative_detection` / `F2.totalKanProductComparison_homotopyEquivalence`
 - `F2.continuousKanLeftFibration_finite_relative_detection` / `F2.continuousKanLeftFibration_finite_boundary_detection`
@@ -75,7 +75,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
 - `F2.unstraighteningMappingTriangleIso` / `F2.coherentTotalUnitHomComparison_homotopyEquivalence`
 - `F2.coherentDiagramTotalCocone_isColimit` / `F2.hasColimit_coherentSpaceDiagram`
-- `F2.fiberwiseIntervalEndpointPair_leftFibration` / `F2.fiberwiseIntervalPullbackProjection_leftFibration`
+- `F2.fiberwisePullbackFiberIso` / `F2.fiberwisePullbackValue_finite_relative_detection`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
 ### 依存と提供
@@ -102,8 +102,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：path 引き戻しの各 fiber を、元の三つの値の path 引き戻しと指定座標を保って同定する。
-  構成済みの相対持ち上げ性・有限検出と Kan path 比較から引き戻し比較の弱同値性、一般の有限極限交換、Indκ へ進む。
+- F2N-1：Kan 引き戻し標的の有限な三座標・指定 path を、境界を保って共通の値へ同時に移す。
+  非単射にもなる境界の有限因子分解を相対持ち上げへ接続し、比較の弱同値性、一般の有限極限交換、Indκ へ進む。
 
 ## 0. 目標と範囲
 
@@ -161,7 +161,8 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   元の積比較の弱同値性・ホモトピー逆を証明。定値底の有限関手比較は cofinal、各値の内部 Hom 表示と path 比較を構成。
   始点評価の底上の逆と両端固定の Kan path 比較のホモトピー逆、二入力・単位上の全 path を保つ Kan 引き戻し比較を構成。
   形状制限の相対内部 Hom による底変換、元の両端評価と二入力射・引き戻し底射の left fibration 性を証明。
-  各 fiber の元の値の path 引き戻し表示、比較の弱同値性・一般の交換・Ind は未完了。
+  各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による相対有限検出を証明。
+  標的の三座標・指定 path の同時検出、比較の弱同値性・一般の交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -171,7 +172,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：各 fiber の元の値の path 引き戻し表示を構成し、相対持ち上げ性・有限検出と Kan 比較へ接続する。
+- 次の一手：境界の有限因子分解と相対持ち上げを接続し、Kan 引き戻し標的の三座標と指定 path を同時検出する。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
