@@ -70,7 +70,7 @@
 - `homotopyCompositionRelativeOver_fixedLeft_exists`・`dgFiniteOreTrianglePrisms_relative_exists`・`dgFiniteRoofCompositionPrisms_exists`。
 - `roofLeftFibration_terminalEvaluation_nonempty`・`dgInvertingHomActionFamilyEvaluationIso`・`dgInvertingHomFamilyEvaluation_nonempty`。
 - `pinchedFamilyHom_eq_iff_homotopy`・`dgInvertingFamilyDenominator_isIso`・`dgInvertingFiniteRoofComposition_nonempty`・`dgFiniteRoofOreDataPrecomp_compositeDiagram`。
-- `dgAlgebraPerfectExtensionInfinity_isQCatEquivalence_of_morita`・`dgPerfectExtensionInclusionIso`・`dgAlgebraPerfectInfinityCategory_isStable`・`dgAlgebraExtensionInfinity_isQCatEquivalence_of_morita`・`dgAlgebraExtensionInfinity_isQCatEquivalence_of_quasiIso`・`dgModuleDerivedFunctor_isQCatEquivalence_of_classical`・`dgAlgebraExtensionInfinity_isExactFunctor`・`dgModuleDerivedFunctor_comparisonIso`・`dgModuleDerivedFunctor_id_iso`・`dgModuleDerivedFunctor_comp_iso`・`dgAlgebraDerivedInfinityCategory_isStable`・`dgModuleDerivedInfinityCategory_isStable`・`dgSemifreeToProjectiveNerve_isQCatEquivalence`・`dgQuotientNerveProjection_isLocalization`・`dgVerdierExactPrecomposition_isQCatEquivalence`・`dgStableClosureNerve_isStable`・`dgStableClosureInclusion_isExactFunctor`・`dgQuotient_isStableVerdierSequence`・`resolvedDGQuotientFunctor_isLocalization`・`resolvedDGVerdierExactPrecomposition_isQCatEquivalence`・`resolvedDGQuotient_isStableVerdierSequence`。
+- `dgModuleHomSpaceInfinity`・`dgModuleHomSpaceValueEquivalence`・`dgSemifreeHomTargetInfinity`・`dgSemifreeHomSourceInfinity`・`dgMoritaAdjunctionInfinity`・`dgPerfectMoritaRightAdjointInclusionIso`・`dgAlgebraPerfectExtensionInfinity_isQCatEquivalence_of_morita`・`dgPerfectExtensionInclusionIso`・`dgAlgebraPerfectInfinityCategory_isStable`・`dgAlgebraExtensionInfinity_isQCatEquivalence_of_morita`・`dgAlgebraExtensionInfinity_isQCatEquivalence_of_quasiIso`・`dgModuleDerivedFunctor_isQCatEquivalence_of_classical`・`dgAlgebraExtensionInfinity_isExactFunctor`・`dgModuleDerivedFunctor_comparisonIso`・`dgModuleDerivedFunctor_id_iso`・`dgModuleDerivedFunctor_comp_iso`・`dgAlgebraDerivedInfinityCategory_isStable`・`dgModuleDerivedInfinityCategory_isStable`・`dgSemifreeToProjectiveNerve_isQCatEquivalence`・`dgQuotientNerveProjection_isLocalization`・`dgVerdierExactPrecomposition_isQCatEquivalence`・`dgStableClosureNerve_isStable`・`dgStableClosureInclusion_isExactFunctor`・`dgQuotient_isStableVerdierSequence`・`resolvedDGQuotientFunctor_isLocalization`・`resolvedDGVerdierExactPrecomposition_isQCatEquivalence`・`resolvedDGQuotient_isStableVerdierSequence`。
 
 ### 依存と提供
 
@@ -81,18 +81,18 @@
 
 ### 未コミット
 
-- β5 の Perf の実安定性・完全充満包含・graph tensor と Morita 不変性までの8新規モジュールを今回保存。次保存範囲：`DGSemifreeHomComplexInfinity` は個別ビルド済み、長行警告修正後に統合・監査する。値域は複体の dg nerve であり、D(R) への移行と二変数・随伴は未完。
+- 今回保存：`DGSemifreeHomComplexInfinity`・`DGModuleHomSpaceInfinity`・`QCatEquivalenceAdjunction`・`DGMoritaAdjunctionInfinity` の4モジュール。未保存：`DGNerveOppositeIndex`・`DGNerveOppositeSigns` は個別ビルド済み、`DGNerveOppositeData` の全成分二回反転を検証中。反対模型の微分式・単体自然性は未完。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8526 jobs）。公理監査は Derived 11541 宣言／1292 モジュール、Stable 12656／1562。許容三公理のみ。今回までの新規223モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9220 jobs）。公理監査は Derived 11596 宣言／1296 モジュール、Stable 12711／1566。許容三公理のみ。今回までの保存対象227新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5：D(A)・Perf(A) の実安定性、Perf→D の実完全充満包含、両模型の graph tensor、包含との全関手比較、graph Morita・代数準同型不変性まで証明・監査済み。次は `DGSemifreeHomComplexInfinity` の統合・監査。固定入力ごとの Hom は複体の dg nerve への実 ∞ 関手、実写像空間は同じ Hom 複体の pinched 模型と同型。これを D(R) の半自由模型へ移す比較、dg 反対模型と ∞ 反対圏の照合、二変数・tensor–Hom 随伴と全 coherence を構成する。一般双加群・Perf の冪等完備性・β4 は残る。固定入力・複体値だけで導来 Hom 全体の完成と数えない。
+- β5：D(A)・Perf(A) の実安定性・完全充満包含・graph tensor・Morita 不変性に加え、全二変数の空間値 Hom と同じ Hom 複体模型との比較、固定入力ごとの複体値 Hom を統合・監査済み。Morita tensor の同じ逆関手を全 h Fun 内の三角式付き右随伴へ昇格し、Perf→D との逆関手比較も完成。次は dg 反対模型の実全成分に符号付き反転を施し、微分式と全単体作用の保存を証明する。D(R) 値の二変数 Hom・一般 tensor–Hom 随伴・一般双加群・Perf の冪等完備性・β4 は残る。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。β3 は移送と Verdier 列まで完了。β5、β4 は未完。
 

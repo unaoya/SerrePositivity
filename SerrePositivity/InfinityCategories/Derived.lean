@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.Derived.DGMoritaAdjunctionInfinity
+public import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomComplexInfinity
+public import SerrePositivity.InfinityCategories.Derived.DGModuleHomSpaceInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectMoritaInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGClosedModuleFunctorExact

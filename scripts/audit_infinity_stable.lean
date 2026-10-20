@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+import SerrePositivity.InfinityCategories.Derived.DGMoritaAdjunctionInfinity
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomComplexInfinity
+import SerrePositivity.InfinityCategories.Derived.DGModuleHomSpaceInfinity
 import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectInfinity
 import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectMoritaInfinity
 import SerrePositivity.InfinityCategories.Derived.DGClosedModuleFunctorExact
@@ -3489,6 +3493,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.DGMoritaAdjunctionInfinity,
+
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomComplexInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleHomSpaceInfinity,
+
     `SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectMoritaInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGClosedModuleFunctorExact,
