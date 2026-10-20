@@ -408,3 +408,14 @@ public import SerrePositivity.EInfinity.Operad.CommutativeAlgebra
 public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
 public import SerrePositivity.EInfinity.Operad.DiscreteCommutative
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
+public import SerrePositivity.EInfinity.HomologyZero.Classes
+public import SerrePositivity.EInfinity.HomologyZero.HomotopyClasses
+public import SerrePositivity.EInfinity.HomologyZero.UnitRigidity
+public import SerrePositivity.EInfinity.HomologyZero.PairingRepresentatives
+public import SerrePositivity.EInfinity.HomologyZero.PairingLinear
+public import SerrePositivity.EInfinity.HomologyZero.PairingHomotopy
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyCoefficient
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyOperations
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyCoefficientAction
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyCommutativeComparison
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyDiscreteComparison

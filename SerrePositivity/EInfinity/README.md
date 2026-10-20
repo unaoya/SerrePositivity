@@ -666,7 +666,15 @@ nullary を含む TR の部分合成保存は完了。
 `discreteCommutativeFunctor` は既存の対称モノイダル零次埋め込みを用い、通常の積と単位を移す。
 `BarrattEccles.discreteAlgebraFunctor` は実際の augmentation E → Com に沿ってこれを制限する。
 底は元の加群の零次複体、射も元の代数射の零次埋め込みである。
-次は一般図式の homotopy 極限と H⁰ の可換環構造。
+`HomologyZero.classMap` は閉零次元から元の `homology 0` への全射で、零類と境界の同値を証明。
+`unitClass_eq_iff` は単位からの射の類の一致と鎖ホモトピーを同定する。
+`unitHomLinearEquiv` は実際の H⁰ と単位からの鎖ホモトピー類の線形同値。
+`HomologyZero.pairing` は任意の二入力複体射から実際の H⁰ の双線形作用を作り、
+代表元独立性・ホモトピー不変性・Koszul 交換との両立まで証明する。
+`BarrattEccles.homologyProduct` と `homologyOne` は E の arity 2・0 から積と単位の候補を作る。
+`homologyProduct_eq_pairing` は augmentation が一である任意の係数で同じ積を計算できること。
+`homologyBinary_discrete`・`homologyNullary_discrete` は離散 E 代数の射が元の積・単位に厳密に一致すること。
+H⁰ の環公理（結合則・単位則・可換性）と一般図式の homotopy 極限は未完成。
 E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：

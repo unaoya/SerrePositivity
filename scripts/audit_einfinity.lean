@@ -1511,6 +1511,50 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.discreteAlgebraFunctor_carrier,
       `SerrePositivity.EInfinity.BarrattEccles.discreteAlgebraFunctor_map,
       `SerrePositivity.EInfinity.BarrattEccles.discreteAlgebraFunctor_action,
+      `SerrePositivity.EInfinity.HomologyZero.quotientIso,
+      `SerrePositivity.EInfinity.HomologyZero.classMap,
+      `SerrePositivity.EInfinity.HomologyZero.classMap_surjective,
+      `SerrePositivity.EInfinity.HomologyZero.classMap_eq_zero_iff,
+      `SerrePositivity.EInfinity.HomologyZero.unitCycleLinearEquiv,
+      `SerrePositivity.EInfinity.HomologyZero.unitClass,
+      `SerrePositivity.EInfinity.HomologyZero.unitClass_surjective,
+      `SerrePositivity.EInfinity.HomologyZero.unitClass_eq_iff,
+      `SerrePositivity.EInfinity.HomologyZero.unitClass_out_map,
+      `SerrePositivity.EInfinity.HomologyZero.homotopyClassMap,
+      `SerrePositivity.EInfinity.HomologyZero.homotopyClassMap_apply_map,
+      `SerrePositivity.EInfinity.HomologyZero.homotopyClassMap_bijective,
+      `SerrePositivity.EInfinity.HomologyZero.unitHomLinearEquiv,
+      `SerrePositivity.EInfinity.HomologyZero.unit_homotopy_eq,
+      `SerrePositivity.EInfinity.HomologyZero.representative,
+      `SerrePositivity.EInfinity.HomologyZero.representative_class,
+      `SerrePositivity.EInfinity.HomologyZero.representative_homotopy,
+      `SerrePositivity.EInfinity.HomologyZero.unitPairing,
+      `SerrePositivity.EInfinity.HomologyZero.unitPairingHomotopy,
+      `SerrePositivity.EInfinity.HomologyZero.pairingValue,
+      `SerrePositivity.EInfinity.HomologyZero.pairingValue_class,
+      `SerrePositivity.EInfinity.HomologyZero.pairingValue_add_left,
+      `SerrePositivity.EInfinity.HomologyZero.pairingValue_add_right,
+      `SerrePositivity.EInfinity.HomologyZero.pairingValue_smul_left,
+      `SerrePositivity.EInfinity.HomologyZero.pairingValue_smul_right,
+      `SerrePositivity.EInfinity.HomologyZero.pairing,
+      `SerrePositivity.EInfinity.HomologyZero.pairing_homotopy,
+      `SerrePositivity.EInfinity.HomologyZero.pairing_braiding,
+      `SerrePositivity.EInfinity.BarrattEccles.aritySection,
+      `SerrePositivity.EInfinity.BarrattEccles.aritySection_augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyOperation,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyBinary,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyProduct,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyOne,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientBinary,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientBinaryHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.coefficientPairing_independent,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyProduct_eq_pairing,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyOperation_commutative,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyBinary_commutative,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyNullary_commutative,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyBinary_discrete,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyNullary_discrete,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4236,3 +4280,28 @@ example (A : Type) [CommRing A] {B D : CommAlgCat A} (f : B ⟶ D) (x : B) :
     (HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A D)) _).trans
     (congrArg (fun b : B => f.hom b) (ModuleCat.hom_inv_apply
       (HomologicalComplex.singleObjXSelf (.up ℤ) 0 (ModuleCat.of A B)) x))
+
+-- 実際の正規化区間では、辺の境界である二頂点の差は H⁰ で消える。
+open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.HomologyZero
+private def intervalVertexCycle (b : Fin 2) : zeroCycles (interval ℤ) :=
+  ⟨faceVector ℤ (vertex b), faceVector_vertex_d ℤ b⟩
+example : classMap (interval ℤ) (intervalVertexCycle 1) =
+    classMap (interval ℤ) (intervalVertexCycle 0) := by
+  rw [← sub_eq_zero, ← map_sub]
+  apply (classMap_eq_zero_iff (interval ℤ) _).mpr
+  exact ⟨faceVector ℤ edge, faceVector_edge_d_sub ℤ⟩
+
+-- 単位の一の類は消えておらず、実際の H⁰ の型を使っている。
+example : unitClass (𝟙_ (SerrePositivity.DifferentialGraded.Complex ℤ)) (𝟙 _) ≠ 0 := by
+  intro h
+  obtain ⟨x, hx⟩ := (classMap_eq_zero_iff _ _).mp h
+  change (0 : ℤ) = 1 at hx
+  norm_num at hx
+
+-- E 代数の H⁰ の積は元の加群構造について双線形である。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (X : (BarrattEccles.operad ℤ).Algebra) (a b c : X.carrier.homology 0) :
+    homologyProduct X ((3 : ℤ) • a + b) c =
+      (3 : ℤ) • homologyProduct X a c + homologyProduct X b c := by
+  rw [map_add, map_zsmul]
+  rfl
