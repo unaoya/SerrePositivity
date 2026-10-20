@@ -1119,3 +1119,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyComposite_right_constant
 #check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyConstantInverse
 #check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyZigzag
+
+#check @SerrePositivity.InfinityCategories.F2.relativePath_model_comparison
+#check @SerrePositivity.InfinityCategories.F2.exists_relativePathFiniteComparison
+#check @SerrePositivity.InfinityCategories.F2.relativePathComparison_zero
+#check @SerrePositivity.InfinityCategories.F2.relativePathComparison_one
+#check @SerrePositivity.InfinityCategories.F2.relativePathComparison_side
+#check @SerrePositivity.InfinityCategories.F2.relativePathComparison_square_boundary
+#check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint_kan_point
+#check @SerrePositivity.InfinityCategories.F2.relativePath_kan_point_comparison
+#check @SerrePositivity.InfinityCategories.F2.relativePathSquareCurry_restrict
+#check @SerrePositivity.InfinityCategories.F2.relativePathKanComparison_restrict
+#check @SerrePositivity.InfinityCategories.F2.kanCospanPoint_relative_boundary_path
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_original_input_relative_detection
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_original_input_relative_detection_of_boundary

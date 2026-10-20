@@ -2,7 +2,7 @@
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の F1b → F2-lite。B4・B5 の後、Cat_∞ を ∞ 圏として（Kerodon 5.5）、Cat_∞ の極限、lax pullback。
 
-## 引き継ぎ（2026-10-20、第 2 部へ移行）
+## 引き継ぎ（2026-10-21、第 2 部）
 
 ### 現在地
 
@@ -48,10 +48,12 @@
 - 第 2 部：全 path 座標を保つ標準同型、任意の strict Kan cospan の native な引き戻し・filtered 比較を証明。
   余錐空間から全空間内部 Hom への比較同値、元の単位との整合と全 fiber 標的への前合成同値から native 余極限性を証明。
   任意の有限標的射を元の一値で検出。全相対境界を保つ模型本体の同時輸送と元の値への反映を構成し、反映後の境界値を厳密に保持。
-  相対ホーン充填・境界定値な反転と合成、中央の全境界円柱を保持する zigzag 合成を証明。実際の比較への適用は残る。
+  相対ホーン充填・境界定値な反転と合成、中央の全境界円柱を保持する zigzag 合成を証明。
+  元の二入力と厳密な境界入力を持つ場合の相対有限検出を実際の比較射に接続。値の境界と全比較円柱の制限を厳密に保持。
+  任意の標的二入力への拡張は残る。
   一般 coherent 図式の HasColimit、共通境界付き同時検出、元の全空間 Kan 積比較の弱同値性・ホモトピー逆を証明。引き戻し交換・Ind は残る。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約 7445 jobs、公理監査 2874 宣言、同時 import 成功。一般 coherent filtered 余極限の有限極限交換は残る。
+  検証：F2 単独 6486 jobs、公理監査 2888 宣言は成功。初回三集約 7461 jobs は成功、最新の F1 再検証は失敗。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -60,18 +62,12 @@
 
 ### 主要宣言（名前のみ）
 
-- `QCatAdjunction` / `F1B.kanNonempty_adjunction_iff_nerveAdjunction`
-- `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
-- `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits`
-- `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
-- `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence`
-- `F1B.kanNerve_leftKanHomUniversal_iff` / `F1B.kanNerve_rightKanHomUniversal_iff`
-- `F1B.kanNerve_isLeftKanExtensionHom_iff_pointwise` / `F1B.kanNerve_isRightKanExtensionHom_iff_pointwise`
-- `F1B.kanNerveLeftCoconeTransport_cocone` / `F1B.kanNerveRightConeTransport_cone`
-- `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
-- `F2.catPullbackObject` / `F2.catPullbackFunctorIso` / `F2.catPullbackFunctorCoreIso`
-- `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
-- `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
+- `QCatAdjunction` / `F1B.kanNonempty_adjunction_iff_nerveAdjunction` / `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
+- `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits` / `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
+- `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence` / `F1B.kanNerve_leftKanHomUniversal_iff` / `F1B.kanNerve_rightKanHomUniversal_iff`
+- `F1B.kanNerve_isLeftKanExtensionHom_iff_pointwise` / `F1B.kanNerve_isRightKanExtensionHom_iff_pointwise` / `F1B.kanNerveLeftCoconeTransport_cocone` / `F1B.kanNerveRightConeTransport_cone`
+- `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff` / `F2.catPullbackObject` / `F2.catPullbackFunctorIso` / `F2.catPullbackFunctorCoreIso`
+- `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex` / `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
 - `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
@@ -89,6 +85,7 @@
 
 ### 既知の問題
 
+- 最新の F1 同時ビルド・import は `CoherentLeftIntervalCutHom.lean:195` の未解決ゴールで未通過。F1 は読み取り専用。
 - 保存 `43c25ad6` は D レーンの 9 ファイルも同梱。履歴は変更せず、以後 `git commit --only` で所有パスを限定。
 - F1/F1B の同名宣言衝突は `efdd0fb3` で修正済み。保存前に同時ビルド・同時 import・ソースの衝突検査を行う。
 - 新規・再構成は F1B 名前空間。F1B のソースに `ModelCategory` 仮定なし。前提は Lean が正本。
@@ -98,12 +95,12 @@
 
 ### 次の一手
 
-- F2N-1：exists_relativeHomotopyZigzag を全相対境界の近似・輸送・反映に適用し、指定部分上の比較円柱を元の境界輸送と厳密に一致させる。
+- F2N-1：任意の標的二入力の輸送を元の境界円柱とともに構成し、元の二入力の場合の相対有限検出へ接続する。
+
+## 0. 目標と範囲
 
 正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と [foundations.md](foundations.md) §6・§8。
 本計画は目標・設計・現在地・主要宣言を管理し、実施記録はコミットメッセージに置く。
-
-## 0. 目標と範囲
 
 quasicategory の随伴、反射的局所化、cofinality、点ごとの左右 Kan 拡張を構成する。
 Lean は `SerrePositivity/InfinityCategories/F1B/`、namespace は

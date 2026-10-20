@@ -1,11 +1,11 @@
 # F2：F2-lite と presentable ∞ 圏（v2、F1b）
 
-作成日：2026-10-18。更新日：2026-10-20。
+作成日：2026-10-18。更新日：2026-10-21。
 正本は [foundations.md](foundations.md)。本書は F2-lite と F2 後半の正本。
 F1b の前提工程は [infinity-core-F1b.md](infinity-core-F1b.md)、
 N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照する。
 
-## 引き継ぎ（2026-10-20）
+## 引き継ぎ（2026-10-21）
 
 ### 現在地
 
@@ -46,8 +46,10 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   全境界正方形と端点固定反映を元の比較へ合成。任意の有限標的射を、元の一値の実際の引き戻し比較像で検出。
   有限持ち上げと有限写像空間の π₀ の全射性を証明。全相対境界を保つ模型本体の同時輸送と元の値への反映を構成。反映後の射は元の境界値と厳密に一致。
   一般 Kan 標的で相対ホーン充填、境界定値な円柱の反転と左右の合成を証明。
-  三比較の zigzag を中央の全境界円柱と厳密に一致させて合成。実際の引き戻し比較への適用・弱同値性は残る。
-  三集約同時ビルド 7445 jobs、公理監査 2874 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  三比較の zigzag を中央の全境界円柱と厳密に一致させて合成。
+  元の二入力と厳密な境界入力を持つ場合、有限近似・輸送・反映を実際の引き戻し比較へ接続。
+  値の射の境界一致と、比較円柱の元の境界輸送像との厳密な一致を証明。任意の標的二入力への拡張・弱同値性は残る。
+  F2 単独 6486 jobs、公理監査 2888 宣言は成功。初回三集約 7461 jobs は成功、最新の F1 再検証は失敗。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -60,18 +62,12 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 主要宣言（検証済みのみ）
 
-- `F2.IsKappaSmall` / `F2.IsFilteredInfinity` / `F2.IsKappaFiltered`
-- `F2.isKappaSmall_aleph0_iff` / `F2.isKappaFiltered_aleph0_iff` / `F2.isFilteredInfinity_of_retract`
-- `F2.isKappaSmall_join` / `F2.isKappaFiltered_sliceUnder` / `F2.isFilteredInfinity_iff_isContractibleKan`
-- `F2.cosliceCoproduct_isPullback` / `F2.isRightCofinal_sliceUnderProjection_of_filtered`
-- `F2.laxCosliceDiagonalCommaIso` / `F2.weaklyContractible_diagonalStandardComma_iff`
-- `F2.isFilteredInfinity_iff_of_equivalence` / `F2.isKappaFiltered_iff_of_equivalence`
-- `F2.reflectedBousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered`
-- `F2.filteredKanColimitComparison_factor` / `F2.filteredKanColimitCocone_isColimit`
-- `F2.kanCoconeAugmentationComparison_factor` / `F2.filteredKanColimitOrdinaryCocone_isColimit`
-- `F2.intervalReplacementColimitIso` / `F2.intervalPullbackColimitIso`
-- `F2.intervalPullbackCone_isLimit` / `F2.filteredIntervalPullbackExchange`
-- `F2.continuousKanLeftFibration_pair_relative_detection` / `F2.totalKanProductComparison_homotopyEquivalence`
+- `F2.IsKappaSmall` / `F2.IsFilteredInfinity` / `F2.IsKappaFiltered` / `F2.isKappaSmall_aleph0_iff` / `F2.isKappaFiltered_aleph0_iff` / `F2.isFilteredInfinity_of_retract`
+- `F2.isKappaSmall_join` / `F2.isKappaFiltered_sliceUnder` / `F2.isFilteredInfinity_iff_isContractibleKan` / `F2.cosliceCoproduct_isPullback` / `F2.isRightCofinal_sliceUnderProjection_of_filtered`
+- `F2.laxCosliceDiagonalCommaIso` / `F2.weaklyContractible_diagonalStandardComma_iff` / `F2.isFilteredInfinity_iff_of_equivalence` / `F2.isKappaFiltered_iff_of_equivalence`
+- `F2.reflectedBousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered` / `F2.filteredKanColimitComparison_factor` / `F2.filteredKanColimitCocone_isColimit`
+- `F2.kanCoconeAugmentationComparison_factor` / `F2.filteredKanColimitOrdinaryCocone_isColimit` / `F2.intervalReplacementColimitIso` / `F2.intervalPullbackColimitIso`
+- `F2.intervalPullbackCone_isLimit` / `F2.filteredIntervalPullbackExchange` / `F2.continuousKanLeftFibration_pair_relative_detection` / `F2.totalKanProductComparison_homotopyEquivalence`
 - `F2.continuousKanLeftFibration_finite_relative_detection` / `F2.continuousKanLeftFibration_finite_boundary_detection`
 - `F2.coherentSmallConstantTargetMap_isQCatEquivalence` / `F2.coherentDiagramTotalCocone_vertex`
 - `F2.coconeTransformationMap_prism` / `F2.coconeTransformationMap_isQCatEquivalence`
@@ -93,6 +89,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 既知の問題
 
+- 最新の F1 同時ビルド・import は `CoherentLeftIntervalCutHom.lean:195` の未解決ゴールで未通過。F1 は読み取り専用。
 - F1 の前層・Yoneda は F1 計画の後続工程。Ind の存在を仮定して回避しない。
 - 一般の coherent な図式の余極限と、通常の小圏による strict 図式の余極限を区別する。
 - 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
@@ -104,7 +101,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：exists_relativeHomotopyZigzag を全相対境界の近似・輸送・反映に適用し、指定部分上の比較円柱を元の境界輸送と厳密に一致させる。
+- F2N-1：任意の標的射の二入力を、元の境界引き戻し射の全円柱を保って元の二入力へ輸送し、構成済みの相対有限検出へ接続する。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
@@ -166,7 +163,9 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による相対有限検出を証明。
   任意の有限標的射を元の一値で検出し、元の Kan 比較への有限持ち上げと有限写像空間の π₀ の全射性を証明。
   全相対境界の単射有限近似、模型本体までの同時輸送と元の値への反映を構成。反映後の境界は厳密に保持。
-  中央の全境界円柱を保持する相対 zigzag 合成を証明。実際の比較への適用・弱同値性・一般の交換・Ind は未完了。
+  中央の全境界円柱を保持する相対 zigzag 合成を証明。
+  元の二入力と厳密な境界入力を持つ場合の相対有限検出を実際の比較射について証明。全境界円柱の一致も厳密。
+  任意の標的二入力への相対拡張・弱同値性・一般の交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -176,7 +175,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：exists_relativeHomotopyZigzag を全相対境界の近似・輸送・反映に適用し、指定部分上の円柱を元の境界輸送と厳密に一致させる。
+- 次の一手：任意の標的二入力の輸送を元の境界円柱とともに構成し、元の二入力の場合の相対有限検出へ接続する。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
