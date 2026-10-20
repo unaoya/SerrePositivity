@@ -14,11 +14,11 @@
   同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
   各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
   core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
-  像の Cat∞ 値関手への実現を構成し、その比較との合成は元の主写像と厳密に一致する。
+  像の Cat∞ 値関手への実現と元の主写像との分解等式、実際の区間 Hom 作用を構成済み。
+  区間作用の端点・各対象での評価と主写像への接続を証明。その作用の同値性は未証明。
   Cat∞ 値関手への主写像の充満忠実性と本質的全射性はまだ証明していない。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
-  weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
 - **F1-1c2 の空間値版は完了**：一般の小さい quasicategory B 上の構成済みの同じ S は
   `leftStraighteningInfinityMap_isFullyFaithful` により充満忠実。既存の本質的全射性と F0 を合わせ、
   `leftStraighteningInfinityMap_isQCatEquivalence` で分類同値を閉じた。単位・余単位と三角恒等式は任意。
@@ -29,7 +29,6 @@
 - 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
   を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
 - `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
-  実際の区間 Hom 作用と標準 pinched Hom 作用の同値性を、同じ恒等点評価と輸送から回収した。
   空間値の essentially small Kan fiber への相対延長も閉じた。Cat∞ 値版が残り、F1 全体は未完了。
 
 ### 残り（依存順）
@@ -83,7 +82,8 @@
 - 一般の cocartesian 標的で終点指定の可逆辺 lift と全相対 Hom の制限同値は `767961448`。
 - 同型不変な水平辺条件への制限と strict transport の全相対 Hom 作用の同値は `aece542ae`。
 - core の同値性と中間の像への coherent 比較の同値は `8c5d49f2d`。
-- 図式の core 上の混合作用と対角評価、Cat∞ 値関手への実現と元の主写像との分解等式を証明。
+- core 上の混合対角評価、Cat∞ 値関手への実現と元の主写像との分解等式は `c89a910c5`。
+- 実現の頂点・各対象での評価と、同じ区間 Hom 作用の展開・評価・主写像への接続を証明。
 
 ### 既知の問題
 
@@ -92,14 +92,14 @@
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
 - 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
 - 元の cocartesian Hom の scaffold 制限と strict transport の写像空間比較は同値。
-  主写像への分解等式も証明済み。実現の Hom 比較、Cat∞ 分類と非 Kan fiber の相対延長は残る。
+  区間作用の同値性を仮定した接続は証明済みだが、その入力は未証明。Cat∞ 分類は未完了。
 
 ### 次の一手
 
-`cocartesianStrictTransportInfinityMap_realization` まで完了。
-次は `cocartesianTransportDiagramRealization` の実際の Hom 作用の同値性を証明する。
-左 fibration 版の区間模型を参考に、strict transport を標的とする全変換の core と比較する。
-中間比較の同値と同じ分解等式を経由し、元の主写像の充満忠実性を閉じる。
+`cocartesianTransportDiagramHomInterval` の展開と各底対象での評価まで完了。
+次はこの同じ区間作用の同値性を、元の全 strict 変換の core から証明する。
+空間値版の Kan 図式用 unstraightening は直接適用できない。Cat∞ 値の高次の比較が必要。
+`cocartesianStraighteningCoherentMap_isFullyFaithful_of_homInterval` の入力を実際に証明して主写像へ戻す。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。

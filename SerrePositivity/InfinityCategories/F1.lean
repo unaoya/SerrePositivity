@@ -1596,3 +1596,13 @@ public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianTransport
 public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramRealization
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramRealizationComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramRealizationEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramRealizationVertices
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramHomInterval
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramHomCriterion
