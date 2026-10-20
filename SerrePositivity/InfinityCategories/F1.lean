@@ -1518,3 +1518,11 @@ public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianFibr
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianScaffold
 
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianUnit
+
+public import SerrePositivity.InfinityCategories.F1.CoherentQCatInvertible
+
+public import SerrePositivity.InfinityCategories.F1.QCatDiagramPrism
+
+public import SerrePositivity.InfinityCategories.F1.QCatDiagramNaturalTransformation
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianCoherentUnit

@@ -79,10 +79,10 @@
 - 前層の分類は `56dd08ad4`、essentially small Kan fiber の相対延長は `bf56a0416` に保存済み。
 - cocartesian fibration の ∞ 圏と通常 nerve 上の Cat∞ 値図式は `733a24a2b` に保存済み。
 - 全相対作用と通常 nerve 上の coherent 分類写像は `87acb9df5` に保存済み。
-- 係数充填の一般化と quasicategory 値 weighted nerve の inner fibration 性は `24a9eb957`。
-- 可逆な係数辺・標準水平辺の cocartesian 性は `6ed7eecf5`。
+- inner fibration 性は `24a9eb957`、係数辺・水平辺の cocartesian 性は `6ed7eecf5`。
 - quasicategory 値 weighted nerve の cocartesian fibration 性と scaffold 比較は `9d911c9c1`。
-- 同じ taut scaffold を cocartesian section の族へ転置した自然変換の全成分が同値。
+- cocartesian section への自然な比較と全成分の同値性は `3a02c7fb8`。
+- 同じ比較の coherent な実現と、strict 図式と同じ分類写像による weighted nerve の像の頂点同型を証明。
 
 ### 既知の問題
 
@@ -95,9 +95,9 @@
 ### 次の一手
 
 Cat∞ 値版では通常 nerve 上の全 fibration の分類写像に加え、strict 図式の unstraightening を構成済み。
-`weightedNerveCocartesianTransportUnit` は元の係数図式から cocartesian strict transport への
-自然変換であり、全成分が同値。恒等射での評価は元の厳密な fiber 同型に一致する。
-次はこの同じ自然変換を coherent な Cat∞ 値図式の比較に実現する。
+`weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
+比較は元の自然変換の prism を使い、各対象で成分の coherent 辺に一致する。
+次は任意の coherent な Cat∞ 値図式の strict 化を調べ、全対象の本質的全射性へ進む。
 同じ主写像の充満忠実性・本質的全射性と、一般の底への帰着は別に残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
