@@ -1272,3 +1272,5 @@ public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostHomCriter
 public import SerrePositivity.InfinityCategories.F1.KanEnrichedDiagramHomIntervalCriterion
 public import SerrePositivity.InfinityCategories.F1.KanEnrichedHomIntervalPrecomposition
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCoherentFullyFaithful
+
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCoherentEquivalence
