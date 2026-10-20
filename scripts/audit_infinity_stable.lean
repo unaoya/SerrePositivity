@@ -1,3 +1,20 @@
+import SerrePositivity.InfinityCategories.Derived.CofinalConeRestriction
+import SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence
+import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
+import SerrePositivity.InfinityCategories.Derived.CosliceHomotopyRealization
+import SerrePositivity.InfinityCategories.Derived.DGVerdierOverEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimit
+import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitCone
+import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanDiagram
+import SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone
+import SerrePositivity.InfinityCategories.Derived.LimitDiagramIso
+import SerrePositivity.InfinityCategories.Derived.LocalizationFunctorExtension
+import SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion
+import SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful
+import SerrePositivity.InfinityCategories.Derived.RightKanSliceRoof
+import SerrePositivity.InfinityCategories.Derived.RoofRelativePrismLiftSpace
+import SerrePositivity.InfinityCategories.Derived.SliceEvaluationVertex
+import SerrePositivity.InfinityCategories.Derived.WeaklyContractibleConstantLimit
 import SerrePositivity.InfinityCategories.Derived.DGClosedRoofEvaluationSpace
 import SerrePositivity.InfinityCategories.Derived.DGRelativeRoofEvaluation
 import SerrePositivity.InfinityCategories.Derived.RoofEvaluationLiftSpace
@@ -3472,6 +3489,23 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryAction,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingBinaryEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingUnitAction,
+    `SerrePositivity.InfinityCategories.Derived.CofinalConeRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence,
+    `SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer,
+    `SerrePositivity.InfinityCategories.Derived.CosliceHomotopyRealization,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOverEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimit,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitCone,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanDiagram,
+    `SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone,
+    `SerrePositivity.InfinityCategories.Derived.LimitDiagramIso,
+    `SerrePositivity.InfinityCategories.Derived.LocalizationFunctorExtension,
+    `SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion,
+    `SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful,
+    `SerrePositivity.InfinityCategories.Derived.RightKanSliceRoof,
+    `SerrePositivity.InfinityCategories.Derived.RoofRelativePrismLiftSpace,
+    `SerrePositivity.InfinityCategories.Derived.SliceEvaluationVertex,
+    `SerrePositivity.InfinityCategories.Derived.WeaklyContractibleConstantLimit,
     `SerrePositivity.InfinityCategories.Derived.DGClosedRoofEvaluationSpace,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeRoofEvaluation,
     `SerrePositivity.InfinityCategories.Derived.RoofEvaluationLiftSpace,
