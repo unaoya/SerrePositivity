@@ -42,7 +42,15 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.CoherentSplitFiberGroups,
     `SerrePositivity.KST.LocalizingInvariants.FiberSquareComparison,
     `SerrePositivity.KST.LocalizingInvariants.FiberSequenceComparison,
-    `SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows]
+    `SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows,
+    `SerrePositivity.KST.LocalizingInvariants.FiberPiComparison,
+    `SerrePositivity.KST.LocalizingInvariants.FiberLongExact,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumEdgePi,
+    `SerrePositivity.KST.LocalizingInvariants.NativeFiberSequence,
+    `SerrePositivity.KST.LocalizingInvariants.InvariantPiComparison,
+    `SerrePositivity.KST.LocalizingInvariants.InvariantLongExact,
+    `SerrePositivity.KST.LocalizingInvariants.NativeFiberDetection,
+    `SerrePositivity.KST.LocalizingInvariants.InvariantFiberDetection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
