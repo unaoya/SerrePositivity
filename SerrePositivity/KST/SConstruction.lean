@@ -872,4 +872,10 @@ public import SerrePositivity.KST.SConstruction.RawComparisonRectification
 public import SerrePositivity.KST.SConstruction.RawComparisonRectificationStages
 public import SerrePositivity.KST.SConstruction.RawStageComparisonImage
 public import SerrePositivity.KST.SConstruction.SourceFixedBoundaryComposition
+public import SerrePositivity.KST.SConstruction.CompositionReplacementTetrahedron
+public import SerrePositivity.KST.SConstruction.EnrichedCompositionReplacement
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeBFBoundaryFaces
+public import SerrePositivity.KST.SConstruction.PointFamilyHomotopyEdge
+public import SerrePositivity.KST.SConstruction.TracedBFSpectrumCompositionEdge
+public import SerrePositivity.KST.SConstruction.TracedBFCoherentComposition
 /-! # ∞-S• 構成と連結 K 理論 -/
