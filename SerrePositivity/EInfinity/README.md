@@ -1169,7 +1169,23 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 合成同士の各側0〜1段の元の同じ未縮約対象への合流を与える。
 `BarrattEccles.algebraHammockMergeRaw_reduction`・`algebraHammockMergeMerge_join` は
 任意の可換環上の元の基本合成と同じ合流。モデル構造は局所的に選ぶ。
-混合を含む基本縮約全体の局所合流と代表の一意性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.punctureInclusion` は Fin.succAbove による同じ元の一列の補集合の包含。
+`erase_raw_eq_of_embedding`・`erase_reduction_of_embedding` は一列を除く任意の包含を
+既存の元の基本削除と照合する。`punctureSimplex_fac`・`_raw_eq` は元の全単体を回収する。
+`merge_erase_overlap_eq` は合成する二列の一方を削除する場合の厳密な相殺。
+`Word.descendSurjection` は元の全射から色保存を回収し、`merge_erase_join_of_square` は
+面・退化の可換四角形から各側一段の合流を得る。`merge_erase_join` は左右外側も含む全場合。
+`reduction_local_join`・`reduction_church_rosser` は二つの基本操作と有限縮約全体の合流性。
+`reduced_representative_unique` は同じ元の対象から到達した縮約済みの代表の一意性。
+`normalForm`・`_chain`・`_reduced` は有限縮約で得る元の一意な代表で、`_eq_iff_join` は
+同じ正規形と有限縮約による共通対象の存在の同値。`normalForm_map_normalForm` は
+元の全作用素の後の再縮約への整合。`reducedSimplicialSet` はその再縮約を全作用素とする
+元の縮約済み対象の単体集合。`normalization`・`reducedAugmentation` と
+`normalization_augmentation` は元の未縮約対象からの単体的正規化と同じ元の標準射の回収。
+`BarrattEccles.algebraHammockReducedRepresentative_unique`・`algebraHammockNormalForm_map`・
+`algebraHammockNormalization_augmentation` 等は任意の可換環上で完成。
+任意の語の写像の基本操作への分解と正規形の不変性、元の余極限と縮約 hammock との同型、
+三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

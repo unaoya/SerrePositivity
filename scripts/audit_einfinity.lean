@@ -3376,6 +3376,58 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockMergeRaw_reduction,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockMergeMerge_join]
 
+@[noinline] private def e2RequiredBatch29 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.puncture,
+      `SerrePositivity.EInfinity.Hammock.Word.punctureInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.punctureInclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.punctureInclusion_range,
+      `SerrePositivity.EInfinity.Hammock.identityOutside_of_complement,
+      `SerrePositivity.EInfinity.Hammock.erase_raw_eq_of_embedding,
+      `SerrePositivity.EInfinity.Hammock.exists_eraseEmbedding,
+      `SerrePositivity.EInfinity.Hammock.erase_reduction_of_embedding,
+      `SerrePositivity.EInfinity.Hammock.punctureSimplex,
+      `SerrePositivity.EInfinity.Hammock.punctureSimplex_fac,
+      `SerrePositivity.EInfinity.Hammock.punctureSimplex_raw_eq,
+      `SerrePositivity.EInfinity.Hammock.merge_erase_eq_of_cancel,
+      `SerrePositivity.EInfinity.Hammock.merge_erase_overlap_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.descendSurjection,
+      `SerrePositivity.EInfinity.Hammock.Word.descendSurjection_fac,
+      `SerrePositivity.EInfinity.Hammock.merge_erase_join_of_square,
+      `SerrePositivity.EInfinity.Hammock.merge_erase_join,
+      `SerrePositivity.EInfinity.Hammock.reduction_local_join,
+      `SerrePositivity.EInfinity.Hammock.reduction_church_rosser,
+      `SerrePositivity.EInfinity.Hammock.chain_eq_of_reduced,
+      `SerrePositivity.EInfinity.Hammock.reduced_representative_unique,
+      `SerrePositivity.EInfinity.Hammock.normalForm,
+      `SerrePositivity.EInfinity.Hammock.normalForm_chain,
+      `SerrePositivity.EInfinity.Hammock.normalForm_reduced,
+      `SerrePositivity.EInfinity.Hammock.normalForm_eq_of_chain,
+      `SerrePositivity.EInfinity.Hammock.normalForm_eq_of_reduction,
+      `SerrePositivity.EInfinity.Hammock.normalForm_eq_self,
+      `SerrePositivity.EInfinity.Hammock.normalForm_idempotent,
+      `SerrePositivity.EInfinity.Hammock.normalForm_value,
+      `SerrePositivity.EInfinity.Hammock.normalForm_eq_iff_join,
+      `SerrePositivity.EInfinity.Hammock.normalForm_map_normalForm,
+      `SerrePositivity.EInfinity.Hammock.reducedSimplicialSet,
+      `SerrePositivity.EInfinity.Hammock.normalization,
+      `SerrePositivity.EInfinity.Hammock.normalization_app,
+      `SerrePositivity.EInfinity.Hammock.reducedAugmentation,
+      `SerrePositivity.EInfinity.Hammock.normalization_augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockMergeErase_join,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawReduction_local_join,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawReduction_church_rosser,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReducedRepresentative_unique,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalForm,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalForm_chain,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalForm_reduced,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalForm_eq_self,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalForm_value,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalForm_map,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReducedSimplicialSet,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalization,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReducedAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockNormalization_augmentation]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3403,7 +3455,7 @@ run_cmd do
       e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
-      e2RequiredBatch28] do
+      e2RequiredBatch28, e2RequiredBatch29] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8172,3 +8224,57 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       Relation.ReflGen (BarrattEccles.algebraHammockRawReduction A X Y)
         (BarrattEccles.algebraHammockMergeRaw A X Y d q hq τ) r :=
   BarrattEccles.algebraHammockMergeMerge_join A X Y d p q hp hq τ
+
+-- 同じ元の始域から出る二つの基本縮約は、全次数で各側0〜1段の共通対象を持つ。
+open SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) {n : SimplexCategoryᵒᵖ}
+    {r s t : BarrattEccles.algebraHammockRaw A X Y n}
+    (hs : BarrattEccles.algebraHammockRawReduction A X Y r s)
+    (ht : BarrattEccles.algebraHammockRawReduction A X Y r t) :
+    ∃ q, Relation.ReflGen (BarrattEccles.algebraHammockRawReduction A X Y) s q ∧
+      Relation.ReflGen (BarrattEccles.algebraHammockRawReduction A X Y) t q :=
+  BarrattEccles.algebraHammockRawReduction_local_join A X Y hs ht
+
+-- 同じ元の対象から到達した縮約済みの二つの代表は、語も含めて等しい。
+open SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) {n : SimplexCategoryᵒᵖ}
+    {r s t : BarrattEccles.algebraHammockRaw A X Y n}
+    (hs : Relation.ReflTransGen (BarrattEccles.algebraHammockRawReduction A X Y) r s)
+    (ht : Relation.ReflTransGen (BarrattEccles.algebraHammockRawReduction A X Y) r t)
+    (hsr : BarrattEccles.algebraHammockRawIsReduced A X Y s)
+    (htr : BarrattEccles.algebraHammockRawIsReduced A X Y t) : s = t :=
+  BarrattEccles.algebraHammockReducedRepresentative_unique A X Y hs ht hsr htr
+
+-- 元の有限縮約による正規化は、全作用素の後の再縮約に整合する。
+open SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) {n m : SimplexCategoryᵒᵖ} (α : n ⟶ m)
+    (r : BarrattEccles.algebraHammockRaw A X Y n) :
+    BarrattEccles.algebraHammockNormalForm A X Y
+        (BarrattEccles.algebraHammockRawMap A X Y α
+          (BarrattEccles.algebraHammockNormalForm A X Y r)) =
+      BarrattEccles.algebraHammockNormalForm A X Y (BarrattEccles.algebraHammockRawMap A X Y α r) :=
+  BarrattEccles.algebraHammockNormalForm_map A X Y α r
+
+-- 再縮約した単体集合の元の標準射は、元の未縮約の標準射を回収する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    BarrattEccles.algebraHammockNormalization A X Y ≫
+        BarrattEccles.algebraHammockReducedAugmentation A X Y =
+      BarrattEccles.algebraHammockRawAugmentation A X Y :=
+  BarrattEccles.algebraHammockNormalization_augmentation A X Y
+
+-- 合成する二列の一方を削除する場合、結果は元の raw の対象として既に等しい。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category C] (W : MorphismProperty C)
+    [W.IsMultiplicative] (X Y : C) {k : ℕ} (d : Fin (k + 2) → Direction)
+    (p : Fin (k + 1)) (hp : d p.castSucc = d p.succ) {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W (⟨k + 2, d⟩ : Word) X Y).obj n)
+    (hτ : ∀ r, IdentityColumn (τ.obj r) p.succ) :
+    (⟨Word.mergeTarget d p, ((graphDiagram W X Y).map (Word.mergeMap d p hp)).app n τ⟩ :
+      RawHammock W X Y n) =
+        ⟨Word.erase (⟨k + 2, d⟩ : Word) p.succ, eraseSimplex W X Y p.succ τ hτ⟩ :=
+  merge_erase_overlap_eq W X Y d p hp p.succ (Or.inr rfl) τ hτ

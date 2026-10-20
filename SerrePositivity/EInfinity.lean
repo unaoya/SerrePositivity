@@ -858,3 +858,14 @@ public import SerrePositivity.EInfinity.Hammock.RawSurjectionComparison
 public import SerrePositivity.EInfinity.Hammock.WordMergeIndices
 public import SerrePositivity.EInfinity.Hammock.MergeMergeConfluence
 public import SerrePositivity.EInfinity.BarrattEccles.HammockMergeConfluence
+public import SerrePositivity.EInfinity.Hammock.WordPuncture
+public import SerrePositivity.EInfinity.Hammock.EraseEmbedding
+public import SerrePositivity.EInfinity.Hammock.PunctureSimplex
+public import SerrePositivity.EInfinity.Hammock.MergeEraseOverlap
+public import SerrePositivity.EInfinity.Hammock.WordSurjectionDescent
+public import SerrePositivity.EInfinity.Hammock.MergeEraseSquare
+public import SerrePositivity.EInfinity.Hammock.MergeEraseConfluence
+public import SerrePositivity.EInfinity.Hammock.ReductionConfluence
+public import SerrePositivity.EInfinity.Hammock.NormalForm
+public import SerrePositivity.EInfinity.Hammock.ReducedSimplicialSet
+public import SerrePositivity.EInfinity.BarrattEccles.HammockNormalization
