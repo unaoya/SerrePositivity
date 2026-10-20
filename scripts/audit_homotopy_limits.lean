@@ -9202,3 +9202,75 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @initialHomEdgeSectionInitialComparison_base
 #print axioms initialHomEdgeSectionInitialComparison_base
+
+#check @arrowRightIdentity_cancel
+#print axioms arrowRightIdentity_cancel
+
+#check @initialDiagramHomFamily_precomp
+#print axioms initialDiagramHomFamily_precomp
+
+#check @initialRestrictionSection_source
+#print axioms initialRestrictionSection_source
+
+#check @initialRestrictionSectionComparison
+#print axioms initialRestrictionSectionComparison
+
+#check @initialRestrictionSectionComparison_evaluation
+#print axioms initialRestrictionSectionComparison_evaluation
+
+#check @initialRestrictionSectionComparison_base
+#print axioms initialRestrictionSectionComparison_base
+
+#check @initialRestrictionUniversalCylinderData
+#print axioms initialRestrictionUniversalCylinderData
+
+#check @initialRestrictionUniversalHomCylinder
+#print axioms initialRestrictionUniversalHomCylinder
+
+#check @initialRestrictionUniversalHomCylinder_projection
+#print axioms initialRestrictionUniversalHomCylinder_projection
+
+#check @initialRestrictionUniversalHomCylinder_hom_arrow
+#print axioms initialRestrictionUniversalHomCylinder_hom_arrow
+
+#check @colimitAttachmentUniversalCylinderData
+#print axioms colimitAttachmentUniversalCylinderData
+
+#check @colimitAttachmentUniversalHomCylinder
+#print axioms colimitAttachmentUniversalHomCylinder
+
+#check @colimitAttachmentUniversalHomCylinder_projection
+#print axioms colimitAttachmentUniversalHomCylinder_projection
+
+#check @colimitAttachmentUniversalHomCylinder_hom_arrow
+#print axioms colimitAttachmentUniversalHomCylinder_hom_arrow
+
+#check @specifiedCoconeLeftUniversalInitialHomotopy
+#print axioms specifiedCoconeLeftUniversalInitialHomotopy
+
+#check @specifiedCoconeLeftUniversalInitialHomotopy_evaluation
+#print axioms specifiedCoconeLeftUniversalInitialHomotopy_evaluation
+
+#check @specifiedCoconeLeftUniversalHomotopy
+#print axioms specifiedCoconeLeftUniversalHomotopy
+
+#check @specifiedCoconeLeftUniversalHomotopy_projection
+#print axioms specifiedCoconeLeftUniversalHomotopy_projection
+
+#check @specifiedCoconeLeftUniversalHomotopy_hom_arrow
+#print axioms specifiedCoconeLeftUniversalHomotopy_hom_arrow
+
+#check @specifiedCoconeRightUniversalInitialHomotopy
+#print axioms specifiedCoconeRightUniversalInitialHomotopy
+
+#check @specifiedCoconeRightUniversalInitialHomotopy_evaluation
+#print axioms specifiedCoconeRightUniversalInitialHomotopy_evaluation
+
+#check @specifiedCoconeRightUniversalHomotopy
+#print axioms specifiedCoconeRightUniversalHomotopy
+
+#check @specifiedCoconeRightUniversalHomotopy_projection
+#print axioms specifiedCoconeRightUniversalHomotopy_projection
+
+#check @specifiedCoconeRightUniversalHomotopy_hom_arrow
+#print axioms specifiedCoconeRightUniversalHomotopy_hom_arrow
