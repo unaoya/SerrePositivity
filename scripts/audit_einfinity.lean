@@ -3647,6 +3647,25 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.lengthBoundaryMap_lift,
       `SerrePositivity.EInfinity.Hammock.lengthBoundaryMap_attach]
 
+@[noinline] private def e2RequiredBatch36 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.mapsToRange,
+      `SerrePositivity.EInfinity.Hammock.rangeMap,
+      `SerrePositivity.EInfinity.Hammock.toRange_rangeMap,
+      `SerrePositivity.EInfinity.Hammock.weakRangeMap,
+      `SerrePositivity.EInfinity.Hammock.Word.columnImage_subwordInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.embedding_image_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.columnImage_card_of_injective,
+      `SerrePositivity.EInfinity.Hammock.subsetImage,
+      `SerrePositivity.EInfinity.Hammock.subsetImage_inf,
+      `SerrePositivity.EInfinity.Hammock.range_eq_subsetImage,
+      `SerrePositivity.EInfinity.Hammock.subsetImageMapsTo,
+      `SerrePositivity.EInfinity.Hammock.weakSubsetImageMap,
+      `SerrePositivity.EInfinity.Hammock.boundarySubsets,
+      `SerrePositivity.EInfinity.Hammock.mem_boundarySubsets,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundary_eq_finsetSup,
+      `SerrePositivity.EInfinity.Hammock.lengthBoundaryMapsTo,
+      `SerrePositivity.EInfinity.Hammock.weakLengthBoundaryMap]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3675,7 +3694,8 @@ run_cmd do
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
-      e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35] do
+      e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
+      e2RequiredBatch36] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8726,3 +8746,16 @@ example {F G : Word ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
     (hF : ProperDiagram F) (hG : ProperDiagram G) (n : ℕ) (c : Word) :
     lengthBoundaryMap η n c ≫ lengthBoundaryToStage hG n c =
       lengthBoundaryToStage hF n c ≫ lengthStageMap η n := lengthBoundaryMap_attach η hF hG n c
+
+-- 元の境界は元の対象の列部分集合の有限和に厳密に一致する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (F : Word ⥤ SSet.{e2ComplexLimitUniverse}) (n : ℕ) (c : Word) :
+    lengthBoundary F n c = (boundarySubsets n c).sup (subsetImage F c) :=
+  lengthBoundary_eq_finsetSup F n c
+
+-- proper 性と元の成分ごとの弱同値だけで、元の境界比較の弱同値を得る。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {F G : Word ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
+    (hF : ProperDiagram F) (hG : ProperDiagram G)
+    (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) (n : ℕ) (c : Word) :
+    IsWeakHomotopyEquivalence (lengthBoundaryMap η n c) := weakLengthBoundaryMap η hF hG hη n c

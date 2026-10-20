@@ -902,3 +902,8 @@ public import SerrePositivity.EInfinity.Hammock.WeakPushoutGluing
 public import SerrePositivity.EInfinity.Hammock.WeakUnionGluing
 public import SerrePositivity.EInfinity.Hammock.WeakFiniteUnion
 public import SerrePositivity.EInfinity.Hammock.LengthBoundaryNaturality
+public import SerrePositivity.EInfinity.Hammock.WeakRange
+public import SerrePositivity.EInfinity.Hammock.WordSubsetImages
+public import SerrePositivity.EInfinity.Hammock.ProperSubsetImages
+public import SerrePositivity.EInfinity.Hammock.LengthBoundaryFiniteUnion
+public import SerrePositivity.EInfinity.Hammock.WeakLengthBoundary

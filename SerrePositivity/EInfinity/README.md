@@ -1252,7 +1252,12 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 元の自然変換を境界へ制限し、元の包含と貼り合わせ射・段階の比較を回収する。
 これらは単体集合のモデル構造を入力にしない。Kan 標的への前合成の反転を使用し、
 任意の弱同値が全 quasicategory 標的への前合成同値を満たすとは扱わない。
-proper 性から境界の比較の弱同値性を得る適用、段階0と全有限段階の帰納、
+`weakRangeMap` は単射の像への元の比較の弱同値性を与える。
+`subsetImage_inf` は proper 図式の列部分集合の像が交わりを保つことを表す。
+`lengthBoundary_eq_finsetSup` は元の長さ境界と card≤n の列部分集合の有限和の等式。
+`weakLengthBoundaryMap` は proper 図式間の成分ごとの弱同値から、
+同じ `lengthBoundaryMap` 自身の弱同値性を導く。境界の Kan 性・比較の単射性は不要。
+段階0と全有限段階の帰納、
 proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
