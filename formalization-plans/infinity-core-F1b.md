@@ -51,9 +51,10 @@
   相対ホーン充填・境界定値な反転と合成、中央の全境界円柱を保持する zigzag 合成を証明。
   共通境界付き二入力の同時検出から、任意の有限標的射の相対有限検出・全空間 Kan 比較への持ち上げを構成。
   任意の Kan 境界への持ち上げと境界移動の除去も構成。全標準境界の path 置換充填から、元の Kan 引き戻し比較の弱同値性・ホモトピー逆を証明。
+  元の引き戻し全空間を native 極限錐の頂点に構成。元の比較辺と恒等図式辺を持つ可逆な全錐比較・各脚の自然性を保持。
   一般 coherent 図式の HasColimit、共通境界付き同時検出、元の全空間 Kan 積比較の弱同値性・ホモトピー逆を証明。引き戻し交換・Ind は残る。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド 7494 jobs、公理監査 2941 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  検証：三集約同時ビルド 7509 jobs、公理監査 3008 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -73,7 +74,7 @@
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
-- `F2.fiberwisePullbackKanComparison_isWeakHomotopyEquivalence` / `F2.fiberwisePullbackKanComparison_isSimplicialHomotopyEquivalence`
+- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackNativeCone_vertex` / `F2.fiberwisePullbackNativeConeHomotopy_apexEdge`
 
 ### 依存と提供
 
@@ -96,7 +97,7 @@
 
 ### 次の一手
 
-- F2N-1：元の比較の弱同値性と三射影を native な錐へ接続し、一般の有限極限交換を仕上げる。
+- F2N-1：native 錐の各脚を元の三射影に照合し、coherent 余極限錐へ接続して一般の有限極限交換を仕上げる。
 
 ## 0. 目標と範囲
 

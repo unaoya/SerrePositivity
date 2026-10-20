@@ -1168,3 +1168,26 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.isWeakHomotopyEquivalence_of_strict_relative_lifting
 #check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_isWeakHomotopyEquivalence
 #check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_isSimplicialHomotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.exists_limitCone_of_specifiedApexPrism
+#check @SerrePositivity.InfinityCategories.F2.specifiedApexLimitConeTransport
+#check @SerrePositivity.InfinityCategories.F2.SpecifiedApexLimitConeTransport.apex
+#check @SerrePositivity.InfinityCategories.F2.SpecifiedApexLimitConeTransport.diagram
+#check @SerrePositivity.InfinityCategories.F2.edgeApexPrism
+#check @SerrePositivity.InfinityCategories.F2.edgeApexPrism_zero
+#check @SerrePositivity.InfinityCategories.F2.edgeApexPrism_one
+#check @SerrePositivity.InfinityCategories.F2.continuousKanObject
+#check @SerrePositivity.InfinityCategories.F2.continuousKanMap
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackComparisonKanMap
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackComparisonApexPrism
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackComparisonApexPrism_vertical_isInvertible
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeTransport
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeCone
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeCone_vertex
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeHomotopy
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeHomotopy_apex
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeHomotopy_diagram
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeHomotopy_apexEdge
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeConeHomotopy_diagramEdge
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackNativeCone_leg_naturality
