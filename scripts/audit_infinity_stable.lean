@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofPresentation
+import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOreData
+import SerrePositivity.InfinityCategories.Derived.HomotopyEndpointPair
+import SerrePositivity.InfinityCategories.Derived.DGFiniteHomotopyDescent
+import SerrePositivity.InfinityCategories.Derived.DGClosedHomWhiskerNaturality
+import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionChainMap
+import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionEquivalence
+import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionLaws
+import SerrePositivity.InfinityCategories.Derived.DGFiniteOreRefinement
 import SerrePositivity.InfinityCategories.Derived.RoofPointSliceTriangleEdge
 import SerrePositivity.InfinityCategories.Derived.DGActualRoofIdentityRefinement
 import SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdgePostcomposition
@@ -3305,6 +3314,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.KanEvaluationEdgeIso,
     `SerrePositivity.InfinityCategories.Derived.WeakRoofDescentEvaluation,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientHomRoofRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyEndpointPair,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteHomotopyDescent,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedHomWhiskerNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionChainMap,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionLaws,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofPresentation,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOreData,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteOreRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingHomRoofEvaluation,
     `SerrePositivity.InfinityCategories.Derived.ActualRoofOreRefinement,
     `SerrePositivity.InfinityCategories.Derived.ActualRoofComposition,
