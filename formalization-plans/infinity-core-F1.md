@@ -70,34 +70,34 @@
 
 ### 未コミット
 
-- 共有制限は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd`、空間値同値は `e987f35af` に保存済み。
-- 前層の分類は `56dd08ad4`、essentially small Kan fiber の相対延長は `bf56a0416` に保存済み。
+- 共有制限は `a12f7e9f4`、空間値同値は `e987f35af`、前層は `56dd08ad4`、相対延長は `bf56a0416`。
 - cocartesian ∞ 圏は `733a24a2b`、coherent 分類写像は `87acb9df5` に保存済み。
 - quasicategory 値 weighted nerve の cocartesian fibration 性と scaffold 比較は `9d911c9c1`。
-- cocartesian section への自然な比較と全成分の同値性は `3a02c7fb8`。
-- coherent な実現と strict 図式の同じ分類写像の像との頂点同型は `8efb9919a`。
+- cocartesian section への比較は `3a02c7fb8`、coherent な同型は `8efb9919a`。
 - 局所 strict 化と有限 nerve 上の本質的全射性は `e8f0b2913`。
 - weighted nerve の全 cocartesian 辺保存と全相対作用は `a361804cc`。
 - 全相対 Hom 作用と scaffold 制限との可換三角形は `7529aa808`。
-- scaffold 評価の厳密な逆射・同型と、strict transport を標的とする変換空間の quasicategory 性を証明。
+- scaffold 評価の厳密な同型と strict transport への変換空間の quasicategory 性は `a75ee4512`。
+- universal scaffold の水平辺による全辺保存の検出と、元の制限との厳密な pullback を証明。
 
 ### 既知の問題
 
 - λ は局所化であり、圏同値として消去しない。実際の初頂点引き戻しの Hom 作用を証明した。
 - Yoneda の充満忠実性は元の Hom 作用そのものの同値性で証明した。独立な c1 の同値だけでは
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
-- 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。cocartesian strict transport が
-  標的の場合は証明済み。`relativeFunctorOverPre_isQCatEquivalence` は標的 LF 用で、そのまま流用しない。
-  Cat∞ 値の分類、scaffold 制限の同値性、essentially small な非 Kan fiber の相対延長は未証明。
+- 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
+- 全相対 Hom の制限の同値性は未証明。`relativeFunctorOverPre_isQCatEquivalence` は標的 LF 用。
+  cocartesian 版の可逆辺持ち上げを証明してから拡張する。Cat∞ 分類と非 Kan fiber の相対延長も残る。
 
 ### 次の一手
 
-Cat∞ 値版では通常 nerve 上の全 fibration の分類写像に加え、strict 図式の unstraightening を構成済み。
 `weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
 有限 nerve 上の本質的全射性に加え、元の全パラメーターの作用を cocartesian Hom へ制限済み。
 strict transport 間への同じ全相対作用は単位・合成を保ち、scaffold 評価後には元の制限と一致する。
 scaffold 評価は厳密な同型で、標的が inner fibration なら同じ評価が ∞ 圏同値。
-次は universal scaffold の水平辺で全 cocartesian 辺の保存を検出し、元の相対 Hom の制限の同値性へ進む。
+水平辺による条件の反映と、元の全相対 Hom の制限との pullback も証明済み。
+次は一般の cocartesian fibration の可逆辺の終点 lift を証明し、F1B の `KanIsofibrationCriterion` で
+`KanEquivalenceLifting` を供給する。単射な前合成同値の相対内部 Hom の境界充填へ移す。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。

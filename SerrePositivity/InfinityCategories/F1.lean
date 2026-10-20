@@ -1552,3 +1552,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldInverse
 public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportInclusion
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldHorizontalDetection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPredicateReflection
