@@ -700,7 +700,14 @@ nullary を含む TR の部分合成保存は完了。
 `coneToFramedLimit` は通常の錐からの射で、固定した図式の錐の射に自然。
 `limitComparisonNatTrans` は通常の極限から計算関手への実際の自然変換。
 計算関手のホモトピー不変性・右導来極限の普遍性は未完成。
-E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
+`mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
+`mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
+`mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。
+`mappingSpace_map_both_isIso` は両変数の擬同型を任意の anodyne 反転後に同型へ移す。
+`FrameHom.frameChoiceIso` は共通 frame による比較を反転した二変数の自然同型。
+`sourceFrameHom` は元の終域への Kan な Hom、`sourceFrameHomComparisonIso` は選んだ Map^h との自然同型。
+これらにも単体集合の完全なモデル構造の入力仮定はない。
+E2a-5 の Map^h と π₀ の Hom 比較は完了。E2a-4 の一般極限・E2b の単体的豊穣化と CAlg_R・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

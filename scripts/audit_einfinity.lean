@@ -1677,6 +1677,33 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitHomEquiv_map,
       `SerrePositivity.EInfinity.BarrattEccles.limitComparison_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.limitComparisonNatTrans,
+      `SerrePositivity.EInfinity.FrameHom.map_isIso_of_fibrant,
+      `SerrePositivity.EInfinity.FrameHom.target_boundary_rlp,
+      `SerrePositivity.EInfinity.FrameHom.target_trivialFibration_isIso,
+      `SerrePositivity.EInfinity.FrameHom.target_weakEquivalence_isIso,
+      `SerrePositivity.EInfinity.FrameHom.source_boundary_rlp,
+      `SerrePositivity.EInfinity.FrameHom.source_trivialCofibration_isIso,
+      `SerrePositivity.EInfinity.FrameHom.source_weakEquivalence_isIso,
+      `SerrePositivity.EInfinity.FrameHom.comparison_left_isIso,
+      `SerrePositivity.EInfinity.FrameHom.comparison_right_isIso,
+      `SerrePositivity.EInfinity.FrameHom.frameChoiceIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingCofibrantFactorization,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingFibrantFactorization,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpace,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpace_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpacePiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpacePiZeroEquiv_source,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpacePiZeroEquiv_target,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceClass,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpacePiZeroEquiv_class,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpace_map_target_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpace_map_source_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpace_map_both_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceFrameHom,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceFrameHom_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceFrameHomComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceFrameHomComparison_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.sourceFrameHomComparisonIso,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4543,3 +4570,44 @@ example (F : PEmpty ⥤ (BarrattEccles.operad ℤ).Algebra) :
   apply NatTrans.ext
   funext k
   exact PEmpty.elim k.unop.unop
+
+
+-- 構成した Map^h は実際の単体集合として全次元のホーンを充填する。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (X Y : (BarrattEccles.operad ℤ).Algebra) (n : ℕ) (i : Fin (n + 2))
+    (a : (SSet.horn (n + 1) i : SSet) ⟶ ((mappingSpace ℤ).obj (Opposite.op X)).obj Y) :
+    ∃ b : SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)) ⟶
+      ((mappingSpace ℤ).obj (Opposite.op X)).obj Y, a = (SSet.horn (n + 1) i).ι ≫ b := by
+  have := mappingSpace_kanComplex ℤ (Opposite.op X) Y
+  exact SSet.KanComplex.hornFilling a
+
+-- 元の二つの代数射の合成は、Map^h の実際の π₀ の後合成で回収される。
+open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+example {X Y Z : (BarrattEccles.operad ℤ).Algebra} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    SSet.mapπ₀ (((mappingSpace ℤ).obj (Opposite.op X)).map g) (mappingSpaceClass ℤ f) =
+      mappingSpaceClass ℤ (f ≫ g) := by
+  let := BarrattEccles.modelCategory ℤ
+  let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+  apply (mappingSpacePiZeroEquiv ℤ Q (Opposite.op X) Z).injective
+  rw [mappingSpacePiZeroEquiv_target, mappingSpacePiZeroEquiv_class,
+    mappingSpacePiZeroEquiv_class]
+  exact (Q.map_comp f g).symm
+
+-- 元の擬同型の導来的な逆は、逆向きの実際の写像空間の連結成分で表せる。
+open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+example {X Y : (BarrattEccles.operad ℤ).Algebra} (f : X ⟶ Y) (hf : QuasiIso f.hom) :
+    let := BarrattEccles.modelCategory ℤ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    ∃ z : SSet.π₀ (((mappingSpace ℤ).obj (Opposite.op Y)).obj X),
+      Q.map f ≫ mappingSpacePiZeroEquiv ℤ Q (Opposite.op Y) X z = 𝟙 _ ∧
+        mappingSpacePiZeroEquiv ℤ Q (Opposite.op Y) X z ≫ Q.map f = 𝟙 _ := by
+  let := BarrattEccles.modelCategory ℤ
+  let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+  have : IsIso (Q.map f) := Localization.inverts Q
+    (weakEquivalences (BarrattEccles.operad ℤ).Algebra) f hf
+  let e := mappingSpacePiZeroEquiv ℤ Q (Opposite.op Y) X
+  refine ⟨e.symm (inv (Q.map f)), ?_, ?_⟩
+  · change Q.map f ≫ e (e.symm (inv (Q.map f))) = 𝟙 _
+    rw [e.apply_symm_apply, IsIso.hom_inv_id]
+  · change e (e.symm (inv (Q.map f))) ≫ Q.map f = 𝟙 _
+    rw [e.apply_symm_apply, IsIso.inv_hom_id]

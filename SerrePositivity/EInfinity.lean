@@ -453,3 +453,13 @@ public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorLifting
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimit
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitComparison
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitNaturality
+public import SerrePositivity.EInfinity.FrameHom.BrownInversion
+public import SerrePositivity.EInfinity.FrameHom.TargetInvariance
+public import SerrePositivity.EInfinity.FrameHom.SourceInvariance
+public import SerrePositivity.EInfinity.FrameHom.Comparison
+public import SerrePositivity.EInfinity.BarrattEccles.MappingFactorizations
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpace
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpacePiZero
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceClasses
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceInvariance
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceTargetComparison
