@@ -1682,3 +1682,13 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackDomainMar
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomRestriction
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomCoreDescent
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorIsPullbackMaps
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorIsPullbackIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomIsoEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeRestriction
