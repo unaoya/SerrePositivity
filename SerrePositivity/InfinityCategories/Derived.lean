@@ -926,6 +926,14 @@ public import SerrePositivity.InfinityCategories.Derived.DGLastHornBianchiCompat
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFinalEdge
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralConeResidual
 
+public import SerrePositivity.InfinityCategories.Derived.DGConePrimitiveDegrees
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralConePrimitive
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralYonedaResidual
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralResidualRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralYonedaCoordinates
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralPrecomposeCoordinates
+public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralRefinedCochains
+
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

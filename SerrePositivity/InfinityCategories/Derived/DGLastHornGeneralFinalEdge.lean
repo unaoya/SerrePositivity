@@ -43,6 +43,12 @@ def dgGeneralLastHornFinalCycle : zeroCycles (homObject A D
     ((HornData.knownData σ).obj (Fin.last (n + 2)))) :=
   ⟨_, dgGeneralLastHornFinalEdge_closed σ⟩
 
+/-- 同じ最後辺を、元の閉零 dg 圏の実際の射として読む。 -/
+def dgGeneralLastHornFinalClosed :
+    ForgetEnrichment.of (Complex A) ((HornData.knownData σ).obj (dgLastHornPenultimate n)) ⟶
+      ForgetEnrichment.of (Complex A) ((HornData.knownData σ).obj (Fin.last (n + 2))) :=
+  (closedHomEquiv A D _ _).symm (dgGeneralLastHornFinalCycle σ)
+
 /-- 最後閉辺による、元の始対象からの Hom の後合成鎖写像。 -/
 def dgGeneralLastHornPostcomposition :=
   dgCyclePostcomposition A D ((HornData.knownData σ).obj 0) (dgGeneralLastHornFinalCycle σ)

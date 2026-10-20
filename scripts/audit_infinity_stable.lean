@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGConePrimitiveDegrees
+import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralConePrimitive
+import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralYonedaResidual
+import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralResidualRefinement
+import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralYonedaCoordinates
+import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralPrecomposeCoordinates
+import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralRefinedCochains
 import SerrePositivity.InfinityCategories.Derived.DGLastHornOtherCutIndices
 import SerrePositivity.InfinityCategories.Derived.DGLastHornKnownCutEquations
 import SerrePositivity.InfinityCategories.Derived.DGResidualIndexTransport
@@ -2874,10 +2881,38 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornConeResidual_snd
 #print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornConeResidual_closed
 
+#print axioms SerrePositivity.InfinityCategories.dgComplexConePrimitive_fst_at
+#print axioms SerrePositivity.InfinityCategories.dgComplexConePrimitive_snd_at
+#print axioms SerrePositivity.InfinityCategories.dgGradedHomTransport_differential_to
+#print axioms SerrePositivity.InfinityCategories.dgComplexConeElementMkAt_differential
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornPostcomposeQ_normalized
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornSolutionOfConePrimitive
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornConePrimitiveOfSolution_differential
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornSolution_nonempty_iff_coneResidual_boundary
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornFinalClosed
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornYonedaConeIso
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornYonedaResidual_closed
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornSolution_nonempty_iff_yonedaResidual_boundary
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornResidualRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornYonedaResidual_fst
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornYonedaResidual_snd
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornPrecomposedResidual_fst
+#print axioms SerrePositivity.InfinityCategories.dgGeneralLastHornPrecomposedResidual_snd
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornResidualRefinement.evaluatedPrimitive_differential
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornResidualRefinement.Q_differential
+#print axioms SerrePositivity.InfinityCategories.DGGeneralLastHornResidualRefinement.a_differential
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGConePrimitiveDegrees,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralConePrimitive,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralYonedaResidual,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralResidualRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralYonedaCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralPrecomposeCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralRefinedCochains,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornOtherCutIndices,
     `SerrePositivity.InfinityCategories.Derived.DGLastHornKnownCutEquations,
     `SerrePositivity.InfinityCategories.Derived.DGResidualIndexTransport,
