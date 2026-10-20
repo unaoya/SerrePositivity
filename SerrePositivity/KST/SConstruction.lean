@@ -1221,4 +1221,11 @@ public import SerrePositivity.KST.SConstruction.BimoduleParameterUnit
 public import SerrePositivity.KST.SConstruction.DGExtensionParameterUnit
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomUnit
 public import SerrePositivity.KST.SConstruction.LeftModuleHomComparison
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphLeftHom
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputHom
+public import SerrePositivity.KST.SConstruction.LeftTensorHomComposition
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputHomComposition
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHom
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomComposition
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGLabelAction
 /-! # ∞-S• 構成と連結 K 理論 -/

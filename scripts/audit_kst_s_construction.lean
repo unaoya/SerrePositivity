@@ -17299,4 +17299,43 @@ namespace SerrePositivity.KST.SConstruction
 #check dgLeftModuleHomComparison_composition
 #print axioms dgLeftModuleHomComparison_composition
 
+#check dgFunctorGraphLeftEnd
+#print axioms dgFunctorGraphLeftEnd
+#check dgFunctorGraphLeftEnd_identity
+#print axioms dgFunctorGraphLeftEnd_identity
+#check dgFunctorGraphLeftEnd_composition
+#print axioms dgFunctorGraphLeftEnd_composition
+#check dgFunctorGraphLeftHom
+#print axioms dgFunctorGraphLeftHom
+#check dgFunctorGraphLeftHom_π
+#print axioms dgFunctorGraphLeftHom_π
+#check dgFunctorGraphLeftHom_identity
+#print axioms dgFunctorGraphLeftHom_identity
+#check dgFunctorGraphLeftHom_composition
+#print axioms dgFunctorGraphLeftHom_composition
+#check dgFunctorGraphLeftParameterHom
+#print axioms dgFunctorGraphLeftParameterHom
+#check dgModuleExtensionInputHom
+#print axioms dgModuleExtensionInputHom
+#check dgModuleExtensionInputHom_π
+#print axioms dgModuleExtensionInputHom_π
+#check dgLeftTensorHom_composition
+#print axioms dgLeftTensorHom_composition
+#check dgModuleExtensionInputHom_identity
+#print axioms dgModuleExtensionInputHom_identity
+#check dgModuleExtensionInputHom_composition
+#print axioms dgModuleExtensionInputHom_composition
+#check perfectDGExtensionInputHom
+#print axioms perfectDGExtensionInputHom
+#check perfectDGExtensionInputHom_module
+#print axioms perfectDGExtensionInputHom_module
+#check perfectDGExtensionInputHom_composition
+#print axioms perfectDGExtensionInputHom_composition
+#check presentedPerfectDGInputHom_composition
+#print axioms presentedPerfectDGInputHom_composition
+#check presentedPerfectDGLabelAction
+#print axioms presentedPerfectDGLabelAction
+#check presentedPerfectDGLabelAction_map
+#print axioms presentedPerfectDGLabelAction_map
+
 end SerrePositivity.KST.SConstruction
