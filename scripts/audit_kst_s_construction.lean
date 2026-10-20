@@ -17879,3 +17879,64 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp_iff
 #check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_comp
 #print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_comp
+
+#check @SerrePositivity.KST.SConstruction.CubeGenerator
+#print axioms SerrePositivity.KST.SConstruction.CubeGenerator
+#check @SerrePositivity.KST.SConstruction.CubeWordObject
+#print axioms SerrePositivity.KST.SConstruction.CubeWordObject
+#check @SerrePositivity.KST.SConstruction.cubeGeneratorQuiver
+#print axioms SerrePositivity.KST.SConstruction.cubeGeneratorQuiver
+#check @SerrePositivity.KST.SConstruction.CubeWords
+#print axioms SerrePositivity.KST.SConstruction.CubeWords
+#check @SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor
+#print axioms SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_generator
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_generator
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_id
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_id
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_comp
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_comp
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_exists_word
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_exists_word
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_full
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_full
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_obj_surjective
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_obj_surjective
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_map_eq_iff_signature
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_map_eq_iff_signature
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_map_eq_iff_normalForm
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_map_eq_iff_normalForm
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorPrefunctor
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorPrefunctor
+#check @SerrePositivity.KST.SConstruction.serreCubeWordFunctor
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordFunctor
+#check @SerrePositivity.KST.SConstruction.serreCubeWordComplexFunctor
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordComplexFunctor
+#check @SerrePositivity.KST.SConstruction.serreCubeWordFunctor_generator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordFunctor_generator
+#check @SerrePositivity.KST.SConstruction.serreCubeWordFunctor_face
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordFunctor_face
+#check @SerrePositivity.KST.SConstruction.serreCubeWordFunctor_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordFunctor_degeneracy
+#check @SerrePositivity.KST.SConstruction.serreCubeWordFunctor_connection
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordFunctor_connection
+#check @SerrePositivity.KST.SConstruction.serreCubeWordComplexFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordComplexFunctor_map
+#check @SerrePositivity.KST.SConstruction.serreCubeWordFunctor_comp
+#print axioms SerrePositivity.KST.SConstruction.serreCubeWordFunctor_comp
+#check @SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_essSurj
+#print axioms SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_essSurj
+#check @SerrePositivity.KST.SConstruction.CubeWordSemanticQuotient
+#print axioms SerrePositivity.KST.SConstruction.CubeWordSemanticQuotient
+#check @SerrePositivity.KST.SConstruction.cubeWordSemanticProjection
+#print axioms SerrePositivity.KST.SConstruction.cubeWordSemanticProjection
+#check @SerrePositivity.KST.SConstruction.cubeWordSemanticComparison
+#print axioms SerrePositivity.KST.SConstruction.cubeWordSemanticComparison
+#check @SerrePositivity.KST.SConstruction.cubeWordSemanticComparison_isEquivalence
+#print axioms SerrePositivity.KST.SConstruction.cubeWordSemanticComparison_isEquivalence
+#check @SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_comparison
+#print axioms SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_comparison
+#check @SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_map_eq_iff
+#print axioms SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_map_eq_iff

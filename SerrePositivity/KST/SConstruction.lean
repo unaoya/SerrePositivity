@@ -1310,4 +1310,8 @@ public import SerrePositivity.KST.SConstruction.CubeActiveSupport
 public import SerrePositivity.KST.SConstruction.CubeGeneratorSupport
 public import SerrePositivity.KST.SConstruction.CubeOrderedNormalForm
 public import SerrePositivity.KST.SConstruction.CubeSupportComposition
+public import SerrePositivity.KST.SConstruction.CubeGeneratorWords
+public import SerrePositivity.KST.SConstruction.CubeWordRealization
+public import SerrePositivity.KST.SConstruction.SerreCubeWordEvaluation
+public import SerrePositivity.KST.SConstruction.CubeWordSemanticQuotient
 /-! # ∞-S• 構成と連結 K 理論 -/
