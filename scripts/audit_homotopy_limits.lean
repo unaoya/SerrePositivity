@@ -9412,3 +9412,120 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRightAttachment_projection_homMk_comp
 #print axioms specifiedCoconeRightAttachment_projection_homMk_comp
+
+#check @specifiedCoconeLeftBranchLegHomotopy
+#print axioms specifiedCoconeLeftBranchLegHomotopy
+
+#check @specifiedCoconeLeftBranchLegHomotopy_raw
+#print axioms specifiedCoconeLeftBranchLegHomotopy_raw
+
+#check @specifiedCoconeLeftAttachmentInitialHomFamily_projection
+#print axioms specifiedCoconeLeftAttachmentInitialHomFamily_projection
+
+#check @specifiedCoconeLeftAttachmentHomotopy
+#print axioms specifiedCoconeLeftAttachmentHomotopy
+
+#check @specifiedCoconeLeftAttachmentHomotopy_raw
+#print axioms specifiedCoconeLeftAttachmentHomotopy_raw
+
+#check @specifiedCoconeRightBranchLegHomotopy
+#print axioms specifiedCoconeRightBranchLegHomotopy
+
+#check @specifiedCoconeRightBranchLegHomotopy_raw
+#print axioms specifiedCoconeRightBranchLegHomotopy_raw
+
+#check @specifiedCoconeRightAttachmentInitialHomFamily_projection
+#print axioms specifiedCoconeRightAttachmentInitialHomFamily_projection
+
+#check @specifiedCoconeRightAttachmentHomotopy
+#print axioms specifiedCoconeRightAttachmentHomotopy
+
+#check @specifiedCoconeRightAttachmentHomotopy_raw
+#print axioms specifiedCoconeRightAttachmentHomotopy_raw
+
+#check @specifiedCoconeLeftAttachment_original_homMk_comp_arrow
+#print axioms specifiedCoconeLeftAttachment_original_homMk_comp_arrow
+
+#check @specifiedCoconeRightAttachment_original_homMk_comp_arrow
+#print axioms specifiedCoconeRightAttachment_original_homMk_comp_arrow
+
+#check @diagramBaseFiberFamily_fixed
+#print axioms diagramBaseFiberFamily_fixed
+
+#check @diagramBaseFiberFamily
+#print axioms diagramBaseFiberFamily
+
+#check @diagramBaseFiberFamily_ι
+#print axioms diagramBaseFiberFamily_ι
+
+#check @diagramBaseFiberFamily_restrict
+#print axioms diagramBaseFiberFamily_restrict
+
+#check @coconeDiagramEqFiber_ι
+#print axioms coconeDiagramEqFiber_ι
+
+#check @normalizedCoconeRestrictionFiber_diagramEq
+#print axioms normalizedCoconeRestrictionFiber_diagramEq
+
+#check @diagramBaseFiberFamily_restrict_of_eq
+#print axioms diagramBaseFiberFamily_restrict_of_eq
+
+#check @specifiedCoconeLeftNativeBaseDiagramFamily
+#print axioms specifiedCoconeLeftNativeBaseDiagramFamily
+
+#check @specifiedCoconeLeftNativeBaseDiagramFamily_ι
+#print axioms specifiedCoconeLeftNativeBaseDiagramFamily_ι
+
+#check @specifiedCoconeLeftNativeBaseDiagram_attachment
+#print axioms specifiedCoconeLeftNativeBaseDiagram_attachment
+
+#check @specifiedCoconeLeftNativeBaseDiagramFamily_attachment
+#print axioms specifiedCoconeLeftNativeBaseDiagramFamily_attachment
+
+#check @specifiedCoconeLeftNativeBaseDiagram_root
+#print axioms specifiedCoconeLeftNativeBaseDiagram_root
+
+#check @specifiedCoconeLeftNativeBaseDiagramFamily_root
+#print axioms specifiedCoconeLeftNativeBaseDiagramFamily_root
+
+#check @specifiedCoconeRightNativeBaseDiagramFamily
+#print axioms specifiedCoconeRightNativeBaseDiagramFamily
+
+#check @specifiedCoconeRightNativeBaseDiagramFamily_ι
+#print axioms specifiedCoconeRightNativeBaseDiagramFamily_ι
+
+#check @specifiedCoconeRightNativeBaseDiagram_attachment
+#print axioms specifiedCoconeRightNativeBaseDiagram_attachment
+
+#check @specifiedCoconeRightNativeBaseDiagramFamily_attachment
+#print axioms specifiedCoconeRightNativeBaseDiagramFamily_attachment
+
+#check @specifiedCoconeRightNativeBaseDiagram_root
+#print axioms specifiedCoconeRightNativeBaseDiagram_root
+
+#check @specifiedCoconeRightNativeBaseDiagramFamily_root
+#print axioms specifiedCoconeRightNativeBaseDiagramFamily_root
+
+#check @specifiedCoconeLeftAttachment_original_homMk_comp
+#print axioms specifiedCoconeLeftAttachment_original_homMk_comp
+
+#check @specifiedCoconeLeftAttachmentOriginalSquare
+#print axioms specifiedCoconeLeftAttachmentOriginalSquare
+
+#check @specifiedCoconeRightAttachment_original_homMk_comp
+#print axioms specifiedCoconeRightAttachment_original_homMk_comp
+
+#check @specifiedCoconeRightAttachmentOriginalSquare
+#print axioms specifiedCoconeRightAttachmentOriginalSquare
+
+#check @specifiedCoconeLeftAttachmentHomotopy_native_face_raw
+#print axioms specifiedCoconeLeftAttachmentHomotopy_native_face_raw
+
+#check @specifiedCoconeLeftRootNativeCylinder_native_face_raw
+#print axioms specifiedCoconeLeftRootNativeCylinder_native_face_raw
+
+#check @specifiedCoconeRightAttachmentHomotopy_native_face_raw
+#print axioms specifiedCoconeRightAttachmentHomotopy_native_face_raw
+
+#check @specifiedCoconeRightRootNativeCylinder_native_face_raw
+#print axioms specifiedCoconeRightRootNativeCylinder_native_face_raw
