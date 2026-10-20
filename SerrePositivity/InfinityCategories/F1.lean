@@ -1708,3 +1708,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomFuncto
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeFunctor
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeCoreLimit
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorRestrictionLifting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackCoreFibration
