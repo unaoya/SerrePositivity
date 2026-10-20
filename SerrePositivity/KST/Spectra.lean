@@ -789,3 +789,10 @@ public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStageDifferenceFreeS
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStageDifferenceStrictInterval
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedMappingWhitehead
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedComparisonIsomorphism
+public import SerrePositivity.KST.Spectra.RawSpectrumPointedTail
+public import SerrePositivity.KST.Spectra.RawSpectrumPointedTailEquivalence
+public import SerrePositivity.KST.Spectra.RawSpectrumPostWhitehead
+public import SerrePositivity.KST.Spectra.SpectrumEvaluationPostRawComparison
+public import SerrePositivity.KST.Spectra.SignedLoopTailTwistComparison
+public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationPost
+public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationSource
