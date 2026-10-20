@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponents
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeTermSigns
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeTerms
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeEquations
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSimplex
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeReindex
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIndex
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSigns
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeData
@@ -3496,6 +3502,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeTermSigns,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeTerms,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeEquations,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeReindex,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIndex,
     `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSigns,
     `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeData,

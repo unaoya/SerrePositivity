@@ -1,4 +1,10 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponents
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeTermSigns
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeTerms
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeEquations
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSimplex
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeReindex
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIndex
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSigns
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeData

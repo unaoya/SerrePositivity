@@ -81,18 +81,18 @@
 
 ### 未コミット
 
-- 今回保存：`DGNerveOppositeIndex`・`DGNerveOppositeSigns`・`DGNerveOppositeData` の3モジュール。未保存：`DGNerveOppositeComponents` は削除成分・左右切断・実 Koszul 合成まで個別ビルド済み。`DGNerveOppositeTermSigns`・`DGNerveOppositeTerms` は全内部点の微分項比較を検証中。全方程式・単体自然性は未完。
+- 今回保存：実削除・切断合成と二符号式、全内部点・全 HA 方程式、全単体の反転全単射、全順序写像の実添字比較の6モジュール。未保存：`DGNerveOppositeNaturality`・`DGNerveOppositeIso`・`DGSemifreeContravariantHomInfinity` は個別ビルド済み、`DGNerveOppositeFunctor` は dg 関手に関する厳密自然性を検証中。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9223 jobs）。公理監査は Derived 11635 宣言／1299 モジュール、Stable 12750／1569。許容三公理のみ。今回までの保存対象230新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9229 jobs）。公理監査は Derived 11690 宣言／1305 モジュール、Stable 12805／1575。許容三公理のみ。今回までの保存対象236新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5：D(A)・Perf(A) の実安定性・完全充満包含・graph tensor・Morita 不変性に加え、全二変数の空間値 Hom と同じ Hom 複体模型との比較、固定入力ごとの複体値 Hom を統合・監査済み。Morita tensor の同じ逆関手を全 h Fun 内の三角式付き右随伴へ昇格し、Perf→D との逆関手比較も完成。全濃度の反転符号と左右切断・削除の添字比較、実全成分の符号付き反転と厳密な二回復元は監査済み。次は個別の削除・合成比較に二符号式を接続して全内部点の一項を照合し、有限和から全微分式を証明する。その後、全単体作用との自然性と実反対圏比較を構成する。D(R) 値の二変数 Hom・一般 tensor–Hom 随伴・一般双加群・Perf の冪等完備性・β4 は残る。
+- β5：D(A)・Perf(A) の実安定性・完全充満包含・graph tensor・Morita 不変性に加え、全二変数の空間値 Hom と同じ Hom 複体模型との比較、固定入力ごとの複体値 Hom を統合・監査済み。Morita tensor の同じ逆関手を全 h Fun 内の三角式付き右随伴へ昇格し、Perf→D との逆関手比較も完成。全濃度の反転符号と左右切断・削除の添字比較、実全成分の符号付き反転と厳密な二回復元は監査済み。実削除・切断合成、全内部点の微分項、有限和による全 HA 微分式、全単体の反転全単射まで統合・監査済み。次は個別ビルド済みの全単体作用の自然性・実反対圏比較・実反変 Hom と、dg 関手に対する厳密自然性を統合・監査する。D(R) 値の二変数 Hom・一般 tensor–Hom 随伴・一般双加群・Perf の冪等完備性・β4 は残る。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。β3 は移送と Verdier 列まで完了。β5、β4 は未完。
 
