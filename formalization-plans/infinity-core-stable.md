@@ -6,37 +6,17 @@
 
 ### 現在地
 
-- S1〜S7（D7）完了。安定 ∞ 圏の h の三角構造（TR1〜TR4）、完全関手の全整数 CommShift・三角性を公開済み。
-- D(S) の実境界から Q・A と二微分式を構成し、coslice の直接充填で cofiber の普遍性を証明。全 fiber/cofiber・有限極限余極限、任意四角形の双カルテジアン判定と安定性まで完成。
-- 実 suspension・複体シフト・接続射の符号を照合し、標準 cofiber 三角形の D3 像を cone 三角形と同定。全 distinguished triangle の保存・反映、逆関手の三角性、単位・余単位のシフト整合性を持つ D3 の三角同値を公開済み。
-- β3：F1B の局所化と L4 §26〜27 を読了。商の実零化、平坦分解の実 ∞ 圏同値、dg 加群・前三角 dg 圏・平坦分解後の商の実安定性、商関手の完全性と実分母の反転まで完成。
-- 実 Verdier over 上の屋根対応・pinched Hom fiber・商側の両側 fibration を構成。固定商 Hom の商屋根全空間への包含の right cofinality・弱同値を証明。実屋根比較自体の left cofinality と弱ホモトピー同値性まで証明済み。境界固定の有限相対充填・prism・同時輸送は完成。
-- 全次元の最後外ホーンから R・K を回収し、dR=0・dK=−最後辺∘R を証明。実 Hom cone の指定閉残差の原始元と Q・A の二未知解を双方向に接続。有限混合次元族に一つの追加実閉分母と全実充填を供給する。
-- 全次数の over 単体と実 Verdier 部分圏内の閉始点細分を構成。零面保存、零固定・正番号非零の全順序写像との可換性、全正番号面・退化・共有面の厳密一致を証明。
-- `TruncatedJoinConeData f N` と有限頂点からの N=0 の実初期値を構成。錐全体を一つの追加実閉分母で更新し、同じ apex・全面・全正番号退化条件を保つ操作まで完成。
-- 次次数の零面 f σ と既存錐の正番号面から実境界写像を貼る。有限族を一つの分母後に同時充填し、その全面・共有面・実 apex を更新済み下次数錐へ厳密に一致させた。基本退化表示の標準錐の一致・全面保存・退化正規化も完成。`dgVerdierTruncatedConeSuccessor_nonempty` は次次数有限なら N+1 の錐を、`dgVerdierTruncatedConeData_nonempty` は各次数有限なら任意有限次数の錐を供給する。
-- 次元上界までの切断写像の一意な全次数延長を標準 splitting から構成。切断錐の全順序写像への自然性、実 coslice への切断写像と射影の厳密一致、実 join 写像の左右制限・apex・全低次数単体との一致を証明。`dgVerdierFiniteJoinCone_nonempty` は任意の有限単体集合からの実分母図式に同じ部分圏内の実 join 錐を供給する。`dgVerdierOver_op_isFilteredInfinity` により実分母 over 圏の反転は filtered ∞ 圏。
-- 任意の有限商屋根図式と指定元境界を、共通の実分母 fiber 上の厳密な相対問題へ還元。元境界を先に右持ち上げし、その比較像を全境界で固定して商全体を右持ち上げする。二輸送の終端・全底・境界全時刻の一致を証明。共通頂点を同じ実辺の閉分母へ戻し、元・商の pinched Hom 係数正方形と実屋根像を同定した。正次数の還元問題は一つの追加閉分母後に実充填と全境界付き輸送を持つ。二段階輸送も実合成三角形ごと相対構成し、任意の正次数標準単体境界の比較正方形に、元の全境界・全時刻で整合するホモトピー相対充填を供給した。屋根比較の弱同値判定は下記の一般有限対による方法で完成。
-- 零次元と空族を含む全次数の有限セル族の同時係数充填を公開。相対骨格の一段更新で、一つの追加閉分母、次骨格の元係数写像、全体商写像、下骨格を全時刻固定する比較を同時に構成した。次骨格・各新セルの厳密な制限、商前合成の自然性・合成則、有限標的の骨格の有限段停止も証明済み。この状態の有限帰納と、一般有限対全体の係数充填まで完成。
-- 一般有限係数対の比較を実商屋根へ移し、元・商の細分輸送との全境界・全時刻の一致を証明。相対輸送三角形と共通 fiber への還元を接続し、`dgActualRoofFinitePairs_nonempty` は任意の有限単体集合対 L⊂K の実屋根比較正方形に `RoofHomotopyRelativeFiller` を供給する。有限対の全時刻整合性を使う一般の cofinality 判定まで接続済み。
-- 有限対充填から、終対象付き右ファイブレーションへの引き戻し内の有限図式の零ホモトピー span を構成。連続 Kan 置換の有限因子化で全境界を充填し、弱可縮性と Quillen A により left cofinality を証明。`dgRoofCorrespondenceMap_isWeakHomotopyEquivalence`、任意の Kan 標的への前合成の実ホモトピー同値、連続 Kan 置換後の圏同値を公開した。有限パラメータの写像空間の π₀ の全単射も別に証明済み。
-- 任意の quasicategory 標的への反転関手 F と任意頂点 z について、実屋根射影の左右 fibration 性、恒等 fiber と Hom(Fx,z) の厳密な同型、固定 Hom 包含の right cofinality・弱同値を証明。標的 slice・実屋根の恒等則・合成則、固定 Hom との厳密な可換性を全次数で公開した。
-- `DGInvertingHomDescent` は商の実 Hom 全体への実写像、元の Hom 作用との比較ホモトピー、選択によらないホモトピー一意性を持つ。標的の任意の後合成とのホモトピー自然性を証明。二段降下を可逆 path 置換で空間に束ね、`dgInvertingHomDescentSpace_isContractibleKan` により各対象対の全高次の選択空間が全境界を充填する。異なる対象対の合成との coherent な両立と全関手圏への組み立ては未完。
-- 可縮な選択空間全体上の商 Hom 作用を `dgInvertingHomActionFamily` に束ね、元の Hom 作用への制限を `dgInvertingHomActionFamilyRestrictionIso` により一つの関手同型として比較した。各選択点の比較を別々に選ばず、パラメータの全単体で整合する比較を保持する。
-- 実屋根頂点を指定端点の実辺 span と相互表示し、元の頂点を厳密に復元。実 Ore 細分の共通対角と二三角形に、合成分母・分子の二三角形を加え、任意の二実屋根頂点に合成データと実合成頂点を供給した。任意の反転関手の下で各屋根の実評価辺と評価三角形が存在し、任意の三評価辺は実合成三角形を持つ。これらを Hom 作用族の比較へ接続する全高次の整合性は未完。
-- 指定評価三角形を任意標的の実屋根全空間内の辺へ戻し、その両端・実分母から恒等分母への底の辺・実射側の三角形全体を厳密に保持。商 Hom の任意有限図式の実屋根持ち上げと実比較ホモトピー、各指定頂点の実屋根表示と実比較辺を公開した。`dgInvertingHomActionFamilyRoofEvaluationIso` は商 Hom 作用の値と実屋根の評価値を、全降下選択空間上の一つの関手同型で比較する。
-- 有限商 Hom ホモトピーを両端固定で実閉分母後に下降し、比較の両端を全時刻固定することを証明。全 Hom・実 pinched Hom の後合成の自然性、前後合成の交換、可逆な閉辺による後合成の実ホモトピー同値を公開。`dgFiniteOreRefinement_nonempty` は任意有限族の分子と指定右分母に、一つの合成実閉分母・実持ち上げ族・元の Hom 内の全ホモトピーを供給する。
-- 標準 DK Hom の AW 合成を実 pinched Hom へ移し、全次元の単位則・結合律と全パラメータ族の結合律・前合成可換性を証明。`DGFiniteRoofOreData.compositeDiagram` は有限同時細分から合成分子の族と実屋根の候補図式を構成し、実分母射影の厳密な定値性を保持する。四三角形族は下記で構成。指定部分に沿う四族全体の同時延長と全関手圏への組み立ては未完。
-- 全次元 AW 合成と指定実閉辺の前後合成の厳密一致を証明。標準閉定数を元の閉辺の pinched 頂点の定数族に同定し、全パラメータ族の前後合成まで接続した。二つの実ホモトピーの同時合成は指定部分の全時刻固定を保存する。`DGFiniteOreRefinement.compositionHomotopy` は元の円柱上の写像を厳密に保持して、実 Ore 比較を指定二実閉辺との AW 合成の比較へ直す。
-- Dold–Kan 比較の厳密な片側逆を実 slice・区間族の表示へ接続し、F1 の合成 prism を実 dg target slice へ移した。零端は同じ実 AW 合成、一端は第二射、底の射影は第一射の区間族に厳密に一致する。`dgPinchedCompositionFamilyPrism` は任意のパラメータ族について同じ三境界を保持し、任意のパラメータ制限と全時刻で厳密に可換する。
-- 実 Ore 比較と第二合成 prism を、同じ底の退化三角形を保って貼り、第一合成 prism と共通対角を持つ実内部二三角形族を構成。Leibniz 内部 Hom の inner fibration により、任意の指定部分の比較三角形と底三角形を同時に固定して延長できる。`dgFiniteRoofCompositionPrisms_exists` は任意有限実屋根二図式に、両入力への実輸送、合成候補、全底付きの内部二族・外部分母分子二族を供給する。
-- 任意標的の実屋根全空間から固定 Hom への一つの実評価と、元の屋根から評価の恒等 fiber 包含への実ホモトピーを構成。終対象への底の全錐と全時刻の射影も保持する。Kan 標的への前合成を任意ホモトピーで比較し、`dgInvertingHomFamilyEvaluation_nonempty` はこの同じ全体評価を共有して、任意有限商 Hom 図式の実屋根表示・実比較ホモトピー・全降下選択空間上の一つの評価関手同型を供給する。
-- 実 slice prism の全三境界をパラメータ関手圏へ移し、同じ共通対角を持つ四合成関係を証明。実閉辺の定数族を定値関手への像に同定し、反転条件から関手圏内の分母の可逆性を導いた。`dgInvertingFiniteRoofComposition_nonempty` は任意の有限二屋根図式と任意の quasicategory 標的への反転関手に、入力への二輸送・共通細分・四実 prism・三実 pinched Hom 評価族・関手圏内の実合成三角形を供給する。任意の pinched Hom 族と定値関手間の射を、実ホモトピーまで照合済み。任意パラメータへの共通細分の制限は二輸送と Ore 比較の全時刻・合成分母・合成分子・実合成候補を厳密に保持する。共有全体評価との比較と全関手への組み立ては未完。
-- 任意の K・quasicategory X に対し、`Fun(K, X_/z)` から `Fun(K,X)_/const z` への実比較同値を、終対象への全切断と底への厳密な可換性付きで構成。普遍 slice 評価の実ホモトピー・恒等錐上の全時刻固定・全後合成の各成分を照合した。`roofFunctorSliceRepresentation_pinched_vertex_arrow` は、どの全切断を選んでも実 pinched Hom 族が元の同じ関手圏の射を表すことを証明する。評価方程式から元の実屋根内の族比較への復元と全関手への組み立ては未完。
-- 任意の評価方程式から、指定分母の像を全時刻の底とする実 slice 比較を回収し、始点補正の実三角形を保持した。`dgInvertingRoofFamilyRealization_nonempty` は、元の閉分母から恒等分母への実細分辺と組にして、任意パラメータの実屋根内の比較を構成する。`dgPresentedFamilyEvaluationIso_nonempty` は表示の輸送も含め、指定した同じ実評価族を全降下選択空間上の商 Hom 作用族と一つの関手同型で比較する。商の実合成との照合と全関手への組み立ては未完。
-- 商関手自身の任意標的屋根を実商屋根と、標準頂点の輸送・両射影・固定 Hom 包含ごと同定。指定した商内の三評価族を元の商 Hom 二族の実 AW 合成に実ホモトピーで照合し、実屋根の合成候補から同じ AW 合成への二比較と実三角形を構成した。`dgInvertingBinaryAction_comp`・`dgInvertingBinaryAction_triangle_nonempty` は、任意有限二商 Hom 族と任意反転標的について、三対象対の降下選択を独立に動かす任意共通パラメータ上の作用族の合成関係・実三角形を与える。`dgInvertingUnitActionIso`・`dgInvertingUnitAction_id` は任意パラメータの実恒等族の保存を全選択空間上で与える。指定部分の全高次境界を保持する相対整合性と実 ∞ 関手への組み立ては未完。
-- `dgRelativeRoofEvaluation_nonempty` は任意単射上の実評価値・比較の全時刻を固定し、指定実分母の同じ全底上で評価を延長する。`dgClosedRoofEvaluationSpace_isContractibleKan` は同じ初期族と全底を持つ全実評価 prism の空間の全境界充填を与える。`dgClosedRoofUniversalFiberEvaluation` はその全空間上で、同じ全円柱・全底を保持する一つの普遍実評価を構成する。部分 prism を指定した全選択空間と全関手への組み立ては未完。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGActualRoofHomotopyFillers.lean`・`Derived/RoofCompatibleTransportComposite.lean`・`Derived/DGActualRoofFiberReduction.lean`・`Derived/DGCoefficientFinitePairs.lean`・`Derived/DGActualRoofFinitePairs.lean`・`Derived/DGActualRoofWeakEquivalence.lean`。
+- S1〜S7（D7）完了。実境界から Q・A と二微分式を構成し、coslice の直接充填で cofiber の普遍性、任意四角形の双カルテジアン判定、全 fiber/cofiber と有限極限余極限、D(S) の実安定性を証明した。
+- 実 suspension・複体シフト・接続射の符号を照合。D3 の標準 cone 三角形との比較、全 distinguished triangle の保存・反映、逆関手・単位・余単位の全整数シフト整合性を持つ三角同値を公開済み。
+- β3 完了。実 Verdier over の反転の filtered 性、有限対の全境界・全時刻を保つ実 roof 比較の cofinality と弱ホモトピー同値、任意反転標的への coherent な降下を証明した。
+- `dgQuotientNerveProjection_isLocalization` は任意 quasicategory 標的に対する全前合成の充満忠実性・本質的全射性を与える。局所 K-flat 性を元の Hom に仮定しない平坦分解後の商についても `resolvedDGQuotientFunctor_isLocalization` を証明した。
+- 全零化完全関手 ∞ 圏との同値、実安定閉包の完全充満包含、商の零化・完全性・実安定性、局所 K-flat 商と平坦分解後の商の実 Verdier 列まで統合・公理監査済み。H⁰ の Verdier 商の同値で代用していない。
+- β5：非可換 `Mon (Complex R)` の `D(A)=N_dg(Semifree(A))`、一般小 dg 圏の半自由／射影的模型の実同値と安定性、Perf の実安定性と Perf→D の完全充満包含を公開済み。
+- D・Perf の実 graph tensor、単位・合成の全関手比較、包含との比較四角形、graph Morita 不変性、dg 代数の quasi-isomorphism 不変性まで統合・監査済み。H⁰ の同値に加え、全 source shift から全 Hom の準同型性を検証した。
+- 二変数の実空間値 Hom と同じ全 Hom 複体の pinched 模型の比較、固定入力ごとの複体値 Hom を構成。`dgNerveOppositeIso` は全 HA 方程式・任意の単体作用を保持する厳密な反対圏比較であり、dg 関手に厳密自然。実反対 ∞ 圏からの反変 Hom も統合・監査済み。
+- Morita tensor の同じ逆関手を h Fun 内の三角式付き ∞ 右随伴に昇格。Perf→D の包含との逆関手比較も公開済み。一般 RHom の構成・同定とは区別する。
+- 出力の射影性を仮定しない分解の実対象、実比較差、全 Hom の mapping cocone、全パラメータ複体からの指定二射と比較 cochain の実持ち上げ・一意性、cocone の実比較写像を監査済み。実短完全列の次数別分裂から入力 Hom 射影の全準同型性まで個別・集約ビルド成功。最後の4モジュールも統合・公理監査済み。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionProjection`（すべて `Derived/`）。
 
 ### 残り（依存順、時間は推定）
 
@@ -70,7 +50,7 @@
 - `homotopyCompositionRelativeOver_fixedLeft_exists`・`dgFiniteOreTrianglePrisms_relative_exists`・`dgFiniteRoofCompositionPrisms_exists`。
 - `roofLeftFibration_terminalEvaluation_nonempty`・`dgInvertingHomActionFamilyEvaluationIso`・`dgInvertingHomFamilyEvaluation_nonempty`。
 - `pinchedFamilyHom_eq_iff_homotopy`・`dgInvertingFamilyDenominator_isIso`・`dgInvertingFiniteRoofComposition_nonempty`・`dgFiniteRoofOreDataPrecomp_compositeDiagram`。
-- `dgNerveOppositeIso`・`dgNerveOppositeIso_naturality`・`dgSemifreeContravariantHomInfinity`・`dgModuleFunctorResolutionHomComplex`・`dgModuleFunctorResolutionHom_ext`・`complexMappingCoconeMap`・`complexShortExact_quasiIso_projection`・`dgModuleHomSpaceInfinity`・`dgModuleHomSpaceValueEquivalence`・`dgSemifreeHomTargetInfinity`・`dgSemifreeHomSourceInfinity`・`dgMoritaAdjunctionInfinity`・`dgPerfectMoritaRightAdjointInclusionIso`・`dgAlgebraPerfectExtensionInfinity_isQCatEquivalence_of_morita`・`dgPerfectExtensionInclusionIso`・`dgAlgebraPerfectInfinityCategory_isStable`・`dgAlgebraExtensionInfinity_isQCatEquivalence_of_morita`・`dgAlgebraExtensionInfinity_isQCatEquivalence_of_quasiIso`・`dgModuleDerivedFunctor_isQCatEquivalence_of_classical`・`dgAlgebraExtensionInfinity_isExactFunctor`・`dgModuleDerivedFunctor_comparisonIso`・`dgModuleDerivedFunctor_id_iso`・`dgModuleDerivedFunctor_comp_iso`・`dgAlgebraDerivedInfinityCategory_isStable`・`dgModuleDerivedInfinityCategory_isStable`・`dgSemifreeToProjectiveNerve_isQCatEquivalence`・`dgQuotientNerveProjection_isLocalization`・`dgVerdierExactPrecomposition_isQCatEquivalence`・`dgStableClosureNerve_isStable`・`dgStableClosureInclusion_isExactFunctor`・`dgQuotient_isStableVerdierSequence`・`resolvedDGQuotientFunctor_isLocalization`・`resolvedDGVerdierExactPrecomposition_isQCatEquivalence`・`resolvedDGQuotient_isStableVerdierSequence`。
+- `dgNerveOppositeIso`・`dgNerveOppositeIso_naturality`・`dgSemifreeContravariantHomInfinity`・`dgModuleFunctorResolutionHomComplex`・`dgModuleFunctorResolutionHom_ext`・`dgModuleFunctorResolutionSourceHomMap_quasiIso`・`complexMappingCoconeMap`・`complexShortExact_quasiIso_projection`・`dgModuleHomSpaceInfinity`・`dgModuleHomSpaceValueEquivalence`・`dgSemifreeHomTargetInfinity`・`dgSemifreeHomSourceInfinity`・`dgMoritaAdjunctionInfinity`・`dgPerfectMoritaRightAdjointInclusionIso`・`dgAlgebraPerfectExtensionInfinity_isQCatEquivalence_of_morita`・`dgPerfectExtensionInclusionIso`・`dgAlgebraPerfectInfinityCategory_isStable`・`dgAlgebraExtensionInfinity_isQCatEquivalence_of_morita`・`dgAlgebraExtensionInfinity_isQCatEquivalence_of_quasiIso`・`dgModuleDerivedFunctor_isQCatEquivalence_of_classical`・`dgAlgebraExtensionInfinity_isExactFunctor`・`dgModuleDerivedFunctor_comparisonIso`・`dgModuleDerivedFunctor_id_iso`・`dgModuleDerivedFunctor_comp_iso`・`dgAlgebraDerivedInfinityCategory_isStable`・`dgModuleDerivedInfinityCategory_isStable`・`dgSemifreeToProjectiveNerve_isQCatEquivalence`・`dgQuotientNerveProjection_isLocalization`・`dgVerdierExactPrecomposition_isQCatEquivalence`・`dgStableClosureNerve_isStable`・`dgStableClosureInclusion_isExactFunctor`・`dgQuotient_isStableVerdierSequence`・`resolvedDGQuotientFunctor_isLocalization`・`resolvedDGVerdierExactPrecomposition_isQCatEquivalence`・`resolvedDGQuotient_isStableVerdierSequence`。
 
 ### 依存と提供
 
@@ -81,20 +61,20 @@
 
 ### 未コミット
 
-- 未保存：`ComplexMappingCoconeBiprod` は個別ビルド済み。Cocone(β)→Cocone(biprod.desc α β)→入力の実短複体、次数別分裂の候補 r・s と、両者の実二射影の四成分式まで構成。分裂の三恒等式・短完全性・射影の準同型性は次工程。
+- なし。今回の4モジュールは、実二成分 cocone の短複体・次数別の三分裂式・短完全性・一般の cocone 第一射影の準同型性と、実出力分解 Hom の入力射影の全準同型性を証明し、統合・監査後に保存した。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9239 jobs）。公理監査は Derived 11778 宣言／1315 モジュール、Stable 12893／1585。許容三公理のみ。今回までの保存対象246新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9243 jobs）。公理監査は Derived 11823 宣言／1319 モジュール、Stable 12938／1589。許容三公理のみ。今回までの保存対象250新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5：D(A)・Perf(A) の実安定性・完全充満包含・graph tensor・Morita 不変性に加え、全二変数の空間値 Hom と同じ Hom 複体模型との比較、固定入力ごとの複体値 Hom を統合・監査済み。Morita tensor の同じ逆関手を全 h Fun 内の三角式付き右随伴へ昇格し、Perf→D との逆関手比較も完成。全濃度の反転符号と左右切断・削除の添字比較、実全成分の符号付き反転と厳密な二回復元は監査済み。実削除・切断合成、全内部点の微分項、有限和による全 HA 微分式、全単体の反転全単射まで統合・監査済み。全単体作用の自然性、`dgNerveOppositeIso`、dg 関手に関する厳密自然性、実反対 ∞ 圏からの反変 Hom も統合・監査済み。出力分解の実対象・比較差・mapping cocone・全パラメータからの実持ち上げも監査済み。次は出力分解の実 Hom 複体について、入力 Hom への射影の準同型性を、半自由始域による第二 Hom 写像の準同型性と mapping cocone の実計算から証明する。具体的には、第二 Hom 写像の mapping cocone→全 Hom→入力 Hom の次数別分裂短完全列を作り、左項の acyclic 性から実右射影の準同型性を得る。短完全列判定、実二射影・比較 cochain の一意性、実 cochain の微分式と `complexMappingCoconeMap` を使う。比較差 δ は α と β=−第二 Hom 写像の biprod.desc と読み、Cocone(β)→Cocone(δ) の左射は `complexMappingCoconeMap` と biprod.inr から構成する。`ComplexMappingCoconeBiprod` は実短複体と r・s、四成分式まで個別ビルド済み。次数別の分裂の三式を実二射影・inl/inr・id_X と biprod.total で検証し、短完全性を得る。出力分解 dg 圏の合成・nerve 比較を構成し、一般の出力を半自由模型へ運ぶ。D(R) 値の二変数 Hom・一般 tensor–Hom 随伴・一般双加群・Perf の冪等完備性・β4 は残る。
-- F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
-- 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。β3 は移送と Verdier 列まで完了。β5、β4 は未完。
+- β5：出力分解 Hom の入力射影の準同型性を閉じた。次は `DGModuleFunctorResolutionHomComplex` 上の実 dg 合成・単位・結合律を構成する。全 Hom 複体の tensor をパラメータとし、元・半自由出力の eComp と実比較 cochain を `mappingCocone.lift` に渡す。比較 cochain の二項は既存 `DifferentialGraded/Complexes/TensorEnriched.lean` の `tensorLeftHom` と対応する `tensorRightHom` で片側ずつ tensor し、実 eComp へ後合成する。微分式は `complexMappingCocone_snd_boundary` と cochain の δ_comp、一意性は `dgModuleFunctorResolutionHom_ext` を使う。次数零の自然性だけで全 dg 合成を済ませない。
+- 実分解 dg 圏から入力への射影を dg 関手とし、既証明の全 Hom 準同型性と実対象の全射性から dg nerve の同値を得る。同じ逆比較と出力射影を使い、任意 dg 関手の実出力を半自由模型へ運ぶ。対象宇宙が異なる場合は `DGUniverseLift` を使い、全加群型の Small.{u} を仮定しない。
+- その後 D(R) 値の Hom、一般 tensor–Hom 随伴・全 coherence、一般双加群の作用と Morita 不変性、Perf の冪等完備性を閉じて β4 へ進む。β4 は提供済み F2 の実 lax pullback を読み取り専用で使う。β3 は局所化・Verdier 列とも完了しており、再実装や承認待ちは不要。
 
 作成日：2026-10-18。状態：S1〜S7（D7）・β3 完了。β5 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
@@ -156,7 +136,7 @@ F1b の `Localization.lean` の `IsLocalization` を入口とし、局所 K-flat
 
 ## β5：非可換 dg 代数の導来 ∞ 圏
 
-着手済み。非可換 `Mon (Complex R)` の D(A) の定義・実安定性まで完成。L4 §26 の dg 圏分解と dg 加群の半自由分解を区別し、
+着手済み。非可換 `Mon (Complex R)` の D(A)・Perf(A) の実安定性、graph tensor・Morita 不変性、実二変数 Hom 空間と反変 Hom、一般出力分解の全 Hom 比較まで完成。一般 RHom 随伴は未完。L4 §26 の dg 圏分解と dg 加群の半自由分解を区別し、
 一般化は `InfinityCategories/Derived/` に置く（見積もり 1〜3 万行）。
 
 - 非可換 dg 代数 A の半自由 dg 加群から `D(A) := N_dg(Semifree(A))` と Perf(A) を構成する。
