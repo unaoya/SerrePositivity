@@ -10765,3 +10765,54 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfFinalHornRight_relative_unknownHom_extension
 #print axioms quillenCfFinalHornRight_relative_unknownHom_extension
+
+#check @finalHornUnknownInterval_endpoints
+#print axioms finalHornUnknownInterval_endpoints
+
+#check @finalHornFillHom
+#print axioms finalHornFillHom
+
+#check @finalHornFillHom_known
+#print axioms finalHornFillHom_known
+
+#check @finalHornFillHom_front
+#print axioms finalHornFillHom_front
+
+#check @finalHornFillHom_full
+#print axioms finalHornFillHom_full
+
+#check @finalHornFillHom_id
+#print axioms finalHornFillHom_id
+
+#check @finalHornFillHom_comp_front
+#print axioms finalHornFillHom_comp_front
+
+#check @finalHornFillHom_comp_full
+#print axioms finalHornFillHom_comp_full
+
+#check @finalHornFillHom_comp
+#print axioms finalHornFillHom_comp
+
+#check @finalHornFilledFunctor
+#print axioms finalHornFilledFunctor
+
+#check @finalHornFillHom_on_zero
+#print axioms finalHornFillHom_on_zero
+
+#check @finalHornFillHom_on_face
+#print axioms finalHornFillHom_on_face
+
+#check @finalHornFilledFunctor_face
+#print axioms finalHornFilledFunctor_face
+
+#check @finalHornFiller
+#print axioms finalHornFiller
+
+#check @finalHornFiller_restriction
+#print axioms finalHornFiller_restriction
+
+#check @quillenCfFinalHornRight_hasLift
+#print axioms quillenCfFinalHornRight_hasLift
+
+#check @quillenCfRightLiftEdge_isCartesian
+#print axioms quillenCfRightLiftEdge_isCartesian
