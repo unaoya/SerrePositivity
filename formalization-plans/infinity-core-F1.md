@@ -28,7 +28,10 @@
   元の `representableUnstraighteningEvaluation` の全パラメーターでの厳密な一致も証明済み。
 - Tw 全体の同じ復元射を終点固定で制限し、rep(y) の unstraightening への底上の前合成同値を
   構成済み。この同じ全体からの恒等点は始対象で、その直接評価は自明 Kan fibration。
-- 同じ Yoneda 写像の充満忠実性は未証明。全体からの恒等点で c1 の作用と輸送を照合する。
+- 始点固定・終点固定の Tw 恒等点は全空間内で厳密に一致。同じ全体からの評価点の像も照合済み。
+- fiber Hom とその指定点での評価は、全空間の同型・宇宙移送・縮小同型と全パラメーターで可換。
+  `canonicalYonedaTransformationFiberEvaluation` は同値で、c1 の実際の普遍輸送の評価と関手同型。
+- 同じ Yoneda 写像の充満忠実性は未証明。c1 のこの輸送と、Tw の始点固定の輸送との照合が残る。
 
 ### 残り（依存順）
 
@@ -64,12 +67,12 @@
 
 ### 未コミット
 
-- 始点固定の恒等点輸送と以前の評価の点の照合は `15dfacbc0` に保存済み。
-  F1 全体ビルド4403 jobs、公理監査9833宣言が成功（標準3公理のみ）。
-- 底変換の比較同値の保存・全体の復元射の制限・同じ全体からの恒等点評価の所有3モジュール、
-  集約・監査・計画が今回の保存単位。F1 全体ビルド4406 jobs、公理監査9863宣言が成功。
-  標準3公理のみ。通る所有ファイルだけを早めに `git commit --only` で保存する。
-- N が読む指定の2ファイルと集約は `a12f7e9f4` で保存済み。
+- 全体の復元射の制限と同じ全体からの恒等点評価は `78d5acf8c` に保存済み。
+  F1 全体ビルド4406 jobs、公理監査9863宣言が成功（標準3公理のみ）。
+- Tw 恒等点の厳密な照合、fiber Hom と指定点評価の全移送との可換性、同じ恒等点での
+  c1 の評価と普遍輸送への比較の所有7モジュール、集約・監査・計画が今回の保存単位。
+  F1 全体ビルド4413 jobs、公理監査9890宣言が成功（標準3公理のみ）。
+- 通る所有ファイルだけを早めに `git commit --only` で保存する。N の指定2ファイルは保存済み。
 
 ### 既知の問題
 
@@ -81,13 +84,13 @@
 
 ### 次の一手
 
-F1-2：Tw 全体の復元射の終点固定の制限 `twistedArrowTargetReconstruction` は底上の前合成同値。
-`canonicalYonedaUnstraighteningIdentity` は同じ全体の復元射から取る始対象で、直接評価は自明 Kan。
-次は、反転 coslice から終点固定で取った Tw の恒等点と、始点固定の `twistedArrowSourceIdentity`
-の元の Tw 全空間内の一致を証明する。続いて、その同じ全体からの評価を c1 の
-`leftUnstraighteningMappingFiberHom_parametrizedIso` と結び、始点固定の
-`twistedArrowIdentityHomTransport` を全パラメーターで回収する。
-以前の別々に選んだ評価点との一致は仮定しない。
+F1-2：`canonicalYonedaTransformationFiberEvaluation_isQCatEquivalence` と、その
+`_parametrizedIso` まで通った。同じ全体からの評価点は、Tw の始点固定の恒等点の像と一致。
+次は全体の復元射を ULift・縮小同型・pointed 射影の第一射影と合成し、Tw から PointedSpace∞
+への一つの射を作る。始点固定の Tw へ制限した底の射が `yonedaInfinityMap` の指定点評価と
+厳密に一致することを、curry の評価公式で照合する。その射で恒等点からの全 Hom 輸送を送り、
+c1 の `_parametrizedIso` と結ぶ。Tw の輸送の同値性と同じ評価の同値性を消去して、
+同じ Yoneda 写像の充満忠実性を閉じる。以前の別々に選んだ点との一致や自己写像の恒等性は不要。
 F1-1c2：別途、初頂点引き戻しの全相対 Hom 作用の同値性を証明し、同じ S に F0 を適用する。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
