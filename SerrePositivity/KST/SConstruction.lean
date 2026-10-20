@@ -884,4 +884,11 @@ public import SerrePositivity.KST.SConstruction.CompositionTripleTetrahedron
 public import SerrePositivity.KST.SConstruction.TracedBFCoherentTriple
 public import SerrePositivity.KST.SConstruction.TracedBFTripleFaceActions
 public import SerrePositivity.KST.SConstruction.TracedBFTriplePathDiamond
+public import SerrePositivity.KST.SConstruction.CoherentInsertionEndpointEdges
+public import SerrePositivity.KST.SConstruction.CoherentInsertionMappingEdges
+public import SerrePositivity.KST.SConstruction.CoherentComparisonEdgeNaturality
+public import SerrePositivity.KST.SConstruction.CoherentComparisonFaceEdges
+public import SerrePositivity.KST.SConstruction.CoherentSimplexInsertionEdges
+public import SerrePositivity.KST.SConstruction.CoherentTetrahedronWhiskeredEdges
+public import SerrePositivity.KST.SConstruction.TracedBFTripleComparisonEdges
 /-! # ∞-S• 構成と連結 K 理論 -/
