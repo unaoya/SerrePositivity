@@ -79,8 +79,8 @@
 - cocartesian section への自然な比較と全成分の同値性は `3a02c7fb8`。
 - coherent な実現と strict 図式の同じ分類写像の像との頂点同型は `8efb9919a`。
 - 局所 strict 化と有限 nerve 上の本質的全射性は `e8f0b2913`。
-- 比較三角形と全辺保存の判定、weighted nerve の cocartesian Hom への全相対作用を証明。
-  F1 全体4548 jobs・監査10343宣言が成功（標準3公理のみ）。
+- weighted nerve の全 cocartesian 辺保存と全相対作用は `a361804cc`。
+- strict transport の全相対 Hom 作用、水平辺を保つ scaffold Hom と元の制限との可換三角形を証明。
 
 ### 既知の問題
 
@@ -94,10 +94,10 @@
 
 Cat∞ 値版では通常 nerve 上の全 fibration の分類写像に加え、strict 図式の unstraightening を構成済み。
 `weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
-比較は元の自然変換の prism を使い、各対象で成分の coherent 辺に一致する。
 有限 nerve 上の本質的全射性に加え、元の全パラメーターの作用を cocartesian Hom へ制限済み。
-同じ射の単位・合成も証明済み。次は元の cocartesian 相対 Hom の全作用を strict transport
-図式間の変換空間へ束ね、scaffold 比較で同値性を証明する。任意の strict Hom の同値性は主張しない。
+strict transport 間への同じ全相対作用は単位・合成を保ち、scaffold 評価後には元の制限と一致する。
+次は水平辺を保つ scaffold Hom から strict transport 間への逆射を構成し、
+scaffold 評価の同型と、元の cocartesian 相対 Hom の制限の同値性を証明する。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。

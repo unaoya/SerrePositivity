@@ -1538,3 +1538,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianLiftPreservation
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianFunctor
 
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianMapping
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportMapping
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldMapping
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldRestriction
