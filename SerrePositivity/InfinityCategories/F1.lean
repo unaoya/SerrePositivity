@@ -1166,3 +1166,6 @@ public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
 public import SerrePositivity.InfinityCategories.F1.CoherentReconstructionHomRecovery
 public import SerrePositivity.InfinityCategories.F1.OppositeFunctorIso
 public import SerrePositivity.InfinityCategories.F1.CoherentReconstructionNaturalIso
+public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.ReconstructionHomRecoveryCoherence
+public import SerrePositivity.InfinityCategories.F1.StrictTransportWeightedInverse
