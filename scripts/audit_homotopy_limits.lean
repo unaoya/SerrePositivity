@@ -10816,3 +10816,36 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @quillenCfRightLiftEdge_isCartesian
 #print axioms quillenCfRightLiftEdge_isCartesian
+
+#check @eHomWhiskerLeft_op_eq_right
+#print axioms eHomWhiskerLeft_op_eq_right
+
+#check @coherentNerveOppositeMap_edge
+#print axioms coherentNerveOppositeMap_edge
+
+#check @initialHornOppositeMap
+#print axioms initialHornOppositeMap
+
+#check @initialHornOppositeMap_edge
+#print axioms initialHornOppositeMap_edge
+
+#check @initialHornOppositeMap_obj
+#print axioms initialHornOppositeMap_obj
+
+#check @initialHornFiller_of_precomposition
+#print axioms initialHornFiller_of_precomposition
+
+#check @quillenCfInitialHorn_vertex_level
+#print axioms quillenCfInitialHorn_vertex_level
+
+#check @quillenCfCollage_exists_top_of_level_one
+#print axioms quillenCfCollage_exists_top_of_level_one
+
+#check @quillenCfInitialHorn_suffix_top
+#print axioms quillenCfInitialHorn_suffix_top
+
+#check @quillenCfInitialHornLeft_hasLift
+#print axioms quillenCfInitialHornLeft_hasLift
+
+#check @quillenCfLeftLiftEdge_isCocartesian
+#print axioms quillenCfLeftLiftEdge_isCocartesian
