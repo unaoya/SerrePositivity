@@ -2029,6 +2029,15 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConePiZeroEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConePiZeroEquiv_target,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv,
+      `SerrePositivity.EInfinity.HomotopyWeight.realizationHomEquiv_app,
+      `SerrePositivity.EInfinity.HomotopyWeight.realizationHomEquiv_lan_source,
+      `SerrePositivity.EInfinity.HomotopyWeight.realizationMap_eq_lan,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitOpFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierIso_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierNatIso,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv_target,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_target,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5514,3 +5523,39 @@ example (Y : Complex ℤ) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
   refine ⟨e.symm x, e.apply_symm_apply _, ?_⟩
   intro y hy
   exact (e.symm_apply_apply y).symm.trans (congrArg e.symm hy)
+
+-- 元の計算対象の底の同型は実際の図式射に自然。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G) :
+    ((framedLimitFunctor ℤ ℕ).map g).hom ≫ (framedLimitCarrierIso ℤ ℕ G).hom =
+      (framedLimitCarrierIso ℤ ℕ F).hom ≫ (carrierFramedLimitFunctor ℤ ℕ).map g := by
+  exact framedLimitCarrierIso_naturality ℤ ℕ g
+
+-- 底の導来 Hom 同値は元の忘却図式の局所化射による後合成に自然。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (Y : Complex ℤ) {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G) :
+    let := projectiveModelCategory ℤ
+    let := CarrierDiagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (Complex ℤ)).Q
+    let QD := (weakEquivalences (ℕ ⥤ Complex ℤ)).Q
+    ∀ x : QD.obj ((Functor.const ℕ).obj Y) ⟶ QD.obj ((Diagram.forget ℤ ℕ).obj F),
+      carrierFramedLimitDerivedHomEquiv ℤ ℕ Y G (x ≫ QD.map ((Diagram.forget ℤ ℕ).map g)) =
+        carrierFramedLimitDerivedHomEquiv ℤ ℕ Y F x ≫ Q.map ((framedLimitFunctor ℤ ℕ).map g).hom := by
+  exact carrierFramedLimitDerivedHomEquiv_target ℤ ℕ Y g
+
+-- 元の複体射のクラスを図式射で送ると、元の複体射の後合成の局所化像になる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example {Y : Complex ℤ} {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G)
+    (h : Y ⟶ ((framedLimitFunctor ℤ ℕ).obj F).carrier) :
+    let := projectiveModelCategory ℤ
+    let Q := (weakEquivalences (Complex ℤ)).Q
+    carrierFramedLimitHomPiZeroEquiv ℤ ℕ G Y
+        (SSet.mapπ₀ ((carrierFramedLimitConeSpace ℤ ℕ Y).map g)
+          (carrierFramedLimitMapClass ℤ ℕ F h)) = Q.map (h ≫ ((framedLimitFunctor ℤ ℕ).map g).hom) := by
+  let := projectiveModelCategory ℤ
+  let Q := (weakEquivalences (Complex ℤ)).Q
+  dsimp only
+  rw [carrierFramedLimitHomPiZeroEquiv_target, carrierFramedLimitHomPiZeroEquiv_mapClass]
+  exact (Q.map_comp _ _).symm

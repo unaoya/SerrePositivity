@@ -799,7 +799,13 @@ J-cell の非循環性は評価の余極限保存で証明する。局所表示�
 忘却図式への局所化 Hom の同値で、終域図式に自然。
 `carrierFramedLimitDerivedHomEquiv` はこれを合成した、任意の複体から
 元の計算対象の底への局所化 Hom と定値複体図式の局所化 Hom の同値。
-元の錐による正規化と両変数の自然性をつなぎ、底の一般右導来極限比較を閉じる作業が残る。
+`HomotopyWeight.realizationMap_eq_lan` は元の mate による実現の係数射と
+同じ Yoneda 左 Kan 拡張の係数射の一致。
+`framedLimitCarrierIso_naturality`・`framedLimitCarrierNatIso` は元の底の計算同型を
+実際の図式射に自然に束ねる。成分は既存の `framedLimitCarrierIso` そのもの。
+`carrierFramedLimitHomPiZeroEquiv_target` と `carrierFramedLimitDerivedHomEquiv_target` は
+底への Hom 比較と底の導来 Hom 同値の、元の図式射による後合成への自然性。
+始域の複体についての自然性と元の錐による正規化をつなぎ、底の一般右導来極限比較を閉じる作業が残る。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
 `mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。
