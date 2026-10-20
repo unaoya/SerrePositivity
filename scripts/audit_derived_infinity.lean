@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHomExt
+import SerrePositivity.InfinityCategories.Derived.ComplexShortExactQuasiIso
+import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBoundary
+import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeMap
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionData
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHom
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeNaturality
@@ -2934,6 +2938,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHomExt,
+    `SerrePositivity.InfinityCategories.Derived.ComplexShortExactQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBoundary,
+    `SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeMap,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionData,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHom,
 

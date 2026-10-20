@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHomExt
+public import SerrePositivity.InfinityCategories.Derived.ComplexShortExactQuasiIso
+public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBoundary
+public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeMap
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionData
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHom
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeNaturality
