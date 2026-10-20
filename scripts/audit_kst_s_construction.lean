@@ -15355,3 +15355,87 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_second
 #check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_generated
 #print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawDiagramPasting_generated
+#check @SerrePositivity.KST.SConstruction.groupoidBasedPath
+#print axioms SerrePositivity.KST.SConstruction.groupoidBasedPath
+#check @SerrePositivity.KST.SConstruction.groupoidBasedArrowAt
+#print axioms SerrePositivity.KST.SConstruction.groupoidBasedArrowAt
+#check @SerrePositivity.KST.SConstruction.groupoidBasedArrow
+#print axioms SerrePositivity.KST.SConstruction.groupoidBasedArrow
+#check @SerrePositivity.KST.SConstruction.groupoidBasedArrow_eq
+#print axioms SerrePositivity.KST.SConstruction.groupoidBasedArrow_eq
+#check @SerrePositivity.KST.SConstruction.groupoidBasedArrow_injective
+#print axioms SerrePositivity.KST.SConstruction.groupoidBasedArrow_injective
+#check @SerrePositivity.KST.SConstruction.groupoidBasedArrow_comp
+#print axioms SerrePositivity.KST.SConstruction.groupoidBasedArrow_comp
+#check @SerrePositivity.KST.SConstruction.groupoidBasedArrow_id
+#print axioms SerrePositivity.KST.SConstruction.groupoidBasedArrow_id
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValueGroupoid
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValueGroupoid
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_edge
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_edge
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_triangle
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_triangle
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_detects
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_detects
+#check @SerrePositivity.KST.SConstruction.kanBasedCylinderValueGroupoid
+#print axioms SerrePositivity.KST.SConstruction.kanBasedCylinderValueGroupoid
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_const
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_const
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_square
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_square
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_fixedSquare
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_fixedSquare
+#check @SerrePositivity.KST.SConstruction.EndpointFixedEdgeCylinder.basedValue
+#print axioms SerrePositivity.KST.SConstruction.EndpointFixedEdgeCylinder.basedValue
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_relative
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_relative
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_attachment
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_attachment
+#check @SerrePositivity.KST.SConstruction.kanBasedEdgeValue_comparisonAttachment
+#print axioms SerrePositivity.KST.SConstruction.kanBasedEdgeValue_comparisonAttachment
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_first_lower
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_first_lower
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_first_upper
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_first_upper
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_second_upper
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_second_upper
+#check @SerrePositivity.KST.SConstruction.sixDiamondCancellation
+#print axioms SerrePositivity.KST.SConstruction.sixDiamondCancellation
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_value
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_value
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramKanValueGroupoid
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramKanValueGroupoid
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_kanValue
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_kanValue
+#check @SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_edge_class
+#print axioms SerrePositivity.KST.SConstruction.tripleRawDiagramPasting_edge_class
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparison_class
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparison_class
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonTriangle
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonTriangle
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparison
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparison
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparison_relative
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparison_relative
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparison_triangle
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparison_triangle
+#check @SerrePositivity.KST.SConstruction.tripleRawPrescribedEdge
+#print axioms SerrePositivity.KST.SConstruction.tripleRawPrescribedEdge
+#check @SerrePositivity.KST.SConstruction.tripleRawGeneratedEdge
+#print axioms SerrePositivity.KST.SConstruction.tripleRawGeneratedEdge
+#check @SerrePositivity.KST.SConstruction.tripleRawStageComparisonPasting
+#print axioms SerrePositivity.KST.SConstruction.tripleRawStageComparisonPasting
+#check @SerrePositivity.KST.SConstruction.tripleRawStageComparisonPastingOriginal
+#print axioms SerrePositivity.KST.SConstruction.tripleRawStageComparisonPastingOriginal
+#check @SerrePositivity.KST.SConstruction.tripleRawStageComparisonPastingCell
+#print axioms SerrePositivity.KST.SConstruction.tripleRawStageComparisonPastingCell
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonPasting
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonPasting
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonPasting_original
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonPasting_original
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonPasting_cell
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonPasting_cell
+#check @SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonPasting_triangle
+#print axioms SerrePositivity.KST.SConstruction.monicKTracedTripleRawStageComparisonPasting_triangle
