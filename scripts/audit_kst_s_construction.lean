@@ -17735,3 +17735,98 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms serreCubeConnection_degeneracy_left_far
 
 end SerrePositivity.KST.SConstruction
+
+#check @SerrePositivity.KST.SConstruction.CubeVertex
+#print axioms SerrePositivity.KST.SConstruction.CubeVertex
+#check @SerrePositivity.KST.SConstruction.cubeVertexFace
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexFace
+#check @SerrePositivity.KST.SConstruction.cubeVertexDegeneracy
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexDegeneracy
+#check @SerrePositivity.KST.SConstruction.cubeVertexConnection
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexConnection
+#check @SerrePositivity.KST.SConstruction.cubeVertexFace_sup
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexFace_sup
+#check @SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_sup
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_sup
+#check @SerrePositivity.KST.SConstruction.cubeVertexConnection_sup
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexConnection_sup
+#check @SerrePositivity.KST.SConstruction.CubeMapGenerated
+#print axioms SerrePositivity.KST.SConstruction.CubeMapGenerated
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_sup
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_sup
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_monotone
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_monotone
+#check @SerrePositivity.KST.SConstruction.cubeMapGeneratedOrderHom
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGeneratedOrderHom
+#check @SerrePositivity.KST.SConstruction.ConcreteCube
+#print axioms SerrePositivity.KST.SConstruction.ConcreteCube
+#check @SerrePositivity.KST.SConstruction.concreteCubeCategory
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeCategory
+#check @SerrePositivity.KST.SConstruction.concreteCubeFace
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeFace
+#check @SerrePositivity.KST.SConstruction.concreteCubeDegeneracy
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeDegeneracy
+#check @SerrePositivity.KST.SConstruction.concreteCubeConnection
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeConnection
+#check @SerrePositivity.KST.SConstruction.concreteCubeVertexFunctor
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeVertexFunctor
+#check @SerrePositivity.KST.SConstruction.concreteCubeVertexFunctor_faithful
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeVertexFunctor_faithful
+#check @SerrePositivity.KST.SConstruction.concreteCubeMap_monotone
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeMap_monotone
+#check @SerrePositivity.KST.SConstruction.cubeVertexAtom
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexAtom
+#check @SerrePositivity.KST.SConstruction.cubeVertexSupport
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexSupport
+#check @SerrePositivity.KST.SConstruction.mem_cubeVertexSupport
+#print axioms SerrePositivity.KST.SConstruction.mem_cubeVertexSupport
+#check @SerrePositivity.KST.SConstruction.cubeVertexSupport_sup_atoms
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexSupport_sup_atoms
+#check @SerrePositivity.KST.SConstruction.cubeJoinMap_sup_atoms
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinMap_sup_atoms
+#check @SerrePositivity.KST.SConstruction.cubeJoinMap_eval
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinMap_eval
+#check @SerrePositivity.KST.SConstruction.cubeJoinMap_ext
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinMap_ext
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_ext
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_ext
+#check @SerrePositivity.KST.SConstruction.concreteCubeSignature
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeSignature
+#check @SerrePositivity.KST.SConstruction.concreteCubeMap_eval
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeMap_eval
+#check @SerrePositivity.KST.SConstruction.concreteCubeSignature_injective
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeSignature_injective
+#check @SerrePositivity.KST.SConstruction.concreteCubeSignature_eq_iff
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeSignature_eq_iff
+#check @SerrePositivity.KST.SConstruction.concreteCubeSignature_comp
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeSignature_comp
+#check @SerrePositivity.KST.SConstruction.CubeJoinTerm
+#print axioms SerrePositivity.KST.SConstruction.CubeJoinTerm
+#check @SerrePositivity.KST.SConstruction.cubeJoinTermEval
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinTermEval
+#check @SerrePositivity.KST.SConstruction.cubeJoinTermEval_bot
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinTermEval_bot
+#check @SerrePositivity.KST.SConstruction.cubeVertexAtom_sup_finset
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexAtom_sup_finset
+#check @SerrePositivity.KST.SConstruction.cubeJoinTermEval_injective
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinTermEval_injective
+#check @SerrePositivity.KST.SConstruction.CubeJoinNormalForm
+#print axioms SerrePositivity.KST.SConstruction.CubeJoinNormalForm
+#check @SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval
+#check @SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap
+#check @SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap_eval
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap_eval
+#check @SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval_injective
+#print axioms SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval_injective
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_eval
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_eval
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_injective
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_injective
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_eq_iff
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_eq_iff
+#check @SerrePositivity.KST.SConstruction.concreteCubeNormalForm_comp
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeNormalForm_comp
