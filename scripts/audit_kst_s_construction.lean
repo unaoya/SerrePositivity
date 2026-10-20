@@ -16839,4 +16839,40 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms dgTensorLeftUnit_associatorRight_insert
 #check @dgTensorLeftUnit_associator_inverse_element
 #print axioms dgTensorLeftUnit_associator_inverse_element
+#check @dgDiagonalUnitInsertion
+#print axioms dgDiagonalUnitInsertion
+#check @dgDiagonalUnitInsertion_apply
+#print axioms dgDiagonalUnitInsertion_apply
+#check @dgDiagonalUnitInsertion_evaluation
+#print axioms dgDiagonalUnitInsertion_evaluation
+#check @dgDiagonalUnitInsertion_eq_inv
+#print axioms dgDiagonalUnitInsertion_eq_inv
+#check @dgFreeUnitInsert_tensor
+#print axioms dgFreeUnitInsert_tensor
+#check @dgComplex_triple_generator_of_unit
+#print axioms dgComplex_triple_generator_of_unit
+#check @dgTensorLeftUnit_inverse_iota
+#print axioms dgTensorLeftUnit_inverse_iota
+#check @dgTensorLeftUnit_inverse_associator_iota
+#print axioms dgTensorLeftUnit_inverse_associator_iota
+#check @dgTensorLeftUnit_associator_inverse_value
+#print axioms dgTensorLeftUnit_associator_inverse_value
+#check @dgTensorLeftUnit_associator_value
+#print axioms dgTensorLeftUnit_associator_value
+#check @dgTensorLeftUnit_associator
+#print axioms dgTensorLeftUnit_associator
+#check @dgTensorLeftUnit_associator_inv
+#print axioms dgTensorLeftUnit_associator_inv
+#check @dgBimoduleDiagonalUnitIso
+#print axioms dgBimoduleDiagonalUnitIso
+#check @dgBimoduleDiagonalUnit_associator
+#print axioms dgBimoduleDiagonalUnit_associator
+#check @dgModuleExtensionCompositionTensorIso_comp_id
+#print axioms dgModuleExtensionCompositionTensorIso_comp_id
+#check @dgBimoduleDiagonalUnitIso_extension_evaluation
+#print axioms dgBimoduleDiagonalUnitIso_extension_evaluation
+#check @dgModuleExtensionCompositionAt_comp_id
+#print axioms dgModuleExtensionCompositionAt_comp_id
+#check @perfectDGExtensionCompositionAt_comp_id
+#print axioms perfectDGExtensionCompositionAt_comp_id
 end SerrePositivity.KST.SConstruction
