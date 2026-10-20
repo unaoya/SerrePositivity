@@ -715,3 +715,9 @@ public import SerrePositivity.EInfinity.FrameHom.ConstantBarAugmentation
 public import SerrePositivity.EInfinity.FrameHom.BarValueInclusion
 public import SerrePositivity.EInfinity.BarrattEccles.MappingRightHomBarInclusion
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceBarInclusion
+public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
+public import SerrePositivity.EInfinity.FrameHom.ThomasonNerveMap
+public import SerrePositivity.EInfinity.FrameHom.ThomasonNaturality
+public import SerrePositivity.EInfinity.FrameHom.CommaNerveContraction
+public import SerrePositivity.EInfinity.FrameHom.CommaNerveBarProjection
+public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionThomasonSquare

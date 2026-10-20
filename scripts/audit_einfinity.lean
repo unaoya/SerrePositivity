@@ -2208,6 +2208,40 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.nerveDiagram,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.values,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.simplex,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.simplex_operator,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.map,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.fiberNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.valueInclusion_map,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.simplex_base,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.map_vertex,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.nerveComparison,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.simplex_naturality,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.map_naturality,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.values,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.chain,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.chain_map,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.lift,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.initial,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.lift_reconstruct,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.retraction,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.contraction,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.projection,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.inclusion,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.inclusion_projection,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.projection_inclusion,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.projection_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.projectionRows,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.barProjection,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.barProjection_app,
+      `SerrePositivity.EInfinity.FrameHom.CommaNerve.barProjection_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionRightDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallSpanRightDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionBarComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionBarComparison_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionThomasonSquare,
       `SerrePositivity.EInfinity.FrameHom.ConstantBar.values,
       `SerrePositivity.EInfinity.FrameHom.ConstantBar.first_label,
       `SerrePositivity.EInfinity.FrameHom.ConstantBar.projection,
@@ -6590,3 +6624,40 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       (Functor.const _).obj (((mappingRightHomDiagram A X Y).flip.obj n).elementsMk
         (mappingFibrantRightLeg A Y) x) :=
   mappingSpaceBarInclusion_app A X Y n x
+
+-- 元の Cat 値の右脚図式にも、同じ fiber 包含を回収する厳密な比較を適用できる。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
+  SerrePositivity.EInfinity.FrameHom in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (t : algebraRightSpanBase A Y) :
+    BarRows.valueInclusion (Thomason.nerveDiagram (algebraSpanRightDiagram A X Y)) t ≫
+        Thomason.map (algebraSpanRightDiagram A X Y) =
+      Thomason.fiberNerveMap (algebraSpanRightDiagram A X Y) t :=
+  Thomason.valueInclusion_map (algebraSpanRightDiagram A X Y) t
+
+-- 任意の関手の comma 図式の射影は、独立した値と添字の宇宙で反転される。
+open CategoryTheory SerrePositivity.EInfinity.FrameHom in
+example {E : Type} [Category.{0} E] {D : Type e2ComplexLimitUniverse} [Category.{0} D]
+    (p : E ⥤ D) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (CommaNerve.barProjection p)) :=
+  CommaNerve.barProjection_localized_isIso p
+
+-- 同じ全右脚の比較は bar でも反転される。Thomason 射の反転性は仮定しない。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (mappingResolutionBarComparison A X Y)) :=
+  mappingResolutionBarComparison_localized_isIso A X Y
+
+-- 元の全図式の比較そのものと bar の比較は、同じ二つの Thomason 射で厳密に可換。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
+  SerrePositivity.EInfinity.FrameHom in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    Thomason.map (mappingSmallResolutionRightDiagram A X Y) ≫
+        nerveMap (mappingFixedRightGrothendieckComparison A X Y) =
+      mappingResolutionBarComparison A X Y ≫
+        Thomason.map (mappingSmallSpanRightDiagram A X Y) :=
+  mappingResolutionThomasonSquare A X Y

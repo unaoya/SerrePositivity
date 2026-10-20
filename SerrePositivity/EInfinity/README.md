@@ -978,7 +978,17 @@ left cofinality を与え、各 `_isWeakHomotopyEquivalence` は同じ射の弱�
 `mappingSpaceBarInclusion` は元の Map^h と同じ fibrant 置換の右脚を使い、
 全単体で元の右脚とラベルを一定の射列に送る。`_localized_isIso` も証明済み。
 `mappingSpaceIndexBarMap` は元の全単体の共通始域から同じ bar への比較で、反転可能。
-固定右脚の nerve と bar の比較、その比較を経由する元の右射の因子分解は後続。
+`FrameHom.Thomason.map` は元の nerve の bar から Grothendieck 全図式の nerve への射。
+全単体作用素と係数の自然性を証明し、`valueInclusion_map` は同じ fiber の包含を厳密に回収。
+一般のこの射の反転性は未証明。
+`FrameHom.CommaNerve.contraction` は元の最後の頂点による comma 射列の復元と収縮。
+`barProjection_localized_isIso` は任意の p : E → D で、comma 図式の bar から元の
+E の nerve への射影の反転性を与える。値と添字の宇宙は独立で、モデル構造は不要。
+`BarrattEccles.mappingResolutionBarComparison_localized_isIso` は元の分解から全左脚への
+全右脚の比較を bar でも反転する。`mappingResolutionThomasonSquare` は同じ元の
+Grothendieck 比較と bar 比較が二つの Thomason 射で厳密に可換であることを示す。
+comma 図式の移送による元の一般図式への比較、Thomason 射の反転性、
+固定右脚の nerve と bar の比較と元の右射の因子分解は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
