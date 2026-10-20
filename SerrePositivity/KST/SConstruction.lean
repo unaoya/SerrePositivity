@@ -1173,4 +1173,12 @@ public import SerrePositivity.KST.SConstruction.DGModuleExtensionTripleTensor
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionEvaluationTransport
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionTripleEvaluation
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionAssociativity
+public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionClosedNaturality
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputCoherence
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionFourfold
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionPentagon
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionClosedNaturality
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionFourfold
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionPentagon
 /-! # ∞-S• 構成と連結 K 理論 -/
