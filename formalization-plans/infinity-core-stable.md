@@ -17,9 +17,9 @@
 - Morita tensor の同じ逆関手を h Fun 内の三角式付き ∞ 右随伴に昇格。Perf→D の包含との逆関手比較も公開済み。一般 RHom の構成・同定とは区別する。
 - 出力の射影性を仮定しない分解の実対象、実比較差、全 Hom の mapping cocone、全パラメータからの二射と比較 cochain の実持ち上げ・一意性、入力 Hom 射影の全準同型性を監査済み。実合成・実単位に加え、全 cochain 上の左右単位律・三重合成の結合律を証明し、実分解 dg 圏と実入力・半自由出力への dg 射影を構成した。
 - 実入力射影は対象上全射、全 Hom の各次数で全射な準同型。対象だけを共通宇宙へ上げた実 nerve は自明 Kan fibration、したがって実 ∞ 圏同値。逆と実半自由出力射影から、任意の dg 加群値関手の実出力を半自由模型の全 ∞ 関手へ移し、実分解圏上の全関手比較同型も証明した。今回までの実分解 dg 圏と二射影は統合・監査済み。逆を実自明 Kan fibration の厳密切断へ統一し、各値から元の同じ入力像への次数別全射な準同型を回収した。
-- 固定始域・固定終域の実 D(R) 値共変・反変 Hom を構成し、各頂点値が同じ厳密切断の半自由分解であることを証明した。実 augmentation は元の全 Hom end 複体への全射準同型。両分解複体の pinched 模型から元の実導来 ∞ 圏の写像空間への全空間同値も証明し、統合・公理監査済み。関手族としての比較の自然性と二変数の統合は未証明。
-- augmentation の実比較 cochain の全微分式・単位零・符号付き合成則から、同じ切断補正和の全候補の HA 方程式を証明し、実単体へ昇格した。任意の単調添字変更について、単射部分の切断点・左右次数・符号と係数を照合し、非単射部分では潰れる辺の単位と高次退化の零を証明した。全ての面・退化に自然な実 `dgModuleAugmentationNervePrism`、同じ実両端、`dgModuleAugmentationNerveHomotopy` を構成し、集約ビルド・両公理監査済み。対象だけの `DGUniverseLift` を使い、入力対象の Small 性や元の出力の射影性を仮定しない。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionCategory`・`DGModuleFunctorResolutionNerve`・`DGModuleOutputResolutionInfinity`・`DGSemifreeDerivedHomValue`・`DGSemifreeDerivedHomMappingSpace`・`DGModuleAugmentationPrismSimplex`・`DGModuleAugmentationPrismReindex`・`DGModuleAugmentationDegenerateReindex`・`DGModuleAugmentationNervePrism`（すべて `Derived/`）。
+- 固定始域・固定終域の実 D(R) 値共変・反変 Hom を構成し、各頂点値が同じ厳密切断の半自由分解であることを証明した。実 augmentation は元の全 Hom end 複体への全射準同型。両分解複体の pinched 模型から元の実導来 ∞ 圏の写像空間への全空間同値も証明し、統合・公理監査済み。空間値 Hom との関手族の比較と二変数の統合は未証明。
+- augmentation の実比較 cochain の全微分式・単位零・符号付き合成則から、同じ切断補正和の全候補の HA 方程式を証明し、実単体へ昇格した。任意の単調添字変更について、単射部分の切断点・左右次数・符号と係数を照合し、非単射部分では潰れる辺の単位と高次退化の零を証明した。全ての面・退化に自然な実 `dgModuleAugmentationNervePrism`、同じ実両端、`dgModuleAugmentationNerveHomotopy` を構成し、集約ビルド・両公理監査済み。対象だけの `DGUniverseLift` を使い、入力対象の Small 性や元の出力の射影性を仮定しない。単位辺で同じ augmentation を回収する式と、厳密切断を通じた全実出力関手から元の関手へのホモトピーを追加した。固定始域・固定終域の D(R) 値 Hom の包含から元の全 Hom の R 加群値関手への全単体上のホモトピーを構成し、反変側は実反対 ∞ 圏へも接続した。追加3モジュールも集約ビルド・両公理監査済み。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionCategory`・`DGModuleFunctorResolutionNerve`・`DGModuleOutputResolutionInfinity`・`DGSemifreeDerivedHomValue`・`DGSemifreeDerivedHomMappingSpace`・`DGModuleAugmentationPrismSimplex`・`DGModuleAugmentationPrismReindex`・`DGModuleAugmentationDegenerateReindex`・`DGModuleAugmentationNervePrism`・`DGModuleAugmentationPrismComponent`・`DGModuleOutputResolutionHomotopy`・`DGSemifreeDerivedHomAugmentationInfinity`（すべて `Derived/`）。
 
 ### 残り（依存順、時間は推定）
 
@@ -64,18 +64,19 @@
 
 ### 未コミット
 
-- なし。今回の11モジュールは全添字変更に対する実係数比較、実 prism 写像・同じ両端・ホモトピーを構成し、集約ビルド・両公理監査後に保存した。
+- なし。追加3モジュールは実 augmentation の単位辺成分、厳密切断を通じた全実出力比較、固定入力の Hom の自然な実 augmentation を構成し、集約ビルド・両公理監査後に保存した。
+
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9332 jobs）。公理監査は Derived 12554 宣言／1408 モジュール、Stable 13669／1678。許容三公理のみ。今回までの保存対象339新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9335 jobs）。公理監査は Derived 12595 宣言／1411 モジュール、Stable 13710／1681。許容三公理のみ。今回までの保存対象342新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5：同じ augmentation の全 HA 方程式、全添字作用の自然性、実 `N_dg(Resolution) × Δ¹ → N_dg(DGUniverseLift RightModule)` と両端・単体的ホモトピーまで構成した。次は単独 Lean 検査済みの草稿 `/tmp/d-beta5-prism-component.lean`（実単位辺の係数と実 prism 写像の同じ augmentation の照合、2宣言）と `/tmp/d-beta5-output-resolution-homotopy.lean`（実出力の包含・元の像の宇宙持ち上げ、両射影の全関手等式、厳密切断を通じた実出力 ∞ 関手から元の同じ関手へのホモトピー、7宣言）を正式化する。両草稿は未統合・未公理監査で提供数には含めない。その後、固定入力の D(R) 値 Hom と空間値 Hom の関手族の比較へ接続する。
-- `DGSemifreeDerivedHomValue` の頂点等式・各 augmentation の準同型性、`DGSemifreeDerivedHomMappingSpace` の各対の全空間同値は証明済み。比較の自然性・二変数の統合・一般 tensor–Hom 随伴は未証明。全加群の生の dg nerve で augmentation が同値とは限らないので、元の出力の射影性やその可逆性を仮定しない。必要な比較は実導来化後に行う。
+- β5：実 prism の全 HA・全自然性・両端・単位辺の同じ augmentation との照合、厳密切断を通じた全関手比較、共変・反変の固定入力 Hom への接続まで完成。次は単独 Lean 検査済みの草稿 `/tmp/d-beta5-hom-underlying-space.lean` の8宣言（全 R 加群の生の nerve から R の代表加群を始域とする空間値全 ∞ 関手、各値と元の同じ複体の pinched 模型との Yoneda 比較、準同型による実 pinched 後合成の全空間同値）を正式化する。未統合・未公理監査で提供数に含めない。その後、空間値関手の実辺作用と同じ pinched 後合成の照合を証明し、実 augmentation ホモトピーを送り、空間値の全関手比較同型を得る。点ごとの空間同値だけで全関手同型を結論しない。R の代表加群は射影的だが、augmentation の元の出力には射影性を課さない。
+- `DGSemifreeDerivedHomValue` の頂点等式・各 augmentation の準同型性、`DGSemifreeDerivedHomMappingSpace` の各対の全空間同値は証明済み。空間値 Hom との比較の自然性・二変数の統合・一般 tensor–Hom 随伴は未証明。全加群の生の dg nerve で augmentation が同値とは限らないので、元の出力の射影性やその可逆性を仮定しない。必要な比較は実導来化後に行う。
 - その後一般 tensor–Hom 随伴・全 coherence、一般双加群の作用と Morita 不変性、Perf の冪等完備性を閉じて β4 へ進む。β4 は提供済み F2 の実 lax pullback を読み取り専用で使う。β3 は局所化・Verdier 列とも完了しており、再実装や承認待ちは不要。
 
 作成日：2026-10-18。状態：S1〜S7（D7）・β3 完了。β5 に進む。
@@ -138,7 +139,7 @@ F1b の `Localization.lean` の `IsLocalization` を入口とし、局所 K-flat
 
 ## β5：非可換 dg 代数の導来 ∞ 圏
 
-着手済み。非可換 `Mon (Complex R)` の D(A)・Perf(A) の実安定性、graph tensor・Morita 不変性、実二変数 Hom 空間、固定入力ごとの D(R) 値共変・反変 Hom と実全 Hom 複体への augmentation・各対の全写像空間比較まで完成。比較の自然性・二変数の統合・一般 RHom 随伴は未完。L4 §26 の dg 圏分解と dg 加群の半自由分解を区別し、
+着手済み。非可換 `Mon (Complex R)` の D(A)・Perf(A) の実安定性、graph tensor・Morita 不変性、実二変数 Hom 空間、固定入力ごとの D(R) 値共変・反変 Hom と実全 Hom 複体への augmentation・各対の全写像空間比較まで完成。空間値との比較の自然性・二変数の統合・一般 RHom 随伴は未完。L4 §26 の dg 圏分解と dg 加群の半自由分解を区別し、
 一般化は `InfinityCategories/Derived/` に置く（見積もり 1〜3 万行）。
 
 - 非可換 dg 代数 A の半自由 dg 加群から `D(A) := N_dg(Semifree(A))` と Perf(A) を構成する。

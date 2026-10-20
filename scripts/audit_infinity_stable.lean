@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismComponent
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomAugmentationInfinity
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutReindex
@@ -3605,6 +3608,10 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismComponent,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomAugmentationInfinity,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutReindex,
