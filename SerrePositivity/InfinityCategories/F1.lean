@@ -1354,3 +1354,9 @@ public import SerrePositivity.InfinityCategories.F1.RepresentableUnstraightening
 public import SerrePositivity.InfinityCategories.F1.RepresentableUnstraighteningEvaluation
 
 public import SerrePositivity.InfinityCategories.F1.YonedaPresheafEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafValues
+
+public import SerrePositivity.InfinityCategories.F1.UniversePinchedHom
+
+public import SerrePositivity.InfinityCategories.F1.YonedaRepresentableMapping
