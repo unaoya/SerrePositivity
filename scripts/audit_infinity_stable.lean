@@ -1,3 +1,16 @@
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSpaceComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingCosliceTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationActualComponent
+import SerrePositivity.InfinityCategories.Derived.DGPointCosliceTransport
+import SerrePositivity.InfinityCategories.Derived.DGCoherentCosliceTransport
+import SerrePositivity.InfinityCategories.Derived.DGStandardClosedPostcomposition
+import SerrePositivity.InfinityCategories.Derived.DGCoherentClosedEdges
+import SerrePositivity.InfinityCategories.Derived.DGClosedCosliceTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnitLiftPostcomposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceQuasiIso
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationClosedEdge
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationUnderlyingIso
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionSpaceIso
 import SerrePositivity.InfinityCategories.Derived.DGModuleUnitPinchedModel
 import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceInfinity
 import SerrePositivity.InfinityCategories.Derived.DGModuleUnitPostcomposition
@@ -3615,6 +3628,19 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSpaceComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingCosliceTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationActualComponent,
+    `SerrePositivity.InfinityCategories.Derived.DGPointCosliceTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentCosliceTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGStandardClosedPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentClosedEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedCosliceTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnitLiftPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationClosedEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationUnderlyingIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionSpaceIso,
     `SerrePositivity.InfinityCategories.Derived.DGModuleUnitPinchedModel,
     `SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGModuleUnitPostcomposition,
