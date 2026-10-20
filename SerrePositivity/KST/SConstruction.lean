@@ -1242,4 +1242,16 @@ public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputNaturalit
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameterComposition
 public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputHorizontal
 public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputHomHorizontal
+public import SerrePositivity.KST.SConstruction.BimoduleParameterSquareValues
+public import SerrePositivity.KST.SConstruction.BimoduleFirstParameterSquare
+public import SerrePositivity.KST.SConstruction.BimoduleFirstParameterConjugation
+public import SerrePositivity.KST.SConstruction.DGParameterConjugationReverse
+public import SerrePositivity.KST.SConstruction.TensorAssociatorParameterConjugation
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionParameterWhiskering
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionCompositionFactor
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionParameterComposition
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionParameterComposition
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputHomWhiskering
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputHomHorizontal
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHomHorizontal
 /-! # ∞-S• 構成と連結 K 理論 -/
