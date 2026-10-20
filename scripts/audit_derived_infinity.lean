@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity
+import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertyChoices
+import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertySquares
+import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertyStability
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveModules
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeModules
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeProjectiveEquivalence
 import SerrePositivity.InfinityCategories.Derived.CellDGResolutionVerdierEdges
 import SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactDescent
@@ -2889,6 +2896,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertyChoices,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertySquares,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertyStability,
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveModules,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeModules,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeProjectiveEquivalence,
     `SerrePositivity.InfinityCategories.Derived.CellDGResolutionVerdierEdges,
     `SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion,
     `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactDescent,
