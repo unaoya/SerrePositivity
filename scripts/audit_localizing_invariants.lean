@@ -97,7 +97,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SpectrumProductIso,
     `SerrePositivity.KST.LocalizingInvariants.SpectrumProductAxes,
     `SerrePositivity.KST.LocalizingInvariants.TammeSplitting,
-    `SerrePositivity.KST.LocalizingInvariants.PullbackDifferenceVertices]
+    `SerrePositivity.KST.LocalizingInvariants.PullbackDifferenceVertices,
+    `SerrePositivity.KST.LocalizingInvariants.FullSubcomplexReflection,
+    `SerrePositivity.KST.LocalizingInvariants.FullSubcomplexSquares,
+    `SerrePositivity.KST.LocalizingInvariants.FullStableClosure,
+    `SerrePositivity.KST.LocalizingInvariants.FullStableExact,
+    `SerrePositivity.KST.LocalizingInvariants.ExactTransformationStableLocus,
+    `SerrePositivity.KST.LocalizingInvariants.LaxArrowTransformation,
+    `SerrePositivity.KST.LocalizingInvariants.PullbackStableCategory,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberInputFamily,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberSquareFamily,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceFunctor]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
