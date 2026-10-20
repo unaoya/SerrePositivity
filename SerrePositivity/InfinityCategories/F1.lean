@@ -1572,3 +1572,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPredicateIso
 public import SerrePositivity.InfinityCategories.F1.FullSubcomplexRestrictionEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportMappingEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CoreFunctorIso
+
+public import SerrePositivity.InfinityCategories.F1.CoreEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramCategory
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramInfinity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportEnriched
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportInfinityEquivalence

@@ -13,7 +13,8 @@
   元の全相対 Hom の作用を section へ制限し、core の混合作用・対角評価で全対象と全高次を束ねた。
   同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
   各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
-  coherent な主写像の充満忠実性と本質的全射性はまだ証明していない。
+  core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
+  Cat∞ 値関手への主写像の充満忠実性と本質的全射性はまだ証明していない。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
   weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
@@ -80,7 +81,8 @@
 - scaffold 評価の厳密な同型と strict transport への変換空間の quasicategory 性は `a75ee4512`。
 - 水平辺の検出と元の制限との厳密な pullback は `c0caa1ce1`。
 - 一般の cocartesian 標的で終点指定の可逆辺 lift と全相対 Hom の制限同値は `767961448`。
-- 同型不変な水平辺条件への制限と、同じ strict transport の全相対 Hom 作用の同値を証明。
+- 同型不変な水平辺条件への制限と strict transport の全相対 Hom 作用の同値は `aece542ae`。
+- core の同値性、中間の strict transport の像への豊穣比較とその coherent nerve の同値を証明。
 
 ### 既知の問題
 
@@ -94,11 +96,10 @@
 ### 次の一手
 
 `weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
-strict transport 間への同じ全相対作用は単位・合成を保ち、scaffold 評価後には元の制限と一致する。
-水平辺による条件の反映と、元の全相対 Hom の制限との pullback も証明済み。
-`cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence` まで完了。
-次はこの同じ作用の core と coherent nerve 上の Hom 作用との比較を構成する。
-`cocartesianStraighteningCoherentMap` の実際の作用へ接続し、充満忠実性を閉じる。
+`cocartesianStrictTransportInfinityMap_isQCatEquivalence` まで完了。
+次は中間の strict transport 図式の ∞ 圏から Cat∞ 値関手への実現を構成する。
+その実現と中間比較の合成が、元の `cocartesianStraighteningCoherentMap` と一致することを示す。
+同じ実現の Hom 作用を比較し、主写像の充満忠実性を閉じる。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
