@@ -12,6 +12,10 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorPre_transport
 #check @SerrePositivity.InfinityCategories.F2.prismExtensionPullbackEndpoint_restrict
 #check @SerrePositivity.InfinityCategories.F2.prismExtensionPullbackComparison_restrict
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_pre
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_vertexIso_pre
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_evaluate
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_vertexIso_evaluate
 
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
