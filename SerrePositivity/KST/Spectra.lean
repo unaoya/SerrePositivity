@@ -825,3 +825,7 @@ public import SerrePositivity.KST.Spectra.TwistedKanSequenceParameter
 public import SerrePositivity.KST.Spectra.SignedLoopParameterHom
 public import SerrePositivity.KST.Spectra.SequenceStrictIntervalPost
 public import SerrePositivity.KST.Spectra.SpectrumTracedSourceActionInterval
+public import SerrePositivity.KST.Spectra.PointedIhomParameterExchange
+public import SerrePositivity.KST.Spectra.SpectrumTracedSourceActionCoordinates
+public import SerrePositivity.KST.Spectra.SpectrumTracedSourceEvaluationHomotopy
+public import SerrePositivity.KST.Spectra.SpectrumTracedActualStageDifference
