@@ -1097,4 +1097,19 @@ public import SerrePositivity.KST.SConstruction.PerfectDGMoritaRealization
 public import SerrePositivity.KST.SConstruction.BoundaryRealizationInvariance
 public import SerrePositivity.KST.SConstruction.KSpectrumInvariance
 public import SerrePositivity.KST.SConstruction.DGKTheory
+public import SerrePositivity.KST.SConstruction.DGFunctorHomEnd
+public import SerrePositivity.KST.SConstruction.DGFunctorHomUniversal
+public import SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition
+public import SerrePositivity.KST.SConstruction.DGFunctorHomPostcomposition
+public import SerrePositivity.KST.SConstruction.DGFunctorHomIdentity
+public import SerrePositivity.KST.SConstruction.DGFunctorParamNaturality
+public import SerrePositivity.KST.SConstruction.DGFunctorParamComposition
+public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.KST.SConstruction.DGFunctorWhiskering
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalComposition
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalUnit
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalElements
+public import SerrePositivity.KST.SConstruction.DGFunctorHomElements
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalInterchange
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDG
 /-! # ∞-S• 構成と連結 K 理論 -/

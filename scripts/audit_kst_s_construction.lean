@@ -16277,3 +16277,158 @@ namespace SerrePositivity.KST.SConstruction
 #check @dgKMoritaGroupEquiv_apply
 #print axioms dgKMoritaGroupEquiv_apply
 end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @dgFunctorHomFamily
+#print axioms dgFunctorHomFamily
+#check @dgFunctorHomCandidates
+#print axioms dgFunctorHomCandidates
+#check @dgFunctorHomRelations
+#print axioms dgFunctorHomRelations
+#check @dgFunctorHomNaturalityLeft
+#print axioms dgFunctorHomNaturalityLeft
+#check @dgFunctorHomNaturalityRight
+#print axioms dgFunctorHomNaturalityRight
+#check @dgFunctorHomRelationsLeft
+#print axioms dgFunctorHomRelationsLeft
+#check @dgFunctorHomRelationsRight
+#print axioms dgFunctorHomRelationsRight
+#check @dgFunctorHom
+#print axioms dgFunctorHom
+#check @dgFunctorHomπ
+#print axioms dgFunctorHomπ
+#check @dgFunctorHom_ext
+#print axioms dgFunctorHom_ext
+#check @dgFunctorHomNaturalityLeft_precomp
+#print axioms dgFunctorHomNaturalityLeft_precomp
+#check @dgFunctorHomNaturalityRight_precomp
+#print axioms dgFunctorHomNaturalityRight_precomp
+#check @dgFunctorHomRelations_eq_iff
+#print axioms dgFunctorHomRelations_eq_iff
+#check @DGFunctorParamTrans
+#print axioms DGFunctorParamTrans
+#check @dgFunctorHomEquiv
+#print axioms dgFunctorHomEquiv
+#check @dgFunctorHomEquiv_symm_π
+#print axioms dgFunctorHomEquiv_symm_π
+#check @dgFunctorHomπ_naturality
+#print axioms dgFunctorHomπ_naturality
+#check @dgFunctorHomEquiv_symm_π_assoc
+#print axioms dgFunctorHomEquiv_symm_π_assoc
+#check @dgFunctorParamPre_naturality
+#print axioms dgFunctorParamPre_naturality
+#check @dgFunctorParamPre
+#print axioms dgFunctorParamPre
+#check @dgFunctorHomPre
+#print axioms dgFunctorHomPre
+#check @dgFunctorHomPre_π
+#print axioms dgFunctorHomPre_π
+#check @dgFunctorHomPre_π_assoc
+#print axioms dgFunctorHomPre_π_assoc
+#check @dgFunctorParamPost_naturality
+#print axioms dgFunctorParamPost_naturality
+#check @dgFunctorParamPost
+#print axioms dgFunctorParamPost
+#check @dgFunctorHomPost
+#print axioms dgFunctorHomPost
+#check @dgFunctorHomPost_π
+#print axioms dgFunctorHomPost_π
+#check @dgFunctorHomPost_π_assoc
+#print axioms dgFunctorHomPost_π_assoc
+end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @dgFunctorIdentity_naturality
+#print axioms dgFunctorIdentity_naturality
+#check @dgFunctorParamIdentity
+#print axioms dgFunctorParamIdentity
+#check @dgFunctorIdentity
+#print axioms dgFunctorIdentity
+#check @dgFunctorIdentity_π
+#print axioms dgFunctorIdentity_π
+#check @dgFunctorIdentity_π_assoc
+#print axioms dgFunctorIdentity_π_assoc
+end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @dgFunctorFamilyNaturality_apply
+#print axioms dgFunctorFamilyNaturality_apply
+#check @dgFunctorParamNaturality_apply
+#print axioms dgFunctorParamNaturality_apply
+#check @dgFunctorFamilyComposeApp
+#print axioms dgFunctorFamilyComposeApp
+#check @dgFunctorFamilyComposeApp_apply
+#print axioms dgFunctorFamilyComposeApp_apply
+#check @dgFunctorFamilyComposeApp_naturality
+#print axioms dgFunctorFamilyComposeApp_naturality
+#check @dgFunctorParamCompose
+#print axioms dgFunctorParamCompose
+#check @dgFunctorComposition
+#print axioms dgFunctorComposition
+#check @dgFunctorComposition_π
+#print axioms dgFunctorComposition_π
+#check @dgFunctorIdentity_comp
+#print axioms dgFunctorIdentity_comp
+#check @dgFunctorComp_identity
+#print axioms dgFunctorComp_identity
+#check @dgFunctorComposition_assoc
+#print axioms dgFunctorComposition_assoc
+#check @dgFunctorEnrichment
+#print axioms dgFunctorEnrichment
+#check @dgFunctorEvaluationDG
+#print axioms dgFunctorEvaluationDG
+#check @dgFunctorComposition_π_assoc
+#print axioms dgFunctorComposition_π_assoc
+end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @dgFunctorHomPost_identity
+#print axioms dgFunctorHomPost_identity
+#check @dgFunctorHomPost_composition
+#print axioms dgFunctorHomPost_composition
+#check @dgFunctorPostDG
+#print axioms dgFunctorPostDG
+#check @dgFunctorHomPre_identity
+#print axioms dgFunctorHomPre_identity
+#check @dgFunctorHomPre_composition
+#print axioms dgFunctorHomPre_composition
+#check @dgFunctorPreDG
+#print axioms dgFunctorPreDG
+end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @dgFunctorHorizontalNaturality
+#print axioms dgFunctorHorizontalNaturality
+#check @dgFunctorHorizontal
+#print axioms dgFunctorHorizontal
+#check @dgFunctorHorizontal_π
+#print axioms dgFunctorHorizontal_π
+#check @dgFunctorHorizontalOther
+#print axioms dgFunctorHorizontalOther
+#check @dgFunctorHorizontal_eq_other
+#print axioms dgFunctorHorizontal_eq_other
+#check @dgFunctorHorizontal_π_assoc
+#print axioms dgFunctorHorizontal_π_assoc
+#check @dgFunctorHorizontal_identity
+#print axioms dgFunctorHorizontal_identity
+#check @dgFunctorHorizontal_tensor_identity
+#print axioms dgFunctorHorizontal_tensor_identity
+#check @dgFunctorHomπ_forward
+#print axioms dgFunctorHomπ_forward
+#check @dgFunctorHorizontalElement
+#print axioms dgFunctorHorizontalElement
+#check @dgFunctorHorizontalElement_π
+#print axioms dgFunctorHorizontalElement_π
+#check @dgFunctorHomElement_ext
+#print axioms dgFunctorHomElement_ext
+#check @dgFunctorHomElement_naturality
+#print axioms dgFunctorHomElement_naturality
+#check @dgFunctorHorizontalElement_interchange
+#print axioms dgFunctorHorizontalElement_interchange
+#check @dgFunctorHorizontal_tensor_forward
+#print axioms dgFunctorHorizontal_tensor_forward
+#check @dgFunctorHorizontal_tensor_composition
+#print axioms dgFunctorHorizontal_tensor_composition
+#check @dgFunctorHorizontalDG
+#print axioms dgFunctorHorizontalDG
+end SerrePositivity.KST.SConstruction
