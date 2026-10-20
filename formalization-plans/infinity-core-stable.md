@@ -21,7 +21,8 @@
 - augmentation の実比較 cochain の全微分式・単位零・符号付き合成則から、同じ切断補正和の全候補の HA 方程式を証明し、実単体へ昇格した。任意の単調添字変更について、単射部分の切断点・左右次数・符号と係数を照合し、非単射部分では潰れる辺の単位と高次退化の零を証明した。全ての面・退化に自然な実 `dgModuleAugmentationNervePrism`、同じ実両端、`dgModuleAugmentationNerveHomotopy` を構成し、集約ビルド・両公理監査済み。対象だけの `DGUniverseLift` を使い、入力対象の Small 性や元の出力の射影性を仮定しない。単位辺で同じ augmentation を回収する式と、厳密切断を通じた全実出力関手から元の関手へのホモトピーを追加した。固定始域・固定終域の D(R) 値 Hom の包含から元の全 Hom の R 加群値関手への全単体上のホモトピーを構成し、反変側は実反対 ∞ 圏へも接続した。追加3モジュールも集約ビルド・両公理監査済み。
 - R の代表加群から全加群の生の nerve への写像空間関手を構成し、同じ評価複体の pinched 模型との全空間比較と実閉後合成への自然性を証明した。元の出力の射影性を仮定せず、加群の準同型による同じ pinched 後合成の全空間同値を証明した。共変・反変の augmentation を空間値の全単体的ホモトピーへ送った。同じ F1 の Yoneda 評価・始点固定 Tw の pointed 表示・全 fiber の同値、元の始点固定 Tw 輸送の同値性から実像の辺の可逆性を導く判定まで構成し、集約ビルド・両公理監査済み。
 - 全 Hom の同じ閉後合成の準同型性から元の dg nerve の実 coslice 輸送の同値性を証明し、R の代表加群からの実輸送を介して、同じ基礎空間 ∞ 関手が任意の加群準同型の実辺を反転することを証明した。同じ実 augmentation ホモトピーの頂点辺そのものを元の augmentation の実閉辺へ同定し、実分解圏上の基礎空間値全関手の比較同型と、同じ厳密切断に沿った全実出力関手の比較同型を構成した。元の出力の射影性を仮定しない。共変・dg 反対模型・実反対 ∞ 圏の固定入力 Hom への制限も全関手比較同型として証明した。追加13モジュールも集約ビルド・両公理監査済み。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionCategory`・`DGModuleFunctorResolutionNerve`・`DGModuleOutputResolutionInfinity`・`DGSemifreeDerivedHomValue`・`DGSemifreeDerivedHomMappingSpace`・`DGModuleAugmentationPrismSimplex`・`DGModuleAugmentationPrismReindex`・`DGModuleAugmentationDegenerateReindex`・`DGModuleAugmentationNervePrism`・`DGModuleAugmentationPrismComponent`・`DGModuleOutputResolutionHomotopy`・`DGSemifreeDerivedHomAugmentationInfinity`・`DGModuleUnderlyingSpaceInfinity`・`DGModuleUnitPinchedNaturality`・`DGModuleUnderlyingSpacePointed`・`DGSemifreeHomSpaceAugmentation`・`DGClosedCosliceTransport`・`DGModuleUnderlyingSpaceQuasiIso`・`DGModuleAugmentationUnderlyingIso`・`DGModuleOutputResolutionSpaceIso`・`DGSemifreeHomSpaceComparison`（すべて `Derived/`）。
+- 同じ閉射で始点を置換する実 coslice 全体の写像を構成し、全面・退化への自然性と底射影の保存を証明した。Hom(x,x) の同じ単位を dg Yoneda で拡張した実閉射から、元の coslice 全体の比較と同じ空間値 Hom を底とする pointed 表示を構成した。公開済みの半自由 Hom 関手族へ厳密に接続し、同じ実 fiber 射も構成した。全次数の比較鎖写像は同じ dg Yoneda 同型の逆そのもので、鎖同型である。追加9モジュールも集約ビルド・両公理監査済み。実 fiber 射へのこの鎖同型の反映は未証明。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`、β3 は `DGQuotientLocalization`・`ResolvedDGQuotientVerdierSequence`、β5 は `DGAlgebraDerivedInfinity`・`DGAlgebraPerfectMoritaInfinity`・`DGModuleHomSpaceInfinity`・`DGSemifreeContravariantHomInfinity`・`DGModuleFunctorResolutionCategory`・`DGModuleFunctorResolutionNerve`・`DGModuleOutputResolutionInfinity`・`DGSemifreeDerivedHomValue`・`DGSemifreeDerivedHomMappingSpace`・`DGModuleAugmentationPrismSimplex`・`DGModuleAugmentationPrismReindex`・`DGModuleAugmentationDegenerateReindex`・`DGModuleAugmentationNervePrism`・`DGModuleAugmentationPrismComponent`・`DGModuleOutputResolutionHomotopy`・`DGSemifreeDerivedHomAugmentationInfinity`・`DGModuleUnderlyingSpaceInfinity`・`DGModuleUnitPinchedNaturality`・`DGModuleUnderlyingSpacePointed`・`DGSemifreeHomSpaceAugmentation`・`DGClosedCosliceTransport`・`DGModuleUnderlyingSpaceQuasiIso`・`DGModuleAugmentationUnderlyingIso`・`DGModuleOutputResolutionSpaceIso`・`DGSemifreeHomSpaceComparison`・`DGClosedCoslicePrecomposition`・`DGHomTargetUnitComparison`・`DGHomTargetPointedDisplay`・`DGSemifreeHomTargetPointedDisplay`（すべて `Derived/`）。
 
 ### 残り（依存順、時間は推定）
 
@@ -66,18 +67,18 @@
 
 ### 未コミット
 
-- なし。今回の13モジュールは実 coslice 輸送、同じ実 augmentation 辺の同定、基礎空間値・共変反変 Hom の全関手比較同型を構成し、集約ビルド・両公理監査後に保存した。
+- なし。今回の9モジュールは実 coslice の始点前合成、同じ Hom 単位の実比較、全 Hom の比較鎖同型、同じ全関手族の pointed 表示を構成し、集約ビルド・両公理監査後に保存した。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9536 jobs）。公理監査は Derived 12729 宣言／1431 モジュール、Stable 13844／1701。許容三公理のみ。今回までの保存対象362新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9545 jobs）。公理監査は Derived 12826 宣言／1440 モジュール、Stable 13941／1710。許容三公理のみ。今回までの保存対象371新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5：同じ実 augmentation の空間値全関手比較同型を構成した。固定始域・固定終域の D(R) 値 Hom への同じ比較の制限も証明した。次は `dgModuleHomSpaceInfinity` の第一変数を P に固定した全関手と `dgSemifreeHomTargetSpaceInfinity` の比較を構成する。同じ dg 左表現可能関手と Hom(P,P) の単位から実 coslice／始点固定 Tw の族の比較を作り、全 fiber の同値を同じ Yoneda 評価で照合して F1 の分類比較へ移す。反変側も実反対 nerve を使って照合する。点ごとの空間同値だけで全関手同型を結論しない。
+- β5：最初に単独 Lean 検査済みの草稿 `/tmp/d-beta5-left-pinched-chain-v2.lean` を正式化する（左 pinched Hom = dg 反対模型の右 Hom の反転の実同型、同じ全 Hom 鎖写像の左 pinched 作用、準同型による全空間同値の3宣言。未統合・未公理監査で提供数には含めない）。次に `dgSemifreeHomTargetCoslicePointedFiber R D P Q` の同値性を、同じ `dgHomTargetUnitHomMap_eq`（全 Hom の比較鎖写像 = dg Yoneda の逆）から証明する。実比較は `dgHomTargetCosliceComparison`、全単体の式は `dgCoslicePrecomposeCoordinate` と `dgFunctorCoslicePostcomp_coordinate`。`pinchedLeftCosliceFiberIso` を介して実 fiber 射を草稿の左 pinched 鎖写像へ同定し、既存の coslice→Tw→pointed の全 fiber 同値を結ぶ。その後 `smallTransportRepresentationDiagramIso` に同じ底の二つの実表示を渡し、元の F1 Hom 関手族との全関手比較を得る。反変側も実反対 nerve で照合する。点ごとの空間同値だけで全関手同型を結論しない。
 - `DGSemifreeDerivedHomValue` の頂点等式・各 augmentation の準同型性、`DGSemifreeDerivedHomMappingSpace` の各対の全空間同値は証明済み。空間値 Hom との比較の自然性・二変数の統合・一般 tensor–Hom 随伴は未証明。全加群の生の dg nerve で augmentation が同値とは限らないので、元の出力の射影性やその可逆性を仮定しない。必要な比較は実導来化後に行う。
 - その後一般 tensor–Hom 随伴・全 coherence、一般双加群の作用と Morita 不変性、Perf の冪等完備性を閉じて β4 へ進む。β4 は提供済み F2 の実 lax pullback を読み取り専用で使う。β3 は局所化・Verdier 列とも完了しており、再実装や承認待ちは不要。
 

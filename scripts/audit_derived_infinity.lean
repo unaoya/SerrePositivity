@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTargetPointedDisplay
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetUnitComparison
+import SerrePositivity.InfinityCategories.Derived.DGPointCosliceCoordinates
+import SerrePositivity.InfinityCategories.Derived.DGClosedCosliceCoordinates
+import SerrePositivity.InfinityCategories.Derived.DGClosedCoslicePrecomposition
+import SerrePositivity.InfinityCategories.Derived.DGFunctorCoslicePostcomposition
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetUnit
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetCosliceComparison
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetPointedDisplay
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSpaceComparison
 import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingCosliceTransport
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationActualComponent
@@ -3054,6 +3063,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTargetPointedDisplay,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetUnitComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGPointCosliceCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedCosliceCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedCoslicePrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorCoslicePostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetUnit,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetCosliceComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetPointedDisplay,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSpaceComparison,
     `SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingCosliceTransport,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationActualComponent,
