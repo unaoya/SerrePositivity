@@ -855,4 +855,11 @@ public import SerrePositivity.KST.SConstruction.MonicKPrismNativeStructureCylind
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeStructureFaces
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeStructureTriangle
 public import SerrePositivity.KST.SConstruction.FourTriangleComparison
+public import SerrePositivity.KST.SConstruction.FamilyCompStructImage
+public import SerrePositivity.KST.SConstruction.FamilyCylinderEndpointAdjustment
+public import SerrePositivity.KST.SConstruction.FamilyCylinderFixedBoundary
+public import SerrePositivity.KST.SConstruction.FamilyCylinderTriangleComparison
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeComparisonAdjustment
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeComparisonCompatibility
+public import SerrePositivity.KST.SConstruction.MonicKPrismNativeComparisonImages
 /-! # ∞-S• 構成と連結 K 理論 -/
