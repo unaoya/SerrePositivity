@@ -884,3 +884,9 @@ public import SerrePositivity.EInfinity.Hammock.WordIntersectionFactors
 public import SerrePositivity.EInfinity.Hammock.ProperOverlap
 public import SerrePositivity.EInfinity.Hammock.LengthBoundary
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthBoundary
+public import SerrePositivity.EInfinity.Hammock.WordMergeCone
+public import SerrePositivity.EInfinity.Hammock.WordTopStage
+public import SerrePositivity.EInfinity.Hammock.WordTopFinal
+public import SerrePositivity.EInfinity.Hammock.TopStageColimit
+public import SerrePositivity.EInfinity.Hammock.WordImageFactorization
+public import SerrePositivity.EInfinity.BarrattEccles.HammockTopStage

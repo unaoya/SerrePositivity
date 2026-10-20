@@ -1221,6 +1221,14 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 元の標準射との可換性。境界の添字図式の余極限と像の和を無証明に同一視しない。
 `BarrattEccles.algebraHammockLengthBoundaryToStage_app`・`algebraHammockLengthBoundary_square`・
 `algebraHammockAlternatingGraphMap_mono` は任意可換環上で完成。
+`Word.merge_cone` は元の二つの基本合成を短い語で比較する厳密な可換余錐。
+`Word.TopStage`・`topStageInclusion` は前段階の全語と最大長の交互方向語の全部分圏。
+`topMergeArrow_zigzag`・`topStage_comma_connected` は元の structured arrow 圏の連結性で、
+`topStageFinal` は同じ包含の Final 性。任意の射は元の隣接等像から基本合成を経由する。
+`topStageColimitIso`・`_fac` は元の段階の余極限の回収と同じ固定語の標準射への一致。
+`Word.toImage`・`imageInclusion`・`toImage_fac` は元の列の像への全射と元の包含への分解。
+`imageWord_length_le` は短い語から最大語への任意の射を境界で扱うための長さの上限。
+`BarrattEccles.algebraHammockTopStageColimitIso`・`_fac`・`_toColimit_fac` は任意可換環上で完成。
 段階の pushout の普遍性、proper 図式の余極限の弱同値不変性、三列の包含の弱同値性、
 既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)

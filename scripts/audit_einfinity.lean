@@ -3543,6 +3543,36 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.simplex,
       `SerrePositivity.EInfinity.Hammock.BoundaryPresentation.image]
 
+@[noinline] private def e2RequiredBatch33 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.merge_cone_ordered,
+      `SerrePositivity.EInfinity.Hammock.Word.merge_cone_of_lt,
+      `SerrePositivity.EInfinity.Hammock.Word.merge_cone,
+      `SerrePositivity.EInfinity.Hammock.Word.topStageProperty,
+      `SerrePositivity.EInfinity.Hammock.Word.TopStage,
+      `SerrePositivity.EInfinity.Hammock.Word.topStageInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.not_injective_of_not_top,
+      `SerrePositivity.EInfinity.Hammock.Word.topMergeObject,
+      `SerrePositivity.EInfinity.Hammock.Word.topMergeArrow,
+      `SerrePositivity.EInfinity.Hammock.Word.topMergeArrow_zigzag,
+      `SerrePositivity.EInfinity.Hammock.Word.exists_adjacent_of_not_alternating,
+      `SerrePositivity.EInfinity.Hammock.Word.topStage_comma_connected,
+      `SerrePositivity.EInfinity.Hammock.Word.topStageFinal,
+      `SerrePositivity.EInfinity.Hammock.topStageDiagram,
+      `SerrePositivity.EInfinity.Hammock.topStageColimitIso,
+      `SerrePositivity.EInfinity.Hammock.topStageColimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.Word.imageWord,
+      `SerrePositivity.EInfinity.Hammock.Word.imageInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.imageInclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.imageInclusion_range,
+      `SerrePositivity.EInfinity.Hammock.Word.toImage,
+      `SerrePositivity.EInfinity.Hammock.Word.toImage_fac,
+      `SerrePositivity.EInfinity.Hammock.Word.toImage_surjective,
+      `SerrePositivity.EInfinity.Hammock.Word.imageWord_length_le,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTopStageDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTopStageColimitIso,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTopStageColimitIso_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTopStageColimitIso_toColimit_fac]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3571,7 +3601,7 @@ run_cmd do
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
       e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26, e2RequiredBatch27,
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
-      e2RequiredBatch32] do
+      e2RequiredBatch32, e2RequiredBatch33] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -8507,3 +8537,32 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (BarrattEccles.algebraHammockLengthBoundaryToStage A X Y n c).app k x =
       (BarrattEccles.algebraHammockLengthStageInclusion A X Y n a ha).app k σ :=
   BarrattEccles.algebraHammockLengthBoundaryToStage_app A X Y n c k x ha f hf σ hσ
+
+-- 前段階と交互方向の最大語だけの元の包含は Final。大域 instance は不要。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (n : ℕ) : (Word.topStageInclusion n).Final := Word.topStageFinal n
+
+-- 元の包含による同型は、同じ固定語の段階の標準射を回収する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example (F : Word ⥤ SSet.{e2ComplexLimitUniverse}) (n : ℕ) (a : Word.TopStage n) :
+    colimit.ι (topStageDiagram F n) a ≫ (topStageColimitIso F n).hom =
+      lengthStageInclusion F n a.obj.obj a.obj.property := topStageColimitIso_fac F n a
+
+-- 元の列の像への分解は全射・単射を持ち、元の射と長さの上限を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b : Word} (f : a ⟶ b) :
+    Function.Surjective (Word.toImage f).orderHom ∧
+      Function.Injective (Word.imageInclusion f).orderHom ∧
+      Word.toImage f ≫ Word.imageInclusion f = f ∧ (Word.imageWord f).length ≤ a.length :=
+  ⟨Word.toImage_surjective f, Word.imageInclusion_injective f,
+    Word.toImage_fac f, Word.imageWord_length_le f⟩
+
+-- 任意の可換環上の同じ元の段階の図式から、元の全語の標準射を回収する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (n : ℕ) (a : Hammock.Word.TopStage n) :
+    (colimit.ι (BarrattEccles.algebraHammockTopStageDiagram A X Y n) a ≫
+        (BarrattEccles.algebraHammockTopStageColimitIso A X Y n).hom) ≫
+          BarrattEccles.algebraHammockLengthStageToColimit A X Y n =
+      BarrattEccles.algebraHammockGraphInclusion A a.obj.obj X Y :=
+  BarrattEccles.algebraHammockTopStageColimitIso_toColimit_fac A X Y n a
