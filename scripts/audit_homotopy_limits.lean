@@ -10159,3 +10159,45 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @FixedSimplicialPushoutProduct.trivial
 #print axioms FixedSimplicialPushoutProduct.trivial
+
+#check @coherentEdgeObjectHom
+#print axioms coherentEdgeObjectHom
+
+#check @coherentThinHoFunctor
+#print axioms coherentThinHoFunctor
+
+#check @coherentThinNerveMap
+#print axioms coherentThinNerveMap
+
+#check @coherentThinNerveMap_truncation
+#print axioms coherentThinNerveMap_truncation
+
+#check @coherentThinNerveMap_vertex
+#print axioms coherentThinNerveMap_vertex
+
+#check @quillenCfCollageLevelFunctor
+#print axioms quillenCfCollageLevelFunctor
+
+#check @quillenCfCollageNerveLevel
+#print axioms quillenCfCollageNerveLevel
+
+#check @quillenCfCollageProjection
+#print axioms quillenCfCollageProjection
+
+#check @quillenCfCollageProjection_vertex
+#print axioms quillenCfCollageProjection_vertex
+
+#check @quillenCfCollageBottom_level
+#print axioms quillenCfCollageBottom_level
+
+#check @quillenCfCollageTop_level
+#print axioms quillenCfCollageTop_level
+
+#check @quillenCfCollageProjection_innerFibration
+#print axioms quillenCfCollageProjection_innerFibration
+
+#check @quillenCfCollageBottom_projection
+#print axioms quillenCfCollageBottom_projection
+
+#check @quillenCfCollageTop_projection
+#print axioms quillenCfCollageTop_projection
