@@ -697,3 +697,9 @@ public import SerrePositivity.EInfinity.FrameHom.ArrowSpanComma
 public import SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck
 public import SerrePositivity.EInfinity.FrameHom.CommaGrothendieck
 public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowDiagram
+public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionFixedRightComparison
+public import SerrePositivity.EInfinity.FrameHom.CofinalAnodyneImage
+public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowCofinality
+public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowPreDiagram
+public import SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison
+public import SerrePositivity.EInfinity.FrameHom.RightFibrationCofinalPullback

@@ -2207,6 +2207,32 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison_isLeftCofinal,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallRightSpanForget,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightDiagramComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightDiagramComparison_isLeftCofinal,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightDiagramComparison_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightGrothendieckComparison,
+      `SerrePositivity.EInfinity.FrameHom.leftAnodyne_anodyne,
+      `SerrePositivity.EInfinity.FrameHom.leftCofinal_image_isIso,
+      `SerrePositivity.EInfinity.FrameHom.leftCofinal_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.costructuredArrowProjection_rightFibration,
+      `SerrePositivity.EInfinity.FrameHom.costructuredArrowPre_isPullback,
+      `SerrePositivity.EInfinity.FrameHom.costructuredArrowPre_isLeftCofinal,
+      `SerrePositivity.EInfinity.FrameHom.costructuredArrowDiagramPre,
+      `SerrePositivity.EInfinity.FrameHom.costructuredArrowDiagramPre_isLeftCofinal,
+      `SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison,
+      `SerrePositivity.EInfinity.FrameHom.smallResolutionLeftForget,
+      `SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor_leftForget,
+      `SerrePositivity.EInfinity.FrameHom.resolutionFixedRightComparison,
+      `SerrePositivity.EInfinity.FrameHom.resolutionFixedRightComparison_isLeftCofinal,
+      `SerrePositivity.EInfinity.FrameHom.resolutionFixedRightComparison_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.resolutionFixedRightComparison_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.rightFibration_pullback_isLeftCofinal,
+      `SerrePositivity.EInfinity.FrameHom.rightFibration_isPullback_isLeftCofinal,
       `SerrePositivity.EInfinity.BarrattEccles.algebraRightSpanBase,
       `SerrePositivity.EInfinity.BarrattEccles.algebraSpanRightDiagram,
       `SerrePositivity.EInfinity.BarrattEccles.algebraSpanFromGrothendieck,
@@ -6406,3 +6432,28 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (algebraSpanFromGrothendieckNerveMap A X Y)) :=
   algebraSpanFromGrothendieckNerveMap_localized_isIso A X Y
+
+-- 同じ分解の比較は全固定右対象で余終であり、元の代数に cofibrancy を要求しない。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
+  SerrePositivity.InfinityCategories in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X V : (BarrattEccles.operad A).Algebra) :
+    IsLeftCofinal (nerveMap (mappingResolutionFixedRightComparison A X V)) :=
+  mappingResolutionFixedRightComparison_isLeftCofinal A X V
+
+-- 同じ成分の可逆性は弱同値という別のクラスを仮定せず、元の anodyne 局所化で読む。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X V : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (nerveMap (mappingResolutionFixedRightComparison A X V))) :=
+  mappingResolutionFixedRightComparison_localized_isIso A X V
+
+-- 全右脚に自然な元の図式の全成分で、同じ比較射が反転される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra)
+    (t : AsSmall.{e2ComplexLimitUniverse + 1} (algebraRightSpanBase A Y)) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (nerveMap ((mappingFixedRightDiagramComparison A X Y).app t).toFunctor)) :=
+  mappingFixedRightDiagramComparison_localized_isIso A X Y t
