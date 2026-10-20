@@ -536,3 +536,5 @@ public import SerrePositivity.EInfinity.HomotopyWeight.ConeReindexPoints
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitConeNormalization
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerivedHomNormalization
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitAdjunctionNormalization
+public import SerrePositivity.EInfinity.FrameHom.AdjointRightDerived
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerived

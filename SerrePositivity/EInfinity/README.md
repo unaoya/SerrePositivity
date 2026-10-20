@@ -770,8 +770,12 @@ augmentation は元の代数の射にも自然。Reedy 自明 fibration であ�
 `framedLimitDerivedHomEquiv_cone` は元の錐の射の局所化像を、
 同じ `coneToFramedLimit` の局所化像へ送る全体の正規化。
 `framedLimitAdjunction_homEquiv_cone` は局所化随伴でも同じ比較射を回収する。
-`limitComparisonNatTrans` を持つ右導来関手の普遍性を閉じる作業が残る。
-計算関手の右導来極限の普遍性は未完成。
+`FrameHom.AdjointRightDerived` は前合成随伴と局所化の完全忠実性から、
+任意の候補関手への自然変換の同値と左 Kan 拡張の普遍性を構成する。
+`framedLimitDerivedComparison` は元の `limitComparisonNatTrans` を局所化して作る比較。
+`localizedFramedLimit_isRightDerivedFunctor` は同じ比較を持つ一般小図式の右導来極限性。
+`limitFunctor_hasRightDerivedFunctor` は存在、`framedLimitDerivedIso` は任意の右導来関手の値との同型。
+忘却後の一般極限について、同じ底の計算と底の右導来極限を比較する作業が残る。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
 `mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。

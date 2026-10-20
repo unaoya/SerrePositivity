@@ -1932,6 +1932,18 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConePiZeroEquiv_coneClass,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedHomEquiv_cone,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv_cone,
+      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.transformationEquiv,
+      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.transformationEquiv_app,
+      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.comparison,
+      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.transformationEquiv_eq,
+      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.isLeftKanExtension,
+      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.comparison_app,
+      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.isRightDerivedFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedComparison_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.localizedFramedLimit_isRightDerivedFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.limitFunctor_hasRightDerivedFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5249,3 +5261,47 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
     framedLimitDerivedHomEquiv ℤ ℕ (limit F) F (QD.map (limit.cone F).π) =
       Q.map (limitComparison ℤ ℕ F) := by
   exact framedLimitDerivedHomEquiv_cone ℤ ℕ F (limit.cone F)
+
+-- 右導来普遍性は任意の候補関手への自然変換の一意な因子化を与える。
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example :
+    let := BarrattEccles.modelCategory ℤ
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    let W := weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    ∀ (T : W.Localization ⥤ (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Localization)
+      (β : lim ⋙ Q ⟶ W.Q ⋙ T),
+      ∃! γ : localizedFramedLimit ℤ ℕ ⟶ T,
+        framedLimitDerivedComparison ℤ ℕ ≫ Functor.whiskerLeft W.Q γ = β := by
+  let := BarrattEccles.modelCategory ℤ
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  have := localizedFramedLimit_isRightDerivedFunctor ℤ ℕ
+  dsimp only
+  intro T β
+  let W := weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+  let RF := localizedFramedLimit ℤ ℕ
+  let α := framedLimitDerivedComparison ℤ ℕ
+  refine ⟨RF.rightDerivedDesc α W T β, RF.rightDerived_fac α W T β, ?_⟩
+  intro γ hγ
+  apply RF.rightDerived_ext α W T
+  exact hγ.trans (RF.rightDerived_fac α W T β).symm
+
+-- 実際の重み付き end は選択済みの通常右導来関手の値にも同型になる。
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
+    let := BarrattEccles.modelCategory ℤ
+    let := Diagram.projectiveModelCategory ℤ ℕ
+    let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+    let W := weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    let := limitFunctor_hasRightDerivedFunctor ℤ ℕ
+    Q.obj ((framedLimitFunctor ℤ ℕ).obj F) ≅
+      ((lim ⋙ Q).totalRightDerived W.Q W).obj (W.Q.obj F) := by
+  let := BarrattEccles.modelCategory ℤ
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  have := limitFunctor_hasRightDerivedFunctor ℤ ℕ
+  let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
+  let W := weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+  exact framedLimitDerivedIso ℤ ℕ F ((lim ⋙ Q).totalRightDerived W.Q W)
+    ((lim ⋙ Q).totalRightDerivedUnit W.Q W) inferInstance
