@@ -1584,6 +1584,36 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.homologyAlgebra,
       `SerrePositivity.EInfinity.BarrattEccles.homologyAlgebra_algebraMap,
       `SerrePositivity.EInfinity.BarrattEccles.homologyCommAlgebra,
+      `SerrePositivity.EInfinity.Operad.AlgebraDiagram.free,
+      `SerrePositivity.EInfinity.Operad.AlgebraDiagram.evaluation,
+      `SerrePositivity.EInfinity.Operad.AlgebraDiagram.adjunction,
+      `SerrePositivity.EInfinity.Operad.AlgebraDiagram.generators,
+      `SerrePositivity.EInfinity.Operad.AlgebraDiagram.freeFamily_smallObjectArgument,
+      `SerrePositivity.EInfinity.Operad.AlgebraDiagram.generatingCofibrations_smallObjectArgument,
+      `SerrePositivity.EInfinity.Operad.AlgebraDiagram.generatingTrivialCofibrations_smallObjectArgument,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.generatingCofibrations,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.generatingTrivialCofibrations,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.generatingTrivialCofibrations_component,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.freeCells_acyclic,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.projectiveModelCategory,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.weakEquivalence_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.fibration_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.cofibrantlyGenerated,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.isFibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.forget,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.objectwiseQuasiIsos,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.projectiveModelCategory_weakEquivalences,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.forget_inverts,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.localizedForget,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.localizedForgetComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.localizedForget_isRightDerivedFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.Diagram.forget_hasPointwiseRightDerivedFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.productFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.productFunctor_isRightQuillen,
+      `SerrePositivity.EInfinity.BarrattEccles.product_map_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.productFunctor_hasPointwiseRightDerivedFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.productDerivedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.productCarrierIso,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4358,3 +4388,35 @@ example (A : Type) [CommRing A] (X : (BarrattEccles.operad A).Algebra)
   let := homologyAlgebra X
   change (a • (1 : X.carrier.homology 0)) * x = a • x
   rw [smul_mul_assoc, one_mul]
+
+
+-- 無限積の比較は元の射影を保つ。
+open CategoryTheory.Limits SerrePositivity.EInfinity.BarrattEccles in
+example (X : ℕ → (BarrattEccles.operad ℤ).Algebra) (n : ℕ) :
+    (productCarrierIso ℤ ℕ X).hom ≫ Pi.π (fun i => (X i).carrier) n =
+      (Pi.π X n).hom := by
+  exact piComparison_comp_π (Operad.Algebra.forget (BarrattEccles.operad ℤ)) X n
+
+-- 可算個の擬同型の積も元の複体で擬同型であり、モデル構造の入力は要らない。
+open SerrePositivity.EInfinity.BarrattEccles in
+example {F G : Discrete ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
+    (hf : ∀ k, QuasiIso (f.app k).hom) :
+    QuasiIso (((productFunctor ℤ ℕ).map f).hom) := by
+  exact (BarrattEccles.weakEquivalence_iff ℤ _).mp
+    (product_map_weakEquivalence ℤ ℕ f hf)
+
+-- 非離散な塔の元の射についても、具体的な局所化との比較は自然。
+open SerrePositivity.EInfinity.BarrattEccles in
+example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G) :
+    let W := Diagram.objectwiseQuasiIsos ℤ ℕ
+    let U := Diagram.forget ℤ ℕ
+    let Q := W.Q
+    let L := (W.inverseImage U).Q
+    Q.map (U.map f) ≫ (Diagram.localizedForgetComparison ℤ ℕ Q L).hom.app G =
+      (Diagram.localizedForgetComparison ℤ ℕ Q L).hom.app F ≫
+        (Diagram.localizedForget ℤ ℕ Q L).map (L.map f) := by
+  let W := Diagram.objectwiseQuasiIsos ℤ ℕ
+  let U := Diagram.forget ℤ ℕ
+  let Q := W.Q
+  let L := (W.inverseImage U).Q
+  exact (Diagram.localizedForgetComparison ℤ ℕ Q L).hom.naturality f

@@ -431,3 +431,8 @@ public import SerrePositivity.EInfinity.HomologyZero.TernaryInput
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyAssociativity
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyRing
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyAlgebra
+public import SerrePositivity.EInfinity.Operad.AlgebraDiagramSmallness
+public import SerrePositivity.EInfinity.BarrattEccles.DiagramAcyclicity
+public import SerrePositivity.EInfinity.BarrattEccles.DiagramModel
+public import SerrePositivity.EInfinity.BarrattEccles.DiagramForget
+public import SerrePositivity.EInfinity.BarrattEccles.Products

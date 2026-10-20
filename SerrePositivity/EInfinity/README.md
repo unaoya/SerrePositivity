@@ -678,7 +678,13 @@ nullary を含む TR の部分合成保存は完了。
 `homologyProduct_assoc`・`homologyProduct_one_left/right`・`homologyProduct_comm` は実際の H⁰ の環公理。
 `homologyCommRing` は元の加法を保つ可換環、`homologyAlgebra` は元の A 加群作用と両立する代数構造。
 `homologyCommAlgebra` は実際の H⁰ を可換 A 代数として束ねる。環・代数構造は局所的に選ぶ。
-一般図式の homotopy 極限とその忘却後の比較は未完成。
+`Operad.AlgebraDiagram` は任意の小圏の各頂点の自由図式と評価の随伴、生成射の小対象性を与える。
+`BarrattEccles.Diagram.projectiveModelCategory` は自由生成セルの非循環性から完全な図式モデルを作る。
+図式の弱同値は各頂点の擬同型、fibration は各頂点・全整数次数の全射。すべての図式が fibrant。
+`Diagram.localizedForget` は同じ複体図式の局所化への右導来忘却で、元の忘却との自然同型を持つ。
+`productFunctor_isRightQuillen` と `productDerivedIso` は空積を含む小積が右導来積を計算すること。
+`product_map_weakEquivalence` は任意の小積のホモトピー不変性、`productCarrierIso` は底の積との同型。
+非離散図式の一般 homotopy 極限の構成とその忘却後の導来比較は未完成。
 E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：
