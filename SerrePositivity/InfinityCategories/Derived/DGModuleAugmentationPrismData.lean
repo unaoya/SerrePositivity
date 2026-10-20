@@ -66,44 +66,47 @@ def dgModuleAugmentationPrismMixedHom (β : Fin (n + 1) →o Fin 2)
     ∑ j : I, if h : a < j.val ∧ j.val < b ∧ β j.val = 1 then
       dgModuleAugmentationPrismCut R C E F s I a b k hI ha hb hk j.val j.property h.1 h.2.1
       else 0
+/-- 二つの相を明示した、同じ実 prism の斉次係数。 -/
+def dgModuleAugmentationPrismPhaseHom (β : Fin (n + 1) →o Fin 2)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (p q : Fin 2) (hpq : p ≤ q) :
+    GradedHom R
+      (StrictNatTrans.phaseObj (dgModuleAugmentationSource R C E F)
+        (dgModuleAugmentationTarget R C E F) p (s.obj a))
+      (StrictNatTrans.phaseObj (dgModuleAugmentationSource R C E F)
+        (dgModuleAugmentationTarget R C E F) q (s.obj b)) k := by
+  rcases p with ⟨p, hpb⟩
+  rcases q with ⟨q, hqb⟩
+  cases p with
+  | zero =>
+    cases q with
+    | zero =>
+      exact ((dgModuleAugmentationSource R C E F).map (s.obj a) (s.obj b)).f k
+        (s.hom I a b k hI ha hb hk)
+    | succ q =>
+      have hq0 : q = 0 := by omega
+      subst q
+      exact dgModuleAugmentationPrismMixedHom R C E F s β I a b k hI ha hb hk
+  | succ p =>
+    have hp0 : p = 0 := by omega
+    subst p
+    cases q with
+    | zero =>
+      change (1 : ℕ) ≤ 0 at hpq
+      exact False.elim (by omega)
+    | succ q =>
+      have hq0 : q = 0 := by omega
+      subst q
+      exact ((dgModuleAugmentationTarget R C E F).map (s.obj a) (s.obj b)).f k
+        (s.hom I a b k hI ha hb hk)
 /-- 全実 prism の対象と斉次係数。全方程式を課す前の実データ。 -/
 def dgModuleAugmentationPrismData (β : Fin (n + 1) →o Fin 2) :
     SimplexData R (RightModule R E) n where
   obj i := StrictNatTrans.phaseObj (dgModuleAugmentationSource R C E F)
     (dgModuleAugmentationTarget R C E F) (β i) (s.obj i)
-  hom I a b k hI ha hb hk := by
-    change GradedHom R
-      (StrictNatTrans.phaseObj (dgModuleAugmentationSource R C E F)
-        (dgModuleAugmentationTarget R C E F) (β a) (s.obj a))
-      (StrictNatTrans.phaseObj (dgModuleAugmentationSource R C E F)
-        (dgModuleAugmentationTarget R C E F) (β b) (s.obj b)) k
-    generalize hp : β a = p
-    generalize hq : β b = q
-    rcases p with ⟨p, hpb⟩
-    rcases q with ⟨q, hqb⟩
-    cases p with
-    | zero =>
-      cases q with
-      | zero =>
-        exact ((dgModuleAugmentationSource R C E F).map (s.obj a) (s.obj b)).f k
-          (s.hom I a b k hI ha hb hk)
-      | succ q =>
-        have hq0 : q = 0 := by omega
-        subst q
-        exact dgModuleAugmentationPrismMixedHom R C E F s β I a b k hI ha hb hk
-    | succ p =>
-      have hp0 : p = 0 := by omega
-      subst p
-      cases q with
-      | zero =>
-        have he := β.monotone (show a ≤ b from by
-          rw [ha, hb]; exact (I.isLeast_min' _).2 (I.max'_mem _))
-        rw [hp, hq] at he
-        change (1 : ℕ) ≤ 0 at he
-        exact False.elim (by omega)
-      | succ q =>
-        have hq0 : q = 0 := by omega
-        subst q
-        exact ((dgModuleAugmentationTarget R C E F).map (s.obj a) (s.obj b)).f k
-          (s.hom I a b k hI ha hb hk)
+  hom I a b k hI ha hb hk :=
+    dgModuleAugmentationPrismPhaseHom R C E F s β I a b k hI ha hb hk (β a) (β b)
+      (β.monotone (show a ≤ b from by
+        rw [ha, hb]; exact (I.isLeast_min' _).2 (I.max'_mem _)))
 end SerrePositivity.InfinityCategories

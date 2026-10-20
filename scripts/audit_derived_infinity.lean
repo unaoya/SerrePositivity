@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCorrection
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSuffixCorrection
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCorrectionIdentity
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismPhaseCoefficients
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBaseComparisonCut
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBaseBoundary
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNestedHomotopyCut
@@ -3007,6 +3013,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCorrection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSuffixCorrection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCorrectionIdentity,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismPhaseCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBaseComparisonCut,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBaseBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNestedHomotopyCut,
