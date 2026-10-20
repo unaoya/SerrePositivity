@@ -16,11 +16,9 @@
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
   weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
-- c1 の実際の空間値 unstraightening の写像空間比較は、区間・pinched・宇宙縮小後とも同値。
 - **F1-1c2 の空間値版は完了**：一般の小さい quasicategory B 上の構成済みの同じ S は
   `leftStraighteningInfinityMap_isFullyFaithful` により充満忠実。既存の本質的全射性と F0 を合わせ、
   `leftStraighteningInfinityMap_isQCatEquivalence` で分類同値を閉じた。単位・余単位と三角恒等式は任意。
-- 初頂点引き戻しの実際の全相対 Hom 作用を、c1 の自然性・底上の比較・宇宙同型で同値とした。
 - **F1-2 は完了**：前層 ∞ 圏、制限・評価・定値前層、Yoneda の構成・充満忠実性を証明済み。
   元の全相対 Hom を Hom とする `RightFibrationInfinity B` と `PresheafInfinity B` の実際の分類同値
   `rightStraighteningInfinityEquivalence` を、小さい quasicategory B 上で構成した。逆の ∞ 関手も同値で、
@@ -76,28 +74,30 @@
 - N が読む指定2ファイルと集約は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd` に保存済み。
 - 一般の小さい quasicategory 上の空間値分類同値は `e987f35af` に保存済み。
 - 前層の分類は `56dd08ad4`、essentially small Kan fiber の相対延長は `bf56a0416` に保存済み。
-- cocartesian fibration の ∞ 圏と通常 nerve 上の Cat∞ 値図式は `733a24a2b` に保存済み。
-- coherent 分類写像は `87acb9df5`、inner fibration 性は `24a9eb957`、水平辺は `6ed7eecf5`。
+- cocartesian ∞ 圏は `733a24a2b`、coherent 分類写像は `87acb9df5` に保存済み。
 - quasicategory 値 weighted nerve の cocartesian fibration 性と scaffold 比較は `9d911c9c1`。
 - cocartesian section への自然な比較と全成分の同値性は `3a02c7fb8`。
 - coherent な実現と strict 図式の同じ分類写像の像との頂点同型は `8efb9919a`。
-- Cat∞ 値単体の局所 strict 化と有限 nerve 上の本質的全射性を証明（4544 jobs・監査10329宣言）。
+- 局所 strict 化と有限 nerve 上の本質的全射性は `e8f0b2913`。
+- 比較三角形と全辺保存の判定、weighted nerve の cocartesian Hom への全相対作用を証明。
+  F1 全体4548 jobs・監査10343宣言が成功（標準3公理のみ）。
 
 ### 既知の問題
 
 - λ は局所化であり、圏同値として消去しない。実際の初頂点引き戻しの Hom 作用を証明した。
 - Yoneda の充満忠実性は元の Hom 作用そのものの同値性で証明した。独立な c1 の同値だけでは
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
-- strict Kan 図式の strict な Hom が一般に Kan とは主張しない。Cat∞ 値の分類と、
-  essentially small な非 Kan の ∞ 圏的 fiber への相対延長は未証明。
+- strict Kan 図式の Hom の Kan 性や strict QCat 図式の Hom の quasicategory 性は仮定しない。
+  Cat∞ 値の分類と、essentially small な非 Kan fiber の相対延長は未証明。
 
 ### 次の一手
 
 Cat∞ 値版では通常 nerve 上の全 fibration の分類写像に加え、strict 図式の unstraightening を構成済み。
 `weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
 比較は元の自然変換の prism を使い、各対象で成分の coherent 辺に一致する。
-局所 strict 化から有限順序 nerve 上の本質的全射性まで完了。
-次は cocartesian 相対関手の写像空間比較と境界固定延長を調べ、一般の底へ貼り合わせる。
+有限 nerve 上の本質的全射性に加え、元の全パラメーターの作用を cocartesian Hom へ制限済み。
+同じ射の単位・合成も証明済み。次は元の cocartesian 相対 Hom の全作用を strict transport
+図式間の変換空間へ束ね、scaffold 比較で同値性を証明する。任意の strict Hom の同値性は主張しない。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。

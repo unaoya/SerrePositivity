@@ -1530,3 +1530,11 @@ public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianCohe
 public import SerrePositivity.InfinityCategories.F1.LocalQCatDiagramStrictification
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianFiniteEssentialSurjectivity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianComparisonTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLiftPreservation
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianFunctor
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianMapping
