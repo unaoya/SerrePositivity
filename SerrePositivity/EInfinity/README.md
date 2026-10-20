@@ -52,6 +52,10 @@ cofibrant な始域の結論を述べている。これらから任意の始域�
    着手前にファイル数と主要補題の見積もりを計画に一段落で記す。
 4. **転送の完成**：構成した区間を工程 2 の界面に代入して E2a-3 を完成し、E2a-4 へ進む。
 
+四工程は完了。`IntervalCuts.coalgebraInterval` は実際の正規化区間を用い、
+`BarrattEccles.modelCategory` は任意の可換環上の完全な転送モデル構造を与える。
+モデル構造は局所的に選び、`BarrattEccles.forget_isRightQuillen` も追加仮定なしに使える。
+
 この経路は Berger–Moerdijk 命題 4.1・§4.6.3、Berger–Fresse §3.1 に基づく。
 始域の cofibrancy は追加せず、任意の可換環上の完全なモデル構造を構成する。
 Hinich 4.1.1 はこの工程の原典に用いない。正標数では E は Σ-split でないためである。
@@ -639,8 +643,15 @@ nullary を含む TR の部分合成保存は完了。
 `interval_hom_ext` は全整数複体射の三生成元外延性。
 `interval_relative_lift` は全射な擬同型に沿い両端点を固定して区間射を持ち上げる。
 `boundary_cofibration` は実際の二端点包含が生成類に対する左持ち上げ性を持つこと。
-端点・収縮の余代数射性と抽象転送への代入が残る。
-その後の E2a-4・5、E2b・G1′ も未完成。
+`Surjection.zeroAugmentation` は零次の全語基底を一へ送り、TR と BE augmentation の零次を比較する。
+`zeroTensor` と正次数の頂点値零性から、端点・収縮の全 arity の余作用保存を証明。
+`endpoint_coaction`・`contraction_coaction` は実際の全整数複体射の等式。
+`coalgebraInterval` は元の両頂点・AW 収縮・境界 cofibration を含む具体区間。
+`BarrattEccles.modelCategory` は AW Hopf 構造とこの区間を完全な抽象転送へ代入する。
+弱同値は底の擬同型、fibration は全次数全射で、自由像の生成類で生成される。
+`BarrattEccles.forget_isRightQuillen` により E2a-4 の右 Quillen 性も完了。
+次は全 E 代数の fibrancy、底での homotopy 引き戻し、H⁰ の可換環構造と離散可換代数。
+E2a-4 の残り・E2a-5、E2b・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

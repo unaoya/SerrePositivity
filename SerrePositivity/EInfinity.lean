@@ -381,3 +381,14 @@ public import SerrePositivity.EInfinity.IntervalCuts.MapComponents
 public import SerrePositivity.EInfinity.IntervalCuts.Maps
 public import SerrePositivity.EInfinity.IntervalCuts.RelativeLifting
 public import SerrePositivity.EInfinity.IntervalCuts.BoundaryCofibration
+public import SerrePositivity.EInfinity.Surjection.ZeroAugmentation
+public import SerrePositivity.EInfinity.TableReduction.ZeroAugmentation
+public import SerrePositivity.EInfinity.IntervalCuts.ZeroTensorPowers
+public import SerrePositivity.EInfinity.IntervalCuts.ZeroVertexValues
+public import SerrePositivity.EInfinity.IntervalCuts.UnitCoactionValues
+public import SerrePositivity.EInfinity.IntervalCuts.BarrattEcclesVertex
+public import SerrePositivity.EInfinity.IntervalCuts.ContractionCoaction
+public import SerrePositivity.EInfinity.IntervalCuts.PositiveVertexValues
+public import SerrePositivity.EInfinity.IntervalCuts.EndpointCoaction
+public import SerrePositivity.EInfinity.IntervalCuts.CoalgebraInterval
+public import SerrePositivity.EInfinity.BarrattEccles.ModelCategory

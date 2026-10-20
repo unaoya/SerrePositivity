@@ -1426,6 +1426,41 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.boundary,
       `SerrePositivity.EInfinity.IntervalCuts.boundary_contraction,
       `SerrePositivity.EInfinity.IntervalCuts.boundary_cofibration,
+      `SerrePositivity.EInfinity.Surjection.zeroAugmentation,
+      `SerrePositivity.EInfinity.Surjection.zeroAugmentation_generator,
+      `SerrePositivity.EInfinity.Surjection.zeroAugmentation_empty,
+      `SerrePositivity.EInfinity.TableReduction.zeroAugmentation_normalizedMap_generator,
+      `SerrePositivity.EInfinity.TableReduction.zeroAugmentation_normalizedMap,
+      `SerrePositivity.EInfinity.TableReduction.zeroAugmentation_cochainMap_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.zeroTensor,
+      `SerrePositivity.EInfinity.IntervalCuts.map_zeroTensor,
+      `SerrePositivity.EInfinity.IntervalCuts.zeroTensor_unit,
+      `SerrePositivity.EInfinity.IntervalCuts.zeroTensor_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_zero_coefficient,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_zero_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_power_unit,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction_power_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.unitPower_isZero_of_ne_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.unit_zero_eq_smul,
+      `SerrePositivity.EInfinity.IntervalCuts.unitPower_expand_zero,
+      `SerrePositivity.EInfinity.IntervalCuts.unit_leftUnitor_right_one,
+      `SerrePositivity.EInfinity.IntervalCuts.unitCoaction_zero_one,
+      `SerrePositivity.EInfinity.IntervalCuts.barrattEcclesCoaction_zero_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction_coaction_zero_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.contraction_coaction,
+      `SerrePositivity.EInfinity.IntervalCuts.cochainAction_positive_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.barrattEcclesCoaction_positive_vertex,
+      `SerrePositivity.EInfinity.IntervalCuts.unit_zero_linear_ext,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_coaction_zero_one,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_coaction_positive_one,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_coaction_positive_one_at,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_coaction,
+      `SerrePositivity.EInfinity.IntervalCuts.coalgebraInterval,
+      `SerrePositivity.EInfinity.BarrattEccles.modelCategory,
+      `SerrePositivity.EInfinity.BarrattEccles.modelCategory_weakEquivalences,
+      `SerrePositivity.EInfinity.BarrattEccles.modelCategory_fibrations,
+      `SerrePositivity.EInfinity.BarrattEccles.modelCategory_cofibrantlyGenerated,
+      `SerrePositivity.EInfinity.BarrattEccles.forget_isRightQuillen,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.two,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut,
       `SerrePositivity.EInfinity.Surjection.OverlapPartition.twoCut_two,
@@ -4072,3 +4107,26 @@ example : reverseInterval ≫ reverseInterval = 𝟙 (interval ℤ) := by
 example : (SerrePositivity.EInfinity.projectiveGeneratingCofibrations ℤ).rlp.llp
     (CategoryTheory.Limits.biprod.desc (endpoint ℤ false) (endpoint ℤ true)) :=
   boundary_cofibration ℤ
+
+-- 具体区間とモデル構造は任意の可換環上で追加仮定なしに利用できる。
+example (A : Type) [CommRing A] :
+    (coalgebraInterval A).coalgebra.carrier = interval A := rfl
+example (A : Type) [CommRing A] :
+    HomotopicalAlgebra.ModelCategory
+      (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra :=
+  SerrePositivity.EInfinity.BarrattEccles.modelCategory A
+example (A : Type) [CommRing A] :
+    let := SerrePositivity.EInfinity.projectiveModelCategory A
+    let := SerrePositivity.EInfinity.BarrattEccles.modelCategory A
+    SerrePositivity.Quillen.IsRightQuillen
+      (SerrePositivity.EInfinity.Operad.Algebra.forget
+        (SerrePositivity.EInfinity.BarrattEccles.operad A)) :=
+  SerrePositivity.EInfinity.BarrattEccles.forget_isRightQuillen A
+
+-- nullary も含む零次係数の和を、TR 制限と実際の端点の余作用に使える。
+example : SerrePositivity.EInfinity.Surjection.zeroAugmentation ℤ 0
+    ((3 : ℤ) • listGenerator ℤ (n := 0) (d := 0) [] -
+      (2 : ℤ) • listGenerator ℤ (n := 0) (d := 0) []) = 1 := by
+  rw [map_sub, map_zsmul, map_zsmul,
+    SerrePositivity.EInfinity.Surjection.zeroAugmentation_empty]
+  decide
