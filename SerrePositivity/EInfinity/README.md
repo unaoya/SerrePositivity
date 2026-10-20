@@ -715,6 +715,12 @@ nullary を含む TR の部分合成保存は完了。
 零単体の計算と係数 frame の射に関する自然性も証明済み。
 `realization_map_frame_weakEquivalence` はこの比較で係数の弱同値を検出する。
 `framedLimitFunctor_map_quasiIso` は具体的な計算関手の頂点ごとの擬同型保存。
+`constantDiagramReplacement` は同じ始域 frame と射影一点重みから作る、定値図式の関手的な置換。
+`constantDiagramComparison` は元の代数の射に自然で、各値で擬同型。
+置換は実際の射影図式モデルで cofibrant、元の代数には cofibrancy を仮定しない。
+`constantDiagramHomEquiv` は置換からの図式射と始域 frame の重み付き錐の同値。
+`constantDiagramLocalizedIso` は定値図式との局所化後の自然同型を与える。
+始域 frame の錐と右 frame の錐の導来的な比較は未構成。
 計算関手の右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。

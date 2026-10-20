@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Realization
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
+public import SerrePositivity.HomotopicalAlgebra.Quillen.Saturation
 
 /-!
 # Frame の実現の単射・anodyne 射に沿う持ち上げ
@@ -63,5 +65,21 @@ lemma map_anodyne
   have h : Fibration ((cosimplicialHom B).map p) :=
     cosimplicialHom_fibration B hB hconst p
   exact hi _ ((SSet.modelCategoryQuillen.fibration_iff _).mp h)
+
+/-- 概要：frame の実現は境界の右類を弱同値へ移す（Hovey §5.4）。
+方針：すべての単射の右持ち上げ性から収縮を取り、モデルの局所化で検出する。
+規約：単体集合のモデル構造や元の単体集合の Kan 性は不要。
+使われ方：射影重みの各値の一点比較を実現して定値図式を置換する。 -/
+lemma map_boundary_rlp_weakEquivalence
+    (hconst : ∀ {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences C (B.map f))
+    {K L : SSet.{v}} (p : K ⟶ L) (hp : SSet.modelCategoryQuillen.I.rlp p) :
+    weakEquivalences C ((Realization.functor B).map p) := by
+  let Q := (weakEquivalences C).Q
+  have hQ : SSet.anodyneExtensions.IsInvertedBy (Realization.functor B ⋙ Q) := by
+    intro X Y i hi
+    exact Localization.inverts Q (weakEquivalences C) _ (map_anodyne B hB hconst i hi).2
+  have hi := SimplicialModel.MonoRightLiftingContraction.image_isIso p
+    (SSet.rlp_monomorphisms.ge _ hp) (Realization.functor B ⋙ Q) hQ
+  exact (SerrePositivity.Quillen.weakEquivalences_iff_isIso_map Q _).mpr hi
 
 end SerrePositivity.EInfinity.FrameRealizationLifting

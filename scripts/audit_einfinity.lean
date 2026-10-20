@@ -1684,6 +1684,19 @@ run_cmd do
       `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso_source_naturality,
       `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_source,
       `SerrePositivity.EInfinity.HomotopyWeight.realization_map_frame_weakEquivalence,
+      `SerrePositivity.EInfinity.FrameRealizationLifting.map_boundary_rlp_weakEquivalence,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameHom,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealizationAdjunction,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization_map_cofibration,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization_isCofibrant,
+      `SerrePositivity.EInfinity.HomotopyWeight.liftedZeroPointIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.realizationPointIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameComparison,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameComparison_weakEquivalence,
+      `SerrePositivity.EInfinity.HomotopyWeight.realizationPointIso_naturality,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameComparison_app,
+      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameComparison_naturality,
       `SerrePositivity.EInfinity.HomotopyWeight.comparison_mono_rlp,
       `SerrePositivity.EInfinity.HomotopyWeight.weight_kanComplex,
       `SerrePositivity.EInfinity.HomotopyWeight.valueSection,
@@ -1709,6 +1722,14 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitWeight_cofibrant,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor_map_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramReplacement,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramReplacement_isCofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramComparison_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramComparison_weakEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramReplacement_map_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramHomEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.constantDiagramLocalizedIso,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_kanComplex,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_map_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_map_piZero_bijective,
@@ -4726,3 +4747,34 @@ example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
     Localization.inverts Q (weakEquivalences (BarrattEccles.operad ℤ).Algebra) _
       (framedLimitFunctor_map_quasiIso ℤ ℕ f hf)
   exact ⟨inv _, IsIso.hom_inv_id _, IsIso.inv_hom_id _⟩
+
+-- 定値図式の具体的な置換は、図式全体で自明 fibration に沿って持ち上がる。
+open CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+example (Y : (BarrattEccles.operad ℤ).Algebra)
+    {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (p : F ⟶ G)
+    (hp : ∀ k n, Function.Surjective ((p.app k).hom.f n))
+    (hq : ∀ k, QuasiIso (p.app k).hom)
+    (b : (constantDiagramReplacement ℤ ℕ).obj Y ⟶ G) :
+    ∃ l : (constantDiagramReplacement ℤ ℕ).obj Y ⟶ F, l ≫ p = b := by
+  let := Diagram.projectiveModelCategory ℤ ℕ
+  have := constantDiagramReplacement_isCofibrant ℤ ℕ Y
+  have : Fibration p := (Diagram.fibration_iff ℤ ℕ p).mpr hp
+  have : WeakEquivalence p := (Diagram.weakEquivalence_iff ℤ ℕ p).mpr hq
+  let sq : CommSq (initial.to F)
+      (initial.to ((constantDiagramReplacement ℤ ℕ).obj Y)) p b := ⟨initial.hom_ext _ _⟩
+  exact ⟨sq.lift, sq.fac_right⟩
+
+-- 置換からの実際の図式射は、随伴の錐の全成分で判定できる。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    (f g : (constantDiagramReplacement ℤ ℕ).obj Y ⟶ F)
+    (h : let := BarrattEccles.modelCategory ℤ
+      ∀ k n, (((constantDiagramHomEquiv ℤ ℕ Y F) f).app k).app n =
+        (((constantDiagramHomEquiv ℤ ℕ Y F) g).app k).app n) : f = g := by
+  let := BarrattEccles.modelCategory ℤ
+  apply (constantDiagramHomEquiv ℤ ℕ Y F).injective
+  apply NatTrans.ext
+  funext k
+  apply NatTrans.ext
+  funext n
+  exact h k n

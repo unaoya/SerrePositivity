@@ -454,6 +454,9 @@ public import SerrePositivity.EInfinity.HomotopyWeight.TensorRealization
 public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero
 public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality
 public import SerrePositivity.EInfinity.HomotopyWeight.RealizationInvariance
+public import SerrePositivity.EInfinity.HomotopyWeight.PointwiseRealization
+public import SerrePositivity.EInfinity.HomotopyWeight.ConstantComparison
+public import SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality
 public import SerrePositivity.EInfinity.HomotopyWeight.Values
 public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorLifting
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimit
@@ -461,6 +464,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitComparison
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitInvariance
+public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramReplacement
 public import SerrePositivity.EInfinity.FrameHom.BrownInversion
 public import SerrePositivity.EInfinity.FrameHom.PointwiseBrown
 public import SerrePositivity.EInfinity.FrameHom.StandardFrame
