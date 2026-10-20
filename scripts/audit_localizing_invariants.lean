@@ -75,7 +75,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SemiorthogonalInvariant,
     `SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily,
     `SerrePositivity.KST.LocalizingInvariants.LaxInclusions,
-    `SerrePositivity.KST.LocalizingInvariants.LaxInclusionExact]
+    `SerrePositivity.KST.LocalizingInvariants.LaxInclusionExact,
+    `SerrePositivity.KST.LocalizingInvariants.InitialPrismTwoEndpoints,
+    `SerrePositivity.KST.LocalizingInvariants.LaxInitialBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.PinchedPrecomposeEquivalence,
+    `SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.RelativeInitialVertexIso,
+    `SerrePositivity.KST.LocalizingInvariants.LaxProjectionKernel]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

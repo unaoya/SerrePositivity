@@ -19,4 +19,6 @@ public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxInclusionExact
 
+public import SerrePositivity.KST.LocalizingInvariants.LaxProjectionKernel
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
