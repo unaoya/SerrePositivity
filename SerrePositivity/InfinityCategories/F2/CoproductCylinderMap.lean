@@ -78,4 +78,14 @@ lemma coprodCylinder_hom_ext {A C X : SSet.{u}}
   · rw [← Category.assoc, tensorCoprod_inr, ← Category.assoc, tensorCoprod_inr]
     exact k
 
+/-- 概要：二円柱の貼り合わせは標的への後合成と交換する。
+方針：両枝へ制限して比較する。
+規約：全円柱の厳密な式。使われ方：元の境界輸送を Kan 置換へ写す。 -/
+lemma coprodCylinderMap_comp {A C X Y : SSet.{u}}
+    (H : A ⊗ (Δ[1] : SSet.{u}) ⟶ X) (G : C ⊗ (Δ[1] : SSet.{u}) ⟶ X) (q : X ⟶ Y) :
+    coprodCylinderMap H G ≫ q = coprodCylinderMap (H ≫ q) (G ≫ q) := by
+  apply coprodCylinder_hom_ext
+  · rw [← Category.assoc, coprodCylinderMap_inl, coprodCylinderMap_inl]
+  · rw [← Category.assoc, coprodCylinderMap_inr, coprodCylinderMap_inr]
+
 end SerrePositivity.InfinityCategories.F2
