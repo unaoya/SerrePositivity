@@ -1736,3 +1736,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportBa
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeEnrichmentLaws
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianFibrationBaseChange
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeEnrichedComparison
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramCategory
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparisonDiagram
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparisonArrow
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeComparisonFamily
