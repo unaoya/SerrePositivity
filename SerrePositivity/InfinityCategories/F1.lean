@@ -1098,3 +1098,5 @@ public import SerrePositivity.InfinityCategories.F1.DiagonalFiberTransport
 public import SerrePositivity.InfinityCategories.F1.DiagonalFiberTransportSourceIso
 public import SerrePositivity.InfinityCategories.F1.RelativeHomPointedShortEdges
 public import SerrePositivity.InfinityCategories.F1.RelativeHomPointedTransportSquare
+public import SerrePositivity.InfinityCategories.F1.DiagonalFiberTransportSquare
+public import SerrePositivity.InfinityCategories.F1.PointedReverseCompositionTransport
