@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInitial
+import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementInitialMaps
+import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementDegeneracies
+import SerrePositivity.InfinityCategories.Derived.DGVerdierInitialRefinementNaturality
+import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementCongruence
+import SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryCommonFaces
+import SerrePositivity.InfinityCategories.Derived.TruncatedJoinConeData
+import SerrePositivity.InfinityCategories.Derived.DGVerdierZeroConeData
 import SerrePositivity.InfinityCategories.Derived.DGOverSimplexInitialRefinement
 import SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInjection
 import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementReindex
@@ -2433,10 +2441,32 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinementSimplex_obj_zero
 #print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryFinite_exists_refinedSimplexes
 
+#print axioms SerrePositivity.InfinityCategories.roofPointExtend_initial
+#print axioms SerrePositivity.InfinityCategories.dgOverSimplexInitialRefinement_pullback_initial
+#print axioms SerrePositivity.InfinityCategories.dgOverSimplexInitialRefinement_degeneracy_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierSimplexInitialRefinement_pullback_initial
+#print axioms SerrePositivity.InfinityCategories.dgVerdierSimplexInitialRefinement_degeneracy_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierSimplexInitialRefinement_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgVerdierSimplexInitialRefinement_face_positive
+#print axioms SerrePositivity.InfinityCategories.dgOverSimplexInitialRefinement_congr
+#print axioms SerrePositivity.InfinityCategories.dgVerdierSimplexInitialRefinement_congr
+#print axioms SerrePositivity.InfinityCategories.dgVerdierBoundaryRefinedSimplex_commonFace_eq
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.restrict
+#print axioms SerrePositivity.InfinityCategories.dgVerdierZeroConeData
+#print axioms SerrePositivity.InfinityCategories.dgVerdierZeroConeData_nonempty
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInitial,
+    `SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementInitialMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementDegeneracies,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierInitialRefinementNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementCongruence,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierBoundaryCommonFaces,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedJoinConeData,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierZeroConeData,
     `SerrePositivity.InfinityCategories.Derived.DGOverSimplexInitialRefinement,
     `SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInjection,
     `SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementReindex,
