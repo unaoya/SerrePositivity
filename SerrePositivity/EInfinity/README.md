@@ -730,7 +730,15 @@ augmentation は元の代数の射にも自然。Reedy 自明 fibration であ�
 `constantDiagramFrameMappingComparisonIso` は選んだ Map^h と具体的な frame Hom の両変数での自然比較。
 `constantDiagramSourceMappingComparisonIso` はそれを重み付き錐へ移す。
 比較は任意の anodyne を反転する関手の後で成立し、単体集合のモデル構造は使わない。
-始域 frame の錐と右 frame の錐の導来的な比較は未構成。
+`FrameHom.MixedFrame.mixedConeComparisonIso` は、任意の射影 cofibrant 重みについて
+始域 frame の錐と右 frame の錐を anodyne 反転後に比較する一般界面。
+共通の混合 Hom の対角が Kan であるとは仮定せず、実際の関手的 Kan 置換を介する。
+`HomotopyWeight.coneSpace_map_isIso_of_pointwiseKan` は Kan 値図式の各値の局所化同値を
+重み付き錐で反転し、単体集合やその図式圏の完全なモデル構造を使わない。
+`kanConeComparisonIso_fac` は同じ元の比較射の像の一致、
+`kanConeComparisonIso_naturality` は元の可換四角形に関する自然性を与える。
+具体的な `constantDiagramSourceHom` と `framedLimitConeSpace` への代入では、
+選んだ試験始域の比較と二重反対圏の添字の照合が残る。
 計算関手の右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。

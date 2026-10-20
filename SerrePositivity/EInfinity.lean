@@ -481,6 +481,14 @@ public import SerrePositivity.EInfinity.FrameHom.TargetInvariance
 public import SerrePositivity.EInfinity.FrameHom.SourceInvariance
 public import SerrePositivity.EInfinity.FrameHom.Comparison
 public import SerrePositivity.EInfinity.FrameHom.OverFunctorComparison
+public import SerrePositivity.EInfinity.FrameHom.MixedFrame
+public import SerrePositivity.EInfinity.FrameHom.MixedFrameComparison
+public import SerrePositivity.EInfinity.FrameHom.MixedFrameDiagrams
+public import SerrePositivity.EInfinity.FrameHom.MixedFrameCones
+public import SerrePositivity.EInfinity.HomotopyWeight.KanDiagramBrown
+public import SerrePositivity.EInfinity.HomotopyWeight.ConeInvariance
+public import SerrePositivity.EInfinity.HomotopyWeight.KanDiagramReplacement
+public import SerrePositivity.EInfinity.HomotopyWeight.KanConeComparison
 public import SerrePositivity.EInfinity.BarrattEccles.MappingFactorizations
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpace
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpacePiZero

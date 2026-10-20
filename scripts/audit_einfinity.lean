@@ -1787,6 +1787,40 @@ run_cmd do
       `SerrePositivity.EInfinity.FrameHom.comparison_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.comparison_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.frameChoiceIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.map_isIso_of_pointwiseKan,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_isIso_of_pointwiseKan,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanReplacement_map_isIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagram,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagramUnit,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagramMap,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagram_kanComplex,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_kanDiagramUnit_isIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_kanDiagramMap_isIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow_isIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso_fac,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow_naturality,
+      `SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso_naturality,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedFunctor,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomFunctor,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomIso,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.flipIso,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.fibrantOp_of_cofibrant,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison_isIso,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison_isIso,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftDiagram,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedDiagram,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightDiagram,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftDiagramComparison,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightDiagramComparison,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftDiagram_kanComplex,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightDiagram_kanComplex,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftDiagramComparison_isIso,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightDiagramComparison_isIso,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedConeComparisonIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -4876,3 +4910,34 @@ example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.ope
   apply NatTrans.ext
   funext n
   exact h k n
+
+-- Kan 値図式の各値の局所化同値は、同じ錐の連結成分を一意に戻す。
+open SerrePositivity.EInfinity.HomotopyWeight
+  SerrePositivity.DiagramModel.WeightedCones SerrePositivity.SimplicialModel in
+example {F G : ℕ ⥤ SSet} (f : F ⟶ G)
+    (hF : ∀ k, SSet.KanComplex (F.obj k)) (hG : ∀ k, SSet.KanComplex (G.obj k))
+    (hf : ∀ k, IsIso (AnodyneHomotopy.anodyneQ.map (f.app k)))
+    (z : SSet.π₀ ((coneSpace ℕ (weight ℕ)).obj G)) :
+    ∃! w : SSet.π₀ ((coneSpace ℕ (weight ℕ)).obj F),
+      SSet.mapπ₀ ((coneSpace ℕ (weight ℕ)).map f) w = z := by
+  have := coneSpace_map_isIso_of_pointwiseKan ℕ (weight ℕ) (weight_cofibrant ℕ)
+    f hF hG hf SSet.π₀Functor PiZeroLocalization.inverts_anodyne
+  obtain ⟨hinj, hsurj⟩ := (CategoryTheory.isIso_iff_bijective _).mp this
+  obtain ⟨w, hw⟩ := hsurj z
+  exact ⟨w, hw, fun w' hw' => hinj (hw'.trans hw.symm)⟩
+
+-- 共通図式は Kan でなくても、元の二つの比較射の像は同じ類になる。
+open CategoryTheory.Limits SerrePositivity.EInfinity.HomotopyWeight
+  SerrePositivity.DiagramModel.WeightedCones SerrePositivity.SimplicialModel in
+example {F G H : ℕ ⥤ SSet} (f : F ⟶ H) (g : G ⟶ H)
+    (hF : ∀ k, SSet.KanComplex (F.obj k)) (hG : ∀ k, SSet.KanComplex (G.obj k))
+    (hf : ∀ k, IsIso (AnodyneHomotopy.anodyneQ.map (f.app k)))
+    (hg : ∀ k, IsIso (AnodyneHomotopy.anodyneQ.map (g.app k)))
+    (z : SSet.π₀ ((coneSpace ℕ (weight ℕ)).obj F)) :
+    let e := kanConeComparisonIso ℕ (weight ℕ) (weight_cofibrant ℕ)
+      SSet.π₀Functor PiZeroLocalization.inverts_anodyne f g hF hG hf hg
+    (coneComparisonArrow ℕ (weight ℕ) SSet.π₀Functor g) (e.hom z) =
+      (coneComparisonArrow ℕ (weight ℕ) SSet.π₀Functor f) z := by
+  exact ConcreteCategory.congr_hom
+    (kanConeComparisonIso_fac ℕ (weight ℕ) (weight_cofibrant ℕ)
+      SSet.π₀Functor PiZeroLocalization.inverts_anodyne f g hF hG hf hg) z
