@@ -1556,3 +1556,11 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldIso
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldHorizontalDetection
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPredicateReflection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCompStructLifting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsofibration
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativePrecompositionEquivalence
