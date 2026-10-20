@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.RoofPointSliceTriangleEdge
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofIdentityRefinement
+import SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdgePostcomposition
+import SerrePositivity.InfinityCategories.Derived.RoofPullbackEdge
+import SerrePositivity.InfinityCategories.Derived.DGInvertingRoofVertexProjections
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofEvaluationEdge
+import SerrePositivity.InfinityCategories.Derived.KanEvaluationEdgeIso
+import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGQuotientHomRoofRepresentation
+import SerrePositivity.InfinityCategories.Derived.DGInvertingHomRoofEvaluation
 import SerrePositivity.InfinityCategories.Derived.ActualRoofOreRefinement
 import SerrePositivity.InfinityCategories.Derived.ActualRoofComposition
 import SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdges
@@ -2712,6 +2722,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.RoofPointSliceTriangleEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofIdentityRefinement,
+    `SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdgePostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.RoofPullbackEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingRoofVertexProjections,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofEvaluationEdge,
+    `SerrePositivity.InfinityCategories.Derived.KanEvaluationEdgeIso,
+    `SerrePositivity.InfinityCategories.Derived.WeakRoofDescentEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientHomRoofRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.DGInvertingHomRoofEvaluation,
     `SerrePositivity.InfinityCategories.Derived.ActualRoofOreRefinement,
     `SerrePositivity.InfinityCategories.Derived.ActualRoofComposition,
     `SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdges,
