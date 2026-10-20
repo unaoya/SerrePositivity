@@ -1003,4 +1003,16 @@ public import SerrePositivity.KST.SConstruction.FixedCylinderBoundary
 public import SerrePositivity.KST.SConstruction.FixedCylinderAttachment
 public import SerrePositivity.KST.SConstruction.CorrectionNormalizationPasting
 public import SerrePositivity.KST.SConstruction.TracedTripleNormalizedPasting
+public import SerrePositivity.KST.SConstruction.BoundaryEdgeEndpoints
+public import SerrePositivity.KST.SConstruction.InterchangePastingHornFaces
+public import SerrePositivity.KST.SConstruction.OuterCorrectionCorners
+public import SerrePositivity.KST.SConstruction.SpecifiedTriangleAttachment
+public import SerrePositivity.KST.SConstruction.OuterCorrectionHorns
+public import SerrePositivity.KST.SConstruction.OuterBinaryPasting
+public import SerrePositivity.KST.SConstruction.TracedTripleOuterBinaryPasting
+public import SerrePositivity.KST.SConstruction.OuterStagePasting
+public import SerrePositivity.KST.SConstruction.TracedTripleOuterStagePasting
+public import SerrePositivity.KST.SConstruction.FixedCylinderComparisonAttachment
+public import SerrePositivity.KST.SConstruction.TracedTripleSharedDirectPasting
+public import SerrePositivity.KST.SConstruction.TracedTripleSharedDirectRealizationPasting
 /-! # ∞-S• 構成と連結 K 理論 -/
