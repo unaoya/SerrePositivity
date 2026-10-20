@@ -1108,3 +1108,5 @@ public import SerrePositivity.InfinityCategories.F1.LeftPrismCutCoordinates
 public import SerrePositivity.InfinityCategories.F1.LeftPrismEvaluation
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftIntervalComparison
 public import SerrePositivity.InfinityCategories.F1.PointedLeftIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.LeftPointHomReverseComposition
+public import SerrePositivity.InfinityCategories.F1.PointedKanParameterizedAction
