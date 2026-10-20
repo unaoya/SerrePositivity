@@ -17213,4 +17213,49 @@ namespace SerrePositivity.KST.SConstruction
 #check presentedPerfectDGInputHom_eq
 #print axioms presentedPerfectDGInputHom_eq
 
+
+-- パラメータ引き戻しと元の入力 Hom を通る因子化。
+#check dgParameterPullback
+#print axioms dgParameterPullback
+#check dgParameterPullback_app
+#print axioms dgParameterPullback_app
+#check dgParameterPullback_id
+#print axioms dgParameterPullback_id
+#check dgParameterPullback_comp
+#print axioms dgParameterPullback_comp
+#check dgParameterCross_naturality
+#print axioms dgParameterCross_naturality
+#check dgLeftParamFamily_pullback
+#print axioms dgLeftParamFamily_pullback
+#check dgLeftParamMap_pullback
+#print axioms dgLeftParamMap_pullback
+#check dgBimoduleParamLeftAt_pullback
+#print axioms dgBimoduleParamLeftAt_pullback
+#check dgFirstParamHom_pullback
+#print axioms dgFirstParamHom_pullback
+#check dgFirstParam_pullback
+#print axioms dgFirstParam_pullback
+#check dgFunctorGraphParameter_pullback
+#print axioms dgFunctorGraphParameter_pullback
+#check dgModuleExtensionParameter_pullback
+#print axioms dgModuleExtensionParameter_pullback
+#check perfectDGExtensionParameter_pullback
+#print axioms perfectDGExtensionParameter_pullback
+#check presentedPerfectDGParameter_pullback
+#print axioms presentedPerfectDGParameter_pullback
+#check dgFunctorHomEquiv_pullback
+#print axioms dgFunctorHomEquiv_pullback
+#check dgFunctorHomEquiv_symm_pullback
+#print axioms dgFunctorHomEquiv_symm_pullback
+#check dgParameterUniversal_pullback
+#print axioms dgParameterUniversal_pullback
+#check presentedPerfectDGInputHom_factorization
+#print axioms presentedPerfectDGInputHom_factorization
+#check presentedPerfectDGInputHom_precompose
+#print axioms presentedPerfectDGInputHom_precompose
+#check dgModuleExtensionParameterValue_pullback
+#print axioms dgModuleExtensionParameterValue_pullback
+#check dgParameterCross_naturality_assoc
+#print axioms dgParameterCross_naturality_assoc
+
 end SerrePositivity.KST.SConstruction
