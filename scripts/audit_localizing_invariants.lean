@@ -21,7 +21,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.ExactMapHomotopy,
     `SerrePositivity.KST.LocalizingInvariants.VerdierPresentation,
     `SerrePositivity.KST.LocalizingInvariants.AbstractFiberSequence,
-    `SerrePositivity.KST.LocalizingInvariants.FiberDetection]
+    `SerrePositivity.KST.LocalizingInvariants.FiberDetection,
+    `SerrePositivity.KST.LocalizingInvariants.RawFiberSpectrum,
+    `SerrePositivity.KST.LocalizingInvariants.PointedFiberLimit,
+    `SerrePositivity.KST.LocalizingInvariants.RawFiberInfinityCone,
+    `SerrePositivity.KST.LocalizingInvariants.LimitVertexTransport,
+    `SerrePositivity.KST.LocalizingInvariants.BFFiberInfinityCone,
+    `SerrePositivity.KST.LocalizingInvariants.BFFiberSquare]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
