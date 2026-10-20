@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleCoefficient
+import SerrePositivity.InfinityCategories.Derived.DGClosedPostcomposeTriangle
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangle001
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationExtendedCut
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrection
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutDifferential
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyAt
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBoundaryHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSimplexHomotopy
 import SerrePositivity.InfinityCategories.Derived.ComplexMinusOneCochainBoundary
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyData
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyTensor
@@ -2985,6 +2995,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleCoefficient,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPostcomposeTriangle,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangle001,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationExtendedCut,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutDifferential,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyAt,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBoundaryHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSimplexHomotopy,
+
     `SerrePositivity.InfinityCategories.Derived.ComplexMinusOneCochainBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyData,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyTensor,
