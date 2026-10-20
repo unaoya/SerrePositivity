@@ -1544,3 +1544,11 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportMa
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldMapping
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldInverseFamily
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldInverse
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportInclusion
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldIso

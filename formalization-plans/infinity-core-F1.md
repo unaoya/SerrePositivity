@@ -24,7 +24,6 @@
   `rightStraighteningInfinityEquivalence` を、小さい quasicategory B 上で構成した。逆の ∞ 関手も同値で、
   その F での値は既存の `smallRightUnstraighteningProjection F` と頂点の同型で一致する。
 - twisted arrow の両端射影の left fibration 性と、同じ射影による `yonedaInfinityMap` を構成済み。
-- 表現可能射影と rep(y) の right unstraightening は、両端固定の coslice 比較で底上の同値を構成済み。
 - 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
   を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
 - `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
@@ -71,8 +70,7 @@
 
 ### 未コミット
 
-- N が読む指定2ファイルと集約は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd` に保存済み。
-- 一般の小さい quasicategory 上の空間値分類同値は `e987f35af` に保存済み。
+- 共有制限は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd`、空間値同値は `e987f35af` に保存済み。
 - 前層の分類は `56dd08ad4`、essentially small Kan fiber の相対延長は `bf56a0416` に保存済み。
 - cocartesian ∞ 圏は `733a24a2b`、coherent 分類写像は `87acb9df5` に保存済み。
 - quasicategory 値 weighted nerve の cocartesian fibration 性と scaffold 比較は `9d911c9c1`。
@@ -80,15 +78,17 @@
 - coherent な実現と strict 図式の同じ分類写像の像との頂点同型は `8efb9919a`。
 - 局所 strict 化と有限 nerve 上の本質的全射性は `e8f0b2913`。
 - weighted nerve の全 cocartesian 辺保存と全相対作用は `a361804cc`。
-- strict transport の全相対 Hom 作用、水平辺を保つ scaffold Hom と元の制限との可換三角形を証明。
+- 全相対 Hom 作用と scaffold 制限との可換三角形は `7529aa808`。
+- scaffold 評価の厳密な逆射・同型と、strict transport を標的とする変換空間の quasicategory 性を証明。
 
 ### 既知の問題
 
 - λ は局所化であり、圏同値として消去しない。実際の初頂点引き戻しの Hom 作用を証明した。
 - Yoneda の充満忠実性は元の Hom 作用そのものの同値性で証明した。独立な c1 の同値だけでは
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
-- strict Kan 図式の Hom の Kan 性や strict QCat 図式の Hom の quasicategory 性は仮定しない。
-  Cat∞ 値の分類と、essentially small な非 Kan fiber の相対延長は未証明。
+- 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。cocartesian strict transport が
+  標的の場合は証明済み。`relativeFunctorOverPre_isQCatEquivalence` は標的 LF 用で、そのまま流用しない。
+  Cat∞ 値の分類、scaffold 制限の同値性、essentially small な非 Kan fiber の相対延長は未証明。
 
 ### 次の一手
 
@@ -96,8 +96,8 @@ Cat∞ 値版では通常 nerve 上の全 fibration の分類写像に加え、s
 `weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
 有限 nerve 上の本質的全射性に加え、元の全パラメーターの作用を cocartesian Hom へ制限済み。
 strict transport 間への同じ全相対作用は単位・合成を保ち、scaffold 評価後には元の制限と一致する。
-次は水平辺を保つ scaffold Hom から strict transport 間への逆射を構成し、
-scaffold 評価の同型と、元の cocartesian 相対 Hom の制限の同値性を証明する。
+scaffold 評価は厳密な同型で、標的が inner fibration なら同じ評価が ∞ 圏同値。
+次は universal scaffold の水平辺で全 cocartesian 辺の保存を検出し、元の相対 Hom の制限の同値性へ進む。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
