@@ -31,13 +31,12 @@ open scoped Simplicial
 
 variable {C D : Type u} [Category.{u} C] [Category.{u} D] (F : C ⥤ D)
 
-/-- 概要：全 comma の元の終射の反転性から nerve の left cofinality（Quillen A）。
-方針：元の comma の可縮性を native な slice の引き戻しへ実同型で移す。
+/-- 概要：全 comma の弱可縮性から nerve の left cofinality（Quillen A）。
+方針：元の comma の弱可縮性を native な slice の引き戻しへ実同型で移す。
 規約：標的の quasicategory 性は通常の nerve の実際の instance を使う。
 使われ方：分解図式の全対象での余終性。 -/
-lemma nerveMap_isLeftCofinal
-    (h : ∀ d : D, IsIso (AnodyneHomotopy.anodyneQ.map
-      (SSet.stdSimplex.isTerminalObj₀.from (nerve (CostructuredArrow F d))))) :
+lemma nerveMap_isLeftCofinal_of_weaklyContractible_comma
+    (h : ∀ d : D, IsWeaklyContractible (nerve (CostructuredArrow F d))) :
     IsLeftCofinal (nerveMap F) := by
   apply isLeftCofinal_of_weaklyContractible_slices
   intro b
@@ -48,6 +47,28 @@ lemma nerveMap_isLeftCofinal
   let e := kanNerveLeftKanShapeIso F d
   exact (AnodyneWeakDetection.isWeakHomotopyEquivalence e.hom
     (inferInstanceAs (IsIso (AnodyneHomotopy.anodyneQ.map e.hom)))).weaklyContractible_iff.mp
-      (AnodyneWeakDetection.isWeaklyContractible _ (h d))
+      (h d)
+
+/-- 概要：全 comma の元の終射の反転性から nerve の left cofinality（Quillen A）。
+方針：元の射の反転性から弱可縮性へ移して同じ slice 判定を使う。
+規約：標的の quasicategory 性は通常の nerve の実際の instance を使う。
+使われ方：分解図式の全対象での余終性。 -/
+lemma nerveMap_isLeftCofinal
+    (h : ∀ d : D, IsIso (AnodyneHomotopy.anodyneQ.map
+      (SSet.stdSimplex.isTerminalObj₀.from (nerve (CostructuredArrow F d))))) :
+    IsLeftCofinal (nerveMap F) :=
+  nerveMap_isLeftCofinal_of_weaklyContractible_comma F
+    (fun d => AnodyneWeakDetection.isWeaklyContractible _ (h d))
+
+/-- 概要：余終な元の nerve の全 comma は弱可縮（Quillen A）。
+方針：元の native な slice の必要条件を同じ comma の実同型で戻す。
+規約：通常の comma 圏の全単体を扱う。
+使われ方：全図式の comma の収縮先の弱可縮性。 -/
+lemma comma_isWeaklyContractible (hF : IsLeftCofinal (nerveMap F)) (d : D) :
+    IsWeaklyContractible (nerve (CostructuredArrow F d)) := by
+  let e := kanNerveLeftKanShapeIso F d
+  exact (AnodyneWeakDetection.isWeakHomotopyEquivalence e.hom
+    (inferInstanceAs (IsIso (AnodyneHomotopy.anodyneQ.map e.hom)))).weaklyContractible_iff.mpr
+      (hF.slice_isWeaklyContractible (nerveVertex d))
 
 end SerrePositivity.EInfinity.FrameHom.NerveQuillenA

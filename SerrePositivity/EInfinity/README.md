@@ -958,7 +958,13 @@ left cofinality を与え、各 `_isWeakHomotopyEquivalence` は同じ射の弱�
 `mappingFixedRightDiagramComparison` は全右脚に自然な同じ比較で、
 各 `_isLeftCofinal`・`_localized_isIso` は全成分の余終性と同じ反転性を与える。
 `mappingFixedRightGrothendieckComparison` はこの自然変換からの全図式の比較関手。
-全図式そのものの比較の反転性と、固定右脚から全図式への中間射の反転性は後続。
+`CommaPreLeft.projection` と `canonicalSection` は全図式の比較の各 comma を
+分解側の comma へ射影し、元の右成分による `contraction` で収縮する。
+`CommaPreLeft.comparison_isLeftCofinal` はこの収縮と Quillen A による全図式の余終性。
+`fixedRightGrothendieckComparison_toComma` は元の Grothendieck の比較との厳密な整合で、
+`BarrattEccles.mappingFixedRightGrothendieckComparison_localized_isIso` は同じ全図式の
+比較そのものを anodyne 反転後に可逆とする。成分ごとの結論だけからは推論しない。
+固定右脚から全図式への中間射の反転性と、元の右射全体の反転性は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。

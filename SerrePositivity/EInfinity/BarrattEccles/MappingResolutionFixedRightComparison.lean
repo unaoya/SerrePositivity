@@ -4,6 +4,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionCofinalit
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpanDiagram
 public import SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison
 public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowPreDiagram
+public import SerrePositivity.EInfinity.FrameHom.FixedRightGrothendieckInversion
 
 /-!
 # 実際の E 代数の全固定右脚の比較と右変数の自然性
@@ -111,10 +112,33 @@ lemma mappingFixedRightDiagramComparison_localized_isIso (X Y : (operad A).Algeb
 
 /-- 概要：元の分解から全左脚への右変数の全図式の比較（Low 命題 3.7）。
 方針：同じ自然変換を Grothendieck 構成で送る。
-規約：全図式の余終性は後続で証明し、成分の結論から省略しない。
+規約：反転性は全 comma の収縮で別途証明し、成分の結論から省略しない。
 使われ方：元の三本矢の全図式への比較の適用先。 -/
 abbrev mappingFixedRightGrothendieckComparison (X Y : (operad A).Algebra) :=
   let := modelCategory A
   Grothendieck.map (mappingFixedRightDiagramComparison A X Y)
+
+/-- 概要：実際の E 代数の全図式の同じ比較は anodyne 反転後に可逆（Low 命題 3.7）。
+方針：元の分解の余終性と全 comma の明示的な収縮を同じモデルへ局所代入する。
+規約：元の代数に cofibrancy や単体集合モデルを要求しない。
+使われ方：分解から全左脚への元の全右脚の図式の比較の反転。 -/
+lemma mappingFixedRightGrothendieckComparison_localized_isIso (X Y : (operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (nerveMap (mappingFixedRightGrothendieckComparison A X Y))) := by
+  let := modelCategory A
+  exact FrameHom.fixedRightGrothendieckComparison_localized_isIso
+    (mappingSmallResolutionOverFunctor A X)
+    (FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
+    (mappingSmallRightSpanForget A Y) (mappingSmallResolutionOverFunctor_isLeftCofinal A X)
+
+/-- 概要：元の全図式の比較は弱ホモトピー同値（Low 命題 3.7）。
+方針：元の同じ射の anodyne 反転後の可逆性を全 Kan 標的で検査する。
+規約：元の二つの全図式の nerve の Kan 性を要求しない。
+使われ方：三本矢の全図式の元の比較のホモトピー型。 -/
+lemma mappingFixedRightGrothendieckComparison_isWeakHomotopyEquivalence
+    (X Y : (operad A).Algebra) :
+    IsWeakHomotopyEquivalence (nerveMap (mappingFixedRightGrothendieckComparison A X Y)) :=
+  FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    (mappingFixedRightGrothendieckComparison_localized_isIso A X Y)
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -5,6 +5,7 @@ import Mathlib.Tactic.Ring
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
+set_option maxRecDepth 10000 in
 run_cmd do
   let env ← getEnv
   let mut declarations : Nat := 0
@@ -2207,6 +2208,19 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightGrothendieckComparison_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightGrothendieckComparison_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.projection_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.comparison_isLeftCofinal,
+      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.comparison_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.projection,
+      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.canonicalSection,
+      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.canonicalSection_projection,
+      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.contraction,
+      `SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison_toComma,
+      `SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal_of_weaklyContractible_comma,
+      `SerrePositivity.EInfinity.FrameHom.NerveQuillenA.comma_isWeaklyContractible,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison_isLeftCofinal,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison_isWeakHomotopyEquivalence,
@@ -6457,3 +6471,20 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (nerveMap ((mappingFixedRightDiagramComparison A X Y).app t).toFunctor)) :=
   mappingFixedRightDiagramComparison_localized_isIso A X Y t
+
+-- 元の全右脚の図式の比較そのものは、各 comma の収縮から反転される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (nerveMap (mappingFixedRightGrothendieckComparison A X Y))) :=
+  mappingFixedRightGrothendieckComparison_localized_isIso A X Y
+
+-- 全図式の元の比較は comma の左変数の比較と全対象・全射で厳密に可換。
+open CategoryTheory SerrePositivity.EInfinity.FrameHom in
+example {K L C J : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} K]
+    [Category.{e2ComplexLimitUniverse} L] [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} J] (P : K ⥤ L) (Q : L ⥤ C) (R : J ⥤ C) :
+    fixedRightGrothendieckComparison P Q R ⋙ CommaGrothendieck.toComma Q R =
+      CommaGrothendieck.toComma (P ⋙ Q) R ⋙ Comma.preLeft P Q R :=
+  fixedRightGrothendieckComparison_toComma P Q R

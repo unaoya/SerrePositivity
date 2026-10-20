@@ -703,3 +703,6 @@ public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowCofinality
 public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowPreDiagram
 public import SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison
 public import SerrePositivity.EInfinity.FrameHom.RightFibrationCofinalPullback
+public import SerrePositivity.EInfinity.FrameHom.CommaPreLeftCofinality
+public import SerrePositivity.EInfinity.FrameHom.CommaPreLeftRetraction
+public import SerrePositivity.EInfinity.FrameHom.FixedRightGrothendieckInversion
