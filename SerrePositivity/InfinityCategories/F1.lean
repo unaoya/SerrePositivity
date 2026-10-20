@@ -1086,3 +1086,6 @@ public import SerrePositivity.InfinityCategories.F1.ScaffoldTestFamilyComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeHomComparisonRecovery
 public import SerrePositivity.InfinityCategories.F1.RelativeHomComparisonFamily
 public import SerrePositivity.InfinityCategories.F1.RelativeHomComparisonSpace
+public import SerrePositivity.InfinityCategories.F1.SimplicialPairLeftInclusion
+public import SerrePositivity.InfinityCategories.F1.RelativeHomSourceEvaluation
+public import SerrePositivity.InfinityCategories.F1.RelativeHomCoherentComparison
