@@ -35,8 +35,10 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   指定した底・部分図式の全円柱を保持する相対輸送、境界の厳密な一致を持つ相対有限検出を証明。
   有限ホモトピーと境界の充填を同じ fiber 内で検出。全値が可縮なら全空間模型も可縮。
   定値標的への変換と全空間からの写像空間の同値を構成。実際の単位から native 余錐を構成し、頂点を同定。
-  native 余錐空間から定値変換空間への標準比較を構成。全円柱を保持し、単射性・厳密な左逆を証明。
-  三集約同時ビルド 7085 jobs、公理監査 1976 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  native 余錐空間から定値変換空間への標準比較の厳密な左逆・ホモトピー右逆と同値性を証明。
+  小さい全空間の内部 Hom への実際の比較も同値。N の全 Hom の余極限判定へ接続。
+  実現の両端固定ホモトピーを元の変換へ戻し、native 全空間余錐の比較の像と元の単位の同型を構成。
+  三集約同時ビルド 7157 jobs、公理監査 2018 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -69,15 +71,10 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentFilteredTotalKan_finite_value_detection` / `F2.coherentFilteredTotalKan_isContractibleKan`
 - `F2.continuousKanLeftFibration_finite_relative_detection` / `F2.continuousKanLeftFibration_finite_boundary_detection`
 - `F2.coherentSmallConstantTargetMap_isQCatEquivalence` / `F2.coherentDiagramTotalCocone_vertex`
-- `F2.coconeTransformationMap_prism` / `F2.coconeTransformationMap_exists_retraction`
+- `F2.coconeTransformationMap_prism` / `F2.coconeTransformationMap_isQCatEquivalence`
+- `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
+- `F2.isColimitCone_iff_coherentCoconeTotalComparison`
 - `F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` / `F2.isKappaFiltered_iff_constantDiagram_rightCofinal`
-- `F2.finiteSubcomplexCocone_isColimit` / `F2.continuousKanReplacement`
-- `F2.continuousKanReplacement_preservesFilteredColimits` / `F2.continuousKanReplacement_kanComplex`
-- `F2.continuousKanReplacementUnit_isWeakHomotopyEquivalence` / `F2.isWeaklyContractible_of_isFilteredInfinity`
-- `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
-- `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_projection_commutativity`
-- `F2.laxPullbackCone_isLimit` / `F2.laxPullbackVertexEquiv`
-- `F2.laxPullbackMappingSpaceCone_isLimit`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
 ### 依存と提供
@@ -98,13 +95,14 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
   通常の指定余錐の全脚・高次の整合性を保持した native な普遍性まで証明済み。
   任意の二射の元の cospan の native な極限との比較は証明済み。一般 coherent filtered 図式の交換は残る。
-  全空間模型の余錐全体・頂点・単位との比較は構成済み。余錐空間の比較の右逆ホモトピーと余極限性は未証明。
+  全空間模型の余錐全体・頂点・単位との比較は構成済み。余錐空間の比較同値と元の単位との同型は証明済み。
+  圏内の辺による合成と全 Hom の族の整合性・余極限性は未証明。
 - 主経路に追加公理・sorry・ModelCategory SSet の instance 仮定を置かない。
 
 ### 次の一手
 
-- F2N-1：coconeTransformationMap の右逆ホモトピーを両端固定 fat join 回収と円柱の curry から作り、同値性を証明。
-  元の単位・圏内の辺による余錐の合成との整合を証明し、N の全 Hom の余極限判定と有限極限との交換へ接続。
+- F2N-1：圏内の辺による余錐の合成と coherentCoconeTotalComparison の整合を、全 Hom の族で証明。
+  coherentTotalCoconeUnitIso と単位の前合成同値から native な余極限性を導き、有限極限との交換へ接続。
 
 ## 0. 目標と範囲
 

@@ -46,8 +46,9 @@
   零源の cospan の極限を反転と枝の交換で構成。元の指定射を保つ全 fiber・cofiber の存在と零角の条件の一致を証明。
   laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
 - 第 2 部：全 path 座標を保つ標準同型、任意の strict Kan cospan の native な引き戻し・filtered 比較を証明。
-  全空間模型の native 余錐・単位の比較に加え、余錐空間から定値変換空間への標準比較の単射性・厳密な左逆を証明。
-  検証：三集約 7085 jobs、公理監査 1976 宣言、同時 import 成功。一般 coherent 余錐の普遍性・交換は残る。
+  余錐空間から定値変換空間・小さい全空間の内部 Hom への標準比較の同値性を証明。
+  native 全空間余錐の比較の像と元の単位の実際の同型を構成し、N の全 Hom 判定へ接続。
+  検証：三集約 7157 jobs、公理監査 2018 宣言、同時 import 成功。一般 coherent 余錐の普遍性・交換は残る。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -64,16 +65,13 @@
 - `F1B.kanNerve_leftKanHomUniversal_iff` / `F1B.kanNerve_rightKanHomUniversal_iff`
 - `F1B.kanNerve_isLeftKanExtensionHom_iff_pointwise` / `F1B.kanNerve_isRightKanExtensionHom_iff_pointwise`
 - `F1B.kanNerveLeftCoconeTransport_cocone` / `F1B.kanNerveRightConeTransport_cone`
-- `F2.catInfinityVertexEquiv` / `F2.coherentEdgeHom_edge`
 - `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
 - `F2.catPullbackObject` / `F2.catPullbackFunctorIso` / `F2.catPullbackFunctorCoreIso`
 - `F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` / `F2.isKappaFiltered_iff_constantDiagram_rightCofinal`
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
-- `F2.catInfinityTriangleIso` / `F2.catPullbackConeNativeCommutativity` / `F2.catPullbackCone_projection_commutativity`
 - `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
-- `F2.laxPullbackLift` / `F2.laxPullbackFunctorCoreIso` / `F2.arrowEndpointPair_internalHom_core_fibration`
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
