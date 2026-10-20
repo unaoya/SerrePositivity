@@ -751,3 +751,11 @@ public import SerrePositivity.EInfinity.Hammock.Word
 public import SerrePositivity.EInfinity.Hammock.Zigzag
 public import SerrePositivity.EInfinity.Hammock.ZigzagPostcompose
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceHammockGraph
+public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphTransition
+public import SerrePositivity.EInfinity.Hammock.DirectionCategory
+public import SerrePositivity.EInfinity.Hammock.Segment
+public import SerrePositivity.EInfinity.Hammock.SegmentMapNaturality
+public import SerrePositivity.EInfinity.Hammock.SegmentNaturality
+public import SerrePositivity.EInfinity.Hammock.SegmentUnits
+public import SerrePositivity.EInfinity.Hammock.WordAction
+public import SerrePositivity.EInfinity.Hammock.WordCut

@@ -1041,7 +1041,17 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 `mappingSpaceHammockGraphNerveMap_localized_isIso` と `_isWeakHomotopyEquivalence` は
 同じ元の共通始域から三列の graph への比較の反転性と弱同値性。
 `mappingSpaceHammockGraphComparisonIso_fac` は同じ元の二射との整合。
-全語の図式・その余極限による hammock 局所化と既存 DK Hom への高次比較は後続。
+`Word.Hom.cut` は列の写像に沿う頂点の切断。`lt_cut_iff`・`fiber_iff` は初期区間と
+元の fiber を特徴付け、`cut_zero`・`cut_last`・`cut_id`・`cut_comp` は全端点と合成の整合。
+`Direction.category` は元の圏または反対圏で、`Segment.chain`・`map` は同方向の区間の合成。
+`map_allowed` は後ろ向きの合成の弱同値性、`map_refl` は空区間と元の恒等射の一致。
+`Segment.forward_map_comm`・`backward_map_comm` は元の全縦射との可換性。
+`WordAction.functor` は任意の色を保つ単調写像の fiber ごとに列を合成する遷移関手。
+全頂点の切断位置の縦射を保持し、始点・終点と後ろ向きの弱同値を保持する。
+`BarrattEccles.algebraHammockTransition`・`algebraHammockGraphMap` は同じ元の E 代数の
+弱同値への代入であり、モデル instance の追加入力や大域化は不要。
+語の射の恒等・合成と遷移関手の整合、全語の図式・その余極限による hammock 局所化と
+既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
