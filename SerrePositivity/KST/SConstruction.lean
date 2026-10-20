@@ -1143,4 +1143,12 @@ public import SerrePositivity.KST.SConstruction.PerfectDGExtensionIdentity
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphComposition
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionComposition
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphUnits
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionUnitTensor
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionTriangle
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputTransport
+public import SerrePositivity.KST.SConstruction.DGModuleExtensionTriangleEvaluation
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionTriangle
+public import SerrePositivity.KST.SConstruction.DGDiagonalUnitAgreement
+public import SerrePositivity.KST.SConstruction.DGFunctorGraphRightUnit
 /-! # ∞-S• 構成と連結 K 理論 -/

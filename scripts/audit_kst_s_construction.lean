@@ -16759,4 +16759,54 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms perfectDGExtensionCompositionInverseComparison
 #check @perfectDGExtensionCompositionAt_inclusion
 #print axioms perfectDGExtensionCompositionAt_inclusion
+#check @dgFunctorGraphInputIso
+#print axioms dgFunctorGraphInputIso
+#check @dgFunctorGraphInputIso_evaluation
+#print axioms dgFunctorGraphInputIso_evaluation
+#check @dgFunctorGraphUnitSourceIso
+#print axioms dgFunctorGraphUnitSourceIso
+#check @dgFunctorGraphCompositionIso_id
+#print axioms dgFunctorGraphCompositionIso_id
+#check @dgDiagonalTensorUnitIso
+#print axioms dgDiagonalTensorUnitIso
+#check @dgDiagonalTensorUnitIso_evaluation
+#print axioms dgDiagonalTensorUnitIso_evaluation
+#check @dgModuleExtensionIdentityTensorIso
+#print axioms dgModuleExtensionIdentityTensorIso
+#check @dgModuleExtensionIdentityTensorIso_evaluation
+#print axioms dgModuleExtensionIdentityTensorIso_evaluation
+#check @dgDiagonalTensorUnit_triangle
+#print axioms dgDiagonalTensorUnit_triangle
+#check @dgModuleExtensionCompositionTensorIso_id
+#print axioms dgModuleExtensionCompositionTensorIso_id
+#check @dgModuleExtensionInputIso
+#print axioms dgModuleExtensionInputIso
+#check @dgModuleExtensionInputIso_tensor_evaluation
+#print axioms dgModuleExtensionInputIso_tensor_evaluation
+#check @dgModuleExtension_second_map_evaluation
+#print axioms dgModuleExtension_second_map_evaluation
+#check @dgModuleExtensionCompositionAt_id
+#print axioms dgModuleExtensionCompositionAt_id
+#check @perfectDGExtensionInputIso
+#print axioms perfectDGExtensionInputIso
+#check @perfectDGExtensionInputIso_inclusion
+#print axioms perfectDGExtensionInputIso_inclusion
+#check @perfectDGExtension_closed_map_inclusion
+#print axioms perfectDGExtension_closed_map_inclusion
+#check @perfectDGExtensionCompositionAt_id
+#print axioms perfectDGExtensionCompositionAt_id
+#check @dgDiagonal_leftAction_eq_rightAction
+#print axioms dgDiagonal_leftAction_eq_rightAction
+#check @dgDiagonal_rightUnitValue_eq_leftUnit
+#print axioms dgDiagonal_rightUnitValue_eq_leftUnit
+#check @dgDiagonal_rightUnitIso_eq_leftUnit
+#print axioms dgDiagonal_rightUnitIso_eq_leftUnit
+#check @dgFunctorGraphCompositionIso_hom_value
+#print axioms dgFunctorGraphCompositionIso_hom_value
+#check @dgDiagonalRightUnitValue_transport
+#print axioms dgDiagonalRightUnitValue_transport
+#check @dgFunctorGraphRightUnitSourceIso
+#print axioms dgFunctorGraphRightUnitSourceIso
+#check @dgFunctorGraphCompositionIso_comp_id
+#print axioms dgFunctorGraphCompositionIso_comp_id
 end SerrePositivity.KST.SConstruction
