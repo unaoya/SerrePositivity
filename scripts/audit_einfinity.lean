@@ -2104,6 +2104,45 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonIso_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonNatIso,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierDerivedIso,
+      `SerrePositivity.EInfinity.BarrattEccles.complexRelativeCategory,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgForgetRelative,
+      `SerrePositivity.EInfinity.BarrattEccles.complexLocalizationNerve,
+      `SerrePositivity.EInfinity.BarrattEccles.complexLocalizationNerve_quasicategory,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgForgetLocalization,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgForgetLocalization_vertex,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap_id,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap_comp,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.face_naturality,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.degeneracy_naturality,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.augmentation_naturality,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.oppositeMap_naturality,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.oppositeMap,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.presentationMap,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_app,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_id,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_comp,
+      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.coefficientMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.coefficientMap_naturality,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.coefficientMap_identity,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.coefficientMap_composition,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.coefficientNatTrans,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMap_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationEnrichedMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionMap_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionMap_object,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap_vertex,
       `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.map,
       `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.map_id,
       `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.map_comp,
@@ -5982,3 +6021,28 @@ open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : (BarrattEccles.operad A).Algebra) :
     (cAlgVertexEquiv A).symm (cAlgVertex A X) = (cofibrantAlgebraDKReplacement A).obj X := by
   exact (cAlgVertexEquiv A).symm_apply_apply _
+
+-- 全解像の係数射は具体的な E 代数相対関手に対しても元の augmentation を保つ。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : SimplexCategoryᵒᵖ) :
+    (localizedFreeResolutionMap (cAlgForgetRelative A)).app n ≫
+        (localizedFreeResolutionAugmentation (complexRelativeCategory A)).app n =
+      (localizedFreeResolutionAugmentation (cofibrantAlgebraRelativeCategory A)).app n ≫
+        strictLocalizationFunctor.map (cAlgForgetRelative A) := by
+  exact localizedFreeResolutionMap_augmentation (cAlgForgetRelative A) n
+
+-- 全複体の局所化への忘却射に底の cofibrancy やモデル構造の入力仮定は不要。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra) :
+    (cAlgForgetLocalization A).app (Opposite.op (SimplexCategory.mk 0)) (cAlgVertex A X) =
+      localizationNerveVertexEquiv (complexRelativeCategory A)
+        ((cofibrantAlgebraDKForget A).obj ((cofibrantAlgebraDKReplacement A).obj X)) := by
+  exact cAlgForgetLocalization_vertex A X
+
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] :
+    SSet.Quasicategory (complexLocalizationNerve A) := by
+  infer_instance

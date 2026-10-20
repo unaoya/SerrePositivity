@@ -866,8 +866,18 @@ E2b は Dwyer–Kan 型の自由単体的局所化で進める。
 `localizationNerve` は既存の γ1 を代入した Mathlib の coherent nerve で、quasicategory。
 `BarrattEccles.CAlg_R` はこれを実際の cofibrant E 代数相対圏へ代入した quasicategory。
 `cAlgVertexEquiv`・`cAlgVertex`・`discreteCAlgVertex` は元の対象・同じ置換・離散対象の頂点。
-DK Hom と既存の Map^h の高次の比較・局所化の普遍性、U の ∞ 関手化、
-離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
+`FrameHom.ComonadResolution.resolutionMap` は一般の comonad 解像の全作用素に自然な係数射。
+`freeResolutionFunctor` と `localizedFreeResolutionFunctor` は同じ自由解像の係数関手。
+`localizedFreeResolutionMap_augmentation` と `localizedFreeResolutionMap_object` は
+元の augmentation と対象表示の係数自然性を証明する。
+`localizationEnrichedMap` は同じ Hom の係数写像の単位・合成保存を束ねる。
+`kanLocalizationEnrichedMap` と `localizationNerveMap` は同じ Ex∞ と coherent nerve への延長。
+`localizationNerveMap_vertex` は元の係数の対象写像を頂点で回収する。
+`BarrattEccles.complexRelativeCategory` は Hom の宇宙だけを揃えた全複体と擬同型の相対圏。
+`cAlgForgetLocalization` は CAlg_R からその具体的な局所化の quasicategory への忘却射で、
+`cAlgForgetLocalization_vertex` は同じ置換の底の複体を回収する。底の cofibrancy は要求しない。
+係数射の恒等・合成の全層での整合、DK Hom と既存の Map^h の高次比較・局所化の普遍性、
+忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
