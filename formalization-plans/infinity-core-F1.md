@@ -11,12 +11,13 @@
   weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
 - c1 の実際の unstraightening の写像空間比較は、区間・pinched・宇宙縮小後とも同値。
   通常の圏の nerve 上の元の S は充満忠実かつ本質的全射で、F0 により分類同値を閉じた。
-- 一般の底の実際の S は構成済みで本質的全射。復元射・単位成分・底変換比較も構成済み。
-  ただし、その同じ S の充満忠実性は未証明。初頂点 λ に沿う実際の全相対 Hom の引き戻し作用の
-  同値性と厳密に同値である。独立な c1 の比較と S の本質的全射性を直接合わせない。
-- `leftUnstraighteningFirstVertexPullback_isQCatEquivalence` により、任意の底 B と coherent 図式 F,G
-  の元の unstraightening 間では、初頂点引き戻しの実際の全相対 Hom 作用が同値。c1 の底変換自然性
-  と厳密な pullback 同型で証明済み。底上の前後合成との厳密な自然性と比較による反映も証明済み。
+- **F1-1c2 の空間値版は完了**：一般の小さい quasicategory B 上の構成済みの同じ S は
+  `leftStraighteningInfinityMap_isFullyFaithful` により充満忠実。既存の本質的全射性と F0 を合わせ、
+  `leftStraighteningInfinityMap_isQCatEquivalence` で分類同値を閉じた。単位・余単位と三角恒等式は任意。
+- 元の coherent unstraightening 対の初頂点引き戻しの実際の相対 Hom 作用を、c1 の自然性から同値とし、
+  底上の比較の前後合成と厳密な自然性で任意の小さい left fibration 対へ移した。
+  引き戻し作用を同じ始域制限へ移す式と宇宙同型で、小さい宇宙の元の作用へ同値性を反映した。
+- 底の仮定は quasicategory 性のみ。任意の単体集合 B の S の同値性は今回主張しない。
 - F1-2：前層 ∞ 圏、制限・評価・定値前層、底の同値による制限同値、right unstraightening を構成済み。
   right fibration 版の恒等点評価は自明 Kan fibration。後合成の自然性も証明済み。
 - twisted arrow の両端射影は実際の left fibration。固定領域の inner anodyne 性から全ホーンを充填済み。
@@ -35,25 +36,25 @@
 - 全空間の始対象で評価した実際の普遍輸送が同値となる一般定理も証明済み。
 - `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
   実際の区間 Hom 作用と標準 pinched Hom 作用の同値性を、同じ恒等点評価と輸送から回収した。
-  一般の S の同値と right fibration の分類は別に残るため、F1-1・F1-2 全体は未完了。
+  空間値分類は閉じたが、right fibration の分類への双対化と Cat∞ 値版が残り、F1 全体は未完了。
 
 ### 残り（依存順）
 
 見積もりは粗い幅で、研究上の障害による上振れがある。
 
-1. F1-1c2：一般の S の Hom 作用と復元比較の照合。Kerodon Cor 5.6.0.6、§5.6.5。24〜100時間。
-   同じ関手の充満忠実性・本質的全射性で F0 を使う。明示的な単位・余単位と三角恒等式は任意。
+1. F1-1c2 の小さい quasicategory 上の空間値版は完了。Kerodon Cor 5.6.0.6、§5.6.5。
+   明示的な単位・余単位と三角恒等式は任意。任意の単体集合への拡張は別件。
 2. essentially small な ∞ 圏的 fiber への相対延長。Thm 5.6.5.12、Cor 5.6.5.15。40〜160時間。
 3. cocartesian・Cat∞ 値の分類と必要な宇宙の一般化。Thm 5.6.0.2、§5.5。80〜240時間以上。
-4. F1-2：同じ Yoneda 写像の充満忠実性は完了。right fibration の分類は一般の S の同値の双対として残る。
-   Kerodon §§8.1〜8.3。分類の見積もりは項目1に含む。twisted arrow・Hom 関手は α2b と分担する。
+4. F1-2：同じ Yoneda 写像の充満忠実性は完了。right fibration の前層による分類を空間値分類から双対化。
+   Kerodon §§8.1〜8.3。8〜32時間。twisted arrow・Hom 関手は α2b と分担する。
 5. 通常圏の nerve 上で Grothendieck 構成と Yoneda を回収する。§§5.6、8.3。8〜32時間。
 
 ### 主要宣言（名前のみ）
 
 - `leftStraighteningInfinityMap`、`leftStraighteningInfinityMap_isEssentiallySurjective`
 - `leftStraighteningCoherentEquivalence`、`leftStraighteningInfinityReconstruction`
-- `leftStraighteningInfinityMap_isQCatEquivalence_iff_relativeFunctorPullback`
+- `leftStraighteningInfinityMap_isQCatEquivalence`、`leftStraighteningInfinityEquivalence`
 - `yonedaInfinityMap`、`representablePresheafInfinity`、`representablePresheafInfinity_sliceIso`
 - `representableRightUnstraighteningComparison_isQCatEquivalence`
 - `yonedaPresheafEvaluation_isQCatEquivalence`、`representablePresheafValueEquivalence`
@@ -71,32 +72,28 @@
 
 ### 未コミット
 
-- 同じ Yoneda 写像の充満忠実性は `ce29c96fd` に保存済み。
-  F1 全体ビルド4431 jobs、公理監査9957宣言が成功（標準3公理のみ）。
-- 初頂点局所化に沿う coherent unstraightening 対の相対 Hom 引き戻し同値は `48e7c5ca6` に保存済み。
-- 相対引き戻しの自然性・比較による反映の所有2モジュールと集約・監査・本計画が今回の保存単位。
-  F1 全体ビルド4437 jobs、公理監査9974宣言が成功（標準3公理のみ）。
-- N が読む指定2ファイルと集約は `a12f7e9f4` で保存済み。
+- N が読む指定2ファイルと集約は `a12f7e9f4`、Yoneda 充満忠実性は `ce29c96fd` に保存済み。
+- 相対引き戻しの自然性と比較による反映は `843708965` に保存済み。
+- 一般の小さい quasicategory 上の空間値分類同値の所有5モジュール、集約・監査・本計画が保存単位。
+  F1 全体ビルド4443 jobs、公理監査9997宣言が成功（標準3公理のみ）。
 
 ### 既知の問題
 
-- λ は局所化であり、圏同値として消去しない。一般の S の充満忠実性は依然未証明。
+- λ は局所化であり、圏同値として消去しない。実際の初頂点引き戻しの Hom 作用を証明した。
 - Yoneda の充満忠実性は元の Hom 作用そのものの同値性で証明した。独立な c1 の同値だけでは
-  一般の S の充満忠実性にならない。分類の明示的な単位・余単位と三角恒等式は任意のまま。
+  一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
 - strict Kan 図式の strict な Hom が一般に Kan とは主張しない。小さい単体 fiber の条件を
   essentially small な ∞ 圏的 fiber だけへ弱める相対延長と、Cat∞ 値の分類も未証明。
 
 ### 次の一手
 
-F1-2 の Yoneda 充満忠実性は完了。F1-1 の分類と、その双対の right fibration 分類へ戻った。
-`leftUnstraighteningFirstVertexPullback_isQCatEquivalence` は、元の coherent unstraightening 対の
-実際の初頂点引き戻し作用の同値性を、任意の底で追加仮定なしに証明する。
-`relativeFunctorPullback_isQCatEquivalence_of_comparison` で、底上の前合成同値による比較から
-実際の引き戻しの同値性を反映できる。次は既存の復元射を持ち上げ、一般の left fibration 対を
-coherent unstraightening 対へ移す。元の底と制限先が quasicategory なら、この反映定理が使える。
-持ち上げた元の p から元の unstraightening への比較で証明し、宇宙移送と pullback の厳密な
-同型を通して小さい relativeFunctorPullback へ反映する。λ 自体を圏同値として消去しない。
-空間値版の後にも essentially small fiber への相対延長と cocartesian・Cat∞ 値版は別に残る。
+空間値の F1-1c2 は、構成済みの同じ S の充満忠実性と本質的全射性による F0 の判定で閉じた。
+次は F1-2：right fibrations の豊穣圏・coherent nerve を構成し、反転で left fibrations over C.op
+との比較を作る。`leftStraighteningInfinityEquivalence C.op` と合わせ、元の前層 ∞ 圏
+`PresheafInfinity C` への実際の分類同値を得る。既存の小さい right unstraightening とも照合する。
+Yoneda の同じ Hom 作用の充満忠実性は証明済みなので再構成しない。
+その後、通常圏 nerve 上の古典的な回収へ進む。essentially small fiber への相対延長と
+cocartesian・Cat∞ 値版は別に残る。明示的な単位・余単位と三角恒等式は任意のまま。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 

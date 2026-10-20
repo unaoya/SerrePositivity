@@ -1418,3 +1418,13 @@ public import SerrePositivity.InfinityCategories.F1.UnstraighteningPullbackEquiv
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullbackNaturality
 
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullbackComparison
+
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationFirstVertexUlift
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPullbackRestriction
+
+public import SerrePositivity.InfinityCategories.F1.UniverseRelativeOverPre
+
+public import SerrePositivity.InfinityCategories.F1.UniverseRelativePullbackReflection
+
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityEquivalence
