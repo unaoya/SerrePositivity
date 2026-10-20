@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionNerve
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionSection
 /-!
 概要：任意の dg 加群値関手の出力を、実分解 dg 圏を通じて半自由模型の実 ∞ 関手へ運ぶ。
 方針：実入力射影の全 nerve 同値の逆と、実半自由出力射影の dg nerve を合成する。
@@ -25,18 +25,18 @@ def dgModuleFunctorResolutionReplacementLift :
 def dgModuleOutputResolutionInfinity :
     dgNerve R (DGUniverseLift.{v, max (u + 1) w} C) ⟶
       dgNerve R (DGUniverseLift.{max (u + 1) w, v} (SemifreeDGModules R E)) :=
-  (dgModuleFunctorResolutionSourceNerve_isQCatEquivalence R C E F).choose.inv ≫
+  (dgModuleFunctorResolutionSourceNerveEquivalence R C E F).inv ≫
     dgNerve.map (dgModuleFunctorResolutionReplacementLift R C E F)
 /-- 同じ実分解 dg 圏へ戻すと、構成した ∞ 関手は実半自由出力射影と全関手同型で一致する。 -/
 def dgModuleOutputResolutionInfinity_comparisonIso :
     FunctorIso (dgNerve.map (dgModuleFunctorResolutionSourceLift R C E F) ≫
       dgModuleOutputResolutionInfinity R C E F)
       (dgNerve.map (dgModuleFunctorResolutionReplacementLift R C E F)) := by
-  have h := (dgModuleFunctorResolutionSourceNerve_isQCatEquivalence R C E F).choose.homInvIso
+  have h := (dgModuleFunctorResolutionSourceNerveEquivalence R C E F).homInvIso
   have he := h.postcomp (dgNerve.map (dgModuleFunctorResolutionReplacementLift R C E F))
   change FunctorIso
     ((dgNerve.map (dgModuleFunctorResolutionSourceLift R C E F) ≫
-      (dgModuleFunctorResolutionSourceNerve_isQCatEquivalence R C E F).choose.inv) ≫
+      (dgModuleFunctorResolutionSourceNerveEquivalence R C E F).inv) ≫
       dgNerve.map (dgModuleFunctorResolutionReplacementLift R C E F))
     (𝟙 _ ≫ dgNerve.map (dgModuleFunctorResolutionReplacementLift R C E F)) at he
   simpa only [dgModuleOutputResolutionInfinity, Category.assoc, Category.id_comp] using he

@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionSection
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionValue
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionAugmentation
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomInfinity
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomValue
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomMappingSpace
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionComparisonNaturality
 import SerrePositivity.InfinityCategories.Derived.EnrichedParameterizedUnit
 import SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainUnit
@@ -3543,6 +3549,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionSection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionValue,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomValue,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomMappingSpace,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionComparisonNaturality,
     `SerrePositivity.InfinityCategories.Derived.EnrichedParameterizedUnit,
     `SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainUnit,
