@@ -12,7 +12,8 @@
 - 通常圏の nerve 上の実際の全 fibration の分類写像 `cocartesianStraighteningCoherentMap` を構成済み。
   元の全相対 Hom の作用を section へ制限し、core の混合作用・対角評価で全対象と全高次を束ねた。
   同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
-  各値は元の fiber と恒等射評価で同値。写像の充満忠実性と本質的全射性はまだ証明していない。
+  各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
+  coherent な主写像の充満忠実性と本質的全射性はまだ証明していない。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
   weighted nerve の共同単位、KanEnrichedComparison による全対象・全高次の比較も実現済み。
@@ -78,7 +79,8 @@
 - 全相対 Hom 作用と scaffold 制限との可換三角形は `7529aa808`。
 - scaffold 評価の厳密な同型と strict transport への変換空間の quasicategory 性は `a75ee4512`。
 - 水平辺の検出と元の制限との厳密な pullback は `c0caa1ce1`。
-- 一般の cocartesian 標的で終点指定の可逆辺 lift、同値持ち上げ、全相対 Hom の制限同値を証明。
+- 一般の cocartesian 標的で終点指定の可逆辺 lift と全相対 Hom の制限同値は `767961448`。
+- 同型不変な水平辺条件への制限と、同じ strict transport の全相対 Hom 作用の同値を証明。
 
 ### 既知の問題
 
@@ -86,18 +88,17 @@
 - Yoneda の充満忠実性は元の Hom 作用そのものの同値性で証明した。独立な c1 の同値だけでは
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
 - 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
-- 全相対 Hom の制限同値は cocartesian 版でも証明済み。水平辺条件への移送には、頂点条件の
-  同型不変性を別に証明する。Cat∞ 分類、元の cocartesian Hom の制限同値と非 Kan fiber の相対延長は残る。
+- 元の cocartesian Hom の scaffold 制限と strict transport の写像空間比較は同値。
+  coherent な主写像への接続、Cat∞ 分類と非 Kan fiber の相対延長は残る。
 
 ### 次の一手
 
 `weightedNerveCocartesianStraighteningVertexIso` は元の strict 図式と同じ分類写像の像を結ぶ。
 strict transport 間への同じ全相対作用は単位・合成を保ち、scaffold 評価後には元の制限と一致する。
-scaffold 評価は厳密な同型で、標的が inner fibration なら同じ評価が ∞ 圏同値。
 水平辺による条件の反映と、元の全相対 Hom の制限との pullback も証明済み。
-`relativeFunctorOverPre_isQCatEquivalence_of_cocartesian` まで完了。
-次は cocartesian 辺の保存条件の VertexIso 不変性を、可逆な成分を持つ実際の正方形で証明する。
-水平辺条件の全部分複体へ制限同値を移し、同じ strict transport の写像空間比較を閉じる。
+`cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence` まで完了。
+次はこの同じ作用の core と coherent nerve 上の Hom 作用との比較を構成する。
+`cocartesianStraighteningCoherentMap` の実際の作用へ接続し、充満忠実性を閉じる。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。

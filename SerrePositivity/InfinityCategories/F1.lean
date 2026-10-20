@@ -1564,3 +1564,11 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianIsofibration
 public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeRestriction
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianRelativePrecompositionEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFunctorIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPredicateIso
+
+public import SerrePositivity.InfinityCategories.F1.FullSubcomplexRestrictionEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportMappingEquivalence
