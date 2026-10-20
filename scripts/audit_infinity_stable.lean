@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.ConeSimplexFunctor
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeNaturality
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeCoslice
+import SerrePositivity.InfinityCategories.Derived.BoundedSimplicialExtensionData
+import SerrePositivity.InfinityCategories.Derived.BoundedSimplicialExtension
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeJoinMap
+import SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteJoinCone
+import SerrePositivity.InfinityCategories.Derived.FiniteConeOpposite
+import SerrePositivity.InfinityCategories.Derived.DGVerdierCofiltered
 import SerrePositivity.InfinityCategories.Derived.TruncatedConeDegeneracyFaces
 import SerrePositivity.InfinityCategories.Derived.TruncatedConeSuccessor
 import SerrePositivity.InfinityCategories.Derived.DGVerdierTruncatedConeSuccessor
@@ -3082,10 +3091,41 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.dgVerdierTruncatedConeSuccessor_nonempty
 #print axioms SerrePositivity.InfinityCategories.dgVerdierTruncatedConeData_nonempty
 
+#print axioms SerrePositivity.InfinityCategories.coneSimplexFunctor_map_δ
+#print axioms SerrePositivity.InfinityCategories.coneSimplexFunctor_map_σ
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.naturalTransformation
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.naturality
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.cosliceMap
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.cosliceMap_projection
+#print axioms SerrePositivity.InfinityCategories.boundedSimplicialExtensionApp_nondegenerate
+#print axioms SerrePositivity.InfinityCategories.boundedSimplicialExtensionApp_epi
+#print axioms SerrePositivity.InfinityCategories.boundedSimplicialExtensionApp_naturality
+#print axioms SerrePositivity.InfinityCategories.boundedSimplicialExtension_truncation
+#print axioms SerrePositivity.InfinityCategories.boundedSimplicialHom_ext
+#print axioms SerrePositivity.InfinityCategories.boundedSimplicialExtension_unique
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.cosliceExtension_projection
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.joinMap_left
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.joinMap_right
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.joinCone_vertex
+#print axioms SerrePositivity.InfinityCategories.TruncatedJoinConeData.joinMap_simplex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierFiniteJoinCone_nonempty
+#print axioms SerrePositivity.InfinityCategories.finiteSimplicialOpposite
+#print axioms SerrePositivity.InfinityCategories.isFilteredInfinity_op_of_finiteCones
+#print axioms SerrePositivity.InfinityCategories.dgVerdierOver_op_isFilteredInfinity
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ConeSimplexFunctor,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeNaturality,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeCoslice,
+    `SerrePositivity.InfinityCategories.Derived.BoundedSimplicialExtensionData,
+    `SerrePositivity.InfinityCategories.Derived.BoundedSimplicialExtension,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeJoinMap,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierFiniteJoinCone,
+    `SerrePositivity.InfinityCategories.Derived.FiniteConeOpposite,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierCofiltered,
     `SerrePositivity.InfinityCategories.Derived.TruncatedConeDegeneracyFaces,
     `SerrePositivity.InfinityCategories.Derived.TruncatedConeSuccessor,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierTruncatedConeSuccessor,

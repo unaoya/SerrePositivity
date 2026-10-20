@@ -15,7 +15,8 @@
 - 全次数の over 単体と実 Verdier 部分圏内の閉始点細分を構成。零面保存、零固定・正番号非零の全順序写像との可換性、全正番号面・退化・共有面の厳密一致を証明。
 - `TruncatedJoinConeData f N` と有限頂点からの N=0 の実初期値を構成。錐全体を一つの追加実閉分母で更新し、同じ apex・全面・全正番号退化条件を保つ操作まで完成。
 - 次次数の零面 f σ と既存錐の正番号面から実境界写像を貼る。有限族を一つの分母後に同時充填し、その全面・共有面・実 apex を更新済み下次数錐へ厳密に一致させた。基本退化表示の標準錐の一致・全面保存・退化正規化も完成。`dgVerdierTruncatedConeSuccessor_nonempty` は次次数有限なら N+1 の錐を、`dgVerdierTruncatedConeData_nonempty` は各次数有限なら任意有限次数の錐を供給する。
-- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGVerdierTruncatedConeSuccessor.lean`。
+- 次元上界までの切断写像の一意な全次数延長を標準 splitting から構成。切断錐の全順序写像への自然性、実 coslice への切断写像と射影の厳密一致、実 join 写像の左右制限・apex・全低次数単体との一致を証明。`dgVerdierFiniteJoinCone_nonempty` は任意の有限単体集合からの実分母図式に同じ部分圏内の実 join 錐を供給する。`dgVerdierOver_op_isFilteredInfinity` により実分母 over 圏の反転は filtered ∞ 圏。
+- 入口：D7 は `Derived/StableTriangulatedEquivalence.lean`。β3 は `Derived/DGVerdierConeRefinement.lean`・`Derived/TruncatedConeNextBoundary.lean`・`Derived/DGVerdierCofiltered.lean`・`Derived/TruncatedConeJoinMap.lean`。
 
 ### 残り（依存順、時間は推定）
 
@@ -40,9 +41,13 @@
 - `truncatedConeDegeneracy_congr`・`truncatedConeNormalizeNext_face_positive`・`TruncatedJoinConeData.normalizedSuccessor`。
 - `dgVerdierTruncatedConeSuccessor_nonempty`・`dgVerdierTruncatedConeData_nonempty`。
 
+- `boundedSimplicialExtension`・`boundedSimplicialExtension_truncation`・`boundedSimplicialExtension_unique`。
+- `TruncatedJoinConeData.naturality`・`TruncatedJoinConeData.cosliceMap_projection`・`TruncatedJoinConeData.joinMap_simplex`。
+- `dgVerdierFiniteJoinCone_nonempty`・`finiteSimplicialOpposite`・`dgVerdierOver_op_isFilteredInfinity`。
+
 ### 依存と提供
 
-- Core・F1・F1B・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded・KST は読み取り専用。
+- Core・F1・F1B・F2・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded・KST は読み取り専用。
 - 提供：Stable の S1〜S6、D(S) の安定性、任意四角形の双カルテジアン判定、D3 の三角同値。
 - 編集対象：Stable/・Derived/、両集約と両監査、本計画。明示指示により Derived 計画の D7 状態も更新する。
 
@@ -52,17 +57,16 @@
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7303 jobs）。公理監査は Derived 9179 宣言／999 モジュール、Stable 10294／1269。許容三公理のみ。今回の新規5モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（7315 jobs）。公理監査は Derived 9222 宣言／1008 モジュール、Stable 10337／1278。許容三公理のみ。今回の新規9モジュールは警告なし。主要宣言に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。全 ∞ 関手圏の局所化普遍性と Verdier 列は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：有限単体集合 K の非退化単体の次元上界を取り、十分高い次数の `TruncatedJoinConeData f N` から実 join 写像 `Δ[0] ⋆ K → dgVerdierOver` を構成する。Mathlib の `SimplicialSet/Splitting.lean`・`Skeleton.lean` を参照し、上界を超える退化と apex 自身の標準退化を含む自然性を照合する。基本退化の表示独立性・全面整合性と一段延長は完成しており、作り直さない。
-- 既存の `Core/NerveCone.lean` の `pointJoinStdSimplexIso`・`joinStdSimplexIso_point_naturality`・`pointJoinStdSimplexIso_inl_vertex`・`_inr` を使うと、各 Γ を `sliceUnderVertex C.apex` の単体へ移せる。切断次数内の一般順序写像への自然性は Mathlib の `SimplexCategory.Truncated.morphismProperty_eq_top`（`SimplexCategory/MorphismProperty.lean`）に全面・退化の生成元条件を与える方針がある。その後、固定済み apex の下で骨格から K 全体へ延長し、`sliceUnderUncurry` で join 写像を回収する。
-- 有限非退化セル帰納、零次元の既存厳密屋根辺との一致、厳密添字の filteredness・実添字への cofinality、実屋根比較の弱同値性、全標的の `F1B/Localization.IsLocalization` と Verdier 列へ進む。`Core/SkeletalExtension` は固定下骨格用なので、追加分母で apex も更新する帰納へそのまま適用しない。
-- `boundary.IsCompatible` は現 Mathlib に存在しない。`BoundaryFaceCompatible`・`boundaryFaceGluing` を使う。
+- β3：有限実分母図式の実 join 錐と、実添字の余 filtered 性は完成。次は右ファイブレーション上の有限図式を、錐の共通 apex の固定 fiber へ全境界付きで輸送する。錐から `sliceUnderCurry` と `F1B/KanRightKanShapeCommaComparison.lean` の `kanPointCosliceHomotopy` で const(apex)→元の射影の実ホモトピーを取り、`F1B/CofinalFixedRightPrism.lean` の `rightFibration_lift_fixed_prism` を使う。元の図式を円柱の終端で固定し、境界の輸送も厳密に固定する。
+- 実屋根比較の任意の相対有限充填問題を共通 fiber 上の pinched Hom の問題へ移し、`dgQuotientRoofFinite_exists_transportedFillerData` と接続する。apex の実零単体は `DGVerdierOverVertexInverse` で閉分母頂点へ戻せる。元・商の全空間の右ファイブレーション性と、商側の左ファイブレーション性を使い、比較後の輸送を全境界付きで一致させる。有限錐の存在だけで屋根比較の弱同値性を主張しない。
+- その後、実屋根比較の弱同値性、全標的の `F1B/Localization.IsLocalization` と Verdier 列、β5、β4。閉零圏の厳密屋根添字と実添字の cofinality を使う場合は別に証明する。実添字の余 filtered 性は既に利用できる。
 
 作成日：2026-10-18。状態：S1〜S7（D7）完了。β3 に進む。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
