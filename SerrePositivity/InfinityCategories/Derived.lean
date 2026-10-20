@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionData
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHom
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIso
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeFunctor

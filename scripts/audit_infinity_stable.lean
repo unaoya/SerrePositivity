@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionData
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHom
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeNaturality
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIso
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeFunctor
@@ -3506,6 +3508,9 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHom,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIso,
     `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeFunctor,
