@@ -820,7 +820,16 @@ J-cell の非循環性は評価の余極限保存で証明する。局所表示�
 随伴の全単体の計算。`carrierConeToFramedLimit_forget` は忘却した E 代数錐で
 この比較が既存の `coneToFramedLimit` の底そのものであることを示す。
 `carrierFramedLimitDerivedHomEquiv_forgetCone` は元の代数比較の底の局所化像を回収する。
-底の一般右導来極限比較の普遍性を閉じる作業が残る。
+`ComplexLimits` は任意の複体図式上で、具体的な右 frame・重み付き end と
+擬同型不変性、定値複体図式との局所化随伴を構成する。
+`ComplexLimits.localizedFramedLimit_isRightDerivedFunctor` は元の通常極限比較による
+右導来普遍性で、`ComplexLimits.framedLimitDerivedIso` は任意の右導来極限の値との同型。
+`carrierFramedLimitComparisonIso` と `carrierFramedLimitComparisonNatIso` は、
+忘却した図式のこの計算と元の E 代数計算対象の底との同じ自然同型。
+`carrierFramedLimitComparisonIso_cone`・`carrierFramedLimitComparisonIso_forgetCone` は
+元の通常錐・元の E 代数錐の比較射の局所化像を保つ。
+`framedLimitCarrierDerivedIso` は底の任意の右導来極限の値との比較。
+一般 homotopy 極限の右導来普遍性と底の導来比較まで構成済み。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
 `mappingSpaceClass` は元の代数射から作る実際の零単体の類で、比較は局所化で元の同じ射になる。
@@ -828,7 +837,7 @@ J-cell の非循環性は評価の余極限保存で証明する。局所表示�
 `FrameHom.frameChoiceIso` は共通 frame による比較を反転した二変数の自然同型。
 `sourceFrameHom` は元の終域への Kan な Hom、`sourceFrameHomComparisonIso` は選んだ Map^h との自然同型。
 これらにも単体集合の完全なモデル構造の入力仮定はない。
-E2a-5 の Map^h と π₀ の Hom 比較は完了。E2a-4 の一般極限・E2b の単体的豊穣化と CAlg_R・G1′ は未完成。
+E2a-4・5 は完了。E2b の単体的豊穣化と CAlg_R・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

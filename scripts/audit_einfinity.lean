@@ -2075,6 +2075,35 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConePiZeroEquiv_coneClass,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_cone,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_forgetCone,
+      `SerrePositivity.EInfinity.ComplexLimits.rightFrameFactorization,
+      `SerrePositivity.EInfinity.ComplexLimits.rightFrameFamily,
+      `SerrePositivity.EInfinity.ComplexLimits.rightFrame_cofibrant,
+      `SerrePositivity.EInfinity.ComplexLimits.weightedCotensorHomEquiv,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitFunctor,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitWeight_cofibrant,
+      `SerrePositivity.EInfinity.ComplexLimits.coneToFramedLimit,
+      `SerrePositivity.EInfinity.ComplexLimits.limitComparisonNatTrans,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitFunctor_map_quasiIso,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitConeSpace_kanComplex,
+      `SerrePositivity.EInfinity.ComplexLimits.sourceRightConeComparisonIso,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitDerivedHomEquiv,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitDerivedHomEquiv_source,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitDerivedHomEquiv_target,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitAdjunction,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitDerivedHomEquiv_cone,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitAdjunction_homEquiv_cone,
+      `SerrePositivity.EInfinity.ComplexLimits.localizedFramedLimit_isRightDerivedFunctor,
+      `SerrePositivity.EInfinity.ComplexLimits.limitFunctor_hasRightDerivedFunctor,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitDerivedIso,
+      `SerrePositivity.EInfinity.FrameHom.RepresentedLocalization.comparisonIso,
+      `SerrePositivity.EInfinity.FrameHom.RepresentedLocalization.comparisonIso_hom_app,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitRestrictedHomIso,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonIso_cone,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonIso_forgetCone,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonIso_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonNatIso,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierDerivedIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_left_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctor_right_isIso,
       `SerrePositivity.EInfinity.FrameHom.overFunctorChoiceIso,
@@ -5667,3 +5696,62 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
         (QD.map ((Operad.Algebra.forget (BarrattEccles.operad ℤ)).mapCone c).π) =
       Q.map (coneToFramedLimit ℤ ℕ F c).hom := by
   exact carrierFramedLimitDerivedHomEquiv_forgetCone ℤ ℕ F c
+
+
+universe e2ComplexLimitUniverse
+
+-- 任意の可換環と小圏で、元の複体極限比較が右導来普遍性を持つ。
+open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (K : Type e2ComplexLimitUniverse) [SmallCategory K] :
+    let := projectiveModelCategory A
+    let := BarrattEccles.CarrierDiagram.projectiveModelCategory A K
+    (ComplexLimits.localizedFramedLimit A K).IsRightDerivedFunctor
+      (ComplexLimits.framedLimitDerivedComparison A K) (weakEquivalences (K ⥤ Complex A)) := by
+  exact ComplexLimits.localizedFramedLimit_isRightDerivedFunctor A K
+
+-- 同じ底の比較同型は元の E 代数錐の通常比較射を保持する。
+open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (K : Type e2ComplexLimitUniverse) [SmallCategory K]
+    (F : K ⥤ (BarrattEccles.operad A).Algebra) (c : Cone F) :
+    let := projectiveModelCategory A
+    let Q := (weakEquivalences (Complex A)).Q
+    Q.map (ComplexLimits.coneToFramedLimit A K ((Diagram.forget A K).obj F)
+        ((Operad.Algebra.forget (BarrattEccles.operad A)).mapCone c)) ≫
+      (carrierFramedLimitComparisonIso A K F).hom = Q.map (coneToFramedLimit A K F c).hom := by
+  exact carrierFramedLimitComparisonIso_forgetCone A K F c
+
+-- 底の比較同型はすべての元の図式射に自然。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (K : Type e2ComplexLimitUniverse) [SmallCategory K]
+    {F G : K ⥤ (BarrattEccles.operad A).Algebra} (g : F ⟶ G) :
+    let := projectiveModelCategory A
+    let Q := (weakEquivalences (Complex A)).Q
+    Q.map ((ComplexLimits.framedLimitFunctor A K).map ((Diagram.forget A K).map g)) ≫
+        (carrierFramedLimitComparisonIso A K G).hom =
+      (carrierFramedLimitComparisonIso A K F).hom ≫
+        Q.map ((framedLimitFunctor A K).map g).hom := by
+  exact carrierFramedLimitComparisonIso_naturality A K g
+
+-- 任意の底の右導来極限の値として、元の E 代数計算対象の底を使える。
+open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+  SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (K : Type e2ComplexLimitUniverse) [SmallCategory K]
+    (F : K ⥤ (BarrattEccles.operad A).Algebra) :
+    let := projectiveModelCategory A
+    let := CarrierDiagram.projectiveModelCategory A K
+    let Q := (weakEquivalences (Complex A)).Q
+    let QD := (weakEquivalences (K ⥤ Complex A)).Q
+    ∀ (RF : (weakEquivalences (K ⥤ Complex A)).Localization ⥤
+        (weakEquivalences (Complex A)).Localization)
+      (β : lim ⋙ Q ⟶ QD ⋙ RF),
+      RF.IsRightDerivedFunctor β (weakEquivalences (K ⥤ Complex A)) →
+      (Q.obj ((framedLimitFunctor A K).obj F).carrier ≅
+        RF.obj (QD.obj ((Diagram.forget A K).obj F))) := by
+  exact framedLimitCarrierDerivedIso A K F
