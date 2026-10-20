@@ -12,7 +12,8 @@ public import Mathlib.CategoryTheory.Comma.Arrow
 open CategoryTheory
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 
-private lemma arrowIdentity_comp {C : Type*} [Category* C] {a b c a' b' c' : C}
+/-- 型付き端点の表示が異なっても、二つの Arrow の等式から積の等式を得る。 -/
+lemma arrowComposition_congr {C : Type*} [Category* C] {a b c a' b' c' : C}
     {f : a ⟶ b} {g : b ⟶ c} {f' : a' ⟶ b'} {g' : b' ⟶ c'}
     (hf : Arrow.mk f = Arrow.mk f') (hg : Arrow.mk g = Arrow.mk g') :
     Arrow.mk (f ≫ g) = Arrow.mk (f' ≫ g') := by
@@ -34,6 +35,15 @@ private lemma arrowIdentity_inv {C : Type*} [Category* C] {a b a' b' : C}
   subst J
   rfl
 
+/-- 二因子の像が同じ恒等射なら、その同じ積の関手像も恒等射である。 -/
+lemma functor_twoFactors_identity_arrow {C D : Type*} [Category* C] [Category* D]
+    (F : C ⥤ D) {a b c : C} (I : a ≅ b) (J : b ≅ c) (z : D)
+    (hI : Arrow.mk (F.map I.hom) = Arrow.mk (𝟙 z))
+    (hJ : Arrow.mk (F.map J.hom) = Arrow.mk (𝟙 z)) :
+    Arrow.mk (F.map (I ≪≫ J).hom) = Arrow.mk (𝟙 z) := by
+  simpa only [Iso.trans_hom, Functor.map_comp, Category.id_comp] using
+    arrowComposition_congr hI hJ
+
 /-- 三つの像が同じ恒等射なら、最初の逆と残りの積も同じ恒等射。 -/
 lemma iso_threeFactors_identity_arrow {C : Type*} [Category* C] {a b c d : C}
     (I : a ≅ b) (J : a ≅ c) (K : c ≅ d) (z : C)
@@ -43,7 +53,7 @@ lemma iso_threeFactors_identity_arrow {C : Type*} [Category* C] {a b c d : C}
     Arrow.mk (I.symm ≪≫ J ≪≫ K).hom = Arrow.mk (𝟙 z) := by
   have hi := arrowIdentity_inv I (Iso.refl z) hI
   simpa only [Iso.refl_inv, Iso.trans_hom, Iso.symm_hom, Category.id_comp] using
-    arrowIdentity_comp hi (arrowIdentity_comp hJ hK)
+    arrowComposition_congr hi (arrowComposition_congr hJ hK)
 
 /-- 三つの同型の関手像の恒等性は、最初の逆を含む同じ積の像でも成立する。 -/
 lemma functor_threeFactors_identity_arrow {C D : Type*} [Category* C] [Category* D]

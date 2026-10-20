@@ -8824,3 +8824,54 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRootInitialComparisonIso_base_hom_arrow
 #print axioms specifiedCoconeRootInitialComparisonIso_base_hom_arrow
+
+#check @arrowComposition_congr
+#print axioms arrowComposition_congr
+
+#check @functor_twoFactors_identity_arrow
+#print axioms functor_twoFactors_identity_arrow
+
+#check @specifiedCoconeRootEndInitialHomotopy_projection
+#print axioms specifiedCoconeRootEndInitialHomotopy_projection
+
+#check @specifiedCoconeRootEndInitialHomotopy_native_projection
+#print axioms specifiedCoconeRootEndInitialHomotopy_native_projection
+
+#check @trivialKanFibration_postcomp_iso_hom_injective
+#print axioms trivialKanFibration_postcomp_iso_hom_injective
+
+#check @exists_specifiedCoconeRootEvaluationHomotopy
+#print axioms exists_specifiedCoconeRootEvaluationHomotopy
+
+#check @specifiedCoconeRootEvaluationHomotopy
+#print axioms specifiedCoconeRootEvaluationHomotopy
+
+#check @specifiedCoconeRootEvaluationHomotopy_evaluation
+#print axioms specifiedCoconeRootEvaluationHomotopy_evaluation
+
+#check @specifiedCoconeRootEvaluationHomotopy_hom
+#print axioms specifiedCoconeRootEvaluationHomotopy_hom
+
+#check @functorIso_postcomp_hom_arrow_map
+#print axioms functorIso_postcomp_hom_arrow_map
+
+#check @specifiedCoconeRootInitialComparisonIso_native_hom_arrow
+#print axioms specifiedCoconeRootInitialComparisonIso_native_hom_arrow
+
+#check @specifiedCoconeRootEvaluationHomotopy_native_hom_arrow
+#print axioms specifiedCoconeRootEvaluationHomotopy_native_hom_arrow
+
+#check @evaluationFixedHomotopyTriangle_homMk_comp
+#print axioms evaluationFixedHomotopyTriangle_homMk_comp
+
+#check @specifiedCoconeRootHomCylinder_homMk_comp
+#print axioms specifiedCoconeRootHomCylinder_homMk_comp
+
+#check @specifiedCoconeRootHomCylinder_native_comp
+#print axioms specifiedCoconeRootHomCylinder_native_comp
+
+#check @specifiedCoconeProjectedNativeHom_comp
+#print axioms specifiedCoconeProjectedNativeHom_comp
+
+#check @specifiedCoconeNativeHom_comp_hom_arrow
+#print axioms specifiedCoconeNativeHom_comp_hom_arrow
