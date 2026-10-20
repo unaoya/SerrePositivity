@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinementData
+import SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinementEquations
+import SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinement
+import SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeNextFaces
+import SerrePositivity.InfinityCategories.Derived.TruncatedConeNextBoundary
+import SerrePositivity.InfinityCategories.Derived.DGVerdierConeNextSource
+import SerrePositivity.InfinityCategories.Derived.DGVerdierConeNextFinite
+import SerrePositivity.InfinityCategories.Derived.DGVerdierConeNextCoherence
 import SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInitial
 import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementInitialMaps
 import SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementDegeneracies
@@ -3029,10 +3038,42 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.dgVerdierZeroConeData
 #print axioms SerrePositivity.InfinityCategories.dgVerdierZeroConeData_nonempty
 
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeSimplex_source
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeRefinementMap_edge
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeRefinedSimplex_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeRefinedSimplex_first_vertex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeRefinedSimplex_face_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeRefinedSimplex_degeneracy_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTruncatedConeRefinement
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTruncatedConeRefinement_apex_source
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTruncatedConeRefinement_simplex_source
+#print axioms SerrePositivity.InfinityCategories.dgVerdierTruncatedConeRefinement_restrict
+#print axioms SerrePositivity.InfinityCategories.boundaryFaceIsColimit
+#print axioms SerrePositivity.InfinityCategories.boundaryFaceGluing_face
+#print axioms SerrePositivity.InfinityCategories.truncatedConeNextFace_compatible
+#print axioms SerrePositivity.InfinityCategories.truncatedConeNextBoundary_face_zero
+#print axioms SerrePositivity.InfinityCategories.truncatedConeNextBoundary_face_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextBoundary_source
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextFiniteRefinement_nonempty
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextSimplex_face_zero
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextSimplex_face_positive
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextSimplex_first_vertex
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextSimplex_commonFace_eq
+#print axioms SerrePositivity.InfinityCategories.dgVerdierConeNextFinite_exists
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinementData,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinementEquations,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierConeRefinement,
+    `SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeNextFaces,
+    `SerrePositivity.InfinityCategories.Derived.TruncatedConeNextBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierConeNextSource,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierConeNextFinite,
+    `SerrePositivity.InfinityCategories.Derived.DGVerdierConeNextCoherence,
     `SerrePositivity.InfinityCategories.Derived.RoofPointExtendedInitial,
     `SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementInitialMaps,
     `SerrePositivity.InfinityCategories.Derived.DGOverInitialRefinementDegeneracies,
