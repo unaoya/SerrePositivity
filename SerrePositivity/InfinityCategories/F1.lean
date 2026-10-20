@@ -1084,3 +1084,5 @@ public import SerrePositivity.InfinityCategories.F1.SimplicialPairNerve
 public import SerrePositivity.InfinityCategories.F1.SimplicialOverTestFamily
 public import SerrePositivity.InfinityCategories.F1.ScaffoldTestFamilyComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeHomComparisonRecovery
+public import SerrePositivity.InfinityCategories.F1.RelativeHomComparisonFamily
+public import SerrePositivity.InfinityCategories.F1.RelativeHomComparisonSpace
