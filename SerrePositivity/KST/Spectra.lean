@@ -937,3 +937,6 @@ public import SerrePositivity.KST.Spectra.InternalHomExchangeCurriedComposition
 public import SerrePositivity.KST.Spectra.PointedPreActionCotensor
 public import SerrePositivity.KST.Spectra.PointedPrecompositionParametricNaturality
 public import SerrePositivity.KST.Spectra.UniversalSourceParametricNaturality
+public import SerrePositivity.KST.Spectra.PointedIntervalCotensorConjugation
+public import SerrePositivity.KST.Spectra.OrdinaryLoopParametricCoordinates
+public import SerrePositivity.KST.Spectra.OrdinaryLoopParametricNaturality
