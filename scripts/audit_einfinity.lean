@@ -1656,6 +1656,17 @@ run_cmd do
       `SerrePositivity.EInfinity.HomotopyWeight.comparison_rlp,
       `SerrePositivity.EInfinity.HomotopyWeight.reindex_cofibration,
       `SerrePositivity.EInfinity.HomotopyWeight.realization_map_cofibration,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_boundary_rlp,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_fibration,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_kanComplex,
+      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_isIso_of_boundary_rlp,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameCone,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_target_boundary_rlp,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_kanComplex,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_source_boundary_rlp,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_target_weakEquivalence_isIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_source_trivialCofibration_isIso,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_source_weakEquivalence_isIso,
       `SerrePositivity.EInfinity.HomotopyWeight.comparison_mono_rlp,
       `SerrePositivity.EInfinity.HomotopyWeight.weight_kanComplex,
       `SerrePositivity.EInfinity.HomotopyWeight.valueSection,
@@ -1677,7 +1688,13 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitHomEquiv_map,
       `SerrePositivity.EInfinity.BarrattEccles.limitComparison_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.limitComparisonNatTrans,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_map_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace_map_piZero_bijective,
       `SerrePositivity.EInfinity.FrameHom.map_isIso_of_fibrant,
+      `SerrePositivity.EInfinity.FrameHom.map_isIso_of_pointwise_cofibrant,
       `SerrePositivity.EInfinity.FrameHom.target_boundary_rlp,
       `SerrePositivity.EInfinity.FrameHom.target_trivialFibration_isIso,
       `SerrePositivity.EInfinity.FrameHom.target_weakEquivalence_isIso,
@@ -4611,3 +4628,52 @@ example {X Y : (BarrattEccles.operad ℤ).Algebra} (f : X ⟶ Y) (hf : QuasiIso 
     rw [e.apply_symm_apply, IsIso.hom_inv_id]
   · change e (e.symm (inv (Q.map f))) ≫ Q.map f = 𝟙 _
     rw [e.apply_symm_apply, IsIso.inv_hom_id]
+
+-- 選んだ射影重みの錐は頂点ごとに充填するだけでなく、図式全体に自然な充填を持つ。
+open CategoryTheory.Limits SerrePositivity.EInfinity.HomotopyWeight
+  SerrePositivity.DiagramModel.WeightedCones in
+example {F G : ℕ ⥤ SSet} (p : F ⟶ G)
+    (hp : ∀ k, SSet.modelCategoryQuillen.I.rlp (p.app k))
+    {X Y : SSet} (i : X ⟶ Y) [Mono i]
+    (a : X ⟶ (coneSpace ℕ (weight ℕ)).obj F)
+    (b : Y ⟶ (coneSpace ℕ (weight ℕ)).obj G)
+    (h : a ≫ (coneSpace ℕ (weight ℕ)).map p = i ≫ b) :
+    ∃ l : Y ⟶ (coneSpace ℕ (weight ℕ)).obj F,
+      i ≫ l = a ∧ l ≫ (coneSpace ℕ (weight ℕ)).map p = b := by
+  have : HasLiftingProperty i ((coneSpace ℕ (weight ℕ)).map p) :=
+    SSet.rlp_monomorphisms.ge _
+      (coneSpace_map_boundary_rlp ℕ (weight ℕ) (weight_cofibrant ℕ) p hp) i inferInstance
+  let sq : CommSq a i ((coneSpace ℕ (weight ℕ)).map p) b := ⟨h⟩
+  exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
+
+-- Kan 値図式の実際の重み付き錐空間は全次元のホーンを充填する。
+open SerrePositivity.EInfinity.HomotopyWeight
+  SerrePositivity.DiagramModel.WeightedCones in
+example (F : ℕ ⥤ SSet) (hF : ∀ k, SSet.KanComplex (F.obj k))
+    (n : ℕ) (i : Fin (n + 2))
+    (a : (SSet.horn (n + 1) i : SSet) ⟶ (coneSpace ℕ (weight ℕ)).obj F) :
+    ∃ b : SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)) ⟶
+      (coneSpace ℕ (weight ℕ)).obj F, a = (SSet.horn (n + 1) i).ι ≫ b := by
+  have := coneSpace_kanComplex ℕ (weight ℕ) (weight_cofibrant ℕ) F hF
+  exact SSet.KanComplex.hornFilling a
+
+-- 元の E 代数に cofibrancy を仮定せず、右 frame の錐の全次元のホーンを充填する。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
+    (Y : (BarrattEccles.operad ℤ).Algebra) (n : ℕ) (i : Fin (n + 2))
+    (a : (SSet.horn (n + 1) i : SSet) ⟶ (framedLimitConeSpace ℤ ℕ Y).obj F) :
+    ∃ b : SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)) ⟶
+      (framedLimitConeSpace ℤ ℕ Y).obj F, a = (SSet.horn (n + 1) i).ι ≫ b := by
+  have := framedLimitConeSpace_kanComplex ℤ ℕ F Y
+  exact SSet.KanComplex.hornFilling a
+
+-- 頂点ごとの代数の擬同型を通して、各連結成分の錐は一意な成分へ戻せる。
+open SerrePositivity.EInfinity.BarrattEccles in
+example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
+    (hf : ∀ k, QuasiIso (f.app k).hom) (Y : (BarrattEccles.operad ℤ).Algebra)
+    (z : SSet.π₀ ((framedLimitConeSpace ℤ ℕ Y).obj G)) :
+    ∃! w : SSet.π₀ ((framedLimitConeSpace ℤ ℕ Y).obj F),
+      SSet.mapπ₀ ((framedLimitConeSpace ℤ ℕ Y).map f) w = z := by
+  obtain ⟨hinj, hsurj⟩ := framedLimitConeSpace_map_piZero_bijective ℤ ℕ f hf Y
+  obtain ⟨w, hw⟩ := hsurj z
+  exact ⟨w, hw, fun w' hw' => hinj (hw'.trans hw.symm)⟩

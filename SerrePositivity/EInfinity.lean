@@ -448,12 +448,16 @@ public import SerrePositivity.EInfinity.HomotopyWeight.Generators
 public import SerrePositivity.EInfinity.HomotopyWeight.PointReplacement
 public import SerrePositivity.EInfinity.HomotopyWeight.Reindex
 public import SerrePositivity.EInfinity.HomotopyWeight.FrameLifting
+public import SerrePositivity.EInfinity.HomotopyWeight.ConeLifting
+public import SerrePositivity.EInfinity.HomotopyWeight.FrameCones
 public import SerrePositivity.EInfinity.HomotopyWeight.Values
 public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorLifting
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimit
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitComparison
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitNaturality
+public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones
 public import SerrePositivity.EInfinity.FrameHom.BrownInversion
+public import SerrePositivity.EInfinity.FrameHom.PointwiseBrown
 public import SerrePositivity.EInfinity.FrameHom.TargetInvariance
 public import SerrePositivity.EInfinity.FrameHom.SourceInvariance
 public import SerrePositivity.EInfinity.FrameHom.Comparison

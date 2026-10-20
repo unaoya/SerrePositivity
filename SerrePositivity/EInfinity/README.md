@@ -693,12 +693,23 @@ nullary を含む TR の部分合成保存は完了。
 `weightedCotensorCarrierIso` は同じ図式・重み・frame を用いた底の複体の end との同型。
 これらに単体集合の完全なモデル構造は使わず、未証明項目を含む既存 Kan–Quillen 入力も import しない。
 `HomotopyWeight.weight` は自由境界の小対象分解による実際の射影 cofibrant な一点重み。
+`HomotopyWeight.coneSpace_map_boundary_rlp` と `coneSpace_map_fibration` は、
+射影 cofibrant 重みの錐空間が頂点ごとの境界の右類と Kan fibration を保つことを与える。
+`coneSpace_kanComplex` は Kan 値図式の錐空間の Kan 性、
+`coneSpace_map_isIso_of_boundary_rlp` は anodyne 反転後の同型を与える。
+これらに単体集合の完全なモデル構造の仮定はない。
 `comparison_rlp` は各値の境界右持ち上げ性で、各値の Kan 性・切断・実際の収縮も構成済み。
 切断と収縮は各頂点ごとのもので、添字圏に自然な切断は主張しない。
 `weightedCotensor_map_fibration` は重みの射影 cofibration に沿う制限が fibration となること。
 `framedLimitFunctor` はこの重みで計算する実際の小図式上の関手、`framedLimitCarrierIso` は同じ底の計算との同型。
 `coneToFramedLimit` は通常の錐からの射で、固定した図式の錐の射に自然。
 `limitComparisonNatTrans` は通常の極限から計算関手への実際の自然変換。
+`framedLimitConeSpace` は同じ重みと右 frame への錐空間で、試験始域を具体的に cofibrant 置換する。
+`framedLimitConeSpace_kanComplex` はその Kan 性、`framedLimitConeSpace_map_isIso` は
+頂点ごとの擬同型の anodyne 反転後の同型性。図式モデルや元の代数の cofibrancy は要求しない。
+`FrameHom.map_isIso_of_pointwise_cofibrant` の自然な Brown 分解と、
+`HomotopyWeight.frameCone_source_weakEquivalence_isIso` がこの比較を与える。
+計算対象への Map^h とこの錐空間の比較は未構成。
 計算関手のホモトピー不変性・右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。
 `mappingSpacePiZeroEquiv` は任意の普通の局所化後の Hom と π₀ の同値で、始域・終域の射に自然。
