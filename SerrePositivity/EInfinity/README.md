@@ -1140,7 +1140,20 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 元の交わりへの標準包含そのものの同型性と元の包含への一致。
 `BarrattEccles.algebraHammockGraphDiagram_proper`・`algebraHammockIdentityPreimage_image`・
 `algebraHammockGraphIntersectionComparison_isIso`・`_fac` は任意の可換環上で完成。
-縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`Word.erase`・`eraseInclusion_missing_iff` は元の一列を削除した部分語とその包含。
+`eraseSimplex`・`_fac`・`_unique` は全行恒等の一列を除いた元の全射列の一意な回収で、
+`eraseSimplex_map` は全 face・degeneracy に対する厳密な自然性。
+`Word.mergeMap`・`_surjective`・`_fiber` は同方向の隣接二列だけをまとめる元の全射。
+`RawHammock` は元の語と全射列の依存和で、`RawHammock.simplicialSet`・`augmentation` は
+元の全作用素と同じ余極限への標準射を保持する単体集合と単体的射。
+`Reduction.merge`・`erase` は元の二つの基本縮約。`length_lt`・`chain_value_eq` は
+長さの減少と同じ元の余極限内の値の保存。`Reduction.map`・`chain_map` は全作用素での保存。
+`reduced_iff_no_reduction` は原典の交互方向・非恒等列の条件との一致。
+`exists_reduced_representative`・`exists_reduced_same_value` は全次数の元の有限回の縮約で
+同じ値を持つ縮約済みの代表へ到達することを示す。
+`BarrattEccles.algebraHammockRaw_existsReducedRepresentative`・`_existsReducedSameValue`・
+`algebraHammockRawReduction_map` と元の raw 単体集合・射は任意の可換環上で完成。
+縮約の合流性と代表の一意性、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

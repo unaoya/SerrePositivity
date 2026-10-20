@@ -3289,6 +3289,64 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.ProperDiagram.map_mono,
       `SerrePositivity.EInfinity.Hammock.ProperDiagram.intersection_range]
 
+@[noinline] private def e2RequiredBatch26 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.erase,
+      `SerrePositivity.EInfinity.Hammock.Word.eraseInclusion,
+      `SerrePositivity.EInfinity.Hammock.Word.eraseInclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.erase_length,
+      `SerrePositivity.EInfinity.Hammock.Word.erase_length_lt,
+      `SerrePositivity.EInfinity.Hammock.Word.eraseInclusion_range,
+      `SerrePositivity.EInfinity.Hammock.Word.eraseInclusion_missing_iff,
+      `SerrePositivity.EInfinity.Hammock.identityOutside_erase_iff,
+      `SerrePositivity.EInfinity.Hammock.Word.mergeTarget,
+      `SerrePositivity.EInfinity.Hammock.Word.mergeMap,
+      `SerrePositivity.EInfinity.Hammock.Word.mergeMap_surjective,
+      `SerrePositivity.EInfinity.Hammock.Word.mergeMap_left,
+      `SerrePositivity.EInfinity.Hammock.Word.mergeMap_right,
+      `SerrePositivity.EInfinity.Hammock.Word.mergeMap_fiber,
+      `SerrePositivity.EInfinity.Hammock.exists_eraseSimplex,
+      `SerrePositivity.EInfinity.Hammock.eraseSimplex,
+      `SerrePositivity.EInfinity.Hammock.eraseSimplex_fac,
+      `SerrePositivity.EInfinity.Hammock.eraseSimplex_unique,
+      `SerrePositivity.EInfinity.Hammock.RawHammock,
+      `SerrePositivity.EInfinity.Hammock.RawHammock.map,
+      `SerrePositivity.EInfinity.Hammock.RawHammock.value,
+      `SerrePositivity.EInfinity.Hammock.RawHammock.value_map,
+      `SerrePositivity.EInfinity.Hammock.RawHammock.value_transition,
+      `SerrePositivity.EInfinity.Hammock.RawHammock.IsReduced,
+      `SerrePositivity.EInfinity.Hammock.Reduction,
+      `SerrePositivity.EInfinity.Hammock.Reduction.length_lt,
+      `SerrePositivity.EInfinity.Hammock.Reduction.value_eq,
+      `SerrePositivity.EInfinity.Hammock.Reduction.chain_value_eq,
+      `SerrePositivity.EInfinity.Hammock.no_reduction_of_reduced,
+      `SerrePositivity.EInfinity.Hammock.exists_reduction_of_not_reduced,
+      `SerrePositivity.EInfinity.Hammock.reduced_iff_no_reduction,
+      `SerrePositivity.EInfinity.Hammock.exists_reduced_representative,
+      `SerrePositivity.EInfinity.Hammock.exists_reduced_same_value,
+      `SerrePositivity.EInfinity.Hammock.identityColumn_map,
+      `SerrePositivity.EInfinity.Hammock.eraseSimplex_map,
+      `SerrePositivity.EInfinity.Hammock.Reduction.map,
+      `SerrePositivity.EInfinity.Hammock.Reduction.chain_map,
+      `SerrePositivity.EInfinity.Hammock.RawHammock.simplicialSet,
+      `SerrePositivity.EInfinity.Hammock.RawHammock.augmentation,
+      `SerrePositivity.EInfinity.Hammock.RawHammock.augmentation_app,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRaw,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawMap,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawValue,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawIsReduced,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawReduction,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawReduction_length_lt,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawReduction_value_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawReduction_map,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRaw_existsReducedRepresentative,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRaw_existsReducedSameValue,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRaw_reduced_iff_no_reduction,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawSimplicialSet,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockRawAugmentation_app,
+      `SerrePositivity.EInfinity.Hammock.Reduction.merge,
+      `SerrePositivity.EInfinity.Hammock.Reduction.erase]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3315,7 +3373,7 @@ run_cmd do
       e2RequiredBatch12, e2RequiredBatch13, e2RequiredBatch14, e2RequiredBatch15,
       e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
       e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
-      e2RequiredBatch24, e2RequiredBatch25] do
+      e2RequiredBatch24, e2RequiredBatch25, e2RequiredBatch26] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -7952,3 +8010,58 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b c : Hammock.Word}
       (Subfunctor.range ((BarrattEccles.algebraHammockGraphDiagram A X Y).map
         (Hammock.Word.intersectionInclusion f g))).ι :=
   BarrattEccles.algebraHammockGraphIntersectionComparison_fac A f g hf hg X Y
+
+-- 任意の可換環上・全次数で元の有限回の縮約から縮約済みの代表へ到達する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
+    (n : SimplexCategoryᵒᵖ) (r : BarrattEccles.algebraHammockRaw A X Y n) :
+    ∃ s, Relation.ReflTransGen (BarrattEccles.algebraHammockRawReduction A X Y) r s ∧
+      BarrattEccles.algebraHammockRawIsReduced A X Y s :=
+  BarrattEccles.algebraHammockRaw_existsReducedRepresentative A X Y r
+
+-- 元の実際の余極限内の値も、同じ縮約済みの代表へ保持される。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
+    (n : SimplexCategoryᵒᵖ) (r : BarrattEccles.algebraHammockRaw A X Y n) :
+    ∃ s, BarrattEccles.algebraHammockRawIsReduced A X Y s ∧
+      BarrattEccles.algebraHammockRawValue A X Y r = BarrattEccles.algebraHammockRawValue A X Y s :=
+  BarrattEccles.algebraHammockRaw_existsReducedSameValue A X Y r
+
+-- 両基本縮約とも元の長さを厳密に減らす。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
+    (n : SimplexCategoryᵒᵖ) {r s : BarrattEccles.algebraHammockRaw A X Y n}
+    (h : BarrattEccles.algebraHammockRawReduction A X Y r s) : s.1.length < r.1.length :=
+  BarrattEccles.algebraHammockRawReduction_length_lt A X Y h
+
+-- 元の二操作の縮約関係は、全 face・degeneracy で保存される。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
+    {n m : SimplexCategoryᵒᵖ} {r s : BarrattEccles.algebraHammockRaw A X Y n}
+    (h : BarrattEccles.algebraHammockRawReduction A X Y r s) (α : n ⟶ m) :
+    BarrattEccles.algebraHammockRawReduction A X Y (BarrattEccles.algebraHammockRawMap A X Y α r)
+      (BarrattEccles.algebraHammockRawMap A X Y α s) :=
+  BarrattEccles.algebraHammockRawReduction_map A X Y h α
+
+-- 元の恒等列の削除は、包含後に同じ元の全射列を厳密に回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category C] (W : MorphismProperty C)
+    [W.IsMultiplicative] (X Y : C) {w : Word} (j : Fin w.length) (n : SimplexCategoryᵒᵖ)
+    (τ : (graph W w X Y).obj n) (hτ : ∀ k, IdentityColumn (τ.obj k) j) :
+    ((graphDiagram W X Y).map (Word.eraseInclusion w j)).app n
+        (eraseSimplex W X Y j τ hτ) = τ := eraseSimplex_fac W X Y j τ hτ
+
+-- 同方向二列の合成の fiber は、元の隣接二列そのもの。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {n : ℕ} (d : Fin (n + 2) → Direction) (p : Fin (n + 1))
+    (hp : d p.castSucc = d p.succ) (j : Fin (n + 2)) :
+    (Word.mergeMap d p hp).orderHom j = p ↔ j = p.castSucc ∨ j = p.succ :=
+  Word.mergeMap_fiber d p hp j
+
+-- 未縮約単体集合の元の射は、同じ元の余極限の値を全次数で回収する。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
+    (n : SimplexCategoryᵒᵖ) (r : BarrattEccles.algebraHammockRaw A X Y n) :
+    (BarrattEccles.algebraHammockRawAugmentation A X Y).app n r =
+      BarrattEccles.algebraHammockRawValue A X Y r :=
+  BarrattEccles.algebraHammockRawAugmentation_app A X Y n r

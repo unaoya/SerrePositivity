@@ -836,3 +836,13 @@ public import SerrePositivity.EInfinity.Hammock.WordIntersection
 public import SerrePositivity.EInfinity.Hammock.GraphIntersection
 public import SerrePositivity.EInfinity.Hammock.ProperDiagram
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphProper
+public import SerrePositivity.EInfinity.Hammock.WordErasure
+public import SerrePositivity.EInfinity.Hammock.WordMerge
+public import SerrePositivity.EInfinity.Hammock.EraseSimplex
+public import SerrePositivity.EInfinity.Hammock.RawHammock
+public import SerrePositivity.EInfinity.Hammock.Reduction
+public import SerrePositivity.EInfinity.Hammock.ReductionExistence
+public import SerrePositivity.EInfinity.Hammock.EraseSimplexNaturality
+public import SerrePositivity.EInfinity.Hammock.ReductionNaturality
+public import SerrePositivity.EInfinity.Hammock.RawSimplicialSet
+public import SerrePositivity.EInfinity.BarrattEccles.HammockReduction
