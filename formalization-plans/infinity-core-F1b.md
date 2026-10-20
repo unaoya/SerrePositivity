@@ -49,7 +49,8 @@
   余錐空間から定値変換空間・小さい全空間の内部 Hom への標準比較の同値性を証明。
   元の小さい単位の比較と必要な全 fiber 標的への前合成同値から、構成済み余錐の native 余極限性を証明。
   一般 coherent 図式の HasColimit、共通境界付き同時検出、元の全空間 Kan 積比較の弱同値性・ホモトピー逆を証明。引き戻し交換・Ind は残る。
-  検証：三集約 7262 jobs、公理監査 2274 宣言、同時 import 成功。一般 coherent filtered 余極限の有限極限交換は残る。
+  定値底の有限関手比較の cofinality・弱同値性、値の内部 Hom 表示、二入力と全 path を保つ引き戻し比較を構成。
+  検証：三集約 7280 jobs、公理監査 2321 宣言、同時 import 成功。一般 coherent filtered 余極限の有限極限交換は残る。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -68,7 +69,6 @@
 - `F1B.kanNerveLeftCoconeTransport_cocone` / `F1B.kanNerveRightConeTransport_cone`
 - `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff`
 - `F2.catPullbackObject` / `F2.catPullbackFunctorIso` / `F2.catPullbackFunctorCoreIso`
-- `F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` / `F2.isKappaFiltered_iff_constantDiagram_rightCofinal`
 - `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex`
 - `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
 - `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
@@ -97,7 +97,7 @@
 
 ### 次の一手
 
-- F2N-1：積比較の同値性を再利用し、一般 coherent な cospan の path 引き戻し比較と有限極限交換へ進む。
+- F2N-1：定値底の始点評価の底上のホモトピー逆と全空間 Kan path 比較から、引き戻し比較の弱同値性へ進む。
 
 正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と [foundations.md](foundations.md) §6・§8。
 本計画は目標・設計・現在地・主要宣言を管理し、実施記録はコミットメッセージに置く。
