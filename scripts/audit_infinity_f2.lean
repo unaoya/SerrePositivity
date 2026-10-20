@@ -730,3 +730,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeRealization
 #check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_vertex
 #check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.constantTransformationPrism_curry
+#check @SerrePositivity.InfinityCategories.F2.constantTransformationCurry_prism
+#check @SerrePositivity.InfinityCategories.F2.coconeParameterPrism_precomp
+#check @SerrePositivity.InfinityCategories.F2.coconeTransformationMap_prism
+#check @SerrePositivity.InfinityCategories.F2.coconeTransformationMap_postcomp
+#check @SerrePositivity.InfinityCategories.F2.coconeTransformationVertex_prism
+#check @SerrePositivity.InfinityCategories.F2.coconeParameterPrism_injective
+#check @SerrePositivity.InfinityCategories.F2.coconeTransformationMap_mono
+#check @SerrePositivity.InfinityCategories.F2.exists_pre_fatJoinComparison_right_relative_retraction
+#check @SerrePositivity.InfinityCategories.F2.exists_joinDiagram_right_relative_extension
+#check @SerrePositivity.InfinityCategories.F2.constantTransformationFatDiagram_precomp
+#check @SerrePositivity.InfinityCategories.F2.coconeTransformationFatDiagram_comparison
+#check @SerrePositivity.InfinityCategories.F2.coconeTransformationMap_exists_retraction
