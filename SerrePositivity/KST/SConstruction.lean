@@ -1080,4 +1080,12 @@ public import SerrePositivity.KST.SConstruction.AnodyneExtensionLifting
 public import SerrePositivity.KST.SConstruction.KanMappingCompositionLifting
 public import SerrePositivity.KST.SConstruction.DGApplication
 public import SerrePositivity.KST.SConstruction.DGQuasiEquivalence
+public import SerrePositivity.KST.SConstruction.DGModuleClosedOperations
+public import SerrePositivity.KST.SConstruction.DGModuleClosedSquares
+public import SerrePositivity.KST.SConstruction.DGModuleClosedChoices
+public import SerrePositivity.KST.SConstruction.DGModuleClosedStability
+public import SerrePositivity.KST.SConstruction.DGModuleClosedExactInclusion
+public import SerrePositivity.KST.SConstruction.PerfectDGStableModel
+public import SerrePositivity.KST.SConstruction.PerfectDGExtension
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionExact
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -16142,3 +16142,68 @@ namespace SerrePositivity.KST.SConstruction
 #check @dgMultiRealization_map_localized_isIso
 #print axioms dgMultiRealization_map_localized_isIso
 end SerrePositivity.KST.SConstruction
+
+namespace SerrePositivity.KST.SConstruction
+#check @DGModuleClosedOperations
+#print axioms DGModuleClosedOperations
+#check @DGModuleClosedOperations.mk
+#print axioms DGModuleClosedOperations.mk
+#check @DGModuleClosedOperations.zero_mem
+#print axioms DGModuleClosedOperations.zero_mem
+#check @DGModuleClosedOperations.cone_mem
+#print axioms DGModuleClosedOperations.cone_mem
+#check @DGModuleClosedOperations.fiber_mem
+#print axioms DGModuleClosedOperations.fiber_mem
+#check @dgModuleClosedConeVertices
+#print axioms dgModuleClosedConeVertices
+#check @dgModuleClosedFiberVertices
+#print axioms dgModuleClosedFiberVertices
+#check @dgModuleClosedConeSquare
+#print axioms dgModuleClosedConeSquare
+#check @dgModuleClosedFiberSquare
+#print axioms dgModuleClosedFiberSquare
+#check @dgModuleClosedConeSquare_isPushout
+#print axioms dgModuleClosedConeSquare_isPushout
+#check @dgModuleClosedConeSquare_isPullback
+#print axioms dgModuleClosedConeSquare_isPullback
+#check @dgModuleClosedFiberSquare_isPullback
+#print axioms dgModuleClosedFiberSquare_isPullback
+#check @dgModuleClosedFiberSquare_isPushout
+#print axioms dgModuleClosedFiberSquare_isPushout
+#check @dgModuleClosedAmbientEdge
+#print axioms dgModuleClosedAmbientEdge
+#check @dgModuleClosed_bicartesian_cofiber_exists
+#print axioms dgModuleClosed_bicartesian_cofiber_exists
+#check @dgModuleClosed_bicartesian_fiber_exists
+#print axioms dgModuleClosed_bicartesian_fiber_exists
+#check @dgModuleClosedNerve_hasZeroVertex
+#print axioms dgModuleClosedNerve_hasZeroVertex
+#check @dgModuleClosedNerve_isStable
+#print axioms dgModuleClosedNerve_isStable
+#check @dgModuleClosedStableModel
+#print axioms dgModuleClosedStableModel
+#check @dgModuleClosed_cofiber_exists_preserved
+#print axioms dgModuleClosed_cofiber_exists_preserved
+#check @dgModuleClosedInclusion_isExactFunctor
+#print axioms dgModuleClosedInclusion_isExactFunctor
+#check @perfectDGClosedOperations
+#print axioms perfectDGClosedOperations
+#check @perfectDGStableModel
+#print axioms perfectDGStableModel
+#check @smallPerfectDGNerveEquivalence
+#print axioms smallPerfectDGNerveEquivalence
+#check @smallPerfectDGNerve_isStable
+#print axioms smallPerfectDGNerve_isStable
+#check @smallPerfectDGStableModel
+#print axioms smallPerfectDGStableModel
+#check @dgModuleExtension_perfectProjective
+#print axioms dgModuleExtension_perfectProjective
+#check @perfectDGExtension
+#print axioms perfectDGExtension
+#check @perfectDGExtension_inclusion
+#print axioms perfectDGExtension_inclusion
+#check @perfectDGExtensionNerve_isExactFunctor
+#print axioms perfectDGExtensionNerve_isExactFunctor
+#check @perfectDGStableMap
+#print axioms perfectDGStableMap
+end SerrePositivity.KST.SConstruction
