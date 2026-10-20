@@ -27,7 +27,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.RawFiberInfinityCone,
     `SerrePositivity.KST.LocalizingInvariants.LimitVertexTransport,
     `SerrePositivity.KST.LocalizingInvariants.BFFiberInfinityCone,
-    `SerrePositivity.KST.LocalizingInvariants.BFFiberSquare]
+    `SerrePositivity.KST.LocalizingInvariants.BFFiberSquare,
+    `SerrePositivity.KST.LocalizingInvariants.StrictConeTransport,
+    `SerrePositivity.KST.LocalizingInvariants.ConeEdgeLeg,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumConeLeg,
+    `SerrePositivity.KST.LocalizingInvariants.ReplacedFiberLeg,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberLeg,
+    `SerrePositivity.KST.LocalizingInvariants.ConeSquareLeg,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareLeg,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyClass,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyComparison,
+    `SerrePositivity.KST.LocalizingInvariants.CoherentSplitFiberGroups]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

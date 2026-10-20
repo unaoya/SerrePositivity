@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.RawFiberInfinityCone
 public import SerrePositivity.KST.LocalizingInvariants.LimitVertexTransport
 public import SerrePositivity.KST.Spectra.SpectrumCospanReplacement
+public import SerrePositivity.KST.LocalizingInvariants.StrictConeTransport
 
 /-!
 概要：長完全列の元の BF fiber を頂点とする Sp の極限錐。
@@ -67,25 +68,35 @@ lemma replacedConeComparison_projection :
       (coherentNerveEdge (comparison p hp)).edge :=
   (exists_replacedCone p).choose_spec.2.2.choose_spec
 
+/-- 置換単位の元の円柱を保持した、元の cospan への錐の輸送。 -/
+def homotopyFiberTransport {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
+    F2.SpecifiedLimitConeTransport
+      (p := strictCoherentDiagram (spectrumPullbackDiagram f (fromPoint B)))
+      (F2.strictCoherentNatTransMap (CospanReplacement.unit f (fromPoint B)))
+      (replacedCone (fibrationReplacementProjection f)) :=
+  StrictConeTransport.transport (CospanReplacement.unit f (fromPoint B))
+    (CospanReplacement.unit_isInvertible f (fromPoint B))
+    (replacedCone (fibrationReplacementProjection f))
+    (replacedCone_isLimit (fibrationReplacementProjection f))
+
 /-- 任意射の元の homotopyFiber を頂点とする、元の cospan 上の極限錐の存在。 -/
 lemma homotopyFiber_exists_limitCone {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
     ∃ c : JoinCone (strictCoherentDiagram (spectrumPullbackDiagram f (fromPoint B))),
       IsLimitCone c ∧ c.vertex = coherentNerveVertex (homotopyFiber f) := by
-  obtain ⟨c, hc, hv⟩ := DiagramLimitTransport.exists_limitCone_of_functorIso
-    (CospanReplacement.diagramIso f (fromPoint B))
-    (replacedCone (fibrationReplacementProjection f))
-    (replacedCone_isLimit (fibrationReplacementProjection f))
-  exact ⟨c, hc, hv.trans (replacedCone_vertex (fibrationReplacementProjection f))⟩
+  let t := homotopyFiberTransport f
+  exact ⟨t.cone, t.isLimit,
+    t.vertex_eq.trans (replacedCone_vertex (fibrationReplacementProjection f))⟩
 
 def homotopyFiberCone {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
     JoinCone (strictCoherentDiagram (spectrumPullbackDiagram f (fromPoint B))) :=
-  (homotopyFiber_exists_limitCone f).choose
+  (homotopyFiberTransport f).cone
 
 lemma homotopyFiberCone_isLimit {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
-    IsLimitCone (homotopyFiberCone f) := (homotopyFiber_exists_limitCone f).choose_spec.1
+    IsLimitCone (homotopyFiberCone f) := (homotopyFiberTransport f).isLimit
 
 lemma homotopyFiberCone_vertex {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
     (homotopyFiberCone f).vertex = coherentNerveVertex (homotopyFiber f) :=
-  (homotopyFiber_exists_limitCone f).choose_spec.2
+  (homotopyFiberTransport f).vertex_eq.trans
+    (replacedCone_vertex (fibrationReplacementProjection f))
 
 end SerrePositivity.KST.LocalizingInvariants.FiberModel
