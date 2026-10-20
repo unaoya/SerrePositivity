@@ -882,3 +882,9 @@ public import SerrePositivity.KST.Spectra.DeloopedExchangeSquareCoordinates
 public import SerrePositivity.KST.Spectra.DeloopedExchangePreSquare
 public import SerrePositivity.KST.Spectra.DeloopedExchangeNaturalitySides
 public import SerrePositivity.KST.Spectra.DeloopedExchangeNaturalityImage
+public import SerrePositivity.KST.Spectra.RelativeHomotopyRlpLift
+public import SerrePositivity.KST.Spectra.RelativeHomotopyReflection
+public import SerrePositivity.KST.Spectra.PointedPathSquareReflection
+public import SerrePositivity.KST.Spectra.PointedPathSquareEndpointReflection
+public import SerrePositivity.KST.Spectra.DeloopedExchangeNaturality
+public import SerrePositivity.KST.Spectra.OrdinaryLoopExchangeSign
