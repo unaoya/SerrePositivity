@@ -49,8 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   任意の有限標的射の二入力を、共通の元の境界円柱を保って元の fiber へ同時に輸送・反映し、実際の比較射への相対有限検出・持ち上げを構成。値の射の境界と全比較円柱の制限を厳密に保持。
   任意の Kan 境界で相対持ち上げを構成し、境界移動を除去。元の全空間 Kan 引き戻し比較の弱同値性・ホモトピー逆を全標準境界の path 置換充填から証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較の頂点辺・恒等図式辺を持つ全錐比較と各脚の h での自然性を保持。
-  元の置換 path の指定同型と切断上の簡約を証明。区間錐・全空間錐の二射影の指定比較と元の全 path・native 可換性の整合を証明。余極限頂点の射は元の単位と厳密に可換。指定全空間射を native 余錐・余極限写像に表示し、全 Hom の輸送作用と前合成の反映から、元の具体的 Kan 射との値の比較同型を構成。
-  三集約同時ビルド 7640 jobs、公理監査 3494 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  元の置換 path の指定同型と切断上の簡約を証明。区間錐・全空間錐の二射影の指定比較と元の全 path・native 可換性の整合を証明。余極限頂点の射は元の単位と厳密に可換。指定全空間射を native 余錐・余極限写像に表示し、元の具体的 Kan 射との値の比較を構成。元の coherent 変換と指定単位の全合成三角形を保持し、同じ長辺の余錐を元の native 写像の表示へ比較。
+  三集約同時ビルド 7656 jobs、公理監査 3579 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -77,7 +77,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentDiagramTotalCocone_isColimit` / `F2.hasColimit_coherentSpaceDiagram`
 - `F2.exists_relativePathFiniteModelTransport` / `F2.relativePath_model_reflection`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
-- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackCone_projection_commutativity` / `F2.fiberwisePullbackTotalRawPathHomotopy_curry` / `F2.coherentTotalMapNativeFiberTransportIso` / `F2.coherentTotalMapNativeValueIso`
+- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackCone_projection_commutativity` / `F2.fiberwisePullbackTotalRawPathHomotopy_curry` / `F2.coherentTotalMapNativeFiberTransportIso` / `F2.coherentTotalMapNativeValueIso` / `F2.coherentTransformationNativeCoconeIso`
 
 ### 依存と提供
 
@@ -102,7 +102,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：全空間射の native 余錐・余極限写像の表示と具体的 Kan 射への値の比較は完了。元の coherent 変換・合成三角形との整合を証明し、一般の引き戻し交換へ接続する。
+- F2N-1：元の coherent 変換と単位の指定合成三角形の余錐比較は完了。cospan 全体の二射影・指定可換 path を同時に保持する余極限写像の錐を構成し、全空間 Kan 極限錐へ接続する。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
@@ -169,7 +169,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   任意の Kan 始域境界への相対持ち上げと、その境界を厳密に固定する補正を構成。
   全標準境界の path 置換終点の自明 Kan 性から、元の比較の弱同値性と単体的ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成し、全錐の可逆比較・元の比較の頂点辺・恒等図式辺・各脚の自然性を保持。
-  元の二射影・全 path の指定整合を証明。全空間射を native 余錐・余極限写像に表示し、元の輸送作用を介する具体的 Kan 射への値の比較を構成。元の coherent 変換・三角形との整合、一般の有限極限交換・Ind は未完了。
+  元の二射影・全 path の指定整合を証明。全空間射を native 余錐・余極限写像に表示し、元の輸送作用を介する具体的 Kan 射への値の比較を構成。元の coherent 変換と単位の全三角形・長辺を保持する余錐比較も証明。cospan 全体の指定可換性との同時整合、一般の有限極限交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -179,7 +179,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：元の coherent 変換の unstraightening 射と標的の単位を三角形で合成し、指定余錐の表示と照合。元の cospan の三角形を保って引き戻し交換へ接続する。
+- 次の一手：元の cospan 全体の二射影と指定可換 path を同時に保つ native 余極限写像の錐を構成し、元の全空間 Kan 極限錐の比較へ接続する。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
