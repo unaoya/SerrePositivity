@@ -2201,6 +2201,40 @@ run_cmd do
       `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor,
       `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor_arrow,
       `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraSpecialHammock,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_left_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.Object,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.Hom,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.hom_ext,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.objectCategory,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.leftProjection,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightProjection,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.leftAugmentation,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightAugmentation,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.middleTransformation,
+      `SerrePositivity.EInfinity.FrameHom.frameElementSpan,
+      `SerrePositivity.EInfinity.FrameHom.frameElementSpanMap,
+      `SerrePositivity.EInfinity.FrameHom.frameElementSpanFunctor,
+      `SerrePositivity.EInfinity.FrameHom.frameSpanSourceComparison,
+      `SerrePositivity.EInfinity.FrameHom.frameSpanTargetComparison,
+      `SerrePositivity.EInfinity.FrameHom.frameElementSpanNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.chosenResolutionSpanNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.chosenResolutionSpanValue_zero,
+      `SerrePositivity.EInfinity.FrameHom.chosenResolutionSpanValue_naturality,
+      `SerrePositivity.EInfinity.FrameHom.resolutionAugmentation_trivialFibration,
+      `SerrePositivity.EInfinity.FrameHom.resolutionSpecialSpanFunctor,
+      `SerrePositivity.EInfinity.FrameHom.fibrantTargetComparison_trivialCofibration,
+      `SerrePositivity.EInfinity.FrameHom.chosenResolutionSpanFunctor,
+      `SerrePositivity.EInfinity.FrameHom.SpecialHammock,
+      `SerrePositivity.EInfinity.FrameHom.SpecialHammock.left_weakEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.SpecialHammock.right_weakEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.SpecialHammock.value,
+      `SerrePositivity.EInfinity.FrameHom.SpecialHammock.value_eq,
+      `SerrePositivity.EInfinity.FrameHom.SpecialHammock.valueFunctor,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationFunctor,
@@ -6162,3 +6196,19 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] {X Y : CofibrantAlgebra A
               e2ComplexLimitUniverse + 1} (C := CofibrantAlgebra A)).map f))) =
       mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) := by
   exact cofibrantAlgebraKanDKPiZeroEquiv_class A f
+
+-- 同じ Map^h の全作用素を含む特殊な三本矢への図式で左の全縦射が擬同型となる。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {X Y : (BarrattEccles.operad A).Algebra}
+    {s t : ((((mappingSpace A).obj (Opposite.op X)).obj Y).Elements)ᵒᵖ} (f : s ⟶ t) :
+    QuasiIso (((mappingSpaceSpecialHammockFunctor A X Y).map f).left).hom := by
+  exact mappingSpaceSpecialHammockFunctor_left_quasiIso A f
+
+-- 全単体の比較は、任意の可換環上の元の分解と同じ nerve の射として公開される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    nerve (ULiftHom.{e2ComplexLimitUniverse + 1}
+      (((((mappingSpace A).obj (Opposite.op X)).obj Y).Elements)ᵒᵖ)) ⟶
+        nerve (algebraSpecialHammock A X Y) :=
+  mappingSpaceSpecialHammockNerveMap A X Y

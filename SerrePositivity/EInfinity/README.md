@@ -897,6 +897,17 @@ E2b は Dwyer–Kan 型の自由単体的局所化で進める。
 `BarrattEccles.cofibrantAlgebraDKPiZeroEquiv` と `cofibrantAlgebraKanDKPiZeroEquiv` は
 元の cofibrant E 代数の既存 Map^h と raw・Kan DK Hom の π₀ の同値で、
 各 `_class` は元の同じ代数射・単位・零単体の類の照合を与える。
+`FrameHom.ArrowSpan` は指定した両脚を持つ三本矢の圏。
+`FrameHom.SpecialHammock` は実際の trivial fibration・trivial cofibration を両脚に使い、
+全縦射の弱同値性を両脚と二つのうち三つから証明する。
+`frameElementSpanFunctor` は元の cosimplicial Hom の全単体と全作用素を同じ三本矢へ送る。
+`frameSpanSourceComparison`・`frameSpanTargetComparison` は元の比較射による自然変換。
+`chosenResolutionSpanFunctor` は元の chosenResolutionHom の同じ二つの分解への代入。
+`SpecialHammock.valueFunctor` と `chosenResolutionSpanValue_zero` は元の局所化射と π₀ 比較の照合。
+`mappingSpaceSpecialHammockFunctor`・`mappingSpaceSpecialHammockNerveMap` は任意の可換環上の
+同じ Map^h の全単体の図式と、その Hom の宇宙だけを揃えた要素圏の nerve からの実際の射。
+この始域と元の Map^h の同値性、特殊な三本矢の nerve と既存 DK Hom の高次比較は未証明。
+比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
 

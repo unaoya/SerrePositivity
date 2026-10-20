@@ -659,3 +659,12 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.ResolutionFaces
 public import SerrePositivity.EInfinity.SimplicialLocalization.ResolutionRepresentatives
 public import SerrePositivity.EInfinity.SimplicialLocalization.ResolutionWordEdge
 public import SerrePositivity.EInfinity.SimplicialLocalization.ZeroLevelComponents
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans
+public import SerrePositivity.EInfinity.FrameHom.ArrowSpan
+public import SerrePositivity.EInfinity.FrameHom.FrameElementSpans
+public import SerrePositivity.EInfinity.FrameHom.FrameSpanNaturality
+public import SerrePositivity.EInfinity.FrameHom.FrameSpanNerve
+public import SerrePositivity.EInfinity.FrameHom.ResolutionSpanNormalization
+public import SerrePositivity.EInfinity.FrameHom.ResolutionSpecialSpans
+public import SerrePositivity.EInfinity.FrameHom.SpecialHammock
+public import SerrePositivity.EInfinity.FrameHom.SpecialSpanLocalization
