@@ -1696,3 +1696,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeRes
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativePre
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackRestrictionNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeCoreFamilies
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeCoreDescent
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecompositionLaws
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomFunctor
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeFunctor
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeCoreLimit
