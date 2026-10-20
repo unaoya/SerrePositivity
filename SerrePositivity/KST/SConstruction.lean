@@ -1035,4 +1035,11 @@ public import SerrePositivity.KST.SConstruction.FullRelativeRawComparison
 public import SerrePositivity.KST.SConstruction.RawComparisonAdjacentBoundary
 public import SerrePositivity.KST.SConstruction.EndpointFixedCylinderEvaluation
 public import SerrePositivity.KST.SConstruction.TracedTripleRawAdjacentBoundary
+public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationHorn
+public import SerrePositivity.KST.SConstruction.TriangleLeftCancellation
+public import SerrePositivity.KST.SConstruction.AnodyneFixedHomotopy
+public import SerrePositivity.KST.SConstruction.BoundaryTensorHomExt
+public import SerrePositivity.KST.SConstruction.AnodyneRelativeFibrationFamily
+public import SerrePositivity.KST.SConstruction.AnodynePrescribedComparison
+public import SerrePositivity.KST.SConstruction.TriangleLeftCancellationComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
