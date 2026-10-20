@@ -1111,3 +1111,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint_right
 #check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint_restrict
 #check @SerrePositivity.InfinityCategories.F2.relativePath_model_reflection
+
+#check @SerrePositivity.InfinityCategories.F2.exists_relativeHornTensorExtension
+#check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyTriangle
+#check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyComposite
+#check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyComposite_left_constant
+#check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyComposite_right_constant
+#check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyConstantInverse
+#check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyZigzag
