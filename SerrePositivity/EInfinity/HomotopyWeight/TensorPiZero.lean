@@ -30,8 +30,8 @@ variable (K : Type u) [SmallCategory K]
 方針：各値の左単位同型を図式の自然同型に束ねる。
 規約：元の重みの図式射を保つ。
 使われ方：標準 frame の零次と重み付き実現の比較。 -/
-def unitTensorWeightIso (W : Kᵒᵖ ⥤ SSet.{u}) :
-    (WeightedCones.tensorDiagram Kᵒᵖ W).obj (𝟙_ SSet.{u}) ≅ W :=
+def unitTensorWeightIso (W : K ⥤ SSet.{u}) :
+    (WeightedCones.tensorDiagram K W).obj (𝟙_ SSet.{u}) ≅ W :=
   NatIso.ofComponents (fun k => λ_ (W.obj k)) (by
     intro k l f
     exact leftUnitor_naturality (W.map f))
@@ -40,9 +40,9 @@ def unitTensorWeightIso (W : Kᵒᵖ ⥤ SSet.{u}) :
 方針：零単体の単位同型と左単位同型を合成する。
 規約：同じ標準零単体を使う。
 使われ方：実現した標準 frame の零次同型。 -/
-def zeroTensorWeightIso (W : Kᵒᵖ ⥤ SSet.{u}) :
-    (WeightedCones.tensorDiagram Kᵒᵖ W).obj (SSet.stdSimplex.obj (SimplexCategory.mk 0)) ≅ W :=
-  (WeightedCones.tensorDiagram Kᵒᵖ W).mapIso QuillenStandardFrame.zeroUnitIso ≪≫
+def zeroTensorWeightIso (W : K ⥤ SSet.{u}) :
+    (WeightedCones.tensorDiagram K W).obj (SSet.stdSimplex.obj (SimplexCategory.mk 0)) ≅ W :=
+  (WeightedCones.tensorDiagram K W).mapIso QuillenStandardFrame.zeroUnitIso ≪≫
     unitTensorWeightIso K W
 
 variable {C : Type v} [Category.{u} C] [HasColimitsOfSize.{u, u} C] [ModelCategory C]
@@ -54,7 +54,7 @@ variable {C : Type v} [Category.{u} C] [HasColimitsOfSize.{u, u} C] [ModelCatego
 使われ方：重み付き錐の π₀ の局所化 Hom 比較。 -/
 def tensorFrameZeroIso : (tensorFrame K W B).obj (SimplexCategory.mk 0) ≅
     (FrameWeightRealization.functor K B).obj W :=
-  (FrameWeightRealization.functor K B).mapIso (zeroTensorWeightIso K W)
+  (FrameWeightRealization.functor K B).mapIso (zeroTensorWeightIso Kᵒᵖ W)
 
 variable (hW : (boundaries Kᵒᵖ).rlp.llp (initial.to W))
   (hB : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (B.obj k)))

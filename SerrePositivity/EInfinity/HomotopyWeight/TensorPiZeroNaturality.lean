@@ -109,6 +109,6 @@ lemma frameConePiZeroLocalizationEquiv_source (a : B ⟶ B') (Y : C) [IsFibrant 
           (SimplexCategory.mk 0))) ≫ f)) = _
   rw [← Category.assoc, L.map_comp]
   exact congrArg (fun g => L.map g ≫ L.map f)
-    ((FrameWeightRealization.map K a).naturality (zeroTensorWeightIso K W).inv)
+    ((FrameWeightRealization.map K a).naturality (zeroTensorWeightIso Kᵒᵖ W).inv)
 
 end SerrePositivity.EInfinity.HomotopyWeight

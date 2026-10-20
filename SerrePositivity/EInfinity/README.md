@@ -720,6 +720,16 @@ nullary を含む TR の部分合成保存は完了。
 置換は実際の射影図式モデルで cofibrant、元の代数には cofibrancy を仮定しない。
 `constantDiagramHomEquiv` は置換からの図式射と始域 frame の重み付き錐の同値。
 `constantDiagramLocalizedIso` は定値図式との局所化後の自然同型を与える。
+`constantDiagramFrameFamily` は同じ置換を全次元の図式 frame へ拡張する。
+frame は射影図式モデルで Reedy cofibrant、単体作用素と元の定値図式への augmentation は弱同値。
+augmentation は元の代数の射にも自然。Reedy 自明 fibration であることは要求しない。
+`constantDiagramFrameHomIso` は実際の frame Hom と Kan な `constantDiagramSourceHom` の同型。
+`constantDiagramSourcePiZeroEquiv` はその π₀ と元の定値図式からの局所化 Hom の同値で、終域の射に自然。
+`constantDiagramSourceClass` の像は元の同じ図式射の局所化となる。
+`Diagram.mappingSpace` は実際の図式モデルから作る Kan な Map^h、π₀ は元の図式の局所化 Hom。
+`constantDiagramFrameMappingComparisonIso` は選んだ Map^h と具体的な frame Hom の両変数での自然比較。
+`constantDiagramSourceMappingComparisonIso` はそれを重み付き錐へ移す。
+比較は任意の anodyne を反転する関手の後で成立し、単体集合のモデル構造は使わない。
 始域 frame の錐と右 frame の錐の導来的な比較は未構成。
 計算関手の右導来極限の普遍性は未完成。
 `mappingSpace` は実際の関手的分解から作る E 代数の Kan な導来写像空間 Map^h。

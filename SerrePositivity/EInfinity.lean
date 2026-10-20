@@ -457,6 +457,8 @@ public import SerrePositivity.EInfinity.HomotopyWeight.RealizationInvariance
 public import SerrePositivity.EInfinity.HomotopyWeight.PointwiseRealization
 public import SerrePositivity.EInfinity.HomotopyWeight.ConstantComparison
 public import SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality
+public import SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorFrame
+public import SerrePositivity.EInfinity.HomotopyWeight.PointwisePiZero
 public import SerrePositivity.EInfinity.HomotopyWeight.Values
 public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorLifting
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimit
@@ -465,6 +467,12 @@ public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitInvariance
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramReplacement
+public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrame
+public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrameComparison
+public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramPiZero
+public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramClasses
+public import SerrePositivity.EInfinity.BarrattEccles.DiagramMappingSpace
+public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramMappingComparison
 public import SerrePositivity.EInfinity.FrameHom.BrownInversion
 public import SerrePositivity.EInfinity.FrameHom.PointwiseBrown
 public import SerrePositivity.EInfinity.FrameHom.StandardFrame
@@ -472,6 +480,7 @@ public import SerrePositivity.EInfinity.FrameHom.LocalizationDetection
 public import SerrePositivity.EInfinity.FrameHom.TargetInvariance
 public import SerrePositivity.EInfinity.FrameHom.SourceInvariance
 public import SerrePositivity.EInfinity.FrameHom.Comparison
+public import SerrePositivity.EInfinity.FrameHom.OverFunctorComparison
 public import SerrePositivity.EInfinity.BarrattEccles.MappingFactorizations
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpace
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpacePiZero
