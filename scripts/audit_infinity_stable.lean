@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGAlgebraExtensionInfinity
+import SerrePositivity.InfinityCategories.Derived.DGFullFunctorRestriction
+import SerrePositivity.InfinityCategories.Derived.DGFullInclusionExactReflection
+import SerrePositivity.InfinityCategories.Derived.DGModuleDerivedFunctor
+import SerrePositivity.InfinityCategories.Derived.DGModuleDerivedFunctorComposition
 import SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity
 import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertyChoices
 import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertySquares
@@ -3470,6 +3475,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGAlgebraExtensionInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGFullFunctorRestriction,
+    `SerrePositivity.InfinityCategories.Derived.DGFullInclusionExactReflection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleDerivedFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleDerivedFunctorComposition,
     `SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertyChoices,
     `SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertySquares,

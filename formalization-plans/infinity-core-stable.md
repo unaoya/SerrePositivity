@@ -70,7 +70,7 @@
 - `homotopyCompositionRelativeOver_fixedLeft_exists`・`dgFiniteOreTrianglePrisms_relative_exists`・`dgFiniteRoofCompositionPrisms_exists`。
 - `roofLeftFibration_terminalEvaluation_nonempty`・`dgInvertingHomActionFamilyEvaluationIso`・`dgInvertingHomFamilyEvaluation_nonempty`。
 - `pinchedFamilyHom_eq_iff_homotopy`・`dgInvertingFamilyDenominator_isIso`・`dgInvertingFiniteRoofComposition_nonempty`・`dgFiniteRoofOreDataPrecomp_compositeDiagram`。
-- `dgAlgebraDerivedInfinityCategory_isStable`・`dgModuleDerivedInfinityCategory_isStable`・`dgSemifreeToProjectiveNerve_isQCatEquivalence`・`dgQuotientNerveProjection_isLocalization`・`dgVerdierExactPrecomposition_isQCatEquivalence`・`dgStableClosureNerve_isStable`・`dgStableClosureInclusion_isExactFunctor`・`dgQuotient_isStableVerdierSequence`・`resolvedDGQuotientFunctor_isLocalization`・`resolvedDGVerdierExactPrecomposition_isQCatEquivalence`・`resolvedDGQuotient_isStableVerdierSequence`。
+- `dgAlgebraExtensionInfinity_isExactFunctor`・`dgModuleDerivedFunctor_comparisonIso`・`dgModuleDerivedFunctor_id_iso`・`dgModuleDerivedFunctor_comp_iso`・`dgAlgebraDerivedInfinityCategory_isStable`・`dgModuleDerivedInfinityCategory_isStable`・`dgSemifreeToProjectiveNerve_isQCatEquivalence`・`dgQuotientNerveProjection_isLocalization`・`dgVerdierExactPrecomposition_isQCatEquivalence`・`dgStableClosureNerve_isStable`・`dgStableClosureInclusion_isExactFunctor`・`dgQuotient_isStableVerdierSequence`・`resolvedDGQuotientFunctor_isLocalization`・`resolvedDGVerdierExactPrecomposition_isQCatEquivalence`・`resolvedDGQuotient_isStableVerdierSequence`。
 
 ### 依存と提供
 
@@ -81,18 +81,18 @@
 
 ### 未コミット
 
-- β5 の D(A) の安定性までの7新規モジュールを今回保存。次保存範囲は `DGFullFunctorRestriction`・`DGFullInclusionExactReflection`・`DGModuleDerivedFunctor`・`DGAlgebraExtensionInfinity`。graph 延長 ∞ 関手は個別ビルド済み、完全性・全関手同型の比較を修正・検証中。
+- β5 の graph tensor の実完全 ∞ 関手・恒等と合成の全関手同型までの5新規モジュールを今回保存。次保存範囲：`DGFunctorHomologyDetection`・`DGProjectiveDerivedComparison` は個別ビルド済み、`DGModuleFunctorHomologyDetection` は全 shift からの Hom 準同型性を検証中。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8277 jobs）。公理監査は Derived 11390 宣言／1273 モジュール、Stable 12505／1543。許容三公理のみ。今回までの新規204モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8282 jobs）。公理監査は Derived 11441 宣言／1278 モジュール、Stable 12556／1548。許容三公理のみ。今回までの新規209モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5：`dgAlgebraDerivedInfinityCategory R B := N_dg(Semifree(B))` を既存の非可換モノイド対象 `B : Mon (Complex R)` から構成し、安定性まで証明・監査済み。`dgModuleDerivedInfinityCategory_isStable` は任意の小さい dg 圏で成り立つ。全 Hom end の射影的部分圏の実標準演算での閉性と半自由分解による実 ∞ 圏同値を使い、半自由性の replete 性を仮定しない。次は `DGModuleDerivedFunctor` の graph tensor の完全性・射影的模型上の同じ関手との全関手同型を検証・統合。その後 tensor の単位・合成・随伴と Hom の ∞ 関手化、Morita 不変性、Perf(A)、β4。
+- β5：非可換 `Mon (Complex R)` の D(A) と実安定性、`dgAlgebraExtensionInfinity` による −⊗ᴸ_A B の実完全 ∞ 関手まで証明・監査済み。`dgModuleDerivedFunctor_comparisonIso` は同じ射影的 dg 関手との全関手同型、`dgModuleDerivedFunctor_id_iso`・`dgModuleDerivedFunctor_comp_iso` は恒等・合成の全関手同型を与える。次は Morita：`dgProjectiveModuleToDerived` の古典的比較同値を使い、射影的模型上の H⁰ の充満忠実性を全 source shift から Hom 複体の準同型性へ戻す `DGModuleFunctorHomologyDetection` を検証。これを既存の導来 Morita 同値に接続する。その後 Hom・随伴と全 coherence、Perf(A)、β4。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。β3 は移送と Verdier 列まで完了。β5、β4 は未完。
 
