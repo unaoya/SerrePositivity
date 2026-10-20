@@ -1634,3 +1634,29 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreColimi
 public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreColimitDescent
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreColimitCone
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorSpace
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecomposition
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorFamilies
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorFamilyLaws
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorColimitFamily
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorColimitLift
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorColimitDescent
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorInvertibleDetection
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorCoreVertexDescent
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorCoreColimitLift
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorCoreColimitDescent
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativePrecomposition
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeCoreColimitDescent
