@@ -1117,7 +1117,18 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 任意の可換環上で同じ元の E 代数への代入。
 `Word.Hom.cut_empty_fiber`・`WordAction.empty_fiber_arrow_heq` は像の外の列が
 同じ元の頂点の恒等列であることを示す。この二つには語の単射性も不要。
-proper 性の像の交わりの条件、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
+`WordAction.column_eqToHom_of_cut_eq` は挿入恒等列を元の端点の移送として回収し、
+`app_cut_eq` は同じ切断の全 fiber 上で元の縦射の成分が異種等しいことを示す。
+この二つには語の単射性は不要。
+`embeddingPreimage`・`map_embeddingPreimage`・`embeddingPreimage_map` は
+包含の像の間の全縦射の回収と両逆で、`functor_full` は元の遷移の充満性。
+`nerveChainLift_comp`・`nerveMap_range_iff` は充満忠実な関手の元の全射列を持ち上げ、
+全単体の像を各頂点の対象の像で特徴付ける。
+`graphDiagram_map_range_iff` と `BarrattEccles.algebraHammockGraphMap_range_iff` は
+同じ元の全語の graph 図式と任意の可換環上の E 代数への代入。
+`algebraHammockTransitionPreimage`・`_map_preimage`・`_preimage_map`・
+`algebraHammockTransition_full` は同じ元の全縦射の厳密な回収・両逆・充満性。
+対象の像を恒等列の条件から回収する逆向きと proper 性の像の交わりの条件、縮約 hammock との同型、三列の包含の弱同値性、既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

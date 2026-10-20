@@ -821,3 +821,10 @@ public import SerrePositivity.EInfinity.Hammock.NerveEmbedding
 public import SerrePositivity.EInfinity.Hammock.GraphEmbedding
 public import SerrePositivity.EInfinity.Hammock.WordEmptyFiber
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbedding
+public import SerrePositivity.EInfinity.Hammock.WordPlateauColumn
+public import SerrePositivity.EInfinity.Hammock.WordPlateauMaps
+public import SerrePositivity.EInfinity.Hammock.WordEmbeddingMapComponents
+public import SerrePositivity.EInfinity.Hammock.WordEmbeddingFull
+public import SerrePositivity.EInfinity.Hammock.NerveFullRange
+public import SerrePositivity.EInfinity.Hammock.GraphEmbeddingRange
+public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbeddingRange

@@ -2,27 +2,40 @@ import SerrePositivity.EInfinity
 import Lean.Util.CollectAxioms
 import Mathlib.Tactic.Ring
 
--- EInfinity の全宣言の推移的な公理依存を監査する。
-open Lean in
-set_option maxHeartbeats 0 in
-set_option maxRecDepth 10000 in
-run_cmd do
-  let env ← getEnv
-  let mut declarations : Nat := 0
-  for (name, _) in env.constants.toList do
-    let some idx := env.getModuleIdxFor? name | continue
-    let mod := env.header.modules[idx.toNat]!.module
-    unless (`SerrePositivity.EInfinity).isPrefixOf mod do continue
-    let axioms ← collectAxioms name
-    let unexpected := axioms.filter fun ax ↦
-      !(#[``propext, ``Classical.choice, ``Quot.sound].contains ax)
-    unless unexpected.isEmpty do
-      throwError "非標準公理への依存: {name}: {unexpected}"
-    declarations := declarations + 1
-  if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
-  unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
-    throwError "射影モデル構造の宣言がありません"
-  for required in #[`SerrePositivity.EInfinity.Hammock.Word.Hom.cut_image_castSucc,
+-- 必須宣言はコード生成の再帰上限を避けるため、noinline の小配列に分ける。
+-- 追加時も各配列を128項目以内とし、下の配列一覧へ必ず含める。
+@[noinline] private def e2RequiredBatch0 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Segment.map_eqToHom_of_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_source_target_of_eq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.columnAux_eqToHom_of_eq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.column_eqToHom_of_cut_eq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.source_target_heq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.app_cut_eq_adjacent,
+      `SerrePositivity.EInfinity.Hammock.WordAction.app_cut_eq_of_le,
+      `SerrePositivity.EInfinity.Hammock.WordAction.app_cut_eq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingVertex,
+      `SerrePositivity.EInfinity.Hammock.WordAction.cut_embeddingVertex,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingApp,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingApp_mem,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingApp_heq,
+      `SerrePositivity.EInfinity.Hammock.WordAction.eqToHom_heq_of_endpoints,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingApp_first,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingApp_last,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingApp_comm,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingPreimage,
+      `SerrePositivity.EInfinity.Hammock.WordAction.map_embeddingPreimage,
+      `SerrePositivity.EInfinity.Hammock.WordAction.embeddingPreimage_map,
+      `SerrePositivity.EInfinity.Hammock.WordAction.functor_full,
+      `SerrePositivity.EInfinity.Hammock.nerveChainLift,
+      `SerrePositivity.EInfinity.Hammock.nerveChainLift_comp,
+      `SerrePositivity.EInfinity.Hammock.nerveMap_range_iff,
+      `SerrePositivity.EInfinity.Hammock.graphDiagram_map_range_iff,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTransition_full,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTransitionPreimage,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTransition_map_preimage,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockTransition_preimage_map,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphMap_range_iff,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_image_castSucc,
       `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_image_succ,
       `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_surjective,
       `SerrePositivity.EInfinity.Hammock.Word.Hom.cut_image_source,
@@ -119,8 +132,10 @@ run_cmd do
       `SerrePositivity.EInfinity.Hammock.Direction.backward_arrow_heq,
       `SerrePositivity.EInfinity.Hammock.Direction.arrow_heq_of,
       `SerrePositivity.EInfinity.Hammock.Direction.raw_heq_of_op_heq,
-      `SerrePositivity.EInfinity.Hammock.Direction.raw_arrow_heq_of,
-      `SerrePositivity.EInfinity.Hammock.graphComposition_naturality,
+      `SerrePositivity.EInfinity.Hammock.Direction.raw_arrow_heq_of]
+
+@[noinline] private def e2RequiredBatch1 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.graphComposition_naturality,
       `SerrePositivity.EInfinity.Hammock.Segment.blockPosition,
       `SerrePositivity.EInfinity.Hammock.Segment.block_index,
       `SerrePositivity.EInfinity.Hammock.Segment.chain_block,
@@ -247,8 +262,10 @@ run_cmd do
       `SerrePositivity.EInfinity.Hammock.graphDiagram_map,
       `SerrePositivity.EInfinity.Hammock.Segment.adjacent_direction,
       `SerrePositivity.EInfinity.Hammock.Segment.map_adjacent,
-      `SerrePositivity.EInfinity.Hammock.Segment.fin_map_heq,
-      `SerrePositivity.EInfinity.Hammock.Segment.map_parent_heq,
+      `SerrePositivity.EInfinity.Hammock.Segment.fin_map_heq]
+
+@[noinline] private def e2RequiredBatch2 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Segment.map_parent_heq,
       `SerrePositivity.EInfinity.Hammock.Segment.chain_obj_coordinate,
       `SerrePositivity.EInfinity.Hammock.Segment.inclusion,
       `SerrePositivity.EInfinity.Hammock.Segment.index_inclusion,
@@ -375,8 +392,10 @@ run_cmd do
       `SerrePositivity.EInfinity.Hammock.Zigzag.postcomposeObj,
       `SerrePositivity.EInfinity.Hammock.Zigzag.postcomposeMap,
       `SerrePositivity.EInfinity.Hammock.Zigzag.postcompose,
-      `SerrePositivity.EInfinity.Hammock.Zigzag.postcompose_id,
-      `SerrePositivity.EInfinity.Hammock.Zigzag.postcompose_comp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.postcompose_id]
+
+@[noinline] private def e2RequiredBatch3 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Zigzag.postcompose_comp,
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraph,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockGraphNerveMap,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockGraphNerveMap_localized_isIso,
@@ -503,8 +522,10 @@ run_cmd do
       `SerrePositivity.EInfinity.tensorInsertionAction_zero_append,
       `SerrePositivity.EInfinity.convolutionAssembly_transport,
       `SerrePositivity.EInfinity.convolutionAssembly_tensorRight,
-      `SerrePositivity.EInfinity.Operad.Algebra.comp_action_of_first,
-      `SerrePositivity.EInfinity.Operad.Algebra.ofFirstComposition,
+      `SerrePositivity.EInfinity.Operad.Algebra.comp_action_of_first]
+
+@[noinline] private def e2RequiredBatch4 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Operad.Algebra.ofFirstComposition,
       `SerrePositivity.EInfinity.Operad.convolutionAction_firstBlock_evaluation,
       `SerrePositivity.EInfinity.Operad.convolutionAction_insertion_zero_evaluation,
       `SerrePositivity.EInfinity.Operad.Hopf.diagonalComponent,
@@ -573,7 +594,7 @@ run_cmd do
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.fibrations_llp_quasiIso,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.freeGeneratingTrivialCofibrations_rlp,
       `SerrePositivity.EInfinity.Operad.CoalgebraInterval.freeGeneratingTrivialCofibrations_llp_le,
-      Name.str `SerrePositivity.EInfinity.Operad.CoalgebraInterval
+      Lean.Name.str `SerrePositivity.EInfinity.Operad.CoalgebraInterval
         "freeGeneratingTrivialCofibrations_cell_acyclicity",
       `SerrePositivity.EInfinity.Operad.Algebra.forget_reflectsIsomorphisms,
       `SerrePositivity.EInfinity.Operad.Algebra.ofLimitCone,
@@ -632,8 +653,10 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.firstOccurrences_nodup,
       `SerrePositivity.EInfinity.Surjection.caesuraList_eq_sort,
       `SerrePositivity.EInfinity.Surjection.rowStart_strictMono,
-      `SerrePositivity.EInfinity.Surjection.rowStart_lt_length,
-      `SerrePositivity.EInfinity.TableReduction.canonicalRow_nodup,
+      `SerrePositivity.EInfinity.Surjection.rowStart_lt_length]
+
+@[noinline] private def e2RequiredBatch5 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.TableReduction.canonicalRow_nodup,
       `SerrePositivity.EInfinity.TableReduction.canonicalRow_word_length,
       `SerrePositivity.EInfinity.TableReduction.canonicalPermutation_inv_list,
       `SerrePositivity.EInfinity.TableReduction.canonicalSimplex,
@@ -760,8 +783,10 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.ScheduleBlock.lift_transfer,
       `SerrePositivity.EInfinity.TableReduction.final_deletion_transfer,
       `SerrePositivity.EInfinity.TableReduction.final_deletion_pair,
-      `SerrePositivity.EInfinity.TableReduction.scheduleEnd_not_singleton,
-      `SerrePositivity.EInfinity.TableReduction.residual_caesura_row,
+      `SerrePositivity.EInfinity.TableReduction.scheduleEnd_not_singleton]
+
+@[noinline] private def e2RequiredBatch6 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.TableReduction.residual_caesura_row,
       `SerrePositivity.EInfinity.TableReduction.reduceRows_released_donor_step,
       `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.finish_length,
       `SerrePositivity.EInfinity.TableReduction.ExtractionPrefix.finish_nodup,
@@ -888,8 +913,10 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.ReductionInterval.success,
       `SerrePositivity.EInfinity.Surjection.componentExtraction_word,
       `SerrePositivity.EInfinity.Surjection.componentExtraction_length,
-      `SerrePositivity.EInfinity.Surjection.componentExtraction_success,
-      `SerrePositivity.EInfinity.Surjection.componentExtraction_adjacent_prefix,
+      `SerrePositivity.EInfinity.Surjection.componentExtraction_success]
+
+@[noinline] private def e2RequiredBatch7 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Surjection.componentExtraction_adjacent_prefix,
       `SerrePositivity.EInfinity.Surjection.outerComponentExtraction_success,
       `SerrePositivity.EInfinity.Surjection.verticalExtraction_success,
       `SerrePositivity.EInfinity.TableReduction.ReductionInterval.permutationRows_eq,
@@ -1016,8 +1043,10 @@ run_cmd do
       `SerrePositivity.EInfinity.TableReduction.output_covers,
       `SerrePositivity.EInfinity.TableReduction.schedule_of_table,
       `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_excess,
-      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_schedule,
-      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_basis,
+      `SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_schedule]
+
+@[noinline] private def e2RequiredBatch8 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Surjection.CompositeRecovery.shuffle_outer_basis,
       `SerrePositivity.EInfinity.TableReduction.ConsumptionPrefix.normalize,
       `SerrePositivity.EInfinity.TableReduction.ConsumptionPrefix.close_of_prefix,
       `SerrePositivity.EInfinity.TableReduction.ConsumptionPrefix.reduction,
@@ -1144,8 +1173,10 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.complexPartialComposition,
       `SerrePositivity.EInfinity.Surjection.ι_complexPartialComposition,
       `SerrePositivity.EInfinity.Surjection.complexPartialComposition_neg_tmul,
-      `SerrePositivity.EInfinity.TableReduction.complexPartialComposition_comm,
-      `SerrePositivity.EInfinity.Surjection.complexUnit,
+      `SerrePositivity.EInfinity.TableReduction.complexPartialComposition_comm]
+
+@[noinline] private def e2RequiredBatch9 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Surjection.complexUnit,
       `SerrePositivity.EInfinity.Surjection.complexUnit_comm,
       `SerrePositivity.EInfinity.Surjection.complexUnit_zero_apply,
       `SerrePositivity.EInfinity.TableReduction.cochainMap_epi,
@@ -1272,8 +1303,10 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.gap_before_defect_existsUnique,
       `SerrePositivity.EInfinity.IntervalCuts.gap_after_defect_existsUnique,
       `SerrePositivity.EInfinity.IntervalCuts.erase_pivot_iff_gap_before,
-      `SerrePositivity.EInfinity.IntervalCuts.erase_pivot_iff_gap_after,
-      `SerrePositivity.EInfinity.IntervalCuts.pivotEraseBasisWord,
+      `SerrePositivity.EInfinity.IntervalCuts.erase_pivot_iff_gap_after]
+
+@[noinline] private def e2RequiredBatch10 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.IntervalCuts.pivotEraseBasisWord,
       `SerrePositivity.EInfinity.IntervalCuts.pivotErase_tensor_before,
       `SerrePositivity.EInfinity.IntervalCuts.pivotErase_tensor_after,
       `SerrePositivity.EInfinity.IntervalCuts.positionRank_gap_pivot,
@@ -1400,8 +1433,10 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.vertexComponent_permutation,
       `SerrePositivity.EInfinity.IntervalCuts.vertexInputBilinear_permutation,
       `SerrePositivity.EInfinity.IntervalCuts.edgeInputBilinear_permutation,
-      `SerrePositivity.EInfinity.IntervalCuts.complexRename_neg_hom_apply,
-      `SerrePositivity.EInfinity.IntervalCuts.cochainActionBilinear_permutation,
+      `SerrePositivity.EInfinity.IntervalCuts.complexRename_neg_hom_apply]
+
+@[noinline] private def e2RequiredBatch11 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.IntervalCuts.cochainActionBilinear_permutation,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_permutation,
       `SerrePositivity.EInfinity.IntervalCuts.cochainAction_equivariance,
       `SerrePositivity.EInfinity.IntervalCuts.occurrenceCount_le_two_of_cut,
@@ -1528,8 +1563,10 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_eq_inner,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_remaining_output,
       `SerrePositivity.EInfinity.IntervalCuts.inserted_not_mem_substitute_of_no_slot,
-      `SerrePositivity.EInfinity.IntervalCuts.inserted_mem_substitute_iff,
-      `SerrePositivity.EInfinity.IntervalCuts.compositeInnerPosition_inserted_output,
+      `SerrePositivity.EInfinity.IntervalCuts.inserted_mem_substitute_iff]
+
+@[noinline] private def e2RequiredBatch12 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.IntervalCuts.compositeInnerPosition_inserted_output,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.compositePosition_pivot_inserted_output,
       `SerrePositivity.EInfinity.IntervalCuts.inserted_mem_substitute_single_iff,
       `SerrePositivity.EInfinity.IntervalCuts.inserted_mem_substitute_single_tail_iff,
@@ -1656,8 +1693,10 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_disjoint_union,
       `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_erase_pair,
       `SerrePositivity.EInfinity.IntervalCuts.positionInversionCount_splice_images,
-      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_first_length,
-      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_first_caesura,
+      `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_first_length]
+
+@[noinline] private def e2RequiredBatch13 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_first_caesura,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivot_first_mem_active,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap,
       `SerrePositivity.EInfinity.IntervalCuts.NestedEdgeCut.nonpivotInnerMap_val,
@@ -1784,8 +1823,10 @@ run_cmd do
       `SerrePositivity.EInfinity.IntervalCuts.interval_hom_ext,
       `SerrePositivity.EInfinity.IntervalCuts.unit_hom_ext,
       `SerrePositivity.EInfinity.IntervalCuts.endpoint_intervalMap_apply,
-      `SerrePositivity.EInfinity.IntervalCuts.endpoint_triangle_value,
-      `SerrePositivity.EInfinity.IntervalCuts.interval_relative_lift,
+      `SerrePositivity.EInfinity.IntervalCuts.endpoint_triangle_value]
+
+@[noinline] private def e2RequiredBatch14 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.IntervalCuts.interval_relative_lift,
       `SerrePositivity.EInfinity.IntervalCuts.boundary,
       `SerrePositivity.EInfinity.IntervalCuts.boundary_contraction,
       `SerrePositivity.EInfinity.IntervalCuts.boundary_cofibration,
@@ -1912,8 +1953,10 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.coefficientBinary,
       `SerrePositivity.EInfinity.BarrattEccles.coefficientBinaryHomotopy,
       `SerrePositivity.EInfinity.BarrattEccles.coefficientPairing_independent,
-      `SerrePositivity.EInfinity.BarrattEccles.homologyProduct_eq_pairing,
-      `SerrePositivity.EInfinity.BarrattEccles.homologyOperation_commutative,
+      `SerrePositivity.EInfinity.BarrattEccles.homologyProduct_eq_pairing]
+
+@[noinline] private def e2RequiredBatch15 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.homologyOperation_commutative,
       `SerrePositivity.EInfinity.BarrattEccles.homologyBinary_commutative,
       `SerrePositivity.EInfinity.BarrattEccles.homologyNullary_commutative,
       `SerrePositivity.EInfinity.BarrattEccles.homologyBinary_discrete,
@@ -2040,8 +2083,10 @@ run_cmd do
       `SerrePositivity.EInfinity.HomotopyWeight.unitTensorWeightIso,
       `SerrePositivity.EInfinity.HomotopyWeight.zeroTensorWeightIso,
       `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameZeroIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_mk,
+      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv]
+
+@[noinline] private def e2RequiredBatch16 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_mk,
       `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization_homEquiv_frame_naturality,
       `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso_source_naturality,
       `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_source,
@@ -2168,8 +2213,10 @@ run_cmd do
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomFunctor,
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison,
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomIso,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.flipIso,
+      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomIso]
+
+@[noinline] private def e2RequiredBatch17 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.MixedFrame.flipIso,
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.fibrantOp_of_cofibrant,
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison_isIso,
       `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison_isIso,
@@ -2296,8 +2343,10 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv_cone,
       `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.transformationEquiv,
       `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.transformationEquiv_app,
-      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.comparison,
-      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.transformationEquiv_eq,
+      `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.comparison]
+
+@[noinline] private def e2RequiredBatch18 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.transformationEquiv_eq,
       `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.isLeftKanExtension,
       `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.comparison_app,
       `SerrePositivity.EInfinity.FrameHom.AdjointRightDerived.isRightDerivedFunctor,
@@ -2424,8 +2473,10 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv_both,
       `SerrePositivity.EInfinity.BarrattEccles.carrierStrictConeWeightedFamily,
       `SerrePositivity.EInfinity.BarrattEccles.carrierConeToFramedLimit,
-      `SerrePositivity.EInfinity.BarrattEccles.carrierStrictSimplicialConeFamily,
-      `SerrePositivity.EInfinity.BarrattEccles.carrierStrictConeFamilies_mixed,
+      `SerrePositivity.EInfinity.BarrattEccles.carrierStrictSimplicialConeFamily]
+
+@[noinline] private def e2RequiredBatch19 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.carrierStrictConeFamilies_mixed,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeClass,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConeClass_eq_mapClass,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv_coneClass,
@@ -2552,8 +2603,10 @@ run_cmd do
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_id,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_comp,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_zero_arrow,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordEdge,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordClass,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordEdge]
+
+@[noinline] private def e2RequiredBatch20 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordClass,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass_id,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass_comp,
       `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ,
@@ -2680,8 +2733,10 @@ run_cmd do
       `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallEquivalence,
       `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallElementsMap,
       `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallToComma_naturality,
-      `SerrePositivity.EInfinity.FrameHom.SmallNerve.functor,
-      `SerrePositivity.EInfinity.FrameHom.SmallNerve.naturality,
+      `SerrePositivity.EInfinity.FrameHom.SmallNerve.functor]
+
+@[noinline] private def e2RequiredBatch21 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.SmallNerve.naturality,
       `SerrePositivity.EInfinity.FrameHom.SmallNerve.map_localized_isIso,
       `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallCommaMap_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallRightSpanInitial,
@@ -2808,8 +2863,10 @@ run_cmd do
       `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.canonicalSection_projection,
       `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.contraction,
       `SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison_toComma,
-      `SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal_of_weaklyContractible_comma,
+      `SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison_localized_isIso]
+
+@[noinline] private def e2RequiredBatch22 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal_of_weaklyContractible_comma,
       `SerrePositivity.EInfinity.FrameHom.NerveQuillenA.comma_isWeaklyContractible,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison_isLeftCofinal,
@@ -2936,8 +2993,10 @@ run_cmd do
       `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.up_down,
       `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.down_up,
       `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.iso,
-      `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.naturality,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.parameter,
+      `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.naturality]
+
+@[noinline] private def e2RequiredBatch23 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.parameter,
       `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.simplex,
       `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.simplex_operator,
       `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.augmentation,
@@ -3064,8 +3123,10 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraLocalizedFreeResolutionAugmentation,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeFunctor,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeCounit,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeDiagonal,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeComonad,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeDiagonal]
+
+@[noinline] private def e2RequiredBatch24 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeComonad,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeMap,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeCounit,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeDiagonal,
@@ -3171,9 +3232,38 @@ run_cmd do
       `SerrePositivity.EInfinity.Surjection.TableCompositionData.vertical_horizontal_join,
       `SerrePositivity.EInfinity.TableReduction.ReductionInterval.weightedVertices_vertex,
       `SerrePositivity.EInfinity.TableReduction.reductionRemoved_first_eq_nil,
-      `SerrePositivity.EInfinity.TableReduction.rowFusion_in_context] do
-    unless env.contains required do
-      throwError "EInfinity の必要な宣言がありません: {required}"
+      `SerrePositivity.EInfinity.TableReduction.rowFusion_in_context]
+
+-- EInfinity の全宣言の推移的な公理依存を監査する。
+open Lean in
+set_option maxHeartbeats 0 in
+set_option maxRecDepth 10000 in
+run_cmd do
+  let env ← getEnv
+  let mut declarations : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless (`SerrePositivity.EInfinity).isPrefixOf mod do continue
+    let axioms ← collectAxioms name
+    let unexpected := axioms.filter fun ax ↦
+      !(#[``propext, ``Classical.choice, ``Quot.sound].contains ax)
+    unless unexpected.isEmpty do
+      throwError "非標準公理への依存: {name}: {unexpected}"
+    declarations := declarations + 1
+  if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
+  unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
+    throwError "射影モデル構造の宣言がありません"
+  for batch in #[e2RequiredBatch0, e2RequiredBatch1, e2RequiredBatch2, e2RequiredBatch3,
+      e2RequiredBatch4, e2RequiredBatch5, e2RequiredBatch6, e2RequiredBatch7,
+      e2RequiredBatch8, e2RequiredBatch9, e2RequiredBatch10, e2RequiredBatch11,
+      e2RequiredBatch12, e2RequiredBatch13, e2RequiredBatch14, e2RequiredBatch15,
+      e2RequiredBatch16, e2RequiredBatch17, e2RequiredBatch18, e2RequiredBatch19,
+      e2RequiredBatch20, e2RequiredBatch21, e2RequiredBatch22, e2RequiredBatch23,
+      e2RequiredBatch24] do
+    for required in batch do
+      unless env.contains required do
+        throwError "EInfinity の必要な宣言がありません: {required}"
   logInfo m!"EInfinity 公理監査成功: {declarations} 宣言。標準 3 公理のみ。"
 
 -- BF §1.2.3 の符号・五項の削除式と零 arity の境界例を照合する。
@@ -7701,3 +7791,50 @@ example {C : Type e2ComplexLimitUniverse} [Category C] {W : MorphismProperty C}
     HEq (Direction.arrow (b.direction j) (WordAction.obj f S) j rfl)
       (𝟙 (Direction.vertex (b.direction j) (S.vertex (f.cut j.castSucc)))) :=
   WordAction.empty_fiber_arrow_heq f S j hj
+
+-- 同じ切断の fiber 上の元の縦射の一致には、語の単射性も不要。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category C] {W : MorphismProperty C}
+    [W.IsMultiplicative] {a b : Word} {X Y : C} (f : a ⟶ b) {S T : Zigzag W a X Y}
+    (g : WordAction.obj f S ⟶ WordAction.obj f T) (p q : Fin (b.length + 1))
+    (h : f.cut p = f.cut q) : HEq (g.app p) (g.app q) := WordAction.app_cut_eq f g p q h
+
+-- 任意の可換環上で、同じ元の包含の遷移関手は充満。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    (BarrattEccles.algebraHammockTransition A f X Y).Full :=
+  BarrattEccles.algebraHammockTransition_full A f hf X Y
+
+-- 元の包含の像の間の全縦射は、元の縦射として厳密に回収される。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) {S T : BarrattEccles.algebraHammockZigzag A a X Y}
+    (g : (BarrattEccles.algebraHammockTransition A f X Y).obj S ⟶
+      (BarrattEccles.algebraHammockTransition A f X Y).obj T) :
+    (BarrattEccles.algebraHammockTransition A f X Y).map
+        (BarrattEccles.algebraHammockTransitionPreimage A f hf X Y g) = g :=
+  BarrattEccles.algebraHammockTransition_map_preimage A f hf X Y g
+
+-- 反対の往復も元の同じ縦射に一致し、局所化後だけの一致ではない。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) {S T : BarrattEccles.algebraHammockZigzag A a X Y}
+    (g : S ⟶ T) :
+    BarrattEccles.algebraHammockTransitionPreimage A f hf X Y
+        ((BarrattEccles.algebraHammockTransition A f X Y).map g) = g :=
+  BarrattEccles.algebraHammockTransition_preimage_map A f hf X Y g
+
+-- 全次数の元の単体が包含の像に入ることは、元の全行の像で特徴付けられる。
+open CategoryTheory SerrePositivity.EInfinity in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] {a b : Hammock.Word}
+    (f : a ⟶ b) (hf : Function.Injective f.orderHom)
+    (X Y : (BarrattEccles.operad A).Algebra) (n : SimplexCategoryᵒᵖ)
+    (τ : (BarrattEccles.algebraHammockGraph A b X Y).obj n) :
+    τ ∈ Set.range ((BarrattEccles.algebraHammockGraphMap A f X Y).app n) ↔
+      ∀ j, ∃ S : BarrattEccles.algebraHammockZigzag A a X Y,
+        (BarrattEccles.algebraHammockTransition A f X Y).obj S = τ.obj j :=
+  BarrattEccles.algebraHammockGraphMap_range_iff A f hf X Y n τ
