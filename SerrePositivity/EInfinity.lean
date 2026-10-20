@@ -759,3 +759,16 @@ public import SerrePositivity.EInfinity.Hammock.SegmentNaturality
 public import SerrePositivity.EInfinity.Hammock.SegmentUnits
 public import SerrePositivity.EInfinity.Hammock.WordAction
 public import SerrePositivity.EInfinity.Hammock.WordCut
+public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit
+public import SerrePositivity.EInfinity.Hammock.ColimitGraph
+public import SerrePositivity.EInfinity.Hammock.Diagram
+public import SerrePositivity.EInfinity.Hammock.SegmentAdjacent
+public import SerrePositivity.EInfinity.Hammock.SegmentParentComparison
+public import SerrePositivity.EInfinity.Hammock.SegmentRestriction
+public import SerrePositivity.EInfinity.Hammock.SegmentSubdivision
+public import SerrePositivity.EInfinity.Hammock.WordColumnRecovery
+public import SerrePositivity.EInfinity.Hammock.WordComposition
+public import SerrePositivity.EInfinity.Hammock.WordIdentity
+public import SerrePositivity.EInfinity.Hammock.WordInterval
+public import SerrePositivity.EInfinity.Hammock.WordSegmentComparison
+public import SerrePositivity.EInfinity.Hammock.ZigzagExt

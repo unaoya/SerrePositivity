@@ -1050,7 +1050,18 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 全頂点の切断位置の縦射を保持し、始点・終点と後ろ向きの弱同値を保持する。
 `BarrattEccles.algebraHammockTransition`・`algebraHammockGraphMap` は同じ元の E 代数の
 弱同値への代入であり、モデル instance の追加入力や大域化は不要。
-語の射の恒等・合成と遷移関手の整合、全語の図式・その余極限による hammock 局所化と
+`Segment.chain_restriction` は小区間と大区間の射列の制限の厳密な一致。
+`map_adjacent` は元の一列の射の回収、`map_comp` は二つに分割した区間の合成則。
+`WordAction.segment_obj` は圧縮後の区間合成を元の切断間の区間合成と同定する。
+`functor_id`・`functor_comp` は語の恒等・合成と元の全遷移関手の厳密な整合。
+`Hammock.categoryDiagram`・`graphDiagram` は全語・全単調写像の実際の図式。
+`colimitGraph`・`graphInclusion` はその単体集合の余極限と元の標準射。
+`colimitGraphDesc`・`graphInclusion_desc`・`colimitGraph_hom_ext` は余極限の普遍性。
+`BarrattEccles.algebraHammockGraphDiagram`・`algebraHammockColimitGraph` は同じ E 代数への代入。
+`algebraHammockGraphCocone_isColimit` は元の全標準射の余錐の実際の余極限性。
+`mappingSpaceHammockColimitNerveMap` と `mappingSpaceHammockColimitComparison_fac` は
+元の同じ Map^h の共通始域・左射・三列の比較を保持した、全語の余極限への比較。
+余極限上の合成・単位、proper 性、縮約 hammock との同型、三列の包含の弱同値性、
 既存 DK Hom への高次比較は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
