@@ -1093,3 +1093,4 @@ public import SerrePositivity.InfinityCategories.F1.RelativeHomCoherentRecovery
 public import SerrePositivity.InfinityCategories.F1.FunctorNaturalitySquare
 public import SerrePositivity.InfinityCategories.F1.FunctorNaturalityTriangles
 public import SerrePositivity.InfinityCategories.F1.RelativeHomCoherentNaturality
+public import SerrePositivity.InfinityCategories.F1.RelativeHomPointedNaturality
