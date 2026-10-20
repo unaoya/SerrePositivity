@@ -9682,3 +9682,156 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @nativeSpanRightUniversalHomDiagramFamily_terminal
 #print axioms nativeSpanRightUniversalHomDiagramFamily_terminal
+
+#check @pointHomPresentation_inv_transport
+#print axioms pointHomPresentation_inv_transport
+
+#check @initialBaseIso_inv_vertexTransport
+#print axioms initialBaseIso_inv_vertexTransport
+
+#check @coconeVertexDiagram_of_vertex_eq
+#print axioms coconeVertexDiagram_of_vertex_eq
+
+#check @normalizedCoconeRestrictionFiber_targetEq
+#print axioms normalizedCoconeRestrictionFiber_targetEq
+
+#check @specifiedCoconeUniversalNativeParameter
+#print axioms specifiedCoconeUniversalNativeParameter
+
+#check @specifiedCoconeUniversalNativePointDiagram
+#print axioms specifiedCoconeUniversalNativePointDiagram
+
+#check @specifiedCoconeUniversalNativeParameter_terminal
+#print axioms specifiedCoconeUniversalNativeParameter_terminal
+
+#check @specifiedCoconeLeftUniversalNative_tip
+#print axioms specifiedCoconeLeftUniversalNative_tip
+
+#check @specifiedCoconeLeftUniversalNativeFamily
+#print axioms specifiedCoconeLeftUniversalNativeFamily
+
+#check @specifiedCoconeLeftUniversalNativeFamily_terminal
+#print axioms specifiedCoconeLeftUniversalNativeFamily_terminal
+
+#check @specifiedCoconeRightUniversalNative_tip
+#print axioms specifiedCoconeRightUniversalNative_tip
+
+#check @specifiedCoconeRightUniversalNativeFamily
+#print axioms specifiedCoconeRightUniversalNativeFamily
+
+#check @specifiedCoconeRightUniversalNativeFamily_terminal
+#print axioms specifiedCoconeRightUniversalNativeFamily_terminal
+
+#check @specifiedCoconeLeftNativeBaseDiagramFamily_terminal
+#print axioms specifiedCoconeLeftNativeBaseDiagramFamily_terminal
+
+#check @specifiedCoconeRightNativeBaseDiagramFamily_terminal
+#print axioms specifiedCoconeRightNativeBaseDiagramFamily_terminal
+
+#check @triangleTerminalVertex_rightAnodyne
+#print axioms triangleTerminalVertex_rightAnodyne
+
+#check @tetrahedronTerminalVertex_rightAnodyne
+#print axioms tetrahedronTerminalVertex_rightAnodyne
+
+#check @normalizedCoconeRestrictionFiber_of_rightAnodyne
+#print axioms normalizedCoconeRestrictionFiber_of_rightAnodyne
+
+#check @exists_specifiedCoconeLeftNativeUniversalComparison
+#print axioms exists_specifiedCoconeLeftNativeUniversalComparison
+
+#check @specifiedCoconeLeftNativeUniversalComparison
+#print axioms specifiedCoconeLeftNativeUniversalComparison
+
+#check @specifiedCoconeLeftNativeUniversalComparison_terminal
+#print axioms specifiedCoconeLeftNativeUniversalComparison_terminal
+
+#check @exists_specifiedCoconeRightNativeUniversalComparison
+#print axioms exists_specifiedCoconeRightNativeUniversalComparison
+
+#check @specifiedCoconeRightNativeUniversalComparison
+#print axioms specifiedCoconeRightNativeUniversalComparison
+
+#check @specifiedCoconeRightNativeUniversalComparison_terminal
+#print axioms specifiedCoconeRightNativeUniversalComparison_terminal
+
+#check @specifiedCoconeLeftNativeUniversalAttachmentFace
+#print axioms specifiedCoconeLeftNativeUniversalAttachmentFace
+
+#check @specifiedCoconeLeftNativeUniversalAttachmentFace_raw
+#print axioms specifiedCoconeLeftNativeUniversalAttachmentFace_raw
+
+#check @specifiedCoconeLeftNativeUniversalRootFace
+#print axioms specifiedCoconeLeftNativeUniversalRootFace
+
+#check @specifiedCoconeLeftNativeUniversalRootFace_raw
+#print axioms specifiedCoconeLeftNativeUniversalRootFace_raw
+
+#check @specifiedCoconeLeftNativeUniversalRootFace_terminal
+#print axioms specifiedCoconeLeftNativeUniversalRootFace_terminal
+
+#check @specifiedCoconeLeftNativeUniversalAttachmentFace_terminal
+#print axioms specifiedCoconeLeftNativeUniversalAttachmentFace_terminal
+
+#check @specifiedCoconeRightNativeUniversalAttachmentFace
+#print axioms specifiedCoconeRightNativeUniversalAttachmentFace
+
+#check @specifiedCoconeRightNativeUniversalAttachmentFace_raw
+#print axioms specifiedCoconeRightNativeUniversalAttachmentFace_raw
+
+#check @specifiedCoconeRightNativeUniversalRootFace
+#print axioms specifiedCoconeRightNativeUniversalRootFace
+
+#check @specifiedCoconeRightNativeUniversalRootFace_raw
+#print axioms specifiedCoconeRightNativeUniversalRootFace_raw
+
+#check @specifiedCoconeRightNativeUniversalRootFace_terminal
+#print axioms specifiedCoconeRightNativeUniversalRootFace_terminal
+
+#check @specifiedCoconeRightNativeUniversalAttachmentFace_terminal
+#print axioms specifiedCoconeRightNativeUniversalAttachmentFace_terminal
+
+#check @arrowLeftIdentity_cancel
+#print axioms arrowLeftIdentity_cancel
+
+#check @cosliceEdgeFamilySectionHomotopy
+#print axioms cosliceEdgeFamilySectionHomotopy
+
+#check @cosliceEdgeFamilySectionHomotopy_raw
+#print axioms cosliceEdgeFamilySectionHomotopy_raw
+
+#check @cosliceEdgeFamilyNaturality_homMk_comp
+#print axioms cosliceEdgeFamilyNaturality_homMk_comp
+
+#check @cosliceEdgeFamilyNaturalitySquare
+#print axioms cosliceEdgeFamilyNaturalitySquare
+
+#check @specifiedCoconeLeftNativeUniversalAttachmentSquare
+#print axioms specifiedCoconeLeftNativeUniversalAttachmentSquare
+
+#check @specifiedCoconeLeftNativeUniversalRootSquare
+#print axioms specifiedCoconeLeftNativeUniversalRootSquare
+
+#check @specifiedCoconeLeftNativeUniversalAttachmentSection_raw
+#print axioms specifiedCoconeLeftNativeUniversalAttachmentSection_raw
+
+#check @specifiedCoconeLeftNativeUniversalRootSection_raw
+#print axioms specifiedCoconeLeftNativeUniversalRootSection_raw
+
+#check @specifiedCoconeLeftNativeUniversalRootSection_hom_arrow
+#print axioms specifiedCoconeLeftNativeUniversalRootSection_hom_arrow
+
+#check @specifiedCoconeRightNativeUniversalAttachmentSquare
+#print axioms specifiedCoconeRightNativeUniversalAttachmentSquare
+
+#check @specifiedCoconeRightNativeUniversalRootSquare
+#print axioms specifiedCoconeRightNativeUniversalRootSquare
+
+#check @specifiedCoconeRightNativeUniversalAttachmentSection_raw
+#print axioms specifiedCoconeRightNativeUniversalAttachmentSection_raw
+
+#check @specifiedCoconeRightNativeUniversalRootSection_raw
+#print axioms specifiedCoconeRightNativeUniversalRootSection_raw
+
+#check @specifiedCoconeRightNativeUniversalRootSection_hom_arrow
+#print axioms specifiedCoconeRightNativeUniversalRootSection_hom_arrow
