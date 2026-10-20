@@ -6,8 +6,8 @@
 
 ### 現在地
 - **K-5 抽象部分へ移行（ユーザー指示）**：安定 ∞ 圏・完全関手、抽象 Verdier 列、Sp 値の局所化不変量と基本補題を担当する。K-S• の SConstruction と D の Stable/・Drinfeld 商は読み取り専用。以下の K-5 節に界面と残工程を固定する。
-- K-5：StableInfinity の実 coherent nerve・quasicategory 性と対象・辺の対応、抽象 Verdier 列と局所化普遍性、零化と cofiber 辺反転の同値を検証済み。提示された Verdier 四角形に対する Sp 値不変量の定義、値の整数 π 同値検出、厳密切断を持つ BF 射の fiber 群の積分解まで追加した。任意の抽象列の四角形提示と、その像の長完全列・Sp の積分解は未完。
-- K-5 の今回の検証：専用対象 5507 jobs、8モジュール・207宣言の公理監査、全体 19036 jobs が終了コード 0。標準三公理のみ、宣言型の ModelCategory 検査も成功。
+- K-5：StableInfinity と抽象 Verdier 列の定義に加え、一点の単体集合から零安定圏を実構成した。零化の関手同型を完全関手 Hom の core に移し、任意の抽象列を元の包含・商・零角を保持する coherent 四角形として提示した。局所化不変量の像は全ての抽象列について実 fiber 列となる。実 BF fiber の全整数 π 消滅と元の射の π 同型性の同値も証明。像の長完全列と Sp の積分解は未完。
+- K-5 の今回の検証：専用対象 5516 jobs、14モジュール・278宣言の公理監査、全体 19052 jobs が終了コード 0。標準三公理のみ、宣言型の ModelCategory 検査も成功。
 - **優先順を変更（ユーザー指示）**：d1 整数次数による同値検出 → d2 値域界面の固定。IsStable は I-b 末尾へ延期。evaluationPost circle と逆関手経路は再開しない。停止中の4 WIP は保持する。
 - L9a・L9b・改訂 L9c・L9d・L9e 完了。骨格の成分・高次係数表示、微分の符号と核・像、Milnor の全整数次数界面と lim¹、Mittag–Leffler 収束、有理有限群の標準 Shapiro 同型、通常 Tot・BF・元の homotopy Tot の比較まで完了。
 - Sp の零対象、小積、任意の coherent cospan、通常の小圏上の BF 図式の ∞ 極限、元の hG/Tot の実際の ∞ 極限錐、任意射の fiber と整数 π の長完全列は完成。
@@ -47,7 +47,7 @@
 
 ### 未コミット
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
-- d1・d2 は保存済み。K-5 の8新規モジュール・専用集約・監査・二つの指定計画だけを保存する。停止中4 WIP と共有ルート・他レーンの差分は含めない。
+- d1・d2 と K-5 の最初の8モジュールは保存済み。今回の6新規モジュール・専用集約・監査・二つの指定計画だけを保存する。停止中4 WIP と共有ルート・他レーンの差分は含めない。
 
 ### 既知の問題
 - Sp の IsStable、Ω の完全忠実性・関手同値、任意の coherent 図式への極限の移送は未完。いずれも上表で未提供と明記し、存在を仮定する構造体で完成扱いにしない。
@@ -56,7 +56,7 @@
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。公理監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。
 
 ### 次の一手
-- K-5：まず零安定圏と、任意の VerdierSequence から VerdierDiagram への実際の四角形提示を構成する。次に一般の Sp fiber 四角形と実 BF homotopyFiber の比較を供給して長完全列を移し、切断付き列を Sp の積同値へ上げる。群の積分解だけを Sp の積同値の証明とは扱わない。
+- K-5：まず実 BF homotopyFiber f を頂点とする Sp の fiber 錐を、CospanReplacement と SpectrumHomFibrations の実極限から構成し、包含の射の類も比較する。続いて整数 π の h Sp 上の関手性と一般 fiber 四角形への長完全列の移送を供給する。最後に coherent な切断付き列を Sp の積同値へ上げる。群の積分解だけを Sp の積同値の証明とは扱わない。
 - 今回の d1・d2 は工程完了。整数次数による同値検出の証明・宣言表固定と対象・集約・監査・全体ビルドは成功。宣言表の未提供行まで完成したとは扱わない。
 - 一般 coherent 極限の実装を再開する際の最初の工程は、F2.hasColimit_coherentSpaceDiagram から任意 D : ulift B → Sp の実錐の構成へ至る接続の設計・見積もり。空間の HasColimit から Sp の HasLimit は直接には従わず、その接続は未構成。既存の通常小図式の極限を再実装しない。
 - d3 の再開条件は未成立：foundations.md では I-b の F1b-7・N-2・K-5〜K-8 等が未完。I-b 末尾までは evaluationPost circle・逆関手案・IsStable の実装へ戻らない。
@@ -68,8 +68,9 @@
 - **提供済み宣言**（共通接頭辞 `KST.LocalizingInvariants`）：StableCategory、ExactMap、exactFunctors、exactFunctorVertexEquiv、StableQCat、StableInfinity、stableInfinity_quasicategory、stableObject、stableVertex、stableArrowEquiv、IsVerdierSequence、VerdierSequence、IsVerdierSequence.universal、inverts_iff_kills_inclusion。
 - **Verdier 列**：完全関手 i : A → B、q : B → C、i の充満忠実性、q の核と i の本質像の一致、cofiber が i の本質像に属する辺に関する q の局所化普遍性を要求する。D が Drinfeld 商を後から具体例として接続する。単なる核の一致を商の普遍性の代用にしない。
 - **局所化不変量**：実際の Sp 値 ∞ 関手が Verdier 列を実 fiber 四角形に送る条件を定義する。Sp の IsStable は使わない。全整数 π の長完全列、同値検出、切断を持つ fiber 列の積分解を証明する。filtered 余極限保存等は必要な追加条件として区別する。
-- **追加の提供済み宣言**：VerdierDiagram、IsZeroCategory、PreservesZeroCategories、IsLocalizingInvariant、LocalizingInvariant、IsLocalizingInvariant.fiberTriangle_isFiber、value、valueMap、valueHomotopyGroup、valueHomotopyMap、value_isInvertible_of_piIsomorphism、SplitFiber.section_map、boundary_eq_one、inclusion_injective、groupEquiv。
-- **未完・依存順**：零安定圏と任意の抽象列の四角形提示（暫定 4–12 時間）、一般 Sp fiber 四角形と BF homotopyFiber の比較・像の長完全列の移送・切断付き列の Sp 積同値（8–24 時間以上）。現在の IsLocalizingInvariant は提示された四角形を全て保存する条件で、任意抽象列への提示の存在は未証明。SplitFiber.groupEquiv は厳密な切断 s ≫ f = id を持つ BF 射の各整数次数の群同型であり、coherent な切断や Sp の積同値へは未拡張。原典は HA §§1.1–1.3、BGT §§5・9。K-5 全体は未完。
+- **追加の提供済み宣言**：VerdierDiagram、IsZeroCategory、PreservesZeroCategories、IsLocalizingInvariant、LocalizingInvariant、IsLocalizingInvariant.fiberTriangle_isFiber、value、valueMap、valueHomotopyGroup、valueHomotopyMap、value_isInvertible_of_piIsomorphism、SplitFiber.section_map、SplitFiber.boundary_eq_one、SplitFiber.inclusion_injective、SplitFiber.groupEquiv。
+- **今回の提供済み宣言**：zeroCategory、zeroCategory_isZero、toZeroCategory、fromZeroCategory、isExact_of_zero_values、verdierZeroCompositeIso、exactMapCoreVertexIso、stableArrow_homMk_eq_of_functorIso、exists_verdierSquare、VerdierSequence.presentation、VerdierSequence.presentation_sequence、IsLocalizingInvariant.abstractFiberTriangle、IsLocalizingInvariant.abstractFiberTriangle_isFiber、IsLocalizingInvariant.abstractFiberTriangle_bottom、IsLocalizingInvariant.abstractFiberTriangle_right、FiberDetection.piIsomorphism_of_fiberGroups、FiberDetection.piIsomorphism_iff_fiberGroups、FiberDetection.isInvertible_of_fiberGroups。
+- **未完・依存順**：実 BF homotopyFiber の Sp の fiber 錐と包含の比較、整数 π の h Sp 上の関手性、一般 Sp fiber 四角形と BF homotopyFiber の比較・像の長完全列の移送・切断付き列の Sp 積同値（暫定 8–24 時間以上）。任意の抽象列の四角形提示と、その像の実 fiber 性は完成。SplitFiber.groupEquiv は厳密な切断 s ≫ f = id を持つ BF 射の各整数次数の群同型であり、coherent な切断や Sp の積同値へは未拡張。原典は HA §§1.1–1.3、BGT §§5・9。K-5 全体は未完。
 
 ## 範囲と所有
 

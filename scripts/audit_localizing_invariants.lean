@@ -15,7 +15,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams,
     `SerrePositivity.KST.LocalizingInvariants.Invariant,
     `SerrePositivity.KST.LocalizingInvariants.ValueHomotopy,
-    `SerrePositivity.KST.LocalizingInvariants.SplitFiberGroups]
+    `SerrePositivity.KST.LocalizingInvariants.SplitFiberGroups,
+    `SerrePositivity.KST.LocalizingInvariants.ZeroCategory,
+    `SerrePositivity.KST.LocalizingInvariants.ZeroMaps,
+    `SerrePositivity.KST.LocalizingInvariants.ExactMapHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierPresentation,
+    `SerrePositivity.KST.LocalizingInvariants.AbstractFiberSequence,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDetection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
