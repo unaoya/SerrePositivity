@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.HomotopyCompositionOver
+import SerrePositivity.InfinityCategories.Derived.HomotopyCompositionRelativeOver
+import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGFiniteOreTrianglePrisms
+import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositionPrisms
 import SerrePositivity.InfinityCategories.Derived.DGCoherentSliceComparison
 import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrism
 import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrismProjection
@@ -3343,6 +3348,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGCoherentSliceComparison,
     `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrism,
     `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrismProjection,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyCompositionOver,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyCompositionRelativeOver,
+    `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteOreTrianglePrisms,
+    `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofCompositionPrisms,
     `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyPrism,
     `SerrePositivity.InfinityCategories.Derived.DGFiniteOreCompositionHomotopy,
     `SerrePositivity.InfinityCategories.Derived.PinchedHomComposition,
