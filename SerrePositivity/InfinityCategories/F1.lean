@@ -1350,3 +1350,7 @@ public import SerrePositivity.InfinityCategories.F1.RightRepresentableTwistedArr
 public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafSliceComparison
 
 public import SerrePositivity.InfinityCategories.F1.RepresentableUnstraighteningComparison
+
+public import SerrePositivity.InfinityCategories.F1.RepresentableUnstraighteningEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.YonedaPresheafEvaluation
