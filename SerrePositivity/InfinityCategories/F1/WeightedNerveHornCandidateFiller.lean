@@ -22,7 +22,8 @@ namespace SerrePositivity.InfinityCategories
 方針：充填の最後の面を計算し、元の初区間の図式へ同じ充填を追加する。
 規約：係数の Kan 性や quasicategory 性は仮定せず、指定した充填そのものを使う。
 使われ方：quasicategory 値 weighted nerve の inner・cocartesian ホーン充填。 -/
-lemma exists_weightedNerveHorn_candidate_of_coefficient_filler {C : Type u} [Category.{u} C]
+lemma exists_weightedNerveHorn_candidate_with_last_of_coefficient_filler
+    {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {n : ℕ} (σ : ComposableArrows C (n + 1))
     (k : Fin (n + 2))
     (hk : k ≠ Fin.last (n + 1))
@@ -34,7 +35,7 @@ lemma exists_weightedNerveHorn_candidate_of_coefficient_filler {C : Type u} [Cat
       weightedNerveSimplexMap F (simplexPrefixInclusion n (n + 1) (Nat.le_succ n)) ⟨σ, ψ⟩ =
         SSet.yonedaEquiv (horn.ι k (Fin.last (n + 1)) hk.symm ≫ a) ∧
       (horn (n + 1) k).ι ≫ ψ.app (Fin.last (n + 1)) =
-        weightedNerveHornLastCoefficient F σ k a ha := by
+        weightedNerveHornLastCoefficient F σ k a ha ∧ ψ.app (Fin.last (n + 1)) = H := by
   let τ := weightedNerveHornPrefixDiagram F σ k hk a ha
   let r := horn.ι k (Fin.last (n + 1)) hk.symm
   let α := simplexPrefixInclusion n (n + 1) (Nat.le_succ n)
@@ -53,7 +54,7 @@ lemma exists_weightedNerveHorn_candidate_of_coefficient_filler {C : Type u} [Cat
   have hψ : ψ.app (Fin.last (n + 1)) = H :=
     weightedNerveDiagramSnoc_last (σ ⋙ F) τ H
       (weightedNerveDiagram_lastFace_compatible (σ ⋙ F) τ H hb)
-  refine ⟨ψ, ?_, ?_⟩
+  refine ⟨ψ, ?_, ?_, hψ⟩
   · have hp : (⟨weightedNervePrefixFunctor n ⋙ σ, τ⟩ : weightedNerveSimplex F n) =
         SSet.yonedaEquiv (r ≫ a) := by
       apply (SSet.yonedaEquiv (X := weightedNerve F) (n := ⦋n⦌)).symm.injective
@@ -62,5 +63,23 @@ lemma exists_weightedNerveHorn_candidate_of_coefficient_filler {C : Type u} [Cat
     exact (weightedNerveSimplexSnoc_lastFace F σ τ H hb).trans hp
   · rw [hψ]
     exact hH
+
+/-- 指定した係数充填から最後の面とホーンを保つ図式を得る。 -/
+lemma exists_weightedNerveHorn_candidate_of_coefficient_filler {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} (σ : ComposableArrows C (n + 1))
+    (k : Fin (n + 2))
+    (hk : k ≠ Fin.last (n + 1))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ weightedNerve F)
+    (ha : a ≫ weightedNerveProjection F = (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ)
+    (H : (Δ[n + 1] : SSet.{u}) ⟶ F.obj (σ.obj (Fin.last (n + 1))))
+    (hH : (horn (n + 1) k).ι ≫ H = weightedNerveHornLastCoefficient F σ k a ha) :
+    ∃ ψ : simplexPrefixWeight (n + 1) ⟶ σ ⋙ F,
+      weightedNerveSimplexMap F (simplexPrefixInclusion n (n + 1) (Nat.le_succ n)) ⟨σ, ψ⟩ =
+        SSet.yonedaEquiv (horn.ι k (Fin.last (n + 1)) hk.symm ≫ a) ∧
+      (horn (n + 1) k).ι ≫ ψ.app (Fin.last (n + 1)) =
+        weightedNerveHornLastCoefficient F σ k a ha := by
+  obtain ⟨ψ, hp, ht, _⟩ :=
+    exists_weightedNerveHorn_candidate_with_last_of_coefficient_filler F σ k hk a ha H hH
+  exact ⟨ψ, hp, ht⟩
 
 end SerrePositivity.InfinityCategories

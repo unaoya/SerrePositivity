@@ -1512,3 +1512,7 @@ public import SerrePositivity.InfinityCategories.F1.WeightedNerveInnerFibration
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveEdgeCoefficient
 
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianCriterion
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianFibration
+
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianScaffold

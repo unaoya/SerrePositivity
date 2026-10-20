@@ -21,7 +21,6 @@
   `leftStraighteningInfinityMap_isFullyFaithful` により充満忠実。既存の本質的全射性と F0 を合わせ、
   `leftStraighteningInfinityMap_isQCatEquivalence` で分類同値を閉じた。単位・余単位と三角恒等式は任意。
 - 初頂点引き戻しの実際の全相対 Hom 作用を、c1 の自然性・底上の比較・宇宙同型で同値とした。
-- 底の仮定は quasicategory 性のみ。任意の単体集合 B の S の同値性は今回主張しない。
 - **F1-2 は完了**：前層 ∞ 圏、制限・評価・定値前層、Yoneda の構成・充満忠実性を証明済み。
   元の全相対 Hom を Hom とする `RightFibrationInfinity B` と `PresheafInfinity B` の実際の分類同値
   `rightStraighteningInfinityEquivalence` を、小さい quasicategory B 上で構成した。逆の ∞ 関手も同値で、
@@ -81,7 +80,8 @@
 - cocartesian fibration の ∞ 圏と通常 nerve 上の Cat∞ 値図式は `733a24a2b` に保存済み。
 - 全相対作用と通常 nerve 上の coherent 分類写像は `87acb9df5` に保存済み。
 - 係数充填の一般化と quasicategory 値 weighted nerve の inner fibration 性は `24a9eb957`。
-- 可逆な最後の係数と標準水平辺の cocartesian 性を証明。F1 全体4490 jobs・監査10275宣言が成功。
+- 可逆な係数辺・標準水平辺の cocartesian 性は `6ed7eecf5`。
+- quasicategory 値 weighted nerve は cocartesian fibration。scaffold 比較も完了（4537 jobs・監査10281宣言）。
 
 ### 既知の問題
 
@@ -93,11 +93,11 @@
 
 ### 次の一手
 
-Cat∞ 値版は、通常圏の nerve 上の実際の全 fibration の分類写像と、既存の図式全体との一致まで。
-次は Cat∞ 値 unstraightening の全空間。既存の `weightedNerve` は任意の SSet 値図式で定義済み。
+Cat∞ 値版では通常 nerve 上の全 fibration の分類写像に加え、strict 図式の unstraightening を構成済み。
 係数が Kan でなくても、指定した係数ホーンの充填から全空間の充填を構成できる。
 inner fibration 性と、最後の係数が可逆な辺・標準水平辺の cocartesian 性は証明済み。
-次は元の射影の cocartesian fibration 性を完成し、F1B の一般の scaffold 比較で復元する。
+射影の cocartesian fibration 性と F1B の一般の scaffold 比較の適用も完了。
+次は taut scaffold を cocartesian section の族へ転置し、元の係数図式への比較を構成する。
 同じ主写像の充満忠実性・本質的全射性と、一般の底への帰着は別に残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
