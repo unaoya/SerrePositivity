@@ -1,4 +1,10 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.ActualRoofOreRefinement
+public import SerrePositivity.InfinityCategories.Derived.ActualRoofComposition
+public import SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdges
+public import SerrePositivity.InfinityCategories.Derived.DGActualRoofSpans
+public import SerrePositivity.InfinityCategories.Derived.DGActualRoofComposition
+public import SerrePositivity.InfinityCategories.Derived.ActualRoofInvertingEvaluation
 public import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction
 public import SerrePositivity.InfinityCategories.Derived.DGInvertingHomActionFamily
 public import SerrePositivity.InfinityCategories.Derived.DGInvertingRoof

@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.ActualRoofOreRefinement
+import SerrePositivity.InfinityCategories.Derived.ActualRoofComposition
+import SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdges
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofSpans
+import SerrePositivity.InfinityCategories.Derived.DGActualRoofComposition
+import SerrePositivity.InfinityCategories.Derived.ActualRoofInvertingEvaluation
 import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction
 import SerrePositivity.InfinityCategories.Derived.DGInvertingHomActionFamily
 import SerrePositivity.InfinityCategories.Derived.DGInvertingRoof
@@ -2706,6 +2712,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ActualRoofOreRefinement,
+    `SerrePositivity.InfinityCategories.Derived.ActualRoofComposition,
+    `SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofSpans,
+    `SerrePositivity.InfinityCategories.Derived.DGActualRoofComposition,
+    `SerrePositivity.InfinityCategories.Derived.ActualRoofInvertingEvaluation,
     `SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingHomActionFamily,
     `SerrePositivity.InfinityCategories.Derived.DGInvertingRoof,
