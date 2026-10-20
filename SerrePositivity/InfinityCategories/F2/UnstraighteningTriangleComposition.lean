@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningMappingTrianglePrism
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleWitness
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningFamilyComparison
+public import SerrePositivity.InfinityCategories.F1.UnstraighteningSourceFamilyComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComposition
 
 /-!
@@ -53,17 +53,29 @@ def unstraighteningMappingTriangleIso {B K : SSet.{u + 1}}
     apply SSet.hom_ext
     intro n
     rfl
-  have wd : UnstraighteningFamilyWitness F J c (relativeFunctorUncurry d) := by
-    rw [hd]
-    exact w
-  have e := unstraighteningFamilyComparisonIso F J c (relativeFunctorUncurry d)
-    (relativeFunctorUncurry_projection d) wd.prism wd.source wd.target wd.projection
-  have hc : relativeFunctorCurry (relativeFunctorUncurry d)
-      (relativeFunctorUncurry_projection d) = d := by
+  let h := lift f (snd (leftUnstraightening F) K) ≫ g
+  have hh : h ≫ leftUnstraighteningProjection J =
+      fst (leftUnstraightening F) K ≫ leftUnstraighteningProjection F := by
+    dsimp only [h]
+    rw [← hd]
+    exact relativeFunctorUncurry_projection d
+  have e := unstraighteningSourceFamilyComparisonIso F J (leftUnstraighteningProjection F)
+    (𝟙 (leftUnstraightening F)) (Category.id_comp _) c h hh
+    w.prism w.source w.target w.projection
+  have hc : relativeFunctorCurry h hh = d := by
     apply relativeFunctorUncurry_injective
-    exact relativeFunctorUncurry_curry _ _
-  rw [hc] at e
-  exact e
+    exact (relativeFunctorUncurry_curry _ _).trans hd.symm
+  have hs : (c ≫ leftUnstraighteningMappingSpaceMap F J) ≫
+      relativeFunctorOverPre (leftUnstraighteningProjection J)
+        (Over.homMk (U := Over.mk (leftUnstraighteningProjection F))
+          (V := Over.mk (leftUnstraighteningProjection F))
+          (𝟙 (leftUnstraightening F)) (Category.id_comp _)) =
+      c ≫ leftUnstraighteningMappingSpaceMap F J := by
+    change _ ≫ relativeFunctorOverPre _ (𝟙 _) = _
+    rw [relativeFunctorOverPre_id, Category.comp_id]
+  exact (eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) hs)).symm ≪≫
+    e ≪≫
+    eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) hc)
 
 /-- 概要：任意の二つの変換の族の合成は、相対写像空間の実際の合成と整合する。
 方針：全パラメータの三角形を充填し、指定三角形の比較を適用する。

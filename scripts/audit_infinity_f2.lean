@@ -37,6 +37,22 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.unstraighteningSourceComparisonIso_heq_endpoint
 #check @SerrePositivity.InfinityCategories.F2.unstraighteningSourceComparisonIso_app_pre
 
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityPrism_eq
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityFamily_eq
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityPrism_projection
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityPrism_source
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityFamily_projection
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityPrism_target
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityPrism_initial
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityPrism_endpoint
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityRestrictedEndpointIso
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningIdentityComparisonIso_app_pre
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingComposite_projection
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_heq_source
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_app_pre_heq_source
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_app_pre
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleCurryIso_restrict
+
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
 方針：宣言元モジュールを判別し、各宣言の公理を再帰的に収集する。

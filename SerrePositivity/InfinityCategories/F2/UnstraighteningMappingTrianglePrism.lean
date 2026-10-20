@@ -23,9 +23,18 @@ namespace SerrePositivity.InfinityCategories.F2
 def unstraighteningMappingFamilyWitness {B K : SSet.{u + 1}}
     (F G : B ⟶ SpaceInfinity.{u}) (a : K ⟶ leftUnstraighteningTransformationSpace F G) :
     UnstraighteningFamilyWitness F G a
-      (relativeFunctorUncurry (a ≫ leftUnstraighteningMappingSpaceMap F G)) := by
-  simpa only [Category.comp_id, relativeFunctorUncurry_naturality] using
-    (unstraighteningUniversalFamilyWitness F G).comp a
+      (relativeFunctorUncurry (a ≫ leftUnstraighteningMappingSpaceMap F G)) where
+  prism := ((Δ[1] ⊗ leftUnstraightening F) ◁ a) ≫
+    leftUnstraighteningTransformationFamilyLift F G
+  source := ((unstraighteningUniversalFamilyWitness F G).comp a).source
+  target := by
+    simpa only [UnstraighteningFamilyWitness.comp, unstraighteningUniversalFamilyWitness,
+      relativeFunctorUncurry_naturality] using
+      ((unstraighteningUniversalFamilyWitness F G).comp a).target
+  projection := by
+    simpa only [UnstraighteningFamilyWitness.comp, unstraighteningUniversalFamilyWitness,
+      Category.comp_id] using
+      ((unstraighteningUniversalFamilyWitness F G).comp a).projection
 
 /-- 概要：元の写像空間作用の二辺を保つ元の底の全三角形の持ち上げ。
 方針：指定された二つの普遍証拠を元の二単体上で充填する。
