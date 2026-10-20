@@ -2104,6 +2104,38 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonIso_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitComparisonNatIso,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierDerivedIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.map,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.map_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.map_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.map_identity,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.map_composition,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom.functor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationIdentity,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComposition,
+      `SerrePositivity.EInfinity.SimplicialLocalization.LocalizationObjects,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.LocalizationCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationSimplicialCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationCategory_sHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.KanLocalizationObjects,
+      `SerrePositivity.EInfinity.SimplicialLocalization.KanLocalizationCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationCategory_sHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationHom_kanComplex,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomKanUnit_anodyne,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationUnit,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationUnitFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerve,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerve_quasicategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveVertexEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.CAlgSimplicialCategory,
+      `SerrePositivity.EInfinity.BarrattEccles.CAlg_R,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlg_R_quasicategory,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlg_sHom,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlg_sHom_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgVertexEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgVertex,
+      `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgVertex,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeCounit_obj_bijective,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeComonadAugmentation_obj_bijective,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionAugmentation_obj_bijective,
@@ -5913,3 +5945,40 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
         (localizedFreeResolutionObject (cofibrantAlgebraRelativeCategory A) n X) =
       localizedFreeResolutionObject (cofibrantAlgebraRelativeCategory A) m X := by
   exact localizedFreeResolutionObject_naturality (cofibrantAlgebraRelativeCategory A) θ X
+
+
+-- 固定 Hom の全単体作用素は元の厳密な合成則を保つ。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory) (X Y : C.category) {n m k : SimplexCategoryᵒᵖ}
+    (θ : n ⟶ m) (φ : m ⟶ k) (f : (localizationHom C X Y).obj n) :
+    (localizationHom C X Y).map (θ ≫ φ) f =
+      (localizationHom C X Y).map φ ((localizationHom C X Y).map θ f) := by
+  exact ConcreteCategory.congr_hom ((localizationHom C X Y).map_comp θ φ) f
+
+-- Kan 化への同じ単位は元の豊穣合成を厳密に保つ。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory) (X Y Z : C.category) :
+    localizationComposition C X Y Z ≫
+        SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C X Z) =
+      (SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
+        SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C Y Z)) ≫
+          Functor.LaxMonoidal.μ SerrePositivity.KST.Comparison.exInfinity _ _ ≫
+            SerrePositivity.KST.Comparison.exInfinity.map (localizationComposition C X Y Z) := by
+  exact (kanLocalizationUnit C).map_comp X Y Z
+
+-- 任意の可換環で CAlg_R の quasicategory 性に追加のモデル入力は不要。
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] : SSet.Quasicategory (CAlg_R A) := by
+  infer_instance
+
+-- 任意の可換環で、実際の CAlg_R の全 Hom は同じ Ex∞ から Kan となる。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : CAlgSimplicialCategory A) :
+    SSet.KanComplex (SimplicialCategory.sHom X Y) := by
+  exact cAlg_sHom_kanComplex A X Y
+
+-- 元の代数の頂点から回収する対象は、指定済みの同じ cofibrant 置換。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : (BarrattEccles.operad A).Algebra) :
+    (cAlgVertexEquiv A).symm (cAlgVertex A X) = (cofibrantAlgebraDKReplacement A).obj X := by
+  exact (cAlgVertexEquiv A).symm_apply_apply _

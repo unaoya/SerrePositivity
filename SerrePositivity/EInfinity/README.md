@@ -858,8 +858,16 @@ E2b は Dwyer–Kan 型の自由単体的局所化で進める。
 局所化した単体的な圏の図式で、元の普通の局所化への augmentation を持つ。
 `localizedFreeResolutionObjectEquiv` は augmentation の対象写像の全単射性による同じ対象の表示。
 `localizedFreeResolutionObject_naturality` は全単体作用素が元の対象の表示を保つ式。
-固定対象の Hom の単体集合・豊穣合成への組み立てと Hom の Kan 化・Map^h 比較、
-CAlg_R・U の ∞ 関手化・G1′ は未完成。
+`localizationHom` は同じ局所化 Hom を固定対象の単体集合へ束ねる。
+`localizationComposition`・`localizationIdentity` と `localizationEnrichedCategory` は
+元の次数ごとの合成・単位による厳密な豊穣構造と全公理。
+`KanLocalizationCategory` は同じ有限積保存 Ex∞ による Kan 化で、全 Hom は実際に Kan。
+`kanLocalizationUnit` は元の Ex∞ の単位による厳密な豊穣関手で、Hom の比較は anodyne。
+`localizationNerve` は既存の γ1 を代入した Mathlib の coherent nerve で、quasicategory。
+`BarrattEccles.CAlg_R` はこれを実際の cofibrant E 代数相対圏へ代入した quasicategory。
+`cAlgVertexEquiv`・`cAlgVertex`・`discreteCAlgVertex` は元の対象・同じ置換・離散対象の頂点。
+DK Hom と既存の Map^h の高次の比較・局所化の普遍性、U の ∞ 関手化、
+離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

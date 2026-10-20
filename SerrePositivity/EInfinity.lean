@@ -629,3 +629,9 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolution
 public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizedFreeResolution
 public import SerrePositivity.EInfinity.SimplicialLocalization.StrictLocalization
 public import SerrePositivity.EInfinity.SimplicialLocalization.ResolutionObjects
+public import SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom
+public import SerrePositivity.EInfinity.SimplicialLocalization.Hom
+public import SerrePositivity.EInfinity.SimplicialLocalization.Enrichment
+public import SerrePositivity.EInfinity.SimplicialLocalization.KanEnrichment
+public import SerrePositivity.EInfinity.SimplicialLocalization.Nerve
+public import SerrePositivity.EInfinity.BarrattEccles.CAlg
