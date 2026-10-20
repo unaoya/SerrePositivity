@@ -987,4 +987,12 @@ public import SerrePositivity.KST.SConstruction.FamilyChainBinaryPointCompositio
 public import SerrePositivity.KST.SConstruction.TracedCompositeBinaryTriangle
 public import SerrePositivity.KST.SConstruction.TracedCompositeBinaryFaces
 public import SerrePositivity.KST.SConstruction.TracedTripleBinaryGlue
+public import SerrePositivity.KST.SConstruction.SpectrumStageFixedComposition
+public import SerrePositivity.KST.SConstruction.TracedTripleStageCompositionLaws
+public import SerrePositivity.KST.SConstruction.TracedTripleBinaryImages
+public import SerrePositivity.KST.SConstruction.TracedTripleCorrectionPathFaces
+public import SerrePositivity.KST.SConstruction.TriangleDiagonalPasting
+public import SerrePositivity.KST.SConstruction.TracedTriplePairCorrectionPasting
+public import SerrePositivity.KST.SConstruction.DoubleDiagonalTrianglePasting
+public import SerrePositivity.KST.SConstruction.TracedTripleCorrectionPasting
 /-! # ∞-S• 構成と連結 K 理論 -/
