@@ -1202,3 +1202,5 @@ public import SerrePositivity.InfinityCategories.F1.EdgewiseWeightReindexCoordin
 public import SerrePositivity.InfinityCategories.F1.CoherentPathCutStageReindex
 public import SerrePositivity.InfinityCategories.F1.CoherentTwoSidedHomNaturality
 public import SerrePositivity.InfinityCategories.F1.CoherentTwoSidedHomIntervals
+public import SerrePositivity.InfinityCategories.F1.CoherentPathCutRightEndpoint
+public import SerrePositivity.InfinityCategories.F1.CoherentTwoSidedHomRightEndpoint

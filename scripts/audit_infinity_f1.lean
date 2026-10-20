@@ -5081,3 +5081,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentTwoSidedHomSquare_one
 #check @SerrePositivity.InfinityCategories.coherentTwoSidedHomIntervalFamily
 #check @SerrePositivity.InfinityCategories.coherentTwoSidedHomIntervalFamily_uncurry
+#check @SerrePositivity.InfinityCategories.pathCutLastZeroFunctor
+#check @SerrePositivity.InfinityCategories.pathCutLastZeroMap
+#check @SerrePositivity.InfinityCategories.pathCutEdgewiseStageCoordinateMap_one
+#check @SerrePositivity.InfinityCategories.pathCutEdgewiseStageMap_one
+#check @SerrePositivity.InfinityCategories.pathCutLastZero_eq_castMaximum
+#check @SerrePositivity.InfinityCategories.pathCutLastZeroMap_front
+#check @SerrePositivity.InfinityCategories.coherentTwoSidedHomSimplex_one_front
+#check @SerrePositivity.InfinityCategories.coherentTwoSidedHomSimplex_one_cut
+#check @SerrePositivity.InfinityCategories.coherentTwoSidedHomIntervalFamily_one
