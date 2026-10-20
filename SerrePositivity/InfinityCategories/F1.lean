@@ -1660,3 +1660,25 @@ public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorCore
 public import SerrePositivity.InfinityCategories.F1.CocartesianRelativePrecomposition
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeCoreColimitDescent
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianEdgeImageComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackMatchingLift
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackEdgeComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackSquareComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackEdgeReflection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOverPullbackEdges
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackDomainCocone
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackEdgeCover
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackDomainMarks
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomCoreDescent
