@@ -2208,6 +2208,40 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.Thomason.fiberNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.toComma,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.fromComma,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.toComma_fromComma,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.fromComma_toComma,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.equivalence,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.toComma_naturality,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.map_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallDiagram,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallToComma,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallFromComma,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallToComma_smallFromComma,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallFromComma_smallToComma,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallElementsMap,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallToComma_naturality,
+      `SerrePositivity.EInfinity.FrameHom.SmallNerve.functor,
+      `SerrePositivity.EInfinity.FrameHom.SmallNerve.naturality,
+      `SerrePositivity.EInfinity.FrameHom.SmallNerve.map_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallCommaMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallRightSpanInitial,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallRightSpanInitial_isInitial,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionRightDiagram_map_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFiberNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceResolutionRightLeg,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceResolutionFiberEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceResolutionFiberNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceResolutionFiberNerveMap_hom,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceResolutionFiberNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceResolutionGrothendieckNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceResolutionGrothendieckNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSmallSpanGrothendieckNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSmallSpanGrothendieckNerveMap_hom,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSmallSpanGrothendieckNerveMap_localized_isIso,
       `SerrePositivity.EInfinity.FrameHom.Thomason.commaDiagram,
       `SerrePositivity.EInfinity.FrameHom.Thomason.transport,
       `SerrePositivity.EInfinity.FrameHom.Thomason.transport_naturality,
@@ -6712,3 +6746,43 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (Thomason.map (mappingSmallSpanRightDiagram A X Y))) :=
   mappingSpanThomason_localized_isIso A X Y
+
+-- 元の固定 fiber の nerve の包含は、始対象と全遷移の不変性だけから反転される。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.FrameHom in
+example {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
+    (G : D ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    {i : D} (hi : IsInitial i)
+    (hG : ∀ {d e : D} (f : d ⟶ e),
+      IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+        (nerveMap (G.map f).toFunctor))) (d : D) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (Thomason.fiberNerveMap G d)) :=
+  Thomason.fiberNerveMap_localized_isIso G hi hG d
+
+-- 任意の可換環で、元の全右脚の各遷移そのものを反転できる。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    {X Y : (BarrattEccles.operad A).Algebra}
+    {s t : AsSmall.{e2ComplexLimitUniverse + 1} (algebraRightSpanBase A Y)} (f : s ⟶ t) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (nerveMap ((mappingSmallResolutionRightDiagram A X Y).map f).toFunctor)) :=
+  mappingSmallResolutionRightDiagram_map_localized_isIso A f
+
+-- 同じ元の共通始域から全左脚・全右脚の小さい全図式への射も反転される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (mappingSpaceSmallSpanGrothendieckNerveMap A X Y)) :=
+  mappingSpaceSmallSpanGrothendieckNerveMap_localized_isIso A X Y
+
+-- 全次数で、元の中間射そのものを保持する。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles Opposite in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (n : SimplexCategoryᵒᵖ)
+    (c : (nerve (ULiftHom.{e2ComplexLimitUniverse + 1}
+      (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ))).obj n)
+    (j : Fin (n.unop.len + 1)) :
+    (((mappingSpaceSmallSpanGrothendieckNerveMap A X Y).app n c).obj j).fiber.hom.down =
+      (c.obj j).unop.val :=
+  mappingSpaceSmallSpanGrothendieckNerveMap_hom A X Y n c j

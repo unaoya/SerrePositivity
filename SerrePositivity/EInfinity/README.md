@@ -996,8 +996,21 @@ Grothendieck 比較と bar 比較が二つの Thomason 射で厳密に可換で�
 これらと元の自然性の正方形・bar の成分不変性から、Thomason 射の反転性を導く。
 `mappingResolutionThomason_localized_isIso`・`mappingSpanThomason_localized_isIso` は
 元の全右脚の分解側・全左脚側の二つの小さい図式への実際の代入。
-元の Hom の反対要素圏と同じ分解の comma 図式の自然な比較、宇宙比較、
-固定右脚から全図式への元の右射の因子分解は後続。
+`Thomason.fiberNerveMap_localized_isIso` は始対象を持ち全遷移の nerve が反転される
+図式で、同じ元の各 fiber の包含を反転する。
+`CosimplicialHomElements.equivalence`・`smallEquivalence` は元の Hom の反対要素圏と
+同じ cosimplicial 図式の comma 圏の明示的な順逆で、右対象にも厳密に自然。
+`SimplexTerminalNerve.map_localized_isIso` は元の終端 augmentation から反対要素圏の
+nerve の不変性を移す。`SmallNerve.map_localized_isIso` で宇宙を揃え、
+`CosimplicialHomElements.smallCommaMap_localized_isIso` が同じ小さい comma の比較へ移す。
+`BarrattEccles.mappingSmallResolutionRightDiagram_map_localized_isIso` と
+`mappingResolutionFiberNerveMap_localized_isIso` は元の全右脚の遷移と固定 fiber の包含への代入。
+`mappingSpaceResolutionFiberEquivalence` は元の Map^h と同じ置換の右脚での同値。
+`mappingSpaceResolutionFiberNerveMap` は同じ共通始域の Hom と対象の宇宙を揃えて
+元の固定 fiber へ送る。`mappingSpaceResolutionGrothendieckNerveMap` と
+`mappingSpaceSmallSpanGrothendieckNerveMap` は同じ分解の全図式と全左脚・全右脚への
+比較で、それぞれ `_localized_isIso` を証明。全次数で元の中間射を保持する。
+小さい全図式から元の三本矢への回収と、元の右射との厳密な因子分解は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
