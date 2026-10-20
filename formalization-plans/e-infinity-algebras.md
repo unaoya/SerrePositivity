@@ -5,104 +5,51 @@
 ## 引き継ぎ（2026-10-19）
 
 ### N（γ1.5・γ3）
-- **現在地**：γ1.5 完了。γ3b は任意の小圏で元の非反転 q_x の同値性・全導来 fiber の可縮性による両向き判定と、pinched Hom の直接 fiber 模型まで公開。
-  γ3c は 𝒮 の小積・Sp の有限積（空積含む）、一脚 fibration の引き戻し、fibration の塔の ∞ 極限を公開。𝒮 の小余積・任意の span と列の ∞ 余極限も公開。
-  通常の随伴と整合する単体的 Hom 同型から、任意の coherent な極限錐の極限保存を証明。豊穣右関手の coherent nerve の像との一致も公開。
-  γ4 の具体例 `K × − ⊣ Map(K,−)` は通常の随伴・豊穣 Hom 同型・零単体と、両対象の anodyne Kan 置換を含む frame Hom を全単体で照合。固定した Quillen 類の保存も公開。
-  一般の小図式の重み付き coend と内部 Hom の普遍性、反転係数の end との自然同型、Kan 置換後の豊穣合成を保つ Hom 比較・普遍切断点・実際の coherent 余錐を構成。
-  通常の任意の小圏上の Kan 値図式では、反対錐の ∞ 極限性と元の native な余錐の ∞ 余極限性を無条件に証明。
-  任意の coherent 図式の切断空間は、形状の押し出し・セル付加・骨格の塔の厳密な極限で表示。left fibration では各値は Kan、制限は Kan fibration。
-  部分余極限頂点の付加・指定余錐の延長・余極限性の保存と反映、元の図式の固定頂点余錐空間の厳密な引き戻しを構成。全 Hom の制限と実際の付加比較辺の前合成の自然性も公開。
-  部分余極限対象の native な Kan 値 span とその小さい Kan 押し出し候補を構成。元の三角形による指定境界経路を保つ右枝の修正・全パラメータでの厳密な貼り合わせで、元の図式の実際の余錐を構成。
-  元の余錐空間と native な span の余錐空間を、それぞれ Hom の end・共通 path end と実際のホモトピー同値で比較。全 Hom 族の同値性と余極限性の必要十分条件も公開。
-  比較先の native な全 Hom 族の同値性は無条件に証明済み。元の族との end 内のホモトピー入力は未構成で、指定余錐の余極限性・γ3c 全体の完了とは数えない。
-  元の二単体・標準二辺・長辺・可変終点を保つ輸送三角形と全 Hom 族、底・始点・評価固定の比較円柱をデータ化。指定経路に沿う既存の左右の全 Hom 族のホモトピーと辺の類も公開。
-  end の HR/HL は評価固定データから構成。任意の単射境界から同じ評価を保つ族の延長と、二つの指定円柱を二辺として保つ比較三角形を構成。
-  右 HR と元の指定四面体の円柱を同じ三角形で接続。第三辺の始点の射影を既存の右 Hom 係数と同定し、終点固定円柱から native な共通脚の前合成へ接続。三辺の類の合成等式も証明。
-  左は標準 prism 自身の輸送辺と実際の付加辺を保持し、native な左二単体上の実際の三角形と、終端辺・底を厳密に保つ全 Hom 族を構成。共通族との評価の一致、左 HL との二辺固定比較三角形、三辺の類の合成を証明。
-  左右の元の全辺族から同じ native 根辺への比較を構成し、既存の native 比較円柱を二面に保つ三角形と、終点を全時刻固定する比較の類の一意性を証明。
-  元の三角形・四面体の長辺を同じ可縮な固定延長空間へ移し、標準長辺比較の終点を元の span 輸送同型、修正辺の終点を元の境界同型へ同定。
-  境界同型の実際の定義による四因子相殺で、元の左長辺から修正後の右長辺への比較の終点の類が恒等と証明。
-  同じ根辺の終点評価の left fibration 性と零番ホーンの持ち上げから、同じ両端の厳密な fiber 辺へ直し、底・始点・終点の全時刻固定円柱を構成。
-  元の左三角形の全 Hom 族を長辺へ制限し、底・終端係数・可変終点を保って同じ円柱全体へ延長。底は元の左根辺族と厳密に一致。
-  同じ境界と底を持つ二つの全余錐族の相対比較を公開。根辺円柱の時間零の端面を、元の左長辺族へ底・終端・可変終点を全時刻固定して接続済み。時間一の端面と元の右四面体の長辺族を同じ右長辺上に置き、それぞれの底を既存の左・右根辺族へ同定。元の Hom の普遍余錐の二段制限を回収して、両族の終端係数が上の余錐空間で厳密に一致することも証明。円柱の右端面から元の右四面体族へ、上の終端係数を全時刻固定して底の全ホモトピーを持ち上げ済み。正規化した底は元の `specifiedCoconeRootFamilyComparison` の同じ raw な円柱を包含した射そのもの。根辺円柱の始点側の全族を同じ c の定値な時間辺へ制限し、底が時間に依存しないことを厳密に証明。二時刻の比較を底・可変終点の全時刻固定で構成し、元の時間零・一の端面の初期制限へ同じ raw な円柱で接続。固定終点の初期 Hom 空間へ円柱を移す一般 API と、包含・評価・底の raw な式も公開。元の左右の長辺の初期 Hom 族を三角形・四面体の既存の族へ厳密に同定し、左右と中央の三つの比較を同じ固定終点の初期 Hom 空間へ移送済み。左の逆・中央・右の比較同型を合成し、評価像は元の共通全族の恒等射、底の像は元の右比較の像と同じ Arrow であることを証明。右の底を元の初期射影比較の同じ raw な円柱へ同定。評価上で厳密に定値な代表を構成し、h Fun の忠実性で元の三因子の指定類と底の類を保持した。左右の元の Hom 円柱と native 比較同型の積が同じ Arrow であることを証明。元の HL・HR と公開済み native 円柱を四辺に保つ実際の正方形を構成。左右で同じ共通円柱を選び、二つの指定合成三角形も構成。path end の「元の逆代表を選んでから前合成」の raw な円柱と逆の類を照合し、同じ共通円柱と native 定値辺へ結ぶ左右の正方形まで構成。元の左右の全辺族の初期 Hom への制限、評価・底の厳密な式、同じ実際の脚へ射影する評価固定の枝比較円柱も構成。初期 Hom の後合成自然性から、左右の枝の初期族を共通部分へ制限したものが、元の左根辺三角形の中頂点と右四面体の同じ枝始点の全族に厳密に一致すると証明。実際の比較辺を初期 Hom 空間上で前置する写像を相対切断から構成し、評価と底の既存の Hom 前合成を厳密に保持。元の左右の枝円柱の前置像も構成し、共通評価の全時刻固定と元の枝 Hom 円柱の raw な前合成像を証明。既存の `InitialHomEdgeCylinder` を同じ全辺族・終点・底・初期包含を保持するデータへ強化し、普遍相対切断との終点・底固定比較も構成。同じ全辺族の比較を初期 Hom へ制限し、既存データの `lift` そのものを終点に保ち、評価と底の全時刻固定も証明。初期 Hom のパラメータ前合成自然性と普遍前置の始点の厳密な式を証明し、元の HL・HR の同じ lift へ評価・底固定で接続。評価固定三円柱の合成則と恒等因子の相殺により、普遍前置から作る Hom 円柱が元の制限円柱と同じ Arrow の類を与えると証明。左右の同じ共通全 Hom 族への前合成後も、元の HL・HR の類と raw な初期射影を保持する円柱まで公開。元の付加辺面の全族を、同じ終端を普遍相対切断で戻した族へ、底の元の切断比較円柱そのものを保って持ち上げ済み。初期 Hom の制限と評価・底の raw な式、同じ終端初期族の普遍前置の厳密な式も公開。元の左根辺三角形と右四面体の付加辺面を回収し、両端を根辺初期族と枝初期族の共通制限へ厳密に同定。左右の根辺初期族から枝終点の前置像への評価固定円柱を構成し、普遍前置・枝比較の経路と根辺初期族・付加辺面の経路の合成の類の一致を、初期 Hom とその Hom 射影の両方で証明。四円柱の射影の合成則を元の HL・HR・枝 Hom の付加辺前合成像・元の根辺円柱・付加辺面円柱へ Arrow で移送し、型付きの合成等式と四つの同じ代表を境界に持つ実際の左右の正方形を構成。底の元の左三角形と右の σ2 退化四面体の全族を native な図式上へ表示変更し、付加辺面と根辺の族を同じ全族の二制限として厳密に回収。同じ入力族の厳密な一致から、今回の付加辺円柱と既存の根辺円柱が、その同じ native 全族の二面の切断比較の raw な射影そのものであることも証明。二重 coslice の逆が元の図式への正規化制限・頂点射影・右端点制限を保つ式を証明。既存の選択済み Hom 持ち上げを全余錐族へ戻し、元の既存の余錐族と同じ全 Hom の終端係数を raw・fiber の両方で厳密に回収。正規化した二段制限の合成と部分図式族の終端式を公開。元の strict nerve の辺の join 形状が同じ実際の合成二単体を切り出すことを証明し、native span の左二単体・右 σ2 退化四面体上の普遍全 Hom 族と、その同じ strict 余錐の終端係数を構成。共通パラメータ・点図式への表示変更と元の両全族の終端係数の厳密な一致を証明。終端制限の自明 Kan 性から同じ終端上の全族間円柱とその付加辺・根辺の面を構成し、同じ切断円柱の自然性正方形を公開。付加辺の動く中頂点と根辺の定値終端の raw な像も保持。共通 end 内の全族のホモトピーは未完了。
-  一般の γ4 も未完了。F2-lite 第2部は10-20に F1b へ移管（`foundations.md` §6、`infinity-core-F2.md` §3）。
-- **残り**（依存順・時間は再開後の概算）：
-  1. γ3c：通常の小圏上の Kan 値図式の coend 余極限から、任意の coherent な図式への接続。HTT 4.2.4.1、Kerodon 7.5.4.6、20〜50時間。
-  2. γ4：具体例を一般の simplicial Quillen 随伴の cofibrant-fibrant 置換・frame へ拡張する。HTT 5.2.4.6、8〜20時間。
-  3. 2 と F1b の随伴 API から導来 ∞ 随伴の単位・余単位・整合性と一般の右導来関手の極限保存を構成する。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
-  4. E2a-3・4 と γ2 の豊穣化の確定後、Alg_E と忘却関手へ適用する。HTT 1.1.5.10・4.2.4.1・5.2.4.6、16〜40時間。E2a の現状は下記参照。
-- **主要宣言**（名前のみ。名前空間 SerrePositivity.InfinityCategories.HomotopyLimits）：
-  `strictCoherentCone_isLimit_iff_general_comparisonFiber`、`strictConePinched_generalOriginalEnd_equivalence`、
-  `spaceProductCone_isLimitCone`、`spacePullbackCone_isLimitCone`、`spaceTowerCone_isLimitCone`、
-  `spaceArbitraryPushoutCocone_isColimitCone`、`spaceArbitrarySequentialColimitCocone_isColimitCone`、
-  `SimplicialAdjunctionHomIso`、`strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso`、
-  `kanTensorAdjunctionHomIso`、`kanInternalHom_map_isLimit`、`kanReplacedTensorFrameAdjunction_square`、
-  `reflectedWeightedColimitHomIso`、`bousfieldKanCoherentConeComparison_homotopyEquivalence`、
-  `bousfieldKanCoherentCocone`、`bousfieldKanCoherentCocone_vertex`、
-  `coherentCone_isLimit_iff_reflectedNativeComparison`、`coherentConeFamily_homotopy_over_apex`、
-  `coherentCone_isLimit_of_family_lifts`、`bousfieldKanCoherentOppositeCone_isLimit_of_comparison_lifts`、
-  `kanReflectedBousfieldKanColimitHomComparison_of_point`、`bousfieldKanCoherentConePoint_of_end_point`、
-  `coherentCosliceSourcePrecomposition_weighted`、`coneIdentityCosliceSection`、
-  `bousfieldKanCoherentConeSourceFamily_restrict`、`bousfieldKanCoherentOppositeCone_isLimit`、
-  `bousfieldKanCoherentCocone_isColimit`、`kanDiagramCoherentNerve_hasColimit`、
-  `skeletalSectionCone_isLimit`、`skeletalSectionDiagram_map_fibration`、`skeletalCellSectionCone_isLimit`、
-  `colimitAttachedCocone`、`colimitAttachmentComparison_restrict`、`colimitAttachmentApexHom`、
-  `cosliceShapePushoutIso`、`coconeMappingShapePushoutIso`、`coconeMappingShapeCone_isLimit`、
-  `initialRestrictionHomComparison_square`、`colimitAttachmentHomPrecomposition`、
-  `coconeMappingSpaceHomComparison_restrict_square`、
-  `partialColimitCoconeToHomEnd`、`partialColimitCoconeToHomEnd_homotopyEquivalence`、
-  `spanNerveHornIso`、`partialColimitSpanHomEndIso`、
-  `partialColimitOriginalToNativeSpanCocones_homotopyEquivalence`、
-  `coconePointHomFamily_restriction_homotopy`、`coconePointHomFamily_comparison_homotopy`、
-  `exists_partialColimitPushout_cocone_with_branch_homotopies`、`coconeBoundaryPathRectifiedFamily`、
-  `coconeBoundaryPathCorrection_unique_homotopy`、`partialColimitSpanBoundaryPath`、
-  `partialColimitSpecifiedPathCocone`、`isColimitCone_iff_partialColimitHomFamilyToPathEnd`、
-  `nativeSpanUniversalFamilyToPathEnd_homotopyEquivalence`、`specifiedPathCocone_isColimit_of_pathFamily_homotopy`、
-  `partialColimitSpanLeftTransportHomComparison`、`partialColimitSpanRightTransportHomComparison`、
-  `specifiedCoconeCommonHomFamily_rootPrecomposition_homotopy`、
-  `partialColimitSpanTransportHomPathComparison`、`specifiedCoconeRightNativeIso`、`specifiedCoconeLeftRootedHomFamily_base`、`specifiedCoconeLeftRestrictionTriangle_homMk_comp`、`specifiedCoconeLeftNativeIso`、`specifiedCoconeRootFamilyTriangle_homMk_comp`、`fixedExtensionEndpointHomotopy_hom`、`colimitAttachmentTransportHomotopy_hom`、`specifiedCoconeRootedRightTetrahedron_standardEdge`、`coconeBoundaryTransportHomotopy_hom`、`fixedExtensionRestriction_endpoint`、`specifiedCoconeLeftTriangleComparisonExtensionEdge_long_homMk`、`prismTransportIso_parameter_hom_arrow`、`prismTransportIso_standard`、`specifiedCoconeLeftTerminalTransport_square`、`functorIsoComponent_point_hom_arrow`、`specifiedCoconeLeftTerminalTransport_actual_hom_arrow`、`specifiedCoconeLeftTerminalTransport_standard_hom_arrow`、`specifiedCoconeLeftFirstEndpointHomotopy_hom`、`specifiedCoconeLeftMiddleComparison_hom_arrow`、`specifiedCoconeLeftTerminalComparison_hom_arrow`、`specifiedCoconeRightPrefixTerminalComparison_hom_arrow`、`specifiedCoconeRightCorrectionFace_second`、`specifiedCoconeRightCorrectionFace_projection`、`specifiedCoconeRightCorrectionExtensionEdge_uncurry`、`specifiedCoconeRightCorrectionExtensionEdge_boundary_edge`、`specifiedCoconeRightCorrectionExtensionEdge_canonical_hom_arrow`、`fixedExtensionBaseIso_uncurry`、`specifiedCoconeLeftCommonRootRestriction_uncurry`、`specifiedCoconeRightPrefixCommonRootRestriction_actual`、`specifiedCoconeLeftCommonRootComparisonIso_boundary_hom_arrow`、`specifiedCoconeRightPrefixCommonRootComparisonIso_boundary_hom_arrow`、`coherentTransportPointComparisonExtensionEdge_uncurry`、`coherentTransportPointCanonicalComparison_endpoint_hom_arrow`、`specifiedCoconeStandardRootComparisonIso_endpoint_hom_arrow`、`specifiedCoconeCorrectionCanonical_boundary_hom_arrow`、`partialColimitSpanBoundaryIso_factors`、`contractibleVertexIso_endpoint_cancel`、`specifiedCoconeRootClosingComparisonIso_endpoint_hom_arrow`、`specifiedCoconeRootClosingExtensionEdge_uncurry`、`specifiedCoconeRootClosingExtensionEdge_endpoint_hom_arrow`、`relativeFunctorPairRestriction_leftFibration`、`fixedExtensionEdgeTarget_leftFibration`、`specifiedCoconeRightRootEndpoint_leftFibration`、`leftFibration_correct_edge_of_identity_arrow`、`specifiedCoconeRootVerticalHomotopy_raw`、`specifiedCoconeRootVerticalHomotopy_terminal`、`relativeRetractCosliceFamily`、`fixedTerminalHomotopyFamily`、`specifiedCoconeLeftRootTotalFamily_base`、`specifiedCoconeRootVerticalFamily_terminal`、`specifiedCoconeRootVerticalFamily_base`、`specifiedCoconeRootVerticalFamily_projection`、`exists_relativeCosliceFamilyHomotopy`、`fixedTerminalHomotopyStartComparison`、`specifiedCoconeRootVerticalStartComparison_base`、`specifiedCoconeRootVerticalStartComparison_terminal`、`specifiedCoconeRootVerticalEndFamily_base`、`specifiedCoconeRightRootTotalFamily_base`、`pointRestrictionEdgeFamily_uncurry`、`specifiedCoconeRootTotalFamilies_tip_uncurry`、`specifiedCoconeRootVerticalEndFamily_right_terminal`、`exists_specifiedHomotopyLift`、`exists_relativeCosliceSpecifiedHomotopy`、`specifiedCoconeRootBaseFamilyComparison_terminal`、`specifiedCoconeRightRootBaseComparison_raw`、`specifiedCoconeRootVerticalEndComparison_terminal`、`specifiedCoconeRootVerticalEndComparison_native_base`、`cosliceRetractionFamily_base`、`cosliceRetractionSectionComparison_base`、`specifiedCoconeRootVerticalInitialFamily_base`、`specifiedCoconeRootVerticalInitialFaceComparison_raw`、`specifiedCoconeRootVerticalInitialFaceComparison_base`、`initialDiagramHomFamilyHomotopy_ι`、`initialDiagramHomFamilyHomotopy_base`、`initialDiagramHomFamily_restrict`、`specifiedCoconeLeftRootTotalFamily_initial`、`specifiedCoconeRightRootTotalFamily_initial`、`specifiedCoconeRootStartInitialHomotopy_base`、`specifiedCoconeRootEndInitialHomotopy_base`、`specifiedCoconeRootMiddleInitialHomotopy_evaluation`、`specifiedCoconeRootInitialComparisonIso`、`specifiedCoconeRootInitialComparisonIso_evaluation_hom_arrow`、`specifiedCoconeRootInitialComparisonIso_base_hom_arrow`、`specifiedCoconeRootEndInitialHomotopy_native_projection`、`trivialKanFibration_postcomp_iso_hom_injective`、`specifiedCoconeRootEvaluationHomotopy_evaluation`、`specifiedCoconeRootEvaluationHomotopy_hom`、`specifiedCoconeRootEvaluationHomotopy_native_hom_arrow`、`evaluationFixedHomotopyTriangle_homMk_comp`、`specifiedCoconeRootHomCylinder_native_comp`、`specifiedCoconeNativeHom_comp_hom_arrow`、`nonempty_functorHomSquare_of_homEq`、`specifiedCoconeLeftEndHomotopy_raw`、`specifiedCoconeRightEndHomotopy_raw`、`specifiedCoconeNativeEndHomSquare`、`specifiedCoconeCommonNativeHomotopy_hom`、`specifiedCoconeLeftCommonNativeTriangle`、`specifiedCoconeRightCommonNativeTriangle`、`homotopyPrecompInverseTransport_raw`、`homotopyPrecompInverseTransport_hom`、`specifiedCoconeLeftEndInverseHomotopy_raw`、`specifiedCoconeRightEndInverseHomotopy_raw`、`specifiedCoconeLeftInverseNativeHomSquare`、`specifiedCoconeRightInverseNativeHomSquare`、`pointRestrictionInitialHomFamily_ι`、`pointRestrictionInitialHomFamily_projection`、`pointRestrictionFullHomCylinder_projection`、`specifiedCoconeLeftBranchHomotopy_projection`、`specifiedCoconeRightBranchHomotopy_projection`、`initialDiagramHomFamily_postcomp`、`specifiedCoconeLeftBranchCommonInitialFamily_triangle`、`specifiedCoconeRightBranchCommonInitialFamily_tetrahedron`、`relativeEdgeCosliceSection_base`、`initialTotalEdgePrecomposition_evaluation`、`initialTotalEdgePrecomposition_projection`、`initialRestrictionTotalPrecomposition_pinched`、`colimitAttachmentTotalPrecomposition`、`specifiedCoconeLeftBranchToInitialHomotopy_projection`、`specifiedCoconeRightBranchToInitialHomotopy_projection`、`InitialHomEdgeCylinder.fullFamily`、`InitialHomEdgeCylinder.lift_ι`、`initialHomEdgeSectionComparison_target`、`initialHomEdgeSectionComparison_base`、`initialHomEdgeSectionInitialComparison_ι`、`initialHomEdgeSectionInitialComparison_evaluation`、`initialHomEdgeSectionInitialComparison_base`、`initialDiagramHomFamily_precomp`、`initialRestrictionSection_source`、`initialRestrictionSectionComparison_base`、`initialRestrictionUniversalHomCylinder_hom_arrow`、`colimitAttachmentUniversalHomCylinder_hom_arrow`、`specifiedCoconeLeftUniversalInitialHomotopy_evaluation`、`specifiedCoconeRightUniversalInitialHomotopy_evaluation`、`specifiedCoconeLeftUniversalHomotopy_projection`、`specifiedCoconeRightUniversalHomotopy_projection`、`specifiedCoconeLeftUniversalHomotopy_hom_arrow`、`specifiedCoconeRightUniversalHomotopy_hom_arrow`、`relativeEdgeFamilyRetraction_base`、`initialEdgeFamilyRetraction_baseCylinder`、`initialTotalEdgePrecomposition_family`、`initialDiagramHomFamily_normalized_restrict`、`specifiedCoconeLeftAttachmentFaceFamily_target`、`specifiedCoconeRightAttachmentFaceFamily_target`、`specifiedCoconeLeftAttachmentInitialHomotopy_projection`、`specifiedCoconeRightAttachmentInitialHomotopy_projection`、`evaluationFixedHomotopySquare_homMk_comp`、`specifiedCoconeLeftAttachment_projection_homMk_comp`、`specifiedCoconeRightAttachment_projection_homMk_comp`、`specifiedCoconeLeftAttachment_original_homMk_comp_arrow`、`specifiedCoconeRightAttachment_original_homMk_comp_arrow`、`specifiedCoconeLeftAttachmentOriginalSquare`、`specifiedCoconeRightAttachmentOriginalSquare`、`diagramBaseFiberFamily_restrict_of_eq`、`specifiedCoconeLeftNativeBaseDiagramFamily_attachment`、`specifiedCoconeRightNativeBaseDiagramFamily_root`、`specifiedCoconeLeftAttachmentHomotopy_native_face_raw`、`specifiedCoconeRightAttachmentHomotopy_native_face_raw`、`specifiedCoconeLeftRootNativeCylinder_native_face_raw`、`specifiedCoconeRightRootNativeCylinder_native_face_raw`、`coconeNestedCoslice_inv_terminal_family`、`coconePointFullHomFiberFamily_restriction`、`coconePointFullHomFiberFamily_terminal`、`normalizedCoconeRestrictionFiber_twoStep`、`coconePointHomDiagramFiberFamily_terminal`、`strictCoconeLegTriangleShape_diagram`、`nativeSpanLeftUniversalHomDiagramFamily`、`nativeSpanRightUniversalHomDiagramFamily`、`nativeSpanLeftUniversalHomDiagramFamily_terminal`、`nativeSpanRightUniversalHomDiagramFamily_terminal`、`initialBaseIso_inv_vertexTransport`、`specifiedCoconeUniversalNativeParameter_terminal`、`specifiedCoconeLeftUniversalNativeFamily_terminal`、`specifiedCoconeRightUniversalNativeFamily_terminal`、`specifiedCoconeLeftNativeBaseDiagramFamily_terminal`、`normalizedCoconeRestrictionFiber_of_rightAnodyne`、`specifiedCoconeLeftNativeUniversalComparison_terminal`、`specifiedCoconeRightNativeUniversalComparison_terminal`、`specifiedCoconeLeftNativeUniversalAttachmentFace_raw`、`specifiedCoconeRightNativeUniversalRootFace_terminal`、`cosliceEdgeFamilyNaturality_homMk_comp`、`cosliceEdgeFamilyNaturalitySquare`、`specifiedCoconeLeftNativeUniversalAttachmentSquare`、`specifiedCoconeRightNativeUniversalRootSquare`、`specifiedCoconeLeftNativeUniversalAttachmentSection_raw`、`specifiedCoconeRightNativeUniversalRootSection_hom_arrow`。
-- **依存と提供**：Core・F1（coherent Hom、切断、edgewise、通常の豊穣関手）、F1b（trivial fibration 上の相対ホモトピー）、Stable、KST/Spectra、Simplicial の小対象分解を読み取り専用で使用。
-  提供先は F2 の 𝒮、L9／K-Sp の Sp、E2b。集約は InfinityCategories/HomotopyLimits.lean、監査は scripts/audit_homotopy_limits.lean。
-  型は Lean、運用規約は foundations.md §8。README に実施記録は追記しない。
-- **未コミット**：今回の保存単位は点 Hom 表示の輸送、共通 native パラメータ・終端、全族間比較と二面、切断円柱の自然性正方形の10新規モジュール、集約・監査、本 N 節。保存後は N 所有の変更なし。F2 計画は F1b 所有のため保存対象外。共有計画は N 節だけをステージする。
-  root の迷子 RelativeFreePathBoundary は正しい場所に修正版がコミット済みの N 旧稿と確認し、削除済み。
-- **既知の問題**：停止時の対象ビルド・監査に失敗なし。新規 sorry・追加公理・公開名衝突なし。監査の既存の重複1件を除去済み。
-  今回の公開型に ModelCategory SSet や IsRightQuillen の追加仮定なし。SSet の充填性・cofibrancy は Mathlib の固定 Quillen 類を使用。root 全体は未検証。
-  完全なモデル構造の存在を与える `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので主経路へ import しない。
-  今回はその存在命題を使わず固定類の保存と Hom 比較を証明しており、一般のモデル圏からの導出を済ませたとは数えない。
-  γ4 用の Hom 同型は y に全単体で自然、x の高次豊穣自然性は未要求。従って通常の Quillen 条件だけからの ∞ 随伴の完成とは数えない。
-  Sp では指定した Hom の局所 Kan 性・Ω 条件・cofibrancy を保持。一般の図式と右導来関手の cf 置換・高次整合性は後続課題。
-  `(edgeTransport_composition_iso p σ).some` は同じ三辺の異なる σ でも同じ値となることを Lean の rfl で確認。選択した同型だけでは元の二単体の高次情報が残らない。
-  `partialColimitSpanTransportIso` は実際の三角形 prism・相対円柱から作る同型へ差し替え済み。end 比較の HR/HL は評価固定の中間円柱データから構成する形へ差し替え済み。右 HR と元の四面体の比較円柱は、二辺を固定した実際の三角形で接続し、その辺の類の合成を証明済み。既存の右 Hom 係数から native な共通脚への接続も構成。左 HL と実際の左二単体の全 Hom 族も二辺固定三角形で接続済み。左側も同じ native な共通脚への接続を構成済み。指定経路の高次照合は未完了。`SpecifiedCoconeBranchData` は標準 prism 自身の左右辺との一単体の一致も保持する構成へ強化済み。右修正三角形は同じ標準辺と元の修正辺を指定して充填する。
-  大きい native 頂点・脚の型照合では `SpecifiedCoconeLeftTerminalComposition` と同様に、選択した span の候補・脚を局所的に irreducible とし、内部構成の反復展開を避ける。
-  依存が壊れたら回避せず停止する。他レーンの作業中変更はコミットしない。
-- **次の一手**：`specifiedPathCocone_isColimit_of_pathFamily_homotopy` の全終点の族のホモトピー入力を構成する。
-  元の族は `partialColimitHomFamilyToPathEnd`、同じ頂点で表示した比較先は `specifiedCoconeNativeFamilyToPathEnd`。
-  後者の同値性は無条件に証明済み。前者とのホモトピーを仮定した定理は、余極限性の完成とは数えない。
-  元の指定経路の左右の全 Hom 族と native 根辺への比較円柱は構成済み。三角形・四面体の同じ実際の辺を保ち、終点の輸送同型の四因子相殺から得た `specifiedCoconeRootVerticalHomotopy` は底・始点・終点を全時刻固定する。
-  `specifiedCoconeRootVerticalStartComparison` は時間零の端面を元の左長辺族へ結び、底・終端・可変終点を全時刻固定する。
-  時間一の `specifiedCoconeRootVerticalEndFamily` と元の `specifiedCoconeRightRootTotalFamily` は同じ右長辺上にあり、底はそれぞれ元の左・右根辺族。`specifiedCoconeRootVerticalEndFamily_right_terminal` で、上の終端係数の厳密な一致まで証明済み。
-  右端面の照合は `specifiedCoconeRootVerticalEndComparison` まで構成済み。上の終端係数と可変終点を全時刻固定し、底は元の左右の全比較円柱を厳密な図式の等式で表示変更したもの。`_native_base` で元の `specifiedCoconeRootFamilyComparison` の同じ raw な円柱の包含と一致する。
-  始点側の照合は `specifiedCoconeRootVerticalInitialFaceComparison` まで構成済み。元の初期時間辺の底が定値であることを全族で証明し、二時刻の比較を同じ円柱の時間零・一の端面の初期制限へ移した。底と可変終点は全時刻固定。元の根辺円柱そのものを全 Hom の円柱へ変換したと取り違えず、同じ全余錐族の二切断の相対比較であることを保持する。
-  三比較の同じ初期 Hom 空間への移送と合成は `specifiedCoconeRootInitialComparisonIso` まで構成済み。元の左三角形・右四面体の初期 Hom 族との一致は `specifiedCoconeLeftRootTotalFamily_initial`・右版で厳密に証明。左右と中央の元の raw な円柱の制限は各 `_ι` で保持する。
-  合成同型の評価像と底の像の計算に、`specifiedCoconeRootEndInitialHomotopy_native_projection` の raw な一致を合成し、元の初期射影比較の同じ類へ同定済み。
-  `specifiedCoconeRootEvaluationHomotopy` は同じ左右の族を結ぶ厳密な評価固定代表。`_hom` で三因子の合成の同じ類、`_native_hom_arrow` で底の指定類を保持する。自明 Kan 評価の後合成が h Fun で忠実であることを使う。
-  同じ評価固定の三円柱の合成則から `specifiedCoconeRootHomCylinder_homMk_comp`、元の根辺三角形との合成から `_native_comp` を証明。左右の制限三角形をつなぎ、`specifiedCoconeNativeHom_comp_hom_arrow` で元の HL・HR（全 Hom の制限を前合成）と公開済み native 比較同型との積を同じ Arrow へ同定済み。端点の輸送は `kanFunctorIsoTransport_hom_arrow`、元の円柱の保持は各 `_ProjectedCylinder_raw` を用いる。
-  指定四辺の実現は `specifiedCoconeNativeEndHomSquare` まで構成済み。`specifiedCoconeLeftEndHomotopy`・右版は同じ共通始点を持ち、各 `_raw` で元の HL・HR の全 Hom 制限を厳密に保つ。Stable の `exists_stableSquare_of_homMk_comm` を関手単体集合へ適用する。
-  `specifiedCoconeCommonNativeHomotopy` は左 HL と元の左 native 同型の積の代表。左右の `specifiedCoconeLeftCommonNativeTriangle`・右版は同じ共通代表と公開した同じ native 円柱を三辺に保つ。
-  path end の逆代表は `specifiedCoconeLeftEndInverseHomotopy`・右版へ移送済み。各 `_raw` は元の HL・HR の逆同型の代表を先に選び、後から全 Hom の制限を前合成した射そのもの。`_hom` は順方向円柱の逆の類と同定する。`specifiedCoconeLeftInverseNativeHomSquare`・右版はその同じ逆円柱を下辺、共通代表を右辺、native 比較を左辺、native 定値円柱を上辺に保つ実際の正方形。
-  枝の元の全辺族から `specifiedCoconeLeftBranchHomCylinderData`・右版を構成済み。`pointRestrictionInitialHomFamily` は同じ全辺族の初期制限で、`_ι`・`_evaluation`・`_projection` は元の族・枝への制限・実際の脚の前合成を厳密に保持する。枝比較の各 `_projection` は同じ評価固定中間円柱の raw な射影。
-  枝の初期族の共通制限は `specifiedCoconeLeftBranchCommonInitialFamily_triangle`・右の `_tetrahedron` で、元の根辺三角形の中頂点と四面体の同じ枝始点の初期族へ厳密に同定済み。元の終端辺・終端面の族を uncurry で回収し、`initialDiagramHomFamily_postcomp` を適用する。これらの枝始点は共通部分の始対象 c ではない。
-  前置は `initialTotalEdgePrecomposition` と `initialRestrictionTotalPrecomposition` まで構成済み。相対 coslice の終点切断を直接使い、初期 Hom 空間全体を一度に入力する。始点・終点の始対象性は不要。`colimitAttachmentTotalPrecomposition_pinched` は底を既存の実際の付加辺の前合成へ厳密に同定する。左右の `specifiedCoconeLeftBranchToInitialHomotopy`・右版は元の枝の同じ円柱を共通始対象 c の初期 Hom 空間へ写す。各 `_evaluation` は同じ共通族を全時刻固定し、`_projection` は元の枝 Hom 円柱に既存の付加辺の前合成を続けた同じ raw な射。
-  `InitialHomEdgeCylinder` は元の相対持ち上げの全辺族と `full_target`・`full_base`・`lift_ι` を保持する形へ強化済み。`initialHomEdgeSectionComparison` は、底の族が同じ `cosliceEdgeSection` の像の場合に、普遍相対切断の像とその同じ全辺族を終点・底固定で結ぶ。選択した切断の前合成自然性は仮定しない。
-  `initialHomEdgeSectionInitialComparison` は保持した同じ全辺族の比較を初期 Hom 空間へ制限した円柱。終点は元のデータの `lift` そのもので、`_ι` は同じ raw な制限、`_evaluation`・`_base` は評価と底を全時刻固定する。
-  始点側は `initialDiagramHomFamily_precomp`・`initialRestrictionSection_source` と `initialRestrictionSectionComparison` で厳密に接続済み。比較の終点は元の同じデータの `lift`、評価と底は全時刻固定。`initialRestrictionUniversalHomCylinder_hom_arrow` は評価固定三円柱の合成を底へ写して恒等因子を消し、元の HL・HR の同じ類を回収する。実際の付加辺への適用は `colimitAttachmentUniversalCylinderData`・`colimitAttachmentUniversalHomCylinder`。左右の `specifiedCoconeLeftUniversalInitialHomotopy`・右版は同じ共通評価から `(U ≫ section_B) ≫ Φ` へ至る。各 `_evaluation` は全時刻固定、`specifiedCoconeLeftUniversalHomotopy_projection`・右版は同じ raw な射影、各 `_hom_arrow` は元の `specifiedCoconeLeftEndHomotopy`・右版の同じ類を回収する。
-  終点側も `relativeEdgeFamilyBaseCylinder`・`relativeEdgeFamilyRetraction` で構成済み。方向は実際の全辺族 L から、その終端を普遍切断で戻した K へ。底には同じ `cosliceEdgeFamilyCylinder` の raw な包含を指定して `exists_relativeCosliceSpecifiedHomotopy` で持ち上げる。`initialEdgeFamilyRetraction_baseCylinder` は初期 Hom の底を同じ元の底の `cosliceEdgeFamilyPrecompositionCylinder` へ厳密に同定。`initialTotalEdgePrecomposition_family` は終端初期族の前置像を K の初期族へ同定する。左右の `specifiedCoconeLeftAttachmentFaceFamily`・右版は元の左三角形の辺01・右四面体の辺01の族で、各 `_source`・`_target` は元の根辺初期族・枝初期族の共通制限を厳密に回収する。 `specifiedCoconeLeftAttachmentInitialHomotopy`・右版は元の根辺初期族から `IB ≫ Φ` への実際の円柱。各 `_evaluation` は元の共通 Hom 族を全時刻固定、各 `_projection` は同じ付加辺面の底の切断比較の raw な始点射影。`evaluationFixedHomotopySquare_homMk_comp` から左右の `specifiedCoconeLeftAttachment_initial_homMk_comp`・右版と `_projection_homMk_comp` を証明。四辺は universal initial 円柱、branch-to-initial 円柱、元の root initial 円柱、今回の attachment initial 円柱。射影後も同じ四円柱の像を使う。 射影後の表示変更は `specifiedCoconeLeftBranchLegHomotopy`・右版、`specifiedCoconeLeftAttachmentHomotopy`・右版まで構成済み。枝の終点は元の native な脚の前合成に実際の付加辺の前合成を続けた係数で、`_raw` は元の同じ円柱を保持する。`specifiedCoconeLeftAttachment_original_homMk_comp_arrow`・右版は universal `_hom_arrow` で元の HL・HR の同じ類を回収。型付きの `_original_homMk_comp` と `specifiedCoconeLeftAttachmentOriginalSquare`・右版は、HL/HR を下辺、枝の前合成像を右辺、元の root Hom 円柱を左辺、同じ付加辺面円柱を上辺に保つ。
-  底の同じ native 全族と二面の raw な一致は `SpecifiedCoconeNativeBaseDiagrams`・`SpecifiedCoconeNativeFaceCylinders` で構成済み。native 側の普遍族は `CoconeNestedCosliceProjection`・`CoconePointFullHomFamily` まで構成済み。`coconePointFullHomFiberFamily_restriction` は元の既存の `coconePointHomFamily` そのもの、`_terminal` は元の選択済み全 Hom の点図式表示を厳密に回収。二段の正規化制限は `NormalizedCosliceRestrictionComposition`、部分図式族の終端は `coconePointHomDiagramFiberFamily_terminal`。元の実際の二単体を切り出す形状は `CoconeLegTriangleShape`・`StrictCoconeLegTriangleShape`。具体化は `NativeSpanUniversalHomDiagrams`：`nativeSpanLeftUniversalHomDiagramFamily` は元の左二単体、右版は同じ σ2 退化四面体の族。各 `_terminal` は strict な余錐自身の Hom をパラメータに、その同じ `leftFibrationInitialBaseIso` の逆を厳密に回収。shape の宇宙は `uliftFunctor.{u+1,u}` と `AsSmall.{u} WalkingSpan`（u+1 の AsSmall に替えると元の strict nerve と別型になる）。共通パラメータの表示変更は `PointHomPresentationTransport`・`SpecifiedCoconeUniversalNativeParameters`、同じ終端係数の回収は `SpecifiedCoconeUniversalNativeFamilies`・`SpecifiedCoconeNativeBaseTerminal` まで完了。`SimplexTerminalCosliceFiber` の自明 Kan 制限から、`SpecifiedCoconeNativeUniversalComparisons` で元の全族と普遍全族の終端固定円柱を構成。同じ円柱の付加辺01・根辺02/03の制限と厳密な終端像は `SpecifiedCoconeNativeUniversalFaces`。`CosliceEdgeFamilyNaturality` の四辺の類の合成則と実際の正方形を `SpecifiedCoconeNativeUniversalNaturality` へ適用し、付加辺の動く終端と根辺の定値終端の切断像を保持済み。次は左右の普遍根辺族が同じ全余錐族の同じ脚への制限であることを厳密に証明する。`joinEdgePoint_face_inv` と辺の始点式から `δ1 ≫ coconeLegTriangleShape e` が始点と頂点の join となる式を先に作り（検証済み草稿 `/tmp/NativeRootShape.lean`、`/tmp/n-native-root-shape-test.log` は終了0。まだ公開・監査対象外）、右の `tetrahedronRootEdge_degeneracy` と正規化二段制限で同じ根辺族へ回収する。元の四辺正方形と今回の自然性正方形の貼り合わせには、動く中頂点の同じ円柱を使う。`strictSpanCoconeToPointHomEnd` 内の `spanCoconeToPointHomEnd = spanCoconeToEdgeEnd ≫ spanEdgeEndToPointHomEnd` は選択したホモトピー逆を含むため、canonical な点・経路と暗黙に同定しない。公開した `choose_spec` の同じホモトピーで辺全族の end へ戻して比較する。最後に既存の HL/HR 逆代表の正方形と今回の四辺正方形を共通 path end 内で貼る。
-  可変終点固定の比較の一意性は、全時刻の固定または同じ射の像の等式を実証してから適用する。型や両端の一致だけから同じ全族・同じ類とは推論しない。任意の代表を底で正しいものと扱わない。
-  同じ経路の持ち上げの相対ホモトピーを共通 end に移して入力を閉じる。その後、骨格の無限段階とセルの添字の小ささを処理。
-  任意の coherent 図式の余極限性を閉じてから γ4・Sp/E2b への提供へ進む。F2-lite 第 2 部は F1b の所有範囲として重複実装しない。
+
+- **現在地**：**N-1 完了（F1b の定理を使用、10-20 16:31）。** γ1.5・γ3b と通常の小圏上の γ3c は N 側で完了。
+  小さい底上の任意の coherent 空間値図式の余極限は F1b の `F2.hasColimit_coherentSpaceDiagram` を使用する。
+  正確な入力は `B : SSet.{u}` と `F : (SSet.uliftFunctor.{u+1,u}).obj B ⟶ SpaceInfinity.{u}`。
+  `F2.coherentDiagramTotalCocone_isColimit` は元の全空間余錐そのものの native 余極限性を証明する。
+  F2 集約・`infinity-core-F2.md` を正本とし、F2 の coherent 余極限の実装は読み取り専用で使用する。
+  `F2.CoherentTotalColimit` の対象ビルド5531 jobsと両公開定理の標準3公理監査を N 側でも確認済み。
+  **N の部分余極限経路は打ち切り。** 未構成の共通 path end 比較・無限骨格の接続は継続しない。
+  検証済みの同経路のコードは保持するが、そこで構成した指定余錐の余極限性を証明済みとは扱わない。
+  最終保存単位は共通 native 根辺の厳密な一致・元の比較との三角形・選択済み end 逆の戻しの8モジュール33宣言。
+  **次は N-2（γ4）**。通常の随伴と整合する単体的 Hom 同型から、任意の小圏上の strict 表示の native 極限保存を証明済み。
+  γ4 の具体例 `K × − ⊣ Map(K,−)` は通常の随伴・豊穣 Hom 同型・零単体と、両対象の anodyne Kan 置換を含む frame Hom を全単体で照合済み。
+  一般の Quillen 随伴からの導来 ∞ 随伴、cf 置換・frame を含む高次自然性、右導来関手の一般 coherent 極限保存は未完了。
+- **残り**（依存順、時間は再開後の概算）：
+  1. N-2：一般の simplicial Quillen 随伴の cf 置換・frame から導来 Hom 比較を構成。HTT 5.2.4.6、8〜20時間。
+  2. N-2：F1b の随伴 API へ比較を入力し、導来 ∞ 随伴の単位・余単位・三角整合性と右 Quillen 関手の ∞ 極限保存。HTT 5.2.4.6、Kerodon §6.2、12〜30時間。
+  3. N-3：Sp へ適用し、Tot・hG・fiber 列を Sp の ∞ 極限と照合（Sp レーンと共同）。BF §3、HA §1.4、16〜40時間。
+  4. E2b へ γ4 を提供し、Alg_E と忘却関手へ適用。E2a の現状は下記、HTT 1.1.5.10・5.2.4.6、16〜40時間。
+  5. F2 後半の Bousfield 局所化・P_Σ は I-b。Ind・compact・冪等完備化は F1b 所有（`foundations.md` §6）。
+- **主要宣言**（名前のみ）：
+  `F2.coherentDiagramTotalCocone_isColimit`、`F2.hasColimit_coherentSpaceDiagram`、
+  `HomotopyLimits.bousfieldKanCoherentCocone_isColimit`、`HomotopyLimits.kanDiagramCoherentNerve_hasColimit`、
+  `HomotopyLimits.SimplicialAdjunctionHomIso`、`HomotopyLimits.simplicialAdjunctionHomIso_zero`、
+  `HomotopyLimits.representableComparison_adjunction_square`、
+  `HomotopyLimits.strictCoherentCone_map_isLimit_of_adjunctionHomIso`、
+  `HomotopyLimits.strictDiagram_limitCone_postcomp_isLimit_of_adjunctionHomIso`、
+  `HomotopyLimits.kanTensorAdjunctionHomIso`、`HomotopyLimits.kanInternalHom_map_isLimit`、
+  `HomotopyLimits.kanReplacedTensorFrameAdjunction_square`。
+- **依存と提供**：F1・F1b（coherent Hom・随伴）、F2 の coherent 余極限、HomotopyFunctionComplex の frame・局所化、Stable、KST/Spectra を読み取り専用で使用。
+  N の集約は `InfinityCategories/HomotopyLimits.lean`、監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
+  型は Lean、運用は `foundations.md` §8。README は規約だけとし、実施記録はコミットメッセージ。
+- **未コミット**：今回の検証済み8モジュール、集約・監査、本 N 節を保存。保存後は N 所有の変更なし。他レーンのファイルと共有計画の他節は保存対象外。
+  root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は修正版が正しい場所にコミット済みの N 旧稿と確認し、削除済み。
+- **既知の問題**：N の対象ビルド・監査に失敗なし。新規 sorry・追加公理なし。一般 γ4 の構成が未完了。
+  `AdjunctionHomLimits.SimplicialAdjunctionHomIso` は y に全単体で自然だが、x の高次豊穣自然性は要求しない。これだけで一般の ∞ 随伴の完成と数えない。
+  `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。SSet の固定 Quillen 類を使い、`ModelCategory SSet` の存在を主経路に仮定しない。
+  Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。一般モデル圏・一般図式の cf 置換と高次整合性は別途証明する。
+  他レーンの import 閉包が壊れたら回避せず停止し、他レーンの作業中変更は保存しない。
+- **次の一手**：N-2。`AdjunctionHomLimits.lean` と `HomotopyFunctionComplex/AdjunctionHom.lean` を照合する。
+  前者の入力は終域で全単体に自然な通常の豊穣 Hom 同型、後者はモデル圏の tensor/Hom frame の Hom 同型。
+  既存の Kan tensor 具体例の cf 置換比較を足場に、一般の simplicial Quillen 随伴でどの frame と置換を選び、どの導来 Hom 比較を得るかを確定する。
+  調査済み：`HomotopyFunctionComplex/FramePreservation.lean` は左 Quillen による Reedy cofibrancy・homotopically constant・cofibrant 始点の augmentation の保存を提供。
+  `AdjunctionWeakEquivalence.lean` は `ModelCategory SSet` と類の一致を仮定するため、そのまま主経路に使わず固定 Quillen 類での比較を用意する。
+  F1b の `KanAdjunctionHomTriangles` 等の随伴 API の正確な入力を読み、必要な両変数自然性・単位余単位の整合性を証明する。
+  N-1 の部分余極限・共通 path end 比較、`/tmp/NativeAttachmentShape.lean` 等の草稿は継続しない。
 
 ### E2a（既存の引き継ぎ）
 

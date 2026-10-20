@@ -9835,3 +9835,102 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @specifiedCoconeRightNativeUniversalRootSection_hom_arrow
 #print axioms specifiedCoconeRightNativeUniversalRootSection_hom_arrow
+
+#check @coconeLegTriangleShape_root
+#print axioms coconeLegTriangleShape_root
+
+#check @nativeSpanUniversalRootShape_eq
+#print axioms nativeSpanUniversalRootShape_eq
+
+#check @coconePointHomDiagramFiberFamily_restrict
+#print axioms coconePointHomDiagramFiberFamily_restrict
+
+#check @specifiedCoconeUniversalRootShape_diagram
+#print axioms specifiedCoconeUniversalRootShape_diagram
+
+#check @specifiedCoconeUniversalCommonRootFamily
+#print axioms specifiedCoconeUniversalCommonRootFamily
+
+#check @specifiedCoconeLeftUniversalNativeFamily_root
+#print axioms specifiedCoconeLeftUniversalNativeFamily_root
+
+#check @specifiedCoconeRightUniversalNativeFamily_root
+#print axioms specifiedCoconeRightUniversalNativeFamily_root
+
+#check @specifiedCoconeLeftUniversalCommonRootComparison
+#print axioms specifiedCoconeLeftUniversalCommonRootComparison
+
+#check @specifiedCoconeRightUniversalCommonRootComparison
+#print axioms specifiedCoconeRightUniversalCommonRootComparison
+
+#check @specifiedCoconeLeftUniversalCommonRootComparison_raw
+#print axioms specifiedCoconeLeftUniversalCommonRootComparison_raw
+
+#check @specifiedCoconeRightUniversalCommonRootComparison_raw
+#print axioms specifiedCoconeRightUniversalCommonRootComparison_raw
+
+#check @specifiedCoconeLeftUniversalCommonRootComparison_terminal
+#print axioms specifiedCoconeLeftUniversalCommonRootComparison_terminal
+
+#check @specifiedCoconeRightUniversalCommonRootComparison_terminal
+#print axioms specifiedCoconeRightUniversalCommonRootComparison_terminal
+
+#check @specifiedCoconeRootFamilyComparison_normalized_terminal
+#print axioms specifiedCoconeRootFamilyComparison_normalized_terminal
+
+#check @specifiedCoconeUniversalCommonRoot_homMk_comp
+#print axioms specifiedCoconeUniversalCommonRoot_homMk_comp
+
+#check @specifiedCoconeUniversalCommonRootTriangle
+#print axioms specifiedCoconeUniversalCommonRootTriangle
+
+#check @specifiedCoconeUniversalCommonRootTriangleFamily
+#print axioms specifiedCoconeUniversalCommonRootTriangleFamily
+
+#check @specifiedCoconeUniversalCommonRootTriangle_first
+#print axioms specifiedCoconeUniversalCommonRootTriangle_first
+
+#check @specifiedCoconeUniversalCommonRootTriangle_second
+#print axioms specifiedCoconeUniversalCommonRootTriangle_second
+
+#check @specifiedCoconeUniversalCommonRootTriangle_diagonal
+#print axioms specifiedCoconeUniversalCommonRootTriangle_diagonal
+
+#check @spanPointHomEndInverseUnit
+#print axioms spanPointHomEndInverseUnit
+
+#check @spanPointHomEndInverseCounit
+#print axioms spanPointHomEndInverseCounit
+
+#check @spanCoconePointHomEndReturn
+#print axioms spanCoconePointHomEndReturn
+
+#check @spanCoconePointHomEndReturn_raw
+#print axioms spanCoconePointHomEndReturn_raw
+
+#check @strictSpanPointHomEndReturn
+#print axioms strictSpanPointHomEndReturn
+
+#check @strictSpanPointHomEndReturn_raw
+#print axioms strictSpanPointHomEndReturn_raw
+
+#check @strictSpanPointHomEndFamilyReturn
+#print axioms strictSpanPointHomEndFamilyReturn
+
+#check @strictSpanPointHomEndFamilyReturn_raw
+#print axioms strictSpanPointHomEndFamilyReturn_raw
+
+#check @specifiedCoconeNativePointHomEndFamily
+#print axioms specifiedCoconeNativePointHomEndFamily
+
+#check @specifiedCoconeNativeEdgeEndFamily
+#print axioms specifiedCoconeNativeEdgeEndFamily
+
+#check @specifiedCoconeNativeFamilyToPathEnd_factor
+#print axioms specifiedCoconeNativeFamilyToPathEnd_factor
+
+#check @specifiedCoconeNativePointHomEndReturn
+#print axioms specifiedCoconeNativePointHomEndReturn
+
+#check @specifiedCoconeNativePointHomEndReturn_raw
+#print axioms specifiedCoconeNativePointHomEndReturn_raw
