@@ -49,8 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   任意の有限標的射の二入力を、共通の元の境界円柱を保って元の fiber へ同時に輸送・反映し、実際の比較射への相対有限検出・持ち上げを構成。値の射の境界と全比較円柱の制限を厳密に保持。
   任意の Kan 境界で相対持ち上げを構成し、境界移動を除去。元の全空間 Kan 引き戻し比較の弱同値性・ホモトピー逆を全標準境界の path 置換充填から証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較の頂点辺・恒等図式辺を持つ全錐比較と各脚の h での自然性を保持。
-  native な両脚と元の二射影のホモトピー、元の二単体・全錐円柱の上下三角形の指定円柱、三単体の四面の合成則と全辺の前後合成表示を構成。
-  三集約同時ビルド 7530 jobs、公理監査 3098 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  native な両脚と元の二射影の比較、指定三角形の円柱と六辺を指定した四面の合成則、元の全空間引き戻し比較の第一整合式を証明。
+  三集約同時ビルド 7550 jobs、公理監査 3218 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -78,7 +78,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.exists_relativePathFiniteModelTransport` / `F2.relativePath_model_reflection`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
-- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackNativeConeLowerHomotopy` / `F2.fiberwisePullbackNativeConeUpperHomotopy` / `F2.spaceTetrahedronHomotopy_square`
+- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.spaceInfinityTetrahedronIso_square_of_edges` / `F2.kanConeFirstTetrahedron_relation` / `F2.fiberwisePullbackFirstTetrahedron_relation`
 
 ### 依存と提供
 
@@ -103,7 +103,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：指定三角形の円柱・四面の合成則は構成済み。全錐比較の三つの三単体に適用し、元の指定 path との二次の整合性・coherent 余極限錐へ接続する。
+- F2N-1：全錐比較の第一整合式は証明済み。中央・最後の式を構成し、共有面の消去から元の指定 path との二次の整合性・coherent 余極限錐へ接続する。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
