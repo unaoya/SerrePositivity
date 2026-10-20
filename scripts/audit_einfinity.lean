@@ -2207,6 +2207,42 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation_zero,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpanComparison_vertex,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation_zero,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality,
+      `SerrePositivity.EInfinity.FrameHom.chosenResolutionSpanValue_augmentation,
+      `SerrePositivity.EInfinity.FrameHom.NerveTerminalImage.contraction,
+      `SerrePositivity.EInfinity.FrameHom.NerveTerminalImage.terminalImageIso,
+      `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.up_down,
+      `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.down_up,
+      `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.iso,
+      `SerrePositivity.EInfinity.FrameHom.NerveULiftHom.naturality,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.parameter,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.simplex,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.simplex_operator,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.augmentation,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.augmentation_zero,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation.naturality,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentation_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentation_image_isIso,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentationImageIso,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.functor,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.oppositeIso,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentation,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter.tail_comp,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter.vertex,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter.monotone,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter.parameter,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter.parameter_apply,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter.parameter_last,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter.reindex,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.standardIsTerminal,
+      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.standardAugmentation_isIso,
       `SerrePositivity.EInfinity.FrameHom.ArrowSpan.Object,
       `SerrePositivity.EInfinity.FrameHom.ArrowSpan.Hom,
       `SerrePositivity.EInfinity.FrameHom.ArrowSpan.hom_ext,
@@ -6212,3 +6248,26 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       (((((mappingSpace A).obj (Opposite.op X)).obj Y).Elements)ᵒᵖ)) ⟶
         nerve (algebraSpecialHammock A X Y) :=
   mappingSpaceSpecialHammockNerveMap A X Y
+
+-- 共通比較の左射の反転性は任意の可換環で単体集合モデルの仮定なしに使える。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (mappingSpaceIndexAugmentation A X Y)) :=
+  mappingSpaceIndexAugmentation_localized_isIso A X Y
+
+-- 任意の次数の単体を表す頂点で、左射と三本矢への右射は同じ局所化射を与える。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra)
+    (s : ((((mappingSpace A).obj (Opposite.op X)).obj Y).Elements)ᵒᵖ) :
+    let := modelCategory A
+    FrameHom.SpecialHammock.value ((mappingSpaceSpecialHammockFunctor A X Y).obj s) =
+      mappingSpacePiZeroEquiv A (weakEquivalences (BarrattEccles.operad A).Algebra).Q
+        (Opposite.op X) Y (SSet.π₀.mk
+          (((mappingSpaceIndexAugmentation A X Y).app (Opposite.op (SimplexCategory.mk 0))
+            (ComposableArrows.mk₀ (show ULiftHom.{e2ComplexLimitUniverse + 1}
+              (((((mappingSpace A).obj (Opposite.op X)).obj Y).Elements)ᵒᵖ) from s))).down)) :=
+  mappingSpaceSpanComparison_vertex A X Y s

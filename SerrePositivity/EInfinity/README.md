@@ -906,7 +906,17 @@ E2b は Dwyer–Kan 型の自由単体的局所化で進める。
 `SpecialHammock.valueFunctor` と `chosenResolutionSpanValue_zero` は元の局所化射と π₀ 比較の照合。
 `mappingSpaceSpecialHammockFunctor`・`mappingSpaceSpecialHammockNerveMap` は任意の可換環上の
 同じ Map^h の全単体の図式と、その Hom の宇宙だけを揃えた要素圏の nerve からの実際の射。
-この始域と元の Map^h の同値性、特殊な三本矢の nerve と既存 DK Hom の高次比較は未証明。
+`FrameHom.SimplexTerminalAugmentation` は反対要素圏の列の終端単体への尾を使い、
+最終頂点を消す面も含む全作用素に自然な元の単体集合への augmentation を構成する。
+`SimplexTerminalNerve.augmentation_localized_isIso` は任意の単体集合で同じ射の
+anodyne 反転後の可逆性を証明する。標準単体の収縮、境界の貼合せ、骨格余極限を使い、
+単体集合のモデル構造を要求しない。反対 nerve の実同型は KST/ProExcision から再利用する。
+`NerveULiftHom.iso` と `SimplexTerminalNerve.liftedAugmentation` は同じ射の宇宙比較。
+`BarrattEccles.mappingSpaceIndexAugmentation` は右射と同じ始域から元の Map^h への左射で、
+`_localized_isIso` は任意の可換環上で反転性を与える。
+`mappingSpaceSpanComparison_vertex` は全次数の単体を表す頂点で両射が
+元の π₀ 同値と同じ局所化射を与えることを証明する。
+特殊な三本矢への右射の反転性と、その nerve と既存 DK Hom の高次比較は未証明。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。

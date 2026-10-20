@@ -668,3 +668,13 @@ public import SerrePositivity.EInfinity.FrameHom.ResolutionSpanNormalization
 public import SerrePositivity.EInfinity.FrameHom.ResolutionSpecialSpans
 public import SerrePositivity.EInfinity.FrameHom.SpecialHammock
 public import SerrePositivity.EInfinity.FrameHom.SpecialSpanLocalization
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpanComparison
+public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
+public import SerrePositivity.EInfinity.FrameHom.FrameIndexComparison
+public import SerrePositivity.EInfinity.FrameHom.NerveTerminalImage
+public import SerrePositivity.EInfinity.FrameHom.NerveULiftHom
+public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation
+public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalEquivalence
+public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalFunctor
+public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalParameter
+public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalStandard
