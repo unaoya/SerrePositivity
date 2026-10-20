@@ -1,3 +1,17 @@
+import SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEdges
+import SerrePositivity.InfinityCategories.Derived.CofiberBottomIsoTransport
+import SerrePositivity.InfinityCategories.Derived.DGQuotientArrowLifts
+import SerrePositivity.InfinityCategories.Derived.DGQuotientExactDescent
+import SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctorEquivalence
+import SerrePositivity.InfinityCategories.Derived.DGQuotientVerdierSequence
+import SerrePositivity.InfinityCategories.Derived.DGStableClosureInclusion
+import SerrePositivity.InfinityCategories.Derived.DGStableObjectProperty
+import SerrePositivity.InfinityCategories.Derived.DGStableSubcategory
+import SerrePositivity.InfinityCategories.Derived.DGStableSubcategoryChoices
+import SerrePositivity.InfinityCategories.Derived.ExactFunctorCategory
+import SerrePositivity.InfinityCategories.Derived.ExactFunctorCategoryEquivalence
+import SerrePositivity.InfinityCategories.Derived.ExactFunctorDescent
+import SerrePositivity.InfinityCategories.Derived.StableVerdierSequence
 import SerrePositivity.InfinityCategories.Derived.ConeLegRestriction
 import SerrePositivity.InfinityCategories.Derived.CoslicePrismIso
 import SerrePositivity.InfinityCategories.Derived.CosliceRealizationLimitCone
@@ -3442,6 +3456,20 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEdges,
+    `SerrePositivity.InfinityCategories.Derived.CofiberBottomIsoTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientArrowLifts,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientExactDescent,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctorEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGQuotientVerdierSequence,
+    `SerrePositivity.InfinityCategories.Derived.DGStableClosureInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGStableObjectProperty,
+    `SerrePositivity.InfinityCategories.Derived.DGStableSubcategory,
+    `SerrePositivity.InfinityCategories.Derived.DGStableSubcategoryChoices,
+    `SerrePositivity.InfinityCategories.Derived.ExactFunctorCategory,
+    `SerrePositivity.InfinityCategories.Derived.ExactFunctorCategoryEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.ExactFunctorDescent,
+    `SerrePositivity.InfinityCategories.Derived.StableVerdierSequence,
     `SerrePositivity.InfinityCategories.Derived.RoofPointSliceTriangleEdge,
     `SerrePositivity.InfinityCategories.Derived.DGActualRoofIdentityRefinement,
     `SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdgePostcomposition,

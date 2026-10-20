@@ -40,7 +40,7 @@
 
 ### 残り（依存順、時間は推定）
 
-- β3：Drinfeld 商の dg nerve の局所化普遍性と Verdier 列。平坦分解後の商の安定性と商関手の完全性は完成。Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。残り 1〜2 万行、複数日。
+- β3：局所 K-flat 商の全局所化・零化完全関手 ∞ 圏の普遍性・実安定閉包の Verdier 列は完成。平坦分解後の局所化まで個別ビルド済み、完全性反映・Verdier 列の移送を検証中。Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。残り移送の統合・監査、数時間。
 - β5：非可換 dg 代数の D(A)、相対 tensor・Hom の ∞ 関手化、Morita 不変性。L4 §26、HA §7.1.2。1〜3 万行、複数日。
 - β4：dg gluing の nerve と安定 ∞ 圏の lax pullback の同値。α2b の提供済み lax pullback を読み取り専用で使う。Tamme §1、Kuznetsov–Lunts。1〜2 万行、複数日。
 
@@ -70,7 +70,7 @@
 - `homotopyCompositionRelativeOver_fixedLeft_exists`・`dgFiniteOreTrianglePrisms_relative_exists`・`dgFiniteRoofCompositionPrisms_exists`。
 - `roofLeftFibration_terminalEvaluation_nonempty`・`dgInvertingHomActionFamilyEvaluationIso`・`dgInvertingHomFamilyEvaluation_nonempty`。
 - `pinchedFamilyHom_eq_iff_homotopy`・`dgInvertingFamilyDenominator_isIso`・`dgInvertingFiniteRoofComposition_nonempty`・`dgFiniteRoofOreDataPrecomp_compositeDiagram`。
-- `roofFunctorSliceRepresentationMap_isQCatEquivalence`・`roofFunctorSliceRepresentation_pinched_vertex_arrow`。
+- `dgQuotientNerveProjection_isLocalization`・`dgVerdierExactPrecomposition_isQCatEquivalence`・`dgStableClosureNerve_isStable`・`dgStableClosureInclusion_isExactFunctor`・`dgQuotient_isStableVerdierSequence`。
 
 ### 依存と提供
 
@@ -81,18 +81,18 @@
 
 ### 未コミット
 
-- この保存範囲に未コミットなし。局所 K-flat 商の実局所化本体と全関手圏の充満忠実性・本質的全射性まで検証済み。
+- 次保存範囲：`LocalizationPrecompositionCriterion`・`SourceEquivalencePrecomposition`・`CellDGResolutionVerdierEdges`・`ResolvedDGQuotientLocalization` は個別ビルド済み。`ResolvedDGQuotientExactDescent`・`ResolvedDGQuotientVerdierSequence` は検証中。局所 K-flat 商の Verdier 列までの14新規ファイルは今回保存。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8248 jobs）。公理監査は Derived 11205 宣言／1245 モジュール、Stable 12320／1515。許容三公理のみ。今回の新規176モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（8262 jobs）。公理監査は Derived 11272 宣言／1259 モジュール、Stable 12387／1529。許容三公理のみ。今回までの新規190モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
-- β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。平坦分解への局所化の移送・零化完全関手圏の普遍性・Verdier 列は未完。
+- β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解への移送の統合・監査は未完。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β3：`dgQuotientNerveProjection_isLocalization` により、局所 K-flat 商の `IsLocalization (dgQuotientNerveProjection A D P) (dgVerdierEdges A D P)` 本体は完成。実屋根比較からの右 Kan 形状の cofinality、任意反転関手の全頂点の実右 Kan 極限、標準右 Kan 条件、元の単位の全実成分の可逆性を証明し、任意 quasicategory 標的の全前合成の充満忠実性と本質的全射性へ接続した。次は Verdier 列：平坦分解後の商への移送と、零化する完全関手の全 ∞ 圏への普遍性を進める。任意商辺の既存分数三角形 `dgQuotientEdge_exists_fractionTriangle` で元の辺の像と実辺を可逆な最初の二成分で比較し、cofiber 四角形全体の同型を構成して延長関手の完全性を反映する。局所化本体の完成だけで Verdier 列・β3 全体の完成と数えない。
+- β3：局所 K-flat 商の `IsLocalization` に加え、任意商辺の実分数三角形から元の辺の像との実区間関手同型を構成。底辺の同型を cofiber 四角形全体に延長し、商への制限から延長関手の完全性を反映した。`dgVerdierExactPrecomposition_isQCatEquivalence` は全自然変換を含む零化完全関手 ∞ 圏の同値。実安定閉包の充満 dg 部分圏の安定性・包含の完全充満忠実性から `dgQuotient_isStableVerdierSequence` まで完成。次は平坦分解後：`resolvedDGQuotientFunctor_isLocalization` の個別ビルドは成功、完全性反映・Verdier 列を移し、集約・公理監査して β3 を閉じる。その後 β5、β4。
 - F1B の `Localization.lean` は定義、`ReflectiveLocalization.lean` は反射的な場合の証明。一般の右分数計算の普遍性は既提供ではない。実 Verdier 添字の余 filtered 性・実屋根の比較・元の固定 Hom との可換性を使い、任意の反転関手の coherent な延長と関手圏全体の充満忠実性・本質的全射性を証明する。各 Hom への延長だけを局所化普遍性としない。F1 の `TransportLocalizationAllBases.lean` は simplex transport の局所化を提供しているので、必要な表示の入口として確認する。
 - 屋根の合成と両変数自然性が全高次の図式と整合することを保持する。厳密な閉分母の通常の添字圏を filtered と仮定しない。普遍性の後、平坦分解への移送、Verdier 列、β5、β4。全計画は未完。
 
@@ -151,7 +151,7 @@ F1b の `Localization.lean` の `IsLocalization` を入口とし、局所 K-flat
 - L4 §26（archive に移管）の半自由 dg 圏分解・Hom の K-flat 性・商の H⁰ 比較を読むだけで使う。
 - 必要な平坦分解を先行し、未分解の path 商が無条件に Verdier 商であるとはしない。
 - 前三角 dg 圏の平坦分解後の商の実安定性と商関手の完全性は完成。
-  零化する完全関手への前合成の同値、Verdier 列を構成する（見積もり 1〜2 万行）。
+  局所 K-flat 商の零化完全関手 ∞ 圏の同値・実安定閉包の Verdier 列まで完成。平坦分解への移送を統合検証する。
 - H⁰ の Verdier 商の同値だけで ∞ 関手圏の普遍性を済ませない。
 
 ## β5：非可換 dg 代数の導来 ∞ 圏
