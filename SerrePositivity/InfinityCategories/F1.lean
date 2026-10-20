@@ -1406,3 +1406,11 @@ public import SerrePositivity.InfinityCategories.F1.YonedaEvaluatedTransportEqui
 public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostcompositionLaws
 
 public import SerrePositivity.InfinityCategories.F1.YonedaInfinityFullyFaithful
+
+public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIntervalMapping
+
+public import SerrePositivity.InfinityCategories.F1.UnstraighteningSourceRestrictionEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverIsoUncurry
+
+public import SerrePositivity.InfinityCategories.F1.UnstraighteningPullbackEquivalence
