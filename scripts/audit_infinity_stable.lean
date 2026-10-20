@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedLinearBoundary
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedCuts
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedQuadraticBoundary
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedEquation
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSamePhaseCoefficients
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSamePhaseEquation
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCorrection
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSuffixCorrection
@@ -3587,6 +3594,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedLinearBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedCuts,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedQuadraticBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSamePhaseCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSamePhaseEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCorrection,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSuffixCorrection,
