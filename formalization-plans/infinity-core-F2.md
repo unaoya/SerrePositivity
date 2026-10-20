@@ -35,15 +35,15 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   有限ホモトピーと境界の充填を同じ fiber 内で検出。全値が可縮なら全空間模型も可縮。
   定値標的への変換と全空間からの写像空間の同値を構成。実際の単位から native 余錐を構成し、頂点を同定。
   native 余錐空間から定値変換空間への標準比較の厳密な左逆・ホモトピー右逆と同値性を証明。
-  小さい全空間の内部 Hom への実際の比較も同値。N の全 Hom の余極限判定へ接続。
+  小さい全空間の内部 Hom への比較も同値。引き戻しの Kan 比較を構成し、二入力と単位上の全 path の厳密な一致を証明。
   実現の両端固定ホモトピーを元の変換へ戻し、native 全空間余錐の比較の像と元の単位の同型を構成。
   元の全 Hom 三角形の三辺・対角のホモトピーを追跡し、標準比較を実際の相対合成と関手同型で比較。
   定値 fiber の作用を普遍輸送へ移し、全 Hom 比較を元の余錐の fiber 写像の前合成と比較。輸送作用も同値。
   元の小さい単位の前合成同値を厳密な宇宙移送で必要な全 fiber 標的へ戻し、構成済み余錐の native 余極限性を証明。
   小さい底上の任意の coherent 空間値図式の HasColimit を公開。filtered 性・strict 図式への置換は不要。
   共通境界付き同時検出を構成。対角の cofinality の底変換から、元の全空間 Kan 積比較の弱同値性・ホモトピー逆を証明。
-  定値底の有限関手全空間の比較は cofinal・弱同値。値の厳密な内部 Hom 表示、二入力・全 path を保つ引き戻し比較を構成。
-  三集約同時ビルド 7280 jobs、公理監査 2321 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
+  定値底の有限関手比較は cofinal・弱同値。始点評価の底上の逆、元の二端点を固定した Kan path 比較のホモトピー逆を証明。
+  三集約同時ビルド 7291 jobs、公理監査 2394 宣言・同時 import 成功。標準三公理のみ、名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -75,7 +75,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.coherentCoconeTotalComparison_homotopyEquivalence` / `F2.coherentTotalCoconeUnitIso`
 - `F2.unstraighteningMappingTriangleIso` / `F2.coherentTotalUnitHomComparison_homotopyEquivalence`
 - `F2.coherentDiagramTotalCocone_isColimit` / `F2.hasColimit_coherentSpaceDiagram`
-- `F2.fiberwiseFunctorFiberIso` / `F2.fiberwiseIntervalPullbackComparison_path`
+- `F2.fiberwiseIntervalKanComparison_homotopyEquivalence` / `F2.fiberwisePullbackKanComparison_unit_path`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
 ### 依存と提供
@@ -102,8 +102,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：定値底の path 模型の始点評価のホモトピー逆を底上で構成し、全空間 Kan 模型の path 評価と比較する。
-  二入力・全 path 座標の一致を維持して引き戻し比較の弱同値性、一般 coherent 有限極限交換、Indκ へ進む。
+- F2N-1：底を固定した両端評価の相対持ち上げ性を証明し、指定境界を保つ有限検出と Kan path 比較へ接続する。
+  fiberwisePullbackKanComparison の弱同値性、一般 coherent な有限極限交換を閉じて Indκ へ進む。
 
 ## 0. 目標と範囲
 
@@ -159,7 +159,8 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   通常の指定 filtered 余錐の native な普遍性、path 座標を保つ交換同型、任意の strict Kan cospan の native な比較を証明。
   相対有限検出と全空間模型の元の余錐の native 余極限性を証明。小さい底上の一般 coherent 図式の HasColimit を公開。
   元の積比較の弱同値性・ホモトピー逆を証明。定値底の有限関手比較は cofinal、各値の内部 Hom 表示と path 比較を構成。
-  引き戻し比較の弱同値性・一般の交換・Ind は未完了。
+  始点評価の底上の逆と両端固定の Kan path 比較のホモトピー逆、二入力・単位上の全 path を保つ Kan 引き戻し比較を構成。
+  引き戻し比較自体の弱同値性・一般の交換・Ind は未完了。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -169,7 +170,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：定値底の始点評価の底上のホモトピー逆と全空間 Kan path 比較から、引き戻し比較の弱同値性へ進む。
+- 次の一手：底を固定した両端評価の相対持ち上げ性と指定境界の有限検出を接続し、Kan 引き戻し比較の弱同値性へ進む。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
