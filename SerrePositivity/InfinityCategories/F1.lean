@@ -1236,3 +1236,5 @@ public import SerrePositivity.InfinityCategories.F1.LeftPrismCutMinimumCoordinat
 public import SerrePositivity.InfinityCategories.F1.LeftPrismCutMinimumMaps
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftIntervalWeightedSimplex
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftIntervalCutHom
+public import SerrePositivity.InfinityCategories.F1.WeightedConeCutHomComposition
+public import SerrePositivity.InfinityCategories.F1.WeightedKanConeCutHomComposition

@@ -5225,3 +5225,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.thickeningLeftPrismCut_map
 #check @SerrePositivity.InfinityCategories.coherentLeftHomIntervalMixedHom
 #check @SerrePositivity.InfinityCategories.coherentLeftHomIntervalMixedHom_eq_cut
+#check @SerrePositivity.InfinityCategories.weightedConeCutTailHom
+#check @SerrePositivity.InfinityCategories.weightedConeCutCoefficient_comp_zero
+#check @SerrePositivity.InfinityCategories.weightedKanConeCutCoefficient_comp_one
