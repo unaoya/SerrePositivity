@@ -745,3 +745,9 @@ public import SerrePositivity.EInfinity.FrameHom.ThreeArrowLeftReplacement
 public import SerrePositivity.EInfinity.FrameHom.ThreeArrowRightReplacement
 public import SerrePositivity.EInfinity.FrameHom.SpecialThreeArrowComparison
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceWeakThreeArrow
+public import SerrePositivity.EInfinity.Hammock.ThreeArrow
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowEquivalence
+public import SerrePositivity.EInfinity.Hammock.Word
+public import SerrePositivity.EInfinity.Hammock.Zigzag
+public import SerrePositivity.EInfinity.Hammock.ZigzagPostcompose
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceHammockGraph

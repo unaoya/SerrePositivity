@@ -1031,7 +1031,19 @@ anodyne 局所化後の同型で、`_fac` は元の左射の後の像が元の�
 二つの関手的分解への代入。`mappingSpaceWeakThreeArrowNerveMap` は元の同じ共通始域からの
 比較で、`_localized_isIso`・`_isWeakHomotopyEquivalence` を証明。
 `mappingSpaceWeakThreeArrowComparisonIso` と `_fac` は同じ元の二射による局所化後の同型。
-一般の三本矢から hammock 局所化と既存 DK Hom への高次比較は後続。
+`Hammock.Word` は空語を含む有限の向き付き語、射は色を保つ単調写像。
+`Hammock.Zigzag` は固定語・固定端点の zigzag と全縦弱同値の圏で、
+`Hammock.graph` はその nerve。後ろ向きの列には元の弱同値だけを要求する。
+`Zigzag.postcompose` は相対関手を全列・全縦射へ作用させ、恒等・合成にも厳密に整合。
+`Hammock.ThreeArrow.equivalence` は同じ三列の zigzag と元の三本矢の圏同値。
+順関手は元の四頂点・三射を保持し、逆向きの対象の回収では端点の等式だけを移す。
+`BarrattEccles.algebraHammockGraph` は任意の可換環上の実際の弱同値を使う graph。
+`mappingSpaceHammockGraphNerveMap_localized_isIso` と `_isWeakHomotopyEquivalence` は
+同じ元の共通始域から三列の graph への比較の反転性と弱同値性。
+`mappingSpaceHammockGraphComparisonIso_fac` は同じ元の二射との整合。
+全語の図式・その余極限による hammock 局所化と既存 DK Hom への高次比較は後続。
+添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
+を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。

@@ -22,7 +22,49 @@ run_cmd do
   if declarations == 0 then throwError "監査対象の EInfinity 宣言がありません"
   unless env.contains `SerrePositivity.EInfinity.projectiveModelCategory do
     throwError "射影モデル構造の宣言がありません"
-  for required in #[`SerrePositivity.EInfinity.BarrattEccles.operad,
+  for required in #[`SerrePositivity.EInfinity.Hammock.ThreeArrow.obj,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.map,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.functor,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.preimage,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.recoverObj,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.normalizationHom,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.normalizationInv,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.normalizationIso,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.equivalence,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.nerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.Hammock.Direction,
+      `SerrePositivity.EInfinity.Hammock.Word,
+      `SerrePositivity.EInfinity.Hammock.Word.Hom,
+      `SerrePositivity.EInfinity.Hammock.Word.hom_ext,
+      `SerrePositivity.EInfinity.Hammock.Word.id_apply,
+      `SerrePositivity.EInfinity.Hammock.Word.comp_apply,
+      `SerrePositivity.EInfinity.Hammock.Word.empty,
+      `SerrePositivity.EInfinity.Hammock.Word.fromEmpty,
+      `SerrePositivity.EInfinity.Hammock.Word.fromEmpty_unique,
+      `SerrePositivity.EInfinity.Hammock.Word.emptyIsInitial,
+      `SerrePositivity.EInfinity.Hammock.Word.single,
+      `SerrePositivity.EInfinity.Hammock.Word.threeArrow,
+      `SerrePositivity.EInfinity.Hammock.Word.source,
+      `SerrePositivity.EInfinity.Hammock.Word.target,
+      `SerrePositivity.EInfinity.Hammock.Zigzag,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Hom,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.hom_ext,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.id_app,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.comp_app,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.evaluation,
+      `SerrePositivity.EInfinity.Hammock.graph,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.postcomposeObj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.postcomposeMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.postcompose,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.postcompose_id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.postcompose_comp,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraph,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockGraphNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockGraphNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockGraphNerveMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockGraphComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockGraphComparisonIso_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.operad,
       `SerrePositivity.EInfinity.BarrattEccles.augmentation,
       `SerrePositivity.EInfinity.BarrattEccles.augmentation_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.complexContraction,
@@ -6951,3 +6993,40 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
         (mappingSpaceWeakThreeArrowNerveMap A X Y) :=
   mappingSpaceWeakThreeArrowComparisonIso_fac A X Y
+
+-- 語の射の合成は元の色を保つ単調写像の合成。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b c : Word} (f : a ⟶ b) (g : b ⟶ c) (i : Fin a.length) :
+    (f ≫ g).orderHom i = g.orderHom (f.orderHom i) := Word.comp_apply f g i
+
+-- 元の三本矢の包含そのものが三列の zigzag 圏の同値を与える。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity in
+example {C : Type e2ComplexLimitUniverse} [Category C] [ModelCategory C] (X Y : C) :
+    (Hammock.ThreeArrow.functor (X := X) (Y := Y)).IsEquivalence := inferInstance
+
+-- 任意の可換環上で、同じ元の共通始域から実際の三列の graph へ入れる射も反転。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (mappingSpaceHammockGraphNerveMap A X Y)) :=
+  mappingSpaceHammockGraphNerveMap_localized_isIso A X Y
+
+-- 三列の graph の Kan 性を追加仮定せず、元の比較は弱ホモトピー同値。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+      (mappingSpaceHammockGraphNerveMap A X Y) :=
+  mappingSpaceHammockGraphNerveMap_isWeakHomotopyEquivalence A X Y
+
+-- 元の左射との合成は、同じ三列の graph への右射を厳密に回収。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+        (mappingSpaceIndexAugmentation A X Y) ≫
+        (mappingSpaceHammockGraphComparisonIso A X Y).hom =
+      SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+        (mappingSpaceHammockGraphNerveMap A X Y) :=
+  mappingSpaceHammockGraphComparisonIso_fac A X Y
