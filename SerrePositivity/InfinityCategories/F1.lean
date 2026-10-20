@@ -1386,3 +1386,13 @@ public import SerrePositivity.InfinityCategories.F1.SmallUnstraighteningFiberHom
 public import SerrePositivity.InfinityCategories.F1.SmallUnstraighteningPointFiberEvaluation
 
 public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaFiberTransport
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowPointedDisplay
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowPointedDisplayFiber
+
+public import SerrePositivity.InfinityCategories.F1.TwistedArrowPointedIdentity
+
+public import SerrePositivity.InfinityCategories.F1.PointHomIntervalComparison
+
+public import SerrePositivity.InfinityCategories.F1.InitialParametrizedPointTransport

@@ -31,7 +31,10 @@
 - 始点固定・終点固定の Tw 恒等点は全空間内で厳密に一致。同じ全体からの評価点の像も照合済み。
 - fiber Hom とその指定点での評価は、全空間の同型・宇宙移送・縮小同型と全パラメーターで可換。
   `canonicalYonedaTransformationFiberEvaluation` は同値で、c1 の実際の普遍輸送の評価と関手同型。
-- 同じ Yoneda 写像の充満忠実性は未証明。c1 のこの輸送と、Tw の始点固定の輸送との照合が残る。
+- Tw 全体から pointed-space への同じ比較と各 fiber の同値を構成済み。始点固定の底は同じ
+  Yoneda 写像の指定点評価と厳密に一致し、その恒等点の像も c1 の同じ評価点に一致する。
+- 全空間の始対象で評価した実際の普遍輸送が同値となる一般定理も証明済み。
+  同じ Yoneda 写像の充満忠実性は未証明。正方形の輸送自然性で両作用を接続する。
 
 ### 残り（依存順）
 
@@ -67,11 +70,11 @@
 
 ### 未コミット
 
-- 全体の復元射の制限と同じ全体からの恒等点評価は `78d5acf8c` に保存済み。
-  F1 全体ビルド4406 jobs、公理監査9863宣言が成功（標準3公理のみ）。
-- Tw 恒等点の厳密な照合、fiber Hom と指定点評価の全移送との可換性、同じ恒等点での
-  c1 の評価と普遍輸送への比較の所有7モジュール、集約・監査・計画が今回の保存単位。
+- 同じ恒等点での c1 評価と普遍輸送への接続は `69a10638f` に保存済み。
   F1 全体ビルド4413 jobs、公理監査9890宣言が成功（標準3公理のみ）。
+- 全体の pointed 比較と各 fiber の同値・同じ恒等点の像・元の円柱の区間比較・始対象での
+  普遍輸送評価の所有5モジュール、集約・監査・計画が今回の保存単位。
+  F1 全体ビルド4418 jobs、公理監査9927宣言が成功（標準3公理のみ）。
 - 通る所有ファイルだけを早めに `git commit --only` で保存する。N の指定2ファイルは保存済み。
 
 ### 既知の問題
@@ -84,13 +87,13 @@
 
 ### 次の一手
 
-F1-2：`canonicalYonedaTransformationFiberEvaluation_isQCatEquivalence` と、その
-`_parametrizedIso` まで通った。同じ全体からの評価点は、Tw の始点固定の恒等点の像と一致。
-次は全体の復元射を ULift・縮小同型・pointed 射影の第一射影と合成し、Tw から PointedSpace∞
-への一つの射を作る。始点固定の Tw へ制限した底の射が `yonedaInfinityMap` の指定点評価と
-厳密に一致することを、curry の評価公式で照合する。その射で恒等点からの全 Hom 輸送を送り、
-c1 の `_parametrizedIso` と結ぶ。Tw の輸送の同値性と同じ評価の同値性を消去して、
-同じ Yoneda 写像の充満忠実性を閉じる。以前の別々に選んだ点との一致や自己写像の恒等性は不要。
+F1-2：TwistedArrowPointedDisplay の始点固定の底と、同じ Yoneda 写像の評価の一致が通った。
+TwistedArrowPointedDisplayFiber は全両端で同値。TwistedArrowPointedIdentity は同じ評価点の一致。
+次は始点固定の実際の pointed fiber 射をこれらから同値と証明する。可換正方形の
+`parametrizedFiberTransport_squareIso` を同じ始点で評価し、始対象での普遍輸送評価の同値と
+c1 の `canonicalYonedaTransformationFiberEvaluation_parametrizedIso` をつなぐ。
+端点の等式と後合成の合成則を含めて正規化し、同じ Yoneda の区間 Hom 作用の同値を消去する。
+既存の `pinchedHomMap_isQCatEquivalence_of_intervalPost` により元の Hom 作用へ戻して閉じる。
 F1-1c2：別途、初頂点引き戻しの全相対 Hom 作用の同値性を証明し、同じ S に F0 を適用する。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
