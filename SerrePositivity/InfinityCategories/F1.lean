@@ -1692,3 +1692,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomIso
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackHomIsoEvaluation
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativePre
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackRestrictionNaturality

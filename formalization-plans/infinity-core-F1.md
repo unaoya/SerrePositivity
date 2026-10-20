@@ -98,7 +98,7 @@
 
 `cocartesianPullbackHomCoreColimitLift` の各脚での回収と一意性まで完了。
 両射影を底変換した元の Hom との厳密な同型と、実際の制限の二射影の全パラメーター公式も証明済み。
-次は前合成の自然性を証明し、core の降下と同じ分類写像のセル制限の正方形へ接続する。
+前合成の全パラメーター作用と制限の厳密な自然性も証明済み。次は core の降下を元の Hom へ移す。
 同じ区間 Hom 作用の同値性を証明し、`cocartesianStraighteningCoherentMap_isFullyFaithful_of_homInterval` へ戻す。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
