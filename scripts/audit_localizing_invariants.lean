@@ -107,7 +107,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.PullbackStableCategory,
     `SerrePositivity.KST.LocalizingInvariants.CofiberInputFamily,
     `SerrePositivity.KST.LocalizingInvariants.CofiberSquareFamily,
-    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceFunctor]
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowStableExact,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberBottomLifting,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberRightLifting,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
