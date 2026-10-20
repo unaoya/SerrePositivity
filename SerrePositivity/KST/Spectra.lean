@@ -803,3 +803,11 @@ public import SerrePositivity.KST.Spectra.TracedOriginalLoopModelMap
 public import SerrePositivity.KST.Spectra.TracedOriginalLoopRawInterval
 public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationSourceChoice
 public import SerrePositivity.KST.Spectra.SpectrumSignedEvaluationSourceCoordinates
+public import SerrePositivity.KST.Spectra.PointedEvaluationAction
+public import SerrePositivity.KST.Spectra.PointedPrecompositionInterval
+public import SerrePositivity.KST.Spectra.SpectrumEvaluationPostAction
+public import SerrePositivity.KST.Spectra.TracedOriginalLoopSourceInterval
+public import SerrePositivity.KST.Spectra.SpectrumTracedSourceEvaluationInterval
+public import SerrePositivity.KST.Spectra.FibrationCodifferenceTriangleLift
+public import SerrePositivity.KST.Spectra.PointedBasedPathCodifference
+public import SerrePositivity.KST.Spectra.SpectrumTracedSourceEvaluationDifference
