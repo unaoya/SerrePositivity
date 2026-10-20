@@ -970,6 +970,14 @@ left cofinality を与え、各 `_isWeakHomotopyEquivalence` は同じ射の弱�
 `BarrattEccles.mappingRightHomFromIdentity` の各成分は元の指定右脚による後合成。
 `mappingRightHomFromIdentity_bar_localized_isIso` は恒等右脚の始対象性と全遷移の
 不変性から、同じ定値図式から全 Hom 図式への bar 比較の反転性を与える。
+`FrameHom.ConstantBar.augmentation` は定値図式の元の bar から最初のラベルへの射。
+元の各行の要素圏を始対象に収縮し、`augmentation_localized_isIso` で反転性を証明。
+`FrameHom.BarRows.valueInclusion_localized_isIso` は始対象を持ち全遷移が反転される
+図式の各値の包含そのものを反転する。指定対象は始対象に限らない。
+`BarrattEccles.mappingRightHomBarInclusion_localized_isIso` は任意の指定右脚への代入。
+`mappingSpaceBarInclusion` は元の Map^h と同じ fibrant 置換の右脚を使い、
+全単体で元の右脚とラベルを一定の射列に送る。`_localized_isIso` も証明済み。
+`mappingSpaceIndexBarMap` は元の全単体の共通始域から同じ bar への比較で、反転可能。
 固定右脚の nerve と bar の比較、その比較を経由する元の右射の因子分解は後続。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、

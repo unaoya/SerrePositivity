@@ -2208,6 +2208,38 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.values,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.first_label,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.projection,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.inclusion,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.inclusion_projection,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.retraction,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.projection_inclusion,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.contraction,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.projection_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.labels,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.projectionRows,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.inclusionRows,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.inclusionRows_projectionRows,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.labelsDiagonalIso,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.augmentation,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.augmentation_app,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.valueInclusion,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.valueInclusion_augmentation,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.augmentation_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.ConstantBar.valueInclusion_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.valueInclusion,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.constantInclusion_naturality,
+      `SerrePositivity.EInfinity.FrameHom.BarRows.valueInclusion_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomBarInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomBarInclusion_app,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomBarInclusion_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingFibrantRightLeg,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceBarInclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceBarInclusion_app,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceBarInclusion_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexBarMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexBarMap_localized_isIso,
       `SerrePositivity.EInfinity.FrameHom.BarRows.row,
       `SerrePositivity.EInfinity.FrameHom.BarRows.inclusion,
       `SerrePositivity.EInfinity.FrameHom.BarRows.cofan,
@@ -6524,3 +6556,37 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
         ((SerrePositivity.Reedy.cosimplicialResolutionFamily
           (mappingCofibrantFactorization A)).obj.obj X)).map t.hom :=
   mappingRightHomFromIdentity_app A X Y t
+
+-- 元の定値 bar の射は、値と添字の独立した宇宙で最初のラベルを返し、反転される。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.FrameHom in
+example {D : Type e2ComplexLimitUniverse} [Category.{0} D] (K : SSet.{0})
+    {i : D} (hi : IsInitial i) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (ConstantBar.augmentation D K)) :=
+  ConstantBar.augmentation_localized_isIso D K hi
+
+-- 元の Map^h と同じ fibrant 置換の右脚を使う包含そのものは、任意の可換環で反転。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (mappingSpaceBarInclusion A X Y)) :=
+  mappingSpaceBarInclusion_localized_isIso A X Y
+
+-- 元の全単体の共通始域から同じ bar への合成射も反転される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (mappingSpaceIndexBarMap A X Y)) :=
+  mappingSpaceIndexBarMap_localized_isIso A X Y
+
+-- 全単体で、同じ元の Map^h の単体と元の fibrant 置換の右脚を保持。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles Opposite in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) (n : SimplexCategoryᵒᵖ)
+    (x : (((mappingSpace A).obj (op X)).obj Y).obj n) :
+    (mappingSpaceBarInclusion A X Y).app n (ULift.up x) =
+      (Functor.const _).obj (((mappingRightHomDiagram A X Y).flip.obj n).elementsMk
+        (mappingFibrantRightLeg A Y) x) :=
+  mappingSpaceBarInclusion_app A X Y n x

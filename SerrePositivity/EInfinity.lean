@@ -710,3 +710,8 @@ public import SerrePositivity.EInfinity.FrameHom.BarRowsCoproduct
 public import SerrePositivity.EInfinity.FrameHom.BarPointwiseInvariance
 public import SerrePositivity.EInfinity.FrameHom.BarInitialComparison
 public import SerrePositivity.EInfinity.BarrattEccles.MappingRightHomBarComparison
+public import SerrePositivity.EInfinity.FrameHom.ConstantBarRows
+public import SerrePositivity.EInfinity.FrameHom.ConstantBarAugmentation
+public import SerrePositivity.EInfinity.FrameHom.BarValueInclusion
+public import SerrePositivity.EInfinity.BarrattEccles.MappingRightHomBarInclusion
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceBarInclusion
