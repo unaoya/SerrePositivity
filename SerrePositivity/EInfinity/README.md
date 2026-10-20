@@ -936,6 +936,17 @@ anodyne 反転後の可逆性を証明する。標準単体の収縮、境界の
 left cofinality を与え、各 `_isWeakHomotopyEquivalence` は同じ射の弱同値を与える。
 対象と Hom の持ち上げの前後で、元の関手の全作用は `AsSmallComma.smallFunctor_up` と可換。
 三本矢の全図式への余終性の適用と右射そのものの反転性は未証明。
+`ArrowSpan.commaEquivalence` は元の両脚の slice と中間 Hom による全三本矢の表示。
+`costructuredArrowDiagram` は右脚に沿う後合成の全 Cat 値図式で、厳密な恒等・合成則を持つ。
+`CommaGrothendieck.equivalence`・`ArrowSpan.grothendieckEquivalence` は元の三射を使う
+明示的な順逆による全図式の表示で、右脚の slice の恒等右脚は始対象。
+`BarrattEccles.mappingSpaceSpanGrothendieckNerveMap_fac` は同じ Map^h の元の右比較射を
+全図式の nerve を経由して全単体で厳密に回収する。
+回収射は anodyne 反転後に可逆で、元の右射の反転性は
+`mappingSpaceSpecialHammockNerveMap_localized_isIso_iff` により同じ中間射へ帰着される。
+`mappingRightHomDiagram_map_localized_isIso` は全 E 代数の fibrancy を使い、
+全右脚の全遷移に対する元の frame Hom の不変性を証明する。
+分解の余終性とこの不変性の全図式への適用は未証明であり、右射全体の反転性は残る。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。

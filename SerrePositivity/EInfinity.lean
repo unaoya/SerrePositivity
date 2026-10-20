@@ -692,3 +692,8 @@ public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
 public import SerrePositivity.EInfinity.FrameHom.NerveQuillenA
 public import SerrePositivity.EInfinity.FrameHom.ResolutionCofinality
 public import SerrePositivity.EInfinity.FrameHom.SmallCommaContraction
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpanDiagram
+public import SerrePositivity.EInfinity.FrameHom.ArrowSpanComma
+public import SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck
+public import SerrePositivity.EInfinity.FrameHom.CommaGrothendieck
+public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowDiagram

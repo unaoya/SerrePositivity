@@ -2207,6 +2207,44 @@ run_cmd do
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_right_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraRightSpanBase,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraSpanRightDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraSpanFromGrothendieck,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraSpanGrothendieckEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpanGrothendieckFunctor,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpanGrothendieckFunctor_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomDiagram,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomDiagram_map_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpanGrothendieckNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraSpanFromGrothendieckNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpanGrothendieckNerveMap_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraSpanFromGrothendieckNerveMap_localized_isIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap_localized_isIso_iff,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.leftSliceForget,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightSliceForget,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.toComma,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.fromComma,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.toComma_fromComma,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.commaEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightDiagram,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.toGrothendieck,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.fromGrothendieck,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.toGrothendieck_fromGrothendieck,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.grothendieckEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.frameGrothendieckFunctor,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.frameGrothendieckFunctor_fac,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.frameGrothendieckFunctor_base,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.frameGrothendieckFunctor_middle,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightSliceInitial,
+      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightSliceInitial_isInitial,
+      `SerrePositivity.EInfinity.FrameHom.CommaGrothendieck.diagram,
+      `SerrePositivity.EInfinity.FrameHom.CommaGrothendieck.toComma,
+      `SerrePositivity.EInfinity.FrameHom.CommaGrothendieck.toComma_faithful,
+      `SerrePositivity.EInfinity.FrameHom.CommaGrothendieck.toComma_full,
+      `SerrePositivity.EInfinity.FrameHom.CommaGrothendieck.toComma_essSurj,
+      `SerrePositivity.EInfinity.FrameHom.CommaGrothendieck.fromComma,
+      `SerrePositivity.EInfinity.FrameHom.CommaGrothendieck.equivalence,
+      `SerrePositivity.EInfinity.FrameHom.costructuredArrowDiagram,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor_isLeftCofinal,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor_isWeakHomotopyEquivalence,
@@ -6344,3 +6382,27 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X : (BarrattEccles.operad A).Algebra) :
     IsWeakHomotopyEquivalence (nerveMap (mappingSmallResolutionOverFunctor A X)) :=
   mappingSmallResolutionOverFunctor_isWeakHomotopyEquivalence A X
+
+-- 右脚の全図式の nerve を経由しても、元の右比較射を全単体で厳密に回収する。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    mappingSpaceSpanGrothendieckNerveMap A X Y ≫ algebraSpanFromGrothendieckNerveMap A X Y =
+      mappingSpaceSpecialHammockNerveMap A X Y :=
+  mappingSpaceSpanGrothendieckNerveMap_fac A X Y
+
+-- 任意の可換環で全右脚の全遷移の Hom は反転され、元の代数に追加仮定を要求しない。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    {X Y : (BarrattEccles.operad A).Algebra} {s t : algebraRightSpanBase A Y} (f : s ⟶ t) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      ((mappingRightHomDiagram A X Y).map f)) :=
+  mappingRightHomDiagram_map_localized_isIso A f
+
+-- 全図式の回収は同型へ送られ、元の右比較の反転性は同じ中間射へ帰着される。
+open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+      (algebraSpanFromGrothendieckNerveMap A X Y)) :=
+  algebraSpanFromGrothendieckNerveMap_localized_isIso A X Y
