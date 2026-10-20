@@ -811,3 +811,9 @@ public import SerrePositivity.KST.Spectra.SpectrumTracedSourceEvaluationInterval
 public import SerrePositivity.KST.Spectra.FibrationCodifferenceTriangleLift
 public import SerrePositivity.KST.Spectra.PointedBasedPathCodifference
 public import SerrePositivity.KST.Spectra.SpectrumTracedSourceEvaluationDifference
+public import SerrePositivity.KST.Spectra.RawSpectrumIntervalStructure
+public import SerrePositivity.KST.Spectra.PointedIntervalNaturality
+public import SerrePositivity.KST.Spectra.RawSpectrumIntervalStructureMap
+public import SerrePositivity.KST.Spectra.TracedOriginalLoopIntervalStructure
+public import SerrePositivity.KST.Spectra.SequenceExactStageInterval
+public import SerrePositivity.KST.Spectra.TracedOriginalLoopStrictInterval
