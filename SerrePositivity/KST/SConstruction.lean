@@ -923,4 +923,10 @@ public import SerrePositivity.KST.SConstruction.TriangleBoundaryHomotopy
 public import SerrePositivity.KST.SConstruction.TriangleEdgeTransport
 public import SerrePositivity.KST.SConstruction.CompositionDiamondEdgeTransport
 public import SerrePositivity.KST.SConstruction.TracedBFTripleEdgeTransport
+public import SerrePositivity.KST.SConstruction.EndpointFixedCylinderProjection
+public import SerrePositivity.KST.SConstruction.EndpointFixedCylinderLifting
+public import SerrePositivity.KST.SConstruction.TracedBFTripleRawBoundary
+public import SerrePositivity.KST.SConstruction.TracedBFTripleRawBoundaryFaces
+public import SerrePositivity.KST.SConstruction.CompositionDiamondFourthEdgeTransport
+public import SerrePositivity.KST.SConstruction.TracedBFTripleFourthEdgeLift
 /-! # ∞-S• 構成と連結 K 理論 -/
