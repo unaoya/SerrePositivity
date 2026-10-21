@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomInfinity
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorProductMap
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSimplex
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCompositeCandidateSum
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorErasedCandidateSum
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutVertexReindex
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSurvivingDifferential
+import SerrePositivity.InfinityCategories.Derived.DGNerveInteriorUnselectedSum
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutSigmaReindex
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorContributionsSum
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSelectedNormalization
@@ -3213,6 +3221,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorProductMap,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorCompositeCandidateSum,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorErasedCandidateSum,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutVertexReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorSurvivingDifferential,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveInteriorUnselectedSum,
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutSigmaReindex,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorContributionsSum,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorSelectedNormalization,
