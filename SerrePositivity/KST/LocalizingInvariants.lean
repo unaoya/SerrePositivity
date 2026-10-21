@@ -601,4 +601,9 @@ public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitI
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumPostcompositionPrism
 public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitPrism
 
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumPostcompositionPrismFamily
+public import SerrePositivity.KST.LocalizingInvariants.FiberMappingPathLiftPrism
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumMappingIntervalTriangle
+public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightArrowTriangle
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
