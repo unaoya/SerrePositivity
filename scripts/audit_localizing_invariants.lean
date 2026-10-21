@@ -379,7 +379,21 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductEdgeClasses,
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductInclusion,
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization,
-    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductCone]
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductCone,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryGraphPullback,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryGraphSquare,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryProjectionCone,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryProjectionFibration,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryProjectionSquare,
+    `SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection,
+    `SerrePositivity.KST.LocalizingInvariants.CospanConeSquareLegs,
+    `SerrePositivity.KST.LocalizingInvariants.HorizontalEquivalencePullback,
+    `SerrePositivity.KST.LocalizingInvariants.PointedProductProjection,
+    `SerrePositivity.KST.LocalizingInvariants.PointedSecondProjection,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.StrictCospanConeLegs,
+    `SerrePositivity.KST.LocalizingInvariants.StrictCospanConePoints,
+    `SerrePositivity.KST.LocalizingInvariants.StrictCospanConeSquare]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
