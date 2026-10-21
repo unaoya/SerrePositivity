@@ -1516,4 +1516,13 @@ public import SerrePositivity.KST.SConstruction.NecklaceFirstBead
 public import SerrePositivity.KST.SConstruction.NecklacePreferredForm
 public import SerrePositivity.KST.SConstruction.NecklacePreferredCarrier
 public import SerrePositivity.KST.SConstruction.NecklaceWedgeNonjoint
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeAscending
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeCoordinates
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeBooleanJoin
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeBooleanMap
+public import SerrePositivity.KST.SConstruction.CubeVertexBlockCoordinates
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeNumericJoin
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeNumericMap
+public import SerrePositivity.KST.SConstruction.NecklaceCubeTensorComparison
+public import SerrePositivity.KST.SConstruction.NecklaceCubicalTensorComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
