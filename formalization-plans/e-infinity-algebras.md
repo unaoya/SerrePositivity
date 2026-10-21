@@ -45,7 +45,8 @@
   元の任意の矢印圏の余極限余錐の両端評価を、F2 の点ごとの余極限の存在と余錐全体の同型から回収。元の頂点辺の所属を証明。
   小添字 u と対象圏の宇宙 max(u,v) を分離し、ulift した全小形状の余極限の存在から強飽和性を集約。大きい宇宙の全余極限は要求しない。
   **局所対象の任意 coherent 極限での閉性を完了。** `isLocalObject_limitCone` は元の指定極限錐の頂点を保存し、添字 K の quasicategory 性・反射の存在を要求しない。
-  局所全部分圏への底変換で切断の同値を回収し、錐の底への制限・頂点評価の厳密な可換式から証明。小生成・反射の存在・Bousfield 局所化・P_Σ は未完了。
+  小添字を指定した `stronglySaturatedClosure` の最小性・強飽和性・冪等性と、小生成の定義を構成。生成閉包は元の局所対象・局所同値・局所全部分圏を保持。
+  **生成閉包内の局所置換の存在から、生成閉包＝局所同値と小生成性を導出。** 元の hX の Hom の持ち上げ・置換間の可逆辺・元の二単体を使用。局所置換の存在、反射の存在、P_Σ は未完了。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
@@ -62,8 +63,7 @@
   `rightKanHomUniversal_postcomp_of_unitCondition`、`mapJoinCone_isLimit_of_adjunction`、
   `quillenCfRightDerived_mapJoinCone_isLimit`、`quillenCfRightDerived_hasLimit_postcomp`、
   `quillenCfRightReplacement_transport_exists`、`quillenCfLeftReplacement_transport_exists`、
-  `quillenCfRightReplacementFunctor`、`quillenCfLeftReplacementFunctor`、
-  `quillenCfRightReplacementComparison`、`quillenCfLeftReplacementComparison`、
+  `quillenCfRightReplacementFunctor`、`quillenCfLeftReplacementFunctor`、`quillenCfRightReplacementComparison`、`quillenCfLeftReplacementComparison`、
   `quillenCfRightDerived_ordinaryComparison`、`quillenCfLeftDerived_ordinaryComparison`、
   `quillenCfDerivedAdjunctionWithComparisons_exists`、
   `IsLocalForHom`、`isLocalForHom_iff_interval`、`isLocalForHom_constantHom_bijective`、
@@ -86,20 +86,20 @@
   `isLocalForHom_initialRestriction_of_fiber_equivalence`、`localEquivalences_colimitRestriction_comparison`、`localEquivalences_colimitPrism_source_comparison`、
   `colimitPrismTotalCocone_isColimit`、`colimitPrismComparisonEdge_projection`、`localEquivalences_colimitPrism_apex`、
   `isColimitCone_functor_evaluation_of_pointwise_exists`、`localEquivalences_arrowColimit`、`IsStronglySaturatedEdgeSetOfShapes`、`localEquivalences_stronglySaturated`、
-  `localDiagram_coslicePrecomposition_isQCatEquivalence`、`isLocalForHom_limitCone_of_sections`、`isLocalObject_limitCone`。
+  `localDiagram_coslicePrecomposition_isQCatEquivalence`、`isLocalForHom_limitCone_of_sections`、`isLocalObject_limitCone`、
+  `stronglySaturatedClosure`、`IsOfSmallStrongGeneration`、`isLocalObject_stronglySaturatedClosure_iff`、`stronglySaturatedClosure_eq_localEquivalences_of_localReplacements`。
   Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、全監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。型は Lean、運用は `foundations.md` §8。README は規約だけ、実施記録はコミットメッセージ。全体チェックリストはコーディネータが更新する。
-- **未コミット**：なし（今回の保存単位：局所図式の切断比較・局所対象の任意 coherent 極限閉性の2モジュール8宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
-  root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は N 旧稿と確認し、修正版を正しい場所へ保存後に削除済み。
-- **既知の問題**：N の対象ビルド6306 jobs・全4356宣言監査は終了コード0、標準三公理のみ。新規2モジュール8宣言に警告・sorry・追加公理なし。
+- **未コミット**：なし（今回の保存単位：強飽和生成閉包・局所性比較・局所置換からの回収の5モジュール19宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
+- **既知の問題**：N の対象ビルド6311 jobs・全4375宣言監査は終了コード0、標準三公理のみ。新規5モジュール19宣言に警告・sorry・追加公理なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
-- **次の一手**：N-4：小生成・反射の存在、その後 P_Σ（HTT 5.5.4・5.5.8）。強飽和性と局所対象の極限閉性を再実装しない。
-  小添字の宇宙を保持した強飽和生成閉包と、元の辺集合の局所対象・局所同値との比較を構成する。小生成性と反射の存在は別に証明する。
-  `coneSectionRestriction_post`・`coneApexSectionEvaluation_post` の二つの可換式を使用。選んだ逆を含む `coneSectionHomComparison` の自然性は仮定も証明もしていない。
+- **次の一手**：N-4：局所置換の存在・反射の構成、その後 P_Σ（HTT 5.5.4.15・5.5.5.14・5.5.8）。完成済みの閉性・生成閉包を再実装しない。
+  局所置換の元の辺から、局所全部分圏への comma 内の始対象性・普遍矢印性を回収し、coherent な反射の構成へ接続する。
+  生成閉包＝局所同値の定理の `hreplace` は未供給。presentable 圏の小さい辺族から局所置換を構成するのが存在部分。入力フィールドに仮定して完成とは扱わない。
   F2 の正本では Ind・compact が進行中で、presentable・随伴関手定理は後段。反射の存在を既存反射の条件付き特徴づけだけで完成としない。F2 は読み取り専用。
   E2b の `cAlgForgetLocalization` の終域は元の全複体の具体的局所化。D(R) との比較・高次 Hom 比較・∞ 局所化の普遍性は E2 側で未提供と再確認。γ4 の入力を先取りしない。
   原典は [HTT 5.2.4.6・Remark 5.2.4.7、5.5.4・5.5.8](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）。
