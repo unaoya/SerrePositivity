@@ -2955,3 +2955,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianHigherHornTargetC
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornNativeTarget
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornScaffoldTarget
+
+public import SerrePositivity.InfinityCategories.F1.HornBoundaryAttachment
+
+public import SerrePositivity.InfinityCategories.F1.HornBoundaryIntersection
+
+public import SerrePositivity.InfinityCategories.F1.HornBoundaryPushout
+
+public import SerrePositivity.InfinityCategories.F1.HornBoundaryOver
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHornBoundaryHomPullbacks
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHornBoundaryFibers
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHornBoundaryExtensionKan

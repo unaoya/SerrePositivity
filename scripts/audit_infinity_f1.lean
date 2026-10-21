@@ -8252,3 +8252,67 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianTwoHornScaffoldTargetComparison_originalIso
 
 #check @SerrePositivity.InfinityCategories.cocartesianTwoHornScaffoldTargetComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.horn_sup_missingFace
+
+#check @SerrePositivity.InfinityCategories.horn_missingFace_preimage
+
+#check @SerrePositivity.InfinityCategories.boundary_missingFace_image
+
+#check @SerrePositivity.InfinityCategories.hornMissingFaceBoundaryIso
+
+#check @SerrePositivity.InfinityCategories.subcomplex_eqToIso_hom_ι
+
+#check @SerrePositivity.InfinityCategories.hornMissingFaceBoundaryIso_hom_ι
+
+#check @SerrePositivity.InfinityCategories.hornBoundaryBicartSq
+
+#check @SerrePositivity.InfinityCategories.hornBoundaryInclusion
+
+#check @SerrePositivity.InfinityCategories.hornMissingFaceBoundaryToHorn
+
+#check @SerrePositivity.InfinityCategories.hornMissingFaceBoundaryToHorn_ι
+
+#check @SerrePositivity.InfinityCategories.hornBoundaryAttachment_isPushout
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.apex
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.horn
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.face
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.shared
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.toFace
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.toHorn
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.faceInclusion
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.hornInclusion
+
+#check @SerrePositivity.InfinityCategories.HornBoundaryOver.isPushout
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_native_isPullback
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_interval_isPullback
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_nativeExtensionFiberIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_nativeExtensionFiberIso_hom_ι
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_intervalExtensionFiberIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_intervalExtensionFiberIso_hom_ι
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_nativeRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_nativeFaceRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_nativeExtension_kanComplex
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_intervalRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_intervalFaceRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_intervalExtension_kanComplex
