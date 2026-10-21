@@ -98,8 +98,8 @@
 全 fiber での同値性と同値。分類先の fiber の三辺固定 prism の厳密な往復と、二三角形への制限は完了。
 実際の外ホーン pullback、第一三角形制限の Kan 性、指定外ホーン fiber から元の Hom fiber への同値まで完了。
 元の第一三角形は指定合成に定値。元の後合成 fiber からの同じ外ホーン比較を構成し、可変辺が標準 Hom 比較そのものと証明済み。
-合成三角形全体 `compositionCorrespondence` は Kan。第一辺射影は自明 Kan 同値で、同じ対角の Hom 評価も構成済み。
-次は `compositionCorrespondenceDiagonal` の外ホーン pullback 表示と Kan 性を証明し、coherent 合成族と fiber 比較を接続する。
+合成三角形全体は Kan。第一辺射影は自明 Kan 同値。対角評価は指定外ホーン制限の pullback で Kan fibration。その fiber 同型も構成済み。
+元の後合成頂点は標準比較で同じ合成辺に一致。次は同じ外ホーン境界を揃え、coherent 合成族からの全体比較と元の第二三角形の一致を証明し、fiber 比較を接続する。
 同じ主写像の充満忠実性・本質的全射性・一般の底への帰着は残る。正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
 ## 0. 目標と範囲

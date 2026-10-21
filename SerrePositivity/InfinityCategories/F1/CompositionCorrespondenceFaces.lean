@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondence
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
-open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
@@ -45,5 +45,28 @@ lemma compositionCorrespondenceEvaluation_last :
       rw [← Category.assoc, ← comp_whiskerRight, horn.ι_ι]
     _ = _ := by
       rw [compositionCorrespondenceEvaluation_horn, composableHomHornMap_last]
+
+/-- 任意の族の第一辺は、同じ元の三角形への射の制限から回収できる。 -/
+lemma compositionCorrespondenceFirst_uncurry {A : SSet.{u}}
+    (a : A ⟶ compositionCorrespondence x g) :
+    intervalMappingUncurry (a ≫ compositionCorrespondenceFirst x g) =
+      (stdSimplex.δ (2 : Fin 3) ▷ A) ≫ uncurry (a ≫
+        pullback.fst ((pre (horn 2 1).ι).app X) (composableHomHornMap x g)) := by
+  rw [intervalMappingUncurry_precomp, uncurry_natural_left]
+  change (Δ[1] ◁ a) ≫ intervalMappingUncurry (compositionCorrespondenceFirst x g) =
+    (stdSimplex.δ (2 : Fin 3) ▷ A) ≫ (Δ[2] ◁ a) ≫ compositionCorrespondenceEvaluation x g
+  rw [← Category.assoc, ← whisker_exchange, Category.assoc,
+    compositionCorrespondenceEvaluation_first]
+
+/-- 同じ合成三角形空間への射は、元の三角形への射だけで一意に決まる。 -/
+lemma compositionCorrespondence_hom_ext_triangle {A : SSet.{u}}
+    (a b : A ⟶ compositionCorrespondence x g)
+    (h : a ≫ pullback.fst ((pre (horn 2 1).ι).app X) (composableHomHornMap x g) =
+      b ≫ pullback.fst ((pre (horn 2 1).ι).app X) (composableHomHornMap x g)) : a = b := by
+  apply pullback.hom_ext
+  · exact h
+  · change a ≫ compositionCorrespondenceFirst x g = b ≫ compositionCorrespondenceFirst x g
+    apply intervalMappingUncurry_injective x y
+    rw [compositionCorrespondenceFirst_uncurry, compositionCorrespondenceFirst_uncurry, h]
 
 end SerrePositivity.InfinityCategories

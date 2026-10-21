@@ -2026,3 +2026,17 @@ public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceFac
 public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexFaceCurry
 
 public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDiagonal
+
+public import SerrePositivity.InfinityCategories.F1.CospanHomHorn
+
+public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceCurry
+
+public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDiagonalLiftFaces
+
+public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDiagonalSquare
+
+public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDiagonalPullback
+
+public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceFiber
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDiagonalVertex
