@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.SimplicialHomotopyOpposite
 public import SerrePositivity.InfinityCategories.Stable.InitialEdgeIso
 public import SerrePositivity.InfinityCategories.Stable.TriangleMorphismExtension
 public import SerrePositivity.InfinityCategories.Stable.DistinguishedCoconeTriangle
