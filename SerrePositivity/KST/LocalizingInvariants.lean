@@ -381,4 +381,18 @@ public import SerrePositivity.KST.LocalizingInvariants.LaxCounitRightHom
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitUnitComparison
 
+public import SerrePositivity.KST.LocalizingInvariants.CofiberRelativeDiagramComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientDiagram
+
+public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomNaturality
+
+public import SerrePositivity.KST.LocalizingInvariants.CofiberRelativeRightComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientRightComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientUnitComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientRightImage
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
