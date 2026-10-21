@@ -4161,6 +4161,123 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.erasedGraphMap_localized_isIso,
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.erasedGraphMap_isWeakHomotopyEquivalence]
 
+@[noinline] private def e2RequiredBatch47 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.append,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.Hom,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.Hom.id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.Hom.append,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.fixedFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.Hom.natTrans,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.zigzagObj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.zigzagMapData,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.zigzagMap,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.zigzagMap_first,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.zigzagMap_last,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.zigzagMap_id,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.zigzagMap_comp,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.movingDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.middleArrow,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackInputs,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackLeft,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackLeftProjection,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackLeftProjection_trivialFibration,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackLeft_map_weak,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackMiddle,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackOuterLeft,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackMiddle_trivialCofibration,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackFamily,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutInputs,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutRight,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutRightInclusion,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutMiddle,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutOuterRight,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutRightInclusion_trivialCofibration,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutRight_map_weak,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutFamily,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.Hom,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.Hom.app,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.Hom.diagramHom,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackCounitData,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pullbackCounit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutUnitData,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.pushoutUnit,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.leftObj,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.rightObj,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.leftMap,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.rightMap,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.jointFunctor,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.leftDiagram,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.rightDiagram,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.square_transport,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.evaluation,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.columnDiagram,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.columnDiagram_mem,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.firstEvaluationIso,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.lastEvaluationIso,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.endpoint_left_mem,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.endpoint_right_mem,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.leftPathMap,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rightPathMap,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.leftFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rightFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.leftLeg,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.middleLeg,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rightLeg,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.leftLeg_mem,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.middleLeg_mem,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rightLeg_mem,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.family,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.jointFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.leftPartMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.rightPartMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.leftPart,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.rightPart,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ofFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.wholeWord,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.originalDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.prefixDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.coreDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.suffixDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.coreFamily,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.rebuiltDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.rebuiltFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pullbackDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pullbackFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pullbackCounit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pushoutDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pushoutFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pushoutUnit,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.rebuilt_vertex,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.rebuilt_arrow,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.rebuilt_eq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rebuilt_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ext,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.append_parts,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rebuilt_map_left,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rebuilt_map_right,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rebuilt_map_app,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingExtract.rebuildDiagram_eq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.rebuiltDiagram_eq]
+
+@[noinline] private def e2RequiredBatch48 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.rebuiltFunctor_eq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pullbackOriginalCounit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pushoutOriginalUnit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.middleColumn_property,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.middleColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.pullback_middle_trivial,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.property,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.Objects,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.inclusion,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.replacement,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.counit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.inclusion_localized_isIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.inclusion_isWeakHomotopyEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4191,7 +4308,8 @@ run_cmd do
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
-      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46] do
+      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
+      e2RequiredBatch47, e2RequiredBatch48] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -9754,3 +9872,65 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
   dsimp only
   exact IdentityInsertion.erasedGraphMap_isWeakHomotopyEquivalence
     (BarrattEccles.mappingCofibrantFactorization A)
+
+-- 動く端点を持つ局所図式は、抽出後に全対象・全縦射を含めて元の図式へ戻る。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock in
+example {D : Type e2ComplexLimitUniverse} [SmallCategory D]
+    {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n m : ℕ} {A B : D ⥤ C}
+    (F : Zigzag.MovingDiagram D C (weakEquivalences C) (MiddleBackward.word n m) A B) :
+    (MiddleBackward.MovingExtract.family F).movingDiagram = F :=
+  MiddleBackward.MovingExtract.rebuildDiagram_eq F
+
+-- 任意の前後の語を持つ元の全体の再構成は、恒等関手そのものに等しい。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (n m : ℕ) (X Y : C) :
+    Context.rebuiltFunctor a b n m X Y =
+      𝟭 (Zigzag (weakEquivalences C) (Context.wholeWord a b n m) X Y) :=
+  Context.rebuiltFunctor_eq a b n m X Y
+
+-- 左置換の比較は、動く接合点を保って元の全体の恒等図式を値域とする。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    Context.pullbackFunctor a b n m X Y cof ⟶
+      𝟭 (Zigzag (weakEquivalences C) (Context.wholeWord a b n m) X Y) :=
+  Context.pullbackOriginalCounit a b n m X Y cof
+
+-- 元の任意の前後の語の中の、中央列が自明 cofibration の包含自身は弱同値。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence (nerveMap
+      (Context.TrivialCofibration.inclusion a b n m X Y)) :=
+  Context.TrivialCofibration.inclusion_isWeakHomotopyEquivalence a b n m X Y cof
+
+-- 左右とも長さ零でも、任意の前後の語を保持した元の包含は弱同値。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence (nerveMap
+      (Context.TrivialCofibration.inclusion a b 0 0 X Y)) :=
+  Context.TrivialCofibration.inclusion_isWeakHomotopyEquivalence a b 0 0 X Y cof
+
+-- 任意可換環の実際のモデルと同じ既存の分解を任意の前後の語の場合へ代入する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (a b : Word) (n m : ℕ)
+    (X Y : (BarrattEccles.operad R).Algebra) :
+    let := BarrattEccles.modelCategory R
+    IsWeakHomotopyEquivalence (nerveMap
+      (Context.TrivialCofibration.inclusion a b n m X Y)) := by
+  let := BarrattEccles.modelCategory R
+  dsimp only
+  exact Context.TrivialCofibration.inclusion_isWeakHomotopyEquivalence a b n m X Y
+    (BarrattEccles.mappingCofibrantFactorization R)

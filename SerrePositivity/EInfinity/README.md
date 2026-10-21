@@ -1346,8 +1346,22 @@ nerve の反転性・弱ホモトピー同値性。同じ指定分解から、�
 `eraseIso`・`eraseIso_hom_fac` は元の eraseInclusion と同じ列の像による因子分解。
 `erasedGraphMap_isWeakHomotopyEquivalence` はその元の削除語の標準射の弱同値性。
 両端 backward・二つの任意長の forward ブロックの間の中央列について証明済み。
-元の任意の prefix/suffix への貼り合わせ、全語の成分と三列の包含の弱同値性、
-DK Hom の高次比較は後続。局所端点が動く場合の全体への接続を省略しない。
+`Zigzag.MovingDiagram` は両端の評価関手が動く局所図式。連結・自然な縦比較と
+全体の両端を固定した関手・自然変換への回収を備える。各評価・各列の自然性、
+両端の自然同型・全縦弱同値の回収も証明済み。
+`MiddleBackward.MovingFamily` は動く局所端点を保つ左右の射列と三つの脚。
+元の関手的分解による左右置換、射影・包含の自然性と counit/unit を持つ。
+`ZigzagAppend.Part` と `MovingDiagram.leftPart/rightPart` は元の任意の前後の部分を抽出。
+`MovingDiagram.append_parts` は全対象・全縦射を保った元の図式への厳密な回収。
+`MiddleBackward.MovingExtract.family` は動く局所図式からの抽出。
+`rebuildDiagram_eq` は全対象・全縦射を含む元の局所図式との厳密な等式。
+`MiddleBackward.Context` は元の任意の前後の語を切り出し、局所置換を貼る。
+`rebuiltFunctor_eq` は元の全体の恒等関手への厳密な回収。
+`pullbackOriginalCounit`・`pushoutOriginalUnit` は元の全体の恒等図式との自然な比較。
+`Context.TrivialCofibration.inclusion_isWeakHomotopyEquivalence` は元の全体の中央列が
+自明 cofibration の全部分圏への包含自身の弱同値性。任意の前後の語で第一工程は完了。
+任意の前後の語での第二の包含・元の挿入写像への接続、全語の成分と三列の包含の
+弱同値性、DK Hom の高次比較は後続。第一の包含だけで元の挿入の弱同値性とはしない。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
