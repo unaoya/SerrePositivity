@@ -1914,3 +1914,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianHomFixedComponent
 public import SerrePositivity.InfinityCategories.F1.ParameterizedSquare
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomTriangles
+
+public import SerrePositivity.InfinityCategories.F1.CompositionTriangleSpace
+
+public import SerrePositivity.InfinityCategories.F1.CompositionTriangleFamily
+
+public import SerrePositivity.InfinityCategories.F1.CompositionTriangleFaces
+
+public import SerrePositivity.InfinityCategories.F1.LocalIntervalDiagramEdges
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomSquareFaces
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalCompositionTriangle
