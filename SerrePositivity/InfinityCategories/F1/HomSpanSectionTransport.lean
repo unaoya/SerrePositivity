@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
 
 /-!
 概要：同じ Hom 比較 span の指定された切断による輸送と共通の始域との整合性。
@@ -30,7 +31,8 @@ def homSpanSectionSourceIso : FunctorIso (p ≫ s) (𝟙 P) := by
 /-- 同じ span の切断による輸送を、共通の元の始域へ戻す比較。 -/
 def homSpanSectionTransportFactorIso (r : H ⟶ P) :
     FunctorIso ((r ≫ p) ≫ (s ≫ q)) (r ≫ q) := by
-  have e := FunctorIso.precomp ((homSpanSectionSourceIso p s hp hs).postcomp q) r
-  simpa only [Category.assoc, Category.id_comp] using e
+  exact F2.functorIsoOfEq
+    (FunctorIso.precomp ((homSpanSectionSourceIso p s hp hs).postcomp q) r)
+    (by simp only [Category.assoc]) (by rw [Category.id_comp])
 
 end SerrePositivity.InfinityCategories

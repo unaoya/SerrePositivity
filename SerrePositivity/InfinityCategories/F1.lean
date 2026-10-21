@@ -2461,3 +2461,15 @@ public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleIdentity
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTransportTriangleData
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTransportTriangleIdentity
+
+public import SerrePositivity.InfinityCategories.F1.FunctorIsoEndpointProjection
+
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionFiberCoherence
+
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionFactorCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNaturalitySectionCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNaturalityFactorCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleLongNaturality
