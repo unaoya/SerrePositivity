@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation
+public import SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite
+public import SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunction
 
 public import SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite
 public import SerrePositivity.InfinityCategories.Stable.SimplicialHomotopyOpposite

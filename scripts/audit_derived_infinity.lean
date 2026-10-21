@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation
+import SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite
+import SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunction
+import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionInterval
+import SerrePositivity.InfinityCategories.Derived.IntervalEndpointTransport
+import SerrePositivity.InfinityCategories.Derived.DGUniversalCounitInterval
+import SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunction
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSectionEquivalence
+import SerrePositivity.InfinityCategories.Derived.DGKernelAdjunction
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponent
 import SerrePositivity.InfinityCategories.Derived.DGUniversalCommaCounitComponent
 import SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjointValue
@@ -3700,10 +3709,36 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgUniversalRightAdjointObject_target
 #check SerrePositivity.InfinityCategories.dgUniversalRightAdjointCounitHomotopy_vertex_edge
 
+#check SerrePositivity.InfinityCategories.functorOppositeHomEquiv_evaluate
+#check SerrePositivity.InfinityCategories.counitOppositeUnitHom
+#check SerrePositivity.InfinityCategories.counitOppositeUnitHom_component
+#check SerrePositivity.InfinityCategories.counitIntervalReverse_homotopy
+#check SerrePositivity.InfinityCategories.counitOppositeUnitHom_mappingSpaceCondition
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOfCounitIntervalCondition
+#check SerrePositivity.InfinityCategories.dgClosedPostcomposition_interval_homotopy
+#check SerrePositivity.InfinityCategories.intervalEndpointIso
+#check SerrePositivity.InfinityCategories.pinchedInterval_endpoint
+#check SerrePositivity.InfinityCategories.intervalFunctorPostcompose_equivalence_of_endpoint
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.nativeIntervalMap_isSimplicialHomotopyEquivalence
+#check SerrePositivity.InfinityCategories.dgUniversalRightAdjointCandidate_vertex
+#check SerrePositivity.InfinityCategories.dgUniversalRightAdjointCounit_interval_equivalence
+#check SerrePositivity.InfinityCategories.dgUniversalRightAdjunction
+#check SerrePositivity.InfinityCategories.dgModuleResolvedSourceSectionEquivalence
+#check SerrePositivity.InfinityCategories.dgKernelAdjunction
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite,
+    `SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionInterval,
+    `SerrePositivity.InfinityCategories.Derived.IntervalEndpointTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGUniversalCounitInterval,
+    `SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSectionEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelAdjunction,
     `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponent,
     `SerrePositivity.InfinityCategories.Derived.DGUniversalCommaCounitComponent,
     `SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjointValue,
