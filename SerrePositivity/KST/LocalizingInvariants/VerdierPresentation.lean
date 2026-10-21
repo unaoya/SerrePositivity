@@ -76,4 +76,14 @@ def VerdierSequence.presentation (d : VerdierSequence.{u}) : VerdierDiagram.{u} 
 lemma VerdierSequence.presentation_sequence (d : VerdierSequence.{u}) :
     d.presentation.toVerdierSequence = d := rfl
 
+lemma VerdierSequence.presentation_left (d : VerdierSequence.{u}) :
+    squareLeftEdge ≫ d.presentation.square =
+      SSet.yonedaEquiv.symm (stableArrow (toZeroCategory d.left)).edge :=
+  (Classical.choose_spec (exists_verdierSquare d)).2.2.1
+
+lemma VerdierSequence.presentation_top (d : VerdierSequence.{u}) :
+    squareTopEdge ≫ d.presentation.square =
+      SSet.yonedaEquiv.symm (stableArrow (fromZeroCategory d.right)).edge :=
+  (Classical.choose_spec (exists_verdierSquare d)).2.1
+
 end SerrePositivity.KST.LocalizingInvariants

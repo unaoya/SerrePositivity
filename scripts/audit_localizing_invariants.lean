@@ -354,7 +354,18 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.AdjointLocalizationFactor,
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceFirst,
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceFactor,
-    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceCLeg]
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceCLeg,
+    `SerrePositivity.KST.LocalizingInvariants.EquivalenceArrowFamily,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceKernel,
+    `SerrePositivity.KST.LocalizingInvariants.IdentityLaxKernel,
+    `SerrePositivity.KST.LocalizingInvariants.IdentityLaxVerdier,
+    `SerrePositivity.KST.LocalizingInvariants.SquareTransposeEdges,
+    `SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn,
+    `SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceSquare,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceRectangle,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceOuter,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceValuePullback]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
