@@ -781,4 +781,11 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInitialCellLift
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellStages
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInitialCellAlgebraLift
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSuccessorCellPrimitives
+
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSuccessorCellAlgebraLift
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellColimitDesc
+
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolutionLift
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
