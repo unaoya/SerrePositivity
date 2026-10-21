@@ -2285,3 +2285,11 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeA
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeObjectIso
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeSections
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianNativeHomWhisker
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeHomEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeProjection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeRestriction
