@@ -44,4 +44,35 @@ lemma qCatDiagramArrowCurry_endpoint (C : Type u) [Category.{u} C] (i : Fin 2) :
   intro x
   rfl
 
+/-- 区間族の辺を底対象で評価すると、積上の同じ交差辺を回収する。 -/
+lemma qCatDiagramArrowCurry_component (C : Type u) [Category.{u} C]
+    (F : CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj
+      (nerve (Fin 2 × C))) _⦋1⦌) (c : C) :
+    (evaluateFunctorAt (ULift.up (nerveVertex c))).app _
+      ((((qCatDiagramArrowCurry C).app _ F).app (Opposite.op ⦋1⦌)
+        (𝟙 (Opposite.op ⦋1⦌))) homotopyIntervalEdge.edge) =
+      F.app (Opposite.op ⦋1⦌) (𝟙 (Opposite.op ⦋1⦌))
+        (ULift.up (nerve.edgeMk
+          ((homOfLE (show (0 : Fin 2) ≤ 1 by decide), 𝟙 c) :
+            ((0 : Fin 2), c) ⟶ (1, c))).edge) := by
+  apply congrArg (fun σ : (nerve (Fin 2 × C)) _⦋1⦌ ↦
+    F.app (Opposite.op ⦋1⦌) (𝟙 (Opposite.op ⦋1⦌)) (ULift.up σ))
+  change (SimplexCategory.toCat.map homotopyIntervalEdge.{u + 1}.edge.down).toFunctor.prod'
+    (PinchedHom.constant (nerveVertex c) 1) = _
+  refine ComposableArrows.ext₁ ?_ ?_ ?_
+  · apply Prod.ext
+    · change (homotopyIntervalEdge.{u + 1}.edge.down.toOrderHom 0 : Fin 2) = 0
+      decide
+    · rfl
+  · apply Prod.ext
+    · change (homotopyIntervalEdge.{u + 1}.edge.down.toOrderHom 1 : Fin 2) = 1
+      decide
+    · rfl
+  · simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
+    apply Prod.ext
+    · change (homOfLE (show (0 : Fin 2) ≤ 1 by decide) : (0 : Fin 2) ⟶ 1) = _
+      exact Subsingleton.elim _ _
+    · change ((ComposableArrows.mk₀ c).map (𝟙 (0 : Fin 1))) = 𝟙 c
+      exact CategoryTheory.Functor.map_id _ _
+
 end SerrePositivity.InfinityCategories

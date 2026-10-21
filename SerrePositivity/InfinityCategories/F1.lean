@@ -1804,3 +1804,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeJointCo
 public import SerrePositivity.InfinityCategories.F1.QCatDiagramArrowCurry
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeJointComparisonEdge
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeJointComparisonEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeJointComparisonIso
