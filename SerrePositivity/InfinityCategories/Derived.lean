@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponent
+public import SerrePositivity.InfinityCategories.Derived.DGUniversalCommaCounitComponent
+public import SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjointValue
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugBaseBoundary
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugBaseComparisonCut
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugBoundaryHomotopy

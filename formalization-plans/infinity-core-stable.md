@@ -45,7 +45,7 @@
 
 - 一般 RHom の普遍余単位：同じ kernel ∞ 関手の通常の h と、実 kernel 分解の出力射影の H⁰ の両方に、同じ telescope の右随伴を移した。余単位を実閉射で表し、H⁰ の Hom 全単射から零 cycle の持ち上げ・境界反映を回収した。実斉次 shift と単位差の原始元によって全整数次数へ戻し、`dgKernelResolutionCounit_quasiIso_exists` で同じ実余単位の全 Hom 準同型性を証明した。`dgKernelResolutionUniversalCounit` は同じ実データを保持し、全 pinched Hom 空間のホモトピー同値と、元の dg nerve 射・同じ閉余単位による後合成との一致を与える。元の出力の射影性・分解圏の Small 性は不要。追加12モジュール・29明示署名（構成子・射影を含む）は集約ビルド・両公理監査済み。coherent な実右随伴・∞ 単位/余単位・三角式は未完。
 
-- 一般右随伴の実関手と余単位：一般 dg comma の全 Hom・比較 cochain・実単位/合成/結合律と二射影、普遍余単位の全 Hom 準同型性、標的 nerve の自明 Kan fibration と厳密切断による `dgKernelRightAdjointCandidate` を構成済み。さらに一般 comma の実比較成分の全微分式・単位零・符号付き合成則から、同じ切断和の全 HA 方程式、全面/退化への自然性、実頂点辺の元の閉射への同定まで拡張した。`dgCommaAugmentationUnliftedHomotopy` を F1B の実反転・反対 nerve の厳密自然性・二重反対の dg 射影へ送り、`dgUniversalCommaCounitHomotopy` と同じ厳密切断上の `dgUniversalRightAdjointCounitHomotopy` を構成した。入力射影と指定切断の逆順比較同型から、元の一般 kernel の同じ右随伴候補へ `dgKernelCounitCandidate` と類を保つ実ホモトピーを戻した。Small 性・射影性・Hom 平坦性の追加は不要。追加58モジュール・169明示署名は集約ビルド・両公理監査済み。反対側の随伴を元の向きへ戻す `qcatAdjunctionOfOpposite` も、全パラメータ Hom 対応と左右自然性・前合成を保って構成した。追加1モジュール・8公開署名は集約・両公理監査済み。元の実余単位の標準写像空間条件と kernel の ∞ 随伴・三角式は未接続。
+- 一般右随伴の実関手と余単位：一般 dg comma の全 Hom・比較 cochain・実単位/合成/結合律と二射影、普遍余単位の全 Hom 準同型性、標的 nerve の自明 Kan fibration と厳密切断による `dgKernelRightAdjointCandidate` を構成済み。さらに一般 comma の実比較成分の全微分式・単位零・符号付き合成則から、同じ切断和の全 HA 方程式、全面/退化への自然性、実頂点辺の元の閉射への同定まで拡張した。`dgCommaAugmentationUnliftedHomotopy` を F1B の実反転・反対 nerve の厳密自然性・二重反対の dg 射影へ送り、`dgUniversalCommaCounitHomotopy` と同じ厳密切断上の `dgUniversalRightAdjointCounitHomotopy` を構成した。入力射影と指定切断の逆順比較同型から、元の一般 kernel の同じ右随伴候補へ `dgKernelCounitCandidate` と類を保つ実ホモトピーを戻した。Small 性・射影性・Hom 平坦性の追加は不要。追加58モジュール・169明示署名は集約ビルド・両公理監査済み。反対側の随伴を元の向きへ戻す `qcatAdjunctionOfOpposite` も、全パラメータ Hom 対応と左右自然性・前合成を保って構成した。追加1モジュール・8公開署名は集約・両公理監査済み。`dgUniversalRightAdjointObject` は同じ厳密切断の実普遍余単位を回収し、標的の厳密一致と `dgUniversalRightAdjointCounitHomotopy_vertex_edge` による同じ実閉辺との一致も証明した。追加3モジュール・7公開宣言は集約・両公理監査済み。元の実余単位の標準写像空間条件と kernel の ∞ 随伴・三角式は未接続。
 
 ### 残り（依存順、時間は推定）
 
@@ -89,18 +89,18 @@
 
 ### 未コミット
 
-- 所有コードに未コミットなし。反転ホモトピーの実頂点辺・同じ閉射・厳密切断の値の回収7公開宣言は `/tmp/d-beta5-opposite-counit-component.lean` で単独検証済み、本体へは未導入。
+- 所有コードに未コミットなし。一般余単位の区間比較から反対側の標準単位条件への接続は `/tmp/d-beta5-counit-interval-reverse.lean` で単独検証済み、本体へは未導入。同じ閉後合成と区間後合成の比較は `/tmp/d-beta5-closed-postcompose-interval.lean` で検証中。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9970 jobs）。公理監査は Derived 15537 宣言／1750 モジュール、Stable 16651／2020。許容三公理のみ。今回までの保存対象681新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（9973 jobs）。公理監査は Derived 15547 宣言／1753 モジュール、Stable 16661／2023。許容三公理のみ。今回までの保存対象684新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- β5 c5・e、一般 kernel 完全性、主導来 tensor 比較、実余単位の全 Hom/全空間同値、一般 dg comma・厳密切断による実右随伴候補と実余単位の全関手ホモトピーまで完成。次は同じ余単位の反転を標準単位の全写像空間比較へ照合し、F1B の `qcatAdjunctionOfUnitMappingSpaceCondition` に接続する。`F1B.kanFunctorOppositeHomEquiv` は標的が quasicategory なら使用でき、合成順序反転と始域前合成の自然性も提供済み。反対側の随伴は `qcatAdjunctionOfOpposite` で元の向きへ戻せるため、全パラメータ Hom 対応の再実装は不要。`kanHomotopyOpposite_vertex_edge`、一般 comma の閉射の実辺の回収、`DGUniversalCounit.nativePinchedMap_isSimplicialHomotopyEquivalence` で同じ標準比較の同値性を証明する。`dgUniversalRightAdjointCounitHomotopy` と `dgKernelCounitCandidate` は構成済みで、実 prism の再実装は不要。入力の同じ比較同型を通じて元の kernel の随伴と三角式を回収する。点ごとの任意の同値や H⁰ 随伴だけで完成と数えず、Small 性・射影性・Hom 平坦性は追加しない。その後全 coherence・一般導来合成・Perf 冪等完備性・β4 を閉じる。
+- β5 c5・e、一般 kernel 完全性、主導来 tensor 比較、実余単位の全 Hom/全空間同値、一般 dg comma・厳密切断による実右随伴候補と実余単位の全関手ホモトピーまで完成。次は同じ余単位の反転を標準単位の全写像空間比較へ照合し、F1B の `qcatAdjunctionOfUnitMappingSpaceCondition` に接続する。`F1B.kanFunctorOppositeHomEquiv` は標的が quasicategory なら使用でき、合成順序反転と始域前合成の自然性も提供済み。反対側の随伴は `qcatAdjunctionOfOpposite` で元の向きへ戻せるため、全パラメータ Hom 対応の再実装は不要。同じ実閉辺は `dgUniversalRightAdjointCounitHomotopy_vertex_edge` で回収済み。既存の `HomotopyLimits.IntervalFunctorOpposite`・`IntervalMappingOppositeComposition` の実反転・前後合成比較と、`DGUniversalCounit.nativePinchedMap_isSimplicialHomotopyEquivalence` で同じ標準比較の同値性を証明する。`dgUniversalRightAdjointCounitHomotopy` と `dgKernelCounitCandidate` は構成済みで、実 prism の再実装は不要。入力の同じ比較同型を通じて元の kernel の随伴と三角式を回収する。点ごとの任意の同値や H⁰ 随伴だけで完成と数えず、Small 性・射影性・Hom 平坦性は追加しない。その後全 coherence・一般導来合成・Perf 冪等完備性・β4 を閉じる。
 
 ## 目標と原典
 

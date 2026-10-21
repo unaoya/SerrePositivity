@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponent
+import SerrePositivity.InfinityCategories.Derived.DGUniversalCommaCounitComponent
+import SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjointValue
 import SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite
 import SerrePositivity.InfinityCategories.Stable.SimplicialHomotopyOpposite
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugBaseBoundary
@@ -3689,10 +3692,21 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.qcatAdjunctionOfOpposite
 #check SerrePositivity.InfinityCategories.qcatAdjunctionOfOpposite_homEquiv
 
+#check SerrePositivity.InfinityCategories.dgNerveOppositeIso_inv_vertex
+#check SerrePositivity.InfinityCategories.dgNerveOppositeHomotopy_vertex_edge
+#check SerrePositivity.InfinityCategories.opSimplex_dgClosedEdge
+#check SerrePositivity.InfinityCategories.dgUniversalCommaCounitHomotopy_vertex_edge
+#check SerrePositivity.InfinityCategories.dgUniversalRightAdjointObject
+#check SerrePositivity.InfinityCategories.dgUniversalRightAdjointObject_target
+#check SerrePositivity.InfinityCategories.dgUniversalRightAdjointCounitHomotopy_vertex_edge
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeComponent,
+    `SerrePositivity.InfinityCategories.Derived.DGUniversalCommaCounitComponent,
+    `SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjointValue,
     `SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite,
     `SerrePositivity.InfinityCategories.Stable.SimplicialHomotopyOpposite,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugBaseBoundary,
