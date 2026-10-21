@@ -204,7 +204,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.CofiberExactPostcomposition,
     `SerrePositivity.KST.LocalizingInvariants.CofiberExactNaturality,
     `SerrePositivity.KST.LocalizingInvariants.TammeCofiberDenominators,
-    `SerrePositivity.KST.LocalizingInvariants.TammeArrowLocalization]
+    `SerrePositivity.KST.LocalizingInvariants.TammeArrowLocalization,
+    `SerrePositivity.KST.LocalizingInvariants.StableCospanPullbacks,
+    `SerrePositivity.KST.LocalizingInvariants.TammeUniversalOre,
+    `SerrePositivity.KST.LocalizingInvariants.StableFunctorMaps,
+    `SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence,
+    `SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies,
+    `SerrePositivity.KST.LocalizingInvariants.TammeRelativeOre]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
