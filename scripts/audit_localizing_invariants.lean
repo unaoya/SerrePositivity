@@ -410,7 +410,16 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.ProSpectrumValues,
     `SerrePositivity.KST.LocalizingInvariants.ReverseGridCospan,
     `SerrePositivity.KST.LocalizingInvariants.SquareLeftNormalization,
-    `SerrePositivity.KST.LocalizingInvariants.TammePullbackComparison]
+    `SerrePositivity.KST.LocalizingInvariants.TammePullbackComparison,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramCategory,
+    `SerrePositivity.KST.LocalizingInvariants.ProFiberSequence,
+    `SerrePositivity.KST.LocalizingInvariants.ProFiberZero,
+    `SerrePositivity.KST.LocalizingInvariants.ProGroupExactZero,
+    `SerrePositivity.KST.LocalizingInvariants.ProGroupIsoCriterion,
+    `SerrePositivity.KST.LocalizingInvariants.ProGroupKernel,
+    `SerrePositivity.KST.LocalizingInvariants.ProSpectrumIsoCriterion,
+    `SerrePositivity.KST.LocalizingInvariants.ProVerdierValues,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierDiagramCategory]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
