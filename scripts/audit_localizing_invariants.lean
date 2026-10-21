@@ -145,7 +145,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.IntervalFunctorMapFromHom,
     `SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetMapping,
     `SerrePositivity.KST.LocalizingInvariants.TerminalTargetMapping,
-    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoTargetMapping]
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoTargetMapping,
+    `SerrePositivity.KST.LocalizingInvariants.TensorHomotopyEquivalence,
+    `SerrePositivity.KST.LocalizingInvariants.KanFibrationEquivalenceBaseChange,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoArrowMapping]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

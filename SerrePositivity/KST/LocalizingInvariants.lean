@@ -31,6 +31,6 @@ public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceUnitHomotopy
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoTargetMapping
+public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoArrowMapping
 
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
