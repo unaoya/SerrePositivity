@@ -1,0 +1,63 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.BinaryGraphPreliminarySquare
+
+/-!
+概要：積射を f×id と id×g に分けた graph 付きの予備長方形。
+方針：元の BF 合成を三角形にし、内ホーンの相対充填で二つの正方形を貼る。
+規約：上側合成の長辺は元の積射そのもの。使われ方：外周を元の極限錐へ取り替える入力。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.LocalizingInvariants.BinaryGraphPreliminary
+local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
+variable {T X Y Z : OmegaSpectrum.{u}} (a : T ⟶ X) (b : T ⟶ Y) (f : X ⟶ Z) (g : Y ⟶ Z)
+  (hc : SpectrumHo.hom a ≫ SpectrumHo.hom f = SpectrumHo.hom b ≫ SpectrumHo.hom g)
+
+def productComposition : SSet.Edge.CompStruct (coherentNerveEdge (Binary.map f (𝟙 Y)))
+    (coherentNerveEdge (Binary.map (𝟙 Z) g)) (coherentNerveEdge (Binary.map f g)) :=
+  (coherentNerveCompStruct (Binary.map f (𝟙 Y)) (Binary.map (𝟙 Z) g)).ofEq rfl rfl
+    (by rw [← Binary.map_factor])
+
+def rectangle : SquarePastingRectangle (square a b f g hc)
+    ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ BinaryGraph.square g)
+    (SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).simplex)
+    (SSet.yonedaEquiv.symm (productComposition f g).simplex) := by
+  apply Classical.choice
+  apply nonempty_squarePastingRectangle
+  · rw [square_right, square_transpose_left, BinaryGraph.square_bottom]
+  · rw [square_bottom, stdSimplex.δ_comp_yonedaEquiv_symm]
+    exact congrArg SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).d₂.symm
+  · rw [square_transpose_bottom, BinaryGraph.square_left,
+      stdSimplex.δ_comp_yonedaEquiv_symm]
+    exact congrArg SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).d₀.symm
+  · rw [square_top, stdSimplex.δ_comp_yonedaEquiv_symm]
+    exact congrArg SSet.yonedaEquiv.symm (productComposition f g).d₂.symm
+  · rw [square_transpose_top, BinaryGraph.square_right,
+      stdSimplex.δ_comp_yonedaEquiv_symm]
+    exact congrArg SSet.yonedaEquiv.symm (productComposition f g).d₀.symm
+
+lemma rectangle_right_isPullback :
+    IsPullbackSquare (pastingSquare (rectangle a b f g hc).diagram 0) := by
+  rw [(rectangle a b f g hc).right_eq]
+  exact (isPullbackSquare_iff_transpose _).1 (BinaryGraph.square_isPullback g)
+
+lemma rectangle_outer_right : squareRightEdge ≫ pastingSquare (rectangle a b f g hc).diagram 1 =
+    SSet.yonedaEquiv.symm (coherentNerveEdge (BinaryGraph.diagonal Z)).edge := by
+  rw [pastingSquare_outer_rightEdge, (rectangle a b f g hc).right_eq,
+    square_transpose_right, BinaryGraph.square_top]
+
+lemma rectangle_outer_top : squareTopEdge ≫ pastingSquare (rectangle a b f g hc).diagram 1 =
+    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f g)).edge := by
+  rw [pastingSquare_topEdge, (rectangle a b f g hc).top_eq,
+    stdSimplex.δ_comp_yonedaEquiv_symm]
+  exact congrArg SSet.yonedaEquiv.symm (productComposition f g).d₁
+
+end SerrePositivity.KST.LocalizingInvariants.BinaryGraphPreliminary

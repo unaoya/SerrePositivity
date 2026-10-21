@@ -1,0 +1,86 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.NativeSquareRows
+public import SerrePositivity.KST.LocalizingInvariants.SquareFrameEdgesHomotopy
+
+/-!
+概要：三辺が元の BF 射である正方形の左辺を、同じ射の類を持つ元の BF 射へ戻す。
+方針：四頂点を固定した境界変形を本体へ延長し、全正方形の同型で極限性を移す。
+規約：射の類の可換性から極限性を推論しない。使われ方：二脚の元の包含への正規化。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.LocalizingInvariants.SquareLeftNormalization
+local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
+variable {T X Y Z : OmegaSpectrum.{u}} (a : T ⟶ X) (b : T ⟶ Y) (f : X ⟶ Z) (g : Y ⟶ Z)
+  (S : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u})
+  (hb : squareBottomEdge ≫ S = SSet.yonedaEquiv.symm (coherentNerveEdge a).edge)
+  (ht : squareTopEdge ≫ S = SSet.yonedaEquiv.symm (coherentNerveEdge g).edge)
+  (hr : squareRightEdge ≫ S = SSet.yonedaEquiv.symm (coherentNerveEdge f).edge)
+  (hl : Truncated.HomotopyCategory.homMk (NativeSquareRows.left a g S hb ht).toTruncated =
+    SpectrumHo.hom b)
+
+def oldFrame : SquareFrame Sp.{u} := squareFrameOfEdges (coherentNerveEdge a)
+  (coherentNerveEdge g) (NativeSquareRows.left a g S hb ht) (NativeSquareRows.right a g S hb ht)
+
+lemma oldFrame_eq : oldFrame a g S hb ht = SquareFrame.ofSquare S := by
+  apply SquareFrame.ext
+  · exact hb.symm
+  · exact ht.symm
+  · change (SSet.yonedaEquiv (X := Sp.{u}) (n := ⦋1⦌)).symm (squareLeftArrow S).edge = _
+    rw [squareLeftArrow_edge, Equiv.symm_apply_apply]
+    rfl
+  · change (SSet.yonedaEquiv (X := Sp.{u}) (n := ⦋1⦌)).symm (squareRightArrow S).edge = _
+    rw [squareRightArrow_edge, Equiv.symm_apply_apply]
+    rfl
+
+def newFrame : SquareFrame Sp.{u} := squareFrameOfEdges (coherentNerveEdge a)
+  (coherentNerveEdge g) (coherentNerveEdge b) (coherentNerveEdge f)
+
+def boundaryHomotopy : SquareFrameHomotopy (oldFrame a g S hb ht) (newFrame a b f g) :=
+  squareFrameEdgesHomotopy (X := Sp.{u}) (coherentNerveEdge a) (coherentNerveEdge a)
+    (coherentNerveEdge g) (coherentNerveEdge g) (NativeSquareRows.left a g S hb ht)
+    (coherentNerveEdge b) (NativeSquareRows.right a g S hb ht) (coherentNerveEdge f)
+    rfl rfl hl (NativeSquareRows.right_class a g S hb ht f hr)
+
+def extension : SquareFrame.PathExtension (boundaryHomotopy a b f g S hb ht hr hl).pathFrame S :=
+  (boundaryHomotopy a b f g S hb ht hr hl).extension S (oldFrame_eq a g S hb ht)
+
+def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
+  (extension a b f g S hb ht hr hl).target
+
+def comparison : FunctorIso S (square a b f g S hb ht hr hl) :=
+  (extension a b f g S hb ht hr hl).comparison
+
+lemma square_boundary : SquareFrame.boundaryι ≫ square a b f g S hb ht hr hl =
+    (newFrame a b f g).diagram :=
+  (boundaryHomotopy a b f g S hb ht hr hl).extension_target_boundary S (oldFrame_eq a g S hb ht)
+
+lemma square_isPullback (hS : IsPullbackSquare S) :
+    IsPullbackSquare (square a b f g S hb ht hr hl) :=
+  hS.of_functorIso (comparison a b f g S hb ht hr hl)
+
+lemma square_bottom : squareBottomEdge ≫ square a b f g S hb ht hr hl =
+    SSet.yonedaEquiv.symm (coherentNerveEdge a).edge :=
+  SquareFrame.square_bottom_of_boundary _ (square_boundary a b f g S hb ht hr hl)
+
+lemma square_top : squareTopEdge ≫ square a b f g S hb ht hr hl =
+    SSet.yonedaEquiv.symm (coherentNerveEdge g).edge :=
+  SquareFrame.square_top_of_boundary _ (square_boundary a b f g S hb ht hr hl)
+
+lemma square_left : squareLeftEdge ≫ square a b f g S hb ht hr hl =
+    SSet.yonedaEquiv.symm (coherentNerveEdge b).edge :=
+  SquareFrame.square_left_of_boundary _ (square_boundary a b f g S hb ht hr hl)
+
+lemma square_right : squareRightEdge ≫ square a b f g S hb ht hr hl =
+    SSet.yonedaEquiv.symm (coherentNerveEdge f).edge :=
+  SquareFrame.square_right_of_boundary _ (square_boundary a b f g S hb ht hr hl)
+
+end SerrePositivity.KST.LocalizingInvariants.SquareLeftNormalization

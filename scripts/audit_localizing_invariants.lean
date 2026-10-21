@@ -393,7 +393,24 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryFunctor,
     `SerrePositivity.KST.LocalizingInvariants.StrictCospanConeLegs,
     `SerrePositivity.KST.LocalizingInvariants.StrictCospanConePoints,
-    `SerrePositivity.KST.LocalizingInvariants.StrictCospanConeSquare]
+    `SerrePositivity.KST.LocalizingInvariants.StrictCospanConeSquare,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryGraphLeftClass,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryGraphPreliminaryRectangle,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryGraphPreliminarySquare,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryProductCospanNormalized,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryProductCospanSquare,
+    `SerrePositivity.KST.LocalizingInvariants.BinaryProductDiagonalFactorization,
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientCospanInput,
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullbackComparison,
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullbackSquare,
+    `SerrePositivity.KST.LocalizingInvariants.NativeSquareRows,
+    `SerrePositivity.KST.LocalizingInvariants.PastingCornerPreservation,
+    `SerrePositivity.KST.LocalizingInvariants.PastingOuterColimitReplacement,
+    `SerrePositivity.KST.LocalizingInvariants.PastingOuterLimitReplacement,
+    `SerrePositivity.KST.LocalizingInvariants.ProSpectrumValues,
+    `SerrePositivity.KST.LocalizingInvariants.ReverseGridCospan,
+    `SerrePositivity.KST.LocalizingInvariants.SquareLeftNormalization,
+    `SerrePositivity.KST.LocalizingInvariants.TammePullbackComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
