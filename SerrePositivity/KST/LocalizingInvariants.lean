@@ -590,4 +590,9 @@ public import SerrePositivity.KST.LocalizingInvariants.RelativeMappingEdge
 public import SerrePositivity.KST.LocalizingInvariants.FiberMappingRelativePath
 public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitPath
 
+public import SerrePositivity.KST.LocalizingInvariants.ZeroCospanRestriction
+public import SerrePositivity.KST.LocalizingInvariants.ZeroCospanHomotopyUniqueness
+public import SerrePositivity.KST.LocalizingInvariants.FiberSquareRightUniqueness
+public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightRestriction
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
