@@ -1865,4 +1865,15 @@ public import SerrePositivity.KST.SConstruction.NecklaceClosedIntervalSubset
 public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaNecklaceCell
 public import SerrePositivity.KST.SConstruction.SimplexHAIntervalDecodeCell
 public import SerrePositivity.KST.SConstruction.SimplexHAInverseFunctorRecovery
+public import SerrePositivity.KST.SConstruction.SimplexHADeleteVertexSubset
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeDeleteZeroFace
+public import SerrePositivity.KST.SConstruction.SimplexHAInverseCellDeletion
+public import SerrePositivity.KST.SConstruction.SimplexHASubsetPrefixOrder
+public import SerrePositivity.KST.SConstruction.SimplexHAInsertVertexOrder
+public import SerrePositivity.KST.SConstruction.SimplexHAInsertVertexDeletion
+public import SerrePositivity.KST.SConstruction.SimplexHAColumnSubsetEquality
+public import SerrePositivity.KST.SConstruction.SimplexHAInverseCellRecoveryCondition
+public import SerrePositivity.KST.SConstruction.SimplexHAInverseCellRecovery
+public import SerrePositivity.KST.SConstruction.SimplexHAInverseNativeDecodedComponent
+public import SerrePositivity.KST.SConstruction.SimplexHANativeInverse
 /-! # ∞-S• 構成と連結 K 理論 -/

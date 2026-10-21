@@ -22896,3 +22896,112 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_injective
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_injective
+
+
+#check @SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_subset
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_subset
+
+#check @SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_coordinate
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_coordinate
+
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_delete_zero_face_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_delete_zero_face_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_cell_strictInterval
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_cell_strictInterval
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_cell_delete
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_cell_delete
+
+#check @SerrePositivity.KST.SConstruction.simplexHASubsetFullOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexHASubsetFullOrder
+
+#check @SerrePositivity.KST.SConstruction.simplexHASubsetPrefixOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexHASubsetPrefixOrder
+
+#check @SerrePositivity.KST.SConstruction.simplexHASubsetFullOrder_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHASubsetFullOrder_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHASubsetFullOrder_last
+#print axioms SerrePositivity.KST.SConstruction.simplexHASubsetFullOrder_last
+
+#check @SerrePositivity.KST.SConstruction.simplexHASubsetPrefixOrder_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHASubsetPrefixOrder_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHASubsetPrefixOrder_last_lt
+#print axioms SerrePositivity.KST.SConstruction.simplexHASubsetPrefixOrder_last_lt
+
+#check @SerrePositivity.KST.SConstruction.simplexHASubsetPrefixOrder_subset
+#print axioms SerrePositivity.KST.SConstruction.simplexHASubsetPrefixOrder_subset
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_card
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_card
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_vertices
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_vertices
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexIndex
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexIndex
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexIndex_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexIndex_recovery
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexIndex_pos
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexIndex_pos
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_last_lt
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_last_lt
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexCoordinate
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexCoordinate
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexCoordinate_vertex
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexCoordinate_vertex
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_faceVertex
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_faceVertex
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_delete
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInsertVertexOrder_delete
+
+#check @SerrePositivity.KST.SConstruction.simplexHAColumn_eq_of_subset_eq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAColumn_eq_of_subset_eq
+
+#check @SerrePositivity.KST.SConstruction.SimplexHAInverseCellRecovery
+#print axioms SerrePositivity.KST.SConstruction.SimplexHAInverseCellRecovery
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery_of_subset_eq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery_of_subset_eq
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery_strictInterval
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery_strictInterval
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery_of_full
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery_of_full
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery_insert
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery_insert
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseCellRecovery
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_hom_atDimension
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_hom_atDimension
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_native_decoded_hom
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_native_decoded_hom
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_native_hom
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_native_hom
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_inverse
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_inverse
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexEquiv
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexEquiv
