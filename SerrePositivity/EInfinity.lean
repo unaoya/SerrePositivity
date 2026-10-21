@@ -1359,3 +1359,13 @@ public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedPartsEquiv
 public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedPartsRecovery
 public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedRestrictionParts
 public import SerrePositivity.EInfinity.Hammock.UnmarkedFreeEnrichedFunctor
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCover
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverConnected
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverCostars
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverEndpoint
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverEvaluation
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverFaithful
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverLiftPaths
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverPathStars
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverPositivePaths
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverStars

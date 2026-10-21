@@ -1694,6 +1694,16 @@ prefix と残りの元の hammock の点の回収・逆向きの因子列の回�
 拡張・元の二脚の回収・一意性。DK 命題3.2の自由積の豊穣普遍性をこの形で完成。
 任意可換環の実際の全自由次数でも検証。§5.8の全指定自由圏の成分の可縮性と命題2.2の両弱比較、
 Map^h の高次比較・∞ 局所化の普遍性は後続。
+`FreeQuiverCover.Vertex/quiver/projection/root` は元の自由 groupoid の根からの矢を頂点とする
+根付き被覆候補。`forwardTarget/forwardArrow/backwardSource/backwardArrow` は元の矢の持ち上げ。
+`starEquiv/costarEquiv/projection_isCovering` は元の star・costar の全単射と被覆性。
+`pathStarEquiv/symmetricPathStarEquiv` は元の全有向・対称射列の一意な持ち上げ。
+`symmetricEvaluation/coverEvaluation/projected_endpoint/positive_endpoint` は元の商の矢と
+実際の持ち上げ終点のラベルの回収。`root_connected` は固定根からの連結性。
+`pathProjection/liftPath/liftPath_projection/liftPath_unique/pathProjection_faithful` は元の
+正向きの自由圏の関手と実際の射列の一意な持ち上げ・忠実性。
+元の全自由次数の指定生成 quiver へも代入して検証。根付き被覆の木性・被覆の元の hammock への
+持ち上げ・全指定自由圏の成分の可縮性・命題2.2の両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

@@ -5589,6 +5589,44 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.unmarkedEnrichedFunctor,
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.unmarkedEnrichedFunctor_generator]
 
+@[noinline] private def e2RequiredBatch81 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FreeQuiverCover.Vertex,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.quiver,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.root,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.forwardTarget,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.forwardArrow,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.Vertex.ext,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.symmetricPath,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.root_connected,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.backwardSource,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.backwardArrow,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.costarEquiv,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projection_isCovering,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.coverEvaluation_arrow,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.coverEvaluation_endpoint,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projected_endpoint,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.symmetricEvaluation,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.evaluation_positive,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.evaluation_negative,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.symmetricProjection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.coverEvaluation,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.coverEvaluation_map,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.pathProjection_faithful,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPath,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPath_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.lifted_pathStar_unique,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPath_unique,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.pathStarEquiv,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.symmetrify_isCovering,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.symmetricPathStarEquiv,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation_cons,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.pathProjection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positive_endpoint,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.starEquiv,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.star_bijective]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5620,7 +5658,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -13436,3 +13474,56 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
       MarkedSpine.restrictParts W F = P :=
   MarkedSpine.existsUnique_freeProductExtension (freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences P
+
+
+-- 元の根付き quiver の射影は star と costar の双方で全単射である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    (FreeQuiverCover.projection A).IsCovering := FreeQuiverCover.projection_isCovering A
+
+-- 対称化した元の全射列も指定始点から一意に持ち上がる。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (x : FreeQuiverCover.Vertex A) :
+    letI := FreeQuiverCover.quiver A
+    Function.Bijective ((FreeQuiverCover.projection A).symmetrify.pathStar
+      (Quiver.Symmetrify.of.obj x)) := by
+  let := FreeQuiverCover.quiver A
+  exact (FreeQuiverCover.symmetrify_isCovering A).pathStar_bijective _
+
+-- 元の対称射列の商をラベルに持つ任意の頂点へ固定根から到達できる。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (x : FreeQuiverCover.Vertex A) :
+    Nonempty (FreeQuiverCover.symmetricPath A (FreeQuiverCover.root A) x) :=
+  FreeQuiverCover.root_connected A x
+
+-- 実際の持ち上げ終点のラベルは元の対称射列の値で回収される。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (x y : FreeQuiverCover.Vertex A) (p : FreeQuiverCover.symmetricPath A x y) :
+    letI := FreeQuiverCover.quiver A
+    x.path ≫ FreeQuiverCover.symmetricEvaluation.map
+      ((FreeQuiverCover.symmetricProjection A).mapPath p) = y.path :=
+  FreeQuiverCover.projected_endpoint A x y p
+
+-- 元の自由圏の射影自身が忠実である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    (FreeQuiverCover.pathProjection A).Faithful := FreeQuiverCover.pathProjection_faithful A
+
+-- 任意可換環の実際の全自由次数の指定生成 quiver へ同じ根付き被覆を代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    letI := FreeQuiverCover.quiver (Q := MarkedGenerators.quiver W) A
+    (FreeQuiverCover.projection (Q := MarkedGenerators.quiver W) A).IsCovering :=
+  FreeQuiverCover.projection_isCovering (Q := MarkedGenerators.quiver
+    (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
