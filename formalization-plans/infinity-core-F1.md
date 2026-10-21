@@ -98,7 +98,7 @@
 `cocartesianStraighteningHomInterval_oneSimplex_isQCatEquivalence` は、同じ元の全 fibration の分類と全 Hom 作用の同値。
 元の cocartesian Hom の core と分類先の区間 Hom の全内ホーン制限は自明 Kan と証明済み。二次元の欠ける長辺は同じ三角形分解で保存を反映した。
 元の Hom の core と分類先の区間 Hom は、同じ共有頂点で貼る二区間の厳密な pullback。二次元単体からこの同じ pullback への両比較は自明 Kan と証明済み。
-元の Hom 輸送の底制限自然性・合成則と、再底変換・結合共役が全局所 Hom 上で元の直接の制限に厳密に一致することは証明済み。`cocartesianBaseChangeNativeObjectIso_associativity_edge` で元の結合同型の分類像は既存の結合区間族の同じ辺そのもの。指定同型を始域の全 Hom で豊穣化し、終域の共役が単位・全高次合成を保つことと、各 section の評価で全局所 Hom に自然な同値比較を構成した。`cocartesianIsoTransportSectionComparison_native_component` の成分は既存の section 結合比較そのもの、源の core も元の二重引き戻し間の全 Hom の core そのもの。次はこの各 section の比較を底全体の射にも自然に束ね、同じ既存の辺を両端評価に持つ Hom span の比較を構成して結合共役と既存の結合 Hom 輸送の関手同型を得る。その後、共有頂点の自然性を Segal 比較へ渡し、二次元・全単体、有限セル・骨格の降下から一般の充満忠実性を結論する。目安は照合 2〜4 時間、有限セル・骨格の降下 4〜8 時間、一般の充満忠実性と監査 2〜4 時間（暫定）。
+元の Hom 輸送の底制限自然性・合成則と、再底変換・結合共役が全局所 Hom 上で直接の制限に厳密に一致することは証明済み。`cocartesianBaseChangeNativeObjectIso_associativity_edge` で結合同型の分類像は既存の結合区間族の同じ辺そのもの。各 section の全局所比較を底全体の射にも自然に束ね、`cocartesianIsoTransportFamily` で coherent な族へ実現した。両端は元の始域評価・結合共役に続く同じ分類主写像。源の ∞ 圏の Hom は元の全相対 Hom の core そのもので Kan、`cocartesianIsoTransportCategory_native_sHom` は元の二重引き戻し間の Hom の core と厳密に一致する。次はこの全局所比較の族を元の fibration に固定した辺が既存の結合辺そのものと照合し、可逆 path の族へ持ち上げて同じ結合 Hom span の比較を作り、結合共役と既存の結合 Hom 輸送の関手同型を得る。その後、共有頂点の自然性を Segal 比較へ渡し、二次元・全単体、有限セル・骨格の降下から一般の充満忠実性を結論する。目安は照合 2〜4 時間、有限セル・骨格の降下 4〜8 時間、一般の充満忠実性と監査 2〜4 時間（暫定）。
 その後は底の被覆による大域充満忠実性と、本質的全射性・一般の底への帰着。Cat∞ 値分類は未完了。
 正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 

@@ -2349,3 +2349,13 @@ public import SerrePositivity.InfinityCategories.F1.IsoTransportEnrichedNaturali
 public import SerrePositivity.InfinityCategories.F1.IsoTransportQuasicategoryComparison
 
 public import SerrePositivity.InfinityCategories.F1.QuasicategoryHomWhisker
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportDiagramComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportFamily
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportInfinity
+
+public import SerrePositivity.InfinityCategories.F1.IsoTransportQuasicategoryDiagramComparison
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedOrdinaryNaturality
