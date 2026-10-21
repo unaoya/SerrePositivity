@@ -444,7 +444,25 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightPrism,
     `SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightMappingPath,
     `SerrePositivity.KST.LocalizingInvariants.FiberDiagramModelGroups,
-    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramNormalization]
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramNormalization,
+    `SerrePositivity.KST.LocalizingInvariants.FiberConeFullyFaithful,
+    `SerrePositivity.KST.LocalizingInvariants.FiberConeHomotopyUniqueness,
+    `SerrePositivity.KST.LocalizingInvariants.FiberSquareHomotopyUniqueness,
+    `SerrePositivity.KST.LocalizingInvariants.StrictConeMap,
+    `SerrePositivity.KST.LocalizingInvariants.RawFiberConeMap,
+    `SerrePositivity.KST.LocalizingInvariants.StrictConeCoherentPrism,
+    `SerrePositivity.KST.LocalizingInvariants.StrictConePrismComponent,
+    `SerrePositivity.KST.LocalizingInvariants.StrictConeHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.StrictConeHomotopyRestriction,
+    `SerrePositivity.KST.LocalizingInvariants.RawFiberCoherentCube,
+    `SerrePositivity.KST.LocalizingInvariants.SliceConeComparison,
+    `SerrePositivity.KST.LocalizingInvariants.ReplacedFiberConeComparison,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowInverseControl,
+    `SerrePositivity.KST.LocalizingInvariants.RawFiberCubeHom,
+    `SerrePositivity.KST.LocalizingInvariants.ReplacedFiberCubeHom,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeTransportIso,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
