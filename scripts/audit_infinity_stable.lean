@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparison
+import SerrePositivity.InfinityCategories.Derived.ResolutionCounitComparison
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoFaithfulTransport
+import SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonNormalization
+import SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonComposition
+import SerrePositivity.InfinityCategories.Derived.ResolutionOutputComparisonComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompComposition
+import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftInputComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputPrecompComposition
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComposition
 import SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift
 import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationHomotopy
@@ -4391,6 +4400,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparison,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionCounitComparison,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoFaithfulTransport,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonNormalization,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonComposition,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionOutputComparisonComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGUniverseLiftInputComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputPrecompComposition,
+
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComposition,
 
     `SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift,
