@@ -1900,3 +1900,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianHomComponentPullb
 public import SerrePositivity.InfinityCategories.F1.CocartesianHomFixedComponent
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomFiberCriterion
+
+public import SerrePositivity.InfinityCategories.F1.IntervalFunctorHomPrism
+
+public import SerrePositivity.InfinityCategories.F1.IntervalFunctorHomPrismCurry
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHomFixedComponentPrism
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHomFixedComponentCurry
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHomFixedComponentPresentation
+
+public import SerrePositivity.InfinityCategories.F1.ParameterizedSquare
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomTriangles
