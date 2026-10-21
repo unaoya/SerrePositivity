@@ -86,9 +86,10 @@ def smallUnstraighteningRelativeVertexIso {B : SSet.{u}}
         (smallLeftUnstraighteningOverMap_projection F G f hf))
       (relativeFunctorVertex _ _ (smallLeftUnstraighteningOverMap F G g)
         (smallLeftUnstraighteningOverMap_projection F G g hg)) := by
-  have h := e.map (smallLeftUnstraighteningRelativeFunctorIso F G).inv
-  rw [smallUnstraighteningRelativeIso_inv_vertex,
-    smallUnstraighteningRelativeIso_inv_vertex] at h
-  exact downVertexIso h
+  let h := downVertexIso (e.map (smallLeftUnstraighteningRelativeFunctorIso F G).inv)
+  have hs := congrArg ULift.down (smallUnstraighteningRelativeIso_inv_vertex F G f hf)
+  have ht := congrArg ULift.down (smallUnstraighteningRelativeIso_inv_vertex F G g hg)
+  exact (eqToIso (congrArg SSet.HomotopyCategory.mk hs)).symm ≪≫ h ≪≫
+    eqToIso (congrArg SSet.HomotopyCategory.mk ht)
 
 end SerrePositivity.InfinityCategories.F2

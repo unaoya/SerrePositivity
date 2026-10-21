@@ -53,6 +53,33 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_app_pre
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleCurryIso_restrict
 
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleRelativeVertexIso_restrict
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorOverPre_eq_pre_transport
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningSourceRelativeIso
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningSourceRestriction
+#check @SerrePositivity.InfinityCategories.F2.smallRelativeFunctorIso_inv_pre
+#check @SerrePositivity.InfinityCategories.F2.smallRelativeVertexIso_heq_down_map
+#check @SerrePositivity.InfinityCategories.F2.smallRelativeVertexIso_pre_heq_down_map
+#check @SerrePositivity.InfinityCategories.F2.smallRelativeVertexIso_pre_heq_restrict_down
+#check @SerrePositivity.InfinityCategories.F2.iso_target_transport_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationMappingComposite_projection
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationComposite_relativeVertex
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleRelativeIso_heq_small
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallTriangleRelativeIso_pre
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown_map_homMk
+#check @SerrePositivity.InfinityCategories.F2.downVertexIso_eq_mapIso
+#check @SerrePositivity.InfinityCategories.F2.downTruncatedEdge_map
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown_naturality
+#check @SerrePositivity.InfinityCategories.F2.downVertexIso_map
+#check @SerrePositivity.InfinityCategories.F2.downVertexIso_heq_of_heq
+#check @SerrePositivity.InfinityCategories.F2.constMap_vertex_value
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingConst_vertex
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingConstComposite_vertex
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleRelativeVertexIso_pre
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleRelativeVertexIso_heq_component
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleRelativeVertexIso_map_pre_heq_component
+
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
 方針：宣言元モジュールを判別し、各宣言の公理を再帰的に収集する。
