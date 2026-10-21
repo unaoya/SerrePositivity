@@ -2306,3 +2306,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_pair_heq_of_comp_eq
 #check @SerrePositivity.InfinityCategories.F2.functorIso_symm_heq_of_heq
 #check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_postcomp_heq_of_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_precomp
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_heq_of_map_eq
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_iso_cancel
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_symm_precomp_postcomp_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_precomp_postcomp_heq
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementInversePathIso_image
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeFirstPathSourceMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeFirstPathTargetMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeInversePathImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftValueImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftOuterImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftCorrectionSourceMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftCorrectionMiddleMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftCorrectionTargetMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftCorrectionImage
+
+#check @SerrePositivity.InfinityCategories.F2.cospanRectificationLeftIso_inverse_whisker_image

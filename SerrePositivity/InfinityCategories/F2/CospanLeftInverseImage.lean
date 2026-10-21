@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CospanRectificationImages
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
 
 /-!
 概要：元の cospan 左厳密化の逆の底の像を、元の path の逆と元の値比較へ表示する。
@@ -49,5 +51,31 @@ lemma cospanRectificationLeftIso_inverse_image :
     rw [Iso.trans_symm, ← functorIso_precomp_symm, Iso.symm_symm_eq]
   rw [functorIso_postcomp_symm]
   exact hi.trans (heq_of_eq hc)
+
+/-- 逆厳密化を制限した指定像は、逆 path と値比較の前後合成の合成になる。 -/
+lemma cospanRectificationLeftIso_inverse_whisker_image {A W : SSet.{u}}
+    (a : A ⟶ intervalReplacement f) (w : Z' ⟶ W) :
+    HEq (((FunctorIso.precomp (cospanRectificationLeftIso f f' s v e).symm a).postcomp
+      (intervalReplacementEndpoint f')).postcomp w)
+      (((FunctorIso.precomp (functorIsoOfEq ((intervalReplacementPathIso f).postcomp v)
+        (Category.assoc pr f v) rfl).symm a).postcomp w) ≪≫
+          ((e.precomp pr).precomp a).postcomp w) := by
+  let L := cospanRectificationLeftIso f f' s v e
+  let d := functorIsoOfEq ((intervalReplacementPathIso f).postcomp v)
+    (Category.assoc pr f v) rfl
+  let core := d.symm ≪≫ e.precomp pr
+  have hs := cospanRectificationLeftMap_over f f' s v e
+  have ht : (pr ≫ s ≫ intervalReplacementSection f') ≫ intervalReplacementEndpoint f' =
+      pr ≫ (s ≫ f') := by
+    simp only [Category.assoc, intervalReplacementSection_endpoint]
+  have hp := functorIso_precomp_heq_of_heq core
+    (FunctorIso.postcomp L.symm (intervalReplacementEndpoint f')) hs.symm ht.symm
+    (cospanRectificationLeftIso_inverse_image f f' s v e) a
+  have hq := functorIso_postcomp_heq_of_heq (FunctorIso.precomp core a)
+    ((FunctorIso.postcomp L.symm (intervalReplacementEndpoint f')).precomp a)
+    (congrArg (fun k => a ≫ k) hs.symm) (congrArg (fun k => a ≫ k) ht.symm) hp w
+  rw [functorIso_precomp_postcomp]
+  apply hq.trans
+  exact heq_of_eq (by rw [functorIso_precomp_trans, functorIso_postcomp_trans])
 
 end SerrePositivity.InfinityCategories.F2
