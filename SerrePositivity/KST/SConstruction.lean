@@ -1786,4 +1786,10 @@ public import SerrePositivity.KST.SConstruction.SimplexHAGeneratorBoundary
 public import SerrePositivity.KST.SConstruction.SerreCubeZeroGeneratorDifferential
 public import SerrePositivity.KST.SConstruction.SimplexHABeadWordBoundaryZero
 public import SerrePositivity.KST.SConstruction.SimplexHAZeroGeneratorCompatibility
+public import SerrePositivity.KST.SConstruction.SimplexHAZeroFaceRestriction
+public import SerrePositivity.KST.SConstruction.SimplexHADegreeDefect
+public import SerrePositivity.KST.SConstruction.DGRightCycleComposition
+public import SerrePositivity.KST.SConstruction.SimplexHAOneFaceValues
+public import SerrePositivity.KST.SConstruction.SimplexHAOneFaceRestriction
+public import SerrePositivity.KST.SConstruction.SimplexHAOneFaceDefect
 /-! # ∞-S• 構成と連結 K 理論 -/

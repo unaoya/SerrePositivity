@@ -22166,3 +22166,28 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_generator_comm
 #check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_comm
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_comm
+
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_point_zero_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_point_zero_heq
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_face_restriction
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_face_restriction
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zero_face
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zero_face
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_point_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_point_zero
+#check @SerrePositivity.KST.SConstruction.dgRightCycleComposition
+#print axioms SerrePositivity.KST.SConstruction.dgRightCycleComposition
+#check @SerrePositivity.KST.SConstruction.dgRightCycleComposition_apply
+#print axioms SerrePositivity.KST.SConstruction.dgRightCycleComposition_apply
+#check @SerrePositivity.KST.SConstruction.simplexHABeadTail_singleton_rawValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadTail_singleton_rawValue
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_point_one_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_point_one_heq
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_one_face_restriction
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_one_face_restriction
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_one_face
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_one_face
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_point_one
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_point_one
