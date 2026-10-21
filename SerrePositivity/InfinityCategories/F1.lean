@@ -2058,3 +2058,23 @@ public import SerrePositivity.InfinityCategories.F1.CoherentCompositionTriangle
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionFixedTriangle
 
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionCorrespondence
+
+public import SerrePositivity.InfinityCategories.F1.CoherentPrismCutDiagonalMaximum
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionDiagonalCut
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionDiagonalMixed
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionDiagonalSimplex
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionSquareEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionDiagonal
+
+public import SerrePositivity.InfinityCategories.F1.QCatCoherentPostcomposition
+
+public import SerrePositivity.InfinityCategories.F1.QCatPostcompositionPullback
+
+public import SerrePositivity.InfinityCategories.F1.QCatPostcompositionFiberComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionCanonicalComparison
