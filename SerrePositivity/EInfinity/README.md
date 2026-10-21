@@ -1420,6 +1420,15 @@ nerve の反転性・弱ホモトピー同値性。同じ指定分解から、�
 `inverts_iff_markedRestriction` は W.paths の反転と指定生成部分の全射の反転の同値。
 `freeResolutionMarkedEquivalence/freeResolution_existsUnique_extension` は元の全自由次数への
 代入。これらは比較補題2.3の自由積による帰着の準備であり、弱同値性の証明は後続。
+`GeneratorBlocks.Form` は空でない単色ブロックを交互に連ねた標準形で、最終色と端点を
+添字に持つ。`normalize/flattenNormal/equivalence` は元の射列と標準形の互いに逆な全単射。
+`existsUnique_normal` は元の全生成文字を保持する標準形の存在と一意性。
+`typedBlock` と `inclusion_typedBlock` は各ブロックを元の二つの自由因子の射へ移して戻す。
+`normalize_monochrome` は空でない単色列を一ブロックにし、元の恒等文字は空列に潰さない。
+`GeneratorBlocks.comp/categoryEquivalence` は元の連結・単位・結合則と両立した圏同値。
+`freeResolutionBlockEquiv/freeResolutionBlockCategoryEquivalence` は元の全自由次数への代入で、
+元の射・恒等・合成を回収する。任意可換環の既存固定端点でも検証済み。
+hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較射の弱同値性は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

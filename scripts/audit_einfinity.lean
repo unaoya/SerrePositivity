@@ -4556,6 +4556,61 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.inclusion_injective,
       `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.inclusion_range]
 
+@[noinline] private def e2RequiredBatch55 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockCategoryEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv_symm_apply,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv_id,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.appendLetterForm,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.appendLetter,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.flatten_appendLetter,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.appendBlock,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.flatten_appendBlock,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.BlockCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.category,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.flattenFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalizeFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.categoryEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.flatten_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.empty_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.comp_empty,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.comp_assoc,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize_flatten,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize_flattenNormal,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.equivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.flatten_injective,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normal_eq_iff,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.existsUnique_normal,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.color,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.monochrome,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.color_true_iff,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.color_false_iff,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.Form,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.Normal,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.flatten,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.flattenNormal,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.empty,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize_cons,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.flatten_normalize,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.appendBlock_positive,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.appendLetter_appendBlock,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize_appendBlock,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.part,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.monochrome_eq_part,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.monochrome_paths_iff,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.typedBlock,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.inclusion_typedBlock,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.typedBlock_length,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize_monochrome,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize_toPath,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.normalize_letter_ne_empty,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.Form.nil,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.Form.snoc]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4587,7 +4642,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10534,3 +10589,55 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
         WideSubcategory ((freeResolution
           (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences :=
   freeResolutionMarkedEquivalence (BarrattEccles.cofibrantAlgebraRelativeCategory R) n
+
+-- 元の射列には、元の端点と全生成文字を保つ交互標準形が一意に存在する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y : C} (p : Quiver.Path X Y) :
+    ∃! N : GeneratorBlocks.Normal W X Y, GeneratorBlocks.flattenNormal W N = p :=
+  GeneratorBlocks.existsUnique_normal W p
+
+-- 圏としても元の自由圏を回収し、元の連結に同じ flatten を与える。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y Z : GeneratorBlocks.BlockCategory W}
+    (f : X ⟶ Y) (g : Y ⟶ Z) :
+    (GeneratorBlocks.categoryEquivalence W).functor.map (f ≫ g) =
+      (GeneratorBlocks.categoryEquivalence W).functor.map f ≫
+        (GeneratorBlocks.categoryEquivalence W).functor.map g :=
+  (GeneratorBlocks.categoryEquivalence W).functor.map_comp f g
+
+-- 元の恒等射の一文字を空射列に潰すことはしない。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X : C) :
+    GeneratorBlocks.normalize W (𝟙 X).toPath ≠ GeneratorBlocks.empty W X :=
+  GeneratorBlocks.normalize_letter_ne_empty W (𝟙 X)
+
+-- 各単色ブロックは同じ指定・非指定の自由因子の射となり、包含で元の列に戻る。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y : C} (c : Bool) (p : Quiver.Path X Y)
+    (hp : (GeneratorBlocks.monochrome W c).paths p) :
+    (MarkedGenerators.inclusion (GeneratorBlocks.part W c)).map
+      (GeneratorBlocks.typedBlock W c p hp) = p :=
+  GeneratorBlocks.inclusion_typedBlock W c p hp
+
+-- 元の全自由次数の合成が同じ交互標準形の合成に対応する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ)
+    {X Y Z : ((freeResolution C).obj n).category} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    freeResolutionBlockEquiv C n X Z (f ≫ g) =
+      GeneratorBlocks.comp (freeResolutionGeneratorBase C n).weakEquivalences
+        (freeResolutionBlockEquiv C n X Y f) (freeResolutionBlockEquiv C n Y Z g) :=
+  freeResolutionBlockEquiv_comp C n f g
+
+-- 任意可換環の実際の DK 入力と既存の固定端点で、元の射自身を回収する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category)
+    (f : freeResolutionObject (BarrattEccles.cofibrantAlgebraRelativeCategory R) n X ⟶
+      freeResolutionObject (BarrattEccles.cofibrantAlgebraRelativeCategory R) n Y) :
+    (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _).symm
+      (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _ f) = f :=
+  (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _).symm_apply_apply f
