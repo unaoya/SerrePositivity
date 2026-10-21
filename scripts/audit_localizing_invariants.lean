@@ -139,7 +139,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceUnitSquare,
     `SerrePositivity.KST.LocalizingInvariants.FunctorSquareArrowFamily,
     `SerrePositivity.KST.LocalizingInvariants.ArrowFamilyRoundTrip,
-    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceUnitHomotopy]
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceUnitHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetHom,
+    `SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetConstants,
+    `SerrePositivity.KST.LocalizingInvariants.IntervalFunctorMapFromHom,
+    `SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetMapping,
+    `SerrePositivity.KST.LocalizingInvariants.TerminalTargetMapping,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoTargetMapping]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
