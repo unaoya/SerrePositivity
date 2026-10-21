@@ -1983,8 +1983,17 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `forwardTransfunctor/backwardTransfunctor` は元の相対図式の全作用素を束ねた係数
 （DK9.3・10.3）。全対象と全射の計算式も元の相対作用・境界作用へ戻る。
 任意可換環の実際の自由解像で、既存の同じ固定語の圏への全次数での一致も検証。
-単一列の離散 Hom への回収、元の全語の Grothendieck 分解と5.7、
-左 hammock 射と既存 Map^h の高次比較は未完成。
+元の全語の Grothendieck 分解と5.7、左 hammock 射全体と既存 Map^h の高次比較は未完成。
+`ForwardZigzag.discreteEquivalence` と `BackwardZigzag.nativeDiscreteEquivalence` は
+元の一列の圏と同じ両対象の元の Hom・指定部分圏の Hom の離散圏の同値。
+`DiscreteNerve.iso` と両 `graphValue/graphValue_weak` は全単体の実際の評価とその弱同値性。
+`SingleZigzagRelativeValue`・`BackwardZigzag.nativeValue_relative` は全相対関手と端点移送で自然。
+`FixedObjectDiagram.singleForwardDiagonalEvaluation_weak/singleBackwardDiagonalEvaluation_weak` は
+元の全相対図式の対角から固定 Hom への同じ比較射自身の弱同値性。
+`wordDiagonalAugmentation` は元の全語の対角の左射で、全単体で元の augmentation を回収。
+`freeWordDiagonalAugmentation_forward_weak/backward_weak` は既存の元の Hom augmentation と
+可換することから両単一列の左射自身の弱同値性。任意可換環の実際の cofibrant 代数でも検証。
+任意語の graph の分解と左射全体の弱同値性、Map^h の高次比較は引き続き未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
