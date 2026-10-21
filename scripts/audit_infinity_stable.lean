@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DeformationLocalization
+import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionRetract
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLocalization
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionCoherenceReflection
 import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedIsoAlgebra
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellComposite
 import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralComposition
@@ -4373,6 +4379,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DeformationLocalization,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionRetract,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLocalization,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionCoherenceReflection,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedIsoAlgebra,
 
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellComposite,
