@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomOne
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeAssociativityHomTransport
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomFactor
 
 /-!
 概要：全局所 Hom の結合共役の分類像は、既存の結合 Hom 輸送で元の分類作用へ戻る。
@@ -33,18 +32,10 @@ def cocartesianIsoTransportNativeHomTransportIso :
         ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap l)).obj
           ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p))
         ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap l)).obj
-          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q))) := by
-  have ht := cocartesianBaseChangeAssociativityHomSpanOne_trivialKanFibration l k p q
-  have hp := (isQCatEquivalence_of_trivialKanFibration
-    (cocartesianBaseChangeAssociativityHomSpanOne l k p q)).isFullyFaithful
-  have e := homSpanSectionTransportFactorIso
-    (cocartesianBaseChangeAssociativityHomSpanOne l k p q)
-    (cocartesianBaseChangeAssociativityHomSpanZero l k p q)
-    (cocartesianBaseChangeAssociativityHomSpanOneSection l k p q) hp
-    (cocartesianBaseChangeAssociativityHomSpanOneSection_projection l k p q)
-    (cocartesianIsoTransportNativeHomComparison l k p q)
-  rw [cocartesianIsoTransportNativeHomComparison_one,
-    cocartesianIsoTransportNativeHomComparison_zero] at e
-  exact e
+          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q))) :=
+  F2.functorIsoOfEq (cocartesianIsoTransportNativeHomFactorIso l k p q)
+    (congrArg (fun f ↦ f ≫ cocartesianBaseChangeAssociativityHomTransport l k p q)
+      (cocartesianIsoTransportNativeHomComparison_one l k p q))
+    (cocartesianIsoTransportNativeHomComparison_zero l k p q)
 
 end SerrePositivity.InfinityCategories

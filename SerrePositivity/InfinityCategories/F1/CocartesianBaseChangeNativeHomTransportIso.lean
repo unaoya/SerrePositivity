@@ -32,9 +32,8 @@ def cocartesianBaseChangeNativeHomTransportIso
         ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap l)).obj
           ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p))
         ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap l)).obj
-          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q))) := by
-  have e := cocartesianIsoTransportNativeHomTransportIso l k p q
-  rw [cocartesianIsoTransportNativeHomMap_eq] at e
-  exact e
+          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q))) :=
+  F2.functorIsoOfEq (cocartesianIsoTransportNativeHomTransportIso l k p q)
+    (by rw [cocartesianIsoTransportNativeHomMap_eq]) rfl
 
 end SerrePositivity.InfinityCategories
