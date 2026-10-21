@@ -5627,6 +5627,37 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.starEquiv,
       `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.star_bijective]
 
+@[noinline] private def e2RequiredBatch82 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.fiberSwap,
+      `SerrePositivity.EInfinity.Hammock.fiberSwap_apply,
+      `SerrePositivity.EInfinity.Hammock.fiberSwap_symm_apply,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.generatorPermutation,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.generatorPermutation_forward,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.generatorPermutation_backward,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.groupoidProjection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.groupoidProjection_generator,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.groupoidProjection_endpoint,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.root_groupoid_hom_nonempty,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.groupoid_hom_nonempty,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.groupoidHomUnique,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.groupoidProjection_faithful,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.groupoid_hom_unique,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.groupoid_isThin,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.LiftFiber,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.LiftStar,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.encodeStar,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.encodeStar_injective,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftFiberEquiv,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.permutationPrefunctor,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.permutationRepresentation,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.permutationRepresentation_generator,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.starRepresentation,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.starRepresentation_generator,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.starPermutation,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.starRepresentation_generator_inverse,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.starRepresentation_action,
+      `SerrePositivity.EInfinity.Hammock.groupoidPostcomposeEquiv]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5658,7 +5689,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -13526,4 +13557,56 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
     letI := FreeQuiverCover.quiver (Q := MarkedGenerators.quiver W) A
     (FreeQuiverCover.projection (Q := MarkedGenerators.quiver W) A).IsCovering :=
   FreeQuiverCover.projection_isCovering (Q := MarkedGenerators.quiver
+    (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
+
+-- 逆射を含む元の自由 groupoid の射影自身が忠実である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    (FreeQuiverCover.groupoidProjection A).Faithful :=
+  FreeQuiverCover.groupoidProjection_faithful A
+
+-- 元の全 groupoid 射について持ち上げ終点の式が成立する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    ∀ {x y : Quiver.FreeGroupoid (FreeQuiverCover.Vertex A)} (f : x ⟶ y),
+      x.as.path ≫ (FreeQuiverCover.groupoidProjection A).map f = y.as.path :=
+  FreeQuiverCover.groupoidProjection_endpoint A
+
+-- 元の置換作用は任意の持ち上げ射の右合成を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    ∀ (S : Quiver.FreeGroupoid (FreeQuiverCover.Vertex A)) {x y} (f : x ⟶ y) (h : S ⟶ x),
+      FreeQuiverCover.starPermutation A S f (FreeQuiverCover.encodeStar A S x h) =
+        FreeQuiverCover.encodeStar A S y (h ≫ f) :=
+  FreeQuiverCover.starRepresentation_action A
+
+-- 元の被覆の自由 groupoid は薄い。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    Quiver.IsThin (Quiver.FreeGroupoid (FreeQuiverCover.Vertex A)) :=
+  FreeQuiverCover.groupoid_isThin A
+
+-- 存在と一意性を局所選択できる。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    ∀ x y : Quiver.FreeGroupoid (FreeQuiverCover.Vertex A), Unique (x ⟶ y) :=
+  FreeQuiverCover.groupoidHomUnique A
+
+-- 任意可換環の実際の全自由次数の指定生成 quiver での忠実性。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    letI := FreeQuiverCover.quiver (Q := MarkedGenerators.quiver W) A
+    (FreeQuiverCover.groupoidProjection (Q := MarkedGenerators.quiver W) A).Faithful :=
+  FreeQuiverCover.groupoidProjection_faithful (Q := MarkedGenerators.quiver
     (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A

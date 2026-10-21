@@ -1704,6 +1704,15 @@ Map^h の高次比較・∞ 局所化の普遍性は後続。
 正向きの自由圏の関手と実際の射列の一意な持ち上げ・忠実性。
 元の全自由次数の指定生成 quiver へも代入して検証。根付き被覆の木性・被覆の元の hammock への
 持ち上げ・全指定自由圏の成分の可縮性・命題2.2の両弱比較は未完成。
+`FreeQuiverCover.groupoidProjection/groupoidProjection_endpoint` は元の自由 groupoid 間の
+射影と全射の終点の式。`fiberSwap/groupoidPostcomposeEquiv` と
+`LiftFiber/LiftStar/liftFiberEquiv/generatorPermutation` は持ち上げ射上の可逆な作用を構成する。
+`permutationRepresentation/starRepresentation/starPermutation/starRepresentation_action` は
+元の自由 groupoid の普遍性から全射の右合成を回収する。
+`groupoidProjection_faithful/groupoid_hom_unique/groupoid_isThin` は逆射を含む射影の忠実性と
+被覆側の自由 groupoid の薄さ。`root_groupoid_hom_nonempty/groupoid_hom_nonempty/groupoidHomUnique`
+は元の二頂点間の射の存在と一意性を提供する。任意可換環の実際の指定生成 quiver でも検証。
+木の組合せ的性質・固定端点の hammock の持ち上げ・成分の可縮性・両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
