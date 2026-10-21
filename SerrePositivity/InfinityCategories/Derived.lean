@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSignedCutComposition
+public import SerrePositivity.InfinityCategories.Derived.DGNerveCutInsertionReindex
+public import SerrePositivity.InfinityCategories.Derived.DGNerveCutSplitReindex
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutIntervalAlgebra
 public import SerrePositivity.InfinityCategories.Derived.DGNerveListCutSplit
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutSplit
