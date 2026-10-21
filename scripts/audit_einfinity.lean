@@ -4666,6 +4666,41 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.first_split_same_arrow,
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.first_split_unique]
 
+@[noinline] private def e2RequiredBatch58 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.category,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.forget,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.sourceEvaluation,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.targetEvaluation,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.prefixMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.residualMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.generatorMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.columnMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.prefixMap_mem,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.ColumnCut.columnMap_factorization,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowGenerator,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.fixedRowCut,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowCutDiagram,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowCutDiagram_forget,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowSource,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowTarget,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowPrefix,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowResidual,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowGeneratorMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowColumn,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowPrefix_mem,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowColumn_factorization,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowSource_eq,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowTarget_eq,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowSource_map_mem,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowTarget_map_mem,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut.toFirstCut,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut.ofFirstCut,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.fixedCut_ext,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.fixedCut_subsingleton,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut.square]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4697,7 +4732,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10813,3 +10848,80 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
     GeneratorWord.FirstCut
       (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         p := GeneratorWord.firstCut _ p hp
+
+-- Total 等式だけから固定生成矢での表示へ戻し、元の射列の因子化を保持する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y : C} {p : Quiver.Path X Y} (P : GeneratorWord.FirstCut W p)
+    {a : Quiver.Total C} (h : (⟨P.source, P.target, P.arrow⟩ : Quiver.Total C) = a) :
+    p = (GeneratorWord.FixedCut.ofFirstCut W P h).left.comp
+      (a.hom.toPath.comp (GeneratorWord.FixedCut.ofFirstCut W P h).right) :=
+  (GeneratorWord.FixedCut.ofFirstCut W P h).factorization
+
+-- 固定列の圏は元の縦射をすべてそのまま保持する。
+open CategoryTheory SerrePositivity.EInfinity in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (w : Hammock.Word) (X Y : Paths C) (i : Fin w.length)
+    (a : Quiver.Total C) (P Q : Hammock.UnmarkedGenerators.ColumnCut W w X Y i a)
+    (f : P.row ⟶ Q.row) :
+    (Hammock.UnmarkedGenerators.ColumnCut.forget W w X Y i a).map
+      (show P ⟶ Q from f) = f := rfl
+
+-- 自然変換として元の列を同じ生成矢を挟む三段の合成で回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (w : Word) (X Y : Paths C) (i : Fin w.length) (a : Quiver.Total C) :
+    UnmarkedGenerators.ColumnCut.prefixMap W w X Y i a ≫
+      UnmarkedGenerators.ColumnCut.generatorMap W w X Y i a ≫
+        UnmarkedGenerators.ColumnCut.residualMap W w X Y i a =
+          UnmarkedGenerators.ColumnCut.columnMap W w X Y i a :=
+  UnmarkedGenerators.ColumnCut.columnMap_factorization W w X Y i a
+
+-- 元の全行・全縦射は、固定生成矢で切った圏から忘却すると同じ関手に戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W.paths w X Y).obj n) (i : Fin w.length)
+    (h : UnmarkedGenerators.column W (τ.obj 0) i ≠ []) :
+    UnmarkedGenerators.rowCutDiagram W τ i h ⋙
+      UnmarkedGenerators.ColumnCut.forget W w X Y i (UnmarkedGenerators.rowGenerator W τ i h) = τ :=
+  UnmarkedGenerators.rowCutDiagram_forget W τ i h
+
+-- 接頭列と元の全縦射の指定性を保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W.paths w X Y).obj n) (i : Fin w.length)
+    (h : UnmarkedGenerators.column W (τ.obj 0) i ≠ [])
+    {j k : Fin (n.unop.len + 1)} (f : j ⟶ k) :
+    W.paths ((UnmarkedGenerators.rowPrefix W τ i h).app k) ∧
+      W.paths ((UnmarkedGenerators.rowSource W τ i h).map f) ∧
+        W.paths ((UnmarkedGenerators.rowTarget W τ i h).map f) :=
+  ⟨UnmarkedGenerators.rowPrefix_mem W τ i h k,
+    UnmarkedGenerators.rowSource_map_mem W τ i h f,
+      UnmarkedGenerators.rowTarget_map_mem W τ i h f⟩
+
+-- 任意可換環の元の全自由次数で、全行の元の列を同じ自然変換で回収する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
+    {w : Hammock.Word}
+    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (Hammock.graph ((freeResolution
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
+    (i : Fin w.length) (h : Hammock.UnmarkedGenerators.column
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        (τ.obj 0) i ≠ []) :
+    Hammock.UnmarkedGenerators.rowPrefix
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        τ i h ≫
+    Hammock.UnmarkedGenerators.rowGeneratorMap
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        τ i h ≫
+    Hammock.UnmarkedGenerators.rowResidual
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        τ i h =
+    Hammock.UnmarkedGenerators.rowColumn
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        τ i h := Hammock.UnmarkedGenerators.rowColumn_factorization
+          (freeResolutionGeneratorBase
+            (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ i h

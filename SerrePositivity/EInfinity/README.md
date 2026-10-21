@@ -1447,6 +1447,14 @@ hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較�
 `column_firstCut_square/column_firstCut_row` は元の全縦射・全行への代入。
 `rowFirstCut` は基準行の非空性だけから全行の切断を得る。後ろ向き列には切断は存在しない。
 任意可換環の元の全自由次数でも検証。固定生成矢での図式への整列・反復・積分解は後続。
+`GeneratorWord.FixedCut.ofFirstCut` は Total 等式から同じ固定生成矢の表示へ戻す。
+`FixedCut.square` は元の接頭列・残りの等式であり、追加の自然性は要求しない。
+`ColumnCut` の射は元の全縦射。`prefixMap/generatorMap/residualMap` は実際の自然変換で、
+`columnMap_factorization` は元の列の厳密な因子化。
+`rowCutDiagram` は元の全行を同じ生成矢で表示し、`rowCutDiagram_forget` は元の関手を回収。
+`rowPrefix/rowGeneratorMap/rowResidual` と `rowColumn_factorization` は全行の自然な因子化。
+`rowSource_eq/rowTarget_eq` は元の端点評価、接頭列・全縦射の指定性も保持する。
+任意可換環の実際の全自由次数でも検証。再添字・全語への両立と全体の積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

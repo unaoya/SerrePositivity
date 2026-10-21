@@ -1118,3 +1118,8 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.UnmarkedFirstCut
 public import SerrePositivity.EInfinity.SimplicialLocalization.UnmarkedPrefixLength
 public import SerrePositivity.EInfinity.SimplicialLocalization.UnmarkedSplitSquare
 public import SerrePositivity.EInfinity.SimplicialLocalization.UnmarkedSplitUnique
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFixedColumn
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFixedColumnFactorization
+public import SerrePositivity.EInfinity.Hammock.UnmarkedRowCutDiagram
+public import SerrePositivity.EInfinity.Hammock.UnmarkedRowFactorization
+public import SerrePositivity.EInfinity.SimplicialLocalization.UnmarkedFixedCut
