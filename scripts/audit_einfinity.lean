@@ -4322,6 +4322,55 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.originalFunctor_isWeakHomotopyEquivalence,
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.graphMap_isWeakHomotopyEquivalence]
 
+@[noinline] private def e2RequiredBatch50 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Word.BackwardBounds,
+      `SerrePositivity.EInfinity.Hammock.Word.exists_backwardBounds,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.leftLength,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.rightLength,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.prefixWord,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.suffixWord,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.coreWord,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.core_length,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.coreIndex,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.coreIndex_val,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.firstIndex,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.middleIndex,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.lastIndex,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.wholeWord,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.whole_length,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.core_direction,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.whole_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.middle_column_cast,
+      `SerrePositivity.EInfinity.Hammock.Word.paddedColumn,
+      `SerrePositivity.EInfinity.Hammock.Word.paddingFirstColumn,
+      `SerrePositivity.EInfinity.Hammock.Word.paddingLastColumn,
+      `SerrePositivity.EInfinity.Hammock.Word.paddingFirst_direction,
+      `SerrePositivity.EInfinity.Hammock.Word.paddingLast_direction,
+      `SerrePositivity.EInfinity.Hammock.Word.paddingFirst_lt,
+      `SerrePositivity.EInfinity.Hammock.Word.lt_paddingLast,
+      `SerrePositivity.EInfinity.Hammock.Word.paddedBackwardBounds,
+      `SerrePositivity.EInfinity.Hammock.erasureGraphMap_transport,
+      `SerrePositivity.EInfinity.Hammock.backwardColumnGraphMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.paddedErasedGraphMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.Word.paddedEraseMap,
+      `SerrePositivity.EInfinity.Hammock.Word.paddedEraseMap_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.paddedEraseMap_range,
+      `SerrePositivity.EInfinity.Hammock.Word.PaddedErasure.toErasedData,
+      `SerrePositivity.EInfinity.Hammock.Word.PaddedErasure.fromErasedData,
+      `SerrePositivity.EInfinity.Hammock.Word.PaddedErasure.eraseIso,
+      `SerrePositivity.EInfinity.Hammock.Word.PaddedErasure.eraseIso_hom_fac,
+      `SerrePositivity.EInfinity.Hammock.paddedBackwardInsertion_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.Word.isIso_of_bijective,
+      `SerrePositivity.EInfinity.Hammock.paddedBackwardEmbedding_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.paddedForwardDiagramMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.paddedForwardColimitMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.paddedThreeComparison_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.threeArrowPaddingComposite_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.paddingColimitMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.threeArrowGraphInclusion_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphInclusion_threeArrow_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4353,7 +4402,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10040,3 +10089,55 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (a b : Word) (n m : ℕ)
   dsimp only
   exact Context.Erasure.graphMap_isWeakHomotopyEquivalence a b n m X Y
     (BarrattEccles.mappingCofibrantFactorization R)
+
+-- 局所分解は元の全語そのものの等式であり、方向と中央列を保持する。
+open SerrePositivity.EInfinity.Hammock in
+example {w : Word} {p : Fin w.length} (h : Word.BackwardBounds w p) : h.wholeWord = w :=
+  h.whole_eq
+
+-- 元の一列の削除語を padding した写像自身の graph 比較。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) (w : Word) (p : Fin w.length)
+    (hp : w.direction p = .backward) :
+    IsWeakHomotopyEquivalence ((graphDiagram (weakEquivalences C) X Y).map
+      (Word.paddingFunctor.map (Word.eraseInclusion w p))) :=
+  paddedBackwardInsertion_isWeakHomotopyEquivalence X Y cof w p hp
+
+-- 元の自然変換は空の forward 部分語でも、各語の実際の成分で弱同値となる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) (w : Word) :
+    IsWeakHomotopyEquivalence
+      ((paddedForwardDiagramMap (graphDiagram (weakEquivalences C) X Y)).app w) :=
+  paddedForwardDiagramMap_isWeakHomotopyEquivalence X Y cof w
+
+-- 元の語が空でも、同じ元の自然変換の成分を扱う。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence
+      ((paddedForwardDiagramMap (graphDiagram (weakEquivalences C) X Y)).app Word.empty) :=
+  paddedForwardDiagramMap_isWeakHomotopyEquivalence X Y cof Word.empty
+
+-- 元の三列から元の全語の余極限への標準射自身は弱同値となる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence (graphInclusion (weakEquivalences C) X Y Word.threeArrow) :=
+  threeArrowGraphInclusion_isWeakHomotopyEquivalence X Y cof
+
+-- 任意可換環の元の Map^h の共通始域からの全語の余極限への右射も弱同値。
+open SerrePositivity.InfinityCategories SerrePositivity.EInfinity in
+example (R : Type e2ComplexLimitUniverse) [CommRing R]
+    (X Y : (BarrattEccles.operad R).Algebra) :
+    IsWeakHomotopyEquivalence (BarrattEccles.mappingSpaceHammockColimitNerveMap R X Y) :=
+  BarrattEccles.mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence R X Y

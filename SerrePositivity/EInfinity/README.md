@@ -1369,8 +1369,20 @@ nerve の反転性・弱ホモトピー同値性。同じ指定分解から、�
 `rightReplacementCompIso`・`unit` で第二の包含を反転し、第一の包含と合成する。
 `graphMap_isWeakHomotopyEquivalence` は任意の前後の語を持つ元の中央 backward 列の
 元の eraseInclusion の graph 写像自身の弱同値性。左右の長さ零も含む。
-padding された全語の列の分解と元の挿入への照合、全語の成分と三列の包含の
-弱同値性、DK Hom の高次比較は後続。局所の比較だけで全語の結論とはしない。
+`Word.BackwardBounds` は指定 backward 列の両隣の最も近い backward 境界。
+`whole_eq`・`middle_column_cast` は元の語と指定列を保つ厳密な局所分解。
+`paddedBackwardBounds` は padding の両端で必要な境界の存在を保証する。
+`paddedBackwardInsertion_isWeakHomotopyEquivalence` は元の padding.map eraseInclusion。
+`paddedBackwardEmbedding_isWeakHomotopyEquivalence` は backward 列だけを欠く任意の
+元の単射への有限挿入。`paddedForwardDiagramMap_isWeakHomotopyEquivalence` は元の
+自然変換の全成分、`paddedThreeComparison_isWeakHomotopyEquivalence` は proper 余極限
+による元の padded な三列の比較の弱同値性。
+`paddingColimitMap_isWeakHomotopyEquivalence` は元の左逆と全 Kan 標的への Hom の
+π₀ の全単射性から従う。任意の弱同値の anodyne 局所化後の可逆性は仮定しない。
+`threeArrowGraphInclusion_isWeakHomotopyEquivalence` は元の三列の標準射自身の弱同値性。
+`BarrattEccles.mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence` は任意可換環の
+元の Map^h の共通始域から元の全語の余極限への右射を同じ実モデルと分解で反転する。
+既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
