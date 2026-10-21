@@ -611,7 +611,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerActions,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerBase,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerActionNaturality,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerBaseNaturality]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerBaseNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleShiftActions,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorShiftElements,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorShiftAssociatorRight,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorShiftAssociatorLeft,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorShiftAssociatorMiddle,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorShiftCrossNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorShiftUnitors,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleShiftLaws,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleShift,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleShiftRestriction,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerRestrictionIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovShiftedLayer]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
