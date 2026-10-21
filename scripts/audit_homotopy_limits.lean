@@ -13653,3 +13653,25 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check SerrePositivity.InfinityCategories.HomotopyLimits.presheafEvaluationComparison_unit_square
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.presheafEvaluationComparison_unit_square
+#check @nativeCoconeIsoWholeEdge_isInvertible
+#print axioms nativeCoconeIsoWholeEdge_isInvertible
+#check @nativeCoconeIsoTopEdge_isInvertible
+#print axioms nativeCoconeIsoTopEdge_isInvertible
+#check @nativeCoconeIsoTopIso
+#print axioms nativeCoconeIsoTopIso
+#check @nativeCoconeIsoTopIso_hom
+#print axioms nativeCoconeIsoTopIso_hom
+#check @coconeStandardApexHom
+#print axioms coconeStandardApexHom
+#check @coconeStandardUnit_square
+#print axioms coconeStandardUnit_square
+#check @coconeStandardApexEdge
+#print axioms coconeStandardApexEdge
+#check @coconeStandardApexEdge_homMk
+#print axioms coconeStandardApexEdge_homMk
+#check @coconeStandardUnitCompositeIso
+#print axioms coconeStandardUnitCompositeIso
+#check @presheafCoconeStandardApexHom
+#print axioms presheafCoconeStandardApexHom
+#check @presheafCoconeStandardUnit_square
+#print axioms presheafCoconeStandardUnit_square
