@@ -1512,6 +1512,15 @@ prefix・残りの全単体作用素への整合は以下で完成。全語へ�
 `markedFunctor_simplex/markedSimplex_simplex` は実際の指定部分圏の W-hammock へも移す。
 端点と語の表示が異なる因子は異種等式、固定端点の refined 全図式・単体は厳密な等式。
 任意可換環の実際の全自由次数にも適用。語の作用・reduction・反復・積分解は後続。
+`Segment.forward_map_mem/forward_map_split_column/forward_path_map_mem_iff` は
+元の同方向区間の指定性・一列の前後での三分割・自由圏での指定性の逆向き。
+`column_wordAction_eq_nil_iff` は圧縮後の空文字列を元の fiber の全列で判定する。
+`firstColumn_wordAction` は元の最小非指定列の像を圧縮後の最小列へ厳密に照合する。
+`firstFiber_erasure_prefix/firstFiber_generator` はその像の列の最初の元の生成矢を保持。
+`firstColumn_generator_wordAction/rowGenerator_wordAction` は元の最小列の切断と
+実際の全語の図式の単体で選んだ同じ Total 生成矢を厳密に回収する。
+空 fiber の恒等列挿入・任意可換環の実際の全自由次数も検証。
+prefix・残りの同じ余極限の像の一致、reduction・反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
