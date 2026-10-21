@@ -4405,6 +4405,53 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockNerveMap_augmentation,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockNerveMap_isWeakHomotopyEquivalence]
 
+@[noinline] private def e2RequiredBatch52 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Zigzag.EndpointChange.obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.EndpointChange.map,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.EndpointChange.functor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.EndpointChange.functor_refl,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.EndpointChange.functor_comp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.fixedFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.fixedFunctor_id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.fixedFunctor_comp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.fixedFunctor_congr,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.zigzagDiagram,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.graphDiagram,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.wordAction_fixedObj_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.wordAction_fixedFunctor_eq,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.wordMap,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.categoryWordDiagram,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.graphWordDiagram,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.categoryAugmentation,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.categoryWordAugmentation,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.graphWordTarget,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.graphWordTarget_flip,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.graphWordAugmentation,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.graphAugmentation,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.hammockAugmentation,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor_obj_obj,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor_obj_map,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor_map_app,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalConstantIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObjectEquiv,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_naturality,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_generator,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockWordDiagram,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolution,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolution_obj,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGraphAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentation_fac,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonal,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonal_obj,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation_app,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction_fac]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4436,7 +4483,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10228,3 +10275,50 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R]
       (BarrattEccles.algebraHammockReductionIso R X Y).inv =
         BarrattEccles.mappingSpaceHammockColimitNerveMap R X Y :=
   BarrattEccles.mappingSpaceReducedHammockNerveMap_augmentation R X Y
+
+-- 元の自由相対解像の全作用素は、選んだ対象を元の等式で保存する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) {n m : SimplexCategoryᵒᵖ}
+    (θ : n ⟶ m) (X : C.category) :
+    ((freeResolution C).map θ).functor.obj (freeResolutionObject C n X) =
+      freeResolutionObject C m X := freeResolutionObject_naturality C θ X
+
+-- 局所化前の標準生成対象と同じ元の対象を全自由次数で回収する。
+open CategoryTheory Opposite SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (n : ℕ) (X : C.category) :
+    freeResolutionObject C (op (SimplexCategory.mk n)) X =
+      freeResolutionGeneratorObject C (n + 1) X := freeResolutionObject_generator C n X
+
+-- 元の全語の図式は空語の graph も各自由次数でそのまま保持する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
+    (n : SimplexCategoryᵒᵖ) :
+    ((freeHammockWordDiagram C X Y).obj Hammock.Word.empty).obj n =
+      Hammock.graph ((freeResolution C).obj n).weakEquivalences Hammock.Word.empty
+        (freeResolutionObject C n X) (freeResolutionObject C n Y) := rfl
+
+-- 対角の左射の各成分は、元の二重単体的 augmentation の同じ対角成分。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
+    (n : SimplexCategoryᵒᵖ) :
+    (freeHammockDiagonalAugmentation C X Y).app n =
+      ((freeHammockAugmentation C X Y).app n).app n :=
+  freeHammockDiagonalAugmentation_app C X Y n
+
+-- augmentation は元の任意の単体作用素に自然な、元の hammock への比較。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
+    {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
+    (freeHammockResolution C X Y).map θ ≫ (freeHammockAugmentation C X Y).app m =
+      (freeHammockAugmentation C X Y).app n ≫
+        ((Functor.const SimplexCategoryᵒᵖ).obj (Hammock.colimitGraph C.weakEquivalences X Y)).map θ :=
+  (freeHammockAugmentation C X Y).naturality θ
+
+-- 任意可換環の実際の既存の DK 入力に、同じ対角と reduced hammock への左射を代入。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R]
+    (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category) :
+    freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
+      Hammock.reducedSimplicialSet
+        (BarrattEccles.cofibrantAlgebraRelativeCategory R).weakEquivalences X Y :=
+  freeHammockDiagonalReduction (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y
