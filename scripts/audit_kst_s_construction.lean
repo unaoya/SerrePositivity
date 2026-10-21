@@ -23667,3 +23667,120 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_hom
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_hom
+
+#check @SerrePositivity.KST.SConstruction.PerfDGInput
+#print axioms SerrePositivity.KST.SConstruction.PerfDGInput
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputCoeSort
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputCoeSort
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputEnrichment
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputEnrichment
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputSmall
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputSmall
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputOf
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputOf
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputCategory
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputCategory
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputHomEquiv
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputHomEquiv
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputHomEquiv_comp
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputHomEquiv_comp
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputVertexEquiv
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputVertexEquiv
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputNativeEnrichment
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputNativeEnrichment
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputUnitHomEquiv
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputUnitHomEquiv
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputUnitHomEquiv_point
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputUnitHomEquiv_point
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputUnitHomEquiv_vertex
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputUnitHomEquiv_vertex
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputUnitHomEquiv_comp
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputUnitHomEquiv_comp
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputSimplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputSimplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputHom_kan
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputHom_kan
+
+#check @SerrePositivity.KST.SConstruction.kanSource_edge_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.kanSource_edge_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.kanSourceCoreMap
+#print axioms SerrePositivity.KST.SConstruction.kanSourceCoreMap
+
+#check @SerrePositivity.KST.SConstruction.kanSourceCoreMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.kanSourceCoreMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGQCat
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGQCat
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGQCat_obj_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGQCat_obj_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreFamilyMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreFamilyMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGQCatFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGQCatFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGQCatFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGQCatFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGQCatFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGQCatFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedFunctor_hom_recovery
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedFunctor_hom_recovery
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputInfinity
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputInfinity
+
+#check @SerrePositivity.KST.SConstruction.perfDGInputInfinity_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.perfDGInputInfinity_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGInfinityFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGInfinityFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGInfinityFunctor_vertex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGInfinityFunctor_vertex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGQCat_isStable
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGQCat_isStable
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGQCatEvaluationEquivalence
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGQCatEvaluationEquivalence
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedStableValue
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedStableValue
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedStableValue_carrier
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedStableValue_carrier
+
+#check @SerrePositivity.KST.SConstruction.PerfDGInput.mk
+#print axioms SerrePositivity.KST.SConstruction.PerfDGInput.mk
+
+#check @SerrePositivity.KST.SConstruction.PerfDGInput.category
+#print axioms SerrePositivity.KST.SConstruction.PerfDGInput.category
