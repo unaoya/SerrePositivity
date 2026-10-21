@@ -88,7 +88,7 @@
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
 - 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
 - 元の cocartesian Hom の scaffold 制限と strict transport の写像空間比較は同値。
-  元の Hom の core の同じ区間作用の同値性を仮定した接続は証明済み。入力は未証明で分類は未完了。
+  元の Hom の同じ区間作用は、同じ後合成 fiber 比較の同値性と必要十分。比較の同値性は未証明で分類は未完了。
 
 ### 次の一手
 
@@ -97,9 +97,9 @@
 同じ全 Hom 作用の同値性は、実際の固定成分比較 `cocartesianHomFixedComponentComparison` の
 全 fiber での同値性と同値。分類先の fiber の三辺固定 prism の厳密な往復と、二三角形への制限は完了。
 実際の外ホーン pullback、第一三角形制限の Kan 性、指定外ホーン fiber から元の Hom fiber への同値まで完了。
-元の比較の第一三角形全体は同じ指定合成に定値と証明し、`cocartesianHomFixedComponentOuterHornComparison` を構成済み。
-同じ全 Hom 作用の同値性は、この同じ指定外ホーン比較の全固定成分での同値性と同値。第二三角形への作用も保持。
-次は `cocartesianIntervalMappingFiberIso` の元の後合成 fiber と、同じ指定外ホーン fiber を同じ作用で比較して同値性を証明する。
+元の第一三角形は指定合成に定値。元の後合成 fiber からの同じ外ホーン比較を構成し、可変辺が標準 Hom 比較そのものと証明済み。
+合成三角形全体 `compositionCorrespondence` は Kan。第一辺射影は自明 Kan 同値で、同じ対角の Hom 評価も構成済み。
+次は `compositionCorrespondenceDiagonal` の外ホーン pullback 表示と Kan 性を証明し、coherent 合成族と fiber 比較を接続する。
 同じ主写像の充満忠実性・本質的全射性・一般の底への帰着は残る。正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
 ## 0. 目標と範囲

@@ -2004,3 +2004,25 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleFami
 public import SerrePositivity.InfinityCategories.F1.CocartesianFixedComponentCompositionFiber
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianOuterHornHomCriterion
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionFiber
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleComponent
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionOuterHorn
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionOuterHornFaces
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionHomCriterion
+
+public import SerrePositivity.InfinityCategories.F1.IntervalMappingFaceEndpoints
+
+public import SerrePositivity.InfinityCategories.F1.ComposableHomHorn
+
+public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondence
+
+public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceFaces
+
+public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexFaceCurry
+
+public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDiagonal
