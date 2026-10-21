@@ -2045,4 +2045,13 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionRe
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionReducedEvaluations
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionReducedLaws
 public import SerrePositivity.KST.SConstruction.SOneFamilyComparison
+public import SerrePositivity.KST.SConstruction.ExInfinityPointedFamilies
+public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionKanComparison
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionKanEquivalence
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionKanFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionKanUnit
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionPointedComparison
+public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformation
+public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationComponent
 /-! # ∞-S• 構成と連結 K 理論 -/
