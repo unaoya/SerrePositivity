@@ -1511,4 +1511,9 @@ public import SerrePositivity.KST.SConstruction.NecklaceInWedge
 public import SerrePositivity.KST.SConstruction.NecklaceWedgeVertices
 public import SerrePositivity.KST.SConstruction.NecklaceWedgePostcomposition
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalPostcomposition
+public import SerrePositivity.KST.SConstruction.NecklaceShapeEquality
+public import SerrePositivity.KST.SConstruction.NecklaceFirstBead
+public import SerrePositivity.KST.SConstruction.NecklacePreferredForm
+public import SerrePositivity.KST.SConstruction.NecklacePreferredCarrier
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeNonjoint
 /-! # ∞-S• 構成と連結 K 理論 -/
