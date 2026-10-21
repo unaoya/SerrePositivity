@@ -2198,7 +2198,14 @@ e の入口：`freeHammockDiagonalUnit` は各自由次数の元の空語の単�
 `localizationNerveSourceMap_precomposition` は全反転関手圏への前合成の厳密な因子化。
 `localizationNerveSourceMap_isLocalization_iff` は同じ写像の普遍性を元の hammock 側へ還元する。
 `cAlgLocalizationSource` は任意可換環の既存 CAlg_R への代入で、同じ反転・頂点比較を持つ。
-hammock 側の全 quasicategory 標的への前合成の普遍性は後続。
+`FrameHom.FrameArrows.identityDegreeAdjunction` は元の全矢 Comma(A,Id) の次数射影との随伴。
+`identityInclusion_nerve_isLeftCofinal` は元の nerve 写像自身の left cofinal 性。
+`elementsCostructuredEquivalence` は元の frame Hom の全単体・全作用素との照合。
+`augmentationFunctorIso` は元の augmentation を反転関手で送った一つの全関手同型。
+`cofibrantDKSourceFrame` は元の関手的 source frame を同じ cofibrant DK 圏へ持ち上げる。
+`cofibrantSourceFrameHomIso` は同じ元の sourceFrameHom との全次数の厳密な同型。
+`cofibrantSourceFrameTotal_hasLimit` は任意の元の擬同型反転関手の全 frame 矢図式の実極限存在。
+元の right Kan 形状への実比較・left cofinal 性・標準単位条件と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。

@@ -7773,6 +7773,50 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalization_vertexIso,
     `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_vertexIso]
 
+@[noinline] private def e2RequiredBatch132 : Array Lean.Name :=
+  #[
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrame,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrame_inclusion,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameAugmentation,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameAugmentation_weak,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrame_map_weak,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantDKSourceFrame,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantDKSourceFrame_map_weak,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameHomIso,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameHomIso_hom,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantDKSourceFrameAugmentation,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantDKSourceFrameAugmentation_weak,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameIndex_weaklyContractible,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameTotal_hasLimit,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationFunctorIso,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.target_hasLimit_of_inverting_augmentation,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.Total,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.degree,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.target,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.homEquiv,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityDegreeAdjunction,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion_degree,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion_target,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightLeg,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityCounit,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityCounit_left,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityCounit_right,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion_nerve_isLeftCofinal,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsToCostructured,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.costructuredToElements,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsCostructuredEquivalence,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.fixedTargetInclusion,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.fixedTargetInclusion_degree,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.fixedTargetInclusion_target,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsTotal,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsTotal_degree,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsTotal_target,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsTotal_rightLeg,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion_nerve_target,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.target_hasLimit_iff]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7805,7 +7849,7 @@ run_cmd do
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
-      e2RequiredBatch130, e2RequiredBatch131] do
+      e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18783,3 +18827,38 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
       (BarrattEccles.cAlgVertexEquiv A (BarrattEccles.cofibrantAlgebraDKObject A X)) :=
   BarrattEccles.cAlgLocalizationSource_vertexIso A (BarrattEccles.cofibrantAlgebraDKObject A X)
 end e2ExistingLocalizationSourceFixtures
+
+section e2SourceFrameTotalLimitFixtures
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open CategoryTheory Opposite SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.FrameHom.FrameArrows SerrePositivity.InfinityCategories
+open SerrePositivity.HomotopyFunctionComplex SerrePositivity.EInfinity.SimplicialLocalization
+open scoped Simplicial
+example {I C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} I]
+    [Category.{e2ComplexLimitUniverse} C] (D : I ⥤ C) : identityInclusion D ⊣ degree D :=
+  identityDegreeAdjunction D
+example {I C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} I]
+    [Category.{e2ComplexLimitUniverse} C] (D : I ⥤ C) :
+    IsLeftCofinal (nerveMap (identityInclusion D)) := identityInclusion_nerve_isLeftCofinal D
+example {C : Type (e2ComplexLimitUniverse + 1)} [Category.{e2ComplexLimitUniverse} C]
+    (D : SimplexCategory ⥤ C) (Y : C)
+    (s : (((cosimplicialHom D).obj Y).Elements)ᵒᵖ) :
+    (rightLeg D).app ((elementsTotal D Y).obj s) = s.unop.val :=
+  elementsTotal_rightLeg D Y s
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : BarrattEccles.CofibrantAlgebra A)
+    (n : AsSmall.{e2ComplexLimitUniverse + 1} SimplexCategory) :
+    (BarrattEccles.cofibrantAlgebraRelativeCategory A).weakEquivalences
+      ((BarrattEccles.cofibrantDKSourceFrameAugmentation A X).app n) :=
+  BarrattEccles.cofibrantDKSourceFrameAugmentation_weak A X n
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : BarrattEccles.CofibrantAlgebra A)
+    {E : SSet.{e2ComplexLimitUniverse + 1}} [SSet.Quasicategory E]
+    (F : nerve (BarrattEccles.cofibrantAlgebraRelativeCategory A).category ⟶ E)
+    (hF : InvertsEdges F (weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A))) :
+    HasLimit (nerveMap (target (BarrattEccles.cofibrantDKSourceFrame A X)) ≫ F) :=
+  BarrattEccles.cofibrantSourceFrameTotal_hasLimit A X F hF
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : BarrattEccles.CofibrantAlgebra A)
+    {n : ℕ} (f : (BarrattEccles.cofibrantSourceFrame A X).obj ⦋n⦌ ⟶ Y) :
+    (BarrattEccles.cofibrantSourceFrameHomIso A X Y).hom.app (op ⦋n⦌) f = f.hom :=
+  BarrattEccles.cofibrantSourceFrameHomIso_hom A X Y f
+end e2SourceFrameTotalLimitFixtures
