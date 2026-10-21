@@ -2563,3 +2563,20 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentPointwiseColimitCocone_vertex
 #check @SerrePositivity.InfinityCategories.F2.coherentPointwiseColimitVertexIso
 #check @SerrePositivity.InfinityCategories.F2.coherentCompletedLimit_iff_colimitFunctor
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFunctorEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeEdge_apex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeHomotopy_curry
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeHomotopy_restrict
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeTriangle_restrict
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeTriangle_apex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan_left
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan_right
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan_restrict
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan_apex
