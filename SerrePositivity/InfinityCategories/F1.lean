@@ -2293,3 +2293,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeH
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeProjection
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeSectionAction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeSectionPostHom
