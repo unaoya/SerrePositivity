@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveListCutProduct
+import SerrePositivity.InfinityCategories.Derived.DGNerveListCutLow
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutProduct
+import SerrePositivity.InfinityCategories.Derived.DGNerveListCutStep
+import SerrePositivity.InfinityCategories.Derived.DGTensorElementHEq
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutTerm
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCandidate
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorEmptyCut
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorEdge
 import SerrePositivity.InfinityCategories.Derived.DGTensorElementCalculus
 import SerrePositivity.InfinityCategories.Derived.ComplexTensorBoundary
 import SerrePositivity.InfinityCategories.Derived.DGTensorBoundary
@@ -3147,6 +3156,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveListCutProduct,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveListCutLow,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutProduct,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveListCutStep,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorElementHEq,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutTerm,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorCandidate,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorEmptyCut,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorEdge,
+
     `SerrePositivity.InfinityCategories.Derived.DGTensorElementCalculus,
     `SerrePositivity.InfinityCategories.Derived.ComplexTensorBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGTensorBoundary,
