@@ -357,4 +357,18 @@ public import SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitImage
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCofiberSecond
 
+public import SerrePositivity.KST.LocalizingInvariants.RelativeBoundaryInvertibility
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.CofiberFamilyPrecomposition
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientLegComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientValueSquare
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientValueCone
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
