@@ -2779,3 +2779,9 @@ public import SerrePositivity.InfinityCategories.F1.ScaffoldNerveBridgeTriangles
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldBridgeRestriction
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldBridgeCoreRestriction
+
+public import SerrePositivity.InfinityCategories.F1.ScaffoldBridgeOverPushout
+
+public import SerrePositivity.InfinityCategories.F1.ScaffoldBridgeHomPullbacks
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldBridgeSourceSegal
