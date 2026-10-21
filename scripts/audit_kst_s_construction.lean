@@ -23274,3 +23274,99 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_right_unitor
 #print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_right_unitor
+
+#check @SerrePositivity.KST.SConstruction.dgStandardTopEval_post
+#print axioms SerrePositivity.KST.SConstruction.dgStandardTopEval_post
+
+#check @SerrePositivity.KST.SConstruction.dgStandardCubeFlag_post
+#print axioms SerrePositivity.KST.SConstruction.dgStandardCubeFlag_post
+
+#check @SerrePositivity.KST.SConstruction.dgStandardCubeEvaluation_post
+#print axioms SerrePositivity.KST.SConstruction.dgStandardCubeEvaluation_post
+
+#check @SerrePositivity.KST.SConstruction.dgStandardCoherentCubeHom_post
+#print axioms SerrePositivity.KST.SConstruction.dgStandardCoherentCubeHom_post
+
+#check @SerrePositivity.KST.SConstruction.dgStandardCoherentCubeComponent_post
+#print axioms SerrePositivity.KST.SConstruction.dgStandardCoherentCubeComponent_post
+
+#check @SerrePositivity.KST.SConstruction.dgStandardCoherentCubeComponentAt_post
+#print axioms SerrePositivity.KST.SConstruction.dgStandardCoherentCubeComponentAt_post
+
+#check @SerrePositivity.KST.SConstruction.dgStandardCoherentSimplexData_post
+#print axioms SerrePositivity.KST.SConstruction.dgStandardCoherentSimplexData_post
+
+#check @SerrePositivity.KST.SConstruction.dgStandardCoherentSimplex_post
+#print axioms SerrePositivity.KST.SConstruction.dgStandardCoherentSimplex_post
+
+#check @SerrePositivity.KST.SConstruction.dgCoherentComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgCoherentComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeMappingSpace
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeMappingSpace
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeMappingSpace_kan
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeMappingSpace_kan
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeMappingPost
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeMappingPost
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison_post
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison_post
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeMappingPre
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeMappingPre
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison_pre
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison_pre
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeTensorMappingSpace
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeTensorMappingSpace
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeTensorMappingSpace_kan
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeTensorMappingSpace_kan
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorTensorMappingNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorTensorMappingNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeMappingHorizontal
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeMappingHorizontal
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison_horizontal
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison_horizontal
+
+#check @SerrePositivity.KST.SConstruction.dgNerveCoreTensor
+#print axioms SerrePositivity.KST.SConstruction.dgNerveCoreTensor
+
+#check @SerrePositivity.KST.SConstruction.dgNerveCoreTensor_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgNerveCoreTensor_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgNerveCoreTensor_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgNerveCoreTensor_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgNerveCoreTensor_associativity
+#print axioms SerrePositivity.KST.SConstruction.dgNerveCoreTensor_associativity
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeMappingVertex
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeMappingVertex
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorMappingNativeComparison_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeTensorComparison
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeTensorComparison
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposition
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposition
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorMappingTensorNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorMappingTensorNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorMappingTensorNativeComparison_composition
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorMappingTensorNativeComparison_composition

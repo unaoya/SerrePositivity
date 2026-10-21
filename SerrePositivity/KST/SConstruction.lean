@@ -1907,4 +1907,9 @@ public import SerrePositivity.KST.SConstruction.DGNerveTensorAssociativity
 public import SerrePositivity.KST.SConstruction.CubicalLambdaNerveUnits
 public import SerrePositivity.KST.SConstruction.DGNerveTensorUnits
 public import SerrePositivity.KST.SConstruction.DGNerveTensorSimplex
+public import SerrePositivity.KST.SConstruction.DGStandardCubeNaturality
+public import SerrePositivity.KST.SConstruction.DGCoherentComparisonNaturality
+public import SerrePositivity.KST.SConstruction.DGFunctorNativeMappingComparison
+public import SerrePositivity.KST.SConstruction.DGNerveTensorCore
+public import SerrePositivity.KST.SConstruction.DGFunctorNativeComposition
 /-! # ∞-S• 構成と連結 K 理論 -/
