@@ -1713,6 +1713,17 @@ Map^h の高次比較・∞ 局所化の普遍性は後続。
 被覆側の自由 groupoid の薄さ。`root_groupoid_hom_nonempty/groupoid_hom_nonempty/groupoidHomUnique`
 は元の二頂点間の射の存在と一意性を提供する。任意可換環の実際の指定生成 quiver でも検証。
 木の組合せ的性質・固定端点の hammock の持ち上げ・成分の可縮性・両弱比較は未完成。
+`QuiverTree.evaluation/detector/labelValue/path_label/every_edge_in_tree` は対称化した全域木の
+木の外の生成辺を整数群で検出し、自由 groupoid が薄い場合に全辺の木への所属を証明する。
+`rootPath/height/height_arrow/height_eq_zero_iff/parent_exists/incoming_unique` は元の根からの
+射列と高さ・親の存在・入る辺の一意性。`edge_height/edge_toward_higher/higher_incoming_unique`
+は全生成辺の高さの差と高い頂点へ入る元の対称生成辺の一意性を保持する。
+`IsLeafIn/exists_finite_leaf/exists_nonroot_finite_leaf` は任意の有限頂点集合の葉を選ぶ。
+`FreeQuiverCover.spanningTree/every_edge_in_spanningTree/treeHeight/edge_treeHeight` と
+`higher_incoming_unique/exists_finite_leaf/exists_nonroot_finite_leaf` はこれらを元の被覆の
+証明済みの連結性・薄さへ代入する。根以外があれば根以外の葉を選べる。
+任意可換環の実際の全自由次数の指定生成 quiver でも全生成辺の木への所属を検証。
+有限部分木の葉の除去を使う hammock の変形・成分可縮性・両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

@@ -1379,3 +1379,13 @@ public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverLiftFibers
 public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverPermutationRepresentation
 public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverStarAction
 public import SerrePositivity.EInfinity.Hammock.GroupoidPostcomposeEquiv
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverFiniteLeaf
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverSpanningTree
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverTreeHeight
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeDetector
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeEvaluation
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeExhaustion
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeFiniteLeaf
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeHeight
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeLeaf
+public import SerrePositivity.EInfinity.Hammock.QuiverTreePathLabel

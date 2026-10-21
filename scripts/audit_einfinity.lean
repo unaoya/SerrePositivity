@@ -5658,6 +5658,55 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.starRepresentation_action,
       `SerrePositivity.EInfinity.Hammock.groupoidPostcomposeEquiv]
 
+@[noinline] private def e2RequiredBatch83 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FreeQuiverCover.spanningTree_root,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.treeHeight_root,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.exists_finite_leaf,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.exists_nonroot_finite_leaf,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.rootedSymmetricConnected,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.spanningTree,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.spanningTreeArborescence,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.every_edge_in_spanningTree,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.treeHeight,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.edge_treeHeight,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.higher_incoming_unique,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.edgeInTree,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.edgeLabel,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.detectorPrefunctor,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.detector,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.labelValue,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.labelValue_generator,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.labelValue_id,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.labelValue_comp,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.labelValue_inv,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.edgeLabel_of_mem,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.inclusion,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.evaluation,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.evaluation_positive,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.evaluation_negative,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.labelValue_eq_one,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.every_edge_in_tree,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.IsLeafIn,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.leaf_of_max_height,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.exists_finite_leaf,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.exists_nonroot_finite_leaf,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.rootPath,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.height,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.height_root,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.height_arrow,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.height_eq_zero_iff,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.parent_exists,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.incoming_unique,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.positive_height,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.negative_height,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.edge_height,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.no_loop,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.edge_toward_higher,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.higher_incoming_unique,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.path_label,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.rootHom,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.rootHom_label]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5689,7 +5738,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -13609,4 +13658,60 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
     letI := FreeQuiverCover.quiver (Q := MarkedGenerators.quiver W) A
     (FreeQuiverCover.groupoidProjection (Q := MarkedGenerators.quiver W) A).Faithful :=
   FreeQuiverCover.groupoidProjection_faithful (Q := MarkedGenerators.quiver
+    (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
+
+-- 元の被覆の全生成辺が正逆どちらかで測地木に属する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    ∀ {x y : FreeQuiverCover.Vertex A} (f : x ⟶ y),
+      f.toPos ∈ FreeQuiverCover.spanningTree A x y ∨
+        f.toNeg ∈ FreeQuiverCover.spanningTree A y x :=
+  FreeQuiverCover.every_edge_in_spanningTree A
+
+-- 元の生成辺の両端の高さは一つ違う。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    ∀ {x y : FreeQuiverCover.Vertex A} (_ : x ⟶ y),
+      FreeQuiverCover.treeHeight A y = FreeQuiverCover.treeHeight A x + 1 ∨
+        FreeQuiverCover.treeHeight A x = FreeQuiverCover.treeHeight A y + 1 :=
+  FreeQuiverCover.edge_treeHeight A
+
+-- 高い頂点へ入る元の対称生成辺そのものが一意。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    letI := FreeQuiverCover.quiver A
+    ∀ {x y z : Quiver.Symmetrify (FreeQuiverCover.Vertex A)} (e : x ⟶ z) (f : y ⟶ z),
+      FreeQuiverCover.treeHeight A x ≤ FreeQuiverCover.treeHeight A z →
+        FreeQuiverCover.treeHeight A y ≤ FreeQuiverCover.treeHeight A z → x = y ∧ HEq e f :=
+  FreeQuiverCover.higher_incoming_unique A
+
+-- 根以外を含む任意の有限頂点集合から根以外の葉を選べる。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (S : Finset (FreeQuiverCover.Vertex A)) (hS : ∃ x ∈ S, x ≠ FreeQuiverCover.root A) :
+    letI := FreeQuiverCover.quiver A
+    ∃ z ∈ S, z ≠ FreeQuiverCover.root A ∧ QuiverTree.IsLeafIn S z :=
+  FreeQuiverCover.exists_nonroot_finite_leaf A S hS
+
+-- 測地木の根の元の高さも零として回収する。
+open SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    FreeQuiverCover.treeHeight A (FreeQuiverCover.root A) = 0 := FreeQuiverCover.treeHeight_root A
+
+-- 任意可換環の実際の全自由次数の指定生成 quiver の全辺へ代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    letI := FreeQuiverCover.quiver (Q := MarkedGenerators.quiver W) A
+    ∀ {x y : FreeQuiverCover.Vertex (Q := MarkedGenerators.quiver W) A} (f : x ⟶ y),
+      f.toPos ∈ FreeQuiverCover.spanningTree (Q := MarkedGenerators.quiver W) A x y ∨
+        f.toNeg ∈ FreeQuiverCover.spanningTree (Q := MarkedGenerators.quiver W) A y x :=
+  FreeQuiverCover.every_edge_in_spanningTree (Q := MarkedGenerators.quiver
     (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
