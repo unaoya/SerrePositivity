@@ -7679,6 +7679,54 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHigherPiZeroEquiv_class,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraKanDKHigherPiZeroEquiv_class]
 
+@[noinline] private def e2RequiredBatch129 : Array Lean.Name :=
+  #[
+      `SerrePositivity.EInfinity.Hammock.Relative.fixedColimitMap_unit_point,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolution_map,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalUnit,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalUnit_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalUnit_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.HammockObjects,
+      `SerrePositivity.EInfinity.SimplicialLocalization.hammockEnrichedCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockEnrichedCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentationEnriched,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockComparisonEnriched,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentationEnriched_map,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockComparisonEnriched_map,
+      `SerrePositivity.EInfinity.Hammock.exInfinityEnrichedFunctor,
+      `SerrePositivity.EInfinity.Hammock.exInfinityEnrichedFunctor_map,
+      `SerrePositivity.EInfinity.Hammock.exInfinityTransportHom_kanComplex,
+      `SerrePositivity.EInfinity.SimplicialLocalization.KanHammockObjects,
+      `SerrePositivity.EInfinity.SimplicialLocalization.KanFreeHammockObjects,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonEnriched,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonEnriched_map,
+      `SerrePositivity.EInfinity.Hammock.exInfinity_map_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonEnriched_map_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map_equivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonEnriched_map_equivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.KanHammockCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.KanFreeHammockCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSimplicialCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockSimplicialCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHom_kanComplex,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockHom_kanComplex,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockNerve,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockNerve,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockNerve_quasicategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockNerve_quasicategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationNerve,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonNerve,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationNerve_fullyFaithful,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonNerve_fullyFaithful,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationNerve_equivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonNerve_equivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7710,7 +7758,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18602,3 +18650,29 @@ example (f : X ⟶ Y) : cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
     mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) :=
   cofibrantAlgebraKanDKHigherPiZeroEquiv_class A f
 end e2DKHigherComponentsAgreementFixtures
+
+section e2KanHammockNerveFixtures
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+variable (C : RelativeCategory.{e2ComplexLimitUniverse})
+example (X : C.category) : freeHammockDiagonalUnit C X ≫
+    freeHammockDiagonalAugmentation C X X = Hammock.colimitUnit C.weakEquivalences X :=
+  freeHammockDiagonalUnit_augmentation C X
+example (X : C.category) : freeHammockDiagonalUnit C X ≫
+    freeHammockDiagonalComparison C X X = localizationIdentity C X :=
+  freeHammockDiagonalUnit_comparison C X
+example (X Y : KanFreeHammockObjects C) : (kanFreeHammockComparisonEnriched C).map X Y =
+    exInfinity.map (freeHammockDiagonalComparison C X Y) :=
+  kanFreeHammockComparisonEnriched_map C X Y
+example : IsQCatEquivalence (kanFreeHammockAugmentationNerve C) :=
+  kanFreeHammockAugmentationNerve_equivalence C
+example (A : Type e2ComplexLimitUniverse) [CommRing A] :
+    IsQCatEquivalence (show kanFreeHammockNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A) ⟶
+        BarrattEccles.CAlg_R A from
+      kanFreeHammockComparisonNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
+  kanFreeHammockComparisonNerve_equivalence (BarrattEccles.cofibrantAlgebraRelativeCategory A)
+example {K L : SSet.{e2ComplexLimitUniverse}} (f : K ⟶ L) (hf : IsWeakHomotopyEquivalence f) :
+    IsWeakHomotopyEquivalence (exInfinity.map f) := Hammock.exInfinity_map_weak f hf
+end e2KanHammockNerveFixtures

@@ -2177,7 +2177,17 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 実 raw/Kan DK Hom と元の Map^h の同じ高次比較が誘導する π₀ 同値と、保存済みの同値の一致。
 両 `_class` は元の代数射から作った同じ類を回収する。Kan 版の `_unit` は元の Ex∞ 単位を保持。
 γ2 d の左右比較射の弱同値性・実 DK/Map^h 高次比較・元の前後作用の自然性と π₀ 正規化は完成。
-∞ 局所化の普遍性（e）は後続。
+e の入口：`freeHammockDiagonalUnit` は各自由次数の元の空語の単位。
+`freeHammockDiagonalUnit_augmentation/freeHammockDiagonalUnit_comparison` は同じ実単位を保存する。
+`FreeHammockObjects/HammockObjects` は元の対象と Hom・単位・合成の実豊穣圏。
+`freeHammockAugmentationEnriched/freeHammockComparisonEnriched` は元の左右射の実豊穣関手。
+`exInfinityEnrichedFunctor` と `kanFreeHammockAugmentationEnriched/kanFreeHammockComparisonEnriched`
+は同じ Ex∞ を全 Hom 射へ適用し、元の単位・合成を保存する。
+`exInfinity_map_weak` は元の Ex∞ 単位と二つから三つ目の性質による弱同値保存。
+`kanFreeHammockAugmentationNerve_equivalence/kanFreeHammockComparisonNerve_equivalence`
+は元の Kan 自由 hammock から Kan hammock nerve と既存 localizationNerve への実圏同値。
+全豊穣 Hom 上の同値と元の対象写像を保つ。
+元の通常圏からの局所化関手・弱同値の反転・全 quasicategory 標的への前合成の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。
