@@ -1620,4 +1620,11 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionCoordinate
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetErase
 public import SerrePositivity.KST.SConstruction.SimplexSubsetCubicalInclusion
 public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaInclusion
+public import SerrePositivity.KST.SConstruction.ConcreteCubeZeroFaceCriterion
+public import SerrePositivity.KST.SConstruction.SimplexSubsetNonjointInclusion
+public import SerrePositivity.KST.SConstruction.SimplexSubsetCoordinateInclusion
+public import SerrePositivity.KST.SConstruction.SimplexSubsetEraseCoordinates
+public import SerrePositivity.KST.SConstruction.SimplexSubsetEraseZeroFace
+public import SerrePositivity.KST.SConstruction.SimplexSubsetEraseNormalizedFace
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaEraseFace
 /-! # ∞-S• 構成と連結 K 理論 -/
