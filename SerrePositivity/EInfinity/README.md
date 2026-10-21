@@ -1794,7 +1794,21 @@ hammock のホモトピーへの移送・成分可縮性・命題2.2の両弱比
 と `precompose_forward_isWeakHomotopyEquivalence/precompose_backward_isWeakHomotopyEquivalence`
 は同じ元の四作用の弱同値性を Kan 標的によって検出する。始終域の Kan 性・モデル構造は不要。
 四作用・実際のホモトピー・任意可換環の元の自由解像の全次数でも検証。
-相対自然変換による全語の比較・成分可縮性・命題2.2の両弱比較は未完成。
+相対自然変換による全語の比較は下記の通り完成。成分可縮性・命題2.2の両弱比較は未完成。
+`RelativeNatural.movingHom` は元の自然変換の全成分を全列・全縦射の比較へ移す。
+`beforeRow/afterRow/beforeFunctor/afterFunctor/component/natTrans` は元の
+[id,F(S),ηY]→[ηX,G(S),id] の固定端点の自然変換。
+`component_naturality/beforeRow_wordAction/afterRow_wordAction/component_wordAction` と
+`beforeFunctor_wordAction/afterFunctor_wordAction` は元の全縦射・全語での厳密な整合。
+`graphHomotopy/fixedWordHomotopy/fixedWordHomotopy_wordAction` は同じ区間関手による
+全単体のホモトピーと全語への整合。
+`beforeMap_recovery/afterMap_recovery/colimitHomotopyMap_fac/homotopy` は元の全語の
+余極限上で postηY∘H_F と preηX∘H_G を結び、全標準射と元の既存の両端を回収する。
+`homotopy_weak_iff` と四作用の弱同値性から `RelativeNatural.weak_iff` を得る。
+`LeafDeletion.collapseRelative/collapse_colimitMap_isWeakHomotopyEquivalence` は
+葉を除去して戻す合成を元の全端点の hammock 上の弱同値へ移す。葉が端点でも除外しない。
+空語・全語の元の標準射・任意可換環の実際の全自由次数でも検証。
+葉の除去と包含自体の各弱比較・有限木と全被覆の可縮性・命題2.2の両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

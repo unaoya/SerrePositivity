@@ -6025,6 +6025,73 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.rowHomotopyMap_one,
       `SerrePositivity.EInfinity.Hammock.rowHomotopy]
 
+@[noinline] private def e2RequiredBatch90 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.homotopy_weak_iff,
+      `SerrePositivity.EInfinity.Hammock.NerveHomotopyOperations.interval_congr,
+      `SerrePositivity.EInfinity.Hammock.NerveHomotopyOperations.hom_congr,
+      `SerrePositivity.EInfinity.Hammock.NerveHomotopyOperations.interval_whiskerLeft,
+      `SerrePositivity.EInfinity.Hammock.NerveHomotopyOperations.interval_whiskerRight,
+      `SerrePositivity.EInfinity.Hammock.NerveHomotopyOperations.hom_whiskerLeft,
+      `SerrePositivity.EInfinity.Hammock.NerveHomotopyOperations.hom_whiskerRight,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapseRelative,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_colimitMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.intervalCocone,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.colimitHomotopyMap,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.colimitHomotopyMap_fac,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.colimitHomotopyMap_zero,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.colimitHomotopyMap_one,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.homotopy,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.beforeFunctor,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.afterFunctor,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.beforeFunctor_obj,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.afterFunctor_obj,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.natTrans,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.graphHomotopy,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.beforeMap,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.afterMap,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.fixedWordHomotopy,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.beforeMap_recovery,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.afterMap_recovery,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.component_heq,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.movingHom,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.movingHom_first,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.movingHom_last,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.movingHom_naturality,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.component_naturality,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.beforeRow,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.afterRow,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.leftEdge,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.rightEdge,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.innerHom,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.innerHom_first,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.innerHom_last,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.component,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.weak_iff,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.wordAction_map_heq,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.movingHom_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.innerHom_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.component_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.paired_comp_product,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.comp_paired,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.comp_constant,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.paired_comp_product_assoc,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.comp_paired_assoc,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.beforeFunctor_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.afterFunctor_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.graphHomotopy_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.fixedWordHomotopy_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.wordFunctor,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.beforeRow_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RelativeNatural.afterRow_wordAction,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.map_square,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.ofHom_first,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.ofHom_last,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.ofHom_append,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.hext,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.app_heq_of_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.append_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingHom.wordAction_id_heq]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6056,7 +6123,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -14469,3 +14536,81 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
     WeakArrow.postcompose_backward_isWeakHomotopyEquivalence g hg A,
     WeakArrow.precompose_forward_isWeakHomotopyEquivalence g hg A,
     WeakArrow.precompose_backward_isWeakHomotopyEquivalence g hg A⟩
+
+-- 元の端点移動を含む全語の余極限上のホモトピー。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
+    {V : MorphismProperty D} [V.IsMultiplicative] {F G : LocalizerMorphism W V}
+    (η : F.functor ⟶ G.functor) (hη : ∀ X, V (η.app X)) (X Y : C) :
+    Nonempty (SSet.Homotopy
+      (Relative.colimitMap F X Y ≫
+        postcomposePointMap (F.functor.obj X) (arrowMap V (η.app Y)))
+      (Relative.colimitMap G X Y ≫
+        precomposePointMap (arrowMap V (η.app X)) (G.functor.obj Y))) :=
+  ⟨RelativeNatural.homotopy η hη X Y⟩
+
+-- 元の二つの比較射の弱同値性が同値となる。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
+    {V : MorphismProperty D} [V.IsMultiplicative] {F G : LocalizerMorphism W V}
+    (η : F.functor ⟶ G.functor) (hη : ∀ X, V (η.app X)) (X Y : C) :
+    IsWeakHomotopyEquivalence (Relative.colimitMap F X Y) ↔
+      IsWeakHomotopyEquivalence (Relative.colimitMap G X Y) := RelativeNatural.weak_iff η hη X Y
+
+-- 全語の元の標準射と区間を保持した回収式。
+open CategoryTheory CategoryTheory.MonoidalCategory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
+    {V : MorphismProperty D} [V.IsMultiplicative] {F G : LocalizerMorphism W V}
+    (η : F.functor ⟶ G.functor) (hη : ∀ X, V (η.app X)) (X Y : C) (w : Word) :
+    (graphInclusion W X Y w ▷
+      SSet.stdSimplex.{e2ComplexLimitUniverse}.obj (SimplexCategory.mk 1)) ≫
+        (RelativeNatural.homotopy η hη X Y).h =
+          (RelativeNatural.fixedWordHomotopy η hη w X Y).h :=
+  RelativeNatural.colimitHomotopyMap_fac η hη X Y w
+
+-- 空語を含め同じ元の固定語の比較を供給する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
+    {V : MorphismProperty D} [V.IsMultiplicative] {F G : LocalizerMorphism W V}
+    (η : F.functor ⟶ G.functor) (hη : ∀ X, V (η.app X)) (X Y : C) :
+    Nonempty (SSet.Homotopy (RelativeNatural.beforeMap η Word.empty X Y)
+      (RelativeNatural.afterMap η Word.empty X Y)) :=
+  ⟨RelativeNatural.fixedWordHomotopy η hη Word.empty X Y⟩
+
+-- 葉が元の端点である場合も除外しない合成関手の弱同値性。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    {T : WideSubquiver (Quiver.Symmetrify Q)} [Quiver.Arborescence T]
+    {S : Finset Q} (D : QuiverTree.LeafDeletion T S) :
+    letI := FiniteQuiver.quiver S
+    ∀ x y : Paths (FiniteQuiver.Vertex S),
+      IsWeakHomotopyEquivalence (Relative.colimitMap D.collapseRelative x y) :=
+  D.collapse_colimitMap_isWeakHomotopyEquivalence
+
+-- 任意可換環の実際の全自由次数で同じ葉の合成の弱同値性を検査。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    let Q := MarkedGenerators.quiver W
+    ∀ (S : Finset (FreeQuiverCover.Vertex (Q := Q) A))
+      (hne : ∃ x ∈ S, x ≠ FreeQuiverCover.root (Q := Q) A),
+    letI := FreeQuiverCover.quiver (Q := Q) A
+    letI := FreeQuiverCover.spanningTreeArborescence (Q := Q) A
+    let D := FreeQuiverCover.finiteHullLeafDeletion (Q := Q) A S hne
+    letI := FiniteQuiver.quiver (FreeQuiverCover.finiteHull (Q := Q) A S)
+    ∀ x y : Paths (FiniteQuiver.Vertex (FreeQuiverCover.finiteHull (Q := Q) A S)),
+      IsWeakHomotopyEquivalence (Relative.colimitMap D.collapseRelative x y) := by
+  intro C W Q S hne
+  let := FreeQuiverCover.quiver (Q := Q) A
+  let := FreeQuiverCover.spanningTreeArborescence (Q := Q) A
+  exact QuiverTree.LeafDeletion.collapse_colimitMap_isWeakHomotopyEquivalence
+    (FreeQuiverCover.finiteHullLeafDeletion (Q := Q) A S hne)
