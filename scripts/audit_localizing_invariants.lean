@@ -192,7 +192,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LocalizationHoPrecomposition,
     `SerrePositivity.KST.LocalizingInvariants.LocalizationHoFactorization,
     `SerrePositivity.KST.LocalizingInvariants.LocalizationHomotopyCategory,
-    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientFractions]
+    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientFractions,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowIsoRealization,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowEssentialSurjectivity,
+    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientArrow]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
