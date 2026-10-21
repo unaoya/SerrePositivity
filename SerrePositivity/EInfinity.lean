@@ -1518,3 +1518,12 @@ public import SerrePositivity.EInfinity.Hammock.RootedFiniteProjection
 public import SerrePositivity.EInfinity.Hammock.RootedFiniteSimplexLift
 public import SerrePositivity.EInfinity.Hammock.RootedFiniteWordAction
 public import SerrePositivity.EInfinity.Hammock.WeakFiniteSubsetColimit
+public import SerrePositivity.EInfinity.Hammock.AllMarkedEvaluationWeak
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverEvaluationWeak
+public import SerrePositivity.EInfinity.Hammock.HammockValueRelative
+public import SerrePositivity.EInfinity.Hammock.TopEquivalenceWeak
+public import SerrePositivity.EInfinity.Hammock.ValueSupportDiagram
+public import SerrePositivity.EInfinity.Hammock.ValueSupportFiniteWeak
+public import SerrePositivity.EInfinity.Hammock.ValueSupportSingletonWeak
+public import SerrePositivity.EInfinity.Hammock.ValueSupportSubcomplex
+public import SerrePositivity.EInfinity.Hammock.ValueSupportWeak

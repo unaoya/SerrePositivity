@@ -1848,6 +1848,17 @@ filtered 余極限へ各項の弱同値と弱可縮性を移す。
 `hammockValueFiber_isWeaklyContractible/existingHammockValueFiber_isWeaklyContractible` は
 元の評価の各 fiber の弱可縮性。任意可換環の実際の全自由次数への代入も検証する。
 左右の DK 比較射の弱同値性と Map^h の高次比較は引き続き未完成。
+`ValueSupport.subcomplex/singletonFiberIso/diagram/colimitIso` は元の離散な値ごとの
+部分複体を有限部分集合の余極限で回収し、元の全標準射と評価への自然性を保持する。
+`finite_restriction_weak/weak_of_singleton_restrictions/weak_of_contractible_fibers`
+は元の各値の制限・fiber から元の評価自身の弱同値性を導く。
+`FreeQuiverCover.hammockValue_isWeakHomotopyEquivalence` と
+`existingHammockValue_isWeakHomotopyEquivalence` は全指定自由圏の同じ評価の弱同値性。
+`topEquivalence_colimitMap_weak` と `Zigzag.Value.colimitValue_relative` は
+元の unit/counit と同じ評価を保持する圏同値の移送。
+`AllMarked.nativeFreeEvaluation/nativeValue/nativeValue_isWeakHomotopyEquivalence`
+は元の指定部分圏の実際の評価の弱同値性。任意可換環の全自由次数へも代入して検証。
+両 DK 比較射の弱同値性と Map^h の高次比較は引き続き未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

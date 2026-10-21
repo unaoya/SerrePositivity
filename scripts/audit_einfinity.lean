@@ -6233,6 +6233,44 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.weakFiniteSubsetColimitMap,
       `SerrePositivity.EInfinity.Hammock.finiteSubsetColimit_isWeaklyContractible]
 
+@[noinline] private def e2RequiredBatch94 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.nativeFreeEvaluation,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.nativeFreeEvaluation_inverts_top,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.nativeValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.nativeValue_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.hammockValue_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.existingHammockValue_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.colimitValue_relative,
+      `SerrePositivity.EInfinity.Hammock.topRelative,
+      `SerrePositivity.EInfinity.Hammock.topRelative_composite_weak,
+      `SerrePositivity.EInfinity.Hammock.topEquivalence_colimitMap_weak,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.diagram,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.cocone,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.degreeCocone,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.degree_surjective,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.degree_equal,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.degree_isColimit,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.cocone_isColimit,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.colimitIso,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.colimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.diagramMap,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.colimitIso_naturality,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.finite_restriction_weak,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.singleton_isTerminal,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.singleton_restriction_weak,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.subcomplex,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.subcomplex_empty,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.subcomplex_union,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.subcomplex_inter,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.subcomplex_mono,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.subcomplex_disjoint,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.singletonFiberIso,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.mapsTo,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.restriction,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.restriction_inclusion,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.weak_of_singleton_restrictions,
+      `SerrePositivity.EInfinity.Hammock.ValueSupport.weak_of_contractible_fibers]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6264,7 +6302,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -14964,3 +15002,52 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
         (⊤ : MorphismProperty (Paths (FreeQuiverCover.Vertex (Q := Q) A))) X Y) := by
   intro C W Q
   exact FreeQuiverCover.colimit_isWeaklyContractible (Q := Q) A
+
+-- 元の値への射自身を、各 fiber の弱可縮性で判定する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {B : Type e2ComplexLimitUniverse} {X : SSet.{e2ComplexLimitUniverse}}
+    (ℓ : X ⟶ (Functor.const SimplexCategoryᵒᵖ).obj B)
+    (hc : ∀ β, IsWeaklyContractible (SimplicialValueFiber.space ℓ β)) :
+    IsWeakHomotopyEquivalence ℓ := ValueSupport.weak_of_contractible_fibers ℓ hc
+
+-- 値の型が空の場合も同じ射の弱同値性を回収する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {B : Type e2ComplexLimitUniverse} [IsEmpty B] {X : SSet.{e2ComplexLimitUniverse}}
+    (ℓ : X ⟶ (Functor.const SimplexCategoryᵒᵖ).obj B) :
+    IsWeakHomotopyEquivalence ℓ :=
+  ValueSupport.weak_of_contractible_fibers ℓ (fun β => isEmptyElim β)
+
+-- 元の圏同値の unit/counit による比較は厳密逆を要求しない。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (e : C ≌ D) (X Y : C) :
+    IsWeakHomotopyEquivalence (Relative.colimitMap (topRelative e.functor) X Y) :=
+  topEquivalence_colimitMap_weak e X Y
+
+-- 元の自由圏の hammock 評価自身の弱同値性。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    (A : Q) (Y : Paths Q) : IsWeakHomotopyEquivalence
+      (Zigzag.Value.colimitValue FreeQuiverCover.positiveEvaluation
+        FreeQuiverCover.positiveEvaluation_inverts_top ((Paths.of Q).obj A) Y) :=
+  FreeQuiverCover.existingHammockValue_isWeakHomotopyEquivalence A Y
+
+-- 元の指定部分圏の評価に、W の乗法性の追加入力はない。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) :
+    IsWeakHomotopyEquivalence (UnmarkedGenerators.AllMarked.nativeValue W X Y) :=
+  UnmarkedGenerators.AllMarked.nativeValue_isWeakHomotopyEquivalence W X Y
+
+-- 任意可換環の実際の全自由次数の指定部分圏の評価へ代入する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    ∀ X Y : Paths C,
+      IsWeakHomotopyEquivalence (UnmarkedGenerators.AllMarked.nativeValue W X Y) := by
+  intro C W X Y
+  exact UnmarkedGenerators.AllMarked.nativeValue_isWeakHomotopyEquivalence W X Y
