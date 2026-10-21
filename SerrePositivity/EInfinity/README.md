@@ -1994,6 +1994,15 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `freeWordDiagonalAugmentation_forward_weak/backward_weak` は既存の元の Hom augmentation と
 可換することから両単一列の左射自身の弱同値性。任意可換環の実際の cofibrant 代数でも検証。
 任意語の graph の分解と左射全体の弱同値性、Map^h の高次比較は引き続き未完成。
+`Zigzag.FirstBoundary.BoundaryHom` は元の接合点の指定射を保持する縦射。
+`forwardMovingEquiv/backwardMovingEquiv` は元の全縦成分と全正方形を回収する
+固定 Hom との全単射。恒等・合成は元の全成分を保持する。
+`ForwardZigzag.value_moving/BackwardZigzag.value_moving` は動く終点の元の一列の可換式。
+`FirstColumn.forwardForwardFunctor` は先頭二列が forward の元の固定語から、残りの
+元の zigzag と先頭列の離散 Hom を係数とする二方向 Grothendieck 圏への関手。
+底の元の指定射、元の全縦射、恒等・合成を保持し、同じ元の関手の忠実性も証明。
+`ZigzagAppend.Part.leftObj_obj/rightObj_obj` は全方向・空語での逆向きの対象回収。
+この関手の充満性・本質的全射性、他の向き、全相対作用素への自然性は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
