@@ -24,4 +24,11 @@ def quasicategoryDiagramHom {C : Type u} [Category.{u} C]
     (η : F.val ⋙ quasicategoryObjectForget ⟶ G.val ⋙ quasicategoryObjectForget) : F ⟶ G :=
   (SSet.unitHomEquiv _).symm (strictDiagramMappingVertex η)
 
+/-- 元の恒等自然変換は、同じ通常の圏の恒等射になる。 -/
+lemma quasicategoryDiagramHom_id {C : Type u} [Category.{u} C]
+    (F : QuasicategoryDiagramCategory C) :
+    quasicategoryDiagramHom (𝟙 (F.val ⋙ quasicategoryObjectForget)) = 𝟙 F := by
+  apply (SSet.unitHomEquiv _).injective
+  rfl
+
 end SerrePositivity.InfinityCategories

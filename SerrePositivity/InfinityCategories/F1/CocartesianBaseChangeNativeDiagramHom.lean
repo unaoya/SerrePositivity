@@ -22,20 +22,29 @@ namespace SerrePositivity.InfinityCategories
 variable {A D C : Type u} [Category.{u} A] [Category.{u} D] [Category.{u} C]
   (l : A ⥤ D) (k : D ⥤ C) (p : CocartesianFibrationCategory (nerve C))
 
-/-- 底全体の既存の同じ結合比較を、元の strict 図式の圏の射に束ねる。 -/
-def cocartesianBaseChangeNativeDiagramHom :
+/-- 底全体の既存の同じ結合比較を、元の underlying 図式の自然変換に束ねる。 -/
+def cocartesianBaseChangeNativeDiagramTransformation :
     let T := (cocartesianStrictTransportEnrichedDiagram A).toCoreEnrichedFunctor
     let P₂ := (cocartesianFibrationBaseChangeCoreEnriched (nerveMap l)).obj
       ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
     let P₁ := (cocartesianFibrationBaseChangeCoreEnriched (nerveMap (l ⋙ k))).obj p
-    T.obj P₂ ⟶ T.obj P₁ := by
+    (T.obj P₂).val ⋙ quasicategoryObjectForget ⟶
+      (T.obj P₁).val ⋙ quasicategoryObjectForget := by
   dsimp only
-  apply quasicategoryDiagramHom
   refine
     { app := fun a ↦ (cocartesianBaseChangeAssociativityComponent p.val.hom l k a).hom
       naturality := ?_ }
   intro a b f
   exact cocartesianBaseChangeAssociativityComponent_naturality p.val.hom l k f
+
+/-- 同じ自然変換を、元の strict 図式の圏の同じ通常の射にする。 -/
+def cocartesianBaseChangeNativeDiagramHom :
+    let T := (cocartesianStrictTransportEnrichedDiagram A).toCoreEnrichedFunctor
+    let P₂ := (cocartesianFibrationBaseChangeCoreEnriched (nerveMap l)).obj
+      ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
+    let P₁ := (cocartesianFibrationBaseChangeCoreEnriched (nerveMap (l ⋙ k))).obj p
+    T.obj P₂ ⟶ T.obj P₁ :=
+  quasicategoryDiagramHom (cocartesianBaseChangeNativeDiagramTransformation l k p)
 
 /-- 結合同型の図式値豊穣像は、底全体の既存の同じ結合比較の豊穣表示。 -/
 lemma cocartesianBaseChangeNativeDiagramHom_enriched

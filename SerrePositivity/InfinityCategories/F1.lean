@@ -2305,3 +2305,29 @@ public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramNaturalH
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeDiagramHom
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeCoherentEdge
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeAssociativityEdgeSimplex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeAssociativityFamilyVertex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeAssociativityEdge
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeNaturalPrism
+
+public import SerrePositivity.InfinityCategories.F1.FunctorEdgeEvaluationSimplex
+
+public import SerrePositivity.InfinityCategories.F1.QCatDiagramArrowCurryEdge
+
+public import SerrePositivity.InfinityCategories.F1.QCatDiagramArrowFamilyEdge
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramDiagonalArrow
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramDiagonalFunctor
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramDiagonalOrder
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramNaturalPrism
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramNaturalPrismSimplex
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramOrdinaryMixedHom
