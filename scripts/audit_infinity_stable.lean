@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescentHom
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparisonHom
+import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationInclusion
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompatibilityInclusion
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAugmentation
+import SerrePositivity.InfinityCategories.Derived.HomotopyHomWhiskerExchange
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAugmentationPost
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelRestrictionNerve
+import SerrePositivity.InfinityCategories.Derived.FunctorHomFaithfulPostcomposition
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatAugmentationPrecomp
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAugmentationSquare
 import SerrePositivity.InfinityCategories.Derived.DGModuleOutputComparisonRawSource
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonRawSource
 import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawEndpoints
@@ -4444,6 +4455,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescentHom,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparisonHom,
+    `SerrePositivity.InfinityCategories.Derived.RestrictedDeformationInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompatibilityInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyHomWhiskerExchange,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAugmentationPost,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelRestrictionNerve,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomFaithfulPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatAugmentationPrecomp,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAugmentationSquare,
+
 
     `SerrePositivity.InfinityCategories.Derived.DGModuleOutputComparisonRawSource,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonRawSource,
