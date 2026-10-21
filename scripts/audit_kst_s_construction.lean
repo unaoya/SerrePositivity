@@ -20617,3 +20617,79 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaDiagonal_left_counit
 #check @SerrePositivity.KST.SConstruction.cubicalLambdaDiagonal_right_counit
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaDiagonal_right_counit
+#check @SerrePositivity.KST.SConstruction.comonoidTriplePair
+#print axioms SerrePositivity.KST.SConstruction.comonoidTriplePair
+#check @SerrePositivity.KST.SConstruction.comonoidPair_split_left
+#print axioms SerrePositivity.KST.SConstruction.comonoidPair_split_left
+#check @SerrePositivity.KST.SConstruction.comonoidPair_split_right
+#print axioms SerrePositivity.KST.SConstruction.comonoidPair_split_right
+#check @SerrePositivity.KST.SConstruction.comonoidTripleRight_precompose
+#print axioms SerrePositivity.KST.SConstruction.comonoidTripleRight_precompose
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTripleLeft
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTripleLeft
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTripleRight
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTripleRight
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTriplePair_associativity
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTriplePair_associativity
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTensorPair_split_left
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTensorPair_split_left
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTensorPair_split_right
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTensorPair_split_right
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTripleRight_precompose
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTripleRight_precompose
+#check @SerrePositivity.KST.SConstruction.enrichedFunctor_comp_assoc
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctor_comp_assoc
+#check @SerrePositivity.KST.SConstruction.enrichedFunctor_id_comp
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctor_id_comp
+#check @SerrePositivity.KST.SConstruction.enrichedFunctor_comp_id
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctor_comp_id
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_associativity
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_associativity
+#check @SerrePositivity.KST.SConstruction.dgTensorUnitor_left_unit
+#print axioms SerrePositivity.KST.SConstruction.dgTensorUnitor_left_unit
+#check @SerrePositivity.KST.SConstruction.dgTensorUnitor_right_unit
+#print axioms SerrePositivity.KST.SConstruction.dgTensorUnitor_right_unit
+#check @SerrePositivity.KST.SConstruction.dgTensorUnitor_left_composition
+#print axioms SerrePositivity.KST.SConstruction.dgTensorUnitor_left_composition
+#check @SerrePositivity.KST.SConstruction.dgTensorUnitor_right_composition
+#print axioms SerrePositivity.KST.SConstruction.dgTensorUnitor_right_composition
+#check @SerrePositivity.KST.SConstruction.dgTensorLeftUnitorHom
+#print axioms SerrePositivity.KST.SConstruction.dgTensorLeftUnitorHom
+#check @SerrePositivity.KST.SConstruction.dgTensorRightUnitorHom
+#print axioms SerrePositivity.KST.SConstruction.dgTensorRightUnitorHom
+#check @SerrePositivity.KST.SConstruction.dgTensorLeftUnitor_identity
+#print axioms SerrePositivity.KST.SConstruction.dgTensorLeftUnitor_identity
+#check @SerrePositivity.KST.SConstruction.dgTensorLeftUnitor_composition
+#print axioms SerrePositivity.KST.SConstruction.dgTensorLeftUnitor_composition
+#check @SerrePositivity.KST.SConstruction.dgTensorRightUnitor_identity
+#print axioms SerrePositivity.KST.SConstruction.dgTensorRightUnitor_identity
+#check @SerrePositivity.KST.SConstruction.dgTensorRightUnitor_composition
+#print axioms SerrePositivity.KST.SConstruction.dgTensorRightUnitor_composition
+#check @SerrePositivity.KST.SConstruction.dgTensorLeftUnitor
+#print axioms SerrePositivity.KST.SConstruction.dgTensorLeftUnitor
+#check @SerrePositivity.KST.SConstruction.dgTensorRightUnitor
+#print axioms SerrePositivity.KST.SConstruction.dgTensorRightUnitor
+#check @SerrePositivity.KST.SConstruction.dgTensorLeftUnitor_obj
+#print axioms SerrePositivity.KST.SConstruction.dgTensorLeftUnitor_obj
+#check @SerrePositivity.KST.SConstruction.dgTensorRightUnitor_obj
+#print axioms SerrePositivity.KST.SConstruction.dgTensorRightUnitor_obj
+#check @SerrePositivity.KST.SConstruction.dgTensorLeftUnitor_map
+#print axioms SerrePositivity.KST.SConstruction.dgTensorLeftUnitor_map
+#check @SerrePositivity.KST.SConstruction.dgTensorRightUnitor_map
+#print axioms SerrePositivity.KST.SConstruction.dgTensorRightUnitor_map
+#check @SerrePositivity.KST.SConstruction.comonoidPair_left_unit
+#print axioms SerrePositivity.KST.SConstruction.comonoidPair_left_unit
+#check @SerrePositivity.KST.SConstruction.comonoidPair_right_unit
+#print axioms SerrePositivity.KST.SConstruction.comonoidPair_right_unit
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTensorPairReduceLeft
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTensorPairReduceLeft
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTensorPairReduceRight
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTensorPairReduceRight
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTensorPair_left_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTensorPair_left_unit
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaTensorPair_right_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaTensorPair_right_unit
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_left_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_left_unit
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_right_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_right_unit
