@@ -669,4 +669,12 @@ public import SerrePositivity.KST.LocalizingInvariants.FunctorIsoCancelPrecomp
 public import SerrePositivity.KST.LocalizingInvariants.FiberSquareRelativeComparison
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRelativeNormalization
 
+public import SerrePositivity.KST.LocalizingInvariants.CompositionOverlapShape
+public import SerrePositivity.KST.LocalizingInvariants.CompositionOverlapHomotopy
+public import SerrePositivity.KST.LocalizingInvariants.CoherentCompositionTetrahedron
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumCompositionOverlap
+public import SerrePositivity.KST.LocalizingInvariants.CompositionIdentityShape
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumCompositionIdentity
+public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberUnitCanonical
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

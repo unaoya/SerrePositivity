@@ -535,7 +535,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.FiberConeRelativeIso,
     `SerrePositivity.KST.LocalizingInvariants.FunctorIsoCancelPrecomp,
     `SerrePositivity.KST.LocalizingInvariants.FiberSquareRelativeComparison,
-    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramRelativeNormalization]
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramRelativeNormalization,
+    `SerrePositivity.KST.LocalizingInvariants.CompositionOverlapShape,
+    `SerrePositivity.KST.LocalizingInvariants.CompositionOverlapHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.CoherentCompositionTetrahedron,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumCompositionOverlap,
+    `SerrePositivity.KST.LocalizingInvariants.CompositionIdentityShape,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumCompositionIdentity,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberUnitCanonical]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
