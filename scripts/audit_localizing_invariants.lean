@@ -283,7 +283,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxValueProjectionAxes,
     `SerrePositivity.KST.LocalizingInvariants.TammeProjectionEquivalence,
     `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProjectionFiber,
-    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProjectionCompatibility]
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProjectionCompatibility,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowIsoEndpointControl,
+    `SerrePositivity.KST.LocalizingInvariants.FiberSquareRightTransport,
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductMap,
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiber,
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberVertices,
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierHomotopyFiberValue]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
