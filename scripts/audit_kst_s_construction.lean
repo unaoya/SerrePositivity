@@ -19721,3 +19721,102 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.NecklaceInHom.w
 #check @SerrePositivity.KST.SConstruction.NecklaceInHom.ext
 #print axioms SerrePositivity.KST.SConstruction.NecklaceInHom.ext
+
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.edgeOrderHom
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.edgeOrderHom
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.edge
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.edge
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.edge_zero
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.edge_zero
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.edge_one
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.edge_one
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge_zero
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge_zero
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge_one
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge_one
+#check @SerrePositivity.KST.SConstruction.necklaceVertexMap_monotone
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexMap_monotone
+#check @SerrePositivity.KST.SConstruction.necklaceVertexOrderHom
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexOrderHom
+#check @SerrePositivity.KST.SConstruction.necklaceVertexOrderHom_id
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexOrderHom_id
+#check @SerrePositivity.KST.SConstruction.necklaceVertexOrderHom_comp
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexOrderHom_comp
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.jointVertices
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.jointVertices
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.mem_jointVertices
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.mem_jointVertices
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.first_mem_jointVertices
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.first_mem_jointVertices
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.last_mem_jointVertices
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.last_mem_jointVertices
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoints
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoints
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoints_nonempty
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoints_nonempty
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint_mem
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint_mem
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint_le
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint_le
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.le_lowerJoint
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.le_lowerJoint
+#check @SerrePositivity.KST.SConstruction.necklaceVertexMap_noInterior
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexMap_noInterior
+#check @SerrePositivity.KST.SConstruction.necklaceVertexMap_joint_covered
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexMap_joint_covered
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.CubeSubset
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.CubeSubset
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBottom
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBottom
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetTop
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetTop
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetJoin
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetJoin
+#check @SerrePositivity.KST.SConstruction.necklaceSubsetMap
+#print axioms SerrePositivity.KST.SConstruction.necklaceSubsetMap
+#check @SerrePositivity.KST.SConstruction.necklaceSubsetMap_id
+#print axioms SerrePositivity.KST.SConstruction.necklaceSubsetMap_id
+#check @SerrePositivity.KST.SConstruction.necklaceSubsetMap_comp
+#print axioms SerrePositivity.KST.SConstruction.necklaceSubsetMap_comp
+#check @SerrePositivity.KST.SConstruction.necklaceSubsetMap_join
+#print axioms SerrePositivity.KST.SConstruction.necklaceSubsetMap_join
+#check @SerrePositivity.KST.SConstruction.necklaceSubsetPoset
+#print axioms SerrePositivity.KST.SConstruction.necklaceSubsetPoset
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.NonjointVertex
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.NonjointVertex
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeFullBits
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeFullBits
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits_bits
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits_bits
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits_fromBits
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits_fromBits
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits_monotone
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits_monotone
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits_monotone
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits_monotone
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBoolIso
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBoolIso
+#check @SerrePositivity.KST.SConstruction.necklaceBooleanMap
+#print axioms SerrePositivity.KST.SConstruction.necklaceBooleanMap
+#check @SerrePositivity.KST.SConstruction.necklaceBooleanMap_id
+#print axioms SerrePositivity.KST.SConstruction.necklaceBooleanMap_id
+#check @SerrePositivity.KST.SConstruction.necklaceBooleanMap_comp
+#print axioms SerrePositivity.KST.SConstruction.necklaceBooleanMap_comp
+#check @SerrePositivity.KST.SConstruction.necklaceBooleanMap_true_iff
+#print axioms SerrePositivity.KST.SConstruction.necklaceBooleanMap_true_iff
+#check @SerrePositivity.KST.SConstruction.necklaceBooleanMap_coordinate
+#print axioms SerrePositivity.KST.SConstruction.necklaceBooleanMap_coordinate
+#check @SerrePositivity.KST.SConstruction.necklaceVertexMap_orderedFibers
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexMap_orderedFibers
+#check @SerrePositivity.KST.SConstruction.necklaceBooleanPoset
+#print axioms SerrePositivity.KST.SConstruction.necklaceBooleanPoset
+#check @SerrePositivity.KST.SConstruction.necklaceSubsetBooleanNatIso
+#print axioms SerrePositivity.KST.SConstruction.necklaceSubsetBooleanNatIso

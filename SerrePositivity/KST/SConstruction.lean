@@ -1486,4 +1486,12 @@ public import SerrePositivity.KST.SConstruction.NecklaceIn
 public import SerrePositivity.KST.SConstruction.NecklaceVertices
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexVertices
 public import SerrePositivity.KST.SConstruction.NecklacePostcomposition
+public import SerrePositivity.KST.SConstruction.NecklaceEdges
+public import SerrePositivity.KST.SConstruction.NecklaceVertexOrder
+public import SerrePositivity.KST.SConstruction.NecklaceJointBounds
+public import SerrePositivity.KST.SConstruction.NecklaceJointImage
+public import SerrePositivity.KST.SConstruction.NecklaceSubsets
+public import SerrePositivity.KST.SConstruction.NecklaceBooleanCube
+public import SerrePositivity.KST.SConstruction.NecklaceBooleanMap
+public import SerrePositivity.KST.SConstruction.NecklaceBooleanFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/
