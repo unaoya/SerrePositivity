@@ -51,7 +51,7 @@
   **P_Σ 入口：sifted 性・filtered からの入口・弱可縮性を証明。** 元の F2 の二項積の全空間 Kan 比較を sifted な底へ一般化し、空積の比較も証明。底の quasicategory 性は不要。
   **P_Σ：元の P(C) 内の全部分 quasicategory・充満忠実な包含・元の Yoneda の有限積保存と P_Σ への充満忠実な因子化を完了。sifted 余極限閉性を完了。** 任意の小さい sifted な底 B 上の元の図式 r について、F2 の coherent 空間値余極限を読み取り専用で使い、全評価が余極限となる実際の前層余極限全余錐 q を供給。元の有限離散極限全錐 c の実際の頂点関手像を、元の全評価 Kan 脚を持つ標準全錐と関手同型で結び、非空有限積保存を証明。既存の空積の結果と合わせ、元の頂点関手の全有限積保存と q.vertex の `IsSigmaPresheaf` を証明。元の全余錐そのものを P_Σ 内へ制限し、全部分複体への余極限性の反映で内部余極限性を回収。`sigmaPresheafSiftedColimitCone_inclusion` は包含後に元の前層余極限全余錐への厳密な一致、`sigmaPresheafSiftedColimitCone_isColimit`・`sigmaPresheaf_hasColimit_of_sifted` は内部の実際の余錐・存在。底の quasicategory 性も、頂点の P_Σ 所属という未証明入力も要求しない。P_Σ 内の Yoneda の有限余積保存・sifted 生成・普遍性は残る。
   **点ごとの coherent 積の元の小さい全空間→pullback の前合成同値を完了。** 両射影の fiber 作用を元の辺の輸送と照合。sifted な底で元の余極限 Kan 比較のホモトピー同値・両脚・単位式まで完了。底の quasicategory 性は不要。
-  **元の全単体と比較の保持**：反復積・一般有限添字への再添字・元の全評価錐の native 全脚を保持。各点の同じ coslice 代表を全余錐と頂点で共有し、元の底脚・頂点脚・標準単位・指定全空間 Kan 像の可換式を構成。頂点圏内の共役の定値像を関手圏内の同じ共役へ照合し、全余錐作用の充満忠実性で同じ頂点辺の Hom 類へ反映。元の四辺正方形を Fun(Δ¹,X) 内の全離散錐へ束ね、両端評価を元の全錐へ厳密に回収し、元の可逆比較辺から全錐の関手同型を構成。実際の像と標準有限積錐の端点を元の `uliftFunctor.map p` の評価表示で揃えて適用済み。各点の比較が自然な族だとは仮定しない。新たなモデル圏・資源上限・sorry は追加していない。
+  **元の全単体と比較の保持**：反復積・一般有限添字への再添字・元の全評価錐の native 全脚を保持。各点の同じ coslice 代表を全余錐と頂点で共有し、元の底脚・頂点脚・標準単位・指定全空間 Kan 像の可換式を構成。頂点圏内の共役の定値像を関手圏内の同じ共役へ照合し、全余錐作用の充満忠実性で同じ頂点辺の Hom 類へ反映。元の四辺正方形を Fun(Δ¹,X) 内の全離散錐へ束ね、両端評価を元の全錐へ厳密に回収し、元の可逆比較辺から全錐の関手同型を構成。実際の像と標準有限積錐の端点を元の `uliftFunctor.map p` の評価表示で揃えて適用済み。各点の比較が自然な族だとは仮定しない。新たなモデル圏・資源上限・sorry は追加していない。 `SigmaYonedaEvaluation` は任意の元の P_Σ 頂点から反変関手を回収し、σYoneda からの元の区間 Hom を包含の実作用で正規化。元の恒等点評価の同値性と、同じ全変換を評価した普遍輸送との全パラメータ関手同型を証明。有限余積の脚への自然性と元の余錐の余極限性は未証明。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
@@ -91,13 +91,13 @@
   `IsSiftedInfinity`、`PreservesFiniteProductsFromSmallSource`、`SigmaPresheafInfinity`、`sigmaYonedaInfinityMap`、`sigmaYonedaInfinityMap_isFullyFaithful`、`sigmaPresheafColimitFiniteCone_isLimit`、`sigmaColimitFiniteImageConeIso`、`presheafColimitVertex_mapNonemptyCone_isLimit`、`presheafColimitVertex_preservesFiniteProducts`、`presheafColimitVertex_isSigmaPresheaf`、`sigmaPresheafAmbientColimit_isSigmaPresheaf`、`fullSubcomplexCoconeLift_inclusion`、`isColimitCone_of_fullSubcomplex`、`sigmaPresheafSiftedColimitCone`、`sigmaPresheafSiftedColimitCone_inclusion`、`sigmaPresheafSiftedColimitCone_isColimit`、`sigmaPresheafSiftedColimitCone_inclusion_isColimit`、`sigmaPresheaf_hasColimit_of_sifted`。 Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   集約 `InfinityCategories/HomotopyLimits.lean`・全監査 `scripts/audit_homotopy_limits.lean` を Sp・E2b に提供。規約は `foundations.md` §8、README は規約だけ。
-- **未コミット**：なし（今回の保存単位：同じ評価代表の端点正規化・実際の全錐像の有限積保存・元の前層余極限頂点の P_Σ 所属・同じ全余錐の内部制限と余極限性反映・P_Σ の sifted 余極限の11モジュール25宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
-- **既知の問題**：N の対象ビルド7566 jobs・全5156宣言監査は終了コード0、標準三公理のみ。新規11モジュール25宣言に警告・sorry・追加公理なし。
+- **未コミット**：なし（今回の保存単位：`SigmaYonedaEvaluation.lean` の9宣言、集約・全監査、本 N 節。任意の元の P_Σ 対象への区間 Hom 評価の同値性と、同じ全変換・恒等点による普遍輸送の全パラメータ比較）。他レーンの差分は対象外。
+- **既知の問題**：N の対象ビルド7571 jobs・全5165宣言監査は終了コード0、標準三公理のみ。新規1モジュール9宣言に警告・sorry・追加公理なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
-- **次の一手**：N-4：P_Σ 内の元の Yoneda の有限余積保存を証明する。`SigmaYonedaInfinity.lean` の元の因子化と、F1 の `canonicalYonedaTransformationFiberEvaluation`・`yonedaPresheafEvaluation` の実際の写像空間同値を読み取り専用で照合。C の元の有限離散余極限余錐の σYoneda 像について、各対象 F∈P_Σ への元の写像空間の全族を、F が元の C.op の有限極限錐を保存する条件へ移し、元の同じ余錐の余極限性を検出する。空添字も含める。既存 `SigmaYonedaInitial` は表現可能前層の始対象での値の終対象性であり、σYoneda の P_Σ 内の始対象保存そのものとは扱わない。Yoneda の元の高次作用・単位を保持し、π₀ の一致だけで済ませない。その後、元の P_Σ 対象の sifted な要素図式による Yoneda 生成と sifted 余極限保存関手の普遍性へ進む。実際の有限積保存・sifted 閉性・同じ全余錐の内部普遍性は完成し再実装しない。HTT 5.5.8.10・11・14・15。
+- **次の一手**：N-4：P_Σ 内の元の Yoneda の有限余積保存を証明する。`sigmaYonedaFiberEvaluation` は任意の元の P_Σ 頂点への元の区間 Hom から元の値の pointed fiber への実際の同値。`sigmaYonedaFiberEvaluation_parametrizedIso` は同じ恒等点・全変換・普遍輸送を保持する。次に C の元の有限離散余極限余錐の各脚に関し、Yoneda の第一変数の作用と元の値の輸送の自然性を全パラメータで照合する。反対錐の有限積保存から同じ余錐像の余極限性を検出し、空添字も含める。各点の選択の自然性や π₀ の一致だけでは済ませない。その後、元の P_Σ 対象の sifted な要素図式による Yoneda 生成と普遍性へ。有限積保存・sifted 閉性は再実装しない。HTT 5.5.8.10・11・14・15。
   comma の局所随伴判定・局所置換からの反射は完成。逆向きの比較 fiber のホモトピーを再実装せず、同じ単位比較と普遍輸送の照合を使用。
   生成閉包＝局所同値の定理と反射の定理の `hreplace` は未供給。presentable 圏の小さい辺族から局所置換を作る存在部分が残る。入力フィールドに仮定して完成とは扱わない。
   F1 の前層・Yoneda は正本・ソースで提供済みと確認。F2 の Ind・compact は進行中、presentable・随伴関手定理は後段。条件付き反射だけで局所化の存在の完成としない。F1・F2 は読み取り専用。

@@ -13885,3 +13885,21 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms sigmaPresheafSiftedColimitCone_inclusion_isColimit
 #check @sigmaPresheaf_hasColimit_of_sifted
 #print axioms sigmaPresheaf_hasColimit_of_sifted
+#check @sigmaPresheafVertexFunctor
+#print axioms sigmaPresheafVertexFunctor
+#check @sigmaPresheafVertexFunctor_vertex
+#print axioms sigmaPresheafVertexFunctor_vertex
+#check @sigmaPresheafVertexFunctor_preservesFiniteProducts
+#print axioms sigmaPresheafVertexFunctor_preservesFiniteProducts
+#check @sigmaYonedaInfinityMap_inclusion_vertex
+#print axioms sigmaYonedaInfinityMap_inclusion_vertex
+#check @sigmaYonedaTransformationComparison
+#print axioms sigmaYonedaTransformationComparison
+#check @sigmaYonedaTransformationComparison_isQCatEquivalence
+#print axioms sigmaYonedaTransformationComparison_isQCatEquivalence
+#check @sigmaYonedaFiberEvaluation
+#print axioms sigmaYonedaFiberEvaluation
+#check @sigmaYonedaFiberEvaluation_isQCatEquivalence
+#print axioms sigmaYonedaFiberEvaluation_isQCatEquivalence
+#check @sigmaYonedaFiberEvaluation_parametrizedIso
+#print axioms sigmaYonedaFiberEvaluation_parametrizedIso
