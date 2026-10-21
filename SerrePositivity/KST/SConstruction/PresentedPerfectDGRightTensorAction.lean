@@ -51,4 +51,19 @@ lemma presentedPerfectDGRightTensorAction_fixed (F : DGFunctor A D E) :
   rw [← Category.assoc]
   exact presentedPerfectDGTensorHom_second A D E F X Y
 
+/-- ラベルを先に置く全 Hom 作用は、元の signed 交換と元の tensor 作用。 -/
+def presentedPerfectDGRightTensorHom (F G : DGFunctor A D E)
+    (X Y : PresentedPerfectDGObject A D) :
+    homObject A (PresentedPerfectDGObject A D) X Y ⊗ dgFunctorHom A D E F G ⟶
+      homObject A (PresentedPerfectDGObject A E)
+        ((presentedPerfectDGAction A D E F).obj X) ((presentedPerfectDGAction A D E G).obj Y) :=
+  (β_ (homObject A (PresentedPerfectDGObject A D) X Y) (dgFunctorHom A D E F G)).hom ≫
+    presentedPerfectDGTensorHom A D E F G X Y
+
+/-- 実 dg 右作用の各 Hom は、同じラベル先行の全次数 Hom 作用。 -/
+lemma presentedPerfectDGRightTensorAction_hom
+    (x y : DGTensorCategory A (PresentedPerfectDGObject A D) (DGFunctor A D E)) :
+    (presentedPerfectDGRightTensorAction A D E).map x y =
+      presentedPerfectDGRightTensorHom A D E x.2 y.2 x.1 y.1 := rfl
+
 end SerrePositivity.KST.SConstruction

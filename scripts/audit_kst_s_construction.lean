@@ -23571,3 +23571,99 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_fixed
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_fixed
+
+#check @SerrePositivity.KST.SConstruction.rightActionReverse
+#print axioms SerrePositivity.KST.SConstruction.rightActionReverse
+
+#check @SerrePositivity.KST.SConstruction.rightActionReverse_eq
+#print axioms SerrePositivity.KST.SConstruction.rightActionReverse_eq
+
+#check @SerrePositivity.KST.SConstruction.rightActionReverse_iteration
+#print axioms SerrePositivity.KST.SConstruction.rightActionReverse_iteration
+
+#check @SerrePositivity.KST.SConstruction.rightActionReverse_rotate
+#print axioms SerrePositivity.KST.SConstruction.rightActionReverse_rotate
+
+#check @SerrePositivity.KST.SConstruction.rightActionPairing_associativity
+#print axioms SerrePositivity.KST.SConstruction.rightActionPairing_associativity
+
+#check @SerrePositivity.KST.SConstruction.dgTensorAssociator_post_map
+#print axioms SerrePositivity.KST.SConstruction.dgTensorAssociator_post_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIteration_transport
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIteration_transport
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIterated
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIterated
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorCompositeInner
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorCompositeInner
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorComposite
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorComposite
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIterated_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIterated_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIterated_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIterated_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorCompositeInner_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorCompositeInner_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorComposite_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorComposite_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIterated_map_transport
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorIterated_map_transport
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_comp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_comp
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaPerfRightAction_associativity
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaPerfRightAction_associativity
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeIdentitySimplex_point
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeIdentitySimplex_point
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_unit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_unit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_unit
+
+#check @SerrePositivity.KST.SConstruction.uncurry_curry_tensor_comp
+#print axioms SerrePositivity.KST.SConstruction.uncurry_curry_tensor_comp
+
+#check @SerrePositivity.KST.SConstruction.rightActionCurry_comp
+#print axioms SerrePositivity.KST.SConstruction.rightActionCurry_comp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_comp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_comp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterComp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterComp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_comp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_comp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_comp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_comp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterComp_associativity
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterComp_associativity
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterComp_left_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterComp_left_unit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterComp_right_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterComp_right_unit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorHom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorHom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_hom
