@@ -15,10 +15,10 @@ public import SerrePositivity.EInfinity.Hammock.NerveProduct
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u
+universe u v w
 namespace SerrePositivity.EInfinity.Hammock.CoefficientProduct
 open CategoryTheory
-variable {B : Type u} [Category.{u} B]
+variable {B : Type v} [Category.{w} B]
 def diagram (P Q : B ⥤ Cat.{u, u}) : B ⥤ Cat.{u, u} where
   obj b := Cat.of (P.obj b × Q.obj b)
   map f := ((P.map f).toFunctor.prod (Q.map f).toFunctor).toCatHom

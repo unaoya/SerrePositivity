@@ -2061,7 +2061,18 @@ native 指定 Hom augmentation に回収し、弱同値性を追加入力なし�
 `forwardBackwardRebuild_object/forwardBackwardRebuild_functor_obj/forwardBackwardPreimage_map`
 は元の全対象・全縦射の両往復を回収する。
 `forwardBackwardCatIso/forwardBackwardGraphIso` は同じ切断関手を順方向とする厳密な同型。
-任意可換環の実モデルの全自由次数と空語へも適用する。+− の全自然性と対角比較、
+任意可換環の実モデルの全自由次数と空語へも適用する。
+`CoefficientProduct.change/diagonalNerveIso/diagonalMap_weak` は底の宇宙を分離した
+元の係数積の写像・対角同型と、同じ対角比較の弱同値保存。
+`FirstColumn.forwardBackward_relative_functor` は元の切断関手の全相対自然性。
+`forwardBackwardDiagram/forwardBackwardDiagonalIso` は元の全図式と対角の自然同型。
+`forwardBackwardDiagonalAugmentation_square/weak_iff` は元の左比較射自身の正方形と弱判定。
+`freeMixedFirstHomSpaceMap_weak/freeMixedFirstLeftSpaceMap_weak` は底と一点係数の無条件の比較。
+`freeMixedFirstRightSpaceIso_augmentation/freeMixedFirstRightSpaceMap_weak` は元の右比較射を
+通常 Hom と残りの語の同じ比較射の積へ回収する。
+`freeWordDiagonalAugmentation_forwardBackward_weak/cons_forwardBackward_weak` は
+残りの元の backward 語だけを帰納仮定とする +− の段階。
+`freeWordDiagonalAugmentation_twoForwardBackward_weak` は元の二列の無条件の弱同値性。
 −+ の分解・係数の弱比較と全語の帰納は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
