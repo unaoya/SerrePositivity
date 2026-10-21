@@ -2000,4 +2000,17 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryReduce
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryReducedLaws
 public import SerrePositivity.KST.SConstruction.InternalEnrichedActionFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryReducedEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.CoaugmentedClosedEvaluation
+public import SerrePositivity.KST.SConstruction.CoaugmentedClosedFamily
+public import SerrePositivity.KST.SConstruction.CoaugmentedPointedFunctor
+public import SerrePositivity.KST.SConstruction.CoaugmentedPointedMaps
+public import SerrePositivity.KST.SConstruction.ExInfinityPointedEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.LaxClosedFamilyMap
+public import SerrePositivity.KST.SConstruction.PointedClosedHomInclusion
+public import SerrePositivity.KST.SConstruction.PointedEnrichedActionFunctor
+public import SerrePositivity.KST.SConstruction.PointedEnrichedKanLift
+public import SerrePositivity.KST.SConstruction.PointedSSetObject
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanUnit
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryPointedFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

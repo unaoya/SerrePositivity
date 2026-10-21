@@ -24501,3 +24501,204 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor_hom
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_evaluation
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_evaluation
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_action
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_action
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_hom
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_hom
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_id
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_id
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_comp
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_comp
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedClosedEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedClosedEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedObject
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedObject
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedInternalFunctor
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedInternalFunctor
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedAction_basepoint
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedAction_basepoint
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedFamilyMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedFamilyMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedMap
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedMap
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedUnit
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedUnit
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedUnit_action
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedUnit_action
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedEnrichedFunctor_forget
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedEnrichedFunctor_forget
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedKanMap
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedKanMap
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedUnit
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedUnit
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedUnit_anodyne
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedUnit_anodyne
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor_inclusion
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor_inclusion
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedUnit_action
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedUnit_action
+
+#check @SerrePositivity.KST.SConstruction.laxClosedFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.laxClosedFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.laxClosedFamilyMap_hom
+#print axioms SerrePositivity.KST.SConstruction.laxClosedFamilyMap_hom
+
+#check @SerrePositivity.KST.SConstruction.laxClosedFamilyMap_id
+#print axioms SerrePositivity.KST.SConstruction.laxClosedFamilyMap_id
+
+#check @SerrePositivity.KST.SConstruction.laxClosedFamilyMap_comp
+#print axioms SerrePositivity.KST.SConstruction.laxClosedFamilyMap_comp
+
+#check @SerrePositivity.KST.SConstruction.pointedLaxClosedFamilyMap_eq
+#print axioms SerrePositivity.KST.SConstruction.pointedLaxClosedFamilyMap_eq
+
+#check @SerrePositivity.KST.SConstruction.pointedClosedHomInclusion_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedClosedHomInclusion_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedClosedHomInclusion_id
+#print axioms SerrePositivity.KST.SConstruction.pointedClosedHomInclusion_id
+
+#check @SerrePositivity.KST.SConstruction.pointedClosedHomInclusion_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedClosedHomInclusion_comp
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedFunctorOfAction
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedFunctorOfAction
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedFunctorOfAction_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedFunctorOfAction_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedKanLift
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedKanLift
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedKanLift_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedKanLift_hom
+
+#check @SerrePositivity.KST.SConstruction.PointedSSetObject
+#print axioms SerrePositivity.KST.SConstruction.PointedSSetObject
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetObject_category
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetObject_category
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetObject_enrichedCategory
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetObject_enrichedCategory
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetObject_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetObject_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetObjectForget
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetObjectForget
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetObjectClosedForget
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetObjectClosedForget
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetObjectClosedForget_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetObjectClosedForget_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanUnit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanUnit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanUnit_anodyne
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanUnit_anodyne
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanInfinityFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanInfinityFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanInfinityFunctor_vertex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanInfinityFunctor_vertex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanEnrichedFunctor_inclusion
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanEnrichedFunctor_inclusion
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanUnit_action
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanUnit_action
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedObject
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedObject
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor_forget
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryPointedEnrichedFunctor_forget
+
+#check @SerrePositivity.KST.SConstruction.pointedClosedInclusion_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.pointedClosedInclusion_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetObjectBase_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetObjectBase_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.PointedSSetObject.mk
+#print axioms SerrePositivity.KST.SConstruction.PointedSSetObject.mk
+
+#check @SerrePositivity.KST.SConstruction.PointedSSetObject.obj
+#print axioms SerrePositivity.KST.SConstruction.PointedSSetObject.obj
