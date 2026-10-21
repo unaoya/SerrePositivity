@@ -2913,3 +2913,19 @@ public import SerrePositivity.InfinityCategories.F1.PullbackComparisonTriangle
 public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackLiftPreservation
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackProjections
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackLifts
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackMarked
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackMarkedEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackMarkedRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackMarkedCore
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackBoundaryFiber

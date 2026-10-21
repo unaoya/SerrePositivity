@@ -8116,3 +8116,47 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackRawCorePre
 
 #check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackRawCorePre_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackOverMap_fst
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackOverMap_snd
+
+#check @SerrePositivity.InfinityCategories.exists_cocartesianScaffoldPullbackMatchingLift
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMark
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedHom
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedPre
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedPredicate_reflect
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedPre_ι
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedPre_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedCorePre
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedCorePre_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackOverMap_naturality
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMark_map
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedHomPre
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedHomPre_ι
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedPre_naturality
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedCoreRestriction
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedCorePre_naturality
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackMarkedCoreRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackBoundaryFiberPre
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackBoundaryFiberPre_ι
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackBoundaryFiberPre_isQCatEquivalence
