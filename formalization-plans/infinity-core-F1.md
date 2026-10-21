@@ -100,7 +100,7 @@
 元の第一三角形は指定合成に定値。元の後合成 fiber からの同じ外ホーン比較を構成し、可変辺が標準 Hom 比較そのものと証明済み。
 合成三角形全体は Kan。第一辺射影は自明 Kan 同値。対角評価は指定外ホーン制限の pullback で Kan fibration。その fiber 同型も構成済み。
 指定外ホーンの全パラメーターの一致と対角 fiber 同型を証明。元の比較を同じ対角 fiber へ移し、第二三角形と可変辺を保持する判定まで完了。
-次は coherent 合成族から同じ合成空間への全体比較を作り、対角の作用と元の第二三角形を揃えて fiber 比較の同値性を証明する。主写像の大域充満忠実性・本質的全射性・一般の底への帰着は残る。正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
+同じ coherent 合成三角形からの全体比較は同値と証明済み。次は対角を後合成の作用と、元の fiber 比較の第二三角形を同じ合成三角形と揃え、fiber 比較の同値性を証明する。主写像の大域充満忠実性・本質的全射性・一般の底への帰着は残る。正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
 ## 0. 目標と範囲
 

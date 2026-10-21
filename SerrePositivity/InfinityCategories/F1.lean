@@ -2052,3 +2052,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDi
 public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDiagonalFaces
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDiagonalCriterion
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionFixedTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionCorrespondence
