@@ -1855,3 +1855,6 @@ public import SerrePositivity.EInfinity.Hammock.ThreeArrowValue
 public import SerrePositivity.EInfinity.BarrattEccles.HigherComparisonComponents
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLocalizationValue
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceHammockComponentsValue
+public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockAugmentationValue
+public import SerrePositivity.EInfinity.SimplicialLocalization.DKHammockComponentsValue
+public import SerrePositivity.EInfinity.Hammock.ZigzagValueNaturality

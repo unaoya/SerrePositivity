@@ -2162,7 +2162,15 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 `mappingSpaceReducedHammockComponentsIso_value` は全 π₀ 類での既存 Map^h 同値との一致。
 `algebraReducedHammockPiZeroValue_bijective/algebraReducedHammockPiZeroEquiv` は
 同じ元の評価そのものによる hammock の π₀ と普通の局所化 Hom の同値。
-native DK 側の評価との照合を通じた既存 DK/Map^h π₀ 同値との一致、∞ 局所化の普遍性は後続。
+`freeHammockValue_augmentation` は各自由次数・全語で元の DK augmentation の値を回収する。
+`freeHammockDiagonalComparison_augmentation_value/freeHammockDiagonalReduction_value` は
+元の左右比較射と同じ局所化への評価の全単体写像の正方形。
+`dkHammockComparisonIso_components_value` は native DK 比較の誘導する π₀ 写像が
+全類で元の `localizationHomPiZeroEquiv` を回収することを示す。
+`Zigzag.Value.edge_naturality/pathNatTrans/value_naturality` は反転関手の元の自然変換と
+全語の評価の両立。自然変換の成分の可逆性は仮定しない。
+元の cofibrant 包含・HomLift・局所化同値を通す既存 DK/Map^h π₀ 同値との一致、
+∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性まで完成。既存 π₀ 同値との整合、∞ 局所化の普遍性は後続。
