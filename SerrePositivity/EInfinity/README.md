@@ -2013,7 +2013,17 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `forwardForward_relative_obj` は固定端点の表示を移す元の全圏関手で同じ対象を回収。
 `forwardForward_relative_functor` は元の相対関手・底と両係数の比較との全対象・全射の
 正方形の厳密な一致。`forwardForwardCatIso/forwardForwardGraphIso` は同じ元の切断関手を
-順方向とする厳密な同型。これらを単体図式に束ねる工程と他の向きは後続。
+順方向とする厳密な同型。他の向きと全語への弱比較は後続。
+`FirstColumn.forwardForwardDiagram` は元の固定表示を持つ相対図式からの二方向図式。
+`forwardForwardCategoryDiagramIso/forwardForwardGraphDiagramIso/forwardForwardDiagonalIso` は
+元の全作用素と全単体の同じ切断関手による自然同型。
+`forwardForwardAugmentation/forwardForwardDiagonalAugmentation_square` は元の augmentation
+を保持する。`forwardForwardDiagonalAugmentation_weak_iff` は元の Word 対角射自身の
+弱同値性と、既存の二方向対角定理の実際の射自身の弱同値性の同値。
+`freeFirstMarkedObjectEquiv` は元の全自由次数の指定部分圏の対象表示と全作用素の回収。
+`freeFirstSourceHomIso_augmentation/freeFirstHomSpaceMap_weak` は底の元の固定 Hom 比較と
+既存の native 指定 Hom augmentation の正方形による同じ比較射自身の弱同値性。
+右係数の元の Hom 比較と、残りの語の左係数・他の向きへの移送は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

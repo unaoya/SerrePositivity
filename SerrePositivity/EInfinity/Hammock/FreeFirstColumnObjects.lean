@@ -1,0 +1,59 @@
+module
+
+public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardForwardDiagonalAugmentation
+public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects
+public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionCanonicalMarkedHom
+
+/-!
+# 元の自由解像の前向き二列の係数と指定対象の表示
+
+概要：元の各自由次数の二方向図式と augmentation、指定部分圏の対象表示の全単射を得る。
+方針：元の対象の augmentation と全作用素の等式を使う。
+規約：元の指定部分圏の対象・全射を保つ。
+使われ方：DK10.4–10.6の元の固定頂点の入力への代入。
+-/
+
+@[expose] public section
+noncomputable section
+universe u
+namespace SerrePositivity.EInfinity.Hammock.FirstColumn
+open CategoryTheory SimplicialLocalization
+variable (C : RelativeCategory.{u})
+def markedObjectEquiv : C.category ≃ WideSubcategory C.weakEquivalences where
+  toFun X := ⟨X⟩
+  invFun X := X.obj
+  left_inv _ := rfl
+  right_inv _ := rfl
+
+def freeForwardForwardDiagram (w : Word) (X Y : C.category) :
+    SimplicialObject TwoSidedDiagram.Data.{u} :=
+  forwardForwardDiagram (freeResolution C) (freeResolutionObject C)
+    (fun θ X => freeResolutionObject_naturality C θ X) w X Y
+
+def freeForwardForwardAugmentation (w : Word) (X Y : C.category) :
+    freeForwardForwardDiagram C w X Y ⟶
+      (Functor.const SimplexCategoryᵒᵖ).obj (forwardForwardData C w X Y) :=
+  forwardForwardAugmentation (freeResolution C) C (freeResolutionObject C)
+    (fun θ X => freeResolutionObject_naturality C θ X) (freeResolutionAugmentationNatTrans C)
+    (freeResolutionObject_augmentation C) w X Y
+
+def freeFirstMarkedObjectEquiv (n : SimplexCategoryᵒᵖ) :
+    C.category ≃ WideSubcategory ((freeResolution C).obj n).weakEquivalences :=
+  (freeResolutionObjectEquiv C n).symm.trans (markedObjectEquiv ((freeResolution C).obj n))
+
+lemma freeFirstMarkedObjectEquiv_apply (n : SimplexCategoryᵒᵖ) (X : C.category) :
+    freeFirstMarkedObjectEquiv C n X =
+      FixedObjectDiagram.markedObject (freeResolution C) (freeResolutionObject C) n X := rfl
+lemma freeFirstMarkedObjectEquiv_naturality (w : Word) (X Y : C.category)
+    {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (Z : C.category) :
+    ((freeForwardForwardDiagram C w X Y).map θ).base.obj (freeFirstMarkedObjectEquiv C n Z) =
+      freeFirstMarkedObjectEquiv C m Z :=
+  congrArg (fun Z => (⟨Z⟩ : WideSubcategory ((freeResolution C).obj m).weakEquivalences))
+    (freeResolutionObject_naturality C θ Z)
+lemma freeFirstMarkedObjectEquiv_augmentation (w : Word) (X Y : C.category)
+    (n : SimplexCategoryᵒᵖ) (Z : C.category) :
+    ((freeForwardForwardAugmentation C w X Y).app n).base.obj (freeFirstMarkedObjectEquiv C n Z) =
+      markedObjectEquiv C Z :=
+  congrArg (fun Z => (⟨Z⟩ : WideSubcategory C.weakEquivalences))
+    (freeResolutionObject_augmentation C n Z)
+end SerrePositivity.EInfinity.Hammock.FirstColumn
