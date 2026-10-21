@@ -1401,4 +1401,17 @@ public import SerrePositivity.KST.SConstruction.CubeWordRightKeep
 public import SerrePositivity.KST.SConstruction.SerreCubeTensorIso
 public import SerrePositivity.KST.SConstruction.MonoidalRightTensorStep
 public import SerrePositivity.KST.SConstruction.SerreCubeRightTensorFunctor
+public import SerrePositivity.KST.SConstruction.ConcreteCubeTensor
+public import SerrePositivity.KST.SConstruction.ConcreteCubeTensorWhisker
+public import SerrePositivity.KST.SConstruction.CubeNormalGenerated
+public import SerrePositivity.KST.SConstruction.CubeNormalTensor
+public import SerrePositivity.KST.SConstruction.CubeRightKeepHom
+public import SerrePositivity.KST.SConstruction.CubeThreeNormalTensor
+public import SerrePositivity.KST.SConstruction.CubeVertexBlocks
+public import SerrePositivity.KST.SConstruction.MonoidalRightTensorMapLaws
+public import SerrePositivity.KST.SConstruction.SerreCubeRightKeepNaturality
+public import SerrePositivity.KST.SConstruction.SerreCubeRightTensorMap
+public import SerrePositivity.KST.SConstruction.SerreCubeTensorHom
+public import SerrePositivity.KST.SConstruction.SerreCubeTensorLeftNaturality
+public import SerrePositivity.KST.SConstruction.SerreRightKeepHomTensor
 /-! # ∞-S• 構成と連結 K 理論 -/
