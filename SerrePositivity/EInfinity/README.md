@@ -1576,7 +1576,20 @@ prefix・残りの同じ余極限の像の一致、reduction・反復・積分�
 全語の非空余極限との同型の後の包含が元の `ambientMap` 自身であることを回収する。
 `nonemptyCut/inclusion_nonemptyCut/inclusion_nonemptyIso_val` は元の非空部分上の切断と
 元の各語の標準射・切断を回収。任意可換環の実際の全自由次数でも検証。
-残りの文字列が元の先頭を除いたものである式・長さの反復・逆構成・自由積分解は後続。
+残りの文字列の tail 式・長さの減少・各次数での有限反復は以下。逆構成・自由積分解は後続。
+`GeneratorWord.composable_hom_flatten`・`value_flatten/value_append/value_forward` は
+元の全列の順序と貼り戻しの文字列の連結を保持する。
+`AttachedPrefix.prefix_value/generator_value/refined_value/value_cons_residual` は全行で元の
+指定 prefix の空性・同じ一文字・全図式の回収と生成矢を先頭とする分解を証明する。
+`FactorTarget.wordValue`・`point_wordValue/colimitCut_wordValue/nonemptyCut_wordValue` は
+実際の切断射と元の余極限の非指定文字列評価の回収式。
+`nonemptyCut_generator/nonemptyCut_residual_tail/nonemptyCut_residual_length_lt` は
+元の任意の非空点の先頭・残りの tail・厳密な長さの減少を証明する。
+`cutRec/cutRec_empty/cutRec_nonempty` は同じ残りの点による長さの依存再帰。
+`Spine/spineWithValue/spine_word/spine_empty/spine_nonempty` は各次数の元の指定 prefix と
+同じ生成矢を有限回取り出し、元の生成文字列を厳密に回収する。任意可換環の実モデルでも検証。
+終端は元の空文字列の hammock の点。指定部分圏の hammock との終端の同定、反復の全単体作用素への
+自然性、貼り戻しとの逆関係と積分解・単体的 pushout は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

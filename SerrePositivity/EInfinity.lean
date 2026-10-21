@@ -1250,3 +1250,12 @@ public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyReflection
 public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptySpace
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueNonempty
 public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWordPath
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutRecursion
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutResidualLength
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutSpine
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutValueRecovery
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorTargetValue
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFirstFactorValue
+public import SerrePositivity.EInfinity.Hammock.UnmarkedValueAppend
+public import SerrePositivity.EInfinity.Hammock.UnmarkedValueFlatten
+public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWordPathFlatten
