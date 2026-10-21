@@ -1471,4 +1471,12 @@ public import SerrePositivity.KST.SConstruction.CubicalSerreDayUnitCoherence
 public import SerrePositivity.KST.SConstruction.CubicalSerreDayAssociativity
 public import SerrePositivity.KST.SConstruction.CubicalSerreDayMonoidal
 public import SerrePositivity.KST.SConstruction.CubicalSerreDayMonoidalRecovery
+public import SerrePositivity.KST.SConstruction.ComonoidForgetStructure
+public import SerrePositivity.KST.SConstruction.ComonoidGeneratorCompatibility
+public import SerrePositivity.KST.SConstruction.ComonoidMonoidalLift
+public import SerrePositivity.KST.SConstruction.CubicalSerreComonoidCells
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayComonoidComparison
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayComonoidUnit
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayComonoidMonoidal
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayComonoidRecovery
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -19513,3 +19513,68 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalDaySerre_tensorator_cell
 #check @SerrePositivity.KST.SConstruction.cubicalDaySerre_cotensorator_cell
 #print axioms SerrePositivity.KST.SConstruction.cubicalDaySerre_cotensorator_cell
+
+#check @SerrePositivity.KST.SConstruction.comonoidForget_unitObj
+#print axioms SerrePositivity.KST.SConstruction.comonoidForget_unitObj
+#check @SerrePositivity.KST.SConstruction.comonoidForget_associator
+#print axioms SerrePositivity.KST.SConstruction.comonoidForget_associator
+#check @SerrePositivity.KST.SConstruction.comonoidForget_leftUnitor
+#print axioms SerrePositivity.KST.SConstruction.comonoidForget_leftUnitor
+#check @SerrePositivity.KST.SConstruction.comonoidForget_rightUnitor
+#print axioms SerrePositivity.KST.SConstruction.comonoidForget_rightUnitor
+#check @SerrePositivity.KST.SConstruction.comonoidGenerator_counit_compatibility
+#print axioms SerrePositivity.KST.SConstruction.comonoidGenerator_counit_compatibility
+#check @SerrePositivity.KST.SConstruction.comonoidGenerator_comul_compatibility
+#print axioms SerrePositivity.KST.SConstruction.comonoidGenerator_comul_compatibility
+#check @SerrePositivity.KST.SConstruction.comonoidCoreMonoidalLift
+#print axioms SerrePositivity.KST.SConstruction.comonoidCoreMonoidalLift
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidCell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidCell
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidCell_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidCell_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidDayPair
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidDayPair
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeComplex_cotensorator_hom
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeComplex_cotensorator_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidDayPair_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidDayPair_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_isComonHom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_isComonHom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidComparison
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidComparison
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidComparison_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidComparison_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidComparison_isIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidComparison_isIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayUnitGenerator_isComonHom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitGenerator_isComonHom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidUnit
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidUnit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidUnit_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidUnit_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidUnit_inv
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidUnit_inv
+#check @SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids
+#print axioms SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids
+#check @SerrePositivity.KST.SConstruction.cubicalDaySerreComonoidsCoreMonoidal
+#print axioms SerrePositivity.KST.SConstruction.cubicalDaySerreComonoidsCoreMonoidal
+#check @SerrePositivity.KST.SConstruction.cubicalDaySerreComonoidsMonoidal
+#print axioms SerrePositivity.KST.SConstruction.cubicalDaySerreComonoidsMonoidal
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidIso_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidIso_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidIso_inv
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComonoidIso_inv
+#check @SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids_tensorator
+#print axioms SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids_tensorator
+#check @SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids_cotensorator
+#print axioms SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids_cotensorator
+#check @SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids_unit
+#check @SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids_counit
+#print axioms SerrePositivity.KST.SConstruction.cubicalDaySerreComonoids_counit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_counit
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_counit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_comul
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_comul
