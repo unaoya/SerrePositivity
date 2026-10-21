@@ -571,7 +571,18 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.MonoidObjectAlongMono,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCover,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverFunctor,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverTowers]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverTowers,
+    `SerrePositivity.KST.LocalizingInvariants.CochainHomSupport,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTruncationDesc,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorTruncationDesc,
+    `SerrePositivity.KST.LocalizingInvariants.MonoidObjectAlongEpi,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikov,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovDesc,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTransition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTower]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
