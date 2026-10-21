@@ -20867,3 +20867,69 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexReverseLambdaHom_isInitial
 #check @SerrePositivity.KST.SConstruction.simplexReverseLambdaHom_isZero
 #print axioms SerrePositivity.KST.SConstruction.simplexReverseLambdaHom_isZero
+#check @SerrePositivity.KST.SConstruction.standardSimplexVertex_map
+#print axioms SerrePositivity.KST.SConstruction.standardSimplexVertex_map
+#check @SerrePositivity.KST.SConstruction.simplexIntervalImageNecklace
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalImageNecklace
+#check @SerrePositivity.KST.SConstruction.simplexIntervalBeadMap
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalBeadMap
+#check @SerrePositivity.KST.SConstruction.simplexIntervalBeadMap_triangle
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalBeadMap_triangle
+#check @SerrePositivity.KST.SConstruction.simplexIntervalBeadMap_vertex
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalBeadMap_vertex
+#check @SerrePositivity.KST.SConstruction.simplexIntervalBeadMap_id
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalBeadMap_id
+#check @SerrePositivity.KST.SConstruction.simplexIntervalBeadMap_comp
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalBeadMap_comp
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubicalMap
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubicalMap
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubicalCoreIso_map
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubicalCoreIso_map
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubeDimensionIso
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubeDimensionIso
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubeMap
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubeMap
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubicalMappingIso_map
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubicalMappingIso_map
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubicalMap_comp
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubicalMap_comp
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubeMap_id
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubeMap_id
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubeMap_comp
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubeMap_comp
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubicalMap_id
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubicalMap_id
+#check @SerrePositivity.KST.SConstruction.necklaceBeadMap_joint
+#print axioms SerrePositivity.KST.SConstruction.necklaceBeadMap_joint
+#check @SerrePositivity.KST.SConstruction.necklaceBeadBooleanMap_coordinate
+#print axioms SerrePositivity.KST.SConstruction.necklaceBeadBooleanMap_coordinate
+#check @SerrePositivity.KST.SConstruction.simplexIntervalBooleanMap_coordinate
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalBooleanMap_coordinate
+#check @SerrePositivity.KST.SConstruction.necklaceBeadBooleanMap_zero
+#print axioms SerrePositivity.KST.SConstruction.necklaceBeadBooleanMap_zero
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomIso_map
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomIso_map
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomComonoidIso_map
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomComonoidIso_map
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_triangle
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_triangle
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCubicalCoreIso_comp
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCubicalCoreIso_comp
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexWedge_vertex_left
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexWedge_vertex_left
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexWedge_vertex_right
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexWedge_vertex_right
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_vertex_left
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_vertex_left
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_vertex_right
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_vertex_right
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_vertex
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_vertex
+#check @SerrePositivity.KST.SConstruction.simplexIntervalSeam
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalSeam
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_seam
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_seam
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_vertex_injective
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_vertex_injective

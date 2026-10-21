@@ -1585,4 +1585,12 @@ public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalTerminal
 public import SerrePositivity.KST.SConstruction.SimplexIntervalCubicalMapping
 public import SerrePositivity.KST.SConstruction.SimplexIntervalLambdaHom
 public import SerrePositivity.KST.SConstruction.SimplexIntervalReverseHom
+public import SerrePositivity.KST.SConstruction.SimplexIntervalOperators
+public import SerrePositivity.KST.SConstruction.SimplexIntervalCubicalOperators
+public import SerrePositivity.KST.SConstruction.SimplexIntervalOperatorLaws
+public import SerrePositivity.KST.SConstruction.SimplexIntervalCubeCoordinates
+public import SerrePositivity.KST.SConstruction.SimplexIntervalLambdaOperators
+public import SerrePositivity.KST.SConstruction.SimplexIntervalComposition
+public import SerrePositivity.KST.SConstruction.SimplexIntervalCompositionCoordinates
+public import SerrePositivity.KST.SConstruction.SimplexIntervalCompositionSeam
 /-! # ∞-S• 構成と連結 K 理論 -/
