@@ -34,18 +34,17 @@ lemma localizationHo_inverts {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q
     (e := (edgeOfSimplex e.edge).map ((truncation 2).map F))
     (f := e.map ((truncation 2).map F)) rfl).mp (hF.choose ((hV e).mp hf))
 
-lemma localizationHo_isLocalization {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q]
+lemma localizationHo_isLocalization_of_inverts {X Q : SSet.{u}} [Quasicategory Q]
     (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
     (V : MorphismProperty (hoFunctor.obj X))
-    (hV : ∀ {x y} (e : Truncated.Edge (X := (truncation 2).obj X) x y),
-      V (SSet.Truncated.HomotopyCategory.homMk e) ↔ e.edge ∈ W) :
+    (hL : V.IsInvertedBy (hoFunctor.map F).toFunctor)
+    (hV : ∀ s ∈ W, V (SSet.Truncated.HomotopyCategory.homMk (edgeOfSimplex s))) :
     (hoFunctor.map F).toFunctor.IsLocalization V := by
   let L := (hoFunctor.map F).toFunctor
-  have hL := localizationHo_inverts F W hF V hV
   let S := Localization.Construction.lift L hL
   have hs : V.Q ⋙ S = L := Localization.Construction.fac L hL
   obtain ⟨T, ⟨e⟩⟩ := localizationHo_exists_factorization F W hF V.Q
-    (fun s hs => V.Q_inverts _ ((hV (edgeOfSimplex s)).mpr hs))
+    (fun s hs => V.Q_inverts _ (hV s hs))
   have hST : S ⋙ T ≅ 𝟭 V.Localization := by
     apply (Localization.fullyFaithfulWhiskeringLeft V.Q V V.Localization).preimageIso
     change V.Q ⋙ (S ⋙ T) ≅ V.Q ⋙ 𝟭 V.Localization
@@ -56,5 +55,14 @@ lemma localizationHo_isLocalization {X Q : SSet.{u}} [Quasicategory X] [Quasicat
     have h := Functor.isoWhiskerRight e S
     simpa only [Functor.assoc, hs, Functor.comp_id] using h
   exact ⟨hL, Functor.IsEquivalence.mk' T hST.symm hTS⟩
+
+lemma localizationHo_isLocalization {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q]
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
+    (V : MorphismProperty (hoFunctor.obj X))
+    (hV : ∀ {x y} (e : Truncated.Edge (X := (truncation 2).obj X) x y),
+      V (SSet.Truncated.HomotopyCategory.homMk e) ↔ e.edge ∈ W) :
+    (hoFunctor.map F).toFunctor.IsLocalization V :=
+  localizationHo_isLocalization_of_inverts F W hF V (localizationHo_inverts F W hF V hV)
+    (fun s hs => (hV (edgeOfSimplex s)).mpr hs)
 
 end SerrePositivity.KST.LocalizingInvariants

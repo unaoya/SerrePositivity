@@ -210,7 +210,15 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.StableFunctorMaps,
     `SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence,
     `SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies,
-    `SerrePositivity.KST.LocalizingInvariants.TammeRelativeOre]
+    `SerrePositivity.KST.LocalizingInvariants.TammeRelativeOre,
+    `SerrePositivity.KST.LocalizingInvariants.EquivalenceSpanTriangles,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanDiagrams,
+    `SerrePositivity.KST.LocalizingInvariants.FractionTriangleEvaluation,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.FixedFractionEvaluation,
+    `SerrePositivity.KST.LocalizingInvariants.FixedFractionPinchedEvaluation,
+    `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion,
+    `SerrePositivity.KST.LocalizingInvariants.FractionMappingComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
