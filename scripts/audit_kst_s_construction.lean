@@ -19979,3 +19979,59 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_pushoutIso
 #check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_pushoutIso
 #print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_pushoutIso
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.map_constantSimplex
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.map_constantSimplex
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.pointMap_comp_eq
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.pointMap_comp_eq
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.pointMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.pointMap_naturality
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_first
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_first
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_last
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_last
+#check @SerrePositivity.KST.SConstruction.necklaceWedge
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedge
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeMap_seam
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeMap_seam
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeMap
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeMap
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeMap_inl
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeMap_inl
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeMap_inr
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeMap_inr
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeMap_id
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeMap_id
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeMap_comp
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeMap_comp
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeFunctor
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeFunctor
+#check @SerrePositivity.KST.SConstruction.necklaceInWedge_seam
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedge_seam
+#check @SerrePositivity.KST.SConstruction.necklaceInWedge
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedge
+#check @SerrePositivity.KST.SConstruction.necklaceInWedge_inl
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedge_inl
+#check @SerrePositivity.KST.SConstruction.necklaceInWedge_inr
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedge_inr
+#check @SerrePositivity.KST.SConstruction.necklaceInWedgeMap
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedgeMap
+#check @SerrePositivity.KST.SConstruction.necklaceInWedgeFunctor
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedgeFunctor
+#check @SerrePositivity.KST.SConstruction.necklaceInWedgeFunctor_forget
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedgeFunctor_forget
+#check @SerrePositivity.KST.SConstruction.necklaceVertexMap_wedge_left
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexMap_wedge_left
+#check @SerrePositivity.KST.SConstruction.necklaceVertexMap_wedge_right
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexMap_wedge_right
+#check @SerrePositivity.KST.SConstruction.necklaceInWedge_postcompose_map
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedge_postcompose_map
+#check @SerrePositivity.KST.SConstruction.necklaceInWedge_postcompose_hom
+#print axioms SerrePositivity.KST.SConstruction.necklaceInWedge_postcompose_hom
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalMap
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalMap
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalCell_map
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalCell_map
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalMap_id
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalMap_id
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalMap_comp
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalMap_comp
