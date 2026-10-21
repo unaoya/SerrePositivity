@@ -97,9 +97,9 @@
 同じ全 Hom 作用の同値性は、実際の固定成分比較 `cocartesianHomFixedComponentComparison` の
 全 fiber での同値性と同値。分類先の fiber の三辺固定 prism の厳密な往復と、二三角形への制限は完了。
 実際の外ホーン pullback、第一三角形制限の Kan 性、指定外ホーン fiber から元の Hom fiber への同値まで完了。
-元の prism を全単体で切断対角評価に接続し、固定成分に向かう全混合 Hom の定値性まで証明済み。
+元の prism を全単体で切断対角評価に接続し、固定成分への全混合 Hom と同時刻 Hom の定値性まで証明済み。
 固定成分から同じ比較先の `cocartesianIntervalSourceCompositionVertex` を指定し、展開・対角まで証明済み。
-次は同時刻側の Hom を元の輸送射と同定し、第一三角形全体の一致、外ホーン fiber と後合成 fiber の比較へ進む。
+次は第一三角形のラベル別の対象・Hom 計算を豊穣関手の等式へ束ね、指定三角形の fiber へ元の比較を制限する。
 同じ主写像の充満忠実性・本質的全射性・一般の底への帰着は残る。正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
 ## 0. 目標と範囲

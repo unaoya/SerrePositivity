@@ -1970,3 +1970,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTransportHomCutSi
 public import SerrePositivity.InfinityCategories.F1.CoherentRightIntervalCutHom
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianSourceCutMixedHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianMixedHomVertices
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportCutPureHom

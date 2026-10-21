@@ -41,7 +41,8 @@ lemma cocartesianHomSourceComponent_cutMixedHom
   rw [cocartesianHomSourceComponent_mixedHom_yoneda f F G b s]
   simp only [SSet.comp_const]
 
-private lemma normalizedDiagonalCocartesianHom
+/-- 対角評価の対象を元の図式へ正規化すると、同じ Hom の混合評価になる。 -/
+lemma diagonalCocartesianTransportDiagramHom_normalized
     {C J : Type u} [Category.{u} C] [LinearOrder J] (A : J ⥤ C)
     (R : EnrichedFunctor SSet.{u} (SimplicialThickening J)
       (CocartesianTransportDiagramCategory C))
@@ -73,7 +74,7 @@ lemma cocartesianTransportHomCutSimplex_fixedMixedHom
           (cocartesianTransportHomCutSimplex_obj_one F G σ s.val.down t j hj)) =
       SSet.const ((quasicategoryCoreMap ((pre (F.val.map (σ.map (homOfLE hij)))).app
         (G.val.obj (σ.obj j)))).app (Opposite.op ⦋0⦌) b.down) := by
-  have h := normalizedDiagonalCocartesianHom (strictDiagramSimplexBase σ)
+  have h := diagonalCocartesianTransportDiagramHom_normalized (strictDiagramSimplexBase σ)
     (coherentRightIntervalCutSimplex s.val.down t) ⟨ULift.up i⟩ ⟨ULift.up j⟩ hij
     (coherentRightIntervalCutSimplex_obj_zero s.val.down t i hi)
     (coherentRightIntervalCutSimplex_obj_one s.val.down t j hj)
