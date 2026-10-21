@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInfinity
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationProjectiveIso
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleDerivedUnderlyingIso
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedDerivedComparison
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerve
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedValue
+import SerrePositivity.InfinityCategories.Derived.DGKernelGraphComparison
+import SerrePositivity.InfinityCategories.Derived.DGKernelIdentityInfinity
+import SerrePositivity.InfinityCategories.Derived.DGKernelTensorComposition
 import SerrePositivity.InfinityCategories.Derived.DGHomSourceOppositeComparison
 import SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaIsoNaturality
 import SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaOppositeComparison
@@ -3088,6 +3099,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationProjectiveIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleDerivedUnderlyingIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedDerivedComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedValue,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelGraphComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelIdentityInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTensorComposition,
+
     `SerrePositivity.InfinityCategories.Derived.DGHomSourceOppositeComparison,
     `SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaIsoNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaOppositeComparison,
