@@ -2580,3 +2580,20 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan_restrict
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan_vertex
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeCospan_apex
+
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitCylinderMap
+#check @SerrePositivity.InfinityCategories.F2.coconeTransformationHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.coconeHomotopyUnitCylinder
+#check @SerrePositivity.InfinityCategories.F2.coconeHomotopyUnitCylinder_source
+#check @SerrePositivity.InfinityCategories.F2.coconeHomotopyUnitCylinder_target
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitCylinder
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitCylinder_source
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitCylinder_target
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare_bottom
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare_top
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare_source
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare_target
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantEdge_curry
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitNaturality
