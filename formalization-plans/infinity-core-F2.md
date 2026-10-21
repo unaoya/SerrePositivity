@@ -49,8 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   任意の有限標的射の二入力を、共通の元の境界円柱を保って元の fiber へ同時に輸送・反映し、実際の比較射への相対有限検出・持ち上げを構成。値の射の境界と全比較円柱の制限を厳密に保持。
   任意の Kan 境界で相対持ち上げを構成し、境界移動を除去。元の全空間 Kan 引き戻し比較の弱同値性・ホモトピー逆を全標準境界の path 置換充填から証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較の頂点辺・恒等図式辺を持つ全錐比較と各脚の h での自然性を保持。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 全錐と実局所比較を共通の始点固定 prism 空間へ揃え、同じ終点評価・縮小・宇宙下降・fiber Hom 関手で比較。元の普遍頂点・左右の長辺の像を実際の fiber 射へ厳密に同定し、端点補正後の局所指定像を元の coherentTransformationTriangleFiberIso と型付き等式で同定。中間の補正の相殺から、native 全錐の指定 path の像は元の左右の実際の fiber 三角形同型の指定合成に等しい。実際の模型 fiber 比較の指定可換同型も同じ native 指定像に等しい。未完：native 普遍性からの fiber 比較の同値性、一般の有限極限交換・Ind。
-  三集約同時ビルド 8336 jobs、公理監査 5731 宣言・同時 import 成功。共通関手の頂点同定・指定 path の合成則・模型の指定可換同型との一致の追加30宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
+  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 全錐と実局所比較を共通の始点固定 prism 空間で照合。明示した頂点同定と端点補正の相殺から、native 全錐の指定 path の fiber 像、元の左右の実際の三角形同型の合成、模型 fiber 比較の指定可換同型の三者の型付き等式を証明。元の全 pointed 錐を図式上の切断族へ表示し、展開が同じ全錐の厳密な制限であることを証明。始点族を既存の二つの fiber 同型へ同定し、各点の元の native 錐が極限なら、この実際の切断族は同値だと証明。未完：切断空間と指定 path を保つ模型 fiber 比較への移送、一般の有限極限交換・Ind。
+  三集約同時ビルド 8339 jobs、公理監査 5776 宣言・同時 import 成功。native 全錐の切断族・始点の fiber 同型・元の極限性からの同値性の追加16宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -102,7 +102,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：coherentCospanModelFiberPathIso_eq_native を用い、元の各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導く。coneSectionHomComparison と pointed 全錐の section 族を比較し、元の二脚・指定 path を保って native 比較候補の弱同値性へ接続する。
+- F2N-1：coherentCospanNativeConeSections_isQCatEquivalence と同じ切断族の厳密な展開式を使い、cospan の切断空間から実際の模型 fiber 引き戻しへの比較を構成する。元の二脚と coherentCospanModelFiberPathIso_eq_native の指定同型を保って、模型 fiber 比較・native 比較候補の弱同値性へ接続する。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
@@ -169,7 +169,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   任意の Kan 始域境界への相対持ち上げと、その境界を厳密に固定する補正を構成。
   全標準境界の path 置換終点の自明 Kan 性から、元の比較の弱同値性と単体的ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成し、全錐の可逆比較・元の比較の頂点辺・恒等図式辺・各脚の自然性を保持。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 全錐と実局所比較を共通の始点固定 prism 空間へ揃え、同じ終点評価・縮小・宇宙下降・fiber Hom 関手で比較。元の普遍頂点・左右の長辺の像を実際の fiber 射へ厳密に同定し、端点補正後の局所指定像を元の coherentTransformationTriangleFiberIso と型付き等式で同定。中間の補正の相殺から、native 全錐の指定 path の像は元の左右の実際の fiber 三角形同型の指定合成に等しい。実際の模型 fiber 比較の指定可換同型も同じ native 指定像に等しい。未完：native 普遍性からの fiber 比較の同値性、一般の有限極限交換・Ind。
+  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 全錐と実局所比較を共通の始点固定 prism 空間で照合。明示した頂点同定と端点補正の相殺から、native 全錐の指定 path の fiber 像、元の左右の実際の三角形同型の合成、模型 fiber 比較の指定可換同型の三者の型付き等式を証明。元の全 pointed 錐を図式上の切断族へ表示し、展開が同じ全錐の厳密な制限であることを証明。始点族を既存の二つの fiber 同型へ同定し、各点の元の native 錐が極限なら、この実際の切断族は同値だと証明。未完：切断空間と指定 path を保つ模型 fiber 比較への移送、一般の有限極限交換・Ind。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -179,7 +179,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：native 全錐の指定 path の共通関手による像、左右の実際の fiber 三角形同型の合成、模型 fiber 比較の指定可換同型の三者の型付き等式まで証明済み。各点の native 錐の普遍性から元の模型 fiber 比較の同値性を証明し、native 比較候補の弱同値性へ接続。
+- 次の一手：元の native 錐の極限性から、元の全 pointed 錐の実際の切断族の同値性まで証明済み。cospan の切断空間と模型 fiber 引き戻しを比較し、元の二脚と指定 path の同型を保って模型 fiber 比較の同値性へ接続。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
