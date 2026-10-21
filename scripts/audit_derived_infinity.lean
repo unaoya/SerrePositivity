@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedMapBridges
+import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedPathReflection
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedTypedHom
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatBimoduleHomTypedInclusion
+import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerEquation
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatBimoduleHomTypedWhisker
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionHomNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
+import SerrePositivity.InfinityCategories.Derived.ActionComparisonSquareHomTransfer
+import SerrePositivity.InfinityCategories.Derived.ActionComparisonHomNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedNaturalityTransport
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionHomNaturality
 import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskering
 import SerrePositivity.InfinityCategories.Derived.FunctorHomSquareTransport
 import SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedRestrictionResolution
@@ -3982,6 +3994,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomTypedMapBridges,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomTypedPathReflection,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedTypedHom,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatBimoduleHomTypedInclusion,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatBimoduleHomTypedWhisker,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.ActionComparisonSquareHomTransfer,
+    `SerrePositivity.InfinityCategories.Derived.ActionComparisonHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomTypedNaturalityTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionHomNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskering,
     `SerrePositivity.InfinityCategories.Derived.FunctorHomSquareTransport,
     `SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedRestrictionResolution,
