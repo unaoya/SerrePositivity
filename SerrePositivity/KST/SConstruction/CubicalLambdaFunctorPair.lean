@@ -8,7 +8,7 @@ public import SerrePositivity.KST.SConstruction.CubicalLambdaDiagonal
 -/
 @[expose] public section
 noncomputable section
-universe u v w
+universe u v w z t
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory Simplicial SSet
 open SerrePositivity.DifferentialGraded
@@ -58,7 +58,7 @@ lemma cubicalLambdaFunctorPair_precompose {K L : SSet.{u}} (a : K ⟶ L)
   rw [← tensorHom_comp_tensorHom, ← Category.assoc, ← h, Category.assoc]
 
 /-- 二つの厳密 dg 後合成は、元の Serre 対角による組と厳密に可換。 -/
-lemma cubicalLambdaFunctorPair_post {K : SSet.{u}} {B : Type v} {C : Type w}
+lemma cubicalLambdaFunctorPair_post {K : SSet.{u}} {B : Type z} {C : Type t}
     [DGCategory A B] [DGCategory A C]
     (F : DGFunctor A (CubicalLambda A K) D) (G : DGFunctor A (CubicalLambda A K) E)
     (H : DGFunctor A D B) (I : DGFunctor A E C) :

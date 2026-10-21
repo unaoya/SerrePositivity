@@ -23370,3 +23370,126 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgFunctorMappingTensorNativeComparison_composition
 #print axioms SerrePositivity.KST.SConstruction.dgFunctorMappingTensorNativeComparison_composition
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalLeftDG
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalLeftDG
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightInnerDG
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightInnerDG
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightDG
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightDG
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightInnerDG_map
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightInnerDG_map
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalLeftDG_map
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalLeftDG_map
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightDG_map
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightDG_map
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalDG_associativity
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalDG_associativity
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorIdentityPoint
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorIdentityPoint
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorIdentityPoint_obj
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorIdentityPoint_obj
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorIdentityPoint_map
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorIdentityPoint_map
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalLeftUnitDG
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalLeftUnitDG
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalLeftUnitDG_map
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalLeftUnitDG_map
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalDG_left_unit
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalDG_left_unit
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightUnitDG
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightUnitDG
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightUnitDG_map
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalRightUnitDG_map
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorHorizontalDG_right_unit
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHorizontalDG_right_unit
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaHorizontal_associativity
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaHorizontal_associativity
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaHorizontal_left_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaHorizontal_left_unit
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaHorizontal_right_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaHorizontal_right_unit
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposeSimplex
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposeSimplex
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_app
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_app
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposeSimplex_associativity
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposeSimplex_associativity
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeIdentitySimplex
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeIdentitySimplex
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeIdentitySimplex_pullback
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeIdentitySimplex_pullback
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeIdentitySimplex_zero
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeIdentitySimplex_zero
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposeSimplex_left_unit
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposeSimplex_left_unit
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposeSimplex_right_unit
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposeSimplex_right_unit
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_associativity
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_associativity
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeIdentity
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeIdentity
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeIdentity_app
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeIdentity_app
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_left_unit
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_left_unit
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_right_unit
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeComposition_right_unit
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeMappingVertexEquiv
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeMappingVertexEquiv
+
+#check @SerrePositivity.KST.SConstruction.smallDGNativeEnrichment
+#print axioms SerrePositivity.KST.SConstruction.smallDGNativeEnrichment
+
+#check @SerrePositivity.KST.SConstruction.smallDGNativeHomEquiv
+#print axioms SerrePositivity.KST.SConstruction.smallDGNativeHomEquiv
+
+#check @SerrePositivity.KST.SConstruction.smallDGNativeHomEquiv_vertex
+#print axioms SerrePositivity.KST.SConstruction.smallDGNativeHomEquiv_vertex
+
+#check @SerrePositivity.KST.SConstruction.smallDGNativeHomEquiv_comp
+#print axioms SerrePositivity.KST.SConstruction.smallDGNativeHomEquiv_comp
+
+#check @SerrePositivity.KST.SConstruction.smallBundledDGNativeSimplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.smallBundledDGNativeSimplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.smallBundledDGNativeHom_kan
+#print axioms SerrePositivity.KST.SConstruction.smallBundledDGNativeHom_kan
+
+#check @SerrePositivity.KST.SConstruction.smallDGNativeNerve
+#print axioms SerrePositivity.KST.SConstruction.smallDGNativeNerve
+
+#check @SerrePositivity.KST.SConstruction.smallDGNativeNerve_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.smallDGNativeNerve_quasicategory

@@ -1912,4 +1912,12 @@ public import SerrePositivity.KST.SConstruction.DGCoherentComparisonNaturality
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeMappingComparison
 public import SerrePositivity.KST.SConstruction.DGNerveTensorCore
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeComposition
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDGAssociativity
+public import SerrePositivity.KST.SConstruction.DGFunctorIdentityPoint
+public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDGUnits
+public import SerrePositivity.KST.SConstruction.CubicalLambdaHorizontalCoherence
+public import SerrePositivity.KST.SConstruction.DGFunctorNativeSimplexCoherence
+public import SerrePositivity.KST.SConstruction.DGFunctorNativeCompositionCoherence
+public import SerrePositivity.KST.SConstruction.SmallDGNativeSimplicialCategory
+public import SerrePositivity.KST.SConstruction.SmallDGNativeNerve
 /-! # ∞-S• 構成と連結 K 理論 -/
