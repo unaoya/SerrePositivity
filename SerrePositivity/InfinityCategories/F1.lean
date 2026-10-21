@@ -2148,3 +2148,5 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianInnerTwoHornDetec
 public import SerrePositivity.InfinityCategories.F1.CocartesianInnerTwoHornRestriction
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianInnerHornHomRestriction
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPushoutLift
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPushout
