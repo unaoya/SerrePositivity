@@ -1714,4 +1714,12 @@ public import SerrePositivity.KST.SConstruction.SimplexHAZeroChainNaturality
 public import SerrePositivity.KST.SConstruction.SimplexHAZeroChainRecovery
 public import SerrePositivity.KST.SConstruction.SimplexHABeadTailCells
 public import SerrePositivity.KST.SConstruction.SimplexHAZeroCell
+public import SerrePositivity.KST.SConstruction.SimplexHABeadWordReindex
+public import SerrePositivity.KST.SConstruction.SimplexHAReindexEvaluation
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeBounds
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeEquations
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeValues
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeCells
+public import SerrePositivity.KST.SConstruction.SimplexHARawWordComposition
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeRawValues
 /-! # ∞-S• 構成と連結 K 理論 -/

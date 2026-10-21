@@ -21683,3 +21683,47 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_zero_cell
 #check @SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_subset_recovery
 #print axioms SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_subset_recovery
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordReindex
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordReindex
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordReindex_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordReindex_heq
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordValue_reindex
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordValue_reindex
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordCell_reindex
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordCell_reindex
+#check @SerrePositivity.KST.SConstruction.simplexHADecodePrefix_last
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodePrefix_last
+#check @SerrePositivity.KST.SConstruction.simplexHADecodePrefix_tail
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodePrefix_tail
+#check @SerrePositivity.KST.SConstruction.simplexHADecodePrefix_cut
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodePrefix_cut
+#check @SerrePositivity.KST.SConstruction.simplexHADecodePrefix_insert
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodePrefix_insert
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero_value
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one_value
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge_value
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero_cell
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one_cell
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge_cell
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_reindex
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_reindex
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_join
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_join
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero_rawValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero_rawValue
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one_rawValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one_rawValue
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge_rawValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge_rawValue

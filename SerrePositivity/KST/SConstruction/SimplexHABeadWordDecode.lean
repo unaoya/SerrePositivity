@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexHABeadTail
+public import SerrePositivity.KST.SConstruction.SimplexHABeadWordReindex
 public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorFaces
 
 /-! # 元の全 tensor 生成元の部分集合 bead 連結語への読み替え
@@ -43,8 +44,7 @@ def simplexHABeadWordDecode {n : ℕ} (m : ℕ) (i : SerreCubeGeneratorIndex m)
           serreCubeGeneratorFreeDimension m i + T.card - 1 := by
         have hp := Finset.card_pos.mpr hT
         omega
-      rw [← he]
-      exact .join hl (simplexHABeadTail T hT r hb)
+      exact simplexHABeadWordReindex rfl he (.join hl (simplexHABeadTail T hT r hb))
     · have hbi : ∀ t ∈ insert r T, vp (Fin.last m) < t := by
         intro t ht
         rcases Finset.mem_insert.mp ht with rfl | ht
@@ -52,12 +52,10 @@ def simplexHABeadWordDecode {n : ℕ} (m : ℕ) (i : SerreCubeGeneratorIndex m)
         · exact hbp t ht
       have hi := ih i vp (insert r T) (Finset.insert_nonempty r T) hbi
       have hn := simplexHABeadTail_not_mem T r hb
-      have hi' : SimplexHABeadWord n (vp 0) (T.max' hT)
-          (serreCubeGeneratorFreeDimension m i + (T.card + 1) - 1) := by
-        simpa only [Finset.card_insert_of_notMem hn, simplexHABeadTail_max T hT r hb] using hi
       change SimplexHABeadWord n (vp 0) (T.max' hT)
         (serreCubeGeneratorFreeDimension m i + 1 + T.card - 1)
-      convert hi' using 1
-      omega
+      exact simplexHABeadWordReindex (simplexHABeadTail_max T hT r hb) (by
+        have hc := Finset.card_insert_of_notMem hn
+        omega) hi
 
 end SerrePositivity.KST.SConstruction
