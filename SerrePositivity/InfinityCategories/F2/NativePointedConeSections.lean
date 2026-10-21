@@ -79,6 +79,7 @@ def nativePointedConeSections : A ⟶
   nativePointedConeFullSections c s hs ≫
     HomotopyLimits.coneSectionRestriction c pointSpaceVertex.{u}
 
+omit [Quasicategory A] in
 /-- 図式上の切断族の展開は、元の全 pointed 錐の右因子への厳密な制限。 -/
 lemma nativePointedConeSections_uncurry :
     relativeFunctorUncurry (nativePointedConeSections c s hs) =
