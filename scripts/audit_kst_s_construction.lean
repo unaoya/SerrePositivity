@@ -22287,3 +22287,96 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_boundaryValue
 #print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_boundaryValue
+
+#check @SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex
+#print axioms SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex
+
+#check @SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_zero
+
+#check @SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_succ
+#print axioms SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_succ
+
+#check @SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_freeDimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_freeDimension
+
+#check @SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_degree
+#print axioms SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_degree
+
+#check @SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_top
+#print axioms SerrePositivity.KST.SConstruction.serreCubeInsertGeneratorIndex_top
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_succ_left_cast
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_succ_left_cast
+
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_generator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_generator
+
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_generator_cast
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_generator_cast
+
+#check @SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder
+
+#check @SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_succ_prefix
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_succ_prefix
+
+#check @SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_succ_last
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_succ_last
+
+#check @SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_bound
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeleteVertexOrder_bound
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordJoin_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordJoin_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_insert_zero_right
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_insert_zero_right
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_insert_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_insert_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_insert_zero_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_insert_zero_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_face_all_restriction
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_face_all_restriction
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zero_face_all
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zero_face_all
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_insert_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_insert_zero
+
+#check @SerrePositivity.KST.SConstruction.SerreCubeZeroEdgeIndex
+#print axioms SerrePositivity.KST.SConstruction.SerreCubeZeroEdgeIndex
+
+#check @SerrePositivity.KST.SConstruction.serreCubeZeroEdgeIndex_cases
+#print axioms SerrePositivity.KST.SConstruction.serreCubeZeroEdgeIndex_cases
+
+#check @SerrePositivity.KST.SConstruction.serreCubeZeroEdgeIndex_right
+#print axioms SerrePositivity.KST.SConstruction.serreCubeZeroEdgeIndex_right
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_top_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_top_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_top_generator_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_top_generator_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zeroEdge_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zeroEdge_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zeroEdge_generator_comm
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zeroEdge_generator_comm
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zeroEdge_source_boundary
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zeroEdge_source_boundary
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_zeroEdge_source_boundary
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_zeroEdge_source_boundary

@@ -1799,4 +1799,15 @@ public import SerrePositivity.KST.SConstruction.SimplexHADecodeRightTail
 public import SerrePositivity.KST.SConstruction.SimplexHARightTailOrder
 public import SerrePositivity.KST.SConstruction.SimplexHARightTailPrefix
 public import SerrePositivity.KST.SConstruction.SimplexHARightTailValues
+public import SerrePositivity.KST.SConstruction.SerreCubeInsertGeneratorIndex
+public import SerrePositivity.KST.SConstruction.SerreCubeInsertGeneratorImage
+public import SerrePositivity.KST.SConstruction.SimplexHADeleteVertexOrder
+public import SerrePositivity.KST.SConstruction.SimplexHABeadWordJoinEquality
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeInsertZero
+public import SerrePositivity.KST.SConstruction.SimplexHAInsertZeroValues
+public import SerrePositivity.KST.SConstruction.SimplexHAZeroFaceAllRestriction
+public import SerrePositivity.KST.SConstruction.SimplexHAZeroFaceAllDefect
+public import SerrePositivity.KST.SConstruction.SerreCubeZeroEdgeIndex
+public import SerrePositivity.KST.SConstruction.SimplexHAZeroEdgeCommutation
+public import SerrePositivity.KST.SConstruction.SimplexHARightTailSourceBoundary
 /-! # ∞-S• 構成と連結 K 理論 -/
