@@ -106,6 +106,18 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.coherentSmallFiberPointedTriangle_first
 #check @SerrePositivity.InfinityCategories.F2.coherentSmallFiberPointedTriangle_second
 
+#check @SerrePositivity.InfinityCategories.F2.smallRestrictedEndpointVertex
+#check @SerrePositivity.InfinityCategories.F2.smallRestrictedEndpointVertex_eq
+#check @SerrePositivity.InfinityCategories.F2.normalizedSmallTriangleEndpointIso
+#check @SerrePositivity.InfinityCategories.F2.normalizedSmallTriangleEndpointIso_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallTriangleRelativeIso_pre_eq_endpoint
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorBaseFiberHom
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorBaseFiberHom_vertex
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorFiberHom_eq_restrict
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleFiberIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleFiberIso_heq_map
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleFiberIso_heq_endpoint
+
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
 方針：宣言元モジュールを判別し、各宣言の公理を再帰的に収集する。

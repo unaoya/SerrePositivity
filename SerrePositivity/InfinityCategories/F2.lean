@@ -172,7 +172,7 @@ public import SerrePositivity.InfinityCategories.F2.CoherentTriangleRelativeFibe
 
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleRelativeRestriction
 
-public import SerrePositivity.InfinityCategories.F2.SmallRestrictedTriangleEndpoint
+public import SerrePositivity.InfinityCategories.F2.CoherentTriangleFiberEndpoint
 
 public import SerrePositivity.InfinityCategories.F2.SmallFiberTriangleLongVertex
 
