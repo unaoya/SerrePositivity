@@ -1,3 +1,19 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedIsoAlgebra
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellComposite
+import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorAlgebra
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransAlgebra
+import SerrePositivity.InfinityCategories.Derived.DGOrderedFunctorDiagram
+import SerrePositivity.InfinityCategories.Derived.DGStrictFunctorCategory
+import SerrePositivity.InfinityCategories.Derived.DGOrderedFunctorSimplex
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransCompositionDiagram
+import SerrePositivity.InfinityCategories.Derived.DGStrictFunctorNerve
+import SerrePositivity.InfinityCategories.Derived.DGOrderedFunctorArrow
+import SerrePositivity.InfinityCategories.Derived.DGStrictFunctorNerveComponents
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransNerveHom
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleStrictNatTransAlgebra
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerveAlgebra
+import SerrePositivity.InfinityCategories.Derived.DGKernelTensorIsoNerveAlgebra
 import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphComparison
 import SerrePositivity.InfinityCategories.Derived.DGKernelBimoduleIso
 import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphBimoduleIso
@@ -4357,6 +4373,24 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedIsoAlgebra,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellComposite,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelGeneralComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.DGOrderedFunctorDiagram,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictFunctorCategory,
+    `SerrePositivity.InfinityCategories.Derived.DGOrderedFunctorSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransCompositionDiagram,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictFunctorNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGOrderedFunctorArrow,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictFunctorNerveComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransNerveHom,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleStrictNatTransAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerveAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTensorIsoNerveAlgebra,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphComparison,
     `SerrePositivity.InfinityCategories.Derived.DGKernelBimoduleIso,
     `SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphBimoduleIso,
