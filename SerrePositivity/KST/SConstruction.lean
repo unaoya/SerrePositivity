@@ -1743,4 +1743,11 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaNecklaceCompa
 public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaSpecifiedOneDimension
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSplitChildren
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetOneFace
+public import SerrePositivity.KST.SConstruction.SerreCubeRightExtension
+public import SerrePositivity.KST.SConstruction.SerreCubeRightExtensionTransport
+public import SerrePositivity.KST.SConstruction.SerreCubeRightExtensionTensor
+public import SerrePositivity.KST.SConstruction.SerreCubeRightExtensionFace
+public import SerrePositivity.KST.SConstruction.SerreCubeFaceNormalRightExtension
+public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorRightFace
+public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorRightFaceChain
 /-! # ∞-S• 構成と連結 K 理論 -/
