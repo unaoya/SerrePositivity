@@ -1,4 +1,9 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveNaturality
+public import SerrePositivity.InfinityCategories.Derived.DGNerveNoninjectiveCutProduct
+public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorNoninjective
+public import SerrePositivity.InfinityCategories.Derived.DGNerveDataRestriction
+public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveFaces
 public import SerrePositivity.InfinityCategories.Derived.DGNerveListCutHEq
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutImageIndex
