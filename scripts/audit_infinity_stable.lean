@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutCrossCounting
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutSigns
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibniz
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorBlockDifferential
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveNaturality
@@ -3755,6 +3757,9 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutCrossCounting,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutSigns,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibniz,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorBlockDifferential,
 

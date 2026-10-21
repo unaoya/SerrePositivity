@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveCutCrossCounting
+public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutSigns
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibniz
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorBlockDifferential
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveNaturality
