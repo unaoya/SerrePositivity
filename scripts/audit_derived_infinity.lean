@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGStrictNerveWhiskerHom
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleNerveCoherenceImages
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveValue
+import SerrePositivity.InfinityCategories.Derived.DGKernelPostcompBimodule
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleAssociatorPrecomp
 import SerrePositivity.InfinityCategories.Derived.DeformationRetractTriangle
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatAugmentationRetract
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatOriginalUnitSquare
@@ -3907,6 +3912,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNerveWhiskerHom,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleNerveCoherenceImages,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveValue,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelPostcompBimodule,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleAssociatorPrecomp,
+
     `SerrePositivity.InfinityCategories.Derived.DeformationRetractTriangle,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatAugmentationRetract,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatOriginalUnitSquare,
