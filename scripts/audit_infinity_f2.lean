@@ -1958,3 +1958,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.downVertexIso_map_iso_cancel
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorUncurry_id_parameter
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorBaseFiberHom_uncurry_ι
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionCurryRestriction_evaluate_ι
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionCurryRestriction_target_pointed
+#check @SerrePositivity.InfinityCategories.F2.trianglePrismFinalVertex_eq
+#check @SerrePositivity.InfinityCategories.F2.relativeTriangleFinalFiberOutput
+#check @SerrePositivity.InfinityCategories.F2.relativeTriangleFinalFiberOutput_zero_one
+#check @SerrePositivity.InfinityCategories.F2.trianglePrismDirectFiberOutput
+#check @SerrePositivity.InfinityCategories.F2.relativeTriangleFinalFiberOutput_eq_prism
+#check @SerrePositivity.InfinityCategories.F2.trianglePrismFiberFunctor_heq_final
