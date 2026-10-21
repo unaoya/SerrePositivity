@@ -8458,3 +8458,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_originalTargetProduct
 
 #check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_originalIso
+
+#check @SerrePositivity.InfinityCategories.core_cocartesianPullbackHomRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.core_cocartesianPullbackNativeRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianPullbackNativeLiftRestriction_fibration

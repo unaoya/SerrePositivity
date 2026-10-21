@@ -3015,3 +3015,5 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryOrigin
 public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryOriginalTarget
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryOriginal
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianNativeRestrictionFibration
