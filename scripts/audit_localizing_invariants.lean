@@ -239,7 +239,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.IntervalPostcompositionFamily,
     `SerrePositivity.KST.LocalizingInvariants.SpanPostcompositionFamily,
     `SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition,
-    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration]
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowPrecompositionSquare,
+    `SerrePositivity.KST.LocalizingInvariants.IntervalPrecompositionFamily,
+    `SerrePositivity.KST.LocalizingInvariants.SquareArrowFamily,
+    `SerrePositivity.KST.LocalizingInvariants.SpanBaseChangeFamily,
+    `SerrePositivity.KST.LocalizingInvariants.TammeSpanBaseChangeLift,
+    `SerrePositivity.KST.LocalizingInvariants.TammeOreSpanLift]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

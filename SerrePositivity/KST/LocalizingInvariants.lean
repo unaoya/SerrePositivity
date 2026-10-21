@@ -215,4 +215,16 @@ public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration
 
+public import SerrePositivity.KST.LocalizingInvariants.ArrowPrecompositionSquare
+
+public import SerrePositivity.KST.LocalizingInvariants.IntervalPrecompositionFamily
+
+public import SerrePositivity.KST.LocalizingInvariants.SquareArrowFamily
+
+public import SerrePositivity.KST.LocalizingInvariants.SpanBaseChangeFamily
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeSpanBaseChangeLift
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeOreSpanLift
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
