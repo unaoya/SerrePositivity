@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DGHomTensorMap
+import SerrePositivity.InfinityCategories.Derived.DGHomTensorFunctor
+import SerrePositivity.InfinityCategories.Derived.DGHomTensorRestrictions
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputUnliftedPrecomp
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorInfinity
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorComparison
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorValue
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorSpaceComparison
 import SerrePositivity.InfinityCategories.Derived.ParameterBiprodMapDifference
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompData
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompHom
@@ -3706,6 +3714,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGHomTensorMap,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTensorFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTensorRestrictions,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputUnliftedPrecomp,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorValue,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorSpaceComparison,
     `SerrePositivity.InfinityCategories.Derived.ParameterBiprodMapDifference,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompData,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompHom,
