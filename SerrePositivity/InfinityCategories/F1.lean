@@ -2679,3 +2679,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSharedN
 public import SerrePositivity.InfinityCategories.F1.FunctorIsoTriangleEvaluation
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSharedNaturalityComponents
+
+public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquarePrecompositionCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCellOverHomRestrictionMap
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedGlobalData
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedGlobalEndpoints
+
+public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquareGlobalTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedGlobalCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedSharedComparison
