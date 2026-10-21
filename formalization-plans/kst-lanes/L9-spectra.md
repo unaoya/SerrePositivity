@@ -5,7 +5,7 @@
 ## 引き継ぎ（2026-10-21）
 
 ### 現在地
-- **K-8 進行中**：以下の K-8 節が作業の正本。(a) 二項半直交分解から切断付き Verdier 列と局所化不変量の分裂を導出済み。(b) 元の lax pullback の実半直交分解、(c) K-5 の splitEquivalence による元の Φ(C), Φ(D) の実 ∞ 積への Sp 同値は完成。両包含と第一射影との h Sp の整合式を保持する。第二射影との整合式はまだ主張しない。(d) 通常 pullback の安定性・元の比較包含の完全性・元の完全な両射影、差の実関手と核は完成。target 評価と cofiber の実随伴・可逆余単位は保存済み。fromD_differenceIso、ρ の充満忠実性・sectionIso、laxDifferenceUnitD と実余単位との境界等式は保存済み。laxDifferenceUnitSquare は保存済み。実単位候補 laxDifferenceUnitHom と第二射影の整合式は保存済み。C・D 二辺の同値は保存済み。ρ(y) への元の laxPullbackArrow の比較を、零始点矢印への cofiber 比較と合成し、CofiberFamily.compositionIso に沿って元の差へ戻した。laxDifferenceMapping_equivalence は元の laxDifference の pinchedHomMap 自体の同値。指定単位候補の普遍性・実随伴・商の普遍性・不変量の fiber 列は未完。
+- **K-8 進行中**：以下の K-8 節が作業の正本。(a) 二項半直交分解から切断付き Verdier 列と局所化不変量の分裂を導出済み。(b) 元の lax pullback の実半直交分解、(c) K-5 の splitEquivalence による元の Φ(C), Φ(D) の実 ∞ 積への Sp 同値は完成。両包含と第一射影との h Sp の整合式を保持する。第二射影との整合式はまだ主張しない。(d) 通常 pullback の安定性・元の比較包含の完全性・元の完全な両射影、差の実関手と核は完成。target 評価と cofiber の実随伴・可逆余単位は保存済み。fromD_differenceIso、ρ の充満忠実性・sectionIso、laxDifferenceUnitD と実余単位との境界等式は保存済み。laxDifferenceUnitSquare は保存済み。実単位候補 laxDifferenceUnitHom と第二射影の整合式は保存済み。C・D 二辺の同値は保存済み。元の差の局所比較と sectionIso を反対圏の局所単位判定へ渡し、laxDifferenceAdjunction、可逆余単位、laxDifference_isLocalization・isVerdier・quotient_universal を構成済み。tammeVerdierSequence から tammeFiberTriangle の実 fiber 性、元の包含・差の辺、実積との中項同型と右辺の整合、tammeConnecting と全整数三箇所の完全性まで接続した。q ⊣ v（v 充満忠実）の場合の③・④は完成。一般の商と Land–Tamme の一般形は未完。
 - **K-5 抽象部分へ移行（ユーザー指示）**：安定 ∞ 圏・完全関手、抽象 Verdier 列、Sp 値の局所化不変量と基本補題を担当する。K-S• の SConstruction と D の Stable/・Drinfeld 商は読み取り専用。以下の K-5 節に界面と残工程を固定する。
 - K-5：安定 ∞ 圏・完全関手の ∞ 圏、抽象 Verdier 列・四角形提示、Sp 値局所化不変量、その像の実 fiber 性と整数 π 同値検出は完成。BF fiber 四角形の下辺と元の包含の類、h Sp 上の π 関手と元の BF π の自然比較、任意の fiber 四角形の三対象と二辺の同時比較を構成済み。今回、任意の Sp fiber 四角形の全整数次数の接続射と三箇所の完全性を証明し、任意抽象 Verdier 列の元の値の群・包含・商への長完全列まで移送した。端の値の全整数 π 消滅から元の像の辺の同値性も得た。coherent な切断付き fiber 列の実 Sp 積同値も完成し、任意の fiber 四角形・抽象 Verdier 列の像へ移送した。実 ∞ 積錐、元の fiber・底から積因子への同値、元の包含・切断・射影との h Sp での整合性を全て保持する。K-5 の抽象部分は完成。
 - K-5 の今回の検証：専用対象5687 jobs、59モジュール・719宣言の専用公理監査、全体19210 jobs が終了コード0。標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
@@ -18,7 +18,7 @@
 - 今回の検証：対象・集約 6617 jobs、監査 1446 モジュール・13123 宣言、標準三公理のみ。ともに終了コード 0、宣言型の ModelCategory 検査も成功。全体 19003 jobs も終了コード 0。全体 diff --check も成功。
 
 ### 残り（依存順）
-- K-8：(a)〜(c) と (d) の通常 pullback の安定性・完全包含・差の実完全関手と核は実装済み。(d) 差の商の普遍性 → 不変量の fiber 列が残る。原典・仮定・見積もりは K-8 節。核の一致だけで Verdier 商の完成とは数えない。
+- K-8：(a)〜(c) と (d) の q が充満忠実な右随伴を持つ場合の③・④は完成（Tamme Prop. 11・Cor. 12）。次は一般の安定 ∞ 圏の Verdier 商の実構成と普遍性、Land–Tamme §1–2 の差の項への接続。一般商 API は未提供で、inner anodyne 置換と辺反転の貼合せからの構成を調べる。暫定複数日、上限未見積もり。
 - d1 完了：PiIsomorphism と全段・全基点 KanPiIsomorphism の同値と、任意の Sp の一単体の同値検出を検証済み。BF §2、Goerss–Jardine I §§7–8。
 - d2 の宣言表固定は完了。未提供行の実装は今回の宣言表固定とは別の後続項目。任意 coherent 極限・全有限極限の一般界面は F1b/F2 の既存 HasColimit から Sp へ接続する（HTT 4.2.4.1、規模未再見積もり）。一般 γ4 の完成待ちや再実装へ戻らない。
 - d3：IsStable は I-b 末尾。d1・d2 の固定と他の優先項目の消化後だけ、旧経路の六段階を再開する。HA §1.4.2、従前 24–48 時間以上（上限保証なし）。現時点では着手しない。
@@ -49,7 +49,7 @@
 
 ### 未コミット
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
-- K-5 と K-8 の先行141モジュールは保存済み。今回の終点同型・関手同型による比較と零始点 cofiber 比較・laxDifferenceMapping の6モジュール、専用集約・監査・本計画を所有ファイルだけで保存。停止中4 WIP と共有ルート・他レーンの差分は保持する。最終ゲートの結果は K-8 節。
+- K-5 と K-8 の先行147モジュールは保存済み。今回の ReflectiveMappingAdjunction・LaxDifferenceAdjunction・TammeFiberSequence、専用集約・監査・本計画を所有ファイルだけで保存。停止中4 WIP と共有ルート・他レーンの差分は保持する。最終ゲートの結果は K-8 節。
 
 ### 既知の問題
 - Sp の IsStable、Ω の完全忠実性・関手同値、任意の coherent 図式への極限の移送は未完。いずれも上表で未提供と明記し、存在を仮定する構造体で完成扱いにしない。
@@ -58,7 +58,7 @@
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。公理監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。
 
 ### 次の一手
-- K-8：(d) ③へ継続。laxDifferenceMapping_equivalence で、ρ(y) への元の差の関手の写像空間比較は完成。次は sectionIso を指定余単位とする局所随伴判定を双対化して使う経路を評価する。元の F の比較と可逆余単位の後合成による標準余単位比較なら、任意に選んだ UnitSquare の nullhomotopy との照合を経ずに実随伴へ進める。反転 Hom 全単射と単位の局所判定は既存 API を読み取りで使用する。指定単位の UnitMappingSpaceCondition と普遍 cofiber の nullhomotopy との照合は未証明で、必要なら UnitSquare の選択を相対持ち上げで作り直す。実随伴・可逆余単位から AdjointLocalization・exactLaxDifference_kernel・不変量の fiber 列へ進む。一般の Verdier 商は別工程。F2・F1B は読み取りのみ。
+- K-8：q ⊣ v（v 充満忠実）の③・④は完成。次は一般商の実構成を設計する。F1.InnerAnodyneReplacement は任意単体集合の quasicategory 置換を提供するが、F1B.Localization は IsLocalization の定義だけで一般の存在を提供しない。辺反転の貼合せの前合成が invertingFunctors との同値になることと、安定性・完全性・核の同定を実証する必要がある。Derived の dg 商は dg 表示を持つ場合の結果なので任意の StableCategory に流用しない。旧 UnitSquare 候補の普遍性の照合は主経路から外れ、再開不要。F2・F1B・Stable・Derived は読み取りのみ。
 - K-5 抽象部分は完成。K-S• が具体的 K 関手の局所化条件を接続する際は IsLocalizingInvariant.abstractFiberTriangle_isFiber・connecting・exact_left/middle/right・同値検出を使用する。切断付き列には IsLocalizingInvariant.splitEquivalence と splitLeftFactorIso・splitRightFactorIso、三つの splitEquivalence_inclusion/section/projection を使う。積は NativeSplit.productCone_isLimit の実 ∞ 極限錐であり、productCone_vertex は同値の始域をその頂点に同定する。Sp の IsStable・evaluationPost・Ω の関手同値は要求しない。
 - 今回の d1・d2 は工程完了。整数次数による同値検出の証明・宣言表固定と対象・集約・監査・全体ビルドは成功。宣言表の未提供行まで完成したとは扱わない。
 - 一般 coherent 極限の実装を再開する際の最初の工程は、F2.hasColimit_coherentSpaceDiagram から任意 D : ulift B → Sp の実錐の構成へ至る接続の設計・見積もり。空間の HasColimit から Sp の HasLimit は直接には従わず、その接続は未構成。既存の通常小図式の極限を再実装しない。
@@ -89,9 +89,9 @@
 - **(b) の完成界面**：ZeroArrowFamily.ofHomotopy・fromZero・toZero と LaxInclusion.fromD・fromC は元の全単体上の包含を構成する。fromD_fst/snd・fromC_fst/snd は一方が恒等・他方が零の厳密等式、exactFromD・exactFromC は完全包含。C 側も terminal_prism_extend_two_endpoints と lax_fst_terminalBoundary を実装し、RelativeTerminalAdjunction の相対終点充填の双対論から fromCAdjunction・fromC_fullyFaithful・fromCAdjunction_counit_isIso を得た。laxSemiorthogonal は元の D,C を因子とする SemiorthogonalDecomposition、laxVerdierSequence は D → lax → C の実切断付き Verdier 列。
 - **(b) D 側の完成界面**：initial_prism_extend_two_endpoints は両端と境界を固定し、最初の頂点一つの始対象性から延長する。lax_snd_initialBoundary は第一成分とその像が始対象である任意の頂点の第二射影に対する相対始点境界充填を証明する。LaxInclusion.fromD_initialBoundary・fromD_mapping_equivalence・fromDAdjunction・fromDAdjunction_unit・fromD_fullyFaithful は元の D 包含と第二射影の実随伴と写像空間の充満忠実性。単位は fromD_snd の厳密等式から選ぶ。RelativeInitialVertexIso は二つの相対始対象の像の同型を元の圏へ持ち上げ、LaxInclusion.fst_kernel は零化と本質像の一致を証明する。Tamme の写像空間正方形をさらに包装する代わりに、既存 F1b の相対境界充填からの標準写像空間の同値を使った。
 - **(c) の完成界面**：Binary.hoLift・hoMap・mapIso・swapIso と両軸・射影の整合式で、K-5 の補助因子を元の Φ(C), Φ(D) に同定する。IsLocalizingInvariant.tammeSplitEquivalence は要求の向き Φ(lax) ≃ Φ(C)×Φ(D)、tammeProductCone_isLimit は元の二因子の実 ∞ 積錐。tammeSplitComparison_C/D と projection は両包含・第一射影との h Sp の整合式。第二射影の整合式や Sp の IsStable を先取りしない。
-- **(d) の到達点**：ordinaryPullback_isStable・pullbackCategory・pullbackInclusion・pullbackFst/Snd は元の通常 pullback の安定性と完全包含・射影。CofiberFamily.squares・cofiber は指定辺を保つ普遍 cofiber 全族、exactLaxDifference と exactLaxDifference_kernel は元の差の実完全関手と核の一致。CofiberDiagrams.bottom/right_trivialKanFibration による回転から cofiberAdjunction を構成し、cofiberRightAdjoint の零始域・厳密な終域・全関手圏の充満忠実性・可逆余単位を証明済み。compositionIso・cofiberZeroSourceIso・fromD_differenceIso は全族と元の D 包含の比較。laxDifferenceRho は元の fromD∘v、充満忠実性と sectionIso を持つ。元の cofiber 射の転置 UnitD と余単位の境界式、h Fun の零合成、四辺固定の UnitSquare、実 F2 lift の UnitPrism を経て laxDifferenceUnitHomotopy と単位候補 UnitHom を構成し、その第二射影は元の UnitD に一致する。ReflectiveTargetMapping は可逆余単位から右随伴像への元の pinchedHomMap の同値を導く。ρ(y) への C・D 二辺の同値を同期積と相対 path の Kan fibration 引き戻しで移し、零始点 cofiber 比較と関手同型による局所同値性の移送を合成した。laxDifferenceMapping_equivalence が元の差の pinchedHomMap 自体の同値を与える。指定単位の普遍性・実随伴・商の普遍性は未完。
-- **残工程と見積もり**：(d) ①通常 pullback の安定性・完全包含、②差の実関手・核・cofiber 保存は完成（Tamme Lemma 8(iv)、Prop. 11 の入力）。③q に充満忠実な右随伴がある場合の差の関手の実右随伴と局所化普遍性（Prop. 11・Cor. 12、target・Cone の実随伴と全族比較は完成、残る ρ の coherent な随伴と局所化は暫定12–24時間以上）、一般の場合の Verdier 商の実構成（既存局所化 API の調査後に再見積もり）。④不変量の fiber 列と (c) の積同値による差の項への接続（Tamme Thm. 18、Land–Tamme §1–2、③後4–8時間の暫定見積もり）。核の一致を商の入力公理で置き換えない。
-- **今回の検証**：対象6396 jobs、147モジュール・1408宣言の専用公理監査、全体20352 jobs が終了コード0。標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。6新規ソースは100文字以内、sorry・追加 axiom・KanQuillen import はない。
+- **(d) の到達点**：ordinaryPullback_isStable・pullbackCategory・pullbackInclusion・pullbackFst/Snd は元の通常 pullback の安定性と完全包含・射影。CofiberFamily.squares・cofiber は指定辺を保つ普遍 cofiber 全族、exactLaxDifference と exactLaxDifference_kernel は元の差の実完全関手と核の一致。CofiberDiagrams.bottom/right_trivialKanFibration による回転から cofiberAdjunction を構成し、cofiberRightAdjoint の零始域・厳密な終域・全関手圏の充満忠実性・可逆余単位を証明済み。compositionIso・cofiberZeroSourceIso・fromD_differenceIso は全族と元の D 包含の比較。laxDifferenceRho は元の fromD∘v、充満忠実性と sectionIso を持つ。元の cofiber 射の転置 UnitD と余単位の境界式、h Fun の零合成、四辺固定の UnitSquare、実 F2 lift の UnitPrism を経て laxDifferenceUnitHomotopy と単位候補 UnitHom を構成し、その第二射影は元の UnitD に一致する。ReflectiveTargetMapping は可逆余単位から右随伴像への元の pinchedHomMap の同値を導く。laxDifferenceMapping_equivalence と sectionIso を反対圏で局所単位判定へ渡した laxDifferenceAdjunction は元の差 ⊣ ρ の実随伴。充満忠実な ρ から可逆余単位、実局所化、tammeVerdierSequence と任意標的の quotient_universal を導いた。tammeFiberTriangle は元の包含と差の像を同じ辺に持つ実 fiber 列で、実中頂点から Φ(C)×Φ(D) への同型は tammeDifferenceHom との整合式を持つ。tammeConnecting・tamme_exact_left/middle/right も提供済み。旧単位候補は使わない。
+- **残工程と見積もり**：(d) ①通常 pullback の安定性・完全包含、②差の実関手・核・cofiber 保存、③q に充満忠実な右随伴がある場合の実随伴と局所化普遍性（Tamme Prop. 11・Cor. 12）、④この場合の不変量の fiber 列と積比較・全整数長完全列は完成。残る一般の場合の Verdier 商の実構成と普遍性、安定性・完全性・核の証明、Land–Tamme §1–2 の一般の差の項への接続は暫定複数日・上限未見積もり。核の一致や仮定した商で完成扱いしない。
+- **今回の検証**：対象6405 jobs、150モジュール・1440宣言の専用公理監査、全体20368 jobs が終了コード0。標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。3新規ソースは100文字以内、sorry・追加 axiom・KanQuillen import はない。
 - **原典**：[Tamme 2018 §1、Prop. 10–11・Cor. 12](https://arxiv.org/html/1703.03331)、[Land–Tamme 2019 §1–2](https://arxiv.org/html/1808.05559)。一般の正方形に excision を無条件で課さず、差の項の商の存在・普遍性を証明せずに完成扱いしない。Sp の IsStable は全工程で使わない。
 
 ## 範囲と所有
