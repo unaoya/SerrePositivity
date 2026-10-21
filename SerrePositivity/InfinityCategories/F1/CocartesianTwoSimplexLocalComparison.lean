@@ -24,8 +24,13 @@ variable {C : Type u} [Category.{u} C] (k : ULift.{u} (Fin 3) ⥤ C)
 
 /-- 元の二辺と同じ共有頂点の全局所 Hom の core の cospan。 -/
 def cocartesianTwoSimplexLocalSource : WalkingCospan ⥤ SSet.{u + 1} :=
-  cocartesianTwoSimplexCellCospan k ⋙
-    cocartesianPullbackNativeCoreFunctor p.val.hom q.val.hom ⋙ SSet.uliftFunctor.{u + 1, u}
+  cospan
+    ((SSet.uliftFunctor.{u + 1, u}).map
+      (quasicategoryCoreMap (cocartesianPullbackNativePre p.val.hom q.val.hom
+        (cocartesianTwoSimplexSharedToFirst k))))
+    ((SSet.uliftFunctor.{u + 1, u}).map
+      (quasicategoryCoreMap (cocartesianPullbackNativePre p.val.hom q.val.hom
+        (cocartesianTwoSimplexSharedToSecond k))))
 
 /-- 同じ二辺と共有頂点へ分類図式を制限した区間 Hom の cospan。 -/
 def cocartesianTwoSimplexLocalTarget : WalkingCospan ⥤ SSet.{u + 1} :=
