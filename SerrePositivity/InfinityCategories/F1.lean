@@ -2621,3 +2621,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalR
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalRestrictionInverse
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalRestrictionGlobalCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalNativeRestrictionFactorization
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalNativeRestrictionCoherence
