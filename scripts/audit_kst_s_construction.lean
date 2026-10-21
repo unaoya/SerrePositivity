@@ -22838,3 +22838,61 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_post
 #print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_post
+
+
+#check @SerrePositivity.KST.SConstruction.simplexClosedInterval_card
+#print axioms SerrePositivity.KST.SConstruction.simplexClosedInterval_card
+
+#check @SerrePositivity.KST.SConstruction.simplexClosedInterval_two
+#print axioms SerrePositivity.KST.SConstruction.simplexClosedInterval_two
+
+#check @SerrePositivity.KST.SConstruction.simplexClosedInterval_min
+#print axioms SerrePositivity.KST.SConstruction.simplexClosedInterval_min
+
+#check @SerrePositivity.KST.SConstruction.simplexClosedInterval_max
+#print axioms SerrePositivity.KST.SConstruction.simplexClosedInterval_max
+
+#check @SerrePositivity.KST.SConstruction.simplexSubsetOrder_closedInterval_val
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetOrder_closedInterval_val
+
+#check @SerrePositivity.KST.SConstruction.necklaceIn_eq_of_hom_eqToHom
+#print axioms SerrePositivity.KST.SConstruction.necklaceIn_eq_of_hom_eqToHom
+
+#check @SerrePositivity.KST.SConstruction.necklaceClosedIntervalSubset_toInterval
+#print axioms SerrePositivity.KST.SConstruction.necklaceClosedIntervalSubset_toInterval
+
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt_closedInterval
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt_closedInterval
+
+#check @SerrePositivity.KST.SConstruction.necklaceLambdaCell_heq_of_eq
+#print axioms SerrePositivity.KST.SConstruction.necklaceLambdaCell_heq_of_eq
+
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_necklace
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_necklace
+
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_necklace_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_necklace_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_closedInterval_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_closedInterval_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_strictInterval
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_strictInterval
+
+#check @SerrePositivity.KST.SConstruction.simplexHAIntervalChainLift_native
+#print axioms SerrePositivity.KST.SConstruction.simplexHAIntervalChainLift_native
+
+#check @SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap_native
+#print axioms SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap_native
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_native
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_native
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_native_obj
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_native_obj
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_native
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_native
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_injective
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_injective

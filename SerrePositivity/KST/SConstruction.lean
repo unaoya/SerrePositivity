@@ -1860,4 +1860,9 @@ public import SerrePositivity.KST.SConstruction.SimplexIntervalLambdaStandardCom
 public import SerrePositivity.KST.SConstruction.EnrichedHomCompositionComparison
 public import SerrePositivity.KST.SConstruction.SimplexHAIntervalComposition
 public import SerrePositivity.KST.SConstruction.SimplexHAInverseFunctor
+public import SerrePositivity.KST.SConstruction.SimplexClosedIntervalSubsetOrder
+public import SerrePositivity.KST.SConstruction.NecklaceClosedIntervalSubset
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaNecklaceCell
+public import SerrePositivity.KST.SConstruction.SimplexHAIntervalDecodeCell
+public import SerrePositivity.KST.SConstruction.SimplexHAInverseFunctorRecovery
 /-! # ∞-S• 構成と連結 K 理論 -/
