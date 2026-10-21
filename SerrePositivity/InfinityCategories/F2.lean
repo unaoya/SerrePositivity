@@ -225,7 +225,8 @@ public import SerrePositivity.InfinityCategories.F2.KanHomotopyRectificationImag
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanNormalizedModelPathLift
 
-public import SerrePositivity.InfinityCategories.F2.CoherentCospanModelKanCoordinates
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanModelKanValuePath
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeKanPullback
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
