@@ -247,4 +247,18 @@ public import SerrePositivity.KST.LocalizingInvariants.IdentityArrowPullback
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowPullbackCartesianEdge
 
+public import SerrePositivity.KST.LocalizingInvariants.FixedTargetFinalHorn
+
+public import SerrePositivity.KST.LocalizingInvariants.SpanFinalHornExtension
+
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCartesianEdge
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeOreCartesianSpanLift
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeMarkedSpanCartesianLift
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeSpanDenominatorBaseChange
+
+public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionAdjunction
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

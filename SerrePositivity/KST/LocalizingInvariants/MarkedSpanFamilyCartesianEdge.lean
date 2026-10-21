@@ -1,0 +1,90 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.SpanFinalHornExtension
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
+
+/-!
+概要：分母付き span 族の右脚が pullback 正方形なら、元の辺は cartesian。
+方針：右脚と固定終点の左脚を充填し、全頂点をホーンから回収して分母条件を保つ。
+規約：分母集合は任意。使われ方：Tamme 分母上の普遍 Ore lift の cartesian 性。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+namespace SerrePositivity.KST.LocalizingInvariants
+
+lemma isCartesianEdge_markedSpanFamilyProjection_of_pullback
+    {X : SSet.{u}} [Quasicategory X] (W : Set (X _⦋1⦌)) (x : X _⦋0⦌)
+    (e : (markedSpanFamily X W x) _⦋1⦌)
+    (he : IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e ≫
+      vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
+        (pre horn₂₀.ι₀₂).app X))) :
+    IsCartesianEdge (markedSpanFamilyProjection X W x) e := by
+  intro m σ β hσ sq
+  let r : markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
+    vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W
+  let σ' : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶
+      (ihom (horn 2 0 : SSet.{u})).obj X := σ ≫ r
+  have hs : σ' ≫ (pre horn₂₀.ι₀₁).app X ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const x := by
+    change σ ≫ vertexFiberι (markedSpanSource X W) x ≫ markedSpanSource X W = _
+    rw [vertexFiberι_comp, SSet.comp_const]
+  have ht : σ' ≫ (pre horn₂₀.ι₀₂).app X ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      (horn (m + 2) (Fin.last (m + 2))).ι ≫ β := sq.w
+  have hσr : (σ' ≫ (pre horn₂₀.ι₀₂).app X).app (Opposite.op ⦋1⦌) (finalHornEdge m) =
+      (r ≫ (pre horn₂₀.ι₀₂).app X).app (Opposite.op ⦋1⦌) e := by
+    change (r ≫ (pre horn₂₀.ι₀₂).app X).app _ (σ.app _ _) = _
+    rw [hσ]
+  have hc : IsCartesianEdge (evaluateFunctorAt (Y := X)
+      (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+      ((σ' ≫ (pre horn₂₀.ι₀₂).app X).app (Opposite.op ⦋1⦌) (finalHornEdge m)) := by
+    rw [hσr]
+    apply arrowTarget_isCartesianEdge_of_pullback
+    rw [← SSet.yonedaEquiv_symm_comp]
+    change IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e ≫
+      vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
+        (pre horn₂₀.ι₀₂).app X))
+    exact he
+  obtain ⟨G, hG, hGs, hGt⟩ :=
+    exists_span_finalHorn_extension_of_right_cartesian m σ' β x hs ht hc
+  have hv : ∀ v : (Δ[m + 2] : SSet.{u}) _⦋0⦌,
+      spanLeftEdge (G.app (Opposite.op ⦋0⦌) v) ∈ W := by
+    intro v
+    let w : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) _⦋0⦌ :=
+      ⟨v, vertex_mem_horn m (Fin.last (m + 2)) v⟩
+    have h := congrArg (fun k => k.app (Opposite.op ⦋0⦌) w) hG
+    have hp := fullSubcomplexOnVertices_vertex (σ.app (Opposite.op ⦋0⦌) w).val
+    change G.app (Opposite.op ⦋0⦌) v = (σ.app (Opposite.op ⦋0⦌) w).val.val at h
+    exact h.symm ▸ hp
+  let M := fullSubcomplexLift (fun v => spanLeftEdge v ∈ W) G hv
+  have hM : M ≫ markedSpanInclusion X W = G := fullSubcomplexLift_ι _ _ _
+  have hMs : M ≫ markedSpanSource X W = SSet.const x := by
+    change M ≫ markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₁).app X ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
+    rw [← Category.assoc, ← Category.assoc, hM]
+    exact hGs
+  let F := vertexFiberLift (markedSpanSource X W) x M hMs
+  have hF : F ≫ vertexFiberι (markedSpanSource X W) x = M := vertexFiberLift_ι _ _ _ _
+  have hFr : F ≫ r = G := by
+    dsimp only [r]
+    rw [← Category.assoc, hF, hM]
+  refine CommSq.HasLift.mk' { l := F, fac_left := ?_, fac_right := ?_ }
+  · have : Mono r := by dsimp [r, markedSpanInclusion]; infer_instance
+    apply (cancel_mono r).mp
+    rw [Category.assoc, hFr]
+    exact hG
+  · change (F ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanTarget X W = β
+    rw [hF]
+    change M ≫ markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₂).app X ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = β
+    rw [← Category.assoc, ← Category.assoc, hM]
+    exact hGt
+
+end SerrePositivity.KST.LocalizingInvariants

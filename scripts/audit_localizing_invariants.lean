@@ -255,7 +255,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares,
     `SerrePositivity.KST.LocalizingInvariants.FinalArrowCospanFamily,
     `SerrePositivity.KST.LocalizingInvariants.IdentityArrowPullback,
-    `SerrePositivity.KST.LocalizingInvariants.ArrowPullbackCartesianEdge]
+    `SerrePositivity.KST.LocalizingInvariants.ArrowPullbackCartesianEdge,
+    `SerrePositivity.KST.LocalizingInvariants.FixedTargetFinalHorn,
+    `SerrePositivity.KST.LocalizingInvariants.SpanFinalHornExtension,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCartesianEdge,
+    `SerrePositivity.KST.LocalizingInvariants.TammeOreCartesianSpanLift,
+    `SerrePositivity.KST.LocalizingInvariants.TammeMarkedSpanCartesianLift,
+    `SerrePositivity.KST.LocalizingInvariants.TammeSpanDenominatorBaseChange,
+    `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionAdjunction]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
