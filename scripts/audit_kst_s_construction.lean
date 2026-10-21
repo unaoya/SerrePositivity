@@ -19429,3 +19429,46 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_cell
 #check @SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_augmentation
 #print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_augmentation
+
+#check @SerrePositivity.KST.SConstruction.cubicalSerreCellTensor
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreCellTensor
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGeneratingCocone
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGeneratingCocone
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGeneratingIsColimit
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGeneratingIsColimit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreTensorIsColimit
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreTensorIsColimit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreTensorCocone_leg
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreTensorCocone_leg
+#check @SerrePositivity.KST.SConstruction.cubicalSerreTensor_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreTensor_hom_ext
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayAssembly
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayAssembly
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayAssembly_restrict
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayAssembly_restrict
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayAssembly_comparison
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayAssembly_comparison
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayAssembly_cotensorator
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayAssembly_cotensorator
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayAssemblyCocone
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayAssemblyCocone
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayInverse
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayInverse
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayInverse_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayInverse_cell
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_inverse
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_inverse
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayInverse_comparison
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayInverse_comparison
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_isIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_isIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayNatIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayNatIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayNatIso_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayNatIso_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayNatIso_inv
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayNatIso_inv
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayInverse_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayInverse_naturality
