@@ -1890,3 +1890,13 @@ public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalNaturalit
 public import SerrePositivity.InfinityCategories.F1.FunctorEvaluationLifting
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianHomIntervalEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalMappingFiber
+
+public import SerrePositivity.InfinityCategories.F1.EquivalenceLiftingPullback
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHomComponentPullback
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHomFixedComponent
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomFiberCriterion

@@ -54,6 +54,13 @@ lemma cocartesianTransportDiagramHomInterval_evaluation
   rw [pinchedHomToIntervalMappingSpace_uncurry] at h
   exact h
 
+/-- 元の分類先の成分評価は、単射な同値を右に持ち上げる。 -/
+lemma kanEquivalenceLifting_cocartesianHomIntervalEvaluation
+    {C : Type u} [Category.{u} C] (F G : CocartesianTransportDiagramCategory C) (c : C) :
+    F1B.KanEquivalenceLifting (cocartesianHomIntervalEvaluation F G c) :=
+  kanEquivalenceLifting_intervalMappingPostOfEq _
+    (kanEquivalenceLifting_evaluateFunctorAt _) _ _ _ _
+
 open HomotopicalAlgebra SSet.modelCategoryQuillen in
 /-- 元の分類先の同じ区間 Hom の成分評価は Kan fibration。 -/
 lemma cocartesianHomIntervalEvaluation_fibration

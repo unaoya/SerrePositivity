@@ -17,8 +17,9 @@
   一次元の strict 変換空間は、元の二成分評価による内部 Hom の厳密な pullback と証明済み。
   薄い底上の元の輸送遷移の同値持ち上げ性と、後合成の core の Kan fibration 性も証明済み。
   一次元の元の Hom の core も、同じ二成分評価による core の厳密な pullback と証明済み。
-  同じ元の Hom 作用の成分評価は、元の成分写像と標準 coherent Hom 同値の合成に厳密に一致。
-  一次元の source の一成分評価と、分類先の区間 Hom の成分評価の Kan fibration 性も証明済み。
+  元の Hom 作用の成分評価を標準 Hom 同値と厳密に結び、一次元の同じ全 Hom 作用の同値性を
+  実際の固定成分の全 fiber 比較の同値性へ必要十分に還元した。固定成分比較自体の同値性は未証明。
+  両側の一成分評価の Kan 性、source の固定成分 fiber と後合成 fiber の厳密な同型も証明済み。
   元の Hom の core の区間作用を構成し、底の制限・豊穣前合成の自然性と主写像への接続を証明済み。
   元の cocartesian Hom の core と分類先の両端固定の区間 Hom は、底を覆う余極限に沿う厳密な極限。
   底変換の辺の保存・反映、辺の被覆と全空間の余極限、元の Hom と分類先の単射制限の Kan 性も証明済み。
@@ -94,9 +95,8 @@
 同じ比較 Hom の二射影は trivial Kan fibration。切断による実際の輸送も元の作用と関手同型で整合する。
 一次元の strict Hom の二成分による復元・一意性と、core の同じ射影による pullback 表示まで完了。
 元の Hom 作用の成分評価と標準 Hom 同値の可換性、および両側の一成分評価の Kan 性まで完了。
-次は一成分を固定した実際の coherent な区間 Hom の fiber を、source の後合成の fiber と比較する。
-成分の同値だけから全 Hom の同値性を推論しない。一次元の同じ全 Hom 作用の同値性は未証明。
-一次元セル上の同じ Hom 作用の同値性を証明し、有限セル・骨格の降下から一般の充満忠実性へ戻す。
+同じ全 Hom 作用の同値性と、実際の固定成分比較 `cocartesianHomFixedComponentComparison` の
+全 fiber での同値性の同値まで証明済み。次はこの固定成分比較自体の同値性を証明する。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
