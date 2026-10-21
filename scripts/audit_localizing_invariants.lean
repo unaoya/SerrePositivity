@@ -349,7 +349,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxQuotientBFNormalization,
     `SerrePositivity.KST.LocalizingInvariants.LaxQuotientNormalizedCone,
     `SerrePositivity.KST.LocalizingInvariants.CofiberInverseRotationExact,
-    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference]
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberInverseRotationZero,
+    `SerrePositivity.KST.LocalizingInvariants.AdjointLocalizationFactor,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceFirst,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceFactor,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceCLeg]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -27,6 +27,16 @@ lemma whiskerRight_counit_isIso_of_unit
   have : IsIso ((α_ g f g).inv ≫ adj.counit ▷ g) := IsIso.of_isIso_fac_left h
   exact IsIso.of_isIso_comp_left (α_ g f g).inv (adj.counit ▷ g)
 
+lemma whiskerLeft_counit_isIso_of_unit
+    {B : Type u} [Bicategory.{w, v} B] {a b : B} {f : a ⟶ b} {g : b ⟶ a}
+    (adj : Bicategory.Adjunction f g) [IsIso adj.unit] : IsIso (f ◁ adj.counit) := by
+  have h : (adj.unit ▷ f) ≫ ((α_ f g f).hom ≫ f ◁ adj.counit) =
+      (λ_ f).hom ≫ (ρ_ f).inv := by
+    rw [← bicategory_leftZigzag_explicit]
+    exact adj.left_triangle
+  have : IsIso ((α_ f g f).hom ≫ f ◁ adj.counit) := IsIso.of_isIso_fac_left h
+  exact IsIso.of_isIso_comp_left (α_ f g f).hom (f ◁ adj.counit)
+
 local instance counitImageHomCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) :=
   SSet.QCat.bicategory.homCategory A B
 
@@ -42,5 +52,18 @@ lemma counit_postcompRight_isIso
     change IsIso ((qcatHomFunctor Y X).map (a.counit ▷ qcatMap G))
     infer_instance
   exact (qcatCell_whiskerRight a.counit G) ▸ h
+
+lemma counit_precompLeft_isIso
+    {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) [IsIso a.unitHom] :
+    IsIso ((hoFunctor.map ((pre F).app Y)).toFunctor.map a.counitHom) := by
+  have : (qcatHomFunctor X X).Full := ⟨fun f => ⟨CatEnrichedOrdinary.Hom.mk f, rfl⟩⟩
+  have : IsIso ((qcatHomFunctor X X).map a.unit) := inferInstanceAs (IsIso a.unitHom)
+  have : IsIso a.unit := isIso_of_reflects_iso a.unit (qcatHomFunctor X X)
+  have : IsIso (qcatMap F ◁ a.counit) := whiskerLeft_counit_isIso_of_unit a
+  have h : IsIso (qcatCellEquiv _ _ (qcatMap F ◁ a.counit)) := by
+    change IsIso ((qcatHomFunctor X Y).map (qcatMap F ◁ a.counit))
+    infer_instance
+  exact (qcatCell_whiskerLeft F a.counit) ▸ h
 
 end SerrePositivity.KST.LocalizingInvariants

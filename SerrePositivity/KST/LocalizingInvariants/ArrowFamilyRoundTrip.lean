@@ -36,4 +36,11 @@ lemma ofHomotopy_precomp (H : SSet.Homotopy f g) (i : B ⟶ A) :
   rintro ⟨z, b⟩
   rfl
 
+lemma ofHomotopy_postcomp {Y : SSet.{u}} (H : SSet.Homotopy f g) (r : X ⟶ Y) :
+    ofHomotopy (functorHomotopyPostcomp H r) =
+      ofHomotopy H ≫ (ihom (Δ[1] : SSet.{u})).map r := by
+  apply uncurry_injective
+  rw [ofHomotopy, uncurry_curry, uncurry_natural_right, ofHomotopy, uncurry_curry]
+  rfl
+
 end SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
