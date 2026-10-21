@@ -2187,7 +2187,12 @@ e の入口：`freeHammockDiagonalUnit` は各自由次数の元の空語の単�
 `kanFreeHammockAugmentationNerve_equivalence/kanFreeHammockComparisonNerve_equivalence`
 は元の Kan 自由 hammock から Kan hammock nerve と既存 localizationNerve への実圏同値。
 全豊穣 Hom 上の同値と元の対象写像を保つ。
-元の通常圏からの局所化関手・弱同値の反転・全 quasicategory 標的への前合成の普遍性は後続。
+`hammockSourceFunctor/kanHammockSourceFunctor` は元の全射・恒等・合成を保つ通常関手。
+`hammockLocalizationNerveMap` は元の通常圏の nerve から実 Kan hammock nerve への写像。
+`weakNerveEdges` は元の W だけから定義した指定辺集合。
+`hammockLocalizationNerveMap_inverts` は同じ写像による元の指定辺の反転。
+元の backward hammock と同じ Ex∞ 単位へ送った二つの往復ホモトピーを使用する。
+既存 localizationNerve への移送・全 quasicategory 標的への前合成の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。
