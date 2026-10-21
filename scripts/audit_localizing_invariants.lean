@@ -582,7 +582,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovConnectivity,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovDesc,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTransition,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTower]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTower,
+    `SerrePositivity.KST.LocalizingInvariants.CochainSeparatedBounds,
+    `SerrePositivity.KST.LocalizingInvariants.CochainKernelHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayer,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTransitionHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovKernel,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerMaps]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
