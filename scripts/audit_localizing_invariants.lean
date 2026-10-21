@@ -293,7 +293,15 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.RestrictedFunctorEdgeEvaluation,
     `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberComponents,
     `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberLegs,
-    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap]
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap,
+    `SerrePositivity.KST.LocalizingInvariants.SuspensionExactFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetComparison,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceCComparison,
+    `SerrePositivity.KST.LocalizingInvariants.SuspensionExactNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.SuspensionExactDiagrams,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceShiftAxes,
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs,
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftReflective]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

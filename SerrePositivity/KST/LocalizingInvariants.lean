@@ -323,4 +323,20 @@ public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberLeg
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap
 
+public import SerrePositivity.KST.LocalizingInvariants.SuspensionExactFunctor
+
+public import SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceCComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.SuspensionExactNaturality
+
+public import SerrePositivity.KST.LocalizingInvariants.SuspensionExactDiagrams
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceShiftAxes
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs
+
+public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftReflective
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
