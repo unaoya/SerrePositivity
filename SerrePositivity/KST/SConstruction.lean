@@ -1986,4 +1986,9 @@ public import SerrePositivity.KST.SConstruction.MultiSQuasicategoryEnrichedFunct
 public import SerrePositivity.KST.SConstruction.MultiSQuasicategoryEnrichedDiagram
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMultiSCoreDiagram
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMultiSCoreObjectFunctor
+public import SerrePositivity.KST.SConstruction.SSetInternalObject
+public import SerrePositivity.KST.SConstruction.SimplicialDiagramDiagonalAction
+public import SerrePositivity.KST.SConstruction.SimplicialDiagramDiagonalLaws
+public import SerrePositivity.KST.SConstruction.SimplicialDiagramDiagonalEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMultiRealizationEnrichedFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

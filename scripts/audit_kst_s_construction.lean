@@ -24333,3 +24333,69 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectMap_realization
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectMap_realization
+
+#check @SerrePositivity.KST.SConstruction.SSetInternalObject
+#print axioms SerrePositivity.KST.SConstruction.SSetInternalObject
+
+#check @SerrePositivity.KST.SConstruction.sSetInternalObject_category
+#print axioms SerrePositivity.KST.SConstruction.sSetInternalObject_category
+
+#check @SerrePositivity.KST.SConstruction.sSetInternalObject_enrichedCategory
+#print axioms SerrePositivity.KST.SConstruction.sSetInternalObject_enrichedCategory
+
+#check @SerrePositivity.KST.SConstruction.sSetInternalObject_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.sSetInternalObject_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.sSetInternalObjectForget
+#print axioms SerrePositivity.KST.SConstruction.sSetInternalObjectForget
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonal
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonal
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramProjection_action_naturality
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramProjection_action_naturality
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalAction
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalAction
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalMap
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalMap
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalAction_unit
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalAction_unit
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalAction_comp
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalAction_comp
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalAction_hom
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalAction_hom
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonalEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramProjection_naturality
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramProjection_naturality
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramProjection_id
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramProjection_id
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramProjection_comp
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramProjection_comp
+
+#check @SerrePositivity.KST.SConstruction.SSetInternalObject.mk
+#print axioms SerrePositivity.KST.SConstruction.SSetInternalObject.mk
+
+#check @SerrePositivity.KST.SConstruction.SSetInternalObject.obj
+#print axioms SerrePositivity.KST.SConstruction.SSetInternalObject.obj

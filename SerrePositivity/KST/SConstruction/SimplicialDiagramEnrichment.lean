@@ -62,6 +62,32 @@ def simplicialSSetDiagramProjection (X Y : SimplicialSSetDiagram.{u})
     (X ⟶[SSet.{u}] Y) ⟶ (ihom (X.diagram.obj n)).obj (Y.diagram.obj n) :=
   Enriched.FunctorCategory.enrichedHomπ SSet X.diagram Y.diagram n
 
+/-- 内側の射影は、全ての元の添字制限の前後合成に厳密に自然。 -/
+lemma simplicialSSetDiagramProjection_naturality (X Y : SimplicialSSetDiagram.{u})
+    {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m) :
+    simplicialSSetDiagramProjection X Y n ≫ (ihom (X.diagram.obj n)).map (Y.diagram.map f) =
+      simplicialSSetDiagramProjection X Y m ≫
+        (pre (X.diagram.map f)).app (Y.diagram.obj m) := by
+  have h := Enriched.FunctorCategory.enrichedHom_condition SSet X.diagram Y.diagram f
+  erw [enrichedOrdinaryCategorySelf_eHomWhiskerLeft,
+    enrichedOrdinaryCategorySelf_eHomWhiskerRight] at h
+  exact h
+
+/-- 元の豊穣恒等射は、各段の同じ閉内部 Hom の恒等射へ射影される。 -/
+lemma simplicialSSetDiagramProjection_id (X : SimplicialSSetDiagram.{u})
+    (n : SimplexCategoryᵒᵖ) :
+    eId SSet.{u} X ≫ simplicialSSetDiagramProjection X X n =
+      MonoidalClosed.id (X.diagram.obj n) :=
+  Enriched.FunctorCategory.enrichedId_π SSet X.diagram n
+
+/-- 元の豊穣合成は、各段の同じ閉内部 Hom の合成へ射影される。 -/
+lemma simplicialSSetDiagramProjection_comp (X Y Z : SimplicialSSetDiagram.{u})
+    (n : SimplexCategoryᵒᵖ) :
+    eComp SSet.{u} X Y Z ≫ simplicialSSetDiagramProjection X Z n =
+      (simplicialSSetDiagramProjection X Y n ⊗ₘ simplicialSSetDiagramProjection Y Z n) ≫
+        MonoidalClosed.comp (X.diagram.obj n) (Y.diagram.obj n) (Z.diagram.obj n) :=
+  Enriched.FunctorCategory.enrichedComp_π SSet X.diagram Y.diagram Z.diagram n
+
 /-- 図式全体の豊穣 Hom の射は、元の全ての段への射影で一意に定まる。 -/
 lemma simplicialSSetDiagramHom_ext {P : SSet.{u}} {X Y : SimplicialSSetDiagram.{u}}
     {f g : P ⟶ (X ⟶[SSet.{u}] Y)}
