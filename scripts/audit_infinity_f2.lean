@@ -2419,3 +2419,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.finiteRelativeSkeleton_exists_top
 #check @SerrePositivity.InfinityCategories.F2.finiteCellShapeAttachment_mono
 #check @SerrePositivity.InfinityCategories.F2.finiteShape_cell_induction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredLimitExchangeShape_of_empty
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredLimitExchangeShape_empty
+#check @SerrePositivity.InfinityCategories.F2.CoherentFilteredLimitExchangeShape
+#check @SerrePositivity.InfinityCategories.F2.emptyShapeSliceProjection_isIso
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_emptyShape_iff_vertex
+#check @SerrePositivity.InfinityCategories.F2.evaluateFunctorCocone
+#check @SerrePositivity.InfinityCategories.F2.IsPointwiseColimitCone
+#check @SerrePositivity.InfinityCategories.F2.evaluateFunctorCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.functorVertexConeMap
+#check @SerrePositivity.InfinityCategories.F2.functorVertexCone
+#check @SerrePositivity.InfinityCategories.F2.functorVertexCone_vertex
