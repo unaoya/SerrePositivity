@@ -6449,6 +6449,64 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomAugmentation_app,
       `SerrePositivity.EInfinity.SimplicialLocalization.underlyingCategoryFunctor]
 
+@[noinline] private def e2RequiredBatch100 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.grothendieck_map_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.contravariantTotal,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.contravariantProjection,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.total,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.mk,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.base,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.left,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.right,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.objectEquiv,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.baseMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.leftMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.homMk,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.homEquiv,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.projection,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.projection_obj,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.projection_map,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.baseMap_comp,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.unopUnop_eqToHom,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.unopUnop_eqToHom_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.dualLeft,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.dualRight,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.dualObj,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.dualMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.dualFunctor,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.unDualObj,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.unDualMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.unDualFunctor,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.dualEquivalence,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.contravariantMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.coefficientMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.coefficientMap_obj_mk,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.coefficientMap_projection,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.contravariantBaseChange,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.baseChange,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.baseChange_obj_mk,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.baseChange_projection,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.baseChange_map_homMk,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightCoefficientMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightCoefficientMap_projection,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightCoefficientMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedDiagram,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedObject,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedObject_naturality,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedObject_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.marked_eqToHom_hom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHomIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.markedHomSubtypeEquiv,
+      `SerrePositivity.EInfinity.SimplicialLocalization.markedHomSubtypeIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHomIso_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.markedCategoryMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.markedCategoryFunctor]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6480,7 +6538,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -15453,3 +15511,68 @@ example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
     IsIso (AnodyneHomotopy.anodyneQ.map (freeResolutionMarkedHomAugmentation C X Y)) :=
   ExtraDegeneracyContraction.localized_augmentation_isIso
     (freeResolutionMarkedHomExtraDegeneracy C X Y)
+
+-- 元の wide 部分圏の Hom augmentation 自身の弱同値性。
+open CategoryTheory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
+    IsWeakHomotopyEquivalence (freeResolutionNativeMarkedHomAugmentation C X Y) :=
+  freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+
+-- 任意可換環の全 cofibrant 代数の元の指定部分圏へ代入する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ X Y : C.category,
+      IsWeakHomotopyEquivalence (freeResolutionNativeMarkedHomAugmentation C X Y) := by
+  intro C X Y
+  exact freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+
+-- 元の部分圏の Hom と指定射の部分集合の同型は同じ augmentation を保持する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
+    (freeResolutionNativeMarkedHomIso C X Y).hom ≫ freeResolutionMarkedHomAugmentation C X Y =
+      freeResolutionNativeMarkedHomAugmentation C X Y ≫ (markedHomSubtypeIso C X Y).hom :=
+  freeResolutionNativeMarkedHomIso_augmentation C X Y
+
+-- 任意の Cat 値図式の実際の Grothendieck 比較関手を検証する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    {F G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}} (α : F ⟶ G)
+    (hα : ∀ w, IsWeakHomotopyEquivalence (nerveMap (α.app w).toFunctor)) :
+    IsWeakHomotopyEquivalence (nerveMap (Grothendieck.map α)) :=
+  grothendieck_map_isWeakHomotopyEquivalence α hα
+
+-- 二方向の全圏の右係数の同じ比較関手は成分の弱同値を保つ。
+open CategoryTheory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    {G G' : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}} (β : G ⟶ G')
+    (hβ : ∀ w, IsWeakHomotopyEquivalence (nerveMap (β.app w).toFunctor)) :
+    IsWeakHomotopyEquivalence (nerveMap (rightCoefficientMap F β)) :=
+  rightCoefficientMap_isWeakHomotopyEquivalence F β hβ
+
+-- 底の全射も元の関手 H で送られることを検証する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck in
+example {V W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} V]
+    [Category.{e2ComplexLimitUniverse} W] (H : V ⥤ W)
+    (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
+    baseChange H F G ⋙ projection = projection ⋙ H := baseChange_projection H
+
+-- 左右の交換は元の全圏の反対圏との圏同値。
+open CategoryTheory SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
+    total F G ≌ (total (dualLeft G) (dualRight F))ᵒᵖ := dualEquivalence F G
+
+-- 両係数の変更でも元の底の対象と全射を保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    {F F' : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
+    {G G' : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
+    (α : F ⟶ F') (β : G ⟶ G') :
+    coefficientMap α β ⋙ projection = projection := coefficientMap_projection α β

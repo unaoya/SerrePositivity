@@ -1901,6 +1901,16 @@ filtered 余極限へ各項の弱同値と弱可縮性を移す。
 `freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence` を証明した。
 任意可換環の全 cofibrant 代数でも検証。単体集合モデル・指定射の飽和性は不要。
 DK2.4による元の左 hammock 比較への移送と Map^h の高次比較は未完成。
+`markedCategoryFunctor/freeResolutionMarkedDiagram` は元の wide 指定部分圏の厳密な図式。
+`freeResolutionNativeMarkedHomIso_augmentation` は元の Hom と指定射の部分単体集合を
+同じ augmentation の上で照合する。
+`freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence` はその元の射の弱同値性。
+`TwoSidedGrothendieck.total/homEquiv` は元の底・左・右の全三成分を保持し、
+`coefficientMap/baseChange` は係数と底の比較関手。
+`dualEquivalence` は左右を交換した全圏の反対圏との圏同値。
+`grothendieck_map_isWeakHomotopyEquivalence` と
+`rightCoefficientMap_isWeakHomotopyEquivalence` は Thomason 比較による右係数の不変性。
+左係数の同じ射の不変性、単体的な底の変更、元の hammock graph への代入は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
