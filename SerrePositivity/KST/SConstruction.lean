@@ -1763,4 +1763,15 @@ public import SerrePositivity.KST.SConstruction.SerreCubeTopGeneratorIndex
 public import SerrePositivity.KST.SConstruction.SimplexHATopDecodeValue
 public import SerrePositivity.KST.SConstruction.SimplexHATopValueRecovery
 public import SerrePositivity.KST.SConstruction.SimplexHATopDifferential
+public import SerrePositivity.KST.SConstruction.SerreCubeFaceGeneratorIndex
+public import SerrePositivity.KST.SConstruction.SerreCubeFaceGeneratorImage
+public import SerrePositivity.KST.SConstruction.SimplexHAFaceVertex
+public import SerrePositivity.KST.SConstruction.SimplexHAFaceEraseSubset
+public import SerrePositivity.KST.SConstruction.SimplexHADeletedFaceValue
+public import SerrePositivity.KST.SConstruction.DGComposeHeterogeneous
+public import SerrePositivity.KST.SConstruction.SimplexHACutFaceValue
+public import SerrePositivity.KST.SConstruction.SimplexHADegreeFaceValues
+public import SerrePositivity.KST.SConstruction.SimplexHAFaceVertexCount
+public import SerrePositivity.KST.SConstruction.SimplexHAFaceInteriorEquiv
+public import SerrePositivity.KST.SConstruction.SimplexHAFaceRhsSum
 /-! # ∞-S• 構成と連結 K 理論 -/

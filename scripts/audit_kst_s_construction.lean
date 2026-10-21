@@ -22021,3 +22021,78 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_top
 #check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_differential
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_differential
+
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex_succ
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex_succ
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex_freeDimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex_freeDimension
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex_degree
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceGeneratorIndex_degree
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_zero_top_generator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_zero_top_generator
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_top_generator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_top_generator
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_zero
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_succ
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_succ
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_pos
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_pos
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_mem
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_mem
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_first_lt
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_first_lt
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_tail_lt
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_tail_lt
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceErase_two
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceErase_two
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceErase_min
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceErase_min
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceErase_max
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceErase_max
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceErase_card
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceErase_card
+#check @SerrePositivity.KST.SConstruction.simplexHADeletedFaceValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeletedFaceValue
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_face_zero_right
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_face_zero_right
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_face_zero_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_face_zero_value
+#check @SerrePositivity.KST.SConstruction.dgCompose_heq
+#print axioms SerrePositivity.KST.SConstruction.dgCompose_heq
+#check @SerrePositivity.KST.SConstruction.simplexHACutComposite_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHACutComposite_heq
+#check @SerrePositivity.KST.SConstruction.simplexHACutFaceValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHACutFaceValue
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_face_one_right
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_face_one_right
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_face_one_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_face_one_value
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_face_top_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_face_top_value
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_face_top_word_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_face_top_word_heq
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_face
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_face
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_one_face_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_one_face_heq
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_injective
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_injective
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_right_count
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_right_count
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceVertex_sign
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceVertex_sign
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceInteriorEquiv
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceInteriorEquiv
+#check @SerrePositivity.KST.SConstruction.simplexHAFaceInteriorEquiv_val
+#print axioms SerrePositivity.KST.SConstruction.simplexHAFaceInteriorEquiv_val
+#check @SerrePositivity.KST.SConstruction.simplexHARhs_interior
+#print axioms SerrePositivity.KST.SConstruction.simplexHARhs_interior
+#check @SerrePositivity.KST.SConstruction.simplexHADecode_rhs_faces
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecode_rhs_faces
