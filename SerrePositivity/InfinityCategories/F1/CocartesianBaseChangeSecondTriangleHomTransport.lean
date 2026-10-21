@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondTriangleHomMiddle
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeAssociativityHomTransport
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomTransport
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondTriangleFirstTransport
 
 /-!
 概要：同じ分解三角形の共通 Hom 上で、既存の二回目の輸送と元の結合比較の輸送を合成する。
@@ -49,6 +49,20 @@ def cocartesianBaseChangeSecondTriangleHomAssociativityTransportIso :
     (cocartesianBaseChangeAssociativityHomSpanOneSection_projection l k p q)
     (cocartesianBaseChangeSecondTriangleHomSecond l k p q)
 
+/-- 元の結合比較の終点だけを、分解三角形の同じ中間評価で正規化する。 -/
+def cocartesianBaseChangeSecondTriangleHomAssociativityMiddleIso :
+    FunctorIso
+      ((cocartesianBaseChangeSecondTriangleHomSecond l k p q ≫
+        cocartesianBaseChangeAssociativityHomSpanOne l k p q) ≫
+          cocartesianBaseChangeAssociativityHomTransport l k p q)
+      (cocartesianBaseChangeSecondTriangleHomFirst l k p q ≫
+        cocartesianBaseChangeHomSpanOne l
+          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
+          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)) :=
+  F2.functorIsoOfEq
+    (cocartesianBaseChangeSecondTriangleHomAssociativityTransportIso l k p q) rfl
+    (cocartesianBaseChangeSecondTriangleHom_middle l k p q).symm
+
 /-- 同じ共通 Hom 上で、元の結合比較と既存の二回目の Hom 輸送の合成は元の両評価を結ぶ。 -/
 def cocartesianBaseChangeSecondTriangleHomCompositeTransportIso :
     FunctorIso
@@ -61,20 +75,13 @@ def cocartesianBaseChangeSecondTriangleHomCompositeTransportIso :
       (cocartesianBaseChangeSecondTriangleHomFirst l k p q ≫
         cocartesianBaseChangeHomSpanZero l
           ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
-          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)) := by
-  have e := cocartesianBaseChangeSecondTriangleHomAssociativityTransportIso l k p q
-  rw [← cocartesianBaseChangeSecondTriangleHom_middle l k p q] at e
-  have : TrivialKanFibration (cocartesianBaseChangeHomSpanOne l
-      ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
-      ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)) :=
-    cocartesianBaseChangeHomSpanOne_trivialKanFibration l _ _
-  have e' := homSpanSectionTransportFactorIso
-    (cocartesianBaseChangeHomSpanOne l _ _) (cocartesianBaseChangeHomSpanZero l _ _)
-    (cocartesianBaseChangeHomSpanOneSection l _ _)
-    (isFullyFaithful_of_trivialKanFibration _)
-    (cocartesianBaseChangeHomSpanOneSection_projection l _ _)
-    (cocartesianBaseChangeSecondTriangleHomFirst l k p q)
-  simpa only [Category.assoc] using
-    e.postcomp (cocartesianBaseChangeHomTransport l _ _) ≪≫ e'
+          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)) :=
+  F2.functorIsoOfEq
+    ((cocartesianBaseChangeSecondTriangleHomAssociativityMiddleIso l k p q).postcomp
+      (cocartesianBaseChangeHomTransport l
+        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
+        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)) ≪≫
+      cocartesianBaseChangeSecondTriangleHomFirstTransportIso l k p q)
+    (Category.assoc _ _ _) rfl
 
 end SerrePositivity.InfinityCategories

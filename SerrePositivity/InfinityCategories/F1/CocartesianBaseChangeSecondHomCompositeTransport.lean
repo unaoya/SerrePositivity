@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondHomDecompositionEndpoints
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondTriangleHomTransport
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondCompositeLift
 
 /-!
 概要：元の第二面の Hom 上で、元の結合比較と既存の二回目の輸送の合成を回収する。
@@ -37,11 +36,7 @@ def cocartesianBaseChangeSecondHomCompositeTransportIso
       (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap l) ≫
         cocartesianStrictTransportCoherentDiagram
           ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q).val.hom)))
-  apply hf.isFullyFaithful.preimageVertexIso
-  rw [functorVertex_precomposition, functorVertex_precomposition]
-  have e := cocartesianBaseChangeSecondTriangleHomCompositeTransportIso l k p q
-  rw [← cocartesianBaseChangeSecondHomDecomposition_one l k p q,
-    ← cocartesianBaseChangeSecondHomDecomposition_zero l k p q] at e
-  simpa only [Category.assoc] using e
+  exact hf.isFullyFaithful.preimageVertexIso
+    (cocartesianBaseChangeSecondHomCompositeLiftIso l k p q)
 
 end SerrePositivity.InfinityCategories

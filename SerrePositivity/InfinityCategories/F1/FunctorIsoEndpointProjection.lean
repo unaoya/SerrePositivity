@@ -26,4 +26,12 @@ lemma functorIsoOfEq_postcomp_eqToIso {A E B : SSet.{u}}
   subst f' g'
   exact he
 
+/-- 端点だけの正規化後に前合成しても、指定された元の同型の値を保持する。 -/
+lemma functorIsoOfEq_precomp_heq {A E K : SSet.{u}}
+    {f g f' g' : A ⟶ E} (e : FunctorIso f g) (hf : f = f') (hg : g = g')
+    (r : K ⟶ A) :
+    HEq ((F2.functorIsoOfEq e hf hg).precomp r) (e.precomp r) := by
+  subst f' g'
+  rfl
+
 end SerrePositivity.InfinityCategories
