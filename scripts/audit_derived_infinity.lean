@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedHomFunctor
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedHomRawFactor
+import SerrePositivity.InfinityCategories.Derived.FullyFaithfulFunctorHomRecovery
+import SerrePositivity.InfinityCategories.Derived.FunctorHomPrecompAlgebra
+import SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompAlgebra
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelBimoduleHom
+import SerrePositivity.InfinityCategories.Derived.DeformationDescentHomNaturality
 import SerrePositivity.InfinityCategories.Derived.ActionComparisonNaturality
 import SerrePositivity.InfinityCategories.Derived.ActionCompositorNaturalityTransfer
 import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionNaturality
@@ -3963,6 +3970,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedHomFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedHomRawFactor,
+    `SerrePositivity.InfinityCategories.Derived.FullyFaithfulFunctorHomRecovery,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomPrecompAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelBimoduleHom,
+    `SerrePositivity.InfinityCategories.Derived.DeformationDescentHomNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.ActionComparisonNaturality,
     `SerrePositivity.InfinityCategories.Derived.ActionCompositorNaturalityTransfer,
     `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionNaturality,
