@@ -1455,6 +1455,15 @@ hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較�
 `rowPrefix/rowGeneratorMap/rowResidual` と `rowColumn_factorization` は全行の自然な因子化。
 `rowSource_eq/rowTarget_eq` は元の端点評価、接頭列・全縦射の指定性も保持する。
 任意可換環の実際の全自由次数でも検証。再添字・全語への両立と全体の積分解は後続。
+`ColumnCut.lift/lift_forget/lift_ext/lift_precomp` は任意の添字圏の元の図式の持ち上げ、
+忘却による回収、切断の選択への独立性、前合成の厳密な両立。
+`prefixDiagram/generatorDiagram/residualDiagram/columnDiagram` とそれらの再添字則は
+自然変換全体を保持し、`diagram_factorization` は元の列を回収する。
+`rowGenerator_simplex` は元の任意の単体作用素による基準行変更でも同じ Total 生成矢を回収。
+`rowCutDiagram_simplex` はその表示を移すと元の切断図式の前合成に厳密に一致する。
+`rowPrefix_simplex/rowGeneratorMap_simplex/rowResidual_simplex/rowColumn_simplex` は
+端点表示を含む自然変換全体の整合。任意可換環の実際の全自由次数でも検証。
+全語を切って貼り戻す図式・語の作用への両立・積分解と弱比較は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
