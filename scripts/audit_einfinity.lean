@@ -7755,6 +7755,24 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.SimplicialLocalization.kanHammock_target_homotopy,
     `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSourceFunctor_weak_invertible]
 
+@[noinline] private def e2RequiredBatch131 : Array Lean.Name :=
+  #[
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgLocalizationSource,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgLocalizationSource_inverts,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgLocalizationSource_vertexIso,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgLocalizationSource_isLocalization_iff,
+    `SerrePositivity.EInfinity.Hammock.localizationPrecomposition_comp_equivalence,
+    `SerrePositivity.EInfinity.Hammock.isLocalization_comp_equivalence_iff,
+    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_precomposition,
+    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_isLocalization_iff,
+    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalizationEquivalence,
+    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalizationEquivalence_hom,
+    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalizationComparison,
+    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap,
+    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_inverts,
+    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalization_vertexIso,
+    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_vertexIso]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7787,7 +7805,7 @@ run_cmd do
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
-      e2RequiredBatch130] do
+      e2RequiredBatch130, e2RequiredBatch131] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18731,3 +18749,37 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] :
       (weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
   hammockLocalizationNerveMap_inverts (BarrattEccles.cofibrantAlgebraRelativeCategory A)
 end e2HammockLocalizationSourceFixtures
+
+section e2ExistingLocalizationSourceFixtures
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open CategoryTheory MonoidalClosed SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.InfinityCategories
+open scoped Simplicial
+variable (C : RelativeCategory.{e2ComplexLimitUniverse})
+example : FunctorIso (kanFreeHammockAugmentationNerve C ≫
+    (kanHammockLocalizationEquivalence C).hom) (kanFreeHammockComparisonNerve C) :=
+  kanHammockLocalizationComparison C
+example (X : C.category) :
+    VertexIso ((localizationNerveSourceMap C).app (Opposite.op ⦋0⦌)
+      (ComposableArrows.mk₀ X)) (localizationNerveVertexEquiv C X) :=
+  localizationNerveSourceMap_vertexIso C X
+example (E : SSet.{e2ComplexLimitUniverse}) :
+    localizationPrecomposition (localizationNerveSourceMap C) (weakNerveEdges C)
+        (localizationNerveSourceMap_inverts C) E =
+      (pre (kanHammockLocalizationEquivalence C).hom).app E ≫
+        localizationPrecomposition (hammockLocalizationNerveMap C) (weakNerveEdges C)
+          (hammockLocalizationNerveMap_inverts C) E :=
+  localizationNerveSourceMap_precomposition C E
+example (A : Type e2ComplexLimitUniverse) [CommRing A] :
+    InvertsEdges (show nerve (BarrattEccles.cofibrantAlgebraRelativeCategory A).category ⟶
+        BarrattEccles.CAlg_R A from BarrattEccles.cAlgLocalizationSource A)
+      (weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
+  BarrattEccles.cAlgLocalizationSource_inverts A
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X : BarrattEccles.CofibrantAlgebra A) :
+    VertexIso ((BarrattEccles.cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
+      (ComposableArrows.mk₀ (BarrattEccles.cofibrantAlgebraDKObject A X)))
+      (BarrattEccles.cAlgVertexEquiv A (BarrattEccles.cofibrantAlgebraDKObject A X)) :=
+  BarrattEccles.cAlgLocalizationSource_vertexIso A (BarrattEccles.cofibrantAlgebraDKObject A X)
+end e2ExistingLocalizationSourceFixtures

@@ -1,0 +1,45 @@
+module
+
+public import SerrePositivity.EInfinity.BarrattEccles.CAlg
+public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNervePrecomposition
+
+/-!
+# 任意可換環の元の cofibrant 入力から既存 CAlg_R への実関手
+
+概要：元の DK 相対圏の nerve を既存の CAlg_R へ送り、元の擬同型を反転する。
+方針：同じ実局所化写像・同じ頂点比較・全標的の前合成比較を代入する。
+規約：Hom の ULift・元の環・元の cofibrant 入力を保持する。
+使われ方：E2b の全反転関手圏による ∞ 局所化の入口。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory SerrePositivity.InfinityCategories SimplicialLocalization
+open scoped Simplicial
+variable (A : Type u) [CommRing A]
+
+def cAlgLocalizationSource :
+    nerve (cofibrantAlgebraRelativeCategory A).category ⟶ CAlg_R A :=
+  localizationNerveSourceMap (cofibrantAlgebraRelativeCategory A)
+
+lemma cAlgLocalizationSource_inverts :
+    InvertsEdges (cAlgLocalizationSource A)
+      (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
+  localizationNerveSourceMap_inverts (cofibrantAlgebraRelativeCategory A)
+
+def cAlgLocalizationSource_vertexIso (X : (cofibrantAlgebraRelativeCategory A).category) :
+    VertexIso ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+      (cAlgVertexEquiv A (show CAlgSimplicialCategory A from X)) :=
+  localizationNerveSourceMap_vertexIso (cofibrantAlgebraRelativeCategory A) X
+
+lemma cAlgLocalizationSource_isLocalization_iff :
+    IsLocalization (cAlgLocalizationSource A)
+        (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) ↔
+      IsLocalization (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+        (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
+  localizationNerveSourceMap_isLocalization_iff (cofibrantAlgebraRelativeCategory A)
+
+end SerrePositivity.EInfinity.BarrattEccles
