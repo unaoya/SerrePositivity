@@ -2340,3 +2340,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.intervalReplacementSectionIso_precomp_endpoint_image
 #check @SerrePositivity.InfinityCategories.F2.functorIso_cancel_inverse_prefix
 #check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_postcomp_twice_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLeftKanMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeRightKanMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeComparisonKanMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeComparisonKanMap_forget
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeComparisonApexPrism
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeComparisonApexPrism_zero
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeComparisonApexPrism_one
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeComparisonApexPrism_vertical_isInvertible
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLimitConeTransport
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLimitCone
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLimitCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLimitCone_apex
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLimitCone_vertex
