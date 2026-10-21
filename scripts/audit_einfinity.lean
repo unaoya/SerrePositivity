@@ -5968,6 +5968,63 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_obj_of_ne,
       `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_obj_leaf]
 
+@[noinline] private def e2RequiredBatch89 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.colimitRowMap_append,
+      `SerrePositivity.EInfinity.Hammock.colimitRowMap_forward,
+      `SerrePositivity.EInfinity.Hammock.backwardMap,
+      `SerrePositivity.EInfinity.Hammock.colimitRowMap,
+      `SerrePositivity.EInfinity.Hammock.rowMap_wordAction,
+      `SerrePositivity.EInfinity.Hammock.colimitRowMap_wordAction,
+      `SerrePositivity.EInfinity.Hammock.colimitRowMap_empty,
+      `SerrePositivity.EInfinity.Hammock.colimitRowHomotopy,
+      `SerrePositivity.EInfinity.Hammock.postcomposeHomotopyMap,
+      `SerrePositivity.EInfinity.Hammock.postcomposeHomotopy,
+      `SerrePositivity.EInfinity.Hammock.precomposeHomotopyMap,
+      `SerrePositivity.EInfinity.Hammock.precomposeHomotopy,
+      `SerrePositivity.EInfinity.Hammock.composeUnitMaps,
+      `SerrePositivity.EInfinity.Hammock.postcomposePointMap,
+      `SerrePositivity.EInfinity.Hammock.precomposePointMap,
+      `SerrePositivity.EInfinity.Hammock.postcomposePointMap_comp,
+      `SerrePositivity.EInfinity.Hammock.precomposePointMap_comp,
+      `SerrePositivity.EInfinity.Hammock.postcomposePointMap_unit,
+      `SerrePositivity.EInfinity.Hammock.precomposePointMap_unit,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.postcompositionIso,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.precompositionIso,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.postcompose_forward_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.postcompose_backward_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.precompose_forward_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.precompose_backward_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.postSourceHomotopy,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.postTargetHomotopy,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.preSourceHomotopy,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.preTargetHomotopy,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.colimitRowMap_sourceUnit,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.colimitRowMap_targetUnit,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.sourceCancellationHomotopy,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.targetCancellationHomotopy,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.sourceRoundTrip,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.sourceUnit,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.targetRoundTrip,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.targetUnit,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.sourceCancellation,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.targetCancellation,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.sourceRoundTrip_composition,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.targetRoundTrip_composition,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.sourceCompositeHomotopy,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.targetCompositeHomotopy,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.empty_segment_identity,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.empty_column_identity,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.empty_arrow_identity,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.sourceUnit_arrow,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.targetUnit_arrow,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.empty_sourceUnit,
+      `SerrePositivity.EInfinity.Hammock.WeakArrow.empty_targetUnit,
+      `SerrePositivity.EInfinity.Hammock.rowMap,
+      `SerrePositivity.EInfinity.Hammock.rowHomotopyMap,
+      `SerrePositivity.EInfinity.Hammock.rowHomotopyMap_zero,
+      `SerrePositivity.EInfinity.Hammock.rowHomotopyMap_one,
+      `SerrePositivity.EInfinity.Hammock.rowHomotopy]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5999,7 +6056,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -14355,3 +14412,60 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
   let := FreeQuiverCover.spanningTreeArborescence (Q := Q) A
   exact QuiverTree.LeafDeletion.deformation
     (FreeQuiverCover.finiteHullLeafDeletion (Q := Q) A S hne)
+
+-- 元の指定射による forward 後合成 は弱同値。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] {X Y : C}
+    (g : X ⟶ Y) (hg : W g) (A : C) :
+    IsWeakHomotopyEquivalence (postcomposePointMap A (arrowMap W g)) :=
+  WeakArrow.postcompose_forward_isWeakHomotopyEquivalence g hg A
+
+-- 元の指定射による backward 後合成 は弱同値。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] {X Y : C}
+    (g : X ⟶ Y) (hg : W g) (A : C) :
+    IsWeakHomotopyEquivalence (postcomposePointMap A (backwardMap g hg)) :=
+  WeakArrow.postcompose_backward_isWeakHomotopyEquivalence g hg A
+
+-- 元の指定射による forward 前合成 は弱同値。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] {X Y : C}
+    (g : X ⟶ Y) (hg : W g) (A : C) :
+    IsWeakHomotopyEquivalence (precomposePointMap (arrowMap W g) A) :=
+  WeakArrow.precompose_forward_isWeakHomotopyEquivalence g hg A
+
+-- 元の指定射による backward 前合成 は弱同値。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] {X Y : C}
+    (g : X ⟶ Y) (hg : W g) (A : C) :
+    IsWeakHomotopyEquivalence (precomposePointMap (backwardMap g hg) A) :=
+  WeakArrow.precompose_backward_isWeakHomotopyEquivalence g hg A
+
+-- 単位から元の往復合成への実際の単体的ホモトピーも得られる。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] {X Y : C}
+    (g : X ⟶ Y) (hg : W g) :
+    Nonempty (SSet.Homotopy (colimitUnit W X)
+      (composeUnitMaps (arrowMap W g) (backwardMap g hg))) :=
+  ⟨WeakArrow.sourceCompositeHomotopy g hg⟩
+
+-- 任意可換環の実際の自由解像の全次数で元の指定射の四つの作用を検査。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
+    let B := (freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n
+    ∀ {X Y : B.category} (g : X ⟶ Y) (hg : B.weakEquivalences g) (A : B.category),
+      IsWeakHomotopyEquivalence (postcomposePointMap A (arrowMap B.weakEquivalences g)) ∧
+      IsWeakHomotopyEquivalence (postcomposePointMap A (backwardMap g hg)) ∧
+      IsWeakHomotopyEquivalence (precomposePointMap (arrowMap B.weakEquivalences g) A) ∧
+      IsWeakHomotopyEquivalence (precomposePointMap (backwardMap g hg) A) := by
+  intro B X Y g hg A
+  exact ⟨WeakArrow.postcompose_forward_isWeakHomotopyEquivalence g hg A,
+    WeakArrow.postcompose_backward_isWeakHomotopyEquivalence g hg A,
+    WeakArrow.precompose_forward_isWeakHomotopyEquivalence g hg A,
+    WeakArrow.precompose_backward_isWeakHomotopyEquivalence g hg A⟩

@@ -1779,6 +1779,22 @@ hammock 上の値 β の fiber を元の被覆の固定端点 hammock へ同定�
 元の接続辺の向きに応じて E→𝟭 または 𝟭→E を選び、成分の回収も証明する。
 両方向と元の各成分、任意可換環の実際の全自由次数でも検証。
 hammock のホモトピーへの移送・成分可縮性・命題2.2の両弱比較は未完成。
+`WeakArrow.sourceCancellation/targetCancellation` は指定射の往復を恒等行へ比較する
+実際の二列・一幅の hammock。中間の縦射は元の指定射、両端は恒等射である。
+`empty_sourceUnit/empty_targetUnit` が恒等行を空語からの元の挿入へ照合する。
+`rowMap/rowHomotopy/colimitRowHomotopy` は任意の元の行と縦射を全次数の単体写像・
+ホモトピーに移す。`colimitRowMap_append` は行の連結を既存の豊穣合成へ照合し、
+`sourceCompositeHomotopy/targetCompositeHomotopy` が元の往復合成と単位を結ぶ。
+`postcomposePointMap/precomposePointMap/composeUnitMaps` は元の一定の点の前後合成で、
+元の結合則・単位則とホモトピーの代入も提供する。
+`WeakArrow.postSourceHomotopy/postTargetHomotopy/preSourceHomotopy/preTargetHomotopy`
+は指定射の forward・backward の前後合成の両逆ホモトピー。
+`postcompositionIso/precompositionIso` は任意の anodyne 反転関手での元の二作用の同型。
+`postcompose_forward_isWeakHomotopyEquivalence/postcompose_backward_isWeakHomotopyEquivalence`
+と `precompose_forward_isWeakHomotopyEquivalence/precompose_backward_isWeakHomotopyEquivalence`
+は同じ元の四作用の弱同値性を Kan 標的によって検出する。始終域の Kan 性・モデル構造は不要。
+四作用・実際のホモトピー・任意可換環の元の自由解像の全次数でも検証。
+相対自然変換による全語の比較・成分可縮性・命題2.2の両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

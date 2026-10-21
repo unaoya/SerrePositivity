@@ -1449,3 +1449,14 @@ public import SerrePositivity.EInfinity.Hammock.QuiverTreeDeformationComponents
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeDeformationNaturality
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeLeafEdgeOrientation
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeLeafEndofunctor
+public import SerrePositivity.EInfinity.Hammock.ColimitRowComposition
+public import SerrePositivity.EInfinity.Hammock.ColimitRowHomotopy
+public import SerrePositivity.EInfinity.Hammock.PointActionHomotopy
+public import SerrePositivity.EInfinity.Hammock.PointActions
+public import SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences
+public import SerrePositivity.EInfinity.Hammock.WeakArrowActionHomotopies
+public import SerrePositivity.EInfinity.Hammock.WeakArrowCancellationHomotopy
+public import SerrePositivity.EInfinity.Hammock.WeakArrowCancellationRows
+public import SerrePositivity.EInfinity.Hammock.WeakArrowRoundTripComposition
+public import SerrePositivity.EInfinity.Hammock.WeakArrowUnitRows
+public import SerrePositivity.EInfinity.Hammock.ZigzagRowHomotopy
