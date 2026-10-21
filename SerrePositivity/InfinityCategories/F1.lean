@@ -2503,3 +2503,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondC
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondCompositeFactors
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondFirstNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeEnriched
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeSectionTarget
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparisonTransportExt
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeDiagramEndpoints
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeFamily
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeHomPath
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeHomRestriction
