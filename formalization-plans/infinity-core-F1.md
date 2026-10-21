@@ -13,7 +13,7 @@
   同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
   各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
   core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
-  零・一次元セル上で元の分類主写像の充満忠実性・同値性と、元の全 Hom の core の区間作用の同値を追加仮定なしに証明済み。
+  零・一・二次元セル上で元の分類主写像の充満忠実性・同値性と、元の全 Hom の core の区間作用の同値を追加仮定なしに証明済み。
   一次元の strict 変換空間は、元の二成分評価による内部 Hom の厳密な pullback と証明済み。
   薄い底上の元の輸送遷移の同値持ち上げ性と、後合成の core の Kan fibration 性も証明済み。
   一次元の元の Hom の core も、同じ二成分評価による core の厳密な pullback と証明済み。
@@ -66,7 +66,7 @@
 - `yonedaInfinityMap_isFullyFaithful`、`yonedaInfinityMap_pinchedHomMap_isQCatEquivalence`
 - `CocartesianFibrationInfinity`、`cocartesianFibrationInfinityMappingEquivalence`
 - `cocartesianStraighteningCoherentMap`、`cocartesianStraighteningCoherentMap_vertex`
-- `cocartesianStraighteningHomInterval`、`cocartesianZeroSimplexStraighteningEquivalence`、`cocartesianBaseChangeHomTransport_compositionIso`、`cocartesianBaseChangeHomTransport_restrictionIso`
+- `cocartesianStraighteningHomInterval_twoSimplex_isQCatEquivalence`、`cocartesianStraighteningCoherentMap_twoSimplex_isQCatEquivalence`、`cocartesianLocalHomComparison_twoCell_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -88,18 +88,17 @@
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
 - 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
 - 元の cocartesian Hom の scaffold 制限と strict transport の写像空間比較は同値。
-  元の Hom の同じ区間作用と全固定成分比較は同値と証明済み。高次セル・大域充満忠実性・本質的全射性は残り、分類は未完了。
+  元の Hom の同じ区間作用と全固定成分比較は同値と証明済み。三次元以上のセル・大域充満忠実性・本質的全射性は残り、分類は未完了。
 
 ### 次の一手
 
-零・一次元の同じ分類・全 Hom 作用は同値。任意の底の各一次元セルでも元の局所 Hom 比較は同値で、大域作用と指定同型で整合する。`cocartesianStraighteningCoherentMap_oneSimplex_isQCatEquivalence` と `cocartesianStraighteningHomInterval_oneSimplex_isQCatEquivalence` は同じ元の全 fibration と全 Hom 作用の同値。両側の全内ホーン制限も自明 Kan。
-元の Hom の core と分類先の区間 Hom は、同じ共有頂点で貼る二区間の厳密な pullback。二次元単体からこの同じ pullback への両比較は自明 Kan。`cocartesianTwoSimplexStrictPullbackMap_isQCatEquivalence` は指定 path を保持する補正 pullback 比較の同値。`cocartesianTwoSimplexCorrectedFirstSquare_coherence`・`SecondSquare_coherence` が元の両脚の指定自然性を回収する。
-`cocartesianBaseChangeNativeInfinityMap_family`・`_homPath` が元の二重底変換の全局所比較族を回収し、`cocartesianIsoTransportNativeHomComparison_doubleBaseChange` が元の大域 Hom への制限を厳密に回収する。
-`cocartesianBaseChangeHomTransport_compositionIso_originalHom_identity` は元の全 Hom 上の輸送三角形の貼り合わせ等式。直接辺・第二辺・第一辺と、結合輸送を引き戻す引数を元の大域自然性・指定局所因子へ照合済み。
-`cocartesianBaseChangeGlobalTransportTriangleCommutes` は四端点を同じ表示へ移した同じ輸送三角形の等式。`cocartesianBaseChangeFirstGlobalPasting_normalized` は同じ第一辺の指定因子と制限自然性の貼り合わせを回収する。`cocartesianBaseChangeGlobalLocalTriangleCommutes` により、指定因子の逆と第一辺の正方形を消去した局所自然性の三辺の等式を元の全 Hom 上で証明済み。`FunctorIsoLocalTriangleCommutes` はこの等式を保つ命題。
-性能上、巨大な指定合成は中間作用を不透明な等式でそろえてから合成する。端点の回収には `functorIsoOfEq_sourceMap_of_eq`・`functorIsoOfEq_targetMap_of_eq` と `FunctorIsoEndpointPrecomposition` の一般則を使う。関手同型から射を再構成する型推論は上限に達するため、貼り合わせと三辺の等式の移送は `iso_pasting_heq_of_endpoint_eq`・`IsoTriangleCommutes` とホモトピー圏の対象の等式で行う。上限・追跡設定は増やさない。
-`cocartesianIteratedLocalHomComparison_nativeIso_originalHom_heq` と `cocartesianIteratedLocalHomComparison_restrictionIso_originalHom_heq` により、既存の局所結合比較・制限自然性を元の全 Hom に戻した指定値を上の両因子へ同定済み。`cocartesianLocalHomComparison_nativeRestrictionIso_originalHom_heq` と `_originalHom_endpoints` は、既存の局所自然性全体が同じ一回目の底変換での前合成後に、同じ指定二因子の合成と両端を回収することを保証する。`cocartesianOriginalNativeRestrictionTriangleCommutes` は、端点表示だけをそろえたこの既存の局所自然性自身について、元の全 Hom 上で元の大域自然性の三辺の等式を回収する。`cocartesianLocalNativeRestrictionOriginalHomNormalizedIso_eq` は既存の指定値を同じ合成へ厳密に同定し、`cocartesianGlobalTransportDirectIso_originalNaturality_heq` は直接辺の元の指定値を保持する。`cocartesianLocalHomComparison_overNaturalityIso_originalHom_postcomp_heq` により、既存の over 自然性も元の全 Hom 上で正規化後に同じ指定 native 自然性を回収することを証明済み。`cocartesianOriginalOverNaturalityTriangleCommutes`・`cocartesianOriginalCellOverNaturalityTriangleCommutes` により、既存の over・共有セルを指定した cellOver 自然性自身の三角等式も元の全 Hom 上で証明済み。両端の厳密な一致を確認し、同じ正規化後の指定像の三辺の等式を充満忠実な後合成で反映した。`cocartesianTwoSimplexSharedNaturality_coherence`・`_component_coherence` は、二辺から共有頂点へ進む指定合成が、元の全 Hom 上でも各相対関手での成分でも同じ直接自然性に一致することを保証する。`cocartesianTwoSimplexCorrectedFirstGlobalIso`・`SecondGlobalIso` は元の全 Hom 上で補正成分の同じ path と大域自然性を合成した指定同型。`cocartesianTwoSimplexCorrectedSharedGlobalIso_coherence` により、これらの共有頂点への指定像は端点表示だけを揃えると同じ直接自然性に厳密に一致する。`leftFibration_exists_edge_representative_over` は両端と元の類を保ち、像を指定代表辺に揃える。関手空間で適用し、`pullbackFunctorIsoOfCommonNormalizedIsos` で全円柱を貼った。`cocartesianTwoSimplexGlobalPullbackComparisonIso` により、元の全 Hom 上で補正成分による射と元の分類作用の二辺制限を同じ実際の pullback 内の関手同型で結ぶ工程は完了。`cocartesianTwoSimplexSourceRestrictionMap`・`TargetRestrictionMap` を元の同じ制限で構成し、`cocartesianTwoSimplexCorrectedGlobalPullbackMap_factor`・`OriginalGlobalPullbackMap_factor` で両因数分解を厳密に照合済み。`cocartesianTwoSimplexSegalComparisonIso` は、元の全 Hom 上で source 制限・厳密 pullback 同値と、元の分類 Hom 作用・target 制限を結ぶ。source cospan は二脚を明示する表示へ整理し、`cocartesianTwoSimplexLocalSource_original_diagram` で元の合成図式との一致を証明した。標準二辺・共有頂点と元の nerve セルの底上の同型、および両脚の自然性を構成済み。`cocartesianTwoSimplexTargetRestrictionMap_standard_factor` で元の target 制限を同じ標準内ホーンの制限へ厳密に照合し、`cocartesianTwoSimplexTargetRestrictionMap_id_trivialKanFibration`・`_id_isQCatEquivalence` で恒等二単体の元の target 制限の自明 Kan 性・同値性を追加仮定なしに証明した。次は小さい宇宙で同じ底・二辺・共有頂点の表示同型を作り、source 制限を元の native core の内ホーン制限と同じ pullback 表示へ照合する。二次ホーンの指定辺保存の反映は、底の同型の像を使い、既存の `exists_cocartesianFactorizationTriangle` へ同じ二単体を渡す形で移す。source の自明 Kan 性から同じ Hom 作用の二単体上の同値性を結論する。
-全単体、有限セル・骨格の降下から一般の充満忠実性を結論する。照合・二次元 1〜2 日、有限セル・骨格と一般の充満忠実性・監査 2〜4 日（暫定）。本質的全射性・一般の底への帰着も残り、Cat∞ 値分類は未完了。
+零・一・二次元の同じ元の分類・全 Hom 作用は同値。`cocartesianStraighteningHomInterval_twoSimplex_isQCatEquivalence` と `cocartesianStraighteningCoherentMap_twoSimplex_isQCatEquivalence` は、元の全 cocartesian fibrations と元の全相対 Hom の core を使う同値。`cocartesianLocalHomComparison_twoCell_isQCatEquivalence` により、任意の底の同じ二次元セルの局所 Hom 比較も同値。単位・余単位の明示構成は主経路へ戻さない。
+`cocartesianTwoSimplexSourceRestrictionMap_id_trivialKanFibration`・`TargetRestrictionMap_id_trivialKanFibration` は元の二辺への両制限自身の自明 Kan 性。小さい標準二辺・共有頂点と元の nerve セルの同型で source を移送した。`preservesCocartesianEdges_of_innerTwoHornImage` は同じ底の同型像で欠ける長辺を既存の `exists_cocartesianFactorizationTriangle` で分解し、元の関手の辺保存を反映する。
+`cocartesianTwoSimplexSegalComparisonIso` は source 制限・既存の厳密 pullback 同値と、元の分類 Hom 作用・target 制限を結ぶ。`cocartesianTwoSimplexGlobalPullbackComparisonIso` は同じ元の全 Hom 上の同じ二射を実際の pullback 内で結んでおり、独立に選んだ局所同値で置換していない。
+`cocartesianOriginalOverNaturalityTriangleCommutes`・`cocartesianOriginalCellOverNaturalityTriangleCommutes` は任意の通常圏のセルに対する、既存の局所自然性と元の大域自然性の同じ三角等式。`pullbackFunctorIsoOfCommonNormalizedIsos` は共通端点で指定像が一致する二成分を、両端と類を保つ代表辺の変更で実際の pullback の関手同型へ束ねる。高次でもこの指定値の整合を保持する。
+次は三次元以上の単体へ進む。最初の候補は、(n−1) 次元の初期面と最後の一区間を同じ頂点で貼る二成分 Segal 制限での帰納。標準単体内でこの包含の inner anodyne 性と source の辺保存の反映を証明し、既存の二成分の補正比較・三角等式を一般のセル cospan に移す。元の分類 Hom 作用を保持して全単体の同値性を閉じる。
+全単体の後に有限セル・骨格の降下から一般の充満忠実性を結論する。高次単体の帰納 1〜2 日、有限セル・骨格と一般の充満忠実性・監査 2〜4 日（暫定）。本質的全射性・一般の底への帰着も残り、Cat∞ 値分類は未完了。
+性能上、巨大な同型は中間作用と端点を不透明な等式で揃えてから合成する。射を逆算する型推論を避け、`iso_pasting_heq_of_endpoint_eq`・`IsoTriangleCommutes` とホモトピー圏の対象の等式を使う。source cospan は二脚を明示し、`cocartesianTwoSimplexLocalSource_original_diagram` で元の合成図式との一致を保証した。上限・追跡設定は増やさない。
 正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
 ## 0. 目標と範囲
