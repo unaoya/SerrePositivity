@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelHomotopyAdjunction
+import SerrePositivity.InfinityCategories.Derived.DGKernelCounitEdge
+import SerrePositivity.InfinityCategories.Derived.DGCounitColumn
+import SerrePositivity.InfinityCategories.Derived.DGCounitColumnZeroLifting
+import SerrePositivity.InfinityCategories.Derived.DGCounitColumnGradedLifting
+import SerrePositivity.InfinityCategories.Derived.DGCounitColumnQuasiIso
+import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionHomotopyAdjunction
+import SerrePositivity.InfinityCategories.Derived.DGHomotopyAdjunctionCounit
+import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionCounit
+import SerrePositivity.InfinityCategories.Derived.DGUniversalCounitSpaces
+import SerrePositivity.InfinityCategories.Derived.DGUniversalCounitNative
+import SerrePositivity.InfinityCategories.Derived.DGKernelUniversalCounit
 import SerrePositivity.InfinityCategories.Derived.DGNerveH0Naturality
 import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyNaturality
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSourceSection
@@ -3280,10 +3292,53 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgModuleResolvedInfinity_classicalIso
 #check SerrePositivity.InfinityCategories.dgKernelDerivedInfinity_classicalIso
 
+#check SerrePositivity.InfinityCategories.dgModuleDerivedHomotopyEquivalence
+#check SerrePositivity.InfinityCategories.dgKernelHomotopyRightAdjoint
+#check SerrePositivity.InfinityCategories.dgKernelHomotopyAdjunction
+#check SerrePositivity.InfinityCategories.dgKernelCounitEdge_exists
+#check SerrePositivity.InfinityCategories.dgCounitColumn
+#check SerrePositivity.InfinityCategories.dgCounitColumn_f
+#check SerrePositivity.InfinityCategories.dgCounitColumn_compose
+#check SerrePositivity.InfinityCategories.dgCyclePostcomposition_eq_closed
+#check SerrePositivity.InfinityCategories.dgCounitColumn_closedCycle
+#check SerrePositivity.InfinityCategories.dgCounitColumn_zero_cycle_lift
+#check SerrePositivity.InfinityCategories.dgCounitColumn_zero_boundary_reflect
+#check SerrePositivity.InfinityCategories.dgCounitColumn_graded_cycle_lift
+#check SerrePositivity.InfinityCategories.dgCounitColumn_graded_boundary_reflect
+#check SerrePositivity.InfinityCategories.dgCounitColumn_quasiIso_of_gradedShifts
+#check SerrePositivity.InfinityCategories.dgKernelResolutionHomotopyRightAdjoint
+#check SerrePositivity.InfinityCategories.dgKernelResolutionHomotopyAdjunction
+#check SerrePositivity.InfinityCategories.dgHomotopyAdjunction_counit_closed_exists
+#check SerrePositivity.InfinityCategories.dgKernelResolutionCounit_quasiIso_exists
+#check SerrePositivity.InfinityCategories.DGUniversalCounit
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.mk
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.source
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.counit
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.quasiIso
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.pinchedMap
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.pinchedMap_eq
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.pinchedMap_isSimplicialHomotopyEquivalence
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.pinchedMap_eq_native
+#check SerrePositivity.InfinityCategories.DGUniversalCounit.nativePinchedMap_isSimplicialHomotopyEquivalence
+#check SerrePositivity.InfinityCategories.dgKernelResolutionUniversalCounit
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelHomotopyAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCounitEdge,
+    `SerrePositivity.InfinityCategories.Derived.DGCounitColumn,
+    `SerrePositivity.InfinityCategories.Derived.DGCounitColumnZeroLifting,
+    `SerrePositivity.InfinityCategories.Derived.DGCounitColumnGradedLifting,
+    `SerrePositivity.InfinityCategories.Derived.DGCounitColumnQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelResolutionHomotopyAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.DGHomotopyAdjunctionCounit,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelResolutionCounit,
+    `SerrePositivity.InfinityCategories.Derived.DGUniversalCounitSpaces,
+    `SerrePositivity.InfinityCategories.Derived.DGUniversalCounitNative,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelUniversalCounit,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveH0Naturality,
     `SerrePositivity.InfinityCategories.Derived.DGStableHomotopyNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSourceSection,
