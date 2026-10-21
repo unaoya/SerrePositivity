@@ -49,8 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   任意の有限標的射の二入力を、共通の元の境界円柱を保って元の fiber へ同時に輸送・反映し、実際の比較射への相対有限検出・持ち上げを構成。値の射の境界と全比較円柱の制限を厳密に保持。
   任意の Kan 境界で相対持ち上げを構成し、境界移動を除去。元の全空間 Kan 引き戻し比較の弱同値性・ホモトピー逆を全標準境界の path 置換充填から証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較の頂点辺・恒等図式辺を持つ全錐比較と各脚の h での自然性を保持。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 錐の二単体・全辺を保つ pointed 全錐と既存の実延長頂点を同じ始点固定 prism 空間へ揃え、元の局所指定比較の合成と native 指定長辺同型の等式を証明済み。実終点評価・縮小・宇宙下降・fiber Hom の一つの関手は両者を同じ小さい fiber 間の指定同型へ写す。共通 prism の普遍・実長辺の終点を、元の指定射と二射の合成の相対関手頂点へ厳密に揃えた。両端を正規化した指定終点像は元の局所比較と等しく、同じ縮小・下降後も既存の小さい局所同型と等しい。小さい実頂点への正規化・fiber Hom 後の指定像は、元の実際の coherentTransformationTriangleFiberIso と HEq で一致。未完：共通関手による native path の像の左右合成との整合、native 普遍性からの fiber 比較の同値性、一般の有限極限交換・Ind。
-  三集約同時ビルド 8306 jobs、公理監査 5501 宣言・同時 import 成功。実頂点の両端正規化・元の指定 fiber 三角形同型との照合の追加10宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
+  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 全錐と実局所比較を共通の始点固定 prism 空間へ揃え、同じ終点評価・縮小・宇宙下降・fiber Hom 関手で比較。元の普遍頂点・左右の長辺の像を実際の fiber 射へ厳密に同定し、端点補正後の局所指定像を元の coherentTransformationTriangleFiberIso と型付き等式で同定。中間の補正の相殺から、native 全錐の指定 path の像は元の左右の実際の fiber 三角形同型の指定合成に等しい。実際の模型 fiber 比較の指定可換同型も同じ native 指定像に等しい。未完：native 普遍性からの fiber 比較の同値性、一般の有限極限交換・Ind。
+  三集約同時ビルド 8336 jobs、公理監査 5731 宣言・同時 import 成功。共通関手の頂点同定・指定 path の合成則・模型の指定可換同型との一致の追加30宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -102,7 +102,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：coherentRestrictedPrismFiberTriangleIso_heq_actual の左右二三角形への適用と、coherentCospanPrismFiberFunctor の指定像の合成則を照合する。明示した両端の補正が共通普遍頂点で相殺する式を保ち、native path の像を既存の coherentCospanFiberTrianglePathIso へ接続する。その後、元の各点の native 錐の普遍性から fiber 比較の同値性を導く。各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導き、native 比較候補へ進む。
+- F2N-1：coherentCospanModelFiberPathIso_eq_native を用い、元の各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導く。coneSectionHomComparison と pointed 全錐の section 族を比較し、元の二脚・指定 path を保って native 比較候補の弱同値性へ接続する。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
@@ -169,7 +169,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   任意の Kan 始域境界への相対持ち上げと、その境界を厳密に固定する補正を構成。
   全標準境界の path 置換終点の自明 Kan 性から、元の比較の弱同値性と単体的ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成し、全錐の可逆比較・元の比較の頂点辺・恒等図式辺・各脚の自然性を保持。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 錐の二単体・全辺を保つ pointed 全錐と既存の実延長頂点を同じ始点固定 prism 空間へ揃え、元の局所指定比較の合成と native 指定長辺同型の等式を証明済み。実終点評価・縮小・宇宙下降・fiber Hom の一つの関手は両者を同じ小さい fiber 間の指定同型へ写す。共通 prism の普遍・実長辺の終点を、元の指定射と二射の合成の相対関手頂点へ厳密に揃えた。両端を正規化した指定終点像は元の局所比較と等しく、同じ縮小・下降後も既存の小さい局所同型と等しい。小さい実頂点への正規化・fiber Hom 後の指定像は、元の実際の coherentTransformationTriangleFiberIso と HEq で一致。未完：共通関手による native path の像の左右合成との整合、native 普遍性からの fiber 比較の同値性、一般の有限極限交換・Ind。
+  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 全錐と実局所比較を共通の始点固定 prism 空間へ揃え、同じ終点評価・縮小・宇宙下降・fiber Hom 関手で比較。元の普遍頂点・左右の長辺の像を実際の fiber 射へ厳密に同定し、端点補正後の局所指定像を元の coherentTransformationTriangleFiberIso と型付き等式で同定。中間の補正の相殺から、native 全錐の指定 path の像は元の左右の実際の fiber 三角形同型の指定合成に等しい。実際の模型 fiber 比較の指定可換同型も同じ native 指定像に等しい。未完：native 普遍性からの fiber 比較の同値性、一般の有限極限交換・Ind。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -179,7 +179,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：元の二三角形と共通の全 native 錐の始点固定比較を構成済み。長辺への制限とその指定値は証明済み。底移送と共通空間での指定比較の合成まで証明済み。元の実延長頂点の移送・局所指定比較の合成と native 長辺同型の等式まで証明済み。終点の交換と縮小・下降・fiber Hom の同じ関手による局所側・native 側の指定像の等式まで証明済み。各三角形の両端正規化と既存の指定 fiber 三角形同型との HEq まで証明済み。次は共通関手の native path 像と左右の指定同型の合成を照合する。各点の native 錐の普遍性から元の fiber 比較の同値性を証明し、native 比較候補の弱同値性へ接続。
+- 次の一手：native 全錐の指定 path の共通関手による像、左右の実際の fiber 三角形同型の合成、模型 fiber 比較の指定可換同型の三者の型付き等式まで証明済み。各点の native 錐の普遍性から元の模型 fiber 比較の同値性を証明し、native 比較候補の弱同値性へ接続。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |

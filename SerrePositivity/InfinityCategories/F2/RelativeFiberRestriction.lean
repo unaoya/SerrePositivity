@@ -55,4 +55,16 @@ lemma relativeFunctorFiberHom_eq_restrict {A E B : SSet.{u}}
   apply Subtype.ext
   rfl
 
+/-- 元の底上の実射は、始域 fiber への制限後も同じ fiber 射の関手頂点を与える。 -/
+lemma relativeFunctorBaseFiberHom_pre_vertex {A E B : SSet.{u}}
+    (a : A ⟶ B) (p : E ⟶ B) (b : B _⦋0⦌) (f : A ⟶ E) (hf : f ≫ p = a) :
+    (relativeFunctorBaseFiberHom p (vertexFiberι a b ≫ a) b (vertexFiberι_comp a b)).app _
+      ((relativeFunctorPre p a (vertexFiberι a b)).app (Opposite.op ⦋0⦌)
+        (relativeFunctorVertex p a f hf)) = functorVertex (vertexFiberMap a p f hf b) := by
+  change (relativeFunctorPre p a (vertexFiberι a b) ≫
+    relativeFunctorBaseFiberHom p (vertexFiberι a b ≫ a) b (vertexFiberι_comp a b)).app _
+      (relativeFunctorVertex p a f hf) = _
+  rw [relativeFunctorFiberHom_eq_restrict]
+  exact relativeFunctorFiberHom_vertex a p b f hf
+
 end SerrePositivity.InfinityCategories.F2

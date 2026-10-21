@@ -184,7 +184,7 @@ public import SerrePositivity.InfinityCategories.F2.CoherentCospanFiberPathCompo
 
 public import SerrePositivity.InfinityCategories.F2.CoherentNativeTriangleSections
 
-public import SerrePositivity.InfinityCategories.F2.CoherentCospanPrismFiberFunctor
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeFiberPath
 
 public import SerrePositivity.InfinityCategories.F2.CoherentRestrictedFiberTriangleIso
 

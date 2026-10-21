@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.SmallRestrictedEndpointVertex
+public import SerrePositivity.InfinityCategories.F2.IsoEndpointNormalization
 
 /-!
 概要：局所三角形比較の下降後の両端を元の小さい実頂点へ正規化する。
@@ -71,5 +72,22 @@ lemma coherentSmallTriangleRelativeIso_pre_eq_endpoint :
       normalizedSmallTriangleEndpointIso F G J x y T s := by
   exact eq_of_heq ((coherentSmallTriangleRelativeIso_pre_heq_endpoint F G J x y T s).trans
     (normalizedSmallTriangleEndpointIso_heq F G J x y T s).symm)
+
+/-- 同じ指定同型の小さい両端の補正は、任意の後合成の指定像の値を保持する。 -/
+lemma normalizeSmallTriangleEndpointIso_map_heq {L : SSet.{u}}
+    (e : VertexIso
+      (smallRestrictedEndpointVertex F J (leftUnstraighteningMappingVertexMap F J T.diagonal).val
+        (leftUnstraighteningMappingVertexMap F J T.diagonal).property s)
+      (smallRestrictedEndpointVertex F J
+        ((leftUnstraighteningMappingVertexMap F G x).val ≫
+          (leftUnstraighteningMappingVertexMap G J y).val)
+        (coherentTransformationMappingComposite_projection F G J x y) s))
+    (f : relativeFunctorSpace (smallLeftUnstraighteningProjection J)
+      (s ≫ smallLeftUnstraighteningProjection F) ⟶ L) :
+    HEq (VertexIso.map (normalizeSmallTriangleEndpointIso F G J x y T s e) f)
+      (VertexIso.map e f) := by
+  unfold normalizeSmallTriangleEndpointIso
+  dsimp only
+  exact isoNormalizeEndpoints_map_heq (SSet.mapHomotopyCategory f) e _ _
 
 end SerrePositivity.InfinityCategories.F2
