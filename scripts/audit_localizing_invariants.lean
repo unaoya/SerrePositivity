@@ -512,7 +512,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.PrismEdgeEndpoint,
     `SerrePositivity.KST.LocalizingInvariants.SpectrumPostcompositionEndpoints,
     `SerrePositivity.KST.LocalizingInvariants.SpectrumPostcompositionCanonicalNaturality,
-    `SerrePositivity.KST.LocalizingInvariants.FiberMappingCanonicalPrismNaturality]
+    `SerrePositivity.KST.LocalizingInvariants.FiberMappingCanonicalPrismNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberRightShape,
+    `SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitDiagramIso,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberComparisonBase,
+    `SerrePositivity.KST.LocalizingInvariants.StrictCoherentArrowTriangles,
+    `SerrePositivity.KST.LocalizingInvariants.StrictCoherentArrowPresentation,
+    `SerrePositivity.KST.LocalizingInvariants.FiberCospanRightShape,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberRightPresentation]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

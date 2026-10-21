@@ -643,4 +643,12 @@ public import SerrePositivity.KST.LocalizingInvariants.SpectrumPostcompositionEn
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumPostcompositionCanonicalNaturality
 public import SerrePositivity.KST.LocalizingInvariants.FiberMappingCanonicalPrismNaturality
 
+public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberRightShape
+public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitDiagramIso
+public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberComparisonBase
+public import SerrePositivity.KST.LocalizingInvariants.StrictCoherentArrowTriangles
+public import SerrePositivity.KST.LocalizingInvariants.StrictCoherentArrowPresentation
+public import SerrePositivity.KST.LocalizingInvariants.FiberCospanRightShape
+public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberRightPresentation
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
