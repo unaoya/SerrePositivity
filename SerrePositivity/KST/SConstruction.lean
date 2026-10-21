@@ -1947,4 +1947,13 @@ public import SerrePositivity.KST.SConstruction.ExactnessEquivalenceReflection
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEvaluationExact
 public import SerrePositivity.KST.SConstruction.DGStandardExactness
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionExactnessReduction
+public import SerrePositivity.KST.SConstruction.DGClosedWhiskerComponents
+public import SerrePositivity.KST.SConstruction.DGStandardClosedComparison
+public import SerrePositivity.KST.SConstruction.DGStandardClosedComparisonIso
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionExact
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGExactValues
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGExactFamily
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEnrichedExactFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEnrichedExactRecovery
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGExactInfinityFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

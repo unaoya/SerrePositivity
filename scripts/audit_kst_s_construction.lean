@@ -23814,3 +23814,96 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGAction_isExactFunctor_iff_standardEvaluation
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAction_isExactFunctor_iff_standardEvaluation
+
+#check @SerrePositivity.KST.SConstruction.dgClosedWhiskerLeft_f
+#print axioms SerrePositivity.KST.SConstruction.dgClosedWhiskerLeft_f
+
+#check @SerrePositivity.KST.SConstruction.dgClosedWhiskerRight_f
+#print axioms SerrePositivity.KST.SConstruction.dgClosedWhiskerRight_f
+
+#check @SerrePositivity.KST.SConstruction.dgStandardClosedMap
+#print axioms SerrePositivity.KST.SConstruction.dgStandardClosedMap
+
+#check @SerrePositivity.KST.SConstruction.dgStandardClosedComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgStandardClosedComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgStandardClosedComparison
+#print axioms SerrePositivity.KST.SConstruction.dgStandardClosedComparison
+
+#check @SerrePositivity.KST.SConstruction.dgStandardConstant_zeroEval
+#print axioms SerrePositivity.KST.SConstruction.dgStandardConstant_zeroEval
+
+#check @SerrePositivity.KST.SConstruction.dgStandardClosedMap_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgStandardClosedMap_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgStandardClosedMap_hom
+#print axioms SerrePositivity.KST.SConstruction.dgStandardClosedMap_hom
+
+#check @SerrePositivity.KST.SConstruction.dgStandardClosedComparison_component
+#print axioms SerrePositivity.KST.SConstruction.dgStandardClosedComparison_component
+
+#check @SerrePositivity.KST.SConstruction.dgStandardClosedComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.dgStandardClosedComparisonIso
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGStandardActionComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGStandardActionComparisonIso
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGActionNerve_isExactFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGActionNerve_isExactFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGActionStableMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGActionStableMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGStableCategory
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGStableCategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGStableCategory_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGStableCategory_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGExactMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGExactMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGQCatFunctor_map_isExactFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGQCatFunctor_map_isExactFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGStableCategoryFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGStableCategoryFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_vertex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_vertex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_isExactVertex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_isExactVertex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGExactFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGExactFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGExactFamilyMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGExactFamilyMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGExactCoreFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGExactCoreFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGExactCoreFamilyMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGExactCoreFamilyMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGStableQCat
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGStableQCat
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedExactFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedExactFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedExactFunctor_family
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedExactFunctor_family
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedExactFunctor_hom_recovery
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedExactFunctor_hom_recovery
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedExactFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEnrichedExactFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGExactInfinityFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGExactInfinityFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGExactInfinityFunctor_vertex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGExactInfinityFunctor_vertex
