@@ -2488,3 +2488,20 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_of_empty
 #check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_empty
 #check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_simplex
+
+#check @SerrePositivity.InfinityCategories.F2.specifiedEdgeTriangleBoundary
+#check @SerrePositivity.InfinityCategories.F2.specifiedEdgeTriangleBoundary_zero
+#check @SerrePositivity.InfinityCategories.F2.specifiedEdgeTriangleBoundary_one
+#check @SerrePositivity.InfinityCategories.F2.specifiedEdgeTriangleBoundary_two
+#check @SerrePositivity.InfinityCategories.F2.specifiedEdgeTriangleBoundary_last
+#check @SerrePositivity.InfinityCategories.F2.relativeTerminal_triangle
+#check @SerrePositivity.InfinityCategories.F2.curry_relativeHomotopy_post_eq_const
+#check @SerrePositivity.InfinityCategories.F2.relativeTerminalFamilyTriangle
+#check @SerrePositivity.InfinityCategories.F2.limitConeFamilyComparisonTriangle
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyReindex_restriction
+#check @SerrePositivity.InfinityCategories.F2.limitConeFamilyComparison_reindex
+#check @SerrePositivity.InfinityCategories.F2.exists_limitFamilyRestrictionTriangle
+#check @SerrePositivity.InfinityCategories.F2.postcomposeFunctorCompositionTriangle
+#check @SerrePositivity.InfinityCategories.F2.coneFamilyReindex_apex
+#check @SerrePositivity.InfinityCategories.F2.limitConeFamily_reindex_apex
+#check @SerrePositivity.InfinityCategories.F2.limitFamilyRestrictionComparison_apex
