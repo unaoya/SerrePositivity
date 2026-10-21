@@ -2377,3 +2377,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.kanApexConeTransportLeg
 #check @SerrePositivity.InfinityCategories.F2.kanApexConeTransportLeg_comparison
 #check @SerrePositivity.InfinityCategories.F2.kanApexConeTransportLegIso_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredTotalVertex_isTerminal
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredColimitVertex_isTerminal
