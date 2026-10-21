@@ -228,7 +228,9 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.FixedMarkedSpanQuasicategory,
     `SerrePositivity.KST.LocalizingInvariants.FixedSpanApexComparison,
     `SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators,
-    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies]
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyInnerFibration]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
