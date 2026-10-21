@@ -13763,3 +13763,37 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms presheafColimitLegConjugate
 #check @presheafColimitLegConjugate_homMk
 #print axioms presheafColimitLegConjugate_homMk
+#check @sigmaPresheafCoconeBottomLeg
+#print axioms sigmaPresheafCoconeBottomLeg
+#check @sigmaPresheafCoconeBottomLeg_edge
+#print axioms sigmaPresheafCoconeBottomLeg_edge
+#check @sigmaPresheafCoconeBottomLeg_eq
+#print axioms sigmaPresheafCoconeBottomLeg_eq
+#check @sigmaPresheafCoconeBottomLeg_vertex
+#print axioms sigmaPresheafCoconeBottomLeg_vertex
+#check @finiteFamilyOriginalColimitFamilyCone_originalLeg_edge
+#print axioms finiteFamilyOriginalColimitFamilyCone_originalLeg_edge
+#check @sigmaPresheafColimitFiniteCone_originalLeg_edge
+#print axioms sigmaPresheafColimitFiniteCone_originalLeg_edge
+#check @sigmaPresheafColimitLegConjugate_kanHomMk
+#print axioms sigmaPresheafColimitLegConjugate_kanHomMk
+#check @sigmaPresheafColimitFiniteCone_vertex
+#print axioms sigmaPresheafColimitFiniteCone_vertex
+#check @sigmaPresheafStandardColimitLeg
+#print axioms sigmaPresheafStandardColimitLeg
+#check @sigmaPresheafStandardColimitLeg_eq
+#print axioms sigmaPresheafStandardColimitLeg_eq
+#check @sigmaPresheafStandardColimitLeg_homMk
+#print axioms sigmaPresheafStandardColimitLeg_homMk
+#check @commutingArrowSquare
+#print axioms commutingArrowSquare
+#check @commutingArrowSquareHomotopy
+#print axioms commutingArrowSquareHomotopy
+#check @commutingArrowSquareEdge
+#print axioms commutingArrowSquareEdge
+#check @commutingArrowSquareEdge_zero
+#print axioms commutingArrowSquareEdge_zero
+#check @commutingArrowSquareEdge_one
+#print axioms commutingArrowSquareEdge_one
+#check @standardCoconeKanLeg_naturality
+#print axioms standardCoconeKanLeg_naturality
