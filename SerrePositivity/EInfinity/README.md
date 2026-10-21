@@ -2043,7 +2043,16 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `backwardBackwardDataMap/backwardBackward_relative_functor` は元の指定部分圏の Hom の構造と
 両端の表示を保つ底・両係数・全対象・全射の相対自然性。
 任意可換環の実際の全自由次数・元の augmentation への適用も検証。
-後向きの単体図式・係数の弱比較・帰納段階と混合二方向は後続。
+`backwardBackwardDiagram/backwardBackwardDiagonalIso` は元の全作用素の圏・graph・対角の同型。
+`backwardBackwardDiagonalAugmentation_square/weak_iff` は同じ元の左比較射の正方形と弱同値判定。
+`freeBackwardFirstHomSpaceMap_weak/freeBackwardFirstLeftSpaceMap_weak` は元の底と左係数を
+native 指定 Hom augmentation に回収し、弱同値性を追加入力なしに証明する。
+`freeBackwardFirstRightSpaceIso_augmentation/freeBackwardFirstRightSpaceMap_weak` は
+元の右係数を残りの語の同じ比較射へ回収する。
+`freeWordDiagonalAugmentation_backwardBackward_weak/cons_backwardBackward_weak` は
+残りの元の語だけを帰納仮定とする後向き二列の段階。
+`freeWordDiagonalAugmentation_twoBackward_weak` は元の二列の無条件の弱同値性。
+任意可換環の実モデルの二列・三列へも適用する。混合二方向・空語と全語の帰納は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
