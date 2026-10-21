@@ -1640,3 +1640,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.prismExtensionEndpoint
 #check @SerrePositivity.InfinityCategories.F2.prismExtensionEndpoint_restrict
 #check @SerrePositivity.InfinityCategories.F2.prismExtensionComparison_restrict
+
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberImage_refl
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberImage_trans
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberImage_symm
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleFiberIso_eq_image
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationRelativeEq_fiberImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberTrianglePathIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeRelativePathIso_fiber_image
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberComparisonPathIso_eq_triangles

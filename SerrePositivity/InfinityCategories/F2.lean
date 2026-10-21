@@ -180,7 +180,7 @@ public import SerrePositivity.InfinityCategories.F2.SmallFiberTriangleFaces
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorOverPreTransport
 
-public import SerrePositivity.InfinityCategories.F2.CoherentFiberPathIsoEquality
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanFiberPathComposition
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
