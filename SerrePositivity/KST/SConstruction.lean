@@ -1577,4 +1577,12 @@ public import SerrePositivity.KST.SConstruction.NecklaceIsoCubicalMapping
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexMaps
 public import SerrePositivity.KST.SConstruction.SimplexBeadCubicalMapping
 public import SerrePositivity.KST.SConstruction.SimplexBeadLambdaHom
+public import SerrePositivity.KST.SConstruction.SimplexIntervalOrder
+public import SerrePositivity.KST.SConstruction.SimplexIntervalMap
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalOrder
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalFactor
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalTerminal
+public import SerrePositivity.KST.SConstruction.SimplexIntervalCubicalMapping
+public import SerrePositivity.KST.SConstruction.SimplexIntervalLambdaHom
+public import SerrePositivity.KST.SConstruction.SimplexIntervalReverseHom
 /-! # ∞-S• 構成と連結 K 理論 -/
