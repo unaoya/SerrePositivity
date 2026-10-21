@@ -542,7 +542,15 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SpectrumCompositionOverlap,
     `SerrePositivity.KST.LocalizingInvariants.CompositionIdentityShape,
     `SerrePositivity.KST.LocalizingInvariants.SpectrumCompositionIdentity,
-    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberUnitCanonical]
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberUnitCanonical,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyTriangleComposition,
+    `SerrePositivity.KST.LocalizingInvariants.CompositionPreShape,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumPreComposition,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumArrowCalculus,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberCanonicalSquare,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumMappingArrowCongruence,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopySquareCanonicalRight,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramModelEquality]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

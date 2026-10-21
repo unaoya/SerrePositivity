@@ -677,4 +677,13 @@ public import SerrePositivity.KST.LocalizingInvariants.CompositionIdentityShape
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumCompositionIdentity
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberUnitCanonical
 
+public import SerrePositivity.KST.LocalizingInvariants.HomotopyTriangleComposition
+public import SerrePositivity.KST.LocalizingInvariants.CompositionPreShape
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumPreComposition
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumArrowCalculus
+public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberCanonicalSquare
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumMappingArrowCongruence
+public import SerrePositivity.KST.LocalizingInvariants.HomotopySquareCanonicalRight
+public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramModelEquality
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
