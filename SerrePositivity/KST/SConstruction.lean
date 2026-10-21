@@ -1738,4 +1738,9 @@ public import SerrePositivity.KST.SConstruction.SimplexHABeadTailComparison
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetCellRecursion
 public import SerrePositivity.KST.SConstruction.SerreCubeComplexDimensionComparison
 public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaSpecifiedOneFace
+public import SerrePositivity.KST.SConstruction.SerreCubeChainCompositionComparison
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaNecklaceComparison
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaSpecifiedOneDimension
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSplitChildren
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetOneFace
 /-! # ∞-S• 構成と連結 K 理論 -/
