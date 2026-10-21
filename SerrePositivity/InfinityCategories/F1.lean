@@ -2377,3 +2377,13 @@ public import SerrePositivity.InfinityCategories.F1.IntervalFamilyVertexEdge
 public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativePath
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomEndpoints
+
+public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalUncurryNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomZero
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomOne
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomTransport
