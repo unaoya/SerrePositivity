@@ -20437,3 +20437,107 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell_naturality
 #check @SerrePositivity.KST.SConstruction.necklaceCubicalCompose_naturality
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalCompose_naturality
+#check @SerrePositivity.KST.SConstruction.cubicalDayWrappedLeft_preservesColimits
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayWrappedLeft_preservesColimits
+#check @SerrePositivity.KST.SConstruction.cubicalDayWrappedRight_preservesColimits
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayWrappedRight_preservesColimits
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayMapping
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayMapping
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayCell
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayCell
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayIdentity
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayIdentity
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayCompose
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayCompose
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayCell_natTrans
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayCell_natTrans
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayIdentity_natTrans
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayIdentity_natTrans
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayCompose_natTrans
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayCompose_natTrans
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayIdentity_unit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayIdentity_unit
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayCompose_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayCompose_cell
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayCell_relation
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayCell_relation
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayDiagram
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayDiagram
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayCocone
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayCocone
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayIsColimit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayIsColimit
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_left_unit_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_left_unit_cell
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_right_unit_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_right_unit_cell
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_left_unit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_left_unit
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_right_unit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_right_unit
+#check @SerrePositivity.KST.SConstruction.cubicalComposeTensor_left
+#print axioms SerrePositivity.KST.SConstruction.cubicalComposeTensor_left
+#check @SerrePositivity.KST.SConstruction.cubicalComposeTensor_right
+#print axioms SerrePositivity.KST.SConstruction.cubicalComposeTensor_right
+#check @SerrePositivity.KST.SConstruction.cubicalComposeTensor_postcompose_eq
+#print axioms SerrePositivity.KST.SConstruction.cubicalComposeTensor_postcompose_eq
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayTriple_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayTriple_hom_ext
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_assoc_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_assoc_cell
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_assoc
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_assoc
+#check @SerrePositivity.KST.SConstruction.CubicalRigidification
+#print axioms SerrePositivity.KST.SConstruction.CubicalRigidification
+#check @SerrePositivity.KST.SConstruction.cubicalRigidificationVertexEquiv
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidificationVertexEquiv
+#check @SerrePositivity.KST.SConstruction.cubicalRigidificationEnriched
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidificationEnriched
+#check @SerrePositivity.KST.SConstruction.cubicalRigidification_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidification_hom
+#check @SerrePositivity.KST.SConstruction.cubicalRigidification_id
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidification_id
+#check @SerrePositivity.KST.SConstruction.cubicalRigidification_comp
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidification_comp
+#check @SerrePositivity.KST.SConstruction.cubicalRigidificationMap
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidificationMap
+#check @SerrePositivity.KST.SConstruction.cubicalRigidificationMap_obj
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidificationMap_obj
+#check @SerrePositivity.KST.SConstruction.cubicalRigidificationMap_map
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidificationMap_map
+#check @SerrePositivity.KST.SConstruction.cubicalRigidificationMap_id
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidificationMap_id
+#check @SerrePositivity.KST.SConstruction.cubicalRigidificationMap_comp
+#print axioms SerrePositivity.KST.SConstruction.cubicalRigidificationMap_comp
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorTransport
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorTransport
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorTransport_obj
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorTransport_obj
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorTransport_map
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorTransport_map
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorTransport_id
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorTransport_id
+#check @SerrePositivity.KST.SConstruction.enrichedFunctorTransport_comp
+#print axioms SerrePositivity.KST.SConstruction.enrichedFunctorTransport_comp
+#check @SerrePositivity.KST.SConstruction.CubicalLambda
+#print axioms SerrePositivity.KST.SConstruction.CubicalLambda
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaDGCategory
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaDGCategory
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaVertexEquiv
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaVertexEquiv
+#check @SerrePositivity.KST.SConstruction.cubicalLambda_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambda_hom
+#check @SerrePositivity.KST.SConstruction.cubicalLambda_id
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambda_id
+#check @SerrePositivity.KST.SConstruction.cubicalLambda_comp
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambda_comp
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaMap
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaMap
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaMap_obj
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaMap_obj
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaMap_map
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaMap_map
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaMap_id
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaMap_id
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaMap_comp
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaMap_comp
