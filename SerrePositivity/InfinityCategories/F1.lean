@@ -2078,3 +2078,47 @@ public import SerrePositivity.InfinityCategories.F1.QCatPostcompositionPullback
 public import SerrePositivity.InfinityCategories.F1.QCatPostcompositionFiberComparison
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionCanonicalComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCutMixedHomGeneral
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianMixedHomPostcomposition
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleCoordinates
+
+public import SerrePositivity.InfinityCategories.F1.CoherentNestedCutMaximum
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionNestedCut
+
+public import SerrePositivity.InfinityCategories.F1.QCatCorePostcomposition
+
+public import SerrePositivity.InfinityCategories.F1.CoherentNestedCutFixedPostcomposition
+
+public import SerrePositivity.InfinityCategories.F1.CoherentCompositionNestedPureHom
+
+public import SerrePositivity.InfinityCategories.F1.CoherentNestedCutFixedTarget
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleCanonical
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleObjects
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleMiddleHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleLastHom
+
+public import SerrePositivity.InfinityCategories.F1.SimplicialHomConstantIdentity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTrianglePureHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleTargetHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleSimplex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleCanonicalEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSecondTriangleFamily
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionTriangleComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionComparisonEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomEquivalence

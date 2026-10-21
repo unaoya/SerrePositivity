@@ -18,7 +18,7 @@
   薄い底上の元の輸送遷移の同値持ち上げ性と、後合成の core の Kan fibration 性も証明済み。
   一次元の元の Hom の core も、同じ二成分評価による core の厳密な pullback と証明済み。
   元の Hom 作用の成分評価を標準 Hom 同値と厳密に結び、一次元の同じ全 Hom 作用の同値性を
-  実際の固定成分の全 fiber 比較の同値性へ必要十分に還元した。固定成分比較自体の同値性は未証明。
+  実際の固定成分の全 fiber 比較へ還元し、同じ比較自体の同値性を追加仮定なしに証明した。
   両側の一成分評価の Kan 性、source の固定成分 fiber と後合成 fiber の厳密な同型も証明済み。
   分類先の実際の固定成分 fiber は、同じ第二三角形の外ホーン延長を表す厳密な pullback と証明済み。
   第一三角形への制限は Kan fibration。指定外ホーン fiber から元の fiber への同値と、元の比較の同じ外ホーン fiber への制限を構成済み。
@@ -88,19 +88,17 @@
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
 - 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
 - 元の cocartesian Hom の scaffold 制限と strict transport の写像空間比較は同値。
-  元の Hom の同じ区間作用は、同じ後合成 fiber 比較の同値性と必要十分。比較の同値性は未証明で分類は未完了。
+  元の Hom の同じ区間作用と全固定成分比較は同値と証明済み。高次セル・大域充満忠実性・本質的全射性は残り、分類は未完了。
 
 ### 次の一手
 
-零次元セルの同じ分類・Hom 作用の同値、局所比較の関手同型、分類先の区間 Hom の厳密な極限まで完了。
-一次元の strict Hom の二成分による復元・一意性と、core の同じ射影による pullback 表示まで完了。
-同じ全 Hom 作用の同値性は、実際の固定成分比較 `cocartesianHomFixedComponentComparison` の
-全 fiber での同値性と同値。分類先の fiber の三辺固定 prism の厳密な往復と、二三角形への制限は完了。
-実際の外ホーン pullback、第一三角形制限の Kan 性、指定外ホーン fiber から元の Hom fiber への同値まで完了。
-元の第一三角形は指定合成に定値。元の後合成 fiber からの同じ外ホーン比較を構成し、可変辺が標準 Hom 比較そのものと証明済み。
-合成三角形全体は Kan。第一辺射影は自明 Kan 同値。対角評価は指定外ホーン制限の pullback で Kan fibration。その fiber 同型も構成済み。
-指定外ホーンの全パラメーターの一致と対角 fiber 同型を証明。元の比較を同じ対角 fiber へ移し、第二三角形と可変辺を保持する判定まで完了。
-同じ全体比較と元の後合成・対角評価の厳密な可換性を証明。実際の輸送の標準対角 fiber 比較は追加仮定なしに同値。次は元の第二三角形がこの標準合成三角形と一致することを全次数で証明し、元の比較の同値性を閉じる。主写像の大域充満忠実性・本質的全射性・一般の底への帰着は残る。正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
+零次元の同じ分類・Hom 作用、底変換の関手同型と元の全 Hom の被覆・制限の Kan 性まで完了。
+一次元の元の固定成分比較と標準対角 fiber 比較は、同じ第二三角形全体の一致で厳密に同定した。
+`cocartesianHomFixedComponentComparison_isQCatEquivalence` と
+`cocartesianTransportDiagramHomInterval_isQCatEquivalence` により、元の一次元の全 Hom 作用は同値。
+次は高次単体上の同じ比較を区間の貼り合わせ・制限の Kan 性へ帰着し、全単体の Hom 作用の同値を証明する。
+その後は底の被覆による大域充満忠実性と、本質的全射性・一般の底への帰着。Cat∞ 値分類は未完了。
+正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
 ## 0. 目標と範囲
 
