@@ -1557,4 +1557,11 @@ public import SerrePositivity.KST.SConstruction.NecklaceCubicalAssociativity
 public import SerrePositivity.KST.SConstruction.CubicalRigidification
 public import SerrePositivity.KST.SConstruction.EnrichedFunctorTransport
 public import SerrePositivity.KST.SConstruction.CubicalLambda
+public import SerrePositivity.KST.SConstruction.CubicalLambdaComonoids
+public import SerrePositivity.KST.SConstruction.ComonoidTensorDiagonal
+public import SerrePositivity.KST.SConstruction.CubicalLambdaDiagonal
+public import SerrePositivity.KST.SConstruction.CubicalLambdaTensorMap
+public import SerrePositivity.KST.SConstruction.CubicalLambdaTensorNaturality
+public import SerrePositivity.KST.SConstruction.CubicalLambdaDiagonalCoherence
+public import SerrePositivity.KST.SConstruction.CubicalLambdaCounit
 /-! # ∞-S• 構成と連結 K 理論 -/
