@@ -1640,6 +1640,20 @@ raw な一文字の列の前後の長さ零を回収し、`left_eqToHom_of_one/r
 `before_diagram/after_diagram` は元の全頂点・横列・縦射・端点関手を含む前後の全図式の回収。
 任意可換環の実際の全自由次数でも検証。長さ零の内部列を恒等列の挿入として標準射へ渡す工程、
 prefix と残りの元の hammock の点の回収・逆向きの因子列の回収・積分解は後続。
+`Pasted.selected_before_diagram/selected_after_diagram` と
+`leftBlock_identity/rightBlock_identity/prefix_identity_diagram/residual_identity_diagram` は
+元の選択位置での全切断図式を元の恒等列付き図式へ照合する。
+`ForwardZigzag.constant_diagram_fixedFunctor/identity_diagram_fixedFunctor` は任意の射の
+定数全図式を回収。`arrowPoint_identity/composePoint_identity_left/composePoint_identity_right` は
+元の恒等列の標準射を元の空語の単位点へ戻し、元の左右単位則を回収する。
+`prefix_identity_functor/residual_identity_functor` と `EndpointChange.image_heq` から
+`prefix_ambient_point/residual_ambient_point` で元の余極限の二点を回収。
+`AllMarked.inclusion_endpoint`・包含の単射性から `prefix_native_point/factor_point` を得る。
+`FactorTarget.pasteNonempty_cut_point/pasteNonempty_nonemptyCut` は任意の元の三因子の回収。
+`FirstFactor.markedSpine_paste/markedSpine_glue/gluing_extraction/markedSpineIso` は
+反復抽出と貼り戻しの両逆と元の hammock と全因子列の単体的同型を完成する。
+任意可換環の実際の全自由次数へも代入して検証。自由積の単体的 pushout の普遍性・
+全指定自由圏の成分の可縮性・命題2.2の左右の弱比較・既存 Map^h との高次比較は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
