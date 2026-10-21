@@ -2163,3 +2163,4 @@ public import SerrePositivity.InfinityCategories.F1.InnerTwoHornHomPullbacks
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSegal
 public import SerrePositivity.InfinityCategories.F1.IntervalDiagramTwoSimplexSegal
 public import SerrePositivity.InfinityCategories.F1.TwoSimplexSegalRestrictions
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneSimplexEquivalence

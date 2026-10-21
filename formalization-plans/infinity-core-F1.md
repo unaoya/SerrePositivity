@@ -13,7 +13,7 @@
   同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
   各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
   core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
-  零次元セル上では元の分類写像の同値と、元の Hom の core の区間作用の同値を追加仮定なしに証明済み。
+  零・一次元セル上で元の分類主写像の充満忠実性・同値性と、元の全 Hom の core の区間作用の同値を追加仮定なしに証明済み。
   一次元の strict 変換空間は、元の二成分評価による内部 Hom の厳密な pullback と証明済み。
   薄い底上の元の輸送遷移の同値持ち上げ性と、後合成の core の Kan fibration 性も証明済み。
   一次元の元の Hom の core も、同じ二成分評価による core の厳密な pullback と証明済み。
@@ -92,10 +92,10 @@
 
 ### 次の一手
 
-零次元の同じ分類・Hom 作用、底変換の関手同型と元の全 Hom の被覆・制限の Kan 性まで完了。
-一次元の元の固定成分比較と標準対角 fiber 比較は、同じ第二三角形全体の一致で厳密に同定した。
-`cocartesianHomFixedComponentComparison_isQCatEquivalence` と
-`cocartesianTransportDiagramHomInterval_isQCatEquivalence` により、元の一次元の全 Hom 作用は同値。
+零・一次元の同じ分類・Hom 作用は同値。底変換の関手同型と元の全 Hom の被覆・制限の Kan 性も証明済み。
+一次元の元の固定成分比較を同じ第二三角形全体で同定し、輸送の厳密な因子分解を経由して元の分類主写像へ戻した。
+`cocartesianStraighteningCoherentMap_oneSimplex_isQCatEquivalence` と
+`cocartesianStraighteningHomInterval_oneSimplex_isQCatEquivalence` は、同じ元の全 fibration の分類と全 Hom 作用の同値。
 元の cocartesian Hom の core と分類先の区間 Hom の全内ホーン制限は自明 Kan と証明済み。二次元の欠ける長辺は同じ三角形分解で保存を反映した。
 元の Hom の core と分類先の区間 Hom は、同じ共有頂点で貼る二区間の厳密な pullback。二次元単体からこの同じ pullback への両比較は自明 Kan と証明済み。
 次は底変換の比較 span をこの両側の Segal 比較と整合させ、同じ分類 Hom 作用の二次元・全単体での同値性を証明する。
