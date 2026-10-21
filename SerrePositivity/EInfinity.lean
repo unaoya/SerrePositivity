@@ -1819,3 +1819,12 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.DKReducedHammockE
 public import SerrePositivity.EInfinity.FrameHom.FrameSpanTargetHomotopy
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFrameSpanComparison
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFrameReducedComparison
+public import SerrePositivity.EInfinity.Hammock.LeftRoof
+public import SerrePositivity.EInfinity.Hammock.LeftRoofRightIdentity
+public import SerrePositivity.EInfinity.Hammock.LeftRoofPostcompose
+public import SerrePositivity.EInfinity.FrameHom.FrameLeftRoof
+public import SerrePositivity.EInfinity.FrameHom.ResolutionLeftRoof
+public import SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPostcompose
+public import SerrePositivity.EInfinity.BarrattEccles.SourceFrameRoofComparison
+public import SerrePositivity.EInfinity.BarrattEccles.SourceFramePostcompose
+public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceHammockPostcompose

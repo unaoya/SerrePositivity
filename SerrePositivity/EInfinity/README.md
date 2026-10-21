@@ -2126,7 +2126,15 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 `sourceFrameReducedHammockComparison_targetComparison` は既存 reduced 比較との同じ因子化。
 `sourceFrameReducedHammockComparison_isIso/sourceFrameReducedHammockNerveMap_weak` は
 同じ比較の可逆性と元の nerve 射自身の弱同値性。
-既存 Map^h の両端作用との照合・既存 π₀ 同値との一致、∞ 局所化の普遍性は後続。
+`LeftRoof.insertRightIdentity_obj/postCollapse_obj` は元の恒等右脚挿入と後合成の回収。
+`FrameHom.resolutionLeftRoofFunctor_insert/resolutionLeftRoofNerveMap_normalization` は
+同じ元の分解の全図式と同じ三本矢・正規化の厳密な一致。
+`sourceFrameLeftRoofNerveMap_normalization` は既存の source frame の reduced 比較を回収する。
+`FrameHom.frameLeftRoofColimitMap_postcompose` は元の全単体と余極限の後合成正方形。
+`sourceFrameReducedHammockNerveMap_postcompose/sourceFrameReducedHammockComparison_postcompose`
+は元の終域射による同じ nerve 射と局所化した比較の自然性。
+`mappingSpaceReducedHammockComparisonIso_postcompose` は既存 Map^h の同じ比較の終域自然性。
+既存 Map^h の始域作用との照合・既存 π₀ 同値との一致、∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 その全自然性・元の代数射の類への整合、∞ 局所化の普遍性は後続。
