@@ -1846,4 +1846,8 @@ public import SerrePositivity.KST.SConstruction.SimplexHAOriginalHomMap
 public import SerrePositivity.KST.SConstruction.EnrichedHomUnitComposition
 public import SerrePositivity.KST.SConstruction.SimplexHAHomEasyComposition
 public import SerrePositivity.KST.SConstruction.SimplexHAHomCompositionReduction
+public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeRefinement
+public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeOneFace
+public import SerrePositivity.KST.SConstruction.SimplexIntervalLambdaCell
+public import SerrePositivity.KST.SConstruction.SimplexIntervalSerreComposition
 /-! # ∞-S• 構成と連結 K 理論 -/

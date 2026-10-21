@@ -22716,3 +22716,37 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_of_strict
 #print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_of_strict
+
+
+#check @SerrePositivity.KST.SConstruction.necklaceBead_dimension_vertex
+#print axioms SerrePositivity.KST.SConstruction.necklaceBead_dimension_vertex
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_eq_refinement
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeBeadHom_eq_refinement
+
+#check @SerrePositivity.KST.SConstruction.necklaceBead_dimension_cube
+#print axioms SerrePositivity.KST.SConstruction.necklaceBead_dimension_cube
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCompose_codimension
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCompose_codimension
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeCoordinate
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeCoordinate
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCompose_cube_one_face
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCompose_cube_one_face
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomIso_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomIso_cell
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaCell_wedge
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaCell_wedge
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCompose_serre_factor
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCompose_serre_factor
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaCell_composition
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaCell_composition
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaCell_composition_one_face
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaCell_composition_one_face
