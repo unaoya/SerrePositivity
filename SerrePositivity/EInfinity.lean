@@ -1138,3 +1138,11 @@ public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitDiagram
 public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitFunctor
 public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitRecovery
 public import SerrePositivity.EInfinity.Hammock.ZigzagMovingDiagramWordChange
+public import SerrePositivity.EInfinity.Hammock.ForwardZigzag
+public import SerrePositivity.EInfinity.Hammock.ForwardZigzagDiagram
+public import SerrePositivity.EInfinity.Hammock.MarkedZigzagLift
+public import SerrePositivity.EInfinity.Hammock.UnmarkedAttachedPrefix
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutAttachmentDiagrams
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutAttachments
+public import SerrePositivity.EInfinity.Hammock.UnmarkedPrefixHammock
+public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitJoints

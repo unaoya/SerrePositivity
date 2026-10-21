@@ -1473,6 +1473,16 @@ hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較�
 `UnmarkedGenerators.firstColumn` は最初の非指定列。位置は全縦射・全行で同じで、forward。
 `beforeFirstColumn_arrow_mem/beforeFirstColumn_map_mem` は切り出した前の全語の全列・全縦射の指定性。
 任意可換環の元の全自由次数でも検証。列内部の切断との接続・W-hammock への回収は後続。
+`ForwardZigzag.diagram` は元の自然変換と端点縦射を保つ一列の図式。
+`ColumnSplit.sourceJoint_eq/targetJoint_eq` は前後の接合点と元の端点評価の関手の等式。
+`Attachments.leftAttachment/rightAttachment` と `attachment_factorization` は列内部の切断を
+前後へ接続する。`prefixDiagram/residualDiagram/refinedDiagram` は実際の全語の図式で、
+`prefixFunctor/residualFunctor/refinedFunctor` は元の固定端点を持つ。
+`AttachedPrefix.arrow_mem/map_mem` は内部の接頭射を含む全 prefix の全列・全縦射の指定性。
+`MarkedZigzag.liftFunctor/liftFunctor_inclusion` は全指定図式を元の指定部分圏へ回収して戻す。
+`AttachedPrefix.markedFunctor/markedSimplex` は実際の W-hammock の全行・単体で、
+包含により元の prefix の全対象・全射を厳密に回収する。任意可換環の全自由次数でも検証。
+三列の collapse による元の全図式の回収・全語と単体作用素への整合・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
