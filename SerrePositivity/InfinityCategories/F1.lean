@@ -1974,3 +1974,33 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianSourceCutMixedHom
 public import SerrePositivity.InfinityCategories.F1.CocartesianMixedHomVertices
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTransportCutPureHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleCoordinates
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleObjects
+
+public import SerrePositivity.InfinityCategories.F1.CoherentHomConstantTransport
+
+public import SerrePositivity.InfinityCategories.F1.CoherentOrderHomNormalization
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCutHomEndpoint
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCutPureHomEndpoint
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCutMixedHomEndpoint
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleSourceMaps
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleZeroHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleMixedHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleOneHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleCanonical
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFirstTriangleFamily
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFixedComponentCompositionFiber
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOuterHornHomCriterion

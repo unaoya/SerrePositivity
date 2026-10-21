@@ -21,7 +21,7 @@
   実際の固定成分の全 fiber 比較の同値性へ必要十分に還元した。固定成分比較自体の同値性は未証明。
   両側の一成分評価の Kan 性、source の固定成分 fiber と後合成 fiber の厳密な同型も証明済み。
   分類先の実際の固定成分 fiber は、同じ第二三角形の外ホーン延長を表す厳密な pullback と証明済み。
-  第一三角形への制限は Kan fibration。任意の指定合成三角形の外ホーン fiber から元の固定成分 fiber へ同値。
+  第一三角形への制限は Kan fibration。指定外ホーン fiber から元の fiber への同値と、元の比較の同じ外ホーン fiber への制限を構成済み。
   元の Hom の core の区間作用を構成し、底の制限・豊穣前合成の自然性と主写像への接続を証明済み。
   元の cocartesian Hom の core と分類先の両端固定の区間 Hom は、底を覆う余極限に沿う厳密な極限。
   底変換の辺の保存・反映、辺の被覆と全空間の余極限、元の Hom と分類先の単射制限の Kan 性も証明済み。
@@ -97,9 +97,9 @@
 同じ全 Hom 作用の同値性は、実際の固定成分比較 `cocartesianHomFixedComponentComparison` の
 全 fiber での同値性と同値。分類先の fiber の三辺固定 prism の厳密な往復と、二三角形への制限は完了。
 実際の外ホーン pullback、第一三角形制限の Kan 性、指定外ホーン fiber から元の Hom fiber への同値まで完了。
-元の prism を全単体で切断対角評価に接続し、固定成分への全混合 Hom と同時刻 Hom の定値性まで証明済み。
-固定成分から同じ比較先の `cocartesianIntervalSourceCompositionVertex` を指定し、展開・対角まで証明済み。
-次は第一三角形のラベル別の対象・Hom 計算を豊穣関手の等式へ束ね、指定三角形の fiber へ元の比較を制限する。
+元の比較の第一三角形全体は同じ指定合成に定値と証明し、`cocartesianHomFixedComponentOuterHornComparison` を構成済み。
+同じ全 Hom 作用の同値性は、この同じ指定外ホーン比較の全固定成分での同値性と同値。第二三角形への作用も保持。
+次は `cocartesianIntervalMappingFiberIso` の元の後合成 fiber と、同じ指定外ホーン fiber を同じ作用で比較して同値性を証明する。
 同じ主写像の充満忠実性・本質的全射性・一般の底への帰着は残る。正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
 ## 0. 目標と範囲
