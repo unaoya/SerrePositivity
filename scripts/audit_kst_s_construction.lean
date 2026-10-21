@@ -21293,3 +21293,21 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell_comparison
 #check @SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell_one_face
 #print axioms SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell_one_face
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_range
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_range
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitLeft_two
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitLeft_two
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitRight_two
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitRight_two
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitLeft_range
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitLeft_range
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitRight_range
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitRight_range
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitLeft_card
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitLeft_card
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitRight_card
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitRight_card
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitLeft_block
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitLeft_block
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitRight_block
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitRight_block

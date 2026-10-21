@@ -1636,4 +1636,8 @@ public import SerrePositivity.KST.SConstruction.NecklaceRefinementOneFace
 public import SerrePositivity.KST.SConstruction.NecklaceWedgeBeadOneFace
 public import SerrePositivity.KST.SConstruction.NecklaceRefinementInSimplex
 public import SerrePositivity.KST.SConstruction.NecklaceRefinementLambdaCell
+public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionRange
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitRange
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitCard
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitBlocks
 /-! # ∞-S• 構成と連結 K 理論 -/
