@@ -4888,6 +4888,33 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction,
       `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction_fixedFunctor]
 
+@[noinline] private def e2RequiredBatch63 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.ForwardZigzag.diagram_eq_of_arrow,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.middle_word,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.collapsedColumn_eq_middle,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinementMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinedDiagram_recovery,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinedFunctor_recovery,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinedWord,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinedSimplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinedSimplex_recovery,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinedSimplex_inclusion,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.app_assoc_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_append_assoc,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.app_naturality,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction_append,
+      `SerrePositivity.EInfinity.Hammock.Word.fiveBlocks_rebracket,
+      `SerrePositivity.EInfinity.Hammock.Word.fiveBlocksMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.append_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.append_assoc_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.fiveBlocks_rebracket,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction_fiveBlocks,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction_id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction_comp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction_eqToHom,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_eq_of_heq]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4919,7 +4946,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -11403,5 +11430,76 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
           (Hammock.UnmarkedGenerators.Attachments.rightBlock W τ i h)) =
       Hammock.UnmarkedGenerators.Attachments.collapsedColumnDiagram W τ i h :=
   Hammock.UnmarkedGenerators.Attachments.collapse_blocks
+    (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ i h
+
+
+-- 動く接合点の全図式で、元の圧縮と連結を交換する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (W : MorphismProperty C) [W.IsMultiplicative]
+    {a b a' b' : Word} {A B E : D ⥤ C} (f : a ⟶ a') (g : b ⟶ b')
+    (F : Zigzag.MovingDiagram D C W a A B) (G : Zigzag.MovingDiagram D C W b B E) :
+    Zigzag.MovingDiagram.wordAction (Word.appendMap f g) (F.append G) =
+      (Zigzag.MovingDiagram.wordAction f F).append (Zigzag.MovingDiagram.wordAction g G) :=
+  Zigzag.MovingDiagram.wordAction_append f g F G
+
+-- 空語を許す任意の三つの語の結合則を全図式で検証する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (W : MorphismProperty C) [W.IsMultiplicative]
+    {a b c : Word} {A B E L : D ⥤ C} (F : Zigzag.MovingDiagram D C W a A B)
+    (G : Zigzag.MovingDiagram D C W b B E) (H : Zigzag.MovingDiagram D C W c E L) :
+    Zigzag.MovingDiagram.changeWord (Word.append_assoc a b c) ((F.append G).append H) =
+      F.append (G.append H) := Zigzag.MovingDiagram.changeWord_append_assoc F G H
+
+-- 元の τ の全行・全縦射を元の同じ語へ回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W.paths w X Y).obj n) (i : Fin w.length)
+    (h : UnmarkedGenerators.column W (τ.obj 0) i ≠ []) :
+    UnmarkedGenerators.Attachments.refinedFunctor W τ i h ⋙
+      WordAction.functor (UnmarkedGenerators.Attachments.refinementMap W τ i h) = τ :=
+  UnmarkedGenerators.Attachments.refinedFunctor_recovery W τ i h
+
+-- 元の Word 図式自身の作用で refined 単体を同じ τ に戻す。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W.paths w X Y).obj n) (i : Fin w.length)
+    (h : UnmarkedGenerators.column W (τ.obj 0) i ≠ []) :
+    ((graphDiagram W.paths X Y).map
+      (UnmarkedGenerators.Attachments.refinementMap W τ i h)).app n
+        (UnmarkedGenerators.Attachments.refinedSimplex W τ i h) = τ :=
+  UnmarkedGenerators.Attachments.refinedSimplex_recovery W τ i h
+
+-- 元の余極限の標準射は同じ元の単体の像を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W.paths w X Y).obj n) (i : Fin w.length)
+    (h : UnmarkedGenerators.column W (τ.obj 0) i ≠ []) :
+    (graphInclusion W.paths X Y (UnmarkedGenerators.Attachments.refinedWord w i)).app n
+      (UnmarkedGenerators.Attachments.refinedSimplex W τ i h) =
+        (graphInclusion W.paths X Y w).app n τ :=
+  UnmarkedGenerators.Attachments.refinedSimplex_inclusion W τ i h
+
+-- 任意可換環の実際の全自由次数で元の全図式の回収を検証する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
+    {w : Hammock.Word}
+    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (Hammock.graph ((freeResolution
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
+    (i : Fin w.length)
+    (h : Hammock.UnmarkedGenerators.column
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        (τ.obj 0) i ≠ []) :
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    Hammock.UnmarkedGenerators.Attachments.refinedFunctor W τ i h ⋙
+      Hammock.WordAction.functor (Hammock.UnmarkedGenerators.Attachments.refinementMap W τ i h) = τ :=
+  Hammock.UnmarkedGenerators.Attachments.refinedFunctor_recovery
     (freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ i h

@@ -1156,3 +1156,11 @@ public import SerrePositivity.EInfinity.Hammock.UnmarkedCutTripleCollapse
 public import SerrePositivity.EInfinity.Hammock.WordActionMovingMap
 public import SerrePositivity.EInfinity.Hammock.WordForwardTripleCollapse
 public import SerrePositivity.EInfinity.Hammock.ZigzagMovingWordAction
+public import SerrePositivity.EInfinity.Hammock.ForwardZigzagDiagramRecovery
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutMiddleRecovery
+public import SerrePositivity.EInfinity.Hammock.UnmarkedRefinementRecovery
+public import SerrePositivity.EInfinity.Hammock.UnmarkedRefinementSimplex
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingAppendAssociativity
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingAppendNaturality
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingFiveBlocks
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingWordActionLaws

@@ -1482,7 +1482,7 @@ hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較�
 `MarkedZigzag.liftFunctor/liftFunctor_inclusion` は全指定図式を元の指定部分圏へ回収して戻す。
 `AttachedPrefix.markedFunctor/markedSimplex` は実際の W-hammock の全行・単体で、
 包含により元の prefix の全対象・全射を厳密に回収する。任意可換環の全自由次数でも検証。
-三列の collapse による元の全図式の回収・全語と単体作用素への整合・積分解は後続。
+切断後の全語と単体作用素への整合・積分解は後続。
 `Segment.Moving` は端点も動く全縦射に対する元の区間合成の自然性。
 `WordAction.movingMap` と `MovingDiagram.wordAction` は元の cut の全縦射を保持し、
 固定端点では既存の `WordAction.functor` に厳密に一致する。
@@ -1491,7 +1491,16 @@ hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較�
 同じ三射の合成の一列を回収する。`collapse_diagram` は全行・全縦射の厳密な等式。
 `Attachments.collapse_blocks` は内部切断の接頭射・生成矢・残りから、元の同じ列の
 自然変換を両接合点へ移した全図式を回収する。任意可換環の実際の全自由次数でも検証。
-前後の全語の append の括弧を保つ refinedDiagram 全体の回収は後続。
+前後の全語の append の括弧を保つ refinedDiagram 全体の回収は以下で完成。
+`MovingDiagram.wordAction_append/changeWord_append_assoc` は動く局所端点を含む
+全図式の連結自然性・結合則。`Word.fiveBlocksMap` と `wordAction_fiveBlocks` は
+元の ((前・左)・中央)・(右・後) の括弧から内部を圧縮し、前後の全語を保持する。
+`Attachments.collapsedColumn_eq_middle` は元の middle の表示変更を回収。
+`refinementMap/refinedDiagram_recovery/refinedFunctor_recovery` は元の全語・全対象・
+全列・全縦射を含む元の τ への厳密な回収。前後の空語も含む。
+`refinedSimplex_recovery/refinedSimplex_inclusion` は元の Word 図式の作用と同じ余極限の
+標準射で、同じ元の単体を回収する。任意可換環の実際の全自由次数でも検証。
+prefix・残りの全単体作用素と全語への整合・反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
