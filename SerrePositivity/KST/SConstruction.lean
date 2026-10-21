@@ -1611,4 +1611,13 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaCell
 public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeSimplexData
 public import SerrePositivity.KST.SConstruction.SerreCubeTopCellImageCycles
 public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeEdgeEquation
+public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionOrder
+public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionMap
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetInclusion
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetAt
+public import SerrePositivity.KST.SConstruction.SimplexSubsetVertexIndex
+public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionCoordinates
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetErase
+public import SerrePositivity.KST.SConstruction.SimplexSubsetCubicalInclusion
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaInclusion
 /-! # ∞-S• 構成と連結 K 理論 -/

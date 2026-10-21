@@ -21071,3 +21071,99 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_two_closed
 #check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_equation_two
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_equation_two
+#check @SerrePositivity.KST.SConstruction.simplexSubsetNonempty
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetNonempty
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_recovery
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_injective
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_injective
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_triangle
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_triangle
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_id
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_id
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_comp
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_comp
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_first
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_first
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_last
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_last
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionHom
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionHom
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionHom_triangle
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionHom_triangle
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_triangle
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_triangle
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_first
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_first
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_last
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_last
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexSubsetInclusion
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexSubsetInclusion
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexSubsetInclusion_triangle
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexSubsetInclusion_triangle
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexSubsetInclusion_vertex
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexSubsetInclusion_vertex
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexSubsetInclusion_vertex_injective
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexSubsetInclusion_vertex_injective
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt_canonical
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt_canonical
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt_map
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt_map
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAtInclusion
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAtInclusion
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAtInclusion_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAtInclusion_cell
+#check @SerrePositivity.KST.SConstruction.simplexSubsetVertexIndex
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetVertexIndex
+#check @SerrePositivity.KST.SConstruction.simplexSubsetVertexIndex_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetVertexIndex_recovery
+#check @SerrePositivity.KST.SConstruction.simplexSubsetVertexIndex_order
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetVertexIndex_order
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInteriorVertex
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInteriorVertex
+#check @SerrePositivity.KST.SConstruction.necklaceBooleanMap_nonjoint_of_injective
+#print axioms SerrePositivity.KST.SConstruction.necklaceBooleanMap_nonjoint_of_injective
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusion_coordinate_missing
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusion_coordinate_missing
+#check @SerrePositivity.KST.SConstruction.simplexSubsetInclusion_coordinate_retained
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetInclusion_coordinate_retained
+#check @SerrePositivity.KST.SConstruction.simplexSubsetErase_two
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetErase_two
+#check @SerrePositivity.KST.SConstruction.simplexSubsetErase_min
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetErase_min
+#check @SerrePositivity.KST.SConstruction.simplexSubsetErase_max
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetErase_max
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetErase
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetErase
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetErase_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetErase_cell
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetErase_coordinate_zero
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetErase_coordinate_zero
+#check @SerrePositivity.KST.SConstruction.cubicalYoneda_conjugate_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalYoneda_conjugate_cell
+#check @SerrePositivity.KST.SConstruction.simplexSubsetCubicalCellAt
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetCubicalCellAt
+#check @SerrePositivity.KST.SConstruction.simplexSubsetCubicalCellAt_canonical
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetCubicalCellAt_canonical
+#check @SerrePositivity.KST.SConstruction.simplexSubsetCubeInclusion
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetCubeInclusion
+#check @SerrePositivity.KST.SConstruction.simplexSubsetCubeInclusion_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetCubeInclusion_cell
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_canonical
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_canonical
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellComonoidAt
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellComonoidAt
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellComonoidAt_hom
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellComonoidAt_hom
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_inclusion
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_inclusion
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellComonoidAt_inclusion
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellComonoidAt_inclusion
