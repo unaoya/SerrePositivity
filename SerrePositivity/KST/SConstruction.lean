@@ -1964,4 +1964,12 @@ public import SerrePositivity.KST.SConstruction.SExactEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.SExactCoreEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGSEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.SExactInfinityFunctor
+public import SerrePositivity.KST.SConstruction.CoreEnrichedInclusion
+public import SerrePositivity.KST.SConstruction.SExactQuasicategoryDiagram
+public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedDiagramPrecomposition
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGFullEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGSimplicialEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.SimplicialDiagramEnrichment
+public import SerrePositivity.KST.SConstruction.SimplicialEnrichedDiagramFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGSimplicialObjectFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -24012,3 +24012,129 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGSInfinityFunctor_vertex
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSInfinityFunctor_vertex
+
+#check @SerrePositivity.KST.SConstruction.coreEnrichedInclusion
+#print axioms SerrePositivity.KST.SConstruction.coreEnrichedInclusion
+
+#check @SerrePositivity.KST.SConstruction.coreEnrichedInclusion_map
+#print axioms SerrePositivity.KST.SConstruction.coreEnrichedInclusion_map
+
+#check @SerrePositivity.KST.SConstruction.sExactQuasicategoryEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.sExactQuasicategoryEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.sExactQuasicategoryRestriction
+#print axioms SerrePositivity.KST.SConstruction.sExactQuasicategoryRestriction
+
+#check @SerrePositivity.KST.SConstruction.sExactSimplicialEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.sExactSimplicialEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.sExactSimplicialEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.sExactSimplicialEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.sExactSimplicialEnrichedFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.sExactSimplicialEnrichedFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.quasicategoryEnrichedPrecompositionFunctor
+#print axioms SerrePositivity.KST.SConstruction.quasicategoryEnrichedPrecompositionFunctor
+
+#check @SerrePositivity.KST.SConstruction.quasicategoryEnrichedEvaluationFunctor
+#print axioms SerrePositivity.KST.SConstruction.quasicategoryEnrichedEvaluationFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGFullEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGFullEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGFullEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGFullEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGFullEnrichedFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGFullEnrichedFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGFullEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGFullEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialDiagram
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialDiagram
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialDiagram_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialDiagram_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialDiagram_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialDiagram_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialEnrichedFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialEnrichedFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.simplicialDiagramBase_enrichedCategory
+#print axioms SerrePositivity.KST.SConstruction.simplicialDiagramBase_enrichedCategory
+
+#check @SerrePositivity.KST.SConstruction.simplicialDiagramBase_enrichedOrdinaryCategory
+#print axioms SerrePositivity.KST.SConstruction.simplicialDiagramBase_enrichedOrdinaryCategory
+
+#check @SerrePositivity.KST.SConstruction.SimplicialSSetDiagram
+#print axioms SerrePositivity.KST.SConstruction.SimplicialSSetDiagram
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagram_category
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagram_category
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagram_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagram_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramForget
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramForget
+
+#check @SerrePositivity.KST.SConstruction.quasicategoryEnrichedComparison_internal_naturality
+#print axioms SerrePositivity.KST.SConstruction.quasicategoryEnrichedComparison_internal_naturality
+
+#check @SerrePositivity.KST.SConstruction.simplicialDiagramFunctorBase_enrichedCategory
+#print axioms SerrePositivity.KST.SConstruction.simplicialDiagramFunctorBase_enrichedCategory
+
+#check @SerrePositivity.KST.SConstruction.simplicialDiagramFunctorBase_enrichedOrdinaryCategory
+#print axioms SerrePositivity.KST.SConstruction.simplicialDiagramFunctorBase_enrichedOrdinaryCategory
+
+#check @SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramValue
+#print axioms SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramValue
+
+#check @SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramHom
+#print axioms SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramHom
+
+#check @SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramHom_projection
+#print axioms SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramHom_projection
+
+#check @SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramFunctor
+#print axioms SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramFunctor
+
+#check @SerrePositivity.KST.SConstruction.perfectDGSimplicialBase_enrichedCategory
+#print axioms SerrePositivity.KST.SConstruction.perfectDGSimplicialBase_enrichedCategory
+
+#check @SerrePositivity.KST.SConstruction.perfectDGSimplicialBase_enrichedOrdinaryCategory
+#print axioms SerrePositivity.KST.SConstruction.perfectDGSimplicialBase_enrichedOrdinaryCategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor_obj_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor_obj_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor_projection
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor_projection
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSimplicialObjectEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.SimplicialSSetDiagram.mk
+#print axioms SerrePositivity.KST.SConstruction.SimplicialSSetDiagram.mk
+
+#check @SerrePositivity.KST.SConstruction.SimplicialSSetDiagram.diagram
+#print axioms SerrePositivity.KST.SConstruction.SimplicialSSetDiagram.diagram
