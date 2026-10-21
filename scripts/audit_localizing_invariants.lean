@@ -148,7 +148,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoTargetMapping,
     `SerrePositivity.KST.LocalizingInvariants.TensorHomotopyEquivalence,
     `SerrePositivity.KST.LocalizingInvariants.KanFibrationEquivalenceBaseChange,
-    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoArrowMapping]
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoArrowMapping,
+    `SerrePositivity.KST.LocalizingInvariants.MappingTargetIso,
+    `SerrePositivity.KST.LocalizingInvariants.ReflectiveIsoTargetMapping,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberZeroSourceMapping,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceCompositeMapping,
+    `SerrePositivity.KST.LocalizingInvariants.MappingFunctorIso,
+    `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceMapping]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
