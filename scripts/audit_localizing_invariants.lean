@@ -168,7 +168,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting,
     `SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal,
     `SerrePositivity.KST.LocalizingInvariants.LocalizationResolution,
-    `SerrePositivity.KST.LocalizingInvariants.GeneralLocalization]
+    `SerrePositivity.KST.LocalizingInvariants.GeneralLocalization,
+    `SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization,
+    `SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness,
+    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientCandidate,
+    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientReflectiveComparison,
+    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientDetection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

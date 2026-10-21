@@ -73,4 +73,14 @@ public import SerrePositivity.KST.LocalizingInvariants.LocalizationResolution
 
 public import SerrePositivity.KST.LocalizingInvariants.GeneralLocalization
 
+public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
+
+public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientCandidate
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientReflectiveComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientDetection
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
