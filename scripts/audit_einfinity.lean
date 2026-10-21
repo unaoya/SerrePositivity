@@ -7064,6 +7064,60 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.Word.cons_empty,
       `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardFunctor_eqToHom]
 
+@[noinline] private def e2RequiredBatch113 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor_obj_bijective,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor_isIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardCatIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardCatIso_hom,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardGraphIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardGraphIso_hom,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor_weak,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardData,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardLeftMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRightMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardDataMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardPreimage_map,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor_full,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor_isEquivalence,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardEquivalence,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor_map_injective,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor_faithful,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardMap_id,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardMap_comp,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardLeftCoefficient,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardRightCoefficient,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardSource,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardTarget,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardObject,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardBase,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardBoundary,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardHead_comm,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardPreimage,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardPreimage_app,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardPreimage_joint,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardPreimage_tail,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuild,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuild_joint,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuild_tail,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuild_head,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuild_object,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuild_functor_obj,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardFunctor_essSurj,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuildTail,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuildHead,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuild_joint_map,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuildMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuildMap_joint,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRebuildMap_tail,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackward_relative_map,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackward_relative_functor,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackwardRelativeFunctor,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackward_relative_head,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardBackward_relative_obj,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.rightBoundaryHom]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7095,7 +7149,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -17110,4 +17164,93 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
   intro C X Y
   exact freeWordDiagonalAugmentation_cons_forwardForward_weak C (Word.single .forward) X Y
     (fun Z => freeWordDiagonalAugmentation_twoForward_weak C Z Y)
+end
+
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+section e2BackwardStructureFixtures
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+open SerrePositivity.EInfinity.Hammock.FirstColumn
+open SerrePositivity.InfinityCategories
+variable {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+  (W : MorphismProperty C) [W.IsMultiplicative] (w : Word) (X Y : C)
+
+-- 元の全対象は貼り戻して同じ対象へ戻る。
+example (Z : backwardBackwardTarget W w X Y) :
+    (backwardBackwardFunctor W w X Y).obj (backwardBackwardRebuild W w X Y Z) = Z :=
+  backwardBackwardRebuild_object W w X Y Z
+
+example (S : backwardBackwardSource W w X Y) :
+    backwardBackwardRebuild W w X Y ((backwardBackwardFunctor W w X Y).obj S) = S :=
+  backwardBackwardRebuild_functor_obj W w X Y S
+
+-- 元の任意の射を同じ切断関手の像として回収する。
+example {S T : backwardBackwardSource W w X Y}
+    (h : (backwardBackwardFunctor W w X Y).obj S ⟶ (backwardBackwardFunctor W w X Y).obj T) :
+    (backwardBackwardFunctor W w X Y).map (backwardBackwardPreimage W w X Y h) = h :=
+  backwardBackwardPreimage_map W w X Y h
+
+example : (backwardBackwardEquivalence W w X Y).functor = backwardBackwardFunctor W w X Y := rfl
+
+-- 同じ元の切断関手の nerve 自体が厳密な同型。
+example : IsIso (nerveMap (backwardBackwardFunctor W w X Y)) := by
+  change IsIso (backwardBackwardGraphIso W w X Y).hom
+  infer_instance
+
+-- 任意の前の語・残りの先頭の方向で元の接合点の縦射を保持する。
+example {a v : Word} {d : Direction}
+    {S T : Zigzag W (Word.append a (Word.cons d v)) X Y} (h : S ⟶ T) :
+    Zigzag.FirstBoundary.BoundaryHom (ZigzagAppend.Part.jointFunctor.map h)
+      (ZigzagAppend.Part.rightObj S) (ZigzagAppend.Part.rightObj T) :=
+  ZigzagAppend.Part.rightBoundaryHom h
+end e2BackwardStructureFixtures
+
+section e2BackwardRelativeFixtures
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+open SerrePositivity.EInfinity.Hammock.FirstColumn
+open SerrePositivity.EInfinity.SimplicialLocalization
+variable {C D : RelativeCategory.{e2ComplexLimitUniverse}} (w : Word)
+    {X Y : C.category} {X' Y' : D.category}
+    (F : C ⟶ D) (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y')
+
+-- 実際の底と両係数を持つ元の Data 比較。
+example : backwardBackwardData C w X Y ⟶ backwardBackwardData D w X' Y' :=
+  backwardBackwardDataMap w F hX hY
+
+-- 元の相対関手と切断関手の全対象・全射の厳密な一致。
+example : Zigzag.Relative.fixedFunctor F hX hY ⋙ backwardBackwardFunctor D.weakEquivalences w X' Y' =
+    backwardBackwardFunctor C.weakEquivalences w X Y ⋙ backwardBackwardRelativeFunctor w F hX hY :=
+  backwardBackward_relative_functor w F hX hY
+end e2BackwardRelativeFixtures
+
+-- 任意可換環の実際の全自由次数の元の graph の分解へ代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.FirstColumn
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ (n : SimplexCategoryᵒᵖ) (w : Word) (X Y : C.category),
+      IsWeakHomotopyEquivalence (nerveMap (backwardBackwardFunctor
+        ((freeResolution C).obj n).weakEquivalences w
+          (freeResolutionObject C n X) (freeResolutionObject C n Y))) := by
+  intro C n w X Y
+  exact backwardBackwardFunctor_weak _ _ _ _
+
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.FirstColumn
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ (n : SimplexCategoryᵒᵖ) (w : Word) (X Y : C.category),
+      Zigzag.Relative.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
+          (freeResolutionObject_augmentation C n X) (freeResolutionObject_augmentation C n Y) ⋙
+        backwardBackwardFunctor C.weakEquivalences w X Y =
+      backwardBackwardFunctor ((freeResolution C).obj n).weakEquivalences w
+          (freeResolutionObject C n X) (freeResolutionObject C n Y) ⋙
+        backwardBackwardRelativeFunctor w ((freeResolutionAugmentationNatTrans C).app n)
+          (freeResolutionObject_augmentation C n X) (freeResolutionObject_augmentation C n Y) := by
+  intro C n w X Y
+  exact backwardBackward_relative_functor _ _ _ _
 end

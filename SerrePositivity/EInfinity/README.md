@@ -2033,6 +2033,17 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `Word.single_append_eq_cons/cons_empty` は元の連結と帰納の表示を厳密に照合。
 `freeWordDiagonalAugmentation_twoForward_weak` は同じ元の二列の左射の無条件の弱同値性。
 任意可換環の実モデルで二列・三列への適用も検証。他の向きと全語への移送は後続。
+`ZigzagAppend.Part.rightBoundaryHom` は任意の前の語と両方向の残りの語で、
+元の接合点の指定射と全縦成分を回収する。
+`FirstColumn.backwardBackwardFunctor` は元の指定 Hom の反変係数と残りの共変係数による
+後向き二列の切断。元の全対象・全縦射・恒等・合成と忠実性を保持する。
+`backwardBackwardRebuild_object/backwardBackwardRebuild_functor_obj` と
+`backwardBackwardPreimage_map` は対象の両往復と
+元の同じ射の回収。充満性・本質的全射性から同じ関手の圏同値と厳密な圏・graph 同型を得る。
+`backwardBackwardDataMap/backwardBackward_relative_functor` は元の指定部分圏の Hom の構造と
+両端の表示を保つ底・両係数・全対象・全射の相対自然性。
+任意可換環の実際の全自由次数・元の augmentation への適用も検証。
+後向きの単体図式・係数の弱比較・帰納段階と混合二方向は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
