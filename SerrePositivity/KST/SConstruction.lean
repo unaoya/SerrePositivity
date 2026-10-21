@@ -1494,4 +1494,11 @@ public import SerrePositivity.KST.SConstruction.NecklaceSubsets
 public import SerrePositivity.KST.SConstruction.NecklaceBooleanCube
 public import SerrePositivity.KST.SConstruction.NecklaceBooleanMap
 public import SerrePositivity.KST.SConstruction.NecklaceBooleanFunctor
+public import SerrePositivity.KST.SConstruction.CubeOrderedNormalFormGenerated
+public import SerrePositivity.KST.SConstruction.NecklaceNonjointCoordinates
+public import SerrePositivity.KST.SConstruction.NecklaceNumericMap
+public import SerrePositivity.KST.SConstruction.NecklaceNumericNormalForm
+public import SerrePositivity.KST.SConstruction.NecklaceConcreteCube
+public import SerrePositivity.KST.SConstruction.NecklaceNumericCubeComparison
+public import SerrePositivity.KST.SConstruction.NecklaceCubicalMapping
 /-! # ∞-S• 構成と連結 K 理論 -/
