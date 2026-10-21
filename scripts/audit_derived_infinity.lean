@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelIdentityNerveHom
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveRightUnit
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelBimoduleIso
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedWhiskerSquare
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionWhisker
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedPathReflection
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionPentagon
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionRightUnit
 import SerrePositivity.InfinityCategories.Derived.DGKernelCoherencePathTools
 import SerrePositivity.InfinityCategories.Derived.DGBimoduleNerveInversePentagon
 import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveHom
@@ -3920,6 +3928,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelIdentityNerveHom,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveRightUnit,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelBimoduleIso,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedWhiskerSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionWhisker,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedPathReflection,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionPentagon,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionRightUnit,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelCoherencePathTools,
     `SerrePositivity.InfinityCategories.Derived.DGBimoduleNerveInversePentagon,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveHom,
