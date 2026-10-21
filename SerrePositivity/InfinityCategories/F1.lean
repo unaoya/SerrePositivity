@@ -2429,3 +2429,15 @@ public import SerrePositivity.InfinityCategories.F1.KanFibrationEquivalenceLifti
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSourceLifting
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexStrictPullback
+
+public import SerrePositivity.InfinityCategories.F1.EquivalencePathFamilyEdge
+
+public import SerrePositivity.InfinityCategories.F1.EquivalencePathFamilyIso
+
+public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquareEdgeCoherence
+
+public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquareExactIso
+
+public import SerrePositivity.InfinityCategories.F1.PullbackCompatiblePathHomotopy
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedCoherence
