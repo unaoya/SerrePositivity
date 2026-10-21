@@ -74,4 +74,15 @@ lemma cocartesianIntervalMappingCore_isPullback :
   rw [← Functor.map_comp, ← Functor.map_comp,
     strictDiagramMappingComponent_naturality F.val G.val strictIntervalIndexArrow]
 
+open HomotopicalAlgebra SSet.modelCategoryQuillen in
+/-- 元の一次元 Hom の一成分を固定する射は Kan fibration。 -/
+lemma cocartesianIntervalMappingCore_one_fibration :
+    Fibration (quasicategoryCoreMap
+      (strictDiagramMappingComponent F.val G.val (ULift.up 1))) := by
+  rw [SSet.modelCategoryQuillen.fibration_iff]
+  exact (SSet.modelCategoryQuillen.J.rlp).of_isPullback
+    (cocartesianIntervalMappingCore_isPullback F G)
+    ((SSet.modelCategoryQuillen.fibration_iff _).mp
+      (core_cocartesianIntervalPostHom_fibration G _))
+
 end SerrePositivity.InfinityCategories

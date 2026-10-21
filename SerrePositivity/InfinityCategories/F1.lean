@@ -1884,3 +1884,9 @@ public import SerrePositivity.InfinityCategories.F1.StrictIntervalMappingPullbac
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalMappingFibration
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalMappingCorePullback
+
+public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalNaturality
+
+public import SerrePositivity.InfinityCategories.F1.FunctorEvaluationLifting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHomIntervalEvaluation
