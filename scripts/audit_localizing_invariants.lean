@@ -645,7 +645,16 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.CochainTensorPrecomposeZero,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathDiagonal,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathEndpoints,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathHomotopy]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorPrecompose,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapHom,
+    `SerrePositivity.KST.LocalizingInvariants.CochainAlgebraProductNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapLaws,
+    `SerrePositivity.KST.LocalizingInvariants.CochainMappingCoconeMapSurjective,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapSurjective]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
