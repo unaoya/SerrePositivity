@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DeformationRestrictionSquare
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRestrictionSquare
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositorRestriction
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionPath
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRawPathTransport
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCommonPath
+import SerrePositivity.InfinityCategories.Derived.DeformationRestrictionHomTransport
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatComparisonPath
 import SerrePositivity.InfinityCategories.Derived.DGKernelTensorCompositionSemifreeTransport
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionSemifree
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRestrictionHom
@@ -4461,6 +4469,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DeformationRestrictionSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRestrictionSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositorRestriction,
+
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionPath,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRawPathTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCommonPath,
+    `SerrePositivity.InfinityCategories.Derived.DeformationRestrictionHomTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatComparisonPath,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelTensorCompositionSemifreeTransport,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionSemifree,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRestrictionHom,
