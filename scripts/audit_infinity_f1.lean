@@ -8316,3 +8316,47 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_intervalFaceRestriction_fibration
 
 #check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_intervalExtension_kanComplex
+
+#check @SerrePositivity.InfinityCategories.sset_isInitial_of_obj_isEmpty
+
+#check @SerrePositivity.InfinityCategories.sset_obj_isEmpty_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.sset_pullback_isInitial_of_left
+
+#check @SerrePositivity.InfinityCategories.uliftSSet_isInitial_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.relativeFunctorSpace_isTerminal_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace_isTerminal_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.kanComplex_of_sset_isTerminal
+
+#check @SerrePositivity.InfinityCategories.quasicategoryCore_isTerminal_of_isTerminal
+
+#check @SerrePositivity.InfinityCategories.uliftSSet_isTerminal_of_isTerminal
+
+#check @SerrePositivity.InfinityCategories.cocartesianPullbackNativeHom_isTerminal_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.cocartesianPullbackNativeCore_isTerminal_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.cocartesianPullbackNativeLift_isTerminal_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.functorSpace_isTerminal_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.intervalMappingSpace_isTerminal_of_isTerminal
+
+#check @SerrePositivity.InfinityCategories.intervalDiagramHom_isTerminal_of_isInitial
+
+#check @SerrePositivity.InfinityCategories.emptyCocartesianHomComparisonIso
+
+#check @SerrePositivity.InfinityCategories.emptyCocartesianHomComparison
+
+#check @SerrePositivity.InfinityCategories.emptyCocartesianHomComparison_isPrecompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.emptyCocartesianHomComparison_factorization
+
+#check @SerrePositivity.InfinityCategories.zeroSimplexBoundary_isInitial
+
+#check @SerrePositivity.InfinityCategories.cocartesianZeroBoundaryHomComparisonIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianZeroBoundaryHomComparison_original

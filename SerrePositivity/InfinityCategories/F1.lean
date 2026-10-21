@@ -2969,3 +2969,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianHornBoundaryHomPu
 public import SerrePositivity.InfinityCategories.F1.CocartesianHornBoundaryFibers
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianHornBoundaryExtensionKan
+
+public import SerrePositivity.InfinityCategories.F1.EmptySimplicialDomain
+
+public import SerrePositivity.InfinityCategories.F1.EmptyRelativeFunctorHom
+
+public import SerrePositivity.InfinityCategories.F1.TerminalSimplicialCore
+
+public import SerrePositivity.InfinityCategories.F1.EmptyCocartesianNativeHom
+
+public import SerrePositivity.InfinityCategories.F1.EmptyIntervalDiagramHom
+
+public import SerrePositivity.InfinityCategories.F1.EmptyCocartesianHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianZeroBoundaryComparison
