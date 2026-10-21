@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomSpaceComparison
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomSourceComparison
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorFixedSecond
+import SerrePositivity.InfinityCategories.Derived.DGNerveConstantCutProduct
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomTargetComparison
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorFixedFirst
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomInfinity
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorProductMap
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSimplex
@@ -3795,6 +3801,12 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomSpaceComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomSourceComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorFixedSecond,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveConstantCutProduct,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomTargetComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorFixedFirst,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorProductMap,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorSimplex,
