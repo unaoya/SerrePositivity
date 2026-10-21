@@ -83,4 +83,20 @@ public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientReflectiveCo
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientDetection
 
+public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
+
+public import SerrePositivity.KST.LocalizingInvariants.LocalizationAdjunctionDescent
+
+public import SerrePositivity.KST.LocalizingInvariants.LocalizationRightAdjunctionDescent
+
+public import SerrePositivity.KST.LocalizingInvariants.PointInitialAdjunction
+
+public import SerrePositivity.KST.LocalizingInvariants.PointTerminalAdjunction
+
+public import SerrePositivity.KST.LocalizingInvariants.LocalizationInitialPreservation
+
+public import SerrePositivity.KST.LocalizingInvariants.LocalizationZeroPreservation
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientPointed
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

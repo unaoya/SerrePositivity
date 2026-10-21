@@ -173,7 +173,15 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness,
     `SerrePositivity.KST.LocalizingInvariants.TammeQuotientCandidate,
     `SerrePositivity.KST.LocalizingInvariants.TammeQuotientReflectiveComparison,
-    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientDetection]
+    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientDetection,
+    `SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering,
+    `SerrePositivity.KST.LocalizingInvariants.LocalizationAdjunctionDescent,
+    `SerrePositivity.KST.LocalizingInvariants.LocalizationRightAdjunctionDescent,
+    `SerrePositivity.KST.LocalizingInvariants.PointInitialAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.PointTerminalAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.LocalizationInitialPreservation,
+    `SerrePositivity.KST.LocalizingInvariants.LocalizationZeroPreservation,
+    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientPointed]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
