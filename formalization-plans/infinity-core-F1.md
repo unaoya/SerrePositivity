@@ -93,12 +93,12 @@
 ### 次の一手
 
 零・一次元の同じ分類・Hom 作用は同値。任意の底の各一次元セルでも元の局所 Hom 比較は同値で、大域作用と関手同型で整合する。
-底変換の結合同型は底全体と元の全高次 Hom に同時に自然。二回と直接の底変換に続く同じ分類主写像の、全 fibration の実際の比較辺と関手同型を構成し、元の成分も厳密に回収した。
+結合比較の同じ三辺を持つ、全 fibration・全高次 Hom の実際の二単体の族を構成した。三面は元の最初の比較、二回目と結合同型の合成、元の直接の比較に厳密に一致する。
 `cocartesianStraighteningCoherentMap_oneSimplex_isQCatEquivalence` と
 `cocartesianStraighteningHomInterval_oneSimplex_isQCatEquivalence` は、同じ元の全 fibration の分類と全 Hom 作用の同値。
 元の cocartesian Hom の core と分類先の区間 Hom の全内ホーン制限は自明 Kan と証明済み。二次元の欠ける長辺は同じ三角形分解で保存を反映した。
 元の Hom の core と分類先の区間 Hom は、同じ共有頂点で貼る二区間の厳密な pullback。二次元単体からこの同じ pullback への両比較は自明 Kan と証明済み。
-次は元の底変換比較の合成則を同じ三辺を持つ coherent な二単体へ実現し、比較 span と両側の Segal 制限を整合させて、同じ分類 Hom 作用の二次元・全単体での同値性を証明する。
+次は同じ三角形を使って Hom の比較 span の合成と両側の Segal 制限を整合させ、同じ分類 Hom 作用の二次元・全単体での同値性を証明する。
 その後は底の被覆による大域充満忠実性と、本質的全射性・一般の底への帰着。Cat∞ 値分類は未完了。
 正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
