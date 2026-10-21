@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientDiagram
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRelativeRightComparison
+public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 /-!
 概要：商へ写した元の cofiber と選択した cofiber の比較は、右辺とその始点を保つ。
@@ -73,13 +74,29 @@ lemma quotientOriginalDiagrams_cofiber :
       simp only [Category.assoc]
     _ = _ := by rw [he]; rfl
 
+lemma quotientSelectedDiagrams_cofiber :
+    CofiberDiagrams.lift Q.obj (quotientArrow p q i r) ≫ (CofiberDiagrams.right Q.obj ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
+        CofiberFamily.cofiber Q.obj (quotientArrow p q i r) := by
+  rw [← Category.assoc, CofiberDiagrams.lift_right_target]
+
 def quotientCofiberRelativeIso : FunctorIso ((i.hom ≫ cofiber p q) ≫ r.hom)
-    (CofiberFamily.cofiber Q.obj (quotientArrow p q i r)) := by
-  have e := FunctorIso.postcomp (quotientDiagramComparison p q i r)
+    (CofiberFamily.cofiber Q.obj (quotientArrow p q i r)) :=
+  (eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+    (quotientOriginalDiagrams_cofiber p q i r))).symm ≪≫
+  FunctorIso.postcomp (quotientDiagramComparison p q i r)
     (CofiberDiagrams.right Q.obj ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-  rw [quotientOriginalDiagrams_cofiber, ← Category.assoc,
-    CofiberDiagrams.lift_right_target] at e
-  exact e
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≪≫
+  eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+    (quotientSelectedDiagrams_cofiber p q i r))
+
+lemma quotientCofiberRelativeIso_arrow :
+    Arrow.mk (quotientCofiberRelativeIso p q i r).hom =
+      Arrow.mk (quotientRightTargetComparison p q i r) := by
+  unfold quotientCofiberRelativeIso
+  simp only [Iso.trans_hom, Iso.symm_hom, eqToIso.hom, eqToIso.inv]
+  rw [← Category.assoc, arrow_mk_comp_eqToHom, arrow_mk_eqToHom_comp,
+    HomotopyLimits.functorIso_postcomp_hom]
+  rfl
 
 end SerrePositivity.KST.LocalizingInvariants.LaxCounit

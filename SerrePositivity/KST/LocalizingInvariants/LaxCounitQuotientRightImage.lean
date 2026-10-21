@@ -18,11 +18,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-lemma arrow_mk_eqToHom_comp {B : Type u} [Category B] {x x' y : B}
-    (h : x' = x) (f : x ⟶ y) : Arrow.mk (eqToHom h ≫ f) = Arrow.mk f := by
-  cases h
-  simp only [eqToHom_refl, Category.id_comp]
-
 lemma CofiberFamily.rightHom_arrow (X : SSet.{u}) [Quasicategory X] [IsStable X]
     {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
     Arrow.mk (CofiberFamily.rightHom X a) =
