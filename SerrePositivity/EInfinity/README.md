@@ -1521,6 +1521,15 @@ prefix・残りの全単体作用素への整合は以下で完成。全語へ�
 実際の全語の図式の単体で選んだ同じ Total 生成矢を厳密に回収する。
 空 fiber の恒等列挿入・任意可換環の実際の全自由次数も検証。
 prefix・残りの同じ余極限の像の一致、reduction・反復・積分解は後続。
+`Segment.toColumn/fromColumn/map_column_factorization` は内部の生の列を挟む元の因子化。
+`FixedCut.sandwich/congr/factorization_left/factorization_right/left_heq/right_heq` は
+前後の射列と元の端点表示を含む切断の一意性を回収する。
+`Segment.forward_cut_left/forward_cut_right` は元の区間合成の切断の前後の射列の厳密な等式。
+`WordActionCut.prefixMap/residual/factorization/cut_left/cut_right` は元の圧縮した生の列へ適用。
+`FirstFiber.prefixMap_mem/cut_left/cut_right` は実際の最小非指定列の fiber へ代入し、
+接頭射・残りを元の切断と前後の元の射列から回収する。後置区間の指定性は仮定しない。
+端の空区間・任意可換環の実際の全自由次数でも検証。
+前後の語の制限射と全図式の比較、prefix・残りの余極限の像の一致、反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
