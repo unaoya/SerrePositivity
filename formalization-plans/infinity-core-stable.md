@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 恒等入力・出力後合成・対象宇宙の上げ下げと、元の変更同型の射の共役式の19新規モジュール、Derived 集約、両監査、本計画の23パスを保存対象とする。対象・集約ビルド、35公開署名の型・公理検査、両全体監査は成功。他レーンの変更は変更しない。
+- 恒等入力・出力後合成・対象宇宙の上げ下げと、元の変更同型の射の共役式の19新規モジュール、Derived 集約、両監査、本計画の23パスを `cff4edc01` に保存済み。対象・集約ビルド、35公開署名の型・公理検査、両全体監査は成功。次の双加群比較5補題は `/tmp/` で検証済み・未集約。現在地の更新は本計画のみ。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- `dgModuleResolvedInfinity_changeIso_hom` は、従来の変更同型の射を元の `rawFactorIso` と同じ厳密変換の nerve 射による共役式へ同定する。恒等入力の簡約・同じ出力比較の二段分解・出力後合成・宇宙上げ下げの照合まで統合済み。証明項を分割して既定の kernel 制限で検査し、指定逆・比較の値を保持した。次は `dgKernelDerivedInfinity_mapIso_of_surjective_quasiIso` の hom と `dgKernelDerivedFunctorHomFunctor.map f` を同定する。`/tmp/d-beta5-kernel-change-action.lean` の4補題で、同じ半自由 tensor 射の厳密変換・全 nerve 像・raw 射作用と元の raw factor の同じ値を検証済み（未集約）。5番目の全射比較の hom の同定を試作中。続いて実 span の切断と両合成から一般準同型比較との一致へ進む。選択済み比較を再定義して代用しない。模型変更の全自然性・一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
+- `dgModuleResolvedInfinity_changeIso_hom` は、従来の変更同型の射を元の `rawFactorIso` と同じ厳密変換の nerve 射による共役式へ同定する。恒等入力の簡約・同じ出力比較の二段分解・出力後合成・宇宙上げ下げの照合まで統合済み。証明項を分割して既定の kernel 制限で検査し、指定逆・比較の値を保持した。次は元の全射準同型比較の hom と実導来射作用の一致を5補題に分割統合する。`/tmp/d-beta5-kernel-change-action.lean` の4補題で、同じ半自由 tensor 射の厳密変換・全 nerve 像・raw 射作用と元の raw factor の同じ値を検証済み（未集約）。5番目の `dgKernelDerivedInfinity_surjective_comparison_hom` を含む全5補題も警告なし・許容三公理で検証済み（未集約）。実行中の試作はない。続いて実 span の切断と両合成から一般準同型比較との一致へ進む。選択済み比較を再定義して代用しない。模型変更の全自然性・一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
 
 ## 目標と原典
 
