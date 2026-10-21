@@ -1615,6 +1615,18 @@ hammock と元の包含・全関手の回収と全語の作用への整合。
 `extraction_injective/gluing_surjective` は同じ射自身の全次数での単射性・全射性。
 任意可換環の実際の全自由次数でも検証。逆向きの貼り戻し後の因子回収・一意性・
 積分解・自由積の単体的 pushout・DK の両弱比較は後続。
+`colimitValue_composePoint/colimitValue_arrowPoint` は元の合成・生成射の文字列評価を回収。
+`FactorTarget.pastePoint_value/paste_value/pasteNonempty` は任意の三因子の貼り戻しの値が
+元の生成矢 :: 残りの値であり、元の非空部分へ入ることを証明する。
+`markedSpine_native/nativeInclusion_extraction/extraction_gluing_nil` は指定 hammock の元の点を
+包含して抽出すると同じ元の終端へ戻ることを証明する。
+`Pasted.column_generator/before_column_mem/firstColumn_eq/simplex_firstColumn/simplex_generator` は
+元の全指定 prefix・元の一文字・任意の残りを貼った語の最初の非指定位置と同じ生成矢を回収。
+`pastePoint_inclusions/nonemptyCut_graphInclusion` は元の標準射と実際の切断の照合。
+`pasteNonempty_generator/pasteNonempty_generator_index/pasteNonempty_residual_value` は
+任意の余極限の三因子を貼って切ると元の Total 生成矢と残りの非指定文字列を回収する。
+任意可換環の実際の全自由次数でも検証。prefix と残りの hammock の点そのものの回収、
+逆向きの因子列の回収・一意性・積分解・自由積の pushout・DK の両弱比較は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

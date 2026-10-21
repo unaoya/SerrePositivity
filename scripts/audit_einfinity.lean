@@ -5322,6 +5322,35 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinedFunctor_pair,
       `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.append_fixedFunctor]
 
+@[noinline] private def e2RequiredBatch75 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.markedSpine_native,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.nilMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.nativeInclusion_extraction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.nilMap_gluing,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.extraction_gluing_nil,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.colimitValue_composePoint,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.colimitValue_arrowPoint,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pastePoint_value,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.paste_value,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pastePoint_nonempty,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pasteNonempty,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pasteNonempty_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.nonemptyCut_graphInclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.obj,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.columnIndex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.column_generator,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.before_column_mem,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.firstColumn_eq,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pasteNonempty_generator,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pasteNonempty_generator_index,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pasteNonempty_residual_value,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.pastePoint_inclusions,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.simplex_nonempty,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.simplex_firstColumn,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted.simplex_generator,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowGenerator_of_singleton]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5353,7 +5382,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -12765,3 +12794,67 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
       𝟙 (colimitGraph W.paths X Y) :=
   FirstFactor.extraction_gluing (freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y X
+
+
+-- 任意の三因子の貼り戻しの元の文字列を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) :
+    FactorTarget.paste W X Y ≫ colimitValue W X Y = FactorTarget.wordValue W X Y :=
+  FactorTarget.paste_value W X Y
+
+-- 指定 hammock の元の点は包含して抽出すると同じ元の終端へ戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (Y X : Paths C) {n : SimplexCategoryᵒᵖ}
+    (p : (AllMarked.nativeSpace W X Y).obj n) :
+    FirstFactor.markedSpine W Y n X ((AllMarked.inclusion W X Y).app n p) =
+      FirstFactor.MarkedSpine.nil X p := FirstFactor.markedSpine_native W Y X p
+
+-- 元の任意の語の貼り戻しで最初の非指定列の位置を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (g : FactorTarget.Index W) (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
+    (τ : (graph W.paths b g.val.right Y).obj n)
+    (h : ∃ j, column W ((Pasted.simplex W g σ τ).obj 0) j ≠ []) :
+    AttachedPrefix.index W (Pasted.simplex W g σ τ) h = Pasted.columnIndex a b :=
+  Pasted.simplex_firstColumn W g σ τ h
+
+-- 任意の余極限の三因子を貼って切ると同じ元の生成矢を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) {n : SimplexCategoryᵒᵖ}
+    (s : (FactorTarget.space W X Y).obj n) :
+    ((FirstFactor.nonemptyCut W X Y).app n ((FactorTarget.pasteNonempty W X Y).app n s)).1 = s.1 :=
+  FactorTarget.pasteNonempty_generator_index W X Y s
+
+-- 残りの点の非指定文字列も元の残りと一致する。点そのものの回収は別工程である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) {n : SimplexCategoryᵒᵖ}
+    (s : (FactorTarget.space W X Y).obj n) :
+    (colimitValue W ((FirstFactor.nonemptyCut W X Y).app n
+      ((FactorTarget.pasteNonempty W X Y).app n s)).1.val.right Y).app n
+        ((FirstFactor.nonemptyCut W X Y).app n ((FactorTarget.pasteNonempty W X Y).app n s)).2.2 =
+      (colimitValue W s.1.val.right Y).app n s.2.2 :=
+  FactorTarget.pasteNonempty_residual_value W X Y s
+
+-- 任意可換環の実際の全自由次数でも同じ生成矢を回収する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
+    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
+    (s : let W := (freeResolutionGeneratorBase
+        (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (FactorTarget.space W X Y).obj m) :
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    ((FirstFactor.nonemptyCut W X Y).app m ((FactorTarget.pasteNonempty W X Y).app m s)).1 = s.1 :=
+  FactorTarget.pasteNonempty_generator_index (freeResolutionGeneratorBase
+    (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences X Y s

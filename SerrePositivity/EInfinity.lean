@@ -1277,3 +1277,12 @@ public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPaste
 public import SerrePositivity.EInfinity.Hammock.UnmarkedFirstFactorPasteRecovery
 public import SerrePositivity.EInfinity.Hammock.UnmarkedRefinedPairing
 public import SerrePositivity.EInfinity.Hammock.ZigzagFixedAppendFunctor
+public import SerrePositivity.EInfinity.Hammock.MarkedSpineNativeRecovery
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCompositionValue
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPasteValue
+public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyCutInclusion
+public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedColumn
+public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedGeneratorRecovery
+public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedInclusion
+public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedSimplex
+public import SerrePositivity.EInfinity.Hammock.UnmarkedSingletonGenerator
