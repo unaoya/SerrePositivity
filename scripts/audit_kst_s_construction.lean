@@ -24234,3 +24234,102 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramFunctor_projection
 #print axioms SerrePositivity.KST.SConstruction.simplicialEnrichedDiagramFunctor_projection
+
+#check @SerrePositivity.KST.SConstruction.sExactParameterizedNaturality
+#print axioms SerrePositivity.KST.SConstruction.sExactParameterizedNaturality
+
+#check @SerrePositivity.KST.SConstruction.stableCategoryModel
+#print axioms SerrePositivity.KST.SConstruction.stableCategoryModel
+
+#check @SerrePositivity.KST.SConstruction.multiSExactCategory
+#print axioms SerrePositivity.KST.SConstruction.multiSExactCategory
+
+#check @SerrePositivity.KST.SConstruction.multiSExactEnrichedMap
+#print axioms SerrePositivity.KST.SConstruction.multiSExactEnrichedMap
+
+#check @SerrePositivity.KST.SConstruction.multiSExactEnrichedEndofunctor
+#print axioms SerrePositivity.KST.SConstruction.multiSExactEnrichedEndofunctor
+
+#check @SerrePositivity.KST.SConstruction.multiSExactMap
+#print axioms SerrePositivity.KST.SConstruction.multiSExactMap
+
+#check @SerrePositivity.KST.SConstruction.multiSExactEnrichedEndofunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.multiSExactEnrichedEndofunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.multiSExactRestriction
+#print axioms SerrePositivity.KST.SConstruction.multiSExactRestriction
+
+#check @SerrePositivity.KST.SConstruction.multiSExactRestriction_id
+#print axioms SerrePositivity.KST.SConstruction.multiSExactRestriction_id
+
+#check @SerrePositivity.KST.SConstruction.multiSExactRestriction_comp
+#print axioms SerrePositivity.KST.SConstruction.multiSExactRestriction_comp
+
+#check @SerrePositivity.KST.SConstruction.multiSExactRestriction_succ
+#print axioms SerrePositivity.KST.SConstruction.multiSExactRestriction_succ
+
+#check @SerrePositivity.KST.SConstruction.stableQuasicategoryEnrichedInclusion
+#print axioms SerrePositivity.KST.SConstruction.stableQuasicategoryEnrichedInclusion
+
+#check @SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedFunctor_map_succ
+#print axioms SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedFunctor_map_succ
+
+#check @SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedRestriction_naturality
+#print axioms SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedRestriction_naturality
+
+#check @SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedRestriction
+#print axioms SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedRestriction
+
+#check @SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedDiagram
+#print axioms SerrePositivity.KST.SConstruction.multiSQuasicategoryEnrichedDiagram
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSEnrichedDiagram
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSEnrichedDiagram
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreEnrichedDiagram
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreEnrichedDiagram
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreEnrichedDiagram_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreEnrichedDiagram_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreEnrichedDiagram_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreEnrichedDiagram_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSEnrichedDiagram_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSEnrichedDiagram_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreEnrichedDiagram_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreEnrichedDiagram_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreDiagonalDiagram
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreDiagonalDiagram
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor_projection
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor_projection
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor_realization
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectEnrichedFunctor_realization
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectMap_realization
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiSCoreObjectMap_realization

@@ -1979,4 +1979,11 @@ public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedCoreCompari
 public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedObjectCore
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGCoreSimplicialEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGCoreSimplicialObjectFunctor
+public import SerrePositivity.KST.SConstruction.SExactParameterizedNaturality
+public import SerrePositivity.KST.SConstruction.MultiSExactEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.MultiSExactRestriction
+public import SerrePositivity.KST.SConstruction.MultiSQuasicategoryEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.MultiSQuasicategoryEnrichedDiagram
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMultiSCoreDiagram
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMultiSCoreObjectFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/
