@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComposition
+import SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift
+import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationHomotopy
+import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationLocalization
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatModuleNerve
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatResolutionLocalization
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatEdges
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelNerve
+import SerrePositivity.InfinityCategories.Derived.DGClosedEdgePostcomposition
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelToDerived
+import SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescent
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparison
 import SerrePositivity.InfinityCategories.Derived.DeformationLocalization
 import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy
@@ -3804,6 +3816,20 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComposition,
+
+    `SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift,
+    `SerrePositivity.InfinityCategories.Derived.RestrictedDeformationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.RestrictedDeformationLocalization,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatModuleNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatResolutionLocalization,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatEdges,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedEdgePostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelToDerived,
+    `SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescent,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparison,
+
     `SerrePositivity.InfinityCategories.Derived.DeformationLocalization,
     `SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy,
