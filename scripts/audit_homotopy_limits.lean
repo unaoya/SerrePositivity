@@ -11476,3 +11476,27 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @localEquivalences_compStruct_cancel_right
 #print axioms localEquivalences_compStruct_cancel_right
+
+#check @isLocalForHom_iff_constantHom_bijective
+#print axioms isLocalForHom_iff_constantHom_bijective
+
+#check @edgeCosliceIntervalMap_equivalence_iff_restriction
+#print axioms edgeCosliceIntervalMap_equivalence_iff_restriction
+
+#check @isLocalForHom_edge_iff_sourceRestriction
+#print axioms isLocalForHom_edge_iff_sourceRestriction
+
+#check @isLocalForHom_edge_iff_sourceRestriction_trivial
+#print axioms isLocalForHom_edge_iff_sourceRestriction_trivial
+
+#check @sourceRestriction_trivial_of_localObject
+#print axioms sourceRestriction_trivial_of_localObject
+
+#check @spanCoconeMapping_right_trivial_of_local
+#print axioms spanCoconeMapping_right_trivial_of_local
+
+#check @spanCoconeMapping_right_trivial_of_localObject
+#print axioms spanCoconeMapping_right_trivial_of_localObject
+
+#check @spanCoconeMapping_rightTarget_trivial_of_localObject
+#print axioms spanCoconeMapping_rightTarget_trivial_of_localObject

@@ -29,6 +29,9 @@
   既存反射について、局所対象と元の反転辺集合の局所対象の一致、および S-equivalence と元の反転辺集合の一致を証明（HTT 5.5.4.2(1)・(2)）。
   `LocalEquivalenceHom`・`localEquivalences` を元の射・一次単体で定義。元の辺集合の包含、単調性・冪等性、局所対象の不変性を証明。
   元の二単体の三辺について二つから三つ目の性質を証明し、全可逆辺を含むことも回収。強飽和性の余極限・pushout 条件は未証明。
+  全単体集合パラメータの定値 Hom の全単射と局所性の同値を公開。元の辺への局所性を終点固定 coslice の始点制限の trivial Kan 性と照合。
+  元の span の左枝が指定辺集合に属するとき、局所対象への余錐の右枝・右枝終点への制限の trivial Kan 性を証明。余錐空間の厳密な引き戻しを使用。
+  元の pushout の脚への移送は未完了。N-1 の部分余極限構成は再開せず、既存の一般的な余錐・coslice の補題を局所化に使う。
   辺集合の小生成・強飽和性全体、反射の存在、Bousfield 局所化・P_Σ の構成は未完了。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
@@ -62,22 +65,26 @@
   `LocalEquivalenceHom`、`localEquivalences`、`localEquivalences_idempotent`、
   `reflective_isLocal_iff_invertedEdges`、`reflective_localEquivalenceHom_iff`、`reflective_localEquivalences_eq`、
   `localEquivalenceHom_iff_edge_mem`、`localEquivalences_compStruct`、
-  `localEquivalences_compStruct_cancel_left`、`localEquivalences_compStruct_cancel_right`。
+  `localEquivalences_compStruct_cancel_left`、`localEquivalences_compStruct_cancel_right`、
+  `isLocalForHom_iff_constantHom_bijective`、`isLocalForHom_edge_iff_sourceRestriction_trivial`、
+  `sourceRestriction_trivial_of_localObject`、`spanCoconeMapping_right_trivial_of_localObject`、
+  `spanCoconeMapping_rightTarget_trivial_of_localObject`。
   Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、全監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけ、実施記録はコミットメッセージ。全体チェックリストはコーディネータが更新する。
-- **未コミット**：なし（今回の保存単位：S-equivalence・反射の反転辺との一致・元の三辺の閉性の3モジュール22宣言、集約・全監査、本 N 節）。他レーンの差分は保存対象外。
+- **未コミット**：なし（今回の保存単位：全パラメータ Hom 判定・局所性の coslice 制限・span の全境界充填の3モジュール8宣言、集約・全監査、本 N 節）。他レーンの差分は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は N 旧稿と確認し、修正版を正しい場所へ保存後に削除済み。
-- **既知の問題**：N の対象ビルド6160 jobs・全4230宣言監査は終了コード0、標準三公理のみ。新規3モジュールに警告・sorry・追加公理なし。
+- **既知の問題**：N の対象ビルド6165 jobs・全4238宣言監査は終了コード0、標準三公理のみ。新規3モジュールに警告・sorry・追加公理なし。
   Sp の既存界面は対象5366/5370 jobs と13宣言の型・公理確認が終了コード0、標準三公理のみ。両 import 閉包に他レーンの未コミット差分なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
-- **次の一手**：N-4：一般の S に対する `localEquivalences S` の強飽和性のうち、余極限と pushout での閉性を証明（HTT 5.5.4.5・5.5.4.11）。
-  `/tmp/LocalHomCriterion.lean` は局所性と任意単体集合パラメータの定値 Hom の全単射の同値の検証済み試作（`/tmp/n-local-hom-criterion3.log`、終了コード0）。公開へ移し、native 余極限の普遍性へ接続する。
-  全パラメータの Hom 条件・元の辺・元の余錐を保ち、hX の通常の余極限の保存へ弱めない。反射の存在を先取りしない。
+- **次の一手**：N-4：元の pushout の脚への移送。`/tmp/IteratedSliceUnder.lean` の反復 coslice の同型・元の図式への制限の一致と余極限制限の trivial Kan 性は27宣言の検証済み試作（`/tmp/n-iterated-under13.log`・`/tmp/n-iterated-under-audit.log`、終了コード0・標準三公理のみ）。公開する。
+  既存の `IteratedSliceOverFamilies`・`IteratedSliceOverIso`・`IteratedSliceOverRestriction` の双対。試作の日本語説明には slice 側からの未修正部分があるので公開時に直す。
+  `sliceUnderRestrict_cocone_trivial` を `LocalSpanRestriction` と組み合わせ、`spanCoconeSquareIso` と right anodyne の積の補題で正方形の右脚へ移す。元の辺の局所性を結論する。
+  その後、任意の余極限での閉性（HTT 5.5.4.5・5.5.4.11）。全パラメータ・元の辺・余錐を保ち、hX の通常の余極限保存へ弱めない。反射の存在を先取りしない。
   E2b の `cAlgForgetLocalization` の終域は元の全複体の具体的局所化。D(R) との比較・高次 Hom 比較・∞ 局所化の普遍性は E2 側で未提供と再確認。γ4 の入力を先取りしない。
   原典は [HTT 5.2.4.6・Remark 5.2.4.7、5.5.4・5.5.8](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）。
 
