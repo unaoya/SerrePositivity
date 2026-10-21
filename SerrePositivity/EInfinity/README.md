@@ -1951,6 +1951,17 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 射列長を固定した部分対角へ還元する。任意可換環の実際の自由相対解像でも検証。
 固定頂点列ごとの Hom 因子の和による表示、DK10.4–10.5の弱不変性、
 左 hammock 射と元の Map^h の高次比較は未完成。
+`ChainCoordinates.equivalence` と `LabelledChainCoordinates.equivalence/equivalence_map`
+は元の全射列を頂点列・隣接 Hom の依存積・両端ラベルへ回収し、底と両係数に自然。
+`FixedVertexChainCoordinates.equivalence/decode_naturality` は元の対象表示を保持する。
+`TwoSidedDiagram.leftLabelsMap/rightLabelsMap/chainRow_map` は部分対角の元の作用素。
+`FixedVertices.iso/chainRowIso/productIso/productsIso` は元の部分対角を
+固定頂点列ごとの内在的な Hom の有限積と両係数の対角の直積の和へ戻す
+全作用素を保つ同型（DK10.6(ii)）。`TwoSidedDiagram.leftTransfunctor/rightTransfunctor`
+が元の係数図式を回収する。`FiniteProduct.map_weak` は空積を含む元の有限積の弱比較。
+任意可換環の実際の自由相対解像・標準の同じ対象表示でも検証。
+元の比較射のこの同型下での照合、DK10.4–10.5の弱不変性、左 hammock 射、
+既存 Map^h の高次比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

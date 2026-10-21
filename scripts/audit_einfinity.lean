@@ -6724,6 +6724,61 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.map_transition,
       `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.transition_weak_iff]
 
+@[noinline] private def e2RequiredBatch105 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.ChainCoordinates.Data,
+      `SerrePositivity.EInfinity.Hammock.ChainCoordinates.equivalence,
+      `SerrePositivity.EInfinity.Hammock.ChainCoordinates.map,
+      `SerrePositivity.EInfinity.Hammock.ChainCoordinates.equivalence_map,
+      `SerrePositivity.EInfinity.Hammock.ChainCoordinates.map_id,
+      `SerrePositivity.EInfinity.Hammock.ChainCoordinates.map_comp,
+      `SerrePositivity.EInfinity.Hammock.FiniteProduct.space,
+      `SerrePositivity.EInfinity.Hammock.FiniteProduct.map,
+      `SerrePositivity.EInfinity.Hammock.FiniteProduct.splitIso,
+      `SerrePositivity.EInfinity.Hammock.FiniteProduct.splitIso_naturality,
+      `SerrePositivity.EInfinity.Hammock.FiniteProduct.emptyIso,
+      `SerrePositivity.EInfinity.Hammock.FiniteProduct.map_weak,
+      `SerrePositivity.EInfinity.Hammock.FixedVertexChainCoordinates.Fiber,
+      `SerrePositivity.EInfinity.Hammock.FixedVertexChainCoordinates.equivalence,
+      `SerrePositivity.EInfinity.Hammock.FixedVertexChainCoordinates.decode,
+      `SerrePositivity.EInfinity.Hammock.FixedVertexChainCoordinates.equivalence_symm_apply,
+      `SerrePositivity.EInfinity.Hammock.FixedVertexChainCoordinates.fiberMap,
+      `SerrePositivity.EInfinity.Hammock.FixedVertexChainCoordinates.decode_naturality,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.mapIso,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.mapIso_hom,
+      `SerrePositivity.EInfinity.Hammock.LabelledChainCoordinates.Fiber,
+      `SerrePositivity.EInfinity.Hammock.LabelledChainCoordinates.equivalence,
+      `SerrePositivity.EInfinity.Hammock.LabelledChainCoordinates.equivalence_apply,
+      `SerrePositivity.EInfinity.Hammock.LabelledChainCoordinates.map,
+      `SerrePositivity.EInfinity.Hammock.LabelledChainCoordinates.equivalence_map,
+      `SerrePositivity.EInfinity.Hammock.LabelledChainCoordinates.cast_fiber,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.leftLabels,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.rightLabels,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.leftLabelsMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.rightLabelsMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.labelCategory,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.labelStep,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.chainRow_map,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.fiberSpace,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.sumIso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.chainRowIso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.factors,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.degreeEquiv,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.map,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.degreeEquiv_symm_map,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.space,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.iso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.baseFunctor,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.left_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.right_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.rightTransfunctor,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.leftTransfunctor,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.homSpace,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.leftSpace,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.rightSpace,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.product,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productIso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productsIso]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6755,7 +6810,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -16107,5 +16162,92 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
         (TwoSidedDiagram.diagonalThomasonMap (Transfunctor.twoSidedDiagram B L T)) := by
   intro C B L T
   exact TwoSidedDiagram.diagonalThomasonMap_isWeakHomotopyEquivalence _
+
+end
+
+noncomputable section
+
+-- 任意長の元の射列を隣接 Hom 座標から厳密に回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (k : ℕ) (c : ComposableArrows C k) :
+    (ChainCoordinates.equivalence k).symm (ChainCoordinates.equivalence k c) = c :=
+  (ChainCoordinates.equivalence k).symm_apply_apply c
+
+-- 底と両係数を同時に動かした元の座標の正方形。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (H : C ⥤ D)
+    {A : Cᵒᵖ ⥤ Type e2ComplexLimitUniverse} {B : C ⥤ Type e2ComplexLimitUniverse}
+    {A' : Dᵒᵖ ⥤ Type e2ComplexLimitUniverse} {B' : D ⥤ Type e2ComplexLimitUniverse}
+    (α : A ⟶ H.op ⋙ A') (β : B ⟶ H ⋙ B') (k : ℕ)
+    (e : ComposableArrows (TwoSidedElements.Element A B) k) :
+    LabelledChainCoordinates.equivalence A' B' k
+      (e ⋙ TwoSidedElements.map α β ⋙ TwoSidedElements.pre H A' B') =
+        LabelledChainCoordinates.map H α β (LabelledChainCoordinates.equivalence A B k e) :=
+  LabelledChainCoordinates.equivalence_map H α β e
+
+-- 固定頂点の表示等式を含む元の復元の自然性。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {O C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (p : O ≃ C) (q : O ≃ D) (H : C ⥤ D)
+    {A : Cᵒᵖ ⥤ Type e2ComplexLimitUniverse} {B : C ⥤ Type e2ComplexLimitUniverse}
+    {A' : Dᵒᵖ ⥤ Type e2ComplexLimitUniverse} {B' : D ⥤ Type e2ComplexLimitUniverse}
+    (α : A ⟶ H.op ⋙ A') (β : B ⟶ H ⋙ B') (hp : ∀ o, H.obj (p o) = q o)
+    (k : ℕ) (x : Fin (k + 1) → O) (v : FixedVertexChainCoordinates.Fiber p A B k x) :
+    FixedVertexChainCoordinates.decode p A B k x v ⋙ TwoSidedElements.map α β ⋙
+        TwoSidedElements.pre H A' B' =
+      FixedVertexChainCoordinates.decode q A' B' k x
+        (FixedVertexChainCoordinates.fiberMap q H α β hp x v) :=
+  FixedVertexChainCoordinates.decode_naturality q H α β hp x v
+
+-- 任意個数の有限 Hom 因子の元の比較射自身の弱同値性。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {k : ℕ} {A B : Fin k → SSet.{e2ComplexLimitUniverse}} (η : ∀ i, A i ⟶ B i)
+    (hη : ∀ i, IsWeakHomotopyEquivalence (η i)) :
+    IsWeakHomotopyEquivalence (FiniteProduct.map η) := FiniteProduct.map_weak η hη
+
+-- 空積も追加条件なく含める。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {A B : Fin 0 → SSet.{e2ComplexLimitUniverse}} (η : ∀ i, A i ⟶ B i) :
+    IsWeakHomotopyEquivalence (FiniteProduct.map η) :=
+  FiniteProduct.map_weak η (fun i => Fin.elim0 i)
+
+-- 全次数で動く元の底でも元の部分対角を Hom 積の和へ厳密に戻す。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (D : SimplicialObject TwoSidedDiagram.Data.{e2ComplexLimitUniverse})
+    {O : Type e2ComplexLimitUniverse} (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
+    (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
+      (D.map θ).base.obj (p n o) = p m o) (k : SimplexCategoryᵒᵖ) :
+    TwoSidedDiagram.chainRow D k ≅
+      IndexedSum.space (TwoSidedDiagram.FixedVertices.product D p hp k) :=
+  TwoSidedDiagram.FixedVertices.productsIso D p hp k
+
+-- 各固定頂点列の元の作用素を、内在的な Hom と両係数の対角で照合する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example (D : SimplicialObject TwoSidedDiagram.Data.{e2ComplexLimitUniverse})
+    {O : Type e2ComplexLimitUniverse} (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
+    (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
+      (D.map θ).base.obj (p n o) = p m o) (k : SimplexCategoryᵒᵖ)
+    (x : Fin (k.unop.len + 1) → O) :
+    TwoSidedDiagram.FixedVertices.fiberSpace D p hp k x ≅
+      TwoSidedDiagram.FixedVertices.product D p hp k x :=
+  TwoSidedDiagram.FixedVertices.productIso D p hp k x
+
+-- 任意可換環の実際の自由相対解像と標準の対象表示をそのまま代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    let B := freeResolutionUnderlyingDiagram C
+    ∀ (L : Transfunctor.Covariant (B ⋙ Cat.opFunctor)) (T : Transfunctor.Covariant B)
+      (k : SimplexCategoryᵒᵖ),
+      let D := Transfunctor.twoSidedDiagram B L T
+      let p := fun n => (freeResolutionObjectEquiv C n).symm
+      let hp := fun {n m} (θ : n ⟶ m) o => freeResolutionObject_naturality C θ o
+      TwoSidedDiagram.chainRow D k ≅
+        IndexedSum.space (TwoSidedDiagram.FixedVertices.product D p hp k) := by
+  intro C B L T k D p hp
+  exact TwoSidedDiagram.FixedVertices.productsIso D p hp k
 
 end

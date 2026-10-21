@@ -1625,3 +1625,14 @@ public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramPartialRows
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramRows
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramTotal
 public import SerrePositivity.EInfinity.Hammock.TwoSidedThomasonTransition
+public import SerrePositivity.EInfinity.Hammock.ChainCoordinates
+public import SerrePositivity.EInfinity.Hammock.FiniteProduct
+public import SerrePositivity.EInfinity.Hammock.FixedVertexChainCoordinates
+public import SerrePositivity.EInfinity.Hammock.IndexedSumIso
+public import SerrePositivity.EInfinity.Hammock.LabelledChainCoordinates
+public import SerrePositivity.EInfinity.Hammock.LabelledChainTransport
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonalLabels
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramFixedVertexFibers
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramFixedVertices
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramTransfunctor
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramVertexProducts
