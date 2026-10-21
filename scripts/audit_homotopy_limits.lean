@@ -11728,3 +11728,75 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @localEquivalences_colimitPrism_source_comparison
 #print axioms localEquivalences_colimitPrism_source_comparison
+
+#check @colimitPrismTotalMap
+#print axioms colimitPrismTotalMap
+
+#check @colimitPrismTotalMap_inl
+#print axioms colimitPrismTotalMap_inl
+
+#check @colimitPrismTotalMap_inr
+#print axioms colimitPrismTotalMap_inr
+
+#check @colimitPrismTotalMap_target
+#print axioms colimitPrismTotalMap_target
+
+#check @colimitPrismInitialTime
+#print axioms colimitPrismInitialTime
+
+#check @colimitPrismInitialTime_inl
+#print axioms colimitPrismInitialTime_inl
+
+#check @colimitPrismInitialTime_inr
+#print axioms colimitPrismInitialTime_inr
+
+#check @colimitPrismComparisonMap
+#print axioms colimitPrismComparisonMap
+
+#check @colimitPrismComparisonMap_inl
+#print axioms colimitPrismComparisonMap_inl
+
+#check @colimitPrismComparisonMap_inr
+#print axioms colimitPrismComparisonMap_inr
+
+#check @colimitPrismComparisonMap_source
+#print axioms colimitPrismComparisonMap_source
+
+#check @colimitPrismComparisonMap_target
+#print axioms colimitPrismComparisonMap_target
+
+#check @colimitPrismDiagram
+#print axioms colimitPrismDiagram
+
+#check @colimitPrismEndpoint
+#print axioms colimitPrismEndpoint
+
+#check @colimitPrismTotalCocone
+#print axioms colimitPrismTotalCocone
+
+#check @colimitPrismTotalCocone_target
+#print axioms colimitPrismTotalCocone_target
+
+#check @colimitPrismTotalCocone_isColimit
+#print axioms colimitPrismTotalCocone_isColimit
+
+#check @colimitPrismComparisonSection
+#print axioms colimitPrismComparisonSection
+
+#check @colimitPrismComparisonSection_uncurry
+#print axioms colimitPrismComparisonSection_uncurry
+
+#check @colimitPrismComparisonSection_source
+#print axioms colimitPrismComparisonSection_source
+
+#check @colimitPrismComparisonSection_target
+#print axioms colimitPrismComparisonSection_target
+
+#check @colimitPrismComparisonEdge
+#print axioms colimitPrismComparisonEdge
+
+#check @colimitPrismComparisonEdge_projection
+#print axioms colimitPrismComparisonEdge_projection
+
+#check @localEquivalences_colimitPrism_apex
+#print axioms localEquivalences_colimitPrism_apex
