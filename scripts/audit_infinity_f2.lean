@@ -1938,3 +1938,23 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.pointedSectionTargetFiber_pointed
 #check @SerrePositivity.InfinityCategories.F2.pointedTriangleTargetFiberEvaluation_pointed
 #check @SerrePositivity.InfinityCategories.F2.coherentFiberSourceRestriction_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.pointedRelativeFiberCurry
+#check @SerrePositivity.InfinityCategories.F2.pointedRelativeFiberCurry_pointed
+#check @SerrePositivity.InfinityCategories.F2.pointedSectionTargetFiber_curry
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismFiberFunctor_heq_direct
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismDirectEndpoint_const
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismDirectFiberOutput
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismDirectFiberOutput_pointed
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismEndpointOutputLift_pointed
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismDirectFiberOutput_eq
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismFiberOutputLift
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismFiberOutputLift_inv
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismFiberOutputFunctor_heq_down_lift
+#check @SerrePositivity.InfinityCategories.F2.coherentPrismFiberOutputLift_pointed
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_evaluate_ι
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorExtensionEndpoint_uncurry_fst
+#check @SerrePositivity.InfinityCategories.F2.smallRelativeFiberHom_pointed
+#check @SerrePositivity.InfinityCategories.F2.downVertexIso_map_iso_cancel
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorUncurry_id_parameter
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorBaseFiberHom_uncurry_ι

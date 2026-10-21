@@ -18,12 +18,27 @@ open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SS
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2
 
+/-- 全相対族の普遍評価をパラメータで制限すると、同じ族の相対 uncurry になる。 -/
+lemma relativeFunctorUncurry_id_parameter {A T E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B)
+    (k : T ⟶ relativeFunctorSpace p a) :
+    (A ◁ k) ≫ relativeFunctorUncurry (𝟙 (relativeFunctorSpace p a)) =
+      relativeFunctorUncurry k := by
+  simpa only [Category.comp_id] using
+    (relativeFunctorUncurry_naturality (𝟙 (relativeFunctorSpace p a)) k).symm
+
 /-- 底が指定点に定値な相対族を、同じ点の fiber に値を持つ関手の族へ移す。 -/
 def relativeFunctorBaseFiberHom {C E B : SSet.{u}}
     (p : E ⟶ B) (a : C ⟶ B) (b : B _⦋0⦌) (ha : a = SSet.const b) :
     relativeFunctorSpace p a ⟶ (ihom C).obj (vertexFiber p b) :=
   curry (vertexFiberLift p b (relativeFunctorUncurry (𝟙 (relativeFunctorSpace p a))) (by
     rw [relativeFunctorUncurry_projection, ha, SSet.comp_const]))
+
+/-- 底が定値な全族を fiber へ移して含めると、元の相対全族を厳密に回収する。 -/
+lemma relativeFunctorBaseFiberHom_uncurry_ι {C E B : SSet.{u}}
+    (p : E ⟶ B) (a : C ⟶ B) (b : B _⦋0⦌) (ha : a = SSet.const b) :
+    uncurry (relativeFunctorBaseFiberHom p a b ha) ≫ vertexFiberι p b =
+      relativeFunctorUncurry (𝟙 (relativeFunctorSpace p a)) := by
+  rw [relativeFunctorBaseFiberHom, uncurry_curry, vertexFiberLift_ι]
 
 /-- 元の実際の射の相対頂点は同じ fiber への持ち上げの関手頂点になる。 -/
 lemma relativeFunctorBaseFiberHom_vertex {C E B : SSet.{u}}
