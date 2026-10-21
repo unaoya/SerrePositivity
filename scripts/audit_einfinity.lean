@@ -4102,6 +4102,65 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.inclusion_localized_isIso,
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.inclusion_isWeakHomotopyEquivalence]
 
+@[noinline] private def e2RequiredBatch46 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.precomp,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.precomp_zigzagFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.sourceFamily,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.sourceFamily_middle_trivial,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.rightReplacement,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.rightUnit,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_left,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_right,
+      `SerrePositivity.EInfinity.Hammock.Word.insertedColumn,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_injective,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_ne_inserted,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_cut_inserted,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_cut_leftVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_cut_rightVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.insertedColumn_direction,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_vertex_cases,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_column_cases,
+      `SerrePositivity.EInfinity.Hammock.Word.insertBetween_range,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.obj,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.obj_leftVertex,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.obj_rightVertex,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.action_leftVertex,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.action_rightVertex,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.obj_arrow_left_heq,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.obj_arrow_right_heq,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.obj_arrow_middle_heq,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.action_arrow_middle_heq,
+      `SerrePositivity.EInfinity.Hammock.InsertBetween.action_obj_eq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.sourceWord,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.wordMap,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.originalFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.originalFunctor_full,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.originalFunctor_faithful,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.originalFunctor_middle_trivial,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.functor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.functor_comp_inclusion,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.functor_full,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.functor_faithful,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.preimageObj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.originalFunctor_obj_preimage,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.rightReplacement_essImage,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.rightReplacement,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.rightReplacementCompIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.underlyingUnit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.unit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.functor_localized_isIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.functor_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.originalFunctor_localized_isIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.originalFunctor_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.graphMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.toErasedData,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.fromErasedData,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.eraseIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.eraseIso_hom_fac,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.erasedGraphMap_localized_isIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.IdentityInsertion.erasedGraphMap_isWeakHomotopyEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4132,7 +4191,7 @@ run_cmd do
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
-      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45] do
+      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -9636,4 +9695,62 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
   let := BarrattEccles.modelCategory A
   dsimp only
   exact TrivialCofibration.inclusion_isWeakHomotopyEquivalence
+    (BarrattEccles.mappingCofibrantFactorization A)
+
+-- 元の WordAction の全対象は、同じ左右の zigzag と中央恒等列の連結に一致する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {a b : Word} {X E Y : C} (S : Zigzag (weakEquivalences C) a X E)
+    (T : Zigzag (weakEquivalences C) b E Y) :
+    WordAction.obj (Word.insertBetween a b .backward) (ZigzagAppend.obj S T) =
+      InsertBetween.obj S T := InsertBetween.action_obj_eq S T
+
+-- 元の第二の包含の nerve は、右置換と実際の unit から弱同値になる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (n m : ℕ) (X Y : C) :
+    IsWeakHomotopyEquivalence (nerveMap
+      (IdentityInsertion.functor (C := C) (n := n) (m := m) (X := X) (Y := Y))) :=
+  IdentityInsertion.functor_isWeakHomotopyEquivalence
+
+-- 第一の包含との合成は、元の同じ語の標準 graph 写像自身の弱同値性を与える。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence
+      ((graphDiagram (weakEquivalences C) X Y).map (IdentityInsertion.wordMap n m)) :=
+  IdentityInsertion.graphMap_isWeakHomotopyEquivalence cof
+
+-- 列の像の照合により、元の eraseInclusion を同じ挿入へ厳密に因子分解する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example (n m : ℕ) : (IdentityInsertion.eraseIso n m).hom ≫
+    Word.eraseInclusion (word n m) (Positions.middleColumn n m) = IdentityInsertion.wordMap n m :=
+  IdentityInsertion.eraseIso_hom_fac n m
+
+-- 左右とも長さ零でも、元の削除語の標準 graph 写像自身が弱同値である。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence ((graphDiagram (weakEquivalences C) X Y).map
+      (Word.eraseInclusion (word 0 0) (Positions.middleColumn 0 0))) :=
+  IdentityInsertion.erasedGraphMap_isWeakHomotopyEquivalence cof
+
+-- 任意可換環の実際のモデルと同じ既存の分解から、元の eraseInclusion の結論を得る。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    let := BarrattEccles.modelCategory A
+    IsWeakHomotopyEquivalence ((graphDiagram (weakEquivalences (BarrattEccles.operad A).Algebra)
+      X Y).map (Word.eraseInclusion (word n m) (Positions.middleColumn n m))) := by
+  let := BarrattEccles.modelCategory A
+  dsimp only
+  exact IdentityInsertion.erasedGraphMap_isWeakHomotopyEquivalence
     (BarrattEccles.mappingCofibrantFactorization A)

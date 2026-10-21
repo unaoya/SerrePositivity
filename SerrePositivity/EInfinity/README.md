@@ -1335,9 +1335,19 @@ backward 一列ずつを両端に付け、`paddingInclusionNat` は元の中央�
 `replacement`・`counit` は同じ元の包含と元の恒等図式に対する関手的置換。
 `inclusion_localized_isIso`・`inclusion_isWeakHomotopyEquivalence` はその包含自身の
 nerve の反転性・弱ホモトピー同値性。同じ指定分解から、長さ零も含めて証明する。
-恒等列の挿入を扱う第二工程、元の任意の prefix/suffix への貼り合わせ、
-成分と三列の包含の弱同値性、DK Hom の高次比較は後続。
-第一の全部分圏の比較だけで、元の恒等列の挿入の弱同値性を完成としない。
+`Word.insertBetween` は二つの元の語の間に一列だけを挿入する元の単射。
+`InsertBetween.action_obj_eq` はその WordAction と、同じ左右の zigzag の間に
+恒等列を置いた実際の対象の厳密な一致。元の cut・全頂点・全列で検証する。
+`MiddleBackward.IdentityInsertion` は元の中央 backward 挿入と全部分圏への持ち上げ。
+`preimageObj`・`originalFunctor_obj_preimage` は右置換の各対象の実際の前像。
+`rightReplacement`・`rightReplacementCompIso` は全忠実性による関手の持ち上げ。
+`unit` から第二の包含を反転し、第一の包含との合成により
+`graphMap_isWeakHomotopyEquivalence` は元の graphDiagram.map 自身の弱同値性を得る。
+`eraseIso`・`eraseIso_hom_fac` は元の eraseInclusion と同じ列の像による因子分解。
+`erasedGraphMap_isWeakHomotopyEquivalence` はその元の削除語の標準射の弱同値性。
+両端 backward・二つの任意長の forward ブロックの間の中央列について証明済み。
+元の任意の prefix/suffix への貼り合わせ、全語の成分と三列の包含の弱同値性、
+DK Hom の高次比較は後続。局所端点が動く場合の全体への接続を省略しない。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
