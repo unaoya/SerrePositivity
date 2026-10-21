@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveAugmentationHom
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedUnitInclusion
+import SerrePositivity.InfinityCategories.Derived.DGResolvedProjectiveVertex
+import SerrePositivity.InfinityCategories.Derived.DGResolutionAugmentationRetract
 import SerrePositivity.InfinityCategories.Derived.DeformationHomNaturality
 import SerrePositivity.InfinityCategories.Derived.DeformationCompositionSquare
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositorCoherence
@@ -4473,6 +4477,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveAugmentationHom,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedUnitInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGResolvedProjectiveVertex,
+    `SerrePositivity.InfinityCategories.Derived.DGResolutionAugmentationRetract,
+
     `SerrePositivity.InfinityCategories.Derived.DeformationHomNaturality,
     `SerrePositivity.InfinityCategories.Derived.DeformationCompositionSquare,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositorCoherence,
