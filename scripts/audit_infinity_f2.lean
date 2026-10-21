@@ -2103,3 +2103,35 @@ run_cmd do
 
 #check @SerrePositivity.InfinityCategories.F2.kanSpecifiedIntervalLiftEndpointIso
 #check @SerrePositivity.InfinityCategories.F2.kanSpecifiedIntervalLiftEndpoint_homotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelNativeComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelNativeComparison_left
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelNativeComparison_right
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelNativeRightIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelNativeLeftIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeIntervalComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeIntervalComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectificationPath
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectificationPath_projection
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectificationPath_source
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectification
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectification_over
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectificationIso
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectification_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementProjection_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalCospanLeft_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalCospanHomotopy
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalCospanLeft
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalCospanLeft_over
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalCospanLeftIso
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalCospanComparison
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalPullbackComparison
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalPullbackComparison_left
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalPullbackComparison_right
+#check @SerrePositivity.InfinityCategories.F2.liftedIntervalPullbackComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackMap_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.uliftMap_fibration
+#check @SerrePositivity.InfinityCategories.F2.uliftFunctor_preservesCospanLimits
+#check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso
+#check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso_fst
+#check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso_snd

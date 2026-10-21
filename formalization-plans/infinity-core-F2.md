@@ -49,8 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   任意の有限標的射の二入力を、共通の元の境界円柱を保って元の fiber へ同時に輸送・反映し、実際の比較射への相対有限検出・持ち上げを構成。値の射の境界と全比較円柱の制限を厳密に保持。
   任意の Kan 境界で相対持ち上げを構成し、境界移動を除去。元の全空間 Kan 引き戻し比較の弱同値性・ホモトピー逆を全標準境界の path 置換充填から証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較の頂点辺・恒等図式辺を持つ全錐比較と各脚の h での自然性を保持。
-  一般 coherent 図式の元の全空間余錐の native 余極限性と、filtered 図式の元の Kan 積・引き戻し比較の弱同値性を証明。各点の native 極限錐から元の pointed 切断族への比較同値を構成。切断空間を二辺の切断の共通終点での厳密な引き戻しへ表示し、始点の自明 Kan 性・終点の Kan fibration 性を証明。同じ全三角形から二脚の指定同型と指定 path の下降の型付き等式を保持。実 fiber cospan から切断 cospan への厳密な自然変換を構成し、その全成分と end 比較はホモトピー同値。元の同じ切断族から切断 end への実比較も各点の極限性から同値。入力 fiber の射影表示の同型で実模型比較を正規化し、二脚と全 path を厳密に保持。任意の Kan cospan と interval 引き戻しを左脚置換後の同じ end への実ホモトピー同値で比較。厳密な引き戻しの end 比較の自然性・同値判定、全区間 path と端点を保つ Kan 持ち上げ・終点同値も証明。未完：この持ち上げと指定 path の整合による実模型 fiber 比較の同値性への移送、一般の有限極限交換・Ind。
-  三集約同時ビルド 8479 jobs、公理監査 7219 宣言・同時 import 成功。入力 fiber の表示同型・正規化の二脚と全 path・interval 引き戻しの end 表示・end の自然性と同値判定・指定 path 持ち上げの追加35宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
+  一般 coherent 図式の元の全空間余錐の native 余極限性と、filtered 図式の元の Kan 積・引き戻し比較の弱同値性を証明。各点の native 極限錐から元の pointed 切断族への比較同値を構成。切断空間を二辺の切断の共通終点での厳密な引き戻しへ表示し、始点の自明 Kan 性・終点の Kan fibration 性を証明。同じ全三角形から二脚の指定同型と指定 path の下降の型付き等式を保持。実 fiber cospan から切断 cospan への厳密な自然変換を構成し、その全成分と end 比較はホモトピー同値。元の同じ切断族から切断 end への実比較も各点の極限性から同値。入力 fiber の射影表示の同型で実模型比較を正規化し、二脚と全 path を厳密に保持。任意の Kan cospan と interval 引き戻しを左脚置換後の同じ end への実ホモトピー同値で比較。厳密な引き戻しの end 比較の自然性・同値判定、全区間 path と端点を保つ Kan 持ち上げ・終点同値も証明。宇宙持ち上げが Kan fibration と厳密な引き戻しの二射影を保つことから、小さい実 fiber の interval 模型を持ち上げて native 切断の厳密な引き戻しへ送る具体的な比較とホモトピー同値性を証明。元の模型比較をこの比較へ合成し、同じ native な二脚との指定関手同型を構成。未完：二つの指定同型の共通終点での整合を元の指定 path から示し、引き戻し全体へ貼り合わせて実模型 fiber 比較へ同値性を移すこと、一般の有限極限交換・Ind。
+  三集約同時ビルド 8510 jobs、公理監査 7417 宣言・同時 import 成功。宇宙持ち上げの Kan fibration・引き戻し保存、元の全 path の厳密化、実 fiber interval 模型から切断模型への比較同値、元の模型との合成と二脚の指定同型の追加31宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -102,7 +102,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：入力 fiber の表示同型と元の二脚・全 path を保つ正規化、左脚置換後の end への共通同値模型まで検証済み。次は元の interval path を native 切断の左終点 fibration に沿って持ち上げ、実模型から切断の厳密な引き戻しへの具体的な比較を作る。kanSpecifiedIntervalLift とその終点同値、strictKanPullbackEndComparison の自然性・同値判定を使う。coherentCospanNativeLeft/RightFiberSectionsIso と coherentCospanModelFiberPathIso_eq_section_down で同じ元の比較との整合を証明し、実模型 fiber 比較の同値性へ移す。その後一般の有限極限交換、Indκ。
+- F2N-1：coherentCospanNativeIntervalComparison は元の小さい interval 模型の持ち上げから native 切断の厳密な引き戻しへの具体的なホモトピー同値。元の模型との合成 coherentCospanModelNativeComparison と、同じ native な二脚との coherentCospanModelNativeLeftIso・RightIso まで検証済み。次は二つの同型を f・g で写した像の整合を、kanHomotopyRectificationPath_projection と coherentCospanModelFiberPathIso_eq_section_down から、明示した端点補正の下で証明する。その整合から F1B.exists_kanHomotopyRepresentative_lift で左ホモトピーの底の代表を右と厳密に揃え、引き戻し全体の関手同型を構成して元の模型比較へ同値性を移す。二脚の同型だけで全体の同値性を結論しない。その後一般の有限極限交換、Indκ。
   元の指定 path と境界の全円柱を保持し、有限写像空間の π₀ の全射性だけで弱同値性を結論しない。
 
 ## 0. 目標と範囲
@@ -169,7 +169,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   任意の Kan 始域境界への相対持ち上げと、その境界を厳密に固定する補正を構成。
   全標準境界の path 置換終点の自明 Kan 性から、元の比較の弱同値性と単体的ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成し、全錐の可逆比較・元の比較の頂点辺・恒等図式辺・各脚の自然性を保持。
-  一般 coherent 図式の元の全空間余錐の native 余極限性と、filtered 図式の元の Kan 積・引き戻し比較の弱同値性を証明。各点の native 極限錐から元の pointed 切断族への比較同値を構成。切断空間を二辺の切断の共通終点での厳密な引き戻しへ表示し、始点の自明 Kan 性・終点の Kan fibration 性を証明。同じ全三角形から二脚の指定同型と指定 path の下降の型付き等式を保持。実 fiber cospan から切断 cospan への厳密な自然変換を構成し、その全成分と end 比較はホモトピー同値。元の同じ切断族から切断 end への実比較も各点の極限性から同値。入力 fiber の射影表示の同型で実模型比較を正規化し、二脚と全 path を厳密に保持。任意の Kan cospan と interval 引き戻しを左脚置換後の同じ end への実ホモトピー同値で比較。厳密な引き戻しの end 比較の自然性・同値判定、全区間 path と端点を保つ Kan 持ち上げ・終点同値も証明。未完：この持ち上げと指定 path の整合による実模型 fiber 比較の同値性への移送、一般の有限極限交換・Ind。
+  一般 coherent 図式の元の全空間余錐の native 余極限性と、filtered 図式の元の Kan 積・引き戻し比較の弱同値性を証明。各点の native 極限錐から元の pointed 切断族への比較同値を構成。切断空間を二辺の切断の共通終点での厳密な引き戻しへ表示し、始点の自明 Kan 性・終点の Kan fibration 性を証明。同じ全三角形から二脚の指定同型と指定 path の下降の型付き等式を保持。実 fiber cospan から切断 cospan への厳密な自然変換を構成し、その全成分と end 比較はホモトピー同値。元の同じ切断族から切断 end への実比較も各点の極限性から同値。入力 fiber の射影表示の同型で実模型比較を正規化し、二脚と全 path を厳密に保持。任意の Kan cospan と interval 引き戻しを左脚置換後の同じ end への実ホモトピー同値で比較。厳密な引き戻しの end 比較の自然性・同値判定、全区間 path と端点を保つ Kan 持ち上げ・終点同値も証明。宇宙持ち上げが Kan fibration と厳密な引き戻しの二射影を保つことから、小さい実 fiber の interval 模型を持ち上げて native 切断の厳密な引き戻しへ送る具体的な比較とホモトピー同値性を証明。元の模型比較をこの比較へ合成し、同じ native な二脚との指定関手同型を構成。未完：二つの指定同型の共通終点での整合を元の指定 path から示し、引き戻し全体へ貼り合わせて実模型 fiber 比較へ同値性を移すこと、一般の有限極限交換・Ind。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -179,7 +179,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：F2N-1。入力 fiber の表示同型と元の二脚・全 path を保つ正規化、左脚置換後の end への共通同値模型まで検証済み。次は元の interval path を native 切断の左終点 fibration に沿って持ち上げ、実模型から切断の厳密な引き戻しへの具体的な比較を作る。kanSpecifiedIntervalLift とその終点同値、strictKanPullbackEndComparison の自然性・同値判定を使う。coherentCospanNativeLeft/RightFiberSectionsIso と coherentCospanModelFiberPathIso_eq_section_down で同じ元の比較との整合を証明し、実模型 fiber 比較の同値性へ移す。その後一般の有限極限交換、Indκ。
+- 次の一手：F2N-1：coherentCospanNativeIntervalComparison は元の小さい interval 模型の持ち上げから native 切断の厳密な引き戻しへの具体的なホモトピー同値。元の模型との合成 coherentCospanModelNativeComparison と、同じ native な二脚との coherentCospanModelNativeLeftIso・RightIso まで検証済み。次は二つの同型を f・g で写した像の整合を、kanHomotopyRectificationPath_projection と coherentCospanModelFiberPathIso_eq_section_down から、明示した端点補正の下で証明する。その整合から F1B.exists_kanHomotopyRepresentative_lift で左ホモトピーの底の代表を右と厳密に揃え、引き戻し全体の関手同型を構成して元の模型比較へ同値性を移す。二脚の同型だけで全体の同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
