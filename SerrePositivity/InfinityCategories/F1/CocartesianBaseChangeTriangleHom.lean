@@ -27,6 +27,14 @@ def cocartesianBaseChangeTriangleHomSpace : SSet.{u + 1} :=
     ((cocartesianBaseChangeEquivalenceTriangle l k).app _ (coherentNerveVertex p))
     ((cocartesianBaseChangeEquivalenceTriangle l k).app _ (coherentNerveVertex q))
 
+/-- 元の二つの可逆比較三角形の間の同じ Hom は Kan 複体。 -/
+instance cocartesianBaseChangeTriangleHomSpace_kanComplex :
+    KanComplex (cocartesianBaseChangeTriangleHomSpace l k p q) := by
+  change KanComplex (intervalMappingSpace
+    ((cocartesianBaseChangeEquivalenceTriangle l k).app _ (coherentNerveVertex p))
+    ((cocartesianBaseChangeEquivalenceTriangle l k).app _ (coherentNerveVertex q)))
+  infer_instance
+
 /-- 元の全相対 Hom を、同じ比較三角形の Hom へ写す。 -/
 def cocartesianBaseChangeTriangleHomComparison :
     (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom p q) ⟶
