@@ -1,0 +1,50 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryIso
+
+/-!
+概要：実 pullback 正方形は cospan 制限の上で全終点境界を充填する。
+方針：正方形と join 錐の実同型により、極限錐の相対境界充填を移す。
+規約：安定性や全 pullback の存在は不要。使われ方：cartesian 辺の最終外ホーン充填。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+namespace SerrePositivity.KST.LocalizingInvariants
+
+lemma squareConeDiagramIso_restriction (X : SSet.{u}) :
+    (squareConeDiagramIso X).hom ≫ coneRestriction (horn 2 2 : SSet.{u}) X =
+      (pre cospanSquareBoundary).app X := by
+  change (pre cospanConeSquareIso.hom).app X ≫
+    (pre (joinInr Δ[0] (horn 2 2))).app X = _
+  rw [← NatTrans.comp_app, ← pre_map]
+  rfl
+
+lemma pullbackSquare_terminalBoundaryLifting {X : SSet.{u}} [Quasicategory X]
+    (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : IsPullbackSquare R) :
+    TerminalBoundaryLifting ((pre cospanSquareBoundary).app X) (functorVertex R) := by
+  let e := squareConeDiagramIso X
+  let q := (pre cospanSquareBoundary).app X
+  let p := coneRestriction (horn 2 2 : SSet.{u}) X
+  have hq : e.hom ≫ p = q := squareConeDiagramIso_restriction X
+  have hi : e.inv ≫ q = p ≫ (Iso.refl _).hom := by
+    rw [Iso.refl_hom, Category.comp_id]
+    calc
+      e.inv ≫ q = e.inv ≫ (e.hom ≫ p) := congrArg (fun k => e.inv ≫ k) hq.symm
+      _ = p := by rw [← Category.assoc, Iso.inv_hom_id, Category.id_comp]
+  have hc := terminalBoundaryLifting_coneRestriction_of_isLimitCone (pullbackCone R) hR
+  have h := hc.map_iso e.symm (Iso.refl _) hi
+  have hv : e.inv.app (Opposite.op ⦋0⦌) (functorVertex (pullbackCone R).val) =
+      functorVertex R := by
+    change functorVertex (cospanConeSquareIso.inv ≫ cospanConeSquareIso.hom ≫ R) = _
+    rw [← Category.assoc, Iso.inv_hom_id, Category.id_comp]
+  exact hv ▸ h
+
+end SerrePositivity.KST.LocalizingInvariants

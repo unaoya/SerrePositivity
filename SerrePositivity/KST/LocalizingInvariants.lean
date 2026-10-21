@@ -227,4 +227,14 @@ public import SerrePositivity.KST.LocalizingInvariants.TammeSpanBaseChangeLift
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeOreSpanLift
 
+public import SerrePositivity.KST.LocalizingInvariants.PullbackTerminalBoundary
+
+public import SerrePositivity.KST.LocalizingInvariants.PullbackRelativeExtension
+
+public import SerrePositivity.KST.LocalizingInvariants.FinalHornMissingVertices
+
+public import SerrePositivity.KST.LocalizingInvariants.FinalHornContraction
+
+public import SerrePositivity.KST.LocalizingInvariants.PullbackFinalHornExtension
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
