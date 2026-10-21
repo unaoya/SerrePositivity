@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeRawFunctorExact
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedZeroObjects
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedHomTargetComparison
+import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryHomTarget
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationProjections
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomTargetSpace
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationUnlifted
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetQuasiIsoInversion
+import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelGraphComparison
 import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelMoritaInfinity
 import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelEssentialSurjectivity
 import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelInclusion
@@ -3827,6 +3836,15 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeRawFunctorExact,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedZeroObjects,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedHomTargetComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryHomTarget,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationProjections,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomTargetSpace,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationUnlifted,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetQuasiIsoInversion,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelGraphComparison,
     `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelMoritaInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelEssentialSurjectivity,
     `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelInclusion,
