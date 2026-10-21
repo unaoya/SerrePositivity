@@ -56,6 +56,27 @@ def simplicialSSetDiagramForget : SimplicialSSetDiagram.{u} ⥤ SimplicialObject
   map_id _X := rfl
   map_comp _f _g := rfl
 
+/-- 内側の標準 end の Hom から、同じ一段の元の内部 Hom への実射影。 -/
+def simplicialSSetDiagramProjection (X Y : SimplicialSSetDiagram.{u})
+    (n : SimplexCategoryᵒᵖ) :
+    (X ⟶[SSet.{u}] Y) ⟶ (ihom (X.diagram.obj n)).obj (Y.diagram.obj n) :=
+  Enriched.FunctorCategory.enrichedHomπ SSet X.diagram Y.diagram n
+
+/-- 図式全体の豊穣 Hom の射は、元の全ての段への射影で一意に定まる。 -/
+lemma simplicialSSetDiagramHom_ext {P : SSet.{u}} {X Y : SimplicialSSetDiagram.{u}}
+    {f g : P ⟶ (X ⟶[SSet.{u}] Y)}
+    (h : ∀ n, f ≫ simplicialSSetDiagramProjection X Y n =
+      g ≫ simplicialSSetDiagramProjection X Y n) : f = g := by
+  apply Limits.end_.hom_ext
+  exact h
+
+/-- 元の通常の自然変換の豊穣表示は、各段で同じ元の成分の curry を回収する。 -/
+lemma simplicialSSetDiagramHomEquiv_projection {X Y : SimplicialSSetDiagram.{u}}
+    (f : X ⟶ Y) (n : SimplexCategoryᵒᵖ) :
+    eHomEquiv SSet.{u} f ≫ simplicialSSetDiagramProjection X Y n =
+      curry' ((show X.diagram ⟶ Y.diagram from f).app n) :=
+  Enriched.FunctorCategory.homEquiv_apply_π SSet f n
+
 /-- 全高次比較の評価自然性は、同じ内部 Hom の前後合成の自然性と一致する。 -/
 lemma quasicategoryEnrichedComparison_internal_naturality
     {C : Type v} [Category.{u} C] [SimplicialCategory C]

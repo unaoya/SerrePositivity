@@ -67,4 +67,10 @@ def simplicialEnrichedDiagramFunctor : EnrichedFunctor SSet.{u} C SimplicialSSet
     erw [simplicialEnrichedDiagramHom_projection, simplicialEnrichedDiagramHom_projection]
     exact (D.obj n).map_comp X Y Z
 
+/-- 図式全体への豊穣作用は、標準の内側の射影で同じ段の全入力族を回収する。 -/
+lemma simplicialEnrichedDiagramFunctor_projection (X Y : C) (n : SimplexCategoryᵒᵖ) :
+    (simplicialEnrichedDiagramFunctor D).map X Y ≫ simplicialSSetDiagramProjection
+      ((simplicialEnrichedDiagramFunctor D).obj X) ((simplicialEnrichedDiagramFunctor D).obj Y) n =
+        (D.obj n).map X Y := simplicialEnrichedDiagramHom_projection D X Y n
+
 end SerrePositivity.KST.SConstruction
