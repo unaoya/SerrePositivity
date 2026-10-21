@@ -365,7 +365,21 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceSquare,
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceRectangle,
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceOuter,
-    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceValuePullback]
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceValuePullback,
+    `SerrePositivity.KST.LocalizingInvariants.DiagramVertexPaths,
+    `SerrePositivity.KST.LocalizingInvariants.VertexIsoPath,
+    `SerrePositivity.KST.LocalizingInvariants.DiagramVertexTransport,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductSquare,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductMap,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponentValues,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueEdges,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowCompositionCancellation,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductEdgeClasses,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductInclusion,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductCone]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
