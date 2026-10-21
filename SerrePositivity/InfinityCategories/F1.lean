@@ -1868,3 +1868,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomSect
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomTransport
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianZeroCellHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianUnderMapMono
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportFibration
+
+public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingNaturality
+
+public import SerrePositivity.InfinityCategories.F1.StrictIntervalMappingSimplex
+
+public import SerrePositivity.InfinityCategories.F1.StrictIntervalMappingLift
+
+public import SerrePositivity.InfinityCategories.F1.StrictIntervalMappingPullback
