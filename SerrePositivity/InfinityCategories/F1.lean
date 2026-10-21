@@ -2769,3 +2769,13 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSourceR
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoCellHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTriangleImageDetection
+
+public import SerrePositivity.InfinityCategories.F1.ScaffoldNerveBridgeEdgeImages
+
+public import SerrePositivity.InfinityCategories.F1.ScaffoldNerveBridgeTriangles
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldBridgeRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldBridgeCoreRestriction
