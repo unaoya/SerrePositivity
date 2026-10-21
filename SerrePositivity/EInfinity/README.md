@@ -1911,6 +1911,16 @@ DK2.4による元の左 hammock 比較への移送と Map^h の高次比較は�
 `grothendieck_map_isWeakHomotopyEquivalence` と
 `rightCoefficientMap_isWeakHomotopyEquivalence` は Thomason 比較による右係数の不変性。
 左係数の同じ射の不変性、単体的な底の変更、元の hammock graph への代入は後続。
+`NerveWeakTransport` は元の圏同値と反対関手の nerve の弱同値を保持する。
+`TwoSidedGrothendieck.leftCoefficientMap_dualFunctor` は元の左比較と左右交換後の右比較の可換式。
+`leftCoefficientMap_isWeakHomotopyEquivalence/coefficientMap_isWeakHomotopyEquivalence`
+は元の両係数比較関手自身の弱同値性（DK9.6）。
+`TwoSidedElements` と `TwoSidedLabelledChain` は元の全射列を底の列・終点の左ラベル・
+始点の右ラベルから厳密に復元し、全単体作用素・両係数の射に両立する。
+`TwoSidedBar.rowIso/rowIso_naturality` は元の各行と両端因子の直積の依存和との同型。
+`TwoSidedBar.map_isWeakHomotopyEquivalence` は元の二方向 bar の対角射自身の両係数不変性。
+`DoubleSimplicial.diagonalFunctor_map_weak_of_columns` は同じ対角射への列ごとの弱判定。
+DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hammock graph への代入は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
