@@ -21221,3 +21221,75 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexSubsetErase_cube_factor
 #check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaErase_zero_face
 #print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaErase_zero_face
+#check @SerrePositivity.KST.SConstruction.necklaceBeadRefinement
+#print axioms SerrePositivity.KST.SConstruction.necklaceBeadRefinement
+#check @SerrePositivity.KST.SConstruction.necklaceBeadRefinement_vertex
+#print axioms SerrePositivity.KST.SConstruction.necklaceBeadRefinement_vertex
+#check @SerrePositivity.KST.SConstruction.necklaceBeadRefinement_triangle
+#print axioms SerrePositivity.KST.SConstruction.necklaceBeadRefinement_triangle
+#check @SerrePositivity.KST.SConstruction.necklaceBeadRefinement_boolean
+#print axioms SerrePositivity.KST.SConstruction.necklaceBeadRefinement_boolean
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementNonjoint
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementNonjoint
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementNonjoint_val
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementNonjoint_val
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementNonjoint_range
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementNonjoint_range
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementCoordinateFun
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementCoordinateFun
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate_recovery
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate_recovery
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate_strictMono
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate_strictMono
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate_range
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate_range
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate_numeric
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementCoordinate_numeric
+#check @SerrePositivity.KST.SConstruction.concreteCube_face_of_coordinate_embedding
+#print axioms SerrePositivity.KST.SConstruction.concreteCube_face_of_coordinate_embedding
+#check @SerrePositivity.KST.SConstruction.necklaceRefinement_joint_iff
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinement_joint_iff
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate_eq_iff
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate_eq_iff
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate_range
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate_range
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate_one
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate_one
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate_codimension
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementMissingCoordinate_codimension
+#check @SerrePositivity.KST.SConstruction.necklaceRefinement_cube_one_face
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinement_cube_one_face
+#check @SerrePositivity.KST.SConstruction.necklaceRefinement_cube_factor
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinement_cube_factor
+#check @SerrePositivity.KST.SConstruction.necklaceRefinement_serre_one_face
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinement_serre_one_face
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeBead_joints
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeBead_joints
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeBeadSeam
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeBeadSeam
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeBeadRefinement
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeBeadRefinement
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeBeadRefinement_vertex
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeBeadRefinement_vertex
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeBead_codimension
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeBead_codimension
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeBeadRefinement_one_face
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeBeadRefinement_one_face
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeBeadRefinement_serre_one_face
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeBeadRefinement_serre_one_face
+#check @SerrePositivity.KST.SConstruction.necklaceInStandardSimplex
+#print axioms SerrePositivity.KST.SConstruction.necklaceInStandardSimplex
+#check @SerrePositivity.KST.SConstruction.necklaceInBeadRefinement
+#print axioms SerrePositivity.KST.SConstruction.necklaceInBeadRefinement
+#check @SerrePositivity.KST.SConstruction.necklaceInBeadRefinement_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceInBeadRefinement_cell
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell_comparison
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell_comparison
+#check @SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell_one_face
+#print axioms SerrePositivity.KST.SConstruction.necklaceRefinementLambdaCell_one_face

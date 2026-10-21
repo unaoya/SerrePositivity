@@ -1627,4 +1627,13 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetEraseCoordinates
 public import SerrePositivity.KST.SConstruction.SimplexSubsetEraseZeroFace
 public import SerrePositivity.KST.SConstruction.SimplexSubsetEraseNormalizedFace
 public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaEraseFace
+public import SerrePositivity.KST.SConstruction.NecklaceBeadRefinement
+public import SerrePositivity.KST.SConstruction.NecklaceRefinementNonjoint
+public import SerrePositivity.KST.SConstruction.NecklaceRefinementCoordinates
+public import SerrePositivity.KST.SConstruction.ConcreteCubeFaceCriterion
+public import SerrePositivity.KST.SConstruction.NecklaceRefinementMissingCoordinate
+public import SerrePositivity.KST.SConstruction.NecklaceRefinementOneFace
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeBeadOneFace
+public import SerrePositivity.KST.SConstruction.NecklaceRefinementInSimplex
+public import SerrePositivity.KST.SConstruction.NecklaceRefinementLambdaCell
 /-! # ∞-S• 構成と連結 K 理論 -/
