@@ -2683,3 +2683,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.functorPairRight_vertex
 #check @SerrePositivity.InfinityCategories.F2.functorIsoLiftRight
 #check @SerrePositivity.InfinityCategories.F2.pointedValueFamilyTransportIso
+
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomEvaluation
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomTransport
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomEvaluation_curry
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomTransport_curry
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomActionIso
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangleCoefficient
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangleEvaluationDiagram
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangle_naturality
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomEvaluation_vertex
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityTriangleIso_uliftHomotopy
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangleEvaluationEdge
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangleEvaluationEdge_eq
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangleEvaluationEdge_hom
+#check @SerrePositivity.InfinityCategories.F2.edgeIsoSquare_ofEq
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomActionAt
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangle_square
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangleTransportIso
+#check @SerrePositivity.InfinityCategories.F2.pointedValueTriangle_isoSquare
