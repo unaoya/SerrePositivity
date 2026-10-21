@@ -19166,3 +19166,115 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_leftUnit_retraction
 #check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_rightUnit_retraction
 #print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_rightUnit_retraction
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_tensorMap
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_tensorMap
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_id
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_id
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_comp
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_comp
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_keep
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_keep
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_face_zero
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_face_zero
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_degeneracy_zero
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_degeneracy_zero
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_connection_zero
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightBlockHom_connection_zero
+#check @SerrePositivity.KST.SConstruction.concreteCubeTensorMap_face_zero
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeTensorMap_face_zero
+#check @SerrePositivity.KST.SConstruction.concreteCubeTensorMap_degeneracy_zero
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeTensorMap_degeneracy_zero
+#check @SerrePositivity.KST.SConstruction.concreteCubeTensorMap_connection_zero
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeTensorMap_connection_zero
+#check @SerrePositivity.KST.SConstruction.concreteCubeTensorMap_rightKeep
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeTensorMap_rightKeep
+#check @SerrePositivity.KST.SConstruction.concreteCubeTensorMap_right_comp
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeTensorMap_right_comp
+#check @SerrePositivity.KST.SConstruction.concreteCubeTensorMap_factor
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeTensorMap_factor
+#check @SerrePositivity.KST.SConstruction.monoidalRightBlock_insert
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightBlock_insert
+#check @SerrePositivity.KST.SConstruction.monoidalRightBlock_delete
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightBlock_delete
+#check @SerrePositivity.KST.SConstruction.monoidalRightBlock_multiply
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightBlock_multiply
+#check @SerrePositivity.KST.SConstruction.monoidalRightBlock_multiply_comparison
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightBlock_multiply_comparison
+#check @SerrePositivity.KST.SConstruction.monoidalRightBlock_multiply_iso
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightBlock_multiply_iso
+#check @SerrePositivity.KST.SConstruction.monoidalRightBlock_keep
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightBlock_keep
+#check @SerrePositivity.KST.SConstruction.monoidalRightBlock_keep_comparison
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightBlock_keep_comparison
+#check @SerrePositivity.KST.SConstruction.monoidalRightBlock_comp
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightBlock_comp
+#check @SerrePositivity.KST.SConstruction.monoidalBlocks_paste
+#print axioms SerrePositivity.KST.SConstruction.monoidalBlocks_paste
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap_map
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap_map
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap_id
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap_id
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap_comp
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap_comp
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap_face
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap_face
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap_degeneracy
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap_connection
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap_connection
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_face
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_face
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_degeneracy
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_connection
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_connection
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlock_keep_evaluation
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlock_keep_evaluation
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap_keep
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap_keep
+#check @SerrePositivity.KST.SConstruction.serreCubeTensor_rightKeep_step
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensor_rightKeep_step
+#check @SerrePositivity.KST.SConstruction.SerreCubeRightBlockNatural
+#print axioms SerrePositivity.KST.SConstruction.SerreCubeRightBlockNatural
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_of_evaluations
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_of_evaluations
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_keep
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_keep
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_id
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_id
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_comp
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_comp
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_face_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_face_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_degeneracy_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_degeneracy_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_connection_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_connection_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeTensor_rightFace_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensor_rightFace_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeTensor_rightDegeneracy_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensor_rightDegeneracy_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeTensor_rightConnection_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensor_rightConnection_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorHom_id
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorHom_id
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorHom_comp
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorHom_comp
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorIso_succ_hom
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorIso_succ_hom
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorIso_naturality_canonical
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorIso_naturality_canonical
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorIso_naturality
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeTensorNatIso
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeTensorNatIso
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_generated
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_generated
+#check @SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_all
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_all
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorIso_tensorMap_naturality_right
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorIso_tensorMap_naturality_right
