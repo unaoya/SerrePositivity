@@ -1695,3 +1695,10 @@ public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardForwardDiagram
 public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardForwardRightCoherence
 public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnHomWeak
 public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnObjects
+public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnForwardStep
+public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnLeftDiagram
+public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnLeftGraph
+public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnLeftWeak
+public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnRightWeak
+public import SerrePositivity.EInfinity.Hammock.WordSingleCons
+public import SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryEqToHom

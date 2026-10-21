@@ -2023,7 +2023,16 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `freeFirstMarkedObjectEquiv` は元の全自由次数の指定部分圏の対象表示と全作用素の回収。
 `freeFirstSourceHomIso_augmentation/freeFirstHomSpaceMap_weak` は底の元の固定 Hom 比較と
 既存の native 指定 Hom augmentation の正方形による同じ比較射自身の弱同値性。
-右係数の元の Hom 比較と、残りの語の左係数・他の向きへの移送は後続。
+他の向きと全語の帰納、左 hammock 射全体の弱比較は後続。
+`FirstColumn.freeFirstRightSpaceIso_augmentation/freeFirstRightSpaceMap_weak` は
+元の右係数の対角を同じ通常の Hom augmentation に回収し、同じ右射の弱同値性を証明。
+`freeFirstLeftCategoryDiagramIso/freeFirstLeftSpaceIso_augmentation/freeFirstLeftSpaceMap_weak`
+は元の左係数・全作用素・対角を残りの語の元の Word augmentation 自身へ回収する。
+`freeWordDiagonalAugmentation_forwardForward_weak/cons_forwardForward_weak` は底と右の
+具体的な弱同値性を二方向定理へ渡し、残りの語だけを帰納仮定として前向き二列の段階を閉じる。
+`Word.single_append_eq_cons/cons_empty` は元の連結と帰納の表示を厳密に照合。
+`freeWordDiagonalAugmentation_twoForward_weak` は同じ元の二列の左射の無条件の弱同値性。
+任意可換環の実モデルで二列・三列への適用も検証。他の向きと全語への移送は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

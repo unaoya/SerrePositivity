@@ -7040,6 +7040,30 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstMarkedObjectEquiv_naturality,
       `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstMarkedObjectEquiv_augmentation]
 
+@[noinline] private def e2RequiredBatch112 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_forwardForward_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardForward_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoForward_weak,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstLeftCategoryDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstTargetLeftCategoryDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstLeftGraphDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstTargetLeftGraphDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstLeftSpaceIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstTargetLeftSpaceIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstLeftSpaceMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstLeftSpaceIso_augmentation,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstLeftSpaceMap_weak,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstRightNerveDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstTargetRightNerveDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstRightSpaceIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstTargetRightSpaceIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstRightSpaceMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstRightSpaceIso_augmentation,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeFirstRightSpaceMap_weak,
+      `SerrePositivity.EInfinity.Hammock.Word.single_append_eq_cons,
+      `SerrePositivity.EInfinity.Hammock.Word.cons_empty,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardFunctor_eqToHom]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7071,7 +7095,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -17008,4 +17032,82 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
       IsWeakHomotopyEquivalence (freeFirstHomSpaceMap C w X Y U V) := by
   intro C w X Y U V
   exact freeFirstHomSpaceMap_weak _ _ _ _ _ _
+end
+
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+section e2FirstForwardStepFixtures
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+open SerrePositivity.EInfinity.Hammock.FirstColumn
+open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.InfinityCategories
+variable (C : RelativeCategory.{e2ComplexLimitUniverse}) (w : Word) (X Y Z : C.category)
+
+-- 右係数の元の対角比較自身の弱同値性は通常の Hom augmentation から得る。
+example : IsWeakHomotopyEquivalence (freeFirstRightSpaceMap C w X Y Z) :=
+  freeFirstRightSpaceMap_weak C w X Y Z
+
+example : (freeFirstRightSpaceIso C w X Y Z).hom ≫ freeResolutionHomAugmentation C X Z =
+    freeFirstRightSpaceMap C w X Y Z ≫ (freeFirstTargetRightSpaceIso C w X Y Z).hom :=
+  freeFirstRightSpaceIso_augmentation C w X Y Z
+
+-- 左係数は同じ残りの語の元の全図式と同型。
+example : TwoSidedDiagram.FixedVertices.leftDiagram
+    (D := freeForwardForwardDiagram C w X Y) (freeFirstMarkedObjectEquiv C)
+      (freeFirstMarkedObjectEquiv_naturality C w X Y) Z ≅
+    FixedObjectDiagram.zigzagDiagram (freeResolution C) (freeResolutionObject C)
+      (fun θ X => freeResolutionObject_naturality C θ X) (Word.cons .forward w) Z Y :=
+  freeFirstLeftCategoryDiagramIso C w X Y Z
+
+-- 元の残りの Word augmentation 自身と可換。
+example : (freeFirstLeftSpaceIso C w X Y Z).hom ≫
+      (freeWordDiagonalAugmentation C Z Y).app (Word.cons .forward w) =
+    freeFirstLeftSpaceMap C w X Y Z ≫ (freeFirstTargetLeftSpaceIso C w X Y Z).hom :=
+  freeFirstLeftSpaceIso_augmentation C w X Y Z
+
+example (h : IsWeakHomotopyEquivalence
+    ((freeWordDiagonalAugmentation C Z Y).app (Word.cons .forward w))) :
+    IsWeakHomotopyEquivalence (freeFirstLeftSpaceMap C w X Y Z) :=
+  freeFirstLeftSpaceMap_weak C w X Y Z h
+
+-- 底・右の追加の弱同値仮定を使わず、元の長さ帰納の一段を閉じる。
+example (h : ∀ T : C.category, IsWeakHomotopyEquivalence
+    ((freeWordDiagonalAugmentation C T Y).app (Word.cons .forward w))) :
+    IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+      (Word.append (Word.single .forward) (Word.cons .forward w))) :=
+  freeWordDiagonalAugmentation_forwardForward_weak C w X Y h
+
+example (h : ∀ T : C.category, IsWeakHomotopyEquivalence
+    ((freeWordDiagonalAugmentation C T Y).app (Word.cons .forward w))) :
+    IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+      (Word.cons .forward (Word.cons .forward w))) :=
+  freeWordDiagonalAugmentation_cons_forwardForward_weak C w X Y h
+
+-- 空の残りの語から得られる二列の元の射は無条件に弱同値。
+example : IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    (Word.cons .forward (Word.single .forward))) :=
+  freeWordDiagonalAugmentation_twoForward_weak C X Y
+end e2FirstForwardStepFixtures
+
+-- 任意可換環の実際の cofibrant 代数の同じ自由解像・同じ射へ代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ X Y : C.category, IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+      (Word.cons .forward (Word.single .forward))) := by
+  intro C X Y
+  exact freeWordDiagonalAugmentation_twoForward_weak C X Y
+
+-- 同じ実モデルで帰納の一段をもう一度適用し、三列の射も無条件に検証する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ X Y : C.category, IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+      (Word.cons .forward (Word.cons .forward (Word.single .forward)))) := by
+  intro C X Y
+  exact freeWordDiagonalAugmentation_cons_forwardForward_weak C (Word.single .forward) X Y
+    (fun Z => freeWordDiagonalAugmentation_twoForward_weak C Z Y)
 end
