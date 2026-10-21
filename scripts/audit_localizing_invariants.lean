@@ -195,7 +195,16 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.TammeQuotientFractions,
     `SerrePositivity.KST.LocalizingInvariants.ArrowIsoRealization,
     `SerrePositivity.KST.LocalizingInvariants.ArrowEssentialSurjectivity,
-    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientArrow]
+    `SerrePositivity.KST.LocalizingInvariants.TammeQuotientArrow,
+    `SerrePositivity.KST.LocalizingInvariants.PointwiseLocalizingEdges,
+    `SerrePositivity.KST.LocalizingInvariants.ExactArrowMap,
+    `SerrePositivity.KST.LocalizingInvariants.ExactKernelDenominators,
+    `SerrePositivity.KST.LocalizingInvariants.TammeArrowDenominators,
+    `SerrePositivity.KST.LocalizingInvariants.TammeArrowRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberExactPostcomposition,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberExactNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.TammeCofiberDenominators,
+    `SerrePositivity.KST.LocalizingInvariants.TammeArrowLocalization]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
