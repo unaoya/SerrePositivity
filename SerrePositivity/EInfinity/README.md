@@ -1974,6 +1974,17 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `diagonalTotalMap_weak_of_isIso_coefficients` は恒等係数を含む底の Hom 弱不変性。
 任意可換環の実際の自由解像と元の全係数自然変換でも検証。
 全語の graph への移送、左 hammock 射、既存 Map^h の高次比較は未完成。
+`Word.cons/exists_cons_of_length_succ/induction_on` は元の向き付き語の長さ帰納の表示。
+`Zigzag.FirstBoundary.forwardFunctor/backwardFunctor` は元の始点の前合成・指定射の後合成。
+`forwardFunctor_id/comp` と `backwardFunctor_id/comp` が全縦射の厳密な恒等・合成を保持する。
+`forward_relative_functor/backward_relative_functor` は相対関手との元の正方形の一致。
+`forwardContravariant/backwardCovariant` は通常の元の始点の係数関手、
+`forwardFibre/backwardFibre/forwardTransition/backwardTransition` と
+`forwardTransfunctor/backwardTransfunctor` は元の相対図式の全作用素を束ねた係数
+（DK9.3・10.3）。全対象と全射の計算式も元の相対作用・境界作用へ戻る。
+任意可換環の実際の自由解像で、既存の同じ固定語の圏への全次数での一致も検証。
+単一列の離散 Hom への回収、元の全語の Grothendieck 分解と5.7、
+左 hammock 射と既存 Map^h の高次比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

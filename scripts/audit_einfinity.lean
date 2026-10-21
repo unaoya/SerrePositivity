@@ -6812,6 +6812,60 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productsIso_inv_app,
       `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productsIso_inv_naturality]
 
+@[noinline] private def e2RequiredBatch107 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Zigzag.Relative.fixedFunctor_id_toCatHom_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.fixedFunctor_comp_toCatHom_heq,
+      `SerrePositivity.EInfinity.Hammock.Word.cons,
+      `SerrePositivity.EInfinity.Hammock.Word.cons_length,
+      `SerrePositivity.EInfinity.Hammock.Word.cons_direction_zero,
+      `SerrePositivity.EInfinity.Hammock.Word.cons_direction_succ,
+      `SerrePositivity.EInfinity.Hammock.Word.eq_empty_of_length_zero,
+      `SerrePositivity.EInfinity.Hammock.Word.exists_cons_of_length_succ,
+      `SerrePositivity.EInfinity.Hammock.Word.induction_on,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backward_id_obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backward_comp_obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardFunctor_id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardFunctor_comp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardCovariant,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardArrow,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backward,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forward_id_obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forward_comp_obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardFunctor_id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardFunctor_comp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardContravariant,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.app,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.source_succ_ne_zero,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.target_succ_ne_zero,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.vertex_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.app_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.tailComm,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.vertex,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.vertex_source_succ,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.vertex_target_succ,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.tailArrow,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardArrow,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forward,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backward_relative_obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backward_relative_functor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forward_relative_obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forward_relative_functor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.markedBase,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardFibre,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardFibre,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardTransition,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardTransition,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardTransfunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardTransfunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardTransfunctor_obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardTransfunctor_obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.forwardTransfunctor_map,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.backwardTransfunctor_map]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6843,7 +6897,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -16377,5 +16431,85 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     Functor.FullyFaithful.id _
   exact TwoSidedDiagram.FixedVertices.diagonalTotalMap_weak_of_fullyFaithful_base
     (D := D) (E := E) p p hp hp τ (fun _ _ => rfl) hF hL hR
+
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+section e2FirstBoundaryFixtures
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+open SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary
+
+variable {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+  {W : MorphismProperty C} [W.IsMultiplicative] {w : Word} {X X' X'' Y : C}
+
+-- 元の前合成関手は同じ恒等関手へ戻る。
+example : forwardFunctor (W := W) (w := w) (Y := Y) (𝟙 X) = 𝟭 _ := forwardFunctor_id
+
+-- 元の前合成の反変な合成順序を全縦射でも保持する。
+example (f : X' ⟶ X) (g : X'' ⟶ X') :
+    forwardFunctor (W := W) (w := w) (Y := Y) f ⋙ forwardFunctor g =
+      forwardFunctor (g ≫ f) := forwardFunctor_comp f g
+
+-- 指定射の後合成も元の恒等関手へ戻る。
+example : backwardFunctor (W := W) (w := w) (Y := Y) (𝟙 X) (W.id_mem X) = 𝟭 _ :=
+  backwardFunctor_id
+
+-- 元の指定射の合成を同じ全列・全縦射で保持する。
+example (f : X ⟶ X') (hf : W f) (g : X' ⟶ X'') (hg : W g) :
+    backwardFunctor (W := W) (w := w) (Y := Y) f hf ⋙ backwardFunctor g hg =
+      backwardFunctor (f ≫ g) (W.comp_mem _ _ hf hg) := backwardFunctor_comp f hf g hg
+
+-- 相対関手と元の前合成は、終点の表示等式を含めて厳密に可換。
+example {E : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} E]
+    {V : MorphismProperty E} [V.IsMultiplicative] {Y' : E}
+    (F : LocalizerMorphism W V) (hY : F.functor.obj Y = Y') (f : X' ⟶ X) :
+    forwardFunctor (w := w) f ⋙ Zigzag.Relative.fixedFunctor F rfl hY =
+      Zigzag.Relative.fixedFunctor F rfl hY ⋙ forwardFunctor (F.functor.map f) :=
+  forward_relative_functor F hY f
+
+-- 相対関手と元の後合成も同じ正方形で可換。
+example {E : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} E]
+    {V : MorphismProperty E} [V.IsMultiplicative] {Y' : E}
+    (F : LocalizerMorphism W V) (hY : F.functor.obj Y = Y') (f : X ⟶ X') (hf : W f) :
+    backwardFunctor (w := w) f hf ⋙ Zigzag.Relative.fixedFunctor F rfl hY =
+      Zigzag.Relative.fixedFunctor F rfl hY ⋙ backwardFunctor (F.functor.map f) (F.map f hf) :=
+  backward_relative_functor F hY f hf
+end e2FirstBoundaryFixtures
+
+-- 全相対作用素と元の指定射を持つ両 transfunctor を構成する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary in
+example (D : SimplicialObject RelativeCategory.{e2ComplexLimitUniverse}) (w : Word)
+    (Y : (n : SimplexCategoryᵒᵖ) → (D.obj n).category)
+    (hY : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m), (D.map θ).functor.obj (Y n) = Y m) :
+    Transfunctor.Covariant (markedBase D ⋙ Cat.opFunctor) ×
+      Transfunctor.Covariant (markedBase D) :=
+  ⟨forwardTransfunctor D w Y hY, backwardTransfunctor D w Y hY⟩
+
+-- 任意可換環の元の自由解像の係数を、既存の同じ固定語の圏へ全次数で回収する。
+open CategoryTheory Opposite SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    let D := freeResolution C
+    ∀ (w : Word) (X Y : C.category),
+      let Yf : (n : SimplexCategoryᵒᵖ) → (D.obj n).category :=
+        fun n => freeResolutionObject C n Y
+      let hY : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m),
+          (D.map θ).functor.obj (Yf n) = Yf m :=
+        fun θ => freeResolutionObject_naturality C θ Y
+      ∀ n : SimplexCategoryᵒᵖ,
+        (forwardTransfunctor D w Yf hY).obj ⟨n, op ⟨freeResolutionObject C n X⟩⟩ =
+          (FixedObjectDiagram.zigzagDiagram D (freeResolutionObject C)
+            (fun θ Z => freeResolutionObject_naturality C θ Z) (Word.cons .forward w) X Y).obj n ∧
+        (backwardTransfunctor D w Yf hY).obj ⟨n, ⟨freeResolutionObject C n X⟩⟩ =
+          (FixedObjectDiagram.zigzagDiagram D (freeResolutionObject C)
+            (fun θ Z => freeResolutionObject_naturality C θ Z) (Word.cons .backward w) X Y).obj n := by
+  intro C D w X Y Yf hY n
+  exact ⟨rfl, rfl⟩
 
 end
