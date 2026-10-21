@@ -2597,3 +2597,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantEdge
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantEdge_curry
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitNaturality
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitDiagonal
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitDiagonal_curry
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitUpperTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitLowerTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentVertexOfHomotopy_of_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitDiagonal
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitFunctorTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitTriangle_diagonal
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeDiagonalRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeDiagonalRepresentation_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeDiagonalCocone
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeDiagonalCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeDiagonalCoconeIso

@@ -53,9 +53,9 @@
   任意の Kan 境界への持ち上げと境界移動の除去も構成。全標準境界の path 置換充填から、元の Kan 引き戻し比較の弱同値性・ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較辺と恒等図式辺を持つ可逆な全錐比較・各脚の自然性を保持。
   置換の元の path の指定同型と切断上の定値性・標準同型への簡約を証明。交換則と全円柱の一致から区間錐・全空間錐の二射影の指定比較・元の全 path・native 可換性の最終整合を証明。
-  一般 coherent 図式の元の全空間余錐の native 余極限性と filtered 有限検出を証明済み。a6 は元の模型 fiber・全空間比較の同値性、指定 path・二脚の整合、coherentCospanConeNativeComparison_isWeakHomotopyEquivalence まで完了。a7 は元の余極限頂点・二脚・指定 path を持つ引き戻し極限錐、終対象の交換、形状の接着の錐空間の native 極限性を構成。finiteShape_cell_induction と CoherentFilteredLimitExchangeShape を整備し、空形状・同型不変性・全標準単体の交換を証明。HasSpaceLimitsOfShape の空形状・単体の存在と同型への輸送も証明。部分極限の coherent な錐族、底を固定する指定三円柱の比較三角形、元の頂点関手と全円柱の制限の一致を構成。元の全関手 cospan 錐を同じ二三角形の coherent 表示へ移し、各点の全錐の一致から a6 への適用を証明。coherentColimitFunctor は全小 coherent 図式の余極限関手を実際に構成し、各図式の元の全空間 Kan 模型と native 余錐を厳密に保つ。全図式の普遍余錐と任意の族への点ごとの普遍余錐も構成。coherentCompletedLimit_iff_colimitFunctor は、元の任意の指定点ごとの余錐で完成した全錐の極限性を、元の関手錐の余極限関手による像の極限性へ同値に比較。元の比較円柱・二三角形・全 cospan 錐の native 余錐への持ち上げを構成し、元の全図式への厳密な制限と頂点評価での余極限関手の像を照合。元の両余錐の単位を結ぶ全正方形と四辺を構成し、元の変換・余極限の指定辺との合成整合式 coherentColimitUnitNaturality も証明。未完：この持ち上げと a6 の native 出力の全錐比較、部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
+  一般 coherent 図式の元の全空間余錐の native 余極限性と filtered 有限検出を証明済み。a6 は元の模型 fiber・全空間比較の同値性、指定 path・二脚の整合、coherentCospanConeNativeComparison_isWeakHomotopyEquivalence まで完了。a7 は元の余極限頂点・二脚・指定 path を持つ引き戻し極限錐、終対象の交換、形状の接着の錐空間の native 極限性を構成。finiteShape_cell_induction と CoherentFilteredLimitExchangeShape を整備し、空形状・同型不変性・全標準単体の交換を証明。HasSpaceLimitsOfShape の空形状・単体の存在と同型への輸送も証明。部分極限の coherent な錐族、底を固定する指定三円柱の比較三角形、元の頂点関手と全円柱の制限の一致を構成。元の全関手 cospan 錐を同じ二三角形の coherent 表示へ移し、各点の全錐の一致から a6 への適用を証明。coherentColimitFunctor は全小 coherent 図式の余極限関手を実際に構成し、各図式の元の全空間 Kan 模型と native 余錐を厳密に保つ。全図式の普遍余錐と任意の族への点ごとの普遍余錐も構成。coherentCompletedLimit_iff_colimitFunctor は、元の任意の指定点ごとの余錐で完成した全錐の極限性を、元の関手錐の余極限関手による像の極限性へ同値に比較。元の比較円柱・二三角形・全 cospan 錐の native 余錐への持ち上げを構成し、元の全図式への厳密な制限と頂点評価での余極限関手の像を照合。元の両余錐の単位を結ぶ全正方形と四辺を構成し、元の変換・余極限の指定辺との合成整合式 coherentColimitUnitNaturality も証明。元の全正方形の対角と二三角形を保持し、native 単位の指定表現による上三角形の全空間作用の合成比較を構成。coherentColimitNativeDiagonalCoconeIso は、a6 の指定 native 写像の余錐を元の単位正方形の対角の余錐と同型に比較。未完：この持ち上げと a6 の native 出力の全錐比較、部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド8871 jobs、公理監査9241宣言・F1/F1B 同時 import 成功、標準三公理のみ。元の余錐の単位円柱の全自然性正方形・四辺の厳密な同定・指定辺の合成整合式の追加16公開宣言も型検査。追加 ModelCategory 仮定・ソースの名前衝突なし。
+  検証：三集約同時ビルド8881 jobs、公理監査9292宣言・F1/F1B 同時 import 成功、標準三公理のみ。元の共通対角・二三角形・native 単位表現・指定全空間作用の表現・a6 の指定 native 写像との対角余錐の同型の追加18公開宣言も型検査。追加 ModelCategory 仮定・ソースの名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 
-- F2N-1 a7：coherentCompletedLimit_iff_colimitFunctor により、元の任意の指定余錐による完成を構成済みの余極限関手の全錐の像へ同値に比較済み。coherentColimitCoconeCospan で元の全 cospan 錐を native 余錐へ持ち上げ、三辺・二単体・底の全図式と頂点評価を保持済み。coherentColimitUnitSquare と coherentColimitUnitNaturality により、元の両余錐の単位・元の変換・余極限の指定辺の全正方形と合成整合式まで構成済み。次はこの単位の整合と coherentTransformationNativeCoconeIso を合わせて指定辺を a6 の native 写像と比較し、全二三角形の照合からcoherentColimitFunctor の引き戻し保存へ接続する。続いて形状の貼り合わせの部分極限 cospan の極限性を示し、有限和・単射側の接着の存在と交換を同時帰納で閉じて finiteShape_cell_induction を適用する（HTT §5.3.3、残り6〜12時間、暫定）。strict な通常の小圏の図式だけでは完了としない。その後 F2N-2〜5、presentable・随伴関手定理。
+- F2N-1 a7：coherentCompletedLimit_iff_colimitFunctor により、元の任意の指定余錐による完成を構成済みの余極限関手の全錐の像へ同値に比較済み。coherentColimitCoconeCospan で元の全 cospan 錐を native 余錐へ持ち上げ、三辺・二単体・底の全図式と頂点評価を保持済み。coherentColimitUnitSquare と coherentColimitUnitNaturality により、元の両余錐の単位・元の変換・余極限の指定辺の全正方形と合成整合式まで構成済み。coherentColimitNativeDiagonalCoconeIso により、a6 の指定 native 写像の余錐と元の正方形の対角余錐を同型に比較済み。次は下三角形と pinchedHomLeftToIntervalMappingSpace の指定辺比較から、同じ対角余錐を余極限関手の指定辺の作用余錐へ比較する。余極限性の充満忠実性で辺比較を反映し、全二三角形の照合から coherentColimitFunctor の引き戻し保存へ接続する。続いて形状の貼り合わせの部分極限 cospan の極限性を示し、有限和・単射側の接着の存在と交換を同時帰納で閉じて finiteShape_cell_induction を適用する（HTT §5.3.3、残り6〜12時間、暫定）。strict な通常の小圏の図式だけでは完了としない。その後 F2N-2〜5、presentable・随伴関手定理。
 
 ## 0. 目標と範囲
 
