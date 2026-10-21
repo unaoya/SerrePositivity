@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorHomIsoPrecompExchange
+import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonSquares
+import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorHomPrecompIdentityMorphism
+import SerrePositivity.InfinityCategories.Derived.IsoThreeStepSquare
+import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelAugmentationNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedGraphCompositionNaturality
 import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonAction
 import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonCoherence
 import SerrePositivity.InfinityCategories.Derived.FunctorSplitSpanComparison
@@ -4062,6 +4069,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomIsoPrecompExchange,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonSquares,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomPrecompIdentityMorphism,
+    `SerrePositivity.InfinityCategories.Derived.IsoThreeStepSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelAugmentationNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedGraphCompositionNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonAction,
     `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonCoherence,
 
