@@ -546,4 +546,11 @@ public import SerrePositivity.KST.LocalizingInvariants.FibrationFiberPointedStag
 public import SerrePositivity.KST.LocalizingInvariants.FibrationFiberSequenceMap
 public import SerrePositivity.KST.LocalizingInvariants.FibrationFiberStageNaturality
 
+public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementGroupNaturality
+public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementMap
+public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberMapComparison
+public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberMapNaturality
+public import SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison
+public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramPrism
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
