@@ -80,6 +80,32 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleRelativeVertexIso_heq_component
 #check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleRelativeVertexIso_map_pre_heq_component
 
+#check @SerrePositivity.InfinityCategories.F2.prismRestrictedEndpoint_vertex
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningRestrictedEndpointVertex
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningRestrictedEndpointVertex_eq
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningRestrictedEndpointVertex_point
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurry_uncurry
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorUncurry_point_vertex
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningUncurryConst_point
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningUncurryConstComposite_point
+#check @SerrePositivity.InfinityCategories.F2.restrictedUniversalEndpoint_vertex
+#check @SerrePositivity.InfinityCategories.F2.restrictedTriangleEndpoint_vertex
+#check @SerrePositivity.InfinityCategories.F2.normalizedRestrictedTriangleIso
+#check @SerrePositivity.InfinityCategories.F2.normalizedRestrictedTriangleIso_heq
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleRelativeVertexIso_pre_eq
+#check @SerrePositivity.InfinityCategories.F2.downVertexIso_map_comp_heq
+#check @SerrePositivity.InfinityCategories.F2.smallRestrictedTriangleEndpointIso
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallTriangleRelativeIso_pre_heq_endpoint
+#check @SerrePositivity.InfinityCategories.F2.sourceParameterPoint_projection
+#check @SerrePositivity.InfinityCategories.F2.pointedTriangleSourceRestriction_projection
+#check @SerrePositivity.InfinityCategories.F2.smallFiberSourceRestriction_projection
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallFiberPointedTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallFiberPointedTriangle_projection
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallFiberPointedTriangle_long
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallFiberTriangleExtension_long_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallFiberPointedTriangle_first
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallFiberPointedTriangle_second
+
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
 方針：宣言元モジュールを判別し、各宣言の公理を再帰的に収集する。
