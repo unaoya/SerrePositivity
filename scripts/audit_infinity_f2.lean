@@ -1779,3 +1779,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanNativePrismFiberPathIso
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanRestrictedPrismFiberPathIso
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanRestrictedPrismFiberPathIso_eq_native
+
+#check @SerrePositivity.InfinityCategories.F2.normalizeSmallTriangleEndpointIso
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismEndpoint_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismEndpoint_universal
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismEndpoint_long
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismEndpointNormalizedIso
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismEndpointNormalizedIso_eq
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismSmallEndpointIso
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismSmallEndpointIso_eq
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismFiberTriangleIso
+#check @SerrePositivity.InfinityCategories.F2.coherentRestrictedPrismFiberTriangleIso_heq_actual

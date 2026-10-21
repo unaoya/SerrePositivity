@@ -186,7 +186,7 @@ public import SerrePositivity.InfinityCategories.F2.CoherentNativeTriangleSectio
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanPrismFiberFunctor
 
-public import SerrePositivity.InfinityCategories.F2.CoherentRestrictedComparisonEndpoint
+public import SerrePositivity.InfinityCategories.F2.CoherentRestrictedFiberTriangleIso
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。

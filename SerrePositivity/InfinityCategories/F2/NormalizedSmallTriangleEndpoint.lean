@@ -27,7 +27,14 @@ local notation "P" => relativeFunctorPre (smallLeftUnstraighteningProjection J)
 local notation "c" => smallRestrictedTriangleEndpointIso F G J x y T s
 
 /-- 同じ局所比較を下降後の元の小さい実頂点を両端とする指定同型にする。 -/
-def normalizedSmallTriangleEndpointIso :
+def normalizeSmallTriangleEndpointIso
+    (e : VertexIso
+      (smallRestrictedEndpointVertex F J (leftUnstraighteningMappingVertexMap F J T.diagonal).val
+        (leftUnstraighteningMappingVertexMap F J T.diagonal).property s)
+      (smallRestrictedEndpointVertex F J
+        ((leftUnstraighteningMappingVertexMap F G x).val ≫
+          (leftUnstraighteningMappingVertexMap G J y).val)
+        (coherentTransformationMappingComposite_projection F G J x y) s)) :
     VertexIso ((P).app (Opposite.op ⦋0⦌) (coherentTransformationRelativeVertex F J T.diagonal))
       ((P).app (Opposite.op ⦋0⦌)
         (relativeFunctorVertex (smallLeftUnstraighteningProjection J)
@@ -44,13 +51,17 @@ def normalizedSmallTriangleEndpointIso :
     (coherentTransformationMappingComposite_projection F G J x y) s).trans
       (congrArg (fun v => (P).app (Opposite.op ⦋0⦌) v)
         (coherentTransformationComposite_relativeVertex F G J x y))
-  exact (eqToIso (congrArg SSet.HomotopyCategory.mk hs)).symm ≪≫ c ≪≫
+  exact (eqToIso (congrArg SSet.HomotopyCategory.mk hs)).symm ≪≫ e ≪≫
     eqToIso (congrArg SSet.HomotopyCategory.mk ht)
+
+/-- 同じ局所比較を下降後の元の小さい実頂点へ正規化する。 -/
+def normalizedSmallTriangleEndpointIso :=
+  normalizeSmallTriangleEndpointIso F G J x y T s c
 
 /-- 下降後の両端の正規化を外しても同じ局所指定比較になる。 -/
 lemma normalizedSmallTriangleEndpointIso_heq :
     HEq (normalizedSmallTriangleEndpointIso F G J x y T s) c := by
-  unfold normalizedSmallTriangleEndpointIso
+  unfold normalizedSmallTriangleEndpointIso normalizeSmallTriangleEndpointIso
   dsimp only
   exact iso_endpoints_heq _ _ _
 

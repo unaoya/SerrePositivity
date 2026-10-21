@@ -53,9 +53,9 @@
   任意の Kan 境界への持ち上げと境界移動の除去も構成。全標準境界の path 置換充填から、元の Kan 引き戻し比較の弱同値性・ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較辺と恒等図式辺を持つ可逆な全錐比較・各脚の自然性を保持。
   置換の元の path の指定同型と切断上の定値性・標準同型への簡約を証明。交換則と全円柱の一致から区間錐・全空間錐の二射影の指定比較・元の全 path・native 可換性の最終整合を証明。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。fiber の指定可換同型は元の左右 fiber 三角形比較の合成に一致。元の native 錐の二単体・全辺を保つ pointed 全錐と既存の実延長頂点を同じ始点固定 prism 空間へ揃え、元の局所指定比較の合成と native 指定長辺同型の等式を証明済み。底・初期値の移送と実際の引き戻し終点評価は厳密に交換。指定像を既存の unstraighteningIdentityRestrictedEndpointIso と正規化局所比較へ HEq で照合。実終点評価・縮小・宇宙下降・fiber Hom を一つのホモトピー圏の関手に構成し、元の共通空間の局所側・native 側の指定同型は同じ小さい fiber の関手の指定同型へ写る。未完：両端を実際の関手頂点へ正規化し既存の指定 fiber 三角形同型と照合、native 普遍性からの fiber 同値性、一般の有限極限交換・Ind。
+  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 錐の二単体・全辺を保つ pointed 全錐と既存の実延長頂点を同じ始点固定 prism 空間へ揃え、元の局所指定比較の合成と native 指定長辺同型の等式を証明済み。実終点評価・縮小・宇宙下降・fiber Hom の一つの関手は両者を同じ小さい fiber 間の指定同型へ写す。共通 prism の普遍・実長辺の終点を、元の指定射と二射の合成の相対関手頂点へ厳密に揃えた。両端を正規化した指定終点像は元の局所比較と等しく、同じ縮小・下降後も既存の小さい局所同型と等しい。小さい実頂点への正規化・fiber Hom 後の指定像は、元の実際の coherentTransformationTriangleFiberIso と HEq で一致。未完：共通関手による native path の像の左右合成との整合、native 普遍性からの fiber 比較の同値性、一般の有限極限交換・Ind。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド 8301 jobs、公理監査 5315 宣言・同時 import 成功。実終点の交換・指定像の縮小下降関手の追加19宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
+  検証：三集約同時ビルド 8306 jobs、公理監査 5501 宣言・同時 import 成功。実頂点の両端正規化・元の指定 fiber 三角形同型との照合の追加10宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 
-- F2N-1：coherentCospanPrismFiberFunctor の普遍・実長辺頂点の像を、元の実際の fiber 射の関手頂点へ正規化する。終点の厳密な交換と restrictedUniversalEndpoint_vertex・restrictedTriangleEndpoint_vertex を使い、coherentRestrictedPrismComparisonIso_endpoint_heq_normalized を同じ縮小・下降関手へ通す。既存の coherentTransformationTriangleFiberIso との指定値を照合し、左右の合成へ進む。各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導き、native 比較候補へ進む。
+- F2N-1：coherentRestrictedPrismFiberTriangleIso_heq_actual の左右二三角形への適用と、coherentCospanPrismFiberFunctor の指定像の合成則を照合する。明示した両端の補正が共通普遍頂点で相殺する式を保ち、native path の像を既存の coherentCospanFiberTrianglePathIso へ接続する。その後、元の各点の native 錐の普遍性から fiber 比較の同値性を導く。各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導き、native 比較候補へ進む。
 
 ## 0. 目標と範囲
 
