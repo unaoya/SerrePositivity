@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompAction
+import SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPrecompAction
+import SerrePositivity.InfinityCategories.Derived.EnrichedParameterizedClosed
+import SerrePositivity.InfinityCategories.Derived.EnrichedCochainClosed
+import SerrePositivity.InfinityCategories.Derived.EnrichedClosedWhiskering
+import SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompData
+import SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompHom
 import SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompPointwiseInvertible
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionHomotopyInvertible
 import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransVertexClosed
@@ -4003,6 +4011,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompSquare,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompAction,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPrecompAction,
+
+    `SerrePositivity.InfinityCategories.Derived.EnrichedParameterizedClosed,
+    `SerrePositivity.InfinityCategories.Derived.EnrichedCochainClosed,
+
+    `SerrePositivity.InfinityCategories.Derived.EnrichedClosedWhiskering,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompHom,
+
 
     `SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompPointwiseInvertible,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionHomotopyInvertible,
