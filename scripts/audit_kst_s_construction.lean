@@ -23160,3 +23160,36 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveNativeIso_inv_naturality
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveNativeIso_inv_naturality
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_obj
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_obj
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_map
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_map
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_precompose
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_precompose
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_post
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_post
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveTensor
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveTensor
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveTensor_app
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveTensor_app
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensor
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensor
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensor_app
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensor_app
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveTensor_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveTensor_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensor_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensor_naturality

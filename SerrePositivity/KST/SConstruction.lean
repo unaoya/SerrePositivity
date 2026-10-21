@@ -1898,4 +1898,7 @@ public import SerrePositivity.KST.SConstruction.CubicalLambdaNerve
 public import SerrePositivity.KST.SConstruction.CubicalLambdaNerveNativeIso
 public import SerrePositivity.KST.SConstruction.CubicalLambdaNerveMap
 public import SerrePositivity.KST.SConstruction.CubicalLambdaNerveNativeNaturality
+public import SerrePositivity.KST.SConstruction.CubicalLambdaFunctorPair
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNerveTensor
+public import SerrePositivity.KST.SConstruction.DGNerveTensorNaturality
 /-! # ∞-S• 構成と連結 K 理論 -/
