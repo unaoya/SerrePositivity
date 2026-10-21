@@ -1612,3 +1612,16 @@ public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftSourceCalcul
 public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftSourceIso
 public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftSourceRows
 public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftWeak
+public import SerrePositivity.EInfinity.Hammock.Transfunctor
+public import SerrePositivity.EInfinity.Hammock.TransfunctorObjectDiagram
+public import SerrePositivity.EInfinity.Hammock.TransfunctorTwoSidedDiagram
+public import SerrePositivity.EInfinity.Hammock.TransfunctorTwoSidedMap
+public import SerrePositivity.EInfinity.Hammock.TripleSimplicialDiagonal
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramBar
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonal
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonalMap
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramPartialRows
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramRows
+public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramTotal
+public import SerrePositivity.EInfinity.Hammock.TwoSidedThomasonTransition

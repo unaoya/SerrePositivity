@@ -6669,6 +6669,61 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeft.map_eq_transport,
       `SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeft.map_isWeakHomotopyEquivalence]
 
+@[noinline] private def e2RequiredBatch104 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Transfunctor.Covariant,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.fiber,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.transition,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.transition_id_app,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.transition_comp_app,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.objectSection,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.objectDiagram,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.objectDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.twoSidedDiagram,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.totalDiagram,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.barDiagram,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.comparison,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.fiberMap,
+      `SerrePositivity.EInfinity.Hammock.Transfunctor.twoSidedDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.TripleSimplicial.partialDiagonalFunctor,
+      `SerrePositivity.EInfinity.Hammock.TripleSimplicial.fullDiagonalIso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.Data,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.Hom,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.hom_ext,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.id,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.comp,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.id_base,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.id_left,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.id_right,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.comp_base,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.comp_left,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.comp_right,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.barFunctor,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.thomasonMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalBar,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalTotalNerve,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalThomasonMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalThomasonMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalBarMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalTotalMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalThomasonMap_naturality,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalMap_weak_iff,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.partialRows,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.partialRowsIso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.chainRow,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.partialRowsMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.chainRowMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.partialRowsIso_naturality,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.diagonalTotalMap_weak_of_chainRows,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.rowsFunctor,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.rowsFunctor_diagonal,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.map_catEqToHom_app_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.map_unop_catEqToHom_app_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.totalFunctor,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.transitionTotal,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.transitionBar,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.map_transition,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.transition_weak_iff]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6700,7 +6755,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -15981,5 +16036,76 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
       IsWeakHomotopyEquivalence (TwoSidedThomason.map (H.op ⋙ F) (H ⋙ G)) := by
   intro C n F G H
   exact TwoSidedThomason.map_isWeakHomotopyEquivalence (H.op ⋙ F) (H ⋙ G)
+
+end
+
+noncomputable section
+
+-- 元の底と両係数を同時に変えた比較の正方形。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {V W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} V]
+    [Category.{e2ComplexLimitUniverse} W] (H : V ⥤ W)
+    {F : Vᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
+    {G : V ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
+    {F' : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
+    {G' : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
+    (α : F ⟶ H.op ⋙ F') (β : G ⟶ H ⋙ G') :
+    TwoSidedThomason.map F G ≫ nerveMap (TwoSidedThomason.transitionTotal H α β) =
+      TwoSidedThomason.transitionBar H α β ≫ TwoSidedThomason.map F' G' :=
+  TwoSidedThomason.map_transition H α β
+
+-- 元の底が全次数で動いても対角 Thomason 射は弱同値。
+open CategoryTheory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock.TwoSidedDiagram in
+example (D : SimplicialObject Data.{e2ComplexLimitUniverse}) :
+    IsWeakHomotopyEquivalence (diagonalThomasonMap D) :=
+  diagonalThomasonMap_isWeakHomotopyEquivalence D
+
+-- 元の自然変換の対角正方形をそのまま保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock.TwoSidedDiagram in
+example {D E : SimplicialObject Data.{e2ComplexLimitUniverse}} (τ : D ⟶ E) :
+    diagonalThomasonMap D ≫ diagonalTotalMap τ =
+      diagonalBarMap τ ≫ diagonalThomasonMap E := diagonalThomasonMap_naturality τ
+
+-- 同じ射の弱同値性を全圏と bar の間で双方向に移す。
+open CategoryTheory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock.TwoSidedDiagram in
+example {D E : SimplicialObject Data.{e2ComplexLimitUniverse}} (τ : D ⟶ E) :
+    IsWeakHomotopyEquivalence (diagonalTotalMap τ) ↔
+      IsWeakHomotopyEquivalence (diagonalBarMap τ) := diagonalMap_weak_iff τ
+
+-- 通常の各次数の弱同値を仮定せず、固定射列長の部分対角を使う。
+open CategoryTheory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock.TwoSidedDiagram in
+example {D E : SimplicialObject Data.{e2ComplexLimitUniverse}} (τ : D ⟶ E)
+    (h : ∀ n, IsWeakHomotopyEquivalence (chainRowMap τ n)) :
+    IsWeakHomotopyEquivalence (diagonalTotalMap τ) := diagonalTotalMap_weak_of_chainRows τ h
+
+-- 実際の transfunctor の係数自然変換から全作用素の自然変換を構成する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock.Transfunctor in
+example {B : SimplicialObject Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
+    {L L' : Covariant (B ⋙ Cat.opFunctor)} {R R' : Covariant B}
+    (α : L ⟶ L') (β : R ⟶ R') :
+    twoSidedDiagram B L R ⟶ twoSidedDiagram B L' R' := twoSidedDiagramMap α β
+
+-- 固定対象の元の表示と作用素を保つ係数図式を構成する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock.Transfunctor in
+example (B : SimplicialObject Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    (p : (n : SimplexCategoryᵒᵖ) → B.obj n)
+    (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m), (B.map θ).toFunctor.obj (p n) = p m)
+    (T : Covariant B) : SimplicialObject Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse} :=
+  objectDiagram B p hp T
+
+-- 任意可換環の実際の自由相対解像の底に全次数の比較を代入する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    let B := freeResolutionUnderlyingDiagram C
+    ∀ (L : Transfunctor.Covariant (B ⋙ Cat.opFunctor)) (T : Transfunctor.Covariant B),
+      IsWeakHomotopyEquivalence
+        (TwoSidedDiagram.diagonalThomasonMap (Transfunctor.twoSidedDiagram B L T)) := by
+  intro C B L T
+  exact TwoSidedDiagram.diagonalThomasonMap_isWeakHomotopyEquivalence _
 
 end

@@ -1938,6 +1938,19 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `weightedLeft_diagonalMap_isWeakHomotopyEquivalence` により元の対角射を閉じる。
 任意可換環の実際の cofibrant 代数圏・全自由次数でも検証。
 単体的な底の弱不変性、hammock 左射、既存 Map^h の高次比較は未完成。
+`Transfunctor.Covariant/fiber/transition` は元の Grothendieck 圏上の係数関手と
+その全次数の作用。`objectSection/objectDiagram` は固定対象での元の係数図式。
+`TwoSidedDiagram.Data/totalFunctor/barFunctor/rowsFunctor` は底と両係数の変更を
+同じ元の全圏・bar・全行へ移す厳密な関手。
+`Transfunctor.twoSidedDiagram/totalDiagram/barDiagram/comparison/twoSidedDiagramMap`
+は DK10.1–10.2の元の構成と全係数自然変換。
+`TwoSidedDiagram.diagonalThomasonMap_isWeakHomotopyEquivalence` は
+全次数の元の対角比較自身の弱同値性（DK10.6(i)）。
+`diagonalThomasonMap_naturality/diagonalMap_weak_iff` は同じ元の射の比較。
+`partialRows/chainRow/partialRowsIso/diagonalTotalMap_weak_of_chainRows` により
+射列長を固定した部分対角へ還元する。任意可換環の実際の自由相対解像でも検証。
+固定頂点列ごとの Hom 因子の和による表示、DK10.4–10.5の弱不変性、
+左 hammock 射と元の Map^h の高次比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
