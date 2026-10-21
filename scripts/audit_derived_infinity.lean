@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionHomotopyMorita
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeClassicalComparison
+import SerrePositivity.InfinityCategories.Derived.DGKernelClassicalComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionClassical
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationDerivedComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyComparison
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomSpaceComparison
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomSourceComparison
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorFixedSecond
@@ -3227,6 +3233,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelResolutionHomotopyMorita,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeClassicalComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelClassicalComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionClassical,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationDerivedComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyComparison,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomSpaceComparison,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeBivariateHomSourceComparison,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorFixedSecond,
