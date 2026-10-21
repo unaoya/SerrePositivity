@@ -667,7 +667,20 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathGradedZero,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathGradedPair,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathEndpointsSurjective,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeCellPathLift]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeCellPathLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraMappingPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraMappingPathProjection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraMappingPathSurjective,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraMappingPathMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraMappingPathMapLaws,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraMappingPathFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackModel,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCocone,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackLinearPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackLinearLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCoconeIso]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
