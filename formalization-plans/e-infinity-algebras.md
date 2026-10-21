@@ -33,10 +33,7 @@
   元の span の左枝が指定辺集合に属するとき、局所対象への余錐の右枝・右枝終点への制限の trivial Kan 性を証明。余錐空間の厳密な引き戻しを使用。
   **元の任意の coherent な pushout での S-equivalence の保存を完了。** 下辺→上辺と左辺→右辺の両向きを公開。安定性は不要。
   反復 coslice の厳密な同型と元の左因子への制限の一致を構成し、余極限余錐全体から底図式への coslice 制限の trivial Kan 性を導出。
-  これを元の span の余錐制限と正方形の上辺の right anodyne 性で結び、追加の写像空間条件を仮定せず元の脚を保存。
   **局所同値の強飽和性（HTT 5.5.4.5・5.5.4.11）を完了。** pushout・矢印圏内の任意小余極限・元の二単体の二つから三つ目と全可逆辺を保持。
-  指数則で元の境界・始点面・底を保持して書き戻し、任意の coherent な prism の始点面への終点固定余錐制限の自明 Kan 性を証明。
-  二つの left fibration の始対象間の指定比較辺と任意の余錐制限について、fiber 制限の同値性から元の比較辺の像の局所性を証明。
   **両端が余極限余錐の元の coherent な prism について、底の全垂直辺が S-equivalence なら元の頂点辺も S-equivalence と証明。**
   終点面から全図式の余極限性を回収し、指定比較辺の底の像を元の頂点辺と厳密に同定。K の nerve・quasicategory 性は仮定しない。
   元の任意の矢印圏の余極限余錐の両端評価を、F2 の点ごとの余極限の存在と余錐全体の同型から回収。元の頂点辺の所属を証明。
@@ -46,6 +43,8 @@
   **生成閉包内の局所置換の存在から、生成閉包＝局所同値と小生成性を導出。** 元の hX の Hom の持ち上げ・置換間の可逆辺・元の二単体を使用。局所置換の存在、反射の存在、P_Σ は未完了。
   局所終点を持つ元の余錐圏を引き戻しで構成し、局所同値の始点・終点への余錐制限が圏同値であることを証明。
   **局所対象へ向かう元の局所同値自身が、局所余錐圏の始対象。** 終点を重ねる元の退化三角形を使用し、一点余錐の脚が元の辺であることまで厳密に照合。
+  **join 型 coslice の底変換から `unitCommaFiber` への標準比較の同値性を完了。** 任意 G:Y→X に対し標的図式を保持し、全パラメータで fiber 比較を既存の区間比較と厳密に同定。
+  元の局所置換を指定 comma 始対象へ移し、その矢印の族が元の辺であることを厳密に回収。各対象の局所置換の存在から、各 comma の始対象の存在を導出。coherent な反射は未構成。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
@@ -86,19 +85,20 @@
   `isColimitCone_functor_evaluation_of_pointwise_exists`、`localEquivalences_arrowColimit`、`IsStronglySaturatedEdgeSetOfShapes`、`localEquivalences_stronglySaturated`、
   `localDiagram_coslicePrecomposition_isQCatEquivalence`、`isLocalForHom_limitCone_of_sections`、`isLocalObject_limitCone`、
   `stronglySaturatedClosure`、`IsOfSmallStrongGeneration`、`isLocalObject_stronglySaturatedClosure_iff`、`stronglySaturatedClosure_eq_localEquivalences_of_localReplacements`、
-  `localTargetCoconeSpace`、`localTargetCoconeRestriction_source_isQCatEquivalence`、`edgeSourcePointCocone_leg_edge`、`localReplacement_edgeSource_isInitial`。
+  `localTargetCoconeSpace`、`localTargetCoconeRestriction_source_isQCatEquivalence`、`edgeSourcePointCocone_leg_edge`、`localReplacement_edgeSource_isInitial`、
+  `cosliceCommaComparison_isQCatEquivalence`、`localReplacementCommaPoint_isInitial`、`localReplacementCommaPoint_uncurry`、`unitCommaFiber_initial_exists_of_localReplacements`。
   Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、全監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。型は Lean、運用は `foundations.md` §8。README は規約だけ、実施記録はコミットメッセージ。全体チェックリストはコーディネータが更新する。
-- **未コミット**：なし（今回の保存単位：局所余錐圏・元の退化三角形・局所置換の普遍性の4モジュール21宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
-- **既知の問題**：N の対象ビルド6315 jobs・全4396宣言監査は終了コード0、標準三公理のみ。新規4モジュール21宣言に警告・sorry・追加公理なし。
+- **未コミット**：なし（今回の保存単位：coslice–comma 比較・元の局所置換の comma 始対象性の3モジュール11宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
+- **既知の問題**：N の対象ビルド6336 jobs・全4407宣言監査は終了コード0、標準三公理のみ。新規3モジュール11宣言に警告・sorry・追加公理なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
 - **次の一手**：N-4：局所置換の存在・反射の構成、その後 P_Σ（HTT 5.5.4.15・5.5.5.14・5.5.8）。完成済みの閉性・生成閉包を再実装しない。
-  一点図式の `localTargetCoconeSpace` と、局所包含の `unitCommaFiber` の比較を作り、元の普遍矢印を保持して始対象性を移す。
-  `F1B.kanUnitCommaFiberIntervalIso` は comma の標的 fiber を区間写像空間と同定。join 型 coslice からの全空間の比較は未構成。反射の coherent な族の構成へ接続する。
+  `relativeInitialProjection (unitCommaSource G)` へ各 comma の始対象を入れ、`relativeInitialProjection_trivialKanFibration` の全射条件を証明する。
+  `initialBoundaryLifting_of_isInitialVertex_fiber_op` と comma の既存の反転輸送を使用。自明 Kan 射影の切断から関手 F・単位 η を作り、元の成分を保持して ∞ 随伴へ接続する。
   生成閉包＝局所同値の定理の `hreplace` は未供給。presentable 圏の小さい辺族から局所置換を構成する存在部分も未完。入力フィールドに仮定して完成とは扱わない。
   F2 の正本では Ind・compact が進行中で、presentable・随伴関手定理は後段。反射の存在を既存反射の条件付き特徴づけだけで完成としない。F2 は読み取り専用。
   E2b の `cAlgForgetLocalization` の終域は元の全複体の具体的局所化。D(R) との比較・高次 Hom 比較・∞ 局所化の普遍性は E2 側で未提供と再確認。γ4 の入力を先取りしない。
