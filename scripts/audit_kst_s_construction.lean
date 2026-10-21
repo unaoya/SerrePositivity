@@ -21511,3 +21511,41 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_toSimplexData
 #check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_post
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_post
+#check @SerrePositivity.KST.SConstruction.SerreCubeGeneratorIndex
+#print axioms SerrePositivity.KST.SConstruction.SerreCubeGeneratorIndex
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDegree
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDegree
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_succ_cast
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_succ_cast
+#check @SerrePositivity.KST.SConstruction.serreCube_degree_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.serreCube_degree_hom_ext
+#check @SerrePositivity.KST.SConstruction.serreCube_generator_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.serreCube_generator_hom_ext
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorFreeDimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorFreeDimension
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDegree_freeDimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDegree_freeDimension
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorFaceNormal
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorFaceNormal
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorEndpointIndex
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorEndpointIndex
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_point_cast
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_point_cast
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_keep_cast
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_keep_cast
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_face_top
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_face_top
+#check @SerrePositivity.KST.SConstruction.complexHom_value_of_degree_cast
+#print axioms SerrePositivity.KST.SConstruction.complexHom_value_of_degree_cast
+#check @SerrePositivity.KST.SConstruction.serreCube_face_top_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.serreCube_face_top_hom_ext
+#check @SerrePositivity.KST.SConstruction.serreCube_face_top_image_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.serreCube_face_top_image_hom_ext
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaHom_face_top_ext
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaHom_face_top_ext
+#check @SerrePositivity.KST.SConstruction.serreCubeDegreeGenerator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeGenerator
+#check @SerrePositivity.KST.SConstruction.serreCubeDegreeGenerator_span
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeGenerator_span
