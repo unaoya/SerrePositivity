@@ -1640,4 +1640,12 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionRange
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitRange
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitCard
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitBlocks
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitMap
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitRefinement
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitAugmentation
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitRefinementComparison
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitOneFace
+public import SerrePositivity.KST.SConstruction.NecklaceLambdaCell
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitLambdaCell
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitCubicalTensor
 /-! # ∞-S• 構成と連結 K 理論 -/
