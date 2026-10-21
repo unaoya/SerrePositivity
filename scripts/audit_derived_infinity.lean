@@ -1,3 +1,16 @@
+import SerrePositivity.InfinityCategories.Derived.DGLeftPinchedChainMap
+import SerrePositivity.InfinityCategories.Derived.DGLeftPinchedCoordinates
+import SerrePositivity.InfinityCategories.Derived.DGClosedCosliceFiber
+import SerrePositivity.InfinityCategories.Derived.DGGradedPrecompositionWhisker
+import SerrePositivity.InfinityCategories.Derived.DGLeftPinchedLinearCoordinates
+import SerrePositivity.InfinityCategories.Derived.DGClosedCosliceLinearCoordinates
+import SerrePositivity.InfinityCategories.Derived.DGClosedCosliceFiberComparison
+import SerrePositivity.InfinityCategories.Derived.DGLeftPinchedFunctorMap
+import SerrePositivity.InfinityCategories.Derived.DGFunctorCosliceFiber
+import SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCosliceFiber
+import SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCosliceComparison
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetUnitLiftComparison
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetCosliceFiberEquivalence
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTargetPointedDisplay
 import SerrePositivity.InfinityCategories.Derived.DGHomTargetUnitComparison
 import SerrePositivity.InfinityCategories.Derived.DGPointCosliceCoordinates
@@ -3063,6 +3076,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGLeftPinchedChainMap,
+    `SerrePositivity.InfinityCategories.Derived.DGLeftPinchedCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedCosliceFiber,
+    `SerrePositivity.InfinityCategories.Derived.DGGradedPrecompositionWhisker,
+    `SerrePositivity.InfinityCategories.Derived.DGLeftPinchedLinearCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedCosliceLinearCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.DGClosedCosliceFiberComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGLeftPinchedFunctorMap,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorCosliceFiber,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCosliceFiber,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCosliceComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetUnitLiftComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetCosliceFiberEquivalence,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTargetPointedDisplay,
     `SerrePositivity.InfinityCategories.Derived.DGHomTargetUnitComparison,
     `SerrePositivity.InfinityCategories.Derived.DGPointCosliceCoordinates,
