@@ -118,6 +118,29 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleFiberIso_heq_map
 #check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleFiberIso_heq_endpoint
 
+#check @SerrePositivity.InfinityCategories.F2.fixedBaseHomotopyFiber
+#check @SerrePositivity.InfinityCategories.F2.fixedBaseHomotopyFiber_h_ι
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoRepresentativeEdge
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoRepresentativeEdge_homMk
+#check @SerrePositivity.InfinityCategories.F2.relativeVertexIsoHomotopy_h_uncurry
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberImage
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberImage_heq_map
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberHomotopy
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberHomotopy_h_ι
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberHomotopy_edge
+#check @SerrePositivity.InfinityCategories.F2.relativeIsoFiberHomotopy_hom
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberPathHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberPathHomotopy_h_ι
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberPathHomotopy_hom
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseHomotopyPoint_fiber_cylinder
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeTotalModelFiberComparison_path_cylinder
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackPathHomotopy_precomp_cylinder
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberComparisonPathHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberComparisonPath_left
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberComparisonPath_right
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberComparisonPathHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeFiberComparisonPathIso_eq
+
 /-!
 概要：F2 の公開宣言と生成宣言の依存公理を検査する。
 方針：宣言元モジュールを判別し、各宣言の公理を再帰的に収集する。
