@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveSelectedCutRhsSum
+import SerrePositivity.InfinityCategories.Derived.DGTensorFiniteSums
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutNormalDifferential
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstRight
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstLeft
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstSum
@@ -3202,6 +3205,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveSelectedCutRhsSum,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorFiniteSums,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutNormalDifferential,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstRight,
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstLeft,
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstSum,

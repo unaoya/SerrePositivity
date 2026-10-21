@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveSelectedCutRhsSum
+public import SerrePositivity.InfinityCategories.Derived.DGTensorFiniteSums
+public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutNormalDifferential
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstRight
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstLeft
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstSum
