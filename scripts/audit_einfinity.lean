@@ -7662,6 +7662,23 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.Zigzag.Value.pathNatTrans,
       `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_naturality]
 
+@[noinline] private def e2RequiredBatch128 : Array Lean.Name :=
+  #[
+      `SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization.homEquiv_value,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHoHomMap,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraZigzagValue_inclusion,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockInclusionMap_value,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockInclusionMap_components_value,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraMappingSpacePiZeroEquiv_value,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKPiZeroEquiv_value,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHigherPiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHigherPiZeroEquiv_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraKanDKHigherPiZeroEquiv,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraKanDKHigherPiZeroEquiv_unit,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraKanDKHigherPiZeroEquiv_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHigherPiZeroEquiv_class,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraKanDKHigherPiZeroEquiv_class]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7693,7 +7710,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18558,3 +18575,30 @@ example {C D : Type (e2ComplexLimitUniverse + 1)}
     Zigzag.Value.value L hL S ≫ η.app Y = η.app X ≫ Zigzag.Value.value M hM S :=
   Zigzag.Value.value_naturality hL hM η S
 end e2NativeDKComponentsValueFixtures
+
+section e2DKHigherComponentsAgreementFixtures
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open CategoryTheory Opposite
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles
+open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.KST.Comparison
+variable (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+example : cofibrantAlgebraDKHigherPiZeroEquiv A X Y = cofibrantAlgebraDKPiZeroEquiv A X Y :=
+  cofibrantAlgebraDKHigherPiZeroEquiv_eq A X Y
+example : cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y = cofibrantAlgebraKanDKPiZeroEquiv A X Y :=
+  cofibrantAlgebraKanDKHigherPiZeroEquiv_eq A X Y
+example (f : X ⟶ Y) : cofibrantAlgebraDKHigherPiZeroEquiv A X Y
+      (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
+        ((ULiftHom.up.{e2ComplexLimitUniverse, e2ComplexLimitUniverse + 1,
+          e2ComplexLimitUniverse + 1} (C := CofibrantAlgebra A)).map f)) =
+    mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) :=
+  cofibrantAlgebraDKHigherPiZeroEquiv_class A f
+example (f : X ⟶ Y) : cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
+      (SSet.mapπ₀ (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+        (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
+        (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
+          ((ULiftHom.up.{e2ComplexLimitUniverse, e2ComplexLimitUniverse + 1,
+            e2ComplexLimitUniverse + 1} (C := CofibrantAlgebra A)).map f))) =
+    mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) :=
+  cofibrantAlgebraKanDKHigherPiZeroEquiv_class A f
+end e2DKHigherComponentsAgreementFixtures

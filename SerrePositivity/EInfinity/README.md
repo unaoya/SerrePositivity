@@ -2169,15 +2169,22 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 全類で元の `localizationHomPiZeroEquiv` を回収することを示す。
 `Zigzag.Value.edge_naturality/pathNatTrans/value_naturality` は反転関手の元の自然変換と
 全語の評価の両立。自然変換の成分の可逆性は仮定しない。
-元の cofibrant 包含・HomLift・局所化同値を通す既存 DK/Map^h π₀ 同値との一致、
-∞ 局所化の普遍性は後続。
+`ULiftRelativeLocalization.homEquiv_value` は元の Hom の持ち上げの局所化同値と値の一致。
+`cofibrantAlgebraZigzagValue_inclusion` は元の包含と同じ局所化同値による全語の値の回収。
+`cofibrantAlgebraHammockInclusionMap_value/components_value` は HomLift を通る元の包含自身の
+全単体写像の評価の正方形と全 π₀ 類での同じ評価。
+`cofibrantAlgebraDKHigherPiZeroEquiv_eq/cofibrantAlgebraKanDKHigherPiZeroEquiv_eq` は
+実 raw/Kan DK Hom と元の Map^h の同じ高次比較が誘導する π₀ 同値と、保存済みの同値の一致。
+両 `_class` は元の代数射から作った同じ類を回収する。Kan 版の `_unit` は元の Ex∞ 単位を保持。
+γ2 d の左右比較射の弱同値性・実 DK/Map^h 高次比較・元の前後作用の自然性と π₀ 正規化は完成。
+∞ 局所化の普遍性（e）は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
-元の代数射による前後合成の自然性まで完成。既存 π₀ 同値との整合、∞ 局所化の普遍性は後続。
+元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
-DK と既存 Map^h の高次の単体集合の比較・∞ 局所化の普遍性、
+∞ 局所化の普遍性、
 忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
 
 原典：
