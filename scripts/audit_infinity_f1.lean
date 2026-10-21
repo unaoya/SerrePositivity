@@ -8360,3 +8360,101 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianZeroBoundaryHomComparisonIso
 
 #check @SerrePositivity.InfinityCategories.cocartesianZeroBoundaryHomComparison_original
+
+#check @SerrePositivity.InfinityCategories.pullbackTerminalProductIso
+
+#check @SerrePositivity.InfinityCategories.pullbackTerminalProductIso_hom_fst
+
+#check @SerrePositivity.InfinityCategories.pullbackTerminalProductIso_hom_snd
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryNativeProductIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryNativeProductIso_hom_fst
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryNativeProductIso_hom_snd
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryIntervalProductIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryIntervalProductIso_hom_fst
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryIntervalProductIso_hom_snd
+
+#check @SerrePositivity.InfinityCategories.simplexNerveBaseFunctor
+
+#check @SerrePositivity.InfinityCategories.simplexNerveBaseFunctor_nerveMap
+
+#check @SerrePositivity.InfinityCategories.simplexNerveOverIso
+
+#check @SerrePositivity.InfinityCategories.uliftOverIso
+
+#check @SerrePositivity.InfinityCategories.uliftOverIso_hom
+
+#check @SerrePositivity.InfinityCategories.uliftOverIso_inv
+
+#check @SerrePositivity.InfinityCategories.cocartesianBaseChangeHom_nativePresentation
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexSourceIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexTargetIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexSourceIso_hom
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexTargetIso_hom
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexSourceIso_original
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexTargetIso_original
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison_originalIso
+
+#check @SerrePositivity.InfinityCategories.hornOne_eq_faceSingleton
+
+#check @SerrePositivity.InfinityCategories.hornOnePointIso
+
+#check @SerrePositivity.InfinityCategories.hornOnePointMap
+
+#check @SerrePositivity.InfinityCategories.hornOnePointOverIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornSourceIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornTargetIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornHomComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornHomComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornSourceIso_hom
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornTargetIso_hom
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornSourceIso_original
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornTargetIso_original
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornHomComparison_originalIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.pairedKanFunctorIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_targetProduct
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_face
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_horn
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_originalSourceProduct
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryOriginalFaceAction
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryOriginalHornAction
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_originalTargetProduct
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_originalIso

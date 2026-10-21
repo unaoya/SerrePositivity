@@ -2983,3 +2983,35 @@ public import SerrePositivity.InfinityCategories.F1.EmptyIntervalDiagramHom
 public import SerrePositivity.InfinityCategories.F1.EmptyCocartesianHomComparison
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianZeroBoundaryComparison
+
+public import SerrePositivity.InfinityCategories.F1.PullbackTerminalProductIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryProduct
+
+public import SerrePositivity.InfinityCategories.F1.SimplexNerveOver
+
+public import SerrePositivity.InfinityCategories.F1.UniverseOverIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianNativeHomPresentation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStandardSimplexComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStandardSimplexOriginal
+
+public import SerrePositivity.InfinityCategories.F1.HornOnePointIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneHornComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneHornOriginal
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryComparison
+
+public import SerrePositivity.InfinityCategories.F1.PairedKanFunctorIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryProjections
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryOriginalSource
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryOriginalTarget
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryOriginal
