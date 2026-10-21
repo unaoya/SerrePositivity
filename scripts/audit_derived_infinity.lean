@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonAction
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonCoherence
+import SerrePositivity.InfinityCategories.Derived.FunctorSplitSpanComparison
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeKernelMapOriginalNerve
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedChangeRawValue
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedSurjectiveComparisonAction
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorFields
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeRawHom
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawConjugation
@@ -4056,6 +4062,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonAction,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonCoherence,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorSplitSpanComparison,
+
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeKernelMapOriginalNerve,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedChangeRawValue,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedSurjectiveComparisonAction,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorFields,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeRawHom,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawConjugation,
