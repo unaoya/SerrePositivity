@@ -2939,3 +2939,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackN
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldNativeLiftBoundary
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianCellAttachmentScaffoldExtension
+
+public import SerrePositivity.InfinityCategories.F1.UniverseInnerAnodyne
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianAnodyneNativeHomEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianAnodyneHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFiniteHornOver
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianAnodyneScaffoldTarget
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHigherHornTargetComparison
