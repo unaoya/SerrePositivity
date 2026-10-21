@@ -1991,4 +1991,13 @@ public import SerrePositivity.KST.SConstruction.SimplicialDiagramDiagonalAction
 public import SerrePositivity.KST.SConstruction.SimplicialDiagramDiagonalLaws
 public import SerrePositivity.KST.SConstruction.SimplicialDiagramDiagonalEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMultiRealizationEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.DiagonalParameterizedEvaluation
+public import SerrePositivity.KST.SConstruction.InternalEnrichedActionLaws
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMultiRealizationAction
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGZeroBoundaryAction
+public import SerrePositivity.KST.SConstruction.CofiberFamilyActionLaws
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryReducedAction
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryReducedLaws
+public import SerrePositivity.KST.SConstruction.InternalEnrichedActionFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryReducedEnrichedFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

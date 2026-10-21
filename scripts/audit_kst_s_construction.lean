@@ -24399,3 +24399,105 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.SSetInternalObject.obj
 #print axioms SerrePositivity.KST.SConstruction.SSetInternalObject.obj
+
+#check @SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonal_parameter_app
+#print axioms SerrePositivity.KST.SConstruction.simplicialSSetDiagramDiagonal_parameter_app
+
+#check @SerrePositivity.KST.SConstruction.internalEnrichedAction_unit
+#print axioms SerrePositivity.KST.SConstruction.internalEnrichedAction_unit
+
+#check @SerrePositivity.KST.SConstruction.internalEnrichedAction_comp
+#print axioms SerrePositivity.KST.SConstruction.internalEnrichedAction_comp
+
+#check @SerrePositivity.KST.SConstruction.internalEnrichedAction_hom
+#print axioms SerrePositivity.KST.SConstruction.internalEnrichedAction_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationValue
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationValue
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_unit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_comp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_comp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_zeroOperator
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_zeroOperator
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_mem_zeroRange
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_mem_zeroRange
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_mem_zeroBoundary
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction_mem_zeroBoundary
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGZeroBoundaryAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGZeroBoundaryAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGZeroBoundaryAction_inclusion
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGZeroBoundaryAction_inclusion
+
+#check @SerrePositivity.KST.SConstruction.boundaryFamily_collapse
+#print axioms SerrePositivity.KST.SConstruction.boundaryFamily_collapse
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyAction_unit
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyAction_unit
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyAction_comp
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyAction_comp
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyAction_hom
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyAction_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_collapse
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_collapse
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_quotient
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_quotient
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_basepoint
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_basepoint
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedFamilyMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedFamilyMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_unit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_comp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_comp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedAction_hom
+
+#check @SerrePositivity.KST.SConstruction.internalEnrichedFunctorOfAction
+#print axioms SerrePositivity.KST.SConstruction.internalEnrichedFunctorOfAction
+
+#check @SerrePositivity.KST.SConstruction.internalEnrichedFunctorOfAction_hom
+#print axioms SerrePositivity.KST.SConstruction.internalEnrichedFunctorOfAction_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor_family
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor_family
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedEnrichedFunctor_hom
