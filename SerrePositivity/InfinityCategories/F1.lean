@@ -1820,3 +1820,11 @@ public import SerrePositivity.InfinityCategories.F1.IntervalDiagramColimitDescen
 public import SerrePositivity.InfinityCategories.F1.IntervalDiagramOverRestriction
 
 public import SerrePositivity.InfinityCategories.F1.IntervalDiagramColimitCone
+
+public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostInclusion
+
+public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostLifting
+
+public import SerrePositivity.InfinityCategories.F1.KanEquivalenceLiftingFibration
+
+public import SerrePositivity.InfinityCategories.F1.IntervalDiagramRestrictionFibration
