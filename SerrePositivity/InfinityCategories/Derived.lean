@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunctionCounit
+public import SerrePositivity.InfinityCategories.Derived.DGKernelRightAdjointClassicalComparison
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionInterval
 public import SerrePositivity.InfinityCategories.Derived.IntervalEndpointTransport
 public import SerrePositivity.InfinityCategories.Derived.DGUniversalCounitInterval

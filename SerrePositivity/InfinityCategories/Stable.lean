@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.AdjunctionOppositeCounit
+public import SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunctionRecovery
+public import SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence
+public import SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory
 public import SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation
 public import SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite
 public import SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunction

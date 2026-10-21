@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Stable.AdjunctionOppositeCounit
+import SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunctionRecovery
+import SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunctionCounit
+import SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence
+import SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory
+import SerrePositivity.InfinityCategories.Derived.DGKernelRightAdjointClassicalComparison
 import SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation
 import SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite
 import SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunction
@@ -4301,10 +4307,35 @@ open Lean Elab Command in
 #check SerrePositivity.InfinityCategories.dgModuleResolvedSourceSectionEquivalence
 #check SerrePositivity.InfinityCategories.dgKernelAdjunction
 
+#check SerrePositivity.InfinityCategories.functorOppositeHomEquiv_id
+#check SerrePositivity.InfinityCategories.QCatAdjunction.homEquiv_counitHom
+#check SerrePositivity.InfinityCategories.QCatAdjunction.homEquiv_id_unitHom
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOfOpposite_counitHom
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOfCounitIntervalCondition_counitHom
+#check SerrePositivity.InfinityCategories.dgUniversalRightAdjunction_counitHom
+#check SerrePositivity.InfinityCategories.pointConstantHomEquiv
+#check SerrePositivity.InfinityCategories.pointConstantHomEquiv_apply
+#check SerrePositivity.InfinityCategories.QCatAdjunction.hoVertexHomEquiv
+#check SerrePositivity.InfinityCategories.QCatAdjunction.hoVertexHomEquiv_spec
+#check SerrePositivity.InfinityCategories.QCatAdjunction.hoVertexHomEquiv_naturality_right
+#check SerrePositivity.InfinityCategories.QCatAdjunction.hoVertexHomEquiv_naturality_left
+#check SerrePositivity.InfinityCategories.QCatAdjunction.hoHomEquiv
+#check SerrePositivity.InfinityCategories.QCatAdjunction.toHoAdjunction
+#check SerrePositivity.InfinityCategories.dgKernelRightAdjoint_homotopyIso
+#check SerrePositivity.InfinityCategories.dgKernelRightAdjoint_classicalIso
+#check SerrePositivity.InfinityCategories.dgKernelRightAdjoint_homotopyIso_unit
+#check SerrePositivity.InfinityCategories.dgKernelRightAdjoint_homotopyIso_counit
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.AdjunctionOppositeCounit,
+    `SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunctionRecovery,
+    `SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunctionCounit,
+    `SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelRightAdjointClassicalComparison,
     `SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation,
     `SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite,
     `SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunction,
