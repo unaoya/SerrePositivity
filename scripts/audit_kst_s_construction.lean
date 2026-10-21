@@ -24732,3 +24732,81 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionBoundaryAction_inclusion
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionBoundaryAction_inclusion
+
+#check @SerrePositivity.KST.SConstruction.cofiberSuspensionFamily_naturality
+#print axioms SerrePositivity.KST.SConstruction.cofiberSuspensionFamily_naturality
+
+#check @SerrePositivity.KST.SConstruction.cofiberTensorCover
+#print axioms SerrePositivity.KST.SConstruction.cofiberTensorCover
+
+#check @SerrePositivity.KST.SConstruction.cofiberTensorCover_epi
+#print axioms SerrePositivity.KST.SConstruction.cofiberTensorCover_epi
+
+#check @SerrePositivity.KST.SConstruction.cofiberTensorCover_inl
+#print axioms SerrePositivity.KST.SConstruction.cofiberTensorCover_inl
+
+#check @SerrePositivity.KST.SConstruction.cofiberTensorFamily_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.cofiberTensorFamily_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.parameterizedQuotientSquare
+#print axioms SerrePositivity.KST.SConstruction.parameterizedQuotientSquare
+
+#check @SerrePositivity.KST.SConstruction.pointedClosedEvaluation
+#print axioms SerrePositivity.KST.SConstruction.pointedClosedEvaluation
+
+#check @SerrePositivity.KST.SConstruction.pointedClosedEvaluation_family
+#print axioms SerrePositivity.KST.SConstruction.pointedClosedEvaluation_family
+
+#check @SerrePositivity.KST.SConstruction.pointedFamily_post_evaluation
+#print axioms SerrePositivity.KST.SConstruction.pointedFamily_post_evaluation
+
+#check @SerrePositivity.KST.SConstruction.pointedFamily_pre_evaluation
+#print axioms SerrePositivity.KST.SConstruction.pointedFamily_pre_evaluation
+
+#check @SerrePositivity.KST.SConstruction.suspensionHom_underlying_evaluation
+#print axioms SerrePositivity.KST.SConstruction.suspensionHom_underlying_evaluation
+
+#check @SerrePositivity.KST.SConstruction.suspensionHom_family_app
+#print axioms SerrePositivity.KST.SConstruction.suspensionHom_family_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyQuotient_action
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyQuotient_action
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedFamilyMap_evaluation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedFamilyMap_evaluation
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedFamilyMap_evaluation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryReducedFamilyMap_evaluation
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedFamilyMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedFamilyMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedAction_collapse
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedAction_collapse
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedAction_quotient
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedAction_quotient
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedAction_basepoint
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedAction_basepoint
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedFamilyMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionReducedFamilyMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGSuspensionAssembly_action
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGSuspensionAssembly_action
+
+#check @SerrePositivity.KST.SConstruction.adjoinTensorMap_underlying
+#print axioms SerrePositivity.KST.SConstruction.adjoinTensorMap_underlying
+
+#check @SerrePositivity.KST.SConstruction.rawCofiberTensorDesc_underlying
+#print axioms SerrePositivity.KST.SConstruction.rawCofiberTensorDesc_underlying
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_underlying
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionSuspensionAssembly_underlying
